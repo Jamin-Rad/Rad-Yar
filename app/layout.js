@@ -16,7 +16,12 @@ const dmSans = DM_Sans({
 export const metadata = {
   title: 'RadYar – Your Guide in Radiology Education',
   description:
-    'Strukturiertes Wissen, klinische Fälle und Prüfungsvorbereitung für Radiologinnen und Radiologen in Weiterbildung.',
+    'Strukturiertes Wissen, klinische Fälle und Prüfungsvorbereitung für Radiologinnen und Radiologen.',
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({ children }) {
