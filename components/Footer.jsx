@@ -7,8 +7,7 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.brand}>
-        <span className={styles.r}>rad</span>
-        <span className={styles.y}>YAR</span>
+        <span className={styles.r}>RAD</span><span className={styles.y}>YAR</span>
       </div>
       <div className={styles.copy}>{texts.footerCopy}</div>
     </footer>

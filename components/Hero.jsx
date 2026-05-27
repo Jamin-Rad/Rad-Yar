@@ -4,31 +4,30 @@ import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './Hero.module.css'
 
-function RadYarWordmark() {
+// Logo B: Hexagonal emblem (same as navbar)
+function HexLogoLarge() {
   return (
-    <div className={styles.wordmark}>
-      <svg className={styles.wmIcon} viewBox="0 0 54 54" fill="none">
-        <circle cx="27" cy="27" r="25.5" stroke="url(#wg)" strokeWidth="2" opacity="0.5" />
-        <circle cx="27" cy="27" r="17" stroke="url(#wg)" strokeWidth="1.5" opacity="0.7" />
-        <path
-          d="M18 13 L18 41 M18 13 L30 13 C34.4 13 38 16.6 38 21 C38 25.4 34.4 28 30 28 L18 28 M28 28 L38 41"
-          stroke="url(#wg)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"
-        />
-        <defs>
-          <linearGradient id="wg" x1="0" y1="0" x2="54" y2="54" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#a78bfa" />
-            <stop offset="100%" stopColor="#38bdf8" />
-          </linearGradient>
-        </defs>
-      </svg>
-      <div className={styles.wmTextBlock}>
-        <span className={styles.wmText}>
-          <span className={styles.wmRad}>rad</span>
-          <span className={styles.wmYar}>YAR</span>
-        </span>
-        <span className={styles.wmSub}>Radiology Education</span>
-      </div>
-    </div>
+    <svg className={styles.wmIcon} viewBox="0 0 54 54" fill="none">
+      <polygon
+        points="27,2 49,14.5 49,39.5 27,52 5,39.5 5,14.5"
+        stroke="url(#hwg)" strokeWidth="2.2" fill="rgba(249,115,22,0.08)"
+      />
+      <polygon
+        points="27,11 41,19 41,35 27,43 13,35 13,19"
+        stroke="url(#hwg)" strokeWidth="1.2" fill="none" opacity="0.4"
+      />
+      <text
+        x="27" y="33" textAnchor="middle"
+        fill="url(#hwg)" fontSize="16" fontWeight="800"
+        fontFamily="'Syne','Segoe UI',system-ui,sans-serif"
+      >RY</text>
+      <defs>
+        <linearGradient id="hwg" x1="0" y1="0" x2="54" y2="54" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#f97316"/>
+          <stop offset="100%" stopColor="#fbbf24"/>
+        </linearGradient>
+      </defs>
+    </svg>
   )
 }
 
@@ -37,33 +36,52 @@ export default function Hero() {
 
   return (
     <section className={styles.hero}>
+
+      {/* Background image – brighter, more visible */}
       <div className={styles.heroBgWrap}>
         <Image
           src="/hero.png"
           alt="MRI Scanner"
           fill
-          style={{ objectFit: 'cover', filter: 'brightness(0.35) saturate(1.1)' }}
+          style={{ objectFit: 'cover', filter: 'brightness(0.52) saturate(1.15)' }}
           priority
         />
       </div>
-      <div className={styles.orbViolet} />
-      <div className={styles.orbBlue} />
+
+      {/* Subtle gradient – only left side dark for text, right stays open */}
       <div className={styles.heroOverlay} />
 
+      {/* Orange glow orbs */}
+      <div className={styles.orbOrange} />
+      <div className={styles.orbAmber} />
+
+      {/* Content */}
       <div className={styles.heroContent}>
-        <RadYarWordmark />
+
+        {/* Wordmark with hex logo */}
+        <div className={styles.wordmark}>
+          <HexLogoLarge />
+          <div className={styles.wmTextBlock}>
+            <span className={styles.wmText}>
+              <span className={styles.wmRad}>RAD</span>
+              <span className={styles.wmYar}>YAR</span>
+            </span>
+            <span className={styles.wmSub}>{texts.hs || 'Radiology Education'}</span>
+          </div>
+        </div>
 
         <p className={styles.heroTagline}>{texts.tagline}</p>
         <div className={styles.heroBar} />
         <p className={styles.heroDesc}>{texts.heroDesc}</p>
 
+        {/* Stats */}
         <div className={styles.statsRow}>
           <span className={styles.statChip}>
-            <span className={styles.statDot} style={{ background: '#a78bfa' }} />
+            <span className={styles.statDot} style={{ background: '#f97316' }} />
             {texts.stat1}
           </span>
           <span className={styles.statChip}>
-            <span className={styles.statDot} style={{ background: '#38bdf8' }} />
+            <span className={styles.statDot} style={{ background: '#fbbf24' }} />
             {texts.stat2}
           </span>
           <span className={styles.statChip}>
@@ -78,7 +96,7 @@ export default function Hero() {
             {texts.ctaSub}
             <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
               <path d="M2.5 7.5h10M8 3l4.5 4.5L8 12"
-                stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </Link>
         </div>
@@ -87,7 +105,7 @@ export default function Hero() {
       <div className={styles.scrollHint}>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M3.5 6.5l4.5 4.5 4.5-4.5"
-            stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       </div>
     </section>

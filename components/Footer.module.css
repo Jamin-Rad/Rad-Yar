@@ -2,21 +2,9 @@
   padding: 36px 7vw;
   display: flex; align-items: center;
   justify-content: space-between; flex-wrap: wrap; gap: 14px;
-  border-top: 1px solid rgba(255,255,255,0.055);
+  border-top: 1px solid rgba(249,115,22,0.1);
 }
-
-.brand {
-  font-family: var(--font-syne, 'Syne', sans-serif);
-  font-size: 19px; font-weight: 800; letter-spacing: -0.5px;
-}
-
-.r { color: #dce6ff; }
-
-.p {
-  background: linear-gradient(130deg, #a78bfa, #38bdf8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.copy { font-size: 11.5px; color: rgba(150,165,210,0.65); }
+.brand { font-family: var(--font-syne,'Syne',sans-serif); font-size: 19px; font-weight: 800; letter-spacing: 0.04em; }
+.r { color: #f0ece8; }
+.y { background: linear-gradient(130deg,#f97316,#fbbf24); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.copy { font-size: 11.5px; color: rgba(240,225,200,0.45); }
