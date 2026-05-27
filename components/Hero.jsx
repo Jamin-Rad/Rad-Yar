@@ -12,10 +12,14 @@ export default function Hero() {
           src="/hero.png"
           alt="MRI Scanner"
           fill
-          style={{ objectFit: 'cover', filter: 'brightness(0.38) saturate(1.1)' }}
+          style={{ objectFit: 'cover', filter: 'brightness(0.35) saturate(1.1)' }}
           priority
         />
       </div>
+
+      {/* Animated glow orb */}
+      <div className={styles.orbViolet} />
+      <div className={styles.orbBlue} />
 
       {/* Dark gradient overlay */}
       <div className={styles.heroOverlay} />
@@ -40,7 +44,7 @@ export default function Hero() {
           </svg>
           <span className={styles.wmText}>
             <span className={styles.wmRad}>Rad</span>
-            <span className={styles.wmPilot}>Pilot</span>
+            <span className={styles.wmYar}>Yar</span>
           </span>
         </div>
 
@@ -54,6 +58,22 @@ export default function Hero() {
           Strukturiertes Wissen, interaktive Fälle und gezielte Prüfungsvorbereitung –
           kompakt aufbereitet für Radiologinnen und Radiologen in Weiterbildung.
         </p>
+
+        {/* Stats chips */}
+        <div className={styles.statsRow}>
+          <span className={styles.statChip}>
+            <span className={styles.statDot} style={{ background: '#a78bfa' }} />
+            8 Fachgebiete
+          </span>
+          <span className={styles.statChip}>
+            <span className={styles.statDot} style={{ background: '#38bdf8' }} />
+            MCQs & Fälle
+          </span>
+          <span className={styles.statChip}>
+            <span className={styles.statDot} style={{ background: '#34d399' }} />
+            Kostenlos starten
+          </span>
+        </div>
 
         <div className={styles.ctaRow}>
           <Link href="#fachgebiete" className={styles.btnPrimary}>

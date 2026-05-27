@@ -32,11 +32,15 @@ export default function LernPfade() {
     <section className={styles.section} id="lernpfade">
       <div className="sLabel">Lernpfade</div>
       <h2 className="sTitle">Drei Schritte zum<br />radiologischen Experten</h2>
-      <p className="sSub">Vom ersten Konzept bis zur bestandenen Prüfung – RadPilot führt dich durch jeden Schritt.</p>
+      <p className="sSub">Vom ersten Konzept bis zur bestandenen Prüfung – RadYar führt dich durch jeden Schritt.</p>
 
       <div className={styles.grid}>
-        {pillars.map((p) => (
-          <div key={p.id} className={`${styles.card} ${styles[p.id]}`}>
+        {pillars.map((p, i) => (
+          <div
+            key={p.id}
+            className={`${styles.card} ${styles[p.id]}`}
+            style={{ animationDelay: `${i * 0.12}s` }}
+          >
             <div className={styles.icon}>{p.icon}</div>
             <div className={styles.num}>{p.num}</div>
             <h3 className={styles.title}>{p.title}</h3>

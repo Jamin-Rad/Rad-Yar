@@ -5,9 +5,9 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.brand}>
         <span className={styles.r}>Rad</span>
-        <span className={styles.p}>Pilot</span>
+        <span className={styles.y}>Yar</span>
       </div>
-      <div className={styles.copy}>© 2025 RadPilot · Your Guide in Radiology Education</div>
+      <div className={styles.copy}>© 2025 RadYar · Your Guide in Radiology Education</div>
     </footer>
   )
 }
