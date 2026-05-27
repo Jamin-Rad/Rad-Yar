@@ -1,44 +1,23 @@
+'use client'
+import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './LernPfade.module.css'
 
-const pillars = [
-  {
-    id: 'c1',
-    icon: '📖',
-    num: '01 — Lernen',
-    title: 'Lernen',
-    desc: 'Strukturierte Lernmodule nach Organsystem und Modalität – mit klaren Erklärungen, Schemata und Merkhilfen.',
-    topics: ['Anatomie', 'Pathologie', 'Befundlehre', 'Normalbefunde', 'Modalitäten'],
-  },
-  {
-    id: 'c2',
-    icon: '🎯',
-    num: '02 — Üben',
-    title: 'Fallbeispiele & MCQs',
-    desc: 'Interaktive Fälle mit echten Bildern und Multiple-Choice-Fragen – zum Vertiefen und Überprüfen des Gelernten.',
-    topics: ['Fallbeispiele', 'MCQs', 'Differenzialdiagnosen', 'Bildanalyse'],
-  },
-  {
-    id: 'c3',
-    icon: '🏅',
-    num: '03 — Prüfungsvorbereitung',
-    title: 'Prüfungsvorbereitung',
-    desc: 'Gezieltes Training für Facharztprüfung und Boards – mit Prüfungsfragen, Zeitlimits und detaillierter Fehleranalyse.',
-    topics: ['Prüfungsfragen', 'Schwerpunktthemen', 'Timed Tests', 'Fehleranalyse'],
-  },
-]
+const colorIds = ['c1', 'c2', 'c3']
 
 export default function LernPfade() {
+  const { texts } = useLanguage()
+
   return (
     <section className={styles.section} id="lernpfade">
-      <div className="sLabel">Lernpfade</div>
-      <h2 className="sTitle">Drei Schritte zum<br />radiologischen Experten</h2>
-      <p className="sSub">Vom ersten Konzept bis zur bestandenen Prüfung – RadYar führt dich durch jeden Schritt.</p>
+      <div className="sLabel">{texts.section1Label}</div>
+      <h2 className="sTitle">{texts.section1Title}</h2>
+      <p className="sSub">{texts.section1Sub}</p>
 
       <div className={styles.grid}>
-        {pillars.map((p, i) => (
+        {texts.pillars.map((p, i) => (
           <div
-            key={p.id}
-            className={`${styles.card} ${styles[p.id]}`}
+            key={i}
+            className={`${styles.card} ${styles[colorIds[i]]}`}
             style={{ animationDelay: `${i * 0.12}s` }}
           >
             <div className={styles.icon}>{p.icon}</div>

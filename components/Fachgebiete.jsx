@@ -1,6 +1,7 @@
+'use client'
+import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './Fachgebiete.module.css'
 
-// SVG icon components for custom anatomical icons
 const AbdomenIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="#34d399" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
     <path d="M8 4C6 4 4 5.5 4 8.5C4 12 5 16 7.5 18.5C9 20 11 20.5 13 19.5C15 18.5 16.5 16.5 17 14C17.5 11.5 17 9 15.5 7.5C14 6 12 5.5 10.5 6" />
@@ -36,36 +37,35 @@ const BeckenIcon = () => (
   </svg>
 )
 
-const fachgebiete = [
-  { name: 'Neuroradiologie', bg: 'rgba(139,92,246,0.18)', icon: '🧠' },
-  { name: 'Thorax',          bg: 'rgba(56,189,248,0.18)',  icon: '🫁' },
-  { name: 'Abdomen',         bg: 'rgba(52,211,153,0.18)',  icon: <AbdomenIcon /> },
-  { name: 'Muskuloskelettales', bg: 'rgba(251,191,36,0.18)', icon: '🦴' },
-  { name: 'Hals',            bg: 'rgba(251,146,60,0.18)',  icon: <HalsIcon /> },
-  { name: 'Brust',           bg: 'rgba(244,114,182,0.18)', icon: <BrustIcon /> },
-  { name: 'Becken',          bg: 'rgba(99,102,241,0.18)',  icon: <BeckenIcon /> },
-  { name: 'Technik & Physik',bg: 'rgba(167,139,250,0.18)', icon: '⚛️' },
+const fachData = [
+  { key: 'Neuroradiologie', bg: 'rgba(139,92,246,0.18)',  icon: '🧠' },
+  { key: 'Thorax',          bg: 'rgba(56,189,248,0.18)',   icon: '🫁' },
+  { key: 'Abdomen',         bg: 'rgba(52,211,153,0.18)',   icon: <AbdomenIcon /> },
+  { key: 'Muskuloskelettales', bg: 'rgba(251,191,36,0.18)', icon: '🦴' },
+  { key: 'Hals',            bg: 'rgba(251,146,60,0.18)',   icon: <HalsIcon /> },
+  { key: 'Brust',           bg: 'rgba(244,114,182,0.18)',  icon: <BrustIcon /> },
+  { key: 'Becken',          bg: 'rgba(99,102,241,0.18)',   icon: <BeckenIcon /> },
+  { key: 'Technik & Physik',bg: 'rgba(167,139,250,0.18)',  icon: '⚛️' },
 ]
 
 export default function Fachgebiete() {
+  const { texts } = useLanguage()
+
   return (
     <section className={styles.section} id="fachgebiete">
-      <div className="sLabel">Fachgebiete</div>
-      <h2 className="sTitle">Alle Spezialgebiete<br />im Überblick</h2>
-      <p className="sSub">Wähle ein Fachgebiet und starte direkt mit Lernmodul, Fällen und MCQs.</p>
+      <div className="sLabel">{texts.section2Label}</div>
+      <h2 className="sTitle">{texts.section2Title}</h2>
+      <p className="sSub">{texts.section2Sub}</p>
 
       <div className={styles.grid}>
-        {fachgebiete.map((f) => (
-          <div key={f.name} className={styles.card}>
+        {fachData.map((f) => (
+          <div key={f.key} className={styles.card}>
             <div className={styles.iconWrap} style={{ background: f.bg }}>
-              {typeof f.icon === 'string'
-                ? <span>{f.icon}</span>
-                : f.icon
-              }
+              {typeof f.icon === 'string' ? <span>{f.icon}</span> : f.icon}
             </div>
             <div>
-              <div className={styles.name}>{f.name}</div>
-              <div className={`${styles.status} ${styles.soon}`}>In Vorbereitung</div>
+              <div className={styles.name}>{texts.fachNames[f.key]}</div>
+              <div className={`${styles.status} ${styles.soon}`}>{texts.fachStatus}</div>
             </div>
           </div>
         ))}
