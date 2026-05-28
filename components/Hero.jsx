@@ -1,11 +1,12 @@
 'use client'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './Hero.module.css'
 
-function HexLogo({ size = 54 }) {
+function HexLogo() {
   return (
-    <svg width={size} height={size} viewBox="0 0 54 54" fill="none">
+    <svg width="54" height="54" viewBox="0 0 54 54" fill="none">
       <polygon points="27,2 49,14.5 49,39.5 27,52 5,39.5 5,14.5"
         stroke="url(#hwg)" strokeWidth="2.2" fill="rgba(249,115,22,0.1)"/>
       <polygon points="27,11 41,19 41,35 27,43 13,35 13,19"
@@ -28,30 +29,46 @@ export default function Hero() {
   return (
     <section className={styles.hero}>
 
-      {/* Background image */}
-      <div className={styles.bg} id="heroBg" />
+      {/* ── Hero background image – using Next.js Image, always visible ── */}
+      <div className={styles.bgWrap}>
+        <Image
+          src="/hero.png"
+          alt="MRI Scanner"
+          fill
+          priority
+          style={{ objectFit: 'cover', filter: 'brightness(0.42) saturate(1.15)' }}
+        />
+      </div>
 
-      {/* Animated overlay layers */}
+      {/* ── Gradient overlay: dark left, transparent right ── */}
       <div className={styles.overlay} />
 
-      {/* Animated scan lines */}
+      {/* ── Animated scan lines ── */}
       <div className={styles.scanLines} />
 
-      {/* Floating particles */}
+      {/* ── Floating particles ── */}
       <div className={styles.particles}>
-        {[...Array(12)].map((_, i) => (
+        {[...Array(14)].map((_, i) => (
           <div key={i} className={styles.particle}
-            style={{ '--i': i, '--x': `${10 + (i * 7.3) % 80}%`, '--d': `${i * 0.4}s`, '--s': `${4 + (i % 4)}s` }} />
+            style={{
+              left: `${8 + (i * 6.5) % 84}%`,
+              animationDelay: `${i * 0.35}s`,
+              animationDuration: `${4 + (i % 4)}s`,
+              width:  `${3 + (i % 3)}px`,
+              height: `${3 + (i % 3)}px`,
+            }}
+          />
         ))}
       </div>
 
-      {/* MRI bore glow ring */}
+      {/* ── MRI bore glow ring ── */}
       <div className={styles.boreGlow} />
 
-      {/* Content */}
+      {/* ── Content ── */}
       <div className={styles.content}>
+
         <div className={styles.wordmark}>
-          <HexLogo size={56} />
+          <HexLogo />
           <div className={styles.wmText}>
             <span className={styles.wmTitle}>
               <span className={styles.wmRad}>RAD</span>
