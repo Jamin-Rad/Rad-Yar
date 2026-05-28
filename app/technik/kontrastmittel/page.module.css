@@ -1,224 +1,185 @@
-/* app/technik-physik/kontrastmittel/page.module.css */
-
-.page {
-  min-height: 100vh;
-  background: #060708;
-  color: #f0ece8;
+/* Container und Basis-Layout */
+.pageContainer {
   padding-top: 64px;
+  background-color: #060708;
+  color: #f0ece8;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
 }
 
-.container {
-  width: 100%;
-  max-width: 1350px;
+.content {
+  max-width: 900px;
   margin: 0 auto;
-  padding: 40px 24px 80px;
+  padding: 0 20px 40px;
 }
 
+/* Breadcrumbs */
 .breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 28px;
-  font-size: 0.92rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-size: 0.9rem;
   color: rgba(240, 225, 200, 0.65);
 }
 
 .breadcrumb a {
-  color: rgba(240, 225, 200, 0.65);
+  color: #f97316;
   text-decoration: none;
-  transition: 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .breadcrumb a:hover {
-  color: #f97316;
-}
-
-.hero {
-  margin-bottom: 42px;
-}
-
-.kicker {
-  color: #f97316;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.82rem;
-  margin-bottom: 10px;
-}
-
-.hero h1 {
-  font-size: clamp(2.6rem, 5vw, 4rem);
-  line-height: 1.05;
-  margin-bottom: 18px;
-}
-
-.lead {
-  max-width: 900px;
-  line-height: 1.7;
-  color: rgba(240, 225, 200, 0.65);
-  font-size: 1.05rem;
-}
-
-.layout {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 40px;
-}
-
-.sidebar {
-  position: relative;
-}
-
-.quickNav {
-  position: sticky;
-  top: 100px;
-  padding: 22px;
-  border-radius: 14px;
-  border: 1px solid rgba(249, 115, 22, 0.12);
-  background: rgba(249, 115, 22, 0.04);
-}
-
-.quickNav h3 {
-  margin-bottom: 18px;
-  font-size: 1rem;
   color: #fbbf24;
 }
 
-.quickNav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* Typografie */
+.pageTitle {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px 20px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #f0ece8;
 }
 
-.quickNav li + li {
-  margin-top: 12px;
+h2 {
+  font-size: 1.8rem;
+  color: #fbbf24;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(249, 115, 22, 0.12);
+  padding-bottom: 10px;
+}
+
+h3 {
+  font-size: 1.25rem;
+  color: #f97316;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+h4 {
+  font-size: 1.1rem;
+  color: #f0ece8;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.marginTop {
+  margin-top: 24px;
+}
+
+.mutedText {
+  color: rgba(240, 225, 200, 0.65);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+p, li {
+  line-height: 1.6;
+}
+
+ul, ol {
+  margin-top: 8px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+/* Quick-Navigation (Sticky) */
+.quickNav {
+  position: sticky;
+  top: 64px; /* Unterhalb der fixen Navbar */
+  background-color: rgba(6, 7, 8, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(249, 115, 22, 0.12);
+  padding: 12px 20px;
+  z-index: 10;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  white-space: nowrap;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  scrollbar-width: thin;
+  scrollbar-color: #f97316 transparent;
 }
 
 .quickNav a {
-  color: rgba(240, 225, 200, 0.75);
+  color: #f0ece8;
   text-decoration: none;
-  transition: 0.2s ease;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: rgba(249, 115, 22, 0.08);
+  transition: all 0.2s ease;
 }
 
 .quickNav a:hover {
-  color: #f97316;
+  background: #f97316;
+  color: #060708;
 }
 
-.content {
-  width: 100%;
+/* Sections & Layout */
+.section {
+  margin-bottom: 60px;
+  scroll-margin-top: 120px; /* Für sauberes Anspringen via Quick-Nav */
 }
 
-.section + .section {
-  margin-top: 64px;
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
 }
 
-.section h2 {
-  font-size: 2rem;
-  margin-bottom: 24px;
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
+/* UI Komponenten */
 .card {
   background: rgba(249, 115, 22, 0.04);
   border: 1px solid rgba(249, 115, 22, 0.12);
   border-radius: 14px;
   padding: 24px;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 
-.card h3 {
-  margin-bottom: 16px;
-  color: #fbbf24;
-  font-size: 1.1rem;
-}
-
-.card p {
-  color: rgba(240, 225, 200, 0.82);
-  line-height: 1.7;
-}
-
-.card ul,
-.card ol {
-  padding-left: 20px;
-  line-height: 1.8;
-  color: rgba(240, 225, 200, 0.82);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 22px;
-}
-
-.noteBox {
+.merkeBox {
+  background: rgba(249, 115, 22, 0.08);
   border-left: 3px solid #f97316;
-  background: rgba(249, 115, 22, 0.05);
-  padding: 18px 20px;
+  padding: 16px 20px;
+  border-radius: 0 8px 8px 0;
   margin: 24px 0;
-  border-radius: 0 12px 12px 0;
-  color: rgba(240, 225, 200, 0.88);
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
+/* Tabellen */
 .table {
   width: 100%;
   border-collapse: collapse;
-  overflow: hidden;
-  border-radius: 12px;
-  margin-top: 12px;
-}
-
-.table thead {
-  background: rgba(249, 115, 22, 0.12);
+  margin-top: 16px;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
 }
 
 .table th {
-  text-align: left;
-  padding: 14px 16px;
+  background: rgba(249, 115, 22, 0.15);
   color: #f97316;
-  font-weight: 600;
-  border-bottom: 1px solid rgba(249, 115, 22, 0.12);
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 2px solid #f97316;
 }
 
 .table td {
-  padding: 14px 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  color: rgba(240, 225, 200, 0.82);
-  vertical-align: top;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(249, 115, 22, 0.12);
 }
 
 .table tr:last-child td {
   border-bottom: none;
-}
-
-@media (max-width: 1024px) {
-  .layout {
-    grid-template-columns: 1fr;
-  }
-
-  .sidebar {
-    order: -1;
-  }
-
-  .quickNav {
-    position: relative;
-    top: 0;
-  }
-}
-
-@media (max-width: 640px) {
-  .container {
-    padding: 32px 18px 64px;
-  }
-
-  .hero h1 {
-    font-size: 2.4rem;
-  }
-
-  .section h2 {
-    font-size: 1.6rem;
-  }
-
-  .card {
-    padding: 20px;
-  }
 }
