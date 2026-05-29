@@ -1,4 +1,6 @@
 export const translations = {
+
+  // ── DEUTSCH ───────────────────────────────────
   de: {
     dir: 'ltr',
     tagline: 'Your Guide in Radiology Education',
@@ -56,6 +58,7 @@ export const translations = {
     },
   },
 
+  // ── ENGLISH ───────────────────────────────────
   en: {
     dir: 'ltr',
     tagline: 'Your Guide in Radiology Education',
@@ -113,6 +116,7 @@ export const translations = {
     },
   },
 
+  // ── FARSI ─────────────────────────────────────
   fa: {
     dir: 'rtl',
     tagline: 'راهنمای شما در آموزش رادیولوژی',
