@@ -91,6 +91,8 @@ export default function Navbar() {
           <div className={styles.langToggle}>
             <button className={`${styles.langBtn} ${lang==='de'?styles.langOn:''}`} onClick={() => setLang('de')}>DE</button>
             <span className={styles.langSep}>·</span>
+            <button className={`${styles.langBtn} ${lang==='en'?styles.langOn:''}`} onClick={() => setLang('en')}>EN</button>
+            <span className={styles.langSep}>·</span>
             <button className={`${styles.langBtn} ${lang==='fa'?styles.langOn:''}`} onClick={() => setLang('fa')}>FA</button>
           </div>
         </div>
