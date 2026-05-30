@@ -1,8 +1,9 @@
 :root {
-  --font-syne: 'Syne', sans-serif;
-  --font-dm:   'DM Sans', sans-serif;
+  /* ── FONTS ──────────────────────────────────── */
+  --font-main:    'Space Grotesk', system-ui, sans-serif;
+  --font-persian: 'IRANSans', 'Vazirmatn', 'Tahoma', sans-serif;
 
-  /* Light theme palette */
+  /* ── COLORS ─────────────────────────────────── */
   --bg:        #f0f2f8;
   --bg-card:   #ffffff;
   --bg-dark:   #16213e;
@@ -21,32 +22,55 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
+/* ── BASE FONT ────────────────────────────────── */
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-dm, 'DM Sans', sans-serif);
+  font-family: var(--font-main);
+  font-size: 15px;
+  line-height: 1.6;
   overflow-x: hidden;
+  font-weight: 400;
 }
 
-/* ── SHARED SECTION ───────────────────────────── */
+/* ── PERSIAN: IRANSans aktivieren ─────────────── */
+[lang="fa"] body,
+[dir="rtl"],
+[dir="rtl"] * {
+  font-family: var(--font-persian) !important;
+  letter-spacing: 0 !important;
+  word-spacing: 2px;
+  line-height: 1.8;
+}
+
+/* ── SHARED SECTION STYLES ────────────────────── */
 .sLabel {
-  font-size: 10.5px; font-weight: 600;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--orange); margin-bottom: 12px;
-  font-family: var(--font-syne, 'Syne', sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 12px;
+  font-family: var(--font-main);
 }
 
 .sTitle {
-  font-family: var(--font-syne, 'Syne', sans-serif);
+  font-family: var(--font-main);
   font-size: clamp(24px, 3.2vw, 38px);
-  font-weight: 700; line-height: 1.15;
-  margin-bottom: 12px; color: var(--navy);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 12px;
+  color: var(--navy);
+  letter-spacing: -0.3px;
 }
 
 .sSub {
-  font-size: 14.5px; color: var(--gray);
-  line-height: 1.65; max-width: 500px;
+  font-size: 15px;
+  color: var(--gray);
+  line-height: 1.7;
+  max-width: 520px;
   margin-bottom: 48px;
+  font-weight: 400;
 }
 
 /* ── DIVIDER ──────────────────────────────────── */
