@@ -4,7 +4,6 @@
   padding: 64px 7vw 0; overflow: hidden;
 }
 
-/* ── BACKGROUND ───────────────────────────────── */
 .bgWrap {
   position: absolute; inset: 0; z-index: 0;
   background-image: url('/hero.png');
@@ -14,7 +13,6 @@
   filter: brightness(0.65) saturate(1.2);
 }
 
-/* ── OVERLAY: فقط سمت چپ تاریک باشه ─────────── */
 .overlay {
   position: absolute; inset: 0; z-index: 1;
   background: linear-gradient(
@@ -25,7 +23,6 @@
   );
 }
 
-/* ── SCAN LINES ───────────────────────────────── */
 .scanLines {
   position: absolute; inset: 0; z-index: 2; pointer-events: none;
   background: repeating-linear-gradient(
@@ -39,7 +36,6 @@
   to   { background-position: 0 120px; }
 }
 
-/* ── BORE GLOW ────────────────────────────────── */
 .boreGlow {
   position: absolute; right: 10%; top: 50%; transform: translateY(-50%);
   width: 300px; height: 300px; border-radius: 50%;
@@ -52,7 +48,6 @@
   50%      { box-shadow: 0 0 60px rgba(249,115,22,0.14); opacity:1; }
 }
 
-/* ── PARTICLES ────────────────────────────────── */
 .particles { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
 .particle {
   position: absolute; bottom: -10px; border-radius: 50%;
@@ -70,32 +65,43 @@
   100% { transform: translateY(-100vh) translateX(30px); opacity: 0; }
 }
 
-/* ── CONTENT ──────────────────────────────────── */
 .content { position: relative; z-index: 3; max-width: 560px; }
 
-/* ── WORDMARK ─────────────────────────────────── */
+/* ── WORDMARK: Fraunces Italic ─────────────────── */
 .wordmark {
   display: flex; align-items: center; gap: 16px;
   margin-bottom: 24px; direction: ltr;
 }
-.wmText { display: flex; flex-direction: column; gap: 3px; direction: ltr; }
+.wmText { display: flex; flex-direction: column; gap: 4px; direction: ltr; }
+
 .wmTitle {
-  font-family: var(--font-syne,'Syne',sans-serif);
-  font-size: clamp(46px,6.5vw,76px);
-  font-weight: 800; letter-spacing: .02em; line-height: 1;
+  font-family: var(--font-fraunces, 'Georgia', serif);
+  font-style: italic;
+  font-size: clamp(46px, 6.5vw, 76px);
+  font-weight: 900; line-height: 1;
   display: flex; align-items: baseline; direction: ltr;
+  letter-spacing: -1px;
 }
 .wmRad  { color: #f0ece8; }
 .wmYar  {
   background: linear-gradient(130deg,#f97316,#fbbf24);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
   filter: drop-shadow(0 0 20px rgba(249,115,22,0.5));
 }
-.wmSub { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: rgba(249,115,22,.4); }
+
+.wmSub {
+  font-family: var(--font-manrope, sans-serif);
+  font-style: normal;
+  font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(249,115,22,.45); font-weight: 500;
+}
 
 .tagline {
-  font-size: clamp(12px,1.3vw,14px); font-weight: 300; letter-spacing: .15em;
-  text-transform: uppercase; color: rgba(240,225,200,.6); margin-bottom: 18px;
+  font-family: var(--font-manrope, sans-serif);
+  font-size: clamp(12px,1.3vw,14px); font-weight: 400;
+  letter-spacing: .15em; text-transform: uppercase;
+  color: rgba(240,225,200,.6); margin-bottom: 18px;
 }
 .bar {
   width: 40px; height: 3px;
@@ -103,6 +109,7 @@
   border-radius: 2px; margin-bottom: 22px;
 }
 .desc {
+  font-family: var(--font-manrope, sans-serif);
   font-size: clamp(14px,1.4vw,16px); color: rgba(230,215,195,.75);
   line-height: 1.75; max-width: 420px; margin-bottom: 28px;
 }
@@ -112,6 +119,7 @@
   display: flex; align-items: center; gap: 7px; font-size: 12px;
   color: rgba(240,225,200,.8); padding: 5px 13px; border-radius: 50px;
   background: rgba(249,115,22,.08); border: 1px solid rgba(249,115,22,.25);
+  font-family: var(--font-manrope, sans-serif);
 }
 .dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
 
@@ -119,7 +127,7 @@
 .btnPrimary {
   padding: 13px 30px; border-radius: 50px;
   background: linear-gradient(130deg,#f97316,#fbbf24);
-  color: #060708; font-family: var(--font-syne,'Syne',sans-serif);
+  color: #060708; font-family: var(--font-manrope, sans-serif);
   font-size: 13.5px; font-weight: 700; letter-spacing: .04em;
   border: none; cursor: pointer; text-decoration: none;
   box-shadow: 0 4px 28px rgba(249,115,22,.45); transition: transform .2s, box-shadow .2s;
@@ -128,7 +136,8 @@
 .btnGhost {
   font-size: 13.5px; color: rgba(240,225,200,.65); text-decoration: none;
   display: flex; align-items: center; gap: 7px;
-  background: none; border: none; cursor: pointer; transition: color .2s;
+  background: none; border: none; cursor: pointer;
+  transition: color .2s; font-family: var(--font-manrope, sans-serif);
 }
 .btnGhost:hover { color: #f0ece8; }
 
@@ -148,9 +157,9 @@
   to   { opacity:1; transform:translateY(0); }
 }
 .content > * { animation: fadeUp .9s ease both; }
-.content > *:nth-child(1) { animation-delay: .08s; }
-.content > *:nth-child(2) { animation-delay: .22s; }
-.content > *:nth-child(3) { animation-delay: .32s; }
-.content > *:nth-child(4) { animation-delay: .42s; }
-.content > *:nth-child(5) { animation-delay: .52s; }
-.content > *:nth-child(6) { animation-delay: .62s; }
+.content > *:nth-child(1){animation-delay:.08s}
+.content > *:nth-child(2){animation-delay:.22s}
+.content > *:nth-child(3){animation-delay:.32s}
+.content > *:nth-child(4){animation-delay:.42s}
+.content > *:nth-child(5){animation-delay:.52s}
+.content > *:nth-child(6){animation-delay:.62s}
