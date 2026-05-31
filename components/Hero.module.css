@@ -49,24 +49,38 @@
 }
 .wmText { display: flex; flex-direction: column; gap: 4px; direction: ltr; }
 .wmTitle {
-  font-family: var(--font-fraunces, 'Georgia', serif);
-  font-style: italic;
+  /* Force Fraunces always — even when page is in Farsi/RTL mode */
+  font-family: var(--font-fraunces, 'Georgia', serif) !important;
+  font-style: italic !important;
   font-size: clamp(38px, 4.8vw, 64px);
   font-weight: 900; line-height: 1;
   display: flex; align-items: baseline;
   direction: ltr; letter-spacing: -1.5px;
 }
-.wmRad { color: #f0ece8; }
+.wmRad {
+  color: #f0ece8;
+  font-family: var(--font-fraunces, 'Georgia', serif) !important;
+  font-style: italic !important;
+  letter-spacing: -1.5px !important;
+  word-spacing: 0 !important;
+}
 .wmYar {
   background: linear-gradient(130deg, #f97316, #fbbf24);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
   filter: drop-shadow(0 0 22px rgba(249,115,22,0.5));
+  font-family: var(--font-fraunces, 'Georgia', serif) !important;
+  font-style: italic !important;
+  letter-spacing: -1.5px !important;
+  word-spacing: 0 !important;
 }
 .wmSub {
-  font-family: var(--font-main, sans-serif);
-  font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase;
+  /* Sub-label uses main font but also protected from Vazirmatn */
+  font-family: var(--font-main, 'Manrope', sans-serif) !important;
+  font-style: normal !important;
+  font-size: 10.5px; letter-spacing: 0.22em !important; text-transform: uppercase;
   color: rgba(249,115,22,0.5); font-weight: 600;
+  word-spacing: 0 !important; line-height: 1.4 !important;
 }
 
 /* ── TEXT ────────────────────────────────────────────── */

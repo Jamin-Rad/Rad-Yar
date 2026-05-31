@@ -396,14 +396,17 @@ export default function Hero() {
 
       {/* ── LEFT PANEL ── */}
       <div className={`${styles.left} ${mounted ? styles.leftIn : ''}`}>
-        <div className={styles.wordmark} dir="ltr">
+        {/* Wordmark always LTR + always Fraunces — never overridden by Farsi RTL/Vazirmatn */}
+        <div className={styles.wordmark} dir="ltr" lang="en">
           <HexLogo />
-          <div className={styles.wmText} dir="ltr">
+          <div className={styles.wmText} dir="ltr" lang="en">
             <span className={styles.wmTitle}>
               <span className={styles.wmRad}>RAD</span>
               <span className={styles.wmYar}>YAR</span>
             </span>
-            <span className={styles.wmSub}>{texts.heroSub || 'Radiology Education'}</span>
+            <span className={styles.wmSub} dir="ltr" lang="en">
+              {texts.heroSub || 'Radiology Education'}
+            </span>
           </div>
         </div>
 
@@ -425,12 +428,8 @@ export default function Hero() {
         </div>
 
         <div className={styles.ctas} dir="ltr">
-          <Link href="#lernpfade" className={styles.btnPrimary}>{texts.cta}</Link>
-          <Link href="/technik/kontrastmittel" className={styles.btnGhost}>
-            {FACH_NAMES[lang]?.Technik || 'Technik & Physik'}
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+          <Link href="#lernpfade" className={styles.btnPrimary}>
+            { lang === 'fa' ? 'مسیرهای یادگیری' : lang === 'en' ? 'Learning Paths' : 'Lernpfade' }
           </Link>
         </div>
 
