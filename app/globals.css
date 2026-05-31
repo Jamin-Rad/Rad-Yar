@@ -27,16 +27,19 @@ body {
   overflow-x: hidden;
 }
 
-/* ── PERSIAN ──────────────────────────────────── */
-[dir="rtl"],
-[dir="rtl"] * {
+/* ── PERSIAN ──────────────────────────────────────────
+   Apply Vazirmatn to all RTL content EXCEPT elements
+   with lang="en" — which protects the RADYAR wordmark
+   from being overridden in Farsi mode.
+──────────────────────────────────────────────────── */
+[dir="rtl"] *:not([lang="en"]):not([lang="en"] *) {
   font-family: var(--font-persian) !important;
   letter-spacing: 0 !important;
   line-height: 1.9;
   word-spacing: 2px;
 }
 
-/* ── SHARED ───────────────────────────────────── */
+/* ── SHARED ───────────────────────────────────────── */
 .sLabel {
   font-size: 11px; font-weight: 600;
   letter-spacing: 0.18em; text-transform: uppercase;
