@@ -13,6 +13,11 @@ const FACH_LINKS = {
   'Technik & Physik':'/technik/kontrastmittel',
 }
 
+// MCQ links per Fachgebiet key — only Kontrastmittel is ready
+const MCQ_LINKS = {
+  'Technik & Physik': '/technik/kontrastmittel/mcq',
+}
+
 function HexLogo({ size = 30 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 36 36" fill="none">
@@ -46,6 +51,26 @@ function FachDropdown({ texts }) {
   )
 }
 
+function McqDropdown({ texts }) {
+  return (
+    <div className={styles.dropdown}>
+      <div className={styles.ddLabel}>MCQ</div>
+      <Link href="/technik/kontrastmittel/mcq" className={styles.ddItem}>
+        <span className={styles.ddDot} />
+        {texts.fachNames['Technik & Physik']} — MCQ
+        <span className={styles.ddBadge}>9 Fragen</span>
+      </Link>
+      {['Neuroradiologie','Thorax','Abdomen','Muskuloskelettales'].map(k => (
+        <div key={k} className={`${styles.ddItem} ${styles.ddItemLocked}`}>
+          <span className={styles.ddDot} style={{ opacity: 0.3 }} />
+          <span style={{ opacity: 0.45 }}>{texts.fachNames[k]}</span>
+          <span className={styles.ddLock}>🔒</span>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 export default function Navbar() {
   const { lang, texts, setLang } = useLanguage()
   const [search, setSearch] = useState(false)
@@ -73,14 +98,16 @@ export default function Navbar() {
             </button>
             <FachDropdown texts={texts} />
           </div>
+
+          {/* MCQ Nav Item */}
           <div className={styles.navItem}>
-            <button className={`${styles.navLink} ${styles.navLinkActive}`}>
+            <button className={styles.navLink}>
               {texts.navFall}
               <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className={styles.chevron}>
                 <path d="M2 3.5l3 3 3-3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
               </svg>
             </button>
-            <FachDropdown texts={texts} />
+            <McqDropdown texts={texts} />
           </div>
         </div>
 

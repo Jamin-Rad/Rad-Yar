@@ -54,7 +54,7 @@
   position:absolute; top:calc(100% + 8px); left:50%;
   transform:translateX(-50%);
   background:#fff; border:1px solid #e2e6f0;
-  border-radius:16px; padding:8px; min-width:210px;
+  border-radius:16px; padding:8px; min-width:220px;
   z-index:200; box-shadow:0 12px 40px rgba(26,32,81,0.12);
   display:none; animation:dropIn .15s ease;
 }
@@ -76,6 +76,15 @@
   transition:background .15s; font-family: var(--font-manrope, sans-serif);
 }
 .ddItem:hover { background:#f8f9ff; color:#1a2051; }
+
+/* locked MCQ items */
+.ddItemLocked {
+  cursor: default !important;
+  pointer-events: none;
+}
+.ddItemLocked:hover { background: none !important; }
+.ddLock { margin-left: auto; font-size: 12px; opacity: 0.5; }
+
 .ddDot { width:5px; height:5px; border-radius:50%; background:#f97316; opacity:.4; flex-shrink:0; }
 .ddBadge {
   margin-left:auto; font-size:10px; font-weight:700;
