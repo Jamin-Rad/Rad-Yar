@@ -112,21 +112,21 @@ const FACH_NAMES = {
   },
 }
 
-// ── ZONE DEFINITIONS (% of 941×1672 image) ───────────────────────────────
+// ── ZONE DEFINITIONS (% of 1024×1536 image) ──────────────────────────────
 const ZONES = [
-  { id: 'Neuroradiologie',   x: 37.0, y: 1.9,  w: 15.3, h: 8.3  },
-  { id: 'Hals',              x: 36.7, y: 9.9,  w: 15.4, h: 8.1  },
-  { id: 'Thorax',            x: 32.9, y: 17.9, w: 27.1, h: 12.0 },
-  { id: 'Brust',             x: 25.7, y: 23.9, w: 10.9, h: 6.0  },
-  { id: 'Brust',             x: 50.8, y: 23.9, w: 11.1, h: 6.0  },
-  { id: 'Abdomen',           x: 32.9, y: 29.9, w: 27.1, h: 17.3 },
-  { id: 'BeckenF',           x: 32.9, y: 45.2, w: 27.1, h: 5.4  },
-  { id: 'BeckenM',           x: 56.9, y: 55.9, w: 36.1, h: 16.1 },
-  { id: 'Technik',           x: 54.2, y: 74.2, w: 41.4, h: 19.4 },
-  { id: 'Muskuloskelettales',x: 16.5, y: 17.6, w: 16.3, h: 36.2 },
-  { id: 'Muskuloskelettales',x: 60.0, y: 17.6, w: 19.1, h: 36.2 },
-  { id: 'Muskuloskelettales',x: 31.5, y: 50.4, w: 12.6, h: 45.7 },
-  { id: 'Muskuloskelettales',x: 44.1, y: 50.4, w: 13.8, h: 45.7 },
+  { id: 'Neuroradiologie',    x: 43.0, y: 0.0,  w: 12.2, h: 10.9 },
+  { id: 'Hals',               x: 44.4, y: 10.9, w:  9.3, h:  7.0 },
+  { id: 'Thorax',             x: 35.2, y: 18.0, w: 27.8, h:  9.4 },
+  { id: 'Brust',              x: 32.7, y: 24.7, w: 11.7, h:  8.5 },
+  { id: 'Brust',              x: 53.5, y: 24.7, w: 11.9, h:  8.5 },
+  { id: 'Abdomen',            x: 35.2, y: 33.2, w: 27.8, h: 18.9 },
+  { id: 'BeckenF',            x: 35.2, y: 52.1, w: 27.8, h:  4.9 },
+  { id: 'BeckenM',            x: 49.2, y: 58.6, w: 43.6, h: 12.4 },
+  { id: 'Technik',            x: 50.0, y: 74.2, w: 47.5, h: 21.5 },
+  { id: 'Muskuloskelettales', x: 23.9, y: 18.0, w: 11.4, h: 38.0 },
+  { id: 'Muskuloskelettales', x: 62.7, y: 18.0, w: 13.3, h: 38.0 },
+  { id: 'Muskuloskelettales', x: 37.4, y: 57.0, w: 10.9, h: 41.3 },
+  { id: 'Muskuloskelettales', x: 49.8, y: 57.0, w: 11.2, h: 41.3 },
 ]
 
 // ── MAGNETIC FIELD CANVAS ─────────────────────────────────────────────────
