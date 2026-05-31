@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import styles from './page.module.css'
+import { useLanguage } from '@/providers/LanguageProvider'
 
 // ── NAV STRUCTURE ──────────────────────────────────────────────────────────
 const TABS = [
@@ -21,10 +22,10 @@ const TABS = [
     label: 'NW & Niere',
     icon: '⚠️',
     sections: [
-      { id: 'chemotox',   label: 'Chemotoxisch' },
+      { id: 'chemotox',       label: 'Chemotoxisch' },
       { id: 'pseudoallergie', label: 'Pseudoallergie' },
-      { id: 'pc-aki',     label: 'PC-AKI' },
-      { id: 'metformin',  label: 'Metformin' },
+      { id: 'pc-aki',         label: 'PC-AKI' },
+      { id: 'metformin',      label: 'Metformin' },
     ],
   },
   {
@@ -32,11 +33,11 @@ const TABS = [
     label: 'MRT-KM',
     icon: '🧲',
     sections: [
-      { id: 'gadolinium',   label: 'Gadolinium' },
-      { id: 'chelate',      label: 'Chelate' },
-      { id: 'nsf',          label: 'NSF & Retention' },
-      { id: 'leber-km',     label: 'Leberspezifisch' },
-      { id: 'buscopan',     label: 'Buscopan®' },
+      { id: 'gadolinium', label: 'Gadolinium' },
+      { id: 'chelate',    label: 'Chelate' },
+      { id: 'nsf',        label: 'NSF & Retention' },
+      { id: 'leber-km',   label: 'Leberspezifisch' },
+      { id: 'buscopan',   label: 'Buscopan®' },
     ],
   },
   {
@@ -44,13 +45,40 @@ const TABS = [
     label: 'Spezial',
     icon: '🔬',
     sections: [
-      { id: 'hyperthyreose',  label: 'Hyperthyreose' },
-      { id: 'gi',             label: 'GI-Diagnostik' },
-      { id: 'schwangerschaft','label': 'Schwangerschaft' },
-      { id: 'stillzeit',      label: 'Stillzeit' },
+      { id: 'hyperthyreose',   label: 'Hyperthyreose' },
+      { id: 'gi',              label: 'GI-Diagnostik' },
+      { id: 'schwangerschaft', label: 'Schwangerschaft' },
+      { id: 'stillzeit',       label: 'Stillzeit' },
     ],
   },
 ]
+
+// ── MCQ WIDGET ─────────────────────────────────────────────────────────────
+
+const MCQ_CONTENT = {
+  de: { label: 'Prüfungsvorbereitung', title: 'MCQ · Kontrastmittel', desc: '9 klinisch relevante Fragen mit ausführlichen Erklärungen', cta: 'Quiz starten →', count: '9 Fragen', badge: 'Interaktiv' },
+  en: { label: 'Exam Prep', title: 'MCQ · Contrast Media', desc: '9 clinically relevant questions with detailed explanations', cta: 'Start Quiz →', count: '9 Questions', badge: 'Interactive' },
+  fa: { label: 'آمادگی آزمون', title: 'MCQ · ماده حاجب', desc: '۹ سوال مرتبط با کلینیک با توضیحات کامل', cta: 'شروع کوئیز ←', count: '۹ سوال', badge: 'تعاملی' },
+}
+
+function McqWidget() {
+  const { lang } = useLanguage()
+  const c = MCQ_CONTENT[lang] || MCQ_CONTENT.de
+  return (
+    <Link href="/technik/kontrastmittel/mcq" className={styles.mcqWidget}>
+      <div className={styles.mcqTop}>
+        <span className={styles.mcqLabel}>{c.label}</span>
+        <span className={styles.mcqBadge}>{c.badge}</span>
+      </div>
+      <div className={styles.mcqTitle}>{c.title}</div>
+      <div className={styles.mcqDesc}>{c.desc}</div>
+      <div className={styles.mcqBottom}>
+        <span className={styles.mcqCount}>🎯 {c.count}</span>
+        <span className={styles.mcqCta}>{c.cta}</span>
+      </div>
+    </Link>
+  )
+}
 
 // ── SMALL COMPONENTS ───────────────────────────────────────────────────────
 
@@ -142,10 +170,8 @@ function FlowStep({ steps }) {
 function TabRoentgen() {
   return (
     <>
-      {/* KM-TYPEN */}
       <section id="km-typen" className={styles.section}>
         <h2 className={styles.h2}>KM-Typen im Überblick</h2>
-
         <KMTable
           headers={['Typ', 'Beispiele', 'Ladung', 'Osmolarität', 'Anwendung', 'i.v. zugelassen']}
           rows={[
@@ -156,7 +182,6 @@ function TabRoentgen() {
             ['Röntgennegativ',                'Luft, CO₂, Wasser', '–',      '–',      'Enteral / GI',  '–'],
           ]}
         />
-
         <div className={styles.twoCol}>
           <div className={styles.card}>
             <div className={styles.cardTitle}>Trijodbenzolring</div>
@@ -168,15 +193,12 @@ function TabRoentgen() {
         </div>
       </section>
 
-      {/* APPLIKATION */}
       <section id="applikation" className={styles.section}>
         <h2 className={styles.h2}>Applikation</h2>
-
         <div className={styles.statRow}>
           <StatCard value="300" unit="mg/ml" label="Standard CT" sub="i.v. Untersuchungen" />
           <StatCard value="350–375" unit="mg/ml" label="CT-Angiographie" sub="Höhere Kontrastierung" color="#fbbf24" />
         </div>
-
         <KMTable
           headers={['Untersuchung', 'Volumen', 'Injektionsrate', 'Zugang']}
           rows={[
@@ -188,27 +210,22 @@ function TabRoentgen() {
             ['ZVK / 22G (Notfall)',    'Reduziert',   '2,5 ml/s',  '22G (blau) ⚠️'],
           ]}
         />
-
         <Merke>
           Je schneller maximale Gefäßkontrastierung → <strong>kleineres</strong> Volumen nötig.
           Je länger homogene Organkontrastierung → <strong>größeres</strong> Volumen nötig.
         </Merke>
-
         <InfoBox variant="warning" title="Niedrige Injektionsrate (2,5 ml/s)">
           <p>Reduziert KM-Qualität und arterielle Abgrenzbarkeit deutlich. Nur wenn keine andere Option möglich.</p>
         </InfoBox>
       </section>
 
-      {/* AUSSCHEIDUNG */}
       <section id="ausscheidung" className={styles.section}>
         <h2 className={styles.h2}>Ausscheidung jodhaltiger KM</h2>
-
         <div className={styles.statRow}>
           <StatCard value="~90%" label="Renale Elimination" sub="Über die Niere" />
           <StatCard value="1–3 h" label="Plasmahalbwertzeit" color="#38bdf8" />
           <StatCard value="24 h" label="Nahezu vollständig" sub="eliminiert" color="#34d399" />
         </div>
-
         <KMTable
           headers={['Zeitpunkt', 'Elimination', 'Weg']}
           rows={[
@@ -217,20 +234,14 @@ function TabRoentgen() {
             ['nach 24 h',  '~100 %','Renal + extra-renal'],
           ]}
         />
-
-        <p className={styles.text}>
-          Extra-renale Ausscheidung (geringer Anteil): Leber-Galle · Darm · Speicheldrüsen.
-        </p>
-
+        <p className={styles.text}>Extra-renale Ausscheidung (geringer Anteil): Leber-Galle · Darm · Speicheldrüsen.</p>
         <InfoBox variant="info" title="Umweltaspekt">
-          <p>Jod-KM und Gd-KM können in Kläranlagen kaum filtriert werden → gelangen über Urin ins Abwassersystem → im Trinkwasser messbar. Derzeit keine effektiven Gegenmaßnahmen.</p>
+          <p>Jod-KM und Gd-KM können in Kläranlagen kaum filtriert werden → gelangen über Urin ins Abwassersystem → im Trinkwasser messbar.</p>
         </InfoBox>
       </section>
 
-      {/* PARAVASAT */}
       <section id="paravasat" className={styles.section}>
         <h2 className={styles.h2}>Paravasat-Management</h2>
-
         <FlowStep steps={[
           { text: '1 · Injektion stoppen – Zugang belassen – Aspiration versuchen', variant: 'flowOrange' },
           { text: '2 · Kanüle entfernen (erst nach Aspiration)' },
@@ -238,7 +249,6 @@ function TabRoentgen() {
           { text: '4 · Kalte Kompresse (20 min, mehrfach)' },
           { text: '5 · Umfang markieren & dokumentieren (Stift)' },
         ]} />
-
         <KMTable
           headers={['Überwachungsparameter', 'Methode', 'Alarmsignal']}
           rows={[
@@ -248,11 +258,9 @@ function TabRoentgen() {
             ['Hautzustand', 'Inspektion', 'Blasenbildung, Nekrosen'],
           ]}
         />
-
         <InfoBox variant="danger" title="Sofort Notaufnahme bei:">
           <p>Zunehmende Schwellung · Bläschen · Taubheitsgefühl · Hautverfärbung · starke Schmerzen</p>
         </InfoBox>
-
         <Merke>Menge, KM-Typ, klinischer Befund und alle Maßnahmen schriftlich dokumentieren.</Merke>
       </section>
     </>
@@ -262,7 +270,6 @@ function TabRoentgen() {
 function TabNebenwirkungen() {
   return (
     <>
-      {/* CHEMOTOXISCH */}
       <section id="chemotox" className={styles.section}>
         <h2 className={styles.h2}>Chemotoxische Reaktionen</h2>
         <InfoBox variant="info" title="Mechanismus">
@@ -280,25 +287,17 @@ function TabNebenwirkungen() {
         />
       </section>
 
-      {/* PSEUDOALLERGIE */}
       <section id="pseudoallergie" className={styles.section}>
         <h2 className={styles.h2}>Allergieartige Reaktionen (Pseudoallergie)</h2>
-
         <InfoBox variant="info" title="Mechanismus">
           <p>Nicht IgE-vermittelt · Unspezifische Mastzellaktivierung · Histaminausschüttung</p>
         </InfoBox>
-
         <SeverityBar items={[
-          { grad: 'Grad 1', label: 'Mild', color: '#34d399',
-            symptoms: ['Juckreiz', 'Leichte Urtikaria', 'Erythem'] },
-          { grad: 'Grad 2', label: 'Moderat', color: '#fbbf24',
-            symptoms: ['Deutliche Urtikaria', 'Bronchospasmus', 'Larynxödem'] },
-          { grad: 'Grad 3', label: 'Schwer', color: '#f97316',
-            symptoms: ['Hypotonie', 'Schock', '0,01–0,04 %'] },
-          { grad: 'Grad 4', label: 'Lebensbedroh.', color: '#ef4444',
-            symptoms: ['Atemstillstand', 'Herzstillstand'] },
+          { grad: 'Grad 1', label: 'Mild', color: '#34d399', symptoms: ['Juckreiz', 'Leichte Urtikaria', 'Erythem'] },
+          { grad: 'Grad 2', label: 'Moderat', color: '#fbbf24', symptoms: ['Deutliche Urtikaria', 'Bronchospasmus', 'Larynxödem'] },
+          { grad: 'Grad 3', label: 'Schwer', color: '#f97316', symptoms: ['Hypotonie', 'Schock', '0,01–0,04 %'] },
+          { grad: 'Grad 4', label: 'Lebensbedroh.', color: '#ef4444', symptoms: ['Atemstillstand', 'Herzstillstand'] },
         ]} />
-
         <h3 className={styles.h3}>Management bei anamnestischer Reaktion</h3>
         <KMTable
           headers={['Maßnahme', 'Detail', 'Evidenz']}
@@ -308,25 +307,19 @@ function TabNebenwirkungen() {
             ['Prämedikation H1/H2 + Cortison', 'Im Alltag häufig eingesetzt', 'Nicht mehr in aktuellen Leitlinien empfohlen'],
           ]}
         />
-
         <Merke>
           Die „<strong>Jodallergie</strong>" existiert nicht. Jod (kleines Molekül) ist nicht allergen –
           die Reaktion richtet sich gegen andere Molekülbestandteile des KM.
         </Merke>
       </section>
 
-      {/* PC-AKI */}
       <section id="pc-aki" className={styles.section}>
         <h2 className={styles.h2}>PC-AKI – Akute Nierenschädigung</h2>
-
         <div className={styles.twoCol}>
           <div className={styles.card}>
             <div className={styles.cardTitle}>Terminologie</div>
-            <KMTable
-              headers={['Alt', 'Neu']}
-              rows={[['CIN (Kontrastmittelinduzierte Nephropathie)', 'PC-AKI (Post-Contrast Acute Kidney Injury)']]}
-            />
-            <p className={styles.textSm}>Umbenennung: Nierenversagen gleich häufig nach nativer <em>und</em> nach KM-CT → fehlender Kausalzusammenhang.</p>
+            <KMTable headers={['Alt', 'Neu']} rows={[['CIN', 'PC-AKI (Post-Contrast Acute Kidney Injury)']]} />
+            <p className={styles.textSm}>Umbenennung: Nierenversagen gleich häufig nach nativer <em>und</em> nach KM-CT.</p>
           </div>
           <div className={styles.card}>
             <div className={styles.cardTitle}>Definition (ESUR)</div>
@@ -337,7 +330,6 @@ function TabNebenwirkungen() {
             </div>
           </div>
         </div>
-
         <h3 className={styles.h3}>Risikofaktoren</h3>
         <KMTable
           headers={['Risikofaktor', 'Schwellenwert', 'Typ', 'Risiko']}
@@ -346,34 +338,20 @@ function TabNebenwirkungen() {
             ['eGFR ↓ + Second-Pass-Effekt', '< 30 ml/min/1,73 m²', 'Patientenbezogen', '⚠️ Hoch'],
             ['Akutes Nierenversagen', 'Jedes Stadium', 'Patientenbezogen', '🚨 Sehr hoch'],
             ['Intraarterielle KM-Gabe (First Pass)', 'Proximal Nierenarterien', 'Untersuchungsbezogen', '⚠️ Hoch'],
-            ['Große KM-Mengen', '–', 'Untersuchungsbezogen', 'Moderat'],
-            ['Mehrfache KM-Gaben', '≤ 48–72 h Abstand', 'Untersuchungsbezogen', 'Moderat'],
           ]}
         />
-
         <h3 className={styles.h3}>Hydrierung</h3>
         <InfoBox variant="warning" title="Indikation & Schema">
           <p>Empfohlen ab <strong>eGFR &lt; 30 ml/min/1,73 m²</strong></p>
           <p>i.v. NaCl 0,9 % · <strong>100 ml/h für 4 h vor und 4 h nach</strong> KM-Gabe</p>
           <p>⚠️ Kontraindikation: Herzinsuffizienz NYHA 3–4 · Lungenödem</p>
         </InfoBox>
-
-        <KMTable
-          headers={['Prophylaxe', 'Empfehlung', 'Evidenz']}
-          rows={[
-            ['i.v. Hydrierung (NaCl 0,9%)', 'Bei eGFR < 30', '✅ Empfohlen'],
-            ['Acetylcystein (ACC)', 'Nicht mehr empfohlen', '❌ Wirksamkeit widerlegt'],
-            ['Medikamentöse Prophylaxe', 'Keine', '❌ Keine nachgewiesen'],
-          ]}
-        />
-
         <InfoBox variant="info" title="Dialyse-Patienten">
-          <p>Jod-KM: <strong>Keine zeitliche Abstimmung</strong> der Dialyse nötig – Niere arbeitet ohnehin nicht mehr.</p>
-          <p>Gadolinium: <strong>Zeitnahe Dialyse</strong> empfohlen – zur Minimierung von NSF-Risiko und Gadolinium-Ablagerungen.</p>
+          <p>Jod-KM: <strong>Keine zeitliche Abstimmung</strong> der Dialyse nötig.</p>
+          <p>Gadolinium: <strong>Zeitnahe Dialyse</strong> empfohlen – zur Minimierung von NSF-Risiko.</p>
         </InfoBox>
       </section>
 
-      {/* METFORMIN */}
       <section id="metformin" className={styles.section}>
         <h2 className={styles.h2}>Metformin-Management</h2>
         <KMTable
@@ -393,10 +371,8 @@ function TabNebenwirkungen() {
 function TabMRT() {
   return (
     <>
-      {/* GADOLINIUM */}
       <section id="gadolinium" className={styles.section}>
         <h2 className={styles.h2}>Gadolinium – Grundlagen</h2>
-
         <div className={styles.twoCol}>
           <div className={styles.card}>
             <div className={styles.cardTitle}>Eigenschaften</div>
@@ -423,10 +399,8 @@ function TabMRT() {
         </div>
       </section>
 
-      {/* CHELATE */}
       <section id="chelate" className={styles.section}>
         <h2 className={styles.h2}>Chelat-Formen</h2>
-
         <KMTable
           headers={['', 'Lineare Chelate', 'Makrozyklische Chelate']}
           colColors={[null, '#fbbf24', '#34d399']}
@@ -439,16 +413,13 @@ function TabMRT() {
             ['Beispiele', 'Primovist®, Multihance® (Leber)', 'Gadovist®, Dotarem®'],
           ]}
         />
-
         <InfoBox variant="warning" title="Ausnahmen vom Zulassungsruhen linearer KM">
-          <p><strong>Primovist® (Gadoxetsäure)</strong> und <strong>Multihance® (Gadobensäure)</strong> dürfen weiterhin für Leber-MRT eingesetzt werden, da makrozyklische KM dort weniger geeignet sind.</p>
+          <p><strong>Primovist®</strong> und <strong>Multihance®</strong> dürfen weiterhin für Leber-MRT eingesetzt werden.</p>
         </InfoBox>
       </section>
 
-      {/* NSF & RETENTION */}
       <section id="nsf" className={styles.section}>
         <h2 className={styles.h2}>NSF & Gadolinium-Retention</h2>
-
         <div className={styles.twoCol}>
           <div className={styles.card}>
             <div className={styles.cardTitle}>Nephrogene Systemische Fibrose (NSF)</div>
@@ -467,25 +438,22 @@ function TabMRT() {
             <KMTable
               headers={['Struktur', 'Lokalisation']}
               rows={[
-                ['Nucleus dentatus', 'Marklager Kleinhirnhemisphäre, lateral der Kleinhirnkerne'],
-                ['Globus pallidus', 'Mediales Segment Linsenkerns, lateral Capsula interna'],
+                ['Nucleus dentatus', 'Marklager Kleinhirnhemisphäre'],
+                ['Globus pallidus', 'Mediales Segment Linsenkerns'],
               ]}
             />
             <InfoBox variant="info">
-              <p>Sichtbar als T1-Hyperintensität nativ · Nur nach mehrfacher Gabe linearer KM · Klinische Relevanz bisher unbekannt</p>
+              <p>Sichtbar als T1-Hyperintensität nativ · Nur nach mehrfacher Gabe linearer KM</p>
             </InfoBox>
           </div>
         </div>
       </section>
 
-      {/* LEBERSPEZIFISCH */}
       <section id="leber-km" className={styles.section}>
         <h2 className={styles.h2}>Leberspezifische KM</h2>
-
         <InfoBox variant="info" title="Prinzip">
-          <p>Funktionstüchtige Hepatozyten nehmen KM auf → biliäre Ausscheidung → Enhancement. Alle anderen Läsionen bleiben hypointens.</p>
+          <p>Funktionstüchtige Hepatozyten nehmen KM auf → biliäre Ausscheidung → Enhancement.</p>
         </InfoBox>
-
         <KMTable
           headers={['', 'Primovist® (Gadoxetsäure)', 'Multihance® (Gadobensäure)']}
           colColors={[null, '#f97316', '#38bdf8']}
@@ -494,23 +462,10 @@ function TabMRT() {
             ['Hepatobiliäre Phase', 'nach ~20 min', 'nach ~40–120 min'],
             ['Gd-Dosis', '0,025 mmol/kg', '0,1 mmol/kg'],
             ['Elimination', '~50 % biliär / ~50 % renal', 'Überwiegend renal'],
-            ['Hepatozytenspezifisch?', '✅ Ja – einziges Gd-KM', '⚠️ Gering'],
-          ]}
-        />
-
-        <h3 className={styles.h3}>Indikationen</h3>
-        <KMTable
-          headers={['Indikation', 'Prinzip']}
-          rows={[
-            ['FNH vs. Adenom', 'FNH nimmt KM auf, Adenome meist nicht'],
-            ['HCC in der Zirrhose', 'Gut differenziertes HCC kann KM aufnehmen'],
-            ['Metastasen < 1 cm', 'Hypointens in hepatobiliärer Phase → erhöhte Sensitivität'],
-            ['Gallengangs-Leckage', 'Biliäre Ausscheidung macht Leckage sichtbar'],
           ]}
         />
       </section>
 
-      {/* BUSCOPAN */}
       <section id="buscopan" className={styles.section}>
         <h2 className={styles.h2}>Buscopan® als Begleitmedikation</h2>
         <div className={styles.twoCol}>
@@ -542,91 +497,64 @@ function TabMRT() {
 function TabSpezial() {
   return (
     <>
-      {/* HYPERTHYREOSE */}
       <section id="hyperthyreose" className={styles.section}>
         <h2 className={styles.h2}>Hyperthyreose & Jod-KM</h2>
-
         <div className={styles.statRow}>
           <StatCard value="100" label="Fälle auf 5 Mio." sub="KM-Gaben" color="#fbbf24" />
           <StatCard value="≥ 1 Woche" label="Latenz" sub="frühestens" color="#f97316" />
         </div>
-
         <InfoBox variant="warning" title="Risikosituationen">
           <p>Morbus Basedow · Struma multinodosa · Schilddrüsenautonomie</p>
         </InfoBox>
-
         <KMTable
           headers={['Situation', 'Vorgehen', 'Medikament']}
           rows={[
-            ['Latente Hyperthyreose', 'Irenat® vor KM, dann 7–10 Tage weiter', 'Natriumperchlorat (blockiert Jodaufnahme)'],
+            ['Latente Hyperthyreose', 'Irenat® vor KM, dann 7–10 Tage weiter', 'Natriumperchlorat'],
             ['Manifeste Hyperthyreose', '⛔ Absolute Kontraindikation', '–'],
-            ['Lebensbedrohlich (Ausnahme)', 'KM + Kombiprophylaxe', 'Irenat® + Thiamazol/Carbimazol'],
+            ['Lebensbedrohlich (Ausnahme)', 'KM + Kombiprophylaxe', 'Irenat® + Thiamazol'],
             ['SD-Karzinom (papillär/follikulär)', '⛔ Strikt verboten', 'Verhindert Radiojodtherapie!'],
           ]}
         />
-
         <Merke>Jodsättigung der SD-Zellen durch KM verhindert die spätere Radiojodtherapie!</Merke>
       </section>
 
-      {/* GI */}
       <section id="gi" className={styles.section}>
         <h2 className={styles.h2}>Gastrointestinale Diagnostik</h2>
-
         <KMTable
           headers={['', 'Bariumsulfat', 'Gastrografin® (wasserlösl.)']}
           colColors={[null, '#fbbf24', '#38bdf8']}
           rows={[
             ['Resorption', 'Keine', 'Bei Perforation → Bauchfell resorbiert'],
-            ['Osmolarität', 'Hypoosmolar zum Blut', 'Hyperosmolar → abführend'],
             ['Peritonitis bei Perforation', '🚨 Schwere Barium-Peritonitis', '✅ Keine'],
-            ['Aspiration', '🚨 Fremdkörperreaktion + Lungenödem', '⚠️ Weniger gefährlich'],
-            ['Ileus-Risiko', '⚠️ Barium-Steine möglich', '✅ Therapeutischer Effekt möglich'],
+            ['Aspiration', '🚨 Fremdkörperreaktion', '⚠️ Weniger gefährlich'],
             ['Applikation', 'Oral / Rektal', 'Oral / Rektal'],
-            ['Ausscheidung', 'Fäkal (weißer Stuhl)', 'Renal + fäkal'],
           ]}
         />
-
         <InfoBox variant="warning" title="KI für Bariumsulfat">
           <p>V.a. Perforation / Anastomoseninsuffizienz · Aspirationsgefahr · V.a. Ileus</p>
         </InfoBox>
-
-        <div className={styles.card}>
-          <div className={styles.cardTitle}>Doppelkontrast-Methode (heute selten)</div>
-          <p className={styles.text}>
-            <strong>Positiver Kontrast:</strong> Barium beschichtet Schleimhaut (Schleimhautbeschlag)<br/>
-            <strong>Negativer Kontrast:</strong> CO₂ / Methylzellulose → Lumendilatation<br/>
-            Ziel: Beurteilung Schleimhautrelief (frühe Erosionen, kleine Polypen)
-          </p>
-        </div>
       </section>
 
-      {/* SCHWANGERSCHAFT */}
       <section id="schwangerschaft" className={styles.section}>
         <h2 className={styles.h2}>Schwangerschaft</h2>
-
         <InfoBox variant="warning" title="Grundprinzip">
-          <p>Strenge Indikationsstellung. KM nur wenn: (1) nicht verschiebbar AND (2) KM-freie Alternative nicht ausreicht. Detaillierte Aufklärung + Dokumentation obligat.</p>
+          <p>Strenge Indikationsstellung. KM nur wenn: (1) nicht verschiebbar AND (2) KM-freie Alternative nicht ausreicht.</p>
         </InfoBox>
-
         <KMTable
           headers={['', 'Jodhaltige KM (CT)', 'Gadolinium (MRT)']}
           colColors={[null, '#f97316', '#38bdf8']}
           rows={[
             ['Plazentagängig', '✅ Ja', '✅ Ja'],
             ['Fetale Schilddrüse', 'Ab 10.–12. SSW Jodaufnahme', '–'],
-            ['Risiko', 'Fetale Hypothyreose (Wolff-Chaikoff)', 'Freies Gd im Fruchtwasser – Risiko unklar'],
-            ['Escape-Phänomen', 'Fetus kann nicht entkommen (anders als Erwachsene)', '–'],
-            ['Empfehlung', 'Wenn nötig: möglich mit Kontrolle', 'Möglichst vermeiden (bes. 1. Trimester)'],
-            ['Wenn nötig (MRT)', '–', 'Makrozyklische Chelate bevorzugen'],
+            ['Risiko', 'Fetale Hypothyreose (Wolff-Chaikoff)', 'Freies Gd im Fruchtwasser'],
+            ['Empfehlung', 'Wenn nötig: möglich mit Kontrolle', 'Möglichst vermeiden'],
             ['Nachsorge', 'TSH-Wert Neugeborenes kontrollieren', '–'],
           ]}
         />
       </section>
 
-      {/* STILLZEIT */}
       <section id="stillzeit" className={styles.section}>
         <h2 className={styles.h2}>Stillzeit</h2>
-
         <KMTable
           headers={['', 'Jodhaltige KM', 'Gadolinium-KM']}
           rows={[
@@ -636,7 +564,6 @@ function TabSpezial() {
             ['Wenn Mutter besorgt', '24 h pausieren + Milch verwerfen', '24 h pausieren + Milch verwerfen'],
           ]}
         />
-
         <Merke>Eine Stillpause ist aus medizinischer Sicht <strong>nicht notwendig</strong>. Pausieren nur auf ausdrücklichen Wunsch der Mutter.</Merke>
       </section>
     </>
@@ -650,12 +577,10 @@ export default function KontrastmittelPage() {
   const [activeSection, setActiveSection] = useState('')
   const mainRef = useRef(null)
 
-  // Scroll spy
   useEffect(() => {
     const currentTab = TABS.find(t => t.id === activeTab)
     if (!currentTab) return
     const ids = currentTab.sections.map(s => s.id)
-
     const observers = ids.map(id => {
       const el = document.getElementById(id)
       if (!el) return null
@@ -669,7 +594,6 @@ export default function KontrastmittelPage() {
     return () => observers.forEach(o => o?.disconnect())
   }, [activeTab])
 
-  // Reset scroll + active section on tab change
   useEffect(() => {
     if (mainRef.current) mainRef.current.scrollTop = 0
     const currentTab = TABS.find(t => t.id === activeTab)
@@ -697,7 +621,6 @@ export default function KontrastmittelPage() {
         </div>
         <h1 className={styles.pageTitle}>Kontrastmittel</h1>
 
-        {/* Tab bar */}
         <div className={styles.tabBar}>
           {TABS.map(tab => (
             <button
@@ -712,10 +635,10 @@ export default function KontrastmittelPage() {
         </div>
       </div>
 
-      {/* ── BODY: sidebar + content ── */}
+      {/* ── BODY ── */}
       <div className={styles.body}>
 
-        {/* LEFT SIDEBAR */}
+        {/* SIDEBAR */}
         <aside className={styles.sidebar}>
           <div className={styles.sidebarTitle}>{currentTab?.icon} {currentTab?.label}</div>
           <nav>
@@ -730,6 +653,9 @@ export default function KontrastmittelPage() {
               </button>
             ))}
           </nav>
+
+          {/* ── MCQ WIDGET ── */}
+          <McqWidget />
         </aside>
 
         {/* MAIN CONTENT */}
