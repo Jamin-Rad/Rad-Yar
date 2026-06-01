@@ -212,90 +212,38 @@ function HexLogo() {
   )
 }
 
-// ── MODAL ─────────────────────────────────────────────────────────────────
-function FachModal({ fachId, onClose }) {
-  const { lang } = useLanguage()
-  const fach = FACH_DATA[fachId]
-  if (!fach) return null
-  const name = FACH_NAMES[lang]?.[fachId] || FACH_NAMES.de[fachId]
-  const desc = fach.desc?.[lang] || fach.desc?.de
 
-  return (
-    <div className={styles.modalOverlay} onClick={onClose}>
-      <div className={styles.modal} onClick={e=>e.stopPropagation()}>
-        <div className={styles.modalHeader} style={{background:fach.bg}}>
-          <div className={styles.modalAccent} style={{background:fach.color}}/>
-          <div className={styles.modalTitleRow}>
-            <span className={styles.modalTitle} style={{color:fach.color}}>{name}</span>
-            {fach.available && (
-              <span className={styles.modalBadge}
-                style={{color:fach.color,borderColor:fach.color+'50',background:fach.color+'18'}}>
-                ✓ {lang==='fa'?'موجود':lang==='en'?'Available':'Verfügbar'}
-              </span>
-            )}
-          </div>
-          <div className={styles.modalDesc}>{desc}</div>
-          <button className={styles.modalClose} onClick={onClose}>✕</button>
-        </div>
-        <div className={styles.modalBody}>
-          {fach.available ? (
-            <>
-              <div className={styles.modalLabel}>
-                {lang==='fa'?'محتوای موجود':lang==='en'?'Available Content':'Verfügbare Inhalte'}
-              </div>
-              {fach.links?.map((link,i)=>
-                link.ready
-                  ? <a key={i} href={link.href} className={styles.modalLink} onClick={onClose}>
-                      <span className={styles.modalLinkIcon}>📄</span>
-                      <div>
-                        <div className={styles.modalLinkName}>{link.label[lang]||link.label.de}</div>
-                        <div className={styles.modalLinkMeta}>{lang==='fa'?'مطالعه کنید':lang==='en'?'Read now':'Jetzt lesen'} →</div>
-                      </div>
-                      <span className={styles.modalLinkArr}>→</span>
-                    </a>
-                  : <div key={i} className={`${styles.modalLink} ${styles.modalLinkLocked}`}>
-                      <span className={styles.modalLinkIcon}>🔒</span>
-                      <div>
-                        <div className={styles.modalLinkName}>{link.label[lang]||link.label.de}</div>
-                        <div className={styles.modalLinkMeta}>{lang==='fa'?'در حال آماده‌سازی':lang==='en'?'Coming soon':'In Vorbereitung'}</div>
-                      </div>
-                    </div>
-              )}
-            </>
-          ) : (
-            <>
-              <div className={styles.modalLabel}>{lang==='fa'?'موضوعات':lang==='en'?'Topics':'Themen'}</div>
-              <div className={styles.modalChips}>
-                {fach.topics?.map(t=>(
-                  <span key={t} className={styles.modalChip}
-                    style={{borderColor:fach.color+'40',color:fach.color}}>{t}</span>
-                ))}
-              </div>
-              <div className={styles.modalSoon}>
-                🚧 {lang==='fa'?'محتوا به زودی':lang==='en'?'Content coming soon!':'Bald verfügbar!'}
-              </div>
-            </>
-          )}
-        </div>
-      </div>
-    </div>
-  )
+
+// ── ZONE → LERNEN MAPPING ─────────────────────────────────────────────────
+const ZONE_TO_LERNEN = {
+  Neuroradiologie:    '/lernen/gehirn',
+  Hals:               '/lernen/wirbelsaeule',
+  Thorax:             '/lernen/thorax',
+  Brust:              '/lernen/mamma',
+  Abdomen:            '/lernen/abdomen',
+  BeckenF:            '/lernen/becken',
+  BeckenM:            '/lernen/becken',
+  Muskuloskelettales: '/lernen/msk',
+  Technik:            '/lernen/technik',
 }
 
 // ── MAIN ──────────────────────────────────────────────────────────────────
 export default function Hero() {
   const { texts, lang } = useLanguage()
-  const [hovered, setHovered]   = useState(null)
-  const [selected, setSelected] = useState(null)
-  const [mounted, setMounted]   = useState(false)
+  const [hovered, setHovered] = useState(null)
+  const [mounted, setMounted] = useState(false)
   useEffect(()=>{ setMounted(true) },[])
 
   const hovFach = hovered ? FACH_DATA[hovered] : null
   const hovName = hovered ? (FACH_NAMES[lang]?.[hovered]||FACH_NAMES.de[hovered]) : null
 
-  const btnLabel   = lang==='fa'?'شروع':lang==='en'?'Start':'Starten'
   const freeLabel  = lang==='fa'?'رایگان':lang==='en'?'Free':'Kostenlos'
   const hintLabel  = lang==='fa'?'یک ناحیه را انتخاب کنید':lang==='en'?'Select a body region':'Körperregion auswählen'
+
+  const handleZoneClick = (zoneId) => {
+    const url = ZONE_TO_LERNEN[zoneId]
+    if (url) window.location.href = url
+  }
 
   return (
     <section className={styles.hero}>
@@ -335,10 +283,6 @@ export default function Hero() {
           ))}
         </div>
 
-        <div className={styles.ctas} dir="ltr">
-          <Link href="#lernpfade" className={styles.btnPrimary}>{btnLabel}</Link>
-        </div>
-
         <div className={styles.hoverIndicator}>
           <div className={styles.hoverDot} style={{background:hovFach?.color||'#334155'}}/>
           <span className={styles.hoverText} style={{color:hovFach?.color||'#64748b'}}>
@@ -373,7 +317,7 @@ export default function Hero() {
                   style={{cursor:'pointer',transition:'fill 0.2s,stroke 0.2s'}}
                   onMouseEnter={()=>setHovered(zone.id)}
                   onMouseLeave={()=>setHovered(null)}
-                  onClick={()=>setSelected(zone.id)}
+                  onClick={()=>handleZoneClick(zone.id)}
                 />
               )
             })}
@@ -389,7 +333,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {selected && <FachModal fachId={selected} onClose={()=>setSelected(null)}/>}
     </section>
   )
 }
