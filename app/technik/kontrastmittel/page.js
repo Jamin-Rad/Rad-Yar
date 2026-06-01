@@ -55,27 +55,15 @@ const TABS = [
 
 // ── MCQ WIDGET ─────────────────────────────────────────────────────────────
 
-const MCQ_CONTENT = {
-  de: { label: 'Prüfungsvorbereitung', title: 'MCQ · Kontrastmittel', desc: '9 klinisch relevante Fragen mit ausführlichen Erklärungen', cta: 'Quiz starten →', count: '9 Fragen', badge: 'Interaktiv' },
-  en: { label: 'Exam Prep', title: 'MCQ · Contrast Media', desc: '9 clinically relevant questions with detailed explanations', cta: 'Start Quiz →', count: '9 Questions', badge: 'Interactive' },
-  fa: { label: 'آمادگی آزمون', title: 'MCQ · ماده حاجب', desc: '۹ سوال مرتبط با کلینیک با توضیحات کامل', cta: 'شروع کوئیز ←', count: '۹ سوال', badge: 'تعاملی' },
-}
+const MCQ_BTN = { de: 'MCQs', en: 'MCQs', fa: 'MCQ' }
 
 function McqWidget() {
   const { lang } = useLanguage()
-  const c = MCQ_CONTENT[lang] || MCQ_CONTENT.de
   return (
     <Link href="/technik/kontrastmittel/mcq" className={styles.mcqWidget}>
-      <div className={styles.mcqTop}>
-        <span className={styles.mcqLabel}>{c.label}</span>
-        <span className={styles.mcqBadge}>{c.badge}</span>
-      </div>
-      <div className={styles.mcqTitle}>{c.title}</div>
-      <div className={styles.mcqDesc}>{c.desc}</div>
-      <div className={styles.mcqBottom}>
-        <span className={styles.mcqCount}>🎯 {c.count}</span>
-        <span className={styles.mcqCta}>{c.cta}</span>
-      </div>
+      <span className={styles.mcqWidgetIcon}>🎯</span>
+      <span className={styles.mcqWidgetText}>{MCQ_BTN[lang] || 'MCQs'}</span>
+      <span className={styles.mcqWidgetArr}>→</span>
     </Link>
   )
 }
