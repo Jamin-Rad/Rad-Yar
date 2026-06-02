@@ -1,199 +1,119 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { useParams, useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import { CURRICULUM, getFach } from '@/data/curriculum'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
 
-// ── TRANSLATIONS ───────────────────────────────────────────────────────────
 const T = {
   de: {
-    back: '← Alle Fachgebiete',
-    kapitel: 'Kapitel',
-    themen: 'Themen',
-    benigne: 'Benigne',
-    maligne: 'Maligne',
-    diffus: 'Diffus',
-    vaskulaer: 'Vaskulär',
-    entzuendlich: 'Entzündlich',
-    tumor: 'Tumor',
-    sonstiges: 'Sonstiges',
-    grundlagen: 'Grundlagen',
-    staging: 'Staging',
+    back: '← Zurück',
     search: 'Thema suchen…',
     mcq: 'MCQs starten',
     cases: 'Fallbeispiele',
-    soon: 'Bald',
+    soon: 'Bald verfügbar',
     available: 'Verfügbar',
-    readNow: 'Jetzt lesen',
-    noResult: 'Kein Treffer',
-    difficulty: ['Basis', 'Fortgeschritten', 'Experte'],
+    readNow: 'Jetzt lesen →',
+    noResult: 'Kein Treffer für',
+    themen: 'Themen',
+    benigne: 'Benigne',
+    maligne: 'Maligne',
+    diffus: 'Diffus / Systemisch',
+    vaskulaer: 'Vaskulär',
+    entzuendlich: 'Entzündlich & Infektiös',
+    tumor: 'Tumoren',
+    grundlagen: 'Grundlagen & Anatomie',
+    staging: 'Klassifikation & Staging',
+    sonstiges: 'Sonstiges',
   },
   en: {
-    back: '← All specialties',
-    kapitel: 'Chapter',
-    themen: 'Topics',
-    benigne: 'Benign',
-    maligne: 'Malignant',
-    diffus: 'Diffuse',
-    vaskulaer: 'Vascular',
-    entzuendlich: 'Inflammatory',
-    tumor: 'Tumour',
-    sonstiges: 'Other',
-    grundlagen: 'Basics',
-    staging: 'Staging',
+    back: '← Back',
     search: 'Search topic…',
     mcq: 'Start MCQs',
     cases: 'Case studies',
-    soon: 'Soon',
+    soon: 'Coming soon',
     available: 'Available',
-    readNow: 'Read now',
-    noResult: 'No results',
-    difficulty: ['Basic', 'Advanced', 'Expert'],
+    readNow: 'Read now →',
+    noResult: 'No results for',
+    themen: 'Topics',
+    benigne: 'Benign',
+    maligne: 'Malignant',
+    diffus: 'Diffuse / Systemic',
+    vaskulaer: 'Vascular',
+    entzuendlich: 'Inflammatory & Infectious',
+    tumor: 'Tumours',
+    grundlagen: 'Basics & Anatomy',
+    staging: 'Classification & Staging',
+    sonstiges: 'Other',
   },
   fa: {
-    back: '← همه تخصص‌ها',
-    kapitel: 'فصل',
-    themen: 'موضوع',
-    benigne: 'خوش‌خیم',
-    maligne: 'بدخیم',
-    diffus: 'منتشر',
-    vaskulaer: 'عروقی',
-    entzuendlich: 'التهابی',
-    tumor: 'تومور',
-    sonstiges: 'سایر',
-    grundlagen: 'پایه',
-    staging: 'استیجینگ',
+    back: '← بازگشت',
     search: 'جستجوی موضوع…',
     mcq: 'شروع MCQ',
     cases: 'موارد بالینی',
     soon: 'به زودی',
     available: 'موجود',
-    readNow: 'مطالعه کنید',
-    noResult: 'نتیجه‌ای یافت نشد',
-    difficulty: ['پایه', 'پیشرفته', 'متخصص'],
+    readNow: 'مطالعه کنید ←',
+    noResult: 'نتیجه‌ای برای',
+    themen: 'موضوع',
+    benigne: 'خوش‌خیم',
+    maligne: 'بدخیم',
+    diffus: 'منتشر / سیستمیک',
+    vaskulaer: 'عروقی',
+    entzuendlich: 'التهابی و عفونی',
+    tumor: 'تومورها',
+    grundlagen: 'پایه و آناتومی',
+    staging: 'طبقه‌بندی و استیجینگ',
+    sonstiges: 'سایر',
   },
 }
 
-// ── GROUP KEYWORDS → auto-assign group from title ─────────────────────────
+// Fach display names per language
+const FACH_NAMES = {
+  de: { abdomen:'Abdomen', gehirn:'Kopf', msk:'Muskuloskelettales',
+        thorax:'Thorax', wirbelsaeule:'Wirbelsäule & Hals', mamma:'Mamma',
+        becken:'Becken', technik:'Technik & Physik' },
+  en: { abdomen:'Abdomen', gehirn:'Head', msk:'Musculoskeletal',
+        thorax:'Thorax', wirbelsaeule:'Spine & Neck', mamma:'Breast',
+        becken:'Pelvis', technik:'Physics & Technology' },
+  fa: { abdomen:'شکم', gehirn:'سر', msk:'اسکلتی-عضلانی',
+        thorax:'توراکس', wirbelsaeule:'ستون فقرات و گردن', mamma:'پستان',
+        becken:'لگن', technik:'تکنیک و فیزیک' },
+}
+
+// Fach icons - including new ones for punkt 9
+const FACH_ICONS = {
+  abdomen: '🫁', gehirn: '🧠', msk: '🦴', thorax: '🫀',
+  wirbelsaeule: '🦷', mamma: '🌸', becken: '⚕️', technik: '⚙️'
+}
+
+// Group assignment
 function getGroup(title) {
   const t = title.toLowerCase()
-  if (/zyste|hämangiom|adenom|fnh|angiomyolipom|hydatide|benigne|fibro|mastopathie|onkozytom|myelolipom|bph|myom|einfache|nof|intraoss|gang/.test(t)) return 'benigne'
-  if (/karzinom|sarkom|lymphom|metasta|maligne|hcc|ccc|gbm|glioblastom|ewing|myelom|neuroblastom|nephroblastom|astrozytom|meningeom|medulloblastom|lirads|pirads|birads/.test(t)) return 'maligne'
-  if (/steatosis|zirrhose|verfettung|diffus|hämochrom|budd|portale|fibrose|chronisch|morbus|pankreatitis|psc|cholangitis/.test(t)) return 'diffus'
+  if (/anatomie|grundlagen|normalbefund|normvariante|physik|technik|befundung|interpretation|screening/.test(t)) return 'grundlagen'
+  if (/zyste|hämangiom|adenom|fnh|angiomyolipom|hydatide|fibro|mastopathie|onkozytom|myelolipom|bph|myom|einfache|nof|intraoss|gang|benigne/.test(t)) return 'benigne'
+  if (/karzinom|sarkom|lymphom|metasta|maligne|hcc|ccc|gbm|glioblastom|ewing|myelom|neuroblastom|nephroblastom|astrozytom|meningeom|medulloblastom/.test(t)) return 'maligne'
+  if (/steatosis|zirrhose|verfettung|diffus|hämochrom|budd|portale|fibrose|chronisch|pankreatitis|psc|cholangitis|morbus paget|osteoporose/.test(t)) return 'diffus'
   if (/infarkt|embolie|schlaganfall|blutung|thrombose|dissektion|moya|angiopathie|malformation|hämangioblastom|kavernom|dva|avf|avm|fmd|pavk|nekrose|avn/.test(t)) return 'vaskulaer'
   if (/entzünd|infekt|meningitis|abszess|enzephalitis|spondylodiszitis|bechterew|lyme|gbs|ms |multiple sklerose|neuromyelitis/.test(t)) return 'entzuendlich'
-  if (/anatomie|grundlagen|normalbefund|normvariante|physik|technik|befundung|interpretation|screening/.test(t)) return 'grundlagen'
-  if (/staging|lirads|pirads|birads|klassifikation|iota/.test(t)) return 'staging'
-  if (/tumor|neoplasie|karzinom|net|ipmn|adenokarzinom/.test(t)) return 'tumor'
+  if (/lirads|pirads|birads|klassifikation|iota|staging|li-rads|pi-rads/.test(t)) return 'staging'
+  if (/tumor|neoplasie|net|ipmn|adenokarzinom/.test(t)) return 'tumor'
   return 'sonstiges'
 }
 
 const GROUP_ORDER = ['grundlagen','benigne','maligne','diffus','vaskulaer','entzuendlich','tumor','staging','sonstiges']
 
 const GROUP_COLORS = {
-  grundlagen:   { bg: '#e0f2fe', text: '#0369a1', border: '#7dd3fc' },
-  benigne:      { bg: '#dcfce7', text: '#166534', border: '#86efac' },
-  maligne:      { bg: '#fee2e2', text: '#991b1b', border: '#fca5a5' },
-  diffus:       { bg: '#fef9c3', text: '#854d0e', border: '#fde047' },
-  vaskulaer:    { bg: '#ede9fe', text: '#5b21b6', border: '#c4b5fd' },
-  entzuendlich: { bg: '#ffedd5', text: '#9a3412', border: '#fdba74' },
-  tumor:        { bg: '#fce7f3', text: '#9d174d', border: '#f9a8d4' },
-  staging:      { bg: '#f0fdf4', text: '#14532d', border: '#86efac' },
-  sonstiges:    { bg: '#f8fafc', text: '#475569', border: '#cbd5e1' },
-}
-
-// Difficulty badge
-function DiffBadge({ level, labels }) {
-  const colors = [
-    { bg: '#dcfce7', text: '#166534' },
-    { bg: '#fef9c3', text: '#854d0e' },
-    { bg: '#fee2e2', text: '#991b1b' },
-  ]
-  const c = colors[level - 1] || colors[0]
-  return (
-    <span className={styles.diffBadge} style={{ background: c.bg, color: c.text }}>
-      {labels[level - 1]}
-    </span>
-  )
-}
-
-// ── THEMA CARD ─────────────────────────────────────────────────────────────
-function ThemaCard({ thema, fachColor, t }) {
-  return (
-    <div className={styles.themaCard}>
-      <div className={styles.themaCardDot} style={{ background: fachColor }} />
-      <span className={styles.themaCardTitle}>{thema.title}</span>
-      <DiffBadge level={thema.diff} labels={t.difficulty} />
-    </div>
-  )
-}
-
-// ── GROUP SECTION ──────────────────────────────────────────────────────────
-function GroupSection({ group, themen, fachColor, t }) {
-  const colors = GROUP_COLORS[group] || GROUP_COLORS.sonstiges
-  const label = t[group] || group
-  return (
-    <div className={styles.groupSection}>
-      <div className={styles.groupHeader}>
-        <span className={styles.groupBadge}
-          style={{ background: colors.bg, color: colors.text, borderColor: colors.border }}>
-          {label}
-        </span>
-        <span className={styles.groupCount}>{themen.length}</span>
-      </div>
-      <div className={styles.themaGrid}>
-        {themen.map(thema => (
-          <ThemaCard key={thema.id} thema={thema} fachColor={fachColor} t={t} />
-        ))}
-      </div>
-    </div>
-  )
-}
-
-// ── KAPITEL PANEL ──────────────────────────────────────────────────────────
-function KapitelPanel({ kapitel, fachColor, fach, t }) {
-  // Group themen
-  const grouped = {}
-  kapitel.themen.forEach(thema => {
-    const g = getGroup(thema.title)
-    if (!grouped[g]) grouped[g] = []
-    grouped[g].push(thema)
-  })
-
-  const orderedGroups = GROUP_ORDER.filter(g => grouped[g]?.length > 0)
-
-  return (
-    <div className={styles.kapitelPanel}>
-      {/* Ready banner */}
-      {kapitel.ready && kapitel.link && (
-        <div className={styles.readyBanner}>
-          <span>📖 Inhalte bereits verfügbar</span>
-          <Link href={kapitel.link} className={styles.readyLink}>{t.readNow} →</Link>
-        </div>
-      )}
-
-      {/* Groups */}
-      <div className={styles.groupsWrap}>
-        {orderedGroups.map(g => (
-          <GroupSection key={g} group={g} themen={grouped[g]} fachColor={fachColor} t={t} />
-        ))}
-      </div>
-
-      {/* Actions */}
-      <div className={styles.panelActions}>
-        <button className={styles.actionPrimary}
-          style={{ background: fachColor, color: '#060708' }}>
-          🎯 {t.mcq}
-        </button>
-        <button className={styles.actionSecondary}
-          style={{ borderColor: fachColor + '60', color: fachColor }}>
-          📋 {t.cases}
-        </button>
-      </div>
-    </div>
-  )
+  grundlagen:   { bg:'#e0f2fe', text:'#0369a1', border:'#7dd3fc' },
+  benigne:      { bg:'#dcfce7', text:'#166534', border:'#86efac' },
+  maligne:      { bg:'#fee2e2', text:'#991b1b', border:'#fca5a5' },
+  diffus:       { bg:'#fef9c3', text:'#854d0e', border:'#fde047' },
+  vaskulaer:    { bg:'#ede9fe', text:'#5b21b6', border:'#c4b5fd' },
+  entzuendlich: { bg:'#ffedd5', text:'#9a3412', border:'#fdba74' },
+  tumor:        { bg:'#fce7f3', text:'#9d174d', border:'#f9a8d4' },
+  staging:      { bg:'#f0fdf4', text:'#14532d', border:'#bbf7d0' },
+  sonstiges:    { bg:'#f8fafc', text:'#475569', border:'#cbd5e1' },
 }
 
 // ── MAIN ───────────────────────────────────────────────────────────────────
@@ -201,13 +121,14 @@ export default function LernenFachPage() {
   const params = useParams()
   const { lang } = useLanguage()
   const t = T[lang] || T.de
+  const isRTL = lang === 'fa'
   const fach = getFach(params?.fach)
-  const [activeKapitel, setActiveKapitel] = useState(0)
+  const [activeIdx, setActiveIdx] = useState(0)
   const [mounted, setMounted] = useState(false)
   const [search, setSearch] = useState('')
 
   useEffect(() => { setMounted(true) }, [])
-  useEffect(() => { setActiveKapitel(0) }, [params?.fach])
+  useEffect(() => { setActiveIdx(0); setSearch('') }, [params?.fach])
 
   if (!fach) return (
     <div className={styles.notFound}>
@@ -216,44 +137,43 @@ export default function LernenFachPage() {
     </div>
   )
 
-  const kapitel = fach.kapitel
-
-  // Search filter
+  const fachName = FACH_NAMES[lang]?.[fach.id] || fach.key
+  const fachIcon = FACH_ICONS[fach.id] || fach.icon
+  const activeKap = fach.kapitel[activeIdx]
   const searchActive = search.trim().length > 0
+
   const searchResults = searchActive
-    ? fach.kapitel.flatMap(k => k.themen
-        .filter(t => t.title.toLowerCase().includes(search.toLowerCase()))
-        .map(t => ({ ...t, kapitelTitle: k.title }))
+    ? fach.kapitel.flatMap(k =>
+        k.themen.filter(th => th.title.toLowerCase().includes(search.toLowerCase()))
+          .map(th => ({ ...th, kapitelTitle: k.title, kapitelIcon: k.icon }))
       )
     : []
 
-  const activeKap = kapitel[activeKapitel]
+  // Group themen
+  const grouped = {}
+  activeKap?.themen.forEach(th => {
+    const g = getGroup(th.title)
+    if (!grouped[g]) grouped[g] = []
+    grouped[g].push(th)
+  })
+  const orderedGroups = GROUP_ORDER.filter(g => grouped[g]?.length > 0)
 
   return (
     <div className={styles.page}>
 
-      {/* ── HEADER ── */}
-      <div className={styles.header}>
-        <div className={styles.headerInner}>
-          <Link href="/" className={styles.back}>{t.back}</Link>
-          <div className={styles.headerMain}>
-            <span className={styles.headerIcon}>{fach.icon}</span>
-            <div>
-              <h1 className={styles.headerTitle} style={{ color: fach.color }}>
-                {fach.key === 'Neuroradiologie' && lang === 'en' ? 'Neuroradiology'
-                  : fach.key === 'Muskuloskelettales' && lang === 'en' ? 'Musculoskeletal'
-                  : fach.key}
-              </h1>
-              <p className={styles.headerMeta}>
-                {kapitel.length} {t.kapitel} ·{' '}
-                {fach.kapitel.reduce((s,k) => s + k.themen.length, 0)} {t.themen}
-              </p>
-            </div>
+      {/* ── TOPBAR ── */}
+      <div className={styles.topBar}>
+        <div className={styles.topBarInner}>
+          <Link href="/lernen" className={styles.back}>{t.back}</Link>
+
+          <div className={styles.topBarCenter}>
+            <span className={styles.topIcon}>{fachIcon}</span>
+            <h1 className={styles.topTitle} style={{ color: fach.color }}>{fachName}</h1>
           </div>
 
           {/* Search */}
-          <div className={styles.searchWrap}>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <div className={styles.searchBox}>
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
               <circle cx="5.5" cy="5.5" r="4" stroke="#94a3b8" strokeWidth="1.4"/>
               <line x1="8.5" y1="8.5" x2="12" y2="12" stroke="#94a3b8" strokeWidth="1.4" strokeLinecap="round"/>
             </svg>
@@ -264,55 +184,122 @@ export default function LernenFachPage() {
         </div>
       </div>
 
-      {/* ── KAPITEL TABS ── */}
-      {!searchActive && (
-        <div className={styles.tabsWrap}>
-          <div className={styles.tabs}>
-            {kapitel.map((k, i) => (
-              <button
-                key={k.id}
-                className={`${styles.tab} ${i === activeKapitel ? styles.tabActive : ''}`}
-                style={i === activeKapitel ? { borderBottomColor: fach.color, color: fach.color } : {}}
-                onClick={() => setActiveKapitel(i)}
-              >
-                <span className={styles.tabIcon}>{k.icon}</span>
-                <span className={styles.tabLabel}>{k.title}</span>
-                <span className={styles.tabCount}
-                  style={i === activeKapitel ? { background: fach.color + '20', color: fach.color } : {}}>
-                  {k.themen.length}
-                </span>
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
+      {/* ── BODY: sidebar + content ── */}
+      <div className={`${styles.body} ${isRTL ? styles.bodyRTL : ''}`}>
 
-      {/* ── CONTENT ── */}
-      <div className={`${styles.content} ${mounted ? styles.contentIn : ''}`}>
-        {searchActive ? (
-          <div className={styles.searchResults}>
-            {searchResults.length === 0 ? (
-              <p className={styles.noResult}>{t.noResult} „{search}"</p>
-            ) : (
-              searchResults.map((thema, i) => (
-                <div key={i} className={styles.searchResultRow}>
-                  <span className={styles.searchResultChapter}>{thema.kapitelTitle}</span>
-                  <span className={styles.searchResultTitle}>{thema.title}</span>
-                  <DiffBadge level={thema.diff} labels={t.difficulty} />
-                </div>
-              ))
-            )}
+        {/* ── SIDEBAR (left for DE/EN, right for FA) ── */}
+        <aside className={styles.sidebar}>
+          <div className={styles.sidebarLabel}>
+            {lang === 'fa' ? 'فصل‌ها' : lang === 'en' ? 'Chapters' : 'Kapitel'}
           </div>
-        ) : (
-          activeKap && (
-            <KapitelPanel
-              kapitel={activeKap}
-              fachColor={fach.color}
-              fach={fach}
-              t={t}
-            />
-          )
-        )}
+          {fach.kapitel.map((k, i) => (
+            <button
+              key={k.id}
+              className={`${styles.sideBtn} ${i === activeIdx && !searchActive ? styles.sideBtnActive : ''}`}
+              style={i === activeIdx && !searchActive ? {
+                borderLeftColor: isRTL ? 'transparent' : fach.color,
+                borderRightColor: isRTL ? fach.color : 'transparent',
+                color: fach.color,
+                background: fach.color + '10',
+              } : {}}
+              onClick={() => { setActiveIdx(i); setSearch('') }}
+            >
+              <span className={styles.sideBtnIcon}>{k.icon}</span>
+              <span className={styles.sideBtnText}>{k.title}</span>
+              <span className={styles.sideBtnCount}
+                style={i === activeIdx && !searchActive ? { color: fach.color } : {}}>
+                {k.themen.length}
+              </span>
+            </button>
+          ))}
+
+          {/* Ready link */}
+          {activeKap?.ready && activeKap?.link && (
+            <div className={styles.sideReady}>
+              <span>✓</span>
+              <Link href={activeKap.link} className={styles.sideReadyLink}>{t.readNow}</Link>
+            </div>
+          )}
+        </aside>
+
+        {/* ── MAIN CONTENT ── */}
+        <main className={`${styles.main} ${mounted ? styles.mainIn : ''}`}>
+
+          {searchActive ? (
+            /* Search results */
+            <div className={styles.searchResults}>
+              {searchResults.length === 0 ? (
+                <p className={styles.noResult}>{t.noResult} „{search}"</p>
+              ) : searchResults.map((th, i) => (
+                <div key={i} className={styles.searchRow}>
+                  <span className={styles.searchRowChapter}>
+                    {th.kapitelIcon} {th.kapitelTitle}
+                  </span>
+                  <span className={styles.searchRowTitle}>{th.title}</span>
+                </div>
+              ))}
+            </div>
+          ) : activeKap ? (
+            <>
+              {/* Chapter header */}
+              <div className={styles.chapterHeader}>
+                <span className={styles.chapterIcon}>{activeKap.icon}</span>
+                <div>
+                  <h2 className={styles.chapterTitle}>{activeKap.title}</h2>
+                  <p className={styles.chapterMeta}>
+                    {activeKap.themen.length} {t.themen}
+                  </p>
+                </div>
+              </div>
+
+              {/* Ready banner */}
+              {activeKap.ready && activeKap.link && (
+                <div className={styles.readyBanner}>
+                  <span>📖 {t.available}</span>
+                  <Link href={activeKap.link} className={styles.readyLink}>{t.readNow}</Link>
+                </div>
+              )}
+
+              {/* Grouped themen */}
+              <div className={styles.groups}>
+                {orderedGroups.map(g => {
+                  const c = GROUP_COLORS[g]
+                  return (
+                    <div key={g} className={styles.groupSection}>
+                      <div className={styles.groupHeader}>
+                        <span className={styles.groupBadge}
+                          style={{ background: c.bg, color: c.text, borderColor: c.border }}>
+                          {t[g] || g}
+                        </span>
+                        <span className={styles.groupCount}>{grouped[g].length}</span>
+                      </div>
+                      <div className={styles.themaGrid}>
+                        {grouped[g].map(th => (
+                          <div key={th.id} className={styles.themaCard}>
+                            <span className={styles.themaDot} style={{ background: fach.color }} />
+                            <span className={styles.themaTitle}>{th.title}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+
+              {/* Actions */}
+              <div className={styles.actions}>
+                <button className={styles.actionPrimary}
+                  style={{ background: fach.color }}>
+                  🎯 {t.mcq}
+                </button>
+                <button className={styles.actionSecondary}
+                  style={{ borderColor: fach.color + '60', color: fach.color }}>
+                  📋 {t.cases}
+                </button>
+              </div>
+            </>
+          ) : null}
+        </main>
       </div>
     </div>
   )
