@@ -1,0 +1,67 @@
+.page {
+  min-height: 100vh;
+  background: #f8fafc;
+  padding-top: 64px;
+  font-family: var(--font-main, sans-serif);
+}
+.inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+.heading {
+  font-family: var(--font-fraunces, serif);
+  font-style: italic;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 900; color: #1a2051; margin: 0 0 8px;
+}
+.sub {
+  font-size: 15px; color: #64748b; margin: 0 0 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.gridIn { opacity: 1; transform: translateY(0); }
+
+.card {
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px 20px 18px;
+  cursor: pointer; text-align: left;
+  display: flex; flex-direction: column; gap: 6px;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  animation: cardIn 0.5s ease both;
+  position: relative;
+}
+@keyframes cardIn {
+  from { opacity:0; transform: translateY(12px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+.card:hover {
+  border-color: var(--fach-color, #f97316);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+  transform: translateY(-3px);
+}
+
+.cardIcon { font-size: 32px; margin-bottom: 4px; }
+.cardTitle {
+  font-family: var(--font-fraunces, serif);
+  font-style: italic;
+  font-size: 17px; font-weight: 700; line-height: 1.2;
+}
+.cardMeta { font-size: 11.5px; color: #94a3b8; }
+.cardArrow {
+  position: absolute; top: 20px; right: 18px;
+  font-size: 18px; opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.card:hover .cardArrow { opacity: 1; transform: translate(2px,-2px); }
+
+@media (max-width: 540px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+}
