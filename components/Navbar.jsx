@@ -5,19 +5,6 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import SearchBar from './SearchBar'
 import styles from './Navbar.module.css'
 
-const FACH_KEYS = ['Neuroradiologie','Thorax','Abdomen','Muskuloskelettales','Hals','Brust','Becken','Technik & Physik']
-const FACH_LINKS = {
-  'Neuroradiologie':'/#fachgebiete','Thorax':'/#fachgebiete',
-  'Abdomen':'/#fachgebiete','Muskuloskelettales':'/#fachgebiete',
-  'Hals':'/#fachgebiete','Brust':'/#fachgebiete','Becken':'/#fachgebiete',
-  'Technik & Physik':'/technik/kontrastmittel',
-}
-
-// MCQ links per Fachgebiet key — only Kontrastmittel is ready
-const MCQ_LINKS = {
-  'Technik & Physik': '/technik/kontrastmittel/mcq',
-}
-
 function HexLogo({ size = 30 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 36 36" fill="none">
@@ -36,41 +23,6 @@ function HexLogo({ size = 30 }) {
   )
 }
 
-function FachDropdown({ texts }) {
-  return (
-    <div className={styles.dropdown}>
-      <div className={styles.ddLabel}>{texts.navFach}</div>
-      {FACH_KEYS.map(k => (
-        <Link key={k} href={FACH_LINKS[k]} className={styles.ddItem}>
-          <span className={styles.ddDot} />
-          {texts.fachNames[k]}
-          {k === 'Technik & Physik' && <span className={styles.ddBadge}>Neu</span>}
-        </Link>
-      ))}
-    </div>
-  )
-}
-
-function McqDropdown({ texts }) {
-  return (
-    <div className={styles.dropdown}>
-      <div className={styles.ddLabel}>MCQ</div>
-      <Link href="/technik/kontrastmittel/mcq" className={styles.ddItem}>
-        <span className={styles.ddDot} />
-        {texts.fachNames['Technik & Physik']} — MCQ
-        <span className={styles.ddBadge}>9 Fragen</span>
-      </Link>
-      {['Neuroradiologie','Thorax','Abdomen','Muskuloskelettales'].map(k => (
-        <div key={k} className={`${styles.ddItem} ${styles.ddItemLocked}`}>
-          <span className={styles.ddDot} style={{ opacity: 0.3 }} />
-          <span style={{ opacity: 0.45 }}>{texts.fachNames[k]}</span>
-          <span className={styles.ddLock}>🔒</span>
-        </div>
-      ))}
-    </div>
-  )
-}
-
 export default function Navbar() {
   const { lang, texts, setLang } = useLanguage()
   const [search, setSearch] = useState(false)
@@ -78,8 +30,7 @@ export default function Navbar() {
   return (
     <>
       <nav className={styles.nav}>
-
-        {/* ── Logo always LTR ── */}
+        {/* Logo */}
         <Link href="/" className={styles.brand} dir="ltr">
           <HexLogo size={28} />
           <span className={styles.wordmark} dir="ltr">
@@ -88,29 +39,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <div className={styles.links}>
-          <div className={styles.navItem}>
-            <button className={styles.navLink}>
-              {texts.navLearn}
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className={styles.chevron}>
-                <path d="M2 3.5l3 3 3-3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-              </svg>
-            </button>
-            <FachDropdown texts={texts} />
-          </div>
-
-          {/* MCQ Nav Item */}
-          <div className={styles.navItem}>
-            <button className={styles.navLink}>
-              {texts.navFall}
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className={styles.chevron}>
-                <path d="M2 3.5l3 3 3-3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-              </svg>
-            </button>
-            <McqDropdown texts={texts} />
-          </div>
-        </div>
-
+        {/* Right: search + lang only */}
         <div className={styles.right}>
           <button className={styles.iconBtn} onClick={() => setSearch(true)}>
             <svg width="17" height="17" viewBox="0 0 17 17" fill="none">

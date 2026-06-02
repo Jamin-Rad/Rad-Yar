@@ -16,17 +16,8 @@ const CARD_LINKS = [
   '/pruefung',
 ]
 
-// Button-Labels per Sprache
-const BTN_LABELS = {
-  de: ['Fachgebiet wählen →', 'Fachgebiet wählen →', 'Prüfung starten →'],
-  en: ['Choose specialty →', 'Choose specialty →', 'Start exam →'],
-  fa: ['انتخاب تخصص ←', 'انتخاب تخصص ←', 'شروع آزمون ←'],
-}
-
 export default function LernPfade() {
   const { texts, lang } = useLanguage()
-  const btnLabels = BTN_LABELS[lang] || BTN_LABELS.de
-
   return (
     <section className={styles.section} id="lernpfade">
       <div className="sLabel">{texts.section1Label}</div>
@@ -51,11 +42,7 @@ export default function LernPfade() {
                     style={{ borderColor: c.border, color: c.num }}>{t}</span>
                 ))}
               </div>
-              {/* CTA button */}
-              <div className={styles.cardBtn}
-                style={{ background: c.num, color: '#fff', marginTop: 'auto' }}>
-                {btnLabels[i]}
-              </div>
+
             </Link>
           )
         })}
