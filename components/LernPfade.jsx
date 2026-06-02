@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './LernPfade.module.css'
 
@@ -8,8 +9,24 @@ const COLORS = [
   { bg: '#f0fdf4', border: '#bbf7d0', num: '#10b981', icon: '#f0fdf4', iconBorder: '#6ee7b7' },
 ]
 
+// Link per Karte: Lernen → /lernen/fachauswahl, Üben → /ueben/fachauswahl, Prüfung → /pruefung
+const CARD_LINKS = [
+  '/lernen',
+  '/ueben',
+  '/pruefung',
+]
+
+// Button-Labels per Sprache
+const BTN_LABELS = {
+  de: ['Fachgebiet wählen →', 'Fachgebiet wählen →', 'Prüfung starten →'],
+  en: ['Choose specialty →', 'Choose specialty →', 'Start exam →'],
+  fa: ['انتخاب تخصص ←', 'انتخاب تخصص ←', 'شروع آزمون ←'],
+}
+
 export default function LernPfade() {
-  const { texts } = useLanguage()
+  const { texts, lang } = useLanguage()
+  const btnLabels = BTN_LABELS[lang] || BTN_LABELS.de
+
   return (
     <section className={styles.section} id="lernpfade">
       <div className="sLabel">{texts.section1Label}</div>
@@ -19,8 +36,8 @@ export default function LernPfade() {
         {texts.pillars.map((p, i) => {
           const c = COLORS[i]
           return (
-            <div key={i} className={styles.card}
-              style={{ background: c.bg, borderColor: c.border }}>
+            <Link key={i} href={CARD_LINKS[i]} className={styles.card}
+              style={{ background: c.bg, borderColor: c.border, textDecoration: 'none' }}>
               <div className={styles.icon}
                 style={{ background: c.icon, border: `1.5px solid ${c.iconBorder}` }}>
                 {p.icon}
@@ -34,7 +51,12 @@ export default function LernPfade() {
                     style={{ borderColor: c.border, color: c.num }}>{t}</span>
                 ))}
               </div>
-            </div>
+              {/* CTA button */}
+              <div className={styles.cardBtn}
+                style={{ background: c.num, color: '#fff', marginTop: 'auto' }}>
+                {btnLabels[i]}
+              </div>
+            </Link>
           )
         })}
       </div>
