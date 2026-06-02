@@ -5,22 +5,43 @@ import { CURRICULUM } from '@/data/curriculum'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './index.module.css'
 
-const FACH_NAMES = {
-  de: { abdomen:'Abdomen', gehirn:'Neuroradiologie', msk:'Muskuloskelettales',
-        thorax:'Thorax', wirbelsaeule:'Wirbelsäule & Hals', mamma:'Mamma',
-        becken:'Becken', technik:'Technik & Physik' },
-  en: { abdomen:'Abdomen', gehirn:'Neuroradiology', msk:'Musculoskeletal',
-        thorax:'Thorax', wirbelsaeule:'Spine & Neck', mamma:'Breast',
-        becken:'Pelvis', technik:'Physics & Technology' },
-  fa: { abdomen:'شکم', gehirn:'نوروراديولوژی', msk:'اسکلتی-عضلانی',
-        thorax:'توراکس', wirbelsaeule:'ستون فقرات و گردن', mamma:'پستان',
-        becken:'لگن', technik:'تکنیک و فیزیک' },
+const FACH_DISPLAY = {
+  de: {
+    abdomen:      { name: 'Abdomen',           icon: '🫘' },
+    gehirn:       { name: 'Kopf',              icon: '🧠' },
+    msk:          { name: 'Muskuloskelettales',icon: '🦴' },
+    thorax:       { name: 'Thorax',            icon: '🫀' },
+    wirbelsaeule: { name: 'Wirbelsäule & Hals',icon: '🔩' },
+    mamma:        { name: 'Mamma',             icon: '🩺' },
+    becken:       { name: 'Becken',            icon: '⚕️' },
+    technik:      { name: 'Technik & Physik',  icon: '⚙️' },
+  },
+  en: {
+    abdomen:      { name: 'Abdomen',           icon: '🫘' },
+    gehirn:       { name: 'Head',              icon: '🧠' },
+    msk:          { name: 'Musculoskeletal',   icon: '🦴' },
+    thorax:       { name: 'Thorax',            icon: '🫀' },
+    wirbelsaeule: { name: 'Spine & Neck',      icon: '🔩' },
+    mamma:        { name: 'Breast',            icon: '🩺' },
+    becken:       { name: 'Pelvis',            icon: '⚕️' },
+    technik:      { name: 'Physics & Tech',    icon: '⚙️' },
+  },
+  fa: {
+    abdomen:      { name: 'شکم',               icon: '🫘' },
+    gehirn:       { name: 'سر',                icon: '🧠' },
+    msk:          { name: 'اسکلتی-عضلانی',     icon: '🦴' },
+    thorax:       { name: 'توراکس',            icon: '🫀' },
+    wirbelsaeule: { name: 'ستون فقرات و گردن', icon: '🔩' },
+    mamma:        { name: 'پستان',             icon: '🩺' },
+    becken:       { name: 'لگن',               icon: '⚕️' },
+    technik:      { name: 'تکنیک و فیزیک',    icon: '⚙️' },
+  },
 }
 
-const TITLES = {
-  de: { heading: 'Fachgebiet wählen', sub: 'Wähle ein Fachgebiet – dann lernst du direkt los.' },
-  en: { heading: 'Choose a specialty', sub: 'Select a specialty and start learning.' },
-  fa: { heading: 'انتخاب تخصص', sub: 'یک تخصص را انتخاب کنید و مستقیماً شروع کنید.' },
+const PAGE_TITLES = {
+  de: 'Fachgebiet wählen',
+  en: 'Choose a specialty',
+  fa: 'انتخاب تخصص',
 }
 
 export default function LernenIndexPage() {
@@ -29,34 +50,35 @@ export default function LernenIndexPage() {
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
 
-  const names = FACH_NAMES[lang] || FACH_NAMES.de
-  const title = TITLES[lang] || TITLES.de
+  const display = FACH_DISPLAY[lang] || FACH_DISPLAY.de
 
   return (
     <div className={styles.page}>
       <div className={styles.inner}>
-        <h1 className={styles.heading}>{title.heading}</h1>
-        <p className={styles.sub}>{title.sub}</p>
+        <h1 className={styles.heading}>{PAGE_TITLES[lang] || PAGE_TITLES.de}</h1>
 
         <div className={`${styles.grid} ${mounted ? styles.gridIn : ''}`}>
-          {CURRICULUM.map((fach, i) => (
-            <button
-              key={fach.id}
-              className={styles.card}
-              style={{ '--fach-color': fach.color, animationDelay: `${i * 0.06}s` }}
-              onClick={() => router.push(`/lernen/${fach.id}`)}
-            >
-              <span className={styles.cardIcon}>{fach.icon}</span>
-              <div className={styles.cardTitle} style={{ color: fach.color }}>
-                {names[fach.id] || fach.key}
-              </div>
-              <div className={styles.cardMeta}>
-                {fach.kapitel.length} Kapitel ·{' '}
-                {fach.kapitel.reduce((s,k) => s+k.themen.length, 0)} Themen
-              </div>
-              <div className={styles.cardArrow} style={{ color: fach.color }}>→</div>
-            </button>
-          ))}
+          {CURRICULUM.map((fach, i) => {
+            const d = display[fach.id] || { name: fach.key, icon: fach.icon }
+            const totalThemen = fach.kapitel.reduce((s,k) => s+k.themen.length, 0)
+            return (
+              <button
+                key={fach.id}
+                className={styles.card}
+                style={{ '--fach-color': fach.color, animationDelay: `${i*0.06}s` }}
+                onClick={() => router.push(`/lernen/${fach.id}`)}
+              >
+                <span className={styles.cardIcon}>{d.icon}</span>
+                <div className={styles.cardTitle} style={{ color: fach.color }}>{d.name}</div>
+                <div className={styles.cardMeta}>
+                  {fach.kapitel.length} {lang==='fa'?'فصل':lang==='en'?'chapters':'Kapitel'} · {totalThemen} {lang==='fa'?'موضوع':lang==='en'?'topics':'Themen'}
+                </div>
+                <div className={styles.cardArrow} style={{ color: fach.color }}>
+                  {lang === 'fa' ? '←' : '→'}
+                </div>
+              </button>
+            )
+          })}
         </div>
       </div>
     </div>
