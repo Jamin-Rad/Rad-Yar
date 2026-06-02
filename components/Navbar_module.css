@@ -2,7 +2,7 @@
   position: fixed; top:0; left:0; right:0; z-index:100;
   display:flex; align-items:center; justify-content:space-between;
   padding:0 5vw; height:64px;
-  background:rgba(8,14,28,0.97);
+  background:rgba(8,14,28,0.96);
   backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(255,255,255,0.08);
   box-shadow:0 1px 12px rgba(0,0,0,0.3);
@@ -86,23 +86,23 @@
 /* ── RIGHT ────────────────────────────────────── */
 .right { display:flex; align-items:center; gap:12px; flex-shrink:0; }
 .iconBtn {
-  background:none; border:none; cursor:pointer; color:#64748b;
+  background:none; border:none; cursor:pointer; color:rgba(210,200,185,0.5);
   padding:7px; border-radius:8px; display:flex; align-items:center;
   transition:all .2s;
 }
-.iconBtn:hover { color:#f97316; background:rgba(249,115,22,.08); }
+.iconBtn:hover { color:#f97316; background:rgba(249,115,22,.1); }
 .langToggle {
   display:flex; align-items:center; gap:2px; direction:ltr;
-  background:#f0f2f8; border:1px solid #e2e6f0;
+  background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12);
   border-radius:50px; padding:3px 6px;
 }
 .langBtn {
   font-family: var(--font-manrope, sans-serif);
   font-size:11px; font-weight:700; letter-spacing:.08em;
-  background:none; border:none; cursor:pointer; color:#94a3b8;
+  background:none; border:none; cursor:pointer; color:rgba(210,200,185,0.5);
   padding:3px 8px; border-radius:50px; transition:all .2s;
 }
 .langOn { color:#f97316 !important; background:rgba(249,115,22,.15) !important; }
-.langSep { color:#e2e6f0; font-size:11px; }
+.langSep { color:rgba(255,255,255,0.2); font-size:11px; }
 
 @media (max-width:680px) { .links{display:none;} }

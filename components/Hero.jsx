@@ -76,13 +76,13 @@ const FACH_DATA = {
 }
 
 const FACH_NAMES = {
-  de: { Neuroradiologie:'Neuroradiologie', Hals:'Hals & Wirbelsäule', Thorax:'Thorax',
+  de: { Neuroradiologie:'Kopf', Hals:'Hals & Wirbelsäule', Thorax:'Thorax',
         Brust:'Brust', Abdomen:'Abdomen', BeckenF:'Becken – Frau', BeckenM:'Becken – Mann',
         Muskuloskelettales:'Muskuloskelettales', Technik:'Technik & Physik' },
-  en: { Neuroradiologie:'Neuroradiology', Hals:'Head & Neck / Spine', Thorax:'Thorax',
+  en: { Neuroradiologie:'Head', Hals:'Neck & Spine', Thorax:'Thorax',
         Brust:'Breast', Abdomen:'Abdomen', BeckenF:'Pelvis – Female', BeckenM:'Pelvis – Male',
         Muskuloskelettales:'Musculoskeletal', Technik:'Physics & Technology' },
-  fa: { Neuroradiologie:'نوروراديولوژی', Hals:'گردن و ستون فقرات', Thorax:'توراکس',
+  fa: { Neuroradiologie:'سر', Hals:'گردن و ستون فقرات', Thorax:'توراکس',
         Brust:'پستان', Abdomen:'شکم', BeckenF:'لگن – زنان', BeckenM:'لگن – مردان',
         Muskuloskelettales:'اسکلتی-عضلانی', Technik:'تکنیک و فیزیک' },
 }
@@ -217,12 +217,12 @@ function HexLogo() {
 // ── ZONE → LERNEN MAPPING ─────────────────────────────────────────────────
 const ZONE_TO_LERNEN = {
   Neuroradiologie:    '/lernen/gehirn',
-  Hals:               '/lernen/wirbelsaeule',
+  Hals:               null,
   Thorax:             '/lernen/thorax',
   Brust:              '/lernen/mamma',
   Abdomen:            '/lernen/abdomen',
-  BeckenF:            '/lernen/becken',
-  BeckenM:            '/lernen/becken',
+  BeckenF:            '/lernen/becken#beckenF',
+  BeckenM:            '/lernen/becken#beckenM',
   Muskuloskelettales: '/lernen/msk',
   Technik:            '/lernen/technik',
 }
@@ -237,7 +237,6 @@ export default function Hero() {
   const hovFach = hovered ? FACH_DATA[hovered] : null
   const hovName = hovered ? (FACH_NAMES[lang]?.[hovered]||FACH_NAMES.de[hovered]) : null
 
-  const freeLabel  = lang==='fa'?'رایگان':lang==='en'?'Free':'Kostenlos'
   const hintLabel  = lang==='fa'?'یک ناحیه را انتخاب کنید':lang==='en'?'Select a body region':'Körperregion auswählen'
 
   const [popup, setPopup] = useState(null)
@@ -245,20 +244,8 @@ export default function Hero() {
   const POPUP_ZONES = {
     Hals: {
       choices: [
-        { id: 'Hals', label: { de: 'Hals', en: 'Neck', fa: 'گردن' }, url: '/lernen/wirbelsaeule', icon: '🔵' },
-        { id: 'Wirbelsaeule', label: { de: 'Wirbelsäule', en: 'Spine', fa: 'ستون فقرات' }, url: '/lernen/wirbelsaeule', icon: '🦴' },
-      ]
-    },
-    BeckenF: {
-      choices: [
-        { id: 'BeckenF', label: { de: 'Becken – Frau', en: 'Pelvis – Female', fa: 'لگن – زنان' }, url: '/lernen/becken', icon: '♀️' },
-        { id: 'BeckenM', label: { de: 'Becken – Mann', en: 'Pelvis – Male', fa: 'لگن – مردان' }, url: '/lernen/becken', icon: '♂️' },
-      ]
-    },
-    BeckenM: {
-      choices: [
-        { id: 'BeckenF', label: { de: 'Becken – Frau', en: 'Pelvis – Female', fa: 'لگن – زنان' }, url: '/lernen/becken', icon: '♀️' },
-        { id: 'BeckenM', label: { de: 'Becken – Mann', en: 'Pelvis – Male', fa: 'لگن – مردان' }, url: '/lernen/becken', icon: '♂️' },
+        { id: 'Hals',         label: { de: 'Hals',         en: 'Neck',  fa: 'گردن'         }, url: '/lernen/wirbelsaeule', icon: '🔵' },
+        { id: 'Wirbelsaeule', label: { de: 'Wirbelsäule',  en: 'Spine', fa: 'ستون فقرات'   }, url: '/lernen/wirbelsaeule', icon: '🦴' },
       ]
     },
   }
@@ -297,18 +284,7 @@ export default function Hero() {
         <div className={styles.bar}/>
         <p className={styles.desc}>{texts.heroDesc}</p>
 
-        <div className={styles.stats}>
-          {[
-            { dot:'#f97316', text: texts.stat1 },
-            { dot:'#fbbf24', text: texts.stat2 },
-            { dot:'#34d399', text: freeLabel },
-          ].map(s=>(
-            <span key={s.text} className={styles.chip}>
-              <span className={styles.dot} style={{background:s.dot}}/>
-              {s.text}
-            </span>
-          ))}
-        </div>
+
 
         <div className={styles.hoverIndicator}
           style={hovFach ? {
