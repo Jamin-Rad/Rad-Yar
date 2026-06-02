@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
-import { CURRICULUM, getFach } from '@/data/curriculum'
+import { CURRICULUM, getFach, KAPITEL_TRANSLATIONS } from '@/data/curriculum'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
 
@@ -138,6 +138,11 @@ export default function LernenFachPage() {
   )
 
   const fachName = FACH_NAMES[lang]?.[fach.id] || fach.key
+  const getKapitelTitle = (k) => {
+    if (lang === 'de') return k.title
+    const tr = KAPITEL_TRANSLATIONS[k.id]
+    return tr?.[lang] || k.title
+  }
   const fachIcon = FACH_ICONS[fach.id] || fach.icon
   const activeKap = fach.kapitel[activeIdx]
   const searchActive = search.trim().length > 0
@@ -205,7 +210,7 @@ export default function LernenFachPage() {
               onClick={() => { setActiveIdx(i); setSearch('') }}
             >
               <span className={styles.sideBtnIcon}>{k.icon}</span>
-              <span className={styles.sideBtnText}>{k.title}</span>
+              <span className={styles.sideBtnText}>{getKapitelTitle(k)}</span>
               <span className={styles.sideBtnCount}
                 style={i === activeIdx && !searchActive ? { color: fach.color } : {}}>
                 {k.themen.length}
@@ -245,11 +250,12 @@ export default function LernenFachPage() {
               <div className={styles.chapterHeader}>
                 <span className={styles.chapterIcon}>{activeKap.icon}</span>
                 <div>
-                  <h2 className={styles.chapterTitle}>{activeKap.title}</h2>
+                  <h2 className={styles.chapterTitle}>{getKapitelTitle(activeKap)}</h2>
                   <p className={styles.chapterMeta}>
                     {activeKap.themen.length} {t.themen}
                   </p>
                 </div>
+                <div className={styles.chapterAccent} style={{background: fach.color}}/>
               </div>
 
               {/* Ready banner */}
@@ -286,17 +292,7 @@ export default function LernenFachPage() {
                 })}
               </div>
 
-              {/* Actions */}
-              <div className={styles.actions}>
-                <button className={styles.actionPrimary}
-                  style={{ background: fach.color }}>
-                  🎯 {t.mcq}
-                </button>
-                <button className={styles.actionSecondary}
-                  style={{ borderColor: fach.color + '60', color: fach.color }}>
-                  📋 {t.cases}
-                </button>
-              </div>
+
             </>
           ) : null}
         </main>
