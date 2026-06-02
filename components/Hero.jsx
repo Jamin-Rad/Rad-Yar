@@ -240,7 +240,34 @@ export default function Hero() {
   const freeLabel  = lang==='fa'?'رایگان':lang==='en'?'Free':'Kostenlos'
   const hintLabel  = lang==='fa'?'یک ناحیه را انتخاب کنید':lang==='en'?'Select a body region':'Körperregion auswählen'
 
+  const [popup, setPopup] = useState(null)
+
+  const POPUP_ZONES = {
+    Hals: {
+      choices: [
+        { id: 'Hals', label: { de: 'Hals', en: 'Neck', fa: 'گردن' }, url: '/lernen/wirbelsaeule', icon: '🔵' },
+        { id: 'Wirbelsaeule', label: { de: 'Wirbelsäule', en: 'Spine', fa: 'ستون فقرات' }, url: '/lernen/wirbelsaeule', icon: '🦴' },
+      ]
+    },
+    BeckenF: {
+      choices: [
+        { id: 'BeckenF', label: { de: 'Becken – Frau', en: 'Pelvis – Female', fa: 'لگن – زنان' }, url: '/lernen/becken', icon: '♀️' },
+        { id: 'BeckenM', label: { de: 'Becken – Mann', en: 'Pelvis – Male', fa: 'لگن – مردان' }, url: '/lernen/becken', icon: '♂️' },
+      ]
+    },
+    BeckenM: {
+      choices: [
+        { id: 'BeckenF', label: { de: 'Becken – Frau', en: 'Pelvis – Female', fa: 'لگن – زنان' }, url: '/lernen/becken', icon: '♀️' },
+        { id: 'BeckenM', label: { de: 'Becken – Mann', en: 'Pelvis – Male', fa: 'لگن – مردان' }, url: '/lernen/becken', icon: '♂️' },
+      ]
+    },
+  }
+
   const handleZoneClick = (zoneId) => {
+    if (POPUP_ZONES[zoneId]) {
+      setPopup(zoneId)
+      return
+    }
     const url = ZONE_TO_LERNEN[zoneId]
     if (url) window.location.href = url
   }
@@ -284,11 +311,15 @@ export default function Hero() {
         </div>
 
         <div className={styles.hoverIndicator}
-          style={hovFach ? { borderColor: hovFach.color+'60', background: hovFach.color+'10' } : {}}>
-          <div className={styles.hoverDot}
+          style={hovFach ? {
+            borderColor: hovFach.color,
+            background: hovFach.color+'22',
+            boxShadow: `0 0 18px ${hovFach.color}44`
+          } : {}}>
+          <span className={styles.hoverDot}
             style={{ background: hovFach?.color || '#f97316' }}/>
           <span className={styles.hoverText}
-            style={{ color: hovFach?.color || '#f97316' }}>
+            style={{ color: hovFach ? hovFach.color : '#f97316' }}>
             {hovName || hintLabel}
           </span>
           {!hovFach && <span className={styles.hoverArrow}>↗</span>}
@@ -337,6 +368,27 @@ export default function Hero() {
         </div>
       </div>
 
+      {/* Zone choice popup */}
+      {popup && (
+        <div className={styles.zonePopupOverlay} onClick={() => setPopup(null)}>
+          <div className={styles.zonePopup} onClick={e => e.stopPropagation()}>
+            <div className={styles.zonePopupTitle}>
+              {lang === 'fa' ? 'کدام تخصص؟' : lang === 'en' ? 'Which specialty?' : 'Welches Fachgebiet?'}
+            </div>
+            <div className={styles.zonePopupChoices}>
+              {POPUP_ZONES[popup]?.choices.map(choice => (
+                <button key={choice.id} className={styles.zonePopupBtn}
+                  onClick={() => { setPopup(null); window.location.href = choice.url }}>
+                  <span className={styles.zonePopupIcon}>{choice.icon}</span>
+                  <span>{choice.label[lang] || choice.label.de}</span>
+                  <span className={styles.zonePopupArr}>→</span>
+                </button>
+              ))}
+            </div>
+            <button className={styles.zonePopupClose} onClick={() => setPopup(null)}>✕</button>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
