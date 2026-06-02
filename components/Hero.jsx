@@ -283,11 +283,15 @@ export default function Hero() {
           ))}
         </div>
 
-        <div className={styles.hoverIndicator}>
-          <div className={styles.hoverDot} style={{background:hovFach?.color||'#334155'}}/>
-          <span className={styles.hoverText} style={{color:hovFach?.color||'#64748b'}}>
+        <div className={styles.hoverIndicator}
+          style={hovFach ? { borderColor: hovFach.color+'60', background: hovFach.color+'10' } : {}}>
+          <div className={styles.hoverDot}
+            style={{ background: hovFach?.color || '#f97316' }}/>
+          <span className={styles.hoverText}
+            style={{ color: hovFach?.color || '#f97316' }}>
             {hovName || hintLabel}
           </span>
+          {!hovFach && <span className={styles.hoverArrow}>↗</span>}
         </div>
       </div>
 
