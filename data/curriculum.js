@@ -6,7 +6,7 @@ export const CURRICULUM = [
   {
     id: 'abdomen',
     key: 'Abdomen',
-    icon: '🫁',
+    icon: '🫘',
     color: '#10b981',
     bg: 'linear-gradient(135deg,#0d2818,#14401e)',
     bodyZone: 'Abdomen',
@@ -154,7 +154,7 @@ export const CURRICULUM = [
   // ─────────────────────────────────────────────────────────────
   {
     id: 'gehirn',
-    key: 'Neuroradiologie',
+    key: 'Kopf',
     icon: '🧠',
     color: '#a78bfa',
     bg: 'linear-gradient(135deg,#1a1040,#2d1b69)',
@@ -396,7 +396,7 @@ export const CURRICULUM = [
   {
     id: 'wirbelsaeule',
     key: 'Wirbelsäule & Hals',
-    icon: '🦴',
+    icon: '🔩',
     color: '#60a5fa',
     bg: 'linear-gradient(135deg,#0c1f40,#1e3a6e)',
     bodyZone: 'Hals',
@@ -474,7 +474,7 @@ export const CURRICULUM = [
   {
     id: 'mamma',
     key: 'Mamma',
-    icon: '🌺',
+    icon: '🩺',
     color: '#f472b6',
     bg: 'linear-gradient(135deg,#2a0a20,#5a1040)',
     bodyZone: 'Brust',
@@ -650,4 +650,57 @@ export const getKapitel = (fachId, kapitelId) => {
 export const getThemenCount = (fachId) => {
   const fach = getFach(fachId)
   return fach?.kapitel.reduce((sum, k) => sum + k.themen.length, 0) || 0
+}
+
+
+// ── KAPITEL TITLE TRANSLATIONS ─────────────────────────────────────────────
+export const KAPITEL_TRANSLATIONS = {
+  // Abdomen
+  'leber':          { en: 'Liver',                  fa: 'کبد' },
+  'gallenblase':    { en: 'Gallbladder & Bile Ducts',fa: 'کیسه صفرا و مجاری' },
+  'pankreas':       { en: 'Pancreas',                fa: 'پانکراس' },
+  'milz':           { en: 'Spleen',                  fa: 'طحال' },
+  'nieren':         { en: 'Kidneys',                 fa: 'کلیه‌ها' },
+  'harnblase':      { en: 'Bladder',                 fa: 'مثانه' },
+  'nebennieren':    { en: 'Adrenal Glands',           fa: 'غدد فوق کلیوی' },
+  'gi-trakt':       { en: 'GI Tract',                fa: 'دستگاه گوارش' },
+  'hernie-retro':   { en: 'Hernia · Retroperitoneum', fa: 'فتق · رتروپریتوئن' },
+  'mesenterium':    { en: 'Mesentery · Peritoneum',   fa: 'مزانتر · پریتوئن' },
+  // Gehirn
+  'vaskulaer':      { en: 'Vascular',                fa: 'عروقی' },
+  'tumoren-hirn':   { en: 'Intracranial Tumours',    fa: 'تومورهای داخل جمجمه' },
+  'sella':          { en: 'Sella & Parasellar',      fa: 'سلا و پاراسلار' },
+  'entz-infekt':    { en: 'Inflammation & Infection', fa: 'التهاب و عفونت' },
+  'neurodegeneration':{ en: 'Neurodegeneration',     fa: 'نوروژدنراسیون' },
+  'fehlbildungen':  { en: 'Malformations',           fa: 'ناهنجاری‌ها' },
+  // MSK
+  'trauma':         { en: 'Bone Trauma',             fa: 'تروما استخوان' },
+  'mrt-gelenke':    { en: 'MRI of Joints',           fa: 'MRI مفاصل' },
+  'tumoren-msk':    { en: 'Bone Tumours',            fa: 'تومورهای استخوانی' },
+  'sonstiges-msk':  { en: 'Necrosis · Osteodystrophy',fa:'نکروز · استئودیستروفی' },
+  // Thorax
+  'herz-perikard':  { en: 'Heart & Pericardium',     fa: 'قلب و پریکارد' },
+  'lunge':          { en: 'Lung',                    fa: 'ریه' },
+  'mediastinum':    { en: 'Mediastinum & Pleura',     fa: 'مدیاستن و پلور' },
+  // Wirbelsäule
+  'ws-trauma':      { en: 'Trauma',                  fa: 'تروما' },
+  'ws-degenerativ': { en: 'Degenerative',             fa: 'دژنراتیو' },
+  'ws-entzuendlich':{ en: 'Inflammatory · Tumour',   fa: 'التهابی · تومور' },
+  'spinalkanal':    { en: 'Spinal Canal · Cord',     fa: 'کانال نخاعی' },
+  'ws-metabolisch': { en: 'Metabolic · Malformation', fa: 'متابولیک · ناهنجاری' },
+  'hals':           { en: 'Neck',                    fa: 'گردن' },
+  // Mamma
+  'mammaca':        { en: 'Breast Cancer',           fa: 'سرطان پستان' },
+  'benigne-mamma':  { en: 'Benign Lesions',          fa: 'ضایعات خوش‌خیم' },
+  'bildgebung-mamma':{ en: 'Imaging Modalities',     fa: 'روش‌های تصویربرداری' },
+  // Becken
+  'gynaekologie':   { en: 'Gynaecology',             fa: 'زنان و زایمان' },
+  'urologie-m':     { en: 'Urology (Male)',          fa: 'اورولوژی (مرد)' },
+  // Technik
+  'km-technik':     { en: 'Contrast Agents',         fa: 'ماده حاجب' },
+  'mrt-physik':     { en: 'MRI Physics',             fa: 'فیزیک MRI' },
+  'ct-technik':     { en: 'CT Technique',            fa: 'تکنیک CT' },
+  'roentgen':       { en: 'X-Ray Basics',            fa: 'مبانی رادیوگرافی' },
+  'strahlenschutz': { en: 'Radiation Protection',    fa: 'حفاظت در برابر اشعه' },
+  'sono':           { en: 'Ultrasound',              fa: 'سونوگرافی' },
 }
