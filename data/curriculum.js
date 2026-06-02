@@ -395,8 +395,8 @@ export const CURRICULUM = [
   // ─────────────────────────────────────────────────────────────
   {
     id: 'wirbelsaeule',
-    key: 'Hals',
-    icon: '🦷',
+    key: 'Wirbelsäule & Hals',
+    icon: '🦴',
     color: '#60a5fa',
     bg: 'linear-gradient(135deg,#0c1f40,#1e3a6e)',
     bodyZone: 'Hals',
@@ -473,8 +473,8 @@ export const CURRICULUM = [
   // ─────────────────────────────────────────────────────────────
   {
     id: 'mamma',
-    key: 'Brust',
-    icon: '🌸',
+    key: 'Mamma',
+    icon: '🌺',
     color: '#f472b6',
     bg: 'linear-gradient(135deg,#2a0a20,#5a1040)',
     bodyZone: 'Brust',
@@ -517,7 +517,7 @@ export const CURRICULUM = [
   // ─────────────────────────────────────────────────────────────
   {
     id: 'becken',
-    key: 'BeckenF',
+    key: 'Becken',
     icon: '⚕️',
     color: '#fb7185',
     bg: 'linear-gradient(135deg,#2a0a10,#5a1020)',
