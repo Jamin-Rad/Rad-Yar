@@ -96,7 +96,6 @@ const ZONES = [
   { id:'Brust',              x:44.1, y:25.7, w:14.3, h: 8.1 },
   { id:'Abdomen',            x:23.4, y:33.8, w:39.3, h:15.3 },
   { id:'BeckenF',            x:24.4, y:47.8, w:36.7, h: 6.3 },
-  { id:'BeckenM',            x:74.4, y:63.1, w:23.4, h:16.1 },
   { id:'Technik',            x:65.4, y:81.9, w:30.3, h:15.6 },
   { id:'Muskuloskelettales', x:10.6, y:18.8, w:19.3, h:53.5 },
   { id:'Muskuloskelettales', x:55.0, y:18.8, w:19.3, h:53.5 },
@@ -221,7 +220,7 @@ const ZONE_TO_LERNEN = {
   Thorax:             '/lernen/thorax',
   Brust:              '/lernen/mamma',
   Abdomen:            '/lernen/abdomen',
-  BeckenF:            '/lernen/becken-f',
+  BeckenF:            null,  // popup
   BeckenM:            '/lernen/becken-m',
   Muskuloskelettales: '/lernen/msk',
   Technik:            '/lernen/technik',
