@@ -2,7 +2,7 @@ import { LanguageProvider } from '@/providers/LanguageProvider'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
-export default function LernenLayout({ children }) {
+export default function UebenLayout({ children }) {
   return (
     <LanguageProvider>
       <Navbar />
