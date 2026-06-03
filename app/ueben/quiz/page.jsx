@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, Suspense } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -115,7 +115,7 @@ function gradeColor(score, total) {
   return '#ef4444'
 }
 
-export default function QuizPage() {
+function QuizContent() {
   const { lang } = useLanguage()
   const searchParams = useSearchParams()
   const ui = UI[lang] || UI.de
@@ -322,5 +322,15 @@ export default function QuizPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export const dynamic = 'force-dynamic'
+
+export default function QuizPage() {
+  return (
+    <Suspense fallback={<div style={{display:'flex',alignItems:'center',justifyContent:'center',minHeight:'100vh',color:'#94a3b8',fontFamily:'system-ui'}}>Loading…</div>}>
+      <QuizContent />
+    </Suspense>
   )
 }
