@@ -395,7 +395,7 @@ export const CURRICULUM = [
   // ─────────────────────────────────────────────────────────────
   {
     id: 'wirbelsaeule',
-    key: 'Wirbelsäule & Hals',
+    key: 'Wirbelsäule',
     icon: '🔩',
     color: '#60a5fa',
     bg: 'linear-gradient(135deg,#0c1f40,#1e3a6e)',
@@ -456,6 +456,18 @@ export const CURRICULUM = [
           { id: 'funikul-myelose', title: 'Funikuläre Myelose',               tags:['MRT'],            diff:3 },
         ],
       },
+    ],
+  },
+
+  // ─────────────────────────────────────────────────────────────
+  {
+    id: 'hals',
+    key: 'Hals',
+    icon: '🔵',
+    color: '#818cf8',
+    bg: 'linear-gradient(135deg,#1a0c40,#2d1b69)',
+    bodyZone: 'Hals',
+    kapitel: [
       {
         id: 'hals',
         title: 'Hals',
@@ -516,13 +528,12 @@ export const CURRICULUM = [
 
   // ─────────────────────────────────────────────────────────────
   {
-    id: 'becken',
-    key: 'Becken',
-    icon: '⚕️',
+    id: 'becken-f',
+    key: 'Becken (Frau)',
+    icon: '♀️',
     color: '#fb7185',
     bg: 'linear-gradient(135deg,#2a0a10,#5a1020)',
     bodyZone: 'BeckenF',
-    extraBodyZone: 'BeckenM',
     kapitel: [
       {
         id: 'gynaekologie',
@@ -539,6 +550,18 @@ export const CURRICULUM = [
           { id: 'ovar-ca',         title: 'Ovarialkarzinom',                 tags:['CT','MRT'],       diff:3 },
         ],
       },
+    ],
+  },
+
+  // ─────────────────────────────────────────────────────────────
+  {
+    id: 'becken-m',
+    key: 'Becken (Mann)',
+    icon: '♂️',
+    color: '#c084fc',
+    bg: 'linear-gradient(135deg,#1a0a30,#3a1060)',
+    bodyZone: 'BeckenM',
+    kapitel: [
       {
         id: 'urologie-m',
         title: 'Urologie (Mann)',
@@ -554,6 +577,7 @@ export const CURRICULUM = [
       },
     ],
   },
+
 
   // ─────────────────────────────────────────────────────────────
   {
