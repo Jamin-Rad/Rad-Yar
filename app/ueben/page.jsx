@@ -1,241 +1,225 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useMemo } from 'react'
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
-import { CURRICULUM, getFach, getThemenCount } from '@/data/curriculum'
+import { useRouter } from 'next/navigation'
+import { CURRICULUM, KAPITEL_TRANSLATIONS } from '@/data/curriculum'
+import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
 
-// ── DIFFICULTY STARS ──────────────────────────────────────────────────────
-function Difficulty({ level }) {
-  return (
-    <span className={styles.diffStars}>
-      {[1,2,3].map(i => (
-        <span key={i} className={i <= level ? styles.starOn : styles.starOff}>★</span>
-      ))}
-    </span>
-  )
+// ── Translated fach names (same as lernen index) ─────────────────────────
+const FACH_DISPLAY = {
+  de: {
+    abdomen:'Abdomen', gehirn:'Kopf', msk:'Muskuloskelettales',
+    thorax:'Thorax', wirbelsaeule:'Wirbelsäule', hals:'Hals', mamma:'Mamma',
+    'becken-f':'Becken – Frau', 'becken-m':'Becken – Mann', technik:'Technik & Physik',
+  },
+  en: {
+    abdomen:'Abdomen', gehirn:'Head', msk:'Musculoskeletal',
+    thorax:'Thorax', wirbelsaeule:'Spine', hals:'Neck', mamma:'Breast',
+    'becken-f':'Pelvis – Female', 'becken-m':'Pelvis – Male', technik:'Physics & Tech',
+  },
+  fa: {
+    abdomen:'شکم', gehirn:'سر', msk:'اسکلتی-عضلانی',
+    thorax:'توراکس', wirbelsaeule:'ستون فقرات', hals:'گردن', mamma:'پستان',
+    'becken-f':'لگن – زنان', 'becken-m':'لگن – مردان', technik:'تکنیک و فیزیک',
+  },
 }
 
-// ── TAG CHIP ──────────────────────────────────────────────────────────────
-function Tag({ label }) {
-  const colors = {
-    CT: '#38bdf8', MRT: '#a78bfa', Rö: '#fb923c',
-    Sono: '#34d399', KM: '#fbbf24', DWI: '#f472b6',
-    CTA: '#60a5fa', MRV: '#c084fc', SWI: '#f97316',
-    Mammo: '#fb7185', PET: '#4ade80', Szinti: '#facc15',
-    LIRADS: '#f97316', MRCP: '#38bdf8', DSA: '#fb923c',
-  }
-  const color = colors[label] || '#94a3b8'
-  return (
-    <span className={styles.tag} style={{ color, borderColor: color + '40', background: color + '12' }}>
-      {label}
-    </span>
-  )
+// ── Page-local labels ─────────────────────────────────────────────────────
+const UE = {
+  de: {
+    home:'RadYar', crumb:'Üben',
+    title:'Üben', sub:'Stelle dir ein MCQ-Set zusammen – Fachgebiet, Themen und Anzahl der Fragen.',
+    step1:'Fachgebiet wählen', step2:'Themen wählen', step3:'Anzahl der Fragen',
+    chooseFirst:'Wähle zuerst ein Fachgebiet.',
+    selAll:'Alle auswählen', selNone:'Keine',
+    start:'Quiz starten', questions:'Fragen', topics:'Themen', kapitel:'Kapitel',
+    noThemen:'Für dieses Fachgebiet sind noch keine Themen hinterlegt.',
+  },
+  en: {
+    home:'RadYar', crumb:'Practice',
+    title:'Practice', sub:'Build your MCQ set – specialty, topics and number of questions.',
+    step1:'Choose a specialty', step2:'Choose topics', step3:'Number of questions',
+    chooseFirst:'Choose a specialty first.',
+    selAll:'Select all', selNone:'None',
+    start:'Start quiz', questions:'questions', topics:'topics', kapitel:'chapters',
+    noThemen:'No topics defined for this specialty yet.',
+  },
+  fa: {
+    home:'RadYar', crumb:'تمرین',
+    title:'تمرین', sub:'مجموعه MCQ خود را بسازید – تخصص، موضوعات و تعداد سؤالات.',
+    step1:'انتخاب تخصص', step2:'انتخاب موضوعات', step3:'تعداد سؤالات',
+    chooseFirst:'ابتدا یک تخصص انتخاب کنید.',
+    selAll:'انتخاب همه', selNone:'هیچ‌کدام',
+    start:'شروع آزمون', questions:'سؤال', topics:'موضوع', kapitel:'فصل',
+    noThemen:'هنوز موضوعی برای این تخصص تعریف نشده است.',
+  },
 }
 
-// ── KAPITEL CARD ──────────────────────────────────────────────────────────
-function KapitelCard({ kapitel, fachId, fachColor, index }) {
-  const [open, setOpen] = useState(false)
-  const count = kapitel.themen.length
+const ANZAHL_OPTIONS = [10, 20, 40]
 
-  return (
-    <div
-      className={`${styles.card} ${open ? styles.cardOpen : ''}`}
-      style={{ '--fach-color': fachColor, animationDelay: `${index * 0.07}s` }}
-    >
-      {/* Card Header */}
-      <button className={styles.cardHeader} onClick={() => setOpen(o => !o)}>
-        <div className={styles.cardLeft}>
-          <span className={styles.cardIcon}>{kapitel.icon}</span>
-          <div>
-            <div className={styles.cardTitle}>{kapitel.title}</div>
-            <div className={styles.cardMeta}>
-              <span className={styles.cardCount}>{count} Themen</span>
-              {kapitel.ready && (
-                <span className={styles.cardReady}>✓ Verfügbar</span>
-              )}
-            </div>
-          </div>
-        </div>
-        <div className={styles.cardRight}>
-          {/* Mini preview of first 3 tags */}
-          <div className={styles.cardTags}>
-            {[...new Set(kapitel.themen.flatMap(t => t.tags))].slice(0, 3).map(tag => (
-              <Tag key={tag} label={tag} />
-            ))}
-          </div>
-          <span className={`${styles.chevron} ${open ? styles.chevronOpen : ''}`}>›</span>
-        </div>
-      </button>
-
-      {/* Expandable Themen List */}
-      {open && (
-        <div className={styles.themenList}>
-          {kapitel.ready && kapitel.link ? (
-            <div className={styles.themenReadyBanner}>
-              <span>📖 Inhalte bereits verfügbar</span>
-              <Link href={kapitel.link} className={styles.themenReadyLink}>
-                Jetzt lesen →
-              </Link>
-            </div>
-          ) : null}
-
-          {kapitel.themen.map((thema, i) => (
-            <div
-              key={thema.id}
-              className={styles.themaRow}
-              style={{ animationDelay: `${i * 0.03}s` }}
-            >
-              <div className={styles.themaLeft}>
-                <span className={styles.themaDot} style={{ background: fachColor }} />
-                <span className={styles.themaTitle}>{thema.title}</span>
-              </div>
-              <div className={styles.themaRight}>
-                <div className={styles.themaTags}>
-                  {thema.tags.map(t => <Tag key={t} label={t} />)}
-                </div>
-                <Difficulty level={thema.diff} />
-              </div>
-            </div>
-          ))}
-
-          {/* MCQ + Fälle Buttons */}
-          <div className={styles.themenActions}>
-            <button className={styles.actionBtn} style={{ borderColor: fachColor + '50', color: fachColor }}>
-              🎯 MCQs zu diesem Kapitel
-            </button>
-            <button className={styles.actionBtn} style={{ borderColor: fachColor + '50', color: fachColor }}>
-              📋 Fallbeispiele
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
-  )
+function getKapitelTitle(k, lang) {
+  if (lang === 'de') return k.title
+  return KAPITEL_TRANSLATIONS[k.id]?.[lang] || k.title
 }
 
-// ── MAIN PAGE ─────────────────────────────────────────────────────────────
-export default function LernenFachPage() {
-  const params = useParams()
-  const fachId = params?.fach
-  const fach = getFach(fachId)
-  const [mounted, setMounted] = useState(false)
-  const [search, setSearch] = useState('')
+export default function UebenPage() {
+  const { lang } = useLanguage()
+  const router = useRouter()
+  const t = UE[lang] || UE.de
+  const display = FACH_DISPLAY[lang] || FACH_DISPLAY.de
 
-  useEffect(() => { setMounted(true) }, [])
+  const [fachId, setFachId]     = useState(null)
+  const [selThemen, setSelThemen] = useState(() => new Set())
+  const [anzahl, setAnzahl]     = useState(20)
 
-  if (!fach) {
-    return (
-      <div className={styles.notFound}>
-        <p>Fachgebiet nicht gefunden.</p>
-        <Link href="/">← Zurück zur Startseite</Link>
-      </div>
-    )
+  const fach = useMemo(() => CURRICULUM.find(f => f.id === fachId), [fachId])
+  const allThemenIds = useMemo(
+    () => fach ? fach.kapitel.flatMap(k => k.themen.map(th => th.id)) : [],
+    [fach]
+  )
+
+  const chooseFach = (id) => {
+    setFachId(id)
+    const f = CURRICULUM.find(c => c.id === id)
+    if (f) setSelThemen(new Set(f.kapitel.flatMap(k => k.themen.map(th => th.id))))
   }
 
-  const totalThemen = getThemenCount(fachId)
+  const toggleThema = (id) =>
+    setSelThemen(prev => { const s = new Set(prev); s.has(id) ? s.delete(id) : s.add(id); return s })
 
-  // Filter kapitel by search
-  const filteredKapitel = search.trim()
-    ? fach.kapitel.map(k => ({
-        ...k,
-        themen: k.themen.filter(t =>
-          t.title.toLowerCase().includes(search.toLowerCase()) ||
-          t.tags.some(tag => tag.toLowerCase().includes(search.toLowerCase()))
-        ),
-      })).filter(k => k.themen.length > 0)
-    : fach.kapitel
+  const selectAll  = () => setSelThemen(new Set(allThemenIds))
+  const selectNone = () => setSelThemen(new Set())
+
+  const canStart = fachId && selThemen.size > 0
+
+  const start = () => {
+    if (!canStart) return
+    const params = new URLSearchParams({
+      fach: fachId,
+      n: String(anzahl),
+      themen: [...selThemen].join(','),
+    })
+    router.push(`/ueben/quiz?${params.toString()}`)
+  }
 
   return (
     <div className={styles.page}>
 
-      {/* ── HERO HEADER ── */}
-      <div className={styles.hero} style={{ background: fach.bg }}>
-        <div className={styles.heroGlow} style={{ background: fach.color + '22' }} />
-        <div className={styles.heroContent}>
-          <Link href="/" className={styles.breadcrumb}>
-            ← Alle Fachgebiete
-          </Link>
-          <div className={styles.heroIconRow}>
-            <span className={styles.heroIcon}>{fach.icon}</span>
-            <div>
-              <h1 className={styles.heroTitle} style={{ color: fach.color }}>
-                {fach.key}
-              </h1>
-              <p className={styles.heroMeta}>
-                {fach.kapitel.length} Kapitel · {totalThemen} Themen
-              </p>
-            </div>
-          </div>
+      {/* ── HEADER ── */}
+      <div className={styles.header}>
+        <div className={styles.breadcrumb}>
+          <Link href="/" className={styles.crumbLink}>{t.home}</Link>
+          <span className={styles.sep}>›</span>
+          <span className={styles.crumbCurrent}>{t.crumb}</span>
+        </div>
+        <h1 className={styles.title}>{t.title}</h1>
+        <p className={styles.sub}>{t.sub}</p>
+      </div>
 
-          {/* Stats row */}
-          <div className={styles.heroStats}>
+      {/* ── STEP 1: FACH ── */}
+      <section className={styles.section}>
+        <div className={styles.stepLabel}>
+          <span className={styles.stepNum}>1</span>{t.step1}
+        </div>
+        <div className={styles.fachGrid}>
+          {CURRICULUM.map(f => (
+            <button
+              key={f.id}
+              className={`${styles.fachCard} ${fachId === f.id ? styles.fachCardActive : ''}`}
+              style={fachId === f.id ? { borderColor: f.color, background: f.color + '12' } : {}}
+              onClick={() => chooseFach(f.id)}
+            >
+              <span className={styles.fachName} style={fachId === f.id ? { color: f.color } : {}}>
+                {display[f.id] || f.key}
+              </span>
+              <span className={styles.fachCount}>
+                {f.kapitel.reduce((s, k) => s + k.themen.length, 0)} {t.topics}
+              </span>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {/* ── STEP 2: THEMEN ── */}
+      <section className={styles.section}>
+        <div className={styles.stepRow}>
+          <div className={styles.stepLabel}>
+            <span className={styles.stepNum}>2</span>{t.step2}
+          </div>
+          {fach && (
+            <div className={styles.bulkBtns}>
+              <button className={styles.bulkBtn} onClick={selectAll}>{t.selAll}</button>
+              <button className={styles.bulkBtn} onClick={selectNone}>{t.selNone}</button>
+            </div>
+          )}
+        </div>
+
+        {!fach ? (
+          <div className={styles.hint}>{t.chooseFirst}</div>
+        ) : (
+          <div className={styles.kapitelList}>
             {fach.kapitel.map(k => (
-              <div key={k.id} className={styles.heroStat}>
-                <span className={styles.heroStatIcon}>{k.icon}</span>
-                <span className={styles.heroStatLabel}>{k.title}</span>
-                <span className={styles.heroStatCount} style={{ color: fach.color }}>
-                  {k.themen.length}
-                </span>
+              <div key={k.id} className={styles.kapitelBlock}>
+                <div className={styles.kapitelHeader}>
+                  <span>{k.icon}</span>
+                  <span className={styles.kapitelTitle}>{getKapitelTitle(k, lang)}</span>
+                  <span className={styles.kapitelCount}>{k.themen.length}</span>
+                </div>
+                <div className={styles.chips}>
+                  {k.themen.map(th => (
+                    <button
+                      key={th.id}
+                      className={`${styles.chip} ${selThemen.has(th.id) ? styles.chipActive : ''}`}
+                      style={selThemen.has(th.id) ? { borderColor: fach.color, color: fach.color, background: fach.color + '12' } : {}}
+                      onClick={() => toggleThema(th.id)}
+                    >
+                      {th.title}
+                    </button>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
-        </div>
-      </div>
+        )}
+      </section>
 
-      {/* ── SEARCH ── */}
-      <div className={styles.searchWrap}>
-        <div className={styles.searchBox}>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className={styles.searchIcon}>
-            <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" strokeWidth="1.5"/>
-            <line x1="10.5" y1="10.5" x2="14" y2="14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-          </svg>
-          <input
-            className={styles.searchInput}
-            placeholder={`In ${fach.key} suchen…`}
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-          />
-          {search && (
-            <button className={styles.searchClear} onClick={() => setSearch('')}>✕</button>
+      {/* ── STEP 3: ANZAHL ── */}
+      <section className={styles.section}>
+        <div className={styles.stepLabel}>
+          <span className={styles.stepNum}>3</span>{t.step3}
+        </div>
+        <div className={styles.anzahlRow}>
+          {ANZAHL_OPTIONS.map(n => (
+            <button
+              key={n}
+              className={`${styles.anzahlBtn} ${anzahl === n ? styles.anzahlBtnActive : ''}`}
+              onClick={() => setAnzahl(n)}
+            >
+              {n}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {/* ── STICKY BAR ── */}
+      <div className={styles.bar}>
+        <div className={styles.summary}>
+          {fach ? (
+            <>
+              <strong style={{ color: fach.color }}>{display[fach.id] || fach.key}</strong>
+              <span className={styles.dot}>·</span>
+              {selThemen.size} {t.topics}
+              <span className={styles.dot}>·</span>
+              {anzahl} {t.questions}
+            </>
+          ) : (
+            <span style={{ opacity: 0.45 }}>{t.chooseFirst}</span>
           )}
         </div>
-      </div>
-
-      {/* ── KAPITEL CARDS ── */}
-      <div className={`${styles.cards} ${mounted ? styles.cardsIn : ''}`}>
-        {filteredKapitel.length === 0 ? (
-          <div className={styles.empty}>
-            Kein Thema gefunden für „{search}"
-          </div>
-        ) : (
-          filteredKapitel.map((kapitel, i) => (
-            <KapitelCard
-              key={kapitel.id}
-              kapitel={kapitel}
-              fachId={fachId}
-              fachColor={fach.color}
-              index={i}
-            />
-          ))
-        )}
-      </div>
-
-      {/* ── BOTTOM ACTION ── */}
-      <div className={styles.bottomBar}>
-        <div className={styles.bottomContent}>
-          <span className={styles.bottomText}>
-            Bereit zum Testen?
-          </span>
-          <div className={styles.bottomBtns}>
-            <button className={styles.bottomBtn} style={{ background: fach.color, color: '#060708' }}>
-              🎯 Alle MCQs – {fach.key}
-            </button>
-            <button className={styles.bottomBtnGhost} style={{ borderColor: fach.color + '50', color: fach.color }}>
-              📋 Fallbeispiele
-            </button>
-          </div>
-        </div>
+        <button className={styles.startBtn} onClick={start} disabled={!canStart}>
+          {t.start}
+        </button>
       </div>
     </div>
   )
