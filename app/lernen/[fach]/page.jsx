@@ -72,20 +72,21 @@ const T = {
 // Fach display names per language
 const FACH_NAMES = {
   de: { abdomen:'Abdomen', gehirn:'Kopf', msk:'Muskuloskelettales',
-        thorax:'Thorax', wirbelsaeule:'Wirbelsäule & Hals', mamma:'Mamma',
-        becken:'Becken', technik:'Technik & Physik' },
+        thorax:'Thorax', wirbelsaeule:'Wirbelsäule', hals:'Hals', mamma:'Mamma',
+        'becken-f':'Becken – Frau', 'becken-m':'Becken – Mann', technik:'Technik & Physik' },
   en: { abdomen:'Abdomen', gehirn:'Head', msk:'Musculoskeletal',
-        thorax:'Thorax', wirbelsaeule:'Spine & Neck', mamma:'Breast',
-        becken:'Pelvis', technik:'Physics & Technology' },
+        thorax:'Thorax', wirbelsaeule:'Spine', hals:'Neck', mamma:'Breast',
+        'becken-f':'Pelvis – Female', 'becken-m':'Pelvis – Male', technik:'Physics & Technology' },
   fa: { abdomen:'شکم', gehirn:'سر', msk:'اسکلتی-عضلانی',
-        thorax:'توراکس', wirbelsaeule:'ستون فقرات و گردن', mamma:'پستان',
-        becken:'لگن', technik:'تکنیک و فیزیک' },
+        thorax:'توراکس', wirbelsaeule:'ستون فقرات', hals:'گردن', mamma:'پستان',
+        'becken-f':'لگن – زنان', 'becken-m':'لگن – مردان', technik:'تکنیک و فیزیک' },
 }
 
 // Fach icons - including new ones for punkt 9
 const FACH_ICONS = {
   abdomen: '🫁', gehirn: '🧠', msk: '🦴', thorax: '🫀',
-  wirbelsaeule: '🦷', mamma: '🌸', becken: '⚕️', technik: '⚙️'
+  wirbelsaeule: '🔩', hals: '🔵', mamma: '🌸',
+  'becken-f': '♀️', 'becken-m': '♂️', technik: '⚙️'
 }
 
 // Group assignment
@@ -169,7 +170,7 @@ export default function LernenFachPage() {
       {/* ── TOPBAR ── */}
       <div className={styles.topBar}>
         <div className={styles.topBarInner}>
-          <Link href="/lernen" className={styles.back}>{t.back}</Link>
+          <Link href="/" className={styles.back}>{t.back}</Link>
 
           <div className={styles.topBarCenter}>
             <span className={styles.topIcon}>{fachIcon}</span>
