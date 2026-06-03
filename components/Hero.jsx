@@ -221,8 +221,8 @@ const ZONE_TO_LERNEN = {
   Thorax:             '/lernen/thorax',
   Brust:              '/lernen/mamma',
   Abdomen:            '/lernen/abdomen',
-  BeckenF:            '/lernen/becken#beckenF',
-  BeckenM:            '/lernen/becken#beckenM',
+  BeckenF:            '/lernen/becken-f',
+  BeckenM:            '/lernen/becken-m',
   Muskuloskelettales: '/lernen/msk',
   Technik:            '/lernen/technik',
 }
@@ -244,7 +244,7 @@ export default function Hero() {
   const POPUP_ZONES = {
     Hals: {
       choices: [
-        { id: 'Hals',         label: { de: 'Hals',         en: 'Neck',  fa: 'گردن'         }, url: '/lernen/wirbelsaeule', icon: '🔵' },
+        { id: 'Hals',         label: { de: 'Hals',         en: 'Neck',  fa: 'گردن'         }, url: '/lernen/hals',         icon: '🔵' },
         { id: 'Wirbelsaeule', label: { de: 'Wirbelsäule',  en: 'Spine', fa: 'ستون فقرات'   }, url: '/lernen/wirbelsaeule', icon: '🦴' },
       ]
     },
