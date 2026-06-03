@@ -7,25 +7,25 @@ import styles from './index.module.css'
 
 const FACH_DISPLAY = {
   de: {
-    abdomen:      { name: 'Abdomen',              icon: '🫘' },
+    abdomen:      { name: 'Abdomen',              icon: '🟠' },
     gehirn:       { name: 'Kopf',                 icon: '🧠' },
     msk:          { name: 'Muskuloskelettales',   icon: '🦴' },
     thorax:       { name: 'Thorax',               icon: '🫀' },
-    wirbelsaeule: { name: 'Wirbelsäule',          icon: '🔩' },
-    hals:         { name: 'Hals',                 icon: '🔵' },
-    mamma:        { name: 'Mamma',                icon: '🩺' },
+    wirbelsaeule: { name: 'Wirbelsäule',          icon: '🦴' },
+    hals:         { name: 'Hals',                 icon: '💠' },
+    mamma:        { name: 'Mamma',                icon: '🌸' },
     'becken-f':   { name: 'Becken – Frau',        icon: '♀️' },
     'becken-m':   { name: 'Becken – Mann',        icon: '♂️' },
     technik:      { name: 'Technik & Physik',     icon: '⚙️' },
   },
   en: {
-    abdomen:      { name: 'Abdomen',              icon: '🫘' },
+    abdomen:      { name: 'Abdomen',              icon: '🟠' },
     gehirn:       { name: 'Head',                 icon: '🧠' },
     msk:          { name: 'Musculoskeletal',      icon: '🦴' },
     thorax:       { name: 'Thorax',               icon: '🫀' },
-    wirbelsaeule: { name: 'Spine',                icon: '🔩' },
-    hals:         { name: 'Neck',                 icon: '🔵' },
-    mamma:        { name: 'Breast',               icon: '🩺' },
+    wirbelsaeule: { name: 'Spine',                icon: '🦴' },
+    hals:         { name: 'Neck',                 icon: '💠' },
+    mamma:        { name: 'Breast',               icon: '🌸' },
     'becken-f':   { name: 'Pelvis – Female',      icon: '♀️' },
     'becken-m':   { name: 'Pelvis – Male',        icon: '♂️' },
     technik:      { name: 'Physics & Tech',       icon: '⚙️' },
@@ -35,9 +35,9 @@ const FACH_DISPLAY = {
     gehirn:       { name: 'سر',                   icon: '🧠' },
     msk:          { name: 'اسکلتی-عضلانی',        icon: '🦴' },
     thorax:       { name: 'توراکس',               icon: '🫀' },
-    wirbelsaeule: { name: 'ستون فقرات',           icon: '🔩' },
-    hals:         { name: 'گردن',                 icon: '🔵' },
-    mamma:        { name: 'پستان',                icon: '🩺' },
+    wirbelsaeule: { name: 'ستون فقرات',           icon: '🦴' },
+    hals:         { name: 'گردن',                 icon: '💠' },
+    mamma:        { name: 'پستان',                icon: '🌸' },
     'becken-f':   { name: 'لگن – زنان',           icon: '♀️' },
     'becken-m':   { name: 'لگن – مردان',          icon: '♂️' },
     technik:      { name: 'تکنیک و فیزیک',        icon: '⚙️' },
@@ -45,9 +45,9 @@ const FACH_DISPLAY = {
 }
 
 const PAGE_TITLES = {
-  de: 'Fachgebiet wählen',
-  en: 'Choose a specialty',
-  fa: 'انتخاب تخصص',
+  de: 'Körperregion wählen',
+  en: 'Choose a body region',
+  fa: 'انتخاب ناحیه بدن',
 }
 
 export default function LernenIndexPage() {
