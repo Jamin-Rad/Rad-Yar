@@ -65,9 +65,14 @@ const FACH_DATA = [
     img: '/fach/muskuloskeletal.png',
     color: '#d97706',
     bg: 'linear-gradient(135deg,#2a1a00,#3d2800)',
-    available: false,
+    available: true,
     description: 'Knochen, Gelenke, Muskulatur & Weichteile',
     topics: ['Frakturen', 'Arthrose', 'Tumoren', 'Osteochondrose', 'Sportverletzungen'],
+    links: [
+      { label: 'Knie – Meniskus',      href: '/msk/knie/meniskus',      ready: true  },
+      { label: 'Knie – Kreuzbänder',   href: '/msk/knie/kreuzbaender',  ready: false },
+      { label: 'Schulter',             href: '/msk/schulter',           ready: false },
+    ],
   },
   {
     key: 'Technik & Physik',
@@ -78,7 +83,7 @@ const FACH_DATA = [
     description: 'Physikalische Grundlagen · Kontrastmittel · Protokolle',
     topics: ['Kontrastmittel', 'MRT-Physik', 'CT-Technik', 'Strahlenschutz'],
     links: [
-      { label: 'Kontrastmittel', href: '/technik/kontrastmittel', ready: true },
+      { label: 'Kontrastmittel', href: '/technik/kontrastmittel', ready: true  },
       { label: 'MRT-Physik',     href: '/technik/mrt',            ready: false },
       { label: 'CT-Technik',     href: '/technik/ct',             ready: false },
       { label: 'Strahlenschutz', href: '/technik/strahlenschutz', ready: false },
