@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect, useMemo } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { CURRICULUM, getFach, KAPITEL_TRANSLATIONS } from '@/data/curriculum'
@@ -134,7 +135,9 @@ export default function LernenFachPage() {
         <div className={styles.topBarInner}>
           <Link href="/" className={styles.back}>{t.back}</Link>
           <div className={styles.topCenter}>
-            <span className={styles.topIcon}>{fachIcon}</span>
+            <div className={styles.topIcon}>
+              <Image src={`/fach/${fach.id}.png`} alt={fachName} width={36} height={36} style={{objectFit:'contain'}}/>
+            </div>
             <h1 className={styles.topTitle} style={{ color: fach.color }}>{fachName}</h1>
           </div>
           <div className={styles.topRight}>
