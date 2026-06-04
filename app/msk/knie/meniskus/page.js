@@ -70,20 +70,59 @@ const MENISKUS_STYLES = `.page {
 }
 
 .heroText {
-  border-radius: 28px;
-  padding: 34px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 34px;
+  padding: 38px;
+  background:
+    radial-gradient(circle at top right, rgba(249, 115, 22, 0.18), transparent 18rem),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.96) 54%, rgba(255, 247, 237, 0.92) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 24px 70px rgba(13, 27, 42, 0.12);
+}
+
+.heroText::before {
+  content: '';
+  position: absolute;
+  inset: 18px 18px auto auto;
+  width: 96px;
+  height: 96px;
+  border-radius: 32px;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.18), rgba(13, 27, 42, 0.08));
+  transform: rotate(12deg);
+}
+
+.heroText::after {
+  content: '';
+  position: absolute;
+  left: 34px;
+  right: 34px;
+  bottom: 0;
+  height: 5px;
+  border-radius: 999px 999px 0 0;
+  background: linear-gradient(90deg, #f97316, #fb923c, #0d1b2a);
+}
+
+[dir='rtl'] .heroText::after {
+  background: linear-gradient(90deg, #0d1b2a, #fb923c, #f97316);
+}
+
+.heroText > * {
+  position: relative;
+  z-index: 1;
 }
 
 .sourceBadge {
   display: inline-flex;
   width: fit-content;
   margin-bottom: 18px;
-  padding: 7px 12px;
+  padding: 8px 14px;
   border-radius: 999px;
-  background: rgba(249, 115, 22, 0.12);
-  color: #c2410c;
+  background: #0d1b2a;
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(13, 27, 42, 0.16);
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -91,17 +130,18 @@ const MENISKUS_STYLES = `.page {
 .heroText h1 {
   margin: 0;
   font-family: var(--font-fraunces, Georgia, serif);
-  font-size: clamp(44px, 6vw, 76px);
-  font-weight: 900;
-  line-height: 0.95;
-  letter-spacing: -0.05em;
+  font-size: clamp(46px, 6vw, 82px);
+  font-weight: 950;
+  line-height: 0.92;
+  letter-spacing: -0.055em;
   color: #0d1b2a;
+  text-shadow: 0 12px 28px rgba(13, 27, 42, 0.08);
 }
 
 .heroText p {
   margin: 18px 0 24px;
-  max-width: 680px;
-  color: #536174;
+  max-width: 720px;
+  color: #425066;
   font-size: 18px;
   line-height: 1.7;
 }
@@ -633,6 +673,15 @@ const MENISKUS_STYLES = `.page {
   font-weight: 600;
 }
 
+.discoidMriTitle {
+  color: #f97316 !important;
+  font-weight: 950 !important;
+}
+
+.greenTitle {
+  color: #16a34a;
+}
+
 [dir='rtl'] .breadcrumb,
 [dir='rtl'] .heroText,
 [dir='rtl'] .sectionHead,
@@ -720,8 +769,8 @@ const MENISKUS_STYLES = `.page {
   }
 
   .heroText {
-    padding: 22px;
-    border-radius: 22px;
+    padding: 24px;
+    border-radius: 24px;
   }
 
   .sourceBadge {
@@ -1328,7 +1377,6 @@ const CONTENT = {
     zoomImage: 'Bild vergrößern',
     closePreview: 'Vorschau schließen',
     sections: [
-      { id: 'grundlagen', label: 'Grundlagen', icon: '🦵' },
       { id: 'anatomie', label: 'Anatomie', icon: '🦴' },
       { id: 'vaskularisation', label: 'Vaskularisation', icon: '🩸' },
       { id: 'mrt', label: 'MRT-Diagnostik', icon: '🩻' },
@@ -1353,8 +1401,8 @@ const CONTENT = {
       ],
     },
     anatomy: {
-      title: 'Anatomie: Innen- und Außenmeniskus',
-      lead: 'Der klinische Vergleich von Innen- und Außenmeniskus konzentriert sich auf Form, Fixierung und Beweglichkeit.',
+      title: 'Anatomie',
+      lead: 'Die Menisken sind faserknorpelige Strukturen zwischen den Femurkondylen und dem Tibiaplateau. Es gibt zwei Menisken: den Innenmeniskus und den Außenmeniskus. Sie verbessern die Gelenkkongruenz, verteilen die Last und wirken als Stoßdämpfer.',
       tableHeaders: ['Merkmal', 'Innenmeniskus', 'Außenmeniskus'],
       tableRows: [
         ['Form', 'C-förmig', 'eher O-förmig'],
@@ -1411,6 +1459,7 @@ const CONTENT = {
         ['2b', 'lineare Signalsteigerung', 'Kontakt auf einem einzelnen Bild', 'inkonklusiv für echten Riss'],
         ['2c', 'keilförmige oder globuläre Signalsteigerung', 'kein eindeutiger Kontakt', 'hohes Risiko für okkulten Riss'],
         ['3', 'Signalsteigerung', 'Kontakt auf mindestens zwei aufeinanderfolgenden Schichten', 'radiologisch gesicherter Meniskusriss'],
+        ['4', 'komplexe Rissmorphologie mit Deformierung oder Fragmentierung', 'mehrfacher Oberflächenkontakt', 'komplexer Meniskusriss'],
       ],
       key: 'Meniskusläsion Grad 3 ist der entscheidende Schwellenwert für die Rissdiagnose: Signalsteigerung innerhalb des Meniskus mit sicherem Oberflächenkontakt auf mindestens zwei Schichten.',
     },
@@ -1427,7 +1476,7 @@ const CONTENT = {
     },
     cases: {
       title: 'Fallbeispiele',
-      lead: 'Die Fallbeispiele zeigen typische MRT-Befunde und helfen, degenerative Signale von echten Rissen abzugrenzen.',
+      lead: '',
       items: [
         {
           title: 'Keilförmig/globuläres Signal ohne sicheren Oberflächenkontakt',
@@ -1487,7 +1536,9 @@ const CONTENT = {
       key: 'Sagittales Zeichen: Bei einem discoiden Meniskus bleibt der Meniskuskorpus auf mindestens 3 aufeinanderfolgenden sagittalen Schichten sichtbar.',
     },
     therapy: {
-      title: 'Therapieüberlegungen: Save the Meniscus',
+      title: 'Therapieprinzip: Save the Meniscus',
+      titlePrefix: 'Therapieprinzip',
+      saveText: 'Save the Meniscus',
       lead: 'Die Therapie richtet sich nach Symptomatik, Rissmorphologie, Lokalisation und Vaskularisation. Ziel ist der möglichst weitgehende Erhalt von Meniskusgewebe.',
       tableHeaders: ['Situation', 'Prinzip'],
       tableRows: [
@@ -1514,7 +1565,6 @@ const CONTENT = {
     zoomImage: 'Enlarge image',
     closePreview: 'Close preview',
     sections: [
-      { id: 'grundlagen', label: 'Basics', icon: '🦵' },
       { id: 'anatomie', label: 'Anatomy', icon: '🦴' },
       { id: 'vaskularisation', label: 'Vascular supply', icon: '🩸' },
       { id: 'mrt', label: 'MRI diagnosis', icon: '🩻' },
@@ -1539,8 +1589,8 @@ const CONTENT = {
       ],
     },
     anatomy: {
-      title: 'Anatomy: medial and lateral meniscus',
-      lead: 'The clinical comparison of the medial and lateral meniscus focuses on shape, fixation and mobility.',
+      title: 'Anatomy',
+      lead: 'The menisci are fibrocartilaginous structures between the femoral condyles and the tibial plateau. There are two menisci: the medial meniscus and the lateral meniscus. They improve joint congruity, distribute load and act as shock absorbers.',
       tableHeaders: ['Feature', 'Medial meniscus', 'Lateral meniscus'],
       tableRows: [
         ['Shape', 'C-shaped', 'more O-shaped'],
@@ -1597,6 +1647,7 @@ const CONTENT = {
         ['2b', 'linear signal increase', 'contact on a single image', 'inconclusive for a true tear'],
         ['2c', 'wedge-shaped or globular signal increase', 'no definite contact', 'high risk of an occult tear'],
         ['3', 'signal increase', 'contact on at least two consecutive slices', 'radiologically proven meniscal tear'],
+        ['4', 'complex tear morphology with deformation or fragmentation', 'multiple surface contacts', 'complex meniscal tear'],
       ],
       key: 'Grade 3 meniscal lesion is the decisive threshold for diagnosing a tear: intrameniscal signal increase with reliable surface contact on at least two slices.',
     },
@@ -1613,7 +1664,7 @@ const CONTENT = {
     },
     cases: {
       title: 'Cases',
-      lead: 'The cases illustrate typical MRI findings and help distinguish degenerative intrameniscal signal from true tears.',
+      lead: '',
       items: [
         {
           title: 'Wedge-shaped/globular signal without definite surface contact',
@@ -1674,6 +1725,8 @@ const CONTENT = {
     },
     therapy: {
       title: 'Treatment concept: Save the meniscus',
+      titlePrefix: 'Treatment concept',
+      saveText: 'Save the Meniscus',
       lead: 'Management depends on symptoms, tear morphology, location and vascularity. The goal is to preserve as much meniscal tissue as possible.',
       tableHeaders: ['Situation', 'Principle'],
       tableRows: [
@@ -1700,7 +1753,6 @@ const CONTENT = {
     zoomImage: 'بزرگ‌نمایی تصویر',
     closePreview: 'بستن نمایش بزرگ',
     sections: [
-      { id: 'grundlagen', label: 'مبانی', icon: '🦵' },
       { id: 'anatomie', label: 'آناتومی', icon: '🦴' },
       { id: 'vaskularisation', label: 'خون‌رسانی', icon: '🩸' },
       { id: 'mrt', label: 'تشخیص MRI', icon: '🩻' },
@@ -1725,8 +1777,8 @@ const CONTENT = {
       ],
     },
     anatomy: {
-      title: 'آناتومی: منیسک داخلی و خارجی',
-      lead: 'مقایسه بالینی منیسک داخلی و خارجی بر شکل، میزان تثبیت و تحرک تمرکز دارد.',
+      title: 'آناتومی',
+      lead: 'منیسک‌ها ساختارهای فیبروکارتیلاژی بین کندیل‌های فمور و پلاتوی تیبیا هستند. دو منیسک وجود دارد: منیسک داخلی و منیسک خارجی. آن‌ها تطابق مفصلی را بهتر می‌کنند، نیرو را پخش می‌کنند و مانند ضربه‌گیر عمل می‌کنند.',
       tableHeaders: ['ویژگی', 'منیسک داخلی', 'منیسک خارجی'],
       tableRows: [
         ['شکل', 'C شکل', 'بیشتر O شکل'],
@@ -1783,6 +1835,7 @@ const CONTENT = {
         ['2b', 'افزایش سیگنال خطی', 'تماس فقط در یک تصویر', 'برای پارگی قطعی ناکافی'],
         ['2c', 'افزایش سیگنال گوه‌ای یا گلوبولار', 'بدون تماس واضح', 'ریسک بالا برای پارگی مخفی'],
         ['3', 'افزایش سیگنال', 'تماس در حداقل دو برش متوالی', 'پارگی منیسک از نظر رادیولوژیک قطعی'],
+        ['4', 'مورفولوژی پیچیده پارگی همراه با دفورمیتی یا قطعه‌قطعه‌شدن', 'تماس سطحی متعدد', 'پارگی کمپلکس منیسک'],
       ],
       key: 'ضایعه منیسک درجه 3 آستانه اصلی برای تشخیص پارگی است: افزایش سیگنال داخل منیسک همراه با تماس مطمئن با سطح مفصلی در حداقل دو برش.',
     },
@@ -1799,7 +1852,7 @@ const CONTENT = {
     },
     cases: {
       title: 'نمونه کیس‌ها',
-      lead: 'نمونه کیس‌ها کمک می‌کنند تفاوت بین سیگنال دژنراتیو داخل منیسک و پارگی واقعی بهتر دیده شود.',
+      lead: '',
       items: [
         {
           title: 'سیگنال گوه‌ای/گلوبولار بدون تماس قطعی با سطح مفصلی',
@@ -1860,6 +1913,8 @@ const CONTENT = {
     },
     therapy: {
       title: 'اصول درمان: Save the Meniscus',
+      titlePrefix: 'اصول درمان',
+      saveText: 'Save the Meniscus',
       lead: 'تصمیم درمانی به علائم، شکل پارگی، محل پارگی و خون‌رسانی بستگی دارد. هدف، حفظ حداکثری بافت منیسک است.',
       tableHeaders: ['وضعیت', 'اصل درمانی'],
       tableRows: [
@@ -1867,7 +1922,7 @@ const CONTENT = {
         ['پارگی تازه در ناحیه قرمز', 'بخیه منیسک'],
         ['قطعه غیرقابل ترمیم و مکانیکی', 'رزکسیون محدود و محافظه‌کارانه'],
       ],
-      key: 'تا حد امکان منیسک را حفظ کن؛ فقط به اندازه لازم رزکسیون انجام بده.',
+      key: 'اصل مهم این است که منیسک تا حد امکان حفظ شود؛ رزکسیون فقط زمانی و فقط به اندازه‌ای انجام شود که واقعاً لازم است.',
     },
   },
 }
@@ -2061,18 +2116,7 @@ export default function MeniskusPage() {
         <Sidebar sections={copy.sections} toc={copy.toc} activeId={activeId} onClick={scrollTo} />
 
         <main className={styles.main} ref={mainRef}>
-          <Section id="grundlagen" eyebrow="01" title={copy.basics.title} lead={copy.basics.lead}>
-            <div className={styles.bulletCard}>
-              {copy.basics.bullets.map(item => (
-                <div key={item} className={styles.bulletItem}>
-                  <span>✓</span>
-                  <p>{item}</p>
-                </div>
-              ))}
-            </div>
-          </Section>
-
-          <Section id="anatomie" eyebrow="02" title={copy.anatomy.title} lead={copy.anatomy.lead}>
+          <Section id="anatomie" eyebrow="01" title={copy.anatomy.title} lead={copy.anatomy.lead}>
             <Table headers={copy.anatomy.tableHeaders} rows={copy.anatomy.tableRows} />
             <div className={styles.splitGrid}>
               <div className={styles.card}>
@@ -2163,13 +2207,18 @@ export default function MeniskusPage() {
             </div>
             <Table headers={copy.discoid.overviewHeaders} rows={copy.discoid.overviewRows} />
             <div className={styles.card}>
-              <h3>{copy.discoid.mriTitle}</h3>
+              <h3 className={styles.discoidMriTitle}>{copy.discoid.mriTitle}</h3>
               <Table headers={copy.discoid.mriHeaders} rows={copy.discoid.mriRows} />
             </div>
             <Callout label={copy.keyLabel}>{copy.discoid.key}</Callout>
           </Section>
 
-          <Section id="therapie" eyebrow="09" title={copy.therapy.title} lead={copy.therapy.lead}>
+          <Section
+            id="therapie"
+            eyebrow="09"
+            title={<>{copy.therapy.titlePrefix || copy.therapy.title}: <span className={styles.greenTitle}>{copy.therapy.saveText || 'Save the Meniscus'}</span></>}
+            lead={copy.therapy.lead}
+          >
             <Table headers={copy.therapy.tableHeaders} rows={copy.therapy.tableRows} />
             <Callout label={copy.keyLabel}>{copy.therapy.key}</Callout>
           </Section>
