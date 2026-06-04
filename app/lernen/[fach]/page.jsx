@@ -97,8 +97,14 @@ function SubThemen({ sub, fachColor, lang }) {
               </>
             )
 
-            return s.link ? (
-              <Link key={s.id} href={s.link} className={`${styles.subItem} ${styles.subItemLink}`}>
+            const href = s.link
+              ? lang === 'de'
+                ? s.link
+                : `${s.link}?lang=${lang}`
+              : null
+
+            return href ? (
+              <Link key={s.id} href={href} className={`${styles.subItem} ${styles.subItemLink}`}>
                 {content}
               </Link>
             ) : (
