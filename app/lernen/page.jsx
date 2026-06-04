@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { CURRICULUM } from '@/data/curriculum'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -74,7 +75,9 @@ export default function LernenIndexPage() {
                 style={{ '--fach-color': fach.color, animationDelay: `${i * 0.06}s` }}
                 onClick={() => router.push(`/lernen/${fach.id}`)}
               >
-                <span className={styles.cardIcon}>{d.icon}</span>
+                <div className={styles.cardIcon} style={{width:64,height:64,margin:"0 auto 12px"}}>
+                  <Image src={`/fach/${fach.id}.png`} alt={d.name} width={64} height={64} style={{objectFit:'contain',width:'100%',height:'100%'}}/>
+                </div>
                 <div className={styles.cardTitle} style={{ color: fach.color }}>{d.name}</div>
                 <div className={styles.cardMeta}>
                   {fach.kapitel.length} {lang === 'fa' ? 'فصل' : lang === 'en' ? 'chapters' : 'Kapitel'} ·{' '}
