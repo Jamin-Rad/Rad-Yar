@@ -116,6 +116,18 @@ const QUESTIONS = {
       correct: 'B',
       explanation: 'Bei normaler oder gering eingeschränkter Nierenfunktion (eGFR > 30 ml/min/1,73 m²) ist kein Absetzen von Metformin erforderlich. Das Risiko der Laktatazidose entsteht nicht durch eine direkte Interaktion mit dem KM, sondern indirekt: KM kann (selten) eine akute Nierenschädigung auslösen → Metformin akkumuliert → Laktatazidose. Bei eGFR < 30 ml/min/1,73 m² oder akutem Nierenversagen sollte Metformin für 48 h pausiert werden. Wichtig: Bei eGFR < 30 ist Metformin ohnehin bereits kontraindiziert.',
     },
+    {
+      id: 10,
+      question: 'Welche Konstellation ist klassisch mit nephrogener systemischer Fibrose (NSF) assoziiert?',
+      options: [
+        { id: 'A', text: 'Schwere Niereninsuffizienz (GFR < 30) und Gabe linearer Gadolinium-KM' },
+        { id: 'B', text: 'Normale Nierenfunktion und einmalige Gabe makrozyklischer Gadolinium-KM' },
+        { id: 'C', text: 'Jodhaltiges CT-Kontrastmittel bei normaler Schilddrüsenfunktion' },
+        { id: 'D', text: 'Buscopan®-Gabe vor einer MRT-Untersuchung' },
+      ],
+      correct: 'A',
+      explanation: 'NSF tritt nahezu ausschließlich bei schwerer Niereninsuffizienz auf, besonders nach Gabe weniger stabiler linearer Gadolinium-KM. Durch den Einsatz makrozyklischer KM ist NSF heute extrem selten.',
+    },
   ],
   en: [
     {
@@ -226,6 +238,18 @@ const QUESTIONS = {
       correct: 'B',
       explanation: 'With normal or mildly impaired renal function (eGFR > 30 ml/min/1.73 m²), stopping metformin is not required. The risk of lactic acidosis does not arise from a direct interaction with contrast media, but indirectly: contrast (rarely) can cause acute kidney injury → metformin accumulates → lactic acidosis. With eGFR < 30 ml/min/1.73 m² or acute kidney injury, metformin should be withheld for 48 hours. Important: at eGFR < 30, metformin is already contraindicated anyway.',
     },
+    {
+      id: 10,
+      question: 'Which situation is classically associated with nephrogenic systemic fibrosis (NSF)?',
+      options: [
+        { id: 'A', text: 'Severe renal impairment (GFR < 30) and administration of linear gadolinium agents' },
+        { id: 'B', text: 'Normal renal function and a single macrocyclic gadolinium injection' },
+        { id: 'C', text: 'Iodinated CT contrast in normal thyroid function' },
+        { id: 'D', text: 'Buscopan® before MRI' },
+      ],
+      correct: 'A',
+      explanation: 'NSF occurs almost exclusively in severe renal impairment, particularly after less stable linear gadolinium agents. With macrocyclic agents, NSF has become extremely rare.',
+    },
   ],
   fa: [
     {
@@ -335,6 +359,18 @@ const QUESTIONS = {
       ],
       correct: 'B',
       explanation: 'با عملکرد کلیوی طبیعی یا خفیف مختل (eGFR > ۳۰ میلی‌لیتر/دقیقه/۱.۷۳ مترمربع)، قطع متفورمین لازم نیست. خطر اسیدوز لاکتیک از تعامل مستقیم با ماده حاجب نیست بلکه غیرمستقیم است: ماده حاجب (به ندرت) می‌تواند آسیب حاد کلیوی ایجاد کند → تجمع متفورمین → اسیدوز لاکتیک. با eGFR < ۳۰ یا نارسایی حاد کلیوی، متفورمین باید ۴۸ ساعت قطع شود.',
+    },
+    {
+      id: 10,
+      question: 'کدام وضعیت به طور کلاسیک با فیبروز سیستمیک نفروژنیک (NSF) ارتباط دارد؟',
+      options: [
+        { id: 'A', text: 'نارسایی شدید کلیه (GFR < 30) همراه با تزریق گادولینیوم خطی' },
+        { id: 'B', text: 'عملکرد طبیعی کلیه و یک بار تزریق گادولینیوم ماکروسیکلیک' },
+        { id: 'C', text: 'ماده حاجب یددار CT در عملکرد طبیعی تیروئید' },
+        { id: 'D', text: 'تزریق Buscopan® پیش از MRI' },
+      ],
+      correct: 'A',
+      explanation: 'NSF تقریباً فقط در نارسایی شدید کلیه دیده می‌شود، به‌خصوص پس از تزریق گادولینیوم خطی و کمتر پایدار. با مواد ماکروسیکلیک، NSF امروزه بسیار نادر است.',
     },
   ],
 }
