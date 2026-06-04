@@ -17,8 +17,15 @@ const FACH_DATA = {
     color: '#60a5fa',
     bg: 'linear-gradient(135deg,#0c1f40,#1e3a6e)',
     available: false,
-    topics: ['Schilddrüse','Lymphknoten','Larynx','HWS','Myelon'],
-    desc: { de:'Schilddrüse, Lymphknoten, Larynx & Wirbelsäule', en:'Thyroid, lymph nodes, larynx & spine', fa:'تیروئید، غدد لنفاوی، حنجره و ستون فقرات' },
+    topics: ['Schilddrüse','Lymphknoten','Larynx'],
+    desc: { de:'Schilddrüse, Lymphknoten & Larynx', en:'Thyroid, lymph nodes & larynx', fa:'تیروئید، غدد لنفاوی و حنجره' },
+  },
+  Wirbelsaeule: {
+    color: '#93c5fd',
+    bg: 'linear-gradient(135deg,#071a32,#123a5f)',
+    available: false,
+    topics: ['HWS','BWS','LWS','Myelon','Bandscheibe'],
+    desc: { de:'HWS, BWS, LWS, Myelon & Bandscheiben', en:'Cervical, thoracic and lumbar spine, cord & discs', fa:'ستون فقرات گردنی، پشتی، کمری، نخاع و دیسک‌ها' },
   },
   Thorax: {
     color: '#38bdf8',
@@ -83,31 +90,38 @@ const FACH_DATA = {
 }
 
 const FACH_NAMES = {
-  de: { Neuroradiologie:'Kopf', Hals:'Hals & Wirbelsäule', Thorax:'Thorax',
+  de: { Neuroradiologie:'Kopf', Hals:'Hals', Wirbelsaeule:'Wirbelsäule', Thorax:'Thorax',
         Brust:'Brust', Abdomen:'Abdomen', Becken:'Becken', BeckenF:'Becken – Frau', BeckenM:'Becken – Mann',
         Muskuloskelettales:'Muskuloskelettales', Technik:'Technik & Physik' },
-  en: { Neuroradiologie:'Head', Hals:'Neck & Spine', Thorax:'Thorax',
+  en: { Neuroradiologie:'Head', Hals:'Neck', Wirbelsaeule:'Spine', Thorax:'Thorax',
         Brust:'Breast', Abdomen:'Abdomen', Becken:'Pelvis', BeckenF:'Pelvis – Female', BeckenM:'Pelvis – Male',
         Muskuloskelettales:'Musculoskeletal', Technik:'Physics & Technology' },
-  fa: { Neuroradiologie:'سر', Hals:'گردن و ستون فقرات', Thorax:'توراکس',
+  fa: { Neuroradiologie:'سر', Hals:'گردن', Wirbelsaeule:'ستون فقرات', Thorax:'توراکس',
         Brust:'پستان', Abdomen:'شکم', Becken:'لگن', BeckenF:'لگن – زنان', BeckenM:'لگن – مردان',
         Muskuloskelettales:'اسکلتی-عضلانی', Technik:'تکنیک و فیزیک' },
 }
 
 // ── ZONES (% of 941×1672) ─────────────────────────────────────────────────
 const ZONES = [
-  { id:'Neuroradiologie',    x:34.5, y: 1.2, w:15.9, h:11.1 },
-  { id:'Hals',               x:37.2, y:12.3, w:10.6, h: 6.6 },
-  { id:'Thorax',             x:27.1, y:18.8, w:31.3, h: 6.9 },
-  { id:'Brust',              x:27.1, y:25.7, w:14.3, h: 8.1 },
-  { id:'Brust',              x:44.1, y:25.7, w:14.3, h: 8.1 },
-  { id:'Abdomen',            x:23.4, y:33.8, w:39.3, h:15.3 },
-  { id:'Becken',             x:24.4, y:47.8, w:36.7, h: 6.3 },
-  { id:'Technik',            x:65.4, y:81.9, w:30.3, h:15.6 },
-  { id:'Muskuloskelettales', x:10.6, y:18.8, w:19.3, h:53.5 },
-  { id:'Muskuloskelettales', x:55.0, y:18.8, w:19.3, h:53.5 },
-  { id:'Muskuloskelettales', x:24.7, y:54.1, w:17.9, h:44.6 },
-  { id:'Muskuloskelettales', x:42.5, y:54.1, w:17.9, h:44.6 },
+  // Präzisere Hotspots auf Basis des Body-Bildes (941×1672).
+  // Reihenfolge ist wichtig: kleinere Spezialzonen liegen über größeren Flächen.
+  { id:'Muskuloskelettales', shape:'polygon', points:'10.5,17.4 27.4,18.5 25.2,58.6 13.4,61.7 7.0,52.8 8.9,32.0' },
+  { id:'Muskuloskelettales', shape:'polygon', points:'56.5,18.5 73.8,17.5 74.8,32.0 76.8,52.6 70.3,61.7 58.4,58.6' },
+  { id:'Muskuloskelettales', shape:'polygon', points:'24.3,52.0 42.5,52.8 39.0,98.4 25.2,98.4 21.8,69.0' },
+  { id:'Muskuloskelettales', shape:'polygon', points:'43.0,52.8 61.0,52.0 63.4,69.0 59.9,98.4 46.1,98.4' },
+
+  { id:'Neuroradiologie',    shape:'ellipse', cx:45.0, cy:7.3,  rx:12.2, ry:7.3 },
+  { id:'Hals',               shape:'rect',    x:39.4, y:13.7, w:11.2, h:7.1, rx:1.3 },
+  { id:'Thorax',             shape:'ellipse', cx:45.0, cy:27.3, rx:18.2, ry:12.6 },
+  { id:'Brust',              shape:'ellipse', cx:34.3, cy:31.0, rx:8.0,  ry:7.3 },
+  { id:'Brust',              shape:'ellipse', cx:55.6, cy:31.0, rx:8.0,  ry:7.3 },
+  { id:'Abdomen',            shape:'ellipse', cx:45.0, cy:42.5, rx:18.6, ry:10.3 },
+  { id:'Becken',             shape:'ellipse', cx:45.0, cy:52.4, rx:20.6, ry:9.2 },
+
+  // Narrow central zone so the spine can be selected separately from neck/thorax/abdomen.
+  { id:'Wirbelsaeule',       shape:'rect',    x:41.8, y:20.8, w:6.5,  h:34.0, rx:1.2 },
+
+  { id:'Technik',            shape:'rect',    x:65.4, y:81.9, w:30.3, h:15.6, rx:1.2 },
 ]
 
 // ── MAGNETIC FIELD ANIMATION ──────────────────────────────────────────────
@@ -237,7 +251,8 @@ function HexLogo() {
 // ── ZONE → LERNEN MAPPING ─────────────────────────────────────────────────
 const ZONE_TO_LERNEN = {
   Neuroradiologie:    '/lernen/gehirn',
-  Hals:               null,
+  Hals:               '/lernen/hals',
+  Wirbelsaeule:       '/lernen/wirbelsaeule',
   Thorax:             '/lernen/thorax',
   Brust:              '/lernen/mamma',
   Abdomen:            '/lernen/abdomen',
@@ -267,12 +282,6 @@ export default function Hero() {
       choices: [
         { id: 'BeckenF', label: { de: 'Becken – Frau', en: 'Pelvis – Female', fa: 'لگن – زنان' }, url: '/lernen/becken-f', icon: '♀️' },
         { id: 'BeckenM', label: { de: 'Becken – Mann', en: 'Pelvis – Male', fa: 'لگن – مردان' }, url: '/lernen/becken-m', icon: '♂️' },
-      ]
-    },
-    Hals: {
-      choices: [
-        { id: 'Hals',         label: { de: 'Hals',         en: 'Neck',  fa: 'گردن'         }, url: '/lernen/hals',         icon: '🦋' },
-        { id: 'Wirbelsaeule', label: { de: 'Wirbelsäule',  en: 'Spine', fa: 'ستون فقرات'   }, url: '/lernen/wirbelsaeule', icon: '🩻' },
       ]
     },
   }
@@ -346,16 +355,29 @@ export default function Hero() {
             {ZONES.map((zone,i)=>{
               const isHov = hovered===zone.id
               const color = FACH_DATA[zone.id]?.color||'#f97316'
+              const commonProps = {
+                key: i,
+                fill: isHov ? color+'2f' : 'transparent',
+                stroke: isHov ? color : 'transparent',
+                strokeWidth: '0.35',
+                style: { cursor:'pointer', transition:'fill 0.2s,stroke 0.2s' },
+                onMouseEnter: () => setHovered(zone.id),
+                onMouseLeave: () => setHovered(null),
+                onClick: () => handleZoneClick(zone.id),
+                pointerEvents: 'all',
+              }
+
+              if (zone.shape === 'ellipse') {
+                return <ellipse {...commonProps} cx={zone.cx} cy={zone.cy} rx={zone.rx} ry={zone.ry} />
+              }
+
+              if (zone.shape === 'polygon') {
+                return <polygon {...commonProps} points={zone.points} />
+              }
+
               return (
-                <rect key={i}
-                  x={zone.x} y={zone.y} width={zone.w} height={zone.h} rx="1.2"
-                  fill={isHov?color+'28':'transparent'}
-                  stroke={isHov?color:'transparent'}
-                  strokeWidth="0.3"
-                  style={{cursor:'pointer',transition:'fill 0.2s,stroke 0.2s'}}
-                  onMouseEnter={()=>setHovered(zone.id)}
-                  onMouseLeave={()=>setHovered(null)}
-                  onClick={()=>handleZoneClick(zone.id)}
+                <rect {...commonProps}
+                  x={zone.x} y={zone.y} width={zone.w} height={zone.h} rx={zone.rx || 1.2}
                 />
               )
             })}
