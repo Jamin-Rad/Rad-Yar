@@ -1246,7 +1246,7 @@ const CONTENT = {
     breadcrumbCurrent: 'Knie · Meniskus',
     title: 'Meniskus',
     subtitle: 'Grundlagen, Anatomie, MRT-Diagnostik und sichere Risskriterien',
-    sourceLabel: 'Skript Dr. Zia',
+    sourceLabel: 'Lehrbuch Dr. Zia',
     keyLabel: 'Merke',
     caveLabel: 'CAVE',
     mcqTitle: 'MCQs zum Meniskus',
