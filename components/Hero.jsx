@@ -101,27 +101,33 @@ const FACH_NAMES = {
         Muskuloskelettales:'اسکلتی-عضلانی', Technik:'تکنیک و فیزیک' },
 }
 
-// ── ZONES (% of 941×1672) ─────────────────────────────────────────────────
+// ── ZONES (% of visible Hero image wrapper) ────────────────────────────────
+// Rechteckige Hotspots. Keine Kreise/Ellipsen mehr.
+// Die Werte sind auf das aktuelle Body-Bild im Hero-Bereich kalibriert.
+// Reihenfolge ist wichtig: große MSK-Flächen zuerst, spezielle Organe danach.
 const ZONES = [
-  // Präzisere Hotspots auf Basis des Body-Bildes (941×1672).
-  // Reihenfolge ist wichtig: kleinere Spezialzonen liegen über größeren Flächen.
-  { id:'Muskuloskelettales', shape:'polygon', points:'10.5,17.4 27.4,18.5 25.2,58.6 13.4,61.7 7.0,52.8 8.9,32.0' },
-  { id:'Muskuloskelettales', shape:'polygon', points:'56.5,18.5 73.8,17.5 74.8,32.0 76.8,52.6 70.3,61.7 58.4,58.6' },
-  { id:'Muskuloskelettales', shape:'polygon', points:'24.3,52.0 42.5,52.8 39.0,98.4 25.2,98.4 21.8,69.0' },
-  { id:'Muskuloskelettales', shape:'polygon', points:'43.0,52.8 61.0,52.0 63.4,69.0 59.9,98.4 46.1,98.4' },
+  // Arme und Beine → MSK
+  { id:'Muskuloskelettales', x:10.8, y:22.0, w:20.8, h:40.0, rx:0.9 },
+  { id:'Muskuloskelettales', x:68.4, y:22.0, w:20.8, h:40.0, rx:0.9 },
+  { id:'Muskuloskelettales', x:27.6, y:58.0, w:16.6, h:40.5, rx:0.9 },
+  { id:'Muskuloskelettales', x:55.8, y:58.0, w:16.6, h:40.5, rx:0.9 },
 
-  { id:'Neuroradiologie',    shape:'ellipse', cx:45.0, cy:7.3,  rx:12.2, ry:7.3 },
-  { id:'Hals',               shape:'rect',    x:39.4, y:13.7, w:11.2, h:7.1, rx:1.3 },
-  { id:'Thorax',             shape:'ellipse', cx:45.0, cy:27.3, rx:18.2, ry:12.6 },
-  { id:'Brust',              shape:'ellipse', cx:34.3, cy:31.0, rx:8.0,  ry:7.3 },
-  { id:'Brust',              shape:'ellipse', cx:55.6, cy:31.0, rx:8.0,  ry:7.3 },
-  { id:'Abdomen',            shape:'ellipse', cx:45.0, cy:42.5, rx:18.6, ry:10.3 },
-  { id:'Becken',             shape:'ellipse', cx:45.0, cy:52.4, rx:20.6, ry:9.2 },
+  // Kopf, Hals, Thorax, Abdomen und Becken
+  { id:'Neuroradiologie',    x:36.4, y: 2.0, w:27.2, h:15.1, rx:0.9 },
+  { id:'Hals',               x:44.0, y:15.2, w:12.0, h: 7.6, rx:0.9 },
+  { id:'Thorax',             x:31.2, y:20.8, w:37.6, h:18.4, rx:0.9 },
+  { id:'Abdomen',            x:34.8, y:37.2, w:30.4, h:12.6, rx:0.9 },
+  { id:'Becken',             x:32.8, y:48.0, w:34.4, h:13.2, rx:0.9 },
 
-  // Narrow central zone so the spine can be selected separately from neck/thorax/abdomen.
-  { id:'Wirbelsaeule',       shape:'rect',    x:41.8, y:20.8, w:6.5,  h:34.0, rx:1.2 },
+  // Mamma bewusst über Thorax gelegt
+  { id:'Brust',              x:32.4, y:24.0, w:14.7, h:12.8, rx:0.9 },
+  { id:'Brust',              x:52.9, y:24.0, w:14.7, h:12.8, rx:0.9 },
 
-  { id:'Technik',            shape:'rect',    x:65.4, y:81.9, w:30.3, h:15.6, rx:1.2 },
+  // Wirbelsäule separat und schmal, damit Thorax/Abdomen nicht zu stark blockiert werden
+  { id:'Wirbelsaeule',       x:47.1, y:20.5, w: 5.8, h:34.4, rx:0.8 },
+
+  // MRT-Gerät / Technik
+  { id:'Technik',            x:65.6, y:80.4, w:28.2, h:17.4, rx:0.9 },
 ]
 
 // ── MAGNETIC FIELD ANIMATION ──────────────────────────────────────────────
