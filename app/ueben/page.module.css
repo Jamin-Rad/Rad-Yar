@@ -183,3 +183,39 @@
   background: linear-gradient(135deg, #fff7ed, #ffffff);
   border-color: rgba(249,115,22,0.22);
 }
+
+/* ── UPDATED: clear open/selected state for MCQ topic chips ────────────── */
+.chip {
+  position: relative;
+  padding-left: 28px;
+  border-radius: 14px;
+  background: #fff;
+}
+.chip::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 4px;
+  border: 1.5px solid #cbd5e1;
+  transform: translateY(-50%);
+  background: #fff;
+}
+.chipActive::before {
+  content: '✓';
+  width: 14px;
+  height: 14px;
+  border: none;
+  color: #fff;
+  background: currentColor;
+  font-size: 9px;
+  line-height: 14px;
+  text-align: center;
+  font-weight: 900;
+}
+[dir="rtl"] .chip { padding-left: 12px; padding-right: 28px; }
+[dir="rtl"] .chip::before { left: auto; right: 10px; }
+.fachIcon img { width: 30px; height: 30px; }
+.summaryFachTag { display: inline-flex; align-items: center; gap: 7px; }

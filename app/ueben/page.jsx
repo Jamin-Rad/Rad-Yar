@@ -2,6 +2,7 @@
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import { CURRICULUM, KAPITEL_TRANSLATIONS } from '@/data/curriculum'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
@@ -160,7 +161,7 @@ export default function UebenPage() {
                     className={`${styles.fachCard} ${active ? styles.fachCardActive : ''}`}
                     style={active ? { borderColor: f.color, background: f.color + '12' } : {}}
                     onClick={() => toggleFach(f.id)}>
-                    <span className={styles.fachIcon}>{FACH_ICONS[f.id] || f.icon}</span>
+                    <span className={styles.fachIcon}><Image src={`/fach/${f.id}.png`} alt={display[f.id] || f.key} width={30} height={30} style={{ objectFit: 'contain' }} /></span>
                     <span className={styles.fachName} style={active ? { color: f.color } : {}}>
                       {display[f.id] || f.key}
                     </span>
@@ -242,7 +243,7 @@ export default function UebenPage() {
                     const f = CURRICULUM.find(c => c.id === id)
                     return (
                       <div key={id} className={styles.summaryFachTag} style={{ borderColor: f?.color + '44', color: f?.color }}>
-                        {FACH_ICONS[id]} {display[id] || id}
+                        <Image src={`/fach/${id}.png`} alt={display[id] || id} width={18} height={18} style={{ objectFit: 'contain' }} /> {display[id] || id}
                       </div>
                     )
                   })}
