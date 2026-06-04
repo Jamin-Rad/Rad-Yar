@@ -377,3 +377,79 @@
   .main { padding: 24px 16px 48px; }
   .imgBlockSm { max-width: 100%; }
 }
+
+/* ── UPDATED: multilingual menu alignment and clearer opened main titles ── */
+.sideHeader,
+.sideGroupBtn,
+.sideLink,
+.table th,
+.table td {
+  text-align: left;
+}
+
+[dir="rtl"] .sideHeader,
+[dir="rtl"] .sideGroupBtn,
+[dir="rtl"] .sideLink,
+[dir="rtl"] .table th,
+[dir="rtl"] .table td {
+  text-align: right;
+}
+
+.sideGroupBtn {
+  border: 1px solid transparent;
+}
+
+.sideGroupActive {
+  color: #9a3412 !important;
+  background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%) !important;
+  border-color: rgba(249,115,22,0.24) !important;
+  box-shadow: 0 6px 18px rgba(249,115,22,0.08);
+}
+
+.sideGroupActive .sideGroupIcon {
+  transform: scale(1.04);
+}
+
+.sideGroupItems {
+  background: #fffaf5;
+  border-radius: 0 0 10px 10px;
+  margin-top: 0;
+}
+
+[dir="rtl"] .sideGroupItems {
+  padding: 4px 16px 8px 0;
+  margin: 2px 22px 4px 0;
+  border-left: none;
+  border-right: 1.5px solid rgba(249,115,22,0.2);
+}
+
+[dir="rtl"] .sideChevronOpen {
+  transform: rotate(-90deg);
+}
+
+[dir="rtl"] .merke,
+[dir="rtl"] .infoBox {
+  border-left-width: 1px;
+  border-right: 3px solid;
+}
+
+[dir="rtl"] .merkeTag {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+[dir="rtl"] .flow {
+  align-items: flex-end;
+}
+
+[dir="rtl"] .flowRow {
+  align-items: flex-end;
+}
+
+[dir="rtl"] .flowArrow {
+  padding: 2px 18px 2px 0;
+}
+
+[dir="rtl"] .caseLink::after {
+  content: ' ←';
+}
