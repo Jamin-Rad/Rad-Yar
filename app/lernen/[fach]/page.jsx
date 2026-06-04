@@ -26,8 +26,8 @@ const FACH_NAMES = {
 }
 
 const FACH_ICONS = {
-  abdomen:'🟠', gehirn:'🧠', msk:'🦴', thorax:'🫀',
-  wirbelsaeule:'🦴', hals:'💠', mamma:'🌸',
+  abdomen:'🫘', gehirn:'🧠', msk:'🦴', thorax:'🫁',
+  wirbelsaeule:'🩻', hals:'🦋', mamma:'🩺',
   'becken-f':'♀️', 'becken-m':'♂️', technik:'⚙️'
 }
 
@@ -211,7 +211,7 @@ export default function LernenFachPage() {
             <button key={k.id} className={`${styles.kapitelPill} ${openKapitel.has(k.id) ? styles.kapitelPillActive : ''}`}
               style={openKapitel.has(k.id) ? { borderColor: fach.color, color: fach.color, background: fach.color + '12' } : {}}
               onClick={() => { toggleKapitel(k.id); document.getElementById('kap-' + k.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }}>
-              {k.icon} {getKapitelTitle(k)}
+              <span className={styles.kapitelPillIcon}>{k.icon}</span> {getKapitelTitle(k)}
             </button>
           ))}
         </div>
