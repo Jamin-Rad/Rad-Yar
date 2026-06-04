@@ -10,6 +10,9 @@ const styles = new Proxy({}, {
 
 const MENISKUS_STYLES = `.page {
   min-height: 100vh;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
   padding-top: 64px;
   background:
     radial-gradient(circle at top left, rgba(249, 115, 22, 0.12), transparent 32rem),
@@ -43,7 +46,7 @@ const MENISKUS_STYLES = `.page {
 
 .heroGrid {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 22px;
   align-items: stretch;
 }
@@ -191,6 +194,7 @@ const MENISKUS_STYLES = `.page {
   grid-template-columns: 260px minmax(0, 1fr);
   gap: 24px;
   align-items: start;
+  direction: ltr;
 }
 
 [dir='rtl'] .layout {
@@ -207,6 +211,11 @@ const MENISKUS_STYLES = `.page {
 
 [dir='rtl'] .sidebar {
   order: 2;
+  direction: rtl;
+}
+
+[dir='rtl'] .main {
+  direction: rtl;
 }
 
 .sideTitle {
@@ -283,7 +292,7 @@ const MENISKUS_STYLES = `.page {
 }
 
 .eyebrow {
-  display: inline-flex;
+  display: none;
   align-items: center;
   justify-content: center;
   min-width: 42px;
@@ -392,6 +401,60 @@ const MENISKUS_STYLES = `.page {
   border-color: #fed7aa;
 }
 
+.normalCard {
+  border-radius: 22px;
+  padding: 20px;
+  background: linear-gradient(180deg, #ffffff, #f7f8fc);
+  border: 1px solid #e3e8f0;
+  box-shadow: none;
+}
+
+.normalCard h3 {
+  margin: 0 0 10px;
+  color: #0d1b2a;
+  font-size: 17px;
+}
+
+.normalCard p {
+  margin: 0;
+  color: #536174;
+  line-height: 1.7;
+}
+
+.plainList {
+  display: grid;
+  gap: 12px;
+}
+
+.plainList p {
+  margin: 0;
+}
+
+.plainList strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #0d1b2a;
+}
+
+.gradingFigure {
+  margin: 18px 0;
+}
+
+.gradingFigure .figure img {
+  max-height: 560px;
+}
+
+.caseLabelRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+[dir='rtl'] .caseLabelRow {
+  justify-content: flex-start;
+}
+
 .cardDanger {
   background: #fff1f2;
   border-color: #fecdd3;
@@ -442,7 +505,7 @@ const MENISKUS_STYLES = `.page {
 .table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 620px;
+  min-width: min(620px, 100%);
 }
 
 .table th {
@@ -484,8 +547,12 @@ const MENISKUS_STYLES = `.page {
 }
 
 .zone1 { background: linear-gradient(135deg, #dc2626, #991b1b); }
-.zone2 { background: linear-gradient(135deg, #f97316, #c2410c); }
-.zone3 { background: linear-gradient(135deg, #64748b, #334155); }
+.zone2 { background: linear-gradient(135deg, #fb7185, #db2777); }
+.zone3 {
+  background: linear-gradient(135deg, #ffffff, #f7f8fc);
+  color: #0d1b2a;
+  border: 1px solid #e3e8f0;
+}
 
 .zoneCard h3 { margin: 0 0 12px; font-size: 17px; }
 .zoneCard span { display: block; font-size: 13px; opacity: 0.88; margin-bottom: 14px; }
@@ -518,7 +585,7 @@ const MENISKUS_STYLES = `.page {
 }
 
 .criteriaCard span {
-  display: inline-flex;
+  display: none;
   width: 34px;
   height: 34px;
   align-items: center;
@@ -618,6 +685,11 @@ const MENISKUS_STYLES = `.page {
     flex-direction: column;
   }
   .table { min-width: 560px; }
+}
+
+.page img {
+  -webkit-user-drag: none;
+  user-drag: none;
 }
 
 /* Mobile-only lesson navigation. Desktop layout stays unchanged. */
@@ -1262,9 +1334,9 @@ const CONTENT = {
       { id: 'mrt', label: 'MRT-Diagnostik', icon: '🩻' },
       { id: 'grading', label: 'MRT-Grading', icon: '📊' },
       { id: 'risskriterien', label: 'Meniskusriss', icon: '⚠️' },
-      { id: 'fallbeispiele', label: 'Fallbeispiele', icon: '🧪' },
       { id: 'discoider', label: 'Discoider Meniskus', icon: '🔵' },
       { id: 'therapie', label: 'Therapieprinzip', icon: '🧵' },
+      { id: 'fallbeispiele', label: 'Fallbeispiele', icon: '🧪' },
     ],
     heroCards: [
       { value: '2/3', label: 'aller Risse', text: 'betreffen den Innenmeniskus' },
@@ -1273,7 +1345,7 @@ const CONTENT = {
     ],
     basics: {
       title: 'Kniegelenk · Meniskus · Grundlagen',
-      lead: 'Die Menisken sind fibrocartilaginäre Strukturen zwischen Femurkondylen und Tibiaplateau. Sie verbessern die Kongruenz, verteilen die Last und wirken als Stoßdämpfer. Für die MRT-Befundung sind Form, Fixierung, Durchblutung und Oberflächenkontakt des Signals entscheidend.',
+      lead: 'Die Menisken sind fibrocartilaginäre Strukturen zwischen Femurkondylen und Tibiaplateau. Es gibt zwei Menisken: den Innenmeniskus und den Außenmeniskus. Beide verbessern die Gelenkkongruenz, verteilen die Last und wirken als Stoßdämpfer. Für die MRT-Befundung sind Form, Fixierung, Durchblutung und Oberflächenkontakt des Signals entscheidend.',
       bullets: [
         'Innenmeniskus: C-förmig, kapsel- und MCL-fixiert, deutlich weniger mobil.',
         'Außenmeniskus: eher O-förmig, nicht an das laterale Kollateralband fixiert, beweglicher.',
@@ -1282,7 +1354,7 @@ const CONTENT = {
     },
     anatomy: {
       title: 'Anatomie: Innen- und Außenmeniskus',
-      lead: 'Der Unterschied zwischen Innen- und Außenmeniskus erklärt viele typische Verletzungsmuster.',
+      lead: 'Der klinische Vergleich von Innen- und Außenmeniskus konzentriert sich auf Form, Fixierung und Beweglichkeit.',
       tableHeaders: ['Merkmal', 'Innenmeniskus', 'Außenmeniskus'],
       tableRows: [
         ['Form', 'C-förmig', 'eher O-förmig'],
@@ -1292,9 +1364,13 @@ const CONTENT = {
         ['Häufigste Lokalisation', 'Hinterhorn in ca. 98 %', 'Hinterhorn in ca. 50 %, Rest in Corpus und Vorderhorn'],
       ],
       rootsTitle: 'Anschlüsse und Meniskuswurzeln',
-      rootsText: 'Die Menisken artikulieren mit den Femurkondylen. Ihre proximale Oberfläche ist konvex. Die feste tibiale Verankerung erfolgt über die Meniskuswurzeln, jeweils am Vorder- und Hinterhorn pro Meniskus.',
+      rootsText: 'Die Anschlüsse sollten getrennt betrachtet werden: femoral als Gleitkontakt zu den Femurkondylen und tibial als feste Verankerung über die Meniskuswurzeln.',
+      rootsItems: [
+        { title: 'Femoro-meniskaler Kontakt', text: 'Die Menisken artikulieren mit den Femurkondylen; ihre proximale Oberfläche ist konvex.' },
+        { title: 'Tibiale Verankerung', text: 'Die feste Verankerung am Tibiaplateau erfolgt über die Meniskuswurzeln am Vorder- und Hinterhorn jedes Meniskus.' },
+      ],
       imageCaption: 'Schematische Übersicht der Meniskuswurzeln: Vorderhorn, Corpus und Hinterhorn.',
-      key: 'Die verminderte Beweglichkeit des Innenmeniskus ist der wichtigste Grund, warum er bei Rotations- und Schertrauma deutlich häufiger reißt.',
+      key: 'Die verminderte Beweglichkeit des Innenmeniskus ist der wichtigste Grund, warum er deutlich verletzungsanfälliger ist.',
     },
     vascular: {
       title: 'Vaskularisation und Heilungspotenzial',
@@ -1304,13 +1380,13 @@ const CONTENT = {
         { name: 'Rot-weiße Zone · Zone II', range: '3–5 mm von der Kapsel', status: 'eingeschränkte Durchblutung', therapy: 'Naht individuell abwägen' },
         { name: 'Weiße Zone · Zone III', range: 'zentral gelegen', status: 'avaskulär', therapy: 'keine relevante Heilungstendenz' },
       ],
-      tableHeaders: ['Zone', 'Lage', 'Durchblutung', 'Konsequenz'],
+      tableHeaders: ['Zone', 'Lage', 'Durchblutung'],
       tableRows: [
-        ['Rote Zone', '< 3 mm von der Kapsel', 'gut', 'gute Heilungschancen'],
-        ['Rot-weiße Zone', '3–5 mm von der Kapsel', 'eingeschränkt', 'unsichere Heilungstendenz'],
-        ['Weiße Zone', 'zentral', 'avaskulär', 'keine relevante Heilungstendenz'],
+        ['Rote Zone', '< 3 mm von der Kapsel', 'gut'],
+        ['Rot-weiße Zone', '3–5 mm von der Kapsel', 'eingeschränkt'],
+        ['Weiße Zone', 'zentral', 'avaskulär'],
       ],
-      key: 'Je näher der Riss an der Kapsel liegt, desto besser ist die biologische Voraussetzung für eine Meniskusnaht.',
+      key: 'Je näher der Riss an der Kapsel liegt, desto besser ist das Heilungspotenzial.',
     },
     mri: {
       title: 'Die MRT-Diagnostik',
@@ -1326,24 +1402,17 @@ const CONTENT = {
     },
     grading: {
       title: 'MRT-Grading von Meniskusläsionen',
-      lead: 'Die Klassifikation nach Lotysch dient der Unterscheidung zwischen degenerativen Veränderungen und traumatischen Rissen. Grad 4 wird hier als komplexer Riss nach Stoller ergänzt.',
+      lead: 'Die Klassifikation nach Lotysch hilft, degenerative intrameniskale Signalveränderungen von einem echten Meniskusriss zu unterscheiden.',
       lotyschTitle: 'Grad 1 bis 3 nach Lotysch',
       tableHeaders: ['Grad', 'Morphologie', 'Oberflächenkontakt', 'Bedeutung'],
       tableRows: [
-        ['Grad 1', 'punktförmige oder kleine fokale Signalsteigerung', 'kein Kontakt', 'frühe mukoide Degeneration, meist asymptomatisch'],
-        ['Grad 2a', 'rein lineare Signalsteigerung', 'kein Kontakt', 'fortgeschrittene Degeneration'],
-        ['Grad 2b', 'lineares Signal', 'Kontakt auf einem einzelnen Bild', 'inkonklusiv für echten Riss'],
-        ['Grad 2c', 'keilförmiges oder globuläres Signal', 'kein eindeutiger Kontakt', 'hohes Risiko für okkulten Riss'],
-        ['Grad 3', 'lineares oder flächiges Signal', 'Kontakt auf mindestens zwei aufeinanderfolgenden Schichten', 'radiologisch gesicherter Meniskusriss'],
-        ['Grad 4', 'komplexe Risskonfiguration oder Destruktion', 'meist mehrfach', 'komplexer Meniskusriss nach Stoller'],
+        ['1', 'punktförmige oder kleine fokale Signalsteigerung', 'kein Kontakt', 'frühe mukoide Degeneration, meist asymptomatisch'],
+        ['2a', 'lineare Signalsteigerung', 'kein Kontakt', 'fortgeschrittene Degeneration'],
+        ['2b', 'lineare Signalsteigerung', 'Kontakt auf einem einzelnen Bild', 'inkonklusiv für echten Riss'],
+        ['2c', 'keilförmige oder globuläre Signalsteigerung', 'kein eindeutiger Kontakt', 'hohes Risiko für okkulten Riss'],
+        ['3', 'Signalsteigerung', 'Kontakt auf mindestens zwei aufeinanderfolgenden Schichten', 'radiologisch gesicherter Meniskusriss'],
       ],
-      complexTitle: 'Grad 4: komplexer Meniskusriss',
-      complexBullets: [
-        'mehrere Risslinien in verschiedenen Ebenen, zum Beispiel horizontal und vertikal',
-        'Mazeration und Zerfransung des Meniskusgewebes',
-        'dislozierte Fragmente, zum Beispiel Korbhenkelriss oder Flap-Riss',
-      ],
-      key: 'Grad 3 ist der entscheidende Schwellenwert: Signal mit sicherem Oberflächenkontakt auf mindestens zwei Schichten.',
+      key: 'Meniskusläsion Grad 3 ist der entscheidende Schwellenwert für die Rissdiagnose: Signalsteigerung innerhalb des Meniskus mit sicherem Oberflächenkontakt auf mindestens zwei Schichten.',
     },
     tear: {
       title: 'MRT-Kriterien für einen Meniskusriss',
@@ -1363,17 +1432,19 @@ const CONTENT = {
         {
           title: 'Keilförmig/globuläres Signal ohne sicheren Oberflächenkontakt',
           label: 'Grad 2c',
+          tags: ['Discoider Meniskus'],
           meta: 'PD-Wichtung · sagittal · mukoide Degeneration · hohes Risiko für okkulten Riss',
           img: '/meniskus/mri-sagittal.png',
-          url: 'https://radiopaedia.org/cases/14060/studies/13900#t=im&v1i=1118538&v1z=1&v2i=1118592&v2z=1',
+          url: 'https://radiopaedia.org/cases/75168/studies/86248#t=im&v1i=52196174&v1z=1&v2i=52196277&v2z=1&v3i=52196234&v3z=1&v4i=52196213&v4z=1',
           credit: 'Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060',
         },
         {
           title: 'Lineares Signal mit Oberflächenkontakt auf nur einer Schicht',
           label: 'Grad 2b',
+          tags: ['Discoider Meniskus'],
           meta: 'PD-Wichtung · koronal · inkonklusiv · kein sicherer Grad-3-Riss',
           img: '/meniskus/mri-coronal.png',
-          url: 'https://radiopaedia.org/cases/75168/studies/86248#t=im&v1i=52196174&v1z=1&v2i=52196277&v2z=1&v3i=52196234&v3z=1&v4i=52196213&v4z=1',
+          url: 'https://radiopaedia.org/cases/14060/studies/13900#t=im&v1i=1118538&v1z=1&v2i=1118592&v2z=1',
           credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168',
         },
       ],
@@ -1385,7 +1456,7 @@ const CONTENT = {
       stats: [
         { value: '3–5 %', label: 'Inzidenz', text: 'häufig Zufallsbefund im Knie-MRT' },
         { value: '~50 %', label: 'bilateral', text: 'nicht selten beidseitig vorhanden' },
-        { value: '≥ 3', label: 'Sagittalschichten', text: 'Corpus bleibt über mehrere Schichten sichtbar' },
+        { value: 'Außen', label: 'Meniskus', text: 'fast ausschließlich der Außenmeniskus betroffen' },
       ],
       overviewHeaders: ['Parameter', 'Wert'],
       overviewRows: [
@@ -1413,7 +1484,7 @@ const CONTENT = {
         ['discoider Meniskus mit Riss', 'Meniskusrefixation plus ggf. partielle Resektion'],
         ['irreparabel / schwere Destruktion', 'Teil- oder Totalmeniskektomie nur als letzte Option'],
       ],
-      key: 'Auch beim discoiden Meniskus gilt: Meniskusgewebe möglichst erhalten; totale Meniskektomie vermeiden.',
+      key: 'Sagittales Zeichen: Bei einem discoiden Meniskus bleibt der Meniskuskorpus auf mindestens 3 aufeinanderfolgenden sagittalen Schichten sichtbar.',
     },
     therapy: {
       title: 'Therapieüberlegungen: Save the Meniscus',
@@ -1449,9 +1520,9 @@ const CONTENT = {
       { id: 'mrt', label: 'MRI diagnosis', icon: '🩻' },
       { id: 'grading', label: 'MRI grading', icon: '📊' },
       { id: 'risskriterien', label: 'Meniscal tear', icon: '⚠️' },
-      { id: 'fallbeispiele', label: 'Cases', icon: '🧪' },
       { id: 'discoider', label: 'Discoid meniscus', icon: '🔵' },
       { id: 'therapie', label: 'Treatment principle', icon: '🧵' },
+      { id: 'fallbeispiele', label: 'Cases', icon: '🧪' },
     ],
     heroCards: [
       { value: '2/3', label: 'of tears', text: 'involve the medial meniscus' },
@@ -1460,7 +1531,7 @@ const CONTENT = {
     ],
     basics: {
       title: 'Knee joint · Meniscus · Basics',
-      lead: 'The menisci are fibrocartilaginous structures between the femoral condyles and the tibial plateau. They improve congruity, distribute load and absorb shock. For MRI reporting, shape, fixation, vascularity and surface contact of signal are central.',
+      lead: 'The menisci are fibrocartilaginous structures between the femoral condyles and the tibial plateau. There are two menisci: the medial and the lateral meniscus. Both improve joint congruity, distribute load and act as shock absorbers. For MRI reporting, shape, fixation, vascularity and surface contact of signal are central.',
       bullets: [
         'Medial meniscus: C-shaped, fixed to the capsule and MCL, therefore much less mobile.',
         'Lateral meniscus: more O-shaped, not attached to the lateral collateral ligament, therefore more mobile.',
@@ -1469,7 +1540,7 @@ const CONTENT = {
     },
     anatomy: {
       title: 'Anatomy: medial and lateral meniscus',
-      lead: 'The differences between the medial and lateral meniscus explain many typical injury patterns.',
+      lead: 'The clinical comparison of the medial and lateral meniscus focuses on shape, fixation and mobility.',
       tableHeaders: ['Feature', 'Medial meniscus', 'Lateral meniscus'],
       tableRows: [
         ['Shape', 'C-shaped', 'more O-shaped'],
@@ -1479,9 +1550,13 @@ const CONTENT = {
         ['Most common location', 'posterior horn in approx. 98%', 'posterior horn in approx. 50%, remainder in body and anterior horn'],
       ],
       rootsTitle: 'Attachments and meniscal roots',
-      rootsText: 'The menisci articulate with the femoral condyles. Their proximal surface is convex. The firm tibial anchoring is provided by the meniscal roots at the anterior and posterior horn of each meniscus.',
+      rootsText: 'The attachments should be considered separately: femoral gliding contact with the condyles and tibial anchoring through the meniscal roots.',
+      rootsItems: [
+        { title: 'Femoro-meniscal contact', text: 'The menisci articulate with the femoral condyles; their proximal surface is convex.' },
+        { title: 'Tibial anchoring', text: 'Firm anchoring to the tibial plateau is provided by the meniscal roots at the anterior and posterior horn of each meniscus.' },
+      ],
       imageCaption: 'Schematic overview of the meniscal roots: anterior horn, body and posterior horn.',
-      key: 'Reduced mobility of the medial meniscus is the main reason why it tears much more often during rotational and shear trauma.',
+      key: 'Reduced mobility of the medial meniscus is the main reason why it is clearly more prone to injury.',
     },
     vascular: {
       title: 'Vascular supply and healing potential',
@@ -1491,13 +1566,13 @@ const CONTENT = {
         { name: 'Red-white zone · Zone II', range: '3–5 mm from the capsule', status: 'limited blood supply', therapy: 'repair depends on case' },
         { name: 'White zone · Zone III', range: 'central area', status: 'avascular', therapy: 'no relevant healing potential' },
       ],
-      tableHeaders: ['Zone', 'Location', 'Vascularity', 'Consequence'],
+      tableHeaders: ['Zone', 'Location', 'Vascularity'],
       tableRows: [
-        ['Red zone', '< 3 mm from the capsule', 'good', 'good healing potential'],
-        ['Red-white zone', '3–5 mm from the capsule', 'limited', 'uncertain healing'],
-        ['White zone', 'central', 'avascular', 'no relevant healing potential'],
+        ['Red zone', '< 3 mm from the capsule', 'good'],
+        ['Red-white zone', '3–5 mm from the capsule', 'limited'],
+        ['White zone', 'central', 'avascular'],
       ],
-      key: 'The closer the tear is to the capsule, the better the biological conditions for meniscal repair.',
+      key: 'The closer the tear is to the capsule, the better its healing potential.',
     },
     mri: {
       title: 'MRI diagnosis',
@@ -1513,24 +1588,17 @@ const CONTENT = {
     },
     grading: {
       title: 'MRI grading of meniscal lesions',
-      lead: 'The Lotysch classification distinguishes degenerative changes from traumatic tears. Grade 4 is added here as a complex tear according to Stoller.',
+      lead: 'The Lotysch classification helps distinguish degenerative intrameniscal signal changes from a true meniscal tear.',
       lotyschTitle: 'Grades 1 to 3 according to Lotysch',
       tableHeaders: ['Grade', 'Morphology', 'Surface contact', 'Meaning'],
       tableRows: [
-        ['Grade 1', 'punctate or small focal signal increase', 'no contact', 'early mucoid degeneration, usually asymptomatic'],
-        ['Grade 2a', 'purely linear signal increase', 'no contact', 'advanced degeneration'],
-        ['Grade 2b', 'linear signal', 'contact on a single image', 'inconclusive for a true tear'],
-        ['Grade 2c', 'wedge-shaped or globular signal', 'no definite contact', 'high risk of an occult tear'],
-        ['Grade 3', 'linear or broad signal', 'contact on at least two consecutive slices', 'radiologically proven meniscal tear'],
-        ['Grade 4', 'complex tear configuration or destruction', 'usually multiple', 'complex meniscal tear according to Stoller'],
+        ['1', 'punctate or small focal signal increase', 'no contact', 'early mucoid degeneration, usually asymptomatic'],
+        ['2a', 'linear signal increase', 'no contact', 'advanced degeneration'],
+        ['2b', 'linear signal increase', 'contact on a single image', 'inconclusive for a true tear'],
+        ['2c', 'wedge-shaped or globular signal increase', 'no definite contact', 'high risk of an occult tear'],
+        ['3', 'signal increase', 'contact on at least two consecutive slices', 'radiologically proven meniscal tear'],
       ],
-      complexTitle: 'Grade 4: complex meniscal tear',
-      complexBullets: [
-        'multiple tear lines in different planes, for example horizontal and vertical',
-        'maceration and fraying of meniscal tissue',
-        'displaced fragments such as bucket-handle or flap tears',
-      ],
-      key: 'Grade 3 is the key threshold: signal with reliable surface contact on at least two slices.',
+      key: 'Grade 3 meniscal lesion is the decisive threshold for diagnosing a tear: intrameniscal signal increase with reliable surface contact on at least two slices.',
     },
     tear: {
       title: 'MRI criteria for a meniscal tear',
@@ -1550,17 +1618,19 @@ const CONTENT = {
         {
           title: 'Wedge-shaped/globular signal without definite surface contact',
           label: 'Grade 2c',
+          tags: ['Discoid meniscus'],
           meta: 'PD-weighted · sagittal · mucoid degeneration · high risk of occult tear',
           img: '/meniskus/mri-sagittal.png',
-          url: 'https://radiopaedia.org/cases/14060/studies/13900#t=im&v1i=1118538&v1z=1&v2i=1118592&v2z=1',
+          url: 'https://radiopaedia.org/cases/75168/studies/86248#t=im&v1i=52196174&v1z=1&v2i=52196277&v2z=1&v3i=52196234&v3z=1&v4i=52196213&v4z=1',
           credit: 'Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060',
         },
         {
           title: 'Linear signal with surface contact on one slice only',
           label: 'Grade 2b',
+          tags: ['Discoid meniscus'],
           meta: 'PD-weighted · coronal · inconclusive · not a definite grade-3 tear',
           img: '/meniskus/mri-coronal.png',
-          url: 'https://radiopaedia.org/cases/75168/studies/86248#t=im&v1i=52196174&v1z=1&v2i=52196277&v2z=1&v3i=52196234&v3z=1&v4i=52196213&v4z=1',
+          url: 'https://radiopaedia.org/cases/14060/studies/13900#t=im&v1i=1118538&v1z=1&v2i=1118592&v2z=1',
           credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168',
         },
       ],
@@ -1572,7 +1642,7 @@ const CONTENT = {
       stats: [
         { value: '3–5%', label: 'incidence', text: 'often incidental on knee MRI' },
         { value: '~50%', label: 'bilateral', text: 'not uncommonly present on both sides' },
-        { value: '≥ 3', label: 'sagittal slices', text: 'body remains visible across several slices' },
+        { value: 'Lateral', label: 'meniscus', text: 'almost exclusively the lateral meniscus is affected' },
       ],
       overviewHeaders: ['Parameter', 'Value'],
       overviewRows: [
@@ -1600,7 +1670,7 @@ const CONTENT = {
         ['discoid meniscus with tear', 'meniscal repair plus partial resection if needed'],
         ['irreparable / severe destruction', 'partial or total meniscectomy only as last option'],
       ],
-      key: 'The save-the-meniscus principle also applies to discoid meniscus: preserve tissue and avoid total meniscectomy whenever possible.',
+      key: 'Sagittal sign: in a discoid meniscus, the meniscal body remains visible on at least 3 consecutive sagittal slices.',
     },
     therapy: {
       title: 'Treatment concept: Save the meniscus',
@@ -1636,9 +1706,9 @@ const CONTENT = {
       { id: 'mrt', label: 'تشخیص MRI', icon: '🩻' },
       { id: 'grading', label: 'درجه‌بندی MRI', icon: '📊' },
       { id: 'risskriterien', label: 'پارگی منیسک', icon: '⚠️' },
-      { id: 'fallbeispiele', label: 'نمونه کیس‌ها', icon: '🧪' },
       { id: 'discoider', label: 'منیسک دیسکوئید', icon: '🔵' },
       { id: 'therapie', label: 'اصل درمان', icon: '🧵' },
+      { id: 'fallbeispiele', label: 'نمونه کیس‌ها', icon: '🧪' },
     ],
     heroCards: [
       { value: '۲/۳', label: 'پارگی‌ها', text: 'مربوط به منیسک داخلی هستند' },
@@ -1647,7 +1717,7 @@ const CONTENT = {
     ],
     basics: {
       title: 'مفصل زانو · منیسک · مبانی',
-      lead: 'منیسک‌ها ساختارهای فیبروکارتیلاژ بین کندیل‌های فمور و پلاتوی تیبیا هستند. آن‌ها تطابق مفصلی را بهتر می‌کنند، نیرو را پخش می‌کنند و نقش ضربه‌گیر دارند. در گزارش MRI، شکل، میزان تثبیت، خون‌رسانی و تماس سیگنال با سطح مفصل اهمیت اصلی دارد.',
+      lead: 'منیسک‌ها ساختارهای فیبروکارتیلاژ بین کندیل‌های فمور و پلاتوی تیبیا هستند. دو منیسک وجود دارد: منیسک داخلی و منیسک خارجی. هر دو تطابق مفصلی را بهتر می‌کنند، نیرو را پخش می‌کنند و نقش ضربه‌گیر دارند. در گزارش MRI، شکل، میزان تثبیت، خون‌رسانی و تماس سیگنال با سطح مفصل اهمیت اصلی دارد.',
       bullets: [
         'منیسک داخلی: C شکل، متصل به کپسول و MCL، بنابراین تحرک کمتر دارد.',
         'منیسک خارجی: بیشتر O شکل، به رباط خارجی متصل نیست و تحرک بیشتری دارد.',
@@ -1656,7 +1726,7 @@ const CONTENT = {
     },
     anatomy: {
       title: 'آناتومی: منیسک داخلی و خارجی',
-      lead: 'تفاوت منیسک داخلی و خارجی بسیاری از الگوهای تیپیک آسیب را توضیح می‌دهد.',
+      lead: 'مقایسه بالینی منیسک داخلی و خارجی بر شکل، میزان تثبیت و تحرک تمرکز دارد.',
       tableHeaders: ['ویژگی', 'منیسک داخلی', 'منیسک خارجی'],
       tableRows: [
         ['شکل', 'C شکل', 'بیشتر O شکل'],
@@ -1666,9 +1736,13 @@ const CONTENT = {
         ['محل شایع پارگی', 'شاخ پشتی در حدود ۹۸٪', 'شاخ پشتی در حدود ۵۰٪، بقیه در بدنه و شاخ قدامی'],
       ],
       rootsTitle: 'اتصالات و ریشه‌های منیسک',
-      rootsText: 'منیسک‌ها با کندیل‌های فمور مفصل می‌شوند. سطح پروگزیمال آن‌ها محدب است. اتصال محکم به تیبیا از طریق ریشه‌های منیسک در شاخ قدامی و خلفی هر منیسک انجام می‌شود.',
+      rootsText: 'اتصالات بهتر است جداگانه بررسی شوند: تماس لغزشی با کندیل‌های فمور و اتصال محکم به تیبیا از طریق ریشه‌های منیسک.',
+      rootsItems: [
+        { title: 'تماس فمورو-منیسکال', text: 'منیسک‌ها با کندیل‌های فمور مفصل می‌شوند و سطح پروگزیمال آن‌ها محدب است.' },
+        { title: 'اتصال به تیبیا', text: 'اتصال محکم به پلاتوی تیبیا از طریق ریشه‌های منیسک در شاخ قدامی و خلفی هر منیسک انجام می‌شود.' },
+      ],
       imageCaption: 'نمای شماتیک ریشه‌های منیسک: شاخ قدامی، بدنه و شاخ خلفی.',
-      key: 'تحرک کمتر منیسک داخلی مهم‌ترین دلیل پارگی بیشتر آن در تروماهای چرخشی و نیروهای برشی است.',
+      key: 'تحرک کمتر منیسک داخلی مهم‌ترین دلیل آسیب‌پذیری بیشتر آن است.',
     },
     vascular: {
       title: 'خون‌رسانی و پتانسیل ترمیم',
@@ -1678,13 +1752,13 @@ const CONTENT = {
         { name: 'ناحیه قرمز-سفید · Zone II', range: '۳ تا ۵ میلی‌متر از کپسول', status: 'خون‌رسانی محدود', therapy: 'بخیه بسته به شرایط' },
         { name: 'ناحیه سفید · Zone III', range: 'قسمت مرکزی', status: 'بدون عروق', therapy: 'ترمیم قابل توجه ندارد' },
       ],
-      tableHeaders: ['ناحیه', 'محل', 'خون‌رسانی', 'نتیجه'],
+      tableHeaders: ['ناحیه', 'محل', 'خون‌رسانی'],
       tableRows: [
-        ['قرمز', 'کمتر از ۳ میلی‌متر از کپسول', 'خوب', 'شانس ترمیم خوب'],
-        ['قرمز-سفید', '۳ تا ۵ میلی‌متر از کپسول', 'محدود', 'ترمیم نامطمئن'],
-        ['سفید', 'مرکزی', 'بدون عروق', 'بدون پتانسیل ترمیم قابل توجه'],
+        ['قرمز', 'کمتر از ۳ میلی‌متر از کپسول', 'خوب'],
+        ['قرمز-سفید', '۳ تا ۵ میلی‌متر از کپسول', 'محدود'],
+        ['سفید', 'مرکزی', 'بدون عروق'],
       ],
-      key: 'هرچه پارگی به کپسول نزدیک‌تر باشد، شرایط بیولوژیک برای بخیه منیسک بهتر است.',
+      key: 'هرچه پارگی به کپسول نزدیک‌تر باشد، پتانسیل ترمیم بهتر است.',
     },
     mri: {
       title: 'تشخیص MRI',
@@ -1700,24 +1774,17 @@ const CONTENT = {
     },
     grading: {
       title: 'درجه‌بندی MRI ضایعات منیسک',
-      lead: 'طبقه‌بندی Lotysch برای تفکیک تغییرات دژنراتیو از پارگی تروماتیک استفاده می‌شود. در این صفحه، درجه ۴ به عنوان پارگی پیچیده طبق Stoller اضافه شده است.',
+      lead: 'طبقه‌بندی Lotysch کمک می‌کند تغییرات سیگنال دژنراتیو داخل منیسک از پارگی واقعی منیسک جدا شود.',
       lotyschTitle: 'درجه ۱ تا ۳ طبق Lotysch',
       tableHeaders: ['درجه', 'مورفولوژی', 'تماس با سطح', 'معنا'],
       tableRows: [
-        ['درجه ۱', 'افزایش سیگنال نقطه‌ای یا کوچک', 'بدون تماس', 'دژنراسیون موکوئید اولیه، معمولاً بی‌علامت'],
-        ['درجه 2a', 'افزایش سیگنال خطی', 'بدون تماس', 'دژنراسیون پیشرفته'],
-        ['درجه 2b', 'سیگنال خطی', 'تماس فقط در یک تصویر', 'برای پارگی قطعی ناکافی'],
-        ['درجه 2c', 'سیگنال گوه‌ای یا گرد', 'بدون تماس واضح', 'ریسک بالا برای پارگی مخفی'],
-        ['درجه ۳', 'سیگنال خطی یا پهن', 'تماس در حداقل دو برش متوالی', 'پارگی منیسک از نظر رادیولوژیک قطعی'],
-        ['درجه ۴', 'الگوی پیچیده یا تخریب منیسک', 'معمولاً متعدد', 'پارگی پیچیده طبق Stoller'],
+        ['1', 'افزایش سیگنال نقطه‌ای یا کوچک', 'بدون تماس', 'دژنراسیون موکوئید اولیه، معمولاً بی‌علامت'],
+        ['2a', 'افزایش سیگنال خطی', 'بدون تماس', 'دژنراسیون پیشرفته'],
+        ['2b', 'افزایش سیگنال خطی', 'تماس فقط در یک تصویر', 'برای پارگی قطعی ناکافی'],
+        ['2c', 'افزایش سیگنال گوه‌ای یا گلوبولار', 'بدون تماس واضح', 'ریسک بالا برای پارگی مخفی'],
+        ['3', 'افزایش سیگنال', 'تماس در حداقل دو برش متوالی', 'پارگی منیسک از نظر رادیولوژیک قطعی'],
       ],
-      complexTitle: 'درجه ۴: پارگی پیچیده منیسک',
-      complexBullets: [
-        'چند خط پارگی در صفحات مختلف، مثلاً افقی و عمودی',
-        'ماسره شدن و ریش‌ریش شدن بافت منیسک',
-        'قطعات جابجا شده مانند Bucket-handle یا Flap tear',
-      ],
-      key: 'درجه ۳ مرز مهم تشخیصی است: سیگنال باید حداقل در دو برش متوالی با سطح مفصلی تماس داشته باشد.',
+      key: 'ضایعه منیسک درجه 3 آستانه اصلی برای تشخیص پارگی است: افزایش سیگنال داخل منیسک همراه با تماس مطمئن با سطح مفصلی در حداقل دو برش.',
     },
     tear: {
       title: 'معیارهای MRI برای پارگی منیسک',
@@ -1737,17 +1804,19 @@ const CONTENT = {
         {
           title: 'سیگنال گوه‌ای/گلوبولار بدون تماس قطعی با سطح مفصلی',
           label: 'درجه 2c',
+          tags: ['منیسک دیسکوئید'],
           meta: 'PD · ساژیتال · دژنراسیون موکوئید · ریسک بالای پارگی مخفی',
           img: '/meniskus/mri-sagittal.png',
-          url: 'https://radiopaedia.org/cases/14060/studies/13900#t=im&v1i=1118538&v1z=1&v2i=1118592&v2z=1',
+          url: 'https://radiopaedia.org/cases/75168/studies/86248#t=im&v1i=52196174&v1z=1&v2i=52196277&v2z=1&v3i=52196234&v3z=1&v4i=52196213&v4z=1',
           credit: 'Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060',
         },
         {
           title: 'سیگنال خطی با تماس سطحی فقط در یک تصویر',
           label: 'درجه 2b',
+          tags: ['منیسک دیسکوئید'],
           meta: 'PD · کرونال · غیرقطعی · پارگی قطعی Grade 3 نیست',
           img: '/meniskus/mri-coronal.png',
-          url: 'https://radiopaedia.org/cases/75168/studies/86248#t=im&v1i=52196174&v1z=1&v2i=52196277&v2z=1&v3i=52196234&v3z=1&v4i=52196213&v4z=1',
+          url: 'https://radiopaedia.org/cases/14060/studies/13900#t=im&v1i=1118538&v1z=1&v2i=1118592&v2z=1',
           credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168',
         },
       ],
@@ -1759,7 +1828,7 @@ const CONTENT = {
       stats: [
         { value: '۳–۵٪', label: 'شیوع', text: 'اغلب یافته اتفاقی در MRI زانو' },
         { value: '~۵۰٪', label: 'دوطرفه', text: 'می‌تواند در هر دو زانو دیده شود' },
-        { value: '≥ ۳', label: 'برش ساژیتال', text: 'تنه منیسک در چند برش متوالی دیده می‌شود' },
+        { value: 'خارجی', label: 'منیسک', text: 'تقریباً همیشه منیسک خارجی درگیر می‌شود' },
       ],
       overviewHeaders: ['پارامتر', 'مقدار'],
       overviewRows: [
@@ -1787,7 +1856,7 @@ const CONTENT = {
         ['منیسک دیسکوئید همراه با پارگی', 'ترمیم منیسک همراه با رزکسیون نسبی در صورت نیاز'],
         ['غیرقابل ترمیم / تخریب شدید', 'منیسککتومی نسبی یا کامل فقط به عنوان آخرین گزینه'],
       ],
-      key: 'در منیسک دیسکوئید هم اصل Save the Meniscus برقرار است: تا حد امکان بافت منیسک حفظ شود و منیسککتومی کامل انجام نشود.',
+      key: 'علامت ساژیتال: در منیسک دیسکوئید، تنه منیسک در حداقل ۳ برش ساژیتال متوالی قابل مشاهده باقی می‌ماند.',
     },
     therapy: {
       title: 'اصول درمان: Save the Meniscus',
@@ -1929,7 +1998,15 @@ export default function MeniskusPage() {
   }, [sectionIds])
 
   return (
-    <div className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
+    <div
+      className={styles.page}
+      dir={isRTL ? 'rtl' : 'ltr'}
+      lang={lang}
+      onCopy={(event) => event.preventDefault()}
+      onCut={(event) => event.preventDefault()}
+      onContextMenu={(event) => event.preventDefault()}
+      onDragStart={(event) => event.preventDefault()}
+    >
       <style>{MENISKUS_STYLES}</style>
       <header className={styles.header}>
         <div className={styles.breadcrumb}>
@@ -1950,24 +2027,9 @@ export default function MeniskusPage() {
               <span>{copy.mcqTitle}</span>
             </Link>
           </div>
-          <div className={styles.heroStats}>
-            {copy.heroCards.map(card => (
-              <div key={card.label} className={styles.heroStatCard}>
-                <strong>{card.value}</strong>
-                <span>{card.label}</span>
-                <small>{card.text}</small>
-              </div>
-            ))}
-          </div>
+
         </div>
 
-        <Link href={withLang('/msk/knie/meniskus/mcq')} className={styles.mcqStrip}>
-          <div>
-            <strong>{copy.mcqTitle}</strong>
-            <span>{copy.mcqDesc}</span>
-          </div>
-          <em>{copy.mcqCta} →</em>
-        </Link>
       </header>
 
       <div className={styles.mobileTocBar}>
@@ -2015,7 +2077,18 @@ export default function MeniskusPage() {
             <div className={styles.splitGrid}>
               <div className={styles.card}>
                 <h3>{copy.anatomy.rootsTitle}</h3>
-                <p>{copy.anatomy.rootsText}</p>
+                {copy.anatomy.rootsItems ? (
+                  <div className={styles.plainList}>
+                    {copy.anatomy.rootsItems.map(item => (
+                      <p key={item.title}>
+                        <strong>{item.title}</strong>
+                        {item.text}
+                      </p>
+                    ))}
+                  </div>
+                ) : (
+                  <p>{copy.anatomy.rootsText}</p>
+                )}
               </div>
               <ImageFigure src="/meniskus/anatomy-roots.png" alt={copy.anatomy.rootsTitle} caption={copy.anatomy.imageCaption} />
             </div>
@@ -2049,7 +2122,7 @@ export default function MeniskusPage() {
                 </div>
               ))}
             </div>
-            <div className={styles.cardAccent}>
+            <div className={styles.normalCard}>
               <h3>{copy.mri.normalTitle}</h3>
               <p>{copy.mri.normalText}</p>
             </div>
@@ -2057,20 +2130,10 @@ export default function MeniskusPage() {
           </Section>
 
           <Section id="grading" eyebrow="05" title={copy.grading.title} lead={copy.grading.lead}>
-            <div className={styles.splitGrid}>
+            <div className={styles.gradingFigure}>
               <ImageFigure src="/meniskus/lotysch-grading.png" alt={copy.grading.title} zoomable zoomLabel={copy.zoomImage} onZoom={() => setPreviewImage({ src: '/meniskus/lotysch-grading.png', alt: copy.grading.title })} />
-              <div className={styles.card}>
-                <h3>{copy.grading.lotyschTitle}</h3>
-                <p>{copy.grading.lead}</p>
-              </div>
             </div>
             <Table headers={copy.grading.tableHeaders} rows={copy.grading.tableRows} />
-            <div className={styles.cardDanger}>
-              <h3>{copy.grading.complexTitle}</h3>
-              <ul>
-                {copy.grading.complexBullets.map(item => <li key={item}>{item}</li>)}
-              </ul>
-            </div>
             <Callout label={copy.keyLabel}>{copy.grading.key}</Callout>
           </Section>
 
@@ -2088,24 +2151,6 @@ export default function MeniskusPage() {
             <Callout label={copy.keyLabel}>{copy.tear.key}</Callout>
           </Section>
 
-          <Section id="fallbeispiele" eyebrow="07" title={copy.cases.title} lead={copy.cases.lead}>
-            <div className={styles.caseGrid}>
-              {copy.cases.items.map(item => (
-                <a key={item.title} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}>
-                  <img className={styles.caseImage} src={item.img} alt={item.title} />
-                  <div className={styles.caseBody}>
-                    <span className={styles.caseLabel}>{item.label}</span>
-                    <h3>{item.title}</h3>
-                    <p>{item.meta}</p>
-                    <small>{item.credit}</small>
-                    <strong>{copy.openCase}</strong>
-                  </div>
-                </a>
-              ))}
-            </div>
-            <Callout label={copy.keyLabel}>{copy.cases.key}</Callout>
-          </Section>
-
           <Section id="discoider" eyebrow="08" title={copy.discoid.title} lead={copy.discoid.lead}>
             <div className={styles.discoidStats}>
               {copy.discoid.stats.map(stat => (
@@ -2117,31 +2162,38 @@ export default function MeniskusPage() {
               ))}
             </div>
             <Table headers={copy.discoid.overviewHeaders} rows={copy.discoid.overviewRows} />
-            <div className={styles.splitGrid}>
-              <div className={styles.cardAccent}>
-                <h3>{copy.discoid.childTitle}</h3>
-                <p>{copy.discoid.childText}</p>
-              </div>
-              <div className={styles.card}>
-                <h3>{copy.discoid.sagittalTitle}</h3>
-                <p>{copy.discoid.sagittalText}</p>
-              </div>
-            </div>
             <div className={styles.card}>
               <h3>{copy.discoid.mriTitle}</h3>
               <Table headers={copy.discoid.mriHeaders} rows={copy.discoid.mriRows} />
-            </div>
-            <div className={styles.card}>
-              <h3>{copy.therapy.title}</h3>
-              <Table headers={copy.discoid.treatmentHeaders} rows={copy.discoid.treatmentRows} />
             </div>
             <Callout label={copy.keyLabel}>{copy.discoid.key}</Callout>
           </Section>
 
           <Section id="therapie" eyebrow="09" title={copy.therapy.title} lead={copy.therapy.lead}>
             <Table headers={copy.therapy.tableHeaders} rows={copy.therapy.tableRows} />
-            <Callout type="success" label={copy.keyLabel}>{copy.therapy.key}</Callout>
+            <Callout label={copy.keyLabel}>{copy.therapy.key}</Callout>
           </Section>
+
+          <Section id="fallbeispiele" eyebrow="07" title={copy.cases.title} lead={copy.cases.lead}>
+            <div className={styles.caseGrid}>
+              {copy.cases.items.map(item => (
+                <a key={item.title} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}>
+                  <img className={styles.caseImage} src={item.img} alt={item.title} />
+                  <div className={styles.caseBody}>
+                    <div className={styles.caseLabelRow}>
+                      <span className={styles.caseLabel}>{item.label}</span>
+                      {item.tags?.map(tag => <span key={tag} className={styles.caseLabel}>{tag}</span>)}
+                    </div>
+                    <h3>{item.title}</h3>
+                    <p>{item.meta}</p>
+                    <small>{item.credit}</small>
+                    <strong>{copy.openCase}</strong>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </Section>
+
         </main>
       </div>
 
@@ -2154,10 +2206,6 @@ export default function MeniskusPage() {
         </div>
       )}
 
-      <Link href={withLang('/msk/knie/meniskus/mcq')} className={styles.mobileMcqFab}>
-        <span>🎯</span>
-        <strong>{copy.mcqCta}</strong>
-      </Link>
     </div>
   )
 }
