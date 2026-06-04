@@ -543,7 +543,7 @@ export const CURRICULUM = [
           { id: 'hand-mrt',        title: 'Hand MRT',                          tags:['MRT'],            diff:2 },
           { id: 'knie',            title: 'Knie',                              tags:['MRT'],            diff:2,
             sub: [
-              { id: 'meniskus',       title: 'Meniskus',                                        tags:['MRT'], diff:2 },
+              { id: 'meniskus',       title: 'Meniskus', link: '/msk/knie/meniskus', ready: true,       tags:['MRT'], diff:2 },
               { id: 'knie-ligamente', title: 'Knie – Ligamente (VKB, HKB, KK)',               tags:['MRT'], diff:2 },
               { id: 'patella',        title: 'Patella (Fraktur, Luxation, Osgood-Schlatter)', tags:['MRT','Rö'], diff:2 },
             ]
