@@ -141,7 +141,7 @@ export default function LernenFachPage() {
 
   useEffect(() => {
     setMounted(true)
-    if (fach) setOpenKapitel(new Set(fach.kapitel.map(k => k.id)))
+    if (fach) setOpenKapitel(new Set())
   }, [fach])
 
   useEffect(() => { setSearch('') }, [params?.fach])
@@ -204,21 +204,36 @@ export default function LernenFachPage() {
             </button>
           </div>
         </div>
-
-        {/* Kapitel pills navigation */}
-        <div className={styles.kapitelNav}>
-          {fach.kapitel.map(k => (
-            <button key={k.id} className={`${styles.kapitelPill} ${openKapitel.has(k.id) ? styles.kapitelPillActive : ''}`}
-              style={openKapitel.has(k.id) ? { borderColor: fach.color, color: fach.color, background: fach.color + '12' } : {}}
-              onClick={() => { toggleKapitel(k.id); document.getElementById('kap-' + k.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }}>
-              <span className={styles.kapitelPillIcon}>{k.icon}</span> {getKapitelTitle(k)}
-            </button>
-          ))}
-        </div>
       </div>
 
       {/* ── CONTENT ── */}
       <div className={`${styles.content} ${mounted ? styles.contentIn : ''}`}>
+        <div className={styles.contentLayout}>
+          <aside className={styles.chapterSidebar}>
+            <div className={styles.sidebarTitle}>{lang === 'fa' ? 'سرفصل‌ها' : lang === 'en' ? 'Chapters' : 'Kapitel'}</div>
+            <div className={styles.sidebarList}>
+              {fach.kapitel.map(k => {
+                const active = openKapitel.has(k.id)
+                return (
+                  <button
+                    key={k.id}
+                    className={`${styles.sidebarBtn} ${active ? styles.sidebarBtnActive : ''}`}
+                    style={active ? { borderColor: fach.color, background: fach.color + '12' } : {}}
+                    onClick={() => {
+                      toggleKapitel(k.id)
+                      setTimeout(() => document.getElementById('kap-' + k.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 30)
+                    }}
+                  >
+                    <span className={styles.kapitelPillIcon}>{k.icon}</span>
+                    <span className={styles.sidebarBtnText} style={active ? { color: fach.color } : {}}>{getKapitelTitle(k)}</span>
+                    <span className={styles.sidebarChevron} style={{ color: active ? fach.color : undefined }}>{active ? '−' : '+'}</span>
+                  </button>
+                )
+              })}
+            </div>
+          </aside>
+
+          <main className={styles.chapterContent}>
 
         {/* SEARCH MODE */}
         {searchActive ? (
@@ -307,6 +322,8 @@ export default function LernenFachPage() {
             )
           })
         )}
+          </main>
+        </div>
       </div>
     </div>
   )
