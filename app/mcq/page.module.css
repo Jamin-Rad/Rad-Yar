@@ -82,3 +82,55 @@
   .icon { font-size: 22px; }
   .arrow { display: none; }
 }
+
+/* ── UPDATED: topic-combination entry + cleaner icons ─────────────────── */
+.trainingBox {
+  max-width: 680px;
+  margin: 24px auto 0;
+  padding: 18px 20px;
+  background: linear-gradient(135deg, #ffffff, #fff7ed);
+  border: 1.5px solid rgba(249,115,22,0.22);
+  border-radius: 16px;
+  box-shadow: 0 8px 26px rgba(249,115,22,0.08);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.trainingIcon,
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f8fafc, #ffffff);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(26,32,81,0.05);
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.trainingText { flex: 1; min-width: 0; }
+.trainingTitle { font-size: 14px; font-weight: 800; color: #1a2051; margin-bottom: 3px; }
+.trainingDesc { font-size: 12.5px; line-height: 1.45; color: #64748b; }
+.trainingBtn {
+  flex-shrink: 0;
+  border-radius: 999px;
+  padding: 9px 14px;
+  background: #f97316;
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 800;
+  box-shadow: 0 4px 14px rgba(249,115,22,0.24);
+  transition: transform .18s, box-shadow .18s;
+}
+.trainingBtn:hover { transform: translateY(-1px); box-shadow: 0 7px 20px rgba(249,115,22,0.32); }
+
+@media (max-width: 540px) {
+  .trainingBox { margin: 18px 16px 0; flex-direction: column; align-items: flex-start; }
+  .trainingBtn { width: 100%; text-align: center; }
+  .icon { width: 36px; height: 36px; font-size: 19px; border-radius: 12px; }
+}

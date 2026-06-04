@@ -17,29 +17,51 @@ const TOPICS = [
   {
     key: 'meniskus',
     href: '/msk/knie/meniskus/mcq',
-    icon: '🦴',
-    color: '#f97316',
+    icon: '🦵',
+    color: '#fb923c',
     available: true,
     count: { de: '6 Fragen', en: '6 Questions', fa: '۶ سوال' },
     name: { de: 'Knie · Meniskus', en: 'Knee · Meniscus', fa: 'زانو · منیسک' },
     desc: { de: 'Anatomie · MRT-Grading · Vaskularisation · Rissdiagnostik', en: 'Anatomy · MRI grading · vascular zones · tear diagnosis', fa: 'آناتومی · درجه‌بندی MRI · خون‌رسانی · تشخیص پارگی' },
   },
   { key: 'mrt',    icon: '🧲', color: '#7c3aed', available: false, name: { de: 'MRT-Physik',     en: 'MRI Physics',    fa: 'فیزیک MRI' } },
-  { key: 'ct',     icon: '☢️', color: '#0ea5e9', available: false, name: { de: 'CT-Technik',     en: 'CT Technology',  fa: 'تکنولوژی CT' } },
+  { key: 'ct',     icon: '🩻', color: '#0ea5e9', available: false, name: { de: 'CT-Technik',     en: 'CT Technology',  fa: 'تکنولوژی CT' } },
   { key: 'strah',  icon: '🛡️', color: '#d97706', available: false, name: { de: 'Strahlenschutz', en: 'Radiation Protection', fa: 'حفاظت از تابش' } },
   { key: 'neuro',  icon: '🧠', color: '#7c3aed', available: false, name: { de: 'Neuroradiologie',en: 'Neuroradiology', fa: 'نوروراديولوژی' } },
   { key: 'thorax', icon: '🫁', color: '#0ea5e9', available: false, name: { de: 'Thorax',         en: 'Thorax',         fa: 'توراکس' } },
 ]
 
 const UI = {
-  de: { title: 'MCQs · Thema wählen', sub: 'Wähle ein Thema und teste dein Wissen.', available: 'Verfügbar', soon: 'Demnächst', start: 'Quiz starten →' },
-  en: { title: 'MCQs · Choose Topic', sub: 'Select a topic and test your knowledge.', available: 'Available', soon: 'Coming soon', start: 'Start Quiz →' },
-  fa: { title: 'MCQ · انتخاب موضوع', sub: 'یک موضوع را انتخاب کنید.', available: 'در دسترس', soon: 'به زودی', start: 'شروع ←' },
+  de: {
+    title: 'MCQs · Thema wählen',
+    sub: 'Wähle ein Thema oder kombiniere mehrere Themen im MCQ-Training.',
+    available: 'Verfügbar', soon: 'Demnächst', start: 'Quiz starten →',
+    trainingTitle: 'MCQ-Training nach Themen',
+    trainingDesc: 'Hier kannst du mehrere Körperregionen und Unterthemen kombinieren – inklusive MSK → Knie → Meniskus.',
+    trainingBtn: 'Themen auswählen →',
+  },
+  en: {
+    title: 'MCQs · Choose Topic',
+    sub: 'Select one topic or combine multiple topics in MCQ training.',
+    available: 'Available', soon: 'Coming soon', start: 'Start Quiz →',
+    trainingTitle: 'Topic-based MCQ training',
+    trainingDesc: 'Combine multiple body regions and subtopics, including MSK → Knee → Meniscus.',
+    trainingBtn: 'Choose topics →',
+  },
+  fa: {
+    title: 'MCQ · انتخاب موضوع',
+    sub: 'یک موضوع را انتخاب کنید یا چند موضوع را در تمرین MCQ ترکیب کنید.',
+    available: 'در دسترس', soon: 'به زودی', start: 'شروع ←',
+    trainingTitle: 'تمرین MCQ بر اساس موضوع',
+    trainingDesc: 'می‌توانید چند ناحیه و زیرموضوع را انتخاب کنید، از جمله MSK → زانو → منیسک.',
+    trainingBtn: 'انتخاب موضوعات ←',
+  },
 }
 
 export default function McqSelectPage() {
   const { lang } = useLanguage()
   const ui = UI[lang] || UI.de
+  const withLang = (href) => lang === 'de' ? href : `${href}?lang=${lang}`
 
   return (
     <div className={styles.page}>
@@ -53,6 +75,15 @@ export default function McqSelectPage() {
         <p className={styles.sub}>{ui.sub}</p>
       </div>
 
+      <div className={styles.trainingBox}>
+        <div className={styles.trainingIcon}>🎛️</div>
+        <div className={styles.trainingText}>
+          <div className={styles.trainingTitle}>{ui.trainingTitle}</div>
+          <div className={styles.trainingDesc}>{ui.trainingDesc}</div>
+        </div>
+        <Link href={withLang('/ueben')} className={styles.trainingBtn}>{ui.trainingBtn}</Link>
+      </div>
+
       <div className={styles.list}>
         {TOPICS.map(t => {
           const name = t.name[lang] || t.name.de
@@ -61,7 +92,7 @@ export default function McqSelectPage() {
 
           if (t.available) {
             return (
-              <Link key={t.key} href={t.href} className={styles.card}>
+              <Link key={t.key} href={withLang(t.href)} className={styles.card}>
                 <span className={styles.icon}>{t.icon}</span>
                 <div className={styles.info}>
                   <div className={styles.name} style={{ color: t.color }}>{name}</div>
