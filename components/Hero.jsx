@@ -41,6 +41,13 @@ const FACH_DATA = {
     topics: ['Leberzirrhose','Pankreatitis','Nierensteine','Appendizitis','Tumoren'],
     desc: { de:'Leber, Milz, Niere, Pankreas & GI-Trakt', en:'Liver, spleen, kidney, pancreas & GI', fa:'کبد، طحال، کلیه، پانکراس و دستگاه گوارش' },
   },
+  Becken: {
+    color: '#fb7185',
+    bg: 'linear-gradient(135deg,#2a0a10,#5a1020)',
+    available: false,
+    topics: ['Becken – Frau','Becken – Mann','Urogenitalorgane','Hüfte'],
+    desc: { de:'Weibliches und männliches Becken', en:'Female and male pelvis', fa:'لگن زنان و مردان' },
+  },
   BeckenF: {
     color: '#fb7185',
     bg: 'linear-gradient(135deg,#2a0a10,#5a1020)',
@@ -77,13 +84,13 @@ const FACH_DATA = {
 
 const FACH_NAMES = {
   de: { Neuroradiologie:'Kopf', Hals:'Hals & Wirbelsäule', Thorax:'Thorax',
-        Brust:'Brust', Abdomen:'Abdomen', BeckenF:'Becken – Frau', BeckenM:'Becken – Mann',
+        Brust:'Brust', Abdomen:'Abdomen', Becken:'Becken', BeckenF:'Becken – Frau', BeckenM:'Becken – Mann',
         Muskuloskelettales:'Muskuloskelettales', Technik:'Technik & Physik' },
   en: { Neuroradiologie:'Head', Hals:'Neck & Spine', Thorax:'Thorax',
-        Brust:'Breast', Abdomen:'Abdomen', BeckenF:'Pelvis – Female', BeckenM:'Pelvis – Male',
+        Brust:'Breast', Abdomen:'Abdomen', Becken:'Pelvis', BeckenF:'Pelvis – Female', BeckenM:'Pelvis – Male',
         Muskuloskelettales:'Musculoskeletal', Technik:'Physics & Technology' },
   fa: { Neuroradiologie:'سر', Hals:'گردن و ستون فقرات', Thorax:'توراکس',
-        Brust:'پستان', Abdomen:'شکم', BeckenF:'لگن – زنان', BeckenM:'لگن – مردان',
+        Brust:'پستان', Abdomen:'شکم', Becken:'لگن', BeckenF:'لگن – زنان', BeckenM:'لگن – مردان',
         Muskuloskelettales:'اسکلتی-عضلانی', Technik:'تکنیک و فیزیک' },
 }
 
@@ -95,7 +102,7 @@ const ZONES = [
   { id:'Brust',              x:27.1, y:25.7, w:14.3, h: 8.1 },
   { id:'Brust',              x:44.1, y:25.7, w:14.3, h: 8.1 },
   { id:'Abdomen',            x:23.4, y:33.8, w:39.3, h:15.3 },
-  { id:'BeckenF',            x:24.4, y:47.8, w:36.7, h: 6.3 },
+  { id:'Becken',             x:24.4, y:47.8, w:36.7, h: 6.3 },
   { id:'Technik',            x:65.4, y:81.9, w:30.3, h:15.6 },
   { id:'Muskuloskelettales', x:10.6, y:18.8, w:19.3, h:53.5 },
   { id:'Muskuloskelettales', x:55.0, y:18.8, w:19.3, h:53.5 },
@@ -220,7 +227,8 @@ const ZONE_TO_LERNEN = {
   Thorax:             '/lernen/thorax',
   Brust:              '/lernen/mamma',
   Abdomen:            '/lernen/abdomen',
-  BeckenF:            null,  // popup
+  Becken:             null,  // popup: female / male
+  BeckenF:            null,  // legacy
   BeckenM:            '/lernen/becken-m',
   Muskuloskelettales: '/lernen/msk',
   Technik:            '/lernen/technik',
@@ -242,9 +250,17 @@ export default function Hero() {
 
   const POPUP_ZONES = {
     Hals: {
+      title: { de: 'Hals & Wirbelsäule', en: 'Neck & Spine', fa: 'گردن و ستون فقرات' },
       choices: [
-        { id: 'Hals',         label: { de: 'Hals',         en: 'Neck',  fa: 'گردن'         }, url: '/lernen/hals',         icon: '🔵' },
-        { id: 'Wirbelsaeule', label: { de: 'Wirbelsäule',  en: 'Spine', fa: 'ستون فقرات'   }, url: '/lernen/wirbelsaeule', icon: '🦴' },
+        { id: 'Hals',         label: { de: 'Hals',         en: 'Neck',  fa: 'گردن'         }, url: '/lernen/hals',         iconSrc: '/fach/hals.png' },
+        { id: 'Wirbelsaeule', label: { de: 'Wirbelsäule',  en: 'Spine', fa: 'ستون فقرات'   }, url: '/lernen/wirbelsaeule', iconSrc: '/fach/wirbelsaeule.png' },
+      ]
+    },
+    Becken: {
+      title: { de: 'Becken auswählen', en: 'Choose pelvis', fa: 'انتخاب لگن' },
+      choices: [
+        { id: 'BeckenF', label: { de: 'Becken – Frau', en: 'Pelvis – Female', fa: 'لگن – زنان' }, url: '/lernen/becken-f', iconSrc: '/fach/becken-f.png' },
+        { id: 'BeckenM', label: { de: 'Becken – Mann', en: 'Pelvis – Male',   fa: 'لگن – مردان' }, url: '/lernen/becken-m', iconSrc: '/fach/becken-m.png' },
       ]
     },
   }
@@ -348,13 +364,13 @@ export default function Hero() {
         <div className={styles.zonePopupOverlay} onClick={() => setPopup(null)}>
           <div className={styles.zonePopup} onClick={e => e.stopPropagation()}>
             <div className={styles.zonePopupTitle}>
-              {lang === 'fa' ? 'کدام تخصص؟' : lang === 'en' ? 'Which specialty?' : 'Welches Fachgebiet?'}
+              {POPUP_ZONES[popup]?.title?.[lang] || POPUP_ZONES[popup]?.title?.de || (lang === 'fa' ? 'کدام تخصص؟' : lang === 'en' ? 'Which specialty?' : 'Welches Fachgebiet?')}
             </div>
             <div className={styles.zonePopupChoices}>
               {POPUP_ZONES[popup]?.choices.map(choice => (
                 <button key={choice.id} className={styles.zonePopupBtn}
                   onClick={() => { setPopup(null); window.location.href = choice.url }}>
-                  <span className={styles.zonePopupIcon}>{choice.icon}</span>
+                  <span className={styles.zonePopupIcon}>{choice.iconSrc ? <img src={choice.iconSrc} alt="" /> : choice.icon}</span>
                   <span>{choice.label[lang] || choice.label.de}</span>
                   <span className={styles.zonePopupArr}>→</span>
                 </button>
