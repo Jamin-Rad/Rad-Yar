@@ -63,6 +63,7 @@ export default function UebenPage() {
   const [selFach, setSelFach]     = useState(new Set())   // multiple fach
   const [selThemen, setSelThemen] = useState(new Set())   // selected thema ids
   const [anzahl, setAnzahl]       = useState(10)
+  const [openTopicGroups, setOpenTopicGroups] = useState(new Set())
 
   // All themen from all selected fach (combined, deduped by id)
   const allThemenFromSel = useMemo(() => {
@@ -101,6 +102,7 @@ export default function UebenPage() {
   }
 
   const toggleThema = (id) => setSelThemen(prev => { const s = new Set(prev); s.has(id) ? s.delete(id) : s.add(id); return s })
+  const toggleTopicGroup = (id) => setOpenTopicGroups(prev => { const s = new Set(prev); s.has(id) ? s.delete(id) : s.add(id); return s })
   const selectAll  = () => setSelThemen(new Set(allThemenFromSel.map(t => t.id)))
   const selectNone = () => setSelThemen(prev => {
     const s = new Set(prev)
@@ -190,24 +192,37 @@ export default function UebenPage() {
               <div className={styles.hint}>{t.noFach}</div>
             ) : (
               <div className={styles.kapitelList}>
-                {groupedBySel.map(({ fachId, fachColor, kapitelId, kapitelTitle, themen }) => (
-                  <div key={fachId + '-' + kapitelId} className={styles.kapitelBlock}>
-                    <div className={styles.kapitelHeader}>
-                      <span className={styles.kapitelDot} style={{ background: fachColor }} />
-                      <span className={styles.kapitelTitle}>{display[fachId] || fachId} · {kapitelTitle}</span>
+                {groupedBySel.map(({ fachId, fachColor, kapitelId, kapitelTitle, themen }) => {
+                  const groupKey = fachId + '-' + kapitelId
+                  const isOpen = openTopicGroups.has(groupKey)
+                  const selectedCount = themen.filter(th => selThemen.has(th.id)).length
+                  return (
+                    <div key={groupKey} className={`${styles.kapitelBlock} ${isOpen ? styles.kapitelBlockOpen : ''}`}>
+                      <button className={styles.kapitelHeaderBtn} onClick={() => toggleTopicGroup(groupKey)}>
+                        <span className={styles.kapitelIconWrap}>
+                          <Image src={`/fach/${fachId}.png`} alt={display[fachId] || fachId} width={26} height={26} style={{ objectFit: 'contain' }} />
+                        </span>
+                        <span className={styles.kapitelTitle}>{display[fachId] || fachId} · {kapitelTitle}</span>
+                        <span className={styles.kapitelMeta} style={{ color: fachColor, background: fachColor + '12' }}>
+                          {selectedCount}/{themen.length}
+                        </span>
+                        <span className={styles.kapitelChevron} style={{ color: isOpen ? fachColor : undefined }}>{isOpen ? '−' : '+'}</span>
+                      </button>
+                      {isOpen && (
+                        <div className={styles.chips}>
+                          {themen.map(th => (
+                            <button key={th.id}
+                              className={`${styles.chip} ${selThemen.has(th.id) ? styles.chipActive : ''} ${th._sub ? styles.chipSub : ''}`}
+                              style={selThemen.has(th.id) ? { borderColor: fachColor, color: fachColor, background: fachColor + '12' } : {}}
+                              onClick={() => toggleThema(th.id)}>
+                              {th.title}
+                            </button>
+                          ))}
+                        </div>
+                      )}
                     </div>
-                    <div className={styles.chips}>
-                      {themen.map(th => (
-                        <button key={th.id}
-                          className={`${styles.chip} ${selThemen.has(th.id) ? styles.chipActive : ''} ${th._sub ? styles.chipSub : ''}`}
-                          style={selThemen.has(th.id) ? { borderColor: fachColor, color: fachColor, background: fachColor + '12' } : {}}
-                          onClick={() => toggleThema(th.id)}>
-                          {th.title}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                ))}
+                  )
+                })}
               </div>
             )}
           </section>
