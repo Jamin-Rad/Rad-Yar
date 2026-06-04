@@ -7,19 +7,32 @@ import styles from './Navbar.module.css'
 
 function HexLogo({ size = 32 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      <rect x="2.5" y="2.5" width="35" height="35" rx="13" fill="url(#logoBg)" />
-      <path d="M10 22.5c2.2-7.8 17.8-7.8 20 0" stroke="rgba(255,255,255,.55)" strokeWidth="1.3" strokeLinecap="round" />
-      <path d="M10 17.5c2.2 7.8 17.8 7.8 20 0" stroke="rgba(255,255,255,.34)" strokeWidth="1.3" strokeLinecap="round" />
-      <circle cx="20" cy="20" r="13.5" stroke="rgba(255,255,255,.42)" strokeWidth="1" />
-      <text x="20" y="24.2" textAnchor="middle" fill="white" fontSize="12.6" fontWeight="900"
-        fontFamily="Inter, Manrope, system-ui, sans-serif" letterSpacing="-.5">RY</text>
+    <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <circle cx="24" cy="24" r="22" fill="url(#radyarNavLogoBg)" />
+      <path d="M13.8 8.6A20.2 20.2 0 0 1 39 13.3" stroke="url(#radyarNavLogoArc)" strokeWidth="2.7" strokeLinecap="round" />
+      <path d="M39.8 13.9A20.1 20.1 0 0 1 40.2 33.6" stroke="#f97316" strokeWidth="2.7" strokeLinecap="round" />
+      <path d="M34.8 41.4A20.2 20.2 0 0 1 8.2 14.7" stroke="rgba(255,255,255,.82)" strokeWidth="2.2" strokeLinecap="round" />
+      <circle cx="39.8" cy="14" r="3.2" fill="#ff8a1d" />
+      <circle cx="39.8" cy="14" r="6.4" fill="url(#radyarNavLogoGlow)" />
+      <text x="17.1" y="31.8" fill="#ffffff" fontSize="24" fontWeight="900"
+        fontFamily="Inter, Manrope, system-ui, sans-serif" letterSpacing="-.9">R</text>
+      <text x="27.1" y="32.2" fill="#f97316" fontSize="23" fontWeight="900"
+        fontFamily="Inter, Manrope, system-ui, sans-serif" letterSpacing="-.8">Y</text>
       <defs>
-        <linearGradient id="logoBg" x1="3" y1="3" x2="37" y2="37" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#0f172a"/>
-          <stop offset="0.55" stopColor="#1e3a8a"/>
+        <radialGradient id="radyarNavLogoBg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(16 12) rotate(50) scale(38)">
+          <stop stopColor="#102a44"/>
+          <stop offset="0.62" stopColor="#071a2f"/>
+          <stop offset="1" stopColor="#020617"/>
+        </radialGradient>
+        <linearGradient id="radyarNavLogoArc" x1="11" y1="8" x2="42" y2="15" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#ffffff"/>
           <stop offset="1" stopColor="#f97316"/>
         </linearGradient>
+        <radialGradient id="radyarNavLogoGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(39.8 14) scale(8)">
+          <stop stopColor="#ffedd5" stopOpacity=".95"/>
+          <stop offset=".45" stopColor="#f97316" stopOpacity=".45"/>
+          <stop offset="1" stopColor="#f97316" stopOpacity="0"/>
+        </radialGradient>
       </defs>
     </svg>
   )
