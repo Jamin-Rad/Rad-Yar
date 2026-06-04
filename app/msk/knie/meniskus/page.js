@@ -116,13 +116,14 @@ const MENISKUS_STYLES = `.page {
   display: inline-flex;
   width: fit-content;
   margin-bottom: 18px;
-  padding: 8px 14px;
+  padding: 9px 16px;
   border-radius: 999px;
-  background: #0d1b2a;
+  background: linear-gradient(135deg, #f97316, #fb923c);
   color: #fff;
-  box-shadow: 0 10px 24px rgba(13, 27, 42, 0.16);
+  border: 1px solid rgba(255, 237, 213, 0.9);
+  box-shadow: 0 12px 26px rgba(249, 115, 22, 0.22);
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 950;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -680,6 +681,67 @@ const MENISKUS_STYLES = `.page {
 
 .greenTitle {
   color: #16a34a;
+}
+
+.gradeTable th:first-child,
+.gradeTable td:first-child {
+  width: 74px;
+  min-width: 74px;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: 950;
+  color: #0d1b2a;
+}
+
+.gradeTable td:first-child {
+  font-size: 16px;
+  background: rgba(249, 115, 22, 0.08);
+}
+
+[dir='rtl'] .gradeTable th:first-child,
+[dir='rtl'] .gradeTable td:first-child {
+  text-align: center;
+}
+
+.videoCard {
+  border-radius: 24px;
+  padding: 24px;
+  background: linear-gradient(135deg, #fff8f1 0%, #ffffff 100%);
+  border: 1px solid #fed7aa;
+  box-shadow: 0 14px 30px rgba(249, 115, 22, 0.08);
+}
+
+.videoCard h3 {
+  margin: 0 0 8px;
+  color: #f97316;
+  font-size: 20px;
+}
+
+.videoCard p {
+  margin: 0;
+  color: #536174;
+  line-height: 1.75;
+}
+
+.videoButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  color: #ffffff;
+  font-weight: 900;
+  text-decoration: none;
+  box-shadow: 0 12px 24px rgba(249, 115, 22, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.videoButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(249, 115, 22, 0.28);
 }
 
 [dir='rtl'] .breadcrumb,
@@ -1367,7 +1429,7 @@ const CONTENT = {
     breadcrumbCurrent: 'Knie · Meniskus',
     title: 'Meniskus',
     subtitle: 'Grundlagen, Anatomie, MRT-Diagnostik und sichere Risskriterien',
-    sourceLabel: 'Lehrbuch Dr. Zia',
+    sourceLabel: 'Dr. Zia',
     keyLabel: 'Merke',
     caveLabel: 'CAVE',
     mcqTitle: 'MCQs zum Meniskus',
@@ -1385,6 +1447,7 @@ const CONTENT = {
       { id: 'discoider', label: 'Discoider Meniskus', icon: '🔵' },
       { id: 'therapie', label: 'Therapieprinzip', icon: '🧵' },
       { id: 'fallbeispiele', label: 'Fallbeispiele', icon: '🧪' },
+      { id: 'lernvideo', label: 'Lernvideo', icon: '▶️' },
     ],
     heroCards: [
       { value: '2/3', label: 'aller Risse', text: 'betreffen den Innenmeniskus' },
@@ -1458,7 +1521,7 @@ const CONTENT = {
         ['2a', 'lineare Signalsteigerung', 'kein Kontakt', 'fortgeschrittene Degeneration'],
         ['2b', 'lineare Signalsteigerung', 'Kontakt auf einem einzelnen Bild', 'inkonklusiv für echten Riss'],
         ['2c', 'keilförmige oder globuläre Signalsteigerung', 'kein eindeutiger Kontakt', 'hohes Risiko für okkulten Riss'],
-        ['3', 'Signalsteigerung', 'Kontakt auf mindestens zwei aufeinanderfolgenden Schichten', 'radiologisch gesicherter Meniskusriss'],
+        ['3', 'Pathologische Signalsteigerung', 'Kontakt auf mindestens zwei aufeinanderfolgenden Schichten', 'radiologisch gesicherter Meniskusriss'],
         ['4', 'komplexe Rissmorphologie mit Deformierung oder Fragmentierung', 'mehrfacher Oberflächenkontakt', 'komplexer Meniskusriss'],
       ],
       key: 'Meniskusläsion Grad 3 ist der entscheidende Schwellenwert für die Rissdiagnose: Signalsteigerung innerhalb des Meniskus mit sicherem Oberflächenkontakt auf mindestens zwei Schichten.',
@@ -1548,6 +1611,12 @@ const CONTENT = {
       ],
       key: 'So viel Meniskus wie möglich erhalten, so wenig wie nötig resezieren.',
     },
+    video: {
+      title: 'Lernvideo',
+      text: 'Das Lernvideo zum Thema Meniskus ist jetzt auf YouTube verfügbar.',
+      cta: 'Video auf YouTube ansehen',
+      url: 'https://youtu.be/L03fPcRZm_o?si=RzNDyM-Fmtig8I10',
+    },
   },
   en: {
     toc: 'Contents',
@@ -1555,7 +1624,7 @@ const CONTENT = {
     breadcrumbCurrent: 'Knee · Meniscus',
     title: 'Meniscus',
     subtitle: 'Basics, anatomy, MRI diagnosis and reliable tear criteria',
-    sourceLabel: 'Dr. Zia script',
+    sourceLabel: 'Dr. Zia',
     keyLabel: 'Key point',
     caveLabel: 'Caution',
     mcqTitle: 'Meniscus MCQs',
@@ -1573,6 +1642,7 @@ const CONTENT = {
       { id: 'discoider', label: 'Discoid meniscus', icon: '🔵' },
       { id: 'therapie', label: 'Treatment principle', icon: '🧵' },
       { id: 'fallbeispiele', label: 'Cases', icon: '🧪' },
+      { id: 'lernvideo', label: 'Learning video', icon: '▶️' },
     ],
     heroCards: [
       { value: '2/3', label: 'of tears', text: 'involve the medial meniscus' },
@@ -1736,6 +1806,12 @@ const CONTENT = {
       ],
       key: 'Preserve as much meniscus as possible, resect only as much as necessary.',
     },
+    video: {
+      title: 'Learning video',
+      text: 'The learning video for this meniscus chapter is now available on YouTube.',
+      cta: 'Watch on YouTube',
+      url: 'https://youtu.be/L03fPcRZm_o?si=RzNDyM-Fmtig8I10',
+    },
   },
   fa: {
     toc: 'فهرست مطالب',
@@ -1743,7 +1819,7 @@ const CONTENT = {
     breadcrumbCurrent: 'زانو · منیسک',
     title: 'منیسک',
     subtitle: 'مبانی، آناتومی، تشخیص MRI و معیارهای قطعی پارگی',
-    sourceLabel: 'جزوه دکتر ضیا',
+    sourceLabel: 'Dr. Zia',
     keyLabel: 'نکته مهم',
     caveLabel: 'احتیاط',
     mcqTitle: 'سوالات منیسک',
@@ -1761,6 +1837,7 @@ const CONTENT = {
       { id: 'discoider', label: 'منیسک دیسکوئید', icon: '🔵' },
       { id: 'therapie', label: 'اصل درمان', icon: '🧵' },
       { id: 'fallbeispiele', label: 'نمونه کیس‌ها', icon: '🧪' },
+      { id: 'lernvideo', label: 'ویدیوی آموزشی', icon: '▶️' },
     ],
     heroCards: [
       { value: '۲/۳', label: 'پارگی‌ها', text: 'مربوط به منیسک داخلی هستند' },
@@ -1834,7 +1911,7 @@ const CONTENT = {
         ['2a', 'افزایش سیگنال خطی', 'بدون تماس', 'دژنراسیون پیشرفته'],
         ['2b', 'افزایش سیگنال خطی', 'تماس فقط در یک تصویر', 'برای پارگی قطعی ناکافی'],
         ['2c', 'افزایش سیگنال گوه‌ای یا گلوبولار', 'بدون تماس واضح', 'ریسک بالا برای پارگی مخفی'],
-        ['3', 'افزایش سیگنال', 'تماس در حداقل دو برش متوالی', 'پارگی منیسک از نظر رادیولوژیک قطعی'],
+        ['3', 'افزایش سیگنال پاتولوژیک', 'تماس در حداقل دو برش متوالی', 'پارگی منیسک از نظر رادیولوژیک قطعی'],
         ['4', 'مورفولوژی پیچیده پارگی همراه با دفورمیتی یا قطعه‌قطعه‌شدن', 'تماس سطحی متعدد', 'پارگی کمپلکس منیسک'],
       ],
       key: 'ضایعه منیسک درجه 3 آستانه اصلی برای تشخیص پارگی است: افزایش سیگنال داخل منیسک همراه با تماس مطمئن با سطح مفصلی در حداقل دو برش.',
@@ -1922,15 +1999,21 @@ const CONTENT = {
         ['پارگی تازه در ناحیه قرمز', 'بخیه منیسک'],
         ['قطعه غیرقابل ترمیم و مکانیکی', 'رزکسیون محدود و محافظه‌کارانه'],
       ],
-      key: 'اصل مهم این است که منیسک تا حد امکان حفظ شود؛ رزکسیون فقط زمانی و فقط به اندازه‌ای انجام شود که واقعاً لازم است.',
+      key: 'اصل مهم این است که تا حد امکان بافت منیسک حفظ شود؛ برداشتن منیسک فقط در صورت ضرورت و به کمترین مقدار لازم انجام شود.',
+    },
+    video: {
+      title: 'ویدیوی آموزشی',
+      text: 'ویدیوی آموزشی این بخش درباره منیسک اکنون در YouTube در دسترس است.',
+      cta: 'مشاهده ویدیو در YouTube',
+      url: 'https://youtu.be/L03fPcRZm_o?si=RzNDyM-Fmtig8I10',
     },
   },
 }
 
-function Table({ headers, rows }) {
+function Table({ headers, rows, className = '' }) {
   return (
     <div className={styles.tableWrap}>
-      <table className={styles.table}>
+      <table className={`${styles.table} ${className}`}>
         <thead>
           <tr>{headers.map(header => <th key={header}>{header}</th>)}</tr>
         </thead>
@@ -2177,7 +2260,7 @@ export default function MeniskusPage() {
             <div className={styles.gradingFigure}>
               <ImageFigure src="/meniskus/lotysch-grading.png" alt={copy.grading.title} zoomable zoomLabel={copy.zoomImage} onZoom={() => setPreviewImage({ src: '/meniskus/lotysch-grading.png', alt: copy.grading.title })} />
             </div>
-            <Table headers={copy.grading.tableHeaders} rows={copy.grading.tableRows} />
+            <Table headers={copy.grading.tableHeaders} rows={copy.grading.tableRows} className={styles.gradeTable} />
             <Callout label={copy.keyLabel}>{copy.grading.key}</Callout>
           </Section>
 
@@ -2240,6 +2323,16 @@ export default function MeniskusPage() {
                   </div>
                 </a>
               ))}
+            </div>
+          </Section>
+
+          <Section id="lernvideo" eyebrow="10" title={copy.video.title} lead="">
+            <div className={styles.videoCard}>
+              <h3>{copy.video.title}</h3>
+              <p>{copy.video.text}</p>
+              <a href={copy.video.url} target="_blank" rel="noopener noreferrer" className={styles.videoButton}>
+                ▶ {copy.video.cta}
+              </a>
             </div>
           </Section>
 
