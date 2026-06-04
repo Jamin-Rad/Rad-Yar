@@ -388,3 +388,40 @@
   .contentLayout { grid-template-columns: 1fr; }
   .chapterSidebar { position: static; }
 }
+
+/* ── FINAL: cleaner expandable subtopics in Lernen ───────────────────── */
+.subWrap {
+  width: 100%;
+  margin-top: 8px;
+}
+.subToggle {
+  font-size: 13.5px;
+  font-weight: 800;
+  padding: 7px 10px;
+  border-radius: 10px;
+  background: rgba(248,250,252,0.9);
+  border: 1px solid #e2e8f0;
+  width: fit-content;
+}
+.subList {
+  gap: 7px;
+  padding: 9px 0 2px 14px;
+}
+.subItem {
+  font-size: 14px;
+  font-weight: 650;
+  color: #334155;
+  line-height: 1.4;
+}
+.subItemLink {
+  padding: 7px 9px;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+}
+.subItemLink:hover {
+  background: #fff7ed;
+  border-color: rgba(249,115,22,0.28);
+}
+.subReady,
+.subMcqBtn { display: none !important; }
