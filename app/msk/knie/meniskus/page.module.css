@@ -546,3 +546,26 @@
   .mcqTopBtn { width: 100%; justify-content: center; }
   .mcqCard { align-items: flex-start; flex-direction: column; }
 }
+
+/* ── FIX: Persian Meniskus page menu must stay on the right ───────────── */
+.page[dir="rtl"] .body {
+  grid-template-columns: minmax(0, 1fr) 252px;
+  grid-template-areas: "main sidebar";
+}
+.page[dir="rtl"] .sidebar {
+  border-right: none;
+  border-left: 1px solid #e2e6f0;
+  text-align: right;
+}
+.page[dir="rtl"] .sideGroupBtn,
+.page[dir="rtl"] .sideLink,
+.page[dir="rtl"] .sideHeader {
+  text-align: right;
+}
+
+@media (max-width: 860px) {
+  .page[dir="rtl"] .body {
+    grid-template-columns: 1fr;
+    grid-template-areas: "main";
+  }
+}
