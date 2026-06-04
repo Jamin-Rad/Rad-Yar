@@ -692,6 +692,80 @@ export const getThemenCount = (fachId) => {
 
 
 // ── KAPITEL TITLE TRANSLATIONS ─────────────────────────────────────────────
+
+
+export const THEMA_TRANSLATIONS = {
+  // MSK · Knie and currently active practical topics
+  'knie': { en: 'Knee', fa: 'زانو' },
+  'meniskus': { en: 'Meniscus', fa: 'منیسک' },
+  'knie-ligamente': { en: 'Knee ligaments', fa: 'رباط‌های زانو' },
+  'patella': { en: 'Patella', fa: 'کشکک زانو' },
+  'schulter-mrt': { en: 'Shoulder joint', fa: 'مفصل شانه' },
+  'ellenbogen-mrt': { en: 'Elbow joint MRI', fa: 'MRI مفصل آرنج' },
+  'hand-mrt': { en: 'Hand MRI', fa: 'MRI دست' },
+  'sprunggelenk-mrt': { en: 'Ankle MRI', fa: 'MRI مچ پا' },
+  'trauma-grund': { en: 'Basics', fa: 'مبانی' },
+  'schulter-trauma': { en: 'Shoulder & upper arm', fa: 'شانه و بازو' },
+  'ellenbogen': { en: 'Elbow joint', fa: 'مفصل آرنج' },
+  'unterarm': { en: 'Forearm', fa: 'ساعد' },
+  'handgelenk': { en: 'Wrist & hand', fa: 'مچ و دست' },
+  'becken-huefte': { en: 'Pelvis & hip joint', fa: 'لگن و مفصل ران' },
+  'oberschenkel': { en: 'Thigh', fa: 'ران' },
+  'unterschenkel': { en: 'Lower leg', fa: 'ساق پا' },
+  'sprunggelenk': { en: 'Ankle joint', fa: 'مچ پا' },
+  'fuss': { en: 'Foot', fa: 'پا' },
+
+  // Head
+  'astrozytom': { en: 'Astrocytoma / glioma', fa: 'آستروسیتوما / گلیوما' },
+  'oligodendrogliom': { en: 'Oligodendroglioma', fa: 'الیگودندروگلیوما' },
+  'gbm': { en: 'Glioblastoma (GBM)', fa: 'گلیوبلاستوما (GBM)' },
+  'medulloblastom': { en: 'Medulloblastoma', fa: 'مدولوبلاستوما' },
+  'ependymom': { en: 'Ependymoma', fa: 'اپاندیموما' },
+  'meningeom': { en: 'Meningioma', fa: 'مننژیوم' },
+  'hirn-met': { en: 'Brain metastases', fa: 'متاستازهای مغزی' },
+  'pcnsl': { en: 'Primary CNS lymphoma', fa: 'لنفوم اولیه CNS' },
+  'haemangioblastom': { en: 'Haemangioblastoma', fa: 'همانژیوبلاستوما' },
+  'hypophysenadenom': { en: 'Pituitary adenoma', fa: 'آدنوم هیپوفیز' },
+  'kraniopharyngeom': { en: 'Craniopharyngioma', fa: 'کرانیوفارنژیوم' },
+  'rathke-zyste': { en: 'Rathke cleft cyst', fa: 'کیست شکاف راتکه' },
+  'epidermoid': { en: 'Epidermoid cyst', fa: 'کیست اپیدرموئید' },
+  'kolloidzyste': { en: 'Colloid cyst', fa: 'کیست کلوئید' },
+  'arachnoidalzyste': { en: 'Arachnoid cyst', fa: 'کیست آراکنوئید' },
+  'ischaem-stroke': { en: 'Ischaemic stroke', fa: 'سکته ایسکمیک' },
+  'dissektion': { en: 'Vessel wall dissection', fa: 'دیسکسیون دیواره عروق' },
+  'moya-moya': { en: 'Moyamoya disease', fa: 'بیماری مویامویا' },
+  'mikroangiopathie': { en: 'Hyperintense microangiopathy', fa: 'میکروآنژیوپاتی هایپراینتنس' },
+  'caa': { en: 'Cerebral amyloid angiopathy (CAA)', fa: 'آنژیوپاتی آمیلوئید مغزی (CAA)' },
+  'cadasil': { en: 'CADASIL syndrome', fa: 'سندرم CADASIL' },
+  'dva': { en: 'Developmental venous anomaly (DVA)', fa: 'ناهنجاری وریدی تکاملی (DVA)' },
+  'kavernom': { en: 'Cavernoma', fa: 'کاورنوما' },
+  'avm-hirn': { en: 'Arteriovenous malformation (AVM)', fa: 'مالفورماسیون شریانی-وریدی (AVM)' },
+  'dav-fistel': { en: 'Dural AV fistula', fa: 'فیستول دورال AV' },
+  'sin-thrombose': { en: 'Dural sinus and cerebral venous thrombosis', fa: 'ترومبوز سینوس و وریدهای مغزی' },
+  'ms': { en: 'Multiple sclerosis (MS)', fa: 'مولتیپل اسکلروزیس (MS)' },
+  'nmo': { en: 'Neuromyelitis optica spectrum (NMO)', fa: 'طیف نورومیلیت اپتیکا (NMO)' },
+  'meningitis': { en: 'Meningitis / encephalitis', fa: 'مننژیت / آنسفالیت' },
+  'hiv-enceph': { en: 'HIV encephalopathy', fa: 'انسفالوپاتی HIV' },
+  'herpes-enceph': { en: 'Herpes encephalitis', fa: 'آنسفالیت هرپسی' },
+  'hirnabszess': { en: 'Brain abscess', fa: 'آبسه مغزی' },
+  'sab': { en: 'Subarachnoid haemorrhage (SAH)', fa: 'خونریزی ساب‌آراکنوئید (SAH)' },
+  'edh': { en: 'Epidural haematoma (EDH)', fa: 'هماتوم اپیدورال (EDH)' },
+  'sdh': { en: 'Subdural haematoma (SDH)', fa: 'هماتوم ساب‌دورال (SDH)' },
+  'icb': { en: 'Intracerebral haemorrhage (ICH)', fa: 'خونریزی داخل مغزی (ICH)' },
+  'hypox-hirn': { en: 'Global hypoxic-ischaemic brain injury', fa: 'آسیب هیپوکسیک-ایسکمیک منتشر مغز' },
+
+  // Technique
+  'km-typen': { en: 'Contrast types', fa: 'انواع ماده حاجب' },
+  'km-nw': { en: 'Adverse effects & kidney', fa: 'عوارض و کلیه' },
+  'km-mrt': { en: 'MRI contrast agents', fa: 'ماده حاجب MRI' },
+  'km-spezial': { en: 'Special situations', fa: 'موضوعات ویژه' },
+  'mrt-grundlagen': { en: 'Basics', fa: 'مبانی' },
+  'mrt-sequenzen': { en: 'Sequences', fa: 'سکانس‌ها' },
+  'mrt-gewichtung': { en: 'T1, T2, PD, FLAIR, DWI', fa: 'T1، T2، PD، FLAIR، DWI' },
+  'mrt-artefakte': { en: 'Artefacts', fa: 'آرتیفکت‌ها' },
+  'mrt-sicherheit': { en: 'MRI safety & contraindications', fa: 'ایمنی MRI و موارد منع' },
+}
+
 export const KAPITEL_TRANSLATIONS = {
   // Abdomen
   'leber':          { en: 'Liver',                  fa: 'کبد' },
