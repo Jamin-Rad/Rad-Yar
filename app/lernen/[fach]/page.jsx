@@ -62,8 +62,8 @@ const SUBTHEMEN_TRANSLATIONS = {
     fa: 'منیسک',
   },
   'knie-ligamente': {
-    en: 'Knee ligaments (ACL, PCL, collateral ligaments)',
-    fa: 'رباط‌های زانو (ACL، PCL، رباط‌های طرفی)',
+    en: 'Knee ligaments',
+    fa: 'رباط‌های زانو',
   },
   patella: {
     en: 'Patella (fracture, dislocation, Osgood-Schlatter)',
@@ -98,11 +98,9 @@ function SubThemen({ sub, fachColor, lang }) {
               <>
                 <span className={styles.subDot} style={{ background: fachColor }} />
                 <span>{getSubTitle(s)}</span>
-                {s.ready && <span className={styles.subReady}>{lang === 'fa' ? 'موجود' : lang === 'en' ? 'available' : 'verfügbar'}</span>}
               </>
             )
             const href = withLang(s.link)
-            const mcqHref = withLang(s.mcqLink)
 
             return (
               <div key={s.id} className={styles.subItemRow}>
@@ -112,11 +110,6 @@ function SubThemen({ sub, fachColor, lang }) {
                   </Link>
                 ) : (
                   <div className={styles.subItem}>{content}</div>
-                )}
-                {mcqHref && (
-                  <Link href={mcqHref} className={styles.subMcqBtn} style={{ color: fachColor, borderColor: fachColor + '44' }}>
-                    MCQ
-                  </Link>
                 )}
               </div>
             )
