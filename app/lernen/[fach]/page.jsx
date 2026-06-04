@@ -145,6 +145,11 @@ export default function LernenFachPage() {
     return THEMA_TRANSLATIONS[th.id]?.[lang] || th.title
   }
 
+  const withPageLang = (href) => {
+    if (!href || lang === 'de') return href
+    return href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`
+  }
+
   const toggleKapitel = (id) => setOpenKapitel(prev => {
     const s = new Set(prev); s.has(id) ? s.delete(id) : s.add(id); return s
   })
@@ -255,7 +260,7 @@ export default function LernenFachPage() {
                     {k.themen.reduce((s, th) => s + 1 + (th.sub?.length || 0), 0)} {t.themen}
                   </span>
                   {k.ready && k.link && (
-                    <Link href={k.link} className={styles.readyBtn}
+                    <Link href={withPageLang(k.link)} className={styles.readyBtn}
                       style={{ color: fach.color, borderColor: fach.color + '44' }}
                       onClick={e => e.stopPropagation()}>
                       {t.readNow}
@@ -288,13 +293,25 @@ export default function LernenFachPage() {
                             <span className={styles.groupCount}>{grouped[g].length}</span>
                           </div>
                           <div className={styles.themaGrid}>
-                            {grouped[g].map(th => (
-                              <div key={th.id} className={styles.themaCard}>
-                                <span className={styles.themaDot} style={{ background: fach.color }} />
-                                <span className={styles.themaTitle}>{getThemaTitle(th)}</span>
-                                {th.sub && <SubThemen sub={th.sub} fachColor={fach.color} lang={lang} />}
-                              </div>
-                            ))}
+                            {grouped[g].map(th => {
+                              const cardContent = (
+                                <>
+                                  <span className={styles.themaDot} style={{ background: fach.color }} />
+                                  <span className={styles.themaTitle}>{getThemaTitle(th)}</span>
+                                  {th.link && <span className={styles.openHint}>{t.readNow}</span>}
+                                  {th.sub && <SubThemen sub={th.sub} fachColor={fach.color} lang={lang} />}
+                                </>
+                              )
+                              return th.link ? (
+                                <Link key={th.id} href={withPageLang(th.link)} className={`${styles.themaCard} ${styles.themaCardLink}`}>
+                                  {cardContent}
+                                </Link>
+                              ) : (
+                                <div key={th.id} className={styles.themaCard}>
+                                  {cardContent}
+                                </div>
+                              )
+                            })}
                           </div>
                         </div>
                       )
