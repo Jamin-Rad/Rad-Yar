@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
 
@@ -8,6 +9,7 @@ const TOPICS = [
     key: 'kontrastmittel',
     href: '/technik/kontrastmittel/mcq',
     icon: '💉',
+    iconImage: '/fach/technik.png',
     color: '#f97316',
     available: true,
     count: { de: '9 Fragen', en: '9 Questions', fa: '۹ سوال' },
@@ -18,17 +20,18 @@ const TOPICS = [
     key: 'meniskus',
     href: '/msk/knie/meniskus/mcq',
     icon: '🦵',
+    iconImage: '/fach/msk.png',
     color: '#fb923c',
     available: true,
     count: { de: '6 Fragen', en: '6 Questions', fa: '۶ سوال' },
     name: { de: 'Knie · Meniskus', en: 'Knee · Meniscus', fa: 'زانو · منیسک' },
     desc: { de: 'Anatomie · MRT-Grading · Vaskularisation · Rissdiagnostik', en: 'Anatomy · MRI grading · vascular zones · tear diagnosis', fa: 'آناتومی · درجه‌بندی MRI · خون‌رسانی · تشخیص پارگی' },
   },
-  { key: 'mrt',    icon: '🧲', color: '#7c3aed', available: false, name: { de: 'MRT-Physik',     en: 'MRI Physics',    fa: 'فیزیک MRI' } },
-  { key: 'ct',     icon: '🩻', color: '#0ea5e9', available: false, name: { de: 'CT-Technik',     en: 'CT Technology',  fa: 'تکنولوژی CT' } },
-  { key: 'strah',  icon: '🛡️', color: '#d97706', available: false, name: { de: 'Strahlenschutz', en: 'Radiation Protection', fa: 'حفاظت از تابش' } },
-  { key: 'neuro',  icon: '🧠', color: '#7c3aed', available: false, name: { de: 'Neuroradiologie',en: 'Neuroradiology', fa: 'نوروراديولوژی' } },
-  { key: 'thorax', icon: '🫁', color: '#0ea5e9', available: false, name: { de: 'Thorax',         en: 'Thorax',         fa: 'توراکس' } },
+  { key: 'mrt',    icon: '🧲', iconImage: '/fach/technik.png', color: '#7c3aed', available: false, name: { de: 'MRT-Physik',     en: 'MRI Physics',    fa: 'فیزیک MRI' } },
+  { key: 'ct',     icon: '🩻', iconImage: '/fach/technik.png', color: '#0ea5e9', available: false, name: { de: 'CT-Technik',     en: 'CT Technology',  fa: 'تکنولوژی CT' } },
+  { key: 'strah',  icon: '🛡️', iconImage: '/fach/technik.png', color: '#d97706', available: false, name: { de: 'Strahlenschutz', en: 'Radiation Protection', fa: 'حفاظت از تابش' } },
+  { key: 'neuro',  icon: '🧠', iconImage: '/fach/gehirn.png', color: '#7c3aed', available: false, name: { de: 'Neuroradiologie',en: 'Neuroradiology', fa: 'نوروراديولوژی' } },
+  { key: 'thorax', icon: '🫁', iconImage: '/fach/thorax.png', color: '#0ea5e9', available: false, name: { de: 'Thorax',         en: 'Thorax',         fa: 'توراکس' } },
 ]
 
 const UI = {
@@ -93,7 +96,7 @@ export default function McqSelectPage() {
           if (t.available) {
             return (
               <Link key={t.key} href={withLang(t.href)} className={styles.card}>
-                <span className={styles.icon}>{t.icon}</span>
+                <span className={styles.icon}>{t.iconImage ? <Image src={t.iconImage} alt={name} width={32} height={32} style={{ objectFit: 'contain' }} /> : t.icon}</span>
                 <div className={styles.info}>
                   <div className={styles.name} style={{ color: t.color }}>{name}</div>
                   {desc && <div className={styles.desc}>{desc}</div>}
@@ -108,7 +111,7 @@ export default function McqSelectPage() {
           }
           return (
             <div key={t.key} className={`${styles.card} ${styles.cardLocked}`}>
-              <span className={styles.icon} style={{ opacity: 0.4 }}>{t.icon}</span>
+              <span className={styles.icon} style={{ opacity: 0.4 }}>{t.iconImage ? <Image src={t.iconImage} alt={name} width={32} height={32} style={{ objectFit: 'contain' }} /> : t.icon}</span>
               <div className={styles.info}>
                 <div className={styles.name} style={{ color: t.color, opacity: 0.4 }}>{name}</div>
               </div>
