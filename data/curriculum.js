@@ -79,7 +79,7 @@ export const CURRICULUM = [
       {
         id: 'neurodegeneration',
         title: 'Neurodegeneration',
-        icon: '🔄',
+        icon: '🔁',
         themen: [
           { id: 'alzheimer',       title: 'Morbus Alzheimer',                  tags:['MRT'],            diff:2 },
           { id: 'lewy-body',       title: 'Lewy-Body-Demenz',                  tags:['MRT'],            diff:3 },
@@ -108,7 +108,7 @@ export const CURRICULUM = [
   {
     id: 'wirbelsaeule',
     key: 'Wirbelsäule',
-    icon: '🔩',
+    icon: '🩻',
     color: '#60a5fa',
     bg: 'linear-gradient(135deg,#0c1f40,#1e3a6e)',
     bodyZone: 'Hals',
@@ -116,7 +116,7 @@ export const CURRICULUM = [
       {
         id: 'ws-trauma',
         title: 'Trauma',
-        icon: '⚡',
+        icon: '🩹',
         themen: [
           { id: 'ws-fraktur',      title: 'Wirbelkörperfraktur (inkl. Klassifikation)', tags:['CT','MRT','Rö'], diff:2 },
           { id: 'ws-instab',       title: 'Instabilität & Luxation',          tags:['CT','MRT'],       diff:3 },
@@ -125,7 +125,7 @@ export const CURRICULUM = [
       {
         id: 'ws-degenerativ',
         title: 'Degenerativ',
-        icon: '🔩',
+        icon: '🩻',
         themen: [
           { id: 'bsp',             title: 'Bandscheibenpathologien (Protrusion, Prolaps, Extrusion)', tags:['MRT'], diff:2 },
           { id: 'abschlussplatten',title: 'Wirbelkörperabschlussplatten (Modic)',tags:['MRT'],         diff:2 },
@@ -150,7 +150,7 @@ export const CURRICULUM = [
       {
         id: 'spinalkanal',
         title: 'Spinalkanal · Myelon',
-        icon: '⚡',
+        icon: '🩹',
         themen: [
           { id: 'extramedullaer',  title: 'Extradurale Raumforderungen',      tags:['MRT'],            diff:2 },
           { id: 'gbs',             title: 'Guillain-Barré-Syndrom (GBS)',     tags:['MRT'],            diff:3 },
@@ -176,7 +176,7 @@ export const CURRICULUM = [
   {
     id: 'hals',
     key: 'Hals',
-    icon: '🔵',
+    icon: '🦋',
     color: '#818cf8',
     bg: 'linear-gradient(135deg,#1a0c40,#2d1b69)',
     bodyZone: 'Hals',
@@ -184,7 +184,7 @@ export const CURRICULUM = [
       {
         id: 'hals',
         title: 'Hals',
-        icon: '🫀',
+        icon: '🦋',
         themen: [
           { id: 'schilddruese',    title: 'Schilddrüse (Struma, Adenom, Karzinom)', tags:['Sono','CT','MRT'], diff:2 },
           { id: 'lymphknoten-hals',title: 'Lymphknoten (Hals)',               tags:['CT','MRT','Sono'],diff:2 },
@@ -200,7 +200,7 @@ export const CURRICULUM = [
   {
     id: 'thorax',
     key: 'Thorax',
-    icon: '🫀',
+    icon: '🫁',
     color: '#38bdf8',
     bg: 'linear-gradient(135deg,#0c2340,#0c3460)',
     bodyZone: 'Thorax',
@@ -243,7 +243,7 @@ export const CURRICULUM = [
       {
         id: 'mediastinum',
         title: 'Mediastinum & Pleura',
-        icon: '🏔️',
+        icon: '🫧',
         themen: [
           { id: 'mediastinum',     title: 'Mediastinaltumoren',               tags:['CT','MRT'],       diff:2 },
           { id: 'pleuraerguss',    title: 'Pleuraerguss',                     tags:['Sono','CT','Rö'], diff:1 },
@@ -267,7 +267,7 @@ export const CURRICULUM = [
       {
         id: 'mammaca',
         title: 'Mammakarzinom',
-        icon: '🔴',
+        icon: '🧬',
         themen: [
           { id: 'birads',          title: 'BIRADS-Klassifikation',            tags:['Mammo','Sono','MRT'], diff:2 },
           { id: 'mammo-befund',    title: 'Mammographiebefundung',            tags:['Mammo'],          diff:2 },
@@ -278,7 +278,7 @@ export const CURRICULUM = [
       {
         id: 'benigne-mamma',
         title: 'Benigne Läsionen',
-        icon: '🟢',
+        icon: '🌿',
         themen: [
           { id: 'mastopathie',     title: 'Mastopathie',                      tags:['Mammo','Sono'],   diff:1 },
           { id: 'fibroadenom',     title: 'Fibroadenom',                      tags:['Sono','MRT'],     diff:1 },
@@ -289,7 +289,7 @@ export const CURRICULUM = [
       {
         id: 'bildgebung-mamma',
         title: 'Bildgebungsmodalitäten',
-        icon: '📡',
+        icon: '🔊',
         themen: [
           { id: 'mammo-technik',   title: 'Mammographietechnik & Screening',  tags:['Mammo'],          diff:1 },
           { id: 'mamma-sono',      title: 'Brustsonographie',                 tags:['Sono'],           diff:1 },
@@ -312,7 +312,7 @@ export const CURRICULUM = [
       {
         id: 'leber',
         title: 'Leber',
-        icon: '🔴',
+        icon: '🧬',
         themen: [
           // Fokal
           { id: 'leberzyste',      title: 'Leberzysten',                    tags:['CT','MRT','Sono'], diff:1 },
@@ -388,7 +388,7 @@ export const CURRICULUM = [
       {
         id: 'harnblase',
         title: 'Harnblase',
-        icon: '🔵',
+        icon: '🦋',
         themen: [
           { id: 'zystitis',        title: 'Zystitis',                         tags:['CT','Sono'],      diff:1 },
           { id: 'blasentumor',     title: 'Urothelkarzinom Blase',            tags:['CT','MRT'],       diff:2 },
@@ -430,7 +430,7 @@ export const CURRICULUM = [
       {
         id: 'hernie-retro',
         title: 'Hernie · Retroperitoneum',
-        icon: '⚡',
+        icon: '🩹',
         themen: [
           { id: 'leistenhernie',   title: 'Leisten- / Inguinalhernie',        tags:['CT','Sono'],      diff:1 },
           { id: 'm-ormond',        title: 'Morbus Ormond (retroperit. Fibrose)',tags:['CT','MRT'],     diff:3 },
@@ -517,7 +517,7 @@ export const CURRICULUM = [
       {
         id: 'trauma',
         title: 'Trauma',
-        icon: '⚡',
+        icon: '🩹',
         themen: [
           // Grundlagen
           { id: 'trauma-grund',    title: 'Grundlagen (Definitionen, Kinder, postop)', tags:['Rö','CT'], diff:1 },
@@ -536,7 +536,7 @@ export const CURRICULUM = [
       {
         id: 'grosse-gelenke',
         title: 'Große Gelenke (MRT)',
-        icon: '🔄',
+        icon: '🦵',
         themen: [
           { id: 'schulter-mrt',    title: 'Schultergelenk (Impingement, Instabilität, Arthrose)', tags:['MRT'], diff:2 },
           { id: 'ellenbogen-mrt',  title: 'Ellenbogengelenk MRT',             tags:['MRT'],            diff:2 },
@@ -554,7 +554,7 @@ export const CURRICULUM = [
       {
         id: 'knochentumoren',
         title: 'Knochentumoren',
-        icon: '🔴',
+        icon: '🧬',
         themen: [
           { id: 'tumor-grund',     title: 'Radiologische Zeichen (Periost, Matrix, Muster)', tags:['Rö','CT','MRT'], diff:2 },
           { id: 'osteoidosteom',   title: 'Osteoidosteom',                    tags:['CT'],             diff:2 },
@@ -579,7 +579,7 @@ export const CURRICULUM = [
       {
         id: 'nekrosen',
         title: 'Nekrosen',
-        icon: '⚫',
+        icon: '🩸',
         themen: [
           { id: 'avn',             title: 'Avaskuläre Nekrose (AVN)',          tags:['MRT','Rö'],       diff:2 },
           { id: 'knocheninfarkt',  title: 'Knocheninfarkt',                   tags:['MRT'],            diff:2 },
@@ -590,7 +590,7 @@ export const CURRICULUM = [
       {
         id: 'sonstiges-msk',
         title: 'Sonstiges',
-        icon: '⚙️',
+        icon: '🧭',
         themen: [
           { id: 'm-paget',         title: 'Morbus Paget',                     tags:['Rö','CT'],        diff:2 },
           { id: 'melorheostose',   title: 'Melorheostose',                    tags:['Rö'],             diff:3 },
@@ -637,7 +637,7 @@ export const CURRICULUM = [
       {
         id: 'ct-technik',
         title: 'CT-Technik',
-        icon: '🔄',
+        icon: '🖥️',
         themen: [
           { id: 'ct-grundlagen',   title: 'CT-Grundlagen (HU, Fenster, Spiral)', tags:['CT'],         diff:1 },
           { id: 'ct-protokolle',   title: 'CT-Protokolle (native, KM-Phasen)',tags:['CT'],            diff:2 },
@@ -648,7 +648,7 @@ export const CURRICULUM = [
       {
         id: 'roentgen',
         title: 'Röntgen-Grundlagen',
-        icon: '☢️',
+        icon: '🩻',
         themen: [
           { id: 'ro-physik',       title: 'Röntgenphysik & Bildentstehung',  tags:['Rö'],             diff:1 },
           { id: 'ro-thorax',       title: 'Thorax-Röntgen systematisch',     tags:['Rö'],             diff:1 },
@@ -669,7 +669,7 @@ export const CURRICULUM = [
       {
         id: 'sono',
         title: 'Sonographie',
-        icon: '📡',
+        icon: '🔊',
         themen: [
           { id: 'sono-physik',     title: 'Sono-Physik & Schallkopfwahl',   tags:['Sono'],           diff:1 },
           { id: 'sono-abdomen',    title: 'Abdomen-Sono systematisch',       tags:['Sono'],           diff:1 },
