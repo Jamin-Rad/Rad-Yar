@@ -7,7 +7,7 @@ export const QUESTION_BANK = {
     // ── TECHNIK: Kontrastmittel ───────────────────────────────────────────
     {
       id: 'km-de-01',
-      tags: ['km-typen'],
+      tags: ['km-roentgen-grundlagen'],
       fach: 'technik',
       question: 'Welche Aussage zu nicht-ionischen Kontrastmitteln (z. B. Ultravist®) trifft zu?',
       options: [
@@ -21,7 +21,7 @@ export const QUESTION_BANK = {
     },
     {
       id: 'km-de-02',
-      tags: ['km-typen'],
+      tags: ['km-roentgen-grundlagen'],
       fach: 'technik',
       question: 'Für welche Indikation wird eine hohe Injektionsrate von 5 ml/s empfohlen?',
       options: [
@@ -35,7 +35,7 @@ export const QUESTION_BANK = {
     },
     {
       id: 'km-de-03',
-      tags: ['km-nw'],
+      tags: ['km-nebenwirkung-jod'],
       fach: 'technik',
       question: 'Wie definiert die ESUR eine PC-AKI (Post-Contrast Acute Kidney Injury)?',
       options: [
@@ -49,7 +49,7 @@ export const QUESTION_BANK = {
     },
     {
       id: 'km-de-04',
-      tags: ['km-nw'],
+      tags: ['km-nebenwirkung-jod'],
       fach: 'technik',
       question: 'Welche Aussage zur sogenannten „Jodallergie\" ist korrekt?',
       options: [
@@ -77,7 +77,7 @@ export const QUESTION_BANK = {
     },
     {
       id: 'km-de-06',
-      tags: ['km-spezial'],
+      tags: ['km-schwangerschaft-stillzeit'],
       fach: 'technik',
       question: 'Was muss nach der Geburt eines Kindes zwingend eingeleitet werden, wenn die Mutter während der Schwangerschaft jodhaltiges Kontrastmittel erhalten hat?',
       options: [
@@ -91,7 +91,7 @@ export const QUESTION_BANK = {
     },
     {
       id: 'km-de-07',
-      tags: ['km-spezial'],
+      tags: ['km-schwangerschaft-stillzeit'],
       fach: 'technik',
       question: 'Welche Empfehlung gilt für das Stillen nach einer Gadolinium-Gabe bei der Mutter?',
       options: [
@@ -105,7 +105,7 @@ export const QUESTION_BANK = {
     },
     {
       id: 'km-de-08',
-      tags: ['km-spezial'],
+      tags: ['km-schwangerschaft-stillzeit'],
       fach: 'technik',
       question: 'Was ist die primäre Voraussetzung für die Anwendung von Kontrastmitteln in der Schwangerschaft?',
       options: [
@@ -119,7 +119,7 @@ export const QUESTION_BANK = {
     },
     {
       id: 'km-de-09',
-      tags: ['km-nw'],
+      tags: ['km-nebenwirkung-jod'],
       fach: 'technik',
       question: 'Welche der folgenden Aussagen zur Metformin-Therapie und intravaskulärer KM-Gabe ist korrekt?',
       options: [
@@ -130,6 +130,20 @@ export const QUESTION_BANK = {
       ],
       correct: 'B',
       explanation: 'Bei eGFR > 30 ml/min/1,73 m² ist kein Absetzen von Metformin erforderlich. Das Risiko der Laktatazidose entsteht nicht durch direkte Interaktion, sondern indirekt: KM → (selten) akute Nierenschädigung → Metformin-Akkumulation → Laktatazidose. Bei eGFR < 30 oder akutem Nierenversagen: 48 h pausieren.',
+    },
+    {
+      id: 'km-de-10',
+      tags: ['km-nebenwirkung-gadolinium'],
+      fach: 'technik',
+      question: 'Welche Konstellation ist klassisch mit nephrogener systemischer Fibrose (NSF) assoziiert?',
+      options: [
+        { id: 'A', text: 'Schwere Niereninsuffizienz (GFR < 30) und Gabe linearer Gadolinium-KM' },
+        { id: 'B', text: 'Normale Nierenfunktion und einmalige Gabe makrozyklischer Gadolinium-KM' },
+        { id: 'C', text: 'Jodhaltiges CT-Kontrastmittel bei normaler Schilddrüsenfunktion' },
+        { id: 'D', text: 'Buscopan®-Gabe vor einer MRT-Untersuchung' },
+      ],
+      correct: 'A',
+      explanation: 'NSF tritt nahezu ausschließlich bei schwerer Niereninsuffizienz auf, besonders nach Gabe weniger stabiler linearer Gadolinium-KM. Durch makrozyklische KM ist NSF heute extrem selten.',
     },
     {
           "id": "meniskus-de-01",
@@ -309,7 +323,7 @@ export const QUESTION_BANK = {
 
   en: [
     {
-      id: 'km-en-01', tags: ['km-typen'], fach: 'technik',
+      id: 'km-en-01', tags: ['km-roentgen-grundlagen'], fach: 'technik',
       question: 'Which statement about non-ionic contrast media (e.g. Ultravist®) is correct?',
       options: [
         { id: 'A', text: 'Higher osmolality than ionic contrast media' },
@@ -321,7 +335,7 @@ export const QUESTION_BANK = {
       explanation: 'Non-ionic contrast media carry no electrical charge and are more hydrophilic. Their lower osmolality results in significantly better tolerability and fewer adverse reactions, making them the standard for all intravascular applications.',
     },
     {
-      id: 'km-en-02', tags: ['km-typen'], fach: 'technik',
+      id: 'km-en-02', tags: ['km-roentgen-grundlagen'], fach: 'technik',
       question: 'For which indication is a high injection rate of 5 ml/s recommended?',
       options: [
         { id: 'A', text: 'Pure portal venous abdominal phase' },
@@ -333,7 +347,7 @@ export const QUESTION_BANK = {
       explanation: 'In CT pulmonary angiography (CTPA), 5 ml/s is essential to achieve sufficient contrast concentration in the pulmonary artery to detect even small filling defects. CVC injection must not exceed 2.5 ml/s.',
     },
     {
-      id: 'km-en-03', tags: ['km-nw'], fach: 'technik',
+      id: 'km-en-03', tags: ['km-nebenwirkung-jod'], fach: 'technik',
       question: 'How does the ESUR define PC-AKI (Post-Contrast Acute Kidney Injury)?',
       options: [
         { id: 'A', text: 'Creatinine rise ≥ 0.3 mg/dl or ≥ 1.5-fold within 48–72 h after contrast' },
@@ -345,7 +359,7 @@ export const QUESTION_BANK = {
       explanation: 'ESUR definition: absolute creatinine rise ≥ 0.3 mg/dl OR relative rise to ≥ 1.5× baseline, within 48–72 h after intravascular contrast. The rename from CIN to PC-AKI reflects the lack of proven causality.',
     },
     {
-      id: 'km-en-04', tags: ['km-nw'], fach: 'technik',
+      id: 'km-en-04', tags: ['km-nebenwirkung-jod'], fach: 'technik',
       question: 'Which statement about the "iodine allergy" is correct?',
       options: [
         { id: 'A', text: 'It is IgE-mediated against elemental iodine' },
@@ -369,7 +383,7 @@ export const QUESTION_BANK = {
       explanation: 'Primovist® is the only MRI agent with genuine hepatocyte-specific uptake (~50%), taken up via OATP1B1/3 and excreted biliary. Dose: 0.025 mmol/kg — one quarter of the standard gadolinium dose.',
     },
     {
-      id: 'km-en-06', tags: ['km-spezial'], fach: 'technik',
+      id: 'km-en-06', tags: ['km-schwangerschaft-stillzeit'], fach: 'technik',
       question: 'What must be done after birth when the mother received iodinated contrast during pregnancy?',
       options: [
         { id: 'A', text: "Check the newborn's TSH level" },
@@ -381,7 +395,7 @@ export const QUESTION_BANK = {
       explanation: 'Iodinated contrast crosses the placenta. The fetal thyroid can take up iodine from week 10–12, without the Wolff-Chaikoff escape mechanism. This may cause transient neonatal hypothyroidism. TSH monitoring is mandatory.',
     },
     {
-      id: 'km-en-07', tags: ['km-spezial'], fach: 'technik',
+      id: 'km-en-07', tags: ['km-schwangerschaft-stillzeit'], fach: 'technik',
       question: 'What applies to breastfeeding after gadolinium administration to the mother?',
       options: [
         { id: 'A', text: 'Only permitted after activated charcoal for the infant' },
@@ -393,7 +407,7 @@ export const QUESTION_BANK = {
       explanation: 'Less than 0.04% of maternal gadolinium reaches breast milk; of that, <1% is absorbed by the infant. Current guidelines (ESUR, ACR) find no medical necessity for a breastfeeding pause.',
     },
     {
-      id: 'km-en-08', tags: ['km-spezial'], fach: 'technik',
+      id: 'km-en-08', tags: ['km-schwangerschaft-stillzeit'], fach: 'technik',
       question: 'What is the primary prerequisite for contrast media use during pregnancy?',
       options: [
         { id: 'A', text: 'Strict indication AND no equivalent contrast-free alternative' },
@@ -405,7 +419,7 @@ export const QUESTION_BANK = {
       explanation: 'Contrast in pregnancy only when: (1) medically urgent AND cannot be deferred, AND (2) no equivalent contrast-free method is available. Both conditions must be met simultaneously. Full informed consent and documentation are mandatory.',
     },
     {
-      id: 'km-en-09', tags: ['km-nw'], fach: 'technik',
+      id: 'km-en-09', tags: ['km-nebenwirkung-jod'], fach: 'technik',
       question: 'Which statement about metformin and intravascular contrast is correct?',
       options: [
         { id: 'A', text: 'Metformin must be stopped 48 h before in all patients' },
@@ -415,6 +429,18 @@ export const QUESTION_BANK = {
       ],
       correct: 'B',
       explanation: 'With eGFR > 30, stopping metformin is not required. The lactic acidosis risk is indirect: contrast → (rare) AKI → metformin accumulation → lactic acidosis. With eGFR < 30 or AKI: withhold for 48 h.',
+    },
+    {
+      id: 'km-en-10', tags: ['km-nebenwirkung-gadolinium'], fach: 'technik',
+      question: 'Which situation is classically associated with nephrogenic systemic fibrosis (NSF)?',
+      options: [
+        { id: 'A', text: 'Severe renal impairment (GFR < 30) and administration of linear gadolinium agents' },
+        { id: 'B', text: 'Normal renal function and a single macrocyclic gadolinium injection' },
+        { id: 'C', text: 'Iodinated CT contrast in normal thyroid function' },
+        { id: 'D', text: 'Buscopan® before MRI' },
+      ],
+      correct: 'A',
+      explanation: 'NSF occurs almost exclusively in severe renal impairment, particularly after less stable linear gadolinium agents. With macrocyclic agents, NSF has become extremely rare.',
     },
     {
           "id": "meniskus-en-01",
@@ -594,7 +620,7 @@ export const QUESTION_BANK = {
 
   fa: [
     {
-      id: 'km-fa-01', tags: ['km-typen'], fach: 'technik',
+      id: 'km-fa-01', tags: ['km-roentgen-grundlagen'], fach: 'technik',
       question: 'کدام گزینه درباره ماده حاجب غیر یونی (مثلاً Ultravist®) صحیح است؟',
       options: [
         { id: 'A', text: 'اسمولاریته بالاتر نسبت به ماده حاجب یونی' },
@@ -606,7 +632,7 @@ export const QUESTION_BANK = {
       explanation: 'مواد حاجب غیر یونی هیچ بار الکتریکی ندارند. اسمولاریته پایین‌تر آن‌ها منجر به تحمل‌پذیری بسیار بهتر و عوارض جانبی کمتر می‌شود و استاندارد برای تمام کاربردهای داخل عروقی هستند.',
     },
     {
-      id: 'km-fa-02', tags: ['km-typen'], fach: 'technik',
+      id: 'km-fa-02', tags: ['km-roentgen-grundlagen'], fach: 'technik',
       question: 'برای کدام اندیکاسیون سرعت تزریق بالای ۵ میلی‌لیتر در ثانیه توصیه می‌شود؟',
       options: [
         { id: 'A', text: 'فاز وریدی پورتال شکم' },
@@ -618,7 +644,7 @@ export const QUESTION_BANK = {
       explanation: 'در CT آنژیوگرافی ریوی، سرعت ۵ میلی‌لیتر در ثانیه برای دستیابی به غلظت کافی در شریان ریوی ضروری است. تزریق از طریق CVC نباید از ۲.۵ میلی‌لیتر در ثانیه تجاوز کند.',
     },
     {
-      id: 'km-fa-03', tags: ['km-nw'], fach: 'technik',
+      id: 'km-fa-03', tags: ['km-nebenwirkung-jod'], fach: 'technik',
       question: 'ESUR آسیب حاد کلیه پس از ماده حاجب (PC-AKI) را چگونه تعریف می‌کند؟',
       options: [
         { id: 'A', text: 'افزایش کراتینین ≥۰.۳ میلی‌گرم/دسی‌لیتر یا ≥۱.۵ برابر در طی ۴۸–۷۲ ساعت' },
@@ -630,7 +656,7 @@ export const QUESTION_BANK = {
       explanation: 'تعریف ESUR: افزایش مطلق کراتینین ≥۰.۳ میلی‌گرم/دسی‌لیتر یا نسبی به ≥۱.۵ برابر مقدار پایه در طی ۴۸–۷۲ ساعت پس از تزریق داخل عروقی. تغییر نام از CIN به PC-AKI نشان‌دهنده فقدان رابطه علّی اثبات‌شده است.',
     },
     {
-      id: 'km-fa-04', tags: ['km-nw'], fach: 'technik',
+      id: 'km-fa-04', tags: ['km-nebenwirkung-jod'], fach: 'technik',
       question: 'کدام گزینه درباره «آلرژی به ید» صحیح است؟',
       options: [
         { id: 'A', text: 'واکنش IgE-واسطه در برابر ید عنصری است' },
@@ -654,7 +680,7 @@ export const QUESTION_BANK = {
       explanation: 'Primovist® تنها ماده حاجب MRI با جذب واقعی هپاتوسیت‌های عملکردی (~۵۰٪) است. از طریق ترانسپورترهای OATP1B1/3 جذب و بیلیاری دفع می‌شود. دوز: فقط ۰.۰۲۵ میلی‌مول/کیلوگرم – یک چهارم دوز استاندارد.',
     },
     {
-      id: 'km-fa-06', tags: ['km-spezial'], fach: 'technik',
+      id: 'km-fa-06', tags: ['km-schwangerschaft-stillzeit'], fach: 'technik',
       question: 'پس از تولد نوزادی که مادرش در بارداری ماده حاجب حاوی ید دریافت کرده، چه اقدامی ضروری است؟',
       options: [
         { id: 'A', text: 'بررسی سطح TSH نوزاد' },
@@ -666,7 +692,7 @@ export const QUESTION_BANK = {
       explanation: 'مواد حاجب حاوی ید از جفت عبور می‌کنند. از هفته ۱۰–۱۲ تیروئید جنین ید را جذب می‌کند بدون مکانیسم escape → کم‌کاری گذرا تیروئید نوزادی ممکن است. بررسی TSH نوزاد اجباری است.',
     },
     {
-      id: 'km-fa-07', tags: ['km-spezial'], fach: 'technik',
+      id: 'km-fa-07', tags: ['km-schwangerschaft-stillzeit'], fach: 'technik',
       question: 'توصیه در مورد شیردهی پس از تزریق گادولینیوم به مادر چیست؟',
       options: [
         { id: 'A', text: 'فقط پس از دادن زغال فعال به نوزاد مجاز است' },
@@ -678,7 +704,7 @@ export const QUESTION_BANK = {
       explanation: 'کمتر از ۰.۰۴٪ دوز مادری در شیر دفع می‌شود. از این مقدار کمتر از ۱٪ توسط نوزاد جذب می‌شود. دستورالعمل‌های کنونی (ESUR، ACR) هیچ ضرورت پزشکی برای قطع شیردهی نمی‌بینند.',
     },
     {
-      id: 'km-fa-08', tags: ['km-spezial'], fach: 'technik',
+      id: 'km-fa-08', tags: ['km-schwangerschaft-stillzeit'], fach: 'technik',
       question: 'پیش‌نیاز اصلی برای استفاده از ماده حاجب در دوران بارداری چیست؟',
       options: [
         { id: 'A', text: 'اندیکاسیون قوی و نبود روش‌های تشخیصی معادل بدون ماده حاجب' },
@@ -690,7 +716,7 @@ export const QUESTION_BANK = {
       explanation: 'اصل بنیادی: ماده حاجب در بارداری فقط زمانی که (۱) بررسی فوری و غیرقابل تعویق AND (۲) هیچ روش معادل بدون ماده حاجب وجود نداشته باشد. هر دو شرط باید همزمان برقرار باشند.',
     },
     {
-      id: 'km-fa-09', tags: ['km-nw'], fach: 'technik',
+      id: 'km-fa-09', tags: ['km-nebenwirkung-jod'], fach: 'technik',
       question: 'کدام گزینه درباره درمان با متفورمین و تزریق داخل عروقی ماده حاجب صحیح است؟',
       options: [
         { id: 'A', text: 'متفورمین در همه بیماران ۴۸ ساعت قبل باید قطع شود' },
@@ -700,6 +726,18 @@ export const QUESTION_BANK = {
       ],
       correct: 'B',
       explanation: 'با eGFR > ۳۰ قطع متفورمین لازم نیست. خطر اسیدوز لاکتیک غیرمستقیم است: ماده حاجب → (به ندرت) AKI → تجمع متفورمین → اسیدوز. با eGFR < ۳۰ یا نارسایی حاد: ۴۸ ساعت قطع شود.',
+    },
+    {
+      id: 'km-fa-10', tags: ['km-nebenwirkung-gadolinium'], fach: 'technik',
+      question: 'کدام وضعیت به طور کلاسیک با فیبروز سیستمیک نفروژنیک (NSF) ارتباط دارد؟',
+      options: [
+        { id: 'A', text: 'نارسایی شدید کلیه (GFR < 30) همراه با تزریق گادولینیوم خطی' },
+        { id: 'B', text: 'عملکرد طبیعی کلیه و یک بار تزریق گادولینیوم ماکروسیکلیک' },
+        { id: 'C', text: 'ماده حاجب یددار CT در عملکرد طبیعی تیروئید' },
+        { id: 'D', text: 'تزریق Buscopan® پیش از MRI' },
+      ],
+      correct: 'A',
+      explanation: 'NSF تقریباً فقط در نارسایی شدید کلیه دیده می‌شود، به‌خصوص پس از تزریق مواد گادولینیوم خطی و کمتر پایدار. با مواد ماکروسیکلیک، NSF امروزه بسیار نادر است.',
     },
     {
           "id": "meniskus-fa-01",

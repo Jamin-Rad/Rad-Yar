@@ -609,10 +609,11 @@ export const CURRICULUM = [
         ready: true,
         link: '/technik/kontrastmittel',
         themen: [
-          { id: 'km-typen',        title: 'KM-Typen (jodhaltig, Gadolinium)', tags:['CT','MRT'],       diff:1 },
-          { id: 'km-nw',           title: 'Nebenwirkungen & Niere (PC-AKI)', tags:['CT','MRT'],       diff:2 },
-          { id: 'km-mrt',          title: 'MRT-KM (Chelate, NSF)',           tags:['MRT'],            diff:2 },
-          { id: 'km-spezial',      title: 'Spezialthemen (Schwangerschaft, SD)', tags:['CT','MRT'],   diff:3 },
+          { id: 'km-roentgen-grundlagen',        title: 'Röntgen-Kontrastmittel Grundlagen', link: '/technik/kontrastmittel/roentgen-kontrastmittel-grundlagen', tags:['CT','Rö','KM'], diff:1 },
+          { id: 'km-mrt',                        title: 'MRT KM', link: '/technik/kontrastmittel/mrt-km', tags:['MRT','KM'],    diff:2 },
+          { id: 'km-nebenwirkung-jod',           title: 'Nebenwirkung jodhaltiger KM', link: '/technik/kontrastmittel/nebenwirkung-jodhaltiger-km', tags:['CT','KM'],     diff:2 },
+          { id: 'km-nebenwirkung-gadolinium',    title: 'Nebenwirkung Gadolinium', link: '/technik/kontrastmittel/nebenwirkung-gadolinium', tags:['MRT','KM'],    diff:2 },
+          { id: 'km-schwangerschaft-stillzeit',  title: 'Schwangerschaft und Stillzeit', link: '/technik/kontrastmittel/schwangerschaft-stillzeit', tags:['CT','MRT','KM'], diff:3 },
         ],
       },
       {
@@ -755,10 +756,11 @@ export const THEMA_TRANSLATIONS = {
   'hypox-hirn': { en: 'Global hypoxic-ischaemic brain injury', fa: 'آسیب هیپوکسیک-ایسکمیک منتشر مغز' },
 
   // Technique
-  'km-typen': { en: 'Contrast types', fa: 'انواع ماده حاجب' },
-  'km-nw': { en: 'Adverse effects & kidney', fa: 'عوارض و کلیه' },
-  'km-mrt': { en: 'MRI contrast agents', fa: 'ماده حاجب MRI' },
-  'km-spezial': { en: 'Special situations', fa: 'موضوعات ویژه' },
+  'km-roentgen-grundlagen': { en: 'X-ray contrast media basics', fa: 'مبانی مواد حاجب رادیوگرافی / CT' },
+  'km-mrt': { en: 'MRI contrast media', fa: 'مواد حاجب MRI' },
+  'km-nebenwirkung-jod': { en: 'Adverse effects of iodinated contrast media', fa: 'عوارض مواد حاجب یددار' },
+  'km-nebenwirkung-gadolinium': { en: 'Adverse effects of gadolinium', fa: 'عوارض گادولینیوم' },
+  'km-schwangerschaft-stillzeit': { en: 'Pregnancy and breastfeeding', fa: 'بارداری و شیردهی' },
   'mrt-grundlagen': { en: 'Basics', fa: 'مبانی' },
   'mrt-sequenzen': { en: 'Sequences', fa: 'سکانس‌ها' },
   'mrt-gewichtung': { en: 'T1, T2, PD, FLAIR, DWI', fa: 'T1، T2، PD، FLAIR، DWI' },
