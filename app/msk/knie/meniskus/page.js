@@ -18,6 +18,7 @@ const CONTENT = {
     mcqTitle: 'MCQs zum Meniskus',
     mcqDesc: 'Passende Prüfungsfragen zu Anatomie, MRT-Grading und Rissdiagnostik.',
     mcqCta: 'MCQs starten',
+    openCase: 'Fall auf Radiopaedia öffnen',
     sections: [
       { id: 'grundlagen', label: 'Grundlagen', icon: '🦵' },
       { id: 'anatomie', label: 'Anatomie', icon: '🦴' },
@@ -25,6 +26,8 @@ const CONTENT = {
       { id: 'mrt', label: 'MRT-Diagnostik', icon: '🩻' },
       { id: 'grading', label: 'MRT-Grading', icon: '📊' },
       { id: 'risskriterien', label: 'Meniskusriss', icon: '⚠️' },
+      { id: 'fallbeispiele', label: 'Fallbeispiele', icon: '🧪' },
+      { id: 'discoider', label: 'Discoider Meniskus', icon: '🔵' },
       { id: 'therapie', label: 'Therapieprinzip', icon: '🧵' },
     ],
     heroCards: [
@@ -117,6 +120,65 @@ const CONTENT = {
       ],
       key: 'Die Two-slice-touch-Regel erhöht die Spezifität, weil ein Einzelbild-Artefakt nicht fälschlich als Riss gewertet wird.',
     },
+    cases: {
+      title: 'Fallbeispiele',
+      lead: 'Die Fallbeispiele zeigen typische MRT-Befunde und helfen, degenerative Signale von echten Rissen abzugrenzen.',
+      items: [
+        {
+          title: 'Lineare Signalsteigerung ohne Oberflächenkontakt',
+          label: 'Grad 2a',
+          meta: 'PD-Wichtung · sagittal · degenerativ · kein sicherer Riss',
+          img: '/meniskus/mri-sagittal.png',
+          url: 'https://radiopaedia.org/cases/14060',
+          credit: 'Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060',
+        },
+        {
+          title: 'Globuläres / komplexes Signal ohne klare Linie',
+          label: 'Grad 2c',
+          meta: 'PD-Wichtung · koronal · erhöhtes Risiko für okkulten Riss',
+          img: '/meniskus/mri-coronal.png',
+          url: 'https://radiopaedia.org/cases/75168',
+          credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168',
+        },
+      ],
+      key: 'Fallbeispiele sind besonders hilfreich, weil nicht jede intrameniskale Signalsteigerung automatisch ein Meniskusriss ist.',
+    },
+    discoid: {
+      title: 'Discoider Meniskus',
+      lead: 'Der discoide Meniskus ist eine angeborene anatomische Variante mit übermäßig breitem, scheibenförmigem Meniskuskörper. Er betrifft fast ausschließlich den Außenmeniskus und reißt häufiger als ein normal geformter Meniskus.',
+      stats: [
+        { value: '3–5 %', label: 'Inzidenz', text: 'häufig Zufallsbefund im Knie-MRT' },
+        { value: '~50 %', label: 'bilateral', text: 'nicht selten beidseitig vorhanden' },
+        { value: '≥ 3', label: 'Sagittalschichten', text: 'Corpus bleibt über mehrere Schichten sichtbar' },
+      ],
+      overviewHeaders: ['Parameter', 'Wert'],
+      overviewRows: [
+        ['Betroffener Meniskus', 'fast ausschließlich Außenmeniskus'],
+        ['Seitenverteilung', 'bilateral in etwa 50 % der Fälle'],
+        ['Geschlecht', 'keine klare Präferenz'],
+        ['Prävalenz', 'höher in asiatischen Populationen beschrieben'],
+        ['Rissrisiko', 'erhöht gegenüber normalem Meniskus'],
+      ],
+      childTitle: 'Klinisches Leitsymptom bei Kindern',
+      childText: 'Knieschnappen oder ein „Snapping Knee“ bei Kindern sollte an einen discoiden Außenmeniskus denken lassen.',
+      mriTitle: 'MRT-Kriterien',
+      mriHeaders: ['Ebene', 'Kriterium', 'Schwellenwert'],
+      mriRows: [
+        ['Koronal', 'absolute Meniskusbreite', '≥ 15 mm'],
+        ['Koronal', 'Meniskusbreite / maximale Tibiabreite', '> 20 %'],
+        ['Sagittal', 'kontinuierliche Corpus-Darstellung', 'auf ≥ 3 aufeinanderfolgenden Standardschichten'],
+      ],
+      sagittalTitle: 'Sagittales Zeichen',
+      sagittalText: 'Das sagittale Kriterium entspricht dem Gegenteil des Absent-Bow-Tie-Signs: Ein normaler Meniskus zeigt den Corpus nur auf 1–2 Schichten, der discoide Meniskus auf mindestens 3 Schichten.',
+      treatmentHeaders: ['Situation', 'Vorgehen'],
+      treatmentRows: [
+        ['asymptomatischer Zufallsbefund', 'konservativ, keine Intervention nötig'],
+        ['symptomatisch ohne Riss', 'konservativ; bei Versagen arthroskopische Saucerisation'],
+        ['discoider Meniskus mit Riss', 'Meniskusrefixation plus ggf. partielle Resektion'],
+        ['irreparabel / schwere Destruktion', 'Teil- oder Totalmeniskektomie nur als letzte Option'],
+      ],
+      key: 'Auch beim discoiden Meniskus gilt: Meniskusgewebe möglichst erhalten; totale Meniskektomie vermeiden.',
+    },
     therapy: {
       title: 'Therapieüberlegungen: Save the Meniscus',
       lead: 'Die Therapie richtet sich nach Symptomatik, Rissmorphologie, Lokalisation und Vaskularisation. Ziel ist der möglichst weitgehende Erhalt von Meniskusgewebe.',
@@ -141,6 +203,7 @@ const CONTENT = {
     mcqTitle: 'Meniscus MCQs',
     mcqDesc: 'Exam questions on anatomy, MRI grading and tear diagnosis.',
     mcqCta: 'Start MCQs',
+    openCase: 'Open case on Radiopaedia',
     sections: [
       { id: 'grundlagen', label: 'Basics', icon: '🦵' },
       { id: 'anatomie', label: 'Anatomy', icon: '🦴' },
@@ -148,6 +211,8 @@ const CONTENT = {
       { id: 'mrt', label: 'MRI diagnosis', icon: '🩻' },
       { id: 'grading', label: 'MRI grading', icon: '📊' },
       { id: 'risskriterien', label: 'Meniscal tear', icon: '⚠️' },
+      { id: 'fallbeispiele', label: 'Cases', icon: '🧪' },
+      { id: 'discoider', label: 'Discoid meniscus', icon: '🔵' },
       { id: 'therapie', label: 'Treatment principle', icon: '🧵' },
     ],
     heroCards: [
@@ -240,6 +305,65 @@ const CONTENT = {
       ],
       key: 'The two-slice-touch rule increases specificity because a single-slice artifact is not overcalled as a tear.',
     },
+    cases: {
+      title: 'Cases',
+      lead: 'The cases illustrate typical MRI findings and help distinguish degenerative intrameniscal signal from true tears.',
+      items: [
+        {
+          title: 'Linear signal increase without surface contact',
+          label: 'Grade 2a',
+          meta: 'PD-weighted · sagittal · degenerative · no definite tear',
+          img: '/meniskus/mri-sagittal.png',
+          url: 'https://radiopaedia.org/cases/14060',
+          credit: 'Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060',
+        },
+        {
+          title: 'Globular / complex signal without a clear line',
+          label: 'Grade 2c',
+          meta: 'PD-weighted · coronal · higher risk of occult tear',
+          img: '/meniskus/mri-coronal.png',
+          url: 'https://radiopaedia.org/cases/75168',
+          credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168',
+        },
+      ],
+      key: 'Cases are useful because not every intrameniscal signal abnormality represents a definite meniscal tear.',
+    },
+    discoid: {
+      title: 'Discoid meniscus',
+      lead: 'A discoid meniscus is a congenital anatomic variant with an abnormally wide, disc-shaped meniscal body. It almost exclusively affects the lateral meniscus and is more prone to tears than a normally shaped meniscus.',
+      stats: [
+        { value: '3–5%', label: 'incidence', text: 'often incidental on knee MRI' },
+        { value: '~50%', label: 'bilateral', text: 'not uncommonly present on both sides' },
+        { value: '≥ 3', label: 'sagittal slices', text: 'body remains visible across several slices' },
+      ],
+      overviewHeaders: ['Parameter', 'Value'],
+      overviewRows: [
+        ['Affected meniscus', 'almost exclusively lateral meniscus'],
+        ['Side distribution', 'bilateral in about 50% of cases'],
+        ['Sex', 'no clear predilection'],
+        ['Prevalence', 'reported to be higher in Asian populations'],
+        ['Risk of tear', 'higher than in a normally shaped meniscus'],
+      ],
+      childTitle: 'Clinical clue in children',
+      childText: 'A snapping knee in a child should always raise suspicion for a discoid lateral meniscus.',
+      mriTitle: 'MRI criteria',
+      mriHeaders: ['Plane', 'Criterion', 'Threshold'],
+      mriRows: [
+        ['Coronal', 'absolute meniscal width', '≥ 15 mm'],
+        ['Coronal', 'meniscal width / maximal tibial width', '> 20%'],
+        ['Sagittal', 'continuous body visualization', 'on ≥ 3 consecutive standard slices'],
+      ],
+      sagittalTitle: 'Sagittal sign',
+      sagittalText: 'The sagittal criterion is the opposite of the absent bow-tie sign: a normal meniscus shows the body on only 1–2 slices, whereas a discoid meniscus remains visible on at least 3 slices.',
+      treatmentHeaders: ['Situation', 'Management'],
+      treatmentRows: [
+        ['asymptomatic incidental finding', 'conservative, no intervention needed'],
+        ['symptomatic without tear', 'conservative; arthroscopic saucerization if symptoms persist'],
+        ['discoid meniscus with tear', 'meniscal repair plus partial resection if needed'],
+        ['irreparable / severe destruction', 'partial or total meniscectomy only as last option'],
+      ],
+      key: 'The save-the-meniscus principle also applies to discoid meniscus: preserve tissue and avoid total meniscectomy whenever possible.',
+    },
     therapy: {
       title: 'Treatment concept: Save the meniscus',
       lead: 'Management depends on symptoms, tear morphology, location and vascularity. The goal is to preserve as much meniscal tissue as possible.',
@@ -264,6 +388,7 @@ const CONTENT = {
     mcqTitle: 'سوالات منیسک',
     mcqDesc: 'سوالات مرتبط با آناتومی، درجه‌بندی MRI و تشخیص پارگی.',
     mcqCta: 'شروع سوالات',
+    openCase: 'باز کردن کیس در Radiopaedia',
     sections: [
       { id: 'grundlagen', label: 'مبانی', icon: '🦵' },
       { id: 'anatomie', label: 'آناتومی', icon: '🦴' },
@@ -271,6 +396,8 @@ const CONTENT = {
       { id: 'mrt', label: 'تشخیص MRI', icon: '🩻' },
       { id: 'grading', label: 'درجه‌بندی MRI', icon: '📊' },
       { id: 'risskriterien', label: 'پارگی منیسک', icon: '⚠️' },
+      { id: 'fallbeispiele', label: 'نمونه کیس‌ها', icon: '🧪' },
+      { id: 'discoider', label: 'منیسک دیسکوئید', icon: '🔵' },
       { id: 'therapie', label: 'اصل درمان', icon: '🧵' },
     ],
     heroCards: [
@@ -362,6 +489,65 @@ const CONTENT = {
         { title: 'قانون Two-slice-touch', text: 'ضایعه باید حداقل در دو برش متوالی با تماس سطحی دیده شود.' },
       ],
       key: 'قانون Two-slice-touch اختصاصیت را بالا می‌برد، چون یک آرتیفکت تک‌برشی به اشتباه پارگی حساب نمی‌شود.',
+    },
+    cases: {
+      title: 'نمونه کیس‌ها',
+      lead: 'نمونه کیس‌ها کمک می‌کنند تفاوت بین سیگنال دژنراتیو داخل منیسک و پارگی واقعی بهتر دیده شود.',
+      items: [
+        {
+          title: 'افزایش سیگنال خطی بدون تماس با سطح مفصلی',
+          label: 'درجه 2a',
+          meta: 'PD · ساژیتال · دژنراتیو · بدون پارگی قطعی',
+          img: '/meniskus/mri-sagittal.png',
+          url: 'https://radiopaedia.org/cases/14060',
+          credit: 'Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060',
+        },
+        {
+          title: 'سیگنال گلوبولار/پیچیده بدون خط واضح',
+          label: 'درجه 2c',
+          meta: 'PD · کرونال · خطر بیشتر برای پارگی مخفی',
+          img: '/meniskus/mri-coronal.png',
+          url: 'https://radiopaedia.org/cases/75168',
+          credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168',
+        },
+      ],
+      key: 'نمونه کیس‌ها مهم هستند، چون هر افزایش سیگنال داخل منیسک به معنی پارگی قطعی نیست.',
+    },
+    discoid: {
+      title: 'منیسک دیسکوئید',
+      lead: 'منیسک دیسکوئید یک واریانت مادرزادی است که در آن تنه منیسک پهن‌تر و شبیه دیسک است. این حالت تقریباً همیشه منیسک خارجی را درگیر می‌کند و نسبت به منیسک طبیعی بیشتر مستعد پارگی است.',
+      stats: [
+        { value: '۳–۵٪', label: 'شیوع', text: 'اغلب یافته اتفاقی در MRI زانو' },
+        { value: '~۵۰٪', label: 'دوطرفه', text: 'می‌تواند در هر دو زانو دیده شود' },
+        { value: '≥ ۳', label: 'برش ساژیتال', text: 'تنه منیسک در چند برش متوالی دیده می‌شود' },
+      ],
+      overviewHeaders: ['پارامتر', 'مقدار'],
+      overviewRows: [
+        ['منیسک درگیر', 'تقریباً همیشه منیسک خارجی'],
+        ['توزیع طرفی', 'در حدود ۵۰٪ موارد دوطرفه'],
+        ['جنسیت', 'ارجحیت واضح ندارد'],
+        ['شیوع', 'در جمعیت‌های آسیایی بیشتر گزارش شده است'],
+        ['خطر پارگی', 'بیشتر از منیسک با شکل طبیعی'],
+      ],
+      childTitle: 'نکته بالینی در کودکان',
+      childText: 'شنیدن یا احساس Snapping در زانوی کودک باید شک به منیسک خارجی دیسکوئید را مطرح کند.',
+      mriTitle: 'معیارهای MRI',
+      mriHeaders: ['صفحه', 'معیار', 'حد آستانه'],
+      mriRows: [
+        ['کرونال', 'عرض مطلق منیسک', '≥ ۱۵ میلی‌متر'],
+        ['کرونال', 'عرض منیسک / حداکثر عرض تیبیا', '> ۲۰٪'],
+        ['ساژیتال', 'دیده شدن مداوم تنه منیسک', 'در ≥ ۳ برش استاندارد متوالی'],
+      ],
+      sagittalTitle: 'علامت ساژیتال',
+      sagittalText: 'معیار ساژیتال برعکس absent bow-tie sign است: منیسک طبیعی تنه را فقط در ۱ تا ۲ برش نشان می‌دهد، اما منیسک دیسکوئید در حداقل ۳ برش متوالی دیده می‌شود.',
+      treatmentHeaders: ['وضعیت', 'اقدام'],
+      treatmentRows: [
+        ['یافته اتفاقی بدون علامت', 'محافظه‌کارانه، بدون نیاز به مداخله'],
+        ['علامت‌دار بدون پارگی', 'درمان محافظه‌کارانه؛ در صورت تداوم علائم Saucerization آرتروسکوپیک'],
+        ['منیسک دیسکوئید همراه با پارگی', 'ترمیم منیسک همراه با رزکسیون نسبی در صورت نیاز'],
+        ['غیرقابل ترمیم / تخریب شدید', 'منیسککتومی نسبی یا کامل فقط به عنوان آخرین گزینه'],
+      ],
+      key: 'در منیسک دیسکوئید هم اصل Save the Meniscus برقرار است: تا حد امکان بافت منیسک حفظ شود و منیسککتومی کامل انجام نشود.',
     },
     therapy: {
       title: 'اصول درمان: Save the Meniscus',
@@ -455,18 +641,27 @@ export default function MeniskusPage() {
   const isRTL = lang === 'fa'
   const mainRef = useRef(null)
   const [activeId, setActiveId] = useState(copy.sections[0].id)
+  const [isMobileTocOpen, setIsMobileTocOpen] = useState(false)
 
   const sectionIds = useMemo(() => copy.sections.map(section => section.id), [copy.sections])
   const withLang = (href) => lang === 'de' ? href : `${href}?lang=${lang}`
 
   const scrollTo = (id) => {
     const el = document.getElementById(id)
+    setIsMobileTocOpen(false)
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   useEffect(() => {
     setActiveId(copy.sections[0].id)
   }, [copy.sections])
+
+  useEffect(() => {
+    document.body.style.overflow = isMobileTocOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isMobileTocOpen])
 
   useEffect(() => {
     const observers = sectionIds.map(id => {
@@ -525,6 +720,31 @@ export default function MeniskusPage() {
           <em>{copy.mcqCta} →</em>
         </Link>
       </header>
+
+      <div className={styles.mobileTocBar}>
+        <button
+          type="button"
+          className={styles.mobileTocButton}
+          onClick={() => setIsMobileTocOpen(true)}
+          aria-expanded={isMobileTocOpen}
+        >
+          <span className={styles.mobileTocIcon}>☰</span>
+          <span>{copy.toc}</span>
+          <strong>{copy.sections.find(section => section.id === activeId)?.label}</strong>
+        </button>
+      </div>
+
+      {isMobileTocOpen && (
+        <div className={styles.mobileTocOverlay} onClick={() => setIsMobileTocOpen(false)}>
+          <div className={styles.mobileTocPanel} onClick={(event) => event.stopPropagation()}>
+            <div className={styles.mobileTocHeader}>
+              <strong>{copy.toc}</strong>
+              <button type="button" onClick={() => setIsMobileTocOpen(false)} aria-label="Close menu">×</button>
+            </div>
+            <Sidebar sections={copy.sections} toc={copy.toc} activeId={activeId} onClick={scrollTo} />
+          </div>
+        </div>
+      )}
 
       <div className={styles.layout}>
         <Sidebar sections={copy.sections} toc={copy.toc} activeId={activeId} onClick={scrollTo} />
@@ -619,12 +839,67 @@ export default function MeniskusPage() {
             <Callout label={copy.keyLabel}>{copy.tear.key}</Callout>
           </Section>
 
-          <Section id="therapie" eyebrow="07" title={copy.therapy.title} lead={copy.therapy.lead}>
+          <Section id="fallbeispiele" eyebrow="07" title={copy.cases.title} lead={copy.cases.lead}>
+            <div className={styles.caseGrid}>
+              {copy.cases.items.map(item => (
+                <a key={item.title} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}>
+                  <img className={styles.caseImage} src={item.img} alt={item.title} />
+                  <div className={styles.caseBody}>
+                    <span className={styles.caseLabel}>{item.label}</span>
+                    <h3>{item.title}</h3>
+                    <p>{item.meta}</p>
+                    <small>{item.credit}</small>
+                    <strong>{copy.openCase}</strong>
+                  </div>
+                </a>
+              ))}
+            </div>
+            <Callout label={copy.keyLabel}>{copy.cases.key}</Callout>
+          </Section>
+
+          <Section id="discoider" eyebrow="08" title={copy.discoid.title} lead={copy.discoid.lead}>
+            <div className={styles.discoidStats}>
+              {copy.discoid.stats.map(stat => (
+                <div key={stat.label} className={styles.discoidStatCard}>
+                  <strong>{stat.value}</strong>
+                  <span>{stat.label}</span>
+                  <p>{stat.text}</p>
+                </div>
+              ))}
+            </div>
+            <Table headers={copy.discoid.overviewHeaders} rows={copy.discoid.overviewRows} />
+            <div className={styles.splitGrid}>
+              <div className={styles.cardAccent}>
+                <h3>{copy.discoid.childTitle}</h3>
+                <p>{copy.discoid.childText}</p>
+              </div>
+              <div className={styles.card}>
+                <h3>{copy.discoid.sagittalTitle}</h3>
+                <p>{copy.discoid.sagittalText}</p>
+              </div>
+            </div>
+            <div className={styles.card}>
+              <h3>{copy.discoid.mriTitle}</h3>
+              <Table headers={copy.discoid.mriHeaders} rows={copy.discoid.mriRows} />
+            </div>
+            <div className={styles.card}>
+              <h3>{copy.therapy.title}</h3>
+              <Table headers={copy.discoid.treatmentHeaders} rows={copy.discoid.treatmentRows} />
+            </div>
+            <Callout label={copy.keyLabel}>{copy.discoid.key}</Callout>
+          </Section>
+
+          <Section id="therapie" eyebrow="09" title={copy.therapy.title} lead={copy.therapy.lead}>
             <Table headers={copy.therapy.tableHeaders} rows={copy.therapy.tableRows} />
             <Callout type="success" label={copy.keyLabel}>{copy.therapy.key}</Callout>
           </Section>
         </main>
       </div>
+
+      <Link href={withLang('/msk/knie/meniskus/mcq')} className={styles.mobileMcqFab}>
+        <span>🎯</span>
+        <strong>{copy.mcqCta}</strong>
+      </Link>
     </div>
   )
 }
