@@ -5,20 +5,6 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import SearchBar from './SearchBar'
 import styles from './Navbar.module.css'
 
-const FACH_KEYS = ['Neuroradiologie','Thorax','Abdomen','Muskuloskelettales','Hals','Brust','Becken','Technik & Physik']
-const FACH_LINKS = {
-  'Neuroradiologie':    '/#fachgebiete',
-  'Thorax':             '/#fachgebiete',
-  'Abdomen':            '/#fachgebiete',
-  'Muskuloskelettales': '/msk/knie/meniskus',
-  'Hals':               '/#fachgebiete',
-  'Brust':              '/#fachgebiete',
-  'Becken':             '/#fachgebiete',
-  'Technik & Physik':   '/technik/kontrastmittel',
-}
-
-const FACH_BADGES = ['Technik & Physik', 'Muskuloskelettales']
-
 function HexLogo({ size = 30 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 36 36" fill="none">
@@ -37,21 +23,6 @@ function HexLogo({ size = 30 }) {
   )
 }
 
-function FachDropdown({ texts }) {
-  return (
-    <div className={styles.dropdown}>
-      <div className={styles.ddLabel}>{texts.navFach}</div>
-      {FACH_KEYS.map(k => (
-        <Link key={k} href={FACH_LINKS[k]} className={styles.ddItem}>
-          <span className={styles.ddDot} />
-          {texts.fachNames[k]}
-          {FACH_BADGES.includes(k) && <span className={styles.ddBadge}>Neu</span>}
-        </Link>
-      ))}
-    </div>
-  )
-}
-
 export default function Navbar() {
   const { lang, texts, setLang } = useLanguage()
   const [search, setSearch] = useState(false)
@@ -59,8 +30,7 @@ export default function Navbar() {
   return (
     <>
       <nav className={styles.nav}>
-
-        {/* ── Logo always LTR ── */}
+        {/* Logo */}
         <Link href="/" className={styles.brand} dir="ltr">
           <HexLogo size={28} />
           <span className={styles.wordmark} dir="ltr">
@@ -69,27 +39,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <div className={styles.links}>
-          <div className={styles.navItem}>
-            <button className={styles.navLink}>
-              {texts.navLearn}
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className={styles.chevron}>
-                <path d="M2 3.5l3 3 3-3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-              </svg>
-            </button>
-            <FachDropdown texts={texts} />
-          </div>
-          <div className={styles.navItem}>
-            <button className={`${styles.navLink} ${styles.navLinkActive}`}>
-              {texts.navFall}
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className={styles.chevron}>
-                <path d="M2 3.5l3 3 3-3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-              </svg>
-            </button>
-            <FachDropdown texts={texts} />
-          </div>
-        </div>
-
+        {/* Right: search + lang only */}
         <div className={styles.right}>
           <button className={styles.iconBtn} onClick={() => setSearch(true)}>
             <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
