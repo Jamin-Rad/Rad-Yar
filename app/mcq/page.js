@@ -12,9 +12,9 @@ const TOPICS = [
     iconImage: '/fach/technik.png',
     color: '#f97316',
     available: true,
-    count: { de: '9 Fragen', en: '9 Questions', fa: '۹ سوال' },
+    count: { de: '10 Fragen', en: '10 Questions', fa: '۱۰ سوال' },
     name: { de: 'Kontrastmittel', en: 'Contrast Media', fa: 'ماده حاجب' },
-    desc: { de: 'Röntgen-KM · MRT-KM · Nebenwirkungen · Schwangerschaft', en: 'X-ray CM · MRI CM · Adverse Effects · Pregnancy', fa: 'ماده حاجب رادیولوژی · MRI · عوارض · بارداری' },
+    desc: { de: 'Röntgen-KM · MRT-KM · Jod-NW · Gadolinium-NW · Schwangerschaft', en: 'X-ray CM · MRI CM · iodine reactions · gadolinium risks · pregnancy', fa: 'رادیوگرافی/CT · MRI · عوارض یددار · عوارض گادولینیوم · بارداری' },
   },
   {
     key: 'meniskus',
