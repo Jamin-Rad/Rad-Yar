@@ -13,6 +13,10 @@ const NAV = {
     title: 'Meniskus',
     merke: 'Merke',
     openCase: 'Auf Radiopaedia öffnen',
+    mcqLabel: 'Prüfungsvorbereitung',
+    mcqTitle: 'MCQ · Meniskus',
+    mcqDesc: '6 Fragen mit ausführlichen Erklärungen',
+    mcqCta: 'Quiz starten →',
     tabs: [
       { id: 'anatomie', label: 'Anatomie', icon: '🦴', sections: [
         { id: 'menisken-vergleich', label: 'Vergleich' },
@@ -44,6 +48,10 @@ const NAV = {
     title: 'Meniscus',
     merke: 'Key point',
     openCase: 'Open on Radiopaedia',
+    mcqLabel: 'Exam preparation',
+    mcqTitle: 'MCQ · Meniscus',
+    mcqDesc: '6 questions with detailed explanations',
+    mcqCta: 'Start quiz →',
     tabs: [
       { id: 'anatomie', label: 'Anatomy', icon: '🦴', sections: [
         { id: 'menisken-vergleich', label: 'Comparison' },
@@ -75,6 +83,10 @@ const NAV = {
     title: 'منیسک',
     merke: 'نکته مهم',
     openCase: 'باز کردن در Radiopaedia',
+    mcqLabel: 'آمادگی آزمون',
+    mcqTitle: 'MCQ · منیسک',
+    mcqDesc: '۶ سوال با توضیحات کامل',
+    mcqCta: 'شروع کوئیز ←',
     tabs: [
       { id: 'anatomie', label: 'آناتومی', icon: '🦴', sections: [
         { id: 'menisken-vergleich', label: 'مقایسه' },
@@ -876,6 +888,7 @@ export default function MeniskusPage() {
   const [activeTab, setActiveTab] = useState('anatomie')
   const [activeSection, setActiveSection] = useState('menisken-vergleich')
   const mainRef = useRef(null)
+  const withLang = (href) => lang === 'de' ? href : `${href}?lang=${lang}`
 
   const handleTabChange = (tabId) => {
     setActiveTab(tabId)
@@ -913,11 +926,25 @@ export default function MeniskusPage() {
         <div className={styles.breadcrumb}>
           <Link href="/" className={styles.breadLink}>RadYar</Link>
           <span className={styles.sep}>›</span>
-          <Link href="/lernen/msk" className={styles.breadLink}>{copy.breadcrumbMsk}</Link>
+          <Link href={withLang('/lernen/msk')} className={styles.breadLink}>{copy.breadcrumbMsk}</Link>
           <span className={styles.sep}>›</span>
           <span className={styles.breadCurrent}>{copy.breadcrumbCurrent}</span>
         </div>
-        <h1 className={styles.pageTitle}>{copy.title}</h1>
+        <div className={styles.titleLine}>
+          <h1 className={styles.pageTitle}>{copy.title}</h1>
+          <Link href={withLang('/msk/knie/meniskus/mcq')} className={styles.mcqTopBtn}>
+            <span className={styles.mcqTopIcon}>🎯</span>
+            <span>{copy.mcqTitle}</span>
+          </Link>
+        </div>
+        <Link href={withLang('/msk/knie/meniskus/mcq')} className={styles.mcqCard}>
+          <div>
+            <span className={styles.mcqLabel}>{copy.mcqLabel}</span>
+            <div className={styles.mcqTitle}>{copy.mcqTitle}</div>
+            <div className={styles.mcqDesc}>{copy.mcqDesc}</div>
+          </div>
+          <span className={styles.mcqCta}>{copy.mcqCta}</span>
+        </Link>
       </div>
 
       <div className={styles.mobileTabs}>
