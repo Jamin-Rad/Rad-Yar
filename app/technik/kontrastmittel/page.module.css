@@ -34,7 +34,7 @@
 
 .heroGrid {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 22px;
   align-items: stretch;
 }
@@ -730,4 +730,72 @@
   .heroText { padding: 22px 18px; }
   .sourceBadge { font-size: 10.5px; }
   .card, .infoBox, .statCard { border-radius: 18px; padding: 16px; }
+}
+
+
+/* ── RTL / Persian and simplified KM layout ───────────────────────────── */
+.h2Icon {
+  display: inline-flex;
+  margin-inline-end: 10px;
+  font-size: 0.78em;
+  vertical-align: 0.06em;
+}
+
+.sideIcon {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: rgba(249, 115, 22, 0.12);
+  flex-shrink: 0;
+}
+
+.rtl {
+  font-family: var(--font-manrope, system-ui, sans-serif);
+}
+
+.rtl .breadcrumb,
+.rtl .heroText,
+.rtl .section,
+.rtl .card,
+.rtl .infoBox,
+.rtl .merke,
+.rtl .sideItem,
+.rtl .mobileTocButton {
+  text-align: right;
+}
+
+.rtl .h2::after {
+  left: auto;
+  right: 0;
+}
+
+.rtl .merkeTag {
+  margin: 0 0 6px 8px;
+}
+
+.rtl .flowRow {
+  justify-items: end;
+}
+
+.rtl .flowArrow {
+  padding-left: 0;
+  padding-right: 22px;
+}
+
+.rtl .mobileTocButton strong {
+  justify-self: end;
+}
+
+.rtl .table th,
+.rtl .table td {
+  text-align: right;
+}
+
+@media (max-width: 900px) {
+  .heroGrid { grid-template-columns: 1fr; }
+  .rtl .mobileTocPanel {
+    direction: rtl;
+  }
 }

@@ -1,88 +1,65 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import styles from './page.module.css'
 import { useLanguage } from '@/providers/LanguageProvider'
 
-const TABS = [
-  {
-    id: 'roentgen',
-    label: 'Röntgen-KM',
-    icon: '☢️',
-    sections: [
-      { id: 'grundlagen', label: 'Grundlagen' },
-      { id: 'einteilung', label: 'Einteilung' },
-      { id: 'applikation', label: 'Applikation' },
-      { id: 'ausscheidung', label: 'Ausscheidung' },
-      { id: 'paravasat', label: 'Paravasat' },
-    ],
-  },
-  {
-    id: 'sicherheit',
-    label: 'Sicherheit',
-    icon: '⚠️',
-    sections: [
-      { id: 'reaktionen', label: 'Nebenwirkungen' },
-      { id: 'pseudoallergie', label: 'Pseudoallergie' },
-      { id: 'pc-aki', label: 'PC-AKI' },
-      { id: 'metformin', label: 'Metformin/Dialyse' },
-      { id: 'thyreose', label: 'Schilddrüse' },
-    ],
-  },
-  {
-    id: 'gi',
-    label: 'GI-KM',
-    icon: '🧪',
-    sections: [
-      { id: 'barium', label: 'Bariumsulfat' },
-      { id: 'gastrografin', label: 'Gastrografin®' },
-    ],
-  },
-  {
-    id: 'mrt',
-    label: 'MRT-KM',
-    icon: '🧲',
-    sections: [
-      { id: 'gadolinium', label: 'Gadolinium' },
-      { id: 'chelate', label: 'Chelate' },
-      { id: 'nsf-retention', label: 'NSF/Retention' },
-      { id: 'leber-km', label: 'Leberspezifisch' },
-    ],
-  },
-  {
-    id: 'spezial',
-    label: 'Spezial',
-    icon: '🩺',
-    sections: [
-      { id: 'buscopan', label: 'Buscopan®' },
-      { id: 'schwangerschaft', label: 'Schwangerschaft' },
-      { id: 'stillzeit', label: 'Stillzeit' },
-    ],
-  },
-]
-
-const MCQ_BTN = { de: 'MCQs', en: 'MCQs', fa: 'MCQ' }
-
-function McqWidget() {
-  const { lang } = useLanguage()
-  const href = lang && lang !== 'de' ? `/technik/kontrastmittel/mcq?lang=${lang}` : '/technik/kontrastmittel/mcq'
-  return (
-    <Link href={href} className={styles.mcqWidget}>
-      <span className={styles.mcqWidgetIcon}>🎯</span>
-      <span className={styles.mcqWidgetText}>{MCQ_BTN[lang] || 'MCQs'}</span>
-      <span className={styles.mcqWidgetArr}>→</span>
-    </Link>
-  )
+const TOPICS = {
+  de: [
+    { id: 'roentgen-grundlagen', icon: '☢️', label: 'Röntgen-Kontrastmittel Grundlagen' },
+    { id: 'mrt-km', icon: '🧲', label: 'MRT KM' },
+    { id: 'nebenwirkung-jod', icon: '⚠️', label: 'Nebenwirkung jodhaltiger KM' },
+    { id: 'nebenwirkung-gadolinium', icon: '🛡️', label: 'Nebenwirkung Gadolinium' },
+    { id: 'schwangerschaft-stillzeit', icon: '🤰', label: 'Schwangerschaft und Stillzeit' },
+  ],
+  en: [
+    { id: 'roentgen-grundlagen', icon: '☢️', label: 'X-ray contrast media basics' },
+    { id: 'mrt-km', icon: '🧲', label: 'MRI contrast media' },
+    { id: 'nebenwirkung-jod', icon: '⚠️', label: 'Adverse effects of iodinated CM' },
+    { id: 'nebenwirkung-gadolinium', icon: '🛡️', label: 'Adverse effects of gadolinium' },
+    { id: 'schwangerschaft-stillzeit', icon: '🤰', label: 'Pregnancy and breastfeeding' },
+  ],
+  fa: [
+    { id: 'roentgen-grundlagen', icon: '☢️', label: 'مبانی مواد حاجب رادیوگرافی / CT' },
+    { id: 'mrt-km', icon: '🧲', label: 'مواد حاجب MRI' },
+    { id: 'nebenwirkung-jod', icon: '⚠️', label: 'عوارض مواد حاجب یددار' },
+    { id: 'nebenwirkung-gadolinium', icon: '🛡️', label: 'عوارض گادولینیوم' },
+    { id: 'schwangerschaft-stillzeit', icon: '🤰', label: 'بارداری و شیردهی' },
+  ],
 }
 
-function Merke({ children }) {
-  return (
-    <div className={styles.merke}>
-      <span className={styles.merkeTag}>Merke</span>
-      {children}
-    </div>
-  )
+const UI = {
+  de: {
+    dir: 'ltr', home: 'RadYar', learn: 'Technik & Physik', title: 'Kontrastmittel',
+    badge: 'Lehrbuch · Dr. Zia', mcq: 'MCQs starten', toc: 'Inhaltsverzeichnis', close: 'Menü schließen',
+    lead: 'Praxisorientierte Lernseite zu Röntgen-Kontrastmitteln, MRT-Kontrastmitteln, Nebenwirkungen, PC-AKI, Schilddrüse sowie Schwangerschaft und Stillzeit.',
+    merke: 'Merke', praxis: 'Praxis', cave: 'CAVE',
+  },
+  en: {
+    dir: 'ltr', home: 'RadYar', learn: 'Physics & Tech', title: 'Contrast media',
+    badge: 'Textbook · Dr. Zia', mcq: 'Start MCQs', toc: 'Table of contents', close: 'Close menu',
+    lead: 'Practice-oriented learning page on X-ray contrast media, MRI contrast media, adverse effects, PC-AKI, thyroid issues, pregnancy and breastfeeding.',
+    merke: 'Key point', praxis: 'Practice', cave: 'Caution',
+  },
+  fa: {
+    dir: 'rtl', home: 'RadYar', learn: 'تکنیک و فیزیک', title: 'مواد حاجب',
+    badge: 'جزوه آموزشی · Dr. Zia', mcq: 'شروع MCQ', toc: 'فهرست درس', close: 'بستن منو',
+    lead: 'درس‌نامه کاربردی درباره مواد حاجب رادیوگرافی و CT، مواد حاجب MRI، عوارض یددار، عوارض گادولینیوم، بارداری و شیردهی.',
+    merke: 'نکته مهم', praxis: 'کاربرد بالینی', cave: 'احتیاط',
+  },
+}
+
+function t(lang) {
+  return UI[lang] || UI.de
+}
+
+function topics(lang) {
+  return TOPICS[lang] || TOPICS.de
+}
+
+function withLang(href, lang) {
+  return lang && lang !== 'de' ? `${href}?lang=${lang}` : href
 }
 
 function InfoBox({ variant = 'info', title, children }) {
@@ -91,6 +68,15 @@ function InfoBox({ variant = 'info', title, children }) {
     <div className={`${styles.infoBox} ${styles[variant]}`}>
       {title && <div className={styles.infoTitle}>{icons[variant]} {title}</div>}
       <div>{children}</div>
+    </div>
+  )
+}
+
+function Merke({ title, children }) {
+  return (
+    <div className={styles.merke}>
+      <span className={styles.merkeTag}>{title}</span>
+      {children}
     </div>
   )
 }
@@ -118,35 +104,6 @@ function KMTable({ headers, rows, colColors }) {
   )
 }
 
-function SeverityBar({ items }) {
-  return (
-    <div className={styles.severityWrap}>
-      {items.map((item, i) => (
-        <div key={i} className={styles.severityItem} style={{ borderColor: item.color }}>
-          <div className={styles.severityHeader} style={{ background: item.color }}>
-            <span className={styles.severityGrad}>{item.grad}</span>
-            <span className={styles.severityLabel}>{item.label}</span>
-          </div>
-          <ul className={styles.severityList}>
-            {item.symptoms.map((s, j) => <li key={j}>{s}</li>)}
-          </ul>
-        </div>
-      ))}
-    </div>
-  )
-}
-
-function StatCard({ value, unit, label, sub, color = '#f97316' }) {
-  return (
-    <div className={styles.statCard}>
-      <div className={styles.statValue} style={{ color }}>{value}</div>
-      {unit && <div className={styles.statUnit} style={{ color }}>{unit}</div>}
-      <div className={styles.statLabel}>{label}</div>
-      {sub && <div className={styles.statSub}>{sub}</div>}
-    </div>
-  )
-}
-
 function FlowStep({ steps }) {
   return (
     <div className={styles.flow}>
@@ -163,434 +120,453 @@ function FlowStep({ steps }) {
   )
 }
 
-function TabRoentgen() {
+function Section({ id, icon, title, children }) {
   return (
-    <>
-      <section id="grundlagen" className={styles.section}>
-        <h2 className={styles.h2}>Röntgen-Kontrastmittel · Grundlagen</h2>
+    <section id={id} className={styles.section}>
+      <h2 className={styles.h2}><span className={styles.h2Icon}>{icon}</span>{title}</h2>
+      {children}
+    </section>
+  )
+}
+
+function RoentgenSection({ lang }) {
+  const u = t(lang)
+  if (lang === 'fa') {
+    return (
+      <Section id="roentgen-grundlagen" icon="☢️" title="مبانی مواد حاجب رادیوگرافی / CT">
         <div className={styles.twoCol}>
           <div className={styles.card}>
-            <div className={styles.cardTitle}>Röntgennegative Kontrastmittel</div>
-            <p className={styles.text}>Röntgennegative Kontrastmittel absorbieren Röntgenstrahlung kaum. Dadurch erscheinen sie im Vergleich zum umgebenden Gewebe dunkler.</p>
-            <KMTable headers={['Beispiele', 'Prinzip']} rows={[[ 'Luft, Gas, CO₂, Wasser', 'Geringe/fehlende Absorption → bessere Strahlendurchlässigkeit' ]]} />
+            <div className={styles.cardTitle}>مواد حاجب رادیونگاتیو</div>
+            <p className={styles.text}>این مواد به علت جذب کم یا عدم جذب اشعه X، عبور اشعه را آسان‌تر می‌کنند و در تصویر نسبتاً تیره‌تر دیده می‌شوند.</p>
+            <KMTable headers={['مثال‌ها', 'اصل تصویربرداری']} rows={[[ 'هوا، گاز، CO₂، آب', 'جذب کم اشعه → افزایش عبورپذیری اشعه X' ]]} />
           </div>
           <div className={styles.card}>
-            <div className={styles.cardTitle}>Röntgenpositive Kontrastmittel</div>
-            <p className={styles.text}>Röntgenpositive Kontrastmittel absorbieren Röntgenstrahlen stärker als das umgebende Gewebe. Ursache ist die höhere Ordnungszahl der kontrastgebenden Atome.</p>
-            <KMTable headers={['Beispiele', 'Prinzip']} rows={[[ 'Jodhaltige KM, Bariumsulfat', 'Stärkere Absorption → höhere Dichte/hellere Darstellung' ]]} />
+            <div className={styles.cardTitle}>مواد حاجب رادیوپوزیتیو</div>
+            <p className={styles.text}>این مواد اشعه X را بیشتر از بافت اطراف جذب می‌کنند؛ علت، عدد اتمی بالاتر ماده کنتراست‌دهنده است.</p>
+            <KMTable headers={['مثال‌ها', 'اصل تصویربرداری']} rows={[[ 'مواد یددار، باریوم سولفات', 'جذب بیشتر اشعه → چگالی بالاتر و روشن‌تر شدن تصویر' ]]} />
           </div>
         </div>
-        <Merke>
-          Bei wasserlöslichen jodhaltigen Kontrastmitteln ist der <strong>Trijodbenzolring</strong> die gemeinsame Grundstruktur; das Jod mit Ordnungszahl 53 erzeugt den eigentlichen Röntgenkontrast.
-        </Merke>
-      </section>
 
-      <section id="einteilung" className={styles.section}>
-        <h2 className={styles.h2}>Einteilung der Röntgen-Kontrastmittel</h2>
+        <h3 className={styles.h3}>تقسیم‌بندی مواد حاجب رادیوگرافی</h3>
         <KMTable
-          headers={['Gruppe', 'Beispiele', 'Eigenschaften', 'Typische Anwendung', 'Intravasal?']}
+          headers={['گروه', 'مثال', 'ویژگی', 'کاربرد معمول']}
           rows={[
-            ['Nicht-ionisch, wasserlöslich', 'Imeron®, Ultravist®', 'Keine elektrische Ladung, hydrophiler, deutlich niedrigere Osmolarität', 'Standard für i.v./i.a. CT und Angiographie', '✅ Ja'],
-            ['Ionisch, wasserlöslich', 'Gastrografin®', 'Höhere Osmolarität, höheres Nebenwirkungsprofil, günstiger', 'Enterale Anwendung', '❌ Nein'],
-            ['Wasserunlöslich', 'Bariumsulfat', 'Nicht resorbierbar', 'Enterale Bildgebung', '❌ Nein'],
-            ['Jodhaltige Öle', 'Lipiodol®', 'Ölig, heute selten', 'Lymphangiographie', 'Spezial'],
-            ['Röntgennegativ', 'Luft, CO₂, Wasser', 'Kaum Absorption', 'Doppelkontrast/GI', 'Nein'],
+            ['یددار غیر یونی، محلول در آب', 'Imeron®، Ultravist®', 'بدون بار الکتریکی، هیدروفیل‌تر، اسمولاریته کمتر و تحمل‌پذیری بهتر', 'استاندارد برای کاربرد داخل‌عروقی CT/آنژیوگرافی'],
+            ['یددار یونی، محلول در آب', 'Gastrografin®', 'اسمولاریته بالاتر و عوارض بیشتر', 'کاربرد انترا‌ل؛ برای تزریق داخل‌عروقی مناسب نیست'],
+            ['نامحلول در آب', 'Bariumsulfat', 'جذب نمی‌شود', 'تصویربرداری گوارشی؛ در شک به پرفوراسیون ممنوع'],
+            ['رادیونگاتیو', 'هوا، CO₂، آب', 'جذب بسیار کم', 'دابل‌کنتراست و اتساع لومن'],
           ]}
         />
-        <InfoBox variant="success" title="Praxisregel">
-          <p>Für die intravasale Anwendung sind heute nicht-ionische, niedrig-osmolare jodhaltige Kontrastmittel der Routine-Standard.</p>
+        <Merke title={u.merke}>در مواد حاجب یددار محلول در آب، ساختار مشترک <strong>حلقه تری‌یدوبنزن</strong> است. خود ید با عدد اتمی ۵۳ عامل اصلی ایجاد کنتراست در CT است.</Merke>
+
+        <h3 className={styles.h3}>اپلیکیشن، غلظت و سرعت تزریق</h3>
+        <KMTable
+          headers={['بررسی', 'حجم معمول', 'سرعت تزریق', 'نکته عملی']}
+          rows={[
+            ['CT آمبولی ریه', 'حدود ۵۰–۷۰ ml', '۵ ml/s', 'نیاز به بولوس سریع و کانول مناسب دارد'],
+            ['CTA آئورت / عروق سوپرا‌آئورتیک', 'حدود ۶۰–۸۰ ml', '۴–۵ ml/s', 'زمان‌بندی بولوس مهم است'],
+            ['CT شکم فاز پورتال', 'حدود ۸۰–۱۲۰ ml', '۳–۴ ml/s', 'برای فاز پورتال، ۲۰G اغلب کافی است'],
+            ['CT شکم دو فازی', 'حدود ۱۰۰–۱۴۰ ml', '۳–۵ ml/s', 'برای کنتراست‌دهی طولانی‌تر ارگان‌ها'],
+            ['ZVK یا ۲۲G آبی', 'کاهش‌یافته', 'حدود ۲٫۵ ml/s', 'در صورت امکان برای بررسی‌های عروقی پرهیز شود'],
+          ]}
+        />
+        <InfoBox variant="success" title={u.praxis}>
+          <p>هرچه یک رگ باید سریع‌تر به حداکثر کنتراست برسد، معمولاً سرعت تزریق بالاتر و حجم دقیق‌تر لازم است. برای ارگان‌ها که کنتراست‌دهی یکنواخت و طولانی‌تر می‌خواهند، حجم بیشتر اهمیت دارد.</p>
         </InfoBox>
-      </section>
 
-      <section id="applikation" className={styles.section}>
-        <h2 className={styles.h2}>Kontrastmittel-Applikation</h2>
-        <div className={styles.statRow}>
-          <StatCard value="~300" unit="mg Jod/ml" label="Standard CT" sub="meist ausreichend" />
-          <StatCard value="350–375" unit="mg Jod/ml" label="CTA" sub="stärkere intravasale Kontrastierung" color="#fbbf24" />
-          <StatCard value="3–5" unit="ml/s" label="Standardrate" sub="18G grün" color="#38bdf8" />
-        </div>
+        <h3 className={styles.h3}>دفع مواد حاجب یددار</h3>
         <KMTable
-          headers={['Untersuchung', 'Typisches Volumen', 'Injektionsrate', 'Zugang / Kommentar']}
+          headers={['مسیر / زمان', 'مقدار تقریبی', 'اهمیت']}
           rows={[
-            ['LAE-CT', 'ca. 50–70 ml', '5 ml/s', '18G grün; hohe Flussrate wichtig'],
-            ['CTA-Aorta / BBA / supraaortal', 'ca. 60–80 ml', '4–5 ml/s', 'bolusorientiert'],
-            ['Abdomen portalvenös', 'ca. 80–120 ml', '3–4 ml/s', '20G rosa oft ausreichend'],
-            ['Abdomen biphasisch', 'ca. 100–140 ml', '3–5 ml/s', 'längere Organ-Kontrastierung'],
-            ['ZVK / 22G blau', 'reduziert', 'ca. 2,5 ml/s', 'wenn möglich vermeiden'],
+            ['دفع کلیوی', 'حدود ۹۰٪', 'مسیر اصلی دفع'],
+            ['نیمه‌عمر پلاسما', '۱–۳ ساعت', 'در عملکرد طبیعی کلیه کوتاه است'],
+            ['بعد از حدود ۲ ساعت', 'حدود ۵۰٪', 'دفع عمدتاً کلیوی'],
+            ['بعد از ۲۴ ساعت', 'تقریباً کامل', 'مقدار کمی دفع خارج‌کلیوی ممکن است'],
           ]}
         />
-        <h3 className={styles.h3}>Was beeinflusst das Volumen?</h3>
-        <KMTable
-          headers={['Faktor', 'Auswirkung']}
-          rows={[
-            ['Art der Untersuchung', 'Parenchymatöse Organe benötigen meist größere Volumina und langsamere Injektion als CTA.'],
-            ['Körpergewicht', 'Höheres Körpergewicht erfordert häufig höheres Volumen.'],
-            ['Nierenrisiko', 'Bei erhöhtem Risiko für PC-AKI wird das Volumen möglichst reduziert.'],
-          ]}
-        />
-        <Merke>
-          Je schneller ein Gefäß maximal kontrastiert werden soll, desto kleiner ist oft das Volumen. Je länger ein Organ homogen kontrastiert werden muss, desto größer ist das Volumen.
-        </Merke>
-      </section>
-
-      <section id="ausscheidung" className={styles.section}>
-        <h2 className={styles.h2}>Ausscheidung jodhaltiger Kontrastmittel</h2>
-        <div className={styles.statRow}>
-          <StatCard value="~90%" label="renal" sub="Hauptausscheidung" />
-          <StatCard value="1–3 h" label="Plasmahalbwertzeit" color="#38bdf8" />
-          <StatCard value="24 h" label="nahezu vollständig" sub="eliminiert" color="#34d399" />
-        </div>
-        <KMTable
-          headers={['Zeit', 'Elimination', 'Bemerkung']}
-          rows={[
-            ['nach ~2 h', '~50%', 'überwiegend renal'],
-            ['nach ~4 h', '~75%', 'weiter renal'],
-            ['nach 24 h', 'nahezu vollständig', 'geringer extra-renaler Anteil möglich'],
-          ]}
-        />
-        <InfoBox variant="info" title="Extra-renale Ausscheidung & Umwelt">
-          <p>Ein kleiner Anteil wird über Leber/Galle, Darm und Speicheldrüsen ausgeschieden. Jodhaltige CT-KM und Gadolinium-KM können in Kläranlagen kaum herausgefiltert werden und sind im Trinkwasser messbar.</p>
+        <InfoBox variant="info" title="نکته محیط‌زیستی">
+          <p>مواد حاجب یددار CT و مواد گادولینیوم MRI به‌سختی در تصفیه‌خانه‌ها فیلتر می‌شوند و می‌توانند وارد سیستم فاضلاب و آب شوند.</p>
         </InfoBox>
-      </section>
 
-      <section id="paravasat" className={styles.section}>
-        <h2 className={styles.h2}>Paravasat-Management</h2>
+        <h3 className={styles.h3}>Paravasat · خروج ماده حاجب از رگ</h3>
         <FlowStep steps={[
-          { text: 'Injektion sofort stoppen – Zugang zunächst belassen – Aspiration versuchen', variant: 'flowOrange' },
-          { text: 'Kanüle erst nach Aspirationsversuch entfernen' },
-          { text: 'Extremität hochlagern' },
-          { text: 'Kalte Kompresse: 20 Minuten, mehrfach wiederholen' },
-          { text: 'Umfang markieren und Verlauf dokumentieren' },
+          { text: 'تزریق را فوراً متوقف کنید؛ مسیر وریدی را ابتدا باقی بگذارید و در صورت امکان آسپیراسیون انجام دهید.', variant: 'flowOrange' },
+          { text: 'کانول را بعد از تلاش برای آسپیراسیون خارج کنید.' },
+          { text: 'اندام را بالا نگه دارید و کمپرس سرد ۲۰ دقیقه‌ای، چند بار تکرار شود.' },
+          { text: 'حدود محل را با قلم علامت بزنید و اندازه، نوع ماده حاجب و اقدامات را مستند کنید.' },
         ]} />
         <KMTable
-          headers={['Kontrolle', 'Was prüfen?', 'Warnsignal']}
+          headers={['کنترل', 'چه چیزی بررسی شود؟', 'علامت خطر']}
           rows={[
-            ['Durchblutung', 'Kapillarfüllzeit, distale Pulse', 'Verzögerte Füllung, schwacher/fehlender Puls'],
-            ['Motorik & Sensorik', 'Kraft, Gefühl, Parästhesien', 'Kribbeln, Taubheit, Paresen'],
-            ['Spannung/Ödem', 'Zunahme der Schwellung, Druckschmerz', 'Kompartmentsyndrom-Verdacht'],
-            ['Haut', 'Farbe, Blasen, Nekrosen', 'livide Verfärbung, Bläschenbildung'],
+            ['گردش خون', 'پرشدگی مویرگی و نبض دیستال', 'نبض ضعیف/غایب یا پرشدگی دیررس'],
+            ['حس و حرکت', 'پارستزی، بی‌حسی، ضعف حرکتی', 'اختلال حسی/حرکتی پیشرونده'],
+            ['فشار بافتی', 'افزایش تورم و درد', 'شک به سندرم کمپارتمان'],
+            ['پوست', 'رنگ، تاول، نکروز', 'تغییر رنگ livide یا تاول'],
           ]}
         />
-        <InfoBox variant="danger" title="Patienteninformation">
-          <p>Schwellung, Rötung oder Wärme können in den nächsten Stunden vorkommen. Bei Zunahme, Bläschen, Taubheit, Hautverfärbung oder starken Schmerzen sofort in die Notaufnahme.</p>
-        </InfoBox>
-        <Merke>Menge, KM-Typ, klinischer Befund, Maßnahmen und Verlauf schriftlich dokumentieren.</Merke>
-      </section>
-    </>
+
+        <h3 className={styles.h3}>تشخیص گوارشی و Buscopan®</h3>
+        <KMTable
+          headers={['موضوع', 'نکته مهم']}
+          rows={[
+            ['Bariumsulfat', 'جذب نمی‌شود؛ در پرفوراسیون، آسپراسیون و Ileus ممنوع است.'],
+            ['Gastrografin®', 'محلول در آب و هیپراسمولار؛ در شک به پرفوراسیون مناسب‌تر است و می‌تواند اثر ملین داشته باشد.'],
+            ['Buscopan®', 'پاراسمپاتولیتیک؛ برای کاهش پریستالتیسم و آرتیفکت حرکتی استفاده می‌شود.'],
+            ['منع Buscopan®', 'گلوکوم، هیپرپلازی پروستات، تاکی‌آریتمی، Ileus مکانیکی؛ جایگزین: Glucagon.'],
+          ]}
+        />
+      </Section>
+    )
+  }
+
+  return (
+    <Section id="roentgen-grundlagen" icon="☢️" title="Röntgen-Kontrastmittel Grundlagen">
+      <div className={styles.twoCol}>
+        <div className={styles.card}>
+          <div className={styles.cardTitle}>Röntgennegative Kontrastmittel</div>
+          <p className={styles.text}>Röntgennegative Kontrastmittel absorbieren Röntgenstrahlung kaum und lassen sie relativ ungehindert passieren.</p>
+          <KMTable headers={['Beispiele', 'Prinzip']} rows={[[ 'Wasser, Luft, Gas, CO₂', 'geringe/fehlende Absorption → dunklere Darstellung' ]]} />
+        </div>
+        <div className={styles.card}>
+          <div className={styles.cardTitle}>Röntgenpositive Kontrastmittel</div>
+          <p className={styles.text}>Röntgenpositive Kontrastmittel absorbieren Röntgenstrahlen stärker als das umgebende Gewebe.</p>
+          <KMTable headers={['Beispiele', 'Prinzip']} rows={[[ 'Jodhaltige KM, Bariumsulfat', 'höhere Ordnungszahl → stärkere Absorption' ]]} />
+        </div>
+      </div>
+      <KMTable
+        headers={['Gruppe', 'Beispiele', 'Eigenschaften', 'Anwendung']}
+        rows={[
+          ['Nicht-ionisch, wasserlöslich', 'Imeron®, Ultravist®', 'keine elektrische Ladung, niedrigere Osmolarität, besser verträglich', 'Standard für intravasale CT/Angiographie'],
+          ['Ionisch, wasserlöslich', 'Gastrografin®', 'höhere Osmolarität, höheres Nebenwirkungsprofil', 'enteral; nicht mehr intravasal'],
+          ['Wasserunlöslich', 'Bariumsulfat', 'nicht resorbierbar', 'enterale Bildgebung'],
+          ['Röntgennegativ', 'Luft, CO₂, Wasser', 'geringe Absorption', 'Doppelkontrast / GI'],
+        ]}
+      />
+      <Merke title={u.merke}>Alle wasserlöslichen jodhaltigen KM besitzen einen Trijodbenzolring; Jod mit Ordnungszahl 53 erzeugt den eigentlichen Röntgenkontrast.</Merke>
+      <h3 className={styles.h3}>Applikation und Ausscheidung</h3>
+      <KMTable
+        headers={['Untersuchung', 'Volumen', 'Injektionsrate', 'Kommentar']}
+        rows={[
+          ['LAE-CT', 'ca. 50–70 ml', '5 ml/s', 'hohe Flussrate entscheidend'],
+          ['CTA-Aorta / BBA', 'ca. 60–80 ml', '4–5 ml/s', 'bolusorientiert'],
+          ['Abdomen portalvenös', 'ca. 80–120 ml', '3–4 ml/s', '20G rosa oft ausreichend'],
+          ['Abdomen biphasisch', 'ca. 100–140 ml', '3–5 ml/s', 'längere Organ-Kontrastierung'],
+          ['ZVK / 22G', 'reduziert', 'ca. 2,5 ml/s', 'wenn möglich vermeiden'],
+        ]}
+      />
+      <KMTable headers={['Ausscheidung', 'Wert']} rows={[[ 'renal', 'ca. 90%' ], [ 'Plasmahalbwertzeit', '1–3 Stunden' ], [ 'Elimination', 'nahezu vollständig nach 24 h' ]]} />
+      <h3 className={styles.h3}>Paravasat, GI-KM und Buscopan®</h3>
+      <FlowStep steps={[
+        { text: 'Injektion stoppen, Zugang belassen, Aspiration versuchen.', variant: 'flowOrange' },
+        { text: 'Kanüle erst danach entfernen, Extremität hochlagern, kalte Kompresse.' },
+        { text: 'Durchblutung, Motorik/Sensorik, Spannung und Hautzustand kontrollieren.' },
+        { text: 'Menge, KM-Typ, Befund, Maßnahmen und Verlauf dokumentieren.' },
+      ]} />
+      <KMTable
+        headers={['Thema', 'Wichtig']}
+        rows={[
+          ['Bariumsulfat', 'nicht resorbiert; kontraindiziert bei Perforation, Aspirationsgefahr und Ileus'],
+          ['Gastrografin®', 'wasserlöslich und hyperosmolar; bei Perforationsverdacht geeigneter'],
+          ['Buscopan®', 'Parasympatholytikum zur Artefaktreduktion; Cave Glaukom, Prostatahyperplasie, Tachyarrhythmie, mechanischer Ileus'],
+        ]}
+      />
+    </Section>
   )
 }
 
-function TabSicherheit() {
-  return (
-    <>
-      <section id="reaktionen" className={styles.section}>
-        <h2 className={styles.h2}>Nebenwirkungen jodhaltiger Kontrastmittel</h2>
+function MrtSection({ lang }) {
+  if (lang === 'fa') {
+    return (
+      <Section id="mrt-km" icon="🧲" title="مواد حاجب MRI">
         <div className={styles.twoCol}>
           <div className={styles.card}>
-            <div className={styles.cardTitle}>Chemotoxische Reaktionen</div>
-            <p className={styles.text}>Direkte chemische Wirkung des Kontrastmittels. Nicht immunologisch.</p>
-            <KMTable headers={['Typisch', 'Beispiele']} rows={[[ 'mild bis selten schwer', 'Wärmegefühl, Übelkeit, Erbrechen, vasovagale Reaktion, Arrhythmie, Krampfanfall' ]]} />
+            <div className={styles.cardTitle}>گادولینیوم چیست؟</div>
+            <p className={styles.text}>گادولینیوم یک فلز پارامغناطیس است. یون آزاد Gd³⁺ سمی است، بنابراین باید داخل یک کمپلکس شلاتی پایدار قرار بگیرد.</p>
+            <KMTable headers={['اثر', 'تظاهر تصویری']} rows={[[ 'کوتاه‌کردن T1', 'افزایش سیگنال / Enhancement' ], [ 'کوتاه‌کردن T2', 'کاهش سیگنال، بیشتر در دوز بالا' ]]} />
           </div>
           <div className={styles.card}>
-            <div className={styles.cardTitle}>Allergieartige Reaktionen</div>
-            <p className={styles.text}>Pseudoallergie: ähnelt einer Allergie, ist aber nicht IgE-vermittelt.</p>
-            <KMTable headers={['Mechanismus', 'Folge']} rows={[[ 'Unspezifische Mastzellaktivierung', 'Histaminausschüttung' ]]} />
+            <div className={styles.cardTitle}>دوز و نکته Leber-KM</div>
+            <KMTable headers={['ماده', 'دوز / ویژگی']} rows={[[ 'گادولینیوم استاندارد', '۰٫۱ mmol/kg' ], [ 'Primovist®', '۰٫۰۲۵ mmol/kg؛ یک‌چهارم دوز معمول، حدود ۵۰٪ دفع صفراوی و ۵۰٪ کلیوی' ]]} />
           </div>
         </div>
-      </section>
-
-      <section id="pseudoallergie" className={styles.section}>
-        <h2 className={styles.h2}>Allergieartige Reaktion · Schweregrade & Management</h2>
-        <SeverityBar items={[
-          { grad: 'Grad 1', label: 'mild', color: '#34d399', symptoms: ['Juckreiz', 'leichte Urtikaria', 'Erythem'] },
-          { grad: 'Grad 2', label: 'moderat', color: '#fbbf24', symptoms: ['deutliche Urtikaria', 'Bronchospasmus', 'Larynxödem'] },
-          { grad: 'Grad 3', label: 'schwer', color: '#f97316', symptoms: ['Hypotonie', 'Schock', 'sehr selten: 0,01–0,04%'] },
-          { grad: 'Grad 4', label: 'lebensbedrohlich', color: '#ef4444', symptoms: ['Atemstillstand', 'Herzstillstand'] },
-        ]} />
+        <h3 className={styles.h3}>شلات‌های خطی و ماکروسیکلیک</h3>
         <KMTable
-          headers={['Bei früherer Reaktion', 'Vorgehen', 'Kommentar']}
-          rows={[
-            ['1', 'Alternatives Bildgebungsverfahren prüfen', 'KM-frei, wenn diagnostisch ausreichend'],
-            ['2', 'Anderes Kontrastmittel verwenden', 'Substanzwechsel reduziert das Wiederholungsrisiko deutlich'],
-            ['3', 'Prämedikation nur kritisch einsetzen', 'H1/H2-Blocker und Cortison im Alltag häufig, aber nicht mehr klar leitlinienbasiert empfohlen'],
-          ]}
-        />
-        <Merke>
-          Eine „Jodallergie“ gibt es nicht. Jod ist als kleines Molekül nicht allergen; die Reaktion richtet sich gegen andere Molekülbestandteile.
-        </Merke>
-      </section>
-
-      <section id="pc-aki" className={styles.section}>
-        <h2 className={styles.h2}>PC-AKI · Kontrastmittelassoziierte akute Nierenschädigung</h2>
-        <div className={styles.twoCol}>
-          <div className={styles.card}>
-            <div className={styles.cardTitle}>Terminologie</div>
-            <KMTable headers={['Alt', 'Neu']} rows={[[ 'CIN', 'PC-AKI / Post-Contrast Acute Kidney Injury' ]]} />
-            <p className={styles.textSm}>Die Umbenennung betont, dass ein kausaler Zusammenhang zwischen KM und akutem Nierenversagen nicht immer sicher ist.</p>
-          </div>
-          <div className={styles.card}>
-            <div className={styles.cardTitle}>Definition</div>
-            <p className={styles.text}>Serumkreatinin-Anstieg innerhalb von 48–72 Stunden nach intravaskulärer KM-Gabe.</p>
-            <div className={styles.statRow}>
-              <StatCard value="≥0,3" unit="mg/dl" label="absolut" />
-              <StatCard value="≥1,5×" label="relativ" color="#fbbf24" />
-            </div>
-          </div>
-        </div>
-        <h3 className={styles.h3}>Risikofaktoren</h3>
-        <KMTable
-          headers={['Risikokonstellation', 'Grenzwert / Situation', 'Bedeutung']}
-          rows={[
-            ['eGFR reduziert + First-Pass-Effekt', '<45 ml/min/1,73 m²', 'intraarteriell proximal der Nierenarterien oder Intensivpatient*innen'],
-            ['eGFR reduziert + Second-Pass-Effekt', '<30 ml/min/1,73 m²', 'i.v. Gabe oder intraarteriell distal der Nierenarterien'],
-            ['Akutes Nierenversagen', 'bekannt oder vermutet', 'hohes Risiko'],
-            ['Untersuchungsbezogen', 'große KM-Menge, hochosmolares KM, erneute KM-Gabe 48–72 h', 'Risiko steigt'],
-          ]}
-        />
-        <InfoBox variant="warning" title="Hydrierung">
-          <p>Bei eGFR &lt;30 ml/min/1,73 m² wird Hydrierung empfohlen, bevorzugt i.v. mit NaCl 0,9%. Häufiges Schema: 100 ml/h für 4 Stunden vor und 4 Stunden nach KM-Gabe.</p>
-          <p>Vorsicht bei Herzinsuffizienz NYHA III–IV oder Lungenödem.</p>
-        </InfoBox>
-        <Merke>Es gibt keine gesicherte medikamentöse Prophylaxe. Acetylcystein/ACC gilt nicht als wirksam.</Merke>
-      </section>
-
-      <section id="metformin" className={styles.section}>
-        <h2 className={styles.h2}>Metformin & Dialyse</h2>
-        <KMTable
-          headers={['Situation', 'Vorgehen', 'Kommentar']}
-          rows={[
-            ['eGFR >30 ml/min/1,73 m²', 'Metformin weiternehmen', 'kein routinemäßiges Absetzen nötig'],
-            ['eGFR <30 ml/min/1,73 m²', 'zum Zeitpunkt der Untersuchung für 48 h absetzen', 'Metformin ist hier eigentlich kontraindiziert'],
-            ['Akutes Nierenversagen', 'für 48 h absetzen', 'Risiko der Akkumulation/Laktatazidose'],
-            ['Dialyse + Jod-KM', 'keine zeitliche Abstimmung nötig', 'die Niere arbeitet nicht relevant weiter'],
-            ['Dialyse + Gadolinium', 'zeitnahe Dialyse sinnvoll', 'Risikominimierung für NSF/Ablagerung'],
-          ]}
-        />
-      </section>
-
-      <section id="thyreose" className={styles.section}>
-        <h2 className={styles.h2}>Hyperthyreose & jodhaltiges KM</h2>
-        <div className={styles.statRow}>
-          <StatCard value="≥1 Woche" label="typische Latenz" color="#fbbf24" />
-          <StatCard value="~100/5 Mio." label="thyreotoxische Krisen" sub="extrem selten" color="#f97316" />
-        </div>
-        <InfoBox variant="warning" title="Risikokonstellationen">
-          <p>Morbus Basedow, Struma multinodosa und Schilddrüsenautonomie können durch Jod-KM dekompensieren.</p>
-        </InfoBox>
-        <KMTable
-          headers={['Situation', 'Vorgehen', 'Medikament / Grund']}
-          rows={[
-            ['Latente Hyperthyreose', 'KM möglich mit Prophylaxe', 'Natriumperchlorat/Irenat® vor KM, dann 7–10 Tage weiter'],
-            ['Manifeste Hyperthyreose', 'absolute Kontraindikation', 'Ausnahme nur lebensbedrohliche Situation'],
-            ['Lebensbedrohlicher Notfall', 'KM-Gabe bei zwingender Indikation', 'Irenat® + Thiamazol/Carbimazol'],
-            ['Papilläres/follikuläres SD-Karzinom', 'strikt vermeiden', 'Jodsättigung kann Radiojodtherapie verhindern'],
-          ]}
-        />
-      </section>
-    </>
-  )
-}
-
-function TabGI() {
-  return (
-    <>
-      <section id="barium" className={styles.section}>
-        <h2 className={styles.h2}>Bariumsulfat</h2>
-        <div className={styles.twoCol}>
-          <div className={styles.card}>
-            <div className={styles.cardTitle}>Applikation & Physiologie</div>
-            <KMTable headers={['Punkt', 'Details']} rows={[[ 'Applikation', 'oral oder rektal' ], [ 'Resorption', 'nicht resorbiert' ], [ 'Ausscheidung', 'charakteristisch weißer Stuhl' ]]} />
-          </div>
-          <div className={styles.card}>
-            <div className={styles.cardTitle}>Doppelkontrast</div>
-            <p className={styles.text}>Kombination aus positivem Kontrast (Barium) und negativem Kontrast (Luft/CO₂/Methylzellulose).</p>
-            <p className={styles.text}>Ziel: Schleimhautbeschlag plus Distension zur Beurteilung des Schleimhautreliefs.</p>
-          </div>
-        </div>
-        <InfoBox variant="danger" title="Kontraindikationen für Bariumsulfat">
-          <p>V.a. Perforation oder Anastomoseninsuffizienz → schwere Barium-Peritonitis.</p>
-          <p>Aspirationsgefahr → schwere Fremdkörperreaktion/Lungenödem.</p>
-          <p>V.a. Ileus → Verdickung zu Barium-Steinen, Verschlechterung von Ileus/Obstipation.</p>
-        </InfoBox>
-      </section>
-
-      <section id="gastrografin" className={styles.section}>
-        <h2 className={styles.h2}>Wasserlösliche enterale KM · Gastrografin®</h2>
-        <KMTable
-          headers={['Eigenschaft', 'Bedeutung']}
-          rows={[
-            ['Wasserlöslich', 'bei Perforation resorbierbar → keine Barium-Peritonitis'],
-            ['Hyperosmolar', 'wirkt abführend; therapeutischer Effekt bei Ileus möglich'],
-            ['Ionisch', 'höheres Nebenwirkungsprofil als nicht-ionische KM; nicht intravasal'],
-          ]}
-        />
-        <Merke>Bei Perforationsverdacht: kein Barium, sondern wasserlösliches Kontrastmittel.</Merke>
-      </section>
-    </>
-  )
-}
-
-function TabMRT() {
-  return (
-    <>
-      <section id="gadolinium" className={styles.section}>
-        <h2 className={styles.h2}>Gadolinium · Grundlagen</h2>
-        <div className={styles.twoCol}>
-          <div className={styles.card}>
-            <div className={styles.cardTitle}>Warum Chelat?</div>
-            <p className={styles.text}>Gadolinium ist ein paramagnetisches Metall. Freie Gd³⁺-Ionen sind toxisch und müssen deshalb in einem stabilen Chelat-Komplex verpackt werden.</p>
-            <KMTable headers={['Effekt', 'Bildwirkung']} rows={[[ 'T1-Verkürzung', 'Signalanstieg / Enhancement' ], [ 'T2-Verkürzung', 'Signalabfall, vor allem bei Hochdosis' ]]} />
-          </div>
-          <div className={styles.card}>
-            <div className={styles.cardTitle}>Dosis</div>
-            <KMTable headers={['KM', 'Typische Dosis']} rows={[[ 'Standard-Gd-KM', '0,1 mmol/kg KG' ], [ 'Primovist®', '0,025 mmol/kg KG, also ¼ der üblichen Dosis' ]]} />
-          </div>
-        </div>
-      </section>
-
-      <section id="chelate" className={styles.section}>
-        <h2 className={styles.h2}>Lineare vs. makrozyklische Chelate</h2>
-        <KMTable
-          headers={['', 'Lineare Chelate', 'Makrozyklische Chelate']}
+          headers={['ویژگی', 'خطی', 'ماکروسیکلیک']}
           colColors={[null, '#fbbf24', '#34d399']}
           rows={[
-            ['Struktur', 'offenkettig', 'ringförmig, „Käfig“'],
-            ['Gd-Bindung', 'weniger fest', 'sehr fest'],
-            ['Stabilität', 'geringer', 'sehr hoch'],
-            ['Ablagerungsrisiko', 'höher', 'deutlich geringer'],
-            ['Status', 'Rote-Hand-Brief 2018, weitgehend ruhend', 'heutiger Routine-Standard'],
-            ['Beispiele', 'Primovist®, Multihance® als Leber-Ausnahmen', 'Gadovist®, Dotarem®'],
+            ['ساختار', 'زنجیره باز', 'حلقوی / قفسه‌ای'],
+            ['اتصال Gd', 'کمتر پایدار', 'بسیار پایدار'],
+            ['ریسک رسوب', 'بیشتر', 'کمتر'],
+            ['وضعیت امروز', 'عمدتاً محدود؛ استثناهای کبدی مانند Primovist® و Multihance®', 'استاندارد روتین مانند Gadovist® و Dotarem®'],
           ]}
         />
-        <InfoBox variant="warning" title="Leber-Ausnahmen">
-          <p>Gadoxetsäure/Primovist® und Gadobensäure/Multihance® dürfen weiterhin in der Leber-MRT eingesetzt werden, weil ihre hepatobiliären Eigenschaften diagnostisch wichtig sind.</p>
+        <h3 className={styles.h3}>مواد حاجب اختصاصی کبد</h3>
+        <InfoBox variant="info" title="اصل تصویربرداری">
+          <p>مواد حاجب کبدی توسط هپاتوسیت‌های عملکردی جذب و از طریق صفرا دفع می‌شوند. بافت دارای هپاتوسیت در فاز hepatobiliär روشن می‌شود و ضایعات فاقد هپاتوسیت معمولاً تیره می‌مانند.</p>
         </InfoBox>
-      </section>
+        <KMTable
+          headers={['اندیکاسیون', 'نکته']}
+          rows={[
+            ['FNH در برابر Adenom', 'FNH معمولاً ماده حاجب را می‌گیرد؛ آدنوم اغلب نمی‌گیرد.'],
+            ['HCC در سیروز', 'HCC خوب‌تمایز ممکن است ماده حاجب را بگیرد.'],
+            ['متاستازهای کوچک', 'در فاز hepatobiliär به صورت ضایعات hypointens دیده می‌شوند.'],
+            ['نشت مجاری صفراوی', 'به علت دفع صفراوی قابل بررسی است.'],
+          ]}
+        />
+      </Section>
+    )
+  }
 
-      <section id="nsf-retention" className={styles.section}>
-        <h2 className={styles.h2}>NSF & Gadolinium-Retention</h2>
-        <div className={styles.twoCol}>
-          <div className={styles.card}>
-            <div className={styles.cardTitle}>Nephrogene systemische Fibrose</div>
-            <KMTable
-              headers={['Punkt', 'Details']}
-              rows={[
-                ['Krankheit', 'schwere fibrosierende Erkrankung von Haut und inneren Organen'],
-                ['Mechanismus', 'freies Gd → Fibroblastenaktivierung → Kollagenablagerung'],
-                ['Risikogruppe', 'GFR <30 ml/min/1,73 m², besonders nach linearen KM'],
-                ['Heute', 'extrem selten durch makrozyklische KM'],
-              ]}
-            />
-          </div>
-          <div className={styles.card}>
-            <div className={styles.cardTitle}>Gadolinium-Retention im Gehirn</div>
-            <p className={styles.text}>Nach mehrfacher Gabe linearer KM können T1-native Hyperintensitäten auftreten.</p>
-            <KMTable headers={['Struktur', 'Lokalisation']} rows={[[ 'Nucleus dentatus', 'Kleinhirn' ], [ 'Globus pallidus', 'Basalganglien' ]]} />
-            <InfoBox variant="info"><p>Klinische Relevanz bisher unklar.</p></InfoBox>
-          </div>
+  return (
+    <Section id="mrt-km" icon="🧲" title="MRT KM">
+      <div className={styles.twoCol}>
+        <div className={styles.card}>
+          <div className={styles.cardTitle}>Gadolinium</div>
+          <p className={styles.text}>Gadolinium ist ein paramagnetisches Metall. Freie Gd³⁺-Ionen sind toxisch und werden deshalb in einem Chelat-Komplex gebunden.</p>
+          <KMTable headers={['Effekt', 'Bildwirkung']} rows={[[ 'T1-Verkürzung', 'Signalanstieg / Enhancement' ], [ 'T2-Verkürzung', 'Signalabfall, v. a. bei Hochdosis' ]]} />
         </div>
-      </section>
-
-      <section id="leber-km" className={styles.section}>
-        <h2 className={styles.h2}>Leberspezifische Kontrastmittel</h2>
-        <InfoBox variant="info" title="Prinzip">
-          <p>Funktionstüchtige Hepatozyten nehmen KM aktiv auf und scheiden es biliär aus. Hepatozytenhaltiges Gewebe wird in der hepatobiliären Phase hell; nicht-hepatozytäre Läsionen bleiben hypointens.</p>
-        </InfoBox>
-        <KMTable
-          headers={['', 'Primovist®', 'Multihance®']}
-          colColors={[null, '#f97316', '#38bdf8']}
-          rows={[
-            ['Wirkstoff', 'Gadoxetsäure', 'Gadobensäure'],
-            ['Hepatozytenaufnahme', '~50%', '~3–5%'],
-            ['Hepatobiliäre Phase', 'nach ~20 min', 'nach ~40–120 min'],
-            ['Elimination', '~50% biliär / ~50% renal', 'überwiegend renal'],
-          ]}
-        />
-        <h3 className={styles.h3}>Indikationen</h3>
-        <KMTable
-          headers={['Indikation', 'Wichtiges Prinzip']}
-          rows={[
-            ['FNH vs. Adenom', 'FNH nimmt KM typischerweise auf, Adenome meistens nicht.'],
-            ['HCC in Zirrhose', 'gut differenziertes HCC kann KM aufnehmen.'],
-            ['Metastasen <1 cm', 'in hepatobiliärer Phase hypointens gegenüber angereichertem Leberparenchym.'],
-            ['Gallengangsleckage', 'biliäre Ausscheidung kann Leckagen zeigen.'],
-          ]}
-        />
-      </section>
-    </>
+        <div className={styles.card}>
+          <div className={styles.cardTitle}>Leber-KM</div>
+          <KMTable headers={['KM', 'Eigenschaft']} rows={[[ 'Primovist®', 'einziges hepatozytenspezifisches Gd-KM; 0,025 mmol/kg' ], [ 'Multihance®', 'geringe Hepatozytenaufnahme, spätere hepatobiliäre Phase' ]]} />
+        </div>
+      </div>
+      <KMTable
+        headers={['', 'Lineare Chelate', 'Makrozyklische Chelate']}
+        colColors={[null, '#fbbf24', '#34d399']}
+        rows={[
+          ['Struktur', 'offenkettig', 'ringförmig / „Käfig“'],
+          ['Stabilität', 'geringer', 'sehr hoch'],
+          ['Ablagerungsrisiko', 'höher', 'geringer'],
+          ['Routine heute', 'weitgehend ruhend; Leber-Ausnahmen', 'Standard'],
+        ]}
+      />
+      <KMTable
+        headers={['Indikation', 'Prinzip']}
+        rows={[
+          ['FNH vs. Adenom', 'FNH nimmt KM meist auf, Adenome meistens nicht.'],
+          ['HCC-Detektion in Zirrhose', 'gut differenziertes HCC kann KM aufnehmen.'],
+          ['Metastasen <1 cm', 'hypointens in der hepatobiliären Phase.'],
+          ['Gallengangsleckage', 'biliäre Ausscheidung ermöglicht Leckage-Nachweis.'],
+        ]}
+      />
+    </Section>
   )
 }
 
-function TabSpezial() {
-  return (
-    <>
-      <section id="buscopan" className={styles.section}>
-        <h2 className={styles.h2}>Buscopan® als Begleitmedikation</h2>
+function JodNebenwirkungSection({ lang }) {
+  const u = t(lang)
+  if (lang === 'fa') {
+    return (
+      <Section id="nebenwirkung-jod" icon="⚠️" title="عوارض مواد حاجب یددار">
         <div className={styles.twoCol}>
           <div className={styles.card}>
-            <div className={styles.cardTitle}>Wirkung & Ziel</div>
-            <p className={styles.text}>Buscopan® ist ein Parasympatholytikum. Es lähmt vorübergehend die glatte Muskulatur im Magen-Darm-Trakt.</p>
-            <Merke>Ziel in der Bildgebung: weniger Peristaltik → weniger Bewegungsartefakte.</Merke>
+            <div className={styles.cardTitle}>واکنش‌های کموتوکسیک</div>
+            <p className={styles.text}>اثر مستقیم شیمیایی ماده حاجب است و مکانیسم ایمنی ندارد.</p>
+            <KMTable headers={['علائم معمول']} rows={[[ 'احساس گرما، تهوع، استفراغ، واکنش وازوواگال، آریتمی، به‌ندرت تشنج' ]]} />
           </div>
           <div className={styles.card}>
-            <div className={styles.cardTitle}>Kontraindikationen</div>
+            <div className={styles.cardTitle}>واکنش شبه‌آلرژیک</div>
+            <p className={styles.text}>از نظر بالینی شبیه آلرژی است، اما IgE-mediated نیست. مکانیسم اصلی، فعال‌شدن غیر اختصاصی ماست‌سل‌ها و آزاد شدن هیستامین است.</p>
+            <Merke title={u.merke}>«آلرژی به ید» وجود ندارد؛ ید مولکول کوچکی است و آلرژن محسوب نمی‌شود.</Merke>
+          </div>
+        </div>
+        <KMTable
+          headers={['درجه', 'شدت', 'علائم']}
+          rows={[
+            ['Grade 1', 'خفیف', 'خارش، کهیر خفیف، اریتم'],
+            ['Grade 2', 'متوسط', 'کهیر واضح، برونکواسپاسم، ادم حنجره'],
+            ['Grade 3', 'شدید', 'هیپوتانسیون، شوک'],
+            ['Grade 4', 'تهدیدکننده حیات', 'ایست تنفسی یا قلبی'],
+          ]}
+        />
+        <h3 className={styles.h3}>اگر بیمار سابقه واکنش شبه‌آلرژیک داشته باشد</h3>
+        <KMTable
+          headers={['قدم', 'اقدام']}
+          rows={[
+            ['۱', 'در صورت امکان روش تصویربرداری جایگزین بدون ماده حاجب را بررسی کنید.'],
+            ['۲', 'در صورت نیاز به ماده حاجب، Substanzwechsel انجام دهید؛ تغییر ماده خطر تکرار واکنش را کم می‌کند.'],
+            ['۳', 'پره‌مدیکیشن با H1/H2 و کورتون در عمل انجام می‌شود، اما اثر آن محدود و همیشه مطابق راهنمای جدید نیست.'],
+          ]}
+        />
+        <h3 className={styles.h3}>PC-AKI، متفورمین، دیالیز و تیروئید</h3>
+        <KMTable
+          headers={['موضوع', 'نکته عملی']}
+          rows={[
+            ['PC-AKI', 'افزایش کراتینین ظرف ۴۸–۷۲ ساعت بعد از تزریق داخل‌عروقی؛ اصطلاح جدید به جای CIN است.'],
+            ['ریسک کلیوی', 'eGFR پایین، AKI، حجم بالای ماده حاجب، تزریق‌های مکرر و First-Pass کلیوی ریسک را زیاد می‌کند.'],
+            ['هیدراتاسیون', 'در eGFR < 30 توصیه می‌شود؛ مثلاً NaCl 0.9% با احتیاط در نارسایی قلبی.'],
+            ['متفورمین', 'با eGFR > 30 ادامه می‌یابد؛ با eGFR < 30 یا AKI هنگام بررسی و ۴۸ ساعت قطع شود.'],
+            ['دیالیز', 'برای یددارها زمان‌بندی خاص لازم نیست؛ برای گادولینیوم دیالیز سریع‌تر مفید است.'],
+            ['هیپرتیروئیدی', 'در Basedow، گواتر مولتی‌ندولار و Autonomie احتیاط؛ هیپرتیروئیدی آشکار منع مطلق مگر اورژانس تهدیدکننده حیات.'],
+          ]}
+        />
+        <InfoBox variant="danger" title={u.cave}>
+          <p>در سرطان تیروئید پاپیلاری/فولیکولار، ماده حاجب یددار می‌تواند سلول‌ها را با ید اشباع کند و درمان بعدی با رادیویُد را مختل کند.</p>
+        </InfoBox>
+      </Section>
+    )
+  }
+
+  return (
+    <Section id="nebenwirkung-jod" icon="⚠️" title="Nebenwirkung jodhaltiger KM">
+      <div className={styles.twoCol}>
+        <div className={styles.card}>
+          <div className={styles.cardTitle}>Chemotoxische Reaktionen</div>
+          <p className={styles.text}>Direkte chemische Wirkung des KM, nicht immunologisch.</p>
+          <KMTable headers={['Typisch']} rows={[[ 'Wärmegefühl, Übelkeit, Erbrechen, vasovagale Reaktion, Arrhythmie, selten Krampfanfall' ]]} />
+        </div>
+        <div className={styles.card}>
+          <div className={styles.cardTitle}>Allergieartige Reaktionen</div>
+          <p className={styles.text}>Pseudoallergie: klinisch allergieähnlich, aber nicht IgE-vermittelt. Mechanismus: unspezifische Mastzellaktivierung.</p>
+          <Merke title={u.merke}>Eine „Jodallergie“ existiert nicht. Jod ist als kleines Molekül nicht allergen.</Merke>
+        </div>
+      </div>
+      <KMTable
+        headers={['Grad', 'Schwere', 'Symptome']}
+        rows={[
+          ['Grad 1', 'mild', 'Juckreiz, leichte Urtikaria, Erythem'],
+          ['Grad 2', 'moderat', 'deutliche Urtikaria, Bronchospasmus, Larynxödem'],
+          ['Grad 3', 'schwer', 'Hypotonie, Schock'],
+          ['Grad 4', 'lebensbedrohlich', 'Atemstillstand, Herzstillstand'],
+        ]}
+      />
+      <h3 className={styles.h3}>PC-AKI, Metformin, Dialyse und Schilddrüse</h3>
+      <KMTable
+        headers={['Thema', 'Praxisregel']}
+        rows={[
+          ['PC-AKI', 'Kreatininanstieg innerhalb 48–72 h nach intravaskulärer KM-Gabe; neuer Begriff statt CIN.'],
+          ['Risikofaktoren', 'eGFR reduziert, AKI, große KM-Mengen, wiederholte KM-Gabe, renaler First-Pass-Effekt.'],
+          ['Hydrierung', 'bei eGFR <30 empfohlen; Vorsicht bei Herzinsuffizienz/Lungenödem.'],
+          ['Metformin', 'eGFR >30: weiterführen; eGFR <30 oder AKI: zum Untersuchungszeitpunkt 48 h pausieren.'],
+          ['Dialyse', 'bei Jod-KM keine zeitliche Abstimmung nötig; bei Gadolinium zeitnah sinnvoll.'],
+          ['Hyperthyreose', 'latente Hyperthyreose: Irenat®; manifeste Hyperthyreose: absolute KI außer lebensbedrohlicher Notfall.'],
+        ]}
+      />
+    </Section>
+  )
+}
+
+function GadoliniumNebenwirkungSection({ lang }) {
+  if (lang === 'fa') {
+    return (
+      <Section id="nebenwirkung-gadolinium" icon="🛡️" title="عوارض گادولینیوم">
+        <div className={styles.twoCol}>
+          <div className={styles.card}>
+            <div className={styles.cardTitle}>NSF · فیبروز سیستمیک نفروژنیک</div>
             <KMTable
-              headers={['KI', 'Alternative']}
+              headers={['نکته', 'توضیح']}
               rows={[
-                ['Glaukom', 'Glucagon'],
-                ['Prostatahyperplasie', 'Glucagon'],
-                ['Tachyarrhythmie', 'Glucagon'],
-                ['mechanischer Ileus', 'Glucagon'],
+                ['ماهیت', 'بیماری فیبروزان شدید پوست و ارگان‌های داخلی'],
+                ['مکانیسم', 'آزاد شدن/رسوب گادولینیوم → فعال شدن فیبروبلاست‌ها → رسوب کلاژن'],
+                ['گروه پرخطر', 'نارسایی شدید کلیه با GFR < 30، به‌ویژه پس از مواد خطی'],
+                ['وضعیت امروز', 'با استفاده از مواد ماکروسیکلیک بسیار نادر شده است'],
               ]}
             />
           </div>
+          <div className={styles.card}>
+            <div className={styles.cardTitle}>احتباس گادولینیوم در مغز</div>
+            <p className={styles.text}>پس از تزریق‌های مکرر مواد خطی، ممکن است در T1 native هایپراینتنسیتی در Nucleus dentatus و Globus pallidus دیده شود.</p>
+            <KMTable headers={['ساختار', 'محل']} rows={[[ 'Nucleus dentatus', 'هسته دندانه‌ای مخچه' ], [ 'Globus pallidus', 'بخش داخلی هسته Lentiform' ]]} />
+          </div>
         </div>
-        <InfoBox variant="warning" title="Patientenhinweis">
-          <p>Pupillenerweiterung und Akkommodationsstörung sind möglich. Deshalb: für 1–2 Stunden kein Auto fahren und keine Maschinen bedienen.</p>
+        <InfoBox variant="info" title="ارزش بالینی">
+          <p>اهمیت بالینی رسوب گادولینیوم در مغز تا امروز نامشخص است. در روتین، استفاده از مواد ماکروسیکلیک پایدار ترجیح داده می‌شود.</p>
         </InfoBox>
-      </section>
+      </Section>
+    )
+  }
 
-      <section id="schwangerschaft" className={styles.section}>
-        <h2 className={styles.h2}>Schwangerschaft</h2>
-        <InfoBox variant="warning" title="Grundprinzip">
-          <p>Strenge Indikation: Kontrastmittel nur, wenn die Untersuchung nicht verschoben werden kann und eine KM-freie Alternative nicht ausreicht. Aufklärung und Dokumentation sind wichtig.</p>
+  return (
+    <Section id="nebenwirkung-gadolinium" icon="🛡️" title="Nebenwirkung Gadolinium">
+      <div className={styles.twoCol}>
+        <div className={styles.card}>
+          <div className={styles.cardTitle}>Nephrogene systemische Fibrose</div>
+          <KMTable
+            headers={['Punkt', 'Details']}
+            rows={[
+              ['Krankheit', 'schwere fibrosierende Erkrankung von Haut und inneren Organen'],
+              ['Mechanismus', 'freies Gd → Fibroblastenaktivierung → Kollagenablagerung'],
+              ['Risiko', 'GFR <30, besonders nach linearen KM'],
+              ['Heute', 'extrem selten dank makrozyklischer KM'],
+            ]}
+          />
+        </div>
+        <div className={styles.card}>
+          <div className={styles.cardTitle}>Gadolinium-Retention</div>
+          <p className={styles.text}>Nach mehrfacher Gabe linearer KM können T1-native Hyperintensitäten auftreten.</p>
+          <KMTable headers={['Struktur', 'Lokalisation']} rows={[[ 'Nucleus dentatus', 'Kleinhirn' ], [ 'Globus pallidus', 'Basalganglien' ]]} />
+        </div>
+      </div>
+      <InfoBox variant="info" title="Klinische Relevanz">
+        <p>Die klinische Relevanz der Retention ist bislang unklar. Makrozyklische Chelate sind wegen ihrer Stabilität Routine-Standard.</p>
+      </InfoBox>
+    </Section>
+  )
+}
+
+function PregnancySection({ lang }) {
+  const u = t(lang)
+  if (lang === 'fa') {
+    return (
+      <Section id="schwangerschaft-stillzeit" icon="🤰" title="بارداری و شیردهی">
+        <InfoBox variant="warning" title="اصل کلی">
+          <p>ماده حاجب در بارداری فقط با اندیکاسیون سخت‌گیرانه داده می‌شود: اگر بررسی قابل تعویق نباشد و روش مناسب بدون ماده حاجب کافی نباشد. توضیح و مستندسازی الزامی است.</p>
         </InfoBox>
         <KMTable
-          headers={['', 'Jodhaltige KM', 'Gadolinium-KM']}
-          colColors={[null, '#f97316', '#38bdf8']}
+          headers={['موضوع', 'ماده حاجب یددار', 'ماده حاجب گادولینیوم']}
           rows={[
-            ['Plazenta', 'plazentagängig', 'plazentagängig'],
-            ['Wichtiges Risiko', 'theoretische fetale/neonatale Hypothyreose', 'freies Gd im Fruchtwasser potenziell toxisch, Risiko unklar'],
-            ['Zeitpunkt', 'fetale Schilddrüse nimmt Jod ab ca. 10.–12. SSW auf', 'besonders im 1. Trimenon vermeiden'],
-            ['Vorgehen', 'wenn nötig möglich; TSH-Neugeborenenkontrolle', 'möglichst vermeiden; wenn zwingend, makrozyklisch bevorzugen'],
+            ['عبور از جفت', 'بله؛ جنین از حدود هفته ۱۰–۱۲ می‌تواند ید را در تیروئید جذب کند', 'بله؛ دفع کلیوی به مایع آمنیوتیک و احتمال جذب مجدد جنینی'],
+            ['ریسک نظری', 'کم‌کاری تیروئید جنین/نوزاد به علت Wolff-Chaikoff', 'گادولینیوم آزاد در مایع آمنیوتیک بالقوه سمی؛ ریسک دقیق نامشخص'],
+            ['اقدام', 'در صورت تزریق، بعد از تولد TSH نوزاد کنترل شود', 'تا حد امکان پرهیز؛ اگر ضروری است، نوع ماکروسیکلیک ترجیح داده شود'],
           ]}
         />
-      </section>
-
-      <section id="stillzeit" className={styles.section}>
-        <h2 className={styles.h2}>Stillzeit</h2>
+        <h3 className={styles.h3}>شیردهی</h3>
         <KMTable
-          headers={['', 'Jodhaltige KM', 'Gadolinium-KM']}
+          headers={['ماده', 'دفع در شیر', 'توصیه']}
           rows={[
-            ['Ausscheidung in Muttermilch', '~0,5% der Dosis', '<0,04% der Dosis'],
-            ['Orale Bioverfügbarkeit Säugling', 'sehr gering', 'minimal'],
-            ['Stillpause medizinisch nötig?', 'nein', 'nein'],
-            ['Wenn Mutter beunruhigt', '24 h pausieren und Milch verwerfen', '24 h pausieren und Milch verwerfen'],
+            ['یددار', 'حدود ۰٫۵٪ دوز مادر؛ جذب خوراکی نوزاد بسیار کم', 'قطع شیردهی لازم نیست'],
+            ['گادولینیوم', 'کمتر از ۰٫۰۴٪ دوز مادر؛ جذب نوزاد حداقل', 'قطع شیردهی لازم نیست'],
+            ['اگر مادر نگران است', '—', 'می‌توان ۲۴ ساعت شیر را دوشید و دور ریخت، اما الزام پزشکی ندارد'],
           ]}
         />
-        <Merke>Eine Stillpause ist medizinisch nicht erforderlich, kann aber zur Beruhigung der Mutter für 24 Stunden angeboten werden.</Merke>
-      </section>
-    </>
+        <Merke title={u.merke}>در شیردهی، برای مواد حاجب یددار و گادولینیوم به طور معمول نیازی به توقف شیردهی نیست.</Merke>
+      </Section>
+    )
+  }
+
+  return (
+    <Section id="schwangerschaft-stillzeit" icon="🤰" title="Schwangerschaft und Stillzeit">
+      <InfoBox variant="warning" title="Grundprinzip">
+        <p>Strenge Indikationsstellung: KM nur, wenn die Untersuchung nicht verschoben werden kann und eine KM-freie Alternative nicht ausreicht. Aufklärung und Dokumentation sind obligat.</p>
+      </InfoBox>
+      <KMTable
+        headers={['Thema', 'Jodhaltige KM', 'Gadolinium-KM']}
+        rows={[
+          ['Plazenta', 'plazentagängig; fetale Schilddrüse ab ca. 10.–12. SSW relevant', 'plazentagängig; renale Ausscheidung ins Fruchtwasser'],
+          ['Risiko', 'theoretische fetale/neonatale Hypothyreose', 'freies Gd potenziell toxisch, Risiko unklar'],
+          ['Vorgehen', 'wenn nötig möglich; TSH-Kontrolle beim Neugeborenen', 'möglichst vermeiden; wenn zwingend, makrozyklisch bevorzugen'],
+        ]}
+      />
+      <h3 className={styles.h3}>Stillzeit</h3>
+      <KMTable
+        headers={['KM', 'Ausscheidung in Muttermilch', 'Empfehlung']}
+        rows={[
+          ['Jodhaltige KM', '~0,5% der Dosis, orale Bioverfügbarkeit sehr gering', 'Stillpause nicht nötig'],
+          ['Gadolinium-KM', '<0,04% der Dosis, orale Resorption minimal', 'Stillpause nicht nötig'],
+          ['Wenn Mutter beunruhigt', '—', '24 h pausieren und Milch verwerfen möglich, aber medizinisch nicht erforderlich'],
+        ]}
+      />
+    </Section>
   )
 }
 
 export default function KontrastmittelPage() {
   const { lang } = useLanguage()
-  const [activeSection, setActiveSection] = useState('grundlagen')
+  const u = t(lang)
+  const list = topics(lang)
+  const [activeSection, setActiveSection] = useState('roentgen-grundlagen')
   const [isMobileTocOpen, setIsMobileTocOpen] = useState(false)
-  const allSections = TABS.flatMap(tab => tab.sections.map(section => ({ ...section, group: tab.label, icon: tab.icon })))
-  const activeItem = allSections.find(section => section.id === activeSection)
-  const withLang = (href) => lang && lang !== 'de' ? `${href}?lang=${lang}` : href
+  const activeItem = list.find(section => section.id === activeSection)
 
   const scrollTo = (id) => {
     const el = document.getElementById(id)
@@ -600,13 +576,11 @@ export default function KontrastmittelPage() {
 
   useEffect(() => {
     document.body.style.overflow = isMobileTocOpen ? 'hidden' : ''
-    return () => {
-      document.body.style.overflow = ''
-    }
+    return () => { document.body.style.overflow = '' }
   }, [isMobileTocOpen])
 
   useEffect(() => {
-    const observers = allSections.map(section => {
+    const observers = list.map(section => {
       const el = document.getElementById(section.id)
       if (!el) return null
       const observer = new IntersectionObserver(
@@ -618,58 +592,31 @@ export default function KontrastmittelPage() {
       observer.observe(el)
       return observer
     })
-
     return () => observers.forEach(observer => observer?.disconnect())
-  }, [])
+  }, [lang])
 
   return (
-    <div className={styles.page} lang={lang}>
+    <div className={`${styles.page} ${lang === 'fa' ? styles.rtl : ''}`} lang={lang} dir={u.dir}>
       <header className={styles.header}>
         <div className={styles.breadcrumb}>
-          <Link href={withLang('/')} className={styles.breadLink}>RadYar</Link>
+          <Link href={withLang('/', lang)} className={styles.breadLink}>{u.home}</Link>
           <span>›</span>
-          <Link href={withLang('/lernen/technik')} className={styles.breadLink}>Technik & Physik</Link>
+          <Link href={withLang('/lernen/technik', lang)} className={styles.breadLink}>{u.learn}</Link>
           <span>›</span>
-          <span>Kontrastmittel</span>
+          <span>{u.title}</span>
         </div>
 
         <div className={styles.heroGrid}>
           <div className={styles.heroText}>
-            <span className={styles.sourceBadge}>Lehrbuch · Dr. Zia</span>
-            <h1>Kontrastmittel</h1>
-            <p>Praxisorientierte Übersicht zu Röntgen-Kontrastmitteln, Applikation, Nebenwirkungen, PC-AKI, Schilddrüse, MRT-Kontrastmitteln und Spezialfällen.</p>
-            <Link href={withLang('/technik/kontrastmittel/mcq')} className={styles.mcqButton}>
+            <span className={styles.sourceBadge}>{u.badge}</span>
+            <h1>{u.title}</h1>
+            <p>{u.lead}</p>
+            <Link href={withLang('/technik/kontrastmittel/mcq', lang)} className={styles.mcqButton}>
               <span>🎯</span>
-              <span>MCQs starten</span>
+              <span>{u.mcq}</span>
             </Link>
           </div>
-
-          <div className={styles.heroStats}>
-            <div className={styles.heroStatCard}>
-              <strong>300</strong>
-              <span>mg Jod/ml</span>
-              <small>Standard-Konzentration für viele CT-Untersuchungen</small>
-            </div>
-            <div className={styles.heroStatCard}>
-              <strong>3–5</strong>
-              <span>ml/s</span>
-              <small>typische Injektionsrate bei geeignetem Zugang</small>
-            </div>
-            <div className={styles.heroStatCard}>
-              <strong>Gd</strong>
-              <span>MRT-Kontrastmittel</span>
-              <small>makrozyklische Chelate als Routine-Standard</small>
-            </div>
-          </div>
         </div>
-
-        <Link href={withLang('/technik/kontrastmittel/mcq')} className={styles.mcqStrip}>
-          <div>
-            <strong>MCQ · Kontrastmittel</strong>
-            <span>Fragen zur Prüfungsvorbereitung und Wiederholung</span>
-          </div>
-          <em>Quiz starten →</em>
-        </Link>
       </header>
 
       <div className={styles.mobileTocBar}>
@@ -680,8 +627,8 @@ export default function KontrastmittelPage() {
           aria-expanded={isMobileTocOpen}
         >
           <span className={styles.mobileTocIcon}>☰</span>
-          <span>Inhaltsverzeichnis</span>
-          <strong>{activeItem?.label || 'Grundlagen'}</strong>
+          <span>{u.toc}</span>
+          <strong>{activeItem?.label || list[0]?.label}</strong>
         </button>
       </div>
 
@@ -689,57 +636,48 @@ export default function KontrastmittelPage() {
         <div className={styles.mobileTocOverlay} onClick={() => setIsMobileTocOpen(false)}>
           <div className={styles.mobileTocPanel} onClick={(event) => event.stopPropagation()}>
             <div className={styles.mobileTocHeader}>
-              <strong>Inhaltsverzeichnis</strong>
-              <button type="button" onClick={() => setIsMobileTocOpen(false)} aria-label="Menü schließen">×</button>
+              <strong>{u.toc}</strong>
+              <button type="button" onClick={() => setIsMobileTocOpen(false)} aria-label={u.close}>×</button>
             </div>
-            <Sidebar tabs={TABS} activeSection={activeSection} onClick={scrollTo} />
+            <Sidebar items={list} activeSection={activeSection} onClick={scrollTo} title={u.toc} />
           </div>
         </div>
       )}
 
       <div className={styles.layout}>
-        <Sidebar tabs={TABS} activeSection={activeSection} onClick={scrollTo} />
-
+        <Sidebar items={list} activeSection={activeSection} onClick={scrollTo} title={u.toc} />
         <main className={styles.main}>
-          <TabRoentgen />
-          <TabSicherheit />
-          <TabGI />
-          <TabMRT />
-          <TabSpezial />
+          <RoentgenSection lang={lang} />
+          <MrtSection lang={lang} />
+          <JodNebenwirkungSection lang={lang} />
+          <GadoliniumNebenwirkungSection lang={lang} />
+          <PregnancySection lang={lang} />
         </main>
       </div>
 
-      <Link href={withLang('/technik/kontrastmittel/mcq')} className={styles.mobileMcqFab}>
+      <Link href={withLang('/technik/kontrastmittel/mcq', lang)} className={styles.mobileMcqFab}>
         <span>🎯</span>
-        <strong>MCQs starten</strong>
+        <strong>{u.mcq}</strong>
       </Link>
     </div>
   )
 }
 
-function Sidebar({ tabs, activeSection, onClick }) {
+function Sidebar({ items, activeSection, onClick, title }) {
   return (
     <aside className={styles.sidebar}>
-      <div className={styles.sideTitle}>Inhaltsverzeichnis</div>
+      <div className={styles.sideTitle}>{title}</div>
       <nav className={styles.sideNav}>
-        {tabs.map(tab => (
-          <div key={tab.id} className={styles.sideGroup}>
-            <div className={styles.sideGroupTitle}>
-              <span>{tab.icon}</span>
-              <span>{tab.label}</span>
-            </div>
-            {tab.sections.map(section => (
-              <button
-                key={section.id}
-                type="button"
-                className={`${styles.sideItem} ${activeSection === section.id ? styles.sideItemActive : ''}`}
-                onClick={() => onClick(section.id)}
-              >
-                <span className={styles.sideDot} />
-                <span>{section.label}</span>
-              </button>
-            ))}
-          </div>
+        {items.map(item => (
+          <button
+            key={item.id}
+            type="button"
+            className={`${styles.sideItem} ${activeSection === item.id ? styles.sideItemActive : ''}`}
+            onClick={() => onClick(item.id)}
+          >
+            <span className={styles.sideIcon}>{item.icon}</span>
+            <span>{item.label}</span>
+          </button>
         ))}
       </nav>
     </aside>
