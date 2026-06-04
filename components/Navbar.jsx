@@ -5,33 +5,6 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import SearchBar from './SearchBar'
 import styles from './Navbar.module.css'
 
-const FACH_KEYS = [
-  'Neuroradiologie','Thorax','Abdomen','Muskuloskelettales',
-  'Hals','Brust','Becken','Technik & Physik',
-]
-
-// All main links go to /#fachgebiete (homepage modal)
-const FACH_LINKS = {
-  'Neuroradiologie':    '/#fachgebiete',
-  'Thorax':             '/#fachgebiete',
-  'Abdomen':            '/#fachgebiete',
-  'Muskuloskelettales': '/#fachgebiete',
-  'Hals':               '/#fachgebiete',
-  'Brust':              '/#fachgebiete',
-  'Becken':             '/#fachgebiete',
-  'Technik & Physik':   '/#fachgebiete',
-}
-
-// Sub-navigation: available content with its hierarchy path
-const FACH_CONTENT = {
-  'Muskuloskelettales': [
-    { category: 'Knie', topic: 'Meniskus', href: '/msk/knie/meniskus' },
-  ],
-  'Technik & Physik': [
-    { category: 'Kontrastmittel', topic: null, href: '/technik/kontrastmittel' },
-  ],
-}
-
 function HexLogo({ size = 30 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 36 36" fill="none">
@@ -50,45 +23,6 @@ function HexLogo({ size = 30 }) {
   )
 }
 
-function FachDropdown({ texts }) {
-  return (
-    <div className={styles.dropdown}>
-      <div className={styles.ddLabel}>{texts.navFach}</div>
-
-      {FACH_KEYS.map(k => {
-        const subContent = FACH_CONTENT[k]
-        return (
-          <div key={k}>
-            {/* Main Fachgebiet entry */}
-            <Link href={FACH_LINKS[k]} className={styles.ddItem}>
-              <span className={styles.ddDot} />
-              {texts.fachNames[k]}
-              {subContent && <span className={styles.ddBadge}>Neu</span>}
-            </Link>
-
-            {/* Sub-navigation for available content */}
-            {subContent && (
-              <div className={styles.ddSubs}>
-                {subContent.map(item => (
-                  <Link key={item.href} href={item.href} className={styles.ddSubItem}>
-                    <span className={styles.ddSubArrow}>›</span>
-                    <span className={styles.ddSubPath}>
-                      {item.category}
-                      {item.topic && (
-                        <span className={styles.ddSubTopic}> · {item.topic}</span>
-                      )}
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-        )
-      })}
-    </div>
-  )
-}
-
 export default function Navbar() {
   const { lang, texts, setLang } = useLanguage()
   const [search, setSearch] = useState(false)
@@ -96,8 +30,7 @@ export default function Navbar() {
   return (
     <>
       <nav className={styles.nav}>
-
-        {/* ── Logo always LTR ── */}
+        {/* Logo */}
         <Link href="/" className={styles.brand} dir="ltr">
           <HexLogo size={28} />
           <span className={styles.wordmark} dir="ltr">
@@ -106,28 +39,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <div className={styles.links}>
-          <div className={styles.navItem}>
-            <button className={styles.navLink}>
-              {texts.navLearn}
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className={styles.chevron}>
-                <path d="M2 3.5l3 3 3-3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-              </svg>
-            </button>
-            <FachDropdown texts={texts} />
-          </div>
-
-          <div className={styles.navItem}>
-            <button className={`${styles.navLink} ${styles.navLinkActive}`}>
-              {texts.navFall}
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className={styles.chevron}>
-                <path d="M2 3.5l3 3 3-3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-              </svg>
-            </button>
-            <FachDropdown texts={texts} />
-          </div>
-        </div>
-
+        {/* Right: search + lang only */}
         <div className={styles.right}>
           <button className={styles.iconBtn} onClick={() => setSearch(true)}>
             <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
