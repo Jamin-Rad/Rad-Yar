@@ -106,28 +106,29 @@ const FACH_NAMES = {
 // Die Werte sind auf das aktuelle Body-Bild im Hero-Bereich kalibriert.
 // Reihenfolge ist wichtig: große MSK-Flächen zuerst, spezielle Organe danach.
 const ZONES = [
-  // Arme und Beine → MSK
-  { id:'Muskuloskelettales', x:10.8, y:22.0, w:20.8, h:40.0, rx:0.9 },
-  { id:'Muskuloskelettales', x:68.4, y:22.0, w:20.8, h:40.0, rx:0.9 },
-  { id:'Muskuloskelettales', x:27.6, y:58.0, w:16.6, h:40.5, rx:0.9 },
-  { id:'Muskuloskelettales', x:55.8, y:58.0, w:16.6, h:40.5, rx:0.9 },
-
-  // Kopf, Hals, Thorax, Abdomen und Becken
-  { id:'Neuroradiologie',    x:36.4, y: 2.0, w:27.2, h:15.1, rx:0.9 },
-  { id:'Hals',               x:44.0, y:15.2, w:12.0, h: 7.6, rx:0.9 },
-  { id:'Thorax',             x:31.2, y:20.8, w:37.6, h:18.4, rx:0.9 },
-  { id:'Abdomen',            x:34.8, y:37.2, w:30.4, h:12.6, rx:0.9 },
-  { id:'Becken',             x:32.8, y:48.0, w:34.4, h:13.2, rx:0.9 },
-
-  // Mamma bewusst über Thorax gelegt
-  { id:'Brust',              x:32.4, y:24.0, w:14.7, h:12.8, rx:0.9 },
-  { id:'Brust',              x:52.9, y:24.0, w:14.7, h:12.8, rx:0.9 },
-
-  // Wirbelsäule separat und schmal, damit Thorax/Abdomen nicht zu stark blockiert werden
-  { id:'Wirbelsaeule',       x:47.1, y:20.5, w: 5.8, h:34.4, rx:0.8 },
-
-  // MRT-Gerät / Technik
-  { id:'Technik',            x:65.6, y:80.4, w:28.2, h:17.4, rx:0.9 },
+  // ── Arme (links + rechts) → MSK
+  { id:'Muskuloskelettales', shape:'polygon', points:'23,19 14,23 9,36 7,50 10,57 17,57 20,42 20,24' },
+  { id:'Muskuloskelettales', shape:'polygon', points:'62,19 71,23 76,36 78,50 75,57 68,57 65,42 65,24' },
+  // ── Beine (links + rechts) → MSK
+  { id:'Muskuloskelettales', shape:'polygon', points:'28,57 41,57 42,65 40,74 42,82 40,96 32,96 30,82 32,74 30,65' },
+  { id:'Muskuloskelettales', shape:'polygon', points:'44,57 57,57 55,65 53,74 55,82 53,96 45,96 43,82 45,74 43,65' },
+  // ── Thorax
+  { id:'Thorax',             shape:'polygon', points:'25,19 60,19 62,27 58,34 27,34 23,27' },
+  // ── Abdomen
+  { id:'Abdomen',            shape:'polygon', points:'27,34 58,34 60,38 58,46 27,46 25,38' },
+  // ── Becken (→ Popup Frau/Mann)
+  { id:'Becken',             shape:'polygon', points:'27,46 58,46 60,51 55,56 30,56 25,51' },
+  // ── Hals (schmal)
+  { id:'Hals',               shape:'polygon', points:'39,15 46,15 47,18 40,18' },
+  // ── Kopf / Neuroradiologie
+  { id:'Neuroradiologie',    shape:'polygon', points:'37,3 49,3 52,8 51,13 44,16 37,13 35,8' },
+  // ── Brust (links + rechts) über Thorax
+  { id:'Brust',              shape:'polygon', points:'25,24 37,24 39,31 37,35 25,35 23,31' },
+  { id:'Brust',              shape:'polygon', points:'48,24 60,24 62,31 60,35 48,35 46,31' },
+  // ── Wirbelsäule (schmaler Streifen)
+  { id:'Wirbelsaeule',       shape:'polygon', points:'41,18 44,18 44.5,46 40.5,46' },
+  // ── Technik / MRT-Gerät
+  { id:'Technik',            shape:'polygon', points:'60,79 93,79 96,85 95,97 60,97 58,90' },
 ]
 
 // ── MAGNETIC FIELD ANIMATION ──────────────────────────────────────────────
