@@ -825,7 +825,7 @@ const MENISKUS_STYLES = `.page {
 
 .takeHomeItem {
   display: grid;
-  grid-template-columns: 54px 1fr;
+  grid-template-columns: 66px 1fr;
   gap: 14px;
   align-items: start;
   padding: 16px;
@@ -836,7 +836,7 @@ const MENISKUS_STYLES = `.page {
 }
 
 .takeHomeNumber {
-  width: 46px;
+  width: 58px;
   height: 46px;
   display: inline-grid;
   place-items: center;
@@ -850,10 +850,12 @@ const MENISKUS_STYLES = `.page {
 
 .takeHomeItem h3 {
   margin: 0 0 6px;
-  color: #ffffff;
-  font-size: 17px;
+  color: #fed7aa;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 18px;
   line-height: 1.35;
   font-weight: 950;
+  letter-spacing: 0.01em;
 }
 
 .takeHomeItem p {
@@ -864,7 +866,7 @@ const MENISKUS_STYLES = `.page {
 }
 
 [dir='rtl'] .takeHomeItem {
-  grid-template-columns: 54px 1fr;
+  grid-template-columns: 66px 1fr;
   text-align: right;
 }
 
@@ -1259,14 +1261,14 @@ const MENISKUS_STYLES = `.page {
   }
 
   .takeHomeItem {
-    grid-template-columns: 46px 1fr;
+    grid-template-columns: 58px 1fr;
     gap: 12px;
     padding: 14px;
     border-radius: 18px;
   }
 
   .takeHomeNumber {
-    width: 40px;
+    width: 52px;
     height: 40px;
     border-radius: 14px;
   }
@@ -2171,17 +2173,41 @@ const TAKE_HOME_COPY = {
   de: {
     sectionLabel: 'Take home message',
     title: 'Take home message',
-    lead: 'Die wichtigsten Merksätze der Lektion auf einen Blick – nummeriert, kompakt und bewusst hervorgehoben.',
+    lead: 'Die wichtigsten Merksätze der Lektion auf einen Blick.',
+    itemTitles: {
+      anatomy: 'Merke: Innenmeniskus-Mobilität',
+      vascular: 'Merke: Kapselnähe und Heilung',
+      gradingTear: 'Merke: Rissdiagnose im MRT',
+      discoid: 'Merke: Discoider Meniskus',
+      therapy: 'Merke: Save the Meniscus',
+    },
+    discoidDefinition: 'Kurze Definition: Ein discoider Meniskus ist eine angeborene Formvariante, meist des Außenmeniskus, mit verbreitertem, scheibenförmigem Meniskuskorpus.',
   },
   en: {
     sectionLabel: 'Take home message',
     title: 'Take home message',
-    lead: 'The key points of this lesson at a glance – numbered, compact and clearly highlighted.',
+    lead: 'The key points of this lesson at a glance.',
+    itemTitles: {
+      anatomy: 'Key point: medial meniscus mobility',
+      vascular: 'Key point: capsular proximity and healing',
+      gradingTear: 'Key point: tear diagnosis on MRI',
+      discoid: 'Key point: discoid meniscus',
+      therapy: 'Key point: Save the Meniscus',
+    },
+    discoidDefinition: 'Short definition: a discoid meniscus is a congenital shape variant, usually of the lateral meniscus, with a widened disc-like meniscal body.',
   },
   fa: {
     sectionLabel: 'Take home message',
     title: 'Take home message',
-    lead: 'مهم‌ترین نکات این درس در یک نگاه؛ شماره‌دار، خلاصه و کاملاً برجسته برای مرور سریع.',
+    lead: 'مهم‌ترین نکات این درس برای مرور سریع.',
+    itemTitles: {
+      anatomy: 'نکته: تحرک منیسک داخلی',
+      vascular: 'نکته: نزدیکی به کپسول و ترمیم',
+      gradingTear: 'نکته: تشخیص پارگی در MRI',
+      discoid: 'نکته: منیسک دیسکوئید',
+      therapy: 'نکته: Save the Meniscus',
+    },
+    discoidDefinition: 'تعریف کوتاه: منیسک دیسکوئید یک واریانت مادرزادی است، معمولاً در منیسک خارجی دیده می‌شود و تنه منیسک پهن و دیسک‌مانند است.',
   },
 }
 
@@ -2276,14 +2302,12 @@ export default function MeniskusPage() {
     [copy.sections, takeHomeCopy.sectionLabel]
   )
   const takeHomeItems = useMemo(() => [
-    { number: '01', title: copy.anatomy.title, text: copy.anatomy.key },
-    { number: '02', title: copy.vascular.title, text: copy.vascular.key },
-    { number: '03', title: copy.mri.title, text: copy.mri.key },
-    { number: '04', title: copy.grading.title, text: copy.grading.key },
-    { number: '05', title: copy.tear.title, text: copy.tear.key },
-    { number: '06', title: copy.discoid.title, text: copy.discoid.key },
-    { number: '07', title: copy.therapy.titlePrefix || copy.therapy.title, text: copy.therapy.key },
-  ], [copy])
+    { number: '01', title: takeHomeCopy.itemTitles.anatomy, text: copy.anatomy.key },
+    { number: '02', title: takeHomeCopy.itemTitles.vascular, text: copy.vascular.key },
+    { number: '04/05', title: takeHomeCopy.itemTitles.gradingTear, text: `${copy.grading.key} ${copy.tear.key}` },
+    { number: '06', title: takeHomeCopy.itemTitles.discoid, text: `${takeHomeCopy.discoidDefinition} ${copy.discoid.key}` },
+    { number: '07', title: takeHomeCopy.itemTitles.therapy, text: copy.therapy.key },
+  ], [copy, takeHomeCopy])
   const mainRef = useRef(null)
   const [activeId, setActiveId] = useState(pageSections[0].id)
   const [isMobileTocOpen, setIsMobileTocOpen] = useState(false)
