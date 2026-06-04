@@ -8,9 +8,9 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
 
 const T = {
-  de: { back:'← Startseite', search:'Thema suchen…', readNow:'Artikel öffnen →', noResult:'Kein Treffer für', themen:'Themen', alles:'Alles aufklappen', none:'Zuklappen', available:'Verfügbar' },
-  en: { back:'← Home', search:'Search topic…', readNow:'Open article →', noResult:'No results for', themen:'Topics', alles:'Expand all', none:'Collapse', available:'Available' },
-  fa: { back:'← خانه', search:'جستجوی موضوع…', readNow:'← مطالعه کنید', noResult:'نتیجه‌ای برای', themen:'موضوع', alles:'بازکردن همه', none:'بستن همه', available:'موجود' },
+  de: { back:'← Startseite', search:'Thema suchen…', readNow:'Artikel öffnen →', noResult:'Kein Treffer für', themen:'Themen', alles:'Alles aufklappen', none:'Zuklappen', available:'Verfügbar', mcq:'MCQ' },
+  en: { back:'← Home', search:'Search topic…', readNow:'Open article →', noResult:'No results for', themen:'Topics', alles:'Expand all', none:'Collapse', available:'Available', mcq:'MCQ' },
+  fa: { back:'← خانه', search:'جستجوی موضوع…', readNow:'← مطالعه کنید', noResult:'نتیجه‌ای برای', themen:'موضوع', alles:'بازکردن همه', none:'بستن همه', available:'موجود', mcq:'MCQ' },
 }
 
 const FACH_NAMES = {
@@ -80,6 +80,11 @@ function SubThemen({ sub, fachColor, lang }) {
     return SUBTHEMEN_TRANSLATIONS[item.id]?.[lang] || item.title
   }
 
+  const withLang = (href) => {
+    if (!href) return null
+    return lang === 'de' ? href : `${href}?lang=${lang}`
+  }
+
   return (
     <div className={styles.subWrap}>
       <button className={styles.subToggle} onClick={() => setOpen(o => !o)}
@@ -96,20 +101,23 @@ function SubThemen({ sub, fachColor, lang }) {
                 {s.ready && <span className={styles.subReady}>{lang === 'fa' ? 'موجود' : lang === 'en' ? 'available' : 'verfügbar'}</span>}
               </>
             )
+            const href = withLang(s.link)
+            const mcqHref = withLang(s.mcqLink)
 
-            const href = s.link
-              ? lang === 'de'
-                ? s.link
-                : `${s.link}?lang=${lang}`
-              : null
-
-            return href ? (
-              <Link key={s.id} href={href} className={`${styles.subItem} ${styles.subItemLink}`}>
-                {content}
-              </Link>
-            ) : (
-              <div key={s.id} className={styles.subItem}>
-                {content}
+            return (
+              <div key={s.id} className={styles.subItemRow}>
+                {href ? (
+                  <Link href={href} className={`${styles.subItem} ${styles.subItemLink}`}>
+                    {content}
+                  </Link>
+                ) : (
+                  <div className={styles.subItem}>{content}</div>
+                )}
+                {mcqHref && (
+                  <Link href={mcqHref} className={styles.subMcqBtn} style={{ color: fachColor, borderColor: fachColor + '44' }}>
+                    MCQ
+                  </Link>
+                )}
               </div>
             )
           })}

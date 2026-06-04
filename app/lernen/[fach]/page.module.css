@@ -253,3 +253,35 @@
   border-left: none;
   border-right: 2px solid rgba(0,0,0,0.08);
 }
+
+/* ── UPDATED: MCQ button for available subtopics such as Knie → Meniskus ── */
+.subItemRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.subItemRow .subItem {
+  flex: 1;
+  min-width: 0;
+}
+
+.subMcqBtn {
+  flex-shrink: 0;
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-decoration: none;
+  border: 1px solid;
+  border-radius: 999px;
+  padding: 3px 8px;
+  background: #ffffff;
+  transition: background .18s, transform .18s, opacity .18s;
+}
+
+.subMcqBtn:hover {
+  background: #fff7ed;
+  transform: translateY(-1px);
+  opacity: .9;
+}
