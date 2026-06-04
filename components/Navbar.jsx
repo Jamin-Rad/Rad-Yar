@@ -5,18 +5,20 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import SearchBar from './SearchBar'
 import styles from './Navbar.module.css'
 
-function HexLogo({ size = 30 }) {
+function HexLogo({ size = 32 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 36 36" fill="none">
-      <polygon points="18,1.5 32,9.75 32,26.25 18,34.5 4,26.25 4,9.75"
-        stroke="url(#ng)" strokeWidth="1.8" fill="rgba(249,115,22,0.1)"/>
-      <polygon points="18,8 26,12.6 26,23.4 18,28 10,23.4 10,12.6"
-        stroke="url(#ng)" strokeWidth="1" fill="none" opacity="0.4"/>
-      <text x="18" y="23" textAnchor="middle" fill="url(#ng)" fontSize="11" fontWeight="800"
-        fontFamily="'Syne',system-ui,sans-serif">RY</text>
+    <svg width={size} height={size} viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <rect x="2.5" y="2.5" width="35" height="35" rx="13" fill="url(#logoBg)" />
+      <path d="M10 22.5c2.2-7.8 17.8-7.8 20 0" stroke="rgba(255,255,255,.55)" strokeWidth="1.3" strokeLinecap="round" />
+      <path d="M10 17.5c2.2 7.8 17.8 7.8 20 0" stroke="rgba(255,255,255,.34)" strokeWidth="1.3" strokeLinecap="round" />
+      <circle cx="20" cy="20" r="13.5" stroke="rgba(255,255,255,.42)" strokeWidth="1" />
+      <text x="20" y="24.2" textAnchor="middle" fill="white" fontSize="12.6" fontWeight="900"
+        fontFamily="Inter, Manrope, system-ui, sans-serif" letterSpacing="-.5">RY</text>
       <defs>
-        <linearGradient id="ng" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#f97316"/><stop offset="100%" stopColor="#fbbf24"/>
+        <linearGradient id="logoBg" x1="3" y1="3" x2="37" y2="37" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#0f172a"/>
+          <stop offset="0.55" stopColor="#1e3a8a"/>
+          <stop offset="1" stopColor="#f97316"/>
         </linearGradient>
       </defs>
     </svg>
