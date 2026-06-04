@@ -56,9 +56,30 @@ const GROUP_COLORS = {
   sonstiges:    { bg:'#f8fafc', text:'#475569', border:'#cbd5e1' },
 }
 
+const SUBTHEMEN_TRANSLATIONS = {
+  meniskus: {
+    en: 'Meniscus',
+    fa: 'منیسک',
+  },
+  'knie-ligamente': {
+    en: 'Knee ligaments (ACL, PCL, collateral ligaments)',
+    fa: 'رباط‌های زانو (ACL، PCL، رباط‌های طرفی)',
+  },
+  patella: {
+    en: 'Patella (fracture, dislocation, Osgood-Schlatter)',
+    fa: 'کشکک زانو (شکستگی، دررفتگی، ازگود-اشلاتر)',
+  },
+}
+
 // Sub-thema expandable (for Knie etc.)
-function SubThemen({ sub, fachColor }) {
+function SubThemen({ sub, fachColor, lang }) {
   const [open, setOpen] = useState(false)
+
+  const getSubTitle = (item) => {
+    if (lang === 'de') return item.title
+    return SUBTHEMEN_TRANSLATIONS[item.id]?.[lang] || item.title
+  }
+
   return (
     <div className={styles.subWrap}>
       <button className={styles.subToggle} onClick={() => setOpen(o => !o)}
@@ -67,12 +88,25 @@ function SubThemen({ sub, fachColor }) {
       </button>
       {open && (
         <div className={styles.subList}>
-          {sub.map(s => (
-            <div key={s.id} className={styles.subItem}>
-              <span className={styles.subDot} style={{ background: fachColor }} />
-              {s.title}
-            </div>
-          ))}
+          {sub.map(s => {
+            const content = (
+              <>
+                <span className={styles.subDot} style={{ background: fachColor }} />
+                <span>{getSubTitle(s)}</span>
+                {s.ready && <span className={styles.subReady}>{lang === 'fa' ? 'موجود' : lang === 'en' ? 'available' : 'verfügbar'}</span>}
+              </>
+            )
+
+            return s.link ? (
+              <Link key={s.id} href={s.link} className={`${styles.subItem} ${styles.subItemLink}`}>
+                {content}
+              </Link>
+            ) : (
+              <div key={s.id} className={styles.subItem}>
+                {content}
+              </div>
+            )
+          })}
         </div>
       )}
     </div>
@@ -200,7 +234,7 @@ export default function LernenFachPage() {
             return (
               <div key={k.id} id={'kap-' + k.id} className={styles.accordion}>
                 {/* Accordion header */}
-                <button className={styles.accHeader} onClick={() => toggleKapitel(k.id)}
+                <button className={`${styles.accHeader} ${isOpen ? styles.accHeaderOpen : ''}`} onClick={() => toggleKapitel(k.id)}
                   style={{ borderLeftColor: isOpen ? fach.color : 'transparent' }}>
                   <span className={styles.accIcon}>{k.icon}</span>
                   <span className={styles.accTitle}>{getKapitelTitle(k)}</span>
@@ -246,7 +280,7 @@ export default function LernenFachPage() {
                               <div key={th.id} className={styles.themaCard}>
                                 <span className={styles.themaDot} style={{ background: fach.color }} />
                                 <span className={styles.themaTitle}>{th.title}</span>
-                                {th.sub && <SubThemen sub={th.sub} fachColor={fach.color} />}
+                                {th.sub && <SubThemen sub={th.sub} fachColor={fach.color} lang={lang} />}
                               </div>
                             ))}
                           </div>

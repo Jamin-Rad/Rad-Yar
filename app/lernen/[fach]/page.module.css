@@ -199,3 +199,57 @@
   .themaGrid { grid-template-columns: 1fr; }
   .content { padding: 20px 4vw 60px; }
 }
+
+/* ── UPDATED: clearer main accordion title background ───────────── */
+.accHeaderOpen {
+  background: linear-gradient(135deg, #fff7ed, #ffffff);
+  border-color: rgba(249, 115, 22, 0.28);
+  box-shadow: 0 8px 24px rgba(249, 115, 22, 0.08);
+}
+
+.accHeaderOpen .accTitle {
+  color: #9a3412;
+}
+
+[dir="rtl"] .accHeader {
+  border-left-width: 1.5px;
+  border-right-width: 4px;
+}
+
+/* ── UPDATED: clickable subtopics such as Knie → Meniskus ───────── */
+.subItemLink {
+  text-decoration: none;
+  color: #475569;
+  border-radius: 6px;
+  padding: 4px 6px;
+  margin-inline-start: -6px;
+  transition: background .18s, color .18s, transform .18s;
+}
+
+.subItemLink:hover {
+  background: #fff7ed;
+  color: #c2410c;
+  transform: translateX(2px);
+}
+
+[dir="rtl"] .subItemLink:hover {
+  transform: translateX(-2px);
+}
+
+.subReady {
+  margin-inline-start: auto;
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #f97316;
+  background: rgba(249, 115, 22, 0.1);
+  border: 1px solid rgba(249, 115, 22, 0.18);
+  border-radius: 999px;
+  padding: 1px 6px;
+  white-space: nowrap;
+}
+
+[dir="rtl"] .subList {
+  padding: 6px 12px 2px 0;
+  border-left: none;
+  border-right: 2px solid rgba(0,0,0,0.08);
+}
