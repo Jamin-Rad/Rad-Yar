@@ -3,7 +3,7 @@ import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-import { CURRICULUM, KAPITEL_TRANSLATIONS } from '@/data/curriculum'
+import { CURRICULUM, KAPITEL_TRANSLATIONS, THEMA_TRANSLATIONS } from '@/data/curriculum'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
 
@@ -53,6 +53,11 @@ function getKapitelTitle(k, lang) {
   return KAPITEL_TRANSLATIONS[k.id]?.[lang] || k.title
 }
 
+function getThemaTitle(th, lang) {
+  if (lang === 'de') return th.title
+  return THEMA_TRANSLATIONS[th.id]?.[lang] || th.title
+}
+
 export default function UebenPage() {
   const { lang } = useLanguage()
   const router = useRouter()
@@ -84,18 +89,13 @@ export default function UebenPage() {
     setSelFach(prev => {
       const s = new Set(prev); s.has(id) ? s.delete(id) : s.add(id); return s
     })
-    // Auto-select all themen of newly added fach
+    // Beim Hinzufügen einer Körperregion bleibt zunächst kein Thema ausgewählt.
+    // Beim Entfernen einer Körperregion werden nur deren eventuell gewählte Themen entfernt.
     const f = CURRICULUM.find(c => c.id === id)
-    if (f) {
+    if (f && selFach.has(id)) {
       setSelThemen(prev => {
         const s = new Set(prev)
-        if (selFach.has(id)) {
-          // Deselecting fach — remove its themen
-          f.kapitel.forEach(k => k.themen.forEach(th => { s.delete(th.id); th.sub?.forEach(sub => s.delete(sub.id)) }))
-        } else {
-          // Adding fach — add all its themen
-          f.kapitel.forEach(k => k.themen.forEach(th => { s.add(th.id); th.sub?.forEach(sub => s.add(sub.id)) }))
-        }
+        f.kapitel.forEach(k => k.themen.forEach(th => { s.delete(th.id); th.sub?.forEach(sub => s.delete(sub.id)) }))
         return s
       })
     }
@@ -215,7 +215,7 @@ export default function UebenPage() {
                               className={`${styles.chip} ${selThemen.has(th.id) ? styles.chipActive : ''} ${th._sub ? styles.chipSub : ''}`}
                               style={selThemen.has(th.id) ? { borderColor: fachColor, color: fachColor, background: fachColor + '12' } : {}}
                               onClick={() => toggleThema(th.id)}>
-                              {th.title}
+                              {getThemaTitle(th, lang)}
                             </button>
                           ))}
                         </div>

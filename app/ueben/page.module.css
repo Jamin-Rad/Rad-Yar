@@ -284,3 +284,16 @@
 }
 .chip { font-size: 13px; font-weight: 650; padding-top: 7px; padding-bottom: 7px; }
 .chipSub { font-size: 12.5px; opacity: 1; }
+
+/* ── FIX: RTL alignment in MCQ topic directory ───────────────────────── */
+[dir="rtl"] .kapitelHeaderBtn,
+[dir="rtl"] .chip,
+[dir="rtl"] .stepLabel,
+[dir="rtl"] .summaryTitle,
+[dir="rtl"] .summaryEmpty {
+  text-align: right;
+}
+[dir="rtl"] .fachCheck {
+  right: auto;
+  left: 6px;
+}
