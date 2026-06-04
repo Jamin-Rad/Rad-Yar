@@ -257,8 +257,8 @@ export default function Hero() {
     },
     Hals: {
       choices: [
-        { id: 'Hals',         label: { de: 'Hals',         en: 'Neck',  fa: 'گردن'         }, url: '/lernen/hals',         icon: '🔵' },
-        { id: 'Wirbelsaeule', label: { de: 'Wirbelsäule',  en: 'Spine', fa: 'ستون فقرات'   }, url: '/lernen/wirbelsaeule', icon: '🦴' },
+        { id: 'Hals',         label: { de: 'Hals',         en: 'Neck',  fa: 'گردن'         }, url: '/lernen/hals',         icon: '🦋' },
+        { id: 'Wirbelsaeule', label: { de: 'Wirbelsäule',  en: 'Spine', fa: 'ستون فقرات'   }, url: '/lernen/wirbelsaeule', icon: '🩻' },
       ]
     },
   }
