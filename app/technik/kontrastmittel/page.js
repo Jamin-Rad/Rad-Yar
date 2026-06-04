@@ -585,92 +585,163 @@ function TabSpezial() {
 }
 
 export default function KontrastmittelPage() {
-  const [activeTab, setActiveTab] = useState('roentgen')
+  const { lang } = useLanguage()
   const [activeSection, setActiveSection] = useState('grundlagen')
-  const mainRef = useRef(null)
-
-  useEffect(() => {
-    const currentTab = TABS.find(t => t.id === activeTab)
-    if (!currentTab) return
-    const ids = currentTab.sections.map(s => s.id)
-    const observers = ids.map(id => {
-      const el = document.getElementById(id)
-      if (!el) return null
-      const obs = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveSection(id) },
-        { root: mainRef.current, rootMargin: '-15% 0px -70% 0px' }
-      )
-      obs.observe(el)
-      return obs
-    })
-    return () => observers.forEach(o => o?.disconnect())
-  }, [activeTab])
-
-  useEffect(() => {
-    if (mainRef.current) mainRef.current.scrollTop = 0
-    const currentTab = TABS.find(t => t.id === activeTab)
-    if (currentTab?.sections?.[0]) setActiveSection(currentTab.sections[0].id)
-  }, [activeTab])
-
-  const currentTab = TABS.find(t => t.id === activeTab)
+  const [isMobileTocOpen, setIsMobileTocOpen] = useState(false)
+  const allSections = TABS.flatMap(tab => tab.sections.map(section => ({ ...section, group: tab.label, icon: tab.icon })))
+  const activeItem = allSections.find(section => section.id === activeSection)
+  const withLang = (href) => lang && lang !== 'de' ? `${href}?lang=${lang}` : href
 
   const scrollTo = (id) => {
     const el = document.getElementById(id)
+    setIsMobileTocOpen(false)
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
-  return (
-    <div className={styles.page}>
-      <div className={styles.topBar}>
-        <div className={styles.breadcrumb}>
-          <Link href="/" className={styles.breadLink}>RadYar</Link>
-          <span className={styles.sep}>›</span>
-          <Link href="/#fachgebiete" className={styles.breadLink}>Technik & Physik</Link>
-          <span className={styles.sep}>›</span>
-          <span className={styles.breadCurrent}>Kontrastmittel</span>
-        </div>
-        <h1 className={styles.pageTitle}>Kontrastmittel</h1>
+  useEffect(() => {
+    document.body.style.overflow = isMobileTocOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isMobileTocOpen])
 
-        <div className={styles.tabBar}>
-          {TABS.map(tab => (
-            <button
-              key={tab.id}
-              className={`${styles.tab} ${activeTab === tab.id ? styles.tabActive : ''}`}
-              onClick={() => setActiveTab(tab.id)}
-            >
-              <span>{tab.icon}</span>
-              <span>{tab.label}</span>
-            </button>
-          ))}
+  useEffect(() => {
+    const observers = allSections.map(section => {
+      const el = document.getElementById(section.id)
+      if (!el) return null
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(section.id)
+        },
+        { root: null, rootMargin: '-18% 0px -70% 0px', threshold: 0.01 }
+      )
+      observer.observe(el)
+      return observer
+    })
+
+    return () => observers.forEach(observer => observer?.disconnect())
+  }, [])
+
+  return (
+    <div className={styles.page} lang={lang}>
+      <header className={styles.header}>
+        <div className={styles.breadcrumb}>
+          <Link href={withLang('/')} className={styles.breadLink}>RadYar</Link>
+          <span>›</span>
+          <Link href={withLang('/lernen/technik')} className={styles.breadLink}>Technik & Physik</Link>
+          <span>›</span>
+          <span>Kontrastmittel</span>
         </div>
+
+        <div className={styles.heroGrid}>
+          <div className={styles.heroText}>
+            <span className={styles.sourceBadge}>Lehrbuch · Dr. Zia</span>
+            <h1>Kontrastmittel</h1>
+            <p>Praxisorientierte Übersicht zu Röntgen-Kontrastmitteln, Applikation, Nebenwirkungen, PC-AKI, Schilddrüse, MRT-Kontrastmitteln und Spezialfällen.</p>
+            <Link href={withLang('/technik/kontrastmittel/mcq')} className={styles.mcqButton}>
+              <span>🎯</span>
+              <span>MCQs starten</span>
+            </Link>
+          </div>
+
+          <div className={styles.heroStats}>
+            <div className={styles.heroStatCard}>
+              <strong>300</strong>
+              <span>mg Jod/ml</span>
+              <small>Standard-Konzentration für viele CT-Untersuchungen</small>
+            </div>
+            <div className={styles.heroStatCard}>
+              <strong>3–5</strong>
+              <span>ml/s</span>
+              <small>typische Injektionsrate bei geeignetem Zugang</small>
+            </div>
+            <div className={styles.heroStatCard}>
+              <strong>Gd</strong>
+              <span>MRT-Kontrastmittel</span>
+              <small>makrozyklische Chelate als Routine-Standard</small>
+            </div>
+          </div>
+        </div>
+
+        <Link href={withLang('/technik/kontrastmittel/mcq')} className={styles.mcqStrip}>
+          <div>
+            <strong>MCQ · Kontrastmittel</strong>
+            <span>Fragen zur Prüfungsvorbereitung und Wiederholung</span>
+          </div>
+          <em>Quiz starten →</em>
+        </Link>
+      </header>
+
+      <div className={styles.mobileTocBar}>
+        <button
+          type="button"
+          className={styles.mobileTocButton}
+          onClick={() => setIsMobileTocOpen(true)}
+          aria-expanded={isMobileTocOpen}
+        >
+          <span className={styles.mobileTocIcon}>☰</span>
+          <span>Inhaltsverzeichnis</span>
+          <strong>{activeItem?.label || 'Grundlagen'}</strong>
+        </button>
       </div>
 
-      <div className={styles.body}>
-        <aside className={styles.sidebar}>
-          <div className={styles.sidebarTitle}>{currentTab?.icon} {currentTab?.label}</div>
-          <nav>
-            {currentTab?.sections.map(sec => (
-              <button
-                key={sec.id}
-                className={`${styles.sideLink} ${activeSection === sec.id ? styles.sideLinkActive : ''}`}
-                onClick={() => scrollTo(sec.id)}
-              >
-                <span className={styles.sideDot} />
-                {sec.label}
-              </button>
-            ))}
-          </nav>
-          <McqWidget />
-        </aside>
+      {isMobileTocOpen && (
+        <div className={styles.mobileTocOverlay} onClick={() => setIsMobileTocOpen(false)}>
+          <div className={styles.mobileTocPanel} onClick={(event) => event.stopPropagation()}>
+            <div className={styles.mobileTocHeader}>
+              <strong>Inhaltsverzeichnis</strong>
+              <button type="button" onClick={() => setIsMobileTocOpen(false)} aria-label="Menü schließen">×</button>
+            </div>
+            <Sidebar tabs={TABS} activeSection={activeSection} onClick={scrollTo} />
+          </div>
+        </div>
+      )}
 
-        <main className={styles.main} ref={mainRef}>
-          {activeTab === 'roentgen' && <TabRoentgen />}
-          {activeTab === 'sicherheit' && <TabSicherheit />}
-          {activeTab === 'gi' && <TabGI />}
-          {activeTab === 'mrt' && <TabMRT />}
-          {activeTab === 'spezial' && <TabSpezial />}
+      <div className={styles.layout}>
+        <Sidebar tabs={TABS} activeSection={activeSection} onClick={scrollTo} />
+
+        <main className={styles.main}>
+          <TabRoentgen />
+          <TabSicherheit />
+          <TabGI />
+          <TabMRT />
+          <TabSpezial />
         </main>
       </div>
+
+      <Link href={withLang('/technik/kontrastmittel/mcq')} className={styles.mobileMcqFab}>
+        <span>🎯</span>
+        <strong>MCQs starten</strong>
+      </Link>
     </div>
+  )
+}
+
+function Sidebar({ tabs, activeSection, onClick }) {
+  return (
+    <aside className={styles.sidebar}>
+      <div className={styles.sideTitle}>Inhaltsverzeichnis</div>
+      <nav className={styles.sideNav}>
+        {tabs.map(tab => (
+          <div key={tab.id} className={styles.sideGroup}>
+            <div className={styles.sideGroupTitle}>
+              <span>{tab.icon}</span>
+              <span>{tab.label}</span>
+            </div>
+            {tab.sections.map(section => (
+              <button
+                key={section.id}
+                type="button"
+                className={`${styles.sideItem} ${activeSection === section.id ? styles.sideItemActive : ''}`}
+                onClick={() => onClick(section.id)}
+              >
+                <span className={styles.sideDot} />
+                <span>{section.label}</span>
+              </button>
+            ))}
+          </div>
+        ))}
+      </nav>
+    </aside>
   )
 }
