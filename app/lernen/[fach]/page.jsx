@@ -3,7 +3,7 @@ import { useState, useEffect, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
-import { CURRICULUM, getFach, KAPITEL_TRANSLATIONS } from '@/data/curriculum'
+import { CURRICULUM, getFach, KAPITEL_TRANSLATIONS, THEMA_TRANSLATIONS } from '@/data/curriculum'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
 
@@ -56,28 +56,13 @@ const GROUP_COLORS = {
   sonstiges:    { bg:'#f8fafc', text:'#475569', border:'#cbd5e1' },
 }
 
-const SUBTHEMEN_TRANSLATIONS = {
-  meniskus: {
-    en: 'Meniscus',
-    fa: 'منیسک',
-  },
-  'knie-ligamente': {
-    en: 'Knee ligaments',
-    fa: 'رباط‌های زانو',
-  },
-  patella: {
-    en: 'Patella (fracture, dislocation, Osgood-Schlatter)',
-    fa: 'کشکک زانو (شکستگی، دررفتگی، ازگود-اشلاتر)',
-  },
-}
-
 // Sub-thema expandable (for Knie etc.)
 function SubThemen({ sub, fachColor, lang }) {
   const [open, setOpen] = useState(false)
 
   const getSubTitle = (item) => {
     if (lang === 'de') return item.title
-    return SUBTHEMEN_TRANSLATIONS[item.id]?.[lang] || item.title
+    return THEMA_TRANSLATIONS[item.id]?.[lang] || item.title
   }
 
   const withLang = (href) => {
@@ -155,6 +140,11 @@ export default function LernenFachPage() {
     return KAPITEL_TRANSLATIONS[k.id]?.[lang] || k.title
   }
 
+  const getThemaTitle = (th) => {
+    if (lang === 'de') return th.title
+    return THEMA_TRANSLATIONS[th.id]?.[lang] || th.title
+  }
+
   const toggleKapitel = (id) => setOpenKapitel(prev => {
     const s = new Set(prev); s.has(id) ? s.delete(id) : s.add(id); return s
   })
@@ -162,7 +152,7 @@ export default function LernenFachPage() {
 
   const searchResults = search.trim().length > 1
     ? fach.kapitel.flatMap(k =>
-        k.themen.filter(th => th.title.toLowerCase().includes(search.toLowerCase()))
+        k.themen.filter(th => getThemaTitle(th).toLowerCase().includes(search.toLowerCase()))
           .map(th => ({ ...th, kapitelTitle: getKapitelTitle(k), kapitelIcon: k.icon }))
       )
     : []
@@ -236,7 +226,7 @@ export default function LernenFachPage() {
             ) : searchResults.map((th, i) => (
               <div key={i} className={styles.searchRow}>
                 <span className={styles.searchChapter}>{th.kapitelIcon} {th.kapitelTitle}</span>
-                <span className={styles.searchTitle}>{th.title}</span>
+                <span className={styles.searchTitle}>{getThemaTitle(th)}</span>
               </div>
             ))}
           </div>
@@ -301,7 +291,7 @@ export default function LernenFachPage() {
                             {grouped[g].map(th => (
                               <div key={th.id} className={styles.themaCard}>
                                 <span className={styles.themaDot} style={{ background: fach.color }} />
-                                <span className={styles.themaTitle}>{th.title}</span>
+                                <span className={styles.themaTitle}>{getThemaTitle(th)}</span>
                                 {th.sub && <SubThemen sub={th.sub} fachColor={fach.color} lang={lang} />}
                               </div>
                             ))}

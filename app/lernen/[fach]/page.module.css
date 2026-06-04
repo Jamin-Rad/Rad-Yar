@@ -425,3 +425,27 @@
 }
 .subReady,
 .subMcqBtn { display: none !important; }
+
+/* ── FIX: Persian Lernen directory sidebar on the right ───────────── */
+[dir="rtl"] .contentLayout {
+  grid-template-columns: minmax(0, 1fr) 260px;
+}
+[dir="rtl"] .chapterContent {
+  grid-column: 1;
+  grid-row: 1;
+}
+[dir="rtl"] .chapterSidebar {
+  grid-column: 2;
+  grid-row: 1;
+  text-align: right;
+}
+[dir="rtl"] .sidebarBtn,
+[dir="rtl"] .sidebarTitle {
+  text-align: right;
+}
+
+@media (max-width: 900px) {
+  [dir="rtl"] .contentLayout { grid-template-columns: 1fr; }
+  [dir="rtl"] .chapterContent,
+  [dir="rtl"] .chapterSidebar { grid-column: auto; grid-row: auto; }
+}
