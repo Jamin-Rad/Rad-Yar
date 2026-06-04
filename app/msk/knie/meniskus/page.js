@@ -303,6 +303,18 @@ const MENISKUS_STYLES = `.page {
   color: #c2410c !important;
 }
 
+.sideItemImportant {
+  font-weight: 950 !important;
+  color: #0d1b2a;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.12), rgba(22, 163, 74, 0.10));
+  border: 1px solid rgba(249, 115, 22, 0.24);
+}
+
+.sideItemImportant .sideIcon {
+  background: #fff7ed;
+  color: #f97316;
+}
+
 .sideIcon {
   width: 28px;
   height: 28px;
@@ -744,6 +756,118 @@ const MENISKUS_STYLES = `.page {
   box-shadow: 0 16px 30px rgba(249, 115, 22, 0.28);
 }
 
+.videoFrameWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 18px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #0d1b2a;
+  border: 1px solid rgba(13, 27, 42, 0.12);
+  box-shadow: 0 18px 38px rgba(13, 27, 42, 0.16);
+}
+
+.videoFrameWrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.takeHomeBox {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px;
+  padding: 28px;
+  background:
+    radial-gradient(circle at top right, rgba(249, 115, 22, 0.34), transparent 22rem),
+    radial-gradient(circle at bottom left, rgba(22, 163, 74, 0.26), transparent 20rem),
+    linear-gradient(135deg, #0d1b2a 0%, #152842 54%, #10251d 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 28px 70px rgba(13, 27, 42, 0.24);
+}
+
+.takeHomeBox::before {
+  content: '';
+  position: absolute;
+  inset: 18px 18px auto auto;
+  width: 92px;
+  height: 92px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.35), rgba(22, 163, 74, 0.24));
+  transform: rotate(14deg);
+}
+
+[dir='rtl'] .takeHomeBox::before {
+  inset: 18px auto auto 18px;
+}
+
+.takeHomeIntro {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 18px;
+  max-width: 780px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 800;
+}
+
+.takeHomeList {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 12px;
+}
+
+.takeHomeItem {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  gap: 14px;
+  align-items: start;
+  padding: 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(12px);
+}
+
+.takeHomeNumber {
+  width: 46px;
+  height: 46px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 950;
+  box-shadow: 0 12px 24px rgba(249, 115, 22, 0.28);
+}
+
+.takeHomeItem h3 {
+  margin: 0 0 6px;
+  color: #ffffff;
+  font-size: 17px;
+  line-height: 1.35;
+  font-weight: 950;
+}
+
+.takeHomeItem p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.75;
+  font-weight: 850;
+}
+
+[dir='rtl'] .takeHomeItem {
+  grid-template-columns: 54px 1fr;
+  text-align: right;
+}
+
 [dir='rtl'] .breadcrumb,
 [dir='rtl'] .heroText,
 [dir='rtl'] .sectionHead,
@@ -756,7 +880,9 @@ const MENISKUS_STYLES = `.page {
 [dir='rtl'] .protocolCard,
 [dir='rtl'] .criteriaCard,
 [dir='rtl'] .callout,
-[dir='rtl'] .bulletItem {
+[dir='rtl'] .bulletItem,
+[dir='rtl'] .videoCard,
+[dir='rtl'] .takeHomeBox {
   text-align: right;
 }
 
@@ -1112,6 +1238,37 @@ const MENISKUS_STYLES = `.page {
     padding: 12px;
     font-size: 13px;
     line-height: 1.6;
+  }
+
+  .videoCard {
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .videoFrameWrap {
+    border-radius: 16px;
+  }
+
+  .takeHomeBox {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .takeHomeIntro {
+    font-size: 16px;
+  }
+
+  .takeHomeItem {
+    grid-template-columns: 46px 1fr;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 18px;
+  }
+
+  .takeHomeNumber {
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
   }
 
   .mobileMcqFab {
@@ -2010,6 +2167,26 @@ const CONTENT = {
   },
 }
 
+const TAKE_HOME_COPY = {
+  de: {
+    sectionLabel: 'Take home message',
+    title: 'Take home message',
+    lead: 'Die wichtigsten Merksätze der Lektion auf einen Blick – nummeriert, kompakt und bewusst hervorgehoben.',
+  },
+  en: {
+    sectionLabel: 'Take home message',
+    title: 'Take home message',
+    lead: 'The key points of this lesson at a glance – numbered, compact and clearly highlighted.',
+  },
+  fa: {
+    sectionLabel: 'Take home message',
+    title: 'Take home message',
+    lead: 'مهم‌ترین نکات این درس در یک نگاه؛ شماره‌دار، خلاصه و کاملاً برجسته برای مرور سریع.',
+  },
+}
+
+const YOUTUBE_EMBED_URL = 'https://www.youtube-nocookie.com/embed/L03fPcRZm_o'
+
 function Table({ headers, rows, className = '' }) {
   return (
     <div className={styles.tableWrap}>
@@ -2061,7 +2238,7 @@ function Sidebar({ sections, toc, activeId, onClick }) {
           <button
             key={section.id}
             type="button"
-            className={`${styles.sideItem} ${activeId === section.id ? styles.sideItemActive : ''}`}
+            className={`${styles.sideItem} ${section.important ? styles.sideItemImportant : ''} ${activeId === section.id ? styles.sideItemActive : ''}`}
             onClick={() => onClick(section.id)}
           >
             <span className={styles.sideIcon}>{section.icon}</span>
@@ -2092,13 +2269,27 @@ function ImageFigure({ src, alt, caption, zoomable = false, zoomLabel = 'Bild ve
 export default function MeniskusPage() {
   const { lang } = useLanguage()
   const copy = CONTENT[lang] || CONTENT.de
+  const takeHomeCopy = TAKE_HOME_COPY[lang] || TAKE_HOME_COPY.de
   const isRTL = lang === 'fa'
+  const pageSections = useMemo(
+    () => [...copy.sections, { id: 'takehome', label: takeHomeCopy.sectionLabel, icon: '⭐', important: true }],
+    [copy.sections, takeHomeCopy.sectionLabel]
+  )
+  const takeHomeItems = useMemo(() => [
+    { number: '01', title: copy.anatomy.title, text: copy.anatomy.key },
+    { number: '02', title: copy.vascular.title, text: copy.vascular.key },
+    { number: '03', title: copy.mri.title, text: copy.mri.key },
+    { number: '04', title: copy.grading.title, text: copy.grading.key },
+    { number: '05', title: copy.tear.title, text: copy.tear.key },
+    { number: '06', title: copy.discoid.title, text: copy.discoid.key },
+    { number: '07', title: copy.therapy.titlePrefix || copy.therapy.title, text: copy.therapy.key },
+  ], [copy])
   const mainRef = useRef(null)
-  const [activeId, setActiveId] = useState(copy.sections[0].id)
+  const [activeId, setActiveId] = useState(pageSections[0].id)
   const [isMobileTocOpen, setIsMobileTocOpen] = useState(false)
   const [previewImage, setPreviewImage] = useState(null)
 
-  const sectionIds = useMemo(() => copy.sections.map(section => section.id), [copy.sections])
+  const sectionIds = useMemo(() => pageSections.map(section => section.id), [pageSections])
   const withLang = (href) => lang === 'de' ? href : `${href}?lang=${lang}`
 
   const scrollTo = (id) => {
@@ -2108,8 +2299,8 @@ export default function MeniskusPage() {
   }
 
   useEffect(() => {
-    setActiveId(copy.sections[0].id)
-  }, [copy.sections])
+    setActiveId(pageSections[0].id)
+  }, [pageSections])
 
   useEffect(() => {
     document.body.style.overflow = (isMobileTocOpen || previewImage) ? 'hidden' : ''
@@ -2179,7 +2370,7 @@ export default function MeniskusPage() {
         >
           <span className={styles.mobileTocIcon}>☰</span>
           <span>{copy.toc}</span>
-          <strong>{copy.sections.find(section => section.id === activeId)?.label}</strong>
+          <strong>{pageSections.find(section => section.id === activeId)?.label}</strong>
         </button>
       </div>
 
@@ -2190,13 +2381,13 @@ export default function MeniskusPage() {
               <strong>{copy.toc}</strong>
               <button type="button" onClick={() => setIsMobileTocOpen(false)} aria-label="Close menu">×</button>
             </div>
-            <Sidebar sections={copy.sections} toc={copy.toc} activeId={activeId} onClick={scrollTo} />
+            <Sidebar sections={pageSections} toc={copy.toc} activeId={activeId} onClick={scrollTo} />
           </div>
         </div>
       )}
 
       <div className={styles.layout}>
-        <Sidebar sections={copy.sections} toc={copy.toc} activeId={activeId} onClick={scrollTo} />
+        <Sidebar sections={pageSections} toc={copy.toc} activeId={activeId} onClick={scrollTo} />
 
         <main className={styles.main} ref={mainRef}>
           <Section id="anatomie" eyebrow="01" title={copy.anatomy.title} lead={copy.anatomy.lead}>
@@ -2328,11 +2519,37 @@ export default function MeniskusPage() {
 
           <Section id="lernvideo" eyebrow="10" title={copy.video.title} lead="">
             <div className={styles.videoCard}>
+              <div className={styles.videoFrameWrap}>
+                <iframe
+                  src={YOUTUBE_EMBED_URL}
+                  title={copy.video.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
               <h3>{copy.video.title}</h3>
               <p>{copy.video.text}</p>
               <a href={copy.video.url} target="_blank" rel="noopener noreferrer" className={styles.videoButton}>
                 ▶ {copy.video.cta}
               </a>
+            </div>
+          </Section>
+
+          <Section id="takehome" eyebrow="11" title={takeHomeCopy.title} lead="">
+            <div className={styles.takeHomeBox}>
+              <p className={styles.takeHomeIntro}>{takeHomeCopy.lead}</p>
+              <div className={styles.takeHomeList}>
+                {takeHomeItems.map(item => (
+                  <div key={item.number} className={styles.takeHomeItem}>
+                    <span className={styles.takeHomeNumber}>{item.number}</span>
+                    <div>
+                      <h3>{item.title}</h3>
+                      <p>{item.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </Section>
 
