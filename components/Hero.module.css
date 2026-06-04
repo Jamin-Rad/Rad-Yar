@@ -431,23 +431,7 @@
   background: rgba(249,115,22,0.12);
   border-color: rgba(249,115,22,0.4);
 }
-.zonePopupIcon {
-  width: 34px;
-  height: 34px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.06);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 auto;
-  font-size: 20px;
-}
-.zonePopupIcon img {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-  display: block;
-}
+.zonePopupIcon { font-size: 20px; }
 .zonePopupArr { margin-left: auto; color: rgba(249,115,22,0.6); font-size: 16px; }
 .zonePopupClose {
   position: absolute; top: 12px; right: 12px;

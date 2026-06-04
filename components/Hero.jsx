@@ -43,10 +43,10 @@ const FACH_DATA = {
   },
   Becken: {
     color: '#fb7185',
-    bg: 'linear-gradient(135deg,#2a0a10,#5a1020)',
+    bg: 'linear-gradient(135deg,#241027,#4b143d)',
     available: false,
-    topics: ['Becken – Frau','Becken – Mann','Urogenitalorgane','Hüfte'],
-    desc: { de:'Weibliches und männliches Becken', en:'Female and male pelvis', fa:'لگن زنان و مردان' },
+    topics: ['Becken – Frau','Becken – Mann'],
+    desc: { de:'Beckenorgane – wählen Sie Frau oder Mann', en:'Pelvic organs – choose female or male', fa:'اندام‌های لگن – زن یا مرد را انتخاب کنید' },
   },
   BeckenF: {
     color: '#fb7185',
@@ -227,8 +227,8 @@ const ZONE_TO_LERNEN = {
   Thorax:             '/lernen/thorax',
   Brust:              '/lernen/mamma',
   Abdomen:            '/lernen/abdomen',
-  Becken:             null,  // popup: female / male
-  BeckenF:            null,  // legacy
+  Becken:             null,  // popup: Becken Frau/Mann
+  BeckenF:            '/lernen/becken-f',
   BeckenM:            '/lernen/becken-m',
   Muskuloskelettales: '/lernen/msk',
   Technik:            '/lernen/technik',
@@ -249,18 +249,16 @@ export default function Hero() {
   const [popup, setPopup] = useState(null)
 
   const POPUP_ZONES = {
-    Hals: {
-      title: { de: 'Hals & Wirbelsäule', en: 'Neck & Spine', fa: 'گردن و ستون فقرات' },
+    Becken: {
       choices: [
-        { id: 'Hals',         label: { de: 'Hals',         en: 'Neck',  fa: 'گردن'         }, url: '/lernen/hals',         iconSrc: '/fach/hals.png' },
-        { id: 'Wirbelsaeule', label: { de: 'Wirbelsäule',  en: 'Spine', fa: 'ستون فقرات'   }, url: '/lernen/wirbelsaeule', iconSrc: '/fach/wirbelsaeule.png' },
+        { id: 'BeckenF', label: { de: 'Becken – Frau', en: 'Pelvis – Female', fa: 'لگن – زنان' }, url: '/lernen/becken-f', icon: '♀️' },
+        { id: 'BeckenM', label: { de: 'Becken – Mann', en: 'Pelvis – Male', fa: 'لگن – مردان' }, url: '/lernen/becken-m', icon: '♂️' },
       ]
     },
-    Becken: {
-      title: { de: 'Becken auswählen', en: 'Choose pelvis', fa: 'انتخاب لگن' },
+    Hals: {
       choices: [
-        { id: 'BeckenF', label: { de: 'Becken – Frau', en: 'Pelvis – Female', fa: 'لگن – زنان' }, url: '/lernen/becken-f', iconSrc: '/fach/becken-f.png' },
-        { id: 'BeckenM', label: { de: 'Becken – Mann', en: 'Pelvis – Male',   fa: 'لگن – مردان' }, url: '/lernen/becken-m', iconSrc: '/fach/becken-m.png' },
+        { id: 'Hals',         label: { de: 'Hals',         en: 'Neck',  fa: 'گردن'         }, url: '/lernen/hals',         icon: '🔵' },
+        { id: 'Wirbelsaeule', label: { de: 'Wirbelsäule',  en: 'Spine', fa: 'ستون فقرات'   }, url: '/lernen/wirbelsaeule', icon: '🦴' },
       ]
     },
   }
@@ -364,13 +362,15 @@ export default function Hero() {
         <div className={styles.zonePopupOverlay} onClick={() => setPopup(null)}>
           <div className={styles.zonePopup} onClick={e => e.stopPropagation()}>
             <div className={styles.zonePopupTitle}>
-              {POPUP_ZONES[popup]?.title?.[lang] || POPUP_ZONES[popup]?.title?.de || (lang === 'fa' ? 'کدام تخصص؟' : lang === 'en' ? 'Which specialty?' : 'Welches Fachgebiet?')}
+              {popup === 'Becken'
+                ? (lang === 'fa' ? 'کدام بخش لگن؟' : lang === 'en' ? 'Which pelvis section?' : 'Welcher Beckenbereich?')
+                : (lang === 'fa' ? 'کدام تخصص؟' : lang === 'en' ? 'Which specialty?' : 'Welches Fachgebiet?')}
             </div>
             <div className={styles.zonePopupChoices}>
               {POPUP_ZONES[popup]?.choices.map(choice => (
                 <button key={choice.id} className={styles.zonePopupBtn}
                   onClick={() => { setPopup(null); window.location.href = choice.url }}>
-                  <span className={styles.zonePopupIcon}>{choice.iconSrc ? <img src={choice.iconSrc} alt="" /> : choice.icon}</span>
+                  <span className={styles.zonePopupIcon}>{choice.icon}</span>
                   <span>{choice.label[lang] || choice.label.de}</span>
                   <span className={styles.zonePopupArr}>→</span>
                 </button>
