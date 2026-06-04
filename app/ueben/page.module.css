@@ -164,3 +164,22 @@
 @media (max-width: 480px) {
   .fachGrid { grid-template-columns: repeat(3,1fr); }
 }
+
+/* ── UPDATED: cleaner Fach icons in MCQ training directory ─────────────── */
+.fachIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f8fafc, #ffffff);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(26,32,81,0.05);
+  font-size: 19px;
+}
+
+.fachCardActive .fachIcon {
+  background: linear-gradient(135deg, #fff7ed, #ffffff);
+  border-color: rgba(249,115,22,0.22);
+}

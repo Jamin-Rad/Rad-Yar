@@ -19,8 +19,8 @@ const FACH_DISPLAY = {
 }
 
 const FACH_ICONS = {
-  gehirn:'🧠', wirbelsaeule:'🦴', hals:'💠', thorax:'🫀',
-  mamma:'🌸', abdomen:'🟠', 'becken-f':'♀️', 'becken-m':'♂️',
+  gehirn:'🧠', wirbelsaeule:'🩻', hals:'🦋', thorax:'🫁',
+  mamma:'🩺', abdomen:'🫘', 'becken-f':'♀️', 'becken-m':'♂️',
   msk:'🦴', technik:'⚙️',
 }
 
