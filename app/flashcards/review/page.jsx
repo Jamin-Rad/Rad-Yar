@@ -3,9 +3,9 @@
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import { FLASHCARDS, getCardById } from '@/data/flashcards'
-import { answerCard, formatDueDate, isDue, loadLeitnerState } from '@/lib/leitnerStorage'
+import { answerCard, formatDueDate, isDue, loadLeitnerState } from '@/utils/leitnerStorage'
 import { useLanguage } from '@/providers/LanguageProvider'
-import styles from '../flashcards.module.css'
+import styles from '../page.module.css'
 
 const TEXT = {
   de: { back: '← Verwaltung', kicker: 'Fällige Wiederholung', title: 'Leitner-Review', lead: 'Hier erscheinen alle fälligen Flashcards aus allen bereits gelesenen Themen – unabhängig vom ursprünglichen Lernkapitel.', show: 'Antwort zeigen', knew: 'Gewusst', didnt: 'Nicht gewusst', empty: 'Heute sind keine Flashcards fällig.', add: 'Neue Flashcards lesen', done: 'Review beendet.', progress: 'Fällig', due: 'fällig' },
