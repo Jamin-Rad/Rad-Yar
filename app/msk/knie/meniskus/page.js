@@ -2469,6 +2469,304 @@ html[data-theme='dark'] .videoFrameWrap {
   }
 }
 
+
+/* ── FINAL MOBILE FIX: no horizontal scrolling, no mobile Inhaltsverzeichnis ── */
+@media (max-width: 760px) {
+  .page,
+  .page * {
+    box-sizing: border-box;
+  }
+
+  .page {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden !important;
+    padding-top: 64px;
+    padding-bottom: calc(82px + env(safe-area-inset-bottom));
+  }
+
+  .header,
+  .layout,
+  .main,
+  .heroGrid,
+  .heroText,
+  .section,
+  .sectionContent,
+  .splitGrid,
+  .zoneGrid,
+  .protocolGrid,
+  .criteriaGrid,
+  .caseGrid,
+  .discoidStats,
+  .takeHomeBox,
+  .card,
+  .cardAccent,
+  .cardDanger,
+  .normalCard,
+  .protocolCard,
+  .criteriaCard,
+  .bulletCard,
+  .figure,
+  .videoCard,
+  .callout,
+  .extendedDetails {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .header {
+    padding-left: 10px;
+    padding-right: 10px;
+    overflow-x: hidden;
+  }
+
+  .layout,
+  [dir='rtl'] .layout {
+    display: block;
+    width: 100%;
+    max-width: 100vw;
+    padding: 10px 10px 24px;
+    overflow-x: hidden;
+  }
+
+  .main {
+    display: grid;
+    gap: 14px;
+    overflow-x: hidden;
+  }
+
+  .mobileTocBar,
+  .mobileTocOverlay,
+  .layout > .sidebar {
+    display: none !important;
+  }
+
+  .heroText {
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .heroText h1 {
+    font-size: clamp(32px, 11vw, 44px);
+    max-width: 100%;
+  }
+
+  .heroActions {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .learnAction,
+  .learnActionDisabled {
+    width: 100%;
+    max-width: 100%;
+    justify-content: flex-start;
+  }
+
+  .section {
+    padding: 14px;
+    border-radius: 18px;
+    scroll-margin-top: 76px;
+  }
+
+  .sectionHead {
+    margin: -14px -14px 10px;
+  }
+
+  .sectionToggle {
+    padding: 14px;
+    border-radius: 18px;
+    align-items: center;
+  }
+
+  .sectionContentCollapsed {
+    display: none !important;
+  }
+
+  .sectionHead h2 {
+    font-size: clamp(21px, 6.8vw, 28px);
+    line-height: 1.18;
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .sectionToggleIcon {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+  }
+
+  .splitGrid,
+  .zoneGrid,
+  .protocolGrid,
+  .criteriaGrid,
+  .caseGrid,
+  .discoidStats {
+    grid-template-columns: 1fr !important;
+  }
+
+  .figure img,
+  .caseImage,
+  .videoFrameWrap,
+  .figureZoomButton,
+  .figureZoomButton img {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .caseImage {
+    height: auto;
+    max-height: 220px;
+    object-fit: contain;
+  }
+
+  .tableWrap {
+    width: 100%;
+    max-width: 100%;
+    overflow: visible !important;
+    border: 0;
+    background: transparent;
+    margin: 12px 0;
+  }
+
+  .table,
+  .table thead,
+  .table tbody,
+  .table tr,
+  .table th,
+  .table td {
+    display: block;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .table {
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: auto;
+  }
+
+  .table thead {
+    display: none;
+  }
+
+  .table tbody {
+    display: grid;
+    gap: 10px;
+  }
+
+  .table tr {
+    padding: 10px 12px;
+    border: 1px solid #dfe6f0;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 8px 18px rgba(23, 32, 51, 0.04);
+    overflow: hidden;
+  }
+
+  .table td,
+  .table tr:nth-child(even) td,
+  .gradeTable td:first-child {
+    display: grid;
+    grid-template-columns: minmax(78px, 34%) minmax(0, 1fr);
+    gap: 10px;
+    align-items: start;
+    padding: 9px 0;
+    border: 0;
+    border-bottom: 1px solid #edf1f7;
+    background: transparent !important;
+    color: #425066;
+    text-align: start;
+    font-size: 13px;
+    line-height: 1.55;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .table td:last-child {
+    border-bottom: 0;
+  }
+
+  .table td::before {
+    content: attr(data-label);
+    color: #c2410c;
+    font-size: 11px;
+    font-weight: 950;
+    line-height: 1.35;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+  }
+
+  [dir='rtl'] .table td,
+  [dir='rtl'] .gradeTable td:first-child {
+    text-align: right;
+  }
+
+  .takeHomeItem,
+  [dir='rtl'] .takeHomeItem,
+  .bulletItem {
+    grid-template-columns: 42px minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 430px) {
+  .header,
+  .layout,
+  [dir='rtl'] .layout {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .heroText,
+  .section {
+    border-radius: 16px;
+  }
+
+  .section {
+    padding: 12px;
+  }
+
+  .sectionHead {
+    margin: -12px -12px 8px;
+  }
+
+  .sectionToggle {
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  .table tr {
+    padding: 10px;
+  }
+
+  .table td,
+  .gradeTable td:first-child {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    font-size: 12.5px;
+  }
+}
+
+html[data-theme='dark'] .table tr {
+  background: rgba(15, 23, 42, 0.88) !important;
+  border-color: rgba(148, 163, 184, 0.18) !important;
+}
+
+html[data-theme='dark'] .table td,
+html[data-theme='dark'] .gradeTable td:first-child {
+  border-color: rgba(148, 163, 184, 0.14) !important;
+  color: #dbeafe !important;
+}
+
+html[data-theme='dark'] .table td::before {
+  color: #fb923c !important;
+}
+
 `
 
 const CONTENT = {
@@ -3188,7 +3486,9 @@ function Table({ headers, rows, className = '' }) {
         <tbody>
           {rows.map((row, rowIndex) => (
             <tr key={rowIndex}>
-              {row.map((cell, cellIndex) => <td key={`${rowIndex}-${cellIndex}`}>{cell}</td>)}
+              {row.map((cell, cellIndex) => (
+              <td key={`${rowIndex}-${cellIndex}`} data-label={headers[cellIndex] || ''}>{cell}</td>
+            ))}
             </tr>
           ))}
         </tbody>
@@ -3209,6 +3509,11 @@ function Callout({ type = 'note', label, children }) {
 
 function Section({ id, eyebrow, title, lead, children, className = '' }) {
   const [isOpen, setIsOpen] = useState(true)
+
+  useEffect(() => {
+    const mobileQuery = window.matchMedia('(max-width: 760px)')
+    if (mobileQuery.matches) setIsOpen(false)
+  }, [])
 
   const toggleSection = () => setIsOpen(value => !value)
   const handleKeyDown = (event) => {
@@ -3299,7 +3604,6 @@ export default function MeniskusPage() {
   ], [copy, takeHomeCopy])
   const mainRef = useRef(null)
   const [activeId, setActiveId] = useState(pageSections[0].id)
-  const [isMobileTocOpen, setIsMobileTocOpen] = useState(false)
   const [previewImage, setPreviewImage] = useState(null)
 
   const sectionIds = useMemo(() => pageSections.map(section => section.id), [pageSections])
@@ -3307,7 +3611,6 @@ export default function MeniskusPage() {
 
   const scrollTo = (id) => {
     const el = document.getElementById(id)
-    setIsMobileTocOpen(false)
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
@@ -3316,11 +3619,11 @@ export default function MeniskusPage() {
   }, [pageSections])
 
   useEffect(() => {
-    document.body.style.overflow = (isMobileTocOpen || previewImage) ? 'hidden' : ''
+    document.body.style.overflow = previewImage ? 'hidden' : ''
     return () => {
       document.body.style.overflow = ''
     }
-  }, [isMobileTocOpen, previewImage])
+  }, [previewImage])
 
   useEffect(() => {
     const observers = sectionIds.map(id => {
@@ -3385,30 +3688,6 @@ export default function MeniskusPage() {
 
       </header>
 
-      <div className={styles.mobileTocBar}>
-        <button
-          type="button"
-          className={styles.mobileTocButton}
-          onClick={() => setIsMobileTocOpen(true)}
-          aria-expanded={isMobileTocOpen}
-        >
-          <span className={styles.mobileTocIcon}>☰</span>
-          <span>{copy.toc}</span>
-          <strong>{pageSections.find(section => section.id === activeId)?.label}</strong>
-        </button>
-      </div>
-
-      {isMobileTocOpen && (
-        <div className={styles.mobileTocOverlay} onClick={() => setIsMobileTocOpen(false)}>
-          <div className={styles.mobileTocPanel} onClick={(event) => event.stopPropagation()}>
-            <div className={styles.mobileTocHeader}>
-              <strong>{copy.toc}</strong>
-              <button type="button" onClick={() => setIsMobileTocOpen(false)} aria-label="Close menu">×</button>
-            </div>
-            <Sidebar sections={pageSections} toc={copy.toc} activeId={activeId} onClick={scrollTo} />
-          </div>
-        </div>
-      )}
 
       <div className={styles.layout}>
         <Sidebar sections={pageSections} toc={copy.toc} activeId={activeId} onClick={scrollTo} />
