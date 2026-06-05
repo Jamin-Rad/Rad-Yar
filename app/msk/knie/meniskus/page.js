@@ -782,6 +782,23 @@ const MENISKUS_STYLES = `.page {
   font-weight: 900;
 }
 
+.subSectionBlock {
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(148, 163, 184, 0.22);
+}
+.subSectionTitle {
+  margin: 0 0 8px;
+  font-size: 21px;
+  font-weight: 900;
+  color: #0f2f4a;
+}
+.subSectionLead {
+  margin: 0 0 16px;
+  color: #44546a;
+  line-height: 1.75;
+}
+
 .callout {
   border-radius: 22px;
   padding: 18px 20px;
@@ -1864,11 +1881,9 @@ const CONTENT = {
     zoomImage: 'Bild vergrößern',
     closePreview: 'Vorschau schließen',
     sections: [
-      { id: 'anatomie', label: 'Anatomie', icon: '🦴' },
-      { id: 'vaskularisation', label: 'Vaskularisation', icon: '🩸' },
-      { id: 'mrt', label: 'MRT-Diagnostik', icon: '🩻' },
-      { id: 'grading', label: 'MRT-Grading', icon: '📊' },
-      { id: 'risskriterien', label: 'Meniskusriss', icon: '⚠️' },
+      { id: 'anatomie', label: 'Anatomie und Vaskularisation', icon: '🦴' },
+      { id: 'mrt', label: 'MRT-Diagnostik und Risskriterien', icon: '🩻' },
+      { id: 'grading', label: 'MRT-Signalgrading', icon: '📊' },
       { id: 'risstypen', label: 'Risstypen', icon: '🧩' },
       { id: 'discoider', label: 'Discoider Meniskus', icon: '🔵' },
       { id: 'therapie', label: 'Therapieprinzip', icon: '🧵' },
@@ -1890,7 +1905,7 @@ const CONTENT = {
       ],
     },
     anatomy: {
-      title: 'Anatomie',
+      title: 'Anatomie und Vaskularisation',
       lead: 'Die Menisken sind faserknorpelige Strukturen zwischen den Femurkondylen und dem Tibiaplateau. Es gibt zwei Menisken: den Innenmeniskus und den Außenmeniskus. Sie verbessern die Gelenkkongruenz, verteilen die Last und wirken als Stoßdämpfer.',
       tableHeaders: ['Merkmal', 'Innenmeniskus', 'Außenmeniskus'],
       tableRows: [
@@ -1926,7 +1941,7 @@ const CONTENT = {
       key: 'Je näher der Riss an der Kapsel liegt, desto besser ist das Heilungspotenzial.',
     },
     mri: {
-      title: 'Die MRT-Diagnostik',
+      title: 'MRT-Diagnostik und sichere Risskriterien',
       lead: 'Die MRT-Diagnostik des Meniskus basiert auf einem dünnschichtigen Knieprotokoll und flüssigkeitssensitiven Sequenzen.',
       protocol: [
         { name: 'T1-Wichtung', text: 'Anatomische Übersicht und Beurteilung chronischer Fibrose.' },
@@ -1938,7 +1953,7 @@ const CONTENT = {
       key: 'Ein reiner Signalanstieg im Meniskus ist noch kein Riss. Entscheidend ist der reproduzierbare Kontakt zur superioren oder inferioren Gelenkfläche.',
     },
     grading: {
-      title: 'MRT-Grading von Meniskusläsionen',
+      title: 'MRT-Signalgrading: Grad 0 bis III',
       lead: 'Die Klassifikation nach Lotysch hilft, degenerative intrameniskale Signalveränderungen von einem echten Meniskusriss zu unterscheiden.',
       lotyschTitle: 'Einfaches Modell: Grad 0 bis III',
       simpleHeaders: ['Grad', 'MRT-Signal', 'Histologie', 'Klinisch'],
@@ -2086,11 +2101,9 @@ const CONTENT = {
     zoomImage: 'Enlarge image',
     closePreview: 'Close preview',
     sections: [
-      { id: 'anatomie', label: 'Anatomy', icon: '🦴' },
-      { id: 'vaskularisation', label: 'Vascular supply', icon: '🩸' },
-      { id: 'mrt', label: 'MRI diagnosis', icon: '🩻' },
-      { id: 'grading', label: 'MRI grading', icon: '📊' },
-      { id: 'risskriterien', label: 'Meniscal tear', icon: '⚠️' },
+      { id: 'anatomie', label: 'Anatomy and vascular supply', icon: '🦴' },
+      { id: 'mrt', label: 'MRI diagnosis and tear criteria', icon: '🩻' },
+      { id: 'grading', label: 'MRI signal grading', icon: '📊' },
       { id: 'risstypen', label: 'Tear types', icon: '🧩' },
       { id: 'discoider', label: 'Discoid meniscus', icon: '🔵' },
       { id: 'therapie', label: 'Treatment principle', icon: '🧵' },
@@ -2112,7 +2125,7 @@ const CONTENT = {
       ],
     },
     anatomy: {
-      title: 'Anatomy',
+      title: 'Anatomy and vascular supply',
       lead: 'The menisci are fibrocartilaginous structures between the femoral condyles and the tibial plateau. There are two menisci: the medial meniscus and the lateral meniscus. They improve joint congruity, distribute load and act as shock absorbers.',
       tableHeaders: ['Feature', 'Medial meniscus', 'Lateral meniscus'],
       tableRows: [
@@ -2148,7 +2161,7 @@ const CONTENT = {
       key: 'The closer the tear is to the capsule, the better its healing potential.',
     },
     mri: {
-      title: 'MRI diagnosis',
+      title: 'MRI diagnosis and reliable tear criteria',
       lead: 'MRI assessment of the meniscus relies on a thin-slice knee protocol and fluid-sensitive sequences.',
       protocol: [
         { name: 'T1-weighting', text: 'Anatomical overview and assessment of chronic fibrosis.' },
@@ -2160,7 +2173,7 @@ const CONTENT = {
       key: 'Intrameniscal signal alone is not a tear. The decisive feature is reproducible contact with the superior or inferior articular surface.',
     },
     grading: {
-      title: 'MRI grading of meniscal lesions',
+      title: 'MRI signal grading: grade 0 to III',
       lead: 'The Lotysch classification helps distinguish degenerative intrameniscal signal changes from a true meniscal tear.',
       lotyschTitle: 'Simple model: grades 0 to III',
       simpleHeaders: ['Grade', 'MRI signal', 'Histology', 'Clinical meaning'],
@@ -2308,11 +2321,9 @@ const CONTENT = {
     zoomImage: 'بزرگ‌نمایی تصویر',
     closePreview: 'بستن نمایش بزرگ',
     sections: [
-      { id: 'anatomie', label: 'آناتومی', icon: '🦴' },
-      { id: 'vaskularisation', label: 'خون‌رسانی', icon: '🩸' },
-      { id: 'mrt', label: 'تشخیص MRI', icon: '🩻' },
-      { id: 'grading', label: 'درجه‌بندی MRI', icon: '📊' },
-      { id: 'risskriterien', label: 'پارگی منیسک', icon: '⚠️' },
+      { id: 'anatomie', label: 'آناتومی و خون‌رسانی', icon: '🦴' },
+      { id: 'mrt', label: 'تشخیص MRI و معیارهای پارگی', icon: '🩻' },
+      { id: 'grading', label: 'درجه‌بندی سیگنال MRI', icon: '📊' },
       { id: 'risstypen', label: 'انواع پارگی', icon: '🧩' },
       { id: 'discoider', label: 'منیسک دیسکوئید', icon: '🔵' },
       { id: 'therapie', label: 'اصل درمان', icon: '🧵' },
@@ -2334,7 +2345,7 @@ const CONTENT = {
       ],
     },
     anatomy: {
-      title: 'آناتومی',
+      title: 'آناتومی و خون‌رسانی',
       lead: 'منیسک‌ها ساختارهای فیبروکارتیلاژی بین کندیل‌های فمور و پلاتوی تیبیا هستند. دو منیسک وجود دارد: منیسک داخلی و منیسک خارجی. آن‌ها تطابق مفصلی را بهتر می‌کنند، نیرو را پخش می‌کنند و مانند ضربه‌گیر عمل می‌کنند.',
       tableHeaders: ['ویژگی', 'منیسک داخلی', 'منیسک خارجی'],
       tableRows: [
@@ -2370,7 +2381,7 @@ const CONTENT = {
       key: 'هرچه پارگی به کپسول نزدیک‌تر باشد، پتانسیل ترمیم بهتر است.',
     },
     mri: {
-      title: 'تشخیص MRI',
+      title: 'تشخیص MRI و معیارهای قطعی پارگی',
       lead: 'ارزیابی MRI منیسک بر اساس پروتکل زانو با برش‌های نازک و سکانس‌های حساس به مایع انجام می‌شود.',
       protocol: [
         { name: 'T1', text: 'نمای کلی آناتومیک و ارزیابی فیبروز مزمن.' },
@@ -2382,7 +2393,7 @@ const CONTENT = {
       key: 'افزایش سیگنال داخل منیسک به تنهایی پارگی محسوب نمی‌شود. معیار اصلی، تماس تکرارپذیر سیگنال با سطح مفصلی فوقانی یا تحتانی است.',
     },
     grading: {
-      title: 'درجه‌بندی MRI ضایعات منیسک',
+      title: 'درجه‌بندی سیگنال MRI: درجه ۰ تا III',
       lead: 'طبقه‌بندی Lotysch کمک می‌کند تغییرات سیگنال دژنراتیو داخل منیسک از پارگی واقعی منیسک جدا شود.',
       lotyschTitle: 'مدل ساده: درجه ۰ تا III',
       simpleHeaders: ['درجه', 'سیگنال MRI', 'هیستولوژی', 'معنای بالینی'],
@@ -2681,7 +2692,7 @@ export default function MeniskusPage() {
   const [previewImage, setPreviewImage] = useState(null)
 
   const sectionIds = useMemo(() => pageSections.map(section => section.id), [pageSections])
-  const withLang = (href) => lang === 'de' ? href : `${href}?lang=${lang}`
+  const withLang = (href) => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
 
   const scrollTo = (id) => {
     const el = document.getElementById(id)
@@ -2743,7 +2754,7 @@ export default function MeniskusPage() {
             <h1>{copy.title}</h1>
             <p>{copy.subtitle}</p>
             <div className={styles.heroActions}>
-              <Link href={withLang('/msk/knie/meniskus/mcq')} className={`${styles.learnAction} ${styles.learnActionMcq}`}>
+              <Link href={withLang('/ueben/quiz?fach=msk&n=10&themen=meniskus')} className={`${styles.learnAction} ${styles.learnActionMcq}`}>
                 <span>🎯</span>
                 <span>{copy.actionMcq}</span>
               </Link>
@@ -2813,24 +2824,26 @@ export default function MeniskusPage() {
               <ImageFigure src="/meniskus/anatomy-roots.png" alt={copy.anatomy.rootsTitle} caption={copy.anatomy.imageCaption} />
             </div>
             <Callout label={copy.keyLabel}>{copy.anatomy.key}</Callout>
-          </Section>
 
-          <Section id="vaskularisation" eyebrow="03" title={copy.vascular.title} lead={copy.vascular.lead}>
-            <div className={styles.zoneGrid}>
-              {copy.vascular.zones.map((zone, index) => (
-                <div key={zone.name} className={`${styles.zoneCard} ${styles[`zone${index + 1}`]}`}>
-                  <h3>{zone.name}</h3>
-                  <span>{zone.range}</span>
-                  <p>{zone.status}</p>
-                  <small>{zone.therapy}</small>
-                </div>
-              ))}
+            <div className={styles.subSectionBlock}>
+              <h3 className={styles.subSectionTitle}>{copy.vascular.title}</h3>
+              <p className={styles.subSectionLead}>{copy.vascular.lead}</p>
+              <div className={styles.zoneGrid}>
+                {copy.vascular.zones.map((zone, index) => (
+                  <div key={zone.name} className={`${styles.zoneCard} ${styles[`zone${index + 1}`]}`}>
+                    <h3>{zone.name}</h3>
+                    <span>{zone.range}</span>
+                    <p>{zone.status}</p>
+                    <small>{zone.therapy}</small>
+                  </div>
+                ))}
+              </div>
+              <div className={styles.splitGrid}>
+                <ImageFigure src="/meniskus/vascular-zones.png" alt={copy.vascular.title} />
+                <Table headers={copy.vascular.tableHeaders} rows={copy.vascular.tableRows} />
+              </div>
+              <Callout label={copy.keyLabel}>{copy.vascular.key}</Callout>
             </div>
-            <div className={styles.splitGrid}>
-              <ImageFigure src="/meniskus/vascular-zones.png" alt={copy.vascular.title} />
-              <Table headers={copy.vascular.tableHeaders} rows={copy.vascular.tableRows} />
-            </div>
-            <Callout label={copy.keyLabel}>{copy.vascular.key}</Callout>
           </Section>
 
           <Section id="mrt" eyebrow="04" title={copy.mri.title} lead={copy.mri.lead}>
@@ -2847,6 +2860,22 @@ export default function MeniskusPage() {
               <p>{copy.mri.normalText}</p>
             </div>
             <Callout label={copy.keyLabel}>{copy.mri.key}</Callout>
+
+            <div className={styles.subSectionBlock}>
+              <h3 className={styles.subSectionTitle}>{copy.tear.title}</h3>
+              <p className={styles.subSectionLead}>{copy.tear.lead}</p>
+              <Callout type="cave" label={copy.caveLabel}>{copy.tear.cave}</Callout>
+              <div className={styles.criteriaGrid}>
+                {copy.tear.criteria.map((item, index) => (
+                  <div key={item.title} className={styles.criteriaCard}>
+                    <span>{String(index + 1).padStart(2, '0')}</span>
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                  </div>
+                ))}
+              </div>
+              <Callout label={copy.keyLabel}>{copy.tear.key}</Callout>
+            </div>
           </Section>
 
           <Section id="grading" eyebrow="05" title={copy.grading.title} lead={copy.grading.lead}>
@@ -2863,19 +2892,6 @@ export default function MeniskusPage() {
             <Callout label={copy.keyLabel}>{copy.grading.key}</Callout>
           </Section>
 
-          <Section id="risskriterien" eyebrow="06" title={copy.tear.title} lead={copy.tear.lead}>
-            <Callout type="cave" label={copy.caveLabel}>{copy.tear.cave}</Callout>
-            <div className={styles.criteriaGrid}>
-              {copy.tear.criteria.map((item, index) => (
-                <div key={item.title} className={styles.criteriaCard}>
-                  <span>{String(index + 1).padStart(2, '0')}</span>
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
-                </div>
-              ))}
-            </div>
-            <Callout label={copy.keyLabel}>{copy.tear.key}</Callout>
-          </Section>
 
           <Section id="risstypen" eyebrow="07" title={copy.tearTypes.title} lead={copy.tearTypes.lead}>
             <Table headers={copy.tearTypes.tableHeaders} rows={copy.tearTypes.tableRows} className={styles.tearTypeTable} />
