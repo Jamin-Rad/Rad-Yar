@@ -29,13 +29,21 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
+        {/*
+          Blocking script: läuft synchron VOR dem ersten Paint.
+          - Liest gespeichertes Theme aus localStorage
+          - Fällt auf prefers-color-scheme zurück, wenn kein Wert gespeichert
+          → Kein FOUC (Flash of Unstyled Content) mehr
+        */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function () {
                 try {
-                  var theme = localStorage.getItem('radyar-theme');
-                  if (theme !== 'dark' && theme !== 'light') theme = 'light';
+                  var stored = localStorage.getItem('radyar-theme');
+                  var system = window.matchMedia('(prefers-color-scheme: dark)').matches
+                    ? 'dark' : 'light';
+                  var theme = (stored === 'dark' || stored === 'light') ? stored : system;
                   document.documentElement.dataset.theme = theme;
                   document.documentElement.style.colorScheme = theme;
                 } catch (e) {
