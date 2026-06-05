@@ -3,9 +3,9 @@
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import { getCardsByTopic, getFlashcardTopic } from '@/data/flashcards'
-import { answerCard, ensureCardStarted, loadLeitnerState } from '@/lib/leitnerStorage'
+import { answerCard, ensureCardStarted, loadLeitnerState } from '@/utils/leitnerStorage'
 import { useLanguage } from '@/providers/LanguageProvider'
-import styles from '../flashcards.module.css'
+import styles from '../page.module.css'
 
 const TEXT = {
   de: { back: '← Flashcards', kicker: 'Neue Flashcards', title: 'Meniskus-Flashcards', lead: 'Lies die Karten zu diesem Thema. Sobald eine Karte angezeigt wurde, erscheint sie automatisch in der Flashcard-Verwaltung.', show: 'Antwort zeigen', knew: 'Gewusst', didnt: 'Nicht gewusst', finished: 'Alle Meniskus-Flashcards wurden gelesen.', manage: 'Zur Verwaltung', progress: 'Karte' },
