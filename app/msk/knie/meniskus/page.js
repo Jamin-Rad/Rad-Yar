@@ -2471,7 +2471,14 @@ html[data-theme='dark'] .videoFrameWrap {
 
 
 /* ── FINAL MOBILE FIX: no horizontal scrolling, no mobile Inhaltsverzeichnis ── */
-@media (max-width: 760px) {
+@media (max-width: 900px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+  }
+
   .page,
   .page * {
     box-sizing: border-box;
@@ -2539,6 +2546,7 @@ html[data-theme='dark'] .videoFrameWrap {
 
   .mobileTocBar,
   .mobileTocOverlay,
+  .sidebar,
   .layout > .sidebar {
     display: none !important;
   }
@@ -3507,13 +3515,33 @@ function Callout({ type = 'note', label, children }) {
   )
 }
 
-function Section({ id, eyebrow, title, lead, children, className = '' }) {
-  const [isOpen, setIsOpen] = useState(true)
+function useIsMobileViewport(query = '(max-width: 900px)') {
+  const [isMobile, setIsMobile] = useState(true)
 
   useEffect(() => {
-    const mobileQuery = window.matchMedia('(max-width: 760px)')
-    if (mobileQuery.matches) setIsOpen(false)
-  }, [])
+    const mediaQuery = window.matchMedia(query)
+    const updateMobileState = () => setIsMobile(mediaQuery.matches)
+
+    updateMobileState()
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', updateMobileState)
+      return () => mediaQuery.removeEventListener('change', updateMobileState)
+    }
+
+    mediaQuery.addListener(updateMobileState)
+    return () => mediaQuery.removeListener(updateMobileState)
+  }, [query])
+
+  return isMobile
+}
+
+function Section({ id, eyebrow, title, lead, children, className = '', defaultOpen = true }) {
+  const [isOpen, setIsOpen] = useState(defaultOpen)
+
+  useEffect(() => {
+    setIsOpen(defaultOpen)
+  }, [defaultOpen, id])
 
   const toggleSection = () => setIsOpen(value => !value)
   const handleKeyDown = (event) => {
@@ -3524,7 +3552,7 @@ function Section({ id, eyebrow, title, lead, children, className = '' }) {
   }
 
   return (
-    <section id={id} className={`${styles.section} ${className}`.trim()}>
+    <section id={id} className={`${styles.section} ${className}`.trim()} data-open={isOpen ? 'true' : 'false'}>
       <div className={styles.sectionHead}>
         <div
           className={styles.sectionToggle}
@@ -3603,6 +3631,7 @@ export default function MeniskusPage() {
     { number: '05', title: takeHomeCopy.itemTitles.therapy, text: copy.therapy.key },
   ], [copy, takeHomeCopy])
   const mainRef = useRef(null)
+  const isMobile = useIsMobileViewport()
   const [activeId, setActiveId] = useState(pageSections[0].id)
   const [previewImage, setPreviewImage] = useState(null)
 
@@ -3690,10 +3719,12 @@ export default function MeniskusPage() {
 
 
       <div className={styles.layout}>
-        <Sidebar sections={pageSections} toc={copy.toc} activeId={activeId} onClick={scrollTo} />
+        {!isMobile && (
+          <Sidebar sections={pageSections} toc={copy.toc} activeId={activeId} onClick={scrollTo} />
+        )}
 
         <main className={styles.main} ref={mainRef}>
-          <Section id="anatomie" eyebrow="01" title={copy.anatomy.title} lead={copy.anatomy.lead}>
+          <Section id="anatomie" eyebrow="01" title={copy.anatomy.title} lead={copy.anatomy.lead} defaultOpen={!isMobile}>
             <Table headers={copy.anatomy.tableHeaders} rows={copy.anatomy.tableRows} />
             <div className={styles.splitGrid}>
               <div className={styles.card}>
@@ -3736,7 +3767,7 @@ export default function MeniskusPage() {
             </div>
           </Section>
 
-          <Section id="mrt" eyebrow="04" title={copy.mri.title} lead={copy.mri.lead}>
+          <Section id="mrt" eyebrow="04" title={copy.mri.title} lead={copy.mri.lead} defaultOpen={!isMobile}>
             <div className={styles.protocolGrid}>
               {copy.mri.protocol.map(item => (
                 <div key={item.name} className={styles.protocolCard}>
@@ -3768,7 +3799,7 @@ export default function MeniskusPage() {
             </div>
           </Section>
 
-          <Section id="grading" eyebrow="05" title={copy.grading.title} lead={copy.grading.lead}>
+          <Section id="grading" eyebrow="05" title={copy.grading.title} lead={copy.grading.lead} defaultOpen={!isMobile}>
             <div className={styles.gradingFigure}>
               <ImageFigure src="/meniskus/lotysch-grading.png" alt={copy.grading.title} zoomable zoomLabel={copy.zoomImage} onZoom={() => setPreviewImage({ src: '/meniskus/lotysch-grading.png', alt: copy.grading.title })} />
             </div>
@@ -3783,12 +3814,12 @@ export default function MeniskusPage() {
           </Section>
 
 
-          <Section id="risstypen" eyebrow="07" title={copy.tearTypes.title} lead={copy.tearTypes.lead}>
+          <Section id="risstypen" eyebrow="07" title={copy.tearTypes.title} lead={copy.tearTypes.lead} defaultOpen={!isMobile}>
             <Table headers={copy.tearTypes.tableHeaders} rows={copy.tearTypes.tableRows} className={styles.tearTypeTable} />
             <Callout type="cave" label={copy.tearTypes.caveTitle}>{copy.tearTypes.caveText}</Callout>
           </Section>
 
-          <Section id="discoider" eyebrow="08" title={copy.discoid.title} lead={copy.discoid.lead}>
+          <Section id="discoider" eyebrow="08" title={copy.discoid.title} lead={copy.discoid.lead} defaultOpen={!isMobile}>
             <div className={styles.discoidStats}>
               {copy.discoid.stats.map(stat => (
                 <div key={stat.label} className={styles.discoidStatCard}>
@@ -3811,12 +3842,13 @@ export default function MeniskusPage() {
             eyebrow="09"
             title={<>{copy.therapy.titlePrefix || copy.therapy.title}: <span className={styles.greenTitle}>{copy.therapy.saveText || 'Save the Meniscus'}</span></>}
             lead={copy.therapy.lead}
+            defaultOpen={!isMobile}
           >
             <Table headers={copy.therapy.tableHeaders} rows={copy.therapy.tableRows} />
             <Callout label={copy.keyLabel}>{copy.therapy.key}</Callout>
           </Section>
 
-          <Section id="fallbeispiele" eyebrow="07" title={copy.cases.title} lead={copy.cases.lead}>
+          <Section id="fallbeispiele" eyebrow="07" title={copy.cases.title} lead={copy.cases.lead} defaultOpen={!isMobile}>
             <div className={styles.caseGrid}>
               {copy.cases.items.map(item => (
                 <a key={item.title} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}>
@@ -3836,7 +3868,7 @@ export default function MeniskusPage() {
             </div>
           </Section>
 
-          <Section id="lernvideo" eyebrow="10" title={copy.video.title} lead="">
+          <Section id="lernvideo" eyebrow="10" title={copy.video.title} lead="" defaultOpen={!isMobile}>
             <div className={styles.videoCard}>
               <div className={styles.videoFrameWrap}>
                 <iframe
@@ -3855,7 +3887,7 @@ export default function MeniskusPage() {
             </div>
           </Section>
 
-          <Section id="takehome" eyebrow="11" title={takeHomeCopy.title} lead="" className={styles.takeHomeSection}>
+          <Section id="takehome" eyebrow="11" title={takeHomeCopy.title} lead="" className={styles.takeHomeSection} defaultOpen={!isMobile}>
             <div className={styles.takeHomeBox}>
               <p className={styles.takeHomeIntro}>{takeHomeCopy.lead}</p>
               <div className={styles.takeHomeList}>
