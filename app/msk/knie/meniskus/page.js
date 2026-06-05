@@ -159,15 +159,15 @@ const MENISKUS_STYLES = `.page {
 .learnActionDisabled {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  padding: 10px 15px;
+  gap: 10px;
+  padding: 11px 17px;
   border-radius: 999px;
   text-decoration: none;
-  font-weight: 850;
-  font-size: 13px;
-  border: 1px solid transparent;
-  transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s, filter 0.18s, background 0.18s;
-  min-height: 42px;
+  font-weight: 900;
+  font-size: 14px;
+  border: 1px solid #fed7aa;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+  min-height: 44px;
 }
 
 .learnAction span:first-child,
@@ -177,33 +177,32 @@ const MENISKUS_STYLES = `.page {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.62);
-}
-
-.learnAction:hover {
-  transform: translateY(-1px);
-  filter: saturate(1.04);
+  background: rgba(255, 255, 255, 0.70);
 }
 
 .learnActionMcq,
 .learnActionFlash,
 .learnActionDisabled {
   color: #9a3412;
-  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 72%, #fff7ed 100%);
-  border-color: rgba(253, 186, 116, 0.78);
-  box-shadow: 0 8px 18px rgba(249, 115, 22, 0.10);
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  box-shadow: 0 6px 16px rgba(249, 115, 22, 0.08);
+}
+
+.learnAction:hover {
+  transform: translateY(-1px);
 }
 
 .learnActionMcq:hover,
 .learnActionFlash:hover {
+  color: #7c2d12;
   border-color: #fb923c;
-  background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 72%, #e0f2fe 100%);
+  background: linear-gradient(135deg, #ffedd5 0%, #e0f2fe 100%);
   box-shadow: 0 12px 24px rgba(249, 115, 22, 0.16);
 }
 
 .learnActionDisabled {
   cursor: not-allowed;
-  opacity: 0.88;
+  opacity: 0.86;
 }
 
 .learnActionDisabled small {
@@ -284,7 +283,7 @@ const MENISKUS_STYLES = `.page {
   margin: 0 auto;
   padding: 22px 28px 70px;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 260px;
+  grid-template-columns: 260px minmax(0, 1fr);
   gap: 24px;
   align-items: start;
   direction: ltr;
@@ -299,7 +298,7 @@ const MENISKUS_STYLES = `.page {
   top: 88px;
   border-radius: 24px;
   padding: 16px;
-  order: 2;
+  order: 0;
 }
 
 [dir='rtl'] .sidebar {
@@ -322,10 +321,11 @@ const MENISKUS_STYLES = `.page {
   text-transform: uppercase;
 }
 
-.sideTitleButton {
+.sideToggleButton {
   width: 100%;
-  border: 0;
-  background: transparent;
+  border: 1px solid #fed7aa;
+  background: linear-gradient(135deg, #fff7ed, #ffffff);
+  color: #c2410c;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -333,17 +333,22 @@ const MENISKUS_STYLES = `.page {
   gap: 10px;
   font-family: inherit;
   text-align: start;
+  border-radius: 14px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  font-weight: 900;
+  font-size: 13px;
 }
 
 .sideCaret {
   display: inline-grid;
   place-items: center;
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   border-radius: 999px;
-  background: #fff7ed;
+  background: #ffedd5;
   color: #f97316;
-  font-size: 13px;
+  font-size: 12px;
   transition: transform 0.18s ease;
 }
 
@@ -910,9 +915,10 @@ const MENISKUS_STYLES = `.page {
 
 
 .takeHomeSection {
-  border: 1px solid rgba(249, 115, 22, 0.28);
+  border: 1px solid rgba(249, 115, 22, 0.22);
   background:
-    linear-gradient(180deg, rgba(255, 247, 237, 0.94), rgba(255, 255, 255, 0.96));
+    radial-gradient(circle at top left, rgba(224, 242, 254, 0.78), transparent 24rem),
+    linear-gradient(180deg, #fffaf3 0%, #ffffff 100%);
 }
 
 .takeHomeSection .sectionHead {
@@ -924,26 +930,28 @@ const MENISKUS_STYLES = `.page {
   align-items: center;
   justify-content: center;
   gap: 12px;
-  padding: 11px 24px;
+  padding: 8px 22px 10px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #0d1b2a 0%, #1e3a5f 52%, #f97316 100%);
-  color: #ffffff;
+  background: #ffffff;
+  color: #c2410c;
+  border: 1px solid #fed7aa;
   font-family: var(--font-fraunces, Georgia, serif);
   font-size: clamp(24px, 3vw, 36px);
-  font-weight: 900;
+  font-weight: 950;
   letter-spacing: -0.025em;
-  text-transform: none;
-  box-shadow: 0 18px 34px rgba(13, 27, 42, 0.22);
+  box-shadow: 0 14px 28px rgba(249, 115, 22, 0.10);
 }
 
 .takeHomeSection .sectionHead h2::before {
   content: '☾';
-  font-size: 1.05em;
+  color: #38bdf8;
+  font-size: 0.95em;
 }
 
 .takeHomeSection .sectionHead h2::after {
   content: '☽';
-  font-size: 1.05em;
+  color: #f97316;
+  font-size: 0.95em;
 }
 
 .takeHomeBox {
@@ -952,12 +960,12 @@ const MENISKUS_STYLES = `.page {
   border-radius: 30px;
   padding: 28px;
   background:
-    radial-gradient(circle at top right, rgba(249, 115, 22, 0.34), transparent 22rem),
-    radial-gradient(circle at bottom left, rgba(22, 163, 74, 0.26), transparent 20rem),
-    linear-gradient(135deg, #0d1b2a 0%, #152842 54%, #10251d 100%);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 28px 70px rgba(13, 27, 42, 0.24);
+    radial-gradient(circle at top right, rgba(249, 115, 22, 0.16), transparent 22rem),
+    radial-gradient(circle at bottom left, rgba(14, 165, 233, 0.14), transparent 20rem),
+    linear-gradient(135deg, #ffffff 0%, #fff7ed 58%, #f0f9ff 100%);
+  color: #172033;
+  border: 1px solid rgba(253, 186, 116, 0.70);
+  box-shadow: 0 22px 52px rgba(23, 32, 51, 0.10);
 }
 
 .takeHomeBox::before {
@@ -967,7 +975,7 @@ const MENISKUS_STYLES = `.page {
   width: 92px;
   height: 92px;
   border-radius: 28px;
-  background: linear-gradient(135deg, rgba(249, 115, 22, 0.35), rgba(22, 163, 74, 0.24));
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.18), rgba(14, 165, 233, 0.14));
   transform: rotate(14deg);
 }
 
@@ -980,10 +988,9 @@ const MENISKUS_STYLES = `.page {
   z-index: 1;
   margin: 0 0 18px;
   max-width: 780px;
-  color: rgba(255, 255, 255, 0.82);
-  font-family: var(--font-manrope, system-ui, sans-serif);
-  font-size: 15px;
-  line-height: 1.75;
+  color: #425066;
+  font-size: 16px;
+  line-height: 1.85;
   font-weight: 750;
 }
 
@@ -1001,9 +1008,9 @@ const MENISKUS_STYLES = `.page {
   align-items: start;
   padding: 16px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.10);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 10px 24px rgba(23, 32, 51, 0.05);
 }
 
 .takeHomeNumber {
@@ -1012,30 +1019,29 @@ const MENISKUS_STYLES = `.page {
   display: inline-grid;
   place-items: center;
   border-radius: 16px;
-  background: linear-gradient(135deg, #f97316, #fb923c);
-  color: #fff;
+  background: linear-gradient(135deg, #ffedd5, #e0f2fe);
+  color: #c2410c;
+  border: 1px solid #fed7aa;
   font-size: 14px;
   font-weight: 950;
-  box-shadow: 0 12px 24px rgba(249, 115, 22, 0.28);
 }
 
 .takeHomeItem h3 {
-  margin: 0 0 7px;
-  color: #fed7aa;
+  margin: 0 0 6px;
+  color: #075985;
   font-family: var(--font-fraunces, Georgia, serif);
   font-size: 19px;
-  line-height: 1.3;
-  font-weight: 850;
+  line-height: 1.35;
+  font-weight: 950;
   letter-spacing: -0.015em;
 }
 
 .takeHomeItem p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.90);
+  color: #334155;
   font-family: var(--font-manrope, system-ui, sans-serif);
-  font-size: 15px;
-  line-height: 1.7;
-  font-weight: 720;
+  line-height: 1.78;
+  font-weight: 780;
   white-space: pre-line;
 }
 
@@ -1043,6 +1049,7 @@ const MENISKUS_STYLES = `.page {
   grid-template-columns: 66px 1fr;
   text-align: right;
 }
+
 
 [dir='rtl'] .breadcrumb,
 [dir='rtl'] .heroText,
@@ -2544,8 +2551,9 @@ function Sidebar({ sections, toc, activeId, onClick }) {
   const [isOpen, setIsOpen] = useState(true)
   return (
     <aside className={styles.sidebar}>
-      <button type="button" className={`${styles.sideTitle} ${styles.sideTitleButton}`} onClick={() => setIsOpen(value => !value)} aria-expanded={isOpen}>
-        <span>{toc}</span>
+      <div className={styles.sideTitle}>{toc}</div>
+      <button type="button" className={styles.sideToggleButton} onClick={() => setIsOpen(value => !value)} aria-expanded={isOpen} aria-label={toc}>
+        <span>☰</span>
         <span className={`${styles.sideCaret} ${isOpen ? styles.sideCaretOpen : ''}`}>⌄</span>
       </button>
       <nav className={`${styles.sideNav} ${isOpen ? '' : styles.sideNavCollapsed}`}>
