@@ -2076,6 +2076,399 @@ html[data-theme='dark'] .videoFrameWrap {
   background: #020617 !important;
 }
 
+
+/* ── MOBILE POLISH: iPhone / small screens ─────────────────────────────── */
+@media (max-width: 760px) {
+  .page {
+    padding-top: 64px;
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+    overflow-x: hidden;
+  }
+
+  .header {
+    padding: 16px 12px 10px;
+  }
+
+  .breadcrumb {
+    gap: 6px;
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .heroGrid {
+    gap: 12px;
+  }
+
+  .heroText {
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .heroText::before {
+    width: 68px;
+    height: 68px;
+    border-radius: 22px;
+    opacity: 0.65;
+  }
+
+  .heroText::after {
+    left: 20px;
+    right: 20px;
+    height: 4px;
+  }
+
+  .sourceBadge {
+    margin-bottom: 12px;
+    padding: 7px 11px;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  .heroText h1 {
+    font-size: clamp(34px, 12vw, 48px);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+    overflow-wrap: anywhere;
+  }
+
+  .heroText p {
+    margin: 14px 0 18px;
+    font-size: 15px;
+    line-height: 1.68;
+  }
+
+  .heroActions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .learnAction,
+  .learnActionDisabled {
+    width: 100%;
+    min-height: 46px;
+    justify-content: flex-start;
+    padding: 10px 13px;
+    font-size: 13px;
+  }
+
+  .heroStats {
+    padding: 10px;
+    border-radius: 20px;
+  }
+
+  .heroStatCard {
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .heroStatCard strong {
+    font-size: 26px;
+  }
+
+  .mobileTocBar {
+    top: 64px;
+    padding: 8px 12px;
+  }
+
+  .mobileTocButton {
+    min-height: 50px;
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 9px;
+    border-radius: 16px;
+    padding: 9px 11px;
+  }
+
+  .mobileTocButton > span:not(.mobileTocIcon) {
+    min-width: 0;
+  }
+
+  .mobileTocButton strong {
+    grid-column: 1 / -1;
+    justify-self: stretch;
+    white-space: normal;
+    text-overflow: clip;
+    line-height: 1.35;
+    font-size: 12px;
+    margin-top: 1px;
+  }
+
+  [dir='rtl'] .mobileTocButton,
+  [dir='rtl'] .mobileTocButton strong {
+    text-align: right;
+  }
+
+  .mobileTocOverlay {
+    padding: 12px;
+  }
+
+  .mobileTocPanel {
+    width: 100%;
+    max-height: min(82vh, 640px);
+    border-radius: 24px 24px 20px 20px;
+    padding: 12px;
+  }
+
+  .mobileTocPanel .sideItem {
+    min-height: 46px;
+    border-radius: 15px;
+    font-size: 14px;
+  }
+
+  .layout,
+  [dir='rtl'] .layout {
+    padding: 12px 12px 28px;
+    gap: 18px;
+  }
+
+  .main {
+    gap: 16px;
+  }
+
+  .section {
+    padding: 16px;
+    border-radius: 20px;
+    scroll-margin-top: 140px;
+  }
+
+  .sectionHead {
+    margin: -16px -16px 14px;
+  }
+
+  .sectionToggle {
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 16px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .sectionHead h2 {
+    font-size: clamp(22px, 7vw, 30px);
+    line-height: 1.16;
+    letter-spacing: -0.02em;
+    overflow-wrap: anywhere;
+  }
+
+  .sectionToggleIcon {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    margin-top: 2px;
+  }
+
+  .sectionLead,
+  .card p,
+  .cardAccent p,
+  .cardDanger p,
+  .normalCard p,
+  .protocolCard p,
+  .criteriaCard p,
+  .bulletItem p,
+  .calloutBody,
+  .subSectionLead,
+  .takeHomeIntro,
+  .takeHomeItem p {
+    font-size: 15px;
+    line-height: 1.72;
+  }
+
+  .splitGrid,
+  .zoneGrid,
+  .protocolGrid,
+  .criteriaGrid,
+  .caseGrid,
+  .discoidStats {
+    gap: 10px;
+  }
+
+  .card,
+  .cardAccent,
+  .cardDanger,
+  .normalCard,
+  .protocolCard,
+  .criteriaCard,
+  .figure,
+  .videoCard {
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .bulletCard {
+    padding: 8px;
+    border-radius: 16px;
+  }
+
+  .bulletItem {
+    grid-template-columns: 30px minmax(0, 1fr);
+    gap: 9px;
+    padding: 11px;
+    border-radius: 14px;
+  }
+
+  .bulletItem span {
+    width: 28px;
+    height: 28px;
+  }
+
+  .figure img {
+    max-height: 260px;
+    border-radius: 14px;
+  }
+
+  .gradingFigure .figure img {
+    max-height: 360px;
+  }
+
+  .figureZoomButton span {
+    right: 10px;
+    bottom: 10px;
+    padding: 7px 10px;
+    font-size: 11px;
+  }
+
+  [dir='rtl'] .figureZoomButton span {
+    right: auto;
+    left: 10px;
+  }
+
+  .tableWrap {
+    margin: 12px 0;
+    border-radius: 16px;
+    overflow-x: visible;
+  }
+
+  .table {
+    min-width: 0 !important;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  .table th {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    padding: 10px 8px;
+    font-size: 10.5px;
+    letter-spacing: 0.03em;
+    line-height: 1.35;
+  }
+
+  .table td {
+    padding: 10px 8px;
+    font-size: 12.5px;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .gradeTable th:first-child,
+  .gradeTable td:first-child {
+    width: 52px;
+    min-width: 0;
+  }
+
+  .extendedDetails summary {
+    padding: 13px 14px;
+  }
+
+  .extendedDetailsContent {
+    padding: 0 8px 8px;
+  }
+
+  .takeHomeSection .sectionHead h2 {
+    width: 100%;
+    padding: 8px 12px 9px;
+    font-size: clamp(22px, 7vw, 29px);
+  }
+
+  .takeHomeBox {
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .takeHomeItem,
+  [dir='rtl'] .takeHomeItem {
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 10px;
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  .takeHomeNumber {
+    width: 44px;
+    height: 38px;
+    border-radius: 13px;
+  }
+
+  .caseImage {
+    height: auto;
+    max-height: 220px;
+    width: 100%;
+    object-fit: contain;
+    padding: 8px;
+  }
+
+  .caseBody {
+    padding: 14px;
+  }
+
+  .imageModal {
+    padding: 8px;
+  }
+
+  .imageModalContent img {
+    max-height: 78vh;
+  }
+
+  .mobileMcqFab {
+    left: 12px;
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    min-height: 52px;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .heroText {
+    padding: 18px;
+  }
+
+  .heroText h1 {
+    font-size: clamp(32px, 12vw, 44px);
+  }
+
+  .section {
+    padding: 14px;
+  }
+
+  .sectionHead {
+    margin: -14px -14px 12px;
+  }
+
+  .sectionToggle {
+    padding: 13px 14px;
+  }
+
+  .sectionHead h2 {
+    font-size: clamp(21px, 7.2vw, 28px);
+  }
+
+  .table th {
+    padding: 9px 6px;
+    font-size: 10px;
+  }
+
+  .table td {
+    padding: 9px 6px;
+    font-size: 11.5px;
+  }
+
+  .gradeTable th:first-child,
+  .gradeTable td:first-child {
+    width: 46px;
+  }
+}
+
 `
 
 const CONTENT = {
