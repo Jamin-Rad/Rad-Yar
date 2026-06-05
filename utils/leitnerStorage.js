@@ -1,22 +1,28 @@
 const STORAGE_KEY = 'radyar_leitner_flashcards_v1'
 
-// Alle Labels jetzt dreisprachig (DE / EN / FA)
+// label bleibt ein String → bestehende Seiten rendern ihn ohne Fehler
+// Übersetzungen separat via getBoxLabel(boxNum, lang)
+const LEITNER_LABELS = {
+  de: ['Box 1', 'Box 2', 'Box 3', 'Box 4', 'Box 5', '3 Monate',  '6 Monate',  '12 Monate'],
+  en: ['Box 1', 'Box 2', 'Box 3', 'Box 4', 'Box 5', '3 months',  '6 months',  '12 months'],
+  fa: ['جعبه ۱','جعبه ۲','جعبه ۳','جعبه ۴','جعبه ۵','۳ ماه',    '۶ ماه',     '۱۲ ماه'  ],
+}
+
 export const LEITNER_STEPS = [
-  { box: 1, days: 1,   label: { de: 'Box 1',     en: 'Box 1',     fa: 'جعبه ۱'    } },
-  { box: 2, days: 3,   label: { de: 'Box 2',     en: 'Box 2',     fa: 'جعبه ۲'    } },
-  { box: 3, days: 7,   label: { de: 'Box 3',     en: 'Box 3',     fa: 'جعبه ۳'    } },
-  { box: 4, days: 14,  label: { de: 'Box 4',     en: 'Box 4',     fa: 'جعبه ۴'    } },
-  { box: 5, days: 30,  label: { de: 'Box 5',     en: 'Box 5',     fa: 'جعبه ۵'    } },
-  { box: 6, days: 90,  label: { de: '3 Monate',  en: '3 months',  fa: '۳ ماه'     } },
-  { box: 7, days: 180, label: { de: '6 Monate',  en: '6 months',  fa: '۶ ماه'     } },
-  { box: 8, days: 365, label: { de: '12 Monate', en: '12 months', fa: '۱۲ ماه'    } },
+  { box: 1, days: 1,   label: 'Box 1'     },
+  { box: 2, days: 3,   label: 'Box 2'     },
+  { box: 3, days: 7,   label: 'Box 3'     },
+  { box: 4, days: 14,  label: 'Box 4'     },
+  { box: 5, days: 30,  label: 'Box 5'     },
+  { box: 6, days: 90,  label: '3 Monate'  },
+  { box: 7, days: 180, label: '6 Monate'  },
+  { box: 8, days: 365, label: '12 Monate' },
 ]
 
-// Hilfsfunktion: Label für eine Box und Sprache ermitteln
+// Übersetzter Box-Label — für neue Seiten (flashcard review)
 export function getBoxLabel(boxNum, lang = 'de') {
-  const step = LEITNER_STEPS[boxNum - 1]
-  if (!step) return `Box ${boxNum}`
-  return step.label[lang] ?? step.label.de
+  const idx = (boxNum ?? 1) - 1
+  return (LEITNER_LABELS[lang] ?? LEITNER_LABELS.de)[idx] ?? `Box ${boxNum}`
 }
 
 const todayStart = () => {
@@ -54,9 +60,8 @@ export function saveLeitnerState(state) {
 }
 
 /**
- * Initialisiert eine Karte im Leitner-State, wenn sie noch nicht existiert.
- * WICHTIG: seenCount wird hier NICHT mehr erhöht (Fix: zählt nur echte Reviews).
- * Aufruf: beim ersten Anzeigen der Karte (zur Initialisierung).
+ * Initialisiert eine Karte im Leitner-State.
+ * seenCount wird hier NICHT erhöht — nur in answerCard().
  */
 export function ensureCardStarted(cardId) {
   const state = loadLeitnerState()
@@ -71,7 +76,7 @@ export function ensureCardStarted(cardId) {
       dueAt: todayStart().toISOString(),
       correctCount: 0,
       wrongCount: 0,
-      seenCount: 0,  // wird nur in answerCard() gezählt
+      seenCount: 0,
     }
     saveLeitnerState(state)
   }
@@ -79,8 +84,7 @@ export function ensureCardStarted(cardId) {
 }
 
 /**
- * Beantwortet eine Karte und verschiebt sie in die entsprechende Leitner-Box.
- * seenCount wird hier (und nur hier) erhöht → entspricht echten Reviews.
+ * Beantwortet eine Karte — seenCount wird nur hier gezählt.
  */
 export function answerCard(cardId, knew) {
   const state = loadLeitnerState()
@@ -104,7 +108,7 @@ export function answerCard(cardId, knew) {
     lastSeenAt: nowIso(),
     correctCount: (current.correctCount || 0) + (knew ? 1 : 0),
     wrongCount:   (current.wrongCount   || 0) + (knew ? 0 : 1),
-    seenCount:    (current.seenCount    || 0) + 1,   // ← hier gezählt
+    seenCount:    (current.seenCount    || 0) + 1,
     dueAt: nextBox > 8 ? null : addDays(LEITNER_STEPS[nextBox - 1].days),
   }
 
