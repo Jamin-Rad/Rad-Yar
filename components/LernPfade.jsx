@@ -9,6 +9,7 @@ const COLORS = [
   { bg: '#fff5eb', border: '#fed7aa', num: '#f97316', icon: '#fff5eb', iconBorder: '#fdba74' },
   { bg: '#f0f9ff', border: '#bae6fd', num: '#0ea5e9', icon: '#f0f9ff', iconBorder: '#7dd3fc' },
   { bg: '#f0fdf4', border: '#bbf7d0', num: '#10b981', icon: '#f0fdf4', iconBorder: '#6ee7b7' },
+  { bg: '#f8fafc', border: '#c7d2fe', num: '#2563eb', icon: '#eff6ff', iconBorder: '#93c5fd' },
 ]
 
 const UEBEN_MODAL = {
@@ -82,6 +83,7 @@ export default function LernPfade() {
     if (i === 0) { router.push('/lernen'); return }
     if (i === 1) { setModal('ueben'); return }
     if (i === 2) { setModal('pruefung'); return }
+    if (i === 3) { router.push('/flashcards'); return }
   }
 
   return (
