@@ -42,6 +42,13 @@ export const translations = {
         desc: 'Gezieltes Training für Facharztprüfung und Boards – mit Prüfungsfragen, Zeitlimits und detaillierter Fehleranalyse.',
         topics: ['Schwerpunktthemen', 'Timed Tests', 'Fehleranalyse'],
       },
+      {
+        icon: '🧠',
+        num: '04 — Flashcards',
+        title: 'Flashcards',
+        desc: 'Klassisches Leitner-System mit lokalen Wiederholungen: gelesene Karten sammeln, fällige Karten wiederholen und langfristig sichern.',
+        topics: ['Leitner', 'Wiederholung', 'Local Storage'],
+      },
     ],
     fachNames: {
       Neuroradiologie: 'Kopf',
@@ -98,6 +105,13 @@ export const translations = {
         desc: 'Targeted training for board exams – with timed tests and detailed error analysis.',
         topics: ['Key Topics', 'Timed Tests', 'Error Analysis'],
       },
+      {
+        icon: '🧠',
+        num: '04 — Flashcards',
+        title: 'Flashcards',
+        desc: 'Classic Leitner review with local storage: collect studied cards, review due cards, and build long-term memory.',
+        topics: ['Leitner', 'Review', 'Local Storage'],
+      },
     ],
     fachNames: {
       Neuroradiologie: 'Head',
@@ -153,6 +167,13 @@ export const translations = {
         title: 'آمادگی برای آزمون',
         desc: 'تمرین هدفمند با سوالات آزمون، محدودیت زمانی و تحلیل دقیق خطاها.',
         topics: ['موضوعات کلیدی', 'تست زمان‌دار', 'آنالیز خطا'],
+      },
+      {
+        icon: '🧠',
+        num: '۰۴ — فلش‌کارت',
+        title: 'فلش‌کارت',
+        desc: 'مرور با سیستم قدیمی لایتنر و ذخیره در حافظه مرورگر: کارت‌های خوانده‌شده جمع می‌شوند و طبق زمان‌بندی برمی‌گردند.',
+        topics: ['لایتنر', 'مرور زمان‌دار', 'Local Storage'],
       },
     ],
     fachNames: {

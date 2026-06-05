@@ -536,7 +536,7 @@ export const CURRICULUM = [
           { id: 'hand-mrt',        title: 'Hand MRT',                          tags:['MRT'],            diff:2 },
           { id: 'knie',            title: 'Knie',                              tags:['MRT'],            diff:2,
             sub: [
-              { id: 'meniskus',       title: 'Meniskus', link: '/msk/knie/meniskus', mcqLink: '/msk/knie/meniskus/mcq', ready: true,       tags:['MRT'], diff:2 },
+              { id: 'meniskus',       title: 'Meniskus', link: '/msk/knie/meniskus', mcqLink: '/msk/knie/meniskus/mcq', flashcardLink: '/flashcards/meniskus', fallStatus: 'building', ready: true,       tags:['MRT'], diff:2 },
               { id: 'knie-ligamente', title: 'Knie-Ligamente',                                  tags:['MRT'], diff:2 },
               { id: 'patella',        title: 'Patella',                                          tags:['MRT','Rö'], diff:2 },
             ]
