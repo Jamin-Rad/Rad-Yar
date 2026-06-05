@@ -426,7 +426,7 @@ const MENISKUS_STYLES = `.page {
 }
 
 .sectionHead {
-  margin-bottom: 18px;
+  margin: -28px -28px 18px;
 }
 
 .sectionToggle {
@@ -435,20 +435,17 @@ const MENISKUS_STYLES = `.page {
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  padding: 16px 18px;
-  border-radius: 22px;
-  border: 1px solid rgba(253, 186, 116, 0.70);
-  background: linear-gradient(135deg, rgba(255, 247, 237, 0.96), rgba(240, 249, 255, 0.90));
-  box-shadow: 0 10px 26px rgba(23, 32, 51, 0.045);
+  padding: 18px 28px;
+  border-radius: 28px 28px 0 0;
+  border: 0;
+  background: linear-gradient(135deg, rgba(255, 247, 237, 0.98), rgba(240, 249, 255, 0.96));
+  box-shadow: none;
   cursor: pointer;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+  transition: background 0.18s ease, color 0.18s ease;
 }
 
 .sectionToggle:hover {
-  transform: translateY(-1px);
-  border-color: rgba(249, 115, 22, 0.55);
-  box-shadow: 0 14px 30px rgba(249, 115, 22, 0.09);
-  background: linear-gradient(135deg, #fff7ed, #e0f2fe);
+  background: linear-gradient(135deg, #ffedd5, #e0f2fe);
 }
 
 .sectionTitleText {
@@ -503,8 +500,8 @@ const MENISKUS_STYLES = `.page {
   letter-spacing: -0.03em;
 }
 
-.sectionHead p {
-  margin: 10px 0 0;
+.sectionLead {
+  margin: 0 0 18px;
   color: #536174;
   font-size: 16px;
   line-height: 1.75;
@@ -1399,7 +1396,12 @@ const MENISKUS_STYLES = `.page {
   }
 
   .sectionHead {
-    margin-bottom: 16px;
+    margin: -18px -18px 16px;
+  }
+
+  .sectionToggle {
+    padding: 16px 18px;
+    border-radius: 22px 22px 0 0;
   }
 
   .sectionHead h2 {
@@ -1407,7 +1409,7 @@ const MENISKUS_STYLES = `.page {
     line-height: 1.12;
   }
 
-  .sectionHead p,
+  .sectionLead,
   .card p,
   .cardAccent p,
   .cardDanger p,
@@ -2608,12 +2610,12 @@ function Section({ id, eyebrow, title, lead, children, className = '' }) {
           <div className={styles.sectionTitleText}>
             <span className={styles.eyebrow}>{eyebrow}</span>
             <h2>{title}</h2>
-            {lead && <p>{lead}</p>}
           </div>
           <span className={`${styles.sectionToggleIcon} ${isOpen ? styles.sectionToggleIconOpen : ''}`}>⌄</span>
         </div>
       </div>
       <div className={`${styles.sectionContent} ${isOpen ? '' : styles.sectionContentCollapsed}`.trim()}>
+        {lead && <p className={styles.sectionLead}>{lead}</p>}
         {children}
       </div>
     </section>
