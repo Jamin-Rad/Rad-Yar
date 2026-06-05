@@ -1,797 +1,2595 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
-import styles from './page.module.css'
 
-const QUESTIONS = {
-  "de": [
-    {
-      "id": 1,
-      "question": "Warum ist der Innenmeniskus (Meniscus medialis) im Vergleich zum Außenmeniskus signifikant häufiger von traumatischen Rissen betroffen?",
-      "options": [
-        {
-          "id": "A",
-          "text": "Er ist durch seine C-Form anatomisch instabiler geformt."
-        },
-        {
-          "id": "B",
-          "text": "Er ist fest mit der Gelenkkapsel und dem medialen Seitenband verwachsen und dadurch weniger beweglich."
-        },
-        {
-          "id": "C",
-          "text": "Er besitzt eine rein avaskuläre Versorgung über die gesamte Breite."
-        },
-        {
-          "id": "D",
-          "text": "Er artikuliert im Gegensatz zum Außenmeniskus nicht mit den Femurkondylen."
-        }
-      ],
-      "correct": "B",
-      "explanation": "A ist falsch: Die C-Form des Innenmeniskus und die O-Form des Außenmeniskus sind normale anatomische Varianten, die sich an die Form der jeweiligen Tibiaplateaus anpassen. Sie bedingen keine intrinsische mechanische Instabilität des Gewebes.\n\nB ist richtig: Die feste ligamentäre Fixierung des Innenmeniskus an der Gelenkkapsel und dem Innenband (MCL) schränkt seine Mobilität stark ein. Bei plötzlichen Rotations- oder Scherbewegungen kann er – anders als der mobile Außenmeniskus – nicht flexibel ausweichen und reißt deutlich schneller.\n\nC ist falsch: Beide Menisken weisen eine ähnliche vaskuläre Architektur auf. Sie sind in der Peripherie (rote Zone) gut durchblutet und werden nach zentral hin avaskulär. Der Innenmeniskus ist nicht komplett gefäßfrei.\n\nD ist falsch: Beide Menisken artikulieren proximal mit den Femurkondylen und distal mit dem Tibiaplateau, um ihre Hauptfunktion der Kraftübertragung und Stoßdämpfung im Gelenk zu erfüllen."
-    },
-    {
-      "id": 2,
-      "question": "Welches Kriterium muss laut der etablierten „Two-slice-touch“-Regel erfüllt sein, um die Diagnose eines Meniskusrisses im MRT mit hoher Spezifität zu sichern?",
-      "options": [
-        {
-          "id": "A",
-          "text": "Das Signal muss sowohl die superiore als auch die inferiore Gelenkfläche berühren."
-        },
-        {
-          "id": "B",
-          "text": "Die Signalsteigerung muss auf mindestens zwei aufeinanderfolgenden Schichtbildern mit Oberflächenkontakt nachweisbar sein."
-        },
-        {
-          "id": "C",
-          "text": "Der Riss muss in zwei unterschiedlichen Sequenzen (z. B. T1w und T2w) sichtbar sein."
-        },
-        {
-          "id": "D",
-          "text": "Die Läsion muss eine Ausdehnung von mindestens 3 mm in der Sagittalebene aufweisen."
-        }
-      ],
-      "correct": "B",
-      "explanation": "A ist falsch: Ein Riss muss nicht die gesamte Höhe des Meniskus durchbauen. Es reicht völlig aus, wenn das pathologische Signal entweder nur die obere (superiore) oder nur die untere (inferiore) Gelenkfläche schneidet.\n\nB ist richtig: Die Regel besagt, dass die intrameniskale Signalsteigerung auf mindestens zwei direkt benachbarten Schnittbildern (Slices) Kontakt zur Oberfläche haben muss. Dies eliminiert das Risiko, ein rein technisches Rauschen oder einen Volumenmitteleffekt auf einer Einzelschicht fälschlicherweise als Riss zu interpretieren.\n\nC ist falsch: Obwohl Risse idealerweise in mehreren Sequenzen und Ebenen (sagittal/koronar) evaluiert werden, bezieht sich die spezifische „Two-slice-touch“-Regel rein auf die Kontinuität über aufeinanderfolgende Schichten derselben Sequenz.\n\nD ist falsch: Die Regel ist unabhängig von einer absoluten Millimeter-Metrik. Sie definiert sich ausschließlich über die Anzahl der betroffenen Schichten, auch wenn die Standard-Schnittdicke im Protokoll meist 3 mm beträgt."
-    },
-    {
-      "id": 3,
-      "question": "In welcher vaskulären Zone zeigt eine Meniskusruptur die besten biologischen Voraussetzungen für eine erfolgreiche Meniskusnaht?",
-      "options": [
-        {
-          "id": "A",
-          "text": "Weiße Zone (Zone III)"
-        },
-        {
-          "id": "B",
-          "text": "Rot-Weiße Zone (Zone II)"
-        },
-        {
-          "id": "C",
-          "text": "Rote Zone (Zone I)"
-        },
-        {
-          "id": "D",
-          "text": "Meniskuswurzel (Root)"
-        }
-      ],
-      "correct": "C",
-      "explanation": "A ist falsch: Die weiße Zone bildet das zentral gelegene Drittel des Meniskus. Sie ist komplett avaskulär (gefäßfrei) und wird rein per Diffusion durch die Synovialflüssigkeit ernährt. Eine Naht bleibt hier aufgrund fehlender Heilungspotenz fast immer erfolglos.\n\nB ist falsch: Die rot-weiße Zone ist ein Übergangsbereich (ca. 3–5 mm von der Kapsel entfernt). Hier liegt nur noch eine sehr eingeschränkte, kapillare Blutversorgung vor, weshalb die Heilungstendenz nach einer Naht unsicher ist.\n\nC ist richtig: Die rote Zone (Zone I) umfasst den kapsennahen Außenrand (<3 mm). Sie wird direkt über den perimeniskalen Plexus reichlich mit Blut versorgt. Die biologischen Voraussetzungen für die Einwanderung von Fibroblasten und die Gewebeheilung sind hier optimal, was eine Refixation (Naht) begünstigt.\n\nD ist falsch: Die Meniskuswurzeln (Roots) stellen die ligamentäre Verankerung der Meniskushörner am Tibiaplateau dar. Sie beschreiben keine vaskuläre Zone des funktionellen Meniskuskörpers."
-    },
-    {
-      "id": 4,
-      "question": "Welche MRT-Sequenz eignet sich laut Protokoll am besten für den definitiven Nachweis von akuten Meniskusrissen, begleitenden Knochenödemen und Kontinuitätsunterbrechungen der Bänder?",
-      "options": [
-        {
-          "id": "A",
-          "text": "Native T1-Wichtung ohne Fettsättigung."
-        },
-        {
-          "id": "B",
-          "text": "T2-gewichtete oder PD-fettgesättigte (fs) Sequenzen."
-        },
-        {
-          "id": "C",
-          "text": "3D-Gradienechosequenzen mit einer Schichtdicke von 6 mm."
-        },
-        {
-          "id": "D",
-          "text": "T2*-gewichtete Phasenkontrast-Angiographie."
-        }
-      ],
-      "correct": "B",
-      "explanation": "A ist falsch: Die native T1-Wichtung bietet zwar eine exzellente anatomische Übersicht und zeigt chronische Fibrosen gut an, ist jedoch nicht flüssigkeitssensitiv. Akuter Riss-induzierter Flüssigkeitseinstrom oder Knochenmarködeme lassen sich darin kaum differenzieren.\n\nB ist richtig: T2-w oder PD-fs (Protonendichte mit Fettsättigung) Sequenzen sind extrem sensitiv für freies Wasser. Da pathologische Veränderungen wie ein Rissspalt (gefüllt mit Synovialflüssigkeit) oder Ödeme viel Wasser enthalten, leuchten sie hyperintens (hell) vor dem unterdrückten, dunklen Hintergrundgewebe auf.\n\nC ist falsch: Eine Schichtdicke von 6 mm ist für die Kniebinnendiagnostik deutlich zu grob. Kleine Risse würden durch den Volumenmitteleffekt komplett maskiert. Der Standard liegt bei maximal 3 mm Schnittdicke.\n\nD ist falsch: Die Phasenkontrast-Angiographie dient der funktionellen Darstellung von Blutströmen in Gefäßen. Für die Beurteilung der statischen, fibrocartilaginären Gewebestrukturen des Kniegelenks ist sie ungeeignet."
-    },
-    {
-      "id": 5,
-      "question": "Wie unterscheidet sich die Verteilung von Rissen im Hinterhorn des Außenmeniskus im Vergleich zum Innenmeniskus?",
-      "options": [
-        {
-          "id": "A",
-          "text": "Beim Außenmeniskus betreffen praktisch alle Risse das Vorderhorn."
-        },
-        {
-          "id": "B",
-          "text": "Beim Außenmeniskus liegen etwa 50 % der Risse im Hinterhorn, während beim Innenmeniskus ca. 98 % das Hinterhorn betreffen."
-        },
-        {
-          "id": "C",
-          "text": "Risse im Hinterhorn des Außenmeniskus treten aufgrund der O-Form überhaupt nicht auf."
-        },
-        {
-          "id": "D",
-          "text": "Die Verteilung ist bei beiden Menisken absolut identisch."
-        }
-      ],
-      "correct": "B",
-      "explanation": "A ist falsch: Das Vorderhorn des Außenmeniskus ist zwar häufiger betroffen als das des Innenmeniskus, macht aber keineswegs die Gesamtheit aller Außenmeniskusrisse aus.\n\nB ist richtig: Das Hinterhorn des Innenmeniskus ist durch seine posteriore Fixierung der mechanische Drehpunkt bei Kniebewegungen und extremen Belastungen ausgesetzt – daher liegen hier nahezu 98 % der Risse. Der Außenmeniskus ist mobiler; bei ihm entfällt nur die Hälfte der Risse auf das Hinterhorn, während der Rest auf das Vorderhorn und den Corpus (Mittelabschnitt) verteilt ist.\n\nC ist falsch: Die geometrische O-Form schützt den Außenmeniskus nicht vor Pathologien. Das Hinterhorn bleibt auch hier mit 50 % der Fälle statistisch die häufigste Lokalisation für Risse.\n\nD ist falsch: Aufgrund der stark unterschiedlichen biomechanischen Fixierungen und Beweglichkeiten weisen Innen- und Außenmeniskus völlig unterschiedliche Verteilungsmuster bei Läsionen auf."
-    },
-    {
-      "id": 6,
-      "question": "Ein radiologischer Befund beschreibt ein keilförmiges/globuläres Signal im Meniskusgewebe, das die Gelenkfläche im vorliegenden Schnittbild knapp nicht erreicht. Welchem Subtyp nach Lotysch ist dies zuzuordnen?",
-      "options": [
-        {
-          "id": "A",
-          "text": "Grad 2a"
-        },
-        {
-          "id": "B",
-          "text": "Grad 2b"
-        },
-        {
-          "id": "C",
-          "text": "Grad 2c"
-        },
-        {
-          "id": "D",
-          "text": "Grad 3"
-        }
-      ],
-      "correct": "C",
-      "explanation": "A ist falsch: Grad 2a ist definiert als ein rein lineares (strichförmiges) Signal im Meniskusinneren, das keinen Kontakt zur superioren oder inferioren Oberfläche aufweist. Es zeigt keine flächige Ausdehnung.\n\nB ist falsch: Grad 2b beschreibt ebenfalls ein lineares Signal, welches jedoch die Gelenkoberfläche auf genau einem einzigen Bild berührt, was den Befund inkonklusiv für einen echten Riss macht.\n\nC ist richtig: Ein keilförmiges, flächiges oder kugelförmiges (globuläres) Signal im Gewebe ohne eindeutigen Oberflächenkontakt entspricht dem Stadium Grad 2c nach Lotysch. Es repräsentiert eine fortgeschrittene mukoide Degeneration mit einem sehr hohen Risiko für das Vorliegen eines okkulten (versteckten) Risses.\n\nD ist falsch: Grad 3 setzt voraus, dass das Signal die Gelenkoberfläche eindeutig und reproduzierbar durchbricht (auf mindestens zwei aufeinanderfolgenden Schichten). Solange kein Oberflächenkontakt vorliegt, darf kein Grad 3 diagnostiziert werden."
-    }
-  ],
-  "en": [
-    {
-      "id": 1,
-      "question": "Why is the medial meniscus significantly more frequently affected by traumatic tears compared to the lateral meniscus?",
-      "options": [
-        {
-          "id": "A",
-          "text": "It is anatomically less stable due to its C-shape."
-        },
-        {
-          "id": "B",
-          "text": "It is firmly attached to the joint capsule and the medial collateral ligament, making it less mobile."
-        },
-        {
-          "id": "C",
-          "text": "It has a purely avascular supply across its entire width."
-        },
-        {
-          "id": "D",
-          "text": "Unlike the lateral meniscus, it does not articulate with the femoral condyles."
-        }
-      ],
-      "correct": "B",
-      "explanation": "A is incorrect: The C-shape of the medial meniscus and the O-shape of the lateral meniscus are normal anatomical variations matching their respective tibial plateaus. They do not cause intrinsic mechanical tissue instability.\n\nB is correct: The firm ligamentous anchoring of the medial meniscus to the capsule and the medial collateral ligament (MCL) severely limits its mobility. Under rotational or shearing stress, it cannot glide out of the way like the mobile lateral meniscus, making it highly susceptible to tears.\n\nC is incorrect: Both menisci share a similar vascular layout, featuring a well-perfused periphery (red zone) and an avascular central region. The medial meniscus is not entirely devoid of blood vessels.\n\nD is incorrect: Both menisci articulate with the femoral condyles superiorly and the tibial plateau inferiorly to perform their primary load-bearing and shock-absorbing functions within the joint."
-    },
-    {
-      "id": 2,
-      "question": "According to the established \"two-slice-touch\" rule, which criterion must be met to diagnose a meniscus tear on MRI with high specificity?",
-      "options": [
-        {
-          "id": "A",
-          "text": "The signal must touch both the superior and inferior articular surfaces."
-        },
-        {
-          "id": "B",
-          "text": "The signal increase must be detectable with surface contact on at least two consecutive slices."
-        },
-        {
-          "id": "C",
-          "text": "The tear must be visible in two different sequences (e.g., T1w and T2w)."
-        },
-        {
-          "id": "D",
-          "text": "The lesion must have an extension of at least 3 mm in the sagittal plane."
-        }
-      ],
-      "correct": "B",
-      "explanation": "A is incorrect: A tear does not need to span the entire height of the meniscus. It is completely sufficient if the pathological signal intersects either the superior or the inferior articular surface.\n\nB is correct: This rule dictates that the intrameniscal signal abnormality must communicate with the articular surface on at least two directly adjacent images (slices). This eliminates the risk of misinterpreting technical noise or volume averaging artifacts on a single slice as a true tear.\n\nC is incorrect: While tears should ideally be verified across multiple planes (sagittal/coronal) and sequences, the \"two-slice-touch\" rule specifically demands continuity across successive slices within the same sequence.\n\nD is incorrect: The rule is independent of absolute millimeter measurements. It relies solely on the number of involved slices, regardless of the protocol's standard slice thickness (which is typically 3 mm)."
-    },
-    {
-      "id": 3,
-      "question": "In which vascular zone does a meniscus tear present the best biological conditions for a successful meniscus repair (suture)?",
-      "options": [
-        {
-          "id": "A",
-          "text": "White zone (Zone III)"
-        },
-        {
-          "id": "B",
-          "text": "Red-white zone (Zone II)"
-        },
-        {
-          "id": "C",
-          "text": "Red zone (Zone I)"
-        },
-        {
-          "id": "D",
-          "text": "Meniscal root"
-        }
-      ],
-      "correct": "C",
-      "explanation": "A is incorrect: The white zone comprises the central third of the meniscus and is completely avascular, relying purely on diffusion from synovial fluid. Suturing here almost always fails due to the lack of healing potential.\n\nB is incorrect: The red-white zone is a transitional area (approx. 3–5 mm from the capsule). It contains only a sparse, capillary blood supply, making the predictability of tissue healing after suturing highly uncertain.\n\nC is correct: The red zone (Zone I) represents the peripheral outer rim (<3 mm from the capsule) and receives a rich blood supply from the perimeniscal capillary plexus. The biological prerequisites for fibroblast migration and tissue repair are optimal here, favoring anatomical reconstruction.\n\nD is incorrect: The meniscal roots anchor the anterior and posterior horns to the tibial plateau. They represent specific ligamentous attachments rather than a vascular zone of the functional meniscal body."
-    },
-    {
-      "id": 4,
-      "question": "According to standard protocols, which MRI sequence is best suited for the definitive detection of acute meniscus tears, accompanying bone marrow edema, and ligament disruptions?",
-      "options": [
-        {
-          "id": "A",
-          "text": "Native T1-weighting without fat saturation."
-        },
-        {
-          "id": "B",
-          "text": "T2-weighted or PD fat-saturated (fs) sequences."
-        },
-        {
-          "id": "C",
-          "text": "3D gradient-echo sequences with a slice thickness of 6 mm."
-        },
-        {
-          "id": "D",
-          "text": "T2*-weighted phase-contrast angiography."
-        }
-      ],
-      "correct": "B",
-      "explanation": "A is incorrect: Native T1-weighting provides excellent anatomical details and screens well for chronic fibrosis, but it lacks fluid sensitivity. Acute fluid entering a tear cleft or bone marrow edema cannot be reliably differentiated.\n\nB is correct: T2-w or PD-fs (proton density fat-saturated) sequences are highly sensitive to free fluid. Pathological changes like a tear gap (filled with synovial fluid) or marrow edema contain high amounts of water and appear hyperintense (bright) against the suppressed, dark background.\n\nC is incorrect: A 6 mm slice thickness is far too thick for internal knee derangement diagnostics. Small tears would be completely hidden due to volume averaging effects. The standard protocol requires a maximum thickness of 3 mm.\n\nD is incorrect: Phase-contrast angiography is designed to image fluid dynamics within vessels. It is entirely unsuited for evaluating the static, fibrocartilaginous tissue components of the knee joint."
-    },
-    {
-      "id": 5,
-      "question": "How does the distribution of tears in the posterior horn of the lateral meniscus differ compared to the medial meniscus?",
-      "options": [
-        {
-          "id": "A",
-          "text": "In the lateral meniscus, practically all tears affect the anterior horn."
-        },
-        {
-          "id": "B",
-          "text": "In the lateral meniscus, about 50% of tears are located in the posterior horn, whereas in the medial meniscus, approximately 98% affect the posterior horn."
-        },
-        {
-          "id": "C",
-          "text": "Tears in the posterior horn of the lateral meniscus do not occur at all due to its O-shape."
-        },
-        {
-          "id": "D",
-          "text": "The distribution is absolutely identical in both menisci."
-        }
-      ],
-      "correct": "B",
-      "explanation": "A is incorrect: Although the anterior horn of the lateral meniscus is torn more often than that of the medial meniscus, it does not account for all or even the majority of lateral meniscal tears.\n\nB is correct: Because the posterior horn of the medial meniscus is rigidly fixed, it acts as a mechanical pivot during knee movement, absorbing immense stress—causing roughly 98% of its tears to occur there. The lateral meniscus is less constrained; only half of its tears affect the posterior horn, with the remainder distributed among the body (corpus) and anterior horn.\n\nC is incorrect: The geometric O-shape does not immunize the lateral meniscus against injury. Statistically, the posterior horn remains the most common site for tears, accounting for 50% of cases.\n\nD is incorrect: Due to completely different biomechanical fixations and mobility profiles, the medial and lateral menisci display entirely distinct lesion distribution patterns."
-    },
-    {
-      "id": 6,
-      "question": "A radiology report describes a wedge-shaped/globular signal within the meniscus tissue that just falls short of reaching the articular surface on the current image. Which Lotysch subtype does this represent?",
-      "options": [
-        {
-          "id": "A",
-          "text": "Grade 2a"
-        },
-        {
-          "id": "B",
-          "text": "Grade 2b"
-        },
-        {
-          "id": "C",
-          "text": "Grade 2c"
-        },
-        {
-          "id": "D",
-          "text": "Grade 3"
-        }
-      ],
-      "correct": "C",
-      "explanation": "A is incorrect: Grade 2a is strictly defined as a purely linear (line-like) intrameniscal signal that shows absolutely no communication with either the superior or inferior articular surface. It lacks any broad or expanding morphology.\n\nB is incorrect: Grade 2b also describes a linear signal, but one that touches the articular surface on exactly a single slice, rendering the imaging finding inconclusive for a definitive tear.\n\nC is correct: A wedge-shaped, wide, or rounded (globular) intrameniscal signal that does not definitively break through the surface is classified as Lotysch Grade 2c. This indicates severe mucoid degeneration carrying an exceptionally high risk of an underlying occult (hidden) tear.\n\nD is incorrect: Grade 3 requires the signal to clearly and reproducibly breach the articular surface on at least two consecutive slices. Without objective surface contact, a Grade 3 diagnosis is not permitted."
-    }
-  ],
-  "fa": [
-    {
-      "id": 1,
-      "question": "چرا منیسک داخلی (Meniscus medialis) در مقایسه با منیسک خارجی به طور معناداری بیشتر دچار پارگی‌های تروماتیک (ناشی از ضربه) می‌شود؟",
-      "options": [
-        {
-          "id": "A",
-          "text": "به دلیل شکل C مانند خود، از نظر آناتومیک پایداری کمتری دارد."
-        },
-        {
-          "id": "B",
-          "text": "به کپسول مفصلی و رباط جانبی داخلی (MCL) چسبیده است و در نتیجه تحرک کمتری دارد."
-        },
-        {
-          "id": "C",
-          "text": "در تمام پهنای خود دارای خون‌رسانی کاملاً غیرعروقی (بدون رگ) است."
-        },
-        {
-          "id": "D",
-          "text": "برعکس منیسک خارجی، با کندیل‌های فمور (استخوان ران) مفصل نمی‌شود."
-        }
-      ],
-      "correct": "B",
-      "explanation": "الف غلط است: شکل C در منیسک داخلی و شکل O در منیسک خارجی، واریانت‌های آناتومیک نرمال هستند که با شکل پلاتوی تیبیا مطابقت دارند. این اشکال هندسی به خودی خود باعث ناپایداری مکانیکی بافت نمی‌شوند.\n\nب صحیح است: اتصال محکم منیسک داخلی به کپسول مفصلی و رباط جانبی داخلی (MCL) تحرک آن را به شدت محدود می‌کند. در هنگام حرکات چرخشی یا اعمال نیروهای برشی ناگهانی، این منیسک – برخلاف منیسک خارجی که آزاد و متحرک است – نمی‌تواند جابجا شود و پاره می‌شود.\n\nج غلط است: هر دو منیسک ساختار عروقی مشابهی دارند؛ یعنی در محیط (ناحیه قرمز) دارای رگ‌های خونی هستند و به سمت مرکز بدون رگ (آواسکولار) می‌شوند. منیسک داخلی کاملاً فاقد عروق نیست.\n\nد غلط است: هر دو منیسک از سمت بالا (پروکسیمال) با کندیل‌های فمور و از سمت پایین (دیستال) با پلاتوی تیبیا مفصل می‌شوند تا وظیفه اصلی خود یعنی توزیع بار و جذب ضربه را در مفصل انجام دهند."
-    },
-    {
-      "id": 2,
-      "question": "طبق قانون شناخته‌شده‌ی \"Two-slice-touch\" (تماس در دو تصویر)، چه معیاری باید وجود داشته باشد تا تشخیص پارگی منیسک در MRI با دقت و ویژگی بالا تایید شود؟",
-      "options": [
-        {
-          "id": "A",
-          "text": "سیگنال باید هم با سطح مفصلی بالایی (سوپریور) و هم پایینی (اینفریور) تماس داشته باشد."
-        },
-        {
-          "id": "B",
-          "text": "افزایش سیگنال باید حداقل در دو تصویر (برش) متوالی که با سطح مفصلی تماس دارند، دیده شود."
-        },
-        {
-          "id": "C",
-          "text": "پارگی باید در دو سکانس مختلف (مانند T1w و T2w) قابل رویت باشد."
-        },
-        {
-          "id": "D",
-          "text": "طول ضایعه در صفحه ساجیتال باید حداقل ۳ میلی‌متر باشد."
-        }
-      ],
-      "correct": "B",
-      "explanation": "الف غلط است: یک پارگی نیازی ندارد که کل ارتفاع منیسک را طی کند. اگر سیگنال پاتولوژیک فقط به سطح مفصلی بالایی (سوپریور) یا فقط به سطح پایینی (اینفریور) رسیده باشد، برای تشخیص کفایت می‌کند.\n\nب صحیح است: این قانون تصریح می‌کند که سیگنال افزایش‌یافته‌ی داخل منیسک باید حداقل در دو برش مجاور و پشت‌سرهم با سطح مفصل تماس داشته باشد. این معیار خطر اشتباه گرفتن نویزهای تکنیکی دستگاه یا پدیده حجم متوسط (Volume Averaging) در یک تک‌برش را با پارگی واقعی از بین می‌برد.\n\nج غلط است: اگرچه بررسی پارگی در سکانس‌ها و صفحات مختلف (ساجیتال/کورونال) ایده‌آل است، اما قانون خاص \"Two-slice-touch\" صرفاً بر تداوم ضایعه در برش‌های متوالی یک سکانس واحد تاکید دارد.\n\nد غلط است: این قانون مستقل از اندازه‌گیری‌های مطلق به میلی‌متر است و فقط بر اساس تعداد برش‌های درگیر تعریف می‌شود، حتی اگر ضخامت استاندارد برش‌ها در پروتکل معمولاً ۳ میلی‌متر باشد."
-    },
-    {
-      "id": 3,
-      "question": "پارگی منیسک در کدام ناحیه عروقی (خون‌رسانی)، بهترین شرایط بیولوژیکی را برای یک جراحی ترمیم و دوختن موفقیت‌آمیز (Suture) دارد؟",
-      "options": [
-        {
-          "id": "A",
-          "text": "ناحیه سفید (Zone III)"
-        },
-        {
-          "id": "B",
-          "text": "ناحیه قرمز-سفید (Zone II)"
-        },
-        {
-          "id": "C",
-          "text": "ناحیه قرمز (Zone I)"
-        },
-        {
-          "id": "D",
-          "text": "ریشه منیسک (Root)"
-        }
-      ],
-      "correct": "C",
-      "explanation": "الف غلط است: ناحیه سفید یک‌سوم مرکزی منیسک را تشکیل می‌دهد، کاملاً آواسکولار (بدون رگ) است و تغذیه آن صرفاً از طریق انتشار (دیفیوژن) مایع سینوویال انجام می‌شود. بخیه زدن در این ناحیه به دلیل عدم پتانسیل ترمیم بافتی تقریباً همیشه شکست می‌خورد.\n\nب غلط است: ناحیه قرمز-سفید یک منطقه بینابینی است (حدود ۳ تا ۵ میلی‌متر از کپسول). در این ناحیه خون‌رسانی مویرگی بسیار محدودی وجود دارد، به همین دلیل پیش‌آگهی و روند ترمیم بافت پس از بخیه زدن نامشخص و نامطمئن است.\n\nج صحیح است: ناحیه قرمز (Zone I) شامل لبه بیرونی و مجاور کپسول مفصلی است (فاصله کمتر از ۳ میلی‌متر). این ناحیه مستقیماً از طریق شبکه مویرگی دور منیسکی خون‌رسانی می‌شود. شرایط بیولوژیک برای مهاجرت فیبروبلاست‌ها و ترمیم بافت در اینجا ایده‌آل است و جوش خوردن بخیه را تسهیل می‌کند.\n\nد غلط است: ریشه‌های منیسک (Roots) محل اتصال لیگامانی شاخ‌های منیسک به پلاتوی تیبیا هستند. این بخش‌ها یک ناحیه عروقی در تنه کارکردی منیسک محسوب نمی‌شوند."
-    },
-    {
-      "id": 4,
-      "question": "طبق پروتکل‌های استاندارد، کدام سکانس MRI بهترین گزینه برای تشخیص قطعی پارگی‌های حاد منیسک، ادم (تجمع مایع) مغز استخوان و پارگی رباط‌ها است؟",
-      "options": [
-        {
-          "id": "A",
-          "text": "سکانس T1 معمولی بدون حذف چربی."
-        },
-        {
-          "id": "B",
-          "text": "سکانس‌های T2-weighted یا فشرده با حذف چربی (PD-fs)."
-        },
-        {
-          "id": "C",
-          "text": "سکانس‌های سه‌بعدی Gradient-Echo با ضخامت برش ۶ میلی‌متر."
-        },
-        {
-          "id": "D",
-          "text": "آنژیوگرافی تداخل فاز با وزن T2*."
-        }
-      ],
-      "correct": "B",
-      "explanation": "الف غلط است: سکانس T1 معمولی اگرچه آناتومی را به خوبی نشان می‌دهد و برای ارزیابی فیبروز مزمن مفید است، اما به مایعات حساس نیست. مایع حاد وارد شده به خط پارگی یا ادم مغز استخوان در این سکانس به درستی تفکیک نمی‌شوند.\n\nب صحیح است: سکانس‌های T2 یا PD-fs (پروتون دنسیتی با حذف چربی) به شدت به آب آزاد حساس هستند. از آنجا که پاتولوژی‌هایی مانند خط پارگی (پر شده با مایع سینوویال) یا ادم حاوی آب زیادی هستند، در این سکانس‌ها به صورت هایپرینتنس (روشن و سفید) در یک پس‌زمینه تاریک و حذف‌شده به خوبی دیده می‌شوند.\n\nج غلط است: ضخامت برش ۶ میلی‌متر برای تشخیص ضایعات داخلی زانو بسیار ضخیم است. پارگی‌های کوچک به دلیل پدیده حجم متوسط کاملاً محو می‌شوند. استاندارد پروتکل حداکثر ۳ میلی‌متر است.\n\nد غلط است: آنژیوگرافی تداخل فاز برای نشان دادن دینامیک جریان خون در رگ‌ها کاربرد دارد و برای ارزیابی بافت‌های استاتیک و غضروفی-فیبری مفصل زانو کاملاً بی‌استفاده است."
-    },
-    {
-      "id": 5,
-      "question": "نحوه توزیع و پخش شدن پارگی‌ها در شاخ پشتی (Hinterhorn) منیسک خارجی چه تفاوتی با منیسک داخلی دارد؟",
-      "options": [
-        {
-          "id": "A",
-          "text": "در منیسک خارجی، تقریباً تمام پارگی‌ها شاخ جلویی را درگیر می‌کنند."
-        },
-        {
-          "id": "B",
-          "text": "در منیسک خارجی حدود ۵۰٪ پارگی‌ها در شاخ پشتی رخ می‌دهد، در حالی که در منیسک داخلی حدود ۹۸٪ پارگی‌ها مربوط به شاخ پشتی است."
-        },
-        {
-          "id": "C",
-          "text": "پارگی در شاخ پشتی منیسک خارجی به دلیل شکل O مانند آن اصلاً رخ نمی‌دهد."
-        },
-        {
-          "id": "D",
-          "text": "میزان توزیع پارگی در هر دو منیسک کاملاً یکسان و مشابه است."
-        }
-      ],
-      "correct": "B",
-      "explanation": "الف غلط است: اگرچه شاخ جلویی منیسک خارجی بیشتر از منیسک داخلی دچار پارگی می‌شود، اما به هیچ وجه شامل تمام یا حتی اکثریت پارگی‌های منیسک خارجی نیست.\n\nب صحیح است: شاخ پشتی منیسک داخلی به دلیل تثبیت بودن، نقطه اتکای مکانیکی در حرکات زانو است و استرس شدیدی را تحمل می‌کند؛ به همین دلیل نزدیک به ۹۸٪ پارگی‌های آن در این ناحیه است. منیسک خارجی متحرک‌تر است؛ بنابراین تنها نیمی از پارگی‌های آن در شاخ پشتی رخ می‌دهد و بقیه در بدنه (Corpus) و شاخ جلویی پخش می‌شوند.\n\nج غلط است: شکل هندسی O مانند، منیسک خارجی را در برابر آسیب مصون نمی‌کند. از نظر آماری، شاخ پشتی همچنان با ۵۰٪ موارد، شایع‌ترین محل پارگی در منیسک خارجی است.\n\nد غلط است: به دلیل تفاوت‌های ساختاری و بیومکانیکی در میزان تثبیت و تحرک، منیسک داخلی و خارجی الگوهای توزیع ضایعه کاملاً متفاوتی را نشان می‌دهند."
-    },
-    {
-      "id": 6,
-      "question": "یک گزارش رادیولوژی، وجود یک سیگنال گوهه‌ای شکل یا گرد (Globular) را در بافت منیسک توصیف می‌کند که در تصویر موجود، پاره شده و به سطح مفصل نرسیده است. این وضعیت با کدام ساب‌تایپ (زیرگروه) سیستم درجه‌بندی Lotysch مطابقت دارد؟",
-      "options": [
-        {
-          "id": "A",
-          "text": "درجه 2a"
-        },
-        {
-          "id": "B",
-          "text": "درجه 2b"
-        },
-        {
-          "id": "C",
-          "text": "درجه 2c"
-        },
-        {
-          "id": "D",
-          "text": "درجه ۳"
-        }
-      ],
-      "correct": "C",
-      "explanation": "الف غلط است: درجه 2a دقیقاً به عنوان یک سیگنال خطی (خط‌مانند) در داخل منیسک تعریف می‌شود که هیچ اتصالی با سطح مفصلی بالایی یا پایینی ندارد و فاقد هرگونه گسترش وسیع یا گرد است.\n\nب غلط است: درجه 2b نیز یک سیگنال خطی را توصیف می‌کند، با این تفاوت که سیگنال دقیقاً در یک تک‌برش با سطح مفصل تماس پیدا می‌کند که این یافته را برای پارگی قطعی غیرقابل استناد (Inconclusive) می‌سازد.\n\nج صحیح است: یک سیگنال درون‌منیسکی به شکل گوهه‌ای، وسیع یا گرد (Globular) که به طور قطعی سطح را قطع نکرده است، طبق سیستم لوتیش درجه 2c نامیده می‌شود. این حالت نشان‌دهنده دژنراسیون موکوئید پیشرفته است و ریسک بسیار بالایی برای یک پارگی مخفی (Occult) دارد.\n\nد غلط است: درجه ۳ مستلزم آن است که سیگنال به طور واضح و تکرارپذیر (حداقل در دو برش متوالی) سطح مفصلی را قطع کرده باشد. تا زمانی که تماس با سطح احراز نشود، تشخیص درجه ۳ مجاز نیست."
-    }
-  ]
+const styles = new Proxy({}, {
+  get: (_target, prop) => String(prop),
+})
+
+const MENISKUS_STYLES = `.page {
+  min-height: 100vh;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  padding-top: 64px;
+  background:
+    radial-gradient(circle at top left, rgba(249, 115, 22, 0.12), transparent 32rem),
+    linear-gradient(180deg, #f7f8fc 0%, #eef2f7 100%);
+  color: #172033;
+  font-family: var(--font-manrope, system-ui, sans-serif);
 }
 
-const GRADE_DATA = {
-  de: [
-    { min: 6, label: 'Ausgezeichnet!', sub: 'Perfekte Punktzahl – Meniskusdiagnostik sitzt sehr sicher.', emoji: '🏆', color: '#059669' },
-    { min: 5, label: 'Sehr gut!', sub: 'Starkes Wissen mit nur kleinen Lücken.', emoji: '🎯', color: '#0ea5e9' },
-    { min: 3, label: 'Gut gemacht', sub: 'Grundlagen sitzen – Details weiter vertiefen.', emoji: '📖', color: '#f97316' },
-    { min: 0, label: 'Weiter üben', sub: 'Lernseite nochmal durcharbeiten und erneut testen.', emoji: '💪', color: '#ef4444' },
-  ],
-  en: [
-    { min: 6, label: 'Excellent!', sub: 'Perfect score – meniscus MRI diagnostics are very solid.', emoji: '🏆', color: '#059669' },
-    { min: 5, label: 'Very good!', sub: 'Strong knowledge with only minor gaps.', emoji: '🎯', color: '#0ea5e9' },
-    { min: 3, label: 'Well done', sub: 'Core knowledge is solid – deepen the details further.', emoji: '📖', color: '#f97316' },
-    { min: 0, label: 'Keep practicing', sub: 'Review the learning page and try again.', emoji: '💪', color: '#ef4444' },
-  ],
-  fa: [
-    { min: 6, label: 'عالی!', sub: 'نمره کامل – تشخیص MRI منیسک را خیلی خوب بلد هستید.', emoji: '🏆', color: '#059669' },
-    { min: 5, label: 'خیلی خوب!', sub: 'دانش قوی با چند نکته کوچک برای مرور.', emoji: '🎯', color: '#0ea5e9' },
-    { min: 3, label: 'خوب بود', sub: 'اصول پایه خوب است – جزئیات را بیشتر مرور کنید.', emoji: '📖', color: '#f97316' },
-    { min: 0, label: 'ادامه تمرین', sub: 'صفحه آموزشی را دوباره مرور کنید و مجدداً امتحان دهید.', emoji: '💪', color: '#ef4444' },
-  ],
+.header {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 28px 28px 16px;
 }
 
-const UI = {
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #7b8799;
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+.breadLink {
+  color: #f97316;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.breadLink:hover { color: #ea580c; }
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 22px;
+  align-items: stretch;
+}
+
+.heroText,
+.heroStats,
+.mcqStrip,
+.sidebar,
+.section,
+.card,
+.cardAccent,
+.cardDanger,
+.figure,
+.protocolCard,
+.criteriaCard,
+.bulletCard {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(208, 216, 230, 0.9);
+  box-shadow: 0 18px 45px rgba(23, 32, 51, 0.07);
+  backdrop-filter: blur(14px);
+}
+
+.heroText {
+  position: relative;
+  overflow: hidden;
+  border-radius: 34px;
+  padding: 38px;
+  background:
+    radial-gradient(circle at top right, rgba(249, 115, 22, 0.18), transparent 18rem),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.96) 54%, rgba(255, 247, 237, 0.92) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 24px 70px rgba(13, 27, 42, 0.12);
+}
+
+.heroText::before {
+  content: '';
+  position: absolute;
+  inset: 18px 18px auto auto;
+  width: 96px;
+  height: 96px;
+  border-radius: 32px;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.18), rgba(13, 27, 42, 0.08));
+  transform: rotate(12deg);
+}
+
+.heroText::after {
+  content: '';
+  position: absolute;
+  left: 34px;
+  right: 34px;
+  bottom: 0;
+  height: 5px;
+  border-radius: 999px 999px 0 0;
+  background: linear-gradient(90deg, #f97316, #fb923c, #0d1b2a);
+}
+
+[dir='rtl'] .heroText::after {
+  background: linear-gradient(90deg, #0d1b2a, #fb923c, #f97316);
+}
+
+.heroText > * {
+  position: relative;
+  z-index: 1;
+}
+
+.sourceBadge {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 18px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  color: #fff;
+  border: 1px solid rgba(255, 237, 213, 0.9);
+  box-shadow: 0 12px 26px rgba(249, 115, 22, 0.22);
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.heroText h1 {
+  margin: 0;
+  font-family: var(--font-fraunces, Georgia, serif);
+  font-size: clamp(46px, 6vw, 82px);
+  font-weight: 950;
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+  color: #0d1b2a;
+  text-shadow: 0 12px 28px rgba(13, 27, 42, 0.08);
+}
+
+.heroText p {
+  margin: 18px 0 24px;
+  max-width: 720px;
+  color: #425066;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.mcqButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: #0d1b2a;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+  box-shadow: 0 12px 24px rgba(13, 27, 42, 0.18);
+}
+
+.mcqButton:hover { transform: translateY(-1px); }
+
+.heroStats {
+  border-radius: 28px;
+  padding: 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.heroStatCard {
+  border-radius: 20px;
+  padding: 18px;
+  background: linear-gradient(135deg, #0d1b2a 0%, #172a46 100%);
+  color: #fff;
+}
+
+.heroStatCard:nth-child(2) {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+}
+
+.heroStatCard:nth-child(3) {
+  background: linear-gradient(135deg, #ffffff 0%, #f7f8fc 100%);
+  color: #0d1b2a;
+  border: 1px solid #e3e8f0;
+}
+
+.heroStatCard strong {
+  display: block;
+  font-size: 34px;
+  line-height: 1;
+  margin-bottom: 7px;
+}
+
+.heroStatCard span {
+  display: block;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.heroStatCard small {
+  display: block;
+  margin-top: 5px;
+  color: currentColor;
+  opacity: 0.72;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.mcqStrip {
+  margin-top: 18px;
+  border-radius: 22px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  color: #172033;
+  border-color: rgba(249, 115, 22, 0.28);
+}
+
+.mcqStrip strong,
+.mcqStrip span { display: block; }
+.mcqStrip strong { font-size: 15px; color: #0d1b2a; margin-bottom: 3px; }
+.mcqStrip span { color: #6b778a; font-size: 13px; }
+.mcqStrip em { font-style: normal; color: #f97316; font-weight: 900; white-space: nowrap; }
+
+.layout {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 22px 28px 70px;
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  direction: ltr;
+}
+
+[dir='rtl'] .layout {
+  grid-template-columns: minmax(0, 1fr) 260px;
+}
+
+.sidebar {
+  position: sticky;
+  top: 88px;
+  border-radius: 24px;
+  padding: 16px;
+  order: 0;
+}
+
+[dir='rtl'] .sidebar {
+  order: 2;
+  direction: rtl;
+}
+
+[dir='rtl'] .main {
+  direction: rtl;
+}
+
+.sideTitle {
+  padding: 7px 8px 14px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #edf1f7;
+  color: #96a0b1;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.sideNav {
+  display: grid;
+  gap: 7px;
+}
+
+.sideItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  border: 0;
+  border-radius: 16px;
+  padding: 12px;
+  background: transparent;
+  color: #536174;
+  cursor: pointer;
+  text-align: start;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  transition: 0.18s ease;
+}
+
+.sideItem:hover {
+  background: #f3f6fb;
+  color: #0d1b2a;
+}
+
+.sideItemActive {
+  background: rgba(249, 115, 22, 0.12) !important;
+  color: #c2410c !important;
+}
+
+.sideItemImportant {
+  font-weight: 950 !important;
+  color: #0d1b2a;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.12), rgba(22, 163, 74, 0.10));
+  border: 1px solid rgba(249, 115, 22, 0.24);
+}
+
+.sideItemImportant .sideIcon {
+  background: #fff7ed;
+  color: #f97316;
+}
+
+.sideIcon {
+  width: 28px;
+  height: 28px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #f3f6fb;
+}
+
+.sideItemActive .sideIcon {
+  background: #fff;
+}
+
+.main {
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+}
+
+.section {
+  border-radius: 28px;
+  padding: 28px;
+  scroll-margin-top: 92px;
+}
+
+.sectionHead {
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: #0d1b2a;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+.sectionHead h2 {
+  margin: 0;
+  color: #0d1b2a;
+  font-family: var(--font-fraunces, Georgia, serif);
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.sectionHead p {
+  margin: 12px 0 0;
+  color: #536174;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.bulletCard {
+  border-radius: 22px;
+  padding: 12px;
+  display: grid;
+  gap: 10px;
+  box-shadow: none;
+  background: #fbfcff;
+}
+
+.bulletItem {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 12px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid #edf1f7;
+}
+
+.bulletItem span {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  display: inline-grid;
+  place-items: center;
+  background: rgba(249, 115, 22, 0.12);
+  color: #f97316;
+  font-weight: 900;
+}
+
+.bulletItem p {
+  margin: 0;
+  color: #425066;
+  line-height: 1.65;
+}
+
+.splitGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.9fr);
+  gap: 18px;
+  align-items: stretch;
+  margin: 18px 0;
+}
+
+.card,
+.cardAccent,
+.cardDanger {
+  border-radius: 22px;
+  padding: 20px;
+  box-shadow: none;
+}
+
+.card h3,
+.cardAccent h3,
+.cardDanger h3,
+.protocolCard h3,
+.criteriaCard h3 {
+  margin: 0 0 10px;
+  color: #0d1b2a;
+  font-size: 17px;
+}
+
+.card p,
+.cardAccent p,
+.cardDanger p,
+.protocolCard p,
+.criteriaCard p {
+  margin: 0;
+  color: #536174;
+  line-height: 1.7;
+}
+
+.cardAccent {
+  background: #fff8f1;
+  border-color: #fed7aa;
+}
+
+.normalCard {
+  border-radius: 22px;
+  padding: 20px;
+  background: linear-gradient(180deg, #ffffff, #f7f8fc);
+  border: 1px solid #e3e8f0;
+  box-shadow: none;
+}
+
+.normalCard h3 {
+  margin: 0 0 10px;
+  color: #0d1b2a;
+  font-size: 17px;
+}
+
+.normalCard p {
+  margin: 0;
+  color: #536174;
+  line-height: 1.7;
+}
+
+.plainList {
+  display: grid;
+  gap: 12px;
+}
+
+.plainList p {
+  margin: 0;
+}
+
+.plainList strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #0d1b2a;
+}
+
+.gradingFigure {
+  margin: 18px 0;
+}
+
+.gradingFigure .figure img {
+  max-height: 560px;
+}
+
+.caseLabelRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+[dir='rtl'] .caseLabelRow {
+  justify-content: flex-start;
+}
+
+.cardDanger {
+  background: #fff1f2;
+  border-color: #fecdd3;
+}
+
+.cardDanger ul {
+  margin: 0;
+  padding-inline-start: 20px;
+  color: #7f1d1d;
+  line-height: 1.8;
+}
+
+.figure {
+  border-radius: 22px;
+  padding: 14px;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.figure img {
+  width: 100%;
+  max-height: 320px;
+  object-fit: contain;
+  border-radius: 16px;
+}
+
+.figure figcaption {
+  width: 100%;
+  margin-top: 10px;
+  color: #7b8799;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.tableWrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #dfe6f0;
+  border-radius: 20px;
+  background: #fff;
+  margin: 18px 0;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: min(620px, 100%);
+}
+
+.table th {
+  background: #0d1b2a;
+  color: #fff;
+  text-align: start;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 13px 15px;
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 14px 15px;
+  border-bottom: 1px solid #edf1f7;
+  color: #425066;
+  font-size: 14px;
+  line-height: 1.6;
+  vertical-align: top;
+}
+
+.table tr:last-child td { border-bottom: 0; }
+.table tr:nth-child(even) td { background: #fbfcff; }
+
+.zoneGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.zoneCard {
+  border-radius: 22px;
+  padding: 18px;
+  color: #fff;
+  min-height: 178px;
+  box-shadow: 0 14px 30px rgba(23, 32, 51, 0.12);
+}
+
+.zone1 { background: linear-gradient(135deg, #dc2626, #991b1b); }
+.zone2 { background: linear-gradient(135deg, #fb7185, #db2777); }
+.zone3 {
+  background: linear-gradient(135deg, #ffffff, #f7f8fc);
+  color: #0d1b2a;
+  border: 1px solid #e3e8f0;
+}
+
+.zoneCard h3 { margin: 0 0 12px; font-size: 17px; }
+.zoneCard span { display: block; font-size: 13px; opacity: 0.88; margin-bottom: 14px; }
+.zoneCard p { margin: 0 0 6px; font-weight: 900; }
+.zoneCard small { opacity: 0.86; line-height: 1.5; }
+
+.protocolGrid,
+.criteriaGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.protocolCard,
+.criteriaCard {
+  border-radius: 22px;
+  padding: 20px;
+  box-shadow: none;
+}
+
+.protocolCard {
+  background: #fbfcff;
+}
+
+.criteriaCard {
+  background: linear-gradient(180deg, #ffffff, #fbfcff);
+  position: relative;
+  overflow: hidden;
+}
+
+.criteriaCard span {
+  display: none;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  background: rgba(249, 115, 22, 0.12);
+  color: #f97316;
+  font-weight: 900;
+}
+
+.callout {
+  border-radius: 20px;
+  padding: 16px 18px;
+  margin: 18px 0 0;
+  background: #fff8f1;
+  border: 1px solid #fed7aa;
+  color: #7c2d12;
+}
+
+.callout.cave {
+  background: #fff1f2;
+  border-color: #fecdd3;
+  color: #7f1d1d;
+}
+
+.callout.success {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+  color: #14532d;
+}
+
+.calloutLabel {
+  display: block;
+  margin-bottom: 7px;
+  color: inherit;
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.calloutBody {
+  line-height: 1.75;
+  font-weight: 600;
+}
+
+.discoidMriTitle {
+  color: #f97316 !important;
+  font-weight: 950 !important;
+}
+
+.greenTitle {
+  color: #16a34a;
+}
+
+.gradeTable th:first-child,
+.gradeTable td:first-child {
+  width: 74px;
+  min-width: 74px;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: 950;
+  color: #0d1b2a;
+}
+
+.gradeTable td:first-child {
+  font-size: 16px;
+  background: rgba(249, 115, 22, 0.08);
+}
+
+[dir='rtl'] .gradeTable th:first-child,
+[dir='rtl'] .gradeTable td:first-child {
+  text-align: center;
+}
+
+.videoCard {
+  border-radius: 24px;
+  padding: 24px;
+  background: linear-gradient(135deg, #fff8f1 0%, #ffffff 100%);
+  border: 1px solid #fed7aa;
+  box-shadow: 0 14px 30px rgba(249, 115, 22, 0.08);
+}
+
+.videoCard h3 {
+  margin: 0 0 8px;
+  color: #f97316;
+  font-size: 20px;
+}
+
+.videoCard p {
+  margin: 0;
+  color: #536174;
+  line-height: 1.75;
+}
+
+.videoButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  color: #ffffff;
+  font-weight: 900;
+  text-decoration: none;
+  box-shadow: 0 12px 24px rgba(249, 115, 22, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.videoButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(249, 115, 22, 0.28);
+}
+
+.videoFrameWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 18px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #0d1b2a;
+  border: 1px solid rgba(13, 27, 42, 0.12);
+  box-shadow: 0 18px 38px rgba(13, 27, 42, 0.16);
+}
+
+.videoFrameWrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.takeHomeBox {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px;
+  padding: 28px;
+  background:
+    radial-gradient(circle at top right, rgba(249, 115, 22, 0.34), transparent 22rem),
+    radial-gradient(circle at bottom left, rgba(22, 163, 74, 0.26), transparent 20rem),
+    linear-gradient(135deg, #0d1b2a 0%, #152842 54%, #10251d 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 28px 70px rgba(13, 27, 42, 0.24);
+}
+
+.takeHomeBox::before {
+  content: '';
+  position: absolute;
+  inset: 18px 18px auto auto;
+  width: 92px;
+  height: 92px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.35), rgba(22, 163, 74, 0.24));
+  transform: rotate(14deg);
+}
+
+[dir='rtl'] .takeHomeBox::before {
+  inset: 18px auto auto 18px;
+}
+
+.takeHomeIntro {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 18px;
+  max-width: 780px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 800;
+}
+
+.takeHomeList {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 12px;
+}
+
+.takeHomeItem {
+  display: grid;
+  grid-template-columns: 66px 1fr;
+  gap: 14px;
+  align-items: start;
+  padding: 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(12px);
+}
+
+.takeHomeNumber {
+  width: 58px;
+  height: 46px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 950;
+  box-shadow: 0 12px 24px rgba(249, 115, 22, 0.28);
+}
+
+.takeHomeItem h3 {
+  margin: 0 0 6px;
+  color: #fed7aa;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 18px;
+  line-height: 1.35;
+  font-weight: 950;
+  letter-spacing: 0.01em;
+}
+
+.takeHomeItem p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.75;
+  font-weight: 850;
+  white-space: pre-line;
+}
+
+[dir='rtl'] .takeHomeItem {
+  grid-template-columns: 66px 1fr;
+  text-align: right;
+}
+
+[dir='rtl'] .breadcrumb,
+[dir='rtl'] .heroText,
+[dir='rtl'] .sectionHead,
+[dir='rtl'] .table th,
+[dir='rtl'] .table td,
+[dir='rtl'] .sideItem,
+[dir='rtl'] .card,
+[dir='rtl'] .cardAccent,
+[dir='rtl'] .cardDanger,
+[dir='rtl'] .protocolCard,
+[dir='rtl'] .criteriaCard,
+[dir='rtl'] .callout,
+[dir='rtl'] .bulletItem,
+[dir='rtl'] .videoCard,
+[dir='rtl'] .takeHomeBox {
+  text-align: right;
+}
+
+@media (max-width: 1020px) {
+  .heroGrid,
+  .layout,
+  [dir='rtl'] .layout,
+  .splitGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar,
+  [dir='rtl'] .sidebar {
+    position: static;
+    order: 0;
+  }
+
+  .sideNav {
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .page { padding-top: 56px; }
+  .header { padding: 20px 14px 12px; }
+  .layout { padding: 14px 14px 44px; }
+  .heroText { padding: 24px; border-radius: 22px; }
+  .heroText p { font-size: 15px; }
+  .section { padding: 20px; border-radius: 22px; }
+  .zoneGrid,
+  .protocolGrid,
+  .criteriaGrid {
+    grid-template-columns: 1fr;
+  }
+  .mcqStrip {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .table { min-width: 560px; }
+}
+
+.page img {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+/* Mobile-only lesson navigation. Desktop layout stays unchanged. */
+.mobileTocBar,
+.mobileTocOverlay,
+.mobileMcqFab {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .page {
+    padding-top: 56px;
+    padding-bottom: 92px;
+  }
+
+  .header {
+    padding: 18px 14px 10px;
+  }
+
+  .breadcrumb {
+    margin-bottom: 12px;
+    font-size: 12px;
+    flex-wrap: wrap;
+  }
+
+  .heroGrid {
+    gap: 12px;
+  }
+
+  .heroText {
+    padding: 24px;
+    border-radius: 24px;
+  }
+
+  .sourceBadge {
+    margin-bottom: 12px;
+    font-size: 10px;
+  }
+
+  .heroText h1 {
+    font-size: clamp(38px, 14vw, 56px);
+    line-height: 1;
+  }
+
+  .heroText p {
+    margin: 14px 0 18px;
+    font-size: 16px;
+    line-height: 1.72;
+  }
+
+  .heroStats {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 22px;
+  }
+
+  .heroStatCard {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .heroStatCard strong {
+    font-size: 28px;
+  }
+
+  .mcqStrip {
+    display: none;
+  }
+
+  .mobileTocBar {
+    display: block;
+    position: sticky;
+    top: 56px;
+    z-index: 30;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 8px 14px;
+    background: rgba(247, 248, 252, 0.9);
+    border-top: 1px solid rgba(226, 232, 240, 0.8);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    backdrop-filter: blur(14px);
+  }
+
+  .mobileTocButton {
+    width: 100%;
+    min-height: 52px;
+    display: grid;
+    grid-template-columns: 36px minmax(0, auto) minmax(0, 1fr);
+    gap: 10px;
+    align-items: center;
+    border: 1px solid rgba(208, 216, 230, 0.9);
+    border-radius: 18px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.96);
+    color: #172033;
+    box-shadow: 0 10px 28px rgba(23, 32, 51, 0.08);
+    font-family: inherit;
+    font-weight: 900;
+    text-align: start;
+  }
+
+  .mobileTocIcon {
+    width: 34px;
+    height: 34px;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 12px;
+    background: rgba(249, 115, 22, 0.12);
+    color: #f97316;
+    font-size: 18px;
+  }
+
+  .mobileTocButton strong {
+    justify-self: end;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #6b778a;
+    font-size: 12px;
+    font-weight: 900;
+  }
+
+  [dir='rtl'] .mobileTocButton {
+    grid-template-columns: 36px minmax(0, auto) minmax(0, 1fr);
+    text-align: right;
+  }
+
+  [dir='rtl'] .mobileTocButton strong {
+    justify-self: start;
+  }
+
+  .mobileTocOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 18px;
+    background: rgba(13, 27, 42, 0.42);
+    backdrop-filter: blur(7px);
+  }
+
+  .mobileTocPanel {
+    width: min(100%, 520px);
+    max-height: min(78vh, 620px);
+    overflow: auto;
+    border-radius: 28px 28px 22px 22px;
+    background: #fff;
+    border: 1px solid rgba(226, 232, 240, 0.95);
+    box-shadow: 0 -20px 60px rgba(13, 27, 42, 0.22);
+    padding: 14px;
+  }
+
+  .mobileTocHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 6px 4px 12px;
+    border-bottom: 1px solid #edf1f7;
+    margin-bottom: 12px;
+  }
+
+  .mobileTocHeader strong {
+    color: #0d1b2a;
+    font-size: 16px;
+    font-weight: 950;
+  }
+
+  .mobileTocHeader button {
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 14px;
+    background: #f3f6fb;
+    color: #0d1b2a;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .layout,
+  [dir='rtl'] .layout {
+    grid-template-columns: 1fr;
+    padding: 14px 14px 28px;
+  }
+
+  .layout > .sidebar {
+    display: none;
+  }
+
+  .mobileTocPanel .sidebar,
+  [dir='rtl'] .mobileTocPanel .sidebar {
+    display: block;
+    position: static;
+    order: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  .mobileTocPanel .sideTitle {
+    display: none;
+  }
+
+  .mobileTocPanel .sideNav {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .mobileTocPanel .sideItem {
+    min-height: 48px;
+    padding: 12px;
+    border: 1px solid #edf1f7;
+    background: #fbfcff;
+    font-size: 15px;
+  }
+
+  .mobileTocPanel .sideItemActive {
+    border-color: rgba(249, 115, 22, 0.32);
+  }
+
+  .main {
+    gap: 18px;
+  }
+
+  .section {
+    padding: 18px;
+    border-radius: 22px;
+    scroll-margin-top: 128px;
+  }
+
+  .sectionHead {
+    margin-bottom: 16px;
+  }
+
+  .sectionHead h2 {
+    font-size: clamp(24px, 8vw, 34px);
+    line-height: 1.12;
+  }
+
+  .sectionHead p,
+  .card p,
+  .cardAccent p,
+  .cardDanger p,
+  .protocolCard p,
+  .criteriaCard p,
+  .bulletItem p,
+  .calloutBody {
+    font-size: 16px;
+    line-height: 1.78;
+  }
+
+  .bulletCard {
+    padding: 8px;
+  }
+
+  .bulletItem {
+    grid-template-columns: 32px 1fr;
+    padding: 12px;
+  }
+
+  .splitGrid {
+    gap: 12px;
+    margin: 14px 0;
+  }
+
+  .card,
+  .cardAccent,
+  .cardDanger,
+  .protocolCard,
+  .criteriaCard,
+  .figure {
+    border-radius: 18px;
+    padding: 16px;
+  }
+
+  .zoneGrid,
+  .protocolGrid,
+  .criteriaGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .zoneCard {
+    min-height: 0;
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .tableWrap {
+    margin: 14px 0;
+    border-radius: 18px;
+  }
+
+  .table {
+    min-width: 520px;
+  }
+
+  .table th,
+  .table td {
+    padding: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .videoCard {
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .videoFrameWrap {
+    border-radius: 16px;
+  }
+
+  .takeHomeBox {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .takeHomeIntro {
+    font-size: 16px;
+  }
+
+  .takeHomeItem {
+    grid-template-columns: 58px 1fr;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 18px;
+  }
+
+  .takeHomeNumber {
+    width: 52px;
+    height: 40px;
+    border-radius: 14px;
+  }
+
+  .mobileMcqFab {
+    position: fixed;
+    left: 14px;
+    right: 14px;
+    bottom: calc(14px + env(safe-area-inset-bottom));
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 54px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #0d1b2a 0%, #172a46 100%);
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 18px 38px rgba(13, 27, 42, 0.28);
+    font-weight: 950;
+  }
+
+  .mobileMcqFab span {
+    width: 30px;
+    height: 30px;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.14);
+  }
+}
+
+.caseGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 18px 0;
+}
+
+.caseCardLink {
+  overflow: hidden;
+  border-radius: 22px;
+  background: #ffffff;
+  border: 1px solid rgba(208, 216, 230, 0.9);
+  color: inherit;
+  text-decoration: none;
+  box-shadow: 0 16px 34px rgba(23, 32, 51, 0.08);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.caseCardLink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 44px rgba(23, 32, 51, 0.12);
+}
+
+.caseImage {
+  width: 100%;
+  height: 210px;
+  display: block;
+  object-fit: cover;
+  background: #0d1b2a;
+}
+
+.caseBody {
+  padding: 18px;
+}
+
+.caseLabel {
+  display: inline-flex;
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(249, 115, 22, 0.12);
+  color: #c2410c;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.caseBody h3 {
+  margin: 0 0 8px;
+  color: #0d1b2a;
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.caseBody p {
+  margin: 0 0 8px;
+  color: #536174;
+  line-height: 1.55;
+}
+
+.caseBody small {
+  display: block;
+  margin-bottom: 12px;
+  color: #96a0b1;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.caseBody strong {
+  color: #f97316;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.discoidStats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.discoidStatCard {
+  min-height: 154px;
+  border-radius: 22px;
+  padding: 18px;
+  background: linear-gradient(135deg, #0d1b2a 0%, #172a46 100%);
+  color: #fff;
+  box-shadow: 0 14px 30px rgba(23, 32, 51, 0.12);
+}
+
+.discoidStatCard:nth-child(2) {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+}
+
+.discoidStatCard:nth-child(3) {
+  background: linear-gradient(135deg, #ffffff 0%, #f7f8fc 100%);
+  color: #0d1b2a;
+  border: 1px solid #e3e8f0;
+}
+
+.discoidStatCard strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.discoidStatCard span {
+  display: block;
+  font-weight: 900;
+  margin-bottom: 7px;
+}
+
+.discoidStatCard p {
+  margin: 0;
+  color: currentColor;
+  opacity: 0.78;
+  line-height: 1.55;
+  font-size: 13px;
+}
+
+[dir='rtl'] .caseBody,
+[dir='rtl'] .discoidStatCard {
+  text-align: right;
+}
+
+@media (max-width: 760px) {
+  .caseGrid,
+  .discoidStats {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .caseCardLink {
+    border-radius: 18px;
+  }
+
+  .caseImage {
+    height: 180px;
+  }
+
+  .caseBody {
+    padding: 16px;
+  }
+
+  .caseBody h3 {
+    font-size: 17px;
+  }
+
+  .caseBody p,
+  .discoidStatCard p {
+    font-size: 16px;
+    line-height: 1.72;
+  }
+
+  .discoidStatCard {
+    min-height: 0;
+    border-radius: 18px;
+    padding: 16px;
+  }
+}
+
+.figureZoomButton {
+  width: 100%;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: zoom-in;
+  font-family: inherit;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.figureZoomButton span {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(13, 27, 42, 0.86);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+  box-shadow: 0 10px 24px rgba(13, 27, 42, 0.24);
+}
+
+[dir='rtl'] .figureZoomButton span {
+  right: auto;
+  left: 14px;
+}
+
+.imageModal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  padding: 24px;
+  display: grid;
+  place-items: center;
+  background: rgba(13, 27, 42, 0.78);
+  backdrop-filter: blur(8px);
+}
+
+.imageModalContent {
+  width: min(1040px, 96vw);
+  max-height: 92vh;
+  position: relative;
+  border-radius: 24px;
+  padding: 18px;
+  background: #fff;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
+}
+
+.imageModalContent img {
+  width: 100%;
+  max-height: 82vh;
+  display: block;
+  object-fit: contain;
+  border-radius: 16px;
+  background: #0d1b2a;
+}
+
+.imageModalClose {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: #f97316;
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 14px 30px rgba(249, 115, 22, 0.32);
+}
+
+[dir='rtl'] .imageModalClose {
+  right: auto;
+  left: -14px;
+}
+
+@media (max-width: 760px) {
+  .imageModal {
+    padding: 10px;
+  }
+
+  .imageModalContent {
+    width: 100%;
+    padding: 10px;
+    border-radius: 18px;
+  }
+
+  .imageModalClose {
+    top: 8px;
+    right: 8px;
+  }
+
+  [dir='rtl'] .imageModalClose {
+    right: auto;
+    left: 8px;
+  }
+}
+
+.caseImage {
+  height: 300px;
+  object-fit: contain;
+  padding: 10px;
+}
+
+@media (max-width: 760px) {
+  .caseImage {
+    height: 240px;
+    padding: 8px;
+  }
+}
+`
+
+const CONTENT = {
   de: {
-    breadMsk: 'Muskuloskelettales',
-    breadTopic: 'Knie · Meniskus',
-    title: 'MCQ · Meniskus',
-    subtitle: '6 Prüfungsfragen · MRT · Anatomie · Rissdiagnostik',
-    questionOf: (c, t) => `Frage ${c} von ${t}`,
-    checkBtn: 'Antwort prüfen',
-    nextBtn: 'Nächste Frage',
-    resultBtn: 'Ergebnis anzeigen',
-    restartBtn: 'Nochmal starten',
-    learnBtn: '← Zur Lernseite',
-    correct: 'Richtig!',
-    incorrect: 'Leider falsch',
-    correctAnswer: 'Richtige Antwort:',
-    explanation: 'Erklärung',
-    scoreLabel: (s, t) => `${s} von ${t} Fragen richtig`,
-    summaryTitle: 'Zusammenfassung',
-    wrongOnly: 'Nur falsche Fragen',
-    allQ: 'Alle Fragen',
-    correctTag: '✓ Richtig',
-    wrongTag: '✗ Falsch',
-    yourAnswer: 'Deine Antwort:',
-    rightAnswer: 'Richtige Antwort:',
-    progressLabel: (c, t) => `${c}/${t}`,
+    toc: 'Inhaltsverzeichnis',
+    breadcrumbMsk: 'Muskuloskelettales',
+    breadcrumbCurrent: 'Knie · Meniskus',
+    title: 'Meniskus',
+    subtitle: 'Grundlagen, Anatomie, MRT-Diagnostik und sichere Risskriterien',
+    sourceLabel: 'Dr. Zia',
+    keyLabel: 'Merke',
+    caveLabel: 'CAVE',
+    mcqTitle: 'MCQs zum Meniskus',
+    mcqDesc: 'Passende Prüfungsfragen zu Anatomie, MRT-Grading und Rissdiagnostik.',
+    mcqCta: 'MCQs starten',
+    openCase: 'Bild direkt in Radiopaedia öffnen',
+    zoomImage: 'Bild vergrößern',
+    closePreview: 'Vorschau schließen',
+    sections: [
+      { id: 'anatomie', label: 'Anatomie', icon: '🦴' },
+      { id: 'vaskularisation', label: 'Vaskularisation', icon: '🩸' },
+      { id: 'mrt', label: 'MRT-Diagnostik', icon: '🩻' },
+      { id: 'grading', label: 'MRT-Grading', icon: '📊' },
+      { id: 'risskriterien', label: 'Meniskusriss', icon: '⚠️' },
+      { id: 'discoider', label: 'Discoider Meniskus', icon: '🔵' },
+      { id: 'therapie', label: 'Therapieprinzip', icon: '🧵' },
+      { id: 'fallbeispiele', label: 'Fallbeispiele', icon: '🧪' },
+      { id: 'lernvideo', label: 'Lernvideo', icon: '▶️' },
+    ],
+    heroCards: [
+      { value: '2/3', label: 'aller Risse', text: 'betreffen den Innenmeniskus' },
+      { value: '98 %', label: 'Innenmeniskus', text: 'Risse typischerweise im Hinterhorn' },
+      { value: '3 mm', label: 'Standard', text: 'MRT-Schnittdicke im Knieprotokoll' },
+    ],
+    basics: {
+      title: 'Kniegelenk · Meniskus · Grundlagen',
+      lead: 'Die Menisken sind fibrocartilaginäre Strukturen zwischen Femurkondylen und Tibiaplateau. Es gibt zwei Menisken: den Innenmeniskus und den Außenmeniskus. Beide verbessern die Gelenkkongruenz, verteilen die Last und wirken als Stoßdämpfer. Für die MRT-Befundung sind Form, Fixierung, Durchblutung und Oberflächenkontakt des Signals entscheidend.',
+      bullets: [
+        'Innenmeniskus: C-förmig, kapsel- und MCL-fixiert, deutlich weniger mobil.',
+        'Außenmeniskus: eher O-förmig, nicht an das laterale Kollateralband fixiert, beweglicher.',
+        'Die tibiale Verankerung erfolgt über Meniskuswurzeln am Vorder- und Hinterhorn.',
+      ],
+    },
+    anatomy: {
+      title: 'Anatomie',
+      lead: 'Die Menisken sind faserknorpelige Strukturen zwischen den Femurkondylen und dem Tibiaplateau. Es gibt zwei Menisken: den Innenmeniskus und den Außenmeniskus. Sie verbessern die Gelenkkongruenz, verteilen die Last und wirken als Stoßdämpfer.',
+      tableHeaders: ['Merkmal', 'Innenmeniskus', 'Außenmeniskus'],
+      tableRows: [
+        ['Form', 'C-förmig', 'eher O-förmig'],
+        ['Fixierung', 'fest mit Gelenkkapsel und medialem Seitenband verwachsen', 'nicht mit den lateralen Bändern fixiert'],
+        ['Mobilität', 'wenig beweglich', 'mobiler und dadurch weniger verletzungsanfällig'],
+        ['Risshäufigkeit', 'etwa zwei Drittel aller Meniskusrisse', 'seltener betroffen'],
+        ['Häufigste Lokalisation', 'Hinterhorn in ca. 98 %', 'Hinterhorn in ca. 50 %, Rest in Corpus und Vorderhorn'],
+      ],
+      rootsTitle: 'Anschlüsse und Meniskuswurzeln',
+      rootsText: 'Die Anschlüsse sollten getrennt betrachtet werden: femoral als Gleitkontakt zu den Femurkondylen und tibial als feste Verankerung über die Meniskuswurzeln.',
+      rootsItems: [
+        { title: 'Femoro-meniskaler Kontakt', text: 'Die Menisken artikulieren mit den Femurkondylen; ihre proximale Oberfläche ist konvex.' },
+        { title: 'Tibiale Verankerung', text: 'Die feste Verankerung am Tibiaplateau erfolgt über die Meniskuswurzeln am Vorder- und Hinterhorn jedes Meniskus.' },
+      ],
+      imageCaption: 'Schematische Übersicht der Meniskuswurzeln: Vorderhorn, Corpus und Hinterhorn.',
+      key: 'Die verminderte Beweglichkeit des Innenmeniskus ist der wichtigste Grund, warum er deutlich verletzungsanfälliger ist.',
+    },
+    vascular: {
+      title: 'Vaskularisation und Heilungspotenzial',
+      lead: 'Die Blutversorgung erfolgt nur kapselnah über den perimeniskalen Plexus. Von peripher nach zentral nimmt die Durchblutung ab. Daraus ergibt sich direkt die Heilungschance.',
+      zones: [
+        { name: 'Rote Zone · Zone I', range: '< 3 mm von der Kapsel', status: 'gut durchblutet', therapy: 'beste Nahtchance' },
+        { name: 'Rot-weiße Zone · Zone II', range: '3–5 mm von der Kapsel', status: 'eingeschränkte Durchblutung', therapy: 'Naht individuell abwägen' },
+        { name: 'Weiße Zone · Zone III', range: 'zentral gelegen', status: 'avaskulär', therapy: 'keine relevante Heilungstendenz' },
+      ],
+      tableHeaders: ['Zone', 'Lage', 'Durchblutung'],
+      tableRows: [
+        ['Rote Zone', '< 3 mm von der Kapsel', 'gut'],
+        ['Rot-weiße Zone', '3–5 mm von der Kapsel', 'eingeschränkt'],
+        ['Weiße Zone', 'zentral', 'avaskulär'],
+      ],
+      key: 'Je näher der Riss an der Kapsel liegt, desto besser ist das Heilungspotenzial.',
+    },
+    mri: {
+      title: 'Die MRT-Diagnostik',
+      lead: 'Die MRT-Diagnostik des Meniskus basiert auf einem dünnschichtigen Knieprotokoll und flüssigkeitssensitiven Sequenzen.',
+      protocol: [
+        { name: 'T1-Wichtung', text: 'Anatomische Übersicht und Beurteilung chronischer Fibrose.' },
+        { name: 'T2-w / PD-fs', text: 'Nachweis von Rissen, Knochenödemen und Kontinuitätsunterbrechungen der Bänder.' },
+        { name: 'Schnittdicke', text: 'Standardmäßig 3 mm, damit kleine Risse nicht durch Volumenmitteleffekt übersehen werden.' },
+      ],
+      normalTitle: 'Normalbefund',
+      normalText: 'Der gesunde Meniskus stellt sich homogen hypointens dar. In der sagittalen Ansicht besitzt er eine typische dreieckige Struktur.',
+      key: 'Ein reiner Signalanstieg im Meniskus ist noch kein Riss. Entscheidend ist der reproduzierbare Kontakt zur superioren oder inferioren Gelenkfläche.',
+    },
+    grading: {
+      title: 'MRT-Grading von Meniskusläsionen',
+      lead: 'Die Klassifikation nach Lotysch hilft, degenerative intrameniskale Signalveränderungen von einem echten Meniskusriss zu unterscheiden.',
+      lotyschTitle: 'Grad 1 bis 3 nach Lotysch',
+      tableHeaders: ['Grad', 'Morphologie', 'Oberflächenkontakt', 'Bedeutung'],
+      tableRows: [
+        ['1', 'punktförmige oder kleine fokale Signalsteigerung', 'kein Kontakt', 'frühe mukoide Degeneration, meist asymptomatisch'],
+        ['2a', 'lineare Signalsteigerung', 'kein Kontakt', 'fortgeschrittene Degeneration'],
+        ['2b', 'lineare Signalsteigerung', 'Kontakt auf einem einzelnen Bild', 'inkonklusiv für echten Riss'],
+        ['2c', 'keilförmige oder globuläre Signalsteigerung', 'kein eindeutiger Kontakt', 'hohes Risiko für okkulten Riss'],
+        ['3', 'Pathologische Signalsteigerung', 'Kontakt auf mindestens zwei aufeinanderfolgenden Schichten', 'radiologisch gesicherter Meniskusriss'],
+        ['4', 'komplexe Rissmorphologie mit Deformierung oder Fragmentierung', 'mehrfacher Oberflächenkontakt', 'komplexer Meniskusriss'],
+      ],
+      key: 'Meniskusläsion Grad 3 ist der entscheidende Schwellenwert für die Rissdiagnose: Signalsteigerung innerhalb des Meniskus mit sicherem Oberflächenkontakt auf mindestens zwei Schichten.',
+    },
+    tear: {
+      title: 'MRT-Kriterien für einen Meniskusriss',
+      lead: 'Für die Diagnose „Meniskusriss“ müssen verbindliche Kriterien erfüllt sein. Dadurch lassen sich Sensitivität und Spezifität deutlich verbessern.',
+      cave: 'Ein reiner intrameniskaler Signalanstieg reicht nicht aus, um einen Meniskusriss sicher zu diagnostizieren.',
+      criteria: [
+        { title: 'Kontakt zum Gelenkflächenrand', text: 'Das pathologisch erhöhte Signal erreicht die superiore oder inferiore Meniskusoberfläche.' },
+        { title: 'Deformität', text: 'Die normale dreieckige Meniskuskonfiguration ist verloren oder deutlich verändert.' },
+        { title: 'Two-slice-touch-Regel', text: 'Die Läsion ist auf mindestens zwei aufeinanderfolgenden Schichten mit Oberflächenkontakt erkennbar.' },
+      ],
+      key: 'Die Two-slice-touch-Regel erhöht die Spezifität, weil ein Einzelbild-Artefakt nicht fälschlich als Riss gewertet wird.',
+    },
+    cases: {
+      title: 'Fallbeispiele',
+      lead: '',
+      items: [
+        {
+          title: 'Keilförmig/globuläres Signal ohne sicheren Oberflächenkontakt',
+          label: 'Grad 2c',
+          tags: ['Discoider Meniskus'],
+          meta: 'PD-Wichtung · sagittal · mukoide Degeneration · hohes Risiko für okkulten Riss',
+          img: '/meniskus/mri-sagittal.png',
+          url: 'https://radiopaedia.org/cases/75168/studies/86248#t=im&v1i=52196174&v1z=1&v2i=52196277&v2z=1&v3i=52196234&v3z=1&v4i=52196213&v4z=1',
+          credit: 'Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060',
+        },
+        {
+          title: 'Lineares Signal mit Oberflächenkontakt auf nur einer Schicht',
+          label: 'Grad 2b',
+          tags: ['Discoider Meniskus'],
+          meta: 'PD-Wichtung · koronal · inkonklusiv · kein sicherer Grad-3-Riss',
+          img: '/meniskus/mri-coronal.png',
+          url: 'https://radiopaedia.org/cases/14060/studies/13900#t=im&v1i=1118538&v1z=1&v2i=1118592&v2z=1',
+          credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168',
+        },
+      ],
+      key: 'Fallbeispiele sind besonders hilfreich, weil nicht jede intrameniskale Signalsteigerung automatisch ein Meniskusriss ist.',
+    },
+    discoid: {
+      title: 'Discoider Meniskus',
+      lead: 'Der discoide Meniskus ist eine angeborene anatomische Variante mit übermäßig breitem, scheibenförmigem Meniskuskörper. Er betrifft fast ausschließlich den Außenmeniskus und reißt häufiger als ein normal geformter Meniskus.',
+      stats: [
+        { value: '3–5 %', label: 'Inzidenz', text: 'häufig Zufallsbefund im Knie-MRT' },
+        { value: '~50 %', label: 'bilateral', text: 'nicht selten beidseitig vorhanden' },
+        { value: 'Außen', label: 'Meniskus', text: 'fast ausschließlich der Außenmeniskus betroffen' },
+      ],
+      overviewHeaders: ['Parameter', 'Wert'],
+      overviewRows: [
+        ['Betroffener Meniskus', 'fast ausschließlich Außenmeniskus'],
+        ['Seitenverteilung', 'bilateral in etwa 50 % der Fälle'],
+        ['Geschlecht', 'keine klare Präferenz'],
+        ['Prävalenz', 'höher in asiatischen Populationen beschrieben'],
+        ['Rissrisiko', 'erhöht gegenüber normalem Meniskus'],
+      ],
+      childTitle: 'Klinisches Leitsymptom bei Kindern',
+      childText: 'Knieschnappen oder ein „Snapping Knee“ bei Kindern sollte an einen discoiden Außenmeniskus denken lassen.',
+      mriTitle: 'MRT-Kriterien',
+      mriHeaders: ['Ebene', 'Kriterium', 'Schwellenwert'],
+      mriRows: [
+        ['Koronal', 'absolute Meniskusbreite', '≥ 15 mm'],
+        ['Koronal', 'Meniskusbreite / maximale Tibiabreite', '> 20 %'],
+        ['Sagittal', 'kontinuierliche Corpus-Darstellung', 'auf ≥ 3 aufeinanderfolgenden Standardschichten'],
+      ],
+      sagittalTitle: 'Sagittales Zeichen',
+      sagittalText: 'Das sagittale Kriterium entspricht dem Gegenteil des Absent-Bow-Tie-Signs: Ein normaler Meniskus zeigt den Corpus nur auf 1–2 Schichten, der discoide Meniskus auf mindestens 3 Schichten.',
+      treatmentHeaders: ['Situation', 'Vorgehen'],
+      treatmentRows: [
+        ['asymptomatischer Zufallsbefund', 'konservativ, keine Intervention nötig'],
+        ['symptomatisch ohne Riss', 'konservativ; bei Versagen arthroskopische Saucerisation'],
+        ['discoider Meniskus mit Riss', 'Meniskusrefixation plus ggf. partielle Resektion'],
+        ['irreparabel / schwere Destruktion', 'Teil- oder Totalmeniskektomie nur als letzte Option'],
+      ],
+      key: 'Sagittales Zeichen: Bei einem discoiden Meniskus bleibt der Meniskuskorpus auf mindestens 3 aufeinanderfolgenden sagittalen Schichten sichtbar.',
+    },
+    therapy: {
+      title: 'Therapieprinzip: Save the Meniscus',
+      titlePrefix: 'Therapieprinzip',
+      saveText: 'Save the Meniscus',
+      lead: 'Die Therapie richtet sich nach Symptomatik, Rissmorphologie, Lokalisation und Vaskularisation. Ziel ist der möglichst weitgehende Erhalt von Meniskusgewebe.',
+      tableHeaders: ['Situation', 'Prinzip'],
+      tableRows: [
+        ['asymptomatische oder rein degenerative Läsion', 'konservative Therapie'],
+        ['frischer Riss in der roten Zone', 'Meniskusnaht'],
+        ['irreparables, mechanisch relevantes Fragment', 'sparsame Teilresektion'],
+      ],
+      key: 'So viel Meniskus wie möglich erhalten, so wenig wie nötig resezieren.',
+    },
+    video: {
+      title: 'Lernvideo',
+      text: 'Das Lernvideo zum Thema Meniskus ist jetzt auf YouTube verfügbar.',
+      cta: 'Video auf YouTube ansehen',
+      url: 'https://youtu.be/L03fPcRZm_o?si=RzNDyM-Fmtig8I10',
+    },
   },
   en: {
-    breadMsk: 'Musculoskeletal',
-    breadTopic: 'Knee · Meniscus',
-    title: 'MCQ · Meniscus',
-    subtitle: '6 exam questions · MRI · Anatomy · tear diagnosis',
-    questionOf: (c, t) => `Question ${c} of ${t}`,
-    checkBtn: 'Check Answer',
-    nextBtn: 'Next Question',
-    resultBtn: 'Show Results',
-    restartBtn: 'Restart',
-    learnBtn: '← Back to Learning',
-    correct: 'Correct!',
-    incorrect: 'Incorrect',
-    correctAnswer: 'Correct answer:',
-    explanation: 'Explanation',
-    scoreLabel: (s, t) => `${s} out of ${t} correct`,
-    summaryTitle: 'Summary',
-    wrongOnly: 'Wrong only',
-    allQ: 'All questions',
-    correctTag: '✓ Correct',
-    wrongTag: '✗ Wrong',
-    yourAnswer: 'Your answer:',
-    rightAnswer: 'Correct answer:',
-    progressLabel: (c, t) => `${c}/${t}`,
+    toc: 'Contents',
+    breadcrumbMsk: 'Musculoskeletal',
+    breadcrumbCurrent: 'Knee · Meniscus',
+    title: 'Meniscus',
+    subtitle: 'Basics, anatomy, MRI diagnosis and reliable tear criteria',
+    sourceLabel: 'Dr. Zia',
+    keyLabel: 'Key point',
+    caveLabel: 'Caution',
+    mcqTitle: 'Meniscus MCQs',
+    mcqDesc: 'Exam questions on anatomy, MRI grading and tear diagnosis.',
+    mcqCta: 'Start MCQs',
+    openCase: 'Open image directly in Radiopaedia',
+    zoomImage: 'Enlarge image',
+    closePreview: 'Close preview',
+    sections: [
+      { id: 'anatomie', label: 'Anatomy', icon: '🦴' },
+      { id: 'vaskularisation', label: 'Vascular supply', icon: '🩸' },
+      { id: 'mrt', label: 'MRI diagnosis', icon: '🩻' },
+      { id: 'grading', label: 'MRI grading', icon: '📊' },
+      { id: 'risskriterien', label: 'Meniscal tear', icon: '⚠️' },
+      { id: 'discoider', label: 'Discoid meniscus', icon: '🔵' },
+      { id: 'therapie', label: 'Treatment principle', icon: '🧵' },
+      { id: 'fallbeispiele', label: 'Cases', icon: '🧪' },
+      { id: 'lernvideo', label: 'Learning video', icon: '▶️' },
+    ],
+    heroCards: [
+      { value: '2/3', label: 'of tears', text: 'involve the medial meniscus' },
+      { value: '98%', label: 'medial meniscus', text: 'typically posterior horn tears' },
+      { value: '3 mm', label: 'standard', text: 'MRI slice thickness in knee protocols' },
+    ],
+    basics: {
+      title: 'Knee joint · Meniscus · Basics',
+      lead: 'The menisci are fibrocartilaginous structures between the femoral condyles and the tibial plateau. There are two menisci: the medial and the lateral meniscus. Both improve joint congruity, distribute load and act as shock absorbers. For MRI reporting, shape, fixation, vascularity and surface contact of signal are central.',
+      bullets: [
+        'Medial meniscus: C-shaped, fixed to the capsule and MCL, therefore much less mobile.',
+        'Lateral meniscus: more O-shaped, not attached to the lateral collateral ligament, therefore more mobile.',
+        'Tibial anchoring is provided by the meniscal roots at the anterior and posterior horns.',
+      ],
+    },
+    anatomy: {
+      title: 'Anatomy',
+      lead: 'The menisci are fibrocartilaginous structures between the femoral condyles and the tibial plateau. There are two menisci: the medial meniscus and the lateral meniscus. They improve joint congruity, distribute load and act as shock absorbers.',
+      tableHeaders: ['Feature', 'Medial meniscus', 'Lateral meniscus'],
+      tableRows: [
+        ['Shape', 'C-shaped', 'more O-shaped'],
+        ['Fixation', 'firmly attached to capsule and medial collateral ligament', 'not fixed to the lateral ligaments'],
+        ['Mobility', 'less mobile', 'more mobile and therefore less injury-prone'],
+        ['Frequency of tears', 'about two thirds of all meniscal tears', 'less commonly affected'],
+        ['Most common location', 'posterior horn in approx. 98%', 'posterior horn in approx. 50%, remainder in body and anterior horn'],
+      ],
+      rootsTitle: 'Attachments and meniscal roots',
+      rootsText: 'The attachments should be considered separately: femoral gliding contact with the condyles and tibial anchoring through the meniscal roots.',
+      rootsItems: [
+        { title: 'Femoro-meniscal contact', text: 'The menisci articulate with the femoral condyles; their proximal surface is convex.' },
+        { title: 'Tibial anchoring', text: 'Firm anchoring to the tibial plateau is provided by the meniscal roots at the anterior and posterior horn of each meniscus.' },
+      ],
+      imageCaption: 'Schematic overview of the meniscal roots: anterior horn, body and posterior horn.',
+      key: 'Reduced mobility of the medial meniscus is the main reason why it is clearly more prone to injury.',
+    },
+    vascular: {
+      title: 'Vascular supply and healing potential',
+      lead: 'Blood supply is limited to the capsular periphery via the perimeniscal plexus. Vascularity decreases from the periphery to the center, directly determining healing potential.',
+      zones: [
+        { name: 'Red zone · Zone I', range: '< 3 mm from the capsule', status: 'well vascularized', therapy: 'best chance for repair' },
+        { name: 'Red-white zone · Zone II', range: '3–5 mm from the capsule', status: 'limited blood supply', therapy: 'repair depends on case' },
+        { name: 'White zone · Zone III', range: 'central area', status: 'avascular', therapy: 'no relevant healing potential' },
+      ],
+      tableHeaders: ['Zone', 'Location', 'Vascularity'],
+      tableRows: [
+        ['Red zone', '< 3 mm from the capsule', 'good'],
+        ['Red-white zone', '3–5 mm from the capsule', 'limited'],
+        ['White zone', 'central', 'avascular'],
+      ],
+      key: 'The closer the tear is to the capsule, the better its healing potential.',
+    },
+    mri: {
+      title: 'MRI diagnosis',
+      lead: 'MRI assessment of the meniscus relies on a thin-slice knee protocol and fluid-sensitive sequences.',
+      protocol: [
+        { name: 'T1-weighting', text: 'Anatomical overview and assessment of chronic fibrosis.' },
+        { name: 'T2-w / PD-fs', text: 'Detection of tears, bone marrow edema and ligament discontinuity.' },
+        { name: 'Slice thickness', text: 'Usually 3 mm so that small tears are not hidden by volume averaging.' },
+      ],
+      normalTitle: 'Normal appearance',
+      normalText: 'A healthy meniscus is homogeneously hypointense. On sagittal images it has a typical triangular configuration.',
+      key: 'Intrameniscal signal alone is not a tear. The decisive feature is reproducible contact with the superior or inferior articular surface.',
+    },
+    grading: {
+      title: 'MRI grading of meniscal lesions',
+      lead: 'The Lotysch classification helps distinguish degenerative intrameniscal signal changes from a true meniscal tear.',
+      lotyschTitle: 'Grades 1 to 3 according to Lotysch',
+      tableHeaders: ['Grade', 'Morphology', 'Surface contact', 'Meaning'],
+      tableRows: [
+        ['1', 'punctate or small focal signal increase', 'no contact', 'early mucoid degeneration, usually asymptomatic'],
+        ['2a', 'linear signal increase', 'no contact', 'advanced degeneration'],
+        ['2b', 'linear signal increase', 'contact on a single image', 'inconclusive for a true tear'],
+        ['2c', 'wedge-shaped or globular signal increase', 'no definite contact', 'high risk of an occult tear'],
+        ['3', 'signal increase', 'contact on at least two consecutive slices', 'radiologically proven meniscal tear'],
+        ['4', 'complex tear morphology with deformation or fragmentation', 'multiple surface contacts', 'complex meniscal tear'],
+      ],
+      key: 'Grade 3 meniscal lesion is the decisive threshold for diagnosing a tear: intrameniscal signal increase with reliable surface contact on at least two slices.',
+    },
+    tear: {
+      title: 'MRI criteria for a meniscal tear',
+      lead: 'Specific criteria must be fulfilled before diagnosing a meniscal tear. This improves sensitivity and specificity.',
+      cave: 'Intrameniscal signal increase alone is not sufficient to confidently diagnose a meniscal tear.',
+      criteria: [
+        { title: 'Contact with the articular surface', text: 'The abnormal high signal reaches the superior or inferior meniscal surface.' },
+        { title: 'Deformity', text: 'The normal triangular configuration is lost or clearly altered.' },
+        { title: 'Two-slice-touch rule', text: 'The lesion is visible with surface contact on at least two consecutive slices.' },
+      ],
+      key: 'The two-slice-touch rule increases specificity because a single-slice artifact is not overcalled as a tear.',
+    },
+    cases: {
+      title: 'Cases',
+      lead: '',
+      items: [
+        {
+          title: 'Wedge-shaped/globular signal without definite surface contact',
+          label: 'Grade 2c',
+          tags: ['Discoid meniscus'],
+          meta: 'PD-weighted · sagittal · mucoid degeneration · high risk of occult tear',
+          img: '/meniskus/mri-sagittal.png',
+          url: 'https://radiopaedia.org/cases/75168/studies/86248#t=im&v1i=52196174&v1z=1&v2i=52196277&v2z=1&v3i=52196234&v3z=1&v4i=52196213&v4z=1',
+          credit: 'Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060',
+        },
+        {
+          title: 'Linear signal with surface contact on one slice only',
+          label: 'Grade 2b',
+          tags: ['Discoid meniscus'],
+          meta: 'PD-weighted · coronal · inconclusive · not a definite grade-3 tear',
+          img: '/meniskus/mri-coronal.png',
+          url: 'https://radiopaedia.org/cases/14060/studies/13900#t=im&v1i=1118538&v1z=1&v2i=1118592&v2z=1',
+          credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168',
+        },
+      ],
+      key: 'Cases are useful because not every intrameniscal signal abnormality represents a definite meniscal tear.',
+    },
+    discoid: {
+      title: 'Discoid meniscus',
+      lead: 'A discoid meniscus is a congenital anatomic variant with an abnormally wide, disc-shaped meniscal body. It almost exclusively affects the lateral meniscus and is more prone to tears than a normally shaped meniscus.',
+      stats: [
+        { value: '3–5%', label: 'incidence', text: 'often incidental on knee MRI' },
+        { value: '~50%', label: 'bilateral', text: 'not uncommonly present on both sides' },
+        { value: 'Lateral', label: 'meniscus', text: 'almost exclusively the lateral meniscus is affected' },
+      ],
+      overviewHeaders: ['Parameter', 'Value'],
+      overviewRows: [
+        ['Affected meniscus', 'almost exclusively lateral meniscus'],
+        ['Side distribution', 'bilateral in about 50% of cases'],
+        ['Sex', 'no clear predilection'],
+        ['Prevalence', 'reported to be higher in Asian populations'],
+        ['Risk of tear', 'higher than in a normally shaped meniscus'],
+      ],
+      childTitle: 'Clinical clue in children',
+      childText: 'A snapping knee in a child should always raise suspicion for a discoid lateral meniscus.',
+      mriTitle: 'MRI criteria',
+      mriHeaders: ['Plane', 'Criterion', 'Threshold'],
+      mriRows: [
+        ['Coronal', 'absolute meniscal width', '≥ 15 mm'],
+        ['Coronal', 'meniscal width / maximal tibial width', '> 20%'],
+        ['Sagittal', 'continuous body visualization', 'on ≥ 3 consecutive standard slices'],
+      ],
+      sagittalTitle: 'Sagittal sign',
+      sagittalText: 'The sagittal criterion is the opposite of the absent bow-tie sign: a normal meniscus shows the body on only 1–2 slices, whereas a discoid meniscus remains visible on at least 3 slices.',
+      treatmentHeaders: ['Situation', 'Management'],
+      treatmentRows: [
+        ['asymptomatic incidental finding', 'conservative, no intervention needed'],
+        ['symptomatic without tear', 'conservative; arthroscopic saucerization if symptoms persist'],
+        ['discoid meniscus with tear', 'meniscal repair plus partial resection if needed'],
+        ['irreparable / severe destruction', 'partial or total meniscectomy only as last option'],
+      ],
+      key: 'Sagittal sign: in a discoid meniscus, the meniscal body remains visible on at least 3 consecutive sagittal slices.',
+    },
+    therapy: {
+      title: 'Treatment concept: Save the meniscus',
+      titlePrefix: 'Treatment concept',
+      saveText: 'Save the Meniscus',
+      lead: 'Management depends on symptoms, tear morphology, location and vascularity. The goal is to preserve as much meniscal tissue as possible.',
+      tableHeaders: ['Situation', 'Principle'],
+      tableRows: [
+        ['asymptomatic or purely degenerative lesion', 'conservative treatment'],
+        ['fresh tear in the red zone', 'meniscal repair'],
+        ['irreparable mechanically relevant fragment', 'limited partial resection'],
+      ],
+      key: 'Preserve as much meniscus as possible, resect only as much as necessary.',
+    },
+    video: {
+      title: 'Learning video',
+      text: 'The learning video for this meniscus chapter is now available on YouTube.',
+      cta: 'Watch on YouTube',
+      url: 'https://youtu.be/L03fPcRZm_o?si=RzNDyM-Fmtig8I10',
+    },
   },
   fa: {
-    breadMsk: 'اسکلتی-عضلانی',
-    breadTopic: 'زانو · منیسک',
-    title: 'MCQ · منیسک',
-    subtitle: '۶ سوال امتحانی · MRI · آناتومی · تشخیص پارگی',
-    questionOf: (c, t) => `سوال ${c} از ${t}`,
-    checkBtn: 'بررسی پاسخ',
-    nextBtn: 'سوال بعدی',
-    resultBtn: 'نمایش نتیجه',
-    restartBtn: 'شروع مجدد',
-    learnBtn: '← به صفحه آموزش',
-    correct: 'درست!',
-    incorrect: 'متأسفانه اشتباه',
-    correctAnswer: 'پاسخ صحیح:',
-    explanation: 'توضیح',
-    scoreLabel: (s, t) => `${s} از ${t} سوال درست`,
-    summaryTitle: 'خلاصه',
-    wrongOnly: 'فقط اشتباه‌ها',
-    allQ: 'همه سوالات',
-    correctTag: '✓ درست',
-    wrongTag: '✗ اشتباه',
-    yourAnswer: 'پاسخ شما:',
-    rightAnswer: 'پاسخ صحیح:',
-    progressLabel: (c, t) => `${c}/${t}`,
+    toc: 'فهرست مطالب',
+    breadcrumbMsk: 'اسکلتی-عضلانی',
+    breadcrumbCurrent: 'زانو · منیسک',
+    title: 'منیسک',
+    subtitle: 'مبانی، آناتومی، تشخیص MRI و معیارهای قطعی پارگی',
+    sourceLabel: 'Dr. Zia',
+    keyLabel: 'نکته مهم',
+    caveLabel: 'احتیاط',
+    mcqTitle: 'سوالات منیسک',
+    mcqDesc: 'سوالات مرتبط با آناتومی، درجه‌بندی MRI و تشخیص پارگی.',
+    mcqCta: 'شروع سوالات',
+    openCase: 'باز کردن مستقیم تصویر در Radiopaedia',
+    zoomImage: 'بزرگ‌نمایی تصویر',
+    closePreview: 'بستن نمایش بزرگ',
+    sections: [
+      { id: 'anatomie', label: 'آناتومی', icon: '🦴' },
+      { id: 'vaskularisation', label: 'خون‌رسانی', icon: '🩸' },
+      { id: 'mrt', label: 'تشخیص MRI', icon: '🩻' },
+      { id: 'grading', label: 'درجه‌بندی MRI', icon: '📊' },
+      { id: 'risskriterien', label: 'پارگی منیسک', icon: '⚠️' },
+      { id: 'discoider', label: 'منیسک دیسکوئید', icon: '🔵' },
+      { id: 'therapie', label: 'اصل درمان', icon: '🧵' },
+      { id: 'fallbeispiele', label: 'نمونه کیس‌ها', icon: '🧪' },
+      { id: 'lernvideo', label: 'ویدیوی آموزشی', icon: '▶️' },
+    ],
+    heroCards: [
+      { value: '۲/۳', label: 'پارگی‌ها', text: 'مربوط به منیسک داخلی هستند' },
+      { value: '۹۸٪', label: 'منیسک داخلی', text: 'اغلب در شاخ پشتی پاره می‌شود' },
+      { value: '۳ mm', label: 'استاندارد', text: 'ضخامت برش در پروتکل MRI زانو' },
+    ],
+    basics: {
+      title: 'مفصل زانو · منیسک · مبانی',
+      lead: 'منیسک‌ها ساختارهای فیبروکارتیلاژ بین کندیل‌های فمور و پلاتوی تیبیا هستند. دو منیسک وجود دارد: منیسک داخلی و منیسک خارجی. هر دو تطابق مفصلی را بهتر می‌کنند، نیرو را پخش می‌کنند و نقش ضربه‌گیر دارند. در گزارش MRI، شکل، میزان تثبیت، خون‌رسانی و تماس سیگنال با سطح مفصل اهمیت اصلی دارد.',
+      bullets: [
+        'منیسک داخلی: C شکل، متصل به کپسول و MCL، بنابراین تحرک کمتر دارد.',
+        'منیسک خارجی: بیشتر O شکل، به رباط خارجی متصل نیست و تحرک بیشتری دارد.',
+        'اتصال به تیبیا از طریق ریشه‌های منیسک در شاخ قدامی و خلفی انجام می‌شود.',
+      ],
+    },
+    anatomy: {
+      title: 'آناتومی',
+      lead: 'منیسک‌ها ساختارهای فیبروکارتیلاژی بین کندیل‌های فمور و پلاتوی تیبیا هستند. دو منیسک وجود دارد: منیسک داخلی و منیسک خارجی. آن‌ها تطابق مفصلی را بهتر می‌کنند، نیرو را پخش می‌کنند و مانند ضربه‌گیر عمل می‌کنند.',
+      tableHeaders: ['ویژگی', 'منیسک داخلی', 'منیسک خارجی'],
+      tableRows: [
+        ['شکل', 'C شکل', 'بیشتر O شکل'],
+        ['تثبیت', 'به کپسول مفصلی و رباط جانبی داخلی متصل است', 'به رباط‌های خارجی متصل نیست'],
+        ['تحرک', 'کم‌تحرک', 'متحرک‌تر و در نتیجه کمتر مستعد آسیب'],
+        ['شیوع پارگی', 'حدود دو سوم همه پارگی‌های منیسک', 'کمتر درگیر می‌شود'],
+        ['محل شایع پارگی', 'شاخ پشتی در حدود ۹۸٪', 'شاخ پشتی در حدود ۵۰٪، بقیه در بدنه و شاخ قدامی'],
+      ],
+      rootsTitle: 'اتصالات و ریشه‌های منیسک',
+      rootsText: 'اتصالات بهتر است جداگانه بررسی شوند: تماس لغزشی با کندیل‌های فمور و اتصال محکم به تیبیا از طریق ریشه‌های منیسک.',
+      rootsItems: [
+        { title: 'تماس فمورو-منیسکال', text: 'منیسک‌ها با کندیل‌های فمور مفصل می‌شوند و سطح پروگزیمال آن‌ها محدب است.' },
+        { title: 'اتصال به تیبیا', text: 'اتصال محکم به پلاتوی تیبیا از طریق ریشه‌های منیسک در شاخ قدامی و خلفی هر منیسک انجام می‌شود.' },
+      ],
+      imageCaption: 'نمای شماتیک ریشه‌های منیسک: شاخ قدامی، بدنه و شاخ خلفی.',
+      key: 'تحرک کمتر منیسک داخلی مهم‌ترین دلیل آسیب‌پذیری بیشتر آن است.',
+    },
+    vascular: {
+      title: 'خون‌رسانی و پتانسیل ترمیم',
+      lead: 'خون‌رسانی منیسک فقط از ناحیه نزدیک کپسول و از طریق شبکه پیرامنیسکی انجام می‌شود. هرچه به مرکز نزدیک‌تر شویم خون‌رسانی کمتر می‌شود و شانس ترمیم هم کاهش می‌یابد.',
+      zones: [
+        { name: 'ناحیه قرمز · Zone I', range: 'کمتر از ۳ میلی‌متر از کپسول', status: 'خون‌رسانی خوب', therapy: 'بهترین شانس برای بخیه' },
+        { name: 'ناحیه قرمز-سفید · Zone II', range: '۳ تا ۵ میلی‌متر از کپسول', status: 'خون‌رسانی محدود', therapy: 'بخیه بسته به شرایط' },
+        { name: 'ناحیه سفید · Zone III', range: 'قسمت مرکزی', status: 'بدون عروق', therapy: 'ترمیم قابل توجه ندارد' },
+      ],
+      tableHeaders: ['ناحیه', 'محل', 'خون‌رسانی'],
+      tableRows: [
+        ['قرمز', 'کمتر از ۳ میلی‌متر از کپسول', 'خوب'],
+        ['قرمز-سفید', '۳ تا ۵ میلی‌متر از کپسول', 'محدود'],
+        ['سفید', 'مرکزی', 'بدون عروق'],
+      ],
+      key: 'هرچه پارگی به کپسول نزدیک‌تر باشد، پتانسیل ترمیم بهتر است.',
+    },
+    mri: {
+      title: 'تشخیص MRI',
+      lead: 'ارزیابی MRI منیسک بر اساس پروتکل زانو با برش‌های نازک و سکانس‌های حساس به مایع انجام می‌شود.',
+      protocol: [
+        { name: 'T1', text: 'نمای کلی آناتومیک و ارزیابی فیبروز مزمن.' },
+        { name: 'T2-w / PD-fs', text: 'تشخیص پارگی، ادم استخوان و قطع‌شدگی رباط‌ها.' },
+        { name: 'ضخامت برش', text: 'به طور استاندارد ۳ میلی‌متر، تا پارگی‌های کوچک به علت Volume Averaging پنهان نشوند.' },
+      ],
+      normalTitle: 'نمای طبیعی',
+      normalText: 'منیسک سالم به صورت هموژن هیپواینتنس دیده می‌شود. در نمای ساژیتال شکل مثلثی تیپیک دارد.',
+      key: 'افزایش سیگنال داخل منیسک به تنهایی پارگی محسوب نمی‌شود. معیار اصلی، تماس تکرارپذیر سیگنال با سطح مفصلی فوقانی یا تحتانی است.',
+    },
+    grading: {
+      title: 'درجه‌بندی MRI ضایعات منیسک',
+      lead: 'طبقه‌بندی Lotysch کمک می‌کند تغییرات سیگنال دژنراتیو داخل منیسک از پارگی واقعی منیسک جدا شود.',
+      lotyschTitle: 'درجه ۱ تا ۳ طبق Lotysch',
+      tableHeaders: ['درجه', 'مورفولوژی', 'تماس با سطح', 'معنا'],
+      tableRows: [
+        ['1', 'افزایش سیگنال نقطه‌ای یا کوچک', 'بدون تماس', 'دژنراسیون موکوئید اولیه، معمولاً بی‌علامت'],
+        ['2a', 'افزایش سیگنال خطی', 'بدون تماس', 'دژنراسیون پیشرفته'],
+        ['2b', 'افزایش سیگنال خطی', 'تماس فقط در یک تصویر', 'برای پارگی قطعی ناکافی'],
+        ['2c', 'افزایش سیگنال گوه‌ای یا گلوبولار', 'بدون تماس واضح', 'ریسک بالا برای پارگی مخفی'],
+        ['3', 'افزایش سیگنال پاتولوژیک', 'تماس در حداقل دو برش متوالی', 'پارگی منیسک از نظر رادیولوژیک قطعی'],
+        ['4', 'مورفولوژی پیچیده پارگی همراه با دفورمیتی یا قطعه‌قطعه‌شدن', 'تماس سطحی متعدد', 'پارگی کمپلکس منیسک'],
+      ],
+      key: 'ضایعه منیسک درجه 3 آستانه اصلی برای تشخیص پارگی است: افزایش سیگنال داخل منیسک همراه با تماس مطمئن با سطح مفصلی در حداقل دو برش.',
+    },
+    tear: {
+      title: 'معیارهای MRI برای پارگی منیسک',
+      lead: 'برای تشخیص پارگی منیسک باید معیارهای مشخص وجود داشته باشد. این کار حساسیت و ویژگی تشخیص را بهتر می‌کند.',
+      cave: 'افزایش سیگنال داخل منیسک به تنهایی برای تشخیص قطعی پارگی کافی نیست.',
+      criteria: [
+        { title: 'تماس با سطح مفصلی', text: 'سیگنال پاتولوژیک به سطح فوقانی یا تحتانی منیسک می‌رسد.' },
+        { title: 'دفورمیتی', text: 'شکل مثلثی طبیعی منیسک از بین رفته یا واضحاً تغییر کرده است.' },
+        { title: 'قانون Two-slice-touch', text: 'ضایعه باید حداقل در دو برش متوالی با تماس سطحی دیده شود.' },
+      ],
+      key: 'قانون Two-slice-touch اختصاصیت را بالا می‌برد، چون یک آرتیفکت تک‌برشی به اشتباه پارگی حساب نمی‌شود.',
+    },
+    cases: {
+      title: 'نمونه کیس‌ها',
+      lead: '',
+      items: [
+        {
+          title: 'سیگنال گوه‌ای/گلوبولار بدون تماس قطعی با سطح مفصلی',
+          label: 'درجه 2c',
+          tags: ['منیسک دیسکوئید'],
+          meta: 'PD · ساژیتال · دژنراسیون موکوئید · ریسک بالای پارگی مخفی',
+          img: '/meniskus/mri-sagittal.png',
+          url: 'https://radiopaedia.org/cases/75168/studies/86248#t=im&v1i=52196174&v1z=1&v2i=52196277&v2z=1&v3i=52196234&v3z=1&v4i=52196213&v4z=1',
+          credit: 'Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060',
+        },
+        {
+          title: 'سیگنال خطی با تماس سطحی فقط در یک تصویر',
+          label: 'درجه 2b',
+          tags: ['منیسک دیسکوئید'],
+          meta: 'PD · کرونال · غیرقطعی · پارگی قطعی Grade 3 نیست',
+          img: '/meniskus/mri-coronal.png',
+          url: 'https://radiopaedia.org/cases/14060/studies/13900#t=im&v1i=1118538&v1z=1&v2i=1118592&v2z=1',
+          credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168',
+        },
+      ],
+      key: 'نمونه کیس‌ها مهم هستند، چون هر افزایش سیگنال داخل منیسک به معنی پارگی قطعی نیست.',
+    },
+    discoid: {
+      title: 'منیسک دیسکوئید',
+      lead: 'منیسک دیسکوئید یک واریانت مادرزادی است که در آن تنه منیسک پهن‌تر و شبیه دیسک است. این حالت تقریباً همیشه منیسک خارجی را درگیر می‌کند و نسبت به منیسک طبیعی بیشتر مستعد پارگی است.',
+      stats: [
+        { value: '۳–۵٪', label: 'شیوع', text: 'اغلب یافته اتفاقی در MRI زانو' },
+        { value: '~۵۰٪', label: 'دوطرفه', text: 'می‌تواند در هر دو زانو دیده شود' },
+        { value: 'خارجی', label: 'منیسک', text: 'تقریباً همیشه منیسک خارجی درگیر می‌شود' },
+      ],
+      overviewHeaders: ['پارامتر', 'مقدار'],
+      overviewRows: [
+        ['منیسک درگیر', 'تقریباً همیشه منیسک خارجی'],
+        ['توزیع طرفی', 'در حدود ۵۰٪ موارد دوطرفه'],
+        ['جنسیت', 'ارجحیت واضح ندارد'],
+        ['شیوع', 'در جمعیت‌های آسیایی بیشتر گزارش شده است'],
+        ['خطر پارگی', 'بیشتر از منیسک با شکل طبیعی'],
+      ],
+      childTitle: 'نکته بالینی در کودکان',
+      childText: 'شنیدن یا احساس Snapping در زانوی کودک باید شک به منیسک خارجی دیسکوئید را مطرح کند.',
+      mriTitle: 'معیارهای MRI',
+      mriHeaders: ['صفحه', 'معیار', 'حد آستانه'],
+      mriRows: [
+        ['کرونال', 'عرض مطلق منیسک', '≥ ۱۵ میلی‌متر'],
+        ['کرونال', 'عرض منیسک / حداکثر عرض تیبیا', '> ۲۰٪'],
+        ['ساژیتال', 'دیده شدن مداوم تنه منیسک', 'در ≥ ۳ برش استاندارد متوالی'],
+      ],
+      sagittalTitle: 'علامت ساژیتال',
+      sagittalText: 'معیار ساژیتال برعکس absent bow-tie sign است: منیسک طبیعی تنه را فقط در ۱ تا ۲ برش نشان می‌دهد، اما منیسک دیسکوئید در حداقل ۳ برش متوالی دیده می‌شود.',
+      treatmentHeaders: ['وضعیت', 'اقدام'],
+      treatmentRows: [
+        ['یافته اتفاقی بدون علامت', 'محافظه‌کارانه، بدون نیاز به مداخله'],
+        ['علامت‌دار بدون پارگی', 'درمان محافظه‌کارانه؛ در صورت تداوم علائم Saucerization آرتروسکوپیک'],
+        ['منیسک دیسکوئید همراه با پارگی', 'ترمیم منیسک همراه با رزکسیون نسبی در صورت نیاز'],
+        ['غیرقابل ترمیم / تخریب شدید', 'منیسککتومی نسبی یا کامل فقط به عنوان آخرین گزینه'],
+      ],
+      key: 'علامت ساژیتال: در منیسک دیسکوئید، تنه منیسک در حداقل ۳ برش ساژیتال متوالی قابل مشاهده باقی می‌ماند.',
+    },
+    therapy: {
+      title: 'اصول درمان: Save the Meniscus',
+      titlePrefix: 'اصول درمان',
+      saveText: 'Save the Meniscus',
+      lead: 'تصمیم درمانی به علائم، شکل پارگی، محل پارگی و خون‌رسانی بستگی دارد. هدف، حفظ حداکثری بافت منیسک است.',
+      tableHeaders: ['وضعیت', 'اصل درمانی'],
+      tableRows: [
+        ['ضایعه بدون علامت یا صرفاً دژنراتیو', 'درمان محافظه‌کارانه'],
+        ['پارگی تازه در ناحیه قرمز', 'بخیه منیسک'],
+        ['قطعه غیرقابل ترمیم و مکانیکی', 'رزکسیون محدود و محافظه‌کارانه'],
+      ],
+      key: 'اصل مهم این است که تا حد امکان بافت منیسک حفظ شود؛ برداشتن منیسک فقط در صورت ضرورت و به کمترین مقدار لازم انجام شود.',
+    },
+    video: {
+      title: 'ویدیوی آموزشی',
+      text: 'ویدیوی آموزشی این بخش درباره منیسک اکنون در YouTube در دسترس است.',
+      cta: 'مشاهده ویدیو در YouTube',
+      url: 'https://youtu.be/L03fPcRZm_o?si=RzNDyM-Fmtig8I10',
+    },
   },
 }
 
-function withLang(href, lang) {
-  return lang === 'de' ? href : `${href}?lang=${lang}`
+const TAKE_HOME_COPY = {
+  de: {
+    sectionLabel: 'Take home message',
+    title: 'Take home message',
+    lead: 'Die wichtigsten Merksätze der Lektion auf einen Blick.',
+    itemTitles: {
+      anatomy: 'Merke: Innenmeniskus-Mobilität',
+      vascular: 'Merke: Kapselnähe und Heilung',
+      gradingTear: 'Merke: Rissdiagnose im MRT',
+      discoid: 'Merke: Discoider Meniskus',
+      therapy: 'Merke: Save the Meniscus',
+    },
+    discoidDefinition: 'Kurze Definition: Ein discoider Meniskus ist eine angeborene Formvariante, meist des Außenmeniskus, mit verbreitertem, scheibenförmigem Meniskuskorpus.',
+  },
+  en: {
+    sectionLabel: 'Take home message',
+    title: 'Take home message',
+    lead: 'The key points of this lesson at a glance.',
+    itemTitles: {
+      anatomy: 'Key point: medial meniscus mobility',
+      vascular: 'Key point: capsular proximity and healing',
+      gradingTear: 'Key point: tear diagnosis on MRI',
+      discoid: 'Key point: discoid meniscus',
+      therapy: 'Key point: Save the Meniscus',
+    },
+    discoidDefinition: 'Short definition: a discoid meniscus is a congenital shape variant, usually of the lateral meniscus, with a widened disc-like meniscal body.',
+  },
+  fa: {
+    sectionLabel: 'Take home message',
+    title: 'Take home message',
+    lead: 'مهم‌ترین نکات این درس برای مرور سریع.',
+    itemTitles: {
+      anatomy: 'نکته: تحرک منیسک داخلی',
+      vascular: 'نکته: نزدیکی به کپسول و ترمیم',
+      gradingTear: 'نکته: تشخیص پارگی در MRI',
+      discoid: 'نکته: منیسک دیسکوئید',
+      therapy: 'نکته: Save the Meniscus',
+    },
+    discoidDefinition: 'تعریف کوتاه: منیسک دیسکوئید یک واریانت مادرزادی است، معمولاً در منیسک خارجی دیده می‌شود و تنه منیسک پهن و دیسک‌مانند است.',
+  },
 }
 
-function getGrade(score, lang) {
-  const grades = GRADE_DATA[lang] || GRADE_DATA.de
-  return grades.find(g => score >= g.min) || grades[grades.length - 1]
+const YOUTUBE_EMBED_URL = 'https://www.youtube-nocookie.com/embed/L03fPcRZm_o'
+
+function Table({ headers, rows, className = '' }) {
+  return (
+    <div className={styles.tableWrap}>
+      <table className={`${styles.table} ${className}`}>
+        <thead>
+          <tr>{headers.map(header => <th key={header}>{header}</th>)}</tr>
+        </thead>
+        <tbody>
+          {rows.map((row, rowIndex) => (
+            <tr key={rowIndex}>
+              {row.map((cell, cellIndex) => <td key={`${rowIndex}-${cellIndex}`}>{cell}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
 }
 
-export default function MeniskusMCQPage() {
-  const { lang } = useLanguage()
-  const ui = UI[lang] || UI.de
-  const questions = QUESTIONS[lang] || QUESTIONS.de
-  const isRTL = lang === 'fa'
+function Callout({ type = 'note', label, children }) {
+  const icon = type === 'cave' ? '⚠️' : type === 'success' ? '✅' : '💡'
+  return (
+    <div className={`${styles.callout} ${styles[type]}`}>
+      <span className={styles.calloutLabel}>{icon} {label}</span>
+      <div className={styles.calloutBody}>{children}</div>
+    </div>
+  )
+}
 
-  const [current, setCurrent] = useState(0)
-  const [selected, setSelected] = useState(null)
-  const [checked, setChecked] = useState(false)
-  const [answers, setAnswers] = useState([])
-  const [phase, setPhase] = useState('quiz')
-  const [summaryFilter, setSummaryFilter] = useState('all')
-
-  const q = questions[current]
-  const total = questions.length
-  const isLast = current === total - 1
-
-  const handleCheck = () => {
-    if (!selected) return
-    setChecked(true)
-    setAnswers(prev => [
-      ...prev.filter(a => a.qId !== q.id),
-      { qId: q.id, selected, correct: selected === q.correct },
-    ])
-  }
-
-  const handleNext = () => {
-    if (isLast) {
-      setPhase('result')
-    } else {
-      setCurrent(c => c + 1)
-      setSelected(null)
-      setChecked(false)
-    }
-  }
-
-  const handleRestart = () => {
-    setCurrent(0)
-    setSelected(null)
-    setChecked(false)
-    setAnswers([])
-    setPhase('quiz')
-    setSummaryFilter('all')
-  }
-
-  const score = answers.filter(a => a.correct).length
-  const grade = getGrade(score, lang)
-  const progressPct = ((current + (checked ? 1 : 0)) / total) * 100
-  const learnHref = withLang('/msk/knie/meniskus', lang)
-  const mskHref = withLang('/lernen/msk', lang)
-
-  if (phase === 'result') {
-    const filtered = summaryFilter === 'wrong'
-      ? questions.filter(sq => answers.find(a => a.qId === sq.id && !a.correct))
-      : questions
-
-    return (
-      <div className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
-        <div className={styles.topBar}>
-          <div className={styles.breadcrumb}>
-            <Link href="/" className={styles.breadLink}>RadYar</Link>
-            <span className={styles.sep}>›</span>
-            <Link href={mskHref} className={styles.breadLink}>{ui.breadMsk}</Link>
-            <span className={styles.sep}>›</span>
-            <Link href={learnHref} className={styles.breadLink}>{ui.breadTopic}</Link>
-            <span className={styles.sep}>›</span>
-            <span className={styles.breadCurrent}>MCQ</span>
-          </div>
-          <h1 className={styles.pageTitle}>{ui.title}</h1>
-        </div>
-
-        <div className={styles.resultWrap}>
-          <div className={styles.scoreCard} style={{ borderColor: grade.color }}>
-            <div className={styles.scoreEmoji}>{grade.emoji}</div>
-            <div className={styles.scoreNumber} style={{ color: grade.color }}>
-              {score}<span className={styles.scoreTotal}>/{total}</span>
-            </div>
-            <div className={styles.gradeLabel} style={{ color: grade.color }}>{grade.label}</div>
-            <div className={styles.gradeSub}>{grade.sub}</div>
-            <div className={styles.scoreBarWrap}>
-              <div className={styles.scoreBar} style={{ width: `${(score / total) * 100}%`, background: grade.color }} />
-            </div>
-            <p className={styles.scoreDesc}>{ui.scoreLabel(score, total)}</p>
-          </div>
-
-          <div className={styles.summaryWrap}>
-            <div className={styles.summaryHeader}>
-              <span className={styles.summaryTitle}>{ui.summaryTitle}</span>
-              <div className={styles.filterBtns}>
-                <button className={`${styles.filterBtn} ${summaryFilter === 'all' ? styles.filterActive : ''}`}
-                  onClick={() => setSummaryFilter('all')}>{ui.allQ}</button>
-                <button className={`${styles.filterBtn} ${summaryFilter === 'wrong' ? styles.filterActiveWrong : ''}`}
-                  onClick={() => setSummaryFilter('wrong')}>{ui.wrongOnly}</button>
-              </div>
-            </div>
-
-            <div className={styles.summaryList}>
-              {filtered.map((sq, idx) => {
-                const ans = answers.find(a => a.qId === sq.id)
-                const isCorrect = ans?.correct
-                const correctOpt = sq.options.find(o => o.id === sq.correct)
-                const selectedOpt = sq.options.find(o => o.id === ans?.selected)
-                return (
-                  <div key={sq.id} className={`${styles.summaryItem} ${isCorrect ? styles.summaryCorrect : styles.summaryWrong}`}>
-                    <div className={styles.summaryItemHead}>
-                      <span className={`${styles.summaryTag} ${isCorrect ? styles.tagCorrect : styles.tagWrong}`}>
-                        {isCorrect ? ui.correctTag : ui.wrongTag}
-                      </span>
-                      <span className={styles.summaryQ}>{idx + 1}. {sq.question}</span>
-                    </div>
-                    {!isCorrect && (
-                      <div className={styles.summaryAnswers}>
-                        <span className={styles.yourAns}>{ui.yourAnswer} <strong>{ans?.selected}) {selectedOpt?.text}</strong></span>
-                        <span className={styles.rightAns}>{ui.rightAnswer} <strong>{sq.correct}) {correctOpt?.text}</strong></span>
-                      </div>
-                    )}
-                    <div className={styles.summaryExp}>{sq.explanation}</div>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-
-          <div className={styles.resultActions}>
-            <button className={styles.restartBtn} onClick={handleRestart}>{ui.restartBtn}</button>
-            <Link href={learnHref} className={styles.learnBtn}>{ui.learnBtn}</Link>
-          </div>
-        </div>
+function Section({ id, eyebrow, title, lead, children }) {
+  return (
+    <section id={id} className={styles.section}>
+      <div className={styles.sectionHead}>
+        <span className={styles.eyebrow}>{eyebrow}</span>
+        <h2>{title}</h2>
+        {lead && <p>{lead}</p>}
       </div>
-    )
+      {children}
+    </section>
+  )
+}
+
+function Sidebar({ sections, toc, activeId, onClick }) {
+  return (
+    <aside className={styles.sidebar}>
+      <div className={styles.sideTitle}>{toc}</div>
+      <nav className={styles.sideNav}>
+        {sections.map(section => (
+          <button
+            key={section.id}
+            type="button"
+            className={`${styles.sideItem} ${section.important ? styles.sideItemImportant : ''} ${activeId === section.id ? styles.sideItemActive : ''}`}
+            onClick={() => onClick(section.id)}
+          >
+            <span className={styles.sideIcon}>{section.icon}</span>
+            <span>{section.label}</span>
+          </button>
+        ))}
+      </nav>
+    </aside>
+  )
+}
+
+function ImageFigure({ src, alt, caption, zoomable = false, zoomLabel = 'Bild vergrößern', onZoom }) {
+  return (
+    <figure className={styles.figure}>
+      {zoomable ? (
+        <button type="button" className={styles.figureZoomButton} onClick={onZoom} aria-label={zoomLabel}>
+          <img src={src} alt={alt} />
+          <span>{zoomLabel}</span>
+        </button>
+      ) : (
+        <img src={src} alt={alt} />
+      )}
+      {caption && <figcaption>{caption}</figcaption>}
+    </figure>
+  )
+}
+
+export default function MeniskusPage() {
+  const { lang } = useLanguage()
+  const copy = CONTENT[lang] || CONTENT.de
+  const takeHomeCopy = TAKE_HOME_COPY[lang] || TAKE_HOME_COPY.de
+  const isRTL = lang === 'fa'
+  const pageSections = useMemo(
+    () => [...copy.sections, { id: 'takehome', label: takeHomeCopy.sectionLabel, icon: '⭐', important: true }],
+    [copy.sections, takeHomeCopy.sectionLabel]
+  )
+  const takeHomeItems = useMemo(() => [
+    { number: '01', title: takeHomeCopy.itemTitles.anatomy, text: copy.anatomy.key },
+    { number: '02', title: takeHomeCopy.itemTitles.vascular, text: copy.vascular.key },
+    { number: '03', title: takeHomeCopy.itemTitles.gradingTear, text: `${copy.grading.key} ${copy.tear.key}` },
+    { number: '04', title: takeHomeCopy.itemTitles.discoid, text: `${takeHomeCopy.discoidDefinition}\n${copy.discoid.key}` },
+    { number: '05', title: takeHomeCopy.itemTitles.therapy, text: copy.therapy.key },
+  ], [copy, takeHomeCopy])
+  const mainRef = useRef(null)
+  const [activeId, setActiveId] = useState(pageSections[0].id)
+  const [isMobileTocOpen, setIsMobileTocOpen] = useState(false)
+  const [previewImage, setPreviewImage] = useState(null)
+
+  const sectionIds = useMemo(() => pageSections.map(section => section.id), [pageSections])
+  const withLang = (href) => lang === 'de' ? href : `${href}?lang=${lang}`
+
+  const scrollTo = (id) => {
+    const el = document.getElementById(id)
+    setIsMobileTocOpen(false)
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
-  const isCorrect = checked && selected === q.correct
-  const isWrong = checked && selected !== q.correct
-  const correctOpt = q.options.find(o => o.id === q.correct)
+  useEffect(() => {
+    setActiveId(pageSections[0].id)
+  }, [pageSections])
+
+  useEffect(() => {
+    document.body.style.overflow = (isMobileTocOpen || previewImage) ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isMobileTocOpen, previewImage])
+
+  useEffect(() => {
+    const observers = sectionIds.map(id => {
+      const el = document.getElementById(id)
+      if (!el) return null
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveId(id)
+        },
+        { root: null, rootMargin: '-18% 0px -70% 0px', threshold: 0.01 }
+      )
+      observer.observe(el)
+      return observer
+    })
+
+    return () => observers.forEach(observer => observer?.disconnect())
+  }, [sectionIds])
 
   return (
-    <div className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
-      <div className={styles.topBar}>
+    <div
+      className={styles.page}
+      dir={isRTL ? 'rtl' : 'ltr'}
+      lang={lang}
+      onCopy={(event) => event.preventDefault()}
+      onCut={(event) => event.preventDefault()}
+      onContextMenu={(event) => event.preventDefault()}
+      onDragStart={(event) => event.preventDefault()}
+    >
+      <style>{MENISKUS_STYLES}</style>
+      <header className={styles.header}>
         <div className={styles.breadcrumb}>
-          <Link href="/" className={styles.breadLink}>RadYar</Link>
-          <span className={styles.sep}>›</span>
-          <Link href={mskHref} className={styles.breadLink}>{ui.breadMsk}</Link>
-          <span className={styles.sep}>›</span>
-          <Link href={learnHref} className={styles.breadLink}>{ui.breadTopic}</Link>
-          <span className={styles.sep}>›</span>
-          <span className={styles.breadCurrent}>MCQ</span>
+          <Link href={withLang('/')} className={styles.breadLink}>RadYar</Link>
+          <span>›</span>
+          <Link href={withLang('/lernen/msk')} className={styles.breadLink}>{copy.breadcrumbMsk}</Link>
+          <span>›</span>
+          <span>{copy.breadcrumbCurrent}</span>
         </div>
-        <div className={styles.titleRow}>
-          <h1 className={styles.pageTitle}>{ui.title}</h1>
-          <span className={styles.subtitle}>{ui.subtitle}</span>
-        </div>
-        <div className={styles.progressWrap}>
-          <div className={styles.progressBar}>
-            <div className={styles.progressFill} style={{ width: `${progressPct}%` }} />
+
+        <div className={styles.heroGrid}>
+          <div className={styles.heroText}>
+            <span className={styles.sourceBadge}>{copy.sourceLabel}</span>
+            <h1>{copy.title}</h1>
+            <p>{copy.subtitle}</p>
+            <Link href={withLang('/msk/knie/meniskus/mcq')} className={styles.mcqButton}>
+              <span>🎯</span>
+              <span>{copy.mcqTitle}</span>
+            </Link>
           </div>
-          <span className={styles.progressLabel}>{ui.progressLabel(current + 1, total)}</span>
+
         </div>
+
+      </header>
+
+      <div className={styles.mobileTocBar}>
+        <button
+          type="button"
+          className={styles.mobileTocButton}
+          onClick={() => setIsMobileTocOpen(true)}
+          aria-expanded={isMobileTocOpen}
+        >
+          <span className={styles.mobileTocIcon}>☰</span>
+          <span>{copy.toc}</span>
+          <strong>{pageSections.find(section => section.id === activeId)?.label}</strong>
+        </button>
       </div>
 
-      <div className={styles.quizBody}>
-        <div className={styles.quizCard}>
-          <div className={styles.qNum}>{ui.questionOf(current + 1, total)}</div>
-          <div className={styles.qText}>{q.question}</div>
-
-          <div className={styles.options}>
-            {q.options.map(opt => {
-              let cls = styles.option
-              if (selected === opt.id && !checked) cls = `${styles.option} ${styles.optSelected}`
-              if (checked && opt.id === q.correct) cls = `${styles.option} ${styles.optCorrect}`
-              if (checked && selected === opt.id && opt.id !== q.correct) cls = `${styles.option} ${styles.optWrong}`
-              return (
-                <button
-                  key={opt.id}
-                  className={cls}
-                  disabled={checked}
-                  onClick={() => setSelected(opt.id)}
-                >
-                  <span className={styles.optLetter}>{opt.id}</span>
-                  <span className={styles.optText}>{opt.text}</span>
-                  {checked && opt.id === q.correct && <span className={styles.optIcon}>✓</span>}
-                  {checked && selected === opt.id && opt.id !== q.correct && <span className={styles.optIcon}>✗</span>}
-                </button>
-              )
-            })}
-          </div>
-
-          {checked && (
-            <div className={`${styles.feedback} ${isCorrect ? styles.feedbackCorrect : styles.feedbackWrong}`}>
-              <div className={styles.feedbackHead}>
-                <span className={styles.feedbackIcon}>{isCorrect ? '✅' : '❌'}</span>
-                <span className={styles.feedbackTitle}>
-                  {isCorrect ? ui.correct : ui.incorrect}
-                  {isWrong && <span className={styles.feedbackCorrectAns}> – {ui.correctAnswer} <strong>{q.correct}) {correctOpt?.text}</strong></span>}
-                </span>
-              </div>
-              <div className={styles.feedbackExpLabel}>{ui.explanation}</div>
-              <div className={styles.feedbackExp}>{q.explanation}</div>
+      {isMobileTocOpen && (
+        <div className={styles.mobileTocOverlay} onClick={() => setIsMobileTocOpen(false)}>
+          <div className={styles.mobileTocPanel} onClick={(event) => event.stopPropagation()}>
+            <div className={styles.mobileTocHeader}>
+              <strong>{copy.toc}</strong>
+              <button type="button" onClick={() => setIsMobileTocOpen(false)} aria-label="Close menu">×</button>
             </div>
-          )}
-
-          <div className={styles.actionRow}>
-            {!checked ? (
-              <button
-                className={`${styles.checkBtn} ${!selected ? styles.checkBtnDisabled : ''}`}
-                onClick={handleCheck}
-                disabled={!selected}
-              >
-                {ui.checkBtn}
-              </button>
-            ) : (
-              <button className={styles.nextBtn} onClick={handleNext}>
-                {isLast ? ui.resultBtn : ui.nextBtn}
-                <span>{isRTL ? '←' : '→'}</span>
-              </button>
-            )}
+            <Sidebar sections={pageSections} toc={copy.toc} activeId={activeId} onClick={scrollTo} />
           </div>
         </div>
+      )}
 
-        <div className={styles.tracker}>
-          <div className={styles.trackerTitle}>Score</div>
-          <div className={styles.trackerDots}>
-            {questions.map((_, i) => {
-              const ans = answers.find(a => a.qId === questions[i].id)
-              let dotCls = styles.trackerDot
-              if (i === current) dotCls = `${styles.trackerDot} ${styles.dotCurrent}`
-              else if (ans?.correct) dotCls = `${styles.trackerDot} ${styles.dotCorrect}`
-              else if (ans && !ans.correct) dotCls = `${styles.trackerDot} ${styles.dotWrong}`
-              return <div key={i} className={dotCls}>{i + 1}</div>
-            })}
-          </div>
-          <div className={styles.trackerScore}>
-            <span className={styles.trackerScoreNum} style={{ color: '#10b981' }}>{answers.filter(a => a.correct).length}</span>
-            <span className={styles.trackerScoreSep}>/</span>
-            <span className={styles.trackerScoreNum} style={{ color: '#ef4444' }}>{answers.filter(a => !a.correct).length}</span>
-          </div>
-        </div>
+      <div className={styles.layout}>
+        <Sidebar sections={pageSections} toc={copy.toc} activeId={activeId} onClick={scrollTo} />
+
+        <main className={styles.main} ref={mainRef}>
+          <Section id="anatomie" eyebrow="01" title={copy.anatomy.title} lead={copy.anatomy.lead}>
+            <Table headers={copy.anatomy.tableHeaders} rows={copy.anatomy.tableRows} />
+            <div className={styles.splitGrid}>
+              <div className={styles.card}>
+                <h3>{copy.anatomy.rootsTitle}</h3>
+                {copy.anatomy.rootsItems ? (
+                  <div className={styles.plainList}>
+                    {copy.anatomy.rootsItems.map(item => (
+                      <p key={item.title}>
+                        <strong>{item.title}</strong>
+                        {item.text}
+                      </p>
+                    ))}
+                  </div>
+                ) : (
+                  <p>{copy.anatomy.rootsText}</p>
+                )}
+              </div>
+              <ImageFigure src="/meniskus/anatomy-roots.png" alt={copy.anatomy.rootsTitle} caption={copy.anatomy.imageCaption} />
+            </div>
+            <Callout label={copy.keyLabel}>{copy.anatomy.key}</Callout>
+          </Section>
+
+          <Section id="vaskularisation" eyebrow="03" title={copy.vascular.title} lead={copy.vascular.lead}>
+            <div className={styles.zoneGrid}>
+              {copy.vascular.zones.map((zone, index) => (
+                <div key={zone.name} className={`${styles.zoneCard} ${styles[`zone${index + 1}`]}`}>
+                  <h3>{zone.name}</h3>
+                  <span>{zone.range}</span>
+                  <p>{zone.status}</p>
+                  <small>{zone.therapy}</small>
+                </div>
+              ))}
+            </div>
+            <div className={styles.splitGrid}>
+              <ImageFigure src="/meniskus/vascular-zones.png" alt={copy.vascular.title} />
+              <Table headers={copy.vascular.tableHeaders} rows={copy.vascular.tableRows} />
+            </div>
+            <Callout label={copy.keyLabel}>{copy.vascular.key}</Callout>
+          </Section>
+
+          <Section id="mrt" eyebrow="04" title={copy.mri.title} lead={copy.mri.lead}>
+            <div className={styles.protocolGrid}>
+              {copy.mri.protocol.map(item => (
+                <div key={item.name} className={styles.protocolCard}>
+                  <h3>{item.name}</h3>
+                  <p>{item.text}</p>
+                </div>
+              ))}
+            </div>
+            <div className={styles.normalCard}>
+              <h3>{copy.mri.normalTitle}</h3>
+              <p>{copy.mri.normalText}</p>
+            </div>
+            <Callout label={copy.keyLabel}>{copy.mri.key}</Callout>
+          </Section>
+
+          <Section id="grading" eyebrow="05" title={copy.grading.title} lead={copy.grading.lead}>
+            <div className={styles.gradingFigure}>
+              <ImageFigure src="/meniskus/lotysch-grading.png" alt={copy.grading.title} zoomable zoomLabel={copy.zoomImage} onZoom={() => setPreviewImage({ src: '/meniskus/lotysch-grading.png', alt: copy.grading.title })} />
+            </div>
+            <Table headers={copy.grading.tableHeaders} rows={copy.grading.tableRows} className={styles.gradeTable} />
+            <Callout label={copy.keyLabel}>{copy.grading.key}</Callout>
+          </Section>
+
+          <Section id="risskriterien" eyebrow="06" title={copy.tear.title} lead={copy.tear.lead}>
+            <Callout type="cave" label={copy.caveLabel}>{copy.tear.cave}</Callout>
+            <div className={styles.criteriaGrid}>
+              {copy.tear.criteria.map((item, index) => (
+                <div key={item.title} className={styles.criteriaCard}>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </div>
+              ))}
+            </div>
+            <Callout label={copy.keyLabel}>{copy.tear.key}</Callout>
+          </Section>
+
+          <Section id="discoider" eyebrow="08" title={copy.discoid.title} lead={copy.discoid.lead}>
+            <div className={styles.discoidStats}>
+              {copy.discoid.stats.map(stat => (
+                <div key={stat.label} className={styles.discoidStatCard}>
+                  <strong>{stat.value}</strong>
+                  <span>{stat.label}</span>
+                  <p>{stat.text}</p>
+                </div>
+              ))}
+            </div>
+            <Table headers={copy.discoid.overviewHeaders} rows={copy.discoid.overviewRows} />
+            <div className={styles.card}>
+              <h3 className={styles.discoidMriTitle}>{copy.discoid.mriTitle}</h3>
+              <Table headers={copy.discoid.mriHeaders} rows={copy.discoid.mriRows} />
+            </div>
+            <Callout label={copy.keyLabel}>{copy.discoid.key}</Callout>
+          </Section>
+
+          <Section
+            id="therapie"
+            eyebrow="09"
+            title={<>{copy.therapy.titlePrefix || copy.therapy.title}: <span className={styles.greenTitle}>{copy.therapy.saveText || 'Save the Meniscus'}</span></>}
+            lead={copy.therapy.lead}
+          >
+            <Table headers={copy.therapy.tableHeaders} rows={copy.therapy.tableRows} />
+            <Callout label={copy.keyLabel}>{copy.therapy.key}</Callout>
+          </Section>
+
+          <Section id="fallbeispiele" eyebrow="07" title={copy.cases.title} lead={copy.cases.lead}>
+            <div className={styles.caseGrid}>
+              {copy.cases.items.map(item => (
+                <a key={item.title} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}>
+                  <img className={styles.caseImage} src={item.img} alt={item.title} />
+                  <div className={styles.caseBody}>
+                    <div className={styles.caseLabelRow}>
+                      <span className={styles.caseLabel}>{item.label}</span>
+                      {item.tags?.map(tag => <span key={tag} className={styles.caseLabel}>{tag}</span>)}
+                    </div>
+                    <h3>{item.title}</h3>
+                    <p>{item.meta}</p>
+                    <small>{item.credit}</small>
+                    <strong>{copy.openCase}</strong>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </Section>
+
+          <Section id="lernvideo" eyebrow="10" title={copy.video.title} lead="">
+            <div className={styles.videoCard}>
+              <div className={styles.videoFrameWrap}>
+                <iframe
+                  src={YOUTUBE_EMBED_URL}
+                  title={copy.video.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+              <h3>{copy.video.title}</h3>
+              <p>{copy.video.text}</p>
+              <a href={copy.video.url} target="_blank" rel="noopener noreferrer" className={styles.videoButton}>
+                ▶ {copy.video.cta}
+              </a>
+            </div>
+          </Section>
+
+          <Section id="takehome" eyebrow="11" title={takeHomeCopy.title} lead="">
+            <div className={styles.takeHomeBox}>
+              <p className={styles.takeHomeIntro}>{takeHomeCopy.lead}</p>
+              <div className={styles.takeHomeList}>
+                {takeHomeItems.map(item => (
+                  <div key={item.number} className={styles.takeHomeItem}>
+                    <span className={styles.takeHomeNumber}>{item.number}</span>
+                    <div>
+                      <h3>{item.title}</h3>
+                      <p>{item.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Section>
+
+        </main>
       </div>
+
+      {previewImage && (
+        <div className={styles.imageModal} role="dialog" aria-modal="true" onClick={() => setPreviewImage(null)}>
+          <div className={styles.imageModalContent} onClick={(event) => event.stopPropagation()}>
+            <button type="button" className={styles.imageModalClose} onClick={() => setPreviewImage(null)} aria-label={copy.closePreview}>×</button>
+            <img src={previewImage.src} alt={previewImage.alt} />
+          </div>
+        </div>
+      )}
+
     </div>
   )
 }
