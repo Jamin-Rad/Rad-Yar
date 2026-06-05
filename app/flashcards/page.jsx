@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { FLASHCARD_TOPICS, FLASHCARDS, getCardById } from '@/data/flashcards'
 import { LEITNER_STEPS, formatDueDate, isDue, loadLeitnerState, resetLeitnerState } from '@/lib/leitnerStorage'
 import { useLanguage } from '@/providers/LanguageProvider'
-import styles from './flashcards.module.css'
+import styles from './page.module.css'
 
 const TEXT = {
   de: {
