@@ -26,16 +26,22 @@ export function ThemeProvider({ children }) {
   const [theme, setThemeState] = useState('light')
 
   useEffect(() => {
-    const savedTheme = normalizeTheme(window.localStorage.getItem(STORAGE_KEY))
-    setThemeState(savedTheme)
-    applyTheme(savedTheme)
+    const stored = window.localStorage.getItem(STORAGE_KEY)
+
+    // Wenn kein gespeicherter Wert → System-Präferenz (prefers-color-scheme) nutzen
+    const system = window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light'
+
+    const resolved = normalizeTheme(stored || system)
+    setThemeState(resolved)
+    applyTheme(resolved)
   }, [])
 
   const setTheme = (nextTheme) => {
     const safeTheme = normalizeTheme(nextTheme)
     setThemeState(safeTheme)
     applyTheme(safeTheme)
-
     if (typeof window !== 'undefined') {
       window.localStorage.setItem(STORAGE_KEY, safeTheme)
     }
