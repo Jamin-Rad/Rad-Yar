@@ -7,3 +7,10 @@
 .r { color: #1a2051; }
 .y { background: linear-gradient(130deg,#f97316,#fbbf24); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
 .copy { font-size: 11.5px; color: #94a3b8; }
+
+:global(html[data-theme='dark']) .footer {
+  background: rgba(8, 13, 25, 0.96);
+  border-top-color: rgba(148,163,184,0.14);
+}
+:global(html[data-theme='dark']) .r { color: #f8fafc; }
+:global(html[data-theme='dark']) .copy { color: rgba(203,213,225,0.64); }

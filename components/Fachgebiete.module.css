@@ -154,3 +154,21 @@
 @media (max-width:  860px) { .grid { grid-template-columns: repeat(2,1fr); } }
 @media (max-width:  480px) { .grid { grid-template-columns: 1fr 1fr; gap: 10px; }
                               .section { padding: 60px 5vw; } }
+
+:global(html[data-theme='dark']) .section { background: #07111f; }
+:global(html[data-theme='dark']) .body,
+:global(html[data-theme='dark']) .modal {
+  background: #101a2c;
+  border-color: rgba(148,163,184,0.16);
+}
+:global(html[data-theme='dark']) .name,
+:global(html[data-theme='dark']) .modalTitle { color: #f8fafc; }
+:global(html[data-theme='dark']) .status,
+:global(html[data-theme='dark']) .modalDesc,
+:global(html[data-theme='dark']) .linkMeta { color: #9aa9bf; }
+:global(html[data-theme='dark']) .linkItem,
+:global(html[data-theme='dark']) .chip,
+:global(html[data-theme='dark']) .soon {
+  background: rgba(249,115,22,0.10);
+  border-color: rgba(249,115,22,0.20);
+}

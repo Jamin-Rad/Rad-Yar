@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { useLanguage } from '@/providers/LanguageProvider'
+import { useTheme } from '@/providers/ThemeProvider'
 import SearchBar from './SearchBar'
 import styles from './Navbar.module.css'
 
@@ -40,7 +41,12 @@ function HexLogo({ size = 30 }) {
 
 export default function Navbar() {
   const { lang, texts, setLang } = useLanguage()
+  const { theme, toggleTheme } = useTheme()
   const [search, setSearch] = useState(false)
+
+  const themeLabel = theme === 'dark'
+    ? (lang === 'fa' ? 'تم روشن' : lang === 'en' ? 'Light theme' : 'Helles Theme')
+    : (lang === 'fa' ? 'تم تاریک' : lang === 'en' ? 'Dark theme' : 'Dunkles Theme')
 
   return (
     <>
@@ -57,7 +63,16 @@ export default function Navbar() {
 
         {/* ── Right: search + language only ── */}
         <div className={styles.right}>
-          <button className={styles.iconBtn} onClick={() => setSearch(true)}>
+          <button
+            type="button"
+            className={styles.themeBtn}
+            onClick={toggleTheme}
+            aria-label={themeLabel}
+            title={themeLabel}
+          >
+            <span aria-hidden="true">{theme === 'dark' ? '☀' : '☾'}</span>
+          </button>
+          <button className={styles.iconBtn} onClick={() => setSearch(true)} aria-label={texts.searchPlaceholder} title={texts.searchPlaceholder}>
             <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
               <circle cx="7" cy="7" r="5.5" stroke="currentColor" strokeWidth="1.6"/>
               <line x1="11" y1="11" x2="15" y2="15" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
