@@ -111,7 +111,7 @@
 :global(html[data-theme='dark']) .latestBox,
 :global(html[data-theme='dark']) .latestCard,
 :global(html[data-theme='dark']) .modal {
-  background: linear-gradient(135deg, rgba(15,23,42,0.96), rgba(17,24,39,0.92));
+  background: linear-gradient(135deg, rgba(15,23,42,0.96), rgba(17,24,39,0.92)) !important;
   border-color: rgba(148,163,184,0.18) !important;
   box-shadow: 0 18px 44px rgba(0,0,0,0.26);
 }
@@ -141,4 +141,12 @@
 }
 :global(html[data-theme='dark']) .latestIcon {
   background: rgba(249,115,22,0.15);
+}
+
+:global(html[data-theme='dark']) .icon {
+  background: rgba(30,41,59,0.92) !important;
+  border-color: rgba(148,163,184,0.22) !important;
+}
+:global(html[data-theme='dark']) .chip {
+  color: #fdba74 !important;
 }
