@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import { FLASHCARD_TOPICS, FLASHCARDS, getCardById } from '@/data/flashcards'
-import { LEITNER_STEPS, formatDueDate, isDue, loadLeitnerState, resetLeitnerState } from '@/lib/leitnerStorage'
+import { LEITNER_STEPS, formatDueDate, isDue, loadLeitnerState, resetLeitnerState } from '@/utils/leitnerStorage'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
 
