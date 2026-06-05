@@ -3132,6 +3132,243 @@ html[data-theme='dark'] .table td::before {
   color: #fb923c !important;
 }
 
+
+/* Desktop-Webseite im mobilen Browser: Safari/Chrome darf die Desktop-Ansicht erzwingen. */
+@media (max-width: 900px) {
+  html[data-meniskus-layout='desktop'],
+  body[data-meniskus-layout='desktop'] {
+    width: auto !important;
+    max-width: none !important;
+    min-width: 1100px !important;
+    overflow-x: auto !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] {
+    width: 1100px !important;
+    max-width: none !important;
+    min-width: 1100px !important;
+    overflow-x: visible !important;
+    padding-top: 64px !important;
+    touch-action: auto !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .header {
+    width: auto !important;
+    max-width: 1240px !important;
+    min-width: 0 !important;
+    padding: 28px 28px 16px !important;
+    overflow-x: visible !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .layout,
+  .page[data-meniskus-layout='desktop'][dir='rtl'] .layout {
+    width: auto !important;
+    max-width: 1240px !important;
+    min-width: 0 !important;
+    display: grid !important;
+    grid-template-columns: 260px minmax(0, 1fr) !important;
+    gap: 24px !important;
+    padding: 22px 28px 70px !important;
+    overflow-x: visible !important;
+  }
+
+  .page[data-meniskus-layout='desktop'][dir='rtl'] .layout {
+    grid-template-columns: minmax(0, 1fr) 260px !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .layout > .sidebar,
+  .page[data-meniskus-layout='desktop'] aside.sidebar {
+    display: block !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    position: sticky !important;
+    top: 88px !important;
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    order: 0 !important;
+  }
+
+  .page[data-meniskus-layout='desktop'][dir='rtl'] .sidebar {
+    order: 2 !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .mobileTocBar,
+  .page[data-meniskus-layout='desktop'] .mobileTocOverlay,
+  .page[data-meniskus-layout='desktop'] .mobileTocPanel,
+  .page[data-meniskus-layout='desktop'] .mobileMcqFab {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .main {
+    width: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    display: grid !important;
+    gap: 24px !important;
+    overflow-x: visible !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .heroGrid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 22px !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .heroText {
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    padding: 38px !important;
+    border-radius: 34px !important;
+    overflow: hidden !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .heroText h1 {
+    font-size: clamp(46px, 6vw, 82px) !important;
+    line-height: 0.92 !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .heroActions {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .learnAction,
+  .page[data-meniskus-layout='desktop'] .learnActionDisabled {
+    width: auto !important;
+    min-height: 44px !important;
+    justify-content: flex-start !important;
+    white-space: normal !important;
+    padding: 11px 17px !important;
+    font-size: 14px !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .section {
+    width: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 28px !important;
+    border-radius: 28px !important;
+    scroll-margin-top: 92px !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .sectionHead {
+    margin: -28px -28px 18px !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .sectionToggle {
+    padding: 20px 28px !important;
+    border-radius: 28px 28px 0 0 !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .sectionHead h2 {
+    font-size: clamp(32px, 4.5vw, 48px) !important;
+    line-height: 1.02 !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .sectionContent,
+  .page[data-meniskus-layout='desktop'] .section:not([data-open='true']) > .sectionContent,
+  .page[data-meniskus-layout='desktop'] .section[data-open='true'] > .sectionContent {
+    display: block !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .splitGrid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.9fr) !important;
+    gap: 18px !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .zoneGrid,
+  .page[data-meniskus-layout='desktop'] .protocolGrid,
+  .page[data-meniskus-layout='desktop'] .criteriaGrid,
+  .page[data-meniskus-layout='desktop'] .discoidStats {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .caseGrid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 18px !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .card,
+  .page[data-meniskus-layout='desktop'] .cardAccent,
+  .page[data-meniskus-layout='desktop'] .cardDanger,
+  .page[data-meniskus-layout='desktop'] .normalCard,
+  .page[data-meniskus-layout='desktop'] .protocolCard,
+  .page[data-meniskus-layout='desktop'] .criteriaCard,
+  .page[data-meniskus-layout='desktop'] .figure,
+  .page[data-meniskus-layout='desktop'] .callout,
+  .page[data-meniskus-layout='desktop'] .extendedDetails,
+  .page[data-meniskus-layout='desktop'] .videoCard,
+  .page[data-meniskus-layout='desktop'] .takeHomeBox {
+    width: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .tableWrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-x: auto !important;
+    border: 1px solid #dfe6f0 !important;
+    border-radius: 20px !important;
+    background: #fff !important;
+    margin: 18px 0 !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .table {
+    display: table !important;
+    width: 100% !important;
+    min-width: 620px !important;
+    max-width: none !important;
+    table-layout: auto !important;
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .table thead { display: table-header-group !important; }
+  .page[data-meniskus-layout='desktop'] .table tbody { display: table-row-group !important; }
+  .page[data-meniskus-layout='desktop'] .table tr { display: table-row !important; padding: 0 !important; border: 0 !important; border-radius: 0 !important; background: transparent !important; }
+
+  .page[data-meniskus-layout='desktop'] .table th,
+  .page[data-meniskus-layout='desktop'] .table td,
+  .page[data-meniskus-layout='desktop'] .gradeTable td:first-child,
+  .page[data-meniskus-layout='desktop'] .tearTypeTable td:first-child {
+    display: table-cell !important;
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    grid-template-columns: none !important;
+    gap: 0 !important;
+    padding: 14px 15px !important;
+    border-bottom: 1px solid #edf1f7 !important;
+    white-space: normal !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .table th {
+    padding: 13px 15px !important;
+    white-space: nowrap !important;
+  }
+
+  .page[data-meniskus-layout='desktop'] .table td::before {
+    content: none !important;
+  }
+}
+
 `
 
 const CONTENT = {
@@ -3873,21 +4110,43 @@ function Callout({ type = 'note', label, children }) {
 }
 
 function useIsMobileViewport(query = '(max-width: 900px)') {
-  const [isMobile, setIsMobile] = useState(true)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(query)
-    const updateMobileState = () => setIsMobile(mediaQuery.matches)
+
+    const updateMobileState = () => {
+      const userAgent = window.navigator.userAgent || ''
+      const hasMobileUserAgent = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(userAgent)
+      const hasTouchInput = window.navigator.maxTouchPoints > 0
+
+      // Wichtig für iPhone/Safari: Wenn im Browser „Desktop-Webseite“ gewählt wird,
+      // meldet Safari normalerweise keinen mobilen User-Agent mehr. Dann darf unsere
+      // schmale iPhone-Breite nicht automatisch die mobile Akkordeon-Ansicht erzwingen.
+      const desktopWebsiteRequested = mediaQuery.matches && hasTouchInput && !hasMobileUserAgent
+
+      setIsMobile(mediaQuery.matches && !desktopWebsiteRequested)
+    }
 
     updateMobileState()
+    window.addEventListener('resize', updateMobileState)
+    window.addEventListener('orientationchange', updateMobileState)
 
     if (mediaQuery.addEventListener) {
       mediaQuery.addEventListener('change', updateMobileState)
-      return () => mediaQuery.removeEventListener('change', updateMobileState)
+      return () => {
+        mediaQuery.removeEventListener('change', updateMobileState)
+        window.removeEventListener('resize', updateMobileState)
+        window.removeEventListener('orientationchange', updateMobileState)
+      }
     }
 
     mediaQuery.addListener(updateMobileState)
-    return () => mediaQuery.removeListener(updateMobileState)
+    return () => {
+      mediaQuery.removeListener(updateMobileState)
+      window.removeEventListener('resize', updateMobileState)
+      window.removeEventListener('orientationchange', updateMobileState)
+    }
   }, [query])
 
   return isMobile
@@ -3991,6 +4250,7 @@ export default function MeniskusPage() {
   const isMobile = useIsMobileViewport()
   const [activeId, setActiveId] = useState(pageSections[0].id)
   const [previewImage, setPreviewImage] = useState(null)
+  const meniskusLayout = isMobile ? 'mobile' : 'desktop'
 
   const sectionIds = useMemo(() => pageSections.map(section => section.id), [pageSections])
   const withLang = (href) => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
@@ -4003,6 +4263,16 @@ export default function MeniskusPage() {
   useEffect(() => {
     setActiveId(pageSections[0].id)
   }, [pageSections])
+
+  useEffect(() => {
+    document.documentElement.dataset.meniskusLayout = meniskusLayout
+    document.body.dataset.meniskusLayout = meniskusLayout
+
+    return () => {
+      delete document.documentElement.dataset.meniskusLayout
+      delete document.body.dataset.meniskusLayout
+    }
+  }, [meniskusLayout])
 
   useEffect(() => {
     document.body.style.overflow = previewImage ? 'hidden' : ''
@@ -4031,6 +4301,7 @@ export default function MeniskusPage() {
   return (
     <div
       className={styles.page}
+      data-meniskus-layout={meniskusLayout}
       dir={isRTL ? 'rtl' : 'ltr'}
       lang={lang}
       onCopy={(event) => event.preventDefault()}
