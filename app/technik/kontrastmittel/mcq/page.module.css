@@ -432,3 +432,68 @@
   .resultWrap { padding: 20px 16px 48px; }
   .scoreNumber { font-size: 56px; }
 }
+
+/* ── DARK THEME ───────────────────────────────────── */
+:global(html[data-theme='dark']) .page {
+  background: #07111f;
+  color: #e5edf8;
+}
+:global(html[data-theme='dark']) .topBar,
+:global(html[data-theme='dark']) .quizCard,
+:global(html[data-theme='dark']) .option,
+:global(html[data-theme='dark']) .tracker,
+:global(html[data-theme='dark']) .trackerDot,
+:global(html[data-theme='dark']) .feedback,
+:global(html[data-theme='dark']) .scoreCard,
+:global(html[data-theme='dark']) .summaryItem,
+:global(html[data-theme='dark']) .filterBtn,
+:global(html[data-theme='dark']) .resultWrap,
+:global(html[data-theme='dark']) .summaryWrap {
+  background: rgba(15,23,42,0.94);
+  border-color: rgba(148,163,184,0.18);
+  color: #e5edf8;
+  box-shadow: 0 14px 34px rgba(0,0,0,0.24);
+}
+:global(html[data-theme='dark']) .pageTitle,
+:global(html[data-theme='dark']) .qText,
+:global(html[data-theme='dark']) .feedbackTitle,
+:global(html[data-theme='dark']) .summaryTitle,
+:global(html[data-theme='dark']) .summaryQ,
+:global(html[data-theme='dark']) .scoreNumber,
+:global(html[data-theme='dark']) .gradeLabel,
+:global(html[data-theme='dark']) .rightAns,
+:global(html[data-theme='dark']) .yourAns { color: #f8fafc; }
+:global(html[data-theme='dark']) .subtitle,
+:global(html[data-theme='dark']) .breadcrumb,
+:global(html[data-theme='dark']) .breadCurrent,
+:global(html[data-theme='dark']) .optText,
+:global(html[data-theme='dark']) .feedbackCorrectAns,
+:global(html[data-theme='dark']) .feedbackExp,
+:global(html[data-theme='dark']) .trackerTitle,
+:global(html[data-theme='dark']) .trackerScore,
+:global(html[data-theme='dark']) .scoreDesc,
+:global(html[data-theme='dark']) .scoreTotal,
+:global(html[data-theme='dark']) .summaryExp,
+:global(html[data-theme='dark']) .gradeSub { color: #9aa9bf; }
+:global(html[data-theme='dark']) .progressBar,
+:global(html[data-theme='dark']) .optLetter,
+:global(html[data-theme='dark']) .scoreBarWrap { background: rgba(30,41,59,0.92); }
+:global(html[data-theme='dark']) .option:hover:not(:disabled),
+:global(html[data-theme='dark']) .filterBtn:hover {
+  background: rgba(249,115,22,0.10);
+  border-color: rgba(249,115,22,0.38);
+}
+:global(html[data-theme='dark']) .optSelected {
+  background: rgba(249,115,22,0.16) !important;
+  color: #fed7aa !important;
+}
+:global(html[data-theme='dark']) .optCorrect {
+  background: rgba(16,185,129,0.16) !important;
+  color: #bbf7d0 !important;
+}
+:global(html[data-theme='dark']) .optWrong {
+  background: rgba(239,68,68,0.16) !important;
+  color: #fecaca !important;
+}
+:global(html[data-theme='dark']) .nextBtn { background: #f8fafc; color: #0f172a; }
+:global(html[data-theme='dark']) .checkBtnDisabled { background: rgba(30,41,59,0.9) !important; color: #70829d !important; }

@@ -183,3 +183,48 @@
   .trackerTitle { white-space: nowrap; }
   .progressTrack { width: 100px; }
 }
+
+/* ── DARK THEME ───────────────────────────────────── */
+:global(html[data-theme='dark']) .page {
+  background: #07111f;
+  color: #e5edf8;
+}
+:global(html[data-theme='dark']) .topBar,
+:global(html[data-theme='dark']) .quizCard,
+:global(html[data-theme='dark']) .option,
+:global(html[data-theme='dark']) .tracker,
+:global(html[data-theme='dark']) .dot,
+:global(html[data-theme='dark']) .feedback,
+:global(html[data-theme='dark']) .scoreCard,
+:global(html[data-theme='dark']) .summaryItem,
+:global(html[data-theme='dark']) .filterBtn,
+:global(html[data-theme='dark']) .empty {
+  background: rgba(15,23,42,0.94);
+  border-color: rgba(148,163,184,0.18);
+  color: #e5edf8;
+}
+:global(html[data-theme='dark']) .topFach,
+:global(html[data-theme='dark']) .qText,
+:global(html[data-theme='dark']) .emptyTitle,
+:global(html[data-theme='dark']) .summaryTitle,
+:global(html[data-theme='dark']) .sumQ,
+:global(html[data-theme='dark']) .scoreNum { color: #f8fafc; }
+:global(html[data-theme='dark']) .back,
+:global(html[data-theme='dark']) .progressLabel,
+:global(html[data-theme='dark']) .optText,
+:global(html[data-theme='dark']) .fbLabel,
+:global(html[data-theme='dark']) .fbText,
+:global(html[data-theme='dark']) .trackerTitle,
+:global(html[data-theme='dark']) .emptySub,
+:global(html[data-theme='dark']) .sumExp,
+:global(html[data-theme='dark']) .scoreDesc,
+:global(html[data-theme='dark']) .scoreTotal { color: #9aa9bf; }
+:global(html[data-theme='dark']) .progressTrack,
+:global(html[data-theme='dark']) .optLetter,
+:global(html[data-theme='dark']) .scoreBar { background: rgba(30,41,59,0.9); }
+:global(html[data-theme='dark']) .option:hover:not(:disabled),
+:global(html[data-theme='dark']) .filterBtn:hover {
+  background: rgba(249,115,22,0.10);
+  border-color: rgba(249,115,22,0.38);
+}
+:global(html[data-theme='dark']) .nextBtn { background: #f8fafc; color: #0f172a; }

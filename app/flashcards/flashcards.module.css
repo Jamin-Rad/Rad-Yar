@@ -430,3 +430,46 @@
   .statsGrid { grid-template-columns: 1fr 1fr; }
   .boxGrid { grid-template-columns: 1fr 1fr; }
 }
+
+/* ── DARK THEME ───────────────────────────────────── */
+:global(html[data-theme='dark']) .page {
+  background:
+    radial-gradient(circle at 12% 6%, rgba(14,165,233,0.10), transparent 28rem),
+    radial-gradient(circle at 88% 0%, rgba(249,115,22,0.10), transparent 24rem),
+    linear-gradient(180deg, #07111f 0%, #0b1526 100%);
+  color: #e5edf8;
+}
+:global(html[data-theme='dark']) .hero,
+:global(html[data-theme='dark']) .heroPanel,
+:global(html[data-theme='dark']) .statCard,
+:global(html[data-theme='dark']) .section,
+:global(html[data-theme='dark']) .topicCard,
+:global(html[data-theme='dark']) .boxCard,
+:global(html[data-theme='dark']) .flashcard,
+:global(html[data-theme='dark']) .tableWrap,
+:global(html[data-theme='dark']) .listTable,
+:global(html[data-theme='dark']) .softBtn,
+:global(html[data-theme='dark']) .secondaryBtn {
+  background: rgba(15,23,42,0.94);
+  border-color: rgba(148,163,184,0.18);
+  color: #e5edf8;
+}
+:global(html[data-theme='dark']) .title,
+:global(html[data-theme='dark']) .sectionTitle,
+:global(html[data-theme='dark']) .question,
+:global(html[data-theme='dark']) .answer,
+:global(html[data-theme='dark']) .topicText strong,
+:global(html[data-theme='dark']) .boxCard strong { color: #f8fafc; }
+:global(html[data-theme='dark']) .lead,
+:global(html[data-theme='dark']) .sectionSub,
+:global(html[data-theme='dark']) .topicText span,
+:global(html[data-theme='dark']) .heroPanel span,
+:global(html[data-theme='dark']) .progressText,
+:global(html[data-theme='dark']) .listTable td { color: #9aa9bf; }
+:global(html[data-theme='dark']) .topicCard:hover {
+  border-color: rgba(249,115,22,0.38);
+  box-shadow: 0 18px 44px rgba(0,0,0,0.30);
+}
+:global(html[data-theme='dark']) .topicIcon,
+:global(html[data-theme='dark']) .badge { background: rgba(249,115,22,0.15); }
+:global(html[data-theme='dark']) .dangerBtn { background: rgba(239,68,68,0.14); border-color: rgba(248,113,113,0.28); color: #fecaca; }

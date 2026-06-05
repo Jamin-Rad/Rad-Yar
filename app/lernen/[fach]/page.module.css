@@ -526,3 +526,83 @@
 [dir="rtl"] .subLearningActions {
   margin: 3px 20px 4px 0;
 }
+
+/* ── DARK THEME ───────────────────────────────────── */
+:global(html[data-theme='dark']) .page {
+  background: #07111f;
+  color: #e5edf8;
+}
+:global(html[data-theme='dark']) .topBar,
+:global(html[data-theme='dark']) .chapterSidebar,
+:global(html[data-theme='dark']) .searchRow,
+:global(html[data-theme='dark']) .accHeader,
+:global(html[data-theme='dark']) .accBody,
+:global(html[data-theme='dark']) .themaCard,
+:global(html[data-theme='dark']) .subItemLink,
+:global(html[data-theme='dark']) .sidebarBtn,
+:global(html[data-theme='dark']) .subToggle {
+  background: rgba(15,23,42,0.94);
+  border-color: rgba(148,163,184,0.18);
+  color: #e5edf8;
+}
+:global(html[data-theme='dark']) .topBar {
+  box-shadow: 0 10px 26px rgba(0,0,0,0.24);
+}
+:global(html[data-theme='dark']) .searchBox,
+:global(html[data-theme='dark']) .kapitelPill,
+:global(html[data-theme='dark']) .accCount,
+:global(html[data-theme='dark']) .kapitelPillIcon,
+:global(html[data-theme='dark']) .accIcon {
+  background: rgba(30,41,59,0.74);
+  border-color: rgba(148,163,184,0.18);
+}
+:global(html[data-theme='dark']) .searchInput,
+:global(html[data-theme='dark']) .topTitle,
+:global(html[data-theme='dark']) .accTitle,
+:global(html[data-theme='dark']) .searchTitle,
+:global(html[data-theme='dark']) .sidebarBtnText,
+:global(html[data-theme='dark']) .themaTitle,
+:global(html[data-theme='dark']) .subItem,
+:global(html[data-theme='dark']) .subItemLink {
+  color: #f8fafc;
+}
+:global(html[data-theme='dark']) .back,
+:global(html[data-theme='dark']) .searchX,
+:global(html[data-theme='dark']) .kapitelPill,
+:global(html[data-theme='dark']) .accCount,
+:global(html[data-theme='dark']) .groupCount,
+:global(html[data-theme='dark']) .searchChapter,
+:global(html[data-theme='dark']) .sidebarTitle,
+:global(html[data-theme='dark']) .sidebarChevron,
+:global(html[data-theme='dark']) .noResult,
+:global(html[data-theme='dark']) .notFound {
+  color: #8fa1ba;
+}
+:global(html[data-theme='dark']) .accHeader:hover,
+:global(html[data-theme='dark']) .sidebarBtn:hover,
+:global(html[data-theme='dark']) .subItemLink:hover,
+:global(html[data-theme='dark']) .themaCardLink:hover {
+  background: rgba(30,41,59,0.9);
+  border-color: rgba(249,115,22,0.34);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.26);
+}
+:global(html[data-theme='dark']) .accHeaderOpen,
+:global(html[data-theme='dark']) .accHeaderOpen .accIcon {
+  background: linear-gradient(135deg, rgba(249,115,22,0.17), rgba(15,23,42,0.96));
+  border-color: rgba(249,115,22,0.34);
+}
+:global(html[data-theme='dark']) .accHeaderOpen .accTitle {
+  color: #fdba74;
+}
+:global(html[data-theme='dark']) .subList {
+  border-left-color: rgba(148,163,184,0.18);
+}
+:global(html[data-theme='dark']) [dir='rtl'] .subList {
+  border-right-color: rgba(148,163,184,0.18);
+}
+:global(html[data-theme='dark']) .subLearningMcq,
+:global(html[data-theme='dark']) .subLearningFlash,
+:global(html[data-theme='dark']) .subLearningFall {
+  background: rgba(15,23,42,0.86);
+  border-color: rgba(148,163,184,0.20);
+}

@@ -297,3 +297,56 @@
   right: auto;
   left: 6px;
 }
+
+/* ── DARK THEME ───────────────────────────────────── */
+:global(html[data-theme='dark']) .page {
+  background: #07111f;
+  color: #e5edf8;
+}
+:global(html[data-theme='dark']) .leftPanel,
+:global(html[data-theme='dark']) .rightPanel,
+:global(html[data-theme='dark']) .fachCard,
+:global(html[data-theme='dark']) .bulkBtn,
+:global(html[data-theme='dark']) .kapitelBlock,
+:global(html[data-theme='dark']) .chip,
+:global(html[data-theme='dark']) .hint,
+:global(html[data-theme='dark']) .anzahlBtn,
+:global(html[data-theme='dark']) .statBox,
+:global(html[data-theme='dark']) .summaryFach,
+:global(html[data-theme='dark']) .kapitelHeaderBtn {
+  background: rgba(15,23,42,0.94);
+  border-color: rgba(148,163,184,0.18);
+  color: #e5edf8;
+}
+:global(html[data-theme='dark']) .rightPanel { border-left-color: rgba(148,163,184,0.18); }
+:global(html[data-theme='dark']) .title,
+:global(html[data-theme='dark']) .section,
+:global(html[data-theme='dark']) .fachName,
+:global(html[data-theme='dark']) .kapitelTitle,
+:global(html[data-theme='dark']) .summaryTitle,
+:global(html[data-theme='dark']) .statNum { color: #f8fafc; }
+:global(html[data-theme='dark']) .sub,
+:global(html[data-theme='dark']) .breadcrumb,
+:global(html[data-theme='dark']) .crumbCurrent,
+:global(html[data-theme='dark']) .kapitelMeta,
+:global(html[data-theme='dark']) .summaryEmpty,
+:global(html[data-theme='dark']) .summaryNote,
+:global(html[data-theme='dark']) .statLbl,
+:global(html[data-theme='dark']) .chipSub { color: #9aa9bf; }
+:global(html[data-theme='dark']) .fachCard:hover,
+:global(html[data-theme='dark']) .bulkBtn:hover,
+:global(html[data-theme='dark']) .anzahlBtn:hover,
+:global(html[data-theme='dark']) .kapitelBlockOpen {
+  border-color: rgba(249,115,22,0.38);
+  box-shadow: 0 16px 34px rgba(0,0,0,0.28);
+}
+:global(html[data-theme='dark']) .chipActive,
+:global(html[data-theme='dark']) .anzahlBtnActive,
+:global(html[data-theme='dark']) .fachCardActive {
+  background: rgba(249,115,22,0.16) !important;
+  border-color: rgba(249,115,22,0.42) !important;
+}
+:global(html[data-theme='dark']) .summaryFachTag,
+:global(html[data-theme='dark']) .kapitelIconWrap {
+  background: rgba(249,115,22,0.16);
+}

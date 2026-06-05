@@ -1227,3 +1227,110 @@
     padding: 8px;
   }
 }
+
+/* ── DARK THEME ───────────────────────────────────── */
+:global(html[data-theme='dark']) .page {
+  background:
+    radial-gradient(circle at top left, rgba(249,115,22,0.10), transparent 32rem),
+    linear-gradient(180deg, #07111f 0%, #0b1526 100%);
+  color: #e5edf8;
+}
+:global(html[data-theme='dark']) .heroText,
+:global(html[data-theme='dark']) .heroStats,
+:global(html[data-theme='dark']) .mcqStrip,
+:global(html[data-theme='dark']) .sidebar,
+:global(html[data-theme='dark']) .section,
+:global(html[data-theme='dark']) .card,
+:global(html[data-theme='dark']) .cardAccent,
+:global(html[data-theme='dark']) .cardDanger,
+:global(html[data-theme='dark']) .figure,
+:global(html[data-theme='dark']) .protocolCard,
+:global(html[data-theme='dark']) .criteriaCard,
+:global(html[data-theme='dark']) .bulletCard,
+:global(html[data-theme='dark']) .bulletItem,
+:global(html[data-theme='dark']) .tableWrap,
+:global(html[data-theme='dark']) .caseCardLink,
+:global(html[data-theme='dark']) .mobileTocPanel,
+:global(html[data-theme='dark']) .imageModalContent {
+  background: rgba(15,23,42,0.94);
+  border-color: rgba(148,163,184,0.18);
+  color: #e5edf8;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.24);
+}
+:global(html[data-theme='dark']) .heroText h1,
+:global(html[data-theme='dark']) .mcqStrip strong,
+:global(html[data-theme='dark']) .sectionHead h2,
+:global(html[data-theme='dark']) .card h3,
+:global(html[data-theme='dark']) .cardAccent h3,
+:global(html[data-theme='dark']) .cardDanger h3,
+:global(html[data-theme='dark']) .protocolCard h3,
+:global(html[data-theme='dark']) .criteriaCard h3,
+:global(html[data-theme='dark']) .caseBody h3,
+:global(html[data-theme='dark']) .mobileTocHeader strong {
+  color: #f8fafc;
+}
+:global(html[data-theme='dark']) .breadcrumb,
+:global(html[data-theme='dark']) .heroText p,
+:global(html[data-theme='dark']) .mcqStrip span,
+:global(html[data-theme='dark']) .sectionHead p,
+:global(html[data-theme='dark']) .card p,
+:global(html[data-theme='dark']) .cardAccent p,
+:global(html[data-theme='dark']) .protocolCard p,
+:global(html[data-theme='dark']) .criteriaCard p,
+:global(html[data-theme='dark']) .bulletItem p,
+:global(html[data-theme='dark']) .table td,
+:global(html[data-theme='dark']) .figure figcaption,
+:global(html[data-theme='dark']) .caseBody p,
+:global(html[data-theme='dark']) .caseBody small,
+:global(html[data-theme='dark']) .sideItem,
+:global(html[data-theme='dark']) .sideTitle,
+:global(html[data-theme='dark']) .mobileTocButton strong {
+  color: #b8c4d8;
+}
+:global(html[data-theme='dark']) .sideTitle,
+:global(html[data-theme='dark']) .mobileTocHeader { border-color: rgba(148,163,184,0.14); }
+:global(html[data-theme='dark']) .sideItem:hover,
+:global(html[data-theme='dark']) .mobileTocPanel .sideItem,
+:global(html[data-theme='dark']) .mobileTocButton,
+:global(html[data-theme='dark']) .mobileTocHeader button {
+  background: rgba(30,41,59,0.92);
+  color: #f8fafc;
+  border-color: rgba(148,163,184,0.18);
+}
+:global(html[data-theme='dark']) .sideItemActive {
+  background: rgba(249,115,22,0.16) !important;
+  color: #fdba74 !important;
+}
+:global(html[data-theme='dark']) .sideIcon,
+:global(html[data-theme='dark']) .sideItemActive .sideIcon,
+:global(html[data-theme='dark']) .mobileTocIcon,
+:global(html[data-theme='dark']) .bulletItem span,
+:global(html[data-theme='dark']) .criteriaCard span,
+:global(html[data-theme='dark']) .sourceBadge,
+:global(html[data-theme='dark']) .caseLabel {
+  background: rgba(249,115,22,0.16);
+}
+:global(html[data-theme='dark']) .cardAccent,
+:global(html[data-theme='dark']) .callout,
+:global(html[data-theme='dark']) .callout.success,
+:global(html[data-theme='dark']) .callout.cave {
+  background: rgba(15,23,42,0.92);
+}
+:global(html[data-theme='dark']) .cardDanger ul,
+:global(html[data-theme='dark']) .calloutBody { color: #fecaca; }
+:global(html[data-theme='dark']) .table th {
+  background: rgba(30,41,59,0.95);
+  color: #f8fafc;
+}
+:global(html[data-theme='dark']) .table td { border-bottom-color: rgba(148,163,184,0.14); }
+:global(html[data-theme='dark']) .table tr:nth-child(even) td { background: rgba(30,41,59,0.45); }
+:global(html[data-theme='dark']) .heroStatCard:nth-child(3),
+:global(html[data-theme='dark']) .discoidStatCard:nth-child(3) {
+  background: rgba(30,41,59,0.94);
+  color: #f8fafc;
+  border-color: rgba(148,163,184,0.18);
+}
+:global(html[data-theme='dark']) .mobileTocBar {
+  background: rgba(7,17,31,0.88);
+  border-color: rgba(148,163,184,0.14);
+}
