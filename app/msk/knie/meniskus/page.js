@@ -179,18 +179,19 @@ const MENISKUS_STYLES = `.page {
 }
 
 .learnActionFlash {
-  color: #0369a1;
-  background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
-  border-color: #bae6fd;
-  box-shadow: 0 12px 24px rgba(14, 165, 233, 0.12);
+  color: #c2410c;
+  background: linear-gradient(135deg, #fff7ed, #ffedd5);
+  border-color: #fed7aa;
+  box-shadow: 0 12px 24px rgba(249, 115, 22, 0.12);
 }
 
 .learnActionDisabled {
-  color: #64748b;
-  background: #f8fafc;
-  border-color: #e2e8f0;
+  color: #c2410c;
+  background: linear-gradient(135deg, #fff7ed, #ffedd5);
+  border-color: #fed7aa;
   cursor: not-allowed;
-  opacity: 0.8;
+  opacity: 0.86;
+  box-shadow: 0 12px 24px rgba(249, 115, 22, 0.10);
 }
 
 .learnActionDisabled small {
@@ -601,14 +602,15 @@ const MENISKUS_STYLES = `.page {
 }
 
 .table th {
-  background: #0d1b2a;
-  color: #fff;
+  background: linear-gradient(135deg, #fff7ed, #ffedd5);
+  color: #c2410c;
   text-align: start;
   font-size: 12px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   padding: 13px 15px;
   white-space: nowrap;
+  border-bottom: 1px solid #fed7aa;
 }
 
 .table td {
@@ -813,6 +815,39 @@ const MENISKUS_STYLES = `.page {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+
+.takeHomeSection {
+  border: 1px solid rgba(249, 115, 22, 0.28);
+  background:
+    linear-gradient(180deg, rgba(255, 247, 237, 0.94), rgba(255, 255, 255, 0.96));
+}
+
+.takeHomeSection .sectionHead {
+  text-align: center;
+}
+
+.takeHomeSection .sectionHead h2 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  color: #ffffff;
+  font-family: var(--font-manrope, system-ui, sans-serif);
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 950;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  box-shadow: 0 16px 30px rgba(249, 115, 22, 0.22);
+}
+
+.takeHomeSection .sectionHead h2::before {
+  content: '⭐';
+  font-size: 0.9em;
 }
 
 .takeHomeBox {
@@ -2294,9 +2329,9 @@ function Callout({ type = 'note', label, children }) {
   )
 }
 
-function Section({ id, eyebrow, title, lead, children }) {
+function Section({ id, eyebrow, title, lead, children, className = '' }) {
   return (
-    <section id={id} className={styles.section}>
+    <section id={id} className={`${styles.section} ${className}`.trim()}>
       <div className={styles.sectionHead}>
         <span className={styles.eyebrow}>{eyebrow}</span>
         <h2>{title}</h2>
@@ -2623,7 +2658,7 @@ export default function MeniskusPage() {
             </div>
           </Section>
 
-          <Section id="takehome" eyebrow="11" title={takeHomeCopy.title} lead="">
+          <Section id="takehome" eyebrow="11" title={takeHomeCopy.title} lead="" className={styles.takeHomeSection}>
             <div className={styles.takeHomeBox}>
               <p className={styles.takeHomeIntro}>{takeHomeCopy.lead}</p>
               <div className={styles.takeHomeList}>
