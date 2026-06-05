@@ -1,0 +1,449 @@
+/* ═══════════════════════════════════════════════════════
+   app/flashcards/[topicId]/page.module.css
+   Flashcard Review — 3D Flip-Animation
+═══════════════════════════════════════════════════════ */
+
+.page {
+  min-height: 100vh;
+  padding-top: 64px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-main);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── TOP BAR ───────────────────────────────────────── */
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 24px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 64px;
+  z-index: 10;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--orange);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: color 0.15s;
+}
+
+.backBtn:hover { color: #ea580c; }
+
+.topCenter {
+  flex: 1;
+  text-align: center;
+  min-width: 0;
+}
+
+.topicName {
+  display: block;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--text-strong);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardCount {
+  display: block;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-top: 1px;
+}
+
+.boxPill {
+  background: var(--accent-soft);
+  color: var(--orange);
+  border: 1px solid rgba(249, 115, 22, 0.22);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* ── PROGRESS BAR ──────────────────────────────────── */
+.progressTrack {
+  height: 3px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+.progressBar {
+  height: 100%;
+  background: var(--orange);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 3px;
+}
+
+/* ── MAIN CONTENT ──────────────────────────────────── */
+.main {
+  flex: 1;
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+/* ── CATEGORY BADGE ────────────────────────────────── */
+.categoryRow {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.catBadge {
+  display: inline-flex;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--orange);
+  border: 1px solid rgba(249, 115, 22, 0.18);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── 3D FLIP CARD ──────────────────────────────────── */
+.stage {
+  width: 100%;
+  perspective: 1600px;
+  cursor: pointer;
+  outline: none;
+  border-radius: var(--radius-lg);
+  /* Tap/click feedback */
+  transition: opacity 0.15s ease;
+}
+
+.stage:focus-visible {
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.45);
+  border-radius: var(--radius-lg);
+}
+
+.stage:active { opacity: 0.95; }
+
+/* Das rotierende Element */
+.flipper {
+  display: grid;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flipper.flipped {
+  transform: rotateY(180deg);
+}
+
+/* Vorder- und Rückseite sitzen im selben Grid-Cell → überlagern sich */
+.cardFront,
+.cardBack {
+  grid-row: 1;
+  grid-column: 1;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 60px var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 360px;
+  transition: box-shadow 0.2s ease;
+}
+
+.cardFront {
+  background:
+    radial-gradient(circle at 90% 8%, rgba(249, 115, 22, 0.10), transparent 18rem),
+    var(--bg-card);
+}
+
+.cardBack {
+  transform: rotateY(180deg);
+  background:
+    radial-gradient(circle at 10% 92%, rgba(16, 185, 129, 0.09), transparent 18rem),
+    var(--bg-card);
+}
+
+/* Hover-Effekt am Stage */
+.stage:hover .cardFront,
+.stage:hover .cardBack {
+  box-shadow: 0 28px 80px rgba(26, 32, 81, 0.12);
+}
+
+/* ── TEXTE AUF DER KARTE ───────────────────────────── */
+.question {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(21px, 3.2vw, 30px);
+  font-weight: 900;
+  line-height: 1.28;
+  color: var(--text-strong);
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.answer {
+  margin: 0;
+  font-size: clamp(15px, 2vw, 17px);
+  line-height: 1.85;
+  color: var(--text);
+  font-weight: 500;
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+}
+
+/* Kleiner Hinweis am Kartenende */
+.tapHint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 10px 0 0;
+  border-top: 1px solid var(--border-soft);
+  margin-top: auto;
+}
+
+.tapHintIcon {
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+/* ── ANTWORT-BUTTONS ───────────────────────────────── */
+.answerRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(18px);
+  pointer-events: none;
+  transition: opacity 0.32s ease, transform 0.32s ease;
+  transition-delay: 0.1s;
+}
+
+.answerRow.answerVisible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.knowBtn,
+.dontKnowBtn {
+  flex: 1;
+  border: none;
+  border-radius: 999px;
+  padding: 16px 20px;
+  font-family: var(--font-main);
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.knowBtn {
+  background: linear-gradient(135deg, var(--orange), #fb923c);
+  color: #fff;
+  box-shadow: 0 14px 32px rgba(249, 115, 22, 0.26);
+}
+
+.dontKnowBtn {
+  background: var(--navy);
+  color: #fff;
+  box-shadow: 0 14px 32px rgba(26, 32, 81, 0.20);
+}
+
+.knowBtn:hover    { transform: translateY(-2px); box-shadow: 0 20px 42px rgba(249, 115, 22, 0.34); }
+.dontKnowBtn:hover{ transform: translateY(-2px); box-shadow: 0 20px 42px rgba(26, 32, 81, 0.28); }
+.knowBtn:active,
+.dontKnowBtn:active { transform: scale(0.98); }
+
+/* ── ÜBERGANG ZUR NÄCHSTEN KARTE ───────────────────── */
+.stage.exiting {
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  pointer-events: none;
+}
+
+/* ── ABSCHLUSS-BILDSCHIRM ──────────────────────────── */
+.doneWrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+}
+
+.doneCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 70px var(--shadow-soft);
+  padding: 52px 48px;
+  max-width: 460px;
+  width: 100%;
+  text-align: center;
+}
+
+.doneEmoji {
+  font-size: 60px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.doneTitle {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 900;
+  color: var(--text-strong);
+  margin: 0 0 10px;
+  line-height: 1.1;
+}
+
+.doneSub {
+  color: var(--text-soft);
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0 0 36px;
+}
+
+.doneStats {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+
+.doneStat {
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px 22px;
+  min-width: 86px;
+  flex: 1;
+}
+
+.doneStat strong {
+  display: block;
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--orange);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.doneStat span {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 30px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--orange), #fb923c);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 15px;
+  box-shadow: 0 14px 32px rgba(249, 115, 22, 0.26);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.backLink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 42px rgba(249, 115, 22, 0.34);
+}
+
+/* ── RTL ───────────────────────────────────────────── */
+[dir='rtl'] .backBtn      { flex-direction: row-reverse; }
+[dir='rtl'] .topBar       { flex-direction: row-reverse; }
+[dir='rtl'] .answerRow    { direction: rtl; }
+[dir='rtl'] .catBadge     { letter-spacing: 0; }
+[dir='rtl'] .question,
+[dir='rtl'] .answer       { direction: rtl; text-align: right; }
+[dir='rtl'] .categoryRow  { flex-direction: row-reverse; }
+
+/* ── DARK MODE ─────────────────────────────────────── */
+/* Dank CSS-Variablen fast automatisch — nur Gradienten als Ausnahme */
+:global(html[data-theme='dark']) .cardFront {
+  background:
+    radial-gradient(circle at 90% 8%, rgba(249, 115, 22, 0.07), transparent 18rem),
+    var(--bg-card);
+}
+
+:global(html[data-theme='dark']) .cardBack {
+  background:
+    radial-gradient(circle at 10% 92%, rgba(16, 185, 129, 0.06), transparent 18rem),
+    var(--bg-card);
+}
+
+:global(html[data-theme='dark']) .dontKnowBtn {
+  background: rgba(26, 32, 81, 0.85);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.30);
+}
+
+/* ── RESPONSIVE ────────────────────────────────────── */
+@media (max-width: 620px) {
+  .topBar       { padding: 11px 16px; }
+  .main         { padding: 20px 14px 72px; gap: 14px; }
+
+  .cardFront,
+  .cardBack     { padding: 24px; min-height: 300px; border-radius: var(--radius-md); }
+  .stage,
+  .flipper      { border-radius: var(--radius-md); }
+
+  .question     { font-size: 20px; }
+  .answer       { font-size: 15px; }
+
+  .answerRow    { gap: 10px; }
+  .knowBtn,
+  .dontKnowBtn  { font-size: 15px; padding: 14px 16px; min-height: 50px; }
+
+  .doneCard     { padding: 36px 24px; }
+  .doneStats    { gap: 10px; }
+  .doneStat     { padding: 14px 12px; min-width: 70px; }
+}
