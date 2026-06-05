@@ -147,20 +147,59 @@ const MENISKUS_STYLES = `.page {
   line-height: 1.7;
 }
 
-.mcqButton {
-  display: inline-flex;
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 9px;
-  padding: 12px 18px;
-  border-radius: 999px;
-  background: #0d1b2a;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 800;
-  box-shadow: 0 12px 24px rgba(13, 27, 42, 0.18);
+  gap: 10px;
+  margin-top: 22px;
 }
 
-.mcqButton:hover { transform: translateY(-1px); }
+.learnAction,
+.learnActionDisabled {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 13px;
+  border: 1px solid transparent;
+  transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+}
+
+.learnAction:hover { transform: translateY(-1px); }
+
+.learnActionMcq {
+  color: #c2410c;
+  background: linear-gradient(135deg, #fff7ed, #ffedd5);
+  border-color: #fed7aa;
+  box-shadow: 0 12px 24px rgba(249, 115, 22, 0.12);
+}
+
+.learnActionFlash {
+  color: #0369a1;
+  background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+  border-color: #bae6fd;
+  box-shadow: 0 12px 24px rgba(14, 165, 233, 0.12);
+}
+
+.learnActionDisabled {
+  color: #64748b;
+  background: #f8fafc;
+  border-color: #e2e8f0;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.learnActionDisabled small {
+  color: #f97316;
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 
 .heroStats {
   border-radius: 28px;
@@ -863,6 +902,7 @@ const MENISKUS_STYLES = `.page {
   color: rgba(255, 255, 255, 0.88);
   line-height: 1.75;
   font-weight: 850;
+  white-space: pre-line;
 }
 
 [dir='rtl'] .takeHomeItem {
@@ -1594,6 +1634,10 @@ const CONTENT = {
     mcqTitle: 'MCQs zum Meniskus',
     mcqDesc: 'Passende Prüfungsfragen zu Anatomie, MRT-Grading und Rissdiagnostik.',
     mcqCta: 'MCQs starten',
+    actionMcq: 'MCQ',
+    actionFall: 'Fallbeispiele',
+    actionFallStatus: 'in Arbeit',
+    actionFlash: 'Flashcards',
     openCase: 'Bild direkt in Radiopaedia öffnen',
     zoomImage: 'Bild vergrößern',
     closePreview: 'Vorschau schließen',
@@ -1789,6 +1833,10 @@ const CONTENT = {
     mcqTitle: 'Meniscus MCQs',
     mcqDesc: 'Exam questions on anatomy, MRI grading and tear diagnosis.',
     mcqCta: 'Start MCQs',
+    actionMcq: 'MCQ',
+    actionFall: 'Case studies',
+    actionFallStatus: 'coming soon',
+    actionFlash: 'Flashcards',
     openCase: 'Open image directly in Radiopaedia',
     zoomImage: 'Enlarge image',
     closePreview: 'Close preview',
@@ -1984,6 +2032,10 @@ const CONTENT = {
     mcqTitle: 'سوالات منیسک',
     mcqDesc: 'سوالات مرتبط با آناتومی، درجه‌بندی MRI و تشخیص پارگی.',
     mcqCta: 'شروع سوالات',
+    actionMcq: 'MCQ',
+    actionFall: 'موارد بالینی',
+    actionFallStatus: 'در حال ساخت',
+    actionFlash: 'فلش‌کارت',
     openCase: 'باز کردن مستقیم تصویر در Radiopaedia',
     zoomImage: 'بزرگ‌نمایی تصویر',
     closePreview: 'بستن نمایش بزرگ',
@@ -2304,9 +2356,9 @@ export default function MeniskusPage() {
   const takeHomeItems = useMemo(() => [
     { number: '01', title: takeHomeCopy.itemTitles.anatomy, text: copy.anatomy.key },
     { number: '02', title: takeHomeCopy.itemTitles.vascular, text: copy.vascular.key },
-    { number: '04/05', title: takeHomeCopy.itemTitles.gradingTear, text: `${copy.grading.key} ${copy.tear.key}` },
-    { number: '06', title: takeHomeCopy.itemTitles.discoid, text: `${takeHomeCopy.discoidDefinition} ${copy.discoid.key}` },
-    { number: '07', title: takeHomeCopy.itemTitles.therapy, text: copy.therapy.key },
+    { number: '03', title: takeHomeCopy.itemTitles.gradingTear, text: `${copy.grading.key} ${copy.tear.key}` },
+    { number: '04', title: takeHomeCopy.itemTitles.discoid, text: `${takeHomeCopy.discoidDefinition}\n${copy.discoid.key}` },
+    { number: '05', title: takeHomeCopy.itemTitles.therapy, text: copy.therapy.key },
   ], [copy, takeHomeCopy])
   const mainRef = useRef(null)
   const [activeId, setActiveId] = useState(pageSections[0].id)
@@ -2375,10 +2427,21 @@ export default function MeniskusPage() {
             <span className={styles.sourceBadge}>{copy.sourceLabel}</span>
             <h1>{copy.title}</h1>
             <p>{copy.subtitle}</p>
-            <Link href={withLang('/msk/knie/meniskus/mcq')} className={styles.mcqButton}>
-              <span>🎯</span>
-              <span>{copy.mcqTitle}</span>
-            </Link>
+            <div className={styles.heroActions}>
+              <Link href={withLang('/msk/knie/meniskus/mcq')} className={`${styles.learnAction} ${styles.learnActionMcq}`}>
+                <span>🎯</span>
+                <span>{copy.actionMcq}</span>
+              </Link>
+              <span className={styles.learnActionDisabled} aria-disabled="true">
+                <span>🧪</span>
+                <span>{copy.actionFall}</span>
+                <small>{copy.actionFallStatus}</small>
+              </span>
+              <Link href={withLang('/flashcards/meniskus')} className={`${styles.learnAction} ${styles.learnActionFlash}`}>
+                <span>🧠</span>
+                <span>{copy.actionFlash}</span>
+              </Link>
+            </div>
           </div>
 
         </div>
