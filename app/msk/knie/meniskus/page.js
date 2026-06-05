@@ -1858,6 +1858,224 @@ const MENISKUS_STYLES = `.page {
     padding: 8px;
   }
 }
+
+/* ── DARK THEME ───────────────────────────────────── */
+html[data-theme='dark'] .page {
+  background:
+    radial-gradient(circle at top left, rgba(249,115,22,0.10), transparent 32rem),
+    radial-gradient(circle at 88% 0%, rgba(14,165,233,0.08), transparent 28rem),
+    linear-gradient(180deg, #07111f 0%, #0b1526 100%);
+  color: #e5edf8;
+}
+
+html[data-theme='dark'] .heroText,
+html[data-theme='dark'] .heroStats,
+html[data-theme='dark'] .mcqStrip,
+html[data-theme='dark'] .sidebar,
+html[data-theme='dark'] .section,
+html[data-theme='dark'] .card,
+html[data-theme='dark'] .cardAccent,
+html[data-theme='dark'] .cardDanger,
+html[data-theme='dark'] .normalCard,
+html[data-theme='dark'] .figure,
+html[data-theme='dark'] .protocolCard,
+html[data-theme='dark'] .criteriaCard,
+html[data-theme='dark'] .bulletCard,
+html[data-theme='dark'] .bulletItem,
+html[data-theme='dark'] .tableWrap,
+html[data-theme='dark'] .caseCardLink,
+html[data-theme='dark'] .extendedDetails,
+html[data-theme='dark'] .videoCard,
+html[data-theme='dark'] .takeHomeSection,
+html[data-theme='dark'] .takeHomeBox,
+html[data-theme='dark'] .takeHomeItem,
+html[data-theme='dark'] .mobileTocPanel,
+html[data-theme='dark'] .imageModalContent {
+  background: rgba(15,23,42,0.94) !important;
+  border-color: rgba(148,163,184,0.18) !important;
+  color: #e5edf8;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.24);
+}
+
+html[data-theme='dark'] .heroText {
+  background:
+    radial-gradient(circle at top right, rgba(249,115,22,0.14), transparent 18rem),
+    linear-gradient(135deg, rgba(15,23,42,0.98) 0%, rgba(17,24,39,0.96) 100%) !important;
+}
+
+html[data-theme='dark'] .sectionToggle,
+html[data-theme='dark'] .takeHomeSection .sectionHead h2,
+html[data-theme='dark'] .extendedDetails summary,
+html[data-theme='dark'] .mobileTocButton,
+html[data-theme='dark'] .mobileTocHeader button,
+html[data-theme='dark'] .mobileTocPanel .sideItem {
+  background: rgba(30,41,59,0.92) !important;
+  border-color: rgba(148,163,184,0.18) !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] .sectionToggle:hover,
+html[data-theme='dark'] .sideItem:hover {
+  background: rgba(51,65,85,0.82) !important;
+}
+
+html[data-theme='dark'] .heroText h1,
+html[data-theme='dark'] .mcqStrip strong,
+html[data-theme='dark'] .sectionHead h2,
+html[data-theme='dark'] .card h3,
+html[data-theme='dark'] .cardAccent h3,
+html[data-theme='dark'] .cardDanger h3,
+html[data-theme='dark'] .normalCard h3,
+html[data-theme='dark'] .protocolCard h3,
+html[data-theme='dark'] .criteriaCard h3,
+html[data-theme='dark'] .caseBody h3,
+html[data-theme='dark'] .plainList strong,
+html[data-theme='dark'] .subSectionTitle,
+html[data-theme='dark'] .takeHomeItem h3,
+html[data-theme='dark'] .mobileTocHeader strong {
+  color: #f8fafc !important;
+  text-shadow: none;
+}
+
+html[data-theme='dark'] .breadcrumb,
+html[data-theme='dark'] .heroText p,
+html[data-theme='dark'] .mcqStrip span,
+html[data-theme='dark'] .sectionLead,
+html[data-theme='dark'] .card p,
+html[data-theme='dark'] .cardAccent p,
+html[data-theme='dark'] .normalCard p,
+html[data-theme='dark'] .protocolCard p,
+html[data-theme='dark'] .criteriaCard p,
+html[data-theme='dark'] .bulletItem p,
+html[data-theme='dark'] .table td,
+html[data-theme='dark'] .figure figcaption,
+html[data-theme='dark'] .caseBody p,
+html[data-theme='dark'] .caseBody small,
+html[data-theme='dark'] .sideItem,
+html[data-theme='dark'] .sideTitle,
+html[data-theme='dark'] .subSectionLead,
+html[data-theme='dark'] .videoCard p,
+html[data-theme='dark'] .takeHomeIntro,
+html[data-theme='dark'] .takeHomeItem p,
+html[data-theme='dark'] .mobileTocButton strong {
+  color: #b8c4d8 !important;
+}
+
+html[data-theme='dark'] .sideTitle,
+html[data-theme='dark'] .mobileTocHeader,
+html[data-theme='dark'] .subSectionBlock,
+html[data-theme='dark'] .table td {
+  border-color: rgba(148,163,184,0.14) !important;
+}
+
+html[data-theme='dark'] .sourceBadge,
+html[data-theme='dark'] .caseLabel,
+html[data-theme='dark'] .sideItemImportant,
+html[data-theme='dark'] .sideItemActive,
+html[data-theme='dark'] .callout,
+html[data-theme='dark'] .callout.success,
+html[data-theme='dark'] .callout.cave {
+  background: rgba(249,115,22,0.14) !important;
+  border-color: rgba(249,115,22,0.28) !important;
+  color: #fdba74 !important;
+}
+
+html[data-theme='dark'] .sideItemActive {
+  color: #fdba74 !important;
+}
+
+html[data-theme='dark'] .sideIcon,
+html[data-theme='dark'] .sideItemActive .sideIcon,
+html[data-theme='dark'] .sideItemImportant .sideIcon,
+html[data-theme='dark'] .mobileTocIcon,
+html[data-theme='dark'] .bulletItem span,
+html[data-theme='dark'] .criteriaCard span,
+html[data-theme='dark'] .sectionToggleIcon,
+html[data-theme='dark'] .learnAction span:first-child,
+html[data-theme='dark'] .learnActionDisabled span:first-child,
+html[data-theme='dark'] .takeHomeNumber {
+  background: rgba(249,115,22,0.16) !important;
+  color: #fdba74 !important;
+  border-color: rgba(249,115,22,0.28) !important;
+}
+
+html[data-theme='dark'] .learnAction,
+html[data-theme='dark'] .learnActionDisabled,
+html[data-theme='dark'] .learnActionMcq,
+html[data-theme='dark'] .learnActionFlash {
+  background: rgba(30,41,59,0.92) !important;
+  border-color: rgba(249,115,22,0.26) !important;
+  color: #fdba74 !important;
+}
+
+html[data-theme='dark'] .learnAction:hover,
+html[data-theme='dark'] .learnActionMcq:hover,
+html[data-theme='dark'] .learnActionFlash:hover {
+  background: rgba(51,65,85,0.92) !important;
+  border-color: rgba(249,115,22,0.46) !important;
+}
+
+html[data-theme='dark'] .cardDanger ul,
+html[data-theme='dark'] .calloutBody {
+  color: #fecaca;
+}
+
+html[data-theme='dark'] .callout:not(.cave):not(.success) .calloutBody {
+  color: #ffedd5;
+}
+
+html[data-theme='dark'] .callout.success .calloutBody {
+  color: #bbf7d0;
+}
+
+html[data-theme='dark'] .table th {
+  background: rgba(30,41,59,0.95) !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme='dark'] .table tr:nth-child(even) td {
+  background: rgba(30,41,59,0.45) !important;
+}
+
+html[data-theme='dark'] .gradeTable td:first-child {
+  background: rgba(249,115,22,0.12) !important;
+  color: #fdba74 !important;
+}
+
+html[data-theme='dark'] .extendedDetails summary {
+  color: #7dd3fc !important;
+}
+
+html[data-theme='dark'] .tearTypeTable td:first-child,
+html[data-theme='dark'] .videoCard h3,
+html[data-theme='dark'] .discoidMriTitle,
+html[data-theme='dark'] .caseBody strong,
+html[data-theme='dark'] .breadLink {
+  color: #fb923c !important;
+}
+
+html[data-theme='dark'] .greenTitle {
+  color: #86efac !important;
+}
+
+html[data-theme='dark'] .heroStatCard:nth-child(3),
+html[data-theme='dark'] .discoidStatCard:nth-child(3) {
+  background: rgba(30,41,59,0.94) !important;
+  color: #f8fafc !important;
+  border-color: rgba(148,163,184,0.18) !important;
+}
+
+html[data-theme='dark'] .mobileTocBar {
+  background: rgba(7,17,31,0.88) !important;
+  border-color: rgba(148,163,184,0.14) !important;
+}
+
+html[data-theme='dark'] .imageModalContent img,
+html[data-theme='dark'] .caseImage,
+html[data-theme='dark'] .videoFrameWrap {
+  background: #020617 !important;
+}
+
 `
 
 const CONTENT = {
