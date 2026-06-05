@@ -469,3 +469,60 @@
   font-weight: 900;
   white-space: nowrap;
 }
+
+/* ── Flashcards / MCQ / Fall badges inside Lernen topic menu ───── */
+.subItemRow {
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 3px 0;
+}
+
+.subLearningActions {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 3px 0 4px 20px;
+}
+
+.subLearningBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 25px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 900;
+  text-decoration: none;
+  border: 1px solid;
+  transition: transform .16s ease, opacity .16s ease, box-shadow .16s ease;
+}
+
+.subLearningBtn:hover {
+  transform: translateY(-1px);
+  opacity: .92;
+}
+
+.subLearningMcq {
+  color: #c2410c;
+  background: #fff7ed;
+  border-color: #fed7aa;
+}
+
+.subLearningFlash {
+  color: #0369a1;
+  background: #e0f2fe;
+  border-color: #bae6fd;
+}
+
+.subLearningFall {
+  color: #64748b;
+  background: #f8fafc;
+  border-color: #e2e8f0;
+  cursor: default;
+}
+
+[dir="rtl"] .subLearningActions {
+  margin: 3px 20px 4px 0;
+}

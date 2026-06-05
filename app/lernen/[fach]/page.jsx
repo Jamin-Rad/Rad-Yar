@@ -8,9 +8,9 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
 
 const T = {
-  de: { back:'← Startseite', search:'Thema suchen…', readNow:'Artikel öffnen →', noResult:'Kein Treffer für', themen:'Themen', alles:'Alles aufklappen', none:'Zuklappen', available:'Verfügbar', mcq:'MCQ' },
-  en: { back:'← Home', search:'Search topic…', readNow:'Open article →', noResult:'No results for', themen:'Topics', alles:'Expand all', none:'Collapse', available:'Available', mcq:'MCQ' },
-  fa: { back:'← خانه', search:'جستجوی موضوع…', readNow:'← مطالعه کنید', noResult:'نتیجه‌ای برای', themen:'موضوع', alles:'بازکردن همه', none:'بستن همه', available:'موجود', mcq:'MCQ' },
+  de: { back:'← Startseite', search:'Thema suchen…', readNow:'Artikel öffnen →', noResult:'Kein Treffer für', themen:'Themen', alles:'Alles aufklappen', none:'Zuklappen', available:'Verfügbar', mcq:'MCQ', flash:'Flashcards', fall:'Fallbeispiele', building:'im Aufbau' },
+  en: { back:'← Home', search:'Search topic…', readNow:'Open article →', noResult:'No results for', themen:'Topics', alles:'Expand all', none:'Collapse', available:'Available', mcq:'MCQ', flash:'Flashcards', fall:'Cases', building:'coming soon' },
+  fa: { back:'← خانه', search:'جستجوی موضوع…', readNow:'← مطالعه کنید', noResult:'نتیجه‌ای برای', themen:'موضوع', alles:'بازکردن همه', none:'بستن همه', available:'موجود', mcq:'MCQ', flash:'فلش‌کارت', fall:'کیس', building:'در حال ساخت' },
 }
 
 const FACH_NAMES = {
@@ -70,6 +70,18 @@ function SubThemen({ sub, fachColor, lang }) {
     return lang === 'de' ? href : `${href}?lang=${lang}`
   }
 
+  const labels = T[lang] || T.de
+  const renderActions = (item) => {
+    if (!item.mcqLink && !item.flashcardLink && !item.fallStatus) return null
+    return (
+      <div className={styles.subLearningActions}>
+        {item.mcqLink && <Link href={withLang(item.mcqLink)} className={`${styles.subLearningBtn} ${styles.subLearningMcq}`}>{labels.mcq}</Link>}
+        {item.fallStatus && <span className={`${styles.subLearningBtn} ${styles.subLearningFall}`} aria-disabled="true">{labels.fall} · {labels.building}</span>}
+        {item.flashcardLink && <Link href={withLang(item.flashcardLink)} className={`${styles.subLearningBtn} ${styles.subLearningFlash}`}>{labels.flash}</Link>}
+      </div>
+    )
+  }
+
   return (
     <div className={styles.subWrap}>
       <button className={styles.subToggle} onClick={() => setOpen(o => !o)}
@@ -96,6 +108,7 @@ function SubThemen({ sub, fachColor, lang }) {
                 ) : (
                   <div className={styles.subItem}>{content}</div>
                 )}
+                {renderActions(s)}
               </div>
             )
           })}
