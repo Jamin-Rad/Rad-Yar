@@ -426,7 +426,56 @@ const MENISKUS_STYLES = `.page {
 }
 
 .sectionHead {
-  margin-bottom: 22px;
+  margin-bottom: 18px;
+}
+
+.sectionToggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 16px 18px;
+  border-radius: 22px;
+  border: 1px solid rgba(253, 186, 116, 0.70);
+  background: linear-gradient(135deg, rgba(255, 247, 237, 0.96), rgba(240, 249, 255, 0.90));
+  box-shadow: 0 10px 26px rgba(23, 32, 51, 0.045);
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.sectionToggle:hover {
+  transform: translateY(-1px);
+  border-color: rgba(249, 115, 22, 0.55);
+  box-shadow: 0 14px 30px rgba(249, 115, 22, 0.09);
+  background: linear-gradient(135deg, #fff7ed, #e0f2fe);
+}
+
+.sectionTitleText {
+  min-width: 0;
+}
+
+.sectionToggleIcon {
+  flex: 0 0 auto;
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #f97316;
+  border: 1px solid #fed7aa;
+  font-weight: 950;
+  box-shadow: 0 8px 18px rgba(249, 115, 22, 0.10);
+  transition: transform 0.18s ease;
+}
+
+.sectionToggleIconOpen {
+  transform: rotate(180deg);
+}
+
+.sectionContentCollapsed {
+  display: none;
 }
 
 .eyebrow {
@@ -455,10 +504,10 @@ const MENISKUS_STYLES = `.page {
 }
 
 .sectionHead p {
-  margin: 12px 0 0;
+  margin: 10px 0 0;
   color: #536174;
   font-size: 16px;
-  line-height: 1.8;
+  line-height: 1.75;
 }
 
 .bulletCard {
@@ -2535,28 +2584,47 @@ function Callout({ type = 'note', label, children }) {
 }
 
 function Section({ id, eyebrow, title, lead, children, className = '' }) {
+  const [isOpen, setIsOpen] = useState(true)
+
+  const toggleSection = () => setIsOpen(value => !value)
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault()
+      toggleSection()
+    }
+  }
+
   return (
     <section id={id} className={`${styles.section} ${className}`.trim()}>
       <div className={styles.sectionHead}>
-        <span className={styles.eyebrow}>{eyebrow}</span>
-        <h2>{title}</h2>
-        {lead && <p>{lead}</p>}
+        <div
+          className={styles.sectionToggle}
+          role="button"
+          tabIndex={0}
+          aria-expanded={isOpen}
+          onClick={toggleSection}
+          onKeyDown={handleKeyDown}
+        >
+          <div className={styles.sectionTitleText}>
+            <span className={styles.eyebrow}>{eyebrow}</span>
+            <h2>{title}</h2>
+            {lead && <p>{lead}</p>}
+          </div>
+          <span className={`${styles.sectionToggleIcon} ${isOpen ? styles.sectionToggleIconOpen : ''}`}>⌄</span>
+        </div>
       </div>
-      {children}
+      <div className={`${styles.sectionContent} ${isOpen ? '' : styles.sectionContentCollapsed}`.trim()}>
+        {children}
+      </div>
     </section>
   )
 }
 
 function Sidebar({ sections, toc, activeId, onClick }) {
-  const [isOpen, setIsOpen] = useState(true)
   return (
     <aside className={styles.sidebar}>
       <div className={styles.sideTitle}>{toc}</div>
-      <button type="button" className={styles.sideToggleButton} onClick={() => setIsOpen(value => !value)} aria-expanded={isOpen} aria-label={toc}>
-        <span>☰</span>
-        <span className={`${styles.sideCaret} ${isOpen ? styles.sideCaretOpen : ''}`}>⌄</span>
-      </button>
-      <nav className={`${styles.sideNav} ${isOpen ? '' : styles.sideNavCollapsed}`}>
+      <nav className={styles.sideNav}>
         {sections.map(section => (
           <button
             key={section.id}
