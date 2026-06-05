@@ -159,39 +159,50 @@ const MENISKUS_STYLES = `.page {
 .learnActionDisabled {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 11px 16px;
+  gap: 10px;
+  padding: 14px 20px;
   border-radius: 999px;
   text-decoration: none;
-  font-weight: 900;
-  font-size: 13px;
-  border: 1px solid transparent;
-  transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+  font-weight: 950;
+  font-size: 14px;
+  border: 2px solid transparent;
+  transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s, filter 0.18s;
+  min-height: 48px;
 }
 
-.learnAction:hover { transform: translateY(-1px); }
-
-.learnActionMcq {
-  color: #c2410c;
-  background: linear-gradient(135deg, #fff7ed, #ffedd5);
-  border-color: #fed7aa;
-  box-shadow: 0 12px 24px rgba(249, 115, 22, 0.12);
+.learnAction span:first-child,
+.learnActionDisabled span:first-child {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.75);
 }
 
-.learnActionFlash {
-  color: #c2410c;
-  background: linear-gradient(135deg, #fff7ed, #ffedd5);
-  border-color: #fed7aa;
-  box-shadow: 0 12px 24px rgba(249, 115, 22, 0.12);
+.learnAction:hover {
+  transform: translateY(-2px);
+  filter: saturate(1.05);
+}
+
+.learnActionMcq,
+.learnActionFlash,
+.learnActionDisabled {
+  color: #9a3412;
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 58%, #e0f2fe 100%);
+  border-color: #fdba74;
+  box-shadow: 0 16px 34px rgba(249, 115, 22, 0.20), 0 0 0 4px rgba(224, 242, 254, 0.75);
+}
+
+.learnActionMcq:hover,
+.learnActionFlash:hover {
+  border-color: #fb923c;
+  box-shadow: 0 20px 42px rgba(249, 115, 22, 0.25), 0 0 0 5px rgba(186, 230, 253, 0.82);
 }
 
 .learnActionDisabled {
-  color: #c2410c;
-  background: linear-gradient(135deg, #fff7ed, #ffedd5);
-  border-color: #fed7aa;
   cursor: not-allowed;
-  opacity: 0.86;
-  box-shadow: 0 12px 24px rgba(249, 115, 22, 0.10);
+  opacity: 0.94;
 }
 
 .learnActionDisabled small {
@@ -309,6 +320,34 @@ const MENISKUS_STYLES = `.page {
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
+
+.sideTitleButton {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-family: inherit;
+  text-align: start;
+}
+
+.sideCaret {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: #fff7ed;
+  color: #f97316;
+  font-size: 13px;
+  transition: transform 0.18s ease;
+}
+
+.sideCaretOpen { transform: rotate(180deg); }
+.sideNavCollapsed { display: none; }
 
 .sideNav {
   display: grid;
@@ -692,12 +731,27 @@ const MENISKUS_STYLES = `.page {
 }
 
 .callout {
-  border-radius: 20px;
-  padding: 16px 18px;
-  margin: 18px 0 0;
-  background: #fff8f1;
-  border: 1px solid #fed7aa;
+  border-radius: 22px;
+  padding: 18px 20px;
+  margin: 20px 0 0;
+  background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%);
+  border: 2px solid #fdba74;
   color: #7c2d12;
+  box-shadow: 0 16px 34px rgba(249, 115, 22, 0.13);
+  position: relative;
+  overflow: hidden;
+}
+
+.callout::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 6px;
+  background: linear-gradient(180deg, #f97316, #fb923c);
+}
+
+[dir='rtl'] .callout::before {
+  inset: 0 0 0 auto;
 }
 
 .callout.cave {
@@ -713,18 +767,24 @@ const MENISKUS_STYLES = `.page {
 }
 
 .calloutLabel {
-  display: block;
-  margin-bottom: 7px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 8px;
   color: inherit;
-  font-weight: 900;
+  font-weight: 950;
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  position: relative;
+  z-index: 1;
 }
 
 .calloutBody {
   line-height: 1.75;
-  font-weight: 600;
+  font-weight: 800;
+  position: relative;
+  z-index: 1;
 }
 
 .discoidMriTitle {
@@ -754,6 +814,36 @@ const MENISKUS_STYLES = `.page {
 [dir='rtl'] .gradeTable th:first-child,
 [dir='rtl'] .gradeTable td:first-child {
   text-align: center;
+}
+
+
+.extendedDetails {
+  margin: 12px 0 20px;
+  border-radius: 20px;
+  border: 1px solid #bfdbfe;
+  background: linear-gradient(135deg, #f8fbff, #ffffff);
+  overflow: hidden;
+}
+
+.extendedDetails summary {
+  cursor: pointer;
+  padding: 14px 18px;
+  font-weight: 950;
+  color: #075985;
+  background: #e0f2fe;
+}
+
+.extendedDetailsContent {
+  padding: 0 14px 14px;
+}
+
+.tearTypeTable td:first-child {
+  font-weight: 950;
+  color: #c2410c;
+}
+
+.tearTypeCave {
+  margin-top: 20px;
 }
 
 .videoCard {
@@ -846,8 +936,13 @@ const MENISKUS_STYLES = `.page {
 }
 
 .takeHomeSection .sectionHead h2::before {
-  content: '⭐';
-  font-size: 0.9em;
+  content: '☾';
+  font-size: 1.05em;
+}
+
+.takeHomeSection .sectionHead h2::after {
+  content: '☽';
+  font-size: 1.05em;
 }
 
 .takeHomeBox {
@@ -1317,7 +1412,37 @@ const MENISKUS_STYLES = `.page {
     line-height: 1.6;
   }
 
-  .videoCard {
+  
+.extendedDetails {
+  margin: 12px 0 20px;
+  border-radius: 20px;
+  border: 1px solid #bfdbfe;
+  background: linear-gradient(135deg, #f8fbff, #ffffff);
+  overflow: hidden;
+}
+
+.extendedDetails summary {
+  cursor: pointer;
+  padding: 14px 18px;
+  font-weight: 950;
+  color: #075985;
+  background: #e0f2fe;
+}
+
+.extendedDetailsContent {
+  padding: 0 14px 14px;
+}
+
+.tearTypeTable td:first-child {
+  font-weight: 950;
+  color: #c2410c;
+}
+
+.tearTypeCave {
+  margin-top: 20px;
+}
+
+.videoCard {
     padding: 18px;
     border-radius: 20px;
   }
@@ -1682,6 +1807,7 @@ const CONTENT = {
       { id: 'mrt', label: 'MRT-Diagnostik', icon: '🩻' },
       { id: 'grading', label: 'MRT-Grading', icon: '📊' },
       { id: 'risskriterien', label: 'Meniskusriss', icon: '⚠️' },
+      { id: 'risstypen', label: 'Risstypen', icon: '🧩' },
       { id: 'discoider', label: 'Discoider Meniskus', icon: '🔵' },
       { id: 'therapie', label: 'Therapieprinzip', icon: '🧵' },
       { id: 'fallbeispiele', label: 'Fallbeispiele', icon: '🧪' },
@@ -1752,7 +1878,15 @@ const CONTENT = {
     grading: {
       title: 'MRT-Grading von Meniskusläsionen',
       lead: 'Die Klassifikation nach Lotysch hilft, degenerative intrameniskale Signalveränderungen von einem echten Meniskusriss zu unterscheiden.',
-      lotyschTitle: 'Grad 1 bis 3 nach Lotysch',
+      lotyschTitle: 'Einfaches Modell: Grad 0 bis III',
+      simpleHeaders: ['Grad', 'MRT-Signal', 'Histologie', 'Klinisch'],
+      simpleRows: [
+        ['0', 'Homogen hypointens', 'Normales Faserknorpelgewebe', 'Kein Befund'],
+        ['I', 'Fokales Signal, kein Oberflächenkontakt', 'Myxoide Degeneration, fokal', 'Inzidentell, kein Riss'],
+        ['II', 'Linienförmiges Signal, kein Oberflächenkontakt', 'Myxoide Degeneration, diffus', 'Kein Riss, Vorläuferläsion'],
+        ['III', 'Signal erreicht Gelenkoberfläche', 'Riss vorhanden', '✅ Echter Meniskusriss'],
+      ],
+      extendedTitle: 'Erweiterte Lotysch-Tabelle anzeigen',
       tableHeaders: ['Grad', 'Morphologie', 'Oberflächenkontakt', 'Bedeutung'],
       tableRows: [
         ['1', 'punktförmige oder kleine fokale Signalsteigerung', 'kein Kontakt', 'frühe mukoide Degeneration, meist asymptomatisch'],
@@ -1762,7 +1896,7 @@ const CONTENT = {
         ['3', 'Pathologische Signalsteigerung', 'Kontakt auf mindestens zwei aufeinanderfolgenden Schichten', 'radiologisch gesicherter Meniskusriss'],
         ['4', 'komplexe Rissmorphologie mit Deformierung oder Fragmentierung', 'mehrfacher Oberflächenkontakt', 'komplexer Meniskusriss'],
       ],
-      key: 'Meniskusläsion Grad 3 ist der entscheidende Schwellenwert für die Rissdiagnose: Signalsteigerung innerhalb des Meniskus mit sicherem Oberflächenkontakt auf mindestens zwei Schichten.',
+      key: 'Nur Grad III ist ein echter Riss. Meniskusläsion Grad 3 ist der entscheidende Schwellenwert für die Rissdiagnose: Signalsteigerung innerhalb des Meniskus mit sicherem Oberflächenkontakt auf mindestens zwei Schichten.',
     },
     tear: {
       title: 'MRT-Kriterien für einen Meniskusriss',
@@ -1774,6 +1908,20 @@ const CONTENT = {
         { title: 'Two-slice-touch-Regel', text: 'Die Läsion ist auf mindestens zwei aufeinanderfolgenden Schichten mit Oberflächenkontakt erkennbar.' },
       ],
       key: 'Die Two-slice-touch-Regel erhöht die Spezifität, weil ein Einzelbild-Artefakt nicht fälschlich als Riss gewertet wird.',
+    },
+    tearTypes: {
+      title: 'Risstypen',
+      lead: 'Rissgeometrie und Lokalisation bestimmen die OP-Strategie und sind prüfungsrelevant.',
+      tableHeaders: ['Risstyp', 'Geometrie', 'MRT-Zeichen', 'Therapie'],
+      tableRows: [
+        ['Längsriss', 'parallel zur Peripherie', 'Doppellinien-Zeichen sagittal', 'Naht in der roten oder rot-weißen Zone'],
+        ['Radiärriss', 'senkrecht zur Peripherie', 'Cleft-Zeichen, Phantom-Meniskus', 'Resektion oder Naht, je nach Lokalisation'],
+        ['Horizontalriss', 'parallel zum Tibiaplateau', 'Spaltbildung, ggf. parameniskale Zyste', 'Resektion ± Zystenexzision'],
+        ['Korbhenkelriss', 'dislozierter doppelter Längsriss', 'Doppeltes PCL-Zeichen; kein Bow-tie-Zeichen', 'Reposition und Naht, Notfall bei Blockade'],
+        ['Lappenriss', 'instabiler Lappen mit peripherer Anheftung', 'signalreicher, verlagerbarer Lappen', 'sparsame Resektion des Lappens'],
+      ],
+      caveTitle: 'CAVE – Korbhenkelriss',
+      caveText: 'Doppeltes PCL-Zeichen: Ein dislozierter Meniskusanteil liegt im Interkondylarraum parallel zum PCL. Das Bow-tie-Zeichen fehlt. Sofortdiagnose → dringliche Arthroskopie.',
     },
     cases: {
       title: 'Fallbeispiele',
@@ -1881,6 +2029,7 @@ const CONTENT = {
       { id: 'mrt', label: 'MRI diagnosis', icon: '🩻' },
       { id: 'grading', label: 'MRI grading', icon: '📊' },
       { id: 'risskriterien', label: 'Meniscal tear', icon: '⚠️' },
+      { id: 'risstypen', label: 'Tear types', icon: '🧩' },
       { id: 'discoider', label: 'Discoid meniscus', icon: '🔵' },
       { id: 'therapie', label: 'Treatment principle', icon: '🧵' },
       { id: 'fallbeispiele', label: 'Cases', icon: '🧪' },
@@ -1951,7 +2100,15 @@ const CONTENT = {
     grading: {
       title: 'MRI grading of meniscal lesions',
       lead: 'The Lotysch classification helps distinguish degenerative intrameniscal signal changes from a true meniscal tear.',
-      lotyschTitle: 'Grades 1 to 3 according to Lotysch',
+      lotyschTitle: 'Simple model: grades 0 to III',
+      simpleHeaders: ['Grade', 'MRI signal', 'Histology', 'Clinical meaning'],
+      simpleRows: [
+        ['0', 'Homogeneously hypointense', 'Normal fibrocartilage', 'No abnormality'],
+        ['I', 'Focal signal, no surface contact', 'Focal myxoid degeneration', 'Incidental, no tear'],
+        ['II', 'Linear signal, no surface contact', 'Diffuse myxoid degeneration', 'No tear, precursor lesion'],
+        ['III', 'Signal reaches the articular surface', 'Tear present', '✅ True meniscal tear'],
+      ],
+      extendedTitle: 'Show extended Lotysch table',
       tableHeaders: ['Grade', 'Morphology', 'Surface contact', 'Meaning'],
       tableRows: [
         ['1', 'punctate or small focal signal increase', 'no contact', 'early mucoid degeneration, usually asymptomatic'],
@@ -1961,7 +2118,7 @@ const CONTENT = {
         ['3', 'signal increase', 'contact on at least two consecutive slices', 'radiologically proven meniscal tear'],
         ['4', 'complex tear morphology with deformation or fragmentation', 'multiple surface contacts', 'complex meniscal tear'],
       ],
-      key: 'Grade 3 meniscal lesion is the decisive threshold for diagnosing a tear: intrameniscal signal increase with reliable surface contact on at least two slices.',
+      key: 'Only grade III is a true tear. Grade 3 meniscal lesion is the decisive threshold for diagnosing a tear: intrameniscal signal increase with reliable surface contact on at least two slices.',
     },
     tear: {
       title: 'MRI criteria for a meniscal tear',
@@ -1973,6 +2130,20 @@ const CONTENT = {
         { title: 'Two-slice-touch rule', text: 'The lesion is visible with surface contact on at least two consecutive slices.' },
       ],
       key: 'The two-slice-touch rule increases specificity because a single-slice artifact is not overcalled as a tear.',
+    },
+    tearTypes: {
+      title: 'Tear types',
+      lead: 'Tear geometry and location determine surgical strategy and are highly relevant for exams.',
+      tableHeaders: ['Tear type', 'Geometry', 'MRI sign', 'Treatment'],
+      tableRows: [
+        ['Longitudinal tear', 'parallel to the periphery', 'double-line sign on sagittal images', 'repair in the red or red-white zone'],
+        ['Radial tear', 'perpendicular to the periphery', 'cleft sign, phantom meniscus', 'resection or repair depending on location'],
+        ['Horizontal tear', 'parallel to the tibial plateau', 'cleft-like split, possible parameniscal cyst', 'resection ± cyst excision'],
+        ['Bucket-handle tear', 'displaced double longitudinal tear', 'double PCL sign; absent bow-tie sign', 'reduction and repair, urgent if locked knee'],
+        ['Flap tear', 'unstable flap with peripheral attachment', 'variable high-signal displaced flap', 'limited flap resection'],
+      ],
+      caveTitle: 'CAVE – bucket-handle tear',
+      caveText: 'Double PCL sign: a displaced meniscal fragment lies in the intercondylar notch parallel to the PCL. The bow-tie sign is absent. Immediate diagnosis → urgent arthroscopy.',
     },
     cases: {
       title: 'Cases',
@@ -2080,6 +2251,7 @@ const CONTENT = {
       { id: 'mrt', label: 'تشخیص MRI', icon: '🩻' },
       { id: 'grading', label: 'درجه‌بندی MRI', icon: '📊' },
       { id: 'risskriterien', label: 'پارگی منیسک', icon: '⚠️' },
+      { id: 'risstypen', label: 'انواع پارگی', icon: '🧩' },
       { id: 'discoider', label: 'منیسک دیسکوئید', icon: '🔵' },
       { id: 'therapie', label: 'اصل درمان', icon: '🧵' },
       { id: 'fallbeispiele', label: 'نمونه کیس‌ها', icon: '🧪' },
@@ -2150,7 +2322,15 @@ const CONTENT = {
     grading: {
       title: 'درجه‌بندی MRI ضایعات منیسک',
       lead: 'طبقه‌بندی Lotysch کمک می‌کند تغییرات سیگنال دژنراتیو داخل منیسک از پارگی واقعی منیسک جدا شود.',
-      lotyschTitle: 'درجه ۱ تا ۳ طبق Lotysch',
+      lotyschTitle: 'مدل ساده: درجه ۰ تا III',
+      simpleHeaders: ['درجه', 'سیگنال MRI', 'هیستولوژی', 'معنای بالینی'],
+      simpleRows: [
+        ['0', 'هیپواینتنس هموژن', 'بافت فیبروغضروفی طبیعی', 'یافته غیرطبیعی ندارد'],
+        ['I', 'سیگنال فوکال، بدون تماس با سطح', 'دژنراسیون میکسوئید فوکال', 'اتفاقی، پارگی نیست'],
+        ['II', 'سیگنال خطی، بدون تماس با سطح', 'دژنراسیون میکسوئید منتشر', 'پارگی نیست، ضایعه پیش‌زمینه‌ای'],
+        ['III', 'سیگنال به سطح مفصلی می‌رسد', 'پارگی وجود دارد', '✅ پارگی واقعی منیسک'],
+      ],
+      extendedTitle: 'نمایش جدول کامل Lotysch',
       tableHeaders: ['درجه', 'مورفولوژی', 'تماس با سطح', 'معنا'],
       tableRows: [
         ['1', 'افزایش سیگنال نقطه‌ای یا کوچک', 'بدون تماس', 'دژنراسیون موکوئید اولیه، معمولاً بی‌علامت'],
@@ -2160,7 +2340,7 @@ const CONTENT = {
         ['3', 'افزایش سیگنال پاتولوژیک', 'تماس در حداقل دو برش متوالی', 'پارگی منیسک از نظر رادیولوژیک قطعی'],
         ['4', 'مورفولوژی پیچیده پارگی همراه با دفورمیتی یا قطعه‌قطعه‌شدن', 'تماس سطحی متعدد', 'پارگی کمپلکس منیسک'],
       ],
-      key: 'ضایعه منیسک درجه 3 آستانه اصلی برای تشخیص پارگی است: افزایش سیگنال داخل منیسک همراه با تماس مطمئن با سطح مفصلی در حداقل دو برش.',
+      key: 'فقط درجه III پارگی واقعی است. ضایعه منیسک درجه 3 آستانه اصلی برای تشخیص پارگی است: افزایش سیگنال داخل منیسک همراه با تماس مطمئن با سطح مفصلی در حداقل دو برش.',
     },
     tear: {
       title: 'معیارهای MRI برای پارگی منیسک',
@@ -2172,6 +2352,20 @@ const CONTENT = {
         { title: 'قانون Two-slice-touch', text: 'ضایعه باید حداقل در دو برش متوالی با تماس سطحی دیده شود.' },
       ],
       key: 'قانون Two-slice-touch اختصاصیت را بالا می‌برد، چون یک آرتیفکت تک‌برشی به اشتباه پارگی حساب نمی‌شود.',
+    },
+    tearTypes: {
+      title: 'انواع پارگی منیسک',
+      lead: 'جهت و محل پارگی، استراتژی درمان و تصمیم جراحی را تعیین می‌کند و برای آزمون مهم است.',
+      tableHeaders: ['نوع پارگی', 'هندسه', 'علامت MRI', 'درمان'],
+      tableRows: [
+        ['پارگی طولی', 'موازی با محیط منیسک', 'علامت دو خطی در ساژیتال', 'بخیه در ناحیه قرمز یا قرمز-سفید'],
+        ['پارگی رادیال', 'عمود بر محیط منیسک', 'Cleft sign، منیسک شبح‌مانند', 'رزکسیون یا بخیه بسته به محل'],
+        ['پارگی افقی', 'موازی با پلاتوی تیبیا', 'شکاف افقی، گاهی کیست پارامنیسکال', 'رزکسیون ± خارج کردن کیست'],
+        ['پارگی Bucket-handle', 'پارگی طولی دوبل و جابه‌جا شده', 'علامت PCL دوگانه؛ نبود Bow-tie', 'جااندازی و بخیه؛ در زانوی قفل‌شده اورژانسی'],
+        ['پارگی فلپ', 'فلپ ناپایدار با اتصال محیطی', 'فلپ جابه‌جا شونده با سیگنال بالا', 'رزکسیون محدود فلپ'],
+      ],
+      caveTitle: 'هشدار – پارگی Bucket-handle',
+      caveText: 'علامت PCL دوگانه: قطعه جابه‌جا شده منیسک در ناچ بین کندیلی و موازی PCL قرار می‌گیرد. علامت Bow-tie دیده نمی‌شود. تشخیص سریع → آرتروسکوپی فوری.',
     },
     cases: {
       title: 'نمونه کیس‌ها',
@@ -2343,10 +2537,14 @@ function Section({ id, eyebrow, title, lead, children, className = '' }) {
 }
 
 function Sidebar({ sections, toc, activeId, onClick }) {
+  const [isOpen, setIsOpen] = useState(true)
   return (
     <aside className={styles.sidebar}>
-      <div className={styles.sideTitle}>{toc}</div>
-      <nav className={styles.sideNav}>
+      <button type="button" className={`${styles.sideTitle} ${styles.sideTitleButton}`} onClick={() => setIsOpen(value => !value)} aria-expanded={isOpen}>
+        <span>{toc}</span>
+        <span className={`${styles.sideCaret} ${isOpen ? styles.sideCaretOpen : ''}`}>⌄</span>
+      </button>
+      <nav className={`${styles.sideNav} ${isOpen ? '' : styles.sideNavCollapsed}`}>
         {sections.map(section => (
           <button
             key={section.id}
@@ -2385,7 +2583,7 @@ export default function MeniskusPage() {
   const takeHomeCopy = TAKE_HOME_COPY[lang] || TAKE_HOME_COPY.de
   const isRTL = lang === 'fa'
   const pageSections = useMemo(
-    () => [...copy.sections, { id: 'takehome', label: takeHomeCopy.sectionLabel, icon: '⭐', important: true }],
+    () => [...copy.sections, { id: 'takehome', label: takeHomeCopy.sectionLabel, icon: '☾', important: true }],
     [copy.sections, takeHomeCopy.sectionLabel]
   )
   const takeHomeItems = useMemo(() => [
@@ -2573,7 +2771,13 @@ export default function MeniskusPage() {
             <div className={styles.gradingFigure}>
               <ImageFigure src="/meniskus/lotysch-grading.png" alt={copy.grading.title} zoomable zoomLabel={copy.zoomImage} onZoom={() => setPreviewImage({ src: '/meniskus/lotysch-grading.png', alt: copy.grading.title })} />
             </div>
-            <Table headers={copy.grading.tableHeaders} rows={copy.grading.tableRows} className={styles.gradeTable} />
+            <Table headers={copy.grading.simpleHeaders} rows={copy.grading.simpleRows} className={styles.gradeTable} />
+            <details className={styles.extendedDetails}>
+              <summary>{copy.grading.extendedTitle}</summary>
+              <div className={styles.extendedDetailsContent}>
+                <Table headers={copy.grading.tableHeaders} rows={copy.grading.tableRows} className={styles.gradeTable} />
+              </div>
+            </details>
             <Callout label={copy.keyLabel}>{copy.grading.key}</Callout>
           </Section>
 
@@ -2589,6 +2793,11 @@ export default function MeniskusPage() {
               ))}
             </div>
             <Callout label={copy.keyLabel}>{copy.tear.key}</Callout>
+          </Section>
+
+          <Section id="risstypen" eyebrow="07" title={copy.tearTypes.title} lead={copy.tearTypes.lead}>
+            <Table headers={copy.tearTypes.tableHeaders} rows={copy.tearTypes.tableRows} className={styles.tearTypeTable} />
+            <Callout type="cave" label={copy.tearTypes.caveTitle}>{copy.tearTypes.caveText}</Callout>
           </Section>
 
           <Section id="discoider" eyebrow="08" title={copy.discoid.title} lead={copy.discoid.lead}>
