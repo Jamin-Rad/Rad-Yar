@@ -159,50 +159,51 @@ const MENISKUS_STYLES = `.page {
 .learnActionDisabled {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 14px 20px;
+  gap: 9px;
+  padding: 10px 15px;
   border-radius: 999px;
   text-decoration: none;
-  font-weight: 950;
-  font-size: 14px;
-  border: 2px solid transparent;
-  transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s, filter 0.18s;
-  min-height: 48px;
+  font-weight: 850;
+  font-size: 13px;
+  border: 1px solid transparent;
+  transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s, filter 0.18s, background 0.18s;
+  min-height: 42px;
 }
 
 .learnAction span:first-child,
 .learnActionDisabled span:first-child {
   display: inline-grid;
   place-items: center;
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.62);
 }
 
 .learnAction:hover {
-  transform: translateY(-2px);
-  filter: saturate(1.05);
+  transform: translateY(-1px);
+  filter: saturate(1.04);
 }
 
 .learnActionMcq,
 .learnActionFlash,
 .learnActionDisabled {
   color: #9a3412;
-  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 58%, #e0f2fe 100%);
-  border-color: #fdba74;
-  box-shadow: 0 16px 34px rgba(249, 115, 22, 0.20), 0 0 0 4px rgba(224, 242, 254, 0.75);
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 72%, #fff7ed 100%);
+  border-color: rgba(253, 186, 116, 0.78);
+  box-shadow: 0 8px 18px rgba(249, 115, 22, 0.10);
 }
 
 .learnActionMcq:hover,
 .learnActionFlash:hover {
   border-color: #fb923c;
-  box-shadow: 0 20px 42px rgba(249, 115, 22, 0.25), 0 0 0 5px rgba(186, 230, 253, 0.82);
+  background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 72%, #e0f2fe 100%);
+  box-shadow: 0 12px 24px rgba(249, 115, 22, 0.16);
 }
 
 .learnActionDisabled {
   cursor: not-allowed;
-  opacity: 0.94;
+  opacity: 0.88;
 }
 
 .learnActionDisabled small {
@@ -283,7 +284,7 @@ const MENISKUS_STYLES = `.page {
   margin: 0 auto;
   padding: 22px 28px 70px;
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) 260px;
   gap: 24px;
   align-items: start;
   direction: ltr;
@@ -298,7 +299,7 @@ const MENISKUS_STYLES = `.page {
   top: 88px;
   border-radius: 24px;
   padding: 16px;
-  order: 0;
+  order: 2;
 }
 
 [dir='rtl'] .sidebar {
@@ -922,17 +923,17 @@ const MENISKUS_STYLES = `.page {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 10px 22px;
+  gap: 12px;
+  padding: 11px 24px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #f97316, #fb923c);
+  background: linear-gradient(135deg, #0d1b2a 0%, #1e3a5f 52%, #f97316 100%);
   color: #ffffff;
-  font-family: var(--font-manrope, system-ui, sans-serif);
-  font-size: clamp(22px, 3vw, 32px);
-  font-weight: 950;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  box-shadow: 0 16px 30px rgba(249, 115, 22, 0.22);
+  font-family: var(--font-fraunces, Georgia, serif);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  text-transform: none;
+  box-shadow: 0 18px 34px rgba(13, 27, 42, 0.22);
 }
 
 .takeHomeSection .sectionHead h2::before {
@@ -980,9 +981,10 @@ const MENISKUS_STYLES = `.page {
   margin: 0 0 18px;
   max-width: 780px;
   color: rgba(255, 255, 255, 0.82);
-  font-size: 16px;
-  line-height: 1.8;
-  font-weight: 800;
+  font-family: var(--font-manrope, system-ui, sans-serif);
+  font-size: 15px;
+  line-height: 1.75;
+  font-weight: 750;
 }
 
 .takeHomeList {
@@ -1018,20 +1020,22 @@ const MENISKUS_STYLES = `.page {
 }
 
 .takeHomeItem h3 {
-  margin: 0 0 6px;
+  margin: 0 0 7px;
   color: #fed7aa;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 18px;
-  line-height: 1.35;
-  font-weight: 950;
-  letter-spacing: 0.01em;
+  font-family: var(--font-fraunces, Georgia, serif);
+  font-size: 19px;
+  line-height: 1.3;
+  font-weight: 850;
+  letter-spacing: -0.015em;
 }
 
 .takeHomeItem p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.88);
-  line-height: 1.75;
-  font-weight: 850;
+  color: rgba(255, 255, 255, 0.90);
+  font-family: var(--font-manrope, system-ui, sans-serif);
+  font-size: 15px;
+  line-height: 1.7;
+  font-weight: 720;
   white-space: pre-line;
 }
 
