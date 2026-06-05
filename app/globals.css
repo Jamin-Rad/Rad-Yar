@@ -23,6 +23,15 @@
   --text-muted:#64748b;
   --accent-soft:#fff7ed;
   --shadow-soft: rgba(26,32,81,0.07);
+
+  /* ── NEU: Akzent-Alias (= orange) ── */
+  --accent: #f97316;
+
+  /* ── NEU: Border-Radius-Token ────── */
+  --radius-sm: 16px;   /* Chips, Badges, Buttons      */
+  --radius-md: 22px;   /* Karten, Infoboxen, Sidebar  */
+  --radius-lg: 30px;   /* Hero, Flashcard, Container  */
+
   color-scheme: light;
 }
 
@@ -45,6 +54,9 @@ html[data-theme='dark'] {
   --text-muted:#8fa1ba;
   --accent-soft:rgba(249,115,22,0.15);
   --shadow-soft: rgba(0,0,0,0.34);
+
+  --accent: #f97316;
+
   color-scheme: dark;
 }
 
@@ -61,9 +73,8 @@ body {
 }
 
 /* ── PERSIAN ──────────────────────────────────────────
-   Apply Vazirmatn to all RTL content EXCEPT elements
-   with lang="en" — which protects the RADYAR wordmark
-   from being overridden in Farsi mode.
+   Vazirmatn auf RTL-Inhalte, aber NICHT auf lang="en"
+   (schützt das RADYAR-Wordmark vor Überschreiben)
 ──────────────────────────────────────────────────── */
 [dir="rtl"] *:not([lang="en"]):not([lang="en"] *) {
   font-family: var(--font-persian) !important;
