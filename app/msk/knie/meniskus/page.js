@@ -2775,6 +2775,363 @@ html[data-theme='dark'] .table td::before {
   color: #fb923c !important;
 }
 
+
+/* ── MOBILE LOCKDOWN V2: iPhone width exactly, no horizontal scrolling, no mobile TOC, collapsed sections ── */
+@media (max-width: 900px) {
+  :root,
+  html,
+  body {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-x: hidden !important;
+  }
+
+  body {
+    position: relative;
+  }
+
+  .page,
+  .page::before,
+  .page::after,
+  .page * ,
+  .page *::before,
+  .page *::after {
+    box-sizing: border-box !important;
+  }
+
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-x: clip !important;
+    touch-action: pan-y;
+  }
+
+  @supports not (overflow-x: clip) {
+    .page { overflow-x: hidden !important; }
+  }
+
+  .header,
+  .layout,
+  [dir='rtl'] .layout,
+  .main,
+  .heroGrid,
+  .heroText,
+  .heroActions,
+  .section,
+  .sectionHead,
+  .sectionToggle,
+  .sectionTitleText,
+  .sectionContent,
+  .splitGrid,
+  .zoneGrid,
+  .protocolGrid,
+  .criteriaGrid,
+  .caseGrid,
+  .discoidStats,
+  .card,
+  .cardAccent,
+  .cardDanger,
+  .normalCard,
+  .protocolCard,
+  .criteriaCard,
+  .bulletCard,
+  .bulletItem,
+  .figure,
+  .callout,
+  .extendedDetails,
+  .videoCard,
+  .takeHomeBox,
+  .takeHomeItem,
+  .tableWrap,
+  .imageModalContent {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .layout,
+  [dir='rtl'] .layout {
+    display: block !important;
+    grid-template-columns: none !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  .header {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    overflow-x: hidden !important;
+  }
+
+  .main {
+    display: grid !important;
+    gap: 14px !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Auf Mobile kein Inhaltsverzeichnis – weder Sidebar noch frühere mobile TOC-Varianten. */
+  .sidebar,
+  .layout > .sidebar,
+  aside.sidebar,
+  .mobileTocBar,
+  .mobileTocOverlay,
+  .mobileTocPanel {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  /* Auf Mobile sind alle Abschnitte zuerst zugeklappt; Klick auf Titel klappt einzeln auf. */
+  .section:not([data-open='true']) > .sectionContent {
+    display: none !important;
+  }
+
+  .section[data-open='true'] > .sectionContent {
+    display: block !important;
+  }
+
+  .section[data-open='false'] .sectionToggle {
+    border-radius: 18px !important;
+  }
+
+  .section[data-open='true'] .sectionToggle {
+    border-radius: 18px 18px 0 0 !important;
+  }
+
+  .breadcrumb,
+  .sourceBadge,
+  .heroText h1,
+  .heroText p,
+  .learnAction,
+  .learnActionDisabled,
+  .sectionHead h2,
+  .sectionLead,
+  .card h3,
+  .card p,
+  .calloutBody,
+  .subSectionTitle,
+  .subSectionLead,
+  .takeHomeItem h3,
+  .takeHomeItem p {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+  }
+
+  .breadcrumb {
+    display: flex !important;
+    flex-wrap: wrap !important;
+  }
+
+  .heroText {
+    overflow: hidden !important;
+  }
+
+  .heroActions {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 9px !important;
+  }
+
+  .learnAction,
+  .learnActionDisabled {
+    display: flex !important;
+    justify-content: flex-start !important;
+    white-space: normal !important;
+  }
+
+  .sectionToggle {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    overflow: hidden !important;
+  }
+
+  .sectionTitleText {
+    flex: 1 1 auto !important;
+  }
+
+  .sectionToggleIcon {
+    flex: 0 0 30px !important;
+  }
+
+  .splitGrid,
+  .zoneGrid,
+  .protocolGrid,
+  .criteriaGrid,
+  .caseGrid,
+  .discoidStats {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  img,
+  iframe,
+  video,
+  svg,
+  canvas,
+  .figure img,
+  .caseImage,
+  .videoFrameWrap,
+  .figureZoomButton,
+  .figureZoomButton img {
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .videoFrameWrap iframe {
+    width: 100% !important;
+  }
+
+  /* Tabellen werden auf Mobile zu Karten. Dadurch kann keine Tabelle mehr breiter als das iPhone sein. */
+  .tableWrap {
+    overflow-x: hidden !important;
+    border: 0 !important;
+    background: transparent !important;
+  }
+
+  .table,
+  .table thead,
+  .table tbody,
+  .table tr,
+  .table th,
+  .table td {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .table {
+    table-layout: auto !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+  }
+
+  .table thead {
+    display: none !important;
+  }
+
+  .table tbody {
+    display: grid !important;
+    gap: 10px !important;
+  }
+
+  .table tr {
+    overflow: hidden !important;
+    padding: 10px 12px !important;
+    border-radius: 16px !important;
+    border: 1px solid #dfe6f0 !important;
+    background: #ffffff !important;
+  }
+
+  .table td,
+  .table tr:nth-child(even) td,
+  .gradeTable td:first-child,
+  .tearTypeTable td:first-child {
+    display: grid !important;
+    grid-template-columns: minmax(0, 34%) minmax(0, 1fr) !important;
+    gap: 9px !important;
+    align-items: start !important;
+    padding: 9px 0 !important;
+    border: 0 !important;
+    border-bottom: 1px solid #edf1f7 !important;
+    background: transparent !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+  }
+
+  .table td:last-child {
+    border-bottom: 0 !important;
+  }
+
+  .table td::before {
+    content: attr(data-label) !important;
+    color: #c2410c !important;
+    font-size: 10.5px !important;
+    font-weight: 950 !important;
+    line-height: 1.35 !important;
+    letter-spacing: 0.03em !important;
+    text-transform: uppercase !important;
+    overflow-wrap: anywhere !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .header,
+  .layout,
+  [dir='rtl'] .layout {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  .heroText {
+    padding: 16px !important;
+    border-radius: 16px !important;
+  }
+
+  .section {
+    padding: 12px !important;
+    border-radius: 16px !important;
+  }
+
+  .sectionHead {
+    margin: -12px -12px 8px !important;
+  }
+
+  .sectionToggle {
+    padding: 12px !important;
+  }
+
+  .section[data-open='false'] .sectionToggle,
+  .section[data-open='true'] .sectionToggle {
+    border-radius: 16px !important;
+  }
+
+  .section[data-open='true'] .sectionToggle {
+    border-radius: 16px 16px 0 0 !important;
+  }
+
+  .sectionHead h2 {
+    font-size: clamp(20px, 6.7vw, 27px) !important;
+  }
+
+  .table tr {
+    padding: 10px !important;
+  }
+
+  .table td,
+  .gradeTable td:first-child,
+  .tearTypeTable td:first-child {
+    grid-template-columns: 1fr !important;
+    gap: 4px !important;
+    font-size: 12.5px !important;
+  }
+}
+
+html[data-theme='dark'] .table tr {
+  background: rgba(15, 23, 42, 0.88) !important;
+  border-color: rgba(148, 163, 184, 0.18) !important;
+}
+
+html[data-theme='dark'] .table td,
+html[data-theme='dark'] .gradeTable td:first-child,
+html[data-theme='dark'] .tearTypeTable td:first-child {
+  border-color: rgba(148, 163, 184, 0.14) !important;
+  color: #dbeafe !important;
+}
+
+html[data-theme='dark'] .table td::before {
+  color: #fb923c !important;
+}
+
 `
 
 const CONTENT = {
