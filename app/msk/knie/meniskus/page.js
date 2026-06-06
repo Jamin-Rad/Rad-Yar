@@ -131,7 +131,7 @@ const MENISKUS_STYLES = `.page {
 .heroText h1 {
   margin: 0;
   font-family: var(--font-fraunces, Georgia, serif);
-  font-size: clamp(46px, 6vw, 82px);
+  font-size: clamp(30px, 4vw, 50px);
   font-weight: 950;
   line-height: 0.92;
   letter-spacing: -0.055em;
@@ -400,6 +400,54 @@ const MENISKUS_STYLES = `.page {
   color: #f97316;
 }
 
+.sideItemDone {
+  color: #166534 !important;
+  background: rgba(22, 163, 74, 0.08) !important;
+  border: 1px solid rgba(22, 163, 74, 0.20) !important;
+}
+
+/* ── Verstanden-Button ── */
+.doneBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-family: var(--font-manrope, sans-serif);
+  font-size: 13px;
+  font-weight: 700;
+  border: 1.5px solid rgba(22,163,74,0.35);
+  background: rgba(22,163,74,0.06);
+  color: #166534;
+  cursor: pointer;
+  transition: all .2s;
+}
+.doneBtn:hover {
+  background: rgba(22,163,74,0.12);
+  border-color: rgba(22,163,74,0.55);
+  transform: translateY(-1px);
+}
+.doneBtnActive {
+  background: rgba(22,163,74,0.14) !important;
+  border-color: rgba(22,163,74,0.55) !important;
+  color: #14532d !important;
+}
+
+html[data-theme='dark'] .doneBtn {
+  background: rgba(22,163,74,0.08) !important;
+  border-color: rgba(22,163,74,0.25) !important;
+  color: #4ade80 !important;
+}
+html[data-theme='dark'] .doneBtnActive {
+  background: rgba(22,163,74,0.18) !important;
+  color: #86efac !important;
+}
+html[data-theme='dark'] .sideItemDone {
+  color: #4ade80 !important;
+  background: rgba(22,163,74,0.10) !important;
+}
+
 .sideIcon {
   width: 28px;
   height: 28px;
@@ -494,7 +542,7 @@ const MENISKUS_STYLES = `.page {
   margin: 0;
   color: #0d1b2a;
   font-family: var(--font-fraunces, Georgia, serif);
-  font-size: clamp(28px, 3vw, 42px);
+  font-size: clamp(20px, 2.2vw, 30px);
   font-weight: 900;
   line-height: 1.05;
   letter-spacing: -0.03em;
@@ -627,6 +675,96 @@ const MENISKUS_STYLES = `.page {
 .gradingFigure .figure img {
   max-height: 560px;
 }
+
+/* ── MRT-Grading-Rail ── */
+.mrtRail {
+  margin: 0 0 24px;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, #fff7ed 0%, #f0f9ff 100%);
+  border: 1px solid #fed7aa;
+  border-radius: 18px;
+}
+
+.mrtRailTitle {
+  font-family: var(--font-manrope, sans-serif);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #9a3412;
+  margin: 0 0 16px;
+}
+
+.mrtRailTrack {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  position: relative;
+}
+
+.mrtRailStep {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.mrtRailStep:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--step-color, #cbd5e1) 0%, var(--next-color, #cbd5e1) 100%);
+  z-index: 0;
+}
+
+.mrtRailDot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-fraunces, Georgia, serif);
+  font-size: 13px;
+  font-weight: 900;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.mrtRailLabel {
+  font-family: var(--font-manrope, sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.mrtRailSub {
+  font-family: var(--font-manrope, sans-serif);
+  font-size: 10px;
+  text-align: center;
+  line-height: 1.3;
+  color: #64748b;
+}
+
+.mrtRailStep0 .mrtRailDot { background: #f1f5f9; border: 2px solid #cbd5e1; color: #64748b; }
+.mrtRailStep1 .mrtRailDot { background: #fef9c3; border: 2px solid #fde047; color: #713f12; }
+.mrtRailStep2 .mrtRailDot { background: #ffedd5; border: 2px solid #f97316; color: #9a3412; }
+.mrtRailStep3 .mrtRailDot { background: #fee2e2; border: 2px solid #ef4444; color: #991b1b; font-size: 11px; }
+.mrtRailStep3 .mrtRailLabel { color: #991b1b; }
+
+html[data-theme='dark'] .mrtRail {
+  background: rgba(30,41,59,0.8) !important;
+  border-color: rgba(249,115,22,0.2) !important;
+}
+html[data-theme='dark'] .mrtRailTitle { color: #fdba74 !important; }
+html[data-theme='dark'] .mrtRailSub { color: #94a3b8 !important; }
 
 .caseLabelRow {
   display: flex;
@@ -3227,7 +3365,7 @@ html[data-theme='dark'] .table td::before {
   }
 
   .page[data-meniskus-layout='desktop'] .heroText h1 {
-    font-size: clamp(46px, 6vw, 82px) !important;
+    font-size: clamp(30px, 4vw, 50px) !important;
     line-height: 0.92 !important;
   }
 
@@ -4152,7 +4290,7 @@ function useIsMobileViewport(query = '(max-width: 900px)') {
   return isMobile
 }
 
-function Section({ id, eyebrow, title, lead, children, className = '', defaultOpen = true }) {
+function Section({ id, eyebrow, title, lead, children, className = '', defaultOpen = true, done = false, onDone }) {
   const [isOpen, setIsOpen] = useState(defaultOpen)
 
   useEffect(() => {
@@ -4188,12 +4326,21 @@ function Section({ id, eyebrow, title, lead, children, className = '', defaultOp
       <div className={`${styles.sectionContent} ${isOpen ? '' : styles.sectionContentCollapsed}`.trim()}>
         {lead && <p className={styles.sectionLead}>{lead}</p>}
         {children}
+        {onDone && (
+          <button
+            type="button"
+            className={`${styles.doneBtn} ${done ? styles.doneBtnActive : ''}`}
+            onClick={() => onDone(id)}
+          >
+            {done ? '✅ Verstanden' : '☐ Als verstanden markieren'}
+          </button>
+        )}
       </div>
     </section>
   )
 }
 
-function Sidebar({ sections, toc, activeId, onClick }) {
+function Sidebar({ sections, toc, activeId, onClick, doneIds = {} }) {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.sideTitle}>{toc}</div>
@@ -4202,10 +4349,10 @@ function Sidebar({ sections, toc, activeId, onClick }) {
           <button
             key={section.id}
             type="button"
-            className={`${styles.sideItem} ${section.important ? styles.sideItemImportant : ''} ${activeId === section.id ? styles.sideItemActive : ''}`}
+            className={`${styles.sideItem} ${section.important ? styles.sideItemImportant : ''} ${activeId === section.id ? styles.sideItemActive : ''} ${doneIds[section.id] ? styles.sideItemDone : ''}`}
             onClick={() => onClick(section.id)}
           >
-            <span className={styles.sideIcon}>{section.icon}</span>
+            <span className={styles.sideIcon}>{doneIds[section.id] ? '✅' : section.icon}</span>
             <span>{section.label}</span>
           </button>
         ))}
@@ -4230,6 +4377,54 @@ function ImageFigure({ src, alt, caption, zoomable = false, zoomLabel = 'Bild ve
   )
 }
 
+const MRT_RAIL = {
+  de: {
+    title: 'Signalgrading auf einen Blick',
+    steps: [
+      { grade: '0', label: 'Grad 0', sub: 'Normal\nhomogen hypointens' },
+      { grade: 'I', label: 'Grad I', sub: 'Fokales Signal\nkein Kontakt' },
+      { grade: 'II', label: 'Grad II', sub: 'Lineares Signal\nkein Kontakt' },
+      { grade: 'III', label: 'Grad III ✅', sub: 'Oberflächenkontakt\n= echter Riss' },
+    ],
+  },
+  en: {
+    title: 'Signal Grading at a Glance',
+    steps: [
+      { grade: '0', label: 'Grade 0', sub: 'Normal\nhomogeneous hypointense' },
+      { grade: 'I', label: 'Grade I', sub: 'Focal signal\nno contact' },
+      { grade: 'II', label: 'Grade II', sub: 'Linear signal\nno contact' },
+      { grade: 'III', label: 'Grade III ✅', sub: 'Surface contact\n= true tear' },
+    ],
+  },
+  fa: {
+    title: 'درجه‌بندی سیگنال در یک نگاه',
+    steps: [
+      { grade: '0', label: 'درجه ۰', sub: 'طبیعی\nهیپوانتنس همگن' },
+      { grade: 'I', label: 'درجه I', sub: 'سیگنال کانونی\nبدون تماس' },
+      { grade: 'II', label: 'درجه II', sub: 'سیگنال خطی\nبدون تماس' },
+      { grade: 'III', label: 'درجه III ✅', sub: 'تماس با سطح\n= پارگی واقعی' },
+    ],
+  },
+}
+
+function MrtGradingRail({ lang }) {
+  const d = MRT_RAIL[lang] || MRT_RAIL.de
+  return (
+    <div className={styles.mrtRail}>
+      <div className={styles.mrtRailTitle}>{d.title}</div>
+      <div className={styles.mrtRailTrack}>
+        {d.steps.map((step, i) => (
+          <div key={step.grade} className={`${styles.mrtRailStep} ${styles[`mrtRailStep${i}`]}`}>
+            <div className={styles.mrtRailDot}>{step.grade}</div>
+            <div className={styles.mrtRailLabel}>{step.label}</div>
+            <div className={styles.mrtRailSub} style={{ whiteSpace: 'pre-line' }}>{step.sub}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function MeniskusPage() {
   const { lang } = useLanguage()
   const copy = CONTENT[lang] || CONTENT.de
@@ -4251,6 +4446,22 @@ export default function MeniskusPage() {
   const [activeId, setActiveId] = useState(pageSections[0].id)
   const [previewImage, setPreviewImage] = useState(null)
   const meniskusLayout = isMobile ? 'mobile' : 'desktop'
+  const [doneIds, setDoneIds] = useState({})
+
+  useEffect(() => {
+    try {
+      const stored = JSON.parse(localStorage.getItem('meniskus_done') || '{}')
+      setDoneIds(stored)
+    } catch {}
+  }, [])
+
+  const handleDone = (id) => {
+    setDoneIds(prev => {
+      const next = { ...prev, [id]: !prev[id] }
+      try { localStorage.setItem('meniskus_done', JSON.stringify(next)) } catch {}
+      return next
+    })
+  }
 
   const sectionIds = useMemo(() => pageSections.map(section => section.id), [pageSections])
   const withLang = (href) => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
@@ -4329,15 +4540,15 @@ export default function MeniskusPage() {
                 <span>🎯</span>
                 <span>{copy.actionMcq}</span>
               </Link>
+              <Link href={withLang('/flashcards/meniskus')} className={`${styles.learnAction} ${styles.learnActionFlash}`}>
+                <span>🧠</span>
+                <span>{copy.actionFlash}</span>
+              </Link>
               <span className={styles.learnActionDisabled} aria-disabled="true">
                 <span>🧪</span>
                 <span>{copy.actionFall}</span>
                 <small>{copy.actionFallStatus}</small>
               </span>
-              <Link href={withLang('/flashcards/meniskus')} className={`${styles.learnAction} ${styles.learnActionFlash}`}>
-                <span>🧠</span>
-                <span>{copy.actionFlash}</span>
-              </Link>
             </div>
           </div>
 
@@ -4348,11 +4559,11 @@ export default function MeniskusPage() {
 
       <div className={styles.layout}>
         {!isMobile && (
-          <Sidebar sections={pageSections} toc={copy.toc} activeId={activeId} onClick={scrollTo} />
+          <Sidebar sections={pageSections} toc={copy.toc} activeId={activeId} onClick={scrollTo} doneIds={doneIds} />
         )}
 
         <main className={styles.main} ref={mainRef}>
-          <Section id="anatomie" eyebrow="01" title={copy.anatomy.title} lead={copy.anatomy.lead} defaultOpen={!isMobile}>
+          <Section id="anatomie" eyebrow="01" title={copy.anatomy.title} lead={copy.anatomy.lead} defaultOpen={!isMobile} done={!!doneIds['anatomie']} onDone={handleDone}>
             <Table headers={copy.anatomy.tableHeaders} rows={copy.anatomy.tableRows} />
             <div className={styles.splitGrid}>
               <div className={styles.card}>
@@ -4395,7 +4606,7 @@ export default function MeniskusPage() {
             </div>
           </Section>
 
-          <Section id="mrt" eyebrow="04" title={copy.mri.title} lead={copy.mri.lead} defaultOpen={!isMobile}>
+          <Section id="mrt" eyebrow="04" title={copy.mri.title} lead={copy.mri.lead} defaultOpen={!isMobile} done={!!doneIds['mrt']} onDone={handleDone}>
             <div className={styles.protocolGrid}>
               {copy.mri.protocol.map(item => (
                 <div key={item.name} className={styles.protocolCard}>
@@ -4427,7 +4638,8 @@ export default function MeniskusPage() {
             </div>
           </Section>
 
-          <Section id="grading" eyebrow="05" title={copy.grading.title} lead={copy.grading.lead} defaultOpen={!isMobile}>
+          <Section id="grading" eyebrow="05" title={copy.grading.title} lead={copy.grading.lead} defaultOpen={!isMobile} done={!!doneIds['grading']} onDone={handleDone}>
+            <MrtGradingRail lang={lang} />
             <div className={styles.gradingFigure}>
               <ImageFigure src="/meniskus/lotysch-grading.png" alt={copy.grading.title} zoomable zoomLabel={copy.zoomImage} onZoom={() => setPreviewImage({ src: '/meniskus/lotysch-grading.png', alt: copy.grading.title })} />
             </div>
@@ -4442,12 +4654,12 @@ export default function MeniskusPage() {
           </Section>
 
 
-          <Section id="risstypen" eyebrow="07" title={copy.tearTypes.title} lead={copy.tearTypes.lead} defaultOpen={!isMobile}>
+          <Section id="risstypen" eyebrow="07" title={copy.tearTypes.title} lead={copy.tearTypes.lead} defaultOpen={!isMobile} done={!!doneIds['risstypen']} onDone={handleDone}>
             <Table headers={copy.tearTypes.tableHeaders} rows={copy.tearTypes.tableRows} className={styles.tearTypeTable} />
             <Callout type="cave" label={copy.tearTypes.caveTitle}>{copy.tearTypes.caveText}</Callout>
           </Section>
 
-          <Section id="discoider" eyebrow="08" title={copy.discoid.title} lead={copy.discoid.lead} defaultOpen={!isMobile}>
+          <Section id="discoider" eyebrow="08" title={copy.discoid.title} lead={copy.discoid.lead} defaultOpen={!isMobile} done={!!doneIds['discoider']} onDone={handleDone}>
             <div className={styles.discoidStats}>
               {copy.discoid.stats.map(stat => (
                 <div key={stat.label} className={styles.discoidStatCard}>
@@ -4476,7 +4688,7 @@ export default function MeniskusPage() {
             <Callout label={copy.keyLabel}>{copy.therapy.key}</Callout>
           </Section>
 
-          <Section id="fallbeispiele" eyebrow="07" title={copy.cases.title} lead={copy.cases.lead} defaultOpen={!isMobile}>
+          <Section id="fallbeispiele" eyebrow="07" title={copy.cases.title} lead={copy.cases.lead} defaultOpen={!isMobile} done={!!doneIds['fallbeispiele']} onDone={handleDone}>
             <div className={styles.caseGrid}>
               {copy.cases.items.map(item => (
                 <a key={item.title} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}>
