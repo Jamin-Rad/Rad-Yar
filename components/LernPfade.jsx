@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './LernPfade.module.css'
@@ -13,10 +14,23 @@ const COLORS = [
 ]
 
 const FALL_MODAL = {
-  de: { title: 'Fallbeispiele', msg: 'Interaktive klinische Fälle werden gerade aufgebaut und sind bald verfügbar.', close: 'Verstanden' },
-  en: { title: 'Case Studies', msg: 'Interactive clinical cases are being built and will be available soon.', close: 'Got it' },
-  fa: { title: 'موارد بالینی', msg: 'موارد بالینی تعاملی در حال آماده‌سازی هستند و به زودی در دسترس خواهند بود.', close: 'متوجه شدم' },
+  de: { title: 'Fallbeispiele', msg: 'Wähle eine Körperregion. Interaktive Fälle werden nach und nach ergänzt.', close: 'Schließen', soon: 'in Arbeit' },
+  en: { title: 'Case Studies', msg: 'Choose a body region. Interactive cases will be added step by step.', close: 'Close', soon: 'in progress' },
+  fa: { title: 'موارد بالینی', msg: 'یک ناحیه بدن انتخاب کن. موارد بالینی به‌تدریج اضافه می‌شوند.', close: 'بستن', soon: 'در حال ساخت' },
 }
+
+const FALL_REGIONS = [
+  { id: 'gehirn', color: '#7c3aed', name: { de: 'Kopf', en: 'Head', fa: 'سر' } },
+  { id: 'wirbelsaeule', color: '#0ea5e9', name: { de: 'Wirbelsäule', en: 'Spine', fa: 'ستون فقرات' } },
+  { id: 'hals', color: '#10b981', name: { de: 'Hals', en: 'Neck', fa: 'گردن' } },
+  { id: 'thorax', color: '#0ea5e9', name: { de: 'Thorax', en: 'Thorax', fa: 'توراکس' } },
+  { id: 'mamma', color: '#ec4899', name: { de: 'Mamma', en: 'Breast', fa: 'پستان' } },
+  { id: 'abdomen', color: '#f59e0b', name: { de: 'Abdomen', en: 'Abdomen', fa: 'شکم' } },
+  { id: 'becken-f', color: '#e11d48', name: { de: 'Becken – Frau', en: 'Pelvis – Female', fa: 'لگن – زنان' } },
+  { id: 'becken-m', color: '#2563eb', name: { de: 'Becken – Mann', en: 'Pelvis – Male', fa: 'لگن – مردان' } },
+  { id: 'msk', color: '#f97316', name: { de: 'Muskuloskelettales', en: 'Musculoskeletal', fa: 'اسکلتی-عضلانی' } },
+  { id: 'technik', color: '#64748b', name: { de: 'Technik & Physik', en: 'Physics & Tech', fa: 'تکنیک و فیزیک' } },
+]
 
 const PROFILE_CTA = {
   de: { label: 'Dein Lernpfad', title: 'Klug lernen mit gezielter Wiederholung', desc: 'Sieh, welche Kapitel du schon bearbeitet hast, welche Flashcards fällig sind und wo du heute weitermachst.', btn: 'Zum Profil →' },
@@ -152,10 +166,21 @@ export default function LernPfade() {
       {/* ── FALLBEISPIELE MODAL ── */}
       {modal === 'fall' && (
         <div className={styles.overlay} onClick={() => setModal(null)}>
-          <div className={styles.modal} onClick={e => e.stopPropagation()}>
-            <div className={styles.notReadyIcon}>🚧</div>
+          <div className={`${styles.modal} ${styles.fallModal}`} onClick={e => e.stopPropagation()}>
+            <button className={styles.fallModalClose} onClick={() => setModal(null)} aria-label={fm.close}>×</button>
             <div className={styles.modalTitle}>{fm.title}</div>
             <p className={styles.notReadyMsg}>{fm.msg}</p>
+            <div className={styles.fallRegionGrid}>
+              {FALL_REGIONS.map(region => (
+                <button key={region.id} type="button" className={styles.fallRegionCard} style={{ borderColor: region.color + '44' }}>
+                  <span className={styles.fallRegionIcon}>
+                    <Image src={`/fach/${region.id}.png`} alt={region.name[lang] || region.name.de} width={58} height={58} style={{ objectFit: 'contain' }} />
+                  </span>
+                  <strong style={{ color: region.color }}>{region.name[lang] || region.name.de}</strong>
+                  <small>{fm.soon}</small>
+                </button>
+              ))}
+            </div>
             <button className={styles.modalClose} onClick={() => setModal(null)}>{fm.close}</button>
           </div>
         </div>

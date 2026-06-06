@@ -201,3 +201,100 @@
 :global(html[data-theme='dark']) .chip {
   color: #fdba74 !important;
 }
+
+/* ── UPDATED: body-region chooser inside Fallbeispiele modal ── */
+.fallModal {
+  max-width: 860px;
+  text-align: start;
+  padding: 30px;
+  position: relative;
+}
+
+.fallModalClose {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 999px;
+  background: #f8fafc;
+  color: #1a2051;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+}
+
+[dir='rtl'] .fallModalClose {
+  right: auto;
+  left: 14px;
+}
+
+.fallRegionGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin: 18px 0 20px;
+}
+
+.fallRegionCard {
+  min-height: 142px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 10px;
+  font-family: inherit;
+  text-align: center;
+  transition: transform .18s, box-shadow .18s;
+}
+
+.fallRegionCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(26,32,81,0.08);
+}
+
+.fallRegionIcon {
+  width: 74px;
+  height: 74px;
+  border-radius: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff7ed;
+  border: 1px solid rgba(249,115,22,0.18);
+  box-shadow: 0 10px 24px rgba(249,115,22,0.10);
+}
+
+.fallRegionCard strong {
+  font-size: 12.5px;
+  line-height: 1.25;
+}
+
+.fallRegionCard small {
+  font-size: 10.5px;
+  color: #94a3b8;
+  font-weight: 800;
+}
+
+@media (max-width: 820px) {
+  .fallRegionGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 440px) {
+  .fallModal { padding: 24px 18px 18px; }
+  .fallRegionGrid { grid-template-columns: 1fr; }
+  .fallRegionCard { min-height: 112px; flex-direction: row; justify-content: flex-start; text-align: start; }
+  .fallRegionIcon { width: 62px; height: 62px; border-radius: 20px; }
+}
+
+:global(html[data-theme='dark']) .fallRegionCard,
+:global(html[data-theme='dark']) .fallModalClose {
+  background: rgba(15,23,42,0.92);
+  border-color: rgba(148,163,184,0.18) !important;
+}
