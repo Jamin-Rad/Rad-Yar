@@ -101,35 +101,81 @@ const FACH_NAMES = {
         Muskuloskelettales:'اسکلتی-عضلانی', Technik:'تکنیک و فیزیک' },
 }
 
-// ── ZONES (% of visible Hero image wrapper) ────────────────────────────────
-// Rechteckige Hotspots. Keine Kreise/Ellipsen mehr.
-// Die Werte sind auf das aktuelle Body-Bild im Hero-Bereich kalibriert.
-// Reihenfolge ist wichtig: große MSK-Flächen zuerst, spezielle Organe danach.
+// ── ZONES ─────────────────────────────────────────────────────────────────
+// Kalibriert für 941×1672 px — Bild füllt den Container exakt (aspect-ratio 941/1672).
+// Koordinaten = Pixel-% des Original-Bildes. Links im SVG = Links beim Betrachter.
 const ZONES = [
-  // ── Arme (links + rechts) → MSK
-  { id:'Muskuloskelettales', shape:'polygon', points:'23,19 14,23 9,36 7,50 10,57 17,57 20,42 20,24' },
-  { id:'Muskuloskelettales', shape:'polygon', points:'62,19 71,23 76,36 78,50 75,57 68,57 65,42 65,24' },
-  // ── Beine (links + rechts) → MSK
-  { id:'Muskuloskelettales', shape:'polygon', points:'28,57 41,57 42,65 40,74 42,82 40,96 32,96 30,82 32,74 30,65' },
-  { id:'Muskuloskelettales', shape:'polygon', points:'44,57 57,57 55,65 53,74 55,82 53,96 45,96 43,82 45,74 43,65' },
+  // ── Linker Arm (Betrachter links) → MSK
+  { id:'Muskuloskelettales', shape:'polygon', points:'7,17 23,17 22,24 17,36 11,48 7,48' },
+  // ── Rechter Arm (Betrachter rechts) → MSK
+  { id:'Muskuloskelettales', shape:'polygon', points:'77,17 93,17 93,48 83,48 78,36 78,24' },
+  // ── Linkes Bein → MSK
+  { id:'Muskuloskelettales', shape:'polygon', points:'19,63 50,63 49,78 46,92 28,92 21,78' },
+  // ── Rechtes Bein → MSK
+  { id:'Muskuloskelettales', shape:'polygon', points:'50,63 81,63 79,78 72,92 54,92 51,78' },
   // ── Thorax
-  { id:'Thorax',             shape:'polygon', points:'25,19 60,19 62,27 58,34 27,34 23,27' },
+  { id:'Thorax',             shape:'polygon', points:'21,17 79,17 79,22 77,35 23,35 21,22' },
   // ── Abdomen
-  { id:'Abdomen',            shape:'polygon', points:'27,34 58,34 60,38 58,46 27,46 25,38' },
-  // ── Becken (→ Popup Frau/Mann)
-  { id:'Becken',             shape:'polygon', points:'27,46 58,46 60,51 55,56 30,56 25,51' },
-  // ── Hals (schmal)
-  { id:'Hals',               shape:'polygon', points:'39,15 46,15 47,18 40,18' },
+  { id:'Abdomen',            shape:'polygon', points:'22,35 78,35 78,50 22,50' },
+  // ── Becken
+  { id:'Becken',             shape:'polygon', points:'22,50 78,50 78,63 22,63' },
+  // ── Hals
+  { id:'Hals',               shape:'polygon', points:'44,12 56,12 56,17 44,17' },
   // ── Kopf / Neuroradiologie
-  { id:'Neuroradiologie',    shape:'polygon', points:'37,3 49,3 52,8 51,13 44,16 37,13 35,8' },
-  // ── Brust (links + rechts) über Thorax
-  { id:'Brust',              shape:'polygon', points:'25,24 37,24 39,31 37,35 25,35 23,31' },
-  { id:'Brust',              shape:'polygon', points:'48,24 60,24 62,31 60,35 48,35 46,31' },
-  // ── Wirbelsäule (schmaler Streifen)
-  { id:'Wirbelsaeule',       shape:'polygon', points:'41,18 44,18 44.5,46 40.5,46' },
-  // ── Technik / MRT-Gerät
-  { id:'Technik',            shape:'polygon', points:'60,79 93,79 96,85 95,97 60,97 58,90' },
+  { id:'Neuroradiologie',    shape:'polygon', points:'35,3 65,3 67,8 65,12 50,17 35,12 33,8' },
+  // ── Linke Brust (Betrachter links)
+  { id:'Brust',              shape:'polygon', points:'21,18 41,18 41,29 23,29 21,23' },
+  // ── Rechte Brust (Betrachter rechts)
+  { id:'Brust',              shape:'polygon', points:'59,18 79,18 79,23 77,29 59,29' },
+  // ── Wirbelsäule
+  { id:'Wirbelsaeule',       shape:'polygon', points:'47,17 53,17 53,53 47,53' },
+  // ── Technik / MRT-Gerät (untere rechte Ecke des Bildes)
+  { id:'Technik',            shape:'polygon', points:'64,88 94,88 94,98 64,98' },
 ]
+
+// ── BACKGROUND REMOVAL (Canvas) ───────────────────────────────────────────
+// Entfernt den weißen Hintergrund (inkl. Haar-Fransen) direkt im Browser.
+// threshold: Min-Kanal ≥ threshold → transparent; ≥ threshold-30 → weich ausblenden.
+function useRemovedBg(src, threshold = 222) {
+  const [result, setResult] = useState(null) // null = noch nicht fertig
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !src) return
+    let cancelled = false
+
+    const img = new Image()
+    img.onload = () => {
+      if (cancelled) return
+      const canvas = document.createElement('canvas')
+      canvas.width  = img.naturalWidth
+      canvas.height = img.naturalHeight
+      const ctx = canvas.getContext('2d')
+      ctx.drawImage(img, 0, 0)
+
+      const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+      const d = imgData.data
+      const edge = 30 // Überblendungsbreite in Helligkeitseinheiten
+
+      for (let i = 0; i < d.length; i += 4) {
+        // min(R,G,B) misst "Weißheit" — blau/farbige Pixel bleiben unberührt
+        const bright = Math.min(d[i], d[i + 1], d[i + 2])
+        if (bright >= threshold) {
+          d[i + 3] = 0
+        } else if (bright >= threshold - edge) {
+          // weiches Ausblenden nahe der Grenze
+          d[i + 3] = Math.round(((threshold - bright) / edge) * d[i + 3])
+        }
+      }
+
+      ctx.putImageData(imgData, 0, 0)
+      if (!cancelled) setResult(canvas.toDataURL('image/png'))
+    }
+    img.src = src
+    return () => { cancelled = true }
+  }, [src, threshold])
+
+  return result // null solange Verarbeitung läuft
+}
 
 // ── MAGNETIC FIELD ANIMATION ──────────────────────────────────────────────
 function MagneticField() {
@@ -277,6 +323,9 @@ export default function Hero() {
   const [mounted, setMounted] = useState(false)
   useEffect(()=>{ setMounted(true) },[])
 
+  // Weißen PNG-Hintergrund (auch Haar-Fransen) im Browser entfernen
+  const transparentBodyImg = useRemovedBg('/body-anatomy.png')
+
   const hovFach = hovered ? FACH_DATA[hovered] : null
   const hovName = hovered ? (FACH_NAMES[lang]?.[hovered]||FACH_NAMES.de[hovered]) : null
 
@@ -351,7 +400,13 @@ export default function Hero() {
 
         <div className={styles.bodyWrap}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/body-anatomy.png" alt="Anatomy" className={styles.bodyImg} draggable={false}/>
+          <img
+            src={transparentBodyImg || '/body-anatomy.png'}
+            alt="Anatomy"
+            className={styles.bodyImg}
+            draggable={false}
+            style={transparentBodyImg ? {} : { opacity: 0.92 }}
+          />
 
           <div className={styles.bodyColorWash}
             style={{background:hovFach
