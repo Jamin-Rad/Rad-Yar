@@ -468,3 +468,223 @@
   border-color: rgba(248, 113, 113, 0.28);
   color: #fecaca;
 }
+
+/* ── UPDATED: large topic card only inside “Neue Flashcards hinzufügen” ── */
+.topicCardLarge {
+  min-height: 118px;
+  gap: 18px;
+  padding: 20px;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(249,115,22,0.10), transparent 12rem),
+    var(--bg-card);
+}
+
+.topicCardLarge .topicIcon,
+.topicCard .topicIcon {
+  width: 70px;
+  height: 70px;
+  border-radius: 22px;
+  font-size: 30px;
+  background: linear-gradient(135deg, #fff7ed, #ffffff);
+  border: 1px solid rgba(249,115,22,0.24);
+  box-shadow: 0 10px 24px rgba(249,115,22,0.10);
+}
+
+.topicCardLarge .topicText strong {
+  font-size: 17px;
+}
+
+/* ── UPDATED: Leitner box modal + practice without counting ── */
+.boxCard {
+  width: 100%;
+  cursor: pointer;
+  text-align: start;
+  font-family: inherit;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+.boxCard:hover {
+  transform: translateY(-2px);
+  border-color: rgba(249,115,22,0.38);
+  box-shadow: 0 12px 26px rgba(249,115,22,0.10);
+}
+
+.boxModalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(8,14,28,0.62);
+  backdrop-filter: blur(10px);
+}
+
+.boxModal {
+  position: relative;
+  width: min(720px, 100%);
+  max-height: min(86vh, 760px);
+  overflow: auto;
+  border-radius: 28px;
+  padding: 26px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: 0 26px 80px rgba(0,0,0,0.28);
+}
+
+.boxModalClose {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--surface-soft);
+  color: var(--text-strong);
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+}
+
+[dir='rtl'] .boxModalClose {
+  right: auto;
+  left: 16px;
+}
+
+.boxModalHeader {
+  padding-inline-end: 44px;
+  margin-bottom: 18px;
+}
+
+[dir='rtl'] .boxModalHeader {
+  padding-inline-end: 0;
+  padding-inline-start: 44px;
+}
+
+.boxModalHeader h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1;
+  color: var(--text-strong);
+}
+
+.boxModalHeader p {
+  margin: 10px 0 0;
+  color: var(--text-muted);
+  line-height: 1.65;
+  font-size: 14px;
+}
+
+.groupPreviewBlock,
+.boxCardList {
+  border-radius: 22px;
+  padding: 18px;
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  margin-bottom: 14px;
+}
+
+.groupPreviewBlock > strong,
+.boxCardList > strong {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--text-strong);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.groupPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.groupPill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  color: var(--orange);
+  background: var(--accent-soft);
+  border: 1px solid rgba(249,115,22,0.18);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.boxCardRow {
+  display: grid;
+  gap: 4px;
+  padding: 12px 0;
+  border-top: 1px solid var(--border-soft);
+}
+
+.boxCardRow:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.boxCardRow span {
+  color: var(--orange);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.boxCardRow p {
+  margin: 0;
+  color: var(--text-strong);
+  line-height: 1.45;
+  font-weight: 780;
+}
+
+.boxCardRow small {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.practiceBtn {
+  width: 100%;
+  min-height: 52px;
+  border-radius: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, var(--orange), #fb923c);
+  box-shadow: 0 14px 32px rgba(249,115,22,0.24);
+  font-weight: 950;
+}
+
+@media (max-width: 560px) {
+  .topicCardLarge {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .topicCardLarge .topicIcon,
+  .topicCard .topicIcon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .boxModal {
+    padding: 20px;
+    border-radius: 22px;
+  }
+}
+
+:global(html[data-theme='dark']) .topicCardLarge .topicIcon,
+:global(html[data-theme='dark']) .topicCard .topicIcon,
+:global(html[data-theme='dark']) .boxModalClose,
+:global(html[data-theme='dark']) .groupPreviewBlock,
+:global(html[data-theme='dark']) .boxCardList {
+  background: rgba(15,23,42,0.80);
+  border-color: rgba(148,163,184,0.18);
+}

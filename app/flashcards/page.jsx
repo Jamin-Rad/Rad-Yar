@@ -1,9 +1,10 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useEffect, useMemo, useState } from 'react'
-import { FLASHCARD_TOPICS, FLASHCARDS, getCardById } from '@/data/flashcards'
-import { LEITNER_STEPS, formatDueDate, isDue, loadLeitnerState, resetLeitnerState } from '@/utils/leitnerStorage'
+import { FLASHCARD_TOPICS, FLASHCARDS, getCardById, getFlashcardTopic } from '@/data/flashcards'
+import { LEITNER_STEPS, formatDueDate, isDue, loadLeitnerState, resetLeitnerState, getBoxLabel } from '@/utils/leitnerStorage'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
 
@@ -20,6 +21,7 @@ const TEXT = {
     addNew: 'Neue Flashcards hinzufügen',
     addLead: 'Wähle wie im Lernen-Menü ein Thema. Beim Lesen werden die Karten automatisch in deine Flashcard-Verwaltung übernommen.',
     progress: 'Leitner-Boxen',
+    progressHint: 'Klicke auf eine Box, um Hauptgruppen zu sehen und ohne Zählung zu üben.',
     nextDue: 'Nächste Wiederholung',
     emptyTitle: 'Noch keine Flashcards fällig.',
     emptyText: 'Lies zuerst Flashcards aus einem Thema oder warte bis zum nächsten Wiederholungsdatum.',
@@ -33,6 +35,13 @@ const TEXT = {
     active: 'aktiv',
     done: 'gelernt',
     cards: 'Karten',
+    boxModalTitle: 'Karten in',
+    boxModalLead: 'Hauptgruppen in dieser Leitner-Box. Die Übung hier verändert keinen Fortschritt und wird nicht gezählt.',
+    mainGroups: 'Hauptgruppen',
+    cardsInBox: 'Karten in dieser Box',
+    practiceNoCount: 'Ohne Zählung wiederholen',
+    close: 'Schließen',
+    noCardsInBox: 'In dieser Box sind aktuell keine Karten.',
   },
   en: {
     kicker: 'Leitner system',
@@ -46,6 +55,7 @@ const TEXT = {
     addNew: 'Add new flashcards',
     addLead: 'Choose a topic like in the Learn menu. When you study cards, they are automatically added to your flashcard management.',
     progress: 'Leitner boxes',
+    progressHint: 'Click a box to see main groups and practice without counting.',
     nextDue: 'Next review',
     emptyTitle: 'No flashcards are due.',
     emptyText: 'Study cards from a topic first or wait until the next review date.',
@@ -59,6 +69,13 @@ const TEXT = {
     active: 'active',
     done: 'learned',
     cards: 'cards',
+    boxModalTitle: 'Cards in',
+    boxModalLead: 'Main groups in this Leitner box. Practice here does not change progress and is not counted.',
+    mainGroups: 'Main groups',
+    cardsInBox: 'Cards in this box',
+    practiceNoCount: 'Review without counting',
+    close: 'Close',
+    noCardsInBox: 'There are currently no cards in this box.',
   },
   fa: {
     kicker: 'سیستم لایتنر',
@@ -72,6 +89,7 @@ const TEXT = {
     addNew: 'اضافه کردن فلش‌کارت جدید',
     addLead: 'مثل منوی Lernen یک موضوع را انتخاب کن. هنگام خواندن، کارت‌ها خودکار وارد مدیریت فلش‌کارت می‌شوند.',
     progress: 'جعبه‌های لایتنر',
+    progressHint: 'روی یک جعبه بزن تا گروه‌های اصلی را ببینی و بدون شمارش تمرین کنی.',
     nextDue: 'مرور بعدی',
     emptyTitle: 'فعلاً فلش‌کارتی برای مرور نیست.',
     emptyText: 'اول از یک موضوع فلش‌کارت بخوان یا تا زمان مرور بعدی صبر کن.',
@@ -85,20 +103,35 @@ const TEXT = {
     active: 'فعال',
     done: 'یادگرفته‌شده',
     cards: 'کارت',
+    boxModalTitle: 'کارت‌های',
+    boxModalLead: 'گروه‌های اصلی این جعبه لایتنر. تمرین از اینجا پیشرفت را تغییر نمی‌دهد و شمارش نمی‌شود.',
+    mainGroups: 'گروه‌های اصلی',
+    cardsInBox: 'کارت‌های این جعبه',
+    practiceNoCount: 'مرور بدون شمارش',
+    close: 'بستن',
+    noCardsInBox: 'در این جعبه فعلاً کارتی وجود ندارد.',
   },
 }
 
 function localize(value, lang) {
   if (!value) return ''
+  if (typeof value === 'string') return value
   return value[lang] || value.de || ''
+}
+
+function firstPracticeHref(cards, box, lang) {
+  const topicId = cards[0]?.topicId || 'meniskus'
+  const base = `/flashcards/${topicId}?mode=practice&box=${box}`
+  return lang === 'de' ? base : `${base}&lang=${lang}`
 }
 
 export default function FlashcardsPage() {
   const { lang } = useLanguage()
   const t = TEXT[lang] || TEXT.de
   const isRTL = lang === 'fa'
-  const withLang = (href) => lang === 'de' ? href : `${href}?lang=${lang}`
+  const withLang = (href) => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
   const [state, setState] = useState({})
+  const [selectedBox, setSelectedBox] = useState(null)
 
   const refresh = () => setState(loadLeitnerState())
 
@@ -110,6 +143,10 @@ export default function FlashcardsPage() {
   }, [])
 
   const records = useMemo(() => Object.values(state), [state])
+  const validRows = useMemo(() => records
+    .map(record => ({ record, card: getCardById(record.id) }))
+    .filter(row => row.card), [records])
+
   const dueRecords = useMemo(() => records.filter(isDue), [records])
   const mastered = records.filter(r => r.status === 'mastered').length
   const weak = records.filter(r => r.status !== 'mastered' && r.box === 1 && (r.wrongCount || 0) > 0).length
@@ -122,15 +159,28 @@ export default function FlashcardsPage() {
     count: records.filter(r => r.status !== 'mastered' && r.box === step.box).length,
   }))
 
-  const studiedRows = records
-    .map(record => ({ record, card: getCardById(record.id) }))
-    .filter(row => row.card)
+  const studiedRows = validRows
     .sort((a, b) => new Date(a.record.dueAt || '2999-01-01') - new Date(b.record.dueAt || '2999-01-01'))
     .slice(0, 10)
+
+  const selectedBoxCards = useMemo(() => {
+    if (!selectedBox) return []
+    return validRows.filter(({ record }) => record.status !== 'mastered' && record.box === selectedBox.box)
+  }, [selectedBox, validRows])
+
+  const selectedBoxGroups = useMemo(() => {
+    const map = new Map()
+    selectedBoxCards.forEach(({ card }) => {
+      const label = localize(card.category, lang) || '—'
+      map.set(label, (map.get(label) || 0) + 1)
+    })
+    return [...map.entries()].map(([label, count]) => ({ label, count }))
+  }, [selectedBoxCards, lang])
 
   const reset = () => {
     if (window.confirm(t.resetAsk)) {
       resetLeitnerState()
+      setSelectedBox(null)
       refresh()
     }
   }
@@ -144,7 +194,7 @@ export default function FlashcardsPage() {
             <h1 className={styles.title}>{t.title}</h1>
             <p className={styles.lead}>{t.lead}</p>
             <div className={styles.actions}>
-              <Link href={withLang('/flashcards/review')} className={styles.primaryBtn}>🧠 {t.startReview}</Link>
+              <Link href={withLang('/flashcards/meniskus')} className={styles.primaryBtn}>🧠 {t.startReview}</Link>
               <button type="button" className={styles.dangerBtn} onClick={reset}>🗑️ {t.reset}</button>
             </div>
           </div>
@@ -170,8 +220,10 @@ export default function FlashcardsPage() {
           </div>
           <div className={styles.topicGrid}>
             {FLASHCARD_TOPICS.map(topic => (
-              <Link key={topic.id} href={withLang(topic.href)} className={styles.topicCard}>
-                <span className={styles.topicIcon}>{topic.icon}</span>
+              <Link key={topic.id} href={withLang(topic.href)} className={`${styles.topicCard} ${styles.topicCardLarge}`}>
+                <span className={styles.topicIcon}>
+                  {topic.iconImage ? <Image src={topic.iconImage} alt={localize(topic.title, lang)} width={54} height={54} style={{ objectFit: 'contain' }} /> : topic.icon}
+                </span>
                 <span className={styles.topicText}>
                   <strong>{localize(topic.title, lang)}</strong>
                   <small>{topic.area} · {topic.chapter} · {FLASHCARDS.filter(card => card.topicId === topic.id).length} {t.cards}</small>
@@ -187,15 +239,15 @@ export default function FlashcardsPage() {
           <div className={styles.sectionHead}>
             <div>
               <h2 className={styles.sectionTitle}>{t.progress}</h2>
-              <p className={styles.sectionSub}>1 Tag → 3 Tage → 7 Tage → 14 Tage → 30 Tage → 3 / 6 / 12 Monate</p>
+              <p className={styles.sectionSub}>{t.progressHint}</p>
             </div>
           </div>
           <div className={styles.boxGrid}>
             {boxCounts.map(box => (
-              <div key={box.box} className={styles.boxCard}>
+              <button key={box.box} type="button" className={styles.boxCard} onClick={() => setSelectedBox(box)}>
                 <strong>{box.count}</strong>
-                <span>{box.label}</span>
-              </div>
+                <span>{getBoxLabel(box.box, lang)}</span>
+              </button>
             ))}
           </div>
         </section>
@@ -206,7 +258,7 @@ export default function FlashcardsPage() {
               <h2 className={styles.sectionTitle}>{t.due}</h2>
               <p className={styles.sectionSub}>{records.length ? t.studied : t.emptyText}</p>
             </div>
-            {dueRecords.length > 0 && <Link href={withLang('/flashcards/review')} className={styles.secondaryBtn}>{t.startReview}</Link>}
+            {dueRecords.length > 0 && <Link href={withLang('/flashcards/meniskus')} className={styles.secondaryBtn}>{t.startReview}</Link>}
           </div>
 
           {studiedRows.length === 0 ? (
@@ -237,6 +289,52 @@ export default function FlashcardsPage() {
           )}
         </section>
       </div>
+
+      {selectedBox && (
+        <div className={styles.boxModalOverlay} onClick={() => setSelectedBox(null)}>
+          <div className={styles.boxModal} onClick={event => event.stopPropagation()}>
+            <button type="button" className={styles.boxModalClose} onClick={() => setSelectedBox(null)} aria-label={t.close}>×</button>
+            <div className={styles.boxModalHeader}>
+              <span className={styles.kicker}>{t.boxModalTitle} {getBoxLabel(selectedBox.box, lang)}</span>
+              <h2>{getBoxLabel(selectedBox.box, lang)}</h2>
+              <p>{t.boxModalLead}</p>
+            </div>
+
+            {selectedBoxCards.length === 0 ? (
+              <div className={styles.empty}>{t.noCardsInBox}</div>
+            ) : (
+              <>
+                <div className={styles.groupPreviewBlock}>
+                  <strong>{t.mainGroups}</strong>
+                  <div className={styles.groupPills}>
+                    {selectedBoxGroups.map(group => (
+                      <span key={group.label} className={styles.groupPill}>{group.label} · {group.count}</span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={styles.boxCardList}>
+                  <strong>{t.cardsInBox}</strong>
+                  {selectedBoxCards.slice(0, 8).map(({ card, record }) => {
+                    const topic = getFlashcardTopic(card.topicId)
+                    return (
+                      <div key={card.id} className={styles.boxCardRow}>
+                        <span>{localize(card.category, lang)}</span>
+                        <p>{localize(card.front, lang)}</p>
+                        <small>{localize(topic?.title, lang)} · {formatDueDate(record, lang)}</small>
+                      </div>
+                    )
+                  })}
+                </div>
+
+                <Link href={firstPracticeHref(selectedBoxCards.map(row => row.card), selectedBox.box, lang)} className={styles.practiceBtn}>
+                  🧠 {t.practiceNoCount}
+                </Link>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </main>
   )
 }
