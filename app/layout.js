@@ -1,4 +1,5 @@
 import { Fraunces, Manrope } from 'next/font/google'
+import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
 import { ThemeProvider } from '@/providers/ThemeProvider'
 
@@ -23,40 +24,41 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="de" data-theme="light" suppressHydrationWarning>
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
-        {/*
-          Blocking script: läuft synchron VOR dem ersten Paint.
-          - Liest gespeichertes Theme aus localStorage
-          - Fällt auf prefers-color-scheme zurück, wenn kein Wert gespeichert
-          → Kein FOUC (Flash of Unstyled Content) mehr
-        */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function () {
-                try {
-                  var stored = localStorage.getItem('radyar-theme');
-                  var system = window.matchMedia('(prefers-color-scheme: dark)').matches
-                    ? 'dark' : 'light';
-                  var theme = (stored === 'dark' || stored === 'light') ? stored : system;
-                  document.documentElement.dataset.theme = theme;
-                  document.documentElement.style.colorScheme = theme;
-                } catch (e) {
-                  document.documentElement.dataset.theme = 'light';
-                }
-              })();
-            `,
-          }}
-        />
-      </head>
-      <body className={`${fraunces.variable} ${manrope.variable}`}>
-        <ThemeProvider>{children}</ThemeProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="de" data-theme="light" suppressHydrationWarning>
+        <head>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+          />
+          {/*
+            Blocking Script: läuft synchron VOR dem ersten Paint.
+            - Liest gespeichertes Theme aus localStorage
+            - Fällt auf prefers-color-scheme zurück → kein FOUC mehr
+          */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function () {
+                  try {
+                    var stored = localStorage.getItem('radyar-theme');
+                    var system = window.matchMedia('(prefers-color-scheme: dark)').matches
+                      ? 'dark' : 'light';
+                    var theme = (stored === 'dark' || stored === 'light') ? stored : system;
+                    document.documentElement.dataset.theme = theme;
+                    document.documentElement.style.colorScheme = theme;
+                  } catch (e) {
+                    document.documentElement.dataset.theme = 'light';
+                  }
+                })();
+              `,
+            }}
+          />
+        </head>
+        <body className={`${fraunces.variable} ${manrope.variable}`}>
+          <ThemeProvider>{children}</ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }
