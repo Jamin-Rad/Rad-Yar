@@ -3,7 +3,7 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 
 const STORAGE_KEY = 'radyar-theme'
-const SUPPORTED_THEMES = ['light', 'dark']
+const SUPPORTED  = ['light', 'dark']
 
 const ThemeContext = createContext({
   theme: 'light',
@@ -11,15 +11,13 @@ const ThemeContext = createContext({
   toggleTheme: () => {},
 })
 
-function normalizeTheme(value) {
-  return SUPPORTED_THEMES.includes(value) ? value : 'light'
-}
+const normalize = (v) => SUPPORTED.includes(v) ? v : 'light'
 
 function applyTheme(theme) {
   if (typeof document === 'undefined') return
-  const safeTheme = normalizeTheme(theme)
-  document.documentElement.dataset.theme = safeTheme
-  document.documentElement.style.colorScheme = safeTheme
+  const t = normalize(theme)
+  document.documentElement.dataset.theme = t
+  document.documentElement.style.colorScheme = t
 }
 
 export function ThemeProvider({ children }) {
@@ -27,31 +25,24 @@ export function ThemeProvider({ children }) {
 
   useEffect(() => {
     const stored = window.localStorage.getItem(STORAGE_KEY)
-
-    // Wenn kein gespeicherter Wert → System-Präferenz (prefers-color-scheme) nutzen
-    const system = window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light'
-
-    const resolved = normalizeTheme(stored || system)
+    const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    const resolved = normalize(stored || system)
     setThemeState(resolved)
     applyTheme(resolved)
   }, [])
 
-  const setTheme = (nextTheme) => {
-    const safeTheme = normalizeTheme(nextTheme)
-    setThemeState(safeTheme)
-    applyTheme(safeTheme)
-    if (typeof window !== 'undefined') {
-      window.localStorage.setItem(STORAGE_KEY, safeTheme)
-    }
+  const setTheme = (next) => {
+    const t = normalize(next)
+    setThemeState(t)
+    applyTheme(t)
+    try { window.localStorage.setItem(STORAGE_KEY, t) } catch (_) {}
   }
 
-  const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark')
-  }
-
-  const value = useMemo(() => ({ theme, setTheme, toggleTheme }), [theme])
+  const value = useMemo(() => ({
+    theme,
+    setTheme,
+    toggleTheme: () => setTheme(theme === 'dark' ? 'light' : 'dark'),
+  }), [theme])
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
 }
