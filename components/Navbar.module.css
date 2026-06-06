@@ -74,6 +74,20 @@
   transform: translateY(-1px);
 }
 
+/* ── BEGRÜSSUNG ───────────────────────────────── */
+.greeting {
+  font-family: var(--font-manrope, sans-serif);
+  font-size: 12px;
+  color: rgba(240,225,200,0.60);
+  white-space: nowrap;
+  letter-spacing: .01em;
+}
+.greeting strong {
+  color: rgba(240,225,200,0.88);
+  font-weight: 700;
+}
+@media (max-width: 640px) { .greeting { display: none; } }
+
 /* ── ANMELDEN BUTTON ──────────────────────────── */
 .signInBtn {
   display: inline-flex;

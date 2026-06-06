@@ -12,10 +12,16 @@ const COLORS = [
   { bg: '#f8fafc', border: '#c7d2fe', num: '#2563eb', icon: '#eff6ff', iconBorder: '#93c5fd' },
 ]
 
-const UEBEN_MODAL = {
-  de: { title: 'Womit möchtest du üben?', mcq: 'MCQs', mcqSub: 'Multiple-Choice-Fragen', fall: 'Fallbeispiele', fallSub: 'In Vorbereitung', close: 'Schließen' },
-  en: { title: 'What would you like to practice?', mcq: 'MCQs', mcqSub: 'Multiple-choice questions', fall: 'Case Studies', fallSub: 'Coming soon', close: 'Close' },
-  fa: { title: 'با چه چیزی می‌خواهید تمرین کنید؟', mcq: 'MCQ', mcqSub: 'سوالات چندگزینه‌ای', fall: 'موارد بالینی', fallSub: 'به زودی', close: 'بستن' },
+const FALL_MODAL = {
+  de: { title: 'Fallbeispiele', msg: 'Interaktive klinische Fälle werden gerade aufgebaut und sind bald verfügbar.', close: 'Verstanden' },
+  en: { title: 'Case Studies', msg: 'Interactive clinical cases are being built and will be available soon.', close: 'Got it' },
+  fa: { title: 'موارد بالینی', msg: 'موارد بالینی تعاملی در حال آماده‌سازی هستند و به زودی در دسترس خواهند بود.', close: 'متوجه شدم' },
+}
+
+const PROFILE_CTA = {
+  de: { label: 'Dein Lernpfad', title: 'Klug lernen mit gezielter Wiederholung', desc: 'Sieh, welche Kapitel du schon bearbeitet hast, welche Flashcards fällig sind und wo du heute weitermachst.', btn: 'Zum Profil →' },
+  en: { label: 'Your Learning Path', title: 'Study smart with targeted repetition', desc: 'See which chapters you have already worked through, which flashcards are due and where to continue today.', btn: 'Go to Profile →' },
+  fa: { label: 'مسیر یادگیری شما', title: 'یادگیری هوشمند با تکرار هدفمند', desc: 'ببین کدام فصل‌ها را خوانده‌ای، کدام فلش‌کارت‌ها سررسید شده‌اند و امروز از کجا ادامه می‌دهی.', btn: 'رفتن به پروفایل ←' },
 }
 
 
@@ -64,25 +70,19 @@ const LATEST = {
   },
 }
 
-const PRUEFUNG_MODAL = {
-  de: { title: 'Prüfungsvorbereitung', msg: 'Dieser Bereich wird gerade vorbereitet und ist bald verfügbar.', close: 'Verstanden' },
-  en: { title: 'Exam Preparation', msg: 'This section is currently being prepared and will be available soon.', close: 'Got it' },
-  fa: { title: 'آمادگی آزمون', msg: 'این بخش در حال آماده‌سازی است و به زودی در دسترس خواهد بود.', close: 'متوجه شدم' },
-}
-
 export default function LernPfade() {
   const { texts, lang } = useLanguage()
   const router = useRouter()
-  const [modal, setModal] = useState(null) // null | 'ueben' | 'pruefung'
-  const um = UEBEN_MODAL[lang] || UEBEN_MODAL.de
-  const pm = PRUEFUNG_MODAL[lang] || PRUEFUNG_MODAL.de
+  const [modal, setModal] = useState(null) // null | 'fall'
+  const fm = FALL_MODAL[lang] || FALL_MODAL.de
+  const cta = PROFILE_CTA[lang] || PROFILE_CTA.de
   const latest = LATEST[lang] || LATEST.de
   const withLang = (href) => lang === 'de' ? href : `${href}?lang=${lang}`
 
   const handleCard = (i) => {
     if (i === 0) { router.push('/lernen'); return }
-    if (i === 1) { setModal('ueben'); return }
-    if (i === 2) { setModal('pruefung'); return }
+    if (i === 1) { setModal('fall'); return }
+    if (i === 2) { router.push('/ueben'); return }
     if (i === 3) { router.push('/flashcards'); return }
   }
 
@@ -116,6 +116,17 @@ export default function LernPfade() {
         })}
       </div>
 
+      {/* ── PROFIL CTA ── */}
+      <Link href="/profil" className={styles.profileCta}>
+        <div className={styles.profileCtaIcon}>📊</div>
+        <div className={styles.profileCtaBody}>
+          <div className={styles.profileCtaLabel}>{cta.label}</div>
+          <div className={styles.profileCtaTitle}>{cta.title}</div>
+          <div className={styles.profileCtaDesc}>{cta.desc}</div>
+        </div>
+        <div className={styles.profileCtaBtn}>{cta.btn}</div>
+      </Link>
+
       <div className={styles.latestBox}>
         <div className={styles.latestHeader}>
           <div>
@@ -138,42 +149,14 @@ export default function LernPfade() {
         </div>
       </div>
 
-      {/* ── ÜBEN MODAL ── */}
-      {modal === 'ueben' && (
-        <div className={styles.overlay} onClick={() => setModal(null)}>
-          <div className={styles.modal} onClick={e => e.stopPropagation()}>
-            <div className={styles.modalTitle}>{um.title}</div>
-            <div className={styles.modalChoices}>
-              <Link href="/ueben" className={styles.modalChoice} onClick={() => setModal(null)}>
-                <span className={styles.choiceIcon}>🎯</span>
-                <div>
-                  <div className={styles.choiceName}>{um.mcq}</div>
-                  <div className={styles.choiceSub}>{um.mcqSub}</div>
-                </div>
-                <span className={styles.choiceArr}>→</span>
-              </Link>
-              <div className={`${styles.modalChoice} ${styles.modalChoiceLocked}`}>
-                <span className={styles.choiceIcon}>🏥</span>
-                <div>
-                  <div className={styles.choiceName}>{um.fall}</div>
-                  <div className={styles.choiceSub}>{um.fallSub}</div>
-                </div>
-                <span className={styles.choiceLock}>🔒</span>
-              </div>
-            </div>
-            <button className={styles.modalClose} onClick={() => setModal(null)}>{um.close}</button>
-          </div>
-        </div>
-      )}
-
-      {/* ── PRÜFUNG MODAL ── */}
-      {modal === 'pruefung' && (
+      {/* ── FALLBEISPIELE MODAL ── */}
+      {modal === 'fall' && (
         <div className={styles.overlay} onClick={() => setModal(null)}>
           <div className={styles.modal} onClick={e => e.stopPropagation()}>
             <div className={styles.notReadyIcon}>🚧</div>
-            <div className={styles.modalTitle}>{pm.title}</div>
-            <p className={styles.notReadyMsg}>{pm.msg}</p>
-            <button className={styles.modalClose} onClick={() => setModal(null)}>{pm.close}</button>
+            <div className={styles.modalTitle}>{fm.title}</div>
+            <p className={styles.notReadyMsg}>{fm.msg}</p>
+            <button className={styles.modalClose} onClick={() => setModal(null)}>{fm.close}</button>
           </div>
         </div>
       )}

@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useState } from 'react'
-import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import { SignedIn, SignedOut, UserButton, useUser } from '@clerk/nextjs'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useTheme } from '@/providers/ThemeProvider'
 import SearchBar from './SearchBar'
@@ -37,9 +37,27 @@ function HexLogo({ size = 32 }) {
   )
 }
 
+function getGreeting(lang) {
+  const h = new Date().getHours()
+  if (lang === 'fa') {
+    if (h >= 5 && h < 12) return 'صبح بخیر'
+    if (h >= 12 && h < 18) return 'روز بخیر'
+    return 'شب بخیر'
+  }
+  if (lang === 'en') {
+    if (h >= 5 && h < 12) return 'Good morning'
+    if (h >= 12 && h < 18) return 'Good afternoon'
+    return 'Good evening'
+  }
+  if (h >= 5 && h < 12) return 'Guten Morgen'
+  if (h >= 12 && h < 18) return 'Guten Tag'
+  return 'Guten Abend'
+}
+
 export default function Navbar() {
   const { lang, texts, setLang } = useLanguage()
   const { theme, toggleTheme } = useTheme()
+  const { user } = useUser()
   const [search, setSearch] = useState(false)
 
   const themeLabel = theme === 'dark'
@@ -48,6 +66,7 @@ export default function Navbar() {
 
   const signInLabel  = lang === 'fa' ? 'ورود' : lang === 'en' ? 'Sign in'  : 'Anmelden'
   const profilLabel  = lang === 'fa' ? 'پروفایل' : lang === 'en' ? 'Profile' : 'Mein Profil'
+  const greeting = getGreeting(lang)
 
   return (
     <>
@@ -61,11 +80,7 @@ export default function Navbar() {
         </Link>
 
         <div className={styles.right}>
-          <button type="button" className={styles.themeBtn}
-            onClick={toggleTheme} aria-label={themeLabel} title={themeLabel}>
-            <span aria-hidden="true">{theme === 'dark' ? '☀' : '☾'}</span>
-          </button>
-
+          {/* 1. Suche */}
           <button className={styles.iconBtn} onClick={() => setSearch(true)}
             aria-label={texts?.searchPlaceholder ?? 'Suchen'}>
             <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
@@ -74,6 +89,13 @@ export default function Navbar() {
             </svg>
           </button>
 
+          {/* 2. Hell/Dunkel */}
+          <button type="button" className={styles.themeBtn}
+            onClick={toggleTheme} aria-label={themeLabel} title={themeLabel}>
+            <span aria-hidden="true">{theme === 'dark' ? '☀' : '☾'}</span>
+          </button>
+
+          {/* 3. Sprache */}
           <div className={styles.langToggle} dir="ltr">
             <button className={`${styles.langBtn} ${lang==='de'?styles.langOn:''}`} onClick={() => setLang('de')}>DE</button>
             <span className={styles.langSep}>·</span>
@@ -82,13 +104,18 @@ export default function Navbar() {
             <button className={`${styles.langBtn} ${lang==='fa'?styles.langOn:''}`} onClick={() => setLang('fa')}>FA</button>
           </div>
 
-          {/* Nicht angemeldet */}
+          {/* 4. Nicht angemeldet */}
           <SignedOut>
             <Link href="/sign-in" className={styles.signInBtn}>{signInLabel}</Link>
           </SignedOut>
 
-          {/* Angemeldet — Avatar mit Profil-Link */}
+          {/* 4. Angemeldet — Begrüßung + Avatar */}
           <SignedIn>
+            {user?.firstName && (
+              <span className={styles.greeting}>
+                {greeting}, <strong>{user.firstName}</strong>
+              </span>
+            )}
             <UserButton afterSignOutUrl="/">
               <UserButton.MenuItems>
                 <UserButton.Link
