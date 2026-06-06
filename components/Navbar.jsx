@@ -22,13 +22,10 @@ function HexLogo({ size = 32 }) {
         fontFamily="Inter, Manrope, system-ui, sans-serif" letterSpacing="-.8">Y</text>
       <defs>
         <radialGradient id="radyarNavLogoBg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(16 12) rotate(50) scale(38)">
-          <stop stopColor="#102a44"/>
-          <stop offset="0.62" stopColor="#071a2f"/>
-          <stop offset="1" stopColor="#020617"/>
+          <stop stopColor="#102a44"/><stop offset="0.62" stopColor="#071a2f"/><stop offset="1" stopColor="#020617"/>
         </radialGradient>
         <linearGradient id="radyarNavLogoArc" x1="11" y1="8" x2="42" y2="15" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#ffffff"/>
-          <stop offset="1" stopColor="#f97316"/>
+          <stop stopColor="#ffffff"/><stop offset="1" stopColor="#f97316"/>
         </linearGradient>
         <radialGradient id="radyarNavLogoGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(39.8 14) scale(8)">
           <stop stopColor="#ffedd5" stopOpacity=".95"/>
@@ -49,12 +46,12 @@ export default function Navbar() {
     ? (lang === 'fa' ? 'تم روشن' : lang === 'en' ? 'Light theme' : 'Helles Theme')
     : (lang === 'fa' ? 'تم تاریک' : lang === 'en' ? 'Dark theme' : 'Dunkles Theme')
 
-  const signInLabel = lang === 'fa' ? 'ورود' : lang === 'en' ? 'Sign in' : 'Anmelden'
+  const signInLabel  = lang === 'fa' ? 'ورود' : lang === 'en' ? 'Sign in'  : 'Anmelden'
+  const profilLabel  = lang === 'fa' ? 'پروفایل' : lang === 'en' ? 'Profile' : 'Mein Profil'
 
   return (
     <>
       <nav className={styles.nav}>
-        {/* Logo */}
         <Link href="/" className={styles.brand} dir="ltr">
           <HexLogo size={28} />
           <span className={styles.wordmark} dir="ltr">
@@ -63,33 +60,20 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Right side */}
         <div className={styles.right}>
-
-          {/* Theme toggle */}
-          <button
-            type="button"
-            className={styles.themeBtn}
-            onClick={toggleTheme}
-            aria-label={themeLabel}
-            title={themeLabel}
-          >
+          <button type="button" className={styles.themeBtn}
+            onClick={toggleTheme} aria-label={themeLabel} title={themeLabel}>
             <span aria-hidden="true">{theme === 'dark' ? '☀' : '☾'}</span>
           </button>
 
-          {/* Search */}
-          <button
-            className={styles.iconBtn}
-            onClick={() => setSearch(true)}
-            aria-label={texts?.searchPlaceholder ?? 'Suchen'}
-          >
+          <button className={styles.iconBtn} onClick={() => setSearch(true)}
+            aria-label={texts?.searchPlaceholder ?? 'Suchen'}>
             <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
               <circle cx="7" cy="7" r="5.5" stroke="currentColor" strokeWidth="1.6"/>
               <line x1="11" y1="11" x2="15" y2="15" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
             </svg>
           </button>
 
-          {/* Language toggle */}
           <div className={styles.langToggle} dir="ltr">
             <button className={`${styles.langBtn} ${lang==='de'?styles.langOn:''}`} onClick={() => setLang('de')}>DE</button>
             <span className={styles.langSep}>·</span>
@@ -98,23 +82,23 @@ export default function Navbar() {
             <button className={`${styles.langBtn} ${lang==='fa'?styles.langOn:''}`} onClick={() => setLang('fa')}>FA</button>
           </div>
 
-          {/* Nicht angemeldet → Link zur Anmelde-Seite */}
+          {/* Nicht angemeldet */}
           <SignedOut>
-            <Link href="/sign-in" className={styles.signInBtn}>
-              {signInLabel}
-            </Link>
+            <Link href="/sign-in" className={styles.signInBtn}>{signInLabel}</Link>
           </SignedOut>
 
-          {/* Angemeldet → Clerk Avatar */}
+          {/* Angemeldet — Avatar mit Profil-Link */}
           <SignedIn>
-            <UserButton
-              afterSignOutUrl="/"
-              appearance={{
-                elements: { avatarBox: { width: 30, height: 30 } },
-              }}
-            />
+            <UserButton afterSignOutUrl="/">
+              <UserButton.MenuItems>
+                <UserButton.Link
+                  label={profilLabel}
+                  labelIcon={<span style={{ fontSize: 14 }}>👤</span>}
+                  href="/profil"
+                />
+              </UserButton.MenuItems>
+            </UserButton>
           </SignedIn>
-
         </div>
       </nav>
       {search && <SearchBar onClose={() => setSearch(false)} />}
