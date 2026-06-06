@@ -350,3 +350,37 @@
 :global(html[data-theme='dark']) .kapitelIconWrap {
   background: rgba(249,115,22,0.16);
 }
+
+/* ── UPDATED: bigger body-region icons in MCQ region selection ── */
+.fachGrid {
+  grid-template-columns: repeat(auto-fill, minmax(156px, 1fr));
+  gap: 12px;
+}
+
+.fachCard {
+  padding: 16px 12px;
+  gap: 8px;
+  border-radius: 18px;
+}
+
+.fachIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 22px;
+}
+
+.fachIcon img {
+  width: 54px;
+  height: 54px;
+}
+
+.fachName {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+@media (max-width: 480px) {
+  .fachGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fachIcon { width: 58px; height: 58px; }
+  .fachIcon img { width: 48px; height: 48px; }
+}
