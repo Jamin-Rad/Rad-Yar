@@ -73,7 +73,7 @@ export default function FlashcardReviewPage({ params }) {
   const t   = T[lang] ?? T.de
   const dir = lang === 'fa' ? 'rtl' : 'ltr'
 
-  const { topicId = 'meniskus' } = await params
+  const topicId = params?.topicId ?? 'meniskus'
   const topic    = getFlashcardTopic(topicId)
   const allCards = useMemo(() => FLASHCARDS.filter(c => c.topicId === topicId), [topicId])
 
