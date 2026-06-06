@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useState } from 'react'
-import { SignedIn, SignedOut, UserButton, SignInButton } from '@clerk/nextjs'
+import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useTheme } from '@/providers/ThemeProvider'
 import SearchBar from './SearchBar'
@@ -101,11 +101,11 @@ export default function Navbar() {
           {/* ── AUTH ─────────────────────────────────── */}
           {/* Nicht angemeldet: Anmelden-Button */}
           <SignedOut>
-            <SignInButton mode="modal">
-              <button className={styles.signInBtn} title={signInLabel}>
-                {signInLabel}
+            
+              <Link href="/sign-in" className={styles.signInBtn}>
+                
               </button>
-            </SignInButton>
+            
           </SignedOut>
 
           {/* Angemeldet: Clerk User-Button (Avatar + Dropdown) */}
