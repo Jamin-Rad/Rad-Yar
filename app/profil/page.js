@@ -6,128 +6,144 @@ import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { loadLeitnerState, LEITNER_STEPS, getBoxLabel, isDue } from '@/utils/leitnerStorage'
+import { CURRICULUM, KAPITEL_TRANSLATIONS } from '@/data/curriculum'
 import styles from './page.module.css'
 
-/* ── Fachgebiete für den Lernpfad ─────────────────── */
-const FACHGEBIETE = [
-  { id: 'msk',          icon: '🦴', href: '/lernen/msk',          title: { de: 'MSK',               en: 'MSK',               fa: 'MSK' } },
-  { id: 'technik',      icon: '⚙️',  href: '/technik',             title: { de: 'Technik',            en: 'Technique',         fa: 'تکنیک' } },
-  { id: 'thorax',       icon: '🫁', href: '/lernen/thorax',        title: { de: 'Thorax',             en: 'Chest',             fa: 'توراکس' } },
-  { id: 'abdomen',      icon: '🫀', href: '/lernen/abdomen',       title: { de: 'Abdomen',            en: 'Abdomen',           fa: 'شکم' } },
-  { id: 'gehirn',       icon: '🧠', href: '/lernen/gehirn',        title: { de: 'Neuroradiologie',    en: 'Neuroradiology',    fa: 'نوروراد' } },
-  { id: 'becken',       icon: '🦴', href: '/lernen/becken',        title: { de: 'Becken',             en: 'Pelvis',            fa: 'لگن' } },
-  { id: 'mamma',        icon: '🏥', href: '/lernen/mamma',         title: { de: 'Mamma',              en: 'Breast',            fa: 'ماما' } },
-  { id: 'wirbelsaeule', icon: '🦷', href: '/lernen/wirbelsaeule',  title: { de: 'Wirbelsäule',        en: 'Spine',             fa: 'ستون فقرات' } },
-]
-
-const STORAGE_PROGRESS_KEY = 'radyar_curriculum_progress'
+/* ── Fach-Titel (dreisprachig) ─────────────────────── */
+const FACH_TITLES = {
+  gehirn:       { de: 'Neuroradiologie', en: 'Neuroradiology',  fa: 'نوروراد' },
+  wirbelsaeule: { de: 'Wirbelsäule',     en: 'Spine',           fa: 'ستون فقرات' },
+  hals:         { de: 'Hals',            en: 'Neck',            fa: 'گردن' },
+  thorax:       { de: 'Thorax',          en: 'Chest',           fa: 'توراکس' },
+  mamma:        { de: 'Mamma',           en: 'Breast',          fa: 'پستان' },
+  abdomen:      { de: 'Abdomen',         en: 'Abdomen',         fa: 'شکم' },
+  'becken-f':   { de: 'Becken – Frau',   en: 'Pelvis – Female', fa: 'لگن زنان' },
+  'becken-m':   { de: 'Becken – Mann',   en: 'Pelvis – Male',   fa: 'لگن مردان' },
+  msk:          { de: 'MSK',             en: 'MSK',             fa: 'MSK' },
+  technik:      { de: 'Technik',         en: 'Technology',      fa: 'تکنیک' },
+}
 
 /* ── Übersetzungen ─────────────────────────────────── */
 const T = {
   de: {
-    greetMorning: 'Guten Morgen',
-    greetDay:     'Hallo',
-    greetEvening: 'Guten Abend',
-    todayLabel:   'Dein Tagesplan',
-    todayDue:     (n) => `${n} Karte${n !== 1 ? 'n' : ''} heute fällig`,
-    todayZero:    'Keine Karten fällig — du bist up to date!',
-    todaySub:     'Lerne täglich, auch nur 5 Minuten — der Unterschied ist enorm.',
-    startCards:   'Karten wiederholen →',
-    exploreLernen:'Thema erkunden →',
-    lernpfadTitle:'Lernpfad',
-    lernpfadSub:  'Alle Fachgebiete',
-    flashTitle:   'Flashcard-Fortschritt',
-    streakTitle:  'Lernserie',
-    streakCurrent:'Aktuelle Serie',
-    streakBest:   'Beste Serie',
-    days:         'Tage',
-    mastered:     'Beherrscht',
-    editTitle:    'Profil bearbeiten',
-    spitzname:    'Spitzname',
-    fach:         'Fachrichtung',
-    stufe:        'Ausbildungsstufe',
-    select:       '– Bitte wählen –',
-    save:         'Speichern',
-    saving:       'Wird gespeichert…',
-    saved:        '✓ Gespeichert',
+    greetMorning:   'Guten Morgen',
+    greetDay:       'Hallo',
+    greetEvening:   'Guten Abend',
+    todayLabel:     'Dein Tagesplan',
+    todayDue:       (n) => `${n} Karte${n !== 1 ? 'n' : ''} heute fällig`,
+    todayZero:      'Keine Karten fällig — du bist up to date!',
+    todaySub:       'Lerne täglich, auch nur 5 Minuten — der Unterschied ist enorm.',
+    startCards:     'Karten wiederholen →',
+    exploreLernen:  'Thema erkunden →',
+    lernpfadTitle:  'Lernpfad · Körperregionen',
+    lernpfadSub:    'Klicke auf ein Fachgebiet um den Fortschritt je Kapitel zu sehen.',
+    flashTitle:     'Flashcard-Fortschritt',
+    streakTitle:    'Lernserie',
+    streakCurrent:  'Aktuelle Serie',
+    streakBest:     'Beste Serie',
+    days:           'Tage',
+    mastered:       'Beherrscht',
+    editTitle:      'Profil bearbeiten',
+    spitzname:      'Spitzname',
+    fach:           'Fachrichtung',
+    stufe:          'Ausbildungsstufe',
+    select:         '– Bitte wählen –',
+    save:           'Speichern',
+    saving:         'Wird gespeichert…',
+    saved:          '✓ Gespeichert',
     notLoggedTitle: 'Bitte anmelden',
     notLoggedSub:   'Um dein Profil zu sehen, melde dich an.',
     signIn:         'Jetzt anmelden',
     dueToday:       'Heute fällig',
     totalCards:     'Karten gesamt',
     streakLabel:    'Tage-Serie',
-    started:        'Gestartet',
-    notStarted:     'Noch nicht begonnen',
+    noContent:      'Kein Inhalt',
+    complete:       'Fertig',
+    emptyDash:      '–',
+    mcqLabel:       'MCQ',
+    mcqScore:       (c, a) => `${c} / ${a} richtig`,
+    mcqNone:        '–',
+    chaptersOf:     (r, t) => `${r} / ${t} gelesen`,
   },
   en: {
-    greetMorning: 'Good morning',
-    greetDay:     'Hello',
-    greetEvening: 'Good evening',
-    todayLabel:   'Your daily plan',
-    todayDue:     (n) => `${n} card${n !== 1 ? 's' : ''} due today`,
-    todayZero:    'No cards due — you\'re up to date!',
-    todaySub:     'Study daily, even just 5 minutes — the difference is huge.',
-    startCards:   'Review cards →',
-    exploreLernen:'Explore topic →',
-    lernpfadTitle:'Learning path',
-    lernpfadSub:  'All specialties',
-    flashTitle:   'Flashcard progress',
-    streakTitle:  'Learning streak',
-    streakCurrent:'Current streak',
-    streakBest:   'Best streak',
-    days:         'days',
-    mastered:     'Mastered',
-    editTitle:    'Edit profile',
-    spitzname:    'Nickname',
-    fach:         'Specialty',
-    stufe:        'Training level',
-    select:       '– Please select –',
-    save:         'Save',
-    saving:       'Saving…',
-    saved:        '✓ Saved',
+    greetMorning:   'Good morning',
+    greetDay:       'Hello',
+    greetEvening:   'Good evening',
+    todayLabel:     'Your daily plan',
+    todayDue:       (n) => `${n} card${n !== 1 ? 's' : ''} due today`,
+    todayZero:      'No cards due — you\'re up to date!',
+    todaySub:       'Study daily, even just 5 minutes — the difference is huge.',
+    startCards:     'Review cards →',
+    exploreLernen:  'Explore topic →',
+    lernpfadTitle:  'Learning path · Body regions',
+    lernpfadSub:    'Click a specialty to see chapter-by-chapter progress.',
+    flashTitle:     'Flashcard progress',
+    streakTitle:    'Learning streak',
+    streakCurrent:  'Current streak',
+    streakBest:     'Best streak',
+    days:           'days',
+    mastered:       'Mastered',
+    editTitle:      'Edit profile',
+    spitzname:      'Nickname',
+    fach:           'Specialty',
+    stufe:          'Training level',
+    select:         '– Please select –',
+    save:           'Save',
+    saving:         'Saving…',
+    saved:          '✓ Saved',
     notLoggedTitle: 'Please sign in',
     notLoggedSub:   'Sign in to view your profile.',
     signIn:         'Sign in now',
     dueToday:       'Due today',
     totalCards:     'Total cards',
     streakLabel:    'Day streak',
-    started:        'Started',
-    notStarted:     'Not started',
+    noContent:      'No content',
+    complete:       'Complete',
+    emptyDash:      '–',
+    mcqLabel:       'MCQ',
+    mcqScore:       (c, a) => `${c} / ${a} correct`,
+    mcqNone:        '–',
+    chaptersOf:     (r, t) => `${r} / ${t} read`,
   },
   fa: {
-    greetMorning: 'صبح بخیر',
-    greetDay:     'سلام',
-    greetEvening: 'عصر بخیر',
-    todayLabel:   'برنامه امروز',
-    todayDue:     (n) => `${n} کارت امروز مقرر`,
-    todayZero:    'هیچ کارتی مقرر نیست — آپ‌تودیت هستی!',
-    todaySub:     'هر روز بخوان، حتی ۵ دقیقه — تفاوت بزرگیه.',
-    startCards:   'مرور کارت‌ها ←',
-    exploreLernen:'کاوش موضوع ←',
-    lernpfadTitle:'مسیر یادگیری',
-    lernpfadSub:  'همه تخصص‌ها',
-    flashTitle:   'پیشرفت فلش‌کارت',
-    streakTitle:  'رشته یادگیری',
-    streakCurrent:'رشته فعلی',
-    streakBest:   'بهترین رشته',
-    days:         'روز',
-    mastered:     'تسلط',
-    editTitle:    'ویرایش پروفایل',
-    spitzname:    'اسم مستعار',
-    fach:         'تخصص',
-    stufe:        'مرحله تحصیلی',
-    select:       '– انتخاب کن –',
-    save:         'ذخیره',
-    saving:       'در حال ذخیره…',
-    saved:        '✓ ذخیره شد',
+    greetMorning:   'صبح بخیر',
+    greetDay:       'سلام',
+    greetEvening:   'عصر بخیر',
+    todayLabel:     'برنامه امروز',
+    todayDue:       (n) => `${n} کارت امروز مقرر`,
+    todayZero:      'هیچ کارتی مقرر نیست — آپ‌تودیت هستی!',
+    todaySub:       'هر روز بخوان، حتی ۵ دقیقه — تفاوت بزرگیه.',
+    startCards:     'مرور کارت‌ها ←',
+    exploreLernen:  'کاوش موضوع ←',
+    lernpfadTitle:  'مسیر یادگیری · نواحی بدن',
+    lernpfadSub:    'روی یک تخصص کلیک کن تا پیشرفت فصل‌ها را ببینی.',
+    flashTitle:     'پیشرفت فلش‌کارت',
+    streakTitle:    'رشته یادگیری',
+    streakCurrent:  'رشته فعلی',
+    streakBest:     'بهترین رشته',
+    days:           'روز',
+    mastered:       'تسلط',
+    editTitle:      'ویرایش پروفایل',
+    spitzname:      'اسم مستعار',
+    fach:           'تخصص',
+    stufe:          'مرحله تحصیلی',
+    select:         '– انتخاب کن –',
+    save:           'ذخیره',
+    saving:         'در حال ذخیره…',
+    saved:          '✓ ذخیره شد',
     notLoggedTitle: 'لطفاً وارد شو',
     notLoggedSub:   'برای دیدن پروفایلت وارد شو.',
     signIn:         'ورود',
     dueToday:       'امروز مقرر',
     totalCards:     'کل کارت‌ها',
     streakLabel:    'رشته روز',
-    started:        'شروع شده',
-    notStarted:     'شروع نشده',
+    noContent:      'بدون محتوا',
+    complete:       'تمام',
+    emptyDash:      '–',
+    mcqLabel:       'MCQ',
+    mcqScore:       (c, a) => `${c} از ${a} درست`,
+    mcqNone:        '–',
+    chaptersOf:     (r, t) => `${r} از ${t} خوانده`,
   },
 }
 
@@ -141,6 +157,8 @@ const STUFE_OPTS = {
   en: ['Medical student','Final year (PJ)','Resident','Specialist','Senior physician','Other'],
   fa: ['دانشجوی پزشکی','کارآموز (PJ)','دستیار','متخصص','فوق تخصص','سایر'],
 }
+
+/* ── Helpers ───────────────────────────────────────── */
 
 function getGreeting(lang) {
   const h = new Date().getHours()
@@ -156,8 +174,7 @@ function calcStreak(state) {
   if (!unique.length) return { current: 0, best: 0 }
   const today     = new Date().toDateString()
   const yesterday = new Date(Date.now() - 86400000).toDateString()
-  let cur = 0
-  let prev = null
+  let cur = 0, prev = null
   for (const d of unique) {
     if (!prev) {
       if (d === today || d === yesterday) { cur = 1; prev = d }
@@ -175,13 +192,154 @@ function calcStreak(state) {
   return { current: cur, best: Math.max(cur, best) }
 }
 
-function loadCurriculumProgress(userId) {
-  if (typeof window === 'undefined') return {}
-  try {
-    const key = userId ? `${STORAGE_PROGRESS_KEY}_${userId}` : STORAGE_PROGRESS_KEY
-    const raw = window.localStorage.getItem(key)
-    return raw ? JSON.parse(raw) : {}
-  } catch { return {} }
+/* ── Progress helpers ──────────────────────────────── */
+
+/** Alle Themen mit Link in einem Kapitel */
+function getKapitelAvailable(kapitel) {
+  const ids = []
+  for (const t of kapitel.themen) {
+    if (t.link) ids.push(t.id)
+    if (t.sub) for (const s of t.sub) if (s.link) ids.push(s.id)
+  }
+  return ids
+}
+
+/** Prozent gelesen für ein Kapitel (0–100). Kein Inhalt → 100 */
+function kapitelPct(kapitel, readArticles) {
+  const ids = getKapitelAvailable(kapitel)
+  if (ids.length === 0) return 100
+  const sum = ids.reduce((s, id) => s + (readArticles[id] || 0), 0)
+  return Math.round((sum / ids.length) * 100)
+}
+
+/** Prozent gelesen für ein Fachgebiet */
+function fachPct(fach, readArticles) {
+  let total = 0, sum = 0
+  for (const k of fach.kapitel) {
+    const ids = getKapitelAvailable(k)
+    total += ids.length
+    sum   += ids.reduce((s, id) => s + (readArticles[id] || 0), 0)
+  }
+  if (total === 0) return 100
+  return Math.round((sum / total) * 100)
+}
+
+/** Anzahl gelesen / verfügbar für ein Kapitel */
+function kapitelReadCount(kapitel, readArticles) {
+  const ids = getKapitelAvailable(kapitel)
+  const read = ids.filter(id => (readArticles[id] || 0) >= 1).length
+  return { read, total: ids.length }
+}
+
+/** MCQ-Stats für ein Fachgebiet */
+function fachMcqStats(fach, mcqScores) {
+  let attempted = 0, correct = 0
+  for (const val of Object.values(mcqScores)) {
+    if ((val.fach || '') === fach.id) {
+      attempted += val.attempted || 0
+      correct   += val.correct   || 0
+    }
+  }
+  return { attempted, correct }
+}
+
+function getKapitelTitle(k, lang) {
+  if (lang === 'de') return k.title
+  return KAPITEL_TRANSLATIONS[k.id]?.[lang] || k.title
+}
+
+/* ── Lernpfad Accordion ────────────────────────────── */
+function LernpfadAccordion({ readArticles, mcqScores, lang, t }) {
+  const [openFach, setOpenFach] = useState(null)
+
+  return (
+    <div className={styles.accordion}>
+      {CURRICULUM.map(fach => {
+        const title   = FACH_TITLES[fach.id]?.[lang] || fach.key
+        const pct     = fachPct(fach, readArticles)
+        const isOpen  = openFach === fach.id
+        const mcq     = fachMcqStats(fach, mcqScores)
+        const hasMcq  = mcq.attempted > 0
+
+        // Gesamtzahl verfügbarer Artikel im Fach
+        let totalAvail = 0
+        for (const k of fach.kapitel) totalAvail += getKapitelAvailable(k).length
+        const isEmpty = totalAvail === 0
+
+        return (
+          <div key={fach.id} className={`${styles.accordionItem} ${isOpen ? styles.accordionItemOpen : ''}`}>
+            {/* ── Fach-Header ── */}
+            <button
+              className={styles.fachBtn}
+              onClick={() => setOpenFach(isOpen ? null : fach.id)}
+            >
+              <span className={styles.fachBtnIcon}>{fach.icon}</span>
+              <span className={styles.fachBtnName}>{title}</span>
+              <div className={styles.fachBtnRight}>
+                {hasMcq && (
+                  <span className={styles.mcqPill}>
+                    {t.mcqLabel} {Math.round((mcq.correct / mcq.attempted) * 100)}%
+                  </span>
+                )}
+                <div className={styles.fachBtnBar}>
+                  <div className={styles.miniBar}>
+                    <div
+                      className={`${styles.miniBarFill} ${isEmpty ? styles.miniBarEmpty : pct >= 100 ? styles.miniBarDone : ''}`}
+                      style={{ width: `${pct}%` }}
+                    />
+                  </div>
+                  <span className={styles.miniPct}>
+                    {isEmpty ? t.emptyDash : `${pct}%`}
+                  </span>
+                </div>
+                <span className={`${styles.accordionChevron} ${isOpen ? styles.accordionChevronOpen : ''}`}>›</span>
+              </div>
+            </button>
+
+            {/* ── Kapitel-Liste ── */}
+            {isOpen && (
+              <div className={styles.kapitelList}>
+                {fach.kapitel.map(k => {
+                  const kPct  = kapitelPct(k, readArticles)
+                  const { read, total } = kapitelReadCount(k, readArticles)
+                  const kEmpty = total === 0
+
+                  return (
+                    <div key={k.id} className={styles.kapitelRow}>
+                      <span className={styles.kapitelIcon}>{k.icon}</span>
+                      <span className={styles.kapitelName}>{getKapitelTitle(k, lang)}</span>
+                      <div className={styles.kapitelBarWrap}>
+                        <div className={styles.kapitelBar}>
+                          <div
+                            className={`${styles.kapitelBarFill} ${kEmpty ? styles.kapitelBarEmpty : kPct >= 100 ? styles.kapitelBarDone : ''}`}
+                            style={{ width: `${kPct}%` }}
+                          />
+                        </div>
+                        <span className={styles.kapitelPct}>
+                          {kEmpty ? t.emptyDash : t.chaptersOf(read, total)}
+                        </span>
+                      </div>
+                    </div>
+                  )
+                })}
+
+                {/* MCQ Row */}
+                {hasMcq && (
+                  <div className={`${styles.kapitelRow} ${styles.kapitelRowMcq}`}>
+                    <span className={styles.kapitelIcon}>📝</span>
+                    <span className={styles.kapitelName}>{t.mcqLabel}</span>
+                    <span className={styles.mcqStatLine}>
+                      {t.mcqScore(mcq.correct, mcq.attempted)}
+                    </span>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )
+      })}
+    </div>
+  )
 }
 
 /* ═══════════════════════════════════════════════════════ */
@@ -193,7 +351,8 @@ export default function ProfilPage() {
 
   const [leitner,      setLeitner]      = useState({})
   const [streak,       setStreak]       = useState({ current: 0, best: 0 })
-  const [currProgress, setCurrProgress] = useState({})
+  const [readArticles, setReadArticles] = useState({})
+  const [mcqScores,    setMcqScores]    = useState({})
   const [editOpen,     setEditOpen]     = useState(false)
   const [spitzname,    setSpitzname]    = useState('')
   const [fach,         setFach]         = useState('')
@@ -208,7 +367,10 @@ export default function ProfilPage() {
     const state = loadLeitnerState(user.id)
     setLeitner(state)
     setStreak(calcStreak(state))
-    setCurrProgress(loadCurriculumProgress(user.id))
+    try {
+      setReadArticles(JSON.parse(localStorage.getItem('radyar_read_articles') || '{}'))
+      setMcqScores(JSON.parse(localStorage.getItem('radyar_mcq_scores') || '{}'))
+    } catch {}
   }, [isLoaded, user])
 
   if (!isLoaded) return <div className={styles.page}><Navbar /></div>
@@ -254,7 +416,7 @@ export default function ProfilPage() {
       <Navbar />
       <div className={styles.inner}>
 
-        {/* ── WELCOME HEADER ── */}
+        {/* ── WELCOME ── */}
         <div className={styles.welcome}>
           <div className={styles.avatarWrap}>
             <div className={styles.avatar}>{initials}</div>
@@ -306,132 +468,108 @@ export default function ProfilPage() {
           </div>
         </div>
 
-        {/* ── MAIN GRID ── */}
+        {/* ── LERNPFAD ACCORDION ── */}
+        <div className={styles.card} style={{ marginBottom: 16 }}>
+          <div className={styles.cardHeader}>
+            <h2 className={styles.cardTitle}>🗺 {t.lernpfadTitle}</h2>
+          </div>
+          <p className={styles.cardSub}>{t.lernpfadSub}</p>
+          <LernpfadAccordion
+            readArticles={readArticles}
+            mcqScores={mcqScores}
+            lang={lang}
+            t={t}
+          />
+        </div>
+
+        {/* ── UNTERE KARTEN ── */}
         <div className={styles.mainGrid}>
 
-          {/* LINKE SPALTE — Lernpfad */}
+          {/* Streak */}
           <div className={styles.card}>
             <div className={styles.cardHeader}>
-              <h2 className={styles.cardTitle}>🗺 {t.lernpfadTitle}</h2>
-              <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>{t.lernpfadSub}</span>
+              <h2 className={styles.cardTitle}>🔥 {t.streakTitle}</h2>
             </div>
-            <div className={styles.fachList}>
-              {FACHGEBIETE.map(f => {
-                const pct = currProgress[f.id] ?? 0
-                const started = pct > 0
+            <div className={styles.streakRow}>
+              <div className={styles.streakStat}>
+                <span className={styles.streakNum}>{streak.current}</span>
+                <span className={styles.streakLabel}>{t.streakCurrent}</span>
+                <span className={styles.streakLabel}>{t.days}</span>
+              </div>
+              <div className={styles.streakStat}>
+                <span className={styles.streakNum}>{streak.best}</span>
+                <span className={styles.streakLabel}>{t.streakBest}</span>
+                <span className={styles.streakLabel}>{t.days}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Flashcard Fortschritt */}
+          <div className={styles.card}>
+            <div className={styles.cardHeader}>
+              <h2 className={styles.cardTitle}>🗂 {t.flashTitle}</h2>
+              <Link href="/flashcards" className={styles.cardLink}>→</Link>
+            </div>
+            <div className={styles.boxList}>
+              {LEITNER_STEPS.map(step => {
+                const count = records.filter(r => r.box === step.box && r.status !== 'mastered').length
                 return (
-                  <Link key={f.id} href={f.href} className={styles.fachRow}>
-                    <span className={styles.fachIcon}>{f.icon}</span>
-                    <div className={styles.fachInfo}>
-                      <span className={styles.fachName}>{f.title[lang] ?? f.title.de}</span>
-                      <div className={styles.fachProgress}>
-                        <div className={styles.progressBar}>
-                          <div
-                            className={`${styles.progressFill} ${pct >= 100 ? styles.progressFillDone : ''}`}
-                            style={{ width: `${Math.max(pct, 0)}%` }}
-                          />
-                        </div>
-                        <span className={styles.progressPct}>
-                          {started ? `${pct}%` : '–'}
-                        </span>
-                      </div>
+                  <div key={step.box} className={styles.boxRow}>
+                    <span className={styles.boxLabel}>{getBoxLabel(step.box, lang)}</span>
+                    <div className={styles.boxBarWrap}>
+                      <div className={styles.boxBar} style={{ width: `${(count / maxBox) * 100}%` }} />
                     </div>
-                    <span className={styles.fachArrow}>›</span>
-                  </Link>
+                    <span className={styles.boxCount}>{count}</span>
+                  </div>
                 )
               })}
+              <div className={styles.boxRow}>
+                <span className={styles.boxLabel} style={{ color: '#10b981' }}>✓ {t.mastered}</span>
+                <div className={styles.boxBarWrap}>
+                  <div className={`${styles.boxBar} ${styles.boxBarMastered}`} style={{ width: `${(mastered / maxBox) * 100}%` }} />
+                </div>
+                <span className={styles.boxCount}>{mastered}</span>
+              </div>
             </div>
           </div>
 
-          {/* RECHTE SPALTE */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-
-            {/* Streak */}
-            <div className={styles.card}>
-              <div className={styles.cardHeader}>
-                <h2 className={styles.cardTitle}>🔥 {t.streakTitle}</h2>
-              </div>
-              <div className={styles.streakRow}>
-                <div className={styles.streakStat}>
-                  <span className={styles.streakNum}>{streak.current}</span>
-                  <span className={styles.streakLabel}>{t.streakCurrent}</span>
-                  <span className={styles.streakLabel}>{t.days}</span>
+          {/* Profil bearbeiten */}
+          <div className={styles.card}>
+            <button className={styles.editToggle} onClick={() => setEditOpen(o => !o)}>
+              <span className={styles.editToggleTitle}>✏️ {t.editTitle}</span>
+              <span className={`${styles.editToggleIcon} ${editOpen ? styles.open : ''}`}>▾</span>
+            </button>
+            {editOpen && (
+              <div className={styles.form}>
+                <div className={styles.fieldGroup}>
+                  <label className={styles.label}>{t.spitzname}</label>
+                  <input className={styles.input} type="text" value={spitzname}
+                    onChange={e => setSpitzname(e.target.value)} />
                 </div>
-                <div className={styles.streakStat}>
-                  <span className={styles.streakNum}>{streak.best}</span>
-                  <span className={styles.streakLabel}>{t.streakBest}</span>
-                  <span className={styles.streakLabel}>{t.days}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Flashcard Fortschritt */}
-            <div className={styles.card}>
-              <div className={styles.cardHeader}>
-                <h2 className={styles.cardTitle}>🗂 {t.flashTitle}</h2>
-                <Link href="/flashcards" className={styles.cardLink}>→</Link>
-              </div>
-              <div className={styles.boxList}>
-                {LEITNER_STEPS.map(step => {
-                  const count = records.filter(r => r.box === step.box && r.status !== 'mastered').length
-                  return (
-                    <div key={step.box} className={styles.boxRow}>
-                      <span className={styles.boxLabel}>{getBoxLabel(step.box, lang)}</span>
-                      <div className={styles.boxBarWrap}>
-                        <div className={styles.boxBar} style={{ width: `${(count / maxBox) * 100}%` }} />
-                      </div>
-                      <span className={styles.boxCount}>{count}</span>
-                    </div>
-                  )
-                })}
-                <div className={styles.boxRow}>
-                  <span className={styles.boxLabel} style={{ color: '#10b981' }}>✓ {t.mastered}</span>
-                  <div className={styles.boxBarWrap}>
-                    <div className={`${styles.boxBar} ${styles.boxBarMastered}`} style={{ width: `${(mastered / maxBox) * 100}%` }} />
-                  </div>
-                  <span className={styles.boxCount}>{mastered}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Profil bearbeiten */}
-            <div className={styles.card}>
-              <button className={styles.editToggle} onClick={() => setEditOpen(o => !o)}>
-                <span className={styles.editToggleTitle}>✏️ {t.editTitle}</span>
-                <span className={`${styles.editToggleIcon} ${editOpen ? styles.open : ''}`}>▾</span>
-              </button>
-              {editOpen && (
-                <div className={styles.form}>
+                <div className={styles.fieldRow}>
                   <div className={styles.fieldGroup}>
-                    <label className={styles.label}>{t.spitzname}</label>
-                    <input className={styles.input} type="text" value={spitzname}
-                      onChange={e => setSpitzname(e.target.value)} />
+                    <label className={styles.label}>{t.fach}</label>
+                    <select className={styles.select} value={fach} onChange={e => setFach(e.target.value)}>
+                      <option value="">{t.select}</option>
+                      {(FACH_OPTS[lang] ?? FACH_OPTS.de).map(o => <option key={o} value={o}>{o}</option>)}
+                    </select>
                   </div>
-                  <div className={styles.fieldRow}>
-                    <div className={styles.fieldGroup}>
-                      <label className={styles.label}>{t.fach}</label>
-                      <select className={styles.select} value={fach} onChange={e => setFach(e.target.value)}>
-                        <option value="">{t.select}</option>
-                        {(FACH_OPTS[lang] ?? FACH_OPTS.de).map(o => <option key={o} value={o}>{o}</option>)}
-                      </select>
-                    </div>
-                    <div className={styles.fieldGroup}>
-                      <label className={styles.label}>{t.stufe}</label>
-                      <select className={styles.select} value={stufe} onChange={e => setStufe(e.target.value)}>
-                        <option value="">{t.select}</option>
-                        {(STUFE_OPTS[lang] ?? STUFE_OPTS.de).map(o => <option key={o} value={o}>{o}</option>)}
-                      </select>
-                    </div>
+                  <div className={styles.fieldGroup}>
+                    <label className={styles.label}>{t.stufe}</label>
+                    <select className={styles.select} value={stufe} onChange={e => setStufe(e.target.value)}>
+                      <option value="">{t.select}</option>
+                      {(STUFE_OPTS[lang] ?? STUFE_OPTS.de).map(o => <option key={o} value={o}>{o}</option>)}
+                    </select>
                   </div>
-                  <button className={styles.saveBtn} onClick={handleSave} disabled={saveState === 'saving'}>
-                    {saveState === 'saving' ? t.saving : t.save}
-                  </button>
-                  {saveState === 'saved' && <p className={styles.saveSuccess}>{t.saved}</p>}
                 </div>
-              )}
-            </div>
-
+                <button className={styles.saveBtn} onClick={handleSave} disabled={saveState === 'saving'}>
+                  {saveState === 'saving' ? t.saving : t.save}
+                </button>
+                {saveState === 'saved' && <p className={styles.saveSuccess}>{t.saved}</p>}
+              </div>
+            )}
           </div>
+
         </div>
       </div>
     </div>

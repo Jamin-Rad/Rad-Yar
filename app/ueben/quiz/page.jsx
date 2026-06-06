@@ -157,8 +157,28 @@ function QuizContent() {
     ])
   }
 
+  const saveMcqResult = (finalAnswers) => {
+    try {
+      const scores = JSON.parse(localStorage.getItem('radyar_mcq_scores') || '{}')
+      const key = themenIds.length === 1 ? themenIds[0] : (fachIds[0] || 'mixed')
+      const correct = finalAnswers.filter(a => a.correct).length
+      scores[key] = {
+        attempted: (scores[key]?.attempted || 0) + finalAnswers.length,
+        correct:   (scores[key]?.correct   || 0) + correct,
+        lastDate:  new Date().toISOString(),
+        fach:      fachIds[0] || '',
+      }
+      localStorage.setItem('radyar_mcq_scores', JSON.stringify(scores))
+    } catch {}
+  }
+
   const handleNext = () => {
-    if (isLast) { setPhase('result'); return }
+    if (isLast) {
+      const finalAnswers = [...answers.filter(a => a.qId !== q.id), { qId: q.id, selected, correct: selected === q.correct }]
+      saveMcqResult(finalAnswers)
+      setPhase('result')
+      return
+    }
     setCurrent(c => c + 1)
     setSelected(null)
     setChecked(false)

@@ -676,95 +676,6 @@ html[data-theme='dark'] .sideItemDone {
   max-height: 560px;
 }
 
-/* ── MRT-Grading-Rail ── */
-.mrtRail {
-  margin: 0 0 24px;
-  padding: 20px 24px;
-  background: linear-gradient(135deg, #fff7ed 0%, #f0f9ff 100%);
-  border: 1px solid #fed7aa;
-  border-radius: 18px;
-}
-
-.mrtRailTitle {
-  font-family: var(--font-manrope, sans-serif);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: #9a3412;
-  margin: 0 0 16px;
-}
-
-.mrtRailTrack {
-  display: flex;
-  align-items: flex-start;
-  gap: 0;
-  position: relative;
-}
-
-.mrtRailStep {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  position: relative;
-}
-
-.mrtRailStep:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  top: 16px;
-  left: 50%;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, var(--step-color, #cbd5e1) 0%, var(--next-color, #cbd5e1) 100%);
-  z-index: 0;
-}
-
-.mrtRailDot {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-fraunces, Georgia, serif);
-  font-size: 13px;
-  font-weight: 900;
-  position: relative;
-  z-index: 1;
-  flex-shrink: 0;
-}
-
-.mrtRailLabel {
-  font-family: var(--font-manrope, sans-serif);
-  font-size: 11px;
-  font-weight: 700;
-  text-align: center;
-  line-height: 1.3;
-}
-
-.mrtRailSub {
-  font-family: var(--font-manrope, sans-serif);
-  font-size: 10px;
-  text-align: center;
-  line-height: 1.3;
-  color: #64748b;
-}
-
-.mrtRailStep0 .mrtRailDot { background: #f1f5f9; border: 2px solid #cbd5e1; color: #64748b; }
-.mrtRailStep1 .mrtRailDot { background: #fef9c3; border: 2px solid #fde047; color: #713f12; }
-.mrtRailStep2 .mrtRailDot { background: #ffedd5; border: 2px solid #f97316; color: #9a3412; }
-.mrtRailStep3 .mrtRailDot { background: #fee2e2; border: 2px solid #ef4444; color: #991b1b; font-size: 11px; }
-.mrtRailStep3 .mrtRailLabel { color: #991b1b; }
-
-html[data-theme='dark'] .mrtRail {
-  background: rgba(30,41,59,0.8) !important;
-  border-color: rgba(249,115,22,0.2) !important;
-}
-html[data-theme='dark'] .mrtRailTitle { color: #fdba74 !important; }
-html[data-theme='dark'] .mrtRailSub { color: #94a3b8 !important; }
 
 .caseLabelRow {
   display: flex;
@@ -1294,7 +1205,10 @@ html[data-theme='dark'] .mrtRailSub { color: #94a3b8 !important; }
   .header { padding: 20px 14px 12px; }
   .layout { padding: 14px 14px 44px; }
   .heroText { padding: 24px; border-radius: 22px; }
-  .heroText p { font-size: 15px; }
+  .heroText h1 { font-size: 22px !important; line-height: 1.1 !important; }
+  .heroText p { font-size: 14px; }
+  .sectionHead h2 { font-size: 16px !important; }
+  .subSectionTitle { font-size: 15px !important; }
   .section { padding: 20px; border-radius: 22px; }
   .zoneGrid,
   .protocolGrid,
@@ -4290,7 +4204,15 @@ function useIsMobileViewport(query = '(max-width: 900px)') {
   return isMobile
 }
 
+const READ_LABELS = {
+  de: { btn: '☐ Als gelesen markieren', active: '✅ Gelesen' },
+  en: { btn: '☐ Mark as read',          active: '✅ Read' },
+  fa: { btn: '☐ علامت‌گذاری به عنوان خوانده‌شده', active: '✅ خوانده شد' },
+}
+
 function Section({ id, eyebrow, title, lead, children, className = '', defaultOpen = true, done = false, onDone }) {
+  const { lang } = useLanguage()
+  const rl = READ_LABELS[lang] || READ_LABELS.de
   const [isOpen, setIsOpen] = useState(defaultOpen)
 
   useEffect(() => {
@@ -4332,7 +4254,7 @@ function Section({ id, eyebrow, title, lead, children, className = '', defaultOp
             className={`${styles.doneBtn} ${done ? styles.doneBtnActive : ''}`}
             onClick={() => onDone(id)}
           >
-            {done ? '✅ Verstanden' : '☐ Als verstanden markieren'}
+            {done ? rl.active : rl.btn}
           </button>
         )}
       </div>
@@ -4377,53 +4299,6 @@ function ImageFigure({ src, alt, caption, zoomable = false, zoomLabel = 'Bild ve
   )
 }
 
-const MRT_RAIL = {
-  de: {
-    title: 'Signalgrading auf einen Blick',
-    steps: [
-      { grade: '0', label: 'Grad 0', sub: 'Normal\nhomogen hypointens' },
-      { grade: 'I', label: 'Grad I', sub: 'Fokales Signal\nkein Kontakt' },
-      { grade: 'II', label: 'Grad II', sub: 'Lineares Signal\nkein Kontakt' },
-      { grade: 'III', label: 'Grad III ✅', sub: 'Oberflächenkontakt\n= echter Riss' },
-    ],
-  },
-  en: {
-    title: 'Signal Grading at a Glance',
-    steps: [
-      { grade: '0', label: 'Grade 0', sub: 'Normal\nhomogeneous hypointense' },
-      { grade: 'I', label: 'Grade I', sub: 'Focal signal\nno contact' },
-      { grade: 'II', label: 'Grade II', sub: 'Linear signal\nno contact' },
-      { grade: 'III', label: 'Grade III ✅', sub: 'Surface contact\n= true tear' },
-    ],
-  },
-  fa: {
-    title: 'درجه‌بندی سیگنال در یک نگاه',
-    steps: [
-      { grade: '0', label: 'درجه ۰', sub: 'طبیعی\nهیپوانتنس همگن' },
-      { grade: 'I', label: 'درجه I', sub: 'سیگنال کانونی\nبدون تماس' },
-      { grade: 'II', label: 'درجه II', sub: 'سیگنال خطی\nبدون تماس' },
-      { grade: 'III', label: 'درجه III ✅', sub: 'تماس با سطح\n= پارگی واقعی' },
-    ],
-  },
-}
-
-function MrtGradingRail({ lang }) {
-  const d = MRT_RAIL[lang] || MRT_RAIL.de
-  return (
-    <div className={styles.mrtRail}>
-      <div className={styles.mrtRailTitle}>{d.title}</div>
-      <div className={styles.mrtRailTrack}>
-        {d.steps.map((step, i) => (
-          <div key={step.grade} className={`${styles.mrtRailStep} ${styles[`mrtRailStep${i}`]}`}>
-            <div className={styles.mrtRailDot}>{step.grade}</div>
-            <div className={styles.mrtRailLabel}>{step.label}</div>
-            <div className={styles.mrtRailSub} style={{ whiteSpace: 'pre-line' }}>{step.sub}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
 
 export default function MeniskusPage() {
   const { lang } = useLanguage()
@@ -4455,10 +4330,19 @@ export default function MeniskusPage() {
     } catch {}
   }, [])
 
+  const MENISKUS_SECTIONS = ['anatomie', 'mrt', 'grading', 'risstypen', 'discoider', 'fallbeispiele']
   const handleDone = (id) => {
     setDoneIds(prev => {
       const next = { ...prev, [id]: !prev[id] }
-      try { localStorage.setItem('meniskus_done', JSON.stringify(next)) } catch {}
+      try {
+        localStorage.setItem('meniskus_done', JSON.stringify(next))
+        // Globales Artikel-Tracking aktualisieren
+        const readCount = MENISKUS_SECTIONS.filter(s => next[s]).length
+        const pct = readCount / MENISKUS_SECTIONS.length
+        const articles = JSON.parse(localStorage.getItem('radyar_read_articles') || '{}')
+        articles.meniskus = pct
+        localStorage.setItem('radyar_read_articles', JSON.stringify(articles))
+      } catch {}
       return next
     })
   }
@@ -4639,7 +4523,6 @@ export default function MeniskusPage() {
           </Section>
 
           <Section id="grading" eyebrow="05" title={copy.grading.title} lead={copy.grading.lead} defaultOpen={!isMobile} done={!!doneIds['grading']} onDone={handleDone}>
-            <MrtGradingRail lang={lang} />
             <div className={styles.gradingFigure}>
               <ImageFigure src="/meniskus/lotysch-grading.png" alt={copy.grading.title} zoomable zoomLabel={copy.zoomImage} onZoom={() => setPreviewImage({ src: '/meniskus/lotysch-grading.png', alt: copy.grading.title })} />
             </div>

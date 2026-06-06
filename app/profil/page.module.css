@@ -193,10 +193,10 @@
 }
 .secondaryBtn:hover { border-color: var(--orange); color: var(--orange); }
 
-/* ── MAIN GRID ─────────────────────────────────────── */
+/* ── MAIN GRID (untere 3 Karten) ──────────────────── */
 .mainGrid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 16px;
 }
 
@@ -233,89 +233,217 @@
 }
 .cardLink:hover { text-decoration: underline; }
 
-/* ── LERNPFAD ──────────────────────────────────────── */
-.fachList {
+/* ── CARD SUB ──────────────────────────────────────── */
+.cardSub {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: -12px 0 16px;
+  line-height: 1.5;
+}
+
+/* ── LERNPFAD ACCORDION ────────────────────────────── */
+.accordion {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
 }
 
-.fachRow {
+.accordionItem {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.accordionItemOpen {
+  border-color: rgba(249,115,22,0.35);
+  box-shadow: 0 4px 16px rgba(249,115,22,0.08);
+}
+
+/* Fach-Header Button */
+.fachBtn {
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
+  gap: 10px;
+  padding: 14px 16px;
   background: var(--surface-soft);
-  text-decoration: none;
-  transition: border-color 0.18s, background 0.18s, transform 0.15s;
+  border: none;
   cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
 }
 
-.fachRow:hover {
-  border-color: rgba(249,115,22,0.4);
-  background: var(--bg-card);
-  transform: translateX(3px);
-}
+.fachBtn:hover { background: var(--bg-card); }
+.accordionItemOpen .fachBtn { background: var(--bg-card); }
 
-.fachIcon {
-  font-size: 22px;
+.fachBtnIcon {
+  font-size: 24px;
   flex-shrink: 0;
-  width: 36px;
+  width: 32px;
   text-align: center;
 }
 
-.fachInfo { flex: 1; min-width: 0; }
-
-.fachName {
-  display: block;
-  font-size: 14px;
+.fachBtnName {
+  flex: 1;
+  font-size: 15px;
   font-weight: 700;
   color: var(--text-strong);
-  margin-bottom: 4px;
+  text-align: left;
+  min-width: 0;
 }
 
-.fachProgress {
+.fachBtnRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.fachBtnBar {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.progressBar {
-  flex: 1;
+.miniBar {
+  width: 80px;
   height: 5px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.miniBarFill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--orange), #fbbf24);
+  transition: width 0.5s ease;
+}
+.miniBarEmpty { background: #cbd5e1; }
+.miniBarDone  { background: #10b981; }
+
+.miniPct {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  width: 32px;
+  text-align: right;
+}
+
+.mcqPill {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(16,185,129,0.12);
+  color: #059669;
+  border: 1px solid rgba(16,185,129,0.25);
+  white-space: nowrap;
+}
+
+.accordionChevron {
+  font-size: 18px;
+  color: var(--text-muted);
+  transform: rotate(0deg);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.accordionChevronOpen {
+  transform: rotate(90deg);
+  color: var(--orange);
+}
+
+/* Kapitel-Liste */
+.kapitelList {
+  border-top: 1px solid var(--border);
+  background: var(--bg-card);
+  padding: 8px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.kapitelRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 8px;
+  border-radius: 10px;
+  transition: background 0.15s;
+}
+.kapitelRow:hover { background: var(--surface-soft); }
+
+.kapitelRowMcq {
+  margin-top: 4px;
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+}
+
+.kapitelIcon {
+  font-size: 16px;
+  flex-shrink: 0;
+  width: 22px;
+  text-align: center;
+  opacity: 0.8;
+}
+
+.kapitelName {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-soft);
+  min-width: 0;
+}
+
+.kapitelBarWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.kapitelBar {
+  width: 100px;
+  height: 4px;
   background: var(--border);
   border-radius: 999px;
   overflow: hidden;
 }
 
-.progressFill {
+.kapitelBarFill {
   height: 100%;
   border-radius: 999px;
   background: linear-gradient(90deg, var(--orange), #fbbf24);
-  transition: width 0.6s ease;
-  min-width: 2px;
+  transition: width 0.5s ease;
 }
+.kapitelBarEmpty { background: #e2e8f0; }
+.kapitelBarDone  { background: #10b981; }
 
-.progressFillDone {
-  background: #10b981;
-}
-
-.progressPct {
+.kapitelPct {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text-muted);
-  width: 30px;
+  width: 68px;
   text-align: right;
-  flex-shrink: 0;
+  white-space: nowrap;
 }
 
-.fachArrow {
-  color: var(--orange);
-  font-size: 14px;
-  flex-shrink: 0;
+.mcqStatLine {
+  font-size: 12px;
+  font-weight: 700;
+  color: #059669;
+  white-space: nowrap;
 }
+
+/* Legacy kept for compatibility */
+.fachList { display: flex; flex-direction: column; gap: 10px; }
+.progressBar { flex: 1; height: 5px; background: var(--border); border-radius: 999px; overflow: hidden; }
+.progressFill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--orange), #fbbf24); transition: width 0.6s ease; }
+.progressFillDone { background: #10b981; }
+.progressPct { font-size: 11px; font-weight: 700; color: var(--text-muted); width: 30px; text-align: right; flex-shrink: 0; }
 
 /* ── FLASHCARD STATS ───────────────────────────────── */
 .boxList {
@@ -515,10 +643,22 @@
 [dir='rtl'] .select { background-position: left 14px center; padding-right: 14px; padding-left: 36px; }
 
 /* ── RESPONSIVE ────────────────────────────────────── */
+@media (max-width: 960px) {
+  .mainGrid { grid-template-columns: 1fr 1fr; }
+}
+
 @media (max-width: 860px) {
-  .mainGrid { grid-template-columns: 1fr; }
   .welcome  { grid-template-columns: auto 1fr; }
   .welcomeStats { display: none; }
+  .miniBar  { width: 60px; }
+}
+
+@media (max-width: 640px) {
+  .mainGrid { grid-template-columns: 1fr; }
+  .fachBtnBar { display: none; }
+  .fachBtnRight { gap: 6px; }
+  .kapitelBar { width: 70px; }
+  .kapitelPct { width: 54px; }
 }
 
 @media (max-width: 560px) {
@@ -537,3 +677,17 @@
 }
 :global(html[data-theme='dark']) .input,
 :global(html[data-theme='dark']) .select { background-color: var(--bg-card); }
+
+:global(html[data-theme='dark']) .accordionItem {
+  border-color: rgba(148,163,184,0.14);
+}
+:global(html[data-theme='dark']) .accordionItemOpen {
+  border-color: rgba(249,115,22,0.3);
+}
+:global(html[data-theme='dark']) .fachBtn,
+:global(html[data-theme='dark']) .kapitelRow:hover {
+  background: rgba(30,41,59,0.5);
+}
+:global(html[data-theme='dark']) .kapitelBarEmpty {
+  background: rgba(148,163,184,0.15);
+}
