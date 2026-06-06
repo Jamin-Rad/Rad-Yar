@@ -98,24 +98,19 @@ export default function Navbar() {
             <button className={`${styles.langBtn} ${lang==='fa'?styles.langOn:''}`} onClick={() => setLang('fa')}>FA</button>
           </div>
 
-          {/* ── AUTH ─────────────────────────────────── */}
-          {/* Nicht angemeldet: Anmelden-Button */}
+          {/* Nicht angemeldet → Link zur Anmelde-Seite */}
           <SignedOut>
-            
-              <Link href="/sign-in" className={styles.signInBtn}>
-                
-              </button>
-            
+            <Link href="/sign-in" className={styles.signInBtn}>
+              {signInLabel}
+            </Link>
           </SignedOut>
 
-          {/* Angemeldet: Clerk User-Button (Avatar + Dropdown) */}
+          {/* Angemeldet → Clerk Avatar */}
           <SignedIn>
             <UserButton
               afterSignOutUrl="/"
               appearance={{
-                elements: {
-                  avatarBox: { width: 30, height: 30 },
-                },
+                elements: { avatarBox: { width: 30, height: 30 } },
               }}
             />
           </SignedIn>
