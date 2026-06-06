@@ -29,7 +29,7 @@
 }
 
 /* ── RIGHT ────────────────────────────────────── */
-.right { display:flex; align-items:center; gap:12px; flex-shrink:0; }
+.right { display:flex; align-items:center; gap:10px; flex-shrink:0; }
 
 .iconBtn {
   background:none; border:none; cursor:pointer;
@@ -55,21 +55,16 @@
 .langOn { color:#f97316 !important; background:rgba(249,115,22,0.18) !important; }
 .langSep { color: rgba(255,255,255,0.14); font-size:11px; }
 
-@media (max-width:480px) { .right { gap:8px; } }
-
+/* ── THEME BUTTON ─────────────────────────────── */
 .themeBtn {
-  width: 32px;
-  height: 32px;
+  width: 32px; height: 32px;
   border: 1px solid rgba(255,255,255,0.11);
   border-radius: 999px;
   background: rgba(255,255,255,0.06);
   color: rgba(240,225,200,0.72);
   cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
-  line-height: 1;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 15px; line-height: 1;
   transition: color .2s, background .2s, border-color .2s, transform .2s;
 }
 .themeBtn:hover {
@@ -79,7 +74,34 @@
   transform: translateY(-1px);
 }
 
+/* ── ANMELDEN BUTTON ──────────────────────────── */
+.signInBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: var(--font-manrope, sans-serif);
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid rgba(249,115,22,0.55);
+  background: rgba(249,115,22,0.12);
+  color: #f97316;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .2s, transform .2s;
+}
+.signInBtn:hover {
+  background: rgba(249,115,22,0.22);
+  transform: translateY(-1px);
+}
+
+/* ── DARK MODE ────────────────────────────────── */
 :global(html[data-theme='dark']) .nav {
-  background: rgba(3, 7, 18, 0.95);
-  border-bottom-color: rgba(148, 163, 184, 0.16);
+  background: rgba(3,7,18,0.95);
+  border-bottom-color: rgba(148,163,184,0.16);
+}
+
+@media (max-width: 480px) {
+  .right { gap: 6px; }
+  .signInBtn { padding: 5px 10px; font-size: 11px; }
 }

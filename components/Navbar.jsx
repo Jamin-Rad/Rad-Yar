@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useState } from 'react'
+import { SignedIn, SignedOut, UserButton, SignInButton } from '@clerk/nextjs'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useTheme } from '@/providers/ThemeProvider'
 import SearchBar from './SearchBar'
@@ -48,6 +49,8 @@ export default function Navbar() {
     ? (lang === 'fa' ? 'تم روشن' : lang === 'en' ? 'Light theme' : 'Helles Theme')
     : (lang === 'fa' ? 'تم تاریک' : lang === 'en' ? 'Dark theme' : 'Dunkles Theme')
 
+  const signInLabel = lang === 'fa' ? 'ورود' : lang === 'en' ? 'Sign in' : 'Anmelden'
+
   return (
     <>
       <nav className={styles.nav}>
@@ -60,8 +63,10 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Right: search + lang only */}
+        {/* Right side */}
         <div className={styles.right}>
+
+          {/* Theme toggle */}
           <button
             type="button"
             className={styles.themeBtn}
@@ -71,12 +76,20 @@ export default function Navbar() {
           >
             <span aria-hidden="true">{theme === 'dark' ? '☀' : '☾'}</span>
           </button>
-          <button className={styles.iconBtn} onClick={() => setSearch(true)} aria-label={texts.searchPlaceholder} title={texts.searchPlaceholder}>
+
+          {/* Search */}
+          <button
+            className={styles.iconBtn}
+            onClick={() => setSearch(true)}
+            aria-label={texts?.searchPlaceholder ?? 'Suchen'}
+          >
             <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
               <circle cx="7" cy="7" r="5.5" stroke="currentColor" strokeWidth="1.6"/>
               <line x1="11" y1="11" x2="15" y2="15" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
             </svg>
           </button>
+
+          {/* Language toggle */}
           <div className={styles.langToggle} dir="ltr">
             <button className={`${styles.langBtn} ${lang==='de'?styles.langOn:''}`} onClick={() => setLang('de')}>DE</button>
             <span className={styles.langSep}>·</span>
@@ -84,6 +97,29 @@ export default function Navbar() {
             <span className={styles.langSep}>·</span>
             <button className={`${styles.langBtn} ${lang==='fa'?styles.langOn:''}`} onClick={() => setLang('fa')}>FA</button>
           </div>
+
+          {/* ── AUTH ─────────────────────────────────── */}
+          {/* Nicht angemeldet: Anmelden-Button */}
+          <SignedOut>
+            <SignInButton mode="modal">
+              <button className={styles.signInBtn} title={signInLabel}>
+                {signInLabel}
+              </button>
+            </SignInButton>
+          </SignedOut>
+
+          {/* Angemeldet: Clerk User-Button (Avatar + Dropdown) */}
+          <SignedIn>
+            <UserButton
+              afterSignOutUrl="/"
+              appearance={{
+                elements: {
+                  avatarBox: { width: 30, height: 30 },
+                },
+              }}
+            />
+          </SignedIn>
+
         </div>
       </nav>
       {search && <SearchBar onClose={() => setSearch(false)} />}
