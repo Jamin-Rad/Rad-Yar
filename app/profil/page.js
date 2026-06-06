@@ -1,388 +1,539 @@
-'use client'
-
-import { useState, useEffect } from 'react'
-import { useUser } from '@clerk/nextjs'
-import Link from 'next/link'
-import { useLanguage } from '@/providers/LanguageProvider'
-import { loadLeitnerState, LEITNER_STEPS, getBoxLabel, isDue } from '@/utils/leitnerStorage'
-import styles from './page.module.css'
-
-/* ── Daten ─────────────────────────────────────────── */
-const FACHRICHTUNGEN = {
-  de: ['Radiologie','Allgemeinmedizin','Chirurgie','Innere Medizin','Neurologie','Pädiatrie','Andere'],
-  en: ['Radiology','General Medicine','Surgery','Internal Medicine','Neurology','Paediatrics','Other'],
-  fa: ['رادیولوژی','پزشکی عمومی','جراحی','داخلی','نورولوژی','اطفال','سایر'],
-}
-const STUFEN = {
-  de: ['Medizinstudent/in','PJ (Praktisches Jahr)','Assistenzarzt/-ärztin','Facharzt/-ärztin','Oberarzt/-ärztin','Andere'],
-  en: ['Medical student','Final year (PJ)','Resident','Specialist','Senior physician','Other'],
-  fa: ['دانشجوی پزشکی','کارآموز (PJ)','دستیار','متخصص','فوق تخصص','سایر'],
-}
-
-const MCQ_KEY = 'radyar_mcq_stats'
-
-/* ── Übersetzungen ─────────────────────────────────── */
-const T = {
-  de: {
-    title:        'Mein Profil',
-    editBtn:      'Bearbeiten',
-    saveBtn:      'Speichern',
-    saving:       'Wird gespeichert…',
-    saved:        'Gespeichert ✓',
-    spitzname:    'Spitzname',
-    fach:         'Fachrichtung',
-    stufe:        'Ausbildungsstufe',
-    select:       '– Bitte wählen –',
-    todayTitle:   'Heutiger Tagesplan',
-    todayDue:     'Karten heute fällig',
-    todayZero:    'Heute keine Karten fällig — gut gemacht!',
-    startBtn:     'Jetzt lernen →',
-    leitnerTitle: 'Leitner-Fortschritt',
-    streakTitle:  'Lernserie',
-    streakCur:    'Aktuelle Serie',
-    streakBest:   'Beste Serie',
-    streakDays:   'Tage',
-    mcqTitle:     'MCQ-Statistik',
-    mcqTotal:     'Beantwortet',
-    mcqCorrect:   'Richtig',
-    mcqWrong:     'Falsch',
-    mcqRate:      'Quote',
-    mcqEmpty:     'Noch keine MCQs beantwortet.',
-    mastered:     'Beherrscht',
-    total:        'Gesamt',
-    notLoggedIn:  'Bitte anmelden',
-  },
-  en: {
-    title:        'My Profile',
-    editBtn:      'Edit',
-    saveBtn:      'Save',
-    saving:       'Saving…',
-    saved:        'Saved ✓',
-    spitzname:    'Nickname',
-    fach:         'Specialty',
-    stufe:        'Training level',
-    select:       '– Please select –',
-    todayTitle:   'Today\'s plan',
-    todayDue:     'cards due today',
-    todayZero:    'No cards due today — well done!',
-    startBtn:     'Start learning →',
-    leitnerTitle: 'Leitner progress',
-    streakTitle:  'Learning streak',
-    streakCur:    'Current streak',
-    streakBest:   'Best streak',
-    streakDays:   'days',
-    mcqTitle:     'MCQ statistics',
-    mcqTotal:     'Answered',
-    mcqCorrect:   'Correct',
-    mcqWrong:     'Wrong',
-    mcqRate:      'Rate',
-    mcqEmpty:     'No MCQs answered yet.',
-    mastered:     'Mastered',
-    total:        'Total',
-    notLoggedIn:  'Please sign in',
-  },
-  fa: {
-    title:        'پروفایل من',
-    editBtn:      'ویرایش',
-    saveBtn:      'ذخیره',
-    saving:       'در حال ذخیره…',
-    saved:        'ذخیره شد ✓',
-    spitzname:    'اسم مستعار',
-    fach:         'تخصص',
-    stufe:        'مرحله تحصیلی',
-    select:       '– انتخاب کن –',
-    todayTitle:   'برنامه امروز',
-    todayDue:     'کارت برای امروز',
-    todayZero:    'امروز کارتی نداری — آفرین!',
-    startBtn:     'شروع یادگیری →',
-    leitnerTitle: 'پیشرفت لایتنر',
-    streakTitle:  'رشته یادگیری',
-    streakCur:    'رشته فعلی',
-    streakBest:   'بهترین رشته',
-    streakDays:   'روز',
-    mcqTitle:     'آمار MCQ',
-    mcqTotal:     'پاسخ داده',
-    mcqCorrect:   'درست',
-    mcqWrong:     'اشتباه',
-    mcqRate:      'درصد',
-    mcqEmpty:     'هنوز MCQ جواب ندادی.',
-    mastered:     'تسلط',
-    total:        'کل',
-    notLoggedIn:  'لطفاً وارد شو',
-  },
-}
-
-/* ── Streak berechnen ──────────────────────────────── */
-function calcStreak(leitnerState) {
-  const dates = Object.values(leitnerState)
-    .filter(r => r.lastReviewedAt)
-    .map(r => new Date(r.lastReviewedAt).toDateString())
-  const unique = [...new Set(dates)].sort((a, b) => new Date(b) - new Date(a))
-  if (!unique.length) return { current: 0, best: 0 }
-  let current = 0, best = 0, streak = 0
-  const today = new Date().toDateString()
-  const yesterday = new Date(Date.now() - 86400000).toDateString()
-  let prev = null
-  for (const d of unique) {
-    if (!prev) {
-      if (d === today || d === yesterday) { streak = 1; prev = d; continue }
-      else break
-    }
-    const diff = (new Date(prev) - new Date(d)) / 86400000
-    if (diff === 1) { streak++; prev = d }
-    else break
-  }
-  current = streak
-  // Best streak
-  streak = 1
-  for (let i = 1; i < unique.length; i++) {
-    const diff = (new Date(unique[i-1]) - new Date(unique[i])) / 86400000
-    if (diff === 1) { streak++; if (streak > best) best = streak }
-    else { streak = 1 }
-  }
-  if (current > best) best = current
-  return { current, best }
-}
-
-/* ── MCQ Stats laden ───────────────────────────────── */
-function loadMcqStats(userId) {
-  if (typeof window === 'undefined') return null
-  try {
-    const key = userId ? `${MCQ_KEY}_${userId}` : MCQ_KEY
-    const raw = window.localStorage.getItem(key)
-    return raw ? JSON.parse(raw) : null
-  } catch { return null }
-}
-
 /* ═══════════════════════════════════════════════════════
-   SEITE
+   Profil / Dashboard — RadYar
 ═══════════════════════════════════════════════════════ */
-export default function ProfilPage() {
-  const { lang } = useLanguage()
-  const t   = T[lang] ?? T.de
-  const dir = lang === 'fa' ? 'rtl' : 'ltr'
-  const { user, isLoaded } = useUser()
 
-  const [editing,      setEditing]      = useState(false)
-  const [spitzname,    setSpitzname]    = useState('')
-  const [fachrichtung, setFachrichtung] = useState('')
-  const [stufe,        setStufe]        = useState('')
-  const [saveState,    setSaveState]    = useState('idle') // idle | saving | saved
-
-  const [leitnerState, setLeitnerState] = useState({})
-  const [mcqStats,     setMcqStats]     = useState(null)
-  const [streak,       setStreak]       = useState({ current: 0, best: 0 })
-
-  // Daten laden
-  useEffect(() => {
-    if (!isLoaded || !user) return
-    setSpitzname(user.firstName ?? '')
-    setFachrichtung(user.unsafeMetadata?.fachrichtung ?? '')
-    setStufe(user.unsafeMetadata?.ausbildungsstufe ?? '')
-
-    const state = loadLeitnerState(user.id)
-    setLeitnerState(state)
-    setStreak(calcStreak(state))
-    setMcqStats(loadMcqStats(user.id))
-  }, [isLoaded, user])
-
-  if (!isLoaded) return null
-  if (!user) return (
-    <div className={styles.page}>
-      <div className={styles.inner} style={{ textAlign: 'center', paddingTop: 80 }}>
-        <p style={{ color: 'var(--text-muted)', marginBottom: 20 }}>{t.notLoggedIn}</p>
-        <Link href="/sign-in" style={{ color: 'var(--orange)', fontWeight: 700 }}>Sign in</Link>
-      </div>
-    </div>
-  )
-
-  // Leitner Stats
-  const records = Object.values(leitnerState)
-  const totalCards = records.length
-  const mastered   = records.filter(r => r.status === 'mastered').length
-  const dueToday   = records.filter(r => isDue(r)).length
-
-  const boxCounts = LEITNER_STEPS.map(step => ({
-    label: getBoxLabel(step.box, lang),
-    count: records.filter(r => r.box === step.box && r.status !== 'mastered').length,
-  }))
-  const maxCount = Math.max(...boxCounts.map(b => b.count), 1)
-
-  // MCQ
-  const mcqTotal   = mcqStats?.total   ?? 0
-  const mcqCorrect = mcqStats?.correct ?? 0
-  const mcqWrong   = mcqTotal - mcqCorrect
-  const mcqRate    = mcqTotal > 0 ? Math.round((mcqCorrect / mcqTotal) * 100) : 0
-
-  // Speichern
-  async function handleSave() {
-    setSaveState('saving')
-    try {
-      await user.update({
-        firstName: spitzname,
-        unsafeMetadata: {
-          ...user.unsafeMetadata,
-          fachrichtung,
-          ausbildungsstufe: stufe,
-        },
-      })
-      setSaveState('saved')
-      setEditing(false)
-      setTimeout(() => setSaveState('idle'), 2500)
-    } catch (err) {
-      console.error(err)
-      setSaveState('idle')
-    }
-  }
-
-  const fachList  = FACHRICHTUNGEN[lang] ?? FACHRICHTUNGEN.de
-  const stufeList = STUFEN[lang] ?? STUFEN.de
-  const initials  = (user.firstName?.[0] ?? user.emailAddresses?.[0]?.emailAddress?.[0] ?? '?').toUpperCase()
-
-  return (
-    <div className={styles.page} dir={dir}>
-      <div className={styles.inner}>
-
-        {/* ── HEADER ── */}
-        <div className={styles.header}>
-          <div className={styles.avatar}>{initials}</div>
-          <div className={styles.headerInfo}>
-            <h1 className={styles.userName}>{user.firstName ?? user.emailAddresses?.[0]?.emailAddress}</h1>
-            <div className={styles.userMeta}>
-              {fachrichtung && <span className={styles.metaBadge}>{fachrichtung}</span>}
-              {stufe        && <span className={styles.metaBadge}>{stufe}</span>}
-            </div>
-          </div>
-          <button className={styles.editBtn} onClick={() => setEditing(e => !e)}>
-            {editing ? '✕' : t.editBtn}
-          </button>
-        </div>
-
-        {/* ── GRID ── */}
-        <div className={styles.grid}>
-
-          {/* Tagesplan */}
-          <div className={styles.card}>
-            <h2 className={styles.cardTitle}>📅 {t.todayTitle}</h2>
-            {dueToday > 0 ? (
-              <div className={styles.todayRow}>
-                <div className={styles.todayNum}>{dueToday}</div>
-                <div className={styles.todayInfo}>
-                  <strong>{t.todayDue}</strong>
-                  <span>{mastered} / {totalCards} {t.mastered}</span>
-                </div>
-                <Link href="/flashcards" className={styles.startBtn}>{t.startBtn}</Link>
-              </div>
-            ) : (
-              <p style={{ color: 'var(--text-muted)', fontSize: 14 }}>{t.todayZero}</p>
-            )}
-          </div>
-
-          {/* Streak */}
-          <div className={styles.card}>
-            <h2 className={styles.cardTitle}>🔥 {t.streakTitle}</h2>
-            <div className={styles.streakRow}>
-              <div className={styles.streakStat}>
-                <span className={styles.streakNum}>{streak.current}</span>
-                <span className={styles.streakLabel}>{t.streakCur}</span>
-                <span className={styles.streakLabel}>{t.streakDays}</span>
-              </div>
-              <div className={styles.streakStat}>
-                <span className={styles.streakNum}>{streak.best}</span>
-                <span className={styles.streakLabel}>{t.streakBest}</span>
-                <span className={styles.streakLabel}>{t.streakDays}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Leitner */}
-          <div className={styles.card}>
-            <h2 className={styles.cardTitle}>🗂 {t.leitnerTitle}</h2>
-            <div className={styles.boxList}>
-              {boxCounts.map((b, i) => (
-                <div key={i} className={styles.boxRow}>
-                  <span className={styles.boxName}>{b.label}</span>
-                  <div className={styles.boxBarWrap}>
-                    <div
-                      className={styles.boxBar}
-                      style={{ width: `${(b.count / maxCount) * 100}%` }}
-                    />
-                  </div>
-                  <span className={styles.boxCount}>{b.count}</span>
-                </div>
-              ))}
-              <div className={styles.boxRow}>
-                <span className={styles.boxName} style={{ color: '#10b981' }}>✓ {t.mastered}</span>
-                <div className={styles.boxBarWrap}>
-                  <div className={styles.boxBar} style={{ width: `${(mastered / maxCount) * 100}%`, background: '#10b981' }} />
-                </div>
-                <span className={styles.boxCount}>{mastered}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* MCQ */}
-          <div className={styles.card}>
-            <h2 className={styles.cardTitle}>🎯 {t.mcqTitle}</h2>
-            {mcqTotal > 0 ? (
-              <>
-                <div className={styles.mcqTotal}>
-                  <div className={styles.mcqStat}>
-                    <strong>{mcqTotal}</strong><span>{t.mcqTotal}</span>
-                  </div>
-                  <div className={styles.mcqStat}>
-                    <strong style={{ color: '#10b981' }}>{mcqCorrect}</strong><span>{t.mcqCorrect}</span>
-                  </div>
-                  <div className={styles.mcqStat}>
-                    <strong style={{ color: '#ef4444' }}>{mcqWrong}</strong><span>{t.mcqWrong}</span>
-                  </div>
-                  <div className={styles.mcqStat}>
-                    <strong>{mcqRate}%</strong><span>{t.mcqRate}</span>
-                  </div>
-                </div>
-              </>
-            ) : (
-              <p className={styles.mcqEmpty}>{t.mcqEmpty}</p>
-            )}
-          </div>
-
-          {/* Persönliche Daten bearbeiten */}
-          {editing && (
-            <div className={`${styles.card} ${styles.gridFull}`}>
-              <h2 className={styles.cardTitle}>✏️ {t.editBtn}</h2>
-              <div className={styles.form}>
-                <div className={styles.fieldGroup}>
-                  <label className={styles.label}>{t.spitzname}</label>
-                  <input className={styles.input} type="text" value={spitzname}
-                    onChange={e => setSpitzname(e.target.value)} />
-                </div>
-                <div className={styles.fieldGroup}>
-                  <label className={styles.label}>{t.fach}</label>
-                  <select className={styles.select} value={fachrichtung}
-                    onChange={e => setFachrichtung(e.target.value)}>
-                    <option value="">{t.select}</option>
-                    {fachList.map(f => <option key={f} value={f}>{f}</option>)}
-                  </select>
-                </div>
-                <div className={styles.fieldGroup}>
-                  <label className={styles.label}>{t.stufe}</label>
-                  <select className={styles.select} value={stufe}
-                    onChange={e => setStufe(e.target.value)}>
-                    <option value="">{t.select}</option>
-                    {stufeList.map(s => <option key={s} value={s}>{s}</option>)}
-                  </select>
-                </div>
-                <button className={styles.saveBtn} onClick={handleSave}
-                  disabled={saveState === 'saving'}>
-                  {saveState === 'saving' ? t.saving : t.saveBtn}
-                </button>
-                {saveState === 'saved' && <p className={styles.successMsg}>{t.saved}</p>}
-              </div>
-            </div>
-          )}
-
-        </div>
-      </div>
-    </div>
-  )
+.page {
+  min-height: 100vh;
+  padding-top: 64px;
+  background: var(--bg);
+  font-family: var(--font-main);
 }
+
+.inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* ── WELCOME HEADER ────────────────────────────────── */
+.welcome {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 20px;
+  background: var(--navy);
+  border-radius: var(--radius-lg);
+  padding: 28px 36px;
+  margin-bottom: 20px;
+  background:
+    radial-gradient(circle at 90% 50%, rgba(249,115,22,0.18), transparent 24rem),
+    #1a2051;
+  overflow: hidden;
+}
+
+.avatarWrap { position: relative; }
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f97316, #fbbf24);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 900;
+  color: #fff;
+  border: 3px solid rgba(255,255,255,0.2);
+}
+
+.greeting {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.welcomeName {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(22px, 2.8vw, 32px);
+  font-weight: 900;
+  color: #fff;
+  margin: 0 0 8px;
+  line-height: 1.1;
+}
+
+.badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(249,115,22,0.2);
+  color: #fdba74;
+  border: 1px solid rgba(249,115,22,0.35);
+}
+
+.welcomeStats {
+  display: flex;
+  gap: 24px;
+}
+
+.wStat {
+  text-align: center;
+}
+
+.wStat strong {
+  display: block;
+  font-size: 28px;
+  font-weight: 900;
+  color: #f97316;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.wStat span {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── TAGESPLAN (Hero Card) ─────────────────────────── */
+.todayCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  margin-bottom: 20px;
+  box-shadow: 0 12px 36px var(--shadow-soft);
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.todayLeft { flex: 1; min-width: 0; }
+
+.todayLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 8px;
+}
+
+.todayTitle {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 900;
+  color: var(--text-strong);
+  margin: 0 0 6px;
+  line-height: 1.2;
+}
+
+.todaySub {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.todayActions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, var(--orange), #fb923c);
+  color: #fff;
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 12px 28px rgba(249,115,22,0.28);
+  transition: transform 0.18s, box-shadow 0.18s;
+  white-space: nowrap;
+}
+.primaryBtn:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(249,115,22,0.36); }
+
+.secondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-soft);
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.18s, color 0.18s;
+  white-space: nowrap;
+}
+.secondaryBtn:hover { border-color: var(--orange); color: var(--orange); }
+
+/* ── MAIN GRID ─────────────────────────────────────── */
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 16px;
+}
+
+/* ── CARD ──────────────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: 0 8px 24px var(--shadow-soft);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-strong);
+  margin: 0;
+}
+
+.cardLink {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--orange);
+  text-decoration: none;
+}
+.cardLink:hover { text-decoration: underline; }
+
+/* ── LERNPFAD ──────────────────────────────────────── */
+.fachList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fachRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
+  text-decoration: none;
+  transition: border-color 0.18s, background 0.18s, transform 0.15s;
+  cursor: pointer;
+}
+
+.fachRow:hover {
+  border-color: rgba(249,115,22,0.4);
+  background: var(--bg-card);
+  transform: translateX(3px);
+}
+
+.fachIcon {
+  font-size: 22px;
+  flex-shrink: 0;
+  width: 36px;
+  text-align: center;
+}
+
+.fachInfo { flex: 1; min-width: 0; }
+
+.fachName {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-strong);
+  margin-bottom: 4px;
+}
+
+.fachProgress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.progressBar {
+  flex: 1;
+  height: 5px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--orange), #fbbf24);
+  transition: width 0.6s ease;
+  min-width: 2px;
+}
+
+.progressFillDone {
+  background: #10b981;
+}
+
+.progressPct {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  width: 30px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.fachArrow {
+  color: var(--orange);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* ── FLASHCARD STATS ───────────────────────────────── */
+.boxList {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.boxRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.boxLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  width: 68px;
+  flex-shrink: 0;
+}
+
+.boxBarWrap {
+  flex: 1;
+  height: 7px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.boxBar {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--orange), #fbbf24);
+  min-width: 2px;
+  transition: width 0.5s ease;
+}
+
+.boxBarMastered { background: #10b981; }
+
+.boxCount {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-soft);
+  width: 24px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ── STREAK ────────────────────────────────────────── */
+.streakRow {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.streakStat {
+  flex: 1;
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  text-align: center;
+}
+
+.streakNum {
+  display: block;
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--orange);
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.streakLabel {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+/* ── PROFIL BEARBEITEN ─────────────────────────────── */
+.editToggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: 16px;
+}
+
+.editToggleTitle {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+.editToggleIcon {
+  font-size: 18px;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+}
+
+.editToggleIcon.open { transform: rotate(180deg); }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fieldRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.fieldGroup { display: flex; flex-direction: column; gap: 5px; }
+
+.label { font-size: 13px; font-weight: 700; color: var(--text-soft); }
+
+.input, .select {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  font-family: var(--font-main);
+  font-size: 14px;
+  color: var(--text-strong);
+  background: var(--bg-card);
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  appearance: none;
+}
+
+.input:focus, .select:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(249,115,22,0.12);
+}
+
+.select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.saveBtn {
+  padding: 12px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, var(--orange), #fb923c);
+  color: #fff;
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(249,115,22,0.22);
+  transition: transform 0.18s, opacity 0.18s;
+}
+.saveBtn:hover:not(:disabled) { transform: translateY(-1px); }
+.saveBtn:disabled { opacity: 0.6; cursor: not-allowed; }
+.saveSuccess { text-align: center; font-size: 13px; color: #10b981; font-weight: 700; }
+
+/* ── NOT LOGGED IN ─────────────────────────────────── */
+.notLoggedIn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 16px;
+  text-align: center;
+}
+
+.notLoggedIn h2 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--text-strong);
+}
+
+.notLoggedIn p { color: var(--text-muted); font-size: 15px; }
+
+/* ── RTL ───────────────────────────────────────────── */
+[dir='rtl'] .welcome { direction: rtl; }
+[dir='rtl'] .fachRow:hover { transform: translateX(-3px); }
+[dir='rtl'] .select { background-position: left 14px center; padding-right: 14px; padding-left: 36px; }
+
+/* ── RESPONSIVE ────────────────────────────────────── */
+@media (max-width: 860px) {
+  .mainGrid { grid-template-columns: 1fr; }
+  .welcome  { grid-template-columns: auto 1fr; }
+  .welcomeStats { display: none; }
+}
+
+@media (max-width: 560px) {
+  .inner    { padding: 20px 14px 60px; }
+  .welcome  { padding: 20px; gap: 14px; }
+  .todayCard{ flex-direction: column; padding: 22px; gap: 20px; }
+  .todayActions { flex-direction: row; flex-wrap: wrap; }
+  .fieldRow { grid-template-columns: 1fr; }
+}
+
+/* ── DARK MODE ─────────────────────────────────────── */
+:global(html[data-theme='dark']) .welcome {
+  background:
+    radial-gradient(circle at 90% 50%, rgba(249,115,22,0.14), transparent 24rem),
+    #0d1b2a;
+}
+:global(html[data-theme='dark']) .input,
+:global(html[data-theme='dark']) .select { background-color: var(--bg-card); }
