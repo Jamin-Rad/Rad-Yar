@@ -17,55 +17,73 @@ const T = {
     back: '← Übersicht',
     cardOf: (i, n) => `Karte ${i} von ${n}`,
     tap: 'Karte antippen zum Umdrehen',
-    tapBack: 'Antippen, um die Frage erneut zu sehen',
-    questionAgain: 'Frage',
+    tapBack: 'Antippen, um die Frage wieder zu sehen',
+    questionLabel: 'Frage',
     answerLabel: 'Kurze Antwort',
     explanationLabel: 'Erklärung',
     diagramLabel: 'Mini-Diagramm',
     know: 'Gewusst ✓',
     dontKnow: 'Nicht gewusst ✗',
+    practiceKnow: 'Weiter ✓',
+    practiceDontKnow: 'Nochmal üben ✗',
+    practiceMode: 'Üben ohne Zählen',
+    practiceNote: 'Diese Wiederholung verändert keine Leitner-Box und wird nicht gezählt.',
     done: 'Sitzung beendet!',
-    doneSub: 'Alle Karten für heute wiederholt.',
-    correct: 'Richtig',
-    wrong: 'Falsch',
+    doneSub: 'Alle Karten für diese Sitzung wiederholt.',
+    correct: 'Gewusst',
+    wrong: 'Nochmal',
     total: 'Gesamt',
     backLink: '← Zurück zur Übersicht',
+    emptyTitle: 'Keine Karten in dieser Auswahl.',
+    emptySub: 'Wähle eine andere Box oder starte das Thema normal.',
   },
   en: {
     back: '← Overview',
     cardOf: (i, n) => `Card ${i} of ${n}`,
     tap: 'Tap card to reveal answer',
     tapBack: 'Tap to see the question again',
-    questionAgain: 'Question',
+    questionLabel: 'Question',
     answerLabel: 'Short answer',
     explanationLabel: 'Explanation',
-    diagramLabel: 'Mini diagram',
+    diagramLabel: 'Mini-diagram',
     know: 'Got it ✓',
     dontKnow: 'Missed it ✗',
+    practiceKnow: 'Next ✓',
+    practiceDontKnow: 'Review again ✗',
+    practiceMode: 'Practice without counting',
+    practiceNote: 'This review does not change any Leitner box and is not counted.',
     done: 'Session complete!',
-    doneSub: 'All cards reviewed for today.',
-    correct: 'Correct',
-    wrong: 'Missed',
+    doneSub: 'All cards in this session have been reviewed.',
+    correct: 'Got it',
+    wrong: 'Again',
     total: 'Total',
     backLink: '← Back to overview',
+    emptyTitle: 'No cards in this selection.',
+    emptySub: 'Choose another box or start the topic normally.',
   },
   fa: {
     back: '← مرور کلی',
     cardOf: (i, n) => `کارت ${i} از ${n}`,
     tap: 'برای دیدن جواب روی کارت بزن',
     tapBack: 'برای دیدن دوباره سؤال روی کارت بزن',
-    questionAgain: 'سؤال',
-    answerLabel: 'پاسخ کوتاه',
+    questionLabel: 'سؤال',
+    answerLabel: 'جواب کوتاه',
     explanationLabel: 'توضیح',
-    diagramLabel: 'دیاگرام کوچک',
+    diagramLabel: 'دیاگرام کوتاه',
     know: 'بلدم ✓',
     dontKnow: 'بلد نبودم ✗',
-    done: 'سشن تموم شد!',
-    doneSub: 'همه کارت‌ها مرور شدند.',
-    correct: 'درست',
-    wrong: 'اشتباه',
+    practiceKnow: 'بعدی ✓',
+    practiceDontKnow: 'دوباره تمرین ✗',
+    practiceMode: 'تمرین بدون شمارش',
+    practiceNote: 'این مرور جعبه لایتنر را تغییر نمی‌دهد و در آمار حساب نمی‌شود.',
+    done: 'سشن تمام شد!',
+    doneSub: 'همه کارت‌های این سشن مرور شدند.',
+    correct: 'بلدم',
+    wrong: 'دوباره',
     total: 'کل',
     backLink: '← برگشت به مرور کلی',
+    emptyTitle: 'در این انتخاب کارتی وجود ندارد.',
+    emptySub: 'یک جعبه دیگر انتخاب کن یا موضوع را به صورت عادی شروع کن.',
   },
 }
 
@@ -73,6 +91,29 @@ function localize(value, lang) {
   if (!value) return ''
   if (typeof value === 'string') return value
   return value[lang] || value.de || ''
+}
+
+
+function DiagramView({ text }) {
+  const lines = String(text || '').split('
+').map(line => line.trim()).filter(Boolean)
+  return (
+    <div className={styles.diagramFlow}>
+      {lines.map((line, lineIndex) => {
+        const parts = line.split('→').map(part => part.trim()).filter(Boolean)
+        return (
+          <div key={`${line}-${lineIndex}`} className={styles.diagramLine}>
+            {parts.map((part, partIndex) => (
+              <span key={`${part}-${partIndex}`} className={styles.diagramPartWrap}>
+                <span className={styles.diagramNode}>{part}</span>
+                {partIndex < parts.length - 1 && <span className={styles.diagramArrow}>→</span>}
+              </span>
+            ))}
+          </div>
+        )
+      })}
+    </div>
+  )
 }
 
 function sortCards(cards, state) {
@@ -87,7 +128,7 @@ function sortCards(cards, state) {
   return [...due, ...fresh, ...future]
 }
 
-export default function FlashcardReviewPage({ params }) {
+export default function FlashcardReviewPage({ params, searchParams }) {
   const { lang } = useLanguage()
   const { userId } = useAuth()
   const t = T[lang] ?? T.de
@@ -96,6 +137,8 @@ export default function FlashcardReviewPage({ params }) {
   const topicId = params?.topicId ?? 'meniskus'
   const topic = getFlashcardTopic(topicId)
   const allCards = useMemo(() => FLASHCARDS.filter(c => c.topicId === topicId), [topicId])
+  const practiceMode = searchParams?.mode === 'practice'
+  const boxFilter = searchParams?.box ? Number(searchParams.box) : null
 
   const [leitnerState, setLeitnerState] = useState({})
   const [cards, setCards] = useState([])
@@ -107,32 +150,47 @@ export default function FlashcardReviewPage({ params }) {
 
   useEffect(() => {
     const state = loadLeitnerState(userId)
+    let selectedCards = allCards
+
+    if (practiceMode && boxFilter) {
+      selectedCards = allCards.filter(card => {
+        const record = state[card.id]
+        return record && record.status !== 'mastered' && Number(record.box) === boxFilter
+      })
+    }
+
     setLeitnerState(state)
-    setCards(sortCards(allCards, state))
-  }, [allCards, userId])
+    setCards(practiceMode ? selectedCards : sortCards(selectedCards, state))
+    setIndex(0)
+    setFlipped(false)
+    setDone(false)
+    setStats({ correct: 0, wrong: 0 })
+  }, [allCards, userId, practiceMode, boxFilter])
 
   const current = cards[index]
   const record = current ? leitnerState[current.id] : null
-  const boxNum = record?.box ?? 1
+  const boxNum = practiceMode && boxFilter ? boxFilter : (record?.box ?? 1)
   const boxLabel = getBoxLabel(boxNum, lang)
   const progress = cards.length > 0 ? (index / cards.length) * 100 : 0
 
-  const handleCardClick = useCallback(() => {
+  const handleFlip = useCallback(() => {
     if (exiting || !current) return
-    if (flipped) {
-      setFlipped(false)
-      return
+    if (!flipped && !practiceMode) {
+      const newState = ensureCardStarted(current.id, userId)
+      setLeitnerState(newState)
     }
-    const newState = ensureCardStarted(current.id, userId)
-    setLeitnerState(newState)
-    setFlipped(true)
-  }, [flipped, exiting, current, userId])
+    setFlipped(value => !value)
+  }, [flipped, exiting, current, userId, practiceMode])
 
   const handleAnswer = useCallback((knew) => {
     if (!flipped || exiting || !current) return
     setExiting(true)
-    const newState = answerCard(current.id, knew, userId)
-    setLeitnerState(newState)
+
+    if (!practiceMode) {
+      const newState = answerCard(current.id, knew, userId)
+      setLeitnerState(newState)
+    }
+
     setStats(s => ({ correct: s.correct + (knew ? 1 : 0), wrong: s.wrong + (knew ? 0 : 1) }))
     setTimeout(() => {
       setFlipped(false)
@@ -140,14 +198,14 @@ export default function FlashcardReviewPage({ params }) {
       if (index + 1 >= cards.length) setDone(true)
       else setIndex(i => i + 1)
     }, 280)
-  }, [flipped, exiting, current, index, cards.length, userId])
+  }, [flipped, exiting, current, index, cards.length, userId, practiceMode])
 
   useEffect(() => {
     function onKey(e) {
       if (done) return
       if (e.code === 'Space' || e.code === 'ArrowUp') {
         e.preventDefault()
-        handleCardClick()
+        handleFlip()
       }
       if (flipped && !exiting) {
         if (e.code === 'ArrowRight') handleAnswer(true)
@@ -156,7 +214,7 @@ export default function FlashcardReviewPage({ params }) {
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [flipped, done, exiting, handleCardClick, handleAnswer])
+  }, [flipped, done, exiting, handleFlip, handleAnswer])
 
   if (!topic) return null
 
@@ -167,35 +225,46 @@ export default function FlashcardReviewPage({ params }) {
           <span className={styles.doneEmoji}>🎉</span>
           <h1 className={styles.doneTitle}>{t.done}</h1>
           <p className={styles.doneSub}>{t.doneSub}</p>
+          {practiceMode && <p className={styles.practiceDoneNote}>{t.practiceNote}</p>}
           <div className={styles.doneStats}>
             <div className={styles.doneStat}><strong>{stats.correct}</strong><span>{t.correct}</span></div>
             <div className={styles.doneStat}><strong>{stats.wrong}</strong><span>{t.wrong}</span></div>
             <div className={styles.doneStat}><strong>{stats.correct + stats.wrong}</strong><span>{t.total}</span></div>
           </div>
-          <Link href="/flashcards" className={styles.backLink}>{t.backLink}</Link>
+          <Link href={lang === 'de' ? '/flashcards' : `/flashcards?lang=${lang}`} className={styles.backLink}>{t.backLink}</Link>
         </div>
       </div>
     </div>
   )
 
-  if (!current) return null
+  if (!current) return (
+    <div className={styles.page} dir={dir}>
+      <div className={styles.doneWrap}>
+        <div className={styles.doneCard}>
+          <span className={styles.doneEmoji}>🗂️</span>
+          <h1 className={styles.doneTitle}>{t.emptyTitle}</h1>
+          <p className={styles.doneSub}>{t.emptySub}</p>
+          <Link href={lang === 'de' ? '/flashcards' : `/flashcards?lang=${lang}`} className={styles.backLink}>{t.backLink}</Link>
+        </div>
+      </div>
+    </div>
+  )
 
-  const frontText = localize(current.front, lang)
-  const answerText = localize(current.answer, lang) || localize(current.back, lang)
-  const explanationText = localize(current.explanation, lang)
-  const diagramText = localize(current.diagram, lang)
+  const answer = localize(current.answer, lang) || localize(current.back, lang)
+  const explanation = localize(current.explanation, lang)
+  const diagram = localize(current.diagram, lang)
 
   return (
     <div className={styles.page} dir={dir}>
       <AuthBanner lang={lang} />
 
       <header className={styles.topBar}>
-        <Link href="/flashcards" className={styles.backBtn}>{t.back}</Link>
+        <Link href={lang === 'de' ? '/flashcards' : `/flashcards?lang=${lang}`} className={styles.backBtn}>{t.back}</Link>
         <div className={styles.topCenter}>
           <span className={styles.topicName}>{topic.title?.[lang] || topic.title?.de}</span>
           <span className={styles.cardCount}>{t.cardOf(index + 1, cards.length)}</span>
         </div>
-        <div className={styles.boxPill}>{boxLabel}</div>
+        <div className={styles.boxPill}>{practiceMode ? t.practiceMode : boxLabel}</div>
       </header>
 
       <div className={styles.progressTrack}>
@@ -204,20 +273,21 @@ export default function FlashcardReviewPage({ params }) {
 
       <main className={styles.main}>
         <div className={styles.categoryRow}>
-          <span className={styles.catBadge}>{current.category?.[lang] || current.category?.de}</span>
+          <span className={styles.catBadge}>{localize(current.category, lang)}</span>
+          {practiceMode && <span className={styles.practiceBadge}>{boxLabel} · {t.practiceNote}</span>}
         </div>
 
         <div
           className={`${styles.stage} ${exiting ? styles.exiting : ''}`}
-          onClick={handleCardClick}
+          onClick={handleFlip}
           role="button"
           tabIndex={0}
           aria-label={flipped ? t.tapBack : t.tap}
-          onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleCardClick() } }}
+          onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleFlip() } }}
         >
           <div className={`${styles.flipper} ${flipped ? styles.flipped : ''}`}>
             <div className={styles.cardFront}>
-              <p className={styles.question}>{frontText}</p>
+              <p className={styles.question}>{localize(current.front, lang)}</p>
               <div className={styles.tapHint}>
                 <span className={styles.tapHintIcon}>↕</span>
                 {t.tap}
@@ -225,25 +295,23 @@ export default function FlashcardReviewPage({ params }) {
             </div>
 
             <div className={styles.cardBack}>
-              <div className={styles.answerWrap}>
-                <div className={styles.backQuestionBlock}>
-                  <span className={styles.backMiniLabel}>{t.questionAgain}</span>
-                  <p className={styles.backQuestion}>{frontText}</p>
+              <div className={styles.backContent}>
+                <div className={styles.answerBlock}>
+                  <span className={styles.answerLabel}>{t.answerLabel}</span>
+                  <p className={styles.answerShort}>{answer}</p>
                 </div>
-                <div>
-                  <span className={styles.backMiniLabel}>{t.answerLabel}</span>
-                  <p className={styles.answer}>{answerText}</p>
-                </div>
-                {explanationText && (
+
+                {explanation && (
                   <div className={styles.explanationBlock}>
-                    <span className={styles.backMiniLabel}>{t.explanationLabel}</span>
-                    <p>{explanationText}</p>
+                    <span className={styles.explanationLabel}>{t.explanationLabel}</span>
+                    <p className={styles.answer}>{explanation}</p>
                   </div>
                 )}
-                {diagramText && (
+
+                {diagram && (
                   <div className={styles.diagramBlock}>
-                    <span className={styles.backMiniLabel}>{t.diagramLabel}</span>
-                    <pre>{diagramText}</pre>
+                    <span>{t.diagramLabel}</span>
+                    <DiagramView text={diagram} />
                   </div>
                 )}
               </div>
@@ -257,10 +325,10 @@ export default function FlashcardReviewPage({ params }) {
 
         <div className={`${styles.answerRow} ${flipped ? styles.answerVisible : ''}`}>
           <button className={styles.dontKnowBtn} onClick={() => handleAnswer(false)}>
-            {t.dontKnow}
+            {practiceMode ? t.practiceDontKnow : t.dontKnow}
           </button>
           <button className={styles.knowBtn} onClick={() => handleAnswer(true)}>
-            {t.know}
+            {practiceMode ? t.practiceKnow : t.know}
           </button>
         </div>
       </main>
