@@ -38,6 +38,25 @@ export const FLASHCARD_TOPICS = [
       "en": "Ultrasound · CT · MRI · atypical forms · DD metastases",
       "fa": "سونوگرافی · CT · MRI · فرم آتیپیک · افتراق از متاستاز"
     }
+  },
+  {
+    "id": "sarkoidose",
+    "area": "Thorax",
+    "chapter": "Lunge",
+    "icon": "🫁",
+    "iconImage": "/fach/thorax.png",
+    "color": "#0284c7",
+    "href": "/flashcards/sarkoidose",
+    "title": {
+      "de": "Sarkoidose",
+      "en": "Sarcoidosis",
+      "fa": "سارکوئیدوز"
+    },
+    "subtitle": {
+      "de": "Scadding · HRCT · Lymphknoten · DD",
+      "en": "Scadding · HRCT · lymph nodes · DD",
+      "fa": "Scadding · HRCT · لنف‌نود · تشخیص افتراقی"
+    }
   }
 ]
 
@@ -1096,6 +1115,421 @@ export const FLASHCARDS = [
       "en": "classic pattern → state benign clearly\natypical → describe + compare",
       "fa": "الگوی کلاسیک → خوش‌خیم بودن واضح\nآتیپیک → توصیف + مقایسه"
     }
+  },
+  {
+    "id": "sarkoidose-01-definition",
+    "category": {
+      "de": "Grundlagen",
+      "en": "Basics",
+      "fa": "مبانی"
+    },
+    "front": {
+      "de": "Was ist die Sarkoidose histologisch?",
+      "en": "What is sarcoidosis histologically?",
+      "fa": "سارکوئیدوز از نظر هیستولوژی چیست؟"
+    },
+    "answer": {
+      "de": "Nicht-verkäsende Granulome.",
+      "en": "Non-caseating granulomas.",
+      "fa": "گرانولوم‌های non-caseating."
+    },
+    "explanation": {
+      "de": "Sarkoidose ist eine systemische granulomatöse Erkrankung unbekannter Ursache. Das Wort „nicht-verkäsende“ hilft besonders bei der Abgrenzung zur Tuberkulose.",
+      "en": "Sarcoidosis is a systemic granulomatous disease of unknown cause. “Non-caseating” is especially useful for distinguishing it from tuberculosis.",
+      "fa": "سارکوئیدوز یک بیماری سیستمیک گرانولوماتوز با علت ناشناخته است. عبارت non-caseating به افتراق از سل کمک می‌کند."
+    },
+    "diagram": {
+      "de": "Sarkoidose → nicht-verkäsend\nTuberkulose → oft verkäsend",
+      "en": "Sarcoidosis → non-caseating\nTuberculosis → often caseating",
+      "fa": "سارکوئیدوز → non-caseating\nسل → اغلب caseating"
+    },
+    "topicId": "sarkoidose"
+  },
+  {
+    "id": "sarkoidose-02-thorax",
+    "category": {
+      "de": "Grundlagen",
+      "en": "Basics",
+      "fa": "مبانی"
+    },
+    "front": {
+      "de": "Welcher Organbereich ist bei Sarkoidose am häufigsten betroffen?",
+      "en": "Which organ region is most often involved in sarcoidosis?",
+      "fa": "در سارکوئیدوز کدام ناحیه بیشتر درگیر می‌شود؟"
+    },
+    "answer": {
+      "de": "Thorax.",
+      "en": "Thorax.",
+      "fa": "توراکس."
+    },
+    "explanation": {
+      "de": "In über 90 % der Fälle sind Lunge oder intrathorakales Lymphsystem betroffen. Deshalb sind Röntgen-Thorax und HRCT zentrale Untersuchungen.",
+      "en": "In more than 90% of cases, the lung or intrathoracic lymphatic system is involved. Chest radiography and HRCT are therefore central.",
+      "fa": "در بیش از ۹۰٪ موارد ریه یا سیستم لنفاوی داخل قفسه سینه درگیر است. بنابراین رادیوگرافی قفسه سینه و HRCT اهمیت زیادی دارند."
+    },
+    "diagram": {
+      "de": "Sarkoidose → >90 % Thorax\nThorax → Lunge + intrathorakale LAP",
+      "en": "Sarcoidosis → >90% thorax\nThorax → lung + intrathoracic nodes",
+      "fa": "سارکوئیدوز → >۹۰٪ توراکس\nتوراکس → ریه + لنف‌نود داخل قفسه سینه"
+    },
+    "topicId": "sarkoidose"
+  },
+  {
+    "id": "sarkoidose-03-verteilung",
+    "category": {
+      "de": "HRCT",
+      "en": "HRCT",
+      "fa": "HRCT"
+    },
+    "front": {
+      "de": "Welches Verteilungsmuster der Noduli ist typisch für Sarkoidose?",
+      "en": "Which nodule distribution is typical for sarcoidosis?",
+      "fa": "کدام توزیع ندول‌ها برای سارکوئیدوز تیپیک است؟"
+    },
+    "answer": {
+      "de": "Perilymphatisch.",
+      "en": "Perilymphatic.",
+      "fa": "پری‌لنفاتیک."
+    },
+    "explanation": {
+      "de": "Die Noduli liegen entlang Pleura, Fissuren, Septen und bronchovaskulären Bündeln. Das ist ein sehr wichtiger Befundungspunkt in der HRCT.",
+      "en": "Nodules are located along pleura, fissures, septa and bronchovascular bundles. This is a key HRCT reporting point.",
+      "fa": "ندول‌ها در امتداد پلور، فیشورها، سپتا و دسته‌های برونکوواسکولار قرار می‌گیرند. این نکته در HRCT بسیار مهم است."
+    },
+    "diagram": {
+      "de": "Pleura/Fissuren/Septen/BV-Bündel → perilymphatisch",
+      "en": "pleura/fissures/septa/BV bundles → perilymphatic",
+      "fa": "پلور/فیشور/سپتا/برونکوواسکولار → پری‌لنفاتیک"
+    },
+    "topicId": "sarkoidose"
+  },
+  {
+    "id": "sarkoidose-04-scadding-i",
+    "category": {
+      "de": "Röntgen/Scadding",
+      "en": "X-ray/Scadding",
+      "fa": "رادیوگرافی/Scadding"
+    },
+    "front": {
+      "de": "Was bedeutet Scadding Stadium I?",
+      "en": "What does Scadding stage I mean?",
+      "fa": "مرحله I در Scadding به چه معناست؟"
+    },
+    "answer": {
+      "de": "Nur bihiläre LAP.",
+      "en": "Bilateral hilar lymphadenopathy only.",
+      "fa": "فقط لنفادنوپاتی بی‌هیلار."
+    },
+    "explanation": {
+      "de": "Das Lungenparenchym ist in Stadium I regelrecht. Dieses Stadium ist klassisch für frühe thorakale Sarkoidose.",
+      "en": "The lung parenchyma is normal in stage I. This is classic for early thoracic sarcoidosis.",
+      "fa": "در مرحله I پارانشیم ریه طبیعی است. این حالت برای سارکوئیدوز توراسیک اولیه تیپیک است."
+    },
+    "diagram": {
+      "de": "I → BHL\nkein Parenchymbefall",
+      "en": "I → BHL\nno parenchymal disease",
+      "fa": "I → BHL\nبدون درگیری پارانشیم"
+    },
+    "topicId": "sarkoidose"
+  },
+  {
+    "id": "sarkoidose-05-scadding-ii-iii",
+    "category": {
+      "de": "Röntgen/Scadding",
+      "en": "X-ray/Scadding",
+      "fa": "رادیوگرافی/Scadding"
+    },
+    "front": {
+      "de": "Scadding II vs. III: Was ist der Unterschied?",
+      "en": "Scadding II vs III: what is the difference?",
+      "fa": "تفاوت مرحله II و III در Scadding چیست؟"
+    },
+    "answer": {
+      "de": "II mit LAP, III ohne LAP.",
+      "en": "II with nodes, III without nodes.",
+      "fa": "II با لنف‌نود، III بدون لنف‌نود."
+    },
+    "explanation": {
+      "de": "Beide haben Parenchymveränderungen. Stadium II kombiniert Parenchymbefall mit bihilärer Lymphadenopathie, Stadium III zeigt Parenchymbefall ohne BHL.",
+      "en": "Both have parenchymal disease. Stage II combines parenchymal involvement with BHL; stage III shows parenchymal disease without BHL.",
+      "fa": "هر دو درگیری پارانشیم دارند. مرحله II همراه با BHL است، مرحله III درگیری پارانشیم بدون BHL است."
+    },
+    "diagram": {
+      "de": "II → BHL + Parenchym\nIII → Parenchym ohne BHL",
+      "en": "II → BHL + parenchyma\nIII → parenchyma without BHL",
+      "fa": "II → BHL + پارانشیم\nIII → پارانشیم بدون BHL"
+    },
+    "topicId": "sarkoidose"
+  },
+  {
+    "id": "sarkoidose-06-scadding-iv",
+    "category": {
+      "de": "Röntgen/Scadding",
+      "en": "X-ray/Scadding",
+      "fa": "رادیوگرافی/Scadding"
+    },
+    "front": {
+      "de": "Was definiert Scadding Stadium IV?",
+      "en": "What defines Scadding stage IV?",
+      "fa": "مرحله IV در Scadding با چه چیزی تعریف می‌شود؟"
+    },
+    "answer": {
+      "de": "Lungenfibrose.",
+      "en": "Pulmonary fibrosis.",
+      "fa": "فیبروز ریه."
+    },
+    "explanation": {
+      "de": "Typisch sind irreguläre Retikulationen, Volumenverlust und Traktionsbronchiektasien. Es handelt sich um chronische strukturelle Umbauveränderungen.",
+      "en": "Typical findings are irregular reticulation, volume loss and traction bronchiectasis. These are chronic structural changes.",
+      "fa": "یافته‌های تیپیک شامل رتیکولاسیون نامنظم، کاهش حجم و برونشکتازی کششی است. این‌ها تغییرات مزمن ساختاری هستند."
+    },
+    "topicId": "sarkoidose"
+  },
+  {
+    "id": "sarkoidose-07-123",
+    "category": {
+      "de": "Lymphknoten",
+      "en": "Lymph nodes",
+      "fa": "لنف‌نودها"
+    },
+    "front": {
+      "de": "Was ist das 1-2-3-Zeichen bei Sarkoidose?",
+      "en": "What is the 1-2-3 sign in sarcoidosis?",
+      "fa": "علامت 1-2-3 در سارکوئیدوز چیست؟"
+    },
+    "answer": {
+      "de": "Beide Hili + rechts paratracheal.",
+      "en": "Both hila + right paratracheal.",
+      "fa": "دو هیلوم + پارا تراکئال راست."
+    },
+    "explanation": {
+      "de": "Gemeint sind rechter Hilus, linker Hilus und rechter Paratrachealraum. Diese symmetrische Verteilung ist sehr typisch.",
+      "en": "It refers to the right hilum, left hilum and right paratracheal region. This symmetric distribution is very typical.",
+      "fa": "منظور هیلوم راست، هیلوم چپ و ناحیه پارا تراکئال راست است. این توزیع متقارن بسیار تیپیک است."
+    },
+    "diagram": {
+      "de": "1 rechter Hilus → 2 linker Hilus → 3 rechts paratracheal",
+      "en": "1 right hilum → 2 left hilum → 3 right paratracheal",
+      "fa": "۱ هیلوم راست → ۲ هیلوم چپ → ۳ پارا تراکئال راست"
+    },
+    "topicId": "sarkoidose"
+  },
+  {
+    "id": "sarkoidose-08-eggshell",
+    "category": {
+      "de": "Lymphknoten/DD",
+      "en": "Lymph nodes/DD",
+      "fa": "لنف‌نود/DD"
+    },
+    "front": {
+      "de": "Warum ist Eggshell-Verkalkung bei Sarkoidose eine DD-Falle?",
+      "en": "Why are eggshell calcifications a differential pitfall in sarcoidosis?",
+      "fa": "چرا کلسیفیکاسیون Eggshell در سارکوئیدوز دام افتراقی است؟"
+    },
+    "answer": {
+      "de": "Auch bei Silikose.",
+      "en": "Also in silicosis.",
+      "fa": "در سیلیکوز هم دیده می‌شود."
+    },
+    "explanation": {
+      "de": "Schalenförmige Lymphknotenverkalkungen können bei Sarkoidose vorkommen, beweisen sie aber nicht. Berufsanamnese und Oberlappenbetonung können Richtung Silikose weisen.",
+      "en": "Eggshell-like nodal calcifications can occur in sarcoidosis but do not prove it. Occupational history and upper-lobe predominance may favour silicosis.",
+      "fa": "کلسیفیکاسیون شبیه پوسته تخم‌مرغ می‌تواند در سارکوئیدوز دیده شود ولی آن را اثبات نمی‌کند. شرح‌حال شغلی و درگیری لوب فوقانی می‌تواند به نفع سیلیکوز باشد."
+    },
+    "diagram": {
+      "de": "Eggshell → Sarkoidose möglich\nEggshell + Quarzstaub → Silikose denken",
+      "en": "eggshell → sarcoidosis possible\neggshell + quartz dust → think silicosis",
+      "fa": "Eggshell → سارکوئیدوز ممکن\nEggshell + غبار کوارتز → سیلیکوز"
+    },
+    "topicId": "sarkoidose"
+  },
+  {
+    "id": "sarkoidose-09-galaxy",
+    "category": {
+      "de": "HRCT-Zeichen",
+      "en": "HRCT signs",
+      "fa": "علائم HRCT"
+    },
+    "front": {
+      "de": "Was ist das Sarcoid Galaxy Sign?",
+      "en": "What is the sarcoid galaxy sign?",
+      "fa": "Sarcoid Galaxy Sign چیست؟"
+    },
+    "answer": {
+      "de": "Großer Knoten mit Satellitennoduli.",
+      "en": "Large nodule with satellite nodules.",
+      "fa": "ندول بزرگ با ندول‌های ماهواره‌ای."
+    },
+    "explanation": {
+      "de": "Es entsteht durch ein Granulom-Aggregat mit vielen kleinen umgebenden Noduli. Wichtig: Das Zeichen ist nicht spezifisch und kann auch bei Tuberkulose auftreten.",
+      "en": "It is caused by a granuloma aggregate surrounded by many small nodules. Important: the sign is not specific and can also occur in tuberculosis.",
+      "fa": "به علت تجمع گرانولوم با ندول‌های کوچک اطراف ایجاد می‌شود. نکته مهم: اختصاصی نیست و در سل هم ممکن است دیده شود."
+    },
+    "diagram": {
+      "de": "großer Knoten + Satelliten → Galaxy\nGalaxy ≠ spezifisch",
+      "en": "large nodule + satellites → galaxy\ngalaxy ≠ specific",
+      "fa": "ندول بزرگ + ماهواره‌ها → Galaxy\nGalaxy ≠ اختصاصی"
+    },
+    "topicId": "sarkoidose"
+  },
+  {
+    "id": "sarkoidose-10-cluster",
+    "category": {
+      "de": "HRCT-Zeichen",
+      "en": "HRCT signs",
+      "fa": "علائم HRCT"
+    },
+    "front": {
+      "de": "Was bedeutet Cluster Sign bei Sarkoidose?",
+      "en": "What does the cluster sign mean in sarcoidosis?",
+      "fa": "Cluster Sign در سارکوئیدوز یعنی چه؟"
+    },
+    "answer": {
+      "de": "Viele eng gruppierte kleine Noduli.",
+      "en": "Many tightly grouped small nodules.",
+      "fa": "ندول‌های کوچک و بسیار نزدیک به هم."
+    },
+    "explanation": {
+      "de": "Die Noduli liegen so dicht zusammen, dass sie fast wie ein einzelner Herd wirken. Das hilft, noduläre Sarkoidosemuster zu erkennen.",
+      "en": "The nodules are so closely packed that they almost mimic a single lesion. This helps recognize nodular sarcoid patterns.",
+      "fa": "ندول‌ها آنقدر نزدیک هستند که تقریباً شبیه یک ضایعه واحد دیده می‌شوند. این موضوع به تشخیص الگوهای ندولار سارکوئیدوز کمک می‌کند."
+    },
+    "topicId": "sarkoidose"
+  },
+  {
+    "id": "sarkoidose-11-lymphangiosis",
+    "category": {
+      "de": "Differentialdiagnose",
+      "en": "Differential diagnosis",
+      "fa": "تشخیص افتراقی"
+    },
+    "front": {
+      "de": "Sarkoidose vs. Lymphangiosis carcinomatosa: Was spricht eher für Lymphangiosis?",
+      "en": "Sarcoidosis vs lymphangitic carcinomatosis: what favours lymphangitic spread?",
+      "fa": "سارکوئیدوز در برابر لنفانژیوز کارسینوماتوز: چه چیزی بیشتر به نفع لنفانژیوز است؟"
+    },
+    "answer": {
+      "de": "Asymmetrische knotige Septenverdickung.",
+      "en": "Asymmetric nodular septal thickening.",
+      "fa": "ضخیم‌شدن سپتای ندولار نامتقارن."
+    },
+    "explanation": {
+      "de": "Lymphangiosis carcinomatosa ist oft einseitig oder asymmetrisch und klinisch aggressiver. Sarkoidose zeigt typischer eher symmetrische LAP und perilymphatische Mikronoduli.",
+      "en": "Lymphangitic carcinomatosis is often unilateral or asymmetric and clinically more aggressive. Sarcoidosis more typically shows symmetric nodes and perilymphatic micronodules.",
+      "fa": "لنفانژیوز کارسینوماتوز اغلب یک‌طرفه یا نامتقارن و از نظر بالینی تهاجمی‌تر است. سارکوئیدوز بیشتر لنف‌نودهای متقارن و میکروندول‌های پری‌لنفاتیک دارد."
+    },
+    "diagram": {
+      "de": "Sarkoidose → symmetrisch/perilymphatisch\nLymphangiosis → asymmetrisch/septal knotig",
+      "en": "sarcoidosis → symmetric/perilymphatic\nlymphangitic spread → asymmetric/nodular septa",
+      "fa": "سارکوئیدوز → متقارن/پری‌لنفاتیک\nلنفانژیوز → نامتقارن/سپتای ندولار"
+    },
+    "topicId": "sarkoidose"
+  },
+  {
+    "id": "sarkoidose-12-tb",
+    "category": {
+      "de": "Differentialdiagnose",
+      "en": "Differential diagnosis",
+      "fa": "تشخیص افتراقی"
+    },
+    "front": {
+      "de": "Warum kann das Galaxy Sign nicht allein Sarkoidose beweisen?",
+      "en": "Why can the galaxy sign not prove sarcoidosis by itself?",
+      "fa": "چرا Galaxy Sign به تنهایی سارکوئیدوز را اثبات نمی‌کند؟"
+    },
+    "answer": {
+      "de": "Es kommt auch bei Tuberkulose vor.",
+      "en": "It can also occur in tuberculosis.",
+      "fa": "در سل هم ممکن است دیده شود."
+    },
+    "explanation": {
+      "de": "Tuberkulose kann ein ähnliches noduläres Erscheinungsbild zeigen. Asymmetrie, Kavernen, klinischer Kontext und mikrobiologische Befunde helfen bei der Differenzierung.",
+      "en": "Tuberculosis can show a similar nodular appearance. Asymmetry, cavitation, clinical context and microbiology help differentiate.",
+      "fa": "سل می‌تواند ظاهر ندولار مشابه ایجاد کند. عدم تقارن، کاویته، زمینه بالینی و میکروبیولوژی در افتراق کمک می‌کنند."
+    },
+    "topicId": "sarkoidose"
+  },
+  {
+    "id": "sarkoidose-13-heerdordt",
+    "category": {
+      "de": "Extrapulmonal",
+      "en": "Extrapulmonary",
+      "fa": "خارج ریوی"
+    },
+    "front": {
+      "de": "Welche Trias gehört zum Heerfordt-Syndrom?",
+      "en": "Which triad belongs to Heerfordt syndrome?",
+      "fa": "کدام سه‌گانه مربوط به سندرم Heerfordt است؟"
+    },
+    "answer": {
+      "de": "Uveitis, Parotitis, Fazialisparese.",
+      "en": "Uveitis, parotitis, facial palsy.",
+      "fa": "یووئیت، پاروتیت، فلج فاسیال."
+    },
+    "explanation": {
+      "de": "Das Heerfordt-Syndrom ist eine extrapulmonale Manifestation der Sarkoidose und verbindet Augen-, Speicheldrüsen- und Nervenbeteiligung.",
+      "en": "Heerfordt syndrome is an extrapulmonary sarcoidosis manifestation combining eye, salivary gland and nerve involvement.",
+      "fa": "سندرم Heerfordt یک تظاهر خارج ریوی سارکوئیدوز است و درگیری چشم، غده بزاقی و عصب را ترکیب می‌کند."
+    },
+    "diagram": {
+      "de": "Uveitis + Parotitis + Fazialisparese → Heerfordt",
+      "en": "uveitis + parotitis + facial palsy → Heerfordt",
+      "fa": "یووئیت + پاروتیت + فلج فاسیال → Heerfordt"
+    },
+    "topicId": "sarkoidose"
+  },
+  {
+    "id": "sarkoidose-14-kardial",
+    "category": {
+      "de": "Extrapulmonal",
+      "en": "Extrapulmonary",
+      "fa": "خارج ریوی"
+    },
+    "front": {
+      "de": "Welche Bildgebung ist wichtig bei Verdacht auf kardiale Sarkoidose?",
+      "en": "Which imaging is important when cardiac sarcoidosis is suspected?",
+      "fa": "در شک به سارکوئیدوز قلبی کدام تصویربرداری مهم است؟"
+    },
+    "answer": {
+      "de": "MRT mit LGE.",
+      "en": "MRI with LGE.",
+      "fa": "MRI با LGE."
+    },
+    "explanation": {
+      "de": "Late Gadolinium Enhancement kann kardiale Beteiligung zeigen. Klinisch ist das wichtig, weil kardiale Sarkoidose mit Rhythmusstörungen assoziiert ist.",
+      "en": "Late gadolinium enhancement can show cardiac involvement. This is clinically important because cardiac sarcoidosis is associated with arrhythmias.",
+      "fa": "Late Gadolinium Enhancement می‌تواند درگیری قلب را نشان دهد. از نظر بالینی مهم است چون سارکوئیدوز قلبی با آریتمی همراه است."
+    },
+    "topicId": "sarkoidose"
+  },
+  {
+    "id": "sarkoidose-15-asbest-silikose",
+    "category": {
+      "de": "Differentialdiagnose",
+      "en": "Differential diagnosis",
+      "fa": "تشخیص افتراقی"
+    },
+    "front": {
+      "de": "Asbestose vs. Sarkoidose: Welche Verteilung spricht eher für Asbestose?",
+      "en": "Asbestosis vs sarcoidosis: which distribution favours asbestosis?",
+      "fa": "آزبستوز در برابر سارکوئیدوز: کدام توزیع بیشتر به نفع آزبستوز است؟"
+    },
+    "answer": {
+      "de": "Basal und subpleural.",
+      "en": "Basal and subpleural.",
+      "fa": "بازال و ساب‌پلورال."
+    },
+    "explanation": {
+      "de": "Asbestose zeigt eher basale subpleurale Fibrose und Pleuraplaques. Sarkoidose betrifft typischer Ober- und Mittelfelder mit perilymphatischen Noduli.",
+      "en": "Asbestosis more often shows basal subpleural fibrosis and pleural plaques. Sarcoidosis typically affects upper/middle zones with perilymphatic nodules.",
+      "fa": "آزبستوز بیشتر فیبروز بازال ساب‌پلورال و پلاک پلور دارد. سارکوئیدوز معمولاً نواحی فوقانی/میانی و ندول‌های پری‌لنفاتیک دارد."
+    },
+    "diagram": {
+      "de": "Asbestose → basal/subpleural + Pleuraplaques\nSarkoidose → ober-/mittelfeld + perilymphatisch",
+      "en": "asbestosis → basal/subpleural + pleural plaques\nsarcoidosis → upper/middle zones + perilymphatic",
+      "fa": "آزبستوز → بازال/ساب‌پلورال + پلاک پلور\nسارکوئیدوز → فوقانی/میانی + پری‌لنفاتیک"
+    },
+    "topicId": "sarkoidose"
   }
 ]
 
