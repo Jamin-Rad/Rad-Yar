@@ -882,10 +882,10 @@ export const CURRICULUM = [
               "LAP"
             ],
             "diff": 2,
-            "link": "/thorax/lunge/sarkoidose",
+            "link": "/lunge/sarkoidose",
             "mcqLink": "/ueben/quiz?fach=thorax&n=10&themen=sarkoidose",
             "flashcardLink": "/flashcards/sarkoidose",
-            "fallLink": "/thorax/lunge/sarkoidose#fallbeispiele",
+            "fallLink": "/lunge/sarkoidose#fallbeispiele",
             "ready": true,
             "updatedAt": "2026-06-07"
           },
