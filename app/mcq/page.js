@@ -61,11 +61,19 @@ const TOPICS = [
     name: { de: 'Leber · Hämangiome', en: 'Liver · Haemangiomas', fa: 'کبد · همانژیوم' },
     desc: { de: 'Sono · CT · MRT · DWI · atypische Formen', en: 'Ultrasound · CT · MRI · DWI · atypical forms', fa: 'سونوگرافی · CT · MRI · DWI · فرم آتیپیک' },
   },
+  {
+    key: 'sarkoidose',
+    href: '/ueben/quiz?fach=thorax&n=10&themen=sarkoidose',
+    icon: '🫁', iconImage: '/fach/thorax.png', color: '#0284c7', available: true,
+    count: { de: '10 Fragen', en: '10 Questions', fa: '۱۰ سوال' },
+    name: { de: 'Lunge · Sarkoidose', en: 'Lung · Sarcoidosis', fa: 'ریه · سارکوئیدوز' },
+    desc: { de: 'Scadding · HRCT · perilymphatische Noduli · DD', en: 'Scadding · HRCT · perilymphatic nodules · DD', fa: 'Scadding · HRCT · ندول‌های پری‌لنفاتیک · DD' },
+  },
   { key: 'mrt',    icon: '🧲', iconImage: '/fach/technik.png', color: '#7c3aed', available: false, name: { de: 'MRT-Physik',     en: 'MRI Physics',    fa: 'فیزیک MRI' } },
   { key: 'ct',     icon: '🩻', iconImage: '/fach/technik.png', color: '#0ea5e9', available: false, name: { de: 'CT-Technik',     en: 'CT Technology',  fa: 'تکنولوژی CT' } },
   { key: 'strah',  icon: '🛡️', iconImage: '/fach/technik.png', color: '#d97706', available: false, name: { de: 'Strahlenschutz', en: 'Radiation Protection', fa: 'حفاظت از تابش' } },
   { key: 'neuro',  icon: '🧠', iconImage: '/fach/gehirn.png', color: '#7c3aed', available: false, name: { de: 'Neuroradiologie',en: 'Neuroradiology', fa: 'نوروراديولوژی' } },
-  { key: 'thorax', icon: '🫁', iconImage: '/fach/thorax.png', color: '#0ea5e9', available: false, name: { de: 'Thorax',         en: 'Thorax',         fa: 'توراکس' } },
+  { key: 'thorax-soon', icon: '🫁', iconImage: '/fach/thorax.png', color: '#0ea5e9', available: false, name: { de: 'Weitere Thorax-Themen', en: 'More thorax topics', fa: 'موضوعات بیشتر توراکس' } },
 ]
 
 const UI = {
