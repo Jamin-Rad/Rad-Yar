@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
+import { CURRICULUM, THEMA_TRANSLATIONS } from '@/data/curriculum'
 import styles from './LernPfade.module.css'
 
 const COLORS = [
@@ -39,49 +40,97 @@ const PROFILE_CTA = {
 }
 
 
-const LATEST = {
+
+const LATEST_COPY = {
   de: {
     label: 'Neu auf RadYar',
     title: 'Zuletzt hinzugefügt',
-    desc: 'Die neuesten Lern- und MCQ-Bereiche auf einen Blick.',
+    desc: 'Wird automatisch aus den aktuell freigeschalteten Themen aktualisiert.',
     open: 'Öffnen →',
-    items: [
-      { icon:'🦵', title:'Meniskus', meta:'MSK · Knie · Lernen', href:'/msk/knie/meniskus' },
-      { icon:'📝', title:'Meniskus MCQs', meta:'6 neue Fragen · DE/EN/FA', href:'/msk/knie/meniskus/mcq' },
-      { icon:'🧪', title:'Kontrastmittel MCQs', meta:'Technik · Sicherheit · Nebenwirkungen', href:'/technik/kontrastmittel/mcq' },
-      { icon:'🧠', title:'Kopf-Struktur', meta:'Tumoren · Vaskulär · Entzündung', href:'/lernen/gehirn' },
-      { icon:'🦴', title:'MSK-Verzeichnis', meta:'Trauma · Gelenke · Tumoren', href:'/lernen/msk' },
-      { icon:'🎛️', title:'MCQ-Training nach Themen', meta:'Mehrere Themen kombinieren', href:'/ueben' },
-    ],
+    learn: 'Lernen',
+    mcq: 'MCQ',
+    flashcards: 'Flashcards',
+    cases: 'Fallbeispiele',
+    noCases: 'Noch keine Fallbeispiele verknüpft.',
   },
   en: {
     label: 'New on RadYar',
     title: 'Recently added',
-    desc: 'The newest learning and MCQ areas at a glance.',
+    desc: 'Automatically updated from the currently available topics.',
     open: 'Open →',
-    items: [
-      { icon:'🦵', title:'Meniscus', meta:'MSK · Knee · Learn', href:'/msk/knie/meniskus' },
-      { icon:'📝', title:'Meniscus MCQs', meta:'6 new questions · DE/EN/FA', href:'/msk/knie/meniskus/mcq' },
-      { icon:'🧪', title:'Contrast media MCQs', meta:'Technique · safety · side effects', href:'/technik/kontrastmittel/mcq' },
-      { icon:'🧠', title:'Head structure', meta:'Tumours · vascular · inflammation', href:'/lernen/gehirn' },
-      { icon:'🦴', title:'MSK directory', meta:'Trauma · joints · tumours', href:'/lernen/msk' },
-      { icon:'🎛️', title:'Topic-based MCQ training', meta:'Combine multiple topics', href:'/ueben' },
-    ],
+    learn: 'Learn',
+    mcq: 'MCQ',
+    flashcards: 'Flashcards',
+    cases: 'Cases',
+    noCases: 'No case links yet.',
   },
   fa: {
     label: 'تازه در RadYar',
     title: 'آخرین موارد اضافه‌شده',
-    desc: 'جدیدترین بخش‌های آموزشی و MCQ در یک نگاه.',
+    desc: 'به‌صورت خودکار از موضوعات فعال فعلی به‌روزرسانی می‌شود.',
     open: 'باز کردن ←',
-    items: [
-      { icon:'🦵', title:'منیسک', meta:'MSK · زانو · آموزش', href:'/msk/knie/meniskus' },
-      { icon:'📝', title:'MCQ منیسک', meta:'۶ سؤال جدید · DE/EN/FA', href:'/msk/knie/meniskus/mcq' },
-      { icon:'🧪', title:'MCQ ماده حاجب', meta:'تکنیک · ایمنی · عوارض', href:'/technik/kontrastmittel/mcq' },
-      { icon:'🧠', title:'ساختار Kopf', meta:'تومورها · عروقی · التهابی', href:'/lernen/gehirn' },
-      { icon:'🦴', title:'فهرست MSK', meta:'تروما · مفاصل · تومورها', href:'/lernen/msk' },
-      { icon:'🎛️', title:'تمرین MCQ بر اساس موضوع', meta:'ترکیب چند موضوع', href:'/ueben' },
-    ],
+    learn: 'آموزش',
+    mcq: 'MCQ',
+    flashcards: 'فلش‌کارت',
+    cases: 'نمونه کیس‌ها',
+    noCases: 'هنوز لینک Fallbeispiele وجود ندارد.',
   },
+}
+
+function localizeTitle(item, lang) {
+  if (!item) return ''
+  if (typeof item.title === 'object') return item.title[lang] || item.title.de || ''
+  return THEMA_TRANSLATIONS[item.id]?.[lang] || item.title || ''
+}
+
+function collectReadyTopics() {
+  const rows = []
+  const visit = (topic, area, chapter) => {
+    if (topic?.ready && topic?.link) rows.push({ topic, area, chapter })
+    topic?.sub?.forEach(child => visit(child, area, chapter))
+  }
+
+  CURRICULUM.forEach(area => {
+    area.kapitel?.forEach(chapter => {
+      chapter.themen?.forEach(topic => visit(topic, area, chapter))
+    })
+  })
+
+  return rows.sort((a, b) => {
+    const da = new Date(a.topic.updatedAt || a.topic.addedAt || '2000-01-01')
+    const db = new Date(b.topic.updatedAt || b.topic.addedAt || '2000-01-01')
+    return db - da
+  })
+}
+
+function buildLatestItems(lang, copy) {
+  const rows = []
+  collectReadyTopics().forEach(({ topic, area, chapter }) => {
+    const title = localizeTitle(topic, lang)
+    const chapterTitle = localizeTitle(chapter, lang) || chapter?.title || ''
+    const areaTitle = area?.key || area?.id || ''
+    const icon = area?.icon || '✨'
+    const metaBase = [areaTitle, chapterTitle].filter(Boolean).join(' · ')
+
+    rows.push({ icon, title, meta: `${metaBase} · ${copy.learn}`, href: topic.link })
+    if (topic.mcqLink) rows.push({ icon: '📝', title: `${title} · ${copy.mcq}`, meta: metaBase, href: topic.mcqLink })
+    if (topic.flashcardLink) rows.push({ icon: '🧠', title: `${title} · ${copy.flashcards}`, meta: metaBase, href: topic.flashcardLink })
+    if (topic.fallLink || topic.link) rows.push({ icon: '🧪', title: `${title} · ${copy.cases}`, meta: metaBase, href: topic.fallLink || `${topic.link}#fallbeispiele` })
+  })
+  return rows.slice(0, 6)
+}
+
+function buildFallTopicItems(lang) {
+  return collectReadyTopics()
+    .filter(({ topic }) => topic.fallLink || topic.link)
+    .map(({ topic, area, chapter }) => ({
+      id: topic.id,
+      icon: area?.icon || '🧪',
+      color: area?.color || '#f97316',
+      title: localizeTitle(topic, lang),
+      meta: [area?.key, localizeTitle(chapter, lang) || chapter?.title].filter(Boolean).join(' · '),
+      href: topic.fallLink || `${topic.link}#fallbeispiele`,
+    }))
 }
 
 export default function LernPfade() {
@@ -90,8 +139,15 @@ export default function LernPfade() {
   const [modal, setModal] = useState(null) // null | 'fall'
   const fm = FALL_MODAL[lang] || FALL_MODAL.de
   const cta = PROFILE_CTA[lang] || PROFILE_CTA.de
-  const latest = LATEST[lang] || LATEST.de
-  const withLang = (href) => lang === 'de' ? href : `${href}?lang=${lang}`
+  const latest = LATEST_COPY[lang] || LATEST_COPY.de
+  const latestItems = buildLatestItems(lang, latest)
+  const fallTopicItems = buildFallTopicItems(lang)
+  const withLang = (href) => {
+    if (lang === 'de') return href
+    const [baseAndQuery, hash = ''] = href.split('#')
+    const sep = baseAndQuery.includes('?') ? '&' : '?'
+    return `${baseAndQuery}${sep}lang=${lang}${hash ? `#${hash}` : ''}`
+  }
 
   const handleCard = (i) => {
     if (i === 0) { router.push('/lernen'); return }
@@ -150,7 +206,7 @@ export default function LernPfade() {
           </div>
         </div>
         <div className={styles.latestGrid}>
-          {latest.items.slice(0, 6).map(item => (
+          {latestItems.map(item => (
             <Link key={item.href} href={withLang(item.href)} className={styles.latestCard}>
               <span className={styles.latestIcon}>{item.icon}</span>
               <span className={styles.latestText}>
@@ -170,6 +226,23 @@ export default function LernPfade() {
             <button className={styles.fallModalClose} onClick={() => setModal(null)} aria-label={fm.close}>×</button>
             <div className={styles.modalTitle}>{fm.title}</div>
             <p className={styles.notReadyMsg}>{fm.msg}</p>
+            {fallTopicItems.length > 0 ? (
+              <div className={styles.fallTopicGrid}>
+                {fallTopicItems.map(item => (
+                  <Link key={item.id} href={withLang(item.href)} className={styles.fallTopicCard}>
+                    <span className={styles.fallTopicIcon} style={{ color: item.color }}>{item.icon}</span>
+                    <span>
+                      <strong>{item.title}</strong>
+                      <small>{item.meta} · {fm.title}</small>
+                    </span>
+                    <em>{latest.open}</em>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <div className={styles.emptyFallTopics}>{latest.noCases}</div>
+            )}
+
             <div className={styles.fallRegionGrid}>
               {FALL_REGIONS.map(region => (
                 <button key={region.id} type="button" className={styles.fallRegionCard} style={{ borderColor: region.color + '44' }}>
