@@ -449,3 +449,48 @@
   .table { min-width: 560px; }
   .takeHomeItem { grid-template-columns: 54px 1fr; }
 }
+
+.casePlaceholder {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  border-radius: 22px;
+  padding: 18px;
+  background: linear-gradient(135deg, #fff7ed, #ffffff);
+  border: 1px solid rgba(249, 115, 22, 0.22);
+}
+
+.casePlaceholder span {
+  width: 58px;
+  height: 58px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 20px;
+  background: rgba(249, 115, 22, 0.12);
+  font-size: 28px;
+}
+
+.casePlaceholder h3 {
+  margin: 0 0 6px;
+  color: #0d1b2a;
+  font-size: 18px;
+}
+
+.casePlaceholder p {
+  margin: 0;
+  color: #536174;
+  line-height: 1.7;
+}
+
+[dir='rtl'] .casePlaceholder {
+  text-align: right;
+}
+
+:global(html[data-theme='dark']) .casePlaceholder {
+  background: linear-gradient(135deg, rgba(249,115,22,0.12), rgba(15,23,42,0.92));
+  border-color: rgba(249,115,22,0.24);
+}
+
+:global(html[data-theme='dark']) .casePlaceholder h3 { color: #f8fafc; }
+:global(html[data-theme='dark']) .casePlaceholder p { color: #b8c4d8; }

@@ -719,6 +719,31 @@ const CONTENT = {
   }
 }
 
+
+const CASE_COPY = {
+  de: {
+    label: 'Fallbeispiele',
+    title: 'Fallbeispiele',
+    lead: 'Dieser Abschnitt ist als Ziel für die automatische Fallbeispiele-Verknüpfung vorbereitet. Konkrete Fälle können hier später ergänzt werden.',
+    placeholderTitle: 'Fallbeispiele werden ergänzt',
+    placeholderText: 'Sobald echte Bildfälle zu Leberhämangiomen vorhanden sind, erscheinen sie hier direkt im Kapitel.',
+  },
+  en: {
+    label: 'Cases',
+    title: 'Cases',
+    lead: 'This section is prepared as the target for automatic case links. Concrete cases can be added here later.',
+    placeholderTitle: 'Cases will be added',
+    placeholderText: 'As soon as real imaging cases for liver haemangiomas are available, they will appear directly in this chapter.',
+  },
+  fa: {
+    label: 'نمونه کیس‌ها',
+    title: 'نمونه کیس‌ها',
+    lead: 'این بخش به عنوان مقصد لینک خودکار Fallbeispiele آماده شده است. کیس‌های واقعی بعداً همین‌جا اضافه می‌شوند.',
+    placeholderTitle: 'کیس‌ها بعداً اضافه می‌شوند',
+    placeholderText: 'به محض آماده شدن کیس‌های تصویری واقعی برای همانژیوم کبد، همین‌جا داخل فصل نمایش داده می‌شوند.',
+  },
+}
+
 function Table({ headers, rows }) {
   return (
     <div className={styles.tableWrap}>
@@ -768,11 +793,20 @@ function Section({ id, title, lead, children }) {
 export default function LeberHaemangiomPage() {
   const { lang } = useLanguage()
   const copy = CONTENT[lang] || CONTENT.de
+  const caseCopy = CASE_COPY[lang] || CASE_COPY.de
+  const pageSections = useMemo(() => {
+    const exists = copy.sections.some(section => section.id === 'fallbeispiele')
+    if (exists) return copy.sections
+    const takeHomeIndex = copy.sections.findIndex(section => section.id === 'takehome')
+    const caseSection = { id: 'fallbeispiele', label: caseCopy.label, icon: '🧪' }
+    if (takeHomeIndex === -1) return [...copy.sections, caseSection]
+    return [...copy.sections.slice(0, takeHomeIndex), caseSection, ...copy.sections.slice(takeHomeIndex)]
+  }, [copy.sections, caseCopy.label])
   const isRTL = lang === 'fa'
-  const [activeId, setActiveId] = useState(copy.sections[0].id)
+  const [activeId, setActiveId] = useState(pageSections[0].id)
   const withLang = (href) => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
 
-  const sectionIds = useMemo(() => copy.sections.map(section => section.id), [copy.sections])
+  const sectionIds = useMemo(() => pageSections.map(section => section.id), [pageSections])
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -827,7 +861,7 @@ export default function LeberHaemangiomPage() {
       <div className={styles.layout}>
         <aside className={styles.sidebar}>
           <div className={styles.sideTitle}>{copy.toc}</div>
-          {copy.sections.map(section => (
+          {pageSections.map(section => (
             <button
               type="button"
               key={section.id}
@@ -886,6 +920,17 @@ export default function LeberHaemangiomPage() {
             <Table headers={copy.atypical.tableHeaders} rows={copy.atypical.tableRows} />
             <Callout type="cave" label={copy.caveLabel}>{copy.atypical.cave}</Callout>
             <Callout label={copy.keyLabel}>{copy.atypical.key}</Callout>
+          </Section>
+
+
+          <Section id="fallbeispiele" title={caseCopy.title} lead={caseCopy.lead}>
+            <div className={styles.casePlaceholder}>
+              <span>🧪</span>
+              <div>
+                <h3>{caseCopy.placeholderTitle}</h3>
+                <p>{caseCopy.placeholderText}</p>
+              </div>
+            </div>
           </Section>
 
           <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead}>
