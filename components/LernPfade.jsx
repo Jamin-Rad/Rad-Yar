@@ -45,7 +45,7 @@ const LATEST_COPY = {
   de: {
     label: 'Neu auf RadYar',
     title: 'Zuletzt hinzugefügt',
-    desc: 'Wird automatisch aus den aktuell freigeschalteten Themen aktualisiert.',
+    desc: 'Zeigt nur neu hinzugefügte Lernkapitel.',
     open: 'Öffnen →',
     learn: 'Lernen',
     mcq: 'MCQ',
@@ -56,7 +56,7 @@ const LATEST_COPY = {
   en: {
     label: 'New on RadYar',
     title: 'Recently added',
-    desc: 'Automatically updated from the currently available topics.',
+    desc: 'Shows only newly added learning chapters.',
     open: 'Open →',
     learn: 'Learn',
     mcq: 'MCQ',
@@ -67,7 +67,7 @@ const LATEST_COPY = {
   fa: {
     label: 'تازه در RadYar',
     title: 'آخرین موارد اضافه‌شده',
-    desc: 'به‌صورت خودکار از موضوعات فعال فعلی به‌روزرسانی می‌شود.',
+    desc: 'فقط فصل‌های آموزشی تازه اضافه‌شده را نشان می‌دهد.',
     open: 'باز کردن ←',
     learn: 'آموزش',
     mcq: 'MCQ',
@@ -104,20 +104,23 @@ function collectReadyTopics() {
 }
 
 function buildLatestItems(lang, copy) {
-  const rows = []
-  collectReadyTopics().forEach(({ topic, area, chapter }) => {
-    const title = localizeTitle(topic, lang)
-    const chapterTitle = localizeTitle(chapter, lang) || chapter?.title || ''
-    const areaTitle = area?.key || area?.id || ''
-    const icon = area?.icon || '✨'
-    const metaBase = [areaTitle, chapterTitle].filter(Boolean).join(' · ')
+  return collectReadyTopics()
+    .filter(({ topic }) => topic?.ready && topic?.link)
+    .slice(0, 6)
+    .map(({ topic, area, chapter }) => {
+      const title = localizeTitle(topic, lang)
+      const chapterTitle = localizeTitle(chapter, lang) || chapter?.title || ''
+      const areaTitle = area?.key || area?.id || ''
+      const icon = area?.icon || '✨'
+      const metaBase = [areaTitle, chapterTitle].filter(Boolean).join(' · ')
 
-    rows.push({ icon, title, meta: `${metaBase} · ${copy.learn}`, href: topic.link })
-    if (topic.mcqLink) rows.push({ icon: '📝', title: `${title} · ${copy.mcq}`, meta: metaBase, href: topic.mcqLink })
-    if (topic.flashcardLink) rows.push({ icon: '🧠', title: `${title} · ${copy.flashcards}`, meta: metaBase, href: topic.flashcardLink })
-    if (topic.fallLink || topic.link) rows.push({ icon: '🧪', title: `${title} · ${copy.cases}`, meta: metaBase, href: topic.fallLink || `${topic.link}#fallbeispiele` })
-  })
-  return rows.slice(0, 6)
+      return {
+        icon,
+        title,
+        meta: `${metaBase} · ${copy.learn}`,
+        href: topic.link,
+      }
+    })
 }
 
 function buildFallTopicItems(lang) {
