@@ -1,11 +1,13 @@
 'use client'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { useState } from 'react'
-import { SignedIn, SignedOut, UserButton, useUser } from '@clerk/nextjs'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useTheme } from '@/providers/ThemeProvider'
 import SearchBar from './SearchBar'
 import styles from './Navbar.module.css'
+
+const ClerkNavActions = dynamic(() => import('./ClerkNavActions'), { ssr: false })
 
 function HexLogo({ size = 32 }) {
   return (
@@ -57,16 +59,12 @@ function getGreeting(lang) {
 export default function Navbar() {
   const { lang, texts, setLang } = useLanguage()
   const { theme, toggleTheme } = useTheme()
-  const { user } = useUser()
   const [search, setSearch] = useState(false)
 
   const themeLabel = theme === 'dark'
     ? (lang === 'fa' ? 'تم روشن' : lang === 'en' ? 'Light theme' : 'Helles Theme')
     : (lang === 'fa' ? 'تم تاریک' : lang === 'en' ? 'Dark theme' : 'Dunkles Theme')
 
-  const signInLabel  = lang === 'fa' ? 'ورود' : lang === 'en' ? 'Sign in'  : 'Anmelden'
-  const profilLabel  = lang === 'fa' ? 'پروفایل' : lang === 'en' ? 'Profile' : 'Mein Profil'
-  const greeting = getGreeting(lang)
 
   return (
     <>
@@ -104,28 +102,8 @@ export default function Navbar() {
             <button className={`${styles.langBtn} ${lang==='fa'?styles.langOn:''}`} onClick={() => setLang('fa')}>FA</button>
           </div>
 
-          {/* 4. Nicht angemeldet */}
-          <SignedOut>
-            <Link href="/sign-in" className={styles.signInBtn}>{signInLabel}</Link>
-          </SignedOut>
-
-          {/* 4. Angemeldet — Begrüßung + Avatar */}
-          <SignedIn>
-            {user?.firstName && (
-              <span className={styles.greeting}>
-                {greeting}, <strong>{user.firstName}</strong>
-              </span>
-            )}
-            <UserButton afterSignOutUrl="/">
-              <UserButton.MenuItems>
-                <UserButton.Link
-                  label={profilLabel}
-                  labelIcon={<span style={{ fontSize: 14 }}>👤</span>}
-                  href="/profil"
-                />
-              </UserButton.MenuItems>
-            </UserButton>
-          </SignedIn>
+          {/* 4. Anmeldung / Profil: dynamisch geladen, damit der Build nicht an Clerk-Hooks hängen bleibt */}
+          <ClerkNavActions lang={lang} />
         </div>
       </nav>
       {search && <SearchBar onClose={() => setSearch(false)} />}
