@@ -95,8 +95,7 @@ function localize(value, lang) {
 
 
 function DiagramView({ text }) {
-  const lines = String(text || '').split('
-').map(line => line.trim()).filter(Boolean)
+  const lines = String(text || '').split('\n').map(line => line.trim()).filter(Boolean)
   return (
     <div className={styles.diagramFlow}>
       {lines.map((line, lineIndex) => {
