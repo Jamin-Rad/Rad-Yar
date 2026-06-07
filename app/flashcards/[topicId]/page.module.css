@@ -184,6 +184,8 @@
 
 .cardBack {
   transform: rotateY(180deg);
+  justify-content: flex-start;
+  overflow: auto;
   background:
     radial-gradient(circle at 10% 92%, rgba(16, 185, 129, 0.09), transparent 18rem),
     var(--bg-card);
@@ -211,14 +213,70 @@
 
 .answer {
   margin: 0;
-  font-size: clamp(15px, 2vw, 17px);
-  line-height: 1.85;
-  color: var(--text);
-  font-weight: 500;
-  flex: 1;
-  display: flex;
-  align-items: flex-start;
+  font-size: clamp(18px, 2.4vw, 24px);
+  line-height: 1.45;
+  color: var(--text-strong);
+  font-weight: 900;
 }
+
+.answerWrap {
+  display: grid;
+  gap: 16px;
+}
+
+.backMiniLabel {
+  display: inline-flex;
+  margin-bottom: 6px;
+  color: var(--orange);
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.backQuestionBlock {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.backQuestion {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.55;
+  font-weight: 800;
+}
+
+.explanationBlock {
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+}
+
+.explanationBlock p {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 15px;
+}
+
+.diagramBlock {
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  background: rgba(249, 115, 22, .08);
+  border: 1px solid rgba(249, 115, 22, .20);
+}
+
+.diagramBlock pre {
+  margin: 0;
+  white-space: pre-wrap;
+  color: var(--text-strong);
+  font-family: var(--font-main);
+  line-height: 1.7;
+  font-weight: 850;
+}
+
 
 /* Kleiner Hinweis am Kartenende */
 .tapHint {
@@ -404,7 +462,10 @@
 [dir='rtl'] .answerRow    { direction: rtl; }
 [dir='rtl'] .catBadge     { letter-spacing: 0; }
 [dir='rtl'] .question,
-[dir='rtl'] .answer       { direction: rtl; text-align: right; }
+[dir='rtl'] .answer,
+[dir='rtl'] .backQuestion,
+[dir='rtl'] .explanationBlock,
+[dir='rtl'] .diagramBlock { direction: rtl; text-align: right; }
 [dir='rtl'] .categoryRow  { flex-direction: row-reverse; }
 
 /* ── DARK MODE ─────────────────────────────────────── */
@@ -446,155 +507,4 @@
   .doneCard     { padding: 36px 24px; }
   .doneStats    { gap: 10px; }
   .doneStat     { padding: 14px 12px; min-width: 70px; }
-}
-
-/* ── UPDATED: RadYar structured back side (short answer + explanation + question recall) ── */
-.cardBack {
-  overflow: auto;
-}
-
-.backContent {
-  display: grid;
-  gap: 14px;
-  width: 100%;
-}
-
-.questionRecall {
-  border-radius: 18px;
-  padding: 14px 16px;
-  background: var(--surface-soft);
-  border: 1px solid var(--border-soft);
-}
-
-.questionRecall span,
-.answerLabel,
-.explanationLabel,
-.diagramBlock span {
-  display: block;
-  margin-bottom: 7px;
-  font-size: 10.5px;
-  font-weight: 900;
-  letter-spacing: .11em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-
-.questionRecall p {
-  margin: 0;
-  color: var(--text-strong);
-  font-weight: 850;
-  line-height: 1.45;
-  font-size: 15px;
-}
-
-.answerBlock {
-  border-radius: 18px;
-  padding: 16px 18px;
-  background: linear-gradient(135deg, var(--accent-soft), var(--bg-card));
-  border: 1px solid rgba(249, 115, 22, 0.18);
-}
-
-.answerShort {
-  margin: 0;
-  color: var(--orange);
-  font-size: clamp(22px, 3.6vw, 34px);
-  line-height: 1.2;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 950;
-}
-
-.explanationBlock {
-  border-radius: 18px;
-  padding: 16px 18px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-soft);
-}
-
-.explanationBlock .answer {
-  display: block;
-  margin: 0;
-  flex: initial;
-  align-items: initial;
-  color: var(--text);
-  font-size: clamp(15px, 2vw, 17px);
-  line-height: 1.78;
-  font-weight: 560;
-}
-
-.diagramBlock {
-  border-radius: 18px;
-  padding: 14px 16px;
-  background: var(--navy);
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-.diagramBlock span {
-  color: rgba(255,255,255,0.66);
-}
-
-.diagramBlock pre {
-  margin: 0;
-  white-space: pre-wrap;
-  font-family: var(--font-main, system-ui, sans-serif);
-  font-size: 14px;
-  line-height: 1.7;
-  font-weight: 800;
-}
-
-.practiceBadge {
-  display: inline-flex;
-  align-items: center;
-  min-height: 28px;
-  padding: 5px 11px;
-  border-radius: 999px;
-  background: rgba(14, 165, 233, 0.10);
-  color: #0369a1;
-  border: 1px solid rgba(14, 165, 233, 0.18);
-  font-size: 11px;
-  font-weight: 800;
-  line-height: 1.35;
-}
-
-.practiceDoneNote {
-  margin: -4px 0 20px;
-  color: var(--text-muted);
-  font-size: 13px;
-  line-height: 1.55;
-}
-
-@media (max-width: 620px) {
-  .cardFront,
-  .cardBack {
-    padding: 24px;
-    min-height: 430px;
-  }
-
-  .answerShort {
-    font-size: 24px;
-  }
-
-  .questionRecall,
-  .answerBlock,
-  .explanationBlock,
-  .diagramBlock {
-    border-radius: 15px;
-    padding: 13px 14px;
-  }
-
-  .practiceBadge {
-    width: 100%;
-  }
-}
-
-:global(html[data-theme='dark']) .questionRecall,
-:global(html[data-theme='dark']) .explanationBlock {
-  background: rgba(15, 23, 42, 0.72);
-  border-color: rgba(148, 163, 184, 0.16);
-}
-
-:global(html[data-theme='dark']) .answerBlock {
-  background: linear-gradient(135deg, rgba(249,115,22,0.12), rgba(15,23,42,0.86));
-  border-color: rgba(249,115,22,0.24);
 }
