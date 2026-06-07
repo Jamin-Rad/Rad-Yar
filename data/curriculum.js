@@ -310,7 +310,7 @@ export const CURRICULUM = [
           // Fokal
           { id: 'leberzyste',      title: 'Leberzysten',                    tags:['CT','MRT','Sono'], diff:1 },
           { id: 'hydatide',        title: 'Hydatiden-Zyste (Echinokokkose)',  tags:['CT','MRT'],       diff:2 },
-          { id: 'haemangiom',      title: 'Leberhämangiom', link: '/abdomen/leber/haemangiom', mcqLink: '/ueben/quiz?fach=abdomen&n=10&themen=haemangiom', flashcardLink: '/flashcards/haemangiom', ready: true, tags:['CT','MRT','Sono'], diff:1 },
+          { id: 'haemangiom',      title: 'Leberhämangiom', link: '/abdomen/leber/haemangiom', mcqLink: '/ueben/quiz?fach=abdomen&n=10&themen=haemangiom', flashcardLink: '/flashcards/haemangiom', fallLink: '/abdomen/leber/haemangiom#fallbeispiele', ready: true, updatedAt: '2026-06-07', tags:['CT','MRT','Sono'], diff:1 },
           { id: 'avm-leber',       title: 'Arteriovenöse Malformation',       tags:['CT','MRT'],       diff:3 },
           { id: 'angiomyolipom',   title: 'Hepatisches Angiomyolipom',        tags:['CT','MRT'],       diff:2 },
           { id: 'fnh',             title: 'Fokale Noduläre Hyperplasie (FNH)',tags:['MRT','KM'],       diff:2 },
@@ -536,7 +536,7 @@ export const CURRICULUM = [
           { id: 'hand-mrt',        title: 'Hand MRT',                          tags:['MRT'],            diff:2 },
           { id: 'knie',            title: 'Knie',                              tags:['MRT'],            diff:2,
             sub: [
-              { id: 'meniskus',       title: 'Meniskus', link: '/msk/knie/meniskus', mcqLink: '/msk/knie/meniskus/mcq', flashcardLink: '/flashcards/meniskus', fallStatus: 'building', ready: true,       tags:['MRT'], diff:2 },
+              { id: 'meniskus',       title: 'Meniskus', link: '/msk/knie/meniskus', mcqLink: '/msk/knie/meniskus/mcq', flashcardLink: '/flashcards/meniskus', fallLink: '/msk/knie/meniskus#fallbeispiele', ready: true, updatedAt: '2026-06-07', tags:['MRT'], diff:2 },
               { id: 'knie-ligamente', title: 'Knie-Ligamente',                                  tags:['MRT'], diff:2 },
               { id: 'patella',        title: 'Patella',                                          tags:['MRT','Rö'], diff:2 },
             ]
