@@ -319,6 +319,307 @@ export const QUESTION_BANK = {
           "correct": "C",
           "explanation": "A ist falsch: Grad 2a ist definiert als ein rein lineares (strichförmiges) Signal im Meniskusinneren, das keinen Kontakt zur superioren oder inferioren Oberfläche aufweist. Es zeigt keine flächige Ausdehnung.\n\nB ist falsch: Grad 2b beschreibt ebenfalls ein lineares Signal, welches jedoch die Gelenkoberfläche auf genau einem einzigen Bild berührt, was den Befund inkonklusiv für einen echten Riss macht.\n\nC ist richtig: Ein keilförmiges, flächiges oder kugelförmiges (globuläres) Signal im Gewebe ohne eindeutigen Oberflächenkontakt entspricht dem Stadium Grad 2c nach Lotysch. Es repräsentiert eine fortgeschrittene mukoide Degeneration mit einem sehr hohen Risiko für das Vorliegen eines okkulten (versteckten) Risses.\n\nD ist falsch: Grad 3 setzt voraus, dass das Signal die Gelenkoberfläche eindeutig und reproduzierbar durchbricht (auf mindestens zwei aufeinanderfolgenden Schichten). Solange kein Oberflächenkontakt vorliegt, darf kein Grad 3 diagnostiziert werden."
     }
+    ,
+{
+        "id": "haemangiom-de-01",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Welche Aussage beschreibt ein Leberhämangiom am korrektesten?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Kavernöse nicht-neoplastische Malformation"
+            },
+            {
+                "id": "B",
+                "text": "Intrahepatische Metastase mit Nekrose"
+            },
+            {
+                "id": "C",
+                "text": "Präkanzeröse hepatozelluläre Läsion"
+            },
+            {
+                "id": "D",
+                "text": "Bakterieller Leberabszess"
+            }
+        ],
+        "correct": "A",
+        "explanation": "Ein Leberhämangiom ist eine kavernöse, nicht-neoplastische vaskuläre Malformation und der häufigste gutartige solide Lebertumor."
+    },
+    {
+        "id": "haemangiom-de-02",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Welcher Sonographiebefund ist typisch für ein kleines Leberhämangiom?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Scharf begrenzte echoreiche Läsion"
+            },
+            {
+                "id": "B",
+                "text": "Unscharfe hypoechogene Läsion mit Kapselretraktion"
+            },
+            {
+                "id": "C",
+                "text": "Gasreflexe mit dorsalem Schallschatten"
+            },
+            {
+                "id": "D",
+                "text": "Diffuse Wandverdickung der Gallenblase"
+            }
+        ],
+        "correct": "A",
+        "explanation": "Typische Hämangiome sind sonographisch meistens echoreich und scharf begrenzt. Bei klassischer Sonomorphologie ist häufig keine weitere Diagnostik notwendig."
+    },
+    {
+        "id": "haemangiom-de-03",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Welches dynamische CT-Muster ist klassisch für ein Leberhämangiom?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Peripher-noduläre diskontinuierliche KM-Aufnahme mit zentripetaler Auffüllung"
+            },
+            {
+                "id": "B",
+                "text": "Arterielles Wash-in mit portalvenösem Wash-out und Kapsel"
+            },
+            {
+                "id": "C",
+                "text": "Dünnwandige Läsion ohne KM-Aufnahme"
+            },
+            {
+                "id": "D",
+                "text": "Diffuses infiltratives Wachstum entlang der Gallenwege"
+            }
+        ],
+        "correct": "A",
+        "explanation": "Klassisch ist eine randständige, noduläre und diskontinuierliche Kontrastmittelaufnahme, die sich in späteren Phasen zentripetal auffüllt."
+    },
+    {
+        "id": "haemangiom-de-04",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Was beschreibt das Irisblendenphänomen beim Leberhämangiom?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Auffüllung der Läsion von peripher nach zentral"
+            },
+            {
+                "id": "B",
+                "text": "Zentrales Wash-out in der Spätphase"
+            },
+            {
+                "id": "C",
+                "text": "Abrupter Perfusionsstopp am Leberhilus"
+            },
+            {
+                "id": "D",
+                "text": "Ringförmige Abszesskapsel"
+            }
+        ],
+        "correct": "A",
+        "explanation": "Das Irisblendenphänomen beschreibt die zentripetale Kontrastmittelauffüllung vom Rand zur Mitte."
+    },
+    {
+        "id": "haemangiom-de-05",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Welcher MRT-Befund ist besonders typisch für ein klassisches Leberhämangiom?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Sehr hohes T2-Signal im Sinne eines Light-bulb-Zeichens"
+            },
+            {
+                "id": "B",
+                "text": "Ausgeprägtes T1-hyperintenses Fettareal mit Signalabfall in opposed phase"
+            },
+            {
+                "id": "C",
+                "text": "Niedriges T2-Signal wie fibrotisches Gewebe"
+            },
+            {
+                "id": "D",
+                "text": "Ausschließlich zentrale Diffusionsrestriktion ohne KM-Aufnahme"
+            }
+        ],
+        "correct": "A",
+        "explanation": "Das klassische Hämangiom ist in T2 sehr hell, oft sogar heller als Galle. Dieses Light-bulb-Zeichen ist ein wichtiger diagnostischer Hinweis."
+    },
+    {
+        "id": "haemangiom-de-06",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Wie ist die DWI/ADC-Konstellation beim typischen Leberhämangiom?",
+        "options": [
+            {
+                "id": "A",
+                "text": "DWI hell, ADC hoch: T2-shine-through"
+            },
+            {
+                "id": "B",
+                "text": "DWI hell, ADC niedrig: sichere Restriktion"
+            },
+            {
+                "id": "C",
+                "text": "DWI dunkel, ADC nicht messbar"
+            },
+            {
+                "id": "D",
+                "text": "DWI und ADC immer unauffällig"
+            }
+        ],
+        "correct": "A",
+        "explanation": "Hämangiome können auf hohen b-Werten hyperintens sein. Hohe ADC-Werte zeigen aber T2-shine-through und keine echte Diffusionsrestriktion."
+    },
+    {
+        "id": "haemangiom-de-07",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Wie erscheint ein typisches Hämangiom in späteren Kontrastmittelphasen?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Zunehmend blutpoolähnlich/isointens durch zentripetale Auffüllung"
+            },
+            {
+                "id": "B",
+                "text": "Immer vollständig hypodens ohne Aufnahme"
+            },
+            {
+                "id": "C",
+                "text": "Frühes Wash-out mit Pseudokapsel"
+            },
+            {
+                "id": "D",
+                "text": "Nur randständig gasgefüllt"
+            }
+        ],
+        "correct": "A",
+        "explanation": "In der portalvenösen und späten Phase nimmt die zentripetale Auffüllung zu. Die Läsion nähert sich der Blutbahn bzw. dem Leberparenchym an."
+    },
+    {
+        "id": "haemangiom-de-08",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Warum können größere Hämangiome inhomogen aussehen?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Durch Fibrosierung, Verkalkungen oder Thromben"
+            },
+            {
+                "id": "B",
+                "text": "Durch obligate maligne Entartung"
+            },
+            {
+                "id": "C",
+                "text": "Durch Luft in den Gallengängen"
+            },
+            {
+                "id": "D",
+                "text": "Durch fokale Fettinfiltration der Nierenrinde"
+            }
+        ],
+        "correct": "A",
+        "explanation": "Größere Hämangiome können durch interne Fibrosierung, Verkalkungen oder Thromben inhomogen werden. Das macht sie nicht automatisch maligne."
+    },
+    {
+        "id": "haemangiom-de-09",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Welche Aussage passt eher zu einem atypischen Leberhämangiom?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Keine klassische periphere noduläre Aufnahme, ggf. früharteriell homogen starkes Enhancement"
+            },
+            {
+                "id": "B",
+                "text": "Immer homogenes Light-bulb-T2 und komplette klassische Zentripetenz"
+            },
+            {
+                "id": "C",
+                "text": "Nie Kontrastmittelaufnahme"
+            },
+            {
+                "id": "D",
+                "text": "Immer Gasbildung und Flüssigkeitsspiegel"
+            }
+        ],
+        "correct": "A",
+        "explanation": "Atypische Hämangiome können die klassische periphere noduläre Aufnahme und zentripetale Auffüllung verlieren und stattdessen früharteriell homogen stark kontrastieren."
+    },
+    {
+        "id": "haemangiom-de-10",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Welcher Befund hilft am meisten gegen die Fehldiagnose „Metastase“ bei einem Hämangiom?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Hoher ADC und mehrphasiges Blutpool-Fill-in"
+            },
+            {
+                "id": "B",
+                "text": "Niedriger ADC und rasches Wash-out"
+            },
+            {
+                "id": "C",
+                "text": "Irreguläres infiltratives Wachstum"
+            },
+            {
+                "id": "D",
+                "text": "Kapselretraktion mit Gallenwegserweiterung"
+            }
+        ],
+        "correct": "A",
+        "explanation": "Hohe ADC-Werte sprechen gegen echte Diffusionsrestriktion. Zusammen mit blutpoolähnlicher zentripetaler Auffüllung stützt dies die Diagnose Hämangiom."
+    },
   ],
 
   en: [
@@ -616,6 +917,307 @@ export const QUESTION_BANK = {
           "correct": "C",
           "explanation": "A is incorrect: Grade 2a is strictly defined as a purely linear (line-like) intrameniscal signal that shows absolutely no communication with either the superior or inferior articular surface. It lacks any broad or expanding morphology.\n\nB is incorrect: Grade 2b also describes a linear signal, but one that touches the articular surface on exactly a single slice, rendering the imaging finding inconclusive for a definitive tear.\n\nC is correct: A wedge-shaped, wide, or rounded (globular) intrameniscal signal that does not definitively break through the surface is classified as Lotysch Grade 2c. This indicates severe mucoid degeneration carrying an exceptionally high risk of an underlying occult (hidden) tear.\n\nD is incorrect: Grade 3 requires the signal to clearly and reproducibly breach the articular surface on at least two consecutive slices. Without objective surface contact, a Grade 3 diagnosis is not permitted."
     }
+    ,
+{
+        "id": "haemangiom-en-01",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Which statement best describes a liver haemangioma?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Cavernous non-neoplastic malformation"
+            },
+            {
+                "id": "B",
+                "text": "Intrahepatic metastasis with necrosis"
+            },
+            {
+                "id": "C",
+                "text": "Premalignant hepatocellular lesion"
+            },
+            {
+                "id": "D",
+                "text": "Bacterial liver abscess"
+            }
+        ],
+        "correct": "A",
+        "explanation": "A liver haemangioma is a cavernous, non-neoplastic vascular malformation and the most common benign solid liver tumour."
+    },
+    {
+        "id": "haemangiom-en-02",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Which ultrasound finding is typical for a small liver haemangioma?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Well-defined hyperechoic lesion"
+            },
+            {
+                "id": "B",
+                "text": "Ill-defined hypoechoic lesion with capsular retraction"
+            },
+            {
+                "id": "C",
+                "text": "Gas echoes with posterior shadowing"
+            },
+            {
+                "id": "D",
+                "text": "Diffuse gallbladder wall thickening"
+            }
+        ],
+        "correct": "A",
+        "explanation": "Typical haemangiomas are usually hyperechoic and well-defined on ultrasound. If morphology is classic, further imaging is often unnecessary."
+    },
+    {
+        "id": "haemangiom-en-03",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Which dynamic CT pattern is classic for liver haemangioma?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Peripheral nodular discontinuous enhancement with centripetal fill-in"
+            },
+            {
+                "id": "B",
+                "text": "Arterial wash-in with portal venous wash-out and capsule"
+            },
+            {
+                "id": "C",
+                "text": "Thin-walled lesion without enhancement"
+            },
+            {
+                "id": "D",
+                "text": "Diffuse infiltrative growth along the bile ducts"
+            }
+        ],
+        "correct": "A",
+        "explanation": "Classic haemangioma shows peripheral nodular discontinuous enhancement with progressive centripetal fill-in on later phases."
+    },
+    {
+        "id": "haemangiom-en-04",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "What does the iris diaphragm phenomenon in liver haemangioma describe?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Fill-in of the lesion from periphery to centre"
+            },
+            {
+                "id": "B",
+                "text": "Central wash-out in the delayed phase"
+            },
+            {
+                "id": "C",
+                "text": "Abrupt perfusion stop at the liver hilum"
+            },
+            {
+                "id": "D",
+                "text": "Ring-shaped abscess capsule"
+            }
+        ],
+        "correct": "A",
+        "explanation": "The iris diaphragm phenomenon describes centripetal contrast fill-in from the rim toward the centre."
+    },
+    {
+        "id": "haemangiom-en-05",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Which MRI finding is especially typical for a classic liver haemangioma?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Very high T2 signal, the light-bulb sign"
+            },
+            {
+                "id": "B",
+                "text": "Marked T1-hyperintense fatty area with opposed-phase signal drop"
+            },
+            {
+                "id": "C",
+                "text": "Low T2 signal like fibrotic tissue"
+            },
+            {
+                "id": "D",
+                "text": "Only central diffusion restriction without enhancement"
+            }
+        ],
+        "correct": "A",
+        "explanation": "A classic haemangioma is very bright on T2, often even brighter than bile. This light-bulb sign is an important diagnostic clue."
+    },
+    {
+        "id": "haemangiom-en-06",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "What is the typical DWI/ADC constellation in liver haemangioma?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Bright DWI, high ADC: T2 shine-through"
+            },
+            {
+                "id": "B",
+                "text": "Bright DWI, low ADC: definite restriction"
+            },
+            {
+                "id": "C",
+                "text": "Dark DWI, ADC not measurable"
+            },
+            {
+                "id": "D",
+                "text": "DWI and ADC always normal"
+            }
+        ],
+        "correct": "A",
+        "explanation": "Haemangiomas may be hyperintense on high b-values. High ADC values indicate T2 shine-through and not true diffusion restriction."
+    },
+    {
+        "id": "haemangiom-en-07",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "How does a typical haemangioma appear on delayed contrast phases?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Increasingly blood-pool-like/isointense due to centripetal fill-in"
+            },
+            {
+                "id": "B",
+                "text": "Always completely hypodense without enhancement"
+            },
+            {
+                "id": "C",
+                "text": "Early wash-out with pseudocapsule"
+            },
+            {
+                "id": "D",
+                "text": "Only rim gas-filled"
+            }
+        ],
+        "correct": "A",
+        "explanation": "On portal venous and delayed phases, centripetal fill-in increases. The lesion approaches blood-pool or liver signal/density."
+    },
+    {
+        "id": "haemangiom-en-08",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Why can larger haemangiomas look heterogeneous?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Due to fibrosis, calcifications or thrombi"
+            },
+            {
+                "id": "B",
+                "text": "Due to obligatory malignant transformation"
+            },
+            {
+                "id": "C",
+                "text": "Due to air in the bile ducts"
+            },
+            {
+                "id": "D",
+                "text": "Due to focal fat infiltration of the renal cortex"
+            }
+        ],
+        "correct": "A",
+        "explanation": "Larger haemangiomas may become heterogeneous because of internal fibrosis, calcifications or thrombi. This does not automatically make them malignant."
+    },
+    {
+        "id": "haemangiom-en-09",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Which statement fits an atypical liver haemangioma better?",
+        "options": [
+            {
+                "id": "A",
+                "text": "No classic peripheral nodular enhancement, sometimes strong homogeneous arterial enhancement"
+            },
+            {
+                "id": "B",
+                "text": "Always homogeneous light-bulb T2 and complete classic centripetal fill-in"
+            },
+            {
+                "id": "C",
+                "text": "Never any enhancement"
+            },
+            {
+                "id": "D",
+                "text": "Always gas formation and fluid level"
+            }
+        ],
+        "correct": "A",
+        "explanation": "Atypical haemangiomas may lack classic peripheral nodular enhancement and centripetal fill-in and instead show strong homogeneous arterial enhancement."
+    },
+    {
+        "id": "haemangiom-en-10",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "Which finding best helps avoid misdiagnosing a haemangioma as metastasis?",
+        "options": [
+            {
+                "id": "A",
+                "text": "High ADC and multiphasic blood-pool fill-in"
+            },
+            {
+                "id": "B",
+                "text": "Low ADC and rapid wash-out"
+            },
+            {
+                "id": "C",
+                "text": "Irregular infiltrative growth"
+            },
+            {
+                "id": "D",
+                "text": "Capsular retraction with bile duct dilatation"
+            }
+        ],
+        "correct": "A",
+        "explanation": "High ADC values argue against true diffusion restriction. Together with blood-pool-like centripetal fill-in, this supports haemangioma."
+    },
   ],
 
   fa: [
@@ -913,6 +1515,307 @@ export const QUESTION_BANK = {
           "correct": "C",
           "explanation": "الف غلط است: درجه 2a دقیقاً به عنوان یک سیگنال خطی (خط‌مانند) در داخل منیسک تعریف می‌شود که هیچ اتصالی با سطح مفصلی بالایی یا پایینی ندارد و فاقد هرگونه گسترش وسیع یا گرد است.\n\nب غلط است: درجه 2b نیز یک سیگنال خطی را توصیف می‌کند، با این تفاوت که سیگنال دقیقاً در یک تک‌برش با سطح مفصل تماس پیدا می‌کند که این یافته را برای پارگی قطعی غیرقابل استناد (Inconclusive) می‌سازد.\n\nج صحیح است: یک سیگنال درون‌منیسکی به شکل گوهه‌ای، وسیع یا گرد (Globular) که به طور قطعی سطح را قطع نکرده است، طبق سیستم لوتیش درجه 2c نامیده می‌شود. این حالت نشان‌دهنده دژنراسیون موکوئید پیشرفته است و ریسک بسیار بالایی برای یک پارگی مخفی (Occult) دارد.\n\nد غلط است: درجه ۳ مستلزم آن است که سیگنال به طور واضح و تکرارپذیر (حداقل در دو برش متوالی) سطح مفصلی را قطع کرده باشد. تا زمانی که تماس با سطح احراز نشود، تشخیص درجه ۳ مجاز نیست."
     }
+    ,
+{
+        "id": "haemangiom-fa-01",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "کدام عبارت همانژیوم کبدی را دقیق‌تر توصیف می‌کند؟",
+        "options": [
+            {
+                "id": "A",
+                "text": "مالفورماسیون کاورنوز غیرنئوپلاستیک"
+            },
+            {
+                "id": "B",
+                "text": "متاستاز داخل کبدی همراه نکروز"
+            },
+            {
+                "id": "C",
+                "text": "ضایعه پیش‌بدخیم هپاتوسلولار"
+            },
+            {
+                "id": "D",
+                "text": "آبسه باکتریال کبد"
+            }
+        ],
+        "correct": "A",
+        "explanation": "همانژیوم کبدی یک مالفورماسیون عروقی کاورنوز و غیرنئوپلاستیک است و شایع‌ترین تومور جامد خوش‌خیم کبد محسوب می‌شود."
+    },
+    {
+        "id": "haemangiom-fa-02",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "کدام یافته سونوگرافی برای همانژیوم کوچک کبدی تیپیک است؟",
+        "options": [
+            {
+                "id": "A",
+                "text": "ضایعه اکوژن و خوش‌حد"
+            },
+            {
+                "id": "B",
+                "text": "ضایعه هیپواکو و بدحد همراه با کشیدگی کپسول"
+            },
+            {
+                "id": "C",
+                "text": "اکوهای گاز با سایه خلفی"
+            },
+            {
+                "id": "D",
+                "text": "ضخیم‌شدن منتشر دیواره کیسه صفرا"
+            }
+        ],
+        "correct": "A",
+        "explanation": "همانژیوم تیپیک در سونوگرافی معمولاً اکوژن و خوش‌حد است. اگر مورفولوژی کلاسیک باشد، اغلب تصویربرداری بیشتر لازم نیست."
+    },
+    {
+        "id": "haemangiom-fa-03",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "کدام الگوی CT دینامیک برای همانژیوم کبدی کلاسیک است؟",
+        "options": [
+            {
+                "id": "A",
+                "text": "enhancement ندولار محیطی و ناپیوسته با پرشدگی مرکزگرا"
+            },
+            {
+                "id": "B",
+                "text": "wash-in شریانی با wash-out پورتال و کپسول"
+            },
+            {
+                "id": "C",
+                "text": "ضایعه نازک‌دیواره بدون enhancement"
+            },
+            {
+                "id": "D",
+                "text": "رشد انفیلتراتیو منتشر در امتداد مجاری صفراوی"
+            }
+        ],
+        "correct": "A",
+        "explanation": "الگوی کلاسیک همانژیوم، enhancement ندولار و ناپیوسته محیطی است که در فازهای بعدی به صورت مرکزگرا پر می‌شود."
+    },
+    {
+        "id": "haemangiom-fa-04",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "پدیده Iris diaphragm در همانژیوم کبدی چه چیزی را توصیف می‌کند؟",
+        "options": [
+            {
+                "id": "A",
+                "text": "پرشدگی ضایعه از محیط به مرکز"
+            },
+            {
+                "id": "B",
+                "text": "wash-out مرکزی در فاز تأخیری"
+            },
+            {
+                "id": "C",
+                "text": "قطع ناگهانی پرفیوژن در ناف کبد"
+            },
+            {
+                "id": "D",
+                "text": "کپسول حلقوی آبسه"
+            }
+        ],
+        "correct": "A",
+        "explanation": "پدیده Iris diaphragm یعنی پرشدگی مرکزگرا با ماده حاجب از حاشیه به سمت مرکز."
+    },
+    {
+        "id": "haemangiom-fa-05",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "کدام یافته MRI برای همانژیوم کلاسیک کبدی بسیار تیپیک است؟",
+        "options": [
+            {
+                "id": "A",
+                "text": "سیگنال T2 بسیار بالا به صورت Light-bulb sign"
+            },
+            {
+                "id": "B",
+                "text": "ناحیه چربی T1 هایپراینتنس با افت سیگنال در opposed phase"
+            },
+            {
+                "id": "C",
+                "text": "سیگنال T2 پایین شبیه بافت فیبروتیک"
+            },
+            {
+                "id": "D",
+                "text": "فقط محدودیت انتشار مرکزی بدون enhancement"
+            }
+        ],
+        "correct": "A",
+        "explanation": "همانژیوم کلاسیک در T2 بسیار روشن است و گاهی حتی از صفرا روشن‌تر دیده می‌شود. این Light-bulb sign یک سرنخ مهم تشخیصی است."
+    },
+    {
+        "id": "haemangiom-fa-06",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "الگوی تیپیک DWI/ADC در همانژیوم کبدی چیست؟",
+        "options": [
+            {
+                "id": "A",
+                "text": "DWI روشن، ADC بالا: T2 shine-through"
+            },
+            {
+                "id": "B",
+                "text": "DWI روشن، ADC پایین: محدودیت قطعی"
+            },
+            {
+                "id": "C",
+                "text": "DWI تیره، ADC غیرقابل اندازه‌گیری"
+            },
+            {
+                "id": "D",
+                "text": "DWI و ADC همیشه طبیعی"
+            }
+        ],
+        "correct": "A",
+        "explanation": "همانژیوم ممکن است در b-value بالا روشن باشد. اما ADC بالا نشان‌دهنده T2 shine-through است و محدودیت انتشار واقعی نیست."
+    },
+    {
+        "id": "haemangiom-fa-07",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "همانژیوم تیپیک در فازهای تأخیری کنتراست چگونه دیده می‌شود؟",
+        "options": [
+            {
+                "id": "A",
+                "text": "به علت پرشدگی مرکزگرا به‌تدریج شبیه blood pool یا ایزواینتنس می‌شود"
+            },
+            {
+                "id": "B",
+                "text": "همیشه کاملاً هیپودنس و بدون enhancement می‌ماند"
+            },
+            {
+                "id": "C",
+                "text": "wash-out زودرس با pseudocapsule"
+            },
+            {
+                "id": "D",
+                "text": "فقط حاشیه پر از گاز دارد"
+            }
+        ],
+        "correct": "A",
+        "explanation": "در فاز پورتال و تأخیری، پرشدگی مرکزگرا بیشتر می‌شود و ضایعه به دانسیته/سیگنال خون یا کبد نزدیک می‌شود."
+    },
+    {
+        "id": "haemangiom-fa-08",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "چرا همانژیوم‌های بزرگ‌تر ممکن است ناهمگون دیده شوند؟",
+        "options": [
+            {
+                "id": "A",
+                "text": "به علت فیبروز، کلسیفیکاسیون یا ترومبوز"
+            },
+            {
+                "id": "B",
+                "text": "به علت تبدیل بدخیم اجباری"
+            },
+            {
+                "id": "C",
+                "text": "به علت هوا در مجاری صفراوی"
+            },
+            {
+                "id": "D",
+                "text": "به علت نفوذ چربی در قشر کلیه"
+            }
+        ],
+        "correct": "A",
+        "explanation": "همانژیوم‌های بزرگ‌تر ممکن است به علت فیبروز داخلی، کلسیفیکاسیون یا ترومبوز ناهمگون شوند. این به‌تنهایی به معنی بدخیمی نیست."
+    },
+    {
+        "id": "haemangiom-fa-09",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "کدام عبارت بیشتر با همانژیوم آتیپیک کبدی تطابق دارد؟",
+        "options": [
+            {
+                "id": "A",
+                "text": "نبود enhancement ندولار محیطی کلاسیک، گاهی enhancement هموژن و قوی شریانی"
+            },
+            {
+                "id": "B",
+                "text": "همیشه T2 کاملاً Light-bulb و پرشدگی مرکزگرای کلاسیک کامل"
+            },
+            {
+                "id": "C",
+                "text": "هیچ‌وقت enhancement ندارد"
+            },
+            {
+                "id": "D",
+                "text": "همیشه گاز و سطح مایع دارد"
+            }
+        ],
+        "correct": "A",
+        "explanation": "همانژیوم آتیپیک ممکن است enhancement ندولار محیطی و پرشدگی مرکزگرای کلاسیک را نداشته باشد و به جای آن enhancement هموژن و قوی شریانی نشان دهد."
+    },
+    {
+        "id": "haemangiom-fa-10",
+        "tags": [
+            "haemangiom",
+            "leber",
+            "abdomen"
+        ],
+        "fach": "abdomen",
+        "question": "کدام یافته بیشتر کمک می‌کند همانژیوم با متاستاز اشتباه نشود؟",
+        "options": [
+            {
+                "id": "A",
+                "text": "ADC بالا و پرشدگی چندفازی شبیه blood pool"
+            },
+            {
+                "id": "B",
+                "text": "ADC پایین و wash-out سریع"
+            },
+            {
+                "id": "C",
+                "text": "رشد انفیلتراتیو نامنظم"
+            },
+            {
+                "id": "D",
+                "text": "کشیدگی کپسول همراه با اتساع مجاری صفراوی"
+            }
+        ],
+        "correct": "A",
+        "explanation": "ADC بالا علیه محدودیت انتشار واقعی است. همراه با پرشدگی مرکزگرای شبیه blood pool، تشخیص همانژیوم را تقویت می‌کند."
+    },
   ],
 }
 

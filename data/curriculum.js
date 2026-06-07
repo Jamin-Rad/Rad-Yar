@@ -310,7 +310,7 @@ export const CURRICULUM = [
           // Fokal
           { id: 'leberzyste',      title: 'Leberzysten',                    tags:['CT','MRT','Sono'], diff:1 },
           { id: 'hydatide',        title: 'Hydatiden-Zyste (Echinokokkose)',  tags:['CT','MRT'],       diff:2 },
-          { id: 'haemangiom',      title: 'Leberhämangiom',                  tags:['MRT','Sono'],     diff:1 },
+          { id: 'haemangiom',      title: 'Leberhämangiom', link: '/abdomen/leber/haemangiom', mcqLink: '/ueben/quiz?fach=abdomen&n=10&themen=haemangiom', flashcardLink: '/flashcards/haemangiom', ready: true, tags:['CT','MRT','Sono'], diff:1 },
           { id: 'avm-leber',       title: 'Arteriovenöse Malformation',       tags:['CT','MRT'],       diff:3 },
           { id: 'angiomyolipom',   title: 'Hepatisches Angiomyolipom',        tags:['CT','MRT'],       diff:2 },
           { id: 'fnh',             title: 'Fokale Noduläre Hyperplasie (FNH)',tags:['MRT','KM'],       diff:2 },
@@ -754,6 +754,9 @@ export const THEMA_TRANSLATIONS = {
   'sdh': { en: 'Subdural haematoma (SDH)', fa: 'هماتوم ساب‌دورال (SDH)' },
   'icb': { en: 'Intracerebral haemorrhage (ICH)', fa: 'خونریزی داخل مغزی (ICH)' },
   'hypox-hirn': { en: 'Global hypoxic-ischaemic brain injury', fa: 'آسیب هیپوکسیک-ایسکمیک منتشر مغز' },
+
+  // Abdomen · Liver
+  'haemangiom': { en: 'Liver haemangioma', fa: 'همانژیوم کبدی' },
 
   // Technique
   'km-roentgen-grundlagen': { en: 'X-ray contrast media basics', fa: 'مبانی مواد حاجب رادیوگرافی / CT' },
