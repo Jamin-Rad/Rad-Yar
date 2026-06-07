@@ -225,7 +225,7 @@ export const CURRICULUM = [
           { id: 'lungenherd',      title: 'Solitärer Lungenherd (Fleischner)', tags:['CT'],            diff:2 },
           { id: 'bronchialca',     title: 'Bronchialkarzinom',                tags:['CT','PET'],       diff:3 },
           { id: 'ild',             title: 'Diffuse interstitielle Lungenerkrankungen (ILD)', tags:['CT'], diff:3 },
-          { id: 'sarkoidose',      title: 'Sarkoidose',                       tags:['CT'],             diff:2 },
+          { id: 'sarkoidose',      title: 'Sarkoidose', link: '/thorax/lunge/sarkoidose', ready: true, updatedAt: '2026-06-07', tags:['CT'], diff:2 },
           { id: 'zystische-fib',   title: 'Zystische Fibrose',                tags:['CT'],             diff:2 },
           { id: 'lungenzysten',    title: 'Lungenzysten (LAM, LIP)',          tags:['CT'],             diff:2 },
           { id: 'lae',             title: 'Lungenembolie (LAE)',               tags:['CT'],             diff:2 },
