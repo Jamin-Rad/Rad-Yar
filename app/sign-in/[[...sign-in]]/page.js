@@ -4,103 +4,7 @@ import { useState } from 'react'
 import { useSignIn } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { useLanguage } from '@/providers/LanguageProvider'
 import styles from '@/components/AuthLayout.module.css'
-
-const SOCIAL = {
-  de: { google: 'Mit Google anmelden', apple: 'Mit Apple anmelden', or: 'oder' },
-  en: { google: 'Sign in with Google', apple: 'Sign in with Apple', or: 'or' },
-  fa: { google: 'ورود با گوگل', apple: 'ورود با اپل', or: 'یا' },
-}
-
-const T = {
-  de: {
-    heading:       'Willkommen zurück',
-    sub:           'Melde dich an, um deinen Fortschritt zu sehen.',
-    email:         'E-Mail-Adresse',
-    password:      'Passwort',
-    submit:        'Anmelden',
-    loading:       'Wird angemeldet…',
-    noAccount:     'Noch kein Konto?',
-    register:      'Jetzt registrieren',
-    forgotLink:    'Passwort vergessen?',
-    errDefault:    'Anmeldung fehlgeschlagen. Bitte prüfe deine Eingaben.',
-
-    // Passwort vergessen
-    resetHeading:  'Passwort zurücksetzen',
-    resetSub:      'Wir senden dir einen Code per E-Mail.',
-    resetSubmit:   'Code senden',
-    resetLoading:  'Wird gesendet…',
-    backToLogin:   '← Zurück zur Anmeldung',
-
-    // Code eingeben
-    codeHeading:   'Code eingeben',
-    codeSub:       (email) => `Wir haben einen Code an ${email} gesendet.`,
-    newPassword:   'Neues Passwort',
-    newPasswordPh: 'Mindestens 8 Zeichen',
-    codeLabel:     '6-stelliger Code',
-    resetBtn:      'Passwort setzen',
-    resetting:     'Wird gesetzt…',
-    resendCode:    'Code erneut senden',
-    successMsg:    'Passwort erfolgreich geändert! Du wirst weitergeleitet…',
-  },
-  en: {
-    heading:       'Welcome back',
-    sub:           'Sign in to access your learning progress.',
-    email:         'Email address',
-    password:      'Password',
-    submit:        'Sign in',
-    loading:       'Signing in…',
-    noAccount:     'No account yet?',
-    register:      'Create account',
-    forgotLink:    'Forgot password?',
-    errDefault:    'Sign in failed. Please check your details.',
-
-    resetHeading:  'Reset password',
-    resetSub:      'We will send you a code by email.',
-    resetSubmit:   'Send code',
-    resetLoading:  'Sending…',
-    backToLogin:   '← Back to sign in',
-
-    codeHeading:   'Enter code',
-    codeSub:       (email) => `We sent a code to ${email}.`,
-    newPassword:   'New password',
-    newPasswordPh: 'At least 8 characters',
-    codeLabel:     '6-digit code',
-    resetBtn:      'Set password',
-    resetting:     'Setting…',
-    resendCode:    'Resend code',
-    successMsg:    'Password changed! Redirecting…',
-  },
-  fa: {
-    heading:       'خوش برگشتی',
-    sub:           'وارد شو تا پیشرفتت رو ببینی.',
-    email:         'آدرس ایمیل',
-    password:      'رمز عبور',
-    submit:        'ورود',
-    loading:       'در حال ورود…',
-    noAccount:     'هنوز حساب نداری؟',
-    register:      'ثبت‌نام کن',
-    forgotLink:    'رمز عبور را فراموش کردی؟',
-    errDefault:    'ورود ناموفق بود. اطلاعات را بررسی کن.',
-
-    resetHeading:  'بازنشانی رمز عبور',
-    resetSub:      'یک کد به ایمیلت می‌فرستیم.',
-    resetSubmit:   'ارسال کد',
-    resetLoading:  'در حال ارسال…',
-    backToLogin:   '← برگشت به ورود',
-
-    codeHeading:   'کد را وارد کن',
-    codeSub:       (email) => `یک کد به ${email} فرستادیم.`,
-    newPassword:   'رمز عبور جدید',
-    newPasswordPh: 'حداقل ۸ کاراکتر',
-    codeLabel:     'کد ۶ رقمی',
-    resetBtn:      'تنظیم رمز عبور',
-    resetting:     'در حال تنظیم…',
-    resendCode:    'ارسال مجدد کد',
-    successMsg:    'رمز عبور تغییر کرد! در حال انتقال…',
-  },
-}
 
 function HexLogo() {
   return (
@@ -123,13 +27,27 @@ function HexLogo() {
   )
 }
 
+function GoogleIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 48 48">
+      <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+      <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+      <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+      <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+    </svg>
+  )
+}
+
+function AppleIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701z"/>
+    </svg>
+  )
+}
+
 // view: 'login' | 'reset-email' | 'reset-code'
 export default function SignInPage() {
-  const { lang } = useLanguage()
-  const t   = T[lang] ?? T.de
-  const s   = SOCIAL[lang] ?? SOCIAL.de
-  const dir = lang === 'fa' ? 'rtl' : 'ltr'
-
   const { isLoaded, signIn, setActive } = useSignIn()
   const router = useRouter()
 
@@ -143,7 +61,11 @@ export default function SignInPage() {
   const [success,     setSuccess]     = useState('')
   const [loading,     setLoading]     = useState(false)
 
-  // ── Anmelden ────────────────────────────────────────
+  function showError(err) {
+    setError(err?.errors?.[0]?.longMessage || err?.errors?.[0]?.message || err?.message || 'Something went wrong. Please try again.')
+  }
+
+  // ── Sign in ──────────────────────────────────────────
   async function handleLogin(e) {
     e.preventDefault()
     if (!isLoaded) return
@@ -156,22 +78,19 @@ export default function SignInPage() {
           await setActive({ session: result.createdSessionId })
           router.push('/')
         } else {
-          setError(`Status: ${result.status}`)
+          setError(`Unexpected status: ${result.status}`)
         }
       } else if (attempt.status === 'complete') {
         await setActive({ session: attempt.createdSessionId })
         router.push('/')
       } else {
-        setError(`Status: ${attempt.status}`)
+        setError(`Unexpected status: ${attempt.status}`)
       }
-    } catch (err) {
-      setError(err?.errors?.[0]?.longMessage || err?.errors?.[0]?.message || t.errDefault)
-    } finally {
-      setLoading(false)
-    }
+    } catch (err) { showError(err) }
+    finally { setLoading(false) }
   }
 
-  // ── Social Login ─────────────────────────────────────
+  // ── Social ───────────────────────────────────────────
   async function handleSocial(provider) {
     if (!isLoaded) return
     try {
@@ -180,30 +99,22 @@ export default function SignInPage() {
         redirectUrl: '/sso-callback',
         redirectUrlComplete: '/',
       })
-    } catch (err) {
-      setError(err?.errors?.[0]?.message ?? t.errDefault)
-    }
+    } catch (err) { showError(err) }
   }
 
-  // ── Passwort vergessen: E-Mail senden ────────────────
+  // ── Forgot password: send code ───────────────────────
   async function handleResetRequest(e) {
     e.preventDefault()
     if (!isLoaded) return
     setLoading(true); setError('')
     try {
-      await signIn.create({
-        strategy: 'reset_password_email_code',
-        identifier: resetEmail,
-      })
+      await signIn.create({ strategy: 'reset_password_email_code', identifier: resetEmail })
       setView('reset-code')
-    } catch (err) {
-      setError(err?.errors?.[0]?.longMessage || err?.errors?.[0]?.message || t.errDefault)
-    } finally {
-      setLoading(false)
-    }
+    } catch (err) { showError(err) }
+    finally { setLoading(false) }
   }
 
-  // ── Passwort vergessen: Code + neues Passwort ────────
+  // ── Forgot password: confirm code + new password ─────
   async function handleResetConfirm(e) {
     e.preventDefault()
     if (!isLoaded) return
@@ -215,44 +126,42 @@ export default function SignInPage() {
         password: newPassword,
       })
       if (result.status === 'complete') {
-        setSuccess(t.successMsg)
+        setSuccess('Password changed! Redirecting…')
         await setActive({ session: result.createdSessionId })
         setTimeout(() => router.push('/'), 1500)
       } else {
-        setError(`Status: ${result.status}`)
+        setError(`Unexpected status: ${result.status}`)
       }
-    } catch (err) {
-      setError(err?.errors?.[0]?.longMessage || err?.errors?.[0]?.message || t.errDefault)
-    } finally {
-      setLoading(false)
-    }
+    } catch (err) { showError(err) }
+    finally { setLoading(false) }
   }
 
   async function handleResendCode() {
-    if (!isLoaded) return
-    try {
-      await signIn.create({ strategy: 'reset_password_email_code', identifier: resetEmail })
-    } catch (_) {}
+    try { await signIn.create({ strategy: 'reset_password_email_code', identifier: resetEmail }) }
+    catch (_) {}
+  }
+
+  function ErrorBox() {
+    if (!error) return null
+    return (
+      <div className={styles.error}>
+        <span>{error}</span>
+        <button type="button" onClick={() => setError('')}
+          style={{background:'none',border:'none',cursor:'pointer',color:'#b91c1c',fontWeight:700,fontSize:16,lineHeight:1,padding:'0 0 0 8px',flexShrink:0}}>×</button>
+      </div>
+    )
   }
 
   return (
     <div className={styles.page}>
-      <div className={styles.card} dir={dir}>
+      <div className={styles.card}>
 
-        {/* Schließen-Button */}
-        <button
-          type="button"
-          onClick={() => router.back()}
-          aria-label="Schließen"
-          style={{
-            position:'absolute', top:16, right: dir==='rtl' ? 'auto' : 16, left: dir==='rtl' ? 16 : 'auto',
-            background:'none', border:'none', cursor:'pointer',
-            color:'#94a3b8', fontSize:24, lineHeight:1, padding:4,
-            borderRadius:8, transition:'color 0.15s'
-          }}
-          onMouseOver={e => e.currentTarget.style.color='#374151'}
-          onMouseOut={e => e.currentTarget.style.color='#94a3b8'}
-        >×</button>
+        {/* Close button */}
+        <button type="button" onClick={() => router.back()} aria-label="Close"
+          style={{position:'absolute',top:16,right:16,background:'none',border:'none',
+            cursor:'pointer',color:'#94a3b8',fontSize:24,lineHeight:1,padding:4,borderRadius:8}}>
+          ×
+        </button>
 
         {/* Logo */}
         <div className={styles.logoRow}>
@@ -264,154 +173,125 @@ export default function SignInPage() {
         </div>
         <div className={styles.divider} />
 
-        {/* ── ANSICHT: Anmelden ── */}
+        {/* ── LOGIN VIEW ── */}
         {view === 'login' && (
           <>
-            <h1 className={styles.heading}>{t.heading}</h1>
-            <p className={styles.sub}>{t.sub}</p>
+            <h1 className={styles.heading}>Welcome back</h1>
+            <p className={styles.sub}>Sign in to access your learning progress.</p>
 
             <div className={styles.socialBtns}>
               <button className={styles.socialBtn} type="button" onClick={() => handleSocial('google')}>
-                <svg width="18" height="18" viewBox="0 0 48 48">
-                  <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
-                  <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
-                  <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
-                  <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
-                </svg>
-                {s.google}
+                <GoogleIcon /> Continue with Google
               </button>
               <button className={styles.socialBtn} type="button" onClick={() => handleSocial('apple')}>
-                <svg width="18" height="18" viewBox="0 0 814 1000" fill="currentColor">
-                  <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-57.8-155.5-127.4C46 376.6 0 249.1 0 128.4 0 56.9 31.4 -1.4 88.9-47.4c52.9-41.7 117-65.9 183.4-65.9 69.3 0 126.8 27.2 170.2 27.2 41.3 0 105.5-29.5 183.4-29.5zM532.6 47.4c36.6-43.9 63.1-105.5 63.1-167.1 0-8.3-.6-16.6-2-24.9-59.9 2.3-130.8 40.3-172.9 89.9-33.2 37.6-64.5 99.2-64.5 161.4 0 9 1.4 17.9 2.3 20.8 3.7.6 9.7 1.4 15.7 1.4 53.7 0 120.1-36 158.3-81.5z"/>
-                </svg>
-                {s.apple}
+                <AppleIcon /> Continue with Apple
               </button>
             </div>
 
             <div className={styles.orDivider}>
               <span className={styles.orLine} />
-              <span className={styles.orText}>{s.or}</span>
+              <span className={styles.orText}>or</span>
               <span className={styles.orLine} />
             </div>
 
             <form className={styles.form} onSubmit={handleLogin}>
-              {error && (
-                <div className={styles.error}>
-                  <span>{error}</span>
-                  <button type="button" onClick={() => setError('')}
-                    style={{background:'none',border:'none',cursor:'pointer',color:'#b91c1c',fontWeight:700,fontSize:16,lineHeight:1,padding:'0 0 0 8px',flexShrink:0}}>×</button>
-                </div>
-              )}
+              <ErrorBox />
               <div className={styles.fieldGroup}>
-                <label className={styles.label}>{t.email}</label>
+                <label className={styles.label}>Email address</label>
                 <input className={styles.input} type="email" value={email}
                   onChange={e => setEmail(e.target.value)}
-                  placeholder="name@beispiel.de" required autoComplete="email" />
+                  placeholder="name@example.com" required autoComplete="email" />
               </div>
               <div className={styles.fieldGroup}>
-                <div style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
-                  <label className={styles.label}>{t.password}</label>
+                <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+                  <label className={styles.label}>Password</label>
                   <button type="button" className={styles.forgotBtn}
                     onClick={() => { setResetEmail(email); setError(''); setView('reset-email') }}>
-                    {t.forgotLink}
+                    Forgot password?
                   </button>
                 </div>
                 <input className={styles.input} type="password" value={password}
                   onChange={e => setPassword(e.target.value)}
                   placeholder="••••••••" required autoComplete="current-password" />
               </div>
-              <button className={styles.submitBtn} type="submit"
-                disabled={loading || !email || !password}>
-                {loading ? t.loading : t.submit}
+              <button className={styles.submitBtn} type="submit" disabled={loading || !email || !password}>
+                {loading ? 'Signing in…' : 'Sign in'}
               </button>
             </form>
 
             <p className={styles.footerText}>
-              {t.noAccount}{' '}
-              <Link href="/sign-up" className={styles.footerLink}>{t.register}</Link>
+              No account yet?{' '}
+              <Link href="/sign-up" className={styles.footerLink}>Create account</Link>
             </p>
           </>
         )}
 
-        {/* ── ANSICHT: E-Mail für Reset eingeben ── */}
+        {/* ── RESET EMAIL VIEW ── */}
         {view === 'reset-email' && (
           <>
-            <h1 className={styles.heading}>{t.resetHeading}</h1>
-            <p className={styles.sub}>{t.resetSub}</p>
+            <h1 className={styles.heading}>Reset password</h1>
+            <p className={styles.sub}>Enter your email and we'll send you a reset code.</p>
             <form className={styles.form} onSubmit={handleResetRequest}>
-              {error && (
-                <div className={styles.error}>
-                  <span>{error}</span>
-                  <button type="button" onClick={() => setError('')}
-                    style={{background:'none',border:'none',cursor:'pointer',color:'#b91c1c',fontWeight:700,fontSize:16,lineHeight:1,padding:'0 0 0 8px',flexShrink:0}}>×</button>
-                </div>
-              )}
+              <ErrorBox />
               <div className={styles.fieldGroup}>
-                <label className={styles.label}>{t.email}</label>
+                <label className={styles.label}>Email address</label>
                 <input className={styles.input} type="email" value={resetEmail}
                   onChange={e => setResetEmail(e.target.value)}
-                  placeholder="name@beispiel.de" required autoComplete="email" />
+                  placeholder="name@example.com" required autoComplete="email" />
               </div>
-              <button className={styles.submitBtn} type="submit"
-                disabled={loading || !resetEmail}>
-                {loading ? t.resetLoading : t.resetSubmit}
+              <button className={styles.submitBtn} type="submit" disabled={loading || !resetEmail}>
+                {loading ? 'Sending…' : 'Send reset code'}
               </button>
             </form>
             <p className={styles.footerText}>
               <button type="button" className={styles.footerLink}
                 style={{background:'none',border:'none',cursor:'pointer',padding:0}}
                 onClick={() => { setError(''); setView('login') }}>
-                {t.backToLogin}
+                ← Back to sign in
               </button>
             </p>
           </>
         )}
 
-        {/* ── ANSICHT: Code + neues Passwort ── */}
+        {/* ── RESET CODE VIEW ── */}
         {view === 'reset-code' && (
           <>
-            <h1 className={styles.heading}>{t.codeHeading}</h1>
-            <p className={styles.sub}>{t.codeSub(resetEmail)}</p>
+            <h1 className={styles.heading}>Enter code</h1>
+            <p className={styles.sub}>We sent a 6-digit code to <strong>{resetEmail}</strong>.</p>
             <form className={styles.form} onSubmit={handleResetConfirm}>
-              {error && (
-                <div className={styles.error}>
-                  <span>{error}</span>
-                  <button type="button" onClick={() => setError('')}
-                    style={{background:'none',border:'none',cursor:'pointer',color:'#b91c1c',fontWeight:700,fontSize:16,lineHeight:1,padding:'0 0 0 8px',flexShrink:0}}>×</button>
-                </div>
-              )}
+              <ErrorBox />
               {success && (
                 <div style={{padding:'10px 14px',borderRadius:10,background:'#f0fdf4',border:'1px solid #bbf7d0',color:'#166534',fontSize:13}}>
                   {success}
                 </div>
               )}
               <div className={styles.fieldGroup}>
-                <label className={styles.label}>{t.codeLabel}</label>
+                <label className={styles.label}>6-digit code</label>
                 <input className={`${styles.input} ${styles.codeInput}`}
                   type="text" inputMode="numeric" maxLength={6}
                   value={code} onChange={e => setCode(e.target.value.replace(/\D/g,'').slice(0,6))}
                   placeholder="______" required autoFocus />
               </div>
               <div className={styles.fieldGroup}>
-                <label className={styles.label}>{t.newPassword}</label>
+                <label className={styles.label}>New password</label>
                 <input className={styles.input} type="password" value={newPassword}
                   onChange={e => setNewPassword(e.target.value)}
-                  placeholder={t.newPasswordPh} required minLength={8}
+                  placeholder="At least 8 characters" required minLength={8}
                   autoComplete="new-password" />
               </div>
               <button className={styles.submitBtn} type="submit"
                 disabled={loading || code.length < 6 || newPassword.length < 8}>
-                {loading ? t.resetting : t.resetBtn}
+                {loading ? 'Setting password…' : 'Set new password'}
               </button>
               <button type="button" className={styles.resendBtn} onClick={handleResendCode}>
-                {t.resendCode}
+                Resend code
               </button>
             </form>
             <p className={styles.footerText}>
               <button type="button" className={styles.footerLink}
                 style={{background:'none',border:'none',cursor:'pointer',padding:0}}
                 onClick={() => { setError(''); setCode(''); setNewPassword(''); setView('login') }}>
-                {t.backToLogin}
+                ← Back to sign in
               </button>
             </p>
           </>

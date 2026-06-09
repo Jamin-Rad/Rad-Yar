@@ -4,96 +4,10 @@ import { useState } from 'react'
 import { useSignUp } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { useLanguage } from '@/providers/LanguageProvider'
 import styles from '@/components/AuthLayout.module.css'
 
-/* ── Daten ─────────────────────────────────────────── */
-const FACHRICHTUNGEN = {
-  de: ['Radiologie','Allgemeinmedizin','Chirurgie','Innere Medizin','Neurologie','Pädiatrie','Andere'],
-  en: ['Radiology','General Medicine','Surgery','Internal Medicine','Neurology','Paediatrics','Other'],
-  fa: ['رادیولوژی','پزشکی عمومی','جراحی','داخلی','نورولوژی','اطفال','سایر'],
-}
-
-const STUFEN = {
-  de: ['Medizinstudent/in','PJ (Praktisches Jahr)','Assistenzarzt/-ärztin','Facharzt/-ärztin','Oberarzt/-ärztin','Andere'],
-  en: ['Medical student','Final year (PJ)','Resident','Specialist','Senior physician','Other'],
-  fa: ['دانشجوی پزشکی','کارآموز (PJ)','دستیار','متخصص','فوق تخصص','سایر'],
-}
-
-const T = {
-  de: {
-    heading1:     'Konto erstellen',
-    sub1:         'Tritt der RadYar-Community bei.',
-    heading2:     'Fast geschafft!',
-    sub2:         (email) => `Wir haben einen Code an ${email} gesendet.`,
-    spitzname:    'Spitzname',
-    spitznamePh:  'Wie sollen wir dich nennen?',
-    email:        'E-Mail-Adresse',
-    password:     'Passwort',
-    passwordHint: 'Mindestens 8 Zeichen',
-    fachrichtung: 'Fachrichtung',
-    stufe:        'Ausbildungsstufe',
-    select:       '– Bitte wählen –',
-    next:         'Weiter',
-    loading:      'Bitte warten…',
-    verify:       'Code bestätigen',
-    verifying:    'Wird geprüft…',
-    codePh:       '6-stelliger Code',
-    resend:       'Code erneut senden',
-    hasAccount:   'Bereits ein Konto?',
-    signIn:       'Anmelden',
-    errDefault:   'Ein Fehler ist aufgetreten. Bitte versuche es erneut.',
-    step1:        'Profil', step2: 'Bestätigung',
-  },
-  en: {
-    heading1:     'Create account',
-    sub1:         'Join the RadYar community.',
-    heading2:     'Almost there!',
-    sub2:         (email) => `We sent a code to ${email}.`,
-    spitzname:    'Nickname',
-    spitznamePh:  'What should we call you?',
-    email:        'Email address',
-    password:     'Password',
-    passwordHint: 'At least 8 characters',
-    fachrichtung: 'Specialty',
-    stufe:        'Training level',
-    select:       '– Please select –',
-    next:         'Continue',
-    loading:      'Please wait…',
-    verify:       'Verify code',
-    verifying:    'Verifying…',
-    codePh:       '6-digit code',
-    resend:       'Resend code',
-    hasAccount:   'Already have an account?',
-    signIn:       'Sign in',
-    errDefault:   'Something went wrong. Please try again.',
-    step1:        'Profile', step2: 'Verification',
-  },
-  fa: {
-    heading1:     'ساخت حساب',
-    sub1:         'به جامعه رادیار بپیوند.',
-    heading2:     'تقریباً تموم شد!',
-    sub2:         (email) => `یک کد به ${email} فرستادیم.`,
-    spitzname:    'اسم مستعار',
-    spitznamePh:  'چی صدات کنیم؟',
-    email:        'آدرس ایمیل',
-    password:     'رمز عبور',
-    passwordHint: 'حداقل ۸ کاراکتر',
-    fachrichtung: 'تخصص',
-    stufe:        'مرحله تحصیلی',
-    select:       '– انتخاب کن –',
-    next:         'ادامه',
-    loading:      'لطفاً صبر کن…',
-    verify:       'تأیید کد',
-    verifying:    'در حال بررسی…',
-    codePh:       'کد ۶ رقمی',
-    resend:       'ارسال مجدد کد',
-    hasAccount:   'قبلاً حساب داری؟',
-    signIn:       'ورود',
-    errDefault:   'خطایی رخ داد. دوباره امتحان کن.',
-    step1:        'پروفایل', step2: 'تأیید',
-  },
-}
+const SPECIALTIES = ['Radiology','General Medicine','Surgery','Internal Medicine','Neurology','Paediatrics','Other']
+const LEVELS      = ['Medical student','Final year (PJ)','Resident','Specialist','Senior physician','Other']
 
 function HexLogo() {
   return (
@@ -117,62 +31,52 @@ function HexLogo() {
 }
 
 export default function SignUpPage() {
-  const { lang } = useLanguage()
-  const t   = T[lang] ?? T.de
-  const dir = lang === 'fa' ? 'rtl' : 'ltr'
-
   const { isLoaded, signUp, setActive } = useSignUp()
   const router = useRouter()
 
-  const [step,         setStep]         = useState(1)
-  const [spitzname,    setSpitzname]    = useState('')
-  const [email,        setEmail]        = useState('')
-  const [password,     setPassword]     = useState('')
-  const [fachrichtung, setFachrichtung] = useState('')
-  const [stufe,        setStufe]        = useState('')
-  const [code,         setCode]         = useState('')
-  const [error,        setError]        = useState('')
-  const [loading,      setLoading]      = useState(false)
+  const [step,     setStep]     = useState(1)
+  const [name,     setName]     = useState('')
+  const [email,    setEmail]    = useState('')
+  const [password, setPassword] = useState('')
+  const [spec,     setSpec]     = useState('')
+  const [level,    setLevel]    = useState('')
+  const [code,     setCode]     = useState('')
+  const [error,    setError]    = useState('')
+  const [loading,  setLoading]  = useState(false)
 
-  /* Schritt 1: Konto anlegen + Email-Verifizierung starten */
+  function showError(err) {
+    setError(err?.errors?.[0]?.longMessage || err?.errors?.[0]?.message || 'Something went wrong. Please try again.')
+  }
+
   async function handleRegister(e) {
     e.preventDefault()
     if (!isLoaded) return
-    setLoading(true)
-    setError('')
+    setLoading(true); setError('')
     try {
       await signUp.create({
         emailAddress: email,
         password,
-        firstName: spitzname,
-        unsafeMetadata: { fachrichtung, ausbildungsstufe: stufe },
+        firstName: name,
+        unsafeMetadata: { specialty: spec, level },
       })
       await signUp.prepareEmailAddressVerification({ strategy: 'email_code' })
       setStep(2)
-    } catch (err) {
-      setError(err?.errors?.[0]?.message ?? t.errDefault)
-    } finally {
-      setLoading(false)
-    }
+    } catch (err) { showError(err) }
+    finally { setLoading(false) }
   }
 
-  /* Schritt 2: Code bestätigen */
   async function handleVerify(e) {
     e.preventDefault()
     if (!isLoaded) return
-    setLoading(true)
-    setError('')
+    setLoading(true); setError('')
     try {
       const result = await signUp.attemptEmailAddressVerification({ code })
       if (result.status === 'complete') {
         await setActive({ session: result.createdSessionId })
         router.push('/')
       }
-    } catch (err) {
-      setError(err?.errors?.[0]?.message ?? t.errDefault)
-    } finally {
-      setLoading(false)
-    }
+    } catch (err) { showError(err) }
+    finally { setLoading(false) }
   }
 
   async function handleResend() {
@@ -180,27 +84,27 @@ export default function SignUpPage() {
     catch (_) {}
   }
 
-  const fachList = FACHRICHTUNGEN[lang] ?? FACHRICHTUNGEN.de
-  const stufeList = STUFEN[lang] ?? STUFEN.de
+  function ErrorBox() {
+    if (!error) return null
+    return (
+      <div className={styles.error}>
+        <span>{error}</span>
+        <button type="button" onClick={() => setError('')}
+          style={{background:'none',border:'none',cursor:'pointer',color:'#b91c1c',fontWeight:700,fontSize:16,lineHeight:1,padding:'0 0 0 8px',flexShrink:0}}>×</button>
+      </div>
+    )
+  }
 
   return (
     <div className={styles.page}>
-      <div className={styles.card} dir={dir}>
+      <div className={styles.card}>
 
-        {/* Schließen-Button */}
-        <button
-          type="button"
-          onClick={() => router.back()}
-          aria-label="Schließen"
-          style={{
-            position:'absolute', top:16, right: dir==='rtl' ? 'auto' : 16, left: dir==='rtl' ? 16 : 'auto',
-            background:'none', border:'none', cursor:'pointer',
-            color:'#94a3b8', fontSize:24, lineHeight:1, padding:4,
-            borderRadius:8, transition:'color 0.15s'
-          }}
-          onMouseOver={e => e.currentTarget.style.color='#374151'}
-          onMouseOut={e => e.currentTarget.style.color='#94a3b8'}
-        >×</button>
+        {/* Close button */}
+        <button type="button" onClick={() => router.back()} aria-label="Close"
+          style={{position:'absolute',top:16,right:16,background:'none',border:'none',
+            cursor:'pointer',color:'#94a3b8',fontSize:24,lineHeight:1,padding:4,borderRadius:8}}>
+          ×
+        </button>
 
         {/* Logo */}
         <div className={styles.logoRow}>
@@ -222,112 +126,94 @@ export default function SignUpPage() {
 
         <div className={styles.divider} />
 
-        {/* ── SCHRITT 1: Profil ── */}
+        {/* ── STEP 1: Profile ── */}
         {step === 1 && (
           <>
-            <h1 className={styles.heading}>{t.heading1}</h1>
-            <p className={styles.sub}>{t.sub1}</p>
+            <h1 className={styles.heading}>Create account</h1>
+            <p className={styles.sub}>Join the RadYar community.</p>
             <form className={styles.form} onSubmit={handleRegister}>
-              {error && (
-                <div className={styles.error}>
-                  <span>{error}</span>
-                  <button type="button" onClick={() => setError('')}
-                    style={{ background:'none', border:'none', cursor:'pointer', color:'#b91c1c', fontWeight:700, fontSize:16, lineHeight:1, padding:'0 0 0 8px', flexShrink:0 }}>×</button>
-                </div>
-              )}
+              <ErrorBox />
 
               <div className={styles.fieldGroup}>
-                <label className={styles.label}>{t.spitzname}</label>
-                <input className={styles.input} type="text" value={spitzname}
-                  onChange={e => setSpitzname(e.target.value)}
-                  placeholder={t.spitznamePh} required autoComplete="nickname" />
+                <label className={styles.label}>Nickname</label>
+                <input className={styles.input} type="text" value={name}
+                  onChange={e => setName(e.target.value)}
+                  placeholder="What should we call you?" required autoComplete="nickname" />
               </div>
 
               <div className={styles.fieldGroup}>
-                <label className={styles.label}>{t.email}</label>
+                <label className={styles.label}>Email address</label>
                 <input className={styles.input} type="email" value={email}
                   onChange={e => setEmail(e.target.value)}
-                  placeholder="name@beispiel.de" required autoComplete="email" />
+                  placeholder="name@example.com" required autoComplete="email" />
               </div>
 
               <div className={styles.fieldGroup}>
-                <label className={styles.label}>{t.password}</label>
+                <label className={styles.label}>Password</label>
                 <input className={styles.input} type="password" value={password}
                   onChange={e => setPassword(e.target.value)}
-                  placeholder="••••••••" required minLength={8}
+                  placeholder="At least 8 characters" required minLength={8}
                   autoComplete="new-password" />
-                <span style={{ fontSize: 12, color: '#94a3b8', marginTop: 2 }}>{t.passwordHint}</span>
               </div>
 
               <div className={styles.fieldGroup}>
-                <label className={styles.label}>{t.fachrichtung}</label>
-                <select className={styles.select} value={fachrichtung}
-                  onChange={e => setFachrichtung(e.target.value)} required>
-                  <option value="">{t.select}</option>
-                  {fachList.map(f => <option key={f} value={f}>{f}</option>)}
+                <label className={styles.label}>Specialty</label>
+                <select className={styles.select} value={spec}
+                  onChange={e => setSpec(e.target.value)} required>
+                  <option value="">– Please select –</option>
+                  {SPECIALTIES.map(s => <option key={s} value={s}>{s}</option>)}
                 </select>
               </div>
 
               <div className={styles.fieldGroup}>
-                <label className={styles.label}>{t.stufe}</label>
-                <select className={styles.select} value={stufe}
-                  onChange={e => setStufe(e.target.value)} required>
-                  <option value="">{t.select}</option>
-                  {stufeList.map(s => <option key={s} value={s}>{s}</option>)}
+                <label className={styles.label}>Training level</label>
+                <select className={styles.select} value={level}
+                  onChange={e => setLevel(e.target.value)} required>
+                  <option value="">– Please select –</option>
+                  {LEVELS.map(l => <option key={l} value={l}>{l}</option>)}
                 </select>
               </div>
 
               <button className={styles.submitBtn} type="submit"
-                disabled={loading || !email || !password || !spitzname || !fachrichtung || !stufe}>
-                {loading ? t.loading : t.next}
+                disabled={loading || !email || !password || !name || !spec || !level}>
+                {loading ? 'Please wait…' : 'Continue'}
               </button>
             </form>
           </>
         )}
 
-        {/* ── SCHRITT 2: Verifizierung ── */}
+        {/* ── STEP 2: Verification ── */}
         {step === 2 && (
           <>
-            <h1 className={styles.heading}>{t.heading2}</h1>
-            <p className={styles.sub}>{t.sub2(email)}</p>
+            <h1 className={styles.heading}>Almost there!</h1>
+            <p className={styles.sub}>We sent a code to <strong>{email}</strong>.</p>
             <form className={styles.form} onSubmit={handleVerify}>
-              {error && (
-                <div className={styles.error}>
-                  <span>{error}</span>
-                  <button type="button" onClick={() => setError('')}
-                    style={{ background:'none', border:'none', cursor:'pointer', color:'#b91c1c', fontWeight:700, fontSize:16, lineHeight:1, padding:'0 0 0 8px', flexShrink:0 }}>×</button>
-                </div>
-              )}
+              <ErrorBox />
 
               <div className={styles.fieldGroup}>
                 <input
                   className={`${styles.input} ${styles.codeInput}`}
-                  type="text"
-                  inputMode="numeric"
-                  maxLength={6}
+                  type="text" inputMode="numeric" maxLength={6}
                   value={code}
-                  onChange={e => setCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
-                  placeholder={t.codePh}
-                  required
-                  autoFocus
+                  onChange={e => setCode(e.target.value.replace(/\D/g,'').slice(0,6))}
+                  placeholder="______" required autoFocus
                 />
               </div>
 
-              <button className={styles.submitBtn} type="submit"
-                disabled={loading || code.length < 6}>
-                {loading ? t.verifying : t.verify}
+              <button className={styles.submitBtn} type="submit" disabled={loading || code.length < 6}>
+                {loading ? 'Verifying…' : 'Verify code'}
               </button>
 
               <button type="button" className={styles.resendBtn} onClick={handleResend}>
-                {t.resend}
+                Resend code
               </button>
             </form>
           </>
         )}
 
         <p className={styles.footerText}>
-          {t.hasAccount}{' '}
-          <Link href="/sign-in" className={styles.footerLink}>{t.signIn}</Link>
+          Already have an account?{' '}
+          <Link href="/sign-in" className={styles.footerLink}>Sign in</Link>
         </p>
 
       </div>
