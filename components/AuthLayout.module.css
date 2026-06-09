@@ -192,6 +192,10 @@
 
 /* ── ERROR ─────────────────────────────────────────── */
 .error {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
   padding: 10px 14px;
   border-radius: 10px;
   background: #fff1f2;

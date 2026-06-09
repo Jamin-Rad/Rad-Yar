@@ -94,9 +94,16 @@ export default function SignInPage() {
       if (result.status === 'complete') {
         await setActive({ session: result.createdSessionId })
         router.push('/')
+      } else {
+        // Status ist nicht complete — z.B. 2FA oder andere Schritte nötig
+        setError(`Login-Status: ${result.status} — ${t.errDefault}`)
       }
     } catch (err) {
-      setError(err?.errors?.[0]?.message ?? t.errDefault)
+      const msg = err?.errors?.[0]?.longMessage
+        || err?.errors?.[0]?.message
+        || err?.message
+        || t.errDefault
+      setError(msg)
     } finally {
       setLoading(false)
     }
@@ -155,7 +162,16 @@ export default function SignInPage() {
         </div>
 
         <form className={styles.form} onSubmit={handleSubmit}>
-          {error && <div className={styles.error}>{error}</div>}
+          {error && (
+            <div className={styles.error}>
+              <span>{error}</span>
+              <button
+                type="button"
+                onClick={() => setError('')}
+                style={{ background:'none', border:'none', cursor:'pointer', color:'#b91c1c', fontWeight:700, fontSize:16, lineHeight:1, padding:'0 0 0 8px', flexShrink:0 }}
+              >×</button>
+            </div>
+          )}
           <div className={styles.fieldGroup}>
             <label className={styles.label}>{t.email}</label>
             <input className={styles.input} type="email" value={email}

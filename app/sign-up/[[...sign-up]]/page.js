@@ -213,7 +213,13 @@ export default function SignUpPage() {
             <h1 className={styles.heading}>{t.heading1}</h1>
             <p className={styles.sub}>{t.sub1}</p>
             <form className={styles.form} onSubmit={handleRegister}>
-              {error && <div className={styles.error}>{error}</div>}
+              {error && (
+                <div className={styles.error}>
+                  <span>{error}</span>
+                  <button type="button" onClick={() => setError('')}
+                    style={{ background:'none', border:'none', cursor:'pointer', color:'#b91c1c', fontWeight:700, fontSize:16, lineHeight:1, padding:'0 0 0 8px', flexShrink:0 }}>×</button>
+                </div>
+              )}
 
               <div className={styles.fieldGroup}>
                 <label className={styles.label}>{t.spitzname}</label>
@@ -270,7 +276,13 @@ export default function SignUpPage() {
             <h1 className={styles.heading}>{t.heading2}</h1>
             <p className={styles.sub}>{t.sub2(email)}</p>
             <form className={styles.form} onSubmit={handleVerify}>
-              {error && <div className={styles.error}>{error}</div>}
+              {error && (
+                <div className={styles.error}>
+                  <span>{error}</span>
+                  <button type="button" onClick={() => setError('')}
+                    style={{ background:'none', border:'none', cursor:'pointer', color:'#b91c1c', fontWeight:700, fontSize:16, lineHeight:1, padding:'0 0 0 8px', flexShrink:0 }}>×</button>
+                </div>
+              )}
 
               <div className={styles.fieldGroup}>
                 <input

@@ -25,7 +25,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      signInUrl="/sign-in"
+      signUpUrl="/sign-up"
+      afterSignInUrl="/"
+      afterSignUpUrl="/"
+    >
       <html lang="de" data-theme="light" suppressHydrationWarning>
         <head>
           <link
