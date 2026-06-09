@@ -2,6 +2,7 @@ import { Fraunces, Manrope } from 'next/font/google'
 import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
 import { ThemeProvider } from '@/providers/ThemeProvider'
+import { LanguageProvider } from '@/providers/LanguageProvider'
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -56,7 +57,9 @@ export default function RootLayout({ children }) {
           />
         </head>
         <body className={`${fraunces.variable} ${manrope.variable}`}>
-          <ThemeProvider>{children}</ThemeProvider>
+          <ThemeProvider>
+            <LanguageProvider>{children}</LanguageProvider>
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>

@@ -266,6 +266,59 @@
 
 .footerLink:hover { text-decoration: underline; }
 
+/* ── SOCIAL BUTTONS ────────────────────────────────── */
+.socialBtns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.socialBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border: 1.5px solid #e2e6f0;
+  border-radius: 12px;
+  background: #fff;
+  color: #0d1b2a;
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
+}
+
+.socialBtn:hover {
+  border-color: #f97316;
+  background: rgba(249,115,22,0.04);
+  box-shadow: 0 2px 12px rgba(249,115,22,0.1);
+}
+
+/* ── OR DIVIDER ─────────────────────────────────────── */
+.orDivider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0 4px;
+}
+
+.orLine {
+  flex: 1;
+  height: 1px;
+  background: #e2e6f0;
+}
+
+.orText {
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
 /* ── RTL ───────────────────────────────────────────── */
 [dir='rtl'] .label  { text-align: right; }
 [dir='rtl'] .select { background-position: left 14px center; padding-right: 14px; padding-left: 36px; }
