@@ -270,6 +270,20 @@
 
 .footerLink:hover { text-decoration: underline; }
 
+/* ── FORGOT PASSWORD LINK ───────────────────────────── */
+.forgotBtn {
+  font-size: 12px;
+  font-weight: 600;
+  color: #f97316;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.forgotBtn:hover { text-decoration: underline; }
+
 /* ── SOCIAL BUTTONS ────────────────────────────────── */
 .socialBtns {
   display: flex;
