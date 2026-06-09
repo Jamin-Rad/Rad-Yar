@@ -90,13 +90,26 @@ export default function SignInPage() {
     setLoading(true)
     setError('')
     try {
-      const result = await signIn.create({ identifier: email, password })
-      if (result.status === 'complete') {
-        await setActive({ session: result.createdSessionId })
+      // Schritt 1: Nur E-Mail senden
+      const attempt = await signIn.create({ identifier: email })
+
+      if (attempt.status === 'needs_first_factor') {
+        // Schritt 2: Passwort separat senden
+        const result = await signIn.attemptFirstFactor({
+          strategy: 'password',
+          password,
+        })
+        if (result.status === 'complete') {
+          await setActive({ session: result.createdSessionId })
+          router.push('/')
+        } else {
+          setError(`Status: ${result.status} — ${t.errDefault}`)
+        }
+      } else if (attempt.status === 'complete') {
+        await setActive({ session: attempt.createdSessionId })
         router.push('/')
       } else {
-        // Status ist nicht complete — z.B. 2FA oder andere Schritte nötig
-        setError(`Login-Status: ${result.status} — ${t.errDefault}`)
+        setError(`Status: ${attempt.status} — ${t.errDefault}`)
       }
     } catch (err) {
       const msg = err?.errors?.[0]?.longMessage
