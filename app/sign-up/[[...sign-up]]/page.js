@@ -187,6 +187,21 @@ export default function SignUpPage() {
     <div className={styles.page}>
       <div className={styles.card} dir={dir}>
 
+        {/* Schließen-Button */}
+        <button
+          type="button"
+          onClick={() => router.back()}
+          aria-label="Schließen"
+          style={{
+            position:'absolute', top:16, right: dir==='rtl' ? 'auto' : 16, left: dir==='rtl' ? 16 : 'auto',
+            background:'none', border:'none', cursor:'pointer',
+            color:'#94a3b8', fontSize:24, lineHeight:1, padding:4,
+            borderRadius:8, transition:'color 0.15s'
+          }}
+          onMouseOver={e => e.currentTarget.style.color='#374151'}
+          onMouseOut={e => e.currentTarget.style.color='#94a3b8'}
+        >×</button>
+
         {/* Logo */}
         <div className={styles.logoRow}>
           <HexLogo />

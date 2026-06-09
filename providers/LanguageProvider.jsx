@@ -30,10 +30,16 @@ function getInitialBrowserLang() {
 }
 
 export function LanguageProvider({ children }) {
-  const [lang, setLangState] = useState('de')
+  // Sofort aus localStorage lesen → kein Sprachenflackern mehr
+  const [lang, setLangState] = useState(() => {
+    if (typeof window === 'undefined') return 'de'
+    return getInitialBrowserLang()
+  })
 
+  // Fallback für SSR-Hydration
   useEffect(() => {
-    setLangState(getInitialBrowserLang())
+    const resolved = getInitialBrowserLang()
+    if (resolved !== lang) setLangState(resolved)
   }, [])
 
   const setLang = (nextLang) => {

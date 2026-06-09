@@ -18,6 +18,7 @@
 
 /* ── CARD ──────────────────────────────────────────── */
 .card {
+  position: relative;
   width: 100%;
   max-width: 440px;
   background: rgba(255,255,255,0.97);
