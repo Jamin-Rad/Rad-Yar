@@ -2,48 +2,9 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { CURRICULUM } from '@/data/curriculum'
+import { CURRICULUM, getFachTitle } from '@/data/curriculum'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './index.module.css'
-
-const FACH_DISPLAY = {
-  de: {
-    abdomen:      { name: 'Abdomen',              icon: '🫘' },
-    gehirn:       { name: 'Kopf',                 icon: '🧠' },
-    msk:          { name: 'Muskuloskelettales',   icon: '🦴' },
-    thorax:       { name: 'Thorax',               icon: '🫁' },
-    wirbelsaeule: { name: 'Wirbelsäule',          icon: '🩻' },
-    hals:         { name: 'Hals',                 icon: '🦋' },
-    mamma:        { name: 'Mamma',                icon: '🩺' },
-    'becken-f':   { name: 'Becken – Frau',        icon: '♀️' },
-    'becken-m':   { name: 'Becken – Mann',        icon: '♂️' },
-    technik:      { name: 'Technik & Physik',     icon: '⚙️' },
-  },
-  en: {
-    abdomen:      { name: 'Abdomen',              icon: '🫘' },
-    gehirn:       { name: 'Head',                 icon: '🧠' },
-    msk:          { name: 'Musculoskeletal',      icon: '🦴' },
-    thorax:       { name: 'Thorax',               icon: '🫁' },
-    wirbelsaeule: { name: 'Spine',                icon: '🩻' },
-    hals:         { name: 'Neck',                 icon: '🦋' },
-    mamma:        { name: 'Breast',               icon: '🩺' },
-    'becken-f':   { name: 'Pelvis – Female',      icon: '♀️' },
-    'becken-m':   { name: 'Pelvis – Male',        icon: '♂️' },
-    technik:      { name: 'Physics & Tech',       icon: '⚙️' },
-  },
-  fa: {
-    abdomen:      { name: 'شکم',                  icon: '🫘' },
-    gehirn:       { name: 'سر',                   icon: '🧠' },
-    msk:          { name: 'اسکلتی-عضلانی',        icon: '🦴' },
-    thorax:       { name: 'توراکس',               icon: '🫁' },
-    wirbelsaeule: { name: 'ستون فقرات',           icon: '🩻' },
-    hals:         { name: 'گردن',                 icon: '🦋' },
-    mamma:        { name: 'پستان',                icon: '🩺' },
-    'becken-f':   { name: 'لگن – زنان',           icon: '♀️' },
-    'becken-m':   { name: 'لگن – مردان',          icon: '♂️' },
-    technik:      { name: 'تکنیک و فیزیک',        icon: '⚙️' },
-  },
-}
 
 const PAGE_TITLES = {
   de: 'Körperregion wählen',
@@ -57,8 +18,6 @@ export default function LernenIndexPage() {
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
 
-  const display = FACH_DISPLAY[lang] || FACH_DISPLAY.de
-
   return (
     <div className={styles.page}>
       <div className={styles.inner}>
@@ -66,7 +25,7 @@ export default function LernenIndexPage() {
 
         <div className={`${styles.grid} ${mounted ? styles.gridIn : ''}`}>
           {CURRICULUM.map((fach, i) => {
-            const d = display[fach.id] || { name: fach.key, icon: fach.icon }
+            const d = { name: getFachTitle(fach, lang), icon: fach.icon }
             const totalThemen = fach.kapitel.reduce((s, k) => s + k.themen.length, 0)
             return (
               <button

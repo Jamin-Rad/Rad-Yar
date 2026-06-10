@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
-import { CURRICULUM, THEMA_TRANSLATIONS } from '@/data/curriculum'
+import { CURRICULUM, getFachTitle, t } from '@/data/curriculum'
 import styles from './LernPfade.module.css'
 
 const COLORS = [
@@ -78,9 +78,7 @@ const LATEST_COPY = {
 }
 
 function localizeTitle(item, lang) {
-  if (!item) return ''
-  if (typeof item.title === 'object') return item.title[lang] || item.title.de || ''
-  return THEMA_TRANSLATIONS[item.id]?.[lang] || item.title || ''
+  return t(item?.title, lang)
 }
 
 function collectReadyTopics() {
@@ -110,7 +108,7 @@ function buildLatestItems(lang, copy) {
     .map(({ topic, area, chapter }) => {
       const title = localizeTitle(topic, lang)
       const chapterTitle = localizeTitle(chapter, lang) || chapter?.title || ''
-      const areaTitle = area?.key || area?.id || ''
+      const areaTitle = getFachTitle(area, lang) || area?.id || ''
       const icon = area?.icon || '✨'
       const metaBase = [areaTitle, chapterTitle].filter(Boolean).join(' · ')
 
@@ -131,7 +129,7 @@ function buildFallTopicItems(lang) {
       icon: area?.icon || '🧪',
       color: area?.color || '#f97316',
       title: localizeTitle(topic, lang),
-      meta: [area?.key, localizeTitle(chapter, lang) || chapter?.title].filter(Boolean).join(' · '),
+      meta: [getFachTitle(area, lang), localizeTitle(chapter, lang) || chapter?.title].filter(Boolean).join(' · '),
       href: topic.fallLink || `${topic.link}#fallbeispiele`,
     }))
 }

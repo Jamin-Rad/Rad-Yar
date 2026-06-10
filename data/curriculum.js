@@ -1,2628 +1,359 @@
-// ── RADYAR CURRICULUM DATA ─────────────────────────────────────────────────
-// Auto-updated: ready learning topics include links to learning, MCQ, flashcards and cases.
+// Neue Kurrikulum-Struktur (Stand 2026, Quelle: Inhalt.txt)
+// Jeder Eintrag (Fach/Kapitel/Thema) trägt seinen Titel inline in allen
+// 3 Sprachen (title: {de, en, fa}) - keine separaten Übersetzungs-Dicts mehr.
+//
+// thema.group: optionale Breadcrumb-Liste für tiefer verschachtelte
+// Zwischenebenen aus Inhalt.txt (z.B. ['Knochenbildende Tumoren']).
+// thema.sub: echte Varianten/Unterformen eines Themas.
+// "ready"-Themen haben link/mcqLink/flashcardLink/fallLink + updatedAt.
 
 export const CURRICULUM = [
   {
-    "id": "gehirn",
-    "key": "Kopf",
-    "icon": "🧠",
-    "color": "#a78bfa",
-    "bg": "linear-gradient(135deg,#1a1040,#2d1b69)",
-    "bodyZone": "Neuroradiologie",
-    "kapitel": [
-      {
-        "id": "tumoren-hirn",
-        "title": "Intrakranielle Tumoren",
-        "icon": "🔬",
-        "themen": [
-          {
-            "id": "astrozytom",
-            "title": "Astrozytom / Gliom",
-            "tags": [
-              "MRT",
-              "KM"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "oligodendrogliom",
-            "title": "Oligodendrogliom",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "gbm",
-            "title": "Glioblastom (GBM)",
-            "tags": [
-              "MRT",
-              "KM"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "medulloblastom",
-            "title": "Medulloblastom",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "ependymom",
-            "title": "Ependymom",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "meningeom",
-            "title": "Meningeom",
-            "tags": [
-              "MRT",
-              "KM"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "hirn-met",
-            "title": "Hirnmetastasen",
-            "tags": [
-              "MRT",
-              "KM"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "pcnsl",
-            "title": "Primäres ZNS-Lymphom",
-            "tags": [
-              "MRT",
-              "KM"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "haemangioblastom",
-            "title": "Hämangioblastom",
-            "tags": [
-              "MRT",
-              "KM"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "hypophysenadenom",
-            "title": "Hypophysenadenom (Mikro/Makro)",
-            "tags": [
-              "MRT",
-              "KM"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "kraniopharyngeom",
-            "title": "Kraniopharyngeom",
-            "tags": [
-              "MRT",
-              "CT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "rathke-zyste",
-            "title": "Rathke-Gangzyste",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "epidermoid",
-            "title": "Epidermoidzyste",
-            "tags": [
-              "MRT",
-              "DWI"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "kolloidzyste",
-            "title": "Kolloidzyste",
-            "tags": [
-              "MRT",
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "arachnoidalzyste",
-            "title": "Arachnoidalzyste",
-            "tags": [
-              "MRT",
-              "CT"
-            ],
-            "diff": 1
-          }
-        ]
-      },
-      {
-        "id": "vaskulaer",
-        "title": "Vaskuläre Erkrankungen",
-        "icon": "🩸",
-        "themen": [
-          {
-            "id": "ischaem-stroke",
-            "title": "Ischämischer Schlaganfall",
-            "tags": [
-              "CT",
-              "MRT",
-              "DWI"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "dissektion",
-            "title": "Gefäßwanddissektion",
-            "tags": [
-              "MRT",
-              "CTA"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "moya-moya",
-            "title": "Moya-Moya-Erkrankung",
-            "tags": [
-              "MRT",
-              "CTA"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "mikroangiopathie",
-            "title": "Hyperintense Mikroangiopathie",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "caa",
-            "title": "Zerebrale Amyloidangiopathie (CAA)",
-            "tags": [
-              "MRT",
-              "SWI"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "cadasil",
-            "title": "CADASIL-Syndrom",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "dva",
-            "title": "Developmental Venous Anomaly (DVA)",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "kavernom",
-            "title": "Kavernom",
-            "tags": [
-              "MRT",
-              "SWI"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "avm-hirn",
-            "title": "Arteriovenöse Malformation (AVM)",
-            "tags": [
-              "MRT",
-              "CTA"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "dav-fistel",
-            "title": "Durale AV-Fistel",
-            "tags": [
-              "MRT",
-              "DSA"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "sin-thrombose",
-            "title": "Sinus- und Hirnvenenthrombose",
-            "tags": [
-              "MRT",
-              "MRV"
-            ],
-            "diff": 3
-          }
-        ]
-      },
-      {
-        "id": "entz-infekt",
-        "title": "Entzündung · Demyelinisierung · Infektion",
-        "icon": "🦠",
-        "themen": [
-          {
-            "id": "ms",
-            "title": "Multiple Sklerose (MS)",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "nmo",
-            "title": "Neuromyelitis-optica-Spektrum (NMO)",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "meningitis",
-            "title": "Meningitis / Enzephalitis",
-            "tags": [
-              "MRT",
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "hiv-enceph",
-            "title": "HIV-Enzephalopathie",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "herpes-enceph",
-            "title": "Herpesenzephalitis",
-            "tags": [
-              "MRT",
-              "DWI"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "hirnabszess",
-            "title": "Hirnabszess",
-            "tags": [
-              "MRT",
-              "DWI",
-              "KM"
-            ],
-            "diff": 2
-          }
-        ]
-      },
-      {
-        "id": "trauma-blutung",
-        "title": "Trauma · Blutung · Notfall",
-        "icon": "🩹",
-        "themen": [
-          {
-            "id": "sab",
-            "title": "Subarachnoidalblutung (SAB)",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "edh",
-            "title": "Epiduralhämatom (EDH)",
-            "tags": [
-              "CT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "sdh",
-            "title": "Subduralhämatom (SDH)",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "icb",
-            "title": "Intrazerebrale Blutung (ICB)",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "hypox-hirn",
-            "title": "Globale hypox.-ischäm. Hirnschädigung",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 3
-          }
-        ]
-      },
-      {
-        "id": "degeneration-fehlbildung",
-        "title": "Degeneration · Fehlbildungen · Sonstiges",
-        "icon": "🧩",
-        "themen": [
-          {
-            "id": "alzheimer",
-            "title": "Morbus Alzheimer",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "lewy-body",
-            "title": "Lewy-Body-Demenz",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "ftd",
-            "title": "Frontotemporale Demenz (FTD)",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "cjd",
-            "title": "Creutzfeldt-Jakob-Krankheit (CJD)",
-            "tags": [
-              "MRT",
-              "DWI"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "parkinson",
-            "title": "Morbus Parkinson",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "pres",
-            "title": "PRES",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "pvl",
-            "title": "Periventrikuläre Leukomalazie (PVL)",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "nf1",
-            "title": "Neurofibromatose Typ 1 (NF1)",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "balkenagenesie",
-            "title": "Balkenagenesie",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "chiari",
-            "title": "Chiari-Malformation",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          }
-        ]
-      }
-    ]
+    id: 'gehirn',
+    title: { de: 'Kopf', en: 'Head', fa: 'سر' },
+    icon: '🧠', color: '#a78bfa',
+    bg: 'linear-gradient(135deg,#1a1040,#2d1b69)',
+    bodyZone: 'Neuroradiologie',
+    kapitel: [],
   },
   {
-    "id": "wirbelsaeule",
-    "key": "Wirbelsäule",
-    "icon": "🩻",
-    "color": "#60a5fa",
-    "bg": "linear-gradient(135deg,#0c1f40,#1e3a6e)",
-    "bodyZone": "Hals",
-    "kapitel": [
-      {
-        "id": "ws-trauma",
-        "title": "Trauma",
-        "icon": "🩹",
-        "themen": [
-          {
-            "id": "ws-fraktur",
-            "title": "Wirbelkörperfraktur (inkl. Klassifikation)",
-            "tags": [
-              "CT",
-              "MRT",
-              "Rö"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "ws-instab",
-            "title": "Instabilität & Luxation",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 3
-          }
-        ]
-      },
-      {
-        "id": "ws-degenerativ",
-        "title": "Degenerativ",
-        "icon": "🩻",
-        "themen": [
-          {
-            "id": "bsp",
-            "title": "Bandscheibenpathologien (Protrusion, Prolaps, Extrusion)",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "abschlussplatten",
-            "title": "Wirbelkörperabschlussplatten (Modic)",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "spondylarthrose",
-            "title": "Spondylarthrose (kleine Gelenke)",
-            "tags": [
-              "MRT",
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "spinalkanalstenose",
-            "title": "Spinalkanalstenose",
-            "tags": [
-              "MRT",
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "neuroforamen",
-            "title": "Neuroforaminale Stenose",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "spondylolisthese",
-            "title": "Spondylolisthese / Pseudospondylolisthese",
-            "tags": [
-              "MRT",
-              "Rö"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "ossif-ligamente",
-            "title": "Ossifikation spinaler Ligamente (OPLL)",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 3
-          }
-        ]
-      },
-      {
-        "id": "ws-entzuendlich",
-        "title": "Entzündlich · Tumor",
-        "icon": "🔥",
-        "themen": [
-          {
-            "id": "bechterew",
-            "title": "Morbus Bechterew (Ankylosierende Spondylitis)",
-            "tags": [
-              "MRT",
-              "CT",
-              "Rö"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "scheuermann",
-            "title": "Morbus Scheuermann",
-            "tags": [
-              "Rö",
-              "MRT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "spondylodiszitis",
-            "title": "Spondylodiszitis",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "ws-metastase",
-            "title": "Wirbelkörpermetastasen",
-            "tags": [
-              "MRT",
-              "CT"
-            ],
-            "diff": 2
-          }
-        ]
-      },
-      {
-        "id": "spinalkanal",
-        "title": "Spinalkanal · Myelon",
-        "icon": "🩹",
-        "themen": [
-          {
-            "id": "extramedullaer",
-            "title": "Extradurale Raumforderungen",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "gbs",
-            "title": "Guillain-Barré-Syndrom (GBS)",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "lyme-spinal",
-            "title": "Lyme-Neuroborreliose",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "ms-spinal",
-            "title": "MS des Rückenmarks",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          }
-        ]
-      },
-      {
-        "id": "ws-metabolisch",
-        "title": "Metabolisch · Fehlbildung",
-        "icon": "🧪",
-        "themen": [
-          {
-            "id": "osteoporose",
-            "title": "Osteoporose",
-            "tags": [
-              "Rö",
-              "CT",
-              "MRT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "ren-osteodyst",
-            "title": "Renale Osteodystrophie",
-            "tags": [
-              "Rö"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "funikul-myelose",
-            "title": "Funikuläre Myelose",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 3
-          }
-        ]
-      }
-    ]
+    id: 'hals',
+    title: { de: 'Hals/HNO', en: 'Neck/ENT', fa: 'گردن و ENT' },
+    icon: '🦋', color: '#818cf8',
+    bg: 'linear-gradient(135deg,#1a0c40,#2d1b69)',
+    bodyZone: 'Hals',
+    kapitel: [],
   },
   {
-    "id": "hals",
-    "key": "Hals",
-    "icon": "🦋",
-    "color": "#818cf8",
-    "bg": "linear-gradient(135deg,#1a0c40,#2d1b69)",
-    "bodyZone": "Hals",
-    "kapitel": [
-      {
-        "id": "hals",
-        "title": "Hals",
-        "icon": "🦋",
-        "themen": [
-          {
-            "id": "schilddruese",
-            "title": "Schilddrüse (Struma, Adenom, Karzinom)",
-            "tags": [
-              "Sono",
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "lymphknoten-hals",
-            "title": "Lymphknoten (Hals)",
-            "tags": [
-              "CT",
-              "MRT",
-              "Sono"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "larynx",
-            "title": "Larynxkarzinom",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "glomus-carot",
-            "title": "Glomus caroticum (Paragangliom)",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 3
-          }
-        ]
-      }
-    ]
+    id: 'thorax',
+    title: { de: 'Thorax', en: 'Thorax', fa: 'قفسه سینه' },
+    icon: '🫁', color: '#38bdf8',
+    bg: 'linear-gradient(135deg,#0c2340,#0c3460)',
+    bodyZone: 'Thorax',
+    kapitel: [],
   },
   {
-    "id": "thorax",
-    "key": "Thorax",
-    "icon": "🫁",
-    "color": "#38bdf8",
-    "bg": "linear-gradient(135deg,#0c2340,#0c3460)",
-    "bodyZone": "Thorax",
-    "kapitel": [
-      {
-        "id": "herz-perikard",
-        "title": "Herz & Perikard",
-        "icon": "❤️",
-        "themen": [
-          {
-            "id": "herz-anatomie",
-            "title": "Herzanatomie & Normalbefunde",
-            "tags": [
-              "CT",
-              "MRT",
-              "Rö"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "khk",
-            "title": "Koronare Herzerkrankung (KHK)",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "perikarditis",
-            "title": "Perikarditis / Perikarderguss",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "kardiomyopathie",
-            "title": "Kardiomyopathien",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 3
-          }
-        ]
-      },
-      {
-        "id": "lunge",
-        "title": "Lunge",
-        "icon": "🫁",
-        "themen": [
-          {
-            "id": "lunge-anatomie",
-            "title": "Anatomie & Normvarianten",
-            "tags": [
-              "CT",
-              "Rö"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "ct-grund",
-            "title": "CT-Grundlagen (Muster: Densit., Retikulär, Nodulär)",
-            "tags": [
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "roentgen-grund",
-            "title": "Röntgen Grundinterpretation",
-            "tags": [
-              "Rö"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "bronchiektasen",
-            "title": "Bronchiektasen",
-            "tags": [
-              "CT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "bronchiolitis",
-            "title": "Bronchiolitis",
-            "tags": [
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "copd",
-            "title": "COPD / Emphysem",
-            "tags": [
-              "CT",
-              "Rö"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "fk-aspiration",
-            "title": "Fremdkörperaspiration",
-            "tags": [
-              "CT",
-              "Rö"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "pneumonie",
-            "title": "Pneumonie (inkl. COVID)",
-            "tags": [
-              "CT",
-              "Rö"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "lungenherd",
-            "title": "Solitärer Lungenherd (Fleischner)",
-            "tags": [
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "bronchialca",
-            "title": "Bronchialkarzinom",
-            "tags": [
-              "CT",
-              "PET"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "ild",
-            "title": "Diffuse interstitielle Lungenerkrankungen (ILD)",
-            "tags": [
-              "CT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "sarkoidose",
-            "title": "Sarkoidose",
-            "tags": [
-              "Rö",
-              "HRCT",
-              "LAP"
-            ],
-            "diff": 2,
-            "link": "/lunge/sarkoidose",
-            "mcqLink": "/ueben/quiz?fach=thorax&n=10&themen=sarkoidose",
-            "flashcardLink": "/flashcards/sarkoidose",
-            "fallLink": "/lunge/sarkoidose#fallbeispiele",
-            "ready": true,
-            "updatedAt": "2026-06-07"
-          },
-          {
-            "id": "zystische-fib",
-            "title": "Zystische Fibrose",
-            "tags": [
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "lungenzysten",
-            "title": "Lungenzysten (LAM, LIP)",
-            "tags": [
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "lae",
-            "title": "Lungenembolie (LAE)",
-            "tags": [
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "pulm-htn",
-            "title": "Pulmonale Hypertonie",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "lungenoedem",
-            "title": "Lungenödem",
-            "tags": [
-              "Rö",
-              "CT"
-            ],
-            "diff": 1
-          }
-        ]
-      },
-      {
-        "id": "mediastinum",
-        "title": "Mediastinum & Pleura",
-        "icon": "🫧",
-        "themen": [
-          {
-            "id": "mediastinum",
-            "title": "Mediastinaltumoren",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "pleuraerguss",
-            "title": "Pleuraerguss",
-            "tags": [
-              "Sono",
-              "CT",
-              "Rö"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "pleuramesotheliom",
-            "title": "Pleuramesotheliom",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "pneumothorax",
-            "title": "Pneumothorax",
-            "tags": [
-              "Rö",
-              "CT"
-            ],
-            "diff": 1
-          }
-        ]
-      }
-    ]
+    id: 'mamma',
+    title: { de: 'Mamma', en: 'Breast', fa: 'پستان' },
+    icon: '🩺', color: '#f472b6',
+    bg: 'linear-gradient(135deg,#2a0a20,#5a1040)',
+    bodyZone: 'Brust',
+    kapitel: [],
   },
   {
-    "id": "mamma",
-    "key": "Mamma",
-    "icon": "🩺",
-    "color": "#f472b6",
-    "bg": "linear-gradient(135deg,#2a0a20,#5a1040)",
-    "bodyZone": "Brust",
-    "kapitel": [
-      {
-        "id": "mammaca",
-        "title": "Mammakarzinom",
-        "icon": "🧬",
-        "themen": [
-          {
-            "id": "birads",
-            "title": "BIRADS-Klassifikation",
-            "tags": [
-              "Mammo",
-              "Sono",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "mammo-befund",
-            "title": "Mammographiebefundung",
-            "tags": [
-              "Mammo"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "mammo-ca-typen",
-            "title": "Mammakarzinom-Typen (duktal, lobulär)",
-            "tags": [
-              "Mammo",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "mammo-staging",
-            "title": "Staging & Lymphknoten",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 3
-          }
-        ]
-      },
-      {
-        "id": "benigne-mamma",
-        "title": "Benigne Läsionen",
-        "icon": "🌿",
-        "themen": [
-          {
-            "id": "mastopathie",
-            "title": "Mastopathie",
-            "tags": [
-              "Mammo",
-              "Sono"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "fibroadenom",
-            "title": "Fibroadenom",
-            "tags": [
-              "Sono",
-              "MRT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "mamma-zyste",
-            "title": "Mammazyste",
-            "tags": [
-              "Sono"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "fettgewebsnekrose",
-            "title": "Fettgewebsnekrose",
-            "tags": [
-              "Mammo",
-              "MRT"
-            ],
-            "diff": 2
-          }
-        ]
-      },
-      {
-        "id": "bildgebung-mamma",
-        "title": "Bildgebungsmodalitäten",
-        "icon": "🔊",
-        "themen": [
-          {
-            "id": "mammo-technik",
-            "title": "Mammographietechnik & Screening",
-            "tags": [
-              "Mammo"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "mamma-sono",
-            "title": "Brustsonographie",
-            "tags": [
-              "Sono"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "mamma-mrt",
-            "title": "Brust-MRT (Indikationen, Sequenzen)",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          }
-        ]
-      }
-    ]
+    id: 'abdomen',
+    title: { de: 'Abdomen', en: 'Abdomen', fa: 'شکم' },
+    icon: '🫘', color: '#10b981',
+    bg: 'linear-gradient(135deg,#0d2818,#14401e)',
+    bodyZone: 'Abdomen',
+    kapitel: [],
   },
   {
-    "id": "abdomen",
-    "key": "Abdomen",
-    "icon": "🫘",
-    "color": "#10b981",
-    "bg": "linear-gradient(135deg,#0d2818,#14401e)",
-    "bodyZone": "Abdomen",
-    "kapitel": [
-      {
-        "id": "leber",
-        "title": "Leber",
-        "icon": "🧬",
-        "themen": [
-          {
-            "id": "leberzyste",
-            "title": "Leberzysten",
-            "tags": [
-              "CT",
-              "MRT",
-              "Sono"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "hydatide",
-            "title": "Hydatiden-Zyste (Echinokokkose)",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "haemangiom",
-            "title": "Leberhämangiom",
-            "link": "/abdomen/leber/haemangiom",
-            "mcqLink": "/ueben/quiz?fach=abdomen&n=10&themen=haemangiom",
-            "flashcardLink": "/flashcards/haemangiom",
-            "fallLink": "/abdomen/leber/haemangiom#fallbeispiele",
-            "ready": true,
-            "updatedAt": "2026-06-07",
-            "tags": [
-              "CT",
-              "MRT",
-              "Sono"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "avm-leber",
-            "title": "Arteriovenöse Malformation",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "angiomyolipom",
-            "title": "Hepatisches Angiomyolipom",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "fnh",
-            "title": "Fokale Noduläre Hyperplasie (FNH)",
-            "tags": [
-              "MRT",
-              "KM"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "adenom",
-            "title": "Hepatozelluläres Adenom (HCA)",
-            "tags": [
-              "MRT",
-              "KM"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "hcc",
-            "title": "Hepatozelluläres Karzinom (HCC)",
-            "tags": [
-              "CT",
-              "MRT",
-              "LIRADS"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "ccc",
-            "title": "Cholangiozelluläres Karzinom (CCC)",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "metastasen",
-            "title": "Lebermetastasen",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "lirads",
-            "title": "LI-RADS Klassifikation",
-            "tags": [
-              "MRT",
-              "KM"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "steatosis",
-            "title": "Steatosis hepatis (Verfettung)",
-            "tags": [
-              "CT",
-              "Sono",
-              "MRT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "zirrhose",
-            "title": "Leberzirrhose",
-            "tags": [
-              "CT",
-              "MRT",
-              "Sono"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "trauma-leber",
-            "title": "Traumatische Leberveränderungen",
-            "tags": [
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "portale-htn",
-            "title": "Portale Hypertension",
-            "tags": [
-              "CT",
-              "Sono"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "haemochrom",
-            "title": "Hämochromatose",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "budd-chiari",
-            "title": "Budd-Chiari-Syndrom",
-            "tags": [
-              "CT",
-              "MRT",
-              "Sono"
-            ],
-            "diff": 3
-          }
-        ]
-      },
-      {
-        "id": "gallenblase",
-        "title": "Gallenblase & Gallenwege",
-        "icon": "🟡",
-        "themen": [
-          {
-            "id": "cholezystitis",
-            "title": "Cholezystitis (akut/chronisch)",
-            "tags": [
-              "Sono",
-              "CT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "cholelithiasis",
-            "title": "Cholelithiasis",
-            "tags": [
-              "Sono",
-              "CT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "psc",
-            "title": "Primär Sklerosierende Cholangitis",
-            "tags": [
-              "MRT",
-              "MRCP"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "gallenwegstumor",
-            "title": "Gallenwegstumoren",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "cholangitis",
-            "title": "Cholangitis",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          }
-        ]
-      },
-      {
-        "id": "pankreas",
-        "title": "Pankreas",
-        "icon": "🟠",
-        "themen": [
-          {
-            "id": "pan-akut",
-            "title": "Akute Pankreatitis",
-            "tags": [
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "pan-chronisch",
-            "title": "Chronische Pankreatitis",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "pdac",
-            "title": "Duktales Adenokarzinom (PDAC)",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "net",
-            "title": "Neuroendokrine Tumoren (NET)",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "ipmn",
-            "title": "Zystische Tumoren (IPMN, MCN)",
-            "tags": [
-              "MRT",
-              "CT"
-            ],
-            "diff": 3
-          }
-        ]
-      },
-      {
-        "id": "milz",
-        "title": "Milz",
-        "icon": "🟣",
-        "themen": [
-          {
-            "id": "milzinfarkt",
-            "title": "Milzinfarkt",
-            "tags": [
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "splenomegalie",
-            "title": "Splenomegalie",
-            "tags": [
-              "Sono",
-              "CT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "milztumor",
-            "title": "Milztumoren",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "milzzyste",
-            "title": "Milzzysten",
-            "tags": [
-              "Sono",
-              "CT"
-            ],
-            "diff": 1
-          }
-        ]
-      },
-      {
-        "id": "nieren",
-        "title": "Nieren",
-        "icon": "🫘",
-        "themen": [
-          {
-            "id": "nierenz-bosniak",
-            "title": "Zystische Nierenraumforderungen (Bosniak)",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "nierenzellca",
-            "title": "Nierenzellkarzinom (NZK)",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "onkozytom",
-            "title": "Onkozytom",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "aml-niere",
-            "title": "Angiomyolipom (AML)",
-            "tags": [
-              "CT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "nephroblastom",
-            "title": "Nephroblastom (Wilms)",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "pyelonephritis",
-            "title": "Pyelonephritis",
-            "tags": [
-              "CT",
-              "Sono"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "fmd",
-            "title": "Fibromuskuläre Dysplasie",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "fornixruptur",
-            "title": "Fornixruptur",
-            "tags": [
-              "CT"
-            ],
-            "diff": 2
-          }
-        ]
-      },
-      {
-        "id": "harnblase",
-        "title": "Harnblase",
-        "icon": "🦋",
-        "themen": [
-          {
-            "id": "zystitis",
-            "title": "Zystitis",
-            "tags": [
-              "CT",
-              "Sono"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "blasentumor",
-            "title": "Urothelkarzinom Blase",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "blasensteine",
-            "title": "Harnblasensteine / Urolithiasis",
-            "tags": [
-              "CT"
-            ],
-            "diff": 1
-          }
-        ]
-      },
-      {
-        "id": "nebennieren",
-        "title": "Nebennieren",
-        "icon": "⭐",
-        "themen": [
-          {
-            "id": "inzidentalom",
-            "title": "Inzidentalom",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "nn-adenom",
-            "title": "Nebennierenadenom",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "myelolipom",
-            "title": "Myelolipom",
-            "tags": [
-              "CT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "phaeochrom",
-            "title": "Phäochromozytom",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "neuroblastom",
-            "title": "Neuroblastom",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "nn-zyste",
-            "title": "Nebennierenzysten",
-            "tags": [
-              "CT"
-            ],
-            "diff": 1
-          }
-        ]
-      },
-      {
-        "id": "gi-trakt",
-        "title": "Gastrointestinaltrakt",
-        "icon": "🌀",
-        "themen": [
-          {
-            "id": "hyp-pylorus",
-            "title": "Hypertrophe Pylorusstenose",
-            "tags": [
-              "Sono"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "divertikel",
-            "title": "Divertikel (Öso/Magen)",
-            "tags": [
-              "CT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "ulcus",
-            "title": "Ulcus-Erkrankung",
-            "tags": [
-              "CT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "gist",
-            "title": "Gastrointestinaler Stromatumor (GIST)",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "ileus",
-            "title": "Ileus",
-            "tags": [
-              "CT",
-              "Rö"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "mes-ischaemie",
-            "title": "Mesenteriale Ischämie",
-            "tags": [
-              "CT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "volvulus",
-            "title": "Volvulus",
-            "tags": [
-              "CT",
-              "Rö"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "appendizitis",
-            "title": "Appendizitis",
-            "tags": [
-              "CT",
-              "Sono"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "kolitis",
-            "title": "Kolitis (CU, pseudomembranös)",
-            "tags": [
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "divertikulitis",
-            "title": "Divertikulose / Divertikulitis",
-            "tags": [
-              "CT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "gi-blutung",
-            "title": "Untere GI-Blutung",
-            "tags": [
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "kolorektales-ca",
-            "title": "Kolorektales Karzinom",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          }
-        ]
-      },
-      {
-        "id": "hernie-retro",
-        "title": "Hernie · Retroperitoneum",
-        "icon": "🩹",
-        "themen": [
-          {
-            "id": "leistenhernie",
-            "title": "Leisten- / Inguinalhernie",
-            "tags": [
-              "CT",
-              "Sono"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "m-ormond",
-            "title": "Morbus Ormond (retroperit. Fibrose)",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 3
-          }
-        ]
-      },
-      {
-        "id": "mesenterium",
-        "title": "Mesenterium · Peritoneum",
-        "icon": "🕸️",
-        "themen": [
-          {
-            "id": "app-epiploica",
-            "title": "Appendizitis epiploica",
-            "tags": [
-              "CT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "mes-panniculitis",
-            "title": "Mesenteriale Panniculitis",
-            "tags": [
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "pk",
-            "title": "Peritonealkarzinose",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 3
-          }
-        ]
-      }
-    ]
+    id: 'becken-f',
+    title: { de: 'Becken – Frau', en: 'Pelvis – Female', fa: 'لگن – زنان' },
+    icon: '♀️', color: '#fb7185',
+    bg: 'linear-gradient(135deg,#2a0a10,#5a1020)',
+    bodyZone: 'BeckenF',
+    kapitel: [],
   },
   {
-    "id": "becken-f",
-    "key": "Becken (Frau)",
-    "icon": "♀️",
-    "color": "#fb7185",
-    "bg": "linear-gradient(135deg,#2a0a10,#5a1020)",
-    "bodyZone": "BeckenF",
-    "kapitel": [
-      {
-        "id": "gynaekologie",
-        "title": "Gynäkologie",
-        "icon": "♀️",
-        "themen": [
-          {
-            "id": "uterus-anatomie",
-            "title": "Uterus – Anatomie & Varianten",
-            "tags": [
-              "MRT",
-              "Sono"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "uterus-myom",
-            "title": "Uterusmyom",
-            "tags": [
-              "MRT",
-              "Sono"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "endometriumca",
-            "title": "Endometriumkarzinom",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "zervixca",
-            "title": "Zervixkarzinom",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "endometriose",
-            "title": "Endometriose",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "ovar-zyste",
-            "title": "Ovarialzyste (funktionell)",
-            "tags": [
-              "Sono",
-              "MRT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "ovar-tumor",
-            "title": "Ovarialtumoren (IOTA-Klassif.)",
-            "tags": [
-              "Sono",
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "ovar-ca",
-            "title": "Ovarialkarzinom",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 3
-          }
-        ]
-      }
-    ]
+    id: 'becken-m',
+    title: { de: 'Becken – Mann', en: 'Pelvis – Male', fa: 'لگن – مردان' },
+    icon: '♂️', color: '#c084fc',
+    bg: 'linear-gradient(135deg,#1a0a30,#3a1060)',
+    bodyZone: 'BeckenM',
+    kapitel: [],
   },
   {
-    "id": "becken-m",
-    "key": "Becken (Mann)",
-    "icon": "♂️",
-    "color": "#c084fc",
-    "bg": "linear-gradient(135deg,#1a0a30,#3a1060)",
-    "bodyZone": "BeckenM",
-    "kapitel": [
+    id: 'msk',
+    title: { de: 'Muskuloskelettal (MSK)', en: 'Musculoskeletal (MSK)', fa: 'اسکلتی-عضلانی (MSK)' },
+    icon: '🦴', color: '#fb923c',
+    bg: 'linear-gradient(135deg,#2a1a00,#4a3000)',
+    bodyZone: 'Muskuloskelettal',
+    kapitel: [
       {
-        "id": "urologie-m",
-        "title": "Urologie (Mann)",
-        "icon": "♂️",
-        "themen": [
+        id: 'msk-anatomie',
+        title: { de: '1. Anatomische Grundlagen', en: '1. Anatomical Fundamentals', fa: '۱. مبانی آناتومیک' },
+        icon: '🦴',
+        themen: [
+          { id: 'msk-knochen', title: { de: 'Knochen', en: 'Bone', fa: 'استخوان' }, tags: ['Rö','MRT'], diff: 1 },
+          { id: 'msk-gelenke-ligamente', title: { de: 'Gelenke & Ligamente', en: 'Joints & Ligaments', fa: 'مفاصل و رباط‌ها' }, tags: ['MRT'], diff: 1 },
+          { id: 'msk-muskeln-sehnen', title: { de: 'Muskeln & Sehnen', en: 'Muscles & Tendons', fa: 'عضلات و تاندون‌ها' }, tags: ['MRT'], diff: 1 },
+          { id: 'msk-anatomie-gefaesse', title: { de: 'Gefäße', en: 'Vessels', fa: 'عروق' }, tags: ['MRT'], diff: 1 },
+          { id: 'msk-periphere-nerven', title: { de: 'Periphere Nerven', en: 'Peripheral Nerves', fa: 'اعصاب محیطی' }, tags: ['MRT'], diff: 1 },
+        ],
+      },
+      {
+        id: 'msk-modalitaeten',
+        title: { de: '2. Bildgebungsmodalitäten', en: '2. Imaging Modalities', fa: '۲. روش‌های تصویربرداری' },
+        icon: '📡',
+        themen: [
+          { id: 'msk-roentgen', title: { de: 'Röntgen', en: 'Radiography (X-ray)', fa: 'رادیوگرافی (Rö)' }, tags: ['Rö'], diff: 1 },
+          { id: 'msk-mrt', title: { de: 'MRT', en: 'MRI', fa: 'MRI' }, tags: ['MRT'], diff: 1 },
+          { id: 'msk-szintigraphie', title: { de: 'Skelettszintigraphie / SPECT', en: 'Bone Scintigraphy / SPECT', fa: 'اسکن استخوان / SPECT' }, tags: ['NUK'], diff: 2 },
+        ],
+      },
+      {
+        id: 'msk-knochentumoren',
+        title: { de: '3. Knochentumoren & tumorähnliche Läsionen', en: '3. Bone Tumours & Tumour-like Lesions', fa: '۳. تومورهای استخوانی و ضایعات شبه‌توموری' },
+        icon: '🔬',
+        themen: [
+          { id: 'knochentumor-grundlagen', title: { de: 'Grundlagen & Klassifikation', en: 'Fundamentals & Classification', fa: 'مبانی و طبقه‌بندی' }, tags: ['Rö','MRT'], diff: 2 },
+          { id: 'osteom', title: { de: 'Osteom', en: 'Osteoma', fa: 'استئوم' }, group: ['Knochenbildende Tumoren'], tags: ['Rö'], diff: 1 },
+          { id: 'osteoid-osteom', title: { de: 'Osteoid-Osteom', en: 'Osteoid Osteoma', fa: 'استئوئید استئوما' }, group: ['Knochenbildende Tumoren'], tags: ['Rö','CT'], diff: 2 },
+          { id: 'osteoblastom', title: { de: 'Osteoblastom', en: 'Osteoblastoma', fa: 'استئوبلاستوما' }, group: ['Knochenbildende Tumoren'], tags: ['Rö','CT'], diff: 2 },
+          { id: 'osteosarkom', title: { de: 'Osteosarkom', en: 'Osteosarcoma', fa: 'استئوسارکوما' }, group: ['Knochenbildende Tumoren'], tags: ['Rö','MRT'], diff: 3 },
+          { id: 'osteochondrom', title: { de: 'Osteochondrom', en: 'Osteochondroma', fa: 'استئوکندروم' }, group: ['Knorpelbildende Tumoren'], tags: ['Rö'], diff: 1 },
+          { id: 'enchondrom', title: { de: 'Enchondrom', en: 'Enchondroma', fa: 'انکندروم' }, group: ['Knorpelbildende Tumoren'], tags: ['Rö','MRT'], diff: 2 },
+          { id: 'chondrosarkom', title: { de: 'Chondrosarkom', en: 'Chondrosarcoma', fa: 'کندروسارکوما' }, group: ['Knorpelbildende Tumoren'], tags: ['Rö','MRT'], diff: 3 },
+          { id: 'fibrosarkom-knochen', title: { de: 'Fibrosarkom', en: 'Fibrosarcoma', fa: 'فیبروسارکوما' }, group: ['Fibröse Tumoren'], tags: ['MRT'], diff: 3 },
+          { id: 'ewing-sarkom', title: { de: 'Ewing-Sarkom', en: 'Ewing Sarcoma', fa: 'سارکوم یووینگ' }, group: ['Hämatopoetische & Rundzelltumoren'], tags: ['MRT','Rö'], diff: 3 },
+          { id: 'plasmozytom-myelom', title: { de: 'Plasmozytom / Multiples Myelom', en: 'Plasmacytoma / Multiple Myeloma', fa: 'پلاسموسیتوم / مولتیپل میلوما' }, group: ['Hämatopoetische & Rundzelltumoren'], tags: ['MRT','CT'], diff: 3 },
+          { id: 'knochenlymphom', title: { de: 'Knochenlymphom', en: 'Bone Lymphoma', fa: 'لنفوم استخوان' }, group: ['Hämatopoetische & Rundzelltumoren'], tags: ['MRT'], diff: 3 },
+          { id: 'riesenzelltumor', title: { de: 'Riesenzelltumor (GCT)', en: 'Giant Cell Tumour (GCT)', fa: 'تومور سلول ژانت (GCT)' }, tags: ['Rö','MRT'], diff: 2 },
+          { id: 'knochenzyste-simple', title: { de: 'Einfache Knochenzyste (SBC)', en: 'Simple Bone Cyst (SBC)', fa: 'کیست ساده استخوان (SBC)' }, group: ['Tumorähnliche Läsionen'], tags: ['Rö'], diff: 1 },
+          { id: 'knochenzyste-aneurysmatisch', title: { de: 'Aneurysmatische Knochenzyste (AKZ)', en: 'Aneurysmal Bone Cyst (ABC)', fa: 'کیست آنوریسمال استخوان (ABC)' }, group: ['Tumorähnliche Läsionen'], tags: ['Rö','MRT'], diff: 2 },
+          { id: 'kortikalisdefekt-nof', title: { de: 'Fibröser Kortikalisdefekt / NOF', en: 'Fibrous Cortical Defect / NOF', fa: 'نقص کورتیکال فیبروزی / NOF' }, group: ['Tumorähnliche Läsionen'], tags: ['Rö'], diff: 1 },
+          { id: 'fibroese-dysplasie', title: { de: 'Fibröse Dysplasie', en: 'Fibrous Dysplasia', fa: 'دیسپلازی فیبروزی' }, group: ['Tumorähnliche Läsionen'], tags: ['Rö','MRT'], diff: 2 },
+          { id: 'enostose', title: { de: 'Enostose', en: 'Enostosis (Bone Island)', fa: 'انوستوز' }, group: ['Tumorähnliche Läsionen'], tags: ['Rö'], diff: 1 },
+          { id: 'intraossaeres-lipom', title: { de: 'Intraossäres Lipom', en: 'Intraosseous Lipoma', fa: 'لیپوم داخل‌استخوانی' }, group: ['Tumorähnliche Läsionen'], tags: ['MRT'], diff: 2 },
+          { id: 'intraossaeres-ganglion', title: { de: 'Intraossäres Ganglion', en: 'Intraosseous Ganglion', fa: 'گانگلیون داخل‌استخوانی' }, group: ['Tumorähnliche Läsionen'], tags: ['MRT'], diff: 2 },
+          { id: 'eosinophiles-granulom', title: { de: 'Eosinophiles Granulom (LCH)', en: 'Eosinophilic Granuloma (LCH)', fa: 'گرانولوم ائوزینوفیلیک (LCH)' }, group: ['Tumorähnliche Läsionen'], tags: ['Rö','MRT'], diff: 2 },
+          { id: 'myositis-ossificans', title: { de: 'Myositis ossificans', en: 'Myositis Ossificans', fa: 'میوزیت اوسیفیکانس' }, group: ['Tumorähnliche Läsionen'], tags: ['Rö','MRT'], diff: 2 },
+          { id: 'knochenmetastasen', title: { de: 'Knochenmetastasen', en: 'Bone Metastases', fa: 'متاستازهای استخوانی' }, tags: ['CT','MRT','NUK'], diff: 2 },
+        ],
+      },
+      {
+        id: 'msk-weichteiltumoren',
+        title: { de: '4. Weichteiltumoren', en: '4. Soft-tissue Tumours', fa: '۴. تومورهای بافت نرم' },
+        icon: '🧬',
+        themen: [
+          { id: 'lipom-msk', title: { de: 'Lipom', en: 'Lipoma', fa: 'لیپوم' }, group: ['Benigne Weichteiltumoren'], tags: ['MRT'], diff: 1 },
+          { id: 'haemangiom-msk', title: { de: 'Hämangiom / vaskuläre Malformation', en: 'Haemangioma / Vascular Malformation', fa: 'همانژیوم / مالفورماسیون عروقی' }, group: ['Benigne Weichteiltumoren'], tags: ['MRT'], diff: 2 },
+          { id: 'tgct', title: { de: 'Tenosynovialer Riesenzelltumor (TGCT)', en: 'Tenosynovial Giant Cell Tumour (TGCT)', fa: 'تومور تنوسینوویال سلول ژانت (TGCT)' }, group: ['Benigne Weichteiltumoren'], tags: ['MRT'], diff: 2 },
+          { id: 'liposarkom', title: { de: 'Liposarkom', en: 'Liposarcoma', fa: 'لیپوسارکوما' }, group: ['Maligne Weichteiltumoren'], tags: ['MRT'], diff: 3 },
+          { id: 'synovialsarkom', title: { de: 'Synovialsarkom', en: 'Synovial Sarcoma', fa: 'سینوویال سارکوما' }, group: ['Maligne Weichteiltumoren'], tags: ['MRT'], diff: 3 },
+        ],
+      },
+      {
+        id: 'msk-knocheninfektionen',
+        title: { de: '5. Knocheninfektionen', en: '5. Bone Infections', fa: '۵. عفونت‌های استخوان' },
+        icon: '🦠',
+        themen: [
+          { id: 'osteomyelitis', title: { de: 'Osteomyelitis', en: 'Osteomyelitis', fa: 'استئومیلیت' }, tags: ['MRT','Rö'], diff: 2 },
+          { id: 'septische-arthritis', title: { de: 'Septische Arthritis', en: 'Septic Arthritis', fa: 'آرتریت سپتیک' }, tags: ['MRT','Sono'], diff: 2 },
+        ],
+      },
+      {
+        id: 'msk-metabolisch',
+        title: { de: '6. Metabolische & systemische Knochenerkrankungen', en: '6. Metabolic & Systemic Bone Diseases', fa: '۶. بیماری‌های متابولیک و سیستمیک استخوان' },
+        icon: '⚖️',
+        themen: [
+          { id: 'osteoporose', title: { de: 'Osteoporose', en: 'Osteoporosis', fa: 'استئوپروز' }, tags: ['Rö'], diff: 1 },
+          { id: 'morbus-paget', title: { de: 'Morbus Paget', en: "Paget's Disease", fa: 'بیماری پاژه (Morbus Paget)' }, tags: ['Rö','CT'], diff: 2 },
+          { id: 'renale-osteodystrophie', title: { de: 'Renale Osteodystrophie', en: 'Renal Osteodystrophy', fa: 'استئودیستروفی کلیوی' }, tags: ['Rö'], diff: 2 },
+          { id: 'rachitis', title: { de: 'Rachitis', en: 'Rickets', fa: 'راشیتیسم' }, tags: ['Rö'], diff: 2 },
+        ],
+      },
+      {
+        id: 'msk-arthritiden',
+        title: { de: '7. Arthritiden', en: '7. Arthritides', fa: '۷. آرتریت‌ها' },
+        icon: '🔥',
+        themen: [
+          { id: 'arthrose', title: { de: 'Arthrose (OA)', en: 'Osteoarthritis (OA)', fa: 'آرتروز (OA)' }, tags: ['Rö','MRT'], diff: 1 },
+          { id: 'rheumatoide-arthritis', title: { de: 'Rheumatoide Arthritis (RA)', en: 'Rheumatoid Arthritis (RA)', fa: 'آرتریت روماتوئید (RA)' }, tags: ['Rö','MRT'], diff: 2 },
+          { id: 'gicht', title: { de: 'Gicht', en: 'Gout', fa: 'نقرس' }, group: ['Kristallarthropathien'], tags: ['Rö','CT'], diff: 2 },
+          { id: 'chondrokalzinose', title: { de: 'Chondrokalzinose (CPPD)', en: 'Chondrocalcinosis (CPPD)', fa: 'کندروکلسینوز (CPPD)' }, group: ['Kristallarthropathien'], tags: ['Rö'], diff: 2 },
+        ],
+      },
+      {
+        id: 'msk-knochennekrosen',
+        title: { de: '8. Knochennekrosen', en: '8. Bone Necrosis', fa: '۸. نکروزهای استخوانی' },
+        icon: '💀',
+        themen: [
+          { id: 'avn-huefte', title: { de: 'Avaskuläre Nekrose (AVN) & Hüftkopfnekrose', en: 'Avascular Necrosis (AVN) & Femoral Head Necrosis', fa: 'نکروز آواسکولار (AVN) و نکروز سر فمور' }, tags: ['MRT'], diff: 2 },
+          { id: 'knocheninfarkt', title: { de: 'Knocheninfarkt', en: 'Bone Infarct', fa: 'انفارکت استخوان' }, tags: ['MRT'], diff: 2 },
+        ],
+      },
+      {
+        id: 'msk-osteochondrosen',
+        title: { de: '9. Osteochondrosen', en: '9. Osteochondroses', fa: '۹. استئوکندروزها' },
+        icon: '🧒',
+        themen: [
+          { id: 'morbus-perthes', title: { de: 'Morbus Perthes', en: 'Perthes Disease', fa: 'بیماری پرتس (Morbus Perthes)' }, tags: ['Rö','MRT'], diff: 2 },
+          { id: 'osgood-schlatter', title: { de: 'Morbus Osgood-Schlatter', en: 'Osgood-Schlatter Disease', fa: 'بیماری آزگود-اشلاتر' }, tags: ['Rö'], diff: 1 },
+          { id: 'morbus-scheuermann', title: { de: 'Morbus Scheuermann', en: "Scheuermann's Disease", fa: 'بیماری شویرمان' }, tags: ['Rö'], diff: 2 },
+          { id: 'osteochondrosis-dissecans', title: { de: 'Osteochondrosis dissecans', en: 'Osteochondritis Dissecans (OCD)', fa: 'استئوکندریت دیسکانس (OCD)' }, tags: ['MRT'], diff: 2 },
+          { id: 'weitere-osteochondrosen', title: { de: 'Weitere Osteochondrosen', en: 'Other Osteochondroses', fa: 'سایر استئوکندروزها' }, tags: ['Rö'], diff: 1 },
+        ],
+      },
+      {
+        id: 'msk-trauma',
+        title: { de: '10. Traumatologie & Frakturen', en: '10. Trauma & Fractures', fa: '۱۰. تروما و شکستگی‌ها' },
+        icon: '🚑',
+        themen: [
+          { id: 'frakturbeschreibung', title: { de: 'Frakturbeschreibung', en: 'Fracture Description', fa: 'توصیف شکستگی' }, group: ['Grundlagen'], tags: ['Rö'], diff: 1 },
+          { id: 'frakturheilung', title: { de: 'Frakturheilung & Komplikationen', en: 'Fracture Healing & Complications', fa: 'ترمیم شکستگی و عوارض' }, group: ['Grundlagen'], tags: ['Rö'], diff: 2 },
+          { id: 'stressfrakturen', title: { de: 'Stressfrakturen', en: 'Stress Fractures', fa: 'شکستگی‌های استرسی' }, group: ['Grundlagen'], tags: ['MRT','Rö'], diff: 2 },
+          { id: 'frakturen-kindesalter', title: { de: 'Frakturen im Kindesalter', en: 'Paediatric Fractures', fa: 'شکستگی‌های دوران کودکی' }, group: ['Grundlagen'], tags: ['Rö'], diff: 2 },
+          { id: 'luxationen', title: { de: 'Luxationen', en: 'Dislocations', fa: 'دررفتگی‌ها (لوکساسیون)' }, group: ['Grundlagen'], tags: ['Rö'], diff: 1 },
+          { id: 'ao-klassifikation', title: { de: 'AO-Klassifikation', en: 'AO Classification', fa: 'طبقه‌بندی AO' }, group: ['Klassifikationssysteme'], tags: ['Rö'], diff: 2 },
+          { id: 'klassische-klassifikationen', title: { de: 'Relevante klassische Klassifikationen', en: 'Relevant Classic Classifications', fa: 'طبقه‌بندی‌های کلاسیک مهم' }, group: ['Klassifikationssysteme'], tags: ['Rö'], diff: 2 },
+          { id: 'proximale-humerusfraktur', title: { de: 'Proximale Humerusfraktur', en: 'Proximal Humerus Fracture', fa: 'شکستگی پروگزیمال هومروس' }, group: ['Schulter & Oberarm'], tags: ['Rö','CT'], diff: 2 },
+          { id: 'klavikulafraktur', title: { de: 'Klavikulafraktur', en: 'Clavicle Fracture', fa: 'شکستگی ترقوه (کلاویکول)' }, group: ['Schulter & Oberarm'], tags: ['Rö'], diff: 1 },
+          { id: 'skapulafraktur', title: { de: 'Skapulafraktur', en: 'Scapula Fracture', fa: 'شکستگی کتف (اسکاپولا)' }, group: ['Schulter & Oberarm'], tags: ['Rö','CT'], diff: 2 },
+          { id: 'distale-humerusfraktur', title: { de: 'Distale Humerusfraktur', en: 'Distal Humerus Fracture', fa: 'شکستگی دیستال هومروس' }, group: ['Ellenbogen & Unterarm'], tags: ['Rö'], diff: 2 },
+          { id: 'radiuskoepfchenfraktur', title: { de: 'Radiusköpfchenfraktur', en: 'Radial Head Fracture', fa: 'شکستگی سر رادیوس' }, group: ['Ellenbogen & Unterarm'], tags: ['Rö'], diff: 2 },
+          { id: 'monteggia-fraktur', title: { de: 'Monteggia-Fraktur', en: 'Monteggia Fracture', fa: 'شکستگی مونتجیا' }, group: ['Ellenbogen & Unterarm'], tags: ['Rö'], diff: 2 },
+          { id: 'galeazzi-fraktur', title: { de: 'Galeazzi-Fraktur', en: 'Galeazzi Fracture', fa: 'شکستگی گالئاتزی' }, group: ['Ellenbogen & Unterarm'], tags: ['Rö'], diff: 2 },
+          { id: 'distale-radiusfraktur', title: { de: 'Distale Radiusfraktur', en: 'Distal Radius Fracture', fa: 'شکستگی دیستال رادیوس' }, group: ['Handgelenk & Hand'], tags: ['Rö'], diff: 1 },
+          { id: 'skaphoidfraktur', title: { de: 'Skaphoidfraktur', en: 'Scaphoid Fracture', fa: 'شکستگی اسکافوئید' }, group: ['Handgelenk & Hand'], tags: ['Rö','MRT'], diff: 2 },
+          { id: 'karpale-frakturen', title: { de: 'Weitere Karpale Frakturen', en: 'Other Carpal Fractures', fa: 'سایر شکستگی‌های کارپ' }, group: ['Handgelenk & Hand'], tags: ['Rö'], diff: 2 },
+          { id: 'metakarpale-frakturen', title: { de: 'Metakarpale Frakturen', en: 'Metacarpal Fractures', fa: 'شکستگی‌های متاکارپ' }, group: ['Handgelenk & Hand'], tags: ['Rö'], diff: 1 },
+          { id: 'fingerfrakturen', title: { de: 'Fingerfrakturen', en: 'Finger Fractures', fa: 'شکستگی‌های انگشت' }, group: ['Handgelenk & Hand'], tags: ['Rö'], diff: 1 },
+          { id: 'proximale-femurfraktur', title: { de: 'Proximale Femurfraktur', en: 'Proximal Femur Fracture', fa: 'شکستگی پروگزیمال فمور' }, group: ['Hüfte & Becken'], tags: ['Rö','CT'], diff: 2 },
+          { id: 'beckenringfraktur', title: { de: 'Beckenringfraktur', en: 'Pelvic Ring Fracture', fa: 'شکستگی حلقه لگن' }, group: ['Hüfte & Becken'], tags: ['CT'], diff: 3 },
+          { id: 'distale-femurfraktur', title: { de: 'Distale Femurfraktur', en: 'Distal Femur Fracture', fa: 'شکستگی دیستال فمور' }, group: ['Knie & Unterschenkel'], tags: ['Rö'], diff: 2 },
+          { id: 'tibiakopffraktur', title: { de: 'Tibiakopffraktur', en: 'Tibial Plateau Fracture', fa: 'شکستگی پلاتوی تیبیا' }, group: ['Knie & Unterschenkel'], tags: ['Rö','CT'], diff: 2 },
+          { id: 'patellafraktur-trauma', title: { de: 'Patellafraktur', en: 'Patella Fracture', fa: 'شکستگی کشکک (پاتلا)' }, group: ['Knie & Unterschenkel'], tags: ['Rö'], diff: 1 },
+          { id: 'fibulakopffraktur', title: { de: 'Fibulakopffraktur', en: 'Fibular Head Fracture', fa: 'شکستگی سر فیبولا' }, group: ['Knie & Unterschenkel'], tags: ['Rö'], diff: 1 },
+          { id: 'osg-fraktur', title: { de: 'OSG-Fraktur', en: 'Ankle Fracture', fa: 'شکستگی مچ پا (OSG)' }, group: ['Sprunggelenk & Fuß'], tags: ['Rö'], diff: 1 },
+          { id: 'fusswurzel-frakturen', title: { de: 'Fußwurzel', en: 'Tarsal Fractures', fa: 'شکستگی‌های تارس' }, group: ['Sprunggelenk & Fuß'], tags: ['Rö','CT'], diff: 2 },
+          { id: 'vorfuss-frakturen', title: { de: 'Vorfuß', en: 'Forefoot Fractures', fa: 'شکستگی‌های فورفوت' }, group: ['Sprunggelenk & Fuß'], tags: ['Rö'], diff: 1 },
+          { id: 'zehenfrakturen', title: { de: 'Zehenfrakturen', en: 'Toe Fractures', fa: 'شکستگی‌های انگشت پا' }, group: ['Sprunggelenk & Fuß'], tags: ['Rö'], diff: 1 },
+        ],
+      },
+      {
+        id: 'msk-schulter',
+        title: { de: '11. Schulter', en: '11. Shoulder', fa: '۱۱. شانه' },
+        icon: '💪',
+        themen: [
+          { id: 'rotatorenmanschette', title: { de: 'Rotatorenmanschette', en: 'Rotator Cuff', fa: 'روتاتور کاف' }, tags: ['MRT'], diff: 2 },
+          { id: 'schulterinstabilitaet', title: { de: 'Schulterinstabilität / Labrumläsionen', en: 'Shoulder Instability / Labral Tears', fa: 'ناپایداری شانه / ضایعات لابروم' }, tags: ['MRT'], diff: 3 },
+          { id: 'impingement-kalkschulter', title: { de: 'Impingement-Syndrom & Kalkschulter', en: 'Impingement Syndrome & Calcific Tendinitis', fa: 'سندرم ایمپینجمنت و شانه کلسیفیه' }, tags: ['MRT','Rö'], diff: 2 },
+          { id: 'bizepssehne-schulter', title: { de: 'Bizepssehne', en: 'Biceps Tendon', fa: 'تاندون بایسپس' }, tags: ['MRT'], diff: 2 },
+          { id: 'bursitis-subacromial', title: { de: 'Bursitis subacromialis / subdeltoidea', en: 'Subacromial / Subdeltoid Bursitis', fa: 'بورسیت ساب‌آکرومیال / ساب‌دلتوئید' }, tags: ['MRT'], diff: 1 },
+          { id: 'frozen-shoulder', title: { de: 'Adhäsive Kapsulitis (Frozen Shoulder)', en: 'Adhesive Capsulitis (Frozen Shoulder)', fa: 'کپسولیت چسبنده (شانه یخ‌زده)' }, tags: ['MRT'], diff: 2 },
+          { id: 'acg-gelenk', title: { de: 'ACG-Gelenk', en: 'AC Joint', fa: 'مفصل آکرومیوکلاویکولار (ACG)' }, tags: ['Rö','MRT'], diff: 1 },
+        ],
+      },
+      {
+        id: 'msk-ellenbogen',
+        title: { de: '12. Ellenbogen', en: '12. Elbow', fa: '۱۲. آرنج' },
+        icon: '🦴',
+        themen: [
+          { id: 'epicondylitis', title: { de: 'Epicondylitis (lateral / medial)', en: 'Epicondylitis (Lateral / Medial)', fa: 'اپی‌کوندیلیت (خارجی/داخلی)' }, tags: ['MRT'], diff: 1 },
+          { id: 'distale-bizepssehnenruptur', title: { de: 'Distale Bizepssehnenruptur', en: 'Distal Biceps Tendon Rupture', fa: 'پارگی دیستال تاندون بایسپس' }, tags: ['MRT'], diff: 2 },
+          { id: 'kubitaltunnelsyndrom', title: { de: 'Kubitaltunnelsyndrom', en: 'Cubital Tunnel Syndrome', fa: 'سندرم تونل کوبیتال' }, tags: ['MRT'], diff: 2 },
+          { id: 'bursitis-olecrani', title: { de: 'Bursitis olecrani', en: 'Olecranon Bursitis', fa: 'بورسیت اولکرانون' }, tags: ['MRT','Sono'], diff: 1 },
+          { id: 'bandverletzungen-ellenbogen', title: { de: 'Bandverletzungen', en: 'Ligament Injuries', fa: 'آسیب‌های رباطی آرنج' }, tags: ['MRT'], diff: 2 },
+        ],
+      },
+      {
+        id: 'msk-hand',
+        title: { de: '13. Handgelenk & Hand', en: '13. Wrist & Hand', fa: '۱۳. مچ دست و دست' },
+        icon: '✋',
+        themen: [
+          { id: 'tfcc-laesionen', title: { de: 'TFCC-Läsionen', en: 'TFCC Lesions', fa: 'ضایعات TFCC' }, tags: ['MRT'], diff: 3 },
+          { id: 'bandverletzungen-handgelenk', title: { de: 'Bandverletzungen', en: 'Ligament Injuries', fa: 'آسیب‌های رباطی مچ دست' }, tags: ['MRT'], diff: 2 },
+          { id: 'morbus-kienboeck', title: { de: 'Morbus Kienböck (AVN des Lunatums)', en: "Kienböck's Disease (AVN of the Lunate)", fa: 'بیماری کینبک (AVN لونیت)' }, tags: ['Rö','MRT'], diff: 2 },
+          { id: 'sehnenpathologien-hand', title: { de: 'Sehnenpathologien', en: 'Tendon Pathologies', fa: 'پاتولوژی‌های تاندونی دست' }, tags: ['MRT','Sono'], diff: 2 },
+          { id: 'karpaltunnelsyndrom', title: { de: 'Karpaltunnelsyndrom', en: 'Carpal Tunnel Syndrome', fa: 'سندرم تونل کارپال' }, tags: ['MRT','Sono'], diff: 1 },
+          { id: 'guyon-kanal-syndrom', title: { de: 'Guyon-Kanal-Syndrom', en: "Guyon's Canal Syndrome", fa: 'سندرم کانال گویون' }, tags: ['MRT'], diff: 2 },
+          { id: 'de-quervain', title: { de: 'Tendovaginitis de Quervain', en: "De Quervain's Tenosynovitis", fa: 'تنوسینوویت دو کرواین' }, tags: ['Sono','MRT'], diff: 1 },
+          { id: 'ganglion-hand', title: { de: 'Ganglion', en: 'Ganglion Cyst', fa: 'کیست گانگلیون' }, tags: ['Sono','MRT'], diff: 1 },
+        ],
+      },
+      {
+        id: 'msk-huefte',
+        title: { de: '14. Hüfte', en: '14. Hip', fa: '۱۴. هیپ' },
+        icon: '🦴',
+        themen: [
+          { id: 'hueftdysplasie', title: { de: 'Hüftdysplasie', en: 'Hip Dysplasia', fa: 'دیسپلازی هیپ' }, tags: ['Sono','Rö'], diff: 2 },
+          { id: 'fai', title: { de: 'Femoroacetabuläres Impingement (FAI)', en: 'Femoroacetabular Impingement (FAI)', fa: 'ایمپینجمنت فمورواستابولار (FAI)' }, tags: ['MRT','Rö'], diff: 3 },
+          { id: 'labrumlaesionen-huefte', title: { de: 'Labrumläsionen', en: 'Labral Tears', fa: 'ضایعات لابروم هیپ' }, tags: ['MRT'], diff: 2 },
+          { id: 'coxarthrose', title: { de: 'Coxarthrose', en: 'Hip Osteoarthritis (Coxarthrosis)', fa: 'آرتروز هیپ (کوکسارتروز)' }, tags: ['Rö'], diff: 1 },
+          { id: 'bursitis-trochanterica', title: { de: 'Bursitis trochanterica', en: 'Trochanteric Bursitis', fa: 'بورسیت تروکانتریک' }, tags: ['MRT'], diff: 1 },
+          { id: 'coxa-saltans', title: { de: 'Coxa saltans / Snapping Hip', en: 'Coxa Saltans / Snapping Hip', fa: 'کوکسا سالتانس (هیپ تق‌تقی)' }, tags: ['MRT','Sono'], diff: 2 },
+          { id: 'hamstring-pathologie', title: { de: 'Proximale Hamstring-Pathologie', en: 'Proximal Hamstring Pathology', fa: 'پاتولوژی پروگزیمال همسترینگ' }, tags: ['MRT'], diff: 2 },
+          { id: 'coxitis-fugax', title: { de: 'Coxitis fugax', en: 'Transient Synovitis (Coxitis Fugax)', fa: 'سینوویت گذرای هیپ (کوکسیت فوگاکس)' }, tags: ['Sono'], diff: 1 },
+        ],
+      },
+      {
+        id: 'msk-knie',
+        title: { de: '15. Knie', en: '15. Knee', fa: '۱۵. زانو' },
+        icon: '🦵',
+        themen: [
           {
-            "id": "prostata-anatomie",
-            "title": "Prostata – Anatomie & Zonierung",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 1
+            id: 'meniskus',
+            title: { de: 'Meniskus', en: 'Meniscus', fa: 'منیسک' },
+            tags: ['MRT'], diff: 2,
+            link: '/msk/knie/meniskus',
+            mcqLink: '/msk/knie/meniskus/mcq',
+            flashcardLink: '/flashcards/meniskus',
+            fallLink: '/msk/knie/meniskus#fallbeispiele',
+            ready: true, updatedAt: '2026-06-07',
           },
-          {
-            "id": "pirads",
-            "title": "PI-RADS Klassifikation",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "prostataca",
-            "title": "Prostatakarzinom",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "bph",
-            "title": "Benigne Prostatahyperplasie (BPH)",
-            "tags": [
-              "MRT",
-              "Sono"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "hoden",
-            "title": "Hodentumoren",
-            "tags": [
-              "Sono",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "samenblasen",
-            "title": "Samenblasen",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          }
-        ]
-      }
-    ]
+          { id: 'kreuzbaender', title: { de: 'Kreuzbänder', en: 'Cruciate Ligaments', fa: 'رباط‌های صلیبی' }, tags: ['MRT'], diff: 2 },
+          { id: 'seitenbaender-knie', title: { de: 'Seitenbänder', en: 'Collateral Ligaments', fa: 'رباط‌های جانبی زانو' }, tags: ['MRT'], diff: 2 },
+          { id: 'knorpelschaeden-knie', title: { de: 'Knorpelschäden', en: 'Cartilage Lesions', fa: 'آسیب‌های غضروفی زانو' }, tags: ['MRT'], diff: 2 },
+          { id: 'patella-streckapparat', title: { de: 'Patella & Streckapparat', en: 'Patella & Extensor Mechanism', fa: 'پاتلا و مکانیسم اکستانسور' }, tags: ['MRT'], diff: 2 },
+          { id: 'hoffa-impingement', title: { de: 'Hoffa-Fettkörper-Impingement', en: "Hoffa's Fat Pad Impingement", fa: 'ایمپینجمنت بالشتک چربی هوفا' }, tags: ['MRT'], diff: 2 },
+          { id: 'itb-syndrom', title: { de: 'Iliotibial-Band-Syndrom', en: 'Iliotibial Band Syndrome', fa: 'سندرم باند ایلیوتیبیال' }, tags: ['MRT'], diff: 1 },
+          { id: 'bursitis-baker-zyste', title: { de: 'Bursitiden & Baker-Zyste', en: "Bursitis & Baker's Cyst", fa: 'بورسیت‌ها و کیست بیکر' }, tags: ['MRT','Sono'], diff: 1 },
+        ],
+      },
+      {
+        id: 'msk-fuss',
+        title: { de: '16. Sprunggelenk & Fuß', en: '16. Ankle & Foot', fa: '۱۶. مچ پا و پا' },
+        icon: '🦶',
+        themen: [
+          { id: 'bandverletzungen-osg', title: { de: 'Bandverletzungen (OSG)', en: 'Ligament Injuries (Ankle)', fa: 'آسیب‌های رباطی مچ پا' }, tags: ['MRT'], diff: 1 },
+          { id: 'osg-impingement', title: { de: 'OSG-Impingement (anterior / posterior)', en: 'Ankle Impingement (Anterior / Posterior)', fa: 'ایمپینجمنت مچ پا (قدامی/خلفی)' }, tags: ['MRT'], diff: 2 },
+          { id: 'achillessehne', title: { de: 'Achillessehne', en: 'Achilles Tendon', fa: 'تاندون آشیل' }, tags: ['MRT','Sono'], diff: 1 },
+          { id: 'peronealsehnen', title: { de: 'Peronealsehnen', en: 'Peroneal Tendons', fa: 'تاندون‌های پرونئال' }, tags: ['MRT'], diff: 2 },
+          { id: 'tibialis-posterior-sehne', title: { de: 'Tibialis posterior-Sehne', en: 'Tibialis Posterior Tendon', fa: 'تاندون تیبیالیس پوستریور' }, tags: ['MRT'], diff: 2 },
+          { id: 'tibialis-anterior-sehne', title: { de: 'Tibialis anterior-Sehne', en: 'Tibialis Anterior Tendon', fa: 'تاندون تیبیالیس آنتریور' }, tags: ['MRT'], diff: 2 },
+          { id: 'sinus-tarsi-syndrom', title: { de: 'Sinus-tarsi-Syndrom', en: 'Sinus Tarsi Syndrome', fa: 'سندرم سینوس تارسی' }, tags: ['MRT'], diff: 2 },
+          { id: 'plantarfasziitis', title: { de: 'Plantarfasziitis', en: 'Plantar Fasciitis', fa: 'فاشئیت پلانتار' }, tags: ['Sono','MRT'], diff: 1 },
+        ],
+      },
+      {
+        id: 'msk-postop',
+        title: { de: '17. Postoperative & postinterventionelle Bildgebung', en: '17. Postoperative & Post-interventional Imaging', fa: '۱۷. تصویربرداری بعد از عمل و مداخله' },
+        icon: '🔧',
+        themen: [
+          { id: 'osteosynthese', title: { de: 'Osteosynthese & Frakturversorgung', en: 'Osteosynthesis & Fracture Fixation', fa: 'استئوسنتز و فیکساسیون شکستگی' }, tags: ['Rö','CT'], diff: 2 },
+          { id: 'postop-komplikationen', title: { de: 'Komplikationen (Pseudarthrose, Infektion, Implantatversagen)', en: 'Complications (Nonunion, Infection, Implant Failure)', fa: 'عوارض (سودارتروز، عفونت، شکست ایمپلنت)' }, tags: ['Rö','CT','MRT'], diff: 3 },
+          { id: 'endoprothetik', title: { de: 'Endoprothetik (Hüfte, Knie, Schulter)', en: 'Joint Arthroplasty (Hip, Knee, Shoulder)', fa: 'آرتروپلاستی مفصل (هیپ، زانو، شانه)' }, tags: ['Rö','CT'], diff: 2 },
+        ],
+      },
+    ],
   },
   {
-    "id": "msk",
-    "key": "Muskuloskelettales",
-    "icon": "🦴",
-    "color": "#fb923c",
-    "bg": "linear-gradient(135deg,#2a1a00,#4a3000)",
-    "bodyZone": "Muskuloskelettales",
-    "kapitel": [
-      {
-        "id": "trauma",
-        "title": "Trauma",
-        "icon": "🩹",
-        "themen": [
-          {
-            "id": "trauma-grund",
-            "title": "Grundlagen (Definitionen, Kinder, postop)",
-            "tags": [
-              "Rö",
-              "CT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "schulter-trauma",
-            "title": "Schulter & Oberarm",
-            "tags": [
-              "Rö",
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "ellenbogen",
-            "title": "Ellenbogengelenk",
-            "tags": [
-              "Rö",
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "unterarm",
-            "title": "Unterarm",
-            "tags": [
-              "Rö"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "handgelenk",
-            "title": "Handgelenk & Hand",
-            "tags": [
-              "Rö",
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "becken-huefte",
-            "title": "Becken & Hüftgelenk",
-            "tags": [
-              "Rö",
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "oberschenkel",
-            "title": "Oberschenkel",
-            "tags": [
-              "Rö",
-              "CT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "unterschenkel",
-            "title": "Unterschenkel",
-            "tags": [
-              "Rö"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "sprunggelenk",
-            "title": "Sprunggelenk",
-            "tags": [
-              "Rö",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "fuss",
-            "title": "Fuß",
-            "tags": [
-              "Rö",
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          }
-        ]
-      },
-      {
-        "id": "grosse-gelenke",
-        "title": "Große Gelenke (MRT)",
-        "icon": "🦵",
-        "themen": [
-          {
-            "id": "schulter-mrt",
-            "title": "Schultergelenk (Impingement, Instabilität, Arthrose)",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "ellenbogen-mrt",
-            "title": "Ellenbogengelenk MRT",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "hand-mrt",
-            "title": "Hand MRT",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "knie",
-            "title": "Knie",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2,
-            "sub": [
-              {
-                "id": "meniskus",
-                "title": "Meniskus",
-                "link": "/msk/knie/meniskus",
-                "mcqLink": "/msk/knie/meniskus/mcq",
-                "flashcardLink": "/flashcards/meniskus",
-                "fallLink": "/msk/knie/meniskus#fallbeispiele",
-                "ready": true,
-                "updatedAt": "2026-06-07",
-                "tags": [
-                  "MRT"
-                ],
-                "diff": 2
-              },
-              {
-                "id": "knie-ligamente",
-                "title": "Knie-Ligamente",
-                "tags": [
-                  "MRT"
-                ],
-                "diff": 2
-              },
-              {
-                "id": "patella",
-                "title": "Patella",
-                "tags": [
-                  "MRT",
-                  "Rö"
-                ],
-                "diff": 2
-              }
-            ]
-          },
-          {
-            "id": "sprunggelenk-mrt",
-            "title": "Sprunggelenk MRT",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          }
-        ]
-      },
-      {
-        "id": "knochentumoren",
-        "title": "Knochentumoren",
-        "icon": "🧬",
-        "themen": [
-          {
-            "id": "tumor-grund",
-            "title": "Radiologische Zeichen (Periost, Matrix, Muster)",
-            "tags": [
-              "Rö",
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "osteoidosteom",
-            "title": "Osteoidosteom",
-            "tags": [
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "osteoblastom",
-            "title": "Osteoblastom",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "osteosarkom",
-            "title": "Osteosarkom",
-            "tags": [
-              "Rö",
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "osteochondrom",
-            "title": "Osteochondrom",
-            "tags": [
-              "Rö",
-              "CT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "chondrom",
-            "title": "Chondrom (enchondral)",
-            "tags": [
-              "Rö",
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "chondrosarkom",
-            "title": "Chondrosarkom",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "ewing",
-            "title": "Ewing-Sarkom",
-            "tags": [
-              "Rö",
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "tsgct",
-            "title": "Tenosynovialer Riesenzelltumor",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "myelom",
-            "title": "Multiples Myelom",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "knochen-lymphom",
-            "title": "Primäres Knochenlymphom",
-            "tags": [
-              "MRT",
-              "CT"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "knochen-met",
-            "title": "Knochenmetastasen",
-            "tags": [
-              "CT",
-              "MRT",
-              "Szinti"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "nof",
-            "title": "Nicht ossifizierendes Fibrom (NOF)",
-            "tags": [
-              "Rö"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "einfache-zyste",
-            "title": "Einfache Knochenzyste (EKZ)",
-            "tags": [
-              "Rö"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "aaz",
-            "title": "Aneurysmatische Knochenzyste (AKZ)",
-            "tags": [
-              "Rö",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "fibr-dysplasie",
-            "title": "Fibröse Dysplasie",
-            "tags": [
-              "Rö",
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "intraoss-lipom",
-            "title": "Intraossäres Lipom",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "intraoss-gang",
-            "title": "Intraossäres Ganglion",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 1
-          }
-        ]
-      },
-      {
-        "id": "nekrosen",
-        "title": "Nekrosen",
-        "icon": "🩸",
-        "themen": [
-          {
-            "id": "avn",
-            "title": "Avaskuläre Nekrose (AVN)",
-            "tags": [
-              "MRT",
-              "Rö"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "knocheninfarkt",
-            "title": "Knocheninfarkt",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "perthes",
-            "title": "Morbus Perthes",
-            "tags": [
-              "Rö",
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "ocd",
-            "title": "Osteochondrosis dissecans (OCD)",
-            "tags": [
-              "MRT",
-              "Rö"
-            ],
-            "diff": 2
-          }
-        ]
-      },
-      {
-        "id": "sonstiges-msk",
-        "title": "Sonstiges",
-        "icon": "🧭",
-        "themen": [
-          {
-            "id": "m-paget",
-            "title": "Morbus Paget",
-            "tags": [
-              "Rö",
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "melorheostose",
-            "title": "Melorheostose",
-            "tags": [
-              "Rö"
-            ],
-            "diff": 3
-          },
-          {
-            "id": "pavk",
-            "title": "pAVK & Gefäße der Extremitäten",
-            "tags": [
-              "CT",
-              "MRT"
-            ],
-            "diff": 2
-          }
-        ]
-      }
-    ]
+    id: 'wirbelsaeule',
+    title: { de: 'Wirbelsäule', en: 'Spine', fa: 'ستون فقرات' },
+    icon: '🩻', color: '#60a5fa',
+    bg: 'linear-gradient(135deg,#0c1f40,#1e3a6e)',
+    bodyZone: 'Wirbelsäule',
+    kapitel: [],
   },
   {
-    "id": "technik",
-    "key": "Technik",
-    "icon": "⚙️",
-    "color": "#4ade80",
-    "bg": "linear-gradient(135deg,#0a2030,#0a3040)",
-    "bodyZone": "Technik",
-    "kapitel": [
-      {
-        "id": "km-technik",
-        "title": "Kontrastmittel",
-        "icon": "💉",
-        "ready": true,
-        "link": "/technik/kontrastmittel",
-        "themen": [
-          {
-            "id": "km-roentgen-grundlagen",
-            "title": "Röntgen-Kontrastmittel Grundlagen",
-            "link": "/technik/kontrastmittel/roentgen-kontrastmittel-grundlagen",
-            "tags": [
-              "CT",
-              "Rö",
-              "KM"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "km-mrt",
-            "title": "MRT KM",
-            "link": "/technik/kontrastmittel/mrt-km",
-            "tags": [
-              "MRT",
-              "KM"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "km-nebenwirkung-jod",
-            "title": "Nebenwirkung jodhaltiger KM",
-            "link": "/technik/kontrastmittel/nebenwirkung-jodhaltiger-km",
-            "tags": [
-              "CT",
-              "KM"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "km-nebenwirkung-gadolinium",
-            "title": "Nebenwirkung Gadolinium",
-            "link": "/technik/kontrastmittel/nebenwirkung-gadolinium",
-            "tags": [
-              "MRT",
-              "KM"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "km-schwangerschaft-stillzeit",
-            "title": "Schwangerschaft und Stillzeit",
-            "link": "/technik/kontrastmittel/schwangerschaft-stillzeit",
-            "tags": [
-              "CT",
-              "MRT",
-              "KM"
-            ],
-            "diff": 3
-          }
-        ]
-      },
-      {
-        "id": "mrt-physik",
-        "title": "MRT-Physik",
-        "icon": "🧲",
-        "themen": [
-          {
-            "id": "mrt-grundlagen",
-            "title": "Grundlagen (Protonen, B0, Präzession)",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "mrt-sequenzen",
-            "title": "Sequenzen (SE, GRE, EPI)",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "mrt-gewichtung",
-            "title": "T1, T2, PD, FLAIR, DWI",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "mrt-artefakte",
-            "title": "Artefakte",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "mrt-sicherheit",
-            "title": "MRT-Sicherheit & Kontraindikationen",
-            "tags": [
-              "MRT"
-            ],
-            "diff": 1
-          }
-        ]
-      },
-      {
-        "id": "ct-technik",
-        "title": "CT-Technik",
-        "icon": "🖥️",
-        "themen": [
-          {
-            "id": "ct-grundlagen",
-            "title": "CT-Grundlagen (HU, Fenster, Spiral)",
-            "tags": [
-              "CT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "ct-protokolle",
-            "title": "CT-Protokolle (native, KM-Phasen)",
-            "tags": [
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "ct-nachverarbeitung",
-            "title": "Nachverarbeitung (MPR, MIP, VRT)",
-            "tags": [
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "ct-dosis",
-            "title": "Dosisreduktion (ALARA)",
-            "tags": [
-              "CT"
-            ],
-            "diff": 2
-          }
-        ]
-      },
-      {
-        "id": "roentgen",
-        "title": "Röntgen-Grundlagen",
-        "icon": "🩻",
-        "themen": [
-          {
-            "id": "ro-physik",
-            "title": "Röntgenphysik & Bildentstehung",
-            "tags": [
-              "Rö"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "ro-thorax",
-            "title": "Thorax-Röntgen systematisch",
-            "tags": [
-              "Rö"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "ro-abdomen",
-            "title": "Abdomenübersicht",
-            "tags": [
-              "Rö"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "ro-skelett",
-            "title": "Skelett-Röntgen",
-            "tags": [
-              "Rö"
-            ],
-            "diff": 1
-          }
-        ]
-      },
-      {
-        "id": "strahlenschutz",
-        "title": "Strahlenschutz",
-        "icon": "🛡️",
-        "themen": [
-          {
-            "id": "strahlen-grund",
-            "title": "Grundlagen (Dosis, Einheiten)",
-            "tags": [
-              "Rö",
-              "CT"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "strahlen-recht",
-            "title": "Rechtliche Grundlagen (StrlSchV)",
-            "tags": [
-              "Rö",
-              "CT"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "strahlen-schwanger",
-            "title": "Schwangerschaft & Strahlung",
-            "tags": [
-              "Rö",
-              "CT"
-            ],
-            "diff": 2
-          }
-        ]
-      },
-      {
-        "id": "sono",
-        "title": "Sonographie",
-        "icon": "🔊",
-        "themen": [
-          {
-            "id": "sono-physik",
-            "title": "Sono-Physik & Schallkopfwahl",
-            "tags": [
-              "Sono"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "sono-abdomen",
-            "title": "Abdomen-Sono systematisch",
-            "tags": [
-              "Sono"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "sono-doppler",
-            "title": "Doppler & Duplexsonographie",
-            "tags": [
-              "Sono"
-            ],
-            "diff": 2
-          },
-          {
-            "id": "sono-artefakte",
-            "title": "Sono-Artefakte",
-            "tags": [
-              "Sono"
-            ],
-            "diff": 1
-          },
-          {
-            "id": "sono-notfall",
-            "title": "Notfallsonographie (FAST)",
-            "tags": [
-              "Sono"
-            ],
-            "diff": 2
-          }
-        ]
-      }
-    ]
-  }
+    id: 'gefaesse-ir',
+    title: { de: 'Gefäße & Interventionelle Radiologie', en: 'Vascular & Interventional Radiology', fa: 'عروق و رادیولوژی مداخله‌ای' },
+    icon: '🩸', color: '#ef4444',
+    bg: 'linear-gradient(135deg,#2a0808,#4a1414)',
+    bodyZone: 'Gefäße',
+    kapitel: [],
+  },
+  {
+    id: 'technik',
+    title: { de: 'Technik & Physik', en: 'Technique & Physics', fa: 'تکنیک و فیزیک' },
+    icon: '⚙️', color: '#4ade80',
+    bg: 'linear-gradient(135deg,#0a2030,#0a3040)',
+    bodyZone: 'Technik',
+    kapitel: [],
+  },
 ]
 
 export const getFach = (id) => CURRICULUM.find(f => f.id === id)
@@ -2637,448 +368,8 @@ export const getThemenCount = (fachId) => {
   return fach?.kapitel.reduce((sum, k) => sum + k.themen.length, 0) || 0
 }
 
-export const THEMA_TRANSLATIONS = {
-  "knie": {
-    "en": "Knee",
-    "fa": "زانو"
-  },
-  "meniskus": {
-    "en": "Meniscus",
-    "fa": "منیسک"
-  },
-  "knie-ligamente": {
-    "en": "Knee ligaments",
-    "fa": "رباط‌های زانو"
-  },
-  "patella": {
-    "en": "Patella",
-    "fa": "کشکک زانو"
-  },
-  "schulter-mrt": {
-    "en": "Shoulder joint",
-    "fa": "مفصل شانه"
-  },
-  "ellenbogen-mrt": {
-    "en": "Elbow joint MRI",
-    "fa": "MRI مفصل آرنج"
-  },
-  "hand-mrt": {
-    "en": "Hand MRI",
-    "fa": "MRI دست"
-  },
-  "sprunggelenk-mrt": {
-    "en": "Ankle MRI",
-    "fa": "MRI مچ پا"
-  },
-  "trauma-grund": {
-    "en": "Basics",
-    "fa": "مبانی"
-  },
-  "schulter-trauma": {
-    "en": "Shoulder & upper arm",
-    "fa": "شانه و بازو"
-  },
-  "ellenbogen": {
-    "en": "Elbow joint",
-    "fa": "مفصل آرنج"
-  },
-  "unterarm": {
-    "en": "Forearm",
-    "fa": "ساعد"
-  },
-  "handgelenk": {
-    "en": "Wrist & hand",
-    "fa": "مچ و دست"
-  },
-  "becken-huefte": {
-    "en": "Pelvis & hip joint",
-    "fa": "لگن و مفصل ران"
-  },
-  "oberschenkel": {
-    "en": "Thigh",
-    "fa": "ران"
-  },
-  "unterschenkel": {
-    "en": "Lower leg",
-    "fa": "ساق پا"
-  },
-  "sprunggelenk": {
-    "en": "Ankle joint",
-    "fa": "مچ پا"
-  },
-  "fuss": {
-    "en": "Foot",
-    "fa": "پا"
-  },
-  "astrozytom": {
-    "en": "Astrocytoma / glioma",
-    "fa": "آستروسیتوما / گلیوما"
-  },
-  "oligodendrogliom": {
-    "en": "Oligodendroglioma",
-    "fa": "الیگودندروگلیوما"
-  },
-  "gbm": {
-    "en": "Glioblastoma (GBM)",
-    "fa": "گلیوبلاستوما (GBM)"
-  },
-  "medulloblastom": {
-    "en": "Medulloblastoma",
-    "fa": "مدولوبلاستوما"
-  },
-  "ependymom": {
-    "en": "Ependymoma",
-    "fa": "اپاندیموما"
-  },
-  "meningeom": {
-    "en": "Meningioma",
-    "fa": "مننژیوم"
-  },
-  "hirn-met": {
-    "en": "Brain metastases",
-    "fa": "متاستازهای مغزی"
-  },
-  "pcnsl": {
-    "en": "Primary CNS lymphoma",
-    "fa": "لنفوم اولیه CNS"
-  },
-  "haemangioblastom": {
-    "en": "Haemangioblastoma",
-    "fa": "همانژیوبلاستوما"
-  },
-  "hypophysenadenom": {
-    "en": "Pituitary adenoma",
-    "fa": "آدنوم هیپوفیز"
-  },
-  "kraniopharyngeom": {
-    "en": "Craniopharyngioma",
-    "fa": "کرانیوفارنژیوم"
-  },
-  "rathke-zyste": {
-    "en": "Rathke cleft cyst",
-    "fa": "کیست شکاف راتکه"
-  },
-  "epidermoid": {
-    "en": "Epidermoid cyst",
-    "fa": "کیست اپیدرموئید"
-  },
-  "kolloidzyste": {
-    "en": "Colloid cyst",
-    "fa": "کیست کلوئید"
-  },
-  "arachnoidalzyste": {
-    "en": "Arachnoid cyst",
-    "fa": "کیست آراکنوئید"
-  },
-  "ischaem-stroke": {
-    "en": "Ischaemic stroke",
-    "fa": "سکته ایسکمیک"
-  },
-  "dissektion": {
-    "en": "Vessel wall dissection",
-    "fa": "دیسکسیون دیواره عروق"
-  },
-  "moya-moya": {
-    "en": "Moyamoya disease",
-    "fa": "بیماری مویامویا"
-  },
-  "mikroangiopathie": {
-    "en": "Hyperintense microangiopathy",
-    "fa": "میکروآنژیوپاتی هایپراینتنس"
-  },
-  "caa": {
-    "en": "Cerebral amyloid angiopathy (CAA)",
-    "fa": "آنژیوپاتی آمیلوئید مغزی (CAA)"
-  },
-  "cadasil": {
-    "en": "CADASIL syndrome",
-    "fa": "سندرم CADASIL"
-  },
-  "dva": {
-    "en": "Developmental venous anomaly (DVA)",
-    "fa": "ناهنجاری وریدی تکاملی (DVA)"
-  },
-  "kavernom": {
-    "en": "Cavernoma",
-    "fa": "کاورنوما"
-  },
-  "avm-hirn": {
-    "en": "Arteriovenous malformation (AVM)",
-    "fa": "مالفورماسیون شریانی-وریدی (AVM)"
-  },
-  "dav-fistel": {
-    "en": "Dural AV fistula",
-    "fa": "فیستول دورال AV"
-  },
-  "sin-thrombose": {
-    "en": "Dural sinus and cerebral venous thrombosis",
-    "fa": "ترومبوز سینوس و وریدهای مغزی"
-  },
-  "ms": {
-    "en": "Multiple sclerosis (MS)",
-    "fa": "مولتیپل اسکلروزیس (MS)"
-  },
-  "nmo": {
-    "en": "Neuromyelitis optica spectrum (NMO)",
-    "fa": "طیف نورومیلیت اپتیکا (NMO)"
-  },
-  "meningitis": {
-    "en": "Meningitis / encephalitis",
-    "fa": "مننژیت / آنسفالیت"
-  },
-  "hiv-enceph": {
-    "en": "HIV encephalopathy",
-    "fa": "انسفالوپاتی HIV"
-  },
-  "herpes-enceph": {
-    "en": "Herpes encephalitis",
-    "fa": "آنسفالیت هرپسی"
-  },
-  "hirnabszess": {
-    "en": "Brain abscess",
-    "fa": "آبسه مغزی"
-  },
-  "sab": {
-    "en": "Subarachnoid haemorrhage (SAH)",
-    "fa": "خونریزی ساب‌آراکنوئید (SAH)"
-  },
-  "edh": {
-    "en": "Epidural haematoma (EDH)",
-    "fa": "هماتوم اپیدورال (EDH)"
-  },
-  "sdh": {
-    "en": "Subdural haematoma (SDH)",
-    "fa": "هماتوم ساب‌دورال (SDH)"
-  },
-  "icb": {
-    "en": "Intracerebral haemorrhage (ICH)",
-    "fa": "خونریزی داخل مغزی (ICH)"
-  },
-  "hypox-hirn": {
-    "en": "Global hypoxic-ischaemic brain injury",
-    "fa": "آسیب هیپوکسیک-ایسکمیک منتشر مغز"
-  },
-  "haemangiom": {
-    "en": "Liver haemangioma",
-    "fa": "همانژیوم کبدی"
-  },
-  "km-roentgen-grundlagen": {
-    "en": "X-ray contrast media basics",
-    "fa": "مبانی مواد حاجب رادیوگرافی / CT"
-  },
-  "km-mrt": {
-    "en": "MRI contrast media",
-    "fa": "مواد حاجب MRI"
-  },
-  "km-nebenwirkung-jod": {
-    "en": "Adverse effects of iodinated contrast media",
-    "fa": "عوارض مواد حاجب یددار"
-  },
-  "km-nebenwirkung-gadolinium": {
-    "en": "Adverse effects of gadolinium",
-    "fa": "عوارض گادولینیوم"
-  },
-  "km-schwangerschaft-stillzeit": {
-    "en": "Pregnancy and breastfeeding",
-    "fa": "بارداری و شیردهی"
-  },
-  "mrt-grundlagen": {
-    "en": "Basics",
-    "fa": "مبانی"
-  },
-  "mrt-sequenzen": {
-    "en": "Sequences",
-    "fa": "سکانس‌ها"
-  },
-  "mrt-gewichtung": {
-    "en": "T1, T2, PD, FLAIR, DWI",
-    "fa": "T1، T2، PD، FLAIR، DWI"
-  },
-  "mrt-artefakte": {
-    "en": "Artefacts",
-    "fa": "آرتیفکت‌ها"
-  },
-  "mrt-sicherheit": {
-    "en": "MRI safety & contraindications",
-    "fa": "ایمنی MRI و موارد منع"
-  },
-  "sarkoidose": {
-    "en": "Sarcoidosis",
-    "fa": "سارکوئیدوز"
-  }
-}
-
-export const KAPITEL_TRANSLATIONS = {
-  "leber": {
-    "en": "Liver",
-    "fa": "کبد"
-  },
-  "gallenblase": {
-    "en": "Gallbladder & Bile Ducts",
-    "fa": "کیسه صفرا و مجاری"
-  },
-  "pankreas": {
-    "en": "Pancreas",
-    "fa": "پانکراس"
-  },
-  "milz": {
-    "en": "Spleen",
-    "fa": "طحال"
-  },
-  "nieren": {
-    "en": "Kidneys",
-    "fa": "کلیه‌ها"
-  },
-  "harnblase": {
-    "en": "Bladder",
-    "fa": "مثانه"
-  },
-  "nebennieren": {
-    "en": "Adrenal Glands",
-    "fa": "غدد فوق کلیوی"
-  },
-  "gi-trakt": {
-    "en": "GI Tract",
-    "fa": "دستگاه گوارش"
-  },
-  "hernie-retro": {
-    "en": "Hernia · Retroperitoneum",
-    "fa": "فتق · رتروپریتوئن"
-  },
-  "mesenterium": {
-    "en": "Mesentery · Peritoneum",
-    "fa": "مزانتر · پریتوئن"
-  },
-  "vaskulaer": {
-    "en": "Vascular",
-    "fa": "عروقی"
-  },
-  "tumoren-hirn": {
-    "en": "Intracranial Tumours",
-    "fa": "تومورهای داخل جمجمه"
-  },
-  "sella": {
-    "en": "Sella & Parasellar",
-    "fa": "سلا و پاراسلار"
-  },
-  "entz-infekt": {
-    "en": "Inflammation · Demyelination · Infection",
-    "fa": "التهاب · دمیلینه‌کننده · عفونت"
-  },
-  "trauma-blutung": {
-    "en": "Trauma · Haemorrhage · Emergency",
-    "fa": "تروما · خونریزی · اورژانس"
-  },
-  "degeneration-fehlbildung": {
-    "en": "Degeneration · Malformations · Other",
-    "fa": "دژنراسیون · ناهنجاری‌ها · سایر"
-  },
-  "trauma": {
-    "en": "Bone Trauma",
-    "fa": "تروما استخوان"
-  },
-  "mrt-gelenke": {
-    "en": "MRI of Joints",
-    "fa": "MRI مفاصل"
-  },
-  "tumoren-msk": {
-    "en": "Bone Tumours",
-    "fa": "تومورهای استخوانی"
-  },
-  "sonstiges-msk": {
-    "en": "Other",
-    "fa": "سایر"
-  },
-  "grosse-gelenke": {
-    "en": "Large Joints (MRI)",
-    "fa": "مفاصل بزرگ (MRI)"
-  },
-  "knochentumoren": {
-    "en": "Bone Tumours",
-    "fa": "تومورهای استخوانی"
-  },
-  "nekrosen": {
-    "en": "Necrosis",
-    "fa": "نکروز"
-  },
-  "herz-perikard": {
-    "en": "Heart & Pericardium",
-    "fa": "قلب و پریکارد"
-  },
-  "lunge": {
-    "en": "Lung",
-    "fa": "ریه"
-  },
-  "mediastinum": {
-    "en": "Mediastinum & Pleura",
-    "fa": "مدیاستن و پلور"
-  },
-  "ws-trauma": {
-    "en": "Trauma",
-    "fa": "تروما"
-  },
-  "ws-degenerativ": {
-    "en": "Degenerative",
-    "fa": "دژنراتیو"
-  },
-  "ws-entzuendlich": {
-    "en": "Inflammatory · Tumour",
-    "fa": "التهابی · تومور"
-  },
-  "spinalkanal": {
-    "en": "Spinal Canal · Cord",
-    "fa": "کانال نخاعی"
-  },
-  "ws-metabolisch": {
-    "en": "Metabolic · Malformation",
-    "fa": "متابولیک · ناهنجاری"
-  },
-  "hals": {
-    "en": "Neck",
-    "fa": "گردن"
-  },
-  "mammaca": {
-    "en": "Breast Cancer",
-    "fa": "سرطان پستان"
-  },
-  "benigne-mamma": {
-    "en": "Benign Lesions",
-    "fa": "ضایعات خوش‌خیم"
-  },
-  "bildgebung-mamma": {
-    "en": "Imaging Modalities",
-    "fa": "روش‌های تصویربرداری"
-  },
-  "gynaekologie": {
-    "en": "Gynaecology",
-    "fa": "زنان و زایمان"
-  },
-  "urologie-m": {
-    "en": "Urology (Male)",
-    "fa": "اورولوژی (مرد)"
-  },
-  "km-technik": {
-    "en": "Contrast Agents",
-    "fa": "ماده حاجب"
-  },
-  "mrt-physik": {
-    "en": "MRI Physics",
-    "fa": "فیزیک MRI"
-  },
-  "ct-technik": {
-    "en": "CT Technique",
-    "fa": "تکنیک CT"
-  },
-  "roentgen": {
-    "en": "X-Ray Basics",
-    "fa": "مبانی رادیوگرافی"
-  },
-  "strahlenschutz": {
-    "en": "Radiation Protection",
-    "fa": "حفاظت در برابر اشعه"
-  },
-  "sono": {
-    "en": "Ultrasound",
-    "fa": "سونوگرافی"
-  }
-}
+// Inline-i18n Helper: liest title.{lang}, fällt auf de zurück
+export const t = (obj, lang) => obj?.[lang] || obj?.de || ''
+export const getFachTitle = (fach, lang) => t(fach?.title, lang)
+export const getKapitelTitle = (kapitel, lang) => t(kapitel?.title, lang)
+export const getThemaTitle = (thema, lang) => t(thema?.title, lang)

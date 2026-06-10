@@ -6,22 +6,8 @@ import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { loadLeitnerState, LEITNER_STEPS, getBoxLabel, isDue } from '@/utils/leitnerStorage'
-import { CURRICULUM, KAPITEL_TRANSLATIONS } from '@/data/curriculum'
+import { CURRICULUM, getFachTitle, getKapitelTitle } from '@/data/curriculum'
 import styles from './page.module.css'
-
-/* ── Fach-Titel (dreisprachig) ─────────────────────── */
-const FACH_TITLES = {
-  gehirn:       { de: 'Neuroradiologie', en: 'Neuroradiology',  fa: 'نوروراد' },
-  wirbelsaeule: { de: 'Wirbelsäule',     en: 'Spine',           fa: 'ستون فقرات' },
-  hals:         { de: 'Hals',            en: 'Neck',            fa: 'گردن' },
-  thorax:       { de: 'Thorax',          en: 'Chest',           fa: 'توراکس' },
-  mamma:        { de: 'Mamma',           en: 'Breast',          fa: 'پستان' },
-  abdomen:      { de: 'Abdomen',         en: 'Abdomen',         fa: 'شکم' },
-  'becken-f':   { de: 'Becken – Frau',   en: 'Pelvis – Female', fa: 'لگن زنان' },
-  'becken-m':   { de: 'Becken – Mann',   en: 'Pelvis – Male',   fa: 'لگن مردان' },
-  msk:          { de: 'MSK',             en: 'MSK',             fa: 'MSK' },
-  technik:      { de: 'Technik',         en: 'Technology',      fa: 'تکنیک' },
-}
 
 /* ── Übersetzungen ─────────────────────────────────── */
 const T = {
@@ -243,11 +229,6 @@ function fachMcqStats(fach, mcqScores) {
   return { attempted, correct }
 }
 
-function getKapitelTitle(k, lang) {
-  if (lang === 'de') return k.title
-  return KAPITEL_TRANSLATIONS[k.id]?.[lang] || k.title
-}
-
 /* ── Lernpfad Accordion ────────────────────────────── */
 function LernpfadAccordion({ readArticles, mcqScores, lang, t }) {
   const [openFach, setOpenFach] = useState(null)
@@ -255,7 +236,7 @@ function LernpfadAccordion({ readArticles, mcqScores, lang, t }) {
   return (
     <div className={styles.accordion}>
       {CURRICULUM.map(fach => {
-        const title   = FACH_TITLES[fach.id]?.[lang] || fach.key
+        const title   = getFachTitle(fach, lang)
         const pct     = fachPct(fach, readArticles)
         const isOpen  = openFach === fach.id
         const mcq     = fachMcqStats(fach, mcqScores)

@@ -3,7 +3,7 @@ import { useState, useEffect, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
-import { CURRICULUM, getFach, KAPITEL_TRANSLATIONS, THEMA_TRANSLATIONS } from '@/data/curriculum'
+import { CURRICULUM, getFach, getFachTitle, getKapitelTitle, getThemaTitle } from '@/data/curriculum'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
 
@@ -11,24 +11,6 @@ const T = {
   de: { back:'← Startseite', search:'Thema suchen…', readNow:'Artikel öffnen →', noResult:'Kein Treffer für', themen:'Themen', alles:'Alles aufklappen', none:'Zuklappen', available:'Verfügbar', mcq:'MCQ', flash:'Flashcards', fall:'Fallbeispiele', building:'im Aufbau' },
   en: { back:'← Home', search:'Search topic…', readNow:'Open article →', noResult:'No results for', themen:'Topics', alles:'Expand all', none:'Collapse', available:'Available', mcq:'MCQ', flash:'Flashcards', fall:'Cases', building:'coming soon' },
   fa: { back:'← خانه', search:'جستجوی موضوع…', readNow:'← مطالعه کنید', noResult:'نتیجه‌ای برای', themen:'موضوع', alles:'بازکردن همه', none:'بستن همه', available:'موجود', mcq:'MCQ', flash:'فلش‌کارت', fall:'کیس', building:'در حال ساخت' },
-}
-
-const FACH_NAMES = {
-  de: { abdomen:'Abdomen', gehirn:'Kopf', msk:'Muskuloskelettales', thorax:'Thorax',
-        wirbelsaeule:'Wirbelsäule', hals:'Hals', mamma:'Mamma',
-        'becken-f':'Becken – Frau', 'becken-m':'Becken – Mann', technik:'Technik & Physik' },
-  en: { abdomen:'Abdomen', gehirn:'Head', msk:'Musculoskeletal', thorax:'Thorax',
-        wirbelsaeule:'Spine', hals:'Neck', mamma:'Breast',
-        'becken-f':'Pelvis – Female', 'becken-m':'Pelvis – Male', technik:'Physics & Technology' },
-  fa: { abdomen:'شکم', gehirn:'سر', msk:'اسکلتی-عضلانی', thorax:'توراکس',
-        wirbelsaeule:'ستون فقرات', hals:'گردن', mamma:'پستان',
-        'becken-f':'لگن – زنان', 'becken-m':'لگن – مردان', technik:'تکنیک و فیزیک' },
-}
-
-const FACH_ICONS = {
-  abdomen:'🫘', gehirn:'🧠', msk:'🦴', thorax:'🫁',
-  wirbelsaeule:'🩻', hals:'🦋', mamma:'🩺',
-  'becken-f':'♀️', 'becken-m':'♂️', technik:'⚙️'
 }
 
 function getGroup(title) {
@@ -60,10 +42,7 @@ const GROUP_COLORS = {
 function SubThemen({ sub, fachColor, lang }) {
   const [open, setOpen] = useState(false)
 
-  const getSubTitle = (item) => {
-    if (lang === 'de') return item.title
-    return THEMA_TRANSLATIONS[item.id]?.[lang] || item.title
-  }
+  const getSubTitle = (item) => getThemaTitle(item, lang)
 
   const withLang = (href) => {
     if (!href) return null
@@ -144,19 +123,9 @@ export default function LernenFachPage() {
     </div>
   )
 
-  const fachName = FACH_NAMES[lang]?.[fach.id] || fach.key
-  const fachIcon = FACH_ICONS[fach.id] || fach.icon
+  const fachName = getFachTitle(fach, lang)
+  const fachIcon = fach.icon
   const allOpen = openKapitel.size === allKapitelIds.length
-
-  const getKapitelTitle = (k) => {
-    if (lang === 'de') return k.title
-    return KAPITEL_TRANSLATIONS[k.id]?.[lang] || k.title
-  }
-
-  const getThemaTitle = (th) => {
-    if (lang === 'de') return th.title
-    return THEMA_TRANSLATIONS[th.id]?.[lang] || th.title
-  }
 
   const withPageLang = (href) => {
     if (!href || lang === 'de') return href
@@ -170,8 +139,8 @@ export default function LernenFachPage() {
 
   const searchResults = search.trim().length > 1
     ? fach.kapitel.flatMap(k =>
-        k.themen.filter(th => getThemaTitle(th).toLowerCase().includes(search.toLowerCase()))
-          .map(th => ({ ...th, kapitelTitle: getKapitelTitle(k), kapitelIcon: k.icon }))
+        k.themen.filter(th => getThemaTitle(th, lang).toLowerCase().includes(search.toLowerCase()))
+          .map(th => ({ ...th, kapitelTitle: getKapitelTitle(k, lang), kapitelIcon: k.icon }))
       )
     : []
   const searchActive = search.trim().length > 1
@@ -226,7 +195,7 @@ export default function LernenFachPage() {
                     }}
                   >
                     <span className={styles.kapitelPillIcon}>{k.icon}</span>
-                    <span className={styles.sidebarBtnText} style={active ? { color: fach.color } : {}}>{getKapitelTitle(k)}</span>
+                    <span className={styles.sidebarBtnText} style={active ? { color: fach.color } : {}}>{getKapitelTitle(k, lang)}</span>
                     <span className={styles.sidebarChevron} style={{ color: active ? fach.color : undefined }}>{active ? '−' : '+'}</span>
                   </button>
                 )
@@ -244,7 +213,7 @@ export default function LernenFachPage() {
             ) : searchResults.map((th, i) => (
               <div key={i} className={styles.searchRow}>
                 <span className={styles.searchChapter}>{th.kapitelIcon} {th.kapitelTitle}</span>
-                <span className={styles.searchTitle}>{getThemaTitle(th)}</span>
+                <span className={styles.searchTitle}>{getThemaTitle(th, lang)}</span>
               </div>
             ))}
           </div>
@@ -255,7 +224,7 @@ export default function LernenFachPage() {
             // Group themen
             const grouped = {}
             k.themen.forEach(th => {
-              const g = getGroup(th.title)
+              const g = getGroup(getThemaTitle(th, lang))
               if (!grouped[g]) grouped[g] = []
               grouped[g].push(th)
             })
@@ -267,7 +236,7 @@ export default function LernenFachPage() {
                 <button className={`${styles.accHeader} ${isOpen ? styles.accHeaderOpen : ''}`} onClick={() => toggleKapitel(k.id)}
                   style={{ borderLeftColor: isOpen ? fach.color : 'transparent' }}>
                   <span className={styles.accIcon}>{k.icon}</span>
-                  <span className={styles.accTitle}>{getKapitelTitle(k)}</span>
+                  <span className={styles.accTitle}>{getKapitelTitle(k, lang)}</span>
                   <span className={styles.accCount}
                     style={isOpen ? { color: fach.color, background: fach.color + '15' } : {}}>
                     {k.themen.reduce((s, th) => s + 1 + (th.sub?.length || 0), 0)} {t.themen}
@@ -310,7 +279,7 @@ export default function LernenFachPage() {
                               const cardContent = (
                                 <>
                                   <span className={styles.themaDot} style={{ background: fach.color }} />
-                                  <span className={styles.themaTitle}>{getThemaTitle(th)}</span>
+                                  <span className={styles.themaTitle}>{getThemaTitle(th, lang)}</span>
                                   {th.link && <span className={styles.openHint}>{t.readNow}</span>}
                                   {th.sub && <SubThemen sub={th.sub} fachColor={fach.color} lang={lang} />}
                                 </>

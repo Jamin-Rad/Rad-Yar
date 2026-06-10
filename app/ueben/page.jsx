@@ -3,26 +3,20 @@ import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-import { CURRICULUM, KAPITEL_TRANSLATIONS, THEMA_TRANSLATIONS } from '@/data/curriculum'
+import { CURRICULUM, getKapitelTitle, getThemaTitle } from '@/data/curriculum'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
 
 const FACH_DISPLAY = {
   de: { gehirn:'Kopf', wirbelsaeule:'Wirbelsäule', hals:'Hals', thorax:'Thorax',
         mamma:'Mamma', abdomen:'Abdomen', 'becken-f':'Becken – Frau', 'becken-m':'Becken – Mann',
-        msk:'Muskuloskelettales', technik:'Technik & Physik' },
+        msk:'Muskuloskelettales', technik:'Technik & Physik', 'gefaesse-ir':'Gefäße & Interventionelle Radiologie' },
   en: { gehirn:'Head', wirbelsaeule:'Spine', hals:'Neck', thorax:'Thorax',
         mamma:'Breast', abdomen:'Abdomen', 'becken-f':'Pelvis – Female', 'becken-m':'Pelvis – Male',
-        msk:'Musculoskeletal', technik:'Physics & Tech' },
+        msk:'Musculoskeletal', technik:'Physics & Tech', 'gefaesse-ir':'Vascular & Interventional Radiology' },
   fa: { gehirn:'سر', wirbelsaeule:'ستون فقرات', hals:'گردن', thorax:'توراکس',
         mamma:'پستان', abdomen:'شکم', 'becken-f':'لگن – زنان', 'becken-m':'لگن – مردان',
-        msk:'اسکلتی-عضلانی', technik:'تکنیک و فیزیک' },
-}
-
-const FACH_ICONS = {
-  gehirn:'🧠', wirbelsaeule:'🩻', hals:'🦋', thorax:'🫁',
-  mamma:'🩺', abdomen:'🫘', 'becken-f':'♀️', 'becken-m':'♂️',
-  msk:'🦴', technik:'⚙️',
+        msk:'اسکلتی-عضلانی', technik:'تکنیک و فیزیک', 'gefaesse-ir':'عروق و رادیولوژی مداخله‌ای' },
 }
 
 const UE = {
@@ -47,16 +41,6 @@ const UE = {
 }
 
 const ANZAHL_OPTIONS = [5, 10, 25, 50]
-
-function getKapitelTitle(k, lang) {
-  if (lang === 'de') return k.title
-  return KAPITEL_TRANSLATIONS[k.id]?.[lang] || k.title
-}
-
-function getThemaTitle(th, lang) {
-  if (lang === 'de') return th.title
-  return THEMA_TRANSLATIONS[th.id]?.[lang] || th.title
-}
 
 export default function UebenPage() {
   const { lang } = useLanguage()
@@ -163,9 +147,9 @@ export default function UebenPage() {
                     className={`${styles.fachCard} ${active ? styles.fachCardActive : ''}`}
                     style={active ? { borderColor: f.color, background: f.color + '12' } : {}}
                     onClick={() => toggleFach(f.id)}>
-                    <span className={styles.fachIcon}><Image src={`/fach/${f.id}.png`} alt={display[f.id] || f.key} width={30} height={30} style={{ objectFit: 'contain' }} /></span>
+                    <span className={styles.fachIcon}><Image src={`/fach/${f.id}.png`} alt={display[f.id]} width={30} height={30} style={{ objectFit: 'contain' }} /></span>
                     <span className={styles.fachName} style={active ? { color: f.color } : {}}>
-                      {display[f.id] || f.key}
+                      {display[f.id]}
                     </span>
                     {active && <span className={styles.fachCheck} style={{ background: f.color }}>✓</span>}
                   </button>
