@@ -3,6 +3,7 @@ import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
 import { ThemeProvider } from '@/providers/ThemeProvider'
 import { LanguageProvider } from '@/providers/LanguageProvider'
+import RobotAssistant from '@/components/RobotAssistant'
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -63,7 +64,10 @@ export default function RootLayout({ children }) {
         </head>
         <body className={`${fraunces.variable} ${manrope.variable}`}>
           <ThemeProvider>
-            <LanguageProvider>{children}</LanguageProvider>
+            <LanguageProvider>
+              {children}
+              <RobotAssistant />
+            </LanguageProvider>
           </ThemeProvider>
         </body>
       </html>

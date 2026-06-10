@@ -144,6 +144,7 @@ export default function FlashcardReviewPage({ params, searchParams }) {
   const [index, setIndex] = useState(0)
   const [flipped, setFlipped] = useState(false)
   const [exiting, setExiting] = useState(false)
+  const [exitDir, setExitDir] = useState(null)
   const [done, setDone] = useState(false)
   const [stats, setStats] = useState({ correct: 0, wrong: 0 })
 
@@ -184,6 +185,7 @@ export default function FlashcardReviewPage({ params, searchParams }) {
   const handleAnswer = useCallback((knew) => {
     if (!flipped || exiting || !current) return
     setExiting(true)
+    setExitDir(knew ? 'right' : 'left')
 
     if (!practiceMode) {
       const newState = answerCard(current.id, knew, userId)
@@ -194,9 +196,10 @@ export default function FlashcardReviewPage({ params, searchParams }) {
     setTimeout(() => {
       setFlipped(false)
       setExiting(false)
+      setExitDir(null)
       if (index + 1 >= cards.length) setDone(true)
       else setIndex(i => i + 1)
-    }, 280)
+    }, 320)
   }, [flipped, exiting, current, index, cards.length, userId, practiceMode])
 
   useEffect(() => {
@@ -277,7 +280,7 @@ export default function FlashcardReviewPage({ params, searchParams }) {
         </div>
 
         <div
-          className={`${styles.stage} ${exiting ? styles.exiting : ''}`}
+          className={`${styles.stage} ${exiting ? styles.exiting : ''} ${exitDir === 'right' ? styles.exitRight : exitDir === 'left' ? styles.exitLeft : ''}`}
           onClick={handleFlip}
           role="button"
           tabIndex={0}
