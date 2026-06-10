@@ -287,7 +287,7 @@ export default function FlashcardReviewPage({ params, searchParams }) {
           aria-label={flipped ? t.tapBack : t.tap}
           onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleFlip() } }}
         >
-          <div className={`${styles.flipper} ${flipped ? styles.flipped : ''}`}>
+          <div key={index} className={`${styles.flipper} ${flipped ? styles.flipped : ''}`}>
             <div className={styles.cardFront}>
               <p className={styles.question}>{localize(current.front, lang)}</p>
               <div className={styles.tapHint}>
