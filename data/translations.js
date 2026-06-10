@@ -23,8 +23,8 @@ export const translations = {
     pillars: [
       {
         icon: '🫁',
-        num: '01 — Körperregionen',
-        title: 'Körperregionen',
+        num: '01 — Lektionen',
+        title: 'Lektionen',
         desc: 'Systematische Befundlehre nach Organsystem – wichtigste Punkte, Differenzialdiagnosen und klinische Relevanz kompakt aufbereitet.',
         topics: ['Organsystem', 'Differenzialdiagnosen', 'Klinische Relevanz'],
       },
@@ -86,8 +86,8 @@ export const translations = {
     pillars: [
       {
         icon: '🫁',
-        num: '01 — Body Regions',
-        title: 'Body Regions',
+        num: '01 — Lessons',
+        title: 'Lessons',
         desc: 'Systematic imaging by organ system – key findings, differential diagnoses and clinical relevance, concisely presented.',
         topics: ['Organ Systems', 'Differential Diagnosis', 'Clinical Relevance'],
       },
@@ -149,8 +149,8 @@ export const translations = {
     pillars: [
       {
         icon: '🫁',
-        num: '۰۱ — مناطق بدنی',
-        title: 'مناطق بدنی',
+        num: '۰۱ — درس‌ها',
+        title: 'درس‌ها',
         desc: 'گزارش‌دهی سیستماتیک بر اساس اندام – نکات کلیدی، تشخیص‌های افتراقی و اهمیت بالینی به صورت فشرده.',
         topics: ['اندام‌ها', 'تشخیص افتراقی', 'مودالیته'],
       },
