@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { loadLeitnerState, LEITNER_STEPS, getBoxLabel, isDue } from '@/utils/leitnerStorage'
-import { CURRICULUM, getFachTitle, getKapitelTitle } from '@/data/curriculum'
+import { CURRICULUM, getFachTitle, getKapitelTitle, getThemaTitle } from '@/data/curriculum'
 import styles from './page.module.css'
 
 /* ── Übersetzungen ─────────────────────────────────── */
@@ -21,7 +21,7 @@ const T = {
     todaySub:       'Lerne täglich, auch nur 5 Minuten — der Unterschied ist enorm.',
     startCards:     'Karten wiederholen →',
     exploreLernen:  'Thema erkunden →',
-    lernpfadTitle:  'Lernpfad · Körperregionen',
+    lernpfadTitle:  'Lernpfad · Lektionen',
     lernpfadSub:    'Klicke auf ein Fachgebiet um den Fortschritt je Kapitel zu sehen.',
     flashTitle:     'Flashcard-Fortschritt',
     streakTitle:    'Lernserie',
@@ -50,6 +50,9 @@ const T = {
     mcqScore:       (c, a) => `${c} / ${a} richtig`,
     mcqNone:        '–',
     chaptersOf:     (r, t) => `${r} / ${t} gelesen`,
+    readTopicsTitle: 'Gelesene Themen',
+    readTopicsSub:  'Alle Themen, die du als gelesen markiert hast — über alle Fachgebiete hinweg.',
+    readTopicsEmpty: 'Du hast noch keine Themen als gelesen markiert.',
   },
   en: {
     greetMorning:   'Good morning',
@@ -61,7 +64,7 @@ const T = {
     todaySub:       'Study daily, even just 5 minutes — the difference is huge.',
     startCards:     'Review cards →',
     exploreLernen:  'Explore topic →',
-    lernpfadTitle:  'Learning path · Body regions',
+    lernpfadTitle:  'Learning path · Lessons',
     lernpfadSub:    'Click a specialty to see chapter-by-chapter progress.',
     flashTitle:     'Flashcard progress',
     streakTitle:    'Learning streak',
@@ -90,6 +93,9 @@ const T = {
     mcqScore:       (c, a) => `${c} / ${a} correct`,
     mcqNone:        '–',
     chaptersOf:     (r, t) => `${r} / ${t} read`,
+    readTopicsTitle: 'Topics read',
+    readTopicsSub:  'All topics you have marked as read — across all specialties.',
+    readTopicsEmpty: "You haven't marked any topics as read yet.",
   },
   fa: {
     greetMorning:   'صبح بخیر',
@@ -101,7 +107,7 @@ const T = {
     todaySub:       'هر روز بخوان، حتی ۵ دقیقه — تفاوت بزرگیه.',
     startCards:     'مرور کارت‌ها ←',
     exploreLernen:  'کاوش موضوع ←',
-    lernpfadTitle:  'مسیر یادگیری · نواحی بدن',
+    lernpfadTitle:  'مسیر یادگیری · درس‌ها',
     lernpfadSub:    'روی یک تخصص کلیک کن تا پیشرفت فصل‌ها را ببینی.',
     flashTitle:     'پیشرفت فلش‌کارت',
     streakTitle:    'رشته یادگیری',
@@ -130,6 +136,9 @@ const T = {
     mcqScore:       (c, a) => `${c} از ${a} درست`,
     mcqNone:        '–',
     chaptersOf:     (r, t) => `${r} از ${t} خوانده`,
+    readTopicsTitle: 'موضوعات خوانده‌شده',
+    readTopicsSub:  'تمام موضوعاتی که به‌عنوان خوانده‌شده علامت زده‌ای — در همه تخصص‌ها.',
+    readTopicsEmpty: 'هنوز هیچ موضوعی را خوانده‌شده علامت نزده‌ای.',
   },
 }
 
@@ -215,6 +224,22 @@ function kapitelReadCount(kapitel, readArticles) {
   const ids = getKapitelAvailable(kapitel)
   const read = ids.filter(id => (readArticles[id] || 0) >= 1).length
   return { read, total: ids.length }
+}
+
+/** Alle als gelesen markierten Themen über das gesamte Curriculum */
+function getReadTopics(readArticles) {
+  const result = []
+  for (const fach of CURRICULUM) {
+    for (const k of fach.kapitel) {
+      for (const th of k.themen) {
+        if ((readArticles[th.id] || 0) >= 1) result.push({ fach, kapitel: k, thema: th })
+        if (th.sub) for (const s of th.sub) {
+          if ((readArticles[s.id] || 0) >= 1) result.push({ fach, kapitel: k, thema: s })
+        }
+      }
+    }
+  }
+  return result
 }
 
 /** MCQ-Stats für ein Fachgebiet */
@@ -371,6 +396,7 @@ export default function ProfilPage() {
   )
 
   /* Stats */
+  const readTopics = getReadTopics(readArticles)
   const records    = Object.values(leitner)
   const totalCards = records.length
   const dueToday   = records.filter(r => isDue(r)).length
@@ -461,6 +487,38 @@ export default function ProfilPage() {
             lang={lang}
             t={t}
           />
+        </div>
+
+        {/* ── GELESENE THEMEN ── */}
+        <div className={styles.card} style={{ marginBottom: 16 }}>
+          <div className={styles.cardHeader}>
+            <h2 className={styles.cardTitle}>✅ {t.readTopicsTitle}</h2>
+          </div>
+          <p className={styles.cardSub}>{t.readTopicsSub}</p>
+          {readTopics.length === 0 ? (
+            <p className={styles.cardSub} style={{ margin: 0 }}>{t.readTopicsEmpty}</p>
+          ) : (
+            <div className={styles.kapitelList} style={{ borderTop: 'none', padding: 0 }}>
+              {readTopics.map(({ fach: rfach, kapitel: rkapitel, thema }) => {
+                const row = (
+                  <>
+                    <span className={styles.kapitelIcon}>{rfach.icon}</span>
+                    <span className={styles.kapitelName}>
+                      {getThemaTitle(thema, lang)}
+                      <span className={styles.readTopicMeta}>{getFachTitle(rfach, lang)} · {getKapitelTitle(rkapitel, lang)}</span>
+                    </span>
+                  </>
+                )
+                return thema.link ? (
+                  <Link key={thema.id} href={thema.link} className={`${styles.kapitelRow} ${styles.readTopicLink}`}>
+                    {row}
+                  </Link>
+                ) : (
+                  <div key={thema.id} className={styles.kapitelRow}>{row}</div>
+                )
+              })}
+            </div>
+          )}
         </div>
 
         {/* ── UNTERE KARTEN ── */}

@@ -8,34 +8,40 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
 
 const T = {
-  de: { back:'← Startseite', search:'Thema suchen…', readNow:'Artikel öffnen →', noResult:'Kein Treffer für', themen:'Themen', alles:'Alles aufklappen', none:'Zuklappen', available:'Verfügbar', mcq:'MCQ', flash:'Flashcards', fall:'Fallbeispiele', building:'im Aufbau' },
-  en: { back:'← Home', search:'Search topic…', readNow:'Open article →', noResult:'No results for', themen:'Topics', alles:'Expand all', none:'Collapse', available:'Available', mcq:'MCQ', flash:'Flashcards', fall:'Cases', building:'coming soon' },
-  fa: { back:'← خانه', search:'جستجوی موضوع…', readNow:'← مطالعه کنید', noResult:'نتیجه‌ای برای', themen:'موضوع', alles:'بازکردن همه', none:'بستن همه', available:'موجود', mcq:'MCQ', flash:'فلش‌کارت', fall:'کیس', building:'در حال ساخت' },
+  de: { back:'← Startseite', search:'Thema suchen…', readNow:'Artikel öffnen →', noResult:'Kein Treffer für', themen:'Themen', alles:'Alles aufklappen', none:'Zuklappen', available:'Verfügbar', read:'Gelesen', all:'Alle', mcq:'MCQ', flash:'Flashcards', fall:'Fallbeispiele', building:'im Aufbau', emptyAvailable:'In diesem Fachgebiet ist noch kein Thema freigeschaltet.', emptyRead:'Du hast in diesem Fachgebiet noch nichts als gelesen markiert.', emptyAllFach:'Dieses Fachgebiet ist noch im Aufbau – schau bald wieder vorbei.', showAll:'Alle Themen anzeigen' },
+  en: { back:'← Home', search:'Search topic…', readNow:'Open article →', noResult:'No results for', themen:'Topics', alles:'Expand all', none:'Collapse', available:'Available', read:'Read', all:'All', mcq:'MCQ', flash:'Flashcards', fall:'Cases', building:'coming soon', emptyAvailable:'No topics are unlocked in this specialty yet.', emptyRead:"You haven't marked anything as read in this specialty yet.", emptyAllFach:'This specialty is still being built – check back soon.', showAll:'Show all topics' },
+  fa: { back:'← خانه', search:'جستجوی موضوع…', readNow:'← مطالعه کنید', noResult:'نتیجه‌ای برای', themen:'موضوع', alles:'بازکردن همه', none:'بستن همه', available:'موجود', read:'خوانده‌شده', all:'همه', mcq:'MCQ', flash:'فلش‌کارت', fall:'کیس', building:'در حال ساخت', emptyAvailable:'هنوز موضوعی در این تخصص فعال نشده.', emptyRead:'هنوز چیزی را در این تخصص خوانده‌شده علامت نزده‌ای.', emptyAllFach:'این تخصص هنوز در حال آماده‌سازی است – بزودی برمی‌گردیم.', showAll:'نمایش همه موضوعات' },
 }
 
-function getGroup(title) {
-  const t = title.toLowerCase()
-  if (/anatomie|grundlagen|normalbefund|normvariante|physik|technik|befundung|screening/.test(t)) return 'grundlagen'
-  if (/zyste|hämangiom|adenom|fnh|angiomyolipom|hydatide|fibro|mastopathie|onkozytom|myelolipom|bph|myom|nof|intraoss|gang|benigne/.test(t)) return 'benigne'
-  if (/karzinom|sarkom|lymphom|metasta|maligne|hcc|ccc|gbm|glioblastom|ewing|myelom|neuroblastom|nephroblastom|astrozytom|meningeom|medulloblastom/.test(t)) return 'maligne'
-  if (/steatosis|zirrhose|verfettung|diffus|hämochrom|budd|portale|fibrose|chronisch|pankreatitis|psc|cholangitis|osteoporose/.test(t)) return 'diffus'
-  if (/infarkt|embolie|schlaganfall|blutung|thrombose|dissektion|moya|angiopathie|malformation|hämangioblastom|kavernom|dva|avf|avm|fmd|pavk|nekrose|avn/.test(t)) return 'vaskulaer'
-  if (/entzünd|infekt|meningitis|abszess|enzephalitis|spondylodiszitis|bechterew|lyme|gbs|ms |multiple sklerose|neuromyelitis/.test(t)) return 'entzuendlich'
-  if (/lirads|pirads|birads|klassifikation|iota|staging|li-rads|pi-rads/.test(t)) return 'staging'
-  if (/tumor|neoplasie|net|ipmn|adenokarzinom|sarkom|osteosarkom|chondrosarkom|osteoidosteom/.test(t)) return 'tumor'
-  return 'sonstiges'
+// Gruppiert Themen anhand thema.group (Reihenfolge wie in den Daten):
+// aufeinanderfolgende Themen mit derselben group-Breadcrumb bilden einen
+// Abschnitt mit neutraler Sub-Überschrift; Themen ohne group laufen ohne
+// Header in der Original-Reihenfolge.
+function groupThemen(themen) {
+  const sections = []
+  let current = null
+  for (const th of themen) {
+    const key = th.group ? th.group.join(' / ') : ''
+    if (!current || current.key !== key) {
+      current = { key, items: [] }
+      sections.push(current)
+    }
+    current.items.push(th)
+  }
+  return sections
 }
-const GROUP_ORDER = ['grundlagen','benigne','maligne','diffus','vaskulaer','entzuendlich','tumor','staging','sonstiges']
-const GROUP_COLORS = {
-  grundlagen:   { bg:'#e0f2fe', text:'#0369a1', border:'#7dd3fc' },
-  benigne:      { bg:'#dcfce7', text:'#166534', border:'#86efac' },
-  maligne:      { bg:'#fee2e2', text:'#991b1b', border:'#fca5a5' },
-  diffus:       { bg:'#fef9c3', text:'#854d0e', border:'#fde047' },
-  vaskulaer:    { bg:'#ede9fe', text:'#5b21b6', border:'#c4b5fd' },
-  entzuendlich: { bg:'#ffedd5', text:'#9a3412', border:'#fdba74' },
-  tumor:        { bg:'#fce7f3', text:'#9d174d', border:'#f9a8d4' },
-  staging:      { bg:'#f0fdf4', text:'#14532d', border:'#bbf7d0' },
-  sonstiges:    { bg:'#f8fafc', text:'#475569', border:'#cbd5e1' },
+
+function isAvailable(th) {
+  return !!th.link || !!th.sub?.some(s => s.link)
+}
+function isRead(th, readArticles) {
+  if ((readArticles[th.id] || 0) >= 1) return true
+  return !!th.sub?.some(s => (readArticles[s.id] || 0) >= 1)
+}
+function themaMatchesFilter(th, filter, readArticles) {
+  if (filter === 'available') return isAvailable(th)
+  if (filter === 'read') return isRead(th, readArticles)
+  return true
 }
 
 // Sub-thema expandable (for Knie etc.)
@@ -104,14 +110,27 @@ export default function LernenFachPage() {
   const isRTL = lang === 'fa'
   const fach = getFach(params?.fach)
 
-  const allKapitelIds = useMemo(() => fach?.kapitel.map(k => k.id) || [], [fach])
   const [openKapitel, setOpenKapitel] = useState(new Set())
   const [mounted, setMounted] = useState(false)
   const [search, setSearch] = useState('')
+  const [filter, setFilter] = useState('available')
+  const [readArticles, setReadArticles] = useState({})
+
+  const visibleKapitel = useMemo(() => {
+    if (!fach) return []
+    return fach.kapitel
+      .map(k => ({ kapitel: k, themen: k.themen.filter(th => themaMatchesFilter(th, filter, readArticles)) }))
+      .filter(({ themen }) => filter === 'all' || themen.length > 0)
+  }, [fach, filter, readArticles])
+
+  const allKapitelIds = useMemo(() => visibleKapitel.map(({ kapitel }) => kapitel.id), [visibleKapitel])
 
   useEffect(() => {
     setMounted(true)
     if (fach) setOpenKapitel(new Set())
+    try {
+      setReadArticles(JSON.parse(localStorage.getItem('radyar_read_articles') || '{}'))
+    } catch {}
   }, [fach])
 
   useEffect(() => { setSearch('') }, [params?.fach])
@@ -125,7 +144,7 @@ export default function LernenFachPage() {
 
   const fachName = getFachTitle(fach, lang)
   const fachIcon = fach.icon
-  const allOpen = openKapitel.size === allKapitelIds.length
+  const allOpen = allKapitelIds.length > 0 && openKapitel.size === allKapitelIds.length
 
   const withPageLang = (href) => {
     if (!href || lang === 'de') return href
@@ -138,8 +157,8 @@ export default function LernenFachPage() {
   const toggleAll = () => setOpenKapitel(allOpen ? new Set() : new Set(allKapitelIds))
 
   const searchResults = search.trim().length > 1
-    ? fach.kapitel.flatMap(k =>
-        k.themen.filter(th => getThemaTitle(th, lang).toLowerCase().includes(search.toLowerCase()))
+    ? visibleKapitel.flatMap(({ kapitel: k, themen }) =>
+        themen.filter(th => getThemaTitle(th, lang).toLowerCase().includes(search.toLowerCase()))
           .map(th => ({ ...th, kapitelTitle: getKapitelTitle(k, lang), kapitelIcon: k.icon }))
       )
     : []
@@ -174,6 +193,18 @@ export default function LernenFachPage() {
             </button>
           </div>
         </div>
+        {fach.kapitel.length > 0 && (
+          <div className={styles.filterBar}>
+            {['available', 'read', 'all'].map(f => (
+              <button key={f}
+                className={`${styles.filterBtn} ${filter === f ? styles.filterBtnActive : ''}`}
+                style={filter === f ? { color: fach.color, borderColor: fach.color, background: fach.color + '12' } : {}}
+                onClick={() => setFilter(f)}>
+                {f === 'available' ? t.available : f === 'read' ? t.read : t.all}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* ── CONTENT ── */}
@@ -182,7 +213,7 @@ export default function LernenFachPage() {
           <aside className={styles.chapterSidebar}>
             <div className={styles.sidebarTitle}>{lang === 'fa' ? 'سرفصل‌ها' : lang === 'en' ? 'Chapters' : 'Kapitel'}</div>
             <div className={styles.sidebarList}>
-              {fach.kapitel.map(k => {
+              {visibleKapitel.map(({ kapitel: k }) => {
                 const active = openKapitel.has(k.id)
                 return (
                   <button
@@ -217,18 +248,22 @@ export default function LernenFachPage() {
               </div>
             ))}
           </div>
+        ) : visibleKapitel.length === 0 ? (
+          <div className={styles.emptyState}>
+            <p>
+              {fach.kapitel.length === 0
+                ? t.emptyAllFach
+                : filter === 'read' ? t.emptyRead : t.emptyAvailable}
+            </p>
+            {fach.kapitel.length > 0 && filter !== 'all' && (
+              <button className={styles.emptyStateBtn} onClick={() => setFilter('all')}>{t.showAll}</button>
+            )}
+          </div>
         ) : (
           /* ACCORDION SECTIONS */
-          fach.kapitel.map((k) => {
+          visibleKapitel.map(({ kapitel: k, themen }) => {
             const isOpen = openKapitel.has(k.id)
-            // Group themen
-            const grouped = {}
-            k.themen.forEach(th => {
-              const g = getGroup(getThemaTitle(th, lang))
-              if (!grouped[g]) grouped[g] = []
-              grouped[g].push(th)
-            })
-            const orderedGroups = GROUP_ORDER.filter(g => grouped[g]?.length > 0)
+            const sections = groupThemen(themen)
 
             return (
               <div key={k.id} id={'kap-' + k.id} className={styles.accordion}>
@@ -239,7 +274,7 @@ export default function LernenFachPage() {
                   <span className={styles.accTitle}>{getKapitelTitle(k, lang)}</span>
                   <span className={styles.accCount}
                     style={isOpen ? { color: fach.color, background: fach.color + '15' } : {}}>
-                    {k.themen.reduce((s, th) => s + 1 + (th.sub?.length || 0), 0)} {t.themen}
+                    {themen.reduce((s, th) => s + 1 + (th.sub?.length || 0), 0)} {t.themen}
                   </span>
                   {k.ready && k.link && (
                     <Link href={withPageLang(k.link)} className={styles.readyBtn}
@@ -255,49 +290,38 @@ export default function LernenFachPage() {
                 {/* Accordion body */}
                 {isOpen && (
                   <div className={styles.accBody}>
-                    {orderedGroups.map(g => {
-                      const c = GROUP_COLORS[g]
-                      return (
-                        <div key={g} className={styles.group}>
+                    {sections.map((section, i) => (
+                      <div key={i} className={styles.group}>
+                        {section.key && (
                           <div className={styles.groupHeader}>
-                            <span className={styles.groupBadge}
-                              style={{ background: c.bg, color: c.text, borderColor: c.border }}>
-                              {g === 'grundlagen' ? (lang==='fa'?'پایه':lang==='en'?'Basics':'Grundlagen')
-                               : g === 'benigne'   ? (lang==='fa'?'خوش‌خیم':lang==='en'?'Benign':'Benigne')
-                               : g === 'maligne'   ? (lang==='fa'?'بدخیم':lang==='en'?'Malignant':'Maligne')
-                               : g === 'diffus'    ? (lang==='fa'?'منتشر':lang==='en'?'Diffuse':'Diffus')
-                               : g === 'vaskulaer' ? (lang==='fa'?'عروقی':lang==='en'?'Vascular':'Vaskulär')
-                               : g === 'entzuendlich' ? (lang==='fa'?'التهابی':lang==='en'?'Inflammatory':'Entzündlich')
-                               : g === 'tumor'     ? (lang==='fa'?'تومور':lang==='en'?'Tumour':'Tumor')
-                               : g === 'staging'   ? (lang==='fa'?'طبقه‌بندی':lang==='en'?'Staging':'Staging')
-                               : (lang==='fa'?'سایر':lang==='en'?'Other':'Sonstiges')}
-                            </span>
-                            <span className={styles.groupCount}>{grouped[g].length}</span>
+                            <span className={styles.groupLabel}>{section.key}</span>
+                            <span className={styles.groupCount}>{section.items.length}</span>
                           </div>
-                          <div className={styles.themaGrid}>
-                            {grouped[g].map(th => {
-                              const cardContent = (
-                                <>
-                                  <span className={styles.themaDot} style={{ background: fach.color }} />
-                                  <span className={styles.themaTitle}>{getThemaTitle(th, lang)}</span>
-                                  {th.link && <span className={styles.openHint}>{t.readNow}</span>}
-                                  {th.sub && <SubThemen sub={th.sub} fachColor={fach.color} lang={lang} />}
-                                </>
-                              )
-                              return th.link ? (
-                                <Link key={th.id} href={withPageLang(th.link)} className={`${styles.themaCard} ${styles.themaCardLink}`}>
-                                  {cardContent}
-                                </Link>
-                              ) : (
-                                <div key={th.id} className={styles.themaCard}>
-                                  {cardContent}
-                                </div>
-                              )
-                            })}
-                          </div>
+                        )}
+                        <div className={styles.themaGrid}>
+                          {section.items.map(th => {
+                            const cardContent = (
+                              <>
+                                <span className={styles.themaDot} style={{ background: fach.color }} />
+                                <span className={styles.themaTitle}>{getThemaTitle(th, lang)}</span>
+                                {isRead(th, readArticles) && <span className={styles.readBadge}>✓ {t.read}</span>}
+                                {th.link && <span className={styles.openHint}>{t.readNow}</span>}
+                                {th.sub && <SubThemen sub={th.sub} fachColor={fach.color} lang={lang} />}
+                              </>
+                            )
+                            return th.link ? (
+                              <Link key={th.id} href={withPageLang(th.link)} className={`${styles.themaCard} ${styles.themaCardLink}`}>
+                                {cardContent}
+                              </Link>
+                            ) : (
+                              <div key={th.id} className={styles.themaCard}>
+                                {cardContent}
+                              </div>
+                            )
+                          })}
                         </div>
-                      )
-                    })}
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>
