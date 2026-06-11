@@ -291,7 +291,7 @@ export const CURRICULUM = [
             link: '/msk/knie/meniskus',
             mcqLink: '/msk/knie/meniskus/mcq',
             flashcardLink: '/flashcards/meniskus',
-            fallLink: '/msk/knie/meniskus#fallbeispiele',
+            fallLink: '/faelle?thema=meniskus',
             ready: true, updatedAt: '2026-06-07',
           },
           { id: 'kreuzbaender', title: { de: 'Kreuzbänder', en: 'Cruciate Ligaments', fa: 'رباط‌های صلیبی' }, tags: ['MRT'], diff: 2 },

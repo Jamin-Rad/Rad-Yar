@@ -4574,7 +4574,7 @@ export default function MeniskusPage() {
           <Section id="fallbeispiele" eyebrow="07" title={copy.cases.title} lead={copy.cases.lead} defaultOpen={!isMobile} done={!!doneIds['fallbeispiele']} onDone={handleDone}>
             <div className={styles.caseGrid}>
               {copy.cases.items.map(item => (
-                <a key={item.title} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}>
+                <a key={item.title} href="/faelle?thema=meniskus" className={styles.caseCardLink}>
                   <img className={styles.caseImage} src={item.img} alt={item.title} />
                   <div className={styles.caseBody}>
                     <div className={styles.caseLabelRow}>

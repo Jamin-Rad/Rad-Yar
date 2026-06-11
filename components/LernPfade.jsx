@@ -143,7 +143,7 @@ export default function LernPfade() {
 
   const handleCard = (i) => {
     if (i === 0) { router.push('/lernen'); return }
-    if (i === 1) { setModal('fall'); return }
+    if (i === 1) { router.push('/faelle'); return }
     if (i === 2) { router.push('/ueben'); return }
     if (i === 3) { router.push('/flashcards'); return }
   }
