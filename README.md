@@ -1,51 +1,59 @@
-# RadPilot – Setup Guide
+# RadYar
 
-## Schritt 1: Node.js installieren
-Gehe zu https://nodejs.org und lade die **LTS-Version** herunter und installiere sie.
+RadYar ist eine mehrsprachige Lernplattform für radiologische Weiterbildung.
 
-## Schritt 2: GitHub Account erstellen
-Gehe zu https://github.com und erstelle ein kostenloses Konto.
+## Funktionen
 
-## Schritt 3: Diesen Ordner hochladen
-1. Gehe zu https://github.com/new
-2. Repository-Name: `radpilot`
-3. Auf "Create repository" klicken
-4. Dann "uploading an existing file" klicken
-5. Den gesamten Inhalt dieses Ordners hochladen
+- Strukturierte Lernseiten nach Körperregion und Thema
+- MCQ-Prüfungen mit Mehrfachauswahl von Kapiteln und Themen
+- Interaktive Fallbeispiele
+- Flashcards mit Wiederholungsfunktion
+- Persönlicher Lernfortschritt und Profilbereich
+- Deutsch, Englisch und Persisch
+- Responsive Darstellung für Desktop und Mobile
+- Anmeldung und Benutzerverwaltung mit Clerk
 
-## Schritt 4: Vercel verbinden
-1. Gehe zu https://vercel.com und melde dich mit GitHub an
-2. "New Project" → dein `radpilot` Repository auswählen
-3. "Deploy" klicken → fertig! Du bekommst sofort eine URL
+## Entwicklung
 
-## Schritt 5: Eigene Domain verknüpfen
-1. Domain kaufen (z.B. https://namecheap.com)
-2. In Vercel: Projekt → Settings → Domains
-3. Deine Domain eingeben und den DNS-Anweisungen folgen
+Voraussetzungen: Node.js LTS und npm.
 
-## Lokale Entwicklung
 ```bash
 npm install
 npm run dev
-# → öffne http://localhost:3000
 ```
 
-## Neue Seite hinzufügen (z.B. Neuroradiologie)
-Erstelle einfach: `app/fachgebiete/neuroradiologie/page.js`
-→ Claude hilft dir dabei!
+Die Anwendung läuft anschließend unter [http://localhost:3000](http://localhost:3000).
+
+Produktions-Build:
+
+```bash
+npm run build
+npm start
+```
+
+## Umgebungsvariablen
+
+Für Anmeldung und Backend-Anbindung wird eine `.env.local` benötigt:
+
+```env
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+```
 
 ## Projektstruktur
+
+```text
+app/          Seiten und API-Routen
+components/   Wiederverwendbare UI-Komponenten
+data/         Lehrplan, Fragen, Fälle und Flashcards
+hooks/        Gemeinsame React-Hooks
+lib/          Supabase-Clients und Hilfsfunktionen
+public/       Bilder und statische Dateien
+providers/    Sprache und Theme
 ```
-radpilot/
-├── app/
-│   ├── layout.js          # HTML-Rahmen & Fonts
-│   ├── page.js            # Startseite
-│   └── globals.css        # Globale Styles
-├── components/
-│   ├── Hero.jsx           # Hero-Bereich
-│   ├── LernPfade.jsx      # 3 Lernpfade
-│   ├── Fachgebiete.jsx    # 8 Fachgebiete
-│   └── Footer.jsx         # Footer
-└── public/
-    └── hero.png           # Hintergrundbild
-```
+
+## Technik
+
+Next.js 15, React 18, Clerk und Supabase.

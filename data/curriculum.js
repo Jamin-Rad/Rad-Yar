@@ -66,7 +66,7 @@ export const CURRICULUM = [
   },
   {
     id: 'msk',
-    title: { de: 'Muskuloskelettal (MSK)', en: 'Musculoskeletal (MSK)', fa: 'اسکلتی-عضلانی (MSK)' },
+    title: { de: 'Muskuloskelettal', en: 'Musculoskeletal', fa: 'اسکلتی-عضلانی' },
     icon: '🦴', color: '#fb923c',
     bg: 'linear-gradient(135deg,#2a1a00,#4a3000)',
     bodyZone: 'Muskuloskelettal',
