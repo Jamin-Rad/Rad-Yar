@@ -224,8 +224,9 @@
   border-radius: 21px;
   background: linear-gradient(145deg, color-mix(in srgb, var(--topic-color) 15%, white), #fff);
   box-shadow: 0 10px 22px rgba(15,23,42,.08);
-  font-size: 34px;
+  color: var(--topic-color);
 }
+.chapterIconSvg { width: 40px; height: 40px; }
 .mainTopicTitle {
   position: relative;
   z-index: 1;
@@ -321,9 +322,10 @@
   border: 1px solid color-mix(in srgb, var(--topic-color) 28%, #e2e8f0);
   border-radius: 15px;
   background: #fff;
-  font-size: 24px;
+  color: var(--topic-color);
   box-shadow: 0 8px 18px rgba(15,23,42,.07);
 }
+.topicListIcon .chapterIconSvg { width: 29px; height: 29px; }
 .topicListHeader h3 {
   margin: 0;
   color: #172033;
@@ -437,7 +439,15 @@ a.topicRow:hover {
   padding: 10px 14px; border-radius: 10px;
   background: #fff; border: 1px solid #e2e6f0;
 }
-.searchChapter { font-size: 11.5px; color: #94a3b8; flex-shrink: 0; }
+.searchChapter {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11.5px;
+  color: #94a3b8;
+  flex-shrink: 0;
+}
+.searchChapterIcon { width: 19px; height: 19px; color: var(--topic-color, #fb923c); }
 .searchTitle   { font-size: 13.5px; color: #1a2051; font-weight: 500; }
 
 /* ── ACCORDION ─────────────────────────────────── */
@@ -661,7 +671,8 @@ a.topicRow:hover {
   .accBody { padding: 14px; }
   .mainTopicGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .mainTopicCard { padding: 16px; border-radius: 19px; }
-  .mainTopicIcon { width: 52px; height: 52px; border-radius: 16px; font-size: 25px; }
+  .mainTopicIcon { width: 52px; height: 52px; border-radius: 16px; }
+  .mainTopicIcon .chapterIconSvg { width: 31px; height: 31px; }
   .mainTopicTitle { font-size: 13.5px; }
   .mainTopicCount { font-size: 8.5px; }
   .topicModalBackdrop { align-items: end; padding: 12px; }
