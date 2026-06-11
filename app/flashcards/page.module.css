@@ -651,6 +651,40 @@ a.heroPanelClickable:hover {
 .dueTopicInfo strong { display: block; color: var(--text-strong); font-size: 15px; }
 .dueTopicInfo small  { display: block; color: var(--text-muted); margin-top: 4px; line-height: 1.35; }
 
+/* ── KAPITEL-/THEMEN-AUSWAHL ALS BUTTON IM MODAL ────── */
+.dueTopicRowBtn {
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-align: start;
+}
+
+.dueTopicRow.dueTopicRowDisabled {
+  opacity: 0.55;
+}
+
+.dueTopicRow.dueTopicRowDisabled:hover {
+  transform: none;
+  border-color: var(--border);
+  box-shadow: none;
+}
+
+.modalBackBtn {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--orange);
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+}
+
 @media (max-width: 560px) {
   .topicCardLarge {
     align-items: flex-start;

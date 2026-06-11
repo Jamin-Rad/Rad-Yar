@@ -64,14 +64,15 @@
 .lessonLink {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
+  gap: 7px;
   flex-shrink: 0;
+  padding: 6px 14px;
   border-radius: 999px;
   background: var(--accent-soft);
   color: var(--orange);
   border: 1px solid rgba(249, 115, 22, 0.22);
+  font-size: 12px;
+  font-weight: 800;
   text-decoration: none;
   transition: background 0.15s, color 0.15s;
 }
@@ -125,19 +126,6 @@
   display: flex;
   align-items: center;
   gap: 10px;
-}
-
-.catBadge {
-  display: inline-flex;
-  padding: 6px 14px;
-  border-radius: 999px;
-  background: var(--accent-soft);
-  color: var(--orange);
-  border: 1px solid rgba(249, 115, 22, 0.18);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 }
 
 /* ── 3D FLIP CARD ──────────────────────────────────── */
@@ -423,7 +411,6 @@
 [dir='rtl'] .topBar       { flex-direction: row-reverse; }
 [dir='rtl'] .topRight     { flex-direction: row-reverse; }
 [dir='rtl'] .answerRow    { direction: rtl; }
-[dir='rtl'] .catBadge     { letter-spacing: 0; }
 [dir='rtl'] .question,
 [dir='rtl'] .answer       { direction: rtl; text-align: right; }
 [dir='rtl'] .categoryRow  { flex-direction: row-reverse; }

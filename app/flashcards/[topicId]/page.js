@@ -37,7 +37,7 @@ const T = {
     backLink: '← Zurück zur Übersicht',
     emptyTitle: 'Keine Karten in dieser Auswahl.',
     emptySub: 'Wähle eine andere Box oder starte das Thema normal.',
-    lessonLinkLabel: 'Zur Lektion (neuer Tab)',
+    lessonLinkLabel: 'Lektion lernen',
   },
   en: {
     back: '← Overview',
@@ -62,7 +62,7 @@ const T = {
     backLink: '← Back to overview',
     emptyTitle: 'No cards in this selection.',
     emptySub: 'Choose another box or start the topic normally.',
-    lessonLinkLabel: 'Open lesson (new tab)',
+    lessonLinkLabel: 'Study lesson',
   },
   fa: {
     back: '← مرور کلی',
@@ -87,7 +87,7 @@ const T = {
     backLink: '← برگشت به مرور کلی',
     emptyTitle: 'در این انتخاب کارتی وجود ندارد.',
     emptySub: 'یک جعبه دیگر انتخاب کن یا موضوع را به صورت عادی شروع کن.',
-    lessonLinkLabel: 'باز کردن درس (تب جدید)',
+    lessonLinkLabel: 'مطالعه درس',
   },
 }
 
@@ -293,22 +293,6 @@ export default function FlashcardReviewPage({ params, searchParams }) {
           <span className={styles.cardCount}>{t.cardOf(index + 1, cards.length)}</span>
         </div>
         <div className={styles.topRight}>
-          {lessonLink && (
-            <a
-              href={lang === 'de' ? lessonLink : `${lessonLink}?lang=${lang}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.lessonLink}
-              aria-label={t.lessonLinkLabel}
-              title={t.lessonLinkLabel}
-            >
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                <polyline points="15 3 21 3 21 9" />
-                <line x1="10" y1="14" x2="21" y2="3" />
-              </svg>
-            </a>
-          )}
           <div className={styles.boxPill}>{practiceMode ? t.practiceMode : boxLabel}</div>
         </div>
       </header>
@@ -319,7 +303,20 @@ export default function FlashcardReviewPage({ params, searchParams }) {
 
       <main className={styles.main}>
         <div className={styles.categoryRow}>
-          <span className={styles.catBadge}>{localize(current.category, lang)}</span>
+          {lessonLink && (
+            <a
+              href={lang === 'de' ? lessonLink : `${lessonLink}?lang=${lang}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.lessonLink}
+            >
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H9a4 4 0 0 1 3 1.4A4 4 0 0 1 15 2h4.5A2.5 2.5 0 0 1 22 4.5v13A2.5 2.5 0 0 1 19.5 20H15a3 3 0 0 0-3 3 3 3 0 0 0-3-3H4.5A2.5 2.5 0 0 1 2 17.5Z" />
+                <path d="M12 7v13" />
+              </svg>
+              {t.lessonLinkLabel}
+            </a>
+          )}
           {practiceMode && <span className={styles.practiceBadge}>{boxLabel} · {t.practiceNote}</span>}
         </div>
 
