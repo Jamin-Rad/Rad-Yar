@@ -8,9 +8,9 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
 
 const T = {
-  de: { back:'← Startseite', search:'Thema suchen…', readNow:'Artikel öffnen', noResult:'Kein Treffer für', themen:'Themen', alles:'Alles aufklappen', none:'Zuklappen', available:'Verfügbar', read:'Gelesen', all:'Alle', mcq:'MCQ', flash:'Flashcards', fall:'Fallbeispiele', building:'Geplant', emptyAvailable:'In diesem Fachgebiet ist noch kein Thema freigeschaltet.', emptyRead:'Du hast in diesem Fachgebiet noch nichts als gelesen markiert.', emptyAllFach:'Dieses Fachgebiet ist noch im Aufbau – schau bald wieder vorbei.', showAll:'Alle Themen anzeigen', overview:'Lernübersicht', lessonsTitle:'Lektionen & Themen', lessonsLead:'Wähle ein Kapitel und arbeite dich Thema für Thema durch.', chapters:'Kapitel', readyLessons:'verfügbar' },
-  en: { back:'← Home', search:'Search topic…', readNow:'Open article', noResult:'No results for', themen:'Topics', alles:'Expand all', none:'Collapse', available:'Available', read:'Read', all:'All', mcq:'MCQ', flash:'Flashcards', fall:'Cases', building:'Planned', emptyAvailable:'No topics are unlocked in this specialty yet.', emptyRead:"You haven't marked anything as read in this specialty yet.", emptyAllFach:'This specialty is still being built – check back soon.', showAll:'Show all topics', overview:'Learning overview', lessonsTitle:'Lessons & topics', lessonsLead:'Choose a chapter and work through it topic by topic.', chapters:'Chapters', readyLessons:'available' },
-  fa: { back:'← خانه', search:'جستجوی موضوع…', readNow:'مطالعه کنید', noResult:'نتیجه‌ای برای', themen:'موضوع', alles:'بازکردن همه', none:'بستن همه', available:'موجود', read:'خوانده‌شده', all:'همه', mcq:'MCQ', flash:'فلش‌کارت', fall:'کیس', building:'برنامه‌ریزی‌شده', emptyAvailable:'هنوز موضوعی در این تخصص فعال نشده.', emptyRead:'هنوز چیزی را در این تخصص خوانده‌شده علامت نزده‌ای.', emptyAllFach:'این تخصص هنوز در حال آماده‌سازی است – بزودی برمی‌گردیم.', showAll:'نمایش همه موضوعات', overview:'نمای کلی آموزش', lessonsTitle:'درس‌ها و موضوعات', lessonsLead:'یک فصل را انتخاب کنید و موضوعات را مرحله‌به‌مرحله پیش ببرید.', chapters:'فصل', readyLessons:'موجود' },
+  de: { back:'← Startseite', search:'Thema suchen…', readNow:'Artikel öffnen', noResult:'Kein Treffer für', themen:'Themen', available:'Verfügbar', read:'Gelesen', all:'Alle', mcq:'MCQ', flash:'Flashcards', fall:'Fallbeispiele', building:'Geplant', emptyAvailable:'In diesem Fachgebiet ist noch kein Thema freigeschaltet.', emptyRead:'Du hast in diesem Fachgebiet noch nichts als gelesen markiert.', emptyAllFach:'Dieses Fachgebiet ist noch im Aufbau – schau bald wieder vorbei.', showAll:'Alle Themen anzeigen', overview:'Lernübersicht', lessonsTitle:'Hauptthemen', lessonsLead:'Wähle ein Hauptthema, um die zugehörigen Lektionen zu sehen.', chapters:'Kapitel', readyLessons:'verfügbar' },
+  en: { back:'← Home', search:'Search topic…', readNow:'Open article', noResult:'No results for', themen:'Topics', available:'Available', read:'Read', all:'All', mcq:'MCQ', flash:'Flashcards', fall:'Cases', building:'Planned', emptyAvailable:'No topics are unlocked in this specialty yet.', emptyRead:"You haven't marked anything as read in this specialty yet.", emptyAllFach:'This specialty is still being built – check back soon.', showAll:'Show all topics', overview:'Learning overview', lessonsTitle:'Main topics', lessonsLead:'Select a main topic to view its lessons.', chapters:'Chapters', readyLessons:'available' },
+  fa: { back:'← خانه', search:'جستجوی موضوع…', readNow:'مطالعه کنید', noResult:'نتیجه‌ای برای', themen:'موضوع', available:'موجود', read:'خوانده‌شده', all:'همه', mcq:'MCQ', flash:'فلش‌کارت', fall:'کیس', building:'برنامه‌ریزی‌شده', emptyAvailable:'هنوز موضوعی در این تخصص فعال نشده.', emptyRead:'هنوز چیزی را در این تخصص خوانده‌شده علامت نزده‌ای.', emptyAllFach:'این تخصص هنوز در حال آماده‌سازی است – بزودی برمی‌گردیم.', showAll:'نمایش همه موضوعات', overview:'نمای کلی آموزش', lessonsTitle:'موضوعات اصلی', lessonsLead:'یک موضوع اصلی را انتخاب کنید تا درس‌های آن نمایش داده شوند.', chapters:'فصل', readyLessons:'موجود' },
 }
 
 // Gruppiert Themen anhand thema.group (Reihenfolge wie in den Daten):
@@ -110,7 +110,7 @@ export default function LernenFachPage() {
   const isRTL = lang === 'fa'
   const fach = getFach(params?.fach)
 
-  const [openKapitel, setOpenKapitel] = useState(new Set())
+  const [selectedKapitel, setSelectedKapitel] = useState(null)
   const [mounted, setMounted] = useState(false)
   const [search, setSearch] = useState('')
   const [filter, setFilter] = useState('available')
@@ -123,7 +123,6 @@ export default function LernenFachPage() {
       .filter(({ themen }) => filter === 'all' || themen.length > 0)
   }, [fach, filter, readArticles])
 
-  const allKapitelIds = useMemo(() => visibleKapitel.map(({ kapitel }) => kapitel.id), [visibleKapitel])
   const totalTopics = useMemo(() => fach?.kapitel.reduce(
     (total, kapitel) => total + kapitel.themen.reduce((sum, th) => sum + 1 + (th.sub?.length || 0), 0),
     0
@@ -135,7 +134,7 @@ export default function LernenFachPage() {
 
   useEffect(() => {
     setMounted(true)
-    if (fach) setOpenKapitel(new Set())
+    if (fach) setSelectedKapitel(null)
     try {
       setReadArticles(JSON.parse(localStorage.getItem('radyar_read_articles') || '{}'))
     } catch {}
@@ -144,8 +143,14 @@ export default function LernenFachPage() {
   useEffect(() => { setSearch('') }, [params?.fach])
 
   useEffect(() => {
-    if (filter === 'available') setOpenKapitel(new Set(allKapitelIds))
-  }, [filter, allKapitelIds])
+    if (!visibleKapitel.length) {
+      setSelectedKapitel(null)
+      return
+    }
+    if (!visibleKapitel.some(({ kapitel }) => kapitel.id === selectedKapitel)) {
+      setSelectedKapitel(visibleKapitel[0].kapitel.id)
+    }
+  }, [visibleKapitel, selectedKapitel])
 
   if (!fach) return (
     <div className={styles.notFound}>
@@ -156,17 +161,19 @@ export default function LernenFachPage() {
 
   const fachName = getFachTitle(fach, lang)
   const fachIcon = fach.icon
-  const allOpen = allKapitelIds.length > 0 && openKapitel.size === allKapitelIds.length
+  const selectedEntry = visibleKapitel.find(({ kapitel }) => kapitel.id === selectedKapitel)
 
   const withPageLang = (href) => {
     if (!href || lang === 'de') return href
     return href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`
   }
 
-  const toggleKapitel = (id) => setOpenKapitel(prev => {
-    const s = new Set(prev); s.has(id) ? s.delete(id) : s.add(id); return s
-  })
-  const toggleAll = () => setOpenKapitel(allOpen ? new Set() : new Set(allKapitelIds))
+  const selectKapitel = (id) => {
+    setSelectedKapitel(id)
+    setTimeout(() => {
+      document.getElementById('selected-topic-list')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 50)
+  }
 
   const searchResults = search.trim().length > 1
     ? visibleKapitel.flatMap(({ kapitel: k, themen }) =>
@@ -199,10 +206,6 @@ export default function LernenFachPage() {
                 value={search} onChange={e => setSearch(e.target.value)} />
               {search && <button className={styles.searchX} onClick={() => setSearch('')}>✕</button>}
             </div>
-            <button className={styles.toggleAllBtn} onClick={toggleAll}
-              style={{ color: fach.color, borderColor: fach.color + '44' }}>
-              {allOpen ? t.none : t.alles}
-            </button>
           </div>
         </div>
         {fach.kapitel.length > 0 && (
@@ -271,88 +274,74 @@ export default function LernenFachPage() {
             )}
           </div>
         ) : (
-          /* ACCORDION SECTIONS */
-          visibleKapitel.map(({ kapitel: k, themen }) => {
-            const isOpen = openKapitel.has(k.id)
-            const sections = groupThemen(themen)
+          <>
+            <div className={styles.mainTopicGrid}>
+              {visibleKapitel.map(({ kapitel: k, themen }) => {
+                const active = selectedKapitel === k.id
+                const count = themen.reduce((sum, th) => sum + 1 + (th.sub?.length || 0), 0)
+                return (
+                  <button key={k.id}
+                    className={`${styles.mainTopicCard} ${active ? styles.mainTopicCardActive : ''}`}
+                    style={{ '--topic-color': fach.color }}
+                    onClick={() => selectKapitel(k.id)}
+                    aria-pressed={active}>
+                    <span className={styles.mainTopicIcon}>{k.icon}</span>
+                    <span className={styles.mainTopicTitle}>{getKapitelTitle(k, lang)}</span>
+                    <span className={styles.mainTopicCount}>{count} {t.themen}</span>
+                  </button>
+                )
+              })}
+            </div>
 
-            return (
-              <div key={k.id} id={'kap-' + k.id} className={styles.accordion}>
-                {/* Accordion header */}
-                <button className={`${styles.accHeader} ${isOpen ? styles.accHeaderOpen : ''}`} onClick={() => toggleKapitel(k.id)}
-                  style={{ borderLeftColor: isOpen ? fach.color : 'transparent' }}>
-                  <span className={styles.accIcon}>{k.icon}</span>
-                  <span className={styles.accTitle}>{getKapitelTitle(k, lang)}</span>
-                  <span className={styles.accCount}
-                    style={isOpen ? { color: fach.color, background: fach.color + '15' } : {}}>
-                    {themen.reduce((s, th) => s + 1 + (th.sub?.length || 0), 0)} {t.themen}
-                  </span>
-                  {k.ready && k.link && (
-                    <Link href={withPageLang(k.link)} className={styles.readyBtn}
-                      style={{ color: fach.color, borderColor: fach.color + '44' }}
-                      onClick={e => e.stopPropagation()}>
-                      {t.readNow}
-                    </Link>
-                  )}
-                  <span className={styles.accChevron}
-                    style={{ color: fach.color, transform: isOpen ? 'rotate(90deg)' : 'none' }}>›</span>
-                </button>
-
-                {/* Accordion body */}
-                {isOpen && (
-                  <div className={styles.accBody}>
-                    {sections.map((section, i) => (
-                      <div key={i} className={styles.group}>
-                        {section.key && (
-                          <div className={styles.groupHeader}>
-                            <span className={styles.groupLabel}>{section.key}</span>
-                            <span className={styles.groupCount}>{section.items.length}</span>
-                          </div>
-                        )}
-                        <div className={styles.themaGrid}>
-                          {section.items.map(th => {
-                            const available = isAvailable(th)
-                            const topicIndex = themen.findIndex(item => item.id === th.id)
-                            const cardContent = (
-                              <>
-                                <div className={styles.themaCardTop}>
-                                  <span className={styles.themaNumber} style={{ color: fach.color }}>
-                                    {String(topicIndex + 1).padStart(2, '0')}
-                                  </span>
-                                  {isRead(th, readArticles) && <span className={styles.readBadge}>✓ {t.read}</span>}
-                                </div>
-                                <span className={styles.themaTitle}>{getThemaTitle(th, lang)}</span>
-                                <div className={styles.themaFooter}>
-                                  <span className={`${styles.topicStatus} ${available ? styles.topicStatusReady : ''}`}>
-                                    <i style={available ? { background: fach.color } : {}} />
-                                    {available ? t.available : t.building}
-                                  </span>
-                                  {th.link && <span className={styles.tileArrow} style={{ background: fach.color }}>→</span>}
-                                </div>
-                                {th.sub && <SubThemen sub={th.sub} fachColor={fach.color} lang={lang} />}
-                              </>
-                            )
-                            return th.link ? (
-                              <Link key={th.id} href={withPageLang(th.link)}
-                                className={`${styles.themaCard} ${styles.themaCardLink} ${styles.themaCardReady}`}
-                                style={{ '--topic-color': fach.color }}>
-                                {cardContent}
-                              </Link>
-                            ) : (
-                              <div key={th.id} className={`${styles.themaCard} ${styles.themaCardPlanned}`}
-                                style={{ '--topic-color': fach.color }}>
-                                {cardContent}
-                              </div>
-                            )
-                          })}
-                        </div>
-                      </div>
-                    ))}
+            {selectedEntry && (
+              <section id="selected-topic-list" className={styles.topicListPanel} style={{ '--topic-color': fach.color }}>
+                <header className={styles.topicListHeader}>
+                  <span className={styles.topicListIcon}>{selectedEntry.kapitel.icon}</span>
+                  <div>
+                    <h3>{getKapitelTitle(selectedEntry.kapitel, lang)}</h3>
+                    <p>{selectedEntry.themen.length} {t.themen}</p>
                   </div>
-                )}
-              </div>
-            )
-          })
+                </header>
+
+                <div className={styles.topicGroups}>
+                  {groupThemen(selectedEntry.themen).map((section, groupIndex) => (
+                    <div key={groupIndex} className={styles.topicGroup}>
+                      {section.key && <h4>{section.key}</h4>}
+                      <div className={styles.topicList}>
+                        {section.items.map(th => {
+                          const available = isAvailable(th)
+                          const rowContent = (
+                            <>
+                              <span className={styles.topicRowNumber}>
+                                {String(selectedEntry.themen.findIndex(item => item.id === th.id) + 1).padStart(2, '0')}
+                              </span>
+                              <span className={styles.topicRowTitle}>{getThemaTitle(th, lang)}</span>
+                              {isRead(th, readArticles) && <span className={styles.readBadge}>✓ {t.read}</span>}
+                              <span className={`${styles.topicRowStatus} ${available ? styles.topicRowStatusReady : ''}`}>
+                                {available ? t.available : t.building}
+                              </span>
+                              {th.link && <span className={styles.topicRowArrow}>→</span>}
+                            </>
+                          )
+
+                          return (
+                            <div key={th.id} className={styles.topicListItem}>
+                              {th.link ? (
+                                <Link href={withPageLang(th.link)} className={styles.topicRow}>{rowContent}</Link>
+                              ) : (
+                                <div className={styles.topicRow}>{rowContent}</div>
+                              )}
+                              {th.sub && <SubThemen sub={th.sub} fachColor={fach.color} lang={lang} />}
+                            </div>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+          </>
         )}
           </main>
         </div>
