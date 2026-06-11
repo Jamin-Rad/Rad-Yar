@@ -1,28 +1,22 @@
-import { auth } from '@clerk/nextjs/server'
-import { clerkClient } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
+import { requireAdmin, ADMIN_EMAIL } from '@/lib/adminAuth'
 
-const ADMIN_EMAIL = 'dr.benjaminzia@gmail.com'
-
-export async function GET() {
+export async function GET(request) {
   try {
-    const { userId } = await auth()
-
-    if (!userId) {
-      return NextResponse.json({ error: 'Nicht angemeldet' }, { status: 401 })
+    const admin = await requireAdmin()
+    if (admin.error) {
+      return NextResponse.json({ error: admin.error }, { status: admin.status })
     }
+    const { client } = admin
 
-    // Prüfen ob anfragender User ein Admin ist
-    const client = await clerkClient()
-    const requestingUser = await client.users.getUser(userId)
-    const email = requestingUser.emailAddresses?.[0]?.emailAddress
+    const { searchParams } = new URL(request.url)
+    const query = searchParams.get('query')?.trim() || undefined
 
-    if (email !== ADMIN_EMAIL) {
-      return NextResponse.json({ error: 'Keine Berechtigung' }, { status: 403 })
-    }
-
-    // Alle User laden
-    const { data: users } = await client.users.getUserList({ limit: 200, orderBy: '-created_at' })
+    const { data: users, totalCount } = await client.users.getUserList({
+      limit: 200,
+      orderBy: '-created_at',
+      query,
+    })
 
     const cleaned = users.map(u => ({
       id: u.id,
@@ -31,9 +25,12 @@ export async function GET() {
       emailAddresses: u.emailAddresses,
       createdAt: u.createdAt,
       lastSignInAt: u.lastSignInAt,
+      banned: u.banned,
+      locked: u.locked,
+      isAdmin: u.emailAddresses?.[0]?.emailAddress === ADMIN_EMAIL,
     }))
 
-    return NextResponse.json({ users: cleaned })
+    return NextResponse.json({ users: cleaned, totalCount })
   } catch (err) {
     console.error('Admin API Fehler:', err)
     return NextResponse.json({ error: 'Server-Fehler' }, { status: 500 })
