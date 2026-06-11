@@ -1015,7 +1015,8 @@ function ReadButton({ isRead, onClick, authError }) {
   return (
     <div className={styles.readControl}>
       <button type="button" className={`${styles.readButton} ${isRead ? styles.readButtonActive : ''}`} onClick={onClick}>
-        {isRead ? copy.read : copy.mark}
+        <span className={styles.readCheck} aria-hidden="true">{isRead ? '✓' : ''}</span>
+        <span>{isRead ? copy.read : copy.mark}</span>
       </button>
       {authError && <div className={styles.readError} role="alert"><span>{copy.error}</span><Link href="/sign-in">{copy.signIn}</Link></div>}
     </div>

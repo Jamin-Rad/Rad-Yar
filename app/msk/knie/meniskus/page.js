@@ -4220,7 +4220,8 @@ function ReadButton({ isRead, onClick, authError, className = '' }) {
   return (
     <div className={`${styles.readControl} ${className}`.trim()}>
       <button type="button" className={`${styles.doneBtn} ${isRead ? styles.doneBtnActive : ''}`} onClick={onClick}>
-        {isRead ? labels.active : labels.btn}
+        <span className={styles.readCheck} aria-hidden="true">{isRead ? '✓' : ''}</span>
+        <span>{isRead ? labels.active : labels.btn}</span>
       </button>
       {authError && (
         <div className={styles.readError} role="alert">

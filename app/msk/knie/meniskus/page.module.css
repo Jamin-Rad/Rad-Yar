@@ -1339,22 +1339,40 @@
 .doneBtn {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 13px;
   width: 100%;
-  min-height: 50px;
-  padding: 12px 18px;
-  border: 1px solid rgba(22, 163, 74, .30);
-  border-radius: 17px;
-  background: linear-gradient(135deg, rgba(240, 253, 244, .96), rgba(255, 255, 255, .98));
-  color: #166534;
+  min-height: 56px;
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--bg-card);
+  color: var(--text);
   cursor: pointer;
   font-family: inherit;
-  text-align: center;
+  text-align: start;
   font-size: 14px;
-  font-weight: 900;
-  box-shadow: 0 8px 20px rgba(22, 163, 74, .08);
+  font-weight: 800;
+  box-shadow: 0 8px 24px var(--shadow-soft);
+  transition: border-color .18s ease, background .18s ease, color .18s ease, transform .18s ease;
 }
-.doneBtnActive { background: linear-gradient(135deg, #dcfce7, #f0fdf4); border-color: rgba(22, 163, 74, .50); }
+.doneBtn:hover { border-color: rgba(22, 163, 74, .42); transform: translateY(-1px); }
+.doneBtnActive { background: rgba(22, 163, 74, .08); border-color: rgba(22, 163, 74, .42); color: #15803d; }
+.readCheck {
+  display: grid;
+  width: 25px;
+  height: 25px;
+  flex: 0 0 25px;
+  place-items: center;
+  border: 2px solid #94a3b8;
+  border-radius: 8px;
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 950;
+  transition: background .18s ease, border-color .18s ease;
+}
+.doneBtnActive .readCheck { border-color: #16a34a; background: #16a34a; }
 .readIcon {
   display: grid;
   width: 36px;
@@ -1400,7 +1418,8 @@
   .readBar { padding: 0 14px; }
   .readBar .readControl { max-width: none; }
 }
-:global(html[data-theme='dark']) .doneBtn { background: rgba(20, 83, 45, .20); border-color: rgba(74, 222, 128, .25); color: #86efac; }
+:global(html[data-theme='dark']) .doneBtn { background: var(--bg-card); border-color: rgba(148,163,184,.20); color: var(--text); }
+:global(html[data-theme='dark']) .doneBtnActive { background: rgba(22,163,74,.12); border-color: rgba(74,222,128,.32); color: #86efac; }
 :global(html[data-theme='dark']) .readText small { color: #a7b4c8; }
 :global(html[data-theme='dark']) .readError { background: rgba(127, 29, 29, .22); border-color: rgba(248, 113, 113, .28); color: #fecaca; }
 :global(html[data-theme='dark']) .mobileTocBar {
