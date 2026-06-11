@@ -70,8 +70,73 @@ function MskChapterIcon({ id, className }) {
   return <svg {...common}>{icons[id] || icons['msk-anatomie']}</svg>
 }
 
+function ThoraxChapterIcon({ id, className }) {
+  const common = {
+    viewBox: '0 0 48 48',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    className,
+    'aria-hidden': true,
+  }
+
+  const icons = {
+    'thorax-anatomie': <><path d="M24 6v10"/><path d="M24 16c-2 2-4 3-4 3M24 16c2 2 4 3 4 3"/><path d="M20 18c-6 1-9 7-9 14 0 6 3 10 7 10 3 0 4-3 4-7V18Z"/><path d="M28 18c6 1 9 7 9 14 0 6-3 10-7 10-3 0-4-3-4-7V18Z"/></>,
+    'thorax-grundlagen': <><rect x="9" y="6" width="30" height="36" rx="2"/><path d="M24 12v5"/><path d="M19 17c-4 1-6 6-6 11 0 4 2 8 5 8"/><path d="M29 17c4 1 6 6 6 11 0 4-2 8-5 8"/><path d="M14 26h6M28 26h6"/></>,
+    'thorax-lunge': <><path d="M24 8c-2 3-9 5-11 12-2 8 0 20 7 20 4 0 5-4 5-9V8Z"/><path d="M24 8c2 3 9 5 11 12 2 8 0 20-7 20-4 0-5-4-5-9V8Z"/><circle cx="18" cy="24" r="1.4" fill="currentColor" stroke="none"/><circle cx="29" cy="20" r="1.4" fill="currentColor" stroke="none"/><circle cx="30" cy="30" r="1.4" fill="currentColor" stroke="none"/><circle cx="17" cy="33" r="1.4" fill="currentColor" stroke="none"/></>,
+    'thorax-atemwege': <><path d="M24 6v8"/><path d="M24 14 18 20M24 14l6 6"/><path d="M18 20 14 26M18 20l3 6"/><path d="M30 20 34 26M30 20l-3 6"/><path d="M14 26 11 31M14 26l3 5"/><path d="M21 26 19 32M21 26l3 5"/><path d="M27 26 25 32M27 26l3 5"/><path d="M34 26 32 31M34 26l3 5"/></>,
+    'thorax-infektionen': <><path d="M22 8c-7 1-13 8-13 18 0 8 4 14 10 14 5 0 6-5 6-11V8Z"/><circle cx="30" cy="20" r="3"/><path d="M30 14v2m0 8v2m-5-7-1.4-1.4m11.8 11.8-1.4-1.4m0-9.4 1.4-1.4m-11.8 11.8 1.4-1.4"/><circle cx="27" cy="32" r="1.6" fill="currentColor" stroke="none"/></>,
+    'thorax-pleura': <><path d="M24 7c-8 1-13 8-13 17 0 9 5 16 13 16s13-7 13-16c0-9-5-16-13-17Z"/><path d="M24 11c-6 1-10 6-10 13 0 7 4 12 10 12s10-5 10-12c0-7-4-12-10-13Z"/><path d="M14 30h20"/></>,
+    'thorax-mediastinum': <><path d="M10 12c-3 4-4 10-4 14 0 8 3 14 8 14"/><path d="M38 12c3 4 4 10 4 14 0 8-3 14-8 14"/><rect x="18" y="8" width="12" height="32" rx="3"/><ellipse cx="24" cy="22" rx="3.5" ry="5"/></>,
+    'thorax-tumoren': <><path d="M21 8c-7 1-13 8-13 18 0 8 4 14 10 14 4 0 6-3 6-8V8Z"/><circle cx="17" cy="22" r="2.5" fill="currentColor" stroke="none"/><circle cx="30" cy="31" r="6"/><path d="m34.5 35.5 4.5 4.5"/></>,
+    'thorax-gefaesse-pulmonal': <><path d="M24 6v12"/><path d="M24 18 14 38"/><path d="M24 18 34 38"/><ellipse cx="29" cy="29" rx="3" ry="5" transform="rotate(35 29 29)" fill="currentColor" stroke="none"/></>,
+    'thorax-aorta': <><path d="M12 40V24c0-9 5-16 12-16s12 7 12 16v16"/><path d="M19 8 17 4M24 7V3M29 8l2-4"/></>,
+    'thorax-kardio': <><path d="M24 40C10 30 6 20 12 14c4-4 10-3 12 3 2-6 8-7 12-3 6 6 2 16-12 26Z"/><path d="M9 25h6l2-6 4 11 3-8 2 3h7"/></>,
+    'thorax-thoraxwand': <><path d="M10 14c6-2 22-2 28 0M10 20c6-2 22-2 28 0M10 26c6-2 22-2 28 0"/><path d="M9 30c5 7 11 10 15 10s10-3 15-10"/></>,
+    'thorax-trauma': <><path d="M9 16c6-2 22-2 28 0M9 22c6-2 22-2 28 0M9 28c6-2 22-2 28 0"/><path d="M21 11 18 18l5 2-4 9"/><path d="m32 9 2-3m1 5 4-1m-3 4 3 3"/></>,
+  }
+
+  return <svg {...common}>{icons[id] || icons['thorax-anatomie']}</svg>
+}
+
+function AbdomenChapterIcon({ id, className }) {
+  const common = {
+    viewBox: '0 0 48 48',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    className,
+    'aria-hidden': true,
+  }
+
+  const icons = {
+    'abdomen-anatomie': <><path d="M24 5c-11 0-16 8-16 18 0 13 7 21 16 21s16-8 16-21c0-10-5-18-16-18Z"/><path d="M11 18c4-3 9-2 11 2"/><path d="M26 18c3-4 8-5 11-1"/><path d="M14 28c2 3 5 4 7 2 2-2 5-1 7 1 2-2 5-3 7-1"/></>,
+    'abdomen-grundlagen': <><path d="M18 6h12v9c0 3-2 5-6 5s-6-2-6-5V6Z"/><path d="M24 20v6"/><path d="M16 30c2-2 5-3 8-3s6 1 8 3"/><path d="M12 35c4-4 9-6 12-6s8 2 12 6"/></>,
+    'abdomen-leber': <><path d="M6 20c1-7 7-12 16-12 11 0 20 6 20 14 0 7-6 11-15 11-6 0-10-1-14-4-4-3-7-5-7-9Z"/><path d="M30 26c3 0 6 2 6 6s-3 5-6 4"/></>,
+    'abdomen-gallenwege': <><ellipse cx="18" cy="13" rx="6" ry="8"/><path d="M14 7c-3-2-6-2-8 0M22 7c3-2 6-2 8 0"/><path d="M18 21v6c0 4 3 6 8 6"/><path d="M26 33c3 0 6 2 8 5"/></>,
+    'abdomen-pankreas': <><path d="M6 26c2-6 10-10 20-9s18 5 21 1c1 4-3 9-12 10-10 1-22 0-29-2Z"/><path d="M12 23c8 2 18 2 26-1"/></>,
+    'abdomen-milz': <><path d="M31 8c-10 2-19 10-19 20 0 8 6 12 13 10 8-2 12-10 12-20 0-6-2-9-6-10Z"/><path d="M9 16c4-2 8-2 12 0M9 22c4-2 8-2 12 0"/></>,
+    'abdomen-gi-trakt': <><path d="M17 6c-5 2-7 7-6 11 1 5 6 8 11 6 5-2 8-6 7-10-1-3-4-6-7-7"/><path d="M22 23c-6 1-11 5-11 11 0 6 5 10 12 10 5 0 10-3 10-8 0-3-2-6-6-6-4 0-7 2-7 6"/></>,
+    'abdomen-niere': <><path d="M28 6c-9 0-15 7-15 17 0 11 6 19 15 19 7 0 11-5 11-12 0-5-3-7-6-9-1-1-1-3 0-5 2-4 1-10-5-10Z"/><path d="M30 42v3c0 2 2 3 4 3"/></>,
+    'abdomen-nebenniere': <><path d="M27 15c-7 0-12 6-12 14 0 9 5 15 12 15 6 0 9-4 9-10 0-4-2-6-5-7-1-1-1-2 0-4 1-3 1-8-4-8Z"/><path d="M20 9c2-3 6-4 9-2 2 1 3 4 1 6-3-1-7-1-10-1Z"/></>,
+    'abdomen-retroperitoneum': <><circle cx="24" cy="25" r="18"/><rect x="21" y="8" width="6" height="9" rx="2"/><circle cx="20" cy="27" r="3"/><circle cx="29" cy="27" r="3"/><circle cx="15" cy="35" r="1.6" fill="currentColor" stroke="none"/><circle cx="33" cy="36" r="1.6" fill="currentColor" stroke="none"/></>,
+    'abdomen-gefaesse': <><path d="M19 4v28M19 32 11 44M19 32l8 12"/><path d="M29 4v28M29 32l8 12"/><path d="M19 14h-6M19 23h6"/></>,
+    'abdomen-peritoneum': <><path d="M24 6c-10 1-16 9-16 18 0 10 7 18 16 18s16-8 16-18c0-9-6-17-16-18Z"/><path d="M24 11c-7 1-12 7-12 13 0 7 5 13 12 13s12-6 12-13c0-6-5-12-12-13Z"/><path d="M14 31c4 2 16 2 20 0"/></>,
+    'abdomen-hernien': <><path d="M6 14h14M28 14h14"/><path d="M18 14c0 4 2 6 6 6s6-2 6-6"/><path d="M19 20c-4 2-6 6-4 10 2 3 6 4 9 2 3-2 4-6 2-9"/></>,
+    'abdomen-trauma': <><path d="M24 6c-9 0-15 6-15 16 0 12 6 20 15 20s15-8 15-20c0-10-6-16-15-16Z"/><path d="m18 16 4 8-3 2 5 8"/><path d="m32 10 2-3m1 5 4-1m-3 4 3 3"/></>,
+  }
+
+  return <svg {...common}>{icons[id] || icons['abdomen-anatomie']}</svg>
+}
+
 function ChapterIcon({ fachId, kapitel, className }) {
   if (fachId === 'msk') return <MskChapterIcon id={kapitel.id} className={className} />
+  if (fachId === 'thorax') return <ThoraxChapterIcon id={kapitel.id} className={className} />
+  if (fachId === 'abdomen') return <AbdomenChapterIcon id={kapitel.id} className={className} />
   return <span className={className}>{kapitel.icon}</span>
 }
 
