@@ -340,7 +340,7 @@ export const CURRICULUM = [
   },
   {
     id: 'gefaesse-ir',
-    title: { de: 'Gefäße & Interventionelle Radiologie', en: 'Vascular & Interventional Radiology', fa: 'عروق و رادیولوژی مداخله‌ای' },
+    title: { de: 'Gefäße', en: 'Vascular', fa: 'عروق' },
     icon: '🩸', color: '#ef4444',
     bg: 'linear-gradient(135deg,#2a0808,#4a1414)',
     bodyZone: 'Gefäße',

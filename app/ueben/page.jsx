@@ -11,13 +11,13 @@ import styles from './page.module.css'
 const FACH_DISPLAY = {
   de: { gehirn:'Kopf', wirbelsaeule:'Wirbelsäule', hals:'Hals', thorax:'Thorax',
         mamma:'Mamma', abdomen:'Abdomen', 'becken-f':'Becken – Frau', 'becken-m':'Becken – Mann',
-        msk:'Muskuloskelettales', technik:'Technik & Physik', 'gefaesse-ir':'Gefäße & Interventionelle Radiologie' },
+        msk:'Muskuloskelettales', technik:'Technik & Physik', 'gefaesse-ir':'Gefäße' },
   en: { gehirn:'Head', wirbelsaeule:'Spine', hals:'Neck', thorax:'Thorax',
         mamma:'Breast', abdomen:'Abdomen', 'becken-f':'Pelvis – Female', 'becken-m':'Pelvis – Male',
-        msk:'Musculoskeletal', technik:'Physics & Tech', 'gefaesse-ir':'Vascular & Interventional Radiology' },
+        msk:'Musculoskeletal', technik:'Physics & Tech', 'gefaesse-ir':'Vascular' },
   fa: { gehirn:'سر', wirbelsaeule:'ستون فقرات', hals:'گردن', thorax:'توراکس',
         mamma:'پستان', abdomen:'شکم', 'becken-f':'لگن – زنان', 'becken-m':'لگن – مردان',
-        msk:'اسکلتی-عضلانی', technik:'تکنیک و فیزیک', 'gefaesse-ir':'عروق و رادیولوژی مداخله‌ای' },
+        msk:'اسکلتی-عضلانی', technik:'تکنیک و فیزیک', 'gefaesse-ir':'عروق' },
 }
 
 const UE = {
