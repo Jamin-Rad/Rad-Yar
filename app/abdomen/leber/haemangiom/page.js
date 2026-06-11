@@ -864,8 +864,8 @@ export default function LeberHaemangiomPage() {
             <h1>{copy.title}</h1>
             <p>{copy.subtitle}</p>
             <div className={styles.actions}>
-              <Link href={withLang('/ueben/quiz?fach=abdomen&n=10&themen=haemangiom')} className={styles.actionBtn}>🎯 {copy.actionMcq}</Link>
-              <Link href={withLang('/flashcards/haemangiom')} className={styles.actionBtn}>🧠 {copy.actionFlash}</Link>
+              <Link href={withLang(`/ueben/quiz?fach=abdomen&n=10&themen=haemangiom&from=${encodeURIComponent(withLang('/abdomen/leber/haemangiom'))}`)} className={styles.actionBtn}>🎯 {copy.actionMcq}</Link>
+              <Link href={withLang(`/flashcards/haemangiom?from=${encodeURIComponent(withLang('/abdomen/leber/haemangiom'))}`)} className={styles.actionBtn}>🧠 {copy.actionFlash}</Link>
             </div>
           </div>
           <div className={styles.heroStats}>

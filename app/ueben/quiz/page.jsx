@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useMemo, Suspense } from 'react'
+import { useState, useEffect, useMemo, useRef, Suspense } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -118,6 +118,12 @@ function gradeColor(score, total) {
   return '#ef4444'
 }
 
+function formatTime(seconds) {
+  const m = Math.floor(seconds / 60)
+  const s = seconds % 60
+  return `${m}:${String(s).padStart(2, '0')}`
+}
+
 function QuizContent() {
   const { lang } = useLanguage()
   const searchParams = useSearchParams()
@@ -128,6 +134,8 @@ function QuizContent() {
   const fachParam   = searchParams.get('fach') || ''
   const themenParam = searchParams.get('themen') || ''
   const nParam      = parseInt(searchParams.get('n') || '10', 10)
+  const fromParam   = searchParams.get('from') || ''
+  const backHref    = fromParam || '/ueben'
 
   const fachIds   = fachParam.split(',').filter(Boolean)
   const themenIds = themenParam.split(',').filter(Boolean)
@@ -143,6 +151,23 @@ function QuizContent() {
   const [answers,  setAnswers]  = useState([])
   const [phase,    setPhase]    = useState('quiz') // 'quiz' | 'result'
   const [filter,   setFilter]   = useState('all')
+
+  // Zeitlimit (optional): 60 Sekunden pro Frage für den ganzen Durchgang
+  const timed = searchParams.get('timed') === '1'
+  const totalSeconds = total * 60
+  const [timeLeft, setTimeLeft] = useState(totalSeconds)
+  const timeUpRef = useRef(false)
+
+  useEffect(() => {
+    setTimeLeft(totalSeconds)
+    timeUpRef.current = false
+  }, [totalSeconds])
+
+  useEffect(() => {
+    if (!timed || phase !== 'quiz' || total === 0) return
+    const interval = setInterval(() => setTimeLeft(t => Math.max(0, t - 1)), 1000)
+    return () => clearInterval(interval)
+  }, [timed, phase, total])
 
   const q = questions[current]
   const isLast = current === total - 1
@@ -187,9 +212,23 @@ function QuizContent() {
     setChecked(false)
   }
 
+  // Zeit abgelaufen → Durchgang sofort beenden
+  useEffect(() => {
+    if (!timed || phase !== 'quiz' || timeUpRef.current || timeLeft > 0 || total === 0) return
+    timeUpRef.current = true
+    const finalAnswers = checked && q
+      ? [...answers.filter(a => a.qId !== q.id), { qId: q.id, selected, correct: selected === q.correct }]
+      : answers
+    saveMcqResult(finalAnswers)
+    setAnswers(finalAnswers)
+    setPhase('result')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [timeLeft, timed, phase])
+
   const handleRestart = () => {
     setCurrent(0); setSelected(null); setChecked(false)
     setAnswers([]); setPhase('quiz'); setFilter('all')
+    setTimeLeft(totalSeconds); timeUpRef.current = false
   }
 
   // ── NO QUESTIONS ──────────────────────────────
@@ -199,7 +238,7 @@ function QuizContent() {
         <div className={styles.emptyIcon}>🔍</div>
         <h2 className={styles.emptyTitle}>{ui.noQ}</h2>
         <p className={styles.emptySub}>{ui.noQSub}</p>
-        <Link href="/ueben" className={styles.emptyBtn}>{ui.backSetup}</Link>
+        <Link href={backHref} className={styles.emptyBtn}>{ui.backSetup}</Link>
       </div>
     </div>
   )
@@ -214,7 +253,7 @@ function QuizContent() {
     return (
       <div className={styles.page}>
         <div className={styles.topBar}>
-          <Link href="/ueben" className={styles.back}>{ui.back}</Link>
+          <Link href={backHref} className={styles.back}>{ui.back}</Link>
           <span className={styles.topFach}>{fachLabel}</span>
         </div>
         <div className={styles.resultWrap}>
@@ -259,7 +298,7 @@ function QuizContent() {
 
           <div className={styles.resultActions}>
             <button className={styles.restartBtn} onClick={handleRestart}>{ui.restartBtn}</button>
-            <Link href="/ueben" className={styles.backBtn}>{ui.backSetup}</Link>
+            <Link href={backHref} className={styles.backBtn}>{ui.backSetup}</Link>
           </div>
         </div>
       </div>
@@ -274,8 +313,13 @@ function QuizContent() {
   return (
     <div className={styles.page}>
       <div className={styles.topBar}>
-        <Link href="/ueben" className={styles.back}>{ui.back}</Link>
+        <Link href={backHref} className={styles.back}>{ui.back}</Link>
         <span className={styles.topFach}>{fachLabel}</span>
+        {timed && (
+          <span className={`${styles.timerPill} ${timeLeft <= 30 ? styles.timerPillLow : ''}`}>
+            ⏱ {formatTime(timeLeft)}
+          </span>
+        )}
         <div className={styles.progressWrap}>
           <div className={styles.progressTrack}>
             <div className={styles.progressFill} style={{ width: `${progressPct}%` }}/>

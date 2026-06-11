@@ -4489,11 +4489,11 @@ export default function MeniskusPage() {
             <h1>{copy.title}</h1>
             <p>{copy.subtitle}</p>
             <div className={styles.heroActions}>
-              <Link href={withLang('/ueben/quiz?fach=msk&n=10&themen=meniskus')} className={`${styles.learnAction} ${styles.learnActionMcq}`}>
+              <Link href={withLang(`/ueben/quiz?fach=msk&n=10&themen=meniskus&from=${encodeURIComponent(withLang('/msk/knie/meniskus'))}`)} className={`${styles.learnAction} ${styles.learnActionMcq}`}>
                 <span>🎯</span>
                 <span>{copy.actionMcq}</span>
               </Link>
-              <Link href={withLang('/flashcards/meniskus')} className={`${styles.learnAction} ${styles.learnActionFlash}`}>
+              <Link href={withLang(`/flashcards/meniskus?from=${encodeURIComponent(withLang('/msk/knie/meniskus'))}`)} className={`${styles.learnAction} ${styles.learnActionFlash}`}>
                 <span>🧠</span>
                 <span>{copy.actionFlash}</span>
               </Link>
@@ -4655,7 +4655,7 @@ export default function MeniskusPage() {
           <Section id="fallbeispiele" eyebrow="07" title={copy.cases.title} lead={copy.cases.lead} defaultOpen={!isMobile}>
             <div className={styles.caseGrid}>
               {copy.cases.items.map(item => (
-                <a key={item.title} href="/faelle?thema=meniskus" className={styles.caseCardLink}>
+                <a key={item.title} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}>
                   <img className={styles.caseImage} src={item.img} alt={item.title} />
                   <div className={styles.caseBody}>
                     <div className={styles.caseLabelRow}>

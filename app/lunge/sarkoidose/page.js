@@ -1077,8 +1077,8 @@ export default function SarkoidosePage() {
             <h1>{copy.title}</h1>
             <p>{copy.subtitle}</p>
             <div className={styles.heroActions}>
-              <Link href={withLang('/ueben/quiz?fach=thorax&n=10&themen=sarkoidose')} className={styles.actionBtn}>🎯 {copy.actionMcq}</Link>
-              <Link href={withLang('/flashcards/sarkoidose')} className={styles.actionBtn}>🧠 {copy.actionFlash}</Link>
+              <Link href={withLang(`/ueben/quiz?fach=thorax&n=10&themen=sarkoidose&from=${encodeURIComponent(withLang('/lunge/sarkoidose'))}`)} className={styles.actionBtn}>🎯 {copy.actionMcq}</Link>
+              <Link href={withLang(`/flashcards/sarkoidose?from=${encodeURIComponent(withLang('/lunge/sarkoidose'))}`)} className={styles.actionBtn}>🧠 {copy.actionFlash}</Link>
             </div>
           </div>
           <div className={styles.heroStats}>

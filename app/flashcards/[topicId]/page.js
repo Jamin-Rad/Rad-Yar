@@ -138,6 +138,8 @@ export default function FlashcardReviewPage({ params, searchParams }) {
   const allCards = useMemo(() => FLASHCARDS.filter(c => c.topicId === topicId), [topicId])
   const practiceMode = searchParams?.mode === 'practice'
   const boxFilter = searchParams?.box ? Number(searchParams.box) : null
+  const fromParam = typeof searchParams?.from === 'string' ? searchParams.from : null
+  const backHref = fromParam || (lang === 'de' ? '/flashcards' : `/flashcards?lang=${lang}`)
 
   const [leitnerState, setLeitnerState] = useState({})
   const [cards, setCards] = useState([])
@@ -233,7 +235,7 @@ export default function FlashcardReviewPage({ params, searchParams }) {
             <div className={styles.doneStat}><strong>{stats.wrong}</strong><span>{t.wrong}</span></div>
             <div className={styles.doneStat}><strong>{stats.correct + stats.wrong}</strong><span>{t.total}</span></div>
           </div>
-          <Link href={lang === 'de' ? '/flashcards' : `/flashcards?lang=${lang}`} className={styles.backLink}>{t.backLink}</Link>
+          <Link href={backHref} className={styles.backLink}>{t.backLink}</Link>
         </div>
       </div>
     </div>
@@ -246,7 +248,7 @@ export default function FlashcardReviewPage({ params, searchParams }) {
           <span className={styles.doneEmoji}>🗂️</span>
           <h1 className={styles.doneTitle}>{t.emptyTitle}</h1>
           <p className={styles.doneSub}>{t.emptySub}</p>
-          <Link href={lang === 'de' ? '/flashcards' : `/flashcards?lang=${lang}`} className={styles.backLink}>{t.backLink}</Link>
+          <Link href={backHref} className={styles.backLink}>{t.backLink}</Link>
         </div>
       </div>
     </div>
@@ -261,7 +263,7 @@ export default function FlashcardReviewPage({ params, searchParams }) {
       <AuthBanner lang={lang} />
 
       <header className={styles.topBar}>
-        <Link href={lang === 'de' ? '/flashcards' : `/flashcards?lang=${lang}`} className={styles.backBtn}>{t.back}</Link>
+        <Link href={backHref} className={styles.backBtn}>{t.back}</Link>
         <div className={styles.topCenter}>
           <span className={styles.topicName}>{topic.title?.[lang] || topic.title?.de}</span>
           <span className={styles.cardCount}>{t.cardOf(index + 1, cards.length)}</span>

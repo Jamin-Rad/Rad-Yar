@@ -28,7 +28,8 @@ const UE = {
         questions:'Fragen', topics:'Themen', selected:'Ausgewählt',
         noFach:'Wähle zuerst eine verfügbare Körperregion.', noTopics:'Für diesen Bereich sind noch keine Fragen verfügbar.',
         wholeChapter:'Ganzes Kapitel wählen', chapterSelected:'Ganzes Kapitel ausgewählt',
-        random:'Zufällige Auswahl', available:'Fragen verfügbar' },
+        random:'Zufällige Auswahl', available:'Fragen verfügbar',
+        timedLabel:'Mit Zeitlimit üben', timedHint:'60 Sekunden pro Frage – die Zeit läuft für den ganzen Durchgang.' },
   en: { home:'RadYar', crumb:'Practice',
         title:'MCQ Training', sub:'Choose one or more body regions, then topics and number of questions.',
         step1:'Choose body region(s)', step2:'Choose topics', step3:'Number of questions',
@@ -36,7 +37,8 @@ const UE = {
         questions:'questions', topics:'topics', selected:'Selected',
         noFach:'Choose a body region first.', noTopics:'No topics are available for this area yet.',
         wholeChapter:'Select whole chapter', chapterSelected:'Whole chapter selected',
-        random:'Random selection', available:'Questions available' },
+        random:'Random selection', available:'Questions available',
+        timedLabel:'Practice with time limit', timedHint:'60 seconds per question – the timer runs for the whole session.' },
   fa: { home:'RadYar', crumb:'تمرین',
         title:'تمرین MCQ', sub:'یک یا چند ناحیه بدن انتخاب کنید، سپس موضوعات و تعداد سؤالات.',
         step1:'انتخاب ناحیه(ها)', step2:'انتخاب موضوعات', step3:'تعداد سؤالات',
@@ -44,7 +46,8 @@ const UE = {
         questions:'سؤال', topics:'موضوع', selected:'انتخاب شده',
         noFach:'ابتدا یک ناحیه انتخاب کنید.', noTopics:'هنوز موضوعی برای این بخش موجود نیست.',
         wholeChapter:'انتخاب کل فصل', chapterSelected:'کل فصل انتخاب شده',
-        random:'انتخاب تصادفی', available:'سؤال موجود است' },
+        random:'انتخاب تصادفی', available:'سؤال موجود است',
+        timedLabel:'تمرین با محدودیت زمانی', timedHint:'۶۰ ثانیه برای هر سؤال — زمان برای کل آزمون اجرا می‌شود.' },
 }
 
 const ANZAHL_OPTIONS = [5, 10, 25, 50]
@@ -71,6 +74,7 @@ export default function UebenPage() {
   const [selFach, setSelFach]     = useState(new Set())   // multiple fach
   const [selThemen, setSelThemen] = useState(new Set())   // selected thema ids
   const [anzahl, setAnzahl]       = useState(10)
+  const [timed, setTimed]         = useState(false)
   const [openTopicGroups, setOpenTopicGroups] = useState(new Set())
 
   const allThemenFromSel = useMemo(() => {
@@ -123,6 +127,7 @@ export default function UebenPage() {
       n: String(Math.min(anzahl, availableQuestions)),
       themen: [...selThemen].join(','),
     })
+    if (timed) params.set('timed', '1')
     router.push(`/ueben/quiz?${params.toString()}`)
   }
 
@@ -263,6 +268,23 @@ export default function UebenPage() {
                 </button>
               ))}
             </div>
+          </section>
+
+          {/* TIMER TOGGLE */}
+          <section className={styles.section}>
+            <button
+              type="button"
+              className={`${styles.timedToggle} ${timed ? styles.timedToggleActive : ''}`}
+              onClick={() => setTimed(v => !v)}
+              role="switch"
+              aria-checked={timed}
+            >
+              <span className={styles.timedSwitch}><span className={styles.timedKnob} /></span>
+              <span className={styles.timedTextWrap}>
+                <span className={styles.timedLabel}>⏱ {t.timedLabel}</span>
+                <small className={styles.timedHint}>{t.timedHint}</small>
+              </span>
+            </button>
           </section>
         </div>
 
