@@ -280,7 +280,11 @@ export default function Hero() {
   const hovFach = hovered ? FACH_DATA[hovered] : null
   const hovName = hovered ? (FACH_NAMES[lang]?.[hovered]||FACH_NAMES.de[hovered]) : null
 
-  const hintLabel  = lang==='fa'?'یک ناحیه را انتخاب کنید':lang==='en'?'Select a body region':'Körperregion auswählen'
+  const hintLabel = lang === 'fa'
+    ? 'یک ناحیه از بدن را روی تصویر انتخاب کن'
+    : lang === 'en'
+      ? 'Choose a body region on the image'
+      : 'Wähle auf dem Bild eine Körperregion aus'
 
   const [popup, setPopup] = useState(null)
 

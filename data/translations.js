@@ -19,7 +19,7 @@ export const translations = {
     section2Title: 'Alle Spezialgebiete im Überblick',
     section2Sub: 'Wähle ein Fachgebiet und starte direkt mit Lernmodul, Fällen und MCQs.',
     fachStatus: 'In Vorbereitung',
-    footerCopy: '© 2025 RadYar · Your Guide in Radiology Education',
+    footerCopy: '© 2026 RadYar · Your Guide in Radiology Education',
     pillars: [
       {
         icon: '🫁',
@@ -82,7 +82,7 @@ export const translations = {
     section2Title: 'All Specialties at a Glance',
     section2Sub: 'Choose a specialty and start directly with learning modules, cases and MCQs.',
     fachStatus: 'Coming Soon',
-    footerCopy: '© 2025 RadYar · Your Guide in Radiology Education',
+    footerCopy: '© 2026 RadYar · Your Guide in Radiology Education',
     pillars: [
       {
         icon: '🫁',
@@ -145,7 +145,7 @@ export const translations = {
     section2Title: 'تمام تخصص‌ها در یک نگاه',
     section2Sub: 'یک تخصص را انتخاب کنید و مستقیماً با ماژول یادگیری، موارد بالینی و MCQ شروع کنید.',
     fachStatus: 'در حال آماده‌سازی',
-    footerCopy: '© ۲۰۲۵ RadYar · راهنمای شما در آموزش رادیولوژی',
+    footerCopy: '© ۲۰۲۶ RadYar · راهنمای شما در آموزش رادیولوژی',
     pillars: [
       {
         icon: '🫁',

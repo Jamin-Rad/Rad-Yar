@@ -33,14 +33,6 @@ const FALL_REGIONS = [
   { id: 'technik', color: '#64748b', name: { de: 'Technik & Physik', en: 'Physics & Tech', fa: 'تکنیک و فیزیک' } },
 ]
 
-const PROFILE_CTA = {
-  de: { label: 'Dein Lernpfad', title: 'Klug lernen mit gezielter Wiederholung', desc: 'Sieh, welche Kapitel du schon bearbeitet hast, welche Flashcards fällig sind und wo du heute weitermachst.', btn: 'Zum Profil →' },
-  en: { label: 'Your Learning Path', title: 'Study smart with targeted repetition', desc: 'See which chapters you have already worked through, which flashcards are due and where to continue today.', btn: 'Go to Profile →' },
-  fa: { label: 'مسیر یادگیری شما', title: 'یادگیری هوشمند با تکرار هدفمند', desc: 'ببین کدام فصل‌ها را خوانده‌ای، کدام فلش‌کارت‌ها سررسید شده‌اند و امروز از کجا ادامه می‌دهی.', btn: 'رفتن به پروفایل ←' },
-}
-
-
-
 const LATEST_COPY = {
   de: {
     label: 'Neu auf RadYar',
@@ -139,7 +131,6 @@ export default function LernPfade() {
   const router = useRouter()
   const [modal, setModal] = useState(null) // null | 'fall'
   const fm = FALL_MODAL[lang] || FALL_MODAL.de
-  const cta = PROFILE_CTA[lang] || PROFILE_CTA.de
   const latest = LATEST_COPY[lang] || LATEST_COPY.de
   const latestItems = buildLatestItems(lang, latest)
   const fallTopicItems = buildFallTopicItems(lang)
@@ -186,17 +177,6 @@ export default function LernPfade() {
           )
         })}
       </div>
-
-      {/* ── PROFIL CTA ── */}
-      <Link href="/profil" className={styles.profileCta}>
-        <div className={styles.profileCtaIcon}>📊</div>
-        <div className={styles.profileCtaBody}>
-          <div className={styles.profileCtaLabel}>{cta.label}</div>
-          <div className={styles.profileCtaTitle}>{cta.title}</div>
-          <div className={styles.profileCtaDesc}>{cta.desc}</div>
-        </div>
-        <div className={styles.profileCtaBtn}>{cta.btn}</div>
-      </Link>
 
       <div className={styles.latestBox}>
         <div className={styles.latestHeader}>
