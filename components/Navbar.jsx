@@ -1,13 +1,11 @@
 'use client'
 import Link from 'next/link'
-import dynamic from 'next/dynamic'
 import { useState } from 'react'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useTheme } from '@/providers/ThemeProvider'
 import SearchBar from './SearchBar'
+import ClerkNavActions from './ClerkNavActions'
 import styles from './Navbar.module.css'
-
-const ClerkNavActions = dynamic(() => import('./ClerkNavActions'), { ssr: false })
 
 function HexLogo({ size = 32 }) {
   return (
@@ -60,6 +58,8 @@ export default function Navbar() {
   const { lang, texts, setLang } = useLanguage()
   const { theme, toggleTheme } = useTheme()
   const [search, setSearch] = useState(false)
+  const [authReady, setAuthReady] = useState(false)
+  const signInLabel = lang === 'fa' ? 'ورود' : lang === 'en' ? 'Sign in' : 'Anmelden'
 
   const themeLabel = theme === 'dark'
     ? (lang === 'fa' ? 'تم روشن' : lang === 'en' ? 'Light theme' : 'Helles Theme')
@@ -79,7 +79,8 @@ export default function Navbar() {
 
         <div className={styles.right} data-lang={lang}>
           <div className={styles.authSlot}>
-            <ClerkNavActions lang={lang} />
+            {!authReady && <Link href="/sign-in" className={styles.signInBtn}>{signInLabel}</Link>}
+            <ClerkNavActions lang={lang} onReady={() => setAuthReady(true)} />
           </div>
 
           <div className={styles.langToggle} dir="ltr">

@@ -145,6 +145,8 @@
 .signInBtn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  min-height: 38px;
   padding: 6px 14px;
   border-radius: 999px;
   font-family: var(--font-manrope, sans-serif);
@@ -174,7 +176,7 @@
   .right { gap: 5px; }
   .langToggle { padding-inline: 3px; }
   .langBtn { padding-inline: 6px; }
-  .signInBtn { padding: 5px 10px; font-size: 11px; }
+  .signInBtn { min-width: 44px; min-height: 44px; padding: 7px 10px; font-size: 11px; }
   .profileLink { padding-right: 3px; }
   .profileCopy { display: none; }
 }

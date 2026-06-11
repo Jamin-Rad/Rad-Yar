@@ -5,6 +5,7 @@
 
 .page {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,6 +15,8 @@
     radial-gradient(circle at 85% 80%, rgba(26,32,81,0.35), transparent 28rem),
     linear-gradient(160deg, #07111f 0%, #0d1b2a 50%, #080e1c 100%);
   font-family: var(--font-main);
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
 }
 
 /* ── CARD ──────────────────────────────────────────── */
@@ -344,6 +347,23 @@
 
 /* ── MOBILE ────────────────────────────────────────── */
 @media (max-width: 480px) {
-  .card    { padding: 32px 22px; border-radius: 24px; }
+  .page {
+    min-height: 100dvh;
+    align-items: flex-start;
+    justify-content: center;
+    padding: max(16px, env(safe-area-inset-top)) 12px max(24px, env(safe-area-inset-bottom));
+  }
+  .card {
+    max-width: none;
+    min-height: calc(100dvh - max(32px, env(safe-area-inset-top)) - max(40px, env(safe-area-inset-bottom)));
+    padding: 30px 20px 26px;
+    border-radius: 24px;
+  }
+  .logoRow { margin-bottom: 22px; }
+  .sub { margin-bottom: 22px; }
+  .input,
+  .select { min-height: 48px; font-size: 16px; }
+  .socialBtn,
+  .submitBtn { min-height: 48px; }
   .heading { font-size: 26px; }
 }

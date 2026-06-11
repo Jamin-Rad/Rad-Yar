@@ -1,7 +1,8 @@
 'use client'
 
+import { useEffect } from 'react'
 import Link from 'next/link'
-import { SignedIn, SignedOut, useUser } from '@clerk/nextjs'
+import { ClerkLoaded, ClerkLoading, useUser } from '@clerk/nextjs'
 import styles from './Navbar.module.css'
 
 function getGreeting(lang) {
@@ -21,34 +22,51 @@ function getGreeting(lang) {
   return 'Guten Abend'
 }
 
-export default function ClerkNavActions({ lang = 'de' }) {
-  const { user } = useUser()
-
-  const signInLabel = lang === 'fa' ? 'ورود' : lang === 'en' ? 'Sign in' : 'Anmelden'
+function LoadedNavActions({ lang, signInLabel }) {
+  const { user, isSignedIn } = useUser()
   const greeting = getGreeting(lang)
   const displayName = user?.firstName || user?.username || user?.emailAddresses?.[0]?.emailAddress?.split('@')[0]
   const initials = (displayName?.[0] || '?').toUpperCase()
 
+  if (!isSignedIn) {
+    return <Link href="/sign-in" className={styles.signInBtn}>{signInLabel}</Link>
+  }
+
+  return (
+    <Link href="/profil" className={styles.profileLink}>
+      {user?.imageUrl ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img className={styles.profileAvatar} src={user.imageUrl} alt="" />
+      ) : (
+        <span className={styles.profileAvatarFallback}>{initials}</span>
+      )}
+      <span className={styles.profileCopy}>
+        <span className={styles.greeting}>{greeting}</span>
+        <strong className={styles.profileName}>{displayName}</strong>
+      </span>
+    </Link>
+  )
+}
+
+function ClerkReady({ onReady }) {
+  useEffect(() => {
+    onReady?.()
+  }, [onReady])
+  return null
+}
+
+export default function ClerkNavActions({ lang = 'de', onReady }) {
+  const signInLabel = lang === 'fa' ? 'ورود' : lang === 'en' ? 'Sign in' : 'Anmelden'
+
   return (
     <>
-      <SignedOut>
-        <Link href="/sign-in" className={styles.signInBtn}>{signInLabel}</Link>
-      </SignedOut>
-
-      <SignedIn>
-        <Link href="/profil" className={styles.profileLink}>
-          {user?.imageUrl ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img className={styles.profileAvatar} src={user.imageUrl} alt="" />
-          ) : (
-            <span className={styles.profileAvatarFallback}>{initials}</span>
-          )}
-          <span className={styles.profileCopy}>
-            <span className={styles.greeting}>{greeting}</span>
-            <strong className={styles.profileName}>{displayName}</strong>
-          </span>
-        </Link>
-      </SignedIn>
+      <ClerkLoading>
+        <span aria-hidden="true" />
+      </ClerkLoading>
+      <ClerkLoaded>
+        <ClerkReady onReady={onReady} />
+        <LoadedNavActions lang={lang} signInLabel={signInLabel} />
+      </ClerkLoaded>
     </>
   )
 }
