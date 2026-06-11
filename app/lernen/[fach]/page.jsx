@@ -219,16 +219,64 @@ function PelvisChapterIcon({ id, className }) {
   return <svg {...common}>{icons[id] || pelvis}</svg>
 }
 
-function NeckSpineChapterIcon({ id, className }) {
+function NeckChapterIcon({ id, className }) {
   const common = {
-    viewBox: '0 0 48 48', fill: 'none', stroke: 'currentColor', strokeWidth: 2,
-    strokeLinecap: 'round', strokeLinejoin: 'round', className, 'aria-hidden': true,
+    viewBox: '0 0 48 48',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    className,
+    'aria-hidden': true,
   }
-  const isSpine = id.startsWith('ws-')
-  const base = isSpine
-    ? <><path d="M25 5c-4 5 3 7-1 12s3 7-1 12 3 7-1 14"/><path d="M18 8h12M17 16h13M17 25h12M16 34h13M16 42h12"/></>
-    : <><path d="M18 5v8c0 4-5 7-5 15 0 9 5 15 11 15s11-6 11-15c0-8-5-11-5-15V5"/><path d="M18 13h12"/></>
-  return <svg {...common}>{base}<circle cx="35" cy="13" r="3"/></svg>
+
+  const neck = <><path d="M18 5v8c0 4-5 7-5 15 0 9 5 15 11 15s11-6 11-15c0-8-5-11-5-15V5"/><path d="M18 13h12"/></>
+  const icons = {
+    'hals-anatomie': <>{neck}<path d="M17 22h14M17 29h14"/><path d="M24 13v25"/></>,
+    'hals-orbita': <><path d="M5 24c5-8 11-12 19-12s14 4 19 12c-5 8-11 12-19 12S10 32 5 24Z"/><circle cx="24" cy="24" r="7"/><circle cx="24" cy="24" r="2" fill="currentColor" stroke="none"/></>,
+    'hals-nnh': <><path d="M14 7h20l5 12-5 22H14L9 19 14 7Z"/><path d="M17 16c3-3 5-3 7 0 2-3 4-3 7 0"/><path d="M16 27h16M19 34h10"/></>,
+    'hals-ohr': <><path d="M30 35c-2 5-9 6-12 1-2-3 0-6 3-8 4-3 7-5 7-10 0-4-3-7-7-7-5 0-8 4-8 9"/><path d="M18 21c0-3 2-5 5-5 2 0 4 2 4 4 0 4-5 5-5 9"/><path d="M34 10v13m0 0 5-5m-5 5-5-5"/></>,
+    'hals-schilddruese': <><path d="M24 12v25"/><path d="M22 24c-4-9-13-8-13-1 0 6 5 11 11 10 2 0 3-2 4-4"/><path d="M26 24c4-9 13-8 13-1 0 6-5 11-11 10-2 0-3-2-4-4"/></>,
+    'hals-speicheldruesen': <><path d="M12 10c8-5 20-4 24 4 4 9-3 19-14 19-8 0-13-5-13-11 0-5 3-9 8-11"/><path d="M25 33v8M25 37h10"/><path d="M37 9c3 4 5 7 5 10a5 5 0 0 1-10 0c0-3 2-6 5-10Z"/></>,
+    'hals-lymphknoten': <><circle cx="16" cy="14" r="5"/><circle cx="30" cy="12" r="4"/><circle cx="24" cy="26" r="6"/><circle cx="35" cy="33" r="5"/><circle cx="12" cy="35" r="4"/><path d="m19 17 2 4m7-5-2 5m3 9 2 1m-13 0-3 2"/></>,
+    'hals-tumoren': <>{neck}<circle cx="29" cy="24" r="8" strokeDasharray="2 3"/><circle cx="29" cy="24" r="3"/><path d="M35 30l6 6"/></>,
+    'hals-infektionen': <>{neck}<circle cx="25" cy="25" r="4"/><path d="M25 16v4m0 10v4m-9-9h4m10 0h4m-15-6 3 3m6 6 3 3m0-12-3 3m-6 6-3 3"/></>,
+    'hals-kongenital': <><path d="M24 5c-9 0-15 7-15 16 0 11 7 20 15 22 8-2 15-11 15-22 0-9-6-16-15-16Z"/><path d="M24 5v38"/><path d="M16 20c3-2 5-1 8 2 3-3 5-4 8-2"/></>,
+    'hals-gefaesse': <><path d="M20 5v38M28 5v38"/><path d="M20 15 10 8m10 19-9 7m17-19 10-7m-10 19 9 7"/><circle cx="28" cy="27" r="3"/></>,
+  }
+
+  return <svg {...common}>{icons[id] || icons['hals-anatomie']}</svg>
+}
+
+function SpineChapterIcon({ id, className }) {
+  const common = {
+    viewBox: '0 0 48 48',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    className,
+    'aria-hidden': true,
+  }
+
+  const spine = <><path d="M25 5c-4 5 3 7-1 12s3 7-1 12 3 7-1 14"/><path d="M18 8h12M17 16h13M17 25h12M16 34h13M16 42h12"/></>
+  const icons = {
+    'ws-anatomie': <>{spine}<path d="M33 8v34"/></>,
+    'ws-modalitaeten': <><rect x="7" y="6" width="34" height="36" rx="4"/>{spine}</>,
+    'ws-degenerativ': <>{spine}<path d="M17 24h12" strokeWidth="5"/><path d="m34 19 6 6-6 6"/></>,
+    'ws-entzuendlich': <>{spine}<circle cx="34" cy="25" r="5"/><path d="M34 16v4m0 10v4m-9-9h4m10 0h4"/></>,
+    'ws-tumoren': <>{spine}<circle cx="34" cy="22" r="8" strokeDasharray="2 3"/><circle cx="34" cy="22" r="3" fill="currentColor" stroke="none"/></>,
+    'ws-trauma': <><path d="M25 5c-4 5 3 7-1 12"/><path d="M22 19 28 25l-7 5 5 13"/><path d="M18 8h12M17 16h13M17 32h12M16 42h12"/><path d="m35 8 3-3m1 7 4-1m-4 5 3 3"/></>,
+    'ws-vaskulaer': <>{spine}<path d="M35 6v34M35 14l7-5m-7 13 7 5m-7 6-6 6"/><circle cx="35" cy="22" r="2.5" fill="currentColor" stroke="none"/></>,
+    'ws-fehlbildungen': <><path d="M22 5c-5 5 4 8-1 13s5 8 0 13 4 7-1 12"/><path d="M14 8h13M14 17h15M13 27h13M12 37h15"/><path d="M34 8c-4 4-4 7 0 10s4 7 0 10-4 7 0 10M41 8c4 4 4 7 0 10s-4 7 0 10 4 7 0 10"/></>,
+    'ws-metabolisch': <>{spine}<path d="M8 42h33M11 37h27M14 32h21"/><circle cx="36" cy="12" r="4"/></>,
+    'ws-postoperativ': <>{spine}<path d="M32 12h10M37 7v10"/><path d="M31 29 40 38M36 34l-8 8"/><circle cx="38" cy="36" r="4"/></>,
+    'ws-zysten-liquor': <>{spine}<path d="M36 7c3 5 6 8 6 13a6 6 0 0 1-12 0c0-5 3-8 6-13Z"/><circle cx="35" cy="35" r="5"/></>,
+  }
+
+  return <svg {...common}>{icons[id] || icons['ws-anatomie']}</svg>
 }
 
 function ChapterIcon({ fachId, kapitel, className }) {
@@ -238,7 +286,8 @@ function ChapterIcon({ fachId, kapitel, className }) {
   if (fachId === 'gehirn') return <GehirnChapterIcon id={kapitel.id} className={className} />
   if (fachId === 'mamma') return <MammaChapterIcon id={kapitel.id} className={className} />
   if (fachId === 'becken-f' || fachId === 'becken-m') return <PelvisChapterIcon id={kapitel.id} className={className} />
-  if (fachId === 'hals' || fachId === 'wirbelsaeule') return <NeckSpineChapterIcon id={kapitel.id} className={className} />
+  if (fachId === 'hals') return <NeckChapterIcon id={kapitel.id} className={className} />
+  if (fachId === 'wirbelsaeule') return <SpineChapterIcon id={kapitel.id} className={className} />
   return <span className={className}>{kapitel.icon}</span>
 }
 
