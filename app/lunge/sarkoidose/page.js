@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
+import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import styles from './page.module.css'
 
 const CONTENT = {
@@ -12,7 +13,7 @@ const CONTENT = {
     "breadcrumbCurrent": "Lunge · Sarkoidose",
     "title": "Sarkoidose",
     "subtitle": "Scadding-Stadien, HRCT-Muster, Lymphknoten und wichtige Differentialdiagnosen",
-    "sourceLabel": "RadYar · Thorax",
+    "sourceLabel": "Dr. Zia",
     "actionMcq": "MCQ",
     "actionFlash": "Flashcards",
     "keyLabel": "Merke",
@@ -329,7 +330,7 @@ const CONTENT = {
     "breadcrumbCurrent": "Lung · Sarcoidosis",
     "title": "Sarcoidosis",
     "subtitle": "Scadding stages, HRCT pattern, lymph nodes and key differentials",
-    "sourceLabel": "RadYar · Thorax",
+    "sourceLabel": "Dr. Zia",
     "actionMcq": "MCQ",
     "actionFlash": "Flashcards",
     "keyLabel": "Key point",
@@ -646,7 +647,7 @@ const CONTENT = {
     "breadcrumbCurrent": "ریه · سارکوئیدوز",
     "title": "سارکوئیدوز",
     "subtitle": "مراحل Scadding، الگوی HRCT، لنف‌نودها و تشخیص‌های افتراقی مهم",
-    "sourceLabel": "RadYar · Thorax",
+    "sourceLabel": "Dr. Zia",
     "actionMcq": "MCQ",
     "actionFlash": "فلش‌کارت",
     "keyLabel": "نکته مهم",
@@ -1002,6 +1003,23 @@ function CardGrid({ items }) {
   )
 }
 
+const READ_COPY = {
+  de: { mark: 'Als gelesen markieren', read: 'Gelesen' },
+  en: { mark: 'Mark as read', read: 'Read' },
+  fa: { mark: 'علامت‌گذاری به عنوان خوانده‌شده', read: 'خوانده شد' },
+}
+
+function ReadButton({ isRead, onClick }) {
+  const { lang } = useLanguage()
+  const copy = READ_COPY[lang] || READ_COPY.de
+  return (
+    <button type="button" className={`${styles.readButton} ${isRead ? styles.readButtonActive : ''}`} onClick={onClick}>
+      <span>{isRead ? '✓' : '○'}</span>
+      {isRead ? copy.read : copy.mark}
+    </button>
+  )
+}
+
 function Section({ id, title, lead, children }) {
   const [isOpen, setIsOpen] = useState(true)
   return (
@@ -1025,6 +1043,7 @@ export default function SarkoidosePage() {
   const copy = CONTENT[lang] || CONTENT.de
   const isRTL = lang === 'fa'
   const [activeId, setActiveId] = useState(copy.sections[0].id)
+  const { isRead, toggleRead } = useLessonReadStatus('sarkoidose')
   const sectionIds = useMemo(() => copy.sections.map(s => s.id), [copy.sections])
   const withLang = (href) => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
 
@@ -1057,6 +1076,7 @@ export default function SarkoidosePage() {
             <div className={styles.heroActions}>
               <Link href={withLang('/ueben/quiz?fach=thorax&n=10&themen=sarkoidose')} className={styles.actionBtn}>🎯 {copy.actionMcq}</Link>
               <Link href={withLang('/flashcards/sarkoidose')} className={styles.actionBtn}>🧠 {copy.actionFlash}</Link>
+              <ReadButton isRead={isRead} onClick={toggleRead} />
             </div>
           </div>
           <div className={styles.heroStats}>
@@ -1139,6 +1159,7 @@ export default function SarkoidosePage() {
                 </div>
               ))}
             </div>
+            <ReadButton isRead={isRead} onClick={toggleRead} />
           </Section>
         </main>
       </div>

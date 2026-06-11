@@ -3,6 +3,7 @@
 import { useMemo, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
+import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import styles from './page.module.css'
 
 const CONTENT = {
@@ -12,7 +13,7 @@ const CONTENT = {
     "breadcrumbCurrent": "Leber · Hämangiome",
     "title": "Leberhämangiome",
     "subtitle": "Klassische und atypische Bildgebung in Sonographie, CT und MRT",
-    "sourceLabel": "RadYar · Abdomen",
+    "sourceLabel": "Dr. Zia",
     "actionMcq": "MCQ",
     "actionFlash": "Flashcards",
     "keyLabel": "Merke",
@@ -249,7 +250,7 @@ const CONTENT = {
     "breadcrumbCurrent": "Liver · Haemangiomas",
     "title": "Liver haemangiomas",
     "subtitle": "Classic and atypical imaging in ultrasound, CT and MRI",
-    "sourceLabel": "RadYar · Abdomen",
+    "sourceLabel": "Dr. Zia",
     "actionMcq": "MCQ",
     "actionFlash": "Flashcards",
     "keyLabel": "Key point",
@@ -486,7 +487,7 @@ const CONTENT = {
     "breadcrumbCurrent": "کبد · همانژیوم",
     "title": "همانژیوم‌های کبدی",
     "subtitle": "تصویربرداری تیپیک و آتیپیک در سونوگرافی، CT و MRI",
-    "sourceLabel": "RadYar · Abdomen",
+    "sourceLabel": "Dr. Zia",
     "actionMcq": "MCQ",
     "actionFlash": "فلش‌کارت",
     "keyLabel": "نکته مهم",
@@ -744,6 +745,23 @@ const CASE_COPY = {
   },
 }
 
+const READ_COPY = {
+  de: { mark: 'Als gelesen markieren', read: 'Gelesen' },
+  en: { mark: 'Mark as read', read: 'Read' },
+  fa: { mark: 'علامت‌گذاری به عنوان خوانده‌شده', read: 'خوانده شد' },
+}
+
+function ReadButton({ isRead, onClick }) {
+  const { lang } = useLanguage()
+  const copy = READ_COPY[lang] || READ_COPY.de
+  return (
+    <button type="button" className={`${styles.readButton} ${isRead ? styles.readButtonActive : ''}`} onClick={onClick}>
+      <span>{isRead ? '✓' : '○'}</span>
+      {isRead ? copy.read : copy.mark}
+    </button>
+  )
+}
+
 function Table({ headers, rows }) {
   return (
     <div className={styles.tableWrap}>
@@ -804,6 +822,7 @@ export default function LeberHaemangiomPage() {
   }, [copy.sections, caseCopy.label])
   const isRTL = lang === 'fa'
   const [activeId, setActiveId] = useState(pageSections[0].id)
+  const { isRead, toggleRead } = useLessonReadStatus('haemangiom')
   const withLang = (href) => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
 
   const sectionIds = useMemo(() => pageSections.map(section => section.id), [pageSections])
@@ -844,6 +863,7 @@ export default function LeberHaemangiomPage() {
             <div className={styles.actions}>
               <Link href={withLang('/ueben/quiz?fach=abdomen&n=10&themen=haemangiom')} className={styles.actionBtn}>🎯 {copy.actionMcq}</Link>
               <Link href={withLang('/flashcards/haemangiom')} className={styles.actionBtn}>🧠 {copy.actionFlash}</Link>
+              <ReadButton isRead={isRead} onClick={toggleRead} />
             </div>
           </div>
           <div className={styles.heroStats}>
@@ -945,6 +965,7 @@ export default function LeberHaemangiomPage() {
                 </div>
               ))}
             </div>
+            <ReadButton isRead={isRead} onClick={toggleRead} />
           </Section>
         </div>
       </div>

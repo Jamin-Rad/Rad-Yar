@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
+import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 
 const styles = new Proxy({}, {
   get: (_target, prop) => String(prop),
@@ -205,6 +206,7 @@ const MENISKUS_STYLES = `.page {
   opacity: 0.86;
 }
 
+.learnAction small,
 .learnActionDisabled small {
   color: #f97316;
   font-size: 10px;
@@ -3438,7 +3440,7 @@ const CONTENT = {
     mcqCta: 'MCQs starten',
     actionMcq: 'MCQ',
     actionFall: 'Fallbeispiele',
-    actionFallStatus: 'in Arbeit',
+    actionFallStatus: '2 Fälle',
     actionFlash: 'Flashcards',
     openCase: 'Bild direkt in Radiopaedia öffnen',
     zoomImage: 'Bild vergrößern',
@@ -3454,9 +3456,9 @@ const CONTENT = {
       { id: 'lernvideo', label: 'Lernvideo', icon: '▶️' },
     ],
     heroCards: [
-      { value: '2/3', label: 'aller Risse', text: 'betreffen den Innenmeniskus' },
-      { value: '98 %', label: 'Innenmeniskus', text: 'Risse typischerweise im Hinterhorn' },
-      { value: '3 mm', label: 'Standard', text: 'MRT-Schnittdicke im Knieprotokoll' },
+      { value: '2 Schichten', label: 'Two-slice-touch-Regel', text: 'Oberflächenkontakt muss auf mindestens zwei aufeinanderfolgenden Schichten sichtbar sein.' },
+      { value: 'Grad 3', label: 'sicherer Meniskusriss', text: 'Erst ein Signal mit eindeutigem Kontakt zur Gelenkfläche erfüllt die Kriterien eines echten Risses.' },
+      { value: 'Erhalt', label: 'Save the Meniscus', text: 'Wenn möglich reparieren und Meniskusgewebe bewahren statt resezieren.' },
     ],
     basics: {
       title: 'Kniegelenk · Meniskus · Grundlagen',
@@ -3658,7 +3660,7 @@ const CONTENT = {
     mcqCta: 'Start MCQs',
     actionMcq: 'MCQ',
     actionFall: 'Case studies',
-    actionFallStatus: 'coming soon',
+    actionFallStatus: '2 cases',
     actionFlash: 'Flashcards',
     openCase: 'Open image directly in Radiopaedia',
     zoomImage: 'Enlarge image',
@@ -3674,9 +3676,9 @@ const CONTENT = {
       { id: 'lernvideo', label: 'Learning video', icon: '▶️' },
     ],
     heroCards: [
-      { value: '2/3', label: 'of tears', text: 'involve the medial meniscus' },
-      { value: '98%', label: 'medial meniscus', text: 'typically posterior horn tears' },
-      { value: '3 mm', label: 'standard', text: 'MRI slice thickness in knee protocols' },
+      { value: '2 slices', label: 'Two-slice-touch rule', text: 'Surface contact should be visible on at least two consecutive slices.' },
+      { value: 'Grade 3', label: 'definite meniscal tear', text: 'Only signal with definite articular-surface contact meets the criteria for a true tear.' },
+      { value: 'Preserve', label: 'Save the Meniscus', text: 'Repair and preserve meniscal tissue whenever possible instead of resection.' },
     ],
     basics: {
       title: 'Knee joint · Meniscus · Basics',
@@ -3878,7 +3880,7 @@ const CONTENT = {
     mcqCta: 'شروع سوالات',
     actionMcq: 'MCQ',
     actionFall: 'موارد بالینی',
-    actionFallStatus: 'در حال ساخت',
+    actionFallStatus: '۲ کیس',
     actionFlash: 'فلش‌کارت',
     openCase: 'باز کردن مستقیم تصویر در Radiopaedia',
     zoomImage: 'بزرگ‌نمایی تصویر',
@@ -3894,9 +3896,9 @@ const CONTENT = {
       { id: 'lernvideo', label: 'ویدیوی آموزشی', icon: '▶️' },
     ],
     heroCards: [
-      { value: '۲/۳', label: 'پارگی‌ها', text: 'مربوط به منیسک داخلی هستند' },
-      { value: '۹۸٪', label: 'منیسک داخلی', text: 'اغلب در شاخ پشتی پاره می‌شود' },
-      { value: '۳ mm', label: 'استاندارد', text: 'ضخامت برش در پروتکل MRI زانو' },
+      { value: '۲ برش', label: 'قانون Two-slice-touch', text: 'تماس با سطح باید حداقل در دو برش متوالی دیده شود.' },
+      { value: 'درجه ۳', label: 'پارگی قطعی منیسک', text: 'فقط سیگنال با تماس قطعی با سطح مفصلی معیار پارگی واقعی را دارد.' },
+      { value: 'حفظ', label: 'Save the Meniscus', text: 'در صورت امکان ترمیم و حفظ بافت منیسک بر رزکسیون اولویت دارد.' },
     ],
     basics: {
       title: 'مفصل زانو · منیسک · مبانی',
@@ -4205,14 +4207,23 @@ function useIsMobileViewport(query = '(max-width: 900px)') {
 }
 
 const READ_LABELS = {
-  de: { btn: '☐ Als gelesen markieren', active: '✅ Gelesen' },
-  en: { btn: '☐ Mark as read',          active: '✅ Read' },
-  fa: { btn: '☐ علامت‌گذاری به عنوان خوانده‌شده', active: '✅ خوانده شد' },
+  de: { btn: 'Als gelesen markieren', active: 'Gelesen' },
+  en: { btn: 'Mark as read', active: 'Read' },
+  fa: { btn: 'علامت‌گذاری به عنوان خوانده‌شده', active: 'خوانده شد' },
 }
 
-function Section({ id, eyebrow, title, lead, children, className = '', defaultOpen = true, done = false, onDone }) {
+function ReadButton({ isRead, onClick, className = '' }) {
   const { lang } = useLanguage()
-  const rl = READ_LABELS[lang] || READ_LABELS.de
+  const labels = READ_LABELS[lang] || READ_LABELS.de
+  return (
+    <button type="button" className={`${styles.doneBtn} ${isRead ? styles.doneBtnActive : ''} ${className}`.trim()} onClick={onClick}>
+      <span>{isRead ? '✓' : '○'}</span>
+      {isRead ? labels.active : labels.btn}
+    </button>
+  )
+}
+
+function Section({ id, eyebrow, title, lead, children, className = '', defaultOpen = true }) {
   const [isOpen, setIsOpen] = useState(defaultOpen)
 
   useEffect(() => {
@@ -4248,21 +4259,12 @@ function Section({ id, eyebrow, title, lead, children, className = '', defaultOp
       <div className={`${styles.sectionContent} ${isOpen ? '' : styles.sectionContentCollapsed}`.trim()}>
         {lead && <p className={styles.sectionLead}>{lead}</p>}
         {children}
-        {onDone && (
-          <button
-            type="button"
-            className={`${styles.doneBtn} ${done ? styles.doneBtnActive : ''}`}
-            onClick={() => onDone(id)}
-          >
-            {done ? rl.active : rl.btn}
-          </button>
-        )}
       </div>
     </section>
   )
 }
 
-function Sidebar({ sections, toc, activeId, onClick, doneIds = {} }) {
+function Sidebar({ sections, toc, activeId, onClick }) {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.sideTitle}>{toc}</div>
@@ -4271,10 +4273,10 @@ function Sidebar({ sections, toc, activeId, onClick, doneIds = {} }) {
           <button
             key={section.id}
             type="button"
-            className={`${styles.sideItem} ${section.important ? styles.sideItemImportant : ''} ${activeId === section.id ? styles.sideItemActive : ''} ${doneIds[section.id] ? styles.sideItemDone : ''}`}
+            className={`${styles.sideItem} ${section.important ? styles.sideItemImportant : ''} ${activeId === section.id ? styles.sideItemActive : ''}`}
             onClick={() => onClick(section.id)}
           >
-            <span className={styles.sideIcon}>{doneIds[section.id] ? '✅' : section.icon}</span>
+            <span className={styles.sideIcon}>{section.icon}</span>
             <span>{section.label}</span>
           </button>
         ))}
@@ -4321,31 +4323,7 @@ export default function MeniskusPage() {
   const [activeId, setActiveId] = useState(pageSections[0].id)
   const [previewImage, setPreviewImage] = useState(null)
   const meniskusLayout = isMobile ? 'mobile' : 'desktop'
-  const [doneIds, setDoneIds] = useState({})
-
-  useEffect(() => {
-    try {
-      const stored = JSON.parse(localStorage.getItem('meniskus_done') || '{}')
-      setDoneIds(stored)
-    } catch {}
-  }, [])
-
-  const MENISKUS_SECTIONS = ['anatomie', 'mrt', 'grading', 'risstypen', 'discoider', 'fallbeispiele']
-  const handleDone = (id) => {
-    setDoneIds(prev => {
-      const next = { ...prev, [id]: !prev[id] }
-      try {
-        localStorage.setItem('meniskus_done', JSON.stringify(next))
-        // Globales Artikel-Tracking aktualisieren
-        const readCount = MENISKUS_SECTIONS.filter(s => next[s]).length
-        const pct = readCount / MENISKUS_SECTIONS.length
-        const articles = JSON.parse(localStorage.getItem('radyar_read_articles') || '{}')
-        articles.meniskus = pct
-        localStorage.setItem('radyar_read_articles', JSON.stringify(articles))
-      } catch {}
-      return next
-    })
-  }
+  const { isRead, toggleRead } = useLessonReadStatus('meniskus')
 
   const sectionIds = useMemo(() => pageSections.map(section => section.id), [pageSections])
   const withLang = (href) => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
@@ -4428,12 +4406,22 @@ export default function MeniskusPage() {
                 <span>🧠</span>
                 <span>{copy.actionFlash}</span>
               </Link>
-              <span className={styles.learnActionDisabled} aria-disabled="true">
+              <Link href={withLang('/faelle?thema=meniskus')} className={`${styles.learnAction} ${styles.learnActionMcq}`}>
                 <span>🧪</span>
                 <span>{copy.actionFall}</span>
                 <small>{copy.actionFallStatus}</small>
-              </span>
+              </Link>
+              <ReadButton isRead={isRead} onClick={toggleRead} className={styles.headerReadBtn} />
             </div>
+          </div>
+          <div className={styles.heroStats}>
+            {copy.heroCards.map(card => (
+              <div className={styles.heroStatCard} key={card.label}>
+                <strong>{card.value}</strong>
+                <span>{card.label}</span>
+                <small>{card.text}</small>
+              </div>
+            ))}
           </div>
 
         </div>
@@ -4443,11 +4431,11 @@ export default function MeniskusPage() {
 
       <div className={styles.layout}>
         {!isMobile && (
-          <Sidebar sections={pageSections} toc={copy.toc} activeId={activeId} onClick={scrollTo} doneIds={doneIds} />
+          <Sidebar sections={pageSections} toc={copy.toc} activeId={activeId} onClick={scrollTo} />
         )}
 
         <main className={styles.main} ref={mainRef}>
-          <Section id="anatomie" eyebrow="01" title={copy.anatomy.title} lead={copy.anatomy.lead} defaultOpen={!isMobile} done={!!doneIds['anatomie']} onDone={handleDone}>
+          <Section id="anatomie" eyebrow="01" title={copy.anatomy.title} lead={copy.anatomy.lead} defaultOpen={!isMobile}>
             <Table headers={copy.anatomy.tableHeaders} rows={copy.anatomy.tableRows} />
             <div className={styles.splitGrid}>
               <div className={styles.card}>
@@ -4490,7 +4478,7 @@ export default function MeniskusPage() {
             </div>
           </Section>
 
-          <Section id="mrt" eyebrow="04" title={copy.mri.title} lead={copy.mri.lead} defaultOpen={!isMobile} done={!!doneIds['mrt']} onDone={handleDone}>
+          <Section id="mrt" eyebrow="04" title={copy.mri.title} lead={copy.mri.lead} defaultOpen={!isMobile}>
             <div className={styles.protocolGrid}>
               {copy.mri.protocol.map(item => (
                 <div key={item.name} className={styles.protocolCard}>
@@ -4522,7 +4510,7 @@ export default function MeniskusPage() {
             </div>
           </Section>
 
-          <Section id="grading" eyebrow="05" title={copy.grading.title} lead={copy.grading.lead} defaultOpen={!isMobile} done={!!doneIds['grading']} onDone={handleDone}>
+          <Section id="grading" eyebrow="05" title={copy.grading.title} lead={copy.grading.lead} defaultOpen={!isMobile}>
             <div className={styles.gradingFigure}>
               <ImageFigure src="/meniskus/lotysch-grading.png" alt={copy.grading.title} zoomable zoomLabel={copy.zoomImage} onZoom={() => setPreviewImage({ src: '/meniskus/lotysch-grading.png', alt: copy.grading.title })} />
             </div>
@@ -4537,12 +4525,12 @@ export default function MeniskusPage() {
           </Section>
 
 
-          <Section id="risstypen" eyebrow="07" title={copy.tearTypes.title} lead={copy.tearTypes.lead} defaultOpen={!isMobile} done={!!doneIds['risstypen']} onDone={handleDone}>
+          <Section id="risstypen" eyebrow="07" title={copy.tearTypes.title} lead={copy.tearTypes.lead} defaultOpen={!isMobile}>
             <Table headers={copy.tearTypes.tableHeaders} rows={copy.tearTypes.tableRows} className={styles.tearTypeTable} />
             <Callout type="cave" label={copy.tearTypes.caveTitle}>{copy.tearTypes.caveText}</Callout>
           </Section>
 
-          <Section id="discoider" eyebrow="08" title={copy.discoid.title} lead={copy.discoid.lead} defaultOpen={!isMobile} done={!!doneIds['discoider']} onDone={handleDone}>
+          <Section id="discoider" eyebrow="08" title={copy.discoid.title} lead={copy.discoid.lead} defaultOpen={!isMobile}>
             <div className={styles.discoidStats}>
               {copy.discoid.stats.map(stat => (
                 <div key={stat.label} className={styles.discoidStatCard}>
@@ -4571,7 +4559,7 @@ export default function MeniskusPage() {
             <Callout label={copy.keyLabel}>{copy.therapy.key}</Callout>
           </Section>
 
-          <Section id="fallbeispiele" eyebrow="07" title={copy.cases.title} lead={copy.cases.lead} defaultOpen={!isMobile} done={!!doneIds['fallbeispiele']} onDone={handleDone}>
+          <Section id="fallbeispiele" eyebrow="07" title={copy.cases.title} lead={copy.cases.lead} defaultOpen={!isMobile}>
             <div className={styles.caseGrid}>
               {copy.cases.items.map(item => (
                 <a key={item.title} href="/faelle?thema=meniskus" className={styles.caseCardLink}>
@@ -4625,6 +4613,7 @@ export default function MeniskusPage() {
                 ))}
               </div>
             </div>
+            <ReadButton isRead={isRead} onClick={toggleRead} className={styles.finalReadBtn} />
           </Section>
 
         </main>

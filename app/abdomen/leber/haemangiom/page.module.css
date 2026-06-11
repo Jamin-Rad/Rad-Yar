@@ -121,6 +121,25 @@
   box-shadow: 0 16px 30px rgba(16, 185, 129, 0.16);
 }
 
+.readButton {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 17px;
+  border-radius: 999px;
+  border: 1px solid rgba(16, 185, 129, .38);
+  background: rgba(16, 185, 129, .07);
+  color: #047857;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 900;
+}
+.readButtonActive { background: rgba(16, 185, 129, .16); border-color: rgba(16, 185, 129, .58); }
+.readButton span { font-size: 16px; }
+.sectionBody > .readButton { margin-top: 20px; }
+
 .heroStats {
   display: grid;
   gap: 12px;
@@ -155,6 +174,12 @@
   margin-top: 6px;
   opacity: .78;
   line-height: 1.45;
+}
+
+:global(html[data-theme='dark']) .readButton {
+  color: #6ee7b7;
+  background: rgba(16, 185, 129, .10);
+  border-color: rgba(52, 211, 153, .28);
 }
 
 .layout {

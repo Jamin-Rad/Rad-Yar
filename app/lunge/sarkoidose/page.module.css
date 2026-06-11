@@ -21,6 +21,10 @@
 .heroText p { margin:18px 0 24px; max-width:760px; color:var(--text-muted); font-size:18px; line-height:1.7; }
 .heroActions { display:flex; flex-wrap:wrap; gap:10px; }
 .actionBtn { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:11px 17px; border-radius:999px; background:linear-gradient(135deg,#e0f2fe,#fff); border:1px solid #bae6fd; color:#0369a1; font-weight:950; text-decoration:none; }
+.readButton { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:44px; padding:11px 17px; border-radius:999px; background:rgba(2,132,199,.07); border:1px solid rgba(2,132,199,.30); color:#0369a1; cursor:pointer; font-family:inherit; font-size:13px; font-weight:950; }
+.readButtonActive { background:rgba(16,185,129,.14); border-color:rgba(16,185,129,.42); color:#047857; }
+.readButton span { font-size:16px; }
+.sectionBody > .readButton { margin-top:20px; }
 .heroStats { border-radius:28px; padding:16px; display:grid; gap:12px; }
 .statCard { border-radius:20px; padding:18px; background:linear-gradient(135deg,#0f172a,#164e63); color:#fff; }
 .statCard:nth-child(2) { background:linear-gradient(135deg,#0284c7,#38bdf8); }
@@ -66,3 +70,5 @@
 [dir='rtl'] .breadcrumb, [dir='rtl'] .heroText, [dir='rtl'] .sectionToggle, [dir='rtl'] .sideItem, [dir='rtl'] .infoCard, [dir='rtl'] .table th, [dir='rtl'] .table td, [dir='rtl'] .caseCard, [dir='rtl'] .takeHomeItem, [dir='rtl'] .callout { text-align:right; }
 @media (max-width:1020px){ .hero, .layout, [dir='rtl'] .layout, .splitGrid { grid-template-columns:1fr; } .sidebar { position:static; } .sideItem { display:inline-flex; width:auto; } .sidebar { display:flex; flex-wrap:wrap; gap:8px; } .sideTitle { width:100%; } }
 @media (max-width:760px){ .page{padding-top:56px;} .header{padding:20px 14px 10px;} .layout{padding:14px 14px 48px;} .heroText{padding:24px;border-radius:24px;} .heroText h1{font-size:clamp(38px,13vw,56px);} .heroStats{border-radius:22px;} .section{border-radius:22px;} .sectionBody{padding:18px;} .sectionToggle{padding:16px 18px;} .cardGrid,.caseGrid{grid-template-columns:1fr;} .table{min-width:560px;} .sidebar{display:none;} }
+:global(html[data-theme='dark']) .readButton { color:#7dd3fc; background:rgba(2,132,199,.10); border-color:rgba(56,189,248,.28); }
+:global(html[data-theme='dark']) .readButtonActive { color:#6ee7b7; background:rgba(16,185,129,.12); border-color:rgba(52,211,153,.30); }

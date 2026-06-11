@@ -1330,6 +1330,9 @@
   color: #f8fafc;
   border-color: rgba(148,163,184,0.18);
 }
+
+.headerReadBtn { margin-top: 0; }
+.finalReadBtn { margin-top: 22px; }
 :global(html[data-theme='dark']) .mobileTocBar {
   background: rgba(7,17,31,0.88);
   border-color: rgba(148,163,184,0.14);
