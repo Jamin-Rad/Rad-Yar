@@ -31,6 +31,10 @@ function groupThemen(themen) {
   return sections
 }
 
+function withoutLeadingNumber(title) {
+  return title.replace(/^[\d\u06F0-\u06F9\u0660-\u0669]+[.)،.]?\s*/, '')
+}
+
 function isAvailable(th) {
   return !!th.link || !!th.sub?.some(s => s.link)
 }
@@ -113,7 +117,7 @@ export default function LernenFachPage() {
   const [selectedKapitel, setSelectedKapitel] = useState(null)
   const [mounted, setMounted] = useState(false)
   const [search, setSearch] = useState('')
-  const [filter, setFilter] = useState('available')
+  const [filter, setFilter] = useState('all')
   const [readArticles, setReadArticles] = useState({})
 
   const visibleKapitel = useMemo(() => {
@@ -205,7 +209,7 @@ export default function LernenFachPage() {
         </div>
         {fach.kapitel.length > 0 && (
           <div className={styles.filterBar}>
-            {['available', 'read', 'all'].map(f => (
+            {['all', 'available', 'read'].map(f => (
               <button key={f}
                 className={`${styles.filterBtn} ${filter === f ? styles.filterBtnActive : ''}`}
                 style={filter === f ? { color: fach.color, borderColor: fach.color, background: fach.color + '12' } : {}}
@@ -258,7 +262,7 @@ export default function LernenFachPage() {
                     onClick={() => setSelectedKapitel(k.id)}
                     aria-pressed={active}>
                     <span className={styles.mainTopicIcon}>{k.icon}</span>
-                    <span className={styles.mainTopicTitle}>{getKapitelTitle(k, lang)}</span>
+                    <span className={styles.mainTopicTitle}>{withoutLeadingNumber(getKapitelTitle(k, lang))}</span>
                     <span className={styles.mainTopicCount}>{count} {t.themen}</span>
                   </button>
                 )
@@ -279,7 +283,7 @@ export default function LernenFachPage() {
             <header className={styles.topicListHeader}>
               <span className={styles.topicListIcon}>{selectedEntry.kapitel.icon}</span>
               <div>
-                <h3 id="topic-modal-title">{getKapitelTitle(selectedEntry.kapitel, lang)}</h3>
+                <h3 id="topic-modal-title">{withoutLeadingNumber(getKapitelTitle(selectedEntry.kapitel, lang))}</h3>
                 <p>{selectedEntry.themen.length} {t.themen}</p>
               </div>
               <button className={styles.topicModalClose} onClick={() => setSelectedKapitel(null)}
@@ -290,15 +294,17 @@ export default function LernenFachPage() {
               <div className={styles.topicGroups}>
                 {groupThemen(selectedEntry.themen).map((section, groupIndex) => (
                   <div key={groupIndex} className={styles.topicGroup}>
-                    {section.key && <h4>{section.key}</h4>}
+                    {section.key && (
+                      <div className={styles.topicGroupHeader}>
+                        <h4>{section.key}</h4>
+                        <span>{section.items.length}</span>
+                      </div>
+                    )}
                     <div className={styles.topicList}>
                       {section.items.map(th => {
                         const available = isAvailable(th)
                         const rowContent = (
                           <>
-                            <span className={styles.topicRowNumber}>
-                              {String(selectedEntry.themen.findIndex(item => item.id === th.id) + 1).padStart(2, '0')}
-                            </span>
                             <span className={styles.topicRowTitle}>{getThemaTitle(th, lang)}</span>
                             {isRead(th, readArticles) && <span className={styles.readBadge}>✓ {t.read}</span>}
                             <span className={`${styles.topicRowStatus} ${available ? styles.topicRowStatusReady : ''}`}>
