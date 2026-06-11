@@ -101,34 +101,22 @@ const FACH_NAMES = {
         Muskuloskelettales:'اسکلتی-عضلانی', Technik:'تکنیک و فیزیک' },
 }
 
-// ── ZONES (% of visible Hero image wrapper) ────────────────────────────────
-// Rechteckige Hotspots. Keine Kreise/Ellipsen mehr.
-// Die Werte sind auf das aktuelle Body-Bild im Hero-Bereich kalibriert.
-// Reihenfolge ist wichtig: große MSK-Flächen zuerst, spezielle Organe danach.
+// Hotspots calibrated to the original 941 × 1672 image.
+// Broad limb regions come first; smaller organ regions sit above them.
 const ZONES = [
-  // ── Arme (links + rechts) → MSK
-  { id:'Muskuloskelettales', shape:'polygon', points:'23,19 14,23 9,36 7,50 10,57 17,57 20,42 20,24' },
-  { id:'Muskuloskelettales', shape:'polygon', points:'62,19 71,23 76,36 78,50 75,57 68,57 65,42 65,24' },
-  // ── Beine (links + rechts) → MSK
-  { id:'Muskuloskelettales', shape:'polygon', points:'28,57 41,57 42,65 40,74 42,82 40,96 32,96 30,82 32,74 30,65' },
-  { id:'Muskuloskelettales', shape:'polygon', points:'44,57 57,57 55,65 53,74 55,82 53,96 45,96 43,82 45,74 43,65' },
-  // ── Thorax
-  { id:'Thorax',             shape:'polygon', points:'25,19 60,19 62,27 58,34 27,34 23,27' },
-  // ── Abdomen
-  { id:'Abdomen',            shape:'polygon', points:'27,34 58,34 60,38 58,46 27,46 25,38' },
-  // ── Becken (→ Popup Frau/Mann)
-  { id:'Becken',             shape:'polygon', points:'27,46 58,46 60,51 55,56 30,56 25,51' },
-  // ── Hals (schmal)
-  { id:'Hals',               shape:'polygon', points:'39,15 46,15 47,18 40,18' },
-  // ── Kopf / Neuroradiologie
-  { id:'Neuroradiologie',    shape:'polygon', points:'37,3 49,3 52,8 51,13 44,16 37,13 35,8' },
-  // ── Brust (links + rechts) über Thorax
-  { id:'Brust',              shape:'polygon', points:'25,24 37,24 39,31 37,35 25,35 23,31' },
-  { id:'Brust',              shape:'polygon', points:'48,24 60,24 62,31 60,35 48,35 46,31' },
-  // ── Wirbelsäule (schmaler Streifen)
-  { id:'Wirbelsaeule',       shape:'polygon', points:'41,18 44,18 44.5,46 40.5,46' },
-  // ── Technik / MRT-Gerät
-  { id:'Technik',            shape:'polygon', points:'60,79 93,79 96,85 95,97 60,97 58,90' },
+  { id:'Muskuloskelettales', shape:'polygon', points:'24,18 18,20 14,28 12,39 8,48 6,55 9,61 15,59 18,51 22,42 25,31 29,21' },
+  { id:'Muskuloskelettales', shape:'polygon', points:'58,18 64,20 68,28 70,39 75,48 79,55 76,61 70,59 67,51 63,42 60,31 55,21' },
+  { id:'Muskuloskelettales', shape:'polygon', points:'24,51 41,51 42,61 40,72 39,84 36,98 27,98 26,84 27,72 25,62' },
+  { id:'Muskuloskelettales', shape:'polygon', points:'43,51 60,51 59,62 58,72 59,84 57,98 48,98 45,84 44,72 42,61' },
+  { id:'Thorax',             shape:'polygon', points:'24,19 31,17 42,18 53,17 61,20 62,27 58,36 27,36 23,27' },
+  { id:'Abdomen',            shape:'polygon', points:'28,35 57,35 59,39 56,47 52,50 33,50 28,46 26,40' },
+  { id:'Becken',             shape:'polygon', points:'27,47 58,47 61,52 58,58 51,61 34,61 26,57 24,52' },
+  { id:'Hals',               shape:'polygon', points:'36,13 49,13 51,19 47,21 38,21 34,18' },
+  { id:'Neuroradiologie',    shape:'polygon', points:'35,2 49,2 53,6 52,12 48,15 37,15 33,12 32,6' },
+  { id:'Brust',              shape:'polygon', points:'27,21 40,20 42,24 40,34 35,36 28,33 25,27' },
+  { id:'Brust',              shape:'polygon', points:'44,20 57,21 60,27 57,33 50,36 44,34 42,24' },
+  { id:'Wirbelsaeule',       shape:'polygon', points:'42.9,18 43.5,18 43.8,47 43.2,49 42.7,47' },
+  { id:'Technik',            shape:'polygon', points:'65,80 91,80 97,85 97,97 88,99 66,99 62,94 63,85' },
 ]
 
 // ── MAGNETIC FIELD ANIMATION ──────────────────────────────────────────────
@@ -152,113 +140,68 @@ function MagneticField() {
     resize()
     window.addEventListener('resize', resize)
 
-    const spins = Array.from({ length: 30 }, (_, index) => {
-      const column = index % 5
-      const row = Math.floor(index / 5)
-      return {
-        x: 0.1 + column * 0.2 + (row % 2) * 0.018,
-        y: 0.14 + row * 0.145,
-        phase: index * 0.73,
-        speed: 0.00045 + (index % 4) * 0.000035,
-      }
-    })
+    const protons = Array.from({ length: 14 }, (_, index) => ({
+      orbit: index % 3,
+      phase: (index / 14) * Math.PI * 2,
+      speed: 0.000055 + (index % 4) * 0.000006,
+    }))
     const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
 
     let animId
-    const drawArrow = (x, y, length, angle, alpha) => {
-      const tipX = x + Math.cos(angle) * length
-      const tipY = y + Math.sin(angle) * length
-      ctx.strokeStyle = `rgba(125,211,252,${alpha})`
-      ctx.fillStyle = `rgba(249,115,22,${Math.min(alpha + 0.18, 0.8)})`
-      ctx.lineWidth = 1.15
-      ctx.beginPath()
-      ctx.moveTo(x, y)
-      ctx.lineTo(tipX, tipY)
-      ctx.stroke()
-      ctx.save()
-      ctx.translate(tipX, tipY)
-      ctx.rotate(angle)
-      ctx.beginPath()
-      ctx.moveTo(0, 0)
-      ctx.lineTo(-4.5, -2.5)
-      ctx.lineTo(-4.5, 2.5)
-      ctx.closePath()
-      ctx.fill()
-      ctx.restore()
-    }
 
     const draw = (time = 0) => {
       ctx.clearRect(0, 0, width, height)
       const cx = width * 0.5
-      const fieldTop = height * 0.08
-      const fieldBottom = height * 0.9
+      const cy = height * 0.43
+      const pulse = reducedMotion ? 0.4 : (Math.sin(time * 0.0011) + 1) / 2
 
-      const glow = ctx.createRadialGradient(cx, height * 0.43, 0, cx, height * 0.43, width * 0.48)
-      glow.addColorStop(0, 'rgba(56,189,248,0.055)')
-      glow.addColorStop(0.55, 'rgba(59,130,246,0.025)')
-      glow.addColorStop(1, 'rgba(59,130,246,0)')
+      const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, width * 0.52)
+      glow.addColorStop(0, `rgba(56,189,248,${0.035 + pulse * 0.018})`)
+      glow.addColorStop(0.55, 'rgba(37,99,235,0.018)')
+      glow.addColorStop(1, 'rgba(37,99,235,0)')
       ctx.fillStyle = glow
       ctx.fillRect(0, 0, width, height)
 
-      ctx.setLineDash([2, 10])
-      for (let i = 0; i < 7; i += 1) {
-        const x = width * (0.08 + i * 0.14)
-        ctx.strokeStyle = `rgba(125,211,252,${i === 3 ? 0.12 : 0.055})`
-        ctx.lineWidth = i === 3 ? 1.2 : 0.75
+      const orbitSizes = [
+        [width * 0.24, height * 0.31],
+        [width * 0.34, height * 0.39],
+        [width * 0.44, height * 0.47],
+      ]
+
+      orbitSizes.forEach(([rx, ry], index) => {
+        const gradient = ctx.createLinearGradient(cx - rx, cy, cx + rx, cy)
+        gradient.addColorStop(0, 'rgba(56,189,248,0)')
+        gradient.addColorStop(0.5, `rgba(125,211,252,${0.1 - index * 0.018})`)
+        gradient.addColorStop(1, 'rgba(56,189,248,0)')
+        ctx.strokeStyle = gradient
+        ctx.lineWidth = index === 0 ? 1.15 : 0.75
         ctx.beginPath()
-        ctx.moveTo(x, fieldBottom)
-        ctx.lineTo(x, fieldTop)
+        ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI * 2)
         ctx.stroke()
-        ctx.fillStyle = 'rgba(125,211,252,0.12)'
-        ctx.beginPath()
-        ctx.moveTo(x, fieldTop)
-        ctx.lineTo(x - 3.5, fieldTop + 7)
-        ctx.lineTo(x + 3.5, fieldTop + 7)
-        ctx.closePath()
-        ctx.fill()
-      }
-      ctx.setLineDash([])
-
-      const rfProgress = reducedMotion ? 0.52 : (time * 0.00007) % 1
-      const rfY = height * (0.16 + rfProgress * 0.68)
-      const rfGradient = ctx.createLinearGradient(width * 0.08, 0, width * 0.92, 0)
-      rfGradient.addColorStop(0, 'rgba(249,115,22,0)')
-      rfGradient.addColorStop(0.5, 'rgba(249,115,22,0.32)')
-      rfGradient.addColorStop(1, 'rgba(249,115,22,0)')
-      ctx.strokeStyle = rfGradient
-      ctx.lineWidth = 1
-      ctx.beginPath()
-      for (let x = width * 0.08; x <= width * 0.92; x += 3) {
-        const envelope = Math.sin(((x - width * 0.08) / (width * 0.84)) * Math.PI)
-        const y = rfY + Math.sin(x * 0.075) * 5 * envelope
-        if (x === width * 0.08) ctx.moveTo(x, y)
-        else ctx.lineTo(x, y)
-      }
-      ctx.stroke()
-
-      spins.forEach((spin) => {
-        const x = width * spin.x
-        const y = height * spin.y
-        const nearPulse = Math.max(0, 1 - Math.abs(y - rfY) / (height * 0.12))
-        const phase = spin.phase + (reducedMotion ? 0 : time * spin.speed)
-        const tilt = -Math.PI / 2 + Math.sin(phase) * 0.16 + nearPulse * 0.55
-
-        ctx.strokeStyle = 'rgba(148,163,184,0.11)'
-        ctx.lineWidth = 0.8
-        ctx.beginPath()
-        ctx.ellipse(x, y, 10, 3.5, 0, 0, Math.PI * 2)
-        ctx.stroke()
-
-        ctx.fillStyle = 'rgba(248,250,252,0.5)'
-        ctx.beginPath()
-        ctx.arc(x, y, 1.8, 0, Math.PI * 2)
-        ctx.fill()
-        drawArrow(x, y, 12 + nearPulse * 3, tilt, 0.26 + nearPulse * 0.35)
       })
 
-      ctx.fillStyle = 'rgba(125,211,252,0.28)'
-      ctx.font = '600 9px Manrope, sans-serif'
-      ctx.fillText('B₀', width * 0.08 - 6, fieldTop - 9)
+      protons.forEach((proton) => {
+        const [rx, ry] = orbitSizes[proton.orbit]
+        const angle = proton.phase + (reducedMotion ? 0 : time * proton.speed)
+        const x = cx + Math.cos(angle) * rx
+        const y = cy + Math.sin(angle) * ry
+        const alpha = 0.18 + (Math.cos(angle) + 1) * 0.1
+        ctx.shadowColor = 'rgba(56,189,248,0.5)'
+        ctx.shadowBlur = 6
+        ctx.fillStyle = `rgba(186,230,253,${alpha})`
+        ctx.beginPath()
+        ctx.arc(x, y, proton.orbit === 0 ? 2 : 1.5, 0, Math.PI * 2)
+        ctx.fill()
+        ctx.shadowBlur = 0
+      })
+
+      const rfRadius = width * (0.08 + pulse * 0.035)
+      ctx.strokeStyle = `rgba(249,115,22,${0.11 - pulse * 0.045})`
+      ctx.lineWidth = 1
+      ctx.beginPath()
+      ctx.ellipse(cx, cy, rfRadius, rfRadius * 0.32, 0, 0, Math.PI * 2)
+      ctx.stroke()
+
       if (!reducedMotion) animId = requestAnimationFrame(draw)
     }
     animId = requestAnimationFrame(draw)
@@ -346,6 +289,11 @@ export default function Hero() {
   }
 
   const handleZoneClick = (zoneId) => {
+    const usesTouchSelection = window.matchMedia?.('(max-width: 640px), (hover: none), (pointer: coarse)').matches
+    if (usesTouchSelection && hovered !== zoneId) {
+      setHovered(zoneId)
+      return
+    }
     if (POPUP_ZONES[zoneId]) {
       setPopup(zoneId)
       return
@@ -409,11 +357,13 @@ export default function Hero() {
               ?`radial-gradient(ellipse 60% 70% at 50% 38%, ${hovFach.color}1a 0%, transparent 70%)`
               :'none'}}/>
 
-          <svg className={styles.zoneSvg} viewBox="0 0 100 100" preserveAspectRatio="none">
+          <svg className={styles.zoneSvg} viewBox="0 0 100 100" preserveAspectRatio="none" aria-label={hintLabel}>
             {ZONES.map((zone,i)=>{
               const isHov = hovered===zone.id
               const color = FACH_DATA[zone.id]?.color||'#f97316'
               const commonProps = {
+                'data-zone': zone.id,
+                'aria-label': FACH_NAMES[lang]?.[zone.id] || FACH_NAMES.de[zone.id],
                 fill: isHov ? color+'2f' : 'transparent',
                 stroke: isHov ? color : 'transparent',
                 strokeWidth: '0.35',
