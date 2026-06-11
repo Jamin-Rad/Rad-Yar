@@ -34,6 +34,18 @@ export function getBoxLabel(boxNum, lang = 'de') {
   return (LABELS[lang] ?? LABELS.de)[idx] ?? `Box ${boxNum}`
 }
 
+// Wiederholungs-Intervall als Erklärung für Box 1-5 (Box 6-8 sagt es schon im Label)
+const INTERVALS = {
+  de: ['nach 1 Tag', 'nach 3 Tagen', 'nach 7 Tagen', 'nach 14 Tagen', 'nach 30 Tagen', null, null, null],
+  en: ['after 1 day', 'after 3 days', 'after 7 days', 'after 14 days', 'after 30 days', null, null, null],
+  fa: ['بعد از ۱ روز', 'بعد از ۳ روز', 'بعد از ۷ روز', 'بعد از ۱۴ روز', 'بعد از ۳۰ روز', null, null, null],
+}
+
+export function getBoxInterval(boxNum, lang = 'de') {
+  const idx = (boxNum ?? 1) - 1
+  return (INTERVALS[lang] ?? INTERVALS.de)[idx] ?? null
+}
+
 // ─── Datum-Helfer ──────────────────────────────────────
 const todayStart = () => {
   const d = new Date(); d.setHours(0,0,0,0); return d

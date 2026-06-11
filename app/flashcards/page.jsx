@@ -4,8 +4,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useMemo, useState } from 'react'
 import { useAuth } from '@clerk/nextjs'
-import { FLASHCARD_TOPICS, FLASHCARDS, getCardById, getFlashcardTopic } from '@/data/flashcards'
-import { LEITNER_STEPS, formatDueDate, isDue, loadLeitnerState, getBoxLabel } from '@/utils/leitnerStorage'
+import { FLASHCARD_TOPICS, FLASHCARDS, getFlashcardTopic } from '@/data/flashcards'
+import { LEITNER_STEPS, isDue, loadLeitnerState, getBoxLabel, getBoxInterval } from '@/utils/leitnerStorage'
 import { loadSettings } from '@/utils/settingsStorage'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
@@ -16,84 +16,66 @@ const TEXT = {
     title: 'Flashcards',
     lead: 'Hier werden alle bereits gelesenen Flashcards automatisch gesammelt und nach dem klassischen Leitner-System wiederholt. Die Daten bleiben lokal in deinem Browser gespeichert.',
     due: 'Heute fällig',
-    studied: 'Gelesene Karten',
-    mastered: 'Abgeschlossen',
-    weak: 'Zurück in Box 1',
+    dueRemaining: 'noch zu lernen',
     addNew: 'Neue Flashcards hinzufügen',
-    addLead: 'Wähle wie im Lernen-Menü ein Thema. Beim Lesen werden die Karten automatisch in deine Flashcard-Verwaltung übernommen.',
-    tocTitle: 'Inhaltsverzeichnis durchsuchen',
-    tocSub: 'Wähle ein Fachgebiet und Thema im Lernen-Bereich. Beim Durcharbeiten der Flashcards eines Themas werden die Karten automatisch hier in deiner Verwaltung gesammelt.',
-    tocCta: 'Zum Inhaltsverzeichnis →',
+    addLead: 'Wähle ein Kapitel und darin ein verfügbares Thema – die Flashcards öffnen sich direkt hier, nicht im Lernen-Bereich.',
     progress: 'Leitner-Boxen',
-    progressHint: 'Klicke auf eine Box, um Hauptgruppen zu sehen und ohne Zählung zu üben.',
+    progressHint: 'Klicke auf eine Box, um die heute fälligen Karten zu lernen.',
     dueInBox: 'fällig',
     inactiveBox: 'Inaktiv',
-    activateInProfile: 'Im Profil aktivieren →',
     open: 'Öffnen →',
     cards: 'Karten',
-    boxModalTitle: 'Karten in',
-    boxModalLead: 'Hauptgruppen in dieser Leitner-Box. Die Übung hier verändert keinen Fortschritt und wird nicht gezählt.',
-    mainGroups: 'Hauptgruppen',
-    cardsInBox: 'Karten in dieser Box',
-    practiceNoCount: 'Ohne Zählung wiederholen',
+    topicSingular: 'Thema',
+    topicPlural: 'Themen',
+    chapterModalLead: 'Verfügbare Themen in diesem Kapitel.',
+    boxModalLead: 'Heute fällige Karten in dieser Box.',
+    noDueInBox: 'Keine fälligen Karten heute in dieser Box. ✓',
+    learnNow: 'Jetzt lernen →',
     close: 'Schließen',
-    noCardsInBox: 'In dieser Box sind aktuell keine Karten.',
   },
   en: {
     kicker: 'Leitner system',
     title: 'Flashcards',
     lead: 'All flashcards you have already studied are collected here and reviewed using the classic Leitner system. Your progress is stored locally in this browser.',
     due: 'Due today',
-    studied: 'Studied cards',
-    mastered: 'Completed',
-    weak: 'Back in box 1',
+    dueRemaining: 'still to learn',
     addNew: 'Add new flashcards',
-    addLead: 'Choose a topic like in the Learn menu. When you study cards, they are automatically added to your flashcard management.',
-    tocTitle: 'Browse the table of contents',
-    tocSub: 'Pick a specialty and topic in the Learn section. While working through a topic\'s flashcards, the cards are automatically collected here in your management.',
-    tocCta: 'Go to table of contents →',
+    addLead: 'Pick a chapter, then an available topic inside it – the flashcards open directly here, not in the Learn section.',
     progress: 'Leitner boxes',
-    progressHint: 'Click a box to see main groups and practice without counting.',
+    progressHint: 'Click a box to learn the cards due today.',
     dueInBox: 'due',
     inactiveBox: 'Inactive',
-    activateInProfile: 'Enable in profile →',
     open: 'Open →',
     cards: 'cards',
-    boxModalTitle: 'Cards in',
-    boxModalLead: 'Main groups in this Leitner box. Practice here does not change progress and is not counted.',
-    mainGroups: 'Main groups',
-    cardsInBox: 'Cards in this box',
-    practiceNoCount: 'Review without counting',
+    topicSingular: 'topic',
+    topicPlural: 'topics',
+    chapterModalLead: 'Available topics in this chapter.',
+    boxModalLead: 'Cards due today in this box.',
+    noDueInBox: 'No cards due today in this box. ✓',
+    learnNow: 'Learn now →',
     close: 'Close',
-    noCardsInBox: 'There are currently no cards in this box.',
   },
   fa: {
     kicker: 'سیستم لایتنر',
     title: 'فلش‌کارت‌ها',
     lead: 'اینجا همه فلش‌کارت‌هایی که خوانده شده‌اند به صورت خودکار جمع می‌شوند و با سیستم قدیمی لایتنر مرور می‌شوند. اطلاعات فقط در همین مرورگر ذخیره می‌شود.',
     due: 'امروز برای مرور',
-    studied: 'کارت‌های خوانده‌شده',
-    mastered: 'تمام‌شده',
-    weak: 'برگشته به جعبه ۱',
+    dueRemaining: 'هنوز یاد نگرفته',
     addNew: 'اضافه کردن فلش‌کارت جدید',
-    addLead: 'مثل منوی Lernen یک موضوع را انتخاب کن. هنگام خواندن، کارت‌ها خودکار وارد مدیریت فلش‌کارت می‌شوند.',
-    tocTitle: 'مرور فهرست مطالب',
-    tocSub: 'یک تخصص و موضوع را در بخش Lernen انتخاب کن. هنگام مرور فلش‌کارت‌های یک موضوع، کارت‌ها خودکار اینجا در مدیریت تو جمع می‌شوند.',
-    tocCta: 'به فهرست مطالب ←',
+    addLead: 'یک فصل و سپس یک موضوع موجود در آن را انتخاب کن — فلش‌کارت‌ها همین‌جا باز می‌شوند، نه در بخش Lernen.',
     progress: 'جعبه‌های لایتنر',
-    progressHint: 'روی یک جعبه بزن تا گروه‌های اصلی را ببینی و بدون شمارش تمرین کنی.',
+    progressHint: 'روی یک جعبه بزن تا کارت‌های امروزِ آن را یاد بگیری.',
     dueInBox: 'مقرر',
     inactiveBox: 'غیرفعال',
-    activateInProfile: 'فعال‌سازی در پروفایل ←',
     open: 'باز کردن ←',
     cards: 'کارت',
-    boxModalTitle: 'کارت‌های',
-    boxModalLead: 'گروه‌های اصلی این جعبه لایتنر. تمرین از اینجا پیشرفت را تغییر نمی‌دهد و شمارش نمی‌شود.',
-    mainGroups: 'گروه‌های اصلی',
-    cardsInBox: 'کارت‌های این جعبه',
-    practiceNoCount: 'مرور بدون شمارش',
+    topicSingular: 'موضوع',
+    topicPlural: 'موضوع',
+    chapterModalLead: 'موضوعات موجود در این فصل.',
+    boxModalLead: 'کارت‌های امروزِ این جعبه.',
+    noDueInBox: 'امروز کارتی در این جعبه برای مرور نیست. ✓',
+    learnNow: 'الان یاد بگیر ←',
     close: 'بستن',
-    noCardsInBox: 'در این جعبه فعلاً کارتی وجود ندارد.',
   },
 }
 
@@ -103,10 +85,8 @@ function localize(value, lang) {
   return value[lang] || value.de || ''
 }
 
-function firstPracticeHref(cards, box, lang) {
-  const topicId = cards[0]?.topicId || 'meniskus'
-  const base = `/flashcards/${topicId}?mode=practice&box=${box}`
-  return lang === 'de' ? base : `${base}&lang=${lang}`
+const todayStart = () => {
+  const d = new Date(); d.setHours(0, 0, 0, 0); return d
 }
 
 export default function FlashcardsPage() {
@@ -118,6 +98,7 @@ export default function FlashcardsPage() {
   const [state, setState] = useState({})
   const [settings, setSettings] = useState({ longBoxesEnabled: false })
   const [selectedBox, setSelectedBox] = useState(null)
+  const [selectedChapter, setSelectedChapter] = useState(null)
 
   const refresh = () => {
     setState(loadLeitnerState(userId))
@@ -133,13 +114,14 @@ export default function FlashcardsPage() {
   }, [userId])
 
   const records = useMemo(() => Object.values(state), [state])
-  const validRows = useMemo(() => records
-    .map(record => ({ record, card: getCardById(record.id) }))
-    .filter(row => row.card), [records])
 
   const dueRecords = useMemo(() => records.filter(isDue), [records])
-  const mastered = records.filter(r => r.status === 'mastered').length
-  const weak = records.filter(r => r.status !== 'mastered' && r.box === 1 && (r.wrongCount || 0) > 0).length
+  const reviewedTodayCount = useMemo(() => {
+    const start = todayStart().getTime()
+    return records.filter(r => r.lastReviewedAt && new Date(r.lastReviewedAt).getTime() >= start).length
+  }, [records])
+  const dueRemaining = dueRecords.length
+  const dueTotal = dueRemaining + reviewedTodayCount
 
   const boxCounts = LEITNER_STEPS.map(step => {
     const boxRecords = records.filter(r => r.status !== 'mastered' && r.box === step.box)
@@ -150,19 +132,40 @@ export default function FlashcardsPage() {
     }
   })
 
-  const selectedBoxCards = useMemo(() => {
+  const selectedBoxDueByTopic = useMemo(() => {
     if (!selectedBox) return []
-    return validRows.filter(({ record }) => record.status !== 'mastered' && record.box === selectedBox.box)
-  }, [selectedBox, validRows])
-
-  const selectedBoxGroups = useMemo(() => {
     const map = new Map()
-    selectedBoxCards.forEach(({ card }) => {
-      const label = localize(card.category, lang) || '—'
-      map.set(label, (map.get(label) || 0) + 1)
+    records
+      .filter(r => r.status !== 'mastered' && r.box === selectedBox.box && isDue(r))
+      .forEach(record => {
+        const card = FLASHCARDS.find(c => c.id === record.id)
+        if (!card) return
+        const topic = getFlashcardTopic(card.topicId)
+        if (!topic) return
+        if (!map.has(topic.id)) map.set(topic.id, { topic, count: 0 })
+        map.get(topic.id).count += 1
+      })
+    return [...map.values()]
+  }, [selectedBox, records])
+
+  const chapterGroups = useMemo(() => {
+    const map = new Map()
+    FLASHCARD_TOPICS.forEach(topic => {
+      const key = `${topic.area}__${topic.chapter}`
+      if (!map.has(key)) {
+        map.set(key, {
+          key,
+          area: topic.area,
+          chapter: topic.chapter,
+          icon: topic.icon,
+          iconImage: topic.iconImage,
+          topics: [],
+        })
+      }
+      map.get(key).topics.push(topic)
     })
-    return [...map.entries()].map(([label, count]) => ({ label, count }))
-  }, [selectedBoxCards, lang])
+    return [...map.values()]
+  }, [])
 
   return (
     <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
@@ -174,8 +177,15 @@ export default function FlashcardsPage() {
             <p className={styles.lead}>{t.lead}</p>
           </div>
           <div className={styles.heroPanel}>
-            <strong>{dueRecords.length}</strong>
-            <span>{t.due}</span>
+            <div className={styles.heroPanelStat}>
+              <strong>{dueTotal}</strong>
+              <span>{t.due}</span>
+            </div>
+            <div className={styles.heroPanelDivider} />
+            <div className={styles.heroPanelStat}>
+              <strong>{dueRemaining}</strong>
+              <span>{t.dueRemaining}</span>
+            </div>
           </div>
         </section>
 
@@ -189,32 +199,31 @@ export default function FlashcardsPage() {
           <div className={styles.boxGrid}>
             {boxCounts.map(box => {
               const locked = box.box > 5 && !settings.longBoxesEnabled
+              const interval = getBoxInterval(box.box, lang)
               if (locked) {
                 return (
                   <div key={box.box} className={`${styles.boxCard} ${styles.boxCardLocked}`}>
-                    <strong className={styles.boxCardLockIcon}>🔒</strong>
-                    <span>{getBoxLabel(box.box, lang)}</span>
-                    <small className={styles.boxInactiveLabel}>{t.inactiveBox}</small>
-                    <Link href={withLang('/profil#settings')} className={styles.boxCardUnlockLink}>{t.activateInProfile}</Link>
+                    <div className={styles.boxCardTitle}>
+                      <strong className={styles.boxCardLockIcon}>🔒</strong>
+                      <strong>{getBoxLabel(box.box, lang)}</strong>
+                    </div>
+                    <span className={styles.boxInactiveLabel}>{t.inactiveBox}</span>
                   </div>
                 )
               }
               return (
                 <button key={box.box} type="button" className={styles.boxCard} onClick={() => setSelectedBox(box)}>
-                  <strong>{box.count}</strong>
-                  <span>{getBoxLabel(box.box, lang)}</span>
-                  {box.due > 0 && <small className={styles.boxDue}>{box.due} {t.dueInBox}</small>}
+                  <div className={styles.boxCardTitle}>
+                    <strong>{getBoxLabel(box.box, lang)}</strong>
+                    {interval && <span className={styles.boxCardMeaning}>({interval})</span>}
+                  </div>
+                  <span className={`${styles.boxDue} ${box.due === 0 ? styles.boxDueZero : ''}`}>{box.due} {t.dueInBox}</span>
+                  <span className={styles.boxTotal}>{box.count} {t.cards}</span>
                 </button>
               )
             })}
           </div>
         </section>
-
-        <div className={styles.statsGrid}>
-          <div className={styles.statCard}><strong>{records.length}</strong><span>{t.studied}</span></div>
-          <div className={styles.statCard}><strong>{mastered}</strong><span>{t.mastered}</span></div>
-          <div className={styles.statCard}><strong>{weak}</strong><span>{t.weak}</span></div>
-        </div>
 
         <section className={styles.section}>
           <div className={styles.sectionHead}>
@@ -224,27 +233,21 @@ export default function FlashcardsPage() {
             </div>
           </div>
           <div className={styles.topicGrid}>
-            <Link href={withLang('/lernen')} className={`${styles.topicCard} ${styles.topicCardLarge} ${styles.tocCard}`}>
-              <span className={styles.topicIcon}>📚</span>
-              <span className={styles.topicText}>
-                <strong>{t.tocTitle}</strong>
-                <small>{t.tocSub}</small>
-              </span>
-              <span className={styles.topicArrow}>{t.tocCta}</span>
-            </Link>
-            {FLASHCARD_TOPICS.map(topic => (
-              <Link key={topic.id} href={withLang(topic.href)} className={`${styles.topicCard} ${styles.topicCardLarge}`}>
-                <span className={styles.topicIcon}>
-                  {topic.iconImage ? <Image src={topic.iconImage} alt={localize(topic.title, lang)} width={54} height={54} style={{ objectFit: 'contain' }} /> : topic.icon}
-                </span>
-                <span className={styles.topicText}>
-                  <strong>{localize(topic.title, lang)}</strong>
-                  <small>{topic.area} · {topic.chapter} · {FLASHCARDS.filter(card => card.topicId === topic.id).length} {t.cards}</small>
-                  <small>{localize(topic.subtitle, lang)}</small>
-                </span>
-                <span className={styles.topicArrow}>{t.open}</span>
-              </Link>
-            ))}
+            {chapterGroups.map(group => {
+              const cardCount = group.topics.reduce((sum, topic) => sum + FLASHCARDS.filter(c => c.topicId === topic.id).length, 0)
+              return (
+                <button key={group.key} type="button" className={`${styles.topicCard} ${styles.topicCardLarge} ${styles.topicCardBtn}`} onClick={() => setSelectedChapter(group)}>
+                  <span className={styles.topicIcon}>
+                    {group.iconImage ? <Image src={group.iconImage} alt={group.chapter} width={54} height={54} style={{ objectFit: 'contain' }} /> : group.icon}
+                  </span>
+                  <span className={styles.topicText}>
+                    <strong>{group.chapter}</strong>
+                    <small>{group.area} · {group.topics.length} {group.topics.length === 1 ? t.topicSingular : t.topicPlural} · {cardCount} {t.cards}</small>
+                  </span>
+                  <span className={styles.topicArrow}>{t.open}</span>
+                </button>
+              )
+            })}
           </div>
         </section>
       </div>
@@ -254,43 +257,54 @@ export default function FlashcardsPage() {
           <div className={styles.boxModal} onClick={event => event.stopPropagation()}>
             <button type="button" className={styles.boxModalClose} onClick={() => setSelectedBox(null)} aria-label={t.close}>×</button>
             <div className={styles.boxModalHeader}>
-              <span className={styles.kicker}>{t.boxModalTitle} {getBoxLabel(selectedBox.box, lang)}</span>
+              <span className={styles.kicker}>
+                {getBoxLabel(selectedBox.box, lang)}
+                {getBoxInterval(selectedBox.box, lang) ? ` · ${getBoxInterval(selectedBox.box, lang)}` : ''}
+              </span>
               <h2>{getBoxLabel(selectedBox.box, lang)}</h2>
               <p>{t.boxModalLead}</p>
             </div>
 
-            {selectedBoxCards.length === 0 ? (
-              <div className={styles.empty}>{t.noCardsInBox}</div>
+            {selectedBoxDueByTopic.length === 0 ? (
+              <div className={styles.empty}>{t.noDueInBox}</div>
             ) : (
-              <>
-                <div className={styles.groupPreviewBlock}>
-                  <strong>{t.mainGroups}</strong>
-                  <div className={styles.groupPills}>
-                    {selectedBoxGroups.map(group => (
-                      <span key={group.label} className={styles.groupPill}>{group.label} · {group.count}</span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className={styles.boxCardList}>
-                  <strong>{t.cardsInBox}</strong>
-                  {selectedBoxCards.slice(0, 8).map(({ card, record }) => {
-                    const topic = getFlashcardTopic(card.topicId)
-                    return (
-                      <div key={card.id} className={styles.boxCardRow}>
-                        <span>{localize(card.category, lang)}</span>
-                        <p>{localize(card.front, lang)}</p>
-                        <small>{localize(topic?.title, lang)} · {formatDueDate(record, lang)}</small>
-                      </div>
-                    )
-                  })}
-                </div>
-
-                <Link href={firstPracticeHref(selectedBoxCards.map(row => row.card), selectedBox.box, lang)} className={styles.practiceBtn}>
-                  🧠 {t.practiceNoCount}
-                </Link>
-              </>
+              <div className={styles.dueTopicList}>
+                {selectedBoxDueByTopic.map(({ topic, count }) => (
+                  <Link key={topic.id} href={withLang(`/flashcards/${topic.id}?box=${selectedBox.box}`)} className={styles.dueTopicRow}>
+                    <span className={styles.dueTopicInfo}>
+                      <strong>{localize(topic.title, lang)}</strong>
+                      <small>{count} {t.dueInBox}</small>
+                    </span>
+                    <span className={styles.topicArrow}>{t.learnNow}</span>
+                  </Link>
+                ))}
+              </div>
             )}
+          </div>
+        </div>
+      )}
+
+      {selectedChapter && (
+        <div className={styles.boxModalOverlay} onClick={() => setSelectedChapter(null)}>
+          <div className={styles.boxModal} onClick={event => event.stopPropagation()}>
+            <button type="button" className={styles.boxModalClose} onClick={() => setSelectedChapter(null)} aria-label={t.close}>×</button>
+            <div className={styles.boxModalHeader}>
+              <span className={styles.kicker}>{selectedChapter.area}</span>
+              <h2>{selectedChapter.chapter}</h2>
+              <p>{t.chapterModalLead}</p>
+            </div>
+
+            <div className={styles.dueTopicList}>
+              {selectedChapter.topics.map(topic => (
+                <Link key={topic.id} href={withLang(topic.href)} className={styles.dueTopicRow}>
+                  <span className={styles.dueTopicInfo}>
+                    <strong>{localize(topic.title, lang)}</strong>
+                    <small>{localize(topic.subtitle, lang)} · {FLASHCARDS.filter(c => c.topicId === topic.id).length} {t.cards}</small>
+                  </span>
+                  <span className={styles.topicArrow}>{t.open}</span>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       )}

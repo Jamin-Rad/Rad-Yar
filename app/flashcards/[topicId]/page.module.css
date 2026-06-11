@@ -57,6 +57,12 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-decoration: none;
+}
+
+a.topicName:hover {
+  color: var(--orange);
+  text-decoration: underline;
 }
 
 .cardCount {
@@ -506,13 +512,13 @@
   color: var(--text);
   font-size: clamp(15px, 2vw, 17px);
   line-height: 1.78;
-  font-weight: 560;
+  font-weight: 400;
 }
 
 .diagramBlock {
   border-radius: 18px;
   padding: 14px 16px;
-  background: var(--navy);
+  background: #1a2051;
   color: #fff;
   border: 1px solid rgba(255,255,255,0.08);
 }

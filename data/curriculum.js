@@ -777,3 +777,18 @@ export const t = (obj, lang) => obj?.[lang] || obj?.de || ''
 export const getFachTitle = (fach, lang) => t(fach?.title, lang)
 export const getKapitelTitle = (kapitel, lang) => t(kapitel?.title, lang)
 export const getThemaTitle = (thema, lang) => t(thema?.title, lang)
+
+// Findet die Lektion (Lernen-Seite) zu einem Flashcard-Thema, z.B. '/flashcards/meniskus' → '/msk/knie/meniskus'
+export const getLessonLinkForFlashcard = (flashcardHref) => {
+  for (const fach of CURRICULUM) {
+    for (const kapitel of fach.kapitel) {
+      for (const thema of kapitel.themen) {
+        if (thema.flashcardLink === flashcardHref) return thema.link || null
+        for (const sub of thema.sub || []) {
+          if (sub.flashcardLink === flashcardHref) return sub.link || null
+        }
+      }
+    }
+  }
+  return null
+}

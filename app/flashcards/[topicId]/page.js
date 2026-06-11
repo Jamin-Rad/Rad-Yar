@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useAuth } from '@clerk/nextjs'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { FLASHCARDS, getFlashcardTopic } from '@/data/flashcards'
+import { getLessonLinkForFlashcard } from '@/data/curriculum'
 import {
   loadLeitnerState, answerCard, ensureCardStarted,
   isDue, getBoxLabel,
@@ -135,6 +136,7 @@ export default function FlashcardReviewPage({ params, searchParams }) {
 
   const topicId = params?.topicId ?? 'meniskus'
   const topic = getFlashcardTopic(topicId)
+  const lessonLink = topic ? getLessonLinkForFlashcard(topic.href) : null
   const allCards = useMemo(() => FLASHCARDS.filter(c => c.topicId === topicId), [topicId])
   const practiceMode = searchParams?.mode === 'practice'
   const boxFilter = searchParams?.box ? Number(searchParams.box) : null
@@ -158,6 +160,11 @@ export default function FlashcardReviewPage({ params, searchParams }) {
       selectedCards = allCards.filter(card => {
         const record = state[card.id]
         return record && record.status !== 'mastered' && Number(record.box) === boxFilter
+      })
+    } else if (boxFilter) {
+      selectedCards = allCards.filter(card => {
+        const record = state[card.id]
+        return record && isDue(record) && Number(record.box) === boxFilter
       })
     }
 
@@ -265,7 +272,18 @@ export default function FlashcardReviewPage({ params, searchParams }) {
       <header className={styles.topBar}>
         <Link href={backHref} className={styles.backBtn}>{t.back}</Link>
         <div className={styles.topCenter}>
-          <span className={styles.topicName}>{topic.title?.[lang] || topic.title?.de}</span>
+          {lessonLink ? (
+            <a
+              href={lang === 'de' ? lessonLink : `${lessonLink}?lang=${lang}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.topicName}
+            >
+              {topic.title?.[lang] || topic.title?.de}
+            </a>
+          ) : (
+            <span className={styles.topicName}>{topic.title?.[lang] || topic.title?.de}</span>
+          )}
           <span className={styles.cardCount}>{t.cardOf(index + 1, cards.length)}</span>
         </div>
         <div className={styles.boxPill}>{practiceMode ? t.practiceMode : boxLabel}</div>
