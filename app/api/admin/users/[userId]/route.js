@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { requireAdmin, ADMIN_EMAIL } from '@/lib/adminAuth'
+import { requireAdmin, hasAdminEmail } from '@/lib/adminAuth'
 
 export async function PATCH(request, { params }) {
   try {
@@ -12,7 +12,7 @@ export async function PATCH(request, { params }) {
     const { action } = await request.json()
 
     const target = await client.users.getUser(userId)
-    if (target.emailAddresses?.[0]?.emailAddress === ADMIN_EMAIL) {
+    if (hasAdminEmail(target.emailAddresses)) {
       return NextResponse.json({ error: 'Admin-Account kann nicht bearbeitet werden' }, { status: 400 })
     }
 
@@ -38,7 +38,7 @@ export async function DELETE(_request, { params }) {
     const { userId } = await params
 
     const target = await client.users.getUser(userId)
-    if (target.emailAddresses?.[0]?.emailAddress === ADMIN_EMAIL) {
+    if (hasAdminEmail(target.emailAddresses)) {
       return NextResponse.json({ error: 'Admin-Account kann nicht gelöscht werden' }, { status: 400 })
     }
 

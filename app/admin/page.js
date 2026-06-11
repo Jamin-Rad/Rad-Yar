@@ -8,6 +8,14 @@ import styles from './admin.module.css'
 // Deine Admin-E-Mail — nur dieser User sieht die Admin-Seite
 const ADMIN_EMAIL = 'dr.benjaminzia@gmail.com'
 
+// Prüft alle hinterlegten E-Mail-Adressen (nicht nur die "primäre"),
+// case-insensitive — z.B. relevant bei Login über Google statt Passwort.
+function userHasAdminEmail(user) {
+  return !!user?.emailAddresses?.some(
+    e => e.emailAddress?.toLowerCase() === ADMIN_EMAIL.toLowerCase()
+  )
+}
+
 // Letzte 14 Tage als Registrierungs-Chart
 function RegistrationChart({ users }) {
   const days = useMemo(() => {
@@ -65,7 +73,7 @@ export default function AdminPage() {
   const [actionError, setActionError] = useState('')
   const [actionLoadingId, setActionLoadingId] = useState(null)
 
-  const isAdmin = isLoaded && user?.primaryEmailAddress?.emailAddress === ADMIN_EMAIL
+  const isAdmin = isLoaded && userHasAdminEmail(user)
 
   function loadUsers(query) {
     setLoadingUsers(true)
@@ -154,7 +162,7 @@ export default function AdminPage() {
 
       <div className={styles.content}>
         <h1 className={styles.title}>Admin-Dashboard</h1>
-        <p className={styles.sub}>Angemeldet als <strong>{user?.primaryEmailAddress?.emailAddress}</strong></p>
+        <p className={styles.sub}>Angemeldet als <strong>{user?.primaryEmailAddress?.emailAddress || user?.emailAddresses?.[0]?.emailAddress}</strong></p>
 
         {/* Statistiken */}
         <div className={styles.statsGrid}>

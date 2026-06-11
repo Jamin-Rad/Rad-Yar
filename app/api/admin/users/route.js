@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { requireAdmin, ADMIN_EMAIL } from '@/lib/adminAuth'
+import { requireAdmin, hasAdminEmail } from '@/lib/adminAuth'
 
 export async function GET(request) {
   try {
@@ -27,7 +27,7 @@ export async function GET(request) {
       lastSignInAt: u.lastSignInAt,
       banned: u.banned,
       locked: u.locked,
-      isAdmin: u.emailAddresses?.[0]?.emailAddress === ADMIN_EMAIL,
+      isAdmin: hasAdminEmail(u.emailAddresses),
     }))
 
     return NextResponse.json({ users: cleaned, totalCount })
