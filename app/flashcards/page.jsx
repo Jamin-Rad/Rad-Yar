@@ -1,10 +1,10 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { useEffect, useMemo, useState } from 'react'
 import { useAuth } from '@clerk/nextjs'
 import { FLASHCARD_TOPICS, FLASHCARDS, getFlashcardTopic } from '@/data/flashcards'
+import { CURRICULUM, getFachTitle, getKapitelTitle, getThemaTitle } from '@/data/curriculum'
 import { LEITNER_STEPS, isDue, loadLeitnerState, getBoxLabel, getBoxInterval } from '@/utils/leitnerStorage'
 import { loadSettings } from '@/utils/settingsStorage'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -17,8 +17,9 @@ const TEXT = {
     lead: 'Hier werden alle bereits gelesenen Flashcards automatisch gesammelt und nach dem klassischen Leitner-System wiederholt. Die Daten bleiben lokal in deinem Browser gespeichert.',
     due: 'Heute fällig',
     dueRemaining: 'noch zu lernen',
+    dueClickHint: 'Klicken zum Lernen (zufällige Reihenfolge)',
     addNew: 'Neue Flashcards hinzufügen',
-    addLead: 'Wähle ein Kapitel und darin ein verfügbares Thema – die Flashcards öffnen sich direkt hier, nicht im Lernen-Bereich.',
+    addLead: 'Wähle ein Kapitel – im Pop-up siehst du alle Themen dieses Kapitels, die bereits Flashcards haben.',
     progress: 'Leitner-Boxen',
     progressHint: 'Klicke auf eine Box, um die heute fälligen Karten zu lernen.',
     dueInBox: 'fällig',
@@ -27,7 +28,8 @@ const TEXT = {
     cards: 'Karten',
     topicSingular: 'Thema',
     topicPlural: 'Themen',
-    chapterModalLead: 'Verfügbare Themen in diesem Kapitel.',
+    chapterModalLead: 'Themen in diesem Kapitel mit verfügbaren Flashcards.',
+    noFlashcardsYet: 'Noch keine Flashcards in diesem Kapitel.',
     boxModalLead: 'Heute fällige Karten in dieser Box.',
     noDueInBox: 'Keine fälligen Karten heute in dieser Box. ✓',
     learnNow: 'Jetzt lernen →',
@@ -39,8 +41,9 @@ const TEXT = {
     lead: 'All flashcards you have already studied are collected here and reviewed using the classic Leitner system. Your progress is stored locally in this browser.',
     due: 'Due today',
     dueRemaining: 'still to learn',
+    dueClickHint: 'Click to learn (random order)',
     addNew: 'Add new flashcards',
-    addLead: 'Pick a chapter, then an available topic inside it – the flashcards open directly here, not in the Learn section.',
+    addLead: 'Pick a chapter – the pop-up shows all topics in that chapter that already have flashcards.',
     progress: 'Leitner boxes',
     progressHint: 'Click a box to learn the cards due today.',
     dueInBox: 'due',
@@ -49,7 +52,8 @@ const TEXT = {
     cards: 'cards',
     topicSingular: 'topic',
     topicPlural: 'topics',
-    chapterModalLead: 'Available topics in this chapter.',
+    chapterModalLead: 'Topics in this chapter with available flashcards.',
+    noFlashcardsYet: 'No flashcards in this chapter yet.',
     boxModalLead: 'Cards due today in this box.',
     noDueInBox: 'No cards due today in this box. ✓',
     learnNow: 'Learn now →',
@@ -61,8 +65,9 @@ const TEXT = {
     lead: 'اینجا همه فلش‌کارت‌هایی که خوانده شده‌اند به صورت خودکار جمع می‌شوند و با سیستم قدیمی لایتنر مرور می‌شوند. اطلاعات فقط در همین مرورگر ذخیره می‌شود.',
     due: 'امروز برای مرور',
     dueRemaining: 'هنوز یاد نگرفته',
+    dueClickHint: 'برای یادگیری کلیک کن (ترتیب تصادفی)',
     addNew: 'اضافه کردن فلش‌کارت جدید',
-    addLead: 'یک فصل و سپس یک موضوع موجود در آن را انتخاب کن — فلش‌کارت‌ها همین‌جا باز می‌شوند، نه در بخش Lernen.',
+    addLead: 'یک فصل را انتخاب کن — در پنجره بازشده همه موضوعات این فصل که فلش‌کارت دارند نشان داده می‌شوند.',
     progress: 'جعبه‌های لایتنر',
     progressHint: 'روی یک جعبه بزن تا کارت‌های امروزِ آن را یاد بگیری.',
     dueInBox: 'مقرر',
@@ -71,7 +76,8 @@ const TEXT = {
     cards: 'کارت',
     topicSingular: 'موضوع',
     topicPlural: 'موضوع',
-    chapterModalLead: 'موضوعات موجود در این فصل.',
+    chapterModalLead: 'موضوعات این فصل که فلش‌کارت دارند.',
+    noFlashcardsYet: 'هنوز فلش‌کارتی در این فصل نیست.',
     boxModalLead: 'کارت‌های امروزِ این جعبه.',
     noDueInBox: 'امروز کارتی در این جعبه برای مرور نیست. ✓',
     learnNow: 'الان یاد بگیر ←',
@@ -87,6 +93,36 @@ function localize(value, lang) {
 
 const todayStart = () => {
   const d = new Date(); d.setHours(0, 0, 0, 0); return d
+}
+
+// Sammelt alle Themen (+ Unterthemen) eines Kapitels, die bereits Flashcards haben
+function flashcardThemenInKapitel(kapitel) {
+  const items = []
+  kapitel.themen.forEach(thema => {
+    if (thema.flashcardLink) items.push(thema)
+    ;(thema.sub || []).forEach(sub => { if (sub.flashcardLink) items.push(sub) })
+  })
+  return items
+}
+
+// Entfernt führende Kapitel-Nummern wie "3. " – wie auf der Lektion-Seite
+function withoutLeadingNumber(title) {
+  return title.replace(/^[\d۰-۹٠-٩]+[.)،.]?\s*/, '')
+}
+
+// Gruppiert Themen anhand thema.group – wie auf der Lektion-Seite
+function groupFlashcardThemen(themen) {
+  const sections = []
+  let current = null
+  for (const th of themen) {
+    const key = th.group ? th.group.join(' / ') : ''
+    if (!current || current.key !== key) {
+      current = { key, items: [] }
+      sections.push(current)
+    }
+    current.items.push(th)
+  }
+  return sections
 }
 
 export default function FlashcardsPage() {
@@ -149,22 +185,19 @@ export default function FlashcardsPage() {
   }, [selectedBox, records])
 
   const chapterGroups = useMemo(() => {
-    const map = new Map()
-    FLASHCARD_TOPICS.forEach(topic => {
-      const key = `${topic.area}__${topic.chapter}`
-      if (!map.has(key)) {
-        map.set(key, {
-          key,
-          area: topic.area,
-          chapter: topic.chapter,
-          icon: topic.icon,
-          iconImage: topic.iconImage,
-          topics: [],
-        })
-      }
-      map.get(key).topics.push(topic)
-    })
-    return [...map.values()]
+    return CURRICULUM
+      .filter(fach => fach.kapitel.length > 0)
+      .map(fach => ({
+        fach,
+        kapitel: fach.kapitel.map(kapitel => {
+          const flashThemen = flashcardThemenInKapitel(kapitel)
+          const cardCount = flashThemen.reduce((sum, th) => {
+            const topic = FLASHCARD_TOPICS.find(ft => ft.href === th.flashcardLink)
+            return sum + (topic ? FLASHCARDS.filter(c => c.topicId === topic.id).length : 0)
+          }, 0)
+          return { kapitel, themenCount: flashThemen.length, cardCount }
+        }),
+      }))
   }, [])
 
   return (
@@ -176,17 +209,31 @@ export default function FlashcardsPage() {
             <h1 className={styles.title}>{t.title}</h1>
             <p className={styles.lead}>{t.lead}</p>
           </div>
-          <div className={styles.heroPanel}>
-            <div className={styles.heroPanelStat}>
-              <strong>{dueTotal}</strong>
-              <span>{t.due}</span>
+          {dueRemaining > 0 ? (
+            <Link href={withLang('/flashcards/faellig')} className={`${styles.heroPanel} ${styles.heroPanelClickable}`} title={t.dueClickHint}>
+              <div className={styles.heroPanelStat}>
+                <strong>{dueTotal}</strong>
+                <span>{t.due}</span>
+              </div>
+              <div className={styles.heroPanelDivider} />
+              <div className={styles.heroPanelStat}>
+                <strong>{dueRemaining}</strong>
+                <span>{t.dueRemaining}</span>
+              </div>
+            </Link>
+          ) : (
+            <div className={styles.heroPanel}>
+              <div className={styles.heroPanelStat}>
+                <strong>{dueTotal}</strong>
+                <span>{t.due}</span>
+              </div>
+              <div className={styles.heroPanelDivider} />
+              <div className={styles.heroPanelStat}>
+                <strong>{dueRemaining}</strong>
+                <span>{t.dueRemaining}</span>
+              </div>
             </div>
-            <div className={styles.heroPanelDivider} />
-            <div className={styles.heroPanelStat}>
-              <strong>{dueRemaining}</strong>
-              <span>{t.dueRemaining}</span>
-            </div>
-          </div>
+          )}
         </section>
 
         <section className={styles.section}>
@@ -232,23 +279,30 @@ export default function FlashcardsPage() {
               <p className={styles.sectionSub}>{t.addLead}</p>
             </div>
           </div>
-          <div className={styles.topicGrid}>
-            {chapterGroups.map(group => {
-              const cardCount = group.topics.reduce((sum, topic) => sum + FLASHCARDS.filter(c => c.topicId === topic.id).length, 0)
-              return (
-                <button key={group.key} type="button" className={`${styles.topicCard} ${styles.topicCardLarge} ${styles.topicCardBtn}`} onClick={() => setSelectedChapter(group)}>
-                  <span className={styles.topicIcon}>
-                    {group.iconImage ? <Image src={group.iconImage} alt={group.chapter} width={54} height={54} style={{ objectFit: 'contain' }} /> : group.icon}
-                  </span>
-                  <span className={styles.topicText}>
-                    <strong>{group.chapter}</strong>
-                    <small>{group.area} · {group.topics.length} {group.topics.length === 1 ? t.topicSingular : t.topicPlural} · {cardCount} {t.cards}</small>
-                  </span>
-                  <span className={styles.topicArrow}>{t.open}</span>
-                </button>
-              )
-            })}
-          </div>
+          {chapterGroups.map(({ fach, kapitel }) => (
+            <div key={fach.id} className={styles.fachGroup}>
+              <h3 className={styles.fachGroupTitle}>
+                <span className={styles.fachGroupIcon}>{fach.icon}</span>
+                {getFachTitle(fach, lang)}
+              </h3>
+              <div className={styles.topicGrid}>
+                {kapitel.map(({ kapitel: k, themenCount, cardCount }) => (
+                  <button key={k.id} type="button" className={`${styles.topicCard} ${styles.topicCardLarge} ${styles.topicCardBtn}`} onClick={() => setSelectedChapter({ fach, kapitel: k })}>
+                    <span className={styles.topicIcon}>{k.icon || fach.icon}</span>
+                    <span className={styles.topicText}>
+                      <strong>{withoutLeadingNumber(getKapitelTitle(k, lang))}</strong>
+                      <small>
+                        {themenCount > 0
+                          ? `${themenCount} ${themenCount === 1 ? t.topicSingular : t.topicPlural} · ${cardCount} ${t.cards}`
+                          : t.noFlashcardsYet}
+                      </small>
+                    </span>
+                    <span className={styles.topicArrow}>{t.open}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          ))}
         </section>
       </div>
 
@@ -284,30 +338,48 @@ export default function FlashcardsPage() {
         </div>
       )}
 
-      {selectedChapter && (
-        <div className={styles.boxModalOverlay} onClick={() => setSelectedChapter(null)}>
-          <div className={styles.boxModal} onClick={event => event.stopPropagation()}>
-            <button type="button" className={styles.boxModalClose} onClick={() => setSelectedChapter(null)} aria-label={t.close}>×</button>
-            <div className={styles.boxModalHeader}>
-              <span className={styles.kicker}>{selectedChapter.area}</span>
-              <h2>{selectedChapter.chapter}</h2>
-              <p>{t.chapterModalLead}</p>
-            </div>
+      {selectedChapter && (() => {
+        const sections = groupFlashcardThemen(flashcardThemenInKapitel(selectedChapter.kapitel))
+        return (
+          <div className={styles.boxModalOverlay} onClick={() => setSelectedChapter(null)}>
+            <div className={styles.boxModal} onClick={event => event.stopPropagation()}>
+              <button type="button" className={styles.boxModalClose} onClick={() => setSelectedChapter(null)} aria-label={t.close}>×</button>
+              <div className={styles.boxModalHeader}>
+                <span className={styles.kicker}>{getFachTitle(selectedChapter.fach, lang)}</span>
+                <h2>{withoutLeadingNumber(getKapitelTitle(selectedChapter.kapitel, lang))}</h2>
+                <p>{t.chapterModalLead}</p>
+              </div>
 
-            <div className={styles.dueTopicList}>
-              {selectedChapter.topics.map(topic => (
-                <Link key={topic.id} href={withLang(topic.href)} className={styles.dueTopicRow}>
-                  <span className={styles.dueTopicInfo}>
-                    <strong>{localize(topic.title, lang)}</strong>
-                    <small>{localize(topic.subtitle, lang)} · {FLASHCARDS.filter(c => c.topicId === topic.id).length} {t.cards}</small>
-                  </span>
-                  <span className={styles.topicArrow}>{t.open}</span>
-                </Link>
-              ))}
+              {sections.length === 0 ? (
+                <div className={styles.empty}>{t.noFlashcardsYet}</div>
+              ) : (
+                <div className={styles.modalSections}>
+                  {sections.map((section, sectionIndex) => (
+                    <div key={sectionIndex}>
+                      {section.key && <div className={styles.modalGroupHeading}>{section.key}</div>}
+                      <div className={styles.dueTopicList}>
+                        {section.items.map(thema => {
+                          const topic = FLASHCARD_TOPICS.find(ft => ft.href === thema.flashcardLink)
+                          if (!topic) return null
+                          return (
+                            <Link key={thema.id} href={withLang(topic.href)} className={styles.dueTopicRow}>
+                              <span className={styles.dueTopicInfo}>
+                                <strong>{getThemaTitle(thema, lang)}</strong>
+                                <small>{FLASHCARDS.filter(c => c.topicId === topic.id).length} {t.cards}</small>
+                              </span>
+                              <span className={styles.topicArrow}>{t.open}</span>
+                            </Link>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
-        </div>
-      )}
+        )
+      })()}
     </main>
   )
 }

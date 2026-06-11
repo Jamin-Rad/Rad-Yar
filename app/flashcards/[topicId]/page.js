@@ -37,6 +37,7 @@ const T = {
     backLink: '← Zurück zur Übersicht',
     emptyTitle: 'Keine Karten in dieser Auswahl.',
     emptySub: 'Wähle eine andere Box oder starte das Thema normal.',
+    lessonLinkLabel: 'Zur Lektion (neuer Tab)',
   },
   en: {
     back: '← Overview',
@@ -61,6 +62,7 @@ const T = {
     backLink: '← Back to overview',
     emptyTitle: 'No cards in this selection.',
     emptySub: 'Choose another box or start the topic normally.',
+    lessonLinkLabel: 'Open lesson (new tab)',
   },
   fa: {
     back: '← مرور کلی',
@@ -85,13 +87,26 @@ const T = {
     backLink: '← برگشت به مرور کلی',
     emptyTitle: 'در این انتخاب کارتی وجود ندارد.',
     emptySub: 'یک جعبه دیگر انتخاب کن یا موضوع را به صورت عادی شروع کن.',
+    lessonLinkLabel: 'باز کردن درس (تب جدید)',
   },
 }
+
+// Synthetisches "Thema" für die zufällige Wiederholung aller heute fälligen Karten
+const DUE_TOPIC_TITLE = { de: 'Heute fällig', en: 'Due today', fa: 'امروز برای مرور' }
 
 function localize(value, lang) {
   if (!value) return ''
   if (typeof value === 'string') return value
   return value[lang] || value.de || ''
+}
+
+function shuffle(arr) {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
 }
 
 
@@ -102,12 +117,12 @@ function DiagramView({ text }) {
       {lines.map((line, lineIndex) => {
         const parts = line.split('→').map(part => part.trim()).filter(Boolean)
         return (
-          <div key={`${line}-${lineIndex}`} className={styles.diagramLine}>
+          <div key={`${line}-${lineIndex}`} className={styles.diagramChain}>
             {parts.map((part, partIndex) => (
-              <span key={`${part}-${partIndex}`} className={styles.diagramPartWrap}>
-                <span className={styles.diagramNode}>{part}</span>
-                {partIndex < parts.length - 1 && <span className={styles.diagramArrow}>→</span>}
-              </span>
+              <div key={`${part}-${partIndex}`} className={styles.diagramStep}>
+                <div className={styles.diagramNode}>{part}</div>
+                {partIndex < parts.length - 1 && <div className={styles.diagramArrowDown} aria-hidden="true">↓</div>}
+              </div>
             ))}
           </div>
         )
@@ -135,9 +150,10 @@ export default function FlashcardReviewPage({ params, searchParams }) {
   const dir = lang === 'fa' ? 'rtl' : 'ltr'
 
   const topicId = params?.topicId ?? 'meniskus'
-  const topic = getFlashcardTopic(topicId)
-  const lessonLink = topic ? getLessonLinkForFlashcard(topic.href) : null
-  const allCards = useMemo(() => FLASHCARDS.filter(c => c.topicId === topicId), [topicId])
+  const isDueMode = topicId === 'faellig'
+  const topic = isDueMode ? { id: 'faellig', title: DUE_TOPIC_TITLE, href: null } : getFlashcardTopic(topicId)
+  const lessonLink = !isDueMode && topic ? getLessonLinkForFlashcard(topic.href) : null
+  const allCards = useMemo(() => isDueMode ? FLASHCARDS : FLASHCARDS.filter(c => c.topicId === topicId), [topicId, isDueMode])
   const practiceMode = searchParams?.mode === 'practice'
   const boxFilter = searchParams?.box ? Number(searchParams.box) : null
   const fromParam = typeof searchParams?.from === 'string' ? searchParams.from : null
@@ -156,7 +172,9 @@ export default function FlashcardReviewPage({ params, searchParams }) {
     const state = loadLeitnerState(userId)
     let selectedCards = allCards
 
-    if (practiceMode && boxFilter) {
+    if (isDueMode) {
+      selectedCards = shuffle(allCards.filter(card => isDue(state[card.id])))
+    } else if (practiceMode && boxFilter) {
       selectedCards = allCards.filter(card => {
         const record = state[card.id]
         return record && record.status !== 'mastered' && Number(record.box) === boxFilter
@@ -169,12 +187,12 @@ export default function FlashcardReviewPage({ params, searchParams }) {
     }
 
     setLeitnerState(state)
-    setCards(practiceMode ? selectedCards : sortCards(selectedCards, state))
+    setCards(isDueMode || practiceMode ? selectedCards : sortCards(selectedCards, state))
     setIndex(0)
     setFlipped(false)
     setDone(false)
     setStats({ correct: 0, wrong: 0 })
-  }, [allCards, userId, practiceMode, boxFilter])
+  }, [allCards, userId, practiceMode, boxFilter, isDueMode])
 
   const current = cards[index]
   const record = current ? leitnerState[current.id] : null
@@ -272,21 +290,27 @@ export default function FlashcardReviewPage({ params, searchParams }) {
       <header className={styles.topBar}>
         <Link href={backHref} className={styles.backBtn}>{t.back}</Link>
         <div className={styles.topCenter}>
-          {lessonLink ? (
+          <span className={styles.cardCount}>{t.cardOf(index + 1, cards.length)}</span>
+        </div>
+        <div className={styles.topRight}>
+          {lessonLink && (
             <a
               href={lang === 'de' ? lessonLink : `${lessonLink}?lang=${lang}`}
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.topicName}
+              className={styles.lessonLink}
+              aria-label={t.lessonLinkLabel}
+              title={t.lessonLinkLabel}
             >
-              {topic.title?.[lang] || topic.title?.de}
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
             </a>
-          ) : (
-            <span className={styles.topicName}>{topic.title?.[lang] || topic.title?.de}</span>
           )}
-          <span className={styles.cardCount}>{t.cardOf(index + 1, cards.length)}</span>
+          <div className={styles.boxPill}>{practiceMode ? t.practiceMode : boxLabel}</div>
         </div>
-        <div className={styles.boxPill}>{practiceMode ? t.practiceMode : boxLabel}</div>
       </header>
 
       <div className={styles.progressTrack}>
