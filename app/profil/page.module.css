@@ -778,6 +778,112 @@
 .saveBtn:disabled { opacity: 0.6; cursor: not-allowed; }
 .saveSuccess { text-align: center; font-size: 13px; color: #10b981; font-weight: 700; }
 
+/* ── EINSTELLUNGEN ─────────────────────────────────── */
+.settingsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.settingsText strong {
+  display: block;
+  font-size: 14px;
+  color: var(--text-strong);
+  margin-bottom: 4px;
+}
+
+.settingsText p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  max-width: 520px;
+}
+
+.toggleSwitch {
+  flex-shrink: 0;
+  width: 44px;
+  height: 24px;
+  border-radius: 999px;
+  border: none;
+  background: #cbd5e1;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.toggleSwitchActive { background: linear-gradient(130deg, var(--orange), #fb923c); }
+
+.toggleKnob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.toggleSwitchActive .toggleKnob { transform: translateX(20px); }
+
+.settingsDivider {
+  height: 1px;
+  background: var(--border);
+  margin: 20px 0;
+}
+
+.settingsSubTitle {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-strong);
+}
+
+.dangerActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.dangerActionItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dangerActionItem small {
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+.dangerBtn {
+  border: 1px solid #fecdd3;
+  background: #fff1f2;
+  color: #b91c1c;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 13px;
+  border-radius: 999px;
+  padding: 11px 18px;
+  cursor: pointer;
+  transition: transform 0.18s;
+}
+
+.dangerBtn:hover { transform: translateY(-1px); }
+
+:global(html[data-theme='dark']) .dangerBtn {
+  background: rgba(239, 68, 68, 0.14);
+  border-color: rgba(248, 113, 113, 0.28);
+  color: #fecaca;
+}
+
+[dir='rtl'] .toggleSwitchActive .toggleKnob { transform: translateX(-20px); }
+[dir='rtl'] .toggleKnob { left: auto; right: 3px; }
+
 /* ── NOT LOGGED IN ─────────────────────────────────── */
 .notLoggedIn {
   display: flex;

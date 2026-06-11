@@ -5,7 +5,8 @@ import { useClerk, useUser } from '@clerk/nextjs'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import { useLanguage } from '@/providers/LanguageProvider'
-import { loadLeitnerState, LEITNER_STEPS, getBoxLabel, isDue } from '@/utils/leitnerStorage'
+import { loadLeitnerState, resetLeitnerState, LEITNER_STEPS, getBoxLabel, isDue } from '@/utils/leitnerStorage'
+import { loadSettings, saveSettings } from '@/utils/settingsStorage'
 import { CURRICULUM, getFachTitle, getKapitelTitle, getThemaTitle } from '@/data/curriculum'
 import styles from './page.module.css'
 
@@ -61,6 +62,19 @@ const T = {
     signOut: 'Abmelden',
     memberSince: 'Mitglied seit',
     profileLabel: 'Dein Profil',
+    settings: 'Einstellungen',
+    settingsTitle: 'Einstellungen',
+    longBoxesLabel: 'Langzeit-Boxen (3 / 6 / 12 Monate)',
+    longBoxesHint: 'Aktiviere die Leitner-Boxen für 3, 6 und 12 Monate auf der Flashcards-Seite. Standardmäßig sind diese Boxen ausgeblendet.',
+    dangerZone: 'Fortschritt löschen',
+    dangerZoneHint: 'Diese Aktionen lassen sich nicht rückgängig machen.',
+    resetFlashcards: 'Flashcard-Fortschritt löschen',
+    resetFlashcardsAsk: 'Möchtest du wirklich den gesamten Flashcard-Fortschritt (alle Leitner-Boxen) löschen?',
+    resetFlashcardsDone: '✓ Flashcard-Fortschritt gelöscht',
+    resetLearning: 'Lernfortschritt löschen',
+    resetLearningHint: 'Entfernt alle als „gelesen" markierten Lektionen.',
+    resetLearningAsk: 'Möchtest du wirklich alle als gelesen markierten Lektionen zurücksetzen?',
+    resetLearningDone: '✓ Lernfortschritt gelöscht',
   },
   en: {
     greetMorning:   'Good morning',
@@ -112,6 +126,19 @@ const T = {
     signOut: 'Sign out',
     memberSince: 'Member since',
     profileLabel: 'Your profile',
+    settings: 'Settings',
+    settingsTitle: 'Settings',
+    longBoxesLabel: 'Long-term boxes (3 / 6 / 12 months)',
+    longBoxesHint: 'Enable the 3, 6 and 12-month Leitner boxes on the Flashcards page. These boxes are hidden by default.',
+    dangerZone: 'Reset progress',
+    dangerZoneHint: 'These actions cannot be undone.',
+    resetFlashcards: 'Delete flashcard progress',
+    resetFlashcardsAsk: 'Do you really want to delete all flashcard progress (all Leitner boxes)?',
+    resetFlashcardsDone: '✓ Flashcard progress deleted',
+    resetLearning: 'Delete learning progress',
+    resetLearningHint: 'Removes all lessons marked as "read".',
+    resetLearningAsk: 'Do you really want to reset all lessons marked as read?',
+    resetLearningDone: '✓ Learning progress deleted',
   },
   fa: {
     greetMorning:   'صبح بخیر',
@@ -163,6 +190,19 @@ const T = {
     signOut: 'خروج',
     memberSince: 'عضو از',
     profileLabel: 'پروفایل شما',
+    settings: 'تنظیمات',
+    settingsTitle: 'تنظیمات',
+    longBoxesLabel: 'جعبه‌های بلندمدت (۳ / ۶ / ۱۲ ماه)',
+    longBoxesHint: 'جعبه‌های لایتنر ۳، ۶ و ۱۲ ماهه را در صفحه فلش‌کارت فعال کن. این جعبه‌ها به‌طور پیش‌فرض پنهان هستند.',
+    dangerZone: 'پاک کردن پیشرفت',
+    dangerZoneHint: 'این کارها قابل بازگشت نیستند.',
+    resetFlashcards: 'حذف پیشرفت فلش‌کارت‌ها',
+    resetFlashcardsAsk: 'آیا واقعاً می‌خواهی تمام پیشرفت فلش‌کارت‌ها (همه جعبه‌های لایتنر) حذف شود؟',
+    resetFlashcardsDone: '✓ پیشرفت فلش‌کارت‌ها حذف شد',
+    resetLearning: 'حذف پیشرفت یادگیری',
+    resetLearningHint: 'همه درس‌های علامت‌خورده به‌عنوان «خوانده‌شده» را حذف می‌کند.',
+    resetLearningAsk: 'آیا واقعاً می‌خواهی همه درس‌های علامت‌خورده به‌عنوان خوانده‌شده پاک شوند؟',
+    resetLearningDone: '✓ پیشرفت یادگیری حذف شد',
   },
 }
 
@@ -389,6 +429,8 @@ export default function ProfilPage() {
   const [fach,         setFach]         = useState('')
   const [stufe,        setStufe]        = useState('')
   const [saveState,    setSaveState]    = useState('idle')
+  const [settings,     setSettings]     = useState({ longBoxesEnabled: false })
+  const [resetMsg,     setResetMsg]     = useState(null)
 
   useEffect(() => {
     if (!isLoaded || !user) return
@@ -398,11 +440,36 @@ export default function ProfilPage() {
     const state = loadLeitnerState(user.id)
     setLeitner(state)
     setStreak(calcStreak(state))
+    setSettings(loadSettings())
     try {
       setReadArticles(JSON.parse(localStorage.getItem('radyar_read_articles') || '{}'))
       setMcqScores(JSON.parse(localStorage.getItem('radyar_mcq_scores') || '{}'))
     } catch {}
   }, [isLoaded, user])
+
+  function toggleLongBoxes() {
+    const next = { ...settings, longBoxesEnabled: !settings.longBoxesEnabled }
+    setSettings(next)
+    saveSettings(next)
+  }
+
+  function handleResetFlashcards() {
+    if (!window.confirm(t.resetFlashcardsAsk)) return
+    resetLeitnerState(user.id)
+    const state = loadLeitnerState(user.id)
+    setLeitner(state)
+    setStreak(calcStreak(state))
+    setResetMsg(t.resetFlashcardsDone)
+    setTimeout(() => setResetMsg(null), 2500)
+  }
+
+  function handleResetLearning() {
+    if (!window.confirm(t.resetLearningAsk)) return
+    try { localStorage.removeItem('radyar_read_articles') } catch {}
+    setReadArticles({})
+    setResetMsg(t.resetLearningDone)
+    setTimeout(() => setResetMsg(null), 2500)
+  }
 
   if (!isLoaded) return <div className={styles.page}><Navbar /></div>
 
@@ -473,6 +540,7 @@ export default function ProfilPage() {
               <a href="#overview" className={styles.profileNavLink}><span aria-hidden="true">⌂</span>{t.overview}</a>
               <a href="#learning" className={styles.profileNavLink}><span aria-hidden="true">▤</span>{t.learning}</a>
               <a href="#edit-profile" className={styles.profileNavLink}><span aria-hidden="true">✎</span>{t.editTitle}</a>
+              <a href="#settings" className={styles.profileNavLink}><span aria-hidden="true">⚙</span>{t.settings}</a>
             </nav>
 
             <div className={styles.accountActions}>
@@ -680,6 +748,46 @@ export default function ProfilPage() {
             )}
           </div>
 
+        </div>
+
+        {/* ── EINSTELLUNGEN ── */}
+        <div className={styles.card} id="settings" style={{ marginTop: 16 }}>
+          <div className={styles.cardHeader}>
+            <h2 className={styles.cardTitle}>⚙ {t.settingsTitle}</h2>
+          </div>
+
+          <div className={styles.settingsRow}>
+            <div className={styles.settingsText}>
+              <strong>{t.longBoxesLabel}</strong>
+              <p>{t.longBoxesHint}</p>
+            </div>
+            <button
+              type="button"
+              className={`${styles.toggleSwitch} ${settings.longBoxesEnabled ? styles.toggleSwitchActive : ''}`}
+              onClick={toggleLongBoxes}
+              role="switch"
+              aria-checked={settings.longBoxesEnabled}
+            >
+              <span className={styles.toggleKnob} />
+            </button>
+          </div>
+
+          <div className={styles.settingsDivider} />
+
+          <h3 className={styles.settingsSubTitle}>{t.dangerZone}</h3>
+          <p className={styles.cardSub} style={{ margin: '-8px 0 12px' }}>{t.dangerZoneHint}</p>
+          <div className={styles.dangerActions}>
+            <button type="button" className={styles.dangerBtn} onClick={handleResetFlashcards}>
+              🗑️ {t.resetFlashcards}
+            </button>
+            <div className={styles.dangerActionItem}>
+              <button type="button" className={styles.dangerBtn} onClick={handleResetLearning}>
+                🗑️ {t.resetLearning}
+              </button>
+              <small>{t.resetLearningHint}</small>
+            </div>
+          </div>
+          {resetMsg && <p className={styles.saveSuccess}>{resetMsg}</p>}
         </div>
           </main>
         </div>

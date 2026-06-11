@@ -91,65 +91,10 @@
   line-height: 1.5;
 }
 
-/* ── BUTTONS ───────────────────────────────────────── */
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.primaryBtn,
-.secondaryBtn,
-.softBtn,
-.dangerBtn {
-  border: 0;
-  text-decoration: none;
-  cursor: pointer;
-  font-family: inherit;
-  font-weight: 800;
-  border-radius: 999px;
-  padding: 11px 18px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
-}
-
-.primaryBtn {
-  color: #fff;
-  background: linear-gradient(135deg, var(--orange), #fb923c);
-  box-shadow: 0 14px 28px rgba(249, 115, 22, 0.22);
-}
-
-.secondaryBtn {
-  color: var(--text-soft);
-  background: var(--surface-soft);
-  border: 1px solid var(--border);
-}
-
-.softBtn {
-  color: var(--text-strong);
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-}
-
-.dangerBtn {
-  color: #b91c1c;
-  background: #fff1f2;
-  border: 1px solid #fecdd3;
-}
-
-.primaryBtn:hover,
-.secondaryBtn:hover,
-.softBtn:hover,
-.dangerBtn:hover { transform: translateY(-1px); }
-
 /* ── STATS GRID ────────────────────────────────────── */
 .statsGrid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
   margin: 24px 0;
 }
@@ -463,12 +408,6 @@
   box-shadow: 0 18px 44px rgba(0, 0, 0, 0.30);
 }
 
-:global(html[data-theme='dark']) .dangerBtn {
-  background: rgba(239, 68, 68, 0.14);
-  border-color: rgba(248, 113, 113, 0.28);
-  color: #fecaca;
-}
-
 /* ── UPDATED: large topic card only inside “Neue Flashcards hinzufügen” ── */
 .topicCardLarge {
   min-height: 118px;
@@ -507,6 +446,59 @@
   transform: translateY(-2px);
   border-color: rgba(249,115,22,0.38);
   box-shadow: 0 12px 26px rgba(249,115,22,0.10);
+}
+
+.boxDue {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: var(--orange);
+  background: var(--accent-soft);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.boxCardLocked {
+  cursor: default;
+  opacity: 0.6;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.boxCardLocked:hover {
+  transform: none;
+  border-color: var(--border);
+  box-shadow: none;
+}
+
+.boxCardLockIcon { font-size: 18px; }
+
+.boxInactiveLabel {
+  display: block;
+  color: var(--text-muted);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.boxCardUnlockLink {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--orange);
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.boxCardUnlockLink:hover { text-decoration: underline; }
+
+/* ── TOC CTA CARD (Inhaltsverzeichnis) ──────────────── */
+.tocCard {
+  border-color: rgba(249,115,22,0.3);
+  background:
+    radial-gradient(circle at 14% 18%, rgba(249,115,22,0.14), transparent 14rem),
+    var(--bg-card);
 }
 
 .boxModalOverlay {
