@@ -29,8 +29,8 @@ export default function RootLayout({ children }) {
     <ClerkProvider
       signInUrl="/sign-in"
       signUpUrl="/sign-up"
-      afterSignInUrl="/"
-      afterSignUpUrl="/"
+      signInFallbackRedirectUrl="/"
+      signUpFallbackRedirectUrl="/"
     >
       <html lang="de" data-theme="light" suppressHydrationWarning>
         <head>

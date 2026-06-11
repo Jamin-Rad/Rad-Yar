@@ -46,7 +46,12 @@ function AppleIcon() {
   )
 }
 
-// view: 'login' | 'reset-email' | 'reset-code'
+function needsClientTrust(status) {
+  const normalizedStatus = status?.replaceAll('-', '_')
+  return normalizedStatus === 'needs_client_trust' || normalizedStatus === 'need_client_trust'
+}
+
+// view: 'login' | 'client-trust' | 'reset-email' | 'reset-code'
 export default function SignInPage() {
   const { isLoaded, signIn, setActive } = useSignIn()
   const router = useRouter()
@@ -57,12 +62,49 @@ export default function SignInPage() {
   const [resetEmail,  setResetEmail]  = useState('')
   const [code,        setCode]        = useState('')
   const [newPassword, setNewPassword] = useState('')
+  const [trustCode,   setTrustCode]   = useState('')
+  const [trustEmail,  setTrustEmail]  = useState('')
+  const [trustFactor, setTrustFactor] = useState(null)
   const [error,       setError]       = useState('')
   const [success,     setSuccess]     = useState('')
   const [loading,     setLoading]     = useState(false)
 
   function showError(err) {
     setError(err?.errors?.[0]?.longMessage || err?.errors?.[0]?.message || err?.message || 'Something went wrong. Please try again.')
+  }
+
+  async function completeSignIn(result) {
+    await setActive({ session: result.createdSessionId })
+    router.push('/')
+  }
+
+  async function prepareClientTrust(result) {
+    const emailFactor = result.supportedSecondFactors?.find(factor => factor.strategy === 'email_code')
+    if (!emailFactor) {
+      throw new Error('Dieses Gerät muss bestätigt werden, aber für dieses Konto ist keine E-Mail-Bestätigung verfügbar.')
+    }
+
+    await result.prepareSecondFactor({
+      strategy: 'email_code',
+      emailAddressId: emailFactor.emailAddressId,
+    })
+    setTrustFactor(emailFactor)
+    setTrustEmail(emailFactor.safeIdentifier || email)
+    setTrustCode('')
+    setSuccess('')
+    setView('client-trust')
+  }
+
+  async function handleSignInResult(result) {
+    if (result.status === 'complete') {
+      await completeSignIn(result)
+      return
+    }
+    if (needsClientTrust(result.status)) {
+      await prepareClientTrust(result)
+      return
+    }
+    setError(`Unexpected status: ${result.status}`)
   }
 
   // ── Sign in ──────────────────────────────────────────
@@ -74,18 +116,38 @@ export default function SignInPage() {
       const attempt = await signIn.create({ identifier: email })
       if (attempt.status === 'needs_first_factor') {
         const result = await signIn.attemptFirstFactor({ strategy: 'password', password })
-        if (result.status === 'complete') {
-          await setActive({ session: result.createdSessionId })
-          router.push('/')
-        } else {
-          setError(`Unexpected status: ${result.status}`)
-        }
-      } else if (attempt.status === 'complete') {
-        await setActive({ session: attempt.createdSessionId })
-        router.push('/')
+        await handleSignInResult(result)
       } else {
-        setError(`Unexpected status: ${attempt.status}`)
+        await handleSignInResult(attempt)
       }
+    } catch (err) { showError(err) }
+    finally { setLoading(false) }
+  }
+
+  // ── Confirm a new mobile device ─────────────────────
+  async function handleClientTrust(e) {
+    e.preventDefault()
+    if (!isLoaded) return
+    setLoading(true); setError('')
+    try {
+      const result = await signIn.attemptSecondFactor({
+        strategy: 'email_code',
+        code: trustCode,
+      })
+      await handleSignInResult(result)
+    } catch (err) { showError(err) }
+    finally { setLoading(false) }
+  }
+
+  async function handleResendTrustCode() {
+    if (!isLoaded || !trustFactor) return
+    setLoading(true); setError('')
+    try {
+      await signIn.prepareSecondFactor({
+        strategy: 'email_code',
+        emailAddressId: trustFactor.emailAddressId,
+      })
+      setSuccess('Ein neuer Code wurde gesendet.')
     } catch (err) { showError(err) }
     finally { setLoading(false) }
   }
@@ -222,6 +284,53 @@ export default function SignInPage() {
             <p className={styles.footerText}>
               No account yet?{' '}
               <Link href="/sign-up" className={styles.footerLink}>Create account</Link>
+            </p>
+          </>
+        )}
+
+        {/* ── NEW DEVICE CONFIRMATION ── */}
+        {view === 'client-trust' && (
+          <>
+            <h1 className={styles.heading}>Gerät bestätigen</h1>
+            <p className={styles.sub}>
+              Dieses Smartphone ist neu. Wir haben einen 6-stelligen Sicherheitscode an <strong>{trustEmail}</strong> gesendet.
+            </p>
+            <form className={styles.form} onSubmit={handleClientTrust}>
+              <ErrorBox />
+              {success && (
+                <div style={{padding:'10px 14px',borderRadius:10,background:'#f0fdf4',border:'1px solid #bbf7d0',color:'#166534',fontSize:13}}>
+                  {success}
+                </div>
+              )}
+              <div className={styles.fieldGroup}>
+                <label className={styles.label}>Sicherheitscode</label>
+                <input className={`${styles.input} ${styles.codeInput}`}
+                  type="text" inputMode="numeric" autoComplete="one-time-code" maxLength={6}
+                  value={trustCode}
+                  onChange={e => setTrustCode(e.target.value.replace(/\D/g,'').slice(0,6))}
+                  placeholder="______" required autoFocus />
+              </div>
+              <button className={styles.submitBtn} type="submit"
+                disabled={loading || trustCode.length < 6}>
+                {loading ? 'Wird bestätigt…' : 'Gerät bestätigen'}
+              </button>
+              <button type="button" className={styles.resendBtn}
+                onClick={handleResendTrustCode} disabled={loading}>
+                Code erneut senden
+              </button>
+            </form>
+            <p className={styles.footerText}>
+              <button type="button" className={styles.footerLink}
+                style={{background:'none',border:'none',cursor:'pointer',padding:0}}
+                onClick={() => {
+                  setError('')
+                  setSuccess('')
+                  setTrustCode('')
+                  setTrustFactor(null)
+                  setView('login')
+                }}>
+                ← Zurück zur Anmeldung
+              </button>
             </p>
           </>
         )}
