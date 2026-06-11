@@ -289,24 +289,17 @@
   border-radius: 6px;
   background: #f1f5f9;
   color: #64748b;
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: .04em;
+  font-size: 9.5px;
+  font-weight: 800;
 }
 .difficulty {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  margin-inline-start: 2px;
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: #64748b;
+  font-size: 9.5px;
+  font-weight: 800;
 }
-.difficulty i {
-  width: 4px;
-  height: 10px;
-  border-radius: 4px;
-  background: #dbe2ea;
-}
-.difficulty i:nth-child(2) { height: 13px; }
-.difficulty i:nth-child(3) { height: 16px; }
 .topicStatus {
   margin-inline-start: auto;
   color: #94a3b8;
@@ -554,25 +547,6 @@
   box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
 }
 
-.openHint {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  width: fit-content;
-  margin-top: auto;
-  margin-inline-start: 38px;
-  color: #f97316;
-  font-size: 10.5px;
-  font-weight: 900;
-  white-space: nowrap;
-}
-.openHint b {
-  transition: transform .16s ease;
-}
-.themaCardLink:hover .openHint b {
-  transform: translateX(3px);
-}
-
 .readBadge {
   margin-inline-start: auto;
   color: #16a34a;
@@ -683,6 +657,7 @@
 :global(html[data-theme='dark']) .kapitelPill,
 :global(html[data-theme='dark']) .accCount,
 :global(html[data-theme='dark']) .metaTag,
+:global(html[data-theme='dark']) .difficulty,
 :global(html[data-theme='dark']) .kapitelPillIcon,
 :global(html[data-theme='dark']) .accIcon {
   background: rgba(30,41,59,0.74);
@@ -704,6 +679,7 @@
 :global(html[data-theme='dark']) .groupCount,
 :global(html[data-theme='dark']) .groupLabel,
 :global(html[data-theme='dark']) .metaTag,
+:global(html[data-theme='dark']) .difficulty,
 :global(html[data-theme='dark']) .searchChapter,
 :global(html[data-theme='dark']) .noResult,
 :global(html[data-theme='dark']) .notFound,

@@ -8,9 +8,9 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
 
 const T = {
-  de: { back:'← Startseite', search:'Thema suchen…', readNow:'Artikel öffnen', noResult:'Kein Treffer für', themen:'Themen', alles:'Alles aufklappen', none:'Zuklappen', available:'Verfügbar', read:'Gelesen', all:'Alle', mcq:'MCQ', flash:'Flashcards', fall:'Fallbeispiele', building:'Geplant', emptyAvailable:'In diesem Fachgebiet ist noch kein Thema freigeschaltet.', emptyRead:'Du hast in diesem Fachgebiet noch nichts als gelesen markiert.', emptyAllFach:'Dieses Fachgebiet ist noch im Aufbau – schau bald wieder vorbei.', showAll:'Alle Themen anzeigen', overview:'Lernübersicht', lessonsTitle:'Lektionen & Themen', lessonsLead:'Wähle ein Kapitel und arbeite dich Thema für Thema durch.', chapters:'Kapitel', readyLessons:'verfügbar', difficulty:'Niveau' },
-  en: { back:'← Home', search:'Search topic…', readNow:'Open article', noResult:'No results for', themen:'Topics', alles:'Expand all', none:'Collapse', available:'Available', read:'Read', all:'All', mcq:'MCQ', flash:'Flashcards', fall:'Cases', building:'Planned', emptyAvailable:'No topics are unlocked in this specialty yet.', emptyRead:"You haven't marked anything as read in this specialty yet.", emptyAllFach:'This specialty is still being built – check back soon.', showAll:'Show all topics', overview:'Learning overview', lessonsTitle:'Lessons & topics', lessonsLead:'Choose a chapter and work through it topic by topic.', chapters:'Chapters', readyLessons:'available', difficulty:'Level' },
-  fa: { back:'← خانه', search:'جستجوی موضوع…', readNow:'مطالعه کنید', noResult:'نتیجه‌ای برای', themen:'موضوع', alles:'بازکردن همه', none:'بستن همه', available:'موجود', read:'خوانده‌شده', all:'همه', mcq:'MCQ', flash:'فلش‌کارت', fall:'کیس', building:'برنامه‌ریزی‌شده', emptyAvailable:'هنوز موضوعی در این تخصص فعال نشده.', emptyRead:'هنوز چیزی را در این تخصص خوانده‌شده علامت نزده‌ای.', emptyAllFach:'این تخصص هنوز در حال آماده‌سازی است – بزودی برمی‌گردیم.', showAll:'نمایش همه موضوعات', overview:'نمای کلی آموزش', lessonsTitle:'درس‌ها و موضوعات', lessonsLead:'یک فصل را انتخاب کنید و موضوعات را مرحله‌به‌مرحله پیش ببرید.', chapters:'فصل', readyLessons:'موجود', difficulty:'سطح' },
+  de: { back:'← Startseite', search:'Thema suchen…', readNow:'Artikel öffnen', noResult:'Kein Treffer für', themen:'Themen', alles:'Alles aufklappen', none:'Zuklappen', available:'Verfügbar', read:'Gelesen', all:'Alle', mcq:'MCQ', flash:'Flashcards', fall:'Fallbeispiele', building:'Geplant', emptyAvailable:'In diesem Fachgebiet ist noch kein Thema freigeschaltet.', emptyRead:'Du hast in diesem Fachgebiet noch nichts als gelesen markiert.', emptyAllFach:'Dieses Fachgebiet ist noch im Aufbau – schau bald wieder vorbei.', showAll:'Alle Themen anzeigen', overview:'Lernübersicht', lessonsTitle:'Lektionen & Themen', lessonsLead:'Wähle ein Kapitel und arbeite dich Thema für Thema durch.', chapters:'Kapitel', readyLessons:'verfügbar', difficulty:'Niveau', modality:'Modalität' },
+  en: { back:'← Home', search:'Search topic…', readNow:'Open article', noResult:'No results for', themen:'Topics', alles:'Expand all', none:'Collapse', available:'Available', read:'Read', all:'All', mcq:'MCQ', flash:'Flashcards', fall:'Cases', building:'Planned', emptyAvailable:'No topics are unlocked in this specialty yet.', emptyRead:"You haven't marked anything as read in this specialty yet.", emptyAllFach:'This specialty is still being built – check back soon.', showAll:'Show all topics', overview:'Learning overview', lessonsTitle:'Lessons & topics', lessonsLead:'Choose a chapter and work through it topic by topic.', chapters:'Chapters', readyLessons:'available', difficulty:'Level', modality:'Modality' },
+  fa: { back:'← خانه', search:'جستجوی موضوع…', readNow:'مطالعه کنید', noResult:'نتیجه‌ای برای', themen:'موضوع', alles:'بازکردن همه', none:'بستن همه', available:'موجود', read:'خوانده‌شده', all:'همه', mcq:'MCQ', flash:'فلش‌کارت', fall:'کیس', building:'برنامه‌ریزی‌شده', emptyAvailable:'هنوز موضوعی در این تخصص فعال نشده.', emptyRead:'هنوز چیزی را در این تخصص خوانده‌شده علامت نزده‌ای.', emptyAllFach:'این تخصص هنوز در حال آماده‌سازی است – بزودی برمی‌گردیم.', showAll:'نمایش همه موضوعات', overview:'نمای کلی آموزش', lessonsTitle:'درس‌ها و موضوعات', lessonsLead:'یک فصل را انتخاب کنید و موضوعات را مرحله‌به‌مرحله پیش ببرید.', chapters:'فصل', readyLessons:'موجود', difficulty:'سطح', modality:'روش تصویربرداری' },
 }
 
 // Gruppiert Themen anhand thema.group (Reihenfolge wie in den Daten):
@@ -321,19 +321,16 @@ export default function LernenFachPage() {
                                   {isRead(th, readArticles) && <span className={styles.readBadge}>✓ {t.read}</span>}
                                 </div>
                                 <div className={styles.themaMeta}>
-                                  {th.tags?.map(tag => <span key={tag} className={styles.metaTag}>{tag}</span>)}
+                                  {th.tags?.length > 0 && (
+                                    <span className={styles.metaTag}>{t.modality}: {th.tags.join(' · ')}</span>
+                                  )}
                                   {th.diff && (
-                                    <span className={styles.difficulty} aria-label={`${t.difficulty} ${th.diff}`}>
-                                      {[1, 2, 3].map(level => (
-                                        <i key={level} className={level <= th.diff ? styles.difficultyActive : ''} style={level <= th.diff ? { background: fach.color } : {}} />
-                                      ))}
-                                    </span>
+                                    <span className={styles.difficulty}>{t.difficulty} {th.diff}</span>
                                   )}
                                   <span className={`${styles.topicStatus} ${isAvailable(th) ? styles.topicStatusReady : ''}`}>
                                     {isAvailable(th) ? t.available : t.building}
                                   </span>
                                 </div>
-                                {th.link && <span className={styles.openHint}>{t.readNow}<b>→</b></span>}
                                 {th.sub && <SubThemen sub={th.sub} fachColor={fach.color} lang={lang} />}
                               </>
                             )
