@@ -133,10 +133,39 @@ function AbdomenChapterIcon({ id, className }) {
   return <svg {...common}>{icons[id] || icons['abdomen-anatomie']}</svg>
 }
 
+function GehirnChapterIcon({ id, className }) {
+  const common = {
+    viewBox: '0 0 48 48',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    className,
+    'aria-hidden': true,
+  }
+
+  const brainOutline = <path d="M24 6C13 6 6 13 6 23c0 11 8 19 18 19s18-8 18-19C42 13 35 6 24 6Z"/>
+
+  const icons = {
+    'kopf-anatomie': <>{brainOutline}<path d="M24 6v36"/><path d="M10 16c4 1 7 4 7 8M9 27c4 0 7 3 8 7"/><path d="M38 16c-4 1-7 4-7 8M39 27c-4 0-7 3-8 7"/></>,
+    'kopf-vaskulaer': <>{brainOutline}<path d="M24 42V28c-4-4-8-6-8-12M24 28c4-4 8-6 8-12M16 16c-3 2-4 5-3 8M32 16c3 2 4 5 3 8"/><circle cx="32" cy="16" r="2.5"/></>,
+    'kopf-tumoren': <>{brainOutline}<circle cx="28" cy="20" r="10" strokeDasharray="2 3"/><circle cx="28" cy="20" r="6"/><circle cx="28" cy="20" r="2" fill="currentColor" stroke="none"/></>,
+    'kopf-infektion': <>{brainOutline}<circle cx="25" cy="24" r="4"/><path d="M25 16v4m0 8v4m-8-8h4m8 0h4m-9.5-5.5 2.8 2.8m6.4 6.4 2.8 2.8m0-12-2.8 2.8m-6.4 6.4-2.8 2.8"/></>,
+    'kopf-fehlbildungen': <><path d="M22 6C12 7 6 14 7 23c1 10 9 18 19 18 6 0 11-3 14-7"/><path d="M34 8c-4 3-4 6 0 9s4 6 0 9-4 6 0 9"/><path d="M41 8c4 3 4 6 0 9s-4 6 0 9 4 6 0 9"/><path d="M34 12h7M34 21h7M34 30h7"/></>,
+    'kopf-degenerativ': <><path d="M24 5C12 5 5 13 5 24s7 19 19 19 19-8 19-19S36 5 24 5Z" strokeDasharray="3 3"/><path d="M24 11c-8 0-13 6-13 13s5 13 13 13 13-6 13-13-5-13-13-13Z"/><path d="M19 18c2 3 2 9 0 12M29 18c-2 3-2 9 0 12"/></>,
+    'kopf-liquor': <>{brainOutline}<path d="M18 14c3 4 3 14 0 18M30 14c-3 4-3 14 0 18M18 23h12"/><path d="M38 6c2 3 4 5 4 8a4 4 0 0 1-8 0c0-3 2-5 4-8Z"/></>,
+    'kopf-trauma': <>{brainOutline}<path d="M16 6 22 20l-6 4 8 18"/><path d="m35 4 3-3m1 6 4-1m-3 5 3 3"/></>,
+  }
+
+  return <svg {...common}>{icons[id] || icons['kopf-anatomie']}</svg>
+}
+
 function ChapterIcon({ fachId, kapitel, className }) {
   if (fachId === 'msk') return <MskChapterIcon id={kapitel.id} className={className} />
   if (fachId === 'thorax') return <ThoraxChapterIcon id={kapitel.id} className={className} />
   if (fachId === 'abdomen') return <AbdomenChapterIcon id={kapitel.id} className={className} />
+  if (fachId === 'gehirn') return <GehirnChapterIcon id={kapitel.id} className={className} />
   return <span className={className}>{kapitel.icon}</span>
 }
 
