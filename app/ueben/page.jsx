@@ -25,22 +25,29 @@ const UE = {
         step1:'Körperregion(en) wählen', step2:'Themen wählen', step3:'Anzahl der Fragen',
         allSel:'Alle', noneSel:'Keine', start:'Quiz starten',
         questions:'Fragen', topics:'Themen', selected:'Ausgewählt',
-        noFach:'Wähle zuerst eine Körperregion.', random:'Zufällige Auswahl' },
+        noFach:'Wähle zuerst eine Körperregion.', noTopics:'Für diesen Bereich sind noch keine Themen verfügbar.',
+        wholeChapter:'Ganzes Kapitel wählen', chapterSelected:'Ganzes Kapitel ausgewählt',
+        random:'Zufällige Auswahl' },
   en: { home:'RadYar', crumb:'Practice',
         title:'MCQ Training', sub:'Choose one or more body regions, then topics and number of questions.',
         step1:'Choose body region(s)', step2:'Choose topics', step3:'Number of questions',
         allSel:'All', noneSel:'None', start:'Start quiz',
         questions:'questions', topics:'topics', selected:'Selected',
-        noFach:'Choose a body region first.', random:'Random selection' },
+        noFach:'Choose a body region first.', noTopics:'No topics are available for this area yet.',
+        wholeChapter:'Select whole chapter', chapterSelected:'Whole chapter selected',
+        random:'Random selection' },
   fa: { home:'RadYar', crumb:'تمرین',
         title:'تمرین MCQ', sub:'یک یا چند ناحیه بدن انتخاب کنید، سپس موضوعات و تعداد سؤالات.',
         step1:'انتخاب ناحیه(ها)', step2:'انتخاب موضوعات', step3:'تعداد سؤالات',
         allSel:'همه', noneSel:'هیچ', start:'شروع آزمون',
         questions:'سؤال', topics:'موضوع', selected:'انتخاب شده',
-        noFach:'ابتدا یک ناحیه انتخاب کنید.', random:'انتخاب تصادفی' },
+        noFach:'ابتدا یک ناحیه انتخاب کنید.', noTopics:'هنوز موضوعی برای این بخش موجود نیست.',
+        wholeChapter:'انتخاب کل فصل', chapterSelected:'کل فصل انتخاب شده',
+        random:'انتخاب تصادفی' },
 }
 
 const ANZAHL_OPTIONS = [5, 10, 25, 50]
+const fachIcon = id => id === 'gefaesse-ir' ? '/fach/gefaesse-ir.svg' : `/fach/${id}.png`
 
 export default function UebenPage() {
   const { lang } = useLanguage()
@@ -86,6 +93,13 @@ export default function UebenPage() {
   }
 
   const toggleThema = (id) => setSelThemen(prev => { const s = new Set(prev); s.has(id) ? s.delete(id) : s.add(id); return s })
+  const toggleKapitel = (themen) => setSelThemen(prev => {
+    const next = new Set(prev)
+    const ids = themen.map(thema => thema.id)
+    const allSelected = ids.every(id => next.has(id))
+    ids.forEach(id => allSelected ? next.delete(id) : next.add(id))
+    return next
+  })
   const toggleTopicGroup = (id) => setOpenTopicGroups(prev => { const s = new Set(prev); s.has(id) ? s.delete(id) : s.add(id); return s })
   const selectAll  = () => setSelThemen(new Set(allThemenFromSel.map(t => t.id)))
   const selectNone = () => setSelThemen(prev => {
@@ -119,7 +133,7 @@ export default function UebenPage() {
   }, [selFach, lang])
 
   return (
-    <div className={styles.page}>
+    <div className={styles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
       <div className={styles.layout}>
 
         {/* ── LEFT PANEL ── */}
@@ -147,7 +161,7 @@ export default function UebenPage() {
                     className={`${styles.fachCard} ${active ? styles.fachCardActive : ''}`}
                     style={active ? { borderColor: f.color, background: f.color + '12' } : {}}
                     onClick={() => toggleFach(f.id)}>
-                    <span className={styles.fachIcon}><Image src={`/fach/${f.id}.png`} alt={display[f.id]} width={30} height={30} style={{ objectFit: 'contain' }} /></span>
+                    <span className={styles.fachIcon}><Image src={fachIcon(f.id)} alt={display[f.id]} width={54} height={54} style={{ objectFit: 'contain' }} /></span>
                     <span className={styles.fachName} style={active ? { color: f.color } : {}}>
                       {display[f.id]}
                     </span>
@@ -174,17 +188,20 @@ export default function UebenPage() {
 
             {selFach.size === 0 ? (
               <div className={styles.hint}>{t.noFach}</div>
+            ) : groupedBySel.length === 0 ? (
+              <div className={styles.hint}>{t.noTopics}</div>
             ) : (
               <div className={styles.kapitelList}>
                 {groupedBySel.map(({ fachId, fachColor, kapitelId, kapitelTitle, themen }) => {
                   const groupKey = fachId + '-' + kapitelId
                   const isOpen = openTopicGroups.has(groupKey)
                   const selectedCount = themen.filter(th => selThemen.has(th.id)).length
+                  const wholeChapterSelected = themen.length > 0 && selectedCount === themen.length
                   return (
                     <div key={groupKey} className={`${styles.kapitelBlock} ${isOpen ? styles.kapitelBlockOpen : ''}`}>
                       <button className={styles.kapitelHeaderBtn} onClick={() => toggleTopicGroup(groupKey)}>
                         <span className={styles.kapitelIconWrap}>
-                          <Image src={`/fach/${fachId}.png`} alt={display[fachId] || fachId} width={26} height={26} style={{ objectFit: 'contain' }} />
+                          <Image src={fachIcon(fachId)} alt={display[fachId] || fachId} width={26} height={26} style={{ objectFit: 'contain' }} />
                         </span>
                         <span className={styles.kapitelTitle}>{display[fachId] || fachId} · {kapitelTitle}</span>
                         <span className={styles.kapitelMeta} style={{ color: fachColor, background: fachColor + '12' }}>
@@ -193,15 +210,26 @@ export default function UebenPage() {
                         <span className={styles.kapitelChevron} style={{ color: isOpen ? fachColor : undefined }}>{isOpen ? '−' : '+'}</span>
                       </button>
                       {isOpen && (
-                        <div className={styles.chips}>
-                          {themen.map(th => (
-                            <button key={th.id}
-                              className={`${styles.chip} ${selThemen.has(th.id) ? styles.chipActive : ''} ${th._sub ? styles.chipSub : ''}`}
-                              style={selThemen.has(th.id) ? { borderColor: fachColor, color: fachColor, background: fachColor + '12' } : {}}
-                              onClick={() => toggleThema(th.id)}>
-                              {getThemaTitle(th, lang)}
-                            </button>
-                          ))}
+                        <div className={styles.kapitelContent}>
+                          <button
+                            className={`${styles.chapterSelect} ${wholeChapterSelected ? styles.chapterSelectActive : ''}`}
+                            style={wholeChapterSelected ? { borderColor: fachColor, color: fachColor, background: fachColor + '12' } : {}}
+                            onClick={() => toggleKapitel(themen)}
+                          >
+                            <span className={styles.chapterSelectCheck}>{wholeChapterSelected ? '✓' : ''}</span>
+                            <span>{wholeChapterSelected ? t.chapterSelected : t.wholeChapter}</span>
+                            <small>{themen.length}</small>
+                          </button>
+                          <div className={styles.chips}>
+                            {themen.map(th => (
+                              <button key={th.id}
+                                className={`${styles.chip} ${selThemen.has(th.id) ? styles.chipActive : ''} ${th._sub ? styles.chipSub : ''}`}
+                                style={selThemen.has(th.id) ? { borderColor: fachColor, color: fachColor, background: fachColor + '12' } : {}}
+                                onClick={() => toggleThema(th.id)}>
+                                {getThemaTitle(th, lang)}
+                              </button>
+                            ))}
+                          </div>
                         </div>
                       )}
                     </div>
@@ -242,7 +270,7 @@ export default function UebenPage() {
                     const f = CURRICULUM.find(c => c.id === id)
                     return (
                       <div key={id} className={styles.summaryFachTag} style={{ borderColor: f?.color + '44', color: f?.color }}>
-                        <Image src={`/fach/${id}.png`} alt={display[id] || id} width={18} height={18} style={{ objectFit: 'contain' }} /> {display[id] || id}
+                        <Image src={fachIcon(id)} alt={display[id] || id} width={18} height={18} style={{ objectFit: 'contain' }} /> {display[id] || id}
                       </div>
                     )
                   })}

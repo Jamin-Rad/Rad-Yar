@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">Gefäße</title>
+  <defs>
+    <linearGradient id="artery" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fb7185"/>
+      <stop offset="1" stop-color="#dc2626"/>
+    </linearGradient>
+    <linearGradient id="vein" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#60a5fa"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <path d="M48 111c0-18 8-29 17-40 8-10 15-19 15-34V17" fill="none" stroke="url(#artery)" stroke-width="13" stroke-linecap="round"/>
+  <path d="M80 42c14 2 23 9 30 20" fill="none" stroke="url(#artery)" stroke-width="9" stroke-linecap="round"/>
+  <path d="M67 68C54 61 44 50 39 35" fill="none" stroke="url(#artery)" stroke-width="9" stroke-linecap="round"/>
+  <path d="M79 111c0-18-7-29-15-39-8-11-16-21-16-36V18" fill="none" stroke="url(#vein)" stroke-width="11" stroke-linecap="round"/>
+  <path d="M49 43c-14 3-23 10-30 21" fill="none" stroke="url(#vein)" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="80" cy="17" r="7" fill="#fca5a5"/>
+  <circle cx="48" cy="18" r="6" fill="#93c5fd"/>
+</svg>
