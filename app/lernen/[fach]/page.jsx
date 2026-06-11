@@ -186,12 +186,46 @@ function MammaChapterIcon({ id, className }) {
   return <svg {...common}>{icons[id] || icons['mamma-anatomie']}</svg>
 }
 
+function PelvisChapterIcon({ id, className }) {
+  const common = {
+    viewBox: '0 0 48 48',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    className,
+    'aria-hidden': true,
+  }
+
+  const pelvis = <><path d="M12 8c-3 9-3 18 3 25l9 9 9-9c6-7 6-16 3-25"/><path d="M15 12c2 7 5 10 9 10s7-3 9-10M17 33l7-6 7 6"/></>
+  const icons = {
+    'becken-f-anatomie': pelvis,
+    'becken-f-grundlagen': <>{pelvis}<rect x="18" y="12" width="12" height="10" rx="2"/></>,
+    'becken-f-uterus': <><path d="M24 38V23"/><path d="M24 23c-5 0-9-4-9-9 4 0 7 1 9 4 2-3 5-4 9-4 0 5-4 9-9 9Z"/><path d="M15 14 9 9m24 5 6-5"/></>,
+    'becken-f-zervix': <><path d="M17 9c0 9 2 15 7 18 5-3 7-9 7-18"/><path d="M21 27v12h6V27"/></>,
+    'becken-f-ovarien': <><circle cx="12" cy="18" r="6"/><circle cx="36" cy="18" r="6"/><path d="M18 18c3 0 5 2 6 5 1-3 3-5 6-5M24 23v17"/></>,
+    'becken-f-endometriose': <>{pelvis}<circle cx="18" cy="24" r="2" fill="currentColor" stroke="none"/><circle cx="30" cy="27" r="2" fill="currentColor" stroke="none"/></>,
+    'becken-f-blase': <><path d="M15 16c0 13 2 23 9 23s9-10 9-23c-4 3-14 3-18 0Z"/><path d="M24 39v5"/></>,
+    'becken-f-beckenboden': <>{pelvis}<path d="M13 35c7-4 15-4 22 0"/></>,
+    'becken-f-spezielle-situationen': <>{pelvis}<path d="M37 27v10m-5-5h10"/></>,
+    'becken-m-anatomie': pelvis,
+    'becken-m-grundlagen': <>{pelvis}<rect x="18" y="12" width="12" height="10" rx="2"/></>,
+    'becken-m-prostata': <><path d="M16 17c0 8 3 14 8 14s8-6 8-14c-4 2-12 2-16 0Z"/><path d="M24 31v10"/><circle cx="24" cy="14" r="5"/></>,
+    'becken-m-blase': <><path d="M15 16c0 13 2 23 9 23s9-10 9-23c-4 3-14 3-18 0Z"/><path d="M24 39v5"/></>,
+    'becken-m-skrotum': <><path d="M24 7v13"/><path d="M24 20c-8 0-13 5-13 12s5 11 13 11 13-4 13-11-5-12-13-12Z"/><path d="M24 20v23"/><circle cx="18" cy="31" r="4"/><circle cx="30" cy="31" r="4"/></>,
+  }
+
+  return <svg {...common}>{icons[id] || pelvis}</svg>
+}
+
 function ChapterIcon({ fachId, kapitel, className }) {
   if (fachId === 'msk') return <MskChapterIcon id={kapitel.id} className={className} />
   if (fachId === 'thorax') return <ThoraxChapterIcon id={kapitel.id} className={className} />
   if (fachId === 'abdomen') return <AbdomenChapterIcon id={kapitel.id} className={className} />
   if (fachId === 'gehirn') return <GehirnChapterIcon id={kapitel.id} className={className} />
   if (fachId === 'mamma') return <MammaChapterIcon id={kapitel.id} className={className} />
+  if (fachId === 'becken-f' || fachId === 'becken-m') return <PelvisChapterIcon id={kapitel.id} className={className} />
   return <span className={className}>{kapitel.icon}</span>
 }
 

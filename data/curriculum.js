@@ -723,7 +723,109 @@ export const CURRICULUM = [
     icon: '♀️', color: '#fb7185',
     bg: 'linear-gradient(135deg,#2a0a10,#5a1020)',
     bodyZone: 'BeckenF',
-    kapitel: [],
+    kapitel: [
+      {
+        id: 'becken-f-anatomie',
+        title: { de: '1. Anatomie', en: '1. Anatomy', fa: '۱. آناتومی' },
+        icon: '🗺️',
+        themen: [
+          { id: 'uterus-ligamente-anatomie', title: { de: 'Uterus & Ligamente', en: 'Uterus & Ligaments', fa: 'رحم و رباط‌ها' }, tags: ['MRT','Sono'], diff: 1 },
+          { id: 'ovarien-adnexe-anatomie', title: { de: 'Ovarien & Adnexe', en: 'Ovaries & Adnexa', fa: 'تخمدان‌ها و آدنکس‌ها' }, tags: ['MRT','Sono'], diff: 1 },
+          { id: 'zervix-vagina-anatomie', title: { de: 'Zervix & Vagina', en: 'Cervix & Vagina', fa: 'سرویکس و واژن' }, tags: ['MRT','Sono'], diff: 1 },
+          { id: 'beckenboden-faszien-frau', title: { de: 'Beckenboden & Faszien', en: 'Pelvic Floor & Fascia', fa: 'کف لگن و فاشیا' }, tags: ['MRT'], diff: 1 },
+          { id: 'gefaessanatomie-becken-frau', title: { de: 'Gefäßanatomie', en: 'Vascular Anatomy', fa: 'آناتومی عروقی' }, tags: ['CT','MRT'], diff: 1 },
+        ],
+      },
+      {
+        id: 'becken-f-grundlagen',
+        title: { de: '2. Bildgebungsmodalitäten & Grundlagen', en: '2. Imaging Modalities & Fundamentals', fa: '۲. روش‌های تصویربرداری و مبانی' },
+        icon: '🩻',
+        themen: [
+          { id: 'becken-mrt-frau', title: { de: 'MRT – Technik & Sequenzen', en: 'MRI – Technique & Sequences', fa: 'MRI – تکنیک و سکانس‌ها' }, tags: ['MRT'], diff: 1 },
+          { id: 'becken-sonographie-frau', title: { de: 'Sonographie (transabdominell & transvaginal)', en: 'Ultrasound (Transabdominal & Transvaginal)', fa: 'سونوگرافی ترانس‌ابدومینال و ترانس‌واژینال' }, tags: ['Sono'], diff: 1 },
+          { id: 'o-rads', title: { de: 'O-RADS', en: 'O-RADS', fa: 'O-RADS' }, tags: ['Sono','MRT'], diff: 2 },
+        ],
+      },
+      {
+        id: 'becken-f-uterus',
+        title: { de: '3. Uterus', en: '3. Uterus', fa: '۳. رحم' },
+        icon: '◉',
+        themen: [
+          { id: 'uterusmyome', title: { de: 'Myome (Leiomyome)', en: 'Fibroids (Leiomyomas)', fa: 'فیبروم‌های رحمی (لیومیوم)' }, tags: ['Sono','MRT'], diff: 2 },
+          { id: 'adenomyose', title: { de: 'Adenomyose', en: 'Adenomyosis', fa: 'آدنومیوز' }, tags: ['Sono','MRT'], diff: 2 },
+          { id: 'endometriumpolyp', title: { de: 'Endometriumpolyp', en: 'Endometrial Polyp', fa: 'پولیپ آندومتر' }, tags: ['Sono','MRT'], diff: 1 },
+          { id: 'endometritis', title: { de: 'Endometritis', en: 'Endometritis', fa: 'آندومتریت' }, tags: ['Sono','MRT'], diff: 2 },
+          { id: 'endometriumkarzinom', title: { de: 'Endometriumkarzinom', en: 'Endometrial Cancer', fa: 'کارسینوم آندومتر' }, tags: ['MRT'], diff: 3 },
+          { id: 'uterussarkom', title: { de: 'Uterussarkom', en: 'Uterine Sarcoma', fa: 'سارکوم رحم' }, tags: ['MRT','CT'], diff: 3 },
+        ],
+      },
+      {
+        id: 'becken-f-zervix',
+        title: { de: '4. Zervix', en: '4. Cervix', fa: '۴. سرویکس' },
+        icon: '◎',
+        themen: [
+          { id: 'zervixkarzinom', title: { de: 'Zervixkarzinom', en: 'Cervical Cancer', fa: 'سرطان سرویکس' }, tags: ['MRT','CT'], diff: 3 },
+        ],
+      },
+      {
+        id: 'becken-f-ovarien',
+        title: { de: '5. Ovarien & Adnexe', en: '5. Ovaries & Adnexa', fa: '۵. تخمدان‌ها و آدنکس‌ها' },
+        icon: '◌',
+        themen: [
+          { id: 'funktionelle-ovarialzysten', title: { de: 'Funktionelle Zysten', en: 'Functional Cysts', fa: 'کیست‌های عملکردی' }, tags: ['Sono','MRT'], diff: 1 },
+          { id: 'dermoidzyste-reifes-teratom', title: { de: 'Dermoidzyste / Reifes Teratom', en: 'Dermoid Cyst / Mature Teratoma', fa: 'کیست درموئید / تراتوم بالغ' }, tags: ['Sono','CT','MRT'], diff: 2 },
+          { id: 'hydrosalpinx', title: { de: 'Hydrosalpinx', en: 'Hydrosalpinx', fa: 'هیدروسالپنکس' }, tags: ['Sono','MRT'], diff: 2 },
+          { id: 'ovarialtorsion', title: { de: 'Ovarialtorsion', en: 'Ovarian Torsion', fa: 'تورشن تخمدان' }, tags: ['Sono','MRT'], diff: 2 },
+          { id: 'pid-tuboovarialabszess', title: { de: 'PID / Tuboovarialabszess', en: 'PID / Tubo-Ovarian Abscess', fa: 'PID / آبسه توبو-اواریان' }, tags: ['Sono','CT','MRT'], diff: 2 },
+          { id: 'ovarialkarzinom', title: { de: 'Ovarialkarzinom', en: 'Ovarian Cancer', fa: 'سرطان تخمدان' }, tags: ['Sono','CT','MRT'], diff: 3 },
+          { id: 'borderline-tumoren-ovarium', title: { de: 'Borderline-Tumoren', en: 'Borderline Ovarian Tumours', fa: 'تومورهای بوردرلاین تخمدان' }, tags: ['Sono','MRT'], diff: 3 },
+        ],
+      },
+      {
+        id: 'becken-f-endometriose',
+        title: { de: '6. Endometriose', en: '6. Endometriosis', fa: '۶. اندومتریوز' },
+        icon: '✦',
+        themen: [
+          { id: 'peritoneale-endometriose', title: { de: 'Peritoneale Endometriose', en: 'Peritoneal Endometriosis', fa: 'اندومتریوز صفاقی' }, tags: ['MRT'], diff: 2 },
+          { id: 'ovarielle-endometriose', title: { de: 'Ovarielle Endometriose', en: 'Ovarian Endometriosis', fa: 'اندومتریوز تخمدانی' }, tags: ['Sono','MRT'], diff: 2 },
+          { id: 'tiefe-endometriose', title: { de: 'Tiefe Endometriose (DIE)', en: 'Deep Infiltrating Endometriosis (DIE)', fa: 'اندومتریوز عمقی (DIE)' }, tags: ['MRT','Sono'], diff: 3 },
+        ],
+      },
+      {
+        id: 'becken-f-blase',
+        title: { de: '7. Blase', en: '7. Urinary Bladder', fa: '۷. مثانه' },
+        icon: '💧',
+        themen: [
+          { id: 'zystitis-becken-f', title: { de: 'Zystitis', en: 'Cystitis', fa: 'سیستیت' }, tags: ['Sono','CT','MRT'], diff: 1 },
+          { id: 'urothelkarzinom-blase-f', title: { de: 'Urothelkarzinom', en: 'Urothelial Carcinoma', fa: 'کارسینوم اوروتلیال' }, tags: ['CT','MRT'], diff: 2 },
+          { id: 'andere-blasenkarzinome-f', title: { de: 'Andere Blasenkarzinome', en: 'Other Bladder Cancers', fa: 'سایر سرطان‌های مثانه' }, tags: ['CT','MRT'], diff: 3 },
+          { id: 'blasendivertikel-f', title: { de: 'Blasendivertikel', en: 'Bladder Diverticulum', fa: 'دیورتیکول مثانه' }, tags: ['Sono','CT'], diff: 1 },
+        ],
+      },
+      {
+        id: 'becken-f-beckenboden',
+        title: { de: '8. Beckenboden & Rektum', en: '8. Pelvic Floor & Rectum', fa: '۸. کف لگن و رکتوم' },
+        icon: '⌒',
+        themen: [
+          { id: 'beckenbodeninsuffizienz', title: { de: 'Beckenbodeninsuffizienz', en: 'Pelvic Floor Dysfunction', fa: 'نارسایی کف لگن' }, tags: ['MRT'], diff: 2 },
+          { id: 'rektumprolaps', title: { de: 'Rektumprolaps', en: 'Rectal Prolapse', fa: 'پرولاپس رکتوم' }, tags: ['MRT'], diff: 2 },
+          { id: 'vaginalprolaps', title: { de: 'Vaginalprolaps', en: 'Vaginal Prolapse', fa: 'پرولاپس واژن' }, tags: ['MRT'], diff: 2 },
+          { id: 'rektozele', title: { de: 'Rektozele', en: 'Rectocele', fa: 'رکتوسل' }, tags: ['MRT'], diff: 2 },
+          { id: 'rektuminvagination', title: { de: 'Rektuminvagination', en: 'Rectal Intussusception', fa: 'انواژیناسیون رکتوم' }, tags: ['MRT'], diff: 3 },
+        ],
+      },
+      {
+        id: 'becken-f-spezielle-situationen',
+        title: { de: '9. Spezielle Situationen', en: '9. Special Situations', fa: '۹. شرایط ویژه' },
+        icon: '✚',
+        themen: [
+          { id: 'schwangerschaft-komplikationen-becken', title: { de: 'Schwangerschaft & Komplikationen', en: 'Pregnancy & Complications', fa: 'بارداری و عوارض' }, tags: ['Sono','MRT'], diff: 2 },
+          { id: 'intrauterinpessar', title: { de: 'Intrauterinpessar (IUD)', en: 'Intrauterine Device (IUD)', fa: 'وسیله داخل رحمی (IUD)' }, tags: ['Sono'], diff: 1 },
+          { id: 'uterusarterienembolisation', title: { de: 'Uterusarterienembolisation (UAE)', en: 'Uterine Artery Embolisation (UAE)', fa: 'آمبولیزاسیون شریان رحمی (UAE)' }, tags: ['DSA','MRT'], diff: 2 },
+          { id: 'postoperativ-posttherapeutisch-becken-f', title: { de: 'Postoperative & posttherapeutische Veränderungen', en: 'Postoperative & Post-Treatment Changes', fa: 'تغییرات پس از جراحی و درمان' }, tags: ['CT','MRT'], diff: 2 },
+        ],
+      },
+    ],
   },
   {
     id: 'becken-m',
@@ -731,7 +833,70 @@ export const CURRICULUM = [
     icon: '♂️', color: '#c084fc',
     bg: 'linear-gradient(135deg,#1a0a30,#3a1060)',
     bodyZone: 'BeckenM',
-    kapitel: [],
+    kapitel: [
+      {
+        id: 'becken-m-anatomie',
+        title: { de: '1. Anatomie', en: '1. Anatomy', fa: '۱. آناتومی' },
+        icon: '🗺️',
+        themen: [
+          { id: 'prostata-anatomie', title: { de: 'Prostata', en: 'Prostate', fa: 'پروستات' }, tags: ['MRT','Sono'], diff: 1 },
+          { id: 'samenblasen-anatomie', title: { de: 'Samenblasen', en: 'Seminal Vesicles', fa: 'کیسه‌های منی' }, tags: ['MRT'], diff: 1 },
+          { id: 'blase-urethra-anatomie-mann', title: { de: 'Blase & Urethra', en: 'Bladder & Urethra', fa: 'مثانه و مجرای ادرار' }, tags: ['CT','MRT'], diff: 1 },
+          { id: 'hoden-nebenhoden-anatomie', title: { de: 'Hoden & Nebenhoden', en: 'Testes & Epididymides', fa: 'بیضه‌ها و اپیدیدیم' }, tags: ['Sono','MRT'], diff: 1 },
+          { id: 'beckenboden-faszien-mann', title: { de: 'Beckenboden & Faszien', en: 'Pelvic Floor & Fascia', fa: 'کف لگن و فاشیا' }, tags: ['MRT'], diff: 1 },
+          { id: 'gefaessanatomie-becken-mann', title: { de: 'Gefäßanatomie', en: 'Vascular Anatomy', fa: 'آناتومی عروقی' }, tags: ['CT','MRT'], diff: 1 },
+        ],
+      },
+      {
+        id: 'becken-m-grundlagen',
+        title: { de: '2. Bildgebungsmodalitäten & Grundlagen', en: '2. Imaging Modalities & Fundamentals', fa: '۲. روش‌های تصویربرداری و مبانی' },
+        icon: '🩻',
+        themen: [
+          { id: 'becken-mrt-mann', title: { de: 'MRT – Technik & Sequenzen', en: 'MRI – Technique & Sequences', fa: 'MRI – تکنیک و سکانس‌ها' }, tags: ['MRT'], diff: 1 },
+          { id: 'pi-rads', title: { de: 'PI-RADS', en: 'PI-RADS', fa: 'PI-RADS' }, tags: ['MRT'], diff: 2 },
+          { id: 'skrotum-transrektal-sonographie', title: { de: 'Sonographie (Skrotum & transrektal)', en: 'Ultrasound (Scrotal & Transrectal)', fa: 'سونوگرافی اسکروتوم و ترانس‌رکتال' }, tags: ['Sono'], diff: 1 },
+        ],
+      },
+      {
+        id: 'becken-m-prostata',
+        title: { de: '3. Prostata', en: '3. Prostate', fa: '۳. پروستات' },
+        icon: '◉',
+        themen: [
+          { id: 'benigne-prostatahyperplasie', title: { de: 'Benigne Prostatahyperplasie (BPH)', en: 'Benign Prostatic Hyperplasia (BPH)', fa: 'هیپرپلازی خوش‌خیم پروستات (BPH)' }, tags: ['Sono','MRT'], diff: 1 },
+          { id: 'prostatitis', title: { de: 'Prostatitis', en: 'Prostatitis', fa: 'پروستاتیت' }, tags: ['MRT','Sono'], diff: 2 },
+          {
+            id: 'prostatakarzinom',
+            title: { de: 'Prostatakarzinom', en: 'Prostate Cancer', fa: 'سرطان پروستات' },
+            tags: ['MRT','CT'], diff: 3,
+            sub: [
+              { id: 'prostatakarzinom-posttherapeutisch', title: { de: 'Posttherapeutische Bildgebung', en: 'Post-Treatment Imaging', fa: 'تصویربرداری پس از درمان' }, tags: ['MRT','CT'], diff: 3 },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'becken-m-blase',
+        title: { de: '4. Blase', en: '4. Urinary Bladder', fa: '۴. مثانه' },
+        icon: '💧',
+        themen: [
+          { id: 'zystitis-becken-m', title: { de: 'Zystitis', en: 'Cystitis', fa: 'سیستیت' }, tags: ['Sono','CT','MRT'], diff: 1 },
+          { id: 'urothelkarzinom-blase-m', title: { de: 'Urothelkarzinom', en: 'Urothelial Carcinoma', fa: 'کارسینوم اوروتلیال' }, tags: ['CT','MRT'], diff: 2 },
+          { id: 'andere-blasenkarzinome-m', title: { de: 'Andere Blasenkarzinome', en: 'Other Bladder Cancers', fa: 'سایر سرطان‌های مثانه' }, tags: ['CT','MRT'], diff: 3 },
+          { id: 'blasendivertikel-m', title: { de: 'Blasendivertikel', en: 'Bladder Diverticulum', fa: 'دیورتیکول مثانه' }, tags: ['Sono','CT'], diff: 1 },
+        ],
+      },
+      {
+        id: 'becken-m-skrotum',
+        title: { de: '5. Skrotum & Hoden', en: '5. Scrotum & Testes', fa: '۵. اسکروتوم و بیضه‌ها' },
+        icon: '∞',
+        themen: [
+          { id: 'hodentorsion', title: { de: 'Hodentorsion', en: 'Testicular Torsion', fa: 'تورشن بیضه' }, tags: ['Sono'], diff: 2 },
+          { id: 'epididymitis-orchitis', title: { de: 'Epididymitis / Orchitis', en: 'Epididymitis / Orchitis', fa: 'اپیدیدیمیت / ارکیت' }, tags: ['Sono'], diff: 2 },
+          { id: 'hydrozele-varikozele', title: { de: 'Hydrozele / Varikozele', en: 'Hydrocele / Varicocele', fa: 'هیدروسل / واریکوسل' }, tags: ['Sono'], diff: 1 },
+          { id: 'hodentumoren', title: { de: 'Hodentumoren', en: 'Testicular Tumours', fa: 'تومورهای بیضه' }, tags: ['Sono','CT','MRT'], diff: 3 },
+        ],
+      },
+    ],
   },
   {
     id: 'msk',
