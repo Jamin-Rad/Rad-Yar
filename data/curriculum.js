@@ -432,7 +432,74 @@ export const CURRICULUM = [
     icon: '🩺', color: '#f472b6',
     bg: 'linear-gradient(135deg,#2a0a20,#5a1040)',
     bodyZone: 'Brust',
-    kapitel: [],
+    kapitel: [
+      {
+        id: 'mamma-anatomie',
+        title: { de: '1. Anatomie & Lymphabfluss', en: '1. Anatomy & Lymphatic Drainage', fa: '۱. آناتومی و تخلیه لنفاوی' },
+        icon: '🗺️',
+        themen: [
+          { id: 'mamma-anatomie-lymphabfluss', title: { de: 'Anatomie & Lymphabfluss', en: 'Anatomy & Lymphatic Drainage', fa: 'آناتومی و تخلیه لنفاوی' }, tags: ['Mammo','Sono','MRT'], diff: 1 },
+        ],
+      },
+      {
+        id: 'mamma-bildgebung',
+        title: { de: '2. Bildgebung & BI-RADS', en: '2. Imaging & BI-RADS', fa: '۲. تصویربرداری و BI-RADS' },
+        icon: '🩻',
+        themen: [
+          { id: 'mammographie', title: { de: 'Mammographie', en: 'Mammography', fa: 'ماموگرافی' }, tags: ['Mammo'], diff: 1 },
+          { id: 'mamma-sonographie', title: { de: 'Sonographie', en: 'Ultrasound', fa: 'سونوگرافی' }, tags: ['Sono'], diff: 1 },
+          { id: 'mamma-mrt', title: { de: 'MRT der Mamma', en: 'Breast MRI', fa: 'MRI پستان' }, tags: ['MRT'], diff: 2 },
+          { id: 'mamma-befundmuster', title: { de: 'Befundmuster', en: 'Imaging Findings', fa: 'الگوهای تصویربرداری' }, tags: ['Mammo','Sono','MRT'], diff: 2 },
+          { id: 'bi-rads', title: { de: 'BI-RADS', en: 'BI-RADS', fa: 'BI-RADS' }, tags: ['Mammo','Sono','MRT'], diff: 2 },
+        ],
+      },
+      {
+        id: 'mamma-benigne',
+        title: { de: '3. Benigne Erkrankungen', en: '3. Benign Diseases', fa: '۳. بیماری‌های خوش‌خیم' },
+        icon: '🌿',
+        themen: [
+          { id: 'mamma-zysten', title: { de: 'Zysten', en: 'Cysts', fa: 'کیست‌ها' }, tags: ['Sono','Mammo'], diff: 1 },
+          { id: 'fibroadenom', title: { de: 'Fibroadenom', en: 'Fibroadenoma', fa: 'فیبروآدنوم' }, tags: ['Sono','Mammo'], diff: 1 },
+          { id: 'papillom-mamma', title: { de: 'Papillom', en: 'Papilloma', fa: 'پاپیلوما' }, tags: ['Sono','Mammo','MRT'], diff: 2 },
+          { id: 'phyllodes-tumor', title: { de: 'Phyllodes-Tumor', en: 'Phyllodes Tumour', fa: 'تومور فیلودس' }, tags: ['Sono','Mammo','MRT'], diff: 2 },
+          { id: 'fettnekrose-mamma', title: { de: 'Fettnekrose', en: 'Fat Necrosis', fa: 'نکروز چربی' }, tags: ['Mammo','Sono'], diff: 2 },
+          { id: 'mastitis-abszess-mamma', title: { de: 'Mastitis / Abszess', en: 'Mastitis / Abscess', fa: 'ماستیت / آبسه' }, tags: ['Sono','Mammo'], diff: 2 },
+        ],
+      },
+      {
+        id: 'mamma-maligne',
+        title: { de: '4. Maligne Erkrankungen', en: '4. Malignant Diseases', fa: '۴. بیماری‌های بدخیم' },
+        icon: '🎗️',
+        themen: [
+          { id: 'dcis', title: { de: 'DCIS', en: 'DCIS', fa: 'DCIS' }, tags: ['Mammo','MRT'], diff: 2 },
+          { id: 'invasives-mammakarzinom-nst', title: { de: 'Invasives Mammakarzinom NST', en: 'Invasive Breast Carcinoma NST', fa: 'کارسینوم مهاجم پستان NST' }, tags: ['Mammo','Sono','MRT'], diff: 3 },
+          { id: 'invasiv-lobulaeres-karzinom', title: { de: 'Invasiv-lobuläres Karzinom', en: 'Invasive Lobular Carcinoma', fa: 'کارسینوم لوبولار مهاجم' }, tags: ['Mammo','Sono','MRT'], diff: 3 },
+          { id: 'inflammatorisches-mammakarzinom', title: { de: 'Inflammatorisches Karzinom', en: 'Inflammatory Breast Cancer', fa: 'کارسینوم التهابی پستان' }, tags: ['Mammo','Sono','MRT'], diff: 3 },
+          { id: 'metastasen-lymphom-mamma', title: { de: 'Metastasen / Lymphom', en: 'Metastases / Lymphoma', fa: 'متاستاز / لنفوم' }, tags: ['Mammo','Sono','MRT'], diff: 3 },
+        ],
+      },
+      {
+        id: 'mamma-interventionen',
+        title: { de: '5. Interventionen', en: '5. Interventions', fa: '۵. مداخلات' },
+        icon: '🧪',
+        themen: [
+          { id: 'mamma-biopsie', title: { de: 'Biopsie', en: 'Biopsy', fa: 'بیوپسی' }, tags: ['Sono','Mammo','MRT'], diff: 2 },
+          { id: 'mamma-markierung-lokalisation', title: { de: 'Markierung / präoperative Lokalisation', en: 'Marker Placement / Preoperative Localisation', fa: 'مارکرگذاری / تعیین محل پیش از عمل' }, tags: ['Sono','Mammo'], diff: 2 },
+        ],
+      },
+      {
+        id: 'mamma-spezielle-situationen',
+        title: { de: '6. Spezielle Situationen', en: '6. Special Situations', fa: '۶. شرایط ویژه' },
+        icon: '✦',
+        themen: [
+          { id: 'mamma-screening', title: { de: 'Screening', en: 'Screening', fa: 'غربالگری' }, tags: ['Mammo'], diff: 1 },
+          { id: 'mamma-posttherapeutisch', title: { de: 'Posttherapeutische Bildgebung', en: 'Post-Treatment Imaging', fa: 'تصویربرداری پس از درمان' }, tags: ['Mammo','Sono','MRT'], diff: 2 },
+          { id: 'mamma-implantate', title: { de: 'Implantate', en: 'Breast Implants', fa: 'ایمپلنت‌های پستان' }, tags: ['Mammo','Sono','MRT'], diff: 2 },
+          { id: 'maennliche-mamma', title: { de: 'Männliche Mamma', en: 'Male Breast', fa: 'پستان مردان' }, tags: ['Mammo','Sono'], diff: 2 },
+          { id: 'mamma-schwangerschaft-stillzeit', title: { de: 'Schwangerschaft & Stillzeit', en: 'Pregnancy & Lactation', fa: 'بارداری و شیردهی' }, tags: ['Sono','Mammo','MRT'], diff: 2 },
+        ],
+      },
+    ],
   },
   {
     id: 'abdomen',

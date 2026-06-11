@@ -161,11 +161,37 @@ function GehirnChapterIcon({ id, className }) {
   return <svg {...common}>{icons[id] || icons['kopf-anatomie']}</svg>
 }
 
+function MammaChapterIcon({ id, className }) {
+  const common = {
+    viewBox: '0 0 48 48',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    className,
+    'aria-hidden': true,
+  }
+
+  const breastOutline = <path d="M10 37c2-14 8-24 18-28 7-3 13 2 13 9 0 8-6 13-14 12-6-1-10 2-12 7"/>
+  const icons = {
+    'mamma-anatomie': <>{breastOutline}<path d="M18 31c3-8 8-14 15-17"/><circle cx="35" cy="13" r="2"/><path d="M14 37h28"/></>,
+    'mamma-bildgebung': <><rect x="8" y="7" width="32" height="34" rx="3"/>{breastOutline}<circle cx="30" cy="20" r="3"/></>,
+    'mamma-benigne': <>{breastOutline}<circle cx="28" cy="21" r="5"/><path d="M25 21h6"/></>,
+    'mamma-maligne': <>{breastOutline}<circle cx="29" cy="20" r="6" strokeDasharray="2 2"/><path d="m25 16 8 8m0-8-8 8"/></>,
+    'mamma-interventionen': <>{breastOutline}<path d="m8 10 18 18"/><path d="m6 8 4 4m13 13 4 4"/><path d="m29 18 8-8"/></>,
+    'mamma-spezielle-situationen': <>{breastOutline}<path d="M31 8v8M27 12h8"/><path d="M37 29v8m-4-4h8"/></>,
+  }
+
+  return <svg {...common}>{icons[id] || icons['mamma-anatomie']}</svg>
+}
+
 function ChapterIcon({ fachId, kapitel, className }) {
   if (fachId === 'msk') return <MskChapterIcon id={kapitel.id} className={className} />
   if (fachId === 'thorax') return <ThoraxChapterIcon id={kapitel.id} className={className} />
   if (fachId === 'abdomen') return <AbdomenChapterIcon id={kapitel.id} className={className} />
   if (fachId === 'gehirn') return <GehirnChapterIcon id={kapitel.id} className={className} />
+  if (fachId === 'mamma') return <MammaChapterIcon id={kapitel.id} className={className} />
   return <span className={className}>{kapitel.icon}</span>
 }
 
