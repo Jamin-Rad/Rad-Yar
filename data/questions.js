@@ -3171,6 +3171,59 @@ export const QUESTION_BANK = {
   ]
 }
 
+export const MCQ_TOPIC_GROUPS = [
+  {
+    fachId: 'technik',
+    kapitelId: 'technik-kontrastmittel',
+    title: { de: 'Kontrastmittel', en: 'Contrast media', fa: 'مواد حاجب' },
+    topics: [
+      { id: 'km-roentgen-grundlagen', title: { de: 'Röntgen-Kontrastmittel Grundlagen', en: 'X-ray contrast media basics', fa: 'مبانی مواد حاجب رادیوگرافی / CT' } },
+      { id: 'km-mrt', title: { de: 'MRT-Kontrastmittel', en: 'MRI contrast media', fa: 'مواد حاجب MRI' } },
+      { id: 'km-nebenwirkung-jod', title: { de: 'Nebenwirkungen jodhaltiger Kontrastmittel', en: 'Adverse effects of iodinated contrast media', fa: 'عوارض مواد حاجب یددار' } },
+      { id: 'km-nebenwirkung-gadolinium', title: { de: 'Nebenwirkungen von Gadolinium', en: 'Adverse effects of gadolinium', fa: 'عوارض گادولینیوم' } },
+      { id: 'km-schwangerschaft-stillzeit', title: { de: 'Schwangerschaft und Stillzeit', en: 'Pregnancy and breastfeeding', fa: 'بارداری و شیردهی' } },
+    ],
+  },
+  {
+    fachId: 'msk',
+    kapitelId: 'msk-knie',
+    title: { de: '15. Knie', en: '15. Knee', fa: '۱۵. زانو' },
+    topics: [
+      { id: 'meniskus', title: { de: 'Meniskus', en: 'Meniscus', fa: 'منیسک' } },
+    ],
+  },
+  {
+    fachId: 'abdomen',
+    kapitelId: 'abdomen-leber',
+    title: { de: 'Leber', en: 'Liver', fa: 'کبد' },
+    topics: [
+      { id: 'haemangiom', title: { de: 'Leberhämangiom', en: 'Liver haemangioma', fa: 'همانژیوم کبد' } },
+    ],
+  },
+  {
+    fachId: 'thorax',
+    kapitelId: 'thorax-lunge',
+    title: { de: 'Lunge', en: 'Lung', fa: 'ریه' },
+    topics: [
+      { id: 'sarkoidose', title: { de: 'Sarkoidose', en: 'Sarcoidosis', fa: 'سارکوئیدوز' } },
+    ],
+  },
+]
+
+export function getAvailableQuestionTopicIds() {
+  const tags = new Set(QUESTION_BANK.de.flatMap(question => question.tags))
+  return new Set(
+    MCQ_TOPIC_GROUPS.flatMap(group => group.topics)
+      .map(topic => topic.id)
+      .filter(topicId => tags.has(topicId))
+  )
+}
+
+export function countQuestions(themenIds) {
+  const selected = new Set(themenIds)
+  return QUESTION_BANK.de.filter(question => question.tags.some(tag => selected.has(tag))).length
+}
+
 export function getQuestions(themenIds, lang, n) {
   const all = QUESTION_BANK[lang] || QUESTION_BANK.de
   const tagSet = new Set(themenIds)

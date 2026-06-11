@@ -130,35 +130,24 @@ export default function McqSelectPage() {
       </div>
 
       <div className={styles.list}>
-        {TOPICS.map(t => {
+        {TOPICS.filter(t => t.available).map(t => {
           const name = t.name[lang] || t.name.de
           const desc = t.desc?.[lang] || t.desc?.de
           const count = t.count?.[lang] || t.count?.de
 
-          if (t.available) {
-            return (
-              <Link key={t.key} href={withLang(t.href)} className={styles.card}>
-                <span className={styles.icon}>{t.iconImage ? <Image src={t.iconImage} alt={name} width={32} height={32} style={{ objectFit: 'contain' }} /> : t.icon}</span>
-                <div className={styles.info}>
-                  <div className={styles.name} style={{ color: t.color }}>{name}</div>
-                  {desc && <div className={styles.desc}>{desc}</div>}
-                </div>
-                <div className={styles.right}>
-                  <span className={styles.badge}>{ui.available}</span>
-                  {count && <span className={styles.count}>{count}</span>}
-                  <span className={styles.arrow} style={{ color: t.color }}>{ui.start}</span>
-                </div>
-              </Link>
-            )
-          }
           return (
-            <div key={t.key} className={`${styles.card} ${styles.cardLocked}`}>
-              <span className={styles.icon} style={{ opacity: 0.4 }}>{t.iconImage ? <Image src={t.iconImage} alt={name} width={32} height={32} style={{ objectFit: 'contain' }} /> : t.icon}</span>
+            <Link key={t.key} href={withLang(t.href)} className={styles.card}>
+              <span className={styles.icon}>{t.iconImage ? <Image src={t.iconImage} alt={name} width={32} height={32} style={{ objectFit: 'contain' }} /> : t.icon}</span>
               <div className={styles.info}>
-                <div className={styles.name} style={{ color: t.color, opacity: 0.4 }}>{name}</div>
+                <div className={styles.name} style={{ color: t.color }}>{name}</div>
+                {desc && <div className={styles.desc}>{desc}</div>}
               </div>
-              <span className={styles.soon}>{ui.soon} 🔒</span>
-            </div>
+              <div className={styles.right}>
+                <span className={styles.badge}>{ui.available}</span>
+                {count && <span className={styles.count}>{count}</span>}
+                <span className={styles.arrow} style={{ color: t.color }}>{ui.start}</span>
+              </div>
+            </Link>
           )
         })}
       </div>

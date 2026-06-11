@@ -3,7 +3,8 @@ import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-import { CURRICULUM, getKapitelTitle, getThemaTitle } from '@/data/curriculum'
+import { CURRICULUM, getThemaTitle } from '@/data/curriculum'
+import { MCQ_TOPIC_GROUPS, countQuestions, getAvailableQuestionTopicIds } from '@/data/questions'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
 
@@ -25,9 +26,9 @@ const UE = {
         step1:'Körperregion(en) wählen', step2:'Themen wählen', step3:'Anzahl der Fragen',
         allSel:'Alle', noneSel:'Keine', start:'Quiz starten',
         questions:'Fragen', topics:'Themen', selected:'Ausgewählt',
-        noFach:'Wähle zuerst eine Körperregion.', noTopics:'Für diesen Bereich sind noch keine Themen verfügbar.',
+        noFach:'Wähle zuerst eine verfügbare Körperregion.', noTopics:'Für diesen Bereich sind noch keine Fragen verfügbar.',
         wholeChapter:'Ganzes Kapitel wählen', chapterSelected:'Ganzes Kapitel ausgewählt',
-        random:'Zufällige Auswahl' },
+        random:'Zufällige Auswahl', available:'Fragen verfügbar' },
   en: { home:'RadYar', crumb:'Practice',
         title:'MCQ Training', sub:'Choose one or more body regions, then topics and number of questions.',
         step1:'Choose body region(s)', step2:'Choose topics', step3:'Number of questions',
@@ -35,7 +36,7 @@ const UE = {
         questions:'questions', topics:'topics', selected:'Selected',
         noFach:'Choose a body region first.', noTopics:'No topics are available for this area yet.',
         wholeChapter:'Select whole chapter', chapterSelected:'Whole chapter selected',
-        random:'Random selection' },
+        random:'Random selection', available:'Questions available' },
   fa: { home:'RadYar', crumb:'تمرین',
         title:'تمرین MCQ', sub:'یک یا چند ناحیه بدن انتخاب کنید، سپس موضوعات و تعداد سؤالات.',
         step1:'انتخاب ناحیه(ها)', step2:'انتخاب موضوعات', step3:'تعداد سؤالات',
@@ -43,7 +44,7 @@ const UE = {
         questions:'سؤال', topics:'موضوع', selected:'انتخاب شده',
         noFach:'ابتدا یک ناحیه انتخاب کنید.', noTopics:'هنوز موضوعی برای این بخش موجود نیست.',
         wholeChapter:'انتخاب کل فصل', chapterSelected:'کل فصل انتخاب شده',
-        random:'انتخاب تصادفی' },
+        random:'انتخاب تصادفی', available:'سؤال موجود است' },
 }
 
 const ANZAHL_OPTIONS = [5, 10, 25, 50]
@@ -54,6 +55,17 @@ export default function UebenPage() {
   const router = useRouter()
   const t = UE[lang] || UE.de
   const display = FACH_DISPLAY[lang] || FACH_DISPLAY.de
+  const availableTopicIds = useMemo(() => getAvailableQuestionTopicIds(), [])
+  const availableGroups = useMemo(() => MCQ_TOPIC_GROUPS
+    .map(group => ({
+      ...group,
+      topics: group.topics.filter(topic => availableTopicIds.has(topic.id)),
+    }))
+    .filter(group => group.topics.length > 0), [availableTopicIds])
+  const availableFachIds = useMemo(
+    () => new Set(availableGroups.map(group => group.fachId)),
+    [availableGroups]
+  )
 
   // ── State ──────────────────────────────────────
   const [selFach, setSelFach]     = useState(new Set())   // multiple fach
@@ -61,32 +73,25 @@ export default function UebenPage() {
   const [anzahl, setAnzahl]       = useState(10)
   const [openTopicGroups, setOpenTopicGroups] = useState(new Set())
 
-  // All themen from all selected fach (combined, deduped by id)
   const allThemenFromSel = useMemo(() => {
-    const result = []
-    CURRICULUM.filter(f => selFach.has(f.id)).forEach(f => {
-      f.kapitel.forEach(k => {
-        k.themen.forEach(th => {
-          result.push({ ...th, fachId: f.id, fachColor: f.color, kapitelTitle: getKapitelTitle(k, lang), kapitelId: k.id })
-          // Also add sub-themen
-          if (th.sub) th.sub.forEach(s => result.push({ ...s, fachId: f.id, fachColor: f.color, kapitelTitle: getKapitelTitle(k, lang), kapitelId: k.id }))
-        })
-      })
-    })
-    return result
-  }, [selFach, lang])
+    return availableGroups
+      .filter(group => selFach.has(group.fachId))
+      .flatMap(group => group.topics)
+  }, [availableGroups, selFach])
 
   const toggleFach = (id) => {
+    if (!availableFachIds.has(id)) return
     setSelFach(prev => {
       const s = new Set(prev); s.has(id) ? s.delete(id) : s.add(id); return s
     })
     // Beim Hinzufügen einer Körperregion bleibt zunächst kein Thema ausgewählt.
     // Beim Entfernen einer Körperregion werden nur deren eventuell gewählte Themen entfernt.
-    const f = CURRICULUM.find(c => c.id === id)
-    if (f && selFach.has(id)) {
+    if (selFach.has(id)) {
       setSelThemen(prev => {
         const s = new Set(prev)
-        f.kapitel.forEach(k => k.themen.forEach(th => { s.delete(th.id); th.sub?.forEach(sub => s.delete(sub.id)) }))
+        availableGroups
+          .filter(group => group.fachId === id)
+          .forEach(group => group.topics.forEach(topic => s.delete(topic.id)))
         return s
       })
     }
@@ -108,29 +113,33 @@ export default function UebenPage() {
     return s
   })
 
-  const canStart = selFach.size > 0 && selThemen.size > 0
+  const availableQuestions = countQuestions([...selThemen])
+  const canStart = selFach.size > 0 && selThemen.size > 0 && availableQuestions > 0
 
   const start = () => {
     if (!canStart) return
     const params = new URLSearchParams({
       fach: [...selFach].join(','),
-      n: String(anzahl),
+      n: String(Math.min(anzahl, availableQuestions)),
       themen: [...selThemen].join(','),
     })
     router.push(`/ueben/quiz?${params.toString()}`)
   }
 
-  // Group themen by fach + kapitel for display
   const groupedBySel = useMemo(() => {
-    const result = []
-    CURRICULUM.filter(f => selFach.has(f.id)).forEach(f => {
-      f.kapitel.forEach(k => {
-        const themen = k.themen.flatMap(th => th.sub ? [th, ...th.sub.map(s => ({ ...s, _sub: true }))] : [th])
-        result.push({ fachId: f.id, fachColor: f.color, kapitelId: k.id, kapitelTitle: getKapitelTitle(k, lang), themen })
+    return availableGroups
+      .filter(group => selFach.has(group.fachId))
+      .map(group => {
+        const fach = CURRICULUM.find(item => item.id === group.fachId)
+        return {
+          fachId: group.fachId,
+          fachColor: fach?.color || '#f97316',
+          kapitelId: group.kapitelId,
+          kapitelTitle: getThemaTitle(group, lang),
+          themen: group.topics,
+        }
       })
-    })
-    return result
-  }, [selFach, lang])
+  }, [availableGroups, lang, selFach])
 
   return (
     <div className={styles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
@@ -154,7 +163,7 @@ export default function UebenPage() {
               <span className={styles.stepNum}>1</span>{t.step1}
             </div>
             <div className={styles.fachGrid}>
-              {CURRICULUM.map(f => {
+              {CURRICULUM.filter(f => availableFachIds.has(f.id)).map(f => {
                 const active = selFach.has(f.id)
                 return (
                   <button key={f.id}
@@ -165,6 +174,7 @@ export default function UebenPage() {
                     <span className={styles.fachName} style={active ? { color: f.color } : {}}>
                       {display[f.id]}
                     </span>
+                    <small>{t.available}</small>
                     {active && <span className={styles.fachCheck} style={{ background: f.color }}>✓</span>}
                   </button>
                 )
@@ -282,7 +292,7 @@ export default function UebenPage() {
                     <div className={styles.statLbl}>{t.topics}</div>
                   </div>
                   <div className={styles.statBox}>
-                    <div className={styles.statNum}>{anzahl}</div>
+                    <div className={styles.statNum}>{Math.min(anzahl, availableQuestions)}</div>
                     <div className={styles.statLbl}>{t.questions}</div>
                   </div>
                 </div>

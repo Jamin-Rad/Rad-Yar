@@ -28,6 +28,9 @@ export function useLessonReadStatus(topicId) {
         articles[topicId] = next ? 1 : 0
         localStorage.setItem('radyar_read_articles', JSON.stringify(articles))
       } catch {}
+      if (next) {
+        window.dispatchEvent(new CustomEvent('radyar:lesson-read', { detail: { topicId } }))
+      }
       return next
     })
     return true

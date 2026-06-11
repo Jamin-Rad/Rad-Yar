@@ -1382,8 +1382,22 @@
   line-height: 1.4;
 }
 .readError a { color: #c2410c; font-weight: 900; white-space: nowrap; }
-.headerReadBtn { margin-top: 0; }
-.finalReadBtn { margin-top: 22px; max-width: 360px; }
+.readBar {
+  max-width: 1240px;
+  margin: 14px auto 0;
+  padding: 0 28px;
+}
+.readBar .readControl { max-width: 380px; }
+.readBarBottom {
+  display: flex;
+  justify-content: center;
+  padding: 4px 0 18px;
+}
+.readBarBottom .readControl { width: min(100%, 380px); }
+@media (max-width: 760px) {
+  .readBar { padding: 0 14px; }
+  .readBar .readControl { max-width: none; }
+}
 :global(html[data-theme='dark']) .doneBtn { background: rgba(20, 83, 45, .20); border-color: rgba(74, 222, 128, .25); color: #86efac; }
 :global(html[data-theme='dark']) .readText small { color: #a7b4c8; }
 :global(html[data-theme='dark']) .readError { background: rgba(127, 29, 29, .22); border-color: rgba(248, 113, 113, .28); color: #fecaca; }

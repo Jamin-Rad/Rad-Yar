@@ -4424,7 +4424,6 @@ export default function MeniskusPage() {
                 <span>{copy.actionFall}</span>
                 <small>{copy.actionFallStatus}</small>
               </button>
-              <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} className={styles.headerReadBtn} />
             </div>
           </div>
           <div className={styles.heroStats}>
@@ -4441,6 +4440,9 @@ export default function MeniskusPage() {
 
       </header>
 
+      <div className={styles.readBar}>
+        <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} />
+      </div>
 
       <div className={styles.layout}>
         {!isMobile && (
@@ -4626,9 +4628,11 @@ export default function MeniskusPage() {
                 ))}
               </div>
             </div>
-            <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} className={styles.finalReadBtn} />
           </Section>
 
+          <div className={styles.readBarBottom}>
+            <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} />
+          </div>
         </main>
       </div>
 

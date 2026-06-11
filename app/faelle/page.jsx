@@ -25,6 +25,7 @@ const UI = {
     selected:'Ausgewählt', noRegion:'Wähle zuerst eine verfügbare Körperregion.',
     noCases:'Für diese Körperregion sind noch keine Fälle verfügbar.',
     random:'Die Fälle werden in zufälliger Reihenfolge gezeigt.', planned:'Noch keine Fälle',
+    wholeChapter:'Ganzes Kapitel wählen', chapterSelected:'Ganzes Kapitel ausgewählt',
   },
   en: {
     home:'RadYar', crumb:'Cases', title:'Case exam',
@@ -34,6 +35,7 @@ const UI = {
     selected:'Selected', noRegion:'Choose an available body region first.',
     noCases:'No cases are available for this body region yet.',
     random:'Cases are shown in random order.', planned:'No cases yet',
+    wholeChapter:'Select whole chapter', chapterSelected:'Whole chapter selected',
   },
   fa: {
     home:'RadYar', crumb:'نمونه کیس‌ها', title:'آزمون کیس',
@@ -43,6 +45,7 @@ const UI = {
     selected:'انتخاب شده', noRegion:'ابتدا یک ناحیه دارای کیس را انتخاب کن.',
     noCases:'هنوز برای این ناحیه کیسی موجود نیست.',
     random:'کیس‌ها با ترتیب تصادفی نمایش داده می‌شوند.', planned:'هنوز کیسی نیست',
+    wholeChapter:'انتخاب کل فصل', chapterSelected:'کل فصل انتخاب شده',
   },
 }
 
@@ -131,6 +134,13 @@ export default function CasesSetupPage() {
     next.has(id) ? next.delete(id) : next.add(id)
     return next
   })
+  const toggleChapter = topics => setSelectedTopics(previous => {
+    const next = new Set(previous)
+    const ids = topics.map(topic => topic.id)
+    const allSelected = ids.every(id => next.has(id))
+    ids.forEach(id => allSelected ? next.delete(id) : next.add(id))
+    return next
+  })
   const toggleGroup = id => setOpenGroups(previous => {
     const next = new Set(previous)
     next.has(id) ? next.delete(id) : next.add(id)
@@ -207,6 +217,7 @@ export default function CasesSetupPage() {
                   const key = `${region.id}-${chapter.id}`
                   const open = openGroups.has(key)
                   const selectedCount = topics.filter(topic => selectedTopics.has(topic.id)).length
+                  const wholeChapterSelected = topics.length > 0 && selectedCount === topics.length
                   return (
                     <div key={key} className={`${styles.kapitelBlock} ${open ? styles.kapitelBlockOpen : ''}`}>
                       <button className={styles.kapitelHeaderBtn} onClick={() => toggleGroup(key)}>
@@ -215,15 +226,26 @@ export default function CasesSetupPage() {
                         <span className={styles.kapitelMeta} style={{ color: region.color, background: region.color + '12' }}>{selectedCount}/{topics.length}</span>
                         <span className={styles.kapitelChevron} style={{ color: open ? region.color : undefined }}>{open ? '−' : '+'}</span>
                       </button>
-                      {open && <div className={styles.chips}>
-                        {topics.map(topic => (
-                          <button key={topic.id}
-                            className={`${styles.chip} ${selectedTopics.has(topic.id) ? styles.chipActive : ''}`}
-                            style={selectedTopics.has(topic.id) ? { borderColor: region.color, color: region.color, background: region.color + '12' } : {}}
-                            onClick={() => toggleTopic(topic.id)}>
-                            {getThemaTitle(topic, lang)}
-                          </button>
-                        ))}
+                      {open && <div className={styles.kapitelContent}>
+                        <button
+                          className={`${styles.chapterSelect} ${wholeChapterSelected ? styles.chapterSelectActive : ''}`}
+                          style={wholeChapterSelected ? { borderColor: region.color, color: region.color, background: region.color + '12' } : {}}
+                          onClick={() => toggleChapter(topics)}
+                        >
+                          <span className={styles.chapterSelectCheck}>{wholeChapterSelected ? '✓' : ''}</span>
+                          <span>{wholeChapterSelected ? ui.chapterSelected : ui.wholeChapter}</span>
+                          <small>{topics.length}</small>
+                        </button>
+                        <div className={styles.chips}>
+                          {topics.map(topic => (
+                            <button key={topic.id}
+                              className={`${styles.chip} ${selectedTopics.has(topic.id) ? styles.chipActive : ''}`}
+                              style={selectedTopics.has(topic.id) ? { borderColor: region.color, color: region.color, background: region.color + '12' } : {}}
+                              onClick={() => toggleTopic(topic.id)}>
+                              {getThemaTitle(topic, lang)}
+                            </button>
+                          ))}
+                        </div>
                       </div>}
                     </div>
                   )

@@ -866,7 +866,6 @@ export default function LeberHaemangiomPage() {
             <div className={styles.actions}>
               <Link href={withLang('/ueben/quiz?fach=abdomen&n=10&themen=haemangiom')} className={styles.actionBtn}>🎯 {copy.actionMcq}</Link>
               <Link href={withLang('/flashcards/haemangiom')} className={styles.actionBtn}>🧠 {copy.actionFlash}</Link>
-              <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} />
             </div>
           </div>
           <div className={styles.heroStats}>
@@ -880,6 +879,10 @@ export default function LeberHaemangiomPage() {
           </div>
         </div>
       </header>
+
+      <div className={styles.readBar}>
+        <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} />
+      </div>
 
       <div className={styles.layout}>
         <aside className={styles.sidebar}>
@@ -968,8 +971,10 @@ export default function LeberHaemangiomPage() {
                 </div>
               ))}
             </div>
-            <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} />
           </Section>
+          <div className={styles.readBarBottom}>
+            <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} />
+          </div>
         </div>
       </div>
     </main>

@@ -1079,7 +1079,6 @@ export default function SarkoidosePage() {
             <div className={styles.heroActions}>
               <Link href={withLang('/ueben/quiz?fach=thorax&n=10&themen=sarkoidose')} className={styles.actionBtn}>🎯 {copy.actionMcq}</Link>
               <Link href={withLang('/flashcards/sarkoidose')} className={styles.actionBtn}>🧠 {copy.actionFlash}</Link>
-              <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} />
             </div>
           </div>
           <div className={styles.heroStats}>
@@ -1091,6 +1090,10 @@ export default function SarkoidosePage() {
           </div>
         </div>
       </header>
+
+      <div className={styles.readBar}>
+        <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} />
+      </div>
 
       <div className={styles.layout}>
         <aside className={styles.sidebar}>
@@ -1162,8 +1165,10 @@ export default function SarkoidosePage() {
                 </div>
               ))}
             </div>
-            <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} />
           </Section>
+          <div className={styles.readBarBottom}>
+            <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} />
+          </div>
         </main>
       </div>
     </div>

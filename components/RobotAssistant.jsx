@@ -17,6 +17,7 @@ const T = {
     newTopicLabel: 'Neu für dich',
     openCta: 'Ansehen →',
     allDone: 'Alles erledigt für heute – weiter so! 🎉',
+    lessonRead: 'Gut gemacht! Ich habe deinen Fortschritt gespeichert. Wir greifen dieses Thema später wieder auf, damit es besser im Gedächtnis bleibt.',
     close: 'Schließen',
     toggle: 'Assistent öffnen',
   },
@@ -29,6 +30,7 @@ const T = {
     newTopicLabel: 'New for you',
     openCta: 'Open →',
     allDone: "You're all caught up for today! 🎉",
+    lessonRead: "Well done! I've saved your progress. We'll revisit this topic later to help it stay in your memory.",
     close: 'Close',
     toggle: 'Open assistant',
   },
@@ -41,6 +43,7 @@ const T = {
     newTopicLabel: 'جدید برای تو',
     openCta: '← مشاهده',
     allDone: 'برای امروز همه‌چیز انجام شده! 🎉',
+    lessonRead: 'آفرین! پیشرفتت را ذخیره کردم. بعداً دوباره به این موضوع برمی‌گردیم تا بهتر در ذهنت بماند.',
     close: 'بستن',
     toggle: 'باز کردن دستیار',
   },
@@ -65,6 +68,7 @@ export default function RobotAssistant() {
   const [mounted, setMounted] = useState(false)
   const [open, setOpen] = useState(false)
   const [info, setInfo] = useState(null)
+  const [reaction, setReaction] = useState('')
 
   useEffect(() => {
     setMounted(true)
@@ -83,6 +87,15 @@ export default function RobotAssistant() {
     }
   }, [userId])
 
+  useEffect(() => {
+    const showLessonReaction = () => {
+      setReaction(t.lessonRead)
+      setOpen(true)
+    }
+    window.addEventListener('radyar:lesson-read', showLessonReaction)
+    return () => window.removeEventListener('radyar:lesson-read', showLessonReaction)
+  }, [t.lessonRead])
+
   if (!mounted) return null
 
   const greeting = `${t[greetingKey()]}${user?.firstName ? `, ${user.firstName}` : ''}!`
@@ -92,7 +105,16 @@ export default function RobotAssistant() {
     <div className={styles.wrap} dir={isRTL ? 'rtl' : 'ltr'}>
       {open && (
         <div className={styles.bubble}>
-          <button className={styles.closeBtn} onClick={() => setOpen(false)} aria-label={t.close}>×</button>
+          <button className={styles.closeBtn} onClick={() => {
+            setOpen(false)
+            setReaction('')
+          }} aria-label={t.close}>×</button>
+          {reaction ? (
+            <div className={styles.reaction}>
+              <span className={styles.reactionRobot}>🤖</span>
+              <p>{reaction}</p>
+            </div>
+          ) : <>
           <p className={styles.greeting}>{greeting}</p>
           {hasReco ? (
             <ul className={styles.recoList}>
@@ -126,10 +148,13 @@ export default function RobotAssistant() {
             </ul>
           ) : (
             <p className={styles.allDone}>{t.allDone}</p>
-          )}
+          )}</>}
         </div>
       )}
-      <button className={styles.fab} onClick={() => setOpen(o => !o)} aria-label={t.toggle}>
+      <button className={styles.fab} onClick={() => {
+        if (open) setReaction('')
+        setOpen(o => !o)
+      }} aria-label={t.toggle}>
         🤖
       </button>
     </div>

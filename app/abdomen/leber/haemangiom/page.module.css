@@ -145,7 +145,14 @@
 .readText small { color: var(--text-muted); font-size: 10px; line-height: 1.35; }
 .readError { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 11px; border: 1px solid #fecaca; border-radius: 12px; background: #fff1f2; color: #991b1b; font-size: 11px; line-height: 1.4; }
 .readError a { color: #c2410c; font-weight: 900; white-space: nowrap; }
-.sectionBody > .readControl { margin-top: 20px; max-width: 360px; }
+.readBar { max-width: 1240px; margin: 14px auto 0; padding: 0 28px; }
+.readBar .readControl { max-width: 380px; }
+.readBarBottom { display: flex; justify-content: center; padding: 4px 0 18px; }
+.readBarBottom .readControl { width: min(100%, 380px); }
+@media (max-width: 760px) {
+  .readBar { padding: 0 14px; }
+  .readBar .readControl { max-width: none; }
+}
 
 .heroStats {
   display: grid;
