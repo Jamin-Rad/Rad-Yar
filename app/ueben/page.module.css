@@ -152,17 +152,21 @@
 /* ── RESPONSIVE ────────────────────────────────── */
 @media (max-width: 860px) {
   .layout { grid-template-columns: 1fr; }
-  .rightPanel { position: fixed; bottom: 0; left: 0; right: 0; height: auto; border-left: none; border-top: 1px solid #e2e6f0; }
-  .rightInner { flex-direction: row; flex-wrap: wrap; align-items: center; padding: 12px 5vw; gap: 12px; }
-  .summaryTitle { display: none; }
+  .leftPanel { padding: 28px 18px 20px; overflow: visible; }
+  .rightPanel { position: static; height: auto; border-left: none; border-top: 1px solid #e2e6f0; overflow: visible; }
+  .rightInner { padding: 20px 18px 32px; gap: 13px; }
   .summaryFach { flex-direction: row; flex-wrap: wrap; }
-  .summaryStats { grid-template-columns: auto auto; }
-  .summaryNote { display: none; }
-  .startBtn { width: auto; padding: 11px 28px; }
-  .leftPanel { padding-bottom: 160px; }
+  .summaryStats { grid-template-columns: 1fr 1fr; }
+  .startBtn { width: 100%; }
 }
 @media (max-width: 480px) {
   .fachGrid { grid-template-columns: repeat(3,1fr); }
+  .leftPanel { padding-inline: 14px; }
+  .rightInner { padding-inline: 14px; padding-bottom: 26px; }
+  .fachCard { min-width: 0; }
+  .kapitelHeaderBtn { padding: 11px 10px; gap: 7px; }
+  .kapitelTitle { overflow-wrap: anywhere; }
+  .kapitelMeta { padding-inline: 7px; }
 }
 
 /* ── UPDATED: cleaner Fach icons in MCQ training directory ─────────────── */

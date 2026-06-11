@@ -169,6 +169,8 @@ const MENISKUS_STYLES = `.page {
   border: 1px solid #fed7aa;
   transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
   min-height: 44px;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .learnAction span:first-child,
@@ -3267,7 +3269,7 @@ html[data-theme='dark'] .table td::before {
 
   .page[data-meniskus-layout='desktop'] .heroGrid {
     display: grid !important;
-    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-columns: minmax(0, 1fr) 300px !important;
     gap: 22px !important;
   }
 
@@ -4207,19 +4209,30 @@ function useIsMobileViewport(query = '(max-width: 900px)') {
 }
 
 const READ_LABELS = {
-  de: { btn: 'Als gelesen markieren', active: 'Gelesen' },
-  en: { btn: 'Mark as read', active: 'Read' },
-  fa: { btn: 'علامت‌گذاری به عنوان خوانده‌شده', active: 'خوانده شد' },
+  de: { btn: 'Lektion abschließen', active: 'Lektion abgeschlossen', hint: 'Fortschritt im Profil speichern', doneHint: 'Als gelesen gespeichert', error: 'Bitte melde dich an, um deinen Lernfortschritt zu speichern.', signIn: 'Anmelden' },
+  en: { btn: 'Complete lesson', active: 'Lesson completed', hint: 'Save progress to your profile', doneHint: 'Saved as read', error: 'Please sign in to save your learning progress.', signIn: 'Sign in' },
+  fa: { btn: 'تکمیل درس', active: 'درس تکمیل شد', hint: 'ذخیره پیشرفت در پروفایل', doneHint: 'به‌عنوان خوانده‌شده ذخیره شد', error: 'برای ذخیره پیشرفت یادگیری لطفاً وارد شوید.', signIn: 'ورود' },
 }
 
-function ReadButton({ isRead, onClick, className = '' }) {
+function ReadButton({ isRead, onClick, authError, className = '' }) {
   const { lang } = useLanguage()
   const labels = READ_LABELS[lang] || READ_LABELS.de
   return (
-    <button type="button" className={`${styles.doneBtn} ${isRead ? styles.doneBtnActive : ''} ${className}`.trim()} onClick={onClick}>
-      <span>{isRead ? '✓' : '○'}</span>
-      {isRead ? labels.active : labels.btn}
-    </button>
+    <div className={`${styles.readControl} ${className}`.trim()}>
+      <button type="button" className={`${styles.doneBtn} ${isRead ? styles.doneBtnActive : ''}`} onClick={onClick}>
+        <span className={styles.readIcon}>{isRead ? '✓' : '○'}</span>
+        <span className={styles.readText}>
+          <strong>{isRead ? labels.active : labels.btn}</strong>
+          <small>{isRead ? labels.doneHint : labels.hint}</small>
+        </span>
+      </button>
+      {authError && (
+        <div className={styles.readError} role="alert">
+          <span>{labels.error}</span>
+          <Link href="/sign-in">{labels.signIn}</Link>
+        </div>
+      )}
+    </div>
   )
 }
 
@@ -4323,7 +4336,7 @@ export default function MeniskusPage() {
   const [activeId, setActiveId] = useState(pageSections[0].id)
   const [previewImage, setPreviewImage] = useState(null)
   const meniskusLayout = isMobile ? 'mobile' : 'desktop'
-  const { isRead, toggleRead } = useLessonReadStatus('meniskus')
+  const { isRead, toggleRead, authError } = useLessonReadStatus('meniskus')
 
   const sectionIds = useMemo(() => pageSections.map(section => section.id), [pageSections])
   const withLang = (href) => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
@@ -4392,7 +4405,7 @@ export default function MeniskusPage() {
           <span>{copy.breadcrumbCurrent}</span>
         </div>
 
-        <div className={styles.heroGrid}>
+        <div className={styles.heroGrid} style={{ gridTemplateColumns: isMobile ? '1fr' : 'minmax(0, 1fr) 300px' }}>
           <div className={styles.heroText}>
             <span className={styles.sourceBadge}>{copy.sourceLabel}</span>
             <h1>{copy.title}</h1>
@@ -4406,12 +4419,12 @@ export default function MeniskusPage() {
                 <span>🧠</span>
                 <span>{copy.actionFlash}</span>
               </Link>
-              <Link href={withLang('/faelle?thema=meniskus')} className={`${styles.learnAction} ${styles.learnActionMcq}`}>
+              <button type="button" onClick={() => scrollTo('fallbeispiele')} className={`${styles.learnAction} ${styles.learnActionMcq}`}>
                 <span>🧪</span>
                 <span>{copy.actionFall}</span>
                 <small>{copy.actionFallStatus}</small>
-              </Link>
-              <ReadButton isRead={isRead} onClick={toggleRead} className={styles.headerReadBtn} />
+              </button>
+              <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} className={styles.headerReadBtn} />
             </div>
           </div>
           <div className={styles.heroStats}>
@@ -4613,7 +4626,7 @@ export default function MeniskusPage() {
                 ))}
               </div>
             </div>
-            <ReadButton isRead={isRead} onClick={toggleRead} className={styles.finalReadBtn} />
+            <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} className={styles.finalReadBtn} />
           </Section>
 
         </main>

@@ -121,24 +121,31 @@
   box-shadow: 0 16px 30px rgba(16, 185, 129, 0.16);
 }
 
+.readControl { display: grid; gap: 8px; min-width: min(100%, 270px); }
 .readButton {
-  min-height: 44px;
-  display: inline-flex;
+  min-height: 58px;
+  width: 100%;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 11px 17px;
-  border-radius: 999px;
+  gap: 11px;
+  padding: 9px 14px;
+  border-radius: 17px;
   border: 1px solid rgba(16, 185, 129, .38);
   background: rgba(16, 185, 129, .07);
   color: #047857;
   cursor: pointer;
   font-family: inherit;
-  font-size: 13px;
-  font-weight: 900;
+  text-align: start;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, .08);
 }
 .readButtonActive { background: rgba(16, 185, 129, .16); border-color: rgba(16, 185, 129, .58); }
-.readButton span { font-size: 16px; }
-.sectionBody > .readButton { margin-top: 20px; }
+.readIcon { display: grid; width: 36px; height: 36px; flex: 0 0 36px; place-items: center; border-radius: 12px; background: #10b981; color: #fff; font-size: 18px; font-weight: 950; }
+.readText { display: grid; gap: 2px; }
+.readText strong { font-size: 13px; }
+.readText small { color: var(--text-muted); font-size: 10px; line-height: 1.35; }
+.readError { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 11px; border: 1px solid #fecaca; border-radius: 12px; background: #fff1f2; color: #991b1b; font-size: 11px; line-height: 1.4; }
+.readError a { color: #c2410c; font-weight: 900; white-space: nowrap; }
+.sectionBody > .readControl { margin-top: 20px; max-width: 360px; }
 
 .heroStats {
   display: grid;
@@ -181,6 +188,7 @@
   background: rgba(16, 185, 129, .10);
   border-color: rgba(52, 211, 153, .28);
 }
+:global(html[data-theme='dark']) .readError { background: rgba(127, 29, 29, .22); border-color: rgba(248, 113, 113, .28); color: #fecaca; }
 
 .layout {
   max-width: 1240px;

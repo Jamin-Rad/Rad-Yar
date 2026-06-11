@@ -1004,19 +1004,22 @@ function CardGrid({ items }) {
 }
 
 const READ_COPY = {
-  de: { mark: 'Als gelesen markieren', read: 'Gelesen' },
-  en: { mark: 'Mark as read', read: 'Read' },
-  fa: { mark: 'علامت‌گذاری به عنوان خوانده‌شده', read: 'خوانده شد' },
+  de: { mark: 'Lektion abschließen', read: 'Lektion abgeschlossen', hint: 'Fortschritt im Profil speichern', doneHint: 'Als gelesen gespeichert', error: 'Bitte melde dich an, um deinen Lernfortschritt zu speichern.', signIn: 'Anmelden' },
+  en: { mark: 'Complete lesson', read: 'Lesson completed', hint: 'Save progress to your profile', doneHint: 'Saved as read', error: 'Please sign in to save your learning progress.', signIn: 'Sign in' },
+  fa: { mark: 'تکمیل درس', read: 'درس تکمیل شد', hint: 'ذخیره پیشرفت در پروفایل', doneHint: 'به‌عنوان خوانده‌شده ذخیره شد', error: 'برای ذخیره پیشرفت یادگیری لطفاً وارد شوید.', signIn: 'ورود' },
 }
 
-function ReadButton({ isRead, onClick }) {
+function ReadButton({ isRead, onClick, authError }) {
   const { lang } = useLanguage()
   const copy = READ_COPY[lang] || READ_COPY.de
   return (
-    <button type="button" className={`${styles.readButton} ${isRead ? styles.readButtonActive : ''}`} onClick={onClick}>
-      <span>{isRead ? '✓' : '○'}</span>
-      {isRead ? copy.read : copy.mark}
-    </button>
+    <div className={styles.readControl}>
+      <button type="button" className={`${styles.readButton} ${isRead ? styles.readButtonActive : ''}`} onClick={onClick}>
+        <span className={styles.readIcon}>{isRead ? '✓' : '○'}</span>
+        <span className={styles.readText}><strong>{isRead ? copy.read : copy.mark}</strong><small>{isRead ? copy.doneHint : copy.hint}</small></span>
+      </button>
+      {authError && <div className={styles.readError} role="alert"><span>{copy.error}</span><Link href="/sign-in">{copy.signIn}</Link></div>}
+    </div>
   )
 }
 
@@ -1043,7 +1046,7 @@ export default function SarkoidosePage() {
   const copy = CONTENT[lang] || CONTENT.de
   const isRTL = lang === 'fa'
   const [activeId, setActiveId] = useState(copy.sections[0].id)
-  const { isRead, toggleRead } = useLessonReadStatus('sarkoidose')
+  const { isRead, toggleRead, authError } = useLessonReadStatus('sarkoidose')
   const sectionIds = useMemo(() => copy.sections.map(s => s.id), [copy.sections])
   const withLang = (href) => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
 
@@ -1076,7 +1079,7 @@ export default function SarkoidosePage() {
             <div className={styles.heroActions}>
               <Link href={withLang('/ueben/quiz?fach=thorax&n=10&themen=sarkoidose')} className={styles.actionBtn}>🎯 {copy.actionMcq}</Link>
               <Link href={withLang('/flashcards/sarkoidose')} className={styles.actionBtn}>🧠 {copy.actionFlash}</Link>
-              <ReadButton isRead={isRead} onClick={toggleRead} />
+              <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} />
             </div>
           </div>
           <div className={styles.heroStats}>
@@ -1159,7 +1162,7 @@ export default function SarkoidosePage() {
                 </div>
               ))}
             </div>
-            <ReadButton isRead={isRead} onClick={toggleRead} />
+            <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} />
           </Section>
         </main>
       </div>

@@ -1,9 +1,12 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useAuth } from '@clerk/nextjs'
 
 export function useLessonReadStatus(topicId) {
+  const { isLoaded, userId } = useAuth()
   const [isRead, setIsRead] = useState(false)
+  const [authError, setAuthError] = useState(false)
 
   useEffect(() => {
     try {
@@ -13,6 +16,11 @@ export function useLessonReadStatus(topicId) {
   }, [topicId])
 
   const toggleRead = () => {
+    if (!isLoaded || !userId) {
+      setAuthError(true)
+      return false
+    }
+    setAuthError(false)
     setIsRead(previous => {
       const next = !previous
       try {
@@ -22,7 +30,8 @@ export function useLessonReadStatus(topicId) {
       } catch {}
       return next
     })
+    return true
   }
 
-  return { isRead, toggleRead }
+  return { isRead, toggleRead, authError, clearAuthError: () => setAuthError(false) }
 }
