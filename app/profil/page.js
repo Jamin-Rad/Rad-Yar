@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useUser } from '@clerk/nextjs'
+import { useClerk, useUser } from '@clerk/nextjs'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -53,6 +53,14 @@ const T = {
     readTopicsTitle: 'Gelesene Themen',
     readTopicsSub:  'Alle Themen, die du als gelesen markiert hast — über alle Fachgebiete hinweg.',
     readTopicsEmpty: 'Du hast noch keine Themen als gelesen markiert.',
+    overview: 'Übersicht',
+    learning: 'Lernfortschritt',
+    account: 'Konto',
+    manageAccount: 'Konto verwalten',
+    manageAccountSub: 'E-Mail, Passwort und Sicherheit',
+    signOut: 'Abmelden',
+    memberSince: 'Mitglied seit',
+    profileLabel: 'Dein Profil',
   },
   en: {
     greetMorning:   'Good morning',
@@ -96,6 +104,14 @@ const T = {
     readTopicsTitle: 'Topics read',
     readTopicsSub:  'All topics you have marked as read — across all specialties.',
     readTopicsEmpty: "You haven't marked any topics as read yet.",
+    overview: 'Overview',
+    learning: 'Learning progress',
+    account: 'Account',
+    manageAccount: 'Manage account',
+    manageAccountSub: 'Email, password and security',
+    signOut: 'Sign out',
+    memberSince: 'Member since',
+    profileLabel: 'Your profile',
   },
   fa: {
     greetMorning:   'صبح بخیر',
@@ -139,6 +155,14 @@ const T = {
     readTopicsTitle: 'موضوعات خوانده‌شده',
     readTopicsSub:  'تمام موضوعاتی که به‌عنوان خوانده‌شده علامت زده‌ای — در همه تخصص‌ها.',
     readTopicsEmpty: 'هنوز هیچ موضوعی را خوانده‌شده علامت نزده‌ای.',
+    overview: 'نمای کلی',
+    learning: 'پیشرفت یادگیری',
+    account: 'حساب کاربری',
+    manageAccount: 'مدیریت حساب',
+    manageAccountSub: 'ایمیل، رمز عبور و امنیت',
+    signOut: 'خروج',
+    memberSince: 'عضو از',
+    profileLabel: 'پروفایل شما',
   },
 }
 
@@ -354,6 +378,7 @@ export default function ProfilPage() {
   const t   = T[lang] ?? T.de
   const dir = lang === 'fa' ? 'rtl' : 'ltr'
   const { user, isLoaded } = useUser()
+  const { openUserProfile, signOut } = useClerk()
 
   const [leitner,      setLeitner]      = useState({})
   const [streak,       setStreak]       = useState({ current: 0, best: 0 })
@@ -405,6 +430,13 @@ export default function ProfilPage() {
     records.filter(r => r.box === s.box && r.status !== 'mastered').length), 1)
 
   const initials = (user.firstName?.[0] ?? user.emailAddresses?.[0]?.emailAddress?.[0] ?? '?').toUpperCase()
+  const displayName = user.firstName ?? user.username ?? user.emailAddresses?.[0]?.emailAddress
+  const memberSince = user.createdAt
+    ? new Intl.DateTimeFormat(lang === 'fa' ? 'fa-IR' : lang === 'en' ? 'en-GB' : 'de-DE', {
+        month: 'long',
+        year: 'numeric',
+      }).format(new Date(user.createdAt))
+    : null
 
   async function handleSave() {
     setSaveState('saving')
@@ -422,16 +454,55 @@ export default function ProfilPage() {
     <div className={styles.page} dir={dir}>
       <Navbar />
       <div className={styles.inner}>
+        <div className={styles.dashboardShell}>
+          <aside className={styles.sidebar}>
+            <div className={styles.sidebarIdentity}>
+              {user.imageUrl ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img className={styles.sidebarAvatar} src={user.imageUrl} alt="" />
+              ) : (
+                <div className={styles.sidebarAvatarFallback}>{initials}</div>
+              )}
+              <span className={styles.sidebarEyebrow}>{t.profileLabel}</span>
+              <strong className={styles.sidebarName}>{displayName}</strong>
+              <span className={styles.sidebarEmail}>{user.emailAddresses?.[0]?.emailAddress}</span>
+              {memberSince && <span className={styles.memberSince}>{t.memberSince} {memberSince}</span>}
+            </div>
+
+            <nav className={styles.profileNav} aria-label={t.profileLabel}>
+              <a href="#overview" className={styles.profileNavLink}><span aria-hidden="true">⌂</span>{t.overview}</a>
+              <a href="#learning" className={styles.profileNavLink}><span aria-hidden="true">▤</span>{t.learning}</a>
+              <a href="#edit-profile" className={styles.profileNavLink}><span aria-hidden="true">✎</span>{t.editTitle}</a>
+            </nav>
+
+            <div className={styles.accountActions}>
+              <span className={styles.accountLabel}>{t.account}</span>
+              <button type="button" className={styles.accountButton} onClick={() => openUserProfile()}>
+                <span className={styles.accountButtonIcon} aria-hidden="true">⚙</span>
+                <span><strong>{t.manageAccount}</strong><small>{t.manageAccountSub}</small></span>
+              </button>
+              <button type="button" className={styles.signOutButton} onClick={() => signOut({ redirectUrl: '/' })}>
+                <span aria-hidden="true">↪</span>{t.signOut}
+              </button>
+            </div>
+          </aside>
+
+          <main className={styles.dashboardMain}>
 
         {/* ── WELCOME ── */}
-        <div className={styles.welcome}>
+        <div className={styles.welcome} id="overview">
           <div className={styles.avatarWrap}>
-            <div className={styles.avatar}>{initials}</div>
+            {user.imageUrl ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img className={styles.avatar} src={user.imageUrl} alt="" />
+            ) : (
+              <div className={styles.avatar}>{initials}</div>
+            )}
           </div>
           <div>
             <p className={styles.greeting}>{getGreeting(lang)},</p>
             <h1 className={styles.welcomeName}>
-              {user.firstName ?? user.emailAddresses?.[0]?.emailAddress}
+              {displayName}
             </h1>
             <div className={styles.badges}>
               {fach  && <span className={styles.badge}>{fach}</span>}
@@ -476,7 +547,7 @@ export default function ProfilPage() {
         </div>
 
         {/* ── LERNPFAD ACCORDION ── */}
-        <div className={styles.card} style={{ marginBottom: 16 }}>
+        <div className={styles.card} id="learning" style={{ marginBottom: 16 }}>
           <div className={styles.cardHeader}>
             <h2 className={styles.cardTitle}>🗺 {t.lernpfadTitle}</h2>
           </div>
@@ -573,7 +644,7 @@ export default function ProfilPage() {
           </div>
 
           {/* Profil bearbeiten */}
-          <div className={styles.card}>
+          <div className={styles.card} id="edit-profile">
             <button className={styles.editToggle} onClick={() => setEditOpen(o => !o)}>
               <span className={styles.editToggleTitle}>✏️ {t.editTitle}</span>
               <span className={`${styles.editToggleIcon} ${editOpen ? styles.open : ''}`}>▾</span>
@@ -609,6 +680,8 @@ export default function ProfilPage() {
             )}
           </div>
 
+        </div>
+          </main>
         </div>
       </div>
     </div>

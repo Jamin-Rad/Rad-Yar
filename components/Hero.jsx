@@ -162,6 +162,28 @@ function MagneticField() {
       ctx.fillStyle = glow
       ctx.fillRect(0, 0, width, height)
 
+      const fieldTop = height * 0.09
+      const fieldBottom = height * 0.84
+      const fieldGradient = ctx.createLinearGradient(0, fieldTop, 0, fieldBottom)
+      fieldGradient.addColorStop(0, 'rgba(125,211,252,0.08)')
+      fieldGradient.addColorStop(0.45, 'rgba(125,211,252,0.34)')
+      fieldGradient.addColorStop(1, 'rgba(125,211,252,0.04)')
+      ctx.strokeStyle = fieldGradient
+      ctx.lineWidth = 1.4
+      ctx.beginPath()
+      ctx.moveTo(cx, fieldBottom)
+      ctx.lineTo(cx, fieldTop)
+      ctx.stroke()
+      ctx.fillStyle = 'rgba(125,211,252,0.55)'
+      ctx.beginPath()
+      ctx.moveTo(cx, fieldTop - 1)
+      ctx.lineTo(cx - 5, fieldTop + 9)
+      ctx.lineTo(cx + 5, fieldTop + 9)
+      ctx.closePath()
+      ctx.fill()
+      ctx.font = '700 10px Manrope, sans-serif'
+      ctx.fillText('B₀', cx + 9, fieldTop + 6)
+
       const orbitSizes = [
         [width * 0.24, height * 0.31],
         [width * 0.34, height * 0.39],
@@ -171,10 +193,10 @@ function MagneticField() {
       orbitSizes.forEach(([rx, ry], index) => {
         const gradient = ctx.createLinearGradient(cx - rx, cy, cx + rx, cy)
         gradient.addColorStop(0, 'rgba(56,189,248,0)')
-        gradient.addColorStop(0.5, `rgba(125,211,252,${0.1 - index * 0.018})`)
+        gradient.addColorStop(0.5, `rgba(125,211,252,${0.18 - index * 0.025})`)
         gradient.addColorStop(1, 'rgba(56,189,248,0)')
         ctx.strokeStyle = gradient
-        ctx.lineWidth = index === 0 ? 1.15 : 0.75
+        ctx.lineWidth = index === 0 ? 1.45 : 1
         ctx.beginPath()
         ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI * 2)
         ctx.stroke()
@@ -185,7 +207,7 @@ function MagneticField() {
         const angle = proton.phase + (reducedMotion ? 0 : time * proton.speed)
         const x = cx + Math.cos(angle) * rx
         const y = cy + Math.sin(angle) * ry
-        const alpha = 0.18 + (Math.cos(angle) + 1) * 0.1
+        const alpha = 0.3 + (Math.cos(angle) + 1) * 0.14
         ctx.shadowColor = 'rgba(56,189,248,0.5)'
         ctx.shadowBlur = 6
         ctx.fillStyle = `rgba(186,230,253,${alpha})`
@@ -195,12 +217,15 @@ function MagneticField() {
         ctx.shadowBlur = 0
       })
 
-      const rfRadius = width * (0.08 + pulse * 0.035)
-      ctx.strokeStyle = `rgba(249,115,22,${0.11 - pulse * 0.045})`
-      ctx.lineWidth = 1
+      const rfRadius = width * (0.09 + pulse * 0.045)
+      ctx.strokeStyle = `rgba(249,115,22,${0.34 - pulse * 0.12})`
+      ctx.lineWidth = 1.4
       ctx.beginPath()
       ctx.ellipse(cx, cy, rfRadius, rfRadius * 0.32, 0, 0, Math.PI * 2)
       ctx.stroke()
+      ctx.fillStyle = 'rgba(249,115,22,0.62)'
+      ctx.font = '700 9px Manrope, sans-serif'
+      ctx.fillText('RF', cx + rfRadius + 6, cy + 3)
 
       if (!reducedMotion) animId = requestAnimationFrame(draw)
     }

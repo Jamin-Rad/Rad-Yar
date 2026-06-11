@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { SignedIn, SignedOut, UserButton, useUser } from '@clerk/nextjs'
+import { SignedIn, SignedOut, useUser } from '@clerk/nextjs'
 import styles from './Navbar.module.css'
 
 function getGreeting(lang) {
@@ -25,8 +25,9 @@ export default function ClerkNavActions({ lang = 'de' }) {
   const { user } = useUser()
 
   const signInLabel = lang === 'fa' ? 'ورود' : lang === 'en' ? 'Sign in' : 'Anmelden'
-  const profilLabel = lang === 'fa' ? 'پروفایل' : lang === 'en' ? 'Profile' : 'Mein Profil'
   const greeting = getGreeting(lang)
+  const displayName = user?.firstName || user?.username || user?.emailAddresses?.[0]?.emailAddress?.split('@')[0]
+  const initials = (displayName?.[0] || '?').toUpperCase()
 
   return (
     <>
@@ -35,20 +36,18 @@ export default function ClerkNavActions({ lang = 'de' }) {
       </SignedOut>
 
       <SignedIn>
-        {user?.firstName && (
-          <span className={styles.greeting}>
-            {greeting}, <strong>{user.firstName}</strong>
+        <Link href="/profil" className={styles.profileLink}>
+          {user?.imageUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img className={styles.profileAvatar} src={user.imageUrl} alt="" />
+          ) : (
+            <span className={styles.profileAvatarFallback}>{initials}</span>
+          )}
+          <span className={styles.profileCopy}>
+            <span className={styles.greeting}>{greeting}</span>
+            <strong className={styles.profileName}>{displayName}</strong>
           </span>
-        )}
-        <UserButton afterSignOutUrl="/">
-          <UserButton.MenuItems>
-            <UserButton.Link
-              label={profilLabel}
-              labelIcon={<span style={{ fontSize: 14 }}>👤</span>}
-              href="/profil"
-            />
-          </UserButton.MenuItems>
-        </UserButton>
+        </Link>
       </SignedIn>
     </>
   )
