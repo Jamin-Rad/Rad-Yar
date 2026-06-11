@@ -311,29 +311,36 @@ export default function LernenFachPage() {
                         )}
                         <div className={styles.themaGrid}>
                           {section.items.map(th => {
+                            const available = isAvailable(th)
+                            const topicIndex = themen.findIndex(item => item.id === th.id)
                             const cardContent = (
                               <>
                                 <div className={styles.themaCardTop}>
-                                  <span className={styles.themaMarker} style={{ background: fach.color + '18', color: fach.color }}>
-                                    {th.link || isAvailable(th) ? '↗' : '•'}
+                                  <span className={styles.themaNumber} style={{ color: fach.color }}>
+                                    {String(topicIndex + 1).padStart(2, '0')}
                                   </span>
-                                  <span className={styles.themaTitle}>{getThemaTitle(th, lang)}</span>
                                   {isRead(th, readArticles) && <span className={styles.readBadge}>✓ {t.read}</span>}
                                 </div>
-                                <div className={styles.themaMeta}>
-                                  <span className={`${styles.topicStatus} ${isAvailable(th) ? styles.topicStatusReady : ''}`}>
-                                    {isAvailable(th) ? t.available : t.building}
+                                <span className={styles.themaTitle}>{getThemaTitle(th, lang)}</span>
+                                <div className={styles.themaFooter}>
+                                  <span className={`${styles.topicStatus} ${available ? styles.topicStatusReady : ''}`}>
+                                    <i style={available ? { background: fach.color } : {}} />
+                                    {available ? t.available : t.building}
                                   </span>
+                                  {th.link && <span className={styles.tileArrow} style={{ background: fach.color }}>→</span>}
                                 </div>
                                 {th.sub && <SubThemen sub={th.sub} fachColor={fach.color} lang={lang} />}
                               </>
                             )
                             return th.link ? (
-                              <Link key={th.id} href={withPageLang(th.link)} className={`${styles.themaCard} ${styles.themaCardLink}`}>
+                              <Link key={th.id} href={withPageLang(th.link)}
+                                className={`${styles.themaCard} ${styles.themaCardLink} ${styles.themaCardReady}`}
+                                style={{ '--topic-color': fach.color }}>
                                 {cardContent}
                               </Link>
                             ) : (
-                              <div key={th.id} className={styles.themaCard}>
+                              <div key={th.id} className={`${styles.themaCard} ${styles.themaCardPlanned}`}
+                                style={{ '--topic-color': fach.color }}>
                                 {cardContent}
                               </div>
                             )

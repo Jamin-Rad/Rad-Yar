@@ -235,62 +235,94 @@
 /* ── THEMA GRID ────────────────────────────────── */
 .themaGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
 }
 .themaCard {
   position: relative;
   display: flex;
-  min-height: 116px;
+  min-height: 172px;
   flex-direction: column;
   align-items: stretch;
-  gap: 12px;
-  padding: 16px;
+  gap: 18px;
+  overflow: hidden;
+  padding: 20px;
   border: 1px solid #e2e8f0;
-  border-radius: 14px;
+  border-radius: 18px;
   background: #fff;
   color: #475569;
   font-size: 13px;
   line-height: 1.45;
 }
+.themaCard::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: var(--topic-color);
+  content: '';
+  opacity: .85;
+}
+.themaCardPlanned::before { opacity: .22; }
 .themaCardTop {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-.themaMarker {
-  display: inline-flex;
-  width: 28px;
-  height: 28px;
-  flex: 0 0 28px;
+  min-height: 28px;
   align-items: center;
-  justify-content: center;
-  border-radius: 9px;
-  font-size: 13px;
+  justify-content: space-between;
+  gap: 12px;
+}
+.themaNumber {
+  font-size: 12px;
   font-weight: 900;
+  letter-spacing: .12em;
 }
 .themaTitle {
-  flex: 1;
-  padding-top: 3px;
+  max-width: 26ch;
   color: #1e293b;
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 800;
-  line-height: 1.38;
+  letter-spacing: -.025em;
+  line-height: 1.3;
 }
-.themaMeta {
+.themaFooter {
   display: flex;
   align-items: center;
-  gap: 6px;
-  min-height: 21px;
-  padding-inline-start: 38px;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
 }
 .topicStatus {
-  margin-inline-start: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   color: #94a3b8;
-  font-size: 9.5px;
+  font-size: 10px;
   font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.topicStatus i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #cbd5e1;
 }
 .topicStatusReady { color: #16a34a; }
+.tileArrow {
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 900;
+  box-shadow: 0 7px 16px color-mix(in srgb, var(--topic-color) 25%, transparent);
+  transition: transform .18s ease;
+}
+.themaCardPlanned {
+  background: rgba(255,255,255,.62);
+}
 
 /* ── SUB-THEMEN (Knie etc.) ────────────────────── */
 .subWrap { display: flex; flex-direction: column; gap: 4px; }
@@ -522,14 +554,15 @@
 .themaCardLink {
   text-decoration: none;
   color: inherit;
-  transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
 }
 
 .themaCardLink:hover {
-  transform: translateY(-1px);
-  border-color: rgba(15, 23, 42, 0.22);
-  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--topic-color) 45%, #e2e8f0);
+  box-shadow: 0 18px 36px rgba(15, 23, 42, 0.11);
 }
+.themaCardLink:hover .tileArrow { transform: translateX(3px); }
 
 .readBadge {
   margin-inline-start: auto;
