@@ -210,30 +210,6 @@ export default function LernenFachPage() {
       {/* ── CONTENT ── */}
       <div className={`${styles.content} ${mounted ? styles.contentIn : ''}`}>
         <div className={styles.contentLayout}>
-          <aside className={styles.chapterSidebar}>
-            <div className={styles.sidebarTitle}>{lang === 'fa' ? 'سرفصل‌ها' : lang === 'en' ? 'Chapters' : 'Kapitel'}</div>
-            <div className={styles.sidebarList}>
-              {visibleKapitel.map(({ kapitel: k }) => {
-                const active = openKapitel.has(k.id)
-                return (
-                  <button
-                    key={k.id}
-                    className={`${styles.sidebarBtn} ${active ? styles.sidebarBtnActive : ''}`}
-                    style={active ? { borderColor: fach.color, background: fach.color + '12' } : {}}
-                    onClick={() => {
-                      toggleKapitel(k.id)
-                      setTimeout(() => document.getElementById('kap-' + k.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 30)
-                    }}
-                  >
-                    <span className={styles.kapitelPillIcon}>{k.icon}</span>
-                    <span className={styles.sidebarBtnText} style={active ? { color: fach.color } : {}}>{getKapitelTitle(k, lang)}</span>
-                    <span className={styles.sidebarChevron} style={{ color: active ? fach.color : undefined }}>{active ? '−' : '+'}</span>
-                  </button>
-                )
-              })}
-            </div>
-          </aside>
-
           <main className={styles.chapterContent}>
 
         {/* SEARCH MODE */}

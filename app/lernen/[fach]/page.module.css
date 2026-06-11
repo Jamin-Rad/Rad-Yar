@@ -345,75 +345,14 @@
   border-color: rgba(249,115,22,0.24);
 }
 
-/* ── UPDATED: left chapter sidebar instead of top headline pills ───────── */
+/* ── Chapter content ───────────────────────────────────────────────────── */
 .content {
   max-width: 1320px;
 }
 .contentLayout {
-  display: grid;
-  grid-template-columns: 260px minmax(0, 1fr);
-  gap: 22px;
-  align-items: start;
-}
-.chapterSidebar {
-  position: sticky;
-  top: 148px;
-  background: #ffffff;
-  border: 1.5px solid #e2e6f0;
-  border-radius: 18px;
-  padding: 14px;
-  box-shadow: 0 6px 22px rgba(26,32,81,0.06);
-}
-.sidebarTitle {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: #94a3b8;
-  margin: 2px 4px 12px;
-}
-.sidebarList { display: flex; flex-direction: column; gap: 8px; }
-.sidebarBtn {
   width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  text-align: start;
-  border: 1.5px solid #e2e6f0;
-  border-radius: 13px;
-  background: #f8fafc;
-  padding: 9px 10px;
-  cursor: pointer;
-  font-family: inherit;
-  transition: border-color .18s, background .18s, transform .18s, box-shadow .18s;
-}
-.sidebarBtn:hover {
-  border-color: #fdba74;
-  background: #fff;
-  transform: translateY(-1px);
-  box-shadow: 0 5px 14px rgba(26,32,81,0.06);
-}
-.sidebarBtnActive { font-weight: 800; }
-.sidebarBtnText {
-  flex: 1;
-  min-width: 0;
-  font-size: 12.5px;
-  font-weight: 700;
-  line-height: 1.35;
-  color: #1a2051;
-}
-.sidebarChevron {
-  flex-shrink: 0;
-  font-size: 15px;
-  font-weight: 900;
-  color: #94a3b8;
 }
 .chapterContent { min-width: 0; }
-
-@media (max-width: 900px) {
-  .contentLayout { grid-template-columns: 1fr; }
-  .chapterSidebar { position: static; }
-}
 
 /* ── FINAL: cleaner expandable subtopics in Lernen ───────────────────── */
 .subWrap {
@@ -451,30 +390,6 @@
 }
 .subReady,
 .subMcqBtn { display: none !important; }
-
-/* ── FIX: Persian Lernen directory sidebar on the right ───────────── */
-[dir="rtl"] .contentLayout {
-  grid-template-columns: minmax(0, 1fr) 260px;
-}
-[dir="rtl"] .chapterContent {
-  grid-column: 1;
-  grid-row: 1;
-}
-[dir="rtl"] .chapterSidebar {
-  grid-column: 2;
-  grid-row: 1;
-  text-align: right;
-}
-[dir="rtl"] .sidebarBtn,
-[dir="rtl"] .sidebarTitle {
-  text-align: right;
-}
-
-@media (max-width: 900px) {
-  [dir="rtl"] .contentLayout { grid-template-columns: 1fr; }
-  [dir="rtl"] .chapterContent,
-  [dir="rtl"] .chapterSidebar { grid-column: auto; grid-row: auto; }
-}
 
 .themaCardLink {
   text-decoration: none;
@@ -571,13 +486,11 @@
   color: #e5edf8;
 }
 :global(html[data-theme='dark']) .topBar,
-:global(html[data-theme='dark']) .chapterSidebar,
 :global(html[data-theme='dark']) .searchRow,
 :global(html[data-theme='dark']) .accHeader,
 :global(html[data-theme='dark']) .accBody,
 :global(html[data-theme='dark']) .themaCard,
 :global(html[data-theme='dark']) .subItemLink,
-:global(html[data-theme='dark']) .sidebarBtn,
 :global(html[data-theme='dark']) .subToggle {
   background: rgba(15,23,42,0.94);
   border-color: rgba(148,163,184,0.18);
@@ -598,7 +511,6 @@
 :global(html[data-theme='dark']) .topTitle,
 :global(html[data-theme='dark']) .accTitle,
 :global(html[data-theme='dark']) .searchTitle,
-:global(html[data-theme='dark']) .sidebarBtnText,
 :global(html[data-theme='dark']) .themaTitle,
 :global(html[data-theme='dark']) .subItem,
 :global(html[data-theme='dark']) .subItemLink {
@@ -611,8 +523,6 @@
 :global(html[data-theme='dark']) .groupCount,
 :global(html[data-theme='dark']) .groupLabel,
 :global(html[data-theme='dark']) .searchChapter,
-:global(html[data-theme='dark']) .sidebarTitle,
-:global(html[data-theme='dark']) .sidebarChevron,
 :global(html[data-theme='dark']) .noResult,
 :global(html[data-theme='dark']) .notFound,
 :global(html[data-theme='dark']) .emptyState {
@@ -628,7 +538,6 @@
   border-color: rgba(249,115,22,0.3);
 }
 :global(html[data-theme='dark']) .accHeader:hover,
-:global(html[data-theme='dark']) .sidebarBtn:hover,
 :global(html[data-theme='dark']) .subItemLink:hover,
 :global(html[data-theme='dark']) .themaCardLink:hover {
   background: rgba(30,41,59,0.9);
