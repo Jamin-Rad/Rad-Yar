@@ -219,6 +219,18 @@ function PelvisChapterIcon({ id, className }) {
   return <svg {...common}>{icons[id] || pelvis}</svg>
 }
 
+function NeckSpineChapterIcon({ id, className }) {
+  const common = {
+    viewBox: '0 0 48 48', fill: 'none', stroke: 'currentColor', strokeWidth: 2,
+    strokeLinecap: 'round', strokeLinejoin: 'round', className, 'aria-hidden': true,
+  }
+  const isSpine = id.startsWith('ws-')
+  const base = isSpine
+    ? <><path d="M25 5c-4 5 3 7-1 12s3 7-1 12 3 7-1 14"/><path d="M18 8h12M17 16h13M17 25h12M16 34h13M16 42h12"/></>
+    : <><path d="M18 5v8c0 4-5 7-5 15 0 9 5 15 11 15s11-6 11-15c0-8-5-11-5-15V5"/><path d="M18 13h12"/></>
+  return <svg {...common}>{base}<circle cx="35" cy="13" r="3"/></svg>
+}
+
 function ChapterIcon({ fachId, kapitel, className }) {
   if (fachId === 'msk') return <MskChapterIcon id={kapitel.id} className={className} />
   if (fachId === 'thorax') return <ThoraxChapterIcon id={kapitel.id} className={className} />
@@ -226,6 +238,7 @@ function ChapterIcon({ fachId, kapitel, className }) {
   if (fachId === 'gehirn') return <GehirnChapterIcon id={kapitel.id} className={className} />
   if (fachId === 'mamma') return <MammaChapterIcon id={kapitel.id} className={className} />
   if (fachId === 'becken-f' || fachId === 'becken-m') return <PelvisChapterIcon id={kapitel.id} className={className} />
+  if (fachId === 'hals' || fachId === 'wirbelsaeule') return <NeckSpineChapterIcon id={kapitel.id} className={className} />
   return <span className={className}>{kapitel.icon}</span>
 }
 
