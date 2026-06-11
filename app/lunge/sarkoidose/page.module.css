@@ -22,7 +22,7 @@
 .heroActions { display:flex; flex-wrap:wrap; gap:10px; }
 .actionBtn { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:11px 17px; border-radius:999px; background:linear-gradient(135deg,#e0f2fe,#fff); border:1px solid #bae6fd; color:#0369a1; font-weight:950; text-decoration:none; }
 .readControl { display:grid; gap:8px; min-width:min(100%,270px); }
-.readButton { display:flex; width:100%; align-items:center; gap:11px; min-height:58px; padding:9px 14px; border-radius:17px; background:rgba(2,132,199,.07); border:1px solid rgba(2,132,199,.30); color:#0369a1; cursor:pointer; font-family:inherit; text-align:start; box-shadow:0 8px 20px rgba(2,132,199,.08); }
+.readButton { display:flex; width:100%; align-items:center; justify-content:center; min-height:50px; padding:12px 18px; border-radius:17px; background:rgba(2,132,199,.07); border:1px solid rgba(2,132,199,.30); color:#0369a1; cursor:pointer; font-family:inherit; text-align:center; font-size:14px; font-weight:900; box-shadow:0 8px 20px rgba(2,132,199,.08); }
 .readButtonActive { background:rgba(16,185,129,.14); border-color:rgba(16,185,129,.42); color:#047857; }
 .readIcon { display:grid; width:36px; height:36px; flex:0 0 36px; place-items:center; border-radius:12px; background:#0284c7; color:#fff; font-size:18px; font-weight:950; }
 .readButtonActive .readIcon { background:#10b981; }
@@ -32,9 +32,9 @@
 .readError { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:9px 11px; border:1px solid #fecaca; border-radius:12px; background:#fff1f2; color:#991b1b; font-size:11px; line-height:1.4; }
 .readError a { color:#c2410c; font-weight:900; white-space:nowrap; }
 .readBar { max-width:1240px; margin:14px auto 0; padding:0 28px; }
-.readBar .readControl { max-width:380px; }
+.readBar .readControl { width:100%; }
 .readBarBottom { display:flex; justify-content:center; padding:4px 0 18px; }
-.readBarBottom .readControl { width:min(100%,380px); }
+.readBarBottom .readControl { width:100%; }
 .heroStats { border-radius:28px; padding:16px; display:grid; gap:12px; }
 .statCard { border-radius:20px; padding:18px; background:linear-gradient(135deg,#0f172a,#164e63); color:#fff; }
 .statCard:nth-child(2) { background:linear-gradient(135deg,#0284c7,#38bdf8); }

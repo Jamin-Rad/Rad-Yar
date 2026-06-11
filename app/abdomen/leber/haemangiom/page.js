@@ -746,9 +746,9 @@ const CASE_COPY = {
 }
 
 const READ_COPY = {
-  de: { mark: 'Lektion abschließen', read: 'Lektion abgeschlossen', hint: 'Fortschritt im Profil speichern', doneHint: 'Als gelesen gespeichert', error: 'Bitte melde dich an, um deinen Lernfortschritt zu speichern.', signIn: 'Anmelden' },
-  en: { mark: 'Complete lesson', read: 'Lesson completed', hint: 'Save progress to your profile', doneHint: 'Saved as read', error: 'Please sign in to save your learning progress.', signIn: 'Sign in' },
-  fa: { mark: 'تکمیل درس', read: 'درس تکمیل شد', hint: 'ذخیره پیشرفت در پروفایل', doneHint: 'به‌عنوان خوانده‌شده ذخیره شد', error: 'برای ذخیره پیشرفت یادگیری لطفاً وارد شوید.', signIn: 'ورود' },
+  de: { mark: 'Als gelesen markieren', read: 'Als gelesen markiert', error: 'Bitte melde dich an, um deinen Lernfortschritt zu speichern.', signIn: 'Anmelden' },
+  en: { mark: 'Mark as read', read: 'Marked as read', error: 'Please sign in to save your learning progress.', signIn: 'Sign in' },
+  fa: { mark: 'علامت‌گذاری به‌عنوان خوانده‌شده', read: 'به‌عنوان خوانده‌شده علامت‌گذاری شد', error: 'برای ذخیره پیشرفت یادگیری لطفاً وارد شوید.', signIn: 'ورود' },
 }
 
 function ReadButton({ isRead, onClick, authError }) {
@@ -757,8 +757,7 @@ function ReadButton({ isRead, onClick, authError }) {
   return (
     <div className={styles.readControl}>
       <button type="button" className={`${styles.readButton} ${isRead ? styles.readButtonActive : ''}`} onClick={onClick}>
-        <span className={styles.readIcon}>{isRead ? '✓' : '○'}</span>
-        <span className={styles.readText}><strong>{isRead ? copy.read : copy.mark}</strong><small>{isRead ? copy.doneHint : copy.hint}</small></span>
+        {isRead ? copy.read : copy.mark}
       </button>
       {authError && <div className={styles.readError} role="alert"><span>{copy.error}</span><Link href="/sign-in">{copy.signIn}</Link></div>}
     </div>

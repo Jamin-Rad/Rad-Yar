@@ -4209,9 +4209,9 @@ function useIsMobileViewport(query = '(max-width: 900px)') {
 }
 
 const READ_LABELS = {
-  de: { btn: 'Lektion abschließen', active: 'Lektion abgeschlossen', hint: 'Fortschritt im Profil speichern', doneHint: 'Als gelesen gespeichert', error: 'Bitte melde dich an, um deinen Lernfortschritt zu speichern.', signIn: 'Anmelden' },
-  en: { btn: 'Complete lesson', active: 'Lesson completed', hint: 'Save progress to your profile', doneHint: 'Saved as read', error: 'Please sign in to save your learning progress.', signIn: 'Sign in' },
-  fa: { btn: 'تکمیل درس', active: 'درس تکمیل شد', hint: 'ذخیره پیشرفت در پروفایل', doneHint: 'به‌عنوان خوانده‌شده ذخیره شد', error: 'برای ذخیره پیشرفت یادگیری لطفاً وارد شوید.', signIn: 'ورود' },
+  de: { btn: 'Als gelesen markieren', active: 'Als gelesen markiert', error: 'Bitte melde dich an, um deinen Lernfortschritt zu speichern.', signIn: 'Anmelden' },
+  en: { btn: 'Mark as read', active: 'Marked as read', error: 'Please sign in to save your learning progress.', signIn: 'Sign in' },
+  fa: { btn: 'علامت‌گذاری به‌عنوان خوانده‌شده', active: 'به‌عنوان خوانده‌شده علامت‌گذاری شد', error: 'برای ذخیره پیشرفت یادگیری لطفاً وارد شوید.', signIn: 'ورود' },
 }
 
 function ReadButton({ isRead, onClick, authError, className = '' }) {
@@ -4220,11 +4220,7 @@ function ReadButton({ isRead, onClick, authError, className = '' }) {
   return (
     <div className={`${styles.readControl} ${className}`.trim()}>
       <button type="button" className={`${styles.doneBtn} ${isRead ? styles.doneBtnActive : ''}`} onClick={onClick}>
-        <span className={styles.readIcon}>{isRead ? '✓' : '○'}</span>
-        <span className={styles.readText}>
-          <strong>{isRead ? labels.active : labels.btn}</strong>
-          <small>{isRead ? labels.doneHint : labels.hint}</small>
-        </span>
+        {isRead ? labels.active : labels.btn}
       </button>
       {authError && (
         <div className={styles.readError} role="alert">
