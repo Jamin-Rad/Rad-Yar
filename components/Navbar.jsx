@@ -77,23 +77,11 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <div className={styles.right}>
-          {/* 1. Suche */}
-          <button className={styles.iconBtn} onClick={() => setSearch(true)}
-            aria-label={texts?.searchPlaceholder ?? 'Suchen'}>
-            <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
-              <circle cx="7" cy="7" r="5.5" stroke="currentColor" strokeWidth="1.6"/>
-              <line x1="11" y1="11" x2="15" y2="15" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
-            </svg>
-          </button>
+        <div className={styles.right} data-lang={lang}>
+          <div className={styles.authSlot}>
+            <ClerkNavActions lang={lang} />
+          </div>
 
-          {/* 2. Hell/Dunkel */}
-          <button type="button" className={styles.themeBtn}
-            onClick={toggleTheme} aria-label={themeLabel} title={themeLabel}>
-            <span aria-hidden="true">{theme === 'dark' ? '☀' : '☾'}</span>
-          </button>
-
-          {/* 3. Sprache */}
           <div className={styles.langToggle} dir="ltr">
             <button className={`${styles.langBtn} ${lang==='de'?styles.langOn:''}`} onClick={() => setLang('de')}>DE</button>
             <span className={styles.langSep}>·</span>
@@ -102,8 +90,18 @@ export default function Navbar() {
             <button className={`${styles.langBtn} ${lang==='fa'?styles.langOn:''}`} onClick={() => setLang('fa')}>FA</button>
           </div>
 
-          {/* 4. Anmeldung / Profil: dynamisch geladen, damit der Build nicht an Clerk-Hooks hängen bleibt */}
-          <ClerkNavActions lang={lang} />
+          <button type="button" className={styles.themeBtn}
+            onClick={toggleTheme} aria-label={themeLabel} title={themeLabel}>
+            <span aria-hidden="true">{theme === 'dark' ? '☀' : '☾'}</span>
+          </button>
+
+          <button className={styles.iconBtn} onClick={() => setSearch(true)}
+            aria-label={texts?.searchPlaceholder ?? 'Suchen'}>
+            <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
+              <circle cx="7" cy="7" r="5.5" stroke="currentColor" strokeWidth="1.6"/>
+              <line x1="11" y1="11" x2="15" y2="15" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+            </svg>
+          </button>
         </div>
       </nav>
       {search && <SearchBar onClose={() => setSearch(false)} />}

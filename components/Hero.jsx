@@ -138,82 +138,130 @@ function MagneticField() {
     const canvas = canvasRef.current
     if (!canvas) return
     const ctx = canvas.getContext('2d')
-    const resize = () => { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight }
+    let width = 0
+    let height = 0
+    let dpr = 1
+    const resize = () => {
+      width = canvas.offsetWidth
+      height = canvas.offsetHeight
+      dpr = Math.min(window.devicePixelRatio || 1, 2)
+      canvas.width = Math.round(width * dpr)
+      canvas.height = Math.round(height * dpr)
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+    }
     resize()
     window.addEventListener('resize', resize)
 
-    const NUM_PARTICLES = 55
-    const NUM_LINES = 8
-    const getCenter = () => ({ cx: canvas.width*0.5, cy: canvas.height*0.42 })
-
-    const fieldLines = Array.from({length:NUM_LINES},(_,i)=>{
-      const t=(i+1)/(NUM_LINES+1)
+    const spins = Array.from({ length: 30 }, (_, index) => {
+      const column = index % 5
+      const row = Math.floor(index / 5)
       return {
-        rx: canvas.width*(0.1+t*0.4),
-        ry: canvas.height*(0.07+t*0.28),
-        tilt:(i%2===0?1:-1)*0.07,
-        opacity:0.03+t*0.04,
-        color:i%3===0?'#60a5fa':i%3===1?'#a78bfa':'#34d399',
+        x: 0.1 + column * 0.2 + (row % 2) * 0.018,
+        y: 0.14 + row * 0.145,
+        phase: index * 0.73,
+        speed: 0.00045 + (index % 4) * 0.000035,
       }
     })
-
-    const particles = Array.from({length:NUM_PARTICLES},(_,i)=>{
-      const li=i%NUM_LINES
-      return {
-        li, phase:(Math.PI*2*i)/NUM_PARTICLES+Math.random()*0.5,
-        speed:0.003+Math.random()*0.004,
-        size:1.5+Math.random()*2,
-        opacity:0.4+Math.random()*0.5,
-        wobble:0.015+Math.random()*0.025,
-        wobblePhase:Math.random()*Math.PI*2,
-        wobbleSpeed:0.02+Math.random()*0.03,
-        color:['#f97316','#fbbf24','#60a5fa','#a78bfa','#34d399','#f472b6'][i%6],
-        trail:[],
-      }
-    })
+    const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
 
     let animId
-    const draw = () => {
-      const {cx,cy} = getCenter()
-      ctx.clearRect(0,0,canvas.width,canvas.height)
+    const drawArrow = (x, y, length, angle, alpha) => {
+      const tipX = x + Math.cos(angle) * length
+      const tipY = y + Math.sin(angle) * length
+      ctx.strokeStyle = `rgba(125,211,252,${alpha})`
+      ctx.fillStyle = `rgba(249,115,22,${Math.min(alpha + 0.18, 0.8)})`
+      ctx.lineWidth = 1.15
+      ctx.beginPath()
+      ctx.moveTo(x, y)
+      ctx.lineTo(tipX, tipY)
+      ctx.stroke()
+      ctx.save()
+      ctx.translate(tipX, tipY)
+      ctx.rotate(angle)
+      ctx.beginPath()
+      ctx.moveTo(0, 0)
+      ctx.lineTo(-4.5, -2.5)
+      ctx.lineTo(-4.5, 2.5)
+      ctx.closePath()
+      ctx.fill()
+      ctx.restore()
+    }
 
-      fieldLines.forEach(fl=>{
-        ctx.save(); ctx.translate(cx,cy); ctx.rotate(fl.tilt)
-        ctx.beginPath(); ctx.ellipse(0,0,fl.rx,fl.ry,0,0,Math.PI*2)
-        ctx.strokeStyle=fl.color; ctx.globalAlpha=fl.opacity
-        ctx.lineWidth=0.8; ctx.setLineDash([4,12]); ctx.stroke()
-        ctx.restore()
-      })
+    const draw = (time = 0) => {
+      ctx.clearRect(0, 0, width, height)
+      const cx = width * 0.5
+      const fieldTop = height * 0.08
+      const fieldBottom = height * 0.9
+
+      const glow = ctx.createRadialGradient(cx, height * 0.43, 0, cx, height * 0.43, width * 0.48)
+      glow.addColorStop(0, 'rgba(56,189,248,0.055)')
+      glow.addColorStop(0.55, 'rgba(59,130,246,0.025)')
+      glow.addColorStop(1, 'rgba(59,130,246,0)')
+      ctx.fillStyle = glow
+      ctx.fillRect(0, 0, width, height)
+
+      ctx.setLineDash([2, 10])
+      for (let i = 0; i < 7; i += 1) {
+        const x = width * (0.08 + i * 0.14)
+        ctx.strokeStyle = `rgba(125,211,252,${i === 3 ? 0.12 : 0.055})`
+        ctx.lineWidth = i === 3 ? 1.2 : 0.75
+        ctx.beginPath()
+        ctx.moveTo(x, fieldBottom)
+        ctx.lineTo(x, fieldTop)
+        ctx.stroke()
+        ctx.fillStyle = 'rgba(125,211,252,0.12)'
+        ctx.beginPath()
+        ctx.moveTo(x, fieldTop)
+        ctx.lineTo(x - 3.5, fieldTop + 7)
+        ctx.lineTo(x + 3.5, fieldTop + 7)
+        ctx.closePath()
+        ctx.fill()
+      }
       ctx.setLineDash([])
 
-      particles.forEach(p=>{
-        const fl=fieldLines[p.li]
-        p.phase+=p.speed; p.wobblePhase+=p.wobbleSpeed
-        const wobX=Math.cos(p.wobblePhase)*fl.rx*p.wobble
-        const wobY=Math.sin(p.wobblePhase*1.3)*fl.ry*p.wobble
-        const x=cx+(fl.rx+wobX)*Math.cos(p.phase)*Math.cos(fl.tilt)-(fl.ry+wobY)*Math.sin(p.phase)*Math.sin(fl.tilt)
-        const y=cy+(fl.rx+wobX)*Math.cos(p.phase)*Math.sin(fl.tilt)+(fl.ry+wobY)*Math.sin(p.phase)*Math.cos(fl.tilt)
-        p.trail.push({x,y}); if(p.trail.length>18) p.trail.shift()
+      const rfProgress = reducedMotion ? 0.52 : (time * 0.00007) % 1
+      const rfY = height * (0.16 + rfProgress * 0.68)
+      const rfGradient = ctx.createLinearGradient(width * 0.08, 0, width * 0.92, 0)
+      rfGradient.addColorStop(0, 'rgba(249,115,22,0)')
+      rfGradient.addColorStop(0.5, 'rgba(249,115,22,0.32)')
+      rfGradient.addColorStop(1, 'rgba(249,115,22,0)')
+      ctx.strokeStyle = rfGradient
+      ctx.lineWidth = 1
+      ctx.beginPath()
+      for (let x = width * 0.08; x <= width * 0.92; x += 3) {
+        const envelope = Math.sin(((x - width * 0.08) / (width * 0.84)) * Math.PI)
+        const y = rfY + Math.sin(x * 0.075) * 5 * envelope
+        if (x === width * 0.08) ctx.moveTo(x, y)
+        else ctx.lineTo(x, y)
+      }
+      ctx.stroke()
 
-        if(p.trail.length>2){
-          for(let t=1;t<p.trail.length;t++){
-            const prog=t/p.trail.length
-            ctx.beginPath(); ctx.moveTo(p.trail[t-1].x,p.trail[t-1].y); ctx.lineTo(p.trail[t].x,p.trail[t].y)
-            ctx.strokeStyle=p.color; ctx.globalAlpha=prog*p.opacity*0.35
-            ctx.lineWidth=p.size*prog*0.7; ctx.stroke()
-          }
-        }
-        const grad=ctx.createRadialGradient(x,y,0,x,y,p.size*3)
-        grad.addColorStop(0,p.color); grad.addColorStop(1,'transparent')
-        ctx.beginPath(); ctx.arc(x,y,p.size*3,0,Math.PI*2)
-        ctx.fillStyle=grad; ctx.globalAlpha=p.opacity*0.22; ctx.fill()
-        ctx.beginPath(); ctx.arc(x,y,p.size*0.8,0,Math.PI*2)
-        ctx.fillStyle=p.color; ctx.globalAlpha=p.opacity*0.9; ctx.fill()
+      spins.forEach((spin) => {
+        const x = width * spin.x
+        const y = height * spin.y
+        const nearPulse = Math.max(0, 1 - Math.abs(y - rfY) / (height * 0.12))
+        const phase = spin.phase + (reducedMotion ? 0 : time * spin.speed)
+        const tilt = -Math.PI / 2 + Math.sin(phase) * 0.16 + nearPulse * 0.55
+
+        ctx.strokeStyle = 'rgba(148,163,184,0.11)'
+        ctx.lineWidth = 0.8
+        ctx.beginPath()
+        ctx.ellipse(x, y, 10, 3.5, 0, 0, Math.PI * 2)
+        ctx.stroke()
+
+        ctx.fillStyle = 'rgba(248,250,252,0.5)'
+        ctx.beginPath()
+        ctx.arc(x, y, 1.8, 0, Math.PI * 2)
+        ctx.fill()
+        drawArrow(x, y, 12 + nearPulse * 3, tilt, 0.26 + nearPulse * 0.35)
       })
-      ctx.globalAlpha=1
-      animId=requestAnimationFrame(draw)
+
+      ctx.fillStyle = 'rgba(125,211,252,0.28)'
+      ctx.font = '600 9px Manrope, sans-serif'
+      ctx.fillText('B₀', width * 0.08 - 6, fieldTop - 9)
+      if (!reducedMotion) animId = requestAnimationFrame(draw)
     }
-    draw()
+    animId = requestAnimationFrame(draw)
     return ()=>{ cancelAnimationFrame(animId); window.removeEventListener('resize',resize) }
   },[])
   return <canvas ref={canvasRef} className={styles.magnetCanvas} />
@@ -367,7 +415,6 @@ export default function Hero() {
               const isHov = hovered===zone.id
               const color = FACH_DATA[zone.id]?.color||'#f97316'
               const commonProps = {
-                key: i,
                 fill: isHov ? color+'2f' : 'transparent',
                 stroke: isHov ? color : 'transparent',
                 strokeWidth: '0.35',
@@ -379,15 +426,15 @@ export default function Hero() {
               }
 
               if (zone.shape === 'ellipse') {
-                return <ellipse {...commonProps} cx={zone.cx} cy={zone.cy} rx={zone.rx} ry={zone.ry} />
+                return <ellipse key={i} {...commonProps} cx={zone.cx} cy={zone.cy} rx={zone.rx} ry={zone.ry} />
               }
 
               if (zone.shape === 'polygon') {
-                return <polygon {...commonProps} points={zone.points} />
+                return <polygon key={i} {...commonProps} points={zone.points} />
               }
 
               return (
-                <rect {...commonProps}
+                <rect key={i} {...commonProps}
                   x={zone.x} y={zone.y} width={zone.w} height={zone.h} rx={zone.rx || 1.2}
                 />
               )

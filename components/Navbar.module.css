@@ -30,6 +30,12 @@
 
 /* ── RIGHT ────────────────────────────────────── */
 .right { display:flex; align-items:center; gap:10px; flex-shrink:0; }
+.authSlot { display:inline-flex; align-items:center; }
+
+.right[data-lang='fa'] .authSlot { order:4; }
+.right[data-lang='fa'] .langToggle { order:3; }
+.right[data-lang='fa'] .themeBtn { order:2; }
+.right[data-lang='fa'] .iconBtn { order:1; }
 
 .iconBtn {
   background:none; border:none; cursor:pointer;
@@ -116,6 +122,10 @@
 }
 
 @media (max-width: 480px) {
-  .right { gap: 6px; }
+  .nav { padding-inline: 3vw; }
+  .wordmark { display: none; }
+  .right { gap: 5px; }
+  .langToggle { padding-inline: 3px; }
+  .langBtn { padding-inline: 6px; }
   .signInBtn { padding: 5px 10px; font-size: 11px; }
 }
