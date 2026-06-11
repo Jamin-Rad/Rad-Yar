@@ -393,7 +393,6 @@ export default function Hero() {
             style={{ color: hovFach ? hovFach.color : '#f97316' }}>
             {hovName || hintLabel}
           </span>
-          {!hovFach && <span className={styles.hoverArrow}>↗</span>}
         </div>
       </div>
 

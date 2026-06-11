@@ -337,8 +337,8 @@
 }
 @media (max-width: 640px) {
   .left  { padding: 36px 5vw 18px; }
-  .right { height: 247vw; max-height: none; overflow: hidden; }
-  .bodyWrap { width: 165vw; max-width: none; height: 247vw; flex: 0 0 auto; aspect-ratio: auto; }
+  .right { height: 150vw; max-height: none; overflow: hidden; }
+  .bodyWrap { width: 100%; max-width: 100vw; height: auto; flex: 0 0 auto; aspect-ratio: 0.667 / 1; }
   .bodyWrap::after { display: none; }
   .bodyImg { object-fit: contain; object-position: center top; }
   .hoverIndicator { width: 100%; min-width: 0; padding-inline: 18px; }
@@ -384,17 +384,6 @@
   padding: 3px 9px; border-radius: 20px;
   border: 1px solid rgba(148,163,184,0.2);
   font-family: var(--font-main, sans-serif);
-}
-
-.hoverArrow {
-  margin-left: auto;
-  font-size: 16px;
-  color: #f97316;
-  animation: arrowBounce 1.5s ease-in-out infinite;
-}
-@keyframes arrowBounce {
-  0%,100% { transform: translate(0,0); opacity:0.6; }
-  50%      { transform: translate(2px,-2px); opacity:1; }
 }
 
 /* ── ZONE POPUP ────────────────────────────────── */
