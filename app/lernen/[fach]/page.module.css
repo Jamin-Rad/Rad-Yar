@@ -284,24 +284,8 @@
   min-height: 21px;
   padding-inline-start: 38px;
 }
-.metaTag {
-  padding: 3px 7px;
-  border-radius: 6px;
-  background: #f1f5f9;
-  color: #64748b;
-  font-size: 9.5px;
-  font-weight: 800;
-}
-.difficulty {
-  padding: 3px 7px;
-  border-radius: 6px;
-  background: #f1f5f9;
-  color: #64748b;
-  font-size: 9.5px;
-  font-weight: 800;
-}
 .topicStatus {
-  margin-inline-start: auto;
+  margin-inline-start: 0;
   color: #94a3b8;
   font-size: 9.5px;
   font-weight: 800;
@@ -656,8 +640,6 @@
 :global(html[data-theme='dark']) .searchBox,
 :global(html[data-theme='dark']) .kapitelPill,
 :global(html[data-theme='dark']) .accCount,
-:global(html[data-theme='dark']) .metaTag,
-:global(html[data-theme='dark']) .difficulty,
 :global(html[data-theme='dark']) .kapitelPillIcon,
 :global(html[data-theme='dark']) .accIcon {
   background: rgba(30,41,59,0.74);
@@ -678,8 +660,6 @@
 :global(html[data-theme='dark']) .accCount,
 :global(html[data-theme='dark']) .groupCount,
 :global(html[data-theme='dark']) .groupLabel,
-:global(html[data-theme='dark']) .metaTag,
-:global(html[data-theme='dark']) .difficulty,
 :global(html[data-theme='dark']) .searchChapter,
 :global(html[data-theme='dark']) .noResult,
 :global(html[data-theme='dark']) .notFound,
