@@ -47,7 +47,7 @@ const UI = {
 }
 
 const COUNT_OPTIONS = [1, 2, 5, 10]
-const regionIcon = id => `/fach/${id === 'gefaesse-ir' ? 'technik' : id}.png`
+const regionIcon = id => `/fach/${id}.png`
 
 export default function CasesSetupPage() {
   const { lang } = useLanguage()

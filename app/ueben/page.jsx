@@ -47,7 +47,7 @@ const UE = {
 }
 
 const ANZAHL_OPTIONS = [5, 10, 25, 50]
-const fachIcon = id => id === 'gefaesse-ir' ? '/fach/gefaesse-ir.svg' : `/fach/${id}.png`
+const fachIcon = id => `/fach/${id}.png`
 
 export default function UebenPage() {
   const { lang } = useLanguage()
