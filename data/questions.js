@@ -1,7 +1,10 @@
 // ── RADYAR QUESTION BANK ────────────────────────────────────────────────────
 
+import { CONTRAST_QUESTIONS, CONTRAST_TOPICS } from './contrastMedia'
+
 export const QUESTION_BANK = {
   "de": [
+    ...CONTRAST_QUESTIONS.de,
     {
       "id": "meniskus-de-01",
       "tags": [
@@ -778,6 +781,7 @@ export const QUESTION_BANK = {
     }
   ],
   "en": [
+    ...CONTRAST_QUESTIONS.en,
     {
       "id": "meniskus-en-01",
       "tags": [
@@ -1554,6 +1558,7 @@ export const QUESTION_BANK = {
     }
   ],
   "fa": [
+    ...CONTRAST_QUESTIONS.fa,
     {
       "id": "meniskus-fa-01",
       "tags": [
@@ -2332,6 +2337,12 @@ export const QUESTION_BANK = {
 }
 
 export const MCQ_TOPIC_GROUPS = [
+  {
+    fachId: 'technik',
+    kapitelId: 'technik-kontrastmittel',
+    title: { de: '9. Kontrastmittel', en: '9. Contrast Media', fa: '۹. مواد حاجب' },
+    topics: CONTRAST_TOPICS.map(({ id, title }) => ({ id, title })),
+  },
   {
     fachId: 'msk',
     kapitelId: 'msk-knie',

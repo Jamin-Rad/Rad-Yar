@@ -7,6 +7,8 @@
 // thema.sub: echte Varianten/Unterformen eines Themas.
 // "ready"-Themen haben link/mcqLink/flashcardLink/fallLink + updatedAt.
 
+import { CONTRAST_TOPICS } from './contrastMedia'
+
 export const CURRICULUM = [
   {
     id: 'gehirn',
@@ -1678,15 +1680,21 @@ export const CURRICULUM = [
         id: 'technik-kontrastmittel',
         title: { de: '9. Kontrastmittel', en: '9. Contrast Media', fa: '۹. مواد حاجب' },
         icon: '💉',
-        themen: [
-          { id: 'jodhaltige-kontrastmittel', title: { de: 'Jodhaltige Kontrastmittel', en: 'Iodinated Contrast Media', fa: 'مواد حاجب یددار' }, tags: ['Rö','CT'], diff: 2 },
-          { id: 'gadolinium-kontrastmittel', title: { de: 'MRT-Kontrastmittel (Gadolinium)', en: 'MRI Contrast Media (Gadolinium)', fa: 'مواد حاجب MRI (گادولینیوم)' }, tags: ['MRT'], diff: 2 },
-          { id: 'ultraschallkontrastmittel', title: { de: 'Ultraschallkontrastmittel (USKM)', en: 'Ultrasound Contrast Media (UCA)', fa: 'مواد حاجب سونوگرافی' }, tags: ['Sono'], diff: 2 },
-          { id: 'km-niereninsuffizienz', title: { de: 'Niereninsuffizienz', en: 'Renal Insufficiency', fa: 'نارسایی کلیه' }, group: ['KM bei besonderen Patientengruppen'], tags: ['CT','MRT'], diff: 2 },
-          { id: 'km-metformin', title: { de: 'Metformin', en: 'Metformin', fa: 'متفورمین' }, group: ['KM bei besonderen Patientengruppen'], tags: ['CT'], diff: 2 },
-          { id: 'km-schilddruesenerkrankungen', title: { de: 'Schilddrüsenerkrankungen', en: 'Thyroid Disease', fa: 'بیماری‌های تیروئید' }, group: ['KM bei besonderen Patientengruppen'], tags: ['CT'], diff: 2 },
-          { id: 'km-schwangerschaft-stillzeit', title: { de: 'Schwangerschaft & Stillzeit', en: 'Pregnancy & Breastfeeding', fa: 'بارداری و شیردهی' }, group: ['KM bei besonderen Patientengruppen'], tags: ['CT','MRT'], diff: 2 },
-        ],
+        themen: CONTRAST_TOPICS.map(topic => ({
+          id: topic.id,
+          title: topic.title,
+          group: [topic.group.de],
+          tags: topic.id === 'km-ultraschall'
+            ? ['Sono']
+            : topic.id.startsWith('km-gadolinium')
+              ? ['MRT']
+              : ['CT', 'MRT'],
+          diff: 2,
+          link: `/technik/kontrastmittel#${topic.id}`,
+          mcqLink: `/ueben/quiz?fach=technik&n=10&themen=${topic.id}`,
+          flashcardLink: `/flashcards/${topic.id}`,
+          updatedAt: '2026-06-12',
+        })),
       },
     ],
   },

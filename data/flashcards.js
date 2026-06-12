@@ -1,6 +1,9 @@
 // Auto-generated RadYar flashcard data.
 
+import { CONTRAST_FLASHCARDS, CONTRAST_FLASHCARD_TOPICS } from './contrastMedia'
+
 export const FLASHCARD_TOPICS = [
+  ...CONTRAST_FLASHCARD_TOPICS,
   {
     "id": "meniskus",
     "area": "MSK",
@@ -61,6 +64,7 @@ export const FLASHCARD_TOPICS = [
 ]
 
 export const FLASHCARDS = [
+  ...CONTRAST_FLASHCARDS,
   {
     "id": "meniskus-01",
     "topicId": "meniskus",
