@@ -4,6 +4,7 @@ const KEY = 'radyar_settings'
 
 const DEFAULTS = {
   longBoxesEnabled: false,
+  mcqDailyGoal: 10,
 }
 
 export function loadSettings() {

@@ -8,7 +8,14 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import { loadLeitnerState, resetLeitnerState, isDue } from '@/utils/leitnerStorage'
 import { loadSettings, saveSettings } from '@/utils/settingsStorage'
 import { CURRICULUM, getFachTitle, getKapitelTitle, getThemaTitle } from '@/data/curriculum'
+import { MCQ_TOPIC_GROUPS } from '@/data/questions'
+import { getActivitySummary } from '@/utils/activityStorage'
 import styles from './page.module.css'
+
+const localDateKey = () => {
+  const date = new Date()
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+}
 
 const T = {
   de: {
@@ -49,6 +56,19 @@ const T = {
     resetDone: 'Fortschritt wurde gelöscht.', notLoggedTitle: 'Bitte anmelden',
     notLoggedSub: 'Um dein Profil zu sehen, melde dich an.', signIn: 'Jetzt anmelden',
     available: 'verfügbar', completed: 'abgeschlossen',
+    streak: 'Tage in Folge', activeTime: 'Aktive Lernzeit', visitedDays: 'Besuchstage',
+    chapterProgress: 'Fortschritt nach Hauptkapitel', learnedLessons: 'Gelernte Lektionen',
+    unreadLessons: 'Verfügbar, noch nicht gelernt', openLesson: 'Lernen',
+    dailyGoal: 'Tägliches MCQ-Ziel', dailyGoalHint: 'Wie viele MCQs möchtest du pro Tag bearbeiten?',
+    todayDone: 'Heute geschafft', goalReached: 'Tagesziel erreicht', startGoal: 'MCQs starten',
+    wrongQuestions: 'Falsche MCQs wiederholen', wrongQuestionsHint: 'Diese Fragen wurden zuletzt falsch beantwortet.',
+    repeatWrong: 'Fehler lernen', unlearnedMcq: 'Noch nicht geübte MCQ-Themen', practiceNow: 'Jetzt üben',
+    flashReport: 'Flashcard-Bericht', flashSeen: 'begonnen', flashWrong: 'nicht gewusst',
+    flashDue: 'fällig', toFlashcards: 'Zur Flashcard-Seite',
+    recommendations: 'Empfehlungen', learnMcq: 'MCQs üben', learnFlash: 'Flashcards lernen',
+    clerkData: 'Clerk-Kontodaten', clerkDataHint: 'Anmeldedaten und verbundene Konten aus Clerk.',
+    primaryEmail: 'Primäre E-Mail', username: 'Benutzername', loginOrigin: 'Anmeldung über',
+    lastSignIn: 'Letzte Anmeldung', noValue: 'Nicht angegeben',
   },
   en: {
     overview: 'Overview', settings: 'Settings', profileLabel: 'Your profile',
@@ -85,6 +105,19 @@ const T = {
     resetDone: 'Progress has been deleted.', notLoggedTitle: 'Please sign in',
     notLoggedSub: 'Sign in to view your profile.', signIn: 'Sign in now',
     available: 'available', completed: 'completed',
+    streak: 'Day streak', activeTime: 'Active learning time', visitedDays: 'Visit days',
+    chapterProgress: 'Progress by main chapter', learnedLessons: 'Learned lessons',
+    unreadLessons: 'Available, not learned yet', openLesson: 'Learn',
+    dailyGoal: 'Daily MCQ goal', dailyGoalHint: 'How many MCQs do you want to complete each day?',
+    todayDone: 'Completed today', goalReached: 'Daily goal reached', startGoal: 'Start MCQs',
+    wrongQuestions: 'Review wrong MCQs', wrongQuestionsHint: 'These questions were answered incorrectly most recently.',
+    repeatWrong: 'Review errors', unlearnedMcq: 'MCQ topics not practised yet', practiceNow: 'Practice now',
+    flashReport: 'Flashcard report', flashSeen: 'started', flashWrong: 'missed',
+    flashDue: 'due', toFlashcards: 'Go to flashcards',
+    recommendations: 'Recommendations', learnMcq: 'Practice MCQs', learnFlash: 'Study flashcards',
+    clerkData: 'Clerk account data', clerkDataHint: 'Sign-in data and connected accounts from Clerk.',
+    primaryEmail: 'Primary email', username: 'Username', loginOrigin: 'Signed in with',
+    lastSignIn: 'Last sign-in', noValue: 'Not provided',
   },
   fa: {
     overview: 'نمای کلی', settings: 'تنظیمات', profileLabel: 'پروفایل شما',
@@ -120,6 +153,19 @@ const T = {
     resetDone: 'پیشرفت حذف شد.', notLoggedTitle: 'لطفاً وارد شوید',
     notLoggedSub: 'برای مشاهده پروفایل وارد شوید.', signIn: 'ورود',
     available: 'موجود', completed: 'تکمیل‌شده',
+    streak: 'روز متوالی', activeTime: 'زمان فعال یادگیری', visitedDays: 'روزهای بازدید',
+    chapterProgress: 'پیشرفت فصل‌های اصلی', learnedLessons: 'درس‌های آموخته‌شده',
+    unreadLessons: 'موجود و هنوز مطالعه‌نشده', openLesson: 'مطالعه',
+    dailyGoal: 'هدف روزانه MCQ', dailyGoalHint: 'روزانه چند MCQ می‌خواهید پاسخ دهید؟',
+    todayDone: 'انجام‌شده امروز', goalReached: 'هدف روزانه تکمیل شد', startGoal: 'شروع MCQ',
+    wrongQuestions: 'مرور MCQهای اشتباه', wrongQuestionsHint: 'این سؤال‌ها آخرین بار اشتباه پاسخ داده شدند.',
+    repeatWrong: 'مرور اشتباه‌ها', unlearnedMcq: 'موضوعات MCQ تمرین‌نشده', practiceNow: 'تمرین',
+    flashReport: 'گزارش فلش‌کارت', flashSeen: 'شروع‌شده', flashWrong: 'بلد نبود',
+    flashDue: 'مقرر', toFlashcards: 'رفتن به فلش‌کارت‌ها',
+    recommendations: 'پیشنهادها', learnMcq: 'تمرین MCQ', learnFlash: 'مطالعه فلش‌کارت',
+    clerkData: 'اطلاعات حساب Clerk', clerkDataHint: 'اطلاعات ورود و حساب‌های متصل از Clerk.',
+    primaryEmail: 'ایمیل اصلی', username: 'نام کاربری', loginOrigin: 'ورود از طریق',
+    lastSignIn: 'آخرین ورود', noValue: 'ثبت نشده',
   },
 }
 
@@ -153,12 +199,30 @@ function getProgressData(readArticles) {
   const areas = CURRICULUM.map(fach => {
     const topics = getAvailableTopics(fach)
     const read = topics.filter(({ thema }) => Number(readArticles[thema.id] || 0) >= 1).length
-    return { fach, topics, read, total: topics.length, pct: topics.length ? Math.round((read / topics.length) * 100) : 0 }
+    const chapters = fach.kapitel.map(kapitel => {
+      const chapterTopics = getAvailableTopics({ ...fach, kapitel: [kapitel] })
+      const chapterRead = chapterTopics.filter(({ thema }) => Number(readArticles[thema.id] || 0) >= 1).length
+      return {
+        kapitel,
+        read: chapterRead,
+        total: chapterTopics.length,
+        pct: chapterTopics.length ? Math.round((chapterRead / chapterTopics.length) * 100) : 0,
+      }
+    }).filter(chapter => chapter.total > 0)
+    return { fach, topics, chapters, read, total: topics.length, pct: topics.length ? Math.round((read / topics.length) * 100) : 0 }
   }).filter(area => area.total > 0)
   const topics = areas.flatMap(area => area.topics)
   const readTopics = topics.filter(({ thema }) => Number(readArticles[thema.id] || 0) >= 1)
+  const unreadTopics = topics.filter(({ thema }) => Number(readArticles[thema.id] || 0) < 1)
   const nextTopic = topics.find(({ thema }) => Number(readArticles[thema.id] || 0) < 1) || topics[0] || null
-  return { areas, topics, readTopics, nextTopic }
+  return { areas, topics, readTopics, unreadTopics, nextTopic }
+}
+
+function formatDuration(seconds, lang) {
+  const hours = Math.floor(seconds / 3600)
+  const minutes = Math.floor((seconds % 3600) / 60)
+  if (hours > 0) return lang === 'fa' ? `${hours} ساعت ${minutes} دقیقه` : `${hours} h ${minutes} min`
+  return lang === 'fa' ? `${minutes} دقیقه` : `${minutes} min`
 }
 
 function getActivity(leitner, mcqScores, lang) {
@@ -192,6 +256,8 @@ export default function ProfilPage() {
   const [leitner, setLeitner] = useState({})
   const [readArticles, setReadArticles] = useState({})
   const [mcqScores, setMcqScores] = useState({})
+  const [learningHistory, setLearningHistory] = useState([])
+  const [activitySummary, setActivitySummary] = useState({ totalSeconds: 0, streak: 0, visitedDays: 0, days: {} })
   const [settings, setSettings] = useState({ longBoxesEnabled: false })
   const [spitzname, setSpitzname] = useState('')
   const [fach, setFach] = useState('')
@@ -211,8 +277,17 @@ export default function ProfilPage() {
     try {
       setReadArticles(JSON.parse(localStorage.getItem('radyar_read_articles') || '{}'))
       setMcqScores(JSON.parse(localStorage.getItem('radyar_mcq_scores') || '{}'))
+      setLearningHistory(JSON.parse(localStorage.getItem('radyar_learning_history') || '[]'))
+      setActivitySummary(getActivitySummary(user.id))
     } catch {}
   }, [isLoaded, user])
+
+  useEffect(() => {
+    if (!user) return
+    const refreshActivity = () => setActivitySummary(getActivitySummary(user.id))
+    window.addEventListener('radyar:activity-updated', refreshActivity)
+    return () => window.removeEventListener('radyar:activity-updated', refreshActivity)
+  }, [user])
 
   const progress = useMemo(() => getProgressData(readArticles), [readArticles])
   const activity = useMemo(() => getActivity(leitner, mcqScores, lang), [leitner, mcqScores, lang])
@@ -237,6 +312,28 @@ export default function ProfilPage() {
   const totalCorrect = Object.values(mcqScores).reduce((sum, score) => sum + Number(score.correct || 0), 0)
   const mcqAccuracy = totalAttempted ? Math.round((totalCorrect / totalAttempted) * 100) : 0
   const overallPct = progress.topics.length ? Math.round((progress.readTopics.length / progress.topics.length) * 100) : 0
+  const todayKey = localDateKey()
+  const todayAttempted = Object.values(mcqScores).reduce(
+    (sum, score) => sum + Number(score.daily?.[todayKey]?.attempted || (score.lastDate?.slice(0, 10) === todayKey ? score.lastSessionAttempted || 0 : 0)),
+    0
+  )
+  const dailyGoal = Number(settings.mcqDailyGoal || 10)
+  const dailyGoalPct = Math.min(100, Math.round((todayAttempted / dailyGoal) * 100))
+  const wrongQuestionIds = [...new Set(Object.values(mcqScores).flatMap(score => score.wrongQuestionIds || []))]
+  const flashWrong = records.reduce((sum, record) => sum + Number(record.wrongCount || 0), 0)
+  const startedCards = records.filter(record => Number(record.seenCount || 0) > 0).length
+  const unpractisedMcq = MCQ_TOPIC_GROUPS.flatMap(group =>
+    group.topics.map(topic => ({ ...topic, fachId: group.fachId }))
+  ).filter(topic => !mcqScores[topic.id]).slice(0, 4)
+  const topicLookup = new Map(progress.topics.map(item => [item.thema.id, item]))
+  const recentTopics = learningHistory
+    .slice()
+    .sort((a, b) => new Date(b.learnedAt) - new Date(a.learnedAt))
+    .map(item => topicLookup.get(item.topicId))
+    .filter(Boolean)
+    .slice(0, 5)
+  const displayedRecentTopics = recentTopics.length ? recentTopics : progress.readTopics.slice(-5).reverse()
+  const connectedProviders = user.externalAccounts?.map(account => account.provider).filter(Boolean) || []
   const maxActivity = Math.max(...activity.map(day => day.count), 1)
   const initials = (user.firstName?.[0] ?? user.emailAddresses?.[0]?.emailAddress?.[0] ?? '?').toUpperCase()
   const displayName = user.firstName || user.username || user.emailAddresses?.[0]?.emailAddress
@@ -281,7 +378,9 @@ export default function ProfilPage() {
   function handleResetLearning() {
     if (!window.confirm(t.resetLearningAsk)) return
     try { localStorage.removeItem('radyar_read_articles') } catch {}
+    try { localStorage.removeItem('radyar_learning_history') } catch {}
     setReadArticles({})
+    setLearningHistory([])
     setResetMsg(t.resetDone)
   }
 
@@ -343,11 +442,10 @@ export default function ProfilPage() {
 
                 <section className={styles.metricGrid} aria-label={t.dashboardEyebrow}>
                   <article className={styles.metricCard}><span className={styles.metricIndex}>01</span><strong>{progress.readTopics.length}<small> / {progress.topics.length}</small></strong><p>{t.lessonsRead}</p></article>
-                  <article className={styles.metricCard}><span className={styles.metricIndex}>02</span><strong>{mcqAccuracy}<small>%</small></strong><p>{t.mcqAccuracy}</p></article>
-                  <article className={styles.metricCard}>
-                    <span className={styles.metricIndex}>03</span><strong>{mastered}<small> / {records.length}</small></strong><p>{t.cardsMastered}</p>
-                    {dueToday > 0 && <span className={styles.metricNote}>{dueToday} {t.dueToday}</span>}
-                  </article>
+                  <article className={styles.metricCard}><span className={styles.metricIndex}>02</span><strong>{activitySummary.streak}</strong><p>{t.streak}</p></article>
+                  <article className={styles.metricCard}><span className={styles.metricIndex}>03</span><strong>{formatDuration(activitySummary.totalSeconds, lang)}</strong><p>{t.activeTime}</p></article>
+                  <article className={styles.metricCard}><span className={styles.metricIndex}>04</span><strong>{activitySummary.visitedDays}</strong><p>{t.visitedDays}</p></article>
+                  <article className={styles.metricCard}><span className={styles.metricIndex}>05</span><strong>{mcqAccuracy}<small>%</small></strong><p>{t.mcqAccuracy}</p></article>
                 </section>
 
                 <section className={styles.contentGrid}>
@@ -358,13 +456,24 @@ export default function ProfilPage() {
                     </div>
                     <div className={styles.areaList}>
                       {progress.areas.map(({ fach: area, read, total, pct }) => (
-                        <div className={styles.areaRow} key={area.id}>
-                          <div className={styles.areaIdentity}>
-                            <span className={styles.areaIcon}>{area.icon}</span>
-                            <div><strong>{getFachTitle(area, lang)}</strong><small>{read} {t.completed} · {total} {t.available}</small></div>
+                        <div className={styles.areaBlock} key={area.id}>
+                          <div className={styles.areaRow}>
+                            <div className={styles.areaIdentity}>
+                              <span className={styles.areaIcon}>{area.icon}</span>
+                              <div><strong>{getFachTitle(area, lang)}</strong><small>{read} {t.completed} · {total} {t.available}</small></div>
+                            </div>
+                            <div className={styles.areaProgress}>
+                              <div className={styles.areaBar}><span style={{ width: `${pct}%` }} /></div><strong>{pct}%</strong>
+                            </div>
                           </div>
-                          <div className={styles.areaProgress}>
-                            <div className={styles.areaBar}><span style={{ width: `${pct}%` }} /></div><strong>{pct}%</strong>
+                          <div className={styles.chapterMiniList}>
+                            {progress.areas.find(item => item.fach.id === area.id)?.chapters.map(chapter => (
+                              <div className={styles.chapterMiniRow} key={chapter.kapitel.id}>
+                                <span>{getKapitelTitle(chapter.kapitel, lang)}</span>
+                                <div><i style={{ width: `${chapter.pct}%` }} /></div>
+                                <b>{chapter.pct}%</b>
+                              </div>
+                            ))}
                           </div>
                         </div>
                       ))}
@@ -384,17 +493,79 @@ export default function ProfilPage() {
                       </div>
                     </div>
                     <div className={styles.card}>
-                      <div className={styles.sectionHeading}><div><h2>{t.recentTopics}</h2></div></div>
-                      {progress.readTopics.length ? (
+                      <div className={styles.sectionHeading}><div><h2>{t.flashReport}</h2></div><Link href="/flashcards">{t.toFlashcards} →</Link></div>
+                      <div className={styles.flashReportGrid}>
+                        <div><strong>{startedCards}</strong><span>{t.flashSeen}</span></div>
+                        <div><strong>{dueToday}</strong><span>{t.flashDue}</span></div>
+                        <div><strong>{flashWrong}</strong><span>{t.flashWrong}</span></div>
+                        <div><strong>{mastered}</strong><span>{t.cardsMastered}</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <section className={styles.dashboardTwoCol}>
+                  <div className={styles.card}>
+                    <div className={styles.sectionHeading}><div><h2>{t.dailyGoal}</h2><p>{todayAttempted} / {dailyGoal} · {t.todayDone}</p></div></div>
+                    <div className={styles.goalBar}><span style={{ width: `${dailyGoalPct}%` }} /></div>
+                    <div className={styles.goalActions}>
+                      <strong>{todayAttempted >= dailyGoal ? `✓ ${t.goalReached}` : `${dailyGoal - todayAttempted} MCQs`}</strong>
+                      <Link href="/ueben">{t.startGoal} →</Link>
+                    </div>
+                    {wrongQuestionIds.length > 0 && (
+                      <div className={styles.practiceCallout}>
+                        <div><strong>{t.wrongQuestions}</strong><small>{wrongQuestionIds.length} · {t.wrongQuestionsHint}</small></div>
+                        <Link href={`/ueben/quiz?fragen=${wrongQuestionIds.join(',')}&n=${wrongQuestionIds.length}&from=${encodeURIComponent('/profil')}`}>{t.repeatWrong} →</Link>
+                      </div>
+                    )}
+                    {unpractisedMcq.length > 0 && (
+                      <div className={styles.unpractisedList}>
+                        <strong>{t.unlearnedMcq}</strong>
+                        {unpractisedMcq.map(topic => (
+                          <Link key={topic.id} href={`/ueben/quiz?fach=${topic.fachId}&n=10&themen=${topic.id}&from=${encodeURIComponent('/profil')}`}>
+                            <span>{topic.title[lang] || topic.title.de}</span><b>{t.practiceNow} →</b>
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className={styles.card}>
+                    <div className={styles.sectionHeading}><div><h2>{t.recentTopics}</h2><p>{t.recommendations}</p></div></div>
+                    {displayedRecentTopics.length ? (
                         <div className={styles.recentList}>
-                          {progress.readTopics.slice(-4).reverse().map(({ fach: area, kapitel, thema }) => (
-                            <Link href={thema.link} key={thema.id} className={styles.recentItem}>
+                          {displayedRecentTopics.map(({ fach: area, kapitel, thema }) => (
+                            <div key={thema.id} className={styles.recentLearningRow}>
+                              <Link href={thema.link} className={styles.recentItem}>
                               <span>{area.icon}</span>
                               <div><strong>{getThemaTitle(thema, lang)}</strong><small>{getFachTitle(area, lang)} · {getKapitelTitle(kapitel, lang)}</small></div><b>→</b>
-                            </Link>
+                              </Link>
+                              <div className={styles.recommendationLinks}>
+                                <Link href={thema.mcqLink || '/ueben'}>{t.learnMcq}</Link>
+                                <Link href={thema.flashcardLink || '/flashcards'}>{t.learnFlash}</Link>
+                              </div>
+                            </div>
                           ))}
                         </div>
                       ) : <p className={styles.emptyState}>{t.recentTopicsEmpty}</p>}
+                  </div>
+                </section>
+
+                <section className={styles.lessonColumns}>
+                  <div className={styles.card}>
+                    <div className={styles.sectionHeading}><div><h2>{t.learnedLessons}</h2></div></div>
+                    <div className={styles.lessonList}>
+                      {progress.readTopics.slice(-8).reverse().map(({ fach: area, thema }) => (
+                        <Link key={thema.id} href={thema.link}><span>✓</span><div><strong>{getThemaTitle(thema, lang)}</strong><small>{getFachTitle(area, lang)}</small></div></Link>
+                      ))}
+                    </div>
+                  </div>
+                  <div className={styles.card}>
+                    <div className={styles.sectionHeading}><div><h2>{t.unreadLessons}</h2></div></div>
+                    <div className={styles.lessonList}>
+                      {progress.unreadTopics.slice(0, 8).map(({ fach: area, thema }) => (
+                        <Link key={thema.id} href={thema.link}><span>○</span><div><strong>{getThemaTitle(thema, lang)}</strong><small>{getFachTitle(area, lang)} · {t.openLesson}</small></div></Link>
+                      ))}
                     </div>
                   </div>
                 </section>
@@ -435,6 +606,20 @@ export default function ProfilPage() {
                 <section className={styles.card}>
                   <div className={styles.sectionHeading}><div><h2>{t.appSettings}</h2></div></div>
                   <div className={styles.settingsRow}>
+                    <div className={styles.settingsText}><strong>{t.dailyGoal}</strong><p>{t.dailyGoalHint}</p></div>
+                    <select
+                      className={styles.goalSelect}
+                      value={settings.mcqDailyGoal || 10}
+                      onChange={event => {
+                        const next = { ...settings, mcqDailyGoal: Number(event.target.value) }
+                        setSettings(next); saveSettings(next)
+                      }}
+                    >
+                      {[5, 10, 15, 20, 30, 50].map(value => <option key={value} value={value}>{value} MCQs</option>)}
+                    </select>
+                  </div>
+                  <div className={styles.settingsDivider} />
+                  <div className={styles.settingsRow}>
                     <div className={styles.settingsText}><strong>{t.longBoxesLabel}</strong><p>{t.longBoxesHint}</p></div>
                     <button type="button" className={`${styles.toggleSwitch} ${settings.longBoxesEnabled ? styles.toggleSwitchActive : ''}`}
                       onClick={() => {
@@ -447,6 +632,19 @@ export default function ProfilPage() {
                   <div className={styles.settingsDivider} />
                   <div className={styles.settingsRow}>
                     <div className={styles.settingsText}><strong>{t.accountSettings}</strong><p>{t.accountSettingsHint}</p></div>
+                    <button type="button" className={styles.outlineBtn} onClick={() => openUserProfile()}>{t.manageAccount}</button>
+                  </div>
+                </section>
+
+                <section className={styles.card}>
+                  <div className={styles.sectionHeading}><div><h2>{t.clerkData}</h2><p>{t.clerkDataHint}</p></div></div>
+                  <div className={styles.accountDataGrid}>
+                    <div><span>{t.primaryEmail}</span><strong>{user.primaryEmailAddress?.emailAddress || t.noValue}</strong></div>
+                    <div><span>{t.username}</span><strong>{user.username || t.noValue}</strong></div>
+                    <div><span>{t.loginOrigin}</span><strong>{connectedProviders.length ? connectedProviders.join(', ') : 'E-Mail / Passwort'}</strong></div>
+                    <div><span>{t.lastSignIn}</span><strong>{user.lastSignInAt ? new Date(user.lastSignInAt).toLocaleString() : t.noValue}</strong></div>
+                  </div>
+                  <div className={styles.clerkAction}>
                     <button type="button" className={styles.outlineBtn} onClick={() => openUserProfile()}>{t.manageAccount}</button>
                   </div>
                 </section>

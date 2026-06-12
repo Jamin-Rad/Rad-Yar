@@ -3,8 +3,13 @@ import { useState, useEffect, useMemo, useRef, Suspense } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
-import { getQuestions } from '@/data/questions'
+import { getQuestions, getQuestionsByIds } from '@/data/questions'
 import styles from './page.module.css'
+
+const localDateKey = () => {
+  const date = new Date()
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+}
 
 const FACH_NAMES = {
   de: { abdomen:'Abdomen', gehirn:'Kopf', msk:'Muskuloskelettales', thorax:'Thorax',
@@ -135,13 +140,18 @@ function QuizContent() {
   const themenParam = searchParams.get('themen') || ''
   const nParam      = parseInt(searchParams.get('n') || '10', 10)
   const fromParam   = searchParams.get('from') || ''
+  const fragenParam = searchParams.get('fragen') || ''
   const backHref    = fromParam || '/ueben'
 
   const fachIds   = fachParam.split(',').filter(Boolean)
   const themenIds = themenParam.split(',').filter(Boolean)
+  const questionIds = fragenParam.split(',').filter(Boolean)
 
   // Load questions (randomized, capped to n)
-  const questions = useMemo(() => getQuestions(themenIds, lang, nParam), [themenParam, lang, nParam])
+  const questions = useMemo(
+    () => questionIds.length ? getQuestionsByIds(questionIds, lang) : getQuestions(themenIds, lang, nParam),
+    [themenParam, fragenParam, lang, nParam]
+  )
   const total = questions.length
 
   // Quiz state
@@ -190,11 +200,29 @@ function QuizContent() {
       const scores = JSON.parse(localStorage.getItem('radyar_mcq_scores') || '{}')
       const key = themenIds.length === 1 ? themenIds[0] : (fachIds[0] || 'mixed')
       const correct = finalAnswers.filter(a => a.correct).length
+      for (const storedScore of Object.values(scores)) {
+        const storedWrong = new Set(storedScore.wrongQuestionIds || [])
+        finalAnswers.forEach(answer => {
+          if (answer.correct) storedWrong.delete(answer.qId)
+        })
+        storedScore.wrongQuestionIds = [...storedWrong]
+      }
+      const previousWrong = new Set(scores[key]?.wrongQuestionIds || [])
+      const todayKey = localDateKey()
+      const daily = { ...(scores[key]?.daily || {}) }
+      daily[todayKey] = {
+        attempted: Number(daily[todayKey]?.attempted || 0) + finalAnswers.length,
+        correct: Number(daily[todayKey]?.correct || 0) + correct,
+      }
+      finalAnswers.forEach(answer => answer.correct ? previousWrong.delete(answer.qId) : previousWrong.add(answer.qId))
       scores[key] = {
         attempted: (scores[key]?.attempted || 0) + finalAnswers.length,
         correct:   (scores[key]?.correct   || 0) + correct,
         lastDate:  new Date().toISOString(),
         fach:      fachIds[0] || '',
+        wrongQuestionIds: [...previousWrong],
+        daily,
+        lastSessionAttempted: finalAnswers.length,
       }
       localStorage.setItem('radyar_mcq_scores', JSON.stringify(scores))
     } catch {}

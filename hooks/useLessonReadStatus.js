@@ -27,6 +27,11 @@ export function useLessonReadStatus(topicId) {
         const articles = JSON.parse(localStorage.getItem('radyar_read_articles') || '{}')
         articles[topicId] = next ? 1 : 0
         localStorage.setItem('radyar_read_articles', JSON.stringify(articles))
+        const history = JSON.parse(localStorage.getItem('radyar_learning_history') || '[]')
+        const withoutTopic = history.filter(item => item.topicId !== topicId)
+        localStorage.setItem('radyar_learning_history', JSON.stringify(
+          next ? [...withoutTopic, { topicId, learnedAt: new Date().toISOString() }] : withoutTopic
+        ))
       } catch {}
       if (next) {
         window.dispatchEvent(new CustomEvent('radyar:lesson-read', { detail: { topicId } }))

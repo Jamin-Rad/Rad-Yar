@@ -2394,3 +2394,9 @@ export function getQuestions(themenIds, lang, n) {
   }
   return shuffled.slice(0, n)
 }
+
+export function getQuestionsByIds(questionIds, lang) {
+  const wanted = new Set(questionIds)
+  const all = QUESTION_BANK[lang] || QUESTION_BANK.de
+  return all.filter(question => wanted.has(question.id))
+}

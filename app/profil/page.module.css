@@ -1071,7 +1071,7 @@
 
 .metricGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 16px;
   margin-bottom: 16px;
 }
@@ -1101,6 +1101,7 @@
   font-size: 38px;
   line-height: 1;
 }
+.metricCard:nth-child(3) > strong { font-size: 25px; line-height: 1.2; }
 .metricCard > strong small { color: var(--text-muted); font-size: 16px; }
 .metricCard p { margin: 9px 0 0; color: var(--text-muted); font-size: 13px; font-weight: 700; }
 .metricNote {
@@ -1139,6 +1140,7 @@
 .sectionHeading > a { flex-shrink: 0; color: var(--orange); font-size: 11px; font-weight: 800; text-decoration: none; }
 
 .areaList { display: grid; gap: 8px; }
+.areaBlock { overflow: hidden; border-radius: 14px; background: var(--surface-soft); }
 .areaRow {
   display: flex;
   align-items: center;
@@ -1146,7 +1148,7 @@
   gap: 18px;
   padding: 13px 14px;
   border-radius: 14px;
-  background: var(--surface-soft);
+  background: transparent;
 }
 .areaIdentity { display: flex; align-items: center; gap: 12px; min-width: 0; }
 .areaIcon {
@@ -1166,6 +1168,12 @@
 .areaProgress > strong { width: 34px; color: var(--text-soft); font-size: 11px; text-align: end; }
 .areaBar { height: 6px; flex: 1; overflow: hidden; border-radius: 99px; background: var(--border); }
 .areaBar span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #f97316, #fbbf24); }
+.chapterMiniList { display: grid; gap: 7px; padding: 0 14px 12px 64px; }
+.chapterMiniRow { display: grid; grid-template-columns: minmax(0, 1fr) 90px 34px; align-items: center; gap: 8px; }
+.chapterMiniRow > span { overflow: hidden; color: var(--text-muted); font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+.chapterMiniRow > div { height: 4px; overflow: hidden; border-radius: 99px; background: var(--border); }
+.chapterMiniRow i { display: block; height: 100%; border-radius: inherit; background: #10b981; }
+.chapterMiniRow b { color: var(--text-muted); font-size: 9px; text-align: end; }
 
 .activityChart { display: flex; height: 145px; align-items: flex-end; justify-content: space-between; gap: 8px; }
 .activityDay { display: grid; height: 100%; flex: 1; grid-template-rows: 1fr auto; gap: 7px; text-align: center; }
@@ -1191,6 +1199,42 @@
 .recentItem small { margin-top: 3px; color: var(--text-muted); font-size: 9px; }
 .recentItem b { color: var(--orange); font-size: 12px; }
 .emptyState { margin: 0; color: var(--text-muted); font-size: 13px; line-height: 1.6; }
+
+.flashReportGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 9px; }
+.flashReportGrid > div { padding: 13px; border: 1px solid var(--border); border-radius: 13px; background: var(--surface-soft); }
+.flashReportGrid strong, .flashReportGrid span { display: block; }
+.flashReportGrid strong { color: var(--text-strong); font-size: 22px; }
+.flashReportGrid span { margin-top: 3px; color: var(--text-muted); font-size: 9px; font-weight: 700; }
+
+.dashboardTwoCol, .lessonColumns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+.goalBar { height: 10px; overflow: hidden; border-radius: 99px; background: var(--border); }
+.goalBar span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #f97316, #10b981); }
+.goalActions { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 11px; }
+.goalActions strong { color: var(--text-soft); font-size: 12px; }
+.goalActions a { color: var(--orange); font-size: 11px; font-weight: 900; text-decoration: none; }
+.practiceCallout { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 18px; padding: 13px; border-radius: 14px; background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.2); }
+.practiceCallout strong, .practiceCallout small { display: block; }
+.practiceCallout strong { color: #b91c1c; font-size: 11px; }
+.practiceCallout small { margin-top: 3px; color: var(--text-muted); font-size: 9px; }
+.practiceCallout a { flex-shrink: 0; color: #b91c1c; font-size: 10px; font-weight: 900; text-decoration: none; }
+.unpractisedList { display: grid; gap: 5px; margin-top: 17px; }
+.unpractisedList > strong { margin-bottom: 4px; color: var(--text-strong); font-size: 11px; }
+.unpractisedList a { display: flex; justify-content: space-between; gap: 10px; padding: 8px 9px; border-radius: 9px; color: var(--text-soft); background: var(--surface-soft); font-size: 10px; text-decoration: none; }
+.unpractisedList b { color: var(--orange); white-space: nowrap; }
+.recentLearningRow { border-bottom: 1px solid var(--border-soft); }
+.recommendationLinks { display: flex; gap: 7px; padding: 0 10px 9px 42px; }
+.recommendationLinks a { padding: 4px 8px; border-radius: 999px; color: #047857; background: rgba(16,185,129,.1); font-size: 8px; font-weight: 900; text-decoration: none; }
+.lessonList { display: grid; gap: 6px; }
+.lessonList > a { display: grid; grid-template-columns: 26px 1fr; align-items: center; gap: 9px; padding: 10px; border-radius: 11px; color: inherit; background: var(--surface-soft); text-decoration: none; }
+.lessonList > a > span { display: grid; width: 25px; height: 25px; place-items: center; border-radius: 8px; color: #059669; background: rgba(16,185,129,.12); font-weight: 900; }
+.lessonList strong, .lessonList small { display: block; }
+.lessonList strong { color: var(--text-strong); font-size: 11px; }
+.lessonList small { margin-top: 2px; color: var(--text-muted); font-size: 9px; }
 
 /* ── SETTINGS VIEW ────────────────────────────────── */
 .settingsView { display: grid; gap: 16px; }
@@ -1237,6 +1281,21 @@
   cursor: pointer;
 }
 .outlineBtn:hover { border-color: var(--orange); color: var(--orange); }
+.goalSelect {
+  min-width: 120px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-strong);
+  background: var(--bg-card);
+  font: 700 12px var(--font-main);
+}
+.accountDataGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.accountDataGrid > div { padding: 13px; border-radius: 12px; background: var(--surface-soft); }
+.accountDataGrid span, .accountDataGrid strong { display: block; }
+.accountDataGrid span { color: var(--text-muted); font-size: 9px; text-transform: uppercase; letter-spacing: .06em; }
+.accountDataGrid strong { margin-top: 5px; overflow-wrap: anywhere; color: var(--text-strong); font-size: 11px; }
+.clerkAction { display: flex; justify-content: flex-end; margin-top: 14px; }
 .successText { color: #059669; font-size: 12px; font-weight: 800; }
 .errorText { color: #dc2626; font-size: 12px; font-weight: 800; }
 .contactCard { border-color: rgba(249,115,22,.28); }
@@ -1245,6 +1304,7 @@
 @media (max-width: 1080px) {
   .contentGrid { grid-template-columns: 1fr; }
   .sideStack { grid-template-columns: 1fr 1fr; }
+  .metricGrid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 760px) {
@@ -1253,11 +1313,16 @@
   .metricGrid { grid-template-columns: 1fr; }
   .metricCard { min-height: 120px; }
   .sideStack { grid-template-columns: 1fr; }
+  .dashboardTwoCol, .lessonColumns { grid-template-columns: 1fr; }
+  .metricGrid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 560px) {
   .progressHero { min-height: 0; padding: 28px 22px; border-radius: 22px; }
   .areaRow { align-items: flex-start; flex-direction: column; }
+  .metricGrid { grid-template-columns: 1fr; }
+  .accountDataGrid { grid-template-columns: 1fr; }
+  .chapterMiniList { padding-left: 14px; }
   .areaProgress { width: 100%; }
   .settingsRow { align-items: flex-start; flex-direction: column; }
   .formFooter { align-items: stretch; flex-direction: column; }

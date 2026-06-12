@@ -4,6 +4,7 @@ import './globals.css'
 import { ThemeProvider } from '@/providers/ThemeProvider'
 import { LanguageProvider } from '@/providers/LanguageProvider'
 import RobotAssistant from '@/components/RobotAssistant'
+import ActivityTracker from '@/components/ActivityTracker'
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -65,6 +66,7 @@ export default function RootLayout({ children }) {
         <body className={`${fraunces.variable} ${manrope.variable}`}>
           <ThemeProvider>
             <LanguageProvider>
+              <ActivityTracker />
               {children}
               <RobotAssistant />
             </LanguageProvider>
