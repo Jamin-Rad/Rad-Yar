@@ -620,6 +620,146 @@ export const QUESTION_BANK = {
       "explanation": "Die FNH ist benigne, meist asymptomatisch und erfordert in der Regel keine Therapie."
     },
     {
+      "id": "avm-de-01",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Was charakterisiert eine arteriovenöse Malformation (AVM) der Leber pathophysiologisch?",
+      "options": [
+        { "id": "A", "text": "Eine abnorme direkte Verbindung zwischen Arterie und venösem Gefäß ohne zwischengeschaltetes Kapillarbett" },
+        { "id": "B", "text": "Eine benigne regenerative Raumforderung aus hyperplastischem Lebergewebe" },
+        { "id": "C", "text": "Eine zystische Raumforderung mit seröser Flüssigkeit" },
+        { "id": "D", "text": "Eine fokale Fettansammlung im Leberparenchym" }
+      ],
+      "correct": "A",
+      "explanation": "Eine hepatische AVM ist eine abnorme direkte Verbindung zwischen einer Arterie und einem venösen Gefäß ohne zwischengeschaltetes Kapillarbett, sodass Blut mit hoher Geschwindigkeit und niedrigem Widerstand direkt arteriell-venös fließt."
+    },
+    {
+      "id": "avm-de-02",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Welcher Shunt-Typ ist bei hepatischen AVMs am häufigsten?",
+      "options": [
+        { "id": "A", "text": "Arterioportal (A. hepatica – Pfortaderast)" },
+        { "id": "B", "text": "Portosystemisch (Pfortader – Lebervene)" },
+        { "id": "C", "text": "Ausschließlich arteriovenös (A. hepatica – Lebervene)" },
+        { "id": "D", "text": "Venovenös zwischen zwei Lebervenen" }
+      ],
+      "correct": "A",
+      "explanation": "Arterioportale Shunts – eine Verbindung zwischen A. hepatica und einem Pfortaderast – sind der häufigste Typ hepatischer AV-Malformationen."
+    },
+    {
+      "id": "avm-de-03",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Welche Erkrankung ist die wichtigste kongenitale Ursache multipler hepatischer AVMs?",
+      "options": [
+        { "id": "A", "text": "Morbus Osler-Weber-Rendu (hereditäre hämorrhagische Teleangiektasie, HHT)" },
+        { "id": "B", "text": "Morbus Wilson" },
+        { "id": "C", "text": "Hämochromatose" },
+        { "id": "D", "text": "Alpha-1-Antitrypsin-Mangel" }
+      ],
+      "correct": "A",
+      "explanation": "Die hereditäre hämorrhagische Teleangiektasie (HHT, Morbus Osler-Weber-Rendu) ist die wichtigste kongenitale Ursache multipler, diffus verteilter hepatischer AV-Shunts."
+    },
+    {
+      "id": "avm-de-04",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Welche Ursache passt am besten zu einer erworbenen hepatischen AVM?",
+      "options": [
+        { "id": "A", "text": "Iatrogen nach Leberbiopsie oder TIPS-Anlage" },
+        { "id": "B", "text": "Angeborene Leberzyste" },
+        { "id": "C", "text": "Chronische Virushepatitis allein" },
+        { "id": "D", "text": "Physiologische Altersveränderung" }
+      ],
+      "correct": "A",
+      "explanation": "Erworbene hepatische AVMs entstehen vor allem traumatisch oder iatrogen, z. B. nach Leberbiopsie, TIPS-Anlage oder Operation."
+    },
+    {
+      "id": "avm-de-05",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Welches Dopplermuster spricht für einen AV-Shunt in einer Lebervene oder einem Pfortaderast?",
+      "options": [
+        { "id": "A", "text": "Monophasisches, kontinuierliches Flusssignal mit sehr niedriger Geschwindigkeit" },
+        { "id": "B", "text": "Pulsatiler, arterialisierter Fluss mit hoher Geschwindigkeit" },
+        { "id": "C", "text": "Komplette Flussumkehr ohne Pulsatilität" },
+        { "id": "D", "text": "Fehlendes Dopplersignal (\"stille Vene\")" }
+      ],
+      "correct": "B",
+      "explanation": "Ein pulsatiles, arterialisiertes Flussmuster mit hoher Geschwindigkeit in einer Vene weist auf eine direkte AV-Shuntverbindung hin."
+    },
+    {
+      "id": "avm-de-06",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Wie verhält sich der Widerstandsindex (RI) der zuführenden Arterie bei einem AV-Shunt typischerweise?",
+      "options": [
+        { "id": "A", "text": "Deutlich erhöht" },
+        { "id": "B", "text": "Deutlich erniedrigt" },
+        { "id": "C", "text": "Unverändert im Vergleich zur Gegenseite" },
+        { "id": "D", "text": "Nicht messbar" }
+      ],
+      "correct": "B",
+      "explanation": "Durch den niedrigen Widerstand im Shunt sinkt der Widerstandsindex der zuführenden Arterie deutlich ab, erkennbar an einer hohen diastolischen Flussgeschwindigkeit."
+    },
+    {
+      "id": "avm-de-07",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Was ist das wichtigste CT-Leitzeichen einer hepatischen AVM?",
+      "options": [
+        { "id": "A", "text": "Zentripetale Kontrastmittelauffüllung in der Spätphase" },
+        { "id": "B", "text": "Vorzeitige Kontrastierung der drainierenden Vene in der arteriellen Phase (\"Early venous filling sign\")" },
+        { "id": "C", "text": "Homogen hypodense Läsion in allen Phasen" },
+        { "id": "D", "text": "Verkalkungen im Läsionszentrum" }
+      ],
+      "correct": "B",
+      "explanation": "Das Early venous filling sign – die vorzeitige arterielle Opazifikation der drainierenden Vene – ist der Schlüsselbefund einer hepatischen AVM in CT und MRT."
+    },
+    {
+      "id": "avm-de-08",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Wie wird eine fokale, keilförmige Hyperperfusion um eine AVM in der frühen arteriellen Phase bezeichnet?",
+      "options": [
+        { "id": "A", "text": "Wash-out" },
+        { "id": "B", "text": "Zentrale Narbe" },
+        { "id": "C", "text": "Transiente Hyperperfusionsstörung (THAD/THID)" },
+        { "id": "D", "text": "Pseudokapsel" }
+      ],
+      "correct": "C",
+      "explanation": "Eine transiente, fokale oder keilförmige Hyperperfusion um einen AV-Shunt wird als THAD/THID bezeichnet und kann eine hypervaskuläre Läsion wie FNH oder HCC imitieren."
+    },
+    {
+      "id": "avm-de-09",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Wie stellen sich AV-Malformationen typischerweise in T1/T2-gewichteten MRT-Sequenzen dar?",
+      "options": [
+        { "id": "A", "text": "Homogen hyperintens mit langsamer, zentripetaler Kontrastmittelanreicherung wie ein Hämangiom" },
+        { "id": "B", "text": "Als serpiginöse, signalfreie Strukturen (Flow voids) durch schnellen Fluss" },
+        { "id": "C", "text": "Als fettäquivalente Signalintensität in allen Sequenzen" },
+        { "id": "D", "text": "Als zystische, scharf begrenzte Raumforderung mit Flüssigkeitsspiegel" }
+      ],
+      "correct": "B",
+      "explanation": "Schnell fließendes Blut in dilatierten Gefäßen erzeugt Flow voids – serpiginöse, signalfreie Strukturen in T1- und T2-gewichteten Sequenzen."
+    },
+    {
+      "id": "avm-de-10",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Welche klinische Konsequenz kann eine ausgeprägte HHT-assoziierte Leberbeteiligung mit multiplen AV-Shunts haben?",
+      "options": [
+        { "id": "A", "text": "Akutes Nierenversagen" },
+        { "id": "B", "text": "High-Output-Herzinsuffizienz und portale Hypertension" },
+        { "id": "C", "text": "Akute Pankreatitis" },
+        { "id": "D", "text": "Hypothyreose" }
+      ],
+      "correct": "B",
+      "explanation": "Multiple hepatische AV-Shunts können über ein erhöhtes Herzzeitvolumen zu einer High-Output-Herzinsuffizienz führen und über arterioportale Shunts eine portale Hypertension verursachen."
+    },
+    {
       "id": "sarkoidose-de-01",
       "tags": [
         "sarkoidose",
@@ -1537,6 +1677,146 @@ export const QUESTION_BANK = {
       "explanation": "FNH is benign, usually asymptomatic, and generally does not require treatment."
     },
     {
+      "id": "avm-en-01",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "What pathophysiologically characterises a hepatic arteriovenous malformation (AVM)?",
+      "options": [
+        { "id": "A", "text": "An abnormal direct connection between an artery and a venous vessel without an intervening capillary bed" },
+        { "id": "B", "text": "A benign regenerative mass composed of hyperplastic liver tissue" },
+        { "id": "C", "text": "A cystic mass containing serous fluid" },
+        { "id": "D", "text": "A focal accumulation of fat within the liver parenchyma" }
+      ],
+      "correct": "A",
+      "explanation": "A hepatic AVM is an abnormal direct connection between an artery and a venous vessel without an intervening capillary bed, allowing high-velocity, low-resistance blood flow directly from the arterial to the venous side."
+    },
+    {
+      "id": "avm-en-02",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Which shunt type is most common in hepatic AVMs?",
+      "options": [
+        { "id": "A", "text": "Arterioportal (hepatic artery to portal vein branch)" },
+        { "id": "B", "text": "Portosystemic (portal vein to hepatic vein)" },
+        { "id": "C", "text": "Purely arteriovenous (hepatic artery to hepatic vein) only" },
+        { "id": "D", "text": "Venovenous between two hepatic veins" }
+      ],
+      "correct": "A",
+      "explanation": "Arterioportal shunts - a connection between the hepatic artery and a portal vein branch - are the most common type of hepatic AV malformation."
+    },
+    {
+      "id": "avm-en-03",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Which condition is the most important congenital cause of multiple hepatic AVMs?",
+      "options": [
+        { "id": "A", "text": "Hereditary haemorrhagic telangiectasia (HHT, Osler-Weber-Rendu disease)" },
+        { "id": "B", "text": "Wilson's disease" },
+        { "id": "C", "text": "Haemochromatosis" },
+        { "id": "D", "text": "Alpha-1 antitrypsin deficiency" }
+      ],
+      "correct": "A",
+      "explanation": "Hereditary haemorrhagic telangiectasia (HHT, Osler-Weber-Rendu disease) is the most important congenital cause of multiple, diffusely distributed hepatic AV shunts."
+    },
+    {
+      "id": "avm-en-04",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Which cause best fits an acquired hepatic AVM?",
+      "options": [
+        { "id": "A", "text": "Iatrogenic, following liver biopsy or TIPS placement" },
+        { "id": "B", "text": "A congenital liver cyst" },
+        { "id": "C", "text": "Chronic viral hepatitis alone" },
+        { "id": "D", "text": "A physiological age-related change" }
+      ],
+      "correct": "A",
+      "explanation": "Acquired hepatic AVMs mainly arise from trauma or iatrogenic causes, such as liver biopsy, TIPS placement, or surgery."
+    },
+    {
+      "id": "avm-en-05",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Which Doppler pattern suggests an AV shunt within a hepatic vein or portal vein branch?",
+      "options": [
+        { "id": "A", "text": "Monophasic, continuous flow signal with very low velocity" },
+        { "id": "B", "text": "Pulsatile, arterialised flow with high velocity" },
+        { "id": "C", "text": "Complete flow reversal without pulsatility" },
+        { "id": "D", "text": "Absent Doppler signal (\"silent vein\")" }
+      ],
+      "correct": "B",
+      "explanation": "A pulsatile, arterialised high-velocity flow pattern in a vein indicates a direct AV shunt connection."
+    },
+    {
+      "id": "avm-en-06",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "How does the resistive index (RI) of the feeding artery typically behave in an AV shunt?",
+      "options": [
+        { "id": "A", "text": "Markedly increased" },
+        { "id": "B", "text": "Markedly decreased" },
+        { "id": "C", "text": "Unchanged compared with the contralateral side" },
+        { "id": "D", "text": "Not measurable" }
+      ],
+      "correct": "B",
+      "explanation": "Due to the low resistance of the shunt, the resistive index of the feeding artery drops markedly, recognisable by a high diastolic flow velocity."
+    },
+    {
+      "id": "avm-en-07",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "What is the key CT sign of a hepatic AVM?",
+      "options": [
+        { "id": "A", "text": "Centripetal contrast filling in the delayed phase" },
+        { "id": "B", "text": "Premature opacification of the draining vein during the arterial phase (\"early venous filling sign\")" },
+        { "id": "C", "text": "Homogeneously hypodense lesion in all phases" },
+        { "id": "D", "text": "Calcifications within the centre of the lesion" }
+      ],
+      "correct": "B",
+      "explanation": "The early venous filling sign - premature arterial-phase opacification of the draining vein - is the key finding of a hepatic AVM on CT and MRI."
+    },
+    {
+      "id": "avm-en-08",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "What is the term for focal, wedge-shaped hyperperfusion around an AVM in the early arterial phase?",
+      "options": [
+        { "id": "A", "text": "Wash-out" },
+        { "id": "B", "text": "Central scar" },
+        { "id": "C", "text": "Transient hepatic attenuation/intensity difference (THAD/THID)" },
+        { "id": "D", "text": "Pseudocapsule" }
+      ],
+      "correct": "C",
+      "explanation": "Transient, focal or wedge-shaped hyperperfusion around an AV shunt is called THAD/THID and can mimic a hypervascular lesion such as FNH or HCC."
+    },
+    {
+      "id": "avm-en-09",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "How do AV malformations typically appear on T1- and T2-weighted MRI sequences?",
+      "options": [
+        { "id": "A", "text": "Homogeneously hyperintense with slow, centripetal contrast enhancement like a haemangioma" },
+        { "id": "B", "text": "As serpiginous signal-void structures (flow voids) due to rapid flow" },
+        { "id": "C", "text": "As fat-equivalent signal intensity on all sequences" },
+        { "id": "D", "text": "As a sharply circumscribed cystic mass with a fluid level" }
+      ],
+      "correct": "B",
+      "explanation": "Rapidly flowing blood within dilated vessels produces flow voids - serpiginous, signal-void structures on T1- and T2-weighted sequences."
+    },
+    {
+      "id": "avm-en-10",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "What clinical consequence can result from extensive HHT-associated hepatic involvement with multiple AV shunts?",
+      "options": [
+        { "id": "A", "text": "Acute renal failure" },
+        { "id": "B", "text": "High-output heart failure and portal hypertension" },
+        { "id": "C", "text": "Acute pancreatitis" },
+        { "id": "D", "text": "Hypothyroidism" }
+      ],
+      "correct": "B",
+      "explanation": "Multiple hepatic AV shunts can lead to high-output heart failure via increased cardiac output, and to portal hypertension via arterioportal shunting."
+    },
+    {
       "id": "sarkoidose-en-01",
       "tags": [
         "sarkoidose",
@@ -2452,6 +2732,146 @@ export const QUESTION_BANK = {
       ],
       "correct": "A",
       "explanation": "FNH خوش‌خیم است، معمولاً بدون علامت است و معمولاً نیاز به درمان ندارد."
+    },
+    {
+      "id": "avm-fa-01",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "مالفورماسیون شریانی-وریدی (AVM) کبد از نظر پاتوفیزیولوژیک با چه چیزی مشخص می‌شود؟",
+      "options": [
+        { "id": "A", "text": "ارتباط مستقیم و غیرطبیعی بین یک شریان و یک عروق وریدی بدون بستر مویرگی واسط" },
+        { "id": "B", "text": "یک توده رژنراتیو خوش‌خیم متشکل از بافت کبدی هیپرپلاستیک" },
+        { "id": "C", "text": "یک توده کیستیک حاوی مایع سروز" },
+        { "id": "D", "text": "تجمع فوکال چربی در پارانشیم کبد" }
+      ],
+      "correct": "A",
+      "explanation": "AVM کبدی یک ارتباط مستقیم و غیرطبیعی بین یک شریان و یک عروق وریدی بدون بستر مویرگی واسط است که باعث جریان خون مستقیم با سرعت بالا و مقاومت پایین از سمت شریانی به وریدی می‌شود."
+    },
+    {
+      "id": "avm-fa-02",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "شایع‌ترین نوع شانت در AVM‌های کبدی کدام است؟",
+      "options": [
+        { "id": "A", "text": "آرتریوپورتال (شریان کبدی به شاخه ورید پورت)" },
+        { "id": "B", "text": "پورتوسیستمیک (ورید پورت به ورید کبدی)" },
+        { "id": "C", "text": "صرفاً آرتریوونوس (شریان کبدی به ورید کبدی)" },
+        { "id": "D", "text": "ونو-ونوس بین دو ورید کبدی" }
+      ],
+      "correct": "A",
+      "explanation": "شانت‌های آرتریوپورتال - ارتباط بین شریان کبدی و یک شاخه ورید پورت - شایع‌ترین نوع مالفورماسیون شریانی-وریدی کبد هستند."
+    },
+    {
+      "id": "avm-fa-03",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "مهم‌ترین علت کنژنیتال AVM‌های متعدد کبدی کدام بیماری است؟",
+      "options": [
+        { "id": "A", "text": "تلانژکتازی هموراژیک ارثی (HHT، بیماری Osler-Weber-Rendu)" },
+        { "id": "B", "text": "بیماری ویلسون" },
+        { "id": "C", "text": "هموکروماتوز" },
+        { "id": "D", "text": "کمبود آلفا-1-آنتی‌تریپسین" }
+      ],
+      "correct": "A",
+      "explanation": "تلانژکتازی هموراژیک ارثی (HHT، بیماری Osler-Weber-Rendu) مهم‌ترین علت کنژنیتال شانت‌های شریانی-وریدی متعدد و منتشر کبدی است."
+    },
+    {
+      "id": "avm-fa-04",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "کدام علت بیشتر با AVM کبدی اکتسابی مطابقت دارد؟",
+      "options": [
+        { "id": "A", "text": "علت ایاتروژنیک، پس از بیوپسی کبد یا انجام TIPS" },
+        { "id": "B", "text": "کیست کبدی کنژنیتال" },
+        { "id": "C", "text": "هپاتیت ویروسی مزمن به‌تنهایی" },
+        { "id": "D", "text": "تغییر فیزیولوژیک مرتبط با سن" }
+      ],
+      "correct": "A",
+      "explanation": "AVM‌های کبدی اکتسابی معمولاً ناشی از تروما یا علل ایاتروژنیک مانند بیوپسی کبد، TIPS یا جراحی هستند."
+    },
+    {
+      "id": "avm-fa-05",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "کدام الگوی داپلر نشان‌دهنده شانت شریانی-وریدی در یک ورید کبدی یا شاخه ورید پورت است؟",
+      "options": [
+        { "id": "A", "text": "سیگنال جریان مونوفازیک و پیوسته با سرعت بسیار پایین" },
+        { "id": "B", "text": "جریان پولساتیل و آرتریالیزه با سرعت بالا" },
+        { "id": "C", "text": "معکوس‌شدن کامل جریان بدون پولساتیلیتی" },
+        { "id": "D", "text": "عدم وجود سیگنال داپلر (\"ورید ساکت\")" }
+      ],
+      "correct": "B",
+      "explanation": "الگوی جریان پولساتیل و آرتریالیزه با سرعت بالا در یک ورید نشان‌دهنده ارتباط مستقیم شانت شریانی-وریدی است."
+    },
+    {
+      "id": "avm-fa-06",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "اندکس مقاومتی (RI) شریان تغذیه‌کننده در یک شانت شریانی-وریدی معمولاً چگونه تغییر می‌کند؟",
+      "options": [
+        { "id": "A", "text": "به‌طور قابل توجهی افزایش می‌یابد" },
+        { "id": "B", "text": "به‌طور قابل توجهی کاهش می‌یابد" },
+        { "id": "C", "text": "نسبت به سمت مقابل بدون تغییر است" },
+        { "id": "D", "text": "قابل اندازه‌گیری نیست" }
+      ],
+      "correct": "B",
+      "explanation": "به دلیل مقاومت پایین در شانت، اندکس مقاومتی شریان تغذیه‌کننده به‌طور قابل توجهی کاهش می‌یابد که با سرعت دیاستولیک بالا قابل تشخیص است."
+    },
+    {
+      "id": "avm-fa-07",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "مهم‌ترین علامت CT برای AVM کبدی کدام است؟",
+      "options": [
+        { "id": "A", "text": "پرشدگی سانتریپتال کنتراست در فاز دیر" },
+        { "id": "B", "text": "اپاسیفیکاسیون زودرس ورید تخلیه‌کننده در فاز شریانی (\"early venous filling sign\")" },
+        { "id": "C", "text": "ضایعه هیپودنس همگن در تمام فازها" },
+        { "id": "D", "text": "کلسیفیکاسیون در مرکز ضایعه" }
+      ],
+      "correct": "B",
+      "explanation": "\"Early venous filling sign\" - اپاسیفیکاسیون زودرس ورید تخلیه‌کننده در فاز شریانی - یافته کلیدی AVM کبدی در CT و MRI است."
+    },
+    {
+      "id": "avm-fa-08",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "هیپرپرفیوژن فوکال و گوه‌ای‌شکل اطراف یک AVM در فاز شریانی زودرس چه نام دارد؟",
+      "options": [
+        { "id": "A", "text": "Wash-out" },
+        { "id": "B", "text": "اسکار مرکزی" },
+        { "id": "C", "text": "اختلاف گذرای تراکم/سیگنال کبدی (THAD/THID)" },
+        { "id": "D", "text": "پسوکپسول" }
+      ],
+      "correct": "C",
+      "explanation": "هیپرپرفیوژن گذرا، فوکال یا گوه‌ای‌شکل اطراف یک شانت شریانی-وریدی THAD/THID نامیده می‌شود و می‌تواند یک ضایعه هیپرواسکولار مانند FNH یا HCC را تقلید کند."
+    },
+    {
+      "id": "avm-fa-09",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "مالفورماسیون‌های شریانی-وریدی معمولاً در سکانس‌های T1 و T2 وزن‌دار MRI چگونه دیده می‌شوند؟",
+      "options": [
+        { "id": "A", "text": "هیپراینتنس همگن با تجمع آرام و سانتریپتال کنتراست مانند هماانژیوم" },
+        { "id": "B", "text": "به‌صورت ساختارهای سرپیژینوس بدون سیگنال (Flow voids) به دلیل جریان سریع" },
+        { "id": "C", "text": "به‌صورت سیگنال معادل چربی در تمام سکانس‌ها" },
+        { "id": "D", "text": "به‌صورت توده کیستیک با مرز مشخص و سطح مایع" }
+      ],
+      "correct": "B",
+      "explanation": "جریان سریع خون در عروق متسع باعث ایجاد Flow voids - ساختارهای سرپیژینوس بدون سیگنال - در سکانس‌های T1 و T2 می‌شود."
+    },
+    {
+      "id": "avm-fa-10",
+      "tags": ["avm", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "درگیری کبدی شدید مرتبط با HHT همراه با شانت‌های شریانی-وریدی متعدد چه عارضه بالینی می‌تواند داشته باشد؟",
+      "options": [
+        { "id": "A", "text": "نارسایی حاد کلیه" },
+        { "id": "B", "text": "نارسایی قلبی با برون‌ده بالا و هیپرتانسیون پورت" },
+        { "id": "C", "text": "پانکراتیت حاد" },
+        { "id": "D", "text": "هیپوتیروئیدی" }
+      ],
+      "correct": "B",
+      "explanation": "شانت‌های شریانی-وریدی متعدد کبدی می‌توانند از طریق افزایش برون‌ده قلبی منجر به نارسایی قلبی با برون‌ده بالا شوند و از طریق شانت آرتریوپورتال باعث هیپرتانسیون پورت گردند."
     },
     {
       "id": "sarkoidose-fa-01",

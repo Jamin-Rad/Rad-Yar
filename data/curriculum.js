@@ -708,6 +708,14 @@ export const CURRICULUM = [
           { id: 'li-rads', title: { de: 'LI-RADS', en: 'LI-RADS', fa: 'سیستم LI-RADS' }, tags: ['CT','MRT'], diff: 2 },
           { id: 'budd-chiari-syndrom', title: { de: 'Budd-Chiari-Syndrom', en: 'Budd-Chiari Syndrome', fa: 'سندرم باد-کیاری' }, group: ['Vaskuläre Lebererkrankungen'], tags: ['Sono','CT','MRT'], diff: 3 },
           { id: 'pfortaderthrombose', title: { de: 'Pfortaderthrombose', en: 'Portal Vein Thrombosis', fa: 'ترومبوز ورید پورت' }, group: ['Vaskuläre Lebererkrankungen'], tags: ['Sono','CT'], diff: 2 },
+          {
+            id: 'avm',
+            title: { de: 'Arteriovenöse Malformation (AVM)', en: 'Hepatic Arteriovenous Malformation (AVM)', fa: 'مالفورماسیون شریانی-وریدی کبد (AVM)' },
+            group: ['Vaskuläre Lebererkrankungen'], tags: ['Sono','CT','MRT'], diff: 3,
+            link: '/abdomen/leber/avm',
+            flashcardLink: '/flashcards/avm',
+            ready: true, updatedAt: '2026-06-13',
+          },
         ],
       },
       {

@@ -62,6 +62,25 @@ export const FLASHCARD_TOPICS = [
     }
   },
   {
+    "id": "avm",
+    "area": "Abdomen",
+    "chapter": "Leber",
+    "icon": "🩸",
+    "iconImage": "/fach/abdomen.png",
+    "color": "#10b981",
+    "href": "/flashcards/avm",
+    "title": {
+      "de": "AVM der Leber",
+      "en": "Hepatic AVM",
+      "fa": "AVM کبد"
+    },
+    "subtitle": {
+      "de": "Shunt-Typen · Doppler · Early venous filling · THAD/THID · HHT",
+      "en": "Shunt types · Doppler · early venous filling · THAD/THID · HHT",
+      "fa": "انواع شانت · داپلر · Early venous filling · THAD/THID · HHT"
+    }
+  },
+  {
     "id": "sarkoidose",
     "area": "Thorax",
     "chapter": "Lunge",
@@ -1485,6 +1504,354 @@ export const FLASHCARDS = [
       "de": "klassisches Muster → benigne, keine weitere Diagnostik\natypisch → Vergleich + Verlauf",
       "en": "classic pattern → benign, no further work-up\natypical → compare + follow-up",
       "fa": "الگوی کلاسیک → خوش‌خیم، بدون بررسی بیشتر\nآتیپیک → مقایسه + پیگیری"
+    }
+  },
+  {
+    "id": "avm-01-definition",
+    "topicId": "avm",
+    "category": {
+      "de": "Grundlagen",
+      "en": "Basics",
+      "fa": "مبانی"
+    },
+    "front": {
+      "de": "Was ist eine arteriovenöse Malformation (AVM) der Leber?",
+      "en": "What is a hepatic arteriovenous malformation (AVM)?",
+      "fa": "مالفورماسیون شریانی-وریدی (AVM) کبد چیست؟"
+    },
+    "answer": {
+      "de": "Eine abnorme direkte Verbindung zwischen Arterie und venösem Gefäß ohne zwischengeschaltetes Kapillarbett.",
+      "en": "An abnormal direct connection between an artery and a venous vessel without an intervening capillary bed.",
+      "fa": "ارتباط مستقیم و غیرطبیعی بین یک شریان و یک عروق وریدی بدون بستر مویرگی واسط."
+    },
+    "explanation": {
+      "de": "Dadurch entsteht ein Hochfluss-Shunt mit niedrigem Widerstand, der direkt arterielles Blut in das venöse System ableitet.",
+      "en": "This creates a high-flow, low-resistance shunt that diverts arterial blood directly into the venous system.",
+      "fa": "این امر یک شانت پرفشار با مقاومت پایین ایجاد می‌کند که خون شریانی را مستقیماً به سیستم وریدی منتقل می‌کند."
+    },
+    "diagram": {
+      "de": "Arterie → (kein Kapillarbett) → Vene = AVM",
+      "en": "Artery → (no capillary bed) → Vein = AVM",
+      "fa": "شریان ← (بدون بستر مویرگی) ← ورید = AVM"
+    }
+  },
+  {
+    "id": "avm-02-shunttypen",
+    "topicId": "avm",
+    "category": {
+      "de": "Grundlagen",
+      "en": "Basics",
+      "fa": "مبانی"
+    },
+    "front": {
+      "de": "Welche drei Shunt-Typen werden bei hepatischen AVMs unterschieden?",
+      "en": "Which three shunt types are distinguished in hepatic AVMs?",
+      "fa": "سه نوع شانت در AVM‌های کبدی کدامند؟"
+    },
+    "answer": {
+      "de": "Arterioportal (häufigster Typ), arteriovenös und portosystemisch.",
+      "en": "Arterioportal (most common), arteriovenous and portosystemic.",
+      "fa": "آرتریوپورتال (شایع‌ترین)، آرتریوونوس و پورتوسیستمیک."
+    },
+    "explanation": {
+      "de": "Arterioportale Shunts verbinden die A. hepatica mit einem Pfortaderast, arteriovenöse Shunts die A. hepatica mit einer Lebervene, portosystemische Shunts die Pfortader mit einer Lebervene.",
+      "en": "Arterioportal shunts connect the hepatic artery to a portal vein branch, arteriovenous shunts connect the hepatic artery to a hepatic vein, and portosystemic shunts connect the portal vein to a hepatic vein.",
+      "fa": "شانت‌های آرتریوپورتال شریان کبدی را به شاخه ورید پورت، شانت‌های آرتریوونوس شریان کبدی را به ورید کبدی و شانت‌های پورتوسیستمیک ورید پورت را به ورید کبدی متصل می‌کنند."
+    },
+    "diagram": {
+      "de": "Arterioportal > Arteriovenös > Portosystemisch (Häufigkeit)",
+      "en": "Arterioportal > Arteriovenous > Portosystemic (frequency)",
+      "fa": "آرتریوپورتال > آرتریوونوس > پورتوسیستمیک (شیوع)"
+    }
+  },
+  {
+    "id": "avm-03-aetiologie",
+    "topicId": "avm",
+    "category": {
+      "de": "Grundlagen",
+      "en": "Basics",
+      "fa": "مبانی"
+    },
+    "front": {
+      "de": "Welche Ursachen kommen für eine hepatische AVM in Frage?",
+      "en": "What causes can lead to a hepatic AVM?",
+      "fa": "علل ایجاد AVM کبدی کدامند؟"
+    },
+    "answer": {
+      "de": "Kongenital (v. a. HHT/Morbus Osler-Weber-Rendu) oder erworben (iatrogen, traumatisch, tumor- oder zirrhoseassoziiert).",
+      "en": "Congenital (especially HHT/Osler-Weber-Rendu disease) or acquired (iatrogenic, traumatic, or tumour- or cirrhosis-associated).",
+      "fa": "کنژنیتال (به‌ویژه HHT/بیماری Osler-Weber-Rendu) یا اکتسابی (ایاتروژنیک، تروماتیک یا مرتبط با تومور/سیروز)."
+    },
+    "explanation": {
+      "de": "Erworbene AVMs entstehen häufig nach Leberbiopsie, TIPS-Anlage, Trauma oder Operation. Die wichtigste kongenitale Ursache multipler Shunts ist die HHT.",
+      "en": "Acquired AVMs often arise after liver biopsy, TIPS placement, trauma, or surgery. HHT is the most important congenital cause of multiple shunts.",
+      "fa": "AVM‌های اکتسابی اغلب پس از بیوپسی کبد، TIPS، تروما یا جراحی ایجاد می‌شوند. HHT مهم‌ترین علت کنژنیتال شانت‌های متعدد است."
+    },
+    "diagram": {
+      "de": "kongenital (HHT) | erworben (Biopsie, TIPS, Trauma)",
+      "en": "congenital (HHT) | acquired (biopsy, TIPS, trauma)",
+      "fa": "کنژنیتال (HHT) | اکتسابی (بیوپسی، TIPS، تروما)"
+    }
+  },
+  {
+    "id": "avm-04-doppler-ri",
+    "topicId": "avm",
+    "category": {
+      "de": "Sonographie",
+      "en": "Ultrasound",
+      "fa": "سونوگرافی"
+    },
+    "front": {
+      "de": "Wie verändert sich der Widerstandsindex (RI) der zuführenden Arterie bei einem AV-Shunt?",
+      "en": "How does the resistive index (RI) of the feeding artery change in an AV shunt?",
+      "fa": "اندکس مقاومتی (RI) شریان تغذیه‌کننده در یک شانت شریانی-وریدی چگونه تغییر می‌کند؟"
+    },
+    "answer": {
+      "de": "Der RI ist deutlich erniedrigt, mit hoher diastolischer Flussgeschwindigkeit.",
+      "en": "The RI is markedly decreased, with high diastolic flow velocity.",
+      "fa": "RI به‌طور قابل توجهی کاهش می‌یابد، همراه با سرعت دیاستولیک بالا."
+    },
+    "explanation": {
+      "de": "Durch den niedrigen Widerstand des Shunts fließt auch in der Diastole viel Blut, was den RI deutlich senkt.",
+      "en": "The low resistance of the shunt allows substantial flow even during diastole, markedly lowering the RI.",
+      "fa": "مقاومت پایین شانت باعث می‌شود حتی در دیاستول جریان قابل توجهی برقرار باشد که RI را به‌شدت کاهش می‌دهد."
+    },
+    "diagram": {
+      "de": "niedriger Widerstand im Shunt → ↓RI, ↑diastolischer Fluss",
+      "en": "low shunt resistance → ↓RI, ↑diastolic flow",
+      "fa": "مقاومت پایین شانت ← ↓RI، ↑جریان دیاستولیک"
+    }
+  },
+  {
+    "id": "avm-05-doppler-venenfluss",
+    "topicId": "avm",
+    "category": {
+      "de": "Sonographie",
+      "en": "Ultrasound",
+      "fa": "سونوگرافی"
+    },
+    "front": {
+      "de": "Welches Flussmuster zeigt eine Lebervene oder ein Pfortaderast bei einem AV-Shunt im Doppler?",
+      "en": "What flow pattern does a hepatic vein or portal vein branch show on Doppler in an AV shunt?",
+      "fa": "در داپلر، یک ورید کبدی یا شاخه ورید پورت در شانت شریانی-وریدی چه الگوی جریانی نشان می‌دهد؟"
+    },
+    "answer": {
+      "de": "Pulsatiler, arterialisierter Fluss statt normaler kontinuierlicher Fluss.",
+      "en": "Pulsatile, arterialised flow instead of normal continuous flow.",
+      "fa": "جریان پولساتیل و آرتریالیزه به‌جای جریان پیوسته طبیعی."
+    },
+    "explanation": {
+      "de": "Der direkte arterielle Zustrom übertragt die arterielle Pulsatilität auf das venöse Gefäß – ein wichtiger Hinweis auf einen Shunt.",
+      "en": "The direct arterial inflow transmits arterial pulsatility to the venous vessel – an important clue to a shunt.",
+      "fa": "ورود مستقیم خون شریانی، پولساتیلیتی شریانی را به عروق وریدی منتقل می‌کند - نشانه مهمی برای شانت."
+    },
+    "diagram": {
+      "de": "normal: kontinuierlich | bei Shunt: pulsatil-arterialisiert",
+      "en": "normal: continuous | with shunt: pulsatile-arterialised",
+      "fa": "طبیعی: پیوسته | با شانت: پولساتیل-آرتریالیزه"
+    }
+  },
+  {
+    "id": "avm-06-early-venous-filling",
+    "topicId": "avm",
+    "category": {
+      "de": "CT",
+      "en": "CT",
+      "fa": "CT"
+    },
+    "front": {
+      "de": "Was ist das Early venous filling sign?",
+      "en": "What is the early venous filling sign?",
+      "fa": "Early venous filling sign چیست؟"
+    },
+    "answer": {
+      "de": "Die vorzeitige Kontrastierung der drainierenden Vene bereits in der frühen arteriellen Phase.",
+      "en": "Premature opacification of the draining vein already during the early arterial phase.",
+      "fa": "اپاسیفیکاسیون زودرس ورید تخلیه‌کننده در فاز شریانی زودرس."
+    },
+    "explanation": {
+      "de": "Es ist das wichtigste CT-/MRT-Leitzeichen einer hepatischen AVM, da das Shunt-Blut die Vene noch in der arteriellen Phase erreicht.",
+      "en": "It is the most important CT/MRI sign of a hepatic AVM, because shunted blood reaches the vein already during the arterial phase.",
+      "fa": "این مهم‌ترین نشانه CT/MRI برای AVM کبدی است، چون خون شانت‌شده در فاز شریانی به ورید می‌رسد."
+    },
+    "diagram": {
+      "de": "arterielle Phase: Vene bereits kontrastiert → AVM",
+      "en": "arterial phase: vein already opacified → AVM",
+      "fa": "فاز شریانی: ورید از قبل اپاسیفه شده ← AVM"
+    }
+  },
+  {
+    "id": "avm-07-thad-thid",
+    "topicId": "avm",
+    "category": {
+      "de": "CT",
+      "en": "CT",
+      "fa": "CT"
+    },
+    "front": {
+      "de": "Was bedeutet THAD/THID im Kontext einer AVM?",
+      "en": "What does THAD/THID mean in the context of an AVM?",
+      "fa": "THAD/THID در زمینه AVM به چه معناست؟"
+    },
+    "answer": {
+      "de": "Transient hepatic attenuation/intensity difference – eine vorübergehende, meist keilförmige Hyperperfusion um den Shunt.",
+      "en": "Transient hepatic attenuation/intensity difference – a transient, usually wedge-shaped hyperperfusion around the shunt.",
+      "fa": "اختلاف گذرای تراکم/سیگنال کبدی - هیپرپرفیوژن گذرا و معمولاً گوه‌ای‌شکل اطراف شانت."
+    },
+    "explanation": {
+      "de": "Diese fokale, früharterielle Hyperperfusion kann eine hypervaskuläre Läsion wie FNH oder HCC imitieren und sollte nicht mit einem Tumor verwechselt werden.",
+      "en": "This focal, early arterial hyperperfusion can mimic a hypervascular lesion such as FNH or HCC and should not be mistaken for a tumour.",
+      "fa": "این هیپرپرفیوژن فوکال و زودرس شریانی می‌تواند یک ضایعه هیپرواسکولار مانند FNH یا HCC را تقلید کند و نباید با تومور اشتباه گرفته شود."
+    },
+    "diagram": {
+      "de": "AVM → periläsionale keilförmige Hyperperfusion (THAD/THID)",
+      "en": "AVM → perilesional wedge-shaped hyperperfusion (THAD/THID)",
+      "fa": "AVM ← هیپرپرفیوژن گوه‌ای‌شکل اطراف ضایعه (THAD/THID)"
+    }
+  },
+  {
+    "id": "avm-08-flow-voids",
+    "topicId": "avm",
+    "category": {
+      "de": "MRT",
+      "en": "MRI",
+      "fa": "MRI"
+    },
+    "front": {
+      "de": "Wie erscheinen die Gefäße einer AVM typischerweise in T1- und T2-gewichteten MRT-Sequenzen?",
+      "en": "How do the vessels of an AVM typically appear on T1- and T2-weighted MRI sequences?",
+      "fa": "عروق یک AVM معمولاً در سکانس‌های T1 و T2 وزن‌دار MRI چگونه دیده می‌شوند؟"
+    },
+    "answer": {
+      "de": "Als serpiginöse, signalfreie Strukturen (Flow voids).",
+      "en": "As serpiginous, signal-void structures (flow voids).",
+      "fa": "به‌صورت ساختارهای سرپیژینوس بدون سیگنال (Flow voids)."
+    },
+    "explanation": {
+      "de": "Schnell fließendes Blut erzeugt in beiden Sequenzen eine Signalauslöschung – ein direkter Hinweis auf dilatierte, hochflussige Gefäße.",
+      "en": "Rapidly flowing blood causes signal loss on both sequences – a direct sign of dilated, high-flow vessels.",
+      "fa": "جریان سریع خون در هر دو سکانس باعث از بین رفتن سیگنال می‌شود - نشانه مستقیم عروق متسع با جریان بالا."
+    },
+    "diagram": {
+      "de": "schneller Fluss → Signalauslöschung → Flow void",
+      "en": "rapid flow → signal loss → flow void",
+      "fa": "جریان سریع ← از بین رفتن سیگنال ← Flow void"
+    }
+  },
+  {
+    "id": "avm-09-mrt-muster",
+    "topicId": "avm",
+    "category": {
+      "de": "MRT",
+      "en": "MRI",
+      "fa": "MRI"
+    },
+    "front": {
+      "de": "Welche Befundkombination ist im MRT typisch für eine hepatische AVM?",
+      "en": "What combination of findings on MRI is typical of a hepatic AVM?",
+      "fa": "کدام ترکیب یافته‌ها در MRI برای AVM کبدی تیپیک است؟"
+    },
+    "answer": {
+      "de": "Flow voids + Early venous filling sign + ggf. THAD/THID.",
+      "en": "Flow voids + early venous filling sign + possible THAD/THID.",
+      "fa": "Flow voids + Early venous filling sign + احتمال THAD/THID."
+    },
+    "explanation": {
+      "de": "Diese Kombination ergibt zusammen das typische MRT-Muster und erlaubt die Abgrenzung von hypervaskulären Tumoren.",
+      "en": "Together, this combination represents the typical MRI pattern and allows differentiation from hypervascular tumours.",
+      "fa": "این ترکیب الگوی تیپیک MRI را تشکیل می‌دهد و امکان افتراق از تومورهای هیپرواسکولار را فراهم می‌کند."
+    },
+    "diagram": {
+      "de": "Flow voids + Early venous filling (+ THAD/THID) = AVM-Muster",
+      "en": "flow voids + early venous filling (+ THAD/THID) = AVM pattern",
+      "fa": "Flow voids + Early venous filling (+ THAD/THID) = الگوی AVM"
+    }
+  },
+  {
+    "id": "avm-10-hht",
+    "topicId": "avm",
+    "category": {
+      "de": "HHT",
+      "en": "HHT",
+      "fa": "HHT"
+    },
+    "front": {
+      "de": "Welche Erkrankung ist die wichtigste kongenitale Ursache multipler hepatischer AV-Shunts?",
+      "en": "Which condition is the most important congenital cause of multiple hepatic AV shunts?",
+      "fa": "کدام بیماری مهم‌ترین علت کنژنیتال شانت‌های شریانی-وریدی متعدد کبدی است؟"
+    },
+    "answer": {
+      "de": "Die hereditäre hämorrhagische Teleangiektasie (HHT, Morbus Osler-Weber-Rendu).",
+      "en": "Hereditary haemorrhagic telangiectasia (HHT, Osler-Weber-Rendu disease).",
+      "fa": "تلانژکتازی هموراژیک ارثی (HHT، بیماری Osler-Weber-Rendu)."
+    },
+    "explanation": {
+      "de": "Bei HHT finden sich typischerweise multiple, diffus verteilte Shunts sowie eine deutlich dilatierte und geschlängelte A. hepatica.",
+      "en": "HHT typically shows multiple, diffusely distributed shunts together with a markedly dilated and tortuous hepatic artery.",
+      "fa": "در HHT معمولاً شانت‌های متعدد و منتشر همراه با شریان کبدی به‌شدت متسع و پیچ‌خورده دیده می‌شود."
+    },
+    "diagram": {
+      "de": "HHT → multiple diffuse Shunts + dilatierte A. hepatica",
+      "en": "HHT → multiple diffuse shunts + dilated hepatic artery",
+      "fa": "HHT ← شانت‌های متعدد منتشر + شریان کبدی متسع"
+    }
+  },
+  {
+    "id": "avm-11-hht-klinik",
+    "topicId": "avm",
+    "category": {
+      "de": "HHT",
+      "en": "HHT",
+      "fa": "HHT"
+    },
+    "front": {
+      "de": "Welche klinischen Folgen kann eine ausgeprägte HHT-Leberbeteiligung haben?",
+      "en": "What clinical consequences can extensive HHT liver involvement have?",
+      "fa": "درگیری شدید کبدی HHT چه عوارض بالینی می‌تواند داشته باشد؟"
+    },
+    "answer": {
+      "de": "High-Output-Herzinsuffizienz und portale Hypertension.",
+      "en": "High-output heart failure and portal hypertension.",
+      "fa": "نارسایی قلبی با برون‌ده بالا و هیپرتانسیون پورت."
+    },
+    "explanation": {
+      "de": "Multiple AV-Shunts erhöhen das Herzzeitvolumen (→ High-Output-Herzinsuffizienz), arterioportale Shunts können zusätzlich eine portale Hypertension verursachen.",
+      "en": "Multiple AV shunts increase cardiac output (→ high-output heart failure), and arterioportal shunts can additionally cause portal hypertension.",
+      "fa": "شانت‌های متعدد شریانی-وریدی برون‌ده قلبی را افزایش می‌دهند (← نارسایی قلبی با برون‌ده بالا) و شانت‌های آرتریوپورتال می‌توانند هیپرتانسیون پورت ایجاد کنند."
+    },
+    "diagram": {
+      "de": "multiple Shunts → ↑Herzzeitvolumen + portale Hypertension",
+      "en": "multiple shunts → ↑cardiac output + portal hypertension",
+      "fa": "شانت‌های متعدد ← ↑برون‌ده قلبی + هیپرتانسیون پورت"
+    }
+  },
+  {
+    "id": "avm-12-reporting",
+    "topicId": "avm",
+    "category": {
+      "de": "Befundung",
+      "en": "Reporting",
+      "fa": "گزارش‌نویسی"
+    },
+    "front": {
+      "de": "Was sollte im Befund stehen, wenn eine AVM mit Early venous filling sign nachgewiesen wird?",
+      "en": "What should be reported when an AVM with an early venous filling sign is found?",
+      "fa": "هنگام یافتن AVM با Early venous filling sign، چه چیزی باید در گزارش ذکر شود؟"
+    },
+    "answer": {
+      "de": "Beschreibung des Shunt-Typs, des Early venous filling signs, ggf. THAD/THID, und ein Hinweis auf eine mögliche HHT bei multiplen/diffusen Shunts.",
+      "en": "Description of the shunt type, the early venous filling sign, possible THAD/THID, and a note about possible HHT if shunts are multiple/diffuse.",
+      "fa": "توصیف نوع شانت، Early venous filling sign، احتمال THAD/THID و در صورت شانت‌های متعدد/منتشر، اشاره به احتمال HHT."
+    },
+    "explanation": {
+      "de": "Bei multiplen, diffus verteilten Shunts mit dilatierter A. hepatica sollte eine HHT erwogen und ggf. interdisziplinär (Kardiologie/Hepatologie) abgeklärt werden.",
+      "en": "With multiple, diffusely distributed shunts and a dilated hepatic artery, HHT should be considered and worked up interdisciplinarily (cardiology/hepatology) if needed.",
+      "fa": "در صورت وجود شانت‌های متعدد و منتشر همراه با شریان کبدی متسع، باید HHT مدنظر قرار گرفته و در صورت نیاز بررسی بین‌رشته‌ای (قلب/هپاتولوژی) انجام شود."
+    },
+    "diagram": {
+      "de": "Shunt-Typ + Early venous filling (+ THAD/THID) + ggf. HHT-Hinweis",
+      "en": "shunt type + early venous filling (+ THAD/THID) + possible HHT note",
+      "fa": "نوع شانت + Early venous filling (+ THAD/THID) + احتمال HHT"
     }
   },
   {
