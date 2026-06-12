@@ -60,13 +60,14 @@ const SOURCES = [
   { label: 'EMA: Gadolinium contrast agents', href: 'https://www.ema.europa.eu/en/medicines/human/referrals/gadolinium-containing-contrast-agents' },
 ]
 
+const CONTRAST_TOPIC_IDS = CONTRAST_TOPICS.map(topic => topic.id).join(',')
+
 export default function ContrastMediaPage() {
   const { lang } = useLanguage()
   const ui = UI[lang] || UI.de
   const copy = CONTRAST_LESSON[lang] || CONTRAST_LESSON.de
   const isRTL = lang === 'fa'
   const { isRead, toggleRead, authError } = useLessonReadStatus('kontrastmittel')
-  const pagePath = lang === 'de' ? '/technik/kontrastmittel' : `/technik/kontrastmittel?lang=${lang}`
   const withLang = href => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
 
   return (
@@ -83,6 +84,14 @@ export default function ContrastMediaPage() {
             <h1>{copy.title}</h1>
             <p className={styles.subtitle}>{copy.subtitle}</p>
             <p className={styles.intro}>{copy.intro}</p>
+            <div className={styles.heroActions}>
+              <Link href={withLang(`/ueben/quiz?fach=technik&n=10&themen=${CONTRAST_TOPIC_IDS}&from=${encodeURIComponent('/technik/kontrastmittel')}`)}>
+                🎯 {ui.mcq}
+              </Link>
+              <Link href={withLang(`/flashcards/kontrastmittel?from=${encodeURIComponent('/technik/kontrastmittel')}`)}>
+                🧠 {ui.flashcards}
+              </Link>
+            </div>
           </div>
           <div className={styles.heroNumber}>
             <strong>9</strong>
@@ -93,13 +102,15 @@ export default function ContrastMediaPage() {
           <span>{ui.key}</span>
           <p>{copy.key}</p>
         </div>
-        <div className={styles.readArea}>
-          <button type="button" onClick={toggleRead} className={`${styles.readButton} ${isRead ? styles.readButtonActive : ''}`}>
-            <span>{isRead ? '✓' : '○'}</span>{isRead ? ui.read : ui.mark}
-          </button>
-          {authError && <p className={styles.authError}>{ui.auth} <Link href={withLang('/sign-in')}>{ui.signIn}</Link></p>}
-        </div>
       </header>
+
+      <div className={styles.readArea}>
+        <button type="button" onClick={toggleRead} className={`${styles.readButton} ${isRead ? styles.readButtonActive : ''}`}>
+          <span className={styles.readCheck}>{isRead ? '✓' : ''}</span>
+          {isRead ? ui.read : ui.mark}
+        </button>
+        {authError && <p className={styles.authError}>{ui.auth} <Link href={withLang('/sign-in')}>{ui.signIn}</Link></p>}
+      </div>
 
       <div className={styles.layout}>
         <aside className={styles.sidebar}>
@@ -117,7 +128,6 @@ export default function ContrastMediaPage() {
             const section = copy.sections[topic.id]
             const title = topic.title[lang] || topic.title.de
             const group = topic.group[lang] || topic.group.de
-            const encodedFrom = encodeURIComponent(`${pagePath}#${topic.id}`)
             return (
               <section id={topic.id} className={styles.section} key={topic.id}>
                 <div className={styles.sectionHeader}>
@@ -139,10 +149,6 @@ export default function ContrastMediaPage() {
                 <div className={styles.takeHome}>
                   <strong>{ui.takeHome}</strong>
                   <span>{section.takeHome}</span>
-                </div>
-                <div className={styles.actions}>
-                  <Link href={withLang(`/ueben/quiz?fach=technik&n=10&themen=${topic.id}&from=${encodedFrom}`)}>{ui.mcq}</Link>
-                  <Link href={withLang(`/flashcards/${topic.id}?from=${encodedFrom}`)}>{ui.flashcards}</Link>
                 </div>
               </section>
             )

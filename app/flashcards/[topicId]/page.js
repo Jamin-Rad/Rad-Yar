@@ -93,6 +93,7 @@ const T = {
 
 // Synthetisches "Thema" für die zufällige Wiederholung aller heute fälligen Karten
 const DUE_TOPIC_TITLE = { de: 'Heute fällig', en: 'Due today', fa: 'امروز برای مرور' }
+const CONTRAST_TOPIC_TITLE = { de: 'Kontrastmittel', en: 'Contrast media', fa: 'مواد حاجب' }
 
 function localize(value, lang) {
   if (!value) return ''
@@ -151,9 +152,21 @@ export default function FlashcardReviewPage({ params, searchParams }) {
 
   const topicId = params?.topicId ?? 'meniskus'
   const isDueMode = topicId === 'faellig'
-  const topic = isDueMode ? { id: 'faellig', title: DUE_TOPIC_TITLE, href: null } : getFlashcardTopic(topicId)
-  const lessonLink = !isDueMode && topic ? getLessonLinkForFlashcard(topic.href) : null
-  const allCards = useMemo(() => isDueMode ? FLASHCARDS : FLASHCARDS.filter(c => c.topicId === topicId), [topicId, isDueMode])
+  const isContrastMode = topicId === 'kontrastmittel'
+  const topic = isDueMode
+    ? { id: 'faellig', title: DUE_TOPIC_TITLE, href: null }
+    : isContrastMode
+      ? { id: 'kontrastmittel', title: CONTRAST_TOPIC_TITLE, href: '/flashcards/kontrastmittel' }
+      : getFlashcardTopic(topicId)
+  const lessonLink = isContrastMode ? '/technik/kontrastmittel' : (!isDueMode && topic ? getLessonLinkForFlashcard(topic.href) : null)
+  const allCards = useMemo(
+    () => isDueMode
+      ? FLASHCARDS
+      : isContrastMode
+        ? FLASHCARDS.filter(card => card.topicId.startsWith('km-'))
+        : FLASHCARDS.filter(card => card.topicId === topicId),
+    [topicId, isDueMode, isContrastMode]
+  )
   const practiceMode = searchParams?.mode === 'practice'
   const boxFilter = searchParams?.box ? Number(searchParams.box) : null
   const fromParam = typeof searchParams?.from === 'string' ? searchParams.from : null
