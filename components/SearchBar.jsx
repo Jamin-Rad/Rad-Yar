@@ -4,7 +4,7 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './SearchBar.module.css'
 
 const FACH_KEYS = ['Neuroradiologie','Thorax','Abdomen','Muskuloskelettales','Hals','Brust','Becken','Technik & Physik']
-const TOPICS_DE = ['Anatomie','Pathologie','Befundlehre','Normalbefunde','Modalitäten','Fallbeispiele','MCQs','Differenzialdiagnosen','Bildanalyse','Prüfungsfragen','Schwerpunktthemen','Timed Tests','Fehleranalyse']
+const TOPICS_DE = ['Anatomie','Pathologie','Befundlehre','Normalbefunde','Modalitäten','Fallprüfung','MCQs','Differenzialdiagnosen','Bildanalyse','Prüfungsfragen','Schwerpunktthemen','Timed Tests','Fehleranalyse']
 
 export default function SearchBar({ onClose }) {
   const { texts } = useLanguage()

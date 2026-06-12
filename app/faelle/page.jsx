@@ -18,7 +18,7 @@ const FACH_DISPLAY = {
 
 const UI = {
   de: {
-    home:'RadYar', crumb:'Fallbeispiele', title:'Fallprüfung',
+    home:'RadYar', crumb:'Fallprüfung', title:'Fallprüfung',
     sub:'Wähle eine oder mehrere Körperregionen, Themen und die Anzahl der Fälle.',
     step1:'Körperregion(en) wählen', step2:'Themen wählen', step3:'Anzahl der Fälle',
     all:'Alle', none:'Keine', start:'Prüfung starten', cases:'Fälle', topics:'Themen',
@@ -28,7 +28,7 @@ const UI = {
     wholeChapter:'Ganzes Kapitel wählen', chapterSelected:'Ganzes Kapitel ausgewählt',
   },
   en: {
-    home:'RadYar', crumb:'Cases', title:'Case exam',
+    home:'RadYar', crumb:'Case Exam', title:'Case exam',
     sub:'Choose one or more body regions, topics and the number of cases.',
     step1:'Choose body region(s)', step2:'Choose topics', step3:'Number of cases',
     all:'All', none:'None', start:'Start exam', cases:'cases', topics:'topics',
@@ -38,7 +38,7 @@ const UI = {
     wholeChapter:'Select whole chapter', chapterSelected:'Whole chapter selected',
   },
   fa: {
-    home:'RadYar', crumb:'نمونه کیس‌ها', title:'آزمون کیس',
+    home:'RadYar', crumb:'آزمون بالینی', title:'آزمون کیس',
     sub:'یک یا چند ناحیه بدن، موضوع و تعداد کیس‌ها را انتخاب کن.',
     step1:'انتخاب ناحیه(ها)', step2:'انتخاب موضوعات', step3:'تعداد کیس‌ها',
     all:'همه', none:'هیچ', start:'شروع آزمون', cases:'کیس', topics:'موضوع',

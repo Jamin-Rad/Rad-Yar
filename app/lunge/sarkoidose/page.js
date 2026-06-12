@@ -279,25 +279,35 @@ const CONTENT = {
     },
     "cases": {
       "title": "Fallbeispiele",
-      "lead": "Kurzfälle zum aktiven Wiederholen der wichtigsten Muster.",
+      "lead": "Echte Fälle und Referenzartikel von Radiopaedia.org zu den wichtigsten Mustern der pulmonalen Sarkoidose.",
+      "openCase": "Fall in Radiopaedia öffnen",
       "items": [
         {
-          "label": "Fall 1",
-          "title": "Symmetrische bihiläre und rechts paratracheale LAP",
-          "text": "Röntgen oder CT zeigt beidseitige hiläre Lymphknoten plus rechten Paratrachealraum, aber kein sicherer Parenchymbefall.",
-          "answer": "Scadding Stadium I · 1-2-3-Zeichen"
+          "label": "Scadding I",
+          "title": "Symmetrische bihiläre und rechts paratracheale Lymphadenopathie",
+          "tags": ["Röntgen", "1-2-3-Zeichen"],
+          "icon": "🫁",
+          "meta": "Röntgen oder CT zeigt beidseitige hiläre Lymphknoten plus rechten Paratrachealraum, aber kein sicherer Parenchymbefall.",
+          "credit": "Quelle: Radiopaedia.org",
+          "url": "https://radiopaedia.org/articles/pulmonary-sarcoidosis"
         },
         {
-          "label": "Fall 2",
+          "label": "HRCT-Muster",
           "title": "Perilymphatische Mikronoduli entlang der Fissuren",
-          "text": "HRCT zeigt 2–4-mm-Noduli entlang Fissuren, Pleura und bronchovaskulären Bündeln, bevorzugt in Ober- und Mittelfeldern.",
-          "answer": "Typisches HRCT-Muster der pulmonalen Sarkoidose"
+          "tags": ["HRCT", "perilymphatisch"],
+          "icon": "🔬",
+          "meta": "HRCT zeigt 2–4-mm-Noduli entlang Fissuren, Pleura und bronchovaskulären Bündeln, bevorzugt in Ober- und Mittelfeldern.",
+          "credit": "Quelle: Radiopaedia.org",
+          "url": "https://radiopaedia.org/articles/sarcoidosis"
         },
         {
-          "label": "Fall 3",
+          "label": "DD Silikose",
           "title": "Eggshell-Lymphknotenverkalkungen bei Staubexposition",
-          "text": "Schalenförmige Lymphknotenverkalkungen und Oberlappenbetonung bei beruflicher Quarzstaubexposition.",
-          "answer": "DD Silikose mitdenken"
+          "tags": ["CT", "Verkalkung"],
+          "icon": "🥚",
+          "meta": "Schalenförmige Lymphknotenverkalkungen und Oberlappenbetonung bei beruflicher Quarzstaubexposition.",
+          "credit": "Quelle: Radiopaedia.org",
+          "url": "https://radiopaedia.org/articles/eggshell-calcification"
         }
       ]
     },
@@ -596,25 +606,35 @@ const CONTENT = {
     },
     "cases": {
       "title": "Cases",
-      "lead": "Short cases for active recall of the key patterns.",
+      "lead": "Real cases and reference articles from Radiopaedia.org on the key patterns of pulmonary sarcoidosis.",
+      "openCase": "Open case in Radiopaedia",
       "items": [
         {
-          "label": "Case 1",
+          "label": "Scadding I",
           "title": "Symmetric bihilar and right paratracheal lymphadenopathy",
-          "text": "X-ray or CT shows bilateral hilar nodes plus right paratracheal nodes, but no definite parenchymal disease.",
-          "answer": "Scadding stage I · 1-2-3 sign"
+          "tags": ["X-ray", "1-2-3 sign"],
+          "icon": "🫁",
+          "meta": "X-ray or CT shows bilateral hilar nodes plus right paratracheal nodes, but no definite parenchymal disease.",
+          "credit": "Source: Radiopaedia.org",
+          "url": "https://radiopaedia.org/articles/pulmonary-sarcoidosis"
         },
         {
-          "label": "Case 2",
+          "label": "HRCT pattern",
           "title": "Perilymphatic micronodules along the fissures",
-          "text": "HRCT shows 2–4-mm nodules along fissures, pleura and bronchovascular bundles, predominantly in the upper/middle zones.",
-          "answer": "Typical HRCT pattern of pulmonary sarcoidosis"
+          "tags": ["HRCT", "perilymphatic"],
+          "icon": "🔬",
+          "meta": "HRCT shows 2–4-mm nodules along fissures, pleura and bronchovascular bundles, predominantly in the upper/middle zones.",
+          "credit": "Source: Radiopaedia.org",
+          "url": "https://radiopaedia.org/articles/sarcoidosis"
         },
         {
-          "label": "Case 3",
+          "label": "DD silicosis",
           "title": "Eggshell nodal calcifications with dust exposure",
-          "text": "Eggshell-like nodal calcifications and upper-lobe predominance in a patient with quartz dust exposure.",
-          "answer": "Consider silicosis as differential"
+          "tags": ["CT", "calcification"],
+          "icon": "🥚",
+          "meta": "Eggshell-like nodal calcifications and upper-lobe predominance in a patient with quartz dust exposure.",
+          "credit": "Source: Radiopaedia.org",
+          "url": "https://radiopaedia.org/articles/eggshell-calcification"
         }
       ]
     },
@@ -913,25 +933,35 @@ const CONTENT = {
     },
     "cases": {
       "title": "نمونه کیس‌ها",
-      "lead": "کیس‌های کوتاه برای مرور فعال الگوهای مهم.",
+      "lead": "کیس‌های واقعی و مقالات مرجع از Radiopaedia.org درباره مهم‌ترین الگوهای سارکوئیدوز ریوی.",
+      "openCase": "باز کردن کیس در Radiopaedia",
       "items": [
         {
-          "label": "کیس ۱",
+          "label": "Scadding I",
           "title": "لنفادنوپاتی بی‌هیلار متقارن و پارا تراکئال راست",
-          "text": "رادیوگرافی یا CT لنف‌نودهای دو هیلوم و ناحیه پارا تراکئال راست را نشان می‌دهد، بدون درگیری قطعی پارانشیم.",
-          "answer": "Scadding مرحله I · علامت 1-2-3"
+          "tags": ["رادیوگرافی", "علامت 1-2-3"],
+          "icon": "🫁",
+          "meta": "رادیوگرافی یا CT لنف‌نودهای دو هیلوم و ناحیه پارا تراکئال راست را نشان می‌دهد، بدون درگیری قطعی پارانشیم.",
+          "credit": "منبع: Radiopaedia.org",
+          "url": "https://radiopaedia.org/articles/pulmonary-sarcoidosis"
         },
         {
-          "label": "کیس ۲",
+          "label": "الگوی HRCT",
           "title": "میکروندول‌های پری‌لنفاتیک در امتداد فیشورها",
-          "text": "HRCT ندول‌های ۲–۴ میلی‌متری در امتداد فیشورها، پلور و دسته‌های برونکوواسکولار نشان می‌دهد، بیشتر در نواحی فوقانی و میانی.",
-          "answer": "الگوی HRCT تیپیک سارکوئیدوز ریوی"
+          "tags": ["HRCT", "پری‌لنفاتیک"],
+          "icon": "🔬",
+          "meta": "HRCT ندول‌های ۲–۴ میلی‌متری در امتداد فیشورها، پلور و دسته‌های برونکوواسکولار نشان می‌دهد، بیشتر در نواحی فوقانی و میانی.",
+          "credit": "منبع: Radiopaedia.org",
+          "url": "https://radiopaedia.org/articles/sarcoidosis"
         },
         {
-          "label": "کیس ۳",
+          "label": "DD سیلیکوز",
           "title": "کلسیفیکاسیون Eggshell با سابقه تماس با غبار",
-          "text": "کلسیفیکاسیون شبیه پوسته تخم‌مرغ در لنف‌نودها و درگیری لوب فوقانی در فرد با تماس شغلی با غبار کوارتز.",
-          "answer": "DD سیلیکوز را در نظر بگیر"
+          "tags": ["CT", "کلسیفیکاسیون"],
+          "icon": "🥚",
+          "meta": "کلسیفیکاسیون شبیه پوسته تخم‌مرغ در لنف‌نودها و درگیری لوب فوقانی در فرد با تماس شغلی با غبار کوارتز.",
+          "credit": "منبع: Radiopaedia.org",
+          "url": "https://radiopaedia.org/articles/eggshell-calcification"
         }
       ]
     },
@@ -1146,12 +1176,19 @@ export default function SarkoidosePage() {
           <Section id="fallbeispiele" title={copy.cases.title} lead={copy.cases.lead}>
             <div className={styles.caseGrid}>
               {copy.cases.items.map(item => (
-                <div key={item.title} className={styles.caseCard}>
-                  <span>{item.label}</span>
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
-                  <strong>{item.answer}</strong>
-                </div>
+                <a key={item.url} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}>
+                  <div className={styles.caseImage} aria-hidden="true">{item.icon}</div>
+                  <div className={styles.caseBody}>
+                    <div className={styles.caseLabelRow}>
+                      <span className={styles.caseLabel}>{item.label}</span>
+                      {item.tags?.map(tag => <span key={tag} className={styles.caseLabel}>{tag}</span>)}
+                    </div>
+                    <h3>{item.title}</h3>
+                    <p>{item.meta}</p>
+                    <small>{item.credit}</small>
+                    <strong>{copy.cases.openCase}</strong>
+                  </div>
+                </a>
               ))}
             </div>
           </Section>

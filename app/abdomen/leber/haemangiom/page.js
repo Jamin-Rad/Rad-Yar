@@ -725,23 +725,80 @@ const CASE_COPY = {
   de: {
     label: 'Fallbeispiele',
     title: 'Fallbeispiele',
-    lead: 'Dieser Abschnitt ist als Ziel für die automatische Fallbeispiele-Verknüpfung vorbereitet. Konkrete Fälle können hier später ergänzt werden.',
-    placeholderTitle: 'Fallbeispiele werden ergänzt',
-    placeholderText: 'Sobald echte Bildfälle zu Leberhämangiomen vorhanden sind, erscheinen sie hier direkt im Kapitel.',
+    lead: 'Echte Fälle von Radiopaedia.org zum Leberhämangiom – klassisch und atypisch.',
+    openCase: 'Fall in Radiopaedia öffnen',
+    cases: [
+      {
+        title: 'Klassisches Leberhämangiom mit Irisblendenphänomen',
+        label: 'Hämangiom',
+        tags: ['CT', 'peripher-nodulär'],
+        icon: '🩸',
+        meta: 'Scharf begrenzte hypodense Läsion mit diskontinuierlicher peripherer Kontrastmittelaufnahme und langsamer zentripetaler Auffüllung in der Spätphase.',
+        credit: 'Quelle: Radiopaedia.org',
+        url: 'https://radiopaedia.org/articles/hepatic-haemangioma',
+      },
+      {
+        title: 'Atypisches (Riesen-)Hämangiom mit inhomogenem T2-Signal',
+        label: 'Atypisches Hämangiom',
+        tags: ['MRT', 'Light-bulb sign'],
+        icon: '🧲',
+        meta: 'Große Läsion mit inhomogenem, weniger strahlendem T2-Signal durch zentrale Fibrosierung – cave: kann eine maligne Raumforderung imitieren.',
+        credit: 'Quelle: Radiopaedia.org',
+        url: 'https://radiopaedia.org/articles/giant-hepatic-haemangioma',
+      },
+    ],
   },
   en: {
     label: 'Cases',
     title: 'Cases',
-    lead: 'This section is prepared as the target for automatic case links. Concrete cases can be added here later.',
-    placeholderTitle: 'Cases will be added',
-    placeholderText: 'As soon as real imaging cases for liver haemangiomas are available, they will appear directly in this chapter.',
+    lead: 'Real cases from Radiopaedia.org on liver haemangioma – classic and atypical.',
+    openCase: 'Open case in Radiopaedia',
+    cases: [
+      {
+        title: 'Classic liver haemangioma with iris-diaphragm phenomenon',
+        label: 'Haemangioma',
+        tags: ['CT', 'peripheral nodular'],
+        icon: '🩸',
+        meta: 'Well-defined hypodense lesion with discontinuous peripheral enhancement and slow centripetal fill-in on delayed phase.',
+        credit: 'Source: Radiopaedia.org',
+        url: 'https://radiopaedia.org/articles/hepatic-haemangioma',
+      },
+      {
+        title: 'Atypical (giant) haemangioma with heterogeneous T2 signal',
+        label: 'Atypical haemangioma',
+        tags: ['MRI', 'light-bulb sign'],
+        icon: '🧲',
+        meta: 'Large lesion with heterogeneous, less bright T2 signal due to central fibrosis – caution: can mimic a malignant mass.',
+        credit: 'Source: Radiopaedia.org',
+        url: 'https://radiopaedia.org/articles/giant-hepatic-haemangioma',
+      },
+    ],
   },
   fa: {
     label: 'نمونه کیس‌ها',
     title: 'نمونه کیس‌ها',
-    lead: 'این بخش به عنوان مقصد لینک خودکار Fallbeispiele آماده شده است. کیس‌های واقعی بعداً همین‌جا اضافه می‌شوند.',
-    placeholderTitle: 'کیس‌ها بعداً اضافه می‌شوند',
-    placeholderText: 'به محض آماده شدن کیس‌های تصویری واقعی برای همانژیوم کبد، همین‌جا داخل فصل نمایش داده می‌شوند.',
+    lead: 'کیس‌های واقعی از Radiopaedia.org درباره همانژیوم کبدی - تیپیک و آتیپیک.',
+    openCase: 'باز کردن کیس در Radiopaedia',
+    cases: [
+      {
+        title: 'همانژیوم تیپیک کبد با پدیده Iris diaphragm',
+        label: 'همانژیوم',
+        tags: ['CT', 'ندولار محیطی'],
+        icon: '🩸',
+        meta: 'ضایعه هیپودنس خوش‌حد با enhancement محیطی ناپیوسته و پرشدگی آهسته مرکزگرا در فاز تأخیری.',
+        credit: 'منبع: Radiopaedia.org',
+        url: 'https://radiopaedia.org/articles/hepatic-haemangioma',
+      },
+      {
+        title: 'همانژیوم آتیپیک (غول‌پیکر) با سیگنال T2 ناهمگون',
+        label: 'همانژیوم آتیپیک',
+        tags: ['MRI', 'Light-bulb sign'],
+        icon: '🧲',
+        meta: 'ضایعه بزرگ با سیگنال T2 ناهمگون و کم‌درخشش به دلیل فیبروز مرکزی - احتیاط: می‌تواند یک توده بدخیم را تقلید کند.',
+        credit: 'منبع: Radiopaedia.org',
+        url: 'https://radiopaedia.org/articles/giant-hepatic-haemangioma',
+      },
+    ],
   },
 }
 
@@ -950,12 +1007,22 @@ export default function LeberHaemangiomPage() {
 
 
           <Section id="fallbeispiele" title={caseCopy.title} lead={caseCopy.lead}>
-            <div className={styles.casePlaceholder}>
-              <span>🧪</span>
-              <div>
-                <h3>{caseCopy.placeholderTitle}</h3>
-                <p>{caseCopy.placeholderText}</p>
-              </div>
+            <div className={styles.caseGrid}>
+              {caseCopy.cases.map(item => (
+                <a key={item.url} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}>
+                  <div className={styles.caseImage} aria-hidden="true">{item.icon}</div>
+                  <div className={styles.caseBody}>
+                    <div className={styles.caseLabelRow}>
+                      <span className={styles.caseLabel}>{item.label}</span>
+                      {item.tags?.map(tag => <span key={tag} className={styles.caseLabel}>{tag}</span>)}
+                    </div>
+                    <h3>{item.title}</h3>
+                    <p>{item.meta}</p>
+                    <small>{item.credit}</small>
+                    <strong>{caseCopy.openCase}</strong>
+                  </div>
+                </a>
+              ))}
             </div>
           </Section>
 

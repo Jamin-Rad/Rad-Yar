@@ -323,23 +323,80 @@ const CASE_COPY = {
   de: {
     label: 'Fallbeispiele',
     title: 'Fallbeispiele',
-    lead: 'Dieser Abschnitt ist als Ziel für die automatische Fallbeispiele-Verknüpfung vorbereitet. Konkrete Fälle können hier später ergänzt werden.',
-    placeholderTitle: 'Fallbeispiele werden ergänzt',
-    placeholderText: 'Sobald echte Bildfälle zur FNH vorhanden sind, erscheinen sie hier direkt im Kapitel.',
+    lead: 'Echte Fälle von Radiopaedia.org zur fokal nodulären Hyperplasie (FNH) und ihrer wichtigsten Differenzialdiagnose.',
+    openCase: 'Fall in Radiopaedia öffnen',
+    cases: [
+      {
+        title: 'Klassische FNH mit zentraler Narbe',
+        label: 'FNH',
+        tags: ['MRT', 'zentrale Narbe'],
+        icon: '⭐',
+        meta: 'Homogen arteriell hyperintense Läsion mit hyperintenser zentraler Narbe in T2 und verzögertem Enhancement der Narbe in der Spätphase.',
+        credit: 'Quelle: Radiopaedia.org',
+        url: 'https://radiopaedia.org/articles/focal-nodular-hyperplasia',
+      },
+      {
+        title: 'Differenzialdiagnose: hepatozelluläres Adenom',
+        label: 'DD: Adenom',
+        tags: ['MRT', 'Differenzialdiagnose'],
+        icon: '🔬',
+        meta: 'Im Gegensatz zur FNH häufig Washout in der Spätphase, keine zentrale Narbe und ggf. intratumorale Einblutung – wichtige Abgrenzung bei oraler Kontrazeption.',
+        credit: 'Quelle: Radiopaedia.org',
+        url: 'https://radiopaedia.org/articles/hepatocellular-adenoma',
+      },
+    ],
   },
   en: {
     label: 'Cases',
     title: 'Cases',
-    lead: 'This section is prepared as the target for automatic case links. Concrete cases can be added here later.',
-    placeholderTitle: 'Cases will be added',
-    placeholderText: 'As soon as real imaging cases for FNH are available, they will appear directly in this chapter.',
+    lead: 'Real cases from Radiopaedia.org on focal nodular hyperplasia (FNH) and its key differential diagnosis.',
+    openCase: 'Open case in Radiopaedia',
+    cases: [
+      {
+        title: 'Classic FNH with central scar',
+        label: 'FNH',
+        tags: ['MRI', 'central scar'],
+        icon: '⭐',
+        meta: 'Homogeneous arterial hyperenhancement with a T2-hyperintense central scar showing delayed enhancement on the late phase.',
+        credit: 'Source: Radiopaedia.org',
+        url: 'https://radiopaedia.org/articles/focal-nodular-hyperplasia',
+      },
+      {
+        title: 'Differential diagnosis: hepatocellular adenoma',
+        label: 'DD: adenoma',
+        tags: ['MRI', 'differential diagnosis'],
+        icon: '🔬',
+        meta: 'Unlike FNH, adenomas often show washout on delayed phase, no central scar and may bleed – an important distinction in patients on oral contraceptives.',
+        credit: 'Source: Radiopaedia.org',
+        url: 'https://radiopaedia.org/articles/hepatocellular-adenoma',
+      },
+    ],
   },
   fa: {
     label: 'نمونه کیس‌ها',
     title: 'نمونه کیس‌ها',
-    lead: 'این بخش به عنوان مقصد لینک خودکار Fallbeispiele آماده شده است. کیس‌های واقعی بعداً همین‌جا اضافه می‌شوند.',
-    placeholderTitle: 'کیس‌ها بعداً اضافه می‌شوند',
-    placeholderText: 'به محض آماده شدن کیس‌های تصویری واقعی برای FNH، همین‌جا داخل فصل نمایش داده می‌شوند.',
+    lead: 'کیس‌های واقعی از Radiopaedia.org درباره هیپرپلازی ندولار فوکال (FNH) و مهم‌ترین تشخیص افتراقی آن.',
+    openCase: 'باز کردن کیس در Radiopaedia',
+    cases: [
+      {
+        title: 'FNH تیپیک با اسکار مرکزی',
+        label: 'FNH',
+        tags: ['MRI', 'اسکار مرکزی'],
+        icon: '⭐',
+        meta: 'enhancement شریانی هموژن همراه با اسکار مرکزی هایپراینتنس در T2 و enhancement تأخیری اسکار در فاز دیر.',
+        credit: 'منبع: Radiopaedia.org',
+        url: 'https://radiopaedia.org/articles/focal-nodular-hyperplasia',
+      },
+      {
+        title: 'تشخیص افتراقی: آدنوم هپاتوسلولار',
+        label: 'افتراق: آدنوم',
+        tags: ['MRI', 'تشخیص افتراقی'],
+        icon: '🔬',
+        meta: 'برخلاف FNH، آدنوم اغلب washout در فاز تأخیری دارد، اسکار مرکزی ندارد و ممکن است خونریزی داشته باشد - افتراق مهم در مصرف قرص‌های ضدبارداری.',
+        credit: 'منبع: Radiopaedia.org',
+        url: 'https://radiopaedia.org/articles/hepatocellular-adenoma',
+      },
+    ],
   },
 }
 
@@ -548,12 +605,22 @@ export default function LeberFnhPage() {
 
 
           <Section id="fallbeispiele" title={caseCopy.title} lead={caseCopy.lead}>
-            <div className={styles.casePlaceholder}>
-              <span>🧪</span>
-              <div>
-                <h3>{caseCopy.placeholderTitle}</h3>
-                <p>{caseCopy.placeholderText}</p>
-              </div>
+            <div className={styles.caseGrid}>
+              {caseCopy.cases.map(item => (
+                <a key={item.url} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}>
+                  <div className={styles.caseImage} aria-hidden="true">{item.icon}</div>
+                  <div className={styles.caseBody}>
+                    <div className={styles.caseLabelRow}>
+                      <span className={styles.caseLabel}>{item.label}</span>
+                      {item.tags?.map(tag => <span key={tag} className={styles.caseLabel}>{tag}</span>)}
+                    </div>
+                    <h3>{item.title}</h3>
+                    <p>{item.meta}</p>
+                    <small>{item.credit}</small>
+                    <strong>{caseCopy.openCase}</strong>
+                  </div>
+                </a>
+              ))}
             </div>
           </Section>
 

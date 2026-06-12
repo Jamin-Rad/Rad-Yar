@@ -15,9 +15,9 @@ const COLORS = [
 ]
 
 const FALL_MODAL = {
-  de: { title: 'Fallbeispiele', msg: 'Wähle eine Körperregion. Interaktive Fälle werden nach und nach ergänzt.', close: 'Schließen', soon: 'in Arbeit' },
-  en: { title: 'Case Studies', msg: 'Choose a body region. Interactive cases will be added step by step.', close: 'Close', soon: 'in progress' },
-  fa: { title: 'موارد بالینی', msg: 'یک ناحیه بدن انتخاب کن. موارد بالینی به‌تدریج اضافه می‌شوند.', close: 'بستن', soon: 'در حال ساخت' },
+  de: { title: 'Fallprüfung', msg: 'Wähle eine Körperregion. Interaktive Fälle werden nach und nach ergänzt.', close: 'Schließen', soon: 'in Arbeit' },
+  en: { title: 'Case Exam', msg: 'Choose a body region. Interactive cases will be added step by step.', close: 'Close', soon: 'in progress' },
+  fa: { title: 'آزمون بالینی', msg: 'یک ناحیه بدن انتخاب کن. موارد بالینی به‌تدریج اضافه می‌شوند.', close: 'بستن', soon: 'در حال ساخت' },
 }
 
 const FALL_REGIONS = [
@@ -42,8 +42,8 @@ const LATEST_COPY = {
     learn: 'Lernen',
     mcq: 'MCQ',
     flashcards: 'Flashcards',
-    cases: 'Fallbeispiele',
-    noCases: 'Noch keine Fallbeispiele verknüpft.',
+    cases: 'Fallprüfung',
+    noCases: 'Noch keine Fallprüfung verknüpft.',
   },
   en: {
     label: 'New on RadYar',
@@ -53,8 +53,8 @@ const LATEST_COPY = {
     learn: 'Learn',
     mcq: 'MCQ',
     flashcards: 'Flashcards',
-    cases: 'Cases',
-    noCases: 'No case links yet.',
+    cases: 'Case Exam',
+    noCases: 'No case exam links yet.',
   },
   fa: {
     label: 'تازه در RadYar',
@@ -64,8 +64,8 @@ const LATEST_COPY = {
     learn: 'آموزش',
     mcq: 'MCQ',
     flashcards: 'فلش‌کارت',
-    cases: 'نمونه کیس‌ها',
-    noCases: 'هنوز لینک Fallbeispiele وجود ندارد.',
+    cases: 'آزمون بالینی',
+    noCases: 'هنوز لینک آزمون بالینی وجود ندارد.',
   },
 }
 

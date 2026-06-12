@@ -315,18 +315,25 @@ const CASE_COPY = {
     label: 'Fallbeispiele',
     title: 'Fallbeispiele',
     lead: 'Echte Fälle von Radiopaedia.org zur hepatischen AVM und zur HHT-Leberbeteiligung.',
+    openCase: 'Fall in Radiopaedia öffnen',
     cases: [
       {
         title: 'Hepatische AVM bei 85-jähriger Patientin',
-        text: 'Zuvor als Hämangiom fehlgedeutete Läsion mit nodulärer peripherer Anreicherung in der portalvenösen Phase.',
-        tag: 'Radiopaedia · CT',
-        href: 'https://radiopaedia.org/cases/hepatic-arteriovenous-malformation-1',
+        label: 'AVM',
+        tags: ['CT', 'Early venous filling'],
+        icon: '🩸',
+        meta: 'Zuvor als Hämangiom fehlgedeutete Läsion mit nodulärer peripherer Anreicherung in der portalvenösen Phase.',
+        credit: 'Quelle: Radiopaedia.org',
+        url: 'https://radiopaedia.org/cases/hepatic-arteriovenous-malformation-1',
       },
       {
         title: 'Hereditäre hämorrhagische Teleangiektasie (HHT) der Leber',
-        text: 'Diffuses arterielles Hyperenhancement mit unzähligen Teleangiektasien und massiv dilatierter, geschlängelter A. hepatica.',
-        tag: 'Radiopaedia · CT',
-        href: 'https://radiopaedia.org/cases/hereditary-haemorrhagic-telangiectasia-liver-1',
+        label: 'HHT',
+        tags: ['CT', 'Diffuse Teleangiektasien'],
+        icon: '🧬',
+        meta: 'Diffuses arterielles Hyperenhancement mit unzähligen Teleangiektasien und massiv dilatierter, geschlängelter A. hepatica.',
+        credit: 'Quelle: Radiopaedia.org',
+        url: 'https://radiopaedia.org/cases/hereditary-haemorrhagic-telangiectasia-liver-1',
       },
     ],
   },
@@ -334,18 +341,25 @@ const CASE_COPY = {
     label: 'Cases',
     title: 'Cases',
     lead: 'Real cases from Radiopaedia.org on hepatic AVM and HHT liver involvement.',
+    openCase: 'Open case in Radiopaedia',
     cases: [
       {
         title: 'Hepatic AVM in an 85-year-old patient',
-        text: 'A lesion previously misdiagnosed as a haemangioma, with nodular peripheral enhancement in the portal venous phase.',
-        tag: 'Radiopaedia · CT',
-        href: 'https://radiopaedia.org/cases/hepatic-arteriovenous-malformation-1',
+        label: 'AVM',
+        tags: ['CT', 'Early venous filling'],
+        icon: '🩸',
+        meta: 'A lesion previously misdiagnosed as a haemangioma, with nodular peripheral enhancement in the portal venous phase.',
+        credit: 'Source: Radiopaedia.org',
+        url: 'https://radiopaedia.org/cases/hepatic-arteriovenous-malformation-1',
       },
       {
         title: 'Hereditary haemorrhagic telangiectasia (HHT) of the liver',
-        text: 'Diffuse arterial hyperenhancement with innumerable telangiectasias and a markedly dilated, tortuous hepatic artery.',
-        tag: 'Radiopaedia · CT',
-        href: 'https://radiopaedia.org/cases/hereditary-haemorrhagic-telangiectasia-liver-1',
+        label: 'HHT',
+        tags: ['CT', 'Diffuse telangiectasias'],
+        icon: '🧬',
+        meta: 'Diffuse arterial hyperenhancement with innumerable telangiectasias and a markedly dilated, tortuous hepatic artery.',
+        credit: 'Source: Radiopaedia.org',
+        url: 'https://radiopaedia.org/cases/hereditary-haemorrhagic-telangiectasia-liver-1',
       },
     ],
   },
@@ -353,18 +367,25 @@ const CASE_COPY = {
     label: 'نمونه کیس‌ها',
     title: 'نمونه کیس‌ها',
     lead: 'کیس‌های واقعی از Radiopaedia.org درباره AVM کبدی و درگیری کبدی HHT.',
+    openCase: 'باز کردن کیس در Radiopaedia',
     cases: [
       {
         title: 'AVM کبدی در بیمار خانم ۸۵ ساله',
-        text: 'ضایعه‌ای که قبلاً به‌اشتباه همانژیوم تشخیص داده شده بود، با enhancement ندولار محیطی در فاز پورتال.',
-        tag: 'Radiopaedia · CT',
-        href: 'https://radiopaedia.org/cases/hepatic-arteriovenous-malformation-1',
+        label: 'AVM',
+        tags: ['CT', 'Early venous filling'],
+        icon: '🩸',
+        meta: 'ضایعه‌ای که قبلاً به‌اشتباه همانژیوم تشخیص داده شده بود، با enhancement ندولار محیطی در فاز پورتال.',
+        credit: 'منبع: Radiopaedia.org',
+        url: 'https://radiopaedia.org/cases/hepatic-arteriovenous-malformation-1',
       },
       {
         title: 'تلانژکتازی هموراژیک ارثی (HHT) کبد',
-        text: 'enhancement شریانی منتشر با تلانژکتازی‌های بی‌شمار و شریان کبدی به‌شدت متسع و پیچ‌خورده.',
-        tag: 'Radiopaedia · CT',
-        href: 'https://radiopaedia.org/cases/hereditary-haemorrhagic-telangiectasia-liver-1',
+        label: 'HHT',
+        tags: ['CT', 'تلانژکتازی منتشر'],
+        icon: '🧬',
+        meta: 'enhancement شریانی منتشر با تلانژکتازی‌های بی‌شمار و شریان کبدی به‌شدت متسع و پیچ‌خورده.',
+        credit: 'منبع: Radiopaedia.org',
+        url: 'https://radiopaedia.org/cases/hereditary-haemorrhagic-telangiectasia-liver-1',
       },
     ],
   },
@@ -575,14 +596,19 @@ export default function LeberAvmPage() {
 
 
           <Section id="fallbeispiele" title={caseCopy.title} lead={caseCopy.lead}>
-            <div className={styles.caseRealGrid}>
+            <div className={styles.caseGrid}>
               {caseCopy.cases.map(item => (
-                <a className={styles.caseRealCard} key={item.href} href={item.href} target="_blank" rel="noopener noreferrer">
-                  <span className={styles.caseRealIcon}>🧪</span>
-                  <div>
+                <a key={item.url} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}>
+                  <div className={styles.caseImage} aria-hidden="true">{item.icon}</div>
+                  <div className={styles.caseBody}>
+                    <div className={styles.caseLabelRow}>
+                      <span className={styles.caseLabel}>{item.label}</span>
+                      {item.tags?.map(tag => <span key={tag} className={styles.caseLabel}>{tag}</span>)}
+                    </div>
                     <h3>{item.title}</h3>
-                    <p>{item.text}</p>
-                    <span className={styles.caseRealTag}>{item.tag} ↗</span>
+                    <p>{item.meta}</p>
+                    <small>{item.credit}</small>
+                    <strong>{caseCopy.openCase}</strong>
                   </div>
                 </a>
               ))}
