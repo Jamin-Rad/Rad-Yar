@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { useAuth, useUser } from '@clerk/nextjs'
+import { useUser } from '@clerk/nextjs'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { getThemaTitle } from '@/data/curriculum'
 import { getDueFlashcardCount, hasMcqToday, getRandomRecentTopic } from '@/utils/recommendations'
@@ -20,6 +20,7 @@ const T = {
     lessonRead: 'Gut gemacht! Ich habe deinen Fortschritt gespeichert. Wir greifen dieses Thema später wieder auf, damit es besser im Gedächtnis bleibt.',
     close: 'Schließen',
     toggle: 'Assistent öffnen',
+    assistant: 'RadYar Lernassistent',
   },
   en: {
     morning: 'Good morning', afternoon: 'Good afternoon', evening: 'Good evening',
@@ -33,6 +34,7 @@ const T = {
     lessonRead: "Well done! I've saved your progress. We'll revisit this topic later to help it stay in your memory.",
     close: 'Close',
     toggle: 'Open assistant',
+    assistant: 'RadYar learning assistant',
   },
   fa: {
     morning: 'صبح بخیر', afternoon: 'ظهر بخیر', evening: 'عصر بخیر',
@@ -46,6 +48,7 @@ const T = {
     lessonRead: 'آفرین! پیشرفتت را ذخیره کردم. بعداً دوباره به این موضوع برمی‌گردیم تا بهتر در ذهنت بماند.',
     close: 'بستن',
     toggle: 'باز کردن دستیار',
+    assistant: 'دستیار یادگیری رادیار',
   },
 }
 
@@ -58,10 +61,21 @@ function greetingKey() {
 
 const withLang = (href, lang) => (lang === 'de' || !href ? href : `${href}?lang=${lang}`)
 
+function AssistantIcon({ className }) {
+  return (
+    <svg className={className} viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <path d="M11 16.5A8.5 8.5 0 0 1 19.5 8h9a8.5 8.5 0 0 1 8.5 8.5v12a8.5 8.5 0 0 1-8.5 8.5H22l-7.5 5v-6.2A8.5 8.5 0 0 1 11 29V16.5Z" stroke="currentColor" strokeWidth="2.8" strokeLinejoin="round"/>
+      <path d="M24 8V4M20.5 4h7" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round"/>
+      <circle cx="19" cy="20" r="2.3" fill="currentColor"/>
+      <circle cx="29" cy="20" r="2.3" fill="currentColor"/>
+      <path d="M17.5 28h3l2-4 3 7 2-3h3" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
+
 export default function RobotAssistant() {
   const { lang } = useLanguage()
-  const { userId } = useAuth()
-  const { user } = useUser()
+  const { user, isLoaded, isSignedIn } = useUser()
   const t = T[lang] || T.de
   const isRTL = lang === 'fa'
 
@@ -71,91 +85,93 @@ export default function RobotAssistant() {
   const [reaction, setReaction] = useState('')
 
   useEffect(() => {
+    if (!isLoaded || !isSignedIn || !user?.id) return
+
     setMounted(true)
     setInfo({
-      due: getDueFlashcardCount(userId),
+      due: getDueFlashcardCount(user.id),
       mcqDone: hasMcqToday(),
       newTopic: getRandomRecentTopic(30),
     })
 
-    if (!sessionStorage.getItem('radyar_assistant_seen')) {
+    const seenKey = `radyar_assistant_seen:${user.id}`
+    if (!sessionStorage.getItem(seenKey)) {
       const timer = setTimeout(() => {
         setOpen(true)
-        sessionStorage.setItem('radyar_assistant_seen', '1')
+        sessionStorage.setItem(seenKey, '1')
       }, 1000)
       return () => clearTimeout(timer)
     }
-  }, [userId])
+  }, [isLoaded, isSignedIn, user?.id])
 
   useEffect(() => {
+    if (!isSignedIn) return
+
     const showLessonReaction = () => {
       setReaction(t.lessonRead)
       setOpen(true)
     }
     window.addEventListener('radyar:lesson-read', showLessonReaction)
     return () => window.removeEventListener('radyar:lesson-read', showLessonReaction)
-  }, [t.lessonRead])
+  }, [isSignedIn, t.lessonRead])
 
-  if (!mounted) return null
+  if (!mounted || !isLoaded || !isSignedIn) return null
 
   const greeting = `${t[greetingKey()]}${user?.firstName ? `, ${user.firstName}` : ''}!`
-  const hasReco = info && (info.due > 0 || !info.mcqDone || info.newTopic)
+  let recommendation = null
+  if (info?.due > 0) {
+    recommendation = { icon: '🔁', text: t.due(info.due), href: '/flashcards', cta: t.dueCta }
+  } else if (info && !info.mcqDone) {
+    recommendation = { icon: '📝', text: t.mcqTodo, href: '/ueben', cta: t.mcqCta }
+  } else if (info?.newTopic) {
+    recommendation = {
+      icon: '✨',
+      text: `${t.newTopicLabel}: ${getThemaTitle(info.newTopic.thema, lang)}`,
+      href: withLang(info.newTopic.thema.link, lang),
+      cta: t.openCta,
+    }
+  }
 
   return (
     <div className={styles.wrap} dir={isRTL ? 'rtl' : 'ltr'}>
       {open && (
-        <div className={styles.bubble}>
+        <section className={styles.bubble} id="radyar-assistant-message" aria-label={t.assistant}>
           <button className={styles.closeBtn} onClick={() => {
             setOpen(false)
             setReaction('')
           }} aria-label={t.close}>×</button>
           {reaction ? (
             <div className={styles.reaction}>
-              <span className={styles.reactionRobot}>🤖</span>
+              <span className={styles.assistantAvatar}><AssistantIcon className={styles.avatarIcon} /></span>
               <p>{reaction}</p>
             </div>
-          ) : <>
-          <p className={styles.greeting}>{greeting}</p>
-          {hasReco ? (
-            <ul className={styles.recoList}>
-              {info.due > 0 && (
-                <li>
-                  <span className={styles.recoIcon}>🔁</span>
-                  <span className={styles.recoText}>
-                    {t.due(info.due)}
-                    <Link href="/flashcards" className={styles.recoLink}>{t.dueCta}</Link>
-                  </span>
-                </li>
-              )}
-              {!info.mcqDone && (
-                <li>
-                  <span className={styles.recoIcon}>📝</span>
-                  <span className={styles.recoText}>
-                    {t.mcqTodo}
-                    <Link href="/ueben" className={styles.recoLink}>{t.mcqCta}</Link>
-                  </span>
-                </li>
-              )}
-              {info.newTopic && (
-                <li>
-                  <span className={styles.recoIcon}>✨</span>
-                  <span className={styles.recoText}>
-                    {t.newTopicLabel}: {getThemaTitle(info.newTopic.thema, lang)}
-                    <Link href={withLang(info.newTopic.thema.link, lang)} className={styles.recoLink}>{t.openCta}</Link>
-                  </span>
-                </li>
-              )}
-            </ul>
           ) : (
-            <p className={styles.allDone}>{t.allDone}</p>
-          )}</>}
-        </div>
+            <>
+              <div className={styles.bubbleHeader}>
+                <span className={styles.assistantAvatar}><AssistantIcon className={styles.avatarIcon} /></span>
+                <div>
+                  <span className={styles.assistantName}>{t.assistant}</span>
+                  <p className={styles.greeting}>{greeting}</p>
+                </div>
+              </div>
+              {recommendation ? (
+                <div className={styles.recommendation}>
+                  <span className={styles.recoIcon}>{recommendation.icon}</span>
+                  <p>{recommendation.text}</p>
+                  <Link href={recommendation.href} className={styles.recoLink}>{recommendation.cta}</Link>
+                </div>
+              ) : (
+                <p className={styles.allDone}>{t.allDone}</p>
+              )}
+            </>
+          )}
+        </section>
       )}
       <button className={styles.fab} onClick={() => {
         if (open) setReaction('')
         setOpen(o => !o)
-      }} aria-label={t.toggle}>
-        🤖
+      }} aria-label={open ? t.close : t.toggle} aria-expanded={open} aria-controls="radyar-assistant-message" title={t.assistant}>
+        <AssistantIcon className={styles.fabIcon} />
       </button>
     </div>
   )
