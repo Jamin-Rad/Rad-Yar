@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useUser } from '@clerk/nextjs'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { getThemaTitle } from '@/data/curriculum'
@@ -61,16 +62,8 @@ function greetingKey() {
 
 const withLang = (href, lang) => (lang === 'de' || !href ? href : `${href}?lang=${lang}`)
 
-function AssistantIcon({ className }) {
-  return (
-    <svg className={className} viewBox="0 0 48 48" fill="none" aria-hidden="true">
-      <path d="M11 16.5A8.5 8.5 0 0 1 19.5 8h9a8.5 8.5 0 0 1 8.5 8.5v12a8.5 8.5 0 0 1-8.5 8.5H22l-7.5 5v-6.2A8.5 8.5 0 0 1 11 29V16.5Z" stroke="currentColor" strokeWidth="2.8" strokeLinejoin="round"/>
-      <path d="M24 8V4M20.5 4h7" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round"/>
-      <circle cx="19" cy="20" r="2.3" fill="currentColor"/>
-      <circle cx="29" cy="20" r="2.3" fill="currentColor"/>
-      <path d="M17.5 28h3l2-4 3 7 2-3h3" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  )
+function AssistantImage({ className, size }) {
+  return <Image className={className} src="/roboter.png" alt="" width={size} height={size} aria-hidden="true" />
 }
 
 export default function RobotAssistant() {
@@ -142,13 +135,13 @@ export default function RobotAssistant() {
           }} aria-label={t.close}>×</button>
           {reaction ? (
             <div className={styles.reaction}>
-              <span className={styles.assistantAvatar}><AssistantIcon className={styles.avatarIcon} /></span>
+              <span className={styles.assistantAvatar}><AssistantImage className={styles.avatarImage} size={38} /></span>
               <p>{reaction}</p>
             </div>
           ) : (
             <>
               <div className={styles.bubbleHeader}>
-                <span className={styles.assistantAvatar}><AssistantIcon className={styles.avatarIcon} /></span>
+                <span className={styles.assistantAvatar}><AssistantImage className={styles.avatarImage} size={38} /></span>
                 <div>
                   <span className={styles.assistantName}>{t.assistant}</span>
                   <p className={styles.greeting}>{greeting}</p>
@@ -171,7 +164,7 @@ export default function RobotAssistant() {
         if (open) setReaction('')
         setOpen(o => !o)
       }} aria-label={open ? t.close : t.toggle} aria-expanded={open} aria-controls="radyar-assistant-message" title={t.assistant}>
-        <AssistantIcon className={styles.fabIcon} />
+        <AssistantImage className={styles.fabImage} size={52} />
       </button>
     </div>
   )

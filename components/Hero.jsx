@@ -141,12 +141,12 @@ const ZONES = [
   },
   {
     id: 'Brust',
-    transform: 'translate(337 435) scale(0.88) translate(-337 -435)',
+    transform: 'translate(337 520) scale(0.5) translate(-337 -520)',
     d: 'M293 349 C319 333 354 333 379 350 C398 364 406 392 405 429 C404 470 392 513 366 537 C347 554 320 554 300 539 C276 520 267 482 269 440 C271 398 278 366 293 349 Z',
   },
   {
     id: 'Brust',
-    transform: 'translate(505 435) scale(0.88) translate(-505 -435)',
+    transform: 'translate(505 520) scale(0.5) translate(-505 -520)',
     d: 'M549 349 C523 333 488 333 463 350 C444 364 436 392 437 429 C438 470 450 513 476 537 C495 554 522 554 542 539 C566 520 575 482 573 440 C571 398 564 366 549 349 Z',
   },
   {
