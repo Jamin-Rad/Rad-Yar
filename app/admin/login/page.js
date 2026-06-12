@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import styles from './login.module.css'
@@ -50,6 +51,7 @@ export default function AdminLoginPage() {
         <button type="submit" className={styles.button} disabled={loading || !password}>
           {loading ? 'Prüfe…' : 'Anmelden'}
         </button>
+        <Link href="/" className={styles.homeLink}>← Zur Hauptseite</Link>
       </form>
     </div>
   )

@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
 import styles from './admin.module.css'
@@ -135,9 +136,12 @@ export default function AdminDashboard() {
           </div>
           <span className={styles.adminBadge}>Admin</span>
         </div>
-        <button className={styles.signOutBtn} onClick={handleLogout}>
-          Abmelden
-        </button>
+        <div className={styles.headerActions}>
+          <Link className={styles.homeBtn} href="/">← Zur Hauptseite</Link>
+          <button className={styles.signOutBtn} onClick={handleLogout}>
+            Abmelden
+          </button>
+        </div>
       </div>
 
       <div className={styles.content}>

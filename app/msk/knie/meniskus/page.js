@@ -11,9 +11,6 @@ const styles = new Proxy({}, {
 
 const MENISKUS_STYLES = `.page {
   min-height: 100vh;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
   padding-top: 64px;
   background:
     radial-gradient(circle at top left, rgba(249, 115, 22, 0.12), transparent 32rem),
@@ -4468,10 +4465,6 @@ export default function MeniskusPage() {
       data-meniskus-layout={meniskusLayout}
       dir={isRTL ? 'rtl' : 'ltr'}
       lang={lang}
-      onCopy={(event) => event.preventDefault()}
-      onCut={(event) => event.preventDefault()}
-      onContextMenu={(event) => event.preventDefault()}
-      onDragStart={(event) => event.preventDefault()}
     >
       <style>{MENISKUS_STYLES}</style>
       <header className={styles.header}>

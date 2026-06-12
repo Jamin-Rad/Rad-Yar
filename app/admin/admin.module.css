@@ -20,6 +20,12 @@
   gap: 14px;
 }
 
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .logo {
   display: flex;
   align-items: baseline;
@@ -56,7 +62,11 @@
   letter-spacing: 0.05em;
 }
 
+.homeBtn,
 .signOutBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 8px 18px;
   border-radius: 8px;
   border: 1px solid rgba(255,255,255,0.2);
@@ -64,13 +74,21 @@
   color: #94a3b8;
   font-size: 13px;
   font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
   cursor: pointer;
   transition: all 0.18s;
 }
 
+.homeBtn:hover,
 .signOutBtn:hover {
   background: rgba(255,255,255,0.08);
   color: #fff;
+}
+
+.homeBtn {
+  border-color: rgba(249,115,22,0.45);
+  color: #fdba74;
 }
 
 /* ── CONTENT ── */
@@ -341,4 +359,22 @@
   color: #b91c1c;
   font-size: 13px;
   margin-bottom: 16px;
+}
+
+@media (max-width: 620px) {
+  .header {
+    align-items: flex-start;
+    padding: 14px 16px;
+  }
+
+  .headerActions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .homeBtn,
+  .signOutBtn {
+    padding: 7px 11px;
+    font-size: 11px;
+  }
 }
