@@ -40,6 +40,7 @@ export default function SignUpPage() {
   const [password, setPassword] = useState('')
   const [spec,     setSpec]     = useState('')
   const [level,    setLevel]    = useState('')
+  const [agreed,   setAgreed]   = useState(false)
   const [code,     setCode]     = useState('')
   const [error,    setError]    = useState('')
   const [loading,  setLoading]  = useState(false)
@@ -50,7 +51,7 @@ export default function SignUpPage() {
 
   async function handleRegister(e) {
     e.preventDefault()
-    if (!isLoaded) return
+    if (!isLoaded || !agreed) return
     setLoading(true); setError('')
     try {
       await signUp.create({
@@ -174,8 +175,20 @@ export default function SignUpPage() {
                 </select>
               </div>
 
+              <label className={styles.checkboxRow}>
+                <input type="checkbox" checked={agreed}
+                  onChange={e => setAgreed(e.target.checked)} required />
+                <span>
+                  I agree to the{' '}
+                  <Link href="/ueber-radyar" target="_blank" className={styles.footerLink}>
+                    Terms &amp; Legal Information
+                  </Link>{' '}
+                  of RadYar.
+                </span>
+              </label>
+
               <button className={styles.submitBtn} type="submit"
-                disabled={loading || !email || !password || !name || !spec || !level}>
+                disabled={loading || !email || !password || !name || !spec || !level || !agreed}>
                 {loading ? 'Please wait…' : 'Continue'}
               </button>
             </form>

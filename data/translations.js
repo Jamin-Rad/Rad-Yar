@@ -20,6 +20,7 @@ export const translations = {
     section2Sub: 'Wähle ein Fachgebiet und starte direkt mit Lernmodul, Fällen und MCQs.',
     fachStatus: 'In Vorbereitung',
     footerCopy: '© 2026 RadYar · Your Guide in Radiology Education',
+    footerLegalLink: 'Über RadYar & Rechtliches',
     pillars: [
       {
         icon: '🫁',
@@ -83,6 +84,7 @@ export const translations = {
     section2Sub: 'Choose a specialty and start directly with learning modules, cases and MCQs.',
     fachStatus: 'Coming Soon',
     footerCopy: '© 2026 RadYar · Your Guide in Radiology Education',
+    footerLegalLink: 'About RadYar & Legal',
     pillars: [
       {
         icon: '🫁',
@@ -146,6 +148,7 @@ export const translations = {
     section2Sub: 'یک تخصص را انتخاب کنید و مستقیماً با ماژول یادگیری، موارد بالینی و MCQ شروع کنید.',
     fachStatus: 'در حال آماده‌سازی',
     footerCopy: '© ۲۰۲۶ RadYar · راهنمای شما در آموزش رادیولوژی',
+    footerLegalLink: 'درباره رادیار و موارد قانونی',
     pillars: [
       {
         icon: '🫁',
