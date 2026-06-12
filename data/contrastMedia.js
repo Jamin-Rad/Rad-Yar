@@ -55,6 +55,68 @@ export const CONTRAST_TOPICS = [
   },
 ]
 
+export const CONTRAST_GROUPS = [
+  {
+    id: 'jodhaltige',
+    readId: 'kontrastmittel-jodhaltige',
+    flashcardId: 'kontrastmittel-jodhaltige',
+    icon: '🧪',
+    title: { de: 'Jodhaltige Kontrastmittel', en: 'Iodinated contrast media', fa: 'مواد حاجب یددار' },
+    subtitle: {
+      de: 'Typen, Eigenschaften, Reaktionen und gastrointestinale Anwendung',
+      en: 'Types, properties, reactions and gastrointestinal use',
+      fa: 'انواع، ویژگی‌ها، واکنش‌ها و کاربرد گوارشی',
+    },
+    topicIds: ['km-jod-typen', 'km-jod-reaktionen', 'km-gastrointestinal'],
+  },
+  {
+    id: 'mrt',
+    readId: 'kontrastmittel-mrt',
+    flashcardId: 'kontrastmittel-mrt',
+    icon: '🧲',
+    title: { de: 'MRT-Kontrastmittel', en: 'MRI contrast media', fa: 'مواد حاجب MRI' },
+    subtitle: {
+      de: 'Gadolinium-Grundlagen, Retention und nephrogene systemische Fibrose',
+      en: 'Gadolinium fundamentals, retention and nephrogenic systemic fibrosis',
+      fa: 'مبانی گادولینیوم، احتباس و فیبروز سیستمیک نفروژنیک',
+    },
+    topicIds: ['km-gadolinium', 'km-gadolinium-retention-nsf'],
+  },
+  {
+    id: 'ultraschall',
+    readId: 'kontrastmittel-ultraschall',
+    flashcardId: 'kontrastmittel-ultraschall',
+    icon: '🫧',
+    title: { de: 'Ultraschallkontrastmittel', en: 'Ultrasound contrast media', fa: 'مواد حاجب سونوگرافی' },
+    subtitle: {
+      de: 'Mikrobläschen, Signalverhalten, Elimination und klinische Anwendung',
+      en: 'Microbubbles, signal behaviour, elimination and clinical use',
+      fa: 'میکروبابل‌ها، رفتار سیگنال، دفع و کاربرد بالینی',
+    },
+    topicIds: ['km-ultraschall'],
+  },
+  {
+    id: 'besondere-patientengruppen',
+    readId: 'kontrastmittel-besondere-patientengruppen',
+    flashcardId: 'kontrastmittel-besondere-patientengruppen',
+    icon: '🛡️',
+    title: {
+      de: 'Besondere Patientengruppen bei KM-Gabe',
+      en: 'Special patient groups receiving contrast media',
+      fa: 'گروه‌های ویژه بیماران هنگام دریافت ماده حاجب',
+    },
+    subtitle: {
+      de: 'Niereninsuffizienz, Schilddrüsenerkrankungen, Schwangerschaft und Stillzeit',
+      en: 'Renal impairment, thyroid disease, pregnancy and breastfeeding',
+      fa: 'نارسایی کلیه، بیماری تیروئید، بارداری و شیردهی',
+    },
+    topicIds: ['km-niereninsuffizienz', 'km-schilddruese', 'km-schwangerschaft-stillzeit'],
+  },
+]
+
+export const getContrastGroup = groupId => CONTRAST_GROUPS.find(group => group.id === groupId)
+export const getContrastGroupForTopic = topicId => CONTRAST_GROUPS.find(group => group.topicIds.includes(topicId))
+
 export const CONTRAST_LESSON = {
   de: {
     title: 'Kontrastmittel',

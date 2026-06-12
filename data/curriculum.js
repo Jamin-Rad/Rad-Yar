@@ -7,7 +7,7 @@
 // thema.sub: echte Varianten/Unterformen eines Themas.
 // "ready"-Themen haben link/mcqLink/flashcardLink/fallLink + updatedAt.
 
-import { CONTRAST_TOPICS } from './contrastMedia'
+import { CONTRAST_TOPICS, getContrastGroupForTopic } from './contrastMedia'
 
 export const CURRICULUM = [
   {
@@ -1690,9 +1690,7 @@ export const CURRICULUM = [
               ? ['MRT']
               : ['CT', 'MRT'],
           diff: 2,
-          link: `/technik/kontrastmittel#${topic.id}`,
-          mcqLink: `/ueben/quiz?fach=technik&n=10&themen=${topic.id}`,
-          flashcardLink: `/flashcards/${topic.id}`,
+          link: `/technik/kontrastmittel/${getContrastGroupForTopic(topic.id)?.id}#${topic.id}`,
           updatedAt: '2026-06-12',
         })),
       },
