@@ -82,9 +82,7 @@ const FACH_DATA = {
     available: true,
     desc: { de:'Physikalische Grundlagen · Kontrastmittel · Protokolle', en:'Physics · Contrast agents · Protocols', fa:'فیزیک · ماده حاجب · پروتکل‌ها' },
     links: [
-      { label:{ de:'Kontrastmittel', en:'Contrast Agents', fa:'ماده حاجب' }, href:'/technik/kontrastmittel', ready:true },
-      { label:{ de:'MRT-Physik',     en:'MRI Physics',     fa:'فیزیک MRI'  }, href:'/technik/mrt',            ready:false },
-      { label:{ de:'CT-Technik',     en:'CT Technique',    fa:'تکنیک CT'   }, href:'/technik/ct',             ready:false },
+      { label:{ de:'Inhaltsverzeichnis', en:'Table of Contents', fa:'فهرست مطالب' }, href:'/lernen/technik', ready:true },
     ],
   },
 }

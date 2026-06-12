@@ -83,10 +83,7 @@ const FACH_DATA = [
     description: 'Physikalische Grundlagen · Kontrastmittel · Protokolle',
     topics: ['Kontrastmittel', 'MRT-Physik', 'CT-Technik', 'Strahlenschutz'],
     links: [
-      { label: 'Kontrastmittel', href: '/technik/kontrastmittel', ready: true  },
-      { label: 'MRT-Physik',     href: '/technik/mrt',            ready: false },
-      { label: 'CT-Technik',     href: '/technik/ct',             ready: false },
-      { label: 'Strahlenschutz', href: '/technik/strahlenschutz', ready: false },
+      { label: 'Inhaltsverzeichnis', href: '/lernen/technik', ready: true },
     ],
   },
 ]

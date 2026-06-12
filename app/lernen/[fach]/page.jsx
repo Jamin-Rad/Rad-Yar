@@ -279,6 +279,31 @@ function SpineChapterIcon({ id, className }) {
   return <svg {...common}>{icons[id] || icons['ws-anatomie']}</svg>
 }
 
+function TechnikChapterIcon({ id, className }) {
+  const common = {
+    viewBox: '0 0 48 48',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    className,
+    'aria-hidden': true,
+  }
+  const icons = {
+    'technik-strahlenbiologie': <><circle cx="24" cy="24" r="5"/><path d="M24 19c-7-12-16-8-15 0 1 5 7 7 10 7M29 24c14 0 15 10 8 14-5 3-10-2-12-7M22 29c-7 12 1 18 8 13 4-3 2-10-1-13"/><circle cx="24" cy="24" r="2" fill="currentColor" stroke="none"/></>,
+    'technik-strahlenschutz': <><path d="M24 5 39 11v11c0 10-6 17-15 21C15 39 9 32 9 22V11l15-6Z"/><path d="M24 14v18M16 23h16"/></>,
+    'technik-roentgen': <><path d="M8 9h14l5 8-5 8H8V9Z"/><path d="M27 17h13M31 12l9 5-9 5"/><rect x="9" y="31" width="30" height="10" rx="2"/></>,
+    'technik-ct': <><circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="10"/><rect x="19" y="20" width="17" height="8" rx="4"/><path d="M7 24h7M34 24h7"/></>,
+    'technik-mrt': <><path d="M10 39V15c0-6 4-10 9-10s9 4 9 10v14c0 4 2 7 6 7s6-3 6-7V9"/><path d="M16 39V17c0-3 1-5 3-5s3 2 3 5v13"/><path d="M34 9h10"/></>,
+    'technik-sonographie': <><path d="M9 15c6-7 14-9 21-4l-7 13c-4-2-8-1-11 2L9 15Z"/><path d="M23 24c5 2 9 7 11 14M27 21c7 3 12 9 14 17"/><circle cx="14" cy="35" r="5"/></>,
+    'technik-fluoroskopie': <><rect x="7" y="7" width="27" height="23" rx="3"/><circle cx="20.5" cy="18.5" r="7"/><path d="M34 18h7v23H17v-6M12 41h10"/></>,
+    'technik-nuklearmedizin': <><ellipse cx="24" cy="24" rx="18" ry="7"/><ellipse cx="24" cy="24" rx="18" ry="7" transform="rotate(60 24 24)"/><ellipse cx="24" cy="24" rx="18" ry="7" transform="rotate(120 24 24)"/><circle cx="24" cy="24" r="3" fill="currentColor" stroke="none"/></>,
+    'technik-kontrastmittel': <><path d="m29 6 8 8-20 20-8 2 2-8L29 6Z"/><path d="m25 10 8 8M13 27l8 8"/><path d="M31 30c4 5 7 8 7 12a6 6 0 0 1-12 0c0-4 2-7 5-12Z"/></>,
+  }
+  return <svg {...common}>{icons[id] || icons['technik-strahlenbiologie']}</svg>
+}
+
 function ChapterIcon({ fachId, kapitel, className }) {
   if (fachId === 'msk') return <MskChapterIcon id={kapitel.id} className={className} />
   if (fachId === 'thorax') return <ThoraxChapterIcon id={kapitel.id} className={className} />
@@ -288,6 +313,7 @@ function ChapterIcon({ fachId, kapitel, className }) {
   if (fachId === 'becken-f' || fachId === 'becken-m') return <PelvisChapterIcon id={kapitel.id} className={className} />
   if (fachId === 'hals') return <NeckChapterIcon id={kapitel.id} className={className} />
   if (fachId === 'wirbelsaeule') return <SpineChapterIcon id={kapitel.id} className={className} />
+  if (fachId === 'technik') return <TechnikChapterIcon id={kapitel.id} className={className} />
   return <span className={className}>{kapitel.icon}</span>
 }
 
@@ -385,7 +411,11 @@ export default function LernenFachPage() {
 
   useEffect(() => {
     setMounted(true)
-    if (fach) setSelectedKapitel(null)
+    if (fach) {
+      setSelectedKapitel(null)
+      const hasAvailableTopics = fach.kapitel.some(kapitel => kapitel.themen.some(isAvailable))
+      setFilter(hasAvailableTopics ? 'available' : 'all')
+    }
     try {
       setReadArticles(JSON.parse(localStorage.getItem('radyar_read_articles') || '{}'))
     } catch {}
