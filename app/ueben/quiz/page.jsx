@@ -2,8 +2,10 @@
 import { useState, useEffect, useMemo, useRef, Suspense } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
+import { useUser } from '@clerk/nextjs'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { getQuestions, getQuestionsByIds } from '@/data/questions'
+import { isSubscriptionActive, FREE_ITEM_LIMIT } from '@/utils/subscription'
 import styles from './page.module.css'
 
 const localDateKey = () => {
@@ -52,6 +54,8 @@ const UI = {
     veryGood: 'Sehr gut! 🎯',
     good: 'Gut gemacht 📖',
     practice: 'Weiter üben 💪',
+    freeLimitNote: `Kostenlose Version: max. ${FREE_ITEM_LIMIT} Fragen pro Durchgang.`,
+    upgradeLink: 'Mit Abo unbegrenzt →',
   },
   en: {
     back: '← Back',
@@ -78,6 +82,8 @@ const UI = {
     veryGood: 'Very good! 🎯',
     good: 'Well done 📖',
     practice: 'Keep practicing 💪',
+    freeLimitNote: `Free version: max. ${FREE_ITEM_LIMIT} questions per session.`,
+    upgradeLink: 'Unlimited with a subscription →',
   },
   fa: {
     back: '← بازگشت',
@@ -104,6 +110,8 @@ const UI = {
     veryGood: 'خیلی خوب! 🎯',
     good: 'خوب بود 📖',
     practice: 'ادامه تمرین 💪',
+    freeLimitNote: `نسخه رایگان: حداکثر ${FREE_ITEM_LIMIT} سؤال در هر دور.`,
+    upgradeLink: 'با اشتراک نامحدود ←',
   },
 }
 
@@ -132,6 +140,8 @@ function formatTime(seconds) {
 function QuizContent() {
   const { lang } = useLanguage()
   const searchParams = useSearchParams()
+  const { user } = useUser()
+  const subscriptionActive = isSubscriptionActive(user)
   const ui = UI[lang] || UI.de
   const names = FACH_NAMES[lang] || FACH_NAMES.de
 
@@ -147,10 +157,13 @@ function QuizContent() {
   const themenIds = themenParam.split(',').filter(Boolean)
   const questionIds = fragenParam.split(',').filter(Boolean)
 
+  // Kostenlose Konten: max. FREE_ITEM_LIMIT Fragen pro Durchgang
+  const effectiveN = subscriptionActive ? nParam : Math.min(nParam, FREE_ITEM_LIMIT)
+
   // Load questions (randomized, capped to n)
   const questions = useMemo(
-    () => questionIds.length ? getQuestionsByIds(questionIds, lang) : getQuestions(themenIds, lang, nParam),
-    [themenParam, fragenParam, lang, nParam]
+    () => questionIds.length ? getQuestionsByIds(questionIds, lang).slice(0, effectiveN) : getQuestions(themenIds, lang, effectiveN),
+    [themenParam, fragenParam, lang, effectiveN]
   )
   const total = questions.length
 
@@ -284,6 +297,12 @@ function QuizContent() {
           <Link href={backHref} className={styles.back}>{ui.back}</Link>
           <span className={styles.topFach}>{fachLabel}</span>
         </div>
+        {!subscriptionActive && (
+          <div className={styles.freeLimitBanner}>
+            <span>{ui.freeLimitNote}</span>
+            <Link href="/profil">{ui.upgradeLink}</Link>
+          </div>
+        )}
         <div className={styles.resultWrap}>
           {/* Score card */}
           <div className={styles.scoreCard} style={{ borderColor: color }}>
@@ -355,6 +374,12 @@ function QuizContent() {
           <span className={styles.progressLabel}>{current+1}/{total}</span>
         </div>
       </div>
+      {!subscriptionActive && (
+        <div className={styles.freeLimitBanner}>
+          <span>{ui.freeLimitNote}</span>
+          <Link href="/profil">{ui.upgradeLink}</Link>
+        </div>
+      )}
 
       <div className={styles.quizLayout}>
         {/* Main card */}

@@ -10,6 +10,7 @@ import { loadSettings, saveSettings } from '@/utils/settingsStorage'
 import { CURRICULUM, getFachTitle, getKapitelTitle, getThemaTitle } from '@/data/curriculum'
 import { MCQ_TOPIC_GROUPS } from '@/data/questions'
 import { getActivitySummary } from '@/utils/activityStorage'
+import { getSubscription, isSubscriptionActive } from '@/utils/subscription'
 import styles from './page.module.css'
 
 const localDateKey = () => {
@@ -43,7 +44,7 @@ const T = {
     manageAccount: 'Konto verwalten', contactTitle: 'Problem melden',
     contactSub: 'Beschreibe kurz, was nicht funktioniert. Deine Nachricht wird direkt per E-Mail an RadYar gesendet.',
     problemType: 'Worum geht es?',
-    problemTypes: ['Technisches Problem', 'Fehler im Lerninhalt', 'Problem mit meinem Konto', 'Idee oder Verbesserung', 'Sonstiges'],
+    problemTypes: ['Technisches Problem', 'Fehler im Lerninhalt', 'Problem mit meinem Konto', 'Abonnement aktivieren', 'Idee oder Verbesserung', 'Sonstiges'],
     subject: 'Betreff', message: 'Nachricht', subjectPlaceholder: 'Kurze Zusammenfassung',
     messagePlaceholder: 'Was ist passiert? Auf welcher Seite? Was hast du erwartet?',
     send: 'Nachricht senden', sending: 'Wird gesendet…',
@@ -69,6 +70,11 @@ const T = {
     clerkData: 'Clerk-Kontodaten', clerkDataHint: 'Anmeldedaten und verbundene Konten aus Clerk.',
     primaryEmail: 'Primäre E-Mail', username: 'Benutzername', loginOrigin: 'Anmeldung über',
     lastSignIn: 'Letzte Anmeldung', noValue: 'Nicht angegeben',
+    subscriptionTitle: 'Abonnement', subscriptionActiveUntil: 'Aktiv bis',
+    subscriptionInactive: 'Kein aktives Abonnement',
+    subscriptionPromoBanner: '🎉 Die ersten 1000 aktivierten Abonnements erhalten 5 Monate kostenfrei!',
+    subscriptionManualHint: 'Die Aktivierung erfolgt derzeit manuell. Kontaktiere uns über das Formular unten, um dein Abonnement freischalten zu lassen.',
+    subscriptionActivateCta: 'Abonnement anfragen', subscriptionPromoBadge: 'Promo',
   },
   en: {
     overview: 'Overview', settings: 'Settings', profileLabel: 'Your profile',
@@ -94,7 +100,7 @@ const T = {
     manageAccount: 'Manage account', contactTitle: 'Report a problem',
     contactSub: 'Tell us briefly what is not working. Your message is sent directly to RadYar by email.',
     problemType: 'What is this about?',
-    problemTypes: ['Technical problem', 'Learning content error', 'Account problem', 'Idea or improvement', 'Other'],
+    problemTypes: ['Technical problem', 'Learning content error', 'Account problem', 'Activate subscription', 'Idea or improvement', 'Other'],
     subject: 'Subject', message: 'Message', subjectPlaceholder: 'Short summary',
     messagePlaceholder: 'What happened? On which page? What did you expect?',
     send: 'Send message', sending: 'Sending…', sent: 'Thank you. Your message has been sent.',
@@ -118,6 +124,11 @@ const T = {
     clerkData: 'Clerk account data', clerkDataHint: 'Sign-in data and connected accounts from Clerk.',
     primaryEmail: 'Primary email', username: 'Username', loginOrigin: 'Signed in with',
     lastSignIn: 'Last sign-in', noValue: 'Not provided',
+    subscriptionTitle: 'Subscription', subscriptionActiveUntil: 'Active until',
+    subscriptionInactive: 'No active subscription',
+    subscriptionPromoBanner: '🎉 The first 1000 activated subscriptions get 5 months free!',
+    subscriptionManualHint: 'Activation is currently handled manually. Contact us using the form below to get your subscription activated.',
+    subscriptionActivateCta: 'Request subscription', subscriptionPromoBadge: 'Promo',
   },
   fa: {
     overview: 'نمای کلی', settings: 'تنظیمات', profileLabel: 'پروفایل شما',
@@ -141,7 +152,7 @@ const T = {
     manageAccount: 'مدیریت حساب', contactTitle: 'گزارش مشکل',
     contactSub: 'مشکل را کوتاه توضیح دهید. پیام مستقیماً با ایمیل ارسال می‌شود.',
     problemType: 'موضوع چیست؟',
-    problemTypes: ['مشکل فنی', 'خطا در محتوای آموزشی', 'مشکل حساب', 'ایده یا پیشنهاد', 'سایر'],
+    problemTypes: ['مشکل فنی', 'خطا در محتوای آموزشی', 'مشکل حساب', 'فعال‌سازی اشتراک', 'ایده یا پیشنهاد', 'سایر'],
     subject: 'عنوان', message: 'پیام', subjectPlaceholder: 'خلاصه کوتاه',
     messagePlaceholder: 'چه اتفاقی افتاد؟ در کدام صفحه؟ چه انتظاری داشتید؟',
     send: 'ارسال پیام', sending: 'در حال ارسال…', sent: 'متشکریم. پیام شما ارسال شد.',
@@ -166,6 +177,11 @@ const T = {
     clerkData: 'اطلاعات حساب Clerk', clerkDataHint: 'اطلاعات ورود و حساب‌های متصل از Clerk.',
     primaryEmail: 'ایمیل اصلی', username: 'نام کاربری', loginOrigin: 'ورود از طریق',
     lastSignIn: 'آخرین ورود', noValue: 'ثبت نشده',
+    subscriptionTitle: 'اشتراک', subscriptionActiveUntil: 'فعال تا',
+    subscriptionInactive: 'اشتراک فعالی وجود ندارد',
+    subscriptionPromoBanner: '🎉 اولین ۱۰۰۰ اشتراک فعال‌شده، ۵ ماه رایگان دریافت می‌کنند!',
+    subscriptionManualHint: 'فعال‌سازی در حال حاضر به‌صورت دستی انجام می‌شود. از طریق فرم زیر با ما در تماس باشید تا اشتراک شما فعال شود.',
+    subscriptionActivateCta: 'درخواست اشتراک', subscriptionPromoBadge: 'پروموشن',
   },
 }
 
@@ -305,6 +321,8 @@ export default function ProfilPage() {
     </div>
   )
 
+  const subscription = getSubscription(user)
+  const subscriptionActive = isSubscriptionActive(user)
   const records = Object.values(leitner)
   const dueToday = records.filter(isDue).length
   const mastered = records.filter(record => record.status === 'mastered').length
@@ -387,6 +405,11 @@ export default function ProfilPage() {
   function selectView(nextView) {
     setView(nextView)
     window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  function scrollToSubscriptionContact() {
+    setContact(prev => ({ ...prev, type: t.problemTypes[3] }))
+    document.getElementById('problem-type')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
   }
 
   return (
@@ -601,6 +624,34 @@ export default function ProfilPage() {
                       <button type="button" className={styles.saveBtn} onClick={handleSave} disabled={saveState === 'saving'}>{saveState === 'saving' ? t.saving : t.save}</button>
                     </div>
                   </div>
+                </section>
+
+                <section className={styles.card}>
+                  <div className={styles.sectionHeading}><div><h2>{t.subscriptionTitle}</h2></div></div>
+                  <div className={styles.settingsRow}>
+                    <div className={styles.settingsText}>
+                      {subscriptionActive ? (
+                        <strong>
+                          {t.subscriptionActiveUntil} {subscription.until ? new Date(subscription.until).toLocaleDateString(lang === 'fa' ? 'fa-IR' : lang === 'en' ? 'en-GB' : 'de-DE') : '—'}
+                          {subscription.promo && <span className={styles.badge} style={{ marginInlineStart: 8 }}>{t.subscriptionPromoBadge}</span>}
+                        </strong>
+                      ) : (
+                        <strong>{t.subscriptionInactive}</strong>
+                      )}
+                      <p>{t.subscriptionManualHint}</p>
+                    </div>
+                    {!subscriptionActive && (
+                      <button type="button" className={styles.outlineBtn} onClick={scrollToSubscriptionContact}>{t.subscriptionActivateCta}</button>
+                    )}
+                  </div>
+                  {!subscriptionActive && (
+                    <>
+                      <div className={styles.settingsDivider} />
+                      <div className={styles.badges}>
+                        <span className={styles.badge}>{t.subscriptionPromoBanner}</span>
+                      </div>
+                    </>
+                  )}
                 </section>
 
                 <section className={styles.card}>

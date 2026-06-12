@@ -1,11 +1,13 @@
 'use client'
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { useUser } from '@clerk/nextjs'
 import Image from 'next/image'
 import { CURRICULUM, getThemaTitle } from '@/data/curriculum'
 import { MCQ_TOPIC_GROUPS, countQuestions, getAvailableQuestionTopicIds } from '@/data/questions'
 import { useLanguage } from '@/providers/LanguageProvider'
+import { isSubscriptionActive, isTechnikKapitelLocked, FREE_TOPIC_LIMIT, FREE_ITEM_LIMIT, TECHNIK_FACH_ID } from '@/utils/subscription'
 import styles from './page.module.css'
 
 const FACH_DISPLAY = {
@@ -29,7 +31,13 @@ const UE = {
         noFach:'Wähle zuerst eine verfügbare Körperregion.', noTopics:'Für diesen Bereich sind noch keine Fragen verfügbar.',
         wholeChapter:'Ganzes Kapitel wählen', chapterSelected:'Ganzes Kapitel ausgewählt',
         random:'Zufällige Auswahl', available:'Fragen verfügbar',
-        timedLabel:'Mit Zeitlimit üben', timedHint:'60 Sekunden pro Frage – die Zeit läuft für den ganzen Durchgang.' },
+        timedLabel:'Mit Zeitlimit üben', timedHint:'60 Sekunden pro Frage – die Zeit läuft für den ganzen Durchgang.',
+        signInGateTitle:'Bitte melde dich an, um MCQs zu üben',
+        signInGateText:'Ohne Anmeldung kannst du MCQs direkt über die Lernseiten nutzen (bis zu 5 Fragen pro Thema). Melde dich kostenlos an, um hier eigene Übungssets zusammenzustellen.',
+        signIn:'Anmelden', signUp:'Registrieren', browseTopics:'Lerninhalte ansehen',
+        topicLimitHint:'Kostenlose Konten können bis zu 2 Themen auswählen. Mit Abo unbegrenzt viele Themen.',
+        lockedHint:'Nur mit Abo verfügbar', anzahlLockedHint:'Kostenlose Konten: max. 5 Fragen pro Durchgang. Mit Abo unbegrenzt.',
+        upgradeLink:'Mehr erfahren' },
   en: { home:'RadYar', crumb:'Practice',
         title:'MCQ Training', sub:'Choose one or more body regions, then topics and number of questions.',
         step1:'Choose body region(s)', step2:'Choose topics', step3:'Number of questions',
@@ -38,7 +46,13 @@ const UE = {
         noFach:'Choose a body region first.', noTopics:'No topics are available for this area yet.',
         wholeChapter:'Select whole chapter', chapterSelected:'Whole chapter selected',
         random:'Random selection', available:'Questions available',
-        timedLabel:'Practice with time limit', timedHint:'60 seconds per question – the timer runs for the whole session.' },
+        timedLabel:'Practice with time limit', timedHint:'60 seconds per question – the timer runs for the whole session.',
+        signInGateTitle:'Please sign in to practice MCQs',
+        signInGateText:'Without an account you can use MCQs directly from the lesson pages (up to 5 questions per topic). Sign in for free to build your own practice sets here.',
+        signIn:'Sign in', signUp:'Sign up', browseTopics:'Browse lessons',
+        topicLimitHint:'Free accounts can select up to 2 topics. With a subscription, unlimited topics.',
+        lockedHint:'Subscription required', anzahlLockedHint:'Free accounts: max. 5 questions per session. Unlimited with a subscription.',
+        upgradeLink:'Learn more' },
   fa: { home:'RadYar', crumb:'تمرین',
         title:'تمرین MCQ', sub:'یک یا چند ناحیه بدن انتخاب کنید، سپس موضوعات و تعداد سؤالات.',
         step1:'انتخاب ناحیه(ها)', step2:'انتخاب موضوعات', step3:'تعداد سؤالات',
@@ -47,7 +61,13 @@ const UE = {
         noFach:'ابتدا یک ناحیه انتخاب کنید.', noTopics:'هنوز موضوعی برای این بخش موجود نیست.',
         wholeChapter:'انتخاب کل فصل', chapterSelected:'کل فصل انتخاب شده',
         random:'انتخاب تصادفی', available:'سؤال موجود است',
-        timedLabel:'تمرین با محدودیت زمانی', timedHint:'۶۰ ثانیه برای هر سؤال — زمان برای کل آزمون اجرا می‌شود.' },
+        timedLabel:'تمرین با محدودیت زمانی', timedHint:'۶۰ ثانیه برای هر سؤال — زمان برای کل آزمون اجرا می‌شود.',
+        signInGateTitle:'برای تمرین MCQ وارد شوید',
+        signInGateText:'بدون ورود می‌توانید از طریق صفحات درسی تا ۵ سؤال در هر موضوع تمرین کنید. برای ساختن مجموعه تمرینی شخصی، رایگان وارد شوید.',
+        signIn:'ورود', signUp:'ثبت‌نام', browseTopics:'مشاهده درس‌ها',
+        topicLimitHint:'حساب‌های رایگان می‌توانند تا ۲ موضوع انتخاب کنند. با اشتراک، بدون محدودیت.',
+        lockedHint:'فقط با اشتراک', anzahlLockedHint:'حساب رایگان: حداکثر ۵ سؤال در هر دور. با اشتراک نامحدود.',
+        upgradeLink:'بیشتر بدانید' },
 }
 
 const ANZAHL_OPTIONS = [5, 10, 25, 50]
@@ -56,6 +76,8 @@ const fachIcon = id => `/fach/${id}.png`
 export default function UebenPage() {
   const { lang } = useLanguage()
   const router = useRouter()
+  const { user, isLoaded, isSignedIn } = useUser()
+  const subscriptionActive = isSubscriptionActive(user)
   const t = UE[lang] || UE.de
   const display = FACH_DISPLAY[lang] || FACH_DISPLAY.de
   const availableTopicIds = useMemo(() => getAvailableQuestionTopicIds(), [])
@@ -101,16 +123,26 @@ export default function UebenPage() {
     }
   }
 
-  const toggleThema = (id) => setSelThemen(prev => { const s = new Set(prev); s.has(id) ? s.delete(id) : s.add(id); return s })
-  const toggleKapitel = (themen) => setSelThemen(prev => {
-    const next = new Set(prev)
-    const ids = themen.map(thema => thema.id)
-    const allSelected = ids.every(id => next.has(id))
-    ids.forEach(id => allSelected ? next.delete(id) : next.add(id))
-    return next
+  const toggleThema = (id) => setSelThemen(prev => {
+    const s = new Set(prev)
+    if (s.has(id)) { s.delete(id); return s }
+    if (!subscriptionActive && s.size >= FREE_TOPIC_LIMIT) return s
+    s.add(id); return s
   })
+  const toggleKapitel = (themen) => {
+    if (!subscriptionActive) return
+    setSelThemen(prev => {
+      const next = new Set(prev)
+      const ids = themen.map(thema => thema.id)
+      const allSelected = ids.every(id => next.has(id))
+      ids.forEach(id => allSelected ? next.delete(id) : next.add(id))
+      return next
+    })
+  }
   const toggleTopicGroup = (id) => setOpenTopicGroups(prev => { const s = new Set(prev); s.has(id) ? s.delete(id) : s.add(id); return s })
-  const selectAll  = () => setSelThemen(new Set(allThemenFromSel.map(t => t.id)))
+  const selectAll  = () => setSelThemen(subscriptionActive
+    ? new Set(allThemenFromSel.map(t => t.id))
+    : new Set(allThemenFromSel.slice(0, FREE_TOPIC_LIMIT).map(t => t.id)))
   const selectNone = () => setSelThemen(prev => {
     const s = new Set(prev)
     allThemenFromSel.forEach(t => s.delete(t.id))
@@ -120,11 +152,17 @@ export default function UebenPage() {
   const availableQuestions = countQuestions([...selThemen])
   const canStart = selFach.size > 0 && selThemen.size > 0 && availableQuestions > 0
 
+  // Kostenlose Konten: max. FREE_ITEM_LIMIT Fragen pro Durchgang
+  useEffect(() => {
+    if (isLoaded && !subscriptionActive && anzahl > FREE_ITEM_LIMIT) setAnzahl(FREE_ITEM_LIMIT)
+  }, [isLoaded, subscriptionActive, anzahl])
+
   const start = () => {
     if (!canStart) return
+    const effectiveAnzahl = subscriptionActive ? anzahl : Math.min(anzahl, FREE_ITEM_LIMIT)
     const params = new URLSearchParams({
       fach: [...selFach].join(','),
-      n: String(Math.min(anzahl, availableQuestions)),
+      n: String(Math.min(effectiveAnzahl, availableQuestions)),
       themen: [...selThemen].join(','),
     })
     if (timed) params.set('timed', '1')
@@ -145,6 +183,22 @@ export default function UebenPage() {
         }
       })
   }, [availableGroups, lang, selFach])
+
+  if (isLoaded && !isSignedIn) {
+    return (
+      <div className={styles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
+        <div className={styles.gateBox}>
+          <h2>{t.signInGateTitle}</h2>
+          <p>{t.signInGateText}</p>
+          <div className={styles.gateActions}>
+            <Link href="/sign-in" className={`${styles.gateBtn} ${styles.gatePrimary}`}>{t.signIn}</Link>
+            <Link href="/sign-up" className={`${styles.gateBtn} ${styles.gateSecondary}`}>{t.signUp}</Link>
+            <Link href="/lernen" className={`${styles.gateBtn} ${styles.gateSecondary}`}>{t.browseTopics}</Link>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className={styles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
@@ -201,6 +255,8 @@ export default function UebenPage() {
               )}
             </div>
 
+            {!subscriptionActive && <div className={styles.limitNote}>{t.topicLimitHint}</div>}
+
             {selFach.size === 0 ? (
               <div className={styles.hint}>{t.noFach}</div>
             ) : groupedBySel.length === 0 ? (
@@ -212,13 +268,16 @@ export default function UebenPage() {
                   const isOpen = openTopicGroups.has(groupKey)
                   const selectedCount = themen.filter(th => selThemen.has(th.id)).length
                   const wholeChapterSelected = themen.length > 0 && selectedCount === themen.length
+                  const kapitelLocked = fachId === TECHNIK_FACH_ID && isTechnikKapitelLocked(kapitelId, user)
+                  const topicLimitReached = !subscriptionActive && selThemen.size >= FREE_TOPIC_LIMIT
                   return (
-                    <div key={groupKey} className={`${styles.kapitelBlock} ${isOpen ? styles.kapitelBlockOpen : ''}`}>
+                    <div key={groupKey} className={`${styles.kapitelBlock} ${isOpen ? styles.kapitelBlockOpen : ''} ${kapitelLocked ? styles.kapitelBlockLocked : ''}`}>
                       <button className={styles.kapitelHeaderBtn} onClick={() => toggleTopicGroup(groupKey)}>
                         <span className={styles.kapitelIconWrap}>
                           <Image src={fachIcon(fachId)} alt={display[fachId] || fachId} width={26} height={26} style={{ objectFit: 'contain' }} />
                         </span>
                         <span className={styles.kapitelTitle}>{display[fachId] || fachId} · {kapitelTitle}</span>
+                        {kapitelLocked && <span className={styles.kapitelLockBadge}>🔒 {t.lockedHint}</span>}
                         <span className={styles.kapitelMeta} style={{ color: fachColor, background: fachColor + '12' }}>
                           {selectedCount}/{themen.length}
                         </span>
@@ -227,8 +286,9 @@ export default function UebenPage() {
                       {isOpen && (
                         <div className={styles.kapitelContent}>
                           <button
-                            className={`${styles.chapterSelect} ${wholeChapterSelected ? styles.chapterSelectActive : ''}`}
+                            className={`${styles.chapterSelect} ${wholeChapterSelected ? styles.chapterSelectActive : ''} ${(!subscriptionActive || kapitelLocked) ? styles.chapterSelectLocked : ''}`}
                             style={wholeChapterSelected ? { borderColor: fachColor, color: fachColor, background: fachColor + '12' } : {}}
+                            disabled={!subscriptionActive || kapitelLocked}
                             onClick={() => toggleKapitel(themen)}
                           >
                             <span className={styles.chapterSelectCheck}>{wholeChapterSelected ? '✓' : ''}</span>
@@ -236,14 +296,19 @@ export default function UebenPage() {
                             <small>{themen.length}</small>
                           </button>
                           <div className={styles.chips}>
-                            {themen.map(th => (
-                              <button key={th.id}
-                                className={`${styles.chip} ${selThemen.has(th.id) ? styles.chipActive : ''} ${th._sub ? styles.chipSub : ''}`}
-                                style={selThemen.has(th.id) ? { borderColor: fachColor, color: fachColor, background: fachColor + '12' } : {}}
-                                onClick={() => toggleThema(th.id)}>
-                                {getThemaTitle(th, lang)}
-                              </button>
-                            ))}
+                            {themen.map(th => {
+                              const selected = selThemen.has(th.id)
+                              const chipLocked = kapitelLocked || (!selected && topicLimitReached)
+                              return (
+                                <button key={th.id}
+                                  className={`${styles.chip} ${selected ? styles.chipActive : ''} ${th._sub ? styles.chipSub : ''} ${chipLocked ? styles.chipLocked : ''}`}
+                                  style={selected ? { borderColor: fachColor, color: fachColor, background: fachColor + '12' } : {}}
+                                  disabled={chipLocked}
+                                  onClick={() => toggleThema(th.id)}>
+                                  {getThemaTitle(th, lang)}
+                                </button>
+                              )
+                            })}
                           </div>
                         </div>
                       )}
@@ -260,14 +325,19 @@ export default function UebenPage() {
               <span className={styles.stepNum}>3</span>{t.step3}
             </div>
             <div className={styles.anzahlRow}>
-              {ANZAHL_OPTIONS.map(n => (
-                <button key={n}
-                  className={`${styles.anzahlBtn} ${anzahl === n ? styles.anzahlBtnActive : ''}`}
-                  onClick={() => setAnzahl(n)}>
-                  {n}
-                </button>
-              ))}
+              {ANZAHL_OPTIONS.map(n => {
+                const locked = !subscriptionActive && n > FREE_ITEM_LIMIT
+                return (
+                  <button key={n}
+                    className={`${styles.anzahlBtn} ${anzahl === n ? styles.anzahlBtnActive : ''} ${locked ? styles.anzahlBtnLocked : ''}`}
+                    disabled={locked}
+                    onClick={() => setAnzahl(n)}>
+                    {locked && <span className={styles.lockIcon}>🔒</span>}{n}
+                  </button>
+                )
+              })}
             </div>
+            {!subscriptionActive && <div className={styles.limitNote}>{t.anzahlLockedHint}</div>}
           </section>
 
           {/* TIMER TOGGLE */}

@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import Link from 'next/link'
-import { useAuth } from '@clerk/nextjs'
+import { useAuth, useUser } from '@clerk/nextjs'
+import { hasFullAccess, FREE_TOPIC_LIMIT, FREE_ITEM_LIMIT } from '@/utils/subscription'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { FLASHCARDS, getFlashcardTopic } from '@/data/flashcards'
 import { getLessonLinkForFlashcard } from '@/data/curriculum'
@@ -39,6 +40,12 @@ const T = {
     emptyTitle: 'Keine Karten in dieser Auswahl.',
     emptySub: 'Wähle eine andere Box oder starte das Thema normal.',
     lessonLinkLabel: 'Lektion lernen',
+    dueLockedTitle: 'Wiederholungsfunktion',
+    dueLockedHint: 'Die „Heute fällig"-Wiederholung ist nur mit Abo verfügbar. Aktiviere ein Abonnement, um alle fälligen Karten zu wiederholen.',
+    topicLockedTitle: 'Themenlimit erreicht',
+    topicLockedHint: `Kostenlose Konten können bis zu ${FREE_TOPIC_LIMIT} Themen gleichzeitig lernen. Mit Abo unbegrenzt viele Themen.`,
+    freeLimitNote: `Kostenlose Version: max. ${FREE_ITEM_LIMIT} Karten pro Durchgang. Mit Abo unbegrenzt.`,
+    upgradeLink: 'Zum Abo →',
   },
   en: {
     back: '← Overview',
@@ -64,6 +71,12 @@ const T = {
     emptyTitle: 'No cards in this selection.',
     emptySub: 'Choose another box or start the topic normally.',
     lessonLinkLabel: 'Study lesson',
+    dueLockedTitle: 'Review feature',
+    dueLockedHint: 'The "due today" review is only available with a subscription. Activate a subscription to review all due cards.',
+    topicLockedTitle: 'Topic limit reached',
+    topicLockedHint: `Free accounts can study up to ${FREE_TOPIC_LIMIT} topics at the same time. With a subscription, unlimited topics.`,
+    freeLimitNote: `Free version: max. ${FREE_ITEM_LIMIT} cards per session. Unlimited with a subscription.`,
+    upgradeLink: 'View subscription →',
   },
   fa: {
     back: '← مرور کلی',
@@ -89,6 +102,12 @@ const T = {
     emptyTitle: 'در این انتخاب کارتی وجود ندارد.',
     emptySub: 'یک جعبه دیگر انتخاب کن یا موضوع را به صورت عادی شروع کن.',
     lessonLinkLabel: 'مطالعه درس',
+    dueLockedTitle: 'قابلیت مرور',
+    dueLockedHint: 'مرور «امروزِ» فقط با اشتراک در دسترس است. برای مرور همه کارت‌های مقرر، یک اشتراک فعال کن.',
+    topicLockedTitle: 'محدودیت موضوعات',
+    topicLockedHint: `حساب‌های رایگان می‌توانند حداکثر ${FREE_TOPIC_LIMIT} موضوع را همزمان مطالعه کنند. با اشتراک، بدون محدودیت.`,
+    freeLimitNote: `نسخه رایگان: حداکثر ${FREE_ITEM_LIMIT} کارت در هر دور. با اشتراک، بدون محدودیت.`,
+    upgradeLink: 'مشاهده اشتراک ←',
   },
 }
 
@@ -147,6 +166,8 @@ function sortCards(cards, state) {
 export default function FlashcardReviewPage({ params, searchParams }) {
   const { lang } = useLanguage()
   const { userId } = useAuth()
+  const { user } = useUser()
+  const fullAccess = hasFullAccess(user)
   const t = T[lang] ?? T.de
   const dir = lang === 'fa' ? 'rtl' : 'ltr'
 
@@ -201,13 +222,27 @@ export default function FlashcardReviewPage({ params, searchParams }) {
       })
     }
 
+    let finalCards = isDueMode || practiceMode ? selectedCards : sortCards(selectedCards, state)
+    if (!fullAccess) finalCards = finalCards.slice(0, FREE_ITEM_LIMIT)
+
     setLeitnerState(state)
-    setCards(isDueMode || practiceMode ? selectedCards : sortCards(selectedCards, state))
+    setCards(finalCards)
     setIndex(0)
     setFlipped(false)
     setDone(false)
     setStats({ correct: 0, wrong: 0 })
-  }, [allCards, userId, practiceMode, boxFilter, isDueMode])
+  }, [allCards, userId, practiceMode, boxFilter, isDueMode, fullAccess])
+
+  const startedTopicIds = useMemo(() => {
+    const set = new Set()
+    Object.keys(leitnerState).forEach(cardId => {
+      const card = FLASHCARDS.find(c => c.id === cardId)
+      if (card) set.add(card.topicId)
+    })
+    return set
+  }, [leitnerState])
+  const topicLocked = !isDueMode && !contrastGroup && !fullAccess && !!userId
+    && !startedTopicIds.has(topicId) && startedTopicIds.size >= FREE_TOPIC_LIMIT
 
   const current = cards[index]
   const record = current ? leitnerState[current.id] : null
@@ -262,6 +297,40 @@ export default function FlashcardReviewPage({ params, searchParams }) {
 
   if (!topic) return null
 
+  const profilHref = lang === 'de' ? '/profil' : `/profil?lang=${lang}`
+
+  if (isDueMode && !fullAccess) return (
+    <div className={styles.page} dir={dir}>
+      <div className={styles.doneWrap}>
+        <div className={styles.doneCard}>
+          <span className={styles.doneEmoji}>🔒</span>
+          <h1 className={styles.doneTitle}>{t.dueLockedTitle}</h1>
+          <p className={styles.doneSub}>{t.dueLockedHint}</p>
+          <div className={styles.lockActions}>
+            <Link href={profilHref} className={styles.backLink}>{t.upgradeLink}</Link>
+            <Link href={backHref} className={styles.secondaryLink}>{t.backLink}</Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+
+  if (topicLocked) return (
+    <div className={styles.page} dir={dir}>
+      <div className={styles.doneWrap}>
+        <div className={styles.doneCard}>
+          <span className={styles.doneEmoji}>🔒</span>
+          <h1 className={styles.doneTitle}>{t.topicLockedTitle}</h1>
+          <p className={styles.doneSub}>{t.topicLockedHint}</p>
+          <div className={styles.lockActions}>
+            <Link href={profilHref} className={styles.backLink}>{t.upgradeLink}</Link>
+            <Link href={backHref} className={styles.secondaryLink}>{t.backLink}</Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+
   if (done) return (
     <div className={styles.page} dir={dir}>
       <div className={styles.doneWrap}>
@@ -301,6 +370,12 @@ export default function FlashcardReviewPage({ params, searchParams }) {
   return (
     <div className={styles.page} dir={dir}>
       <AuthBanner lang={lang} />
+
+      {!fullAccess && (
+        <div className={styles.freeLimitNote}>
+          {t.freeLimitNote} <Link href={profilHref}>{t.upgradeLink}</Link>
+        </div>
+      )}
 
       <header className={styles.topBar}>
         <Link href={backHref} className={styles.backBtn}>{t.back}</Link>

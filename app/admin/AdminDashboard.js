@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
 import styles from './admin.module.css'
+import { PROMO_LIMIT, PROMO_MONTHS, isSubscriptionActive } from '@/utils/subscription'
 
 // Letzte 14 Tage als Registrierungs-Chart
 function RegistrationChart({ users }) {
@@ -54,6 +55,7 @@ export default function AdminDashboard() {
 
   const [users, setUsers] = useState([])
   const [totalCount, setTotalCount] = useState(0)
+  const [promoActivatedCount, setPromoActivatedCount] = useState(0)
   const [loadingUsers, setLoadingUsers] = useState(true)
   const [error, setError] = useState('')
   const [search, setSearch] = useState('')
@@ -68,6 +70,7 @@ export default function AdminDashboard() {
       .then(data => {
         setUsers(data.users ?? [])
         setTotalCount(data.totalCount ?? data.users?.length ?? 0)
+        setPromoActivatedCount(data.promoActivatedCount ?? 0)
         setLoadingUsers(false)
       })
       .catch(() => { setError('Fehler beim Laden der User-Liste.'); setLoadingUsers(false) })
@@ -85,18 +88,33 @@ export default function AdminDashboard() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search])
 
-  async function handleAction(userId, action) {
+  async function handleAction(userId, action, extra) {
     setActionError('')
     setActionLoadingId(userId)
     try {
       const res = await fetch(`/api/admin/users/${userId}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action }),
+        body: JSON.stringify({ action, ...extra }),
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Aktion fehlgeschlagen')
-      setUsers(prev => prev.map(u => u.id === userId ? { ...u, banned: data.banned, locked: data.locked } : u))
+      setUsers(prev => prev.map(u => {
+        if (u.id !== userId) return u
+        const next = { ...u }
+        if ('banned' in data) next.banned = data.banned
+        if ('locked' in data) next.locked = data.locked
+        if ('subscription' in data) next.subscription = data.subscription
+        return next
+      }))
+      if ('subscription' in data) {
+        setPromoActivatedCount(c => {
+          const wasPromo = users.find(u => u.id === userId)?.subscription?.promo
+          const isPromo = !!data.subscription?.promo
+          if (wasPromo === isPromo) return c
+          return isPromo ? c + 1 : Math.max(0, c - 1)
+        })
+      }
     } catch (err) {
       setActionError(err.message)
     } finally {
@@ -173,6 +191,10 @@ export default function AdminDashboard() {
             <div className={styles.statNum}>{users.filter(u => u.banned).length}</div>
             <div className={styles.statLabel}>Gesperrt</div>
           </div>
+          <div className={styles.statCard}>
+            <div className={styles.statNum}>{promoActivatedCount} / {PROMO_LIMIT}</div>
+            <div className={styles.statLabel}>Promo-Aktivierungen</div>
+          </div>
         </div>
 
         {/* Registrierungs-Chart */}
@@ -203,6 +225,7 @@ export default function AdminDashboard() {
                   <th>Status</th>
                   <th>Registriert</th>
                   <th>Letzter Login</th>
+                  <th>Abo</th>
                   <th>Aktionen</th>
                 </tr>
               </thead>
@@ -225,6 +248,18 @@ export default function AdminDashboard() {
                       <td>{u.createdAt ? new Date(u.createdAt).toLocaleDateString('de-DE') : '—'}</td>
                       <td>{u.lastSignInAt ? new Date(u.lastSignInAt).toLocaleDateString('de-DE') : '—'}</td>
                       <td>
+                        {isSubscriptionActive({ publicMetadata: { subscription: u.subscription } }) ? (
+                          <>
+                            <span className={`${styles.statusBadge} ${styles.statusSubscribed}`}>
+                              Aktiv bis {new Date(u.subscription.until).toLocaleDateString('de-DE')}
+                            </span>
+                            {u.subscription?.promo && <span className={styles.promoTag}>Promo</span>}
+                          </>
+                        ) : (
+                          <span className={`${styles.statusBadge} ${styles.statusInactive}`}>—</span>
+                        )}
+                      </td>
+                      <td>
                         {u.isAdmin ? (
                           <span className={styles.muted}>—</span>
                         ) : (
@@ -235,6 +270,27 @@ export default function AdminDashboard() {
                               onClick={() => handleAction(u.id, u.banned ? 'unban' : 'ban')}
                             >
                               {u.banned ? 'Entsperren' : 'Sperren'}
+                            </button>
+                            <button
+                              className={styles.actionBtn}
+                              disabled={actionLoadingId === u.id}
+                              onClick={() => handleAction(u.id, 'setSubscription', { months: 1 })}
+                            >
+                              +1 Monat
+                            </button>
+                            <button
+                              className={styles.actionBtn}
+                              disabled={actionLoadingId === u.id}
+                              onClick={() => handleAction(u.id, 'setSubscription', { months: PROMO_MONTHS, promo: true })}
+                            >
+                              Promo ({PROMO_MONTHS} Monate)
+                            </button>
+                            <button
+                              className={styles.actionBtn}
+                              disabled={actionLoadingId === u.id || !isSubscriptionActive({ publicMetadata: { subscription: u.subscription } })}
+                              onClick={() => handleAction(u.id, 'clearSubscription')}
+                            >
+                              Abo deaktivieren
                             </button>
                             <button
                               className={`${styles.actionBtn} ${styles.actionBtnDanger}`}
@@ -250,7 +306,7 @@ export default function AdminDashboard() {
                   )
                 })}
                 {users.length === 0 && (
-                  <tr><td colSpan={6} style={{textAlign:'center', color:'#94a3b8'}}>Keine Nutzer gefunden</td></tr>
+                  <tr><td colSpan={7} style={{textAlign:'center', color:'#94a3b8'}}>Keine Nutzer gefunden</td></tr>
                 )}
               </tbody>
             </table>

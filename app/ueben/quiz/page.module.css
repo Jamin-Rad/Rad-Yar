@@ -24,6 +24,18 @@
 }
 .timerPillLow { color: #fff; background: #ef4444; animation: timerPulse 1s infinite; }
 
+/* ── FREE LIMIT BANNER ────────────────────────── */
+.freeLimitBanner {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  flex-wrap: wrap; font-size: 12.5px; color: #92400e;
+  background: #fff7ed; border-bottom: 1px solid #fdba74;
+  padding: 8px 5vw;
+}
+.freeLimitBanner a { color: #f97316; font-weight: 700; text-decoration: none; }
+:global(html[data-theme='dark']) .freeLimitBanner {
+  background: rgba(249,115,22,0.10); border-bottom-color: rgba(249,115,22,0.3); color: #fdba74;
+}
+
 @keyframes timerPulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.6; }

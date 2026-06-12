@@ -312,6 +312,27 @@
   color: #c2410c;
 }
 
+.statusSubscribed {
+  background: rgba(37,99,235,0.10);
+  color: #1d4ed8;
+}
+
+.statusInactive {
+  background: rgba(148,163,184,0.15);
+  color: #64748b;
+}
+
+.promoTag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+  background: rgba(217,70,239,0.12);
+  color: #a21caf;
+}
+
 /* ── ROW ACTIONS ── */
 .actions {
   display: flex;

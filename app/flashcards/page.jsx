@@ -2,12 +2,13 @@
 
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
-import { useAuth } from '@clerk/nextjs'
+import { useAuth, useUser } from '@clerk/nextjs'
 import { FLASHCARD_TOPICS, FLASHCARDS, getFlashcardTopic } from '@/data/flashcards'
 import { CURRICULUM, getFachTitle, getKapitelTitle, getThemaTitle } from '@/data/curriculum'
 import { LEITNER_STEPS, isDue, loadLeitnerState, getBoxLabel, getBoxInterval } from '@/utils/leitnerStorage'
 import { loadSettings } from '@/utils/settingsStorage'
 import { useLanguage } from '@/providers/LanguageProvider'
+import { hasFullAccess, isFlashcardTrialActive, FREE_TOPIC_LIMIT } from '@/utils/subscription'
 import styles from './page.module.css'
 
 const TEXT = {
@@ -39,6 +40,14 @@ const TEXT = {
     noDueInBox: 'Keine fälligen Karten heute in dieser Box. ✓',
     learnNow: 'Jetzt lernen →',
     close: 'Schließen',
+    signInGateTitle: 'Bitte melde dich an, um Flashcards zu lernen',
+    signInGateText: 'Ohne Anmeldung kannst du Flashcards direkt über die Lernseiten nutzen (bis zu 5 Karten pro Thema). Melde dich kostenlos an, um dein Leitner-System hier zu verwalten.',
+    signIn: 'Anmelden', signUp: 'Registrieren', browseTopics: 'Lerninhalte ansehen',
+    dueLockedTitle: 'Wiederholungsfunktion', dueLockedHint: 'Die „Heute fällig"-Wiederholung ist nur mit Abo verfügbar.',
+    topicLimitTitle: 'Themenlimit erreicht',
+    topicLimitHint: `Kostenlose Konten können bis zu ${FREE_TOPIC_LIMIT} Themen gleichzeitig lernen. Mit Abo unbegrenzt viele Themen.`,
+    trialHint: 'Du nutzt gerade den kostenlosen Testzeitraum für Flashcards (10 Tage ab Registrierung). Danach gelten die Limits für kostenlose Konten.',
+    upgradeLink: 'Mehr erfahren →',
   },
   en: {
     kicker: 'Leitner system',
@@ -68,6 +77,14 @@ const TEXT = {
     noDueInBox: 'No cards due today in this box. ✓',
     learnNow: 'Learn now →',
     close: 'Close',
+    signInGateTitle: 'Please sign in to study flashcards',
+    signInGateText: 'Without an account you can use flashcards directly from the lesson pages (up to 5 cards per topic). Sign in for free to manage your Leitner system here.',
+    signIn: 'Sign in', signUp: 'Sign up', browseTopics: 'Browse lessons',
+    dueLockedTitle: 'Review feature', dueLockedHint: 'The "due today" review is only available with a subscription.',
+    topicLimitTitle: 'Topic limit reached',
+    topicLimitHint: `Free accounts can study up to ${FREE_TOPIC_LIMIT} topics at the same time. With a subscription, unlimited topics.`,
+    trialHint: 'You are currently using the free flashcard trial (10 days after registration). After that, the free-account limits apply.',
+    upgradeLink: 'Learn more →',
   },
   fa: {
     kicker: 'سیستم لایتنر',
@@ -97,6 +114,14 @@ const TEXT = {
     noDueInBox: 'امروز کارتی در این جعبه برای مرور نیست. ✓',
     learnNow: 'الان یاد بگیر ←',
     close: 'بستن',
+    signInGateTitle: 'برای مطالعه فلش‌کارت‌ها وارد شوید',
+    signInGateText: 'بدون ورود می‌توانید از طریق صفحات درسی تا ۵ کارت در هر موضوع استفاده کنید. برای مدیریت سیستم لایتنر خود، رایگان وارد شوید.',
+    signIn: 'ورود', signUp: 'ثبت‌نام', browseTopics: 'مشاهده درس‌ها',
+    dueLockedTitle: 'قابلیت مرور', dueLockedHint: 'مرور «امروزِ» فقط با اشتراک در دسترس است.',
+    topicLimitTitle: 'محدودیت موضوعات',
+    topicLimitHint: `حساب‌های رایگان می‌توانند حداکثر ${FREE_TOPIC_LIMIT} موضوع را همزمان مطالعه کنند. با اشتراک، بدون محدودیت.`,
+    trialHint: 'شما در حال استفاده از دوره آزمایشی رایگان فلش‌کارت هستید (۱۰ روز پس از ثبت‌نام). پس از آن، محدودیت‌های حساب رایگان اعمال می‌شود.',
+    upgradeLink: 'بیشتر بدانید ←',
   },
 }
 
@@ -138,6 +163,9 @@ function groupFlashcardThemen(themen) {
 export default function FlashcardsPage() {
   const { lang } = useLanguage()
   const { userId } = useAuth()
+  const { user, isLoaded, isSignedIn } = useUser()
+  const fullAccess = hasFullAccess(user)
+  const trialActive = isFlashcardTrialActive(user)
   const t = TEXT[lang] || TEXT.de
   const isRTL = lang === 'fa'
   const withLang = (href) => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
@@ -204,10 +232,39 @@ export default function FlashcardsPage() {
     })
   }, [])
 
+  const startedTopicIds = useMemo(() => {
+    const set = new Set()
+    records.forEach(r => {
+      const card = FLASHCARDS.find(c => c.id === r.id)
+      if (card) set.add(card.topicId)
+    })
+    return set
+  }, [records])
+  const topicLimitReached = isSignedIn && !fullAccess && startedTopicIds.size >= FREE_TOPIC_LIMIT
+  const isTopicLocked = (topicId) => topicLimitReached && !startedTopicIds.has(topicId)
+
   const openFach = (entry) => setPicker({ fach: entry.fach, kapitelList: entry.kapitel, selected: null })
   const openKapitel = (entry) => setPicker(p => ({ ...p, selected: entry }))
   const backToKapitelList = () => setPicker(p => ({ ...p, selected: null }))
   const closePicker = () => setPicker(null)
+
+  if (isLoaded && !isSignedIn) {
+    return (
+      <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
+        <div className={styles.inner}>
+          <div className={styles.gateBox}>
+            <h2>{t.signInGateTitle}</h2>
+            <p>{t.signInGateText}</p>
+            <div className={styles.gateActions}>
+              <Link href={withLang('/sign-in')} className={`${styles.gateBtn} ${styles.gatePrimary}`}>{t.signIn}</Link>
+              <Link href={withLang('/sign-up')} className={`${styles.gateBtn} ${styles.gateSecondary}`}>{t.signUp}</Link>
+              <Link href={withLang('/lernen')} className={`${styles.gateBtn} ${styles.gateSecondary}`}>{t.browseTopics}</Link>
+            </div>
+          </div>
+        </div>
+      </main>
+    )
+  }
 
   return (
     <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
@@ -218,7 +275,7 @@ export default function FlashcardsPage() {
             <h1 className={styles.title}>{t.title}</h1>
             <p className={styles.lead}>{t.lead}</p>
           </div>
-          {dueRemaining > 0 ? (
+          {dueRemaining > 0 && fullAccess ? (
             <Link href={withLang('/flashcards/faellig')} className={`${styles.heroPanel} ${styles.heroPanelClickable}`} title={t.dueClickHint}>
               <div className={styles.heroPanelStat}>
                 <strong>{dueTotal}</strong>
@@ -230,6 +287,19 @@ export default function FlashcardsPage() {
                 <span>{t.dueRemaining}</span>
               </div>
             </Link>
+          ) : dueRemaining > 0 && !fullAccess ? (
+            <div className={`${styles.heroPanel} ${styles.heroPanelLocked}`} title={t.dueLockedHint}>
+              <span className={styles.heroLockBadge}>🔒 {t.dueLockedTitle}</span>
+              <div className={styles.heroPanelStat}>
+                <strong>{dueTotal}</strong>
+                <span>{t.due}</span>
+              </div>
+              <div className={styles.heroPanelDivider} />
+              <div className={styles.heroPanelStat}>
+                <strong>{dueRemaining}</strong>
+                <span>{t.dueRemaining}</span>
+              </div>
+            </div>
           ) : (
             <div className={styles.heroPanel}>
               <div className={styles.heroPanelStat}>
@@ -244,6 +314,13 @@ export default function FlashcardsPage() {
             </div>
           )}
         </section>
+
+        {!fullAccess && (
+          <div className={trialActive ? styles.trialBanner : styles.limitNote}>
+            {trialActive ? t.trialHint : t.topicLimitHint}{' '}
+            <Link href={withLang('/profil')}>{t.upgradeLink}</Link>
+          </div>
+        )}
 
         <section className={styles.section}>
           <div className={styles.sectionHead}>
@@ -387,6 +464,16 @@ export default function FlashcardsPage() {
                           {section.items.map(thema => {
                             const topic = FLASHCARD_TOPICS.find(ft => ft.href === thema.flashcardLink)
                             if (topic) {
+                              if (isTopicLocked(topic.id)) {
+                                return (
+                                  <div key={thema.id} className={`${styles.dueTopicRow} ${styles.dueTopicRowLocked}`} title={t.topicLimitHint}>
+                                    <span className={styles.dueTopicInfo}>
+                                      <strong>{getThemaTitle(thema, lang)}</strong>
+                                      <small>🔒 {t.topicLimitTitle}</small>
+                                    </span>
+                                  </div>
+                                )
+                              }
                               return (
                                 <Link key={thema.id} href={withLang(topic.href)} className={styles.dueTopicRow}>
                                   <span className={styles.dueTopicInfo}>

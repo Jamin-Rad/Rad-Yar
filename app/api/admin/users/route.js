@@ -28,9 +28,12 @@ export async function GET(request) {
       banned: u.banned,
       locked: u.locked,
       isAdmin: hasAdminEmail(u.emailAddresses),
+      subscription: u.publicMetadata?.subscription ?? null,
     }))
 
-    return NextResponse.json({ users: cleaned, totalCount })
+    const promoActivatedCount = cleaned.filter(u => u.subscription?.promo).length
+
+    return NextResponse.json({ users: cleaned, totalCount, promoActivatedCount })
   } catch (err) {
     console.error('Admin API Fehler:', err)
     return NextResponse.json({ error: 'Server-Fehler' }, { status: 500 })
