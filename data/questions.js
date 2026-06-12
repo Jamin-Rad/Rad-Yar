@@ -480,6 +480,146 @@ export const QUESTION_BANK = {
       "explanation": "Hohe ADC-Werte sprechen gegen echte Diffusionsrestriktion. Zusammen mit blutpoolähnlicher zentripetaler Auffüllung stützt dies die Diagnose Hämangiom."
     },
     {
+      "id": "fnh-de-01",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Welche Aussage beschreibt die fokale noduläre Hyperplasie (FNH) am korrektesten?",
+      "options": [
+        { "id": "A", "text": "Benigne, regenerative Raumforderung der Leber" },
+        { "id": "B", "text": "Maligner primärer Lebertumor mit Metastasierungspotenzial" },
+        { "id": "C", "text": "Bakterieller Leberabszess mit zentraler Einschmelzung" },
+        { "id": "D", "text": "Zystische Raumforderung mit serösem Inhalt" }
+      ],
+      "correct": "A",
+      "explanation": "Die FNH ist eine benigne, regenerative Raumforderung der Leber, meist asymptomatisch und ohne Therapiebedarf."
+    },
+    {
+      "id": "fnh-de-02",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Welche Aussage zur Epidemiologie der FNH trifft zu?",
+      "options": [
+        { "id": "A", "text": "Sie ist die häufigste benigne Leberläsion überhaupt" },
+        { "id": "B", "text": "Sie ist nach dem Hämangiom die zweithäufigste benigne Leberläsion und betrifft bevorzugt Frauen" },
+        { "id": "C", "text": "Sie tritt überwiegend bei älteren Männern auf" },
+        { "id": "D", "text": "Sie ist eine Präkanzerose mit hohem Malignisierungsrisiko" }
+      ],
+      "correct": "B",
+      "explanation": "Nach dem Hämangiom ist die FNH die zweithäufigste gutartige Leberläsion, am ehesten bei jungen bis mittelalten Erwachsenen mit deutlicher Prädominanz bei Frauen."
+    },
+    {
+      "id": "fnh-de-03",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Welcher Doppler-Befund ist typisch für eine FNH?",
+      "options": [
+        { "id": "A", "text": "Zentrales Gefäß mit radiären Gefäßästen (Spoke-wheel-Muster)" },
+        { "id": "B", "text": "Komplette Gefäßfreiheit der Läsion" },
+        { "id": "C", "text": "Ausschließlich periphere venöse Gefäße ohne zentrales Gefäß" },
+        { "id": "D", "text": "Arteriovenöse Fistel mit Shuntfluss" }
+      ],
+      "correct": "A",
+      "explanation": "Das Spoke-wheel-Muster – ein zentrales Gefäß mit radiär abgehenden Ästen – ist ein typischer, wenn auch nicht beweisender Doppler-Befund der FNH."
+    },
+    {
+      "id": "fnh-de-04",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Wie verhält sich eine typische FNH früharteriell in der CT?",
+      "options": [
+        { "id": "A", "text": "Periphere noduläre, diskontinuierliche Kontrastmittelaufnahme" },
+        { "id": "B", "text": "Kräftige, homogene Kontrastmittelaufnahme" },
+        { "id": "C", "text": "Keine Kontrastmittelaufnahme in allen Phasen" },
+        { "id": "D", "text": "Ringförmige Kontrastmittelaufnahme mit zentraler Nekrose" }
+      ],
+      "correct": "B",
+      "explanation": "Im Gegensatz zum Hämangiom zeigt die FNH früharteriell eine kräftige, homogene Kontrastmittelaufnahme ohne periphere noduläre Aufnahme."
+    },
+    {
+      "id": "fnh-de-05",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Was ist in der portalvenösen und Spätphase für die FNH charakteristisch?",
+      "options": [
+        { "id": "A", "text": "Deutliches Wash-out mit Hypodensität gegenüber der Leber" },
+        { "id": "B", "text": "Fehlendes Wash-out mit Angleichung an das Leberparenchym" },
+        { "id": "C", "text": "Progressive Größenzunahme der Läsion" },
+        { "id": "D", "text": "Auftreten neuer peripherer Knoten" }
+      ],
+      "correct": "B",
+      "explanation": "Die FNH zeigt kein Wash-out und gleicht sich in der portalvenösen und Spätphase rasch dem Leberparenchym an – ein wichtiges Unterscheidungsmerkmal zu malignen Läsionen."
+    },
+    {
+      "id": "fnh-de-06",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Wie stellt sich die FNH typischerweise in T1 und T2 zum Leberparenchym dar?",
+      "options": [
+        { "id": "A", "text": "Deutlich hypointens in T1 und stark hyperintens in T2 (Light-bulb sign)" },
+        { "id": "B", "text": "Iso- bis leicht hypointens in T1 und iso- bis leicht hyperintens in T2" },
+        { "id": "C", "text": "Hyperintens in T1 und hypointens in T2" },
+        { "id": "D", "text": "Signalfrei in beiden Sequenzen" }
+      ],
+      "correct": "B",
+      "explanation": "Die FNH ist meist iso- bis leicht hypointens in T1 und iso- bis leicht hyperintens in T2 zum Leberparenchym, sodass sie nativ oft nur diskret abgrenzbar ist."
+    },
+    {
+      "id": "fnh-de-07",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Wie verhält sich die zentrale Narbe der FNH in der MRT?",
+      "options": [
+        { "id": "A", "text": "Hyperintens in T2, hypointens in T1, mit verzögerter Kontrastmittelaufnahme in der Spätphase" },
+        { "id": "B", "text": "Hypointens in T2 und T1 ohne jegliche Kontrastmittelaufnahme" },
+        { "id": "C", "text": "Hyperintens in T1 und isointens in T2" },
+        { "id": "D", "text": "Nur in der CT, nie in der MRT darstellbar" }
+      ],
+      "correct": "A",
+      "explanation": "Die zentrale Narbe ist hyperintens in T2, hypointens in T1 und nimmt in der Spätphase verzögert Kontrastmittel auf – charakteristisch in ca. 70 % der Fälle."
+    },
+    {
+      "id": "fnh-de-08",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Welches Merkmal hilft am meisten, eine FNH von einem HCC zu unterscheiden?",
+      "options": [
+        { "id": "A", "text": "Fehlendes Wash-out bei kräftiger arterieller Kontrastmittelaufnahme" },
+        { "id": "B", "text": "Vorhandensein einer echten Tumorkapsel" },
+        { "id": "C", "text": "Erhöhtes Alpha-Fetoprotein" },
+        { "id": "D", "text": "Multifokales Auftreten" }
+      ],
+      "correct": "A",
+      "explanation": "Ein HCC zeigt typischerweise ein Wash-out in der portalvenösen/Spätphase, während die FNH trotz kräftiger arterieller Anreicherung kein Wash-out aufweist."
+    },
+    {
+      "id": "fnh-de-09",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Welche Merkmale können bei einer atypischen FNH auftreten?",
+      "options": [
+        { "id": "A", "text": "Fehlende zentrale Narbe, heterogenes Erscheinungsbild, Pseudokapsel oder intraläsionales Fett" },
+        { "id": "B", "text": "Ausschließlich verkalkte Randstrukturen ohne Kontrastmittelaufnahme" },
+        { "id": "C", "text": "Vollständige zystische Transformation" },
+        { "id": "D", "text": "Diffuse Verteilung über die gesamte Leber" }
+      ],
+      "correct": "A",
+      "explanation": "Atypische FNH (ca. 20 %) kann ohne zentrale Narbe auftreten oder ein heterogenes Erscheinungsbild, eine Pseudokapsel, fehlende Narbenanreicherung oder intraläsionales Fett zeigen, was die Abgrenzung zu anderen Lebertumoren erschwert."
+    },
+    {
+      "id": "fnh-de-10",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Welches Vorgehen ist bei einer typischen, asymptomatischen FNH angezeigt?",
+      "options": [
+        { "id": "A", "text": "In der Regel keine Therapie, da benigne und meist asymptomatisch" },
+        { "id": "B", "text": "Sofortige chirurgische Resektion" },
+        { "id": "C", "text": "Systemische Chemotherapie" },
+        { "id": "D", "text": "Transarterielle Chemoembolisation" }
+      ],
+      "correct": "A",
+      "explanation": "Die FNH ist benigne, meist asymptomatisch und erfordert in der Regel keine Therapie."
+    },
+    {
       "id": "sarkoidose-de-01",
       "tags": [
         "sarkoidose",
@@ -1257,6 +1397,146 @@ export const QUESTION_BANK = {
       "explanation": "High ADC values argue against true diffusion restriction. Together with blood-pool-like centripetal fill-in, this supports haemangioma."
     },
     {
+      "id": "fnh-en-01",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Which statement most accurately describes focal nodular hyperplasia (FNH)?",
+      "options": [
+        { "id": "A", "text": "Benign, regenerative liver lesion" },
+        { "id": "B", "text": "Malignant primary liver tumour with metastatic potential" },
+        { "id": "C", "text": "Bacterial liver abscess with central liquefaction" },
+        { "id": "D", "text": "Cystic lesion with serous content" }
+      ],
+      "correct": "A",
+      "explanation": "FNH is a benign, regenerative liver lesion, usually asymptomatic and not requiring treatment."
+    },
+    {
+      "id": "fnh-en-02",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Which statement about the epidemiology of FNH is correct?",
+      "options": [
+        { "id": "A", "text": "It is the most common benign liver lesion overall" },
+        { "id": "B", "text": "It is the second most common benign liver lesion after haemangioma and predominantly affects women" },
+        { "id": "C", "text": "It mainly occurs in elderly men" },
+        { "id": "D", "text": "It is a precancerous lesion with a high risk of malignant transformation" }
+      ],
+      "correct": "B",
+      "explanation": "After haemangioma, FNH is the second most common benign liver lesion, most often in young to middle-aged adults with a clear female predominance."
+    },
+    {
+      "id": "fnh-en-03",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Which Doppler finding is typical for FNH?",
+      "options": [
+        { "id": "A", "text": "Central vessel with radiating branches (spoke-wheel pattern)" },
+        { "id": "B", "text": "Complete absence of vessels within the lesion" },
+        { "id": "C", "text": "Only peripheral venous vessels without a central vessel" },
+        { "id": "D", "text": "Arteriovenous fistula with shunt flow" }
+      ],
+      "correct": "A",
+      "explanation": "The spoke-wheel pattern – a central vessel with radiating branches – is a typical, though not definitive, Doppler finding of FNH."
+    },
+    {
+      "id": "fnh-en-04",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "How does a typical FNH behave on the early arterial phase of CT?",
+      "options": [
+        { "id": "A", "text": "Peripheral nodular, discontinuous enhancement" },
+        { "id": "B", "text": "Strong, homogeneous enhancement" },
+        { "id": "C", "text": "No enhancement in any phase" },
+        { "id": "D", "text": "Ring-like enhancement with central necrosis" }
+      ],
+      "correct": "B",
+      "explanation": "Unlike haemangioma, FNH shows strong, homogeneous enhancement in the early arterial phase without peripheral nodular enhancement."
+    },
+    {
+      "id": "fnh-en-05",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "What is characteristic of FNH in the portal venous and delayed phases?",
+      "options": [
+        { "id": "A", "text": "Marked wash-out with hypodensity relative to the liver" },
+        { "id": "B", "text": "No wash-out, with rapid equalisation to the liver parenchyma" },
+        { "id": "C", "text": "Progressive increase in lesion size" },
+        { "id": "D", "text": "Appearance of new peripheral nodules" }
+      ],
+      "correct": "B",
+      "explanation": "FNH shows no wash-out and rapidly equalises with the liver parenchyma in the portal venous and delayed phases – an important distinguishing feature from malignant lesions."
+    },
+    {
+      "id": "fnh-en-06",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "How does FNH typically appear on T1 and T2 relative to the liver parenchyma?",
+      "options": [
+        { "id": "A", "text": "Markedly hypointense on T1 and strongly hyperintense on T2 (light-bulb sign)" },
+        { "id": "B", "text": "Iso- to mildly hypointense on T1 and iso- to mildly hyperintense on T2" },
+        { "id": "C", "text": "Hyperintense on T1 and hypointense on T2" },
+        { "id": "D", "text": "No signal on either sequence" }
+      ],
+      "correct": "B",
+      "explanation": "FNH is usually iso- to mildly hypointense on T1 and iso- to mildly hyperintense on T2 relative to the liver parenchyma, so it is often only subtly visible on non-contrast images."
+    },
+    {
+      "id": "fnh-en-07",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "How does the central scar of FNH behave on MRI?",
+      "options": [
+        { "id": "A", "text": "Hyperintense on T2, hypointense on T1, with delayed enhancement" },
+        { "id": "B", "text": "Hypointense on both T2 and T1 without any enhancement" },
+        { "id": "C", "text": "Hyperintense on T1 and isointense on T2" },
+        { "id": "D", "text": "Only visible on CT, never on MRI" }
+      ],
+      "correct": "A",
+      "explanation": "The central scar is hyperintense on T2, hypointense on T1, and shows delayed enhancement – characteristic in about 70% of cases."
+    },
+    {
+      "id": "fnh-en-08",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Which feature is most helpful to distinguish FNH from HCC?",
+      "options": [
+        { "id": "A", "text": "Absence of wash-out despite strong arterial enhancement" },
+        { "id": "B", "text": "Presence of a true tumour capsule" },
+        { "id": "C", "text": "Elevated alpha-fetoprotein" },
+        { "id": "D", "text": "Multifocal occurrence" }
+      ],
+      "correct": "A",
+      "explanation": "HCC typically shows wash-out in the portal venous/delayed phase, whereas FNH shows no wash-out despite strong arterial enhancement."
+    },
+    {
+      "id": "fnh-en-09",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "Which features can occur in atypical FNH?",
+      "options": [
+        { "id": "A", "text": "Absent central scar, heterogeneous appearance, pseudocapsule, or intralesional fat" },
+        { "id": "B", "text": "Exclusively calcified rim without any enhancement" },
+        { "id": "C", "text": "Complete cystic transformation" },
+        { "id": "D", "text": "Diffuse involvement of the entire liver" }
+      ],
+      "correct": "A",
+      "explanation": "Atypical FNH (~20%) may occur without a central scar or show a heterogeneous appearance, pseudocapsule, absent scar enhancement, or intralesional fat, which can make differentiation from other liver tumours difficult."
+    },
+    {
+      "id": "fnh-en-10",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "What is the appropriate management of a typical, asymptomatic FNH?",
+      "options": [
+        { "id": "A", "text": "Generally no treatment, as it is benign and usually asymptomatic" },
+        { "id": "B", "text": "Immediate surgical resection" },
+        { "id": "C", "text": "Systemic chemotherapy" },
+        { "id": "D", "text": "Transarterial chemoembolisation" }
+      ],
+      "correct": "A",
+      "explanation": "FNH is benign, usually asymptomatic, and generally does not require treatment."
+    },
+    {
       "id": "sarkoidose-en-01",
       "tags": [
         "sarkoidose",
@@ -2032,6 +2312,146 @@ export const QUESTION_BANK = {
       ],
       "correct": "A",
       "explanation": "ADC بالا علیه محدودیت انتشار واقعی است. همراه با پرشدگی مرکزگرای شبیه blood pool، تشخیص همانژیوم را تقویت می‌کند."
+    },
+    {
+      "id": "fnh-fa-01",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "کدام گزینه هیپرپلازی ندولار فوکال (FNH) را به‌درستی توصیف می‌کند؟",
+      "options": [
+        { "id": "A", "text": "ضایعه خوش‌خیم و رژنراتیو کبد" },
+        { "id": "B", "text": "تومور بدخیم اولیه کبد با پتانسیل متاستاز" },
+        { "id": "C", "text": "آبسه باکتریایی کبد با ذوب مرکزی" },
+        { "id": "D", "text": "ضایعه کیستیک با محتوای سروز" }
+      ],
+      "correct": "A",
+      "explanation": "FNH یک ضایعه خوش‌خیم و رژنراتیو کبد است، معمولاً بدون علامت و بدون نیاز به درمان."
+    },
+    {
+      "id": "fnh-fa-02",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "کدام گزینه درباره اپیدمیولوژی FNH صحیح است؟",
+      "options": [
+        { "id": "A", "text": "شایع‌ترین ضایعه خوش‌خیم کبد به‌طور کلی است" },
+        { "id": "B", "text": "بعد از همانژیوم، دومین ضایعه خوش‌خیم شایع کبد است و بیشتر در زنان دیده می‌شود" },
+        { "id": "C", "text": "بیشتر در مردان مسن دیده می‌شود" },
+        { "id": "D", "text": "یک ضایعه پره‌کانسر با خطر بالای بدخیمی است" }
+      ],
+      "correct": "B",
+      "explanation": "بعد از همانژیوم، FNH دومین ضایعه خوش‌خیم شایع کبد است؛ بیشتر در بالغین جوان تا میانسال با غلبه واضح در زنان."
+    },
+    {
+      "id": "fnh-fa-03",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "کدام یافته داپلر برای FNH تیپیک است؟",
+      "options": [
+        { "id": "A", "text": "عروق مرکزی با شاخه‌های رادیال (الگوی spoke-wheel)" },
+        { "id": "B", "text": "نبود کامل عروق در ضایعه" },
+        { "id": "C", "text": "فقط عروق وریدی محیطی بدون عروق مرکزی" },
+        { "id": "D", "text": "فیستول شریانی-وریدی با جریان شانت" }
+      ],
+      "correct": "A",
+      "explanation": "الگوی spoke-wheel - یک عروق مرکزی با شاخه‌های رادیال - یافته داپلر تیپیک ولی غیرقطعی برای FNH است."
+    },
+    {
+      "id": "fnh-fa-04",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "رفتار FNH تیپیک در فاز شریانی زودرس CT چگونه است؟",
+      "options": [
+        { "id": "A", "text": "enhancement ندولار محیطی و ناپیوسته" },
+        { "id": "B", "text": "enhancement قوی و هموژن" },
+        { "id": "C", "text": "بدون enhancement در هیچ فازی" },
+        { "id": "D", "text": "enhancement حلقوی با نکروز مرکزی" }
+      ],
+      "correct": "B",
+      "explanation": "برخلاف همانژیوم، FNH در فاز شریانی زودرس enhancement قوی و هموژن دارد، بدون enhancement ندولار محیطی."
+    },
+    {
+      "id": "fnh-fa-05",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "ویژگی تیپیک FNH در فاز پورتال و تأخیری چیست؟",
+      "options": [
+        { "id": "A", "text": "wash-out واضح با هیپودنسیته نسبت به کبد" },
+        { "id": "B", "text": "بدون wash-out، با تطابق سریع با پارانشیم کبد" },
+        { "id": "C", "text": "افزایش تدریجی اندازه ضایعه" },
+        { "id": "D", "text": "ظهور ندول‌های محیطی جدید" }
+      ],
+      "correct": "B",
+      "explanation": "FNH هیچ wash-out نشان نمی‌دهد و در فاز پورتال و تأخیری به‌سرعت با پارانشیم کبد تطابق می‌یابد - یک ویژگی افتراقی مهم از ضایعات بدخیم."
+    },
+    {
+      "id": "fnh-fa-06",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "ضایعه FNH معمولاً در T1 و T2 چگونه دیده می‌شود؟",
+      "options": [
+        { "id": "A", "text": "به‌وضوح هیپواینتنس در T1 و به‌شدت هایپراینتنس در T2 (light-bulb sign)" },
+        { "id": "B", "text": "ایزو تا کمی هیپواینتنس در T1 و ایزو تا کمی هایپراینتنس در T2" },
+        { "id": "C", "text": "هایپراینتنس در T1 و هیپواینتنس در T2" },
+        { "id": "D", "text": "بدون سیگنال در هر دو سکانس" }
+      ],
+      "correct": "B",
+      "explanation": "FNH معمولاً نسبت به پارانشیم کبد در T1 ایزو تا کمی هیپواینتنس و در T2 ایزو تا کمی هایپراینتنس است، بنابراین در تصاویر بدون کنتراست اغلب فقط به‌طور خفیف قابل مشاهده است."
+    },
+    {
+      "id": "fnh-fa-07",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "اسکار مرکزی FNH در MRI چگونه رفتار می‌کند؟",
+      "options": [
+        { "id": "A", "text": "هایپراینتنس در T2، هیپواینتنس در T1، با enhancement تأخیری" },
+        { "id": "B", "text": "هیپواینتنس در T2 و T1 بدون هیچ enhancement" },
+        { "id": "C", "text": "هایپراینتنس در T1 و ایزواینتنس در T2" },
+        { "id": "D", "text": "فقط در CT قابل مشاهده است، هرگز در MRI" }
+      ],
+      "correct": "A",
+      "explanation": "اسکار مرکزی در T2 هایپراینتنس، در T1 هیپواینتنس است و enhancement تأخیری دارد - تیپیک در حدود ۷۰٪ موارد."
+    },
+    {
+      "id": "fnh-fa-08",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "کدام ویژگی بیشترین کمک به افتراق FNH از HCC می‌کند؟",
+      "options": [
+        { "id": "A", "text": "نبود wash-out به‌رغم enhancement شریانی قوی" },
+        { "id": "B", "text": "وجود کپسول واقعی تومور" },
+        { "id": "C", "text": "افزایش آلفافتوپروتئین" },
+        { "id": "D", "text": "وقوع چندکانونی" }
+      ],
+      "correct": "A",
+      "explanation": "HCC معمولاً در فاز پورتال/تأخیری wash-out دارد، در حالی که FNH به‌رغم enhancement شریانی قوی، wash-out ندارد."
+    },
+    {
+      "id": "fnh-fa-09",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "کدام ویژگی‌ها می‌توانند در FNH آتیپیک دیده شوند؟",
+      "options": [
+        { "id": "A", "text": "نبود اسکار مرکزی، ظاهر هتروژن، پسودوکپسول یا چربی داخل ضایعه" },
+        { "id": "B", "text": "فقط حاشیه کلسیفیه بدون هیچ enhancement" },
+        { "id": "C", "text": "تبدیل کامل کیستیک" },
+        { "id": "D", "text": "درگیری منتشر کل کبد" }
+      ],
+      "correct": "A",
+      "explanation": "FNH آتیپیک (~۲۰٪) ممکن است بدون اسکار مرکزی باشد یا ظاهر هتروژن، پسودوکپسول، عدم enhancement اسکار یا چربی داخل ضایعه نشان دهد، که افتراق از سایر تومورهای کبدی را دشوار می‌کند."
+    },
+    {
+      "id": "fnh-fa-10",
+      "tags": ["fnh", "leber", "abdomen"],
+      "fach": "abdomen",
+      "question": "رویکرد مناسب برای FNH تیپیک و بدون علامت چیست؟",
+      "options": [
+        { "id": "A", "text": "معمولاً بدون درمان، چون خوش‌خیم و معمولاً بدون علامت است" },
+        { "id": "B", "text": "رزکسیون جراحی فوری" },
+        { "id": "C", "text": "شیمی‌درمانی سیستمیک" },
+        { "id": "D", "text": "آمبولیزاسیون شیمیایی ترانس‌آرتریال" }
+      ],
+      "correct": "A",
+      "explanation": "FNH خوش‌خیم است، معمولاً بدون علامت است و معمولاً نیاز به درمان ندارد."
     },
     {
       "id": "sarkoidose-fa-01",
