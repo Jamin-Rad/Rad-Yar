@@ -20,7 +20,7 @@ export async function POST(request) {
     const message = clean(body.message, 3000)
     const page = clean(body.page, 500)
 
-    if (!type || !subject || message.length < 10) {
+    if (!type || message.length < 10) {
       return NextResponse.json({ error: 'Ungültige Eingabe' }, { status: 400 })
     }
 
@@ -54,7 +54,7 @@ export async function POST(request) {
         from,
         to: [to],
         reply_to: senderEmail,
-        subject: `[RadYar Kontakt] ${type}: ${subject}`,
+        subject: `[RadYar Kontakt] ${subject ? `${type}: ${subject}` : type}`,
         text,
       }),
     })

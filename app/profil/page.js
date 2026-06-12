@@ -705,14 +705,20 @@ export default function ProfilPage() {
                   <form className={styles.form} onSubmit={handleContact}>
                     <div className={styles.fieldGroup}>
                       <label className={styles.label} htmlFor="problem-type">{t.problemType}</label>
-                      <select id="problem-type" className={styles.select} required value={contact.type} onChange={event => setContact({ ...contact, type: event.target.value })}>
+                      <select id="problem-type" className={styles.select} required value={contact.type} onChange={event => {
+                        const value = event.target.value
+                        const isOther = value === t.problemTypes[t.problemTypes.length - 1]
+                        setContact(prev => ({ ...prev, type: value, subject: isOther ? prev.subject : '' }))
+                      }}>
                         <option value="">{t.select}</option>{t.problemTypes.map(option => <option key={option}>{option}</option>)}
                       </select>
                     </div>
-                    <div className={styles.fieldGroup}>
-                      <label className={styles.label} htmlFor="subject">{t.subject}</label>
-                      <input id="subject" className={styles.input} required maxLength={120} placeholder={t.subjectPlaceholder} value={contact.subject} onChange={event => setContact({ ...contact, subject: event.target.value })} />
-                    </div>
+                    {contact.type === t.problemTypes[t.problemTypes.length - 1] && (
+                      <div className={styles.fieldGroup}>
+                        <label className={styles.label} htmlFor="subject">{t.subject}</label>
+                        <input id="subject" className={styles.input} required maxLength={120} placeholder={t.subjectPlaceholder} value={contact.subject} onChange={event => setContact({ ...contact, subject: event.target.value })} />
+                      </div>
+                    )}
                     <div className={styles.fieldGroup}>
                       <label className={styles.label} htmlFor="message">{t.message}</label>
                       <textarea id="message" className={styles.textarea} required minLength={10} maxLength={3000} placeholder={t.messagePlaceholder} value={contact.message} onChange={event => setContact({ ...contact, message: event.target.value })} />
