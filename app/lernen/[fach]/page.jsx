@@ -304,6 +304,28 @@ function TechnikChapterIcon({ id, className }) {
   return <svg {...common}>{icons[id] || icons['technik-strahlenbiologie']}</svg>
 }
 
+function VascularChapterIcon({ id, className }) {
+  const common = {
+    viewBox: '0 0 48 48',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    className,
+    'aria-hidden': true,
+  }
+  const icons = {
+    'gefaesse-grundlagen': <><path d="M24 5v38M24 14 13 8M24 20l12-8M24 27 11 7M24 34l-10 7"/><circle cx="24" cy="20" r="4"/></>,
+    'gefaesse-arteriell': <><path d="M24 43V7M24 17 12 10M24 24l13-9M24 31l11 8"/><path d="M18 5h12M9 8l6 5M39 12l-5 6"/><circle cx="24" cy="25" r="3" fill="currentColor" stroke="none"/></>,
+    'gefaesse-venoes': <><path d="M24 5v38M12 8l12 10M37 11 24 24M12 36l12-7M36 40 24 32"/><path d="m20 13 4 5-6-1M29 18l-5 6 1-7M18 33l6-4-2 7"/></>,
+    'ir-grundlagen': <><path d="M8 39 30 17M27 10l11 11M30 7l11 11"/><path d="m8 39 9-2-7-7-2 9Z"/><path d="M32 25c5 4 7 9 7 16"/></>,
+    'ir-vaskulaer': <><path d="M7 24h34M13 15v18M35 15v18"/><rect x="17" y="19" width="14" height="10" rx="2"/><path d="m20 19 3 10 3-10 3 10"/></>,
+    'ir-nicht-vaskulaer': <><circle cx="24" cy="24" r="15"/><circle cx="24" cy="24" r="8"/><circle cx="24" cy="24" r="2" fill="currentColor" stroke="none"/><path d="M42 6 29 19M35 6h7v7"/></>,
+  }
+  return <svg {...common}>{icons[id] || icons['gefaesse-grundlagen']}</svg>
+}
+
 function ChapterIcon({ fachId, kapitel, className }) {
   if (fachId === 'msk') return <MskChapterIcon id={kapitel.id} className={className} />
   if (fachId === 'thorax') return <ThoraxChapterIcon id={kapitel.id} className={className} />
@@ -314,6 +336,7 @@ function ChapterIcon({ fachId, kapitel, className }) {
   if (fachId === 'hals') return <NeckChapterIcon id={kapitel.id} className={className} />
   if (fachId === 'wirbelsaeule') return <SpineChapterIcon id={kapitel.id} className={className} />
   if (fachId === 'technik') return <TechnikChapterIcon id={kapitel.id} className={className} />
+  if (fachId === 'gefaesse-ir' || fachId === 'interventionelle-radiologie') return <VascularChapterIcon id={kapitel.id} className={className} />
   return <span className={className}>{kapitel.icon}</span>
 }
 
@@ -474,7 +497,7 @@ export default function LernenFachPage() {
           <Link href="/lernen" className={styles.back}>{t.back}</Link>
           <div className={styles.topCenter}>
             <div className={styles.topIcon}>
-              <Image src={`/fach/${fach.id}.png`} alt={fachName} width={36} height={36} style={{objectFit:'contain'}}/>
+              <Image src={`/fach/${fach.imageId || fach.id}.png`} alt={fachName} width={36} height={36} style={{objectFit:'contain'}}/>
             </div>
             <div className={styles.topHeading}>
               <h1 className={styles.topTitle} style={{ color: fach.color }}>{fachName}</h1>

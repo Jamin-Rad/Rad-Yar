@@ -1472,11 +1472,89 @@ export const CURRICULUM = [
   },
   {
     id: 'gefaesse-ir',
-    title: { de: 'Gefäße', en: 'Vascular', fa: 'عروق' },
+    title: { de: 'Gefäße', en: 'Vascular Imaging', fa: 'تصویربرداری عروقی' },
     icon: '🩸', color: '#ef4444',
     bg: 'linear-gradient(135deg,#2a0808,#4a1414)',
     bodyZone: 'Gefäße',
-    kapitel: [],
+    kapitel: [
+      {
+        id: 'gefaesse-grundlagen',
+        title: { de: '1. Grundlagen der Gefäßbildgebung', en: '1. Fundamentals of Vascular Imaging', fa: '۱. مبانی تصویربرداری عروقی' },
+        icon: '🩻',
+        themen: [
+          { id: 'gefaesse-cta-mra-duplex', title: { de: 'CTA / MRA / Duplex', en: 'CTA / MRA / Duplex', fa: 'CTA / MRA / داپلکس' }, tags: ['CT','MRT','Sono'], diff: 1 },
+          { id: 'gefaesse-dsa', title: { de: 'DSA', en: 'DSA', fa: 'DSA' }, tags: ['DSA'], diff: 1 },
+          { id: 'gefaessanatomie-kollateralen', title: { de: 'Gefäßanatomie & Kollateralen', en: 'Vascular Anatomy & Collaterals', fa: 'آناتومی عروقی و عروق جانبی' }, tags: ['CT','MRT','DSA'], diff: 2 },
+        ],
+      },
+      {
+        id: 'gefaesse-arteriell',
+        title: { de: '2. Arterielle Erkrankungen', en: '2. Arterial Diseases', fa: '۲. بیماری‌های شریانی' },
+        icon: '🔴',
+        themen: [
+          { id: 'gefaesse-pavk-stenosen', title: { de: 'Atherosklerose / Stenosen (pAVK)', en: 'Atherosclerosis / Stenoses (PAD)', fa: 'آترواسکلروز / تنگی‌ها (PAD)' }, tags: ['CT','MRT','Sono','DSA'], diff: 2 },
+          { id: 'gefaesse-aneurysmen', title: { de: 'Aneurysmen', en: 'Aneurysms', fa: 'آنوریسم‌ها' }, tags: ['CT','MRT','Sono'], diff: 2 },
+          { id: 'gefaesse-dissektion', title: { de: 'Dissektion', en: 'Dissection', fa: 'دیسکشن' }, tags: ['CT','MRT','Sono'], diff: 2 },
+          { id: 'gefaesse-akuter-verschluss', title: { de: 'Akuter Gefäßverschluss', en: 'Acute Vascular Occlusion', fa: 'انسداد حاد عروقی' }, tags: ['CT','MRT','Sono','DSA'], diff: 3 },
+          { id: 'gefaesse-vaskulitiden-fmd', title: { de: 'Vaskulitiden / FMD', en: 'Vasculitides / FMD', fa: 'واسکولیت‌ها / FMD' }, tags: ['CT','MRT','DSA'], diff: 3 },
+        ],
+      },
+      {
+        id: 'gefaesse-venoes',
+        title: { de: '3. Venöse Erkrankungen', en: '3. Venous Diseases', fa: '۳. بیماری‌های وریدی' },
+        icon: '🔵',
+        themen: [
+          { id: 'gefaesse-tiefe-venenthrombose', title: { de: 'Tiefe Venenthrombose', en: 'Deep Vein Thrombosis', fa: 'ترومبوز ورید عمقی' }, tags: ['Sono','CT','MRT'], diff: 2 },
+          { id: 'gefaesse-beckenvenenthrombose', title: { de: 'Beckenvenenthrombose', en: 'Pelvic Vein Thrombosis', fa: 'ترومبوز وریدهای لگنی' }, tags: ['CT','MRT','Sono'], diff: 2 },
+          { id: 'gefaesse-vena-cava-syndrome', title: { de: 'Vena-cava-Syndrome', en: 'Vena Cava Syndromes', fa: 'سندرم‌های ورید اجوف' }, tags: ['CT','MRT','Sono'], diff: 2 },
+          { id: 'gefaesse-varikosis-insuffizienz', title: { de: 'Varikosis / venöse Insuffizienz', en: 'Varicosis / Venous Insufficiency', fa: 'واریس / نارسایی وریدی' }, tags: ['Sono'], diff: 1 },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'interventionelle-radiologie',
+    imageId: 'gefaesse-ir',
+    title: { de: 'Interventionelle Radiologie', en: 'Interventional Radiology', fa: 'رادیولوژی مداخله‌ای' },
+    icon: '💉', color: '#f97316',
+    bg: 'linear-gradient(135deg,#321507,#57240a)',
+    bodyZone: 'Interventionelle Radiologie',
+    kapitel: [
+      {
+        id: 'ir-grundlagen',
+        title: { de: '1. Interventionelle Grundlagen', en: '1. Fundamentals of Intervention', fa: '۱. مبانی رادیولوژی مداخله‌ای' },
+        icon: '🧭',
+        themen: [
+          { id: 'ir-seldinger-technik', title: { de: 'Seldinger-Technik', en: 'Seldinger Technique', fa: 'تکنیک سلدینگر' }, tags: ['DSA'], diff: 1 },
+          { id: 'ir-materialien', title: { de: 'Materialien: Katheter, Drähte, Schleusen', en: 'Equipment: Catheters, Wires, Sheaths', fa: 'تجهیزات: کاتترها، وایرها و شیت‌ها' }, tags: ['DSA'], diff: 1 },
+          { id: 'ir-komplikationen', title: { de: 'Komplikationen', en: 'Complications', fa: 'عوارض' }, tags: ['DSA'], diff: 2 },
+          { id: 'ir-periprozedurales-management', title: { de: 'Periprozedurales Management', en: 'Periprocedural Management', fa: 'مدیریت پیرامون پروسیجر' }, tags: ['DSA'], diff: 2 },
+        ],
+      },
+      {
+        id: 'ir-vaskulaer',
+        title: { de: '2. Vaskuläre Interventionen', en: '2. Vascular Interventions', fa: '۲. مداخلات عروقی' },
+        icon: '🩸',
+        themen: [
+          { id: 'ir-pta-stent', title: { de: 'PTA / Stent', en: 'PTA / Stent', fa: 'PTA / استنت' }, tags: ['DSA'], diff: 2 },
+          { id: 'ir-embolisation', title: { de: 'Embolisation', en: 'Embolization', fa: 'آمبولیزاسیون' }, tags: ['DSA'], diff: 2 },
+          { id: 'ir-thrombektomie-lyse', title: { de: 'Thrombektomie / Lyse', en: 'Thrombectomy / Thrombolysis', fa: 'ترومبکتومی / ترومبولیز' }, tags: ['DSA'], diff: 3 },
+          { id: 'ir-evar-tevar', title: { de: 'EVAR / TEVAR', en: 'EVAR / TEVAR', fa: 'EVAR / TEVAR' }, tags: ['CT','DSA'], diff: 3 },
+          { id: 'ir-tips', title: { de: 'TIPS', en: 'TIPS', fa: 'TIPS' }, tags: ['Sono','DSA'], diff: 3 },
+        ],
+      },
+      {
+        id: 'ir-nicht-vaskulaer',
+        title: { de: '3. Nicht-vaskuläre Interventionen', en: '3. Non-vascular Interventions', fa: '۳. مداخلات غیرعروقی' },
+        icon: '🎯',
+        themen: [
+          { id: 'ir-biopsie', title: { de: 'Biopsie', en: 'Biopsy', fa: 'بیوپسی' }, tags: ['CT','Sono'], diff: 1 },
+          { id: 'ir-drainage', title: { de: 'Drainage', en: 'Drainage', fa: 'درناژ' }, tags: ['CT','Sono'], diff: 2 },
+          { id: 'ir-ablation', title: { de: 'Ablation', en: 'Ablation', fa: 'ابلیشن' }, tags: ['CT','Sono'], diff: 3 },
+          { id: 'ir-schmerztherapie', title: { de: 'Schmerztherapie', en: 'Pain Therapy', fa: 'درمان درد' }, tags: ['CT','Rö'], diff: 2 },
+        ],
+      },
+    ],
   },
   {
     id: 'technik',

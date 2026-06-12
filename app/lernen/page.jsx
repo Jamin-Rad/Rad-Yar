@@ -35,7 +35,7 @@ export default function LernenIndexPage() {
                 onClick={() => router.push(`/lernen/${fach.id}`)}
               >
                 <div className={styles.cardIcon} style={{width:64,height:64,margin:"0 auto 12px"}}>
-                  <Image src={`/fach/${fach.id}.png`} alt={d.name} width={64} height={64} style={{objectFit:'contain',width:'100%',height:'100%'}}/>
+                  <Image src={`/fach/${fach.imageId || fach.id}.png`} alt={d.name} width={64} height={64} style={{objectFit:'contain',width:'100%',height:'100%'}}/>
                 </div>
                 <div className={styles.cardTitle} style={{ color: fach.color }}>{d.name}</div>
                 <div className={styles.cardMeta}>
