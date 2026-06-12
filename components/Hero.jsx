@@ -99,22 +99,23 @@ const FACH_NAMES = {
         Muskuloskelettales:'اسکلتی-عضلانی', Technik:'تکنیک و فیزیک' },
 }
 
-// Hotspots calibrated to the original 941 × 1672 image.
-// Broad limb regions come first; smaller organ regions sit above them.
+// Hotspots traced from the actual silhouette of the 941 × 1672 body-anatomy image
+// (alpha-mask edge detection, sampled every ~3% of height). Broad limb regions
+// come first; smaller regions (neck, head, breast, spine, MRI icon) sit above them.
 const ZONES = [
-  { id:'Muskuloskelettales', shape:'polygon', points:'24,18 18,20 14,28 12,39 8,48 6,55 9,61 15,59 18,51 22,42 25,31 29,21' },
-  { id:'Muskuloskelettales', shape:'polygon', points:'58,18 64,20 68,28 70,39 75,48 79,55 76,61 70,59 67,51 63,42 60,31 55,21' },
-  { id:'Muskuloskelettales', shape:'polygon', points:'24,51 41,51 42,61 40,72 39,84 36,98 27,98 26,84 27,72 25,62' },
-  { id:'Muskuloskelettales', shape:'polygon', points:'43,51 60,51 59,62 58,72 59,84 57,98 48,98 45,84 44,72 42,61' },
-  { id:'Thorax',             shape:'polygon', points:'24,19 31,17 42,18 53,17 61,20 62,27 58,36 27,36 23,27' },
-  { id:'Abdomen',            shape:'polygon', points:'28,35 57,35 59,39 56,47 52,50 33,50 28,46 26,40' },
-  { id:'Becken',             shape:'polygon', points:'27,47 58,47 61,52 58,58 51,61 34,61 26,57 24,52' },
-  { id:'Hals',               shape:'polygon', points:'36,13 49,13 51,19 47,21 38,21 34,18' },
-  { id:'Neuroradiologie',    shape:'polygon', points:'35,2 49,2 53,6 52,12 48,15 37,15 33,12 32,6' },
-  { id:'Brust',              shape:'polygon', points:'27,21 40,20 42,24 40,34 35,36 28,33 25,27' },
-  { id:'Brust',              shape:'polygon', points:'44,20 57,21 60,27 57,33 50,36 44,34 42,24' },
-  { id:'Wirbelsaeule',       shape:'polygon', points:'42.9,18 43.5,18 43.8,47 43.2,49 42.7,47' },
-  { id:'Technik',            shape:'polygon', points:'65,80 91,80 97,85 97,97 88,99 66,99 62,94 63,85' },
+  { id:'Muskuloskelettales', shape:'polygon', points:'24.5,61 25.9,64 27.3,67 27.8,70 27.1,73 26.4,76 26.6,79 27.6,82 28.7,85 29.3,88 29,91 26.5,94 25.3,97 32,97 33.8,94 34.8,91 34.5,88 35,85 36,82 37.2,79 37.3,76 37,73 38.5,70 39.3,67 39.7,64 40.8,61' },
+  { id:'Muskuloskelettales', shape:'polygon', points:'44.2,61 45.1,64 45.7,67 46.4,70 47.9,73 47.6,76 47.7,79 49,82 49.9,85 50.3,88 50.1,91 50.9,94 52.7,97 59.4,97 58.4,94 55.8,91 55.5,88 56.1,85 57.3,82 58.4,79 58.7,76 57.6,73 57.2,70 57.7,67 58.8,64 60,61' },
+  { id:'Muskuloskelettales', shape:'polygon', points:'23.7,20 21.1,23 21.1,26 20.9,29 20.2,32 19.3,35 17.2,38 15.6,41 14.7,44 13.6,47 12.1,50 10.7,52 8.3,54 6.7,56 8.8,58 8.5,60 10.7,61 11.9,61 14,60 16.4,58 16.5,56 16.7,54 16.5,52 17.3,50 19.6,47 21.9,44 24.2,41 25.6,38 26.7,35 27.9,32 28.4,29 28.9,26 29.5,23 30,20' },
+  { id:'Muskuloskelettales', shape:'polygon', points:'61.7,20 64,23 64.2,26 64.3,29 65,32 65.9,35 67.9,38 69.6,41 70.5,44 71.4,47 72.7,50 74.3,52 76.7,54 78.2,56 76.1,58 76.4,60 74.2,61 73,61 70.9,60 68.5,58 68.5,56 68.2,54 68.5,52 67.8,50 65.6,47 63,44 60.8,41 59.5,38 58.4,35 57.2,32 56.7,29 56.1,26 55.6,23 55,20' },
+  { id:'Thorax',             shape:'polygon', points:'55,19 55.2,21 55.6,23 55.9,25 56.3,27 56.7,29 57,31 57.4,33 55.9,35 55.2,37 55,38 29.9,38 29.6,37 28.9,35 27.7,33 28.1,31 28.4,29 28.8,27 29.1,25 29.5,23 29.8,21 30,19' },
+  { id:'Abdomen',            shape:'polygon', points:'55,38 56.6,41 59.2,44 60.4,47 61.1,50 61.5,53 61.5,56 23.2,56 23.1,53 23.6,50 24.5,47 25.7,44 28.3,41 29.9,38' },
+  { id:'Becken',             shape:'polygon', points:'61.5,56 61.1,58 60.5,60 59.9,61.5 24.8,61.5 24.2,60 23.6,58 23.2,56' },
+  { id:'Hals',               shape:'polygon', points:'39.5,18.5 47.5,18.5 47,21 41,21' },
+  { id:'Neuroradiologie',    shape:'polygon', points:'47,3 50.1,5 50.6,7 51,9 49.9,11 49.2,13 47.3,15 48.5,17 47.5,18.5 39.5,18.5 36.5,17 37.6,15 35.9,13 35.2,11 34.2,9 34.5,7 35.3,5 38.5,3' },
+  { id:'Brust',              shape:'polygon', points:'28.5,23 40,22.5 41,30 38,34.5 31,33 27,28' },
+  { id:'Brust',              shape:'polygon', points:'47.5,22.5 59,23 61,28 57,33 50,34.5 47,30' },
+  { id:'Wirbelsaeule',       shape:'polygon', points:'43,18.5 44,18.5 44.6,40 44.3,60 42.7,60 42.9,40' },
+  { id:'Technik',            shape:'polygon', points:'63,79 97,79 97,98 63,98' },
 ]
 
 // ── MAGNETIC FIELD ANIMATION ──────────────────────────────────────────────

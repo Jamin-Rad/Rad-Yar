@@ -6,46 +6,6 @@ import styles from './page.module.css'
 
 const TOPICS = [
   {
-    key: 'km-roentgen-grundlagen',
-    href: '/ueben/quiz?fach=technik&n=10&themen=km-roentgen-grundlagen',
-    icon: '☢️', iconImage: '/fach/technik.png', color: '#f97316', available: true,
-    count: { de: '2 Fragen', en: '2 Questions', fa: '۲ سوال' },
-    name: { de: 'Röntgen-Kontrastmittel Grundlagen', en: 'X-ray contrast media basics', fa: 'مبانی مواد حاجب رادیوگرافی / CT' },
-    desc: { de: 'Jod-KM · Applikation · Injektionsrate · Ausscheidung', en: 'Iodinated CM · administration · injection rate · elimination', fa: 'مواد یددار · تزریق · سرعت تزریق · دفع' },
-  },
-  {
-    key: 'km-mrt',
-    href: '/ueben/quiz?fach=technik&n=10&themen=km-mrt',
-    icon: '🧲', iconImage: '/fach/technik.png', color: '#7c3aed', available: true,
-    count: { de: '1 Frage', en: '1 Question', fa: '۱ سوال' },
-    name: { de: 'MRT KM', en: 'MRI contrast media', fa: 'مواد حاجب MRI' },
-    desc: { de: 'Gadolinium · Chelate · leberspezifische KM', en: 'Gadolinium · chelates · liver-specific agents', fa: 'گادولینیوم · کلات‌ها · مواد اختصاصی کبد' },
-  },
-  {
-    key: 'km-nebenwirkung-jod',
-    href: '/ueben/quiz?fach=technik&n=10&themen=km-nebenwirkung-jod',
-    icon: '⚠️', iconImage: '/fach/technik.png', color: '#dc2626', available: true,
-    count: { de: '3 Fragen', en: '3 Questions', fa: '۳ سوال' },
-    name: { de: 'Nebenwirkung jodhaltiger KM', en: 'Adverse effects of iodinated CM', fa: 'عوارض مواد حاجب یددار' },
-    desc: { de: 'Pseudoallergie · PC-AKI · Metformin · Schilddrüse', en: 'Pseudoallergy · PC-AKI · metformin · thyroid', fa: 'شبه‌آلرژی · PC-AKI · متفورمین · تیروئید' },
-  },
-  {
-    key: 'km-nebenwirkung-gadolinium',
-    href: '/ueben/quiz?fach=technik&n=10&themen=km-nebenwirkung-gadolinium',
-    icon: '🛡️', iconImage: '/fach/technik.png', color: '#0891b2', available: true,
-    count: { de: '1 Frage', en: '1 Question', fa: '۱ سوال' },
-    name: { de: 'Nebenwirkung Gadolinium', en: 'Adverse effects of gadolinium', fa: 'عوارض گادولینیوم' },
-    desc: { de: 'NSF · Retention · lineare vs. makrozyklische KM', en: 'NSF · retention · linear vs macrocyclic agents', fa: 'NSF · رسوب · مواد خطی و ماکروسیکلیک' },
-  },
-  {
-    key: 'km-schwangerschaft-stillzeit',
-    href: '/ueben/quiz?fach=technik&n=10&themen=km-schwangerschaft-stillzeit',
-    icon: '🤰', iconImage: '/fach/technik.png', color: '#db2777', available: true,
-    count: { de: '3 Fragen', en: '3 Questions', fa: '۳ سوال' },
-    name: { de: 'Schwangerschaft und Stillzeit', en: 'Pregnancy and breastfeeding', fa: 'بارداری و شیردهی' },
-    desc: { de: 'Fetale Schilddrüse · Gadolinium · Stillpause', en: 'Fetal thyroid · gadolinium · breastfeeding pause', fa: 'تیروئید جنین · گادولینیوم · شیردهی' },
-  },
-  {
     key: 'meniskus',
     href: '/msk/knie/meniskus/mcq',
     icon: '🦵', iconImage: '/fach/msk.png', color: '#fb923c', available: true,
@@ -82,7 +42,7 @@ const UI = {
     sub: 'Wähle ein Thema oder kombiniere mehrere Themen im MCQ-Training.',
     available: 'Verfügbar', soon: 'Demnächst', start: 'Quiz starten →',
     trainingTitle: 'MCQ-Training nach Themen',
-    trainingDesc: 'Hier kannst du mehrere Körperregionen und Unterthemen kombinieren – inklusive Technik → Kontrastmittel und MSK → Knie → Meniskus.',
+    trainingDesc: 'Hier kannst du mehrere Körperregionen und Unterthemen kombinieren, zum Beispiel MSK → Knie → Meniskus.',
     trainingBtn: 'Themen auswählen →',
   },
   en: {
@@ -90,7 +50,7 @@ const UI = {
     sub: 'Select one topic or combine multiple topics in MCQ training.',
     available: 'Available', soon: 'Coming soon', start: 'Start Quiz →',
     trainingTitle: 'Topic-based MCQ training',
-    trainingDesc: 'Combine multiple body regions and subtopics, including Physics → Contrast media and MSK → Knee → Meniscus.',
+    trainingDesc: 'Combine multiple body regions and subtopics, for example MSK → Knee → Meniscus.',
     trainingBtn: 'Choose topics →',
   },
   fa: {
@@ -98,7 +58,7 @@ const UI = {
     sub: 'یک موضوع را انتخاب کنید یا چند موضوع را در تمرین MCQ ترکیب کنید.',
     available: 'در دسترس', soon: 'به زودی', start: 'شروع ←',
     trainingTitle: 'تمرین MCQ بر اساس موضوع',
-    trainingDesc: 'می‌توانید چند ناحیه و زیرموضوع را انتخاب کنید، از جمله تکنیک → مواد حاجب و MSK → زانو → منیسک.',
+    trainingDesc: 'می‌توانید چند ناحیه و زیرموضوع را انتخاب کنید، برای مثال MSK → زانو → منیسک.',
     trainingBtn: 'انتخاب موضوعات ←',
   },
 }
