@@ -140,7 +140,8 @@
   padding: 13px 24px;
   background: rgba(249,115,22,0.12);
   border: 2px solid #f97316;
-  border-radius: 50px; width: fit-content; min-width: 280px;
+  border-radius: 50px; width: fit-content; min-width: 280px; max-width: 100%;
+  box-sizing: border-box;
   transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
   cursor: default;
   box-shadow: 0 0 20px rgba(249,115,22,0.25);
