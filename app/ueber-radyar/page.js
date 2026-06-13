@@ -9,11 +9,8 @@ const CONTENT = {
     breadcrumb: 'Über RadYar & Rechtliches',
     eyebrow: 'Informationen zur Plattform',
     title: 'Über RadYar & Rechtliches',
-    intro: 'Hier findest du Informationen über RadYar, medizinische Hinweise, Nutzungsbedingungen, Bildnachweise und Datenschutz.',
-    recommendation: 'Rechtlicher Entwurf',
-    recommendationText: 'Diese Seite ist eine redaktionelle Empfehlung und keine Rechtsberatung. Impressum, Datenschutz und Lizenznutzung sollten vor einer kommerziellen Veröffentlichung rechtlich geprüft werden.',
-    navigation: 'Inhalt',
-    updated: 'Stand: 13. Juni 2026',
+    intro: 'Hier findest du Informationen über RadYar, medizinische Hinweise, Nutzungsbedingungen und Datenschutz.',
+    updated: 'Stand: 12.06.2026',
     contactLink: 'Kontaktformular öffnen',
     sections: [
       {
@@ -104,10 +101,7 @@ const CONTENT = {
     eyebrow: 'Platform information',
     title: 'About RadYar & Legal',
     intro: 'Information about RadYar, medical notices, terms of use, image credits and privacy.',
-    recommendation: 'Legal draft',
-    recommendationText: 'This page is an editorial recommendation and does not constitute legal advice. The legal notice, privacy policy and use of licensed material should be reviewed by qualified counsel before commercial publication.',
-    navigation: 'Contents',
-    updated: 'Last updated: 13 June 2026',
+    updated: 'Last updated: 12 June 2026',
     contactLink: 'Open contact form',
     sections: [
       {
@@ -198,10 +192,7 @@ const CONTENT = {
     eyebrow: 'اطلاعات پلتفرم',
     title: 'درباره رادیار و اطلاعات حقوقی',
     intro: 'در این صفحه اطلاعات مربوط به رادیار، هشدارهای پزشکی، شرایط استفاده، منابع تصاویر و حریم خصوصی ارائه شده است.',
-    recommendation: 'پیش‌نویس حقوقی',
-    recommendationText: 'این صفحه صرفاً یک پیشنهاد محتوایی است و مشاوره حقوقی محسوب نمی‌شود. اطلاعات ناشر، سیاست حریم خصوصی و استفاده از محتوای دارای مجوز باید پیش از انتشار تجاری توسط متخصص حقوقی بررسی شوند.',
-    navigation: 'فهرست مطالب',
-    updated: 'آخرین به‌روزرسانی: ۱۳ ژوئن ۲۰۲۶',
+    updated: 'آخرین به‌روزرسانی: ۱۲ ژوئن ۲۰۲۶',
     contactLink: 'باز کردن فرم تماس',
     sections: [
       {
@@ -312,42 +303,22 @@ export default function UeberRadyarPage() {
           <small>{copy.updated}</small>
         </header>
 
-        <aside className={styles.notice}>
-          <span aria-hidden="true">i</span>
-          <div>
-            <strong>{copy.recommendation}</strong>
-            <p>{copy.recommendationText}</p>
-          </div>
-        </aside>
-
-        <div className={styles.layout}>
-          <nav className={styles.toc} aria-label={copy.navigation}>
-            <strong>{copy.navigation}</strong>
-            {copy.sections.map((section, index) => (
-              <a key={section.title} href={`#${sectionId(index)}`}>
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                {section.title}
-              </a>
-            ))}
-          </nav>
-
-          <div className={styles.content}>
-            {copy.sections.map((section, index) => (
-              <section className={styles.section} id={sectionId(index)} key={section.title}>
-                <div className={styles.sectionNumber}>{String(index + 1).padStart(2, '0')}</div>
-                <div>
-                  <h2>{section.title}</h2>
-                  {section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
-                  {section.bullets && (
-                    <ul>
-                      {section.bullets.map(item => <li key={item}>{item}</li>)}
-                    </ul>
-                  )}
-                  {section.contact && <Link className={styles.contactLink} href="/profil">{copy.contactLink} →</Link>}
-                </div>
-              </section>
-            ))}
-          </div>
+        <div className={styles.content}>
+          {copy.sections.map((section, index) => (
+            <section className={styles.section} id={sectionId(index)} key={section.title}>
+              <div className={styles.sectionNumber}>{String(index + 1).padStart(2, '0')}</div>
+              <div>
+                <h2>{section.title}</h2>
+                {section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+                {section.bullets && (
+                  <ul>
+                    {section.bullets.map(item => <li key={item}>{item}</li>)}
+                  </ul>
+                )}
+                {section.contact && <Link className={styles.contactLink} href="/profil">{copy.contactLink} →</Link>}
+              </div>
+            </section>
+          ))}
         </div>
       </div>
     </main>
