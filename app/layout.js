@@ -20,9 +20,30 @@ const manrope = Manrope({
   variable: '--font-manrope',
 })
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
+  || (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : 'http://localhost:3000')
+
 export const metadata = {
-  title: 'RadYar – Your Guide in Radiology Education',
-  description: 'Strukturiertes Wissen, klinische Fälle und Prüfungsvorbereitung für Radiologinnen und Radiologen.',
+  metadataBase: new URL(siteUrl),
+  title: 'RadYar | Learn Radiology',
+  description: 'Structured knowledge, clinical cases, and exam preparation for radiologists.',
+  applicationName: 'RadYar',
+  alternates: { canonical: '/' },
+  openGraph: {
+    title: 'RadYar | Learn Radiology',
+    description: 'Structured knowledge, clinical cases, and exam preparation for radiologists.',
+    url: '/',
+    siteName: 'RadYar',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'RadYar | Learn Radiology',
+    description: 'Structured knowledge, clinical cases, and exam preparation for radiologists.',
+  },
   icons: { icon: '/favicon.svg', shortcut: '/favicon.svg' },
 }
 
