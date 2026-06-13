@@ -165,8 +165,7 @@ export default function LernPfade() {
               <div className={styles.icon} style={{ background: c.icon, border: `1.5px solid ${c.iconBorder}` }}>
                 {p.icon}
               </div>
-              <div className={styles.num} style={{ color: c.num }}>{p.num}</div>
-              <h3 className={styles.title}>{p.title}</h3>
+              <h3 className={styles.title} style={{ color: c.num }}>{p.title}</h3>
               <p className={styles.desc}>{p.desc}</p>
               <div className={styles.chips}>
                 {p.topics.map(t => (

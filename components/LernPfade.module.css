@@ -13,7 +13,6 @@
   display: flex; align-items: center; justify-content: center;
   font-size: 22px; margin-bottom: 18px;
 }
-.num  { font-size: 10.5px; font-weight: 700; letter-spacing: .22em; margin-bottom: 8px; }
 .title {
   font-family: var(--font-display, 'Georgia', serif);
   font-style: italic; font-size: 18px; font-weight: 700;
