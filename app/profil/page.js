@@ -31,10 +31,10 @@ const T = {
     overallProgress: 'Gesamtfortschritt', lessonsRead: 'Lektionen gelesen',
     mcqAccuracy: 'MCQ-Genauigkeit', cardsMastered: 'Karten beherrscht', dueToday: 'heute fällig',
     learningAreas: 'Fortschritt nach Fachgebiet',
-    learningAreasSub: 'Nur Fachgebiete mit bereits verfügbaren Lerninhalten werden angezeigt.',
-    recentTopics: 'Zuletzt gelernt',
+    learningAreasSub: 'Fachgebiet öffnen, um Fortschritt und nächste Schritte nach Hauptthema zu sehen.',
+    recentTopics: 'Zuletzt gelernte Lektionen',
     recentTopicsEmpty: 'Noch keine Lektion abgeschlossen. Starte mit deinem ersten Thema.',
-    activity: 'Aktivität der letzten 7 Tage', activitySub: 'Flashcard-Wiederholungen und MCQ-Aktivität',
+    activity: 'Aktivität der letzten 14 Tage', activitySub: 'Aktive Lernzeit pro Tag und Lernbereich',
     profileSection: 'Profil bearbeiten', nickname: 'Spitzname', specialty: 'Fachrichtung',
     level: 'Ausbildungsstufe', select: '– Bitte wählen –', save: 'Speichern',
     saving: 'Wird gespeichert…', saved: 'Gespeichert',
@@ -59,16 +59,22 @@ const T = {
     notLoggedSub: 'Um dein Profil zu sehen, melde dich an.', signIn: 'Jetzt anmelden',
     available: 'verfügbar', completed: 'abgeschlossen',
     streak: 'Tage in Folge', activeTime: 'Aktive Lernzeit', visitedDays: 'Besuchstage',
-    chapterProgress: 'Fortschritt nach Hauptkapitel', learnedLessons: 'Gelernte Lektionen',
+    chapterProgress: 'Fortschritt nach Hauptthema', learnedLessons: 'Zuletzt gelernte Lektionen',
     unreadLessons: 'Verfügbar, noch nicht gelernt', openLesson: 'Lernen',
     dailyGoal: 'Tägliches MCQ-Ziel', dailyGoalHint: 'Wie viele MCQs möchtest du pro Tag bearbeiten?',
     todayDone: 'Heute geschafft', goalReached: 'Tagesziel erreicht', startGoal: 'MCQs starten',
     wrongQuestions: 'Falsche MCQs wiederholen', wrongQuestionsHint: 'Diese Fragen wurden zuletzt falsch beantwortet.',
     repeatWrong: 'Fehler lernen', unlearnedMcq: 'Noch nicht geübte MCQ-Themen', practiceNow: 'Jetzt üben',
     flashReport: 'Flashcard-Bericht', flashSeen: 'begonnen', flashWrong: 'nicht gewusst',
-    flashDue: 'fällig', toFlashcards: 'Zur Flashcard-Seite',
+    flashDue: 'heute fällig', toFlashcards: 'Zur Flashcard-Seite',
+    flashThirtyDays: '30 Tage erreicht', flashThirtyDaysHint: 'Karten ab der 30-Tage-Stufe',
+    lessonsActivity: 'Lernen', practiceActivity: 'MCQ + Fallprüfung', flashActivity: 'Flashcards',
+    totalActivity: 'Gesamt', activityTrackingHint: 'Die Aufteilung nach Lernbereich wird ab jetzt erfasst; ältere Aktivität bleibt unter Gesamt erhalten.',
+    readAvailable: 'verfügbare Themen gelesen', flashProgress: 'Flashcards auf 30-Tage-Stufe',
+    mcqCorrect: 'MCQs richtig', noMcqYet: 'noch keine MCQs', nextStep: 'Nächster Schritt',
+    openArea: 'Details anzeigen', closeArea: 'Details schließen',
     recommendations: 'Empfehlungen', learnMcq: 'MCQs üben', learnFlash: 'Flashcards lernen',
-    clerkData: 'Clerk-Kontodaten', clerkDataHint: 'Anmeldedaten und verbundene Konten aus Clerk.',
+    clerkData: 'Anmeldedaten', clerkDataHint: 'E-Mail-Adresse, Anmeldeart und letzte Anmeldung.',
     primaryEmail: 'Primäre E-Mail', username: 'Benutzername', loginOrigin: 'Anmeldung über',
     lastSignIn: 'Letzte Anmeldung', noValue: 'Nicht angegeben',
     subscriptionTitle: 'Abonnement', subscriptionActiveUntil: 'Aktiv bis',
@@ -88,9 +94,9 @@ const T = {
     overallProgress: 'Overall progress', lessonsRead: 'Lessons read',
     mcqAccuracy: 'MCQ accuracy', cardsMastered: 'Cards mastered', dueToday: 'due today',
     learningAreas: 'Progress by specialty',
-    learningAreasSub: 'Only specialties with available learning content are shown.',
-    recentTopics: 'Recently learned', recentTopicsEmpty: 'No lesson completed yet. Start with your first topic.',
-    activity: 'Activity over the last 7 days', activitySub: 'Flashcard reviews and MCQ activity',
+    learningAreasSub: 'Open a specialty to see progress and next steps by main topic.',
+    recentTopics: 'Recently learned lessons', recentTopicsEmpty: 'No lesson completed yet. Start with your first topic.',
+    activity: 'Activity over the last 14 days', activitySub: 'Active learning time per day and learning area',
     profileSection: 'Edit profile', nickname: 'Nickname', specialty: 'Specialty',
     level: 'Training level', select: '– Please select –', save: 'Save',
     saving: 'Saving…', saved: 'Saved', appSettings: 'Learning settings',
@@ -113,16 +119,22 @@ const T = {
     notLoggedSub: 'Sign in to view your profile.', signIn: 'Sign in now',
     available: 'available', completed: 'completed',
     streak: 'Day streak', activeTime: 'Active learning time', visitedDays: 'Visit days',
-    chapterProgress: 'Progress by main chapter', learnedLessons: 'Learned lessons',
+    chapterProgress: 'Progress by main topic', learnedLessons: 'Recently learned lessons',
     unreadLessons: 'Available, not learned yet', openLesson: 'Learn',
     dailyGoal: 'Daily MCQ goal', dailyGoalHint: 'How many MCQs do you want to complete each day?',
     todayDone: 'Completed today', goalReached: 'Daily goal reached', startGoal: 'Start MCQs',
     wrongQuestions: 'Review wrong MCQs', wrongQuestionsHint: 'These questions were answered incorrectly most recently.',
     repeatWrong: 'Review errors', unlearnedMcq: 'MCQ topics not practised yet', practiceNow: 'Practice now',
     flashReport: 'Flashcard report', flashSeen: 'started', flashWrong: 'missed',
-    flashDue: 'due', toFlashcards: 'Go to flashcards',
+    flashDue: 'due today', toFlashcards: 'Go to flashcards',
+    flashThirtyDays: '30 days reached', flashThirtyDaysHint: 'Cards at or beyond the 30-day stage',
+    lessonsActivity: 'Lessons', practiceActivity: 'MCQ + case exam', flashActivity: 'Flashcards',
+    totalActivity: 'Total', activityTrackingHint: 'The breakdown by learning area is tracked from now on; earlier activity remains available under Total.',
+    readAvailable: 'available topics read', flashProgress: 'flashcards at 30-day stage',
+    mcqCorrect: 'MCQs correct', noMcqYet: 'no MCQs yet', nextStep: 'Next step',
+    openArea: 'Show details', closeArea: 'Hide details',
     recommendations: 'Recommendations', learnMcq: 'Practice MCQs', learnFlash: 'Study flashcards',
-    clerkData: 'Clerk account data', clerkDataHint: 'Sign-in data and connected accounts from Clerk.',
+    clerkData: 'Sign-in details', clerkDataHint: 'Email address, sign-in method and latest sign-in.',
     primaryEmail: 'Primary email', username: 'Username', loginOrigin: 'Signed in with',
     lastSignIn: 'Last sign-in', noValue: 'Not provided',
     subscriptionTitle: 'Subscription', subscriptionActiveUntil: 'Active until',
@@ -140,9 +152,9 @@ const T = {
     continueLearning: 'ادامه یادگیری', browseTopics: 'مشاهده موضوعات', reviewCards: 'مرور کارت‌ها',
     overallProgress: 'پیشرفت کلی', lessonsRead: 'درس خوانده‌شده', mcqAccuracy: 'دقت آزمون',
     cardsMastered: 'کارت مسلط‌شده', dueToday: 'مقرر امروز', learningAreas: 'پیشرفت بر اساس تخصص',
-    learningAreasSub: 'فقط تخصص‌های دارای محتوای آموزشی نمایش داده می‌شوند.',
-    recentTopics: 'آخرین مطالب آموخته‌شده', recentTopicsEmpty: 'هنوز درسی تکمیل نشده است.',
-    activity: 'فعالیت ۷ روز گذشته', activitySub: 'مرور فلش‌کارت و فعالیت آزمون',
+    learningAreasSub: 'برای مشاهده پیشرفت و گام بعدی در هر موضوع اصلی، تخصص را باز کنید.',
+    recentTopics: 'آخرین درس‌های آموخته‌شده', recentTopicsEmpty: 'هنوز درسی تکمیل نشده است.',
+    activity: 'فعالیت ۱۴ روز گذشته', activitySub: 'زمان فعال روزانه در هر بخش آموزشی',
     profileSection: 'ویرایش پروفایل', nickname: 'نام مستعار', specialty: 'تخصص',
     level: 'مرحله آموزشی', select: '– انتخاب کنید –', save: 'ذخیره', saving: 'در حال ذخیره…',
     saved: 'ذخیره شد', appSettings: 'تنظیمات یادگیری',
@@ -166,16 +178,22 @@ const T = {
     notLoggedSub: 'برای مشاهده پروفایل وارد شوید.', signIn: 'ورود',
     available: 'موجود', completed: 'تکمیل‌شده',
     streak: 'روز متوالی', activeTime: 'زمان فعال یادگیری', visitedDays: 'روزهای بازدید',
-    chapterProgress: 'پیشرفت فصل‌های اصلی', learnedLessons: 'درس‌های آموخته‌شده',
+    chapterProgress: 'پیشرفت موضوعات اصلی', learnedLessons: 'آخرین درس‌های آموخته‌شده',
     unreadLessons: 'موجود و هنوز مطالعه‌نشده', openLesson: 'مطالعه',
     dailyGoal: 'هدف روزانه MCQ', dailyGoalHint: 'روزانه چند MCQ می‌خواهید پاسخ دهید؟',
     todayDone: 'انجام‌شده امروز', goalReached: 'هدف روزانه تکمیل شد', startGoal: 'شروع MCQ',
     wrongQuestions: 'مرور MCQهای اشتباه', wrongQuestionsHint: 'این سؤال‌ها آخرین بار اشتباه پاسخ داده شدند.',
     repeatWrong: 'مرور اشتباه‌ها', unlearnedMcq: 'موضوعات MCQ تمرین‌نشده', practiceNow: 'تمرین',
     flashReport: 'گزارش فلش‌کارت', flashSeen: 'شروع‌شده', flashWrong: 'بلد نبود',
-    flashDue: 'مقرر', toFlashcards: 'رفتن به فلش‌کارت‌ها',
+    flashDue: 'مقرر امروز', toFlashcards: 'رفتن به فلش‌کارت‌ها',
+    flashThirtyDays: 'رسیدن به ۳۰ روز', flashThirtyDaysHint: 'کارت‌های مرحله ۳۰ روز یا بالاتر',
+    lessonsActivity: 'درس‌ها', practiceActivity: 'MCQ و آزمون بالینی', flashActivity: 'فلش‌کارت',
+    totalActivity: 'مجموع', activityTrackingHint: 'تفکیک زمان بر اساس بخش آموزشی از این پس ثبت می‌شود؛ فعالیت قبلی در مجموع باقی می‌ماند.',
+    readAvailable: 'موضوع موجود مطالعه‌شده', flashProgress: 'فلش‌کارت در مرحله ۳۰ روز',
+    mcqCorrect: 'پاسخ صحیح MCQ', noMcqYet: 'هنوز MCQ ندارد', nextStep: 'گام بعدی',
+    openArea: 'نمایش جزئیات', closeArea: 'بستن جزئیات',
     recommendations: 'پیشنهادها', learnMcq: 'تمرین MCQ', learnFlash: 'مطالعه فلش‌کارت',
-    clerkData: 'اطلاعات حساب Clerk', clerkDataHint: 'اطلاعات ورود و حساب‌های متصل از Clerk.',
+    clerkData: 'اطلاعات ورود', clerkDataHint: 'ایمیل، روش ورود و آخرین ورود.',
     primaryEmail: 'ایمیل اصلی', username: 'نام کاربری', loginOrigin: 'ورود از طریق',
     lastSignIn: 'آخرین ورود', noValue: 'ثبت نشده',
     subscriptionTitle: 'اشتراک', subscriptionActiveUntil: 'فعال تا',
@@ -242,25 +260,82 @@ function formatDuration(seconds, lang) {
   return lang === 'fa' ? `${minutes} دقیقه` : `${minutes} min`
 }
 
-function getActivity(leitner, mcqScores, lang) {
+function formatCompactDuration(seconds, lang) {
+  const minutes = Math.round(Number(seconds || 0) / 60)
+  if (minutes < 60) return lang === 'fa' ? `${minutes} د` : `${minutes} min`
+  const hours = Math.floor(minutes / 60)
+  const rest = minutes % 60
+  return lang === 'fa' ? `${hours} س ${rest} د` : `${hours} h ${rest} min`
+}
+
+function getActivity(daysByDate, lang) {
   const locale = lang === 'fa' ? 'fa-IR' : lang === 'en' ? 'en-GB' : 'de-DE'
-  const days = Array.from({ length: 7 }, (_, index) => {
+  return Array.from({ length: 14 }, (_, index) => {
     const date = new Date()
     date.setHours(0, 0, 0, 0)
-    date.setDate(date.getDate() - (6 - index))
-    return { date, count: 0, label: new Intl.DateTimeFormat(locale, { weekday: 'short' }).format(date) }
+    date.setDate(date.getDate() - (13 - index))
+    const key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+    const stored = daysByDate[key] || {}
+    return {
+      date,
+      key,
+      label: new Intl.DateTimeFormat(locale, { weekday: 'short', day: '2-digit', month: '2-digit' }).format(date),
+      total: Number(stored.activeSeconds || 0),
+      lessons: Number(stored.categories?.lessons || 0),
+      practice: Number(stored.categories?.practice || 0),
+      flashcards: Number(stored.categories?.flashcards || 0),
+    }
   })
-  Object.values(leitner).forEach(record => {
-    if (!record.lastReviewedAt) return
-    const day = days.find(item => item.date.toDateString() === new Date(record.lastReviewedAt).toDateString())
-    if (day) day.count += 1
+}
+
+function getAreaLearningData(progress, leitner, mcqScores) {
+  const readTopicIds = new Set(progress.readTopics.map(item => item.thema.id))
+
+  return progress.areas.map(area => {
+    const chapters = area.chapters.map(chapter => {
+      const chapterTopics = area.topics.filter(item => item.kapitel.id === chapter.kapitel.id)
+      const flashTopicIds = [...new Set(chapterTopics
+        .map(item => item.thema.flashcardLink?.split('/').filter(Boolean).at(-1))
+        .filter(Boolean))]
+      const cardRecords = Object.entries(leitner)
+        .filter(([cardId]) => flashTopicIds.some(topicId => cardId.startsWith(`${topicId}-`)))
+        .map(([, record]) => record)
+      const startedCards = cardRecords.filter(record => Number(record.seenCount || 0) > 0)
+      const thirtyDayCards = startedCards.filter(record => record.status === 'mastered' || Number(record.box || 0) >= 5)
+      const mcqTopicIds = MCQ_TOPIC_GROUPS
+        .filter(group => group.fachId === area.fach.id && group.kapitelId === chapter.kapitel.id)
+        .flatMap(group => group.topics.map(topic => topic.id))
+      const mcqResults = mcqTopicIds.map(topicId => mcqScores[topicId]).filter(Boolean)
+      const attempted = mcqResults.reduce((sum, score) => sum + Number(score.attempted || 0), 0)
+      const correct = mcqResults.reduce((sum, score) => sum + Number(score.correct || 0), 0)
+      const nextTopic = chapterTopics.find(({ thema }) => !readTopicIds.has(thema.id))
+
+      return {
+        ...chapter,
+        flashStarted: startedCards.length,
+        flashThirtyDays: thirtyDayCards.length,
+        flashPct: startedCards.length ? Math.round((thirtyDayCards.length / startedCards.length) * 100) : 0,
+        mcqAttempted: attempted,
+        mcqCorrect: correct,
+        mcqPct: attempted ? Math.round((correct / attempted) * 100) : 0,
+        nextTopic,
+      }
+    })
+    const flashStarted = chapters.reduce((sum, chapter) => sum + chapter.flashStarted, 0)
+    const flashThirtyDays = chapters.reduce((sum, chapter) => sum + chapter.flashThirtyDays, 0)
+    const mcqAttempted = chapters.reduce((sum, chapter) => sum + chapter.mcqAttempted, 0)
+    const mcqCorrect = chapters.reduce((sum, chapter) => sum + chapter.mcqCorrect, 0)
+    return {
+      ...area,
+      chapters,
+      flashStarted,
+      flashThirtyDays,
+      flashPct: flashStarted ? Math.round((flashThirtyDays / flashStarted) * 100) : 0,
+      mcqAttempted,
+      mcqCorrect,
+      mcqPct: mcqAttempted ? Math.round((mcqCorrect / mcqAttempted) * 100) : 0,
+    }
   })
-  Object.values(mcqScores).forEach(score => {
-    if (!score.lastDate) return
-    const day = days.find(item => item.date.toDateString() === new Date(score.lastDate).toDateString())
-    if (day) day.count += Number(score.attempted || 0)
-  })
-  return days
 }
 
 export default function ProfilPage() {
@@ -284,6 +359,7 @@ export default function ProfilPage() {
   const [contact, setContact] = useState({ type: '', subject: '', message: '' })
   const [contactState, setContactState] = useState('idle')
   const [isAdmin, setIsAdmin] = useState(false)
+  const [openAreaId, setOpenAreaId] = useState(null)
 
   useEffect(() => {
     fetch('/api/admin/session', { cache: 'no-store' })
@@ -315,7 +391,11 @@ export default function ProfilPage() {
   }, [user])
 
   const progress = useMemo(() => getProgressData(readArticles), [readArticles])
-  const activity = useMemo(() => getActivity(leitner, mcqScores, lang), [leitner, mcqScores, lang])
+  const areaLearningData = useMemo(
+    () => getAreaLearningData(progress, leitner, mcqScores),
+    [progress, leitner, mcqScores]
+  )
+  const activity = useMemo(() => getActivity(activitySummary.days || {}, lang), [activitySummary.days, lang])
 
   if (!isLoaded) return <div className={styles.page}><Navbar /></div>
   if (!user) return (
@@ -334,7 +414,9 @@ export default function ProfilPage() {
   const subscriptionActive = isSubscriptionActive(user)
   const records = Object.values(leitner)
   const dueToday = records.filter(isDue).length
-  const mastered = records.filter(record => record.status === 'mastered').length
+  const thirtyDayCards = records.filter(record =>
+    Number(record.seenCount || 0) > 0 && (record.status === 'mastered' || Number(record.box || 0) >= 5)
+  ).length
   const totalAttempted = Object.values(mcqScores).reduce((sum, score) => sum + Number(score.attempted || 0), 0)
   const totalCorrect = Object.values(mcqScores).reduce((sum, score) => sum + Number(score.correct || 0), 0)
   const mcqAccuracy = totalAttempted ? Math.round((totalCorrect / totalAttempted) * 100) : 0
@@ -347,7 +429,6 @@ export default function ProfilPage() {
   const dailyGoal = Number(settings.mcqDailyGoal || 10)
   const dailyGoalPct = Math.min(100, Math.round((todayAttempted / dailyGoal) * 100))
   const wrongQuestionIds = [...new Set(Object.values(mcqScores).flatMap(score => score.wrongQuestionIds || []))]
-  const flashWrong = records.reduce((sum, record) => sum + Number(record.wrongCount || 0), 0)
   const startedCards = records.filter(record => Number(record.seenCount || 0) > 0).length
   const unpractisedMcq = MCQ_TOPIC_GROUPS.flatMap(group =>
     group.topics.map(topic => ({ ...topic, fachId: group.fachId }))
@@ -358,10 +439,10 @@ export default function ProfilPage() {
     .sort((a, b) => new Date(b.learnedAt) - new Date(a.learnedAt))
     .map(item => topicLookup.get(item.topicId))
     .filter(Boolean)
-    .slice(0, 5)
-  const displayedRecentTopics = recentTopics.length ? recentTopics : progress.readTopics.slice(-5).reverse()
+    .slice(0, 10)
+  const displayedRecentTopics = (recentTopics.length ? recentTopics : progress.readTopics.slice().reverse()).slice(0, 10)
   const connectedProviders = user.externalAccounts?.map(account => account.provider).filter(Boolean) || []
-  const maxActivity = Math.max(...activity.map(day => day.count), 1)
+  const thirtyDayPct = startedCards ? Math.round((thirtyDayCards / startedCards) * 100) : 0
   const initials = (user.firstName?.[0] ?? user.emailAddresses?.[0]?.emailAddress?.[0] ?? '?').toUpperCase()
   const displayName = user.firstName || user.username || user.emailAddresses?.[0]?.emailAddress
   const memberSince = user.createdAt
@@ -485,65 +566,113 @@ export default function ProfilPage() {
                   <article className={styles.metricCard}><span className={styles.metricIndex}>05</span><strong>{mcqAccuracy}<small>%</small></strong><p>{t.mcqAccuracy}</p></article>
                 </section>
 
-                <section className={styles.contentGrid}>
-                  <div className={`${styles.card} ${styles.areaCard}`}>
-                    <div className={styles.sectionHeading}>
-                      <div><h2>{t.learningAreas}</h2><p>{t.learningAreasSub}</p></div>
-                      <Link href="/lernen">{t.browseTopics} →</Link>
-                    </div>
-                    <div className={styles.areaList}>
-                      {progress.areas.map(({ fach: area, read, total, pct }) => (
-                        <div className={styles.areaBlock} key={area.id}>
-                          <div className={styles.areaRow}>
+                <section className={`${styles.card} ${styles.areaCard}`}>
+                  <div className={styles.sectionHeading}>
+                    <div><h2>{t.learningAreas}</h2><p>{t.learningAreasSub}</p></div>
+                    <Link href="/lernen">{t.browseTopics} →</Link>
+                  </div>
+                  <div className={styles.areaList}>
+                    {areaLearningData.map(area => {
+                      const isOpen = openAreaId === area.fach.id
+                      return (
+                        <div className={`${styles.areaBlock} ${isOpen ? styles.areaBlockOpen : ''}`} key={area.fach.id}>
+                          <button
+                            type="button"
+                            className={styles.areaRow}
+                            onClick={() => setOpenAreaId(isOpen ? null : area.fach.id)}
+                            aria-expanded={isOpen}
+                          >
                             <div className={styles.areaIdentity}>
                               <span className={styles.areaIcon}>
-                                <Image src={`/fach/${area.imageId || area.id}.png`} alt="" width={28} height={28} style={{ objectFit: 'contain', width: '100%', height: '100%' }} />
+                                <Image src={`/fach/${area.fach.imageId || area.fach.id}.png`} alt="" width={28} height={28} style={{ objectFit: 'contain', width: '100%', height: '100%' }} />
                               </span>
-                              <div><strong>{getFachTitle(area, lang)}</strong><small>{read} {t.completed} · {total} {t.available}</small></div>
+                              <div>
+                                <strong>{getFachTitle(area.fach, lang)}</strong>
+                                <small>{area.read} {t.completed} · {area.total} {t.available}</small>
+                              </div>
+                            </div>
+                            <div className={styles.areaSummary}>
+                              <span>{area.pct}% {t.readAvailable}</span>
+                              <span>{area.flashThirtyDays}/{area.flashStarted} {t.flashThirtyDays}</span>
+                              <span>{area.mcqAttempted ? `${area.mcqPct}% ${t.mcqCorrect}` : t.noMcqYet}</span>
                             </div>
                             <div className={styles.areaProgress}>
-                              <div className={styles.areaBar}><span style={{ width: `${pct}%` }} /></div><strong>{pct}%</strong>
+                              <div className={styles.areaBar}><span style={{ width: `${area.pct}%` }} /></div>
+                              <strong>{area.pct}%</strong>
                             </div>
-                          </div>
-                          <div className={styles.chapterMiniList}>
-                            {progress.areas.find(item => item.fach.id === area.id)?.chapters.map(chapter => (
-                              <div className={styles.chapterMiniRow} key={chapter.kapitel.id}>
-                                <span>{getKapitelTitle(chapter.kapitel, lang)}</span>
-                                <div><i style={{ width: `${chapter.pct}%` }} /></div>
-                                <b>{chapter.pct}%</b>
-                              </div>
-                            ))}
-                          </div>
+                            <span className={`${styles.areaChevron} ${isOpen ? styles.areaChevronOpen : ''}`} aria-label={isOpen ? t.closeArea : t.openArea}>›</span>
+                          </button>
+                          {isOpen && (
+                            <div className={styles.areaDetails}>
+                              {area.chapters.map(chapter => (
+                                <article className={styles.chapterDetail} key={chapter.kapitel.id}>
+                                  <div className={styles.chapterDetailHeading}>
+                                    <div>
+                                      <strong>{getKapitelTitle(chapter.kapitel, lang)}</strong>
+                                      <small>{chapter.read}/{chapter.total} {t.readAvailable}</small>
+                                    </div>
+                                    <b>{chapter.pct}%</b>
+                                  </div>
+                                  <div className={styles.chapterDetailBar}><span style={{ width: `${chapter.pct}%` }} /></div>
+                                  <div className={styles.chapterStats}>
+                                    <span><b>{chapter.pct}%</b>{t.readAvailable}</span>
+                                    <span><b>{chapter.flashThirtyDays}/{chapter.flashStarted}</b>{t.flashProgress}</span>
+                                    <span><b>{chapter.mcqAttempted ? `${chapter.mcqPct}%` : '–'}</b>{chapter.mcqAttempted ? `${chapter.mcqCorrect}/${chapter.mcqAttempted} ${t.mcqCorrect}` : t.noMcqYet}</span>
+                                  </div>
+                                  {chapter.nextTopic && (
+                                    <Link className={styles.nextStepLink} href={chapter.nextTopic.thema.link}>
+                                      <span>{t.nextStep}</span>
+                                      <strong>{getThemaTitle(chapter.nextTopic.thema, lang)} →</strong>
+                                    </Link>
+                                  )}
+                                </article>
+                              ))}
+                            </div>
+                          )}
                         </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className={styles.sideStack}>
-                    <div className={styles.card}>
-                      <div className={styles.sectionHeading}><div><h2>{t.activity}</h2><p>{t.activitySub}</p></div></div>
-                      <div className={styles.activityChart}>
-                        {activity.map(day => (
-                          <div className={styles.activityDay} key={day.date.toISOString()}>
-                            <div className={styles.activityTrack}><span style={{ height: day.count ? `${Math.max((day.count / maxActivity) * 100, 10)}%` : '3px' }} /></div>
-                            <small>{day.label}</small>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className={styles.card}>
-                      <div className={styles.sectionHeading}><div><h2>{t.flashReport}</h2></div><Link href="/flashcards">{t.toFlashcards} →</Link></div>
-                      <div className={styles.flashReportGrid}>
-                        <div><strong>{startedCards}</strong><span>{t.flashSeen}</span></div>
-                        <div><strong>{dueToday}</strong><span>{t.flashDue}</span></div>
-                        <div><strong>{flashWrong}</strong><span>{t.flashWrong}</span></div>
-                        <div><strong>{mastered}</strong><span>{t.cardsMastered}</span></div>
-                      </div>
-                    </div>
+                      )
+                    })}
                   </div>
                 </section>
 
+                <section className={`${styles.card} ${styles.activityCard}`}>
+                  <div className={styles.sectionHeading}><div><h2>{t.activity}</h2><p>{t.activitySub}</p></div></div>
+                  <div className={styles.activityLegend}>
+                    <span><i className={styles.legendLessons} />{t.lessonsActivity}</span>
+                    <span><i className={styles.legendPractice} />{t.practiceActivity}</span>
+                    <span><i className={styles.legendFlash} />{t.flashActivity}</span>
+                  </div>
+                  <div className={styles.activityTable}>
+                    <div className={`${styles.activityRow} ${styles.activityHeader}`}>
+                      <strong />
+                      <span>{t.lessonsActivity}</span>
+                      <span>{t.practiceActivity}</span>
+                      <span>{t.flashActivity}</span>
+                      <b>{t.totalActivity}</b>
+                    </div>
+                    {activity.map(day => (
+                      <div className={styles.activityRow} key={day.key}>
+                        <strong>{day.label}</strong>
+                        <span className={styles.activityTime}><i className={styles.legendLessons} />{formatCompactDuration(day.lessons, lang)}</span>
+                        <span className={styles.activityTime}><i className={styles.legendPractice} />{formatCompactDuration(day.practice, lang)}</span>
+                        <span className={styles.activityTime}><i className={styles.legendFlash} />{formatCompactDuration(day.flashcards, lang)}</span>
+                        <b>{formatCompactDuration(day.total, lang)}</b>
+                      </div>
+                    ))}
+                  </div>
+                  <p className={styles.activityHint}>{t.activityTrackingHint}</p>
+                </section>
+
                 <section className={styles.dashboardTwoCol}>
+                  <div className={styles.card}>
+                    <div className={styles.sectionHeading}><div><h2>{t.flashReport}</h2><p>{t.flashThirtyDaysHint}</p></div><Link href="/flashcards">{t.toFlashcards} →</Link></div>
+                    <div className={styles.flashReportGrid}>
+                      <div><strong>{startedCards}</strong><span>{t.flashSeen}</span></div>
+                      <div><strong>{dueToday}</strong><span>{t.flashDue}</span></div>
+                      <div><strong>{thirtyDayCards} <small>({thirtyDayPct}%)</small></strong><span>{t.flashThirtyDays}</span></div>
+                    </div>
+                  </div>
+
                   <div className={styles.card}>
                     <div className={styles.sectionHeading}><div><h2>{t.dailyGoal}</h2><p>{todayAttempted} / {dailyGoal} · {t.todayDone}</p></div></div>
                     <div className={styles.goalBar}><span style={{ width: `${dailyGoalPct}%` }} /></div>
@@ -568,41 +697,23 @@ export default function ProfilPage() {
                       </div>
                     )}
                   </div>
-
-                  <div className={styles.card}>
-                    <div className={styles.sectionHeading}><div><h2>{t.recentTopics}</h2><p>{t.recommendations}</p></div></div>
-                    {displayedRecentTopics.length ? (
-                        <div className={styles.recentList}>
-                          {displayedRecentTopics.map(({ fach: area, kapitel, thema }) => (
-                            <div key={thema.id} className={styles.recentLearningRow}>
-                              <Link href={thema.link} className={styles.recentItem}>
-                              <span>{area.icon}</span>
-                              <div><strong>{getThemaTitle(thema, lang)}</strong><small>{getFachTitle(area, lang)} · {getKapitelTitle(kapitel, lang)}</small></div><b>→</b>
-                              </Link>
-                              <div className={styles.recommendationLinks}>
-                                <Link href={thema.mcqLink || '/ueben'}>{t.learnMcq}</Link>
-                                <Link href={thema.flashcardLink || '/flashcards'}>{t.learnFlash}</Link>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      ) : <p className={styles.emptyState}>{t.recentTopicsEmpty}</p>}
-                  </div>
                 </section>
 
                 <section className={styles.lessonColumns}>
                   <div className={styles.card}>
-                    <div className={styles.sectionHeading}><div><h2>{t.learnedLessons}</h2></div></div>
-                    <div className={styles.lessonList}>
-                      {progress.readTopics.slice(-8).reverse().map(({ fach: area, thema }) => (
-                        <Link key={thema.id} href={thema.link}><span>✓</span><div><strong>{getThemaTitle(thema, lang)}</strong><small>{getFachTitle(area, lang)}</small></div></Link>
-                      ))}
-                    </div>
+                    <div className={styles.sectionHeading}><div><h2>{t.recentTopics}</h2></div></div>
+                    {displayedRecentTopics.length ? (
+                      <div className={styles.lessonList}>
+                        {displayedRecentTopics.map(({ fach: area, kapitel, thema }) => (
+                          <Link key={thema.id} href={thema.link}><span>✓</span><div><strong>{getThemaTitle(thema, lang)}</strong><small>{getFachTitle(area, lang)} · {getKapitelTitle(kapitel, lang)}</small></div></Link>
+                        ))}
+                      </div>
+                    ) : <p className={styles.emptyState}>{t.recentTopicsEmpty}</p>}
                   </div>
                   <div className={styles.card}>
                     <div className={styles.sectionHeading}><div><h2>{t.unreadLessons}</h2></div></div>
                     <div className={styles.lessonList}>
-                      {progress.unreadTopics.slice(0, 8).map(({ fach: area, thema }) => (
+                      {progress.unreadTopics.slice(0, 10).map(({ fach: area, thema }) => (
                         <Link key={thema.id} href={thema.link}><span>○</span><div><strong>{getThemaTitle(thema, lang)}</strong><small>{getFachTitle(area, lang)} · {t.openLesson}</small></div></Link>
                       ))}
                     </div>
@@ -612,6 +723,19 @@ export default function ProfilPage() {
             ) : (
               <div className={styles.settingsView}>
                 <div className={styles.settingsHeader}><span>{t.profileLabel}</span><h1>{t.settings}</h1></div>
+                <section className={styles.card}>
+                  <div className={styles.sectionHeading}><div><h2>{t.clerkData}</h2><p>{t.clerkDataHint}</p></div></div>
+                  <div className={styles.accountDataGrid}>
+                    <div><span>{t.primaryEmail}</span><strong>{user.primaryEmailAddress?.emailAddress || t.noValue}</strong></div>
+                    <div><span>{t.username}</span><strong>{user.username || t.noValue}</strong></div>
+                    <div><span>{t.loginOrigin}</span><strong>{connectedProviders.length ? connectedProviders.join(', ') : 'E-Mail / Passwort'}</strong></div>
+                    <div><span>{t.lastSignIn}</span><strong>{user.lastSignInAt ? new Date(user.lastSignInAt).toLocaleString() : t.noValue}</strong></div>
+                  </div>
+                  <div className={styles.clerkAction}>
+                    <button type="button" className={styles.outlineBtn} onClick={() => openUserProfile()}>{t.manageAccount}</button>
+                  </div>
+                </section>
+
                 <section className={styles.card}>
                   <div className={styles.sectionHeading}><div><h2>{t.profileSection}</h2></div></div>
                   <div className={styles.form}>
@@ -699,19 +823,6 @@ export default function ProfilPage() {
                   <div className={styles.settingsDivider} />
                   <div className={styles.settingsRow}>
                     <div className={styles.settingsText}><strong>{t.accountSettings}</strong><p>{t.accountSettingsHint}</p></div>
-                    <button type="button" className={styles.outlineBtn} onClick={() => openUserProfile()}>{t.manageAccount}</button>
-                  </div>
-                </section>
-
-                <section className={styles.card}>
-                  <div className={styles.sectionHeading}><div><h2>{t.clerkData}</h2><p>{t.clerkDataHint}</p></div></div>
-                  <div className={styles.accountDataGrid}>
-                    <div><span>{t.primaryEmail}</span><strong>{user.primaryEmailAddress?.emailAddress || t.noValue}</strong></div>
-                    <div><span>{t.username}</span><strong>{user.username || t.noValue}</strong></div>
-                    <div><span>{t.loginOrigin}</span><strong>{connectedProviders.length ? connectedProviders.join(', ') : 'E-Mail / Passwort'}</strong></div>
-                    <div><span>{t.lastSignIn}</span><strong>{user.lastSignInAt ? new Date(user.lastSignInAt).toLocaleString() : t.noValue}</strong></div>
-                  </div>
-                  <div className={styles.clerkAction}>
                     <button type="button" className={styles.outlineBtn} onClick={() => openUserProfile()}>{t.manageAccount}</button>
                   </div>
                 </section>

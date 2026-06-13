@@ -18,12 +18,17 @@ export function loadActivity(userId) {
   }
 }
 
-export function addActiveSeconds(userId, seconds) {
+export function addActiveSeconds(userId, seconds, category = 'other') {
   if (typeof window === 'undefined' || seconds <= 0) return
   const activity = loadActivity(userId)
   const today = dateKey(new Date())
   const day = activity.days[today] || { activeSeconds: 0, visits: 0 }
-  day.activeSeconds += Math.round(seconds)
+  const roundedSeconds = Math.round(seconds)
+  day.activeSeconds += roundedSeconds
+  day.categories = {
+    ...(day.categories || {}),
+    [category]: Number(day.categories?.[category] || 0) + roundedSeconds,
+  }
   activity.days[today] = day
   localStorage.setItem(keyFor(userId), JSON.stringify(activity))
   window.dispatchEvent(new CustomEvent('radyar:activity-updated'))

@@ -1153,15 +1153,40 @@
 .sectionHeading > a { flex-shrink: 0; color: var(--orange); font-size: 11px; font-weight: 800; text-decoration: none; }
 
 .areaList { display: grid; gap: 8px; }
-.areaBlock { overflow: hidden; border-radius: 14px; background: var(--surface-soft); }
+.areaBlock { overflow: hidden; border: 1px solid transparent; border-radius: 14px; background: var(--surface-soft); }
+.areaBlockOpen { border-color: rgba(249,115,22,.28); background: var(--bg-card); }
 .areaRow {
+  position: relative;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
   padding: 13px 14px;
+  border: 0;
   border-radius: 14px;
   background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+.areaRow:hover { background: rgba(249,115,22,.06); }
+.areaSummary {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 5px;
+}
+.areaSummary span {
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  font-size: 8px;
+  font-weight: 800;
 }
 .areaIdentity { display: flex; align-items: center; gap: 12px; min-width: 0; }
 .areaIcon {
@@ -1181,6 +1206,48 @@
 .areaProgress > strong { width: 34px; color: var(--text-soft); font-size: 11px; text-align: end; }
 .areaBar { height: 6px; flex: 1; overflow: hidden; border-radius: 99px; background: var(--border); }
 .areaBar span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #f97316, #fbbf24); }
+.areaChevron {
+  color: var(--text-muted);
+  font-size: 24px;
+  line-height: 1;
+  transition: transform .2s, color .2s;
+}
+.areaChevronOpen { color: var(--orange); transform: rotate(90deg); }
+.areaDetails {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 4px 14px 14px;
+}
+.chapterDetail {
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-soft);
+}
+.chapterDetailHeading { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.chapterDetailHeading strong, .chapterDetailHeading small { display: block; }
+.chapterDetailHeading strong { color: var(--text-strong); font-size: 11px; line-height: 1.4; }
+.chapterDetailHeading small { margin-top: 3px; color: var(--text-muted); font-size: 8px; }
+.chapterDetailHeading > b { color: var(--orange); font-size: 13px; }
+.chapterDetailBar { height: 5px; margin-top: 10px; overflow: hidden; border-radius: 999px; background: var(--border); }
+.chapterDetailBar span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #f97316, #10b981); }
+.chapterStats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-top: 10px; }
+.chapterStats span { min-width: 0; color: var(--text-muted); font-size: 7px; line-height: 1.35; }
+.chapterStats b { display: block; margin-bottom: 2px; color: var(--text-strong); font-size: 11px; }
+.nextStepLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 11px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 8px;
+  text-decoration: none;
+}
+.nextStepLink strong { overflow: hidden; color: var(--orange); font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
 .chapterMiniList { display: grid; gap: 7px; padding: 0 14px 12px 64px; }
 .chapterMiniRow { display: grid; grid-template-columns: minmax(0, 1fr) 90px 34px; align-items: center; gap: 8px; }
 .chapterMiniRow > span { overflow: hidden; color: var(--text-muted); font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
@@ -1193,6 +1260,30 @@
 .activityTrack { display: flex; height: 100%; align-items: flex-end; justify-content: center; overflow: hidden; border-radius: 8px; background: var(--surface-soft); }
 .activityTrack span { width: 100%; border-radius: 8px 8px 4px 4px; background: linear-gradient(180deg, #fb923c, #f97316); transition: height .3s; }
 .activityDay small { color: var(--text-muted); font-size: 9px; font-weight: 700; }
+.activityCard { margin-top: 16px; }
+.activityLegend { display: flex; flex-wrap: wrap; gap: 14px; margin: -6px 0 14px; }
+.activityLegend span, .activityTime { display: inline-flex; align-items: center; gap: 6px; }
+.activityLegend span { color: var(--text-muted); font-size: 9px; font-weight: 800; }
+.activityLegend i, .activityTime i { width: 8px; height: 8px; flex: 0 0 8px; border-radius: 50%; }
+.legendLessons { background: #f97316; }
+.legendPractice { background: #3b82f6; }
+.legendFlash { background: #10b981; }
+.activityTable { display: grid; gap: 6px; }
+.activityRow {
+  display: grid;
+  grid-template-columns: 82px repeat(3, minmax(0, 1fr)) 58px;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 10px;
+  border-radius: 11px;
+  background: var(--surface-soft);
+}
+.activityRow > strong { color: var(--text-strong); font-size: 9px; }
+.activityTime { color: var(--text-muted); font-size: 8px; white-space: nowrap; }
+.activityRow > b { color: var(--text-strong); font-size: 9px; text-align: end; white-space: nowrap; }
+.activityHeader { padding-block: 3px; background: transparent; }
+.activityHeader span, .activityHeader b { color: var(--text-muted); font-size: 8px; font-weight: 900; }
+.activityHint { margin: 12px 0 0; color: var(--text-muted); font-size: 9px; line-height: 1.5; }
 
 .recentList { display: grid; gap: 5px; }
 .recentItem {
@@ -1213,10 +1304,11 @@
 .recentItem b { color: var(--orange); font-size: 12px; }
 .emptyState { margin: 0; color: var(--text-muted); font-size: 13px; line-height: 1.6; }
 
-.flashReportGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 9px; }
+.flashReportGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
 .flashReportGrid > div { padding: 13px; border: 1px solid var(--border); border-radius: 13px; background: var(--surface-soft); }
 .flashReportGrid strong, .flashReportGrid span { display: block; }
 .flashReportGrid strong { color: var(--text-strong); font-size: 22px; }
+.flashReportGrid strong small { color: var(--orange); font-size: 11px; }
 .flashReportGrid span { margin-top: 3px; color: var(--text-muted); font-size: 9px; font-weight: 700; }
 
 .dashboardTwoCol, .lessonColumns {
@@ -1328,6 +1420,8 @@
   .sideStack { grid-template-columns: 1fr; }
   .dashboardTwoCol, .lessonColumns { grid-template-columns: 1fr; }
   .metricGrid { grid-template-columns: repeat(2, 1fr); }
+  .areaSummary { display: none; }
+  .areaDetails { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 560px) {
@@ -1337,6 +1431,12 @@
   .accountDataGrid { grid-template-columns: 1fr; }
   .chapterMiniList { padding-left: 14px; }
   .areaProgress { width: 100%; }
+  .areaChevron { position: absolute; align-self: flex-end; }
+  .activityRow { grid-template-columns: 1fr 1fr; }
+  .activityRow > strong, .activityRow > b { grid-column: auto; }
+  .activityTime { justify-content: flex-start; }
+  .activityHeader { display: none; }
+  .flashReportGrid { grid-template-columns: 1fr; }
   .settingsRow { align-items: flex-start; flex-direction: column; }
   .formFooter { align-items: stretch; flex-direction: column; }
   .formFooter .saveBtn { width: 100%; }

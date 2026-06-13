@@ -26,6 +26,19 @@ function sendActivity(payload) {
   }).catch(() => {})
 }
 
+function getActivityCategory(pathname) {
+  if (pathname.startsWith('/flashcards')) return 'flashcards'
+  if (pathname.startsWith('/ueben') || pathname.startsWith('/mcq') || pathname.startsWith('/faelle')) return 'practice'
+  if (
+    pathname.startsWith('/lernen') ||
+    pathname.startsWith('/abdomen') ||
+    pathname.startsWith('/lunge') ||
+    pathname.startsWith('/msk') ||
+    pathname.startsWith('/technik')
+  ) return 'lessons'
+  return 'other'
+}
+
 export default function ActivityTracker() {
   const { user, isLoaded } = useUser()
   const pathname = usePathname()
@@ -33,6 +46,7 @@ export default function ActivityTracker() {
   useEffect(() => {
     if (!isLoaded) return
     const userId = user?.id || null
+    const activityCategory = getActivityCategory(pathname)
     const visitorId = getVisitorId()
     const isNewSession = !sessionStorage.getItem(SESSION_KEY)
     if (isNewSession) sessionStorage.setItem(SESSION_KEY, '1')
@@ -58,7 +72,7 @@ export default function ActivityTracker() {
     const flush = () => {
       const seconds = Math.round(pendingSeconds)
       if (seconds >= 1) {
-        if (userId) addActiveSeconds(userId, seconds)
+        if (userId) addActiveSeconds(userId, seconds, activityCategory)
         sendActivity({
           visitorId,
           path: pathname,
