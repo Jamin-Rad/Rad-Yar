@@ -127,3 +127,49 @@ export function formatDueDate(record, lang = 'de') {
   const locale = { de:'de-DE', en:'en-GB', fa:'fa-IR' }[lang] ?? 'de-DE'
   return new Date(record.dueAt).toLocaleDateString(locale, { day:'2-digit', month:'short', year:'numeric' })
 }
+
+// ─── Server-Sync (nur für eingeloggte Nutzer) ──────────────────────
+// localStorage bleibt die sofort verfügbare Quelle für die UI;
+// der Server (Supabase `leitner_cards`) ermöglicht geräteübergreifenden Sync.
+
+export async function syncLeitnerCardToServer(cardId, record) {
+  try {
+    await fetch('/api/progress/leitner', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cardId, record }),
+    })
+  } catch (_) {}
+}
+
+/**
+ * Holt den Server-Stand und merged ihn in den lokalen Zustand.
+ * Pro Karte gewinnt der "fortgeschrittenere" Eintrag (neueres lastReviewedAt).
+ */
+export async function pullLeitnerStateFromServer(userId) {
+  try {
+    const res = await fetch('/api/progress/leitner')
+    if (!res.ok) return loadLeitnerState(userId)
+    const { cards } = await res.json()
+    const local = loadLeitnerState(userId)
+    let changed = false
+    for (const [cardId, serverRecord] of Object.entries(cards || {})) {
+      const localRecord = local[cardId]
+      if (!localRecord) {
+        local[cardId] = serverRecord
+        changed = true
+        continue
+      }
+      const localTime = new Date(localRecord.lastReviewedAt || localRecord.addedAt || 0).getTime()
+      const serverTime = new Date(serverRecord.lastReviewedAt || serverRecord.addedAt || 0).getTime()
+      if (serverTime > localTime) {
+        local[cardId] = serverRecord
+        changed = true
+      }
+    }
+    if (changed) saveLeitnerState(local, userId)
+    return local
+  } catch (_) {
+    return loadLeitnerState(userId)
+  }
+}

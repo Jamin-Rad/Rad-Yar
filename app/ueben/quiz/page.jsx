@@ -238,6 +238,13 @@ function QuizContent() {
         lastSessionAttempted: finalAnswers.length,
       }
       localStorage.setItem('radyar_mcq_scores', JSON.stringify(scores))
+      if (user?.id) {
+        fetch('/api/progress/mcq-results', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ bulk: scores }),
+        }).catch(() => {})
+      }
     } catch {}
   }
 

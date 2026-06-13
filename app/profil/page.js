@@ -6,7 +6,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import { useLanguage } from '@/providers/LanguageProvider'
-import { loadLeitnerState, resetLeitnerState, isDue } from '@/utils/leitnerStorage'
+import { resetLeitnerState, isDue, pullLeitnerStateFromServer } from '@/utils/leitnerStorage'
+import { syncLocalProgressToServer } from '@/utils/syncProgressToServer'
 import { loadSettings, saveSettings } from '@/utils/settingsStorage'
 import { CURRICULUM, getFachTitle, getKapitelTitle, getThemaTitle } from '@/data/curriculum'
 import { MCQ_TOPIC_GROUPS } from '@/data/questions'
@@ -373,14 +374,58 @@ export default function ProfilPage() {
     setSpitzname(user.firstName ?? '')
     setFach(user.unsafeMetadata?.fachrichtung ?? '')
     setStufe(user.unsafeMetadata?.ausbildungsstufe ?? '')
-    setLeitner(loadLeitnerState(user.id))
     setSettings(loadSettings())
+    let localReadArticles = {}
+    let localMcqScores = {}
+    let localLearningHistory = []
     try {
-      setReadArticles(JSON.parse(localStorage.getItem('radyar_read_articles') || '{}'))
-      setMcqScores(JSON.parse(localStorage.getItem('radyar_mcq_scores') || '{}'))
-      setLearningHistory(JSON.parse(localStorage.getItem('radyar_learning_history') || '[]'))
-      setActivitySummary(getActivitySummary(user.id))
+      localReadArticles = JSON.parse(localStorage.getItem('radyar_read_articles') || '{}')
+      localMcqScores = JSON.parse(localStorage.getItem('radyar_mcq_scores') || '{}')
+      localLearningHistory = JSON.parse(localStorage.getItem('radyar_learning_history') || '[]')
     } catch {}
+    setReadArticles(localReadArticles)
+    setMcqScores(localMcqScores)
+    setLearningHistory(localLearningHistory)
+    setActivitySummary(getActivitySummary(user.id))
+
+    // Einmalig: bestehende localStorage-Daten in Supabase übernehmen (Geräte-Sync)
+    syncLocalProgressToServer(user.id)
+
+    pullLeitnerStateFromServer(user.id).then(setLeitner)
+
+    // Lesefortschritt vom Server holen und mergen (Server gewinnt bei "gelesen")
+    fetch('/api/progress/read-status')
+      .then(res => (res.ok ? res.json() : null))
+      .then(data => {
+        if (!data) return
+        const mergedRead = { ...localReadArticles }
+        for (const [id, read] of Object.entries(data.read || {})) {
+          if (read) mergedRead[id] = 1
+        }
+        setReadArticles(mergedRead)
+        const historyById = new Map(localLearningHistory.map(item => [item.topicId, item]))
+        for (const item of data.history || []) {
+          historyById.set(item.topicId, item)
+        }
+        setLearningHistory([...historyById.values()])
+      })
+      .catch(() => {})
+
+    // MCQ-Ergebnisse vom Server holen und mergen (neuerer lastDate gewinnt)
+    fetch('/api/progress/mcq-results')
+      .then(res => (res.ok ? res.json() : null))
+      .then(data => {
+        if (!data) return
+        const merged = { ...localMcqScores }
+        for (const [themaId, serverResult] of Object.entries(data.scores || {})) {
+          const localResult = merged[themaId]
+          if (!localResult || new Date(serverResult.lastDate) > new Date(localResult.lastDate || 0)) {
+            merged[themaId] = serverResult
+          }
+        }
+        setMcqScores(merged)
+      })
+      .catch(() => {})
   }, [isLoaded, user])
 
   useEffect(() => {

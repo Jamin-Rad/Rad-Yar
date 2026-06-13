@@ -6,7 +6,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { useAuth, useUser } from '@clerk/nextjs'
 import { FLASHCARD_TOPICS, FLASHCARDS, getFlashcardTopic } from '@/data/flashcards'
 import { CURRICULUM, getFachTitle, getKapitelTitle, getThemaTitle } from '@/data/curriculum'
-import { LEITNER_STEPS, isDue, loadLeitnerState, getBoxLabel, getBoxInterval } from '@/utils/leitnerStorage'
+import { LEITNER_STEPS, isDue, loadLeitnerState, getBoxLabel, getBoxInterval, pullLeitnerStateFromServer } from '@/utils/leitnerStorage'
 import { loadSettings } from '@/utils/settingsStorage'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { hasFullAccess, isFlashcardTrialActive, FREE_TOPIC_LIMIT } from '@/utils/subscription'
@@ -182,6 +182,9 @@ export default function FlashcardsPage() {
 
   useEffect(() => {
     refresh()
+    if (userId) {
+      pullLeitnerStateFromServer(userId).then(state => setState(state))
+    }
     const onFocus = () => refresh()
     window.addEventListener('focus', onFocus)
     return () => window.removeEventListener('focus', onFocus)

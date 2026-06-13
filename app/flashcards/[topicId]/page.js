@@ -12,6 +12,7 @@ import { CONTRAST_GROUPS } from '@/data/contrastMedia'
 import {
   loadLeitnerState, answerCard, ensureCardStarted,
   isDue, getBoxLabel,
+  pullLeitnerStateFromServer, syncLeitnerCardToServer,
 } from '@/utils/leitnerStorage'
 import AuthBanner from '@/components/AuthBanner'
 import styles from './page.module.css'
@@ -209,32 +210,38 @@ export default function FlashcardReviewPage() {
   const [stats, setStats] = useState({ correct: 0, wrong: 0 })
 
   useEffect(() => {
-    const state = loadLeitnerState(userId)
-    let selectedCards = allCards
+    let cancelled = false
+    async function load() {
+      const state = userId ? await pullLeitnerStateFromServer(userId) : loadLeitnerState(userId)
+      if (cancelled) return
+      let selectedCards = allCards
 
-    if (isDueMode) {
-      selectedCards = shuffle(allCards.filter(card => isDue(state[card.id])))
-    } else if (practiceMode && boxFilter) {
-      selectedCards = allCards.filter(card => {
-        const record = state[card.id]
-        return record && record.status !== 'mastered' && Number(record.box) === boxFilter
-      })
-    } else if (boxFilter) {
-      selectedCards = allCards.filter(card => {
-        const record = state[card.id]
-        return record && isDue(record) && Number(record.box) === boxFilter
-      })
+      if (isDueMode) {
+        selectedCards = shuffle(allCards.filter(card => isDue(state[card.id])))
+      } else if (practiceMode && boxFilter) {
+        selectedCards = allCards.filter(card => {
+          const record = state[card.id]
+          return record && record.status !== 'mastered' && Number(record.box) === boxFilter
+        })
+      } else if (boxFilter) {
+        selectedCards = allCards.filter(card => {
+          const record = state[card.id]
+          return record && isDue(record) && Number(record.box) === boxFilter
+        })
+      }
+
+      let finalCards = isDueMode || practiceMode ? selectedCards : sortCards(selectedCards, state)
+      if (!fullAccess) finalCards = finalCards.slice(0, FREE_ITEM_LIMIT)
+
+      setLeitnerState(state)
+      setCards(finalCards)
+      setIndex(0)
+      setFlipped(false)
+      setDone(false)
+      setStats({ correct: 0, wrong: 0 })
     }
-
-    let finalCards = isDueMode || practiceMode ? selectedCards : sortCards(selectedCards, state)
-    if (!fullAccess) finalCards = finalCards.slice(0, FREE_ITEM_LIMIT)
-
-    setLeitnerState(state)
-    setCards(finalCards)
-    setIndex(0)
-    setFlipped(false)
-    setDone(false)
-    setStats({ correct: 0, wrong: 0 })
+    load()
+    return () => { cancelled = true }
   }, [allCards, userId, practiceMode, boxFilter, isDueMode, fullAccess])
 
   const startedTopicIds = useMemo(() => {
@@ -259,6 +266,7 @@ export default function FlashcardReviewPage() {
     if (!flipped && !practiceMode) {
       const newState = ensureCardStarted(current.id, userId)
       setLeitnerState(newState)
+      if (userId) syncLeitnerCardToServer(current.id, newState[current.id])
     }
     setFlipped(value => !value)
   }, [flipped, exiting, current, userId, practiceMode])
@@ -271,6 +279,7 @@ export default function FlashcardReviewPage() {
     if (!practiceMode) {
       const newState = answerCard(current.id, knew, userId)
       setLeitnerState(newState)
+      if (userId) syncLeitnerCardToServer(current.id, newState[current.id])
     }
 
     setStats(s => ({ correct: s.correct + (knew ? 1 : 0), wrong: s.wrong + (knew ? 0 : 1) }))
