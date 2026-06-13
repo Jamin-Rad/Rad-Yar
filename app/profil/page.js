@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useClerk, useUser } from '@clerk/nextjs'
 import Link from 'next/link'
+import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { loadLeitnerState, resetLeitnerState, isDue } from '@/utils/leitnerStorage'
@@ -495,7 +496,9 @@ export default function ProfilPage() {
                         <div className={styles.areaBlock} key={area.id}>
                           <div className={styles.areaRow}>
                             <div className={styles.areaIdentity}>
-                              <span className={styles.areaIcon}>{area.icon}</span>
+                              <span className={styles.areaIcon}>
+                                <Image src={`/fach/${area.imageId || area.id}.png`} alt="" width={28} height={28} style={{ objectFit: 'contain', width: '100%', height: '100%' }} />
+                              </span>
                               <div><strong>{getFachTitle(area, lang)}</strong><small>{read} {t.completed} · {total} {t.available}</small></div>
                             </div>
                             <div className={styles.areaProgress}>

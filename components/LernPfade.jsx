@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { CURRICULUM, getFachTitle, t } from '@/data/curriculum'
+import { ChapterIcon } from '@/components/ChapterIcons'
 import styles from './LernPfade.module.css'
 
 const COLORS = [
@@ -71,65 +72,6 @@ const LATEST_COPY = {
 
 function localizeTitle(item, lang) {
   return t(item?.title, lang)
-}
-
-function LatestLessonIcon({ areaId, chapter }) {
-  const common = {
-    viewBox: '0 0 48 48',
-    fill: 'none',
-    stroke: 'currentColor',
-    strokeWidth: 2,
-    strokeLinecap: 'round',
-    strokeLinejoin: 'round',
-    className: styles.latestIconSvg,
-    'aria-hidden': true,
-  }
-
-  if (areaId === 'abdomen' && chapter?.id === 'abdomen-leber') {
-    return (
-      <svg {...common}>
-        <path d="M6 20c2-7 8-12 17-13 9-1 16 2 20 8 2 3 1 7-2 9-5 4-12 7-21 8-6 1-11-1-14-5-1-2-1-5 0-7Z" />
-        <path d="M23 8c1 6 1 14-3 24M21 21c5-1 10 0 15 4M21 25c-4-2-8-3-13-2" />
-      </svg>
-    )
-  }
-
-  if (areaId === 'technik' && chapter?.id === 'technik-kontrastmittel') {
-    return (
-      <svg {...common}>
-        <path d="m29 6 8 8-20 20-8 2 2-8L29 6Z" />
-        <path d="m25 10 8 8M13 27l8 8" />
-        <path d="M31 30c4 5 7 8 7 12a6 6 0 0 1-12 0c0-4 2-7 5-12Z" />
-      </svg>
-    )
-  }
-
-  if (areaId === 'thorax' && chapter?.id === 'thorax-lunge') {
-    return (
-      <svg {...common}>
-        <path d="M24 8c-2 3-9 5-11 12-2 8 0 20 7 20 4 0 5-4 5-9V8Z" />
-        <path d="M24 8c2 3 9 5 11 12 2 8 0 20-7 20-4 0-5-4-5-9V8Z" />
-        <circle cx="18" cy="24" r="1.4" fill="currentColor" stroke="none" />
-        <circle cx="29" cy="20" r="1.4" fill="currentColor" stroke="none" />
-        <circle cx="30" cy="30" r="1.4" fill="currentColor" stroke="none" />
-        <circle cx="17" cy="33" r="1.4" fill="currentColor" stroke="none" />
-      </svg>
-    )
-  }
-
-  if (areaId === 'msk' && chapter?.id === 'msk-knie') {
-    return (
-      <svg {...common}>
-        <path d="M14 5v14c0 6 4 10 10 10h4" />
-        <path d="M28 29h4c6 0 10 4 10 10v4" />
-        <path d="M19 5v13c0 4 2 6 6 6h3" />
-        <path d="M29 34h3c3 0 5 2 5 5v4" />
-        <circle cx="22" cy="29" r="4" />
-      </svg>
-    )
-  }
-
-  return <span aria-hidden="true">{chapter?.icon || '✦'}</span>
 }
 
 function collectReadyTopics() {
@@ -249,7 +191,7 @@ export default function LernPfade() {
           {latestItems.map(item => (
             <Link key={item.href} href={withLang(item.href)} className={styles.latestCard}>
               <span className={styles.latestIcon}>
-                <LatestLessonIcon areaId={item.areaId} chapter={item.chapter} />
+                <ChapterIcon fachId={item.areaId} kapitel={item.chapter} className={styles.latestIconSvg} />
               </span>
               <span className={styles.latestText}>
                 <strong>{item.title}</strong>
