@@ -64,9 +64,10 @@
 
 /* ── FILTER BAR (Verfügbar / Gelesen / Alle) ─────── */
 .filterBar {
-  display: flex; gap: 8px; flex-wrap: wrap;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
   padding: 0 5vw 12px;
 }
+.filterBar .searchBox { margin-inline-start: auto; }
 .filterBtn {
   font-size: 12px; font-weight: 700; color: #64748b;
   background: #fff; border: 1.5px solid #e2e6f0; border-radius: 50px;
@@ -663,6 +664,7 @@ a.topicRow:hover {
   .topBarInner { gap: 8px; }
   .toggleAllBtn { display: none; }
   .searchBox { min-width: 0; flex: 1; }
+  .filterBar .searchBox { width: 100%; flex-basis: 100%; margin-inline-start: 0; }
   .themaGrid { grid-template-columns: 1fr; }
   .content { padding: 20px 4vw 60px; }
   .topSubtitle { display: none; }

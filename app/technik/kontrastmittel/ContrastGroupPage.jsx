@@ -1,8 +1,10 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
+import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import { CONTRAST_GROUPS, CONTRAST_LESSON, CONTRAST_TOPICS, getContrastGroup } from '@/data/contrastMedia'
 import styles from './page.module.css'
 
@@ -59,6 +61,56 @@ const SOURCES = [
   { label: 'ACR Manual on Contrast Media', href: 'https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Contrast-Manual' },
   { label: 'EMA: Gadolinium contrast agents', href: 'https://www.ema.europa.eu/en/medicines/human/referrals/gadolinium-containing-contrast-agents' },
 ]
+
+function TopicSection({ topic, section, index, localize }) {
+  const isMobile = useMobileLearningLayout()
+  const [open, setOpen] = useState(true)
+
+  useEffect(() => setOpen(!isMobile), [isMobile, topic.id])
+
+  return (
+    <section id={topic.id} className={styles.section}>
+      <button type="button" className={styles.sectionToggle} onClick={() => setOpen(value => !value)} aria-expanded={open}>
+        <span className={styles.sectionHeader}>
+          <span className={styles.sectionIcon}>{topic.icon}</span>
+          <span>
+            <small>{String(index + 1).padStart(2, '0')}</small>
+            <strong>{localize(topic.title)}</strong>
+            <span>{section.lead}</span>
+          </span>
+        </span>
+        <b>{open ? '−' : '+'}</b>
+      </button>
+      {open && (
+        <div className={styles.pointGrid}>
+          {section.points.map(([label, text]) => (
+            <div className={styles.point} key={label}>
+              <h3>{label}</h3>
+              <p>{text}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  )
+}
+
+function SupplementSection({ title, className, children }) {
+  const isMobile = useMobileLearningLayout()
+  const [open, setOpen] = useState(true)
+
+  useEffect(() => setOpen(!isMobile), [isMobile, title])
+
+  return (
+    <section className={className}>
+      <button type="button" className={`${styles.sectionToggle} ${styles.supplementToggle}`} onClick={() => setOpen(value => !value)} aria-expanded={open}>
+        <h2>{title}</h2>
+        <b>{open ? '−' : '+'}</b>
+      </button>
+      {open && children}
+    </section>
+  )
+}
 
 export default function ContrastGroupPage({ groupId }) {
   const group = getContrastGroup(groupId)
@@ -134,44 +186,23 @@ export default function ContrastGroupPage({ groupId }) {
         <article className={styles.content}>
           {topics.map((topic, index) => {
             const section = copy.sections[topic.id]
-            return (
-              <section id={topic.id} className={styles.section} key={topic.id}>
-                <div className={styles.sectionHeader}>
-                  <div className={styles.sectionIcon}>{topic.icon}</div>
-                  <div>
-                    <small>{String(index + 1).padStart(2, '0')}</small>
-                    <h2>{localize(topic.title)}</h2>
-                    <p>{section.lead}</p>
-                  </div>
-                </div>
-                <div className={styles.pointGrid}>
-                  {section.points.map(([label, text]) => (
-                    <div className={styles.point} key={label}>
-                      <h3>{label}</h3>
-                      <p>{text}</p>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )
+            return <TopicSection key={topic.id} topic={topic} section={section} index={index} localize={localize} />
           })}
 
-          <section className={styles.takeHomePage}>
-            <h2>{ui.takeHome}</h2>
+          <SupplementSection title={ui.takeHome} className={styles.takeHomePage}>
             <div>
               {topics.map(topic => (
                 <p key={topic.id}><span>{topic.icon}</span>{copy.sections[topic.id].takeHome}</p>
               ))}
             </div>
-          </section>
+          </SupplementSection>
 
-          <section className={styles.sources}>
-            <h2>{ui.sources}</h2>
+          <SupplementSection title={ui.sources} className={styles.sources}>
             <p>{ui.sourceNote}</p>
             <div>
               {SOURCES.map(source => <a key={source.href} href={source.href} target="_blank" rel="noreferrer">{source.label} ↗</a>)}
             </div>
-          </section>
+          </SupplementSection>
         </article>
       </div>
     </main>

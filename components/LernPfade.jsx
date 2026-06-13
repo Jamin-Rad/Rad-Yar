@@ -15,6 +15,13 @@ const COLORS = [
   { bg: '#f8fafc', border: '#c7d2fe', num: '#2563eb', icon: '#eff6ff', iconBorder: '#93c5fd' },
 ]
 
+const PILLAR_ICONS = [
+  '/lernbereiche/lektionen.jpg',
+  '/lernbereiche/fallpruefung.jpg',
+  '/lernbereiche/mcq.jpg',
+  '/lernbereiche/flashcards.jpg',
+]
+
 const FALL_MODAL = {
   de: { title: 'Fallprüfung', msg: 'Wähle eine Körperregion. Interaktive Fälle werden nach und nach ergänzt.', close: 'Schließen', soon: 'in Arbeit' },
   en: { title: 'Case Exam', msg: 'Choose a body region. Interactive cases will be added step by step.', close: 'Close', soon: 'in progress' },
@@ -162,8 +169,8 @@ export default function LernPfade() {
             <div key={i} className={styles.card}
               style={{ background: c.bg, borderColor: c.border, cursor: 'pointer' }}
               onClick={() => handleCard(i)}>
-              <div className={styles.icon} style={{ background: c.icon, border: `1.5px solid ${c.iconBorder}` }}>
-                {p.icon}
+              <div className={styles.icon} style={{ borderColor: c.iconBorder }}>
+                <Image src={PILLAR_ICONS[i]} alt="" width={96} height={96} className={styles.pillarIconImage} />
               </div>
               <h3 className={styles.title} style={{ color: c.num }}>{p.title}</h3>
               <p className={styles.desc}>{p.desc}</p>

@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
+import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import styles from '../fnh/page.module.css'
 
 const CONTENT = {
@@ -315,7 +316,9 @@ function Callout({ type = 'note', label, children }) {
 }
 
 function Section({ id, title, lead, children }) {
+  const isMobile = useMobileLearningLayout()
   const [open, setOpen] = useState(true)
+  useEffect(() => setOpen(!isMobile), [isMobile, id])
   return (
     <section id={id} className={styles.section}>
       <button className={styles.sectionHeader} type="button" onClick={() => setOpen(value => !value)} aria-expanded={open}><h2>{title}</h2><span>{open ? '−' : '+'}</span></button>

@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
+import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import styles from './page.module.css'
 
 const CONTENT = {
@@ -1054,7 +1055,9 @@ function ReadButton({ isRead, onClick, authError }) {
 }
 
 function Section({ id, title, lead, children }) {
+  const isMobile = useMobileLearningLayout()
   const [isOpen, setIsOpen] = useState(true)
+  useEffect(() => setIsOpen(!isMobile), [isMobile, id])
   return (
     <section id={id} className={styles.section}>
       <button type="button" className={styles.sectionToggle} onClick={() => setIsOpen(v => !v)} aria-expanded={isOpen}>

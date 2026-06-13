@@ -496,6 +496,7 @@
   .sectionBody { padding: 18px; }
   .table { min-width: 560px; }
   .takeHomeItem { grid-template-columns: 54px 1fr; }
+  .sidebar { display: none; }
 }
 
 .caseGrid {

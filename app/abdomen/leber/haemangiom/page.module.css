@@ -582,3 +582,7 @@
 :global(html[data-theme='dark']) .caseBody p,
 :global(html[data-theme='dark']) .caseBody small { color: #b8c4d8; }
 :global(html[data-theme='dark']) .caseLabel { background: rgba(249,115,22,0.16); }
+
+@media (max-width: 760px) {
+  .sidebar { display: none; }
+}
