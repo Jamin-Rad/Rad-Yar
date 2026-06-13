@@ -4,11 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { CURRICULUM, getFach, getFachTitle, getKapitelTitle, getThemaTitle } from '@/data/curriculum'
+import { CONTRAST_GROUPS } from '@/data/contrastMedia'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
 
 const T = {
-  de: { back:'← Körperregionen', search:'Thema suchen…', readNow:'Artikel öffnen', noResult:'Kein Treffer für', themen:'Themen', available:'Verfügbar', unread:'Noch nicht gelernt', read:'Gelesen', all:'Alle', mcq:'MCQ', flash:'Flashcards', fall:'Fallbeispiele', building:'Geplant', emptyAvailable:'In diesem Fachgebiet ist noch kein Thema freigeschaltet.', emptyUnread:'Alle verfügbaren Lektionen in diesem Fachgebiet sind bereits gelernt.', emptyRead:'Du hast in diesem Fachgebiet noch nichts als gelesen markiert.', emptyAllFach:'Dieses Fachgebiet ist noch im Aufbau – schau bald wieder vorbei.', showAll:'Alle Themen anzeigen', lessonsTitle:'Hauptthemen', lessonsLead:'Thema wählen und Lektionen öffnen', close:'Schließen' },
+  de: { back:'← Körperregionen', search:'Thema suchen…', readNow:'Artikel öffnen', noResult:'Kein Treffer für', themen:'Themen', available:'Verfügbar', unread:'noch nicht gelernt', read:'Gelesen', all:'Alle', mcq:'MCQ', flash:'Flashcards', fall:'Fallbeispiele', building:'Geplant', emptyAvailable:'In diesem Fachgebiet ist noch kein Thema freigeschaltet.', emptyUnread:'Alle verfügbaren Lektionen in diesem Fachgebiet sind bereits gelernt.', emptyRead:'Du hast in diesem Fachgebiet noch nichts als gelesen markiert.', emptyAllFach:'Dieses Fachgebiet ist noch im Aufbau – schau bald wieder vorbei.', showAll:'Alle Themen anzeigen', lessonsTitle:'Hauptthemen', lessonsLead:'Thema wählen und Lektionen öffnen', close:'Schließen' },
   en: { back:'← Body regions', search:'Search topic…', readNow:'Open article', noResult:'No results for', themen:'Topics', available:'Available', unread:'Not learned yet', read:'Read', all:'All', mcq:'MCQ', flash:'Flashcards', fall:'Cases', building:'Planned', emptyAvailable:'No topics are unlocked in this specialty yet.', emptyUnread:'All available lessons in this specialty have already been learned.', emptyRead:"You haven't marked anything as read in this specialty yet.", emptyAllFach:'This specialty is still being built – check back soon.', showAll:'Show all topics', lessonsTitle:'Main topics', lessonsLead:'Choose a topic and open its lessons', close:'Close' },
   fa: { back:'ناحیه‌های بدن →', search:'جستجوی موضوع…', readNow:'مطالعه کنید', noResult:'نتیجه‌ای برای', themen:'موضوع', available:'موجود', unread:'هنوز مطالعه نشده', read:'خوانده‌شده', all:'همه', mcq:'MCQ', flash:'فلش‌کارت', fall:'کیس', building:'برنامه‌ریزی‌شده', emptyAvailable:'هنوز موضوعی در این تخصص فعال نشده.', emptyUnread:'همه درس‌های موجود در این تخصص مطالعه شده‌اند.', emptyRead:'هنوز چیزی را در این تخصص خوانده‌شده علامت نزده‌ای.', emptyAllFach:'این تخصص هنوز در حال آماده‌سازی است – بزودی برمی‌گردیم.', showAll:'نمایش همه موضوعات', lessonsTitle:'موضوعات اصلی', lessonsLead:'موضوع را انتخاب کنید و درس‌ها را ببینید', close:'بستن' },
 }
@@ -354,6 +355,19 @@ function themaMatchesFilter(th, filter, readArticles) {
   return true
 }
 
+function getKapitelThemen(kapitel) {
+  if (kapitel.id !== 'technik-kontrastmittel') return kapitel.themen
+
+  return CONTRAST_GROUPS.map(group => ({
+    id: group.readId,
+    title: group.title,
+    tags: group.id === 'ultraschall' ? ['Sono'] : group.id === 'mrt' ? ['MRT'] : ['CT', 'MRT'],
+    diff: 2,
+    link: `/technik/kontrastmittel/${group.id}`,
+    updatedAt: '2026-06-12',
+  }))
+}
+
 // Sub-thema expandable (for Knie etc.)
 function SubThemen({ sub, fachColor, lang }) {
   const [open, setOpen] = useState(false)
@@ -429,7 +443,7 @@ export default function LernenFachPage() {
   const visibleKapitel = useMemo(() => {
     if (!fach) return []
     return fach.kapitel
-      .map(k => ({ kapitel: k, themen: k.themen.filter(th => themaMatchesFilter(th, filter, readArticles)) }))
+      .map(k => ({ kapitel: k, themen: getKapitelThemen(k).filter(th => themaMatchesFilter(th, filter, readArticles)) }))
       .filter(({ themen }) => filter === 'all' || themen.length > 0)
   }, [fach, filter, readArticles])
 
@@ -437,7 +451,7 @@ export default function LernenFachPage() {
     setMounted(true)
     if (fach) {
       setSelectedKapitel(null)
-      const hasAvailableTopics = fach.kapitel.some(kapitel => kapitel.themen.some(isAvailable))
+      const hasAvailableTopics = fach.kapitel.some(kapitel => getKapitelThemen(kapitel).some(isAvailable))
       setFilter(hasAvailableTopics ? 'available' : 'all')
     }
     try {

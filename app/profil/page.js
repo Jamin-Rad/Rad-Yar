@@ -282,6 +282,14 @@ export default function ProfilPage() {
   const [resetMsg, setResetMsg] = useState('')
   const [contact, setContact] = useState({ type: '', subject: '', message: '' })
   const [contactState, setContactState] = useState('idle')
+  const [isAdmin, setIsAdmin] = useState(false)
+
+  useEffect(() => {
+    fetch('/api/admin/session', { cache: 'no-store' })
+      .then(r => r.json())
+      .then(data => setIsAdmin(!!data.isAdmin))
+      .catch(() => {})
+  }, [])
 
   useEffect(() => {
     if (!isLoaded || !user) return
@@ -438,6 +446,11 @@ export default function ProfilPage() {
             </nav>
             <div className={styles.accountActions}>
               <span className={styles.accountLabel}>{t.account}</span>
+              {isAdmin && (
+                <Link href="/admin" className={styles.adminLink}>
+                  <span aria-hidden="true">⚙</span>Admin-Dashboard
+                </Link>
+              )}
               <button type="button" className={styles.signOutButton} onClick={() => signOut({ redirectUrl: '/' })}>
                 <span aria-hidden="true">↪</span>{t.signOut}
               </button>

@@ -70,8 +70,8 @@ const FACH_DATA = {
     desc: { de:'Prostata, Blase & männliche Urogenitalorgane', en:'Prostate, bladder & male urogenital organs', fa:'پروستات، مثانه و اندام‌های مردانه' },
   },
   Muskuloskelettales: {
-    color: '#fb923c',
-    bg: 'linear-gradient(135deg,#2a1a00,#4a3000)',
+    color: '#64748b',
+    bg: 'linear-gradient(135deg,#10192a,#1e293b)',
     available: false,
     topics: ['Frakturen','Arthrose','Tumoren','Osteochondrose','Sportverletzungen'],
     desc: { de:'Knochen, Gelenke, Muskulatur & Weichteile', en:'Bones, joints, muscles & soft tissue', fa:'استخوان‌ها، مفاصل، عضلات و بافت نرم' },

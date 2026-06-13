@@ -7,7 +7,7 @@
 // thema.sub: echte Varianten/Unterformen eines Themas.
 // "ready"-Themen haben link/mcqLink/flashcardLink/fallLink + updatedAt.
 
-import { CONTRAST_TOPICS, getContrastGroupForTopic } from './contrastMedia'
+import { CONTRAST_GROUPS } from './contrastMedia'
 
 export const CURRICULUM = [
   {
@@ -1702,17 +1702,16 @@ export const CURRICULUM = [
         id: 'technik-kontrastmittel',
         title: { de: '9. Kontrastmittel', en: '9. Contrast Media', fa: '۹. مواد حاجب' },
         icon: '💉',
-        themen: CONTRAST_TOPICS.map(topic => ({
-          id: topic.id,
-          title: topic.title,
-          group: [topic.group.de],
-          tags: topic.id === 'km-ultraschall'
+        themen: CONTRAST_GROUPS.map(group => ({
+          id: group.readId,
+          title: group.title,
+          tags: group.id === 'ultraschall'
             ? ['Sono']
-            : topic.id.startsWith('km-gadolinium')
+            : group.id === 'mrt'
               ? ['MRT']
               : ['CT', 'MRT'],
           diff: 2,
-          link: `/technik/kontrastmittel/${getContrastGroupForTopic(topic.id)?.id}#${topic.id}`,
+          link: `/technik/kontrastmittel/${group.id}`,
           updatedAt: '2026-06-12',
         })),
       },
