@@ -1,54 +1,33 @@
 .page {
   min-height: 100vh;
+  padding-top: 64px;
   background: #f8fafc;
   font-family: var(--font-main);
 }
 
-/* ── HEADER ── */
-.header {
+/* ── ADMIN TOOLBAR ── */
+.adminBar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 32px;
-  background: #0d1b2a;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  gap: 16px;
+  padding: 13px 5vw;
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
 }
 
-.headerLeft {
+.adminIdentity {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
+  color: #0d1b2a;
+  font-size: 13px;
 }
 
 .headerActions {
   display: flex;
   align-items: center;
   gap: 10px;
-}
-
-.logo {
-  display: flex;
-  align-items: baseline;
-  gap: 1px;
-}
-
-.rad {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 22px;
-  font-weight: 900;
-  color: #fff;
-}
-
-.yar {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 22px;
-  font-weight: 900;
-  background: linear-gradient(130deg, #f97316, #fbbf24);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .adminBadge {
@@ -63,15 +42,16 @@
 }
 
 .homeBtn,
+.profileBtn,
 .signOutBtn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 8px 18px;
   border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.2);
-  background: transparent;
-  color: #94a3b8;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #64748b;
   font-size: 13px;
   font-weight: 600;
   line-height: 1.4;
@@ -81,14 +61,19 @@
 }
 
 .homeBtn:hover,
+.profileBtn:hover,
 .signOutBtn:hover {
-  background: rgba(255,255,255,0.08);
-  color: #fff;
+  border-color: #f97316;
+  color: #f97316;
 }
 
 .homeBtn {
-  border-color: rgba(249,115,22,0.45);
-  color: #fdba74;
+  color: #475569;
+}
+
+.profileBtn {
+  border-color: rgba(249,115,22,.35);
+  color: #c2410c;
 }
 
 /* ── CONTENT ── */
@@ -239,6 +224,132 @@
   margin: 0 0 20px;
 }
 
+.sectionHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.sectionHeader .sectionTitle {
+  margin-bottom: 3px;
+}
+
+.sectionHeader p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.analyticsSection,
+.pagesPanel {
+  margin-bottom: 24px;
+  padding: 24px;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+
+.analyticsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.analyticsCard {
+  display: flex;
+  min-width: 0;
+  padding: 17px;
+  border-radius: 14px;
+  background: #f8fafc;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.analyticsCard strong {
+  overflow-wrap: anywhere;
+  color: #0d1b2a;
+  font-size: 23px;
+  line-height: 1.15;
+}
+
+.analyticsCard span {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.pageRanking {
+  display: grid;
+  gap: 15px;
+}
+
+.pageRankRow {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+}
+
+.pageRankNum {
+  color: #f97316;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.pageRankMain {
+  min-width: 0;
+}
+
+.pageRankHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 7px;
+}
+
+.pageRankHead a {
+  overflow: hidden;
+  color: #0d1b2a;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pageRankHead a:hover {
+  color: #f97316;
+}
+
+.pageRankHead span {
+  color: #64748b;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.pageRankTrack {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #f1f5f9;
+}
+
+.pageRankTrack span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #f97316, #fbbf24);
+}
+
+.emptyAnalytics {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -260,6 +371,11 @@
   padding: 12px 14px;
   color: #374151;
   border-bottom: 1px solid #f8fafc;
+}
+
+.table th,
+.table td {
+  white-space: nowrap;
 }
 
 .table tbody tr:hover td {
@@ -383,19 +499,37 @@
 }
 
 @media (max-width: 620px) {
-  .header {
+  .adminBar {
     align-items: flex-start;
-    padding: 14px 16px;
-  }
-
-  .headerActions {
-    align-items: stretch;
+    padding: 12px 16px;
     flex-direction: column;
   }
 
+  .headerActions {
+    width: 100%;
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+
   .homeBtn,
+  .profileBtn,
   .signOutBtn {
+    flex: 1;
     padding: 7px 11px;
     font-size: 11px;
+  }
+
+  .content {
+    padding: 28px 14px;
+  }
+
+  .analyticsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pageRankHead {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2px;
   }
 }

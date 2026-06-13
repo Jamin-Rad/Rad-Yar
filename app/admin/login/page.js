@@ -23,6 +23,7 @@ export default function AdminLoginPage() {
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Login fehlgeschlagen')
+      document.documentElement.classList.add('admin-copy-enabled')
       router.push('/admin')
       router.refresh()
     } catch (err) {

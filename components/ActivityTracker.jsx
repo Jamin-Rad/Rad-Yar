@@ -2,15 +2,49 @@
 
 import { useEffect } from 'react'
 import { useUser } from '@clerk/nextjs'
+import { usePathname } from 'next/navigation'
 import { addActiveSeconds, IDLE_MS, registerVisit } from '@/utils/activityStorage'
+
+const VISITOR_KEY = 'radyar_visitor_id'
+const SESSION_KEY = 'radyar_analytics_session'
+
+function getVisitorId() {
+  let visitorId = localStorage.getItem(VISITOR_KEY)
+  if (!visitorId) {
+    visitorId = `rv_${crypto.randomUUID().replaceAll('-', '')}`
+    localStorage.setItem(VISITOR_KEY, visitorId)
+  }
+  return visitorId
+}
+
+function sendActivity(payload) {
+  fetch('/api/analytics/track', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+    keepalive: true,
+  }).catch(() => {})
+}
 
 export default function ActivityTracker() {
   const { user, isLoaded } = useUser()
+  const pathname = usePathname()
 
   useEffect(() => {
-    if (!isLoaded || !user) return
-    const userId = user.id
-    registerVisit(userId)
+    if (!isLoaded) return
+    const userId = user?.id || null
+    const visitorId = getVisitorId()
+    const isNewSession = !sessionStorage.getItem(SESSION_KEY)
+    if (isNewSession) sessionStorage.setItem(SESSION_KEY, '1')
+    if (userId) registerVisit(userId)
+
+    sendActivity({
+      visitorId,
+      path: pathname,
+      visits: isNewSession ? 1 : 0,
+      pageViews: 1,
+      activeSeconds: 0,
+    })
 
     let lastInteraction = Date.now()
     let lastTick = Date.now()
@@ -22,7 +56,17 @@ export default function ActivityTracker() {
       Date.now() - lastInteraction < IDLE_MS
 
     const flush = () => {
-      if (pendingSeconds >= 1) addActiveSeconds(userId, pendingSeconds)
+      const seconds = Math.round(pendingSeconds)
+      if (seconds >= 1) {
+        if (userId) addActiveSeconds(userId, seconds)
+        sendActivity({
+          visitorId,
+          path: pathname,
+          visits: 0,
+          pageViews: 0,
+          activeSeconds: seconds,
+        })
+      }
       pendingSeconds = 0
     }
 
@@ -60,7 +104,7 @@ export default function ActivityTracker() {
       window.removeEventListener('blur', flush)
       window.removeEventListener('pagehide', flush)
     }
-  }, [isLoaded, user?.id])
+  }, [isLoaded, pathname, user?.id])
 
   return null
 }

@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/providers/ThemeProvider'
 import { LanguageProvider } from '@/providers/LanguageProvider'
 import RobotAssistant from '@/components/RobotAssistant'
 import ActivityTracker from '@/components/ActivityTracker'
+import AdminCopyMode from '@/components/AdminCopyMode'
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -67,6 +68,7 @@ export default function RootLayout({ children }) {
           <ThemeProvider>
             <LanguageProvider>
               <ActivityTracker />
+              <AdminCopyMode />
               {children}
               <RobotAssistant />
             </LanguageProvider>

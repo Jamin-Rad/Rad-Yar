@@ -63,7 +63,15 @@ html[data-theme='dark'] {
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
-html, body, input, textarea, [contenteditable='true'] {
+html, body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+input, textarea, [contenteditable='true'],
+.admin-copy-enabled body, .admin-copy-enabled body * {
   -webkit-user-select: text;
   -moz-user-select: text;
   -ms-user-select: text;

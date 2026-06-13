@@ -6,6 +6,19 @@ import { useEffect, useMemo, useState } from 'react'
 import styles from './admin.module.css'
 import { PROMO_LIMIT, PROMO_MONTHS, isSubscriptionActive } from '@/utils/subscription'
 
+function formatDuration(seconds) {
+  const total = Math.max(0, Math.round(Number(seconds) || 0))
+  if (total < 60) return `${total} Sek.`
+  const hours = Math.floor(total / 3600)
+  const minutes = Math.floor((total % 3600) / 60)
+  if (!hours) return `${minutes} Min.`
+  return `${hours} Std. ${minutes} Min.`
+}
+
+function formatDateTime(value) {
+  return value ? new Date(value).toLocaleString('de-DE') : 'Noch nicht erfasst'
+}
+
 // Letzte 14 Tage als Registrierungs-Chart
 function RegistrationChart({ users }) {
   const days = useMemo(() => {
@@ -56,11 +69,20 @@ export default function AdminDashboard() {
   const [users, setUsers] = useState([])
   const [totalCount, setTotalCount] = useState(0)
   const [promoActivatedCount, setPromoActivatedCount] = useState(0)
+  const [activeSubscriptionCount, setActiveSubscriptionCount] = useState(0)
+  const [newUsers7Count, setNewUsers7Count] = useState(0)
   const [loadingUsers, setLoadingUsers] = useState(true)
   const [error, setError] = useState('')
   const [search, setSearch] = useState('')
   const [actionError, setActionError] = useState('')
   const [actionLoadingId, setActionLoadingId] = useState(null)
+  const [analytics, setAnalytics] = useState({
+    totals: { visits: 0, pageViews: 0, activeSeconds: 0, visitors: 0, activeToday: 0 },
+    userStats: {},
+    topPages: [],
+    periodDays: 90,
+  })
+  const [analyticsError, setAnalyticsError] = useState('')
 
   function loadUsers(query) {
     setLoadingUsers(true)
@@ -71,6 +93,8 @@ export default function AdminDashboard() {
         setUsers(data.users ?? [])
         setTotalCount(data.totalCount ?? data.users?.length ?? 0)
         setPromoActivatedCount(data.promoActivatedCount ?? 0)
+        setActiveSubscriptionCount(data.activeSubscriptionCount ?? 0)
+        setNewUsers7Count(data.newUsers7Count ?? 0)
         setLoadingUsers(false)
       })
       .catch(() => { setError('Fehler beim Laden der User-Liste.'); setLoadingUsers(false) })
@@ -78,6 +102,13 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     loadUsers()
+    fetch('/api/admin/analytics')
+      .then(async response => {
+        const data = await response.json()
+        if (!response.ok) throw new Error(data.error || 'Statistik konnte nicht geladen werden')
+        setAnalytics(data)
+      })
+      .catch(err => setAnalyticsError(err.message))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -108,6 +139,13 @@ export default function AdminDashboard() {
         return next
       }))
       if ('subscription' in data) {
+        const wasActive = isSubscriptionActive({
+          publicMetadata: { subscription: users.find(u => u.id === userId)?.subscription },
+        })
+        const isActive = isSubscriptionActive({ publicMetadata: { subscription: data.subscription } })
+        if (wasActive !== isActive) {
+          setActiveSubscriptionCount(count => Math.max(0, count + (isActive ? 1 : -1)))
+        }
         setPromoActivatedCount(c => {
           const wasPromo = users.find(u => u.id === userId)?.subscription?.promo
           const isPromo = !!data.subscription?.promo
@@ -141,29 +179,31 @@ export default function AdminDashboard() {
 
   async function handleLogout() {
     await fetch('/api/admin/logout', { method: 'POST' })
+    document.documentElement.classList.remove('admin-copy-enabled')
     router.push('/admin/login')
   }
 
+  const maxPageViews = Math.max(1, ...analytics.topPages.map(page => page.views))
+
   return (
     <div className={styles.page}>
-      <div className={styles.header}>
-        <div className={styles.headerLeft}>
-          <div className={styles.logo}>
-            <span className={styles.rad}>RAD</span>
-            <span className={styles.yar}>YAR</span>
-          </div>
+      <div className={styles.adminBar}>
+        <div className={styles.adminIdentity}>
           <span className={styles.adminBadge}>Admin</span>
+          <strong>Administrationsprofil</strong>
         </div>
         <div className={styles.headerActions}>
-          <Link className={styles.homeBtn} href="/">← Zur Hauptseite</Link>
+          <Link className={styles.profileBtn} href="/profil">Ben-Profil</Link>
+          <Link className={styles.homeBtn} href="/">Zur Hauptseite</Link>
           <button className={styles.signOutBtn} onClick={handleLogout}>
-            Abmelden
+            Admin abmelden
           </button>
         </div>
       </div>
 
       <div className={styles.content}>
         <h1 className={styles.title}>Admin-Dashboard</h1>
+        <p className={styles.sub}>Nutzer, Abonnements und Website-Nutzung im Überblick</p>
 
         {/* Statistiken */}
         <div className={styles.statsGrid}>
@@ -172,29 +212,72 @@ export default function AdminDashboard() {
             <div className={styles.statLabel}>Registrierte Nutzer</div>
           </div>
           <div className={styles.statCard}>
-            <div className={styles.statNum}>
-              {users.filter(u => {
-                const d = new Date(u.createdAt)
-                const now = new Date()
-                return now - d < 7 * 24 * 60 * 60 * 1000
-              }).length}
-            </div>
+            <div className={styles.statNum}>{newUsers7Count}</div>
             <div className={styles.statLabel}>Neu (letzte 7 Tage)</div>
           </div>
           <div className={styles.statCard}>
             <div className={styles.statNum}>
-              {users.filter(u => u.lastSignInAt && (new Date() - new Date(u.lastSignInAt)) < 24 * 60 * 60 * 1000).length}
+              {analytics.totals.activeToday}
             </div>
-            <div className={styles.statLabel}>Aktiv heute</div>
+            <div className={styles.statLabel}>Besucher heute</div>
           </div>
           <div className={styles.statCard}>
-            <div className={styles.statNum}>{users.filter(u => u.banned).length}</div>
-            <div className={styles.statLabel}>Gesperrt</div>
+            <div className={styles.statNum}>{activeSubscriptionCount}</div>
+            <div className={styles.statLabel}>Aktive Abos</div>
           </div>
           <div className={styles.statCard}>
             <div className={styles.statNum}>{promoActivatedCount} / {PROMO_LIMIT}</div>
             <div className={styles.statLabel}>Promo-Aktivierungen</div>
           </div>
+        </div>
+
+        <div className={styles.analyticsSection}>
+          <div className={styles.sectionHeader}>
+            <div>
+              <h2 className={styles.sectionTitle}>Allgemeine Website-Nutzung</h2>
+              <p>Erfasster Zeitraum: letzte {analytics.periodDays} Tage</p>
+            </div>
+          </div>
+          {analyticsError && (
+            <div className={styles.error}>
+              {analyticsError} Die Erfassung startet danach automatisch.
+            </div>
+          )}
+          <div className={styles.analyticsGrid}>
+            <div className={styles.analyticsCard}><strong>{analytics.totals.visitors}</strong><span>Eindeutige Besucher</span></div>
+            <div className={styles.analyticsCard}><strong>{analytics.totals.visits}</strong><span>Besuche</span></div>
+            <div className={styles.analyticsCard}><strong>{analytics.totals.pageViews}</strong><span>Seitenaufrufe</span></div>
+            <div className={styles.analyticsCard}><strong>{formatDuration(analytics.totals.activeSeconds)}</strong><span>Aktive Gesamtzeit</span></div>
+          </div>
+        </div>
+
+        <div className={styles.pagesPanel}>
+          <div className={styles.sectionHeader}>
+            <div>
+              <h2 className={styles.sectionTitle}>Meistbesuchte Seiten</h2>
+              <p>Vergleich nach Seitenaufrufen</p>
+            </div>
+          </div>
+          {analytics.topPages.length ? (
+            <div className={styles.pageRanking}>
+              {analytics.topPages.map((page, index) => (
+                <div className={styles.pageRankRow} key={page.path}>
+                  <span className={styles.pageRankNum}>{String(index + 1).padStart(2, '0')}</span>
+                  <div className={styles.pageRankMain}>
+                    <div className={styles.pageRankHead}>
+                      <Link href={page.path}>{page.path}</Link>
+                      <span>{page.views} Aufrufe · {page.visitors} Besucher · {formatDuration(page.activeSeconds)}</span>
+                    </div>
+                    <div className={styles.pageRankTrack}>
+                      <span style={{ width: `${Math.max((page.views / maxPageViews) * 100, 2)}%` }} />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className={styles.emptyAnalytics}>Noch keine Seitenaufrufe erfasst.</p>
+          )}
         </div>
 
         {/* Registrierungs-Chart */}
@@ -224,7 +307,11 @@ export default function AdminDashboard() {
                   <th>E-Mail</th>
                   <th>Status</th>
                   <th>Registriert</th>
-                  <th>Letzter Login</th>
+                  <th>Letzter Besuch</th>
+                  <th>Aktive Zeit</th>
+                  <th>Aktive Tage</th>
+                  <th>Ø pro Tag</th>
+                  <th>Besuche</th>
                   <th>Abo</th>
                   <th>Aktionen</th>
                 </tr>
@@ -232,6 +319,7 @@ export default function AdminDashboard() {
               <tbody>
                 {users.map(u => {
                   const label = `${u.firstName || ''} ${u.lastName || ''}`.trim() || u.emailAddresses?.[0]?.emailAddress || u.id
+                  const usage = analytics.userStats[u.id]
                   return (
                     <tr key={u.id}>
                       <td>{u.firstName || '—'} {u.lastName || ''}</td>
@@ -246,7 +334,11 @@ export default function AdminDashboard() {
                         )}
                       </td>
                       <td>{u.createdAt ? new Date(u.createdAt).toLocaleDateString('de-DE') : '—'}</td>
-                      <td>{u.lastSignInAt ? new Date(u.lastSignInAt).toLocaleDateString('de-DE') : '—'}</td>
+                      <td>{formatDateTime(usage?.lastVisitAt || u.lastActiveAt)}</td>
+                      <td>{formatDuration(usage?.activeSeconds)}</td>
+                      <td>{usage?.activeDays || 0}</td>
+                      <td>{formatDuration(usage?.averageSecondsPerDay)}</td>
+                      <td>{usage?.visits || 0}</td>
                       <td>
                         {isSubscriptionActive({ publicMetadata: { subscription: u.subscription } }) ? (
                           <>
@@ -306,7 +398,7 @@ export default function AdminDashboard() {
                   )
                 })}
                 {users.length === 0 && (
-                  <tr><td colSpan={7} style={{textAlign:'center', color:'#94a3b8'}}>Keine Nutzer gefunden</td></tr>
+                  <tr><td colSpan={11} style={{textAlign:'center', color:'#94a3b8'}}>Keine Nutzer gefunden</td></tr>
                 )}
               </tbody>
             </table>
