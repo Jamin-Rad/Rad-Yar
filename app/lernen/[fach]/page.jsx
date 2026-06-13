@@ -519,7 +519,7 @@ export default function LernenFachPage() {
         </div>
         {fach.kapitel.length > 0 && (
           <div className={styles.filterBar}>
-            {['all', 'available', 'unread', 'read'].map(f => (
+            {['read', 'unread', 'available', 'all'].map(f => (
               <button key={f}
                 className={`${styles.filterBtn} ${filter === f ? styles.filterBtnActive : ''}`}
                 style={filter === f ? { color: fach.color, borderColor: fach.color, background: fach.color + '12' } : {}}

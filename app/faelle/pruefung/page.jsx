@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { getCases } from '@/data/cases'
 import { useLanguage } from '@/providers/LanguageProvider'
+import CaseExamMaintenance from '@/components/CaseExamMaintenance'
 import quizStyles from '@/app/ueben/quiz/page.module.css'
 import styles from './page.module.css'
 
@@ -324,9 +325,5 @@ function CaseExamContent() {
 export const dynamic = 'force-dynamic'
 
 export default function CaseExamPage() {
-  return (
-    <Suspense fallback={<div className={styles.loading}>Loading…</div>}>
-      <CaseExamContent />
-    </Suspense>
-  )
+  return <CaseExamMaintenance />
 }

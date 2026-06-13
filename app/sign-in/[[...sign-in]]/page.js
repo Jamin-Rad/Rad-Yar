@@ -59,6 +59,7 @@ export default function SignInPage() {
   const [view,        setView]        = useState('login')
   const [email,       setEmail]       = useState('')
   const [password,    setPassword]    = useState('')
+  const [showPassword, setShowPassword] = useState(false)
   const [resetEmail,  setResetEmail]  = useState('')
   const [code,        setCode]        = useState('')
   const [newPassword, setNewPassword] = useState('')
@@ -272,9 +273,16 @@ export default function SignInPage() {
                     Forgot password?
                   </button>
                 </div>
-                <input className={styles.input} type="password" value={password}
-                  onChange={e => setPassword(e.target.value)}
-                  placeholder="••••••••" required autoComplete="current-password" />
+                <div className={styles.passwordField}>
+                  <input className={styles.input} type={showPassword ? 'text' : 'password'} value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    placeholder="••••••••" required autoComplete="current-password" />
+                  <button type="button" className={styles.passwordToggle}
+                    onClick={() => setShowPassword(value => !value)}
+                    aria-label={showPassword ? 'Hide password' : 'Show password'}>
+                    {showPassword ? 'Hide' : 'Show'}
+                  </button>
+                </div>
               </div>
               <button className={styles.submitBtn} type="submit" disabled={loading || !email || !password}>
                 {loading ? 'Signing in…' : 'Sign in'}
@@ -383,10 +391,17 @@ export default function SignInPage() {
               </div>
               <div className={styles.fieldGroup}>
                 <label className={styles.label}>New password</label>
-                <input className={styles.input} type="password" value={newPassword}
-                  onChange={e => setNewPassword(e.target.value)}
-                  placeholder="At least 8 characters" required minLength={8}
-                  autoComplete="new-password" />
+                <div className={styles.passwordField}>
+                  <input className={styles.input} type={showPassword ? 'text' : 'password'} value={newPassword}
+                    onChange={e => setNewPassword(e.target.value)}
+                    placeholder="At least 8 characters" required minLength={8}
+                    autoComplete="new-password" />
+                  <button type="button" className={styles.passwordToggle}
+                    onClick={() => setShowPassword(value => !value)}
+                    aria-label={showPassword ? 'Hide password' : 'Show password'}>
+                    {showPassword ? 'Hide' : 'Show'}
+                  </button>
+                </div>
               </div>
               <button className={styles.submitBtn} type="submit"
                 disabled={loading || code.length < 6 || newPassword.length < 8}>

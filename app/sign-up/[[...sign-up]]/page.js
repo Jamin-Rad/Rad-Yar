@@ -38,6 +38,8 @@ export default function SignUpPage() {
   const [name,     setName]     = useState('')
   const [email,    setEmail]    = useState('')
   const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
   const [spec,     setSpec]     = useState('')
   const [level,    setLevel]    = useState('')
   const [agreed,   setAgreed]   = useState(false)
@@ -52,6 +54,10 @@ export default function SignUpPage() {
   async function handleRegister(e) {
     e.preventDefault()
     if (!isLoaded || !agreed) return
+    if (password !== confirmPassword) {
+      setError('Passwords do not match.')
+      return
+    }
     setLoading(true); setError('')
     try {
       await signUp.create({
@@ -151,10 +157,35 @@ export default function SignUpPage() {
 
               <div className={styles.fieldGroup}>
                 <label className={styles.label}>Password</label>
-                <input className={styles.input} type="password" value={password}
-                  onChange={e => setPassword(e.target.value)}
-                  placeholder="At least 8 characters" required minLength={8}
-                  autoComplete="new-password" />
+                <div className={styles.passwordField}>
+                  <input className={styles.input} type={showPassword ? 'text' : 'password'} value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    placeholder="At least 8 characters" required minLength={8}
+                    autoComplete="new-password" />
+                  <button type="button" className={styles.passwordToggle}
+                    onClick={() => setShowPassword(value => !value)}
+                    aria-label={showPassword ? 'Hide password' : 'Show password'}>
+                    {showPassword ? 'Hide' : 'Show'}
+                  </button>
+                </div>
+              </div>
+
+              <div className={styles.fieldGroup}>
+                <label className={styles.label}>Confirm password</label>
+                <div className={styles.passwordField}>
+                  <input className={styles.input} type={showPassword ? 'text' : 'password'} value={confirmPassword}
+                    onChange={e => setConfirmPassword(e.target.value)}
+                    placeholder="Enter password again" required minLength={8}
+                    autoComplete="new-password" />
+                  <button type="button" className={styles.passwordToggle}
+                    onClick={() => setShowPassword(value => !value)}
+                    aria-label={showPassword ? 'Hide password' : 'Show password'}>
+                    {showPassword ? 'Hide' : 'Show'}
+                  </button>
+                </div>
+                {confirmPassword && password !== confirmPassword && (
+                  <span className={styles.fieldError}>Passwords do not match.</span>
+                )}
               </div>
 
               <div className={styles.fieldGroup}>
@@ -188,7 +219,7 @@ export default function SignUpPage() {
               </label>
 
               <button className={styles.submitBtn} type="submit"
-                disabled={loading || !email || !password || !name || !spec || !level || !agreed}>
+                disabled={loading || !email || password.length < 8 || password !== confirmPassword || !name || !spec || !level || !agreed}>
                 {loading ? 'Please wait…' : 'Continue'}
               </button>
             </form>

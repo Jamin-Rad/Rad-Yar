@@ -1,0 +1,80 @@
+.page {
+  display: grid;
+  min-height: 72vh;
+  padding: 72px 20px;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 15%, rgba(249, 115, 22, .11), transparent 30rem),
+    var(--bg);
+}
+
+.card {
+  width: min(560px, 100%);
+  padding: 54px 36px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: var(--bg-card);
+  box-shadow: 0 24px 70px rgba(15, 23, 42, .09);
+  text-align: center;
+}
+
+.icon {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 22px;
+  place-items: center;
+  border-radius: 18px;
+  color: #f97316;
+  background: rgba(249, 115, 22, .1);
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.eyebrow {
+  color: #f97316;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.card h1 {
+  margin: 10px 0 14px;
+  color: var(--text-strong);
+  font-family: var(--font-display);
+  font-size: clamp(38px, 7vw, 62px);
+  font-style: italic;
+  line-height: 1;
+}
+
+.card p {
+  max-width: 440px;
+  margin: 0 auto 28px;
+  color: var(--text-soft);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.back {
+  display: inline-flex;
+  padding: 11px 18px;
+  border-radius: 999px;
+  color: #fff;
+  background: #f97316;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+@media (max-width: 520px) {
+  .page {
+    min-height: 68vh;
+    padding: 40px 14px;
+  }
+
+  .card {
+    padding: 42px 22px;
+    border-radius: 22px;
+  }
+}
