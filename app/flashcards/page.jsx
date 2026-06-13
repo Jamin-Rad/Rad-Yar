@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useEffect, useMemo, useState } from 'react'
 import { useAuth, useUser } from '@clerk/nextjs'
 import { FLASHCARD_TOPICS, FLASHCARDS, getFlashcardTopic } from '@/data/flashcards'
@@ -368,7 +369,9 @@ export default function FlashcardsPage() {
           <div className={styles.topicGrid}>
             {fachEntries.map(entry => (
               <button key={entry.fach.id} type="button" className={`${styles.topicCard} ${styles.topicCardLarge} ${styles.topicCardBtn}`} onClick={() => openFach(entry)}>
-                <span className={styles.topicIcon}>{entry.fach.icon}</span>
+                <span className={styles.topicIcon}>
+                  <Image src={`/fach/${entry.fach.imageId || entry.fach.id}.png`} alt="" width={40} height={40} style={{ objectFit: 'contain', width: '70%', height: '70%' }} />
+                </span>
                 <span className={styles.topicText}>
                   <strong>{getFachTitle(entry.fach, lang)}</strong>
                   <small>
