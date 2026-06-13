@@ -760,6 +760,66 @@ export const QUESTION_BANK = {
       "explanation": "Multiple hepatische AV-Shunts können über ein erhöhtes Herzzeitvolumen zu einer High-Output-Herzinsuffizienz führen und über arterioportale Shunts eine portale Hypertension verursachen."
     },
     {
+      "id": "hcc-de-01", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "In welchem Kontext ist die nicht invasive Bilddiagnose eines HCC besonders belastbar?",
+      "options": [{"id":"A","text":"Im geeigneten Hochrisikokontext, z. B. bei Leberzirrhose"},{"id":"B","text":"Bei jeder zufälligen Leberläsion unabhängig von der Vorgeschichte"},{"id":"C","text":"Nur bei gesunden Kindern"},{"id":"D","text":"Ausschließlich nach Trauma"}],
+      "correct": "A", "explanation": "Das typische dynamische HCC-Muster und LI-RADS sind an eine definierte Hochrisikopopulation gebunden, insbesondere Patienten mit Zirrhose oder bestimmten chronischen Lebererkrankungen."
+    },
+    {
+      "id": "hcc-de-02", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "Welches Kontrastmittelmuster ist klassisch für ein HCC?",
+      "options": [{"id":"A","text":"Non-rim APHE mit non-peripheral Wash-out"},{"id":"B","text":"Periphere noduläre Aufnahme mit zentripetalem Fill-in"},{"id":"C","text":"Kein Enhancement in allen Phasen"},{"id":"D","text":"Nur verzögerte Narbenanreicherung ohne APHE"}],
+      "correct": "A", "explanation": "Nicht randförmige arterielle Hyperenhancement gefolgt von nicht peripherem Wash-out ist das klassische dynamische HCC-Muster im Risikopatienten."
+    },
+    {
+      "id": "hcc-de-03", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "Was bedeutet Wash-out bei einer Leberläsion?",
+      "options": [{"id":"A","text":"Die Läsion wird in späteren Phasen relativ hypointens/hypodens zur Leber"},{"id":"B","text":"Die Läsion verschwindet vollständig"},{"id":"C","text":"Es tritt immer eine aktive Blutung auf"},{"id":"D","text":"Die Läsion nimmt nur in T2 an Signal zu"}],
+      "correct": "A", "explanation": "Wash-out ist ein relativer Befund: Die Läsion wird gegenüber dem zunehmend anreichernden Leberparenchym in portalvenöser oder später Phase dunkler."
+    },
+    {
+      "id": "hcc-de-04", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "Welcher Befund beschreibt eine Kapselappearance?",
+      "options": [{"id":"A","text":"Glatter peripher anreichernder Rand in späteren Phasen"},{"id":"B","text":"Zentrale T2-helle Narbe mit verzögertem Enhancement"},{"id":"C","text":"Komplette Verkalkung der Läsion"},{"id":"D","text":"Keilförmige Perfusionsstörung ohne Raumforderung"}],
+      "correct": "A", "explanation": "Eine glatte, peripher anreichernde Begrenzung in portalvenöser oder später Phase entspricht einer Kapselappearance und unterstützt die HCC-Diagnose."
+    },
+    {
+      "id": "hcc-de-05", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "Wie erscheint ein HCC typischerweise in der hepatobiliären MRT-Phase?",
+      "options": [{"id":"A","text":"Hypointens zum Leberparenchym"},{"id":"B","text":"Immer deutlich hyperintens"},{"id":"C","text":"Signalfrei wie Luft"},{"id":"D","text":"Identisch zum Blutpool"}],
+      "correct": "A", "explanation": "Die meisten HCC enthalten keine ausreichend funktionsfähigen Hepatozyten und erscheinen daher in der hepatobiliären Phase hypointens."
+    },
+    {
+      "id": "hcc-de-06", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "Welches DWI/ADC-Muster kann ein HCC unterstützen?",
+      "options": [{"id":"A","text":"Diffusionsrestriktion mit erniedrigtem ADC"},{"id":"B","text":"Sehr hoher ADC ohne DWI-Signal"},{"id":"C","text":"Ausschließlich T2-shine-through ohne Restriktion"},{"id":"D","text":"Keine Darstellung in der DWI"}],
+      "correct": "A", "explanation": "Erhöhte Zelldichte kann eine echte Diffusionsrestriktion mit hohem DWI-Signal und erniedrigtem ADC verursachen; dies ist unterstützend, aber nicht spezifisch."
+    },
+    {
+      "id": "hcc-de-07", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "Welcher Befund spricht am ehesten für Tumor in vein?",
+      "options": [{"id":"A","text":"Anreicherndes Weichteilgewebe in einer Vene mit tumortypischem Enhancement"},{"id":"B","text":"Ein homogener nicht anreichernder Thrombus ohne Verbindung zum Tumor"},{"id":"C","text":"Ausschließlich periportales Ödem"},{"id":"D","text":"Eine einfache Leberzyste neben der Pfortader"}],
+      "correct": "A", "explanation": "Enhancing soft tissue innerhalb einer Vene spricht für makrovaskuläre Tumorinvasion und muss von blandem Thrombus unterschieden werden."
+    },
+    {
+      "id": "hcc-de-08", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "Welche Aussage zum infiltrativen HCC ist richtig?",
+      "options": [{"id":"A","text":"Es kann permeativ wachsen und das klassische APHE/Wash-out-Muster nur fokal zeigen"},{"id":"B","text":"Es ist immer eine scharf begrenzte solitäre Läsion"},{"id":"C","text":"Gefäßinvasion kommt praktisch nie vor"},{"id":"D","text":"Satellitenherde schließen die Diagnose aus"}],
+      "correct": "A", "explanation": "Infiltratives HCC wächst unscharf über mehrere Segmente; klassisches Enhancement kann heterogen oder nur fokal vorhanden sein. Satelliten und Gefäßinvasion sind häufig."
+    },
+    {
+      "id": "hcc-de-09", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "Welches Merkmal spricht eher für HCC als für typische FNH?",
+      "options": [{"id":"A","text":"Portalvenöses/spätes Wash-out"},{"id":"B","text":"Homogenes APHE ohne Wash-out"},{"id":"C","text":"T2-helle zentrale Narbe mit verzögerter Anreicherung"},{"id":"D","text":"Spoke-wheel-Muster im Doppler"}],
+      "correct": "A", "explanation": "Typische FNH zeigt APHE, aber kein Wash-out. Portalvenöses oder spätes Wash-out ist im passenden Risikokontext ein wichtiges HCC-Merkmal."
+    },
+    {
+      "id": "hcc-de-10", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "Welche Angaben sind für das HCC-Staging im radiologischen Befund besonders wichtig?",
+      "options": [{"id":"A","text":"Zahl, Größe, Segment, Satelliten, Gefäßinvasion und extrahepatische Ausbreitung"},{"id":"B","text":"Nur die Echogenität in der Sonographie"},{"id":"C","text":"Nur das Patientenalter"},{"id":"D","text":"Ausschließlich die Nativdichte"}],
+      "correct": "A", "explanation": "Tumorlast, Lokalisation, Satelliten, makrovaskuläre Invasion und Metastasen bestimmen Staging und Therapieplanung."
+    },
+    {
       "id": "sarkoidose-de-01",
       "tags": [
         "sarkoidose",
@@ -1815,6 +1875,66 @@ export const QUESTION_BANK = {
       ],
       "correct": "B",
       "explanation": "Multiple hepatic AV shunts can lead to high-output heart failure via increased cardiac output, and to portal hypertension via arterioportal shunting."
+    },
+    {
+      "id": "hcc-en-01", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "In which setting is non-invasive imaging diagnosis of HCC most reliable?",
+      "options": [{"id":"A","text":"An appropriate high-risk setting, such as cirrhosis"},{"id":"B","text":"Every incidental liver lesion regardless of history"},{"id":"C","text":"Healthy children only"},{"id":"D","text":"Only after trauma"}],
+      "correct": "A", "explanation": "The typical dynamic HCC pattern and LI-RADS apply to a defined high-risk population, particularly patients with cirrhosis or selected chronic liver disease."
+    },
+    {
+      "id": "hcc-en-02", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "Which enhancement pattern is classic for HCC?",
+      "options": [{"id":"A","text":"Non-rim APHE with non-peripheral wash-out"},{"id":"B","text":"Peripheral nodular enhancement with centripetal fill-in"},{"id":"C","text":"No enhancement in any phase"},{"id":"D","text":"Delayed scar enhancement only without APHE"}],
+      "correct": "A", "explanation": "Non-rim arterial phase hyperenhancement followed by non-peripheral wash-out is the classic dynamic HCC pattern in an at-risk patient."
+    },
+    {
+      "id": "hcc-en-03", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "What does wash-out mean in a liver lesion?",
+      "options": [{"id":"A","text":"The lesion becomes relatively hypoenhancing to liver on later phases"},{"id":"B","text":"The lesion disappears completely"},{"id":"C","text":"Active bleeding is always present"},{"id":"D","text":"The lesion only increases in T2 signal"}],
+      "correct": "A", "explanation": "Wash-out is relative: the lesion becomes darker than the progressively enhancing liver in the portal venous or delayed phase."
+    },
+    {
+      "id": "hcc-en-04", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "Which finding describes capsule appearance?",
+      "options": [{"id":"A","text":"A smooth peripheral enhancing rim on later phases"},{"id":"B","text":"A T2-bright central scar with delayed enhancement"},{"id":"C","text":"Complete lesion calcification"},{"id":"D","text":"A wedge-shaped perfusion change without a mass"}],
+      "correct": "A", "explanation": "A smooth peripheral enhancing boundary in the portal venous or delayed phase represents capsule appearance and supports HCC."
+    },
+    {
+      "id": "hcc-en-05", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "How does HCC typically appear in the hepatobiliary phase?",
+      "options": [{"id":"A","text":"Hypointense relative to liver parenchyma"},{"id":"B","text":"Always markedly hyperintense"},{"id":"C","text":"Signal void like air"},{"id":"D","text":"Identical to the blood pool"}],
+      "correct": "A", "explanation": "Most HCCs lack sufficient functioning hepatocytes and therefore appear hypointense in the hepatobiliary phase."
+    },
+    {
+      "id": "hcc-en-06", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "Which DWI/ADC pattern can support HCC?",
+      "options": [{"id":"A","text":"Restricted diffusion with low ADC"},{"id":"B","text":"Very high ADC without DWI signal"},{"id":"C","text":"T2 shine-through only without restriction"},{"id":"D","text":"Complete invisibility on DWI"}],
+      "correct": "A", "explanation": "High cellularity can cause true diffusion restriction with high DWI signal and low ADC; this is supportive but not specific."
+    },
+    {
+      "id": "hcc-en-07", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "Which finding most strongly suggests tumour in vein?",
+      "options": [{"id":"A","text":"Enhancing soft tissue in a vein with tumour-like enhancement"},{"id":"B","text":"A homogeneous non-enhancing thrombus separate from the tumour"},{"id":"C","text":"Periportal oedema alone"},{"id":"D","text":"A simple cyst beside the portal vein"}],
+      "correct": "A", "explanation": "Enhancing soft tissue within a vein suggests macrovascular tumour invasion and must be distinguished from bland thrombus."
+    },
+    {
+      "id": "hcc-en-08", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "Which statement about infiltrative HCC is correct?",
+      "options": [{"id":"A","text":"It may grow permeatively and show classic APHE/wash-out only focally"},{"id":"B","text":"It is always a sharply defined solitary lesion"},{"id":"C","text":"Vascular invasion is exceptionally rare"},{"id":"D","text":"Satellite lesions exclude the diagnosis"}],
+      "correct": "A", "explanation": "Infiltrative HCC grows ill-defined across segments; classic enhancement may be heterogeneous or focal. Satellites and vascular invasion are common."
+    },
+    {
+      "id": "hcc-en-09", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "Which feature favours HCC over typical FNH?",
+      "options": [{"id":"A","text":"Portal venous or delayed wash-out"},{"id":"B","text":"Homogeneous APHE without wash-out"},{"id":"C","text":"T2-bright central scar with delayed enhancement"},{"id":"D","text":"Spoke-wheel Doppler pattern"}],
+      "correct": "A", "explanation": "Typical FNH shows APHE but no wash-out. Portal venous or delayed wash-out is an important HCC feature in the correct risk setting."
+    },
+    {
+      "id": "hcc-en-10", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "Which details are particularly important for radiological HCC staging?",
+      "options": [{"id":"A","text":"Number, size, segment, satellites, vascular invasion and extrahepatic spread"},{"id":"B","text":"Ultrasound echogenicity only"},{"id":"C","text":"Patient age only"},{"id":"D","text":"Non-contrast density only"}],
+      "correct": "A", "explanation": "Tumour burden, location, satellites, macrovascular invasion and metastases determine staging and treatment planning."
     },
     {
       "id": "sarkoidose-en-01",
@@ -2874,6 +2994,66 @@ export const QUESTION_BANK = {
       "explanation": "شانت‌های شریانی-وریدی متعدد کبدی می‌توانند از طریق افزایش برون‌ده قلبی منجر به نارسایی قلبی با برون‌ده بالا شوند و از طریق شانت آرتریوپورتال باعث هیپرتانسیون پورت گردند."
     },
     {
+      "id": "hcc-fa-01", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "تشخیص غیرتهاجمی تصویربرداری HCC در کدام زمینه قابل اعتمادتر است؟",
+      "options": [{"id":"A","text":"زمینه پرخطر مناسب مانند سیروز"},{"id":"B","text":"هر ضایعه اتفاقی کبد بدون توجه به سابقه"},{"id":"C","text":"فقط کودکان سالم"},{"id":"D","text":"فقط پس از تروما"}],
+      "correct": "A", "explanation": "الگوی دینامیک تیپیک HCC و LI-RADS برای گروه پرخطر تعریف‌شده، به‌ویژه بیماران مبتلا به سیروز یا برخی بیماری‌های مزمن کبدی، کاربرد دارند."
+    },
+    {
+      "id": "hcc-fa-02", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "کدام الگوی enhancement برای HCC کلاسیک است؟",
+      "options": [{"id":"A","text":"non-rim APHE همراه non-peripheral wash-out"},{"id":"B","text":"enhancement ندولار محیطی با پرشدگی مرکزگرا"},{"id":"C","text":"عدم enhancement در همه فازها"},{"id":"D","text":"فقط enhancement تأخیری اسکار بدون APHE"}],
+      "correct": "A", "explanation": "هایپرانهانسمنت شریانی غیرحلقوی و سپس wash-out غیرمحیطی، الگوی دینامیک کلاسیک HCC در بیمار پرخطر است."
+    },
+    {
+      "id": "hcc-fa-03", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "wash-out در یک ضایعه کبدی به چه معناست؟",
+      "options": [{"id":"A","text":"ضایعه در فازهای دیرتر نسبت به کبد هیپوenhancing می‌شود"},{"id":"B","text":"ضایعه کاملاً ناپدید می‌شود"},{"id":"C","text":"همیشه خونریزی فعال وجود دارد"},{"id":"D","text":"فقط سیگنال T2 افزایش می‌یابد"}],
+      "correct": "A", "explanation": "Wash-out یک یافته نسبی است: ضایعه در فاز پورتال یا تأخیری نسبت به کبدی که بیشتر enhancement می‌یابد، تیره‌تر می‌شود."
+    },
+    {
+      "id": "hcc-fa-04", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "کدام یافته capsule appearance را توصیف می‌کند؟",
+      "options": [{"id":"A","text":"حاشیه صاف محیطی با enhancement در فازهای دیرتر"},{"id":"B","text":"اسکار مرکزی روشن در T2 با enhancement تأخیری"},{"id":"C","text":"کلسیفیکاسیون کامل ضایعه"},{"id":"D","text":"اختلال پرفیوژن گوه‌ای بدون توده"}],
+      "correct": "A", "explanation": "مرز صاف محیطی با enhancement در فاز پورتال یا تأخیری نمایانگر capsule appearance و به نفع HCC است."
+    },
+    {
+      "id": "hcc-fa-05", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "HCC معمولاً در فاز هپاتوبیلیاری چگونه دیده می‌شود؟",
+      "options": [{"id":"A","text":"هیپواینتنس نسبت به پارانشیم کبد"},{"id":"B","text":"همیشه به‌شدت هایپراینتنس"},{"id":"C","text":"بدون سیگنال مانند هوا"},{"id":"D","text":"کاملاً مشابه blood pool"}],
+      "correct": "A", "explanation": "بیشتر HCCها هپاتوسیت عملکردی کافی ندارند و در فاز هپاتوبیلیاری هیپواینتنس دیده می‌شوند."
+    },
+    {
+      "id": "hcc-fa-06", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "کدام الگوی DWI/ADC می‌تواند تشخیص HCC را تقویت کند؟",
+      "options": [{"id":"A","text":"محدودیت انتشار همراه ADC پایین"},{"id":"B","text":"ADC بسیار بالا بدون سیگنال DWI"},{"id":"C","text":"فقط T2 shine-through بدون محدودیت"},{"id":"D","text":"عدم مشاهده کامل در DWI"}],
+      "correct": "A", "explanation": "سلولاریته بالا می‌تواند محدودیت انتشار واقعی با سیگنال DWI بالا و ADC پایین ایجاد کند؛ این یافته حمایتی اما غیراختصاصی است."
+    },
+    {
+      "id": "hcc-fa-07", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "کدام یافته بیشتر به نفع tumour in vein است؟",
+      "options": [{"id":"A","text":"بافت نرم enhancing داخل ورید با الگوی مشابه تومور"},{"id":"B","text":"ترومبوس همگن بدون enhancement و جدا از تومور"},{"id":"C","text":"فقط ادم پری‌پورتال"},{"id":"D","text":"کیست ساده کنار ورید پورت"}],
+      "correct": "A", "explanation": "بافت نرم enhancing داخل ورید نشان‌دهنده تهاجم ماکروواسکولار تومور است و باید از ترومبوس ساده افتراق داده شود."
+    },
+    {
+      "id": "hcc-fa-08", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "کدام جمله درباره HCC انفیلتراتیو صحیح است؟",
+      "options": [{"id":"A","text":"می‌تواند permeative رشد کند و APHE/wash-out کلاسیک را فقط فوکال نشان دهد"},{"id":"B","text":"همیشه یک ضایعه منفرد با مرز واضح است"},{"id":"C","text":"تهاجم عروقی تقریباً هرگز رخ نمی‌دهد"},{"id":"D","text":"ضایعات ماهواره‌ای تشخیص را رد می‌کنند"}],
+      "correct": "A", "explanation": "HCC انفیلتراتیو به‌صورت نامشخص چند سگمان را درگیر می‌کند؛ enhancement کلاسیک ممکن است هتروژن یا فقط فوکال باشد و تهاجم عروقی شایع است."
+    },
+    {
+      "id": "hcc-fa-09", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "کدام ویژگی بیشتر به نفع HCC نسبت به FNH تیپیک است؟",
+      "options": [{"id":"A","text":"wash-out پورتال یا تأخیری"},{"id":"B","text":"APHE هموژن بدون wash-out"},{"id":"C","text":"اسکار مرکزی روشن در T2 با enhancement تأخیری"},{"id":"D","text":"الگوی spoke-wheel در داپلر"}],
+      "correct": "A", "explanation": "FNH تیپیک APHE دارد اما wash-out ندارد. Wash-out پورتال یا تأخیری در زمینه خطر مناسب ویژگی مهم HCC است."
+    },
+    {
+      "id": "hcc-fa-10", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
+      "question": "کدام اطلاعات برای مرحله‌بندی رادیولوژیک HCC اهمیت ویژه دارند؟",
+      "options": [{"id":"A","text":"تعداد، اندازه، سگمان، ضایعات ماهواره‌ای، تهاجم عروقی و گسترش خارج کبدی"},{"id":"B","text":"فقط اکوژنیسیته سونوگرافی"},{"id":"C","text":"فقط سن بیمار"},{"id":"D","text":"فقط دانسیته بدون کنتراست"}],
+      "correct": "A", "explanation": "بار تومور، محل، ضایعات ماهواره‌ای، تهاجم ماکروواسکولار و متاستازها مرحله و برنامه درمان را تعیین می‌کنند."
+    },
+    {
       "id": "sarkoidose-fa-01",
       "tags": [
         "sarkoidose",
@@ -3197,6 +3377,9 @@ export const MCQ_TOPIC_GROUPS = [
     title: { de: 'Leber', en: 'Liver', fa: 'کبد' },
     topics: [
       { id: 'haemangiom', title: { de: 'Leberhämangiom', en: 'Liver haemangioma', fa: 'همانژیوم کبد' } },
+      { id: 'fnh', title: { de: 'FNH', en: 'FNH', fa: 'FNH' } },
+      { id: 'hcc', title: { de: 'HCC', en: 'HCC', fa: 'HCC' } },
+      { id: 'avm', title: { de: 'AVM der Leber', en: 'Hepatic AVM', fa: 'AVM کبد' } },
     ],
   },
   {

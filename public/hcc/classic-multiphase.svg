@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 690">
+  <rect width="920" height="690" fill="#080b12"/>
+  <g fill="#323946" stroke="#8c96a8" stroke-width="5">
+    <path d="M118 164c122-98 389-112 579-28 118 52 165 166 108 264-65 111-255 157-443 134-175-21-294-101-300-205-4-65 14-122 56-165Z"/>
+  </g>
+  <g>
+    <circle cx="565" cy="322" r="95" fill="#e6e9ee" opacity=".94"/>
+    <circle cx="565" cy="322" r="62" fill="#a9b1be"/>
+    <path d="M482 363c48 63 132 76 190 21" fill="none" stroke="#f97316" stroke-width="15" stroke-linecap="round"/>
+  </g>
+  <g fill="#dbe4ef" font-family="Arial,sans-serif">
+    <text x="55" y="72" font-size="30" font-weight="700">SCHEMATIC MULTIPHASE CT</text>
+    <text x="55" y="628" font-size="25">APHE → portal venous wash-out → capsule appearance</text>
+  </g>
+  <g stroke="#10b981" stroke-width="8" fill="none"><path d="M686 217 756 143"/><path d="m744 145 16-6-5 17"/></g>
+</svg>

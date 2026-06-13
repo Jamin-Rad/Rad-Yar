@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import Link from 'next/link'
+import { useParams, useSearchParams } from 'next/navigation'
 import { useAuth, useUser } from '@clerk/nextjs'
 import { hasFullAccess, FREE_TOPIC_LIMIT, FREE_ITEM_LIMIT } from '@/utils/subscription'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -163,10 +164,12 @@ function sortCards(cards, state) {
   return [...due, ...fresh, ...future]
 }
 
-export default function FlashcardReviewPage({ params, searchParams }) {
+export default function FlashcardReviewPage() {
   const { lang } = useLanguage()
   const { userId } = useAuth()
   const { user } = useUser()
+  const params = useParams()
+  const searchParams = useSearchParams()
   const fullAccess = hasFullAccess(user)
   const t = T[lang] ?? T.de
   const dir = lang === 'fa' ? 'rtl' : 'ltr'
@@ -190,9 +193,10 @@ export default function FlashcardReviewPage({ params, searchParams }) {
         : FLASHCARDS.filter(card => card.topicId === topicId),
     [topicId, isDueMode, contrastGroup]
   )
-  const practiceMode = searchParams?.mode === 'practice'
-  const boxFilter = searchParams?.box ? Number(searchParams.box) : null
-  const fromParam = typeof searchParams?.from === 'string' ? searchParams.from : null
+  const practiceMode = searchParams.get('mode') === 'practice'
+  const boxValue = searchParams.get('box')
+  const boxFilter = boxValue ? Number(boxValue) : null
+  const fromParam = searchParams.get('from')
   const backHref = fromParam || (lang === 'de' ? '/flashcards' : `/flashcards?lang=${lang}`)
 
   const [leitnerState, setLeitnerState] = useState({})

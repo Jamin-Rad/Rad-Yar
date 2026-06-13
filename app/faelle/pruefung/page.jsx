@@ -10,9 +10,9 @@ import quizStyles from '@/app/ueben/quiz/page.module.css'
 import styles from './page.module.css'
 
 const REGION_NAMES = {
-  de: { msk: 'Muskuloskelettales' },
-  en: { msk: 'Musculoskeletal' },
-  fa: { msk: 'اسکلتی-عضلانی' },
+  de: { msk: 'Muskuloskelettales', abdomen: 'Abdomen' },
+  en: { msk: 'Musculoskeletal', abdomen: 'Abdomen' },
+  fa: { msk: 'اسکلتی-عضلانی', abdomen: 'شکم' },
 }
 
 const UI = {

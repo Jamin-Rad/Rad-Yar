@@ -81,6 +81,25 @@ export const FLASHCARD_TOPICS = [
     }
   },
   {
+    "id": "hcc",
+    "area": "Abdomen",
+    "chapter": "Leber",
+    "icon": "🔴",
+    "iconImage": "/fach/abdomen.png",
+    "color": "#dc2626",
+    "href": "/flashcards/hcc",
+    "title": {
+      "de": "Hepatozelluläres Karzinom",
+      "en": "Hepatocellular carcinoma",
+      "fa": "کارسینوم هپاتوسلولار"
+    },
+    "subtitle": {
+      "de": "Risikokontext · APHE · Wash-out · LI-RADS · Gefäßinvasion",
+      "en": "Risk context · APHE · wash-out · LI-RADS · vascular invasion",
+      "fa": "زمینه خطر · APHE · wash-out · LI-RADS · تهاجم عروقی"
+    }
+  },
+  {
     "id": "sarkoidose",
     "area": "Thorax",
     "chapter": "Lunge",
@@ -1853,6 +1872,87 @@ export const FLASHCARDS = [
       "en": "shunt type + early venous filling (+ THAD/THID) + possible HHT note",
       "fa": "نوع شانت + Early venous filling (+ THAD/THID) + احتمال HHT"
     }
+  },
+  {
+    "id": "hcc-01-risk",
+    "topicId": "hcc",
+    "category": { "de": "Grundlagen", "en": "Basics", "fa": "مبانی" },
+    "front": { "de": "In welchem Kontext ist das typische HCC-Muster besonders diagnostisch?", "en": "In which context is the typical HCC pattern most diagnostic?", "fa": "الگوی تیپیک HCC در چه زمینه‌ای بیشترین ارزش تشخیصی دارد؟" },
+    "answer": { "de": "Im geeigneten Hochrisikokontext, vor allem bei Zirrhose oder chronischer Hepatitis B.", "en": "In an appropriate high-risk setting, especially cirrhosis or chronic hepatitis B.", "fa": "در زمینه پرخطر مناسب، به‌ویژه سیروز یا هپاتیت B مزمن." },
+    "explanation": { "de": "LI-RADS und die nicht invasive Bilddiagnose sind an eine definierte Zielpopulation gebunden und nicht auf jede Zufallsläsion übertragbar.", "en": "LI-RADS and non-invasive imaging diagnosis are tied to a defined target population and do not apply to every incidental lesion.", "fa": "LI-RADS و تشخیص غیرتهاجمی تصویربرداری به گروه هدف مشخص وابسته‌اند و برای هر ضایعه اتفاقی قابل استفاده نیستند." },
+    "diagram": { "de": "Hochrisikopatient + typisches Muster → HCC hochwahrscheinlich", "en": "high-risk patient + typical pattern → HCC highly likely", "fa": "بیمار پرخطر + الگوی تیپیک ← احتمال بالای HCC" }
+  },
+  {
+    "id": "hcc-02-aphe",
+    "topicId": "hcc",
+    "category": { "de": "Dynamik", "en": "Dynamic imaging", "fa": "تصویربرداری دینامیک" },
+    "front": { "de": "Was bedeutet non-rim APHE?", "en": "What does non-rim APHE mean?", "fa": "non-rim APHE به چه معناست؟" },
+    "answer": { "de": "Nicht randförmige arterielle Hyperenhancement der Läsion gegenüber der Leber.", "en": "Non-rim arterial phase hyperenhancement relative to the liver.", "fa": "هایپرانهانسمنت شریانی غیرحلقوی ضایعه نسبت به کبد." },
+    "explanation": { "de": "Durch zunehmende arterielle Neoangiogenese wird das HCC in der spätarteriellen Phase relativ heller als das umgebende Parenchym.", "en": "Increasing arterial neoangiogenesis makes HCC relatively brighter than surrounding liver in the late arterial phase.", "fa": "با افزایش نئوآنژیوژنز شریانی، HCC در فاز شریانی دیررس نسبت به کبد روشن‌تر می‌شود." }
+  },
+  {
+    "id": "hcc-03-washout",
+    "topicId": "hcc",
+    "category": { "de": "Dynamik", "en": "Dynamic imaging", "fa": "تصویربرداری دینامیک" },
+    "front": { "de": "Warum ist Wash-out beim HCC ein relativer Befund?", "en": "Why is wash-out in HCC a relative finding?", "fa": "چرا wash-out در HCC یک یافته نسبی است؟" },
+    "answer": { "de": "Die Läsion wird gegenüber dem zunehmend anreichernden Leberparenchym relativ dunkler.", "en": "The lesion becomes relatively darker than the progressively enhancing liver.", "fa": "ضایعه نسبت به پارانشیم کبد که بیشتر enhancement می‌یابد، تیره‌تر می‌شود." },
+    "explanation": { "de": "Es muss kein absoluter Kontrastmittelverlust vorliegen. Entscheidend ist die relative Hypoenhancement in portalvenöser oder später Phase.", "en": "Absolute contrast loss is not required; relative hypoenhancement in the portal venous or delayed phase is key.", "fa": "خروج مطلق کنتراست لازم نیست؛ هیپوenhancement نسبی در فاز پورتال یا تأخیری مهم است." }
+  },
+  {
+    "id": "hcc-04-capsule",
+    "topicId": "hcc",
+    "category": { "de": "Dynamik", "en": "Dynamic imaging", "fa": "تصویربرداری دینامیک" },
+    "front": { "de": "Was ist die Kapselappearance eines HCC?", "en": "What is HCC capsule appearance?", "fa": "capsule appearance در HCC چیست؟" },
+    "answer": { "de": "Ein glatter, peripher anreichernder Rand in portalvenöser oder später Phase.", "en": "A smooth peripheral enhancing rim in the portal venous or delayed phase.", "fa": "حاشیه صاف محیطی با enhancement در فاز پورتال یا تأخیری." },
+    "explanation": { "de": "Die Kapselappearance unterstützt die Einordnung als maligne hepatozelluläre Läsion, ist aber allein nicht beweisend.", "en": "Capsule appearance supports a malignant hepatocellular lesion but is not diagnostic by itself.", "fa": "capsule appearance به نفع ضایعه بدخیم هپاتوسلولار است، اما به‌تنهایی قطعی نیست." }
+  },
+  {
+    "id": "hcc-05-hbp",
+    "topicId": "hcc",
+    "category": { "de": "MRT", "en": "MRI", "fa": "MRI" },
+    "front": { "de": "Wie erscheint ein HCC meist in der hepatobiliären Phase?", "en": "How does HCC usually appear in the hepatobiliary phase?", "fa": "HCC معمولاً در فاز هپاتوبیلیاری چگونه دیده می‌شود؟" },
+    "answer": { "de": "Hypointens zum Leberparenchym.", "en": "Hypointense relative to liver parenchyma.", "fa": "هیپواینتنس نسبت به پارانشیم کبد." },
+    "explanation": { "de": "Die meisten HCC enthalten keine ausreichend funktionsfähigen Hepatozyten zur Aufnahme hepatobiliären Kontrastmittels.", "en": "Most HCCs lack sufficient functioning hepatocytes to take up hepatobiliary contrast.", "fa": "بیشتر HCCها هپاتوسیت عملکردی کافی برای جذب کنتراست هپاتوبیلیاری ندارند." }
+  },
+  {
+    "id": "hcc-06-dwi",
+    "topicId": "hcc",
+    "category": { "de": "MRT", "en": "MRI", "fa": "MRI" },
+    "front": { "de": "Welcher DWI/ADC-Befund unterstützt die HCC-Diagnose?", "en": "Which DWI/ADC finding supports HCC?", "fa": "کدام یافته DWI/ADC تشخیص HCC را تقویت می‌کند؟" },
+    "answer": { "de": "Diffusionsrestriktion mit erniedrigtem ADC.", "en": "Restricted diffusion with low ADC.", "fa": "محدودیت انتشار همراه ADC پایین." },
+    "explanation": { "de": "Die erhöhte Zelldichte kann zu hoher DWI-Signalintensität und erniedrigtem ADC führen. Das ist unterstützend, aber nicht spezifisch.", "en": "High cellularity may cause high DWI signal and low ADC. This is supportive but not specific.", "fa": "سلولاریته بالا می‌تواند سیگنال DWI بالا و ADC پایین ایجاد کند؛ این یافته حمایتی اما غیراختصاصی است." }
+  },
+  {
+    "id": "hcc-07-tumour-vein",
+    "topicId": "hcc",
+    "category": { "de": "Staging", "en": "Staging", "fa": "مرحله‌بندی" },
+    "front": { "de": "Welcher Befund spricht für Tumor in vein?", "en": "Which finding suggests tumour in vein?", "fa": "کدام یافته به نفع tumour in vein است؟" },
+    "answer": { "de": "Anreicherndes Weichteilgewebe innerhalb einer Vene mit tumortypischem Enhancement.", "en": "Enhancing soft tissue within a vein showing tumour-like enhancement.", "fa": "بافت نرم enhancing داخل ورید با الگوی enhancement مشابه تومور." },
+    "explanation": { "de": "Makrovaskuläre Invasion ist prognostisch und therapeutisch entscheidend und muss von blandem Thrombus unterschieden werden.", "en": "Macrovascular invasion is crucial for prognosis and treatment and must be distinguished from bland thrombus.", "fa": "تهاجم ماکروواسکولار برای پیش‌آگهی و درمان مهم است و باید از ترومبوس ساده افتراق داده شود." }
+  },
+  {
+    "id": "hcc-08-infiltrative",
+    "topicId": "hcc",
+    "category": { "de": "Atypische Form", "en": "Atypical form", "fa": "فرم آتیپیک" },
+    "front": { "de": "Wie wächst ein infiltratives HCC?", "en": "How does infiltrative HCC grow?", "fa": "HCC انفیلتراتیو چگونه رشد می‌کند؟" },
+    "answer": { "de": "Unscharf und permeativ über mehrere Segmente oder einen ganzen Leberlappen.", "en": "Ill-defined and permeative across multiple segments or an entire lobe.", "fa": "نامشخص و permeative در چند سگمان یا یک لوب کامل." },
+    "explanation": { "de": "Das klassische APHE/Wash-out-Muster kann nur fokal vorhanden sein. Satellitenherde und Gefäßinvasion sind wichtige Hinweise.", "en": "The classic APHE/wash-out pattern may be only focal. Satellite lesions and vascular invasion are important clues.", "fa": "الگوی کلاسیک APHE/wash-out ممکن است فقط فوکال باشد؛ ضایعات ماهواره‌ای و تهاجم عروقی سرنخ‌های مهم هستند." }
+  },
+  {
+    "id": "hcc-09-dd-fnh",
+    "topicId": "hcc",
+    "category": { "de": "Differenzialdiagnose", "en": "Differential diagnosis", "fa": "تشخیص افتراقی" },
+    "front": { "de": "Welches Verhalten spricht eher für HCC als für FNH?", "en": "Which behaviour favours HCC over FNH?", "fa": "کدام رفتار بیشتر به نفع HCC نسبت به FNH است؟" },
+    "answer": { "de": "Portalvenöses/spätes Wash-out und Kapselappearance.", "en": "Portal venous/delayed wash-out and capsule appearance.", "fa": "wash-out پورتال/تأخیری و capsule appearance." },
+    "explanation": { "de": "Die typische FNH zeigt kräftiges homogenes APHE, aber kein Wash-out und häufig eine T2-helle zentrale Narbe.", "en": "Typical FNH shows strong homogeneous APHE but no wash-out and often a T2-bright central scar.", "fa": "FNH تیپیک APHE قوی و هموژن دارد ولی wash-out ندارد و اغلب اسکار مرکزی روشن در T2 دارد." }
+  },
+  {
+    "id": "hcc-10-reporting",
+    "topicId": "hcc",
+    "category": { "de": "Befundung", "en": "Reporting", "fa": "گزارش‌نویسی" },
+    "front": { "de": "Welche Angaben gehören zwingend in einen HCC-Befund?", "en": "Which details are essential in an HCC report?", "fa": "چه اطلاعاتی باید حتماً در گزارش HCC ذکر شوند؟" },
+    "answer": { "de": "Zahl, Größe, Segment, Enhancement, Satelliten, Gefäßinvasion und extrahepatische Ausbreitung.", "en": "Number, size, segment, enhancement, satellites, vascular invasion and extrahepatic spread.", "fa": "تعداد، اندازه، سگمان، enhancement، ضایعات ماهواره‌ای، تهاجم عروقی و گسترش خارج کبدی." },
+    "explanation": { "de": "Diese Merkmale bestimmen Staging, Resektabilität, Transplantationsoptionen und lokoregionäre oder systemische Therapie.", "en": "These features determine staging, resectability, transplant options and locoregional or systemic therapy.", "fa": "این ویژگی‌ها مرحله، قابلیت رزکسیون، امکان پیوند و درمان موضعی یا سیستمیک را تعیین می‌کنند." }
   },
   {
     "id": "sarkoidose-01-definition",
