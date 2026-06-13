@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { requireAdmin } from '@/lib/adminAuth'
-import { supabaseAdmin } from '@/lib/supabase/server'
+import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 
 const DAY_MS = 24 * 60 * 60 * 1000
 
@@ -8,6 +8,12 @@ export async function GET() {
   const admin = await requireAdmin()
   if (admin.error) {
     return NextResponse.json({ error: admin.error }, { status: admin.status })
+  }
+  if (!isSupabaseAdminConfigured || !supabaseAdmin) {
+    return NextResponse.json(
+      { error: 'Die Analytics-Datenbank ist noch nicht eingerichtet.' },
+      { status: 503 }
+    )
   }
 
   const since = new Date(Date.now() - 89 * DAY_MS).toISOString().slice(0, 10)

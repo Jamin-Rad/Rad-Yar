@@ -1,6 +1,6 @@
 import { auth } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
-import { supabaseAdmin } from '@/lib/supabase/server'
+import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 
 const VISITOR_PATTERN = /^[a-zA-Z0-9_-]{12,80}$/
 
@@ -17,6 +17,10 @@ function boundedInt(value, max) {
 
 export async function POST(request) {
   try {
+    if (!isSupabaseAdminConfigured || !supabaseAdmin) {
+      return new NextResponse(null, { status: 204 })
+    }
+
     const payload = await request.json()
     const visitorId = typeof payload.visitorId === 'string' ? payload.visitorId : ''
     if (!VISITOR_PATTERN.test(visitorId)) {
