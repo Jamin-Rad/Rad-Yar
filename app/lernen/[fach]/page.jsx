@@ -3,7 +3,9 @@ import { useState, useEffect, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
+import { useAuth } from '@clerk/nextjs'
 import { CURRICULUM, getFach, getFachTitle, getKapitelTitle, getThemaTitle } from '@/data/curriculum'
+import { pullReadStatusFromServer } from '@/utils/readStatus'
 import { CONTRAST_GROUPS } from '@/data/contrastMedia'
 import { ChapterIcon } from '@/components/ChapterIcons'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -125,6 +127,7 @@ function SubThemen({ sub, fachColor, lang }) {
 
 export default function LernenFachPage() {
   const params = useParams()
+  const { isLoaded, userId } = useAuth()
   const { lang } = useLanguage()
   const t = T[lang] || T.de
   const isRTL = lang === 'fa'
@@ -154,6 +157,19 @@ export default function LernenFachPage() {
       setReadArticles(JSON.parse(localStorage.getItem('radyar_read_articles') || '{}'))
     } catch {}
   }, [fach])
+
+  // Lesefortschritt vom Server holen (geräteübergreifend) und mergen
+  useEffect(() => {
+    if (!isLoaded || !userId) return
+    let cancelled = false
+    pullReadStatusFromServer()
+      .then(result => {
+        if (cancelled || !result) return
+        setReadArticles(result.articles)
+      })
+      .catch(() => {})
+    return () => { cancelled = true }
+  }, [isLoaded, userId])
 
   useEffect(() => { setSearch('') }, [params?.fach])
 
