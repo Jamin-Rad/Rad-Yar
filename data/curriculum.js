@@ -61,7 +61,7 @@ export const CURRICULUM = [
           { id: 'systemische-vaskulitiden-zns', title: { de: 'Systemische Vaskulitiden mit ZNS-Beteiligung', en: 'Systemic Vasculitides with CNS Involvement', fa: 'واسکولیت‌های سیستمیک با درگیری CNS' }, group: ['Vaskulitiden'], tags: ['MRT'], diff: 3 },
           { id: 'sle-zns', title: { de: 'Systemischer Lupus erythematodes (SLE)', en: 'Systemic Lupus Erythematosus (SLE)', fa: 'لوپوس اریتماتوز سیستمیک (SLE)' }, group: ['Vaskulitiden'], tags: ['MRT'], diff: 3 },
           { id: 'aneurysma', title: { de: 'Aneurysma', en: 'Aneurysm', fa: 'آنوریسم' }, group: ['Gefäßmalformationen'], tags: ['CT','MRT'], diff: 2 },
-          { id: 'avm', title: { de: 'Arteriovenöse Malformation (AVM)', en: 'Arteriovenous Malformation (AVM)', fa: 'مالفورماسیون شریانی-وریدی (AVM)' }, group: ['Gefäßmalformationen'], tags: ['MRT','CT'], diff: 3 },
+          { id: 'avm-zns', title: { de: 'Arteriovenöse Malformation (AVM)', en: 'Arteriovenous Malformation (AVM)', fa: 'مالفورماسیون شریانی-وریدی (AVM)' }, group: ['Gefäßmalformationen'], tags: ['MRT','CT'], diff: 3 },
           { id: 'davf', title: { de: 'Durale AV-Fistel (dAVF)', en: 'Dural Arteriovenous Fistula (dAVF)', fa: 'فیستول شریانی-وریدی دورال (dAVF)' }, group: ['Gefäßmalformationen'], tags: ['MRT','CT'], diff: 3 },
           { id: 'kavernom', title: { de: 'Kavernom', en: 'Cavernoma', fa: 'کاورنوم' }, group: ['Gefäßmalformationen'], tags: ['MRT'], diff: 2 },
           { id: 'dva', title: { de: 'Developmental Venous Anomaly (DVA)', en: 'Developmental Venous Anomaly (DVA)', fa: 'آنومالی وریدی تکاملی (DVA)' }, group: ['Gefäßmalformationen'], tags: ['MRT'], diff: 1 },
