@@ -583,10 +583,17 @@
   box-shadow: 0 22px 44px rgba(23, 32, 51, 0.12);
 }
 
+.caseImages {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: #334155;
+}
+
 .caseImage {
   width: 100%;
-  height: min(68vh, 620px);
-  position: relative;
+  height: min(64vh, 580px);
+  margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -600,64 +607,6 @@
   height: 100%;
   object-fit: contain;
   background: #020617;
-}
-
-.caseViewer {
-  outline: none;
-  background: #020617;
-}
-
-.caseViewer:focus-visible {
-  box-shadow: inset 0 0 0 3px #f97316;
-}
-
-.caseCounter {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  padding: 5px 8px;
-  border-radius: 999px;
-  color: #fff;
-  background: rgba(2, 6, 23, .78);
-  font-size: 11px;
-  font-weight: 800;
-}
-
-.caseViewerControls {
-  display: grid;
-  grid-template-columns: 38px minmax(0, 1fr) 38px;
-  gap: 10px;
-  align-items: center;
-  padding: 10px 12px 4px;
-}
-
-.caseViewerControls button {
-  width: 38px;
-  height: 34px;
-  border: 1px solid rgba(255,255,255,.22);
-  border-radius: 9px;
-  color: #fff;
-  background: #172033;
-  cursor: pointer;
-  font-size: 24px;
-}
-
-.caseViewerControls button:disabled {
-  opacity: .3;
-  cursor: default;
-}
-
-.caseViewerControls input {
-  width: 100%;
-  accent-color: #f97316;
-}
-
-.caseScrollHint {
-  display: block;
-  padding: 3px 12px 11px;
-  color: #94a3b8;
-  font-size: 10px;
-  text-align: center;
 }
 
 .caseBody { padding: 18px; }
@@ -694,7 +643,8 @@
 @media (max-width: 760px) {
   .caseGrid { grid-template-columns: 1fr; gap: 12px; }
   .caseCardLink { border-radius: 18px; }
-  .caseImage { height: min(62vh, 480px); font-size: 52px; }
+  .caseImages { grid-template-columns: 1fr; }
+  .caseImage { height: min(60vh, 460px); font-size: 52px; }
   .caseBody { padding: 16px; }
   .caseBody h3 { font-size: 17px; }
   .caseBody p { font-size: 16px; line-height: 1.72; }

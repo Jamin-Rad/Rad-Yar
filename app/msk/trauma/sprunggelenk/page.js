@@ -101,10 +101,6 @@ const CONTENT = {
       meta: '40-jähriger Patient nach Treppensturz. Die Aufnahmen zeigen eine Aufweitung des medialen Gelenkspalts und eine mehrfragmentäre Fraktur des proximalen Fibuladrittels – vereinbar mit einer Maisonneuve-Fraktur.',
       credit: 'Case courtesy of Fernando Figueredo Savi, Radiopaedia.org · rID: 200431',
       open: 'Fall in Radiopaedia öffnen',
-      previousImage: 'Vorheriges Bild',
-      nextImage: 'Nächstes Bild',
-      imageOf: (current, total) => `Bild ${current} von ${total}`,
-      scrollHint: 'Mit Mausrad, Slider oder Pfeilen durch die Aufnahmen scrollen.',
     },
     takehome: {
       title: 'Take home message',
@@ -207,10 +203,6 @@ const CONTENT = {
       meta: '40-year-old man after falling down stairs. The radiographs show widening of the medial ankle joint space and a comminuted fracture of the proximal third of the fibula, consistent with a Maisonneuve fracture.',
       credit: 'Case courtesy of Fernando Figueredo Savi, Radiopaedia.org · rID: 200431',
       open: 'Open case in Radiopaedia',
-      previousImage: 'Previous image',
-      nextImage: 'Next image',
-      imageOf: (current, total) => `Image ${current} of ${total}`,
-      scrollHint: 'Scroll through the radiographs with the mouse wheel, slider or arrows.',
     },
     takehome: {
       title: 'Take home message',
@@ -280,50 +272,20 @@ function Callout({ type = 'note', label, children }) {
   )
 }
 
-function CaseSequenceViewer({ copy }) {
-  const frames = Array.from(
-    { length: 2 },
-    (_, index) => `/sprunggelenk/case-200431-sequence/${String(index + 1).padStart(2, '0')}.jpeg`
-  )
-  const [frameIndex, setFrameIndex] = useState(0)
-  const move = direction => setFrameIndex(index => Math.min(frames.length - 1, Math.max(0, index + direction)))
-
+function CaseImages({ copy }) {
   return (
-    <div
-      className={styles.caseViewer}
-      tabIndex={0}
-      onWheel={event => {
-        event.preventDefault()
-        move(event.deltaY > 0 ? 1 : -1)
-      }}
-      onKeyDown={event => {
-        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') move(1)
-        if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') move(-1)
-      }}
-    >
-      <div className={styles.caseImage}>
+    <div className={styles.caseImages}>
+      {[1, 2].map((number) => (
+        <figure className={styles.caseImage} key={number}>
         <Image
-          src={frames[frameIndex]}
-          alt={copy.imageAlt}
+            src={`/sprunggelenk/case-200431-sequence/${String(number).padStart(2, '0')}.jpeg`}
+            alt={`${copy.imageAlt} – ${number}`}
           width={932}
           height={2169}
           className={styles.caseImageAsset}
         />
-        <span className={styles.caseCounter}>{copy.imageOf(frameIndex + 1, frames.length)}</span>
-      </div>
-      <div className={styles.caseViewerControls}>
-        <button type="button" onClick={() => move(-1)} disabled={frameIndex === 0} aria-label={copy.previousImage}>‹</button>
-        <input
-          type="range"
-          min="0"
-          max={frames.length - 1}
-          value={frameIndex}
-          onChange={event => setFrameIndex(Number(event.target.value))}
-          aria-label={copy.imageOf(frameIndex + 1, frames.length)}
-        />
-        <button type="button" onClick={() => move(1)} disabled={frameIndex === frames.length - 1} aria-label={copy.nextImage}>›</button>
-      </div>
-      <small className={styles.caseScrollHint}>{copy.scrollHint}</small>
+        </figure>
+      ))}
     </div>
   )
 }
@@ -459,7 +421,7 @@ export default function SprunggelenkTraumaPage() {
           <Section id="fall" title={copy.caseStudy.title} lead={copy.caseStudy.lead}>
             <div className={styles.caseGrid}>
               <article className={styles.caseCardLink}>
-                <CaseSequenceViewer copy={copy.caseStudy} />
+                <CaseImages copy={copy.caseStudy} />
                 <div className={styles.caseBody}>
                   <div className={styles.caseLabelRow}>
                     <span className={styles.caseLabel}>{copy.caseStudy.label}</span>
