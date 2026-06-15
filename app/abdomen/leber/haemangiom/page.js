@@ -2,6 +2,7 @@
 
 import { useMemo, useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
@@ -78,7 +79,7 @@ const CONTENT = {
         },
         {
           "title": "Epidemiologie",
-          "text": "Häufigster gutartiger solider Lebertumor, häufiger bei Frauen als bei Männern."
+          "text": "Häufigster gutartiger solider Lebertumor.\nHäufiger bei Frauen als bei Männern."
         },
         {
           "title": "Typische Lage",
@@ -106,10 +107,6 @@ const CONTENT = {
         [
           "Doppler",
           "gelegentlich periphere Gefäßstrukturen"
-        ],
-        [
-          "Konsequenz",
-          "bei klassischer Sonomorphologie keine weitere Diagnostik nötig"
         ]
       ],
       "key": "Ein kleines, scharf begrenztes, echoreiches Hämangiom bei unauffälliger Leber und typischer Morphologie braucht oft keine zusätzliche CT oder MRT."
@@ -141,6 +138,7 @@ const CONTENT = {
       ],
       "irisTitle": "Irisblendenphänomen",
       "irisText": "Die Kontrastmittelaufnahme schreitet von außen nach innen fort – vergleichbar mit einer Irisblende, die sich von der Peripherie zum Zentrum schließt.",
+      "irisImageAlt": "Irisblendenphänomen beim Leberhämangiom in vier CT-Phasen",
       "key": "Die periphere noduläre KM-Aufnahme darf nicht mit einem malignen Ringenhancement verwechselt werden: Beim Hämangiom füllt sich die Läsion langsam zentripetal auf."
     },
     "mri": {
@@ -149,13 +147,13 @@ const CONTENT = {
       "tableHeaders": [
         "Sequenz",
         "Typischer Befund",
-        "Praktische Bedeutung"
+        ""
       ],
       "tableRows": [
         [
           "T1 nativ",
           "hypo- bis isointens zur Leber",
-          "unspezifisch"
+          ""
         ],
         [
           "T2",
@@ -165,7 +163,7 @@ const CONTENT = {
         [
           "DWI",
           "hyperintens auf hohen b-Werten",
-          "nicht spezifisch"
+          ""
         ],
         [
           "ADC",
@@ -187,7 +185,7 @@ const CONTENT = {
       "lightBulbText": "Das typische Hämangiom ist in T2 sehr stark hyperintens. Kleine Hämangiome sind eher homogen, größere können durch Fibrosierung, Verkalkungen oder Thromben inhomogen sein.",
       "dwiTitle": "DWI richtig interpretieren",
       "dwiText": "Ein Hämangiom kann auf hohen b-Werten hell sein. Entscheidend ist aber die ADC-Karte: hohe ADC-Werte sprechen für T2-shine-through und gegen echte Restriktion.",
-      "key": "DWI-Hyperintensität allein ist keine Metastase. Ohne niedrigen ADC-Wert liegt keine echte Diffusionsrestriktion vor."
+      "key": "Light-bulb sign: Das sehr helle T2-Signal ist typisch für ein Hämangiom. DWI-Hyperintensität allein ist keine Metastase. Ohne niedrigen ADC-Wert liegt keine echte Diffusionsrestriktion vor."
     },
     "atypical": {
       "title": "Atypisches Leberhämangiom",
@@ -209,17 +207,11 @@ const CONTENT = {
           "randständig hell, diskrete ADC-Einschränkung möglich"
         ],
         [
-          "T1 nativ",
-          "hypo- bis isointens",
-          "häufig hypointens"
-        ],
-        [
           "T1 C+",
           "peripher nodulär + zentripetal",
           "oft früharteriell homogen starke KM-Aufnahme"
         ]
       ],
-      "cave": "Wenn die klassische periphere noduläre Aufnahme und die zentripetale Auffüllung fehlen, sollte die Diagnose nicht vorschnell als typisches Hämangiom formuliert werden.",
       "key": "Atypische Hämangiome können Metastasen imitieren. Hilfreich sind Verlauf, Blutpool-Verhalten, ADC-Karte und Vergleich mit Voruntersuchungen."
     },
     "takehome": {
@@ -315,7 +307,7 @@ const CONTENT = {
         },
         {
           "title": "Epidemiology",
-          "text": "Most common benign solid liver tumour, more frequent in women than in men."
+          "text": "Most common benign solid liver tumour.\nMore frequent in women than in men."
         },
         {
           "title": "Typical location",
@@ -343,10 +335,6 @@ const CONTENT = {
         [
           "Doppler",
           "occasionally peripheral vessels"
-        ],
-        [
-          "Consequence",
-          "no further imaging needed when morphology is classic"
         ]
       ],
       "key": "A small, sharply marginated, hyperechoic lesion with typical morphology in an otherwise unremarkable liver often needs no additional CT or MRI."
@@ -378,6 +366,7 @@ const CONTENT = {
       ],
       "irisTitle": "Iris diaphragm phenomenon",
       "irisText": "Enhancement progresses from the periphery to the centre, like an iris diaphragm closing from outside to inside.",
+      "irisImageAlt": "Iris diaphragm phenomenon in hepatic haemangioma across four CT phases",
       "key": "Peripheral nodular enhancement should not be mistaken for malignant rim enhancement: a haemangioma slowly fills in centripetally."
     },
     "mri": {
@@ -386,13 +375,13 @@ const CONTENT = {
       "tableHeaders": [
         "Sequence",
         "Typical finding",
-        "Practical meaning"
+        ""
       ],
       "tableRows": [
         [
           "Native T1",
           "hypo- to isointense to liver",
-          "non-specific"
+          ""
         ],
         [
           "T2",
@@ -402,7 +391,7 @@ const CONTENT = {
         [
           "DWI",
           "hyperintense on high b-values",
-          "not specific"
+          ""
         ],
         [
           "ADC",
@@ -424,7 +413,7 @@ const CONTENT = {
       "lightBulbText": "A typical haemangioma is very hyperintense on T2. Small haemangiomas are often homogeneous, whereas larger ones may be heterogeneous due to fibrosis, calcification or thrombi.",
       "dwiTitle": "How to interpret DWI",
       "dwiText": "A haemangioma can be bright on high b-values. The ADC map is decisive: high ADC values indicate T2 shine-through and argue against true restriction.",
-      "key": "DWI hyperintensity alone is not metastasis. Without low ADC, there is no true diffusion restriction."
+      "key": "Light-bulb sign: the very bright T2 signal is typical of a haemangioma. DWI hyperintensity alone is not metastasis. Without low ADC, there is no true diffusion restriction."
     },
     "atypical": {
       "title": "Atypical liver haemangioma",
@@ -446,17 +435,11 @@ const CONTENT = {
           "rim hyperintensity, mild ADC decrease possible"
         ],
         [
-          "Native T1",
-          "hypo- to isointense",
-          "often hypointense"
-        ],
-        [
           "T1 C+",
           "peripheral nodular + centripetal",
           "often strong homogeneous arterial enhancement"
         ]
       ],
-      "cave": "If classic peripheral nodular enhancement and centripetal fill-in are absent, the lesion should not be called a typical haemangioma too quickly.",
       "key": "Atypical haemangiomas can mimic metastases. Helpful features are follow-up stability, blood-pool behaviour, ADC map and comparison with prior imaging."
     },
     "takehome": {
@@ -552,7 +535,7 @@ const CONTENT = {
         },
         {
           "title": "اپیدمیولوژی",
-          "text": "شایع‌ترین تومور جامد خوش‌خیم کبد، در زنان شایع‌تر از مردان."
+          "text": "شایع‌ترین تومور جامد خوش‌خیم کبد.\nدر زنان شایع‌تر از مردان."
         },
         {
           "title": "محل تیپیک",
@@ -580,10 +563,6 @@ const CONTENT = {
         [
           "داپلر",
           "گاهی عروق محیطی"
-        ],
-        [
-          "نتیجه",
-          "اگر ظاهر کاملاً تیپیک باشد، تصویربرداری بیشتر لازم نیست"
         ]
       ],
       "key": "یک ضایعه کوچک، خوش‌حد، اکوژن و تیپیک در کبد بدون مشکل زمینه‌ای اغلب نیاز به CT یا MRI اضافه ندارد."
@@ -615,6 +594,7 @@ const CONTENT = {
       ],
       "irisTitle": "پدیده Iris diaphragm",
       "irisText": "جذب ماده حاجب از محیط به سمت مرکز پیش می‌رود؛ شبیه دیافراگم عنبیه که از بیرون به داخل بسته می‌شود.",
+      "irisImageAlt": "پدیده دیافراگم عنبیه در همانژیوم کبدی طی چهار فاز CT",
       "key": "enhancement ندولار محیطی را نباید با rim enhancement بدخیم اشتباه گرفت: همانژیوم آهسته از محیط به مرکز پر می‌شود."
     },
     "mri": {
@@ -623,13 +603,13 @@ const CONTENT = {
       "tableHeaders": [
         "سکانس",
         "یافته تیپیک",
-        "معنای عملی"
+        ""
       ],
       "tableRows": [
         [
           "T1 نیتیو",
           "هیپو تا ایزواینتنس نسبت به کبد",
-          "غیراختصاصی"
+          ""
         ],
         [
           "T2",
@@ -639,7 +619,7 @@ const CONTENT = {
         [
           "DWI",
           "هایپراینتنس در b-value بالا",
-          "اختصاصی نیست"
+          ""
         ],
         [
           "ADC",
@@ -661,7 +641,7 @@ const CONTENT = {
       "lightBulbText": "همانژیوم تیپیک در T2 بسیار هایپراینتنس است. همانژیوم‌های کوچک اغلب هموژن هستند، ولی ضایعات بزرگ‌تر می‌توانند به علت فیبروز، کلسیفیکاسیون یا ترومبوز ناهمگون باشند.",
       "dwiTitle": "تفسیر درست DWI",
       "dwiText": "همانژیوم می‌تواند در b-value بالا روشن باشد. اما ADC تعیین‌کننده است: ADC بالا یعنی T2 shine-through و علیه محدودیت انتشار واقعی است.",
-      "key": "هایپراینتنس بودن در DWI به تنهایی متاستاز نیست. بدون ADC پایین، محدودیت انتشار واقعی وجود ندارد."
+      "key": "Light-bulb sign: سیگنال بسیار روشن T2 برای همانژیوم تیپیک است. هایپراینتنس بودن در DWI به تنهایی متاستاز نیست. بدون ADC پایین، محدودیت انتشار واقعی وجود ندارد."
     },
     "atypical": {
       "title": "همانژیوم آتیپیک کبدی",
@@ -683,17 +663,11 @@ const CONTENT = {
           "روشن محیطی، کاهش خفیف ADC ممکن است"
         ],
         [
-          "T1 نیتیو",
-          "هیپو تا ایزواینتنس",
-          "اغلب هیپواینتنس"
-        ],
-        [
           "T1 C+",
           "ندولار محیطی + centripetal",
           "اغلب enhancement هموژن و قوی در فاز شریانی"
         ]
       ],
-      "cave": "اگر enhancement ندولار محیطی و پرشدگی مرکزگرا وجود نداشته باشد، نباید سریع تشخیص همانژیوم تیپیک نوشته شود.",
       "key": "همانژیوم آتیپیک می‌تواند متاستاز را تقلید کند. پیگیری، رفتار blood-pool، ADC و مقایسه با تصاویر قبلی کمک‌کننده هستند."
     },
     "takehome": {
@@ -966,7 +940,7 @@ export default function LeberHaemangiomPage() {
               {copy.basics.items.map(item => (
                 <div className={styles.infoCard} key={item.title}>
                   <h3>{item.title}</h3>
-                  <p>{item.text}</p>
+                  {item.text.split('\n').map(paragraph => <p key={paragraph}>{paragraph}</p>)}
                 </div>
               ))}
             </div>
@@ -979,7 +953,19 @@ export default function LeberHaemangiomPage() {
           </Section>
 
           <Section id="ct" title={copy.ct.title} lead={copy.ct.lead}>
-            <Table headers={copy.ct.tableHeaders} rows={copy.ct.tableRows} />
+            <div className={styles.ctDiagnosticGrid}>
+              <Table headers={copy.ct.tableHeaders} rows={copy.ct.tableRows} />
+              <figure className={styles.irisFigure}>
+                <Image
+                  src="/haemangiom/irisblend.png"
+                  alt={copy.ct.irisImageAlt}
+                  width={1536}
+                  height={1024}
+                  sizes="(max-width: 980px) 100vw, 48vw"
+                  priority
+                />
+              </figure>
+            </div>
             <div className={styles.highlightBox}>
               <h3>{copy.ct.irisTitle}</h3>
               <p>{copy.ct.irisText}</p>
@@ -1004,8 +990,7 @@ export default function LeberHaemangiomPage() {
 
           <Section id="atypisch" title={copy.atypical.title} lead={copy.atypical.lead}>
             <Table headers={copy.atypical.tableHeaders} rows={copy.atypical.tableRows} />
-            <Callout type="cave" label={copy.caveLabel}>{copy.atypical.cave}</Callout>
-            <Callout label={copy.keyLabel}>{copy.atypical.key}</Callout>
+            <Callout type="cave" label={copy.caveLabel}>{copy.atypical.key}</Callout>
           </Section>
 
 
