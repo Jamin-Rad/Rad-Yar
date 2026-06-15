@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { getCases } from '@/data/cases'
 import { useLanguage } from '@/providers/LanguageProvider'
+import { getWrongAnswerExplanation } from '@/utils/answerFeedback'
 import quizStyles from '@/app/ueben/quiz/page.module.css'
 import styles from './page.module.css'
 
@@ -25,10 +26,10 @@ const UI = {
     next: 'Nächster Fall',
     resultButton: 'Ergebnis anzeigen',
     correct: 'Richtig',
-    incorrect: 'Nicht richtig',
+    incorrect: 'Leider falsch',
     correctAnswer: 'Richtige Antwort:',
     explanation: 'Einordnung',
-    whyWrong: 'Warum diese Antwort nicht passt',
+    whyWrong: 'Warum deine Antwort falsch ist',
     source: 'Originalfall ansehen',
     score: 'Punktestand',
     result: 'Dein Ergebnis',
@@ -48,10 +49,10 @@ const UI = {
     next: 'Next case',
     resultButton: 'Show result',
     correct: 'Correct',
-    incorrect: 'Incorrect',
+    incorrect: 'Unfortunately incorrect',
     correctAnswer: 'Correct answer:',
     explanation: 'Assessment',
-    whyWrong: 'Why this answer is incorrect',
+    whyWrong: 'Why your answer is incorrect',
     source: 'View original case',
     score: 'Score',
     result: 'Your result',
@@ -218,6 +219,7 @@ function CaseExamContent() {
 
   const isCorrect = checked && selected === item.correct
   const correctOption = item.options.find(option => option.id === item.correct)
+  const wrongExplanation = getWrongAnswerExplanation(item, selected, lang)
 
   return (
     <main className={quizStyles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
@@ -278,14 +280,19 @@ function CaseExamContent() {
             <div className={`${quizStyles.feedback} ${isCorrect ? quizStyles.fbOk : quizStyles.fbErr}`}>
               <div className={quizStyles.fbHead}>
                 <strong>{isCorrect ? ui.correct : ui.incorrect}</strong>
-                {!isCorrect && <span> · {ui.correctAnswer} <strong>{item.correct}) {correctOption?.text}</strong></span>}
               </div>
+              {!isCorrect && (
+                <div className={styles.correctAnswerRow}>
+                  <span>{ui.correctAnswer}</span>
+                  <strong>{item.correct}) {correctOption?.text}</strong>
+                </div>
+              )}
               <div className={quizStyles.fbLabel}>{ui.explanation}</div>
               <div className={quizStyles.fbText}>{item.explanation}</div>
-              {!isCorrect && item.wrongExplanations?.[selected] && (
+              {!isCorrect && wrongExplanation && (
                 <div className={styles.wrongExplanation}>
                   <div className={quizStyles.fbLabel}>{ui.whyWrong}</div>
-                  <div className={quizStyles.fbText}>{item.wrongExplanations[selected]}</div>
+                  <div className={quizStyles.fbText}>{wrongExplanation}</div>
                 </div>
               )}
               <div className={styles.sourceRow}>

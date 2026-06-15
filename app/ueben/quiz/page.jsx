@@ -6,6 +6,7 @@ import { useUser } from '@clerk/nextjs'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { getQuestions, getQuestionsByIds } from '@/data/questions'
 import { isSubscriptionActive, FREE_ITEM_LIMIT } from '@/utils/subscription'
+import { getWrongAnswerExplanation } from '@/utils/answerFeedback'
 import styles from './page.module.css'
 
 const localDateKey = () => {
@@ -43,6 +44,7 @@ const UI = {
     incorrect: 'Leider falsch',
     correctAnswer: 'Richtige Antwort:',
     explanation: 'Erklärung',
+    whyWrong: 'Warum deine Antwort falsch ist',
     result: 'Dein Ergebnis',
     scoreLabel: (s, t) => `${s} von ${t} richtig`,
     summary: 'Zusammenfassung',
@@ -71,6 +73,7 @@ const UI = {
     incorrect: 'Incorrect',
     correctAnswer: 'Correct answer:',
     explanation: 'Explanation',
+    whyWrong: 'Why your answer is incorrect',
     result: 'Your score',
     scoreLabel: (s, t) => `${s} of ${t} correct`,
     summary: 'Summary',
@@ -99,6 +102,7 @@ const UI = {
     incorrect: 'متأسفانه اشتباه',
     correctAnswer: 'پاسخ صحیح:',
     explanation: 'توضیح',
+    whyWrong: 'چرا پاسخ شما نادرست است',
     result: 'نتیجه شما',
     scoreLabel: (s, t) => `${s} از ${t} درست`,
     summary: 'خلاصه',
@@ -363,6 +367,7 @@ function QuizContent() {
   if (!q) return null
   const isCorrect = checked && selected === q.correct
   const correctOpt = q.options.find(o => o.id === q.correct)
+  const wrongExplanation = getWrongAnswerExplanation(q, selected, lang)
 
   return (
     <div className={styles.page}>
@@ -416,10 +421,21 @@ function QuizContent() {
               <div className={styles.fbHead}>
                 <span>{isCorrect ? '✅' : '❌'}</span>
                 <strong>{isCorrect ? ui.correct : ui.incorrect}</strong>
-                {!isCorrect && <span> — {ui.correctAnswer} <strong>{q.correct}) {correctOpt?.text}</strong></span>}
               </div>
+              {!isCorrect && (
+                <div className={styles.correctAnswerRow}>
+                  <span>{ui.correctAnswer}</span>
+                  <strong>{q.correct}) {correctOpt?.text}</strong>
+                </div>
+              )}
               <div className={styles.fbLabel}>{ui.explanation}</div>
               <div className={styles.fbText}>{q.explanation}</div>
+              {!isCorrect && wrongExplanation && (
+                <div className={styles.wrongExplanation}>
+                  <div className={styles.fbLabel}>{ui.whyWrong}</div>
+                  <div className={styles.fbText}>{wrongExplanation}</div>
+                </div>
+              )}
             </div>
           )}
 
