@@ -705,26 +705,34 @@ const CASE_COPY = {
     title: 'Fallbeispiele',
     lead: 'Echte Fälle von Radiopaedia.org zum Leberhämangiom – klassisch und atypisch.',
     openCase: 'Fall in Radiopaedia öffnen',
+    previousImage: 'Vorheriges Bild',
+    nextImage: 'Nächstes Bild',
+    imageOf: (current, total) => `Bild ${current} von ${total}`,
+    scrollHint: 'Mit Mausrad, Slider oder Pfeilen durch die Sequenz scrollen.',
     cases: [
       {
         title: 'Zwei inzidentelle Leberhämangiome in der CT',
         label: 'Klassisches Hämangiom',
         tags: ['CT', 'Mehrphasen'],
         image: '/haemangiom/case-26557-ct.jpg',
+        frames: Array.from({ length: 13 }, (_, index) => `/haemangiom/case-26557-sequence/${String(index + 1).padStart(2, '0')}.jpg`),
+        initialFrame: 6,
         imageAlt: 'Axiale kontrastverstärkte CT mit zwei Leberhämangiomen',
         meta: '50-jähriger Patient. Zwei Leberläsionen zeigen das typische dynamische Kontrastmittelverhalten von Hämangiomen.',
         credit: 'Case courtesy of David Puyó Vera, Radiopaedia.org, rID-26557, CC BY-NC-SA 3.0',
-        url: 'https://radiopaedia.org/cases/26557',
+        url: 'https://radiopaedia.org/cases/26557/play',
       },
       {
         title: 'Typisches Leberhämangiom in der MRT',
         label: 'Klassisches Hämangiom',
         tags: ['MRT', 'T2-hyperintens'],
         image: '/haemangiom/case-209408-mri.jpg',
+        frames: Array.from({ length: 24 }, (_, index) => `/haemangiom/case-209408-sequence/${String(index + 1).padStart(2, '0')}.jpeg`),
+        initialFrame: 14,
         imageAlt: 'Axiale T2-gewichtete MRT mit hyperintenser Leberläsion',
         meta: '35-jährige Patientin mit inzidenteller Läsion in Segment V. T2-Hyperintensität, peripher-noduläre Anreicherung und langsames zentripetales Fill-in.',
         credit: 'Case courtesy of Bahman Rasuli, Radiopaedia.org, rID-209408, CC BY-NC-SA 3.0',
-        url: 'https://radiopaedia.org/cases/209408',
+        url: 'https://radiopaedia.org/cases/209408/play',
       },
     ],
   },
@@ -733,26 +741,34 @@ const CASE_COPY = {
     title: 'Cases',
     lead: 'Real cases from Radiopaedia.org on liver haemangioma – classic and atypical.',
     openCase: 'Open case in Radiopaedia',
+    previousImage: 'Previous image',
+    nextImage: 'Next image',
+    imageOf: (current, total) => `Image ${current} of ${total}`,
+    scrollHint: 'Scroll through the sequence with the mouse wheel, slider or arrows.',
     cases: [
       {
         title: 'Two incidental hepatic haemangiomas on CT',
         label: 'Classic haemangioma',
         tags: ['CT', 'multiphasic'],
         image: '/haemangiom/case-26557-ct.jpg',
+        frames: Array.from({ length: 13 }, (_, index) => `/haemangiom/case-26557-sequence/${String(index + 1).padStart(2, '0')}.jpg`),
+        initialFrame: 6,
         imageAlt: 'Axial contrast-enhanced CT showing two hepatic haemangiomas',
         meta: '50-year-old patient. Two liver lesions demonstrate the typical dynamic enhancement characteristics of haemangiomas.',
         credit: 'Case courtesy of David Puyó Vera, Radiopaedia.org, rID-26557, CC BY-NC-SA 3.0',
-        url: 'https://radiopaedia.org/cases/26557',
+        url: 'https://radiopaedia.org/cases/26557/play',
       },
       {
         title: 'Typical hepatic haemangioma on MRI',
         label: 'Classic haemangioma',
         tags: ['MRI', 'T2 hyperintense'],
         image: '/haemangiom/case-209408-mri.jpg',
+        frames: Array.from({ length: 24 }, (_, index) => `/haemangiom/case-209408-sequence/${String(index + 1).padStart(2, '0')}.jpeg`),
+        initialFrame: 14,
         imageAlt: 'Axial T2-weighted MRI showing a hyperintense liver lesion',
         meta: '35-year-old woman with an incidental segment V lesion. T2 hyperintensity, peripheral nodular enhancement and slow centripetal fill-in.',
         credit: 'Case courtesy of Bahman Rasuli, Radiopaedia.org, rID-209408, CC BY-NC-SA 3.0',
-        url: 'https://radiopaedia.org/cases/209408',
+        url: 'https://radiopaedia.org/cases/209408/play',
       },
     ],
   },
@@ -761,26 +777,34 @@ const CASE_COPY = {
     title: 'نمونه کیس‌ها',
     lead: 'کیس‌های واقعی از Radiopaedia.org درباره همانژیوم کبدی - تیپیک و آتیپیک.',
     openCase: 'باز کردن کیس در Radiopaedia',
+    previousImage: 'تصویر قبلی',
+    nextImage: 'تصویر بعدی',
+    imageOf: (current, total) => `تصویر ${current} از ${total}`,
+    scrollHint: 'با چرخ ماوس، اسلایدر یا فلش‌ها در سری تصاویر حرکت کنید.',
     cases: [
       {
         title: 'دو همانژیوم اتفاقی کبد در CT',
         label: 'همانژیوم تیپیک',
         tags: ['CT', 'چندفازی'],
         image: '/haemangiom/case-26557-ct.jpg',
+        frames: Array.from({ length: 13 }, (_, index) => `/haemangiom/case-26557-sequence/${String(index + 1).padStart(2, '0')}.jpg`),
+        initialFrame: 6,
         imageAlt: 'CT اکسیال با کنتراست و دو همانژیوم کبدی',
         meta: 'بیمار ۵۰ ساله. دو ضایعه کبدی ویژگی‌های دینامیک تیپیک همانژیوم را نشان می‌دهند.',
         credit: 'Case courtesy of David Puyó Vera, Radiopaedia.org, rID-26557, CC BY-NC-SA 3.0',
-        url: 'https://radiopaedia.org/cases/26557',
+        url: 'https://radiopaedia.org/cases/26557/play',
       },
       {
         title: 'همانژیوم تیپیک کبد در MRI',
         label: 'همانژیوم تیپیک',
         tags: ['MRI', 'T2 هایپراینتنس'],
         image: '/haemangiom/case-209408-mri.jpg',
+        frames: Array.from({ length: 24 }, (_, index) => `/haemangiom/case-209408-sequence/${String(index + 1).padStart(2, '0')}.jpeg`),
+        initialFrame: 14,
         imageAlt: 'MRI اکسیال T2 با ضایعه هایپراینتنس کبد',
         meta: 'خانم ۳۵ ساله با ضایعه اتفاقی در سگمان V؛ T2 هایپراینتنس، enhancement ندولار محیطی و fill-in آهسته مرکزگرا.',
         credit: 'Case courtesy of Bahman Rasuli, Radiopaedia.org, rID-209408, CC BY-NC-SA 3.0',
-        url: 'https://radiopaedia.org/cases/209408',
+        url: 'https://radiopaedia.org/cases/209408/play',
       },
     ],
   },
@@ -830,6 +854,45 @@ function Callout({ type = 'note', label, children }) {
     <div className={`${styles.callout} ${type === 'cave' ? styles.cave : ''}`.trim()}>
       <strong>{type === 'cave' ? '⚠️' : '💡'} {label}</strong>
       <p>{children}</p>
+    </div>
+  )
+}
+
+function CaseSequenceViewer({ item, copy }) {
+  const frames = item.frames?.length ? item.frames : [item.image]
+  const [frameIndex, setFrameIndex] = useState(Math.min(item.initialFrame || 0, frames.length - 1))
+  const move = direction => setFrameIndex(index => Math.min(frames.length - 1, Math.max(0, index + direction)))
+
+  return (
+    <div
+      className={styles.caseViewer}
+      tabIndex={0}
+      onWheel={event => {
+        event.preventDefault()
+        move(event.deltaY > 0 ? 1 : -1)
+      }}
+      onKeyDown={event => {
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') move(1)
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') move(-1)
+      }}
+    >
+      <div className={styles.caseImage}>
+        <Image src={frames[frameIndex]} alt={item.imageAlt} width={610} height={610} className={styles.caseImageAsset} />
+        <span className={styles.caseCounter}>{copy.imageOf(frameIndex + 1, frames.length)}</span>
+      </div>
+      <div className={styles.caseViewerControls}>
+        <button type="button" onClick={() => move(-1)} disabled={frameIndex === 0} aria-label={copy.previousImage}>‹</button>
+        <input
+          type="range"
+          min="0"
+          max={frames.length - 1}
+          value={frameIndex}
+          onChange={event => setFrameIndex(Number(event.target.value))}
+          aria-label={copy.imageOf(frameIndex + 1, frames.length)}
+        />
+        <button type="button" onClick={() => move(1)} disabled={frameIndex === frames.length - 1} aria-label={copy.nextImage}>›</button>
+      </div>
+      <small className={styles.caseScrollHint}>{copy.scrollHint}</small>
     </div>
   )
 }
@@ -1004,10 +1067,8 @@ export default function LeberHaemangiomPage() {
           <Section id="fallbeispiele" title={caseCopy.title} lead={caseCopy.lead}>
             <div className={styles.caseGrid}>
               {caseCopy.cases.map(item => (
-                <a key={item.url} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}>
-                  <div className={styles.caseImage}>
-                    <Image src={item.image} alt={item.imageAlt} width={442} height={442} className={styles.caseImageAsset} />
-                  </div>
+                <article key={item.url} className={styles.caseCardLink}>
+                  <CaseSequenceViewer item={item} copy={caseCopy} />
                   <div className={styles.caseBody}>
                     <div className={styles.caseLabelRow}>
                       <span className={styles.caseLabel}>{item.label}</span>
@@ -1016,9 +1077,9 @@ export default function LeberHaemangiomPage() {
                     <h3>{item.title}</h3>
                     <p>{item.meta}</p>
                     <small>{item.credit}</small>
-                    <strong>{caseCopy.openCase}</strong>
+                    <a href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseExternalLink}>{caseCopy.openCase} ↗</a>
                   </div>
-                </a>
+                </article>
               ))}
             </div>
           </Section>
