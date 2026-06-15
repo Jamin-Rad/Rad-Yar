@@ -14,6 +14,16 @@ const IMAGE_UI = {
   fa: { zoom: 'بزرگ‌نمایی تصویر', close: 'بستن نمایش تصویر' },
 }
 
+const CT_CASE_FRAMES = Array.from(
+  { length: 13 },
+  (_, index) => `/haemangiom/case-26557-sequence/${String(index + 1).padStart(2, '0')}.jpg`
+)
+
+const MRI_CASE_FRAMES = Array.from(
+  { length: 13 },
+  (_, index) => `/haemangiom/case-209408-venous-sequence/${String(index + 35).padStart(2, '0')}.jpeg`
+)
+
 const CONTENT = {
   "de": {
     "toc": "Inhaltsverzeichnis",
@@ -724,8 +734,8 @@ const CASE_COPY = {
         label: 'Klassisches Hämangiom',
         tags: ['CT', 'Mehrphasen'],
         image: '/haemangiom/case-26557-ct.jpg',
-        frames: Array.from({ length: 13 }, (_, index) => `/haemangiom/case-26557-sequence/${String(index + 1).padStart(2, '0')}.jpg`),
-        initialFrame: 6,
+        frames: CT_CASE_FRAMES,
+        initialFrame: 1,
         imageAlt: 'Axiale kontrastverstärkte CT mit zwei Leberhämangiomen',
         meta: '50-jähriger Patient. Zwei Leberläsionen zeigen das typische dynamische Kontrastmittelverhalten von Hämangiomen.',
         credit: 'Case courtesy of David Puyó Vera, Radiopaedia.org, rID-26557, CC BY-NC-SA 3.0',
@@ -736,8 +746,8 @@ const CASE_COPY = {
         label: 'Klassisches Hämangiom',
         tags: ['MRT', 'T1 C+ portalvenös'],
         image: '/haemangiom/case-209408-mri.jpg',
-        frames: Array.from({ length: 92 }, (_, index) => `/haemangiom/case-209408-venous-sequence/${String(index + 1).padStart(2, '0')}.jpeg`),
-        initialFrame: 42,
+        frames: MRI_CASE_FRAMES,
+        initialFrame: 6,
         imageAlt: 'Axiale portalvenöse T1-C+-MRT mit Leberhämangiom',
         meta: '35-jährige Patientin mit inzidenteller Läsion in Segment V. In der portalvenösen T1-C+-Serie zeigt sich die fortschreitende zentripetale Auffüllung.',
         credit: 'Case courtesy of Bahman Rasuli, Radiopaedia.org, rID-209408, CC BY-NC-SA 3.0',
@@ -760,8 +770,8 @@ const CASE_COPY = {
         label: 'Classic haemangioma',
         tags: ['CT', 'multiphasic'],
         image: '/haemangiom/case-26557-ct.jpg',
-        frames: Array.from({ length: 13 }, (_, index) => `/haemangiom/case-26557-sequence/${String(index + 1).padStart(2, '0')}.jpg`),
-        initialFrame: 6,
+        frames: CT_CASE_FRAMES,
+        initialFrame: 1,
         imageAlt: 'Axial contrast-enhanced CT showing two hepatic haemangiomas',
         meta: '50-year-old patient. Two liver lesions demonstrate the typical dynamic enhancement characteristics of haemangiomas.',
         credit: 'Case courtesy of David Puyó Vera, Radiopaedia.org, rID-26557, CC BY-NC-SA 3.0',
@@ -772,8 +782,8 @@ const CASE_COPY = {
         label: 'Classic haemangioma',
         tags: ['MRI', 'T1 C+ portal venous'],
         image: '/haemangiom/case-209408-mri.jpg',
-        frames: Array.from({ length: 92 }, (_, index) => `/haemangiom/case-209408-venous-sequence/${String(index + 1).padStart(2, '0')}.jpeg`),
-        initialFrame: 42,
+        frames: MRI_CASE_FRAMES,
+        initialFrame: 6,
         imageAlt: 'Axial portal venous contrast-enhanced T1 MRI showing a hepatic haemangioma',
         meta: '35-year-old woman with an incidental segment V lesion. The portal venous contrast-enhanced T1 series demonstrates progressive centripetal fill-in.',
         credit: 'Case courtesy of Bahman Rasuli, Radiopaedia.org, rID-209408, CC BY-NC-SA 3.0',
@@ -796,8 +806,8 @@ const CASE_COPY = {
         label: 'همانژیوم تیپیک',
         tags: ['CT', 'چندفازی'],
         image: '/haemangiom/case-26557-ct.jpg',
-        frames: Array.from({ length: 13 }, (_, index) => `/haemangiom/case-26557-sequence/${String(index + 1).padStart(2, '0')}.jpg`),
-        initialFrame: 6,
+        frames: CT_CASE_FRAMES,
+        initialFrame: 1,
         imageAlt: 'CT اکسیال با کنتراست و دو همانژیوم کبدی',
         meta: 'بیمار ۵۰ ساله. دو ضایعه کبدی ویژگی‌های دینامیک تیپیک همانژیوم را نشان می‌دهند.',
         credit: 'Case courtesy of David Puyó Vera, Radiopaedia.org, rID-26557, CC BY-NC-SA 3.0',
@@ -808,8 +818,8 @@ const CASE_COPY = {
         label: 'همانژیوم تیپیک',
         tags: ['MRI', 'T1 C+ پورتال‌ونوس'],
         image: '/haemangiom/case-209408-mri.jpg',
-        frames: Array.from({ length: 92 }, (_, index) => `/haemangiom/case-209408-venous-sequence/${String(index + 1).padStart(2, '0')}.jpeg`),
-        initialFrame: 42,
+        frames: MRI_CASE_FRAMES,
+        initialFrame: 6,
         imageAlt: 'MRI اکسیال T1 پس از کنتراست در فاز پورتال‌ونوس با همانژیوم کبدی',
         meta: 'خانم ۳۵ ساله با ضایعه اتفاقی در سگمان V؛ سری T1 C+ پورتال‌ونوس fill-in پیشرونده و مرکزگرا را نشان می‌دهد.',
         credit: 'Case courtesy of Bahman Rasuli, Radiopaedia.org, rID-209408, CC BY-NC-SA 3.0',
