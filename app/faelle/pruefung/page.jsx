@@ -95,6 +95,42 @@ function resultColor(score, total) {
   return '#ef4444'
 }
 
+function ExamSequenceViewer({ sequence, plane }) {
+  const [frameIndex, setFrameIndex] = useState(Math.min(sequence.initialFrame || 0, sequence.frames.length - 1))
+  const move = direction => setFrameIndex(index => Math.min(sequence.frames.length - 1, Math.max(0, index + direction)))
+
+  return (
+    <div
+      className={styles.sequenceViewer}
+      tabIndex={0}
+      onWheel={event => {
+        event.preventDefault()
+        move(event.deltaY > 0 ? 1 : -1)
+      }}
+      onKeyDown={event => {
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') move(1)
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') move(-1)
+      }}
+    >
+      <Image src={sequence.frames[frameIndex]} alt="" width={442} height={442} priority className={styles.caseImage} />
+      <div className={styles.sequenceControls}>
+        <button type="button" onClick={() => move(-1)} disabled={frameIndex === 0} aria-label="Previous image">‹</button>
+        <input
+          type="range"
+          min="0"
+          max={sequence.frames.length - 1}
+          value={frameIndex}
+          onChange={event => setFrameIndex(Number(event.target.value))}
+          aria-label={`${frameIndex + 1}/${sequence.frames.length}`}
+        />
+        <button type="button" onClick={() => move(1)} disabled={frameIndex === sequence.frames.length - 1} aria-label="Next image">›</button>
+      </div>
+      <span className={styles.sequenceCounter}>{frameIndex + 1}/{sequence.frames.length}</span>
+      <span className={styles.plane}>{plane}</span>
+    </div>
+  )
+}
+
 function CaseExamContent() {
   const { lang } = useLanguage()
   const searchParams = useSearchParams()
@@ -239,7 +275,9 @@ function CaseExamContent() {
           <div className={quizStyles.qNum}>{ui.caseOf(current + 1, total)}</div>
           <div className={styles.caseGrid}>
             <div className={`${styles.imagePanel} ${item.images?.length ? styles.imagePanelSeries : ''}`}>
-              {item.images?.length ? (
+              {item.sequence?.frames?.length ? (
+                <ExamSequenceViewer key={item.id} sequence={item.sequence} plane={item.plane} />
+              ) : item.images?.length ? (
                 <div className={styles.phaseGrid}>
                   {item.images.map((image, index) => (
                     <figure key={image.src} className={styles.phaseFigure}>
@@ -251,7 +289,7 @@ function CaseExamContent() {
               ) : (
                 <Image src={item.image} alt="" width={920} height={690} priority className={styles.caseImage} />
               )}
-              <span className={styles.plane}>{item.plane}</span>
+              {!item.sequence?.frames?.length && <span className={styles.plane}>{item.plane}</span>}
             </div>
             <div className={styles.caseIntro}>
               <p>{item.prompt || item.vignette}</p>
