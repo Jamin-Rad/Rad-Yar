@@ -70,7 +70,10 @@ const CONTENT = {
     ],
     "basics": {
       "title": "Klinische Grundlagen",
-      "lead": "Das Leberhämangiom ist eine kavernöse, nicht neoplastische vaskuläre Malformation und der häufigste gutartige solide Lebertumor. Es wird häufig zufällig bei Staging- oder Screening-Untersuchungen entdeckt.",
+      "lead": [
+        "Das Leberhämangiom ist eine kavernöse, nicht neoplastische vaskuläre Malformation und der häufigste gutartige solide Lebertumor.",
+        "Es wird häufig zufällig bei Staging- oder Screening-Untersuchungen entdeckt."
+      ],
       "items": [
         {
           "title": "Definition",
@@ -85,7 +88,7 @@ const CONTENT = {
           "text": "Oft peripher im Leberparenchym."
         }
       ],
-      "key": "Bei klassischem Enhancement-Verhalten ist das Leberhämangiom eine Blickdiagnose. Entscheidend ist die Kombination aus sehr hohem T2-Signal und Blutpool-ähnlicher Kontrastmittelaufnahme."
+      "key": "Das Leberhämangiom ist die häufigste benigne Leberläsion und liegt oft peripher im Leberparenchym. Bei klassischem Enhancement-Verhalten ist es zudem eine Blickdiagnose: Entscheidend ist die Kombination aus sehr hohem T2-Signal und Blutpool-ähnlicher Kontrastmittelaufnahme."
     },
     "sono": {
       "title": "Sonographie",
@@ -106,10 +109,6 @@ const CONTENT = {
         [
           "Doppler",
           "gelegentlich periphere Gefäßstrukturen"
-        ],
-        [
-          "Konsequenz",
-          "bei klassischer Sonomorphologie keine weitere Diagnostik nötig"
         ]
       ],
       "key": "Ein kleines, scharf begrenztes, echoreiches Hämangiom bei unauffälliger Leber und typischer Morphologie braucht oft keine zusätzliche CT oder MRT."
@@ -148,39 +147,32 @@ const CONTENT = {
       "lead": "Die MRT ist besonders hilfreich, wenn Sono oder CT nicht eindeutig sind. Typisch sind das sehr helle T2-Signal und das dynamische Blutpool-Enhancement.",
       "tableHeaders": [
         "Sequenz",
-        "Typischer Befund",
-        "Praktische Bedeutung"
+        "Typischer Befund"
       ],
       "tableRows": [
         [
           "T1 nativ",
-          "hypo- bis isointens zur Leber",
-          "unspezifisch"
+          "hypo- bis isointens zur Leber"
         ],
         [
           "T2",
-          "sehr helles Signal, Light-bulb sign",
-          "oft heller als Galle"
+          "sehr helles Signal, Light-bulb sign"
         ],
         [
           "DWI",
-          "hyperintens auf hohen b-Werten",
-          "nicht spezifisch"
+          "hyperintens auf hohen b-Werten"
         ],
         [
           "ADC",
-          "hohe ADC-Werte",
-          "kein echter Diffusionsrestriktionsbefund"
+          "hohe ADC-Werte"
         ],
         [
           "T1 C+ arteriell",
-          "periphere noduläre, fleckige KM-Aufnahme",
-          "Beginn am Rand"
+          "periphere noduläre, fleckige KM-Aufnahme"
         ],
         [
           "T1 C+ portal/spät",
-          "zentripetale Auffüllung bis blutpoolähnlich",
-          "klassisches Hämangiom-Muster"
+          "zentripetale Auffüllung bis blutpoolähnlich"
         ]
       ],
       "lightBulbTitle": "Light-bulb sign",
@@ -209,17 +201,11 @@ const CONTENT = {
           "randständig hell, diskrete ADC-Einschränkung möglich"
         ],
         [
-          "T1 nativ",
-          "hypo- bis isointens",
-          "häufig hypointens"
-        ],
-        [
           "T1 C+",
           "peripher nodulär + zentripetal",
           "oft früharteriell homogen starke KM-Aufnahme"
         ]
       ],
-      "cave": "Wenn die klassische periphere noduläre Aufnahme und die zentripetale Auffüllung fehlen, sollte die Diagnose nicht vorschnell als typisches Hämangiom formuliert werden.",
       "key": "Atypische Hämangiome können Metastasen imitieren. Hilfreich sind Verlauf, Blutpool-Verhalten, ADC-Karte und Vergleich mit Voruntersuchungen."
     },
     "takehome": {
@@ -307,7 +293,10 @@ const CONTENT = {
     ],
     "basics": {
       "title": "Clinical basics",
-      "lead": "A liver haemangioma is a cavernous, non-neoplastic vascular malformation and the most common benign solid liver tumour. It is often found incidentally during staging or screening examinations.",
+      "lead": [
+        "A liver haemangioma is a cavernous, non-neoplastic vascular malformation and the most common benign solid liver tumour.",
+        "It is often found incidentally during staging or screening examinations."
+      ],
       "items": [
         {
           "title": "Definition",
@@ -322,7 +311,7 @@ const CONTENT = {
           "text": "Often peripheral in the liver parenchyma."
         }
       ],
-      "key": "With classic enhancement, liver haemangioma is a pattern diagnosis. The key combination is very high T2 signal and blood-pool-like enhancement."
+      "key": "A liver haemangioma is the most common benign liver lesion and is often located peripherally in the liver parenchyma. With classic enhancement, it is also a pattern diagnosis: the key combination is very high T2 signal and blood-pool-like enhancement."
     },
     "sono": {
       "title": "Ultrasound",
@@ -343,10 +332,6 @@ const CONTENT = {
         [
           "Doppler",
           "occasionally peripheral vessels"
-        ],
-        [
-          "Consequence",
-          "no further imaging needed when morphology is classic"
         ]
       ],
       "key": "A small, sharply marginated, hyperechoic lesion with typical morphology in an otherwise unremarkable liver often needs no additional CT or MRI."
@@ -385,39 +370,32 @@ const CONTENT = {
       "lead": "MRI is especially useful when ultrasound or CT is equivocal. The key features are very bright T2 signal and dynamic blood-pool enhancement.",
       "tableHeaders": [
         "Sequence",
-        "Typical finding",
-        "Practical meaning"
+        "Typical finding"
       ],
       "tableRows": [
         [
           "Native T1",
-          "hypo- to isointense to liver",
-          "non-specific"
+          "hypo- to isointense to liver"
         ],
         [
           "T2",
-          "very bright signal, light-bulb sign",
-          "often brighter than bile"
+          "very bright signal, light-bulb sign"
         ],
         [
           "DWI",
-          "hyperintense on high b-values",
-          "not specific"
+          "hyperintense on high b-values"
         ],
         [
           "ADC",
-          "high ADC values",
-          "no true diffusion restriction"
+          "high ADC values"
         ],
         [
           "T1 C+ arterial",
-          "peripheral nodular patchy enhancement",
-          "starts at the rim"
+          "peripheral nodular patchy enhancement"
         ],
         [
           "T1 C+ portal/delayed",
-          "centripetal fill-in until blood-pool-like",
-          "classic haemangioma pattern"
+          "centripetal fill-in until blood-pool-like"
         ]
       ],
       "lightBulbTitle": "Light-bulb sign",
@@ -446,17 +424,11 @@ const CONTENT = {
           "rim hyperintensity, mild ADC decrease possible"
         ],
         [
-          "Native T1",
-          "hypo- to isointense",
-          "often hypointense"
-        ],
-        [
           "T1 C+",
           "peripheral nodular + centripetal",
           "often strong homogeneous arterial enhancement"
         ]
       ],
-      "cave": "If classic peripheral nodular enhancement and centripetal fill-in are absent, the lesion should not be called a typical haemangioma too quickly.",
       "key": "Atypical haemangiomas can mimic metastases. Helpful features are follow-up stability, blood-pool behaviour, ADC map and comparison with prior imaging."
     },
     "takehome": {
@@ -544,7 +516,10 @@ const CONTENT = {
     ],
     "basics": {
       "title": "مبانی بالینی",
-      "lead": "همانژیوم کبدی یک مالفورماسیون عروقی کاورنوز و غیرنئوپلاستیک است و شایع‌ترین تومور جامد خوش‌خیم کبد محسوب می‌شود. معمولاً به صورت یافته اتفاقی در بررسی‌های staging یا screening دیده می‌شود.",
+      "lead": [
+        "همانژیوم کبدی یک مالفورماسیون عروقی کاورنوز و غیرنئوپلاستیک است و شایع‌ترین تومور جامد خوش‌خیم کبد محسوب می‌شود.",
+        "معمولاً به صورت یافته اتفاقی در بررسی‌های staging یا screening دیده می‌شود."
+      ],
       "items": [
         {
           "title": "تعریف",
@@ -559,7 +534,7 @@ const CONTENT = {
           "text": "اغلب در قسمت محیطی پارانشیم کبد."
         }
       ],
-      "key": "وقتی الگوی enhancement کلاسیک باشد، همانژیوم کبدی تشخیص الگویی است. ترکیب مهم: سیگنال T2 بسیار بالا و enhancement شبیه blood pool."
+      "key": "همانژیوم کبدی شایع‌ترین ضایعه خوش‌خیم کبد است و اغلب در قسمت محیطی پارانشیم کبد قرار دارد. همچنین وقتی الگوی enhancement کلاسیک باشد، تشخیص الگویی است: ترکیب مهم سیگنال T2 بسیار بالا و enhancement شبیه blood pool است."
     },
     "sono": {
       "title": "سونوگرافی",
@@ -580,10 +555,6 @@ const CONTENT = {
         [
           "داپلر",
           "گاهی عروق محیطی"
-        ],
-        [
-          "نتیجه",
-          "اگر ظاهر کاملاً تیپیک باشد، تصویربرداری بیشتر لازم نیست"
         ]
       ],
       "key": "یک ضایعه کوچک، خوش‌حد، اکوژن و تیپیک در کبد بدون مشکل زمینه‌ای اغلب نیاز به CT یا MRI اضافه ندارد."
@@ -622,39 +593,32 @@ const CONTENT = {
       "lead": "MRI زمانی بسیار کمک‌کننده است که سونوگرافی یا CT قطعی نباشد. نکته کلیدی، T2 بسیار روشن و enhancement دینامیک شبیه blood pool است.",
       "tableHeaders": [
         "سکانس",
-        "یافته تیپیک",
-        "معنای عملی"
+        "یافته تیپیک"
       ],
       "tableRows": [
         [
           "T1 نیتیو",
-          "هیپو تا ایزواینتنس نسبت به کبد",
-          "غیراختصاصی"
+          "هیپو تا ایزواینتنس نسبت به کبد"
         ],
         [
           "T2",
-          "سیگنال بسیار روشن، Light-bulb sign",
-          "گاهی حتی روشن‌تر از صفرا"
+          "سیگنال بسیار روشن، Light-bulb sign"
         ],
         [
           "DWI",
-          "هایپراینتنس در b-value بالا",
-          "اختصاصی نیست"
+          "هایپراینتنس در b-value بالا"
         ],
         [
           "ADC",
-          "ADC بالا",
-          "محدودیت انتشار واقعی ندارد"
+          "ADC بالا"
         ],
         [
           "T1 C+ شریانی",
-          "enhancement ندولار و لکه‌ای محیطی",
-          "شروع از حاشیه"
+          "enhancement ندولار و لکه‌ای محیطی"
         ],
         [
           "T1 C+ پورتال/تأخیری",
-          "پرشدگی مرکزگرا تا حالت blood-pool-like",
-          "الگوی کلاسیک همانژیوم"
+          "پرشدگی مرکزگرا تا حالت blood-pool-like"
         ]
       ],
       "lightBulbTitle": "Light-bulb sign",
@@ -683,17 +647,11 @@ const CONTENT = {
           "روشن محیطی، کاهش خفیف ADC ممکن است"
         ],
         [
-          "T1 نیتیو",
-          "هیپو تا ایزواینتنس",
-          "اغلب هیپواینتنس"
-        ],
-        [
           "T1 C+",
           "ندولار محیطی + centripetal",
           "اغلب enhancement هموژن و قوی در فاز شریانی"
         ]
       ],
-      "cave": "اگر enhancement ندولار محیطی و پرشدگی مرکزگرا وجود نداشته باشد، نباید سریع تشخیص همانژیوم تیپیک نوشته شود.",
       "key": "همانژیوم آتیپیک می‌تواند متاستاز را تقلید کند. پیگیری، رفتار blood-pool، ADC و مقایسه با تصاویر قبلی کمک‌کننده هستند."
     },
     "takehome": {
@@ -863,7 +821,9 @@ function Section({ id, title, lead, children }) {
       </button>
       {open && (
         <div className={styles.sectionBody}>
-          {lead && <p className={styles.lead}>{lead}</p>}
+          {lead && (Array.isArray(lead)
+            ? lead.map((paragraph, index) => <p className={styles.lead} key={index}>{paragraph}</p>)
+            : <p className={styles.lead}>{lead}</p>)}
           {children}
         </div>
       )}
@@ -984,7 +944,7 @@ export default function LeberHaemangiomPage() {
               <h3>{copy.ct.irisTitle}</h3>
               <p>{copy.ct.irisText}</p>
             </div>
-            <Callout label={copy.keyLabel}>{copy.ct.key}</Callout>
+            <Callout type="cave" label={copy.caveLabel}>{copy.ct.key}</Callout>
           </Section>
 
           <Section id="mrt" title={copy.mri.title} lead={copy.mri.lead}>
@@ -1004,8 +964,7 @@ export default function LeberHaemangiomPage() {
 
           <Section id="atypisch" title={copy.atypical.title} lead={copy.atypical.lead}>
             <Table headers={copy.atypical.tableHeaders} rows={copy.atypical.tableRows} />
-            <Callout type="cave" label={copy.caveLabel}>{copy.atypical.cave}</Callout>
-            <Callout label={copy.keyLabel}>{copy.atypical.key}</Callout>
+            <Callout type="cave" label={copy.caveLabel}>{copy.atypical.key}</Callout>
           </Section>
 
 
