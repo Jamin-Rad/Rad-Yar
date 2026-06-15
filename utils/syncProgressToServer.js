@@ -8,17 +8,22 @@
 // (z.B. wegen fehlender DB-Rechte) – fetch() lehnt nur bei Netzwerkfehlern ab,
 // nicht bei 4xx/5xx. Browser mit fälschlich gesetztem v1-Flag müssen daher
 // einmal erneut versuchen.
-const SYNCED_KEY = 'radyar_synced_v2'
+const syncedKey = userId => `radyar_synced_v3_${userId}`
 
 export async function syncLocalProgressToServer(userId) {
   if (typeof window === 'undefined' || !userId) return
-  if (localStorage.getItem(SYNCED_KEY)) return
+  if (localStorage.getItem(syncedKey(userId))) return
 
   try {
     const readArticles = JSON.parse(localStorage.getItem('radyar_read_articles') || '{}')
     const learningHistory = JSON.parse(localStorage.getItem('radyar_learning_history') || '[]')
     const mcqScores = JSON.parse(localStorage.getItem('radyar_mcq_scores') || '{}')
-    const leitnerState = JSON.parse(localStorage.getItem(`radyar_leitner_${userId}`) || '{}')
+    const userLeitnerState = JSON.parse(localStorage.getItem(`radyar_leitner_${userId}`) || '{}')
+    const anonymousLeitnerState = JSON.parse(localStorage.getItem('radyar_leitner_anon') || '{}')
+    const leitnerState = { ...anonymousLeitnerState, ...userLeitnerState }
+    if (Object.keys(leitnerState).length > 0) {
+      localStorage.setItem(`radyar_leitner_${userId}`, JSON.stringify(leitnerState))
+    }
 
     const historyByTopic = new Map(learningHistory.map(item => [item.topicId, item.learnedAt]))
     const readBulk = Object.entries(readArticles)
@@ -50,7 +55,7 @@ export async function syncLocalProgressToServer(userId) {
 
     const responses = await Promise.all(requests)
     if (responses.every(res => res.ok)) {
-      localStorage.setItem(SYNCED_KEY, '1')
+      localStorage.setItem(syncedKey(userId), '1')
     }
   } catch (_) {}
 }

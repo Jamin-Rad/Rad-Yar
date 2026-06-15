@@ -5,6 +5,7 @@ import { useUser } from '@clerk/nextjs'
 import { usePathname } from 'next/navigation'
 import { addActiveSeconds, IDLE_MS, registerVisit } from '@/utils/activityStorage'
 import { syncLocalProgressToServer } from '@/utils/syncProgressToServer'
+import { flushPendingProgress } from '@/utils/progressSync'
 
 const VISITOR_KEY = 'radyar_visitor_id'
 const SESSION_KEY = 'radyar_analytics_session'
@@ -53,9 +54,11 @@ export default function ActivityTracker() {
     if (isNewSession) sessionStorage.setItem(SESSION_KEY, '1')
     if (userId) {
       registerVisit(userId)
-      // Einmalig (pro Browser): bestehenden localStorage-Fortschritt nach Supabase
-      // übernehmen – unabhängig davon, welche Seite nach dem Login zuerst besucht wird.
-      syncLocalProgressToServer(userId)
+      flushPendingProgress().finally(() => {
+        // Einmalig pro Nutzer: bestehenden localStorage-Fortschritt nach Supabase
+        // übernehmen – unabhängig davon, welche Seite nach dem Login zuerst besucht wird.
+        syncLocalProgressToServer(userId)
+      })
     }
 
     sendActivity({

@@ -8,6 +8,7 @@ import { getQuestions, getQuestionsByIds } from '@/data/questions'
 import { isSubscriptionActive, FREE_ITEM_LIMIT } from '@/utils/subscription'
 import { getWrongAnswerExplanation } from '@/utils/answerFeedback'
 import styles from './page.module.css'
+import { persistProgressWrite } from '@/utils/progressSync'
 
 const localDateKey = () => {
   const date = new Date()
@@ -242,13 +243,12 @@ function QuizContent() {
         lastSessionAttempted: finalAnswers.length,
       }
       localStorage.setItem('radyar_mcq_scores', JSON.stringify(scores))
-      if (user?.id) {
-        fetch('/api/progress/mcq-results', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ bulk: scores }),
-        }).catch(() => {})
-      }
+      persistProgressWrite(
+        'mcq:scores',
+        '/api/progress/mcq-results',
+        { bulk: scores },
+        Boolean(user?.id)
+      )
     } catch {}
   }
 

@@ -8,6 +8,7 @@ import Navbar from '@/components/Navbar'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { resetLeitnerState, isDue, pullLeitnerStateFromServer } from '@/utils/leitnerStorage'
 import { syncLocalProgressToServer } from '@/utils/syncProgressToServer'
+import { flushPendingProgress } from '@/utils/progressSync'
 import { loadSettings, saveSettings } from '@/utils/settingsStorage'
 import { CURRICULUM, getFachTitle, getKapitelTitle, getThemaTitle } from '@/data/curriculum'
 import { MCQ_TOPIC_GROUPS } from '@/data/questions'
@@ -388,13 +389,15 @@ export default function ProfilPage() {
     setLearningHistory(localLearningHistory)
     setActivitySummary(getActivitySummary(user.id))
 
-    // Einmalig: bestehende localStorage-Daten in Supabase übernehmen (Geräte-Sync)
-    syncLocalProgressToServer(user.id)
+    const serverReady = flushPendingProgress()
+      .then(() => syncLocalProgressToServer(user.id))
 
-    pullLeitnerStateFromServer(user.id).then(setLeitner)
+    serverReady
+      .then(() => pullLeitnerStateFromServer(user.id))
+      .then(setLeitner)
 
     // Lesefortschritt vom Server holen und mergen (Server gewinnt bei "gelesen")
-    fetch('/api/progress/read-status')
+    serverReady.then(() => fetch('/api/progress/read-status'))
       .then(res => (res.ok ? res.json() : null))
       .then(data => {
         if (!data) return
@@ -403,16 +406,19 @@ export default function ProfilPage() {
           if (read) mergedRead[id] = 1
         }
         setReadArticles(mergedRead)
+        localStorage.setItem('radyar_read_articles', JSON.stringify(mergedRead))
         const historyById = new Map(localLearningHistory.map(item => [item.topicId, item]))
         for (const item of data.history || []) {
           historyById.set(item.topicId, item)
         }
-        setLearningHistory([...historyById.values()])
+        const mergedHistory = [...historyById.values()]
+        setLearningHistory(mergedHistory)
+        localStorage.setItem('radyar_learning_history', JSON.stringify(mergedHistory))
       })
       .catch(() => {})
 
     // MCQ-Ergebnisse vom Server holen und mergen (neuerer lastDate gewinnt)
-    fetch('/api/progress/mcq-results')
+    serverReady.then(() => fetch('/api/progress/mcq-results'))
       .then(res => (res.ok ? res.json() : null))
       .then(data => {
         if (!data) return
@@ -424,6 +430,7 @@ export default function ProfilPage() {
           }
         }
         setMcqScores(merged)
+        localStorage.setItem('radyar_mcq_scores', JSON.stringify(merged))
       })
       .catch(() => {})
   }, [isLoaded, user])

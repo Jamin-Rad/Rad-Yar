@@ -266,7 +266,7 @@ export default function FlashcardReviewPage() {
     if (!flipped && !practiceMode) {
       const newState = ensureCardStarted(current.id, userId)
       setLeitnerState(newState)
-      if (userId) syncLeitnerCardToServer(current.id, newState[current.id])
+      syncLeitnerCardToServer(current.id, newState[current.id], Boolean(userId))
     }
     setFlipped(value => !value)
   }, [flipped, exiting, current, userId, practiceMode])
@@ -279,7 +279,7 @@ export default function FlashcardReviewPage() {
     if (!practiceMode) {
       const newState = answerCard(current.id, knew, userId)
       setLeitnerState(newState)
-      if (userId) syncLeitnerCardToServer(current.id, newState[current.id])
+      syncLeitnerCardToServer(current.id, newState[current.id], Boolean(userId))
     }
 
     setStats(s => ({ correct: s.correct + (knew ? 1 : 0), wrong: s.wrong + (knew ? 0 : 1) }))
