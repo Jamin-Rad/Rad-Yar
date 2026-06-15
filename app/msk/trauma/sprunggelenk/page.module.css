@@ -349,64 +349,6 @@
   height: auto;
 }
 
-.caseCard {
-  display: grid;
-  grid-template-columns: 180px minmax(0, 1fr);
-  overflow: hidden;
-  margin-top: 18px;
-  border: 1px solid var(--border);
-  border-radius: 22px;
-  background: var(--surface-soft);
-}
-
-.caseIcon {
-  min-height: 240px;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(135deg, #7c2d12, #f97316);
-  color: #fff;
-  font-size: 70px;
-}
-
-.caseContent {
-  padding: 24px;
-}
-
-.caseBadge {
-  display: inline-flex;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(249, 115, 22, .12);
-  color: #c2410c;
-  font-size: 12px;
-  font-weight: 900;
-}
-
-.caseContent h3 {
-  margin: 14px 0 8px;
-  color: var(--text-strong);
-  font-size: 22px;
-}
-
-.caseContent p {
-  margin: 0 0 12px;
-  color: var(--text-soft);
-  line-height: 1.7;
-}
-
-.caseContent small {
-  display: block;
-  margin-bottom: 18px;
-  color: var(--text-muted);
-  line-height: 1.5;
-}
-
-.caseContent a {
-  color: #c2410c;
-  font-weight: 900;
-  text-decoration: none;
-}
-
 .infoCard,
 .highlightBox,
 .takeHomeItem {
@@ -570,8 +512,6 @@
   .table { min-width: 560px; }
   .takeHomeItem { grid-template-columns: 54px 1fr; }
   .weberFigure { border-radius: 16px; }
-  .caseCard { grid-template-columns: 1fr; }
-  .caseIcon { min-height: 150px; }
 }
 
 .casePlaceholder {
@@ -621,7 +561,7 @@
 
 .caseGrid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 18px;
   margin: 18px 0;
 }
@@ -645,13 +585,79 @@
 
 .caseImage {
   width: 100%;
-  height: 210px;
+  height: min(68vh, 620px);
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 64px;
   color: #fff;
   background: linear-gradient(135deg, #0d1b2a, #f97316);
+}
+
+.caseImageAsset {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #020617;
+}
+
+.caseViewer {
+  outline: none;
+  background: #020617;
+}
+
+.caseViewer:focus-visible {
+  box-shadow: inset 0 0 0 3px #f97316;
+}
+
+.caseCounter {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(2, 6, 23, .78);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.caseViewerControls {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) 38px;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 12px 4px;
+}
+
+.caseViewerControls button {
+  width: 38px;
+  height: 34px;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 9px;
+  color: #fff;
+  background: #172033;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.caseViewerControls button:disabled {
+  opacity: .3;
+  cursor: default;
+}
+
+.caseViewerControls input {
+  width: 100%;
+  accent-color: #f97316;
+}
+
+.caseScrollHint {
+  display: block;
+  padding: 3px 12px 11px;
+  color: #94a3b8;
+  font-size: 10px;
+  text-align: center;
 }
 
 .caseBody { padding: 18px; }
@@ -680,14 +686,15 @@
 .caseBody h3 { margin: 0 0 8px; color: #0d1b2a; font-size: 18px; line-height: 1.3; }
 .caseBody p { margin: 0 0 8px; color: #536174; line-height: 1.55; }
 .caseBody small { display: block; margin-bottom: 12px; color: #96a0b1; font-size: 11px; line-height: 1.45; }
-.caseBody strong { color: #f97316; font-size: 13px; font-weight: 900; }
+.caseExternalLink { color: #f97316; font-size: 13px; font-weight: 900; text-decoration: none; }
+.caseExternalLink:hover { text-decoration: underline; }
 
 [dir='rtl'] .caseBody { text-align: right; }
 
 @media (max-width: 760px) {
   .caseGrid { grid-template-columns: 1fr; gap: 12px; }
   .caseCardLink { border-radius: 18px; }
-  .caseImage { height: 180px; font-size: 52px; }
+  .caseImage { height: min(62vh, 480px); font-size: 52px; }
   .caseBody { padding: 16px; }
   .caseBody h3 { font-size: 17px; }
   .caseBody p { font-size: 16px; line-height: 1.72; }

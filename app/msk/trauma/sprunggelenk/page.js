@@ -93,11 +93,18 @@ const CONTENT = {
     },
     caseStudy: {
       title: 'Fallbeispiel',
-      lead: 'Prüfe den Fall wie in der Befundung: Frakturhöhe, Gelenkkongruenz, medialer Komplex, Syndesmose und Hinterkante.',
-      caseTitle: 'Sprunggelenktrauma – interaktiver Radiopaedia-Fall',
-      prompt: 'Öffne den Fall und formuliere zuerst selbst einen strukturierten Befund. Ordne die Fibulafraktur anschließend nach Weber ein und beurteile die Stabilitätszeichen.',
+      lead: 'Echter Radiopaedia-Fall mit sechs Röntgenaufnahmen zum selbstständigen Durchscrollen.',
+      caseTitle: 'Maisonneuve-Fraktur',
+      label: 'Instabile OSG-Verletzung',
+      tags: ['Röntgen', 'Weber C', 'Syndesmose'],
+      imageAlt: 'Röntgenaufnahme einer Maisonneuve-Fraktur mit instabilem Sprunggelenk',
+      meta: '40-jähriger Patient nach Treppensturz. Die Aufnahmen zeigen eine Aufweitung des medialen Gelenkspalts und eine mehrfragmentäre Fraktur des proximalen Fibuladrittels – vereinbar mit einer Maisonneuve-Fraktur.',
       credit: 'Case courtesy of Fernando Figueredo Savi, Radiopaedia.org · rID: 200431',
-      open: 'Fall bei Radiopaedia öffnen ↗',
+      open: 'Fall in Radiopaedia öffnen',
+      previousImage: 'Vorheriges Bild',
+      nextImage: 'Nächstes Bild',
+      imageOf: (current, total) => `Bild ${current} von ${total}`,
+      scrollHint: 'Mit Mausrad, Slider oder Pfeilen durch die Aufnahmen scrollen.',
     },
     takehome: {
       title: 'Take home message',
@@ -192,11 +199,18 @@ const CONTENT = {
     },
     caseStudy: {
       title: 'Case',
-      lead: 'Approach the case as a report: fracture level, mortise congruity, medial complex, syndesmosis and posterior malleolus.',
-      caseTitle: 'Ankle trauma – interactive Radiopaedia case',
-      prompt: 'Open the case and first write your own structured report. Then classify the fibular fracture using Weber and assess stability.',
+      lead: 'A real Radiopaedia case with six radiographs to scroll through interactively.',
+      caseTitle: 'Maisonneuve fracture',
+      label: 'Unstable ankle injury',
+      tags: ['X-ray', 'Weber C', 'syndesmosis'],
+      imageAlt: 'Radiograph of a Maisonneuve fracture with an unstable ankle',
+      meta: '40-year-old man after falling down stairs. The radiographs show widening of the medial ankle joint space and a comminuted fracture of the proximal third of the fibula, consistent with a Maisonneuve fracture.',
       credit: 'Case courtesy of Fernando Figueredo Savi, Radiopaedia.org · rID: 200431',
-      open: 'Open case on Radiopaedia ↗',
+      open: 'Open case in Radiopaedia',
+      previousImage: 'Previous image',
+      nextImage: 'Next image',
+      imageOf: (current, total) => `Image ${current} of ${total}`,
+      scrollHint: 'Scroll through the radiographs with the mouse wheel, slider or arrows.',
     },
     takehome: {
       title: 'Take home message',
@@ -262,6 +276,54 @@ function Callout({ type = 'note', label, children }) {
     <div className={`${styles.callout} ${type === 'cave' ? styles.cave : ''}`.trim()}>
       <strong>{type === 'cave' ? '⚠️' : '💡'} {label}</strong>
       <p>{children}</p>
+    </div>
+  )
+}
+
+function CaseSequenceViewer({ copy }) {
+  const frames = Array.from(
+    { length: 6 },
+    (_, index) => `/sprunggelenk/case-200431-sequence/${String(index + 1).padStart(2, '0')}.jpeg`
+  )
+  const [frameIndex, setFrameIndex] = useState(0)
+  const move = direction => setFrameIndex(index => Math.min(frames.length - 1, Math.max(0, index + direction)))
+
+  return (
+    <div
+      className={styles.caseViewer}
+      tabIndex={0}
+      onWheel={event => {
+        event.preventDefault()
+        move(event.deltaY > 0 ? 1 : -1)
+      }}
+      onKeyDown={event => {
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') move(1)
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') move(-1)
+      }}
+    >
+      <div className={styles.caseImage}>
+        <Image
+          src={frames[frameIndex]}
+          alt={copy.imageAlt}
+          width={932}
+          height={2169}
+          className={styles.caseImageAsset}
+        />
+        <span className={styles.caseCounter}>{copy.imageOf(frameIndex + 1, frames.length)}</span>
+      </div>
+      <div className={styles.caseViewerControls}>
+        <button type="button" onClick={() => move(-1)} disabled={frameIndex === 0} aria-label={copy.previousImage}>‹</button>
+        <input
+          type="range"
+          min="0"
+          max={frames.length - 1}
+          value={frameIndex}
+          onChange={event => setFrameIndex(Number(event.target.value))}
+          aria-label={copy.imageOf(frameIndex + 1, frames.length)}
+        />
+        <button type="button" onClick={() => move(1)} disabled={frameIndex === frames.length - 1} aria-label={copy.nextImage}>›</button>
+      </div>
+      <small className={styles.caseScrollHint}>{copy.scrollHint}</small>
     </div>
   )
 }
@@ -395,16 +457,21 @@ export default function SprunggelenkTraumaPage() {
           </Section>
 
           <Section id="fall" title={copy.caseStudy.title} lead={copy.caseStudy.lead}>
-            <article className={styles.caseCard}>
-              <div className={styles.caseIcon} aria-hidden="true">🩻</div>
-              <div className={styles.caseContent}>
-                <span className={styles.caseBadge}>Radiopaedia · rID 200431</span>
+            <div className={styles.caseGrid}>
+              <article className={styles.caseCardLink}>
+                <CaseSequenceViewer copy={copy.caseStudy} />
+                <div className={styles.caseBody}>
+                  <div className={styles.caseLabelRow}>
+                    <span className={styles.caseLabel}>{copy.caseStudy.label}</span>
+                    {copy.caseStudy.tags.map(tag => <span key={tag} className={styles.caseLabel}>{tag}</span>)}
+                  </div>
                 <h3>{copy.caseStudy.caseTitle}</h3>
-                <p>{copy.caseStudy.prompt}</p>
+                <p>{copy.caseStudy.meta}</p>
                 <small>{copy.caseStudy.credit}</small>
-                <a href={CASE_URL} target="_blank" rel="noopener noreferrer">{copy.caseStudy.open}</a>
-              </div>
-            </article>
+                  <a href={CASE_URL} target="_blank" rel="noopener noreferrer" className={styles.caseExternalLink}>{copy.caseStudy.open} ↗</a>
+                </div>
+              </article>
+            </div>
           </Section>
 
           <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead}>
