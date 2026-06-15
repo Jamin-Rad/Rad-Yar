@@ -93,7 +93,7 @@ const CONTENT = {
     },
     caseStudy: {
       title: 'Fallbeispiel',
-      lead: 'Echter Radiopaedia-Fall mit sechs Röntgenaufnahmen zum selbstständigen Durchscrollen.',
+      lead: 'Echter Radiopaedia-Fall mit zwei Röntgenaufnahmen zum selbstständigen Durchscrollen.',
       caseTitle: 'Maisonneuve-Fraktur',
       label: 'Instabile OSG-Verletzung',
       tags: ['Röntgen', 'Weber C', 'Syndesmose'],
@@ -199,7 +199,7 @@ const CONTENT = {
     },
     caseStudy: {
       title: 'Case',
-      lead: 'A real Radiopaedia case with six radiographs to scroll through interactively.',
+      lead: 'A real Radiopaedia case with two radiographs to scroll through interactively.',
       caseTitle: 'Maisonneuve fracture',
       label: 'Unstable ankle injury',
       tags: ['X-ray', 'Weber C', 'syndesmosis'],
@@ -282,7 +282,7 @@ function Callout({ type = 'note', label, children }) {
 
 function CaseSequenceViewer({ copy }) {
   const frames = Array.from(
-    { length: 6 },
+    { length: 2 },
     (_, index) => `/sprunggelenk/case-200431-sequence/${String(index + 1).padStart(2, '0')}.jpeg`
   )
   const [frameIndex, setFrameIndex] = useState(0)
