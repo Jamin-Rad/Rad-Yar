@@ -2,9 +2,228 @@
 
 import { CONTRAST_QUESTIONS, CONTRAST_TOPICS } from './contrastMedia'
 
+const DIVERTICULITIS_QUESTION_CONTENT = [
+  {
+    id: 'definition',
+    question: {
+      de: 'Welche Aussage trennt Divertikulose und Divertikulitis korrekt?',
+      en: 'Which statement correctly distinguishes diverticulosis from diverticulitis?',
+      fa: 'کدام عبارت دیورتیکولوز را به‌درستی از دیورتیکولیت متمایز می‌کند؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Divertikulose bezeichnet Divertikel ohne Entzündungsreaktion.', en: 'Diverticulosis means diverticula without inflammatory change.', fa: 'دیورتیکولوز به معنای وجود دیورتیکول بدون واکنش التهابی است.' } },
+      { id: 'B', text: { de: 'Divertikulose setzt immer einen perikolischen Abszess voraus.', en: 'Diverticulosis always requires a pericolic abscess.', fa: 'دیورتیکولوز همیشه به آبسه پریکولیک نیاز دارد.' } },
+      { id: 'C', text: { de: 'Divertikulitis ist ein rein intraluminaler Befund.', en: 'Diverticulitis is a purely intraluminal finding.', fa: 'دیورتیکولیت صرفاً یک یافته داخل‌لومنی است.' } },
+      { id: 'D', text: { de: 'Beide Begriffe sind synonym.', en: 'The two terms are synonymous.', fa: 'این دو اصطلاح مترادف هستند.' } },
+    ],
+    correct: 'A',
+    explanation: {
+      de: 'Divertikulose beschreibt Divertikel ohne entzündliche Begleitreaktion. Erst die Entzündung eines Divertikels mit Darmwand- und Fettgewebsreaktion entspricht einer Divertikulitis.',
+      en: 'Diverticulosis describes diverticula without surrounding inflammation. Diverticulitis requires inflammation involving a diverticulum, the bowel wall and adjacent fat.',
+      fa: 'دیورتیکولوز وجود دیورتیکول بدون التهاب اطراف است. دیورتیکولیت نیازمند التهاب دیورتیکول، دیواره روده و چربی مجاور است.',
+    },
+  },
+  {
+    id: 'ct-triad',
+    question: {
+      de: 'Welche CT-Befundkombination ist für eine akute Sigmadivertikulitis am typischsten?',
+      en: 'Which combination of CT findings is most typical of acute sigmoid diverticulitis?',
+      fa: 'کدام ترکیب یافته‌های CT برای دیورتیکولیت حاد سیگموئید تیپیک‌تر است؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Divertikel, segmentale Wandverdickung und perikolisches Fettgewebsstranding', en: 'Diverticula, segmental wall thickening and pericolic fat stranding', fa: 'دیورتیکول، ضخیم‌شدگی سگمنتال دیواره و التهاب چربی پریکولیک' } },
+      { id: 'B', text: { de: 'Diffuse Dünndarmdilatation ohne Übergang', en: 'Diffuse small-bowel dilatation without a transition point', fa: 'اتساع منتشر روده باریک بدون نقطه گذار' } },
+      { id: 'C', text: { de: 'Isolierte freie Flüssigkeit ohne Darmwandbefund', en: 'Isolated free fluid without bowel wall abnormality', fa: 'مایع آزاد منفرد بدون یافته دیواره روده' } },
+      { id: 'D', text: { de: 'Homogene Pankreasvergrößerung', en: 'Homogeneous pancreatic enlargement', fa: 'بزرگ‌شدگی همگن پانکراس' } },
+    ],
+    correct: 'A',
+    explanation: {
+      de: 'Die typische CT-Trias besteht aus Divertikeln, segmentaler Darmwandverdickung und einer perikolischen Entzündungsreaktion.',
+      en: 'The typical CT triad consists of diverticula, segmental bowel wall thickening and pericolic inflammatory change.',
+      fa: 'تریاد تیپیک CT شامل دیورتیکول، ضخیم‌شدگی سگمنتال دیواره و واکنش التهابی پریکولیک است.',
+    },
+  },
+  {
+    id: 'protocol',
+    question: {
+      de: 'Welches CT-Protokoll ist bei Verdacht auf akute Divertikulitis in der Regel angemessen?',
+      en: 'Which CT protocol is generally appropriate for suspected acute diverticulitis?',
+      fa: 'کدام پروتکل CT معمولاً برای شک به دیورتیکولیت حاد مناسب است؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Kontrastverstärkte CT in portalvenöser Phase', en: 'Contrast-enhanced CT in the portal venous phase', fa: 'CT با کنتراست در فاز پورتال‌ونوس' } },
+      { id: 'B', text: { de: 'Nur arterielle CT-Angiografie', en: 'Arterial CT angiography only', fa: 'فقط CT آنژیوگرافی شریانی' } },
+      { id: 'C', text: { de: 'MRT des Beckens ohne T2-Sequenzen', en: 'Pelvic MRI without T2-weighted sequences', fa: 'MRI لگن بدون سکانس T2' } },
+      { id: 'D', text: { de: 'Routinemäßig ausschließlich rektales Kontrastmittel', en: 'Routine rectal contrast only', fa: 'به‌طور روتین فقط کنتراست رکتال' } },
+    ],
+    correct: 'A',
+    explanation: {
+      de: 'Eine kontrastverstärkte portalvenöse CT erlaubt die Beurteilung von Darmwand, Fettgewebe, Abszess und freier Flüssigkeit. Enterales Kontrastmittel ist routinemäßig meist nicht erforderlich.',
+      en: 'Portal venous contrast-enhanced CT assesses the bowel wall, adjacent fat, abscesses and free fluid. Enteric contrast is usually unnecessary.',
+      fa: 'CT با کنتراست در فاز پورتال‌ونوس دیواره روده، چربی مجاور، آبسه و مایع آزاد را ارزیابی می‌کند. کنتراست گوارشی معمولاً لازم نیست.',
+    },
+  },
+  {
+    id: 'cdd-1b',
+    question: {
+      de: 'Welcher Befund passt am besten zu CDD Typ 1b?',
+      en: 'Which finding best corresponds to CDD type 1b?',
+      fa: 'کدام یافته بیشترین تطابق را با CDD نوع 1b دارد؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Phlegmonöse perikolische Reaktion ohne Abszess', en: 'Phlegmonous pericolic inflammation without abscess', fa: 'التهاب فلگمونوس پریکولیک بدون آبسه' } },
+      { id: 'B', text: { de: 'Makroabszess über 3 cm', en: 'Macroabscess larger than 3 cm', fa: 'ماکروآبسه بزرگ‌تر از ۳ سانتی‌متر' } },
+      { id: 'C', text: { de: 'Freie Perforation mit Peritonitis', en: 'Free perforation with peritonitis', fa: 'پرفوراسیون آزاد با پریتونیت' } },
+      { id: 'D', text: { de: 'Asymptomatische Divertikulose', en: 'Asymptomatic diverticulosis', fa: 'دیورتیکولوز بدون علامت' } },
+    ],
+    correct: 'A',
+    explanation: {
+      de: 'CDD 1b bezeichnet eine akute unkomplizierte Divertikulitis mit phlegmonöser Umgebungsreaktion, aber ohne Abszess.',
+      en: 'CDD 1b is acute uncomplicated diverticulitis with phlegmonous surrounding inflammation but no abscess.',
+      fa: 'CDD نوع 1b دیورتیکولیت حاد بدون عارضه با التهاب فلگمونوس اطراف، اما بدون آبسه است.',
+    },
+  },
+  {
+    id: 'cdd-2a',
+    question: {
+      de: 'Eine 2 cm große perikolische Kollektion bei Sigmadivertikulitis entspricht welchem CDD-Typ?',
+      en: 'A 2 cm pericolic collection in sigmoid diverticulitis corresponds to which CDD type?',
+      fa: 'یک تجمع پریکولیک ۲ سانتی‌متری در دیورتیکولیت سیگموئید با کدام نوع CDD مطابقت دارد؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'CDD 1a', en: 'CDD 1a', fa: 'CDD 1a' } },
+      { id: 'B', text: { de: 'CDD 2a', en: 'CDD 2a', fa: 'CDD 2a' } },
+      { id: 'C', text: { de: 'CDD 2c', en: 'CDD 2c', fa: 'CDD 2c' } },
+      { id: 'D', text: { de: 'CDD 4', en: 'CDD 4', fa: 'CDD 4' } },
+    ],
+    correct: 'B',
+    explanation: {
+      de: 'Ein Mikroabszess beziehungsweise eine gedeckte Perforation mit einer Kollektion bis 3 cm entspricht CDD Typ 2a.',
+      en: 'A microabscess or contained perforation with a collection up to 3 cm corresponds to CDD type 2a.',
+      fa: 'میکروآبسه یا پرفوراسیون مهارشده با تجمع تا ۳ سانتی‌متر مطابق CDD نوع 2a است.',
+    },
+  },
+  {
+    id: 'macroabscess',
+    question: {
+      de: 'Ab welcher Abszessgröße wird in der CDD-Klassifikation von einem Makroabszess gesprochen?',
+      en: 'At what abscess size does the CDD classification define a macroabscess?',
+      fa: 'در طبقه‌بندی CDD از چه اندازه‌ای آبسه ماکروآبسه محسوب می‌شود؟',
+    },
+    options: [
+      { id: 'A', text: { de: '> 1 cm', en: '> 1 cm', fa: 'بیش از ۱ سانتی‌متر' } },
+      { id: 'B', text: { de: '> 2 cm', en: '> 2 cm', fa: 'بیش از ۲ سانتی‌متر' } },
+      { id: 'C', text: { de: '> 3 cm', en: '> 3 cm', fa: 'بیش از ۳ سانتی‌متر' } },
+      { id: 'D', text: { de: '> 10 cm', en: '> 10 cm', fa: 'بیش از ۱۰ سانتی‌متر' } },
+    ],
+    correct: 'C',
+    explanation: {
+      de: 'CDD Typ 2b bezeichnet einen Makroabszess über 3 cm. Die Abszessgröße sollte im Befund in drei Dimensionen angegeben werden.',
+      en: 'CDD type 2b denotes a macroabscess larger than 3 cm. Report abscess size in three dimensions.',
+      fa: 'CDD نوع 2b ماکروآبسه بزرگ‌تر از ۳ سانتی‌متر است. اندازه آبسه باید در سه بعد گزارش شود.',
+    },
+  },
+  {
+    id: 'fistula',
+    question: {
+      de: 'Welcher CT-Befund spricht bei Divertikulitis besonders für eine kolovesikale Fistel?',
+      en: 'Which CT finding particularly suggests a colovesical fistula in diverticulitis?',
+      fa: 'کدام یافته CT در دیورتیکولیت بیشتر به نفع فیستول کولووزیکال است؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Gas in der Harnblase ohne vorausgegangene Instrumentierung', en: 'Gas in the urinary bladder without prior instrumentation', fa: 'گاز داخل مثانه بدون ابزارگذاری قبلی' } },
+      { id: 'B', text: { de: 'Isolierte Milzvergrößerung', en: 'Isolated splenomegaly', fa: 'اسپلنومگالی منفرد' } },
+      { id: 'C', text: { de: 'Gallenblasenstein', en: 'Gallstone', fa: 'سنگ کیسه صفرا' } },
+      { id: 'D', text: { de: 'Basaler Pleuraerguss', en: 'Basal pleural effusion', fa: 'افیوژن پلورال قاعده‌ای' } },
+    ],
+    correct: 'A',
+    explanation: {
+      de: 'Intravesikales Gas ohne Katheterisierung zusammen mit entzündlichem Kontakt zwischen Sigma und Blase ist ein klassischer Hinweis auf eine kolovesikale Fistel.',
+      en: 'Intravesical gas without catheterisation, together with inflammatory contact between sigmoid colon and bladder, is a classic clue to a colovesical fistula.',
+      fa: 'گاز داخل مثانه بدون کاتتریزاسیون همراه با تماس التهابی سیگموئید و مثانه نشانه کلاسیک فیستول کولووزیکال است.',
+    },
+  },
+  {
+    id: 'free-perforation',
+    question: {
+      de: 'Welche Konstellation spricht für eine freie Perforation?',
+      en: 'Which combination suggests free perforation?',
+      fa: 'کدام ترکیب به نفع پرفوراسیون آزاد است؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Freie intraperitoneale Luft und Flüssigkeit mit Peritonitiszeichen', en: 'Free intraperitoneal gas and fluid with signs of peritonitis', fa: 'گاز و مایع آزاد داخل صفاقی همراه علائم پریتونیت' } },
+      { id: 'B', text: { de: 'Ein einzelnes Divertikel ohne Entzündung', en: 'A single diverticulum without inflammation', fa: 'یک دیورتیکول بدون التهاب' } },
+      { id: 'C', text: { de: 'Nur diskretes perikolisches Stranding', en: 'Mild pericolic stranding only', fa: 'فقط التهاب خفیف پریکولیک' } },
+      { id: 'D', text: { de: 'Isolierte Wandverdickung ohne Umgebungsreaktion', en: 'Isolated wall thickening without surrounding reaction', fa: 'ضخیم‌شدگی منفرد دیواره بدون واکنش اطراف' } },
+    ],
+    correct: 'A',
+    explanation: {
+      de: 'Freie Luft und Flüssigkeit mit Peritonitiszeichen entsprechen einer freien Perforation und damit CDD Typ 2c.',
+      en: 'Free gas and fluid with signs of peritonitis indicate free perforation and CDD type 2c.',
+      fa: 'گاز و مایع آزاد همراه علائم پریتونیت نشان‌دهنده پرفوراسیون آزاد و CDD نوع 2c است.',
+    },
+  },
+  {
+    id: 'cancer-differential',
+    question: {
+      de: 'Welcher Befund sollte bei vermeintlicher Divertikulitis besonders an ein kolorektales Karzinom denken lassen?',
+      en: 'Which finding should particularly raise concern for colorectal cancer in presumed diverticulitis?',
+      fa: 'کدام یافته در دیورتیکولیت فرضی باید بیشتر شک به سرطان کولورکتال ایجاد کند؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Kurze asymmetrische Wandverdickung mit suspekten Lymphknoten', en: 'Short asymmetric wall thickening with suspicious lymph nodes', fa: 'ضخیم‌شدگی کوتاه و نامتقارن دیواره همراه لنف‌نودهای مشکوک' } },
+      { id: 'B', text: { de: 'Ausgeprägtes Stranding um ein sichtbares entzündetes Divertikel', en: 'Marked stranding centred on a visible inflamed diverticulum', fa: 'التهاب شدید اطراف یک دیورتیکول ملتهب قابل مشاهده' } },
+      { id: 'C', text: { de: 'Mehrere reizlose Divertikel', en: 'Multiple non-inflamed diverticula', fa: 'چندین دیورتیکول بدون التهاب' } },
+      { id: 'D', text: { de: 'Kleine Menge reaktiver Beckenflüssigkeit', en: 'A small amount of reactive pelvic fluid', fa: 'مقدار کمی مایع واکنشی لگن' } },
+    ],
+    correct: 'A',
+    explanation: {
+      de: 'Eine kurze asymmetrische oder irreguläre Stenose und suspekte Lymphknoten sind für eine unkomplizierte Divertikulitis atypisch und verlangen eine onkologische Differenzialdiagnose.',
+      en: 'A short asymmetric or irregular stenosis and suspicious lymph nodes are atypical for uncomplicated diverticulitis and require an oncological differential.',
+      fa: 'تنگی کوتاه نامتقارن یا نامنظم و لنف‌نودهای مشکوک برای دیورتیکولیت بدون عارضه آتیپیک‌اند و نیاز به افتراق انکولوژیک دارند.',
+    },
+  },
+  {
+    id: 'reporting',
+    question: {
+      de: 'Welche Angabe darf im CT-Befund einer abszedierenden Divertikulitis nicht fehlen?',
+      en: 'Which detail must be included in the CT report of diverticulitis with an abscess?',
+      fa: 'کدام مورد نباید در گزارش CT دیورتیکولیت همراه آبسه فراموش شود؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Abszessgröße in drei Dimensionen und Lokalisation', en: 'Abscess size in three dimensions and location', fa: 'اندازه آبسه در سه بعد و محل آن' } },
+      { id: 'B', text: { de: 'Nur die Milzlänge', en: 'Splenic length only', fa: 'فقط طول طحال' } },
+      { id: 'C', text: { de: 'Ausschließlich die Dosislänge', en: 'Dose-length product only', fa: 'فقط محصول طول دوز' } },
+      { id: 'D', text: { de: 'Nur die Anzahl aller Kolondivertikel', en: 'Only the total number of colonic diverticula', fa: 'فقط تعداد کل دیورتیکول‌های کولون' } },
+    ],
+    correct: 'A',
+    explanation: {
+      de: 'Größe, Lokalisation und Zugänglichkeit einer Kollektion sind managementrelevant. Zusätzlich müssen freie Luft, Fistel, Stenose und freie Flüssigkeit beurteilt werden.',
+      en: 'Collection size, location and accessibility affect management. Free gas, fistula, stenosis and free fluid must also be assessed.',
+      fa: 'اندازه، محل و قابلیت دسترسی تجمع بر درمان اثر دارد. گاز آزاد، فیستول، تنگی و مایع آزاد نیز باید ارزیابی شوند.',
+    },
+  },
+]
+
+const DIVERTICULITIS_QUESTIONS = Object.fromEntries(
+  ['de', 'en', 'fa'].map(lang => [
+    lang,
+    DIVERTICULITIS_QUESTION_CONTENT.map(item => ({
+      id: `divertikulitis-${lang}-${item.id}`,
+      tags: ['divertikulitis', 'kolon', 'abdomen'],
+      fach: 'abdomen',
+      question: item.question[lang],
+      options: item.options.map(option => ({ id: option.id, text: option.text[lang] })),
+      correct: item.correct,
+      explanation: item.explanation[lang],
+    })),
+  ])
+)
+
 export const QUESTION_BANK = {
   "de": [
     ...CONTRAST_QUESTIONS.de,
+    ...DIVERTICULITIS_QUESTIONS.de,
     {
       "id": "meniskus-de-01",
       "tags": [
@@ -1332,6 +1551,7 @@ export const QUESTION_BANK = {
   ],
   "en": [
     ...CONTRAST_QUESTIONS.en,
+    ...DIVERTICULITIS_QUESTIONS.en,
     {
       "id": "meniskus-en-01",
       "tags": [
@@ -2659,6 +2879,7 @@ export const QUESTION_BANK = {
   ],
   "fa": [
     ...CONTRAST_QUESTIONS.fa,
+    ...DIVERTICULITIS_QUESTIONS.fa,
     {
       "id": "meniskus-fa-01",
       "tags": [
@@ -4018,6 +4239,14 @@ export const MCQ_TOPIC_GROUPS = [
       { id: 'fnh', title: { de: 'FNH', en: 'FNH', fa: 'FNH' } },
       { id: 'hcc', title: { de: 'HCC', en: 'HCC', fa: 'HCC' } },
       { id: 'avm', title: { de: 'AVM der Leber', en: 'Hepatic AVM', fa: 'AVM کبد' } },
+    ],
+  },
+  {
+    fachId: 'abdomen',
+    kapitelId: 'abdomen-gi-trakt',
+    title: { de: 'Gastrointestinaltrakt', en: 'Gastrointestinal tract', fa: 'دستگاه گوارش' },
+    topics: [
+      { id: 'divertikulitis', title: { de: 'Divertikulitis', en: 'Diverticulitis', fa: 'دیورتیکولیت' } },
     ],
   },
   {

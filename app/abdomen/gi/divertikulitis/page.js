@@ -33,6 +33,8 @@ const CONTENT = {
     title: 'Divertikulose & Divertikulitis',
     subtitle: 'CT-Diagnostik, CDD-Klassifikation und sichere Erkennung komplizierter Verläufe',
     sourceLabel: 'Dr. Zia',
+    actionMcq: 'MCQ',
+    actionFlash: 'Flashcards',
     keyLabel: 'Merke',
     caveLabel: 'CAVE',
     openCase: 'Fall in Radiopaedia öffnen',
@@ -152,6 +154,8 @@ const CONTENT = {
     title: 'Diverticulosis & diverticulitis',
     subtitle: 'CT diagnosis, CDD classification and reliable detection of complicated disease',
     sourceLabel: 'Dr. Zia',
+    actionMcq: 'MCQ',
+    actionFlash: 'Flashcards',
     keyLabel: 'Key point',
     caveLabel: 'Caution',
     openCase: 'Open case in Radiopaedia',
@@ -275,6 +279,7 @@ CONTENT.fa = {
   subtitle: 'تشخیص CT، طبقه‌بندی CDD و شناسایی بیماری پیچیده',
   keyLabel: 'نکته مهم',
   caveLabel: 'احتیاط',
+  actionFlash: 'فلش‌کارت',
 }
 
 const READ_COPY = {
@@ -406,7 +411,8 @@ export default function DivertikulitisPage() {
             <h1>{copy.title}</h1>
             <p>{copy.subtitle}</p>
             <div className={styles.actions}>
-              <Link href={withLang('/faelle?thema=divertikulitis')} className={styles.actionBtn}>Fallprüfung</Link>
+              <Link href={withLang(`/ueben/quiz?fach=abdomen&n=10&themen=divertikulitis&from=${encodeURIComponent(withLang('/abdomen/gi/divertikulitis'))}`)} className={styles.actionBtn}>{copy.actionMcq}</Link>
+              <Link href={withLang(`/flashcards/divertikulitis?from=${encodeURIComponent(withLang('/abdomen/gi/divertikulitis'))}`)} className={styles.actionBtn}>{copy.actionFlash}</Link>
               <a href={GUIDELINE_URL} target="_blank" rel="noopener noreferrer" className={styles.actionBtn}>{copy.guideline} ↗</a>
             </div>
           </div>

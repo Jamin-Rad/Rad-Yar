@@ -30,6 +30,14 @@ const TOPICS = [
     desc: { de: 'Sono · CT · MRT · DWI · atypische Formen', en: 'Ultrasound · CT · MRI · DWI · atypical forms', fa: 'سونوگرافی · CT · MRI · DWI · فرم آتیپیک' },
   },
   {
+    key: 'divertikulitis',
+    href: '/ueben/quiz?fach=abdomen&n=10&themen=divertikulitis',
+    icon: 'CT', iconImage: '/fach/abdomen.png', color: '#f97316', available: true,
+    count: { de: '10 Fragen', en: '10 Questions', fa: '۱۰ سوال' },
+    name: { de: 'GI-Trakt · Divertikulitis', en: 'GI tract · Diverticulitis', fa: 'گوارش · دیورتیکولیت' },
+    desc: { de: 'CT-Zeichen · CDD · Komplikationen · Befundung', en: 'CT signs · CDD · complications · reporting', fa: 'علائم CT · CDD · عوارض · گزارش' },
+  },
+  {
     key: 'sarkoidose',
     href: '/ueben/quiz?fach=thorax&n=10&themen=sarkoidose',
     icon: '🫁', iconImage: '/fach/thorax.png', color: '#0284c7', available: true,
