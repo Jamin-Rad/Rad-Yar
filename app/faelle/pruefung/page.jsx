@@ -21,7 +21,6 @@ const UI = {
     empty: 'Für diese Auswahl sind keine Fälle verfügbar.',
     emptySub: 'Bitte wähle mindestens ein Thema mit verfügbaren Fällen.',
     caseOf: (current, total) => `Fall ${current} von ${total}`,
-    finding: 'Klinischer Fall',
     check: 'Antwort prüfen',
     next: 'Nächster Fall',
     resultButton: 'Ergebnis anzeigen',
@@ -44,7 +43,6 @@ const UI = {
     empty: 'No cases are available for this selection.',
     emptySub: 'Please choose at least one topic with available cases.',
     caseOf: (current, total) => `Case ${current} of ${total}`,
-    finding: 'Clinical case',
     check: 'Check answer',
     next: 'Next case',
     resultButton: 'Show result',
@@ -67,7 +65,6 @@ const UI = {
     empty: 'برای این انتخاب کیسی موجود نیست.',
     emptySub: 'حداقل یک موضوع دارای کیس را انتخاب کن.',
     caseOf: (current, total) => `کیس ${current} از ${total}`,
-    finding: 'کیس بالینی',
     check: 'بررسی پاسخ',
     next: 'کیس بعدی',
     resultButton: 'نمایش نتیجه',
@@ -235,12 +232,10 @@ function CaseExamContent() {
           <div className={quizStyles.qNum}>{ui.caseOf(current + 1, total)}</div>
           <div className={styles.caseGrid}>
             <div className={styles.imagePanel}>
-              <Image src={item.image} alt={item.title} width={920} height={690} priority className={styles.caseImage} />
+              <Image src={item.image} alt="" width={920} height={690} priority className={styles.caseImage} />
               <span className={styles.plane}>{item.plane}</span>
             </div>
             <div className={styles.caseIntro}>
-              <span className={styles.caseLabel}>{ui.finding}</span>
-              <h1>{item.title}</h1>
               <p>{item.vignette}</p>
             </div>
           </div>

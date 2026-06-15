@@ -43,22 +43,6 @@
 }
 
 .caseIntro { min-width: 0; }
-.caseLabel {
-  display: inline-block;
-  margin-bottom: 10px;
-  color: #f97316;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
-.caseIntro h1 {
-  margin: 0 0 12px;
-  color: #1a2051;
-  font-family: var(--font-display, Georgia, serif);
-  font-size: clamp(22px, 2.5vw, 32px);
-  line-height: 1.2;
-}
 .caseIntro p {
   margin: 0;
   color: #64748b;
@@ -97,7 +81,6 @@
 }
 
 :global(html[data-theme='dark']) .imagePanel { border-color: rgba(148, 163, 184, .18); }
-:global(html[data-theme='dark']) .caseIntro h1 { color: #f8fafc; }
 :global(html[data-theme='dark']) .caseIntro p { color: #9aa9bf; }
 
 @media (max-width: 820px) {
