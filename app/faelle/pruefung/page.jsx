@@ -28,6 +28,7 @@ const UI = {
     incorrect: 'Nicht richtig',
     correctAnswer: 'Richtige Antwort:',
     explanation: 'Einordnung',
+    whyWrong: 'Warum diese Antwort nicht passt',
     source: 'Originalfall ansehen',
     score: 'Punktestand',
     result: 'Dein Ergebnis',
@@ -50,6 +51,7 @@ const UI = {
     incorrect: 'Incorrect',
     correctAnswer: 'Correct answer:',
     explanation: 'Assessment',
+    whyWrong: 'Why this answer is incorrect',
     source: 'View original case',
     score: 'Score',
     result: 'Your result',
@@ -72,6 +74,7 @@ const UI = {
     incorrect: 'نادرست',
     correctAnswer: 'پاسخ صحیح:',
     explanation: 'ارزیابی',
+    whyWrong: 'چرا این پاسخ نادرست است',
     source: 'مشاهده کیس اصلی',
     score: 'امتیاز',
     result: 'نتیجه شما',
@@ -266,6 +269,12 @@ function CaseExamContent() {
               </div>
               <div className={quizStyles.fbLabel}>{ui.explanation}</div>
               <div className={quizStyles.fbText}>{item.explanation}</div>
+              {!isCorrect && item.wrongExplanations?.[selected] && (
+                <div className={styles.wrongExplanation}>
+                  <div className={quizStyles.fbLabel}>{ui.whyWrong}</div>
+                  <div className={quizStyles.fbText}>{item.wrongExplanations[selected]}</div>
+                </div>
+              )}
               <div className={styles.sourceRow}>
                 <span>{item.credit}</span>
                 <a href={item.source} target="_blank" rel="noopener noreferrer">{ui.source} ↗</a>

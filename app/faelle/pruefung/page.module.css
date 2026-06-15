@@ -51,6 +51,13 @@
 }
 
 .question { margin-top: 0; }
+.wrongExplanation {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border: 1px solid rgba(239, 68, 68, .2);
+  border-radius: 10px;
+  background: rgba(254, 242, 242, .62);
+}
 .sourceRow {
   display: flex;
   justify-content: space-between;
@@ -82,6 +89,7 @@
 
 :global(html[data-theme='dark']) .imagePanel { border-color: rgba(148, 163, 184, .18); }
 :global(html[data-theme='dark']) .caseIntro p { color: #9aa9bf; }
+:global(html[data-theme='dark']) .wrongExplanation { background: rgba(127, 29, 29, .12); }
 
 @media (max-width: 820px) {
   .caseGrid { grid-template-columns: 1fr; }
