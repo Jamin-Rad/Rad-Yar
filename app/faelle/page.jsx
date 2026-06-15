@@ -7,7 +7,6 @@ import { useRouter } from 'next/navigation'
 import { CURRICULUM, getKapitelTitle, getThemaTitle } from '@/data/curriculum'
 import { countCases, getAvailableCaseTopicIds } from '@/data/cases'
 import { useLanguage } from '@/providers/LanguageProvider'
-import CaseExamMaintenance from '@/components/CaseExamMaintenance'
 import styles from '@/app/ueben/page.module.css'
 import caseStyles from './page.module.css'
 
@@ -297,5 +296,5 @@ function CasesSetupPageContent() {
 }
 
 export default function CasesSetupPage() {
-  return <CaseExamMaintenance />
+  return <CasesSetupPageContent />
 }
