@@ -4,7 +4,11 @@
 // verfügbar wird. Danach läuft der Sync laufend über die Write-Through-Aufrufe
 // in useLessonReadStatus, leitnerStorage und der MCQ-Auswertung.
 
-const SYNCED_KEY = 'radyar_synced_v1'
+// v2: v1 markierte den Sync auch als erledigt, wenn die Requests fehlschlugen
+// (z.B. wegen fehlender DB-Rechte) – fetch() lehnt nur bei Netzwerkfehlern ab,
+// nicht bei 4xx/5xx. Browser mit fälschlich gesetztem v1-Flag müssen daher
+// einmal erneut versuchen.
+const SYNCED_KEY = 'radyar_synced_v2'
 
 export async function syncLocalProgressToServer(userId) {
   if (typeof window === 'undefined' || !userId) return
@@ -44,7 +48,9 @@ export async function syncLocalProgressToServer(userId) {
       }))
     }
 
-    await Promise.all(requests)
-    localStorage.setItem(SYNCED_KEY, '1')
+    const responses = await Promise.all(requests)
+    if (responses.every(res => res.ok)) {
+      localStorage.setItem(SYNCED_KEY, '1')
+    }
   } catch (_) {}
 }
