@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { CURRICULUM, getKapitelTitle, getThemaTitle } from '@/data/curriculum'
-import { countCases, getAvailableCaseTopicIds } from '@/data/cases'
+import { countCases, getAvailableCaseModalities, getAvailableCaseTopicIds } from '@/data/cases'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from '@/app/ueben/page.module.css'
 import caseStyles from './page.module.css'
@@ -19,9 +19,10 @@ const FACH_DISPLAY = {
 const UI = {
   de: {
     home:'RadYar', crumb:'Fallprüfung', title:'Fallprüfung',
-    sub:'Wähle eine oder mehrere Körperregionen, Themen und die Anzahl der Fälle.',
-    step1:'Körperregion(en) wählen', step2:'Themen wählen', step3:'Anzahl der Fälle',
+    sub:'Wähle Körperregionen, Themen, Modalitäten und die Anzahl der Fälle.',
+    step1:'Körperregion(en) wählen', step2:'Themen wählen', step3:'Modalität wählen', step4:'Anzahl der Fälle',
     all:'Alle', none:'Keine', start:'Prüfung starten', cases:'Fälle', topics:'Themen',
+    modalities:'Modalitäten', allModalities:'Alle verfügbaren Modalitäten',
     selected:'Ausgewählt', noRegion:'Wähle zuerst eine verfügbare Körperregion.',
     noCases:'Für diese Körperregion sind noch keine Fälle verfügbar.',
     random:'Die Fälle werden in zufälliger Reihenfolge gezeigt.', planned:'Noch keine Fälle',
@@ -29,9 +30,10 @@ const UI = {
   },
   en: {
     home:'RadYar', crumb:'Case Exam', title:'Case exam',
-    sub:'Choose one or more body regions, topics and the number of cases.',
-    step1:'Choose body region(s)', step2:'Choose topics', step3:'Number of cases',
+    sub:'Choose body regions, topics, modalities and the number of cases.',
+    step1:'Choose body region(s)', step2:'Choose topics', step3:'Choose modality', step4:'Number of cases',
     all:'All', none:'None', start:'Start exam', cases:'cases', topics:'topics',
+    modalities:'modalities', allModalities:'All available modalities',
     selected:'Selected', noRegion:'Choose an available body region first.',
     noCases:'No cases are available for this body region yet.',
     random:'Cases are shown in random order.', planned:'No cases yet',
@@ -39,9 +41,10 @@ const UI = {
   },
   fa: {
     home:'RadYar', crumb:'آزمون بالینی', title:'آزمون کیس',
-    sub:'یک یا چند ناحیه بدن، موضوع و تعداد کیس‌ها را انتخاب کن.',
-    step1:'انتخاب ناحیه(ها)', step2:'انتخاب موضوعات', step3:'تعداد کیس‌ها',
+    sub:'ناحیه بدن، موضوع، مودالیتی و تعداد کیس‌ها را انتخاب کن.',
+    step1:'انتخاب ناحیه(ها)', step2:'انتخاب موضوعات', step3:'انتخاب مودالیتی', step4:'تعداد کیس‌ها',
     all:'همه', none:'هیچ', start:'شروع آزمون', cases:'کیس', topics:'موضوع',
+    modalities:'مودالیتی', allModalities:'همه مودالیتی‌های موجود',
     selected:'انتخاب شده', noRegion:'ابتدا یک ناحیه دارای کیس را انتخاب کن.',
     noCases:'هنوز برای این ناحیه کیسی موجود نیست.',
     random:'کیس‌ها با ترتیب تصادفی نمایش داده می‌شوند.', planned:'هنوز کیسی نیست',
@@ -60,6 +63,7 @@ function CasesSetupPageContent() {
   const availableTopicIds = useMemo(() => getAvailableCaseTopicIds(), [])
   const [selectedRegions, setSelectedRegions] = useState(new Set())
   const [selectedTopics, setSelectedTopics] = useState(new Set())
+  const [selectedModalities, setSelectedModalities] = useState(new Set())
   const [openGroups, setOpenGroups] = useState(new Set())
   const [count, setCount] = useState(1)
 
@@ -91,12 +95,23 @@ function CasesSetupPageContent() {
     return result
   }, [availableTopicIds, selectedRegions])
 
-  const availableCases = countCases([...selectedTopics])
+  const availableModalities = useMemo(
+    () => getAvailableCaseModalities([...selectedTopics]),
+    [selectedTopics]
+  )
+  const availableCases = countCases([...selectedTopics], [...selectedModalities])
   const canStart = selectedTopics.size > 0 && availableCases > 0
 
   useEffect(() => {
     if (availableCases > 0 && count > availableCases) setCount(availableCases)
   }, [availableCases, count])
+
+  useEffect(() => {
+    setSelectedModalities(previous => {
+      const next = new Set([...previous].filter(modality => availableModalities.has(modality)))
+      return next.size === previous.size ? previous : next
+    })
+  }, [availableModalities])
 
   useEffect(() => {
     const requested = new URLSearchParams(window.location.search).get('thema')
@@ -134,6 +149,11 @@ function CasesSetupPageContent() {
     next.has(id) ? next.delete(id) : next.add(id)
     return next
   })
+  const toggleModality = modality => setSelectedModalities(previous => {
+    const next = new Set(previous)
+    next.has(modality) ? next.delete(modality) : next.add(modality)
+    return next
+  })
   const toggleChapter = topics => setSelectedTopics(previous => {
     const next = new Set(previous)
     const ids = topics.map(topic => topic.id)
@@ -162,6 +182,7 @@ function CasesSetupPageContent() {
     const params = new URLSearchParams({
       fach: [...selectedRegions].join(','),
       themen: [...selectedTopics].join(','),
+      modalitaeten: [...selectedModalities].join(','),
       n: String(Math.min(count, availableCases)),
     })
     router.push(`/faelle/pruefung?${params.toString()}`)
@@ -256,6 +277,24 @@ function CasesSetupPageContent() {
 
           <section className={styles.section}>
             <div className={styles.stepLabel}><span className={styles.stepNum}>3</span>{ui.step3}</div>
+            <div className={styles.chips}>
+              {[...availableModalities].map(modality => (
+                <button
+                  key={modality}
+                  className={`${styles.chip} ${selectedModalities.has(modality) ? styles.chipActive : ''}`}
+                  onClick={() => toggleModality(modality)}
+                >
+                  {modality}
+                </button>
+              ))}
+              {selectedTopics.size > 0 && selectedModalities.size === 0 && (
+                <span className={caseStyles.modalityHint}>{ui.allModalities}</span>
+              )}
+            </div>
+          </section>
+
+          <section className={styles.section}>
+            <div className={styles.stepLabel}><span className={styles.stepNum}>4</span>{ui.step4}</div>
             <div className={styles.anzahlRow}>
               {COUNT_OPTIONS.map(option => {
                 const disabled = option > availableCases
@@ -285,6 +324,12 @@ function CasesSetupPageContent() {
                 <div className={styles.statBox}><div className={styles.statNum}>{selectedTopics.size}</div><div className={styles.statLbl}>{ui.topics}</div></div>
                 <div className={styles.statBox}><div className={styles.statNum}>{canStart ? Math.min(count, availableCases) : 0}</div><div className={styles.statLbl}>{ui.cases}</div></div>
               </div>
+              {selectedTopics.size > 0 && (
+                <div className={caseStyles.modalitySummary}>
+                  <strong>{ui.modalities}:</strong>{' '}
+                  {selectedModalities.size ? [...selectedModalities].join(', ') : ui.allModalities}
+                </div>
+              )}
               <div className={styles.summaryNote}>{ui.random}</div>
               <button className={styles.startBtn} disabled={!canStart} onClick={start}>{ui.start}</button>
             </>}

@@ -99,12 +99,14 @@ function CaseExamContent() {
   const searchParams = useSearchParams()
   const ui = UI[lang] || UI.de
   const topicParam = searchParams.get('themen') || ''
+  const modalityParam = searchParams.get('modalitaeten') || ''
   const regionIds = (searchParams.get('fach') || '').split(',').filter(Boolean)
   const topicIds = topicParam.split(',').filter(Boolean)
+  const modalities = modalityParam.split(',').filter(Boolean)
   const requestedCount = Math.max(1, Number.parseInt(searchParams.get('n') || '1', 10) || 1)
   const cases = useMemo(
-    () => getCases(topicIds, lang, requestedCount),
-    [topicParam, lang, requestedCount]
+    () => getCases(topicIds, modalities, lang, requestedCount),
+    [topicParam, modalityParam, lang, requestedCount]
   )
 
   const [current, setCurrent] = useState(0)
@@ -239,11 +241,11 @@ function CaseExamContent() {
               <span className={styles.plane}>{item.plane}</span>
             </div>
             <div className={styles.caseIntro}>
-              <p>{item.vignette}</p>
+              <p>{item.prompt || item.vignette}</p>
             </div>
           </div>
 
-          <h2 className={`${quizStyles.qText} ${styles.question}`}>{item.question}</h2>
+          {!item.prompt && <h2 className={`${quizStyles.qText} ${styles.question}`}>{item.question}</h2>}
           <div className={quizStyles.options}>
             {item.options.map(option => {
               let className = quizStyles.option

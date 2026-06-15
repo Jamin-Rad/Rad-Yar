@@ -6,6 +6,7 @@ export const CASE_BANK = {
       kapitelId: 'msk-knie',
       topicId: 'meniskus',
       image: '/meniskus/mri-sagittal.png',
+      modality: 'MRT',
       plane: 'PD · sagittal',
       title: 'Keilförmig-globuläres intrameniskales Signal',
       vignette: '40-jährige Patientin mit intermittierenden Einklemmungserscheinungen (Locking) des rechten Knies. Im discoiden Außenmeniskus zeigt sich eine ausgedehnte Signalsteigerung ohne sicheren Kontakt zur Gelenkfläche.',
@@ -27,6 +28,7 @@ export const CASE_BANK = {
       kapitelId: 'msk-knie',
       topicId: 'meniskus',
       image: '/meniskus/mri-coronal.png',
+      modality: 'MRT',
       plane: 'PD · koronal',
       title: 'Lineares Signal mit Kontakt auf nur einer Schicht',
       vignette: 'Koronare PD-Sequenz eines discoiden Außenmeniskus. Ein lineares Signal erreicht scheinbar die Oberfläche, ist jedoch nur auf einer einzelnen Schicht nachvollziehbar.',
@@ -48,6 +50,7 @@ export const CASE_BANK = {
       kapitelId: 'msk-knie',
       topicId: 'meniskus',
       image: '/meniskus/mri-coronal.png',
+      modality: 'MRT',
       plane: 'PD · koronal',
       title: 'Lineares intrameniskales Signal im Hinterhorn des Innenmeniskus',
       vignette: '30-jährige Patientin mit medialseitigen Knieschmerzen.',
@@ -69,6 +72,7 @@ export const CASE_BANK = {
       kapitelId: 'abdomen-leber',
       topicId: 'hcc',
       image: '/hcc/classic-multiphase.svg',
+      modality: 'CT',
       plane: 'CT · Mehrphasen · Schema',
       title: 'Klassisches HCC in der Mehrphasen-CT',
       vignette: '60-jähriger Patient mit Leberzirrhose. Eine Segment-5-Läsion zeigt kräftige non-rim arterielle Hyperenhancement, wird portalvenös relativ hypodens und besitzt einen glatten peripher anreichernden Rand.',
@@ -90,6 +94,7 @@ export const CASE_BANK = {
       kapitelId: 'abdomen-leber',
       topicId: 'hcc',
       image: '/hcc/infiltrative.svg',
+      modality: 'CT',
       plane: 'CT · arteriell/portal · Schema',
       title: 'Permeatives Wachstum mit Satellitenherden',
       vignette: '80-jähriger Patient mit Alkoholvorgeschichte, Gewichtsverlust und erhöhten Leberwerten. Große unscharfe Tumorkonglomerate durchsetzen den rechten Leberlappen; weitere arterielle Satellitenherde zeigen teils Wash-out.',
@@ -111,10 +116,12 @@ export const CASE_BANK = {
       kapitelId: 'abdomen-leber',
       topicId: 'haemangiom',
       image: '/haemangiom/case-20956-multiphase-ct.jpg',
+      modality: 'CT',
       plane: 'CT · Mehrphasen · axial',
       title: 'Hepatisches Hämangiom',
-      vignette: '60-jährige Patientin mit Zufallsbefund in der Lebersonografie.',
+      vignette: 'Bei einer 60-jährigen Patientin wurde in der Lebersonografie zufällig eine fokale Leberläsion entdeckt. Zur weiteren Charakterisierung erfolgt eine Mehrphasen-CT.',
       question: 'Welche Diagnose passt am besten zum dargestellten dynamischen Kontrastmittelverhalten?',
+      prompt: 'Bei einer 60-jährigen Patientin wurde in der Lebersonografie zufällig eine fokale Leberläsion entdeckt. Zur weiteren Charakterisierung erfolgt eine Mehrphasen-CT. Welche Diagnose passt am besten zum dargestellten dynamischen Kontrastmittelverhalten?',
       options: [
         { id: 'A', text: 'Hepatisches Hämangiom mit peripher-globulärer Anreicherung und zentripetalem Fill-in' },
         { id: 'B', text: 'Lebermetastasen mit malignem Ringenhancement' },
@@ -137,10 +144,12 @@ export const CASE_BANK = {
       kapitelId: 'abdomen-leber',
       topicId: 'haemangiom',
       image: '/haemangiom/case-10052-portal-venous-ct.jpg',
+      modality: 'CT',
       plane: 'CT · portalvenös · axial',
       title: 'Hepatisches Hämangiom in Segment VII',
-      vignette: 'Inzidenteller Leberbefund in einer Mehrphasen-CT des Abdomens.',
+      vignette: 'Bei einer erwachsenen Patientin wird im Rahmen einer CT des Abdomens zufällig eine fokale Leberläsion entdeckt. Zur Charakterisierung liegen mehrere Kontrastmittelphasen vor.',
       question: 'Welche Diagnose ist für die dargestellte Läsion am wahrscheinlichsten?',
+      prompt: 'Bei einer erwachsenen Patientin wird im Rahmen einer CT des Abdomens zufällig eine fokale Leberläsion entdeckt. Zur Charakterisierung liegen mehrere Kontrastmittelphasen vor. Welche Diagnose ist für die dargestellte Läsion am wahrscheinlichsten?',
       options: [
         { id: 'A', text: 'Hepatisches Hämangiom' },
         { id: 'B', text: 'Hypovaskuläre Lebermetastase' },
@@ -161,7 +170,7 @@ export const CASE_BANK = {
   en: [
     {
       id: 'meniskus-grad-2c', fachId: 'msk', kapitelId: 'msk-knie', topicId: 'meniskus',
-      image: '/meniskus/mri-sagittal.png', plane: 'PD · sagittal',
+      image: '/meniskus/mri-sagittal.png', modality: 'MRT', plane: 'PD · sagittal',
       title: 'Wedge-shaped globular intrameniscal signal',
       vignette: '40-year-old female patient with pain and intermittent locking of the right knee. The discoid lateral meniscus shows extensive high signal without definite contact with the articular surface.',
       question: 'Which classification best fits this finding?',
@@ -178,7 +187,7 @@ export const CASE_BANK = {
     },
     {
       id: 'meniskus-grad-2b', fachId: 'msk', kapitelId: 'msk-knie', topicId: 'meniskus',
-      image: '/meniskus/mri-coronal.png', plane: 'PD · coronal',
+      image: '/meniskus/mri-coronal.png', modality: 'MRT', plane: 'PD · coronal',
       title: 'Linear signal contacting the surface on one slice only',
       vignette: 'Coronal PD sequence of a discoid lateral meniscus. A linear signal appears to reach the surface but can only be followed on a single slice.',
       question: 'How should this single-slice finding be classified?',
@@ -195,7 +204,7 @@ export const CASE_BANK = {
     },
     {
       id: 'meniskus-grad-2-medial-hh', fachId: 'msk', kapitelId: 'msk-knie', topicId: 'meniskus',
-      image: '/meniskus/mri-coronal.png', plane: 'PD · coronal',
+      image: '/meniskus/mri-coronal.png', modality: 'MRT', plane: 'PD · coronal',
       title: 'Linear intrasubstance signal in the posterior horn of the medial meniscus',
       vignette: '30-year-old female patient with medial knee pain.',
       question: 'Which finding and classification best fit this image?',
@@ -212,7 +221,7 @@ export const CASE_BANK = {
     },
     {
       id: 'hcc-classic-multiphase', fachId: 'abdomen', kapitelId: 'abdomen-leber', topicId: 'hcc',
-      image: '/hcc/classic-multiphase.svg', plane: 'CT · multiphasic · schematic',
+      image: '/hcc/classic-multiphase.svg', modality: 'CT', plane: 'CT · multiphasic · schematic',
       title: 'Classic HCC on multiphasic CT',
       vignette: '60-year-old man with cirrhosis. A segment 5 lesion shows avid non-rim arterial phase hyperenhancement, becomes relatively hypoattenuating on the portal venous phase, and has a smooth enhancing peripheral rim.',
       question: 'Which interpretation best fits this dynamic pattern?',
@@ -229,7 +238,7 @@ export const CASE_BANK = {
     },
     {
       id: 'hcc-infiltrative', fachId: 'abdomen', kapitelId: 'abdomen-leber', topicId: 'hcc',
-      image: '/hcc/infiltrative.svg', plane: 'CT · arterial/portal · schematic',
+      image: '/hcc/infiltrative.svg', modality: 'CT', plane: 'CT · arterial/portal · schematic',
       title: 'Permeative growth with satellite lesions',
       vignette: '80-year-old man with alcohol history, weight loss and elevated liver enzymes. Large ill-defined tumour conglomerates permeate the right lobe; additional arterial satellite lesions partly show wash-out.',
       question: 'Which HCC growth pattern is most likely?',
@@ -246,10 +255,11 @@ export const CASE_BANK = {
     },
     {
       id: 'hepatic-haemangioma-multiphase-20956', fachId: 'abdomen', kapitelId: 'abdomen-leber', topicId: 'haemangiom',
-      image: '/haemangiom/case-20956-multiphase-ct.jpg', plane: 'CT · multiphasic · axial',
+      image: '/haemangiom/case-20956-multiphase-ct.jpg', modality: 'CT', plane: 'CT · multiphasic · axial',
       title: 'Hepatic haemangioma',
-      vignette: '60-year-old woman with an incidental finding on liver ultrasound.',
+      vignette: 'A focal liver lesion was incidentally detected on ultrasound in a 60-year-old woman. Multiphasic CT is performed for further characterisation.',
       question: 'Which diagnosis best fits the dynamic enhancement pattern?',
+      prompt: 'A focal liver lesion was incidentally detected on ultrasound in a 60-year-old woman. Multiphasic CT is performed for further characterisation. Which diagnosis best fits the dynamic enhancement pattern?',
       options: [
         { id: 'A', text: 'Hepatic haemangioma with peripheral globular enhancement and centripetal fill-in' },
         { id: 'B', text: 'Liver metastases with malignant rim enhancement' },
@@ -268,10 +278,11 @@ export const CASE_BANK = {
     },
     {
       id: 'hepatic-haemangioma-segment-vii-10052', fachId: 'abdomen', kapitelId: 'abdomen-leber', topicId: 'haemangiom',
-      image: '/haemangiom/case-10052-portal-venous-ct.jpg', plane: 'CT · portal venous · axial',
+      image: '/haemangiom/case-10052-portal-venous-ct.jpg', modality: 'CT', plane: 'CT · portal venous · axial',
       title: 'Hepatic haemangioma in segment VII',
-      vignette: 'Incidental liver finding on a multiphasic CT of the abdomen.',
+      vignette: 'A focal liver lesion is incidentally discovered during abdominal CT in an adult patient. Multiple contrast phases are available for characterisation.',
       question: 'Which diagnosis is most likely for the lesion shown?',
+      prompt: 'A focal liver lesion is incidentally discovered during abdominal CT in an adult patient. Multiple contrast phases are available for characterisation. Which diagnosis is most likely for the lesion shown?',
       options: [
         { id: 'A', text: 'Hepatic haemangioma' },
         { id: 'B', text: 'Hypovascular liver metastasis' },
@@ -292,7 +303,7 @@ export const CASE_BANK = {
   fa: [
     {
       id: 'meniskus-grad-2c', fachId: 'msk', kapitelId: 'msk-knie', topicId: 'meniskus',
-      image: '/meniskus/mri-sagittal.png', plane: 'PD · ساژیتال',
+      image: '/meniskus/mri-sagittal.png', modality: 'MRT', plane: 'PD · ساژیتال',
       title: 'سیگنال گوه‌ای و گلوبولار داخل منیسک',
       vignette: 'بیمار خانم ۴۰ ساله با درد و قفل‌شدگی متناوب (Locking) زانوی راست. در منیسک خارجی دیسکوئید افزایش سیگنال وسیع بدون تماس قطعی با سطح مفصلی دیده می‌شود.',
       question: 'بهترین طبقه‌بندی برای این یافته چیست؟',
@@ -309,7 +320,7 @@ export const CASE_BANK = {
     },
     {
       id: 'meniskus-grad-2b', fachId: 'msk', kapitelId: 'msk-knie', topicId: 'meniskus',
-      image: '/meniskus/mri-coronal.png', plane: 'PD · کرونال',
+      image: '/meniskus/mri-coronal.png', modality: 'MRT', plane: 'PD · کرونال',
       title: 'سیگنال خطی با تماس سطحی فقط در یک برش',
       vignette: 'سکانس PD کرونال از منیسک خارجی دیسکوئید. سیگنال خطی ظاهراً به سطح می‌رسد، اما فقط در یک برش قابل پیگیری است.',
       question: 'این یافته تک‌برشی چگونه باید ارزیابی شود؟',
@@ -326,7 +337,7 @@ export const CASE_BANK = {
     },
     {
       id: 'meniskus-grad-2-medial-hh', fachId: 'msk', kapitelId: 'msk-knie', topicId: 'meniskus',
-      image: '/meniskus/mri-coronal.png', plane: 'PD · کرونال',
+      image: '/meniskus/mri-coronal.png', modality: 'MRT', plane: 'PD · کرونال',
       title: 'سیگنال خطی داخل‌بافتی در شاخ خلفی منیسک داخلی',
       vignette: 'بیمار خانم ۳۰ ساله با درد ناحیه داخلی زانو.',
       question: 'کدام یافته و طبقه‌بندی با این تصویر مطابقت دارد؟',
@@ -343,7 +354,7 @@ export const CASE_BANK = {
     },
     {
       id: 'hcc-classic-multiphase', fachId: 'abdomen', kapitelId: 'abdomen-leber', topicId: 'hcc',
-      image: '/hcc/classic-multiphase.svg', plane: 'CT · چندفازی · شماتیک',
+      image: '/hcc/classic-multiphase.svg', modality: 'CT', plane: 'CT · چندفازی · شماتیک',
       title: 'HCC کلاسیک در CT چندفازی',
       vignette: 'مرد ۶۰ ساله مبتلا به سیروز. ضایعه سگمان ۵ non-rim APHE قوی دارد، در فاز پورتال نسبتاً هیپودنس می‌شود و یک حاشیه صاف محیطی enhancing دارد.',
       question: 'کدام تفسیر با این الگوی دینامیک بیشترین تطابق را دارد؟',
@@ -360,7 +371,7 @@ export const CASE_BANK = {
     },
     {
       id: 'hcc-infiltrative', fachId: 'abdomen', kapitelId: 'abdomen-leber', topicId: 'hcc',
-      image: '/hcc/infiltrative.svg', plane: 'CT · شریانی/پورتال · شماتیک',
+      image: '/hcc/infiltrative.svg', modality: 'CT', plane: 'CT · شریانی/پورتال · شماتیک',
       title: 'رشد permeative با ضایعات ماهواره‌ای',
       vignette: 'مرد ۸۰ ساله با سابقه مصرف الکل، کاهش وزن و افزایش آنزیم‌های کبدی. کنگلومرای توموری نامشخص لوب راست را درگیر کرده و ضایعات شریانی ماهواره‌ای متعدد بخشی از wash-out را نشان می‌دهند.',
       question: 'کدام الگوی رشد HCC محتمل‌تر است؟',
@@ -377,10 +388,11 @@ export const CASE_BANK = {
     },
     {
       id: 'hepatic-haemangioma-multiphase-20956', fachId: 'abdomen', kapitelId: 'abdomen-leber', topicId: 'haemangiom',
-      image: '/haemangiom/case-20956-multiphase-ct.jpg', plane: 'CT · چندفازی · اکسیال',
+      image: '/haemangiom/case-20956-multiphase-ct.jpg', modality: 'CT', plane: 'CT · چندفازی · اکسیال',
       title: 'همانژیوم کبدی',
-      vignette: 'خانم ۶۰ ساله با یافته اتفاقی در سونوگرافی کبد.',
+      vignette: 'در سونوگرافی کبد یک خانم ۶۰ ساله، یک ضایعه فوکال به‌صورت اتفاقی کشف شده است. برای بررسی بیشتر CT چندفازی انجام می‌شود.',
       question: 'کدام تشخیص با الگوی دینامیک جذب ماده حاجب بیشترین تطابق را دارد؟',
+      prompt: 'در سونوگرافی کبد یک خانم ۶۰ ساله، یک ضایعه فوکال به‌صورت اتفاقی کشف شده است. برای بررسی بیشتر CT چندفازی انجام می‌شود. کدام تشخیص با الگوی دینامیک جذب ماده حاجب بیشترین تطابق را دارد؟',
       options: [
         { id: 'A', text: 'همانژیوم کبدی با enhancement گلوبولار محیطی و پرشدگی مرکزگرا' },
         { id: 'B', text: 'متاستازهای کبدی با rim enhancement بدخیم' },
@@ -399,10 +411,11 @@ export const CASE_BANK = {
     },
     {
       id: 'hepatic-haemangioma-segment-vii-10052', fachId: 'abdomen', kapitelId: 'abdomen-leber', topicId: 'haemangiom',
-      image: '/haemangiom/case-10052-portal-venous-ct.jpg', plane: 'CT · پورتال‌ونوس · اکسیال',
+      image: '/haemangiom/case-10052-portal-venous-ct.jpg', modality: 'CT', plane: 'CT · پورتال‌ونوس · اکسیال',
       title: 'همانژیوم کبدی در سگمان VII',
-      vignette: 'یافته اتفاقی کبد در CT چندفازی شکم.',
+      vignette: 'در CT شکم یک بیمار بزرگسال، یک ضایعه فوکال کبدی به‌صورت اتفاقی دیده شده است. چند فاز کنتراست برای بررسی آن در دسترس است.',
       question: 'محتمل‌ترین تشخیص برای ضایعه نشان‌داده‌شده چیست؟',
+      prompt: 'در CT شکم یک بیمار بزرگسال، یک ضایعه فوکال کبدی به‌صورت اتفاقی دیده شده است. چند فاز کنتراست برای بررسی آن در دسترس است. محتمل‌ترین تشخیص برای ضایعه نشان‌داده‌شده چیست؟',
       options: [
         { id: 'A', text: 'همانژیوم کبدی' },
         { id: 'B', text: 'متاستاز هیپوواسکولار کبد' },
@@ -426,15 +439,26 @@ export function getAvailableCaseTopicIds() {
   return new Set(CASE_BANK.de.map(item => item.topicId))
 }
 
-export function countCases(topicIds) {
+export function getAvailableCaseModalities(topicIds) {
   const selected = new Set(topicIds)
-  return CASE_BANK.de.filter(item => selected.has(item.topicId)).length
+  return new Set(CASE_BANK.de.filter(item => selected.has(item.topicId)).map(item => item.modality))
 }
 
-export function getCases(topicIds, lang, n) {
+export function countCases(topicIds, modalities = []) {
   const selected = new Set(topicIds)
+  const selectedModalities = new Set(modalities)
+  return CASE_BANK.de.filter(item =>
+    selected.has(item.topicId) && (!selectedModalities.size || selectedModalities.has(item.modality))
+  ).length
+}
+
+export function getCases(topicIds, modalities, lang, n) {
+  const selected = new Set(topicIds)
+  const selectedModalities = new Set(modalities)
   const source = CASE_BANK[lang] || CASE_BANK.de
-  const cases = source.filter(item => selected.has(item.topicId))
+  const cases = source.filter(item =>
+    selected.has(item.topicId) && (!selectedModalities.size || selectedModalities.has(item.modality))
+  )
   for (let index = cases.length - 1; index > 0; index -= 1) {
     const randomIndex = Math.floor(Math.random() * (index + 1))
     ;[cases[index], cases[randomIndex]] = [cases[randomIndex], cases[index]]
