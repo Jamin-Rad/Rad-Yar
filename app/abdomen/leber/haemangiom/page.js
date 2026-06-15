@@ -185,6 +185,7 @@ const CONTENT = {
       "lightBulbText": "Das typische Hämangiom ist in T2 sehr stark hyperintens. Kleine Hämangiome sind eher homogen, größere können durch Fibrosierung, Verkalkungen oder Thromben inhomogen sein.",
       "dwiTitle": "DWI richtig interpretieren",
       "dwiText": "Ein Hämangiom kann auf hohen b-Werten hell sein. Entscheidend ist aber die ADC-Karte: hohe ADC-Werte sprechen für T2-shine-through und gegen echte Restriktion.",
+      "imageAlt": "Lehrgrafik zum Light-bulb-Zeichen und T2-shine-through beim Leberhämangiom",
       "lightBulbKey": "Light-bulb sign: Das sehr helle T2-Signal ist typisch für ein Hämangiom.",
       "dwiKey": "DWI-Hyperintensität allein darf nicht mit einer Metastase verwechselt werden. Ohne niedrigen ADC-Wert liegt keine echte Diffusionsrestriktion vor."
     },
@@ -414,6 +415,7 @@ const CONTENT = {
       "lightBulbText": "A typical haemangioma is very hyperintense on T2. Small haemangiomas are often homogeneous, whereas larger ones may be heterogeneous due to fibrosis, calcification or thrombi.",
       "dwiTitle": "How to interpret DWI",
       "dwiText": "A haemangioma can be bright on high b-values. The ADC map is decisive: high ADC values indicate T2 shine-through and argue against true restriction.",
+      "imageAlt": "Teaching graphic showing the light-bulb sign and T2 shine-through in liver haemangioma",
       "lightBulbKey": "Light-bulb sign: the very bright T2 signal is typical of a haemangioma.",
       "dwiKey": "DWI hyperintensity alone must not be mistaken for metastasis. Without low ADC, there is no true diffusion restriction."
     },
@@ -643,6 +645,7 @@ const CONTENT = {
       "lightBulbText": "همانژیوم تیپیک در T2 بسیار هایپراینتنس است. همانژیوم‌های کوچک اغلب هموژن هستند، ولی ضایعات بزرگ‌تر می‌توانند به علت فیبروز، کلسیفیکاسیون یا ترومبوز ناهمگون باشند.",
       "dwiTitle": "تفسیر درست DWI",
       "dwiText": "همانژیوم می‌تواند در b-value بالا روشن باشد. اما ADC تعیین‌کننده است: ADC بالا یعنی T2 shine-through و علیه محدودیت انتشار واقعی است.",
+      "imageAlt": "نمودار آموزشی علامت لامپ و پدیده T2 shine-through در همانژیوم کبدی",
       "lightBulbKey": "Light-bulb sign: سیگنال بسیار روشن T2 برای همانژیوم تیپیک است.",
       "dwiKey": "هایپراینتنس بودن در DWI نباید با متاستاز اشتباه شود. بدون ADC پایین، محدودیت انتشار واقعی وجود ندارد."
     },
@@ -1044,6 +1047,16 @@ export default function LeberHaemangiomPage() {
 
           <Section id="mrt" title={copy.mri.title} lead={copy.mri.lead}>
             <Table headers={copy.mri.tableHeaders} rows={copy.mri.tableRows} />
+            <figure className={styles.mriFigure}>
+              <Image
+                src="/haemangiom/light-bulb-t2-shine-through.png"
+                alt={copy.mri.imageAlt}
+                width={1536}
+                height={1024}
+                sizes="(max-width: 980px) calc(100vw - 64px), 900px"
+                className={styles.mriImage}
+              />
+            </figure>
             <div className={styles.splitGrid}>
               <div className={styles.infoCard}>
                 <h3>{copy.mri.lightBulbTitle}</h3>
