@@ -86,7 +86,7 @@ const CONTENT = {
           "text": "Oft peripher im Leberparenchym."
         }
       ],
-      "key": "Bei klassischem Enhancement-Verhalten ist das Leberhämangiom eine Blickdiagnose. Entscheidend ist die Kombination aus sehr hohem T2-Signal und Blutpool-ähnlicher Kontrastmittelaufnahme."
+      "key": "Leberhämangiome zählen zu den häufigsten benignen Leberläsionen und liegen häufig peripher im Leberparenchym."
     },
     "sono": {
       "title": "Sonographie",
@@ -137,9 +137,9 @@ const CONTENT = {
         ]
       ],
       "irisTitle": "Irisblendenphänomen",
-      "irisText": "Die Kontrastmittelaufnahme schreitet von außen nach innen fort – vergleichbar mit einer Irisblende, die sich von der Peripherie zum Zentrum schließt.",
+      "irisText": "Irisblendenphänomen: Die Kontrastmittelaufnahme schreitet von außen nach innen fort – vergleichbar mit einer Irisblende, die sich von der Peripherie zum Zentrum schließt.",
       "irisImageAlt": "Irisblendenphänomen beim Leberhämangiom in vier CT-Phasen",
-      "key": "Die periphere noduläre KM-Aufnahme darf nicht mit einem malignen Ringenhancement verwechselt werden: Beim Hämangiom füllt sich die Läsion langsam zentripetal auf."
+      "cave": "Die periphere noduläre KM-Aufnahme darf nicht mit einem malignen Ringenhancement verwechselt werden: Beim Hämangiom füllt sich die Läsion langsam zentripetal auf."
     },
     "mri": {
       "title": "MRT-Diagnostik",
@@ -185,7 +185,8 @@ const CONTENT = {
       "lightBulbText": "Das typische Hämangiom ist in T2 sehr stark hyperintens. Kleine Hämangiome sind eher homogen, größere können durch Fibrosierung, Verkalkungen oder Thromben inhomogen sein.",
       "dwiTitle": "DWI richtig interpretieren",
       "dwiText": "Ein Hämangiom kann auf hohen b-Werten hell sein. Entscheidend ist aber die ADC-Karte: hohe ADC-Werte sprechen für T2-shine-through und gegen echte Restriktion.",
-      "key": "Light-bulb sign: Das sehr helle T2-Signal ist typisch für ein Hämangiom. DWI-Hyperintensität allein ist keine Metastase. Ohne niedrigen ADC-Wert liegt keine echte Diffusionsrestriktion vor."
+      "lightBulbKey": "Light-bulb sign: Das sehr helle T2-Signal ist typisch für ein Hämangiom.",
+      "dwiKey": "DWI-Hyperintensität allein darf nicht mit einer Metastase verwechselt werden. Ohne niedrigen ADC-Wert liegt keine echte Diffusionsrestriktion vor."
     },
     "atypical": {
       "title": "Atypisches Leberhämangiom",
@@ -240,8 +241,8 @@ const CONTENT = {
   "en": {
     "toc": "Contents",
     "breadcrumbAbdomen": "Abdomen",
-    "breadcrumbCurrent": "Liver · Haemangiomas",
-    "title": "Liver haemangiomas",
+    "breadcrumbCurrent": "Liver · Hepatic haemangioma",
+    "title": "Hepatic haemangioma",
     "subtitle": "Classic and atypical imaging in ultrasound, CT and MRI",
     "sourceLabel": "Dr. Zia",
     "actionMcq": "MCQ",
@@ -314,7 +315,7 @@ const CONTENT = {
           "text": "Often peripheral in the liver parenchyma."
         }
       ],
-      "key": "With classic enhancement, liver haemangioma is a pattern diagnosis. The key combination is very high T2 signal and blood-pool-like enhancement."
+      "key": "Hepatic haemangiomas are among the most common benign liver lesions and are frequently located peripherally within the liver parenchyma."
     },
     "sono": {
       "title": "Ultrasound",
@@ -365,9 +366,9 @@ const CONTENT = {
         ]
       ],
       "irisTitle": "Iris diaphragm phenomenon",
-      "irisText": "Enhancement progresses from the periphery to the centre, like an iris diaphragm closing from outside to inside.",
+      "irisText": "Iris diaphragm phenomenon: enhancement progresses from the periphery to the centre, like an iris diaphragm closing from outside to inside.",
       "irisImageAlt": "Iris diaphragm phenomenon in hepatic haemangioma across four CT phases",
-      "key": "Peripheral nodular enhancement should not be mistaken for malignant rim enhancement: a haemangioma slowly fills in centripetally."
+      "cave": "Peripheral nodular enhancement should not be mistaken for malignant rim enhancement: a haemangioma slowly fills in centripetally."
     },
     "mri": {
       "title": "MRI diagnosis",
@@ -413,7 +414,8 @@ const CONTENT = {
       "lightBulbText": "A typical haemangioma is very hyperintense on T2. Small haemangiomas are often homogeneous, whereas larger ones may be heterogeneous due to fibrosis, calcification or thrombi.",
       "dwiTitle": "How to interpret DWI",
       "dwiText": "A haemangioma can be bright on high b-values. The ADC map is decisive: high ADC values indicate T2 shine-through and argue against true restriction.",
-      "key": "Light-bulb sign: the very bright T2 signal is typical of a haemangioma. DWI hyperintensity alone is not metastasis. Without low ADC, there is no true diffusion restriction."
+      "lightBulbKey": "Light-bulb sign: the very bright T2 signal is typical of a haemangioma.",
+      "dwiKey": "DWI hyperintensity alone must not be mistaken for metastasis. Without low ADC, there is no true diffusion restriction."
     },
     "atypical": {
       "title": "Atypical liver haemangioma",
@@ -542,7 +544,7 @@ const CONTENT = {
           "text": "اغلب در قسمت محیطی پارانشیم کبد."
         }
       ],
-      "key": "وقتی الگوی enhancement کلاسیک باشد، همانژیوم کبدی تشخیص الگویی است. ترکیب مهم: سیگنال T2 بسیار بالا و enhancement شبیه blood pool."
+      "key": "همانژیوم‌های کبدی از شایع‌ترین ضایعات خوش‌خیم کبد هستند و اغلب در قسمت محیطی پارانشیم کبد قرار دارند."
     },
     "sono": {
       "title": "سونوگرافی",
@@ -593,9 +595,9 @@ const CONTENT = {
         ]
       ],
       "irisTitle": "پدیده Iris diaphragm",
-      "irisText": "جذب ماده حاجب از محیط به سمت مرکز پیش می‌رود؛ شبیه دیافراگم عنبیه که از بیرون به داخل بسته می‌شود.",
+      "irisText": "پدیده Iris diaphragm: جذب ماده حاجب از محیط به سمت مرکز پیش می‌رود؛ شبیه دیافراگم عنبیه که از بیرون به داخل بسته می‌شود.",
       "irisImageAlt": "پدیده دیافراگم عنبیه در همانژیوم کبدی طی چهار فاز CT",
-      "key": "enhancement ندولار محیطی را نباید با rim enhancement بدخیم اشتباه گرفت: همانژیوم آهسته از محیط به مرکز پر می‌شود."
+      "cave": "enhancement ندولار محیطی را نباید با rim enhancement بدخیم اشتباه گرفت: همانژیوم آهسته از محیط به مرکز پر می‌شود."
     },
     "mri": {
       "title": "تشخیص در MRI",
@@ -641,7 +643,8 @@ const CONTENT = {
       "lightBulbText": "همانژیوم تیپیک در T2 بسیار هایپراینتنس است. همانژیوم‌های کوچک اغلب هموژن هستند، ولی ضایعات بزرگ‌تر می‌توانند به علت فیبروز، کلسیفیکاسیون یا ترومبوز ناهمگون باشند.",
       "dwiTitle": "تفسیر درست DWI",
       "dwiText": "همانژیوم می‌تواند در b-value بالا روشن باشد. اما ADC تعیین‌کننده است: ADC بالا یعنی T2 shine-through و علیه محدودیت انتشار واقعی است.",
-      "key": "Light-bulb sign: سیگنال بسیار روشن T2 برای همانژیوم تیپیک است. هایپراینتنس بودن در DWI به تنهایی متاستاز نیست. بدون ADC پایین، محدودیت انتشار واقعی وجود ندارد."
+      "lightBulbKey": "Light-bulb sign: سیگنال بسیار روشن T2 برای همانژیوم تیپیک است.",
+      "dwiKey": "هایپراینتنس بودن در DWI نباید با متاستاز اشتباه شود. بدون ADC پایین، محدودیت انتشار واقعی وجود ندارد."
     },
     "atypical": {
       "title": "همانژیوم آتیپیک کبدی",
@@ -966,11 +969,8 @@ export default function LeberHaemangiomPage() {
                 />
               </figure>
             </div>
-            <div className={styles.highlightBox}>
-              <h3>{copy.ct.irisTitle}</h3>
-              <p>{copy.ct.irisText}</p>
-            </div>
-            <Callout label={copy.keyLabel}>{copy.ct.key}</Callout>
+            <Callout type="cave" label={copy.caveLabel}>{copy.ct.cave}</Callout>
+            <Callout label={copy.keyLabel}>{copy.ct.irisText}</Callout>
           </Section>
 
           <Section id="mrt" title={copy.mri.title} lead={copy.mri.lead}>
@@ -985,7 +985,8 @@ export default function LeberHaemangiomPage() {
                 <p>{copy.mri.dwiText}</p>
               </div>
             </div>
-            <Callout label={copy.keyLabel}>{copy.mri.key}</Callout>
+            <Callout label={copy.keyLabel}>{copy.mri.lightBulbKey}</Callout>
+            <Callout label={copy.keyLabel}>{copy.mri.dwiKey}</Callout>
           </Section>
 
           <Section id="atypisch" title={copy.atypical.title} lead={copy.atypical.lead}>
