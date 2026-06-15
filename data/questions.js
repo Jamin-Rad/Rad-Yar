@@ -1118,6 +1118,216 @@ export const QUESTION_BANK = {
       ],
       "correct": "A",
       "explanation": "Kardiale Sarkoidose wird häufig mittels MRT und Late Gadolinium Enhancement beurteilt. Klinisch wichtig ist das erhöhte Risiko für Rhythmusstörungen."
+    },
+    {
+      "id": "rotatorenmanschette-de-01",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "Welche vier Muskeln bilden die Rotatorenmanschette?",
+      "options": [
+        { "id": "A", "text": "Supraspinatus, Infraspinatus, Teres minor, Subscapularis" },
+        { "id": "B", "text": "Deltoideus, Trapezius, Latissimus dorsi, Teres major" },
+        { "id": "C", "text": "Bizeps, Trizeps, Coracobrachialis, Pectoralis major" },
+        { "id": "D", "text": "Supraspinatus, Deltoideus, Teres minor, Subscapularis" }
+      ],
+      "correct": "A",
+      "explanation": "Die Rotatorenmanschette besteht aus M. supraspinatus, M. infraspinatus, M. teres minor und M. subscapularis (Merkwort: SITS)."
+    },
+    {
+      "id": "rotatorenmanschette-de-02",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "Wo liegt die sogenannte „Critical Zone“ der Supraspinatussehne?",
+      "options": [
+        { "id": "A", "text": "Ca. 1-2 cm proximal des Ansatzes am Tuberculum majus - eine hypovaskuläre Zone" },
+        { "id": "B", "text": "Am muskulotendinösen Übergang" },
+        { "id": "C", "text": "Am Ursprung an der Skapula" },
+        { "id": "D", "text": "Im Bereich des Bizepssehnenursprungs am Glenoid" }
+      ],
+      "correct": "A",
+      "explanation": "Die Critical Zone liegt ca. 1-2 cm proximal des Ansatzes am Tuberculum majus, ist hypovaskulär und damit Prädilektionsstelle für Degeneration und Rupturen."
+    },
+    {
+      "id": "rotatorenmanschette-de-03",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "Welche Hauptfunktion hat der M. subscapularis?",
+      "options": [
+        { "id": "A", "text": "Außenrotation des Arms" },
+        { "id": "B", "text": "Abduktion des Arms" },
+        { "id": "C", "text": "Innenrotation des Arms" },
+        { "id": "D", "text": "Elevation des Arms über 90°" }
+      ],
+      "correct": "C",
+      "explanation": "Der M. subscapularis ist der wichtigste Innenrotator des Arms und stabilisiert den Humeruskopf zusammen mit dem M. infraspinatus in der Transversalebene."
+    },
+    {
+      "id": "rotatorenmanschette-de-04",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "Welche Sequenzkombination ist für die Beurteilung der Rotatorenmanschette essenziell?",
+      "options": [
+        { "id": "A", "text": "Nur eine native T1-Sequenz axial" },
+        { "id": "B", "text": "Fettunterdrückte, flüssigkeitssensitive Sequenzen in mindestens zwei Ebenen" },
+        { "id": "C", "text": "Ausschließlich eine DWI-Sequenz in einer Ebene" },
+        { "id": "D", "text": "Nur eine T1-Sequenz mit Kontrastmittel" }
+      ],
+      "correct": "B",
+      "explanation": "Ein standardisiertes Protokoll mit fettunterdrückten, flüssigkeitssensitiven Sequenzen (z. B. PD/T2 fs) in mindestens zwei Ebenen ist essenziell, um Rupturen sicher zu detektieren."
+    },
+    {
+      "id": "rotatorenmanschette-de-05",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "Was beschreibt das Magic-Angle-Phänomen?",
+      "options": [
+        { "id": "A", "text": "Eine echte Ruptur, die nur in T1-Sequenzen sichtbar ist" },
+        { "id": "B", "text": "Eine artifizielle Signalanhebung in kurzen TE-Sequenzen (T1, PD) bei einem Sehnenverlauf von ca. 55° zum Hauptmagnetfeld, die in T2 verschwindet" },
+        { "id": "C", "text": "Eine Signalauslöschung durch Metallartefakte" },
+        { "id": "D", "text": "Ein Bewegungsartefakt durch die Atmung" }
+      ],
+      "correct": "B",
+      "explanation": "Das Magic-Angle-Phänomen führt zu einer artifiziellen Signalanhebung in PD/T1, wenn die Sehne in einem Winkel von ca. 55° zum Hauptmagnetfeld verläuft - in T2-gewichteten Sequenzen verschwindet das Phänomen, sodass es nicht mit einer echten Pathologie verwechselt werden sollte."
+    },
+    {
+      "id": "rotatorenmanschette-de-06",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "Wie zeigt sich eine bursaseitige Partialruptur der Supraspinatussehne typischerweise in der MRT?",
+      "options": [
+        { "id": "A", "text": "Vollständige Diskontinuität der Sehne mit Retraktion des Stumpfes" },
+        { "id": "B", "text": "Fokaler Flüssigkeitssaum zwischen Sehne und Bursa subacromialis in T2 fs" },
+        { "id": "C", "text": "Diffuse Signalminderung der gesamten Sehne in T1 ohne weitere Auffälligkeiten" },
+        { "id": "D", "text": "Isoliertes Knochenmarködem im Humeruskopf ohne Sehnenveränderung" }
+      ],
+      "correct": "B",
+      "explanation": "Eine bursaseitige Partialruptur betrifft die oberflächlichen (bursalen) Faseranteile und zeigt einen fokalen Flüssigkeitssaum zwischen Sehne und Bursa subacromialis in T2 fs."
+    },
+    {
+      "id": "rotatorenmanschette-de-07",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "Was bezeichnet eine PASTA-Läsion?",
+      "options": [
+        { "id": "A", "text": "Eine vollständige Ruptur mit Retraktion Grad 3 nach Patte" },
+        { "id": "B", "text": "Eine gelenkseitige Partialruptur am Footprint (Partial Articular Surface Tendon Avulsion)" },
+        { "id": "C", "text": "Eine isolierte Bursitis subacromialis ohne Sehnenbeteiligung" },
+        { "id": "D", "text": "Eine Tendinopathie der langen Bizepssehne" }
+      ],
+      "correct": "B",
+      "explanation": "PASTA steht für Partial Articular Surface Tendon Avulsion - eine gelenkseitige (artikuläre) Partialruptur der tiefen Faseranteile am Footprint, häufig assoziiert mit Impingement."
+    },
+    {
+      "id": "rotatorenmanschette-de-08",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "Wodurch unterscheidet sich eine intratendinöse Partialruptur von einer reinen Tendinopathie?",
+      "options": [
+        { "id": "A", "text": "Bei einer Tendinopathie liegt eine vollständige Diskontinuität der Sehne vor" },
+        { "id": "B", "text": "Eine intratendinöse Ruptur zeigt eine fokale T2-hyperintense Signalanhebung ohne Kontakt zu Bursa oder Gelenk, während eine Tendinopathie eher eine PD/T1-Signalanhebung ohne klares T2-Flüssigkeitssignal zeigt" },
+        { "id": "C", "text": "Beide sind in der MRT grundsätzlich nicht unterscheidbar" },
+        { "id": "D", "text": "Eine Tendinopathie zeigt immer eine Retraktion des Sehnenstumpfes" }
+      ],
+      "correct": "B",
+      "explanation": "Die intratendinöse Partialruptur zeigt eine fokale T2-hyperintense Signalanhebung ohne Oberflächenkontakt, während die Tendinopathie eine intratendinöse PD/T1-Signalanhebung ohne eindeutiges T2-Flüssigkeitssignal aufweist."
+    },
+    {
+      "id": "rotatorenmanschette-de-09",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "Ab welchem Ausmaß der Footprint-Beteiligung wird bei einer PASTA-Läsion häufig eine operative Refixation erwogen?",
+      "options": [
+        { "id": "A", "text": "Bei einer Footprint-Beteiligung von mehr als 50 %" },
+        { "id": "B", "text": "Bei einer Footprint-Beteiligung von mehr als 10 %" },
+        { "id": "C", "text": "Nur bei einer Footprint-Beteiligung von 100 %" },
+        { "id": "D", "text": "Die Footprint-Beteiligung spielt für die Therapieentscheidung keine Rolle" }
+      ],
+      "correct": "A",
+      "explanation": "Bei einer Footprint-Beteiligung von mehr als 50 % wird bei der PASTA-Läsion häufig eine operative Refixation erwogen, bei weniger als 50 % oft konservative Therapie oder Debridement."
+    },
+    {
+      "id": "rotatorenmanschette-de-10",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "Welches MRT-Zeichen ist beweisend für eine Komplettruptur der Rotatorenmanschette?",
+      "options": [
+        { "id": "A", "text": "Eine isolierte Signalanhebung in PD ohne T2-Korrelat" },
+        { "id": "B", "text": "Eine vollständige T2-hyperintense Unterbrechung der Sehne mit Flüssigkeit im Defekt, die Gelenk und Bursa verbindet" },
+        { "id": "C", "text": "Eine Sehnenverdickung ohne jegliche Signalveränderung" },
+        { "id": "D", "text": "Eine isolierte Bursitis subacromialis ohne Sehnenbeteiligung" }
+      ],
+      "correct": "B",
+      "explanation": "Eine Komplettruptur zeigt eine vollständige T2-hyperintense Unterbrechung der Sehne mit Flüssigkeit im Defekt - dadurch entsteht eine direkte Kommunikation zwischen Glenohumeralgelenk und Bursa subacromialis."
+    },
+    {
+      "id": "rotatorenmanschette-de-11",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "Was beschreibt die Klassifikation nach Patte?",
+      "options": [
+        { "id": "A", "text": "Den Grad der fettigen Muskelatrophie" },
+        { "id": "B", "text": "Den Retraktionsgrad des Sehnenstumpfes (Grad 1-3)" },
+        { "id": "C", "text": "Die Größe eines Labrumdefekts" },
+        { "id": "D", "text": "Den Grad einer Bursitis subacromialis" }
+      ],
+      "correct": "B",
+      "explanation": "Die Patte-Klassifikation graduiert die Retraktion des Sehnenstumpfes von Grad 1 (nahe am Footprint) bis Grad 3 (auf Höhe des Glenoids) und ist entscheidend für die OP-Planung."
+    },
+    {
+      "id": "rotatorenmanschette-de-12",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "Was bedeutet ein positives Tangentenzeichen in der Schulter-MRT?",
+      "options": [
+        { "id": "A", "text": "Der Humeruskopf überschreitet die Tangente zwischen Akromion und Korakoid - Hinweis auf eine massive Ruptur" },
+        { "id": "B", "text": "Die Supraspinatussehne ist normal konfiguriert" },
+        { "id": "C", "text": "Es liegt eine isolierte Tendinopathie der langen Bizepssehne vor" },
+        { "id": "D", "text": "Die Bursa subacromialis ist verdickt, aber die Sehne ist intakt" }
+      ],
+      "correct": "A",
+      "explanation": "Beim Tangentenzeichen überschreitet der Humeruskopf die Tangente zwischen Akromion und Korakoid - dies ist ein Hinweis auf eine massive Rotatorenmanschettenruptur."
+    },
+    {
+      "id": "rotatorenmanschette-de-13",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "Welche Aussage zur Goutallier-Klassifikation ist korrekt?",
+      "options": [
+        { "id": "A", "text": "Sie beschreibt ausschließlich die Sehnenretraktion" },
+        { "id": "B", "text": "Sie graduiert die fettige Degeneration der Muskulatur von Grad 0 (keine Fettinfiltration) bis Grad 4 (Fett > Muskel)" },
+        { "id": "C", "text": "Sie wird ausschließlich bei Partialrupturen angewendet" },
+        { "id": "D", "text": "Sie basiert ausschließlich auf konventionellen Röntgenbefunden" }
+      ],
+      "correct": "B",
+      "explanation": "Die Goutallier-Klassifikation graduiert die fettige Muskelatrophie von Grad 0 (keine Fettinfiltration) bis Grad 4 (Fett > Muskel). Ab Grad 3-4 gilt eine Rekonstruktion meist als nicht mehr erfolgsversprechend."
+    },
+    {
+      "id": "rotatorenmanschette-de-14",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "Welcher Faktor kann zu einem subakromialen Impingement beitragen?",
+      "options": [
+        { "id": "A", "text": "Eine besonders dünne Bursa subacromialis" },
+        { "id": "B", "text": "Eine Akromionform vom Bigliani-Typ mit Osteophyten oder eine Bursaverdickung, die den Subakromialraum einengen" },
+        { "id": "C", "text": "Eine isolierte Tendinopathie der langen Bizepssehne" },
+        { "id": "D", "text": "Eine isolierte Innenrotationsschwäche ohne strukturelle Veränderung" }
+      ],
+      "correct": "B",
+      "explanation": "Eine Akromionform vom Bigliani-Typ mit Osteophyten, AC-Gelenksarthrose mit kaudalen Osteophyten oder eine Bursaverdickung können den Subakromialraum einengen und ein Impingement begünstigen."
+    },
+    {
+      "id": "rotatorenmanschette-de-15",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "Welche Bedeutung hat eine Dislokation der langen Bizepssehne aus dem Sulcus bicipitalis?",
+      "options": [
+        { "id": "A", "text": "Sie ist immer ein Zufallsbefund ohne klinische Relevanz" },
+        { "id": "B", "text": "Sie ist ein indirektes Zeichen für eine begleitende Ruptur der Subscapularissehne" },
+        { "id": "C", "text": "Sie beweist eine Komplettruptur der Supraspinatussehne" },
+        { "id": "D", "text": "Sie tritt ausschließlich bei Kindern auf" }
+      ],
+      "correct": "B",
+      "explanation": "Eine Dislokation der langen Bizepssehne aus dem Sulcus bicipitalis ist ein indirektes Zeichen für eine begleitende Subscapularisruptur, da die Sehne des Subscapularis Teil des Stützapparats für die Bizepssehne im Sulcus ist."
     }
   ],
   "en": [
@@ -2235,6 +2445,216 @@ export const QUESTION_BANK = {
       ],
       "correct": "A",
       "explanation": "Cardiac sarcoidosis is commonly assessed with MRI and late gadolinium enhancement. Clinically, the increased risk of arrhythmias is important."
+    },
+    {
+      "id": "rotatorenmanschette-en-01",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "Which four muscles make up the rotator cuff?",
+      "options": [
+        { "id": "A", "text": "Supraspinatus, infraspinatus, teres minor, subscapularis" },
+        { "id": "B", "text": "Deltoid, trapezius, latissimus dorsi, teres major" },
+        { "id": "C", "text": "Biceps, triceps, coracobrachialis, pectoralis major" },
+        { "id": "D", "text": "Supraspinatus, deltoid, teres minor, subscapularis" }
+      ],
+      "correct": "A",
+      "explanation": "The rotator cuff consists of the supraspinatus, infraspinatus, teres minor and subscapularis muscles (mnemonic: SITS)."
+    },
+    {
+      "id": "rotatorenmanschette-en-02",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "Where is the so-called \"critical zone\" of the supraspinatus tendon located?",
+      "options": [
+        { "id": "A", "text": "About 1-2 cm proximal to its insertion on the greater tuberosity - a hypovascular zone" },
+        { "id": "B", "text": "At the musculotendinous junction" },
+        { "id": "C", "text": "At its origin on the scapula" },
+        { "id": "D", "text": "At the biceps tendon origin on the glenoid" }
+      ],
+      "correct": "A",
+      "explanation": "The critical zone lies about 1-2 cm proximal to the insertion on the greater tuberosity, is hypovascular, and is therefore a predilection site for degeneration and tears."
+    },
+    {
+      "id": "rotatorenmanschette-en-03",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "What is the main function of the subscapularis muscle?",
+      "options": [
+        { "id": "A", "text": "External rotation of the arm" },
+        { "id": "B", "text": "Abduction of the arm" },
+        { "id": "C", "text": "Internal rotation of the arm" },
+        { "id": "D", "text": "Elevation of the arm above 90°" }
+      ],
+      "correct": "C",
+      "explanation": "The subscapularis is the main internal rotator of the arm and, together with the infraspinatus, stabilises the humeral head in the transverse plane."
+    },
+    {
+      "id": "rotatorenmanschette-en-04",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "Which sequence combination is essential for assessing the rotator cuff?",
+      "options": [
+        { "id": "A", "text": "Only a single non-contrast axial T1 sequence" },
+        { "id": "B", "text": "Fat-suppressed, fluid-sensitive sequences in at least two planes" },
+        { "id": "C", "text": "Only a DWI sequence in one plane" },
+        { "id": "D", "text": "Only a T1 sequence with contrast" }
+      ],
+      "correct": "B",
+      "explanation": "A standardised protocol with fat-suppressed, fluid-sensitive sequences (e.g. PD/T2 fs) in at least two planes is essential to reliably detect tears."
+    },
+    {
+      "id": "rotatorenmanschette-en-05",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "What does the magic-angle phenomenon describe?",
+      "options": [
+        { "id": "A", "text": "A true tear that is only visible on T1 sequences" },
+        { "id": "B", "text": "An artefactual signal increase on short-TE sequences (T1, PD) when a tendon runs at about 55° to the main magnetic field, which disappears on T2" },
+        { "id": "C", "text": "Signal void caused by metal artefact" },
+        { "id": "D", "text": "A motion artefact from breathing" }
+      ],
+      "correct": "B",
+      "explanation": "The magic-angle phenomenon causes an artefactual signal increase on PD/T1 when the tendon runs at about 55° to the main magnetic field - on T2-weighted sequences it disappears, so it should not be mistaken for a true pathology."
+    },
+    {
+      "id": "rotatorenmanschette-en-06",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "How does a bursal-sided partial tear of the supraspinatus tendon typically appear on MRI?",
+      "options": [
+        { "id": "A", "text": "Complete discontinuity of the tendon with retraction of the stump" },
+        { "id": "B", "text": "Focal fluid rim between the tendon and subacromial bursa on T2 fs" },
+        { "id": "C", "text": "Diffuse low signal of the entire tendon on T1 without further findings" },
+        { "id": "D", "text": "Isolated bone marrow oedema in the humeral head without tendon change" }
+      ],
+      "correct": "B",
+      "explanation": "A bursal-sided partial tear affects the superficial (bursal) fibres and shows a focal fluid rim between the tendon and subacromial bursa on T2 fs."
+    },
+    {
+      "id": "rotatorenmanschette-en-07",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "What does a PASTA lesion refer to?",
+      "options": [
+        { "id": "A", "text": "A full-thickness tear with grade 3 retraction according to Patte" },
+        { "id": "B", "text": "An articular-sided partial tear at the footprint (Partial Articular Surface Tendon Avulsion)" },
+        { "id": "C", "text": "An isolated subacromial bursitis without tendon involvement" },
+        { "id": "D", "text": "Tendinopathy of the long head of biceps" }
+      ],
+      "correct": "B",
+      "explanation": "PASTA stands for Partial Articular Surface Tendon Avulsion - an articular-sided partial tear of the deep fibres at the footprint, often associated with impingement."
+    },
+    {
+      "id": "rotatorenmanschette-en-08",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "How does an intratendinous partial tear differ from pure tendinopathy?",
+      "options": [
+        { "id": "A", "text": "Tendinopathy shows complete discontinuity of the tendon" },
+        { "id": "B", "text": "An intratendinous tear shows focal T2-hyperintense signal without contact to the bursa or joint, whereas tendinopathy shows PD/T1 signal elevation without a clear T2 fluid signal" },
+        { "id": "C", "text": "The two are fundamentally indistinguishable on MRI" },
+        { "id": "D", "text": "Tendinopathy always shows retraction of the tendon stump" }
+      ],
+      "correct": "B",
+      "explanation": "An intratendinous partial tear shows focal T2-hyperintense signal without surface contact, while tendinopathy shows intratendinous PD/T1 signal elevation without a clear T2 fluid signal."
+    },
+    {
+      "id": "rotatorenmanschette-en-09",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "From what extent of footprint involvement is surgical refixation often considered for a PASTA lesion?",
+      "options": [
+        { "id": "A", "text": "Footprint involvement of more than 50%" },
+        { "id": "B", "text": "Footprint involvement of more than 10%" },
+        { "id": "C", "text": "Only at 100% footprint involvement" },
+        { "id": "D", "text": "Footprint involvement plays no role in the treatment decision" }
+      ],
+      "correct": "A",
+      "explanation": "For a PASTA lesion, footprint involvement of more than 50% often prompts surgical refixation, whereas less than 50% is often managed conservatively or with debridement."
+    },
+    {
+      "id": "rotatorenmanschette-en-10",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "Which MRI sign is diagnostic of a full-thickness rotator cuff tear?",
+      "options": [
+        { "id": "A", "text": "An isolated signal increase on PD without a T2 correlate" },
+        { "id": "B", "text": "Complete T2-hyperintense interruption of the tendon with fluid in the gap, connecting the joint and bursa" },
+        { "id": "C", "text": "Tendon thickening without any signal change" },
+        { "id": "D", "text": "Isolated subacromial bursitis without tendon involvement" }
+      ],
+      "correct": "B",
+      "explanation": "A full-thickness tear shows complete T2-hyperintense interruption of the tendon with fluid in the gap - this creates direct communication between the glenohumeral joint and subacromial bursa."
+    },
+    {
+      "id": "rotatorenmanschette-en-11",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "What does the Patte classification describe?",
+      "options": [
+        { "id": "A", "text": "The degree of fatty muscle atrophy" },
+        { "id": "B", "text": "The degree of retraction of the tendon stump (grade 1-3)" },
+        { "id": "C", "text": "The size of a labral defect" },
+        { "id": "D", "text": "The degree of subacromial bursitis" }
+      ],
+      "correct": "B",
+      "explanation": "The Patte classification grades retraction of the tendon stump from grade 1 (close to the footprint) to grade 3 (at the level of the glenoid) and is decisive for surgical planning."
+    },
+    {
+      "id": "rotatorenmanschette-en-12",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "What does a positive tangent sign indicate on shoulder MRI?",
+      "options": [
+        { "id": "A", "text": "The humeral head crosses the tangent line between the acromion and coracoid - a sign of a massive tear" },
+        { "id": "B", "text": "The supraspinatus tendon is normally configured" },
+        { "id": "C", "text": "There is isolated tendinopathy of the long head of biceps" },
+        { "id": "D", "text": "The subacromial bursa is thickened but the tendon is intact" }
+      ],
+      "correct": "A",
+      "explanation": "In the tangent sign, the humeral head crosses the tangent line between the acromion and coracoid - this indicates a massive rotator cuff tear."
+    },
+    {
+      "id": "rotatorenmanschette-en-13",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "Which statement about the Goutallier classification is correct?",
+      "options": [
+        { "id": "A", "text": "It describes only tendon retraction" },
+        { "id": "B", "text": "It grades fatty degeneration of the muscle from grade 0 (no fatty infiltration) to grade 4 (fat > muscle)" },
+        { "id": "C", "text": "It is used only for partial tears" },
+        { "id": "D", "text": "It is based exclusively on conventional radiographs" }
+      ],
+      "correct": "B",
+      "explanation": "The Goutallier classification grades fatty muscle atrophy from grade 0 (no fatty infiltration) to grade 4 (fat > muscle). From grade 3-4 onwards, repair is generally considered unlikely to succeed."
+    },
+    {
+      "id": "rotatorenmanschette-en-14",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "Which factor can contribute to subacromial impingement?",
+      "options": [
+        { "id": "A", "text": "A particularly thin subacromial bursa" },
+        { "id": "B", "text": "A Bigliani-type acromion with osteophytes or bursal thickening narrowing the subacromial space" },
+        { "id": "C", "text": "Isolated tendinopathy of the long head of biceps" },
+        { "id": "D", "text": "Isolated internal rotation weakness without structural change" }
+      ],
+      "correct": "B",
+      "explanation": "A Bigliani-type acromion with osteophytes, AC joint osteoarthritis with inferior osteophytes, or bursal thickening can narrow the subacromial space and promote impingement."
+    },
+    {
+      "id": "rotatorenmanschette-en-15",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "What is the significance of dislocation of the long head of biceps tendon from the bicipital groove?",
+      "options": [
+        { "id": "A", "text": "It is always an incidental finding without clinical relevance" },
+        { "id": "B", "text": "It is an indirect sign of an associated subscapularis tendon tear" },
+        { "id": "C", "text": "It proves a full-thickness tear of the supraspinatus tendon" },
+        { "id": "D", "text": "It occurs only in children" }
+      ],
+      "correct": "B",
+      "explanation": "Dislocation of the long head of biceps tendon from the bicipital groove is an indirect sign of an associated subscapularis tear, as the subscapularis tendon is part of the structures that keep the biceps tendon within the groove."
     }
   ],
   "fa": [
@@ -3352,6 +3772,216 @@ export const QUESTION_BANK = {
       ],
       "correct": "A",
       "explanation": "سارکوئیدوز قلبی معمولاً با MRI و Late Gadolinium Enhancement ارزیابی می‌شود. از نظر بالینی افزایش خطر آریتمی مهم است."
+    },
+    {
+      "id": "rotatorenmanschette-fa-01",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "روتاتور کاف از کدام چهار عضله تشکیل شده است؟",
+      "options": [
+        { "id": "A", "text": "سوپراسپیناتوس، اینفراسپیناتوس، ترس مینور، ساب‌اسکاپولاریس" },
+        { "id": "B", "text": "دلتوئید، تراپزیوس، لاتیسیموس دورسی، ترس میجر" },
+        { "id": "C", "text": "بایسپس، تریسپس، کوراکوبراکیالیس، پکتورالیس میجر" },
+        { "id": "D", "text": "سوپراسپیناتوس، دلتوئید، ترس مینور، ساب‌اسکاپولاریس" }
+      ],
+      "correct": "A",
+      "explanation": "روتاتور کاف از عضلات سوپراسپیناتوس، اینفراسپیناتوس، ترس مینور و ساب‌اسکاپولاریس تشکیل شده است (مخفف: SITS)."
+    },
+    {
+      "id": "rotatorenmanschette-fa-02",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "ناحیه «Critical Zone» تاندون سوپراسپیناتوس کجا قرار دارد؟",
+      "options": [
+        { "id": "A", "text": "حدود ۱ تا ۲ سانتی‌متر قبل از محل اتصال به توبرکل بزرگ - یک ناحیه هیپوواسکولار" },
+        { "id": "B", "text": "در محل اتصال عضله به تاندون" },
+        { "id": "C", "text": "در محل منشأ عضله از اسکاپولا" },
+        { "id": "D", "text": "در ناحیه منشأ تاندون بایسپس از گلنوئید" }
+      ],
+      "correct": "A",
+      "explanation": "Critical Zone حدود ۱ تا ۲ سانتی‌متر قبل از محل اتصال به توبرکل بزرگ قرار دارد، هیپوواسکولار است و به همین دلیل محل شایع دژنراسیون و پارگی است."
+    },
+    {
+      "id": "rotatorenmanschette-fa-03",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "عملکرد اصلی عضله ساب‌اسکاپولاریس چیست؟",
+      "options": [
+        { "id": "A", "text": "چرخش خارجی بازو" },
+        { "id": "B", "text": "ابداکسیون بازو" },
+        { "id": "C", "text": "چرخش داخلی بازو" },
+        { "id": "D", "text": "بالا بردن بازو بیش از ۹۰ درجه" }
+      ],
+      "correct": "C",
+      "explanation": "ساب‌اسکاپولاریس مهم‌ترین چرخاننده داخلی بازو است و همراه با اینفراسپیناتوس سر هومروس را در صفحه ترانسورس تثبیت می‌کند."
+    },
+    {
+      "id": "rotatorenmanschette-fa-04",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "کدام ترکیب سکانس برای ارزیابی روتاتور کاف ضروری است؟",
+      "options": [
+        { "id": "A", "text": "فقط یک سکانس T1 آگزیال بدون کنتراست" },
+        { "id": "B", "text": "سکانس‌های فت‌ساپرس و حساس به مایع در حداقل دو پلان" },
+        { "id": "C", "text": "فقط یک سکانس DWI در یک پلان" },
+        { "id": "D", "text": "فقط یک سکانس T1 با کنتراست" }
+      ],
+      "correct": "B",
+      "explanation": "یک پروتکل استاندارد با سکانس‌های فت‌ساپرس و حساس به مایع (مانند PD/T2 fs) در حداقل دو پلان برای تشخیص مطمئن پارگی ضروری است."
+    },
+    {
+      "id": "rotatorenmanschette-fa-05",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "پدیده Magic Angle چه چیزی را توصیف می‌کند؟",
+      "options": [
+        { "id": "A", "text": "یک پارگی واقعی که فقط در سکانس‌های T1 دیده می‌شود" },
+        { "id": "B", "text": "افزایش سیگنال کاذب در سکانس‌های TE کوتاه (T1، PD) زمانی که تاندون با زاویه حدود ۵۵ درجه نسبت به میدان مغناطیسی اصلی قرار دارد، که در T2 ناپدید می‌شود" },
+        { "id": "C", "text": "از بین رفتن سیگنال به دلیل آرتیفکت فلزی" },
+        { "id": "D", "text": "آرتیفکت حرکتی ناشی از تنفس" }
+      ],
+      "correct": "B",
+      "explanation": "پدیده Magic Angle باعث افزایش سیگنال کاذب در PD/T1 می‌شود زمانی که تاندون با زاویه حدود ۵۵ درجه نسبت به میدان مغناطیسی اصلی قرار گیرد - در سکانس‌های T2 این پدیده ناپدید می‌شود و نباید با یک پاتولوژی واقعی اشتباه گرفته شود."
+    },
+    {
+      "id": "rotatorenmanschette-fa-06",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "پارگی جزئی سمت بورسال تاندون سوپراسپیناتوس معمولاً در MRI چگونه دیده می‌شود؟",
+      "options": [
+        { "id": "A", "text": "عدم تداوم کامل تاندون همراه با رتراکشن انتهای آن" },
+        { "id": "B", "text": "حاشیه کانونی مایع بین تاندون و بورس ساب‌آکرومیال در T2 fs" },
+        { "id": "C", "text": "کاهش منتشر سیگنال کل تاندون در T1 بدون یافته دیگر" },
+        { "id": "D", "text": "ادم مغز استخوان در سر هومروس بدون تغییر در تاندون" }
+      ],
+      "correct": "B",
+      "explanation": "پارگی جزئی سمت بورسال فیبرهای سطحی (بورسال) را درگیر می‌کند و حاشیه کانونی مایع بین تاندون و بورس ساب‌آکرومیال در T2 fs نشان می‌دهد."
+    },
+    {
+      "id": "rotatorenmanschette-fa-07",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "ضایعه PASTA به چه معناست؟",
+      "options": [
+        { "id": "A", "text": "یک پارگی کامل با رتراکشن درجه ۳ بر اساس طبقه‌بندی Patte" },
+        { "id": "B", "text": "یک پارگی جزئی سمت مفصلی در Footprint (Partial Articular Surface Tendon Avulsion)" },
+        { "id": "C", "text": "یک بورسیت ساب‌آکرومیال ایزوله بدون درگیری تاندون" },
+        { "id": "D", "text": "تاندینوپاتی سر بلند بایسپس" }
+      ],
+      "correct": "B",
+      "explanation": "PASTA مخفف Partial Articular Surface Tendon Avulsion است - یک پارگی جزئی سمت مفصلی فیبرهای عمقی در Footprint که اغلب با ایمپینجمنت همراه است."
+    },
+    {
+      "id": "rotatorenmanschette-fa-08",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "تفاوت پارگی جزئی داخل تاندونی با تاندینوپاتی خالص چیست؟",
+      "options": [
+        { "id": "A", "text": "در تاندینوپاتی، عدم تداوم کامل تاندون وجود دارد" },
+        { "id": "B", "text": "پارگی داخل تاندونی سیگنال کانونی هیپراینتنس T2 بدون تماس با بورس یا مفصل نشان می‌دهد، در حالی که تاندینوپاتی افزایش سیگنال PD/T1 بدون سیگنال مایع واضح در T2 نشان می‌دهد" },
+        { "id": "C", "text": "این دو در MRI اساساً قابل تمایز نیستند" },
+        { "id": "D", "text": "تاندینوپاتی همیشه با رتراکشن انتهای تاندون همراه است" }
+      ],
+      "correct": "B",
+      "explanation": "پارگی جزئی داخل تاندونی سیگنال کانونی هیپراینتنس T2 بدون تماس با سطح نشان می‌دهد، در حالی که تاندینوپاتی افزایش سیگنال داخل تاندونی در PD/T1 بدون سیگنال مایع واضح در T2 دارد."
+    },
+    {
+      "id": "rotatorenmanschette-fa-09",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "از چه میزان درگیری Footprint، ترمیم جراحی برای ضایعه PASTA معمولاً در نظر گرفته می‌شود؟",
+      "options": [
+        { "id": "A", "text": "درگیری Footprint بیش از ۵۰٪" },
+        { "id": "B", "text": "درگیری Footprint بیش از ۱۰٪" },
+        { "id": "C", "text": "فقط در درگیری ۱۰۰٪ Footprint" },
+        { "id": "D", "text": "میزان درگیری Footprint در تصمیم درمانی اهمیتی ندارد" }
+      ],
+      "correct": "A",
+      "explanation": "در ضایعه PASTA، درگیری Footprint بیش از ۵۰٪ اغلب منجر به در نظر گرفتن ترمیم جراحی می‌شود، در حالی که کمتر از ۵۰٪ معمولاً با درمان محافظه‌کارانه یا دبریدمان مدیریت می‌شود."
+    },
+    {
+      "id": "rotatorenmanschette-fa-10",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "کدام یافته MRI برای پارگی کامل روتاتور کاف تشخیصی است؟",
+      "options": [
+        { "id": "A", "text": "افزایش سیگنال ایزوله در PD بدون معادل در T2" },
+        { "id": "B", "text": "قطع کامل و هیپراینتنس تاندون در T2 همراه با مایع در محل نقص، که مفصل و بورس را به هم متصل می‌کند" },
+        { "id": "C", "text": "ضخیم‌شدن تاندون بدون هیچ تغییر سیگنالی" },
+        { "id": "D", "text": "بورسیت ساب‌آکرومیال ایزوله بدون درگیری تاندون" }
+      ],
+      "correct": "B",
+      "explanation": "پارگی کامل قطع کامل و هیپراینتنس تاندون در T2 را همراه با مایع در محل نقص نشان می‌دهد - این امر ارتباط مستقیمی بین مفصل گلنوهومرال و بورس ساب‌آکرومیال ایجاد می‌کند."
+    },
+    {
+      "id": "rotatorenmanschette-fa-11",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "طبقه‌بندی Patte چه چیزی را توصیف می‌کند؟",
+      "options": [
+        { "id": "A", "text": "درجه آتروفی چربی عضله" },
+        { "id": "B", "text": "درجه رتراکشن انتهای تاندون (درجه ۱ تا ۳)" },
+        { "id": "C", "text": "اندازه نقص لابروم" },
+        { "id": "D", "text": "درجه بورسیت ساب‌آکرومیال" }
+      ],
+      "correct": "B",
+      "explanation": "طبقه‌بندی Patte رتراکشن انتهای تاندون را از درجه ۱ (نزدیک Footprint) تا درجه ۳ (در سطح گلنوئید) درجه‌بندی می‌کند و برای برنامه‌ریزی جراحی تعیین‌کننده است."
+    },
+    {
+      "id": "rotatorenmanschette-fa-12",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "Tangent sign مثبت در MRI شانه به چه معناست؟",
+      "options": [
+        { "id": "A", "text": "سر هومروس از خط فرضی بین آکرومیون و کوراکوئید عبور می‌کند - نشانه پارگی وسیع" },
+        { "id": "B", "text": "تاندون سوپراسپیناتوس ساختار طبیعی دارد" },
+        { "id": "C", "text": "تاندینوپاتی ایزوله سر بلند بایسپس وجود دارد" },
+        { "id": "D", "text": "بورس ساب‌آکرومیال ضخیم شده اما تاندون سالم است" }
+      ],
+      "correct": "A",
+      "explanation": "در Tangent sign، سر هومروس از خط فرضی بین آکرومیون و کوراکوئید عبور می‌کند - این نشانه یک پارگی وسیع روتاتور کاف است."
+    },
+    {
+      "id": "rotatorenmanschette-fa-13",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "کدام گزینه درباره طبقه‌بندی Goutallier صحیح است؟",
+      "options": [
+        { "id": "A", "text": "فقط رتراکشن تاندون را توصیف می‌کند" },
+        { "id": "B", "text": "دژنراسیون چربی عضله را از درجه ۰ (بدون نفوذ چربی) تا درجه ۴ (چربی > عضله) درجه‌بندی می‌کند" },
+        { "id": "C", "text": "فقط در پارگی‌های جزئی کاربرد دارد" },
+        { "id": "D", "text": "فقط بر اساس یافته‌های رادیوگرافی ساده است" }
+      ],
+      "correct": "B",
+      "explanation": "طبقه‌بندی Goutallier آتروفی چربی عضله را از درجه ۰ (بدون نفوذ چربی) تا درجه ۴ (چربی > عضله) درجه‌بندی می‌کند. از درجه ۳ تا ۴ به بعد، ترمیم معمولاً کم‌احتمال در نظر گرفته می‌شود."
+    },
+    {
+      "id": "rotatorenmanschette-fa-14",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "کدام عامل می‌تواند به ایمپینجمنت ساب‌آکرومیال منجر شود؟",
+      "options": [
+        { "id": "A", "text": "بورس ساب‌آکرومیال بسیار نازک" },
+        { "id": "B", "text": "آکرومیون تیپ Bigliani همراه با استئوفیت یا ضخیم‌شدن بورس که فضای ساب‌آکرومیال را تنگ می‌کنند" },
+        { "id": "C", "text": "تاندینوپاتی ایزوله سر بلند بایسپس" },
+        { "id": "D", "text": "ضعف ایزوله چرخش داخلی بدون تغییر ساختاری" }
+      ],
+      "correct": "B",
+      "explanation": "آکرومیون تیپ Bigliani همراه با استئوفیت، آرتروز مفصل ACG با استئوفیت‌های تحتانی یا ضخیم‌شدن بورس می‌توانند فضای ساب‌آکرومیال را تنگ کرده و ایمپینجمنت را تشدید کنند."
+    },
+    {
+      "id": "rotatorenmanschette-fa-15",
+      "tags": ["rotatorenmanschette", "schulter"],
+      "fach": "msk",
+      "question": "دیسلوکیشن تاندون سر بلند بایسپس از Sulcus bicipitalis چه اهمیتی دارد؟",
+      "options": [
+        { "id": "A", "text": "همیشه یک یافته اتفاقی بدون اهمیت بالینی است" },
+        { "id": "B", "text": "نشانه غیرمستقیم پارگی همراه تاندون ساب‌اسکاپولاریس است" },
+        { "id": "C", "text": "ثابت‌کننده پارگی کامل تاندون سوپراسپیناتوس است" },
+        { "id": "D", "text": "فقط در کودکان رخ می‌دهد" }
+      ],
+      "correct": "B",
+      "explanation": "دیسلوکیشن تاندون سر بلند بایسپس از Sulcus bicipitalis نشانه غیرمستقیم پارگی همراه ساب‌اسکاپولاریس است، زیرا تاندون ساب‌اسکاپولاریس بخشی از سازه‌های نگه‌دارنده تاندون بایسپس در داخل Sulcus است."
     }
   ]
 }
@@ -3369,6 +3999,14 @@ export const MCQ_TOPIC_GROUPS = [
     title: { de: '15. Knie', en: '15. Knee', fa: '۱۵. زانو' },
     topics: [
       { id: 'meniskus', title: { de: 'Meniskus', en: 'Meniscus', fa: 'منیسک' } },
+    ],
+  },
+  {
+    fachId: 'msk',
+    kapitelId: 'msk-schulter',
+    title: { de: '11. Schulter', en: '11. Shoulder', fa: '۱۱. شانه' },
+    topics: [
+      { id: 'rotatorenmanschette', title: { de: 'Rotatorenmanschette', en: 'Rotator Cuff', fa: 'روتاتور کاف' } },
     ],
   },
   {

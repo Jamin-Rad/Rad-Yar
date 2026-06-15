@@ -1224,7 +1224,7 @@ export const CURRICULUM = [
         title: { de: '11. Schulter', en: '11. Shoulder', fa: '۱۱. شانه' },
         icon: '💪',
         themen: [
-          { id: 'rotatorenmanschette', title: { de: 'Rotatorenmanschette', en: 'Rotator Cuff', fa: 'روتاتور کاف' }, tags: ['MRT'], diff: 2 },
+          { id: 'rotatorenmanschette', title: { de: 'Rotatorenmanschette', en: 'Rotator Cuff', fa: 'روتاتور کاف' }, tags: ['MRT'], diff: 2, link: '/msk/schulter/rotatorenmanschette', flashcardLink: '/flashcards/rotatorenmanschette', ready: true, updatedAt: '2026-06-15' },
           { id: 'schulterinstabilitaet', title: { de: 'Schulterinstabilität / Labrumläsionen', en: 'Shoulder Instability / Labral Tears', fa: 'ناپایداری شانه / ضایعات لابروم' }, tags: ['MRT'], diff: 3 },
           { id: 'impingement-kalkschulter', title: { de: 'Impingement-Syndrom & Kalkschulter', en: 'Impingement Syndrome & Calcific Tendinitis', fa: 'سندرم ایمپینجمنت و شانه کلسیفیه' }, tags: ['MRT','Rö'], diff: 2 },
           { id: 'bizepssehne-schulter', title: { de: 'Bizepssehne', en: 'Biceps Tendon', fa: 'تاندون بایسپس' }, tags: ['MRT'], diff: 2 },
