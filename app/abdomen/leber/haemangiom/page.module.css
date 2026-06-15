@@ -412,6 +412,73 @@
   border-radius: 12px;
 }
 
+.imageZoomButton {
+  width: 100%;
+  height: 100%;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.imageZoomButton:focus-visible {
+  outline: 3px solid #10b981;
+  outline-offset: 3px;
+}
+
+.imageModal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(2, 6, 23, .84);
+  backdrop-filter: blur(8px);
+}
+
+.imageModalContent {
+  position: relative;
+  width: min(1180px, 96vw);
+  max-height: 92vh;
+  padding: 14px;
+  border-radius: 24px;
+  background: #020617;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, .45);
+}
+
+.imageModalContent img {
+  display: block;
+  width: 100%;
+  max-height: calc(92vh - 28px);
+  object-fit: contain;
+  border-radius: 14px;
+}
+
+.imageModalClose {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  z-index: 1;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  background: #f97316;
+  cursor: pointer;
+  font-size: 28px;
+  line-height: 1;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .28);
+}
+
+[dir='rtl'] .imageModalClose {
+  right: auto;
+  left: -14px;
+}
+
 .tableWrap {
   width: 100%;
   overflow-x: auto;
@@ -546,6 +613,10 @@
   .mriFigure { border-radius: 16px; }
   .table { min-width: 560px; }
   .takeHomeItem { grid-template-columns: 54px 1fr; }
+  .imageModal { padding: 12px; }
+  .imageModalContent { width: 100%; padding: 8px; border-radius: 18px; }
+  .imageModalClose { top: 6px; right: 6px; }
+  [dir='rtl'] .imageModalClose { right: auto; left: 6px; }
 }
 
 .caseGrid {

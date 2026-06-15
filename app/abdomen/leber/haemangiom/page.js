@@ -8,6 +8,12 @@ import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import styles from './page.module.css'
 
+const IMAGE_UI = {
+  de: { zoom: 'Bild vergrößern', close: 'Bildansicht schließen' },
+  en: { zoom: 'Enlarge image', close: 'Close image preview' },
+  fa: { zoom: 'بزرگ‌نمایی تصویر', close: 'بستن نمایش تصویر' },
+}
+
 const CONTENT = {
   "de": {
     "toc": "Inhaltsverzeichnis",
@@ -861,7 +867,7 @@ function Callout({ type = 'note', label, children }) {
   )
 }
 
-function CaseSequenceViewer({ item, copy }) {
+function CaseSequenceViewer({ item, copy, onZoom }) {
   const frames = item.frames?.length ? item.frames : [item.image]
   const [frameIndex, setFrameIndex] = useState(Math.min(item.initialFrame || 0, frames.length - 1))
   const move = direction => setFrameIndex(index => Math.min(frames.length - 1, Math.max(0, index + direction)))
@@ -880,7 +886,14 @@ function CaseSequenceViewer({ item, copy }) {
       }}
     >
       <div className={styles.caseImage}>
-        <Image src={frames[frameIndex]} alt={item.imageAlt} width={610} height={610} className={styles.caseImageAsset} />
+        <button
+          type="button"
+          className={styles.imageZoomButton}
+          onClick={() => onZoom({ src: frames[frameIndex], alt: item.imageAlt })}
+          aria-label={copy.zoomImage}
+        >
+          <Image src={frames[frameIndex]} alt={item.imageAlt} width={610} height={610} className={styles.caseImageAsset} />
+        </button>
         <span className={styles.caseCounter}>{copy.imageOf(frameIndex + 1, frames.length)}</span>
       </div>
       <div className={styles.caseViewerControls}>
@@ -924,6 +937,7 @@ export default function LeberHaemangiomPage() {
   const { lang } = useLanguage()
   const copy = CONTENT[lang] || CONTENT.de
   const caseCopy = CASE_COPY[lang] || CASE_COPY.de
+  const imageUi = IMAGE_UI[lang] || IMAGE_UI.de
   const pageSections = useMemo(() => {
     const exists = copy.sections.some(section => section.id === 'fallbeispiele')
     if (exists) return copy.sections
@@ -934,6 +948,7 @@ export default function LeberHaemangiomPage() {
   }, [copy.sections, caseCopy.label])
   const isRTL = lang === 'fa'
   const [activeId, setActiveId] = useState(pageSections[0].id)
+  const [previewImage, setPreviewImage] = useState(null)
   const { isRead, toggleRead, authError } = useLessonReadStatus('haemangiom')
   const withLang = (href) => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
 
@@ -956,6 +971,23 @@ export default function LeberHaemangiomPage() {
     })
     return () => observers.forEach(observer => observer?.disconnect())
   }, [sectionIds])
+
+  useEffect(() => {
+    if (!previewImage) return undefined
+
+    const previousOverflow = document.body.style.overflow
+    const closeOnEscape = event => {
+      if (event.key === 'Escape') setPreviewImage(null)
+    }
+
+    document.body.style.overflow = 'hidden'
+    document.addEventListener('keydown', closeOnEscape)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      document.removeEventListener('keydown', closeOnEscape)
+    }
+  }, [previewImage])
 
   return (
     <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
@@ -1031,32 +1063,49 @@ export default function LeberHaemangiomPage() {
             <div className={styles.ctDiagnosticGrid}>
               <Table headers={copy.ct.tableHeaders} rows={copy.ct.tableRows} />
               <figure className={styles.irisFigure}>
-                <Image
-                  src="/haemangiom/irisblend.png"
-                  alt={copy.ct.irisImageAlt}
-                  width={1536}
-                  height={1024}
-                  sizes="(max-width: 980px) 100vw, 48vw"
-                  priority
-                />
+                <button
+                  type="button"
+                  className={styles.imageZoomButton}
+                  onClick={() => setPreviewImage({ src: '/haemangiom/irisblend.png', alt: copy.ct.irisImageAlt })}
+                  aria-label={imageUi.zoom}
+                >
+                  <Image
+                    src="/haemangiom/irisblend.png"
+                    alt={copy.ct.irisImageAlt}
+                    width={1536}
+                    height={1024}
+                    sizes="(max-width: 980px) 100vw, 48vw"
+                    priority
+                  />
+                </button>
               </figure>
             </div>
             <Callout type="cave" label={copy.caveLabel}>{copy.ct.cave}</Callout>
             <Callout label={copy.keyLabel}>{copy.ct.irisText}</Callout>
           </Section>
 
-          <Section id="mrt" title={copy.mri.title} lead={copy.mri.lead}>
-            <Table headers={copy.mri.tableHeaders} rows={copy.mri.tableRows} />
-            <figure className={styles.mriFigure}>
-              <Image
-                src="/haemangiom/light-bulb-t2-shine-through.png"
-                alt={copy.mri.imageAlt}
-                width={1536}
-                height={1024}
-                sizes="(max-width: 980px) calc(100vw - 64px), 900px"
-                className={styles.mriImage}
-              />
-            </figure>
+            <Section id="mrt" title={copy.mri.title} lead={copy.mri.lead}>
+              <Table headers={copy.mri.tableHeaders} rows={copy.mri.tableRows} />
+              <figure className={styles.mriFigure}>
+                <button
+                  type="button"
+                  className={styles.imageZoomButton}
+                  onClick={() => setPreviewImage({
+                    src: '/haemangiom/light-bulb-t2-shine-through.png',
+                    alt: copy.mri.imageAlt,
+                  })}
+                  aria-label={imageUi.zoom}
+                >
+                  <Image
+                    src="/haemangiom/light-bulb-t2-shine-through.png"
+                    alt={copy.mri.imageAlt}
+                    width={1536}
+                    height={1024}
+                    sizes="(max-width: 980px) calc(100vw - 64px), 900px"
+                    className={styles.mriImage}
+                  />
+                </button>
+              </figure>
             <div className={styles.splitGrid}>
               <div className={styles.infoCard}>
                 <h3>{copy.mri.lightBulbTitle}</h3>
@@ -1081,7 +1130,7 @@ export default function LeberHaemangiomPage() {
             <div className={styles.caseGrid}>
               {caseCopy.cases.map(item => (
                 <article key={item.url} className={styles.caseCardLink}>
-                  <CaseSequenceViewer item={item} copy={caseCopy} />
+                  <CaseSequenceViewer item={item} copy={{ ...caseCopy, zoomImage: imageUi.zoom }} onZoom={setPreviewImage} />
                   <div className={styles.caseBody}>
                     <div className={styles.caseLabelRow}>
                       <span className={styles.caseLabel}>{item.label}</span>
@@ -1115,6 +1164,15 @@ export default function LeberHaemangiomPage() {
           </div>
         </div>
       </div>
+
+      {previewImage && (
+        <div className={styles.imageModal} role="dialog" aria-modal="true" aria-label={imageUi.zoom} onClick={() => setPreviewImage(null)}>
+          <div className={styles.imageModalContent} onClick={event => event.stopPropagation()}>
+            <button type="button" className={styles.imageModalClose} onClick={() => setPreviewImage(null)} aria-label={imageUi.close}>×</button>
+            <img src={previewImage.src} alt={previewImage.alt} />
+          </div>
+        </div>
+      )}
     </main>
   )
 }

@@ -3503,6 +3503,98 @@ html[data-theme='dark'] .table td::before {
   }
 }
 
+/* Mobile tables follow the compact, horizontally scrollable lesson-table pattern. */
+@media (max-width: 900px) {
+  .page:not([data-meniskus-layout='desktop']) .tableWrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    border: 1px solid #dfe6f0 !important;
+    border-radius: 20px !important;
+    background: #fff !important;
+    margin: 18px 0 !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .page:not([data-meniskus-layout='desktop']) .table {
+    display: table !important;
+    width: 100% !important;
+    min-width: 560px !important;
+    max-width: none !important;
+    table-layout: auto !important;
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+  }
+
+  .page:not([data-meniskus-layout='desktop']) .table thead {
+    display: table-header-group !important;
+  }
+
+  .page:not([data-meniskus-layout='desktop']) .table tbody {
+    display: table-row-group !important;
+  }
+
+  .page:not([data-meniskus-layout='desktop']) .table tr {
+    display: table-row !important;
+    width: auto !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .page:not([data-meniskus-layout='desktop']) .table th,
+  .page:not([data-meniskus-layout='desktop']) .table td,
+  .page:not([data-meniskus-layout='desktop']) .gradeTable td:first-child,
+  .page:not([data-meniskus-layout='desktop']) .tearTypeTable td:first-child {
+    display: table-cell !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    grid-template-columns: none !important;
+    gap: 0 !important;
+    padding: 14px 15px !important;
+    border: 0 !important;
+    border-bottom: 1px solid #edf1f7 !important;
+    background: transparent !important;
+    white-space: normal !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+  }
+
+  .page:not([data-meniskus-layout='desktop']) .table th {
+    padding: 13px 15px !important;
+    background: linear-gradient(135deg, #fff7ed, #ffedd5) !important;
+    white-space: nowrap !important;
+  }
+
+  .page:not([data-meniskus-layout='desktop']) .table tr:nth-child(even) td {
+    background: #fbfcff !important;
+  }
+
+  .page:not([data-meniskus-layout='desktop']) .table tr:last-child td {
+    border-bottom: 0 !important;
+  }
+
+  .page:not([data-meniskus-layout='desktop']) .table td::before {
+    content: none !important;
+  }
+
+  html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .tableWrap {
+    border-color: rgba(148, 163, 184, 0.2) !important;
+    background: rgba(15, 23, 42, 0.94) !important;
+  }
+
+  html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .table th {
+    background: rgba(249, 115, 22, 0.16) !important;
+  }
+
+  html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .table tr:nth-child(even) td {
+    background: rgba(30, 41, 59, 0.5) !important;
+  }
+}
+
 `
 
 const CONTENT = {
