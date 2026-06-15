@@ -14,8 +14,8 @@ const FACH_DATA = {
     desc: { de:'Gehirn, Rückenmark & Schädel', en:'Brain, spinal cord & skull', fa:'مغز، نخاع و جمجمه' },
   },
   Hals: {
-    color: '#60a5fa',
-    bg: 'linear-gradient(135deg,#0c1f40,#1e3a6e)',
+    color: '#f9a8d4',
+    bg: 'linear-gradient(135deg,#3b102c,#6b214f)',
     available: false,
     topics: ['Schilddrüse','Lymphknoten','Larynx'],
     desc: { de:'Schilddrüse, Lymphknoten & Larynx', en:'Thyroid, lymph nodes & larynx', fa:'تیروئید، غدد لنفاوی و حنجره' },
