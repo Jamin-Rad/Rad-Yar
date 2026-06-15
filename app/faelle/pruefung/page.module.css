@@ -58,6 +58,26 @@
   border-radius: 10px;
   background: rgba(254, 242, 242, .62);
 }
+.imagePanelSeries { padding-bottom: 34px; }
+.phaseGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2px;
+  background: #020617;
+}
+.phaseFigure {
+  min-width: 0;
+  margin: 0;
+  background: #020617;
+}
+.phaseFigure figcaption {
+  padding: 7px 5px;
+  color: #e2e8f0;
+  background: #111827;
+  font-size: 10px;
+  font-weight: 800;
+  text-align: center;
+}
 .sourceRow {
   display: flex;
   justify-content: space-between;
@@ -100,5 +120,8 @@
   .caseCard { padding: 18px 14px; border-radius: 14px; }
   .caseGrid { gap: 16px; margin-bottom: 22px; }
   .caseImage { max-height: 68vh; }
+  .phaseGrid { grid-template-columns: 1fr; }
+  .imagePanelSeries { padding-bottom: 0; }
+  .imagePanelSeries .plane { position: static; display: block; border-radius: 0; text-align: center; }
   .sourceRow { flex-direction: column; }
 }

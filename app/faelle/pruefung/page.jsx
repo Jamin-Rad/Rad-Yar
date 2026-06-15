@@ -236,8 +236,19 @@ function CaseExamContent() {
         <article className={`${quizStyles.quizCard} ${styles.caseCard}`}>
           <div className={quizStyles.qNum}>{ui.caseOf(current + 1, total)}</div>
           <div className={styles.caseGrid}>
-            <div className={styles.imagePanel}>
-              <Image src={item.image} alt="" width={920} height={690} priority className={styles.caseImage} />
+            <div className={`${styles.imagePanel} ${item.images?.length ? styles.imagePanelSeries : ''}`}>
+              {item.images?.length ? (
+                <div className={styles.phaseGrid}>
+                  {item.images.map((image, index) => (
+                    <figure key={image.src} className={styles.phaseFigure}>
+                      <Image src={image.src} alt="" width={442} height={324} priority={index === 0} className={styles.caseImage} />
+                      <figcaption>{image.label}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              ) : (
+                <Image src={item.image} alt="" width={920} height={690} priority className={styles.caseImage} />
+              )}
               <span className={styles.plane}>{item.plane}</span>
             </div>
             <div className={styles.caseIntro}>

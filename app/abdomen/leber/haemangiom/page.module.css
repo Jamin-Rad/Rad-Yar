@@ -566,6 +566,12 @@
   color: #fff;
   background: linear-gradient(135deg, #0d1b2a, #f97316);
 }
+.caseImageAsset {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #020617;
+}
 
 .caseBody { padding: 18px; }
 
