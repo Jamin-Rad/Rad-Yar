@@ -5,7 +5,7 @@
 import dotenv from 'dotenv'
 dotenv.config({ path: '.env.local' })
 import { CASE_BANK } from '../../data/cases.js'
-import { supabaseAdmin, isSupabaseAdminConfigured } from '../../lib/supabase/server.js'
+const { supabaseAdmin, isSupabaseAdminConfigured } = await import('../../lib/supabase/server.js')
 
 if (!isSupabaseAdminConfigured) {
   console.error('Supabase ist nicht konfiguriert (NEXT_PUBLIC_SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY fehlen in .env.local).')
