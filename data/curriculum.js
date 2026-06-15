@@ -1213,7 +1213,7 @@ export const CURRICULUM = [
           { id: 'tibiakopffraktur', title: { de: 'Tibiakopffraktur', en: 'Tibial Plateau Fracture', fa: 'شکستگی پلاتوی تیبیا' }, group: ['Knie & Unterschenkel'], tags: ['Rö','CT'], diff: 2 },
           { id: 'patellafraktur-trauma', title: { de: 'Patellafraktur', en: 'Patella Fracture', fa: 'شکستگی کشکک (پاتلا)' }, group: ['Knie & Unterschenkel'], tags: ['Rö'], diff: 1 },
           { id: 'fibulakopffraktur', title: { de: 'Fibulakopffraktur', en: 'Fibular Head Fracture', fa: 'شکستگی سر فیبولا' }, group: ['Knie & Unterschenkel'], tags: ['Rö'], diff: 1 },
-          { id: 'osg-fraktur', title: { de: 'OSG-Fraktur', en: 'Ankle Fracture', fa: 'شکستگی مچ پا (OSG)' }, group: ['Sprunggelenk & Fuß'], tags: ['Rö'], diff: 1 },
+          { id: 'osg-fraktur', title: { de: 'Sprunggelenktrauma', en: 'Ankle Trauma', fa: 'ترومای مچ پا' }, group: ['Sprunggelenk & Fuß'], tags: ['Rö','CT'], diff: 1, link: '/msk/trauma/sprunggelenk', ready: true, updatedAt: '2026-06-15' },
           { id: 'fusswurzel-frakturen', title: { de: 'Fußwurzel', en: 'Tarsal Fractures', fa: 'شکستگی‌های تارس' }, group: ['Sprunggelenk & Fuß'], tags: ['Rö','CT'], diff: 2 },
           { id: 'vorfuss-frakturen', title: { de: 'Vorfuß', en: 'Forefoot Fractures', fa: 'شکستگی‌های فورفوت' }, group: ['Sprunggelenk & Fuß'], tags: ['Rö'], diff: 1 },
           { id: 'zehenfrakturen', title: { de: 'Zehenfrakturen', en: 'Toe Fractures', fa: 'شکستگی‌های انگشت پا' }, group: ['Sprunggelenk & Fuß'], tags: ['Rö'], diff: 1 },
