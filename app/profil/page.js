@@ -638,6 +638,8 @@ export default function ProfilPage() {
                 <section className={`${styles.card} ${styles.activityCard}`}>
                   <div className={styles.sectionHeading}><div><h2>{t.activity}</h2><p>{t.activitySub}</p></div></div>
                   <div className={styles.activitySummaryGrid}>
+                    <div className={styles.activityTotalCard}><strong>{formatDuration(activityTotals.total, lang)}</strong><span>{t.activeTime}</span></div>
+                    <div className={styles.activityTotalCard}><strong>{activitySummary.streak}</strong><span>{t.streak}</span></div>
                     <div><i className={styles.legendLessons} /><strong>{formatCompactDuration(activityTotals.lessons, lang)}</strong><span>{t.lessonsActivity}</span></div>
                     <div><i className={styles.legendPractice} /><strong>{formatCompactDuration(activityTotals.practice, lang)}</strong><span>{t.practiceActivity}</span></div>
                     <div><i className={styles.legendFlash} /><strong>{formatCompactDuration(activityTotals.flashcards, lang)}</strong><span>{t.flashActivity}</span></div>
@@ -790,10 +792,9 @@ export default function ProfilPage() {
                   </div>
                   <div className={styles.card}>
                     <div className={styles.sectionHeading}><div><h2>{t.unreadLessons}</h2></div></div>
-                    <div className={styles.lessonSummaryGrid}>
-                      <div><strong>{formatDuration(activityTotals.total, lang)}</strong><span>{t.activeTime}</span></div>
-                      <div><strong>{activitySummary.streak}</strong><span>{t.streak}</span></div>
-                      <div><strong>{progress.readTopics.length}<small> / {progress.topics.length}</small></strong><span>{t.lessonsRead}</span></div>
+                    <div className={styles.lessonProgressHighlight}>
+                      <strong>{progress.readTopics.length}<small> / {progress.topics.length}</small></strong>
+                      <span>{t.lessonsRead}</span>
                     </div>
                     <div className={styles.lessonList}>
                       {progress.unreadTopics.slice(0, 10).map(({ fach: area, thema }) => (

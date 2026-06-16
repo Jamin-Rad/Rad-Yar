@@ -1281,7 +1281,7 @@
 .activityCard { margin-top: 16px; }
 .activitySummaryGrid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 10px;
   margin-bottom: 18px;
 }
@@ -1298,6 +1298,11 @@
 .activitySummaryGrid i { grid-row: span 2; width: 12px; height: 12px; border-radius: 50%; }
 .activitySummaryGrid strong { color: var(--text-strong); font-size: 20px; line-height: 1; }
 .activitySummaryGrid span { color: var(--text-muted); font-size: 10px; font-weight: 800; }
+.activityTotalCard {
+  border-color: rgba(249,115,22,.28) !important;
+  background: linear-gradient(135deg, rgba(249,115,22,.14), var(--surface-soft)) !important;
+}
+.activityTotalCard strong { color: var(--orange); }
 .activityLegend { display: flex; flex-wrap: wrap; gap: 14px; margin: 14px 0 0; }
 .activityLegend span, .activityTime { display: inline-flex; align-items: center; gap: 6px; }
 .activityLegend span { color: var(--text-muted); font-size: 9px; font-weight: 800; }
@@ -1357,29 +1362,22 @@
 .recommendationLinks { display: flex; gap: 7px; padding: 0 10px 9px 42px; }
 .recommendationLinks a { padding: 4px 8px; border-radius: 999px; color: #047857; background: rgba(16,185,129,.1); font-size: 8px; font-weight: 900; text-decoration: none; }
 .lessonList { display: grid; gap: 6px; }
-.lessonSummaryGrid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
+.lessonProgressHighlight {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
   margin-bottom: 14px;
+  padding: 16px;
+  border: 1px solid rgba(249,115,22,.28);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(249,115,22,.16), rgba(249,115,22,.05));
 }
-.lessonSummaryGrid > div {
-  padding: 12px;
-  border: 1px solid var(--border);
-  border-radius: 13px;
-  background: var(--surface-soft);
-}
-.lessonSummaryGrid strong,
-.lessonSummaryGrid span { display: block; }
-.lessonSummaryGrid strong { color: var(--text-strong); font-size: 18px; line-height: 1.15; }
-.lessonSummaryGrid strong small { color: var(--text-muted); font-size: 11px; }
-.lessonSummaryGrid span {
-  margin-top: 4px;
-  color: var(--text-muted);
-  font-size: 9px;
-  font-weight: 800;
-  line-height: 1.3;
-}
+.lessonProgressHighlight strong,
+.lessonProgressHighlight span { display: block; }
+.lessonProgressHighlight strong { color: var(--orange); font-size: 30px; line-height: 1; white-space: nowrap; }
+.lessonProgressHighlight strong small { color: var(--text-muted); font-size: 14px; }
+.lessonProgressHighlight span { color: var(--text-strong); font-size: 11px; font-weight: 900; text-align: end; }
 .lessonList > a { display: grid; grid-template-columns: 26px 1fr; align-items: center; gap: 9px; padding: 10px; border-radius: 11px; color: inherit; background: var(--surface-soft); text-decoration: none; }
 .lessonList > a > span { display: grid; width: 25px; height: 25px; place-items: center; border-radius: 8px; color: #059669; background: rgba(16,185,129,.12); font-weight: 900; }
 .lessonList strong, .lessonList small { display: block; }
@@ -1455,6 +1453,7 @@
   .contentGrid { grid-template-columns: 1fr; }
   .sideStack { grid-template-columns: 1fr 1fr; }
   .metricGrid { grid-template-columns: repeat(3, 1fr); }
+  .activitySummaryGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 @media (max-width: 760px) {
@@ -1465,7 +1464,7 @@
   .sideStack { grid-template-columns: 1fr; }
   .dashboardTwoCol, .lessonColumns { grid-template-columns: 1fr; }
   .metricGrid { grid-template-columns: repeat(2, 1fr); }
-  .lessonSummaryGrid { grid-template-columns: 1fr; }
+  .activitySummaryGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .areaSummary { display: none; }
   .areaDetails { grid-template-columns: 1fr; }
 }
@@ -1479,6 +1478,9 @@
   .areaProgress { width: 100%; }
   .areaChevron { position: absolute; align-self: flex-end; }
   .activityRow { grid-template-columns: 1fr 1fr; }
+  .activitySummaryGrid { grid-template-columns: 1fr; }
+  .lessonProgressHighlight { align-items: flex-start; flex-direction: column; }
+  .lessonProgressHighlight span { text-align: start; }
   .activityRow > strong, .activityRow > b { grid-column: auto; }
   .activityTime { justify-content: flex-start; }
   .activityHeader { display: none; }
