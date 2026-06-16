@@ -27,6 +27,9 @@
 .sidebar {
   position: sticky;
   top: 88px;
+  display: flex;
+  min-height: calc(100vh - 112px);
+  flex-direction: column;
   border: 1px solid var(--border);
   border-radius: 24px;
   background: var(--bg-card);
@@ -112,13 +115,14 @@
   cursor: pointer;
   transition: color .18s, background .18s;
 }
-.profileNavLink span { width: 18px; color: var(--orange); text-align: center; }
+.profileNavLink span { width: 22px; color: var(--orange); text-align: center; font-size: 15px; }
 .profileNavLink:hover { color: var(--orange); background: rgba(249,115,22,.09); }
 .profileNavLinkActive { color: var(--orange); background: rgba(249,115,22,.12); }
 
 .accountActions {
   display: grid;
   gap: 8px;
+  margin-top: auto;
   padding: 16px 14px 14px;
   border-top: 1px solid var(--border);
 }
@@ -938,13 +942,12 @@
   .dashboardShell,
   [dir='rtl'] .dashboardShell { grid-template-columns: 1fr; }
   .sidebar,
-  [dir='rtl'] .sidebar { position: static; grid-column: 1; grid-row: auto; }
+  [dir='rtl'] .sidebar { position: static; min-height: auto; grid-column: 1; grid-row: auto; }
   .dashboardMain,
   [dir='rtl'] .dashboardMain { grid-column: 1; grid-row: auto; }
   .profileNav { grid-template-columns: repeat(3, 1fr); }
   .profileNavLink { justify-content: center; }
-  .accountActions { grid-template-columns: 1fr 1fr; }
-  .accountLabel { grid-column: 1 / -1; }
+  .accountActions { grid-template-columns: 1fr; }
   .mainGrid { grid-template-columns: 1fr 1fr; }
 }
 
@@ -1084,7 +1087,7 @@
 
 .metricGrid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 16px;
   margin-bottom: 16px;
 }
@@ -1114,7 +1117,8 @@
   font-size: 38px;
   line-height: 1;
 }
-.metricCard:nth-child(3) > strong { font-size: 25px; line-height: 1.2; }
+.metricCard:nth-child(3) > strong,
+.metricCard:nth-child(n+5) > strong { font-size: 25px; line-height: 1.2; }
 .metricCard > strong small { color: var(--text-muted); font-size: 16px; }
 .metricCard p { margin: 9px 0 0; color: var(--text-muted); font-size: 13px; font-weight: 700; }
 .metricNote {
@@ -1255,34 +1259,51 @@
 .chapterMiniRow i { display: block; height: 100%; border-radius: inherit; background: #10b981; }
 .chapterMiniRow b { color: var(--text-muted); font-size: 9px; text-align: end; }
 
-.activityChart { display: flex; height: 145px; align-items: flex-end; justify-content: space-between; gap: 8px; }
-.activityDay { display: grid; height: 100%; flex: 1; grid-template-rows: 1fr auto; gap: 7px; text-align: center; }
-.activityTrack { display: flex; height: 100%; align-items: flex-end; justify-content: center; overflow: hidden; border-radius: 8px; background: var(--surface-soft); }
-.activityTrack span { width: 100%; border-radius: 8px 8px 4px 4px; background: linear-gradient(180deg, #fb923c, #f97316); transition: height .3s; }
-.activityDay small { color: var(--text-muted); font-size: 9px; font-weight: 700; }
+.activityChart { display: flex; height: 190px; align-items: stretch; justify-content: space-between; gap: 8px; }
+.activityDay { display: grid; height: 100%; flex: 1; grid-template-rows: 1fr auto auto; gap: 7px; text-align: center; min-width: 0; }
+.activityTrack { display: flex; height: 100%; align-items: flex-end; justify-content: center; overflow: hidden; border-radius: 11px; background: var(--surface-soft); }
+.activityStack {
+  display: flex;
+  width: 100%;
+  min-height: 4px;
+  flex-direction: column-reverse;
+  overflow: hidden;
+  border-radius: 11px 11px 5px 5px;
+  transition: height .3s;
+}
+.activityStack span { display: block; min-height: 0; }
+.activitySegmentLessons { background: linear-gradient(180deg, #fb923c, #f97316); }
+.activitySegmentPractice { background: linear-gradient(180deg, #60a5fa, #2563eb); }
+.activitySegmentFlash { background: linear-gradient(180deg, #34d399, #059669); }
+.activityDay small { overflow: hidden; color: var(--text-muted); font-size: 8px; font-weight: 800; text-overflow: ellipsis; white-space: nowrap; }
+.activityDay b { color: var(--text-soft); font-size: 8px; white-space: nowrap; }
 .activityCard { margin-top: 16px; }
-.activityLegend { display: flex; flex-wrap: wrap; gap: 14px; margin: -6px 0 14px; }
+.activitySummaryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.activitySummaryGrid > div {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 3px 10px;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-soft);
+}
+.activitySummaryGrid i { grid-row: span 2; width: 12px; height: 12px; border-radius: 50%; }
+.activitySummaryGrid strong { color: var(--text-strong); font-size: 20px; line-height: 1; }
+.activitySummaryGrid span { color: var(--text-muted); font-size: 10px; font-weight: 800; }
+.activityLegend { display: flex; flex-wrap: wrap; gap: 14px; margin: 14px 0 0; }
 .activityLegend span, .activityTime { display: inline-flex; align-items: center; gap: 6px; }
 .activityLegend span { color: var(--text-muted); font-size: 9px; font-weight: 800; }
 .activityLegend i, .activityTime i { width: 8px; height: 8px; flex: 0 0 8px; border-radius: 50%; }
 .legendLessons { background: #f97316; }
 .legendPractice { background: #3b82f6; }
 .legendFlash { background: #10b981; }
-.activityTable { display: grid; gap: 6px; }
-.activityRow {
-  display: grid;
-  grid-template-columns: 82px repeat(3, minmax(0, 1fr)) 58px;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 10px;
-  border-radius: 11px;
-  background: var(--surface-soft);
-}
-.activityRow > strong { color: var(--text-strong); font-size: 9px; }
-.activityTime { color: var(--text-muted); font-size: 8px; white-space: nowrap; }
-.activityRow > b { color: var(--text-strong); font-size: 9px; text-align: end; white-space: nowrap; }
-.activityHeader { padding-block: 3px; background: transparent; }
-.activityHeader span, .activityHeader b { color: var(--text-muted); font-size: 8px; font-weight: 900; }
 .activityHint { margin: 12px 0 0; color: var(--text-muted); font-size: 9px; line-height: 1.5; }
 
 .recentList { display: grid; gap: 5px; }

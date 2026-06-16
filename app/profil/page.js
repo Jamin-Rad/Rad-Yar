@@ -23,7 +23,7 @@ const localDateKey = () => {
 
 const T = {
   de: {
-    overview: 'Übersicht', settings: 'Einstellungen', profileLabel: 'Dein Profil',
+    overview: 'Übersicht', settings: 'Einstellungen', contact: 'Kontakt', profileLabel: 'Dein Profil',
     account: 'Konto', signOut: 'Abmelden', memberSince: 'Mitglied seit',
     greetMorning: 'Guten Morgen', greetDay: 'Hallo', greetEvening: 'Guten Abend',
     dashboardEyebrow: 'Dein Lernfortschritt',
@@ -44,9 +44,9 @@ const T = {
     longBoxesHint: 'Zeigt zusätzliche Leitner-Boxen für langfristige Wiederholungen.',
     accountSettings: 'Konto und Sicherheit',
     accountSettingsHint: 'E-Mail-Adresse, Passwort, Profilbild und Sicherheitsoptionen verwalten.',
-    manageAccount: 'Konto verwalten', contactTitle: 'Problem melden',
-    contactSub: 'Beschreibe kurz, was nicht funktioniert. Deine Nachricht wird direkt per E-Mail an RadYar gesendet.',
-    problemType: 'Worum geht es?',
+    manageAccount: 'Konto verwalten', contactTitle: 'Kontakt',
+    contactSub: 'Melde ein Problem, stelle eine Frage oder schicke uns eine Idee. Deine Nachricht wird direkt per E-Mail an RadYar gesendet.',
+    problemType: 'Anliegen',
     problemTypes: ['Technisches Problem', 'Fehler im Lerninhalt', 'Problem mit meinem Konto', 'Abonnement aktivieren', 'Idee oder Verbesserung', 'Sonstiges'],
     subject: 'Betreff', message: 'Nachricht', subjectPlaceholder: 'Kurze Zusammenfassung',
     messagePlaceholder: 'Was ist passiert? Auf welcher Seite? Was hast du erwartet?',
@@ -70,8 +70,8 @@ const T = {
     flashReport: 'Flashcard-Bericht', flashSeen: 'begonnen', flashWrong: 'nicht gewusst',
     flashDue: 'heute fällig', toFlashcards: 'Zur Flashcard-Seite',
     flashThirtyDays: '30 Tage erreicht', flashThirtyDaysHint: 'Karten ab der 30-Tage-Stufe',
-    lessonsActivity: 'Lernen', practiceActivity: 'MCQ + Fallprüfung', flashActivity: 'Flashcards',
-    totalActivity: 'Gesamt', activityTrackingHint: 'Die Aufteilung nach Lernbereich wird ab jetzt erfasst; ältere Aktivität bleibt unter Gesamt erhalten.',
+    lessonsActivity: 'Lernseiten', practiceActivity: 'MCQs', flashActivity: 'Flashcards',
+    totalActivity: 'Lernzeit', activityTrackingHint: 'Gezählt wird nur aktive Zeit auf Lernseiten, MCQs/Fallprüfung und Flashcards. Profil, Startseite und sonstige Seiten zählen hier nicht mit.',
     readAvailable: 'verfügbare Themen gelesen', flashProgress: 'Flashcards auf 30-Tage-Stufe',
     mcqCorrect: 'MCQs richtig', noMcqYet: 'noch keine MCQs', nextStep: 'Nächster Schritt',
     openArea: 'Details anzeigen', closeArea: 'Details schließen',
@@ -86,7 +86,7 @@ const T = {
     subscriptionActivateCta: 'Abonnement anfragen', subscriptionPromoBadge: 'Promo',
   },
   en: {
-    overview: 'Overview', settings: 'Settings', profileLabel: 'Your profile',
+    overview: 'Overview', settings: 'Settings', contact: 'Contact', profileLabel: 'Your profile',
     account: 'Account', signOut: 'Sign out', memberSince: 'Member since',
     greetMorning: 'Good morning', greetDay: 'Hello', greetEvening: 'Good evening',
     dashboardEyebrow: 'Your learning progress',
@@ -106,9 +106,9 @@ const T = {
     longBoxesHint: 'Show additional Leitner boxes for long-term review.',
     accountSettings: 'Account and security',
     accountSettingsHint: 'Manage email, password, profile image and security options.',
-    manageAccount: 'Manage account', contactTitle: 'Report a problem',
-    contactSub: 'Tell us briefly what is not working. Your message is sent directly to RadYar by email.',
-    problemType: 'What is this about?',
+    manageAccount: 'Manage account', contactTitle: 'Contact',
+    contactSub: 'Report a problem, ask a question or send us an idea. Your message is sent directly to RadYar by email.',
+    problemType: 'Request type',
     problemTypes: ['Technical problem', 'Learning content error', 'Account problem', 'Activate subscription', 'Idea or improvement', 'Other'],
     subject: 'Subject', message: 'Message', subjectPlaceholder: 'Short summary',
     messagePlaceholder: 'What happened? On which page? What did you expect?',
@@ -130,8 +130,8 @@ const T = {
     flashReport: 'Flashcard report', flashSeen: 'started', flashWrong: 'missed',
     flashDue: 'due today', toFlashcards: 'Go to flashcards',
     flashThirtyDays: '30 days reached', flashThirtyDaysHint: 'Cards at or beyond the 30-day stage',
-    lessonsActivity: 'Lessons', practiceActivity: 'MCQ + case exam', flashActivity: 'Flashcards',
-    totalActivity: 'Total', activityTrackingHint: 'The breakdown by learning area is tracked from now on; earlier activity remains available under Total.',
+    lessonsActivity: 'Learning pages', practiceActivity: 'MCQs', flashActivity: 'Flashcards',
+    totalActivity: 'Learning time', activityTrackingHint: 'Only active time on learning pages, MCQs/case exams and flashcards is counted here. Profile, home and other pages are excluded.',
     readAvailable: 'available topics read', flashProgress: 'flashcards at 30-day stage',
     mcqCorrect: 'MCQs correct', noMcqYet: 'no MCQs yet', nextStep: 'Next step',
     openArea: 'Show details', closeArea: 'Hide details',
@@ -146,7 +146,7 @@ const T = {
     subscriptionActivateCta: 'Request subscription', subscriptionPromoBadge: 'Promo',
   },
   fa: {
-    overview: 'نمای کلی', settings: 'تنظیمات', profileLabel: 'پروفایل شما',
+    overview: 'نمای کلی', settings: 'تنظیمات', contact: 'تماس', profileLabel: 'پروفایل شما',
     account: 'حساب کاربری', signOut: 'خروج', memberSince: 'عضو از',
     greetMorning: 'صبح بخیر', greetDay: 'سلام', greetEvening: 'عصر بخیر',
     dashboardEyebrow: 'پیشرفت یادگیری شما', dashboardTitle: 'امروز، قدم مفید بعدی مهم است.',
@@ -164,9 +164,9 @@ const T = {
     longBoxesHint: 'جعبه‌های اضافی لایتنر برای مرور بلندمدت را نمایش می‌دهد.',
     accountSettings: 'حساب و امنیت',
     accountSettingsHint: 'ایمیل، رمز عبور، تصویر پروفایل و امنیت را مدیریت کنید.',
-    manageAccount: 'مدیریت حساب', contactTitle: 'گزارش مشکل',
-    contactSub: 'مشکل را کوتاه توضیح دهید. پیام مستقیماً با ایمیل ارسال می‌شود.',
-    problemType: 'موضوع چیست؟',
+    manageAccount: 'مدیریت حساب', contactTitle: 'تماس',
+    contactSub: 'مشکل، سؤال یا پیشنهاد خود را ارسال کنید. پیام مستقیماً با ایمیل ارسال می‌شود.',
+    problemType: 'نوع پیام',
     problemTypes: ['مشکل فنی', 'خطا در محتوای آموزشی', 'مشکل حساب', 'فعال‌سازی اشتراک', 'ایده یا پیشنهاد', 'سایر'],
     subject: 'عنوان', message: 'پیام', subjectPlaceholder: 'خلاصه کوتاه',
     messagePlaceholder: 'چه اتفاقی افتاد؟ در کدام صفحه؟ چه انتظاری داشتید؟',
@@ -189,8 +189,8 @@ const T = {
     flashReport: 'گزارش فلش‌کارت', flashSeen: 'شروع‌شده', flashWrong: 'بلد نبود',
     flashDue: 'مقرر امروز', toFlashcards: 'رفتن به فلش‌کارت‌ها',
     flashThirtyDays: 'رسیدن به ۳۰ روز', flashThirtyDaysHint: 'کارت‌های مرحله ۳۰ روز یا بالاتر',
-    lessonsActivity: 'درس‌ها', practiceActivity: 'MCQ و آزمون بالینی', flashActivity: 'فلش‌کارت',
-    totalActivity: 'مجموع', activityTrackingHint: 'تفکیک زمان بر اساس بخش آموزشی از این پس ثبت می‌شود؛ فعالیت قبلی در مجموع باقی می‌ماند.',
+    lessonsActivity: 'صفحات آموزشی', practiceActivity: 'MCQ', flashActivity: 'فلش‌کارت',
+    totalActivity: 'زمان یادگیری', activityTrackingHint: 'فقط زمان فعال در صفحات آموزشی، MCQ/آزمون و فلش‌کارت‌ها محاسبه می‌شود.',
     readAvailable: 'موضوع موجود مطالعه‌شده', flashProgress: 'فلش‌کارت در مرحله ۳۰ روز',
     mcqCorrect: 'پاسخ صحیح MCQ', noMcqYet: 'هنوز MCQ ندارد', nextStep: 'گام بعدی',
     openArea: 'نمایش جزئیات', closeArea: 'بستن جزئیات',
@@ -288,6 +288,21 @@ function getActivity(daysByDate, lang) {
       flashcards: Number(stored.categories?.flashcards || 0),
     }
   })
+}
+
+function getLearningActivityTotals(daysByDate) {
+  return Object.values(daysByDate || {}).reduce((totals, day) => {
+    const categories = day.categories || {}
+    const lessons = Number(categories.lessons || 0)
+    const practice = Number(categories.practice || 0)
+    const flashcards = Number(categories.flashcards || 0)
+    return {
+      lessons: totals.lessons + lessons,
+      practice: totals.practice + practice,
+      flashcards: totals.flashcards + flashcards,
+      total: totals.total + lessons + practice + flashcards,
+    }
+  }, { lessons: 0, practice: 0, flashcards: 0, total: 0 })
 }
 
 function getAreaLearningData(progress, leitner, mcqScores) {
@@ -448,6 +463,11 @@ export default function ProfilPage() {
     [progress, leitner, mcqScores]
   )
   const activity = useMemo(() => getActivity(activitySummary.days || {}, lang), [activitySummary.days, lang])
+  const activityTotals = useMemo(() => getLearningActivityTotals(activitySummary.days || {}), [activitySummary.days])
+  const maxActivityDay = Math.max(
+    60,
+    ...activity.map(day => day.lessons + day.practice + day.flashcards)
+  )
 
   if (!isLoaded) return <div className={styles.page}><Navbar /></div>
   if (!user) return (
@@ -551,7 +571,10 @@ export default function ProfilPage() {
 
   function scrollToSubscriptionContact() {
     setContact(prev => ({ ...prev, type: t.problemTypes[3] }))
-    document.getElementById('problem-type')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    setView('contact')
+    window.setTimeout(() => {
+      document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 80)
   }
 
   return (
@@ -572,14 +595,16 @@ export default function ProfilPage() {
             </div>
             <nav className={styles.profileNav} aria-label={t.profileLabel}>
               <button type="button" className={`${styles.profileNavLink} ${view === 'overview' ? styles.profileNavLinkActive : ''}`} onClick={() => selectView('overview')}>
-                <span aria-hidden="true">01</span>{t.overview}
+                <span aria-hidden="true">⌂</span>{t.overview}
               </button>
               <button type="button" className={`${styles.profileNavLink} ${view === 'settings' ? styles.profileNavLinkActive : ''}`} onClick={() => selectView('settings')}>
-                <span aria-hidden="true">02</span>{t.settings}
+                <span aria-hidden="true">⚙</span>{t.settings}
+              </button>
+              <button type="button" className={`${styles.profileNavLink} ${view === 'contact' ? styles.profileNavLinkActive : ''}`} onClick={() => selectView('contact')}>
+                <span aria-hidden="true">✉</span>{t.contact}
               </button>
             </nav>
             <div className={styles.accountActions}>
-              <span className={styles.accountLabel}>{t.account}</span>
               {isAdmin && (
                 <Link href="/admin" className={styles.adminLink}>
                   <span aria-hidden="true">⚙</span>Admin-Dashboard
@@ -613,9 +638,11 @@ export default function ProfilPage() {
                 <section className={styles.metricGrid} aria-label={t.dashboardEyebrow}>
                   <article className={styles.metricCard}><span className={styles.metricIndex}>01</span><strong>{progress.readTopics.length}<small> / {progress.topics.length}</small></strong><p>{t.lessonsRead}</p></article>
                   <article className={styles.metricCard}><span className={styles.metricIndex}>02</span><strong>{activitySummary.streak}</strong><p>{t.streak}</p></article>
-                  <article className={styles.metricCard}><span className={styles.metricIndex}>03</span><strong>{formatDuration(activitySummary.totalSeconds, lang)}</strong><p>{t.activeTime}</p></article>
-                  <article className={styles.metricCard}><span className={styles.metricIndex}>04</span><strong>{activitySummary.visitedDays}</strong><p>{t.visitedDays}</p></article>
-                  <article className={styles.metricCard}><span className={styles.metricIndex}>05</span><strong>{mcqAccuracy}<small>%</small></strong><p>{t.mcqAccuracy}</p></article>
+                  <article className={styles.metricCard}><span className={styles.metricIndex}>03</span><strong>{formatDuration(activityTotals.total, lang)}</strong><p>{t.activeTime}</p></article>
+                  <article className={styles.metricCard}><span className={styles.metricIndex}>04</span><strong>{mcqAccuracy}<small>%</small></strong><p>{t.mcqAccuracy}</p></article>
+                  <article className={styles.metricCard}><span className={styles.metricIndex}>05</span><strong>{formatCompactDuration(activityTotals.lessons, lang)}</strong><p>{t.lessonsActivity}</p></article>
+                  <article className={styles.metricCard}><span className={styles.metricIndex}>06</span><strong>{formatCompactDuration(activityTotals.practice, lang)}</strong><p>{t.practiceActivity}</p></article>
+                  <article className={styles.metricCard}><span className={styles.metricIndex}>07</span><strong>{formatCompactDuration(activityTotals.flashcards, lang)}</strong><p>{t.flashActivity}</p></article>
                 </section>
 
                 <section className={`${styles.card} ${styles.areaCard}`}>
@@ -689,28 +716,37 @@ export default function ProfilPage() {
 
                 <section className={`${styles.card} ${styles.activityCard}`}>
                   <div className={styles.sectionHeading}><div><h2>{t.activity}</h2><p>{t.activitySub}</p></div></div>
+                  <div className={styles.activitySummaryGrid}>
+                    <div><i className={styles.legendLessons} /><strong>{formatCompactDuration(activityTotals.lessons, lang)}</strong><span>{t.lessonsActivity}</span></div>
+                    <div><i className={styles.legendPractice} /><strong>{formatCompactDuration(activityTotals.practice, lang)}</strong><span>{t.practiceActivity}</span></div>
+                    <div><i className={styles.legendFlash} /><strong>{formatCompactDuration(activityTotals.flashcards, lang)}</strong><span>{t.flashActivity}</span></div>
+                  </div>
+                  <div className={styles.activityChart} aria-label={t.activity}>
+                    {activity.map(day => {
+                      const chartTotal = day.lessons + day.practice + day.flashcards
+                      const height = Math.max(4, Math.round((chartTotal / maxActivityDay) * 100))
+                      const lessonPct = chartTotal ? (day.lessons / chartTotal) * 100 : 0
+                      const practicePct = chartTotal ? (day.practice / chartTotal) * 100 : 0
+                      const flashPct = chartTotal ? (day.flashcards / chartTotal) * 100 : 0
+                      return (
+                        <div className={styles.activityDay} key={day.key} title={`${day.label}: ${formatCompactDuration(chartTotal, lang)}`}>
+                          <div className={styles.activityTrack}>
+                            <div className={styles.activityStack} style={{ height: `${height}%` }}>
+                              <span className={styles.activitySegmentLessons} style={{ height: `${lessonPct}%` }} />
+                              <span className={styles.activitySegmentPractice} style={{ height: `${practicePct}%` }} />
+                              <span className={styles.activitySegmentFlash} style={{ height: `${flashPct}%` }} />
+                            </div>
+                          </div>
+                          <small>{day.label}</small>
+                          <b>{formatCompactDuration(chartTotal, lang)}</b>
+                        </div>
+                      )
+                    })}
+                  </div>
                   <div className={styles.activityLegend}>
                     <span><i className={styles.legendLessons} />{t.lessonsActivity}</span>
                     <span><i className={styles.legendPractice} />{t.practiceActivity}</span>
                     <span><i className={styles.legendFlash} />{t.flashActivity}</span>
-                  </div>
-                  <div className={styles.activityTable}>
-                    <div className={`${styles.activityRow} ${styles.activityHeader}`}>
-                      <strong />
-                      <span>{t.lessonsActivity}</span>
-                      <span>{t.practiceActivity}</span>
-                      <span>{t.flashActivity}</span>
-                      <b>{t.totalActivity}</b>
-                    </div>
-                    {activity.map(day => (
-                      <div className={styles.activityRow} key={day.key}>
-                        <strong>{day.label}</strong>
-                        <span className={styles.activityTime}><i className={styles.legendLessons} />{formatCompactDuration(day.lessons, lang)}</span>
-                        <span className={styles.activityTime}><i className={styles.legendPractice} />{formatCompactDuration(day.practice, lang)}</span>
-                        <span className={styles.activityTime}><i className={styles.legendFlash} />{formatCompactDuration(day.flashcards, lang)}</span>
-                        <b>{formatCompactDuration(day.total, lang)}</b>
-                      </div>
-                    ))}
                   </div>
                   <p className={styles.activityHint}>{t.activityTrackingHint}</p>
                 </section>
@@ -772,7 +808,7 @@ export default function ProfilPage() {
                   </div>
                 </section>
               </>
-            ) : (
+            ) : view === 'settings' ? (
               <div className={styles.settingsView}>
                 <div className={styles.settingsHeader}><span>{t.profileLabel}</span><h1>{t.settings}</h1></div>
                 <section className={styles.card}>
@@ -879,7 +915,19 @@ export default function ProfilPage() {
                   </div>
                 </section>
 
-                <section className={`${styles.card} ${styles.contactCard}`}>
+                <section className={`${styles.card} ${styles.dangerCard}`}>
+                  <div className={styles.sectionHeading}><div><h2>{t.dangerZone}</h2><p>{t.dangerHint}</p></div></div>
+                  <div className={styles.dangerActions}>
+                    <button type="button" className={styles.dangerBtn} onClick={handleResetFlashcards}>{t.resetFlashcards}</button>
+                    <button type="button" className={styles.dangerBtn} onClick={handleResetLearning}>{t.resetLearning}</button>
+                  </div>
+                  {resetMsg && <p className={styles.successText}>{resetMsg}</p>}
+                </section>
+              </div>
+            ) : (
+              <div className={styles.settingsView}>
+                <div className={styles.settingsHeader}><span>{t.profileLabel}</span><h1>{t.contactTitle}</h1></div>
+                <section className={`${styles.card} ${styles.contactCard}`} id="contact-form">
                   <div className={styles.sectionHeading}><div><h2>{t.contactTitle}</h2><p>{t.contactSub}</p></div></div>
                   <form className={styles.form} onSubmit={handleContact}>
                     <div className={styles.fieldGroup}>
@@ -908,15 +956,6 @@ export default function ProfilPage() {
                       <button className={styles.saveBtn} disabled={contactState === 'sending'}>{contactState === 'sending' ? t.sending : t.send}</button>
                     </div>
                   </form>
-                </section>
-
-                <section className={`${styles.card} ${styles.dangerCard}`}>
-                  <div className={styles.sectionHeading}><div><h2>{t.dangerZone}</h2><p>{t.dangerHint}</p></div></div>
-                  <div className={styles.dangerActions}>
-                    <button type="button" className={styles.dangerBtn} onClick={handleResetFlashcards}>{t.resetFlashcards}</button>
-                    <button type="button" className={styles.dangerBtn} onClick={handleResetLearning}>{t.resetLearning}</button>
-                  </div>
-                  {resetMsg && <p className={styles.successText}>{resetMsg}</p>}
                 </section>
               </div>
             )}
