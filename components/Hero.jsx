@@ -70,8 +70,8 @@ const FACH_DATA = {
     desc: { de:'Prostata, Blase & männliche Urogenitalorgane', en:'Prostate, bladder & male urogenital organs', fa:'پروستات، مثانه و اندام‌های مردانه' },
   },
   Muskuloskelettales: {
-    color: '#64748b',
-    bg: 'linear-gradient(135deg,#10192a,#1e293b)',
+    color: '#fb923c',
+    bg: 'linear-gradient(135deg,#3a1b0a,#7c2d12)',
     available: false,
     topics: ['Frakturen','Arthrose','Tumoren','Osteochondrose','Sportverletzungen'],
     desc: { de:'Knochen, Gelenke, Muskulatur & Weichteile', en:'Bones, joints, muscles & soft tissue', fa:'استخوان‌ها، مفاصل، عضلات و بافت نرم' },
@@ -110,7 +110,7 @@ const ZONES = [
   {
     id: 'Muskuloskelettales',
     transform: 'translate(8 0)',
-    d: 'M528 318 L538 340 L548 360 L554 390 L560 420 L562 460 L565 500 L572 550 L578 600 L589 650 L600 700 L616 750 L632 800 L648 840 L644 880 L643 910 L645 940 L645 970 L666 1000 L687 1020 L698 1020 L719 1000 L716 970 L739 940 L725 910 L708 880 L685 840 L675 800 L665 750 L657 700 L645 650 L625 600 L614 550 L607 500 L603 460 L604 420 L602 390 L597 360 L586 340 L559 318 Z',
+    d: 'M528 318 L538 340 L548 360 L554 390 L560 420 L562 460 L565 500 L572 550 L578 600 L589 650 L600 700 L616 750 L632 800 L639 820 L642 850 L644 880 L643 920 L645 940 L646 980 L666 1000 L687 1020 L698 1020 L719 1000 L717 980 L713 950 L739 940 L734 930 L731 920 L721 900 L708 880 L691 860 L685 840 L680 820 L675 800 L665 750 L657 700 L645 650 L625 600 L614 550 L607 500 L603 460 L604 420 L602 390 L597 360 L586 340 L559 318 Z',
   },
   {
     id: 'Muskuloskelettales',
