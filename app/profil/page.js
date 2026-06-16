@@ -635,14 +635,41 @@ export default function ProfilPage() {
                   </div>
                 </section>
 
-                <section className={styles.metricGrid} aria-label={t.dashboardEyebrow}>
-                  <article className={styles.metricCard}><span className={styles.metricIndex}>01</span><strong>{progress.readTopics.length}<small> / {progress.topics.length}</small></strong><p>{t.lessonsRead}</p></article>
-                  <article className={styles.metricCard}><span className={styles.metricIndex}>02</span><strong>{activitySummary.streak}</strong><p>{t.streak}</p></article>
-                  <article className={styles.metricCard}><span className={styles.metricIndex}>03</span><strong>{formatDuration(activityTotals.total, lang)}</strong><p>{t.activeTime}</p></article>
-                  <article className={styles.metricCard}><span className={styles.metricIndex}>04</span><strong>{mcqAccuracy}<small>%</small></strong><p>{t.mcqAccuracy}</p></article>
-                  <article className={styles.metricCard}><span className={styles.metricIndex}>05</span><strong>{formatCompactDuration(activityTotals.lessons, lang)}</strong><p>{t.lessonsActivity}</p></article>
-                  <article className={styles.metricCard}><span className={styles.metricIndex}>06</span><strong>{formatCompactDuration(activityTotals.practice, lang)}</strong><p>{t.practiceActivity}</p></article>
-                  <article className={styles.metricCard}><span className={styles.metricIndex}>07</span><strong>{formatCompactDuration(activityTotals.flashcards, lang)}</strong><p>{t.flashActivity}</p></article>
+                <section className={`${styles.card} ${styles.activityCard}`}>
+                  <div className={styles.sectionHeading}><div><h2>{t.activity}</h2><p>{t.activitySub}</p></div></div>
+                  <div className={styles.activitySummaryGrid}>
+                    <div><i className={styles.legendLessons} /><strong>{formatCompactDuration(activityTotals.lessons, lang)}</strong><span>{t.lessonsActivity}</span></div>
+                    <div><i className={styles.legendPractice} /><strong>{formatCompactDuration(activityTotals.practice, lang)}</strong><span>{t.practiceActivity}</span></div>
+                    <div><i className={styles.legendFlash} /><strong>{formatCompactDuration(activityTotals.flashcards, lang)}</strong><span>{t.flashActivity}</span></div>
+                  </div>
+                  <div className={styles.activityChart} aria-label={t.activity}>
+                    {activity.map(day => {
+                      const chartTotal = day.lessons + day.practice + day.flashcards
+                      const height = Math.max(4, Math.round((chartTotal / maxActivityDay) * 100))
+                      const lessonPct = chartTotal ? (day.lessons / chartTotal) * 100 : 0
+                      const practicePct = chartTotal ? (day.practice / chartTotal) * 100 : 0
+                      const flashPct = chartTotal ? (day.flashcards / chartTotal) * 100 : 0
+                      return (
+                        <div className={styles.activityDay} key={day.key} title={`${day.label}: ${formatCompactDuration(chartTotal, lang)}`}>
+                          <div className={styles.activityTrack}>
+                            <div className={styles.activityStack} style={{ height: `${height}%` }}>
+                              <span className={styles.activitySegmentLessons} style={{ height: `${lessonPct}%` }} />
+                              <span className={styles.activitySegmentPractice} style={{ height: `${practicePct}%` }} />
+                              <span className={styles.activitySegmentFlash} style={{ height: `${flashPct}%` }} />
+                            </div>
+                          </div>
+                          <small>{day.label}</small>
+                          <b>{formatCompactDuration(chartTotal, lang)}</b>
+                        </div>
+                      )
+                    })}
+                  </div>
+                  <div className={styles.activityLegend}>
+                    <span><i className={styles.legendLessons} />{t.lessonsActivity}</span>
+                    <span><i className={styles.legendPractice} />{t.practiceActivity}</span>
+                    <span><i className={styles.legendFlash} />{t.flashActivity}</span>
+                  </div>
+                  <p className={styles.activityHint}>{t.activityTrackingHint}</p>
                 </section>
 
                 <section className={`${styles.card} ${styles.areaCard}`}>
@@ -714,43 +741,6 @@ export default function ProfilPage() {
                   </div>
                 </section>
 
-                <section className={`${styles.card} ${styles.activityCard}`}>
-                  <div className={styles.sectionHeading}><div><h2>{t.activity}</h2><p>{t.activitySub}</p></div></div>
-                  <div className={styles.activitySummaryGrid}>
-                    <div><i className={styles.legendLessons} /><strong>{formatCompactDuration(activityTotals.lessons, lang)}</strong><span>{t.lessonsActivity}</span></div>
-                    <div><i className={styles.legendPractice} /><strong>{formatCompactDuration(activityTotals.practice, lang)}</strong><span>{t.practiceActivity}</span></div>
-                    <div><i className={styles.legendFlash} /><strong>{formatCompactDuration(activityTotals.flashcards, lang)}</strong><span>{t.flashActivity}</span></div>
-                  </div>
-                  <div className={styles.activityChart} aria-label={t.activity}>
-                    {activity.map(day => {
-                      const chartTotal = day.lessons + day.practice + day.flashcards
-                      const height = Math.max(4, Math.round((chartTotal / maxActivityDay) * 100))
-                      const lessonPct = chartTotal ? (day.lessons / chartTotal) * 100 : 0
-                      const practicePct = chartTotal ? (day.practice / chartTotal) * 100 : 0
-                      const flashPct = chartTotal ? (day.flashcards / chartTotal) * 100 : 0
-                      return (
-                        <div className={styles.activityDay} key={day.key} title={`${day.label}: ${formatCompactDuration(chartTotal, lang)}`}>
-                          <div className={styles.activityTrack}>
-                            <div className={styles.activityStack} style={{ height: `${height}%` }}>
-                              <span className={styles.activitySegmentLessons} style={{ height: `${lessonPct}%` }} />
-                              <span className={styles.activitySegmentPractice} style={{ height: `${practicePct}%` }} />
-                              <span className={styles.activitySegmentFlash} style={{ height: `${flashPct}%` }} />
-                            </div>
-                          </div>
-                          <small>{day.label}</small>
-                          <b>{formatCompactDuration(chartTotal, lang)}</b>
-                        </div>
-                      )
-                    })}
-                  </div>
-                  <div className={styles.activityLegend}>
-                    <span><i className={styles.legendLessons} />{t.lessonsActivity}</span>
-                    <span><i className={styles.legendPractice} />{t.practiceActivity}</span>
-                    <span><i className={styles.legendFlash} />{t.flashActivity}</span>
-                  </div>
-                  <p className={styles.activityHint}>{t.activityTrackingHint}</p>
-                </section>
-
                 <section className={styles.dashboardTwoCol}>
                   <div className={styles.card}>
                     <div className={styles.sectionHeading}><div><h2>{t.flashReport}</h2><p>{t.flashThirtyDaysHint}</p></div><Link href="/flashcards">{t.toFlashcards} →</Link></div>
@@ -800,6 +790,11 @@ export default function ProfilPage() {
                   </div>
                   <div className={styles.card}>
                     <div className={styles.sectionHeading}><div><h2>{t.unreadLessons}</h2></div></div>
+                    <div className={styles.lessonSummaryGrid}>
+                      <div><strong>{formatDuration(activityTotals.total, lang)}</strong><span>{t.activeTime}</span></div>
+                      <div><strong>{activitySummary.streak}</strong><span>{t.streak}</span></div>
+                      <div><strong>{progress.readTopics.length}<small> / {progress.topics.length}</small></strong><span>{t.lessonsRead}</span></div>
+                    </div>
                     <div className={styles.lessonList}>
                       {progress.unreadTopics.slice(0, 10).map(({ fach: area, thema }) => (
                         <Link key={thema.id} href={thema.link}><span>○</span><div><strong>{getThemaTitle(thema, lang)}</strong><small>{getFachTitle(area, lang)} · {t.openLesson}</small></div></Link>
@@ -811,6 +806,34 @@ export default function ProfilPage() {
             ) : view === 'settings' ? (
               <div className={styles.settingsView}>
                 <div className={styles.settingsHeader}><span>{t.profileLabel}</span><h1>{t.settings}</h1></div>
+                <section className={styles.card}>
+                  <div className={styles.sectionHeading}><div><h2>{t.subscriptionTitle}</h2></div></div>
+                  <div className={styles.settingsRow}>
+                    <div className={styles.settingsText}>
+                      {subscriptionActive ? (
+                        <strong>
+                          {t.subscriptionActiveUntil} {subscription.until ? new Date(subscription.until).toLocaleDateString(lang === 'fa' ? 'fa-IR' : lang === 'en' ? 'en-GB' : 'de-DE') : '—'}
+                          {subscription.promo && <span className={styles.badge} style={{ marginInlineStart: 8 }}>{t.subscriptionPromoBadge}</span>}
+                        </strong>
+                      ) : (
+                        <strong>{t.subscriptionInactive}</strong>
+                      )}
+                      <p>{t.subscriptionManualHint}</p>
+                    </div>
+                    {!subscriptionActive && (
+                      <button type="button" className={styles.outlineBtn} onClick={scrollToSubscriptionContact}>{t.subscriptionActivateCta}</button>
+                    )}
+                  </div>
+                  {!subscriptionActive && (
+                    <>
+                      <div className={styles.settingsDivider} />
+                      <div className={styles.badges}>
+                        <span className={styles.badge}>{t.subscriptionPromoBanner}</span>
+                      </div>
+                    </>
+                  )}
+                </section>
+
                 <section className={styles.card}>
                   <div className={styles.sectionHeading}><div><h2>{t.clerkData}</h2><p>{t.clerkDataHint}</p></div></div>
                   <div className={styles.accountDataGrid}>
@@ -855,34 +878,6 @@ export default function ProfilPage() {
                 </section>
 
                 <section className={styles.card}>
-                  <div className={styles.sectionHeading}><div><h2>{t.subscriptionTitle}</h2></div></div>
-                  <div className={styles.settingsRow}>
-                    <div className={styles.settingsText}>
-                      {subscriptionActive ? (
-                        <strong>
-                          {t.subscriptionActiveUntil} {subscription.until ? new Date(subscription.until).toLocaleDateString(lang === 'fa' ? 'fa-IR' : lang === 'en' ? 'en-GB' : 'de-DE') : '—'}
-                          {subscription.promo && <span className={styles.badge} style={{ marginInlineStart: 8 }}>{t.subscriptionPromoBadge}</span>}
-                        </strong>
-                      ) : (
-                        <strong>{t.subscriptionInactive}</strong>
-                      )}
-                      <p>{t.subscriptionManualHint}</p>
-                    </div>
-                    {!subscriptionActive && (
-                      <button type="button" className={styles.outlineBtn} onClick={scrollToSubscriptionContact}>{t.subscriptionActivateCta}</button>
-                    )}
-                  </div>
-                  {!subscriptionActive && (
-                    <>
-                      <div className={styles.settingsDivider} />
-                      <div className={styles.badges}>
-                        <span className={styles.badge}>{t.subscriptionPromoBanner}</span>
-                      </div>
-                    </>
-                  )}
-                </section>
-
-                <section className={styles.card}>
                   <div className={styles.sectionHeading}><div><h2>{t.appSettings}</h2></div></div>
                   <div className={styles.settingsRow}>
                     <div className={styles.settingsText}><strong>{t.dailyGoal}</strong><p>{t.dailyGoalHint}</p></div>
@@ -907,11 +902,6 @@ export default function ProfilPage() {
                       }} role="switch" aria-checked={settings.longBoxesEnabled}>
                       <span className={styles.toggleKnob} />
                     </button>
-                  </div>
-                  <div className={styles.settingsDivider} />
-                  <div className={styles.settingsRow}>
-                    <div className={styles.settingsText}><strong>{t.accountSettings}</strong><p>{t.accountSettingsHint}</p></div>
-                    <button type="button" className={styles.outlineBtn} onClick={() => openUserProfile()}>{t.manageAccount}</button>
                   </div>
                 </section>
 
