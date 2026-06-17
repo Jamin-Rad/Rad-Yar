@@ -1,20 +1,33 @@
 .footer {
-  padding: 32px 7vw; display: flex; align-items: center;
+  padding: 28px 7vw; display: flex; align-items: center;
   justify-content: space-between; flex-wrap: wrap; gap: 14px;
-  background: #fff; border-top: 1px solid #e2e6f0;
+  background: linear-gradient(135deg, #fff1f2 0%, #fce7f3 50%, #f5f3ff 100%);
+  border-top: 1px solid rgba(236, 72, 153, 0.15);
 }
-.brand { font-family: var(--font-syne,'Syne',sans-serif); font-size: 18px; font-weight: 800; letter-spacing:.04em; }
-.r { color: #1a2051; }
-.y { background: linear-gradient(130deg,#f97316,#fbbf24); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-.copy { font-size: 11.5px; color: #94a3b8; }
-.legalLink { font-size: 12.5px; font-weight: 700; color: #64748b; text-decoration: none; }
-.legalLink:hover { color: #f97316; text-decoration: underline; }
 
+/* ── Logo + Link links ─────────────────────────── */
+.brandLeft {
+  display: flex; align-items: center; gap: 10px;
+}
+.brandLink {
+  font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
+  font-style: italic; font-weight: 900; font-size: 16px;
+  color: #9d174d; text-decoration: none; letter-spacing: -.02em;
+  transition: color .18s;
+}
+.brandLink:hover { color: #be185d; text-decoration: underline; }
+
+/* ── Copyright rechts ──────────────────────────── */
+.copy {
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
+  font-size: 11.5px; color: #94a3b8;
+}
+
+/* ── Dark Mode ─────────────────────────────────── */
 :global(html[data-theme='dark']) .footer {
   background: rgba(8, 13, 25, 0.96);
   border-top-color: rgba(148,163,184,0.14);
 }
-:global(html[data-theme='dark']) .r { color: #f8fafc; }
+:global(html[data-theme='dark']) .brandLink { color: #f9a8d4; }
+:global(html[data-theme='dark']) .brandLink:hover { color: #fbcfe8; }
 :global(html[data-theme='dark']) .copy { color: rgba(203,213,225,0.64); }
-:global(html[data-theme='dark']) .legalLink { color: rgba(203,213,225,0.78); }
-:global(html[data-theme='dark']) .legalLink:hover { color: #fbbf24; }
