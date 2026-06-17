@@ -22,7 +22,7 @@ export const REF_COPY = {
     btnMesswerteSub: 'Normwerte, Grenzwerte und Messpunkte nach Körperregion.',
     btnKlass: 'Klassifikationen & Scores',
     btnKlassSub: 'Radiologische Scoring-Systeme und Einteilungen – kompakt und vollständig.',
-    chipsMesswerte: ['Neuro', 'Thorax', 'Abdomen', 'Urogenital', 'Gefäße', 'MSK'],
+    chipsMesswerte: ['Neuro', 'Thorax', 'Herz', 'Abdomen', 'Urogenital', 'Wirbelsäule', 'CT-HE'],
     chipsKlass: ['BI-RADS', 'LI-RADS', 'PI-RADS', 'Fazekas', 'Bosniak', 'RECIST'],
     chooseRegion: 'Bereich wählen',
     chooseTopic: 'Thema wählen',
@@ -48,7 +48,7 @@ export const REF_COPY = {
     btnMesswerteSub: 'Normal values, thresholds and measurement points by body region.',
     btnKlass: 'Classifications & Scores',
     btnKlassSub: 'Radiology scoring systems and grading – compact and full.',
-    chipsMesswerte: ['Neuro', 'Thorax', 'Abdomen', 'Urogenital', 'Vessels', 'MSK'],
+    chipsMesswerte: ['Neuro', 'Thorax', 'Heart', 'Abdomen', 'Urogenital', 'Spine', 'CT-HU'],
     chipsKlass: ['BI-RADS', 'LI-RADS', 'PI-RADS', 'Fazekas', 'Bosniak', 'RECIST'],
     chooseRegion: 'Choose area',
     chooseTopic: 'Choose topic',
@@ -74,7 +74,7 @@ export const REF_COPY = {
     btnMesswerteSub: 'مقادیر طبیعی، حدود و نقاط اندازه‌گیری بر اساس ناحیه بدن.',
     btnKlass: 'طبقه‌بندی‌ها و اسکورها',
     btnKlassSub: 'سیستم‌های امتیازدهی و درجه‌بندی رادیولوژی – خلاصه و کامل.',
-    chipsMesswerte: ['نورو', 'توراکس', 'شکم', 'اوروژنیتال', 'عروق', 'MSK'],
+    chipsMesswerte: ['نورو', 'توراکس', 'قلب', 'شکم', 'اوروژنیتال', 'ستون فقرات', 'CT-HU'],
     chipsKlass: ['BI-RADS', 'LI-RADS', 'PI-RADS', 'فازکاس', 'بوسنیاک', 'RECIST'],
     chooseRegion: 'انتخاب بخش',
     chooseTopic: 'انتخاب موضوع',
@@ -95,75 +95,183 @@ export const REF_COPY = {
 
 // ── Messwerte ────────────────────────────────────────────────
 export const MESSWERTE = [
+  // ── 1. Neuro / Kopf-Hals ────────────────────────────────────
   {
     id: 'neuro', color: '#7c3aed',
     name: { de: 'Neuro / Kopf-Hals', en: 'Neuro / Head & Neck', fa: 'نورو / سر و گردن' },
     entries: [
-      { s: { de: '3. Ventrikel', en: '3rd ventricle', fa: 'بطن سوم' }, v: '< 10 mm', h: { de: 'Erweitert bei Hydrozephalus', en: 'Dilated in hydrocephalus', fa: 'گشاد در هیدروسفالی' } },
-      { s: { de: 'Evans-Index', en: 'Evans index', fa: 'شاخص ایوانز' }, v: '< 0,30', h: { de: 'Frontalhorn / max. Schädelbreite', en: 'Frontal horn / max. skull width', fa: 'شاخ فرونتال / حداکثر عرض جمجمه' } },
-      { s: { de: 'Hypophyse (Höhe)', en: 'Pituitary (height)', fa: 'هیپوفیز (ارتفاع)' }, v: '≤ 9 mm', h: { de: 'Bis 12 mm in der Schwangerschaft', en: 'Up to 12 mm in pregnancy', fa: 'تا ۱۲ میلی‌متر در بارداری' } },
-      { s: { de: 'Optikusscheide (ONSD)', en: 'Optic nerve sheath', fa: 'غلاف عصب بینایی' }, v: '< 5,7 mm', h: { de: 'Erhöht bei Hirndruck ↑', en: 'Raised with raised ICP', fa: 'افزایش در فشار داخل جمجمه' } },
-      { s: { de: 'Schilddrüsenlappen (Tiefe)', en: 'Thyroid lobe (depth)', fa: 'لوب تیروئید (عمق)' }, v: '< 2 cm', h: { de: 'a-p Durchmesser je Lappen', en: 'AP diameter per lobe', fa: 'قطر قدامی-خلفی هر لوب' } },
-      { s: { de: 'Halslymphknoten (kurze Achse)', en: 'Cervical node (short axis)', fa: 'گره لنفاوی گردن' }, v: '< 10 mm', h: { de: 'Jugulodigastrisch bis 11 mm', en: 'Jugulodigastric up to 11 mm', fa: 'ژوگولودیگاستریک تا ۱۱ میلی‌متر' } },
+      // Ventrikel
+      { s: { de: 'Vorderhorn Seitenventrikel (< 40 J.)', en: 'Lat. ventricle frontal horn (< 40 y)', fa: 'شاخ قدامی بطن جانبی (< ۴۰ سال)' }, v: '≤ 12 mm', h: { de: 'In Höhe Foramen Monroi', en: 'At foramen of Monro', fa: 'در سطح فورامن مونرو' } },
+      { s: { de: 'Vorderhorn Seitenventrikel (> 40 J.)', en: 'Lat. ventricle frontal horn (> 40 y)', fa: 'شاخ قدامی بطن جانبی (> ۴۰ سال)' }, v: '≤ 15 mm', h: { de: 'Altersbedingte Normweitung', en: 'Age-related normal widening', fa: 'گشادی طبیعی وابسته به سن' } },
+      { s: { de: 'III. Ventrikel (Kind)', en: '3rd ventricle (child)', fa: 'بطن سوم (کودک)' }, v: '≤ 5 mm', h: { de: 'Säuglinge etwas mehr normal', en: 'Infants slightly more normal', fa: 'نوزادان کمی بیشتر' } },
+      { s: { de: 'III. Ventrikel (Erw. < 60 J.)', en: '3rd ventricle (adult < 60 y)', fa: 'بطن سوم (بزرگسال < ۶۰)' }, v: '≤ 7 mm', h: { de: 'Erweiterung → Hydrozephalus oder Atrophie', en: 'Dilation → hydrocephalus or atrophy', fa: 'گشادی → هیدروسفالی یا آتروفی' } },
+      { s: { de: 'III. Ventrikel (Erw. > 60 J.)', en: '3rd ventricle (adult > 60 y)', fa: 'بطن سوم (بزرگسال > ۶۰)' }, v: '≤ 9 mm', h: { de: 'Altersbezogene Normweitung', en: 'Age-related normal widening', fa: 'گشادی طبیعی وابسته به سن' } },
+      { s: { de: 'Evans-Index', en: 'Evans index', fa: 'شاخص ایوانز' }, v: '< 0,30', h: { de: 'Frontalhorn / max. Schädelbreite; ≥ 0,3 = Hydrozephalus', en: 'Frontal horn / max. skull width; ≥ 0.3 = hydrocephalus', fa: '≥ ۰٫۳ = هیدروسفالی' } },
+      // Sehnerv
+      { s: { de: 'N. opticus retrobulbär (axial)', en: 'Optic nerve retrobulbar (axial)', fa: 'عصب بینایی رتروبولبار' }, v: '5,5 ± 0,8 mm', h: { de: '3 mm hinter dem Bulbus gemessen', en: 'Measured 3 mm behind the globe', fa: '۳ میلی‌متر پشت چشم اندازه‌گیری می‌شود' } },
+      { s: { de: 'N. opticus Taille / Orbitamitte (axial)', en: 'Optic nerve waist / mid-orbit (axial)', fa: 'تنه عصب بینایی / میانه مدار' }, v: '4,2 ± 0,6 mm', h: { de: 'Schmalste Stelle in Orbitamitte', en: 'Narrowest point at orbital midpoint', fa: 'باریکترین نقطه در مرکز مدار' } },
+      { s: { de: 'Optikusscheide (ONSD)', en: 'Optic nerve sheath diam. (ONSD)', fa: 'قطر غلاف عصب بینایی' }, v: '< 5,7 mm', h: { de: '> 5,7 mm → Hirndruck ↑', en: '> 5.7 mm → raised ICP', fa: '> ۵٫۷ میلی‌متر → فشار داخل جمجمه ↑' } },
+      // Hypophyse
+      { s: { de: 'Hypophyse (Höhe, sagittal)', en: 'Pituitary gland (height, sagittal)', fa: 'هیپوفیز (ارتفاع، ساژیتال)' }, v: '2–7 mm', h: { de: 'Schwangerschaft bis 12 mm; Pubertät: ♀ bis 10 mm, ♂ bis 8 mm', en: 'Pregnancy up to 12 mm; puberty: ♀ up to 10 mm, ♂ up to 8 mm', fa: 'بارداری تا ۱۲ میلی‌متر؛ بلوغ: ♀ تا ۱۰، ♂ تا ۸' } },
+      // Innerer Gehörgang
+      { s: { de: 'Innerer Gehörgang (IAC)', en: 'Internal auditory canal (IAC)', fa: 'کانال شنوایی داخلی' }, v: '5–10 mm', h: { de: 'Seitendifferenz < 1 mm; > 10 mm → Abklärung (z. B. Vestibularisschwannom)', en: 'Side difference < 1 mm; > 10 mm → work-up (e.g. vestibular schwannoma)', fa: 'اختلاف دو طرف < ۱ میلی‌متر؛ > ۱۰ → بررسی' } },
+      // Schilddrüse
+      { s: { de: 'Schilddrüse – Länge (je Lappen)', en: 'Thyroid – length (per lobe)', fa: 'تیروئید – طول (هر لوب)' }, v: '3,5–6 cm', h: { de: 'Volumen je Lappen: ♂ ≤ 18 ml, ♀ ≤ 12 ml', en: 'Volume per lobe: ♂ ≤ 18 ml, ♀ ≤ 12 ml', fa: 'حجم هر لوب: ♂ ≤ ۱۸ میلی‌لیتر، ♀ ≤ ۱۲' } },
+      { s: { de: 'Schilddrüse – Breite / Tiefe', en: 'Thyroid – width / depth', fa: 'تیروئید – عرض / عمق' }, v: 'B: 1,5–2 cm / T: 1–2 cm', h: { de: 'a-p Tiefe ≤ 2 cm (= Hauptkennmaß)', en: 'AP depth ≤ 2 cm (main criterion)', fa: 'عمق قدامی-خلفی ≤ ۲ سانتی‌متر (معیار اصلی)' } },
+      // Lymphknoten
+      { s: { de: 'Halslymphknoten (kurze Achse)', en: 'Cervical lymph node (short axis)', fa: 'گره لنفاوی گردن (محور کوتاه)' }, v: '< 10 mm', h: { de: 'Jugulodigastrisch bis 11 mm; Retropharyngeal bis 8 mm', en: 'Jugulodigastric up to 11 mm; retropharyngeal up to 8 mm', fa: 'ژوگولودیگاستریک تا ۱۱ میلی‌متر؛ رتروفارنژیال تا ۸' } },
     ],
   },
+
+  // ── 2. Thorax / Lunge ───────────────────────────────────────
   {
     id: 'thorax', color: '#0ea5e9',
-    name: { de: 'Thorax', en: 'Thorax', fa: 'توراکس' },
+    name: { de: 'Thorax / Lunge', en: 'Thorax / Lung', fa: 'توراکس / ریه' },
     entries: [
-      { s: { de: 'Aorta ascendens', en: 'Ascending aorta', fa: 'آئورت صعودی' }, v: '< 4,0 cm', h: { de: 'OP-Indikation ab ≥ 5,5 cm', en: 'Surgery from ≥ 5.5 cm', fa: 'جراحی از ۵٫۵ سانتی‌متر' } },
-      { s: { de: 'Aorta descendens', en: 'Descending aorta', fa: 'آئورت نزولی' }, v: '< 3,0 cm', h: { de: 'Aneurysma ab ≥ 4 cm', en: 'Aneurysm from ≥ 4 cm', fa: 'آنوریسم از ۴ سانتی‌متر' } },
-      { s: { de: 'Truncus pulmonalis', en: 'Pulmonary trunk', fa: 'تنه ریوی' }, v: '< 2,9 cm', h: { de: 'PH wahrscheinlich, wenn > Aorta asc.', en: 'PH likely if > ascending aorta', fa: 'احتمال PH اگر > آئورت صعودی' } },
-      { s: { de: 'Trachea (quer)', en: 'Trachea (transverse)', fa: 'نای (عرضی)' }, v: '♂ ≤ 25 / ♀ ≤ 21 mm', h: { de: 'Tracheomegalie darüber', en: 'Tracheomegaly above', fa: 'تراکئومگالی بالاتر' } },
-      { s: { de: 'Herz-Thorax-Quotient (Rö)', en: 'Cardiothoracic ratio (CXR)', fa: 'نسبت قلبی-قفسه‌ای' }, v: '< 0,5', h: { de: 'Nur im p.a.-Stehen verwertbar', en: 'Valid only on erect PA film', fa: 'فقط در نمای PA ایستاده' } },
-      { s: { de: 'Lungenrundherd – Kontrolle', en: 'Pulmonary nodule – follow-up', fa: 'ندول ریوی – پیگیری' }, v: 'solide ≥ 8 mm', h: { de: 'Verlauf nach Fleischner-Kriterien', en: 'Follow Fleischner criteria', fa: 'طبق معیار فلایشنر' } },
+      // Aorta thorakalis
+      { s: { de: 'Aorta ascendens – Pulmonalarterienbif.', en: 'Ascending aorta – PA bifurcation', fa: 'آئورت صعودی – سطح تقسیم PA' }, v: '3,2 ± 0,5 cm', h: { de: 'OP-Indikation ab ≥ 5,5 cm (♀ ab 5,0 cm)', en: 'Surgery from ≥ 5.5 cm (♀ from 5.0 cm)', fa: 'جراحی از ۵٫۵ سانتی‌متر' } },
+      { s: { de: 'Aorta ascendens – Aortenwurzel', en: 'Ascending aorta – aortic root', fa: 'آئورت صعودی – ریشه آئورت' }, v: '3,7 ± 0,3 cm', h: { de: 'Verhältnis asc./desc. ≈ 1,5 : 1', en: 'Ratio ascending/descending ≈ 1.5 : 1', fa: 'نسبت صعودی/نزولی ≈ ۱٫۵ : ۱' } },
+      { s: { de: 'Aorta descendens', en: 'Descending aorta', fa: 'آئورت نزولی' }, v: '2,5 ± 0,4 cm', h: { de: 'Aneurysma ab ≥ 4 cm; OP ab ≥ 5,5 cm', en: 'Aneurysm ≥ 4 cm; surgery ≥ 5.5 cm', fa: 'آنوریسم از ۴؛ جراحی از ۵٫۵' } },
+      { s: { de: 'Aortenbogen', en: 'Aortic arch', fa: 'قوس آئورت' }, v: '2,5 ± 1,2 cm', h: { de: 'Variabel je Atemphase und Messpunkt', en: 'Variable by respiratory phase and level', fa: 'متغیر بر اساس فاز تنفسی' } },
+      // Pulmonalgefäße
+      { s: { de: 'Truncus pulmonalis', en: 'Pulmonary trunk', fa: 'تنه ریوی' }, v: '2,4 ± 0,2 cm', h: { de: 'PH wahrscheinlich wenn > Aorta ascendens', en: 'PH likely if > ascending aorta', fa: 'احتمال PH اگر > آئورت صعودی' } },
+      { s: { de: 'Re. Pulmonalarterie (proximal)', en: 'Right PA (proximal)', fa: 'شریان ریوی راست (پروگزیمال)' }, v: '1,9 ± 0,3 cm', h: { de: 'Distal re. PA: 1,5 ± 0,3 cm; li. PA: 2,1 ± 0,4 cm', en: 'Distal right PA: 1.5 ± 0.3 cm; left PA: 2.1 ± 0.4 cm', fa: 'PA راست دیستال: ۱٫۵ ± ۰٫۳؛ PA چپ: ۲٫۱ ± ۰٫۴' } },
+      { s: { de: 'V. cava superior (Aortenbogen-Höhe)', en: 'SVC (aortic arch level)', fa: 'ورید اجوف فوقانی' }, v: '1,4 ± 0,4 cm', h: { de: 'Höhe Pulmonalarterienbif.: 2,0 ± 0,4 cm', en: 'At PA bifurcation: 2.0 ± 0.4 cm', fa: 'در سطح بایفورکاسیون PA: ۲٫۰ ± ۰٫۴' } },
+      // Atemwege
+      { s: { de: 'Trachea (quer)', en: 'Trachea (transverse)', fa: 'نای (عرضی)' }, v: '♂ ≤ 25 / ♀ ≤ 21 mm', h: { de: 'Tracheomegalie darüber; Tracheomazie < 70 % Kollaps', en: 'Tracheomegaly above; tracheomalacia < 70% collapse', fa: 'تراکئومگالی بالاتر' } },
+      { s: { de: 'Hauptbronchus rechts', en: 'Right main bronchus', fa: 'برونش اصلی راست' }, v: '~15 mm', h: { de: 'Steiler Abgang (25°); kürzer als links', en: 'Steeper take-off (25°); shorter than left', fa: 'زاویه تندتر (۲۵°)؛ کوتاه‌تر از چپ' } },
+      { s: { de: 'Hauptbronchus links', en: 'Left main bronchus', fa: 'برونش اصلی چپ' }, v: '~13 mm', h: { de: 'Flacherer Abgang (45°); länger als rechts', en: 'Flatter take-off (45°); longer than right', fa: 'زاویه ملایم‌تر (۴۵°)؛ طولانی‌تر از راست' } },
+      { s: { de: 'Thymus (Querdurchmesser)', en: 'Thymus (transverse diameter)', fa: 'تیموس (قطر عرضی)' }, v: '1–2 cm', h: { de: 'Bei Erwachsenen; Involution variabel ab 20. Lj.', en: 'In adults; involution variable from age 20', fa: 'در بزرگسالان؛ تحلیل از سن ۲۰ سالگی' } },
+      { s: { de: 'Herz-Thorax-Quotient (Rö)', en: 'Cardiothoracic ratio (CXR)', fa: 'نسبت قلبی-قفسه‌ای' }, v: '< 0,5', h: { de: 'Nur im p.a.-Stehen auswertbar', en: 'Valid only on erect PA film', fa: 'فقط در نمای PA ایستاده' } },
+      { s: { de: 'Lungenrundherd – Verlaufsschwelle', en: 'Pulmonary nodule – follow-up threshold', fa: 'ندول ریوی – آستانه پیگیری' }, v: 'solide ≥ 8 mm', h: { de: 'Management nach Fleischner-Gesellschaft 2017', en: 'Management per Fleischner Society 2017', fa: 'طبق دستورالعمل فلایشنر ۲۰۱۷' } },
     ],
   },
+
+  // ── 3. Herz ─────────────────────────────────────────────────
+  {
+    id: 'herz', color: '#be185d',
+    name: { de: 'Herz', en: 'Heart', fa: 'قلب' },
+    entries: [
+      { s: { de: 'Re. Vorhof – transversal (max.)', en: 'Right atrium – transverse (max.)', fa: 'دهلیز راست – عرضی' }, v: '≤ 4,4 cm', h: { de: 'Höhe Aortenwurzel: 1,9 ± 0,8 cm; Höhe Mitralklappe: 3,2 ± 1,2 cm', en: 'Aortic root level: 1.9 ± 0.8 cm; mitral valve: 3.2 ± 1.2 cm', fa: 'سطح ریشه آئورت: ۱٫۹ ± ۰٫۸؛ میترال: ۳٫۲ ± ۱٫۲' } },
+      { s: { de: 'Li. Vorhof – a-p (max.)', en: 'Left atrium – AP (max.)', fa: 'دهلیز چپ – قدامی-خلفی' }, v: '≤ 4–5 cm', h: { de: 'Höhe Aortenwurzel: 2,4–4,5 cm; Höhe Mitralklappe: 2,9–4,9 cm', en: 'Aortic root: 2.4–4.5 cm; mitral valve: 2.9–4.9 cm', fa: 'ریشه آئورت: ۲٫۴–۴٫۵؛ میترال: ۲٫۹–۴٫۹' } },
+      { s: { de: 'Li. Vorhof – transversal (max.)', en: 'Left atrium – transverse (max.)', fa: 'دهلیز چپ – عرضی' }, v: '≤ 9 cm', h: { de: 'Höhe Aortenwurzel: 5,5–8,4 cm; Höhe Mitralklappe: 4,9–9,1 cm', en: 'Aortic root: 5.5–8.4 cm; mitral valve: 4.9–9.1 cm', fa: 'ریشه آئورت: ۵٫۵–۸٫۴؛ میترال: ۴٫۹–۹٫۱' } },
+      { s: { de: 'Ventrikelseptum (Dicke)', en: 'Interventricular septum (thickness)', fa: 'سپتوم بین‌بطنی' }, v: '5–10 mm', h: { de: 'Winkel Mediosagittale/Septum = 38°; Hypertrophie > 12 mm', en: 'Angle midsagittal/septum = 38°; hypertrophy > 12 mm', fa: 'زاویه میانی-ساژیتال/سپتوم = ۳۸°؛ هایپرتروفی > ۱۲' } },
+      { s: { de: 'Myokard LV (Wanddicke)', en: 'LV myocardium (wall thickness)', fa: 'میوکارد بطن چپ' }, v: '10–12 mm', h: { de: 'Hypertrophie > 12 mm; Dilatative KMP < 6 mm', en: 'Hypertrophy > 12 mm; dilated CMP < 6 mm', fa: 'هایپرتروفی > ۱۲؛ کاردیومیوپاتی اتساعی < ۶' } },
+      { s: { de: 'Perikard (Dicke)', en: 'Pericardium (thickness)', fa: 'پریکارد' }, v: '1–2 mm', h: { de: 'Konstriktive Perikarditis bei > 4 mm', en: 'Constrictive pericarditis > 4 mm', fa: 'پریکاردیت کانستریکتیو > ۴ میلی‌متر' } },
+    ],
+  },
+
+  // ── 4. Abdomen ──────────────────────────────────────────────
   {
     id: 'abdomen', color: '#f59e0b',
     name: { de: 'Abdomen', en: 'Abdomen', fa: 'شکم' },
     entries: [
-      { s: { de: 'Aorta abdominalis', en: 'Abdominal aorta', fa: 'آئورت شکمی' }, v: '< 3,0 cm', h: { de: 'Aneurysma ab ≥ 3,0 cm; OP ≥ 5,5 cm', en: 'Aneurysm ≥ 3.0 cm; surgery ≥ 5.5 cm', fa: 'آنوریسم از ۳؛ جراحی از ۵٫۵' } },
-      { s: { de: 'Leber (MCL, kraniokaudal)', en: 'Liver (MCL, craniocaudal)', fa: 'کبد (طولی)' }, v: '≤ 15,5 cm', h: { de: 'Hepatomegalie darüber', en: 'Hepatomegaly above', fa: 'هپاتومگالی بالاتر' } },
-      { s: { de: 'Milz (Länge)', en: 'Spleen (length)', fa: 'طحال (طول)' }, v: '≤ 12 cm', h: { de: 'Splenomegalie > 13 cm', en: 'Splenomegaly > 13 cm', fa: 'اسپلنومگالی > ۱۳' } },
-      { s: { de: 'Ductus choledochus (DHC)', en: 'Common bile duct', fa: 'مجرای صفراوی مشترک' }, v: '≤ 6 mm', h: { de: '+1 mm/Dekade > 60 J.; nach CHE bis 10 mm', en: '+1 mm/decade > 60 y; up to 10 mm post-chole', fa: '+۱ میلی‌متر هر دهه > ۶۰ سال' } },
-      { s: { de: 'Ductus pancreaticus', en: 'Pancreatic duct', fa: 'مجرای پانکراس' }, v: '≤ 3 mm', h: { de: 'Im Korpus gemessen', en: 'Measured in body', fa: 'اندازه‌گیری در تنه' } },
-      { s: { de: 'Pfortader', en: 'Portal vein', fa: 'ورید پورت' }, v: '≤ 13 mm', h: { de: 'Erweitert bei portaler Hypertension', en: 'Dilated in portal hypertension', fa: 'گشاد در هایپرتانسیون پورت' } },
-      { s: { de: 'Appendix', en: 'Appendix', fa: 'آپاندیس' }, v: '≤ 6 mm', h: { de: 'Appendizitis ab > 6 mm + Wandverdickung', en: 'Appendicitis > 6 mm + wall thickening', fa: 'آپاندیسیت > ۶ + ضخامت دیواره' } },
+      // Leber
+      { s: { de: 'Leber (kraniokaudal, MCL)', en: 'Liver (craniocaudal, MCL)', fa: 'کبد (طولی)' }, v: '≤ 15,5 cm', h: { de: 'Hepatomegalie darüber; Leberrandwinkel li. ~45°', en: 'Hepatomegaly above; left liver edge angle ~45°', fa: 'هپاتومگالی بالاتر؛ زاویه لبه کبد چپ ~۴۵°' } },
+      { s: { de: 'Li. Leberlappen (ventrodorsal, PVL)', en: 'Left lobe (AP, paravertebral line)', fa: 'لوب چپ کبد (قدامی-خلفی)' }, v: '≤ 5 cm', h: { de: 'In der Paravertebrallinie gemessen', en: 'Measured in the paravertebral line', fa: 'اندازه‌گیری در خط پاراورتبرال' } },
+      { s: { de: 'Lobus caudatus / re. Lappen (Ratio)', en: 'Caudate lobe / right lobe (ratio)', fa: 'لوب کودات / لوب راست (نسبت)' }, v: '0,37 ± 0,16', h: { de: 'Zirrhose-Zeichen ab ≥ 0,65 (typisch 0,88 ± 0,2)', en: 'Cirrhosis sign from ≥ 0.65 (typical 0.88 ± 0.2)', fa: 'نشانه سیروز از ≥ ۰٫۶۵ (معمول ۰٫۸۸ ± ۰٫۲)' } },
+      // Milz
+      { s: { de: 'Milz – Länge', en: 'Spleen – length', fa: 'طحال – طول' }, v: '11–15 cm', h: { de: 'Splenomegalie > 15 cm; Milzindex (B×T×L) normal: 160–440', en: 'Splenomegaly > 15 cm; spleen index (B×T×L) normal: 160–440', fa: 'اسپلنومگالی > ۱۵ سانتی‌متر؛ شاخص طحال ۱۶۰–۴۴۰' } },
+      { s: { de: 'Milz – Breite / Tiefe', en: 'Spleen – width / depth', fa: 'طحال – عرض / عمق' }, v: 'B: 7–10 cm / T: 4–6 cm', h: { de: 'Tiefe > 6 cm: Splenomegalie', en: 'Depth > 6 cm: splenomegaly', fa: 'عمق > ۶ سانتی‌متر: اسپلنومگالی' } },
+      // Pankreas
+      { s: { de: 'Pankreas – Caput / Corpus / Cauda', en: 'Pancreas – head / body / tail', fa: 'پانکراس – سر / تنه / دنباله' }, v: 'C: ≤ 3,5 / K: ≤ 2,5 / D: ≤ 2,5 cm', h: { de: 'Atrophie bei chron. Pankreatitis; lipomatös bei Alter/DM', en: 'Atrophy in chronic pancreatitis; lipomatous in age/DM', fa: 'آتروفی در پانکراتیت مزمن؛ لیپوماتوس در سالمندان/DM' } },
+      { s: { de: 'Ductus pancreaticus (Wirsungianus)', en: 'Pancreatic duct (Wirsung)', fa: 'مجرای پانکراس' }, v: '1–3 mm', h: { de: 'Erweiterung > 3 mm bei Obstruktion / IPMN', en: 'Dilation > 3 mm in obstruction / IPMN', fa: 'گشادی > ۳ میلی‌متر در انسداد / IPMN' } },
+      // Gallenblase & Galle
+      { s: { de: 'Gallenblase (horizontaler Ø)', en: 'Gallbladder (horizontal diam.)', fa: 'کیسه صفرا (قطر افقی)' }, v: '≤ 5 cm', h: { de: 'Hydrops-Verdacht > 5 cm; Wand: 1–3 mm', en: 'Suspect hydrops > 5 cm; wall: 1–3 mm', fa: 'هیدروپس مشکوک > ۵ سانتی‌متر؛ دیواره: ۱–۳ میلی‌متر' } },
+      { s: { de: 'Ductus choledochus (DHC)', en: 'Common bile duct (CBD)', fa: 'مجرای صفراوی مشترک' }, v: '≤ 8 mm', h: { de: 'Nach Cholezystektomie ≤ 10 mm; +1 mm/Dekade > 60 J.', en: 'Post-cholecystectomy ≤ 10 mm; +1 mm/decade > 60 y', fa: 'پس از کوله‌سیستکتومی ≤ ۱۰ میلی‌متر' } },
+      // Pfortader / VCI
+      { s: { de: 'Pfortader', en: 'Portal vein', fa: 'ورید پورت' }, v: '≤ 13 mm', h: { de: 'Portale Hypertension ab > 13 mm; atemvariabel', en: 'Portal hypertension > 13 mm; respiratory variation', fa: 'هایپرتانسیون پورت > ۱۳ میلی‌متر؛ تغییر تنفسی' } },
+      { s: { de: 'V. cava inferior (Querdurchmesser)', en: 'Inferior vena cava (transverse)', fa: 'ورید اجوف تحتانی' }, v: '≤ 2,5 cm', h: { de: 'Atemvariabel; Kollaps bei Hypovolämie', en: 'Respiratory variation; collapse in hypovolaemia', fa: 'تغییر تنفسی؛ کلاپس در هیپوولمی' } },
+      { s: { de: 'Appendix', en: 'Appendix', fa: 'آپاندیس' }, v: '≤ 6 mm', h: { de: 'Appendizitis: > 6 mm + Wandverdickung + KM-Enhancement', en: 'Appendicitis: > 6 mm + wall thickening + contrast enhancement', fa: 'آپاندیسیت: > ۶ + ضخامت دیواره + انهانسمنت' } },
     ],
   },
+
+  // ── 5. Urogenital / Becken ──────────────────────────────────
   {
     id: 'urogenital', color: '#e11d48',
     name: { de: 'Urogenital / Becken', en: 'Urogenital / Pelvis', fa: 'اوروژنیتال / لگن' },
     entries: [
-      { s: { de: 'Niere (Länge)', en: 'Kidney (length)', fa: 'کلیه (طول)' }, v: '9–12 cm', h: { de: 'Seitendifferenz < 1,5 cm', en: 'Side difference < 1.5 cm', fa: 'اختلاف دو طرف < ۱٫۵' } },
-      { s: { de: 'Nebenniere (Schenkel)', en: 'Adrenal limb', fa: 'بازوی آدرنال' }, v: '< 10 mm', h: { de: 'Dicke einzelner Schenkel', en: 'Thickness of single limb', fa: 'ضخامت هر بازو' } },
-      { s: { de: 'Prostata (Volumen)', en: 'Prostate (volume)', fa: 'پروستات (حجم)' }, v: '< 30 ml', h: { de: 'Vergrößerung bei BPH', en: 'Enlarged in BPH', fa: 'بزرگ در BPH' } },
-      { s: { de: 'Endometrium (postmenopausal)', en: 'Endometrium (postmenopausal)', fa: 'آندومتر (یائسگی)' }, v: '< 5 mm', h: { de: 'Abklärung bei Blutung ab > 4–5 mm', en: 'Work-up if bleeding > 4–5 mm', fa: 'بررسی در خونریزی > ۴–۵' } },
-      { s: { de: 'Ovar (prämenopausal, Vol.)', en: 'Ovary (premenopausal, vol.)', fa: 'تخمدان (پیش از یائسگی)' }, v: '< 10 ml', h: { de: 'Follikel physiologisch < 3 cm', en: 'Follicle physiological < 3 cm', fa: 'فولیکول فیزیولوژیک < ۳' } },
-      { s: { de: 'Harnblasenwand (gefüllt)', en: 'Bladder wall (full)', fa: 'دیواره مثانه (پر)' }, v: '< 3 mm', h: { de: 'Verdickt bei Obstruktion/Entzündung', en: 'Thickened in obstruction/inflammation', fa: 'ضخیم در انسداد/التهاب' } },
+      // Nieren
+      { s: { de: 'Niere – kraniokaudal', en: 'Kidney – craniocaudal', fa: 'کلیه – طول' }, v: '8–13 cm', h: { de: 'Re. Oberkante L1, li. Unterkante Th12; Seitendiff. < 1,5 cm', en: 'Right upper pole L1, left lower Th12; side diff. < 1.5 cm', fa: 'قطب فوقانی راست L1؛ اختلاف دو طرف < ۱٫۵' } },
+      { s: { de: 'Niere – transversal / a-p', en: 'Kidney – transverse / AP', fa: 'کلیه – عرضی / قدامی-خلفی' }, v: 'T: 5–6 cm / AP: ~4 cm', h: { de: 'Quere Nierenachse: Winkel 120° nach dorsal', en: 'Renal axis angle: 120° diverging dorsally', fa: 'زاویه محور کلیه: ۱۲۰° به سمت خلف' } },
+      { s: { de: 'Nierenrinde (Breite)', en: 'Renal cortex (width)', fa: 'قشر کلیه' }, v: '4–5 mm', h: { de: 'Verschmälerung bei chron. Nierenerkrankung', en: 'Thinning in chronic kidney disease', fa: 'نازک‌شدن در بیماری مزمن کلیه' } },
+      { s: { de: 'Ureter (Weite)', en: 'Ureter (width)', fa: 'حالب (عرض)' }, v: '4–7 mm', h: { de: '> 7 mm: Harnstauung / Obstruktion', en: '> 7 mm: hydronephrosis / obstruction', fa: '> ۷ میلی‌متر: هیدرونفروز / انسداد' } },
+      { s: { de: 'Gerota-Faszie (Dicke)', en: "Gerota's fascia (thickness)", fa: 'فاشیای ژروتا' }, v: '1–2 mm', h: { de: 'Verdickt bei perirenaler Entzündung oder Tumor', en: 'Thickened in perirenal inflammation or tumour', fa: 'ضخیم در التهاب یا تومور پیرامون کلیه' } },
+      { s: { de: 'Nebenniere (Schenkeldicke)', en: 'Adrenal (limb thickness)', fa: 'آدرنال (ضخامت بازو)' }, v: '< 10 mm', h: { de: 'Inzidentalom-Abklärung ≥ 10 mm Schenkel', en: 'Incidentaloma work-up ≥ 10 mm limb', fa: 'بررسی انسیدنتالوم اگر ≥ ۱۰ میلی‌متر' } },
+      // Frau
+      { s: { de: 'Uterus (Länge) – präpubertär / Nullipara / Multipara / postmeno.', en: 'Uterus (length) – prepub. / nullip. / multip. / postmeno.', fa: 'رحم (طول) – پیش بلوغ / نولیپار / مولتیپار / یائسگی' }, v: '3 / 8 / 9,5 / 6 cm', h: { de: 'Querdurchmesser: Nullipara ~4 cm, Multipara ~5,5 cm, postmeno. ~2 cm', en: 'Transverse: nulliparous ~4 cm, multiparous ~5.5 cm, postmeno. ~2 cm', fa: 'عرضی: نولیپار ~۴، مولتیپار ~۵٫۵، یائسگی ~۲ سانتی‌متر' } },
+      { s: { de: 'Cervix uteri (Querdurchmesser)', en: 'Cervix uteri (transverse diam.)', fa: 'سرویکس رحم' }, v: '≤ 3 cm', h: { de: 'Gemessen bei aufgerichtetem Uterus (volle Blase)', en: 'Measured with retroverted uterus (full bladder)', fa: 'اندازه‌گیری با مثانه پر' } },
+      { s: { de: 'Endometrium (postmenopausal)', en: 'Endometrium (postmenopausal)', fa: 'آندومتر (پس از یائسگی)' }, v: '< 5 mm', h: { de: 'Abklärung bei vaginaler Blutung ab > 4–5 mm', en: 'Work-up if vaginal bleeding > 4–5 mm', fa: 'بررسی در خونریزی واژینال > ۴–۵ میلی‌متر' } },
+      { s: { de: 'Ovar – Länge (geschlechtsreif)', en: 'Ovary – length (reproductive age)', fa: 'تخمدان – طول (سنین باروری)' }, v: '≤ 4 cm', h: { de: 'Querdurchmesser ≤ 2,5 cm; Volumen < 10 ml; postmeno.: Länge ≤ 3 cm', en: 'Transverse ≤ 2.5 cm; volume < 10 ml; postmeno: length ≤ 3 cm', fa: 'عرضی ≤ ۲٫۵؛ حجم < ۱۰ میلی‌لیتر؛ یائسگی: طول ≤ ۳' } },
+      // Mann
+      { s: { de: 'Prostata – a-p / lateral', en: 'Prostate – AP / lateral', fa: 'پروستات – قدامی-خلفی / جانبی' }, v: 'AP: 2,5–3 cm / L: 3–5 cm', h: { de: 'Altersabhängig (20–70 J.); BPH häufig ab 40 J.', en: 'Age-dependent (20–70 y); BPH common after 40', fa: 'وابسته به سن (۲۰–۷۰ سال)؛ BPH پس از ۴۰' } },
+      { s: { de: 'Samenblasen (Länge / Breite)', en: 'Seminal vesicles (length / width)', fa: 'وزیکول‌های سمینال' }, v: 'L: ≤ 5 cm / B: ≤ 2 cm', h: { de: 'Tiefe bis 2,5 cm; sehr variabel; Atrophie im Alter', en: 'Depth up to 2.5 cm; very variable; atrophy with age', fa: 'عمق تا ۲٫۵ سانتی‌متر؛ آتروفی در سالمندان' } },
+      // Harnblase / Rektum
+      { s: { de: 'Harnblasenwand (bei guter Füllung)', en: 'Bladder wall (full bladder)', fa: 'دیواره مثانه (پر)' }, v: '~3 mm', h: { de: 'Verdickt bei Obstruktion / Entzündung / Tumor', en: 'Thickened in obstruction / inflammation / tumour', fa: 'ضخیم در انسداد / التهاب / تومور' } },
+      { s: { de: 'Rektumwand (Dicke)', en: 'Rectal wall (thickness)', fa: 'دیواره رکتوم' }, v: '≤ 5 mm', h: { de: 'Wandverdickung bei Entzündung / Tumor', en: 'Wall thickening in inflammation / tumour', fa: 'ضخامت دیواره در التهاب / تومور' } },
     ],
   },
+
+  // ── 6. Gefäße ───────────────────────────────────────────────
   {
     id: 'gefaesse', color: '#dc2626',
     name: { de: 'Gefäße', en: 'Vessels', fa: 'عروق' },
     entries: [
-      { s: { de: 'Aortenaneurysma abd.', en: 'Abdominal aortic aneurysm', fa: 'آنوریسم آئورت شکمی' }, v: 'OP ≥ 5,5 cm', h: { de: 'Frau ≥ 5,0 cm; Wachstum > 1 cm/Jahr', en: 'Women ≥ 5.0 cm; growth > 1 cm/yr', fa: 'زنان ≥ ۵؛ رشد > ۱ سانتی‌متر/سال' } },
-      { s: { de: 'A. iliaca communis', en: 'Common iliac artery', fa: 'شریان ایلیاک مشترک' }, v: 'Aneurysma > 1,8 cm', h: { de: 'Normal ~1 cm', en: 'Normal ~1 cm', fa: 'طبیعی حدود ۱ سانتی‌متر' } },
-      { s: { de: 'A. poplitea', en: 'Popliteal artery', fa: 'شریان پوپلیتئال' }, v: 'Aneurysma > 1,0 cm', h: { de: 'Häufig beidseitig', en: 'Often bilateral', fa: 'اغلب دوطرفه' } },
-      { s: { de: 'V. cava inferior', en: 'Inferior vena cava', fa: 'ورید اجوف تحتانی' }, v: '~1,5–2,5 cm', h: { de: 'Atemvariabel; Volumenstatus', en: 'Respiratory variation; volume status', fa: 'تغییر تنفسی؛ وضعیت حجم' } },
-      { s: { de: 'Milzarterienaneurysma', en: 'Splenic artery aneurysm', fa: 'آنوریسم شریان طحالی' }, v: 'Therapie > 2 cm', h: { de: 'In Schwangerschaft früher', en: 'Earlier in pregnancy', fa: 'زودتر در بارداری' } },
+      { s: { de: 'Aorta abdominalis (Querdurchmesser)', en: 'Abdominal aorta (transverse diam.)', fa: 'آئورت شکمی (قطر عرضی)' }, v: '18–30 mm', h: { de: 'Aneurysma ab ≥ 30 mm; OP: ♂ ≥ 55 mm, ♀ ≥ 50 mm', en: 'Aneurysm from ≥ 30 mm; surgery: ♂ ≥ 55 mm, ♀ ≥ 50 mm', fa: 'آنوریسم از ۳۰ میلی‌متر؛ جراحی ♂ ≥ ۵۵، ♀ ≥ ۵۰' } },
+      { s: { de: 'A. iliaca communis', en: 'Common iliac artery', fa: 'شریان ایلیاک مشترک' }, v: 'Aneurysma > 1,8 cm', h: { de: 'Normal ~1 cm; oft beidseitig', en: 'Normal ~1 cm; often bilateral', fa: 'طبیعی ~۱ سانتی‌متر؛ اغلب دوطرفه' } },
+      { s: { de: 'A. poplitea', en: 'Popliteal artery', fa: 'شریان پوپلیتئال' }, v: 'Aneurysma > 1,0 cm', h: { de: 'Häufig beidseitig; Gegenseite mitscreenen', en: 'Often bilateral; screen contralateral side', fa: 'اغلب دوطرفه؛ طرف مقابل را غربالگری کنید' } },
+      { s: { de: 'Milzarterienaneurysma', en: 'Splenic artery aneurysm', fa: 'آنوریسم شریان طحالی' }, v: 'Therapie > 2 cm', h: { de: 'In Schwangerschaft frühere Intervention', en: 'Earlier intervention in pregnancy', fa: 'مداخله زودتر در بارداری' } },
     ],
   },
+
+  // ── 7. Wirbelsäule ──────────────────────────────────────────
+  {
+    id: 'wirbelsaeule', color: '#0d9488',
+    name: { de: 'Wirbelsäule', en: 'Spine', fa: 'ستون فقرات' },
+    entries: [
+      // HWS
+      { s: { de: 'Atlanto-dentaler Abstand (ADI)', en: 'Atlanto-dental interval (ADI)', fa: 'فاصله اطلانتو-دنتال' }, v: '♂ < 3 mm / Kind < 5 mm', h: { de: 'Erhöht bei C1/C2-Instabilität (z. B. Rheumatoid)', en: 'Raised in C1/C2 instability (e.g. rheumatoid)', fa: 'افزایش در ناپایداری C1/C2 (مثلاً روماتوئید)' } },
+      { s: { de: 'Spinalkanal HWS – transversal (Pediculi)', en: 'Cervical canal – transverse (pedicle level)', fa: 'کانال نخاعی گردنی – عرضی' }, v: '20–21 mm', h: { de: 'Relative Stenose < 12 mm; absolute Stenose < 10 mm', en: 'Relative stenosis < 12 mm; absolute < 10 mm', fa: 'تنگی نسبی < ۱۲ میلی‌متر؛ مطلق < ۱۰' } },
+      { s: { de: 'Myelon HWS (sagittaler Ø)', en: 'Cervical spinal cord (sagittal diam.)', fa: 'طناب نخاعی گردنی (قطر ساژیتال)' }, v: '6–7 mm', h: { de: 'Myelopathie-Risiko bei < 7 mm Kanalweite', en: 'Myelopathy risk if canal < 7 mm', fa: 'خطر میلوپاتی اگر کانال < ۷ میلی‌متر' } },
+      // BWS
+      { s: { de: 'Spinalkanal BWS – sagittal', en: 'Thoracic canal – sagittal', fa: 'کانال نخاعی BWS – ساژیتال' }, v: 'Th1–11: 13–14 mm / Th12: 15 mm', h: { de: 'Jones-Thomson-Quotient (A×B / C×D): 0,22–0,5 normal', en: 'Jones-Thomson quotient (A×B / C×D): 0.22–0.5 normal', fa: 'نسبت جونز-تامسون طبیعی: ۰٫۲۲–۰٫۵' } },
+      { s: { de: 'Zwischenwirbelraum BWS (Höhe)', en: 'Thoracic disc space (height)', fa: 'فضای بین‌مهره‌ای BWS' }, v: '4–5 mm', h: { de: 'Th1 am kleinsten; Th11–12 am größten', en: 'Th1 smallest; Th11–12 largest', fa: 'Th1 کوچکترین؛ Th11–12 بزرگترین' } },
+      // LWS
+      { s: { de: 'Lumbosakralwinkel (S1 / Horizontale)', en: 'Lumbosacral angle (S1 / horizontal)', fa: 'زاویه کمری-خاجی' }, v: '26–57°', h: { de: 'Erhöht bei Hyperlordose / Spondylolisthesis', en: 'Raised in hyperlordosis / spondylolisthesis', fa: 'افزایش در هایپرلوردوز / اسپوندیلولیستزیس' } },
+      { s: { de: 'Lumbale Bandscheibenhöhe', en: 'Lumbar disc height', fa: 'ارتفاع دیسک کمری' }, v: '8–12 mm', h: { de: 'L1→L4/5 zunehmend; L5/S1 wieder schmäler; Dichte nativ: 70 ± 5 HE', en: 'L1→L4/5 increasing; L5/S1 narrower; native density: 70 ± 5 HU', fa: 'L1→L4/5 افزایشی؛ L5/S1 کمتر؛ دانسیته: ۷۰ ± ۵ HU' } },
+      { s: { de: 'Spinalkanal LWS – transversal (L1–L4)', en: 'Lumbar canal – transverse (L1–L4)', fa: 'کانال نخاعی کمری (L1–L4)' }, v: '≥ 20–21 mm', h: { de: 'L5 ≥ 24 mm; relativ eng < 12 mm; absolut eng < 10 mm', en: 'L5 ≥ 24 mm; relatively narrow < 12 mm; absolute < 10 mm', fa: 'L5 ≥ ۲۴؛ تنگی نسبی < ۱۲؛ مطلق < ۱۰' } },
+      { s: { de: 'Recessus lateralis LWS (sagittal)', en: 'Lateral recess LWS (sagittal)', fa: 'رسسوس جانبی LWS' }, v: '4–5 mm', h: { de: '< 3 mm = Stenose des Recessus lateralis', en: '< 3 mm = lateral recess stenosis', fa: '< ۳ میلی‌متر = تنگی رسسوس جانبی' } },
+      { s: { de: 'Ligamentum flavum (Breite)', en: 'Ligamentum flavum (width)', fa: 'لیگامنت فلاووم (عرض)' }, v: '≤ 6 mm', h: { de: '> 6 mm: Hypertrophie → Spinalkanal-Einengung', en: '> 6 mm: hypertrophy → canal narrowing', fa: '> ۶ میلی‌متر: هایپرتروفی → تنگی کانال' } },
+    ],
+  },
+
+  // ── 8. MSK – Gelenke & Sehnen ───────────────────────────────
   {
     id: 'msk', color: '#f97316',
-    name: { de: 'MSK', en: 'MSK', fa: 'اسکلتی-عضلانی' },
+    name: { de: 'MSK – Gelenke & Sehnen', en: 'MSK – Joints & Tendons', fa: 'اسکلتی-عضلانی – مفاصل و تاندون‌ها' },
     entries: [
-      { s: { de: 'Spinalkanal lumbal (a-p)', en: 'Lumbar canal (AP)', fa: 'کانال نخاعی کمری' }, v: '< 12 mm relativ', h: { de: '< 10 mm absolute Stenose', en: '< 10 mm absolute stenosis', fa: '< ۱۰ میلی‌متر تنگی مطلق' } },
-      { s: { de: 'Atlanto-dentaler Abstand (ADI)', en: 'Atlanto-dental interval', fa: 'فاصله اطلانتو-دنتال' }, v: '♂ < 3 / Kind < 5 mm', h: { de: 'Erhöht bei C1/C2-Instabilität', en: 'Raised in C1/C2 instability', fa: 'افزایش در ناپایداری C1/C2' } },
-      { s: { de: 'Akromiohumeraler Abstand', en: 'Acromiohumeral distance', fa: 'فاصله آکرومیوهومرال' }, v: '7–14 mm', h: { de: '< 7 mm: Rotatorenmanschettenschaden', en: '< 7 mm: rotator cuff tear', fa: '< ۷: پارگی روتاتور کاف' } },
-      { s: { de: 'Achillessehne (Dicke)', en: 'Achilles tendon (thickness)', fa: 'تاندون آشیل (ضخامت)' }, v: '< 6 mm', h: { de: 'Tendinopathie darüber', en: 'Tendinopathy above', fa: 'تاندینوپاتی بالاتر' } },
-      { s: { de: 'Insall-Salvati-Index', en: 'Insall-Salvati index', fa: 'شاخص اینسال-سالواتی' }, v: '0,8–1,2', h: { de: '> 1,2 Patella alta, < 0,8 Patella baja', en: '> 1.2 patella alta, < 0.8 baja', fa: '> ۱٫۲ پاتلا آلتا، < ۰٫۸ باجا' } },
+      { s: { de: 'Akromiohumeraler Abstand', en: 'Acromiohumeral distance', fa: 'فاصله آکرومیوهومرال' }, v: '7–14 mm', h: { de: '< 7 mm → Rotatorenmanschettenläsion', en: '< 7 mm → rotator cuff lesion', fa: '< ۷ میلی‌متر → ضایعه روتاتور کاف' } },
+      { s: { de: 'Achillessehne (Dicke)', en: 'Achilles tendon (thickness)', fa: 'تاندون آشیل (ضخامت)' }, v: '< 6 mm', h: { de: 'Tendinopathie > 6 mm; Ruptur: plötzliche Ausdünnung', en: 'Tendinopathy > 6 mm; rupture: sudden thinning', fa: 'تاندینوپاتی > ۶؛ پارگی: نازک‌شدن ناگهانی' } },
+      { s: { de: 'Insall-Salvati-Index', en: 'Insall-Salvati index', fa: 'شاخص اینسال-سالواتی' }, v: '0,8–1,2', h: { de: '> 1,2 Patella alta; < 0,8 Patella baja', en: '> 1.2 patella alta; < 0.8 patella baja', fa: '> ۱٫۲ پاتلا آلتا؛ < ۰٫۸ باجا' } },
+    ],
+  },
+
+  // ── 9. CT-Dichtewerte (HE) ──────────────────────────────────
+  {
+    id: 'hu-werte', color: '#6366f1',
+    name: { de: 'CT-Dichtewerte (HE)', en: 'CT Density Values (HU)', fa: 'مقادیر دانسیته CT (HU)' },
+    entries: [
+      { s: { de: 'Leber (nativ)', en: 'Liver (unenhanced)', fa: 'کبد (بدون KM)' }, v: '65 ± 10 HE', h: { de: 'Steatose < 48 HE; Diff. Leber−Milz sollte > 10 HE sein', en: 'Steatosis < 48 HU; liver−spleen diff. should be > 10 HU', fa: 'استئاتوز < ۴۸؛ اختلاف کبد−طحال باید > ۱۰ باشد' } },
+      { s: { de: 'Milz (nativ)', en: 'Spleen (unenhanced)', fa: 'طحال (بدون KM)' }, v: '45 ± 5 HE', h: { de: 'Normalerweise niedriger als Leber', en: 'Normally lower than liver', fa: 'معمولاً کمتر از کبد' } },
+      { s: { de: 'Niere nativ / Rinde nach KM', en: 'Kidney unenhanced / cortex post-CM', fa: 'کلیه بدون KM / قشر پس از KM' }, v: '35–45 / ~140 HE', h: { de: 'Kortikomedullärer Ausgleich: 1 min; KM-Ausscheidung NBKS: 3 min', en: 'Corticomedullary equilibrium: 1 min; CM excretion: 3 min', fa: 'تعادل کورتیکومدولاری: ۱ دقیقه؛ دفع KM به NBKS: ۳ دقیقه' } },
+      { s: { de: 'Pankreas (nativ)', en: 'Pancreas (unenhanced)', fa: 'پانکراس (بدون KM)' }, v: '40 ± 10 HE', h: { de: 'Lipomatöse Atrophie bei < 30 HE', en: 'Lipomatous atrophy if < 30 HU', fa: 'آتروفی چربی < ۳۰ HU' } },
+      { s: { de: 'Fettgewebe', en: 'Fat tissue', fa: 'بافت چربی' }, v: '−65 bis −100 HE', h: { de: 'Subkutanes Fett: ca. −80 bis −120 HE', en: 'Subcutaneous fat: approx. −80 to −120 HU', fa: 'چربی زیرپوستی: حدود −۸۰ تا −۱۲۰' } },
+      { s: { de: 'Muskulatur', en: 'Muscle', fa: 'عضله' }, v: '45 ± 5 HE', h: { de: 'Fettinfiltration (Sarkopenie) bei < 30 HE', en: 'Fat infiltration (sarcopenia) if < 30 HU', fa: 'نفوذ چربی (سارکوپنی) < ۳۰ HU' } },
+      { s: { de: 'Nebennieren (nativ)', en: 'Adrenals (unenhanced)', fa: 'آدرنال‌ها (بدون KM)' }, v: '25–40 HE', h: { de: 'Adenom lipidreich: ≤ 10 HE; Phäochrom. oft > 20 HE', en: 'Lipid-rich adenoma: ≤ 10 HU; phaeochromocytoma often > 20 HU', fa: 'آدنوم غنی از لیپید ≤ ۱۰؛ فئوکروموسیتوم > ۲۰' } },
+      { s: { de: 'Gefäße (nativ)', en: 'Vessels (unenhanced)', fa: 'عروق (بدون KM)' }, v: '40–55 HE', h: { de: 'Frische Thrombose: 50–70 HE; Kalk: > 130 HE', en: 'Fresh thrombus: 50–70 HU; calcium: > 130 HU', fa: 'ترومبوز تازه: ۵۰–۷۰؛ کلسیم: > ۱۳۰' } },
+      { s: { de: 'Gallenblaseninhalt (nativ)', en: 'Gallbladder content (unenhanced)', fa: 'محتویات کیسه صفرا' }, v: '0–25 HE', h: { de: 'Gallensteine können isodens zur Galle sein', en: 'Gallstones may be isodense to bile', fa: 'سنگ صفرا ممکن است ایزودنس باشد' } },
+      { s: { de: 'Bandscheibe (nativ)', en: 'Intervertebral disc (unenhanced)', fa: 'دیسک بین‌مهره‌ای' }, v: '70 ± 5 HE', h: { de: 'Degeneration → Dichteabnahme; Kalk → Anstieg', en: 'Degeneration → density loss; calcification → increase', fa: 'دژنراسیون → کاهش دانسیته؛ کلسیفیکاسیون → افزایش' } },
+      { s: { de: 'Prostata (nativ)', en: 'Prostate (unenhanced)', fa: 'پروستات (بدون KM)' }, v: '40–65 HE', h: { de: 'Verkalkungen häufig bei älteren Männern', en: 'Calcifications common in older men', fa: 'کلسیفیکاسیون شایع در مردان مسن' } },
     ],
   },
 ]
