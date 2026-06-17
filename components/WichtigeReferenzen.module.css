@@ -32,9 +32,34 @@
   padding: 4px 13px; border-radius: 20px; margin-bottom: 14px;
 }
 .glassTitle {
+  position: relative;
+  display: inline-block;
   font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
   font-style: italic; font-size: 34px; font-weight: 900;
-  color: #1a2051; margin: 0 0 10px; letter-spacing: -.03em;
+  color: #dc2626; margin: 0 0 10px; letter-spacing: -.03em;
+  background: linear-gradient(180deg, #fff1f2 0%, #ef4444 34%, #b91c1c 72%, #7f1d1d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,.75),
+    0 2px 0 rgba(153,27,27,.22),
+    0 10px 22px rgba(220,38,38,.28),
+    0 18px 42px rgba(127,29,29,.18);
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,.55));
+}
+.glassTitle::after {
+  content: attr(data-title);
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,.72) 32%, transparent 52%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: .72;
+  transform: translateY(-1px);
+  pointer-events: none;
 }
 .glassSub {
   font-family: var(--font-main, 'Manrope', system-ui, sans-serif);

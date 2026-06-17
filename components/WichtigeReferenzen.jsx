@@ -70,7 +70,7 @@ export default function WichtigeReferenzen() {
         <div className={styles.glassHeaderGlow} />
         <div className={styles.glassTop}>
           <span className={styles.glassBadge}>{copy.sectionLabel}</span>
-          <h2 className={styles.glassTitle}>{copy.title}</h2>
+          <h2 className={styles.glassTitle} data-title={copy.title}>{copy.title}</h2>
           <p className={styles.glassSub}>{copy.sub}</p>
         </div>
         <div className={styles.grid}>
@@ -78,19 +78,19 @@ export default function WichtigeReferenzen() {
             <HomeCardIcon type="messwerte" alt="" />
             <h3 className={`${styles.cardTitle} ${styles.colorBlue}`}>{copy.btnMesswerte}</h3>
             <p className={styles.cardDesc}>{copy.btnMesswerteSub}</p>
-            <div className={styles.chips}>{(copy.chipsMesswerte||[]).map(ch=><span key={ch} className={`${styles.chip} ${styles.chipBlue}`}>{ch}</span>)}</div>
+            <div className={styles.chips}>{(copy.chipsMesswerte||[]).slice(0,4).map(ch=><span key={ch} className={`${styles.chip} ${styles.chipBlue}`}>{ch}</span>)}</div>
           </button>
           <button className={`${styles.card} ${styles.cardOrange}`} onClick={() => setModal('klassifikationen')}>
             <HomeCardIcon type="klassifikationen" alt="" />
             <h3 className={`${styles.cardTitle} ${styles.colorOrange}`}>{copy.btnKlass}</h3>
             <p className={styles.cardDesc}>{copy.btnKlassSub}</p>
-            <div className={styles.chips}>{(copy.chipsKlass||[]).map(ch=><span key={ch} className={`${styles.chip} ${styles.chipOrange}`}>{ch}</span>)}</div>
+            <div className={styles.chips}>{(copy.chipsKlass||[]).slice(0,4).map(ch=><span key={ch} className={`${styles.chip} ${styles.chipOrange}`}>{ch}</span>)}</div>
           </button>
           <button className={`${styles.card} ${styles.cardGreen}`} onClick={() => setModal('rechner')}>
             <HomeCardIcon type="rechner" alt="" />
             <h3 className={`${styles.cardTitle} ${styles.colorGreen}`}>{copy.btnRechner}</h3>
             <p className={styles.cardDesc}>{copy.btnRechnerSub}</p>
-            <div className={styles.chips}>{(copy.chipsRechner||[]).map(ch=><span key={ch} className={`${styles.chip} ${styles.chipGreen}`}>{ch}</span>)}</div>
+            <div className={styles.chips}>{(copy.chipsRechner||[]).slice(0,4).map(ch=><span key={ch} className={`${styles.chip} ${styles.chipGreen}`}>{ch}</span>)}</div>
           </button>
         </div>
       </div>
