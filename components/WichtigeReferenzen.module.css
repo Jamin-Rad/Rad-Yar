@@ -137,37 +137,64 @@
   background: #eef2f7; border-radius: 20px; padding: 1px 8px;
 }
 
-/* ── Bereichs-Banner ─────────────────────────── */
-.regionBanner {
+/* ── Bereichs-Überschrift (Tabellen-Design) ──── */
+.regionHeading {
   display: flex; align-items: center; gap: 10px;
-  border-radius: 12px; border: 1.5px solid;
-  padding: 11px 16px; margin-bottom: 16px;
+  font-family: var(--font-display, 'Georgia', serif);
+  font-size: 22px; font-weight: 800; color: #1a2051;
+  margin: 0 0 22px;
 }
-.regionDot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-.regionBannerName { font-size: 15px; font-weight: 700; flex: 1; }
-.regionBannerCount { font-size: 12px; font-weight: 600; opacity: .75; }
+.regionHeadingDot {
+  width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0;
+}
 
-/* ── Eintrags-Karten ─────────────────────────── */
-.entryList { display: flex; flex-direction: column; gap: 10px; }
-.entryCard {
-  background: #fff; border: 1.5px solid #eef2f7; border-radius: 14px;
-  padding: 14px 16px; transition: box-shadow .2s, border-color .2s;
+/* ── Gruppen-Block ────────────────────────────── */
+.groupBlock { margin-bottom: 28px; }
+.groupBlock:last-child { margin-bottom: 4px; }
+
+.groupHeading {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .05em; color: var(--ref-color, #94a3b8);
+  margin: 0 0 10px; padding-bottom: 7px;
+  border-bottom: 2px solid color-mix(in srgb, var(--ref-color, #e2e8f0) 35%, transparent);
 }
-.entryCard:hover {
-  border-color: color-mix(in srgb, var(--ref-color) 40%, #eef2f7);
-  box-shadow: 0 4px 16px rgba(26,32,81,0.07);
+
+/* ── Tabelle ──────────────────────────────────── */
+.tableWrap {
+  overflow-x: auto; border-radius: 12px;
+  border: 1px solid #eef2f7;
 }
-.entryTop {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 12px; margin-bottom: 6px;
+.mTable { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.mTable thead tr {
+  background: #fafbfc;
 }
-.entryName { font-size: 14px; font-weight: 700; color: #1a2051; }
-.entryBadge {
-  font-size: 13px; font-weight: 800; border-radius: 8px;
-  padding: 4px 12px; white-space: nowrap;
-  font-variant-numeric: tabular-nums; flex-shrink: 0;
+.thName, .thVal, .thNote {
+  text-align: start; font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .04em; color: #94a3b8; padding: 10px 14px;
+  border-bottom: 2px solid var(--ref-color, #e2e8f0);
 }
-.entryNote { margin: 0; font-size: 13px; color: #64748b; line-height: 1.55; }
+.thName  { width: 32%; }
+.thVal   { width: 18%; white-space: nowrap; }
+.thNote  { width: 50%; }
+
+.mTable tbody tr { transition: background .12s; }
+.mTable tbody tr:hover td { background: color-mix(in srgb, var(--ref-color) 4%, #fff); }
+.mTable tbody tr:last-child td { border-bottom: 0; }
+
+.tdName {
+  padding: 11px 14px; border-bottom: 1px solid #f1f5f9;
+  font-weight: 600; color: #1a2051; vertical-align: top;
+}
+.tdVal {
+  padding: 11px 14px; border-bottom: 1px solid #f1f5f9;
+  font-weight: 800; color: var(--ref-color); white-space: nowrap;
+  font-variant-numeric: tabular-nums; vertical-align: top;
+}
+.tdNote {
+  padding: 11px 14px; border-bottom: 1px solid #f1f5f9;
+  color: #64748b; line-height: 1.5; vertical-align: top; font-size: 13px;
+}
+[dir='rtl'] .tdVal { white-space: normal; }
 
 /* ── Tabelle (für Klassifikationen-Detail) ───── */
 .table { width: 100%; border-collapse: collapse; font-size: 13.5px; }

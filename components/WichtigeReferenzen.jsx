@@ -79,11 +79,14 @@ function Modal({ title, copy, onClose, children, accentClass }) {
   )
 }
 
-/* ── Messwerte-Modal: Bereich → Karten ───────── */
+/* ── Messwerte-Modal: Bereich-Sidebar + Tabelle mit Gruppen ── */
 function MesswerteModal({ copy, lang, onClose }) {
   const regions = REF_DATA.messwerte
   const [regionId, setRegionId] = useState(regions[0].id)
   const region = regions.find(r => r.id === regionId) || regions[0]
+
+  // Gesamtzahl Einträge über alle Gruppen
+  const totalEntries = (r) => r.groups.reduce((n, g) => n + g.entries.length, 0)
 
   return (
     <Modal title={copy.btnMesswerte} copy={copy} onClose={onClose} accentClass={styles.headBlue}>
@@ -97,34 +100,45 @@ function MesswerteModal({ copy, lang, onClose }) {
               onClick={() => setRegionId(r.id)}>
               <span className={styles.dot} style={{ background: r.color }} />
               <span>{tx(r.name, lang)}</span>
-              <span className={styles.count}>{r.entries.length}</span>
+              <span className={styles.count}>{totalEntries(r)}</span>
             </button>
           ))}
         </nav>
 
-        {/* Inhalt */}
-        <div className={styles.content}>
-          {/* Bereich-Banner */}
-          <div className={styles.regionBanner} style={{ background: region.color + '18', borderColor: region.color + '44' }}>
-            <span className={styles.regionDot} style={{ background: region.color }} />
-            <span className={styles.regionBannerName} style={{ color: region.color }}>{tx(region.name, lang)}</span>
-            <span className={styles.regionBannerCount} style={{ color: region.color }}>{region.entries.length} {copy.colStruktur.toLowerCase()}en</span>
-          </div>
+        {/* Inhalt – Tabellen-Design wie Klassifikations-Detailseite */}
+        <div className={styles.content} style={{ '--ref-color': region.color }}>
+          {/* Bereich-Überschrift */}
+          <h2 className={styles.regionHeading}>
+            <span className={styles.regionHeadingDot} style={{ background: region.color }} />
+            <span style={{ color: region.color }}>{tx(region.name, lang)}</span>
+          </h2>
 
-          {/* Eintrags-Karten */}
-          <div className={styles.entryList}>
-            {region.entries.map((e, i) => (
-              <div key={i} className={styles.entryCard} style={{ '--ref-color': region.color }}>
-                <div className={styles.entryTop}>
-                  <span className={styles.entryName}>{tx(e.s, lang)}</span>
-                  <span className={styles.entryBadge} style={{ background: region.color + '18', color: region.color, border: `1px solid ${region.color}44` }}>
-                    {e.v}
-                  </span>
-                </div>
-                <p className={styles.entryNote}>{tx(e.h, lang)}</p>
+          {/* Gruppen mit je einer Tabelle */}
+          {region.groups.map((group, gi) => (
+            <div key={gi} className={styles.groupBlock}>
+              <h3 className={styles.groupHeading}>{tx(group.name, lang)}</h3>
+              <div className={styles.tableWrap}>
+                <table className={styles.mTable}>
+                  <thead>
+                    <tr>
+                      <th className={styles.thName}>{copy.colStruktur}</th>
+                      <th className={styles.thVal}>{copy.colWert}</th>
+                      <th className={styles.thNote}>{copy.colHinweis}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {group.entries.map((e, ei) => (
+                      <tr key={ei}>
+                        <td className={styles.tdName}>{tx(e.s, lang)}</td>
+                        <td className={styles.tdVal}>{e.v}</td>
+                        <td className={styles.tdNote}>{tx(e.h, lang)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </Modal>
