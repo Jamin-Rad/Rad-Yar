@@ -15,11 +15,11 @@
 
 /* ── TOP BAR ───────────────────────────────────────── */
 .topBar {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(160px, 1fr) auto minmax(160px, 1fr);
   align-items: center;
-  justify-content: space-between;
   gap: 12px;
-  padding: 13px 24px;
+  padding: 12px 24px;
   background: var(--bg-card);
   border-bottom: 1px solid var(--border);
   position: sticky;
@@ -42,7 +42,8 @@
 .backBtn:hover { color: #ea580c; }
 
 .topCenter {
-  flex: 1;
+  display: flex;
+  justify-content: center;
   text-align: center;
   min-width: 0;
 }
@@ -52,20 +53,23 @@
   align-items: center;
   justify-content: center;
   min-height: 34px;
-  padding: 6px 16px;
+  padding: 6px 18px;
   border-radius: 999px;
   background: linear-gradient(135deg, rgba(249, 115, 22, .16), rgba(16, 185, 129, .10));
   border: 1px solid rgba(249, 115, 22, .26);
   color: var(--text-strong);
   font-size: 14px;
+  font-family: var(--font-display);
   font-weight: 950;
-  margin-top: 1px;
+  white-space: nowrap;
 }
 
 .topRight {
   display: flex;
   align-items: center;
   gap: 8px;
+  justify-content: flex-end;
+  min-width: 0;
 }
 
 .lessonLink {
@@ -89,24 +93,17 @@
   color: #ea580c;
 }
 
-.boxPill,
-.navPillBtn {
-  background: var(--accent-soft);
-  color: var(--orange);
-  border: 1px solid rgba(249, 115, 22, 0.22);
+.boxPill {
+  background: var(--surface-soft);
+  color: var(--text-soft);
+  border: 1px solid var(--border);
   border-radius: 999px;
-  padding: 4px 12px;
-  font-family: inherit;
+  padding: 6px 12px;
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 800;
   white-space: nowrap;
 }
 
-.navPillBtn {
-  cursor: pointer;
-}
-
-.navPillBtn:disabled,
 .lastCardBtn:disabled {
   opacity: .45;
   cursor: not-allowed;
@@ -264,7 +261,7 @@
   max-width: 680px;
   width: 100%;
   margin: 0 auto;
-  padding: 32px 20px 80px;
+  padding: 28px 20px 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -272,12 +269,7 @@
 }
 
 /* ── CATEGORY BADGE ────────────────────────────────── */
-.categoryRow {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+.categoryRow { display: none; }
 
 /* ── 3D FLIP CARD ──────────────────────────────────── */
 .stage {
@@ -600,12 +592,10 @@
 
 /* ── RTL ───────────────────────────────────────────── */
 [dir='rtl'] .backBtn      { flex-direction: row-reverse; }
-[dir='rtl'] .topBar       { flex-direction: row-reverse; }
 [dir='rtl'] .topRight     { flex-direction: row-reverse; }
 [dir='rtl'] .answerRow    { direction: rtl; }
 [dir='rtl'] .question,
 [dir='rtl'] .answer       { direction: rtl; text-align: right; }
-[dir='rtl'] .categoryRow  { flex-direction: row-reverse; }
 
 /* ── DARK MODE ─────────────────────────────────────── */
 /* Dank CSS-Variablen fast automatisch — nur Gradienten als Ausnahme */
@@ -623,7 +613,11 @@
 
 /* ── RESPONSIVE ────────────────────────────────────── */
 @media (max-width: 620px) {
-  .topBar       { padding: 11px 16px; }
+  .topBar       { grid-template-columns: 1fr; padding: 11px 16px; }
+  .backBtn,
+  .topCenter,
+  .topRight     { justify-content: center; }
+  .topRight     { flex-wrap: wrap; }
   .cardNavigator { width: calc(100% - 24px); margin-top: 12px; border-radius: 16px; }
   .navigatorHeader { align-items: flex-start; }
   .navigatorActions { justify-content: flex-start; }

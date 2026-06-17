@@ -39,6 +39,7 @@ const T = {
     wrong: 'Nochmal',
     total: 'Gesamt',
     backLink: '← Zurück zur Übersicht',
+    backToLesson: '← Zur Lektion',
     emptyTitle: 'Keine Karten in dieser Auswahl.',
     emptySub: 'Wähle eine andere Box oder starte das Thema normal.',
     loadingTitle: 'Karten werden geladen...',
@@ -76,6 +77,7 @@ const T = {
     wrong: 'Again',
     total: 'Total',
     backLink: '← Back to overview',
+    backToLesson: '← Back to lesson',
     emptyTitle: 'No cards in this selection.',
     emptySub: 'Choose another box or start the topic normally.',
     loadingTitle: 'Loading cards...',
@@ -113,6 +115,7 @@ const T = {
     wrong: 'دوباره',
     total: 'کل',
     backLink: '← برگشت به مرور کلی',
+    backToLesson: '← بازگشت به درس',
     emptyTitle: 'در این انتخاب کارتی وجود ندارد.',
     emptySub: 'یک جعبه دیگر انتخاب کن یا موضوع را به صورت عادی شروع کن.',
     loadingTitle: 'در حال بارگذاری کارت‌ها...',
@@ -217,6 +220,8 @@ export default function FlashcardReviewPage() {
   const boxFilter = boxValue ? Number(boxValue) : null
   const fromParam = searchParams.get('from')
   const backHref = fromParam || (lang === 'de' ? '/flashcards' : `/flashcards?lang=${lang}`)
+  const backLabel = fromParam ? t.backToLesson : t.back
+  const showLessonShortcut = Boolean(lessonLink && !fromParam)
 
   const [leitnerState, setLeitnerState] = useState({})
   const [cards, setCards] = useState([])
@@ -433,14 +438,26 @@ export default function FlashcardReviewPage() {
       )}
 
       <header className={styles.topBar}>
-        <Link href={backHref} className={styles.backBtn}>{t.back}</Link>
+        <Link href={backHref} className={styles.backBtn}>{backLabel}</Link>
         <div className={styles.topCenter}>
           <span className={styles.cardCount}>{t.cardOf(index + 1, cards.length)}</span>
         </div>
         <div className={styles.topRight}>
-          <button type="button" className={styles.navPillBtn} onClick={() => goToCard(index - 1)} disabled={index === 0}>
-            {t.previousCard}
-          </button>
+          {showLessonShortcut && (
+            <a
+              href={lang === 'de' ? lessonLink : `${lessonLink}?lang=${lang}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.lessonLink}
+            >
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H9a4 4 0 0 1 3 1.4A4 4 0 0 1 15 2h4.5A2.5 2.5 0 0 1 22 4.5v13A2.5 2.5 0 0 1 19.5 20H15a3 3 0 0 0-3 3 3 3 0 0 0-3-3H4.5A2.5 2.5 0 0 1 2 17.5Z" />
+                <path d="M12 7v13" />
+              </svg>
+              {t.lessonLinkLabel}
+            </a>
+          )}
+          <div className={styles.boxPill}>{practiceMode ? t.practiceMode : boxLabel}</div>
         </div>
       </header>
 
@@ -483,23 +500,7 @@ export default function FlashcardReviewPage() {
       </nav>
 
       <main className={styles.main}>
-        <div className={styles.categoryRow}>
-          {lessonLink && (
-            <a
-              href={lang === 'de' ? lessonLink : `${lessonLink}?lang=${lang}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.lessonLink}
-            >
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H9a4 4 0 0 1 3 1.4A4 4 0 0 1 15 2h4.5A2.5 2.5 0 0 1 22 4.5v13A2.5 2.5 0 0 1 19.5 20H15a3 3 0 0 0-3 3 3 3 0 0 0-3-3H4.5A2.5 2.5 0 0 1 2 17.5Z" />
-                <path d="M12 7v13" />
-              </svg>
-              {t.lessonLinkLabel}
-            </a>
-          )}
-          {practiceMode && <span className={styles.practiceBadge}>{boxLabel} · {t.practiceNote}</span>}
-        </div>
+        {practiceMode && <div className={styles.practiceBadge}>{boxLabel} · {t.practiceNote}</div>}
 
         <div
           className={`${styles.stage} ${exiting ? styles.exiting : ''} ${exitDir === 'right' ? styles.exitRight : exitDir === 'left' ? styles.exitLeft : ''}`}
