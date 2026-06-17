@@ -24,20 +24,33 @@
 /* ── Sidebar ──────────────────────────────────── */
 .sidebar {
   background: #fff; border: 1px solid #eef2f7;
-  border-radius: 16px; padding: 16px; position: sticky; top: 80px;
+  border-radius: 16px; padding: 14px; position: sticky; top: 80px;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
+}
+.sidebarBrand {
+  display: flex; align-items: center; gap: 8px;
+  padding-bottom: 12px; margin-bottom: 10px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.sidebarBrandLabel {
+  font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
+  font-style: italic; font-size: 15px; font-weight: 900;
+  color: #1a2051; letter-spacing: -.02em;
 }
 .sidebarTitle {
   display: flex; align-items: center; gap: 8px;
-  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+  font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
   padding-bottom: 10px; margin-bottom: 6px;
   border-bottom: 1.5px solid #eef2f7;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
 }
 .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 .sibLink {
   display: block; padding: 9px 12px; border-radius: 9px;
-  font-size: 13.5px; font-weight: 500; color: #475569;
+  font-size: 13px; font-weight: 500; color: #475569;
   text-decoration: none; transition: all .16s;
   border: 1.5px solid transparent;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
 }
 .sibLink:hover { background: #f1f5f9; color: #1a2051; }
 .sibActive {
@@ -56,10 +69,12 @@
 .content {
   background: #fff; border: 1px solid #eef2f7;
   border-radius: 20px; padding: 36px 36px 32px;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
 }
 .heading {
-  font-family: var(--font-display, 'Georgia', serif);
-  font-size: 32px; font-weight: 800; color: #1a2051; margin: 0 0 24px;
+  font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
+  font-style: italic; font-size: 30px; font-weight: 900;
+  color: #1a2051; margin: 0 0 24px; letter-spacing: -.03em;
 }
 
 /* ── Kompakt-Box ──────────────────────────────── */

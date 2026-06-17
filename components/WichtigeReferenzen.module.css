@@ -45,9 +45,9 @@
 
 /* ── Karten-Text ──────────────────────────────── */
 .cardTitle {
-  font-family: var(--font-display, 'Georgia', serif);
-  font-style: italic; font-size: 22px; font-weight: 700;
-  margin: 0 0 10px;
+  font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
+  font-style: italic; font-size: 22px; font-weight: 900;
+  margin: 0 0 10px; letter-spacing: -.02em;
 }
 .colorBlue   { color: #0ea5e9; }
 .colorOrange { color: #f97316; }
@@ -89,8 +89,9 @@
 .headOrange { border-bottom-color: #fed7aa; background: #fff7ed; }
 
 .modalTitle {
-  font-family: var(--font-display, 'Georgia', serif);
-  font-size: 19px; font-weight: 800; color: #1a2051; margin: 0;
+  font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
+  font-style: italic; font-size: 19px; font-weight: 900; color: #1a2051; margin: 0;
+  letter-spacing: -.01em;
 }
 .closeBtn {
   width: 36px; height: 36px; border-radius: 10px; border: 0;
@@ -99,7 +100,7 @@
   transition: background .18s;
 }
 .closeBtn:hover { background: rgba(0,0,0,0.13); }
-.modalBody { flex: 1; overflow: hidden; min-height: 0; }
+.modalBody { flex: 1; overflow: hidden; min-height: 0; display: flex; flex-direction: column; }
 .disclaimer {
   margin: 0; padding: 11px 24px;
   border-top: 1px solid #f1f5f9;
@@ -107,22 +108,30 @@
 }
 
 /* ── Split: Sidebar + Inhalt ─────────────────── */
-.split { display: grid; grid-template-columns: 220px 1fr; height: 100%; min-height: 0; }
+.split {
+  display: grid; grid-template-columns: 220px 1fr;
+  flex: 1; min-height: 0; overflow: hidden;
+}
 
 .sidebar {
   border-inline-end: 1px solid #eef2f7; background: #fafbfc;
-  padding: 12px; overflow-y: auto;
-  display: flex; flex-direction: column; gap: 4px;
+  padding: 10px 8px; overflow-y: auto;
+  display: flex; flex-direction: column; gap: 2px;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
 }
 
-.content { padding: 20px 24px; overflow-y: auto; min-width: 0; }
+.content {
+  padding: 24px 28px; overflow-y: auto; min-width: 0;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
+}
 
 .navBtn {
   display: flex; align-items: center; gap: 9px;
   width: 100%; text-align: start;
   border: 1.5px solid transparent; background: transparent; cursor: pointer;
-  border-radius: 10px; font-size: 13.5px; font-weight: 600; color: #475569;
-  padding: 10px 12px; transition: all .16s;
+  border-radius: 10px; font-size: 13px; font-weight: 600; color: #475569;
+  padding: 9px 11px; transition: all .16s;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
 }
 .navBtn:hover { background: #f1f5f9; color: #1a2051; }
 .navActiveBlue {
@@ -135,28 +144,30 @@
 .count {
   margin-inline-start: auto; font-size: 11px; font-weight: 700; color: #94a3b8;
   background: #eef2f7; border-radius: 20px; padding: 1px 8px;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
 }
 
-/* ── Bereichs-Überschrift (Tabellen-Design) ──── */
+/* ── Bereichs-Überschrift ─────────────────────── */
 .regionHeading {
-  display: flex; align-items: center; gap: 10px;
-  font-family: var(--font-display, 'Georgia', serif);
-  font-size: 22px; font-weight: 800; color: #1a2051;
-  margin: 0 0 22px;
+  display: flex; align-items: center; gap: 11px;
+  font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
+  font-style: italic; font-size: 24px; font-weight: 900; color: #1a2051;
+  margin: 0 0 24px; letter-spacing: -.02em;
 }
 .regionHeadingDot {
   width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0;
 }
 
 /* ── Gruppen-Block ────────────────────────────── */
-.groupBlock { margin-bottom: 28px; }
+.groupBlock { margin-bottom: 30px; }
 .groupBlock:last-child { margin-bottom: 4px; }
 
 .groupHeading {
-  font-size: 11px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .05em; color: var(--ref-color, #94a3b8);
-  margin: 0 0 10px; padding-bottom: 7px;
-  border-bottom: 2px solid color-mix(in srgb, var(--ref-color, #e2e8f0) 35%, transparent);
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
+  font-size: 10.5px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .08em; color: var(--ref-color, #94a3b8);
+  margin: 0 0 10px; padding-bottom: 8px;
+  border-bottom: 2px solid color-mix(in srgb, var(--ref-color, #e2e8f0) 30%, transparent);
 }
 
 /* ── Tabelle ──────────────────────────────────── */
@@ -164,35 +175,40 @@
   overflow-x: auto; border-radius: 12px;
   border: 1px solid #eef2f7;
 }
-.mTable { width: 100%; border-collapse: collapse; font-size: 13.5px; }
-.mTable thead tr {
-  background: #fafbfc;
+.mTable {
+  width: 100%; border-collapse: collapse; font-size: 13.5px;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
 }
+.mTable thead tr { background: #f8fafc; }
 .thName, .thVal, .thNote {
-  text-align: start; font-size: 11px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .04em; color: #94a3b8; padding: 10px 14px;
+  text-align: start; font-size: 10px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .07em; color: #94a3b8; padding: 10px 14px;
   border-bottom: 2px solid var(--ref-color, #e2e8f0);
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
 }
-.thName  { width: 32%; }
-.thVal   { width: 18%; white-space: nowrap; }
-.thNote  { width: 50%; }
+.thName  { width: 30%; }
+.thVal   { width: 17%; white-space: nowrap; }
+.thNote  { width: 53%; }
 
 .mTable tbody tr { transition: background .12s; }
-.mTable tbody tr:hover td { background: color-mix(in srgb, var(--ref-color) 4%, #fff); }
+.mTable tbody tr:hover td { background: color-mix(in srgb, var(--ref-color) 5%, #fff); }
 .mTable tbody tr:last-child td { border-bottom: 0; }
 
 .tdName {
   padding: 11px 14px; border-bottom: 1px solid #f1f5f9;
-  font-weight: 600; color: #1a2051; vertical-align: top;
+  font-weight: 600; color: #1e293b; vertical-align: top; line-height: 1.45;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
 }
 .tdVal {
   padding: 11px 14px; border-bottom: 1px solid #f1f5f9;
   font-weight: 800; color: var(--ref-color); white-space: nowrap;
   font-variant-numeric: tabular-nums; vertical-align: top;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
 }
 .tdNote {
   padding: 11px 14px; border-bottom: 1px solid #f1f5f9;
-  color: #64748b; line-height: 1.5; vertical-align: top; font-size: 13px;
+  color: #64748b; line-height: 1.55; vertical-align: top; font-size: 12.5px;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
 }
 [dir='rtl'] .tdVal { white-space: normal; }
 
