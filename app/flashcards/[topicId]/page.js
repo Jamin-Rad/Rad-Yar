@@ -42,6 +42,10 @@ const T = {
     emptyTitle: 'Keine Karten in dieser Auswahl.',
     emptySub: 'Wähle eine andere Box oder starte das Thema normal.',
     lessonLinkLabel: 'Lektion lernen',
+    navigatorTitle: 'Reihenfolge',
+    navigatorHint: 'Karten direkt wählen',
+    lastCard: 'Letzte Karte',
+    jumpToCard: (i, title) => `Zu Karte ${i}: ${title}`,
     dueLockedTitle: 'Wiederholungsfunktion',
     dueLockedHint: 'Die „Heute fällig"-Wiederholung ist nur mit Abo verfügbar. Aktiviere ein Abonnement, um alle fälligen Karten zu wiederholen.',
     topicLockedTitle: 'Themenlimit erreicht',
@@ -73,6 +77,10 @@ const T = {
     emptyTitle: 'No cards in this selection.',
     emptySub: 'Choose another box or start the topic normally.',
     lessonLinkLabel: 'Study lesson',
+    navigatorTitle: 'Order',
+    navigatorHint: 'Choose any card',
+    lastCard: 'Last card',
+    jumpToCard: (i, title) => `Go to card ${i}: ${title}`,
     dueLockedTitle: 'Review feature',
     dueLockedHint: 'The "due today" review is only available with a subscription. Activate a subscription to review all due cards.',
     topicLockedTitle: 'Topic limit reached',
@@ -104,6 +112,10 @@ const T = {
     emptyTitle: 'در این انتخاب کارتی وجود ندارد.',
     emptySub: 'یک جعبه دیگر انتخاب کن یا موضوع را به صورت عادی شروع کن.',
     lessonLinkLabel: 'مطالعه درس',
+    navigatorTitle: 'ترتیب کارت‌ها',
+    navigatorHint: 'انتخاب مستقیم کارت',
+    lastCard: 'آخرین کارت',
+    jumpToCard: (i, title) => `رفتن به کارت ${i}: ${title}`,
     dueLockedTitle: 'قابلیت مرور',
     dueLockedHint: 'مرور «امروزِ» فقط با اشتراک در دسترس است. برای مرور همه کارت‌های مقرر، یک اشتراک فعال کن.',
     topicLockedTitle: 'محدودیت موضوعات',
@@ -261,6 +273,16 @@ export default function FlashcardReviewPage() {
   const boxLabel = getBoxLabel(boxNum, lang)
   const progress = cards.length > 0 ? (index / cards.length) * 100 : 0
 
+  const goToCard = useCallback((nextIndex) => {
+    if (!cards.length) return
+    const boundedIndex = Math.max(0, Math.min(cards.length - 1, nextIndex))
+    setIndex(boundedIndex)
+    setFlipped(false)
+    setExiting(false)
+    setExitDir(null)
+    setDone(false)
+  }, [cards.length])
+
   const handleFlip = useCallback(() => {
     if (exiting || !current) return
     if (!flipped && !practiceMode) {
@@ -403,6 +425,38 @@ export default function FlashcardReviewPage() {
       <div className={styles.progressTrack}>
         <div className={styles.progressBar} style={{ width: `${progress}%` }} />
       </div>
+
+      <nav className={styles.cardNavigator} aria-label={t.navigatorTitle}>
+        <div className={styles.navigatorHeader}>
+          <div>
+            <strong>{t.navigatorTitle}</strong>
+            <span>{t.navigatorHint}</span>
+          </div>
+          <button type="button" className={styles.lastCardBtn} onClick={() => goToCard(cards.length - 1)}>
+            {t.lastCard}
+          </button>
+        </div>
+        <div className={styles.cardMap}>
+          {cards.map((card, cardIndex) => {
+            const title = localize(card.front, lang)
+            const category = localize(card.category, lang)
+            return (
+              <button
+                type="button"
+                key={card.id}
+                className={`${styles.cardMapItem} ${cardIndex === index ? styles.cardMapItemActive : ''}`.trim()}
+                onClick={() => goToCard(cardIndex)}
+                aria-current={cardIndex === index ? 'step' : undefined}
+                aria-label={t.jumpToCard(cardIndex + 1, title)}
+              >
+                <span>{String(cardIndex + 1).padStart(2, '0')}</span>
+                <strong>{title}</strong>
+                {category && <small>{category}</small>}
+              </button>
+            )
+          })}
+        </div>
+      </nav>
 
       <main className={styles.main}>
         <div className={styles.categoryRow}>

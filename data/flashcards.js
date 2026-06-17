@@ -1297,35 +1297,6 @@ export const FLASHCARDS = [
     }
   },
   {
-    "id": "haemangiom-14-reporting",
-    "topicId": "haemangiom",
-    "category": {
-      "de": "Befundung",
-      "en": "Reporting",
-      "fa": "گزارش‌نویسی"
-    },
-    "front": {
-      "de": "Was ist der wichtigste Befundungssatz beim typischen Leberhämangiom?",
-      "en": "What is the most important reporting sentence for a typical liver haemangioma?",
-      "fa": "مهم‌ترین جمله در گزارش همانژیوم تیپیک کبدی چیست؟"
-    },
-    "answer": {
-      "de": "Typisches Hämangiom, kein suspekter Befund.",
-      "en": "Typical haemangioma, no suspicious finding.",
-      "fa": "همانژیوم تیپیک، یافته مشکوک نیست."
-    },
-    "explanation": {
-      "de": "Bei klassischer Morphologie und Enhancement-Dynamik sollte der Befund klar benigne formuliert werden. Bei atypischen Zeichen besser beschreiben, vergleichen und ggf. Kontrolle/MRT empfehlen.",
-      "en": "With classic morphology and enhancement dynamics, the report should clearly state benignity. If features are atypical, describe, compare with priors and consider follow-up or MRI.",
-      "fa": "در مورفولوژی و دینامیک enhancement تیپیک، گزارش باید خوش‌خیم بودن را واضح بیان کند. در ویژگی‌های آتیپیک بهتر است توصیف، مقایسه با قبل و در صورت نیاز کنترل یا MRI پیشنهاد شود."
-    },
-    "diagram": {
-      "de": "klassisches Muster → benigne klar formulieren\natypisch → beschreiben + vergleichen",
-      "en": "classic pattern → state benign clearly\natypical → describe + compare",
-      "fa": "الگوی کلاسیک → خوش‌خیم بودن واضح\nآتیپیک → توصیف + مقایسه"
-    }
-  },
-  {
     "id": "fnh-01-definition",
     "topicId": "fnh",
     "category": {

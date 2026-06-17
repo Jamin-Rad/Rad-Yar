@@ -107,6 +107,130 @@
   min-width: 3px;
 }
 
+.cardNavigator {
+  width: min(960px, calc(100% - 40px));
+  margin: 16px auto 0;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--bg-card);
+  box-shadow: 0 12px 32px var(--shadow-soft);
+}
+
+.navigatorHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.navigatorHeader div {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+}
+
+.navigatorHeader strong {
+  color: var(--text-strong);
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.navigatorHeader span {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.lastCardBtn {
+  min-height: 34px;
+  padding: 7px 12px;
+  border: 1px solid rgba(249, 115, 22, .26);
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--orange);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.lastCardBtn:hover { background: rgba(249, 115, 22, .16); }
+
+.cardMap {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(150px, 190px);
+  gap: 9px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scroll-snap-type: x proximity;
+}
+
+.cardMapItem {
+  min-height: 84px;
+  padding: 10px;
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  background: var(--surface-soft);
+  color: var(--text);
+  cursor: pointer;
+  font-family: inherit;
+  text-align: start;
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  grid-template-rows: 1fr auto;
+  gap: 4px 8px;
+  align-items: start;
+  scroll-snap-align: start;
+}
+
+.cardMapItem > span {
+  grid-row: 1 / span 2;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--bg-card);
+  color: var(--orange);
+  border: 1px solid rgba(249, 115, 22, .18);
+  font-size: 11px;
+  font-weight: 950;
+}
+
+.cardMapItem strong {
+  min-width: 0;
+  color: var(--text-strong);
+  font-size: 12px;
+  line-height: 1.35;
+  font-weight: 900;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cardMapItem small {
+  color: var(--text-muted);
+  font-size: 10.5px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.cardMapItem:hover {
+  border-color: rgba(249, 115, 22, .34);
+  background: var(--accent-soft);
+}
+
+.cardMapItemActive {
+  border-color: rgba(249, 115, 22, .50);
+  background: linear-gradient(135deg, var(--accent-soft), var(--bg-card));
+  box-shadow: inset 0 0 0 1px rgba(249, 115, 22, .18);
+}
+
 /* ── MAIN CONTENT ──────────────────────────────────── */
 .main {
   flex: 1;
@@ -473,6 +597,9 @@
 /* ── RESPONSIVE ────────────────────────────────────── */
 @media (max-width: 620px) {
   .topBar       { padding: 11px 16px; }
+  .cardNavigator { width: calc(100% - 24px); margin-top: 12px; border-radius: 16px; }
+  .navigatorHeader { align-items: flex-start; }
+  .cardMap { grid-auto-columns: minmax(138px, 165px); }
   .main         { padding: 20px 14px 72px; gap: 14px; }
 
   .cardFront,
