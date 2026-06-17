@@ -52,8 +52,10 @@
 }
 
 .card {
+  position: relative;
+  overflow: hidden;
   border-radius: 18px;
-  padding: 24px 22px 20px;
+  padding: 22px 22px 20px;
   border: 1.5px solid;
   cursor: pointer;
   text-align: start;
@@ -61,26 +63,48 @@
   transition: transform .3s, box-shadow .3s;
   width: 100%;
 }
+.card::after {
+  content: '';
+  position: absolute;
+  inset: auto -42px -58px auto;
+  width: 150px;
+  height: 150px;
+  border-radius: 999px;
+  pointer-events: none;
+  opacity: .62;
+}
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 32px rgba(26,32,81,0.10);
 }
+.card:hover .cardIconImage { transform: scale(1.045) rotate(-1deg); }
 
 .cardBlue   { border-color: #bae6fd; background: linear-gradient(140deg, #f0f9ff 0%, #fff 70%); }
 .cardOrange { border-color: #fed7aa; background: linear-gradient(140deg, #fff7ed 0%, #fff 70%); }
 .cardGreen  { border-color: #a7f3d0; background: linear-gradient(140deg, #ecfdf5 0%, #fff 70%); }
+.cardBlue::after   { background: rgba(14, 165, 233, .12); }
+.cardOrange::after { background: rgba(249, 115, 22, .13); }
+.cardGreen::after  { background: rgba(5, 150, 105, .12); }
 
 /* ── Icon-Box ─────────────────────────────────── */
 .iconBox {
-  width: 64px; height: 64px; border-radius: 16px;
+  width: 92px; height: 92px; border-radius: 24px;
   display: flex; align-items: center; justify-content: center;
-  margin-bottom: 16px; border: 1.5px solid;
+  margin-bottom: 17px; border: 1.5px solid;
   background: #fff;
+  overflow: hidden;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, .08);
 }
 .iconBoxBlue   { border-color: #7dd3fc; }
 .iconBoxOrange { border-color: #fdba74; }
 .iconBoxGreen  { border-color: #6ee7b7; }
-.iconEmoji { font-size: 30px; line-height: 1; }
+.cardIconImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform .24s ease;
+}
 
 /* ── Karten-Text ──────────────────────────────── */
 .cardTitle {
@@ -476,6 +500,20 @@
 }
 @media (max-width: 640px) {
   .grid { grid-template-columns: 1fr; }
+  .card {
+    display: grid;
+    grid-template-columns: 82px 1fr;
+    column-gap: 15px;
+    align-items: start;
+  }
+  .iconBox {
+    width: 82px;
+    height: 82px;
+    border-radius: 22px;
+    grid-row: span 3;
+    margin-bottom: 0;
+  }
+  .chips { grid-column: 2; }
   .split { grid-template-columns: 1fr; }
   .sidebar {
     flex-direction: row; flex-wrap: nowrap; overflow-x: auto;

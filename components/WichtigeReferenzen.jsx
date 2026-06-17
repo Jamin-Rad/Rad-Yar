@@ -1,9 +1,34 @@
 'use client'
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { REF_COPY, REF_DATA, tx } from '@/data/referenzen'
 import styles from './WichtigeReferenzen.module.css'
+
+const HOME_CARD_VISUALS = {
+  messwerte: {
+    src: '/referenzen/messwerte.png',
+    className: styles.iconBoxBlue,
+  },
+  klassifikationen: {
+    src: '/referenzen/klassifikation.png',
+    className: styles.iconBoxOrange,
+  },
+  rechner: {
+    src: '/referenzen/rechner.png',
+    className: styles.iconBoxGreen,
+  },
+}
+
+function HomeCardIcon({ type, alt }) {
+  const visual = HOME_CARD_VISUALS[type]
+  return (
+    <div className={`${styles.iconBox} ${visual.className}`}>
+      <Image src={visual.src} alt={alt} width={124} height={124} className={styles.cardIconImage} />
+    </div>
+  )
+}
 
 /* ── SVG-Icons für jede Messwerteregion ──────── */
 function RegionIcon({ id, size = 17 }) {
@@ -50,19 +75,19 @@ export default function WichtigeReferenzen() {
         </div>
         <div className={styles.grid}>
           <button className={`${styles.card} ${styles.cardBlue}`} onClick={() => setModal('messwerte')}>
-            <div className={`${styles.iconBox} ${styles.iconBoxBlue}`}><span className={styles.iconEmoji}>📏</span></div>
+            <HomeCardIcon type="messwerte" alt="" />
             <h3 className={`${styles.cardTitle} ${styles.colorBlue}`}>{copy.btnMesswerte}</h3>
             <p className={styles.cardDesc}>{copy.btnMesswerteSub}</p>
             <div className={styles.chips}>{(copy.chipsMesswerte||[]).map(ch=><span key={ch} className={`${styles.chip} ${styles.chipBlue}`}>{ch}</span>)}</div>
           </button>
           <button className={`${styles.card} ${styles.cardOrange}`} onClick={() => setModal('klassifikationen')}>
-            <div className={`${styles.iconBox} ${styles.iconBoxOrange}`}><span className={styles.iconEmoji}>🗂️</span></div>
+            <HomeCardIcon type="klassifikationen" alt="" />
             <h3 className={`${styles.cardTitle} ${styles.colorOrange}`}>{copy.btnKlass}</h3>
             <p className={styles.cardDesc}>{copy.btnKlassSub}</p>
             <div className={styles.chips}>{(copy.chipsKlass||[]).map(ch=><span key={ch} className={`${styles.chip} ${styles.chipOrange}`}>{ch}</span>)}</div>
           </button>
           <button className={`${styles.card} ${styles.cardGreen}`} onClick={() => setModal('rechner')}>
-            <div className={`${styles.iconBox} ${styles.iconBoxGreen}`}><span className={styles.iconEmoji}>🧮</span></div>
+            <HomeCardIcon type="rechner" alt="" />
             <h3 className={`${styles.cardTitle} ${styles.colorGreen}`}>{copy.btnRechner}</h3>
             <p className={styles.cardDesc}>{copy.btnRechnerSub}</p>
             <div className={styles.chips}>{(copy.chipsRechner||[]).map(ch=><span key={ch} className={`${styles.chip} ${styles.chipGreen}`}>{ch}</span>)}</div>
