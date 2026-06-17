@@ -583,6 +583,34 @@
   color: #86efac;
 }
 
+:global(html[data-theme='dark']) .callout {
+  background: linear-gradient(135deg, rgba(16, 185, 129, .16), rgba(15, 23, 42, .92));
+  border-color: rgba(52, 211, 153, .34);
+  color: #bbf7d0;
+}
+
+:global(html[data-theme='dark']) .callout strong {
+  color: #86efac;
+}
+
+:global(html[data-theme='dark']) .callout p {
+  color: #dcfce7;
+}
+
+:global(html[data-theme='dark']) .callout.cave {
+  background: linear-gradient(135deg, rgba(127, 29, 29, .30), rgba(15, 23, 42, .92));
+  border-color: rgba(248, 113, 113, .38);
+  color: #fecaca;
+}
+
+:global(html[data-theme='dark']) .callout.cave strong {
+  color: #fca5a5;
+}
+
+:global(html[data-theme='dark']) .callout.cave p {
+  color: #fee2e2;
+}
+
 @media (max-width: 980px) {
   .hero,
   .layout,

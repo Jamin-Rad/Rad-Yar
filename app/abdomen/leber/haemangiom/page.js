@@ -628,7 +628,7 @@ const CONTENT = {
       "tableRows": [
         [
           "Native T1",
-          "hypointense to isointense relative to liver",
+          "hypointens تا isointens نسبت به کبد",
           ""
         ],
         [
@@ -638,13 +638,13 @@ const CONTENT = {
         ],
         [
           "DWI",
-          "hyperintense on high b-values",
-          "correlate with ADC"
+          "hyperintens در b-value بالا",
+          "همراه با ADC تفسیر شود"
         ],
         [
           "ADC",
-          "high ADC values",
-          "T2 shine-through؛ بدون restriction واقعی"
+          "ADC بالا",
+          "به نفع T2 shine-through و علیه restriction واقعی"
         ],
         [
           "T1 C+ arterial",
@@ -658,12 +658,12 @@ const CONTENT = {
         ]
       ],
       "lightBulbTitle": "Light-bulb sign",
-      "lightBulbText": "همانژیوم تیپیک در T2 بسیار hyperintense است. همانژیوم‌های کوچک اغلب هموژن هستند، ولی ضایعات بزرگ‌تر می‌توانند به علت فیبروز، کلسیفیکاسیون یا ترومبوز ناهمگون باشند.",
+      "lightBulbText": "همانژیوم تیپیک در T2 بسیار hyperintens است. همانژیوم‌های کوچک اغلب هموژن هستند، ولی ضایعات بزرگ‌تر می‌توانند به علت فیبروز، کلسیفیکاسیون یا ترومبوز ناهمگون باشند.",
       "dwiTitle": "تفسیر درست DWI",
-      "dwiText": "همانژیوم می‌تواند در b-value بالا hyperintense باشد. تفسیر DWI بدون ADC ناقص است: اگر DWI روشن باشد ولی ADC کاهش نیافته باشد، این الگو T2 shine-through است و restriction واقعی محسوب نمی‌شود.",
+      "dwiText": "همانژیوم ممکن است در b-value بالا hyperintens دیده شود. تفسیر DWI بدون ADC کامل نیست: اگر سیگنال DWI روشن باشد اما ADC کاهش متناظر نداشته باشد، این یافته T2 shine-through است و restriction واقعی نیست.",
       "imageAlt": "نمودار آموزشی علامت لامپ و پدیده T2 shine-through در همانژیوم کبدی",
       "lightBulbKey": "Light-bulb sign: سیگنال بسیار روشن T2 برای همانژیوم تیپیک است.",
-      "dwiKey": "سیگنال روشن DWI بدون کاهش متناظر ADC، T2 shine-through است و restriction واقعی نیست."
+      "dwiKey": "سیگنال روشن در DWI بدون کاهش متناظر در ADC، به معنای T2 shine-through است و restriction واقعی نیست."
     },
     "atypical": {
       "title": "همانژیوم آتیپیک کبدی",
@@ -676,13 +676,13 @@ const CONTENT = {
       "tableRows": [
         [
           "T2",
-          "markedly hyperintense، Light-bulb",
-          "heterogeneously hyperintense، اغلب کمتر درخشان"
+          "به‌شدت hyperintens، Light-bulb",
+          "ناهمگون hyperintens، اغلب کمتر درخشان"
         ],
         [
           "DWI/ADC",
-          "hyperintense در b-value بالا، ADC بالا",
-          "hyperintense محیطی، کاهش خفیف ADC ممکن است"
+          "hyperintens در b-value بالا، ADC بالا",
+          "hyperintens محیطی، کاهش خفیف ADC ممکن است"
         ],
         [
           "T1 C+",
@@ -693,8 +693,8 @@ const CONTENT = {
       "key": "همانژیوم آتیپیک می‌تواند متاستاز را تقلید کند. پیگیری، enhancement مرکزگرا، ADC و مقایسه با تصاویر قبلی کمک‌کننده هستند."
     },
     "takehome": {
-      "title": "مهم‌ترین نکات گزارش‌نویسی",
-      "lead": "مهم‌ترین قوانین گزارش‌نویسی برای عمل روزمره.",
+      "title": "Take home message",
+      "lead": "مهمترین نکات بررسی همانژیوم کبدی",
       "items": [
         {
           "title": "الگوی کلاسیک",
@@ -706,7 +706,7 @@ const CONTENT = {
         },
         {
           "title": "دام تشخیصی در DWI",
-          "text": "سیگنال روشن DWI بدون کاهش متناظر ADC، T2 shine-through است و restriction واقعی نیست."
+          "text": "سیگنال روشن در DWI بدون کاهش متناظر در ADC، به معنای T2 shine-through است و restriction واقعی نیست."
         },
         {
           "title": "ضایعه آتیپیک",
@@ -732,7 +732,7 @@ const CASE_COPY = {
       {
         title: 'Zwei inzidentelle Leberhämangiome in der CT',
         label: 'Hämangiom',
-        tags: ['CT', 'Mehrphasen!'],
+        tags: ['CT'],
         image: '/haemangiom/case-26557-ct.jpg',
         frames: CT_CASE_FRAMES,
         initialFrame: 1,
@@ -768,7 +768,7 @@ const CASE_COPY = {
       {
         title: 'Two incidental hepatic haemangiomas on CT',
         label: 'Haemangioma',
-        tags: ['CT', 'Mehrphasen!'],
+        tags: ['CT'],
         image: '/haemangiom/case-26557-ct.jpg',
         frames: CT_CASE_FRAMES,
         initialFrame: 1,
@@ -804,7 +804,7 @@ const CASE_COPY = {
       {
         title: 'دو همانژیوم اتفاقی کبد در CT',
         label: 'همانژیوم',
-        tags: ['CT', 'Mehrphasen!'],
+        tags: ['CT'],
         image: '/haemangiom/case-26557-ct.jpg',
         frames: CT_CASE_FRAMES,
         initialFrame: 1,
