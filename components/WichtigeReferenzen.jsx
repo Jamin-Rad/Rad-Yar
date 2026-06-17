@@ -4,12 +4,19 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import { REF_COPY, REF_DATA, tx } from '@/data/referenzen'
 import styles from './WichtigeReferenzen.module.css'
 
+const CARD_COLOR = { bg: '#f0f9ff', border: '#bae6fd', num: '#0ea5e9', iconBorder: '#7dd3fc' }
+const CHIPS = {
+  de: ['Neuro', 'Thorax', 'Abdomen', 'Urogenital', 'Gefäße', 'MSK'],
+  en: ['Neuro', 'Thorax', 'Abdomen', 'Urogenital', 'Vessels', 'MSK'],
+  fa: ['نورو', 'توراکس', 'شکم', 'اوروژنیتال', 'عروق', 'MSK'],
+}
+
 export default function WichtigeReferenzen() {
   const { lang } = useLanguage()
   const copy = REF_COPY[lang] || REF_COPY.de
-  const [modal, setModal] = useState(null) // 'messwerte' | 'klassifikationen' | null
+  const [modal, setModal] = useState(null)
+  const chips = CHIPS[lang] || CHIPS.de
 
-  // Body-Scroll sperren, solange ein Modal offen ist
   useEffect(() => {
     if (!modal) return
     const prev = document.body.style.overflow
@@ -17,30 +24,28 @@ export default function WichtigeReferenzen() {
     return () => { document.body.style.overflow = prev }
   }, [modal])
 
+  const c = CARD_COLOR
   return (
     <section className={styles.section} id="referenzen">
-      <div className={styles.label}>{copy.label}</div>
-      <h2 className={styles.title}>{copy.title}</h2>
-      <p className={styles.sub}>{copy.sub}</p>
-
-      <div className={styles.buttons}>
-        <button className={`${styles.bigBtn} ${styles.btnBlue}`} onClick={() => setModal('messwerte')}>
-          <span className={styles.bigIcon} aria-hidden="true">📏</span>
-          <span className={styles.bigText}>
-            <strong>{copy.btnMesswerte}</strong>
-            <small>{copy.btnMesswerteSub}</small>
-          </span>
-          <span className={styles.bigArrow} aria-hidden="true">→</span>
-        </button>
-
-        <button className={`${styles.bigBtn} ${styles.btnOrange}`} onClick={() => setModal('klassifikationen')}>
-          <span className={styles.bigIcon} aria-hidden="true">🗂️</span>
-          <span className={styles.bigText}>
-            <strong>{copy.btnKlass}</strong>
-            <small>{copy.btnKlassSub}</small>
-          </span>
-          <span className={styles.bigArrow} aria-hidden="true">→</span>
-        </button>
+      <div
+        className={styles.card}
+        style={{ background: c.bg, borderColor: c.border }}
+        onClick={() => setModal('messwerte')}
+        role="button"
+        tabIndex={0}
+        onKeyDown={e => e.key === 'Enter' && setModal('messwerte')}
+      >
+        <div className={styles.iconWrap} style={{ borderColor: c.iconBorder }}>
+          <span className={styles.iconEmoji} aria-hidden="true">📏</span>
+        </div>
+        <h3 className={styles.cardTitle} style={{ color: c.num }}>{copy.title}</h3>
+        <p className={styles.cardDesc}>{copy.sub}</p>
+        <div className={styles.chips}>
+          {chips.map(ch => (
+            <span key={ch} className={styles.chip}
+              style={{ borderColor: c.border, color: c.num }}>{ch}</span>
+          ))}
+        </div>
       </div>
 
       {modal === 'messwerte' && (

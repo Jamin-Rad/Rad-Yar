@@ -1,37 +1,32 @@
 .section {
-  padding: 70px 7vw 60px;
-  background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
-  border-top: 1px solid #eef2f7;
+  padding: 0 7vw 70px;
+  background: #fff;
 }
-.label { font-size: 13px; font-weight: 600; color: #0ea5e9; margin-bottom: 8px; }
-.title {
-  font-family: var(--font-display, 'Georgia', serif);
-  font-size: 30px; font-weight: 800; color: #1a2051; margin: 0 0 8px;
-}
-.sub { font-size: 14.5px; color: #64748b; margin: 0 0 26px; max-width: 560px; line-height: 1.6; }
 
-/* ── Zwei große Knöpfe ───────────────────────── */
-.buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.bigBtn {
-  display: flex; align-items: center; gap: 18px;
-  text-align: start; cursor: pointer;
-  padding: 26px 26px; border-radius: 18px;
-  border: 1.5px solid; background: #fff;
-  transition: transform .25s, box-shadow .25s;
+/* ── Karte — identisch mit LernPfade-Card ────── */
+.card {
+  border-radius: 18px; padding: 30px 26px 26px;
+  border: 1.5px solid; cursor: pointer;
+  transition: transform .3s, box-shadow .3s;
+  max-width: 280px;
 }
-.bigBtn:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(26,32,81,0.12); }
-.btnBlue { border-color: #bae6fd; background: linear-gradient(135deg, #f0f9ff, #fff); }
-.btnOrange { border-color: #fed7aa; background: linear-gradient(135deg, #fff7ed, #fff); }
-.bigIcon {
-  font-size: 30px; width: 64px; height: 64px; flex-shrink: 0;
+.card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(26,32,81,0.1); }
+
+.iconWrap {
+  width: 96px; height: 96px; border-radius: 22px;
   display: flex; align-items: center; justify-content: center;
-  border-radius: 16px; background: #fff; border: 1.5px solid #eef2f7;
+  margin-bottom: 18px; border: 1.5px solid; background: #fff;
 }
-.bigText { display: flex; flex-direction: column; gap: 4px; flex: 1; }
-.bigText strong { font-size: 18px; color: #1a2051; font-weight: 700; }
-.bigText small { font-size: 13px; color: #64748b; line-height: 1.4; }
-.bigArrow { font-size: 22px; color: #94a3b8; }
-[dir='rtl'] .bigArrow { transform: scaleX(-1); }
+.iconEmoji { font-size: 44px; line-height: 1; }
+
+.cardTitle {
+  font-family: var(--font-display, 'Georgia', serif);
+  font-style: italic; font-size: 18px; font-weight: 700;
+  margin: 0 0 10px;
+}
+.cardDesc { font-size: 13.5px; color: #64748b; line-height: 1.65; margin-bottom: 18px; }
+.chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.chip { font-size: 11px; padding: 4px 11px; border-radius: 20px; border: 1px solid; background: rgba(255,255,255,0.7); font-weight: 500; }
 
 /* ── Modal ───────────────────────────────────── */
 .overlay {
