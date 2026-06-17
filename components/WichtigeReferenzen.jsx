@@ -79,7 +79,7 @@ function Modal({ title, copy, onClose, children, accentClass }) {
   )
 }
 
-/* ── Messwerte-Modal: Bereich → Tabelle ──────── */
+/* ── Messwerte-Modal: Bereich → Karten ───────── */
 function MesswerteModal({ copy, lang, onClose }) {
   const regions = REF_DATA.messwerte
   const [regionId, setRegionId] = useState(regions[0].id)
@@ -88,6 +88,7 @@ function MesswerteModal({ copy, lang, onClose }) {
   return (
     <Modal title={copy.btnMesswerte} copy={copy} onClose={onClose} accentClass={styles.headBlue}>
       <div className={styles.split}>
+        {/* Sidebar */}
         <nav className={styles.sidebar}>
           {regions.map(r => (
             <button key={r.id}
@@ -100,23 +101,30 @@ function MesswerteModal({ copy, lang, onClose }) {
             </button>
           ))}
         </nav>
-        <div className={styles.content} style={{ '--ref-color': region.color }}>
-          <table className={styles.table}>
-            <thead><tr>
-              <th>{copy.colStruktur}</th>
-              <th>{copy.colWert}</th>
-              <th>{copy.colHinweis}</th>
-            </tr></thead>
-            <tbody>
-              {region.entries.map((e, i) => (
-                <tr key={i}>
-                  <td className={styles.cellName}>{tx(e.s, lang)}</td>
-                  <td className={styles.cellVal}>{e.v}</td>
-                  <td className={styles.cellNote}>{tx(e.h, lang)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+
+        {/* Inhalt */}
+        <div className={styles.content}>
+          {/* Bereich-Banner */}
+          <div className={styles.regionBanner} style={{ background: region.color + '18', borderColor: region.color + '44' }}>
+            <span className={styles.regionDot} style={{ background: region.color }} />
+            <span className={styles.regionBannerName} style={{ color: region.color }}>{tx(region.name, lang)}</span>
+            <span className={styles.regionBannerCount} style={{ color: region.color }}>{region.entries.length} {copy.colStruktur.toLowerCase()}en</span>
+          </div>
+
+          {/* Eintrags-Karten */}
+          <div className={styles.entryList}>
+            {region.entries.map((e, i) => (
+              <div key={i} className={styles.entryCard} style={{ '--ref-color': region.color }}>
+                <div className={styles.entryTop}>
+                  <span className={styles.entryName}>{tx(e.s, lang)}</span>
+                  <span className={styles.entryBadge} style={{ background: region.color + '18', color: region.color, border: `1px solid ${region.color}44` }}>
+                    {e.v}
+                  </span>
+                </div>
+                <p className={styles.entryNote}>{tx(e.h, lang)}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </Modal>
