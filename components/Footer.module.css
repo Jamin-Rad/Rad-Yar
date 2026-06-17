@@ -1,8 +1,8 @@
 .footer {
   padding: 28px 7vw; display: flex; align-items: center;
   justify-content: space-between; flex-wrap: wrap; gap: 14px;
-  background: linear-gradient(135deg, #fff1f2 0%, #fce7f3 50%, #f5f3ff 100%);
-  border-top: 1px solid rgba(236, 72, 153, 0.15);
+  background: rgba(8, 14, 28, 0.97);
+  border-top: 1px solid rgba(255,255,255,0.07);
 }
 
 /* ── Logo + Link links ─────────────────────────── */
@@ -12,22 +12,19 @@
 .brandLink {
   font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
   font-style: italic; font-weight: 900; font-size: 16px;
-  color: #9d174d; text-decoration: none; letter-spacing: -.02em;
+  color: #f1f5f9; text-decoration: none; letter-spacing: -.02em;
   transition: color .18s;
 }
-.brandLink:hover { color: #be185d; text-decoration: underline; }
+.brandLink:hover { color: #f97316; }
 
 /* ── Copyright rechts ──────────────────────────── */
 .copy {
   font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
-  font-size: 11.5px; color: #94a3b8;
+  font-size: 11.5px; color: rgba(148,163,184,0.6);
 }
 
-/* ── Dark Mode ─────────────────────────────────── */
+/* ── Dark Mode (bereits dunkel, kaum Unterschied) ─ */
 :global(html[data-theme='dark']) .footer {
-  background: rgba(8, 13, 25, 0.96);
-  border-top-color: rgba(148,163,184,0.14);
+  background: rgba(3, 7, 18, 0.98);
+  border-top-color: rgba(255,255,255,0.05);
 }
-:global(html[data-theme='dark']) .brandLink { color: #f9a8d4; }
-:global(html[data-theme='dark']) .brandLink:hover { color: #fbcfe8; }
-:global(html[data-theme='dark']) .copy { color: rgba(203,213,225,0.64); }
