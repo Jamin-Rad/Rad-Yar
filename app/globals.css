@@ -70,7 +70,6 @@ html, body {
   user-select: none;
 }
 
-input, textarea, [contenteditable='true'],
 .admin-copy-enabled body, .admin-copy-enabled body * {
   -webkit-user-select: text;
   -moz-user-select: text;
