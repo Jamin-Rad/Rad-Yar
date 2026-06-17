@@ -41,9 +41,11 @@ const T = {
     backLink: '← Zurück zur Übersicht',
     emptyTitle: 'Keine Karten in dieser Auswahl.',
     emptySub: 'Wähle eine andere Box oder starte das Thema normal.',
+    loadingTitle: 'Karten werden geladen...',
     lessonLinkLabel: 'Lektion lernen',
     navigatorTitle: 'Reihenfolge',
     navigatorHint: 'Karten direkt wählen',
+    previousCard: 'Vorherige Karte',
     lastCard: 'Letzte Karte',
     jumpToCard: (i, title) => `Zu Karte ${i}: ${title}`,
     dueLockedTitle: 'Wiederholungsfunktion',
@@ -76,9 +78,11 @@ const T = {
     backLink: '← Back to overview',
     emptyTitle: 'No cards in this selection.',
     emptySub: 'Choose another box or start the topic normally.',
+    loadingTitle: 'Loading cards...',
     lessonLinkLabel: 'Study lesson',
     navigatorTitle: 'Order',
     navigatorHint: 'Choose any card',
+    previousCard: 'Previous card',
     lastCard: 'Last card',
     jumpToCard: (i, title) => `Go to card ${i}: ${title}`,
     dueLockedTitle: 'Review feature',
@@ -111,9 +115,11 @@ const T = {
     backLink: '← برگشت به مرور کلی',
     emptyTitle: 'در این انتخاب کارتی وجود ندارد.',
     emptySub: 'یک جعبه دیگر انتخاب کن یا موضوع را به صورت عادی شروع کن.',
+    loadingTitle: 'در حال بارگذاری کارت‌ها...',
     lessonLinkLabel: 'مطالعه درس',
     navigatorTitle: 'ترتیب کارت‌ها',
     navigatorHint: 'انتخاب مستقیم کارت',
+    previousCard: 'کارت قبلی',
     lastCard: 'آخرین کارت',
     jumpToCard: (i, title) => `رفتن به کارت ${i}: ${title}`,
     dueLockedTitle: 'قابلیت مرور',
@@ -219,10 +225,12 @@ export default function FlashcardReviewPage() {
   const [exiting, setExiting] = useState(false)
   const [exitDir, setExitDir] = useState(null)
   const [done, setDone] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [stats, setStats] = useState({ correct: 0, wrong: 0 })
 
   useEffect(() => {
     let cancelled = false
+    setLoading(true)
     async function load() {
       const state = userId ? await pullLeitnerStateFromServer(userId) : loadLeitnerState(userId)
       if (cancelled) return
@@ -251,6 +259,7 @@ export default function FlashcardReviewPage() {
       setFlipped(false)
       setDone(false)
       setStats({ correct: 0, wrong: 0 })
+      setLoading(false)
     }
     load()
     return () => { cancelled = true }
@@ -271,7 +280,7 @@ export default function FlashcardReviewPage() {
   const record = current ? leitnerState[current.id] : null
   const boxNum = practiceMode && boxFilter ? boxFilter : (record?.box ?? 1)
   const boxLabel = getBoxLabel(boxNum, lang)
-  const progress = cards.length > 0 ? (index / cards.length) * 100 : 0
+  const progress = cards.length > 0 ? ((index + 1) / cards.length) * 100 : 0
 
   const goToCard = useCallback((nextIndex) => {
     if (!cards.length) return
@@ -385,6 +394,17 @@ export default function FlashcardReviewPage() {
     </div>
   )
 
+  if (loading) return (
+    <div className={styles.page} dir={dir}>
+      <div className={styles.doneWrap}>
+        <div className={styles.doneCard}>
+          <span className={styles.doneEmoji}>...</span>
+          <h1 className={styles.doneTitle}>{t.loadingTitle}</h1>
+        </div>
+      </div>
+    </div>
+  )
+
   if (!current) return (
     <div className={styles.page} dir={dir}>
       <div className={styles.doneWrap}>
@@ -418,7 +438,9 @@ export default function FlashcardReviewPage() {
           <span className={styles.cardCount}>{t.cardOf(index + 1, cards.length)}</span>
         </div>
         <div className={styles.topRight}>
-          <div className={styles.boxPill}>{practiceMode ? t.practiceMode : boxLabel}</div>
+          <button type="button" className={styles.navPillBtn} onClick={() => goToCard(index - 1)} disabled={index === 0}>
+            {t.previousCard}
+          </button>
         </div>
       </header>
 
@@ -432,14 +454,18 @@ export default function FlashcardReviewPage() {
             <strong>{t.navigatorTitle}</strong>
             <span>{t.navigatorHint}</span>
           </div>
-          <button type="button" className={styles.lastCardBtn} onClick={() => goToCard(cards.length - 1)}>
-            {t.lastCard}
-          </button>
+          <div className={styles.navigatorActions}>
+            <button type="button" className={styles.lastCardBtn} onClick={() => goToCard(index - 1)} disabled={index === 0}>
+              {t.previousCard}
+            </button>
+            <button type="button" className={styles.lastCardBtn} onClick={() => goToCard(cards.length - 1)}>
+              {t.lastCard}
+            </button>
+          </div>
         </div>
         <div className={styles.cardMap}>
           {cards.map((card, cardIndex) => {
             const title = localize(card.front, lang)
-            const category = localize(card.category, lang)
             return (
               <button
                 type="button"
@@ -450,8 +476,6 @@ export default function FlashcardReviewPage() {
                 aria-label={t.jumpToCard(cardIndex + 1, title)}
               >
                 <span>{String(cardIndex + 1).padStart(2, '0')}</span>
-                <strong>{title}</strong>
-                {category && <small>{category}</small>}
               </button>
             )
           })}

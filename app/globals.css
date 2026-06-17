@@ -172,6 +172,8 @@ section#takehome > button:first-child h2,
 section#takehome .sectionHead h2 {
   font-weight: 950 !important;
   font-family: var(--font-main) !important;
+  direction: ltr;
+  unicode-bidi: isolate;
   color: #92400e !important;
 }
 

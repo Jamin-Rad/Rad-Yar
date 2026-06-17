@@ -184,7 +184,7 @@
 }
 
 [dir='rtl'] .layout {
-  grid-template-columns: minmax(0, 1fr) 260px;
+  grid-template-columns: 260px minmax(0, 1fr);
 }
 
 .sidebar {
@@ -196,7 +196,7 @@
 }
 
 [dir='rtl'] .sidebar {
-  order: 2;
+  order: 0;
 }
 
 .sideTitle {

@@ -215,7 +215,7 @@
   align-items: start;
 }
 
-[dir='rtl'] .layout { grid-template-columns: minmax(0, 1fr) 260px; }
+[dir='rtl'] .layout { grid-template-columns: 260px minmax(0, 1fr); }
 
 .sidebar {
   position: sticky;
@@ -227,7 +227,7 @@
   box-shadow: 0 18px 45px var(--shadow-soft);
 }
 
-[dir='rtl'] .sidebar { order: 2; }
+[dir='rtl'] .sidebar { order: 0; }
 
 .sideTitle {
   padding: 7px 8px 14px;
