@@ -149,7 +149,7 @@ const CONTENT = {
         ],
         [
           "Spätphase",
-          "zunehmend homogen, ggf. vollständig hyperdens bzw. blutpoolähnlich"
+          "zunehmend homogen, ggf. persistierend hyperdens"
         ]
       ],
       "irisTitle": "Irisblendenphänomen",
@@ -159,7 +159,7 @@ const CONTENT = {
     },
     "mri": {
       "title": "MRT-Diagnostik",
-      "lead": "Die MRT ist besonders hilfreich, wenn Sono oder CT nicht eindeutig sind. Typisch sind das sehr helle T2-Signal und das dynamische Blutpool-Enhancement.",
+      "lead": "Die MRT ist besonders hilfreich, wenn Sono oder CT nicht eindeutig sind. Typisch sind das sehr helle T2-Signal und das dynamische, zentripetale Enhancement.",
       "tableHeaders": [
         "Sequenz",
         "Typischer Befund",
@@ -193,7 +193,7 @@ const CONTENT = {
         ],
         [
           "T1 C+ portal/spät",
-          "zentripetale Auffüllung bis blutpoolähnlich",
+          "zentripetale Auffüllung mit persistierender Kontrastierung",
           "klassisches Hämangiom-Muster"
         ]
       ],
@@ -230,7 +230,7 @@ const CONTENT = {
           "oft früharteriell homogen starke KM-Aufnahme"
         ]
       ],
-      "key": "Atypische Hämangiome können Metastasen imitieren. Hilfreich sind Verlauf, Blutpool-Verhalten, ADC-Karte und Vergleich mit Voruntersuchungen."
+      "key": "Atypische Hämangiome können Metastasen imitieren. Hilfreich sind Verlauf, zentripetales Enhancement, ADC-Karte und Vergleich mit Voruntersuchungen."
     },
     "takehome": {
       "title": "Take home message",
@@ -379,7 +379,7 @@ const CONTENT = {
         ],
         [
           "Delayed",
-          "increasingly homogeneous, possibly completely hyperdense / blood-pool-like"
+          "increasingly homogeneous, possibly persistently hyperdense"
         ]
       ],
       "irisTitle": "Iris diaphragm phenomenon",
@@ -389,7 +389,7 @@ const CONTENT = {
     },
     "mri": {
       "title": "MRI diagnosis",
-      "lead": "MRI is especially useful when ultrasound or CT is equivocal. The key features are very bright T2 signal and dynamic blood-pool enhancement.",
+      "lead": "MRI is especially useful when ultrasound or CT is equivocal. The key features are very bright T2 signal and dynamic centripetal enhancement.",
       "tableHeaders": [
         "Sequence",
         "Typical finding",
@@ -423,7 +423,7 @@ const CONTENT = {
         ],
         [
           "T1 C+ portal/delayed",
-          "centripetal fill-in until blood-pool-like",
+          "centripetal fill-in with persistent enhancement",
           "classic haemangioma pattern"
         ]
       ],
@@ -460,7 +460,7 @@ const CONTENT = {
           "often strong homogeneous arterial enhancement"
         ]
       ],
-      "key": "Atypical haemangiomas can mimic metastases. Helpful features are follow-up stability, blood-pool behaviour, ADC map and comparison with prior imaging."
+      "key": "Atypical haemangiomas can mimic metastases. Helpful features are follow-up stability, centripetal enhancement, ADC map and comparison with prior imaging."
     },
     "takehome": {
       "title": "Take home message",
@@ -609,7 +609,7 @@ const CONTENT = {
         ],
         [
           "تأخیری",
-          "به‌تدریج هموژن، گاهی کاملاً hyperdense یا شبیه blood pool"
+          "به‌تدریج هموژن، گاهی با enhancement پایدار و واضح"
         ]
       ],
       "irisTitle": "پدیده Iris diaphragm",
@@ -619,7 +619,7 @@ const CONTENT = {
     },
     "mri": {
       "title": "تشخیص در MRI",
-      "lead": "MRI زمانی بسیار کمک‌کننده است که سونوگرافی یا CT قطعی نباشد. نکته کلیدی، T2 بسیار روشن و enhancement دینامیک شبیه blood pool است.",
+      "lead": "MRI زمانی بسیار کمک‌کننده است که سونوگرافی یا CT قطعی نباشد. نکته کلیدی، T2 بسیار روشن و enhancement دینامیک مرکزگرا است.",
       "tableHeaders": [
         "سکانس",
         "یافته تیپیک",
@@ -653,7 +653,7 @@ const CONTENT = {
         ],
         [
           "T1 C+ پورتال/تأخیری",
-          "پرشدگی مرکزگرا تا حالت blood-pool-like",
+          "پرشدگی مرکزگرا با enhancement پایدار",
           "الگوی کلاسیک همانژیوم"
         ]
       ],
@@ -690,7 +690,7 @@ const CONTENT = {
           "اغلب enhancement هموژن و قوی در فاز شریانی"
         ]
       ],
-      "key": "همانژیوم آتیپیک می‌تواند متاستاز را تقلید کند. پیگیری، رفتار blood-pool، ADC و مقایسه با تصاویر قبلی کمک‌کننده هستند."
+      "key": "همانژیوم آتیپیک می‌تواند متاستاز را تقلید کند. پیگیری، enhancement مرکزگرا، ADC و مقایسه با تصاویر قبلی کمک‌کننده هستند."
     },
     "takehome": {
       "title": "Take home message",

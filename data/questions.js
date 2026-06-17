@@ -590,7 +590,7 @@ export const QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Zunehmend blutpoolähnlich/isointens durch zentripetale Auffüllung"
+          "text": "Zunehmend homogen/isodens durch zentripetale Auffüllung"
         },
         {
           "id": "B",
@@ -680,7 +680,7 @@ export const QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Hoher ADC und mehrphasiges Blutpool-Fill-in"
+          "text": "Hoher ADC und mehrphasiges zentripetales Fill-in"
         },
         {
           "id": "B",
@@ -696,7 +696,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "A",
-      "explanation": "Hohe ADC-Werte sprechen gegen echte Diffusionsrestriktion. Zusammen mit blutpoolähnlicher zentripetaler Auffüllung stützt dies die Diagnose Hämangiom."
+      "explanation": "Hohe ADC-Werte sprechen gegen echte Diffusionsrestriktion. Zusammen mit mehrphasiger zentripetaler Auffüllung stützt dies die Diagnose Hämangiom."
     },
     {
       "id": "fnh-de-01",
@@ -1005,7 +1005,7 @@ export const QUESTION_BANK = {
     {
       "id": "hcc-de-05", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
       "question": "Wie erscheint ein HCC typischerweise in der hepatobiliären MRT-Phase?",
-      "options": [{"id":"A","text":"Hypointens zum Leberparenchym"},{"id":"B","text":"Immer deutlich hyperintens"},{"id":"C","text":"Signalfrei wie Luft"},{"id":"D","text":"Identisch zum Blutpool"}],
+      "options": [{"id":"A","text":"Hypointens zum Leberparenchym"},{"id":"B","text":"Immer deutlich hyperintens"},{"id":"C","text":"Signalfrei wie Luft"},{"id":"D","text":"Identisch zu Gefäßen"}],
       "correct": "A", "explanation": "Die meisten HCC enthalten keine ausreichend funktionsfähigen Hepatozyten und erscheinen daher in der hepatobiliären Phase hypointens."
     },
     {
@@ -1918,7 +1918,7 @@ export const QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Increasingly blood-pool-like/isointense due to centripetal fill-in"
+          "text": "Increasingly homogeneous/isodense due to centripetal fill-in"
         },
         {
           "id": "B",
@@ -1934,7 +1934,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "A",
-      "explanation": "On portal venous and delayed phases, centripetal fill-in increases. The lesion approaches blood-pool or liver signal/density."
+      "explanation": "On portal venous and delayed phases, centripetal fill-in increases. The lesion becomes progressively more homogeneous and may approach liver signal or density."
     },
     {
       "id": "haemangiom-en-08",
@@ -2008,7 +2008,7 @@ export const QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "High ADC and multiphasic blood-pool fill-in"
+          "text": "High ADC and multiphasic centripetal fill-in"
         },
         {
           "id": "B",
@@ -2024,7 +2024,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "A",
-      "explanation": "High ADC values argue against true diffusion restriction. Together with blood-pool-like centripetal fill-in, this supports haemangioma."
+      "explanation": "High ADC values argue against true diffusion restriction. Together with multiphasic centripetal fill-in, this supports haemangioma."
     },
     {
       "id": "fnh-en-01",
@@ -2333,7 +2333,7 @@ export const QUESTION_BANK = {
     {
       "id": "hcc-en-05", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
       "question": "How does HCC typically appear in the hepatobiliary phase?",
-      "options": [{"id":"A","text":"Hypointense relative to liver parenchyma"},{"id":"B","text":"Always markedly hyperintense"},{"id":"C","text":"Signal void like air"},{"id":"D","text":"Identical to the blood pool"}],
+      "options": [{"id":"A","text":"Hypointense relative to liver parenchyma"},{"id":"B","text":"Always markedly hyperintense"},{"id":"C","text":"Signal void like air"},{"id":"D","text":"Identical to vessels"}],
       "correct": "A", "explanation": "Most HCCs lack sufficient functioning hepatocytes and therefore appear hypointense in the hepatobiliary phase."
     },
     {
@@ -3246,7 +3246,7 @@ export const QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "به علت پرشدگی مرکزگرا به‌تدریج شبیه blood pool یا ایزواینتنس می‌شود"
+          "text": "به علت پرشدگی مرکزگرا به‌تدریج هموژن یا ایزواینتنس می‌شود"
         },
         {
           "id": "B",
@@ -3336,7 +3336,7 @@ export const QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "ADC بالا و پرشدگی چندفازی شبیه blood pool"
+          "text": "ADC بالا و پرشدگی چندفازی مرکزگرا"
         },
         {
           "id": "B",
@@ -3352,7 +3352,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "A",
-      "explanation": "ADC بالا علیه محدودیت انتشار واقعی است. همراه با پرشدگی مرکزگرای شبیه blood pool، تشخیص همانژیوم را تقویت می‌کند."
+      "explanation": "ADC بالا علیه محدودیت انتشار واقعی است. همراه با پرشدگی مرکزگرای چندفازی، تشخیص همانژیوم را تقویت می‌کند."
     },
     {
       "id": "fnh-fa-01",
@@ -3661,7 +3661,7 @@ export const QUESTION_BANK = {
     {
       "id": "hcc-fa-05", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
       "question": "HCC معمولاً در فاز هپاتوبیلیاری چگونه دیده می‌شود؟",
-      "options": [{"id":"A","text":"هیپواینتنس نسبت به پارانشیم کبد"},{"id":"B","text":"همیشه به‌شدت هایپراینتنس"},{"id":"C","text":"بدون سیگنال مانند هوا"},{"id":"D","text":"کاملاً مشابه blood pool"}],
+      "options": [{"id":"A","text":"هیپواینتنس نسبت به پارانشیم کبد"},{"id":"B","text":"همیشه به‌شدت هایپراینتنس"},{"id":"C","text":"بدون سیگنال مانند هوا"},{"id":"D","text":"کاملاً مشابه عروق"}],
       "correct": "A", "explanation": "بیشتر HCCها هپاتوسیت عملکردی کافی ندارند و در فاز هپاتوبیلیاری هیپواینتنس دیده می‌شوند."
     },
     {

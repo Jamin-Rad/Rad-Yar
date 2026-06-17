@@ -1141,14 +1141,14 @@ export const FLASHCARDS = [
       "fa": "ندول‌های محیطی، سپس پرشدگی مرکزگرا."
     },
     "explanation": {
-      "de": "Arteriell beginnt die Aufnahme fleckig und diskontinuierlich am Rand. Portalvenös und spät zieht sie langsam in die Mitte, bis die Läsion blutpoolähnlich wird.",
-      "en": "Arterially, enhancement begins patchy and discontinuously at the rim. In portal venous and delayed phases it slowly moves to the centre until the lesion becomes blood-pool-like.",
-      "fa": "در فاز شریانی، enhancement به صورت لکه‌ای و ناپیوسته از حاشیه شروع می‌شود. در فاز پورتال و تأخیری آهسته به مرکز می‌رود تا ضایعه شبیه blood pool شود."
+      "de": "Arteriell beginnt die Aufnahme fleckig und diskontinuierlich am Rand. Portalvenös und spät zieht sie langsam in die Mitte, bis die Läsion zunehmend homogen kontrastiert.",
+      "en": "Arterially, enhancement begins patchy and discontinuously at the rim. In portal venous and delayed phases it slowly moves to the centre until the lesion enhances more homogeneously.",
+      "fa": "در فاز شریانی، enhancement به صورت لکه‌ای و ناپیوسته از حاشیه شروع می‌شود. در فاز پورتال و تأخیری آهسته به مرکز می‌رود تا ضایعه به‌تدریج هموژن‌تر enhancement پیدا کند."
     },
     "diagram": {
-      "de": "Randnoduli → zentripetal → blutpoolähnlich",
-      "en": "Rim nodules → centripetal → blood-pool-like",
-      "fa": "ندول محیطی → مرکزگرا → شبیه blood pool"
+      "de": "Randnoduli → zentripetal → homogenere Kontrastierung",
+      "en": "Rim nodules → centripetal → more homogeneous enhancement",
+      "fa": "ندول محیطی → مرکزگرا → enhancement هموژن‌تر"
     }
   },
   {
@@ -1281,19 +1281,19 @@ export const FLASHCARDS = [
       "fa": "کدام یافته علیه متاستاز و به نفع همانژیوم است؟"
     },
     "answer": {
-      "de": "Hoher ADC-Wert mit Blutpool-Enhancement.",
-      "en": "High ADC with blood-pool enhancement.",
-      "fa": "ADC بالا همراه با enhancement شبیه blood pool."
+      "de": "Hoher ADC-Wert mit mehrphasigem zentripetalem Fill-in.",
+      "en": "High ADC with multiphasic centripetal fill-in.",
+      "fa": "ADC بالا همراه با پرشدگی چندفازی مرکزگرا."
     },
     "explanation": {
-      "de": "Metastasen zeigen häufiger echte Diffusionsrestriktion mit niedrigerem ADC und kein typisches zentripetales Blutpool-Fill-in. Das Muster über mehrere Phasen ist wichtiger als ein Einzelbild.",
-      "en": "Metastases more often show true diffusion restriction with lower ADC and no typical centripetal blood-pool fill-in. The multiphasic pattern is more important than a single image.",
-      "fa": "متاستازها بیشتر محدودیت انتشار واقعی با ADC پایین‌تر نشان می‌دهند و الگوی پرشدگی مرکزگرا شبیه blood pool ندارند. الگوی چندفازی از یک تصویر منفرد مهم‌تر است."
+      "de": "Metastasen zeigen häufiger echte Diffusionsrestriktion mit niedrigerem ADC und kein typisches mehrphasiges zentripetales Fill-in. Das Muster über mehrere Phasen ist wichtiger als ein Einzelbild.",
+      "en": "Metastases more often show true diffusion restriction with lower ADC and no typical multiphasic centripetal fill-in. The multiphasic pattern is more important than a single image.",
+      "fa": "متاستازها بیشتر محدودیت انتشار واقعی با ADC پایین‌تر نشان می‌دهند و الگوی پرشدگی چندفازی مرکزگرا ندارند. الگوی چندفازی از یک تصویر منفرد مهم‌تر است."
     },
     "diagram": {
-      "de": "Hämangiom: ADC hoch + Blutpool\nMetastase: ADC niedrig + kein Fill-in",
-      "en": "Haemangioma: high ADC + blood pool\nMetastasis: low ADC + no fill-in",
-      "fa": "همانژیوم: ADC بالا + blood pool\nمتاستاز: ADC پایین + بدون fill-in"
+      "de": "Hämangiom: ADC hoch + zentripetales Fill-in\nMetastase: ADC niedrig + kein Fill-in",
+      "en": "Haemangioma: high ADC + centripetal fill-in\nMetastasis: low ADC + no fill-in",
+      "fa": "همانژیوم: ADC بالا + پرشدگی مرکزگرا\nمتاستاز: ADC پایین + بدون fill-in"
     }
   },
   {
