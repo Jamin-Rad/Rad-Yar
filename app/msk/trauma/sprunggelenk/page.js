@@ -373,6 +373,7 @@ export default function SprunggelenkTraumaPage() {
             <button
               type="button"
               key={section.id}
+              data-section-id={section.id}
               className={`${styles.sideItem} ${activeId === section.id ? styles.sideItemActive : ''}`}
               onClick={() => document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
             >

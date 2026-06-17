@@ -367,7 +367,17 @@ export default function HccPage() {
       <div className={styles.layout}>
         <aside className={styles.sidebar}>
           <div className={styles.sideTitle}>{copy.toc}</div>
-          {copy.sections.map(section => <button type="button" key={section.id} className={`${styles.sideItem} ${activeId === section.id ? styles.sideItemActive : ''}`} onClick={() => document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}><span>{section.icon}</span><strong>{section.label}</strong></button>)}
+          {copy.sections.map(section => (
+            <button
+              type="button"
+              key={section.id}
+              data-section-id={section.id}
+              className={`${styles.sideItem} ${activeId === section.id ? styles.sideItemActive : ''}`}
+              onClick={() => document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+            >
+              <span>{section.icon}</span><strong>{section.label}</strong>
+            </button>
+          ))}
         </aside>
 
         <div className={styles.main}>

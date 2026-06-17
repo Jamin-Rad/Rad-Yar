@@ -1132,7 +1132,7 @@ export default function SarkoidosePage() {
         <aside className={styles.sidebar}>
           <div className={styles.sideTitle}>{copy.toc}</div>
           {copy.sections.map(section => (
-            <button key={section.id} type="button" onClick={() => scrollTo(section.id)} className={`${styles.sideItem} ${activeId === section.id ? styles.sideItemActive : ''}`.trim()}>
+            <button key={section.id} type="button" data-section-id={section.id} onClick={() => scrollTo(section.id)} className={`${styles.sideItem} ${activeId === section.id ? styles.sideItemActive : ''}`.trim()}>
               <span>{section.icon}</span>{section.label}
             </button>
           ))}

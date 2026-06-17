@@ -464,6 +464,7 @@ export default function RotatorenmanschettePage() {
             <button
               type="button"
               key={section.id}
+              data-section-id={section.id}
               className={`${styles.sideItem} ${activeId === section.id ? styles.sideItemActive : ''}`}
               onClick={() => scrollTo(section.id)}
             >

@@ -246,7 +246,7 @@ const CONTENT = {
         },
         {
           "title": "DWI-Falle",
-          "text": "Helles DWI-Signal ist häufig T2-shine-through und nicht automatisch Diffusionsrestriktion."
+          "text": "Helles DWI-Signal ohne korrelierende ADC-Minderung ist T2-shine-through und nicht Diffusionsrestriktion."
         },
         {
           "title": "Atypische Läsion",
@@ -476,7 +476,7 @@ const CONTENT = {
         },
         {
           "title": "DWI pitfall",
-          "text": "Bright DWI signal is often T2 shine-through and not automatically diffusion restriction."
+          "text": "Bright DWI signal without corresponding ADC decrease is T2 shine-through and not diffusion restriction."
         },
         {
           "title": "Atypical lesion",
@@ -621,14 +621,14 @@ const CONTENT = {
       "title": "تشخیص در MRI",
       "lead": "MRI زمانی بسیار کمک‌کننده است که سونوگرافی یا CT قطعی نباشد. نکته کلیدی، T2 بسیار روشن و enhancement دینامیک مرکزگرا است.",
       "tableHeaders": [
-        "سکانس",
+        "Sequence",
         "یافته تیپیک",
         ""
       ],
       "tableRows": [
         [
-          "T1 نیتیو",
-          "هیپو تا ایزواینتنس نسبت به کبد",
+          "Native T1",
+          "hypointense to isointense relative to liver",
           ""
         ],
         [
@@ -638,32 +638,32 @@ const CONTENT = {
         ],
         [
           "DWI",
-          "هایپراینتنس در b-value بالا",
-          ""
+          "hyperintense on high b-values",
+          "correlate with ADC"
         ],
         [
           "ADC",
-          "ADC بالا",
-          "محدودیت انتشار واقعی ندارد"
+          "high ADC values",
+          "T2 shine-through؛ بدون restriction واقعی"
         ],
         [
-          "T1 C+ شریانی",
+          "T1 C+ arterial",
           "enhancement ندولار و لکه‌ای محیطی",
           "شروع از حاشیه"
         ],
         [
-          "T1 C+ پورتال/تأخیری",
+          "T1 C+ portal/delayed",
           "پرشدگی مرکزگرا با enhancement پایدار",
           "الگوی کلاسیک همانژیوم"
         ]
       ],
       "lightBulbTitle": "Light-bulb sign",
-      "lightBulbText": "همانژیوم تیپیک در T2 بسیار هایپراینتنس است. همانژیوم‌های کوچک اغلب هموژن هستند، ولی ضایعات بزرگ‌تر می‌توانند به علت فیبروز، کلسیفیکاسیون یا ترومبوز ناهمگون باشند.",
+      "lightBulbText": "همانژیوم تیپیک در T2 بسیار hyperintense است. همانژیوم‌های کوچک اغلب هموژن هستند، ولی ضایعات بزرگ‌تر می‌توانند به علت فیبروز، کلسیفیکاسیون یا ترومبوز ناهمگون باشند.",
       "dwiTitle": "تفسیر درست DWI",
-      "dwiText": "همانژیوم می‌تواند در b-value بالا روشن باشد. اما ADC تعیین‌کننده است: ADC بالا یعنی T2 shine-through و علیه محدودیت انتشار واقعی است.",
+      "dwiText": "همانژیوم می‌تواند در b-value بالا hyperintense باشد. تفسیر DWI بدون ADC ناقص است: اگر DWI روشن باشد ولی ADC کاهش نیافته باشد، این الگو T2 shine-through است و restriction واقعی محسوب نمی‌شود.",
       "imageAlt": "نمودار آموزشی علامت لامپ و پدیده T2 shine-through در همانژیوم کبدی",
       "lightBulbKey": "Light-bulb sign: سیگنال بسیار روشن T2 برای همانژیوم تیپیک است.",
-      "dwiKey": "هایپراینتنس بودن در DWI نباید با متاستاز اشتباه شود. بدون ADC پایین، محدودیت انتشار واقعی وجود ندارد."
+      "dwiKey": "سیگنال روشن DWI بدون کاهش متناظر ADC، T2 shine-through است و restriction واقعی نیست."
     },
     "atypical": {
       "title": "همانژیوم آتیپیک کبدی",
@@ -676,13 +676,13 @@ const CONTENT = {
       "tableRows": [
         [
           "T2",
-          "بسیار هایپراینتنس، Light-bulb",
-          "ناهمگون هایپراینتنس، اغلب کمتر درخشان"
+          "markedly hyperintense، Light-bulb",
+          "heterogeneously hyperintense، اغلب کمتر درخشان"
         ],
         [
           "DWI/ADC",
-          "روشن در b-value، ADC بالا",
-          "روشن محیطی، کاهش خفیف ADC ممکن است"
+          "hyperintense در b-value بالا، ADC بالا",
+          "hyperintense محیطی، کاهش خفیف ADC ممکن است"
         ],
         [
           "T1 C+",
@@ -693,7 +693,7 @@ const CONTENT = {
       "key": "همانژیوم آتیپیک می‌تواند متاستاز را تقلید کند. پیگیری، enhancement مرکزگرا، ADC و مقایسه با تصاویر قبلی کمک‌کننده هستند."
     },
     "takehome": {
-      "title": "Take home message",
+      "title": "مهم‌ترین نکات گزارش‌نویسی",
       "lead": "مهم‌ترین قوانین گزارش‌نویسی برای عمل روزمره.",
       "items": [
         {
@@ -701,12 +701,12 @@ const CONTENT = {
           "text": "enhancement ندولار محیطی + پرشدگی مرکزگرا = تیپیک برای همانژیوم."
         },
         {
-          "title": "کلید MRI",
+          "title": "نکات کلیدی در MRI",
           "text": "T2 بسیار روشن و ADC بالا به نفع همانژیوم است."
         },
         {
-          "title": "دام DWI",
-          "text": "DWI روشن اغلب T2 shine-through است و خودبه‌خود محدودیت انتشار نیست."
+          "title": "دام تشخیصی در DWI",
+          "text": "سیگنال روشن DWI بدون کاهش متناظر ADC، T2 shine-through است و restriction واقعی نیست."
         },
         {
           "title": "ضایعه آتیپیک",
@@ -722,7 +722,7 @@ const CASE_COPY = {
   de: {
     label: 'Fallbeispiele',
     title: 'Fallbeispiele',
-    lead: 'Echte Fälle von Radiopaedia.org zum Leberhämangiom – klassisch und atypisch.',
+    lead: 'Echte Fälle von Radiopaedia.org zum Leberhämangiom.',
     openCase: 'Fall in Radiopaedia öffnen',
     previousImage: 'Vorheriges Bild',
     nextImage: 'Nächstes Bild',
@@ -731,8 +731,8 @@ const CASE_COPY = {
     cases: [
       {
         title: 'Zwei inzidentelle Leberhämangiome in der CT',
-        label: 'Klassisches Hämangiom',
-        tags: ['CT', 'Mehrphasen'],
+        label: 'Hämangiom',
+        tags: ['CT', 'Mehrphasen!'],
         image: '/haemangiom/case-26557-ct.jpg',
         frames: CT_CASE_FRAMES,
         initialFrame: 1,
@@ -742,8 +742,8 @@ const CASE_COPY = {
         url: 'https://radiopaedia.org/cases/26557/play',
       },
       {
-        title: 'Typisches Leberhämangiom in der MRT',
-        label: 'Klassisches Hämangiom',
+        title: 'Leberhämangiom in der MRT',
+        label: 'Hämangiom',
         tags: ['MRT', 'T1 C+ portalvenös'],
         image: '/haemangiom/case-209408-mri.jpg',
         frames: MRI_CASE_FRAMES,
@@ -758,7 +758,7 @@ const CASE_COPY = {
   en: {
     label: 'Cases',
     title: 'Cases',
-    lead: 'Real cases from Radiopaedia.org on liver haemangioma – classic and atypical.',
+    lead: 'Real cases from Radiopaedia.org on liver haemangioma.',
     openCase: 'Open case in Radiopaedia',
     previousImage: 'Previous image',
     nextImage: 'Next image',
@@ -767,8 +767,8 @@ const CASE_COPY = {
     cases: [
       {
         title: 'Two incidental hepatic haemangiomas on CT',
-        label: 'Classic haemangioma',
-        tags: ['CT', 'multiphasic'],
+        label: 'Haemangioma',
+        tags: ['CT', 'Mehrphasen!'],
         image: '/haemangiom/case-26557-ct.jpg',
         frames: CT_CASE_FRAMES,
         initialFrame: 1,
@@ -778,8 +778,8 @@ const CASE_COPY = {
         url: 'https://radiopaedia.org/cases/26557/play',
       },
       {
-        title: 'Typical hepatic haemangioma on MRI',
-        label: 'Classic haemangioma',
+        title: 'Hepatic haemangioma on MRI',
+        label: 'Haemangioma',
         tags: ['MRI', 'T1 C+ portal venous'],
         image: '/haemangiom/case-209408-mri.jpg',
         frames: MRI_CASE_FRAMES,
@@ -794,7 +794,7 @@ const CASE_COPY = {
   fa: {
     label: 'نمونه کیس‌ها',
     title: 'نمونه کیس‌ها',
-    lead: 'کیس‌های واقعی از Radiopaedia.org درباره همانژیوم کبدی - تیپیک و آتیپیک.',
+    lead: 'کیس‌های واقعی از Radiopaedia.org درباره همانژیوم کبدی.',
     openCase: 'باز کردن کیس در Radiopaedia',
     previousImage: 'تصویر قبلی',
     nextImage: 'تصویر بعدی',
@@ -803,8 +803,8 @@ const CASE_COPY = {
     cases: [
       {
         title: 'دو همانژیوم اتفاقی کبد در CT',
-        label: 'همانژیوم تیپیک',
-        tags: ['CT', 'چندفازی'],
+        label: 'همانژیوم',
+        tags: ['CT', 'Mehrphasen!'],
         image: '/haemangiom/case-26557-ct.jpg',
         frames: CT_CASE_FRAMES,
         initialFrame: 1,
@@ -814,8 +814,8 @@ const CASE_COPY = {
         url: 'https://radiopaedia.org/cases/26557/play',
       },
       {
-        title: 'همانژیوم تیپیک کبد در MRI',
-        label: 'همانژیوم تیپیک',
+        title: 'همانژیوم کبد در MRI',
+        label: 'همانژیوم',
         tags: ['MRI', 'T1 C+ پورتال‌ونوس'],
         image: '/haemangiom/case-209408-mri.jpg',
         frames: MRI_CASE_FRAMES,
@@ -1042,6 +1042,7 @@ export default function LeberHaemangiomPage() {
             <button
               type="button"
               key={section.id}
+              data-section-id={section.id}
               className={`${styles.sideItem} ${activeId === section.id ? styles.sideItemActive : ''}`}
               onClick={() => scrollTo(section.id)}
             >

@@ -143,3 +143,51 @@ html[data-theme='dark'] .divider {
   background: rgba(249,115,22,.28);
   color: var(--text-strong);
 }
+
+button[data-section-id='takehome'] {
+  font-weight: 950 !important;
+  color: #b45309 !important;
+  background: linear-gradient(135deg, rgba(251, 191, 36, .18), rgba(249, 115, 22, .10)) !important;
+  border: 1px solid rgba(245, 158, 11, .28) !important;
+}
+
+button[data-section-id='takehome'] strong {
+  font-weight: 950 !important;
+}
+
+button[data-section-id='takehome'] span:first-child {
+  color: #f97316 !important;
+}
+
+section#takehome > button:first-child,
+section#takehome .sectionHead {
+  background: linear-gradient(135deg, rgba(251, 191, 36, .22), rgba(16, 185, 129, .10)) !important;
+  border-bottom: 1px solid rgba(245, 158, 11, .28) !important;
+}
+
+section#takehome h2,
+section#takehome > button:first-child h2,
+section#takehome .sectionHead h2 {
+  font-weight: 950 !important;
+  color: #92400e !important;
+}
+
+[dir='rtl'] section#mrt table th:first-child,
+[dir='rtl'] section#mrt table td:first-child {
+  direction: ltr;
+  text-align: center !important;
+  font-family: var(--font-main) !important;
+  font-weight: 850;
+}
+
+html[data-theme='dark'] button[data-section-id='takehome'] {
+  color: #fbbf24 !important;
+  background: linear-gradient(135deg, rgba(251, 191, 36, .16), rgba(249, 115, 22, .10)) !important;
+  border-color: rgba(251, 191, 36, .28) !important;
+}
+
+html[data-theme='dark'] section#takehome h2,
+html[data-theme='dark'] section#takehome > button:first-child h2,
+html[data-theme='dark'] section#takehome .sectionHead h2 {
+  color: #fbbf24 !important;
+}
