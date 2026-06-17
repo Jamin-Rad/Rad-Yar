@@ -46,8 +46,6 @@ const T = {
     lessonLinkLabel: 'Lektion lernen',
     navigatorTitle: 'Reihenfolge',
     navigatorHint: 'Karten direkt wählen',
-    previousCard: 'Vorherige Karte',
-    lastCard: 'Letzte Karte',
     jumpToCard: (i, title) => `Zu Karte ${i}: ${title}`,
     dueLockedTitle: 'Wiederholungsfunktion',
     dueLockedHint: 'Die „Heute fällig"-Wiederholung ist nur mit Abo verfügbar. Aktiviere ein Abonnement, um alle fälligen Karten zu wiederholen.',
@@ -84,8 +82,6 @@ const T = {
     lessonLinkLabel: 'Study lesson',
     navigatorTitle: 'Order',
     navigatorHint: 'Choose any card',
-    previousCard: 'Previous card',
-    lastCard: 'Last card',
     jumpToCard: (i, title) => `Go to card ${i}: ${title}`,
     dueLockedTitle: 'Review feature',
     dueLockedHint: 'The "due today" review is only available with a subscription. Activate a subscription to review all due cards.',
@@ -122,8 +118,6 @@ const T = {
     lessonLinkLabel: 'مطالعه درس',
     navigatorTitle: 'ترتیب کارت‌ها',
     navigatorHint: 'انتخاب مستقیم کارت',
-    previousCard: 'کارت قبلی',
-    lastCard: 'آخرین کارت',
     jumpToCard: (i, title) => `رفتن به کارت ${i}: ${title}`,
     dueLockedTitle: 'قابلیت مرور',
     dueLockedHint: 'مرور «امروزِ» فقط با اشتراک در دسترس است. برای مرور همه کارت‌های مقرر، یک اشتراک فعال کن.',
@@ -457,7 +451,6 @@ export default function FlashcardReviewPage() {
               {t.lessonLinkLabel}
             </a>
           )}
-          <div className={styles.boxPill}>{practiceMode ? t.practiceMode : boxLabel}</div>
         </div>
       </header>
 
@@ -470,14 +463,6 @@ export default function FlashcardReviewPage() {
           <div>
             <strong>{t.navigatorTitle}</strong>
             <span>{t.navigatorHint}</span>
-          </div>
-          <div className={styles.navigatorActions}>
-            <button type="button" className={styles.lastCardBtn} onClick={() => goToCard(index - 1)} disabled={index === 0}>
-              {t.previousCard}
-            </button>
-            <button type="button" className={styles.lastCardBtn} onClick={() => goToCard(cards.length - 1)}>
-              {t.lastCard}
-            </button>
           </div>
         </div>
         <div className={styles.cardMap}>

@@ -19,9 +19,8 @@
   grid-template-columns: minmax(160px, 1fr) auto minmax(160px, 1fr);
   align-items: center;
   gap: 12px;
-  padding: 12px 24px;
+  padding: 12px 24px 10px;
   background: var(--bg-card);
-  border-bottom: 1px solid var(--border);
   position: sticky;
   top: 64px;
   z-index: 10;
@@ -93,25 +92,9 @@
   color: #ea580c;
 }
 
-.boxPill {
-  background: var(--surface-soft);
-  color: var(--text-soft);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 6px 12px;
-  font-size: 12px;
-  font-weight: 800;
-  white-space: nowrap;
-}
-
-.lastCardBtn:disabled {
-  opacity: .45;
-  cursor: not-allowed;
-}
-
 /* ── PROGRESS BAR ──────────────────────────────────── */
 .progressTrack {
-  height: 8px;
+  height: 5px;
   background: var(--border);
   flex-shrink: 0;
 }
@@ -120,31 +103,36 @@
   height: 100%;
   background: linear-gradient(90deg, var(--orange), #22c55e);
   transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  min-width: 8px;
+  min-width: 5px;
   box-shadow: 0 0 16px rgba(249, 115, 22, .30);
 }
 
 .cardNavigator {
-  width: min(960px, calc(100% - 40px));
-  margin: 16px auto 0;
-  padding: 12px;
-  border: 1px solid var(--border);
-  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  margin: 0;
+  padding: 8px 24px 10px;
+  border-bottom: 1px solid var(--border);
   background: var(--bg-card);
-  box-shadow: 0 12px 32px var(--shadow-soft);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, .05);
 }
 
 .navigatorHeader {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 12px;
-  margin-bottom: 10px;
+  margin: 0;
+  text-align: center;
 }
 
 .navigatorHeader div {
-  display: grid;
-  gap: 1px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   min-width: 0;
 }
 
@@ -156,47 +144,24 @@
 
 .navigatorHeader span {
   color: var(--text-muted);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
-}
-
-.lastCardBtn {
-  min-height: 34px;
-  padding: 7px 12px;
-  border: 1px solid rgba(249, 115, 22, .26);
-  border-radius: 999px;
-  background: var(--accent-soft);
-  color: var(--orange);
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 900;
-  white-space: nowrap;
-}
-
-.lastCardBtn:hover { background: rgba(249, 115, 22, .16); }
-
-.navigatorActions {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 8px;
-  flex-wrap: wrap;
 }
 
 .cardMap {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: 46px;
-  gap: 8px;
+  grid-auto-columns: 34px;
+  justify-content: center;
+  gap: 6px;
   overflow-x: auto;
-  padding: 4px 2px 6px;
+  padding: 1px 2px;
   scroll-snap-type: x proximity;
 }
 
 .cardMapItem {
-  width: 46px;
-  min-height: 46px;
+  width: 34px;
+  min-height: 34px;
   padding: 0;
   border: 1px solid var(--border-soft);
   border-radius: 999px;
@@ -217,7 +182,7 @@
   border-radius: inherit;
   background: transparent;
   color: var(--orange);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 950;
 }
 
@@ -618,11 +583,10 @@
   .topCenter,
   .topRight     { justify-content: center; }
   .topRight     { flex-wrap: wrap; }
-  .cardNavigator { width: calc(100% - 24px); margin-top: 12px; border-radius: 16px; }
-  .navigatorHeader { align-items: flex-start; }
-  .navigatorActions { justify-content: flex-start; }
-  .cardMap { grid-auto-columns: 42px; }
-  .cardMapItem { width: 42px; min-height: 42px; }
+  .cardNavigator { align-items: stretch; flex-direction: column; gap: 8px; padding: 8px 12px 10px; }
+  .navigatorHeader { justify-content: center; }
+  .cardMap { grid-auto-columns: 32px; justify-content: flex-start; }
+  .cardMapItem { width: 32px; min-height: 32px; }
   .main         { padding: 20px 14px 72px; gap: 14px; }
 
   .cardFront,
