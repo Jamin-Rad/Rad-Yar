@@ -794,83 +794,173 @@ export const KLASSIFIKATIONEN = [
 ]
 
 // ── Rechner ──────────────────────────────────────────────────
-// Ellipsoid-Formel: V = L × B × H × 0.523
 export const RECHNER = [
+
+  // 1. Prostatavolumen + PSA-Dichte (kombiniert)
   {
-    id: 'prostata',
-    color: '#0ea5e9',
-    name: { de: 'Prostatavolumen', en: 'Prostate Volume', fa: 'حجم پروستات' },
-    formula: 'L × B × H × 0.523',
-    hint: { de: 'Ellipsoid-Formel (Sono / MRT)', en: 'Ellipsoid formula (US / MRI)', fa: 'فرمول بیضی‌وار (سونو/MRI)' },
+    id: 'prostata-psa', type: 'multi', color: '#0ea5e9',
+    name: { de: 'Prostatavolumen + PSA-Dichte', en: 'Prostate Vol. + PSA Density', fa: 'حجم پروستات + PSA-Dichte' },
+    formula: 'L × B × H × 0.523  ·  PSA ÷ Vol',
+    hint: { de: 'Ellipsoid; PSA-Dichte ↑ Karzinom-Risiko ab ≥ 0,15 ng/ml²', en: 'Ellipsoid; PSA density ↑ cancer risk from ≥ 0.15 ng/ml²', fa: 'بیضی‌وار؛ چگالی PSA از ≥ ۰٫۱۵ خطر سرطان را افزایش می‌دهد' },
     fields: [
-      { id: 'l', label: { de: 'Länge', en: 'Length', fa: 'طول' }, unit: 'cm', step: 0.1, min: 0.1, max: 15 },
-      { id: 'b', label: { de: 'Breite', en: 'Width', fa: 'عرض' }, unit: 'cm', step: 0.1, min: 0.1, max: 15 },
-      { id: 'h', label: { de: 'Höhe', en: 'Height', fa: 'ارتفاع' }, unit: 'cm', step: 0.1, min: 0.1, max: 15 },
+      { id: 'l',   label: { de: 'Länge', en: 'Length', fa: 'طول' },    unit: 'cm',    step: 0.1, min: 0.1, max: 15 },
+      { id: 'b',   label: { de: 'Breite', en: 'Width', fa: 'عرض' },    unit: 'cm',    step: 0.1, min: 0.1, max: 15 },
+      { id: 'h',   label: { de: 'Höhe', en: 'Height', fa: 'ارتفاع' },  unit: 'cm',    step: 0.1, min: 0.1, max: 15 },
+      { id: 'psa', label: { de: 'PSA', en: 'PSA', fa: 'PSA' },         unit: 'ng/ml', step: 0.1, min: 0,   max: 1000 },
     ],
-    calc: (v) => (v.l && v.b && v.h) ? v.l * v.b * v.h * 0.523 : null,
-    resultUnit: 'ml',
-    ranges: [
-      { max: 20,       label: { de: 'Normal (< 20 ml)',             en: 'Normal (< 20 ml)',             fa: 'نرمال (< ۲۰ ml)' },          color: '#16a34a' },
-      { max: 30,       label: { de: 'Leicht vergrößert (20–30 ml)', en: 'Mildly enlarged (20–30 ml)',   fa: 'کمی بزرگ (۲۰–۳۰ ml)' },     color: '#ca8a04' },
-      { max: 50,       label: { de: 'Vergrößert (30–50 ml)',        en: 'Enlarged (30–50 ml)',           fa: 'بزرگ‌شده (۳۰–۵۰ ml)' },    color: '#ea580c' },
-      { max: Infinity, label: { de: 'Stark vergrößert (> 50 ml)',   en: 'Markedly enlarged (> 50 ml)',  fa: 'بسیار بزرگ (> ۵۰ ml)' },    color: '#dc2626' },
+    outputs: [
+      {
+        label: { de: 'Volumen', en: 'Volume', fa: 'حجم' }, unit: 'ml', decimals: 1,
+        calc: (v) => v.l && v.b && v.h ? v.l * v.b * v.h * 0.523 : null,
+        ranges: [
+          { max: 20,       label: { de: '< 20 ml – Normal',           en: '< 20 ml – Normal',           fa: '< ۲۰ ml – نرمال' },       color: '#16a34a' },
+          { max: 30,       label: { de: '20–30 ml – leicht vergr.',   en: '20–30 ml – mildly enlarged', fa: '۲۰–۳۰ ml – کمی بزرگ' },   color: '#ca8a04' },
+          { max: 50,       label: { de: '30–50 ml – vergrößert',      en: '30–50 ml – enlarged',        fa: '۳۰–۵۰ ml – بزرگ‌شده' },  color: '#ea580c' },
+          { max: Infinity, label: { de: '> 50 ml – stark vergr.',     en: '> 50 ml – markedly enlarged',fa: '> ۵۰ ml – بسیار بزرگ' },  color: '#dc2626' },
+        ],
+      },
+      {
+        label: { de: 'PSA-Dichte', en: 'PSA Density', fa: 'چگالی PSA' }, unit: 'ng/ml²', decimals: 3,
+        calc: (v) => v.psa != null && v.psa !== '' && v.l && v.b && v.h ? v.psa / (v.l * v.b * v.h * 0.523) : null,
+        ranges: [
+          { max: 0.10,     label: { de: '< 0,10 – niedrig',          en: '< 0.10 – low',         fa: '< ۰٫۱۰ – پایین' },     color: '#16a34a' },
+          { max: 0.15,     label: { de: '0,10–0,15 – grenzwertig',   en: '0.10–0.15 – borderline',fa: '۰٫۱۰–۰٫۱۵ – مرزی' },  color: '#ca8a04' },
+          { max: Infinity, label: { de: '≥ 0,15 – erhöht → Biopsie?',en: '≥ 0.15 – elevated',    fa: '≥ ۰٫۱۵ – بالا' },      color: '#dc2626' },
+        ],
+      },
     ],
   },
+
+  // 2. Carotisstenose NASCET
   {
-    id: 'milz',
-    color: '#f59e0b',
-    name: { de: 'Milzvolumen', en: 'Spleen Volume', fa: 'حجم طحال' },
-    formula: 'L × B × H × 0.523',
-    hint: { de: 'Ellipsoid; Milzindex = L × B (Norm < 28 cm²)', en: 'Ellipsoid; spleen index = L × B (normal < 28 cm²)', fa: 'فرمول بیضی‌وار؛ ایندکس = L × B (نرمال < ۲۸ cm²)' },
+    id: 'nascet', type: 'single', color: '#dc2626',
+    name: { de: 'Carotisstenose (NASCET)', en: 'Carotid Stenosis (NASCET)', fa: 'تنگی کاروتید (NASCET)' },
+    formula: '(1 − D_st / D_dist) × 100',
+    hint: { de: 'D_dist = normales ICA-Lumen distal der Stenose', en: 'D_dist = normal ICA lumen distal to the stenosis', fa: 'D_dist = لومن طبیعی ICA دیستال به تنگی' },
     fields: [
-      { id: 'l', label: { de: 'Länge', en: 'Length', fa: 'طول' }, unit: 'cm', step: 0.1, min: 0.1, max: 30 },
-      { id: 'b', label: { de: 'Breite', en: 'Width', fa: 'عرض' }, unit: 'cm', step: 0.1, min: 0.1, max: 20 },
-      { id: 'h', label: { de: 'Höhe', en: 'Height', fa: 'ارتفاع' }, unit: 'cm', step: 0.1, min: 0.1, max: 20 },
+      { id: 'dst',  label: { de: 'Rest-Lumen (D_st)', en: 'Residual lumen (D_st)', fa: 'لومن باقی‌مانده' },  unit: 'mm', step: 0.1, min: 0,   max: 20 },
+      { id: 'ddist',label: { de: 'Distal-Lumen (D_dist)', en: 'Distal lumen (D_dist)', fa: 'لومن دیستال' }, unit: 'mm', step: 0.1, min: 0.1, max: 20 },
     ],
-    calc: (v) => (v.l && v.b && v.h) ? v.l * v.b * v.h * 0.523 : null,
-    resultUnit: 'ml',
+    calc: (v) => v.dst != null && v.dst !== '' && v.ddist ? (1 - v.dst / v.ddist) * 100 : null,
+    resultUnit: '%', decimals: 1,
     ranges: [
-      { max: 220,      label: { de: 'Normal (< 220 ml)',               en: 'Normal (< 220 ml)',              fa: 'نرمال (< ۲۲۰ ml)' },           color: '#16a34a' },
-      { max: 400,      label: { de: 'Splenomegalie (220–400 ml)',      en: 'Splenomegaly (220–400 ml)',      fa: 'اسپلنومگالی (۲۲۰–۴۰۰ ml)' },  color: '#ca8a04' },
-      { max: Infinity, label: { de: 'Massive Splenomegalie (> 400 ml)',en: 'Massive splenomegaly (> 400)',   fa: 'اسپلنومگالی شدید (> ۴۰۰ ml)' },color: '#dc2626' },
+      { max: 50,       label: { de: '< 50 % – leichtgradige Stenose',                       en: '< 50% – low-grade',           fa: '< ۵۰٪ – خفیف' },           color: '#16a34a' },
+      { max: 70,       label: { de: '50–70 % – mittelgradige Stenose',                      en: '50–70% – moderate',           fa: '۵۰–۷۰٪ – متوسط' },         color: '#ca8a04' },
+      { max: 99,       label: { de: '70–99 % – hochgradig → OP-Indikation prüfen',          en: '70–99% – high-grade → surgery?',fa: '۷۰–۹۹٪ – شدید → جراحی؟' }, color: '#dc2626' },
+      { max: Infinity, label: { de: '100 % – Verschluss',                                   en: '100% – occlusion',            fa: '۱۰۰٪ – انسداد' },           color: '#7f1d1d' },
     ],
   },
+
+  // 3. ECST ↔ NASCET Umrechnung
   {
-    id: 'niere',
-    color: '#e11d48',
-    name: { de: 'Nierenvolumen', en: 'Kidney Volume', fa: 'حجم کلیه' },
-    formula: 'L × B × T × 0.523',
-    hint: { de: 'Einseitig; Gesamtvolumen = linke + rechte Niere', en: 'Unilateral; total = left + right kidney', fa: 'یک‌طرفه؛ مجموع = چپ + راست' },
+    id: 'ecst-nascet', type: 'conversion', color: '#7c3aed',
+    name: { de: 'ECST ↔ NASCET Umrechnung', en: 'ECST ↔ NASCET Conversion', fa: 'تبدیل ECST ↔ NASCET' },
+    formula: 'ECST = 0,6 × NASCET + 40',
+    hint: { de: 'Rothwell et al. 1994 – Näherungsformel', en: 'Rothwell et al. 1994 – approximation formula', fa: 'Rothwell و همکاران ۱۹۹۴' },
+    labelA: { de: 'NASCET', en: 'NASCET', fa: 'NASCET' },
+    labelB: { de: 'ECST',   en: 'ECST',   fa: 'ECST' },
+    unit: '%',
+    calcAtoB: (a) => 0.6 * a + 40,    // NASCET → ECST
+    calcBtoA: (b) => (b - 40) / 0.6,  // ECST → NASCET
+  },
+
+  // 4. ICB-Volumen ABC/2
+  {
+    id: 'icb', type: 'single', color: '#be185d',
+    name: { de: 'ICB-Volumen (ABC/2)', en: 'ICH Volume (ABC/2)', fa: 'حجم خونریزی مغزی (ABC/2)' },
+    formula: 'A × B × C ÷ 2',
+    hint: { de: 'A = max. ⌀ (cm), B = ⊥ ⌀ (cm), C = Schichtanzahl × Schichtdicke (cm)', en: 'A = max ⌀ (cm), B = ⊥ ⌀ (cm), C = no. slices × slice thickness (cm)', fa: 'A = بیشترین قطر, B = قطر عمود, C = تعداد برش × ضخامت برش' },
     fields: [
-      { id: 'l', label: { de: 'Länge', en: 'Length', fa: 'طول' }, unit: 'cm', step: 0.1, min: 0.1, max: 20 },
-      { id: 'b', label: { de: 'Breite', en: 'Width', fa: 'عرض' }, unit: 'cm', step: 0.1, min: 0.1, max: 15 },
-      { id: 'h', label: { de: 'Tiefe', en: 'Depth', fa: 'عمق' }, unit: 'cm', step: 0.1, min: 0.1, max: 10 },
+      { id: 'a', label: { de: 'A (max. ⌀)', en: 'A (max ⌀)', fa: 'A (بیشترین قطر)' }, unit: 'cm', step: 0.1, min: 0 },
+      { id: 'b', label: { de: 'B (⊥ ⌀)',    en: 'B (⊥ ⌀)',    fa: 'B (قطر عمود)' },    unit: 'cm', step: 0.1, min: 0 },
+      { id: 'c', label: { de: 'C (Höhe)',    en: 'C (height)', fa: 'C (ارتفاع)' },       unit: 'cm', step: 0.1, min: 0 },
     ],
-    calc: (v) => (v.l && v.b && v.h) ? v.l * v.b * v.h * 0.523 : null,
-    resultUnit: 'ml',
+    calc: (v) => v.a && v.b && v.c ? v.a * v.b * v.c / 2 : null,
+    resultUnit: 'ml', decimals: 1,
     ranges: [
-      { max: 100,      label: { de: 'Klein (< 100 ml)',       en: 'Small (< 100 ml)',        fa: 'کوچک (< ۱۰۰ ml)' },       color: '#ca8a04' },
-      { max: 200,      label: { de: 'Normal (100–200 ml)',    en: 'Normal (100–200 ml)',      fa: 'نرمال (۱۰۰–۲۰۰ ml)' },    color: '#16a34a' },
-      { max: Infinity, label: { de: 'Vergrößert (> 200 ml)', en: 'Enlarged (> 200 ml)',      fa: 'بزرگ‌شده (> ۲۰۰ ml)' },  color: '#ea580c' },
+      { max: 10,       label: { de: '< 10 ml – klein',                          en: '< 10 ml – small',              fa: '< ۱۰ ml – کوچک' },                         color: '#16a34a' },
+      { max: 30,       label: { de: '10–30 ml – mittelgroß',                    en: '10–30 ml – medium',            fa: '۱۰–۳۰ ml – متوسط' },                        color: '#ca8a04' },
+      { max: 60,       label: { de: '30–60 ml – groß',                          en: '30–60 ml – large',             fa: '۳۰–۶۰ ml – بزرگ' },                         color: '#ea580c' },
+      { max: Infinity, label: { de: '> 60 ml – sehr groß · hohe Mortalität',   en: '> 60 ml – very large · high mortality', fa: '> ۶۰ ml – بسیار بزرگ · مرگ‌ومیر بالا' },  color: '#dc2626' },
     ],
   },
+
+  // 5. RECIST 1.1 Verlauf
   {
-    id: 'psa-dichte',
-    color: '#7c3aed',
-    name: { de: 'PSA-Dichte', en: 'PSA Density', fa: 'چگالی PSA' },
-    formula: 'PSA ÷ Prostatavolumen',
-    hint: { de: 'Karzinom-Risiko erhöht ab ≥ 0,15 ng/ml/ml', en: 'Cancer risk elevated at ≥ 0.15 ng/ml/ml', fa: 'خطر سرطان از ≥ ۰٫۱۵ افزایش می‌یابد' },
+    id: 'recist', type: 'recist', color: '#0d9488',
+    name: { de: 'RECIST 1.1 – Verlauf', en: 'RECIST 1.1 – Response', fa: 'RECIST 1.1 – پاسخ درمانی' },
+    formula: 'Δ% = (∑FU − ∑BL) / ∑BL × 100',
+    hint: { de: 'PD: ≥ 20 % Zunahme UND ≥ 5 mm absolut — oder neue Läsion', en: 'PD: ≥ 20% increase AND ≥ 5 mm absolute — or new lesion', fa: 'PD: ≥ ۲۰٪ افزایش و ≥ ۵ mm مطلق — یا ضایعه جدید' },
+    lbl: {
+      bl:        { de: 'Baseline ∑ (mm)',  en: 'Baseline ∑ (mm)',   fa: 'پایه ∑ (mm)' },
+      fu:        { de: 'Verlauf ∑ (mm)',   en: 'Follow-up ∑ (mm)', fa: 'پیگیری ∑ (mm)' },
+      newLesion: { de: 'Neue Läsion',      en: 'New lesion',        fa: 'ضایعه جدید' },
+    },
+  },
+
+  // 6. Kardiothorakaler Quotient
+  {
+    id: 'ktq', type: 'single', color: '#be185d',
+    name: { de: 'Kardiothorak. Quotient (CTR)', en: 'Cardiothoracic Ratio (CTR)', fa: 'نسبت قلب‌به‌قفسه‌سینه (CTR)' },
+    formula: 'CTR = Herzbreite ÷ Thoraxbreite',
+    hint: { de: 'p.a.-Röntgen in tiefer Inspiration; CTR > 0,50 → Kardiomegalie', en: 'PA X-ray in deep inspiration; CTR > 0.50 → cardiomegaly', fa: 'رادیوگرافی PA در دم عمیق؛ CTR > ۰٫۵۰ → کاردیومگالی' },
     fields: [
-      { id: 'psa', label: { de: 'PSA-Wert', en: 'PSA value', fa: 'مقدار PSA' }, unit: 'ng/ml', step: 0.1, min: 0, max: 500 },
-      { id: 'vol', label: { de: 'Prostatavolumen', en: 'Prostate volume', fa: 'حجم پروستات' }, unit: 'ml', step: 0.5, min: 1, max: 500 },
+      { id: 'hz', label: { de: 'Herzbreite',   en: 'Heart width',   fa: 'عرض قلب' },         unit: 'cm', step: 0.1, min: 0.1, max: 30 },
+      { id: 'th', label: { de: 'Thoraxbreite', en: 'Thorax width',  fa: 'عرض قفسه‌سینه' }, unit: 'cm', step: 0.1, min: 0.1, max: 50 },
     ],
-    calc: (v) => (v.psa != null && v.vol > 0) ? v.psa / v.vol : null,
-    resultUnit: 'ng/ml/ml',
+    calc: (v) => v.hz && v.th ? v.hz / v.th : null,
+    resultUnit: '', decimals: 2,
     ranges: [
-      { max: 0.10,     label: { de: 'Niedrig (< 0,10)',           en: 'Low (< 0.10)',            fa: 'پایین (< ۰٫۱۰)' },         color: '#16a34a' },
-      { max: 0.15,     label: { de: 'Grenzwertig (0,10 – 0,15)', en: 'Borderline (0.10–0.15)',   fa: 'مرزی (۰٫۱۰ – ۰٫۱۵)' },    color: '#ca8a04' },
-      { max: Infinity, label: { de: 'Erhöht ≥ 0,15 → Biopsie?',  en: 'Elevated ≥ 0.15 → biopsy?', fa: 'بالا ≥ ۰٫۱۵ → بیوپسی؟' }, color: '#dc2626' },
+      { max: 0.50,     label: { de: '≤ 0,50 – Normal',         en: '≤ 0.50 – Normal',        fa: '≤ ۰٫۵۰ – نرمال' },      color: '#16a34a' },
+      { max: 0.55,     label: { de: '0,50–0,55 – Grenzwertig', en: '0.50–0.55 – Borderline', fa: '۰٫۵۰–۰٫۵۵ – مرزی' },   color: '#ca8a04' },
+      { max: Infinity, label: { de: '> 0,55 – Kardiomegalie',  en: '> 0.55 – Cardiomegaly',  fa: '> ۰٫۵۵ – کاردیومگالی' },color: '#dc2626' },
     ],
+  },
+
+  // 7. Meyerding – Spondylolisthesis
+  {
+    id: 'meyerding', type: 'single', color: '#f97316',
+    name: { de: 'Meyerding – Spondylolisthesis', en: 'Meyerding – Spondylolisthesis', fa: 'مایردینگ – اسپوندیلولیستز' },
+    formula: 'Slip % = Überhang ÷ S1-Breite × 100',
+    hint: { de: 'Grad I: 0–25 % | II: 26–50 % | III: 51–75 % | IV: 76–100 % | V (Ptose): > 100 %', en: 'Grade I: 0–25% | II: 26–50% | III: 51–75% | IV: 76–100% | V (Ptosis): > 100%', fa: 'درجه I: ۰–۲۵٪ | II: ۲۶–۵۰٪ | III: ۵۱–۷۵٪ | IV: ۷۶–۱۰۰٪ | V: > ۱۰۰٪' },
+    fields: [
+      { id: 'slip',  label: { de: 'Überhang (LWK)', en: 'Slip distance',  fa: 'میزان لغزش' },    unit: 'mm', step: 0.5, min: 0,   max: 100 },
+      { id: 'width', label: { de: 'S1-Deckpl. (AP)',en: 'S1 endplate AP', fa: 'پلاتوی S1 (AP)' },unit: 'mm', step: 0.5, min: 1,   max: 100 },
+    ],
+    calc: (v) => v.slip != null && v.slip !== '' && v.width ? v.slip / v.width * 100 : null,
+    resultUnit: '%', decimals: 1,
+    ranges: [
+      { max: 25,       label: { de: 'Grad I (0–25 %)',                  en: 'Grade I (0–25%)',           fa: 'درجه I (۰–۲۵٪)' },              color: '#16a34a' },
+      { max: 50,       label: { de: 'Grad II (26–50 %)',                en: 'Grade II (26–50%)',         fa: 'درجه II (۲۶–۵۰٪)' },            color: '#ca8a04' },
+      { max: 75,       label: { de: 'Grad III (51–75 %)',               en: 'Grade III (51–75%)',        fa: 'درجه III (۵۱–۷۵٪)' },           color: '#ea580c' },
+      { max: 100,      label: { de: 'Grad IV (76–100 %)',               en: 'Grade IV (76–100%)',        fa: 'درجه IV (۷۶–۱۰۰٪)' },           color: '#dc2626' },
+      { max: Infinity, label: { de: 'Grad V – Spondyloptose (> 100 %)',en: 'Grade V – Spondyloptosis',  fa: 'درجه V – اسپوندیلوپتوز (> ۱۰۰٪)' }, color: '#7f1d1d' },
+    ],
+  },
+
+  // 8. Fleischner-Assistent
+  {
+    id: 'fleischner', type: 'fleischner', color: '#0891b2',
+    name: { de: 'Fleischner – Lungenrundherde', en: 'Fleischner – Pulmonary Nodule', fa: 'Fleischner – ندول ریوی' },
+    formula: 'Fleischner Society Guidelines 2017',
+    hint: { de: 'Gilt für zufällig entdeckte Rundherde, Erwachsene ≥ 35 J., kein bekanntes Malignom', en: 'Incidentally detected nodules, adults ≥ 35 y, no known malignancy', fa: 'برای ندول‌های تصادفی، بزرگسالان ≥ ۳۵ سال، بدون بدخیمی شناخته‌شده' },
+    opts: {
+      type: [
+        { v: 'solid',     label: { de: 'Solid',          en: 'Solid',         fa: 'جامد' } },
+        { v: 'ggo',       label: { de: 'Milchglas (GGO)',en: 'Ground-glass',  fa: 'میلکی‌گلس (GGO)' } },
+        { v: 'partsolid', label: { de: 'Part-solid',     en: 'Part-solid',    fa: 'نیمه‌جامد' } },
+      ],
+      risk: [
+        { v: 'low',  label: { de: 'Niedrig',en: 'Low',  fa: 'پایین' } },
+        { v: 'high', label: { de: 'Hoch',   en: 'High', fa: 'بالا' } },
+      ],
+    },
+    lbl: {
+      nodeType:  { de: 'Herd-Typ',         en: 'Nodule type',      fa: 'نوع ندول' },
+      size:      { de: 'Mittl. Größe',     en: 'Mean size',        fa: 'اندازه میانگین' },
+      risk:      { de: 'Klinisches Risiko',en: 'Clinical risk',    fa: 'خطر بالینی' },
+      solidComp: { de: 'Solid-Anteil',     en: 'Solid component',  fa: 'جز جامد' },
+    },
   },
 ]
 

@@ -317,93 +317,151 @@
 }
 [dir='rtl'] .klassArrow { transform: translateY(-50%) scaleX(-1); }
 
+/* ── Modal breit (Rechner) ────────────────────── */
+.modalWide { max-width: 1100px; }
+
 /* ── Rechner-Gitter ──────────────────────────── */
 .rechnerGrid {
   padding: 20px 24px; overflow-y: auto;
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px;
+  align-items: start;
   flex: 1; min-height: 0;
 }
 
 .rechnerCard {
   border: 1.5px solid color-mix(in srgb, var(--rc) 25%, #e2e8f0);
-  border-radius: 16px; padding: 20px 20px 16px;
+  border-radius: 16px; padding: 18px 18px 14px;
   background: #fff;
-  display: flex; flex-direction: column; gap: 14px;
+  display: flex; flex-direction: column; gap: 12px;
 }
 
-.rcHead {
-  display: flex; align-items: flex-start; gap: 10px;
-}
-.rcIcon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+.rcHead { display: flex; flex-direction: column; gap: 3px; }
 .rcName {
   font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
-  font-style: italic; font-weight: 900; font-size: 16px; letter-spacing: -.02em;
-  line-height: 1.2;
+  font-style: italic; font-weight: 900; font-size: 15px; letter-spacing: -.02em;
+  line-height: 1.25;
 }
 .rcFormula {
   font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
-  font-size: 11px; font-weight: 700; color: #94a3b8;
-  letter-spacing: .04em; margin-top: 2px;
+  font-size: 10.5px; font-weight: 700; color: #94a3b8;
+  letter-spacing: .04em;
 }
 
-.rcFields {
-  display: flex; flex-direction: column; gap: 8px;
-}
+.rcFields { display: flex; flex-direction: column; gap: 7px; }
 .rcField {
-  display: flex; align-items: center; gap: 10px;
+  display: flex; align-items: center; gap: 8px;
   font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
 }
 .rcFieldLabel {
-  font-size: 12px; font-weight: 700; color: #475569;
-  min-width: 70px; flex-shrink: 0;
+  font-size: 11.5px; font-weight: 700; color: #475569;
+  min-width: 90px; flex-shrink: 0;
 }
 .rcInputWrap {
-  display: flex; align-items: center; gap: 0; flex: 1;
+  display: flex; align-items: center; flex: 1;
   border: 1.5px solid #e2e8f0; border-radius: 9px; overflow: hidden;
   background: #f8fafc; transition: border-color .16s;
 }
-.rcInputWrap:focus-within {
-  border-color: var(--rc); background: #fff;
-}
+.rcInputWrap:focus-within { border-color: var(--rc); background: #fff; }
 .rcInput {
   flex: 1; border: 0; background: transparent; outline: 0;
-  padding: 7px 10px; font-size: 14px; font-weight: 700;
+  padding: 6px 9px; font-size: 13.5px; font-weight: 700;
   font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
   color: #1e293b; font-variant-numeric: tabular-nums;
-  -moz-appearance: textfield;
+  -moz-appearance: textfield; min-width: 0;
 }
 .rcInput::-webkit-outer-spin-button,
 .rcInput::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 .rcUnit {
-  padding: 0 10px 0 6px; font-size: 11px; font-weight: 700;
+  padding: 0 8px 0 4px; font-size: 10.5px; font-weight: 700;
   color: #94a3b8; white-space: nowrap;
   font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
 }
 
+/* select (Fleischner) */
+.rcSelect {
+  flex: 1; border: 1.5px solid #e2e8f0; border-radius: 9px;
+  background: #f8fafc; padding: 6px 10px;
+  font-size: 12.5px; font-weight: 600; color: #334155;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
+  outline: 0; cursor: pointer; transition: border-color .16s;
+}
+.rcSelect:focus { border-color: var(--rc); background: #fff; }
+
+/* checkbox (RECIST) */
+.rcCheckRow {
+  display: flex; align-items: center; gap: 8px; cursor: pointer;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
+  font-size: 12.5px; font-weight: 600; color: #475569;
+  padding: 4px 0;
+}
+.rcCheck { width: 16px; height: 16px; accent-color: var(--rc); cursor: pointer; flex-shrink: 0; }
+
+/* ── Ergebnis ─────────────────────────────────── */
 .rcResult {
   border: 1.5px solid #eef2f7; border-radius: 12px;
-  padding: 12px 14px; display: flex; flex-direction: column; gap: 4px;
+  padding: 11px 13px; display: flex; flex-direction: column; gap: 3px;
   transition: background .25s, border-color .25s;
-  min-height: 56px; justify-content: center;
+  min-height: 50px; justify-content: center;
 }
 .rcResultVal {
   font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
-  font-style: italic; font-size: 20px; font-weight: 900; letter-spacing: -.02em;
+  font-style: italic; font-size: 19px; font-weight: 900; letter-spacing: -.02em;
   line-height: 1.1;
 }
 .rcResultLabel {
   font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
-  font-size: 12px; font-weight: 700;
+  font-size: 11.5px; font-weight: 700; display: block;
 }
 .rcResultPlaceholder {
   font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
   font-size: 13px; color: #cbd5e1;
 }
 
+/* RECIST badge */
+.recistBadge {
+  display: inline-block; padding: 2px 10px; border-radius: 6px;
+  color: #fff; font-size: 13px; font-weight: 900; letter-spacing: .03em;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
+  width: fit-content; margin-bottom: 4px;
+}
+
+/* Fleischner Empfehlung */
+.rcFleischnerRec {
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
+  font-size: 13px; font-weight: 700; line-height: 1.55;
+}
+
+/* Multi-Output (Prostata+PSA) */
+.rcMultiOutputs { display: flex; flex-direction: column; gap: 8px; }
+.rcOutputRow { display: flex; flex-direction: column; gap: 4px; }
+.rcOutputLabel {
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
+  font-size: 10.5px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .07em;
+}
+
+/* Conversion (ECST↔NASCET) */
+.rcConvWrapper { display: flex; flex-direction: column; gap: 10px; }
+.rcConvRow {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
+}
+.rcConvLabel {
+  font-size: 11.5px; font-weight: 700; color: #475569;
+  min-width: 60px; flex-shrink: 0;
+}
+.rcConvArrow { font-size: 14px; color: #94a3b8; flex-shrink: 0; }
+.rcConvResult {
+  font-size: 13px; font-weight: 800; white-space: nowrap; flex-shrink: 0;
+  min-width: 110px;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
+}
+
+/* Hint */
 .rcHint {
   font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
-  font-size: 11px; color: #94a3b8; line-height: 1.5; margin: 0;
-  padding-top: 4px; border-top: 1px solid #f1f5f9;
+  font-size: 10.5px; color: #94a3b8; line-height: 1.55; margin: 0;
+  padding-top: 6px; border-top: 1px solid #f1f5f9;
 }
 
 /* ── Responsive ──────────────────────────────── */
@@ -413,6 +471,9 @@
   .klassGrid { grid-template-columns: repeat(2, 1fr); }
   .glassHeader { padding: 26px 24px 30px; }
   .glassTitle { font-size: 26px; }
+  .modalWide { max-width: 100%; }
+  .rcConvRow { flex-wrap: wrap; }
+  .rcConvResult { min-width: auto; }
 }
 @media (max-width: 640px) {
   .grid { grid-template-columns: 1fr; }

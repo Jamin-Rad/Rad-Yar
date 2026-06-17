@@ -43,79 +43,47 @@ export default function WichtigeReferenzen() {
     <section className={styles.section} id="referenzen">
       <div className={styles.glassHeader}>
         <div className={styles.glassHeaderGlow} />
-
-        {/* Titel-Bereich */}
         <div className={styles.glassTop}>
           <span className={styles.glassBadge}>{copy.sectionLabel}</span>
           <h2 className={styles.glassTitle}>{copy.title}</h2>
           <p className={styles.glassSub}>{copy.sub}</p>
         </div>
-
-        {/* 3 Karten innerhalb des Headers */}
         <div className={styles.grid}>
-          {/* Messwerte */}
           <button className={`${styles.card} ${styles.cardBlue}`} onClick={() => setModal('messwerte')}>
-            <div className={`${styles.iconBox} ${styles.iconBoxBlue}`}>
-              <span className={styles.iconEmoji} aria-hidden="true">📏</span>
-            </div>
+            <div className={`${styles.iconBox} ${styles.iconBoxBlue}`}><span className={styles.iconEmoji}>📏</span></div>
             <h3 className={`${styles.cardTitle} ${styles.colorBlue}`}>{copy.btnMesswerte}</h3>
             <p className={styles.cardDesc}>{copy.btnMesswerteSub}</p>
-            <div className={styles.chips}>
-              {(copy.chipsMesswerte || []).map(ch => (
-                <span key={ch} className={`${styles.chip} ${styles.chipBlue}`}>{ch}</span>
-              ))}
-            </div>
+            <div className={styles.chips}>{(copy.chipsMesswerte||[]).map(ch=><span key={ch} className={`${styles.chip} ${styles.chipBlue}`}>{ch}</span>)}</div>
           </button>
-
-          {/* Klassifikationen */}
           <button className={`${styles.card} ${styles.cardOrange}`} onClick={() => setModal('klassifikationen')}>
-            <div className={`${styles.iconBox} ${styles.iconBoxOrange}`}>
-              <span className={styles.iconEmoji} aria-hidden="true">🗂️</span>
-            </div>
+            <div className={`${styles.iconBox} ${styles.iconBoxOrange}`}><span className={styles.iconEmoji}>🗂️</span></div>
             <h3 className={`${styles.cardTitle} ${styles.colorOrange}`}>{copy.btnKlass}</h3>
             <p className={styles.cardDesc}>{copy.btnKlassSub}</p>
-            <div className={styles.chips}>
-              {(copy.chipsKlass || []).map(ch => (
-                <span key={ch} className={`${styles.chip} ${styles.chipOrange}`}>{ch}</span>
-              ))}
-            </div>
+            <div className={styles.chips}>{(copy.chipsKlass||[]).map(ch=><span key={ch} className={`${styles.chip} ${styles.chipOrange}`}>{ch}</span>)}</div>
           </button>
-
-          {/* Rechner */}
           <button className={`${styles.card} ${styles.cardGreen}`} onClick={() => setModal('rechner')}>
-            <div className={`${styles.iconBox} ${styles.iconBoxGreen}`}>
-              <span className={styles.iconEmoji} aria-hidden="true">🧮</span>
-            </div>
+            <div className={`${styles.iconBox} ${styles.iconBoxGreen}`}><span className={styles.iconEmoji}>🧮</span></div>
             <h3 className={`${styles.cardTitle} ${styles.colorGreen}`}>{copy.btnRechner}</h3>
             <p className={styles.cardDesc}>{copy.btnRechnerSub}</p>
-            <div className={styles.chips}>
-              {(copy.chipsRechner || []).map(ch => (
-                <span key={ch} className={`${styles.chip} ${styles.chipGreen}`}>{ch}</span>
-              ))}
-            </div>
+            <div className={styles.chips}>{(copy.chipsRechner||[]).map(ch=><span key={ch} className={`${styles.chip} ${styles.chipGreen}`}>{ch}</span>)}</div>
           </button>
         </div>
       </div>
 
-      {modal === 'messwerte' && (
-        <MesswerteModal copy={copy} lang={lang} onClose={() => setModal(null)} />
-      )}
-      {modal === 'klassifikationen' && (
-        <KlassifikationenModal copy={copy} lang={lang} onClose={() => setModal(null)} />
-      )}
-      {modal === 'rechner' && (
-        <RechnerModal copy={copy} lang={lang} onClose={() => setModal(null)} />
-      )}
+      {modal==='messwerte'       && <MesswerteModal       copy={copy} lang={lang} onClose={()=>setModal(null)} />}
+      {modal==='klassifikationen'&& <KlassifikationenModal copy={copy} lang={lang} onClose={()=>setModal(null)} />}
+      {modal==='rechner'         && <RechnerModal          copy={copy} lang={lang} onClose={()=>setModal(null)} />}
     </section>
   )
 }
 
 /* ── Modal-Hülle ──────────────────────────────── */
-function Modal({ title, copy, onClose, children, accentClass }) {
+function Modal({ title, copy, onClose, children, accentClass, wide }) {
   return (
     <div className={styles.overlay} onClick={onClose}>
-      <div className={styles.modal} onClick={e => e.stopPropagation()} role="dialog" aria-modal="true">
-        <header className={`${styles.modalHead} ${accentClass || ''}`}>
+      <div className={`${styles.modal} ${wide ? styles.modalWide : ''}`}
+           onClick={e=>e.stopPropagation()} role="dialog" aria-modal="true">
+        <header className={`${styles.modalHead} ${accentClass||''}`}>
           <h3 className={styles.modalTitle}>{title}</h3>
           <button className={styles.closeBtn} onClick={onClose} aria-label={copy.close}>×</button>
         </header>
@@ -130,54 +98,42 @@ function Modal({ title, copy, onClose, children, accentClass }) {
 function MesswerteModal({ copy, lang, onClose }) {
   const regions = REF_DATA.messwerte
   const [regionId, setRegionId] = useState(regions[0].id)
-  const region = regions.find(r => r.id === regionId) || regions[0]
-
+  const region = regions.find(r=>r.id===regionId) || regions[0]
   return (
     <Modal title={copy.btnMesswerte} copy={copy} onClose={onClose} accentClass={styles.headBlue}>
       <div className={styles.split}>
         <nav className={styles.sidebar}>
-          {regions.map(r => (
+          {regions.map(r=>(
             <button key={r.id}
-              className={`${styles.navBtn} ${r.id === regionId ? styles.navActiveBlue : ''}`}
-              style={{ '--ref-color': r.color }}
-              onClick={() => setRegionId(r.id)}>
-              <span className={styles.navIconWrap} style={{ color: r.color }}>
-                <RegionIcon id={r.id} size={16} />
-              </span>
-              <span className={styles.navLabel}>{tx(r.name, lang)}</span>
+              className={`${styles.navBtn} ${r.id===regionId?styles.navActiveBlue:''}`}
+              style={{'--ref-color':r.color}} onClick={()=>setRegionId(r.id)}>
+              <span className={styles.navIconWrap} style={{color:r.color}}><RegionIcon id={r.id} size={16}/></span>
+              <span className={styles.navLabel}>{tx(r.name,lang)}</span>
             </button>
           ))}
         </nav>
-
-        <div className={styles.content} style={{ '--ref-color': region.color }}>
+        <div className={styles.content} style={{'--ref-color':region.color}}>
           <h2 className={styles.regionHeading}>
-            <span className={styles.regionHeadingIcon} style={{ color: region.color }}>
-              <RegionIcon id={region.id} size={22} />
-            </span>
-            <span style={{ color: region.color }}>{tx(region.name, lang)}</span>
+            <span className={styles.regionHeadingIcon} style={{color:region.color}}><RegionIcon id={region.id} size={22}/></span>
+            <span style={{color:region.color}}>{tx(region.name,lang)}</span>
           </h2>
-
-          {region.groups.map((group, gi) => (
+          {region.groups.map((group,gi)=>(
             <div key={gi} className={styles.groupBlock}>
-              <h3 className={styles.groupHeading}>{tx(group.name, lang)}</h3>
+              <h3 className={styles.groupHeading}>{tx(group.name,lang)}</h3>
               <div className={styles.tableWrap}>
                 <table className={styles.mTable}>
-                  <thead>
-                    <tr>
-                      <th className={styles.thName}>{copy.colStruktur}</th>
-                      <th className={styles.thVal}>{copy.colWert}</th>
-                      <th className={styles.thNote}>{copy.colHinweis}</th>
+                  <thead><tr>
+                    <th className={styles.thName}>{copy.colStruktur}</th>
+                    <th className={styles.thVal}>{copy.colWert}</th>
+                    <th className={styles.thNote}>{copy.colHinweis}</th>
+                  </tr></thead>
+                  <tbody>{group.entries.map((e,ei)=>(
+                    <tr key={ei}>
+                      <td className={styles.tdName}>{tx(e.s,lang)}</td>
+                      <td className={styles.tdVal}>{e.v}</td>
+                      <td className={styles.tdNote}>{tx(e.h,lang)}</td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    {group.entries.map((e, ei) => (
-                      <tr key={ei}>
-                        <td className={styles.tdName}>{tx(e.s, lang)}</td>
-                        <td className={styles.tdVal}>{e.v}</td>
-                        <td className={styles.tdNote}>{tx(e.h, lang)}</td>
-                      </tr>
-                    ))}
-                  </tbody>
+                  ))}</tbody>
                 </table>
               </div>
             </div>
@@ -192,30 +148,24 @@ function MesswerteModal({ copy, lang, onClose }) {
 function KlassifikationenModal({ copy, lang, onClose }) {
   const router = useRouter()
   const topics = REF_DATA.klassifikationen
-
   const go = (topicId, itemId) => {
     onClose()
-    const langParam = lang !== 'de' ? `?lang=${lang}` : ''
-    router.push(`/referenzen/${topicId}/${itemId}${langParam}`)
+    router.push(`/referenzen/${topicId}/${itemId}${lang!=='de'?`?lang=${lang}`:''}`)
   }
-
   return (
     <Modal title={copy.btnKlass} copy={copy} onClose={onClose} accentClass={styles.headOrange}>
       <div className={styles.klassGrid}>
-        {topics.map(topic => (
+        {topics.map(topic=>(
           <div key={topic.id} className={styles.klassGroup}>
-            <div className={styles.klassGroupTitle} style={{ '--ref-color': topic.color, color: topic.color }}>
-              <span className={styles.dot} style={{ background: topic.color }} />
-              {tx(topic.name, lang)}
+            <div className={styles.klassGroupTitle} style={{'--ref-color':topic.color,color:topic.color}}>
+              <span className={styles.dot} style={{background:topic.color}}/>
+              {tx(topic.name,lang)}
             </div>
             <div className={styles.klassList}>
-              {topic.items.map(item => (
-                <button key={item.id}
-                  className={styles.klassItem}
-                  style={{ '--ref-color': topic.color }}
-                  onClick={() => go(topic.id, item.id)}>
-                  <span className={styles.klassName}>{tx(item.name, lang)}</span>
-                  <span className={styles.klassKicker}>{tx(item.kompakt, lang).slice(0, 60)}…</span>
+              {topic.items.map(item=>(
+                <button key={item.id} className={styles.klassItem} style={{'--ref-color':topic.color}} onClick={()=>go(topic.id,item.id)}>
+                  <span className={styles.klassName}>{tx(item.name,lang)}</span>
+                  <span className={styles.klassKicker}>{tx(item.kompakt,lang).slice(0,60)}…</span>
                   <span className={styles.klassArrow}>→</span>
                 </button>
               ))}
@@ -227,80 +177,301 @@ function KlassifikationenModal({ copy, lang, onClose }) {
   )
 }
 
-/* ── Rechner-Modal ────────────────────────────── */
+/* ═══════════════════════════════════════════════
+   RECHNER-MODAL
+   ═══════════════════════════════════════════════ */
 function RechnerModal({ copy, lang, onClose }) {
-  const calcs = REF_DATA.rechner
-  const [vals, setVals] = useState({})
-
-  const set = (calcId, fieldId, value) =>
-    setVals(v => ({ ...v, [calcId]: { ...(v[calcId] || {}), [fieldId]: value === '' ? '' : parseFloat(value) } }))
-
   return (
-    <Modal title={copy.btnRechner} copy={copy} onClose={onClose} accentClass={styles.headGreen}>
+    <Modal title={copy.btnRechner} copy={copy} onClose={onClose} accentClass={styles.headGreen} wide>
       <div className={styles.rechnerGrid}>
-        {calcs.map(calc => {
-          const fieldVals = vals[calc.id] || {}
-          const result = calc.calc(fieldVals)
-          const range = result != null ? calc.ranges.find(r => result <= r.max) : null
+        {REF_DATA.rechner.map(calc => (
+          <RechnerCard key={calc.id} calc={calc} lang={lang} />
+        ))}
+      </div>
+    </Modal>
+  )
+}
 
+/* ── Rechner-Karte (dispatch by type) ────────── */
+function RechnerCard({ calc, lang }) {
+  return (
+    <div className={styles.rechnerCard} style={{'--rc': calc.color}}>
+      <div className={styles.rcHead}>
+        <div className={styles.rcName} style={{color: calc.color}}>{tx(calc.name, lang)}</div>
+        {calc.formula && <div className={styles.rcFormula}>{calc.formula}</div>}
+      </div>
+
+      {calc.type === 'single'     && <SingleCalc     calc={calc} lang={lang} />}
+      {calc.type === 'multi'      && <MultiCalc      calc={calc} lang={lang} />}
+      {calc.type === 'conversion' && <ConversionCalc calc={calc} lang={lang} />}
+      {calc.type === 'recist'     && <RecistCalc     calc={calc} lang={lang} />}
+      {calc.type === 'fleischner' && <FleischnerCalc calc={calc} lang={lang} />}
+
+      {calc.hint && <p className={styles.rcHint}>{tx(calc.hint, lang)}</p>}
+    </div>
+  )
+}
+
+/* ── Hilfsfunktionen ──────────────────────────── */
+function numFmt(val, decimals) {
+  if (val == null) return null
+  return decimals != null ? val.toFixed(decimals) : val.toFixed(1)
+}
+function getRange(ranges, val) {
+  if (val == null || ranges == null) return null
+  return ranges.find(r => val <= r.max) || null
+}
+function FieldRow({ label, id, val, onChange, unit, step = 0.1, min, max }) {
+  return (
+    <label className={styles.rcField}>
+      <span className={styles.rcFieldLabel}>{label}</span>
+      <div className={styles.rcInputWrap}>
+        <input type="number" className={styles.rcInput}
+          placeholder="—" min={min} max={max} step={step}
+          value={val ?? ''} onChange={e => onChange(id, e.target.value)} />
+        <span className={styles.rcUnit}>{unit}</span>
+      </div>
+    </label>
+  )
+}
+function ResultBox({ val, unit, decimals, range }) {
+  const display = numFmt(val, decimals)
+  return (
+    <div className={styles.rcResult} style={{
+      background: range ? range.color + '14' : '#f8fafc',
+      borderColor: range ? range.color + '44' : '#eef2f7',
+    }}>
+      {display != null ? (
+        <>
+          <span className={styles.rcResultVal} style={{color: range?.color || '#1a2051'}}>
+            {display}{unit ? ` ${unit}` : ''}
+          </span>
+          {range && <span className={styles.rcResultLabel} style={{color: range.color}}>{tx(range.label, 'de')}</span>}
+        </>
+      ) : (
+        <span className={styles.rcResultPlaceholder}>—</span>
+      )}
+    </div>
+  )
+}
+
+/* ── SingleCalc ───────────────────────────────── */
+function SingleCalc({ calc, lang }) {
+  const [v, setV] = useState({})
+  const set = (id, val) => setV(prev => ({...prev, [id]: val === '' ? '' : parseFloat(val)}))
+  const result = calc.calc(v)
+  const range  = getRange(calc.ranges, result)
+  return (
+    <>
+      <div className={styles.rcFields}>
+        {calc.fields.map(f => (
+          <FieldRow key={f.id} id={f.id} label={tx(f.label,lang)} val={v[f.id]} onChange={set}
+            unit={f.unit} step={f.step} min={f.min} max={f.max} />
+        ))}
+      </div>
+      <ResultBox val={result} unit={calc.resultUnit} decimals={calc.decimals} range={range} />
+    </>
+  )
+}
+
+/* ── MultiCalc (Prostata + PSA) ───────────────── */
+function MultiCalc({ calc, lang }) {
+  const [v, setV] = useState({})
+  const set = (id, val) => setV(prev => ({...prev, [id]: val === '' ? '' : parseFloat(val)}))
+  return (
+    <>
+      <div className={styles.rcFields}>
+        {calc.fields.map(f => (
+          <FieldRow key={f.id} id={f.id} label={tx(f.label,lang)} val={v[f.id]} onChange={set}
+            unit={f.unit} step={f.step} min={f.min} max={f.max} />
+        ))}
+      </div>
+      <div className={styles.rcMultiOutputs}>
+        {calc.outputs.map((out, i) => {
+          const res   = out.calc(v)
+          const range = getRange(out.ranges, res)
           return (
-            <div key={calc.id} className={styles.rechnerCard} style={{ '--rc': calc.color }}>
-              {/* Header */}
-              <div className={styles.rcHead}>
-                <span className={styles.rcIcon} style={{ color: calc.color }}>⚙️</span>
-                <div>
-                  <div className={styles.rcName} style={{ color: calc.color }}>{tx(calc.name, lang)}</div>
-                  <div className={styles.rcFormula}>{calc.formula}</div>
-                </div>
-              </div>
-
-              {/* Eingaben */}
-              <div className={styles.rcFields}>
-                {calc.fields.map(f => (
-                  <label key={f.id} className={styles.rcField}>
-                    <span className={styles.rcFieldLabel}>{tx(f.label, lang)}</span>
-                    <div className={styles.rcInputWrap}>
-                      <input
-                        type="number"
-                        className={styles.rcInput}
-                        placeholder="—"
-                        min={f.min} max={f.max} step={f.step}
-                        value={fieldVals[f.id] ?? ''}
-                        onChange={e => set(calc.id, f.id, e.target.value)}
-                      />
-                      <span className={styles.rcUnit}>{f.unit}</span>
-                    </div>
-                  </label>
-                ))}
-              </div>
-
-              {/* Ergebnis */}
-              <div className={styles.rcResult} style={{
-                background: range ? range.color + '14' : '#f8fafc',
-                borderColor: range ? range.color + '44' : '#eef2f7',
-              }}>
-                {result != null ? (
-                  <>
-                    <span className={styles.rcResultVal} style={{ color: range?.color || calc.color }}>
-                      {result < 1 ? result.toFixed(3) : result.toFixed(1)} {calc.resultUnit}
-                    </span>
-                    {range && (
-                      <span className={styles.rcResultLabel} style={{ color: range.color }}>
-                        {tx(range.label, lang)}
-                      </span>
-                    )}
-                  </>
-                ) : (
-                  <span className={styles.rcResultPlaceholder}>{copy.calcResult} …</span>
-                )}
-              </div>
-
-              {/* Hinweis */}
-              <p className={styles.rcHint}>{tx(calc.hint, lang)}</p>
+            <div key={i} className={styles.rcOutputRow}>
+              <span className={styles.rcOutputLabel} style={{color: calc.color}}>{tx(out.label,lang)}</span>
+              <ResultBox val={res} unit={out.unit} decimals={out.decimals} range={range} />
             </div>
           )
         })}
       </div>
-    </Modal>
+    </>
+  )
+}
+
+/* ── ConversionCalc (ECST ↔ NASCET) ──────────── */
+function ConversionCalc({ calc, lang }) {
+  const [a, setA] = useState('')
+  const [b, setB] = useState('')
+  const aNum = parseFloat(a)
+  const bNum = parseFloat(b)
+  const bFromA = !isNaN(aNum) && a !== '' ? calc.calcAtoB(aNum) : null
+  const aFromB = !isNaN(bNum) && b !== '' ? calc.calcBtoA(bNum) : null
+  return (
+    <div className={styles.rcConvWrapper}>
+      {/* A → B */}
+      <div className={styles.rcConvRow}>
+        <label className={styles.rcConvLabel}>{tx(calc.labelA,lang)}</label>
+        <div className={styles.rcInputWrap} style={{flex:1}}>
+          <input type="number" className={styles.rcInput} placeholder="—" min={0} max={100} step={1}
+            value={a} onChange={e=>setA(e.target.value)}/>
+          <span className={styles.rcUnit}>{calc.unit}</span>
+        </div>
+        <span className={styles.rcConvArrow}>→</span>
+        <div className={styles.rcConvResult} style={{color: calc.color}}>
+          {bFromA != null ? `${tx(calc.labelB,lang)}: ${bFromA.toFixed(1)} ${calc.unit}` : `${tx(calc.labelB,lang)}: —`}
+        </div>
+      </div>
+      {/* B → A */}
+      <div className={styles.rcConvRow}>
+        <label className={styles.rcConvLabel}>{tx(calc.labelB,lang)}</label>
+        <div className={styles.rcInputWrap} style={{flex:1}}>
+          <input type="number" className={styles.rcInput} placeholder="—" min={0} max={100} step={1}
+            value={b} onChange={e=>setB(e.target.value)}/>
+          <span className={styles.rcUnit}>{calc.unit}</span>
+        </div>
+        <span className={styles.rcConvArrow}>→</span>
+        <div className={styles.rcConvResult} style={{color: calc.color}}>
+          {aFromB != null ? `${tx(calc.labelA,lang)}: ${Math.max(0,aFromB).toFixed(1)} ${calc.unit}` : `${tx(calc.labelA,lang)}: —`}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+/* ── RecistCalc ───────────────────────────────── */
+function RecistCalc({ calc, lang }) {
+  const [bl, setBl] = useState('')
+  const [fu, setFu] = useState('')
+  const [newLesion, setNewLesion] = useState(false)
+
+  function getResponse() {
+    const blN = parseFloat(bl)
+    const fuN = parseFloat(fu)
+    if (newLesion) return { resp: 'PD', color: '#dc2626', text: { de: 'PD – Progressive Disease (neue Läsion)', en: 'PD – Progressive Disease (new lesion)', fa: 'PD – پیشرفت بیماری (ضایعه جدید)' } }
+    if (isNaN(blN) || blN <= 0 || isNaN(fuN) || fuN < 0) return null
+    if (fuN === 0) return { resp: 'CR', delta: -100, color: '#16a34a', text: { de: 'CR – Complete Response', en: 'CR – Complete Response', fa: 'CR – پاسخ کامل' } }
+    const delta = (fuN - blN) / blN * 100
+    const abs   = fuN - blN
+    const sign  = delta > 0 ? '+' : ''
+    if (delta <= -30) return { resp: 'PR', delta, color: '#0ea5e9', text: { de: `PR – Partial Response (${delta.toFixed(1)} %)`, en: `PR – Partial Response (${delta.toFixed(1)}%)`, fa: `PR – پاسخ جزئی (${delta.toFixed(1)}٪)` } }
+    if (delta >= 20 && abs >= 5) return { resp: 'PD', delta, color: '#dc2626', text: { de: `PD – Progressive Disease (+${delta.toFixed(1)} %)`, en: `PD – Progressive Disease (+${delta.toFixed(1)}%)`, fa: `PD – پیشرفت بیماری (+${delta.toFixed(1)}٪)` } }
+    return { resp: 'SD', delta, color: '#ca8a04', text: { de: `SD – Stable Disease (${sign}${delta.toFixed(1)} %)`, en: `SD – Stable Disease (${sign}${delta.toFixed(1)}%)`, fa: `SD – بیماری پایدار (${sign}${delta.toFixed(1)}٪)` } }
+  }
+
+  const resp = getResponse()
+  return (
+    <>
+      <div className={styles.rcFields}>
+        <FieldRow id="bl" label={tx(calc.lbl.bl, lang)} val={bl}
+          onChange={(_,v)=>setBl(v)} unit="mm" step={1} min={0} />
+        <FieldRow id="fu" label={tx(calc.lbl.fu, lang)} val={fu}
+          onChange={(_,v)=>setFu(v)} unit="mm" step={1} min={0} />
+        <label className={styles.rcCheckRow}>
+          <input type="checkbox" className={styles.rcCheck}
+            checked={newLesion} onChange={e=>setNewLesion(e.target.checked)}/>
+          <span>{tx(calc.lbl.newLesion, lang)}</span>
+        </label>
+      </div>
+      <div className={styles.rcResult} style={{
+        background: resp ? resp.color+'14' : '#f8fafc',
+        borderColor: resp ? resp.color+'44' : '#eef2f7',
+      }}>
+        {resp ? (
+          <>
+            <span className={styles.recistBadge} style={{background: resp.color}}>{resp.resp}</span>
+            <span className={styles.rcResultLabel} style={{color: resp.color, marginTop: 4}}>
+              {tx(resp.text, lang)}
+            </span>
+          </>
+        ) : <span className={styles.rcResultPlaceholder}>—</span>}
+      </div>
+    </>
+  )
+}
+
+/* ── FleischnerCalc ───────────────────────────── */
+function getFleischnerRec(type, size, risk, solidComp) {
+  if (!size || isNaN(size) || size <= 0) return null
+  if (type === 'solid') {
+    if (size < 6) return risk === 'high'
+      ? { color:'#ca8a04', text:{ de:'Optional: CT nach 12 Monaten.', en:'Optional: CT at 12 months.', fa:'اختیاری: CT پس از ۱۲ ماه.' } }
+      : { color:'#16a34a', text:{ de:'Kein Routine-Follow-up empfohlen.', en:'No routine follow-up recommended.', fa:'پیگیری روتین توصیه نمی‌شود.' } }
+    if (size <= 8) return risk === 'high'
+      ? { color:'#ca8a04', text:{ de:'CT nach 6–12 Mon., danach 18–24 Mon.', en:'CT at 6–12 m, then 18–24 m.', fa:'CT پس از ۶–۱۲ ماه، سپس ۱۸–۲۴ ماه.' } }
+      : { color:'#ca8a04', text:{ de:'CT nach 6–12 Mon.; bei stabilem Befund erneut 18–24 Mon.', en:'CT at 6–12 m; if stable, again at 18–24 m.', fa:'CT پس از ۶–۱۲ ماه؛ در صورت ثبات، مجدداً ۱۸–۲۴ ماه.' } }
+    return { color:'#dc2626', text:{ de:'CT nach 3 Mon. oder PET/CT; Biopsie erwägen.', en:'CT at 3 m or PET/CT; consider tissue sampling.', fa:'CT پس از ۳ ماه یا PET/CT؛ نمونه‌برداری در نظر بگیرید.' } }
+  }
+  if (type === 'ggo') {
+    if (size < 6) return { color:'#16a34a', text:{ de:'Kein Routine-Follow-up (GGO < 6 mm).', en:'No routine follow-up (GGO < 6 mm).', fa:'پیگیری روتین لازم نیست (GGO < ۶ mm).' } }
+    return { color:'#ca8a04', text:{ de:'CT nach 6–12 Mon. (Persistenz?); danach alle 2 J. × 5 J.', en:'CT at 6–12 m (persistence?); then every 2 y × 5 y.', fa:'CT پس از ۶–۱۲ ماه؛ سپس هر ۲ سال × ۵ سال.' } }
+  }
+  // partsolid
+  if (size < 6) return { color:'#16a34a', text:{ de:'Kein Follow-up (Part-solid < 6 mm).', en:'No follow-up (part-solid < 6 mm).', fa:'پیگیری لازم نیست (نیمه‌جامد < ۶ mm).' } }
+  if (!solidComp || isNaN(solidComp)) return { color:'#ca8a04', text:{ de:'CT nach 3–6 Mon. — bitte Solid-Anteil eingeben.', en:'CT at 3–6 m — please enter solid component size.', fa:'CT پس از ۳–۶ ماه — لطفاً اندازه جز جامد را وارد کنید.' } }
+  if (solidComp < 6) return { color:'#ca8a04', text:{ de:'CT nach 3–6 Mon.; wenn stabil & Solid < 6 mm → jährl. CT × 5 J.', en:'CT at 3–6 m; if stable & solid < 6 mm → annual CT × 5 y.', fa:'CT پس از ۳–۶ ماه؛ اگر پایدار و جز جامد < ۶ mm → CT سالانه × ۵ سال.' } }
+  return { color:'#ea580c', text:{ de:'CT nach 3–6 Mon.; Solid-Anteil ≥ 6 mm → CT/PET-CT/Biopsie.', en:'CT at 3–6 m; solid ≥ 6 mm → CT/PET-CT/biopsy.', fa:'CT پس از ۳–۶ ماه؛ جز جامد ≥ ۶ mm → CT/PET-CT/بیوپسی.' } }
+}
+
+function FleischnerCalc({ calc, lang }) {
+  const [type, setType]       = useState('solid')
+  const [size, setSize]       = useState('')
+  const [risk, setRisk]       = useState('low')
+  const [solidComp, setSolidComp] = useState('')
+  const sizeNum = parseFloat(size)
+  const solidNum = parseFloat(solidComp)
+  const rec = getFleischnerRec(type, sizeNum, risk, solidNum)
+  const showSolidComp = type === 'partsolid' && sizeNum >= 6
+
+  return (
+    <>
+      <div className={styles.rcFields}>
+        {/* Typ-Select */}
+        <label className={styles.rcField}>
+          <span className={styles.rcFieldLabel}>{tx(calc.lbl.nodeType, lang)}</span>
+          <select className={styles.rcSelect} value={type} onChange={e=>setType(e.target.value)}>
+            {calc.opts.type.map(o=>(
+              <option key={o.v} value={o.v}>{tx(o.label, lang)}</option>
+            ))}
+          </select>
+        </label>
+
+        {/* Größe */}
+        <FieldRow id="size" label={tx(calc.lbl.size, lang)} val={size}
+          onChange={(_,v)=>setSize(v)} unit="mm" step={1} min={0} max={50} />
+
+        {/* Risiko (nur Solid) */}
+        {type === 'solid' && (
+          <label className={styles.rcField}>
+            <span className={styles.rcFieldLabel}>{tx(calc.lbl.risk, lang)}</span>
+            <select className={styles.rcSelect} value={risk} onChange={e=>setRisk(e.target.value)}>
+              {calc.opts.risk.map(o=>(
+                <option key={o.v} value={o.v}>{tx(o.label, lang)}</option>
+              ))}
+            </select>
+          </label>
+        )}
+
+        {/* Solid-Anteil (nur Part-solid ≥ 6mm) */}
+        {showSolidComp && (
+          <FieldRow id="solidComp" label={tx(calc.lbl.solidComp, lang)} val={solidComp}
+            onChange={(_,v)=>setSolidComp(v)} unit="mm" step={1} min={0} max={50} />
+        )}
+      </div>
+
+      <div className={styles.rcResult} style={{
+        background: rec ? rec.color+'14' : '#f8fafc',
+        borderColor: rec ? rec.color+'44' : '#eef2f7',
+      }}>
+        {rec ? (
+          <span className={styles.rcFleischnerRec} style={{color: rec.color}}>
+            {tx(rec.text, lang)}
+          </span>
+        ) : <span className={styles.rcResultPlaceholder}>Eingabe …</span>}
+      </div>
+    </>
   )
 }
