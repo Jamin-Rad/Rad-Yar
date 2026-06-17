@@ -22,8 +22,13 @@ export const REF_COPY = {
     btnMesswerteSub: 'Normwerte, Grenzwerte und Messpunkte nach Körperregion.',
     btnKlass: 'Klassifikationen & Scores',
     btnKlassSub: 'Radiologische Scoring-Systeme und Einteilungen – kompakt und vollständig.',
+    btnRechner: 'Rechner',
+    btnRechnerSub: 'Organe vermessen und sofort Volumen + Bewertung erhalten.',
     chipsMesswerte: ['Neuro', 'Thorax', 'Herz', 'Abdomen', 'Urogenital', 'Wirbelsäule', 'CT-HE'],
     chipsKlass: ['BI-RADS', 'LI-RADS', 'PI-RADS', 'Fazekas', 'Bosniak', 'RECIST'],
+    chipsRechner: ['Prostata', 'Milz', 'Niere', 'PSA-D'],
+    calcResult: 'Ergebnis',
+    calcNormal: 'Normbereich',
     chooseRegion: 'Bereich wählen',
     chooseTopic: 'Thema wählen',
     chooseClass: 'Klassifikation wählen',
@@ -48,8 +53,13 @@ export const REF_COPY = {
     btnMesswerteSub: 'Normal values, thresholds and measurement points by body region.',
     btnKlass: 'Classifications & Scores',
     btnKlassSub: 'Radiology scoring systems and grading – compact and full.',
+    btnRechner: 'Calculators',
+    btnRechnerSub: 'Measure organs and instantly get volume + interpretation.',
     chipsMesswerte: ['Neuro', 'Thorax', 'Heart', 'Abdomen', 'Urogenital', 'Spine', 'CT-HU'],
     chipsKlass: ['BI-RADS', 'LI-RADS', 'PI-RADS', 'Fazekas', 'Bosniak', 'RECIST'],
+    chipsRechner: ['Prostate', 'Spleen', 'Kidney', 'PSA-D'],
+    calcResult: 'Result',
+    calcNormal: 'Reference',
     chooseRegion: 'Choose area',
     chooseTopic: 'Choose topic',
     chooseClass: 'Choose classification',
@@ -74,8 +84,13 @@ export const REF_COPY = {
     btnMesswerteSub: 'مقادیر طبیعی، حدود و نقاط اندازه‌گیری بر اساس ناحیه بدن.',
     btnKlass: 'طبقه‌بندی‌ها و اسکورها',
     btnKlassSub: 'سیستم‌های امتیازدهی و درجه‌بندی رادیولوژی – خلاصه و کامل.',
+    btnRechner: 'ماشین‌حساب',
+    btnRechnerSub: 'اندازه‌گیری اندام‌ها و دریافت فوری حجم + تفسیر.',
     chipsMesswerte: ['نورو', 'توراکس', 'قلب', 'شکم', 'اوروژنیتال', 'ستون فقرات', 'CT-HU'],
     chipsKlass: ['BI-RADS', 'LI-RADS', 'PI-RADS', 'فازکاس', 'بوسنیاک', 'RECIST'],
+    chipsRechner: ['پروستات', 'طحال', 'کلیه', 'PSA-D'],
+    calcResult: 'نتیجه',
+    calcNormal: 'مرجع',
     chooseRegion: 'انتخاب بخش',
     chooseTopic: 'انتخاب موضوع',
     chooseClass: 'انتخاب طبقه‌بندی',
@@ -778,4 +793,85 @@ export const KLASSIFIKATIONEN = [
   },
 ]
 
-export const REF_DATA = { messwerte: MESSWERTE, klassifikationen: KLASSIFIKATIONEN }
+// ── Rechner ──────────────────────────────────────────────────
+// Ellipsoid-Formel: V = L × B × H × 0.523
+export const RECHNER = [
+  {
+    id: 'prostata',
+    color: '#0ea5e9',
+    name: { de: 'Prostatavolumen', en: 'Prostate Volume', fa: 'حجم پروستات' },
+    formula: 'L × B × H × 0.523',
+    hint: { de: 'Ellipsoid-Formel (Sono / MRT)', en: 'Ellipsoid formula (US / MRI)', fa: 'فرمول بیضی‌وار (سونو/MRI)' },
+    fields: [
+      { id: 'l', label: { de: 'Länge', en: 'Length', fa: 'طول' }, unit: 'cm', step: 0.1, min: 0.1, max: 15 },
+      { id: 'b', label: { de: 'Breite', en: 'Width', fa: 'عرض' }, unit: 'cm', step: 0.1, min: 0.1, max: 15 },
+      { id: 'h', label: { de: 'Höhe', en: 'Height', fa: 'ارتفاع' }, unit: 'cm', step: 0.1, min: 0.1, max: 15 },
+    ],
+    calc: (v) => (v.l && v.b && v.h) ? v.l * v.b * v.h * 0.523 : null,
+    resultUnit: 'ml',
+    ranges: [
+      { max: 20,       label: { de: 'Normal (< 20 ml)',             en: 'Normal (< 20 ml)',             fa: 'نرمال (< ۲۰ ml)' },          color: '#16a34a' },
+      { max: 30,       label: { de: 'Leicht vergrößert (20–30 ml)', en: 'Mildly enlarged (20–30 ml)',   fa: 'کمی بزرگ (۲۰–۳۰ ml)' },     color: '#ca8a04' },
+      { max: 50,       label: { de: 'Vergrößert (30–50 ml)',        en: 'Enlarged (30–50 ml)',           fa: 'بزرگ‌شده (۳۰–۵۰ ml)' },    color: '#ea580c' },
+      { max: Infinity, label: { de: 'Stark vergrößert (> 50 ml)',   en: 'Markedly enlarged (> 50 ml)',  fa: 'بسیار بزرگ (> ۵۰ ml)' },    color: '#dc2626' },
+    ],
+  },
+  {
+    id: 'milz',
+    color: '#f59e0b',
+    name: { de: 'Milzvolumen', en: 'Spleen Volume', fa: 'حجم طحال' },
+    formula: 'L × B × H × 0.523',
+    hint: { de: 'Ellipsoid; Milzindex = L × B (Norm < 28 cm²)', en: 'Ellipsoid; spleen index = L × B (normal < 28 cm²)', fa: 'فرمول بیضی‌وار؛ ایندکس = L × B (نرمال < ۲۸ cm²)' },
+    fields: [
+      { id: 'l', label: { de: 'Länge', en: 'Length', fa: 'طول' }, unit: 'cm', step: 0.1, min: 0.1, max: 30 },
+      { id: 'b', label: { de: 'Breite', en: 'Width', fa: 'عرض' }, unit: 'cm', step: 0.1, min: 0.1, max: 20 },
+      { id: 'h', label: { de: 'Höhe', en: 'Height', fa: 'ارتفاع' }, unit: 'cm', step: 0.1, min: 0.1, max: 20 },
+    ],
+    calc: (v) => (v.l && v.b && v.h) ? v.l * v.b * v.h * 0.523 : null,
+    resultUnit: 'ml',
+    ranges: [
+      { max: 220,      label: { de: 'Normal (< 220 ml)',               en: 'Normal (< 220 ml)',              fa: 'نرمال (< ۲۲۰ ml)' },           color: '#16a34a' },
+      { max: 400,      label: { de: 'Splenomegalie (220–400 ml)',      en: 'Splenomegaly (220–400 ml)',      fa: 'اسپلنومگالی (۲۲۰–۴۰۰ ml)' },  color: '#ca8a04' },
+      { max: Infinity, label: { de: 'Massive Splenomegalie (> 400 ml)',en: 'Massive splenomegaly (> 400)',   fa: 'اسپلنومگالی شدید (> ۴۰۰ ml)' },color: '#dc2626' },
+    ],
+  },
+  {
+    id: 'niere',
+    color: '#e11d48',
+    name: { de: 'Nierenvolumen', en: 'Kidney Volume', fa: 'حجم کلیه' },
+    formula: 'L × B × T × 0.523',
+    hint: { de: 'Einseitig; Gesamtvolumen = linke + rechte Niere', en: 'Unilateral; total = left + right kidney', fa: 'یک‌طرفه؛ مجموع = چپ + راست' },
+    fields: [
+      { id: 'l', label: { de: 'Länge', en: 'Length', fa: 'طول' }, unit: 'cm', step: 0.1, min: 0.1, max: 20 },
+      { id: 'b', label: { de: 'Breite', en: 'Width', fa: 'عرض' }, unit: 'cm', step: 0.1, min: 0.1, max: 15 },
+      { id: 'h', label: { de: 'Tiefe', en: 'Depth', fa: 'عمق' }, unit: 'cm', step: 0.1, min: 0.1, max: 10 },
+    ],
+    calc: (v) => (v.l && v.b && v.h) ? v.l * v.b * v.h * 0.523 : null,
+    resultUnit: 'ml',
+    ranges: [
+      { max: 100,      label: { de: 'Klein (< 100 ml)',       en: 'Small (< 100 ml)',        fa: 'کوچک (< ۱۰۰ ml)' },       color: '#ca8a04' },
+      { max: 200,      label: { de: 'Normal (100–200 ml)',    en: 'Normal (100–200 ml)',      fa: 'نرمال (۱۰۰–۲۰۰ ml)' },    color: '#16a34a' },
+      { max: Infinity, label: { de: 'Vergrößert (> 200 ml)', en: 'Enlarged (> 200 ml)',      fa: 'بزرگ‌شده (> ۲۰۰ ml)' },  color: '#ea580c' },
+    ],
+  },
+  {
+    id: 'psa-dichte',
+    color: '#7c3aed',
+    name: { de: 'PSA-Dichte', en: 'PSA Density', fa: 'چگالی PSA' },
+    formula: 'PSA ÷ Prostatavolumen',
+    hint: { de: 'Karzinom-Risiko erhöht ab ≥ 0,15 ng/ml/ml', en: 'Cancer risk elevated at ≥ 0.15 ng/ml/ml', fa: 'خطر سرطان از ≥ ۰٫۱۵ افزایش می‌یابد' },
+    fields: [
+      { id: 'psa', label: { de: 'PSA-Wert', en: 'PSA value', fa: 'مقدار PSA' }, unit: 'ng/ml', step: 0.1, min: 0, max: 500 },
+      { id: 'vol', label: { de: 'Prostatavolumen', en: 'Prostate volume', fa: 'حجم پروستات' }, unit: 'ml', step: 0.5, min: 1, max: 500 },
+    ],
+    calc: (v) => (v.psa != null && v.vol > 0) ? v.psa / v.vol : null,
+    resultUnit: 'ng/ml/ml',
+    ranges: [
+      { max: 0.10,     label: { de: 'Niedrig (< 0,10)',           en: 'Low (< 0.10)',            fa: 'پایین (< ۰٫۱۰)' },         color: '#16a34a' },
+      { max: 0.15,     label: { de: 'Grenzwertig (0,10 – 0,15)', en: 'Borderline (0.10–0.15)',   fa: 'مرزی (۰٫۱۰ – ۰٫۱۵)' },    color: '#ca8a04' },
+      { max: Infinity, label: { de: 'Erhöht ≥ 0,15 → Biopsie?',  en: 'Elevated ≥ 0.15 → biopsy?', fa: 'بالا ≥ ۰٫۱۵ → بیوپسی؟' }, color: '#dc2626' },
+    ],
+  },
+]
+
+export const REF_DATA = { messwerte: MESSWERTE, klassifikationen: KLASSIFIKATIONEN, rechner: RECHNER }

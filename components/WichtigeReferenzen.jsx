@@ -41,7 +41,6 @@ export default function WichtigeReferenzen() {
 
   return (
     <section className={styles.section} id="referenzen">
-      {/* ── Glassmorphismus-Karte mit Karten innen ── */}
       <div className={styles.glassHeader}>
         <div className={styles.glassHeaderGlow} />
 
@@ -52,8 +51,9 @@ export default function WichtigeReferenzen() {
           <p className={styles.glassSub}>{copy.sub}</p>
         </div>
 
-        {/* Karten innerhalb des Headers */}
+        {/* 3 Karten innerhalb des Headers */}
         <div className={styles.grid}>
+          {/* Messwerte */}
           <button className={`${styles.card} ${styles.cardBlue}`} onClick={() => setModal('messwerte')}>
             <div className={`${styles.iconBox} ${styles.iconBoxBlue}`}>
               <span className={styles.iconEmoji} aria-hidden="true">📏</span>
@@ -67,6 +67,7 @@ export default function WichtigeReferenzen() {
             </div>
           </button>
 
+          {/* Klassifikationen */}
           <button className={`${styles.card} ${styles.cardOrange}`} onClick={() => setModal('klassifikationen')}>
             <div className={`${styles.iconBox} ${styles.iconBoxOrange}`}>
               <span className={styles.iconEmoji} aria-hidden="true">🗂️</span>
@@ -79,6 +80,20 @@ export default function WichtigeReferenzen() {
               ))}
             </div>
           </button>
+
+          {/* Rechner */}
+          <button className={`${styles.card} ${styles.cardGreen}`} onClick={() => setModal('rechner')}>
+            <div className={`${styles.iconBox} ${styles.iconBoxGreen}`}>
+              <span className={styles.iconEmoji} aria-hidden="true">🧮</span>
+            </div>
+            <h3 className={`${styles.cardTitle} ${styles.colorGreen}`}>{copy.btnRechner}</h3>
+            <p className={styles.cardDesc}>{copy.btnRechnerSub}</p>
+            <div className={styles.chips}>
+              {(copy.chipsRechner || []).map(ch => (
+                <span key={ch} className={`${styles.chip} ${styles.chipGreen}`}>{ch}</span>
+              ))}
+            </div>
+          </button>
         </div>
       </div>
 
@@ -87,6 +102,9 @@ export default function WichtigeReferenzen() {
       )}
       {modal === 'klassifikationen' && (
         <KlassifikationenModal copy={copy} lang={lang} onClose={() => setModal(null)} />
+      )}
+      {modal === 'rechner' && (
+        <RechnerModal copy={copy} lang={lang} onClose={() => setModal(null)} />
       )}
     </section>
   )
@@ -117,7 +135,6 @@ function MesswerteModal({ copy, lang, onClose }) {
   return (
     <Modal title={copy.btnMesswerte} copy={copy} onClose={onClose} accentClass={styles.headBlue}>
       <div className={styles.split}>
-        {/* Sidebar – keine Zahlen mehr */}
         <nav className={styles.sidebar}>
           {regions.map(r => (
             <button key={r.id}
@@ -132,7 +149,6 @@ function MesswerteModal({ copy, lang, onClose }) {
           ))}
         </nav>
 
-        {/* Inhalt */}
         <div className={styles.content} style={{ '--ref-color': region.color }}>
           <h2 className={styles.regionHeading}>
             <span className={styles.regionHeadingIcon} style={{ color: region.color }}>
@@ -206,6 +222,84 @@ function KlassifikationenModal({ copy, lang, onClose }) {
             </div>
           </div>
         ))}
+      </div>
+    </Modal>
+  )
+}
+
+/* ── Rechner-Modal ────────────────────────────── */
+function RechnerModal({ copy, lang, onClose }) {
+  const calcs = REF_DATA.rechner
+  const [vals, setVals] = useState({})
+
+  const set = (calcId, fieldId, value) =>
+    setVals(v => ({ ...v, [calcId]: { ...(v[calcId] || {}), [fieldId]: value === '' ? '' : parseFloat(value) } }))
+
+  return (
+    <Modal title={copy.btnRechner} copy={copy} onClose={onClose} accentClass={styles.headGreen}>
+      <div className={styles.rechnerGrid}>
+        {calcs.map(calc => {
+          const fieldVals = vals[calc.id] || {}
+          const result = calc.calc(fieldVals)
+          const range = result != null ? calc.ranges.find(r => result <= r.max) : null
+
+          return (
+            <div key={calc.id} className={styles.rechnerCard} style={{ '--rc': calc.color }}>
+              {/* Header */}
+              <div className={styles.rcHead}>
+                <span className={styles.rcIcon} style={{ color: calc.color }}>⚙️</span>
+                <div>
+                  <div className={styles.rcName} style={{ color: calc.color }}>{tx(calc.name, lang)}</div>
+                  <div className={styles.rcFormula}>{calc.formula}</div>
+                </div>
+              </div>
+
+              {/* Eingaben */}
+              <div className={styles.rcFields}>
+                {calc.fields.map(f => (
+                  <label key={f.id} className={styles.rcField}>
+                    <span className={styles.rcFieldLabel}>{tx(f.label, lang)}</span>
+                    <div className={styles.rcInputWrap}>
+                      <input
+                        type="number"
+                        className={styles.rcInput}
+                        placeholder="—"
+                        min={f.min} max={f.max} step={f.step}
+                        value={fieldVals[f.id] ?? ''}
+                        onChange={e => set(calc.id, f.id, e.target.value)}
+                      />
+                      <span className={styles.rcUnit}>{f.unit}</span>
+                    </div>
+                  </label>
+                ))}
+              </div>
+
+              {/* Ergebnis */}
+              <div className={styles.rcResult} style={{
+                background: range ? range.color + '14' : '#f8fafc',
+                borderColor: range ? range.color + '44' : '#eef2f7',
+              }}>
+                {result != null ? (
+                  <>
+                    <span className={styles.rcResultVal} style={{ color: range?.color || calc.color }}>
+                      {result < 1 ? result.toFixed(3) : result.toFixed(1)} {calc.resultUnit}
+                    </span>
+                    {range && (
+                      <span className={styles.rcResultLabel} style={{ color: range.color }}>
+                        {tx(range.label, lang)}
+                      </span>
+                    )}
+                  </>
+                ) : (
+                  <span className={styles.rcResultPlaceholder}>{copy.calcResult} …</span>
+                )}
+              </div>
+
+              {/* Hinweis */}
+              <p className={styles.rcHint}>{tx(calc.hint, lang)}</p>
+            </div>
+          )
+        })}
       </div>
     </Modal>
   )
