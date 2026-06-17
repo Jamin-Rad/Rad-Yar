@@ -62,4 +62,27 @@ export function getActivitySummary(userId) {
   return { days: activity.days, totalSeconds, streak, visitedDays: dates.length }
 }
 
+// Merge server-side activity (from analytics_daily) into local storage.
+// Server data covers all devices; per day we take the higher value.
+// Local categories (lessons/practice/flashcards) are preserved.
+export function mergeServerActivity(userId, serverDays) {
+  if (typeof window === 'undefined' || !serverDays) return null
+  const activity = loadActivity(userId)
+  let changed = false
+  for (const [day, serverDay] of Object.entries(serverDays)) {
+    const local = activity.days[day] || { activeSeconds: 0, visits: 0 }
+    const mergedSeconds = Math.max(Number(local.activeSeconds || 0), Number(serverDay.activeSeconds || 0))
+    const mergedVisits = Math.max(Number(local.visits || 0), Number(serverDay.visits || 0))
+    if (mergedSeconds !== Number(local.activeSeconds || 0) || mergedVisits !== Number(local.visits || 0)) {
+      activity.days[day] = { ...local, activeSeconds: mergedSeconds, visits: mergedVisits }
+      changed = true
+    }
+  }
+  if (changed) {
+    localStorage.setItem(keyFor(userId), JSON.stringify(activity))
+    window.dispatchEvent(new CustomEvent('radyar:activity-updated'))
+  }
+  return activity
+}
+
 export { IDLE_MS }

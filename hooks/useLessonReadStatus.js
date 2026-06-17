@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useAuth } from '@clerk/nextjs'
 import { pullReadStatusFromServer } from '@/utils/readStatus'
-import { persistProgressWrite } from '@/utils/progressSync'
+import { markProgressSyncPending } from '@/utils/syncProgressToServer'
 
 export function useLessonReadStatus(topicId) {
   const { isLoaded, userId } = useAuth()
@@ -32,6 +32,10 @@ export function useLessonReadStatus(topicId) {
   }, [isLoaded, userId, topicId])
 
   const toggleRead = () => {
+    if (!isLoaded || !userId) {
+      setAuthError(true)
+      return false
+    }
     setAuthError(false)
     setIsRead(previous => {
       const next = !previous
@@ -45,12 +49,13 @@ export function useLessonReadStatus(topicId) {
           next ? [...withoutTopic, { topicId, learnedAt: new Date().toISOString() }] : withoutTopic
         ))
       } catch {}
-      persistProgressWrite(
-        `read:${topicId}`,
-        '/api/progress/read-status',
-        { themaId: topicId, read: next },
-        Boolean(isLoaded && userId)
-      )
+      fetch('/api/progress/read-status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ themaId: topicId, read: next }),
+      }).then(response => {
+        if (!response.ok) markProgressSyncPending(userId)
+      }).catch(() => markProgressSyncPending(userId))
       if (next) {
         window.dispatchEvent(new CustomEvent('radyar:lesson-read', { detail: { topicId } }))
       }

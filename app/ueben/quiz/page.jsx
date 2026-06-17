@@ -7,8 +7,8 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import { getQuestions, getQuestionsByIds } from '@/data/questions'
 import { isSubscriptionActive, FREE_ITEM_LIMIT } from '@/utils/subscription'
 import { getWrongAnswerExplanation } from '@/utils/answerFeedback'
+import { markProgressSyncPending } from '@/utils/syncProgressToServer'
 import styles from './page.module.css'
-import { persistProgressWrite } from '@/utils/progressSync'
 
 const localDateKey = () => {
   const date = new Date()
@@ -243,12 +243,15 @@ function QuizContent() {
         lastSessionAttempted: finalAnswers.length,
       }
       localStorage.setItem('radyar_mcq_scores', JSON.stringify(scores))
-      persistProgressWrite(
-        'mcq:scores',
-        '/api/progress/mcq-results',
-        { bulk: scores },
-        Boolean(user?.id)
-      )
+      if (user?.id) {
+        fetch('/api/progress/mcq-results', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ bulk: scores }),
+        }).then(response => {
+          if (!response.ok) markProgressSyncPending(user.id)
+        }).catch(() => markProgressSyncPending(user.id))
+      }
     } catch {}
   }
 

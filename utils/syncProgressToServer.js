@@ -1,61 +1,180 @@
-// ─── Einmalige Übernahme bestehender localStorage-Fortschritte nach Supabase ──
-// Wird beim ersten Profilbesuch eines eingeloggten Nutzers nach diesem Update
-// einmal ausgeführt, damit bisheriger (nur lokaler) Fortschritt geräteübergreifend
-// verfügbar wird. Danach läuft der Sync laufend über die Write-Through-Aufrufe
-// in useLessonReadStatus, leitnerStorage und der MCQ-Auswertung.
+// Central progress reconciliation for signed-in users.
+// localStorage remains the offline cache; Supabase is the cross-device source.
 
-// v2: v1 markierte den Sync auch als erledigt, wenn die Requests fehlschlugen
-// (z.B. wegen fehlender DB-Rechte) – fetch() lehnt nur bei Netzwerkfehlern ab,
-// nicht bei 4xx/5xx. Browser mit fälschlich gesetztem v1-Flag müssen daher
-// einmal erneut versuchen.
-const syncedKey = userId => `radyar_synced_v3_${userId}`
+const SESSION_KEY_PREFIX = 'radyar_progress_synced_v3_'
+const CACHE_OWNER_KEY = 'radyar_progress_cache_owner'
+const SHARED_CACHE_KEYS = [
+  ['radyar_read_articles', {}],
+  ['radyar_learning_history', []],
+  ['radyar_mcq_scores', {}],
+]
+const inFlight = new Map()
+
+function readJson(key, fallback) {
+  try {
+    return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback))
+  } catch {
+    return fallback
+  }
+}
+
+function timeOf(value) {
+  const time = new Date(value || 0).getTime()
+  return Number.isFinite(time) ? time : 0
+}
+
+function scopedCacheKey(key, userId) {
+  return `${key}_${userId}`
+}
+
+function saveSharedCacheForUser(userId) {
+  for (const [key, fallback] of SHARED_CACHE_KEYS) {
+    localStorage.setItem(scopedCacheKey(key, userId), JSON.stringify(readJson(key, fallback)))
+  }
+}
+
+function activateUserCache(userId) {
+  const owner = localStorage.getItem(CACHE_OWNER_KEY)
+  if (!owner) {
+    // Existing unscoped data predates account-specific caches and belongs to
+    // the first signed-in user after this update.
+    saveSharedCacheForUser(userId)
+    localStorage.setItem(CACHE_OWNER_KEY, userId)
+    return
+  }
+  if (owner === userId) return
+
+  saveSharedCacheForUser(owner)
+  for (const [key, fallback] of SHARED_CACHE_KEYS) {
+    const scoped = readJson(scopedCacheKey(key, userId), fallback)
+    localStorage.setItem(key, JSON.stringify(scoped))
+  }
+  localStorage.setItem(CACHE_OWNER_KEY, userId)
+}
+
+function persistCurrentUserCache(userId) {
+  saveSharedCacheForUser(userId)
+  localStorage.setItem(CACHE_OWNER_KEY, userId)
+}
+
+async function requestJson(url, options) {
+  const response = await fetch(url, options)
+  if (!response.ok) {
+    let message = `HTTP ${response.status}`
+    try {
+      const body = await response.json()
+      if (body?.error) message = body.error
+    } catch {}
+    throw new Error(message)
+  }
+  return response.json()
+}
+
+function mergeReadProgress(serverData) {
+  const articles = readJson('radyar_read_articles', {})
+  const history = readJson('radyar_learning_history', [])
+  const historyByTopic = new Map(history.map(item => [item.topicId, item]))
+
+  for (const [topicId, read] of Object.entries(serverData.read || {})) {
+    if (read) articles[topicId] = 1
+  }
+  for (const item of serverData.history || []) {
+    const localItem = historyByTopic.get(item.topicId)
+    if (!localItem || timeOf(item.learnedAt) >= timeOf(localItem.learnedAt)) {
+      historyByTopic.set(item.topicId, item)
+    }
+  }
+
+  const mergedHistory = [...historyByTopic.values()]
+    .sort((a, b) => timeOf(b.learnedAt) - timeOf(a.learnedAt))
+
+  localStorage.setItem('radyar_read_articles', JSON.stringify(articles))
+  localStorage.setItem('radyar_learning_history', JSON.stringify(mergedHistory))
+  return { articles, history: mergedHistory }
+}
+
+function mergeMcqProgress(serverData) {
+  const scores = readJson('radyar_mcq_scores', {})
+  for (const [topicId, serverResult] of Object.entries(serverData.scores || {})) {
+    const localResult = scores[topicId]
+    if (!localResult || timeOf(serverResult.lastDate) >= timeOf(localResult.lastDate)) {
+      scores[topicId] = serverResult
+    }
+  }
+  localStorage.setItem('radyar_mcq_scores', JSON.stringify(scores))
+  return scores
+}
+
+function mergeLeitnerProgress(userId, serverData) {
+  const key = `radyar_leitner_${userId}`
+  const cards = readJson(key, {})
+  for (const [cardId, serverRecord] of Object.entries(serverData.cards || {})) {
+    const localRecord = cards[cardId]
+    const localTime = timeOf(localRecord?.lastReviewedAt || localRecord?.lastSeenAt || localRecord?.addedAt)
+    const serverTime = timeOf(serverRecord?.lastReviewedAt || serverRecord?.lastSeenAt || serverRecord?.addedAt)
+    if (!localRecord || serverTime >= localTime) cards[cardId] = serverRecord
+  }
+  localStorage.setItem(key, JSON.stringify(cards))
+  return cards
+}
+
+function postJson(url, body) {
+  return requestJson(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  })
+}
+
+async function reconcileProgress(userId) {
+  activateUserCache(userId)
+
+  const [readServer, mcqServer, leitnerServer] = await Promise.all([
+    requestJson('/api/progress/read-status'),
+    requestJson('/api/progress/mcq-results'),
+    requestJson('/api/progress/leitner'),
+  ])
+
+  const read = mergeReadProgress(readServer)
+  const mcqScores = mergeMcqProgress(mcqServer)
+  const leitnerState = mergeLeitnerProgress(userId, leitnerServer)
+  persistCurrentUserCache(userId)
+  const historyByTopic = new Map(read.history.map(item => [item.topicId, item.learnedAt]))
+  const readBulk = Object.entries(read.articles)
+    .filter(([, value]) => Number(value) >= 1)
+    .map(([themaId]) => ({ themaId, read: true, learnedAt: historyByTopic.get(themaId) }))
+
+  const uploads = []
+  if (readBulk.length) uploads.push(postJson('/api/progress/read-status', { bulk: readBulk }))
+  if (Object.keys(mcqScores).length) uploads.push(postJson('/api/progress/mcq-results', { bulk: mcqScores }))
+  if (Object.keys(leitnerState).length) uploads.push(postJson('/api/progress/leitner', { bulk: leitnerState }))
+  await Promise.all(uploads)
+
+  sessionStorage.setItem(`${SESSION_KEY_PREFIX}${userId}`, '1')
+  window.dispatchEvent(new CustomEvent('radyar:progress-synced', {
+    detail: { userId, read, mcqScores, leitnerState },
+  }))
+  return { read, mcqScores, leitnerState }
+}
+
+export function markProgressSyncPending(userId) {
+  if (typeof window === 'undefined' || !userId) return
+  sessionStorage.removeItem(`${SESSION_KEY_PREFIX}${userId}`)
+}
 
 export async function syncLocalProgressToServer(userId) {
-  if (typeof window === 'undefined' || !userId) return
-  if (localStorage.getItem(syncedKey(userId))) return
+  if (typeof window === 'undefined' || !userId) return null
+  const sessionKey = `${SESSION_KEY_PREFIX}${userId}`
+  if (sessionStorage.getItem(sessionKey)) return null
+  if (inFlight.has(userId)) return inFlight.get(userId)
 
-  try {
-    const readArticles = JSON.parse(localStorage.getItem('radyar_read_articles') || '{}')
-    const learningHistory = JSON.parse(localStorage.getItem('radyar_learning_history') || '[]')
-    const mcqScores = JSON.parse(localStorage.getItem('radyar_mcq_scores') || '{}')
-    const userLeitnerState = JSON.parse(localStorage.getItem(`radyar_leitner_${userId}`) || '{}')
-    const anonymousLeitnerState = JSON.parse(localStorage.getItem('radyar_leitner_anon') || '{}')
-    const leitnerState = { ...anonymousLeitnerState, ...userLeitnerState }
-    if (Object.keys(leitnerState).length > 0) {
-      localStorage.setItem(`radyar_leitner_${userId}`, JSON.stringify(leitnerState))
-    }
+  const promise = reconcileProgress(userId)
+    .catch(error => {
+      console.error('Fortschritt konnte nicht synchronisiert werden:', error.message)
+      return null
+    })
+    .finally(() => inFlight.delete(userId))
 
-    const historyByTopic = new Map(learningHistory.map(item => [item.topicId, item.learnedAt]))
-    const readBulk = Object.entries(readArticles)
-      .filter(([, value]) => Number(value) >= 1)
-      .map(([themaId]) => ({ themaId, read: true, learnedAt: historyByTopic.get(themaId) }))
-
-    const requests = []
-    if (readBulk.length > 0) {
-      requests.push(fetch('/api/progress/read-status', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ bulk: readBulk }),
-      }))
-    }
-    if (Object.keys(mcqScores).length > 0) {
-      requests.push(fetch('/api/progress/mcq-results', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ bulk: mcqScores }),
-      }))
-    }
-    if (Object.keys(leitnerState).length > 0) {
-      requests.push(fetch('/api/progress/leitner', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ bulk: leitnerState }),
-      }))
-    }
-
-    const responses = await Promise.all(requests)
-    if (responses.every(res => res.ok)) {
-      localStorage.setItem(syncedKey(userId), '1')
-    }
-  } catch (_) {}
+  inFlight.set(userId, promise)
+  return promise
 }

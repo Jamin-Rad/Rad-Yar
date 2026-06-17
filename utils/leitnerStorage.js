@@ -131,15 +131,24 @@ export function formatDueDate(record, lang = 'de') {
 // ─── Server-Sync (nur für eingeloggte Nutzer) ──────────────────────
 // localStorage bleibt die sofort verfügbare Quelle für die UI;
 // der Server (Supabase `leitner_cards`) ermöglicht geräteübergreifenden Sync.
-import { flushPendingProgress, persistProgressWrite } from '@/utils/progressSync'
 
-export async function syncLeitnerCardToServer(cardId, record, canSync = true) {
-  return persistProgressWrite(
-    `leitner:${cardId}`,
-    '/api/progress/leitner',
-    { cardId, record },
-    canSync
-  )
+export async function syncLeitnerCardToServer(cardId, record, userId = null) {
+  try {
+    const response = await fetch('/api/progress/leitner', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cardId, record }),
+    })
+    if (!response.ok && userId) {
+      const { markProgressSyncPending } = await import('@/utils/syncProgressToServer')
+      markProgressSyncPending(userId)
+    }
+  } catch (_) {
+    if (userId) {
+      const { markProgressSyncPending } = await import('@/utils/syncProgressToServer')
+      markProgressSyncPending(userId)
+    }
+  }
 }
 
 /**
@@ -148,7 +157,6 @@ export async function syncLeitnerCardToServer(cardId, record, canSync = true) {
  */
 export async function pullLeitnerStateFromServer(userId) {
   try {
-    await flushPendingProgress()
     const res = await fetch('/api/progress/leitner')
     if (!res.ok) return loadLeitnerState(userId)
     const { cards } = await res.json()

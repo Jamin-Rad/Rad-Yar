@@ -1,10 +1,8 @@
 // Lesefortschritt vom Server holen und mit localStorage mergen
 // (Server gewinnt bei "gelesen" – für geräteübergreifende Konsistenz).
 // Wird von useLessonReadStatus und der Lernpfad-Übersicht (/lernen/[fach]) genutzt.
-import { flushPendingProgress } from '@/utils/progressSync'
 
 export async function pullReadStatusFromServer() {
-  await flushPendingProgress()
   const res = await fetch('/api/progress/read-status')
   if (!res.ok) return null
   const data = await res.json()

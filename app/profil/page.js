@@ -12,7 +12,7 @@ import { flushPendingProgress } from '@/utils/progressSync'
 import { loadSettings, saveSettings } from '@/utils/settingsStorage'
 import { CURRICULUM, getFachTitle, getKapitelTitle, getThemaTitle } from '@/data/curriculum'
 import { MCQ_TOPIC_GROUPS } from '@/data/questions'
-import { getActivitySummary } from '@/utils/activityStorage'
+import { getActivitySummary, mergeServerActivity } from '@/utils/activityStorage'
 import { getSubscription, isSubscriptionActive } from '@/utils/subscription'
 import styles from './page.module.css'
 
@@ -448,6 +448,16 @@ export default function ProfilPage() {
         localStorage.setItem('radyar_mcq_scores', JSON.stringify(merged))
       })
       .catch(() => {})
+
+    // Aktivitätsdaten vom Server holen (alle Geräte) und mit lokalem Stand mergen
+    serverReady.then(() => fetch('/api/progress/activity'))
+      .then(res => (res.ok ? res.json() : null))
+      .then(data => {
+        if (!data?.days) return
+        mergeServerActivity(user.id, data.days)
+        setActivitySummary(getActivitySummary(user.id))
+      })
+      .catch(() => {})
   }, [isLoaded, user])
 
   useEffect(() => {
@@ -455,6 +465,19 @@ export default function ProfilPage() {
     const refreshActivity = () => setActivitySummary(getActivitySummary(user.id))
     window.addEventListener('radyar:activity-updated', refreshActivity)
     return () => window.removeEventListener('radyar:activity-updated', refreshActivity)
+  }, [user])
+
+  useEffect(() => {
+    if (!user) return
+    function handleSynced(event) {
+      const { read, mcqScores: synced, leitnerState } = event.detail || {}
+      if (read?.articles) setReadArticles(read.articles)
+      if (read?.history) setLearningHistory(read.history)
+      if (synced) setMcqScores(synced)
+      if (leitnerState) setLeitner(leitnerState)
+    }
+    window.addEventListener('radyar:progress-synced', handleSynced)
+    return () => window.removeEventListener('radyar:progress-synced', handleSynced)
   }, [user])
 
   const progress = useMemo(() => getProgressData(readArticles), [readArticles])
