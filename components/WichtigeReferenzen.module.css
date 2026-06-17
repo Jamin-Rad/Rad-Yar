@@ -482,6 +482,7 @@
     border-inline-end: none; border-bottom: 1px solid #eef2f7; max-height: none;
     padding: 8px;
   }
+  :global(html[data-theme='dark']) .sidebar { border-bottom-color: rgba(148,163,184,0.12); }
   .navBtn { width: auto; white-space: nowrap; }
   .navLabel { display: none; }
   .klassGrid { grid-template-columns: 1fr; }
@@ -489,3 +490,162 @@
   .glassTitle { font-size: 22px; }
   .glassTop { margin-bottom: 20px; }
 }
+
+/* ══════════════════════════════════════════════
+   DARK MODE
+   ══════════════════════════════════════════════ */
+:global(html[data-theme='dark']) .section {
+  background: var(--bg, #07111f);
+}
+
+/* ── Glassmorphismus-Header ───────────────────── */
+:global(html[data-theme='dark']) .glassHeader {
+  background: linear-gradient(135deg, #0f1e35 0%, #1a1740 55%, #0f1e35 100%);
+  border-color: rgba(148,163,184,0.12);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+:global(html[data-theme='dark']) .glassHeaderGlow {
+  background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 65%);
+}
+:global(html[data-theme='dark']) .glassBadge {
+  color: rgba(165,180,252,0.8);
+  background: rgba(99,102,241,0.12);
+  border-color: rgba(99,102,241,0.25);
+}
+:global(html[data-theme='dark']) .glassTitle { color: #f8fafc; }
+:global(html[data-theme='dark']) .glassSub   { color: rgba(184,196,216,0.75); }
+
+/* ── Karten ───────────────────────────────────── */
+:global(html[data-theme='dark']) .card {
+  background: var(--bg-card, #111b2d);
+  border-color: rgba(148,163,184,0.15);
+}
+:global(html[data-theme='dark']) .cardBlue   { background: #0c1929; border-color: rgba(14,165,233,0.22); }
+:global(html[data-theme='dark']) .cardOrange { background: #1a1208; border-color: rgba(249,115,22,0.22); }
+:global(html[data-theme='dark']) .cardGreen  { background: #08180f; border-color: rgba(5,150,105,0.22); }
+:global(html[data-theme='dark']) .card:hover {
+  box-shadow: 0 10px 32px rgba(0,0,0,0.4);
+}
+:global(html[data-theme='dark']) .iconBox {
+  background: rgba(255,255,255,0.04);
+}
+:global(html[data-theme='dark']) .iconBoxBlue   { border-color: rgba(14,165,233,0.3); }
+:global(html[data-theme='dark']) .iconBoxOrange { border-color: rgba(249,115,22,0.3); }
+:global(html[data-theme='dark']) .iconBoxGreen  { border-color: rgba(5,150,105,0.3); }
+:global(html[data-theme='dark']) .cardDesc  { color: #8fa1ba; }
+:global(html[data-theme='dark']) .chipBlue   { background: rgba(14,165,233,0.1);  border-color: rgba(14,165,233,0.25); }
+:global(html[data-theme='dark']) .chipOrange { background: rgba(249,115,22,0.1);  border-color: rgba(249,115,22,0.25); }
+:global(html[data-theme='dark']) .chipGreen  { background: rgba(5,150,105,0.1);   border-color: rgba(5,150,105,0.25); }
+
+/* ── Modal ────────────────────────────────────── */
+:global(html[data-theme='dark']) .modal {
+  background: var(--bg-card, #111b2d);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.55);
+}
+:global(html[data-theme='dark']) .modalHead { border-bottom-color: rgba(148,163,184,0.14); }
+:global(html[data-theme='dark']) .headBlue   { background: #0a1a28; border-bottom-color: rgba(14,165,233,0.25); }
+:global(html[data-theme='dark']) .headOrange { background: #1a1208; border-bottom-color: rgba(249,115,22,0.25); }
+:global(html[data-theme='dark']) .headGreen  { background: #081810; border-bottom-color: rgba(5,150,105,0.25); }
+:global(html[data-theme='dark']) .modalTitle { color: #f8fafc; }
+:global(html[data-theme='dark']) .closeBtn {
+  background: rgba(255,255,255,0.08); color: #b8c4d8;
+}
+:global(html[data-theme='dark']) .closeBtn:hover { background: rgba(255,255,255,0.14); }
+:global(html[data-theme='dark']) .disclaimer {
+  border-top-color: rgba(148,163,184,0.12); color: #6b7f9a;
+}
+
+/* ── Sidebar ──────────────────────────────────── */
+:global(html[data-theme='dark']) .sidebar {
+  background: var(--bg-soft, #0b1526);
+  border-inline-end-color: rgba(148,163,184,0.12);
+}
+:global(html[data-theme='dark']) .navBtn { color: #8fa1ba; }
+:global(html[data-theme='dark']) .navBtn:hover { background: rgba(255,255,255,0.05); color: #f8fafc; }
+:global(html[data-theme='dark']) .navIconWrap {
+  background: color-mix(in srgb, var(--ref-color) 15%, #0b1526);
+  border-color: color-mix(in srgb, var(--ref-color) 28%, transparent);
+}
+:global(html[data-theme='dark']) .sidebar { border-bottom-color: rgba(148,163,184,0.12); }
+
+/* ── Messwerte-Inhalt ─────────────────────────── */
+:global(html[data-theme='dark']) .content { background: transparent; }
+:global(html[data-theme='dark']) .regionHeading {
+  color: #f8fafc;
+  border-bottom-color: color-mix(in srgb, var(--ref-color, #334155) 22%, transparent);
+}
+:global(html[data-theme='dark']) .regionHeadingIcon {
+  background: color-mix(in srgb, var(--ref-color) 12%, #111b2d);
+  border-color: color-mix(in srgb, var(--ref-color) 28%, transparent);
+}
+:global(html[data-theme='dark']) .groupBlock { border-bottom-color: rgba(148,163,184,0.10); }
+:global(html[data-theme='dark']) .groupHeading {
+  background: color-mix(in srgb, var(--ref-color, #334155) 10%, transparent);
+  border-left-color: var(--ref-color, #334155);
+}
+:global(html[data-theme='dark']) .tableWrap  { border-color: rgba(148,163,184,0.12); }
+:global(html[data-theme='dark']) .mTable thead tr { background: rgba(255,255,255,0.03); }
+:global(html[data-theme='dark']) .thName,
+:global(html[data-theme='dark']) .thVal,
+:global(html[data-theme='dark']) .thNote { color: #6b7f9a; }
+:global(html[data-theme='dark']) .tdName { color: #e5edf8; border-bottom-color: rgba(148,163,184,0.08); }
+:global(html[data-theme='dark']) .tdVal  { border-bottom-color: rgba(148,163,184,0.08); }
+:global(html[data-theme='dark']) .tdNote { color: #8fa1ba; border-bottom-color: rgba(148,163,184,0.08); }
+:global(html[data-theme='dark']) .mTable tbody tr:hover td {
+  background: rgba(255,255,255,0.03);
+}
+:global(html[data-theme='dark']) .dot { opacity: .85; }
+
+/* ── Klassifikationen ─────────────────────────── */
+:global(html[data-theme='dark']) .klassItem {
+  background: rgba(255,255,255,0.03);
+}
+:global(html[data-theme='dark']) .klassItem:hover {
+  background: color-mix(in srgb, var(--ref-color) 10%, #111b2d);
+  border-color: var(--ref-color);
+}
+:global(html[data-theme='dark']) .klassName   { color: #f8fafc; }
+:global(html[data-theme='dark']) .klassKicker { color: #6b7f9a; }
+:global(html[data-theme='dark']) .klassArrow  { color: #334155; }
+
+/* ── Rechner-Karten ───────────────────────────── */
+:global(html[data-theme='dark']) .rechnerCard {
+  background: var(--bg-card, #111b2d);
+  border-color: color-mix(in srgb, var(--rc) 22%, rgba(148,163,184,0.15));
+}
+:global(html[data-theme='dark']) .rcFormula   { color: #4f6077; }
+:global(html[data-theme='dark']) .rcFieldLabel { color: #8fa1ba; }
+:global(html[data-theme='dark']) .rcInputWrap {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(148,163,184,0.2);
+}
+:global(html[data-theme='dark']) .rcInputWrap:focus-within {
+  background: rgba(255,255,255,0.08);
+  border-color: var(--rc);
+}
+:global(html[data-theme='dark']) .rcInput  { color: #f8fafc; }
+:global(html[data-theme='dark']) .rcUnit   { color: #4f6077; }
+:global(html[data-theme='dark']) .rcSelect {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(148,163,184,0.2);
+  color: #e5edf8;
+}
+:global(html[data-theme='dark']) .rcSelect:focus {
+  background: rgba(255,255,255,0.08);
+}
+:global(html[data-theme='dark']) .rcCheckRow { color: #8fa1ba; }
+:global(html[data-theme='dark']) .rcResult {
+  background: rgba(255,255,255,0.03) !important;
+  border-color: rgba(148,163,184,0.15) !important;
+}
+:global(html[data-theme='dark']) .rcResult:has(.rcResultVal) {
+  background: color-mix(in srgb, var(--rc, #334155) 10%, #111b2d) !important;
+  border-color: color-mix(in srgb, var(--rc, #334155) 28%, transparent) !important;
+}
+:global(html[data-theme='dark']) .rcResultPlaceholder { color: #2d3f55; }
+:global(html[data-theme='dark']) .rcHint { color: #4f6077; border-top-color: rgba(148,163,184,0.10); }
+:global(html[data-theme='dark']) .rcConvLabel  { color: #8fa1ba; }
+:global(html[data-theme='dark']) .rcConvArrow  { color: #4f6077; }
+:global(html[data-theme='dark']) .rcOutputLabel { opacity: .85; }
+:global(html[data-theme='dark']) .rcFleischnerRec { /* color set inline */ }
+:global(html[data-theme='dark']) .rcResultLabel { /* color set inline */ }
