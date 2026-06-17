@@ -21,6 +21,105 @@ const PILLAR_ICONS = [
   '/lernbereiche/flashcards.jpg',
 ]
 
+const CHEATSHEET_COPY = {
+  de: {
+    label: 'Spickzettel Radiologie',
+    title: 'Schnelle Hilfe am Befundplatz',
+    desc: 'Kompakte Klassifikationen, Messwerte und Rechenhilfen für den Alltag in der radiologischen Weiterbildung.',
+    action: 'Öffnen',
+    items: [
+      {
+        title: 'Klassifikationen',
+        text: 'BI-RADS, LI-RADS, Scores und Staging-Systeme schnell wiederfinden.',
+        meta: 'Scores & Kategorien',
+        image: '/lernbereiche/klassifikation.png',
+        href: '/lernen',
+        color: '#f97316',
+      },
+      {
+        title: 'Messwerte',
+        text: 'Normwerte, Grenzwerte und typische Messpunkte übersichtlich gesammelt.',
+        meta: 'mm, Winkel, Cut-offs',
+        image: '/lernbereiche/messwerte.png',
+        href: '/lernen',
+        color: '#0ea5e9',
+      },
+      {
+        title: 'Rechner',
+        text: 'Formeln und kleine Rechenhilfen für Befundung, Protokolle und Verlauf.',
+        meta: 'Formeln & Verlauf',
+        image: '/lernbereiche/rechen.png',
+        href: '/technik/kontrastmittel',
+        color: '#10b981',
+      },
+    ],
+  },
+  en: {
+    label: 'Radiology Cheat Sheet',
+    title: 'Fast help at the workstation',
+    desc: 'Compact classifications, measurements and calculators for everyday radiology training.',
+    action: 'Open',
+    items: [
+      {
+        title: 'Classifications',
+        text: 'Quick access to BI-RADS, LI-RADS, scores and staging systems.',
+        meta: 'Scores & categories',
+        image: '/lernbereiche/klassifikation.png',
+        href: '/lernen',
+        color: '#f97316',
+      },
+      {
+        title: 'Measurements',
+        text: 'Normal values, thresholds and common measurement points in one place.',
+        meta: 'mm, angles, cut-offs',
+        image: '/lernbereiche/messwerte.png',
+        href: '/lernen',
+        color: '#0ea5e9',
+      },
+      {
+        title: 'Calculators',
+        text: 'Useful formulas and small calculators for reports, protocols and follow-up.',
+        meta: 'Formulas & follow-up',
+        image: '/lernbereiche/rechen.png',
+        href: '/technik/kontrastmittel',
+        color: '#10b981',
+      },
+    ],
+  },
+  fa: {
+    label: 'چک‌لیست رادیولوژی',
+    title: 'کمک سریع کنار ایستگاه گزارش',
+    desc: 'طبقه‌بندی‌ها، اندازه‌گیری‌ها و محاسبه‌های کوتاه برای کار روزمره رادیولوژی.',
+    action: 'باز کردن',
+    items: [
+      {
+        title: 'طبقه‌بندی‌ها',
+        text: 'دسترسی سریع به BI-RADS، LI-RADS، اسکور‌ها و سیستم‌های staging.',
+        meta: 'اسکور و دسته‌بندی',
+        image: '/lernbereiche/klassifikation.png',
+        href: '/lernen',
+        color: '#f97316',
+      },
+      {
+        title: 'اندازه‌گیری‌ها',
+        text: 'مقادیر نرمال، مرزها و نقاط اندازه‌گیری رایج در یک نگاه.',
+        meta: 'میلی‌متر، زاویه، cut-off',
+        image: '/lernbereiche/messwerte.png',
+        href: '/lernen',
+        color: '#0ea5e9',
+      },
+      {
+        title: 'محاسبه‌گرها',
+        text: 'فرمول‌ها و محاسبه‌های کاربردی برای گزارش، پروتکل و پیگیری.',
+        meta: 'فرمول و پیگیری',
+        image: '/lernbereiche/rechen.png',
+        href: '/technik/kontrastmittel',
+        color: '#10b981',
+      },
+    ],
+  },
+}
+
 const FALL_MODAL = {
   de: { title: 'Fallprüfung', msg: 'Wähle eine Körperregion. Interaktive Fälle werden nach und nach ergänzt.', close: 'Schließen', soon: 'in Arbeit' },
   en: { title: 'Case Exam', msg: 'Choose a body region. Interactive cases will be added step by step.', close: 'Close', soon: 'in progress' },
@@ -119,6 +218,7 @@ export default function LernPfade() {
   const [modal, setModal] = useState(null) // null | 'fall'
   const fm = FALL_MODAL[lang] || FALL_MODAL.de
   const latest = LATEST_COPY[lang] || LATEST_COPY.de
+  const cheatsheet = CHEATSHEET_COPY[lang] || CHEATSHEET_COPY.de
   const fallTopicItems = buildFallTopicItems(lang)
   const withLang = (href) => {
     if (lang === 'de') return href
@@ -139,6 +239,34 @@ export default function LernPfade() {
       <div className="sLabel">{texts.section1Label}</div>
       <h2 className="sTitle">{texts.section1Title}</h2>
       <p className="sSub">{texts.section1Sub}</p>
+
+      <div className={styles.cheatSheet}>
+        <div className={styles.cheatIntro}>
+          <span className={styles.cheatLabel}>{cheatsheet.label}</span>
+          <h3>{cheatsheet.title}</h3>
+          <p>{cheatsheet.desc}</p>
+        </div>
+        <div className={styles.cheatGrid}>
+          {cheatsheet.items.map(item => (
+            <Link
+              key={item.title}
+              href={withLang(item.href)}
+              className={styles.cheatCard}
+              style={{ '--accent': item.color }}
+            >
+              <span className={styles.cheatImageWrap}>
+                <Image src={item.image} alt="" width={220} height={220} className={styles.cheatImage} />
+              </span>
+              <span className={styles.cheatBody}>
+                <small>{item.meta}</small>
+                <strong>{item.title}</strong>
+                <span>{item.text}</span>
+              </span>
+              <span className={styles.cheatAction}>{cheatsheet.action}</span>
+            </Link>
+          ))}
+        </div>
+      </div>
 
       <div className={styles.grid}>
         {texts.pillars.map((p, i) => {
