@@ -107,10 +107,55 @@
 .cellRest  { color: #334155; line-height: 1.55; }
 [dir='rtl'] .cellFirst { white-space: normal; }
 
+/* ── Ausführlich: Stadien im Detail ───────────── */
+.detailList { display: flex; flex-direction: column; gap: 12px; }
+.detailBlock {
+  border: 1.5px solid; border-radius: 14px;
+  padding: 16px 18px; background: #fcfcfd;
+}
+.detailStage {
+  display: flex; align-items: center; gap: 9px;
+  margin: 0 0 7px; font-size: 15px; font-weight: 800;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
+  letter-spacing: -.01em;
+}
+.detailDot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.detailText { margin: 0; font-size: 14px; color: #334155; line-height: 1.65; }
+
 /* ── Referenz & Disclaimer ────────────────────── */
 .ref { margin: 24px 0 0; font-size: 13px; color: #64748b; }
 .refLabel { font-weight: 700; color: #475569; }
 .disclaimer { margin: 14px 0 0; font-size: 12px; color: #94a3b8; line-height: 1.5; }
+
+/* ── Dark Mode ────────────────────────────────── */
+:global(html[data-theme='dark']) .page { background: var(--bg, #07111f); }
+:global(html[data-theme='dark']) .breadcrumb { color: #6b7f9a; }
+:global(html[data-theme='dark']) .breadSep { color: #334155; }
+:global(html[data-theme='dark']) .sidebar,
+:global(html[data-theme='dark']) .content {
+  background: var(--bg-card, #111b2d); border-color: rgba(148,163,184,0.15);
+}
+:global(html[data-theme='dark']) .sidebarBrand { border-bottom-color: rgba(148,163,184,0.12); }
+:global(html[data-theme='dark']) .sidebarBrandLabel,
+:global(html[data-theme='dark']) .heading { color: #f8fafc; }
+:global(html[data-theme='dark']) .sidebarTitle { border-bottom-color: rgba(148,163,184,0.12); }
+:global(html[data-theme='dark']) .sibLink { color: #8fa1ba; }
+:global(html[data-theme='dark']) .sibLink:hover { background: rgba(255,255,255,0.05); color: #f8fafc; }
+:global(html[data-theme='dark']) .sibActive {
+  background: color-mix(in srgb, var(--ref-color) 16%, #111b2d); color: #f8fafc;
+}
+:global(html[data-theme='dark']) .kompaktText { color: #c2cede; }
+:global(html[data-theme='dark']) .subHeading,
+:global(html[data-theme='dark']) .otherTitle { color: #6b7f9a; }
+:global(html[data-theme='dark']) .tableWrap { border-color: rgba(148,163,184,0.15); }
+:global(html[data-theme='dark']) .table thead th { background: rgba(255,255,255,0.03); color: #6b7f9a; }
+:global(html[data-theme='dark']) .table tbody td { border-bottom-color: rgba(148,163,184,0.10); }
+:global(html[data-theme='dark']) .cellRest { color: #c2cede; }
+:global(html[data-theme='dark']) .table tbody tr:hover td { background: rgba(255,255,255,0.03); }
+:global(html[data-theme='dark']) .detailBlock { background: rgba(255,255,255,0.025); }
+:global(html[data-theme='dark']) .detailText { color: #c2cede; }
+:global(html[data-theme='dark']) .ref { color: #8fa1ba; }
+:global(html[data-theme='dark']) .refLabel { color: #c2cede; }
 
 /* ── Responsive ──────────────────────────────── */
 @media (max-width: 860px) {

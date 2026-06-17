@@ -182,13 +182,15 @@
 .navBtn:hover { background: #f1f5f9; color: #1a2051; }
 .navBtn:hover .navIconWrap { opacity: 1; }
 .navActiveBlue,
-.navActiveGreen {
+.navActiveGreen,
+.navActiveOrange {
   border-color: color-mix(in srgb, var(--ref-color) 45%, transparent);
   color: #1a2051;
   background: color-mix(in srgb, var(--ref-color) 8%, #fff);
 }
 .navActiveBlue .navIconWrap,
-.navActiveGreen .navIconWrap { opacity: 1; }
+.navActiveGreen .navIconWrap,
+.navActiveOrange .navIconWrap { opacity: 1; }
 
 .navIconWrap {
   display: flex; align-items: center; justify-content: center;
@@ -278,40 +280,39 @@
 }
 [dir='rtl'] .tdVal { white-space: normal; }
 
-/* ── Klassifikationen-Gitter ─────────────────── */
-.klassGrid {
-  padding: 20px 24px; overflow-y: auto;
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-  flex: 1; min-height: 0;
+/* ── Klassifikationen-Karten (Kompaktversion) ── */
+.klassCardGrid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 14px; align-items: start;
 }
-.klassGroup { display: flex; flex-direction: column; gap: 6px; }
-.klassGroupTitle {
-  display: flex; align-items: center; gap: 7px;
-  font-size: 11px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .04em; padding: 4px 0 6px;
-  border-bottom: 1.5px solid;
-  border-color: color-mix(in srgb, var(--ref-color, currentColor) 30%, transparent);
+.klassCard {
+  display: flex; flex-direction: column; gap: 8px;
+  width: 100%; text-align: start; cursor: pointer;
+  border: 1.5px solid #eef2f7; border-radius: 14px;
+  background: #fff; padding: 16px 18px; transition: all .18s;
   font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
 }
-.klassList { display: flex; flex-direction: column; gap: 4px; }
-.klassItem {
-  display: flex; flex-direction: column; gap: 2px;
-  width: 100%; text-align: start; border: 1.5px solid transparent;
-  background: #fafbfc; border-radius: 10px; padding: 10px 12px;
-  cursor: pointer; transition: all .18s; position: relative;
-  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
-}
-.klassItem:hover {
+.klassCard:hover {
   border-color: var(--ref-color);
-  background: color-mix(in srgb, var(--ref-color) 7%, #fff);
+  background: color-mix(in srgb, var(--ref-color) 5%, #fff);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px -14px color-mix(in srgb, var(--ref-color) 70%, transparent);
 }
-.klassName { font-size: 13.5px; font-weight: 700; color: #1a2051; padding-inline-end: 18px; }
-.klassKicker { font-size: 11.5px; color: #94a3b8; line-height: 1.4; }
-.klassArrow {
-  position: absolute; inset-inline-end: 10px; top: 50%; transform: translateY(-50%);
-  font-size: 14px; color: #cbd5e1;
+.klassCardName {
+  font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
+  font-style: italic; font-weight: 900; font-size: 18px; letter-spacing: -.02em;
 }
-[dir='rtl'] .klassArrow { transform: translateY(-50%) scaleX(-1); }
+.klassCardText { font-size: 13px; color: #475569; line-height: 1.55; }
+.klassCardFoot {
+  display: flex; align-items: center; gap: 6px; margin-top: 2px;
+}
+.klassCardLink {
+  font-size: 12px; font-weight: 700; color: var(--ref-color);
+}
+.klassCardArrow { font-size: 14px; color: var(--ref-color); transition: transform .18s; }
+.klassCard:hover .klassCardArrow { transform: translateX(3px); }
+[dir='rtl'] .klassCardArrow { transform: scaleX(-1); }
+[dir='rtl'] .klassCard:hover .klassCardArrow { transform: scaleX(-1) translateX(3px); }
 
 /* ── Modal breit (Rechner) ────────────────────── */
 .modalWide { max-width: 1100px; }
@@ -467,7 +468,6 @@
 @media (max-width: 900px) {
   .grid { grid-template-columns: repeat(2, 1fr); }
   .rechnerGrid { grid-template-columns: 1fr; }
-  .klassGrid { grid-template-columns: repeat(2, 1fr); }
   .glassHeader { padding: 26px 24px 30px; }
   .glassTitle { font-size: 26px; }
   .modalWide { max-width: 100%; }
@@ -485,7 +485,7 @@
   :global(html[data-theme='dark']) .sidebar { border-bottom-color: rgba(148,163,184,0.12); }
   .navBtn { width: auto; white-space: nowrap; }
   .navLabel { display: none; }
-  .klassGrid { grid-template-columns: 1fr; }
+  .klassCardGrid { grid-template-columns: 1fr; }
   .glassHeader { padding: 22px 20px 26px; border-radius: 16px; }
   .glassTitle { font-size: 22px; }
   .glassTop { margin-bottom: 20px; }
@@ -597,16 +597,15 @@
 :global(html[data-theme='dark']) .dot { opacity: .85; }
 
 /* ── Klassifikationen ─────────────────────────── */
-:global(html[data-theme='dark']) .klassItem {
-  background: rgba(255,255,255,0.03);
+:global(html[data-theme='dark']) .klassCard {
+  background: var(--bg-card, #111b2d);
+  border-color: rgba(148,163,184,0.15);
 }
-:global(html[data-theme='dark']) .klassItem:hover {
-  background: color-mix(in srgb, var(--ref-color) 10%, #111b2d);
+:global(html[data-theme='dark']) .klassCard:hover {
+  background: color-mix(in srgb, var(--ref-color) 12%, #111b2d);
   border-color: var(--ref-color);
 }
-:global(html[data-theme='dark']) .klassName   { color: #f8fafc; }
-:global(html[data-theme='dark']) .klassKicker { color: #6b7f9a; }
-:global(html[data-theme='dark']) .klassArrow  { color: #334155; }
+:global(html[data-theme='dark']) .klassCardText { color: #8fa1ba; }
 
 /* ── Rechner-Karten ───────────────────────────── */
 :global(html[data-theme='dark']) .rechnerCard {

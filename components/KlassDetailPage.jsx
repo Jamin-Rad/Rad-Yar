@@ -129,6 +129,24 @@ export default function KlassDetailPage({ topic, item }) {
             </table>
           </div>
 
+          {/* Ausführlich – Stadien im Detail */}
+          {item.detail && (
+            <>
+              <h2 className={styles.subHeading} style={{ marginTop: 32 }}>{copy.ausfuehrlich}</h2>
+              <div className={styles.detailList}>
+                {item.detail.map((d, di) => (
+                  <div key={di} className={styles.detailBlock} style={{ borderColor: color + '33' }}>
+                    <h3 className={styles.detailStage} style={{ color }}>
+                      <span className={styles.detailDot} style={{ background: color }} />
+                      {tx(d.stage, lang)}
+                    </h3>
+                    <p className={styles.detailText}>{tx(d.text, lang)}</p>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+
           {/* Quelle */}
           <p className={styles.ref}>
             <span className={styles.refLabel}>{copy.reference}:</span> {item.ref}

@@ -37,7 +37,9 @@ export const REF_COPY = {
     colWert: 'Normwert',
     colHinweis: 'Hinweis / Grenzwert',
     kompakt: 'Kompakt',
-    voll: 'Vollständig',
+    voll: 'Übersicht',
+    ausfuehrlich: 'Stadien & Einteilung im Detail',
+    openDetail: 'Ausführlich öffnen',
     reference: 'Quelle',
     close: 'Schließen',
     empty: 'Keine Treffer.',
@@ -68,7 +70,9 @@ export const REF_COPY = {
     colWert: 'Normal',
     colHinweis: 'Note / threshold',
     kompakt: 'Compact',
-    voll: 'Full',
+    voll: 'Overview',
+    ausfuehrlich: 'Stages & grading in detail',
+    openDetail: 'Open full version',
     reference: 'Source',
     close: 'Close',
     empty: 'No results.',
@@ -99,7 +103,9 @@ export const REF_COPY = {
     colWert: 'مقدار طبیعی',
     colHinweis: 'نکته / حد آستانه',
     kompakt: 'خلاصه',
-    voll: 'کامل',
+    voll: 'نمای کلی',
+    ausfuehrlich: 'مراحل و درجه‌بندی به‌تفصیل',
+    openDetail: 'مشاهده نسخه کامل',
     reference: 'منبع',
     close: 'بستن',
     empty: 'نتیجه‌ای یافت نشد.',
@@ -445,7 +451,7 @@ export const MESSWERTE = [
 // Jede item: { id, name, kompakt, ref, cols:[…], rows:[[…]] }
 export const KLASSIFIKATIONEN = [
   {
-    id: 'neuro', color: '#7c3aed',
+    id: 'neuro', color: '#7c3aed', iconId: 'neuro',
     name: { de: 'Neuro', en: 'Neuro', fa: 'نورو' },
     items: [
       {
@@ -507,7 +513,7 @@ export const KLASSIFIKATIONEN = [
     ],
   },
   {
-    id: 'thorax', color: '#0ea5e9',
+    id: 'thorax', color: '#0ea5e9', iconId: 'thorax',
     name: { de: 'Thorax / Lunge', en: 'Thorax / Lung', fa: 'توراکس / ریه' },
     items: [
       {
@@ -556,7 +562,7 @@ export const KLASSIFIKATIONEN = [
     ],
   },
   {
-    id: 'abdomen', color: '#f59e0b',
+    id: 'abdomen', color: '#f59e0b', iconId: 'abdomen',
     name: { de: 'Abdomen', en: 'Abdomen', fa: 'شکم' },
     items: [
       {
@@ -624,14 +630,18 @@ export const KLASSIFIKATIONEN = [
     ],
   },
   {
-    id: 'mamma-uro', color: '#ec4899',
+    id: 'mamma-uro', color: '#ec4899', iconId: 'urogenital',
     name: { de: 'Mamma / Urogenital', en: 'Breast / Urogenital', fa: 'پستان / اوروژنیتال' },
     items: [
       {
         id: 'bi-rads',
         name: { de: 'BI-RADS', en: 'BI-RADS', fa: 'BI-RADS' },
-        kompakt: { de: 'Malignitätsrisiko in Mammografie/Sono/MRT, Kat. 0–6, mit Management.', en: 'Malignancy risk in mammography/US/MRI, cat. 0–6, with management.', fa: 'خطر بدخیمی در ماموگرافی/سونو/MRI، دسته ۰–۶.' },
-        ref: 'ACR BI-RADS 2013',
+        kompakt: {
+          de: 'Einheitliche Einstufung von Mammografie, Brust-Ultraschall und Mamma-MRT. Jede Kategorie 0–6 sagt nicht nur, wie verdächtig ein Befund ist, sondern gibt direkt vor, was als Nächstes zu tun ist – von „Routine“ über „Kurzkontrolle in 6 Monaten“ bis „Biopsie“.',
+          en: 'Unified assessment for mammography, breast ultrasound and breast MRI. Each category 0–6 not only states how suspicious a finding is but directly dictates the next step – from “routine” through “6-month short-interval follow-up” to “biopsy”.',
+          fa: 'درجه‌بندی یکپارچه برای ماموگرافی، سونوگرافی و MRI پستان. هر دسته ۰–۶ نه‌تنها میزان شک به بدخیمی را نشان می‌دهد، بلکه اقدام بعدی را نیز مشخص می‌کند – از «روتین» تا «کنترل ۶ ماهه» و «بیوپسی».',
+        },
+        ref: 'ACR BI-RADS® Atlas, 5. Auflage (2013), D’Orsi et al.',
         cols: [{ de: 'Kat.', en: 'Cat.' }, { de: 'Bedeutung', en: 'Meaning' }, { de: 'Management', en: 'Management' }],
         rows: [
           ['0', { de: 'Unvollständig', en: 'Incomplete' }, { de: 'Zusatzdiagnostik', en: 'Additional imaging' }],
@@ -642,12 +652,74 @@ export const KLASSIFIKATIONEN = [
           ['5', { de: 'Hochsuspekt (≥ 95 %)', en: 'Highly suspicious (≥ 95%)' }, { de: 'Biopsie / Therapie', en: 'Biopsy / treatment' }],
           ['6', { de: 'Histologisch gesichertes Karzinom', en: 'Biopsy-proven malignancy' }, { de: 'Therapie', en: 'Treatment' }],
         ],
+        detail: [
+          {
+            stage: { de: 'Kategorie 0 – Unvollständig', en: 'Category 0 – Incomplete', fa: 'دسته ۰ – ناقص' },
+            text: {
+              de: 'Die Bildgebung reicht für eine endgültige Beurteilung nicht aus. Es werden Zusatzaufnahmen (z. B. Spot-Kompression, Vergrößerung, ergänzender Ultraschall) oder Voraufnahmen zum Vergleich benötigt. Es wird noch keine Risikoaussage getroffen.',
+              en: 'Imaging is insufficient for a final assessment. Additional views (e.g. spot compression, magnification, supplementary ultrasound) or prior images for comparison are required. No risk statement is made yet.',
+              fa: 'تصویربرداری برای ارزیابی نهایی کافی نیست. نماهای تکمیلی (مثل فشردگی موضعی، بزرگ‌نمایی، سونوگرافی) یا تصاویر قبلی برای مقایسه لازم است. هنوز اظهارنظر درباره خطر انجام نمی‌شود.',
+            },
+          },
+          {
+            stage: { de: 'Kategorie 1 – Unauffällig', en: 'Category 1 – Negative', fa: 'دسته ۱ – طبیعی' },
+            text: {
+              de: 'Kein pathologischer Befund: symmetrisches Drüsengewebe, keine Herde, keine verdächtigen Mikroverkalkungen, keine Architekturstörung. Malignitätsrisiko praktisch 0 %. Weiter im regulären Screening-Intervall.',
+              en: 'No abnormal finding: symmetric fibroglandular tissue, no masses, no suspicious microcalcifications, no architectural distortion. Malignancy risk practically 0%. Continue routine screening interval.',
+              fa: 'یافته غیرطبیعی وجود ندارد: بافت غده‌ای متقارن، بدون توده، بدون میکروکلسیفیکاسیون مشکوک. خطر بدخیمی عملاً ۰٪. ادامه غربالگری روتین.',
+            },
+          },
+          {
+            stage: { de: 'Kategorie 2 – Sicher benigne', en: 'Category 2 – Benign', fa: 'دسته ۲ – خوش‌خیم' },
+            text: {
+              de: 'Eindeutig gutartiger Befund, der benannt wird – z. B. einfache Zyste, verkalktes Fibroadenom, intramammärer Lymphknoten, Lipom, Ölzyste oder Implantat. 0 % Malignität, kein Handlungsbedarf außer Routine.',
+              en: 'A clearly benign finding that is named – e.g. simple cyst, calcified fibroadenoma, intramammary lymph node, lipoma, oil cyst or implant. 0% malignancy, no action beyond routine.',
+              fa: 'یافته آشکارا خوش‌خیم که نام‌گذاری می‌شود – مثل کیست ساده، فیبروآدنوم کلسیفیه، لنف‌نود داخل پستانی، لیپوم. بدخیمی ۰٪، فقط پیگیری روتین.',
+            },
+          },
+          {
+            stage: { de: 'Kategorie 3 – Wahrscheinlich benigne', en: 'Category 3 – Probably benign', fa: 'دسته ۳ – احتمالاً خوش‌خیم' },
+            text: {
+              de: 'Befund mit sehr geringem Malignitätsrisiko (≤ 2 %), z. B. ein solider, glatt begrenzter ovaler Herd, eine fokale Asymmetrie oder gruppierte runde Mikroverkalkungen. Statt Biopsie eine kurzfristige Verlaufskontrolle nach 6 Monaten, dann über insgesamt 2–3 Jahre. Bleibt der Befund stabil, wird er zu Kategorie 2.',
+              en: 'Finding with very low malignancy risk (≤ 2%), e.g. a solid, circumscribed oval mass, focal asymmetry or grouped round microcalcifications. Instead of biopsy, short-interval follow-up at 6 months, then over a total of 2–3 years. If stable, it is downgraded to category 2.',
+              fa: 'یافته با خطر بدخیمی بسیار پایین (≤ ۲٪)، مثل توده تو‌پر بیضی با حاشیه صاف. به‌جای بیوپسی، کنترل کوتاه‌مدت در ۶ ماه و سپس طی ۲–۳ سال. در صورت ثبات به دسته ۲ تبدیل می‌شود.',
+            },
+          },
+          {
+            stage: { de: 'Kategorie 4 – Suspekt (4A / 4B / 4C)', en: 'Category 4 – Suspicious (4A / 4B / 4C)', fa: 'دسته ۴ – مشکوک (4A/4B/4C)' },
+            text: {
+              de: 'Breites Spektrum mit 2–95 % Malignitätswahrscheinlichkeit – deshalb unterteilt: 4A gering verdächtig (2–10 %), 4B mäßig (10–50 %), 4C hoch (50–95 %). In jedem Fall ist eine histologische Sicherung (Stanz- oder Vakuumbiopsie) erforderlich.',
+              en: 'Broad spectrum with 2–95% probability of malignancy – hence subdivided: 4A low suspicion (2–10%), 4B moderate (10–50%), 4C high (50–95%). In every case histological confirmation (core or vacuum biopsy) is required.',
+              fa: 'طیف گسترده با احتمال بدخیمی ۲–۹۵٪ – به همین دلیل تقسیم می‌شود: 4A کم (۲–۱۰٪)، 4B متوسط (۱۰–۵۰٪)، 4C زیاد (۵۰–۹۵٪). در همه موارد بیوپسی لازم است.',
+            },
+          },
+          {
+            stage: { de: 'Kategorie 5 – Hochsuspekt', en: 'Category 5 – Highly suspicious', fa: 'دسته ۵ – بسیار مشکوک' },
+            text: {
+              de: 'Klassische Malignitätszeichen mit ≥ 95 % Karzinomwahrscheinlichkeit – z. B. spikulierter, irregulärer Herd oder feine pleomorphe, linear/segmental angeordnete Mikroverkalkungen. Biopsie und bereits parallele Therapieplanung.',
+              en: 'Classic malignant features with ≥ 95% probability of cancer – e.g. a spiculated, irregular mass or fine pleomorphic, linear/segmental microcalcifications. Biopsy with treatment planning already in parallel.',
+              fa: 'علائم کلاسیک بدخیمی با احتمال ≥ ۹۵٪ – مثل توده اسپیکوله یا میکروکلسیفیکاسیون پلئومورف خطی. بیوپسی همراه با برنامه‌ریزی درمان.',
+            },
+          },
+          {
+            stage: { de: 'Kategorie 6 – Gesichertes Karzinom', en: 'Category 6 – Proven malignancy', fa: 'دسته ۶ – بدخیمی اثبات‌شده' },
+            text: {
+              de: 'Das Karzinom ist bereits histologisch gesichert. Die Bildgebung dient der Therapieplanung bzw. der Verlaufskontrolle unter neoadjuvanter Behandlung vor der definitiven Operation.',
+              en: 'The cancer is already biopsy-proven. Imaging serves treatment planning or monitoring under neoadjuvant therapy before definitive surgery.',
+              fa: 'سرطان قبلاً با بیوپسی اثبات شده است. تصویربرداری برای برنامه‌ریزی درمان یا پایش طی درمان نئوادجوانت پیش از جراحی نهایی است.',
+            },
+          },
+        ],
       },
       {
         id: 'pi-rads',
         name: { de: 'PI-RADS', en: 'PI-RADS', fa: 'PI-RADS' },
-        kompakt: { de: 'mpMRT der Prostata: Wahrscheinlichkeit eines klinisch signifikanten Karzinoms, 1–5.', en: 'Prostate mpMRI: probability of clinically significant cancer, 1–5.', fa: 'mpMRI پروستات: احتمال سرطان مهم بالینی، ۱–۵.' },
-        ref: 'PI-RADS v2.1, 2019',
+        kompakt: {
+          de: 'Bewertet die multiparametrische Prostata-MRT und schätzt, wie wahrscheinlich ein klinisch signifikantes Karzinom vorliegt – Stufe 1 (sehr unwahrscheinlich) bis 5 (sehr wahrscheinlich). Welche Sequenz den Ausschlag gibt, hängt von der Zone ab: in der peripheren Zone die Diffusion (DWI/ADC), in der Transitionalzone das T2-Bild. Ab PI-RADS 3 wird eine gezielte Biopsie diskutiert.',
+          en: 'Assesses multiparametric prostate MRI and estimates how likely a clinically significant cancer is – level 1 (very unlikely) to 5 (very likely). The dominant sequence depends on the zone: diffusion (DWI/ADC) in the peripheral zone, T2 in the transition zone. From PI-RADS 3 onwards a targeted biopsy is discussed.',
+          fa: 'MRI چندپارامتری پروستات را ارزیابی می‌کند و احتمال سرطان مهم بالینی را تخمین می‌زند – از ۱ (بسیار بعید) تا ۵ (بسیار محتمل). توالی غالب به ناحیه بستگی دارد: در ناحیه محیطی DWI/ADC و در ناحیه انتقالی T2. از PI-RADS ۳ به بالا بیوپسی هدفمند مطرح می‌شود.',
+        },
+        ref: 'PI-RADS v2.1 (2019), Turkbey et al., Eur Urol',
         cols: [{ de: 'Kategorie', en: 'Category' }, { de: 'Bedeutung', en: 'Meaning' }],
         rows: [
           ['1', { de: 'Sehr niedrig', en: 'Very low' }],
@@ -657,12 +729,58 @@ export const KLASSIFIKATIONEN = [
           ['5', { de: 'Sehr hoch', en: 'Very high' }],
           [{ de: 'Dominante Sequenz', en: 'Dominant sequence' }, { de: 'Periphere Zone → DWI · Transitionalzone → T2', en: 'Peripheral zone → DWI · Transition zone → T2' }],
         ],
+        detail: [
+          {
+            stage: { de: 'PI-RADS 1 – Sehr niedrig', en: 'PI-RADS 1 – Very low', fa: 'PI-RADS ۱ – بسیار پایین' },
+            text: {
+              de: 'Ein klinisch signifikantes Karzinom ist höchst unwahrscheinlich. Alle Sequenzen sind unauffällig, es zeigt sich keine fokale Läsion. Keine weitere Abklärung allein aufgrund der MRT.',
+              en: 'A clinically significant cancer is highly unlikely. All sequences are unremarkable, no focal lesion. No further work-up based on MRI alone.',
+              fa: 'سرطان مهم بالینی بسیار بعید است. همه توالی‌ها طبیعی‌اند و ضایعه کانونی دیده نمی‌شود. صرفاً بر اساس MRI نیازی به بررسی بیشتر نیست.',
+            },
+          },
+          {
+            stage: { de: 'PI-RADS 2 – Niedrig', en: 'PI-RADS 2 – Low', fa: 'PI-RADS ۲ – پایین' },
+            text: {
+              de: 'Ein signifikantes Karzinom ist unwahrscheinlich. Typisch sind unscharfe, keilförmige oder diffuse Signalveränderungen ohne klar abgrenzbaren Rundherd (z. B. bei benigner Prostatahyperplasie oder Prostatitis).',
+              en: 'A significant cancer is unlikely. Typical are ill-defined, wedge-shaped or diffuse signal changes without a clearly delineated mass (e.g. benign prostatic hyperplasia or prostatitis).',
+              fa: 'سرطان مهم بعید است. تغییرات سیگنال محو، گوه‌ای یا منتشر بدون توده مشخص (مثلاً در BPH یا پروستاتیت) شایع است.',
+            },
+          },
+          {
+            stage: { de: 'PI-RADS 3 – Intermediär / unklar', en: 'PI-RADS 3 – Intermediate / equivocal', fa: 'PI-RADS ۳ – بینابینی' },
+            text: {
+              de: 'Der Befund ist grenzwertig – ein signifikantes Karzinom ist möglich, aber nicht eindeutig. Hier helfen Zusatzkriterien weiter: PSA-Dichte (≥ 0,15 ng/ml² spricht für Biopsie), DCE-Enhancement in der peripheren Zone (kann auf 4 hochstufen) und der klinische Verlauf.',
+              en: 'The finding is borderline – a significant cancer is possible but not clear-cut. Additional criteria help: PSA density (≥ 0.15 ng/ml² favours biopsy), DCE enhancement in the peripheral zone (may upgrade to 4) and clinical course.',
+              fa: 'یافته مرزی است – سرطان مهم ممکن است اما قطعی نیست. معیارهای کمکی: چگالی PSA (≥ ۰٫۱۵ به نفع بیوپسی)، تقویت DCE در ناحیه محیطی (ممکن است به ۴ ارتقا دهد) و سیر بالینی.',
+            },
+          },
+          {
+            stage: { de: 'PI-RADS 4 – Hoch', en: 'PI-RADS 4 – High', fa: 'PI-RADS ۴ – بالا' },
+            text: {
+              de: 'Ein klinisch signifikantes Karzinom ist wahrscheinlich. Typisch ist eine fokale, klar abgrenzbare Läsion < 1,5 cm mit deutlicher Diffusionsrestriktion (peripher) bzw. eindeutigen Malignitätskriterien im T2 (Transitionalzone). Gezielte (fusionsgestützte) Biopsie.',
+              en: 'A clinically significant cancer is likely. Typically a focal, clearly delineated lesion < 1.5 cm with marked diffusion restriction (peripheral) or clear malignant T2 criteria (transition zone). Targeted (fusion) biopsy.',
+              fa: 'سرطان مهم بالینی محتمل است. معمولاً ضایعه کانونی مشخص < ۱٫۵ سانتی‌متر با محدودیت انتشار بارز (محیطی) یا معیارهای بدخیمی در T2 (ناحیه انتقالی). بیوپسی هدفمند.',
+            },
+          },
+          {
+            stage: { de: 'PI-RADS 5 – Sehr hoch', en: 'PI-RADS 5 – Very high', fa: 'PI-RADS ۵ – بسیار بالا' },
+            text: {
+              de: 'Ein signifikantes Karzinom ist sehr wahrscheinlich. Gleiche Kriterien wie PI-RADS 4, aber Läsion ≥ 1,5 cm oder mit Zeichen der extraprostatischen Ausbreitung. Biopsie und Staging (Lokalstaging, ggf. PSMA-PET).',
+              en: 'A significant cancer is very likely. Same criteria as PI-RADS 4 but lesion ≥ 1.5 cm or with signs of extraprostatic extension. Biopsy and staging (local staging, possibly PSMA-PET).',
+              fa: 'سرطان مهم بسیار محتمل است. معیارهای مشابه PI-RADS ۴ اما ضایعه ≥ ۱٫۵ سانتی‌متر یا با نشانه‌های گسترش خارج پروستات. بیوپسی و استیجینگ (احتمالاً PSMA-PET).',
+            },
+          },
+        ],
       },
       {
         id: 'ti-rads',
         name: { de: 'TI-RADS (ACR)', en: 'TI-RADS (ACR)', fa: 'TI-RADS' },
-        kompakt: { de: 'Punktbasierte Bewertung von Schilddrüsenknoten (Sono); Punkte aus 5 Merkmalen → TR1–TR5.', en: 'Point-based US assessment of thyroid nodules; points from 5 features → TR1–TR5.', fa: 'ارزیابی امتیازی ندول تیروئید (سونو)؛ TR1–TR5.' },
-        ref: 'ACR TI-RADS 2017',
+        kompakt: {
+          de: 'Punktbasiertes Ultraschall-System für Schilddrüsenknoten. Man vergibt Punkte in 5 Kategorien – Zusammensetzung, Echogenität, Form, Rand und echogene Foci – und addiert sie zu TR1–TR5. Aus der Gesamtpunktzahl und der Knotengröße ergibt sich direkt, ob eine Feinnadelpunktion (FNA) oder nur eine Verlaufskontrolle nötig ist.',
+          en: 'A point-based ultrasound system for thyroid nodules. Points are assigned in 5 categories – composition, echogenicity, shape, margin and echogenic foci – and summed to TR1–TR5. The total points plus nodule size directly determine whether fine-needle aspiration (FNA) or only follow-up is needed.',
+          fa: 'سیستم امتیازی سونوگرافی برای ندول‌های تیروئید. در ۵ دسته امتیاز داده می‌شود – ترکیب، اکوژنیسیته، شکل، حاشیه و کانون‌های اکوژنیک – و جمع آن‌ها TR1–TR5 را می‌سازد. مجموع امتیاز به‌همراه اندازه ندول مشخص می‌کند که FNA لازم است یا فقط پیگیری.',
+        },
+        ref: 'ACR TI-RADS (2017), Tessler et al., J Am Coll Radiol',
         cols: [{ de: 'Kategorie (Punkte)', en: 'Category (points)' }, { de: 'Risiko', en: 'Risk' }, { de: 'FNA', en: 'FNA' }],
         rows: [
           ['TR1 (0)', { de: 'Benigne', en: 'Benign' }, { de: 'Keine', en: 'None' }],
@@ -671,11 +789,61 @@ export const KLASSIFIKATIONEN = [
           ['TR4 (4–6)', { de: 'Moderat suspekt', en: 'Moderately suspicious' }, { de: 'FNA ≥ 1,5 cm · Verlauf ≥ 1 cm', en: 'FNA ≥ 1.5 cm · follow ≥ 1 cm' }],
           ['TR5 (≥ 7)', { de: 'Hochsuspekt', en: 'Highly suspicious' }, { de: 'FNA ≥ 1 cm · Verlauf ≥ 0,5 cm', en: 'FNA ≥ 1 cm · follow ≥ 0.5 cm' }],
         ],
+        detail: [
+          {
+            stage: { de: 'So wird gepunktet (5 Kategorien)', en: 'How points are assigned (5 categories)', fa: 'نحوه امتیازدهی (۵ دسته)' },
+            text: {
+              de: 'Zusammensetzung: zystisch/schwammartig 0, gemischt zystisch-solide 1, solide 2. Echogenität: anechogen 0, hyper-/isoechogen 1, hypoechogen 2, sehr echoarm 3. Form: breiter als hoch 0, höher als breit 3. Rand: glatt/unklar 0, lobuliert/irregulär 2, extrathyreoidale Ausbreitung 3. Echogene Foci: keine/Komet­schweif 0, Makroverkalkung 1, randständige Verkalkung 2, Punkt-Echogenitäten (Mikrokalk) 3. Alle Punkte werden addiert.',
+              en: 'Composition: cystic/spongiform 0, mixed 1, solid 2. Echogenicity: anechoic 0, hyper-/isoechoic 1, hypoechoic 2, very hypoechoic 3. Shape: wider-than-tall 0, taller-than-wide 3. Margin: smooth/ill-defined 0, lobulated/irregular 2, extrathyroidal extension 3. Echogenic foci: none/comet-tail 0, macrocalcification 1, rim calcification 2, punctate echogenic foci (microcalc) 3. All points are summed.',
+              fa: 'ترکیب: کیستیک/اسفنجی ۰، مختلط ۱، توپر ۲. اکوژنیسیته: آن‌اکوئیک ۰، هایپر/ایزو ۱، هایپو ۲، بسیار هایپو ۳. شکل: پهن‌تر از بلند ۰، بلندتر از پهن ۳. حاشیه: صاف/نامشخص ۰، لوبوله/نامنظم ۲، گسترش خارج تیروئید ۳. کانون اکوژنیک: هیچ/دم‌ستاره‌ای ۰، ماکروکلسیفیکاسیون ۱، حاشیه‌ای ۲، نقطه‌ای (میکروکلسیفیکاسیون) ۳. همه امتیازها جمع می‌شوند.',
+            },
+          },
+          {
+            stage: { de: 'TR1 (0 Punkte) – Benigne', en: 'TR1 (0 points) – Benign', fa: 'TR1 (۰ امتیاز) – خوش‌خیم' },
+            text: {
+              de: 'Gutartig, z. B. rein zystischer oder schwammartiger (spongiformer) Knoten. Keine Feinnadelpunktion, keine spezielle Verlaufskontrolle nötig.',
+              en: 'Benign, e.g. purely cystic or spongiform nodule. No FNA and no special follow-up required.',
+              fa: 'خوش‌خیم، مثل ندول کاملاً کیستیک یا اسفنجی. نه FNA و نه پیگیری ویژه لازم است.',
+            },
+          },
+          {
+            stage: { de: 'TR2 (2 Punkte) – Nicht suspekt', en: 'TR2 (2 points) – Not suspicious', fa: 'TR2 (۲ امتیاز) – غیرمشکوک' },
+            text: {
+              de: 'Nicht verdächtig. Keine Feinnadelpunktion und keine routinemäßige Verlaufskontrolle empfohlen.',
+              en: 'Not suspicious. No FNA and no routine follow-up recommended.',
+              fa: 'غیرمشکوک. نه FNA و نه پیگیری روتین توصیه می‌شود.',
+            },
+          },
+          {
+            stage: { de: 'TR3 (3 Punkte) – Mild suspekt', en: 'TR3 (3 points) – Mildly suspicious', fa: 'TR3 (۳ امتیاز) – کمی مشکوک' },
+            text: {
+              de: 'Gering verdächtig. Feinnadelpunktion erst ab einem Durchmesser ≥ 2,5 cm; Verlaufskontrolle ab ≥ 1,5 cm.',
+              en: 'Mildly suspicious. FNA only from a diameter ≥ 2.5 cm; follow-up from ≥ 1.5 cm.',
+              fa: 'کمی مشکوک. FNA فقط از قطر ≥ ۲٫۵ سانتی‌متر؛ پیگیری از ≥ ۱٫۵ سانتی‌متر.',
+            },
+          },
+          {
+            stage: { de: 'TR4 (4–6 Punkte) – Moderat suspekt', en: 'TR4 (4–6 points) – Moderately suspicious', fa: 'TR4 (۴–۶ امتیاز) – نسبتاً مشکوک' },
+            text: {
+              de: 'Mäßig verdächtig. Feinnadelpunktion ab ≥ 1,5 cm; Verlaufskontrolle ab ≥ 1 cm.',
+              en: 'Moderately suspicious. FNA from ≥ 1.5 cm; follow-up from ≥ 1 cm.',
+              fa: 'نسبتاً مشکوک. FNA از ≥ ۱٫۵ سانتی‌متر؛ پیگیری از ≥ ۱ سانتی‌متر.',
+            },
+          },
+          {
+            stage: { de: 'TR5 (≥ 7 Punkte) – Hochsuspekt', en: 'TR5 (≥ 7 points) – Highly suspicious', fa: 'TR5 (≥ ۷ امتیاز) – بسیار مشکوک' },
+            text: {
+              de: 'Hochgradig verdächtig (Malignitätsrisiko > 20 %). Feinnadelpunktion bereits ab ≥ 1 cm; Verlaufskontrolle ab ≥ 0,5 cm.',
+              en: 'Highly suspicious (malignancy risk > 20%). FNA already from ≥ 1 cm; follow-up from ≥ 0.5 cm.',
+              fa: 'بسیار مشکوک (خطر بدخیمی > ۲۰٪). FNA از ≥ ۱ سانتی‌متر؛ پیگیری از ≥ ۰٫۵ سانتی‌متر.',
+            },
+          },
+        ],
       },
     ],
   },
   {
-    id: 'msk', color: '#f97316',
+    id: 'msk', color: '#f97316', iconId: 'msk',
     name: { de: 'MSK', en: 'MSK', fa: 'اسکلتی-عضلانی' },
     items: [
       {
@@ -747,7 +915,7 @@ export const KLASSIFIKATIONEN = [
     ],
   },
   {
-    id: 'onko', color: '#475569',
+    id: 'onko', color: '#475569', iconId: 'hu-werte',
     name: { de: 'Onko / Allgemein', en: 'Onco / General', fa: 'انکولوژی / عمومی' },
     items: [
       {

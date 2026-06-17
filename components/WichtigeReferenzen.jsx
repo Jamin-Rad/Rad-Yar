@@ -144,34 +144,47 @@ function MesswerteModal({ copy, lang, onClose }) {
   )
 }
 
-/* ── Klassifikationen-Modal ───────────────────── */
+/* ── Klassifikationen-Modal (Split wie Messwerte) ─ */
 function KlassifikationenModal({ copy, lang, onClose }) {
   const router = useRouter()
   const topics = REF_DATA.klassifikationen
-  const go = (topicId, itemId) => {
+  const [topicId, setTopicId] = useState(topics[0].id)
+  const topic = topics.find(t => t.id === topicId) || topics[0]
+  const go = (tId, itemId) => {
     onClose()
-    router.push(`/referenzen/${topicId}/${itemId}${lang!=='de'?`?lang=${lang}`:''}`)
+    router.push(`/referenzen/${tId}/${itemId}${lang!=='de'?`?lang=${lang}`:''}`)
   }
   return (
-    <Modal title={copy.btnKlass} copy={copy} onClose={onClose} accentClass={styles.headOrange}>
-      <div className={styles.klassGrid}>
-        {topics.map(topic=>(
-          <div key={topic.id} className={styles.klassGroup}>
-            <div className={styles.klassGroupTitle} style={{'--ref-color':topic.color,color:topic.color}}>
-              <span className={styles.dot} style={{background:topic.color}}/>
-              {tx(topic.name,lang)}
-            </div>
-            <div className={styles.klassList}>
-              {topic.items.map(item=>(
-                <button key={item.id} className={styles.klassItem} style={{'--ref-color':topic.color}} onClick={()=>go(topic.id,item.id)}>
-                  <span className={styles.klassName}>{tx(item.name,lang)}</span>
-                  <span className={styles.klassKicker}>{tx(item.kompakt,lang).slice(0,60)}…</span>
-                  <span className={styles.klassArrow}>→</span>
-                </button>
-              ))}
-            </div>
+    <Modal title={copy.btnKlass} copy={copy} onClose={onClose} accentClass={styles.headOrange} wide>
+      <div className={styles.split}>
+        <nav className={styles.sidebar}>
+          {topics.map(t => (
+            <button key={t.id}
+              className={`${styles.navBtn} ${t.id===topicId?styles.navActiveOrange:''}`}
+              style={{'--ref-color':t.color}} onClick={()=>setTopicId(t.id)}>
+              <span className={styles.navIconWrap} style={{color:t.color}}><RegionIcon id={t.iconId||t.id} size={16}/></span>
+              <span className={styles.navLabel}>{tx(t.name,lang)}</span>
+            </button>
+          ))}
+        </nav>
+        <div className={styles.content} style={{'--ref-color':topic.color}}>
+          <h2 className={styles.regionHeading}>
+            <span className={styles.regionHeadingIcon} style={{color:topic.color}}><RegionIcon id={topic.iconId||topic.id} size={22}/></span>
+            <span style={{color:topic.color}}>{tx(topic.name,lang)}</span>
+          </h2>
+          <div className={styles.klassCardGrid}>
+            {topic.items.map(item=>(
+              <button key={item.id} className={styles.klassCard} style={{'--ref-color':topic.color}} onClick={()=>go(topic.id,item.id)}>
+                <span className={styles.klassCardName} style={{color:topic.color}}>{tx(item.name,lang)}</span>
+                <span className={styles.klassCardText}>{tx(item.kompakt,lang)}</span>
+                <span className={styles.klassCardFoot}>
+                  <span className={styles.klassCardLink}>{copy.openDetail}</span>
+                  <span className={styles.klassCardArrow}>→</span>
+                </span>
+              </button>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </Modal>
   )
@@ -200,10 +213,16 @@ const RECHNER_GROUPS = [
     calcIds: ['prostata-psa'],
   },
   {
-    id: 'onko-ws',
-    name: { de: 'Onko & Wirbelsäule', en: 'Onco & Spine', fa: 'انکولوژی و ستون فقرات' },
-    color: '#0d9488', iconId: 'wirbelsaeule',
-    calcIds: ['recist', 'meyerding'],
+    id: 'onko',
+    name: { de: 'Onkologie', en: 'Oncology', fa: 'انکولوژی' },
+    color: '#0d9488', iconId: 'hu-werte',
+    calcIds: ['recist'],
+  },
+  {
+    id: 'wirbelsaeule',
+    name: { de: 'Wirbelsäule', en: 'Spine', fa: 'ستون فقرات' },
+    color: '#f97316', iconId: 'wirbelsaeule',
+    calcIds: ['meyerding'],
   },
 ]
 
