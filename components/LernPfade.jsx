@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { CURRICULUM, getFachTitle, t } from '@/data/curriculum'
-import { ChapterIcon } from '@/components/ChapterIcons'
+import ReferenceSpotlight from '@/components/ReferenceSpotlight'
 import styles from './LernPfade.module.css'
 
 const COLORS = [
@@ -41,38 +41,20 @@ const FALL_REGIONS = [
   { id: 'technik', color: '#64748b', name: { de: 'Technik & Physik', en: 'Physics & Tech', fa: 'تکنیک و فیزیک' } },
 ]
 
-const LATEST_COPY = {
+const FALL_LINK_COPY = {
   de: {
-    label: 'Neu auf RadYar',
-    title: 'Zuletzt hinzugefügt',
-    desc: 'Zeigt nur neu hinzugefügte Lernkapitel.',
     open: 'Öffnen →',
     learn: 'Lernen',
-    mcq: 'MCQ',
-    flashcards: 'Flashcards',
-    cases: 'Fallprüfung',
     noCases: 'Noch keine Fallprüfung verknüpft.',
   },
   en: {
-    label: 'New on RadYar',
-    title: 'Recently added',
-    desc: 'Shows only newly added learning chapters.',
     open: 'Open →',
     learn: 'Learn',
-    mcq: 'MCQ',
-    flashcards: 'Flashcards',
-    cases: 'Case Exam',
     noCases: 'No case exam links yet.',
   },
   fa: {
-    label: 'تازه در RadYar',
-    title: 'آخرین موارد اضافه‌شده',
-    desc: 'فقط فصل‌های آموزشی تازه اضافه‌شده را نشان می‌دهد.',
     open: 'باز کردن ←',
     learn: 'آموزش',
-    mcq: 'MCQ',
-    flashcards: 'فلش‌کارت',
-    cases: 'آزمون بالینی',
     noCases: 'هنوز لینک آزمون بالینی وجود ندارد.',
   },
 }
@@ -101,26 +83,6 @@ function collectReadyTopics() {
   })
 }
 
-function buildLatestItems(lang, copy) {
-  return collectReadyTopics()
-    .filter(({ topic }) => topic?.ready && topic?.link)
-    .slice(0, 6)
-    .map(({ topic, area, chapter }) => {
-      const title = localizeTitle(topic, lang)
-      const chapterTitle = localizeTitle(chapter, lang) || chapter?.title || ''
-      const areaTitle = getFachTitle(area, lang) || area?.id || ''
-      const metaBase = [areaTitle, chapterTitle].filter(Boolean).join(' · ')
-
-      return {
-        areaId: area?.id,
-        chapter,
-        title,
-        meta: `${metaBase} · ${copy.learn}`,
-        href: topic.link,
-      }
-    })
-}
-
 function buildFallTopicItems(lang) {
   return collectReadyTopics()
     .filter(({ topic }) => topic.fallLink || topic.link)
@@ -139,8 +101,7 @@ export default function LernPfade() {
   const router = useRouter()
   const [modal, setModal] = useState(null) // null | 'fall'
   const fm = FALL_MODAL[lang] || FALL_MODAL.de
-  const latest = LATEST_COPY[lang] || LATEST_COPY.de
-  const latestItems = buildLatestItems(lang, latest)
+  const fallCopy = FALL_LINK_COPY[lang] || FALL_LINK_COPY.de
   const fallTopicItems = buildFallTopicItems(lang)
   const withLang = (href) => {
     if (lang === 'de') return href
@@ -185,29 +146,7 @@ export default function LernPfade() {
         })}
       </div>
 
-      <div className={styles.latestBox}>
-        <div className={styles.latestHeader}>
-          <div>
-            <div className={styles.latestLabel}>✨ {latest.label}</div>
-            <h3 className={styles.latestTitle}>{latest.title}</h3>
-            <p className={styles.latestDesc}>{latest.desc}</p>
-          </div>
-        </div>
-        <div className={styles.latestGrid}>
-          {latestItems.map(item => (
-            <Link key={item.href} href={withLang(item.href)} className={styles.latestCard}>
-              <span className={styles.latestIcon}>
-                <ChapterIcon fachId={item.areaId} kapitel={item.chapter} className={styles.latestIconSvg} />
-              </span>
-              <span className={styles.latestText}>
-                <strong>{item.title}</strong>
-                <small>{item.meta}</small>
-              </span>
-              <span className={styles.latestArrow}>{latest.open}</span>
-            </Link>
-          ))}
-        </div>
-      </div>
+      <ReferenceSpotlight />
 
       {/* ── FALLBEISPIELE MODAL ── */}
       {modal === 'fall' && (
@@ -225,12 +164,12 @@ export default function LernPfade() {
                       <strong>{item.title}</strong>
                       <small>{item.meta} · {fm.title}</small>
                     </span>
-                    <em>{latest.open}</em>
+                    <em>{fallCopy.open}</em>
                   </Link>
                 ))}
               </div>
             ) : (
-              <div className={styles.emptyFallTopics}>{latest.noCases}</div>
+              <div className={styles.emptyFallTopics}>{fallCopy.noCases}</div>
             )}
 
             <div className={styles.fallRegionGrid}>
