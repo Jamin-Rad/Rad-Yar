@@ -1,125 +1,145 @@
 // ──────────────────────────────────────────────────────────────
-// Wichtige Referenzen – Größen/Messwerte & Klassifikationen
-// Orientierungswerte für den radiologischen Alltag.
-// Struktur:
-//   REF_DATA[tab] = [ { id, name:{de,en,fa}, color, entries:[ {s,v,h} ] } ]
-//     s = Struktur/Name   (mehrsprachig {de,en,fa})
-//     v = Wert/Stufen     (sprachneutraler String, z. B. "< 3 cm")
-//     h = Hinweis/Bedeutung (mehrsprachig {de,en,fa})
+// Wichtige Referenzen
+//   • Messwerte:        Bereich → Tabelle (Struktur · Normwert · Hinweis)
+//   • Klassifikationen: Thema → Klassifikation → Kompakt + Vollständig + Quelle
+// Sprach-Fallback: tx(field, lang) → field[lang] ?? field.de ?? field.en
+// Tabellenzellen dürfen String (sprachneutral, z. B. "TR1") ODER {de,en,fa} sein.
 // ──────────────────────────────────────────────────────────────
+
+export function tx(field, lang) {
+  if (field == null) return ''
+  if (typeof field === 'string') return field
+  return field[lang] ?? field.de ?? field.en ?? ''
+}
 
 export const REF_COPY = {
   de: {
     label: '📌 Schnell nachschlagen',
     title: 'Wichtige Referenzen',
     sub: 'Normwerte, Größenkriterien und Klassifikationen – kompakt zum Nachschlagen.',
-    tabs: { messwerte: 'Größen & Messwerte', klassifikationen: 'Klassifikationen' },
-    search: 'Suchen … (z. B. Aorta, BI-RADS, Milz)',
+    btnMesswerte: 'Größen & Messwerte',
+    btnMesswerteSub: 'Normwerte & Grenzwerte nach Körperregion',
+    btnKlass: 'Klassifikationen',
+    btnKlassSub: 'Scores & Einteilungen – kompakt und vollständig',
+    chooseRegion: 'Bereich wählen',
+    chooseTopic: 'Thema wählen',
+    chooseClass: 'Klassifikation wählen',
+    search: 'Suchen …',
     colStruktur: 'Struktur',
     colWert: 'Normwert',
     colHinweis: 'Hinweis / Grenzwert',
-    colStufen: 'Stufen',
-    colBedeutung: 'Bedeutung',
-    chooseRegion: 'Bereich wählen',
+    kompakt: 'Kompakt',
+    voll: 'Vollständig',
+    reference: 'Quelle',
+    close: 'Schließen',
     empty: 'Keine Treffer.',
+    pickHint: 'Wähle links eine Klassifikation.',
     disclaimer: 'Orientierungswerte – stets im klinischen Kontext und nach lokalem Standard prüfen.',
-    results: 'Treffer',
   },
   en: {
     label: '📌 Quick reference',
     title: 'Key References',
     sub: 'Normal values, size criteria and classifications – compact and quick to look up.',
-    tabs: { messwerte: 'Sizes & Measurements', klassifikationen: 'Classifications' },
-    search: 'Search … (e.g. aorta, BI-RADS, spleen)',
+    btnMesswerte: 'Sizes & Measurements',
+    btnMesswerteSub: 'Normal & threshold values by body region',
+    btnKlass: 'Classifications',
+    btnKlassSub: 'Scores & grading – compact and full',
+    chooseRegion: 'Choose area',
+    chooseTopic: 'Choose topic',
+    chooseClass: 'Choose classification',
+    search: 'Search …',
     colStruktur: 'Structure',
     colWert: 'Normal',
     colHinweis: 'Note / threshold',
-    colStufen: 'Grades',
-    colBedeutung: 'Meaning',
-    chooseRegion: 'Choose area',
+    kompakt: 'Compact',
+    voll: 'Full',
+    reference: 'Source',
+    close: 'Close',
     empty: 'No results.',
+    pickHint: 'Select a classification on the left.',
     disclaimer: 'Orientation values – always verify in clinical context and per local standard.',
-    results: 'results',
   },
   fa: {
     label: '📌 مرجع سریع',
     title: 'مراجع مهم',
     sub: 'مقادیر طبیعی، معیارهای اندازه و طبقه‌بندی‌ها – فشرده و سریع برای مرور.',
-    tabs: { messwerte: 'اندازه‌ها و مقادیر', klassifikationen: 'طبقه‌بندی‌ها' },
-    search: 'جستجو … (مثلاً آئورت، BI-RADS، طحال)',
+    btnMesswerte: 'اندازه‌ها و مقادیر',
+    btnMesswerteSub: 'مقادیر طبیعی و آستانه بر اساس ناحیه بدن',
+    btnKlass: 'طبقه‌بندی‌ها',
+    btnKlassSub: 'اسکورها و درجه‌بندی – خلاصه و کامل',
+    chooseRegion: 'انتخاب بخش',
+    chooseTopic: 'انتخاب موضوع',
+    chooseClass: 'انتخاب طبقه‌بندی',
+    search: 'جستجو …',
     colStruktur: 'ساختار',
     colWert: 'مقدار طبیعی',
     colHinweis: 'نکته / حد آستانه',
-    colStufen: 'درجات',
-    colBedeutung: 'معنا',
-    chooseRegion: 'انتخاب بخش',
+    kompakt: 'خلاصه',
+    voll: 'کامل',
+    reference: 'منبع',
+    close: 'بستن',
     empty: 'نتیجه‌ای یافت نشد.',
+    pickHint: 'از سمت راست یک طبقه‌بندی انتخاب کنید.',
     disclaimer: 'مقادیر تقریبی – همیشه در بافت بالینی و طبق استاندارد محلی بررسی شود.',
-    results: 'نتیجه',
   },
 }
 
-// ── Tab 1: Größen & Messwerte ────────────────────────────────
-const MESSWERTE = [
+// ── Messwerte ────────────────────────────────────────────────
+export const MESSWERTE = [
   {
-    id: 'neuro',
-    color: '#7c3aed',
+    id: 'neuro', color: '#7c3aed',
     name: { de: 'Neuro / Kopf-Hals', en: 'Neuro / Head & Neck', fa: 'نورو / سر و گردن' },
     entries: [
       { s: { de: '3. Ventrikel', en: '3rd ventricle', fa: 'بطن سوم' }, v: '< 10 mm', h: { de: 'Erweitert bei Hydrozephalus', en: 'Dilated in hydrocephalus', fa: 'گشاد در هیدروسفالی' } },
-      { s: { de: 'Evans-Index', en: 'Evans index', fa: 'شاخص ایوانز' }, v: '< 0,30', h: { de: 'Frontalhorn-Breite / max. Schädelbreite', en: 'Frontal horn / max. skull width', fa: 'شاخ فرونتال / حداکثر عرض جمجمه' } },
+      { s: { de: 'Evans-Index', en: 'Evans index', fa: 'شاخص ایوانز' }, v: '< 0,30', h: { de: 'Frontalhorn / max. Schädelbreite', en: 'Frontal horn / max. skull width', fa: 'شاخ فرونتال / حداکثر عرض جمجمه' } },
       { s: { de: 'Hypophyse (Höhe)', en: 'Pituitary (height)', fa: 'هیپوفیز (ارتفاع)' }, v: '≤ 9 mm', h: { de: 'Bis 12 mm in der Schwangerschaft', en: 'Up to 12 mm in pregnancy', fa: 'تا ۱۲ میلی‌متر در بارداری' } },
-      { s: { de: 'Optikusscheide (ONSD)', en: 'Optic nerve sheath (ONSD)', fa: 'غلاف عصب بینایی' }, v: '< 5,7 mm', h: { de: 'Erhöht bei intrakraniellem Druck ↑', en: 'Raised with intracranial pressure ↑', fa: 'افزایش در فشار داخل جمجمه‌ای' } },
+      { s: { de: 'Optikusscheide (ONSD)', en: 'Optic nerve sheath', fa: 'غلاف عصب بینایی' }, v: '< 5,7 mm', h: { de: 'Erhöht bei Hirndruck ↑', en: 'Raised with raised ICP', fa: 'افزایش در فشار داخل جمجمه' } },
       { s: { de: 'Schilddrüsenlappen (Tiefe)', en: 'Thyroid lobe (depth)', fa: 'لوب تیروئید (عمق)' }, v: '< 2 cm', h: { de: 'a-p Durchmesser je Lappen', en: 'AP diameter per lobe', fa: 'قطر قدامی-خلفی هر لوب' } },
-      { s: { de: 'Halslymphknoten (kurze Achse)', en: 'Cervical node (short axis)', fa: 'گره لنفاوی گردن (محور کوتاه)' }, v: '< 10 mm', h: { de: 'Jugulodigastrisch bis 11 mm', en: 'Jugulodigastric up to 11 mm', fa: 'ژوگولودیگاستریک تا ۱۱ میلی‌متر' } },
+      { s: { de: 'Halslymphknoten (kurze Achse)', en: 'Cervical node (short axis)', fa: 'گره لنفاوی گردن' }, v: '< 10 mm', h: { de: 'Jugulodigastrisch bis 11 mm', en: 'Jugulodigastric up to 11 mm', fa: 'ژوگولودیگاستریک تا ۱۱ میلی‌متر' } },
     ],
   },
   {
-    id: 'thorax',
-    color: '#0ea5e9',
+    id: 'thorax', color: '#0ea5e9',
     name: { de: 'Thorax', en: 'Thorax', fa: 'توراکس' },
     entries: [
-      { s: { de: 'Aorta ascendens', en: 'Ascending aorta', fa: 'آئورت صعودی' }, v: '< 4,0 cm', h: { de: 'OP-Indikation ab ≥ 5,5 cm', en: 'Surgery from ≥ 5.5 cm', fa: 'اندیکاسیون جراحی از ۵٫۵ سانتی‌متر' } },
+      { s: { de: 'Aorta ascendens', en: 'Ascending aorta', fa: 'آئورت صعودی' }, v: '< 4,0 cm', h: { de: 'OP-Indikation ab ≥ 5,5 cm', en: 'Surgery from ≥ 5.5 cm', fa: 'جراحی از ۵٫۵ سانتی‌متر' } },
       { s: { de: 'Aorta descendens', en: 'Descending aorta', fa: 'آئورت نزولی' }, v: '< 3,0 cm', h: { de: 'Aneurysma ab ≥ 4 cm', en: 'Aneurysm from ≥ 4 cm', fa: 'آنوریسم از ۴ سانتی‌متر' } },
       { s: { de: 'Truncus pulmonalis', en: 'Pulmonary trunk', fa: 'تنه ریوی' }, v: '< 2,9 cm', h: { de: 'PH wahrscheinlich, wenn > Aorta asc.', en: 'PH likely if > ascending aorta', fa: 'احتمال PH اگر > آئورت صعودی' } },
       { s: { de: 'Trachea (quer)', en: 'Trachea (transverse)', fa: 'نای (عرضی)' }, v: '♂ ≤ 25 / ♀ ≤ 21 mm', h: { de: 'Tracheomegalie darüber', en: 'Tracheomegaly above', fa: 'تراکئومگالی بالاتر' } },
-      { s: { de: 'Herz-Thorax-Quotient (Rö)', en: 'Cardiothoracic ratio (CXR)', fa: 'نسبت قلبی-قفسه‌ای' }, v: '< 0,5', h: { de: 'Nur im p.a.-Stehen verwertbar', en: 'Valid only on erect PA film', fa: 'فقط در نمای PA ایستاده معتبر' } },
+      { s: { de: 'Herz-Thorax-Quotient (Rö)', en: 'Cardiothoracic ratio (CXR)', fa: 'نسبت قلبی-قفسه‌ای' }, v: '< 0,5', h: { de: 'Nur im p.a.-Stehen verwertbar', en: 'Valid only on erect PA film', fa: 'فقط در نمای PA ایستاده' } },
       { s: { de: 'Lungenrundherd – Kontrolle', en: 'Pulmonary nodule – follow-up', fa: 'ندول ریوی – پیگیری' }, v: 'solide ≥ 8 mm', h: { de: 'Verlauf nach Fleischner-Kriterien', en: 'Follow Fleischner criteria', fa: 'طبق معیار فلایشنر' } },
     ],
   },
   {
-    id: 'abdomen',
-    color: '#f59e0b',
+    id: 'abdomen', color: '#f59e0b',
     name: { de: 'Abdomen', en: 'Abdomen', fa: 'شکم' },
     entries: [
-      { s: { de: 'Aorta abdominalis', en: 'Abdominal aorta', fa: 'آئورت شکمی' }, v: '< 3,0 cm', h: { de: 'Aneurysma ab ≥ 3,0 cm; OP ≥ 5,5 cm', en: 'Aneurysm ≥ 3.0 cm; surgery ≥ 5.5 cm', fa: 'آنوریسم از ۳ سانتی‌متر؛ جراحی از ۵٫۵' } },
+      { s: { de: 'Aorta abdominalis', en: 'Abdominal aorta', fa: 'آئورت شکمی' }, v: '< 3,0 cm', h: { de: 'Aneurysma ab ≥ 3,0 cm; OP ≥ 5,5 cm', en: 'Aneurysm ≥ 3.0 cm; surgery ≥ 5.5 cm', fa: 'آنوریسم از ۳؛ جراحی از ۵٫۵' } },
       { s: { de: 'Leber (MCL, kraniokaudal)', en: 'Liver (MCL, craniocaudal)', fa: 'کبد (طولی)' }, v: '≤ 15,5 cm', h: { de: 'Hepatomegalie darüber', en: 'Hepatomegaly above', fa: 'هپاتومگالی بالاتر' } },
-      { s: { de: 'Milz (Länge)', en: 'Spleen (length)', fa: 'طحال (طول)' }, v: '≤ 12 cm', h: { de: 'Splenomegalie > 13 cm', en: 'Splenomegaly > 13 cm', fa: 'اسپلنومگالی > ۱۳ سانتی‌متر' } },
-      { s: { de: 'Ductus choledochus (DHC)', en: 'Common bile duct', fa: 'مجرای صفراوی مشترک' }, v: '≤ 6 mm', h: { de: '+1 mm/Dekade > 60 J.; nach CHE bis 10 mm', en: '+1 mm/decade > 60 y; up to 10 mm post-chole', fa: '+۱ میلی‌متر در هر دهه > ۶۰ سال' } },
+      { s: { de: 'Milz (Länge)', en: 'Spleen (length)', fa: 'طحال (طول)' }, v: '≤ 12 cm', h: { de: 'Splenomegalie > 13 cm', en: 'Splenomegaly > 13 cm', fa: 'اسپلنومگالی > ۱۳' } },
+      { s: { de: 'Ductus choledochus (DHC)', en: 'Common bile duct', fa: 'مجرای صفراوی مشترک' }, v: '≤ 6 mm', h: { de: '+1 mm/Dekade > 60 J.; nach CHE bis 10 mm', en: '+1 mm/decade > 60 y; up to 10 mm post-chole', fa: '+۱ میلی‌متر هر دهه > ۶۰ سال' } },
       { s: { de: 'Ductus pancreaticus', en: 'Pancreatic duct', fa: 'مجرای پانکراس' }, v: '≤ 3 mm', h: { de: 'Im Korpus gemessen', en: 'Measured in body', fa: 'اندازه‌گیری در تنه' } },
       { s: { de: 'Pfortader', en: 'Portal vein', fa: 'ورید پورت' }, v: '≤ 13 mm', h: { de: 'Erweitert bei portaler Hypertension', en: 'Dilated in portal hypertension', fa: 'گشاد در هایپرتانسیون پورت' } },
-      { s: { de: 'Appendix', en: 'Appendix', fa: 'آپاندیس' }, v: '≤ 6 mm', h: { de: 'Appendizitis ab > 6 mm + Wandverdickung', en: 'Appendicitis > 6 mm + wall thickening', fa: 'آپاندیسیت > ۶ میلی‌متر + ضخامت دیواره' } },
+      { s: { de: 'Appendix', en: 'Appendix', fa: 'آپاندیس' }, v: '≤ 6 mm', h: { de: 'Appendizitis ab > 6 mm + Wandverdickung', en: 'Appendicitis > 6 mm + wall thickening', fa: 'آپاندیسیت > ۶ + ضخامت دیواره' } },
     ],
   },
   {
-    id: 'urogenital',
-    color: '#e11d48',
+    id: 'urogenital', color: '#e11d48',
     name: { de: 'Urogenital / Becken', en: 'Urogenital / Pelvis', fa: 'اوروژنیتال / لگن' },
     entries: [
-      { s: { de: 'Niere (Länge)', en: 'Kidney (length)', fa: 'کلیه (طول)' }, v: '9–12 cm', h: { de: 'Seitendifferenz < 1,5 cm', en: 'Side difference < 1.5 cm', fa: 'اختلاف دو طرف < ۱٫۵ سانتی‌متر' } },
+      { s: { de: 'Niere (Länge)', en: 'Kidney (length)', fa: 'کلیه (طول)' }, v: '9–12 cm', h: { de: 'Seitendifferenz < 1,5 cm', en: 'Side difference < 1.5 cm', fa: 'اختلاف دو طرف < ۱٫۵' } },
       { s: { de: 'Nebenniere (Schenkel)', en: 'Adrenal limb', fa: 'بازوی آدرنال' }, v: '< 10 mm', h: { de: 'Dicke einzelner Schenkel', en: 'Thickness of single limb', fa: 'ضخامت هر بازو' } },
       { s: { de: 'Prostata (Volumen)', en: 'Prostate (volume)', fa: 'پروستات (حجم)' }, v: '< 30 ml', h: { de: 'Vergrößerung bei BPH', en: 'Enlarged in BPH', fa: 'بزرگ در BPH' } },
-      { s: { de: 'Endometrium (postmenopausal)', en: 'Endometrium (postmenopausal)', fa: 'آندومتر (یائسگی)' }, v: '< 5 mm', h: { de: 'Abklärung bei Blutung ab > 4–5 mm', en: 'Work-up if bleeding > 4–5 mm', fa: 'بررسی در خونریزی > ۴–۵ میلی‌متر' } },
-      { s: { de: 'Ovar (prämenopausal, Vol.)', en: 'Ovary (premenopausal, vol.)', fa: 'تخمدان (پیش از یائسگی)' }, v: '< 10 ml', h: { de: 'Follikel physiologisch < 3 cm', en: 'Follicle physiological < 3 cm', fa: 'فولیکول فیزیولوژیک < ۳ سانتی‌متر' } },
+      { s: { de: 'Endometrium (postmenopausal)', en: 'Endometrium (postmenopausal)', fa: 'آندومتر (یائسگی)' }, v: '< 5 mm', h: { de: 'Abklärung bei Blutung ab > 4–5 mm', en: 'Work-up if bleeding > 4–5 mm', fa: 'بررسی در خونریزی > ۴–۵' } },
+      { s: { de: 'Ovar (prämenopausal, Vol.)', en: 'Ovary (premenopausal, vol.)', fa: 'تخمدان (پیش از یائسگی)' }, v: '< 10 ml', h: { de: 'Follikel physiologisch < 3 cm', en: 'Follicle physiological < 3 cm', fa: 'فولیکول فیزیولوژیک < ۳' } },
       { s: { de: 'Harnblasenwand (gefüllt)', en: 'Bladder wall (full)', fa: 'دیواره مثانه (پر)' }, v: '< 3 mm', h: { de: 'Verdickt bei Obstruktion/Entzündung', en: 'Thickened in obstruction/inflammation', fa: 'ضخیم در انسداد/التهاب' } },
     ],
   },
   {
-    id: 'gefaesse',
-    color: '#dc2626',
+    id: 'gefaesse', color: '#dc2626',
     name: { de: 'Gefäße', en: 'Vessels', fa: 'عروق' },
     entries: [
-      { s: { de: 'Aortenaneurysma abd.', en: 'Abdominal aortic aneurysm', fa: 'آنوریسم آئورت شکمی' }, v: 'OP ≥ 5,5 cm', h: { de: 'Frau ≥ 5,0 cm; rasches Wachstum > 1 cm/Jahr', en: 'Women ≥ 5.0 cm; rapid growth > 1 cm/yr', fa: 'زنان ≥ ۵ سانتی‌متر؛ رشد سریع > ۱ سانتی‌متر/سال' } },
+      { s: { de: 'Aortenaneurysma abd.', en: 'Abdominal aortic aneurysm', fa: 'آنوریسم آئورت شکمی' }, v: 'OP ≥ 5,5 cm', h: { de: 'Frau ≥ 5,0 cm; Wachstum > 1 cm/Jahr', en: 'Women ≥ 5.0 cm; growth > 1 cm/yr', fa: 'زنان ≥ ۵؛ رشد > ۱ سانتی‌متر/سال' } },
       { s: { de: 'A. iliaca communis', en: 'Common iliac artery', fa: 'شریان ایلیاک مشترک' }, v: 'Aneurysma > 1,8 cm', h: { de: 'Normal ~1 cm', en: 'Normal ~1 cm', fa: 'طبیعی حدود ۱ سانتی‌متر' } },
       { s: { de: 'A. poplitea', en: 'Popliteal artery', fa: 'شریان پوپلیتئال' }, v: 'Aneurysma > 1,0 cm', h: { de: 'Häufig beidseitig', en: 'Often bilateral', fa: 'اغلب دوطرفه' } },
       { s: { de: 'V. cava inferior', en: 'Inferior vena cava', fa: 'ورید اجوف تحتانی' }, v: '~1,5–2,5 cm', h: { de: 'Atemvariabel; Volumenstatus', en: 'Respiratory variation; volume status', fa: 'تغییر تنفسی؛ وضعیت حجم' } },
@@ -127,98 +147,368 @@ const MESSWERTE = [
     ],
   },
   {
-    id: 'msk',
-    color: '#f97316',
+    id: 'msk', color: '#f97316',
     name: { de: 'MSK', en: 'MSK', fa: 'اسکلتی-عضلانی' },
     entries: [
       { s: { de: 'Spinalkanal lumbal (a-p)', en: 'Lumbar canal (AP)', fa: 'کانال نخاعی کمری' }, v: '< 12 mm relativ', h: { de: '< 10 mm absolute Stenose', en: '< 10 mm absolute stenosis', fa: '< ۱۰ میلی‌متر تنگی مطلق' } },
       { s: { de: 'Atlanto-dentaler Abstand (ADI)', en: 'Atlanto-dental interval', fa: 'فاصله اطلانتو-دنتال' }, v: '♂ < 3 / Kind < 5 mm', h: { de: 'Erhöht bei C1/C2-Instabilität', en: 'Raised in C1/C2 instability', fa: 'افزایش در ناپایداری C1/C2' } },
-      { s: { de: 'Akromiohumeraler Abstand', en: 'Acromiohumeral distance', fa: 'فاصله آکرومیوهومرال' }, v: '7–14 mm', h: { de: '< 7 mm: Rotatorenmanschettenschaden', en: '< 7 mm: rotator cuff tear', fa: '< ۷ میلی‌متر: پارگی روتاتور کاف' } },
+      { s: { de: 'Akromiohumeraler Abstand', en: 'Acromiohumeral distance', fa: 'فاصله آکرومیوهومرال' }, v: '7–14 mm', h: { de: '< 7 mm: Rotatorenmanschettenschaden', en: '< 7 mm: rotator cuff tear', fa: '< ۷: پارگی روتاتور کاف' } },
       { s: { de: 'Achillessehne (Dicke)', en: 'Achilles tendon (thickness)', fa: 'تاندون آشیل (ضخامت)' }, v: '< 6 mm', h: { de: 'Tendinopathie darüber', en: 'Tendinopathy above', fa: 'تاندینوپاتی بالاتر' } },
       { s: { de: 'Insall-Salvati-Index', en: 'Insall-Salvati index', fa: 'شاخص اینسال-سالواتی' }, v: '0,8–1,2', h: { de: '> 1,2 Patella alta, < 0,8 Patella baja', en: '> 1.2 patella alta, < 0.8 baja', fa: '> ۱٫۲ پاتلا آلتا، < ۰٫۸ باجا' } },
     ],
   },
 ]
 
-// ── Tab 2: Klassifikationen ──────────────────────────────────
-const KLASSIFIKATIONEN = [
+// ── Klassifikationen ─────────────────────────────────────────
+// Jede item: { id, name, kompakt, ref, cols:[…], rows:[[…]] }
+export const KLASSIFIKATIONEN = [
   {
-    id: 'neuro',
-    color: '#7c3aed',
+    id: 'neuro', color: '#7c3aed',
     name: { de: 'Neuro', en: 'Neuro', fa: 'نورو' },
-    entries: [
-      { s: { de: 'Fazekas', en: 'Fazekas', fa: 'فازکاس' }, v: 'Grad 0–3', h: { de: 'Mikroangiopathie / Marklagerläsionen (WM)', en: 'Small-vessel white-matter lesions', fa: 'ضایعات ماده سفید عروق ریز' } },
-      { s: { de: 'ASPECTS', en: 'ASPECTS', fa: 'ASPECTS' }, v: '10 → 0', h: { de: 'Mediainfarkt-Frühzeichen; ≤ 7 ungünstig', en: 'Early MCA infarct; ≤ 7 unfavourable', fa: 'انفارکت زودرس MCA؛ ≤ ۷ نامطلوب' } },
-      { s: { de: 'Fisher-Skala', en: 'Fisher scale', fa: 'مقیاس فیشر' }, v: 'Grad 1–4', h: { de: 'Blutmenge bei SAB (Vasospasmus-Risiko)', en: 'SAH blood volume (vasospasm risk)', fa: 'حجم خون SAH (خطر وازواسپاسم)' } },
-      { s: { de: 'Hunt & Hess', en: 'Hunt & Hess', fa: 'هانت و هس' }, v: 'Grad 1–5', h: { de: 'Klinischer Schweregrad der SAB', en: 'Clinical SAH severity', fa: 'شدت بالینی SAH' } },
-      { s: { de: 'Spetzler-Martin', en: 'Spetzler-Martin', fa: 'اسپتزلر-مارتین' }, v: '1–5 Punkte', h: { de: 'AVM-Risikograduierung', en: 'AVM grading', fa: 'درجه‌بندی AVM' } },
+    items: [
+      {
+        id: 'fazekas',
+        name: { de: 'Fazekas', en: 'Fazekas', fa: 'فازکاس' },
+        kompakt: { de: 'Grad 0–3: Schweregrad mikroangiopathischer Marklagerläsionen (White Matter).', en: 'Grade 0–3: severity of small-vessel white-matter lesions.', fa: 'درجه ۰–۳: شدت ضایعات ماده سفید عروق ریز.' },
+        ref: 'Fazekas et al., AJR 1987',
+        cols: [{ de: 'Grad', en: 'Grade' }, { de: 'Befund', en: 'Finding' }],
+        rows: [
+          ['0', { de: 'Keine oder einzelne punktförmige Läsionen', en: 'None or single punctate lesions' }],
+          ['1', { de: 'Mehrere punktförmige Läsionen', en: 'Multiple punctate lesions' }],
+          ['2', { de: 'Beginnende Konfluenz der Läsionen', en: 'Beginning confluence of lesions' }],
+          ['3', { de: 'Große konfluierende Läsionen', en: 'Large confluent lesions' }],
+        ],
+      },
+      {
+        id: 'aspects',
+        name: { de: 'ASPECTS', en: 'ASPECTS', fa: 'ASPECTS' },
+        kompakt: { de: '10-Punkte-CT-Score beim Mediainfarkt; pro betroffene Region −1; ≤ 7 = ausgedehnter Infarkt.', en: '10-point CT score for MCA infarct; −1 per region; ≤ 7 = large infarct.', fa: 'اسکور سی‌تی ۱۰ امتیازی انفارکت MCA؛ هر ناحیه −۱؛ ≤ ۷ انفارکت وسیع.' },
+        ref: 'Barber et al., Lancet 2000',
+        cols: [{ de: 'Region', en: 'Region' }, { de: 'Wertung', en: 'Score' }],
+        rows: [
+          [{ de: 'Ausgangswert', en: 'Baseline' }, '10'],
+          [{ de: 'Nucleus caudatus (C)', en: 'Caudate (C)' }, '−1'],
+          [{ de: 'Linsenkern (L)', en: 'Lentiform (L)' }, '−1'],
+          [{ de: 'Capsula interna (IC)', en: 'Internal capsule (IC)' }, '−1'],
+          [{ de: 'Inselrinde (I)', en: 'Insula (I)' }, '−1'],
+          [{ de: 'Kortexareale M1–M6', en: 'Cortical regions M1–M6' }, { de: 'je −1', en: '−1 each' }],
+          [{ de: 'Interpretation', en: 'Interpretation' }, { de: '≤ 7 = ungünstiges Outcome', en: '≤ 7 = unfavourable outcome' }],
+        ],
+      },
+      {
+        id: 'fisher',
+        name: { de: 'Fisher-Skala', en: 'Fisher scale', fa: 'مقیاس فیشر' },
+        kompakt: { de: 'CT-Blutmenge bei SAB (Vasospasmus-Risiko), Grad 1–4.', en: 'CT blood volume in SAH (vasospasm risk), grade 1–4.', fa: 'حجم خون CT در SAH (خطر وازواسپاسم)، درجه ۱–۴.' },
+        ref: 'Fisher et al., Neurosurgery 1980',
+        cols: [{ de: 'Grad', en: 'Grade' }, { de: 'CT-Befund', en: 'CT finding' }],
+        rows: [
+          ['1', { de: 'Kein Blut nachweisbar', en: 'No blood detected' }],
+          ['2', { de: 'Diffuse dünne SAB (< 1 mm)', en: 'Diffuse thin SAH (< 1 mm)' }],
+          ['3', { de: 'Lokalisierte/dicke SAB (> 1 mm)', en: 'Localised/thick SAH (> 1 mm)' }],
+          ['4', { de: 'Intraventrikuläre / intrazerebrale Blutung', en: 'Intraventricular / intracerebral haemorrhage' }],
+        ],
+      },
+      {
+        id: 'hunt-hess',
+        name: { de: 'Hunt & Hess', en: 'Hunt & Hess', fa: 'هانت و هس' },
+        kompakt: { de: 'Klinischer Schweregrad der SAB, Grad 1–5.', en: 'Clinical severity of SAH, grade 1–5.', fa: 'شدت بالینی SAH، درجه ۱–۵.' },
+        ref: 'Hunt & Hess, J Neurosurg 1968',
+        cols: [{ de: 'Grad', en: 'Grade' }, { de: 'Klinik', en: 'Clinical' }],
+        rows: [
+          ['1', { de: 'Asymptomatisch / leichter Kopfschmerz', en: 'Asymptomatic / mild headache' }],
+          ['2', { de: 'Starker Kopfschmerz, Meningismus, Hirnnervenausfall', en: 'Severe headache, meningismus, cranial nerve palsy' }],
+          ['3', { de: 'Somnolenz, leichtes fokales Defizit', en: 'Drowsiness, mild focal deficit' }],
+          ['4', { de: 'Sopor, mäßige–schwere Hemiparese', en: 'Stupor, moderate–severe hemiparesis' }],
+          ['5', { de: 'Koma, Strecksynergismen', en: 'Coma, extensor posturing' }],
+        ],
+      },
     ],
   },
   {
-    id: 'thorax',
-    color: '#0ea5e9',
+    id: 'thorax', color: '#0ea5e9',
     name: { de: 'Thorax / Lunge', en: 'Thorax / Lung', fa: 'توراکس / ریه' },
-    entries: [
-      { s: { de: 'Lung-RADS', en: 'Lung-RADS', fa: 'Lung-RADS' }, v: '0–4X', h: { de: 'Lungenkrebs-Screening (Rundherde)', en: 'Lung cancer screening (nodules)', fa: 'غربالگری سرطان ریه' } },
-      { s: { de: 'CO-RADS', en: 'CO-RADS', fa: 'CO-RADS' }, v: '1–6', h: { de: 'COVID-19-Wahrscheinlichkeit im CT', en: 'COVID-19 probability on CT', fa: 'احتمال کووید-۱۹ در سی‌تی' } },
-      { s: { de: 'Fleischner-Kriterien', en: 'Fleischner criteria', fa: 'معیار فلایشنر' }, v: 'Verlaufsregeln', h: { de: 'Management inzidenteller Lungenrundherde', en: 'Incidental pulmonary nodule management', fa: 'مدیریت ندول‌های اتفاقی ریه' } },
-      { s: { de: 'Bhalla-Score', en: 'Bhalla score', fa: 'امتیاز بهالا' }, v: 'Schweregrad', h: { de: 'Ausmaß der Bronchiektasen im HRCT', en: 'Bronchiectasis severity on HRCT', fa: 'شدت برونشکتازی در HRCT' } },
+    items: [
+      {
+        id: 'lung-rads',
+        name: { de: 'Lung-RADS', en: 'Lung-RADS', fa: 'Lung-RADS' },
+        kompakt: { de: 'Strukturierte Befundung im Lungenkrebs-Screening (Rundherde), Kat. 0–4X.', en: 'Structured reporting in lung cancer screening (nodules), cat. 0–4X.', fa: 'گزارش ساختاریافته غربالگری سرطان ریه، دسته ۰–۴X.' },
+        ref: 'ACR Lung-RADS v2022',
+        cols: [{ de: 'Kategorie', en: 'Category' }, { de: 'Bedeutung', en: 'Meaning' }, { de: 'Management', en: 'Management' }],
+        rows: [
+          ['0', { de: 'Unvollständig', en: 'Incomplete' }, { de: 'Voraufnahmen / Zusatz-CT', en: 'Prior imaging / additional CT' }],
+          ['1', { de: 'Negativ', en: 'Negative' }, { de: 'Jährliches Screening', en: 'Annual screening' }],
+          ['2', { de: 'Benigne', en: 'Benign' }, { de: 'Jährliches Screening', en: 'Annual screening' }],
+          ['3', { de: 'Wahrscheinlich benigne', en: 'Probably benign' }, { de: 'CT in 6 Monaten', en: 'CT in 6 months' }],
+          ['4A', { de: 'Suspekt', en: 'Suspicious' }, { de: 'CT in 3 Monaten / PET-CT', en: 'CT in 3 months / PET-CT' }],
+          ['4B / 4X', { de: 'Hochsuspekt', en: 'Very suspicious' }, { de: 'Gewebesicherung / PET-CT', en: 'Tissue sampling / PET-CT' }],
+        ],
+      },
+      {
+        id: 'co-rads',
+        name: { de: 'CO-RADS', en: 'CO-RADS', fa: 'CO-RADS' },
+        kompakt: { de: 'CT-Wahrscheinlichkeit einer COVID-19-Pneumonie, Kat. 1–6.', en: 'CT probability of COVID-19 pneumonia, cat. 1–6.', fa: 'احتمال CT پنومونی کووید-۱۹، دسته ۱–۶.' },
+        ref: 'Prokop et al., Radiology 2020',
+        cols: [{ de: 'Kategorie', en: 'Category' }, { de: 'Wahrscheinlichkeit', en: 'Probability' }],
+        rows: [
+          ['1', { de: 'Sehr niedrig (normal / nicht-infektiös)', en: 'Very low (normal / non-infectious)' }],
+          ['2', { de: 'Niedrig (typisch andere Infektion)', en: 'Low (typical of other infection)' }],
+          ['3', { de: 'Unklar / unspezifisch', en: 'Indeterminate / unspecific' }],
+          ['4', { de: 'Hoch', en: 'High' }],
+          ['5', { de: 'Sehr hoch (typisches COVID-Muster)', en: 'Very high (typical COVID pattern)' }],
+          ['6', { de: 'PCR-bestätigt', en: 'PCR confirmed' }],
+        ],
+      },
+      {
+        id: 'fleischner',
+        name: { de: 'Fleischner-Kriterien', en: 'Fleischner criteria', fa: 'معیار فلایشنر' },
+        kompakt: { de: 'Verlaufsempfehlung für inzidentelle Lungenrundherde nach Größe, Dichte und Risiko.', en: 'Follow-up of incidental pulmonary nodules by size, density and risk.', fa: 'پیگیری ندول‌های اتفاقی ریه بر اساس اندازه، دانسیته و خطر.' },
+        ref: 'MacMahon et al., Fleischner Society 2017',
+        cols: [{ de: 'Rundherd', en: 'Nodule' }, { de: 'Niedriges Risiko', en: 'Low risk' }, { de: 'Hohes Risiko', en: 'High risk' }],
+        rows: [
+          [{ de: 'Solide < 6 mm', en: 'Solid < 6 mm' }, { de: 'Keine Routinekontrolle', en: 'No routine follow-up' }, { de: 'Optional CT 12 Mon.', en: 'Optional CT 12 mo' }],
+          [{ de: 'Solide 6–8 mm', en: 'Solid 6–8 mm' }, { de: 'CT 6–12 Mon.', en: 'CT 6–12 mo' }, { de: 'CT 6–12, dann 18–24 Mon.', en: 'CT 6–12, then 18–24 mo' }],
+          [{ de: 'Solide > 8 mm', en: 'Solid > 8 mm' }, { de: 'CT 3 Mon. / PET / Biopsie', en: 'CT 3 mo / PET / biopsy' }, { de: 'CT 3 Mon. / PET / Biopsie', en: 'CT 3 mo / PET / biopsy' }],
+          [{ de: 'Milchglas ≥ 6 mm', en: 'Ground-glass ≥ 6 mm' }, { de: 'CT 6–12, dann alle 2 J.', en: 'CT 6–12, then q2y' }, { de: 'CT 6–12, dann alle 2 J.', en: 'CT 6–12, then q2y' }],
+        ],
+      },
     ],
   },
   {
-    id: 'abdomen',
-    color: '#f59e0b',
+    id: 'abdomen', color: '#f59e0b',
     name: { de: 'Abdomen', en: 'Abdomen', fa: 'شکم' },
-    entries: [
-      { s: { de: 'LI-RADS', en: 'LI-RADS', fa: 'LI-RADS' }, v: 'LR-1 … LR-5, LR-M', h: { de: 'HCC-Wahrscheinlichkeit bei Risikopatienten', en: 'HCC probability in at-risk patients', fa: 'احتمال HCC در بیماران پرخطر' } },
-      { s: { de: 'Bosniak', en: 'Bosniak', fa: 'بوسنیاک' }, v: 'I, II, IIF, III, IV', h: { de: 'Malignitätsrisiko von Nierenzysten', en: 'Malignancy risk of renal cysts', fa: 'خطر بدخیمی کیست کلیه' } },
-      { s: { de: 'Balthazar / CTSI', en: 'Balthazar / CTSI', fa: 'بالتازار / CTSI' }, v: 'A–E / 0–10', h: { de: 'Schweregrad der akuten Pankreatitis', en: 'Acute pancreatitis severity', fa: 'شدت پانکراتیت حاد' } },
-      { s: { de: 'O-RADS (MRT/US)', en: 'O-RADS (MRI/US)', fa: 'O-RADS' }, v: '0–5', h: { de: 'Adnex-/Ovarialläsionen', en: 'Adnexal / ovarian lesions', fa: 'ضایعات آدنکس / تخمدان' } },
-      { s: { de: 'Couinaud-Segmente', en: 'Couinaud segments', fa: 'سگمان‌های کوینو' }, v: 'I–VIII', h: { de: 'Anatomische Lebersegmenteinteilung', en: 'Anatomical liver segmentation', fa: 'تقسیم‌بندی آناتومیک کبد' } },
+    items: [
+      {
+        id: 'li-rads',
+        name: { de: 'LI-RADS', en: 'LI-RADS', fa: 'LI-RADS' },
+        kompakt: { de: 'HCC-Wahrscheinlichkeit bei Risikopatienten (CT/MRT), LR-1 bis LR-5 (+ LR-M, LR-TIV).', en: 'HCC probability in at-risk patients (CT/MRI), LR-1 to LR-5 (+ LR-M, LR-TIV).', fa: 'احتمال HCC در بیماران پرخطر (CT/MRI)، LR-1 تا LR-5.' },
+        ref: 'ACR LI-RADS v2018',
+        cols: [{ de: 'Kategorie', en: 'Category' }, { de: 'Bedeutung', en: 'Meaning' }],
+        rows: [
+          ['LR-1', { de: 'Definitiv benigne', en: 'Definitely benign' }],
+          ['LR-2', { de: 'Wahrscheinlich benigne', en: 'Probably benign' }],
+          ['LR-3', { de: 'Intermediäre Wahrscheinlichkeit', en: 'Intermediate probability' }],
+          ['LR-4', { de: 'Wahrscheinlich HCC', en: 'Probably HCC' }],
+          ['LR-5', { de: 'Definitiv HCC', en: 'Definitely HCC' }],
+          ['LR-M', { de: 'Maligne, nicht HCC-spezifisch', en: 'Malignant, not HCC-specific' }],
+          ['LR-TIV', { de: 'Tumor im Gefäß (venös)', en: 'Tumour in vein' }],
+        ],
+      },
+      {
+        id: 'bosniak',
+        name: { de: 'Bosniak', en: 'Bosniak', fa: 'بوسنیاک' },
+        kompakt: { de: 'Malignitätsrisiko zystischer Nierenläsionen (CT/MRT), Kat. I–IV.', en: 'Malignancy risk of cystic renal lesions (CT/MRI), cat. I–IV.', fa: 'خطر بدخیمی ضایعات کیستیک کلیه، دسته I–IV.' },
+        ref: 'Silverman et al., Bosniak v2019',
+        cols: [{ de: 'Kategorie', en: 'Category' }, { de: 'Befund', en: 'Finding' }, { de: 'Malignität', en: 'Malignancy' }],
+        rows: [
+          ['I', { de: 'Einfache Zyste', en: 'Simple cyst' }, '~0 %'],
+          ['II', { de: 'Wenige dünne Septen / feine Verkalkung', en: 'Few thin septa / fine calcification' }, { de: 'benigne', en: 'benign' }],
+          ['IIF', { de: 'Minimal verdickt, mehr Septen – Verlaufskontrolle', en: 'Minimally thickened, more septa – follow-up' }, '~5 %'],
+          ['III', { de: 'Verdickte/irreguläre KM-aufnehmende Wände/Septen', en: 'Thick/irregular enhancing walls/septa' }, '~50 %'],
+          ['IV', { de: 'Solide KM-aufnehmende Anteile', en: 'Solid enhancing components' }, '~90 %'],
+        ],
+      },
+      {
+        id: 'balthazar',
+        name: { de: 'Balthazar / CTSI', en: 'Balthazar / CTSI', fa: 'بالتازار / CTSI' },
+        kompakt: { de: 'Schweregrad der akuten Pankreatitis im CT; CTSI = Balthazar-Grad + Nekrose-Punkte (0–10).', en: 'Severity of acute pancreatitis on CT; CTSI = Balthazar grade + necrosis points (0–10).', fa: 'شدت پانکراتیت حاد در CT؛ CTSI = درجه بالتازار + امتیاز نکروز.' },
+        ref: 'Balthazar et al., Radiology 1990',
+        cols: [{ de: 'Grad / Punkte', en: 'Grade / points' }, { de: 'Befund', en: 'Finding' }],
+        rows: [
+          ['A (0)', { de: 'Normales Pankreas', en: 'Normal pancreas' }],
+          ['B (1)', { de: 'Fokale/diffuse Vergrößerung', en: 'Focal/diffuse enlargement' }],
+          ['C (2)', { de: 'Peripankreatische Entzündung', en: 'Peripancreatic inflammation' }],
+          ['D (3)', { de: 'Eine Flüssigkeitskollektion', en: 'Single fluid collection' }],
+          ['E (4)', { de: '≥ 2 Kollektionen oder Gas', en: '≥ 2 collections or gas' }],
+          [{ de: 'Nekrose', en: 'Necrosis' }, { de: '0 % +0 · ≤ 30 % +2 · ≤ 50 % +4 · > 50 % +6', en: '0% +0 · ≤30% +2 · ≤50% +4 · >50% +6' }],
+        ],
+      },
+      {
+        id: 'couinaud',
+        name: { de: 'Couinaud-Segmente', en: 'Couinaud segments', fa: 'سگمان‌های کوینو' },
+        kompakt: { de: '8 funktionell unabhängige Lebersegmente (I–VIII).', en: '8 functionally independent liver segments (I–VIII).', fa: '۸ سگمان مستقل عملکردی کبد (I–VIII).' },
+        ref: 'Couinaud 1957',
+        cols: [{ de: 'Segment', en: 'Segment' }, { de: 'Lage', en: 'Location' }],
+        rows: [
+          ['I', { de: 'Lobus caudatus', en: 'Caudate lobe' }],
+          ['II', { de: 'Links lateral superior', en: 'Left lateral superior' }],
+          ['III', { de: 'Links lateral inferior', en: 'Left lateral inferior' }],
+          ['IVa / IVb', { de: 'Links medial', en: 'Left medial' }],
+          ['V', { de: 'Rechts anterior inferior', en: 'Right anterior inferior' }],
+          ['VI', { de: 'Rechts posterior inferior', en: 'Right posterior inferior' }],
+          ['VII', { de: 'Rechts posterior superior', en: 'Right posterior superior' }],
+          ['VIII', { de: 'Rechts anterior superior', en: 'Right anterior superior' }],
+        ],
+      },
     ],
   },
   {
-    id: 'mamma-uro',
-    color: '#ec4899',
+    id: 'mamma-uro', color: '#ec4899',
     name: { de: 'Mamma / Urogenital', en: 'Breast / Urogenital', fa: 'پستان / اوروژنیتال' },
-    entries: [
-      { s: { de: 'BI-RADS', en: 'BI-RADS', fa: 'BI-RADS' }, v: '0–6', h: { de: 'Mammographie/Sono/MRT; Malignitätsrisiko', en: 'Mammo/US/MRI; malignancy risk', fa: 'ماموگرافی/سونو/MRI؛ خطر بدخیمی' } },
-      { s: { de: 'PI-RADS', en: 'PI-RADS', fa: 'PI-RADS' }, v: '1–5', h: { de: 'Prostata-MRT; klinisch signifikantes Ca', en: 'Prostate MRI; clinically significant cancer', fa: 'MRI پروستات؛ سرطان مهم بالینی' } },
-      { s: { de: 'TI-RADS (ACR)', en: 'TI-RADS (ACR)', fa: 'TI-RADS' }, v: 'TR1–TR5', h: { de: 'Schilddrüsenknoten; Punktionsbedarf', en: 'Thyroid nodule; FNA need', fa: 'ندول تیروئید؛ نیاز به FNA' } },
+    items: [
+      {
+        id: 'bi-rads',
+        name: { de: 'BI-RADS', en: 'BI-RADS', fa: 'BI-RADS' },
+        kompakt: { de: 'Malignitätsrisiko in Mammografie/Sono/MRT, Kat. 0–6, mit Management.', en: 'Malignancy risk in mammography/US/MRI, cat. 0–6, with management.', fa: 'خطر بدخیمی در ماموگرافی/سونو/MRI، دسته ۰–۶.' },
+        ref: 'ACR BI-RADS 2013',
+        cols: [{ de: 'Kat.', en: 'Cat.' }, { de: 'Bedeutung', en: 'Meaning' }, { de: 'Management', en: 'Management' }],
+        rows: [
+          ['0', { de: 'Unvollständig', en: 'Incomplete' }, { de: 'Zusatzdiagnostik', en: 'Additional imaging' }],
+          ['1', { de: 'Negativ', en: 'Negative' }, { de: 'Routine', en: 'Routine' }],
+          ['2', { de: 'Benigne', en: 'Benign' }, { de: 'Routine', en: 'Routine' }],
+          ['3', { de: 'Wahrscheinlich benigne (< 2 %)', en: 'Probably benign (< 2%)' }, { de: 'Kontrolle in 6 Mon.', en: 'Short-interval 6-mo follow-up' }],
+          ['4', { de: 'Suspekt (2–95 %)', en: 'Suspicious (2–95%)' }, { de: 'Biopsie', en: 'Biopsy' }],
+          ['5', { de: 'Hochsuspekt (≥ 95 %)', en: 'Highly suspicious (≥ 95%)' }, { de: 'Biopsie / Therapie', en: 'Biopsy / treatment' }],
+          ['6', { de: 'Histologisch gesichertes Karzinom', en: 'Biopsy-proven malignancy' }, { de: 'Therapie', en: 'Treatment' }],
+        ],
+      },
+      {
+        id: 'pi-rads',
+        name: { de: 'PI-RADS', en: 'PI-RADS', fa: 'PI-RADS' },
+        kompakt: { de: 'mpMRT der Prostata: Wahrscheinlichkeit eines klinisch signifikanten Karzinoms, 1–5.', en: 'Prostate mpMRI: probability of clinically significant cancer, 1–5.', fa: 'mpMRI پروستات: احتمال سرطان مهم بالینی، ۱–۵.' },
+        ref: 'PI-RADS v2.1, 2019',
+        cols: [{ de: 'Kategorie', en: 'Category' }, { de: 'Bedeutung', en: 'Meaning' }],
+        rows: [
+          ['1', { de: 'Sehr niedrig', en: 'Very low' }],
+          ['2', { de: 'Niedrig', en: 'Low' }],
+          ['3', { de: 'Intermediär / unklar', en: 'Intermediate / equivocal' }],
+          ['4', { de: 'Hoch', en: 'High' }],
+          ['5', { de: 'Sehr hoch', en: 'Very high' }],
+          [{ de: 'Dominante Sequenz', en: 'Dominant sequence' }, { de: 'Periphere Zone → DWI · Transitionalzone → T2', en: 'Peripheral zone → DWI · Transition zone → T2' }],
+        ],
+      },
+      {
+        id: 'ti-rads',
+        name: { de: 'TI-RADS (ACR)', en: 'TI-RADS (ACR)', fa: 'TI-RADS' },
+        kompakt: { de: 'Punktbasierte Bewertung von Schilddrüsenknoten (Sono); Punkte aus 5 Merkmalen → TR1–TR5.', en: 'Point-based US assessment of thyroid nodules; points from 5 features → TR1–TR5.', fa: 'ارزیابی امتیازی ندول تیروئید (سونو)؛ TR1–TR5.' },
+        ref: 'ACR TI-RADS 2017',
+        cols: [{ de: 'Kategorie (Punkte)', en: 'Category (points)' }, { de: 'Risiko', en: 'Risk' }, { de: 'FNA', en: 'FNA' }],
+        rows: [
+          ['TR1 (0)', { de: 'Benigne', en: 'Benign' }, { de: 'Keine', en: 'None' }],
+          ['TR2 (2)', { de: 'Nicht suspekt', en: 'Not suspicious' }, { de: 'Keine', en: 'None' }],
+          ['TR3 (3)', { de: 'Mild suspekt', en: 'Mildly suspicious' }, { de: 'FNA ≥ 2,5 cm · Verlauf ≥ 1,5 cm', en: 'FNA ≥ 2.5 cm · follow ≥ 1.5 cm' }],
+          ['TR4 (4–6)', { de: 'Moderat suspekt', en: 'Moderately suspicious' }, { de: 'FNA ≥ 1,5 cm · Verlauf ≥ 1 cm', en: 'FNA ≥ 1.5 cm · follow ≥ 1 cm' }],
+          ['TR5 (≥ 7)', { de: 'Hochsuspekt', en: 'Highly suspicious' }, { de: 'FNA ≥ 1 cm · Verlauf ≥ 0,5 cm', en: 'FNA ≥ 1 cm · follow ≥ 0.5 cm' }],
+        ],
+      },
     ],
   },
   {
-    id: 'msk',
-    color: '#f97316',
+    id: 'msk', color: '#f97316',
     name: { de: 'MSK', en: 'MSK', fa: 'اسکلتی-عضلانی' },
-    entries: [
-      { s: { de: 'Pfirrmann', en: 'Pfirrmann', fa: 'فیرمن' }, v: 'I–V', h: { de: 'Bandscheibendegeneration (MRT)', en: 'Disc degeneration (MRI)', fa: 'دژنراسیون دیسک (MRI)' } },
-      { s: { de: 'Modic', en: 'Modic', fa: 'مودیک' }, v: 'Typ 1–3', h: { de: 'Endplatten-/Knochenmarksveränderungen', en: 'Endplate / marrow changes', fa: 'تغییرات صفحه انتهایی/مغز استخوان' } },
-      { s: { de: 'Genant', en: 'Genant', fa: 'ژنانت' }, v: 'Grad 0–3', h: { de: 'Wirbelkörperfraktur (Höhenminderung)', en: 'Vertebral fracture (height loss)', fa: 'شکستگی مهره (کاهش ارتفاع)' } },
-      { s: { de: 'Kellgren-Lawrence', en: 'Kellgren-Lawrence', fa: 'کلگرن-لارنس' }, v: '0–4', h: { de: 'Osteoarthrose-Schweregrad', en: 'Osteoarthritis severity', fa: 'شدت استئوآرتریت' } },
-      { s: { de: 'Garden', en: 'Garden', fa: 'گاردن' }, v: 'I–IV', h: { de: 'Mediale Schenkelhalsfraktur', en: 'Femoral neck fracture', fa: 'شکستگی گردن فمور' } },
+    items: [
+      {
+        id: 'pfirrmann',
+        name: { de: 'Pfirrmann', en: 'Pfirrmann', fa: 'فیرمن' },
+        kompakt: { de: 'MRT-Grad der Bandscheibendegeneration, I–V (Signal, Struktur, Höhe).', en: 'MRI grade of disc degeneration, I–V (signal, structure, height).', fa: 'درجه MRI دژنراسیون دیسک، I–V.' },
+        ref: 'Pfirrmann et al., Spine 2001',
+        cols: [{ de: 'Grad', en: 'Grade' }, { de: 'Befund (T2)', en: 'Finding (T2)' }],
+        rows: [
+          ['I', { de: 'Homogen hyperintens, normale Höhe', en: 'Homogeneous hyperintense, normal height' }],
+          ['II', { de: 'Inhomogen, klare Grenze Anulus/Nucleus', en: 'Inhomogeneous, clear annulus/nucleus border' }],
+          ['III', { de: 'Inhomogen grau, leichte Höhenminderung', en: 'Inhomogeneous grey, mild height loss' }],
+          ['IV', { de: 'Grau-schwarz, mäßige Höhenminderung', en: 'Grey-black, moderate height loss' }],
+          ['V', { de: 'Schwarz, Bandscheibenraum kollabiert', en: 'Black, collapsed disc space' }],
+        ],
+      },
+      {
+        id: 'modic',
+        name: { de: 'Modic', en: 'Modic', fa: 'مودیک' },
+        kompakt: { de: 'Endplatten-/Knochenmarksveränderungen im MRT, Typ 1–3.', en: 'Endplate / marrow changes on MRI, type 1–3.', fa: 'تغییرات صفحه انتهایی/مغز استخوان در MRI، نوع ۱–۳.' },
+        ref: 'Modic et al., Radiology 1988',
+        cols: [{ de: 'Typ', en: 'Type' }, { de: 'Substrat', en: 'Substrate' }, { de: 'Signal (T1 / T2)', en: 'Signal (T1 / T2)' }],
+        rows: [
+          ['1', { de: 'Ödem / Entzündung', en: 'Oedema / inflammation' }, 'T1 ↓ / T2 ↑'],
+          ['2', { de: 'Fettige Degeneration', en: 'Fatty degeneration' }, 'T1 ↑ / T2 ↔–↑'],
+          ['3', { de: 'Sklerose', en: 'Sclerosis' }, 'T1 ↓ / T2 ↓'],
+        ],
+      },
+      {
+        id: 'genant',
+        name: { de: 'Genant', en: 'Genant', fa: 'ژنانت' },
+        kompakt: { de: 'Semiquantitative Wirbelkörperfraktur nach Höhenminderung, Grad 0–3.', en: 'Semiquantitative vertebral fracture by height loss, grade 0–3.', fa: 'شکستگی نیمه‌کمی مهره بر اساس کاهش ارتفاع، درجه ۰–۳.' },
+        ref: 'Genant et al., JBMR 1993',
+        cols: [{ de: 'Grad', en: 'Grade' }, { de: 'Höhenminderung', en: 'Height loss' }],
+        rows: [
+          ['0', { de: 'Normal', en: 'Normal' }],
+          ['1', { de: 'Mild – 20–25 %', en: 'Mild – 20–25%' }],
+          ['2', { de: 'Moderat – 25–40 %', en: 'Moderate – 25–40%' }],
+          ['3', { de: 'Schwer – > 40 %', en: 'Severe – > 40%' }],
+        ],
+      },
+      {
+        id: 'kellgren-lawrence',
+        name: { de: 'Kellgren-Lawrence', en: 'Kellgren-Lawrence', fa: 'کلگرن-لارنس' },
+        kompakt: { de: 'Röntgen-Schweregrad der Osteoarthrose, 0–4.', en: 'Radiographic severity of osteoarthritis, 0–4.', fa: 'شدت رادیوگرافیک استئوآرتریت، ۰–۴.' },
+        ref: 'Kellgren & Lawrence, ARD 1957',
+        cols: [{ de: 'Grad', en: 'Grade' }, { de: 'Befund', en: 'Finding' }],
+        rows: [
+          ['0', { de: 'Keine Zeichen', en: 'No features' }],
+          ['1', { de: 'Fragliche Osteophyten / Spaltverschmälerung', en: 'Doubtful osteophytes / joint-space narrowing' }],
+          ['2', { de: 'Definitive Osteophyten, mögliche Verschmälerung', en: 'Definite osteophytes, possible narrowing' }],
+          ['3', { de: 'Multiple Osteophyten, deutliche Verschmälerung, Sklerose', en: 'Multiple osteophytes, definite narrowing, sclerosis' }],
+          ['4', { de: 'Große Osteophyten, schwere Verschmälerung, Deformität', en: 'Large osteophytes, severe narrowing, deformity' }],
+        ],
+      },
+      {
+        id: 'garden',
+        name: { de: 'Garden', en: 'Garden', fa: 'گاردن' },
+        kompakt: { de: 'Mediale Schenkelhalsfraktur nach Dislokation, I–IV.', en: 'Femoral neck fracture by displacement, I–IV.', fa: 'شکستگی گردن فمور بر اساس جابجایی، I–IV.' },
+        ref: 'Garden, JBJS 1961',
+        cols: [{ de: 'Grad', en: 'Grade' }, { de: 'Befund', en: 'Finding' }],
+        rows: [
+          ['I', { de: 'Inkomplett / valgus-impaktiert', en: 'Incomplete / valgus-impacted' }],
+          ['II', { de: 'Komplett, nicht disloziert', en: 'Complete, non-displaced' }],
+          ['III', { de: 'Komplett, teilweise disloziert', en: 'Complete, partially displaced' }],
+          ['IV', { de: 'Komplett, vollständig disloziert', en: 'Complete, fully displaced' }],
+        ],
+      },
     ],
   },
   {
-    id: 'onko',
-    color: '#475569',
+    id: 'onko', color: '#475569',
     name: { de: 'Onko / Allgemein', en: 'Onco / General', fa: 'انکولوژی / عمومی' },
-    entries: [
-      { s: { de: 'RECIST 1.1', en: 'RECIST 1.1', fa: 'RECIST 1.1' }, v: 'CR / PR / SD / PD', h: { de: 'Therapieansprechen solider Tumoren', en: 'Solid tumour treatment response', fa: 'پاسخ درمانی تومورهای جامد' } },
-      { s: { de: 'TNM', en: 'TNM', fa: 'TNM' }, v: 'T · N · M', h: { de: 'Tumorgröße · Lymphknoten · Metastasen', en: 'Tumour · nodes · metastasis', fa: 'تومور · گره · متاستاز' } },
-      { s: { de: 'Deauville (PET)', en: 'Deauville (PET)', fa: 'دوویل (PET)' }, v: '1–5', h: { de: 'Lymphom-Ansprechen im FDG-PET', en: 'Lymphoma response on FDG-PET', fa: 'پاسخ لنفوم در FDG-PET' } },
+    items: [
+      {
+        id: 'recist',
+        name: { de: 'RECIST 1.1', en: 'RECIST 1.1', fa: 'RECIST 1.1' },
+        kompakt: { de: 'Therapieansprechen solider Tumoren; Zielläsionen max. 5 (2/Organ), ≥ 10 mm.', en: 'Treatment response of solid tumours; target lesions max 5 (2/organ), ≥ 10 mm.', fa: 'پاسخ درمانی تومورهای جامد؛ حداکثر ۵ ضایعه هدف.' },
+        ref: 'Eisenhauer et al., EJC 2009',
+        cols: [{ de: 'Ansprechen', en: 'Response' }, { de: 'Kriterium', en: 'Criterion' }],
+        rows: [
+          ['CR', { de: 'Verschwinden aller Zielläsionen', en: 'Disappearance of all target lesions' }],
+          ['PR', { de: '≥ 30 % Abnahme der Summe der Durchmesser', en: '≥ 30% decrease in sum of diameters' }],
+          ['SD', { de: 'Weder PR noch PD', en: 'Neither PR nor PD' }],
+          ['PD', { de: '≥ 20 % Zunahme (und ≥ 5 mm) oder neue Läsion', en: '≥ 20% increase (and ≥ 5 mm) or new lesion' }],
+        ],
+      },
+      {
+        id: 'tnm',
+        name: { de: 'TNM', en: 'TNM', fa: 'TNM' },
+        kompakt: { de: 'Standardisiertes Tumorstaging: T (Tumor) · N (Lymphknoten) · M (Metastasen).', en: 'Standard tumour staging: T (tumour) · N (nodes) · M (metastasis).', fa: 'استیجینگ استاندارد تومور: T · N · M.' },
+        ref: 'UICC TNM, 8. Auflage',
+        cols: [{ de: 'Komponente', en: 'Component' }, { de: 'Bedeutung', en: 'Meaning' }],
+        rows: [
+          ['T', { de: 'Tumorgröße / -ausdehnung (T1–T4)', en: 'Tumour size / extent (T1–T4)' }],
+          ['N', { de: 'Regionäre Lymphknoten (N0–N3)', en: 'Regional lymph nodes (N0–N3)' }],
+          ['M', { de: 'Fernmetastasen (M0 / M1)', en: 'Distant metastasis (M0 / M1)' }],
+        ],
+      },
+      {
+        id: 'deauville',
+        name: { de: 'Deauville (PET)', en: 'Deauville (PET)', fa: 'دوویل (PET)' },
+        kompakt: { de: '5-Punkte-Skala für Lymphom-Ansprechen im FDG-PET (Referenz: Mediastinum & Leber).', en: '5-point scale for lymphoma response on FDG-PET (reference: mediastinum & liver).', fa: 'مقیاس ۵ امتیازی پاسخ لنفوم در FDG-PET.' },
+        ref: 'Deauville-Kriterien, Meignan 2009',
+        cols: [{ de: 'Punkte', en: 'Score' }, { de: 'FDG-Uptake', en: 'FDG uptake' }],
+        rows: [
+          ['1', { de: 'Kein Uptake', en: 'No uptake' }],
+          ['2', { de: 'Uptake ≤ Mediastinum', en: 'Uptake ≤ mediastinum' }],
+          ['3', { de: 'Uptake > Mediastinum, ≤ Leber', en: 'Uptake > mediastinum, ≤ liver' }],
+          ['4', { de: 'Uptake mäßig > Leber', en: 'Uptake moderately > liver' }],
+          ['5', { de: 'Deutlich > Leber oder neue Läsionen', en: 'Markedly > liver or new lesions' }],
+        ],
+      },
     ],
   },
 ]
 
-export const REF_DATA = {
-  messwerte: MESSWERTE,
-  klassifikationen: KLASSIFIKATIONEN,
-}
-
-// Sprach-Helfer mit Fallback de → en
-export function tx(field, lang) {
-  if (field == null) return ''
-  if (typeof field === 'string') return field
-  return field[lang] ?? field.de ?? field.en ?? ''
-}
+export const REF_DATA = { messwerte: MESSWERTE, klassifikationen: KLASSIFIKATIONEN }

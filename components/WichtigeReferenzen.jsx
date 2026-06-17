@@ -1,131 +1,209 @@
 'use client'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { REF_COPY, REF_DATA, tx } from '@/data/referenzen'
 import styles from './WichtigeReferenzen.module.css'
 
-const TABS = ['messwerte', 'klassifikationen']
-
 export default function WichtigeReferenzen() {
   const { lang } = useLanguage()
   const copy = REF_COPY[lang] || REF_COPY.de
-  const [tab, setTab] = useState('messwerte')
-  const [regionId, setRegionId] = useState(REF_DATA.messwerte[0].id)
-  const [query, setQuery] = useState('')
+  const [modal, setModal] = useState(null) // 'messwerte' | 'klassifikationen' | null
 
-  const regions = REF_DATA[tab]
-  const q = query.trim().toLowerCase()
-
-  const handleTab = (next) => {
-    setTab(next)
-    setRegionId(REF_DATA[next][0].id)
-    setQuery('')
-  }
-
-  // Beim Suchen: alle Bereiche mit Treffern; sonst nur der gewählte Bereich
-  const visible = useMemo(() => {
-    if (!q) {
-      const r = regions.find(x => x.id === regionId) || regions[0]
-      return [r]
-    }
-    const match = (e) =>
-      tx(e.s, lang).toLowerCase().includes(q) ||
-      tx(e.s, 'de').toLowerCase().includes(q) ||
-      tx(e.s, 'en').toLowerCase().includes(q) ||
-      String(e.v).toLowerCase().includes(q) ||
-      tx(e.h, lang).toLowerCase().includes(q)
-    return regions
-      .map(r => ({ ...r, entries: r.entries.filter(match) }))
-      .filter(r => r.entries.length > 0)
-  }, [q, regions, regionId, lang])
-
-  const resultCount = q ? visible.reduce((n, r) => n + r.entries.length, 0) : 0
-  const isClass = tab === 'klassifikationen'
+  // Body-Scroll sperren, solange ein Modal offen ist
+  useEffect(() => {
+    if (!modal) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = prev }
+  }, [modal])
 
   return (
     <section className={styles.section} id="referenzen">
-      {/* Kopfzeile: Titel links, Tabs rechts */}
-      <div className={styles.head}>
-        <div className={styles.headText}>
-          <div className={styles.label}>{copy.label}</div>
-          <h2 className={styles.title}>{copy.title}</h2>
-          <p className={styles.sub}>{copy.sub}</p>
-        </div>
-        <div className={styles.tabs} role="tablist">
-          {TABS.map(t => (
-            <button
-              key={t}
-              role="tab"
-              aria-selected={tab === t}
-              className={`${styles.tab} ${tab === t ? styles.tabActive : ''}`}
-              onClick={() => handleTab(t)}
-            >
-              {copy.tabs[t]}
-            </button>
-          ))}
-        </div>
+      <div className={styles.label}>{copy.label}</div>
+      <h2 className={styles.title}>{copy.title}</h2>
+      <p className={styles.sub}>{copy.sub}</p>
+
+      <div className={styles.buttons}>
+        <button className={`${styles.bigBtn} ${styles.btnBlue}`} onClick={() => setModal('messwerte')}>
+          <span className={styles.bigIcon} aria-hidden="true">📏</span>
+          <span className={styles.bigText}>
+            <strong>{copy.btnMesswerte}</strong>
+            <small>{copy.btnMesswerteSub}</small>
+          </span>
+          <span className={styles.bigArrow} aria-hidden="true">→</span>
+        </button>
+
+        <button className={`${styles.bigBtn} ${styles.btnOrange}`} onClick={() => setModal('klassifikationen')}>
+          <span className={styles.bigIcon} aria-hidden="true">🗂️</span>
+          <span className={styles.bigText}>
+            <strong>{copy.btnKlass}</strong>
+            <small>{copy.btnKlassSub}</small>
+          </span>
+          <span className={styles.bigArrow} aria-hidden="true">→</span>
+        </button>
       </div>
 
-      {/* Suche */}
-      <div className={styles.searchRow}>
-        <input
-          type="search"
-          className={styles.search}
-          placeholder={copy.search}
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        {q && <span className={styles.resultCount}>{resultCount} {copy.results}</span>}
-      </div>
+      {modal === 'messwerte' && (
+        <MesswerteModal copy={copy} lang={lang} onClose={() => setModal(null)} />
+      )}
+      {modal === 'klassifikationen' && (
+        <KlassifikationenModal copy={copy} lang={lang} onClose={() => setModal(null)} />
+      )}
+    </section>
+  )
+}
 
-      {/* Master-Detail */}
-      <div className={styles.body}>
-        {/* Linke Spalte: Bereiche */}
-        <nav className={styles.regionList} aria-label={copy.chooseRegion}>
+/* ── Modal-Hülle ─────────────────────────────── */
+function Modal({ title, copy, onClose, children }) {
+  return (
+    <div className={styles.overlay} onClick={onClose}>
+      <div className={styles.modal} onClick={e => e.stopPropagation()} role="dialog" aria-modal="true">
+        <header className={styles.modalHead}>
+          <h3>{title}</h3>
+          <button className={styles.closeBtn} onClick={onClose} aria-label={copy.close}>×</button>
+        </header>
+        <div className={styles.modalBody}>{children}</div>
+        <p className={styles.disclaimer}>⚠️ {copy.disclaimer}</p>
+      </div>
+    </div>
+  )
+}
+
+/* ── Messwerte: Bereich → Tabelle ────────────── */
+function MesswerteModal({ copy, lang, onClose }) {
+  const regions = REF_DATA.messwerte
+  const [regionId, setRegionId] = useState(regions[0].id)
+  const [q, setQ] = useState('')
+  const query = q.trim().toLowerCase()
+
+  const region = regions.find(r => r.id === regionId) || regions[0]
+  const rows = useMemo(() => {
+    if (!query) return region.entries
+    return region.entries.filter(e =>
+      tx(e.s, lang).toLowerCase().includes(query) ||
+      tx(e.s, 'de').toLowerCase().includes(query) ||
+      String(e.v).toLowerCase().includes(query) ||
+      tx(e.h, lang).toLowerCase().includes(query))
+  }, [query, region, lang])
+
+  return (
+    <Modal title={copy.btnMesswerte} copy={copy} onClose={onClose}>
+      <div className={styles.split}>
+        <nav className={styles.sidebar} aria-label={copy.chooseRegion}>
           {regions.map(r => (
-            <button
-              key={r.id}
-              className={`${styles.regionBtn} ${!q && r.id === regionId ? styles.regionActive : ''}`}
+            <button key={r.id}
+              className={`${styles.navBtn} ${r.id === regionId ? styles.navActive : ''}`}
               style={{ '--ref-color': r.color }}
-              onClick={() => { setRegionId(r.id); setQuery('') }}
-            >
-              <span className={styles.regionDot} />
+              onClick={() => { setRegionId(r.id); setQ('') }}>
+              <span className={styles.dot} />
               <span>{tx(r.name, lang)}</span>
-              <span className={styles.regionCount}>{r.entries.length}</span>
+              <span className={styles.count}>{r.entries.length}</span>
             </button>
           ))}
         </nav>
 
-        {/* Rechte Spalte: Tabellen */}
-        <div className={styles.detail}>
-          {visible.length === 0 && <p className={styles.empty}>{copy.empty}</p>}
-          {visible.map(r => (
-            <div key={r.id} className={styles.panel} style={{ '--ref-color': r.color }}>
-              {q && <h3 className={styles.panelTitle}>{tx(r.name, lang)}</h3>}
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    <th>{copy.colStruktur}</th>
-                    <th>{isClass ? copy.colStufen : copy.colWert}</th>
-                    <th>{isClass ? copy.colBedeutung : copy.colHinweis}</th>
+        <div className={styles.content} style={{ '--ref-color': region.color }}>
+          <input className={styles.search} type="search" placeholder={copy.search}
+            value={q} onChange={e => setQ(e.target.value)} />
+          {rows.length === 0 ? <p className={styles.empty}>{copy.empty}</p> : (
+            <table className={styles.table}>
+              <thead><tr>
+                <th>{copy.colStruktur}</th><th>{copy.colWert}</th><th>{copy.colHinweis}</th>
+              </tr></thead>
+              <tbody>
+                {rows.map((e, i) => (
+                  <tr key={i}>
+                    <td className={styles.cellName}>{tx(e.s, lang)}</td>
+                    <td className={styles.cellVal}>{e.v}</td>
+                    <td className={styles.cellNote}>{tx(e.h, lang)}</td>
                   </tr>
-                </thead>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+      </div>
+    </Modal>
+  )
+}
+
+/* ── Klassifikationen: Thema/Item → Kompakt + Vollständig + Quelle ── */
+function KlassifikationenModal({ copy, lang, onClose }) {
+  const topics = REF_DATA.klassifikationen
+  const [sel, setSel] = useState({ topic: topics[0].id, item: topics[0].items[0].id })
+  const [q, setQ] = useState('')
+  const query = q.trim().toLowerCase()
+
+  const matches = (it) =>
+    tx(it.name, lang).toLowerCase().includes(query) ||
+    tx(it.name, 'de').toLowerCase().includes(query) ||
+    tx(it.kompakt, lang).toLowerCase().includes(query)
+
+  const visibleTopics = useMemo(() => {
+    if (!query) return topics
+    return topics
+      .map(t => ({ ...t, items: t.items.filter(matches) }))
+      .filter(t => t.items.length)
+  }, [query, lang])
+
+  const topic = topics.find(t => t.id === sel.topic)
+  const item = topic?.items.find(i => i.id === sel.item)
+
+  return (
+    <Modal title={copy.btnKlass} copy={copy} onClose={onClose}>
+      <div className={styles.split}>
+        <nav className={styles.sidebar} aria-label={copy.chooseClass}>
+          <input className={styles.search} type="search" placeholder={copy.search}
+            value={q} onChange={e => setQ(e.target.value)} />
+          {visibleTopics.length === 0 && <p className={styles.empty}>{copy.empty}</p>}
+          {visibleTopics.map(t => (
+            <div key={t.id} className={styles.navGroup}>
+              <div className={styles.navGroupTitle} style={{ '--ref-color': t.color }}>
+                <span className={styles.dot} />{tx(t.name, lang)}
+              </div>
+              {t.items.map(it => (
+                <button key={it.id}
+                  className={`${styles.navSub} ${item?.id === it.id ? styles.navActive : ''}`}
+                  style={{ '--ref-color': t.color }}
+                  onClick={() => setSel({ topic: t.id, item: it.id })}>
+                  {tx(it.name, lang)}
+                </button>
+              ))}
+            </div>
+          ))}
+        </nav>
+
+        <div className={styles.content} style={{ '--ref-color': topic?.color }}>
+          {!item ? <p className={styles.empty}>{copy.pickHint}</p> : (
+            <article className={styles.detail}>
+              <h4 className={styles.detailTitle}>{tx(item.name, lang)}</h4>
+
+              <div className={styles.kompaktBox}>
+                <span className={styles.kompaktLabel}>{copy.kompakt}</span>
+                <p>{tx(item.kompakt, lang)}</p>
+              </div>
+
+              <div className={styles.vollLabel}>{copy.voll}</div>
+              <table className={styles.table}>
+                <thead><tr>{item.cols.map((c, i) => <th key={i}>{tx(c, lang)}</th>)}</tr></thead>
                 <tbody>
-                  {r.entries.map((e, i) => (
-                    <tr key={i}>
-                      <td className={styles.cellName}>{tx(e.s, lang)}</td>
-                      <td className={styles.cellVal}>{e.v}</td>
-                      <td className={styles.cellNote}>{tx(e.h, lang)}</td>
+                  {item.rows.map((row, ri) => (
+                    <tr key={ri}>
+                      {row.map((cell, ci) => (
+                        <td key={ci} className={ci === 0 ? styles.cellVal : styles.cellNote}>{tx(cell, lang)}</td>
+                      ))}
                     </tr>
                   ))}
                 </tbody>
               </table>
-            </div>
-          ))}
+
+              <p className={styles.refLine}>
+                <span>{copy.reference}:</span> {item.ref}
+              </p>
+            </article>
+          )}
         </div>
       </div>
-
-      <p className={styles.disclaimer}>⚠️ {copy.disclaimer}</p>
-    </section>
+    </Modal>
   )
 }
