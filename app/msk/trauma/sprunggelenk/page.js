@@ -27,7 +27,7 @@ const CONTENT = {
       { id: 'stabilitaet', label: 'Stabilität', icon: '⚠️' },
       { id: 'ct', label: 'CT-Indikationen', icon: '◫' },
       { id: 'fall', label: 'Fallbeispiel', icon: '🧪' },
-      { id: 'takehome', label: 'Take home', icon: '☾' },
+      { id: 'takehome', label: 'Take home message', icon: '💡' },
     ],
     heroCards: [
       { value: '2 Ebenen', label: 'Röntgen als Basis', text: 'a.-p./Mortise und seitlich' },
@@ -129,7 +129,7 @@ const CONTENT = {
       { id: 'stabilitaet', label: 'Stability', icon: '⚠️' },
       { id: 'ct', label: 'CT indications', icon: '◫' },
       { id: 'fall', label: 'Case', icon: '🧪' },
-      { id: 'takehome', label: 'Take home', icon: '☾' },
+      { id: 'takehome', label: 'Take home message', icon: '💡' },
     ],
     heroCards: [
       { value: '2 views', label: 'radiography first', text: 'AP/mortise and lateral' },

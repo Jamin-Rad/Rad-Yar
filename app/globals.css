@@ -146,6 +146,7 @@ html[data-theme='dark'] .divider {
 
 button[data-section-id='takehome'] {
   font-weight: 950 !important;
+  font-family: var(--font-main) !important;
   color: #b45309 !important;
   background: linear-gradient(135deg, rgba(251, 191, 36, .18), rgba(249, 115, 22, .10)) !important;
   border: 1px solid rgba(245, 158, 11, .28) !important;
@@ -153,6 +154,7 @@ button[data-section-id='takehome'] {
 
 button[data-section-id='takehome'] strong {
   font-weight: 950 !important;
+  font-family: var(--font-main) !important;
 }
 
 button[data-section-id='takehome'] span:first-child {
@@ -169,7 +171,13 @@ section#takehome h2,
 section#takehome > button:first-child h2,
 section#takehome .sectionHead h2 {
   font-weight: 950 !important;
+  font-family: var(--font-main) !important;
   color: #92400e !important;
+}
+
+section table tbody td:first-child {
+  font-weight: 850;
+  color: var(--text-strong);
 }
 
 [dir='rtl'] section#mrt table th:first-child,

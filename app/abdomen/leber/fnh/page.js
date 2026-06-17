@@ -25,7 +25,7 @@ const CONTENT = {
       { "id": "ct", "label": "CT", "icon": "🩻" },
       { "id": "mrt", "label": "MRT", "icon": "🧲" },
       { "id": "atypisch", "label": "Atypische FNH", "icon": "⚠️" },
-      { "id": "takehome", "label": "Take home", "icon": "☾" }
+      { "id": "takehome", "label": "Take home message", "icon": "💡" }
     ],
     "heroCards": [
       { "value": "2.-häufigste", "label": "benigne Leberläsion", "text": "nach dem Hämangiom" },
@@ -128,7 +128,7 @@ const CONTENT = {
       { "id": "ct", "label": "CT", "icon": "🩻" },
       { "id": "mrt", "label": "MRI", "icon": "🧲" },
       { "id": "atypisch", "label": "Atypical FNH", "icon": "⚠️" },
-      { "id": "takehome", "label": "Take home", "icon": "☾" }
+      { "id": "takehome", "label": "Take home message", "icon": "💡" }
     ],
     "heroCards": [
       { "value": "2nd most common", "label": "benign liver lesion", "text": "after haemangioma" },
@@ -231,7 +231,7 @@ const CONTENT = {
       { "id": "ct", "label": "CT", "icon": "🩻" },
       { "id": "mrt", "label": "MRI", "icon": "🧲" },
       { "id": "atypisch", "label": "FNH آتیپیک", "icon": "⚠️" },
-      { "id": "takehome", "label": "Take home", "icon": "☾" }
+      { "id": "takehome", "label": "Take home message", "icon": "💡" }
     ],
     "heroCards": [
       { "value": "دومین شایع‌ترین", "label": "ضایعه خوش‌خیم کبد", "text": "بعد از همانژیوم" },

@@ -2296,7 +2296,7 @@ export default function MeniskusPage() {
   const takeHomeCopy = TAKE_HOME_COPY[lang] || TAKE_HOME_COPY.de
   const isRTL = lang === 'fa'
   const pageSections = useMemo(
-    () => [...copy.sections, { id: 'takehome', label: takeHomeCopy.sectionLabel, icon: '⭐', important: true }],
+    () => [...copy.sections, { id: 'takehome', label: takeHomeCopy.sectionLabel, icon: '💡', important: true }],
     [copy.sections, takeHomeCopy.sectionLabel]
   )
   const takeHomeItems = useMemo(() => [

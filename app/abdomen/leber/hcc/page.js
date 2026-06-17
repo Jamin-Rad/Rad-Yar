@@ -25,7 +25,7 @@ const CONTENT = {
       { id: 'mrt', label: 'MRT & LI-RADS', icon: '🧲' },
       { id: 'infiltrativ', label: 'Infiltratives HCC', icon: '⚠️' },
       { id: 'fallbeispiele', label: 'Fallbeispiele', icon: '🧪' },
-      { id: 'takehome', label: 'Take home', icon: '☾' },
+      { id: 'takehome', label: 'Take home message', icon: '💡' },
     ],
     heroCards: [
       { value: 'APHE', label: 'arterielle Hypervaskularisation', text: 'non-rim arterial phase hyperenhancement' },
@@ -127,7 +127,7 @@ const CONTENT = {
     sections: [
       { id: 'grundlagen', label: 'Basics', icon: '🧬' }, { id: 'ct', label: 'Dynamic CT', icon: '🩻' },
       { id: 'mrt', label: 'MRI & LI-RADS', icon: '🧲' }, { id: 'infiltrativ', label: 'Infiltrative HCC', icon: '⚠️' },
-      { id: 'fallbeispiele', label: 'Cases', icon: '🧪' }, { id: 'takehome', label: 'Take home', icon: '☾' },
+      { id: 'fallbeispiele', label: 'Cases', icon: '🧪' }, { id: 'takehome', label: 'Take home message', icon: '💡' },
     ],
     heroCards: [
       { value: 'APHE', label: 'arterial hyperenhancement', text: 'non-rim arterial phase hyperenhancement' },
@@ -210,7 +210,7 @@ const CONTENT = {
     sections: [
       { id: 'grundlagen', label: 'مبانی', icon: '🧬' }, { id: 'ct', label: 'CT دینامیک', icon: '🩻' },
       { id: 'mrt', label: 'MRI و LI-RADS', icon: '🧲' }, { id: 'infiltrativ', label: 'HCC انفیلتراتیو', icon: '⚠️' },
-      { id: 'fallbeispiele', label: 'نمونه کیس‌ها', icon: '🧪' }, { id: 'takehome', label: 'Take home', icon: '☾' },
+      { id: 'fallbeispiele', label: 'نمونه کیس‌ها', icon: '🧪' }, { id: 'takehome', label: 'Take home message', icon: '💡' },
     ],
     heroCards: [
       { value: 'APHE', label: 'هایپرانهانسمنت شریانی', text: 'non-rim arterial phase hyperenhancement' },

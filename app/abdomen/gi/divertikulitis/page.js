@@ -46,7 +46,7 @@ const CONTENT = {
       { id: 'komplikationen', label: 'Komplikationen', icon: '⚠️' },
       { id: 'befundung', label: 'Befundung', icon: '📝' },
       { id: 'faelle', label: 'Fallbeispiele', icon: '🔬' },
-      { id: 'takehome', label: 'Take home', icon: '💡' },
+      { id: 'takehome', label: 'Take home message', icon: '💡' },
     ],
     heroCards: [
       { value: 'CT C+', label: 'Methode der Wahl', text: 'Ausdehnung und Komplikationen erfassen' },
@@ -167,7 +167,7 @@ const CONTENT = {
       { id: 'komplikationen', label: 'Complications', icon: '⚠️' },
       { id: 'befundung', label: 'Reporting', icon: '📝' },
       { id: 'faelle', label: 'Cases', icon: '🔬' },
-      { id: 'takehome', label: 'Take home', icon: '💡' },
+      { id: 'takehome', label: 'Take home message', icon: '💡' },
     ],
     heroCards: [
       { value: 'C+ CT', label: 'method of choice', text: 'define extent and complications' },

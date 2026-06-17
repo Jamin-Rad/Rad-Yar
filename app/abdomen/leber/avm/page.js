@@ -25,7 +25,7 @@ const CONTENT = {
       { "id": "ct", "label": "CT", "icon": "🩻" },
       { "id": "mrt", "label": "MRT", "icon": "🧲" },
       { "id": "hht", "label": "HHT & Leber", "icon": "🩸" },
-      { "id": "takehome", "label": "Take home", "icon": "☾" }
+      { "id": "takehome", "label": "Take home message", "icon": "💡" }
     ],
     "heroCards": [
       { "value": "Arterioportal", "label": "häufigster Shunt-Typ", "text": "A. hepatica → Pfortaderast" },
@@ -125,7 +125,7 @@ const CONTENT = {
       { "id": "ct", "label": "CT", "icon": "🩻" },
       { "id": "mrt", "label": "MRI", "icon": "🧲" },
       { "id": "hht", "label": "HHT & Liver", "icon": "🩸" },
-      { "id": "takehome", "label": "Take home", "icon": "☾" }
+      { "id": "takehome", "label": "Take home message", "icon": "💡" }
     ],
     "heroCards": [
       { "value": "Arterioportal", "label": "most common shunt type", "text": "hepatic artery → portal vein branch" },
@@ -225,7 +225,7 @@ const CONTENT = {
       { "id": "ct", "label": "CT", "icon": "🩻" },
       { "id": "mrt", "label": "MRI", "icon": "🧲" },
       { "id": "hht", "label": "HHT و کبد", "icon": "🩸" },
-      { "id": "takehome", "label": "Take home", "icon": "☾" }
+      { "id": "takehome", "label": "Take home message", "icon": "💡" }
     ],
     "heroCards": [
       { "value": "آرتریوپورتال", "label": "شایع‌ترین نوع شانت", "text": "شریان کبدی ← شاخه ورید پورت" },

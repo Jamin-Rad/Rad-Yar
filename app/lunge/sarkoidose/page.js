@@ -52,8 +52,8 @@ const CONTENT = {
       },
       {
         "id": "takehome",
-        "label": "Take home",
-        "icon": "☾"
+        "label": "Take home message",
+        "icon": "💡"
       }
     ],
     "heroCards": [
@@ -379,8 +379,8 @@ const CONTENT = {
       },
       {
         "id": "takehome",
-        "label": "Take home",
-        "icon": "☾"
+        "label": "Take home message",
+        "icon": "💡"
       }
     ],
     "heroCards": [
@@ -706,8 +706,8 @@ const CONTENT = {
       },
       {
         "id": "takehome",
-        "label": "Take home",
-        "icon": "☾"
+        "label": "Take home message",
+        "icon": "💡"
       }
     ],
     "heroCards": [

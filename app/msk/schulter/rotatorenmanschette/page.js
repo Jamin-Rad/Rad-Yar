@@ -25,7 +25,7 @@ const CONTENT = {
       { "id": "partialruptur", "label": "Partialrupturen", "icon": "🔍" },
       { "id": "komplettruptur", "label": "Komplettrupturen", "icon": "⚠️" },
       { "id": "begleit", "label": "Begleitbefunde", "icon": "🩹" },
-      { "id": "takehome", "label": "Take home", "icon": "☾" }
+      { "id": "takehome", "label": "Take home message", "icon": "💡" }
     ],
     "heroCards": [
       { "value": "Supraspinatus", "label": "häufigste betroffene Sehne", "text": "v. a. in der „Critical Zone“ vor dem Ansatz" },
@@ -130,7 +130,7 @@ const CONTENT = {
       { "id": "partialruptur", "label": "Partial Tears", "icon": "🔍" },
       { "id": "komplettruptur", "label": "Full-Thickness Tears", "icon": "⚠️" },
       { "id": "begleit", "label": "Associated Findings", "icon": "🩹" },
-      { "id": "takehome", "label": "Take home", "icon": "☾" }
+      { "id": "takehome", "label": "Take home message", "icon": "💡" }
     ],
     "heroCards": [
       { "value": "Supraspinatus", "label": "most commonly affected tendon", "text": "especially in the \"critical zone\" near its insertion" },
@@ -235,7 +235,7 @@ const CONTENT = {
       { "id": "partialruptur", "label": "پارگی‌های جزئی", "icon": "🔍" },
       { "id": "komplettruptur", "label": "پارگی‌های کامل", "icon": "⚠️" },
       { "id": "begleit", "label": "یافته‌های همراه", "icon": "🩹" },
-      { "id": "takehome", "label": "Take home", "icon": "☾" }
+      { "id": "takehome", "label": "Take home message", "icon": "💡" }
     ],
     "heroCards": [
       { "value": "سوپراسپیناتوس", "label": "شایع‌ترین تاندون درگیر", "text": "به‌ویژه در «Critical Zone» نزدیک محل اتصال" },
