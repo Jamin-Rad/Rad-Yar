@@ -183,12 +183,14 @@
 }
 .navBtn:hover { background: #f1f5f9; color: #1a2051; }
 .navBtn:hover .navIconWrap { opacity: 1; }
-.navActiveBlue {
+.navActiveBlue,
+.navActiveGreen {
   border-color: color-mix(in srgb, var(--ref-color) 45%, transparent);
   color: #1a2051;
   background: color-mix(in srgb, var(--ref-color) 8%, #fff);
 }
-.navActiveBlue .navIconWrap { opacity: 1; }
+.navActiveBlue .navIconWrap,
+.navActiveGreen .navIconWrap { opacity: 1; }
 
 .navIconWrap {
   display: flex; align-items: center; justify-content: center;
@@ -316,12 +318,15 @@
 /* ── Modal breit (Rechner) ────────────────────── */
 .modalWide { max-width: 1100px; }
 
-/* ── Rechner-Gitter ──────────────────────────── */
-.rechnerGrid {
-  padding: 20px 24px; overflow-y: auto;
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px;
+/* ── Rechner-Gitter (alt, ungenutzt) ──────────── */
+.rechnerGrid { display: none; }
+
+/* ── Rechner Unter-Grid (im content-Bereich) ─── */
+.rechnerSubGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 16px;
   align-items: start;
-  flex: 1; min-height: 0;
 }
 
 .rechnerCard {

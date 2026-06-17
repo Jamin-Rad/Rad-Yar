@@ -178,15 +178,73 @@ function KlassifikationenModal({ copy, lang, onClose }) {
 }
 
 /* ═══════════════════════════════════════════════
-   RECHNER-MODAL
+   RECHNER-GRUPPEN
    ═══════════════════════════════════════════════ */
+const RECHNER_GROUPS = [
+  {
+    id: 'neuro-gefaesse',
+    name: { de: 'Neuro & Gefäße', en: 'Neuro & Vessels', fa: 'نورو و عروق' },
+    color: '#7c3aed', iconId: 'neuro',
+    calcIds: ['icb', 'nascet', 'ecst-nascet'],
+  },
+  {
+    id: 'herz-thorax',
+    name: { de: 'Herz & Thorax', en: 'Heart & Thorax', fa: 'قلب و توراکس' },
+    color: '#be185d', iconId: 'herz',
+    calcIds: ['ktq', 'fleischner'],
+  },
+  {
+    id: 'urogenital',
+    name: { de: 'Urogenital', en: 'Urogenital', fa: 'اوروژنیتال' },
+    color: '#0ea5e9', iconId: 'urogenital',
+    calcIds: ['prostata-psa'],
+  },
+  {
+    id: 'onko-ws',
+    name: { de: 'Onko & Wirbelsäule', en: 'Onco & Spine', fa: 'انکولوژی و ستون فقرات' },
+    color: '#0d9488', iconId: 'wirbelsaeule',
+    calcIds: ['recist', 'meyerding'],
+  },
+]
+
+/* ── Rechner-Modal ────────────────────────────── */
 function RechnerModal({ copy, lang, onClose }) {
+  const [groupId, setGroupId] = useState(RECHNER_GROUPS[0].id)
+  const group = RECHNER_GROUPS.find(g => g.id === groupId) || RECHNER_GROUPS[0]
+  const calcs = group.calcIds.map(id => REF_DATA.rechner.find(c => c.id === id)).filter(Boolean)
+
   return (
     <Modal title={copy.btnRechner} copy={copy} onClose={onClose} accentClass={styles.headGreen} wide>
-      <div className={styles.rechnerGrid}>
-        {REF_DATA.rechner.map(calc => (
-          <RechnerCard key={calc.id} calc={calc} lang={lang} />
-        ))}
+      <div className={styles.split}>
+        {/* Sidebar – Gruppen */}
+        <nav className={styles.sidebar}>
+          {RECHNER_GROUPS.map(g => (
+            <button key={g.id}
+              className={`${styles.navBtn} ${g.id === groupId ? styles.navActiveGreen : ''}`}
+              style={{'--ref-color': g.color}}
+              onClick={() => setGroupId(g.id)}>
+              <span className={styles.navIconWrap} style={{color: g.color}}>
+                <RegionIcon id={g.iconId} size={16} />
+              </span>
+              <span className={styles.navLabel}>{tx(g.name, lang)}</span>
+            </button>
+          ))}
+        </nav>
+
+        {/* Inhalt – Rechner der gewählten Gruppe */}
+        <div className={styles.content} style={{'--ref-color': group.color}}>
+          <h2 className={styles.regionHeading}>
+            <span className={styles.regionHeadingIcon} style={{color: group.color}}>
+              <RegionIcon id={group.iconId} size={22} />
+            </span>
+            <span style={{color: group.color}}>{tx(group.name, lang)}</span>
+          </h2>
+          <div className={styles.rechnerSubGrid}>
+            {calcs.map(calc => (
+              <RechnerCard key={calc.id} calc={calc} lang={lang} />
+            ))}
+          </div>
+        </div>
       </div>
     </Modal>
   )
