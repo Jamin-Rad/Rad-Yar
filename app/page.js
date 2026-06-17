@@ -2,6 +2,7 @@ import { LanguageProvider } from '@/providers/LanguageProvider'
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import LernPfade from '@/components/LernPfade'
+import WichtigeReferenzen from '@/components/WichtigeReferenzen'
 import Footer from '@/components/Footer'
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <Hero />
       <div className="divider" />
       <LernPfade />
+      <WichtigeReferenzen />
       <Footer />
     </LanguageProvider>
   )

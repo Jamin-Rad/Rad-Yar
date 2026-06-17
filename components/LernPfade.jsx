@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { CURRICULUM, getFachTitle, t } from '@/data/curriculum'
-import { ChapterIcon } from '@/components/ChapterIcons'
 import styles from './LernPfade.module.css'
 
 const COLORS = [
@@ -101,26 +100,6 @@ function collectReadyTopics() {
   })
 }
 
-function buildLatestItems(lang, copy) {
-  return collectReadyTopics()
-    .filter(({ topic }) => topic?.ready && topic?.link)
-    .slice(0, 6)
-    .map(({ topic, area, chapter }) => {
-      const title = localizeTitle(topic, lang)
-      const chapterTitle = localizeTitle(chapter, lang) || chapter?.title || ''
-      const areaTitle = getFachTitle(area, lang) || area?.id || ''
-      const metaBase = [areaTitle, chapterTitle].filter(Boolean).join(' · ')
-
-      return {
-        areaId: area?.id,
-        chapter,
-        title,
-        meta: `${metaBase} · ${copy.learn}`,
-        href: topic.link,
-      }
-    })
-}
-
 function buildFallTopicItems(lang) {
   return collectReadyTopics()
     .filter(({ topic }) => topic.fallLink || topic.link)
@@ -140,7 +119,6 @@ export default function LernPfade() {
   const [modal, setModal] = useState(null) // null | 'fall'
   const fm = FALL_MODAL[lang] || FALL_MODAL.de
   const latest = LATEST_COPY[lang] || LATEST_COPY.de
-  const latestItems = buildLatestItems(lang, latest)
   const fallTopicItems = buildFallTopicItems(lang)
   const withLang = (href) => {
     if (lang === 'de') return href
@@ -183,30 +161,6 @@ export default function LernPfade() {
             </div>
           )
         })}
-      </div>
-
-      <div className={styles.latestBox}>
-        <div className={styles.latestHeader}>
-          <div>
-            <div className={styles.latestLabel}>✨ {latest.label}</div>
-            <h3 className={styles.latestTitle}>{latest.title}</h3>
-            <p className={styles.latestDesc}>{latest.desc}</p>
-          </div>
-        </div>
-        <div className={styles.latestGrid}>
-          {latestItems.map(item => (
-            <Link key={item.href} href={withLang(item.href)} className={styles.latestCard}>
-              <span className={styles.latestIcon}>
-                <ChapterIcon fachId={item.areaId} kapitel={item.chapter} className={styles.latestIconSvg} />
-              </span>
-              <span className={styles.latestText}>
-                <strong>{item.title}</strong>
-                <small>{item.meta}</small>
-              </span>
-              <span className={styles.latestArrow}>{latest.open}</span>
-            </Link>
-          ))}
-        </div>
       </div>
 
       {/* ── FALLBEISPIELE MODAL ── */}
