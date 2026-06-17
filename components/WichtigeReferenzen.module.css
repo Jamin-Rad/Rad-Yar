@@ -1,9 +1,7 @@
 /* ── Section ──────────────────────────────────── */
 .section {
   padding: 60px 7vw 70px;
-  background: #f8fafc;
-  border-top: 1px solid #e2e8f0;
-  border-bottom: 1px solid #e2e8f0;
+  background: #fff;
 }
 
 /* ── Glassmorphismus-Header (helles Frosted-Glass) ─ */
