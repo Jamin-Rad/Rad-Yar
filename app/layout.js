@@ -47,11 +47,6 @@ export const metadata = {
   icons: { icon: '/favicon.svg', shortcut: '/favicon.svg' },
 }
 
-export const viewport = {
-  width: 'device-width',
-  initialScale: 1,
-}
-
 export default function RootLayout({ children }) {
   return (
     <ClerkProvider
