@@ -53,11 +53,11 @@
   position: absolute;
   inset: 0;
   color: transparent;
-  background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,.72) 32%, transparent 52%);
+  background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,.18) 32%, transparent 52%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  opacity: .72;
+  opacity: .5;
   transform: translateY(-1px);
   pointer-events: none;
 }
