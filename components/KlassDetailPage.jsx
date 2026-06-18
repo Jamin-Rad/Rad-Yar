@@ -189,7 +189,12 @@ export default function KlassDetailPage({ topic, item }) {
 
           {/* Quelle */}
           <p className={styles.ref}>
-            <span className={styles.refLabel}>{copy.reference}:</span> {item.ref}
+            <span className={styles.refLabel}>{copy.reference}:</span>{' '}
+            {item.refUrl ? (
+              <a href={item.refUrl} target="_blank" rel="noopener noreferrer" className={styles.refLink}>
+                {item.ref}
+              </a>
+            ) : item.ref}
           </p>
 
           <p className={styles.disclaimer}>⚠️ {copy.disclaimer}</p>
