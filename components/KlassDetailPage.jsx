@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { REF_COPY, REF_DATA, tx } from '@/data/referenzen'
 import styles from './KlassDetailPage.module.css'
@@ -144,6 +145,34 @@ export default function KlassDetailPage({ topic, item }) {
           <div className={styles.beschreibungBox} style={{ borderColor: color + '44', background: color + '0d' }}>
             <p className={styles.beschreibungText}>{tx(item.kompakt, lang)}</p>
           </div>
+
+          {/* Bild (optional) */}
+          {item.image && (
+            <figure className={styles.imageFigure}>
+              <div className={styles.imageWrap}>
+                <Image
+                  src={item.image.src}
+                  alt={tx(item.image.alt, lang)}
+                  width={900}
+                  height={600}
+                  className={styles.image}
+                  style={{ objectFit: 'contain' }}
+                  unoptimized
+                />
+              </div>
+              <figcaption className={styles.imageCaption}>
+                Case courtesy of{' '}
+                <strong>{item.image.attribution.name}</strong>,{' '}
+                <a href={item.image.attribution.sourceUrl} target="_blank" rel="noopener noreferrer">
+                  Radiopaedia.org
+                </a>
+                . From the case{' '}
+                <a href={item.image.attribution.caseUrl} target="_blank" rel="noopener noreferrer">
+                  rID: {item.image.attribution.caseId}
+                </a>
+              </figcaption>
+            </figure>
+          )}
 
           {/* Einfache Übersicht (collapsible, nur wenn vorhanden) */}
           {item.einfach && (

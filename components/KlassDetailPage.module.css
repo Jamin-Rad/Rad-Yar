@@ -84,6 +84,31 @@
 }
 .beschreibungText { margin: 0; font-size: 15px; color: #334155; line-height: 1.65; }
 
+/* ── Bild ─────────────────────────────────────── */
+.imageFigure {
+  margin: 0 0 28px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1.5px solid #eef2f7;
+}
+.imageWrap {
+  background: #f0f4f8;
+  display: flex; align-items: center; justify-content: center;
+  max-height: 340px; overflow: hidden;
+}
+.image {
+  width: 100%; height: auto; max-height: 340px;
+  display: block; object-fit: contain;
+}
+.imageCaption {
+  padding: 10px 16px;
+  font-size: 12px; color: #64748b; line-height: 1.55;
+  border-top: 1px solid #eef2f7;
+  background: #fafbfc;
+}
+.imageCaption a { color: #0ea5e9; text-decoration: none; }
+.imageCaption a:hover { text-decoration: underline; }
+
 /* ── Collapse-Sektionen ───────────────────────── */
 .collapseWrap { margin-bottom: 16px; }
 .collapseBtn {
@@ -165,6 +190,9 @@
   background: color-mix(in srgb, var(--ref-color) 16%, #111b2d); color: #f8fafc;
 }
 :global(html[data-theme='dark']) .beschreibungText { color: #c2cede; }
+:global(html[data-theme='dark']) .imageFigure { border-color: rgba(148,163,184,0.15); }
+:global(html[data-theme='dark']) .imageWrap { background: #0b1526; }
+:global(html[data-theme='dark']) .imageCaption { background: rgba(255,255,255,0.03); border-top-color: rgba(148,163,184,0.12); color: #6b7f9a; }
 :global(html[data-theme='dark']) .otherTitle { color: #6b7f9a; }
 :global(html[data-theme='dark']) .collapseBtn { background: rgba(255,255,255,0.04); border-color: rgba(148,163,184,0.18); }
 :global(html[data-theme='dark']) .collapseBtn:hover { background: color-mix(in srgb, var(--ref-color) 10%, #111b2d); }

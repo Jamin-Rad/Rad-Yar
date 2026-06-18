@@ -472,6 +472,16 @@ export const KLASSIFIKATIONEN = [
           fa: 'ضایعات ماده سفید عروق کوچک (WMH) را در FLAIR/T2 MRI در درجه ۰–۳ به‌عنوان معیار بیماری میکروآنژیوپاتی مغزی درجه‌بندی می‌کند.',
         },
         ref: 'Fazekas et al., AJR 1987',
+        image: {
+          src: 'https://prod-images-static.radiopaedia.org/images/12735148/e69c30bde439e5a216128284f7a681_big_gallery.jpeg',
+          alt: { de: 'Fazekas-Skala MRT-Beispiel', en: 'Fazekas scale MRI example', fa: 'نمونه MRI مقیاس فازکاس' },
+          attribution: {
+            name: 'Bruno Di Muzio',
+            sourceUrl: 'https://radiopaedia.org/?lang=us',
+            caseUrl: 'https://radiopaedia.org/cases/36927?lang=us',
+            caseId: '36927',
+          },
+        },
         cols: [{ de: 'Grad', en: 'Grade', fa: 'درجه' }, { de: 'Befund', en: 'Finding', fa: 'یافته' }],
         rows: [
           ['0', { de: 'Keine oder einzelne punktförmige Läsionen', en: 'None or single punctate lesions', fa: 'بدون یا یک ضایعه نقطه‌ای' }],
