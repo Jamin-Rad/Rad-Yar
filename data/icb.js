@@ -258,58 +258,61 @@ export const ICB_LESSON = {
 
 export const ICB_LEARNING_CASES = [
   {
-    id: 'icb-hypertensiv-akut',
-    image: '/icb/ct-akut.svg',
-    url: 'https://radiopaedia.org/articles/intracranial-haemorrhage?lang=us',
-    credit: 'Schematische Darstellung · Rad-Yar.de · basierend auf Gomori et al. 1985',
-    label: L('CT · akut · putaminal', 'CT · acute · putaminal', 'CT · حاد · پوتامینال'),
+    id: 'icb-cerebellum-akut',
+    // CT axial: hyperdens Kleinhirnblutung rechts – aus dem Lehrmaterial
+    images: ['/icb/case-ct-cerebellum-akut.png', '/icb/case-ct-cerebellum-gross.png'],
+    url: 'https://radiopaedia.org/articles/intracerebral-haemorrhage?lang=us',
+    credit: 'Bildmaterial aus dem Lehrmaterial · Radiopaedia CC BY-NC-SA 3.0',
+    label: L('CT · axial · nativ · akute Kleinhirnblutung', 'CT · axial · NCCT · acute cerebellar haemorrhage', 'CT · اکسیال · بدون کنتراست · خونریزی مخچه حاد'),
     title: L(
-      'Hypertensive ICB · akutes Stadium',
-      'Hypertensive ICB · acute stage',
-      'ICB هیپرتانسیو · مرحله حاد'
+      'Hypertensive ICB · Kleinhirn · CT nativ',
+      'Hypertensive ICB · Cerebellum · NCCT',
+      'ICB هیپرتانسیو · مخچه · CT بدون کنتراست'
     ),
     text: L(
-      '68-jähriger Patient mit plötzlicher linksseitiger Hemiparese und Dysarthrie. Die native CCT zeigt ein hyperdens imponiierendes Hämatom (65 HU) im rechten Putamen mit beginnendem perifokalem Ödem. Kein Ventrikeleinbruch. Entspricht der typischen Lokalisation einer hypertensiven ICB.',
-      'A 68-year-old man with sudden left hemiparesis and dysarthria. NCCT shows a hyperattenuating haematoma (65 HU) in the right putamen with early perilesional oedema. No intraventricular extension. Typical location for hypertensive ICB.',
-      'مرد ۶۸ ساله با همی‌پارزی چپ ناگهانی و دیزآرتری. CT بدون کنتراست هماتوم هایپردنس (۶۵ HU) در پوتامن راست با ادم اولیه اطراف نشان می‌دهد. بدون نفوذ بطنی. محل تیپیک ICB هیپرتانسیو.'
+      '72-jährige Patientin mit arterieller Hypertonie, akutem Schwindel und Ataxie. Bild links (akut): Hyperdens imponierende Kleinhirnblutung rechts, ~1 cm, kein perifokales Ödem. Bild rechts (Folge-CT): Zunahme auf ~3 cm mit deutlichem Ödemsaum und beginnender Kompression des 4. Ventrikels – typische Expansion einer hypertensiven ICB.',
+      'A 72-year-old woman with hypertension, acute dizziness and ataxia. Left image (acute): hyperattenuating right cerebellar haemorrhage, ~1 cm, no perilesional oedema. Right image (follow-up CT): expansion to ~3 cm with oedema rim and early compression of the 4th ventricle — typical progression of hypertensive ICB.',
+      'خانم ۷۲ ساله با فشار خون بالا، سرگیجه حاد و آتاکسی. تصویر چپ (حاد): خونریزی هایپردنس مخچه راست، ~۱ سانتی‌متر. تصویر راست (CT پیگیری): گسترش به ~۳ سانتی‌متر با حلقه ادم و فشار روی بطن چهارم — پیشرفت تیپیک ICB هیپرتانسیو.'
     ),
-    alt: L('CT schema ICB Putamen hyperdens', 'CT schema ICB putamen hyperattenuating', 'اسکیمای CT ICB پوتامن هایپردنس'),
+    alt: L('CT axial akute Kleinhirnblutung hyperdens', 'CT axial acute cerebellar haemorrhage hyperattenuating', 'CT اکسیال خونریزی حاد مخچه هایپردنس'),
   },
   {
-    id: 'icb-swirl-sign',
-    image: '/icb/ct-swirl.svg',
-    url: 'https://radiopaedia.org/articles/swirl-sign-haemorrhage?lang=us',
-    credit: 'Schematische Darstellung · Rad-Yar.de',
-    label: L('CT · Swirl Sign · aktive Blutung', 'CT · Swirl Sign · active bleeding', 'CT · Swirl Sign · خونریزی فعال'),
+    id: 'icb-t1-subakut',
+    // T1 MRT subakut: hell (Wendepunkt früh subakut)
+    images: ['/icb/case-t1-subakut-bright.jpg', '/icb/case-swi-blooming.jpg'],
+    url: 'https://radiopaedia.org/articles/mri-signal-characteristics-of-intracerebral-haemorrhage?lang=us',
+    credit: 'Bildmaterial aus dem Lehrmaterial · Radiopaedia CC BY-NC-SA 3.0',
+    label: L('MRT · T1 · früh subakut → SWI · chronisch', 'MRI · T1 · early subacute → SWI · chronic', 'MRI · T1 · زیرحاد اولیه → SWI · مزمن'),
     title: L(
-      'ICB mit Swirl Sign',
-      'ICB with Swirl Sign',
-      'ICB با Swirl Sign'
+      'MRT-Signalwandel der ICB · T1 hell & SWI-Blooming',
+      'MRI signal evolution · T1 bright & SWI blooming',
+      'تغییر سیگنال MRI · T1 روشن و SWI Blooming'
     ),
     text: L(
-      '72-jährige Patientin unter Antikoagulation. CT nativ: Großes Hämatom im rechten Frontal- und Parietallappen. Innerhalb des hyperdensen Hämatoms fallen hypodense (unkoagulierte) Areale auf – das klassische Swirl Sign. Prädiktiv für Hämatomexpansion. CTA zeigte zudem ein Spot Sign.',
-      'A 72-year-old woman on anticoagulation. NCCT: large haematoma in the right frontal and parietal lobes. Within the hyperattenuating haematoma, hypodense (unclotted) areas are visible — the classic swirl sign. Predictive of haematoma expansion. CTA also showed a spot sign.',
-      'خانم ۷۲ ساله تحت درمان ضدانعقادی. CT بدون کنتراست: هماتوم بزرگ در لوب فرونتال و پاریتال راست. درون هماتوم هایپردنس، مناطق هیپودنس (لخته نشده) دیده می‌شوند — Swirl Sign کلاسیک. پیش‌بینی گسترش هماتوم.'
+      'Bild links (T1 nativ, früh subakut > 3 Tage): Hyperintense Kleinhirnläsion – das Met-Hb ist intrazellulär, Wasser erreicht Fe³⁺, T1 wird hell. Dies ist der wichtigste Wendepunkt im MRT. Bild rechts (SWI, spät subakut/chronisch): Charakteristischer dunkler „Blooming-Saum" durch Hämosiderin in Makrophagen. Persistiert lebenslang – nur SWI detektiert alte Blutungen.',
+      'Left image (T1 without contrast, early subacute >3 days): Hyperintense cerebellar lesion — intracellular metHb allows water to access Fe³⁺, making T1 bright. This is the most important MRI turning point. Right image (SWI, late subacute/chronic): Characteristic dark "blooming rim" from haemosiderin in macrophages. Persists lifelong — only SWI detects old haemorrhage.',
+      'تصویر چپ (T1 بدون کنتراست، زیرحاد اولیه > ۳ روز): ضایعه هایپرانتنس مخچه — Met-Hb داخل سلولی به آب اجازه دسترسی به Fe³⁺ می‌دهد، T1 روشن می‌شود. مهم‌ترین نقطه عطف MRI. تصویر راست (SWI، زیرحاد دیررس/مزمن): حلقه تاریک Blooming از هموسیدرین در ماکروفاژها. تمام عمر باقی می‌ماند.'
     ),
-    alt: L('CT schema Swirl Sign hypodense Areale im Hämatom', 'CT schema swirl sign hypodense areas in haematoma', 'اسکیمای CT Swirl Sign مناطق هیپودنس در هماتوم'),
+    alt: L('MRT T1 hell subakut ICB und SWI Blooming', 'MRI T1 bright subacute ICB and SWI blooming', 'MRI T1 روشن زیرحاد ICB و SWI Blooming'),
   },
   {
-    id: 'icb-mrt-signal',
-    image: '/icb/mrt-signal.svg',
-    url: 'https://radiopaedia.org/articles/mri-of-intracranial-haemorrhage?lang=us',
-    credit: 'Schema nach Gomori et al. 1985 · Edelman et al. 1986 · Bradley 1993 · Rad-Yar.de',
-    label: L('MRT · alle Stadien · Signalverlauf', 'MRI · all stages · signal evolution', 'MRI · تمام مراحل · سیر سیگنال'),
+    id: 'icb-mrt-flowchart',
+    // MRT-Signalflussdiagramm aus dem Lehrdokument
+    image: '/icb/mrt-flowchart.png',
+    url: 'https://radiopaedia.org/articles/intracerebral-haemorrhage?lang=us',
+    credit: 'Bildmaterial aus dem Lehrmaterial · Radiopaedia CC BY-NC-SA 3.0',
+    label: L('MRT · Signalverlauf · Übersichtsdiagramm', 'MRI · signal evolution · overview chart', 'MRI · سیر سیگنال · نمودار کامل'),
     title: L(
-      'MRT-Signalverhalten der ICB über alle Stadien',
-      'MRI signal evolution of ICB across all stages',
-      'سیر سیگنال MRI در ICB در تمام مراحل'
+      'MR-Signalverhalten intrazerebraler Blutungen · 1,5 T',
+      'MRI signal behaviour of intracerebral haemorrhage · 1.5 T',
+      'رفتار سیگنال MRI در خونریزی داخل مغزی · ۱.۵ تسلا'
     ),
     text: L(
-      'Das Diagramm zeigt T1, T2 und T2*/SWI für alle sechs Stadien der Hämatomalterung. Der wichtigste Merksatz: T1-Hyperintensität (früh subakut) = Blutung > 3 Tage. Bright–bright (T1 + T2 hell, spät subakut) imitiert Melanommetastasen. Nur SWI detektiert chronische Blutungen zuverlässig.',
-      'The diagram shows T1, T2 and T2*/SWI for all six stages of haematoma ageing. The most important rule: T1 hyperintensity (early subacute) = haemorrhage >3 days. Bright-bright (T1 + T2 bright, late subacute) mimics melanoma metastases. Only SWI reliably detects chronic haemorrhage.',
-      'این نمودار T1، T2 و T2*/SWI را در شش مرحله پیری هماتوم نشان می‌دهد. مهم‌ترین نکته: هایپرانتنسیتی T1 (زیرحاد اولیه) = خونریزی > ۳ روز. Bright-Bright متاستاز ملانوم را تقلید می‌کند. فقط SWI خونریزی مزمن را به‌طور قابل اعتماد تشخیص می‌دهد.'
+      'Übersichtsflussdiagramm: Das Staging der ICB erfolgt durch Bestimmung des Hämoglobinabbauprodukts und der Erythrozytenintegrität. Hyperakut: Oxy-Hb, iso/hypo T1. Akut: Deoxy-Hb, T2 hypo, SWI Blooming. Früh subakut: intraz. Met-Hb → T1 HELL (Wendepunkt). Spät subakut: extraz. Met-Hb → T1+T2 HELL. Chronisch: Hämosiderin → SWI Blooming-Saum persistiert.',
+      'Overview flowchart: ICB staging is based on the haemoglobin degradation product and erythrocyte integrity. Hyperacute: oxyHb, iso/hypo T1. Acute: deoxyHb, T2 hypo, SWI blooming. Early subacute: intracellular metHb → T1 BRIGHT (turning point). Late subacute: extracellular metHb → T1+T2 BRIGHT. Chronic: haemosiderin → SWI blooming rim persists.',
+      'نمودار کلی: مرحله‌بندی ICB بر اساس محصول تجزیه هموگلوبین و یکپارچگی اریتروسیت است. فوق‌حاد: Oxy-Hb. حاد: Deoxy-Hb، T2 هیپو، Blooming. زیرحاد اولیه: Met-Hb داخل سلولی → T1 روشن (نقطه عطف). زیرحاد دیررس: Met-Hb خارج سلولی → T1+T2 روشن. مزمن: هموسیدرین → حلقه SWI پایدار.'
     ),
-    alt: L('MRT Signalstadien ICB Diagramm', 'MRI signal stages ICB diagram', 'نمودار مراحل سیگنال MRI در ICB'),
+    alt: L('MRT Signalflussdiagramm ICB alle Stadien', 'MRI signal flowchart ICB all stages', 'نمودار جریان سیگنال MRI ICB تمام مراحل'),
   },
 ]
 
@@ -671,10 +674,10 @@ export const ICB_PRUEFUNG_CASES = [
     fachId: 'gehirn',
     kapitelId: 'kopf-vaskulaer',
     topicId: 'intrazerebrale-blutung',
-    image: '/icb/ct-swirl.svg',
+    image: '/icb/case-ct-cerebellum-gross.png',
     modality: 'CT',
     plane: 'CT · axial · nativ',
-    title: L('Hyperdenses Hämatom mit hypodensen Arealen', 'Hyperattenuating haematoma with hypodense areas', 'هماتوم هایپردنس با مناطق هیپودنس'),
+    title: L('Hyperdenses Hämatom im Kleinhirn mit Ödemsaum', 'Hyperattenuating cerebellar haematoma with oedema rim', 'هماتوم هایپردنس مخچه با حلقه ادم'),
     vignette: L(
       '71-jähriger Patient unter Phenprocoumon-Therapie (INR 3,8). Plötzliche rechtsseitige Hemiparese und Sprachstörung. GCS 12. Was ist die bildgebende Diagnose und was zeigt das beschriebene Zeichen an?',
       'A 71-year-old man on phenprocoumon (INR 3.8) presents with sudden right hemiparesis and dysphasia. GCS 12. What is the imaging diagnosis and what does the described sign indicate?',
@@ -697,41 +700,41 @@ export const ICB_PRUEFUNG_CASES = [
       'A hyperattenuating haematoma with interspersed hypodense areas is classic for the Swirl Sign. It indicates active, unclotted bleeding and is an independent predictor of haematoma expansion. With anticoagulation (INR 3.8), rapid reversal is indicated.',
       'هماتوم هایپردنس با مناطق هیپودنس پراکنده کلاسیک برای Swirl Sign است. نشانگر خونریزی فعال و پیش‌بینی‌کننده مستقل گسترش هماتوم است. با مصرف ضدانعقاد (INR ۳.۸)، معکوس‌سازی سریع ضروری است.'
     ),
-    source: 'https://radiopaedia.org/articles/swirl-sign-haemorrhage?lang=us',
-    credit: 'Schematische Darstellung · Rad-Yar.de',
+    source: 'https://radiopaedia.org/articles/intracerebral-haemorrhage?lang=us',
+    credit: 'Bildmaterial aus dem Lehrmaterial · Radiopaedia CC BY-NC-SA 3.0',
   },
   {
     id: 'icb-pruefung-ring',
     fachId: 'gehirn',
     kapitelId: 'kopf-vaskulaer',
     topicId: 'intrazerebrale-blutung',
-    image: '/icb/ct-akut.svg',
-    modality: 'CT',
-    plane: 'CT · axial · nativ',
-    title: L('Hypertensive putaminale ICB · Akutbefund', 'Hypertensive putaminal ICB · acute finding', 'ICB پوتامینال هیپرتانسیو · یافته حاد'),
+    image: '/icb/case-t1-subakut-bright.jpg',
+    modality: 'MRT',
+    plane: 'MRT · T1 · axial · nativ · früh subakut',
+    title: L('ICB früh subakut · T1 hyperintens · Wendepunkt', 'ICB early subacute · T1 hyperintense · turning point', 'ICB زیرحاد اولیه · T1 هایپرانتنس · نقطه عطف'),
     vignette: L(
-      '65-jährige Patientin mit bekanntem arteriellen Hypertonus (RR 220/120 mmHg). Akute kontralaterale Hemiparese. In der nativen CCT zeigt sich ein hyperdens imponierendes ovales Hämatom in den Basalganglien. Welche Aussage ist korrekt?',
-      'A 65-year-old woman with known hypertension (BP 220/120 mmHg) presents with acute contralateral hemiparesis. NCCT shows a hyperattenuating oval haematoma in the basal ganglia. Which statement is correct?',
-      'خانم ۶۵ ساله با فشار خون شریانی شناخته‌شده (۲۲۰/۱۲۰ mmHg). همی‌پارزی مقابل حاد. CT بدون کنتراست هماتوم اووال هایپردنس در گانگلیون‌های قاعده‌ای نشان می‌دهد. کدام گفته صحیح است؟'
+      '58-jährige Patientin, bekannte Hypertonikerin, stationäre Aufnahme nach initialer CCT-Diagnose einer Kleinhirnblutung. Kontroll-MRT am Tag 5: T1-gewichtete Sequenz zeigt eine hyperintense Läsion im rechten Kleinhirn. Welche Interpretation ist korrekt?',
+      'A 58-year-old woman with known hypertension, admitted after initial NCCT diagnosis of cerebellar haemorrhage. Follow-up MRI on day 5: T1-weighted sequence shows a hyperintense lesion in the right cerebellum. Which interpretation is correct?',
+      'خانم ۵۸ ساله با فشار خون شناخته‌شده، بستری پس از تشخیص اولیه CT از خونریزی مخچه. MRI کنترل در روز ۵: سکانس T1 ضایعه هایپرانتنس در مخچه راست نشان می‌دهد. کدام تفسیر صحیح است؟'
     ),
     question: L(
-      'Welche Aussage zur putaminalen ICB trifft am ehesten zu?',
-      'Which statement about putaminal ICB is most accurate?',
-      'کدام گفته درباره ICB پوتامینال بیشتر صحیح است؟'
+      'Was ist die Ursache der T1-Hyperintensität in diesem MRT-Bild?',
+      'What causes the T1 hyperintensity in this MRI image?',
+      'علت هایپرانتنسیتی T1 در این تصویر MRI چیست؟'
     ),
     options: [
-      { id: 'A', text: L('Putaminale ICB ist typisch für CAA und tritt meist lobär auf', 'Putaminal ICB is typical of CAA and mostly lobar', 'ICB پوتامینال تیپیک CAA است و اغلب لوبار است') },
-      { id: 'B', text: L('Putaminale ICB ist die häufigste Form der hypertensiven Blutung und liegt tief im Parenchym', 'Putaminal ICB is the most common form of hypertensive haemorrhage and is located deep in the parenchyma', 'ICB پوتامینال شایع‌ترین شکل خونریزی هیپرتانسیو است و در عمق پارانشیم قرار دارد') },
-      { id: 'C', text: L('Die Dichte einer frischen ICB beträgt 10–20 HU und ist daher hypodens', 'Fresh ICB has an attenuation of 10–20 HU and is therefore hypoattenuating', 'دانسیته ICB تازه ۱۰-۲۰ HU است و بنابراین هیپودنس است') },
-      { id: 'D', text: L('MRT ist bei akuter ICB dem CT immer überlegen', 'MRI is always superior to CT in acute ICB', 'MRI در ICB حاد همیشه بر CT برتری دارد') },
+      { id: 'A', text: L('Akutes Deoxy-Hb · paramagnetisch · T1 immer hell', 'Acute deoxyHb · paramagnetic · T1 always bright', 'Deoxy-Hb حاد · پاراماگنتیک · T1 همیشه روشن') },
+      { id: 'B', text: L('Intrazelluläres Met-Hb (früh subakut > 3 Tage) · Wasser erreicht Fe³⁺ → Dipol-Dipol → T1 hell', 'Intracellular metHb (early subacute >3 days) · water accesses Fe³⁺ → dipole-dipole → T1 bright', 'Met-Hb داخل سلولی (زیرحاد اولیه > ۳ روز) · آب به Fe³⁺ می‌رسد → T1 روشن') },
+      { id: 'C', text: L('Hämosiderin in Makrophagen · SWI-Effekt', 'Haemosiderin in macrophages · SWI effect', 'هموسیدرین در ماکروفاژها · اثر SWI') },
+      { id: 'D', text: L('Perifokales Ödem · T1 immer hyperintens', 'Perilesional oedema · T1 always hyperintense', 'ادم اطراف · T1 همیشه هایپرانتنس') },
     ],
     correct: 'B',
     explanation: L(
-      'Das Putamen (zusammen mit Thalamus, Pons und Kleinhirn) ist die typische Lokalisation der hypertensiven ICB. Sie entsteht durch Ruptur kleiner penetrierender Arterien (Lipohyalinose). Im Gegensatz dazu ist die CAA durch lobäre, kortexnahe Blutungen charakterisiert. CT nativ ist die Erstuntersuchung der Wahl und zeigt die akute Blutung zuverlässig als hyperdens (50–80 HU).',
-      'The putamen (along with thalamus, pons and cerebellum) is the typical location of hypertensive ICB, caused by rupture of small penetrating arteries (lipohyalinosis). In contrast, CAA causes lobar, cortical haemorrhages. NCCT is the primary investigation of choice and reliably shows acute haemorrhage as hyperattenuating (50–80 HU).',
-      'پوتامن (همراه با تالاموس، پونز و مخچه) محل تیپیک ICB هیپرتانسیو است که ناشی از پارگی شریان‌های نفوذی کوچک (لیپوهیالینوز) است. CAA با خونریزی‌های لوبار و نزدیک کورتکس مشخص می‌شود.'
+      'Im früh subakuten Stadium (> 3 Tage) liegt Hämoglobin als intrazelluläres Met-Hb (Fe³⁺) vor. Wasser kann nun das Eisen direkt erreichen → Dipol-Dipol-Relaxation → T1-Verkürzung → T1 hell. Dies ist der wichtigste Wendepunkt im MRT der ICB. T2 bleibt noch hypo (Kompartimentierungseffekt). Tritt zuerst peripher auf.',
+      'In the early subacute stage (>3 days), haemoglobin is present as intracellular metHb (Fe³⁺). Water can now directly access the iron → dipole-dipole relaxation → T1 shortening → T1 bright. This is the most important turning point in ICB MRI. T2 remains hypointense (compartmentalisation effect). Appears peripherally first.',
+      'در مرحله زیرحاد اولیه (> ۳ روز)، هموگلوبین به‌صورت Met-Hb داخل سلولی (Fe³⁺) است. آب می‌تواند مستقیماً به آهن دسترسی یابد → آرامش دیپل-دیپل → کوتاه‌شدن T1 → T1 روشن. این مهم‌ترین نقطه عطف در MRI ICB است.'
     ),
-    source: 'https://radiopaedia.org/articles/hypertensive-intracranial-haemorrhage?lang=us',
-    credit: 'Schematische Darstellung · Rad-Yar.de',
+    source: 'https://radiopaedia.org/articles/intracerebral-haemorrhage?lang=us',
+    credit: 'Bildmaterial aus dem Lehrmaterial · Radiopaedia CC BY-NC-SA 3.0',
   },
 ]

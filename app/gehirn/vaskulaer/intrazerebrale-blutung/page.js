@@ -7,6 +7,7 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import { ICB_LEARNING_CASES, ICB_LESSON } from '@/data/icb'
+import InProgressBanner from '@/components/InProgressBanner'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import styles from '../../../abdomen/gi/divertikulitis/page.module.css'
@@ -99,12 +100,16 @@ function LearningFigure({ src, alt, onZoom, zoomLabel }) {
 }
 
 function CaseCard({ item, lang, openCase, onZoom, zoomLabel }) {
+  const images = item.images || (item.image ? [item.image] : [])
+  const alt = localize(item.alt, lang)
   return (
     <article className={styles.caseCardLink}>
-      <figure className={styles.caseImage}>
-        <button type="button" className={styles.strokeCaseZoom} onClick={() => onZoom({ src: item.image, alt: localize(item.alt, lang) })} aria-label={zoomLabel}>
-          <Image src={item.image} alt={localize(item.alt, lang)} width={800} height={580} className={styles.caseImageAsset} />
-        </button>
+      <figure className={styles.caseImage} style={images.length > 1 ? { display: 'grid', gridTemplateColumns: '1fr 1fr' } : undefined}>
+        {images.map(src => (
+          <button type="button" className={styles.strokeCaseZoom} key={src} onClick={() => onZoom({ src, alt })} aria-label={zoomLabel}>
+            <Image src={src} alt={alt} width={800} height={580} className={styles.caseImageAsset} style={{ minWidth: 0 }} />
+          </button>
+        ))}
       </figure>
       <div className={styles.caseBody}>
         <div className={styles.caseLabelRow}>
@@ -149,6 +154,7 @@ export default function IntrazerebraleBluturngPage() {
     <>
       <Navbar />
       <main className={`${styles.page} ${styles.strokePage}`} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
+        <InProgressBanner lang={lang} />
         <header className={styles.header}>
           <div className={styles.breadcrumb}>
             <Link href={withLang('/')}>RadYar</Link><span>›</span>
@@ -217,16 +223,16 @@ export default function IntrazerebraleBluturngPage() {
                 rows={localizedRows(ICB_LESSON.ct.stagesRows, lang)}
               />
               <LearningFigure
-                src="/icb/ct-akut.svg"
-                alt={c({ de: 'CT schema ICB Putamen hyperdens akut', en: 'CT schema ICB putamen hyperattenuating acute', fa: 'اسکیمای CT ICB پوتامن هایپردنس حاد' })}
+                src="/icb/case-ct-cerebellum-akut.png"
+                alt={c({ de: 'CT axial akute hyperdens Kleinhirnblutung', en: 'CT axial acute hyperattenuating cerebellar haemorrhage', fa: 'CT اکسیال خونریزی حاد مخچه هایپردنس' })}
                 onZoom={setPreviewImage}
                 zoomLabel={imageUi.zoom}
               />
               <h3 style={{ margin: '32px 0 12px', fontSize: 15, fontWeight: 700 }}>{c(ICB_LESSON.ct.signsTitle)}</h3>
               <Cards items={localizedItems(ICB_LESSON.ct.signs, lang)} />
               <LearningFigure
-                src="/icb/ct-swirl.svg"
-                alt={c({ de: 'CT schema Swirl Sign hypodense Areale im Hämatom', en: 'CT schema swirl sign hypodense areas in haematoma', fa: 'اسکیمای CT Swirl Sign مناطق هیپودنس در هماتوم' })}
+                src="/icb/case-ct-cerebellum-gross.png"
+                alt={c({ de: 'CT axial ICB Kleinhirn größere Blutung mit Ödem', en: 'CT axial cerebellar ICB larger haematoma with oedema', fa: 'CT اکسیال ICB مخچه هماتوم بزرگ‌تر با ادم' })}
                 onZoom={setPreviewImage}
                 zoomLabel={imageUi.zoom}
               />
@@ -236,6 +242,12 @@ export default function IntrazerebraleBluturngPage() {
             {/* ── 3. MRT-Signalverhalten ───────────────────────────────────── */}
             <Section id="mrt" title={c(ICB_LESSON.mrt.title)} lead={c(ICB_LESSON.mrt.lead)}>
               <Cards items={localizedItems(ICB_LESSON.mrt.pathophysItems, lang)} />
+              <LearningFigure
+                src="/icb/mrt-flowchart.png"
+                alt={c(ICB_LESSON.mrt.imageAlt)}
+                onZoom={setPreviewImage}
+                zoomLabel={imageUi.zoom}
+              />
               <LearningFigure
                 src="/icb/mrt-signal.svg"
                 alt={c(ICB_LESSON.mrt.imageAlt)}
