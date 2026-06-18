@@ -16,7 +16,7 @@ export const REF_COPY = {
   de: {
     sectionLabel: 'Schnell-Referenz',
     label: '📋 Spickzettel',
-    title: 'Spickzettel Radiologie',
+    title: '✏️ Spickzettel Radiologie',
     sub: 'Normwerte, Grenzwerte und Klassifikationen – kompakt für den radiologischen Alltag.',
     btnMesswerte: 'Größen & Messwerte',
     btnMesswerteSub: 'Normwerte, Grenzwerte und Messpunkte nach Körperregion.',
@@ -52,7 +52,7 @@ export const REF_COPY = {
   en: {
     sectionLabel: 'Quick Reference',
     label: '📋 Cheat Sheet',
-    title: 'Radiology Cheat Sheet',
+    title: '✏️ Radiology Cheat Sheet',
     sub: 'Normal values, thresholds and classifications – compact for everyday radiology.',
     btnMesswerte: 'Sizes & Measurements',
     btnMesswerteSub: 'Normal values, thresholds and measurement points by body region.',
@@ -88,7 +88,7 @@ export const REF_COPY = {
   fa: {
     sectionLabel: 'مرجع سریع',
     label: '📋 برگه راهنما',
-    title: 'اسپیک‌زتل رادیولوژی',
+    title: '✏️ برگه تقلب رادیولوژی',
     sub: 'مقادیر طبیعی، حدود و طبقه‌بندی‌ها – فشرده برای رادیولوژی روزمره.',
     btnMesswerte: 'اندازه‌ها و مقادیر',
     btnMesswerteSub: 'مقادیر طبیعی، حدود و نقاط اندازه‌گیری بر اساس ناحیه بدن.',

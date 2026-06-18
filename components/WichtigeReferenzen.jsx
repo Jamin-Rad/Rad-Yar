@@ -88,8 +88,8 @@ export default function WichtigeReferenzen() {
       <div className={styles.glassHeader}>
         <div className={styles.glassHeaderGlow} />
         <div className={styles.glassTop}>
-          <span className={styles.glassBadge}>{copy.sectionLabel}</span>
-          <h2 className={styles.glassTitle} data-title={copy.title}>{copy.title}</h2>
+          <h2 className={styles.glassTitle} data-title={copy.sectionLabel}>{copy.sectionLabel}</h2>
+          <p className={styles.glassSubtitle}>{copy.title}</p>
           <p className={styles.glassSub}>{copy.sub}</p>
         </div>
         <div className={styles.grid}>
