@@ -103,13 +103,20 @@ export default function WichtigeReferenzen() {
 }
 
 /* ── Modal-Hülle ──────────────────────────────── */
-function Modal({ title, copy, onClose, children, accentClass, wide }) {
+function Modal({ title, subtitle, accent, copy, onClose, children, accentClass, wide }) {
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={`${styles.modal} ${wide ? styles.modalWide : ''}`}
            onClick={e=>e.stopPropagation()} role="dialog" aria-modal="true">
         <header className={`${styles.modalHead} ${accentClass||''}`}>
-          <h3 className={styles.modalTitle}>{title}</h3>
+          <h3 className={styles.modalTitle}>
+            <span className={styles.modalTitleMain}>{title}</span>
+            {subtitle && (
+              <span className={styles.modalCrumb} style={accent?{color:accent}:undefined}>
+                <span className={styles.modalCrumbSep}>›</span>{subtitle}
+              </span>
+            )}
+          </h3>
           <button className={styles.closeBtn} onClick={onClose} aria-label={copy.close}>×</button>
         </header>
         <div className={styles.modalBody}>{children}</div>
@@ -123,21 +130,24 @@ function Modal({ title, copy, onClose, children, accentClass, wide }) {
 function MesswerteModal({ copy, lang, onClose }) {
   const regions = REF_DATA.messwerte
   const [regionId, setRegionId] = useState(regions[0].id)
+  const [showDetail, setShowDetail] = useState(false)
   const region = regions.find(r=>r.id===regionId) || regions[0]
   return (
-    <Modal title={copy.btnMesswerte} copy={copy} onClose={onClose} accentClass={styles.headBlue}>
-      <div className={styles.split}>
+    <Modal title={copy.btnMesswerte} subtitle={showDetail?tx(region.name,lang):null} accent={region.color}
+      copy={copy} onClose={onClose} accentClass={styles.headBlue}>
+      <div className={`${styles.split} ${showDetail?styles.showDetail:''}`}>
         <nav className={styles.sidebar}>
           {regions.map(r=>(
             <button key={r.id}
               className={`${styles.navBtn} ${r.id===regionId?styles.navActiveBlue:''}`}
-              style={{'--ref-color':r.color}} onClick={()=>setRegionId(r.id)}>
+              style={{'--ref-color':r.color}} onClick={()=>{setRegionId(r.id);setShowDetail(true)}}>
               <span className={styles.navIconWrap} style={{color:r.color}}><RegionIcon id={r.id} size={16}/></span>
               <span className={styles.navLabel}>{tx(r.name,lang)}</span>
             </button>
           ))}
         </nav>
         <div className={styles.content} style={{'--ref-color':region.color}}>
+          <button className={styles.mobileBack} onClick={()=>setShowDetail(false)}>← {copy.back}</button>
           <h2 className={styles.regionHeading}>
             <span className={styles.regionHeadingIcon} style={{color:region.color}}><RegionIcon id={region.id} size={22}/></span>
             <span style={{color:region.color}}>{tx(region.name,lang)}</span>
@@ -174,25 +184,28 @@ function KlassifikationenModal({ copy, lang, onClose }) {
   const router = useRouter()
   const topics = REF_DATA.klassifikationen
   const [topicId, setTopicId] = useState(topics[0].id)
+  const [showDetail, setShowDetail] = useState(false)
   const topic = topics.find(t => t.id === topicId) || topics[0]
   const go = (tId, itemId) => {
     onClose()
     router.push(`/referenzen/${tId}/${itemId}${lang!=='de'?`?lang=${lang}`:''}`)
   }
   return (
-    <Modal title={copy.btnKlass} copy={copy} onClose={onClose} accentClass={styles.headOrange} wide>
-      <div className={styles.split}>
+    <Modal title={copy.btnKlass} subtitle={showDetail?tx(topic.name,lang):null} accent={topic.color}
+      copy={copy} onClose={onClose} accentClass={styles.headOrange} wide>
+      <div className={`${styles.split} ${showDetail?styles.showDetail:''}`}>
         <nav className={styles.sidebar}>
           {topics.map(t => (
             <button key={t.id}
               className={`${styles.navBtn} ${t.id===topicId?styles.navActiveOrange:''}`}
-              style={{'--ref-color':t.color}} onClick={()=>setTopicId(t.id)}>
+              style={{'--ref-color':t.color}} onClick={()=>{setTopicId(t.id);setShowDetail(true)}}>
               <span className={styles.navIconWrap} style={{color:t.color}}><RegionIcon id={t.iconId||t.id} size={16}/></span>
               <span className={styles.navLabel}>{tx(t.name,lang)}</span>
             </button>
           ))}
         </nav>
         <div className={styles.content} style={{'--ref-color':topic.color}}>
+          <button className={styles.mobileBack} onClick={()=>setShowDetail(false)}>← {copy.back}</button>
           <h2 className={styles.regionHeading}>
             <span className={styles.regionHeadingIcon} style={{color:topic.color}}><RegionIcon id={topic.iconId||topic.id} size={22}/></span>
             <span style={{color:topic.color}}>{tx(topic.name,lang)}</span>
@@ -254,19 +267,21 @@ const RECHNER_GROUPS = [
 /* ── Rechner-Modal ────────────────────────────── */
 function RechnerModal({ copy, lang, onClose }) {
   const [groupId, setGroupId] = useState(RECHNER_GROUPS[0].id)
+  const [showDetail, setShowDetail] = useState(false)
   const group = RECHNER_GROUPS.find(g => g.id === groupId) || RECHNER_GROUPS[0]
   const calcs = group.calcIds.map(id => REF_DATA.rechner.find(c => c.id === id)).filter(Boolean)
 
   return (
-    <Modal title={copy.btnRechner} copy={copy} onClose={onClose} accentClass={styles.headGreen} wide>
-      <div className={styles.split}>
+    <Modal title={copy.btnRechner} subtitle={showDetail?tx(group.name,lang):null} accent={group.color}
+      copy={copy} onClose={onClose} accentClass={styles.headGreen} wide>
+      <div className={`${styles.split} ${showDetail?styles.showDetail:''}`}>
         {/* Sidebar – Gruppen */}
         <nav className={styles.sidebar}>
           {RECHNER_GROUPS.map(g => (
             <button key={g.id}
               className={`${styles.navBtn} ${g.id === groupId ? styles.navActiveGreen : ''}`}
               style={{'--ref-color': g.color}}
-              onClick={() => setGroupId(g.id)}>
+              onClick={() => {setGroupId(g.id);setShowDetail(true)}}>
               <span className={styles.navIconWrap} style={{color: g.color}}>
                 <RegionIcon id={g.iconId} size={16} />
               </span>
@@ -277,6 +292,7 @@ function RechnerModal({ copy, lang, onClose }) {
 
         {/* Inhalt – Rechner der gewählten Gruppe */}
         <div className={styles.content} style={{'--ref-color': group.color}}>
+          <button className={styles.mobileBack} onClick={()=>setShowDetail(false)}>← {copy.back}</button>
           <h2 className={styles.regionHeading}>
             <span className={styles.regionHeadingIcon} style={{color: group.color}}>
               <RegionIcon id={group.iconId} size={22} />

@@ -186,7 +186,17 @@
 .modalTitle {
   font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
   font-style: italic; font-size: 19px; font-weight: 900; color: #1a2051; margin: 0;
-  letter-spacing: -.01em;
+  letter-spacing: -.01em; min-width: 0;
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 7px;
+}
+.modalTitleMain { white-space: nowrap; }
+.modalCrumb {
+  display: inline-flex; align-items: baseline;
+  font-weight: 900; min-width: 0;
+}
+.modalCrumbSep {
+  font-style: normal; font-weight: 400; color: #cbd5e1;
+  margin-inline-end: 7px; flex-shrink: 0;
 }
 .closeBtn {
   width: 36px; height: 36px; border-radius: 10px; border: 0;
@@ -218,6 +228,16 @@
 .content {
   padding: 24px 28px; overflow-y: auto; min-width: 0;
   font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
+}
+
+/* Zurück-Button nur in Mobile-Detailansicht sichtbar */
+.mobileBack {
+  display: none;
+  align-items: center; gap: 6px;
+  background: none; border: none; cursor: pointer;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
+  font-size: 13px; font-weight: 700; color: var(--ref-color, #64748b);
+  padding: 4px 0; margin-bottom: 14px;
 }
 
 .navBtn {
@@ -539,15 +559,22 @@
     margin-bottom: 0;
   }
   .chips { grid-column: 2; }
-  .split { grid-template-columns: 1fr; }
+
+  /* Mobile Master-Detail: erst Liste, nach Auswahl nur der Inhalt */
+  .split { display: block; overflow-y: auto; }
   .sidebar {
-    flex-direction: row; flex-wrap: nowrap; overflow-x: auto;
-    border-inline-end: none; border-bottom: 1px solid #eef2f7; max-height: none;
-    padding: 8px;
+    border-inline-end: none; max-height: none; overflow: visible;
+    padding: 12px 10px; gap: 4px;
   }
-  :global(html[data-theme='dark']) .sidebar { border-bottom-color: rgba(148,163,184,0.12); }
-  .navBtn { width: auto; white-space: nowrap; }
-  .navLabel { display: none; }
+  .navBtn { width: 100%; padding: 13px 12px; }
+  .content { display: none; overflow: visible; padding: 20px 18px; }
+
+  .split.showDetail .sidebar { display: none; }
+  .split.showDetail .content { display: block; }
+  .mobileBack { display: inline-flex; }
+
+  /* Breadcrumb-Titel etwas kompakter auf Mobile */
+  .modalTitle { font-size: 16px; }
   .klassCardGrid { grid-template-columns: 1fr; }
   .glassHeader { padding: 22px 20px 26px; border-radius: 16px; }
   .glassTitle { font-size: 22px; }
@@ -610,6 +637,7 @@
 :global(html[data-theme='dark']) .headOrange { background: #1a1208; border-bottom-color: rgba(249,115,22,0.25); }
 :global(html[data-theme='dark']) .headGreen  { background: #081810; border-bottom-color: rgba(5,150,105,0.25); }
 :global(html[data-theme='dark']) .modalTitle { color: #f8fafc; }
+:global(html[data-theme='dark']) .modalCrumbSep { color: #475569; }
 :global(html[data-theme='dark']) .closeBtn {
   background: rgba(255,255,255,0.08); color: #b8c4d8;
 }
