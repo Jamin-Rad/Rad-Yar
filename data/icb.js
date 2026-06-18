@@ -596,64 +596,229 @@ export const ICB_FLASHCARD_TOPIC = {
 }
 
 const ICB_FLASHCARD_SEEDS = [
+  // ── 1. Oxy-Hb (hyperakut) ──────────────────────────────────────────────────
   {
     front: L('Oxy-Hb (hyperakut) · T1 und T2?', 'OxyHb (hyperacute) · T1 and T2?', 'Oxy-Hb (فوق‌حاد) · T1 و T2؟'),
-    back: L('T1: iso / leicht hypo\nT2: hyperintens (wie Wasser)\nT2*/SWI: leicht hypo\n→ diamagnetisch, kein Suszeptibilitätseffekt', 'T1: iso / mildly hypointense\nT2: hyperintense (like water)\nT2*/SWI: mildly hypointense\n→ diamagnetic, no susceptibility effect', 'T1: ایزو / کمی هیپو\nT2: هایپرانتنس (مثل آب)\nT2*/SWI: کمی هیپو\n→ دیاماگنتیک، بدون اثر سوسپتیبیلیتی'),
+    back: L(
+      'T1: iso / leicht ↓\nT2: ↑↑ (wie Wasser)\nT2*/SWI: leicht ↓\n→ diamagnetisch, kein Suszeptibilitätseffekt',
+      'T1: iso / mildly ↓\nT2: ↑↑ (like water)\nT2*/SWI: mildly ↓\n→ diamagnetic, no susceptibility effect',
+      'T1: ایزو / کمی ↓\nT2: ↑↑ (مثل آب)\nT2*/SWI: کمی ↓\n→ دیاماگنتیک، بدون اثر سوسپتیبیلیتی',
+    ),
+    explanation: L(
+      'Oxy-Hb hat keine ungepaarten Elektronen (diamagnetisch) → kein Suszeptibilitätseffekt. T2 bleibt hell wie freies Wasser. Auf SWI nur minimales Blooming. Diese Phase ist im MRT schwer zu erkennen – die Diagnose erfolgt primär mit dem nativen CT (hyperdens 50–80 HU). Das MRT ist in dieser Phase weniger sensitiv als das CT.',
+      'OxyHb has no unpaired electrons (diamagnetic) → no susceptibility effect. T2 remains bright like free water. Only minimal SWI blooming. This phase is difficult to detect on MRI — diagnosis relies primarily on NCCT (hyperattenuating 50–80 HU). MRI is actually less sensitive than CT in the hyperacute stage.',
+      'Oxy-Hb الکترون جفت‌نشده ندارد (دیاماگنتیک) → بدون اثر سوسپتیبیلیتی. T2 مانند آب آزاد روشن می‌ماند. در SWI فقط Blooming حداقلی. این مرحله در MRI سخت تشخیص داده می‌شود — تشخیص اصلی با CT بدون کنتراست (هایپردنس ۵۰-۸۰ HU) است.',
+    ),
+    diagram: L(
+      'Oxy-Hb (Fe²⁺, diamagn.) → kein Suszeptibilitätseffekt → T2 ↑↑ (wie Wasser) → SWI minimal ↓ → CT: hyperdens (50-80 HU)',
+      'OxyHb (Fe²⁺, diamagnetic) → no susceptibility effect → T2 ↑↑ (like water) → SWI minimal ↓ → CT: hyperattenuating (50-80 HU)',
+      'Oxy-Hb (Fe²⁺, دیاماگنتیک) → بدون سوسپتیبیلیتی → T2 ↑↑ (مثل آب) → SWI حداقلی ↓ → CT: هایپردنس (۵۰-۸۰ HU)',
+    ),
     tag: 'icb-mrt',
   },
+  // ── 2. Deoxy-Hb (akut) ─────────────────────────────────────────────────────
   {
     front: L('Deoxy-Hb (akut) · T1 und T2?', 'DeoxyHb (acute) · T1 and T2?', 'Deoxy-Hb (حاد) · T1 و T2؟'),
-    back: L('T1: iso / hypo (kein T1-Signal!)\nT2: stark hypo ↓↓\nT2*/SWI: Blooming ↓↓↓\n→ paramagnetisch, intrazellulär → kein Dipol-Dipol', 'T1: iso / hypointense (no T1 signal!)\nT2: markedly hypointense ↓↓\nT2*/SWI: blooming ↓↓↓\n→ paramagnetic, intracellular → no dipole-dipole', 'T1: ایزو / هیپو (بدون سیگنال T1)\nT2: شدیداً هیپو ↓↓\nT2*/SWI: Blooming ↓↓↓\n→ پاراماگنتیک، داخل سلولی → بدون دیپل-دیپل'),
+    back: L(
+      'T1: iso / ↓ (kein T1-Signal!)\nT2: stark ↓↓\nT2*/SWI: Blooming ↓↓↓\n→ paramagnetisch, aber intrazellulär → kein Dipol-Dipol',
+      'T1: iso / ↓ (no T1 signal!)\nT2: markedly ↓↓\nT2*/SWI: blooming ↓↓↓\n→ paramagnetic, but intracellular → no dipole-dipole',
+      'T1: ایزو / ↓ (بدون سیگنال T1)\nT2: شدیداً ↓↓\nT2*/SWI: Blooming ↓↓↓\n→ پاراماگنتیک، اما داخل سلولی → بدون دیپل-دیپل',
+    ),
+    explanation: L(
+      'Deoxy-Hb ist paramagnetisch (4 ungepaarte Elektronen) → starker Suszeptibilitätseffekt → T2/SWI ↓↓. Warum kein T1-Signal? Deoxy-Hb liegt intrazellulär in intakten Erythrozyten vor: Wasser kann nicht direkt mit Fe²⁺ interagieren → kein Dipol-Dipol-Relaxationsmechanismus → T1 bleibt iso/hypo. Das SWI-Blooming ist der wichtigste und zuverlässigste MRT-Befund in dieser akuten Phase.',
+      'DeoxyHb is paramagnetic (4 unpaired electrons) → strong susceptibility effect → T2/SWI ↓↓. Why no T1 signal? DeoxyHb is intracellular inside intact erythrocytes: water cannot directly access Fe²⁺ → no dipole-dipole relaxation mechanism → T1 stays iso/hypo. SWI blooming is the most important and reliable MRI finding in the acute phase.',
+      'Deoxy-Hb پاراماگنتیک است (۴ الکترون جفت‌نشده) → اثر سوسپتیبیلیتی قوی → T2/SWI ↓↓. چرا سیگنال T1 وجود ندارد؟ Deoxy-Hb داخل اریتروسیت‌های سالم است: آب نمی‌تواند مستقیماً با Fe²⁺ تعامل داشته باشد → مکانیسم رلاکسیشن دیپل-دیپل وجود ندارد → T1 ایزو/هیپو می‌ماند.',
+    ),
+    diagram: L(
+      'Deoxy-Hb intrazellulär → Suszeptibilitätseffekt → T2 ↓↓ + SWI Blooming → intakte Erythrozytenmembran → kein Dipol-Dipol → T1 iso',
+      'DeoxyHb intracellular → susceptibility effect → T2 ↓↓ + SWI blooming → intact erythrocyte membrane → no dipole-dipole → T1 iso',
+      'Deoxy-Hb داخل سلول → اثر سوسپتیبیلیتی → T2 ↓↓ + SWI Blooming → غشای اریتروسیت سالم → بدون دیپل-دیپل → T1 ایزو',
+    ),
     tag: 'icb-mrt',
   },
+  // ── 3. Met-Hb intrazellulär (früh subakut) ─────────────────────────────────
   {
     front: L('Met-Hb intrazellulär (früh subakut) · T1 und T2?', 'MetHb intracellular (early subacute) · T1 and T2?', 'Met-Hb داخل سلولی (زیرحاد اولیه) · T1 و T2؟'),
-    back: L('T1: HELL ↑↑ ★ (wichtigster Wendepunkt!)\nT2: hypo (Kompartimentierung noch aktiv)\nT2*: stark hypo\n→ Wasser erreicht Fe³⁺ → Dipol-Dipol → T1↑', 'T1: BRIGHT ↑↑ ★ (most important turning point!)\nT2: hypointense (compartmentalisation still active)\nT2*: markedly hypointense\n→ water reaches Fe³⁺ → dipole-dipole → T1↑', 'T1: روشن ↑↑ ★ (مهم‌ترین نقطه عطف)\nT2: هیپو (محدودیت هنوز فعال)\nT2*: شدیداً هیپو\n→ آب به Fe³⁺ می‌رسد → دیپل-دیپل → T1↑'),
+    back: L(
+      'T1: ↑↑ HELL ★ (wichtigster Wendepunkt!)\nT2: ↓ hypo (Kompartimentierung noch aktiv)\nT2*/SWI: stark ↓\n→ Wasser erreicht Fe³⁺ → Dipol-Dipol → T1↑',
+      'T1: ↑↑ BRIGHT ★ (most important turning point!)\nT2: ↓ hypo (compartmentalisation still active)\nT2*/SWI: markedly ↓\n→ water reaches Fe³⁺ → dipole-dipole → T1↑',
+      'T1: ↑↑ روشن ★ (مهم‌ترین نقطه عطف)\nT2: ↓ هیپو (محدودیت هنوز فعال)\nT2*/SWI: شدیداً ↓\n→ آب به Fe³⁺ می‌رسد → دیپل-دیپل → T1↑',
+    ),
+    explanation: L(
+      'Oxy-Hb wird stufenweise zu Deoxy-Hb und dann zu Met-Hb (Fe³⁺) oxidiert. Met-Hb hat 5 ungepaarte Elektronen (noch stärker paramagnetisch als Deoxy-Hb). Entscheidend: Wasser kann jetzt durch die Erythrozytenmembran direkt mit Fe³⁺ interagieren → Dipol-Dipol-Relaxation → T1-Verkürzung → T1 hell. Die Erythrozyten sind aber noch intakt → Kompartimentierungseffekt → T2 bleibt hypo. Der Übergang von T2-dunkel (akut) zu T1-hell (früh subakut) ist der wichtigste Wendepunkt im MRT-Staging der ICB. Er beginnt an der Peripherie und schreitet zur Mitte fort.',
+      'OxyHb is progressively oxidised to deoxyHb and then to metHb (Fe³⁺). MetHb has 5 unpaired electrons (even more paramagnetic than deoxyHb). The key: water can now directly access Fe³⁺ through the erythrocyte membrane → dipole-dipole relaxation → T1 shortening → T1 bright. Erythrocytes are still intact → compartmentalisation effect → T2 stays hypointense. The transition from T2-dark (acute) to T1-bright (early subacute) is the most important turning point in ICB MRI staging. It begins at the periphery and progresses inward.',
+      'Oxy-Hb به تدریج به Deoxy-Hb و سپس به Met-Hb (Fe³⁺) اکسید می‌شود. Met-Hb دارای ۵ الکترون جفت‌نشده است. کلیدی: آب اکنون می‌تواند از طریق غشای اریتروسیت مستقیماً با Fe³⁺ تعامل داشته باشد → رلاکسیشن دیپل-دیپل → کوتاه‌شدن T1 → T1 روشن. اریتروسیت‌ها هنوز سالم‌اند → اثر محدودیت → T2 هیپو می‌ماند. این انتقال مهم‌ترین نقطه عطف در MRI ICB است.',
+    ),
+    diagram: L(
+      'Oxy-Hb → Deoxy-Hb → Met-Hb intrazell. (Fe³⁺) → Dipol-Dipol-Relaxation → T1 ↑↑ hell\nErythrozyt intakt → Kompartimentierung → T2 ↓ hypo',
+      'OxyHb → DeoxyHb → MetHb intracell. (Fe³⁺) → dipole-dipole relaxation → T1 ↑↑ bright\nErythrocyte intact → compartmentalisation → T2 ↓ hypo',
+      'Oxy-Hb → Deoxy-Hb → Met-Hb داخل سلول (Fe³⁺) → رلاکسیشن دیپل-دیپل → T1 ↑↑ روشن\nاریتروسیت سالم → محدودیت → T2 ↓ هیپو',
+    ),
     tag: 'icb-mrt',
   },
+  // ── 4. Met-Hb extrazellulär (spät subakut) ─────────────────────────────────
   {
     front: L('Met-Hb extrazellulär (spät subakut) · T1 und T2?', 'MetHb extracellular (late subacute) · T1 and T2?', 'Met-Hb خارج سلولی (زیرحاد دیررس) · T1 و T2؟'),
-    back: L('T1: HELL ↑↑\nT2: HELL ↑↑ → "bright–bright"!\nT2*/SWI: hypo Randsaum\n→ Erythrozytenlyse → kein Kompartimentierungseffekt\n⚠ imitiert Melanommetastase!', 'T1: BRIGHT ↑↑\nT2: BRIGHT ↑↑ → "bright-bright"!\nT2*/SWI: hypointense rim\n→ erythrocyte lysis → no compartmentalisation effect\n⚠ mimics melanoma metastasis!', 'T1: روشن ↑↑\nT2: روشن ↑↑ → "bright-bright"!\nT2*/SWI: حلقه هیپو\n→ لیز اریتروسیت → بدون اثر محدودیت\n⚠ متاستاز ملانوم را تقلید می‌کند!'),
+    back: L(
+      'T1: ↑↑ HELL\nT2: ↑↑ HELL → "bright–bright"!\nT2*/SWI: ↓ Randsaum (Hämosiderin)\n⚠ imitiert Melanommetastase und Fett!',
+      'T1: ↑↑ BRIGHT\nT2: ↑↑ BRIGHT → "bright-bright"!\nT2*/SWI: ↓ rim (haemosiderin)\n⚠ mimics melanoma metastasis and fat!',
+      'T1: ↑↑ روشن\nT2: ↑↑ روشن → "bright-bright"!\nT2*/SWI: ↓ حلقه (هموسیدرین)\n⚠ متاستاز ملانوم و چربی را تقلید می‌کند!',
+    ),
+    explanation: L(
+      'In der spät subakuten Phase lysieren die Erythrozyten → Met-Hb wird extrazellulär frei. Damit verschwindet der Kompartimentierungseffekt: Kein Suszeptibilitätsgradient mehr an Zellmembranen → T2 wird jetzt ebenfalls hell. Ergebnis: T1 UND T2 beide hell ("bright-bright"). Cave: Dieses Muster imitiert Melanommetastasen (paramagnetisches Melanin) und fetthaltige Läsionen. Der SWI-Hämosiderin-Randsaum an der Peripherie ist das entscheidende Differenzierungsmerkmal.',
+      'In the late subacute stage erythrocytes lyse → metHb is released extracellularly. The compartmentalisation effect disappears: no more susceptibility gradient at cell membranes → T2 also brightens. Result: T1 AND T2 both bright ("bright-bright"). Pitfall: this pattern mimics melanoma metastases (paramagnetic melanin) and fatty lesions. The peripheral SWI haemosiderin rim is the key differentiating feature.',
+      'در مرحله زیرحاد دیررس، اریتروسیت‌ها لیز می‌شوند → Met-Hb خارج سلولی آزاد می‌شود. اثر محدودیت از بین می‌رود → T2 نیز روشن می‌شود. نتیجه: T1 و T2 هر دو روشن ("bright-bright"). مراقب: این الگو متاستاز ملانوم (ملانین پاراماگنتیک) و ضایعات چرب را تقلید می‌کند. حلقه هموسیدرین SWI در حاشیه، مشخصه تمایزدهنده است.',
+    ),
+    diagram: L(
+      'Erythrozytenlyse → Met-Hb extrazell. → kein Kompartimentierungseffekt → T1 ↑↑ + T2 ↑↑ → SWI Hämosiderin-Randsaum',
+      'Erythrocyte lysis → metHb extracellular → no compartmentalisation → T1 ↑↑ + T2 ↑↑ → SWI haemosiderin rim',
+      'لیز اریتروسیت → Met-Hb خارج سلولی → بدون محدودیت → T1 ↑↑ + T2 ↑↑ → حلقه هموسیدرین SWI',
+    ),
     tag: 'icb-mrt',
   },
+  // ── 5. Hämosiderin (chronisch) ──────────────────────────────────────────────
   {
     front: L('Hämosiderin (chronisch) · Welche Sequenz ist entscheidend?', 'Haemosiderin (chronic) · Which sequence is essential?', 'هموسیدرین (مزمن) · کدام سکانس ضروری است؟'),
-    back: L('SWI / T2*: Blooming-Saum, persistiert lebenslang\nT1: iso / hypo\nT2: hypo\nCT: BLIND für chronische Blutung!\n→ Nur SWI zeigt alte Mikroblutungen zuverlässig', 'SWI / T2*: blooming rim, persists lifelong\nT1: iso / hypointense\nT2: hypointense\nCT: BLIND to chronic haemorrhage!\n→ Only SWI reliably shows old microbleeds', 'SWI / T2*: حلقه Blooming، تمام عمر باقی\nT1: ایزو / هیپو\nT2: هیپو\nCT: کور برای خونریزی مزمن!\n→ فقط SWI میکروبلیدهای قدیمی را قابل اعتماد نشان می‌دهد'),
+    back: L(
+      'SWI / T2*: Blooming-Saum, persistiert lebenslang\nT1: iso / ↓\nT2: ↓\nCT: völlig BLIND für chronische Blutung!',
+      'SWI / T2*: blooming rim, persists lifelong\nT1: iso / ↓\nT2: ↓\nCT: completely BLIND to chronic haemorrhage!',
+      'SWI / T2*: حلقه Blooming، تمام عمر باقی\nT1: ایزو / ↓\nT2: ↓\nCT: کاملاً کور برای خونریزی مزمن!',
+    ),
+    explanation: L(
+      'Hämosiderin entsteht als Endprodukt des Hämoglobinabbaus und wird von Makrophagen phagozytiert. Es verbleibt dauerhaft im Gewebe – der SWI-Blooming-Saum persistiert lebenslang. Hämosiderin hat einen extrem starken Suszeptibilitätseffekt → charakteristisches Blooming auf SWI/T2*. CT ist für chronische Blutungen vollständig blind. SWI ist die einzige Methode, die alte Mikroblutungen (<10 mm) zuverlässig nachweisen kann, z.B. bei CAA (zerebraler Amyloidangiopathie) oder hypertensiver Mikroangiopathie.',
+      'Haemosiderin is the end-product of haemoglobin degradation and is phagocytosed by macrophages. It remains permanently in the tissue — the SWI blooming rim persists lifelong. Haemosiderin has an extremely strong susceptibility effect → characteristic blooming on SWI/T2*. CT is completely blind to chronic haemorrhage. SWI is the only method that can reliably detect old microbleeds (<10 mm), e.g. in CAA (cerebral amyloid angiopathy) or hypertensive microangiopathy.',
+      'هموسیدرین محصول نهایی تجزیه هموگلوبین است و توسط ماکروفاژها فاگوسیتوز می‌شود. برای همیشه در بافت باقی می‌ماند. CT کاملاً کور است. SWI تنها روشی است که میکروبلیدهای قدیمی (<۱۰ میلی‌متر) را قابل اعتماد نشان می‌دهد، مثلاً در CAA یا میکروآنژیوپاتی هیپرتانسیو.',
+    ),
+    diagram: L(
+      'Hämatom → Resorption → Makrophagen → Hämosiderin (permanent) → SWI Blooming-Saum lebenslang\nCT → blind (kein Signal)',
+      'Haematoma → resorption → macrophages → haemosiderin (permanent) → SWI blooming rim lifelong\nCT → blind (no signal)',
+      'هماتوم → جذب → ماکروفاژ → هموسیدرین (دائمی) → حلقه Blooming SWI تمام عمر\nCT → کور (بدون سیگنال)',
+    ),
     tag: 'icb-mrt',
   },
+  // ── 6. Swirl Sign ──────────────────────────────────────────────────────────
   {
     front: L('Swirl Sign · Was, Wo, Bedeutung?', 'Swirl Sign · What, where, significance?', 'Swirl Sign · چیست، کجا، اهمیت؟'),
-    back: L('Was: Hypodense Areale innerhalb des hyperdensen CT-Hämatoms\nWo: Natives CCT\nBedeutung: Aktive, unkoagulierte Blutung → Risiko der Hämatomexpansion ↑\n→ unabhängiger Prädiktor für schlechte Prognose', 'What: Hypodense areas within the hyperattenuating haematoma\nWhere: NCCT\nSignificance: Active, unclotted bleeding → haematoma expansion risk ↑\n→ independent predictor of poor prognosis', 'چیست: مناطق هیپودنس درون هماتوم هایپردنس\nکجا: CT بدون کنتراست\nاهمیت: خونریزی فعال و لخته نشده → خطر گسترش هماتوم ↑\n→ پیش‌بینی‌کننده مستقل پیش‌آگهی بد'),
+    back: L(
+      'Was: Hypodense Areale (20–40 HU) im hyperdensen Hämatom\nWo: Natives CCT\nBedeutung: Aktives, unkoaguliertes Blut → Hämatomexpansion ↑↑',
+      'What: Hypodense areas (20–40 HU) within the hyperattenuating haematoma\nWhere: NCCT\nSignificance: Active unclotted blood → haematoma expansion ↑↑',
+      'چیست: مناطق هیپودنس (۲۰-۴۰ HU) در هماتوم هایپردنس\nکجا: CT بدون کنتراست\nاهمیت: خون فعال و لخته‌نشده → گسترش هماتوم ↑↑',
+    ),
+    explanation: L(
+      'Das Swirl Sign bezeichnet hypodense Einschlüsse (20–40 HU) innerhalb eines hyperdensen frischen Hämatoms (50–80 HU) im nativen CT. Diese Areale repräsentieren aktiv austretendes, noch unkoaguliertes Blut, das sich mit bereits geronnenem Blut vermischt und einen Dichtekontrast erzeugt. Der Befund gilt als unabhängiger Prädiktor für Hämatomexpansion (OR ca. 3–4) und schlechte klinische Prognose. Besonders häufig bei Antikoagulanzienpatienten (z.B. erhöhtem INR). Die Expansion betrifft meist die ersten 24 Stunden.',
+      'The Swirl Sign describes hypodense inclusions (20–40 HU) within a hyperattenuating fresh haematoma (50–80 HU) on NCCT. These areas represent actively extravasating, still-unclotted blood mixing with already clotted blood, creating an attenuation contrast. It is an independent predictor of haematoma expansion (OR ~3–4) and poor clinical outcome. Particularly common in anticoagulated patients (e.g. elevated INR). Expansion typically occurs within the first 24 hours.',
+      'Swirl Sign مناطق هیپودنس (۲۰-۴۰ HU) درون هماتوم هایپردنس تازه (۵۰-۸۰ HU) در CT بدون کنتراست است. این مناطق خون فعال و هنوز لخته‌نشده‌ای را نشان می‌دهند که با خون لخته‌شده مخلوط می‌شود. یک پیش‌بینی‌کننده مستقل برای گسترش هماتوم (OR ~۳-۴) است. در بیماران تحت آنتی‌کواگولاسیون بیشتر دیده می‌شود.',
+    ),
     tag: 'icb-ct',
   },
+  // ── 7. Spot Sign ──────────────────────────────────────────────────────────
   {
     front: L('Spot Sign · Was, Wo, Bedeutung?', 'Spot Sign · What, where, significance?', 'Spot Sign · چیست، کجا، اهمیت؟'),
-    back: L('Was: KM-Extravasation im Hämatom\nWo: CTA (nicht im nativen CT!)\nBedeutung: Aktive Blutung mit hohem Expansionsrisiko\n→ Stärker prädiktiv als Swirl Sign', 'What: CM extravasation in haematoma\nWhere: CTA (not on NCCT!)\nSignificance: Active bleeding with high expansion risk\n→ Stronger predictor than Swirl Sign', 'چیست: خروج ماده حاجب در هماتوم\nکجا: CTA (نه در CT بدون کنتراست)\nاهمیت: خونریزی فعال با خطر بالای گسترش\n→ پیش‌بینی‌کننده قوی‌تر از Swirl Sign'),
+    back: L(
+      'Was: KM-Extravasation im Hämatom\nWo: CTA (nicht im nativen CT!)\nBedeutung: Aktive Blutung → stärkster Einzelprädiktor für Expansion\n→ Sensitivität ~50%, Spezifität ~90%',
+      'What: CM extravasation within the haematoma\nWhere: CTA (not on NCCT!)\nSignificance: Active bleeding → strongest single predictor for expansion\n→ Sensitivity ~50%, specificity ~90%',
+      'چیست: خروج ماده حاجب در هماتوم\nکجا: CTA (نه در CT بدون کنتراست)\nاهمیت: خونریزی فعال → قوی‌ترین پیش‌بینی‌کننده گسترش\n→ حساسیت ~۵۰٪، ویژگی ~۹۰٪',
+    ),
+    explanation: L(
+      'Das Spot Sign ist ein Areal aktiver Kontrastmittelextravasation innerhalb des Hämatoms in der CTA. Es zeigt eine rupturierte, aktiv blutende Arteriole an. Mit einer Sensitivität von ~50% und Spezifität von ~90% ist es der stärkste einzelne Prädiktor für Hämatomexpansion und 30-Tage-Mortalität – stärker als das Swirl Sign im nativen CT. Wichtig: Nur in der CTA sichtbar, nicht im nativen CT! Die Indikation zur CTA sollte bei jedem Patienten mit frischer ICB und potenzieller Interventionsmöglichkeit gestellt werden.',
+      'The Spot Sign is an area of active contrast extravasation within the haematoma on CTA. It indicates a ruptured, actively bleeding arteriole. With a sensitivity of ~50% and specificity of ~90%, it is the strongest single predictor of haematoma expansion and 30-day mortality — stronger than the Swirl Sign on NCCT. Key: only visible on CTA, not on plain CT. CTA should be considered in every patient with acute ICB and potential for intervention.',
+      'Spot Sign یک ناحیه از خروج فعال ماده حاجب درون هماتوم در CTA است. نشانه آرترئول پاره‌شده و فعال است. با حساسیت ~۵۰٪ و ویژگی ~۹۰٪، قوی‌ترین پیش‌بینی‌کننده گسترش هماتوم است — قوی‌تر از Swirl Sign. فقط در CTA قابل مشاهده است، نه در CT بدون کنتراست.',
+    ),
     tag: 'icb-ct',
   },
+  // ── 8. CT-Dichte Stadien ───────────────────────────────────────────────────
   {
     front: L('CT-Dichte ICB: Akut, Subakut, Chronisch?', 'CT attenuation ICB: acute, subacute, chronic?', 'دانسیته CT ICB: حاد، زیرحاد، مزمن؟'),
-    back: L('Akut: 50–80 HU (hyperdens)\nSubakut: ↓ ~1,5–2 HU/Tag → isodens nach 3–6 Wo\nChronisch: hypodens (Resorptionshöhle)\n⚠ Isodens-Phase = Falle bei CT!', 'Acute: 50–80 HU (hyperattenuating)\nSubacute: ↓ ~1.5–2 HU/day → isoattenuating at 3–6 weeks\nChronic: hypoattenuating (resorption cavity)\n⚠ Isoattenuating phase = CT pitfall!', 'حاد: ۵۰-۸۰ HU (هایپردنس)\nزیرحاد: ↓ ~۱.۵-۲ HU/روز → ایزودنس پس از ۳-۶ هفته\nمزمن: هیپودنس (حفره جذب)\n⚠ فاز ایزودنس = دام در CT!'),
+    back: L(
+      'Akut: 50–80 HU (hyperdens)\nSubakut: ↓ ~1,5–2 HU/Tag → isodens nach 3–6 Wo\nChronisch: hypodens (Resorptionshöhle)\n⚠ Isodens-Phase = Falle: Hämatom übersehbar!',
+      'Acute: 50–80 HU (hyperattenuating)\nSubacute: ↓ ~1.5–2 HU/day → isoattenuating after 3–6 weeks\nChronic: hypoattenuating (resorption cavity)\n⚠ Isoattenuating phase = pitfall: haematoma may be missed!',
+      'حاد: ۵۰-۸۰ HU (هایپردنس)\nزیرحاد: ↓ ~۱.۵-۲ HU/روز → ایزودنس پس از ۳-۶ هفته\nمزمن: هیپودنس (حفره جذب)\n⚠ فاز ایزودنس = دام: هماتوم ممکن است نادیده گرفته شود!',
+    ),
+    explanation: L(
+      'Frisches Blut ist durch den hohen Proteingehalt des Hämoglobins (~150 g/L) hyperdens (50–80 HU). Mit der Resorption sinkt die Dichte um ~1,5–2 HU/Tag. Nach 3–6 Wochen erreicht das Hämatom Iso-Dichte zum Hirnparenchym (~35 HU) – die sogenannte "Isodens-Falle": Das Hämatom kann auf dem nativen CT völlig unsichtbar werden! Nur noch Masseneffekt, obliterierte Sulci oder ein Ringenhancement (Kontrastmittel-CT) geben einen Hinweis. Danach: hypodens wie Liquor als Porencephalie oder Resorptionshöhle. Cave: Anämische Patienten erreichen die Isodensität früher.',
+      'Fresh blood is hyperattenuating due to the high protein content of haemoglobin (~150 g/L) at 50–80 HU. As protein is resorbed, attenuation drops ~1.5–2 HU/day. After 3–6 weeks the haematoma reaches isoattenuation relative to brain parenchyma (~35 HU) — the "isoattenuating trap": the haematoma can become invisible on plain CT! Only mass effect, effaced sulci, or ring enhancement (contrast CT) may give a clue. Then: hypoattenuating like CSF as a porencephalic cavity. Note: anaemic patients reach isodensity sooner.',
+      'خون تازه به دلیل محتوای پروتئین بالای هموگلوبین (~۱۵۰ g/L) هایپردنس است (۵۰-۸۰ HU). با جذب پروتئین، دانسیته ~۱.۵-۲ HU در روز کاهش می‌یابد. پس از ۳-۶ هفته به ایزودنسیته (~۳۵ HU) می‌رسد — "دام ایزودنس": هماتوم در CT بدون کنتراست کاملاً نامرئی می‌شود! تنها اثر جرم یا Ring Enhancement می‌تواند راهنما باشد.',
+    ),
+    diagram: L(
+      'Akut: 50-80 HU → ↓ 1,5-2 HU/Tag → Subakut (isodens ~35 HU, 3-6 Wo) → Chronisch: hypodens (Liquordichte)',
+      'Acute: 50-80 HU → ↓ 1.5-2 HU/day → Subacute (isoattenuating ~35 HU, 3-6 weeks) → Chronic: hypoattenuating (CSF density)',
+      'حاد: ۵۰-۸۰ HU → ↓ ۱.۵-۲ HU/روز → زیرحاد (ایزودنس ~۳۵ HU، ۳-۶ هفته) → مزمن: هیپودنس (دانسیته مایع مغزی نخاعی)',
+    ),
     tag: 'icb-ct',
   },
+  // ── 9. CAA vs. Hypertensive ICB ────────────────────────────────────────────
   {
     front: L('CAA vs. Hypertensive ICB · Lokalisation?', 'CAA vs. hypertensive ICB · location?', 'CAA در برابر ICB هیپرتانسیو · محل؟'),
-    back: L('Hypertensiv: tief (Putamen, Thalamus, Pons, Kleinhirn)\nCAA: lobär, kortexnah, oft multipel\n  Prädilektion: okzipital + parietal\n  Multiple lobäre Mikroblutungen auf SWI → ✓ CAA', 'Hypertensive: deep (putamen, thalamus, pons, cerebellum)\nCAA: lobar, cortical, often multiple\n  Predilection: occipital + parietal\n  Multiple lobar microbleeds on SWI → ✓ CAA', 'هیپرتانسیو: عمقی (پوتامن، تالاموس، پونز، مخچه)\nCAA: لوبار، نزدیک کورتکس، اغلب چندگانه\n  تمایل: اکسیپیتال + پاریتال\n  میکروبلید لوبار متعدد در SWI → ✓ CAA'),
+    back: L(
+      'Hypertensiv: tief (Putamen 35%, Thalamus 20%, Pons, Kleinhirn)\nCAA: lobär, kortexnah, oft multipel\n  Prädilektion: okzipital + parietal\n  Multiple lobäre Mikroblutungen auf SWI → ✓ CAA',
+      'Hypertensive: deep (putamen 35%, thalamus 20%, pons, cerebellum)\nCAA: lobar, cortical, often multiple\n  Predilection: occipital + parietal\n  Multiple lobar microbleeds on SWI → ✓ CAA',
+      'هیپرتانسیو: عمقی (پوتامن ۳۵٪، تالاموس ۲۰٪، پونز، مخچه)\nCAA: لوبار، نزدیک کورتکس، اغلب چندگانه\n  تمایل: اکسیپیتال + پاریتال\n  میکروبلید لوبار متعدد در SWI → ✓ CAA',
+    ),
+    explanation: L(
+      'Hypertensive ICB: Lipohyalinose kleiner penetrierender Arterien → Charcot-Bouchard-Mikroaneurysmen → Ruptur in tiefe Strukturen (Putamen häufigste Lokalisation ~35%, Thalamus ~20%, Pons, Kleinhirn). CAA: Amyloid-β-Ablagerungen in den Wänden kortikaler und leptomeningealer Arterien → Wandschwäche → lobäre Blutungen bevorzugt okzipital und parietal. SWI zeigt bei CAA multiple lobäre Mikroblutungen (>3 nach Boston-Kriterien). Alter: CAA tritt typischerweise bei Patienten >65 Jahre auf.',
+      'Hypertensive ICB: lipohyalinosis of small penetrating arteries → Charcot-Bouchard microaneurysms → rupture into deep structures (putamen most common ~35%, thalamus ~20%, pons, cerebellum). CAA: amyloid-β deposition in walls of cortical and leptomeningeal arteries → wall weakness → lobar haemorrhages, preferentially occipital and parietal. SWI shows multiple lobar microbleeds (>3 on Boston criteria) in CAA. Age: CAA typically affects patients >65 years.',
+      'ICB هیپرتانسیو: لیپوهیالینوز آرترئول‌های کوچک → ریزآنوریسم‌های Charcot-Bouchard → پارگی در ساختارهای عمقی (پوتامن ~۳۵٪، تالاموس ~۲۰٪). CAA: رسوب آمیلوئید-β در دیواره عروق کورتیکال → ضعف دیواره → خونریزی لوبار اکسیپیتال/پاریتال. SWI در CAA میکروبلیدهای لوبار متعدد نشان می‌دهد.',
+    ),
+    diagram: L(
+      'Hypertonie → Lipohyalinose tiefer Arterien → Putamen / Thalamus / Pons\nCAA → Amyloid in kortikalen Gefäßen → lobär okzipital / parietal → SWI: multiple Mikroblutungen',
+      'Hypertension → lipohyalinosis deep arteries → putamen / thalamus / pons\nCAA → amyloid in cortical vessels → lobar occipital / parietal → SWI: multiple microbleeds',
+      'هیپرتانسیون → لیپوهیالینوز عروق عمقی → پوتامن / تالاموس / پونز\nCAA → آمیلوئید در عروق کورتیکال → لوبار اکسیپیتال / پاریتال → SWI: میکروبلید متعدد',
+    ),
     tag: 'icb-aetiology',
   },
+  // ── 10. Ringenhancement ────────────────────────────────────────────────────
   {
-    front: L('Ringenhancement bei ICB · Wie lange? · DD?', 'Ring enhancement in ICB · How long? · DD?', 'حلقوی در ICB · چقدر؟ · DD؟'),
-    back: L('Dauer: bis zu 6 Monate nach Blutung\nUrsache: Blut-Hirn-Schrankenstörung am Resorptionsrand\nDD: Abszess → DWI Restriktion im Zentrum\n    Metastase → Ödem > Läsion\n→ Klinischer Kontext + DWI entscheidend!', 'Duration: up to 6 months after haemorrhage\nCause: BBB disruption at resorption rim\nDD: Abscess → DWI restriction in centre\n    Metastasis → oedema > lesion\n→ Clinical context + DWI are key!', 'مدت: تا ۶ ماه پس از خونریزی\nعلت: اختلال سد خونی-مغزی در لبه جذب\nDD: آبسه → محدودیت DWI در مرکز\n    متاستاز → ادم > ضایعه\n→ بافت بالینی + DWI کلیدی هستند!'),
+    front: L('Ringenhancement bei ICB · Wie lange? · DD?', 'Ring enhancement in ICB · How long? · DD?', 'Ring Enhancement در ICB · چقدر؟ · DD؟'),
+    back: L(
+      'Dauer: bis zu 6 Monate nach Blutung\nUrsache: Blut-Hirn-Schrankenstörung am Resorptionsrand\nDD: Abszess (DWI-Restriktion im Zentrum)\n    Metastase (Ödem > Läsion)\n    Glioblastom (irreguläres Enhancement)',
+      'Duration: up to 6 months after haemorrhage\nCause: BBB disruption at resorption rim\nDD: abscess (DWI restriction in centre)\n    metastasis (oedema > lesion)\n    glioblastoma (irregular enhancement)',
+      'مدت: تا ۶ ماه پس از خونریزی\nعلت: اختلال BBB در لبه جذب\nDD: آبسه (محدودیت DWI مرکزی)\n    متاستاز (ادم > ضایعه)\n    گلیوبلاستوم (Enhancement نامنظم)',
+    ),
+    explanation: L(
+      'Ein Ringenhancement entsteht durch Störung der Blut-Hirn-Schranke am Resorptionsrand der Blutung – Makrophagen und Neovaskularisation bilden einen lecken Kapillarring. Es kann bis zu 6 Monate nach der initialen ICB persistieren und ist in der subakuten Phase normal. Wichtige Differenzialdiagnosen: Hirnabszess (DWI-Restriktion im Zentrum = Eiter), Hirnmetastase (perifokales Ödem größer als Läsion), Glioblastom (unregelmäßiges, wandnahes Enhancement). Der klinische Kontext (bekannte Blutung? Fieber? bekannter Tumor?) ist entscheidend.',
+      'Ring enhancement arises from BBB disruption at the resorption rim of the haematoma — macrophages and neovascularisation form a leaky capillary ring. It can persist up to 6 months after the initial ICB and is normal in the subacute phase. Key differential diagnoses: brain abscess (DWI restriction in centre = pus), brain metastasis (perifocal oedema larger than lesion), glioblastoma (irregular wall-based enhancement). Clinical context (known haemorrhage? fever? known tumour?) is decisive.',
+      'Ring Enhancement به دلیل اختلال سد خونی-مغزی در لبه جذب هماتوم ایجاد می‌شود — ماکروفاژها و نئوواسکولاریزاسیون یک حلقه مویرگی نشت‌دار تشکیل می‌دهند. می‌تواند تا ۶ ماه پس از ICB اولیه باقی بماند. DD مهم: آبسه (محدودیت DWI مرکزی)، متاستاز (ادم > ضایعه)، GBM (Enhancement نامنظم).',
+    ),
     tag: 'icb-ct',
   },
+  // ── 11. CAVE: unverhältnismäßiges Ödem ────────────────────────────────────
   {
     front: L('CAVE: Ödem unverhältnismäßig groß – woran denken?', 'CAUTION: oedema disproportionately large – think of?', 'احتیاط: ادم بیش از حد بزرگ — به چه فکر کنید؟'),
-    back: L('→ Sekundäre ICB!\nDD: Tumor mit Einblutung\n    Hämorrhagischer Infarkt\n    Vaskuläre Malformation (junger Patient)\nBei jungen Patienten ohne Hypertonus → CTA!', '→ Secondary ICB!\nDD: tumour with haemorrhage\n    haemorrhagic infarct\n    vascular malformation (young patient)\nIn young patients without hypertension → CTA!', '→ ICB ثانویه!\nDD: تومور با خونریزی\n    انفارکت هموراژیک\n    مالفورماسیون عروقی (بیمار جوان)\nدر بیمار جوان بدون فشار خون → CTA!'),
+    back: L(
+      '→ Sekundäre ICB!\nDD: Tumor mit Einblutung\n    Hämorrhagischer Infarkt\n    Vaskuläre Malformation (junger Patient)\nBei jungen Patienten ohne Hypertonus → CTA obligat!',
+      '→ Secondary ICB!\nDD: tumour with haemorrhage\n    haemorrhagic infarct\n    vascular malformation (young patient)\nIn young patients without hypertension → CTA mandatory!',
+      '→ ICB ثانویه!\nDD: تومور با خونریزی\n    انفارکت هموراژیک\n    مالفورماسیون عروقی (بیمار جوان)\nدر بیمار جوان بدون فشار خون → CTA اجباری!',
+    ),
+    explanation: L(
+      'Ein Ödem, das unverhältnismäßig größer ist als das Hämatom, sollte immer an eine sekundäre Ursache denken lassen: (1) Tumor mit Einblutung (z.B. Glioblastom, Metastase) – das perifokale Ödem überwiegt die Blutung; (2) Hämorrhagischer Infarkt – kortikale/laminäre Hämorrhagie im Versorgungsgebiet einer Arterie, DWI-Restriktion; (3) Vaskuläre Malformation (AVM, Kavernom) – junger Patient ohne vaskuläre Risikofaktoren, ggf. Kavernomhalo in SWI. Bei jungen Patienten (<45 J.) ohne Hypertonie ist eine CTA obligat – eine behandelbare Ursache muss ausgeschlossen werden!',
+      'Oedema disproportionately larger than the haematoma should always prompt consideration of a secondary cause: (1) tumour with haemorrhage (e.g. glioblastoma, metastasis) — perifocal oedema exceeds the haemorrhage; (2) haemorrhagic infarct — cortical/laminar haemorrhage in an arterial territory, DWI restriction; (3) vascular malformation (AVM, cavernoma) — young patient without vascular risk factors, possible cavernoma halo on SWI. In young patients (<45 years) without hypertension, CTA is mandatory — a treatable cause must be excluded!',
+      'ادم بیش از حد بزرگ‌تر از هماتوم همیشه باید به یک علت ثانویه توجه کند: (۱) تومور با خونریزی (مثلاً GBM، متاستاز) — ادم پریفوکال بر خونریزی غلبه می‌کند؛ (۲) انفارکت هموراژیک — DWI محدودیت؛ (۳) مالفورماسیون عروقی (AVM، کاورنوم) — بیمار جوان بدون عوامل خطر. در بیماران جوان (<۴۵ سال) بدون هیپرتانسیون، CTA اجباری است!',
+    ),
+    diagram: L(
+      'Ödem >> Hämatom → DD Tumor-Blutung → DD Hämorr. Infarkt → DD AVM/Kavernom → CTA obligat!',
+      'Oedema >> haematoma → DD tumour bleed → DD haemorrhagic infarct → DD AVM/cavernoma → CTA mandatory!',
+      'ادم >> هماتوم → DD خونریزی تومور → DD انفارکت هموراژیک → DD AVM/کاورنوم → CTA اجباری!',
+    ),
     tag: 'icb-aetiology',
   },
+  // ── 12. Sequenzen je Stadium ───────────────────────────────────────────────
   {
-    front: L('Welche Sequenz für welche ICB-Phase?', 'Which sequence for which ICB phase?', 'کدام سکانس برای کدام مرحله ICB؟'),
-    back: L('Hyperakut/akut → SWI/T2* (Blooming!)\nFrüh subakut → T1 (hell!)\nSpät subakut → T1 + T2 + SWI\nChronisch → nur SWI (CT blind!)\nFaustregel: Akut=SWI · Subakut=T1 · Chronisch=SWI', 'Hyperacute/acute → SWI/T2* (blooming!)\nEarly subacute → T1 (bright!)\nLate subacute → T1 + T2 + SWI\nChronic → SWI only (CT blind!)\nRule: Acute=SWI · Subacute=T1 · Chronic=SWI', 'فوق‌حاد/حاد → SWI/T2* (Blooming)\nزیرحاد اولیه → T1 (روشن)\nزیرحاد دیررس → T1 + T2 + SWI\nمزمن → فقط SWI (CT کور است)\nقانون: حاد=SWI · زیرحاد=T1 · مزمن=SWI'),
+    front: L('Welche MRT-Sequenz für welche ICB-Phase?', 'Which MRI sequence for which ICB phase?', 'کدام سکانس MRI برای کدام مرحله ICB؟'),
+    back: L(
+      'Hyperakut/akut → SWI/T2* (Blooming!)\nFrüh subakut → T1 (hell!)\nSpät subakut → T1 + T2 + SWI\nChronisch → SWI (CT blind!)\nMerkhilfe: A–S–C = Akut→SWI · Subakut→T1 · Chronisch→SWI',
+      'Hyperacute/acute → SWI/T2* (blooming!)\nEarly subacute → T1 (bright!)\nLate subacute → T1 + T2 + SWI\nChronic → SWI (CT blind!)\nMnemonic: A–S–C = Acute→SWI · Subacute→T1 · Chronic→SWI',
+      'فوق‌حاد/حاد → SWI/T2* (Blooming)\nزیرحاد اولیه → T1 (روشن)\nزیرحاد دیررس → T1 + T2 + SWI\nمزمن → SWI (CT کور است)\nیادگیری: A–S–C = حاد→SWI · زیرحاد→T1 · مزمن→SWI',
+    ),
+    explanation: L(
+      'Das MRT-Staging basiert auf dem Hämoglobinabbauprodukt und der Erythrozytenintegrität. Hyperakut/Akut (Deoxy-Hb): SWI zeigt Blooming zuverlässig – CT ist hier empfindlicher. Früh subakut (intrazell. Met-Hb, >Tag 3): T1-Helligkeit ist der entscheidende Befund. Spät subakut (extrazell. Met-Hb): Alle Sequenzen zeigen die Blutung. Chronisch (Hämosiderin): Nur SWI persistiert lebenslang, CT ist komplett blind. Wichtig: Die Übergänge verlaufen von der Peripherie zur Mitte, sodass ein Hämatom gleichzeitig verschiedene Stadien zeigen kann.',
+      'MRI staging is based on the haemoglobin degradation product and erythrocyte integrity. Hyperacute/acute (deoxyHb): SWI shows reliable blooming — CT is actually more sensitive here. Early subacute (intracell. metHb, >day 3): T1 brightness is the key finding. Late subacute (extracell. metHb): all sequences show the haemorrhage. Chronic (haemosiderin): only SWI persists lifelong, CT is completely blind. Important: transitions progress from periphery to centre — a haematoma can show different stages simultaneously.',
+      'مرحله‌بندی MRI بر اساس محصول تجزیه هموگلوبین و یکپارچگی اریتروسیت است. فوق‌حاد/حاد (Deoxy-Hb): SWI Blooming قابل اعتماد — CT اینجا حساس‌تر است. زیرحاد اولیه (Met-Hb داخل سلول): T1 روشن یافته کلیدی است. زیرحاد دیررس: همه سکانس‌ها. مزمن: فقط SWI تمام عمر — CT کاملاً کور. مهم: انتقال از محیط به مرکز پیش می‌رود.',
+    ),
+    diagram: L(
+      'Hyperakut/Akut (Deoxy-Hb) → SWI Blooming\nFrüh subakut (intrazell. Met-Hb) → T1 hell\nSpät subakut (extrazell. Met-Hb) → T1 + T2 + SWI\nChronisch (Hämosiderin) → SWI (lebenslang)',
+      'Hyperacute/Acute (DeoxyHb) → SWI blooming\nEarly subacute (intracell. MetHb) → T1 bright\nLate subacute (extracell. MetHb) → T1 + T2 + SWI\nChronic (haemosiderin) → SWI (lifelong)',
+      'فوق‌حاد/حاد (Deoxy-Hb) → SWI Blooming\nزیرحاد اولیه (Met-Hb داخل) → T1 روشن\nزیرحاد دیررس (Met-Hb خارج) → T1 + T2 + SWI\nمزمن (هموسیدرین) → SWI (تمام عمر)',
+    ),
     tag: 'icb-mrt',
   },
 ]
@@ -663,6 +828,8 @@ export const ICB_FLASHCARDS = ICB_FLASHCARD_SEEDS.map((item, index) => ({
   topicId: 'intrazerebrale-blutung',
   front: item.front,
   back: item.back,
+  explanation: item.explanation,
+  diagram: item.diagram,
   tag: item.tag,
 }))
 
