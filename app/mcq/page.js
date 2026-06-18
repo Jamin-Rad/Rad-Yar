@@ -48,7 +48,14 @@ const TOPICS = [
   { key: 'mrt',    icon: '🧲', iconImage: '/fach/technik.png', color: '#7c3aed', available: false, name: { de: 'MRT-Physik',     en: 'MRI Physics',    fa: 'فیزیک MRI' } },
   { key: 'ct',     icon: '🩻', iconImage: '/fach/technik.png', color: '#0ea5e9', available: false, name: { de: 'CT-Technik',     en: 'CT Technology',  fa: 'تکنولوژی CT' } },
   { key: 'strah',  icon: '🛡️', iconImage: '/fach/technik.png', color: '#d97706', available: false, name: { de: 'Strahlenschutz', en: 'Radiation Protection', fa: 'حفاظت از تابش' } },
-  { key: 'neuro',  icon: '🧠', iconImage: '/fach/gehirn.png', color: '#7c3aed', available: false, name: { de: 'Neuroradiologie',en: 'Neuroradiology', fa: 'نوروراديولوژی' } },
+  {
+    key: 'neuro',
+    href: '/ueben/quiz?fach=gehirn&n=3&themen=liquorraeume-ventrikelsystem',
+    icon: '🧠', iconImage: '/fach/gehirn.png', color: '#7c3aed', available: true,
+    count: { de: '3 Fragen', en: '3 Questions', fa: '۳ سؤال' },
+    name: { de: 'Kopf · Liquorräume', en: 'Head · CSF spaces', fa: 'سر · فضاهای مایع مغزی‌نخاعی' },
+    desc: { de: 'CSP · Cavum vergae · CVI · klinische Relevanz', en: 'CSP · cavum vergae · CVI · clinical relevance', fa: 'CSP · کاووم ورگه · CVI · اهمیت بالینی' },
+  },
   { key: 'thorax-soon', icon: '🫁', iconImage: '/fach/thorax.png', color: '#0ea5e9', available: false, name: { de: 'Weitere Thorax-Themen', en: 'More thorax topics', fa: 'موضوعات بیشتر توراکس' } },
 ]
 

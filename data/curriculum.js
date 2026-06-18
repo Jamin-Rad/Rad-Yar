@@ -23,7 +23,14 @@ export const CURRICULUM = [
         icon: '🗺️',
         themen: [
           { id: 'hirnlappen-kortex', title: { de: 'Hirnlappen & Kortex', en: 'Cerebral Lobes & Cortex', fa: 'لوب‌های مغزی و قشر مخ' }, tags: ['CT','MRT'], diff: 1 },
-          { id: 'liquorraeume-ventrikelsystem', title: { de: 'Liquorräume / Ventrikelsystem', en: 'CSF Spaces / Ventricular System', fa: 'فضاهای مایع مغزی‌نخاعی / سیستم بطنی' }, tags: ['CT','MRT'], diff: 1 },
+          {
+            id: 'liquorraeume-ventrikelsystem',
+            title: { de: 'Liquorräume / Ventrikelsystem', en: 'CSF Spaces / Ventricular System', fa: 'فضاهای مایع مغزی‌نخاعی / سیستم بطنی' },
+            tags: ['CT','MRT'], diff: 1,
+            link: '/gehirn/anatomie/liquorraeume-ventrikelsystem',
+            flashcardLink: '/flashcards/liquorraeume-ventrikelsystem',
+            ready: true, updatedAt: '2026-06-18',
+          },
           { id: 'hirnhaeute-meningealraeume', title: { de: 'Hirnhäute / Meningealräume', en: 'Meninges / Meningeal Spaces', fa: 'پرده‌های مننژ / فضاهای مننژیال' }, tags: ['CT','MRT'], diff: 1 },
           { id: 'basalganglien-thalamus', title: { de: 'Basalganglien / Thalamus', en: 'Basal Ganglia / Thalamus', fa: 'گانگلیون‌های قاعده‌ای / تالاموس' }, tags: ['MRT'], diff: 1 },
           { id: 'hirnstamm-anatomie', title: { de: 'Hirnstamm', en: 'Brainstem', fa: 'ساقه مغز' }, tags: ['MRT'], diff: 1 },

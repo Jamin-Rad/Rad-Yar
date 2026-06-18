@@ -9,6 +9,25 @@ export const FLASHCARD_TOPICS = [
   STROKE_FLASHCARD_TOPIC,
   ICB_FLASHCARD_TOPIC,
   {
+    id: 'liquorraeume-ventrikelsystem',
+    area: 'Kopf',
+    chapter: 'Anatomie & Normalvarianten',
+    icon: '🧠',
+    iconImage: '/fach/gehirn.png',
+    color: '#7c3aed',
+    href: '/flashcards/liquorraeume-ventrikelsystem',
+    title: {
+      de: 'Liquorräume / Ventrikelsystem',
+      en: 'CSF spaces / ventricular system',
+      fa: 'فضاهای مایع مغزی‌نخاعی / سیستم بطنی',
+    },
+    subtitle: {
+      de: 'CSP · Cavum vergae · CVI · Landmarken · Differenzialdiagnosen',
+      en: 'CSP · cavum vergae · CVI · landmarks · differential diagnoses',
+      fa: 'CSP · کاووم ورگه · CVI · لندمارک‌ها · تشخیص افتراقی',
+    },
+  },
+  {
     id: 'divertikulitis',
     area: 'Abdomen',
     chapter: 'Gastrointestinaltrakt',
@@ -271,11 +290,97 @@ const DIVERTICULITIS_FLASHCARDS = DIVERTICULITIS_FLASHCARD_CONTENT.map(item => (
   diagram: item.diagram,
 }))
 
+const MIDLINE_CAVA_FLASHCARD_CONTENT = [
+  {
+    id: 'csp-location',
+    category: { de: 'Anatomie', en: 'Anatomy', fa: 'آناتومی' },
+    front: { de: 'Wo liegt das Cavum septi pellucidi?', en: 'Where is the cavum septi pellucidi located?', fa: 'کاووم سپتی پلوسیدی کجا قرار دارد؟' },
+    answer: { de: 'Zwischen den Septumblättern, vor der Monro-Ebene und zwischen den Vorderhörnern.', en: 'Between the septal leaflets, anterior to the Monro plane and between the frontal horns.', fa: 'بین لایه‌های سپتوم، جلوی سطح مونرو و بین شاخ‌های فرونتال.' },
+    explanation: { de: 'Corpus callosum liegt kranial, der Fornix kaudal. Diese Landmarken grenzen das CSP von anderen Mittellinienzysten ab.', en: 'The corpus callosum lies superiorly and the fornix inferiorly. These landmarks distinguish the CSP from other midline cystic spaces.', fa: 'جسم پینه‌ای در بالا و فورنیکس در پایین قرار دارند. این لندمارک‌ها CSP را از سایر فضاهای کیست‌مانند خط وسط جدا می‌کنند.' },
+    diagram: { de: 'Vorderhörner → CSP → vor Monro', en: 'Frontal horns → CSP → anterior to Monro', fa: 'شاخ‌های فرونتال → CSP → جلوی مونرو' },
+  },
+  {
+    id: 'vergae-definition',
+    category: { de: 'Anatomie', en: 'Anatomy', fa: 'آناتومی' },
+    front: { de: 'Was definiert das Cavum vergae?', en: 'What defines the cavum vergae?', fa: 'تعریف کاووم ورگه چیست؟' },
+    answer: { de: 'Die posteriore Fortsetzung des CSP hinter die Ebene der Foramina Monroi.', en: 'The posterior continuation of the CSP beyond the foramina of Monro.', fa: 'ادامه خلفی CSP در پشت سطح سوراخ‌های مونرو.' },
+    explanation: { de: 'CSP und Cavum vergae sind keine getrennten Gewebskompartimente, sondern topografisch benannte Abschnitte desselben persistierenden septalen Raums.', en: 'The CSP and cavum vergae are topographically named portions of the same persistent septal space rather than separate tissue compartments.', fa: 'CSP و کاووم ورگه دو محفظه بافتی جدا نیستند؛ بلکه بخش‌های توپوگرافیک یک فضای سپتال پایدارند.' },
+    diagram: { de: 'vor Monro = CSP → hinter Monro = Cavum vergae', en: 'anterior to Monro = CSP → posterior = cavum vergae', fa: 'جلوی مونرو = CSP → پشت مونرو = کاووم ورگه' },
+  },
+  {
+    id: 'vergae-isolated',
+    category: { de: 'Prüfungswissen', en: 'Exam pearl', fa: 'نکته امتحانی' },
+    front: { de: 'Tritt ein Cavum vergae typischerweise isoliert auf?', en: 'Does a cavum vergae typically occur in isolation?', fa: 'آیا کاووم ورگه معمولاً به‌صورت منفرد دیده می‌شود؟' },
+    answer: { de: 'Nein, meist gemeinsam mit einem CSP.', en: 'No. It usually occurs together with a CSP.', fa: 'خیر؛ معمولاً همراه CSP دیده می‌شود.' },
+    explanation: { de: 'Ein scheinbar isoliertes Cavum vergae sollte zur erneuten Prüfung der Ebenenführung und möglicher Differenzialdiagnosen führen.', en: 'An apparently isolated cavum vergae should prompt review of imaging planes and possible differentials.', fa: 'در کاووم ورگه ظاهراً منفرد باید نماهای تصویربرداری و تشخیص‌های افتراقی دوباره بررسی شوند.' },
+    diagram: { de: 'CSP + posteriore Fortsetzung → CSP et vergae', en: 'CSP + posterior continuation → CSP et vergae', fa: 'CSP + ادامه خلفی → CSP et vergae' },
+  },
+  {
+    id: 'cvi-location',
+    category: { de: 'Anatomie', en: 'Anatomy', fa: 'آناتومی' },
+    front: { de: 'Wo liegt das Cavum veli interpositi?', en: 'Where is the cavum veli interpositi located?', fa: 'کاووم ولی اینترپوزیتی کجا قرار دارد؟' },
+    answer: { de: 'Unter den Fornices und über dem 3. Ventrikel in der Tela choroidea.', en: 'Below the fornices and above the third ventricle within the tela choroidea.', fa: 'زیر فورنیکس‌ها و بالای بطن سوم، در تلا کوروئیدئا.' },
+    explanation: { de: 'Im Gegensatz zu CSP und Cavum vergae liegt das CVI nicht zwischen den Blättern des Septum pellucidum.', en: 'Unlike the CSP and cavum vergae, the CVI is not located between the leaflets of the septum pellucidum.', fa: 'برخلاف CSP و کاووم ورگه، CVI بین لایه‌های سپتوم پلوسیدوم قرار ندارد.' },
+    diagram: { de: 'Fornix\n↓\nCVI\n↓\n3. Ventrikel', en: 'Fornix\n↓\nCVI\n↓\nThird ventricle', fa: 'فورنیکس\n↓\nCVI\n↓\nبطن سوم' },
+  },
+  {
+    id: 'cvi-shape',
+    category: { de: 'Bildgebung', en: 'Imaging', fa: 'تصویربرداری' },
+    front: { de: 'Welche Form ist für ein CVI in axialer Schichtung typisch?', en: 'What shape is typical of a CVI on axial imaging?', fa: 'شکل تیپیک CVI در نمای اکسیال چیست؟' },
+    answer: { de: 'Dreieckig, meist mit nach anterior gerichteter Spitze.', en: 'Triangular, usually with the apex pointing anteriorly.', fa: 'مثلثی، معمولاً با رأس رو به قدام.' },
+    explanation: { de: 'Die Form und die Lage unterhalb der Fornices helfen, das CVI von einem septalen Cavum oder einer Pinealiszyste abzugrenzen.', en: 'Its shape and position below the fornices help distinguish it from a septal cavum or pineal cyst.', fa: 'شکل و محل زیر فورنیکس‌ها به افتراق CVI از فضاهای سپتال یا کیست پینه‌آل کمک می‌کند.' },
+    diagram: { de: 'axial: △ → CVI', en: 'axial: △ → CVI', fa: 'اکسیال: △ → CVI' },
+  },
+  {
+    id: 'signal',
+    category: { de: 'Bildgebung', en: 'Imaging', fa: 'تصویربرداری' },
+    front: { de: 'Welches Signalverhalten zeigen typische Mittellinien-Cava?', en: 'What signal characteristics do typical midline cava show?', fa: 'فضاهای تیپیک خط وسط چه الگوی سیگنالی دارند؟' },
+    answer: { de: 'Liquoräquivalent, ohne soliden Anteil und ohne Enhancement.', en: 'They follow CSF, without a solid component or enhancement.', fa: 'مشابه CSF، بدون جزء جامد و بدون enhancement.' },
+    explanation: { de: 'Signalabweichung, Wandverdickung, noduläre Anteile oder Enhancement sind atypisch und verlangen eine andere Differenzialdiagnose.', en: 'Signal mismatch, wall thickening, nodules or enhancement are atypical and require another differential diagnosis.', fa: 'اختلاف با سیگنال CSF، ضخیم‌شدن دیواره، ندول یا enhancement آتیپیک است و تشخیص دیگری را مطرح می‌کند.' },
+    diagram: { de: 'CSF-Signal + glatte Wand + kein Enhancement → typisches Cavum', en: 'CSF signal + smooth wall + no enhancement → typical cavum', fa: 'سیگنال CSF + دیواره صاف + بدون enhancement → کاووم تیپیک' },
+  },
+  {
+    id: 'clinical-relevance',
+    category: { de: 'Klinische Relevanz', en: 'Clinical relevance', fa: 'اهمیت بالینی' },
+    front: { de: 'Wann ist ein Cavum nicht mehr nur ein belangloser Zufallsbefund?', en: 'When is a cavum no longer merely an incidental finding?', fa: 'چه زمانی یک کاووم دیگر فقط یک یافته اتفاقی بی‌اهمیت نیست؟' },
+    answer: { de: 'Bei Masseneffekt, Foramen-Monroi-Kompression oder Hydrozephalus.', en: 'When there is mass effect, compression of the foramen of Monro or hydrocephalus.', fa: 'در صورت اثر فشاری، فشار بر سوراخ مونرو یا هیدروسفالی.' },
+    explanation: { de: 'Eine große CSP- oder CVI-Zyste kann die Liquorzirkulation behindern. Größe, Ventrikelweite und neurochirurgische Relevanz müssen dann ausdrücklich beurteilt werden.', en: 'A large CSP or CVI cyst can obstruct CSF pathways. Size, ventricular calibre and neurosurgical relevance must then be assessed explicitly.', fa: 'کیست بزرگ CSP یا CVI می‌تواند مسیر CSF را مسدود کند. در این حالت اندازه، اتساع بطن‌ها و اهمیت جراحی باید صریحاً ارزیابی شوند.' },
+    diagram: { de: 'Cavum-Zyste → Monro-Kompression → Hydrozephalus', en: 'Cavum cyst → Monro compression → hydrocephalus', fa: 'کیست کاووم → فشار بر مونرو → هیدروسفالی' },
+  },
+  {
+    id: 'colloid-dd',
+    category: { de: 'Differenzialdiagnose', en: 'Differential diagnosis', fa: 'تشخیص افتراقی' },
+    front: { de: 'Wie unterscheidet sich eine Kolloidzyste typischerweise von einem CSP?', en: 'How does a colloid cyst typically differ from a CSP?', fa: 'کیست کلوئید معمولاً چگونه از CSP افتراق داده می‌شود؟' },
+    answer: { de: 'Sie sitzt fokal am Foramen Monroi und ist häufig nicht liquoräquivalent.', en: 'It is a focal lesion at the foramen of Monro and often does not follow CSF.', fa: 'ضایعه‌ای فوکال در سوراخ مونرو است و اغلب سیگنالی متفاوت از CSF دارد.' },
+    explanation: { de: 'Die Kolloidzyste kann trotz kleiner Größe einen akuten obstruktiven Hydrozephalus verursachen; die genaue Lage ist daher managementrelevant.', en: 'Even a small colloid cyst may cause acute obstructive hydrocephalus, making precise localisation management-relevant.', fa: 'کیست کلوئید حتی در اندازه کوچک می‌تواند هیدروسفالی انسدادی حاد ایجاد کند؛ بنابراین محل دقیق آن اهمیت درمانی دارد.' },
+    diagram: { de: 'fokal an Monro + variables Signal → Kolloidzyste', en: 'focal at Monro + variable signal → colloid cyst', fa: 'فوکال در مونرو + سیگنال متغیر → کیست کلوئید' },
+  },
+  {
+    id: 'reporting',
+    category: { de: 'Befundung', en: 'Reporting', fa: 'گزارش' },
+    front: { de: 'Welche drei Fragen sollte der Befund zu einem Mittellinien-Cavum beantworten?', en: 'Which three questions should a report on a midline cavum answer?', fa: 'گزارش یک کاووم خط وسط باید به کدام سه پرسش پاسخ دهد؟' },
+    answer: { de: 'Welches Cavum? Typische Liquoreigenschaften? Masseneffekt oder Hydrozephalus?', en: 'Which cavum? Typical CSF characteristics? Any mass effect or hydrocephalus?', fa: 'کدام کاووم؟ آیا ویژگی‌های تیپیک CSF دارد؟ آیا اثر فشاری یا هیدروسفالی وجود دارد؟' },
+    explanation: { de: 'Bei typischer schmaler Normvariante reicht eine knappe Benennung. Atypische Größe, Wand oder Signalgebung muss dagegen genauer charakterisiert werden.', en: 'A brief label is sufficient for a typical narrow variant. Atypical size, wall or signal requires fuller characterisation.', fa: 'برای واریانت باریک و تیپیک، نام‌گذاری کوتاه کافی است؛ اما اندازه، دیواره یا سیگنال آتیپیک باید دقیق‌تر توصیف شود.' },
+    diagram: { de: 'Name → Charakter → Relevanz', en: 'Name → character → relevance', fa: 'نام → ویژگی → اهمیت' },
+  },
+]
+
+const MIDLINE_CAVA_FLASHCARDS = MIDLINE_CAVA_FLASHCARD_CONTENT.map(item => ({
+  id: `liquorraeume-ventrikelsystem-${item.id}`,
+  topicId: 'liquorraeume-ventrikelsystem',
+  category: item.category,
+  front: item.front,
+  answer: item.answer,
+  explanation: item.explanation,
+  diagram: item.diagram,
+}))
+
 export const FLASHCARDS = [
   ...CONTRAST_FLASHCARDS,
   ...DIVERTICULITIS_FLASHCARDS,
   ...STROKE_FLASHCARDS,
   ...ICB_FLASHCARDS,
+  ...MIDLINE_CAVA_FLASHCARDS,
   {
     "id": "meniskus-01",
     "topicId": "meniskus",

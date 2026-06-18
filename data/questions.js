@@ -222,12 +222,91 @@ const DIVERTICULITIS_QUESTIONS = Object.fromEntries(
   ])
 )
 
+const MIDLINE_CAVA_QUESTION_CONTENT = [
+  {
+    id: 'localisation',
+    question: {
+      de: 'Bei einer MRT zeigt sich eine liquoräquivalente, dreieckige Mittellinienstruktur unterhalb der Fornices und oberhalb des 3. Ventrikels. Welche Diagnose ist am wahrscheinlichsten?',
+      en: 'MRI shows a triangular CSF-equivalent midline space below the fornices and above the third ventricle. What is the most likely diagnosis?',
+      fa: 'در MRI یک فضای مثلثی در خط وسط با سیگنال مشابه CSF، زیر فورنیکس‌ها و بالای بطن سوم دیده می‌شود. محتمل‌ترین تشخیص چیست؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Cavum septi pellucidi', en: 'Cavum septi pellucidi', fa: 'کاووم سپتی پلوسیدی' } },
+      { id: 'B', text: { de: 'Cavum vergae', en: 'Cavum vergae', fa: 'کاووم ورگه' } },
+      { id: 'C', text: { de: 'Cavum veli interpositi', en: 'Cavum veli interpositi', fa: 'کاووم ولی اینترپوزیتی' } },
+      { id: 'D', text: { de: 'Kolloidzyste', en: 'Colloid cyst', fa: 'کیست کلوئید' } },
+    ],
+    correct: 'C',
+    explanation: {
+      de: 'Das Cavum veli interpositi liegt in der Tela choroidea unterhalb der Fornices und oberhalb des 3. Ventrikels. Die dreieckige Konfiguration in axialer Schichtung ist besonders typisch.',
+      en: 'The cavum veli interpositi lies within the tela choroidea below the fornices and above the third ventricle. A triangular axial configuration is particularly characteristic.',
+      fa: 'کاووم ولی اینترپوزیتی در تلا کوروئیدئا، زیر فورنیکس‌ها و بالای بطن سوم قرار دارد. شکل مثلثی در نمای اکسیال یک یافته بسیار تیپیک است.',
+    },
+  },
+  {
+    id: 'vergae',
+    question: {
+      de: 'Welche Aussage zum Cavum vergae ist radiologisch korrekt?',
+      en: 'Which statement about the cavum vergae is radiologically correct?',
+      fa: 'کدام عبارت درباره کاووم ورگه از نظر رادیولوژیک صحیح است؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Es liegt stets vor dem Foramen Monroi.', en: 'It always lies anterior to the foramen of Monro.', fa: 'همیشه جلوی سوراخ مونرو قرار دارد.' } },
+      { id: 'B', text: { de: 'Es ist die posteriore Fortsetzung des Cavum septi pellucidi hinter die Monro-Ebene.', en: 'It is the posterior continuation of the cavum septi pellucidi beyond the Monro plane.', fa: 'ادامه خلفی کاووم سپتی پلوسیدی در پشت سطح سوراخ مونرو است.' } },
+      { id: 'C', text: { de: 'Es liegt in der Pinealisregion dorsal des 3. Ventrikels.', en: 'It lies in the pineal region posterior to the third ventricle.', fa: 'در ناحیه پینه‌آل و پشت بطن سوم قرار دارد.' } },
+      { id: 'D', text: { de: 'Es tritt regelhaft isoliert ohne CSP auf.', en: 'It routinely occurs in isolation without a CSP.', fa: 'معمولاً به‌صورت منفرد و بدون CSP دیده می‌شود.' } },
+    ],
+    correct: 'B',
+    explanation: {
+      de: 'Das Cavum vergae setzt das CSP nach posterior fort und liegt hinter der Ebene der Foramina Monroi. Es kommt typischerweise gemeinsam mit einem CSP vor.',
+      en: 'The cavum vergae continues the CSP posteriorly beyond the foramina of Monro and typically occurs together with a CSP.',
+      fa: 'کاووم ورگه ادامه خلفی CSP در پشت سوراخ‌های مونرو است و معمولاً همراه با CSP دیده می‌شود.',
+    },
+  },
+  {
+    id: 'clinical-relevance',
+    question: {
+      de: 'Welcher Befund macht eine vermeintliche Mittellinien-Normvariante klinisch relevant und verlangt eine weitergehende Beurteilung?',
+      en: 'Which finding makes a presumed midline normal variant clinically relevant and requires further assessment?',
+      fa: 'کدام یافته باعث می‌شود یک واریانت ظاهراً طبیعی خط وسط اهمیت بالینی پیدا کند و نیاز به بررسی بیشتر داشته باشد؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Liquoräquivalentes Signal ohne Enhancement', en: 'CSF-equivalent signal without enhancement', fa: 'سیگنال مشابه CSF بدون enhancement' } },
+      { id: 'B', text: { de: 'Symmetrische Lage in der Mittellinie', en: 'Symmetric midline location', fa: 'قرارگیری متقارن در خط وسط' } },
+      { id: 'C', text: { de: 'Masseneffekt mit Kompression des Foramen Monroi und Hydrozephalus', en: 'Mass effect with compression of the foramen of Monro and hydrocephalus', fa: 'اثر فشاری همراه با فشار بر سوراخ مونرو و هیدروسفالی' } },
+      { id: 'D', text: { de: 'Schmale glatte Konfiguration ohne Begleitbefund', en: 'Thin smooth configuration without associated findings', fa: 'شکل باریک و صاف بدون یافته همراه' } },
+    ],
+    correct: 'C',
+    explanation: {
+      de: 'Masseneffekt, Foramen-Monroi-Kompression und Hydrozephalus sprechen gegen eine belanglose schmale Normvariante. Dann müssen Größe, Ursache und neurochirurgische Relevanz beurteilt werden.',
+      en: 'Mass effect, obstruction at the foramen of Monro and hydrocephalus are not features of a trivial narrow variant. Size, cause and neurosurgical relevance must then be assessed.',
+      fa: 'اثر فشاری، انسداد سوراخ مونرو و هیدروسفالی با یک واریانت باریک و بی‌اهمیت سازگار نیستند. در این شرایط اندازه، علت و اهمیت جراحی باید بررسی شود.',
+    },
+  },
+]
+
+const MIDLINE_CAVA_QUESTIONS = Object.fromEntries(
+  ['de', 'en', 'fa'].map(lang => [
+    lang,
+    MIDLINE_CAVA_QUESTION_CONTENT.map(item => ({
+      id: `liquorraeume-ventrikelsystem-${lang}-${item.id}`,
+      tags: ['liquorraeume-ventrikelsystem', 'cavum', 'gehirn'],
+      fach: 'gehirn',
+      question: item.question[lang],
+      options: item.options.map(option => ({ id: option.id, text: option.text[lang] })),
+      correct: item.correct,
+      explanation: item.explanation[lang],
+    })),
+  ])
+)
+
 export const QUESTION_BANK = {
   "de": [
     ...CONTRAST_QUESTIONS.de,
     ...DIVERTICULITIS_QUESTIONS.de,
     ...STROKE_QUESTIONS.de,
     ...ICB_QUESTIONS.de,
+    ...MIDLINE_CAVA_QUESTIONS.de,
     {
       "id": "meniskus-de-01",
       "tags": [
@@ -1558,6 +1637,7 @@ export const QUESTION_BANK = {
     ...DIVERTICULITIS_QUESTIONS.en,
     ...STROKE_QUESTIONS.en,
     ...ICB_QUESTIONS.en,
+    ...MIDLINE_CAVA_QUESTIONS.en,
     {
       "id": "meniskus-en-01",
       "tags": [
@@ -2888,6 +2968,7 @@ export const QUESTION_BANK = {
     ...DIVERTICULITIS_QUESTIONS.fa,
     ...STROKE_QUESTIONS.fa,
     ...ICB_QUESTIONS.fa,
+    ...MIDLINE_CAVA_QUESTIONS.fa,
     {
       "id": "meniskus-fa-01",
       "tags": [
@@ -4216,6 +4297,14 @@ export const QUESTION_BANK = {
 }
 
 export const MCQ_TOPIC_GROUPS = [
+  {
+    fachId: 'gehirn',
+    kapitelId: 'kopf-anatomie',
+    title: { de: '1. Anatomie & Normalvarianten', en: '1. Anatomy & Normal Variants', fa: '۱. آناتومی و واریانت‌های طبیعی' },
+    topics: [
+      { id: 'liquorraeume-ventrikelsystem', title: { de: 'Liquorräume / Ventrikelsystem', en: 'CSF spaces / ventricular system', fa: 'فضاهای مایع مغزی‌نخاعی / سیستم بطنی' } },
+    ],
+  },
   {
     fachId: 'gehirn',
     kapitelId: 'kopf-vaskulaer',
