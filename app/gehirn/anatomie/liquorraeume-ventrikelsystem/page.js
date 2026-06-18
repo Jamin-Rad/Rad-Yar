@@ -390,6 +390,392 @@ CONTENT.fa = {
   },
 }
 
+const GENERAL_CONTENT = {
+  de: {
+    breadcrumbCurrent: 'Anatomie · Liquorräume / Ventrikelsystem',
+    title: 'Liquorräume / Ventrikelsystem',
+    subtitle: 'Anatomie, Liquorzirkulation, Bildgebung und sichere Beurteilung von Ventrikelerweiterungen',
+    sections: [
+      { id: 'anatomie', label: 'Ventrikelanatomie', icon: '🧠' },
+      { id: 'liquorfluss', label: 'Liquorfluss', icon: '↻' },
+      { id: 'bildgebung', label: 'CT & MRT', icon: '🩻' },
+      { id: 'beurteilung', label: 'Systematische Beurteilung', icon: '📐' },
+      { id: 'hydrozephalus', label: 'Hydrozephalus', icon: '⚠️' },
+      { id: 'normvarianten', label: 'Normvarianten', icon: '◇' },
+      { id: 'faelle', label: 'Lernfälle', icon: '🔬' },
+      { id: 'befundung', label: 'Befundung', icon: '📝' },
+      { id: 'takehome', label: 'Take home message', icon: '💡' },
+    ],
+    heroCards: [
+      { value: '≈ 500 ml/Tag', label: 'Liquorproduktion', text: 'überwiegend im Plexus choroideus' },
+      { value: '≈ 150 ml', label: 'Liquorvolumen', text: 'mehrfacher Umsatz pro Tag' },
+      { value: 'Fluss + Form', label: 'Befundprinzip', text: 'Obstruktionshöhe aus dem Muster ableiten' },
+    ],
+    anatomy: {
+      title: 'Ventrikelanatomie',
+      lead: 'Das Ventrikelsystem besteht aus paarigen Seitenventrikeln, 3. Ventrikel, Aquädukt und 4. Ventrikel. Form und Verbindung der Abschnitte bestimmen das Muster bei einer Abflussstörung.',
+      headers: ['Abschnitt', 'Anatomische Lage', 'Radiologisch wichtige Beziehung'],
+      rows: [
+        ['Seitenventrikel', 'Frontalhorn, Corpus, Atrium, Temporal- und Okzipitalhorn', 'über die Foramina Monroi mit dem 3. Ventrikel verbunden'],
+        ['3. Ventrikel', 'median zwischen den Thalami', 'Recessus opticus und infundibularis; Breite altersabhängig beurteilen'],
+        ['Aqueductus mesencephali', 'durch das Mittelhirn', 'engste intraventrikuläre Passage und häufige Obstruktionsstelle'],
+        ['4. Ventrikel', 'zwischen Pons/Medulla und Kleinhirn', 'Ausfluss über Foramen Magendii und Foramina Luschkae'],
+        ['Zentrale Verbindung', 'Foramen Monroi → 3. Ventrikel → Aquädukt → 4. Ventrikel', 'Dilatationsmuster lokalisiert die Stenose'],
+      ],
+      cards: [
+        { title: 'Frontalhörner', text: 'Der Nucleus caudatus bildet die laterale Wand; das Septum pellucidum begrenzt medial.' },
+        { title: 'Temporalhörner', text: 'Frühe Erweiterung kann ein sensibles Zeichen einer akuten Liquorabflussstörung sein.' },
+        { title: '4. Ventrikel', text: 'Seine Weite hilft, eine Aquäduktstenose von einer distaleren Abflussstörung zu unterscheiden.' },
+      ],
+      key: 'Nicht nur „Ventrikel weit“ beschreiben: Welche Ventrikel und Hörner sind erweitert, und welche bleiben normal?',
+    },
+    flow: {
+      title: 'Liquorproduktion und -zirkulation',
+      lead: 'Liquor wird überwiegend im Plexus choroideus gebildet. Der Fluss folgt einer festen anatomischen Route; ein abrupter Kalibersprung lokalisiert häufig die Obstruktion.',
+      steps: [
+        { title: '1. Produktion', text: 'Plexus choroideus der Seitenventrikel sowie des 3. und 4. Ventrikels.' },
+        { title: '2. Intraventrikulärer Fluss', text: 'Seitenventrikel → Foramina Monroi → 3. Ventrikel → Aquädukt → 4. Ventrikel.' },
+        { title: '3. Austritt', text: 'Über das mediane Foramen Magendii und die lateralen Foramina Luschkae in die basalen Zisternen.' },
+        { title: '4. Subarachnoidalraum', text: 'Verteilung um Gehirn und Rückenmark mit pulsationsabhängiger Zirkulation.' },
+        { title: '5. Resorption', text: 'Vor allem über Arachnoidalgranulationen in die duralen Sinus; zusätzlich lymphatische Abflusswege.' },
+      ],
+      key: 'Monro-Obstruktion erweitert einen oder beide Seitenventrikel; Aquäduktstenose erweitert Seiten- und 3. Ventrikel bei normalem 4. Ventrikel.',
+    },
+    imaging: {
+      title: 'Normalbefund in CT und MRT',
+      lead: 'Liquor folgt in CT und MRT charakteristischen Dichte- und Signalmerkmalen. Abweichungen können auf Blut, Protein, Eiter, Tumor oder eingeschränkten Fluss hinweisen.',
+      headers: ['Methode/Sequenz', 'Normaler Liquor', 'Wichtige Anwendung'],
+      rows: [
+        ['CT nativ', 'hypodens, etwa wasserdicht', 'Blut, Verkalkung und akuten Hydrozephalus erkennen'],
+        ['T1', 'hypointens', 'proteinreiche oder hämorrhagische Inhalte können heller sein'],
+        ['T2', 'hyperintens', 'Anatomie der Liquorräume und Zysten beurteilen'],
+        ['FLAIR', 'weitgehend supprimiert', 'fehlende Suppression bei Blut, Protein, Entzündung oder Sauerstoffartefakt'],
+        ['DWI/ADC', 'keine Restriktion', 'Restriktion spricht etwa für Epidermoid oder eitrigen Inhalt'],
+        ['3D-CISS/FIESTA', 'hoher Liquor-Gewebe-Kontrast', 'feine Membranen, Aquädukt und Zisternen darstellen'],
+        ['Phasenkontrast-MRT', 'pulsatiler Fluss quantifizierbar', 'Aquäduktfluss und ausgewählte Shunt-/ETV-Fragen'],
+      ],
+      cave: 'FLAIR-Hyperintensität im Subarachnoidalraum ist nicht automatisch pathologisch: Sauerstoffgabe, Bewegung und Gefäßfluss können imitieren.',
+    },
+    assessment: {
+      title: 'Ventrikelweite systematisch beurteilen',
+      lead: 'Die Ventrikelweite ist alters- und volumenabhängig. Entscheidend ist die Kombination aus Morphologie, Sulcusweite, zeitlichem Verlauf und Zeichen erhöhten intraventrikulären Drucks.',
+      items: [
+        { title: 'Symmetrie', text: 'Seitenventrikel, Foramina Monroi und Hörner auf asymmetrische Erweiterung oder Verlagerung prüfen.' },
+        { title: 'Dilatationsmuster', text: 'Mono-, bi-, tri- oder tetraventrikulär beschreiben und daraus die mögliche Obstruktionshöhe ableiten.' },
+        { title: 'Sulci und Zisternen', text: 'Bei Atrophie sind Ventrikel und äußere Liquorräume proportional erweitert; beim Hydrozephalus oft diskrepant.' },
+        { title: 'Temporalhörner', text: 'Eine rundliche Erweiterung kann früh auftreten, bevor die Frontalhörner stark imponieren.' },
+        { title: 'Transependymaler Fluss', text: 'Periventrikuläre Hypodensität beziehungsweise T2/FLAIR-Hyperintensität bei akutem Druckanstieg.' },
+        { title: 'Vergleich', text: 'Voraufnahmen sind häufig aussagekräftiger als ein isolierter Zahlenwert.' },
+      ],
+      metricsHeaders: ['Zeichen/Messwert', 'Verwendung', 'Grenze'],
+      metricsRows: [
+        ['Evans-Index', 'maximale Frontalhornweite / maximaler innerer Schädeldurchmesser', '> 0,30 unterstützt Ventrikulomegalie, ist aber nicht spezifisch'],
+        ['Callosal angle', 'koronar senkrecht zur AC-PC-Linie', 'kleiner Winkel unterstützt bei passender Klinik einen NPH'],
+        ['DESH-Muster', 'enge Hochkonvexitätssulci bei erweiterten Sylvischen Fissuren', 'unterstützt NPH, ersetzt nicht die klinische Beurteilung'],
+      ],
+      key: 'Hydrozephalus ist eine morphologische und klinische Diagnose – nicht lediglich ein Evans-Index über 0,30.',
+    },
+    hydro: {
+      title: 'Hydrozephalus und wichtige Muster',
+      lead: 'Die erste Frage lautet: kommunizierend oder nicht kommunizierend? Danach werden Obstruktionshöhe, Druckzeichen und Ursache beschrieben.',
+      headers: ['Muster', 'Ventrikelkonfiguration', 'Typische Ursachen'],
+      rows: [
+        ['Foramen-Monroi-Obstruktion', 'einseitige oder beidseitige Seitenventrikelerweiterung', 'Kolloidzyste, Tumor, Membran'],
+        ['Aquäduktstenose', 'Seitenventrikel + 3. Ventrikel weit, 4. Ventrikel normal', 'kongenitale Stenose, Tekttumor, Entzündung'],
+        ['Abflussstörung am 4. Ventrikel', 'alle vier Ventrikel erweitert', 'Tumor, Blut, entzündliche Membranen'],
+        ['Kommunizierender Hydrozephalus', 'gesamtes Ventrikelsystem erweitert', 'Subarachnoidalblutung, Meningitis, gestörte Resorption'],
+        ['Normaldruckhydrozephalus', 'Ventrikulomegalie disproportional zu Sulci, mögliches DESH', 'klinische Trias und Verlauf entscheidend'],
+        ['Ex-vacuo-Erweiterung', 'Ventrikel und Sulci proportional weit', 'Hirnatrophie, Gewebeverlust'],
+      ],
+      danger: [
+        { title: 'Akute Druckzeichen', text: 'Transependymaler Liquorübertritt, Sulcuseffacement, Zisternenverengung und Herniationszeichen.' },
+        { title: 'Ursache suchen', text: 'Aquädukt, Foramina Monroi, 4.-Ventrikel-Ausgänge und basale Zisternen gezielt prüfen.' },
+        { title: 'Dringlichkeit', text: 'Akuter obstruktiver Hydrozephalus ist ein neurochirurgischer Notfall.' },
+      ],
+      cave: 'Periventrikuläre FLAIR-Hyperintensitäten sind bei älteren Menschen häufig vaskulär. Transependymaler Fluss wird durch Ventrikeldilatation, glatte periventrikuläre Verteilung und akuten Verlauf wahrscheinlicher.',
+    },
+    reporting: {
+      title: 'Strukturierte Befundung',
+      lead: 'Ein guter Befund beantwortet sechs Fragen und vermeidet die unspezifische Formulierung „erweiterte innere Liquorräume“.',
+      items: [
+        { title: '1. Ausmaß', text: 'Ventrikelweite und zeitliche Veränderung benennen.' },
+        { title: '2. Muster', text: 'Mono-, bi-, tri- oder tetraventrikuläre Erweiterung beschreiben.' },
+        { title: '3. Druckzeichen', text: 'Temporalhörner, transependymalen Fluss, Sulci, Zisternen und Herniation prüfen.' },
+        { title: '4. Obstruktionshöhe', text: 'Kalibersprung und normal gebliebene nachgeschaltete Ventrikel lokalisieren.' },
+        { title: '5. Ursache', text: 'Raumforderung, Blut, Entzündung, Membran oder postoperative Veränderung nennen.' },
+        { title: '6. Einordnung', text: 'Hydrozephalus, Ex-vacuo-Erweiterung oder Normvariante klar formulieren.' },
+      ],
+      example: 'Beispiel: Triventrikulärer Hydrozephalus mit erweiterten Temporalhörnern und transependymalem Liquorübertritt bei abruptem Kalibersprung im Aquädukt; 4. Ventrikel normal weit.',
+    },
+    takehome: {
+      title: 'Take home message',
+      lead: 'Form, Fluss und Druckzeichen zusammen denken.',
+      items: [
+        { title: 'Flussweg kennen', text: 'Monro → 3. Ventrikel → Aquädukt → 4. Ventrikel → Magendie/Luschka.' },
+        { title: 'Muster lokalisiert', text: 'Welche Ventrikel weit und welche normal sind, zeigt die mögliche Obstruktionshöhe.' },
+        { title: 'Hydrozephalus ≠ Atrophie', text: 'Sulci, Temporalhörner, Druckzeichen und Verlauf unterscheiden beide.' },
+        { title: 'Normvarianten erkennen', text: 'CSP vor Monro, Cavum vergae dahinter, CVI unter dem Fornix.' },
+      ],
+    },
+  },
+  en: {
+    breadcrumbCurrent: 'Anatomy · CSF spaces / ventricular system',
+    title: 'CSF spaces / ventricular system',
+    subtitle: 'Anatomy, CSF circulation, imaging and confident assessment of ventricular enlargement',
+    sections: [
+      { id: 'anatomie', label: 'Ventricular anatomy', icon: '🧠' },
+      { id: 'liquorfluss', label: 'CSF flow', icon: '↻' },
+      { id: 'bildgebung', label: 'CT & MRI', icon: '🩻' },
+      { id: 'beurteilung', label: 'Systematic assessment', icon: '📐' },
+      { id: 'hydrozephalus', label: 'Hydrocephalus', icon: '⚠️' },
+      { id: 'normvarianten', label: 'Normal variants', icon: '◇' },
+      { id: 'faelle', label: 'Cases', icon: '🔬' },
+      { id: 'befundung', label: 'Reporting', icon: '📝' },
+      { id: 'takehome', label: 'Take home message', icon: '💡' },
+    ],
+    heroCards: [
+      { value: '≈ 500 ml/day', label: 'CSF production', text: 'mainly by the choroid plexus' },
+      { value: '≈ 150 ml', label: 'CSF volume', text: 'turns over several times daily' },
+      { value: 'Flow + shape', label: 'reporting principle', text: 'infer obstruction level from the pattern' },
+    ],
+    anatomy: {
+      title: 'Ventricular anatomy',
+      lead: 'The ventricular system comprises the paired lateral ventricles, third ventricle, aqueduct and fourth ventricle. Their shape and connections determine the pattern of enlargement.',
+      headers: ['Segment', 'Location', 'Radiologically important relationship'],
+      rows: [
+        ['Lateral ventricles', 'frontal horn, body, atrium, temporal and occipital horns', 'connect to the third ventricle through the foramina of Monro'],
+        ['Third ventricle', 'midline between the thalami', 'assess its width in the context of age and global volume'],
+        ['Cerebral aqueduct', 'through the midbrain', 'narrowest intraventricular channel and common obstruction site'],
+        ['Fourth ventricle', 'between pons/medulla and cerebellum', 'outflow through Magendie and Luschka foramina'],
+        ['Central pathway', 'Monro → third ventricle → aqueduct → fourth ventricle', 'the dilatation pattern localises a stenosis'],
+      ],
+      cards: [
+        { title: 'Frontal horns', text: 'The caudate nucleus forms the lateral wall and the septum pellucidum the medial wall.' },
+        { title: 'Temporal horns', text: 'Early rounding and enlargement may be a sensitive sign of acute CSF obstruction.' },
+        { title: 'Fourth ventricle', text: 'Its calibre helps distinguish aqueduct stenosis from a more distal obstruction.' },
+      ],
+      key: 'Do not merely report “dilated ventricles”: state which ventricles and horns are enlarged and which remain normal.',
+    },
+    flow: {
+      title: 'CSF production and circulation',
+      lead: 'CSF is produced mainly by the choroid plexus. It follows a fixed anatomical route, and an abrupt calibre change often localises the obstruction.',
+      steps: [
+        { title: '1. Production', text: 'Choroid plexus in the lateral, third and fourth ventricles.' },
+        { title: '2. Intraventricular flow', text: 'Lateral ventricles → Monro foramina → third ventricle → aqueduct → fourth ventricle.' },
+        { title: '3. Exit', text: 'Through the median Magendie and lateral Luschka foramina into the basal cisterns.' },
+        { title: '4. Subarachnoid space', text: 'Distribution around the brain and spinal cord with pulsatile circulation.' },
+        { title: '5. Absorption', text: 'Mainly via arachnoid granulations into dural sinuses, with additional lymphatic pathways.' },
+      ],
+      key: 'Monro obstruction enlarges one or both lateral ventricles; aqueduct stenosis enlarges the lateral and third ventricles while sparing the fourth.',
+    },
+    imaging: {
+      title: 'Normal CT and MRI appearance',
+      lead: 'Normal CSF has characteristic CT attenuation and MRI signal. Deviations may indicate blood, protein, pus, tumour or restricted flow.',
+      headers: ['Method/sequence', 'Normal CSF', 'Key use'],
+      rows: [
+        ['Non-contrast CT', 'water-like low attenuation', 'detect blood, calcification and acute hydrocephalus'],
+        ['T1', 'hypointense', 'proteinaceous or haemorrhagic contents may be brighter'],
+        ['T2', 'hyperintense', 'assess CSF-space anatomy and cysts'],
+        ['FLAIR', 'largely suppressed', 'failed suppression with blood, protein, inflammation or oxygen artefact'],
+        ['DWI/ADC', 'no restriction', 'restriction suggests epidermoid or purulent material'],
+        ['3D-CISS/FIESTA', 'high CSF-tissue contrast', 'show thin membranes, aqueduct and cisterns'],
+        ['Phase-contrast MRI', 'quantifiable pulsatile flow', 'selected aqueduct, shunt and ETV questions'],
+      ],
+      cave: 'Subarachnoid FLAIR hyperintensity is not automatically pathological; oxygen, motion and vascular flow may mimic disease.',
+    },
+    assessment: {
+      title: 'Systematic assessment of ventricular size',
+      lead: 'Ventricular size depends on age and brain volume. Morphology, sulcal width, temporal change and pressure signs matter more than a single measurement.',
+      items: [
+        { title: 'Symmetry', text: 'Assess lateral ventricles, foramina of Monro and individual horns for asymmetric enlargement or displacement.' },
+        { title: 'Pattern', text: 'Describe mono-, bi-, tri- or tetraventricular enlargement and infer the obstruction level.' },
+        { title: 'Sulci and cisterns', text: 'Atrophy enlarges ventricles and external CSF spaces proportionally; hydrocephalus is often disproportionate.' },
+        { title: 'Temporal horns', text: 'Rounding may appear early before marked frontal-horn enlargement.' },
+        { title: 'Transependymal flow', text: 'Periventricular low attenuation or T2/FLAIR hyperintensity with acute pressure elevation.' },
+        { title: 'Comparison', text: 'Prior imaging is often more informative than an isolated numeric threshold.' },
+      ],
+      metricsHeaders: ['Sign/measurement', 'Use', 'Limitation'],
+      metricsRows: [
+        ['Evans index', 'maximum frontal-horn width / maximum inner skull diameter', '> 0.30 supports ventriculomegaly but is not specific'],
+        ['Callosal angle', 'coronal plane perpendicular to AC-PC line', 'a smaller angle supports NPH in the correct clinical setting'],
+        ['DESH pattern', 'tight high-convexity sulci with enlarged Sylvian fissures', 'supports NPH but does not replace clinical assessment'],
+      ],
+      key: 'Hydrocephalus is a morphological and clinical diagnosis—not merely an Evans index above 0.30.',
+    },
+    hydro: {
+      title: 'Hydrocephalus and key patterns',
+      lead: 'First decide whether hydrocephalus is communicating or non-communicating, then describe the obstruction level, pressure signs and cause.',
+      headers: ['Pattern', 'Ventricular configuration', 'Typical causes'],
+      rows: [
+        ['Monro obstruction', 'one or both lateral ventricles enlarged', 'colloid cyst, tumour, membrane'],
+        ['Aqueduct stenosis', 'lateral + third ventricles enlarged; fourth normal', 'congenital stenosis, tectal tumour, inflammation'],
+        ['Fourth-ventricle outflow obstruction', 'all four ventricles enlarged', 'tumour, blood, inflammatory membranes'],
+        ['Communicating hydrocephalus', 'entire ventricular system enlarged', 'subarachnoid haemorrhage, meningitis, impaired absorption'],
+        ['Normal-pressure hydrocephalus', 'ventriculomegaly disproportionate to sulci; possible DESH', 'clinical triad and course are decisive'],
+        ['Ex-vacuo enlargement', 'ventricles and sulci proportionally enlarged', 'atrophy or tissue loss'],
+      ],
+      danger: [
+        { title: 'Acute pressure signs', text: 'Transependymal flow, sulcal effacement, cisternal narrowing and herniation.' },
+        { title: 'Search for the cause', text: 'Inspect Monro foramina, aqueduct, fourth-ventricle outlets and basal cisterns.' },
+        { title: 'Urgency', text: 'Acute obstructive hydrocephalus is a neurosurgical emergency.' },
+      ],
+      cave: 'Periventricular FLAIR hyperintensity is commonly vascular in older patients. Transependymal flow is favoured by ventricular dilatation, smooth periventricular distribution and an acute course.',
+    },
+    reporting: {
+      title: 'Structured reporting',
+      lead: 'A useful report answers six questions and avoids the vague phrase “prominent internal CSF spaces”.',
+      items: [
+        { title: '1. Extent', text: 'State ventricular size and interval change.' },
+        { title: '2. Pattern', text: 'Describe mono-, bi-, tri- or tetraventricular enlargement.' },
+        { title: '3. Pressure signs', text: 'Assess temporal horns, transependymal flow, sulci, cisterns and herniation.' },
+        { title: '4. Obstruction level', text: 'Localise an abrupt calibre change and downstream ventricles that remain normal.' },
+        { title: '5. Cause', text: 'Identify mass, blood, inflammation, membrane or postoperative change.' },
+        { title: '6. Conclusion', text: 'Clearly distinguish hydrocephalus, ex-vacuo enlargement and normal variant.' },
+      ],
+      example: 'Example: Triventricular hydrocephalus with enlarged temporal horns and transependymal CSF flow, with abrupt calibre change at the aqueduct; fourth ventricle remains normal.',
+    },
+    takehome: {
+      title: 'Take home message',
+      lead: 'Integrate shape, flow and pressure signs.',
+      items: [
+        { title: 'Know the pathway', text: 'Monro → third ventricle → aqueduct → fourth ventricle → Magendie/Luschka.' },
+        { title: 'The pattern localises', text: 'Which ventricles are enlarged and which remain normal indicates the obstruction level.' },
+        { title: 'Hydrocephalus ≠ atrophy', text: 'Sulci, temporal horns, pressure signs and interval change distinguish them.' },
+        { title: 'Recognise variants', text: 'CSP anterior to Monro, cavum vergae posterior, CVI below the fornix.' },
+      ],
+    },
+  },
+  fa: {
+    breadcrumbCurrent: 'آناتومی · فضاهای CSF و سیستم بطنی',
+    title: 'فضاهای CSF / سیستم بطنی',
+    subtitle: 'آناتومی، گردش مایع مغزی‌نخاعی، تصویربرداری و ارزیابی دقیق اتساع بطن‌ها',
+    sections: [
+      { id: 'anatomie', label: 'آناتومی بطن‌ها', icon: '🧠' },
+      { id: 'liquorfluss', label: 'گردش CSF', icon: '↻' },
+      { id: 'bildgebung', label: 'CT و MRI', icon: '🩻' },
+      { id: 'beurteilung', label: 'ارزیابی سیستماتیک', icon: '📐' },
+      { id: 'hydrozephalus', label: 'هیدروسفالی', icon: '⚠️' },
+      { id: 'normvarianten', label: 'واریانت‌های طبیعی', icon: '◇' },
+      { id: 'faelle', label: 'کیس‌های آموزشی', icon: '🔬' },
+      { id: 'befundung', label: 'گزارش‌نویسی', icon: '📝' },
+      { id: 'takehome', label: 'پیام نهایی', icon: '💡' },
+    ],
+    heroCards: [
+      { value: 'حدود ۵۰۰ ml/روز', label: 'تولید CSF', text: 'عمدتاً توسط شبکه کوروئید' },
+      { value: 'حدود ۱۵۰ ml', label: 'حجم CSF', text: 'چند بار در روز جایگزین می‌شود' },
+      { value: 'مسیر + شکل', label: 'اصل گزارش', text: 'محل انسداد را از الگوی اتساع پیدا کنید' },
+    ],
+    anatomy: {
+      title: 'آناتومی سیستم بطنی',
+      lead: 'سیستم بطنی شامل دو بطن جانبی، بطن سوم، مجرای سیلویوس و بطن چهارم است. شکل و ارتباط این بخش‌ها الگوی اتساع در انسداد CSF را تعیین می‌کند.',
+      headers: ['بخش', 'محل آناتومیک', 'ارتباط مهم در تصویربرداری'],
+      rows: [
+        ['بطن‌های جانبی', 'شاخ فرونتال، تنه، آتریوم، شاخ تمپورال و اکسیپیتال', 'از طریق سوراخ‌های مونرو به بطن سوم متصل‌اند'],
+        ['بطن سوم', 'در خط وسط بین تالاموس‌ها', 'عرض آن باید متناسب با سن و حجم کلی مغز تفسیر شود'],
+        ['مجرای مغزی', 'درون مزانسفال', 'باریک‌ترین مسیر داخل‌بطنی و محل شایع انسداد'],
+        ['بطن چهارم', 'بین پونز/مدولا و مخچه', 'خروج CSF از سوراخ ماژندی و سوراخ‌های لوشکا'],
+        ['مسیر مرکزی', 'مونرو ← بطن سوم ← مجرا ← بطن چهارم', 'الگوی اتساع محل تنگی را نشان می‌دهد'],
+      ],
+      cards: [
+        { title: 'شاخ‌های فرونتال', text: 'هسته کودیت دیواره خارجی و سپتوم پلوسیدوم دیواره داخلی را می‌سازد.' },
+        { title: 'شاخ‌های تمپورال', text: 'گرد و متسع شدن زودرس آن‌ها می‌تواند نشانه حساس انسداد حاد CSF باشد.' },
+        { title: 'بطن چهارم', text: 'اندازه آن به افتراق تنگی مجرا از انسداد دیستال‌تر کمک می‌کند.' },
+      ],
+      key: 'فقط ننویسید «بطن‌ها متسع‌اند»؛ مشخص کنید کدام بطن‌ها و شاخ‌ها متسع و کدام بخش‌ها طبیعی مانده‌اند.',
+    },
+    flow: {
+      title: 'تولید و گردش CSF',
+      lead: 'CSF عمدتاً در شبکه کوروئید تولید می‌شود و مسیر آناتومیک مشخصی دارد. تغییر ناگهانی قطر مسیر اغلب محل انسداد را نشان می‌دهد.',
+      steps: [
+        { title: '۱. تولید', text: 'شبکه کوروئید بطن‌های جانبی، سوم و چهارم.' },
+        { title: '۲. مسیر داخل‌بطنی', text: 'بطن‌های جانبی ← سوراخ‌های مونرو ← بطن سوم ← مجرا ← بطن چهارم.' },
+        { title: '۳. خروج', text: 'از سوراخ میانی ماژندی و سوراخ‌های طرفی لوشکا به سیسترن‌های قاعده‌ای.' },
+        { title: '۴. فضای ساب‌آراکنوئید', text: 'گردش ضربانی در اطراف مغز و نخاع.' },
+        { title: '۵. جذب', text: 'عمدتاً از طریق گرانولاسیون‌های آراکنوئید به سینوس‌های وریدی، همراه مسیرهای لنفاوی.' },
+      ],
+      key: 'انسداد مونرو یک یا هر دو بطن جانبی را متسع می‌کند؛ تنگی مجرا بطن‌های جانبی و سوم را متسع می‌کند ولی بطن چهارم طبیعی می‌ماند.',
+    },
+    imaging: {
+      title: 'نمای طبیعی در CT و MRI',
+      lead: 'CSF طبیعی در CT و MRI ویژگی‌های مشخصی دارد. اختلاف از این الگو می‌تواند ناشی از خون، پروتئین، چرک، تومور یا اختلال جریان باشد.',
+      headers: ['روش/سکانس', 'CSF طبیعی', 'کاربرد مهم'],
+      rows: [
+        ['CT بدون کنتراست', 'هیپودنس و مشابه آب', 'تشخیص خون، کلسیفیکاسیون و هیدروسفالی حاد'],
+        ['T1', 'هیپواینتنس', 'محتوای پرپروتئین یا خونریزی ممکن است روشن‌تر باشد'],
+        ['T2', 'هایپراینتنس', 'ارزیابی آناتومی فضاهای CSF و کیست‌ها'],
+        ['FLAIR', 'تقریباً سرکوب می‌شود', 'عدم سرکوب در خون، پروتئین، التهاب یا آرتیفکت اکسیژن'],
+        ['DWI/ADC', 'بدون محدودیت انتشار', 'محدودیت انتشار به نفع اپیدرموئید یا محتوای چرکی است'],
+        ['3D-CISS/FIESTA', 'کنتراست زیاد بین CSF و بافت', 'نمایش غشاهای ظریف، مجرا و سیسترن‌ها'],
+        ['MRI فازکنتراست', 'جریان ضربانی قابل اندازه‌گیری', 'بررسی انتخابی جریان مجرا، شانت و ETV'],
+      ],
+      cave: 'هایپراینتنس بودن فضای ساب‌آراکنوئید در FLAIR همیشه پاتولوژیک نیست؛ اکسیژن، حرکت و جریان عروقی می‌توانند آن را تقلید کنند.',
+    },
+    assessment: {
+      title: 'ارزیابی سیستماتیک اندازه بطن‌ها',
+      lead: 'اندازه بطن‌ها به سن و حجم مغز وابسته است. شکل، اندازه شیارها، تغییر نسبت به قبل و نشانه‌های فشار از یک عدد منفرد مهم‌ترند.',
+      items: [
+        { title: 'تقارن', text: 'بطن‌های جانبی، سوراخ‌های مونرو و شاخ‌ها را از نظر اتساع یا جابه‌جایی نامتقارن بررسی کنید.' },
+        { title: 'الگوی اتساع', text: 'اتساع تک‌بطنی، دو بطنی، سه بطنی یا چهار بطنی را مشخص و محل انسداد را استنباط کنید.' },
+        { title: 'شیارها و سیسترن‌ها', text: 'در آتروفی، بطن‌ها و فضاهای خارجی CSF متناسب گشاد می‌شوند؛ در هیدروسفالی این تناسب اغلب وجود ندارد.' },
+        { title: 'شاخ‌های تمپورال', text: 'گرد شدن آن‌ها ممکن است پیش از اتساع واضح شاخ‌های فرونتال رخ دهد.' },
+        { title: 'جریان ترانس‌اپاندیمال', text: 'هیپودنسیتی اطراف بطن در CT یا هایپراینتنسیتی T2/FLAIR در افزایش حاد فشار.' },
+        { title: 'مقایسه', text: 'تصاویر قبلی اغلب از یک آستانه عددی منفرد ارزش بیشتری دارند.' },
+      ],
+      metricsHeaders: ['علامت/اندازه‌گیری', 'کاربرد', 'محدودیت'],
+      metricsRows: [
+        ['شاخص Evans', 'حداکثر عرض شاخ‌های فرونتال تقسیم بر حداکثر قطر داخلی جمجمه', 'بیش از ۰٫۳۰ از ونتریکولومگالی حمایت می‌کند ولی اختصاصی نیست'],
+        ['زاویه کالوزال', 'نمای کرونال عمود بر خط AC-PC', 'زاویه کوچک‌تر در زمینه بالینی مناسب از NPH حمایت می‌کند'],
+        ['الگوی DESH', 'شیارهای تنگ در تحدب فوقانی همراه فیشورهای سیلوین گشاد', 'از NPH حمایت می‌کند ولی جای ارزیابی بالینی را نمی‌گیرد'],
+      ],
+      key: 'هیدروسفالی یک تشخیص مورفولوژیک و بالینی است، نه صرفاً شاخص Evans بالاتر از ۰٫۳۰.',
+    },
+    hydro: {
+      title: 'هیدروسفالی و الگوهای مهم',
+      lead: 'ابتدا مشخص کنید هیدروسفالی ارتباطی است یا غیرارتباطی؛ سپس محل انسداد، نشانه‌های فشار و علت را گزارش کنید.',
+      headers: ['الگو', 'شکل بطن‌ها', 'علل تیپیک'],
+      rows: [
+        ['انسداد مونرو', 'اتساع یک یا هر دو بطن جانبی', 'کیست کلوئید، تومور، غشا'],
+        ['تنگی مجرا', 'بطن‌های جانبی و سوم متسع؛ بطن چهارم طبیعی', 'تنگی مادرزادی، تومور تکتال، التهاب'],
+        ['انسداد خروجی بطن چهارم', 'هر چهار بطن متسع', 'تومور، خون، غشاهای التهابی'],
+        ['هیدروسفالی ارتباطی', 'کل سیستم بطنی متسع', 'خونریزی ساب‌آراکنوئید، مننژیت، اختلال جذب'],
+        ['هیدروسفالی فشار طبیعی', 'ونتریکولومگالی نامتناسب با شیارها، احتمال DESH', 'تریاد بالینی و روند بیماری تعیین‌کننده‌اند'],
+        ['اتساع ex vacuo', 'بطن‌ها و شیارها به‌طور متناسب گشاد', 'آتروفی یا از دست رفتن بافت'],
+      ],
+      danger: [
+        { title: 'نشانه‌های فشار حاد', text: 'جریان ترانس‌اپاندیمال، محو شدن شیارها، تنگی سیسترن‌ها و هرنیاسیون.' },
+        { title: 'جست‌وجوی علت', text: 'سوراخ‌های مونرو، مجرا، خروجی‌های بطن چهارم و سیسترن‌های قاعده‌ای را بررسی کنید.' },
+        { title: 'فوریت', text: 'هیدروسفالی انسدادی حاد یک اورژانس نوروسرجری است.' },
+      ],
+      cave: 'هایپراینتنسیتی اطراف بطن در سالمندان اغلب منشأ عروقی دارد. اتساع بطن‌ها، توزیع صاف اطراف بطن و روند حاد احتمال جریان ترانس‌اپاندیمال را بیشتر می‌کند.',
+    },
+    reporting: {
+      title: 'گزارش‌نویسی ساختاریافته',
+      lead: 'گزارش خوب به شش پرسش پاسخ می‌دهد و از عبارت مبهم «فضاهای داخلی CSF برجسته‌اند» پرهیز می‌کند.',
+      items: [
+        { title: '۱. شدت', text: 'اندازه بطن‌ها و تغییر نسبت به قبل را ذکر کنید.' },
+        { title: '۲. الگو', text: 'اتساع تک‌بطنی، دو بطنی، سه بطنی یا چهار بطنی را بنویسید.' },
+        { title: '۳. نشانه‌های فشار', text: 'شاخ‌های تمپورال، جریان ترانس‌اپاندیمال، شیارها، سیسترن‌ها و هرنیاسیون را بررسی کنید.' },
+        { title: '۴. محل انسداد', text: 'تغییر ناگهانی قطر و بطن‌های دیستال با اندازه طبیعی را پیدا کنید.' },
+        { title: '۵. علت', text: 'توده، خون، التهاب، غشا یا تغییر پس از عمل را مشخص کنید.' },
+        { title: '۶. جمع‌بندی', text: 'هیدروسفالی، اتساع ex vacuo یا واریانت طبیعی را واضح بیان کنید.' },
+      ],
+      example: 'نمونه: هیدروسفالی سه‌بطنی همراه اتساع شاخ‌های تمپورال و جریان ترانس‌اپاندیمال، با تغییر ناگهانی قطر در مجرای مغزی؛ بطن چهارم اندازه طبیعی دارد.',
+    },
+    takehome: {
+      title: 'پیام نهایی',
+      lead: 'شکل، مسیر جریان و نشانه‌های فشار را با هم تفسیر کنید.',
+      items: [
+        { title: 'مسیر را بدانید', text: 'مونرو ← بطن سوم ← مجرا ← بطن چهارم ← ماژندی/لوشکا.' },
+        { title: 'الگو محل را نشان می‌دهد', text: 'بطن‌های متسع و بطن‌های طبیعی محل احتمالی انسداد را مشخص می‌کنند.' },
+        { title: 'هیدروسفالی با آتروفی یکی نیست', text: 'شیارها، شاخ‌های تمپورال، نشانه‌های فشار و روند زمانی آن‌ها را جدا می‌کند.' },
+        { title: 'واریانت‌ها را بشناسید', text: 'CSP جلوی مونرو، کاووم ورگه پشت آن و CVI زیر فورنیکس است.' },
+      ],
+    },
+  },
+}
+
+Object.entries(GENERAL_CONTENT).forEach(([lang, content]) => Object.assign(CONTENT[lang], content))
+
 const READ_COPY = {
   de: { mark: 'Als gelesen markieren', read: 'Als gelesen markiert', error: 'Bitte melde dich an, um deinen Lernfortschritt zu speichern.', signIn: 'Anmelden' },
   en: { mark: 'Mark as read', read: 'Marked as read', error: 'Please sign in to save your learning progress.', signIn: 'Sign in' },
@@ -473,7 +859,7 @@ function CaseCard({ item, copy, onOpen }) {
   )
 }
 
-export default function MidlineCavaPage() {
+export default function CsfSpacesPage() {
   const { lang } = useLanguage()
   const copy = CONTENT[lang] || CONTENT.de
   const [activeId, setActiveId] = useState(copy.sections[0].id)
@@ -538,40 +924,79 @@ export default function MidlineCavaPage() {
         </aside>
 
         <div className={styles.main}>
-          <Section id="orientierung" title={copy.orientation.title} lead={copy.orientation.lead}>
+          <Section id="anatomie" title={copy.anatomy.title} lead={copy.anatomy.lead}>
+            <Table headers={copy.anatomy.headers} rows={copy.anatomy.rows} />
+            <Cards items={copy.anatomy.cards} />
+            <Callout label={copy.keyLabel}>{copy.anatomy.key}</Callout>
+          </Section>
+
+          <Section id="liquorfluss" title={copy.flow.title} lead={copy.flow.lead}>
+            <div className={styles.flowGrid}>
+              {copy.flow.steps.map(step => <article className={styles.flowStep} key={step.title}><h3>{step.title}</h3><p>{step.text}</p></article>)}
+            </div>
+            <Callout label={copy.keyLabel}>{copy.flow.key}</Callout>
+          </Section>
+
+          <Section id="bildgebung" title={copy.imaging.title} lead={copy.imaging.lead}>
+            <Table headers={copy.imaging.headers} rows={copy.imaging.rows} />
+            <Callout type="cave" label={copy.caveLabel}>{copy.imaging.cave}</Callout>
+          </Section>
+
+          <Section id="beurteilung" title={copy.assessment.title} lead={copy.assessment.lead}>
+            <Cards items={copy.assessment.items} />
+            <Table headers={copy.assessment.metricsHeaders} rows={copy.assessment.metricsRows} />
+            <Callout label={copy.keyLabel}>{copy.assessment.key}</Callout>
+          </Section>
+
+          <Section id="hydrozephalus" title={copy.hydro.title} lead={copy.hydro.lead}>
+            <Table headers={copy.hydro.headers} rows={copy.hydro.rows} />
+            <Cards items={copy.hydro.danger} />
+            <Callout type="cave" label={copy.caveLabel}>{copy.hydro.cave}</Callout>
+          </Section>
+
+          <Section id="normvarianten" title={copy.orientation.title} lead={copy.orientation.lead}>
             <Cards items={copy.orientation.cards} />
             <figure className={styles.teachingFigure}>
               <ClickableImage src="/mittellinienzysten/cavum-comparison.jpg" alt={copy.orientation.figureAlt} label={copy.enlarge} onOpen={setLightbox} />
               <figcaption><strong>{copy.orientation.figureTitle}</strong><span>{copy.orientation.figureText}</span><small>Zyryab, Wikimedia Commons, CC BY-SA 3.0</small></figcaption>
             </figure>
             <Callout label={copy.keyLabel}>{copy.orientation.key}</Callout>
-          </Section>
-
-          <Section id="csp" title={copy.csp.title} lead={copy.csp.lead}>
+            <div className={styles.subsection}>
+              <h3>{copy.csp.title}</h3>
+              <p>{copy.csp.lead}</p>
+            </div>
             <Table headers={copy.csp.headers} rows={copy.csp.rows} />
             <Callout type="cave" label={copy.caveLabel}>{copy.csp.cave}</Callout>
-          </Section>
-
-          <Section id="cv" title={copy.cv.title} lead={copy.cv.lead}>
+            <div className={styles.subsection}>
+              <h3>{copy.cv.title}</h3>
+              <p>{copy.cv.lead}</p>
+            </div>
             <Cards items={copy.cv.cards} />
             <Callout label={copy.keyLabel}>{copy.cv.key}</Callout>
-          </Section>
-
-          <Section id="cvi" title={copy.cvi.title} lead={copy.cvi.lead}>
+            <div className={styles.subsection}>
+              <h3>{copy.cvi.title}</h3>
+              <p>{copy.cvi.lead}</p>
+            </div>
             <Table headers={copy.cvi.headers} rows={copy.cvi.rows} />
             <div className={styles.splitCallouts}>
               <Callout label={copy.keyLabel}>{copy.cvi.key}</Callout>
               <Callout type="cave" label={copy.caveLabel}>{copy.cvi.cave}</Callout>
             </div>
-          </Section>
-
-          <Section id="differenzialdiagnose" title={copy.differential.title} lead={copy.differential.lead}>
+            <div className={styles.subsection}>
+              <h3>{copy.differential.title}</h3>
+              <p>{copy.differential.lead}</p>
+            </div>
             <Table headers={copy.differential.headers} rows={copy.differential.rows} />
             <Cards items={copy.differential.report} />
           </Section>
 
           <Section id="faelle" title={copy.cases.title} lead={copy.cases.lead}>
             <div className={styles.caseGrid}>{CASES.map(item => <CaseCard key={item.id} item={item} copy={copy} onOpen={setLightbox} />)}</div>
+          </Section>
+
+          <Section id="befundung" title={copy.reporting.title} lead={copy.reporting.lead}>
+            <Cards items={copy.reporting.items} />
+            <Callout label={copy.keyLabel}>{copy.reporting.example}</Callout>
           </Section>
 
           <Section id="takehome" title={copy.takehome.title} lead={copy.takehome.lead}>

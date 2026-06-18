@@ -54,7 +54,7 @@ const TOPICS = [
     icon: '🧠', iconImage: '/fach/gehirn.png', color: '#7c3aed', available: true,
     count: { de: '3 Fragen', en: '3 Questions', fa: '۳ سؤال' },
     name: { de: 'Kopf · Liquorräume', en: 'Head · CSF spaces', fa: 'سر · فضاهای مایع مغزی‌نخاعی' },
-    desc: { de: 'CSP · Cavum vergae · CVI · klinische Relevanz', en: 'CSP · cavum vergae · CVI · clinical relevance', fa: 'CSP · کاووم ورگه · CVI · اهمیت بالینی' },
+    desc: { de: 'Ventrikelanatomie · Liquorfluss · Hydrozephalus · Normvarianten', en: 'Ventricular anatomy · CSF flow · hydrocephalus · normal variants', fa: 'آناتومی بطن‌ها · جریان CSF · هیدروسفالی · واریانت‌های طبیعی' },
   },
   { key: 'thorax-soon', icon: '🫁', iconImage: '/fach/thorax.png', color: '#0ea5e9', available: false, name: { de: 'Weitere Thorax-Themen', en: 'More thorax topics', fa: 'موضوعات بیشتر توراکس' } },
 ]
