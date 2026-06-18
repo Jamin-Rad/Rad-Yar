@@ -34,7 +34,7 @@
 .glassTitle {
   font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
   font-style: italic; font-size: 34px; font-weight: 900;
-  color: #b91c1c; margin: 0 0 10px; letter-spacing: -.03em;
+  color: #7f1d1d; margin: 0 0 10px; letter-spacing: -.03em;
 }
 .glassSub {
   font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
