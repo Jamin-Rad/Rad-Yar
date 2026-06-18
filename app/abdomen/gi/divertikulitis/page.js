@@ -7,6 +7,7 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import styles from './page.module.css'
+import InProgressBanner from '@/components/InProgressBanner'
 
 const GUIDELINE_URL = 'https://register.awmf.org/de/leitlinien/detail/021-020'
 
@@ -399,6 +400,7 @@ export default function DivertikulitisPage() {
 
   return (
     <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
+      <InProgressBanner lang={lang} />
       <header className={styles.header}>
         <div className={styles.breadcrumb}>
           <Link href={withLang('/')}>RadYar</Link><span>›</span>

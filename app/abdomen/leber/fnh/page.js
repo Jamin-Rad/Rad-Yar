@@ -6,6 +6,7 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import styles from './page.module.css'
+import InProgressBanner from '@/components/InProgressBanner'
 
 const CONTENT = {
   "de": {
@@ -469,8 +470,6 @@ function Section({ id, title, lead, children }) {
   )
 }
 
-const IN_PROGRESS = true
-
 export default function LeberFnhPage() {
   const { lang } = useLanguage()
   const copy = CONTENT[lang] || CONTENT.de
@@ -510,23 +509,7 @@ export default function LeberFnhPage() {
 
   return (
     <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
-      {IN_PROGRESS && (
-        <div className={styles.inProgressBanner}>
-          <span className={styles.inProgressIcon}>🚧</span>
-          <div className={styles.inProgressText}>
-            <strong>
-              {lang === 'fa' ? 'در حال تکمیل' : lang === 'en' ? 'Work in Progress' : 'Kapitel in Bearbeitung'}
-            </strong>
-            <span>
-              {lang === 'fa'
-                ? 'این فصل هنوز در حال تکمیل است و به‌تدریج بهبود می‌یابد.'
-                : lang === 'en'
-                ? 'This chapter is not yet complete and will be updated continuously.'
-                : 'Dieses Kapitel wird noch vervollständigt und laufend verbessert.'}
-            </span>
-          </div>
-        </div>
-      )}
+      <InProgressBanner lang={lang} />
       <header className={styles.header}>
         <div className={styles.breadcrumb}>
           <Link href={withLang('/')}>RadYar</Link>

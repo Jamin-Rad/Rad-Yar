@@ -7,6 +7,7 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import styles from './page.module.css'
+import InProgressBanner from '@/components/InProgressBanner'
 
 const CASE_URL = 'https://radiopaedia.org/cases/200431?lang=us'
 
@@ -342,6 +343,7 @@ export default function SprunggelenkTraumaPage() {
 
   return (
     <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
+      <InProgressBanner lang={lang} />
       <header className={styles.header}>
         <div className={styles.breadcrumb}>
           <Link href={withLang('/')}>RadYar</Link><span>›</span>

@@ -6,6 +6,7 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import styles from './page.module.css'
+import InProgressBanner from '@/components/InProgressBanner'
 
 const CONTENT = {
   "de": {
@@ -423,6 +424,7 @@ export default function RotatorenmanschettePage() {
 
   return (
     <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
+      <InProgressBanner lang={lang} />
       <header className={styles.header}>
         <div className={styles.breadcrumb}>
           <Link href={withLang('/')}>RadYar</Link>
