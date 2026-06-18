@@ -1,6 +1,7 @@
 // ── RADYAR QUESTION BANK ────────────────────────────────────────────────────
 
 import { CONTRAST_QUESTIONS, CONTRAST_TOPICS } from './contrastMedia'
+import { STROKE_QUESTIONS } from './stroke'
 
 const DIVERTICULITIS_QUESTION_CONTENT = [
   {
@@ -224,6 +225,7 @@ export const QUESTION_BANK = {
   "de": [
     ...CONTRAST_QUESTIONS.de,
     ...DIVERTICULITIS_QUESTIONS.de,
+    ...STROKE_QUESTIONS.de,
     {
       "id": "meniskus-de-01",
       "tags": [
@@ -1552,6 +1554,7 @@ export const QUESTION_BANK = {
   "en": [
     ...CONTRAST_QUESTIONS.en,
     ...DIVERTICULITIS_QUESTIONS.en,
+    ...STROKE_QUESTIONS.en,
     {
       "id": "meniskus-en-01",
       "tags": [
@@ -2880,6 +2883,7 @@ export const QUESTION_BANK = {
   "fa": [
     ...CONTRAST_QUESTIONS.fa,
     ...DIVERTICULITIS_QUESTIONS.fa,
+    ...STROKE_QUESTIONS.fa,
     {
       "id": "meniskus-fa-01",
       "tags": [
@@ -4208,6 +4212,14 @@ export const QUESTION_BANK = {
 }
 
 export const MCQ_TOPIC_GROUPS = [
+  {
+    fachId: 'gehirn',
+    kapitelId: 'kopf-vaskulaer',
+    title: { de: '2. Vaskuläre Erkrankungen', en: '2. Vascular Diseases', fa: '۲. بیماری‌های عروقی' },
+    topics: [
+      { id: 'ischaemischer-schlaganfall', title: { de: 'Ischämischer Schlaganfall', en: 'Ischaemic Stroke', fa: 'سکته مغزی ایسکمیک' } },
+    ],
+  },
   {
     fachId: 'technik',
     kapitelId: 'technik-kontrastmittel',

@@ -40,7 +40,7 @@ export const CURRICULUM = [
         title: { de: '2. Vaskuläre Erkrankungen', en: '2. Vascular Diseases', fa: '۲. بیماری‌های عروقی' },
         icon: '🩸',
         themen: [
-          { id: 'ischaemischer-schlaganfall', title: { de: 'Ischämischer Schlaganfall', en: 'Ischaemic Stroke', fa: 'سکته مغزی ایسکمیک' }, tags: ['CT','MRT'], diff: 2 },
+          { id: 'ischaemischer-schlaganfall', title: { de: 'Ischämischer Schlaganfall', en: 'Ischaemic Stroke', fa: 'سکته مغزی ایسکمیک' }, tags: ['CT','MRT'], diff: 2, link: '/gehirn/vaskulaer/isch-aemischer-schlaganfall', mcqLink: '/ueben/quiz?fach=gehirn&n=15&themen=ischaemischer-schlaganfall', flashcardLink: '/flashcards/ischaemischer-schlaganfall', fallLink: '/faelle?thema=ischaemischer-schlaganfall', ready: true, updatedAt: '2026-06-18' },
           { id: 'hypoxisch-ischaemische-hirnschaedigung', title: { de: 'Hypoxisch-ischämische Hirnschädigung', en: 'Hypoxic-Ischaemic Brain Injury', fa: 'آسیب مغزی هیپوکسیک-ایسکمیک' }, tags: ['MRT','CT'], diff: 2 },
           { id: 'epidurale-blutung', title: { de: 'Epidurale Blutung', en: 'Epidural Haemorrhage', fa: 'خونریزی اپیدورال' }, group: ['Intrakranielle Blutungen'], tags: ['CT'], diff: 2 },
           { id: 'subdurale-blutung', title: { de: 'Subdurale Blutung', en: 'Subdural Haemorrhage', fa: 'خونریزی زیر سخت‌شامه‌ای' }, group: ['Intrakranielle Blutungen'], tags: ['CT'], diff: 2 },
