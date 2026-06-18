@@ -51,6 +51,25 @@ function RegionIcon({ id, size = 17 }) {
   )
 }
 
+/* ── Collapsible Gruppe (Messwerte) ──────────── */
+function CollapseGroup({ name, color, defaultOpen = true, children }) {
+  const [open, setOpen] = useState(defaultOpen)
+  return (
+    <div className={styles.groupBlock}>
+      <button
+        className={`${styles.groupHeadingBtn} ${open ? styles.groupHeadingBtnOpen : ''}`}
+        style={{ '--ref-color': color }}
+        onClick={() => setOpen(o => !o)}
+        aria-expanded={open}
+      >
+        <span className={styles.groupHeadingText}>{name}</span>
+        <span className={styles.groupChevron} aria-hidden="true" />
+      </button>
+      {open && <div className={styles.groupCollapseBody}>{children}</div>}
+    </div>
+  )
+}
+
 /* ── Hauptkomponente ──────────────────────────── */
 export default function WichtigeReferenzen() {
   const { lang } = useLanguage()
@@ -153,8 +172,7 @@ function MesswerteModal({ copy, lang, onClose }) {
             <span style={{color:region.color}}>{tx(region.name,lang)}</span>
           </h2>
           {region.groups.map((group,gi)=>(
-            <div key={gi} className={styles.groupBlock}>
-              <h3 className={styles.groupHeading}>{tx(group.name,lang)}</h3>
+            <CollapseGroup key={gi} name={tx(group.name,lang)} color={region.color}>
               <div className={styles.tableWrap}>
                 <table className={styles.mTable}>
                   <thead><tr>
@@ -171,7 +189,7 @@ function MesswerteModal({ copy, lang, onClose }) {
                   ))}</tbody>
                 </table>
               </div>
-            </div>
+            </CollapseGroup>
           ))}
         </div>
       </div>
