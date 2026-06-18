@@ -4,6 +4,7 @@ import { CONTRAST_QUESTIONS, CONTRAST_TOPICS } from './contrastMedia'
 import { STROKE_QUESTIONS } from './stroke'
 import { ICB_QUESTIONS } from './icb'
 import { HIE_QUESTIONS } from './hie'
+import { SAB_QUESTIONS } from './sab'
 
 const DIVERTICULITIS_QUESTION_CONTENT = [
   {
@@ -308,6 +309,7 @@ export const QUESTION_BANK = {
     ...STROKE_QUESTIONS.de,
     ...ICB_QUESTIONS.de,
     ...HIE_QUESTIONS.de,
+    ...SAB_QUESTIONS('de'),
     ...MIDLINE_CAVA_QUESTIONS.de,
     {
       "id": "meniskus-de-01",
@@ -1640,6 +1642,7 @@ export const QUESTION_BANK = {
     ...STROKE_QUESTIONS.en,
     ...ICB_QUESTIONS.en,
     ...HIE_QUESTIONS.en,
+    ...SAB_QUESTIONS('en'),
     ...MIDLINE_CAVA_QUESTIONS.en,
     {
       "id": "meniskus-en-01",
@@ -2972,6 +2975,7 @@ export const QUESTION_BANK = {
     ...STROKE_QUESTIONS.fa,
     ...ICB_QUESTIONS.fa,
     ...HIE_QUESTIONS.fa,
+    ...SAB_QUESTIONS('fa'),
     ...MIDLINE_CAVA_QUESTIONS.fa,
     {
       "id": "meniskus-fa-01",
