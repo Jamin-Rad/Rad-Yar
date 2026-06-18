@@ -77,21 +77,41 @@
   color: #1a2051; margin: 0 0 24px; letter-spacing: -.03em;
 }
 
-/* ── Kompakt-Box ──────────────────────────────── */
-.kompaktBox {
-  border: 1.5px solid; border-radius: 14px; padding: 16px 18px;
-  margin-bottom: 32px;
+/* ── Beschreibungs-Box ────────────────────────── */
+.beschreibungBox {
+  border: 1.5px solid; border-radius: 14px; padding: 16px 20px;
+  margin-bottom: 28px;
 }
-.kompaktLabel {
-  display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .05em; margin-bottom: 7px;
-}
-.kompaktText { margin: 0; font-size: 15px; color: #334155; line-height: 1.6; }
+.beschreibungText { margin: 0; font-size: 15px; color: #334155; line-height: 1.65; }
 
-/* ── Vollständig ──────────────────────────────── */
-.subHeading {
-  font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
-  color: #94a3b8; margin: 0 0 12px;
+/* ── Collapse-Sektionen ───────────────────────── */
+.collapseWrap { margin-bottom: 16px; }
+.collapseBtn {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  padding: 13px 18px; border-radius: 12px; border: 1.5px solid #e2e8f0;
+  background: #fafbfc; cursor: pointer; text-align: start;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
+  transition: background .15s, border-color .15s;
+  margin-bottom: 0;
+}
+.collapseBtn:hover { background: color-mix(in srgb, var(--ref-color) 6%, #fff); border-color: color-mix(in srgb, var(--ref-color) 35%, #e2e8f0); }
+.collapseBtnOpen { border-color: var(--ref-color); background: color-mix(in srgb, var(--ref-color) 6%, #fff); border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.collapseBtnTitle { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: #475569; }
+.collapseBtnOpen .collapseBtnTitle { color: var(--ref-color); }
+.collapseChevron {
+  width: 18px; height: 18px; flex-shrink: 0;
+  background: currentColor;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  mask-size: contain; -webkit-mask-size: contain;
+  mask-repeat: no-repeat; -webkit-mask-repeat: no-repeat;
+  color: #94a3b8; transition: transform .2s;
+}
+.collapseBtnOpen .collapseChevron { transform: rotate(180deg); color: var(--ref-color); }
+.collapseBody {
+  border: 1.5px solid var(--ref-color); border-top: none;
+  border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;
+  overflow: hidden;
 }
 .tableWrap { overflow-x: auto; border-radius: 12px; border: 1px solid #eef2f7; }
 .table { width: 100%; border-collapse: collapse; font-size: 14px; }
@@ -144,9 +164,14 @@
 :global(html[data-theme='dark']) .sibActive {
   background: color-mix(in srgb, var(--ref-color) 16%, #111b2d); color: #f8fafc;
 }
-:global(html[data-theme='dark']) .kompaktText { color: #c2cede; }
-:global(html[data-theme='dark']) .subHeading,
+:global(html[data-theme='dark']) .beschreibungText { color: #c2cede; }
 :global(html[data-theme='dark']) .otherTitle { color: #6b7f9a; }
+:global(html[data-theme='dark']) .collapseBtn { background: rgba(255,255,255,0.04); border-color: rgba(148,163,184,0.18); }
+:global(html[data-theme='dark']) .collapseBtn:hover { background: color-mix(in srgb, var(--ref-color) 10%, #111b2d); }
+:global(html[data-theme='dark']) .collapseBtnOpen { background: color-mix(in srgb, var(--ref-color) 10%, #111b2d); border-color: var(--ref-color); }
+:global(html[data-theme='dark']) .collapseBtnTitle { color: #8fa1ba; }
+:global(html[data-theme='dark']) .collapseBody { border-color: var(--ref-color); }
+:global(html[data-theme='dark']) .collapseChevron { color: #6b7f9a; }
 :global(html[data-theme='dark']) .tableWrap { border-color: rgba(148,163,184,0.15); }
 :global(html[data-theme='dark']) .table thead th { background: rgba(255,255,255,0.03); color: #6b7f9a; }
 :global(html[data-theme='dark']) .table tbody td { border-bottom-color: rgba(148,163,184,0.10); }

@@ -1,4 +1,5 @@
 'use client'
+import { useState } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { REF_COPY, REF_DATA, tx } from '@/data/referenzen'
@@ -34,14 +35,52 @@ function RadYarMark({ size = 26 }) {
   )
 }
 
+function CollapseSection({ title, color, defaultOpen = true, children }) {
+  const [open, setOpen] = useState(defaultOpen)
+  return (
+    <div className={styles.collapseWrap}>
+      <button
+        className={`${styles.collapseBtn} ${open ? styles.collapseBtnOpen : ''}`}
+        style={{ '--ref-color': color }}
+        onClick={() => setOpen(o => !o)}
+        aria-expanded={open}
+      >
+        <span className={styles.collapseBtnTitle}>{title}</span>
+        <span className={styles.collapseChevron} aria-hidden="true" />
+      </button>
+      {open && <div className={styles.collapseBody}>{children}</div>}
+    </div>
+  )
+}
+
+function ClassTable({ cols, rows, lang }) {
+  return (
+    <div className={styles.tableWrap}>
+      <table className={styles.table}>
+        <thead>
+          <tr>{cols.map((c, i) => <th key={i}>{tx(c, lang)}</th>)}</tr>
+        </thead>
+        <tbody>
+          {rows.map((row, ri) => (
+            <tr key={ri}>
+              {row.map((cell, ci) => (
+                <td key={ci} className={ci === 0 ? styles.cellFirst : styles.cellRest}>
+                  {tx(cell, lang)}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
 export default function KlassDetailPage({ topic, item }) {
   const { lang } = useLanguage()
   const copy = REF_COPY[lang] || REF_COPY.de
   const color = topic.color
-
-  // Alle Items des Themas für die Seitenleiste
   const siblings = topic.items
-
   const backHref = lang !== 'de' ? `/?lang=${lang}#referenzen` : '/#referenzen'
 
   return (
@@ -56,7 +95,7 @@ export default function KlassDetailPage({ topic, item }) {
       </div>
 
       <div className={styles.layout}>
-        {/* Sidebar: andere Klassifikationen desselben Themas */}
+        {/* Sidebar */}
         <nav className={styles.sidebar} aria-label={copy.chooseClass}>
           <div className={styles.sidebarBrand}>
             <RadYarMark size={28} />
@@ -77,7 +116,6 @@ export default function KlassDetailPage({ topic, item }) {
             </Link>
           ))}
 
-          {/* Andere Themen */}
           {REF_DATA.klassifikationen.filter(t => t.id !== topic.id).map(t => (
             <div key={t.id} className={styles.otherGroup}>
               <div className={styles.otherTitle} style={{ color: t.color }}>
@@ -102,37 +140,26 @@ export default function KlassDetailPage({ topic, item }) {
         <article className={styles.content} style={{ '--ref-color': color }}>
           <h1 className={styles.heading}>{tx(item.name, lang)}</h1>
 
-          {/* Kompakt */}
-          <div className={styles.kompaktBox} style={{ borderColor: color + '44', background: color + '0d' }}>
-            <span className={styles.kompaktLabel} style={{ color }}>{copy.kompakt}</span>
-            <p className={styles.kompaktText}>{tx(item.kompakt, lang)}</p>
+          {/* Beschreibung */}
+          <div className={styles.beschreibungBox} style={{ borderColor: color + '44', background: color + '0d' }}>
+            <p className={styles.beschreibungText}>{tx(item.kompakt, lang)}</p>
           </div>
 
-          {/* Vollständig */}
-          <h2 className={styles.subHeading}>{copy.voll}</h2>
-          <div className={styles.tableWrap}>
-            <table className={styles.table}>
-              <thead>
-                <tr>{item.cols.map((c, i) => <th key={i}>{tx(c, lang)}</th>)}</tr>
-              </thead>
-              <tbody>
-                {item.rows.map((row, ri) => (
-                  <tr key={ri}>
-                    {row.map((cell, ci) => (
-                      <td key={ci} className={ci === 0 ? styles.cellFirst : styles.cellRest}>
-                        {tx(cell, lang)}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          {/* Einfache Übersicht (collapsible, nur wenn vorhanden) */}
+          {item.einfach && (
+            <CollapseSection title={copy.einfachUebersicht} color={color} defaultOpen={true}>
+              <ClassTable cols={item.einfach.cols} rows={item.einfach.rows} lang={lang} />
+            </CollapseSection>
+          )}
 
-          {/* Ausführlich – Stadien im Detail */}
+          {/* Vollständige Klassifikation (collapsible) */}
+          <CollapseSection title={copy.vollstaendig} color={color} defaultOpen={!item.einfach}>
+            <ClassTable cols={item.cols} rows={item.rows} lang={lang} />
+          </CollapseSection>
+
+          {/* Ausführlich – Stadien im Detail (collapsible, nur wenn vorhanden) */}
           {item.detail && (
-            <>
-              <h2 className={styles.subHeading} style={{ marginTop: 32 }}>{copy.ausfuehrlich}</h2>
+            <CollapseSection title={copy.ausfuehrlich} color={color} defaultOpen={false}>
               <div className={styles.detailList}>
                 {item.detail.map((d, di) => (
                   <div key={di} className={styles.detailBlock} style={{ borderColor: color + '33' }}>
@@ -144,7 +171,7 @@ export default function KlassDetailPage({ topic, item }) {
                   </div>
                 ))}
               </div>
-            </>
+            </CollapseSection>
           )}
 
           {/* Quelle */}
