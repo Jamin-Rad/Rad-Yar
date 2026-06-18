@@ -52,7 +52,7 @@ function RegionIcon({ id, size = 17 }) {
 }
 
 /* ── Collapsible Gruppe (Messwerte) ──────────── */
-function CollapseGroup({ name, color, defaultOpen = true, children }) {
+function CollapseGroup({ name, color, defaultOpen = false, children }) {
   const [open, setOpen] = useState(defaultOpen)
   return (
     <div className={styles.groupBlock}>
