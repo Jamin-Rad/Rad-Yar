@@ -3,11 +3,31 @@
 import { CONTRAST_FLASHCARDS, CONTRAST_FLASHCARD_TOPICS } from './contrastMedia'
 import { STROKE_FLASHCARDS, STROKE_FLASHCARD_TOPIC } from './stroke'
 import { ICB_FLASHCARDS, ICB_FLASHCARD_TOPIC } from './icb'
+import { HIE_FLASHCARDS } from './hie'
 
 export const FLASHCARD_TOPICS = [
   ...CONTRAST_FLASHCARD_TOPICS,
   STROKE_FLASHCARD_TOPIC,
   ICB_FLASHCARD_TOPIC,
+  {
+    id: 'hypoxisch-ischaemische-hirnschaedigung',
+    area: 'Kopf',
+    chapter: 'Vaskuläre Erkrankungen',
+    icon: '🧠',
+    iconImage: '/fach/gehirn.png',
+    color: '#7c3aed',
+    href: '/flashcards/hypoxisch-ischaemische-hirnschaedigung',
+    title: {
+      de: 'Hypoxisch-ischämische Hirnschädigung',
+      en: 'Hypoxic-ischaemic brain injury',
+      fa: 'آسیب مغزی هیپوکسیک-ایسکمیک',
+    },
+    subtitle: {
+      de: 'Muster · CT · DWI/ADC · Zeitverlauf · Prognose',
+      en: 'Patterns · CT · DWI/ADC · timeline · prognosis',
+      fa: 'الگوها · CT · DWI/ADC · سیر زمانی · پیش‌آگهی',
+    },
+  },
   {
     id: 'liquorraeume-ventrikelsystem',
     area: 'Kopf',
@@ -473,6 +493,7 @@ export const FLASHCARDS = [
   ...DIVERTICULITIS_FLASHCARDS,
   ...STROKE_FLASHCARDS,
   ...ICB_FLASHCARDS,
+  ...HIE_FLASHCARDS,
   ...CSF_SYSTEM_FLASHCARDS,
   ...MIDLINE_CAVA_FLASHCARDS,
   {

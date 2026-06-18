@@ -3,6 +3,7 @@
 import { CONTRAST_QUESTIONS, CONTRAST_TOPICS } from './contrastMedia'
 import { STROKE_QUESTIONS } from './stroke'
 import { ICB_QUESTIONS } from './icb'
+import { HIE_QUESTIONS } from './hie'
 
 const DIVERTICULITIS_QUESTION_CONTENT = [
   {
@@ -306,6 +307,7 @@ export const QUESTION_BANK = {
     ...DIVERTICULITIS_QUESTIONS.de,
     ...STROKE_QUESTIONS.de,
     ...ICB_QUESTIONS.de,
+    ...HIE_QUESTIONS.de,
     ...MIDLINE_CAVA_QUESTIONS.de,
     {
       "id": "meniskus-de-01",
@@ -1637,6 +1639,7 @@ export const QUESTION_BANK = {
     ...DIVERTICULITIS_QUESTIONS.en,
     ...STROKE_QUESTIONS.en,
     ...ICB_QUESTIONS.en,
+    ...HIE_QUESTIONS.en,
     ...MIDLINE_CAVA_QUESTIONS.en,
     {
       "id": "meniskus-en-01",
@@ -2968,6 +2971,7 @@ export const QUESTION_BANK = {
     ...DIVERTICULITIS_QUESTIONS.fa,
     ...STROKE_QUESTIONS.fa,
     ...ICB_QUESTIONS.fa,
+    ...HIE_QUESTIONS.fa,
     ...MIDLINE_CAVA_QUESTIONS.fa,
     {
       "id": "meniskus-fa-01",
@@ -4312,6 +4316,7 @@ export const MCQ_TOPIC_GROUPS = [
     topics: [
       { id: 'ischaemischer-schlaganfall', title: { de: 'Ischämischer Schlaganfall', en: 'Ischaemic Stroke', fa: 'سکته مغزی ایسکمیک' } },
       { id: 'intrazerebrale-blutung', title: { de: 'Intrazerebrale Blutung', en: 'Intracerebral Haemorrhage', fa: 'خونریزی داخل مغزی' } },
+      { id: 'hypoxisch-ischaemische-hirnschaedigung', title: { de: 'Hypoxisch-ischämische Hirnschädigung', en: 'Hypoxic-ischaemic brain injury', fa: 'آسیب مغزی هیپوکسیک-ایسکمیک' } },
     ],
   },
   {
