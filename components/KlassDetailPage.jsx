@@ -1,7 +1,6 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { REF_COPY, REF_DATA, tx } from '@/data/referenzen'
 import styles from './KlassDetailPage.module.css'
@@ -146,66 +145,57 @@ export default function KlassDetailPage({ topic, item }) {
             <p className={styles.beschreibungText}>{tx(item.kompakt, lang)}</p>
           </div>
 
-          {/* Tabellen + optionales Bild nebeneinander */}
-          <div className={item.image ? styles.tableImageGrid : undefined}>
-            <div className={styles.tableSections}>
-              {/* Einfache Übersicht (collapsible, nur wenn vorhanden) */}
-              {item.einfach && (
-                <CollapseSection title={copy.einfachUebersicht} color={color} defaultOpen={true}>
-                  <ClassTable cols={item.einfach.cols} rows={item.einfach.rows} lang={lang} />
-                </CollapseSection>
-              )}
+          {/* Einfache Übersicht (collapsible, nur wenn vorhanden) */}
+          {item.einfach && (
+            <CollapseSection title={copy.einfachUebersicht} color={color} defaultOpen={true}>
+              <ClassTable cols={item.einfach.cols} rows={item.einfach.rows} lang={lang} />
+            </CollapseSection>
+          )}
 
-              {/* Vollständige Klassifikation (collapsible) */}
-              <CollapseSection title={copy.vollstaendig} color={color} defaultOpen={!item.einfach}>
-                <ClassTable cols={item.cols} rows={item.rows} lang={lang} />
-              </CollapseSection>
+          {/* Vollständige Klassifikation (collapsible) */}
+          <CollapseSection title={copy.vollstaendig} color={color} defaultOpen={!item.einfach}>
+            <ClassTable cols={item.cols} rows={item.rows} lang={lang} />
+          </CollapseSection>
 
-              {/* Ausführlich – Stadien im Detail (collapsible, nur wenn vorhanden) */}
-              {item.detail && (
-                <CollapseSection title={copy.ausfuehrlich} color={color} defaultOpen={false}>
-                  <div className={styles.detailList}>
-                    {item.detail.map((d, di) => (
-                      <div key={di} className={styles.detailBlock} style={{ borderColor: color + '33' }}>
-                        <h3 className={styles.detailStage} style={{ color }}>
-                          <span className={styles.detailDot} style={{ background: color }} />
-                          {tx(d.stage, lang)}
-                        </h3>
-                        <p className={styles.detailText}>{tx(d.text, lang)}</p>
-                      </div>
-                    ))}
+          {/* Ausführlich – Stadien im Detail (collapsible, nur wenn vorhanden) */}
+          {item.detail && (
+            <CollapseSection title={copy.ausfuehrlich} color={color} defaultOpen={false}>
+              <div className={styles.detailList}>
+                {item.detail.map((d, di) => (
+                  <div key={di} className={styles.detailBlock} style={{ borderColor: color + '33' }}>
+                    <h3 className={styles.detailStage} style={{ color }}>
+                      <span className={styles.detailDot} style={{ background: color }} />
+                      {tx(d.stage, lang)}
+                    </h3>
+                    <p className={styles.detailText}>{tx(d.text, lang)}</p>
                   </div>
-                </CollapseSection>
-              )}
-            </div>
+                ))}
+              </div>
+            </CollapseSection>
+          )}
 
-            {/* Bild rechts (optional) */}
-            {item.image && (
-              <figure className={styles.imageFigure}>
-                <div className={styles.imageWrap}>
-                  <Image
-                    src={item.image.src}
-                    alt={tx(item.image.alt, lang)}
-                    width={900}
-                    height={600}
-                    className={styles.image}
-                    unoptimized
-                  />
-                </div>
-                <figcaption className={styles.imageCaption}>
-                  Case courtesy of{' '}
-                  <strong>{item.image.attribution.name}</strong>,{' '}
-                  <a href={item.image.attribution.sourceUrl} target="_blank" rel="noopener noreferrer">
-                    Radiopaedia.org
-                  </a>
-                  . From the case{' '}
-                  <a href={item.image.attribution.caseUrl} target="_blank" rel="noopener noreferrer">
-                    rID: {item.image.attribution.caseId}
-                  </a>
-                </figcaption>
-              </figure>
-            )}
-          </div>
+          {/* Bild unter den Tabellen (optional) */}
+          {item.image && (
+            <figure className={styles.imageFigure}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={item.image.src}
+                alt={tx(item.image.alt, lang)}
+                className={styles.image}
+              />
+              <figcaption className={styles.imageCaption}>
+                Case courtesy of{' '}
+                <strong>{item.image.attribution.name}</strong>,{' '}
+                <a href={item.image.attribution.sourceUrl} target="_blank" rel="noopener noreferrer">
+                  Radiopaedia.org
+                </a>
+                . From the case{' '}
+                <a href={item.image.attribution.caseUrl} target="_blank" rel="noopener noreferrer">
+                  rID: {item.image.attribution.caseId}
+                </a>
+              </figcaption>
+            </figure>
+          )}
 
           {/* Quelle */}
           <p className={styles.ref}>
