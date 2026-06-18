@@ -84,25 +84,35 @@
 }
 .beschreibungText { margin: 0; font-size: 15px; color: #334155; line-height: 1.65; }
 
+/* ── Tabelle + Bild Grid ──────────────────────── */
+.tableImageGrid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 20px;
+  align-items: start;
+}
+.tableSections { min-width: 0; }
+
 /* ── Bild ─────────────────────────────────────── */
 .imageFigure {
-  margin: 0 0 28px;
+  margin: 0;
   border-radius: 16px;
   overflow: hidden;
   border: 1.5px solid #eef2f7;
+  position: sticky;
+  top: 90px;
 }
 .imageWrap {
   background: #f0f4f8;
   display: flex; align-items: center; justify-content: center;
-  max-height: 340px; overflow: hidden;
 }
 .image {
-  width: 100%; height: auto; max-height: 340px;
+  width: 100%; height: auto;
   display: block; object-fit: contain;
 }
 .imageCaption {
-  padding: 10px 16px;
-  font-size: 12px; color: #64748b; line-height: 1.55;
+  padding: 10px 14px;
+  font-size: 11.5px; color: #64748b; line-height: 1.55;
   border-top: 1px solid #eef2f7;
   background: #fafbfc;
 }
@@ -215,6 +225,10 @@
   .layout { grid-template-columns: 1fr; }
   .sidebar { position: static; }
   .sibLink { display: inline-block; }
+}
+@media (max-width: 860px) {
+  .tableImageGrid { grid-template-columns: 1fr; }
+  .imageFigure { position: static; }
 }
 @media (max-width: 560px) {
   .content { padding: 22px 16px; }
