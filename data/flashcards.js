@@ -2,10 +2,12 @@
 
 import { CONTRAST_FLASHCARDS, CONTRAST_FLASHCARD_TOPICS } from './contrastMedia'
 import { STROKE_FLASHCARDS, STROKE_FLASHCARD_TOPIC } from './stroke'
+import { ICB_FLASHCARDS, ICB_FLASHCARD_TOPIC } from './icb'
 
 export const FLASHCARD_TOPICS = [
   ...CONTRAST_FLASHCARD_TOPICS,
   STROKE_FLASHCARD_TOPIC,
+  ICB_FLASHCARD_TOPIC,
   {
     id: 'divertikulitis',
     area: 'Abdomen',
@@ -273,6 +275,7 @@ export const FLASHCARDS = [
   ...CONTRAST_FLASHCARDS,
   ...DIVERTICULITIS_FLASHCARDS,
   ...STROKE_FLASHCARDS,
+  ...ICB_FLASHCARDS,
   {
     "id": "meniskus-01",
     "topicId": "meniskus",

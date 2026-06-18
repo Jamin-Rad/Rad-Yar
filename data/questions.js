@@ -2,6 +2,7 @@
 
 import { CONTRAST_QUESTIONS, CONTRAST_TOPICS } from './contrastMedia'
 import { STROKE_QUESTIONS } from './stroke'
+import { ICB_QUESTIONS } from './icb'
 
 const DIVERTICULITIS_QUESTION_CONTENT = [
   {
@@ -226,6 +227,7 @@ export const QUESTION_BANK = {
     ...CONTRAST_QUESTIONS.de,
     ...DIVERTICULITIS_QUESTIONS.de,
     ...STROKE_QUESTIONS.de,
+    ...ICB_QUESTIONS.de,
     {
       "id": "meniskus-de-01",
       "tags": [
@@ -1555,6 +1557,7 @@ export const QUESTION_BANK = {
     ...CONTRAST_QUESTIONS.en,
     ...DIVERTICULITIS_QUESTIONS.en,
     ...STROKE_QUESTIONS.en,
+    ...ICB_QUESTIONS.en,
     {
       "id": "meniskus-en-01",
       "tags": [
@@ -2884,6 +2887,7 @@ export const QUESTION_BANK = {
     ...CONTRAST_QUESTIONS.fa,
     ...DIVERTICULITIS_QUESTIONS.fa,
     ...STROKE_QUESTIONS.fa,
+    ...ICB_QUESTIONS.fa,
     {
       "id": "meniskus-fa-01",
       "tags": [
@@ -4218,6 +4222,7 @@ export const MCQ_TOPIC_GROUPS = [
     title: { de: '2. Vaskuläre Erkrankungen', en: '2. Vascular Diseases', fa: '۲. بیماری‌های عروقی' },
     topics: [
       { id: 'ischaemischer-schlaganfall', title: { de: 'Ischämischer Schlaganfall', en: 'Ischaemic Stroke', fa: 'سکته مغزی ایسکمیک' } },
+      { id: 'intrazerebrale-blutung', title: { de: 'Intrazerebrale Blutung', en: 'Intracerebral Haemorrhage', fa: 'خونریزی داخل مغزی' } },
     ],
   },
   {

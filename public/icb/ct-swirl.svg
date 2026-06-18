@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 580" width="800" height="580">
+  <defs>
+    <radialGradient id="brain2" cx="50%" cy="48%" r="50%">
+      <stop offset="0%" stop-color="#3a3a3a"/>
+      <stop offset="100%" stop-color="#2a2a2a"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="580" fill="#0d0d0d"/>
+
+  <!-- Brain -->
+  <ellipse cx="400" cy="285" rx="245" ry="230" fill="url(#brain2)" stroke="#555" stroke-width="2"/>
+  <line x1="400" y1="57" x2="400" y2="513" stroke="#1a1a1a" stroke-width="4"/>
+
+  <!-- Ventricles -->
+  <ellipse cx="355" cy="258" rx="22" ry="32" fill="#151515"/>
+  <ellipse cx="445" cy="258" rx="22" ry="32" fill="#151515"/>
+  <rect x="390" y="245" width="20" height="40" rx="6" fill="#151515"/>
+
+  <!-- Perifocal edema halo -->
+  <ellipse cx="455" cy="300" rx="90" ry="80" fill="#1a1a1a"/>
+
+  <!-- Main hematoma (hyperdens) -->
+  <ellipse cx="455" cy="300" rx="68" ry="58" fill="#b8b8b8"/>
+
+  <!-- Swirl - hypodense areas within hematoma (active unclotted blood) -->
+  <ellipse cx="440" cy="285" rx="22" ry="18" fill="#404040" opacity="0.85"/>
+  <ellipse cx="470" cy="320" rx="16" ry="12" fill="#383838" opacity="0.8"/>
+  <ellipse cx="452" cy="308" rx="10" ry="8" fill="#3a3a3a" opacity="0.75"/>
+
+  <!-- Sulci -->
+  <path d="M 200 200 Q 175 255 195 315" stroke="#222" stroke-width="2" fill="none"/>
+  <path d="M 600 205 Q 622 260 605 315" stroke="#222" stroke-width="2" fill="none"/>
+
+  <!-- Labels -->
+  <!-- Hematoma -->
+  <line x1="518" y1="310" x2="585" y2="295" stroke="#d0d0d0" stroke-width="1.5"/>
+  <rect x="587" y="280" width="165" height="32" rx="6" fill="#1e1e1e" stroke="#555"/>
+  <text x="670" y="300" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#d8d8d8" font-weight="700">Hämatom · hyperdens</text>
+
+  <!-- Swirl sign -->
+  <line x1="432" y1="278" x2="370" y2="230" stroke="#f59e0b" stroke-width="2"/>
+  <rect x="190" y="208" width="178" height="40" rx="7" fill="#451a03" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="279" y="224" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#fbbf24" font-weight="800">⚠ SWIRL SIGN</text>
+  <text x="279" y="241" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#fde68a">hypodense Areale im Hämatom</text>
+
+  <!-- Arrow pointing to another swirl spot -->
+  <line x1="472" y1="322" x2="545" y2="370" stroke="#f59e0b" stroke-width="1.5"/>
+  <rect x="547" y="358" width="130" height="24" rx="5" fill="#451a03" stroke="#f59e0b" stroke-width="1"/>
+  <text x="612" y="374" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#fde68a">aktive Blutung</text>
+
+  <!-- Edema -->
+  <line x1="372" y1="362" x2="310" y2="400" stroke="#888" stroke-width="1.2"/>
+  <rect x="200" y="390" width="110" height="24" rx="5" fill="#1e1e1e" stroke="#444"/>
+  <text x="255" y="406" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#888">Perifok. Ödem</text>
+
+  <!-- Title bar -->
+  <rect x="0" y="530" width="800" height="50" fill="#111"/>
+  <text x="400" y="553" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#aaaaaa">CT · axial · nativ · Swirl Sign: hypodense Areale → aktive, unkoagulierte Blutung</text>
+  <text x="400" y="572" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#555">Schema – keine reale Patientenaufnahme</text>
+
+  <!-- Window -->
+  <rect x="18" y="18" width="130" height="22" rx="4" fill="#1e1e1e" stroke="#444"/>
+  <text x="83" y="33" text-anchor="middle" font-family="monospace" font-size="11" fill="#777">W:80  C:35</text>
+</svg>

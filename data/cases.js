@@ -1,3 +1,17 @@
+import { ICB_PRUEFUNG_CASES } from './icb'
+
+function locCase(item, lang) {
+  function t(val) { return (val && typeof val === 'object' && !Array.isArray(val)) ? (val[lang] || val.de) : val }
+  return {
+    ...item,
+    title: t(item.title),
+    vignette: t(item.vignette),
+    question: t(item.question),
+    options: item.options.map(opt => ({ ...opt, text: t(opt.text) })),
+    explanation: t(item.explanation),
+  }
+}
+
 export const CASE_BANK = {
   de: [
     {
@@ -259,6 +273,7 @@ export const CASE_BANK = {
       source: 'https://radiopaedia.org/cases/colovesical-fistula-due-to-acute-sigmoid-diverticulitis?lang=us',
       credit: 'Bild: Case courtesy of Craig Hacking, Radiopaedia.org, rID-178676, CC BY-NC-SA 3.0',
     },
+    ...ICB_PRUEFUNG_CASES.map(item => locCase(item, 'de')),
   ],
   en: [
     {
@@ -476,6 +491,7 @@ export const CASE_BANK = {
       source: 'https://radiopaedia.org/cases/colovesical-fistula-due-to-acute-sigmoid-diverticulitis?lang=us',
       credit: 'Image: Case courtesy of Craig Hacking, Radiopaedia.org, rID-178676, CC BY-NC-SA 3.0',
     },
+    ...ICB_PRUEFUNG_CASES.map(item => locCase(item, 'en')),
   ],
   fa: [
     {
@@ -681,6 +697,7 @@ export const CASE_BANK = {
       source: 'https://radiopaedia.org/cases/colovesical-fistula-due-to-acute-sigmoid-diverticulitis?lang=us',
       credit: 'تصویر: Case courtesy of Craig Hacking, Radiopaedia.org, rID-178676, CC BY-NC-SA 3.0',
     },
+    ...ICB_PRUEFUNG_CASES.map(item => locCase(item, 'fa')),
   ],
 }
 
