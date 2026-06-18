@@ -73,9 +73,6 @@
 }
 
 .section {
-  display: grid;
-  grid-template-columns: 42px minmax(0, 1fr);
-  gap: 16px;
   padding: 38px 0;
   scroll-margin-top: 90px;
   border-bottom: 1px solid var(--border);
@@ -155,8 +152,6 @@
   }
 
   .section {
-    grid-template-columns: 30px minmax(0, 1fr);
-    gap: 8px;
     padding: 30px 0;
   }
 }
