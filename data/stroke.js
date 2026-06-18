@@ -17,7 +17,6 @@ export const STROKE_LESSON = {
   sourceLabel: 'Dr. Zia',
   actionMcq: 'MCQ',
   actionFlash: L('Flashcards', 'Flashcards', 'فلش‌کارت'),
-  actionCases: L('Falltraining', 'Case training', 'تمرین کیس'),
   keyLabel: L('Merke', 'Key point', 'نکته مهم'),
   caveLabel: L('CAVE', 'Caution', 'احتیاط'),
   openCase: L('Fall in Radiopaedia öffnen', 'Open case in Radiopaedia', 'باز کردن کیس در Radiopaedia'),
@@ -35,19 +34,19 @@ export const STROKE_LESSON = {
   ],
   heroCards: [
     {
-      value: 'NCCT',
-      label: L('erster Schritt', 'first step', 'گام اول'),
-      text: L('Blutung ausschließen, Frühzeichen und ASPECTS erfassen', 'Exclude haemorrhage; assess early signs and ASPECTS', 'رد خونریزی و بررسی علائم اولیه و ASPECTS'),
+      value: 'TIME',
+      label: L('Zeitpunkt sichern', 'establish timing', 'تعیین زمان'),
+      text: L('Last known well steuert die Reperfusionsauswahl', 'Last known well guides reperfusion selection', 'آخرین زمان سالم انتخاب بازپرفیوژن را هدایت می‌کند'),
     },
     {
-      value: 'CTA',
-      label: L('Gefäßstatus', 'vessel status', 'وضعیت عروق'),
-      text: L('LVO, Stenose und Kollateralen beurteilen', 'Assess LVO, stenosis and collaterals', 'بررسی انسداد عروق بزرگ، تنگی و کولترال‌ها'),
+      value: 'LVO',
+      label: L('Verschluss lokalisieren', 'localise occlusion', 'تعیین محل انسداد'),
+      text: L('Verschlusshöhe, Tandemläsion und Kollateralen', 'Occlusion level, tandem lesion and collaterals', 'سطح انسداد، ضایعه تاندوم و کولترال‌ها'),
     },
     {
-      value: 'DWI↓ADC',
-      label: L('frühester MRT-Marker', 'earliest MRI marker', 'زودترین مارکر MRI'),
-      text: L('echte Diffusionsrestriktion binnen Minuten', 'true diffusion restriction within minutes', 'محدودیت واقعی انتشار طی چند دقیقه'),
+      value: 'CORE ↔',
+      label: L('Penumbra erkennen', 'identify penumbra', 'شناسایی پنومبرا'),
+      text: L('Irreversiblen Kern von rettbarem Gewebe trennen', 'Separate irreversible core from salvageable tissue', 'تفکیک هسته غیرقابل برگشت از بافت قابل نجات'),
     },
   ],
   basics: {
@@ -460,68 +459,3 @@ export const STROKE_FLASHCARDS = FLASHCARD_SEEDS.map((item, index) => ({
   explanation: L(item[6], item[7], item[8]),
   diagram: L(item[6], item[7], item[8]),
 }))
-
-const EXAM_CASE_SEEDS = [
-  {
-    id: 'stroke-dense-mca-45310',
-    image: '/stroke/case-dense-mca-rid-45310.png',
-    modality: 'CT',
-    plane: L('NCCT · axial', 'NCCT · axial', 'NCCT · اکسیال'),
-    title: L('Dense-MCA-Zeichen bei akutem linksseitigem MCA-Infarkt', 'Dense MCA sign in acute left MCA infarction', 'علامت MCA هایپردنس در انفارکت حاد MCA چپ'),
-    prompt: L('80-jährige Patientin mit akuter Aphasie und rechtsseitiger Schwäche. Welcher Befund ist im nativen CCT am wichtigsten?', 'An 80-year-old woman presents with acute aphasia and right-sided weakness. Which NCCT finding is most important?', 'خانم ۸۰ ساله با آفازی حاد و ضعف سمت راست. مهم‌ترین یافته NCCT چیست؟'),
-    options: [
-      L('Hyperdenses linkes MCA-Segment als Hinweis auf akuten Thrombus', 'Dense left MCA segment indicating acute thrombus', 'سگمان هایپردنس MCA چپ به نفع ترومبوس حاد'),
-      L('Chronische symmetrische Basalganglienverkalkung', 'Chronic symmetric basal ganglia calcification', 'کلسیفیکاسیون مزمن و متقارن گانگلیون‌های قاعده‌ای'),
-      L('Subarachnoidalblutung in den basalen Zisternen', 'Subarachnoid haemorrhage in the basal cisterns', 'خونریزی ساب‌آراکنوئید در سیسترن‌های قاعده‌ای'),
-      L('Normale Gefäßdarstellung ohne Frühzeichen', 'Normal vessels without early signs', 'عروق طبیعی بدون علائم اولیه'),
-    ],
-    correct: 'A',
-    explanation: L('Das hyperdense linke MCA-Segment entspricht einem akuten intraluminalen Thrombus. Zusammen mit Insular-ribbon-Verlust und passender Klinik spricht es für einen akuten linken MCA-Infarkt.', 'The dense left MCA segment represents acute intraluminal thrombus. Together with insular ribbon loss and the clinical presentation it indicates acute left MCA infarction.', 'سگمان هایپردنس MCA چپ نشان‌دهنده ترومبوس حاد داخل‌لومنی است و همراه با محوشدن نوار اینسولا و علائم بالینی به نفع انفارکت حاد MCA چپ است.'),
-    source: 'https://radiopaedia.org/cases/acute-ischaemic-stroke-dense-mca-sign?lang=us',
-    credit: 'Case courtesy of Gaurav Som Prakash Gupta, Radiopaedia.org · rID-45310 · CC BY-NC-SA 3.0',
-  },
-  {
-    id: 'stroke-ct-dwi-78956',
-    image: '/stroke/case-left-mca-dwi-rid-78956.jpg',
-    images: [
-      { src: '/stroke/case-left-mca-ct-rid-78956.png', label: L('NCCT', 'NCCT', 'NCCT') },
-      { src: '/stroke/case-left-mca-dwi-rid-78956.jpg', label: L('DWI', 'DWI', 'DWI') },
-    ],
-    modality: 'MRT',
-    plane: L('CT/DWI · axial', 'CT/DWI · axial', 'CT/DWI · اکسیال'),
-    title: L('Subtile CT-Frühzeichen mit deutlicher DWI-Läsion', 'Subtle early CT signs with a conspicuous DWI lesion', 'علائم ظریف اولیه CT با ضایعه واضح DWI'),
-    prompt: L('30-jährige Patientin fünf Tage postpartal mit Aphasie und rechtsseitiger Parese. CT ist nur diskret auffällig, DWI deutlich positiv. Welche Interpretation ist richtig?', 'A 30-year-old woman five days postpartum presents with aphasia and right-sided paresis. CT changes are subtle but DWI is clearly positive. Which interpretation is correct?', 'خانم ۳۰ ساله پنج روز پس از زایمان با آفازی و پارزی راست؛ CT ظریف ولی DWI واضحاً مثبت است. تفسیر صحیح کدام است؟'),
-    options: [
-      L('Akuter distaler linker MCA-Infarkt mit echter Diffusionsrestriktion', 'Acute distal left MCA infarction with true diffusion restriction', 'انفارکت حاد دیستال MCA چپ با محدودیت واقعی انتشار'),
-      L('Chronische Enzephalomalazie ohne akute Ischämie', 'Chronic encephalomalacia without acute ischaemia', 'انسفالومالاسی مزمن بدون ایسکمی حاد'),
-      L('DWI-Artefakt; eine unauffällige CT schließt Ischämie aus', 'DWI artefact; a normal CT excludes ischaemia', 'آرتیفکت DWI؛ CT طبیعی ایسکمی را رد می‌کند'),
-      L('Primäre intrazerebrale Blutung', 'Primary intracerebral haemorrhage', 'خونریزی اولیه داخل مغزی'),
-    ],
-    correct: 'A',
-    explanation: L('Eine frühe NCCT kann trotz akuter Ischämie nahezu unauffällig sein. Die fokale DWI-Hyperintensität mit passender ADC-Minderung bestätigt den akuten distalen linken MCA-Infarkt.', 'Early NCCT may be nearly normal despite acute ischaemia. Focal DWI hyperintensity with corresponding ADC reduction confirms acute distal left MCA infarction.', 'NCCT اولیه ممکن است با وجود ایسکمی حاد تقریباً طبیعی باشد. افزایش کانونی DWI همراه کاهش ADC انفارکت حاد دیستال MCA چپ را تأیید می‌کند.'),
-    source: 'https://radiopaedia.org/cases/left-mca-acute-ischaemic-stroke?lang=us',
-    credit: 'Case courtesy of Abdulrahman Abdo Ali Abbas, Radiopaedia.org · rID-78956 · CC BY-NC-SA 3.0',
-  },
-]
-
-export const STROKE_EXAM_CASES = Object.fromEntries(['de', 'en', 'fa'].map(lang => [
-  lang,
-  EXAM_CASE_SEEDS.map(item => ({
-    id: item.id,
-    fachId: 'gehirn',
-    kapitelId: 'kopf-vaskulaer',
-    topicId: 'ischaemischer-schlaganfall',
-    image: item.image,
-    images: item.images?.map(image => ({ src: image.src, label: image.label[lang] })),
-    modality: item.modality,
-    plane: item.plane[lang],
-    title: item.title[lang],
-    vignette: item.prompt[lang],
-    prompt: item.prompt[lang],
-    options: item.options.map((text, index) => ({ id: ['A', 'B', 'C', 'D'][index], text: text[lang] })),
-    correct: item.correct,
-    explanation: item.explanation[lang],
-    source: item.source,
-    credit: item.credit,
-  })),
-]))

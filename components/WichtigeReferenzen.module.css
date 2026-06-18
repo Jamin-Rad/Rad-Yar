@@ -172,12 +172,20 @@
 }
 .modalTitleMain { white-space: nowrap; }
 .modalCrumb {
-  display: inline-flex; align-items: baseline;
-  font-weight: 900; min-width: 0;
+  display: inline-flex; align-items: center;
+  min-width: 0;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, currentColor 9%, #fff);
+  border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
+  font-style: normal;
+  font-size: 12.5px;
+  font-weight: 850;
+  letter-spacing: .025em;
 }
 .modalCrumbSep {
-  font-style: normal; font-weight: 400; color: #cbd5e1;
-  margin-inline-end: 7px; flex-shrink: 0;
+  display: none;
 }
 .closeBtn {
   width: 36px; height: 36px; border-radius: 10px; border: 0;
@@ -658,6 +666,10 @@
 :global(html[data-theme='dark']) .headGreen  { background: #081810; border-bottom-color: rgba(5,150,105,0.25); }
 :global(html[data-theme='dark']) .modalTitle { color: #f8fafc; }
 :global(html[data-theme='dark']) .modalCrumbSep { color: #475569; }
+:global(html[data-theme='dark']) .modalCrumb {
+  background: color-mix(in srgb, currentColor 12%, #111b2d);
+  border-color: color-mix(in srgb, currentColor 28%, transparent);
+}
 :global(html[data-theme='dark']) .closeBtn {
   background: rgba(255,255,255,0.08); color: #b8c4d8;
 }

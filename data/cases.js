@@ -1,8 +1,5 @@
-import { STROKE_EXAM_CASES } from './stroke'
-
 export const CASE_BANK = {
   de: [
-    ...STROKE_EXAM_CASES.de,
     {
       id: 'meniskus-grad-2c',
       fachId: 'msk',
@@ -264,7 +261,6 @@ export const CASE_BANK = {
     },
   ],
   en: [
-    ...STROKE_EXAM_CASES.en,
     {
       id: 'meniskus-grad-2c', fachId: 'msk', kapitelId: 'msk-knie', topicId: 'meniskus',
       image: '/meniskus/mri-sagittal.png', modality: 'MRT', plane: 'PD · sagittal',
@@ -482,7 +478,6 @@ export const CASE_BANK = {
     },
   ],
   fa: [
-    ...STROKE_EXAM_CASES.fa,
     {
       id: 'meniskus-grad-2c', fachId: 'msk', kapitelId: 'msk-knie', topicId: 'meniskus',
       image: '/meniskus/mri-sagittal.png', modality: 'MRT', plane: 'PD · ساژیتال',

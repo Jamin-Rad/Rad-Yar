@@ -125,6 +125,46 @@ export const REF_COPY = {
 
 // ── Messwerte ────────────────────────────────────────────────
 // Struktur: region → groups[] → entries[]
+const THORACIC_AORTA_ENTRIES = [
+  {
+    s: { de: 'Aorta ascendens – Höhe PA-Bif.', en: 'Ascending aorta – PA bifurcation level', fa: 'آئورت صعودی – سطح تقسیم PA' },
+    v: '3,2 ± 0,5 cm',
+    h: {
+      de: 'Dilatation ab ≥ 4,0 cm; Aneurysma ab ≥ 4,5 cm',
+      en: 'Dilated from ≥ 4.0 cm; aneurysm from ≥ 4.5 cm',
+      fa: 'اتساع از ≥ ۴٫۰ سانتی‌متر؛ آنوریسم از ≥ ۴٫۵ سانتی‌متر',
+    },
+  },
+  {
+    s: { de: 'Aorta ascendens – Aortenwurzel', en: 'Ascending aorta – aortic root', fa: 'آئورت صعودی – ریشه آئورت' },
+    v: '3,7 ± 0,3 cm',
+    h: {
+      de: 'Alters-, geschlechts- und körpergrößenabhängig beurteilen',
+      en: 'Interpret according to age, sex and body size',
+      fa: 'بر اساس سن، جنس و اندازه بدن تفسیر شود',
+    },
+  },
+  {
+    s: { de: 'Aortenbogen', en: 'Aortic arch', fa: 'قوس آئورت' },
+    v: '2,5 ± 1,2 cm',
+    h: { de: 'Variabel je Atemphase und Messpunkt', en: 'Variable by respiratory phase and level', fa: 'متغیر بر اساس فاز تنفسی' },
+  },
+  {
+    s: { de: 'Aorta descendens', en: 'Descending aorta', fa: 'آئورت نزولی' },
+    v: '2,5 ± 0,4 cm',
+    h: { de: 'Aneurysma ab ≥ 4 cm; OP ab ≥ 5,5 cm', en: 'Aneurysm ≥ 4 cm; surgery ≥ 5.5 cm', fa: 'آنوریسم از ۴؛ جراحی از ۵٫۵' },
+  },
+  {
+    s: { de: 'Verhältnis Aorta ascendens / descendens', en: 'Ascending / descending aortic ratio', fa: 'نسبت آئورت صعودی به نزولی' },
+    v: '≈ 1,5 : 1',
+    h: {
+      de: 'Beide Durchmesser auf vergleichbarer axialer Höhe messen',
+      en: 'Measure both diameters at a comparable axial level',
+      fa: 'هر دو قطر در سطح محوری قابل مقایسه اندازه‌گیری شوند',
+    },
+  },
+]
+
 export const MESSWERTE = [
   // ── 1. Neuro / Kopf-Hals ────────────────────────────────────
   {
@@ -185,17 +225,21 @@ export const MESSWERTE = [
     groups: [
       {
         name: { de: 'Aorta thorakalis', en: 'Thoracic Aorta', fa: 'آئورت توراسیک' },
-        entries: [
-          { s: { de: 'Aorta ascendens – Höhe PA-Bif.', en: 'Ascending aorta – PA bifurcation level', fa: 'آئورت صعودی – سطح تقسیم PA' }, v: '3,2 ± 0,5 cm', h: { de: 'OP-Indikation ab ≥ 5,5 cm (♀ ab 5,0 cm)', en: 'Surgery from ≥ 5.5 cm (♀ from 5.0 cm)', fa: 'جراحی از ۵٫۵ سانتی‌متر' } },
-          { s: { de: 'Aorta ascendens – Aortenwurzel', en: 'Ascending aorta – aortic root', fa: 'آئورت صعودی – ریشه آئورت' }, v: '3,7 ± 0,3 cm', h: { de: 'Verhältnis asc./desc. ≈ 1,5 : 1', en: 'Ratio ascending/descending ≈ 1.5 : 1', fa: 'نسبت صعودی/نزولی ≈ ۱٫۵ : ۱' } },
-          { s: { de: 'Aortenbogen', en: 'Aortic arch', fa: 'قوس آئورت' }, v: '2,5 ± 1,2 cm', h: { de: 'Variabel je Atemphase und Messpunkt', en: 'Variable by respiratory phase and level', fa: 'متغیر بر اساس فاز تنفسی' } },
-          { s: { de: 'Aorta descendens', en: 'Descending aorta', fa: 'آئورت نزولی' }, v: '2,5 ± 0,4 cm', h: { de: 'Aneurysma ab ≥ 4 cm; OP ab ≥ 5,5 cm', en: 'Aneurysm ≥ 4 cm; surgery ≥ 5.5 cm', fa: 'آنوریسم از ۴؛ جراحی از ۵٫۵' } },
-        ],
+        entries: THORACIC_AORTA_ENTRIES,
       },
       {
         name: { de: 'Pulmonalgefäße & V. cava', en: 'Pulmonary Vessels & SVC', fa: 'عروق ریوی و ورید اجوف فوقانی' },
         entries: [
           { s: { de: 'Truncus pulmonalis', en: 'Pulmonary trunk', fa: 'تنه ریوی' }, v: '2,4 ± 0,2 cm', h: { de: 'PH wahrscheinlich wenn > Aorta ascendens', en: 'PH likely if > ascending aorta', fa: 'احتمال PH اگر > آئورت صعودی' } },
+          {
+            s: { de: 'Verhältnis Truncus pulmonalis / Aorta ascendens', en: 'Pulmonary trunk / ascending aorta ratio', fa: 'نسبت تنه ریوی به آئورت صعودی' },
+            v: '≤ 1,0',
+            h: {
+              de: '> 1 spricht im passenden Kontext für pulmonale Hypertonie',
+              en: '> 1 supports pulmonary hypertension in the appropriate context',
+              fa: 'نسبت > ۱ در زمینه مناسب به نفع پرفشاری ریوی است',
+            },
+          },
           { s: { de: 'Re. Pulmonalarterie (proximal)', en: 'Right PA (proximal)', fa: 'شریان ریوی راست (پروگزیمال)' }, v: '1,9 ± 0,3 cm', h: { de: 'Distal re. PA: 1,5 ± 0,3 cm; li. PA: 2,1 ± 0,4 cm', en: 'Distal right PA: 1.5 ± 0.3 cm; left PA: 2.1 ± 0.4 cm', fa: 'PA راست دیستال: ۱٫۵ ± ۰٫۳؛ PA چپ: ۲٫۱ ± ۰٫۴' } },
           { s: { de: 'V. cava superior (Höhe Aortenbogen)', en: 'SVC (aortic arch level)', fa: 'ورید اجوف فوقانی' }, v: '1,4 ± 0,4 cm', h: { de: 'Höhe PA-Bif.: 2,0 ± 0,4 cm', en: 'At PA bifurcation: 2.0 ± 0.4 cm', fa: 'در سطح بایفورکاسیون PA: ۲٫۰ ± ۰٫۴' } },
         ],
@@ -224,6 +268,10 @@ export const MESSWERTE = [
     id: 'herz', color: '#be185d',
     name: { de: 'Herz', en: 'Heart', fa: 'قلب' },
     groups: [
+      {
+        name: { de: 'Aorta thorakalis', en: 'Thoracic Aorta', fa: 'آئورت توراسیک' },
+        entries: THORACIC_AORTA_ENTRIES,
+      },
       {
         name: { de: 'Vorhöfe', en: 'Atria', fa: 'دهلیزها' },
         entries: [
@@ -554,24 +602,6 @@ export const KLASSIFIKATIONEN = [
           ['2', { de: 'Diffuse dünne SAB (< 1 mm)', en: 'Diffuse thin SAH (< 1 mm)', fa: 'SAH منتشر نازک (< ۱ mm)' }],
           ['3', { de: 'Lokalisierte/dicke SAB (> 1 mm)', en: 'Localised/thick SAH (> 1 mm)', fa: 'SAH موضعی/ضخیم (> ۱ mm)' }],
           ['4', { de: 'Intraventrikuläre / intrazerebrale Blutung', en: 'Intraventricular / intracerebral haemorrhage', fa: 'خونریزی داخل بطنی / داخل مغزی' }],
-        ],
-      },
-      {
-        id: 'hunt-hess',
-        name: { de: 'Hunt & Hess', en: 'Hunt & Hess', fa: 'هانت و هس' },
-        kompakt: {
-          de: 'Klinischer Schweregrad der SAB bei Aufnahme (Grad 1–5), Grundlage für Prognose und Therapiewahl (Clipping vs. Coiling).',
-          en: 'Clinical severity of SAH at admission (grade 1–5), guiding prognosis and treatment choice (clipping vs. coiling).',
-          fa: 'شدت بالینی SAH هنگام بستری (درجه ۱–۵)، پایه پیش‌آگهی و انتخاب درمان (کلیپینگ در برابر کویلینگ).',
-        },
-        ref: 'Hunt & Hess, J Neurosurg 1968',
-        cols: [{ de: 'Grad', en: 'Grade', fa: 'درجه' }, { de: 'Klinik', en: 'Clinical', fa: 'بالین' }],
-        rows: [
-          ['1', { de: 'Asymptomatisch / leichter Kopfschmerz', en: 'Asymptomatic / mild headache', fa: 'بدون علامت / سردرد خفیف' }],
-          ['2', { de: 'Starker Kopfschmerz, Meningismus, Hirnnervenausfall', en: 'Severe headache, meningismus, cranial nerve palsy', fa: 'سردرد شدید، منژیسم، فلج عصب کرانیال' }],
-          ['3', { de: 'Somnolenz, leichtes fokales Defizit', en: 'Drowsiness, mild focal deficit', fa: 'خواب‌آلودگی، نقص کانونی خفیف' }],
-          ['4', { de: 'Sopor, mäßige–schwere Hemiparese', en: 'Stupor, moderate–severe hemiparesis', fa: 'سوپور، همی‌پارزی متوسط تا شدید' }],
-          ['5', { de: 'Koma, Strecksynergismen', en: 'Coma, extensor posturing', fa: 'کما، سینرژی اکستانسور' }],
         ],
       },
     ],

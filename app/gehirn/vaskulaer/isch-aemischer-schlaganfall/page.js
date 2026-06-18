@@ -8,7 +8,15 @@ import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import { STROKE_LEARNING_CASES, STROKE_LESSON } from '@/data/stroke'
 import InProgressBanner from '@/components/InProgressBanner'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 import styles from '../../../abdomen/gi/divertikulitis/page.module.css'
+
+const IMAGE_UI = {
+  de: { zoom: 'Bild vergrößern', close: 'Bildansicht schließen' },
+  en: { zoom: 'Enlarge image', close: 'Close image preview' },
+  fa: { zoom: 'بزرگ‌نمایی تصویر', close: 'بستن نمایش تصویر' },
+}
 
 const READ_COPY = {
   de: { mark: 'Als gelesen markieren', read: 'Als gelesen markiert', error: 'Bitte melde dich an, um deinen Lernfortschritt zu speichern.', signIn: 'Anmelden' },
@@ -81,21 +89,25 @@ function Section({ id, title, lead, children }) {
   )
 }
 
-function LearningFigure({ src, alt }) {
+function LearningFigure({ src, alt, onZoom, zoomLabel }) {
   return (
     <figure style={{ margin: '22px 0 0', border: '1px solid var(--border)', borderRadius: 22, overflow: 'hidden', background: 'var(--bg-card)' }}>
-      <Image src={src} alt={alt} width={1536} height={1024} style={{ display: 'block', width: '100%', height: 'auto' }} />
+      <button type="button" className={styles.strokeZoomButton} onClick={() => onZoom({ src, alt })} aria-label={zoomLabel}>
+        <Image src={src} alt={alt} width={1536} height={1024} style={{ display: 'block', width: '100%', height: 'auto' }} />
+      </button>
     </figure>
   )
 }
 
-function CaseCard({ item, lang, openCase }) {
+function CaseCard({ item, lang, openCase, onZoom, zoomLabel }) {
   const images = item.images || [item.image]
   return (
     <article className={styles.caseCardLink}>
       <figure className={styles.caseImage} style={images.length > 1 ? { display: 'grid', gridTemplateColumns: '1fr 1fr' } : undefined}>
-        {images.map((src, index) => (
-          <Image key={src} src={src} alt={localize(item.alt, lang)} width={612} height={612} className={styles.caseImageAsset} style={{ minWidth: 0 }} />
+        {images.map(src => (
+          <button type="button" className={styles.strokeCaseZoom} key={src} onClick={() => onZoom({ src, alt: localize(item.alt, lang) })} aria-label={zoomLabel}>
+            <Image src={src} alt={localize(item.alt, lang)} width={612} height={612} className={styles.caseImageAsset} style={{ minWidth: 0 }} />
+          </button>
         ))}
       </figure>
       <div className={styles.caseBody}>
@@ -112,9 +124,11 @@ function CaseCard({ item, lang, openCase }) {
 export default function IschaemischerSchlaganfallPage() {
   const { lang } = useLanguage()
   const c = value => localize(value, lang)
+  const imageUi = IMAGE_UI[lang] || IMAGE_UI.de
   const isRTL = lang === 'fa'
   const sections = STROKE_LESSON.sections.map(section => ({ ...section, label: c(section.label) }))
   const [activeId, setActiveId] = useState(sections[0].id)
+  const [previewImage, setPreviewImage] = useState(null)
   const { isRead, toggleRead, authError } = useLessonReadStatus('ischaemischer-schlaganfall')
   const lessonPath = '/gehirn/vaskulaer/isch-aemischer-schlaganfall'
   const withLang = href => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
@@ -134,8 +148,10 @@ export default function IschaemischerSchlaganfallPage() {
   }, [sectionIds])
 
   return (
-    <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
-      <InProgressBanner lang={lang} />
+    <>
+      <Navbar />
+      <main className={`${styles.page} ${styles.strokePage}`} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
+        <InProgressBanner lang={lang} />
       <header className={styles.header}>
         <div className={styles.breadcrumb}>
           <Link href={withLang('/')}>RadYar</Link><span>›</span>
@@ -148,9 +164,8 @@ export default function IschaemischerSchlaganfallPage() {
             <h1>{c(STROKE_LESSON.title)}</h1>
             <p>{c(STROKE_LESSON.subtitle)}</p>
             <div className={styles.actions}>
-              <Link href={withLang(`/ueben/quiz?fach=gehirn&n=15&themen=ischaemischer-schlaganfall&from=${encodeURIComponent(withLang(lessonPath))}`)} className={styles.actionBtn}>{STROKE_LESSON.actionMcq}</Link>
-              <Link href={withLang(`/flashcards/ischaemischer-schlaganfall?from=${encodeURIComponent(withLang(lessonPath))}`)} className={styles.actionBtn}>{c(STROKE_LESSON.actionFlash)}</Link>
-              <Link href={withLang('/faelle?thema=ischaemischer-schlaganfall')} className={styles.actionBtn}>{c(STROKE_LESSON.actionCases)}</Link>
+              <Link href={withLang(`/ueben/quiz?fach=gehirn&n=15&themen=ischaemischer-schlaganfall&from=${encodeURIComponent(withLang(lessonPath))}`)} className={styles.actionBtn}>🎯 {STROKE_LESSON.actionMcq}</Link>
+              <Link href={withLang(`/flashcards/ischaemischer-schlaganfall?from=${encodeURIComponent(withLang(lessonPath))}`)} className={styles.actionBtn}>🧠 {c(STROKE_LESSON.actionFlash)}</Link>
             </div>
           </div>
           <div className={styles.heroStats}>
@@ -186,13 +201,13 @@ export default function IschaemischerSchlaganfallPage() {
 
           <Section id="aspects" title={c(STROKE_LESSON.aspects.title)} lead={c(STROKE_LESSON.aspects.lead)}>
             <Cards items={localizedItems(STROKE_LESSON.aspects.items, lang)} />
-            <LearningFigure src="/stroke/aspects.png" alt={c(STROKE_LESSON.aspects.imageAlt)} />
+            <LearningFigure src="/stroke/aspects.png" alt={c(STROKE_LESSON.aspects.imageAlt)} onZoom={setPreviewImage} zoomLabel={imageUi.zoom} />
             <Callout label={c(STROKE_LESSON.keyLabel)}>{c(STROKE_LESSON.aspects.key)}</Callout>
           </Section>
 
           <Section id="ct-verlauf" title={c(STROKE_LESSON.ctTimeline.title)} lead={c(STROKE_LESSON.ctTimeline.lead)}>
             <Cards items={localizedItems(STROKE_LESSON.ctTimeline.items, lang)} />
-            <LearningFigure src="/stroke/ct-timeline.png" alt={c(STROKE_LESSON.ctTimeline.imageAlt)} />
+            <LearningFigure src="/stroke/ct-timeline.png" alt={c(STROKE_LESSON.ctTimeline.imageAlt)} onZoom={setPreviewImage} zoomLabel={imageUi.zoom} />
           </Section>
 
           <Section id="mrt" title={c(STROKE_LESSON.mri.title)} lead={c(STROKE_LESSON.mri.lead)}>
@@ -202,7 +217,7 @@ export default function IschaemischerSchlaganfallPage() {
           </Section>
 
           <Section id="mrt-verlauf" title={c(STROKE_LESSON.mriTimeline.title)} lead={c(STROKE_LESSON.mriTimeline.lead)}>
-            <LearningFigure src="/stroke/mri-timeline.png" alt={c(STROKE_LESSON.mriTimeline.imageAlt)} />
+            <LearningFigure src="/stroke/mri-timeline.png" alt={c(STROKE_LESSON.mriTimeline.imageAlt)} onZoom={setPreviewImage} zoomLabel={imageUi.zoom} />
           </Section>
 
           <Section id="verlauf" title={c(STROKE_LESSON.pitfalls.title)} lead={c(STROKE_LESSON.pitfalls.lead)}>
@@ -217,7 +232,7 @@ export default function IschaemischerSchlaganfallPage() {
           </Section>
 
           <Section id="faelle" title={c(STROKE_LESSON.cases.title)} lead={c(STROKE_LESSON.cases.lead)}>
-            <div className={styles.caseGrid}>{STROKE_LEARNING_CASES.map(item => <CaseCard key={item.id} item={item} lang={lang} openCase={c(STROKE_LESSON.openCase)} />)}</div>
+            <div className={styles.caseGrid}>{STROKE_LEARNING_CASES.map(item => <CaseCard key={item.id} item={item} lang={lang} openCase={c(STROKE_LESSON.openCase)} onZoom={setPreviewImage} zoomLabel={imageUi.zoom} />)}</div>
           </Section>
 
           <Section id="takehome" title={c(STROKE_LESSON.takehome.title)} lead={c(STROKE_LESSON.takehome.lead)}>
@@ -229,6 +244,16 @@ export default function IschaemischerSchlaganfallPage() {
           <div className={styles.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} lang={lang} /></div>
         </div>
       </div>
-    </main>
+      </main>
+      <Footer />
+      {previewImage && (
+        <div className={styles.strokeImageModal} role="dialog" aria-modal="true" aria-label={imageUi.zoom} onClick={() => setPreviewImage(null)}>
+          <div className={styles.strokeImageModalContent} onClick={event => event.stopPropagation()}>
+            <button type="button" className={styles.strokeImageModalClose} onClick={() => setPreviewImage(null)} aria-label={imageUi.close}>×</button>
+            <img src={previewImage.src} alt={previewImage.alt} />
+          </div>
+        </div>
+      )}
+    </>
   )
 }

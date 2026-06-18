@@ -11,9 +11,9 @@ import quizStyles from '@/app/ueben/quiz/page.module.css'
 import styles from './page.module.css'
 
 const REGION_NAMES = {
-  de: { gehirn: 'Kopf', msk: 'Muskuloskelettales', abdomen: 'Abdomen' },
-  en: { gehirn: 'Head', msk: 'Musculoskeletal', abdomen: 'Abdomen' },
-  fa: { gehirn: 'سر', msk: 'اسکلتی-عضلانی', abdomen: 'شکم' },
+  de: { msk: 'Muskuloskelettales', abdomen: 'Abdomen' },
+  en: { msk: 'Musculoskeletal', abdomen: 'Abdomen' },
+  fa: { msk: 'اسکلتی-عضلانی', abdomen: 'شکم' },
 }
 
 const UI = {
