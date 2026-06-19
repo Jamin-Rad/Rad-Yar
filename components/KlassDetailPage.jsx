@@ -148,14 +148,24 @@ export default function KlassDetailPage({ topic, item }) {
           <div className={item.image ? styles.tableImageGrid : undefined}>
             {/* Tabellen-Sektion */}
             <div>
-              {item.einfach && (
-                <CollapseSection title={copy.einfachUebersicht} color={color} defaultOpen={true}>
-                  <ClassTable cols={item.einfach.cols} rows={item.einfach.rows} lang={lang} />
-                </CollapseSection>
+              {item.tables ? (
+                item.tables.map((table, i) => (
+                  <CollapseSection key={i} title={tx(table.title, lang)} color={color} defaultOpen={true}>
+                    <ClassTable cols={table.cols} rows={table.rows} lang={lang} />
+                  </CollapseSection>
+                ))
+              ) : (
+                <>
+                  {item.einfach && (
+                    <CollapseSection title={copy.einfachUebersicht} color={color} defaultOpen={true}>
+                      <ClassTable cols={item.einfach.cols} rows={item.einfach.rows} lang={lang} />
+                    </CollapseSection>
+                  )}
+                  <CollapseSection title={copy.vollstaendig} color={color} defaultOpen={!item.einfach}>
+                    <ClassTable cols={item.cols} rows={item.rows} lang={lang} />
+                  </CollapseSection>
+                </>
               )}
-              <CollapseSection title={copy.vollstaendig} color={color} defaultOpen={!item.einfach}>
-                <ClassTable cols={item.cols} rows={item.rows} lang={lang} />
-              </CollapseSection>
               {item.detail && (
                 <CollapseSection title={copy.ausfuehrlich} color={color} defaultOpen={false}>
                   <div className={styles.detailList}>

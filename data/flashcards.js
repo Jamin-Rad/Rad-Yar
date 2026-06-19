@@ -5,12 +5,32 @@ import { STROKE_FLASHCARDS, STROKE_FLASHCARD_TOPIC } from './stroke'
 import { ICB_FLASHCARDS, ICB_FLASHCARD_TOPIC } from './icb'
 import { HIE_FLASHCARDS } from './hie'
 import { SAB_FLASHCARDS, SAB_FLASHCARD_TOPIC } from './sab'
+import { EDH_FLASHCARDS } from './edh'
 
 export const FLASHCARD_TOPICS = [
   ...CONTRAST_FLASHCARD_TOPICS,
   STROKE_FLASHCARD_TOPIC,
   ICB_FLASHCARD_TOPIC,
   SAB_FLASHCARD_TOPIC,
+  {
+    id: 'epidurale-blutung',
+    area: 'Kopf',
+    chapter: 'Trauma',
+    icon: '🩸',
+    iconImage: '/fach/gehirn.png',
+    color: '#be185d',
+    href: '/flashcards/epidurale-blutung',
+    title: {
+      de: 'Epiduralhämatom',
+      en: 'Epidural haematoma',
+      fa: 'هماتوم اپیدورال',
+    },
+    subtitle: {
+      de: 'CT-Muster · Fraktur · Swirl sign · Masseneffekt · Management',
+      en: 'CT pattern · fracture · swirl sign · mass effect · management',
+      fa: 'الگوی CT · شکستگی · Swirl sign · اثر فشاری · مدیریت',
+    },
+  },
   {
     id: 'hypoxisch-ischaemische-hirnschaedigung',
     area: 'Kopf',
@@ -496,6 +516,7 @@ export const FLASHCARDS = [
   ...STROKE_FLASHCARDS,
   ...ICB_FLASHCARDS,
   ...SAB_FLASHCARDS,
+  ...EDH_FLASHCARDS,
   ...HIE_FLASHCARDS,
   ...CSF_SYSTEM_FLASHCARDS,
   ...MIDLINE_CAVA_FLASHCARDS,
