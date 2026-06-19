@@ -117,14 +117,11 @@ function CaseViewer({ frames, initial = 0, alt, copy, onZoom }) {
   )
 }
 
-// ── Case image arrays ────────────────────────────────────────────────────────
-// Case 1: Pediatric Moya-Moya – MRI (T2 flow voids + Gd-FLAIR ivy sign + TOF-MRA)
-// → Radiopaedia rID: 56820 or similar — place images in public/moyamoya/case-1/
+// Case 1 (rID-202226): CT non-contrast · MRI T2 · FLAIR · DWI · MRA
 const CASE1_FRAMES = Array.from({ length: 5 }, (_, i) => `/moyamoya/case-1/${String(i + 1).padStart(2, '0')}.jpg`)
 
-// Case 2: Adult Moya-Moya – DSA "puff of smoke" + MRA
-// → Radiopaedia rID: 13285 or similar — place images in public/moyamoya/case-2/
-const CASE2_FRAMES = Array.from({ length: 5 }, (_, i) => `/moyamoya/case-2/${String(i + 1).padStart(2, '0')}.jpg`)
+// Case 2 (rID-87811): MRI T2 · FLAIR · DWI · TOF-3D · MIP × 2
+const CASE2_FRAMES = Array.from({ length: 6 }, (_, i) => `/moyamoya/case-2/${String(i + 1).padStart(2, '0')}.jpg`)
 
 export default function MoyaMoyaPage() {
   const { lang } = useLanguage()
@@ -178,16 +175,16 @@ export default function MoyaMoyaPage() {
       initial: 1,
       url: 'https://radiopaedia.org/cases/202226',
       credit: 'Radiopaedia.org · rID-202226 · CC BY-NC-SA 3.0',
-      label: 'MRI',
-      meta: c({ de: 'Pädiatrische Moya-Moya: T2 Flow Voids in den Basalganglien (kollaterale Moya-Moya-Gefäße), Ivy Sign auf Gd-FLAIR entlang der Sulci, TOF-MRA mit Stenose der supraklinoidalen ICA.', en: 'Paediatric Moyamoya: T2 flow voids in basal ganglia (collateral Moya-Moya vessels), ivy sign on Gd-FLAIR along sulci, TOF-MRA with stenosis of supraclinoid ICA.', fa: 'Moya-Moya در کودک: Flow voids در T2 در بازال گانگلیا (عروق کولاترال Moya-Moya)، Ivy sign در Gd-FLAIR در امتداد sulci، TOF-MRA با تنگی ICA سوپراکلینوئید.' }),
+      label: 'CT · MRI',
+      meta: c({ de: 'CT nativ (Basalganglienniveau) · MRI T2 (Flow Voids) · FLAIR (Ivy Sign) · DWI (Ischämie) · MRA (Gefäßstenose supraklinoidale ICA).', en: 'CT non-contrast (basal ganglia level) · MRI T2 (flow voids) · FLAIR (ivy sign) · DWI (ischaemia) · MRA (supraclinoid ICA stenosis).', fa: 'CT بدون کنتراست (سطح بازال گانگلیا) · MRI T2 (Flow Voids) · FLAIR (Ivy Sign) · DWI (ایسکمی) · MRA (تنگی ICA سوپراکلینوئید).' }),
     },
     {
       frames: CASE2_FRAMES,
       initial: 2,
       url: 'https://radiopaedia.org/cases/87811',
       credit: 'Radiopaedia.org · rID-87811 · CC BY-NC-SA 3.0',
-      label: 'DSA / MRA',
-      meta: c({ de: 'Erwachsene Moya-Moya: DSA zeigt das charakteristische „Puff of smoke"-Bild mit kollateralen Basalgangliengefäßen. Stenose der supraklinoidalen ICA beidseits. MRA: fehlende ACA/MCA-Signale.', en: 'Adult Moyamoya: DSA shows the characteristic "puff of smoke" appearance with collateral basal ganglia vessels. Bilateral supraclinoid ICA stenosis. MRA: absent ACA/MCA signals.', fa: 'Moya-Moya در بزرگسال: DSA تصویر مشخصه «پف دود» با عروق کولاترال بازال گانگلیا را نشان می‌دهد. تنگی دوطرفه ICA سوپراکلینوئید. MRA: غیاب سیگنال ACA/MCA.' }),
+      label: 'MRI · TOF-MRA',
+      meta: c({ de: 'MRI T2 (Flow Voids in Basalganglien) · FLAIR (Marklagerläsionen) · DWI (akute Ischämie) · TOF-MRA 3D-Rekonstruktion und MIP: „Puff of smoke"-Zeichen, fehlende MCA/ACA-Signale.', en: 'MRI T2 (flow voids in basal ganglia) · FLAIR (white matter lesions) · DWI (acute ischaemia) · TOF-MRA 3D reconstruction and MIP: "puff of smoke" sign, absent MCA/ACA signals.', fa: 'MRI T2 (Flow Voids در بازال گانگلیا) · FLAIR (ضایعات ماده سفید) · DWI (ایسکمی حاد) · TOF-MRA سه‌بعدی و MIP: نشانه «پف دود»، غیاب سیگنال MCA/ACA.' }),
     },
   ]
 
