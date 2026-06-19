@@ -6,12 +6,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import { useLanguage } from '@/providers/LanguageProvider'
-import { resetLeitnerState, isDue, pullLeitnerStateFromServer } from '@/utils/leitnerStorage'
+import { resetLeitnerState, filterLeitnerState, isDue, pullLeitnerStateFromServer } from '@/utils/leitnerStorage'
 import { syncLocalProgressToServer } from '@/utils/syncProgressToServer'
 import { flushPendingProgress } from '@/utils/progressSync'
 import { loadSettings, saveSettings } from '@/utils/settingsStorage'
 import { CURRICULUM, getFachTitle, getKapitelTitle, getThemaTitle } from '@/data/curriculum'
 import { MCQ_TOPIC_GROUPS } from '@/data/questions'
+import { FLASHCARDS } from '@/data/flashcards'
 import { getActivitySummary, mergeServerActivity } from '@/utils/activityStorage'
 import { getSubscription, isSubscriptionActive } from '@/utils/subscription'
 import styles from './page.module.css'
@@ -481,9 +482,10 @@ export default function ProfilPage() {
   }, [user])
 
   const progress = useMemo(() => getProgressData(readArticles), [readArticles])
+  const currentLeitner = useMemo(() => filterLeitnerState(leitner, FLASHCARDS), [leitner])
   const areaLearningData = useMemo(
-    () => getAreaLearningData(progress, leitner, mcqScores),
-    [progress, leitner, mcqScores]
+    () => getAreaLearningData(progress, currentLeitner, mcqScores),
+    [progress, currentLeitner, mcqScores]
   )
   const activity = useMemo(() => getActivity(activitySummary.days || {}, lang), [activitySummary.days, lang])
   const activityTotals = useMemo(() => getLearningActivityTotals(activitySummary.days || {}), [activitySummary.days])
@@ -507,7 +509,7 @@ export default function ProfilPage() {
 
   const subscription = getSubscription(user)
   const subscriptionActive = isSubscriptionActive(user)
-  const records = Object.values(leitner)
+  const records = Object.values(currentLeitner)
   const dueToday = records.filter(isDue).length
   const thirtyDayCards = records.filter(record =>
     Number(record.seenCount || 0) > 0 && (record.status === 'mastered' || Number(record.box || 0) >= 5)

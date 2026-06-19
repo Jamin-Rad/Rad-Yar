@@ -6,7 +6,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { useAuth, useUser } from '@clerk/nextjs'
 import { FLASHCARD_TOPICS, FLASHCARDS, getFlashcardTopic } from '@/data/flashcards'
 import { CURRICULUM, getFachTitle, getKapitelTitle, getThemaTitle } from '@/data/curriculum'
-import { LEITNER_STEPS, isDue, loadLeitnerState, getBoxLabel, getBoxInterval, pullLeitnerStateFromServer } from '@/utils/leitnerStorage'
+import { LEITNER_STEPS, isDue, loadLeitnerState, filterLeitnerState, getBoxLabel, getBoxInterval, pullLeitnerStateFromServer } from '@/utils/leitnerStorage'
 import { loadSettings } from '@/utils/settingsStorage'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { hasFullAccess, isFlashcardTrialActive, FREE_TOPIC_LIMIT } from '@/utils/subscription'
@@ -18,7 +18,7 @@ const TEXT = {
     title: 'Flashcards',
     lead: 'Hier werden alle bereits gelesenen Flashcards automatisch gesammelt und nach dem klassischen Leitner-System wiederholt. Die Daten bleiben lokal in deinem Browser gespeichert.',
     due: 'Heute fällig',
-    dueRemaining: 'noch zu lernen',
+    reviewedToday: 'heute wiederholt',
     dueClickHint: 'Klicken zum Lernen (zufällige Reihenfolge)',
     addNew: 'Neue Flashcards hinzufügen',
     addLead: 'Wähle ein Fachgebiet, dann ein Kapitel mit verfügbaren Lektionen – im Pop-up siehst du die Themen.',
@@ -55,7 +55,7 @@ const TEXT = {
     title: 'Flashcards',
     lead: 'All flashcards you have already studied are collected here and reviewed using the classic Leitner system. Your progress is stored locally in this browser.',
     due: 'Due today',
-    dueRemaining: 'still to learn',
+    reviewedToday: 'reviewed today',
     dueClickHint: 'Click to learn (random order)',
     addNew: 'Add new flashcards',
     addLead: 'Choose a specialty, then a chapter with available lessons – the pop-up shows the topics.',
@@ -92,7 +92,7 @@ const TEXT = {
     title: 'فلش‌کارت‌ها',
     lead: 'اینجا همه فلش‌کارت‌هایی که خوانده شده‌اند به صورت خودکار جمع می‌شوند و با سیستم قدیمی لایتنر مرور می‌شوند. اطلاعات فقط در همین مرورگر ذخیره می‌شود.',
     due: 'امروز برای مرور',
-    dueRemaining: 'هنوز یاد نگرفته',
+    reviewedToday: 'امروز مرور شده',
     dueClickHint: 'برای یادگیری کلیک کن (ترتیب تصادفی)',
     addNew: 'اضافه کردن فلش‌کارت جدید',
     addLead: 'یک تخصص را انتخاب کن، سپس یک فصل با درس‌های موجود — در پنجره بازشده موضوعات نشان داده می‌شوند.',
@@ -191,7 +191,8 @@ export default function FlashcardsPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId])
 
-  const records = useMemo(() => Object.values(state), [state])
+  const currentState = useMemo(() => filterLeitnerState(state, FLASHCARDS), [state])
+  const records = useMemo(() => Object.values(currentState), [currentState])
 
   const dueRecords = useMemo(() => records.filter(isDue), [records])
   const reviewedTodayCount = useMemo(() => {
@@ -199,7 +200,6 @@ export default function FlashcardsPage() {
     return records.filter(r => r.lastReviewedAt && new Date(r.lastReviewedAt).getTime() >= start).length
   }, [records])
   const dueRemaining = dueRecords.length
-  const dueTotal = dueRemaining + reviewedTodayCount
 
   const boxCounts = LEITNER_STEPS.map(step => {
     const boxRecords = records.filter(r => r.status !== 'mastered' && r.box === step.box)
@@ -282,38 +282,38 @@ export default function FlashcardsPage() {
           {dueRemaining > 0 && fullAccess ? (
             <Link href={withLang('/flashcards/faellig')} className={`${styles.heroPanel} ${styles.heroPanelClickable}`} title={t.dueClickHint}>
               <div className={styles.heroPanelStat}>
-                <strong>{dueTotal}</strong>
+                <strong>{dueRemaining}</strong>
                 <span>{t.due}</span>
               </div>
               <div className={styles.heroPanelDivider} />
               <div className={styles.heroPanelStat}>
-                <strong>{dueRemaining}</strong>
-                <span>{t.dueRemaining}</span>
+                <strong>{reviewedTodayCount}</strong>
+                <span>{t.reviewedToday}</span>
               </div>
             </Link>
           ) : dueRemaining > 0 && !fullAccess ? (
             <div className={`${styles.heroPanel} ${styles.heroPanelLocked}`} title={t.dueLockedHint}>
               <span className={styles.heroLockBadge}>🔒 {t.dueLockedTitle}</span>
               <div className={styles.heroPanelStat}>
-                <strong>{dueTotal}</strong>
+                <strong>{dueRemaining}</strong>
                 <span>{t.due}</span>
               </div>
               <div className={styles.heroPanelDivider} />
               <div className={styles.heroPanelStat}>
-                <strong>{dueRemaining}</strong>
-                <span>{t.dueRemaining}</span>
+                <strong>{reviewedTodayCount}</strong>
+                <span>{t.reviewedToday}</span>
               </div>
             </div>
           ) : (
             <div className={styles.heroPanel}>
               <div className={styles.heroPanelStat}>
-                <strong>{dueTotal}</strong>
+                <strong>{dueRemaining}</strong>
                 <span>{t.due}</span>
               </div>
               <div className={styles.heroPanelDivider} />
               <div className={styles.heroPanelStat}>
-                <strong>{dueRemaining}</strong>
-                <span>{t.dueRemaining}</span>
+                <strong>{reviewedTodayCount}</strong>
+                <span>{t.reviewedToday}</span>
               </div>
             </div>
           )}

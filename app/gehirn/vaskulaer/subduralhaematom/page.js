@@ -68,7 +68,7 @@ function CaseViewer({ frames, initial = 0, alt, copy, onZoom }) {
   const controlStyle = { width: 38, height: 34, border: '1px solid rgba(255,255,255,.22)', borderRadius: 9, color: '#fff', background: '#172033', cursor: 'pointer', fontSize: 24 }
   return <div tabIndex={0} onWheel={e => { e.preventDefault(); move(e.deltaY > 0 ? 1 : -1) }} onKeyDown={e => { if (['ArrowRight', 'ArrowDown'].includes(e.key)) move(1); if (['ArrowLeft', 'ArrowUp'].includes(e.key)) move(-1) }} style={{ background: '#020617', outline: 'none' }}>
     <div className={styles.caseImage}>
-      <button type="button" className={styles.strokeCaseZoom} onClick={() => onZoom({ src: frames[index], alt })} aria-label={copy.zoom}>
+      <button type="button" className={styles.strokeCaseZoom} onClick={() => onZoom({ src: frames[index], alt, frames, index })} aria-label={copy.zoom}>
         <Image src={frames[index]} alt={alt} width={610} height={610} className={styles.caseImageAsset} />
       </button>
       <span style={{ position: 'absolute', right: 10, bottom: 10, padding: '5px 8px', borderRadius: 999, color: '#fff', background: 'rgba(2,6,23,.78)', fontSize: 11, fontWeight: 800 }}>{copy.image(index + 1, frames.length)}</span>
@@ -109,11 +109,32 @@ export default function SubduralhaematomPage() {
   useEffect(() => {
     if (!preview) return
     const old = document.body.style.overflow
-    const esc = e => e.key === 'Escape' && setPreview(null)
+    const handleKey = e => {
+      if (e.key === 'Escape') setPreview(null)
+      if (!preview.frames?.length) return
+      if (['ArrowRight', 'ArrowDown'].includes(e.key)) {
+        setPreview(value => {
+          const index = Math.min(value.frames.length - 1, value.index + 1)
+          return { ...value, index, src: value.frames[index] }
+        })
+      }
+      if (['ArrowLeft', 'ArrowUp'].includes(e.key)) {
+        setPreview(value => {
+          const index = Math.max(0, value.index - 1)
+          return { ...value, index, src: value.frames[index] }
+        })
+      }
+    }
     document.body.style.overflow = 'hidden'
-    document.addEventListener('keydown', esc)
-    return () => { document.body.style.overflow = old; document.removeEventListener('keydown', esc) }
+    document.addEventListener('keydown', handleKey)
+    return () => { document.body.style.overflow = old; document.removeEventListener('keydown', handleKey) }
   }, [preview])
+
+  const movePreview = delta => setPreview(value => {
+    if (!value?.frames?.length) return value
+    const index = Math.min(value.frames.length - 1, Math.max(0, value.index + delta))
+    return { ...value, index, src: value.frames[index] }
+  })
 
   const rows = value => value.map(row => row.map(c))
   const cases = [
@@ -157,7 +178,37 @@ export default function SubduralhaematomPage() {
           <div className={styles.readBarBottom}><ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} /></div>
         </div>
       </div>
-      {preview && <div className={styles.strokeImageModal} role="dialog" aria-modal="true" aria-label={copy.zoom} onClick={() => setPreview(null)}><div className={styles.strokeImageModalContent} onClick={e => e.stopPropagation()}><button type="button" className={styles.strokeImageModalClose} onClick={() => setPreview(null)} aria-label={copy.close}>×</button><img src={preview.src} alt={preview.alt} /></div></div>}
+      {preview && <div className={styles.strokeImageModal} role="dialog" aria-modal="true" aria-label={copy.zoom} onClick={() => setPreview(null)}>
+        <div
+          className={styles.strokeImageModalContent}
+          onClick={e => e.stopPropagation()}
+          onWheel={e => {
+            if (!preview.frames?.length) return
+            e.preventDefault()
+            movePreview(e.deltaY > 0 ? 1 : -1)
+          }}
+        >
+          <button type="button" className={styles.strokeImageModalClose} onClick={() => setPreview(null)} aria-label={copy.close}>×</button>
+          <img src={preview.src} alt={preview.alt} />
+          {preview.frames?.length > 1 && <div style={{ width: 'min(720px, 92%)', display: 'grid', gridTemplateColumns: '42px minmax(0, 1fr) 42px', gap: 12, alignItems: 'center', marginTop: 12 }}>
+            <button type="button" onClick={() => movePreview(-1)} disabled={preview.index === 0} aria-label={copy.previous}>‹</button>
+            <input
+              type="range"
+              min="0"
+              max={preview.frames.length - 1}
+              value={preview.index}
+              onChange={e => {
+                const index = Number(e.target.value)
+                setPreview(value => ({ ...value, index, src: value.frames[index] }))
+              }}
+              aria-label={copy.image(preview.index + 1, preview.frames.length)}
+              style={{ width: '100%', accentColor: '#8b5cf6' }}
+            />
+            <button type="button" onClick={() => movePreview(1)} disabled={preview.index === preview.frames.length - 1} aria-label={copy.next}>›</button>
+          </div>}
+          {preview.frames?.length > 1 && <small style={{ color: '#cbd5e1', marginTop: 7 }}>{copy.image(preview.index + 1, preview.frames.length)} · {copy.scroll}</small>}
+        </div>
+      </div>}
     </main>
     <Footer />
   </>

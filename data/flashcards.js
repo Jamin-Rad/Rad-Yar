@@ -7,6 +7,7 @@ import { HIE_FLASHCARDS } from './hie'
 import { SAB_FLASHCARDS, SAB_FLASHCARD_TOPIC } from './sab'
 import { EDH_FLASHCARDS } from './edh'
 import { SDH_FLASHCARDS, SDH_FLASHCARD_TOPIC } from './sdh'
+import { DISSECTION_FLASHCARDS, DISSECTION_FLASHCARD_TOPIC } from './dissection'
 
 export const FLASHCARD_TOPICS = [
   ...CONTRAST_FLASHCARD_TOPICS,
@@ -71,6 +72,7 @@ export const FLASHCARD_TOPICS = [
     },
   },
   SDH_FLASHCARD_TOPIC,
+  DISSECTION_FLASHCARD_TOPIC,
   {
     id: 'divertikulitis',
     area: 'Abdomen',
@@ -523,6 +525,7 @@ export const FLASHCARDS = [
   ...CSF_SYSTEM_FLASHCARDS,
   ...MIDLINE_CAVA_FLASHCARDS,
   ...SDH_FLASHCARDS,
+  ...DISSECTION_FLASHCARDS,
   {
     "id": "meniskus-01",
     "topicId": "meniskus",

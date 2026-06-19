@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">Pathophysiologie der zervikalen Arteriendissektion</title>
+  <desc id="desc">Intimaeinriss oder spontane Wandblutung führt zum intramuralen Hämatom, zur Stenose oder zum Pseudoaneurysma und anschließend zu Ischämie oder Blutung.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1"><stop stop-color="#111827"/><stop offset="1" stop-color="#172554"/></linearGradient>
+    <linearGradient id="accent" x1="0" x2="1"><stop stop-color="#7c3aed"/><stop offset=".5" stop-color="#2563eb"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-opacity=".25"/></filter>
+  </defs>
+  <rect width="1200" height="520" rx="36" fill="url(#bg)"/>
+  <text x="60" y="68" fill="#fff" font-family="Arial, sans-serif" font-size="30" font-weight="700">Gefäßwanddissektion: zwei klinische Wege</text>
+  <rect x="60" y="105" width="255" height="112" rx="22" fill="#312e81" stroke="#a78bfa" filter="url(#shadow)"/>
+  <text x="188" y="148" text-anchor="middle" fill="#ddd6fe" font-family="Arial" font-size="22" font-weight="700">Intimaeinriss oder</text>
+  <text x="188" y="180" text-anchor="middle" fill="#fff" font-family="Arial" font-size="22">Wandblutung</text>
+  <path d="M315 161H415" stroke="url(#accent)" stroke-width="8" stroke-linecap="round"/>
+  <polygon points="415,161 390,146 390,176" fill="#38bdf8"/>
+  <rect x="430" y="105" width="285" height="112" rx="22" fill="#1e3a8a" stroke="#60a5fa" filter="url(#shadow)"/>
+  <text x="572" y="148" text-anchor="middle" fill="#bfdbfe" font-family="Arial" font-size="22" font-weight="700">Intramurales Hämatom</text>
+  <text x="572" y="180" text-anchor="middle" fill="#fff" font-family="Arial" font-size="20">falsches Lumen in der Wand</text>
+  <path d="M715 150 C800 150 800 105 860 105" stroke="#a78bfa" stroke-width="7" fill="none"/>
+  <polygon points="860,105 835,91 835,119" fill="#a78bfa"/>
+  <path d="M715 178 C800 178 800 318 860 318" stroke="#22d3ee" stroke-width="7" fill="none"/>
+  <polygon points="860,318 835,304 835,332" fill="#22d3ee"/>
+  <rect x="875" y="66" width="265" height="112" rx="22" fill="#581c87" stroke="#c084fc" filter="url(#shadow)"/>
+  <text x="1007" y="108" text-anchor="middle" fill="#f3e8ff" font-family="Arial" font-size="22" font-weight="700">Subintimal</text>
+  <text x="1007" y="140" text-anchor="middle" fill="#fff" font-family="Arial" font-size="20">Stenose / Verschluss</text>
+  <rect x="875" y="277" width="265" height="112" rx="22" fill="#164e63" stroke="#22d3ee" filter="url(#shadow)"/>
+  <text x="1007" y="319" text-anchor="middle" fill="#cffafe" font-family="Arial" font-size="22" font-weight="700">Subadventitiell</text>
+  <text x="1007" y="351" text-anchor="middle" fill="#fff" font-family="Arial" font-size="20">Pseudoaneurysma</text>
+  <path d="M1007 178V230H780V432" stroke="#f59e0b" stroke-width="6" fill="none"/>
+  <path d="M1007 389V432H780" stroke="#f59e0b" stroke-width="6" fill="none"/>
+  <polygon points="780,432 805,417 805,447" fill="#f59e0b"/>
+  <rect x="430" y="408" width="350" height="72" rx="20" fill="#7f1d1d" stroke="#fb7185"/>
+  <text x="605" y="439" text-anchor="middle" fill="#ffe4e6" font-family="Arial" font-size="21" font-weight="700">Thromboembolie / Minderperfusion</text>
+  <text x="605" y="466" text-anchor="middle" fill="#fff" font-family="Arial" font-size="18">→ TIA oder ischämischer Infarkt</text>
+  <text x="62" y="470" fill="#94a3b8" font-family="Arial" font-size="18">Intrakraniell: dünnere Media/Adventitia → zusätzlich Risiko einer Subarachnoidalblutung</text>
+</svg>

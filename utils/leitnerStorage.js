@@ -71,20 +71,19 @@ export function saveLeitnerState(state, userId = null) {
 }
 
 /**
- * Karte initialisieren — seenCount wird NICHT erhöht (nur in answerCard)
+ * Entfernt veraltete Fortschritts-Einträge aus einer Ansicht, wenn die
+ * zugehörige Flashcard inzwischen umbenannt oder gelöscht wurde.
+ * Der gespeicherte Zustand selbst bleibt unverändert.
  */
-export function ensureCardStarted(cardId, userId = null) {
-  const state = loadLeitnerState(userId)
-  if (!state[cardId]) {
-    state[cardId] = {
-      id: cardId, box: 1, status: 'active',
-      addedAt: nowIso(), lastSeenAt: nowIso(), lastReviewedAt: null,
-      dueAt: todayStart().toISOString(),
-      correctCount: 0, wrongCount: 0, seenCount: 0,
-    }
-    saveLeitnerState(state, userId)
-  }
-  return state
+export function filterLeitnerState(state, cards) {
+  const validIds = new Set(
+    (cards || [])
+      .map(card => typeof card === 'string' ? card : card?.id)
+      .filter(Boolean)
+  )
+  return Object.fromEntries(
+    Object.entries(state || {}).filter(([cardId]) => validIds.has(cardId))
+  )
 }
 
 /**
@@ -132,23 +131,34 @@ export function formatDueDate(record, lang = 'de') {
 // localStorage bleibt die sofort verfügbare Quelle für die UI;
 // der Server (Supabase `leitner_cards`) ermöglicht geräteübergreifenden Sync.
 
-export async function syncLeitnerCardToServer(cardId, record, userId = null) {
-  try {
-    const response = await fetch('/api/progress/leitner', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ cardId, record }),
-    })
-    if (!response.ok && userId) {
-      const { markProgressSyncPending } = await import('@/utils/syncProgressToServer')
-      markProgressSyncPending(userId)
+const syncQueues = new Map()
+
+export function syncLeitnerCardToServer(cardId, record, userId = null) {
+  const queueKey = `${userId || 'anon'}:${cardId}`
+  const previous = syncQueues.get(queueKey) || Promise.resolve()
+  const next = previous.then(async () => {
+    try {
+      const response = await fetch('/api/progress/leitner', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cardId, record }),
+      })
+      if (!response.ok && userId) {
+        const { markProgressSyncPending } = await import('@/utils/syncProgressToServer')
+        markProgressSyncPending(userId)
+      }
+    } catch (_) {
+      if (userId) {
+        const { markProgressSyncPending } = await import('@/utils/syncProgressToServer')
+        markProgressSyncPending(userId)
+      }
     }
-  } catch (_) {
-    if (userId) {
-      const { markProgressSyncPending } = await import('@/utils/syncProgressToServer')
-      markProgressSyncPending(userId)
-    }
-  }
+  })
+  syncQueues.set(queueKey, next)
+  next.then(() => {
+    if (syncQueues.get(queueKey) === next) syncQueues.delete(queueKey)
+  })
+  return next
 }
 
 /**

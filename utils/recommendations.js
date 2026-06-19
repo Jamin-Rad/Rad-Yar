@@ -3,13 +3,14 @@
 // und das Curriculum, ohne deren Format zu verändern.
 
 import { CURRICULUM } from '@/data/curriculum'
-import { loadLeitnerState, isDue } from '@/utils/leitnerStorage'
+import { FLASHCARDS } from '@/data/flashcards'
+import { loadLeitnerState, filterLeitnerState, isDue } from '@/utils/leitnerStorage'
 
 const DAY_MS = 24 * 60 * 60 * 1000
 
 /** Anzahl heute fälliger Flashcards (über alle Themen). */
 export function getDueFlashcardCount(userId) {
-  const state = loadLeitnerState(userId)
+  const state = filterLeitnerState(loadLeitnerState(userId), FLASHCARDS)
   return Object.values(state).filter(isDue).length
 }
 

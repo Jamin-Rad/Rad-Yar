@@ -10,7 +10,7 @@ import { FLASHCARDS, getFlashcardTopic } from '@/data/flashcards'
 import { getLessonLinkForFlashcard } from '@/data/curriculum'
 import { CONTRAST_GROUPS } from '@/data/contrastMedia'
 import {
-  loadLeitnerState, answerCard, ensureCardStarted,
+  loadLeitnerState, answerCard,
   isDue, getBoxLabel,
   pullLeitnerStateFromServer, syncLeitnerCardToServer,
 } from '@/utils/leitnerStorage'
@@ -293,13 +293,8 @@ export default function FlashcardReviewPage() {
 
   const handleFlip = useCallback(() => {
     if (exiting || !current) return
-    if (!flipped && !practiceMode) {
-      const newState = ensureCardStarted(current.id, userId)
-      setLeitnerState(newState)
-      if (userId) syncLeitnerCardToServer(current.id, newState[current.id], userId)
-    }
     setFlipped(value => !value)
-  }, [flipped, exiting, current, userId, practiceMode])
+  }, [exiting, current])
 
   const handleAnswer = useCallback((knew) => {
     if (!flipped || exiting || !current) return
