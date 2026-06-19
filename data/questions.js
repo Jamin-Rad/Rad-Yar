@@ -14,6 +14,7 @@ import { CAA_QUESTIONS } from './caa'
 import { CADASIL_QUESTIONS } from './cadasil'
 import { DVA_QUESTIONS } from './dva'
 import { KAVERNOM_QUESTIONS } from './kavernom'
+import { NPH_QUESTIONS } from './normaldruckhydrozephalus'
 
 const DIVERTICULITIS_QUESTION_CONTENT = [
   {
@@ -329,6 +330,7 @@ export const QUESTION_BANK = {
     ...CADASIL_QUESTIONS.de,
     ...DVA_QUESTIONS.de,
     ...KAVERNOM_QUESTIONS.de,
+    ...NPH_QUESTIONS.de,
     {
       "id": "meniskus-de-01",
       "tags": [
@@ -1671,6 +1673,7 @@ export const QUESTION_BANK = {
     ...CADASIL_QUESTIONS.en,
     ...DVA_QUESTIONS.en,
     ...KAVERNOM_QUESTIONS.en,
+    ...NPH_QUESTIONS.en,
     {
       "id": "meniskus-en-01",
       "tags": [
@@ -3013,6 +3016,7 @@ export const QUESTION_BANK = {
     ...CADASIL_QUESTIONS.fa,
     ...DVA_QUESTIONS.fa,
     ...KAVERNOM_QUESTIONS.fa,
+    ...NPH_QUESTIONS.fa,
     {
       "id": "meniskus-fa-01",
       "tags": [
@@ -4360,6 +4364,14 @@ export const MCQ_TOPIC_GROUPS = [
       { id: 'cadasil', title: { de: 'CADASIL', en: 'CADASIL', fa: 'CADASIL' } },
       { id: 'dva', title: { de: 'Developmental Venous Anomaly', en: 'Developmental Venous Anomaly', fa: 'آنومالی وریدی تکاملی' } },
       { id: 'kavernom', title: { de: 'Kavernom', en: 'Cavernoma', fa: 'کاورنوم' } },
+    ],
+  },
+  {
+    fachId: 'gehirn',
+    kapitelId: 'kopf-liquor',
+    title: { de: '7. Liquorzirkulationsstörungen & Hirndruck', en: '7. CSF Circulation Disorders & Intracranial Pressure', fa: '۷. اختلالات گردش مایع مغزی‌نخاعی و فشار داخل جمجمه' },
+    topics: [
+      { id: 'normaldruckhydrozephalus', title: { de: 'Normaldruckhydrozephalus', en: 'Normal pressure hydrocephalus', fa: 'هیدروسفالی فشار طبیعی' } },
     ],
   },
   {

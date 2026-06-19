@@ -14,6 +14,7 @@ import { CAA_FLASHCARDS, CAA_FLASHCARD_TOPIC } from './caa'
 import { CADASIL_FLASHCARDS, CADASIL_FLASHCARD_TOPIC } from './cadasil'
 import { DVA_FLASHCARDS, DVA_FLASHCARD_TOPIC } from './dva'
 import { KAVERNOM_FLASHCARDS, KAVERNOM_FLASHCARD_TOPIC } from './kavernom'
+import { NPH_FLASHCARDS, NPH_FLASHCARD_TOPIC } from './normaldruckhydrozephalus'
 
 export const FLASHCARD_TOPICS = [
   ...CONTRAST_FLASHCARD_TOPICS,
@@ -85,6 +86,7 @@ export const FLASHCARD_TOPICS = [
   CADASIL_FLASHCARD_TOPIC,
   DVA_FLASHCARD_TOPIC,
   KAVERNOM_FLASHCARD_TOPIC,
+  NPH_FLASHCARD_TOPIC,
   {
     id: 'divertikulitis',
     area: 'Abdomen',
@@ -544,6 +546,7 @@ export const FLASHCARDS = [
   ...CADASIL_FLASHCARDS,
   ...DVA_FLASHCARDS,
   ...KAVERNOM_FLASHCARDS,
+  ...NPH_FLASHCARDS,
   {
     "id": "meniskus-01",
     "topicId": "meniskus",

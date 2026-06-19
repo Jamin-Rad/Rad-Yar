@@ -191,7 +191,7 @@ export const CURRICULUM = [
         icon: '💧',
         themen: [
           { id: 'hydrozephalus', title: { de: 'Hydrozephalus', en: 'Hydrocephalus', fa: 'هیدروسفالی' }, tags: ['CT','MRT'], diff: 2 },
-          { id: 'normaldruckhydrozephalus', title: { de: 'Normaldruckhydrozephalus', en: 'Normal Pressure Hydrocephalus', fa: 'هیدروسفالی فشار طبیعی' }, tags: ['MRT','CT'], diff: 2 },
+          { id: 'normaldruckhydrozephalus', title: { de: 'Normaldruckhydrozephalus', en: 'Normal Pressure Hydrocephalus', fa: 'هیدروسفالی فشار طبیعی' }, tags: ['MRT','CT'], diff: 2, link: '/gehirn/anatomie/normaldruckhydrozephalus', mcqLink: '/ueben/quiz?fach=gehirn&n=12&themen=normaldruckhydrozephalus', flashcardLink: '/flashcards/normaldruckhydrozephalus', ready: true, inProgress: true, updatedAt: '2026-06-19' },
           { id: 'intrakranielle-hypotension', title: { de: 'Intrakranielle Hypotension / Liquorleck', en: 'Intracranial Hypotension / CSF Leak', fa: 'هیپوتانسیون داخل جمجمه / نشت مایع مغزی‌نخاعی' }, tags: ['MRT'], diff: 3 },
           { id: 'shunt-komplikationen', title: { de: 'Shunt-Komplikationen', en: 'Shunt Complications', fa: 'عوارض شانت' }, tags: ['CT','Rö'], diff: 2 },
           { id: 'systematische-bildanalyse-liquor', title: { de: 'Systematische Bildanalyse bei Liquorzirkulationsstörungen', en: 'Systematic Image Analysis of CSF Circulation Disorders', fa: 'تحلیل سیستماتیک تصویر در اختلالات گردش مایع مغزی‌نخاعی' }, tags: ['CT','MRT'], diff: 1 },
