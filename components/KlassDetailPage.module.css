@@ -250,6 +250,46 @@
   .sidebar { position: static; }
   .sibLink { display: inline-block; }
 }
+.imageZoomable {
+  cursor: zoom-in;
+  transition: opacity .15s;
+}
+.imageZoomable:hover { opacity: .88; }
+
+.zoomHint {
+  display: block; width: 100%; margin-top: 6px;
+  background: none; border: none; cursor: pointer;
+  color: var(--ref-color, #f97316); font-size: 12px; font-weight: 600;
+  text-align: center; padding: 4px 0;
+  opacity: .8; transition: opacity .15s;
+}
+.zoomHint:hover { opacity: 1; }
+
+.lightboxOverlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,.88);
+  display: flex; align-items: center; justify-content: center;
+  cursor: zoom-out;
+  padding: 24px;
+}
+.lightboxImg {
+  max-width: min(96vw, 1200px);
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  cursor: default;
+  box-shadow: 0 8px 40px rgba(0,0,0,.6);
+}
+.lightboxClose {
+  position: absolute; top: 16px; right: 20px;
+  background: rgba(255,255,255,.12); border: none; cursor: pointer;
+  color: #fff; font-size: 28px; line-height: 1;
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s;
+}
+.lightboxClose:hover { background: rgba(255,255,255,.22); }
+
 .tableNote {
   display: flex; flex-direction: column; gap: 6px;
   margin-top: 12px; padding: 12px 14px;

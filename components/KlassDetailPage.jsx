@@ -82,6 +82,7 @@ export default function KlassDetailPage({ topic, item }) {
   const color = topic.color
   const siblings = topic.items
   const backHref = lang !== 'de' ? `/?lang=${lang}#referenzen` : '/#referenzen'
+  const [zoomSrc, setZoomSrc] = useState(null)
 
   return (
     <main className={styles.page}>
@@ -193,7 +194,15 @@ export default function KlassDetailPage({ topic, item }) {
             {item.image && (
               <figure className={styles.imageFigure}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={item.image.src} alt={tx(item.image.alt, lang)} className={styles.image} />
+                <img
+                  src={item.image.src}
+                  alt={tx(item.image.alt, lang)}
+                  className={`${styles.image} ${styles.imageZoomable}`}
+                  onClick={() => setZoomSrc({ src: item.image.src, alt: tx(item.image.alt, lang) })}
+                />
+                <button type="button" className={styles.zoomHint} onClick={() => setZoomSrc({ src: item.image.src, alt: tx(item.image.alt, lang) })}>
+                  🔍 {copy.zoomImage || 'Vergrößern'}
+                </button>
                 {item.image.attribution && (
                   <figcaption className={styles.imageCaption}>
                     Case courtesy of <strong>{item.image.attribution.name}</strong>,{' '}
@@ -218,6 +227,15 @@ export default function KlassDetailPage({ topic, item }) {
           <p className={styles.disclaimer}>⚠️ {copy.disclaimer}</p>
         </article>
       </div>
+
+      {/* Lightbox */}
+      {zoomSrc && (
+        <div className={styles.lightboxOverlay} onClick={() => setZoomSrc(null)} role="dialog" aria-modal="true">
+          <button type="button" className={styles.lightboxClose} onClick={() => setZoomSrc(null)} aria-label="Schließen">×</button>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={zoomSrc.src} alt={zoomSrc.alt} className={styles.lightboxImg} onClick={e => e.stopPropagation()} />
+        </div>
+      )}
     </main>
   )
 }
