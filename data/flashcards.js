@@ -6,6 +6,7 @@ import { ICB_FLASHCARDS, ICB_FLASHCARD_TOPIC } from './icb'
 import { HIE_FLASHCARDS } from './hie'
 import { SAB_FLASHCARDS, SAB_FLASHCARD_TOPIC } from './sab'
 import { EDH_FLASHCARDS } from './edh'
+import { SDH_FLASHCARDS, SDH_FLASHCARD_TOPIC } from './sdh'
 
 export const FLASHCARD_TOPICS = [
   ...CONTRAST_FLASHCARD_TOPICS,
@@ -69,6 +70,7 @@ export const FLASHCARD_TOPICS = [
       fa: 'آناتومی بطن‌ها · جریان CSF · هیدروسفالی · واریانت‌های طبیعی',
     },
   },
+  SDH_FLASHCARD_TOPIC,
   {
     id: 'divertikulitis',
     area: 'Abdomen',
@@ -520,6 +522,7 @@ export const FLASHCARDS = [
   ...HIE_FLASHCARDS,
   ...CSF_SYSTEM_FLASHCARDS,
   ...MIDLINE_CAVA_FLASHCARDS,
+  ...SDH_FLASHCARDS,
   {
     "id": "meniskus-01",
     "topicId": "meniskus",
