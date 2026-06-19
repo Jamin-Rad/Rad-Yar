@@ -163,6 +163,12 @@ export default function KlassDetailPage({ topic, item }) {
                   )}
                   <CollapseSection title={copy.vollstaendig} color={color} defaultOpen={!item.einfach}>
                     <ClassTable cols={item.cols} rows={item.rows} lang={lang} />
+                    {item.tableNote && (
+                      <div className={styles.tableNote}>
+                        <span className={styles.tableNoteStart}>⬤ {tx(item.tableNote.start, lang)}</span>
+                        <span className={styles.tableNoteCutoff}>⚠ {tx(item.tableNote.cutoff, lang)}</span>
+                      </div>
+                    )}
                   </CollapseSection>
                 </>
               )}

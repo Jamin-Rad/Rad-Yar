@@ -576,20 +576,22 @@ export const KLASSIFIKATIONEN = [
           fa: 'نمره CT (۰–۱۰) برای تغییرات ایسکمیک زودرس در قلمرو MCA – به ازای هر ناحیه درگیر ۱ امتیاز کم می‌شود؛ ≤ ۷ انفارکت وسیع و پارامتر تصمیم برای لیز/ترومبکتومی است.',
         },
         image: {
-          src: '/stroke/aspects.png',
+          src: '/stroke/aspects-schema.png',
           alt: { de: 'ASPECTS-Schema mit den zehn MCA-Regionen', en: 'ASPECTS diagram showing the ten MCA regions', fa: 'نمودار ASPECTS با ده ناحیه MCA' },
         },
         ref: 'Barber et al., Lancet 2000',
         cols: [{ de: 'Region', en: 'Region', fa: 'ناحیه' }, { de: 'Wertung', en: 'Score', fa: 'امتیاز' }],
         rows: [
-          [{ de: 'Ausgangswert', en: 'Baseline', fa: 'مقدار پایه' }, '10'],
           [{ de: 'Nucleus caudatus (C)', en: 'Caudate (C)', fa: 'هسته دمی (C)' }, '−1'],
           [{ de: 'Linsenkern (L)', en: 'Lentiform (L)', fa: 'هسته عدسی (L)' }, '−1'],
           [{ de: 'Capsula interna (IC)', en: 'Internal capsule (IC)', fa: 'کپسول داخلی (IC)' }, '−1'],
           [{ de: 'Inselrinde (I)', en: 'Insula (I)', fa: 'انسولا (I)' }, '−1'],
           [{ de: 'Kortexareale M1–M6', en: 'Cortical regions M1–M6', fa: 'نواحی قشری M1–M6' }, { de: 'je −1', en: '−1 each', fa: 'هر کدام −۱' }],
-          [{ de: 'Interpretation', en: 'Interpretation', fa: 'تفسیر' }, { de: '≤ 7 = ungünstiges Outcome', en: '≤ 7 = unfavourable outcome', fa: '≤ ۷ = نتیجه نامطلوب' }],
         ],
+        tableNote: {
+          start: { de: 'Ausgangspunkt: 10 Punkte', en: 'Starting point: 10 points', fa: 'نقطه شروع: ۱۰ امتیاز' },
+          cutoff: { de: '≤ 7 Punkte = ausgedehnter Infarkt → schlechteres Outcome', en: '≤ 7 points = large infarct → worse outcome', fa: '≤ ۷ امتیاز = انفارکت وسیع → نتیجه بدتر' },
+        },
       },
       {
         id: 'pc-aspects',
@@ -607,14 +609,16 @@ export const KLASSIFIKATIONEN = [
         },
         cols: [{ de: 'Region', en: 'Region', fa: 'ناحیه' }, { de: 'Wertung', en: 'Score', fa: 'امتیاز' }],
         rows: [
-          [{ de: 'Ausgangswert', en: 'Baseline', fa: 'مقدار پایه' }, '10'],
           [{ de: 'Mittelhirn (Mesencephalon)', en: 'Midbrain', fa: 'مغز میانی' }, '−2'],
           [{ de: 'Pons', en: 'Pons', fa: 'پونز' }, '−2'],
           [{ de: 'Thalamus links / rechts', en: 'Thalamus left / right', fa: 'تالاموس چپ / راست' }, { de: 'je −1', en: '−1 each', fa: 'هر کدام −۱' }],
           [{ de: 'Kleinhirnhemisphäre links / rechts', en: 'Cerebellar hemisphere left / right', fa: 'نیمکره مخچه چپ / راست' }, { de: 'je −1', en: '−1 each', fa: 'هر کدام −۱' }],
           [{ de: 'PCA-Territorium links / rechts', en: 'PCA territory left / right', fa: 'قلمرو PCA چپ / راست' }, { de: 'je −1', en: '−1 each', fa: 'هر کدام −۱' }],
-          [{ de: 'Interpretation', en: 'Interpretation', fa: 'تفسیر' }, { de: '≤ 6 = ungünstiges Outcome', en: '≤ 6 = unfavourable outcome', fa: '≤ ۶ = نتیجه نامطلوب' }],
         ],
+        tableNote: {
+          start: { de: 'Ausgangspunkt: 10 Punkte', en: 'Starting point: 10 points', fa: 'نقطه شروع: ۱۰ امتیاز' },
+          cutoff: { de: '≤ 6 Punkte = ausgedehnter Posteriorinfarkt → schlechteres Outcome', en: '≤ 6 points = large posterior infarct → worse outcome', fa: '≤ ۶ امتیاز = انفارکت پوستریور وسیع → نتیجه بدتر' },
+        },
       },
       {
         id: 'fisher',

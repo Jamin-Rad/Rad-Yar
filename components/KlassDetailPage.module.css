@@ -250,6 +250,22 @@
   .sidebar { position: static; }
   .sibLink { display: inline-block; }
 }
+.tableNote {
+  display: flex; flex-direction: column; gap: 6px;
+  margin-top: 12px; padding: 12px 14px;
+  background: color-mix(in srgb, var(--ref-color) 7%, #0d1f33);
+  border-left: 3px solid var(--ref-color);
+  border-radius: 0 6px 6px 0;
+  font-size: 13px;
+}
+.tableNoteStart {
+  color: #9ab4cc; font-weight: 500;
+}
+.tableNoteStart::before { content: ''; }
+.tableNoteCutoff {
+  color: #f0c070; font-weight: 600;
+}
+
 @media (max-width: 760px) {
   .tableImageGrid { grid-template-columns: 1fr; }
 }
