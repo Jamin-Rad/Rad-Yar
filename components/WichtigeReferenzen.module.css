@@ -32,13 +32,14 @@
   padding: 4px 13px; border-radius: 20px; margin-bottom: 14px;
 }
 .glassTitle {
-  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
+  font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
+  font-style: italic;
   font-size: 34px;
   font-weight: 950;
-  color: #4338ca;
+  color: #b91c1c;
   margin: 0 0 10px;
   letter-spacing: -.035em;
-  text-shadow: 0 2px 14px rgba(67, 56, 202, .12);
+  text-shadow: 0 3px 14px rgba(185, 28, 28, .28);
 }
 .glassSub {
   font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
@@ -635,8 +636,8 @@
   border-color: rgba(99,102,241,0.25);
 }
 :global(html[data-theme='dark']) .glassTitle {
-  color: #c4b5fd;
-  text-shadow: 0 2px 18px rgba(139, 92, 246, .24);
+  color: #f87171;
+  text-shadow: 0 3px 18px rgba(239, 68, 68, .38);
 }
 :global(html[data-theme='dark']) .glassSub   { color: rgba(184,196,216,0.75); }
 
