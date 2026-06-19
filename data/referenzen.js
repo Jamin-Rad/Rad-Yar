@@ -575,6 +575,10 @@ export const KLASSIFIKATIONEN = [
           en: 'CT score (0–10) for early ischaemic changes in the MCA territory – 1 point deducted per affected region; ≤ 7 indicates large infarct and guides thrombolysis/thrombectomy decisions.',
           fa: 'نمره CT (۰–۱۰) برای تغییرات ایسکمیک زودرس در قلمرو MCA – به ازای هر ناحیه درگیر ۱ امتیاز کم می‌شود؛ ≤ ۷ انفارکت وسیع و پارامتر تصمیم برای لیز/ترومبکتومی است.',
         },
+        image: {
+          src: '/stroke/aspects.png',
+          alt: { de: 'ASPECTS-Schema mit den zehn MCA-Regionen', en: 'ASPECTS diagram showing the ten MCA regions', fa: 'نمودار ASPECTS با ده ناحیه MCA' },
+        },
         ref: 'Barber et al., Lancet 2000',
         cols: [{ de: 'Region', en: 'Region', fa: 'ناحیه' }, { de: 'Wertung', en: 'Score', fa: 'امتیاز' }],
         rows: [

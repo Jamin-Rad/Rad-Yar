@@ -188,11 +188,13 @@ export default function KlassDetailPage({ topic, item }) {
               <figure className={styles.imageFigure}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={item.image.src} alt={tx(item.image.alt, lang)} className={styles.image} />
-                <figcaption className={styles.imageCaption}>
-                  Case courtesy of <strong>{item.image.attribution.name}</strong>,{' '}
-                  <a href={item.image.attribution.sourceUrl} target="_blank" rel="noopener noreferrer">Radiopaedia.org</a>.
-                  From the case <a href={item.image.attribution.caseUrl} target="_blank" rel="noopener noreferrer">rID: {item.image.attribution.caseId}</a>
-                </figcaption>
+                {item.image.attribution && (
+                  <figcaption className={styles.imageCaption}>
+                    Case courtesy of <strong>{item.image.attribution.name}</strong>,{' '}
+                    <a href={item.image.attribution.sourceUrl} target="_blank" rel="noopener noreferrer">Radiopaedia.org</a>.
+                    From the case <a href={item.image.attribution.caseUrl} target="_blank" rel="noopener noreferrer">rID: {item.image.attribution.caseId}</a>
+                  </figcaption>
+                )}
               </figure>
             )}
           </div>
