@@ -624,6 +624,82 @@ export const KLASSIFIKATIONEN = [
         },
       },
       {
+        id: 'mcdonald',
+        name: { de: 'McDonald-Kriterien', en: 'McDonald Criteria', fa: 'معیارهای مک‌دونالد' },
+        kompakt: {
+          de: 'Diagnosekriterien der Multiplen Sklerose (Revision 2017): Nachweis von Dissemination in Raum (DIS – ≥2 MS-typische Regionen) und Zeit (DIT – verschiedene Zeitpunkte oder Liquor-OCBs). Erlauben die MS-Diagnose bereits nach dem ersten klinischen Schub (CIS).',
+          en: 'Diagnostic criteria for multiple sclerosis (2017 revision): demonstration of dissemination in space (DIS – ≥2 MS-typical regions) and time (DIT – different time points or CSF OCBs). Allow MS diagnosis after the very first clinical attack (CIS).',
+          fa: 'معیارهای تشخیصی مالتیپل اسکلروز (بازنگری ۲۰۱۷): اثبات انتشار در فضا (DIS – ≥۲ ناحیه معمول MS) و زمان (DIT – نقاط زمانی مختلف یا OCB مایع نخاعی). امکان تشخیص MS پس از اولین حمله بالینی (CIS) را می‌دهند.',
+        },
+        ref: 'Thompson AJ et al., Lancet Neurol. 2018;17(2):162–173',
+        refUrl: 'https://pubmed.ncbi.nlm.nih.gov/29275977/',
+        einfach: {
+          cols: [
+            { de: 'Frage', en: 'Question', fa: 'سؤال' },
+            { de: 'Kriterium', en: 'Criterion', fa: 'معیار' },
+            { de: 'Was im MRT zeigen?', en: 'What to show on MRI?', fa: 'چه چیزی در MRI نشان داده شود؟' },
+          ],
+          rows: [
+            [
+              { de: '📍 Wo?', en: '📍 Where?', fa: '📍 کجا؟' },
+              { de: 'DIS – Mehrere Orte', en: 'DIS – Multiple locations', fa: 'DIS – چند مکان' },
+              { de: '≥1 Herd in ≥2 Regionen: periventrikulär · kortikal · infratentoriell · Rückenmark', en: '≥1 lesion in ≥2 regions: periventricular · cortical · infratentorial · spinal cord', fa: '≥۱ ضایعه در ≥۲ ناحیه: پریونتریکولار · کورتیکال · اینفراتانتوریال · نخاع' },
+            ],
+            [
+              { de: '⏱ Wann?', en: '⏱ When?', fa: '⏱ کِی؟' },
+              { de: 'DIT – Mehrere Zeitpunkte', en: 'DIT – Multiple time points', fa: 'DIT – چند زمان' },
+              { de: 'Aktive + inaktive Herde gleichzeitig · ODER neuer Herd im Verlauf · ODER Liquor-OCBs', en: 'Active + inactive lesions simultaneously · OR new lesion on follow-up · OR CSF OCBs', fa: 'ضایعات فعال + غیرفعال همزمان · یا ضایعه جدید در پیگیری · یا OCB مایع نخاعی' },
+            ],
+          ],
+        },
+        cols: [
+          { de: 'Klinische Schübe', en: 'Clinical attacks', fa: 'حملات بالینی' },
+          { de: 'Objektive Läsionen', en: 'Objective lesions', fa: 'ضایعات عینی' },
+          { de: 'Zusätzlicher Nachweis', en: 'Additional evidence needed', fa: 'شواهد اضافی لازم' },
+        ],
+        rows: [
+          [
+            { de: '≥ 2 Schübe', en: '≥ 2 attacks', fa: '≥ ۲ حمله' },
+            { de: '≥ 2 Läsionen', en: '≥ 2 lesions', fa: '≥ ۲ ضایعه' },
+            { de: 'Kein weiterer Nachweis nötig ✓', en: 'No additional evidence needed ✓', fa: 'نیازی به شواهد اضافی نیست ✓' },
+          ],
+          [
+            { de: '≥ 2 Schübe', en: '≥ 2 attacks', fa: '≥ ۲ حمله' },
+            { de: '1 Läsion', en: '1 lesion', fa: '۱ ضایعه' },
+            { de: '+ DIS', en: '+ DIS', fa: '+ DIS' },
+          ],
+          [
+            { de: '1 Schub', en: '1 attack', fa: '۱ حمله' },
+            { de: '≥ 2 Läsionen', en: '≥ 2 lesions', fa: '≥ ۲ ضایعه' },
+            { de: '+ DIT  oder  Liquor-OCBs', en: '+ DIT  or  CSF OCBs', fa: '+ DIT  یا  OCB مایع نخاعی' },
+          ],
+          [
+            { de: '1 Schub (CIS)', en: '1 attack (CIS)', fa: '۱ حمله (CIS)' },
+            { de: '1 Läsion', en: '1 lesion', fa: '۱ ضایعه' },
+            { de: '+ DIS  +  DIT oder Liquor-OCBs', en: '+ DIS  +  DIT or CSF OCBs', fa: '+ DIS  +  DIT یا OCB مایع نخاعی' },
+          ],
+          [
+            { de: 'Progredienter Verlauf (PPMS)', en: 'Progressive course (PPMS)', fa: 'سیر پیشرونده (PPMS)' },
+            { de: '≥ 1 Jahr Progression', en: '≥ 1 year progression', fa: '≥ ۱ سال پیشرفت' },
+            { de: '+ DIS (2/3 Regionen)  +  DIT (OCB oder neuer Herd)', en: '+ DIS (2/3 regions)  +  DIT (OCB or new lesion)', fa: '+ DIS (۲/۳ ناحیه)  +  DIT (OCB یا ضایعه جدید)' },
+          ],
+        ],
+        detail: [
+          {
+            stage: { de: 'DIS – Dissemination in Raum (4 Regionen)', en: 'DIS – Dissemination in Space (4 regions)', fa: 'DIS – انتشار در فضا (۴ ناحیه)' },
+            text: { de: '≥1 T2-Herd in ≥2 von 4 MS-typischen Regionen: (1) periventrikulär (≥3 Herde empfohlen), (2) kortikal/juxtakortikal, (3) infratentoriell (Hirnstamm, Kleinhirn), (4) Rückenmark. Symptomatische Herde dürfen bei CIS mitgezählt werden. Optikusnervläsionen: nur bei NMOSD-Ausschluss.', en: '≥1 T2 lesion in ≥2 of 4 MS-typical regions: (1) periventricular (≥3 lesions recommended), (2) cortical/juxtacortical, (3) infratentorial (brainstem, cerebellum), (4) spinal cord. Symptomatic lesions may be counted in CIS. Optic nerve lesions: only after NMOSD exclusion.', fa: '≥۱ ضایعه T2 در ≥۲ از ۴ ناحیه معمول MS: (۱) پریونتریکولار (≥۳ ضایعه توصیه)، (۲) کورتیکال/جوکستاکورتیکال، (۳) اینفراتانتوریال، (۴) نخاع. ضایعات علامت‌دار در CIS قابل شمارش هستند.' },
+          },
+          {
+            stage: { de: 'DIT – Dissemination in Zeit (3 Wege)', en: 'DIT – Dissemination in Time (3 ways)', fa: 'DIT – انتشار در زمان (۳ روش)' },
+            text: { de: '(1) Gleichzeitig gadoliniumaufnehmende (aktive) UND nicht-aufnehmende T2-Herde auf demselben MRT — kein zeitlicher Abstand nötig! · (2) Neuer T2- oder Gd-Herd in Verlaufs-MRT · (3) Liquorspezifische oligoklonale Banden (OCBs) im Vergleich zum Serum. OCBs ersetzen DIT — aber nicht DIS!', en: '(1) Simultaneous gadolinium-enhancing (active) AND non-enhancing T2 lesions on the same MRI — no time gap needed! · (2) New T2 or Gd lesion on follow-up MRI · (3) CSF-specific oligoclonal bands (OCBs) compared to serum. OCBs substitute for DIT — but not DIS!', fa: '(۱) ضایعات گادولینیوم‌گیر (فعال) و غیرگیر T2 بر روی همان MRI — فاصله زمانی لازم نیست! · (۲) ضایعه T2 یا Gd جدید در MRI پیگیری · (۳) باندهای الیگوکلونال اختصاصی مایع نخاعی (OCB). OCBs جایگزین DIT می‌شوند — نه DIS!' },
+          },
+          {
+            stage: { de: 'Wichtige Ausschlussdiagnosen', en: 'Key differential diagnoses', fa: 'تشخیص‌های افتراقی مهم' },
+            text: { de: 'MS-Diagnose setzt voraus: Keine bessere Erklärung! DD: NMOSD (AQP4-IgG – oft länger Rückenmarksherde, Area postrema), MOGAD (MOG-IgG – kortikale Enzephalitis, Optikusneuritis), zerebrale Vaskulitis, Neurosarkoidose, infektiöse Enzephalomyelitis. Immer Serum-AQP4-IgG und MOG-IgG testen!', en: 'MS diagnosis requires: no better explanation! DDx: NMOSD (AQP4-IgG – often long spinal cord lesions, area postrema), MOGAD (MOG-IgG – cortical encephalitis, optic neuritis), cerebral vasculitis, neurosarcoidosis, infectious encephalomyelitis. Always test serum AQP4-IgG and MOG-IgG!', fa: 'تشخیص MS مستلزم: هیچ توضیح بهتری وجود نداشته باشد! DD: NMOSD (AQP4-IgG)، MOGAD (MOG-IgG)، واسکولیت مغزی، نوروسارکوئیدوز، آنسفالومیلیت عفونی. همیشه AQP4-IgG و MOG-IgG سرم را آزمایش کنید!' },
+          },
+        ],
+      },
+      {
         id: 'fisher',
         name: { de: 'Fisher-Skala', en: 'Fisher scale', fa: 'مقیاس فیشر' },
         kompakt: {
