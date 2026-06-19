@@ -135,7 +135,6 @@ export default function LernenFachPage() {
 
   const [selectedKapitel, setSelectedKapitel] = useState(null)
   const [mounted, setMounted] = useState(false)
-  const [search, setSearch] = useState('')
   const [filter, setFilter] = useState('available')
   const [readArticles, setReadArticles] = useState({})
 
@@ -171,8 +170,6 @@ export default function LernenFachPage() {
     return () => { cancelled = true }
   }, [isLoaded, userId])
 
-  useEffect(() => { setSearch('') }, [params?.fach])
-
   useEffect(() => {
     if (!visibleKapitel.some(({ kapitel }) => kapitel.id === selectedKapitel)) setSelectedKapitel(null)
   }, [visibleKapitel, selectedKapitel])
@@ -207,14 +204,6 @@ export default function LernenFachPage() {
     return href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`
   }
 
-  const searchResults = search.trim().length > 1
-    ? visibleKapitel.flatMap(({ kapitel: k, themen }) =>
-        themen.filter(th => getThemaTitle(th, lang).toLowerCase().includes(search.toLowerCase()))
-          .map(th => ({ ...th, kapitelTitle: getKapitelTitle(k, lang), kapitel: k }))
-      )
-    : []
-  const searchActive = search.trim().length > 1
-
   return (
     <div className={styles.page}>
 
@@ -242,15 +231,6 @@ export default function LernenFachPage() {
                 {f === 'available' ? t.available : f === 'unread' ? t.unread : f === 'read' ? t.read : t.all}
               </button>
             ))}
-            <div className={styles.searchBox}>
-              <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-                <circle cx="5.5" cy="5.5" r="4" stroke="#94a3b8" strokeWidth="1.4"/>
-                <line x1="8.5" y1="8.5" x2="12" y2="12" stroke="#94a3b8" strokeWidth="1.4" strokeLinecap="round"/>
-              </svg>
-              <input className={styles.searchInput} placeholder={t.search}
-                value={search} onChange={e => setSearch(e.target.value)} />
-              {search && <button className={styles.searchX} onClick={() => setSearch('')}>✕</button>}
-            </div>
           </div>
         )}
       </div>
@@ -260,22 +240,7 @@ export default function LernenFachPage() {
         <div className={styles.contentLayout}>
           <main className={styles.chapterContent}>
 
-        {/* SEARCH MODE */}
-        {searchActive ? (
-          <div className={styles.searchResults}>
-            {searchResults.length === 0 ? (
-              <p className={styles.noResult}>{t.noResult} „{search}"</p>
-            ) : searchResults.map((th, i) => (
-              <div key={i} className={styles.searchRow}>
-                <span className={styles.searchChapter}>
-                  <ChapterIcon fachId={fach.id} kapitel={th.kapitel} className={styles.searchChapterIcon} />
-                  {th.kapitelTitle}
-                </span>
-                <span className={styles.searchTitle}>{getThemaTitle(th, lang)}</span>
-              </div>
-            ))}
-          </div>
-        ) : visibleKapitel.length === 0 ? (
+        {visibleKapitel.length === 0 ? (
           <div className={styles.emptyState}>
             <p>
               {fach.kapitel.length === 0
