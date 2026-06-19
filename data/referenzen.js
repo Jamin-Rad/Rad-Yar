@@ -604,6 +604,45 @@ export const KLASSIFIKATIONEN = [
           ['4', { de: 'Intraventrikuläre / intrazerebrale Blutung', en: 'Intraventricular / intracerebral haemorrhage', fa: 'خونریزی داخل بطنی / داخل مغزی' }],
         ],
       },
+      {
+        id: 'modif-fisher',
+        name: { de: 'Modifizierte Fisher-Skala', en: 'Modified Fisher Scale', fa: 'مقیاس فیشر اصلاح‌شده' },
+        kompakt: {
+          de: 'Verfeinert die originale Skala (Claassen 2001): bewertet Blutdicke (< vs. ≥ 1 mm) und IVH separat. Grad 0–4. Grad 4 = höchstes Vasospasmusrisiko (~28 %).',
+          en: 'Refines the original scale (Claassen 2001): grades blood thickness (< vs. ≥ 1 mm) and IVH separately. Grade 0–4. Grade 4 = highest vasospasm risk (~28 %).',
+          fa: 'مقیاس اصلی را اصلاح می‌کند (Claassen 2001): ضخامت خون (<  در مقابل ≥۱ mm) و IVH را جداگانه ارزیابی می‌کند. درجات ۰–۴. درجه ۴ = بیشترین خطر وازواسپاسم (~۲۸٪).',
+        },
+        ref: 'Claassen et al., Stroke 2001',
+        einfach: {
+          cols: [
+            { de: 'Grad', en: 'Grade', fa: 'درجه' },
+            { de: 'Blutdicke', en: 'Blood thickness', fa: 'ضخامت خون' },
+            { de: 'IVH', en: 'IVH', fa: 'IVH' },
+            { de: 'Vasospasmus', en: 'Vasospasm', fa: 'وازواسپاسم' },
+          ],
+          rows: [
+            ['0', { de: 'Kein SAB', en: 'No SAH', fa: 'بدون SAB' }, { de: 'Nein', en: 'No', fa: 'خیر' }, '~0 %'],
+            ['1', { de: 'Dünn (< 1 mm)', en: 'Thin (< 1 mm)', fa: 'نازک (< ۱ mm)' }, { de: 'Nein', en: 'No', fa: 'خیر' }, '~6 %'],
+            ['2', { de: 'Dünn (< 1 mm)', en: 'Thin (< 1 mm)', fa: 'نازک (< ۱ mm)' }, { de: 'Ja', en: 'Yes', fa: 'بله' }, '~14 %'],
+            ['3', { de: 'Dick (≥ 1 mm)', en: 'Thick (≥ 1 mm)', fa: 'ضخیم (≥ ۱ mm)' }, { de: 'Nein', en: 'No', fa: 'خیر' }, '~12 %'],
+            ['4', { de: 'Dick (≥ 1 mm)', en: 'Thick (≥ 1 mm)', fa: 'ضخیم (≥ ۱ mm)' }, { de: 'Ja', en: 'Yes', fa: 'بله' }, '~28 %'],
+          ],
+        },
+        cols: [
+          { de: 'Grad', en: 'Grade', fa: 'درجه' },
+          { de: 'Blutdicke', en: 'Blood thickness', fa: 'ضخامت خون' },
+          { de: 'IVH', en: 'IVH', fa: 'IVH' },
+          { de: 'Vasospasmus-Risiko', en: 'Vasospasm risk', fa: 'خطر وازواسپاسم' },
+          { de: 'CT-Befund', en: 'CT finding', fa: 'یافته CT' },
+        ],
+        rows: [
+          ['0', { de: 'Kein SAB', en: 'No SAH', fa: 'بدون SAB' }, { de: 'Nein', en: 'No', fa: 'خیر' }, '~0 %', { de: 'Normale Zisternen, kein Blut', en: 'Normal cisterns, no blood', fa: 'سیسترن‌های طبیعی، بدون خون' }],
+          ['1', { de: 'Dünn (< 1 mm)', en: 'Thin (< 1 mm)', fa: 'نازک (< ۱ mm)' }, { de: 'Nein', en: 'No', fa: 'خیر' }, '~6 %', { de: 'Dünne Blutschicht in Zisternen, kein Ventrikelblut', en: 'Thin blood layer in cisterns, no ventricular blood', fa: 'لایه نازک خون در سیسترن‌ها، بدون خون در بطن‌ها' }],
+          ['2', { de: 'Dünn (< 1 mm)', en: 'Thin (< 1 mm)', fa: 'نازک (< ۱ mm)' }, { de: 'Ja ✓', en: 'Yes ✓', fa: 'بله ✓' }, '~14 %', { de: 'Dünne Blutschicht + Blut in ≥ 1 Seitenventrikel', en: 'Thin blood + blood in ≥ 1 lateral ventricle', fa: 'لایه نازک + خون در ≥ ۱ بطن جانبی' }],
+          ['3', { de: 'Dick (≥ 1 mm)', en: 'Thick (≥ 1 mm)', fa: 'ضخیم (≥ ۱ mm)' }, { de: 'Nein', en: 'No', fa: 'خیر' }, '~12 %', { de: 'Dicke Blutansammlung / Zisternenverfüllung, kein IVH', en: 'Thick blood / cistern filling, no IVH', fa: 'تجمع خون ضخیم / پر شدن سیسترن، بدون IVH' }],
+          ['4', { de: 'Dick (≥ 1 mm)', en: 'Thick (≥ 1 mm)', fa: 'ضخیم (≥ ۱ mm)' }, { de: 'Ja ✓', en: 'Yes ✓', fa: 'بله ✓' }, '~28 %', { de: 'Dicke Blutansammlung + Blut in ≥ 1 Seitenventrikel', en: 'Thick blood + blood in ≥ 1 lateral ventricle', fa: 'تجمع خون ضخیم + خون در ≥ ۱ بطن جانبی' }],
+        ],
+      },
     ],
   },
   {
