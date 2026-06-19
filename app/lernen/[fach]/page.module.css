@@ -363,11 +363,10 @@
 }
 .topicGroupHeader h4 {
   margin: 0;
-  color: #334155;
-  font-size: 11px;
+  color: color-mix(in srgb, var(--topic-color) 82%, #172033);
+  font-size: 13px;
   font-weight: 900;
-  letter-spacing: .08em;
-  text-transform: uppercase;
+  letter-spacing: -.01em;
 }
 .topicGroupHeader span {
   display: inline-flex;
@@ -999,7 +998,7 @@ a.topicRow:hover {
   border-bottom-color: rgba(148,163,184,.14);
 }
 :global(html[data-theme='dark']) .topicGroupHeader h4 {
-  color: #e2e8f0;
+  color: color-mix(in srgb, var(--topic-color) 72%, #f8fafc);
 }
 :global(html[data-theme='dark']) .topicGroupHeader span {
   background: rgba(15,23,42,.72);
