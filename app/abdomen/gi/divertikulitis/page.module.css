@@ -637,6 +637,18 @@
 .caseBody small { display: block; margin-bottom: 12px; color: #96a0b1; font-size: 11px; line-height: 1.45; }
 .caseExternalLink { color: #f97316; font-size: 13px; font-weight: 900; text-decoration: none; }
 
+.cadasilCaseCard {
+  grid-column: 1 / -1;
+}
+
+.cadasilCaseImages {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cadasilCaseImages .strokeCaseZoom {
+  height: min(34vw, 420px);
+}
+
 /* ── Neuro-Farbsystem: Ischämischer Schlaganfall ─────────── */
 .strokePage {
   background:
@@ -781,6 +793,8 @@
   .caseGrid { grid-template-columns: 1fr; gap: 12px; }
   .caseCardLink { border-radius: 18px; }
   .caseImages { grid-template-columns: 1fr; }
+  .cadasilCaseImages { grid-template-columns: 1fr; }
+  .cadasilCaseImages .strokeCaseZoom { height: min(82vw, 460px); }
   .caseImage { height: min(82vw, 460px); font-size: 52px; }
   .caseBody { padding: 16px; }
   .caseBody h3 { font-size: 17px; }

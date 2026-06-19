@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import InProgressBanner from '@/components/InProgressBanner'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
@@ -18,8 +19,8 @@ const UI = {
     read: 'Als gelesen markiert',
     signIn: 'Anmelden',
     auth: 'Bitte melde dich an, um deinen Lernfortschritt zu speichern.',
-    source: 'Originalfall öffnen',
-    references: 'Quellen & Vertiefung',
+    actionMcq: 'MCQ',
+    actionFlash: 'Flashcards',
   },
   en: {
     zoom: 'Enlarge image',
@@ -28,8 +29,8 @@ const UI = {
     read: 'Marked as read',
     signIn: 'Sign in',
     auth: 'Please sign in to save your learning progress.',
-    source: 'Open original case',
-    references: 'Sources & further reading',
+    actionMcq: 'MCQ',
+    actionFlash: 'Flashcards',
   },
   fa: {
     zoom: 'بزرگ‌نمایی تصویر',
@@ -38,8 +39,8 @@ const UI = {
     read: 'به‌عنوان خوانده‌شده علامت خورد',
     signIn: 'ورود',
     auth: 'برای ذخیره پیشرفت لطفاً وارد شوید.',
-    source: 'باز کردن مورد اصلی',
-    references: 'منابع و مطالعه بیشتر',
+    actionMcq: 'MCQ',
+    actionFlash: 'فلش‌کارت',
   },
 }
 
@@ -122,37 +123,34 @@ function ReadButton({ isRead, toggleRead, authError, copy }) {
   )
 }
 
-function CaseGallery({ images, lang, copy, onZoom }) {
+function CaseGallery({ fall, lang, copy, onZoom }) {
   return (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 230px), 1fr))',
-        gap: 14,
-        margin: '18px 0',
-      }}
-    >
-      {images.map((image, index) => (
-        <article className={styles.caseCardLink} key={image.src}>
+    <div className={styles.caseGrid}>
+      <article className={`${styles.caseCardLink} ${styles.cadasilCaseCard}`}>
+        <div className={`${styles.caseImages} ${styles.cadasilCaseImages}`}>
+          {fall.images.map((image, index) => (
           <button
             type="button"
             className={styles.strokeCaseZoom}
             onClick={() => onZoom(index)}
             aria-label={`${copy.zoom}: ${L(image.alt, lang)}`}
-            style={{ height: 310 }}
+            key={image.src}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className={styles.caseImageAsset} src={image.src} alt={L(image.alt, lang)} />
           </button>
-          <div className={styles.caseBody}>
-            <div className={styles.caseLabelRow}>
-              <span className={styles.caseLabel}>{L(image.label, lang)}</span>
-              <span className={styles.caseLabel}>FLAIR</span>
-            </div>
-            <p>{L(image.caption, lang)}</p>
+          ))}
+        </div>
+        <div className={styles.caseBody}>
+          <div className={styles.caseLabelRow}>
+            <span className={styles.caseLabel}>{L(fall.caseLabel, lang)}</span>
+            <span className={styles.caseLabel}>MRT</span>
+            <span className={styles.caseLabel}>FLAIR</span>
           </div>
-        </article>
-      ))}
+          <h3>{L(fall.caseTitle, lang)}</h3>
+          <p>{L(fall.caseMeta, lang)}</p>
+        </div>
+      </article>
     </div>
   )
 }
@@ -205,6 +203,8 @@ export default function CadasilPage() {
 
   return (
     <main className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
+      <InProgressBanner lang={lang} />
+
       <header className={styles.header}>
         <div className={styles.breadcrumb}>
           <Link href={withLang('/')}>RadYar</Link>
@@ -219,6 +219,14 @@ export default function CadasilPage() {
             <span className={styles.sourceBadge}>{CADASIL_LESSON.sourceLabel}</span>
             <h1>{c(CADASIL_LESSON.title)}</h1>
             <p>{c(CADASIL_LESSON.definition)}</p>
+            <div className={styles.actions}>
+              <Link className={styles.actionBtn} href={withLang(`/ueben/quiz?fach=gehirn&n=12&themen=cadasil&from=${encodeURIComponent(withLang('/gehirn/vaskulaer/cadasil'))}`)}>
+                🎯 {copy.actionMcq}
+              </Link>
+              <Link className={styles.actionBtn} href={withLang(`/flashcards/cadasil?from=${encodeURIComponent(withLang('/gehirn/vaskulaer/cadasil'))}`)}>
+                🧠 {copy.actionFlash}
+              </Link>
+            </div>
           </div>
           <div className={styles.heroStats}>
             {CADASIL_LESSON.heroCards.map(card => (
@@ -245,6 +253,13 @@ export default function CadasilPage() {
               key={section.id}
               className={`${styles.sideItem} ${active === section.id ? styles.sideItemActive : ''}`}
               onClick={() => document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth' })}
+              style={section.emphasis ? {
+                color: '#f59e0b',
+                border: '1px solid rgba(245, 158, 11, .48)',
+                background: 'rgba(245, 158, 11, .12)',
+                fontWeight: 950,
+                boxShadow: '0 8px 20px rgba(245, 158, 11, .10)',
+              } : undefined}
             >
               <span>{section.icon}</span>
               <strong>{c(section.label)}</strong>
@@ -278,7 +293,7 @@ export default function CadasilPage() {
           </Section>
 
           <Section id="fall" title={c(CADASIL_LESSON.fall.title)} lead={c(CADASIL_LESSON.fall.lead)}>
-            <CaseGallery images={CADASIL_LESSON.fall.images} lang={lang} copy={copy} onZoom={setZoomed} />
+            <CaseGallery fall={CADASIL_LESSON.fall} lang={lang} copy={copy} onZoom={setZoomed} />
 
             <h3 style={{ margin: '24px 0 12px' }}>{c(CADASIL_LESSON.fall.findingsTitle)}</h3>
             <div className={styles.cardsGrid}>
@@ -293,12 +308,6 @@ export default function CadasilPage() {
             </div>
 
             <Callout label={c({ de: 'Diagnose', en: 'Diagnosis', fa: 'تشخیص' })}>{c(CADASIL_LESSON.fall.diagnosis)}</Callout>
-            <p style={{ marginTop: 14, color: 'var(--text-muted)', fontSize: 12 }}>
-              {c(CADASIL_LESSON.fall.source)}{' '}
-              <a className={styles.caseExternalLink} href={CADASIL_LESSON.fall.sourceUrl} target="_blank" rel="noreferrer">
-                {copy.source} ↗
-              </a>
-            </p>
           </Section>
 
           <Section id="management" title={c(CADASIL_LESSON.management.title)} lead={c(CADASIL_LESSON.management.lead)}>
@@ -316,23 +325,6 @@ export default function CadasilPage() {
                     <p>{c(item.text)}</p>
                   </div>
                 </div>
-              ))}
-            </div>
-
-            <h3 style={{ margin: '28px 0 12px' }}>{copy.references}</h3>
-            <div className={styles.cardsGrid}>
-              {CADASIL_LESSON.references.map(reference => (
-                <a
-                  className={styles.infoCard}
-                  href={reference.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  key={reference.href}
-                  style={{ textDecoration: 'none' }}
-                >
-                  <h3>{reference.label} ↗</h3>
-                  <p>{reference.href}</p>
-                </a>
               ))}
             </div>
           </Section>
