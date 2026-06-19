@@ -8,6 +8,7 @@ import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import { SAB_LESSON } from '@/data/sab'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import InProgressBanner from '@/components/InProgressBanner'
 import styles from '../../../abdomen/gi/divertikulitis/page.module.css'
 
 const READ_COPY = {
@@ -136,6 +137,7 @@ export default function SubarachnoidalblutungPage() {
   return (
     <>
       <Navbar />
+      <InProgressBanner lang={lang} />
       <main className={`${styles.page} ${styles.strokePage}`} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
         <header className={styles.header}>
           <div className={styles.breadcrumb}>

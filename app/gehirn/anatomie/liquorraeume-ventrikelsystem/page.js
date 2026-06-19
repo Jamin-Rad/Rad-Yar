@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
+import InProgressBanner from '@/components/InProgressBanner'
 import styles from './page.module.css'
 
 const CASES = [
@@ -888,6 +889,8 @@ export default function CsfSpacesPage() {
   }, [lightbox])
 
   return (
+    <>
+    <InProgressBanner lang={lang} />
     <main className={styles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
       <header className={styles.header}>
         <nav className={styles.breadcrumb}>
@@ -1016,5 +1019,6 @@ export default function CsfSpacesPage() {
         </div>
       )}
     </main>
+    </>
   )
 }

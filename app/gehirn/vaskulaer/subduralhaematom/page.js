@@ -9,6 +9,7 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import { SDH_LESSON } from '@/data/sdh'
+import InProgressBanner from '@/components/InProgressBanner'
 import styles from '../../../abdomen/gi/divertikulitis/page.module.css'
 
 const L = (value, lang) => value?.[lang] || value?.de || value
@@ -144,6 +145,7 @@ export default function SubduralhaematomPage() {
 
   return <>
     <Navbar />
+    <InProgressBanner lang={lang} />
     <main className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
       <header className={styles.header}>
         <div className={styles.breadcrumb}><Link href={withLang('/')}>RadYar</Link><span>›</span><Link href={withLang('/lernen/gehirn')}>{c({ de: 'Kopf', en: 'Head', fa: 'سر' })}</Link><span>›</span><span>{c(SDH_LESSON.breadcrumb)}</span></div>
