@@ -9,6 +9,7 @@ import { EDH_QUESTIONS } from './edh'
 import { DISSECTION_QUESTIONS } from './dissection'
 import { SDH_QUESTIONS } from './sdh'
 import { MOYAMOYA_QUESTIONS } from './moyamoya'
+import { HMA_QUESTIONS } from './hypertensive-mikroangiopathie'
 
 const DIVERTICULITIS_QUESTION_CONTENT = [
   {
@@ -319,6 +320,7 @@ export const QUESTION_BANK = {
     ...SDH_QUESTIONS.de,
     ...DISSECTION_QUESTIONS.de,
     ...MOYAMOYA_QUESTIONS.de,
+    ...HMA_QUESTIONS.de,
     {
       "id": "meniskus-de-01",
       "tags": [
@@ -1656,6 +1658,7 @@ export const QUESTION_BANK = {
     ...SDH_QUESTIONS.en,
     ...DISSECTION_QUESTIONS.en,
     ...MOYAMOYA_QUESTIONS.en,
+    ...HMA_QUESTIONS.en,
     {
       "id": "meniskus-en-01",
       "tags": [
@@ -2993,6 +2996,7 @@ export const QUESTION_BANK = {
     ...SDH_QUESTIONS.fa,
     ...DISSECTION_QUESTIONS.fa,
     ...MOYAMOYA_QUESTIONS.fa,
+    ...HMA_QUESTIONS.fa,
     {
       "id": "meniskus-fa-01",
       "tags": [
