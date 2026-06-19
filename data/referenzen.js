@@ -936,6 +936,77 @@ export const KLASSIFIKATIONEN = [
         ],
       },
       {
+        id: 'mamma-mrt-dichte',
+        name: { de: 'Mamma-MRT: Drüsendichte & BPE', en: 'Breast MRI: Fibroglandular Tissue & BPE', fa: 'MRI پستان: بافت غده‌ای و BPE' },
+        kompakt: {
+          de: 'ACR BI-RADS MRT beschreibt das Fibroglanduläre Gewebe (FGT a–d) und das Background Parenchymal Enhancement (BPE). Beide beeinflussen die Sensitivität der Mamma-MRT und das individuelle Karzinomrisiko.',
+          en: 'ACR BI-RADS MRI describes fibroglandular tissue (FGT a–d) and background parenchymal enhancement (BPE). Both affect breast MRI sensitivity and individual cancer risk.',
+          fa: 'BI-RADS MRI پستان بافت فیبروغده‌ای (FGT a–d) و تقویت زمینه پارانشیمی (BPE) را توصیف می‌کند. هر دو بر حساسیت MRI پستان و خطر فردی سرطان تأثیر می‌گذارند.',
+        },
+        ref: 'ACR BI-RADS® MRI Atlas, 5. Auflage (2013), D'Orsi et al.',
+        cols: [
+          { de: 'Grad', en: 'Grade', fa: 'درجه' },
+          { de: 'Fibroglanduläres Gewebe (FGT)', en: 'Fibroglandular Tissue (FGT)', fa: 'بافت فیبروغده‌ای (FGT)' },
+          { de: 'Anteil', en: 'Proportion', fa: 'نسبت' },
+        ],
+        rows: [
+          ['a', { de: 'Fast vollständig fettig', en: 'Almost entirely fatty', fa: 'تقریباً کاملاً چربی' }, { de: '< 25 %', en: '< 25%', fa: '< ۲۵٪' }],
+          ['b', { de: 'Verstreutes FGT', en: 'Scattered fibroglandular tissue', fa: 'بافت فیبروغده‌ای پراکنده' }, { de: '25–50 %', en: '25–50%', fa: '۲۵–۵۰٪' }],
+          ['c', { de: 'Heterogenes FGT', en: 'Heterogeneous fibroglandular tissue', fa: 'بافت فیبروغده‌ای ناهمگن' }, { de: '51–75 %', en: '51–75%', fa: '۵۱–۷۵٪' }],
+          ['d', { de: 'Extremes FGT', en: 'Extreme fibroglandular tissue', fa: 'بافت فیبروغده‌ای شدید' }, { de: '> 75 %', en: '> 75%', fa: '> ۷۵٪' }],
+        ],
+        detail: [
+          {
+            stage: { de: 'FGT Grad a – Fast vollständig fettig', en: 'FGT Grade a – Almost entirely fatty', fa: 'FGT درجه a – تقریباً کاملاً چربی' },
+            text: {
+              de: 'Weniger als 25 % Drüsengewebe. Die Brust besteht überwiegend aus Fettgewebe. Herde sind gut abgrenzbar. Das Hintergrundenhancement (BPE) ist gering, die Sensitivität der MRT hoch. Seltener bei prämenopausalen Frauen.',
+              en: 'Less than 25% fibroglandular tissue. The breast consists predominantly of fatty tissue. Lesions are well delineated. Background enhancement (BPE) is low and MRI sensitivity is high. Less common in premenopausal women.',
+              fa: 'کمتر از ۲۵٪ بافت غده‌ای. پستان عمدتاً از بافت چربی تشکیل شده است. ضایعات به‌خوبی مشخص هستند. BPE پایین و حساسیت MRI بالا است. در زنان پیش‌یائسه نادرتر است.',
+            },
+          },
+          {
+            stage: { de: 'FGT Grad b – Verstreutes Drüsengewebe', en: 'FGT Grade b – Scattered fibroglandular tissue', fa: 'FGT درجه b – بافت غده‌ای پراکنده' },
+            text: {
+              de: '25–50 % Drüsengewebe, verstreut eingelagert. Herde sind meistens gut sichtbar. Normalbefund bei postmenopausalen Frauen. BPE meist minimal bis gering.',
+              en: '25–50% fibroglandular tissue, scattered throughout. Lesions are usually well visualised. Normal finding in postmenopausal women. BPE usually minimal to mild.',
+              fa: '۲۵–۵۰٪ بافت غده‌ای، به‌صورت پراکنده. ضایعات معمولاً به‌خوبی قابل مشاهده هستند. یافته طبیعی در زنان پس از یائسگی. BPE معمولاً حداقل تا خفیف.',
+            },
+          },
+          {
+            stage: { de: 'FGT Grad c – Heterogenes Drüsengewebe', en: 'FGT Grade c – Heterogeneous fibroglandular tissue', fa: 'FGT درجه c – بافت غده‌ای ناهمگن' },
+            text: {
+              de: '51–75 % Drüsengewebe. Herde können durch das Enhancement des Normalgewebes maskiert werden. Häufig bei prämenopausalen Frauen. BPE oft moderat. Ggf. Zweitmeinung oder ergänzender US empfehlenswert.',
+              en: '51–75% fibroglandular tissue. Lesions may be obscured by background tissue enhancement. Common in premenopausal women. BPE often moderate. A second opinion or supplementary ultrasound may be advisable.',
+              fa: '۵۱–۷۵٪ بافت غده‌ای. ضایعات ممکن است با تقویت بافت زمینه پوشانده شوند. در زنان پیش‌یائسه شایع است. BPE اغلب متوسط. ممکن است نظر دوم یا سونوگرافی تکمیلی توصیه شود.',
+            },
+          },
+          {
+            stage: { de: 'FGT Grad d – Extremes Drüsengewebe', en: 'FGT Grade d – Extreme fibroglandular tissue', fa: 'FGT درجه d – بافت غده‌ای شدید' },
+            text: {
+              de: 'Mehr als 75 % Drüsengewebe. Höchste Masking-Gefahr: Herde können vollständig im Parenchym verborgen sein. BPE oft ausgeprägt (marked). Erhöhtes intrinsisches Karzinomrisiko (Dense Breast). Sorgfältige Dynamik-Auswertung und Subtraktionsbilder essenziell.',
+              en: 'More than 75% fibroglandular tissue. Highest masking risk: lesions can be completely hidden within the parenchyma. BPE often marked. Inherently increased cancer risk (dense breast). Careful dynamic assessment and subtraction images are essential.',
+              fa: 'بیش از ۷۵٪ بافت غده‌ای. بیشترین خطر ماسک‌شدن: ضایعات ممکن است کاملاً در پارانشیم پنهان شوند. BPE اغلب شدید. خطر ذاتی بالاتر سرطان (پستان متراکم). ارزیابی دقیق دینامیک و تصاویر تفریقی ضروری است.',
+            },
+          },
+          {
+            stage: { de: 'Background Parenchymal Enhancement (BPE)', en: 'Background Parenchymal Enhancement (BPE)', fa: 'تقویت زمینه پارانشیمی (BPE)' },
+            text: {
+              de: 'BPE beschreibt das physiologische Kontrastmittel-Enhancement des normalen Drüsengewebes in der Mamma-MRT:\n\n• Minimal (< 25 % des FGT enhances)\n• Mild (25–50 %)\n• Moderat (50–75 %)\n• Ausgeprägt / Marked (> 75 %)\n\nBPE ist hormonabhängig: am stärksten in der 2. Zyklushälfte (Lutealphase) und unter HRT; am geringsten in der frühen Follikelphase (2.–3. Zyklustag = optimaler Untersuchungszeitpunkt). Ausgeprägtes BPE kann Läsionen maskieren und die Spezifität der MRT reduzieren.',
+              en: 'BPE describes the physiological contrast enhancement of normal fibroglandular tissue on breast MRI:\n\n• Minimal (< 25% of FGT enhances)\n• Mild (25–50%)\n• Moderate (50–75%)\n• Marked (> 75%)\n\nBPE is hormone-dependent: highest in the second half of the cycle (luteal phase) and under HRT; lowest in the early follicular phase (cycle day 2–3 = optimal timing). Marked BPE can mask lesions and reduce MRI specificity.',
+              fa: 'BPE تقویت کنتراستی فیزیولوژیک بافت غده‌ای طبیعی در MRI پستان را توصیف می‌کند:\n\n• حداقل (< ۲۵٪ FGT تقویت می‌شود)\n• خفیف (۲۵–۵۰٪)\n• متوسط (۵۰–۷۵٪)\n• شدید (> ۷۵٪)\n\nBPE وابسته به هورمون است: در نیمه دوم سیکل (فاز لوتئال) و تحت HRT بیشترین و در اوایل فاز فولیکولار (روز ۲–۳ سیکل = زمان بهینه معاینه) کمترین میزان. BPE شدید می‌تواند ضایعات را پنهان کند و اختصاصیت MRI را کاهش دهد.',
+            },
+          },
+          {
+            stage: { de: 'Klinische Relevanz & Untersuchungszeitpunkt', en: 'Clinical relevance & examination timing', fa: 'ارتباط بالینی و زمان معاینه' },
+            text: {
+              de: 'Optimaler MRT-Zeitpunkt: 7.–14. Zyklustag (frühe bis mittlere Follikelphase) bei prämenopausalen Frauen → niedrigstes BPE, höchste Spezifität.\n\nFGT-Grad d + BPE marked: erhöhte Falsch-Positiv-Rate. Subtraktionsbilder und kinetische Kurvenanalyse (Wash-in, Plateau, Wash-out) sind entscheidend für die Differenzierung gutartig vs. malignes Enhancement.',
+              en: 'Optimal MRI timing: cycle days 7–14 (early to mid-follicular phase) in premenopausal women → lowest BPE, highest specificity.\n\nFGT grade d + BPE marked: increased false-positive rate. Subtraction images and kinetic curve analysis (wash-in, plateau, wash-out) are decisive for differentiating benign from malignant enhancement.',
+              fa: 'زمان بهینه MRI: روزهای ۷–۱۴ سیکل (اوایل تا میانه فاز فولیکولار) در زنان پیش‌یائسه → کمترین BPE، بیشترین اختصاصیت.\n\nFGT درجه d + BPE شدید: نرخ مثبت کاذب بالاتر. تصاویر تفریقی و تحلیل منحنی سینتیک (wash-in، plateau، wash-out) برای تمایز تقویت خوش‌خیم از بدخیم تعیین‌کننده هستند.',
+            },
+          },
+        ],
+      },
+      {
         id: 'pi-rads',
         name: { de: 'PI-RADS', en: 'PI-RADS', fa: 'PI-RADS' },
         kompakt: {
