@@ -592,6 +592,28 @@ export const KLASSIFIKATIONEN = [
         ],
       },
       {
+        id: 'pc-aspects',
+        name: { de: 'pc-ASPECTS', en: 'pc-ASPECTS', fa: 'pc-ASPECTS' },
+        kompakt: {
+          de: 'CT/MRT-Score (0–10) für frühe Ischämiezeichen im Posteriorkreislauf (vertebrobasiläres Territorium) – je befallene Region −1 Punkt; ≤ 6 Punkte gelten als ausgedehnter Infarkt mit ungünstigem Outcome.',
+          en: 'CT/MRI score (0–10) for early ischaemic changes in the posterior circulation (vertebrobasilar territory) – 1 point deducted per affected region; ≤ 6 points indicates large infarct with unfavourable outcome.',
+          fa: 'نمره CT/MRI (۰–۱۰) برای تغییرات ایسکمیک زودرس در گردش پسین (قلمرو مهره‌ای-بازیلار) – به ازای هر ناحیه درگیر ۱ امتیاز کم می‌شود؛ ≤ ۶ امتیاز نشانه انفارکت وسیع با نتیجه نامطلوب.',
+        },
+        ref: 'Puetz V et al., AJNR Am J Neuroradiol. 2008;29(10):1862–8',
+        refUrl: 'https://pubmed.ncbi.nlm.nih.gov/18719026/',
+        cols: [{ de: 'Region', en: 'Region', fa: 'ناحیه' }, { de: 'Wertung', en: 'Score', fa: 'امتیاز' }],
+        rows: [
+          [{ de: 'Ausgangswert', en: 'Baseline', fa: 'مقدار پایه' }, '10'],
+          [{ de: 'Mittelhirn (Mesencephalon)', en: 'Midbrain', fa: 'مغز میانی' }, '−1'],
+          [{ de: 'Pons', en: 'Pons', fa: 'پونز' }, '−1'],
+          [{ de: 'Thalamus links / rechts', en: 'Thalamus left / right', fa: 'تالاموس چپ / راست' }, { de: 'je −1', en: '−1 each', fa: 'هر کدام −۱' }],
+          [{ de: 'Kleinhirn links / rechts', en: 'Cerebellum left / right', fa: 'مخچه چپ / راست' }, { de: 'je −1', en: '−1 each', fa: 'هر کدام −۱' }],
+          [{ de: 'Okzipitalkortex links / rechts (PCA)', en: 'Occipital cortex left / right (PCA)', fa: 'قشر اکسیپیتال چپ / راست (PCA)' }, { de: 'je −1', en: '−1 each', fa: 'هر کدام −۱' }],
+          [{ de: 'Temporookzipitalkortex links / rechts (PCA)', en: 'Temporooccipital cortex left / right (PCA)', fa: 'قشر تمپورواکسیپیتال چپ / راست (PCA)' }, { de: 'je −1', en: '−1 each', fa: 'هر کدام −۱' }],
+          [{ de: 'Interpretation', en: 'Interpretation', fa: 'تفسیر' }, { de: '≤ 6 = ungünstiges Outcome', en: '≤ 6 = unfavourable outcome', fa: '≤ ۶ = نتیجه نامطلوب' }],
+        ],
+      },
+      {
         id: 'fisher',
         name: { de: 'Fisher-Skala', en: 'Fisher scale', fa: 'مقیاس فیشر' },
         kompakt: {
