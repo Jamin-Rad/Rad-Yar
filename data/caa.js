@@ -1,6 +1,6 @@
 const L = (de, en, fa) => ({ de, en, fa })
 const Q = (id, question, options, correct, explanation) => ({ id, question, options, correct, explanation })
-const F = (id, category, front, answer, explanation) => ({ id, category, front, answer, explanation })
+const F = (id, category, front, answer, explanation, diagram = null) => ({ id, category, front, answer, explanation, diagram })
 
 // ─── Lesson ──────────────────────────────────────────────────────────────────
 
@@ -448,51 +448,93 @@ export const CAA_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(lang => [
 
 const CAA_FLASH_SEEDS = [
   F('def', L('Grundlagen', 'Basics', 'اساسیات'),
-    L('Was ist die zerebrale Amyloidangiopathie (CAA)?', 'What is cerebral amyloid angiopathy (CAA)?', 'آنژیوپاتی آمیلوئید مغزی (CAA) چیست؟'),
-    L('Ablagerung von β-Amyloid in den Wänden kortikaler und leptomeningealer Arterien/Arteriolen → Wandschwächung → lobäre Blutungskomplikationen. Häufigste Ursache lobärer ICB im Alter (15–20 % aller spontanen ICBs >60 J.)', 'β-amyloid deposition in walls of cortical and leptomeningeal arteries/arterioles → wall weakening → lobar haemorrhagic complications. Most common cause of lobar ICH in the elderly (15–20% of all spontaneous ICH >60 yr)', 'رسوب β-آمیلوئید در دیواره شریان‌ها/آرتریول‌های کورتیکال و لپتومننژیال → تضعیف دیواره → عوارض خونریزی لوبار. شایع‌ترین علت ICH لوبار در سالمندی (۱۵–۲۰٪ تمام ICH‌های خودبخودی >۶۰ سال)'),
-    L('β-Amyloid → Kortex-Gefäße → lobäre Blutung', 'β-amyloid → cortical vessels → lobar haemorrhage', 'β-آمیلوئید → عروق کورتکس → خونریزی لوبار')
+    L('Was ist CAA und welche Gefäße sind betroffen?', 'What is CAA and which vessels are affected?', 'CAA چیست و کدام عروق درگیر هستند؟'),
+    L('Ablagerung von β-Amyloid in Wänden kortikaler und leptomeningealer Arterien → Wandschwächung → lobäre Blutungen.', 'β-amyloid deposition in cortical and leptomeningeal artery walls → wall weakening → lobar haemorrhages.', 'رسوب β-آمیلوئید در دیواره شریان‌های کورتیکال و لپتومننژیال → تضعیف دیواره → خونریزی لوبار.'),
+    L('CAA betrifft ausschließlich oberflächliche Gefäße — keine tiefen Perforatoren. Häufigste Ursache lobärer ICB im Alter (15–20 % aller spontanen ICBs > 60 J.).', 'CAA affects only superficial vessels — not deep perforators. Most common cause of lobar ICH in the elderly (15–20% of all spontaneous ICH >60 yr).', 'CAA فقط عروق سطحی را درگیر می‌کند — نه پرفوراتورهای عمقی. شایع‌ترین علت ICH لوبار در سالمندان.')
+  ),
+
+  F('epid', L('Epidemiologie', 'Epidemiology', 'اپیدمیولوژی'),
+    L('Häufigkeit und Assoziation der CAA?', 'Frequency and associations of CAA?', 'فراوانی و همراهی‌های CAA؟'),
+    L('15–20 % aller spontanen ICBs > 60 J. Assoziiert mit Alzheimer (~85 %) und Down-Syndrom. M = F.', '15–20% of all spontaneous ICH >60 yr. Associated with Alzheimer (~85%) and Down syndrome. M = F.', '۱۵–۲۰٪ تمام ICH‌های خودبخودی >۶۰ سال. همراهی با آلزهایمر (~۸۵٪) و سندرم داون. M = F.'),
+    L('Sporadische Form typisch >60 J. Hereditäre Varianten (z. B. Dutch-type) kommen auch jünger vor. Die enge Alzheimer-Assoziation erklärt sich durch dieselbe Aβ-Pathologie.', 'Sporadic form typically >60 yr. Hereditary variants (e.g. Dutch type) can present younger. The close Alzheimer association is explained by the same Aβ pathology.', 'فرم اسپورادیک معمولاً >۶۰ سال. انواع ارثی (مثلاً Dutch-type) می‌توانند در سنین جوان‌تر تظاهر کنند. همراهی نزدیک با آلزهایمر توسط پاتولوژی Aβ یکسان توضیح داده می‌شود.')
   ),
 
   F('vier-typen', L('Lokalisation', 'Location', 'محل'),
-    L('4 charakteristische Blutungstypen der CAA — alle strikt lobär', '4 characteristic bleeding types in CAA — all strictly lobar', '۴ نوع خونریزی مشخص CAA — همه دقیقاً لوبار'),
-    L('1. Lobäre ICH (kortikal-subkortikal)\n2. Lobäre Mikroblutungen (SWI: kortikale Hypointensitäten)\n3. cSS – cortical superficial siderosis (lineare SWI-Narben entlang Sulci)\n4. cSAH – Konvexitäts-SAB (FLAIR hyperintens, SWI hypointens)\nKeine tiefen Strukturen!', '1. Lobar ICH (cortical-subcortical)\n2. Lobar microbleeds (SWI: cortical hypointensities)\n3. cSS – cortical superficial siderosis (linear SWI scars along sulci)\n4. cSAH – convexity SAH (FLAIR hyperintense, SWI hypointense)\nNo deep structures!', '۱. ICH لوبار (کورتیکال-ساب‌کورتیکال)\n۲. خونریزی‌های میکرو لوبار (SWI: هایپوانتنسیتی‌های کورتیکال)\n۳. cSS – سیدروز سطحی کورتیکال (اسکارهای خطی SWI در امتداد شیارها)\n۴. cSAH – SAB کانوکسیتی (هایپرانتنس FLAIR، هایپوانتنس SWI)\nبدون ساختارهای عمقی!'),
-    L('ICH + CMBs + cSS + cSAH — alle lobär, nie tief', 'ICH + CMBs + cSS + cSAH — all lobar, never deep', 'ICH + CMBs + cSS + cSAH — همه لوبار، هرگز عمقی')
+    L('4 Blutungstypen der CAA — alle strikt lobär', '4 bleeding types in CAA — all strictly lobar', '۴ نوع خونریزی CAA — همه دقیقاً لوبار'),
+    L('1. Lobäre ICH · 2. Lobäre CMBs (SWI) · 3. cSS (Sulci-Narben) · 4. cSAH (Konvexitäts-SAB)\nNie tiefe Strukturen!', '1. Lobar ICH · 2. Lobar CMBs (SWI) · 3. cSS (sulcal scars) · 4. cSAH (convexity SAH)\nNever deep structures!', '۱. ICH لوبار · ۲. CMBs لوبار (SWI) · ۳. cSS (اسکارهای شیاری) · ۴. cSAH (SAB کانوکسیتی)\nهرگز ساختارهای عمقی!'),
+    L('cSS = lineare Hämosiderin-Narben entlang Sulci in SWI/GRE. cSAH = frische Konvexitäts-SAB, FLAIR hyperintens. Alle vier Typen gelten als lobäre hämorrhagische Läsionen in Boston v2.0.', 'cSS = linear haemosiderin scars along sulci on SWI/GRE. cSAH = fresh convexity SAH, FLAIR hyperintense. All four types count as lobar haemorrhagic lesions in Boston v2.0.', 'cSS = اسکارهای هموسیدرین خطی در امتداد شیارها در SWI/GRE. cSAH = SAB کانوکسیتی تازه، هایپرانتنس FLAIR. هر چهار نوع به عنوان ضایعات هموراژیک لوبار در Boston v2.0 محسوب می‌شوند.')
+  ),
+
+  F('css', L('MRT', 'MRI', 'MRI'),
+    L('Was ist cortical superficial siderosis (cSS)?', 'What is cortical superficial siderosis (cSS)?', 'سیدروز سطحی کورتیکال (cSS) چیست؟'),
+    L('Lineare Hämosiderin-Ablagerungen entlang der Hirnfurchen (Sulci) als Narben früherer kortikaler Blutungen.', 'Linear haemosiderin deposits along sulci as scars of prior cortical bleeds.', 'رسوبات هموسیدرین خطی در امتداد شیارهای مغزی به عنوان اسکار خونریزی‌های کورتیکال قبلی.'),
+    L('Im SWI/GRE als lineare Hypointensität an der Hirnoberfläche sichtbar. Klassisches CAA-Bild. Unterschied zur supratentorinellen SAH: cSS beschränkt auf wenige Sulci, nicht diffus.', 'Visible on SWI/GRE as linear hypointensity along the brain surface. Classic CAA pattern. Differs from supratentorial SAH: cSS restricted to a few sulci, not diffuse.', 'در SWI/GRE به صورت هایپوانتنسیتی خطی در سطح مغز قابل مشاهده است. تصویر کلاسیک CAA. تفاوت با SAH سوپراتانتوریال: cSS محدود به چند شیار است، نه منتشر.')
   ),
 
   F('tfne', L('Klinik', 'Clinical', 'کلینیک'),
-    L('Was sind TFNE und wie entstehen sie bei CAA?', 'What are TFNE and how do they arise in CAA?', 'TFNE چیست و چگونه در CAA ایجاد می‌شود؟'),
-    L('Transient Focal Neurological Episodes (TFNE):\n→ Ursache: akute Konvexitäts-SAB (cSAH)\n→ Symptome: sich ausbreitende (marchende) Päresthesien über Sekunden bis Minuten\n→ DD zu klassischer TIA: TFNE breitet sich aus (kortikale Reizung); TIA ist sofort maximal\nPraktisch pathognomonisch für CAA!', 'Transient Focal Neurological Episodes (TFNE):\n→ Cause: acute convexity SAH (cSAH)\n→ Symptoms: spreading (marching) paraesthesias over seconds to minutes\n→ DDx classic TIA: TFNE spreads (cortical irritation); TIA is maximal immediately\nPractically pathognomonic for CAA!', 'اپیزودهای عصبی کانونی گذرا (TFNE):\n→ علت: SAB کانوکسیتی حاد (cSAH)\n→ علائم: پارستزی‌های گسترش‌یابنده در طی ثانیه تا دقیقه\n→ تشخیص افتراقی TIA کلاسیک: TFNE گسترش می‌یابد (تحریک کورتیکال)؛ TIA بلافاصله حداکثر است\nتقریباً پاتوگنومونیک CAA!'),
-    L('TFNE = marchende Päresthesien = cSAH = CAA', 'TFNE = marching paraesthesias = cSAH = CAA', 'TFNE = پارستزی مارشینگ = cSAH = CAA')
+    L('Was sind TFNE und wodurch entstehen sie bei CAA?', 'What are TFNE and how do they arise in CAA?', 'TFNE چیست و چگونه در CAA ایجاد می‌شود؟'),
+    L('Transiente fokale neurologische Episoden durch akute cSAH. Typisch: sich ausbreitende (marchende) Päresthesien über Sekunden bis Minuten.', 'Transient focal neurological episodes from acute cSAH. Typical: spreading (marching) paraesthesias over seconds to minutes.', 'اپیزودهای عصبی کانونی گذرا ناشی از cSAH حاد. معمول: پارستزی‌های گسترش‌یابنده در طی ثانیه تا دقیقه.'),
+    L('DD zur klassischen TIA (Embolie): TFNE breitet sich marschierend aus — TIA ist sofort maximal. TFNE sind praktisch pathognomonisch für CAA und ein Boston-anerkanntes Klinik-Kriterium.', 'DDx classic TIA (embolism): TFNE spreads — TIA is maximal immediately. TFNE are practically pathognomonic for CAA and a Boston-recognised clinical criterion.', 'تشخیص افتراقی با TIA کلاسیک (آمبولی): TFNE گسترش می‌یابد — TIA بلافاصله حداکثر است. TFNE تقریباً پاتوگنومونیک CAA هستند.')
   ),
 
-  F('boston-v2', L('Boston-Kriterien', 'Boston Criteria', 'معیارهای Boston'),
-    L('Boston-Kriterien v2.0: Probable vs. Possible CAA', 'Boston Criteria v2.0: Probable vs. Possible CAA', 'معیارهای Boston v2.0: CAA محتمل در مقابل ممکن'),
-    L('Probable CAA:\nA) ≥2 lobäre hämorrhagische Läsionen (beliebige Komb.)\nB) 1 lobäre Läsion + 1 WM-Marker\n\nPossible CAA:\nA) 1 einzige lobäre Läsion\nB) 1 WM-Marker allein\n\nVoraussetzung alle: ≥50 J., passende Klinik, keine tiefen Blutungen, keine Alternative', 'Probable CAA:\nA) ≥2 lobar haemorrhagic lesions (any combination)\nB) 1 lobar lesion + 1 WM marker\n\nPossible CAA:\nA) 1 single lobar lesion\nB) 1 WM marker alone\n\nRequired for all: ≥50 yr, compatible clinical, no deep haemorrhages, no alternative', 'CAA محتمل:\nA) ≥۲ ضایعه هموراژیک لوبار (هر ترکیبی)\nB) ۱ ضایعه لوبار + ۱ نشانگر WM\n\nCAA ممکن:\nA) ۱ ضایعه لوبار منفرد\nB) ۱ نشانگر WM به تنهایی\n\nشرط همه: ≥۵۰ سال، کلینیک سازگار، بدون خونریزی عمقی، بدون جایگزین'),
-    L('Probable: ≥2 lobär ODER 1 lobär + 1 WM-Marker', 'Probable: ≥2 lobar OR 1 lobar + 1 WM marker', 'محتمل: ≥۲ لوبار یا ۱ لوبار + ۱ نشانگر WM')
+  F('klinik-chronisch', L('Klinik', 'Clinical', 'کلینیک'),
+    L('Chronische Manifestationen der CAA?', 'Chronic manifestations of CAA?', 'تظاهرات مزمن CAA؟'),
+    L('Kopfschmerzen · Epileptische Anfälle · Demenz (in ~30 %)', 'Headaches · Epileptic seizures · Dementia (in ~30%)', 'سردرد · تشنج صرعی · دمانس (در ~۳۰٪)'),
+    L('Demenz durch Kombination aus vaskulärer Pathologie + oft gleichzeitiger Alzheimer-Erkrankung. Epileptische Anfälle fokal durch kortikale Hämosiderin-Reizung (cSS/CMBs).', 'Dementia from combination of vascular pathology + often coexisting Alzheimer disease. Focal seizures from cortical haemosiderin irritation (cSS/CMBs).', 'دمانس از ترکیب پاتولوژی عروقی + بیماری آلزهایمر همزمان. تشنج‌های کانونی از تحریک کورتیکال هموسیدرین (cSS/CMBs).')
   ),
 
-  F('wm-marker', L('WM-Marker', 'WM Markers', 'نشانگرهای WM'),
-    L('White-Matter-Marker der CAA: Welche zwei und was unterscheidet sie von HMA?', 'White Matter markers of CAA: which two and what distinguishes them from HMA?', 'نشانگرهای ماده سفید CAA: کدام دو و چه چیزی آن‌ها را از HMA متمایز می‌کند؟'),
-    L('1. Schwere PVS im Centrum semiovale (CSO): >20 PVS pro Hemisphärenschnitt\n   → Bei HMA: PVS in Basalganglien!\n\n2. Multispot-WMH: >10 subkortikale FLAIR-Dots beidseits\n   → punktförmig, nicht konfluierend\n   → Bei HMA: konfluierende WMH (Fazekas)', '1. Severe PVS in centrum semiovale (CSO): >20 PVS per hemispheric slice\n   → In HMA: PVS in basal ganglia!\n\n2. Multispot WMH: >10 subcortical FLAIR dots bilaterally\n   → punctate, not confluent\n   → In HMA: confluent WMH (Fazekas)', '۱. PVS شدید در Centrum semiovale (CSO): >۲۰ PVS در هر برش نیمکره\n   → در HMA: PVS در بازال گانگلیا!\n\n۲. WMH چندنقطه‌ای: >۱۰ نقطه FLAIR ساب‌کورتیکال در هر دو طرف\n   → نقطه‌ای، نه کانفلوئنت\n   → در HMA: WMH کانفلوئنت (Fazekas)'),
-    L('CSO-PVS (≠ BG) + Multispot (≠ konfluierend)', 'CSO-PVS (≠ BG) + multispot (≠ confluent)', 'CSO-PVS (≠ BG) + چندنقطه‌ای (≠ کانفلوئنت)')
+  F('boston-probable', L('Boston-Kriterien v2.0', 'Boston Criteria v2.0', 'معیارهای Boston v2.0'),
+    L('Wann gilt eine CAA als »Probable«?', 'When is CAA classified as "Probable"?', 'CAA چه زمانی «محتمل» طبقه‌بندی می‌شود؟'),
+    L('Option A: ≥ 2 lobäre hämorrhagische Läsionen (beliebige Kombination)\nOption B: 1 lobäre Läsion + 1 White-Matter-Marker', 'Option A: ≥ 2 lobar haemorrhagic lesions (any combination)\nOption B: 1 lobar lesion + 1 White Matter marker', 'گزینه A: ≥ ۲ ضایعه هموراژیک لوبار (هر ترکیبی)\nگزینه B: ۱ ضایعه لوبار + ۱ نشانگر ماده سفید'),
+    L('Lobäre hämorrhagische Läsionen: lobäre ICH, lobäre CMBs, cSS-Herde, cSAH-Herde. WM-Marker: CSO-PVS > 20 oder Multispot-WMH > 10. Voraussetzungen müssen immer erfüllt sein.', 'Lobar haemorrhagic lesions: lobar ICH, lobar CMBs, cSS lesions, cSAH lesions. WM markers: CSO-PVS > 20 or multispot WMH > 10. Prerequisites must always be met.', 'ضایعات هموراژیک لوبار: ICH لوبار، CMBs لوبار، ضایعات cSS، ضایعات cSAH. نشانگرهای WM: CSO-PVS > ۲۰ یا WMH Multispot > ۱۰. پیش‌نیازها باید همیشه برآورده شوند.')
   ),
 
-  F('dd-hma', L('Differenzialdiagnose', 'Differential', 'تشخیص افتراقی'),
-    L('DD CAA vs. hypertensive Mikroangiopathie — wichtigste Unterscheidungsmerkmale', 'DDx CAA vs. hypertensive microangiopathy — most important distinguishing features', 'تشخیص افتراقی CAA در مقابل میکروآنژیوپاتی فشار خون بالا — مهم‌ترین ویژگی‌های تمایز'),
-    L('CAA:\n→ Blutungslokalisation: lobär (kortex-subkortikal)\n→ CMBs in SWI: kortikal/subkortikal\n→ PVS: Centrum semiovale\n→ WMH: punktförmig (Multispot)\n→ Patient: alt, Alzheimer-Komorbidität\n\nHMA:\n→ Blutungslokalisation: tief (Putamen, Thalamus, Pons)\n→ CMBs in SWI: tief (Basalganglien)\n→ PVS: Basalganglien\n→ WMH: konfluierend (Fazekas)\n→ Patient: Hypertonieanamnese', 'CAA:\n→ Haemorrhage: lobar (cortical-subcortical)\n→ CMBs on SWI: cortical/subcortical\n→ PVS: centrum semiovale\n→ WMH: punctate (multispot)\n→ Patient: elderly, Alzheimer comorbidity\n\nHMA:\n→ Haemorrhage: deep (putamen, thalamus, pons)\n→ CMBs on SWI: deep (basal ganglia)\n→ PVS: basal ganglia\n→ WMH: confluent (Fazekas)\n→ Patient: hypertension history', 'CAA:\n→ خونریزی: لوبار (کورتیکال-ساب‌کورتیکال)\n→ CMBs در SWI: کورتیکال/ساب‌کورتیکال\n→ PVS: Centrum semiovale\n→ WMH: نقطه‌ای (Multispot)\n→ بیمار: مسن، همراهی آلزهایمر\n\nHMA:\n→ خونریزی: عمقی (پوتامن، تالاموس، پونز)\n→ CMBs در SWI: عمقی (بازال گانگلیا)\n→ PVS: بازال گانگلیا\n→ WMH: کانفلوئنت (Fazekas)\n→ بیمار: سابقه فشار خون'),
-    L('CAA: lobär + CSO-PVS + Multispot | HMA: tief + BG-PVS + Fazekas', 'CAA: lobar + CSO-PVS + multispot | HMA: deep + BG-PVS + Fazekas', 'CAA: لوبار + CSO-PVS + Multispot | HMA: عمقی + BG-PVS + Fazekas')
+  F('boston-possible', L('Boston-Kriterien v2.0', 'Boston Criteria v2.0', 'معیارهای Boston v2.0'),
+    L('Wann gilt eine CAA als »Possible«?', 'When is CAA classified as "Possible"?', 'CAA چه زمانی «ممکن» طبقه‌بندی می‌شود؟'),
+    L('Option A: 1 einzige lobäre hämorrhagische Läsion (ohne WM-Marker)\nOption B: 1 White-Matter-Marker (ohne lobäre Läsion)', 'Option A: 1 single lobar haemorrhagic lesion (without WM marker)\nOption B: 1 White Matter marker (without lobar lesion)', 'گزینه A: ۱ ضایعه هموراژیک لوبار منفرد (بدون نشانگر WM)\nگزینه B: ۱ نشانگر ماده سفید (بدون ضایعه لوبار)'),
+    L('Possible = weniger Evidenz als Probable. Voraussetzungen (Alter, Klinik, keine Alternative, keine tiefen Blutungen) gelten identisch. Kleinhirnläsionen zählen WEDER als lobär NOCH als tief → neutral.', 'Possible = less evidence than Probable. Prerequisites (age, clinical, no alternative, no deep haemorrhages) apply identically. Cerebellar lesions count NEITHER as lobar NOR deep → neutral.', 'ممکن = شواهد کمتر از محتمل. پیش‌نیازها (سن، بالینی، بدون جایگزین، بدون خونریزی عمقی) به طور یکسان اعمال می‌شوند. ضایعات مخچه نه لوبار و نه عمقی محسوب می‌شوند → خنثی.')
   ),
 
-  F('kleinhirn', L('Boston-Kriterien', 'Boston Criteria', 'معیارهای Boston'),
-    L('Wie werden Kleinhirnläsionen in den Boston-Kriterien v2.0 gewertet?', 'How are cerebellar lesions classified in the Boston Criteria v2.0?', 'ضایعات مخچه در معیارهای Boston v2.0 چگونه ارزیابی می‌شوند؟'),
-    L('Kleinhirnläsionen = NEUTRAL\n→ Zählen WEDER als lobäre hämorrhagische Läsion\n→ NOCH als tiefe Blutung\n→ Werden für die Kategorisierung (Probable/Possible) nicht verwendet\n\nNur lobäre (kortikal-subkortikal) und tiefe Läsionen zählen.', 'Cerebellar lesions = NEUTRAL\n→ Count NEITHER as lobar haemorrhagic lesion\n→ NOR as deep haemorrhage\n→ Not used for categorisation (Probable/Possible)\n\nOnly lobar (cortical-subcortical) and deep lesions count.', 'ضایعات مخچه = خنثی\n→ نه به عنوان ضایعه هموراژیک لوبار محسوب می‌شوند\n→ نه به عنوان خونریزی عمقی\n→ برای دسته‌بندی (محتمل/ممکن) استفاده نمی‌شوند\n\nفقط ضایعات لوبار (کورتیکال-ساب‌کورتیکال) و عمقی محاسبه می‌شوند.'),
-    L('Kleinhirn = neutral (weder lobär noch tief)', 'Cerebellum = neutral (neither lobar nor deep)', 'مخچه = خنثی (نه لوبار نه عمقی)')
+  F('voraussetzungen', L('Boston-Kriterien v2.0', 'Boston Criteria v2.0', 'معیارهای Boston v2.0'),
+    L('4 Voraussetzungen für Boston-Kriterien v2.0?', '4 prerequisites for Boston Criteria v2.0?', '۴ پیش‌نیاز برای معیارهای Boston v2.0؟'),
+    L('1. Alter ≥ 50 Jahre\n2. Passende Klinik (spontane lobäre ICH, TFNE oder kognitive Störung)\n3. Keine alternative Ursache\n4. Keine tiefen Blutungen', '1. Age ≥ 50 years\n2. Compatible clinical features (spontaneous lobar ICH, TFNE, or cognitive impairment)\n3. No alternative cause\n4. No deep haemorrhages', '۱. سن ≥ ۵۰ سال\n۲. تظاهرات بالینی سازگار (ICH لوبار خودبخودی، TFNE یا اختلال شناختی)\n۳. بدون علت جایگزین\n۴. بدون خونریزی عمقی'),
+    L('Alle 4 müssen gleichzeitig erfüllt sein — sonst keine Boston-Diagnose möglich. Kleinhirnläsionen sind neutral (kein Ausschlusskriterium). Bei < 50 J. an hereditäre CAA-Variante denken.', 'All 4 must be met simultaneously — otherwise no Boston diagnosis is possible. Cerebellar lesions are neutral (not an exclusion criterion). For <50 yr, consider hereditary CAA variant.', 'هر ۴ باید به طور همزمان برآورده شوند — در غیر این صورت تشخیص Boston ممکن نیست. ضایعات مخچه خنثی هستند (معیار اخراج نیستند). برای <۵۰ سال، به نوع ارثی CAA فکر کنید.')
+  ),
+
+  F('pvs-cso', L('WM-Marker', 'WM Marker', 'نشانگر WM'),
+    L('PVS als WM-Marker: Wo und wie viele?', 'PVS as WM marker: where and how many?', 'PVS به عنوان نشانگر WM: کجا و چند تا؟'),
+    L('Schwere PVS im Centrum semiovale (CSO): > 20 in einem Hemisphären-Schnitt.', 'Severe PVS in the centrum semiovale (CSO): > 20 in one hemispheric slice.', 'PVS شدید در Centrum semiovale (CSO): > ۲۰ در یک برش نیمکره.'),
+    L('Wichtig: CSO-Lokalisation (nicht Basalganglien!). Bei HMA sind die erweiterten PVS in den Basalganglien — das ist der entscheidende Unterschied. PVS im CSO entstehen durch Aβ-Ablagerung entlang kortikaler Perforantes.', 'Important: CSO location (not basal ganglia!). In HMA, enlarged PVS are in the basal ganglia — that is the key difference. PVS in CSO arise from Aβ deposition along cortical perforators.', 'مهم: محل CSO (نه بازال گانگلیا!). در HMA، PVS بزرگ‌شده در بازال گانگلیا هستند — این تفاوت کلیدی است.')
+  ),
+
+  F('multispot', L('WM-Marker', 'WM Marker', 'نشانگر WM'),
+    L('Multispot-WMH: Definition und Abgrenzung von HMA?', 'Multispot WMH: definition and distinction from HMA?', 'WMH Multispot: تعریف و افتراق از HMA؟'),
+    L('> 10 kleine, punktförmige, bilateral verteilte FLAIR-Signalanhebungen im subkortikalen Marklager — nicht konfluierend.', '> 10 small, punctate, bilaterally distributed FLAIR hyperintensities in subcortical white matter — not confluent.', '> ۱۰ هایپرانتنسیتی FLAIR کوچک، نقطه‌ای، با توزیع دوطرفه در ماده سفید ساب‌کورتیکال — غیرکانفلوئنت.'),
+    L('Bei HMA: konfluierende periventrikuläre WMH (Fazekas-Skala). Bei CAA: charakteristisches Fleckmuster — viele kleine Punkte, nicht zu einer großen Fläche verschmelzend. Dieser Unterschied ist auf MRT gut erkennbar.', 'In HMA: confluent periventricular WMH (Fazekas scale). In CAA: characteristic spotted pattern — many small dots, not merging into large areas. This difference is clearly recognisable on MRI.', 'در HMA: WMH پریونتریکولار کانفلوئنت (مقیاس Fazekas). در CAA: الگوی لکه‌ای مشخص — نقاط کوچک زیاد، که در مناطق بزرگ ادغام نمی‌شوند.')
+  ),
+
+  F('cmbs', L('MRT/SWI', 'MRI/SWI', 'MRI/SWI'),
+    L('CMBs in SWI: CAA vs. hypertensive Mikroangiopathie?', 'CMBs on SWI: CAA vs. hypertensive microangiopathy?', 'CMBs در SWI: CAA در مقابل میکروآنژیوپاتی فشار خون؟'),
+    L('CAA → kortikale/subkortikale CMBs (lobär)\nHMA → tiefe CMBs: Basalganglien, Thalamus, Pons', 'CAA → cortical/subcortical CMBs (lobar)\nHMA → deep CMBs: basal ganglia, thalamus, pons', 'CAA → CMBs کورتیکال/ساب‌کورتیکال (لوبار)\nHMA → CMBs عمقی: بازال گانگلیا، تالاموس، پونز'),
+    L('Gemischtes Muster (tiefe + kortikale CMBs) möglich, spricht dann gegen reine CAA. Tief-dominante CMBs → Hypertonie als Hauptursache wahrscheinlicher. CAA-CMBs sind definitorisch nie tief.', 'Mixed pattern (deep + cortical CMBs) is possible, speaking against pure CAA. Deep-dominant CMBs → hypertension as main cause more likely. CAA CMBs are by definition never deep.', 'الگوی مختلط (CMBs عمقی + کورتیکال) ممکن است، که علیه CAA خالص صحبت می‌کند. CMBs غالباً عمقی → فشار خون به عنوان علت اصلی محتمل‌تر است.')
+  ),
+
+  F('kleinhirn', L('Boston-Kriterien v2.0', 'Boston Criteria v2.0', 'معیارهای Boston v2.0'),
+    L('Wie gelten Kleinhirnläsionen in den Boston-Kriterien?', 'How do cerebellar lesions count in the Boston Criteria?', 'ضایعات مخچه در معیارهای Boston چگونه محسوب می‌شوند؟'),
+    L('Neutral — weder als lobäre Läsion noch als tiefe Blutung gewertet.', 'Neutral — counted as neither lobar lesion nor deep haemorrhage.', 'خنثی — نه به عنوان ضایعه لوبار و نه به عنوان خونریزی عمقی محسوب می‌شوند.'),
+    L('Das Kleinhirn nimmt eine Sonderstellung ein: anatomisch weder Kortex-lobar noch tief (wie Basalganglien). Boston v2.0 hat das explizit festgelegt, um Fehlklassifikationen zu vermeiden.', 'The cerebellum occupies a special position: anatomically neither cortical-lobar nor deep (like basal ganglia). Boston v2.0 explicitly defined this to avoid misclassification.', 'مخچه موقعیت ویژه‌ای دارد: از نظر آناتومیکی نه کورتیکال-لوبار و نه عمقی (مانند بازال گانگلیا). Boston v2.0 این را صریحاً برای جلوگیری از طبقه‌بندی اشتباه تعریف کرده است.')
   ),
 
   F('alzheimer', L('Epidemiologie', 'Epidemiology', 'اپیدمیولوژی'),
-    L('CAA + Alzheimer: Wie hängen beide zusammen und was ist das klinische Implikat?', 'CAA + Alzheimer: how are they linked and what is the clinical implication?', 'CAA + آلزهایمر: چه ارتباطی دارند و پیامد بالینی چیست؟'),
-    L('Gemeinsame Pathologie: β-Amyloid\n• Alzheimer: parenchymale Amyloid-Plaques (Aβ im Hirngewebe)\n• CAA: β-Amyloid in der Gefäßwand\n\nEpidemiologie: ~85 % der Alzheimer-Fälle haben CAA\n\nKlinisch:\n→ Kognitive Störung + lobäre Blutung bei altem Patient\n→ Antikoagulation vorsichtig! (Rezidivblutungsrisiko ↑↑)\n→ Anti-Amyloid-Antikörper (ARIA!) neu beachten', 'Shared pathology: β-amyloid\n• Alzheimer: parenchymal amyloid plaques (Aβ in brain tissue)\n• CAA: β-amyloid in vessel wall\n\nEpidemiology: ~85% of Alzheimer cases have CAA\n\nClinically:\n→ Cognitive impairment + lobar haemorrhage in elderly patient\n→ Anticoagulation cautiously! (recurrent bleed risk ↑↑)\n→ Anti-amyloid antibodies (ARIA!) newly relevant', 'پاتولوژی مشترک: β-آمیلوئید\n• آلزهایمر: پلاک‌های آمیلوئید پارانشیمی (Aβ در بافت مغز)\n• CAA: β-آمیلوئید در دیواره عروقی\n\nاپیدمیولوژی: ~۸۵٪ موارد آلزهایمر CAA دارند\n\nبالینی:\n→ اختلال شناختی + خونریزی لوبار در بیمار مسن\n→ ضد انعقاد با احتیاط! (خطر خونریزی مجدد ↑↑)\n→ آنتی‌بادی‌های ضد آمیلوئید (ARIA!) تازه مرتبط'),
-    L('Alzheimer 85 % = gleiche Aβ-Pathologie; Antikoagulation↑↑Risiko', 'Alzheimer 85% = same Aβ pathology; anticoagulation ↑↑ risk', 'آلزهایمر ۸۵٪ = پاتولوژی Aβ یکسان؛ ضد انعقاد ↑↑ خطر')
+    L('Warum ist CAA so häufig mit Alzheimer assoziiert?', 'Why is CAA so frequently associated with Alzheimer disease?', 'چرا CAA این‌قدر با بیماری آلزهایمر مرتبط است؟'),
+    L('Gleiche Pathologie: β-Amyloid (Aβ). Alzheimer → parenchymale Plaques. CAA → Aβ in der Gefäßwand. ~85 % der Alzheimer-Fälle haben CAA.', 'Same pathology: β-amyloid (Aβ). Alzheimer → parenchymal plaques. CAA → Aβ in vessel wall. ~85% of Alzheimer cases have CAA.', 'پاتولوژی یکسان: β-آمیلوئید (Aβ). آلزهایمر → پلاک‌های پارانشیمی. CAA → Aβ در دیواره عروقی. ~۸۵٪ موارد آلزهایمر CAA دارند.'),
+    L('Klinisch wichtig: Kognitive Störung + lobäre Blutung bei altem Patient → CAA + Alzheimer zusammen denken. Anti-Amyloid-Antikörper (Lecanemab etc.) können ARIA (amyloid-related imaging abnormalities) auslösen — bei CAA verstärktes Risiko.', 'Clinically important: cognitive impairment + lobar haemorrhage in elderly → think CAA + Alzheimer together. Anti-amyloid antibodies (lecanemab etc.) can cause ARIA — increased risk in CAA.', 'بالینی مهم: اختلال شناختی + خونریزی لوبار در سالمند → CAA + آلزهایمر را با هم در نظر بگیرید. آنتی‌بادی‌های ضد آمیلوئید (لکانماب و غیره) می‌توانند ARIA ایجاد کنند — خطر افزایش‌یافته در CAA.')
+  ),
+
+  F('therapie', L('Therapie', 'Treatment', 'درمان'),
+    L('Therapie und Sekundärprophylaxe bei CAA?', 'Treatment and secondary prevention in CAA?', 'درمان و پیشگیری ثانویه در CAA؟'),
+    L('Keine kausale Therapie. Antikoagulation vermeiden! Blutdruckkontrolle, Statine, Anfallsbehandlung bei Epilepsie.', 'No causal therapy. Avoid anticoagulation! Blood pressure control, statins, seizure management for epilepsy.', 'درمان علّی وجود ندارد. ضد انعقاد را اجتناب کنید! کنترل فشار خون، استاتین‌ها، مدیریت تشنج برای صرع.'),
+    L('Antikoagulation bei CAA sehr riskant (Rezidiv-ICB ↑↑). Bei Vorhofflimmern sorgfältige Nutzen-Risiko-Abwägung. Akute lobäre ICB: Blutdruck senken, Antikoagulanzienwirkung aufheben (falls vorhanden).', 'Anticoagulation in CAA very risky (recurrent ICH ↑↑). In atrial fibrillation, careful risk-benefit assessment. Acute lobar ICH: lower BP, reverse anticoagulation (if present).', 'ضد انعقاد در CAA بسیار پرخطر است (ICH عود ↑↑). در فیبریلاسیون دهلیزی، ارزیابی دقیق خطر-فایده. ICH لوبار حاد: کاهش فشار خون، معکوس کردن ضد انعقاد (در صورت وجود).')
   ),
 ]
 
@@ -503,6 +545,7 @@ export const CAA_FLASHCARDS = CAA_FLASH_SEEDS.map((item, index) => ({
   front: item.front,
   answer: item.answer,
   explanation: item.explanation,
+  ...(item.diagram ? { diagram: item.diagram } : {}),
 }))
 
 export const CAA_FLASHCARD_TOPIC = {
