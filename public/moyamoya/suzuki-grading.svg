@@ -1,0 +1,170 @@
+<svg viewBox="0 0 860 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Suzuki Classification Grades I–VI">
+  <defs>
+    <style>
+      .bg { fill: #0f172a; }
+      .card { fill: #1e293b; rx: 10; }
+      .lbl { font: 700 11px/1 Inter,system-ui,sans-serif; fill: #f1f5f9; text-anchor: middle; }
+      .sub { font: 400 9px/1 Inter,system-ui,sans-serif; fill: #94a3b8; text-anchor: middle; }
+      .grade { font: 800 14px/1 Inter,system-ui,sans-serif; fill: #a78bfa; text-anchor: middle; }
+      .ica { stroke: #60a5fa; stroke-width: 2.5; fill: none; stroke-linecap: round; }
+      .mca { stroke: #34d399; stroke-width: 2; fill: none; stroke-linecap: round; }
+      .col { stroke: #f97316; stroke-width: 1.5; fill: none; stroke-linecap: round; opacity: 0; }
+      .ext { stroke: #fbbf24; stroke-width: 1.5; fill: none; stroke-linecap: round; opacity: 0; }
+      .arrow { stroke: #475569; stroke-width: 1.5; fill: none; marker-end: url(#arr); }
+    </style>
+    <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="860" height="260" class="bg" rx="12"/>
+
+  <!-- Title -->
+  <text x="430" y="22" font="700 12px Inter,system-ui,sans-serif" fill="#e2e8f0" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="700">Suzuki-Klassifikation 1969 — Progression der Moya-Moya-Erkrankung</text>
+
+  <!-- Cards + vessels for each grade -->
+
+  <!-- GRADE I -->
+  <rect x="8" y="32" width="128" height="218" rx="9" fill="#1e293b"/>
+  <text x="72" y="54" class="grade">Grad I</text>
+  <!-- ICA left -->
+  <line x1="52" y1="85" x2="52" y2="140" class="ica"/>
+  <path d="M52,140 Q52,155 45,165" class="ica"/>
+  <path d="M52,140 Q52,155 59,165" class="ica"/>
+  <!-- ICA right -->
+  <line x1="92" y1="85" x2="92" y2="140" class="ica"/>
+  <path d="M92,140 Q92,155 85,165" class="ica"/>
+  <path d="M92,140 Q92,155 99,165" class="ica"/>
+  <!-- stenosis marks -->
+  <rect x="48" y="120" width="8" height="6" fill="#ef4444" rx="1"/>
+  <rect x="88" y="120" width="8" height="6" fill="#ef4444" rx="1"/>
+  <text x="72" y="190" class="sub">Bifurkations-</text>
+  <text x="72" y="202" class="sub">stenose</text>
+  <text x="72" y="218" class="sub">keine Kollateralen</text>
+  <text x="72" y="238" font-family="Inter,system-ui,sans-serif" font-size="9" fill="#6366f1" text-anchor="middle">Frühphase</text>
+
+  <!-- Arrow I→II -->
+  <line x1="140" y1="141" x2="152" y2="141" class="arrow"/>
+
+  <!-- GRADE II -->
+  <rect x="155" y="32" width="128" height="218" rx="9" fill="#1e293b"/>
+  <text x="219" y="54" class="grade">Grad II</text>
+  <line x1="199" y1="85" x2="199" y2="128" class="ica"/>
+  <path d="M199,128 Q199,143 190,155" class="ica" stroke-width="1.5"/>
+  <path d="M199,128 Q199,143 208,155" class="ica" stroke-width="1.5"/>
+  <line x1="239" y1="85" x2="239" y2="128" class="ica"/>
+  <path d="M239,128 Q239,143 230,155" class="ica" stroke-width="1.5"/>
+  <path d="M239,128 Q239,143 248,155" class="ica" stroke-width="1.5"/>
+  <rect x="195" y="110" width="8" height="8" fill="#ef4444" rx="1"/>
+  <rect x="235" y="110" width="8" height="8" fill="#ef4444" rx="1"/>
+  <!-- early collaterals -->
+  <path d="M207,125 Q219,118 231,125" stroke="#f97316" stroke-width="1.5" fill="none" opacity="0.6"/>
+  <path d="M209,132 Q219,125 229,132" stroke="#f97316" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <text x="219" y="190" class="sub">MM-Gefäße</text>
+  <text x="219" y="202" class="sub">beginnen</text>
+  <text x="219" y="218" class="sub">Dilatation Hauptarterien</text>
+  <text x="219" y="238" font-family="Inter,system-ui,sans-serif" font-size="9" fill="#22c55e" text-anchor="middle">Kompensation</text>
+
+  <!-- Arrow II→III -->
+  <line x1="287" y1="141" x2="299" y2="141" class="arrow"/>
+
+  <!-- GRADE III -->
+  <rect x="302" y="32" width="128" height="218" rx="9" fill="#1e293b"/>
+  <text x="366" y="54" class="grade">Grad III</text>
+  <line x1="346" y1="85" x2="346" y2="112" class="ica"/>
+  <line x1="386" y1="85" x2="386" y2="112" class="ica"/>
+  <rect x="342" y="100" width="8" height="10" fill="#ef4444" rx="1"/>
+  <rect x="382" y="100" width="8" height="10" fill="#ef4444" rx="1"/>
+  <!-- prominent collaterals -->
+  <path d="M354,108 Q366,96 378,108" stroke="#f97316" stroke-width="2" fill="none"/>
+  <path d="M352,116 Q366,104 380,116" stroke="#f97316" stroke-width="2" fill="none"/>
+  <path d="M350,124 Q366,112 382,124" stroke="#f97316" stroke-width="2" fill="none"/>
+  <path d="M350,132 Q366,120 382,132" stroke="#f97316" stroke-width="2" fill="none"/>
+  <path d="M352,140 Q366,128 380,140" stroke="#f97316" stroke-width="1.5" fill="none"/>
+  <!-- MCA fading -->
+  <path d="M346,112 Q346,130 336,150" stroke="#34d399" stroke-width="1" fill="none" opacity="0.4"/>
+  <path d="M346,112 Q346,130 356,150" stroke="#34d399" stroke-width="1" fill="none" opacity="0.4"/>
+  <path d="M386,112 Q386,130 376,150" stroke="#34d399" stroke-width="1" fill="none" opacity="0.4"/>
+  <path d="M386,112 Q386,130 396,150" stroke="#34d399" stroke-width="1" fill="none" opacity="0.4"/>
+  <text x="366" y="190" class="sub">MM intensiv</text>
+  <text x="366" y="202" class="sub">MCA schwindet</text>
+  <text x="366" y="218" class="sub">"Puff of smoke"</text>
+  <text x="366" y="238" font-family="Inter,system-ui,sans-serif" font-size="9" fill="#f97316" text-anchor="middle">Ischämiegefahr ↑</text>
+
+  <!-- Arrow III→IV -->
+  <line x1="434" y1="141" x2="446" y2="141" class="arrow"/>
+
+  <!-- GRADE IV -->
+  <rect x="449" y="32" width="128" height="218" rx="9" fill="#1e293b"/>
+  <text x="513" y="54" class="grade">Grad IV</text>
+  <line x1="493" y1="85" x2="493" y2="100" class="ica" stroke-width="1.5" opacity="0.6"/>
+  <line x1="533" y1="85" x2="533" y2="100" class="ica" stroke-width="1.5" opacity="0.6"/>
+  <rect x="489" y="95" width="8" height="10" fill="#ef4444" rx="1" opacity="0.9"/>
+  <rect x="529" y="95" width="8" height="10" fill="#ef4444" rx="1" opacity="0.9"/>
+  <!-- fewer collaterals -->
+  <path d="M500,100 Q513,90 526,100" stroke="#f97316" stroke-width="1.5" fill="none" opacity="0.7"/>
+  <path d="M499,108 Q513,98 527,108" stroke="#f97316" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <path d="M500,116 Q513,108 526,116" stroke="#f97316" stroke-width="1" fill="none" opacity="0.3"/>
+  <!-- PCA involvement -->
+  <path d="M493,100 Q475,130 470,160" stroke="#a78bfa" stroke-width="1.5" fill="none" opacity="0.7"/>
+  <path d="M533,100 Q551,130 556,160" stroke="#a78bfa" stroke-width="1.5" fill="none" opacity="0.7"/>
+  <text x="513" y="185" class="sub">MM ↓</text>
+  <text x="513" y="197" class="sub">PCA beteiligt</text>
+  <text x="513" y="213" class="sub">Externe Koll. beginnen</text>
+  <text x="513" y="238" font-family="Inter,system-ui,sans-serif" font-size="9" fill="#ef4444" text-anchor="middle">Kritisch</text>
+
+  <!-- Arrow IV→V -->
+  <line x1="581" y1="141" x2="593" y2="141" class="arrow"/>
+
+  <!-- GRADE V -->
+  <rect x="596" y="32" width="128" height="218" rx="9" fill="#1e293b"/>
+  <text x="660" y="54" class="grade">Grad V</text>
+  <line x1="640" y1="85" x2="640" y2="96" class="ica" stroke-width="1" opacity="0.3"/>
+  <line x1="680" y1="85" x2="680" y2="96" class="ica" stroke-width="1" opacity="0.3"/>
+  <rect x="636" y="91" width="8" height="10" fill="#ef4444" rx="1"/>
+  <rect x="676" y="91" width="8" height="10" fill="#ef4444" rx="1"/>
+  <!-- minimal MM -->
+  <path d="M648,96 Q660,88 672,96" stroke="#f97316" stroke-width="1" fill="none" opacity="0.2"/>
+  <!-- external carotid collaterals growing -->
+  <path d="M625,80 Q618,115 622,150 Q626,165 638,170" stroke="#fbbf24" stroke-width="2" fill="none"/>
+  <path d="M695,80 Q702,115 698,150 Q694,165 682,170" stroke="#fbbf24" stroke-width="2" fill="none"/>
+  <text x="660" y="192" class="sub">MM stark ↓</text>
+  <text x="660" y="204" class="sub">Externe Karotis-</text>
+  <text x="660" y="216" class="sub">Kollateralen ↑</text>
+  <text x="660" y="238" font-family="Inter,system-ui,sans-serif" font-size="9" fill="#ef4444" text-anchor="middle">Kritische Perfusion</text>
+
+  <!-- Arrow V→VI -->
+  <line x1="728" y1="141" x2="740" y2="141" class="arrow"/>
+
+  <!-- GRADE VI -->
+  <rect x="743" y="32" width="109" height="218" rx="9" fill="#1e293b"/>
+  <text x="797" y="54" class="grade">Grad VI</text>
+  <!-- no ICA -->
+  <line x1="777" y1="85" x2="777" y2="94" class="ica" stroke-width="1" opacity="0.15"/>
+  <line x1="817" y1="85" x2="817" y2="94" class="ica" stroke-width="1" opacity="0.15"/>
+  <rect x="773" y="90" width="8" height="8" fill="#ef4444" rx="1"/>
+  <rect x="813" y="90" width="8" height="8" fill="#ef4444" rx="1"/>
+  <!-- only external -->
+  <path d="M762,78 Q754,115 758,150 Q762,170 775,175" stroke="#fbbf24" stroke-width="2.5" fill="none"/>
+  <path d="M832,78 Q840,115 836,150 Q832,170 819,175" stroke="#fbbf24" stroke-width="2.5" fill="none"/>
+  <!-- X over intracranial -->
+  <line x1="780" y1="110" x2="814" y2="140" stroke="#ef4444" stroke-width="1.5" opacity="0.5"/>
+  <line x1="814" y1="110" x2="780" y2="140" stroke="#ef4444" stroke-width="1.5" opacity="0.5"/>
+  <text x="797" y="192" class="sub">Alle MM-Gefäße</text>
+  <text x="797" y="204" class="sub">verschwunden</text>
+  <text x="797" y="216" class="sub">Nur Ext. Kollat.</text>
+  <text x="797" y="238" font-family="Inter,system-ui,sans-serif" font-size="9" fill="#dc2626" text-anchor="middle">Terminale Phase</text>
+
+  <!-- Legend -->
+  <line x1="8" y1="255" x2="22" y2="255" stroke="#60a5fa" stroke-width="2.5"/>
+  <text x="26" y="258" font-family="Inter,system-ui,sans-serif" font-size="8" fill="#94a3b8">ICA/MCA</text>
+  <rect x="70" y="250" width="14" height="7" fill="#ef4444" rx="1"/>
+  <text x="88" y="258" font-family="Inter,system-ui,sans-serif" font-size="8" fill="#94a3b8">Stenose/Okklusion</text>
+  <line x1="158" y1="255" x2="172" y2="255" stroke="#f97316" stroke-width="2"/>
+  <text x="176" y="258" font-family="Inter,system-ui,sans-serif" font-size="8" fill="#94a3b8">MM-Kollateralen</text>
+  <line x1="248" y1="255" x2="262" y2="255" stroke="#fbbf24" stroke-width="2"/>
+  <text x="266" y="258" font-family="Inter,system-ui,sans-serif" font-size="8" fill="#94a3b8">Externe Karotis-Kollateralen</text>
+  <line x1="388" y1="255" x2="402" y2="255" stroke="#a78bfa" stroke-width="2"/>
+  <text x="406" y="258" font-family="Inter,system-ui,sans-serif" font-size="8" fill="#94a3b8">PCA-Beteiligung</text>
+</svg>

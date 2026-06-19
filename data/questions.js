@@ -8,6 +8,7 @@ import { SAB_QUESTIONS } from './sab'
 import { EDH_QUESTIONS } from './edh'
 import { DISSECTION_QUESTIONS } from './dissection'
 import { SDH_QUESTIONS } from './sdh'
+import { MOYAMOYA_QUESTIONS } from './moyamoya'
 
 const DIVERTICULITIS_QUESTION_CONTENT = [
   {
@@ -317,6 +318,7 @@ export const QUESTION_BANK = {
     ...MIDLINE_CAVA_QUESTIONS.de,
     ...SDH_QUESTIONS.de,
     ...DISSECTION_QUESTIONS.de,
+    ...MOYAMOYA_QUESTIONS.de,
     {
       "id": "meniskus-de-01",
       "tags": [
@@ -1653,6 +1655,7 @@ export const QUESTION_BANK = {
     ...MIDLINE_CAVA_QUESTIONS.en,
     ...SDH_QUESTIONS.en,
     ...DISSECTION_QUESTIONS.en,
+    ...MOYAMOYA_QUESTIONS.en,
     {
       "id": "meniskus-en-01",
       "tags": [
@@ -2989,6 +2992,7 @@ export const QUESTION_BANK = {
     ...MIDLINE_CAVA_QUESTIONS.fa,
     ...SDH_QUESTIONS.fa,
     ...DISSECTION_QUESTIONS.fa,
+    ...MOYAMOYA_QUESTIONS.fa,
     {
       "id": "meniskus-fa-01",
       "tags": [
