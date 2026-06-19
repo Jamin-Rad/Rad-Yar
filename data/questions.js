@@ -13,6 +13,7 @@ import { HMA_QUESTIONS } from './hypertensive-mikroangiopathie'
 import { CAA_QUESTIONS } from './caa'
 import { CADASIL_QUESTIONS } from './cadasil'
 import { DVA_QUESTIONS } from './dva'
+import { KAVERNOM_QUESTIONS } from './kavernom'
 
 const DIVERTICULITIS_QUESTION_CONTENT = [
   {
@@ -327,6 +328,7 @@ export const QUESTION_BANK = {
     ...CAA_QUESTIONS.de,
     ...CADASIL_QUESTIONS.de,
     ...DVA_QUESTIONS.de,
+    ...KAVERNOM_QUESTIONS.de,
     {
       "id": "meniskus-de-01",
       "tags": [
@@ -1668,6 +1670,7 @@ export const QUESTION_BANK = {
     ...CAA_QUESTIONS.en,
     ...CADASIL_QUESTIONS.en,
     ...DVA_QUESTIONS.en,
+    ...KAVERNOM_QUESTIONS.en,
     {
       "id": "meniskus-en-01",
       "tags": [
@@ -3009,6 +3012,7 @@ export const QUESTION_BANK = {
     ...CAA_QUESTIONS.fa,
     ...CADASIL_QUESTIONS.fa,
     ...DVA_QUESTIONS.fa,
+    ...KAVERNOM_QUESTIONS.fa,
     {
       "id": "meniskus-fa-01",
       "tags": [
@@ -4355,6 +4359,7 @@ export const MCQ_TOPIC_GROUPS = [
       { id: 'hypoxisch-ischaemische-hirnschaedigung', title: { de: 'Hypoxisch-ischämische Hirnschädigung', en: 'Hypoxic-ischaemic brain injury', fa: 'آسیب مغزی هیپوکسیک-ایسکمیک' } },
       { id: 'cadasil', title: { de: 'CADASIL', en: 'CADASIL', fa: 'CADASIL' } },
       { id: 'dva', title: { de: 'Developmental Venous Anomaly', en: 'Developmental Venous Anomaly', fa: 'آنومالی وریدی تکاملی' } },
+      { id: 'kavernom', title: { de: 'Kavernom', en: 'Cavernoma', fa: 'کاورنوم' } },
     ],
   },
   {
