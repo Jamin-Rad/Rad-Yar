@@ -266,7 +266,6 @@ export default function MoyaMoyaPage() {
           {/* 2 – Pathophysiologie */}
           <Section id="pathophysio" title={c(MOYAMOYA_LESSON.pathophysio.title)} lead={c(MOYAMOYA_LESSON.pathophysio.lead)}>
             <Table headers={MOYAMOYA_LESSON.pathophysio.headers.map(c)} rows={rows(MOYAMOYA_LESSON.pathophysio.rows)} />
-            <Figure src="/moyamoya/suzuki-grading.svg" alt={c(MOYAMOYA_LESSON.pathophysio.imageAlt)} onZoom={setPreview} copy={copy} />
           </Section>
 
           {/* 3 – Klinik */}
@@ -291,7 +290,6 @@ export default function MoyaMoyaPage() {
             <Table headers={MOYAMOYA_LESSON.dsa.modesHeaders.map(c)} rows={rows(MOYAMOYA_LESSON.dsa.modesRows)} />
             <h3 style={{ marginTop: 24, marginBottom: 10, fontSize: '0.95rem', color: 'var(--text)', fontWeight: 700 }}>{c(MOYAMOYA_LESSON.dsa.suzukiTitle)}</h3>
             <Table headers={MOYAMOYA_LESSON.dsa.suzukiHeaders.map(c)} rows={rows(MOYAMOYA_LESSON.dsa.suzukiRows)} />
-            <Figure src="/moyamoya/suzuki-grading.svg" alt={c(MOYAMOYA_LESSON.dsa.suzukiImageAlt)} onZoom={setPreview} copy={copy} />
             <Callout label={c(MOYAMOYA_LESSON.keyLabel)}>{c(MOYAMOYA_LESSON.dsa.key)}</Callout>
           </Section>
 
