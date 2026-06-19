@@ -636,7 +636,7 @@ export const KLASSIFIKATIONEN = [
   },
   {
     id: 'thorax', color: '#0ea5e9', iconId: 'thorax',
-    name: { de: 'Thorax / Lunge', en: 'Thorax / Lung', fa: 'توراکس / ریه' },
+    name: { de: 'Thorax / Schilddrüse', en: 'Thorax / Thyroid', fa: 'توراکس / تیروئید' },
     items: [
       {
         id: 'lung-rads',
@@ -702,6 +702,74 @@ export const KLASSIFIKATIONEN = [
           [{ de: 'Solide 6–8 mm', en: 'Solid 6–8 mm', fa: 'جامد ۶–۸ mm' }, { de: 'CT 6–12 Mon.', en: 'CT 6–12 mo', fa: 'CT ۶–۱۲ ماه' }, { de: 'CT 6–12, dann 18–24 Mon.', en: 'CT 6–12, then 18–24 mo', fa: 'CT ۶–۱۲، سپس ۱۸–۲۴ ماه' }],
           [{ de: 'Solide > 8 mm', en: 'Solid > 8 mm', fa: 'جامد > ۸ mm' }, { de: 'CT 3 Mon. / PET / Biopsie', en: 'CT 3 mo / PET / biopsy', fa: 'CT ۳ ماه / PET / بیوپسی' }, { de: 'CT 3 Mon. / PET / Biopsie', en: 'CT 3 mo / PET / biopsy', fa: 'CT ۳ ماه / PET / بیوپسی' }],
           [{ de: 'Milchglas ≥ 6 mm', en: 'Ground-glass ≥ 6 mm', fa: 'میلکی‌گلاس ≥ ۶ mm' }, { de: 'CT 6–12, dann alle 2 J.', en: 'CT 6–12, then q2y', fa: 'CT ۶–۱۲، سپس هر ۲ سال' }, { de: 'CT 6–12, dann alle 2 J.', en: 'CT 6–12, then q2y', fa: 'CT ۶–۱۲، سپس هر ۲ سال' }],
+        ],
+      },
+      {
+        id: 'ti-rads',
+        name: { de: 'TI-RADS (ACR)', en: 'TI-RADS (ACR)', fa: 'TI-RADS' },
+        kompakt: {
+          de: 'Punktbasiertes ACR-Ultraschallsystem für Schilddrüsenknoten (TR1–TR5) mit direkter FNA-Empfehlung nach Kategorie und Knotengröße.',
+          en: 'Point-based ACR ultrasound system for thyroid nodules (TR1–TR5) with direct FNA recommendation by category and nodule size.',
+          fa: 'سیستم امتیازی ACR سونوگرافی برای ندول‌های تیروئید (TR1–TR5) با توصیه مستقیم FNA بر اساس دسته و اندازه ندول.',
+        },
+        ref: 'ACR TI-RADS (2017), Tessler et al., J Am Coll Radiol',
+        cols: [{ de: 'Kategorie (Punkte)', en: 'Category (points)', fa: 'دسته (امتیاز)' }, { de: 'Risiko', en: 'Risk', fa: 'خطر' }, { de: 'FNA', en: 'FNA', fa: 'FNA' }],
+        rows: [
+          ['TR1 (0)', { de: 'Benigne', en: 'Benign', fa: 'خوش‌خیم' }, { de: 'Keine', en: 'None', fa: 'لازم نیست' }],
+          ['TR2 (2)', { de: 'Nicht suspekt', en: 'Not suspicious', fa: 'غیرمشکوک' }, { de: 'Keine', en: 'None', fa: 'لازم نیست' }],
+          ['TR3 (3)', { de: 'Mild suspekt', en: 'Mildly suspicious', fa: 'کمی مشکوک' }, { de: 'FNA ≥ 2,5 cm · Verlauf ≥ 1,5 cm', en: 'FNA ≥ 2.5 cm · follow ≥ 1.5 cm', fa: 'FNA ≥ ۲٫۵ cm · پیگیری ≥ ۱٫۵ cm' }],
+          ['TR4 (4–6)', { de: 'Moderat suspekt', en: 'Moderately suspicious', fa: 'نسبتاً مشکوک' }, { de: 'FNA ≥ 1,5 cm · Verlauf ≥ 1 cm', en: 'FNA ≥ 1.5 cm · follow ≥ 1 cm', fa: 'FNA ≥ ۱٫۵ cm · پیگیری ≥ ۱ cm' }],
+          ['TR5 (≥ 7)', { de: 'Hochsuspekt', en: 'Highly suspicious', fa: 'بسیار مشکوک' }, { de: 'FNA ≥ 1 cm · Verlauf ≥ 0,5 cm', en: 'FNA ≥ 1 cm · follow ≥ 0.5 cm', fa: 'FNA ≥ ۱ cm · پیگیری ≥ ۰٫۵ cm' }],
+        ],
+        detail: [
+          {
+            stage: { de: 'So wird gepunktet (5 Kategorien)', en: 'How points are assigned (5 categories)', fa: 'نحوه امتیازدهی (۵ دسته)' },
+            text: {
+              de: 'Zusammensetzung: zystisch/schwammartig 0, gemischt zystisch-solide 1, solide 2. Echogenität: anechogen 0, hyper-/isoechogen 1, hypoechogen 2, sehr echoarm 3. Form: breiter als hoch 0, höher als breit 3. Rand: glatt/unklar 0, lobuliert/irregulär 2, extrathyreoidale Ausbreitung 3. Echogene Foci: keine/Komet­schweif 0, Makroverkalkung 1, randständige Verkalkung 2, Punkt-Echogenitäten (Mikrokalk) 3. Alle Punkte werden addiert.',
+              en: 'Composition: cystic/spongiform 0, mixed 1, solid 2. Echogenicity: anechoic 0, hyper-/isoechoic 1, hypoechoic 2, very hypoechoic 3. Shape: wider-than-tall 0, taller-than-wide 3. Margin: smooth/ill-defined 0, lobulated/irregular 2, extrathyroidal extension 3. Echogenic foci: none/comet-tail 0, macrocalcification 1, rim calcification 2, punctate echogenic foci (microcalc) 3. All points are summed.',
+              fa: 'ترکیب: کیستیک/اسفنجی ۰، مختلط ۱، توپر ۲. اکوژنیسیته: آن‌اکوئیک ۰، هایپر/ایزو ۱، هایپو ۲، بسیار هایپو ۳. شکل: پهن‌تر از بلند ۰، بلندتر از پهن ۳. حاشیه: صاف/نامشخص ۰، لوبوله/نامنظم ۲، گسترش خارج تیروئید ۳. کانون اکوژنیک: هیچ/دم‌ستاره‌ای ۰، ماکروکلسیفیکاسیون ۱، حاشیه‌ای ۲، نقطه‌ای (میکروکلسیفیکاسیون) ۳. همه امتیازها جمع می‌شوند.',
+            },
+          },
+          {
+            stage: { de: 'TR1 (0 Punkte) – Benigne', en: 'TR1 (0 points) – Benign', fa: 'TR1 (۰ امتیاز) – خوش‌خیم' },
+            text: {
+              de: 'Gutartig, z. B. rein zystischer oder schwammartiger (spongiformer) Knoten. Keine Feinnadelpunktion, keine spezielle Verlaufskontrolle nötig.',
+              en: 'Benign, e.g. purely cystic or spongiform nodule. No FNA and no special follow-up required.',
+              fa: 'خوش‌خیم، مثل ندول کاملاً کیستیک یا اسفنجی. نه FNA و نه پیگیری ویژه لازم است.',
+            },
+          },
+          {
+            stage: { de: 'TR2 (2 Punkte) – Nicht suspekt', en: 'TR2 (2 points) – Not suspicious', fa: 'TR2 (۲ امتیاز) – غیرمشکوک' },
+            text: {
+              de: 'Nicht verdächtig. Keine Feinnadelpunktion und keine routinemäßige Verlaufskontrolle empfohlen.',
+              en: 'Not suspicious. No FNA and no routine follow-up recommended.',
+              fa: 'غیرمشکوک. نه FNA و نه پیگیری روتین توصیه می‌شود.',
+            },
+          },
+          {
+            stage: { de: 'TR3 (3 Punkte) – Mild suspekt', en: 'TR3 (3 points) – Mildly suspicious', fa: 'TR3 (۳ امتیاز) – کمی مشکوک' },
+            text: {
+              de: 'Gering verdächtig. Feinnadelpunktion erst ab einem Durchmesser ≥ 2,5 cm; Verlaufskontrolle ab ≥ 1,5 cm.',
+              en: 'Mildly suspicious. FNA only from a diameter ≥ 2.5 cm; follow-up from ≥ 1.5 cm.',
+              fa: 'کمی مشکوک. FNA فقط از قطر ≥ ۲٫۵ سانتی‌متر؛ پیگیری از ≥ ۱٫۵ سانتی‌متر.',
+            },
+          },
+          {
+            stage: { de: 'TR4 (4–6 Punkte) – Moderat suspekt', en: 'TR4 (4–6 points) – Moderately suspicious', fa: 'TR4 (۴–۶ امتیاز) – نسبتاً مشکوک' },
+            text: {
+              de: 'Mäßig verdächtig. Feinnadelpunktion ab ≥ 1,5 cm; Verlaufskontrolle ab ≥ 1 cm.',
+              en: 'Moderately suspicious. FNA from ≥ 1.5 cm; follow-up from ≥ 1 cm.',
+              fa: 'نسبتاً مشکوک. FNA از ≥ ۱٫۵ سانتی‌متر؛ پیگیری از ≥ ۱ سانتی‌متر.',
+            },
+          },
+          {
+            stage: { de: 'TR5 (≥ 7 Punkte) – Hochsuspekt', en: 'TR5 (≥ 7 points) – Highly suspicious', fa: 'TR5 (≥ ۷ امتیاز) – بسیار مشکوک' },
+            text: {
+              de: 'Hochgradig verdächtig (Malignitätsrisiko > 20 %). Feinnadelpunktion bereits ab ≥ 1 cm; Verlaufskontrolle ab ≥ 0,5 cm.',
+              en: 'Highly suspicious (malignancy risk > 20%). FNA already from ≥ 1 cm; follow-up from ≥ 0.5 cm.',
+              fa: 'بسیار مشکوک (خطر بدخیمی > ۲۰٪). FNA از ≥ ۱ سانتی‌متر؛ پیگیری از ≥ ۰٫۵ سانتی‌متر.',
+            },
+          },
         ],
       },
     ],
@@ -1063,74 +1131,6 @@ export const KLASSIFIKATIONEN = [
               de: 'Ein signifikantes Karzinom ist sehr wahrscheinlich. Gleiche Kriterien wie PI-RADS 4, aber Läsion ≥ 1,5 cm oder mit Zeichen der extraprostatischen Ausbreitung. Biopsie und Staging (Lokalstaging, ggf. PSMA-PET).',
               en: 'A significant cancer is very likely. Same criteria as PI-RADS 4 but lesion ≥ 1.5 cm or with signs of extraprostatic extension. Biopsy and staging (local staging, possibly PSMA-PET).',
               fa: 'سرطان مهم بسیار محتمل است. معیارهای مشابه PI-RADS ۴ اما ضایعه ≥ ۱٫۵ سانتی‌متر یا با نشانه‌های گسترش خارج پروستات. بیوپسی و استیجینگ (احتمالاً PSMA-PET).',
-            },
-          },
-        ],
-      },
-      {
-        id: 'ti-rads',
-        name: { de: 'TI-RADS (ACR)', en: 'TI-RADS (ACR)', fa: 'TI-RADS' },
-        kompakt: {
-          de: 'Punktbasiertes ACR-Ultraschallsystem für Schilddrüsenknoten (TR1–TR5) mit direkter FNA-Empfehlung nach Kategorie und Knotengröße.',
-          en: 'Point-based ACR ultrasound system for thyroid nodules (TR1–TR5) with direct FNA recommendation by category and nodule size.',
-          fa: 'سیستم امتیازی ACR سونوگرافی برای ندول‌های تیروئید (TR1–TR5) با توصیه مستقیم FNA بر اساس دسته و اندازه ندول.',
-        },
-        ref: 'ACR TI-RADS (2017), Tessler et al., J Am Coll Radiol',
-        cols: [{ de: 'Kategorie (Punkte)', en: 'Category (points)', fa: 'دسته (امتیاز)' }, { de: 'Risiko', en: 'Risk', fa: 'خطر' }, { de: 'FNA', en: 'FNA', fa: 'FNA' }],
-        rows: [
-          ['TR1 (0)', { de: 'Benigne', en: 'Benign', fa: 'خوش‌خیم' }, { de: 'Keine', en: 'None', fa: 'لازم نیست' }],
-          ['TR2 (2)', { de: 'Nicht suspekt', en: 'Not suspicious', fa: 'غیرمشکوک' }, { de: 'Keine', en: 'None', fa: 'لازم نیست' }],
-          ['TR3 (3)', { de: 'Mild suspekt', en: 'Mildly suspicious', fa: 'کمی مشکوک' }, { de: 'FNA ≥ 2,5 cm · Verlauf ≥ 1,5 cm', en: 'FNA ≥ 2.5 cm · follow ≥ 1.5 cm', fa: 'FNA ≥ ۲٫۵ cm · پیگیری ≥ ۱٫۵ cm' }],
-          ['TR4 (4–6)', { de: 'Moderat suspekt', en: 'Moderately suspicious', fa: 'نسبتاً مشکوک' }, { de: 'FNA ≥ 1,5 cm · Verlauf ≥ 1 cm', en: 'FNA ≥ 1.5 cm · follow ≥ 1 cm', fa: 'FNA ≥ ۱٫۵ cm · پیگیری ≥ ۱ cm' }],
-          ['TR5 (≥ 7)', { de: 'Hochsuspekt', en: 'Highly suspicious', fa: 'بسیار مشکوک' }, { de: 'FNA ≥ 1 cm · Verlauf ≥ 0,5 cm', en: 'FNA ≥ 1 cm · follow ≥ 0.5 cm', fa: 'FNA ≥ ۱ cm · پیگیری ≥ ۰٫۵ cm' }],
-        ],
-        detail: [
-          {
-            stage: { de: 'So wird gepunktet (5 Kategorien)', en: 'How points are assigned (5 categories)', fa: 'نحوه امتیازدهی (۵ دسته)' },
-            text: {
-              de: 'Zusammensetzung: zystisch/schwammartig 0, gemischt zystisch-solide 1, solide 2. Echogenität: anechogen 0, hyper-/isoechogen 1, hypoechogen 2, sehr echoarm 3. Form: breiter als hoch 0, höher als breit 3. Rand: glatt/unklar 0, lobuliert/irregulär 2, extrathyreoidale Ausbreitung 3. Echogene Foci: keine/Komet­schweif 0, Makroverkalkung 1, randständige Verkalkung 2, Punkt-Echogenitäten (Mikrokalk) 3. Alle Punkte werden addiert.',
-              en: 'Composition: cystic/spongiform 0, mixed 1, solid 2. Echogenicity: anechoic 0, hyper-/isoechoic 1, hypoechoic 2, very hypoechoic 3. Shape: wider-than-tall 0, taller-than-wide 3. Margin: smooth/ill-defined 0, lobulated/irregular 2, extrathyroidal extension 3. Echogenic foci: none/comet-tail 0, macrocalcification 1, rim calcification 2, punctate echogenic foci (microcalc) 3. All points are summed.',
-              fa: 'ترکیب: کیستیک/اسفنجی ۰، مختلط ۱، توپر ۲. اکوژنیسیته: آن‌اکوئیک ۰، هایپر/ایزو ۱، هایپو ۲، بسیار هایپو ۳. شکل: پهن‌تر از بلند ۰، بلندتر از پهن ۳. حاشیه: صاف/نامشخص ۰، لوبوله/نامنظم ۲، گسترش خارج تیروئید ۳. کانون اکوژنیک: هیچ/دم‌ستاره‌ای ۰، ماکروکلسیفیکاسیون ۱، حاشیه‌ای ۲، نقطه‌ای (میکروکلسیفیکاسیون) ۳. همه امتیازها جمع می‌شوند.',
-            },
-          },
-          {
-            stage: { de: 'TR1 (0 Punkte) – Benigne', en: 'TR1 (0 points) – Benign', fa: 'TR1 (۰ امتیاز) – خوش‌خیم' },
-            text: {
-              de: 'Gutartig, z. B. rein zystischer oder schwammartiger (spongiformer) Knoten. Keine Feinnadelpunktion, keine spezielle Verlaufskontrolle nötig.',
-              en: 'Benign, e.g. purely cystic or spongiform nodule. No FNA and no special follow-up required.',
-              fa: 'خوش‌خیم، مثل ندول کاملاً کیستیک یا اسفنجی. نه FNA و نه پیگیری ویژه لازم است.',
-            },
-          },
-          {
-            stage: { de: 'TR2 (2 Punkte) – Nicht suspekt', en: 'TR2 (2 points) – Not suspicious', fa: 'TR2 (۲ امتیاز) – غیرمشکوک' },
-            text: {
-              de: 'Nicht verdächtig. Keine Feinnadelpunktion und keine routinemäßige Verlaufskontrolle empfohlen.',
-              en: 'Not suspicious. No FNA and no routine follow-up recommended.',
-              fa: 'غیرمشکوک. نه FNA و نه پیگیری روتین توصیه می‌شود.',
-            },
-          },
-          {
-            stage: { de: 'TR3 (3 Punkte) – Mild suspekt', en: 'TR3 (3 points) – Mildly suspicious', fa: 'TR3 (۳ امتیاز) – کمی مشکوک' },
-            text: {
-              de: 'Gering verdächtig. Feinnadelpunktion erst ab einem Durchmesser ≥ 2,5 cm; Verlaufskontrolle ab ≥ 1,5 cm.',
-              en: 'Mildly suspicious. FNA only from a diameter ≥ 2.5 cm; follow-up from ≥ 1.5 cm.',
-              fa: 'کمی مشکوک. FNA فقط از قطر ≥ ۲٫۵ سانتی‌متر؛ پیگیری از ≥ ۱٫۵ سانتی‌متر.',
-            },
-          },
-          {
-            stage: { de: 'TR4 (4–6 Punkte) – Moderat suspekt', en: 'TR4 (4–6 points) – Moderately suspicious', fa: 'TR4 (۴–۶ امتیاز) – نسبتاً مشکوک' },
-            text: {
-              de: 'Mäßig verdächtig. Feinnadelpunktion ab ≥ 1,5 cm; Verlaufskontrolle ab ≥ 1 cm.',
-              en: 'Moderately suspicious. FNA from ≥ 1.5 cm; follow-up from ≥ 1 cm.',
-              fa: 'نسبتاً مشکوک. FNA از ≥ ۱٫۵ سانتی‌متر؛ پیگیری از ≥ ۱ سانتی‌متر.',
-            },
-          },
-          {
-            stage: { de: 'TR5 (≥ 7 Punkte) – Hochsuspekt', en: 'TR5 (≥ 7 points) – Highly suspicious', fa: 'TR5 (≥ ۷ امتیاز) – بسیار مشکوک' },
-            text: {
-              de: 'Hochgradig verdächtig (Malignitätsrisiko > 20 %). Feinnadelpunktion bereits ab ≥ 1 cm; Verlaufskontrolle ab ≥ 0,5 cm.',
-              en: 'Highly suspicious (malignancy risk > 20%). FNA already from ≥ 1 cm; follow-up from ≥ 0.5 cm.',
-              fa: 'بسیار مشکوک (خطر بدخیمی > ۲۰٪). FNA از ≥ ۱ سانتی‌متر؛ پیگیری از ≥ ۰٫۵ سانتی‌متر.',
             },
           },
         ],
