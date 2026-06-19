@@ -193,15 +193,15 @@ export default function KlassDetailPage({ topic, item }) {
             {/* Bild rechts (optional) */}
             {item.image && (
               <figure className={styles.imageFigure}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={item.image.src}
-                  alt={tx(item.image.alt, lang)}
-                  className={`${styles.image} ${styles.imageZoomable}`}
+                <button
+                  type="button"
+                  className={styles.imageBtn}
                   onClick={() => setZoomSrc({ src: item.image.src, alt: tx(item.image.alt, lang) })}
-                />
-                <button type="button" className={styles.zoomHint} onClick={() => setZoomSrc({ src: item.image.src, alt: tx(item.image.alt, lang) })}>
-                  🔍 {copy.zoomImage || 'Vergrößern'}
+                  aria-label={copy.zoomImage || 'Vergrößern'}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={item.image.src} alt={tx(item.image.alt, lang)} className={styles.image} />
+                  <span className={styles.zoomHint}>🔍 {copy.zoomImage || 'Vergrößern'}</span>
                 </button>
                 {item.image.attribution && (
                   <figcaption className={styles.imageCaption}>

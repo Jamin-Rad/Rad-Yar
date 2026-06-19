@@ -250,20 +250,22 @@
   .sidebar { position: static; }
   .sibLink { display: inline-block; }
 }
-.imageZoomable {
-  cursor: zoom-in;
-  transition: opacity .15s;
+.imageBtn {
+  display: block; width: 100%; padding: 0; margin: 0;
+  background: none; border: none; cursor: zoom-in;
+  position: relative;
 }
-.imageZoomable:hover { opacity: .88; }
+.imageBtn:hover .image { opacity: .88; }
+.imageBtn:hover .zoomHint { opacity: 1; }
 
 .zoomHint {
-  display: block; width: 100%; margin-top: 6px;
-  background: none; border: none; cursor: pointer;
-  color: var(--ref-color, #f97316); font-size: 12px; font-weight: 600;
-  text-align: center; padding: 4px 0;
-  opacity: .8; transition: opacity .15s;
+  display: block; width: 100%;
+  background: rgba(0,0,0,.45);
+  color: #fff; font-size: 12px; font-weight: 600;
+  text-align: center; padding: 6px 0;
+  opacity: 0; transition: opacity .2s;
+  position: absolute; bottom: 0; left: 0; right: 0;
 }
-.zoomHint:hover { opacity: 1; }
 
 .lightboxOverlay {
   position: fixed; inset: 0; z-index: 1000;
