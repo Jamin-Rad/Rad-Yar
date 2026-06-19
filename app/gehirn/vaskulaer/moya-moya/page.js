@@ -3,8 +3,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
 import InProgressBanner from '@/components/InProgressBanner'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
@@ -178,23 +176,22 @@ export default function MoyaMoyaPage() {
     {
       frames: CASE1_FRAMES,
       initial: 1,
-      url: 'https://radiopaedia.org/cases/56820',
-      credit: 'Radiopaedia.org · rID-56820 · CC BY-NC-SA 3.0',
+      url: 'https://radiopaedia.org/cases/202226',
+      credit: 'Radiopaedia.org · rID-202226 · CC BY-NC-SA 3.0',
       label: 'MRI',
       meta: c({ de: 'Pädiatrische Moya-Moya: T2 Flow Voids in den Basalganglien (kollaterale Moya-Moya-Gefäße), Ivy Sign auf Gd-FLAIR entlang der Sulci, TOF-MRA mit Stenose der supraklinoidalen ICA.', en: 'Paediatric Moyamoya: T2 flow voids in basal ganglia (collateral Moya-Moya vessels), ivy sign on Gd-FLAIR along sulci, TOF-MRA with stenosis of supraclinoid ICA.', fa: 'Moya-Moya در کودک: Flow voids در T2 در بازال گانگلیا (عروق کولاترال Moya-Moya)، Ivy sign در Gd-FLAIR در امتداد sulci، TOF-MRA با تنگی ICA سوپراکلینوئید.' }),
     },
     {
       frames: CASE2_FRAMES,
       initial: 2,
-      url: 'https://radiopaedia.org/cases/13285',
-      credit: 'Radiopaedia.org · rID-13285 · CC BY-NC-SA 3.0',
+      url: 'https://radiopaedia.org/cases/87811',
+      credit: 'Radiopaedia.org · rID-87811 · CC BY-NC-SA 3.0',
       label: 'DSA / MRA',
       meta: c({ de: 'Erwachsene Moya-Moya: DSA zeigt das charakteristische „Puff of smoke"-Bild mit kollateralen Basalgangliengefäßen. Stenose der supraklinoidalen ICA beidseits. MRA: fehlende ACA/MCA-Signale.', en: 'Adult Moyamoya: DSA shows the characteristic "puff of smoke" appearance with collateral basal ganglia vessels. Bilateral supraclinoid ICA stenosis. MRA: absent ACA/MCA signals.', fa: 'Moya-Moya در بزرگسال: DSA تصویر مشخصه «پف دود» با عروق کولاترال بازال گانگلیا را نشان می‌دهد. تنگی دوطرفه ICA سوپراکلینوئید. MRA: غیاب سیگنال ACA/MCA.' }),
     },
   ]
 
   return <>
-    <Navbar />
     <InProgressBanner lang={lang} />
     <main className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
 
@@ -377,6 +374,5 @@ export default function MoyaMoyaPage() {
         </div>
       )}
     </main>
-    <Footer />
   </>
 }
