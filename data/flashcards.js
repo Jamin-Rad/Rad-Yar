@@ -10,6 +10,7 @@ import { SDH_FLASHCARDS, SDH_FLASHCARD_TOPIC } from './sdh'
 import { DISSECTION_FLASHCARDS, DISSECTION_FLASHCARD_TOPIC } from './dissection'
 import { MOYAMOYA_FLASHCARDS, MOYAMOYA_FLASHCARD_TOPIC } from './moyamoya'
 import { HMA_FLASHCARDS, HMA_FLASHCARD_TOPIC } from './hypertensive-mikroangiopathie'
+import { CAA_FLASHCARDS, CAA_FLASHCARD_TOPIC } from './caa'
 
 export const FLASHCARD_TOPICS = [
   ...CONTRAST_FLASHCARD_TOPICS,
@@ -77,6 +78,7 @@ export const FLASHCARD_TOPICS = [
   DISSECTION_FLASHCARD_TOPIC,
   MOYAMOYA_FLASHCARD_TOPIC,
   HMA_FLASHCARD_TOPIC,
+  CAA_FLASHCARD_TOPIC,
   {
     id: 'divertikulitis',
     area: 'Abdomen',
@@ -532,6 +534,7 @@ export const FLASHCARDS = [
   ...DISSECTION_FLASHCARDS,
   ...MOYAMOYA_FLASHCARDS,
   ...HMA_FLASHCARDS,
+  ...CAA_FLASHCARDS,
   {
     "id": "meniskus-01",
     "topicId": "meniskus",
