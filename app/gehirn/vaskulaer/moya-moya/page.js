@@ -188,9 +188,9 @@ export default function MoyaMoyaPage() {
     },
   ]
 
-  return <>
-    <InProgressBanner lang={lang} />
+  return (
     <main className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
+      <InProgressBanner lang={lang} />
 
       {/* ── Header ─────────────────────────────────────────────────────── */}
       <header className={styles.header}>
@@ -206,7 +206,7 @@ export default function MoyaMoyaPage() {
           <div className={styles.heroText}>
             <span className={styles.sourceBadge}>{MOYAMOYA_LESSON.sourceLabel}</span>
             <h1>{c(MOYAMOYA_LESSON.title)}</h1>
-            <p>{c(MOYAMOYA_LESSON.subtitle)}</p>
+            <p>{c(MOYAMOYA_LESSON.definition)}</p>
             <div className={styles.actions}>
               <Link className={styles.actionBtn} href={withLang(`/ueben/quiz?fach=gehirn&n=13&themen=moya-moya&from=${encodeURIComponent(withLang(path))}`)}>
                 🎯 MCQ
@@ -371,5 +371,5 @@ export default function MoyaMoyaPage() {
         </div>
       )}
     </main>
-  </>
+  )
 }

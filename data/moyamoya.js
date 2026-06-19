@@ -8,10 +8,10 @@ const L = (de, en, fa) => ({ de, en, fa })
 export const MOYAMOYA_LESSON = {
   toc:       L('Inhaltsverzeichnis', 'Contents', 'فهرست مطالب'),
   title:     L('Moya-Moya', 'Moyamoya Disease', 'بیماری Moya-Moya'),
-  subtitle:  L(
-    'Progressive ICA-Okklusion, Kollateralbildung und multimodale Gefäßdiagnostik',
-    'Progressive ICA occlusion, collateral formation and multimodal vascular imaging',
-    'انسداد پیشرونده ICA، تشکیل کولاترال و تصویربرداری عروقی چندوجهی',
+  definition: L(
+    'Seltene, progressive Erkrankung der intrakraniellen Arterien mit bilateraler Okklusion der supraklinoidalen ICA und charakteristischer Kollateralgefäßbildung (»Puff of Smoke«).',
+    'Rare progressive disease causing bilateral supraclinoid ICA occlusion with characteristic collateral vessel formation producing the "puff of smoke" appearance on angiography.',
+    'بیماری پیشرونده نادر عروق داخل جمجمه‌ای با انسداد دوطرفه ICA سوپراکلینوئید و تشکیل عروق کولاترال با ظاهر «پف دود» در آنژیوگرافی.',
   ),
   breadcrumb: L('Vaskuläre Erkrankungen · Moya-Moya', 'Vascular diseases · Moyamoya', 'بیماری‌های عروقی · Moya-Moya'),
   sourceLabel: 'Dr. Zia',

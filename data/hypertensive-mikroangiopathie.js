@@ -7,12 +7,12 @@ const F = (id, category, front, answer, explanation, diagram = null) => ({ id, c
 export const HMA_LESSON = {
   breadcrumb: L('Hypertensive Mikroangiopathie', 'Hypertensive Microangiopathy', 'میکروآنژیوپاتی فشار خون بالا'),
   title: L('Hypertensive Mikroangiopathie', 'Hypertensive Microangiopathy', 'میکروآنژیوپاتی فشار خون بالا'),
-  subtitle: L(
-    'Lipohyalinose · Hypertensive ICB · Lakunäre Infarkte · Leukoaraiose',
-    'Lipohyalinosis · Hypertensive ICH · Lacunar Infarcts · Leukoaraiosis',
-    'لیپوهیالینوز · خونریزی مغزی فشار خون · انفارکت لاکونار · لوکوآرائوز'
+  definition: L(
+    'Folge chronischer Hypertonie auf die kleinen Hirnarterien mit Lipohyalinose und fibrinoider Nekrose – Spektrum aus Leukoaraiose, lakunären Infarkten und hypertensiver intrazerebraler Blutung.',
+    'Consequence of chronic hypertension on small cerebral arteries causing lipohyalinosis and fibrinoid necrosis, with a spectrum of leukoaraiosis, lacunar infarcts, and hypertensive intracerebral haemorrhage.',
+    'پیامد فشار خون مزمن بر عروق کوچک مغزی با لیپوهیالینوز و نکروز فیبرینوئید — طیف شامل لوکوآرائوز، انفارکت لاکونار و خونریزی مغزی فشار خون بالا.'
   ),
-  sourceLabel: 'CCT · CTA · MRT',
+  sourceLabel: 'Dr. Zia',
   keyLabel: L('Merke', 'Key point', 'نکته کلیدی'),
   caveLabel: L('Cave', 'Warning', 'هشدار'),
   toc: L('Inhalte', 'Contents', 'فهرست'),

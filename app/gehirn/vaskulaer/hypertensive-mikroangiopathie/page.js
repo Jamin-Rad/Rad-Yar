@@ -142,9 +142,9 @@ export default function HypertensiveMikroangiopathiePage() {
 
   const rows = value => value.map(row => row.map(c))
 
-  return <>
-    <InProgressBanner lang={lang} />
+  return (
     <main className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
+      <InProgressBanner lang={lang} />
 
       {/* ── Header ─────────────────────────────────────────────────────── */}
       <header className={styles.header}>
@@ -160,7 +160,7 @@ export default function HypertensiveMikroangiopathiePage() {
           <div className={styles.heroText}>
             <span className={styles.sourceBadge}>{HMA_LESSON.sourceLabel}</span>
             <h1>{c(HMA_LESSON.title)}</h1>
-            <p>{c(HMA_LESSON.subtitle)}</p>
+            <p>{c(HMA_LESSON.definition)}</p>
             <div className={styles.actions}>
               <Link className={styles.actionBtn} href={withLang(`/ueben/quiz?fach=gehirn&n=12&themen=hypertensive-mikroangiopathie&from=${encodeURIComponent(withLang(path))}`)}>
                 🎯 MCQ
@@ -326,5 +326,5 @@ export default function HypertensiveMikroangiopathiePage() {
         </div>
       )}
     </main>
-  </>
+  )
 }

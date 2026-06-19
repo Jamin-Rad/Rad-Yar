@@ -943,7 +943,7 @@ export const KLASSIFIKATIONEN = [
           en: 'ACR BI-RADS MRI describes fibroglandular tissue (FGT a–d) and background parenchymal enhancement (BPE). Both affect breast MRI sensitivity and individual cancer risk.',
           fa: 'BI-RADS MRI پستان بافت فیبروغده‌ای (FGT a–d) و تقویت زمینه پارانشیمی (BPE) را توصیف می‌کند. هر دو بر حساسیت MRI پستان و خطر فردی سرطان تأثیر می‌گذارند.',
         },
-        ref: 'ACR BI-RADS® MRI Atlas, 5. Auflage (2013), D'Orsi et al.',
+        ref: "ACR BI-RADS® MRI Atlas, 5. Auflage (2013), D'Orsi et al.",
         cols: [
           { de: 'Grad', en: 'Grade', fa: 'درجه' },
           { de: 'Fibroglanduläres Gewebe (FGT)', en: 'Fibroglandular Tissue (FGT)', fa: 'بافت فیبروغده‌ای (FGT)' },
