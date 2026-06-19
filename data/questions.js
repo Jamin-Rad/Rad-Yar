@@ -12,6 +12,7 @@ import { MOYAMOYA_QUESTIONS } from './moyamoya'
 import { HMA_QUESTIONS } from './hypertensive-mikroangiopathie'
 import { CAA_QUESTIONS } from './caa'
 import { CADASIL_QUESTIONS } from './cadasil'
+import { DVA_QUESTIONS } from './dva'
 
 const DIVERTICULITIS_QUESTION_CONTENT = [
   {
@@ -325,6 +326,7 @@ export const QUESTION_BANK = {
     ...HMA_QUESTIONS.de,
     ...CAA_QUESTIONS.de,
     ...CADASIL_QUESTIONS.de,
+    ...DVA_QUESTIONS.de,
     {
       "id": "meniskus-de-01",
       "tags": [
@@ -1665,6 +1667,7 @@ export const QUESTION_BANK = {
     ...HMA_QUESTIONS.en,
     ...CAA_QUESTIONS.en,
     ...CADASIL_QUESTIONS.en,
+    ...DVA_QUESTIONS.en,
     {
       "id": "meniskus-en-01",
       "tags": [
@@ -3005,6 +3008,7 @@ export const QUESTION_BANK = {
     ...HMA_QUESTIONS.fa,
     ...CAA_QUESTIONS.fa,
     ...CADASIL_QUESTIONS.fa,
+    ...DVA_QUESTIONS.fa,
     {
       "id": "meniskus-fa-01",
       "tags": [
@@ -4350,6 +4354,7 @@ export const MCQ_TOPIC_GROUPS = [
       { id: 'intrazerebrale-blutung', title: { de: 'Intrazerebrale Blutung', en: 'Intracerebral Haemorrhage', fa: 'خونریزی داخل مغزی' } },
       { id: 'hypoxisch-ischaemische-hirnschaedigung', title: { de: 'Hypoxisch-ischämische Hirnschädigung', en: 'Hypoxic-ischaemic brain injury', fa: 'آسیب مغزی هیپوکسیک-ایسکمیک' } },
       { id: 'cadasil', title: { de: 'CADASIL', en: 'CADASIL', fa: 'CADASIL' } },
+      { id: 'dva', title: { de: 'Developmental Venous Anomaly', en: 'Developmental Venous Anomaly', fa: 'آنومالی وریدی تکاملی' } },
     ],
   },
   {
