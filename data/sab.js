@@ -673,7 +673,7 @@ export const SAB_FLASHCARDS = [
       '1. Blood thickness in cisterns: thin (<1 mm) vs. thick (≥1 mm)\n2. IVH (intraventricular haemorrhage): present or absent\n→ Grades 0–4 with vasospasm risk 0 % to ~28 %',
       '۱. ضخامت خون در سیسترن‌ها: نازک (<۱ mm) در مقابل ضخیم (≥۱ mm)\n۲. IVH (خونریزی داخل بطنی): حضور یا عدم حضور\n→ درجات ۰-۴ با خطر وازواسپاسم ۰٪ تا ~۲۸٪'
     ),
-    topic: 'subarachnoidalblutung',
+    topicId: 'subarachnoidalblutung',
     tags: ['fisher-skala', 'vasospasmus'],
   },
   {
@@ -688,7 +688,7 @@ export const SAB_FLASHCARDS = [
       'Grade 4: Thick blood (≥1 mm) + IVH → ~28 % vasospasm risk\n\nFor comparison: Grade 0 = ~0 %, Grade 1 = ~6 %, Grade 2 = ~14 %, Grade 3 = ~12 %',
       'درجه ۴: خون ضخیم (≥۱ mm) + IVH → ~۲۸٪ خطر وازواسپاسم\n\nبرای مقایسه: درجه ۰ = ~۰٪، درجه ۱ = ~۶٪، درجه ۲ = ~۱۴٪، درجه ۳ = ~۱۲٪'
     ),
-    topic: 'subarachnoidalblutung',
+    topicId: 'subarachnoidalblutung',
     tags: ['fisher-skala', 'vasospasmus'],
   },
   {
@@ -703,7 +703,7 @@ export const SAB_FLASHCARDS = [
       'IVH is a strong INDEPENDENT risk factor for vasospasm — independent of blood volume in the cisterns.\nGrade 2 = thin + IVH, Grade 3 = thick + NO IVH.\nIVH contributes more risk than blood thickness alone.',
       'IVH عامل خطر مستقل قوی برای وازواسپاسم است — مستقل از حجم خون در سیسترن‌ها.\nدرجه ۲ = نازک + IVH، درجه ۳ = ضخیم + بدون IVH.\nIVH خطر بیشتری نسبت به ضخامت خون به تنهایی دارد.'
     ),
-    topic: 'subarachnoidalblutung',
+    topicId: 'subarachnoidalblutung',
     tags: ['fisher-skala', 'vasospasmus'],
   },
   {
@@ -718,7 +718,7 @@ export const SAB_FLASHCARDS = [
       'CT sensitivity: ~98–100 % at 0–6 h, drops to ~85 % at 24 h, ~50 % after 5 days.\n\nNegative CT + high suspicion → lumbar puncture after ≥2 h: xanthochromia (yellow-orange colour from haemolysed bilirubin) is diagnostic of SAH.',
       'حساسیت CT: ~۹۸-۱۰۰٪ در ۰-۶ ساعت، کاهش به ~۸۵٪ بعد از ۲۴ ساعت، ~۵۰٪ بعد از ۵ روز.\n\nCT منفی + مظنون بالا → پونکسیون لومبار بعد از ≥۲ ساعت: زانتوکرومی (رنگ زرد-نارنجی از بیلی‌روبین همولیز) تشخیصی برای SAB است.'
     ),
-    topic: 'subarachnoidalblutung',
+    topicId: 'subarachnoidalblutung',
     tags: ['ct-diagnostik'],
   },
   {
@@ -733,7 +733,7 @@ export const SAB_FLASHCARDS = [
       'Perimesencephalic SAH: blood confined to cisterns around the mesencephalon, WITHOUT extension to Sylvian fissure or interhemispheric fissure.\n\nImportant because:\n• No aneurysm (~90 % CTA-negative)\n• No vasospasm\n• No rebleed risk\n• Excellent prognosis\n→ DSA not mandatory with typical pattern + negative CTA',
       'SAB پری‌مزنسفالیک: خون محدود به سیسترن‌های اطراف مزنسفال، بدون انتشار به شکاف سیلویوس یا اینترهمیسفریک.\n\nمهم است چون:\n• بدون آنوریسم (~۹۰٪ CTA منفی)\n• بدون وازواسپاسم\n• بدون خطر خونریزی مجدد\n• پروگنوز عالی\n→ DSA با یافته تیپیک + CTA منفی اجباری نیست'
     ),
-    topic: 'subarachnoidalblutung',
+    topicId: 'subarachnoidalblutung',
     tags: ['aetiologie', 'ct-diagnostik'],
   },
   {
@@ -748,7 +748,7 @@ export const SAB_FLASHCARDS = [
       '1. Rebleeding\n   → Timing: day 0–1 (up to 13 % within 24 h)\n   → Treatment: immediate aneurysm occlusion (coiling/clipping)\n\n2. Cerebral vasospasm / DCI\n   → Timing: day 4–14 (peak day 7–10)\n   → Prophylaxis: nimodipine 60 mg every 4 h × 21 days',
       '۱. خونریزی مجدد\n   → زمان: روز ۰-۱ (تا ۱۳٪ در ۲۴ ساعت)\n   → درمان: انسداد فوری آنوریسم (کویلینگ/کلیپینگ)\n\n۲. وازواسپاسم مغزی / DCI\n   → زمان: روز ۴-۱۴ (اوج روز ۷-۱۰)\n   → پروفیلاکسی: نیمودیپین ۶۰ mg هر ۴ ساعت × ۲۱ روز'
     ),
-    topic: 'subarachnoidalblutung',
+    topicId: 'subarachnoidalblutung',
     tags: ['komplikationen'],
   },
   {
@@ -763,7 +763,7 @@ export const SAB_FLASHCARDS = [
       'Thunderclap headache: sudden-onset, maximally severe headache (seconds to maximum intensity) — often described as "worst headache of my life".\n\nDifferential diagnoses:\n• SAH (most common life-threatening cause)\n• RCVS (reversible cerebral vasoconstriction syndrome)\n• Cervical artery dissection\n• Cerebral venous thrombosis\n• Hypertensive crisis\n• Migraine (diagnosis of exclusion)',
       'سردرد ضربه رعد: سردرد ناگهانی و شدیدترین با رسیدن به حداکثر در ثانیه‌ها — اغلب «بدترین سردرد عمرم» توصیف می‌شود.\n\nتشخیص‌های افتراقی:\n• SAB (شایع‌ترین علت تهدیدکننده حیات)\n• RCVS\n• دیسکسیون شریان گردنی\n• ترومبوز وریدی مغزی\n• بحران هیپرتانسیو\n• میگرن (تشخیص اخراج)'
     ),
-    topic: 'subarachnoidalblutung',
+    topicId: 'subarachnoidalblutung',
     tags: ['klinik'],
   },
   {
@@ -778,7 +778,7 @@ export const SAB_FLASHCARDS = [
       'Sentinel headache: A warning headache days to weeks BEFORE the major SAH — occurs in up to 50 % of patients.\n\nCause: Minor leak or aneurysm expansion.\n\nImplication: Often mistakenly dismissed as tension headache → misdiagnosis → delayed treatment → catastrophic rebleed.\n→ Take every sudden severe headache seriously!',
       'Sentinel Headache: سردرد هشداردهنده روزها تا هفته‌ها قبل از SAB بزرگ — در تا ۵۰٪ از بیماران رخ می‌دهد.\n\nعلت: خونریزی جزئی یا گسترش آنوریسم.\n\nپیامد: اغلب اشتباهاً سردرد تنشی تشخیص داده می‌شود → تشخیص اشتباه → درمان تأخیری → خونریزی مجدد فاجعه‌آمیز.\n→ هر سردرد ناگهانی شدید را جدی بگیرید!'
     ),
-    topic: 'subarachnoidalblutung',
+    topicId: 'subarachnoidalblutung',
     tags: ['klinik'],
   },
 ]
