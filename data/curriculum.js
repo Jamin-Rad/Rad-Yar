@@ -1204,6 +1204,7 @@ export const CURRICULUM = [
           { id: 'proximale-humerusfraktur', title: { de: 'Proximale Humerusfraktur', en: 'Proximal Humerus Fracture', fa: 'شکستگی پروگزیمال هومروس' }, group: ['Schulter & Oberarm'], tags: ['Rö','CT'], diff: 2 },
           { id: 'klavikulafraktur', title: { de: 'Klavikulafraktur', en: 'Clavicle Fracture', fa: 'شکستگی ترقوه (کلاویکول)' }, group: ['Schulter & Oberarm'], tags: ['Rö'], diff: 1 },
           { id: 'skapulafraktur', title: { de: 'Skapulafraktur', en: 'Scapula Fracture', fa: 'شکستگی کتف (اسکاپولا)' }, group: ['Schulter & Oberarm'], tags: ['Rö','CT'], diff: 2 },
+          { id: 'ak-luxation', title: { de: 'Akromioklavikuläre Luxation', en: 'AC Joint Dislocation', fa: 'لوکساسیون مفصل AC' }, group: ['Schulter & Oberarm'], tags: ['Rö'], diff: 2, link: '/msk/trauma/ak-luxation', mcqLink: '/ueben/quiz?fach=msk&n=12&themen=ak-luxation', flashcardLink: '/flashcards/ak-luxation', ready: true, inProgress: true, updatedAt: '2026-06-20' },
           { id: 'distale-humerusfraktur', title: { de: 'Distale Humerusfraktur', en: 'Distal Humerus Fracture', fa: 'شکستگی دیستال هومروس' }, group: ['Ellenbogen & Unterarm'], tags: ['Rö'], diff: 2 },
           { id: 'radiuskoepfchenfraktur', title: { de: 'Radiusköpfchenfraktur', en: 'Radial Head Fracture', fa: 'شکستگی سر رادیوس' }, group: ['Ellenbogen & Unterarm'], tags: ['Rö'], diff: 2 },
           { id: 'monteggia-fraktur', title: { de: 'Monteggia-Fraktur', en: 'Monteggia Fracture', fa: 'شکستگی مونتجیا' }, group: ['Ellenbogen & Unterarm'], tags: ['Rö'], diff: 2 },

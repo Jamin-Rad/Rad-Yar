@@ -21,6 +21,7 @@ import { DAVF_QUESTIONS } from './davf'
 import { AVM_QUESTIONS } from './avm'
 import { FRAKTUR_QUESTIONS } from './frakturbeschreibung'
 import { FRAKTUR_KINDER_QUESTIONS } from './frakturen-kindesalter'
+import { AK_LUXATION_QUESTIONS } from './ak-luxation'
 
 const DIVERTICULITIS_QUESTION_CONTENT = [
   {
@@ -343,6 +344,7 @@ export const QUESTION_BANK = {
     ...DAVF_QUESTIONS.de,
     ...AVM_QUESTIONS.de,
     ...FRAKTUR_KINDER_QUESTIONS.de,
+    ...AK_LUXATION_QUESTIONS.de,
     {
       "id": "meniskus-de-01",
       "tags": [
@@ -1692,6 +1694,7 @@ export const QUESTION_BANK = {
     ...DAVF_QUESTIONS.en,
     ...AVM_QUESTIONS.en,
     ...FRAKTUR_KINDER_QUESTIONS.en,
+    ...AK_LUXATION_QUESTIONS.en,
     {
       "id": "meniskus-en-01",
       "tags": [
@@ -3041,6 +3044,7 @@ export const QUESTION_BANK = {
     ...DAVF_QUESTIONS.fa,
     ...AVM_QUESTIONS.fa,
     ...FRAKTUR_KINDER_QUESTIONS.fa,
+    ...AK_LUXATION_QUESTIONS.fa,
     {
       "id": "meniskus-fa-01",
       "tags": [
@@ -4423,6 +4427,7 @@ export const MCQ_TOPIC_GROUPS = [
     topics: [
       { id: 'frakturbeschreibung', title: { de: 'Frakturbeschreibung', en: 'Fracture description', fa: 'توصیف شکستگی' } },
       { id: 'frakturen-kindesalter', title: { de: 'Frakturen im Kindesalter', en: 'Paediatric Fractures', fa: 'شکستگی‌های دوران کودکی' } },
+      { id: 'ak-luxation', title: { de: 'Akromioklavikuläre Luxation', en: 'AC Joint Dislocation', fa: 'لوکساسیون مفصل AC' } },
     ],
   },
   {
