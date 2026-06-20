@@ -777,6 +777,15 @@
   left: 14px;
 }
 
+.teleangiectasiaCaseImage {
+  width: 100%;
+  height: min(42vw, 430px);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #020617;
+}
+
 /* ── Neuro-Farbsystem: Ischämischer Schlaganfall ─────────── */
 .strokePage {
   background:
