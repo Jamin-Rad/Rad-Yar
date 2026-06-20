@@ -20,6 +20,7 @@ import { SVT_QUESTIONS } from './sinusvenenthrombose'
 import { DAVF_QUESTIONS } from './davf'
 import { AVM_QUESTIONS } from './avm'
 import { FRAKTUR_QUESTIONS } from './frakturbeschreibung'
+import { FRAKTUR_KINDER_QUESTIONS } from './frakturen-kindesalter'
 
 const DIVERTICULITIS_QUESTION_CONTENT = [
   {
@@ -341,6 +342,7 @@ export const QUESTION_BANK = {
     ...FRAKTUR_QUESTIONS.de,
     ...DAVF_QUESTIONS.de,
     ...AVM_QUESTIONS.de,
+    ...FRAKTUR_KINDER_QUESTIONS.de,
     {
       "id": "meniskus-de-01",
       "tags": [
@@ -1689,6 +1691,7 @@ export const QUESTION_BANK = {
     ...FRAKTUR_QUESTIONS.en,
     ...DAVF_QUESTIONS.en,
     ...AVM_QUESTIONS.en,
+    ...FRAKTUR_KINDER_QUESTIONS.en,
     {
       "id": "meniskus-en-01",
       "tags": [
@@ -3037,6 +3040,7 @@ export const QUESTION_BANK = {
     ...FRAKTUR_QUESTIONS.fa,
     ...DAVF_QUESTIONS.fa,
     ...AVM_QUESTIONS.fa,
+    ...FRAKTUR_KINDER_QUESTIONS.fa,
     {
       "id": "meniskus-fa-01",
       "tags": [
@@ -4418,6 +4422,7 @@ export const MCQ_TOPIC_GROUPS = [
     title: { de: '10. Traumatologie & Frakturen', en: '10. Trauma & Fractures', fa: '۱۰. تروما و شکستگی‌ها' },
     topics: [
       { id: 'frakturbeschreibung', title: { de: 'Frakturbeschreibung', en: 'Fracture description', fa: 'توصیف شکستگی' } },
+      { id: 'frakturen-kindesalter', title: { de: 'Frakturen im Kindesalter', en: 'Paediatric Fractures', fa: 'شکستگی‌های دوران کودکی' } },
     ],
   },
   {

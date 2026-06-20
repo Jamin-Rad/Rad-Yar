@@ -20,6 +20,7 @@ import { SVT_FLASHCARDS, SVT_FLASHCARD_TOPIC } from './sinusvenenthrombose'
 import { DAVF_FLASHCARDS, DAVF_FLASHCARD_TOPIC } from './davf'
 import { AVM_FLASHCARDS, AVM_FLASHCARD_TOPIC } from './avm'
 import { FRAKTUR_FLASHCARDS, FRAKTUR_FLASHCARD_TOPIC } from './frakturbeschreibung'
+import { FRAKTUR_KINDER_FLASHCARDS, FRAKTUR_KINDER_FLASHCARD_TOPIC } from './frakturen-kindesalter'
 
 export const FLASHCARD_TOPICS = [
   ...CONTRAST_FLASHCARD_TOPICS,
@@ -97,6 +98,7 @@ export const FLASHCARD_TOPICS = [
   DAVF_FLASHCARD_TOPIC,
   AVM_FLASHCARD_TOPIC,
   FRAKTUR_FLASHCARD_TOPIC,
+  FRAKTUR_KINDER_FLASHCARD_TOPIC,
   {
     id: 'divertikulitis',
     area: 'Abdomen',
@@ -562,6 +564,7 @@ export const FLASHCARDS = [
   ...DAVF_FLASHCARDS,
   ...AVM_FLASHCARDS,
   ...FRAKTUR_FLASHCARDS,
+  ...FRAKTUR_KINDER_FLASHCARDS,
   {
     "id": "meniskus-01",
     "topicId": "meniskus",
