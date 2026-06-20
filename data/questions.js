@@ -16,6 +16,7 @@ import { DVA_QUESTIONS } from './dva'
 import { KAVERNOM_QUESTIONS } from './kavernom'
 import { NPH_QUESTIONS } from './normaldruckhydrozephalus'
 import { TELEANGIEKTASIE_QUESTIONS } from './kapillaere-teleangiektasie'
+import { SVT_QUESTIONS } from './sinusvenenthrombose'
 import { DAVF_QUESTIONS } from './davf'
 import { AVM_QUESTIONS } from './avm'
 
@@ -335,6 +336,7 @@ export const QUESTION_BANK = {
     ...KAVERNOM_QUESTIONS.de,
     ...NPH_QUESTIONS.de,
     ...TELEANGIEKTASIE_QUESTIONS.de,
+    ...SVT_QUESTIONS.de,
     ...DAVF_QUESTIONS.de,
     ...AVM_QUESTIONS.de,
     {
@@ -1681,6 +1683,7 @@ export const QUESTION_BANK = {
     ...KAVERNOM_QUESTIONS.en,
     ...NPH_QUESTIONS.en,
     ...TELEANGIEKTASIE_QUESTIONS.en,
+    ...SVT_QUESTIONS.en,
     ...DAVF_QUESTIONS.en,
     ...AVM_QUESTIONS.en,
     {
@@ -3027,6 +3030,7 @@ export const QUESTION_BANK = {
     ...KAVERNOM_QUESTIONS.fa,
     ...NPH_QUESTIONS.fa,
     ...TELEANGIEKTASIE_QUESTIONS.fa,
+    ...SVT_QUESTIONS.fa,
     ...DAVF_QUESTIONS.fa,
     ...AVM_QUESTIONS.fa,
     {
@@ -4377,6 +4381,7 @@ export const MCQ_TOPIC_GROUPS = [
       { id: 'dva', title: { de: 'Developmental Venous Anomaly', en: 'Developmental Venous Anomaly', fa: 'آنومالی وریدی تکاملی' } },
       { id: 'kavernom', title: { de: 'Kavernom', en: 'Cavernoma', fa: 'کاورنوم' } },
       { id: 'kapillaere-teleangiektasie', title: { de: 'Kapilläre Teleangiektasie', en: 'Capillary telangiectasia', fa: 'تلانژکتازی مویرگی' } },
+      { id: 'sinusvenenthrombose', title: { de: 'Sinus- und Hirnvenenthrombose', en: 'Cerebral venous thrombosis', fa: 'ترومبوز سینوس و وریدهای مغزی' } },
       { id: 'davf', title: { de: 'Durale AV-Fistel (dAVF)', en: 'Dural Arteriovenous Fistula (dAVF)', fa: 'فیستول دورال AV (dAVF)' } },
       { id: 'avm-zns', title: { de: 'Arteriovenöse Malformation (AVM)', en: 'Arteriovenous Malformation (AVM)', fa: 'مالفورماسیون شریانی-وریدی (AVM)' } },
     ],

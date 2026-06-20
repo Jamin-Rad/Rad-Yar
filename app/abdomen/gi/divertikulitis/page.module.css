@@ -786,6 +786,25 @@
   background: #020617;
 }
 
+.svtSignalImage {
+  display: block;
+  width: 100%;
+  margin: 0 0 18px;
+  padding: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(124, 58, 237, .22);
+  border-radius: 18px;
+  cursor: zoom-in;
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, .08);
+}
+
+.svtSignalImage img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 /* ── Neuro-Farbsystem: Ischämischer Schlaganfall ─────────── */
 .strokePage {
   background:
