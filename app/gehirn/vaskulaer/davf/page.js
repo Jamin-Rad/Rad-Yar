@@ -131,7 +131,7 @@ export default function DavfPage() {
   const sections = DAVF_LESSON.sections
   const { isRead, toggleRead, authError } = useLessonReadStatus('davf')
   const [active, setActive] = useState('')
-  const withLang = href => lang === 'de' ? href : `/${lang}${href}`
+  const withLang = href => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
 
   useEffect(() => {
     const observers = sections.map(section => {

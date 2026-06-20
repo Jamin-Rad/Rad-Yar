@@ -93,7 +93,7 @@ export default function CAAPage() {
   const sections = CAA_LESSON.sections
   const path = '/gehirn/vaskulaer/caa'
 
-  const withLang = href => lang === 'de' ? href : `/${lang}${href}`
+  const withLang = href => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
 
   const { isRead, toggleRead, authError } = useLessonReadStatus('caa')
   const [active, setActive] = useState('')

@@ -139,7 +139,7 @@ export default function NormaldruckhydrozephalusPage() {
   const { isRead, toggleRead, authError } = useLessonReadStatus('normaldruckhydrozephalus')
   const [active, setActive] = useState('')
   const [zoomed, setZoomed] = useState(null)
-  const withLang = href => lang === 'de' ? href : `/${lang}${href}`
+  const withLang = href => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
   const route = '/gehirn/anatomie/normaldruckhydrozephalus'
   const rows = value => value.map(row => row.map(c))
 

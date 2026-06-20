@@ -115,7 +115,7 @@ export default function HypertensiveMikroangiopathiePage() {
   const sections = HMA_LESSON.sections
   const path = '/gehirn/vaskulaer/hypertensive-mikroangiopathie'
 
-  const withLang = href => lang === 'de' ? href : `/${lang}${href}`
+  const withLang = href => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
 
   const { isRead, toggleRead, authError } = useLessonReadStatus('hypertensive-mikroangiopathie')
   const [active, setActive] = useState('')

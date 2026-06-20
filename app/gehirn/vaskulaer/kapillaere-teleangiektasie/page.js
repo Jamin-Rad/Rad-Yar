@@ -53,7 +53,7 @@ export default function KapillaereTeleangiektasiePage() {
   const [active, setActive] = useState('')
   const [zoomed, setZoomed] = useState(null)
   const route = '/gehirn/vaskulaer/kapillaere-teleangiektasie'
-  const withLang = href => lang === 'de' ? href : `/${lang}${href}`
+  const withLang = href => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
   const rows = value => value.map(row => row.map(c))
 
   useEffect(() => {

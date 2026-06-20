@@ -164,7 +164,7 @@ export default function DvaPage() {
   const { isRead, toggleRead, authError } = useLessonReadStatus('dva')
   const [active, setActive] = useState('')
   const [zoomed, setZoomed] = useState(null)
-  const withLang = href => lang === 'de' ? href : `/${lang}${href}`
+  const withLang = href => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
 
   useEffect(() => {
     const observers = sections.map(section => {

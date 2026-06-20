@@ -131,7 +131,7 @@ export default function AvmPage() {
   const { isRead, toggleRead, authError } = useLessonReadStatus('avm-zns')
   const [active, setActive] = useState('')
   const [zoomed, setZoomed] = useState(null)
-  const withLang = href => lang === 'de' ? href : `/${lang}${href}`
+  const withLang = href => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
   const fall = AVM_LESSON.fall
 
   useEffect(() => {
