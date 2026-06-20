@@ -16,6 +16,7 @@ import { DVA_FLASHCARDS, DVA_FLASHCARD_TOPIC } from './dva'
 import { KAVERNOM_FLASHCARDS, KAVERNOM_FLASHCARD_TOPIC } from './kavernom'
 import { NPH_FLASHCARDS, NPH_FLASHCARD_TOPIC } from './normaldruckhydrozephalus'
 import { TELEANGIEKTASIE_FLASHCARDS, TELEANGIEKTASIE_FLASHCARD_TOPIC } from './kapillaere-teleangiektasie'
+import { DAVF_FLASHCARDS, DAVF_FLASHCARD_TOPIC } from './davf'
 
 export const FLASHCARD_TOPICS = [
   ...CONTRAST_FLASHCARD_TOPICS,
@@ -89,6 +90,7 @@ export const FLASHCARD_TOPICS = [
   KAVERNOM_FLASHCARD_TOPIC,
   NPH_FLASHCARD_TOPIC,
   TELEANGIEKTASIE_FLASHCARD_TOPIC,
+  DAVF_FLASHCARD_TOPIC,
   {
     id: 'divertikulitis',
     area: 'Abdomen',
@@ -550,6 +552,7 @@ export const FLASHCARDS = [
   ...KAVERNOM_FLASHCARDS,
   ...NPH_FLASHCARDS,
   ...TELEANGIEKTASIE_FLASHCARDS,
+  ...DAVF_FLASHCARDS,
   {
     "id": "meniskus-01",
     "topicId": "meniskus",
