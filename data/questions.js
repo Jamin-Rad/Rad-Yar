@@ -4369,7 +4369,7 @@ export const MCQ_TOPIC_GROUPS = [
   {
     fachId: 'gehirn',
     kapitelId: 'kopf-liquor',
-    title: { de: '7. Liquorzirkulationsstörungen & Hirndruck', en: '7. CSF Circulation Disorders & Intracranial Pressure', fa: '۷. اختلالات گردش مایع مغزی‌نخاعی و فشار داخل جمجمه' },
+    title: { de: '7. Liquorzirkulationsstörungen & intrakranieller Druck', en: '7. CSF Circulation Disorders & Intracranial Pressure', fa: '۷. اختلالات گردش مایع مغزی‌نخاعی و فشار داخل جمجمه' },
     topics: [
       { id: 'normaldruckhydrozephalus', title: { de: 'Normaldruckhydrozephalus', en: 'Normal pressure hydrocephalus', fa: 'هیدروسفالی فشار طبیعی' } },
     ],

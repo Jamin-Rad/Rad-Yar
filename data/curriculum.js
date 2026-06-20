@@ -187,7 +187,7 @@ export const CURRICULUM = [
       },
       {
         id: 'kopf-liquor',
-        title: { de: '7. Liquorzirkulationsstörungen & Hirndruck', en: '7. CSF Circulation Disorders & Intracranial Pressure', fa: '۷. اختلالات گردش مایع مغزی‌نخاعی و فشار داخل جمجمه' },
+        title: { de: '7. Liquorzirkulationsstörungen & intrakranieller Druck', en: '7. CSF Circulation Disorders & Intracranial Pressure', fa: '۷. اختلالات گردش مایع مغزی‌نخاعی و فشار داخل جمجمه' },
         icon: '💧',
         themen: [
           { id: 'hydrozephalus', title: { de: 'Hydrozephalus', en: 'Hydrocephalus', fa: 'هیدروسفالی' }, tags: ['CT','MRT'], diff: 2 },

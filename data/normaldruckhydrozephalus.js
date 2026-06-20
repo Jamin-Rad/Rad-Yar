@@ -215,7 +215,7 @@ export const NPH_FLASHCARDS = NF.map((item, index) => ({
 export const NPH_FLASHCARD_TOPIC = {
   id: 'normaldruckhydrozephalus',
   area: 'Kopf',
-  chapter: 'Liquorzirkulationsstörungen & Hirndruck',
+  chapter: 'Liquorzirkulationsstörungen & intrakranieller Druck',
   icon: '💧',
   iconImage: '/fach/gehirn.png',
   color: '#2563eb',
