@@ -1,0 +1,323 @@
+'use client'
+
+import { useEffect, useState, useCallback } from 'react'
+import Link from 'next/link'
+import InProgressBanner from '@/components/InProgressBanner'
+import { useLanguage } from '@/providers/LanguageProvider'
+import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
+import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
+import { RADIUSKOPF_LESSON } from '@/data/radiuskopf'
+import styles from '../../../abdomen/gi/divertikulitis/page.module.css'
+
+const L = (v, l) => v?.[l] || v?.de || v
+const UI = {
+  de: { zoom: 'Bild vergrößern', close: 'Bildansicht schließen', mark: 'Als gelesen markieren', read: 'Als gelesen markiert', signIn: 'Anmelden', auth: 'Bitte melde dich an, um deinen Lernfortschritt zu speichern.', mcq: 'MCQ', flash: 'Flashcards', prev: 'Vorheriges Bild', next: 'Nächstes Bild', radiopaedia: 'Auf Radiopaedia öffnen' },
+  en: { zoom: 'Enlarge image', close: 'Close image preview', mark: 'Mark as read', read: 'Marked as read', signIn: 'Sign in', auth: 'Please sign in to save your learning progress.', mcq: 'MCQ', flash: 'Flashcards', prev: 'Previous image', next: 'Next image', radiopaedia: 'Open on Radiopaedia' },
+  fa: { zoom: 'بزرگ‌نمایی', close: 'بستن تصویر', mark: 'علامت‌گذاری به‌عنوان خوانده‌شده', read: 'علامت خورد', signIn: 'ورود', auth: 'برای ذخیره پیشرفت وارد شوید.', mcq: 'MCQ', flash: 'فلش‌کارت', prev: 'تصویر قبلی', next: 'تصویر بعدی', radiopaedia: 'باز کردن در رادیوپدیا' },
+}
+
+function Section({ id, title, lead, children }) {
+  const mobile = useMobileLearningLayout()
+  const [open, setOpen] = useState(true)
+  useEffect(() => setOpen(!mobile), [mobile, id])
+  return (
+    <section id={id} className={styles.section}>
+      <button type="button" className={styles.sectionHeader} onClick={() => setOpen(v => !v)} aria-expanded={open}>
+        <h2>{title}</h2><span>{open ? '−' : '+'}</span>
+      </button>
+      {open && <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>}
+    </section>
+  )
+}
+
+function Table({ headers, rows }) {
+  return (
+    <div className={styles.tableWrap}>
+      <table className={styles.table}>
+        <thead><tr>{headers.map((h, i) => <th key={i}>{h}</th>)}</tr></thead>
+        <tbody>{rows.map((r, i) => <tr key={i}>{r.map((c, j) => <td key={j}>{c}</td>)}</tr>)}</tbody>
+      </table>
+    </div>
+  )
+}
+
+function Cards({ items, lang }) {
+  return (
+    <div className={styles.cardsGrid}>
+      {items.map(item => (
+        <div className={styles.infoCard} key={L(item.title, lang)}>
+          <span className={styles.cardIcon}>{item.icon}</span>
+          <h3>{L(item.title, lang)}</h3>
+          <p>{L(item.text, lang)}</p>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function Callout({ label, cave = false, children }) {
+  return (
+    <div className={`${styles.callout} ${cave ? styles.cave : ''}`}>
+      <strong>{cave ? '⚠️' : '💡'} {label}</strong>
+      <p>{children}</p>
+    </div>
+  )
+}
+
+function ReadButton({ isRead, toggleRead, authError, copy }) {
+  return (
+    <div className={styles.readControl}>
+      <button type="button" className={`${styles.readButton} ${isRead ? styles.readButtonActive : ''}`} onClick={toggleRead}>
+        <span className={styles.readCheck}>{isRead ? '✓' : ''}</span>
+        <span>{isRead ? copy.read : copy.mark}</span>
+      </button>
+      {authError && (
+        <div className={styles.readError}>
+          <span>{copy.auth}</span>
+          <Link href="/sign-in">{copy.signIn}</Link>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function ImageModal({ images, index, onClose, onPrev, onNext, copy, radiopaediaUrl }) {
+  useEffect(() => {
+    const handler = e => {
+      if (e.key === 'Escape') onClose()
+      if (e.key === 'ArrowLeft') onPrev()
+      if (e.key === 'ArrowRight') onNext()
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [onClose, onPrev, onNext])
+
+  const img = images[index]
+  return (
+    <div className={styles.strokeImageModal} role="dialog" aria-modal="true" onClick={onClose}>
+      <div className={styles.strokeImageModalContent} onClick={e => e.stopPropagation()}>
+        <button type="button" className={styles.strokeImageModalClose} onClick={onClose} aria-label={copy.close}>×</button>
+        <img src={img.src} alt={img.caption} style={{ maxHeight: '75vh', maxWidth: '100%', objectFit: 'contain' }} />
+        <p style={{ textAlign: 'center', marginTop: '0.5rem', fontSize: '0.875rem', opacity: 0.8 }}>{img.caption}</p>
+        {images.length > 1 && (
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '0.5rem' }}>
+            <button type="button" onClick={onPrev} aria-label={copy.prev} style={{ padding: '0.4rem 1rem', background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.3)', borderRadius: '6px', color: 'inherit', cursor: 'pointer' }}>‹</button>
+            <span style={{ opacity: 0.6, alignSelf: 'center' }}>{index + 1} / {images.length}</span>
+            <button type="button" onClick={onNext} aria-label={copy.next} style={{ padding: '0.4rem 1rem', background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.3)', borderRadius: '6px', color: 'inherit', cursor: 'pointer' }}>›</button>
+          </div>
+        )}
+        {radiopaediaUrl && (
+          <div style={{ textAlign: 'center', marginTop: '0.75rem' }}>
+            <a href={radiopaediaUrl} target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.8rem', opacity: 0.7, textDecoration: 'underline' }}>{copy.radiopaedia} ↗</a>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+function CaseGallery({ title, images, radiopaediaUrl, copy }) {
+  const [modalIndex, setModalIndex] = useState(null)
+  const prev = useCallback(() => setModalIndex(i => (i - 1 + images.length) % images.length), [images.length])
+  const next = useCallback(() => setModalIndex(i => (i + 1) % images.length), [images.length])
+
+  return (
+    <div style={{ marginTop: '1.5rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+        <h4 style={{ margin: 0, fontSize: '0.95rem', fontWeight: 600 }}>{title}</h4>
+        {radiopaediaUrl && (
+          <a href={radiopaediaUrl} target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.75rem', opacity: 0.65, textDecoration: 'none', border: '1px solid currentColor', borderRadius: '4px', padding: '0.15rem 0.5rem' }}>Radiopaedia ↗</a>
+        )}
+      </div>
+      <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+        {images.map((img, i) => (
+          <button key={i} type="button" onClick={() => setModalIndex(i)} aria-label={`${copy.zoom}: ${img.caption}`}
+            style={{ border: '1px solid rgba(255,255,255,0.18)', borderRadius: '8px', padding: 0, cursor: 'zoom-in', overflow: 'hidden', background: 'rgba(255,255,255,0.06)', flex: '1 1 200px', maxWidth: '340px' }}>
+            <img src={img.src} alt={img.caption} style={{ width: '100%', height: '180px', objectFit: 'cover', display: 'block' }} />
+            <p style={{ fontSize: '0.72rem', padding: '0.35rem 0.5rem', margin: 0, opacity: 0.75, lineHeight: 1.3 }}>{img.caption}</p>
+          </button>
+        ))}
+      </div>
+      {modalIndex !== null && (
+        <ImageModal images={images} index={modalIndex} onClose={() => setModalIndex(null)} onPrev={prev} onNext={next} copy={copy} radiopaediaUrl={radiopaediaUrl} />
+      )}
+    </div>
+  )
+}
+
+function SchemaImage({ src, alt, copy, fullWidth = false }) {
+  const [zoomed, setZoomed] = useState(false)
+  return (
+    <div style={{ margin: '1.25rem 0' }}>
+      <button type="button" onClick={() => setZoomed(true)} aria-label={`${copy.zoom}: ${alt}`}
+        style={{ border: '1px solid rgba(255,255,255,0.18)', borderRadius: '8px', padding: 0, cursor: 'zoom-in', overflow: 'hidden', background: 'rgba(255,255,255,0.04)', display: 'block', width: '100%', maxWidth: fullWidth ? '100%' : '560px' }}>
+        <img src={src} alt={alt} style={{ width: '100%', height: 'auto', display: 'block' }} />
+      </button>
+      <p style={{ fontSize: '0.75rem', opacity: 0.6, marginTop: '0.4rem' }}>{alt}</p>
+      {zoomed && (
+        <div className={styles.strokeImageModal} role="dialog" aria-modal="true" onClick={() => setZoomed(false)}>
+          <div className={styles.strokeImageModalContent} onClick={e => e.stopPropagation()}>
+            <button type="button" className={styles.strokeImageModalClose} onClick={() => setZoomed(false)} aria-label={copy.close}>×</button>
+            <img src={src} alt={alt} style={{ maxHeight: '80vh', maxWidth: '100%', objectFit: 'contain' }} />
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default function RadiuskoepfchenfrakturPage() {
+  const { lang } = useLanguage()
+  const copy = UI[lang] || UI.de
+  const c = v => L(v, lang)
+  const rtl = lang === 'fa'
+  const { isRead, toggleRead, authError } = useLessonReadStatus('radiuskoepfchenfraktur')
+  const [active, setActive] = useState('')
+  const route = '/msk/trauma/radiuskoepfchenfraktur'
+  const withLang = href => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
+  const rows = v => v.map(r => r.map(c))
+  const D = RADIUSKOPF_LESSON
+
+  useEffect(() => {
+    const os = D.sections.map(s => {
+      const el = document.getElementById(s.id)
+      if (!el) return null
+      const o = new IntersectionObserver(es => { if (es[0].isIntersecting) setActive(s.id) }, { rootMargin: '-30% 0px -60% 0px' })
+      o.observe(el)
+      return o
+    })
+    return () => os.forEach(o => o?.disconnect())
+  }, [])
+
+  return (
+    <main className={`${styles.page} ${styles.mskTraumaPage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
+      <InProgressBanner lang={lang} />
+
+      <header className={styles.header}>
+        <div className={styles.breadcrumb}>
+          <Link href={withLang('/')}>RadYar</Link>
+          <span>›</span>
+          <Link href={withLang('/lernen/msk')}>MSK</Link>
+          <span>›</span>
+          <span>Ellenbogen &amp; Unterarm</span>
+          <span>›</span>
+          <span>{c(D.breadcrumb)}</span>
+        </div>
+        <div className={styles.hero}>
+          <div className={styles.heroText}>
+            <span className={styles.sourceBadge}>{D.sourceLabel}</span>
+            <h1>{c(D.title)}</h1>
+            <p>{c(D.definition)}</p>
+            <div className={styles.actions}>
+              <Link className={styles.actionBtn} href={withLang(`/ueben/quiz?fach=msk&n=12&themen=radiuskoepfchenfraktur&from=${encodeURIComponent(withLang(route))}`)}>🎯 {copy.mcq}</Link>
+              <Link className={styles.actionBtn} href={withLang(`/flashcards/radiuskoepfchenfraktur?from=${encodeURIComponent(withLang(route))}`)}>🧠 {copy.flash}</Link>
+            </div>
+          </div>
+          <div className={styles.heroStats}>
+            {D.heroCards.map(card => (
+              <div className={styles.heroStat} key={c(card.value)}>
+                <strong>{c(card.value)}</strong>
+                <span>{c(card.label)}</span>
+                <small>{c(card.text)}</small>
+              </div>
+            ))}
+          </div>
+        </div>
+      </header>
+
+      <div className={styles.readBar}>
+        <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} />
+      </div>
+
+      <div className={styles.layout}>
+        <aside className={styles.sidebar}>
+          <div className={styles.sideTitle}>{c(D.toc)}</div>
+          {D.sections.map(s => (
+            <button type="button" key={s.id}
+              className={`${styles.sideItem} ${active === s.id ? styles.sideItemActive : ''}`}
+              onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: 'smooth' })}
+              style={s.emphasis ? { color: '#0891b2', border: '1px solid rgba(8,145,178,.48)', background: 'rgba(8,145,178,.12)', fontWeight: 950 } : undefined}>
+              <span>{s.icon}</span>
+              <strong>{c(s.label)}</strong>
+            </button>
+          ))}
+        </aside>
+
+        <div className={styles.main}>
+
+          {/* ANATOMIE */}
+          <Section id="anatomie" title={c(D.anatomie.title)} lead={c(D.anatomie.lead)}>
+            <Cards items={D.anatomie.items} lang={lang} />
+          </Section>
+
+          {/* BILDGEBUNG */}
+          <Section id="bildgebung" title={c(D.bildgebung.title)} lead={c(D.bildgebung.lead)}>
+            <Table headers={D.bildgebung.aufnahmen.headers.map(c)} rows={rows(D.bildgebung.aufnahmen.rows)} />
+
+            {/* Fettkissenzeichen */}
+            <div style={{ marginTop: '1.5rem' }}>
+              <h4 style={{ marginBottom: '0.5rem', fontSize: '0.95rem', fontWeight: 600 }}>{c(D.bildgebung.fettkissen.title)}</h4>
+              <p style={{ marginBottom: '0.75rem', opacity: 0.85 }}>{c(D.bildgebung.fettkissen.text)}</p>
+              <Cards items={D.bildgebung.fettkissen.items} lang={lang} />
+            </div>
+
+            {/* Radiocapitellar Line */}
+            <CaseGallery
+              title={c(D.bildgebung.rcLine.title)}
+              images={D.bildgebung.rcLine.images.map(img => ({ ...img, caption: c(img.caption) }))}
+              radiopaediaUrl={D.bildgebung.rcLine.radiopaediaUrl}
+              copy={copy}
+            />
+
+            {/* Mason IV Luxation */}
+            <CaseGallery
+              title={c(D.bildgebung.masonIVCase.title)}
+              images={D.bildgebung.masonIVCase.images.map(img => ({ ...img, caption: c(img.caption) }))}
+              radiopaediaUrl={null}
+              copy={copy}
+            />
+
+            <Callout label={c(D.caveLabel)} cave>{c(D.bildgebung.cave)}</Callout>
+          </Section>
+
+          {/* MASON KLASSIFIKATION */}
+          <Section id="mason" title={c(D.mason.title)} lead={c(D.mason.lead)}>
+            <SchemaImage src={D.mason.schemaSrc} alt={c(D.mason.schemaAlt)} copy={copy} fullWidth />
+            <Table headers={D.mason.headers.map(c)} rows={rows(D.mason.rows)} />
+            <Callout label={c(D.keyLabel)}>{c(D.mason.key)}</Callout>
+          </Section>
+
+          {/* THERAPIE */}
+          <Section id="therapie" title={c(D.therapie.title)} lead={c(D.therapie.lead)}>
+            <Cards items={D.therapie.items} lang={lang} />
+            <Callout label={c(D.caveLabel)} cave>{c(D.therapie.cave)}</Callout>
+          </Section>
+
+          {/* ASSOZIIERTE VERLETZUNGEN */}
+          <Section id="assoziiert" title={c(D.assoziiert.title)} lead={c(D.assoziiert.lead)}>
+            <Cards items={D.assoziiert.items} lang={lang} />
+          </Section>
+
+          {/* TAKE-HOME */}
+          <Section id="takehome" title={c(D.takehome.title)} lead={c(D.takehome.lead)}>
+            <div className={styles.takeHomeGrid}>
+              {D.takehome.items.map((item, i) => (
+                <div className={styles.takeHomeItem} key={c(item.title)}>
+                  <span>{String(i + 1).padStart(2, '0')}</span>
+                  <div>
+                    <h3>{c(item.title)}</h3>
+                    <p>{c(item.text)}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Section>
+
+          <div className={styles.readBarBottom}>
+            <ReadButton isRead={isRead} toggleRead={toggleRead} authError={authError} copy={copy} />
+          </div>
+        </div>
+      </div>
+    </main>
+  )
+}
