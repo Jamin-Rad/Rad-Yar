@@ -45,7 +45,7 @@ export default function SinusvenenthrombosePage() {
   const [active, setActive] = useState('')
   const [zoomed, setZoomed] = useState(false)
   const route = '/gehirn/vaskulaer/sinusvenenthrombose'
-  const withLang = href => lang === 'de' ? href : `/${lang}${href}`
+  const withLang = href => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
   const rows = value => value.map(row => row.map(c))
 
   useEffect(() => {
