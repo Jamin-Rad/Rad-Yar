@@ -877,7 +877,11 @@
   background: transparent;
   cursor: zoom-in;
 }
-.strokeCaseZoom { min-width: 0; overflow: hidden; }
+.strokeCaseZoom {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+}
 .strokeZoomButton img,
 .strokeCaseZoom img { transition: transform .2s ease, filter .2s ease; }
 .strokeZoomButton:hover img,
