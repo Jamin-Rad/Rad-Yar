@@ -1194,7 +1194,7 @@ export const CURRICULUM = [
         title: { de: '10. Traumatologie & Frakturen', en: '10. Trauma & Fractures', fa: '۱۰. تروما و شکستگی‌ها' },
         icon: '🚑',
         themen: [
-          { id: 'frakturbeschreibung', title: { de: 'Frakturbeschreibung', en: 'Fracture Description', fa: 'توصیف شکستگی' }, group: ['Grundlagen'], tags: ['Rö'], diff: 1 },
+          { id: 'frakturbeschreibung', title: { de: 'Frakturbeschreibung', en: 'Fracture Description', fa: 'توصیف شکستگی' }, group: ['Grundlagen'], tags: ['Rö'], diff: 1, link: '/msk/trauma/frakturbeschreibung', mcqLink: '/ueben/quiz?fach=msk&n=12&themen=frakturbeschreibung', flashcardLink: '/flashcards/frakturbeschreibung', ready: true, inProgress: true, updatedAt: '2026-06-20' },
           { id: 'frakturheilung', title: { de: 'Frakturheilung & Komplikationen', en: 'Fracture Healing & Complications', fa: 'ترمیم شکستگی و عوارض' }, group: ['Grundlagen'], tags: ['Rö'], diff: 2 },
           { id: 'stressfrakturen', title: { de: 'Stressfrakturen', en: 'Stress Fractures', fa: 'شکستگی‌های استرسی' }, group: ['Grundlagen'], tags: ['MRT','Rö'], diff: 2 },
           { id: 'frakturen-kindesalter', title: { de: 'Frakturen im Kindesalter', en: 'Paediatric Fractures', fa: 'شکستگی‌های دوران کودکی' }, group: ['Grundlagen'], tags: ['Rö'], diff: 2 },

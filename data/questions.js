@@ -19,6 +19,7 @@ import { TELEANGIEKTASIE_QUESTIONS } from './kapillaere-teleangiektasie'
 import { SVT_QUESTIONS } from './sinusvenenthrombose'
 import { DAVF_QUESTIONS } from './davf'
 import { AVM_QUESTIONS } from './avm'
+import { FRAKTUR_QUESTIONS } from './frakturbeschreibung'
 
 const DIVERTICULITIS_QUESTION_CONTENT = [
   {
@@ -337,6 +338,7 @@ export const QUESTION_BANK = {
     ...NPH_QUESTIONS.de,
     ...TELEANGIEKTASIE_QUESTIONS.de,
     ...SVT_QUESTIONS.de,
+    ...FRAKTUR_QUESTIONS.de,
     ...DAVF_QUESTIONS.de,
     ...AVM_QUESTIONS.de,
     {
@@ -1684,6 +1686,7 @@ export const QUESTION_BANK = {
     ...NPH_QUESTIONS.en,
     ...TELEANGIEKTASIE_QUESTIONS.en,
     ...SVT_QUESTIONS.en,
+    ...FRAKTUR_QUESTIONS.en,
     ...DAVF_QUESTIONS.en,
     ...AVM_QUESTIONS.en,
     {
@@ -3031,6 +3034,7 @@ export const QUESTION_BANK = {
     ...NPH_QUESTIONS.fa,
     ...TELEANGIEKTASIE_QUESTIONS.fa,
     ...SVT_QUESTIONS.fa,
+    ...FRAKTUR_QUESTIONS.fa,
     ...DAVF_QUESTIONS.fa,
     ...AVM_QUESTIONS.fa,
     {
@@ -4407,6 +4411,14 @@ export const MCQ_TOPIC_GROUPS = [
     kapitelId: 'technik-kontrastmittel',
     title: { de: '9. Kontrastmittel', en: '9. Contrast Media', fa: '۹. مواد حاجب' },
     topics: CONTRAST_TOPICS.map(({ id, title }) => ({ id, title })),
+  },
+  {
+    fachId: 'msk',
+    kapitelId: 'msk-trauma',
+    title: { de: '10. Traumatologie & Frakturen', en: '10. Trauma & Fractures', fa: '۱۰. تروما و شکستگی‌ها' },
+    topics: [
+      { id: 'frakturbeschreibung', title: { de: 'Frakturbeschreibung', en: 'Fracture description', fa: 'توصیف شکستگی' } },
+    ],
   },
   {
     fachId: 'msk',

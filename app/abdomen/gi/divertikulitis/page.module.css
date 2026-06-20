@@ -805,6 +805,44 @@
   height: auto;
 }
 
+.mskTraumaPage {
+  background:
+    radial-gradient(circle at top left, rgba(249, 115, 22, .16), transparent 31rem),
+    radial-gradient(circle at top right, rgba(234, 179, 8, .10), transparent 28rem),
+    var(--bg);
+}
+.mskTraumaPage .breadcrumb a,
+.mskTraumaPage .sectionHeader h2,
+.mskTraumaPage .actionBtn { color: #ea580c; }
+.mskTraumaPage .sourceBadge { background: linear-gradient(135deg, #c2410c, #f97316); }
+.mskTraumaPage .heroText::after { background: linear-gradient(90deg, #ea580c, #f97316, #eab308); }
+.mskTraumaPage .heroStat:nth-child(1) { background: linear-gradient(135deg, #9a3412, #ea580c); }
+.mskTraumaPage .heroStat:nth-child(2) { background: linear-gradient(135deg, #b45309, #f59e0b); }
+.mskTraumaPage .heroStat:nth-child(3) { color: #7c2d12; background: linear-gradient(135deg, #fff7ed, #fefce8); }
+.mskTraumaPage .sideItemActive { color: #ea580c; background: rgba(249,115,22,.12); }
+.mskTraumaPage .takeHomeItem > span { color: #ea580c; background: rgba(249,115,22,.12); }
+
+.fractureMorphologyImage {
+  display: block;
+  width: min(900px, 100%);
+  margin: 22px auto 0;
+  padding: 10px;
+  border: 1px solid rgba(249, 115, 22, .25);
+  border-radius: 20px;
+  cursor: zoom-in;
+  background: #fff;
+  box-shadow: 0 14px 30px rgba(15,23,42,.10);
+}
+.fractureMorphologyImage img { display:block; width:100%; height:auto; }
+.fractureReportTemplate {
+  margin: 18px 0;
+  padding: 20px;
+  border: 1px dashed rgba(249,115,22,.55);
+  border-radius: 18px;
+  background: rgba(249,115,22,.07);
+}
+.fractureReportTemplate p { margin:0; line-height:1.8; font-weight:700; }
+
 /* ── Neuro-Farbsystem: Ischämischer Schlaganfall ─────────── */
 .strokePage {
   background:

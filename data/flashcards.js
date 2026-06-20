@@ -19,6 +19,7 @@ import { TELEANGIEKTASIE_FLASHCARDS, TELEANGIEKTASIE_FLASHCARD_TOPIC } from './k
 import { SVT_FLASHCARDS, SVT_FLASHCARD_TOPIC } from './sinusvenenthrombose'
 import { DAVF_FLASHCARDS, DAVF_FLASHCARD_TOPIC } from './davf'
 import { AVM_FLASHCARDS, AVM_FLASHCARD_TOPIC } from './avm'
+import { FRAKTUR_FLASHCARDS, FRAKTUR_FLASHCARD_TOPIC } from './frakturbeschreibung'
 
 export const FLASHCARD_TOPICS = [
   ...CONTRAST_FLASHCARD_TOPICS,
@@ -95,6 +96,7 @@ export const FLASHCARD_TOPICS = [
   SVT_FLASHCARD_TOPIC,
   DAVF_FLASHCARD_TOPIC,
   AVM_FLASHCARD_TOPIC,
+  FRAKTUR_FLASHCARD_TOPIC,
   {
     id: 'divertikulitis',
     area: 'Abdomen',
@@ -559,6 +561,7 @@ export const FLASHCARDS = [
   ...SVT_FLASHCARDS,
   ...DAVF_FLASHCARDS,
   ...AVM_FLASHCARDS,
+  ...FRAKTUR_FLASHCARDS,
   {
     "id": "meniskus-01",
     "topicId": "meniskus",
