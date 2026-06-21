@@ -4524,9 +4524,19 @@ export function shuffleQuestionIds(themenIds, n) {
   return ids.slice(0, n)
 }
 
-// Returns questions in the exact order of `ids` for the given language.
-export function getQuestionsForIds(ids, lang) {
-  const all = QUESTION_BANK[lang] || QUESTION_BANK.de
-  const byId = new Map(all.map(q => [q.id, q]))
-  return ids.map(id => byId.get(id)).filter(Boolean)
+// Returns questions in the exact order of `deIds` for the given language.
+// deIds are IDs from QUESTION_BANK.de (e.g. "divertikulitis-de-1").
+// The target-language version uses the same id with "-de-" replaced by "-{lang}-".
+// Falls back to the DE question if no translation exists.
+export function getQuestionsForIds(deIds, lang) {
+  if (lang === 'de') {
+    const byId = new Map(QUESTION_BANK.de.map(q => [q.id, q]))
+    return deIds.map(id => byId.get(id)).filter(Boolean)
+  }
+  const targetBank = new Map((QUESTION_BANK[lang] || []).map(q => [q.id, q]))
+  const deBank = new Map(QUESTION_BANK.de.map(q => [q.id, q]))
+  return deIds.map(deId => {
+    const targetId = deId.replace('-de-', `-${lang}-`)
+    return targetBank.get(targetId) || deBank.get(deId)
+  }).filter(Boolean)
 }
