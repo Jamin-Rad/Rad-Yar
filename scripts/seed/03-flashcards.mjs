@@ -33,7 +33,7 @@ const cardRows = FLASHCARDS.map(card => ({
   topic_id: card.topicId,
   category: card.category ?? null,
   front: card.front,
-  back: card.answer,
+  back: card.back ?? card.answer,
   explanation: card.explanation ?? null,
   diagram: card.diagram ?? null,
 }))

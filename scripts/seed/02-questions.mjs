@@ -12,24 +12,42 @@ if (!isSupabaseAdminConfigured) {
   process.exit(1)
 }
 
-const LANGS = ['de', 'en', 'fa']
-const ID_PATTERN = /^(.+)-(de|en|fa)-(\d+)$/
+// ── ID-Normalisierung ──────────────────────────────────────────────────────────
+// Unterstützte Formate:
+//   1. topic-de-01           (alt, Zahl am Ende)       → key: topic-01
+//   2. topic-de-keyword      (Sprache in Mitte)         → key: topic-keyword
+//   3. topic-keyword-01-de   (Sprache am Ende)          → key: topic-keyword-01
+//   4. topic-q01             (sprachneutral)            → key: topic-q01
 
-// 1. Pro Sprache nach <topic>-<num> gruppieren
-const groups = new Map() // key -> { de, en, fa }
-for (const lang of LANGS) {
-  for (const entry of QUESTION_BANK[lang] ?? []) {
-    const match = entry.id.match(ID_PATTERN)
-    if (!match || match[2] !== lang) {
-      throw new Error(`Unerwartetes ID-Format: ${entry.id}`)
-    }
-    const key = `${match[1]}-${match[3]}`
-    if (!groups.has(key)) groups.set(key, {})
-    groups.get(key)[lang] = entry
-  }
+function canonicalId(deId) {
+  // Format 3: endet auf -de
+  if (deId.endsWith('-de')) return deId.slice(0, -3)
+  // Format 1+2: -de- in der Mitte
+  const mid = deId.indexOf('-de-')
+  if (mid !== -1) return deId.slice(0, mid) + deId.slice(mid + 3) // entfernt "-de" aus "-de-"
+  // Format 4: sprachneutral – unverändertes ID
+  return deId
 }
 
-// 2. Existierende Themen-IDs laden (für thema_id-Auflösung)
+function findTranslation(deId, lang, byId) {
+  // Format 4: gleiche ID in allen Sprachen
+  if (byId.has(deId)) return byId.get(deId)
+  // Format 3: -de am Ende ersetzen
+  if (deId.endsWith('-de')) {
+    const id = deId.slice(0, -3) + `-${lang}`
+    if (byId.has(id)) return byId.get(id)
+  }
+  // Format 1+2: -de- in der Mitte ersetzen
+  const translated = deId.replace('-de-', `-${lang}-`)
+  if (byId.has(translated)) return byId.get(translated)
+  return null
+}
+
+// ── Lookup-Maps für EN und FA ──────────────────────────────────────────────────
+const enById = new Map((QUESTION_BANK.en ?? []).map(q => [q.id, q]))
+const faById = new Map((QUESTION_BANK.fa ?? []).map(q => [q.id, q]))
+
+// ── Existierende Themen-IDs laden (für thema_id-Auflösung) ────────────────────
 const { data: themenRows, error: themenError } = await supabaseAdmin.from('themen').select('id')
 if (themenError) throw new Error(`Laden von themen fehlgeschlagen: ${themenError.message}`)
 const themenIds = new Set(themenRows.map(t => t.id))
@@ -45,16 +63,24 @@ function resolveThemaId(tags) {
   return null
 }
 
-// 3. Zeilen bauen
+// ── Zeilen bauen ───────────────────────────────────────────────────────────────
 const rows = []
 const unresolved = []
+const seen = new Set()
 
-for (const [key, byLang] of groups) {
-  if (!byLang.de || !byLang.en || !byLang.fa) {
-    unresolved.push({ key, reason: `fehlende Sprachvariante (${LANGS.filter(l => !byLang[l]).join(', ')})` })
+for (const de of QUESTION_BANK.de ?? []) {
+  const key = canonicalId(de.id)
+  if (seen.has(key)) continue
+  seen.add(key)
+
+  const en = findTranslation(de.id, 'en', enById)
+  const fa = findTranslation(de.id, 'fa', faById)
+
+  if (!en || !fa) {
+    unresolved.push({ key, reason: `fehlende Übersetzung (en:${!!en}, fa:${!!fa})` })
     continue
   }
-  const { de, en, fa } = byLang
+
   const thema_id = resolveThemaId(de.tags)
   if (!thema_id) {
     unresolved.push({ key, reason: `kein Tag passt zu themen.id (tags: ${(de.tags ?? []).join(', ')})` })
@@ -67,14 +93,14 @@ for (const [key, byLang] of groups) {
     question: { de: de.question, en: en.question, fa: fa.question },
     options: de.options.map((opt, i) => ({
       id: opt.id,
-      text: { de: opt.text, en: en.options[i].text, fa: fa.options[i].text },
+      text: { de: opt.text, en: en.options[i]?.text, fa: fa.options[i]?.text },
     })),
     correct: de.correct,
     explanation: { de: de.explanation, en: en.explanation, fa: fa.explanation },
   })
 }
 
-// 4. Upsert
+// ── Upsert ─────────────────────────────────────────────────────────────────────
 async function upsertAll(table, allRows, chunkSize = 100) {
   let count = 0
   for (let i = 0; i < allRows.length; i += chunkSize) {
@@ -88,8 +114,8 @@ async function upsertAll(table, allRows, chunkSize = 100) {
 
 const inserted = await upsertAll('questions', rows)
 
-console.log(`questions: ${inserted} upserted (von ${groups.size} Gruppen)`)
+console.log(`questions: ${inserted} upserted (von ${[...seen].length} eindeutigen Fragen)`)
 if (unresolved.length) {
-  console.log(`\n${unresolved.length} Gruppen NICHT eingefügt:`)
+  console.log(`\n${unresolved.length} Fragen NICHT eingefügt:`)
   for (const u of unresolved) console.log(`  - ${u.key}: ${u.reason}`)
 }
