@@ -4511,3 +4511,22 @@ export function getQuestionsByIds(questionIds, lang) {
   const all = QUESTION_BANK[lang] || QUESTION_BANK.de
   return all.filter(question => wanted.has(question.id))
 }
+
+// Returns a shuffled list of question IDs for the given topics (language-independent).
+export function shuffleQuestionIds(themenIds, n) {
+  const all = QUESTION_BANK.de
+  const tagSet = new Set(themenIds)
+  const ids = all.filter(q => q.tags.some(t => tagSet.has(t))).map(q => q.id)
+  for (let i = ids.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [ids[i], ids[j]] = [ids[j], ids[i]]
+  }
+  return ids.slice(0, n)
+}
+
+// Returns questions in the exact order of `ids` for the given language.
+export function getQuestionsForIds(ids, lang) {
+  const all = QUESTION_BANK[lang] || QUESTION_BANK.de
+  const byId = new Map(all.map(q => [q.id, q]))
+  return ids.map(id => byId.get(id)).filter(Boolean)
+}

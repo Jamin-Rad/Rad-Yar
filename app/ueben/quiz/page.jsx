@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { useUser } from '@clerk/nextjs'
 import { useLanguage } from '@/providers/LanguageProvider'
-import { getQuestions, getQuestionsByIds } from '@/data/questions'
+import { shuffleQuestionIds, getQuestionsForIds, getQuestionsByIds } from '@/data/questions'
 import { isSubscriptionActive, FREE_ITEM_LIMIT } from '@/utils/subscription'
 import { getWrongAnswerExplanation } from '@/utils/answerFeedback'
 import { markProgressSyncPending } from '@/utils/syncProgressToServer'
@@ -165,10 +165,21 @@ function QuizContent() {
   // Kostenlose Konten: max. FREE_ITEM_LIMIT Fragen pro Durchgang
   const effectiveN = subscriptionActive ? nParam : Math.min(nParam, FREE_ITEM_LIMIT)
 
-  // Load questions (randomized, capped to n)
+  // Stable question order — fixed on mount, does NOT change when lang changes
+  const orderedIds = useMemo(
+    () => questionIds.length
+      ? questionIds.slice(0, effectiveN)
+      : shuffleQuestionIds(themenIds, effectiveN),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [themenParam, fragenParam, effectiveN]
+  )
+
+  // Translate to current language without re-shuffling
   const questions = useMemo(
-    () => questionIds.length ? getQuestionsByIds(questionIds, lang).slice(0, effectiveN) : getQuestions(themenIds, lang, effectiveN),
-    [themenParam, fragenParam, lang, effectiveN]
+    () => questionIds.length
+      ? getQuestionsByIds(orderedIds, lang)
+      : getQuestionsForIds(orderedIds, lang),
+    [orderedIds, lang]
   )
   const total = questions.length
 
