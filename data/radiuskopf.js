@@ -340,7 +340,14 @@ export const RADIUSKOPF_LESSON = {
   },
 }
 
-const Q = (id, question, options, correct, explanation) => ({ id, question, options, correct, explanation })
+const LETTERS = ['A', 'B', 'C', 'D', 'E']
+const Q = (id, question, options, correct, explanation) => ({
+  id,
+  question,
+  options: options.map((text, i) => ({ id: LETTERS[i], text })),
+  correct: LETTERS[correct],
+  explanation,
+})
 const F = (id, category, front, answer, explanation) => ({ id, category, front, answer, explanation })
 
 export const RADIUSKOPF_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(lang => [lang, [
