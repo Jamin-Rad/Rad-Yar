@@ -21,6 +21,15 @@ const HOME_CARD_VISUALS = {
   },
 }
 
+const CLASSIFICATION_TOPIC_LOGOS = {
+  neuro: '/fach/gehirn.png',
+  thorax: '/fach/thorax.png',
+  abdomen: '/fach/abdomen.png',
+  'mamma-uro': '/fach/mamma.png',
+  msk: '/fach/msk.png',
+  onko: '/fach/technik.png',
+}
+
 function HomeCardIcon({ type, alt }) {
   const visual = HOME_CARD_VISUALS[type]
   return (
@@ -217,7 +226,9 @@ function KlassifikationenModal({ copy, lang, onClose }) {
             <button key={t.id}
               className={`${styles.navBtn} ${styles.klassNavBtn} ${t.id===topicId?styles.navActiveOrange:''}`}
               style={{'--ref-color':t.color}} onClick={()=>{setTopicId(t.id);setShowDetail(true)}}>
-              <span className={styles.navIconWrap} style={{color:t.color}}><RegionIcon id={t.iconId||t.id} size={16}/></span>
+              <span className={`${styles.navIconWrap} ${styles.klassNavLogoWrap}`}>
+                <Image src={CLASSIFICATION_TOPIC_LOGOS[t.id] || '/fach/technik.png'} alt="" width={30} height={30} className={styles.klassNavLogo} />
+              </span>
               <span className={styles.klassNavText}>
                 <span className={styles.navLabel}>{tx(t.name,lang)}</span>
                 <span className={styles.klassNavCount}>{t.items.length} {lang === 'de' ? 'Klassifikationen' : lang === 'fa' ? 'طبقه‌بندی' : 'classifications'}</span>
@@ -229,7 +240,9 @@ function KlassifikationenModal({ copy, lang, onClose }) {
         <div className={styles.content} style={{'--ref-color':topic.color}}>
           <button className={styles.mobileBack} onClick={()=>setShowDetail(false)}>← {copy.back}</button>
           <div className={styles.klassTopicHead}>
-            <span className={styles.regionHeadingIcon} style={{color:topic.color}}><RegionIcon id={topic.iconId||topic.id} size={22}/></span>
+            <span className={`${styles.regionHeadingIcon} ${styles.klassTopicLogoWrap}`}>
+              <Image src={CLASSIFICATION_TOPIC_LOGOS[topic.id] || '/fach/technik.png'} alt="" width={38} height={38} className={styles.klassTopicLogo} />
+            </span>
             <div>
               <span className={styles.klassTopicEyebrow}>{copy.btnKlass}</span>
               <h2 style={{color:topic.color}}>{tx(topic.name,lang)}</h2>
