@@ -1,26 +1,22 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { REF_COPY, REF_DATA, tx } from '@/data/referenzen'
-import {
-  AbdomenChapterIcon,
-  GehirnChapterIcon,
-  MammaChapterIcon,
-  MskChapterIcon,
-  TechnikChapterIcon,
-  ThoraxChapterIcon,
-} from '@/components/ChapterIcons'
 import styles from './KlassDetailPage.module.css'
 
-function ClassificationTopicIcon({ topicId }) {
-  const className = styles.currentTopicSvg
-  if (topicId === 'neuro') return <GehirnChapterIcon id="kopf-anatomie" className={className} />
-  if (topicId === 'thorax') return <ThoraxChapterIcon id="thorax-anatomie" className={className} />
-  if (topicId === 'abdomen') return <AbdomenChapterIcon id="abdomen-anatomie" className={className} />
-  if (topicId === 'mamma-uro') return <MammaChapterIcon id="mamma-bildgebung" className={className} />
-  if (topicId === 'msk') return <MskChapterIcon id="msk-anatomie" className={className} />
-  return <TechnikChapterIcon id="technik-nuklearmedizin" className={className} />
+const TOPIC_LOGOS = {
+  neuro: '/fach/gehirn.png',
+  thorax: '/fach/thorax.png',
+  abdomen: '/fach/abdomen.png',
+  'mamma-uro': '/fach/mamma.png',
+  msk: '/fach/msk.png',
+  onko: '/fach/technik.png',
+}
+
+function ClassificationTopicLogo({ topicId, size = 30 }) {
+  return <Image src={TOPIC_LOGOS[topicId] || '/fach/technik.png'} alt="" width={size} height={size} className={styles.topicLogo} />
 }
 
 function CollapseSection({ title, color, defaultOpen = true, children }) {
@@ -92,7 +88,7 @@ export default function KlassDetailPage({ topic, item }) {
             <span>{copy.btnKlass}</span>
           </Link>
           <div className={styles.currentTopic} style={{ '--ref-color': color }}>
-            <span className={styles.currentTopicIcon}><ClassificationTopicIcon topicId={topic.id} /></span>
+            <span className={styles.currentTopicIcon}><ClassificationTopicLogo topicId={topic.id} size={32} /></span>
             <span>
               <small>{lang === 'de' ? 'Aktueller Bereich' : lang === 'fa' ? 'بخش فعلی' : 'Current section'}</small>
               <strong>{tx(topic.name, lang)}</strong>
@@ -128,7 +124,7 @@ export default function KlassDetailPage({ topic, item }) {
                   className={styles.otherTopicLink}
                   style={{ '--ref-color': t.color }}
                 >
-                  <span className={styles.dot} style={{ background: t.color }} />
+                  <span className={styles.otherTopicIcon}><ClassificationTopicLogo topicId={t.id} size={20} /></span>
                   <span>{tx(t.name, lang)}</span>
                   <small>{t.items.length}</small>
                 </Link>
