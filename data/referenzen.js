@@ -1399,6 +1399,66 @@ export const KLASSIFIKATIONEN = [
 // ── Rechner ──────────────────────────────────────────────────
 export const RECHNER = [
 
+  // Abdomen: Milzindex + geschätztes Milzvolumen
+  {
+    id: 'milz-index', type: 'multi', color: '#f59e0b',
+    name: { de: 'Milzindex + Milzvolumen', en: 'Spleen Index + Volume', fa: 'شاخص و حجم طحال' },
+    formula: 'Index = L × B  ·  Volumen = L × B × T × 0.523',
+    hint: {
+      de: 'Milzindex wie im früheren Rechner: Länge × Breite; zusätzlich ellipsoide Volumenschätzung. Körpergröße und klinischer Kontext mitbeurteilen.',
+      en: 'Spleen index as in the previous calculator: length × width; additionally an ellipsoid volume estimate. Consider body size and clinical context.',
+      fa: 'شاخص طحال مانند محاسبه‌گر قبلی: طول × عرض؛ به‌علاوه برآورد حجم بیضوی. قد و زمینه بالینی نیز در نظر گرفته شود.',
+    },
+    fields: [
+      { id: 'l', label: { de: 'Länge', en: 'Length', fa: 'طول' }, unit: 'cm', step: 0.1, min: 0.1, max: 30 },
+      { id: 'b', label: { de: 'Breite', en: 'Width', fa: 'عرض' }, unit: 'cm', step: 0.1, min: 0.1, max: 20 },
+      { id: 't', label: { de: 'Tiefe / Dicke', en: 'Depth / thickness', fa: 'عمق / ضخامت' }, unit: 'cm', step: 0.1, min: 0.1, max: 20 },
+    ],
+    outputs: [
+      {
+        label: { de: 'Milzindex', en: 'Spleen index', fa: 'شاخص طحال' }, unit: 'cm²', decimals: 1,
+        calc: (v) => v.l && v.b ? v.l * v.b : null,
+        ranges: [
+          { max: 28, label: { de: '≤ 28 cm² – im Normbereich', en: '≤28 cm² – within normal range', fa: '≤۲۸ cm² – در محدوده طبیعی' }, color: '#16a34a' },
+          { max: Infinity, label: { de: '> 28 cm² – vergrößert', en: '>28 cm² – enlarged', fa: '>۲۸ cm² – بزرگ‌شده' }, color: '#dc2626' },
+        ],
+      },
+      {
+        label: { de: 'Geschätztes Volumen', en: 'Estimated volume', fa: 'حجم تخمینی' }, unit: 'ml', decimals: 1,
+        calc: (v) => v.l && v.b && v.t ? v.l * v.b * v.t * 0.523 : null,
+        ranges: [
+          { max: 220, label: { de: '< 220 ml – im Normbereich', en: '<220 ml – within normal range', fa: '<۲۲۰ ml – در محدوده طبیعی' }, color: '#16a34a' },
+          { max: 400, label: { de: '220–400 ml – Splenomegalie', en: '220–400 ml – splenomegaly', fa: '۲۲۰–۴۰۰ ml – اسپلنومگالی' }, color: '#ca8a04' },
+          { max: Infinity, label: { de: '> 400 ml – deutliche Splenomegalie', en: '>400 ml – marked splenomegaly', fa: '>۴۰۰ ml – اسپلنومگالی واضح' }, color: '#dc2626' },
+        ],
+      },
+    ],
+  },
+
+  // Abdomen: einseitiges Nierenvolumen
+  {
+    id: 'niere-volumen', type: 'single', color: '#e11d48',
+    name: { de: 'Nierenvolumen', en: 'Kidney Volume', fa: 'حجم کلیه' },
+    formula: 'L × B × T × 0.523',
+    hint: {
+      de: 'Ellipsoide Schätzung einer Niere; Seitenvergleich, Körpergröße und Parenchymdicke bleiben entscheidend.',
+      en: 'Ellipsoid estimate for one kidney; side-to-side comparison, body size and parenchymal thickness remain important.',
+      fa: 'برآورد بیضوی یک کلیه؛ مقایسه دو طرف، اندازه بدن و ضخامت پارانشیم همچنان مهم‌اند.',
+    },
+    fields: [
+      { id: 'l', label: { de: 'Länge', en: 'Length', fa: 'طول' }, unit: 'cm', step: 0.1, min: 0.1, max: 20 },
+      { id: 'b', label: { de: 'Breite', en: 'Width', fa: 'عرض' }, unit: 'cm', step: 0.1, min: 0.1, max: 15 },
+      { id: 't', label: { de: 'Tiefe', en: 'Depth', fa: 'عمق' }, unit: 'cm', step: 0.1, min: 0.1, max: 10 },
+    ],
+    calc: (v) => v.l && v.b && v.t ? v.l * v.b * v.t * 0.523 : null,
+    resultUnit: 'ml', decimals: 1,
+    ranges: [
+      { max: 100, label: { de: '< 100 ml – klein', en: '<100 ml – small', fa: '<۱۰۰ ml – کوچک' }, color: '#ca8a04' },
+      { max: 200, label: { de: '100–200 ml – typischer Bereich', en: '100–200 ml – typical range', fa: '۱۰۰–۲۰۰ ml – محدوده معمول' }, color: '#16a34a' },
+      { max: Infinity, label: { de: '> 200 ml – vergrößert', en: '>200 ml – enlarged', fa: '>۲۰۰ ml – بزرگ‌شده' }, color: '#ea580c' },
+    ],
+  },
+
   // 1. Prostatavolumen + PSA-Dichte (kombiniert)
   {
     id: 'prostata-psa', type: 'multi', color: '#0ea5e9',

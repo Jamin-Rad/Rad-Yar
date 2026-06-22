@@ -263,6 +263,12 @@ const RECHNER_GROUPS = [
     calcIds: ['ktq', 'fleischner'],
   },
   {
+    id: 'abdomen',
+    name: { de: 'Abdomen', en: 'Abdomen', fa: 'شکم' },
+    color: '#f59e0b', iconId: 'abdomen',
+    calcIds: ['milz-index', 'niere-volumen'],
+  },
+  {
     id: 'urogenital',
     name: { de: 'Urogenital', en: 'Urogenital', fa: 'اوروژنیتال' },
     color: '#0ea5e9', iconId: 'urogenital',
@@ -370,7 +376,7 @@ function FieldRow({ label, id, val, onChange, unit, step = 0.1, min, max }) {
     </label>
   )
 }
-function ResultBox({ val, unit, decimals, range }) {
+function ResultBox({ val, unit, decimals, range, lang }) {
   const display = numFmt(val, decimals)
   return (
     <div className={styles.rcResult} style={{
@@ -382,7 +388,7 @@ function ResultBox({ val, unit, decimals, range }) {
           <span className={styles.rcResultVal} style={{color: range?.color || '#1a2051'}}>
             {display}{unit ? ` ${unit}` : ''}
           </span>
-          {range && <span className={styles.rcResultLabel} style={{color: range.color}}>{tx(range.label, 'de')}</span>}
+          {range && <span className={styles.rcResultLabel} style={{color: range.color}}>{tx(range.label, lang)}</span>}
         </>
       ) : (
         <span className={styles.rcResultPlaceholder}>—</span>
@@ -405,7 +411,7 @@ function SingleCalc({ calc, lang }) {
             unit={f.unit} step={f.step} min={f.min} max={f.max} />
         ))}
       </div>
-      <ResultBox val={result} unit={calc.resultUnit} decimals={calc.decimals} range={range} />
+      <ResultBox val={result} unit={calc.resultUnit} decimals={calc.decimals} range={range} lang={lang} />
     </>
   )
 }
@@ -429,7 +435,7 @@ function MultiCalc({ calc, lang }) {
           return (
             <div key={i} className={styles.rcOutputRow}>
               <span className={styles.rcOutputLabel} style={{color: calc.color}}>{tx(out.label,lang)}</span>
-              <ResultBox val={res} unit={out.unit} decimals={out.decimals} range={range} />
+              <ResultBox val={res} unit={out.unit} decimals={out.decimals} range={range} lang={lang} />
             </div>
           )
         })}
