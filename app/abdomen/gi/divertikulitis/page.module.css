@@ -822,6 +822,70 @@
 .mskTraumaPage .sideItemActive { color: #ea580c; background: rgba(249,115,22,.12); }
 .mskTraumaPage .takeHomeItem > span { color: #ea580c; background: rgba(249,115,22,.12); }
 
+.hrctPage {
+  background:
+    radial-gradient(circle at top left, rgba(14, 165, 233, .17), transparent 31rem),
+    radial-gradient(circle at top right, rgba(6, 182, 212, .10), transparent 28rem),
+    var(--bg);
+}
+.hrctPage .breadcrumb a,
+.hrctPage .sectionHeader h2,
+.hrctPage .actionBtn { color: #0284c7; }
+.hrctPage .sourceBadge { background: linear-gradient(135deg, #0369a1, #06b6d4); }
+.hrctPage .heroText::after { background: linear-gradient(90deg, #0284c7, #06b6d4, #22c55e); }
+.hrctPage .heroStat:nth-child(1) { background: linear-gradient(135deg, #075985, #0284c7); }
+.hrctPage .heroStat:nth-child(2) { background: linear-gradient(135deg, #155e75, #0891b2); }
+.hrctPage .heroStat:nth-child(3) { color: #0c4a6e; background: linear-gradient(135deg, #ecfeff, #f0f9ff); border-color: rgba(14,165,233,.25); }
+.hrctPage .sideItemActive { color: #0284c7; background: rgba(14,165,233,.11); }
+.hrctPage .takeHomeItem > span { color: #0284c7; background: rgba(14,165,233,.12); }
+
+.hrctGallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+  gap: 16px;
+  margin: 22px 0 8px;
+}
+.hrctImageCard {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(14,165,233,.22);
+  border-radius: 18px;
+  background: var(--bg-card);
+  box-shadow: 0 14px 30px var(--shadow-soft);
+}
+.hrctImageCard > button {
+  display: grid;
+  width: 100%;
+  height: 260px;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  cursor: zoom-in;
+  background: #020617;
+}
+.hrctImageCard img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.hrctImageCard figcaption {
+  display: grid;
+  gap: 7px;
+  padding: 12px 14px 14px;
+  color: var(--text-soft);
+  font-size: 12px;
+  line-height: 1.45;
+}
+.hrctImageCard figcaption span { font-weight: 800; }
+.hrctImageCard figcaption a { color: #0284c7; font-weight: 900; text-decoration: none; }
+
+@media (max-width: 620px) {
+  .hrctGallery { grid-template-columns: 1fr; }
+  .hrctImageCard > button { height: 230px; }
+}
+
 .fractureMorphologyImage {
   display: block;
   width: min(900px, 100%);

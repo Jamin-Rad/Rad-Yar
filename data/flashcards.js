@@ -25,6 +25,7 @@ import { AK_LUXATION_FLASHCARDS, AK_LUXATION_FLASHCARD_TOPIC } from './ak-luxati
 import { RADIUSKOPF_FLASHCARDS, RADIUSKOPF_FLASHCARD_TOPIC } from './radiuskopf'
 import { UNTERARM_FLASHCARDS, UNTERARM_FLASHCARD_TOPIC } from './unterarmschaftfrakturen'
 import { DISTALE_RADIUS_FLASHCARDS, DISTALE_RADIUS_FLASHCARD_TOPIC } from './distale-radiusfraktur'
+import { HRCT_FLASHCARDS, HRCT_FLASHCARD_TOPICS } from './hrct-muster'
 
 export const FLASHCARD_TOPICS = [
   ...CONTRAST_FLASHCARD_TOPICS,
@@ -107,6 +108,7 @@ export const FLASHCARD_TOPICS = [
   RADIUSKOPF_FLASHCARD_TOPIC,
   UNTERARM_FLASHCARD_TOPIC,
   DISTALE_RADIUS_FLASHCARD_TOPIC,
+  ...HRCT_FLASHCARD_TOPICS,
   {
     id: 'divertikulitis',
     area: 'Abdomen',
@@ -577,6 +579,7 @@ export const FLASHCARDS = [
   ...RADIUSKOPF_FLASHCARDS,
   ...UNTERARM_FLASHCARDS,
   ...DISTALE_RADIUS_FLASHCARDS,
+  ...HRCT_FLASHCARDS,
   {
     "id": "meniskus-01",
     "topicId": "meniskus",

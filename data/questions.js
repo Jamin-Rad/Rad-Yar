@@ -25,6 +25,7 @@ import { AK_LUXATION_QUESTIONS } from './ak-luxation'
 import { RADIUSKOPF_QUESTIONS } from './radiuskopf'
 import { UNTERARM_QUESTIONS } from './unterarmschaftfrakturen'
 import { DISTALE_RADIUS_QUESTIONS } from './distale-radiusfraktur'
+import { HRCT_QUESTIONS } from './hrct-muster'
 
 const DIVERTICULITIS_QUESTION_CONTENT = [
   {
@@ -351,6 +352,7 @@ export const QUESTION_BANK = {
     ...RADIUSKOPF_QUESTIONS.de,
     ...UNTERARM_QUESTIONS.de,
     ...DISTALE_RADIUS_QUESTIONS.de,
+    ...HRCT_QUESTIONS.de,
     {
       "id": "meniskus-de-01",
       "tags": [
@@ -1704,6 +1706,7 @@ export const QUESTION_BANK = {
     ...RADIUSKOPF_QUESTIONS.en,
     ...UNTERARM_QUESTIONS.en,
     ...DISTALE_RADIUS_QUESTIONS.en,
+    ...HRCT_QUESTIONS.en,
     {
       "id": "meniskus-en-01",
       "tags": [
@@ -3057,6 +3060,7 @@ export const QUESTION_BANK = {
     ...RADIUSKOPF_QUESTIONS.fa,
     ...UNTERARM_QUESTIONS.fa,
     ...DISTALE_RADIUS_QUESTIONS.fa,
+    ...HRCT_QUESTIONS.fa,
     {
       "id": "meniskus-fa-01",
       "tags": [
@@ -4385,6 +4389,17 @@ export const QUESTION_BANK = {
 }
 
 export const MCQ_TOPIC_GROUPS = [
+  {
+    fachId: 'thorax',
+    kapitelId: 'thorax-grundlagen',
+    title: { de: '2. Grundlagen der Thoraxbildgebung', en: '2. Fundamentals of Thoracic Imaging', fa: '۲. مبانی تصویربرداری قفسه سینه' },
+    topics: [
+      { id: 'hrct-dichteanhebung', title: { de: 'HRCT: Dichteanhebung', en: 'HRCT: Increased Density', fa: 'HRCT: افزایش دانسیته' } },
+      { id: 'hrct-retikulaer-nodulaer', title: { de: 'HRCT: Retikulär & Nodulär', en: 'HRCT: Reticular & Nodular', fa: 'HRCT: رتیکولار و ندولار' } },
+      { id: 'hrct-architekturmuster', title: { de: 'HRCT: Architekturmuster', en: 'HRCT: Architectural Patterns', fa: 'HRCT: الگوهای معماری' } },
+      { id: 'hrct-dichteminderung', title: { de: 'HRCT: Dichteminderung', en: 'HRCT: Decreased Density', fa: 'HRCT: کاهش دانسیته' } },
+    ],
+  },
   {
     fachId: 'gehirn',
     kapitelId: 'kopf-anatomie',
