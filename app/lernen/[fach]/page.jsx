@@ -256,10 +256,11 @@ export default function LernenFachPage() {
             <div className={styles.mainTopicGrid}>
               {visibleKapitel.map(({ kapitel: k, themen }) => {
                 const active = selectedKapitel === k.id
+                const isFeatured = fach.id === 'msk' && k.id === 'msk-trauma'
                 const count = themen.reduce((sum, th) => sum + 1 + (th.sub?.length || 0), 0)
                 return (
                   <button key={k.id}
-                    className={styles.mainTopicCard}
+                    className={`${styles.mainTopicCard} ${isFeatured ? styles.mainTopicCardFeatured : ''}`}
                     style={{ '--topic-color': fach.color }}
                     onClick={() => setSelectedKapitel(k.id)}
                     aria-pressed={active}>
