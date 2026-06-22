@@ -23,6 +23,8 @@ import { FRAKTUR_QUESTIONS } from './frakturbeschreibung'
 import { FRAKTUR_KINDER_QUESTIONS } from './frakturen-kindesalter'
 import { AK_LUXATION_QUESTIONS } from './ak-luxation'
 import { RADIUSKOPF_QUESTIONS } from './radiuskopf'
+import { UNTERARM_QUESTIONS } from './unterarmschaftfrakturen'
+import { DISTALE_RADIUS_QUESTIONS } from './distale-radiusfraktur'
 
 const DIVERTICULITIS_QUESTION_CONTENT = [
   {
@@ -347,6 +349,8 @@ export const QUESTION_BANK = {
     ...FRAKTUR_KINDER_QUESTIONS.de,
     ...AK_LUXATION_QUESTIONS.de,
     ...RADIUSKOPF_QUESTIONS.de,
+    ...UNTERARM_QUESTIONS.de,
+    ...DISTALE_RADIUS_QUESTIONS.de,
     {
       "id": "meniskus-de-01",
       "tags": [
@@ -1698,6 +1702,8 @@ export const QUESTION_BANK = {
     ...FRAKTUR_KINDER_QUESTIONS.en,
     ...AK_LUXATION_QUESTIONS.en,
     ...RADIUSKOPF_QUESTIONS.en,
+    ...UNTERARM_QUESTIONS.en,
+    ...DISTALE_RADIUS_QUESTIONS.en,
     {
       "id": "meniskus-en-01",
       "tags": [
@@ -3049,6 +3055,8 @@ export const QUESTION_BANK = {
     ...FRAKTUR_KINDER_QUESTIONS.fa,
     ...AK_LUXATION_QUESTIONS.fa,
     ...RADIUSKOPF_QUESTIONS.fa,
+    ...UNTERARM_QUESTIONS.fa,
+    ...DISTALE_RADIUS_QUESTIONS.fa,
     {
       "id": "meniskus-fa-01",
       "tags": [
@@ -4433,6 +4441,8 @@ export const MCQ_TOPIC_GROUPS = [
       { id: 'frakturen-kindesalter', title: { de: 'Frakturen im Kindesalter', en: 'Paediatric Fractures', fa: 'شکستگی‌های دوران کودکی' } },
       { id: 'ak-luxation', title: { de: 'Akromioklavikuläre Luxation', en: 'AC Joint Dislocation', fa: 'لوکساسیون مفصل AC' } },
       { id: 'radiuskoepfchenfraktur', title: { de: 'Radiusköpfchenfraktur', en: 'Radial Head Fracture', fa: 'شکستگی سر رادیوس' } },
+      { id: 'unterarmschaftfrakturen', title: { de: 'Unterarmschaftfrakturen', en: 'Forearm Shaft Fractures', fa: 'شکستگی‌های تنه ساعد' } },
+      { id: 'distale-radiusfraktur', title: { de: 'Distale Radiusfraktur', en: 'Distal Radius Fracture', fa: 'شکستگی دیستال رادیوس' } },
     ],
   },
   {
