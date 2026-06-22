@@ -81,6 +81,7 @@ export default function KlassDetailPage({ topic, item }) {
   const copy = REF_COPY[lang] || REF_COPY.de
   const color = topic.color
   const siblings = topic.items
+  const otherTopics = REF_DATA.klassifikationen.filter(t => t.id !== topic.id)
   const backHref = lang !== 'de' ? `/?lang=${lang}#referenzen` : '/#referenzen'
   const [zoomSrc, setZoomSrc] = useState(null)
 
@@ -98,43 +99,54 @@ export default function KlassDetailPage({ topic, item }) {
       <div className={styles.layout}>
         {/* Sidebar */}
         <nav className={styles.sidebar} aria-label={copy.chooseClass}>
-          <div className={styles.sidebarBrand}>
-            <RadYarMark size={28} />
-            <span className={styles.sidebarBrandLabel}>RadYar</span>
+          <Link href={backHref} className={styles.sidebarBack}>
+            <span>←</span>
+            <span>{copy.btnKlass}</span>
+          </Link>
+          <div className={styles.currentTopic} style={{ '--ref-color': color }}>
+            <span className={styles.currentTopicIcon}><RadYarMark size={30} /></span>
+            <span>
+              <small>{lang === 'de' ? 'Aktueller Bereich' : lang === 'fa' ? 'بخش فعلی' : 'Current section'}</small>
+              <strong>{tx(topic.name, lang)}</strong>
+            </span>
           </div>
-          <div className={styles.sidebarTitle} style={{ color }}>
-            <span className={styles.dot} style={{ background: color }} />
-            {tx(topic.name, lang)}
+          <div className={styles.currentList}>
+            <div className={styles.sidebarSectionLabel}>
+              {lang === 'de' ? 'In diesem Bereich' : lang === 'fa' ? 'در این بخش' : 'In this section'}
+            </div>
+            {siblings.map((sib, index) => (
+              <Link
+                key={sib.id}
+                href={`/referenzen/${topic.id}/${sib.id}${lang !== 'de' ? `?lang=${lang}` : ''}`}
+                className={`${styles.sibLink} ${sib.id === item.id ? styles.sibActive : ''}`}
+                style={{ '--ref-color': color }}
+                aria-current={sib.id === item.id ? 'page' : undefined}
+              >
+                <span className={styles.sibIndex}>{String(index + 1).padStart(2, '0')}</span>
+                <span>{tx(sib.name, lang)}</span>
+              </Link>
+            ))}
           </div>
-          {siblings.map(sib => (
-            <Link
-              key={sib.id}
-              href={`/referenzen/${topic.id}/${sib.id}${lang !== 'de' ? `?lang=${lang}` : ''}`}
-              className={`${styles.sibLink} ${sib.id === item.id ? styles.sibActive : ''}`}
-              style={{ '--ref-color': color }}
-            >
-              {tx(sib.name, lang)}
-            </Link>
-          ))}
 
-          {REF_DATA.klassifikationen.filter(t => t.id !== topic.id).map(t => (
-            <div key={t.id} className={styles.otherGroup}>
-              <div className={styles.otherTitle} style={{ color: t.color }}>
-                <span className={styles.dot} style={{ background: t.color }} />
-                {tx(t.name, lang)}
-              </div>
-              {t.items.map(it => (
+          <div className={styles.otherGroup}>
+            <div className={styles.sidebarSectionLabel}>
+              {lang === 'de' ? 'Bereich wechseln' : lang === 'fa' ? 'تغییر بخش' : 'Switch section'}
+            </div>
+            <div className={styles.otherTopicGrid}>
+              {otherTopics.map(t => (
                 <Link
-                  key={it.id}
-                  href={`/referenzen/${t.id}/${it.id}${lang !== 'de' ? `?lang=${lang}` : ''}`}
-                  className={styles.sibLink}
+                  key={t.id}
+                  href={`/referenzen/${t.id}/${t.items[0].id}${lang !== 'de' ? `?lang=${lang}` : ''}`}
+                  className={styles.otherTopicLink}
                   style={{ '--ref-color': t.color }}
                 >
-                  {tx(it.name, lang)}
+                  <span className={styles.dot} style={{ background: t.color }} />
+                  <span>{tx(t.name, lang)}</span>
+                  <small>{t.items.length}</small>
                 </Link>
               ))}
             </div>
-          ))}
+          </div>
         </nav>
 
         {/* Hauptinhalt */}

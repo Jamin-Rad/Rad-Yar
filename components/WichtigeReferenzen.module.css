@@ -208,7 +208,7 @@
 
 /* ── Split: Sidebar + Inhalt ─────────────────── */
 .split {
-  display: grid; grid-template-columns: 220px 1fr;
+  display: grid; grid-template-columns: 250px 1fr;
   flex: 1; min-height: 0; overflow: hidden;
 }
 
@@ -386,6 +386,54 @@
 .klassCardGrid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 14px; align-items: start;
+}
+.klassNavBtn {
+  position: relative;
+  min-height: 64px;
+  padding: 10px 11px;
+  border-radius: 14px;
+}
+.klassNavBtn::before {
+  content: '';
+  position: absolute;
+  inset-block: 12px;
+  inset-inline-start: 0;
+  width: 3px;
+  border-radius: 999px;
+  background: var(--ref-color);
+  opacity: 0;
+  transform: scaleY(.45);
+  transition: opacity .18s, transform .18s;
+}
+.klassNavBtn.navActiveOrange::before { opacity: 1; transform: scaleY(1); }
+.klassNavText { display: grid; gap: 3px; flex: 1; min-width: 0; }
+.klassNavText .navLabel { color: #1e293b; font-size: 13px; font-weight: 850; }
+.klassNavCount { color: #94a3b8; font-size: 10px; font-weight: 650; }
+.klassNavArrow { color: #cbd5e1; font-size: 22px; line-height: 1; }
+.navActiveOrange .klassNavArrow { color: var(--ref-color); }
+
+.klassTopicHead {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 24px;
+  padding: 0 0 20px;
+  border-bottom: 1px solid color-mix(in srgb, var(--ref-color) 22%, #e2e8f0);
+}
+.klassTopicHead h2 {
+  margin: 2px 0 3px;
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-size: 28px;
+  font-style: italic;
+  line-height: 1.05;
+}
+.klassTopicHead p { margin: 0; color: #94a3b8; font-size: 11px; font-weight: 650; }
+.klassTopicEyebrow {
+  color: #94a3b8;
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: .11em;
+  text-transform: uppercase;
 }
 .klassCard {
   display: flex; flex-direction: column; gap: 8px;
@@ -696,6 +744,13 @@
 :global(html[data-theme='dark']) .navIconWrap {
   background: color-mix(in srgb, var(--ref-color) 15%, #0b1526);
   border-color: color-mix(in srgb, var(--ref-color) 28%, transparent);
+}
+:global(html[data-theme='dark']) .klassNavText .navLabel { color: #dbe7f3; }
+:global(html[data-theme='dark']) .klassNavCount,
+:global(html[data-theme='dark']) .klassTopicHead p,
+:global(html[data-theme='dark']) .klassTopicEyebrow { color: #6b7f9a; }
+:global(html[data-theme='dark']) .klassTopicHead {
+  border-bottom-color: color-mix(in srgb, var(--ref-color) 22%, rgba(148,163,184,.12));
 }
 :global(html[data-theme='dark']) .sidebar { border-bottom-color: rgba(148,163,184,0.12); }
 

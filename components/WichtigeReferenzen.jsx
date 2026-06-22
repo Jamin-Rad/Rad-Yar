@@ -215,19 +215,27 @@ function KlassifikationenModal({ copy, lang, onClose }) {
         <nav className={styles.sidebar}>
           {topics.map(t => (
             <button key={t.id}
-              className={`${styles.navBtn} ${t.id===topicId?styles.navActiveOrange:''}`}
+              className={`${styles.navBtn} ${styles.klassNavBtn} ${t.id===topicId?styles.navActiveOrange:''}`}
               style={{'--ref-color':t.color}} onClick={()=>{setTopicId(t.id);setShowDetail(true)}}>
               <span className={styles.navIconWrap} style={{color:t.color}}><RegionIcon id={t.iconId||t.id} size={16}/></span>
-              <span className={styles.navLabel}>{tx(t.name,lang)}</span>
+              <span className={styles.klassNavText}>
+                <span className={styles.navLabel}>{tx(t.name,lang)}</span>
+                <span className={styles.klassNavCount}>{t.items.length} {lang === 'de' ? 'Klassifikationen' : lang === 'fa' ? 'طبقه‌بندی' : 'classifications'}</span>
+              </span>
+              <span className={styles.klassNavArrow}>›</span>
             </button>
           ))}
         </nav>
         <div className={styles.content} style={{'--ref-color':topic.color}}>
           <button className={styles.mobileBack} onClick={()=>setShowDetail(false)}>← {copy.back}</button>
-          <h2 className={styles.regionHeading}>
+          <div className={styles.klassTopicHead}>
             <span className={styles.regionHeadingIcon} style={{color:topic.color}}><RegionIcon id={topic.iconId||topic.id} size={22}/></span>
-            <span style={{color:topic.color}}>{tx(topic.name,lang)}</span>
-          </h2>
+            <div>
+              <span className={styles.klassTopicEyebrow}>{copy.btnKlass}</span>
+              <h2 style={{color:topic.color}}>{tx(topic.name,lang)}</h2>
+              <p>{topic.items.length} {lang === 'de' ? 'kompakte Nachschlagewerke' : lang === 'fa' ? 'مرجع فشرده' : 'compact references'}</p>
+            </div>
+          </div>
           <div className={styles.klassCardGrid}>
             {topic.items.map(item=>(
               <button key={item.id} className={styles.klassCard} style={{'--ref-color':topic.color}} onClick={()=>go(topic.id,item.id)}>
