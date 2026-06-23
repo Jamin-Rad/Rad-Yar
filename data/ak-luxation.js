@@ -59,7 +59,7 @@ export const AK_LUXATION_LESSON = {
         text: L(
           'Oberes und unteres AC-Band stabilisieren das Gelenk gegen horizontale Kräfte (anteriore/posteriore Verschiebung). Wichtigste Stabilisatoren für die AP-Translationsstabilität.',
           'Superior and inferior AC ligaments stabilise the joint against horizontal forces (anterior/posterior translation). Primary stabilisers for AP translational stability.',
-          'رباط‌های فوقانی و تحتانی AC مفصل را در برابر نیروهای افقی (جابجایی قدامی/خلفی) تثبیت می‌کنند. مهم‌ترین تثبیت‌کننده‌های ترجمه AP.'
+          'رباط‌های فوقانی و تحتانی AC مفصل را در برابر نیروهای افقی (جابجایی قدامی/خلفی) تثبیت می‌کنند. مهم‌ترین تثبیت‌کننده‌های پایداری AP.'
         ),
       },
       {
@@ -111,7 +111,7 @@ export const AK_LUXATION_LESSON = {
         text: L(
           'Sturz auf die ausgestreckte Hand → axiale Kraftübertragung nach proximal → Humeruskopf stößt gegen Akromion von kaudal.',
           'Fall on the outstretched hand → axial force transmission proximally → humeral head strikes the acromion from below.',
-          'افتادن روی دست باز → انتقال نیرو به صورت محوری به سمت پروگزیمال → سر هومروس از پایین به آکرومیون برخورد می‌کند.'
+          'افتادن روی دست کشیده → انتقال نیرو به صورت محوری به سمت پروگزیمال → سر هومروس از پایین به آکرومیون برخورد می‌کند.'
         ),
       },
       {
@@ -171,7 +171,7 @@ export const AK_LUXATION_LESSON = {
         caption: L(
           'Schulter AP – Normal-/Typ-I-Befund: annotierte CCD (gelb) und AC-Gelenkspalt (lila). Kein Hochstand der Klavikula.',
           'Shoulder AP – Normal/Type I: annotated CCD (yellow) and AC joint space (purple). No clavicular elevation.',
-          'شانه AP – طبیعی/نوع I: CCD حاشیه‌گذاری‌شده (زرد) و فضای مفصل AC (بنفش). بدون ارتفاع کلاویکول.'
+          'شانه AP – طبیعی/نوع I: CCD علامت‌گذاری‌شده (زرد) و فضای مفصل AC (بنفش). بدون ارتفاع کلاویکول.'
         ),
       },
     ],
@@ -272,12 +272,12 @@ export const AK_LUXATION_LESSON = {
       [
         L('III (kontrovers)', 'III (controversial)', 'III (بحث‌برانگیز)'),
         L('Individuell', 'Individualised', 'فردی'),
-        L('Konservativ bei niedrigem Anspruch; OP bei Überkopfarbeitern, Hochleistungssportlern oder persistierender Symptomatik (> 3 Monate)', 'Conservative for low-demand patients; surgery for overhead workers, high-performance athletes, or persistent symptoms (> 3 months)', 'محافظه‌کارانه برای بیماران کم‌تقاضا؛ جراحی برای کارگران سر بالا، ورزشکاران حرفه‌ای یا علائم مداوم (> ۳ ماه)'),
+        L('Konservativ bei niedrigem Anspruch; OP bei Überkopfarbeitern, Hochleistungssportlern oder persistierender Symptomatik (> 3 Monate)', 'Conservative for low-demand patients; surgery for overhead workers, high-performance athletes, or persistent symptoms (> 3 months)', 'محافظه‌کارانه برای بیماران با فعالیت فیزیکی پایین؛ جراحی برای کارگران سر بالا، ورزشکاران حرفه‌ای یا علائم مداوم (> ۳ ماه)'),
       ],
       [
         L('IV, V, VI', 'IV, V, VI', 'IV، V، VI'),
         L('Operativ', 'Surgical', 'جراحی'),
-        L('Tight-Rope-System (arthroskopisch, CC-Rekonstruktion) oder Hakenplatte (Hook-Plate). Ziel: anatomische Reposition und Bandrekonstruktion.', 'Tight-rope system (arthroscopic, CC reconstruction) or hook plate. Goal: anatomical reduction and ligament reconstruction.', 'سیستم تایت‌روپ (آرتروسکوپیک، بازسازی CC) یا صفحه قلاب‌دار (Hook-Plate). هدف: کاهش آناتومیک و بازسازی رباط.'),
+        L('Tight-Rope-System (arthroskopisch, CC-Rekonstruktion) oder Hakenplatte (Hook-Plate). Ziel: anatomische Reposition und Bandrekonstruktion.', 'Tight-rope system (arthroscopic, CC reconstruction) or hook plate. Goal: anatomical reduction and ligament reconstruction.', 'سیستم تایت‌روپ (آرتروسکوپیک، بازسازی CC) یا صفحه قلاب‌دار (Hook-Plate). هدف: ریداکسیون آناتومیک و بازسازی رباط.'),
       ],
     ],
     key: L(
@@ -297,7 +297,7 @@ export const AK_LUXATION_LESSON = {
       },
       {
         title: L('CCD im Seitenvergleich messen', 'Measure CCD on both sides', 'CCD را در مقایسه دو طرف اندازه‌گیری کنید'),
-        text: L('Absoluter CCD-Wert allein unzureichend – stets mit Gegenseite vergleichen. Norm: 11–13 mm. Belastungsaufnahme bei Verdacht auf Typ III vs. V.', 'Absolute CCD value alone is insufficient – always compare with contralateral side. Normal: 11–13 mm. Stress view for suspected Type III vs. V.', 'مقدار مطلق CCD به تنهایی کافی نیست – همیشه با طرف مقابل مقایسه کنید. طبیعی: ۱۱–۱۳ میلی‌متر. نمای استرس برای ظنین نوع III در مقابل V.'),
+        text: L('Absoluter CCD-Wert allein unzureichend – stets mit Gegenseite vergleichen. Norm: 11–13 mm. Belastungsaufnahme bei Verdacht auf Typ III vs. V.', 'Absolute CCD value alone is insufficient – always compare with contralateral side. Normal: 11–13 mm. Stress view for suspected Type III vs. V.', 'مقدار مطلق CCD به تنهایی کافی نیست – همیشه با طرف مقابل مقایسه کنید. طبیعی: ۱۱–۱۳ میلی‌متر. نمای استرس در موارد مشکوک به نوع III در مقابل V.'),
       },
       {
         title: L('Typ IV – Axiale Aufnahme obligat', 'Type IV – Axial view is mandatory', 'نوع IV – نمای محوری اجباری است'),
@@ -332,7 +332,7 @@ export const AK_LUXATION_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(l
       'Which mechanism most commonly causes acromioclavicular joint dislocation?',
       'کدام مکانیسم بیشتر از همه منجر به لوکساسیون مفصل آکرومیوکلاویکولار می‌شود؟')[lang],
     [
-      L('Sturz auf ausgestreckte Hand', 'Fall on outstretched hand', 'افتادن روی دست باز')[lang],
+      L('Sturz auf ausgestreckte Hand', 'Fall on outstretched hand', 'افتادن روی دست کشیده')[lang],
       L('Direkter Sturz auf die Schulterseite bei adduziertem Arm', 'Direct fall onto the shoulder with arm adducted', 'افتادن مستقیم روی طرف شانه با بازوی آدوکته')[lang],
       L('Hyperabduktion des Arms', 'Hyperabduction of the arm', 'هیپرآبداکسیون بازو')[lang],
       L('Rotationstrauma des Rumpfs', 'Rotational trunk injury', 'تروما چرخشی تنه')[lang],
@@ -492,7 +492,7 @@ export const AK_LUXATION_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(l
       L('Gipsruhigstellung für 12 Wochen', 'Plaster cast immobilisation for 12 weeks', 'تثبیت گچی برای ۱۲ هفته')[lang],
     ],
     1,
-    L('Das arthroskopische Tight-Rope-System (CC-Rekonstruktion mit Fadenschlinge) und die offene Hakenplatte sind die häufigsten Verfahren. Ziel: anatomische Reposition und Bandrekonstruktion. Die Hakenplatte muss nach Heilung entfernt werden.', 'The arthroscopic tight-rope system (CC reconstruction with suture loop) and open hook plate are the most common procedures. Goal: anatomical reduction and ligament reconstruction. The hook plate must be removed after healing.', 'سیستم تایت‌روپ آرتروسکوپیک (بازسازی CC با حلقه بخیه) و صفحه قلاب‌دار باز شایع‌ترین روش‌ها هستند. هدف: کاهش آناتومیک و بازسازی رباط. صفحه قلاب‌دار باید بعد از بهبودی برداشته شود.')[lang]
+    L('Das arthroskopische Tight-Rope-System (CC-Rekonstruktion mit Fadenschlinge) und die offene Hakenplatte sind die häufigsten Verfahren. Ziel: anatomische Reposition und Bandrekonstruktion. Die Hakenplatte muss nach Heilung entfernt werden.', 'The arthroscopic tight-rope system (CC reconstruction with suture loop) and open hook plate are the most common procedures. Goal: anatomical reduction and ligament reconstruction. The hook plate must be removed after healing.', 'سیستم تایت‌روپ آرتروسکوپیک (بازسازی CC با حلقه بخیه) و صفحه قلاب‌دار باز شایع‌ترین روش‌ها هستند. هدف: ریداکسیون آناتومیک و بازسازی رباط. صفحه قلاب‌دار باید بعد از بهبودی برداشته شود.')[lang]
   ),
 
 ].map(q => ({ ...q, tags: ['ak-luxation'] }))]))
@@ -543,7 +543,7 @@ export const AK_LUXATION_FLASHCARDS = [
 
   F('ak-lux-fc-8', L('Therapie', 'Treatment', 'درمان'),
     L('Welche OP-Verfahren werden bei Typ IV–VI eingesetzt?', 'Which surgical procedures are used for Types IV–VI?', 'کدام روش‌های جراحی برای نوع IV–VI استفاده می‌شوند؟'),
-    L('1) Tight-Rope-System: arthroskopisch, CC-Rekonstruktion mit Fadenschlinge. 2) Hakenplatte (Hook-Plate): offen, muss nach Heilung entfernt werden. Ziel: anatomische Reposition + Bandrekonstruktion.', '1) Tight-rope system: arthroscopic, CC reconstruction with suture loop. 2) Hook plate: open, must be removed after healing. Goal: anatomical reduction + ligament reconstruction.', '۱) سیستم تایت‌روپ: آرتروسکوپیک، بازسازی CC با حلقه بخیه. ۲) صفحه قلاب‌دار: باز، باید بعد از بهبودی برداشته شود. هدف: کاهش آناتومیک + بازسازی رباط.'),
+    L('1) Tight-Rope-System: arthroskopisch, CC-Rekonstruktion mit Fadenschlinge. 2) Hakenplatte (Hook-Plate): offen, muss nach Heilung entfernt werden. Ziel: anatomische Reposition + Bandrekonstruktion.', '1) Tight-rope system: arthroscopic, CC reconstruction with suture loop. 2) Hook plate: open, must be removed after healing. Goal: anatomical reduction + ligament reconstruction.', '۱) سیستم تایت‌روپ: آرتروسکوپیک، بازسازی CC با حلقه بخیه. ۲) صفحه قلاب‌دار: باز، باید بعد از بهبودی برداشته شود. هدف: ریداکسیون آناتومیک + بازسازی رباط.'),
     L('Tight-Rope = arthroskopisch. Hakenplatte = offen, muss entfernt werden.', 'Tight-rope = arthroscopic. Hook plate = open, must be removed.', 'تایت‌روپ = آرتروسکوپیک. صفحه قلاب‌دار = باز، باید برداشته شود.')
   ),
 

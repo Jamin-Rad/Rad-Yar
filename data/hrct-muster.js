@@ -20,7 +20,7 @@ export const HRCT_LESSONS = {
     sections: [
       {
         id: 'atelektase', icon: '🫁', title: L('Atelektase & Volumenverlust', 'Atelectasis & Volume Loss', 'آتلکتازی و کاهش حجم'),
-        lead: L('Eine Dichteanhebung mit Volumenverlust ist Atelektase, bis das Gegenteil bewiesen ist.', 'Increased opacity with volume loss should be regarded as atelectasis until proven otherwise.', 'افزایش دانسیته همراه کاهش حجم تا خلافش ثابت نشده آتلکتازی است.'),
+        lead: L('Eine Dichteanhebung mit Volumenverlust ist Atelektase, bis das Gegenteil bewiesen ist.', 'Increased opacity with volume loss should be regarded as atelectasis until proven otherwise.', 'افزایش دانسیته همراه با کاهش حجم، آتلکتازی است مگر اینکه خلاف آن ثابت شود.'),
         cards: [
           { title: L('Direkte Zeichen', 'Direct signs', 'علائم مستقیم'), text: L('Gefäß- und Bronchusverlagerung, Fissurenverschiebung und verdichtetes, kleineres Lungenvolumen.', 'Vascular and bronchial crowding, fissural displacement and a smaller, denser lung volume.', 'تجمع عروق و برونش‌ها، جابه‌جایی فیشورها و حجم کوچک‌تر و متراکم‌تر ریه.') },
           { title: L('Rundatelektase', 'Rounded atelectasis', 'آتلکتازی گرد'), text: L('Pleuranahe rundliche Verdichtung mit einziehenden bronchovaskulären Strukturen: Kometenschweifzeichen.', 'Pleural-based rounded opacity with curving bronchovascular structures: the comet-tail sign.', 'کدورت گرد مجاور پلور با کشیده‌شدن ساختارهای برونکوواسکولار: علامت دم دنباله‌دار.') },
@@ -110,7 +110,7 @@ export const HRCT_LESSONS = {
       },
       {
         id: 'treeinbud', icon: '🌿', title: L('Tree-in-bud & zystische Evolution', 'Tree-in-bud & Cystic Evolution', 'Tree-in-bud و تحول کیستیک'),
-        lead: L('Tree-in-bud bildet gefüllte und erweiterte zentrilobuläre Bronchiolen ab; Verteilung und Klinik grenzen die Ursache ein.', 'Tree-in-bud represents impacted and dilated centrilobular bronchioles; distribution and clinical context narrow the cause.', 'Tree-in-bud بیانگر برونشیول‌های سنترلوبولار پر و گشاد است؛ توزیع و زمینه بالینی علت را محدود می‌کند.'),
+        lead: L('Tree-in-bud bildet gefüllte und erweiterte zentrilobuläre Bronchiolen ab; Verteilung und Klinik grenzen die Ursache ein.', 'Tree-in-bud represents impacted and dilated centrilobular bronchioles; distribution and clinical context narrow the cause.', 'Tree-in-bud بیانگر برونشیول‌های سنترلوبولار پر و گشاد است؛ توزیع و زمینه بالینی تشخیص افتراقی را محدود می‌کند.'),
         cards: [
           { title: L('Tree-in-bud', 'Tree-in-bud', 'Tree-in-bud'), text: L('Verzweigte zentrilobuläre Verdichtungen, häufig infektiös oder durch Aspiration; keine perilymphatische Verteilung.', 'Branching centrilobular opacities, often infectious or aspiration-related; not a perilymphatic pattern.', 'کدورت‌های شاخه‌دار سنترلوبولار، اغلب عفونی یا ناشی از آسپیراسیون؛ نه توزیع پری‌لنفاتیک.') },
           { title: L('Langerhans-Zell-Histiozytose', 'Langerhans cell histiocytosis', 'هیستیوسیتوز سلول لانگرهانس'), text: L('Bei Rauchern entwickeln sich oberlappenbetonte Noduli zu bizarren Zysten; kostophrenische Winkel bleiben relativ ausgespart.', 'In smokers, upper-lobe nodules evolve into bizarre cysts with relative sparing of the costophrenic angles.', 'در سیگاری‌ها ندول‌های غالب لوب فوقانی به کیست‌های عجیب تبدیل می‌شوند و زوایای کوستوفرنیک نسبتاً محفوظ می‌مانند.') },

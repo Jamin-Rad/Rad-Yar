@@ -73,16 +73,16 @@ export const FRAKTUR_KINDER_LESSON = {
         text: L(
           'Mehr organische Matrix (Kollagen) als bei Erwachsenen → Knochen bricht nicht vollständig, sondern biegt sich → Grünholz- und Wulstfrakturen möglich.',
           'More organic matrix (collagen) than in adults → bone does not break completely but bends → Greenstick and Torus fractures are possible.',
-          'ماتریکس ارگانیک بیشتر (کلاژن) نسبت به بزرگسالان → استخوان کاملاً نمی‌شکند بلکه خم می‌شود → شکستگی‌های Greenstick و Torus ممکن است.'
+          'ماتریکس ارگانیک بیشتر (کلاژن) نسبت به بزرگسالان → استخوان کاملاً نمی‌شکند بلکه خم می‌شود → شکستگی‌های Greenstick و Torus ممکن است رخ دهند.'
         ),
       },
       {
         icon: '⚡',
-        title: L('Remodellierung', 'Remodelling', 'ریمادلینگ'),
+        title: L('Remodellierung', 'Remodelling', 'بازسازی استخوان'),
         text: L(
           'Hohes Remodellierungspotenzial, besonders physennah → klinisch tolerierbare Achsfehlstellungen oft korrigierbar ohne Operation.',
           'High remodelling potential, especially near the physis → clinically tolerable angular deformities are often correctable without surgery.',
-          'پتانسیل بالای ریمادلینگ، به‌ویژه در نزدیکی فیزیس → ناهنجاری‌های محوری قابل تحمل بالینی اغلب بدون جراحی قابل اصلاح هستند.'
+          'پتانسیل بالای بازسازی استخوان، به‌ویژه در نزدیکی فیزیس → ناهنجاری‌های محوری قابل تحمل بالینی اغلب بدون جراحی قابل اصلاح هستند.'
         ),
       },
     ],
@@ -355,7 +355,7 @@ export const FRAKTUR_KINDER_LESSON = {
     items: [
       {
         title: L('Physis = schwächste Struktur', 'Physis = weakest structure', 'فیزیس = ضعیف‌ترین ساختار'),
-        text: L('Bei Kindern bricht die Physis vor Bändern und Kapseln. Bei klinischem Verdacht und negativem Röntgen an Salter-Harris I oder V denken.', 'In children, the physis fails before ligaments and capsules. With clinical suspicion and negative X-ray, consider Salter-Harris I or V.', 'در کودکان، فیزیس قبل از رباط‌ها و کپسول‌ها آسیب می‌بیند. در صورت ظنین بالینی و رادیوگرافی منفی، به سالتر-هریس I یا V فکر کنید.'),
+        text: L('Bei Kindern bricht die Physis vor Bändern und Kapseln. Bei klinischem Verdacht und negativem Röntgen an Salter-Harris I oder V denken.', 'In children, the physis fails before ligaments and capsules. With clinical suspicion and negative X-ray, consider Salter-Harris I or V.', 'در کودکان، فیزیس قبل از رباط‌ها و کپسول‌ها آسیب می‌بیند. در صورت ظن بالینی و رادیوگرافی منفی، به سالتر-هریس I یا V فکر کنید.'),
       },
       {
         title: L('SALTR-Regel für Prognose', 'SALTR rule for prognosis', 'قانون SALTR برای پیش‌آگهی'),
@@ -370,7 +370,7 @@ export const FRAKTUR_KINDER_LESSON = {
         text: L('Tillaux und Triplane immer mit CT vervollständigen. Gelenkstufenbildung > 2 mm ist Operationsindikation.', 'Always complete Tillaux and Triplane assessment with CT. Articular step > 2 mm is an indication for surgery.', 'تیلو و سه‌صفحه‌ای را همیشه با CT کامل کنید. پله مفصلی > ۲ میلی‌متر نشانه عمل است.'),
       },
       {
-        title: L('Remodellierung', 'Remodelling', 'ریمادلینگ'),
+        title: L('Remodellierung', 'Remodelling', 'بازسازی استخوان'),
         text: L('Achsfehlstellungen < 20–25° in der Wachstumsachse korrigieren sich oft. Rotationsfehlstellungen und Verkürzungen korrigieren sich NICHT.', 'Angular deformities < 20–25° in the growth axis often self-correct. Rotational malalignment and shortening do NOT correct.', 'ناهنجاری‌های محوری < ۲۰–۲۵ درجه در محور رشد اغلب خودبخود اصلاح می‌شوند. ناهنجاری‌های چرخشی و کوتاه شدن اصلاح نمی‌شوند.'),
       },
     ],
@@ -428,7 +428,7 @@ export const FRAKTUR_KINDER_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].ma
       L('Typ V', 'Type V', 'نوع V')[lang],
     ],
     1,
-    L('Typ III durchläuft Physis + Epiphyse → intraartikulär. Therapie: OP bei Dislokation > 2 mm (anatomische Reposition des Gelenks erforderlich).', 'Type III runs through physis + epiphysis → intra-articular. Treatment: surgery if displacement > 2 mm (anatomic reduction of the joint required).', 'نوع III از فیزیس + اپی‌فیز عبور می‌کند → داخل مفصل. درمان: جراحی در صورت جابجایی > ۲ میلی‌متر (نیاز به کاهش آناتومیک مفصل).')[lang]
+    L('Typ III durchläuft Physis + Epiphyse → intraartikulär. Therapie: OP bei Dislokation > 2 mm (anatomische Reposition des Gelenks erforderlich).', 'Type III runs through physis + epiphysis → intra-articular. Treatment: surgery if displacement > 2 mm (anatomic reduction of the joint required).', 'نوع III از فیزیس + اپی‌فیز عبور می‌کند → داخل مفصل. درمان: جراحی در صورت جابجایی > ۲ میلی‌متر (نیاز به ریداکسیون آناتومیک مفصل).')[lang]
   ),
 
   Q(`fk-sh-4-${lang}`,
@@ -442,7 +442,7 @@ export const FRAKTUR_KINDER_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].ma
       L('Typ III', 'Type III', 'نوع III')[lang],
     ],
     2,
-    L('Typ IV durchläuft Metaphyse, Physis und Epiphyse. Ohne anatomische Reposition bilden sich Knochenbrücken (physeal bars) → vorzeitiger Fugenschluss → Wachstumsstörung/Achsdeformität.', 'Type IV runs through metaphysis, physis, and epiphysis. Without anatomic reduction, bony bridges (physeal bars) form → premature physeal closure → growth disturbance/angular deformity.', 'نوع IV از متافیز، فیزیس و اپی‌فیز عبور می‌کند. بدون کاهش آناتومیک، پل‌های استخوانی (فیزیال بار) تشکیل می‌شوند → بسته شدن زودهنگام فیزیس → اختلال رشد/ناهنجاری محوری.')[lang]
+    L('Typ IV durchläuft Metaphyse, Physis und Epiphyse. Ohne anatomische Reposition bilden sich Knochenbrücken (physeal bars) → vorzeitiger Fugenschluss → Wachstumsstörung/Achsdeformität.', 'Type IV runs through metaphysis, physis, and epiphysis. Without anatomic reduction, bony bridges (physeal bars) form → premature physeal closure → growth disturbance/angular deformity.', 'نوع IV از متافیز، فیزیس و اپی‌فیز عبور می‌کند. بدون ریداکسیون آناتومیک، پل‌های استخوانی (فیزیال بار) تشکیل می‌شوند → بسته شدن زودهنگام فیزیس → اختلال رشد/ناهنجاری محوری.')[lang]
   ),
 
   Q(`fk-sh-5-${lang}`,
@@ -498,7 +498,7 @@ export const FRAKTUR_KINDER_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].ma
       L('Salter-Harris Typ IV', 'Salter-Harris Type IV', 'سالتر-هریس نوع IV')[lang],
     ],
     1,
-    L('Toddler-Fraktur = okkulte Spiralfraktur der distalen Tibia bei Kleinkindern (9 Mon.–3 J.). Initialröntgen oft negativ. Bei klinischem Verdacht: Gipsbehandlung, MRT oder Knochenszintigraphie nach 72 h.', 'Toddler fracture = occult spiral fracture of the distal tibia in toddlers (9 mo – 3 yr). Initial X-ray often negative. With clinical suspicion: cast, MRI or bone scan after 72 h.', 'شکستگی توددلر = شکستگی مارپیچ پنهان تیبیای دیستال در کودکان نوپا (۹ ماه – ۳ سال). رادیوگرافی اولیه اغلب منفی. در صورت ظنین بالینی: گچ، MRI یا اسکن استخوان بعد از ۷۲ ساعت.')[lang]
+    L('Toddler-Fraktur = okkulte Spiralfraktur der distalen Tibia bei Kleinkindern (9 Mon.–3 J.). Initialröntgen oft negativ. Bei klinischem Verdacht: Gipsbehandlung, MRT oder Knochenszintigraphie nach 72 h.', 'Toddler fracture = occult spiral fracture of the distal tibia in toddlers (9 mo – 3 yr). Initial X-ray often negative. With clinical suspicion: cast, MRI or bone scan after 72 h.', 'شکستگی توددلر = شکستگی مارپیچ پنهان تیبیای دیستال در کودکان نوپا (۹ ماه – ۳ سال). رادیوگرافی اولیه اغلب منفی. در صورت ظن بالینی: گچ، MRI یا اسکن استخوان بعد از ۷۲ ساعت.')[lang]
   ),
 
   Q(`fk-tillaux-1-${lang}`,
@@ -532,7 +532,7 @@ export const FRAKTUR_KINDER_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].ma
   Q(`fk-remodel-1-${lang}`,
     L('Welche Fehlstellung bei Kinderfrakturen korrigiert sich NICHT durch Remodellierung?',
       'Which malalignment in paediatric fractures does NOT correct through remodelling?',
-      'کدام ناهنجاری در شکستگی‌های کودکان از طریق ریمادلینگ اصلاح نمی‌شود؟')[lang],
+      'کدام ناهنجاری در شکستگی‌های کودکان از طریق بازسازی استخوان اصلاح نمی‌شود؟')[lang],
     [
       L('Achsfehlstellung in der Bewegungsebene des nächsten Gelenks (< 20°)', 'Angular deformity in the plane of adjacent joint motion (< 20°)', 'ناهنجاری محوری در صفحه حرکت مفصل مجاور (< ۲۰ درجه)')[lang],
       L('Rotationsfehlstellung', 'Rotational malalignment', 'ناهنجاری چرخشی')[lang],
@@ -540,7 +540,7 @@ export const FRAKTUR_KINDER_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].ma
       L('Geringer Längenunterschied bei jungen Kindern', 'Minor length discrepancy in young children', 'اختلاف طول جزئی در کودکان کوچک‌تر')[lang],
     ],
     1,
-    L('Rotationsfehlstellungen remodellieren sich NICHT, ebenso wenig wie erhebliche Verkürzungen. Achsfehlstellungen in der Bewegungsebene (v.a. physennah, junge Kinder) können sich korrigieren; Rotationen tun es nicht.', 'Rotational malalignment does NOT remodel, nor does significant shortening. Angular deformity in the plane of motion (especially near the physis, young children) can correct; rotation cannot.', 'ناهنجاری‌های چرخشی ریمادل نمی‌شوند، کوتاه‌شدگی قابل توجه هم نه. ناهنجاری محوری در صفحه حرکت (به‌ویژه نزدیک فیزیس، کودکان کوچک‌تر) می‌تواند اصلاح شود؛ چرخش نمی‌تواند.')[lang]
+    L('Rotationsfehlstellungen remodellieren sich NICHT, ebenso wenig wie erhebliche Verkürzungen. Achsfehlstellungen in der Bewegungsebene (v.a. physennah, junge Kinder) können sich korrigieren; Rotationen tun es nicht.', 'Rotational malalignment does NOT remodel, nor does significant shortening. Angular deformity in the plane of motion (especially near the physis, young children) can correct; rotation cannot.', 'ناهنجاری‌های چرخشی بازسازی نمی‌شوند، کوتاه‌شدگی قابل توجه هم نه. ناهنجاری محوری در صفحه حرکت (به‌ویژه نزدیک فیزیس، کودکان کوچک‌تر) می‌تواند اصلاح شود؛ چرخش نمی‌تواند.')[lang]
   ),
 
   Q(`fk-misshandlung-1-${lang}`,
@@ -622,9 +622,9 @@ export const FRAKTUR_KINDER_FLASHCARDS = [
   ),
 
   F('fk-fc-remodel', L('Grundlagen', 'Basics', 'مبانی'),
-    L('Was remodelliert sich bei Kinderfrakturen, was nicht?', 'What remodels and what does NOT in paediatric fractures?', 'در شکستگی‌های کودکان چه چیزی ریمادل می‌شود و چه چیزی نه؟'),
-    L('Remodelliert: Achsfehlstellungen in der Bewegungsebene < 20–25° (v.a. physennah, junges Alter). NICHT: Rotationsfehlstellungen, erhebliche Verkürzungen, Achsfehlstellungen > 25°.', 'Remodels: angular deformities in the plane of motion < 20–25° (especially near physis, young age). Does NOT: rotational malalignment, significant shortening, angular deformities > 25°.', 'ریمادل می‌شود: ناهنجاری‌های محوری در صفحه حرکت < ۲۰–۲۵ درجه (به‌ویژه نزدیک فیزیس، سن پایین). نمی‌شود: ناهنجاری‌های چرخشی، کوتاه‌شدگی قابل توجه، ناهنجاری‌های محوری > ۲۵ درجه.'),
-    L('Rotation remodelliert NICHT – Achse ja, Rotation nein!', 'Rotation does NOT remodel – axis yes, rotation no!', 'چرخش ریمادل نمی‌شود – محور بله، چرخش نه!')
+    L('Was remodelliert sich bei Kinderfrakturen, was nicht?', 'What remodels and what does NOT in paediatric fractures?', 'در شکستگی‌های کودکان چه چیزی بازسازی می‌شود و چه چیزی نه؟'),
+    L('Remodelliert: Achsfehlstellungen in der Bewegungsebene < 20–25° (v.a. physennah, junges Alter). NICHT: Rotationsfehlstellungen, erhebliche Verkürzungen, Achsfehlstellungen > 25°.', 'Remodels: angular deformities in the plane of motion < 20–25° (especially near physis, young age). Does NOT: rotational malalignment, significant shortening, angular deformities > 25°.', 'بازسازی می‌شود: ناهنجاری‌های محوری در صفحه حرکت < ۲۰–۲۵ درجه (به‌ویژه نزدیک فیزیس، سن پایین). نمی‌شود: ناهنجاری‌های چرخشی، کوتاه‌شدگی قابل توجه، ناهنجاری‌های محوری > ۲۵ درجه.'),
+    L('Rotation remodelliert NICHT – Achse ja, Rotation nein!', 'Rotation does NOT remodel – axis yes, rotation no!', 'چرخش بازسازی نمی‌شود – محور بله، چرخش نه!')
   ),
 
   F('fk-fc-physis-anat', L('Grundlagen', 'Basics', 'مبانی'),
@@ -641,7 +641,7 @@ export const FRAKTUR_KINDER_FLASHCARDS = [
 
   F('fk-fc-uebergang-ct', L('Übergangsfrakturen', 'Transitional Fractures', 'شکستگی‌های گذار'),
     L('Wann ist CT bei Kinderfrakturen indiziert?', 'When is CT indicated in paediatric fractures?', 'CT در کودکان چه زمانی در شکستگی‌ها اندیکاسیون دارد؟'),
-    L('1) Übergangsfrakturen (Tillaux/Triplane): immer CT zum Ausschluss > 2 mm Gelenkstufenbildung. 2) Komplexe Gelenkfrakturen. 3) Operative Planung. 4) Verdacht auf Kindesmisshandlung (Ganzkörper-Skelettszintigraphie oder Low-dose CT).', '1) Transitional fractures (Tillaux/Triplane): always CT to exclude > 2 mm articular step. 2) Complex articular fractures. 3) Surgical planning. 4) Suspected NAI (whole-body bone scan or low-dose CT).', '۱) شکستگی‌های گذار (تیلو/سه‌صفحه‌ای): همیشه CT برای رد > ۲ میلی‌متر پله مفصلی. ۲) شکستگی‌های پیچیده مفصلی. ۳) برنامه‌ریزی جراحی. ۴) ظنین به NAI (اسکن استخوان کل بدن یا CT کم‌دوز).'),
+    L('1) Übergangsfrakturen (Tillaux/Triplane): immer CT zum Ausschluss > 2 mm Gelenkstufenbildung. 2) Komplexe Gelenkfrakturen. 3) Operative Planung. 4) Verdacht auf Kindesmisshandlung (Ganzkörper-Skelettszintigraphie oder Low-dose CT).', '1) Transitional fractures (Tillaux/Triplane): always CT to exclude > 2 mm articular step. 2) Complex articular fractures. 3) Surgical planning. 4) Suspected NAI (whole-body bone scan or low-dose CT).', '۱) شکستگی‌های گذار (تیلو/سه‌صفحه‌ای): همیشه CT برای رد > ۲ میلی‌متر پله مفصلی. ۲) شکستگی‌های پیچیده مفصلی. ۳) برنامه‌ریزی جراحی. ۴) ظن به NAI (اسکن استخوان کل بدن یا CT کم‌دوز).'),
     L('Tillaux + Triplane → immer CT. Schwellenwert: 2 mm Gelenkstufe.', 'Tillaux + Triplane → always CT. Threshold: 2 mm articular step.', 'تیلو + سه‌صفحه‌ای → همیشه CT. آستانه: ۲ میلی‌متر پله مفصلی.')
   ),
 

@@ -55,7 +55,7 @@ export const RADIUSKOPF_LESSON = {
         text: L(
           'Sturz auf die ausgestreckte, pronierte Hand (FOOSH – Fall On OutStretched Hand). Axiale Kraftübertragung durch den Radius auf das Capitulum humeri → Radiusköpfchen wird gegen das Capitulum gepresst.',
           'Fall on outstretched, pronated hand (FOOSH). Axial force transmission through the radius onto the capitellum → radial head is compressed against the capitellum.',
-          'افتادن روی دست باز و پروند (FOOSH). انتقال نیرو به صورت محوری از رادیوس به کاپیتولوم هومروس → سر رادیوس به کاپیتولوم فشرده می‌شود.'
+          'افتادن روی دست کشیده و pronated (FOOSH). انتقال نیرو به صورت محوری از رادیوس به کاپیتولوم هومروس → سر رادیوس به کاپیتولوم فشرده می‌شود.'
         ),
       },
       {
@@ -130,7 +130,7 @@ export const RADIUSKOPF_LESSON = {
         {
           icon: '▲',
           title: L('Anteriores Fettkissen – Sail Sign', 'Anterior fat pad – Sail sign', 'بالشتک چربی قدامی – نشانه بادبان'),
-          text: L('Eleviert und dreiecksförmig wie ein Segel – normal wenn sehr flach, pathologisch wenn eleviert.', 'Elevated and triangular like a sail – normal if very flat, pathological if elevated.', 'بالا رفته و مثلثی مثل بادبان – در صورت بسیار صاف بودن طبیعی، در صورت ارتفاع پاتولوژیک است.'),
+          text: L('Eleviert und dreiecksförmig wie ein Segel – normal wenn sehr flach, pathologisch wenn eleviert.', 'Elevated and triangular like a sail – normal if very flat, pathological if elevated.', 'بالا رفته و مثلثی مثل بادبان – اگر بسیار صاف باشد طبیعی، اگر بالا آمده باشد پاتولوژیک است.'),
         },
         {
           icon: '▼',
@@ -161,7 +161,7 @@ export const RADIUSKOPF_LESSON = {
     cave: L(
       'Okkulte Frakturen (Mason I): Röntgen kann normal sein – nur das posteriore Fettkissenzeichen gibt den Hinweis. Bei klinischem Verdacht und isoliertem Fettkissenzeichen → Radiusköpfchenfraktur bis zum Beweis des Gegenteils.',
       'Occult fractures (Mason I): X-ray may appear normal – only the posterior fat pad sign gives the clue. With clinical suspicion and isolated fat pad sign → radial head fracture until proven otherwise.',
-      'شکستگی‌های پنهان (ماسون I): رادیوگرافی ممکن است طبیعی به نظر برسد – فقط نشانه بالشتک چربی خلفی راهنما است. با ظنین بالینی و نشانه بالشتک چربی مجزا → شکستگی سر رادیوس تا زمانی که خلاف آن ثابت نشود.'
+      'شکستگی‌های پنهان (ماسون I): رادیوگرافی ممکن است طبیعی به نظر برسد – فقط نشانه بالشتک چربی خلفی راهنما است. با ظن بالینی و نشانه بالشتک چربی به‌تنهایی → شکستگی سر رادیوس تا زمانی که خلاف آن ثابت نشود.'
     ),
   },
 
@@ -185,7 +185,7 @@ export const RADIUSKOPF_LESSON = {
         L('I', 'I', 'I'),
         L('Nicht oder minimal dislozierte Fraktur', 'Non- or minimally displaced fracture', 'شکستگی بدون یا حداقل جابجایی'),
         L('Gelenkstufe < 2 mm; > 70 % der Gelenkfläche intakt', 'Joint step < 2 mm; > 70 % of articular surface intact', 'پله مفصلی < ۲ میلی‌متر؛ > ۷۰٪ سطح مفصلی سالم'),
-        L('Konservativ: Gilchrist/Schlinge 1–2 Wo., frühe Mobilisation', 'Conservative: sling 1–2 weeks, early mobilisation', 'محافظه‌کارانه: آویزان ۱–۲ هفته، تحرک زودهنگام'),
+        L('Konservativ: Gilchrist/Schlinge 1–2 Wo., frühe Mobilisation', 'Conservative: sling 1–2 weeks, early mobilisation', 'محافظه‌کارانه: اسلینگ ۱–۲ هفته، تحرک زودهنگام'),
       ],
       [
         L('II', 'II', 'II'),
@@ -227,7 +227,7 @@ export const RADIUSKOPF_LESSON = {
         text: L(
           'Gilchrist-Schlinge oder Oberarmgips für 1–2 Wochen. Frühfunktionelle Mobilisation nach Schmerzrückgang (Ziel: keine Steifigkeit!). Vollbelastung und Arbeitsfähigkeit nach 4–6 Wochen.',
           'Gilchrist sling or above-elbow cast for 1–2 weeks. Early functional mobilisation once pain decreases (goal: avoid stiffness!). Full loading and return to work after 4–6 weeks.',
-          'آویزان گیلکریست یا گچ بالای آرنج برای ۱–۲ هفته. تحرک عملکردی زودهنگام پس از کاهش درد (هدف: از سفتی جلوگیری کنید!). بار کامل و بازگشت به کار بعد از ۴–۶ هفته.'
+          'اسلینگ گیلکریست یا گچ بالای آرنج برای ۱–۲ هفته. تحرک عملکردی زودهنگام پس از کاهش درد (هدف: از سفتی جلوگیری کنید!). بار کامل و بازگشت به کار بعد از ۴–۶ هفته.'
         ),
       },
       {
@@ -456,12 +456,12 @@ export const RADIUSKOPF_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(la
       'کدام مکانیسم آسیب معمولاً منجر به شکستگی سر رادیوس می‌شود؟')[lang],
     [
       L('Direkte Gewalt auf den Ellenbogen (Schlag)', 'Direct blow to the elbow', 'ضربه مستقیم به آرنج')[lang],
-      L('FOOSH – Sturz auf ausgestreckte, pronierte Hand mit axialer Kraftübertragung durch den Radius', 'FOOSH – fall on outstretched pronated hand with axial force transmission through the radius', 'FOOSH – افتادن روی دست باز و پروند با انتقال نیروی محوری از رادیوس')[lang],
+      L('FOOSH – Sturz auf ausgestreckte, pronierte Hand mit axialer Kraftübertragung durch den Radius', 'FOOSH – fall on outstretched pronated hand with axial force transmission through the radius', 'FOOSH – افتادن روی دست کشیده و pronated با انتقال نیروی محوری از رادیوس')[lang],
       L('Hyperextensionstrauma', 'Hyperextension injury', 'تروما هایپراکستانسیون')[lang],
       L('Rotationsgewalt am Unterarm', 'Rotational force on the forearm', 'نیروی چرخشی روی ساعد')[lang],
     ],
     1,
-    L('FOOSH (Fall On OutStretched Hand): Sturz auf die ausgestreckte, pronierte Hand → axiale Kraft wird durch den Radius übertragen → Radiusköpfchen wird gegen das Capitulum humeri gepresst → Fraktur. Häufigster Mechanismus für alle Mason-Typen.', 'FOOSH (Fall On OutStretched Hand): fall on the outstretched pronated hand → axial force transmitted through the radius → radial head compressed against capitellum → fracture. Most common mechanism for all Mason types.', 'FOOSH (افتادن روی دست باز): افتادن روی دست باز و پروند → نیروی محوری از طریق رادیوس منتقل می‌شود → سر رادیوس به کاپیتولوم فشرده می‌شود → شکستگی. شایع‌ترین مکانیسم برای تمام انواع ماسون.')[lang]
+    L('FOOSH (Fall On OutStretched Hand): Sturz auf die ausgestreckte, pronierte Hand → axiale Kraft wird durch den Radius übertragen → Radiusköpfchen wird gegen das Capitulum humeri gepresst → Fraktur. Häufigster Mechanismus für alle Mason-Typen.', 'FOOSH (Fall On OutStretched Hand): fall on the outstretched pronated hand → axial force transmitted through the radius → radial head compressed against capitellum → fracture. Most common mechanism for all Mason types.', 'FOOSH (افتادن روی دست کشیده): افتادن روی دست کشیده و pronated → نیروی محوری از طریق رادیوس منتقل می‌شود → سر رادیوس به کاپیتولوم فشرده می‌شود → شکستگی. شایع‌ترین مکانیسم برای تمام انواع ماسون.')[lang]
   ),
 
   Q(`rk-nerv-1-${lang}`,
@@ -483,7 +483,7 @@ export const RADIUSKOPF_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(la
       'A 35-year-old patient has a Mason II fracture after FOOSH trauma (joint step 3 mm, 40 % articular surface). What treatment is indicated?',
       'یک بیمار ۳۵ ساله پس از تروما FOOSH یک شکستگی ماسون II دارد (پله مفصلی ۳ میلی‌متر، ۴۰٪ سطح مفصلی). کدام درمان اندیکاسیون دارد؟')[lang],
     [
-      L('Konservativ mit Schlinge für 6 Wochen', 'Conservative with sling for 6 weeks', 'محافظه‌کارانه با آویزان برای ۶ هفته')[lang],
+      L('Konservativ mit Schlinge für 6 Wochen', 'Conservative with sling for 6 weeks', 'محافظه‌کارانه با اسلینگ برای ۶ هفته')[lang],
       L('ORIF (offene Reposition und interne Fixation) mit Schrauben', 'ORIF (open reduction and internal fixation) with screws', 'ORIF (کاهش باز و تثبیت داخلی) با پیچ')[lang],
       L('Radiusköpfchenprothese', 'Radial head arthroplasty', 'پروتز سر رادیوس')[lang],
       L('Primäre Radiusköpfchenresektion', 'Primary radial head resection', 'رزکسیون اولیه سر رادیوس')[lang],

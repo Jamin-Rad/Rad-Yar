@@ -125,9 +125,9 @@ export const HMA_LESSON = {
     ],
     morphRows: [
       [L('Dichte', 'Density', 'دانسیته'), L('Hyperdens (50–70 HU)', 'Hyperdense (50–70 HU)', 'هیپردنس (50–70 HU)'), L('Koaguliertes Hämoglobin', 'Coagulated haemoglobin', 'هموگلوبین منعقد')],
-      [L('Form', 'Shape', 'شکل'), L('Irregulär, nicht vollkommen rund', 'Irregular, not perfectly round', 'نامنظم، کاملاً گرد نیست'), L('Akute Blutung folgt Gewebespalten', 'Acute bleed tracks tissue planes', 'خون حاد مسیر فضاهای بافتی را می‌رود')],
+      [L('Form', 'Shape', 'شکل'), L('Irregulär, nicht vollkommen rund', 'Irregular, not perfectly round', 'نامنظم، کاملاً گرد نیست'), L('Akute Blutung folgt Gewebespalten', 'Acute bleed tracks tissue planes', 'خون حاد در مسیر فضاهای بافتی گسترش می‌یابد')],
       [L('Ödem', 'Oedema', 'ادم'), L('Anfangs gering, später zunehmendes Umgebungsödem', 'Initially mild, progressively increasing perilesional oedema', 'در ابتدا خفیف، ادم اطراف ضایعه به تدریج افزایش می‌یابد'), L('Proteintranssudat, Entzündungsreaktion', 'Protein transsudate, inflammatory reaction', 'ترانسودا پروتئینی، واکنش التهابی')],
-      [L('Ventrikeleinbruch', 'Intraventricular extension', 'بسط بطنی'), L('Möglich, schlechtere Prognose', 'Possible, poorer prognosis', 'ممکن است، پیش‌آگهی بدتر'), L('Obstruktiver Hydrozephalus möglich', 'Obstructive hydrocephalus possible', 'هیدروسفالی انسدادی ممکن')],
+      [L('Ventrikeleinbruch', 'Intraventricular extension', 'گسترش داخل بطنی'), L('Möglich, schlechtere Prognose', 'Possible, poorer prognosis', 'ممکن است، پیش‌آگهی بدتر'), L('Obstruktiver Hydrozephalus möglich', 'Obstructive hydrocephalus possible', 'هیدروسفالی انسدادی ممکن')],
     ],
     locHeaders: [
       L('Lokalisation', 'Location', 'محل'),
@@ -191,7 +191,7 @@ export const HMA_LESSON = {
     ],
     fazekasRows: [
       [L('Grad 0', 'Grade 0', 'درجه ۰'), L('Keine Läsion', 'No lesion', 'بدون ضایعه'), L('Keine Läsion', 'No lesion', 'بدون ضایعه')],
-      [L('Grad 1', 'Grade 1', 'درجه ۱'), L('Gepunktelte Caps / Bänder', 'Punctate caps/bands', 'کپ‌های/باندهای نقطه‌ای'), L('Gepunktelte Läsionen', 'Punctate lesions', 'ضایعات نقطه‌ای')],
+      [L('Grad 1', 'Grade 1', 'درجه ۱'), L('Gepunktelte Caps / Bänder', 'Punctate caps/bands', 'کلاهک‌ها/باندهای نقطه‌ای'), L('Gepunktelte Läsionen', 'Punctate lesions', 'ضایعات نقطه‌ای')],
       [L('Grad 2', 'Grade 2', 'درجه ۲'), L('Halo um die Ventrikel', 'Halo around ventricles', 'هاله دور بطن‌ها'), L('Beginn der Konfluenz', 'Beginning confluent', 'شروع تجمع')],
       [L('Grad 3', 'Grade 3', 'درجه ۳'), L('Ausgedehnte periventrikuläre WMH', 'Extensive periventricular WMH', 'WMH پریونتریکولار وسیع'), L('Großflächig konfluierend', 'Large confluent areas', 'مناطق تجمع وسیع')],
     ],
@@ -572,7 +572,7 @@ const HMA_FLASH_SEEDS = [
 
   F('fazekas', L('MRT', 'MRI', 'MRI'),
     L('Fazekas-Skala: Grad 0–3 für WMH in FLAIR/T2', 'Fazekas scale: grades 0–3 for WMH on FLAIR/T2', 'مقیاس Fazekas: درجه ۰-۳ برای WMH در FLAIR/T2'),
-    L('Grad 0: keine WMH\nGrad 1: gepunktete Caps/Bänder (periventrikulär), Punkte (tief)\nGrad 2: Halo (periventrik.) + beginnende Konfluenz (tief)\nGrad 3: ausgedehnte periventrikuläre WMH + großflächig konfluierend', 'Grade 0: no WMH\nGrade 1: punctate caps/bands (periventricular), dots (deep)\nGrade 2: halo (periventricular) + beginning confluence (deep)\nGrade 3: extensive periventricular WMH + large confluent areas', 'درجه ۰: بدون WMH\nدرجه ۱: کپ‌های/باندهای نقطه‌ای (پریونتریکولار)، نقطه‌ها (عمقی)\nدرجه ۲: هاله (پریونتریکولار) + شروع تجمع (عمقی)\nدرجه ۳: WMH پریونتریکولار وسیع + مناطق تجمع بزرگ'),
+    L('Grad 0: keine WMH\nGrad 1: gepunktete Caps/Bänder (periventrikulär), Punkte (tief)\nGrad 2: Halo (periventrik.) + beginnende Konfluenz (tief)\nGrad 3: ausgedehnte periventrikuläre WMH + großflächig konfluierend', 'Grade 0: no WMH\nGrade 1: punctate caps/bands (periventricular), dots (deep)\nGrade 2: halo (periventricular) + beginning confluence (deep)\nGrade 3: extensive periventricular WMH + large confluent areas', 'درجه ۰: بدون WMH\nدرجه ۱: کلاهک‌ها/باندهای نقطه‌ای (پریونتریکولار)، نقطه‌ها (عمقی)\nدرجه ۲: هاله (پریونتریکولار) + شروع تجمع (عمقی)\nدرجه ۳: WMH پریونتریکولار وسیع + مناطق تجمع بزرگ'),
     L('0=keine, 1=Punkte, 2=Halo/Konfluenz, 3=ausgedehnt', '0=none, 1=dots, 2=halo/confluence, 3=extensive', '۰=هیچ، ۱=نقطه، ۲=هاله/تجمع، ۳=وسیع')
   ),
 
