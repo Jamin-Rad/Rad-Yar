@@ -130,8 +130,9 @@ const ZONES = [
   {
     id: 'Abdomen',
     transform: 'translate(-5 0)',
-    // Follow the subcostal margin, waist and the existing pelvic brim.
-    d: 'M302 552 C335 564 374 570 421 570 C468 570 507 564 540 552 C548 578 552 607 549 636 C546 665 539 690 540 711 C508 703 493 711 469 726 C452 737 437 744 421 744 C405 744 390 737 373 726 C349 711 334 703 302 711 C303 690 296 665 293 636 C290 607 294 578 302 552 Z',
+    // Follow the subcostal margin, draw the flanks inward at the waist and
+    // widen the lower abdomen again before it meets the unchanged pelvis.
+    d: 'M302 552 C335 564 374 570 421 570 C468 570 507 564 540 552 C545 578 547 603 543 628 C540 652 534 674 531 696 C529 718 533 743 542 774 C511 790 471 799 421 799 C371 799 331 790 300 774 C309 743 313 718 311 696 C308 674 302 652 299 628 C295 603 297 578 302 552 Z',
   },
   {
     id: 'Becken',
