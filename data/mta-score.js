@@ -14,6 +14,18 @@ export const MTA_LESSON = {
   caveLabel: L('Cave', 'Caution', 'هشدار'),
   toc: L('Inhalt', 'Contents', 'فهرست'),
 
+  radiopaediaCase: {
+    id: 42027,
+    url: 'https://radiopaedia.org/cases/42027/play',
+    src: '/mta-score/mta-score-rid42027.jpg',
+    caption: L(
+      'MTA-Score 0–4 nach Scheltens – koronale T1-Schnitte auf Höhe des Mammillarkörpers (rID: 42027)',
+      'MTA score 0–4 per Scheltens – coronal T1 slices at mamillary body level (rID: 42027)',
+      'امتیاز MTA ۰–۴ طبق شلتنز – برش‌های T1 کرونال در سطح جسم ماميلار (rID: 42027)'
+    ),
+    credit: 'Radiopaedia.org, rID: 42027',
+  },
+
   heroCards: [
     {
       value: L('0–4', '0–4', '۰–۴'),
