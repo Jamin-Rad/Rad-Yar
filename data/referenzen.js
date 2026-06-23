@@ -740,6 +740,60 @@ export const KLASSIFIKATIONEN = [
           },
         ],
       },
+      {
+        id: 'mta-score',
+        name: { de: 'MTA-Score', en: 'MTA Score', fa: 'امتیاز MTA' },
+        kompakt: {
+          de: 'Visuelles MRT-Rating (0–4) der medialen Temporalatrophie (Hippocampus) als Alzheimer-Bildgebungsmarker – Sequenz: T1 koronar auf Höhe des Mammillarkörpers, jede Hemisphäre separat.',
+          en: 'Visual MRI rating (0–4) of medial temporal atrophy (hippocampus) as an Alzheimer imaging marker — T1 coronal at mamillary body level, each hemisphere rated separately.',
+          fa: 'امتیازدهی بصری MRI (۰–۴) آتروفی گیجگاهی مدیال (هیپوکامپ) به عنوان نشانگر تصویربرداری آلزهایمر — T1 کرونال در سطح جسم ماميلار، هر نیمکره جداگانه.',
+        },
+        ref: 'Scheltens P et al., J Neurol Neurosurg Psychiatry. 1992;55(10):967–72',
+        refUrl: 'https://pubmed.ncbi.nlm.nih.gov/1431963/',
+        image: {
+          src: '/mta-score/mta-score-rid42027.jpg',
+          alt: {
+            de: 'MTA-Score 0–4: koronale T1-MRT auf Hippocampushöhe (Scheltens)',
+            en: 'MTA score 0–4: coronal T1 MRI at hippocampal level (Scheltens)',
+            fa: 'امتیاز MTA ۰–۴: T1 کرونال MRI در سطح هیپوکامپ (شلتنز)',
+          },
+          attribution: {
+            name: 'Radiopaedia.org',
+            sourceUrl: 'https://radiopaedia.org',
+            caseUrl: 'https://radiopaedia.org/cases/42027',
+            caseId: '42027',
+          },
+        },
+        einfach: {
+          cols: [
+            { de: 'Altersgruppe', en: 'Age group', fa: 'گروه سنی' },
+            { de: 'Pathologisch ab', en: 'Pathological at', fa: 'پاتولوژیک از' },
+          ],
+          rows: [
+            [{ de: '< 75 Jahre', en: '< 75 yr', fa: '< ۷۵ سال' }, 'MTA ≥ 2'],
+            [{ de: '75–84 Jahre', en: '75–84 yr', fa: '۷۵–۸۴ سال' }, 'MTA ≥ 3'],
+            [{ de: '≥ 85 Jahre', en: '≥ 85 yr', fa: '≥ ۸۵ سال' }, 'MTA ≥ 4'],
+          ],
+        },
+        cols: [
+          { de: 'Score', en: 'Score', fa: 'امتیاز' },
+          { de: 'Atrophie', en: 'Atrophy', fa: 'آتروفی' },
+          { de: 'Sulcus choroideus', en: 'Choroid fissure', fa: 'شیار کورویید' },
+          { de: 'Temporalhorn', en: 'Temporal horn', fa: 'شاخ گیجگاهی' },
+          { de: 'Hippocampushöhe', en: 'Hippocampal height', fa: 'ارتفاع هیپوکامپ' },
+        ],
+        rows: [
+          ['0', { de: 'Keine', en: 'None', fa: 'بدون' }, { de: 'Normal', en: 'Normal', fa: 'طبیعی' }, { de: 'Normal', en: 'Normal', fa: 'طبیعی' }, { de: 'Normal', en: 'Normal', fa: 'طبیعی' }],
+          ['1', { de: 'Minimal', en: 'Minimal', fa: 'حداقل' }, { de: 'Leicht ↑', en: 'Mildly ↑', fa: 'کمی ↑' }, { de: 'Normal', en: 'Normal', fa: 'طبیعی' }, { de: 'Normal', en: 'Normal', fa: 'طبیعی' }],
+          ['2', { de: 'Leicht', en: 'Mild', fa: 'خفیف' }, { de: '↑', en: '↑', fa: '↑' }, { de: 'Leicht ↑', en: 'Mildly ↑', fa: 'کمی ↑' }, { de: 'Normal–leicht ↓', en: 'Normal–mild ↓', fa: 'طبیعی–کمی ↓' }],
+          ['3', { de: 'Moderat', en: 'Moderate', fa: 'متوسط' }, { de: 'Deutlich ↑', en: 'Marked ↑', fa: 'واضح ↑' }, { de: '↑', en: '↑', fa: '↑' }, { de: '25–50 % ↓', en: '25–50 % ↓', fa: '۲۵–۵۰٪ ↓' }],
+          ['4', { de: 'Schwer', en: 'Severe', fa: 'شدید' }, { de: 'Stark ↑', en: 'Severe ↑', fa: 'شدید ↑' }, { de: 'Stark ↑', en: 'Severe ↑', fa: 'شدید ↑' }, { de: '> 50 % ↓', en: '> 50 % ↓', fa: '> ۵۰٪ ↓' }],
+        ],
+        tableNote: {
+          start: { de: 'Score 0–1: meist physiologisch · Score 3–4: immer pathologisch', en: 'Score 0–1: usually physiological · Score 3–4: always pathological', fa: 'امتیاز ۰–۱: اغلب فیزیولوژیک · امتیاز ۳–۴: همیشه پاتولوژیک' },
+          cutoff: { de: 'Score 2: altersabhängig (s. oben) — jede Hemisphäre separat bewerten', en: 'Score 2: age-dependent (see above) — rate each hemisphere separately', fa: 'امتیاز ۲: وابسته به سن (ر.ک. بالا) — هر نیمکره جداگانه ارزیابی شود' },
+        },
+      },
     ],
   },
   {

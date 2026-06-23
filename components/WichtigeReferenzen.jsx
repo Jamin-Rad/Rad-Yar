@@ -24,10 +24,164 @@ const HOME_CARD_VISUALS = {
 const CLASSIFICATION_TOPIC_LOGOS = {
   neuro: '/fach/gehirn.png',
   thorax: '/fach/thorax.png',
+  schilddruese: '/fach/hals.png',
   abdomen: '/fach/abdomen.png',
+  mamma: '/fach/mamma.png',
+  urogenital: '/fach/becken-m.png',
   'mamma-uro': '/fach/mamma.png',
   msk: '/fach/msk.png',
   onko: '/fach/technik.png',
+}
+
+const CLASSIFICATION_SEARCH_ALIASES = {
+  'ti-rads': ['tirads', 'schilddrüse', 'schilddruesenknoten', 'thyroid'],
+  'bi-rads': ['birads', 'mammografie', 'mammography', 'brust', 'breast'],
+  'mamma-mrt-dichte': ['bpe', 'fgT', 'mamma mrt', 'brust mrt', 'breast mri'],
+  'pi-rads': ['pirads', 'prostata', 'prostate'],
+  'li-rads': ['lirads', 'leber', 'hcc', 'liver'],
+  bosniak: ['bosnak', 'nierenzyste', 'nierencyste', 'kidney cyst', 'renal cyst'],
+  balthazar: ['ctsi', 'pankreatitis', 'pancreatitis'],
+  cdd: ['divertikulitis', 'divertikelkrankheit', 'diverticular'],
+  'lung-rads': ['lungrads', 'lungenscreening', 'lung screening'],
+  fleischner: ['lungenrundherd', 'lungenrundherde', 'pulmonary nodule'],
+  fazekas: ['fazekes', 'marklager', 'white matter'],
+  aspects: ['schlaganfall', 'stroke', 'mca'],
+  'pc-aspects': ['posterior circulation', 'hintere zirkulation', 'basilaris'],
+  recist: ['tumoransprechen', 'response'],
+  deauville: ['lymphom', 'lymphoma', 'pet'],
+}
+
+const CLASSIFICATION_SEARCH_COPY = {
+  de: {
+    placeholder: 'Klassifikation oder Organ suchen …',
+    hint: 'Tippfehler werden erkannt, z. B. „Bosnak“ oder „PIRAD“.',
+    results: 'Treffer',
+    suggestion: 'Meintest du',
+    empty: 'Keine passende Klassifikation gefunden.',
+    clear: 'Suche löschen',
+  },
+  en: {
+    placeholder: 'Search classification or organ …',
+    hint: 'Typos are recognised, e.g. “Bosnak” or “PIRAD”.',
+    results: 'Results',
+    suggestion: 'Did you mean',
+    empty: 'No matching classification found.',
+    clear: 'Clear search',
+  },
+  fa: {
+    placeholder: 'جستجوی طبقه‌بندی، اندام یا مخفف …',
+    hint: 'خطاهای تایپی نیز شناسایی می‌شوند؛ مانند Bosnak یا PIRAD.',
+    results: 'نتایج',
+    suggestion: 'منظورتان این بود',
+    empty: 'طبقه‌بندی مرتبطی پیدا نشد.',
+    clear: 'پاک کردن جستجو',
+  },
+}
+
+function normaliseSearch(value) {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/ß/g, 'ss')
+    .replace(/[^a-z0-9\u0600-\u06ff]+/g, ' ')
+    .trim()
+}
+
+function editDistance(a, b) {
+  if (!a) return b.length
+  if (!b) return a.length
+  const previous = Array.from({ length: b.length + 1 }, (_, index) => index)
+  for (let i = 1; i <= a.length; i += 1) {
+    let diagonal = previous[0]
+    previous[0] = i
+    for (let j = 1; j <= b.length; j += 1) {
+      const above = previous[j]
+      previous[j] = Math.min(
+        previous[j] + 1,
+        previous[j - 1] + 1,
+        diagonal + (a[i - 1] === b[j - 1] ? 0 : 1),
+      )
+      diagonal = above
+    }
+  }
+  return previous[b.length]
+}
+
+function classificationSearchScore(query, candidate) {
+  const q = normaliseSearch(query)
+  const c = normaliseSearch(candidate)
+  if (!q || !c) return null
+  if (c === q) return 0
+  if (c.startsWith(q)) return 0.04
+  if (c.includes(q)) return 0.08
+
+  const words = c.split(' ')
+  let best = editDistance(q, c) / Math.max(q.length, c.length)
+  for (const word of words) {
+    best = Math.min(best, editDistance(q, word) / Math.max(q.length, word.length))
+  }
+  return best <= 0.38 ? 0.2 + best : null
+}
+
+function buildClassificationTopics(sourceTopics) {
+  const byId = Object.fromEntries(sourceTopics.map(topic => [topic.id, topic]))
+  const thorax = byId.thorax
+  const mammaUro = byId['mamma-uro']
+  const makeTopic = (id, source, name, items, color = source.color) => ({
+    ...source,
+    id,
+    sourceTopicId: source.id,
+    name,
+    color,
+    items,
+  })
+
+  return [
+    byId.neuro,
+    makeTopic(
+      'thorax',
+      thorax,
+      { de: 'Thorax', en: 'Thorax', fa: 'توراکس' },
+      thorax.items.filter(item => item.id !== 'ti-rads'),
+    ),
+    makeTopic(
+      'schilddruese',
+      thorax,
+      { de: 'Schilddrüse', en: 'Thyroid', fa: 'تیروئید' },
+      thorax.items.filter(item => item.id === 'ti-rads'),
+      '#db2777',
+    ),
+    byId.abdomen,
+    makeTopic(
+      'mamma',
+      mammaUro,
+      { de: 'Mamma', en: 'Breast', fa: 'پستان' },
+      mammaUro.items.filter(item => item.id !== 'pi-rads'),
+      '#ec4899',
+    ),
+    makeTopic(
+      'urogenital',
+      mammaUro,
+      { de: 'Urogenital', en: 'Urogenital', fa: 'اوروژنیتال' },
+      mammaUro.items.filter(item => item.id === 'pi-rads'),
+      '#0ea5e9',
+    ),
+    byId.msk,
+    byId.onko,
+  ].filter(Boolean)
+}
+
+function classificationCountLabel(count, lang) {
+  if (lang === 'fa') return 'طبقه‌بندی'
+  if (lang === 'en') return count === 1 ? 'classification' : 'classifications'
+  return count === 1 ? 'Klassifikation' : 'Klassifikationen'
+}
+
+function compactReferenceLabel(count, lang) {
+  if (lang === 'fa') return 'مرجع فشرده'
+  if (lang === 'en') return count === 1 ? 'compact reference' : 'compact references'
+  return count === 1 ? 'kompaktes Nachschlagewerk' : 'kompakte Nachschlagewerke'
 }
 
 const MEASUREMENT_REGION_LOGOS = {
@@ -213,10 +367,44 @@ function MesswerteModal({ copy, lang, onClose }) {
 /* ── Klassifikationen-Modal (Split wie Messwerte) ─ */
 function KlassifikationenModal({ copy, lang, onClose }) {
   const router = useRouter()
-  const topics = REF_DATA.klassifikationen
+  const topics = buildClassificationTopics(REF_DATA.klassifikationen)
   const [topicId, setTopicId] = useState(topics[0].id)
   const [showDetail, setShowDetail] = useState(false)
+  const [query, setQuery] = useState('')
   const topic = topics.find(t => t.id === topicId) || topics[0]
+  const searchCopy = CLASSIFICATION_SEARCH_COPY[lang] || CLASSIFICATION_SEARCH_COPY.de
+  const searchResults = query.trim()
+    ? topics.flatMap(searchTopic => searchTopic.items.map(item => {
+        const candidates = [
+          tx(item.name, lang),
+          tx(item.name, 'de'),
+          tx(item.name, 'en'),
+          tx(searchTopic.name, lang),
+          tx(item.kompakt, lang),
+          ...(CLASSIFICATION_SEARCH_ALIASES[item.id] || []),
+        ]
+        const scores = candidates
+          .map(candidate => classificationSearchScore(query, candidate))
+          .filter(score => score !== null)
+        if (!scores.length) return null
+        return {
+          item,
+          topic: searchTopic,
+          score: Math.min(...scores),
+        }
+      })).filter(Boolean)
+      .sort((a, b) => a.score - b.score || tx(a.item.name, lang).localeCompare(tx(b.item.name, lang)))
+      .slice(0, 8)
+    : []
+  const topResultNameScore = searchResults[0]
+    ? classificationSearchScore(query, tx(searchResults[0].item.name, lang))
+    : null
+  const suggestedResult = query.trim().length >= 3
+    && searchResults[0]
+    && topResultNameScore !== null
+    && normaliseSearch(query) !== normaliseSearch(tx(searchResults[0].item.name, lang))
+    ? searchResults[0]
+    : null
   const go = (tId, itemId) => {
     onClose()
     router.push(`/referenzen/${tId}/${itemId}${lang!=='de'?`?lang=${lang}`:''}`)
@@ -224,6 +412,65 @@ function KlassifikationenModal({ copy, lang, onClose }) {
   return (
     <Modal title={copy.btnKlass} subtitle={showDetail?tx(topic.name,lang):null} accent={topic.color}
       copy={copy} onClose={onClose} accentClass={styles.headOrange} wide>
+      <div className={styles.klassSearchWrap}>
+        <div className={styles.klassSearchField}>
+          <span className={styles.klassSearchIcon} aria-hidden="true">⌕</span>
+          <input
+            type="search"
+            value={query}
+            onChange={event => setQuery(event.target.value)}
+            className={styles.klassSearchInput}
+            placeholder={searchCopy.placeholder}
+            aria-label={searchCopy.placeholder}
+          />
+          {query && (
+            <button type="button" className={styles.klassSearchClear} onClick={() => setQuery('')} aria-label={searchCopy.clear}>×</button>
+          )}
+        </div>
+        {!query && <p className={styles.klassSearchHint}>{searchCopy.hint}</p>}
+        {suggestedResult && (
+          <p className={styles.klassSearchSuggestion}>
+            {searchCopy.suggestion}:{' '}
+            <button type="button" onClick={() => setQuery(tx(suggestedResult.item.name, lang))}>
+              {tx(suggestedResult.item.name, lang)}
+            </button>
+            ?
+          </p>
+        )}
+      </div>
+
+      {query.trim() ? (
+        <div className={styles.klassSearchResults}>
+          <div className={styles.klassSearchResultsHead}>
+            <strong>{searchCopy.results}</strong>
+            <span>{searchResults.length}</span>
+          </div>
+          {searchResults.length ? (
+            <div className={styles.klassSearchGrid}>
+              {searchResults.map(({ item, topic: resultTopic }) => (
+                <button
+                  key={`${resultTopic.id}-${item.id}`}
+                  type="button"
+                  className={styles.klassSearchResult}
+                  style={{ '--ref-color': resultTopic.color }}
+                  onClick={() => go(resultTopic.sourceTopicId || resultTopic.id, item.id)}
+                >
+                  <span className={`${styles.navIconWrap} ${styles.klassNavLogoWrap}`}>
+                    <Image src={CLASSIFICATION_TOPIC_LOGOS[resultTopic.id] || '/fach/technik.png'} alt="" width={30} height={30} className={styles.klassNavLogo} />
+                  </span>
+                  <span className={styles.klassSearchResultText}>
+                    <strong>{tx(item.name, lang)}</strong>
+                    <small>{tx(resultTopic.name, lang)}</small>
+                  </span>
+                  <span className={styles.klassSearchResultArrow}>→</span>
+                </button>
+              ))}
+            </div>
+          ) : (
+            <p className={styles.klassSearchEmpty}>{searchCopy.empty}</p>
+          )}
+        </div>
+      ) : (
       <div className={`${styles.split} ${showDetail?styles.showDetail:''}`}>
         <nav className={styles.sidebar}>
           {topics.map(t => (
@@ -235,7 +482,7 @@ function KlassifikationenModal({ copy, lang, onClose }) {
               </span>
               <span className={styles.klassNavText}>
                 <span className={styles.navLabel}>{tx(t.name,lang)}</span>
-                <span className={styles.klassNavCount}>{t.items.length} {lang === 'de' ? 'Klassifikationen' : lang === 'fa' ? 'طبقه‌بندی' : 'classifications'}</span>
+                <span className={styles.klassNavCount}>{t.items.length} {classificationCountLabel(t.items.length, lang)}</span>
               </span>
               <span className={styles.klassNavArrow}>›</span>
             </button>
@@ -250,12 +497,12 @@ function KlassifikationenModal({ copy, lang, onClose }) {
             <div>
               <span className={styles.klassTopicEyebrow}>{copy.btnKlass}</span>
               <h2 style={{color:topic.color}}>{tx(topic.name,lang)}</h2>
-              <p>{topic.items.length} {lang === 'de' ? 'kompakte Nachschlagewerke' : lang === 'fa' ? 'مرجع فشرده' : 'compact references'}</p>
+              <p>{topic.items.length} {compactReferenceLabel(topic.items.length, lang)}</p>
             </div>
           </div>
           <div className={styles.klassCardGrid}>
             {topic.items.map(item=>(
-              <button key={item.id} className={styles.klassCard} style={{'--ref-color':topic.color}} onClick={()=>go(topic.id,item.id)}>
+              <button key={item.id} className={styles.klassCard} style={{'--ref-color':topic.color}} onClick={()=>go(topic.sourceTopicId || topic.id,item.id)}>
                 <span className={styles.klassCardName} style={{color:topic.color}}>{tx(item.name,lang)}</span>
                 <span className={styles.klassCardText}>{tx(item.kompakt,lang)}</span>
                 <span className={styles.klassCardFoot}>
@@ -267,6 +514,7 @@ function KlassifikationenModal({ copy, lang, onClose }) {
           </div>
         </div>
       </div>
+      )}
     </Modal>
   )
 }
