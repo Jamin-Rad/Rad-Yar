@@ -60,6 +60,22 @@ function ClassTable({ cols, rows, lang }) {
   )
 }
 
+function DetailList({ detail, lang, color }) {
+  return (
+    <div className={styles.detailList}>
+      {detail.map((d, di) => (
+        <div key={di} className={styles.detailBlock} style={{ borderColor: color + '33' }}>
+          <h3 className={styles.detailStage} style={{ color }}>
+            <span className={styles.detailDot} style={{ background: color }} />
+            {tx(d.stage, lang)}
+          </h3>
+          <p className={styles.detailText}>{tx(d.text, lang)}</p>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 export default function KlassDetailPage({ topic, item }) {
   const { lang } = useLanguage()
   const copy = REF_COPY[lang] || REF_COPY.de
@@ -145,6 +161,16 @@ export default function KlassDetailPage({ topic, item }) {
           <div className={item.image ? styles.tableImageGrid : undefined}>
             {/* Tabellen-Sektion */}
             <div>
+              {item.detail && item.detailPosition === 'beforeTables' && (
+                <CollapseSection title={copy.ausfuehrlich} color={color} defaultOpen={true}>
+                  <DetailList detail={item.detail} lang={lang} color={color} />
+                </CollapseSection>
+              )}
+              {item.einfach && (
+                <CollapseSection title={copy.einfachUebersicht} color={color} defaultOpen={true}>
+                  <ClassTable cols={item.einfach.cols} rows={item.einfach.rows} lang={lang} />
+                </CollapseSection>
+              )}
               {item.tables ? (
                 item.tables.map((table, i) => (
                   <CollapseSection key={i} title={tx(table.title, lang)} color={color} defaultOpen={true}>
@@ -153,11 +179,6 @@ export default function KlassDetailPage({ topic, item }) {
                 ))
               ) : (
                 <>
-                  {item.einfach && (
-                    <CollapseSection title={copy.einfachUebersicht} color={color} defaultOpen={true}>
-                      <ClassTable cols={item.einfach.cols} rows={item.einfach.rows} lang={lang} />
-                    </CollapseSection>
-                  )}
                   <CollapseSection title={copy.vollstaendig} color={color} defaultOpen={!item.einfach}>
                     <ClassTable cols={item.cols} rows={item.rows} lang={lang} />
                     {item.tableNote && (
@@ -169,19 +190,9 @@ export default function KlassDetailPage({ topic, item }) {
                   </CollapseSection>
                 </>
               )}
-              {item.detail && (
+              {item.detail && item.detailPosition !== 'beforeTables' && (
                 <CollapseSection title={copy.ausfuehrlich} color={color} defaultOpen={false}>
-                  <div className={styles.detailList}>
-                    {item.detail.map((d, di) => (
-                      <div key={di} className={styles.detailBlock} style={{ borderColor: color + '33' }}>
-                        <h3 className={styles.detailStage} style={{ color }}>
-                          <span className={styles.detailDot} style={{ background: color }} />
-                          {tx(d.stage, lang)}
-                        </h3>
-                        <p className={styles.detailText}>{tx(d.text, lang)}</p>
-                      </div>
-                    ))}
-                  </div>
+                  <DetailList detail={item.detail} lang={lang} color={color} />
                 </CollapseSection>
               )}
             </div>

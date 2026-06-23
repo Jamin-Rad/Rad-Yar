@@ -853,15 +853,27 @@ export const KLASSIFIKATIONEN = [
         id: 'fleischner',
         name: { de: 'Fleischner-Kriterien', en: 'Fleischner criteria', fa: 'معیار فلایشنر' },
         kompakt: {
-          de: 'Fleischner-Society-Leitlinien (2017) für inzidentelle Lungenrundherde: getrennt nach solid/subsolid, solitär/multipel, Größe und klinischem Risiko.',
-          en: 'Fleischner Society guidelines (2017) for incidental pulmonary nodules, stratified by solid/subsolid density, single/multiple nodules, size and clinical risk.',
-          fa: 'دستورالعمل‌های جامعه فلایشنر (۲۰۱۷) برای ندول‌های ریوی تصادفی بر اساس جامد/ساب‌سالید، منفرد/متعدد، اندازه و خطر بالینی.',
+          de: 'Fleischner-Society-Leitlinien (2017) für Management inzidenteller Lungenrundherde.',
+          en: 'Fleischner Society guidelines (2017) for management of incidental pulmonary nodules.',
+          fa: 'دستورالعمل‌های جامعه فلایشنر (۲۰۱۷) برای مدیریت ندول‌های ریوی تصادفی.',
         },
         ref: 'MacMahon et al., Radiology 2017;284:228–243 (Fleischner Society 2017)',
         refUrl: 'https://www.ncbi.nlm.nih.gov/books/NBK553863/table/ch5.Tab1/',
+        detailPosition: 'beforeTables',
+        einfach: {
+          cols: [{ de: 'Situation', en: 'Situation', fa: 'وضعیت' }, { de: 'Grobe Empfehlung', en: 'Simplified recommendation', fa: 'توصیه ساده‌شده' }],
+          rows: [
+            [{ de: 'Sehr kleine solide Rundherde (< 6 mm)', en: 'Very small solid nodules (< 6 mm)', fa: 'ندول‌های جامد بسیار کوچک (< ۶ mm)' }, { de: 'Meist keine Kontrolle; bei hohem Risiko kann eine CT-Kontrolle nach 12 Monaten sinnvoll sein.', en: 'Usually no follow-up; in high-risk patients, CT at 12 months can be considered.', fa: 'معمولاً پیگیری لازم نیست؛ در خطر بالا می‌توان CT در ۱۲ ماه را در نظر گرفت.' }],
+            [{ de: 'Solide Rundherde 6–8 mm', en: 'Solid nodules 6–8 mm', fa: 'ندول‌های جامد ۶–۸ mm' }, { de: 'Kontroll-CT: solitär eher 6–12 Monate, multipel eher früher nach 3–6 Monaten; danach ggf. zweite Kontrolle.', en: 'Follow-up CT: single nodules usually at 6–12 months, multiple nodules earlier at 3–6 months; then consider a second follow-up.', fa: 'CT پیگیری: ندول منفرد معمولاً ۶–۱۲ ماه، ندول‌های متعدد زودتر در ۳–۶ ماه؛ سپس در صورت نیاز کنترل دوم.' }],
+            [{ de: 'Solide Rundherde > 8 mm', en: 'Solid nodules > 8 mm', fa: 'ندول‌های جامد > ۸ mm' }, { de: 'Aktivere Abklärung: kurze CT-Kontrolle, PET/CT und/oder Gewebesicherung je nach Morphologie und Risiko.', en: 'More active work-up: short-interval CT, PET/CT and/or tissue sampling depending on morphology and risk.', fa: 'بررسی فعال‌تر: CT کوتاه‌مدت، PET/CT و/یا نمونه‌برداری بر اساس مورفولوژی و خطر.' }],
+            [{ de: 'Reines Milchglas ≥ 6 mm', en: 'Pure ground-glass ≥ 6 mm', fa: 'گراندگلس خالص ≥ ۶ mm' }, { de: 'Zuerst Persistenz prüfen; wenn persistiert, langfristige Verlaufskontrollen bis 5 Jahre.', en: 'First confirm persistence; if persistent, long-term surveillance up to 5 years.', fa: 'ابتدا پایداری بررسی شود؛ در صورت پایداری، پیگیری طولانی‌مدت تا ۵ سال.' }],
+            [{ de: 'Part-solid ≥ 6 mm', en: 'Part-solid ≥ 6 mm', fa: 'نیمه‌جامد ≥ ۶ mm' }, { de: 'Frühe Kontrolle nach 3–6 Monaten; der solide Anteil ist entscheidend für die weitere Abklärung.', en: 'Early follow-up at 3–6 months; the solid component drives further management.', fa: 'کنترل زودهنگام در ۳–۶ ماه؛ جزء جامد تعیین‌کننده ادامه مدیریت است.' }],
+            [{ de: 'Multiple subsolide Rundherde', en: 'Multiple subsolid nodules', fa: 'ندول‌های ساب‌سالید متعدد' }, { de: 'Zunächst kurzfristige Kontrolle; danach richtet sich das Vorgehen nach dem suspektesten Herd.', en: 'Start with short-interval follow-up; subsequent management is based on the most suspicious nodule.', fa: 'ابتدا کنترل کوتاه‌مدت؛ سپس ادامه مدیریت بر اساس مشکوک‌ترین ندول.' }],
+          ],
+        },
         tables: [
           {
-            title: { de: 'Solide Lungenrundherde', en: 'Solid pulmonary nodules', fa: 'ندول‌های جامد ریوی' },
+            title: { de: 'Standardversion – solide Lungenrundherde', en: 'Standard version – solid pulmonary nodules', fa: 'نسخه استاندارد – ندول‌های جامد ریوی' },
             cols: [{ de: 'Rundherd', en: 'Nodule', fa: 'ندول' }, { de: 'Niedriges Risiko', en: 'Low risk', fa: 'خطر پایین' }, { de: 'Hohes Risiko', en: 'High risk', fa: 'خطر بالا' }],
             rows: [
               [{ de: 'Solitär < 6 mm', en: 'Single < 6 mm', fa: 'منفرد < ۶ mm' }, { de: 'Keine Routinekontrolle', en: 'No routine follow-up', fa: 'بدون پیگیری روتین' }, { de: 'Optional CT nach 12 Monaten', en: 'Optional CT at 12 months', fa: 'CT اختیاری پس از ۱۲ ماه' }],
@@ -873,7 +885,7 @@ export const KLASSIFIKATIONEN = [
             ],
           },
           {
-            title: { de: 'Subsolide Lungenrundherde', en: 'Subsolid pulmonary nodules', fa: 'ندول‌های ساب‌سالید ریوی' },
+            title: { de: 'Standardversion – subsolide Lungenrundherde', en: 'Standard version – subsolid pulmonary nodules', fa: 'نسخه استاندارد – ندول‌های ساب‌سالید ریوی' },
             cols: [{ de: 'Rundherd', en: 'Nodule', fa: 'ندول' }, { de: '< 6 mm', en: '< 6 mm', fa: '< ۶ mm' }, { de: '≥ 6 mm', en: '≥ 6 mm', fa: '≥ ۶ mm' }],
             rows: [
               [{ de: 'Solitär: reines Milchglas', en: 'Single: pure ground-glass', fa: 'منفرد: گراندگلس خالص' }, { de: 'Keine Routinekontrolle', en: 'No routine follow-up', fa: 'بدون پیگیری روتین' }, { de: 'CT nach 6–12 Monaten zur Persistenzkontrolle; dann alle 2 Jahre bis 5 Jahre', en: 'CT at 6–12 months to confirm persistence; then every 2 years until 5 years', fa: 'CT پس از ۶–۱۲ ماه برای تأیید پایداری؛ سپس هر ۲ سال تا ۵ سال' }],
