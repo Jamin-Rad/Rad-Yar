@@ -757,6 +757,12 @@ export const KLASSIFIKATIONEN = [
             en: 'MTA score 0–4: coronal T1 MRI at hippocampal level (Scheltens)',
             fa: 'امتیاز MTA ۰–۴: T1 کرونال MRI در سطح هیپوکامپ (شلتنز)',
           },
+          attribution: {
+            name: 'Radiopaedia.org',
+            sourceUrl: 'https://radiopaedia.org',
+            caseUrl: 'https://radiopaedia.org/cases/42027',
+            caseId: '42027',
+          },
         },
         einfach: {
           cols: [
@@ -847,17 +853,82 @@ export const KLASSIFIKATIONEN = [
         id: 'fleischner',
         name: { de: 'Fleischner-Kriterien', en: 'Fleischner criteria', fa: 'معیار فلایشنر' },
         kompakt: {
-          de: 'Fleischner-Society-Leitlinien (2017) für die Verlaufskontrolle inzidenteller Lungenrundherde nach Größe, Dichte und Patientenrisiko.',
-          en: 'Fleischner Society guidelines (2017) for follow-up of incidentally detected pulmonary nodules by size, density and patient risk.',
-          fa: 'دستورالعمل‌های جامعه فلایشنر (۲۰۱۷) برای پیگیری ندول‌های ریوی تصادفی بر اساس اندازه، دانسیته و خطر بیمار.',
+          de: 'Fleischner-Society-Leitlinien (2017) für inzidentelle Lungenrundherde: getrennt nach solid/subsolid, solitär/multipel, Größe und klinischem Risiko.',
+          en: 'Fleischner Society guidelines (2017) for incidental pulmonary nodules, stratified by solid/subsolid density, single/multiple nodules, size and clinical risk.',
+          fa: 'دستورالعمل‌های جامعه فلایشنر (۲۰۱۷) برای ندول‌های ریوی تصادفی بر اساس جامد/ساب‌سالید، منفرد/متعدد، اندازه و خطر بالینی.',
         },
-        ref: 'MacMahon et al., Fleischner Society 2017',
-        cols: [{ de: 'Rundherd', en: 'Nodule', fa: 'ندول' }, { de: 'Niedriges Risiko', en: 'Low risk', fa: 'خطر پایین' }, { de: 'Hohes Risiko', en: 'High risk', fa: 'خطر بالا' }],
-        rows: [
-          [{ de: 'Solide < 6 mm', en: 'Solid < 6 mm', fa: 'جامد < ۶ mm' }, { de: 'Keine Routinekontrolle', en: 'No routine follow-up', fa: 'بدون پیگیری روتین' }, { de: 'Optional CT 12 Mon.', en: 'Optional CT 12 mo', fa: 'CT اختیاری ۱۲ ماه' }],
-          [{ de: 'Solide 6–8 mm', en: 'Solid 6–8 mm', fa: 'جامد ۶–۸ mm' }, { de: 'CT 6–12 Mon.', en: 'CT 6–12 mo', fa: 'CT ۶–۱۲ ماه' }, { de: 'CT 6–12, dann 18–24 Mon.', en: 'CT 6–12, then 18–24 mo', fa: 'CT ۶–۱۲، سپس ۱۸–۲۴ ماه' }],
-          [{ de: 'Solide > 8 mm', en: 'Solid > 8 mm', fa: 'جامد > ۸ mm' }, { de: 'CT 3 Mon. / PET / Biopsie', en: 'CT 3 mo / PET / biopsy', fa: 'CT ۳ ماه / PET / بیوپسی' }, { de: 'CT 3 Mon. / PET / Biopsie', en: 'CT 3 mo / PET / biopsy', fa: 'CT ۳ ماه / PET / بیوپسی' }],
-          [{ de: 'Milchglas ≥ 6 mm', en: 'Ground-glass ≥ 6 mm', fa: 'میلکی‌گلاس ≥ ۶ mm' }, { de: 'CT 6–12, dann alle 2 J.', en: 'CT 6–12, then q2y', fa: 'CT ۶–۱۲، سپس هر ۲ سال' }, { de: 'CT 6–12, dann alle 2 J.', en: 'CT 6–12, then q2y', fa: 'CT ۶–۱۲، سپس هر ۲ سال' }],
+        ref: 'MacMahon et al., Radiology 2017;284:228–243 (Fleischner Society 2017)',
+        refUrl: 'https://www.ncbi.nlm.nih.gov/books/NBK553863/table/ch5.Tab1/',
+        tables: [
+          {
+            title: { de: 'Solide Lungenrundherde', en: 'Solid pulmonary nodules', fa: 'ندول‌های جامد ریوی' },
+            cols: [{ de: 'Rundherd', en: 'Nodule', fa: 'ندول' }, { de: 'Niedriges Risiko', en: 'Low risk', fa: 'خطر پایین' }, { de: 'Hohes Risiko', en: 'High risk', fa: 'خطر بالا' }],
+            rows: [
+              [{ de: 'Solitär < 6 mm', en: 'Single < 6 mm', fa: 'منفرد < ۶ mm' }, { de: 'Keine Routinekontrolle', en: 'No routine follow-up', fa: 'بدون پیگیری روتین' }, { de: 'Optional CT nach 12 Monaten', en: 'Optional CT at 12 months', fa: 'CT اختیاری پس از ۱۲ ماه' }],
+              [{ de: 'Solitär 6–8 mm', en: 'Single 6–8 mm', fa: 'منفرد ۶–۸ mm' }, { de: 'CT nach 6–12 Monaten; dann CT nach 18–24 Monaten erwägen', en: 'CT at 6–12 months; then consider CT at 18–24 months', fa: 'CT پس از ۶–۱۲ ماه؛ سپس CT در ۱۸–۲۴ ماه در نظر گرفته شود' }, { de: 'CT nach 6–12 Monaten; dann CT nach 18–24 Monaten', en: 'CT at 6–12 months; then CT at 18–24 months', fa: 'CT پس از ۶–۱۲ ماه؛ سپس CT در ۱۸–۲۴ ماه' }],
+              [{ de: 'Solitär > 8 mm', en: 'Single > 8 mm', fa: 'منفرد > ۸ mm' }, { de: 'CT nach 3 Monaten, PET/CT oder Gewebesicherung erwägen', en: 'Consider CT at 3 months, PET/CT or tissue sampling', fa: 'CT در ۳ ماه، PET/CT یا نمونه‌برداری در نظر گرفته شود' }, { de: 'CT nach 3 Monaten, PET/CT oder Gewebesicherung erwägen', en: 'Consider CT at 3 months, PET/CT or tissue sampling', fa: 'CT در ۳ ماه، PET/CT یا نمونه‌برداری در نظر گرفته شود' }],
+              [{ de: 'Multipel < 6 mm', en: 'Multiple < 6 mm', fa: 'متعدد < ۶ mm' }, { de: 'Keine Routinekontrolle', en: 'No routine follow-up', fa: 'بدون پیگیری روتین' }, { de: 'Optional CT nach 12 Monaten', en: 'Optional CT at 12 months', fa: 'CT اختیاری پس از ۱۲ ماه' }],
+              [{ de: 'Multipel 6–8 mm', en: 'Multiple 6–8 mm', fa: 'متعدد ۶–۸ mm' }, { de: 'CT nach 3–6 Monaten; dann CT nach 18–24 Monaten erwägen', en: 'CT at 3–6 months; then consider CT at 18–24 months', fa: 'CT پس از ۳–۶ ماه؛ سپس CT در ۱۸–۲۴ ماه در نظر گرفته شود' }, { de: 'CT nach 3–6 Monaten; dann CT nach 18–24 Monaten', en: 'CT at 3–6 months; then CT at 18–24 months', fa: 'CT پس از ۳–۶ ماه؛ سپس CT در ۱۸–۲۴ ماه' }],
+              [{ de: 'Multipel > 8 mm', en: 'Multiple > 8 mm', fa: 'متعدد > ۸ mm' }, { de: 'CT nach 3–6 Monaten; dann CT nach 18–24 Monaten erwägen', en: 'CT at 3–6 months; then consider CT at 18–24 months', fa: 'CT پس از ۳–۶ ماه؛ سپس CT در ۱۸–۲۴ ماه در نظر گرفته شود' }, { de: 'CT nach 3–6 Monaten; dann CT nach 18–24 Monaten', en: 'CT at 3–6 months; then CT at 18–24 months', fa: 'CT پس از ۳–۶ ماه؛ سپس CT در ۱۸–۲۴ ماه' }],
+            ],
+          },
+          {
+            title: { de: 'Subsolide Lungenrundherde', en: 'Subsolid pulmonary nodules', fa: 'ندول‌های ساب‌سالید ریوی' },
+            cols: [{ de: 'Rundherd', en: 'Nodule', fa: 'ندول' }, { de: '< 6 mm', en: '< 6 mm', fa: '< ۶ mm' }, { de: '≥ 6 mm', en: '≥ 6 mm', fa: '≥ ۶ mm' }],
+            rows: [
+              [{ de: 'Solitär: reines Milchglas', en: 'Single: pure ground-glass', fa: 'منفرد: گراندگلس خالص' }, { de: 'Keine Routinekontrolle', en: 'No routine follow-up', fa: 'بدون پیگیری روتین' }, { de: 'CT nach 6–12 Monaten zur Persistenzkontrolle; dann alle 2 Jahre bis 5 Jahre', en: 'CT at 6–12 months to confirm persistence; then every 2 years until 5 years', fa: 'CT پس از ۶–۱۲ ماه برای تأیید پایداری؛ سپس هر ۲ سال تا ۵ سال' }],
+              [{ de: 'Solitär: part-solid', en: 'Single: part-solid', fa: 'منفرد: نیمه‌جامد' }, { de: 'Keine Routinekontrolle', en: 'No routine follow-up', fa: 'بدون پیگیری روتین' }, { de: 'CT nach 3–6 Monaten zur Persistenzkontrolle; bei stabilem Befund und Solid-Anteil < 6 mm jährlich bis 5 Jahre', en: 'CT at 3–6 months to confirm persistence; if unchanged and solid component < 6 mm, annual CT until 5 years', fa: 'CT پس از ۳–۶ ماه برای تأیید پایداری؛ اگر ثابت و جزء جامد < ۶ mm باشد، CT سالانه تا ۵ سال' }],
+              [{ de: 'Multipel', en: 'Multiple', fa: 'متعدد' }, { de: 'CT nach 3–6 Monaten; bei stabilem Befund CT nach 2 und 4 Jahren erwägen', en: 'CT at 3–6 months; if stable, consider CT at 2 and 4 years', fa: 'CT پس از ۳–۶ ماه؛ اگر پایدار باشد CT در ۲ و ۴ سال در نظر گرفته شود' }, { de: 'CT nach 3–6 Monaten; weiteres Management nach suspektestem Rundherd', en: 'CT at 3–6 months; subsequent management based on the most suspicious nodule(s)', fa: 'CT پس از ۳–۶ ماه؛ ادامه مدیریت بر اساس مشکوک‌ترین ندول' }],
+            ],
+          },
+        ],
+        detail: [
+          {
+            stage: { de: 'Anwendungsbereich', en: 'Scope', fa: 'کاربرد' },
+            text: {
+              de: 'Für inzidentell entdeckte Lungenrundherde im CT bei Erwachsenen. Nicht für Lungenkrebs-Screening, bekannte aktive Tumorerkrankung, Immunsuppression oder Patient:innen unter 35 Jahren gedacht.',
+              en: 'For incidentally detected pulmonary nodules on CT in adults. Not intended for lung cancer screening, known active cancer, immunosuppression or patients younger than 35 years.',
+              fa: 'برای ندول‌های ریوی تصادفی در CT بزرگسالان. برای غربالگری سرطان ریه، سرطان فعال شناخته‌شده، سرکوب ایمنی یا بیماران زیر ۳۵ سال مناسب نیست.',
+            },
+          },
+          {
+            stage: { de: 'Messung und Priorisierung', en: 'Measurement and prioritisation', fa: 'اندازه‌گیری و اولویت‌بندی' },
+            text: {
+              de: 'Größe als mittleren Durchmesser aus langem und kurzem Achsendurchmesser angeben; bei multiplen Rundherden richtet sich das Management nach dem suspektesten Herd, nicht nur nach dem größten.',
+              en: 'Report size as the mean of long- and short-axis diameters; in multiple nodules, management is guided by the most suspicious nodule rather than size alone.',
+              fa: 'اندازه به‌صورت میانگین قطر بلند و کوتاه گزارش شود؛ در ندول‌های متعدد، مدیریت بر اساس مشکوک‌ترین ندول است نه فقط بزرگ‌ترین ندول.',
+            },
+          },
+        ],
+      },
+      {
+        id: 'stanford-debakey',
+        name: { de: 'Stanford / DeBakey', en: 'Stanford / DeBakey', fa: 'استنفورد / دبیکی' },
+        kompakt: {
+          de: 'Zwei gebräuchliche anatomische Klassifikationen der Aortendissektion: Stanford richtet sich nach der Beteiligung der Aorta ascendens, DeBakey nach Ursprung und Ausdehnung.',
+          en: 'Two commonly used anatomical classifications of aortic dissection: Stanford is based on ascending aortic involvement, while DeBakey describes origin and extent.',
+          fa: 'دو طبقه‌بندی آناتومیک رایج دیسکسیون آئورت: استنفورد بر درگیری آئورت صعودی و دبیکی بر محل شروع و وسعت تکیه دارد.',
+        },
+        ref: 'DeBakey et al., J Thorac Cardiovasc Surg. 1965 · Daily et al., Ann Thorac Surg. 1970',
+        tables: [
+          {
+            title: { de: 'Stanford-Klassifikation', en: 'Stanford classification', fa: 'طبقه‌بندی استنفورد' },
+            cols: [{ de: 'Typ', en: 'Type', fa: 'نوع' }, { de: 'Definition', en: 'Definition', fa: 'تعریف' }, { de: 'Merksatz', en: 'Key point', fa: 'نکته کلیدی' }],
+            rows: [
+              ['A', { de: 'Aorta ascendens beteiligt – unabhängig von Ursprung und distaler Ausdehnung', en: 'Ascending aorta involved, regardless of tear origin or distal extent', fa: 'درگیری آئورت صعودی، مستقل از محل پارگی اولیه یا گسترش دیستال' }, { de: 'Ascendens = A', en: 'Ascending = A', fa: 'آئورت صعودی = A' }],
+              ['B', { de: 'Keine Beteiligung der Aorta ascendens; meist Beginn distal der linken A. subclavia', en: 'No ascending aortic involvement; usually begins distal to the left subclavian artery', fa: 'بدون درگیری آئورت صعودی؛ معمولاً شروع دیستال شریان ساب‌کلاوین چپ' }, { de: 'Beginnt hinter dem Bogen', en: 'Begins beyond the arch', fa: 'شروع پس از قوس آئورت' }],
+            ],
+          },
+          {
+            title: { de: 'DeBakey-Klassifikation', en: 'DeBakey classification', fa: 'طبقه‌بندی دبیکی' },
+            cols: [{ de: 'Typ', en: 'Type', fa: 'نوع' }, { de: 'Ursprung und Ausdehnung', en: 'Origin and extent', fa: 'محل شروع و وسعت' }],
+            rows: [
+              ['I', { de: 'Beginn in der Aorta ascendens, Ausdehnung über den Aortenbogen in die Aorta descendens', en: 'Originates in the ascending aorta and extends through the arch into the descending aorta', fa: 'شروع در آئورت صعودی و گسترش از قوس به آئورت نزولی' }],
+              ['II', { de: 'Auf die Aorta ascendens begrenzt', en: 'Confined to the ascending aorta', fa: 'محدود به آئورت صعودی' }],
+              ['IIIa', { de: 'Beginn distal der linken A. subclavia, auf die thorakale Aorta begrenzt', en: 'Originates distal to the left subclavian artery and remains confined to the thoracic aorta', fa: 'شروع دیستال ساب‌کلاوین چپ و محدود به آئورت توراسیک' }],
+              ['IIIb', { de: 'Beginn distal der linken A. subclavia, Ausdehnung unter das Zwerchfell', en: 'Originates distal to the left subclavian artery and extends below the diaphragm', fa: 'شروع دیستال ساب‌کلاوین چپ و گسترش به زیر دیافراگم' }],
+            ],
+          },
         ],
       },
       {
@@ -1073,6 +1144,63 @@ export const KLASSIFIKATIONEN = [
           ['3b', { de: 'Rezidivierende Divertikulitis (unkompliziert)', en: 'Recurrent diverticulitis (uncomplicated)', fa: 'دیورتیکولیت عودکننده (بدون عارضه)' }, { de: 'Wandverdickung, Vornarben möglich', en: 'Wall thickening, prior scarring possible', fa: 'ضخامت دیواره، زخم قبلی محتمل' }],
           ['3c', { de: 'Rezidivierende Divertikulitis mit Komplikation', en: 'Recurrent diverticulitis with complication', fa: 'دیورتیکولیت عودکننده با عارضه' }, { de: 'Fistel, Stenose, entzündl. Konglomerattumor', en: 'Fistula, stenosis, inflammatory mass', fa: 'فیستول، تنگی، توده التهابی' }],
           ['4', { de: 'Divertikelblutung', en: 'Diverticular bleeding', fa: 'خونریزی دیورتیکولی' }, { de: 'Meist keine Entzündung; Divertikel hyperdense', en: 'Usually no inflammation; hyperdense diverticulum', fa: 'معمولاً بدون التهاب؛ دیورتیکول هایپردنس' }],
+        ],
+      },
+      {
+        id: 'aast-ois',
+        name: { de: 'AAST Organ Injury Scale', en: 'AAST Organ Injury Scale', fa: 'مقیاس آسیب اندام AAST' },
+        kompakt: {
+          de: 'CT-basierte Schweregrade traumatischer Leber-, Milz- und Nierenverletzungen nach der gemeinsamen AAST-OIS-Revision 2018.',
+          en: 'CT-based grading of traumatic liver, spleen and kidney injuries according to the joint 2018 AAST OIS revision.',
+          fa: 'درجه‌بندی مبتنی بر CT آسیب‌های تروماتیک کبد، طحال و کلیه بر اساس بازنگری مشترک AAST OIS سال ۲۰۱۸.',
+        },
+        ref: 'Kozar et al., J Trauma Acute Care Surg. 2018;85:1119–1122 (AAST-OIS 2018)',
+        refUrl: 'https://www.aast.org/resources-detail/injury-scoring-scale',
+        tables: [
+          {
+            title: { de: 'Leberverletzung', en: 'Liver injury', fa: 'آسیب کبد' },
+            cols: [{ de: 'Grad', en: 'Grade', fa: 'درجه' }, { de: 'CT-/Verletzungskriterium', en: 'CT / injury criterion', fa: 'معیار CT / آسیب' }],
+            rows: [
+              ['I', { de: 'Subkapsuläres Hämatom < 10 % der Oberfläche; Kapselriss < 1 cm Tiefe', en: 'Subcapsular haematoma <10% surface area; capsular tear <1 cm depth', fa: 'هماتوم ساب‌کپسولار <۱۰٪ سطح؛ پارگی کپسول با عمق <۱ سانتی‌متر' }],
+              ['II', { de: 'Subkapsuläres Hämatom 10–50 %; intraparenchymales Hämatom < 10 cm; Riss 1–3 cm tief und ≤ 10 cm lang', en: 'Subcapsular haematoma 10–50%; intraparenchymal haematoma <10 cm; laceration 1–3 cm deep and ≤10 cm long', fa: 'هماتوم ساب‌کپسولار ۱۰–۵۰٪؛ داخل پارانشیمی <۱۰ سانتی‌متر؛ پارگی با عمق ۱–۳ و طول ≤۱۰ سانتی‌متر' }],
+              ['III', { de: 'Subkapsuläres Hämatom > 50 % oder rupturiert; intraparenchymal ≥ 10 cm oder rupturiert; Riss > 3 cm; Gefäßverletzung/aktive Blutung im Leberparenchym', en: 'Subcapsular haematoma >50% or ruptured; intraparenchymal ≥10 cm or ruptured; laceration >3 cm; vascular injury/active bleeding contained within liver parenchyma', fa: 'هماتوم ساب‌کپسولار >۵۰٪ یا پاره؛ داخل پارانشیمی ≥۱۰ سانتی‌متر یا پاره؛ پارگی >۳ سانتی‌متر؛ آسیب عروقی/خونریزی فعال محدود به پارانشیم' }],
+              ['IV', { de: 'Parenchymdestruktion von 25–75 % eines Leberlappens; aktive Blutung über das Leberparenchym hinaus ins Peritoneum', en: 'Parenchymal disruption of 25–75% of one hepatic lobe; active bleeding extending beyond liver parenchyma into the peritoneum', fa: 'تخریب ۲۵–۷۵٪ یک لوب کبد؛ خونریزی فعال فراتر از پارانشیم به صفاق' }],
+              ['V', { de: 'Parenchymdestruktion > 75 % eines Leberlappens; juxtahepatische Venenverletzung', en: 'Parenchymal disruption >75% of one hepatic lobe; juxtahepatic venous injury', fa: 'تخریب >۷۵٪ یک لوب؛ آسیب وریدهای مجاور کبد' }],
+              ['VI', { de: 'Leberavulsion', en: 'Hepatic avulsion', fa: 'کنده‌شدن کبد' }],
+            ],
+          },
+          {
+            title: { de: 'Milzverletzung', en: 'Spleen injury', fa: 'آسیب طحال' },
+            cols: [{ de: 'Grad', en: 'Grade', fa: 'درجه' }, { de: 'CT-/Verletzungskriterium', en: 'CT / injury criterion', fa: 'معیار CT / آسیب' }],
+            rows: [
+              ['I', { de: 'Subkapsuläres Hämatom < 10 % der Oberfläche; Kapselriss < 1 cm Tiefe', en: 'Subcapsular haematoma <10% surface area; capsular tear <1 cm depth', fa: 'هماتوم ساب‌کپسولار <۱۰٪ سطح؛ پارگی کپسول با عمق <۱ سانتی‌متر' }],
+              ['II', { de: 'Subkapsuläres Hämatom 10–50 %; intraparenchymal < 5 cm; Riss 1–3 cm ohne Trabekelgefäß', en: 'Subcapsular haematoma 10–50%; intraparenchymal <5 cm; laceration 1–3 cm without trabecular vessel injury', fa: 'هماتوم ساب‌کپسولار ۱۰–۵۰٪؛ داخل پارانشیمی <۵ سانتی‌متر؛ پارگی ۱–۳ سانتی‌متر بدون آسیب عروق ترابکولار' }],
+              ['III', { de: 'Subkapsuläres Hämatom > 50 % oder rupturiert; intraparenchymal ≥ 5 cm oder rupturiert; Riss > 3 cm oder Trabekelgefäß; Gefäßverletzung/aktive Blutung innerhalb der Milzkapsel', en: 'Subcapsular haematoma >50% or ruptured; intraparenchymal ≥5 cm or ruptured; laceration >3 cm or involving trabecular vessels; vascular injury/active bleeding confined within the splenic capsule', fa: 'هماتوم ساب‌کپسولار >۵۰٪ یا پاره؛ داخل پارانشیمی ≥۵ سانتی‌متر یا پاره؛ پارگی >۳ سانتی‌متر یا عروق ترابکولار؛ خونریزی فعال محدود به کپسول' }],
+              ['IV', { de: 'Segmentale/hiläre Gefäßverletzung mit > 25 % Devaskularisation; aktive Blutung über die Milz hinaus ins Peritoneum', en: 'Segmental or hilar vascular injury with >25% devascularisation; active bleeding extending beyond the spleen into the peritoneum', fa: 'آسیب عروقی سگمنتال/ناف با >۲۵٪ عدم خون‌رسانی؛ خونریزی فعال فراتر از طحال به صفاق' }],
+              ['V', { de: 'Zertrümmerte Milz oder hiläre Gefäßverletzung mit Devaskularisation der Milz', en: 'Shattered spleen or hilar vascular injury with splenic devascularisation', fa: 'طحال متلاشی یا آسیب عروق ناف همراه با قطع خون‌رسانی طحال' }],
+            ],
+          },
+          {
+            title: { de: 'Nierenverletzung (AAST 2018)', en: 'Kidney injury (AAST 2018)', fa: 'آسیب کلیه (AAST ۲۰۱۸)' },
+            cols: [{ de: 'Grad', en: 'Grade', fa: 'درجه' }, { de: 'CT-/Verletzungskriterium', en: 'CT / injury criterion', fa: 'معیار CT / آسیب' }],
+            rows: [
+              ['I', { de: 'Kontusion oder subkapsuläres Hämatom ohne Parenchymriss', en: 'Contusion or subcapsular haematoma without parenchymal laceration', fa: 'کوفتگی یا هماتوم ساب‌کپسولار بدون پارگی پارانشیم' }],
+              ['II', { de: 'Perirenales Hämatom innerhalb der Gerota-Faszie; Parenchymriss ≤ 1 cm ohne Urinextravasation', en: 'Perirenal haematoma confined within Gerota fascia; parenchymal laceration ≤1 cm without urinary extravasation', fa: 'هماتوم پری‌رنال محدود به فاسیای ژروتا؛ پارگی پارانشیم ≤۱ سانتی‌متر بدون نشت ادرار' }],
+              ['III', { de: 'Parenchymriss > 1 cm ohne Verletzung des Hohlsystems; Gefäßverletzung/aktive Blutung innerhalb der Gerota-Faszie', en: 'Parenchymal laceration >1 cm without collecting-system injury; vascular injury/active bleeding contained within Gerota fascia', fa: 'پارگی پارانشیم >۱ سانتی‌متر بدون آسیب سیستم جمع‌کننده؛ آسیب عروقی/خونریزی فعال محدود به فاسیای ژروتا' }],
+              ['IV', { de: 'Riss bis ins Hohlsystem mit Urinextravasation; Nierenbecken-/UPJ-Verletzung; segmentale Gefäßverletzung; aktive Blutung über die Gerota-Faszie hinaus', en: 'Laceration into the collecting system with urinary extravasation; renal pelvis/UPJ injury; segmental vascular injury; active bleeding beyond Gerota fascia', fa: 'پارگی تا سیستم جمع‌کننده با نشت ادرار؛ آسیب لگنچه/UPJ؛ آسیب عروق سگمنتال؛ خونریزی فعال فراتر از فاسیای ژروتا' }],
+              ['V', { de: 'Zertrümmerte Niere; Verletzung/Abriss der Hauptnierenarterie oder -vene; Hilusavulsion mit Devaskularisation', en: 'Shattered kidney; main renal artery or vein laceration/avulsion; hilar avulsion with devascularisation', fa: 'کلیه متلاشی؛ پارگی/کنده‌شدن شریان یا ورید اصلی کلیه؛ کنده‌شدن ناف با قطع خون‌رسانی' }],
+            ],
+          },
+        ],
+        detail: [
+          {
+            stage: { de: 'Versionshinweis', en: 'Version note', fa: 'یادداشت نسخه' },
+            text: {
+              de: 'Diese Seite verwendet bewusst die gemeinsame AAST-Revision 2018 für Leber, Milz und Niere. Für die Niere führt die AAST zusätzlich eine neuere Revision von 2025 separat.',
+              en: 'This page deliberately uses the joint 2018 AAST revision for liver, spleen and kidney. AAST also lists a newer 2025 kidney revision separately.',
+              fa: 'این صفحه عمداً از بازنگری مشترک AAST سال ۲۰۱۸ برای کبد، طحال و کلیه استفاده می‌کند. AAST بازنگری جدیدتر کلیه در سال ۲۰۲۵ را نیز جداگانه فهرست می‌کند.',
+            },
+          },
         ],
       },
     ],
@@ -1440,6 +1568,49 @@ export const KLASSIFIKATIONEN = [
           ['5', { de: 'Deutlich > Leber oder neue Läsionen', en: 'Markedly > liver or new lesions', fa: 'واضحاً > کبد یا ضایعات جدید' }],
         ],
       },
+      {
+        id: 'lugano',
+        name: { de: 'Lugano-Kriterien', en: 'Lugano criteria', fa: 'معیارهای لوگانو' },
+        kompakt: {
+          de: 'Standard für Staging und Therapieansprechen bei Lymphomen: anatomisches Stadium I–IV und bei FDG-aviden Lymphomen PET/CT-basierte Response nach Deauville.',
+          en: 'Standard for lymphoma staging and treatment response: anatomical stage I–IV and, for FDG-avid lymphomas, PET/CT-based response using Deauville.',
+          fa: 'استاندارد مرحله‌بندی و پاسخ درمانی لنفوم: مراحل آناتومیک I تا IV و در لنفوم‌های FDG-avid پاسخ مبتنی بر PET/CT با دوویل.',
+        },
+        ref: 'Cheson et al., J Clin Oncol. 2014;32:3059–3068',
+        refUrl: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4979083/',
+        tables: [
+          {
+            title: { de: 'Anatomisches Staging', en: 'Anatomical staging', fa: 'مرحله‌بندی آناتومیک' },
+            cols: [{ de: 'Stadium', en: 'Stage', fa: 'مرحله' }, { de: 'Befall', en: 'Involvement', fa: 'درگیری' }],
+            rows: [
+              ['I', { de: 'Eine Lymphknotenregion; IE: ein einzelner extranodaler Herd ohne Lymphknotenbefall', en: 'One nodal region; IE: a single extranodal site without nodal involvement', fa: 'یک ناحیه غدد لنفاوی؛ IE: یک محل خارج‌گره‌ای منفرد بدون درگیری گره‌ای' }],
+              ['II', { de: '≥ 2 Lymphknotenregionen auf derselben Zwerchfellseite; IIE: begrenzte zusammenhängende extranodale Ausbreitung', en: '≥2 nodal regions on the same side of the diaphragm; IIE: limited contiguous extranodal extension', fa: '≥۲ ناحیه غدد لنفاوی در یک سوی دیافراگم؛ IIE: گسترش محدود و مجاور خارج‌گره‌ای' }],
+              ['III', { de: 'Lymphknotenregionen beidseits des Zwerchfells; Milzbeteiligung möglich', en: 'Nodal regions on both sides of the diaphragm; spleen may be involved', fa: 'غدد لنفاوی در دو سوی دیافراگم؛ امکان درگیری طحال' }],
+              ['IV', { de: 'Disseminierter extranodaler Organbefall, z. B. Knochenmark, Leber oder nicht direkt angrenzende Lunge', en: 'Disseminated extranodal organ involvement, e.g. bone marrow, liver or non-contiguous lung', fa: 'درگیری منتشر اندام‌های خارج‌گره‌ای، مانند مغز استخوان، کبد یا ریه غیرمجاور' }],
+            ],
+          },
+          {
+            title: { de: 'PET/CT-Therapieansprechen bei FDG-aviden Lymphomen', en: 'PET/CT treatment response in FDG-avid lymphomas', fa: 'پاسخ درمانی PET/CT در لنفوم‌های FDG-avid' },
+            cols: [{ de: 'Response', en: 'Response', fa: 'پاسخ' }, { de: 'Lugano-Kriterium', en: 'Lugano criterion', fa: 'معیار لوگانو' }],
+            rows: [
+              ['CMR', { de: 'Komplette metabolische Response: Deauville 1–3, mit oder ohne Residualmasse', en: 'Complete metabolic response: Deauville 1–3, with or without a residual mass', fa: 'پاسخ متابولیک کامل: دوویل ۱–۳، با یا بدون توده باقیمانده' }],
+              ['PMR', { de: 'Partielle metabolische Response: Deauville 4–5 mit gegenüber Ausgangsbefund vermindertem Uptake, keine neuen Läsionen', en: 'Partial metabolic response: Deauville 4–5 with reduced uptake from baseline and no new lesions', fa: 'پاسخ متابولیک نسبی: دوویل ۴–۵ با کاهش جذب نسبت به پایه و بدون ضایعه جدید' }],
+              ['NMR', { de: 'Keine metabolische Response: Deauville 4–5 ohne wesentliche Änderung, keine neuen Läsionen', en: 'No metabolic response: Deauville 4–5 without significant change and no new lesions', fa: 'بدون پاسخ متابولیک: دوویل ۴–۵ بدون تغییر معنی‌دار و بدون ضایعه جدید' }],
+              ['PMD', { de: 'Progressive metabolische Erkrankung: Deauville 4–5 mit zunehmendem Uptake und/oder neue FDG-avide Herde', en: 'Progressive metabolic disease: Deauville 4–5 with increased uptake and/or new FDG-avid foci', fa: 'بیماری متابولیک پیشرونده: دوویل ۴–۵ با افزایش جذب و/یا کانون‌های جدید FDG-avid' }],
+            ],
+          },
+        ],
+        detail: [
+          {
+            stage: { de: 'Wichtige Einordnung', en: 'Important context', fa: 'نکته مهم' },
+            text: {
+              de: 'PET/CT ist für FDG-avide Lymphome bevorzugt. Bei nicht oder variabel FDG-aviden Subtypen erfolgt die Responsebeurteilung primär CT-basiert. Bulky Disease wird über die größte Tumormasse dokumentiert; B-Symptome werden separat erfasst.',
+              en: 'PET/CT is preferred for FDG-avid lymphomas. In non- or variably FDG-avid subtypes, response is assessed primarily by CT. Bulky disease is documented using the largest tumour mass; B symptoms are recorded separately.',
+              fa: 'PET/CT برای لنفوم‌های FDG-avid ارجح است. در انواع با جذب کم یا متغیر، پاسخ عمدتاً با CT ارزیابی می‌شود. بیماری حجیم با بزرگ‌ترین توده ثبت و علائم B جداگانه گزارش می‌شوند.',
+            },
+          },
+        ],
+      },
     ],
   },
 ]
@@ -1654,7 +1825,7 @@ export const RECHNER = [
     id: 'fleischner', type: 'fleischner', color: '#0891b2',
     name: { de: 'Fleischner – Lungenrundherde', en: 'Fleischner – Pulmonary Nodule', fa: 'Fleischner – ندول ریوی' },
     formula: 'Fleischner Society Guidelines 2017',
-    hint: { de: 'Gilt für zufällig entdeckte Rundherde, Erwachsene ≥ 35 J., kein bekanntes Malignom', en: 'Incidentally detected nodules, adults ≥ 35 y, no known malignancy', fa: 'برای ندول‌های تصادفی، بزرگسالان ≥ ۳۵ سال، بدون بدخیمی شناخته‌شده' },
+    hint: { de: 'Schnell-Assistent für inzidentelle Rundherde bei Erwachsenen ≥ 35 J.; nicht für Screening, Immunsuppression oder bekannte aktive Tumorerkrankung.', en: 'Quick assistant for incidental nodules in adults ≥ 35 y; not for screening, immunosuppression or known active cancer.', fa: 'دستیار سریع برای ندول‌های تصادفی در بزرگسالان ≥ ۳۵ سال؛ نه برای غربالگری، سرکوب ایمنی یا سرطان فعال شناخته‌شده.' },
     opts: {
       type: [
         { v: 'solid',     label: { de: 'Solid',          en: 'Solid',         fa: 'جامد' } },

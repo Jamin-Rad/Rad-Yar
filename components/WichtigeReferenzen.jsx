@@ -42,14 +42,17 @@ const CLASSIFICATION_SEARCH_ALIASES = {
   bosniak: ['bosnak', 'nierenzyste', 'nierencyste', 'kidney cyst', 'renal cyst'],
   balthazar: ['ctsi', 'pankreatitis', 'pancreatitis'],
   cdd: ['divertikulitis', 'divertikelkrankheit', 'diverticular'],
+  'aast-ois': ['aast', 'ois', 'organ injury scale', 'lebertrauma', 'milztrauma', 'nierentrauma', 'liver trauma', 'spleen trauma', 'kidney trauma'],
   'lung-rads': ['lungrads', 'lungenscreening', 'lung screening'],
-  fleischner: ['lungenrundherd', 'lungenrundherde', 'pulmonary nodule'],
+  fleischner: ['lungenrundherd', 'lungenrundherde', 'pulmonary nodule', 'milchglas', 'ggo', 'ground glass', 'part solid', 'subsolid', 'nodulus', 'rundherd'],
+  'stanford-debakey': ['stanford', 'debakey', 'aortendissektion', 'aortic dissection', 'dissektion'],
   fazekas: ['fazekes', 'marklager', 'white matter'],
   'mta-score': ['mta', 'mediale temporalatrophie', 'hippocampus', 'alzheimer', 'demenz'],
   aspects: ['schlaganfall', 'stroke', 'mca'],
   'pc-aspects': ['posterior circulation', 'hintere zirkulation', 'basilaris'],
   recist: ['tumoransprechen', 'response'],
   deauville: ['lymphom', 'lymphoma', 'pet'],
+  lugano: ['lymphom', 'lymphoma', 'ann arbor', 'pet ct', 'lymphom staging'],
 }
 
 const CLASSIFICATION_SEARCH_COPY = {
