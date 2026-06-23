@@ -1630,6 +1630,28 @@ export const KLASSIFIKATIONEN = [
 // ── Rechner ──────────────────────────────────────────────────
 export const RECHNER = [
 
+  // Neuro: Evans-Index
+  {
+    id: 'evans-index', type: 'single', color: '#7c3aed',
+    name: { de: 'Evans-Index', en: 'Evans Index', fa: 'شاخص ایوانز' },
+    formula: 'max. Vorderhornbreite ÷ max. innerer Schädeldurchmesser',
+    hint: {
+      de: 'Auf derselben axialen Ebene messen. ≥ 0,30 spricht für Ventrikulomegalie, ist aber allein nicht spezifisch für NPH.',
+      en: 'Measure on the same axial plane. ≥0.30 supports ventriculomegaly but is not specific for NPH by itself.',
+      fa: 'در همان برش محوری اندازه‌گیری شود. ≥۰٫۳۰ به نفع ونتریکولومگالی است اما به‌تنهایی برای NPH اختصاصی نیست.',
+    },
+    fields: [
+      { id: 'horn', label: { de: 'Max. Vorderhornbreite', en: 'Max. frontal horn width', fa: 'حداکثر عرض شاخ‌های فرونتال' }, unit: 'mm', step: 0.1, min: 0.1, max: 120 },
+      { id: 'skull', label: { de: 'Max. innerer Schädeldurchmesser', en: 'Max. inner skull diameter', fa: 'حداکثر قطر داخلی جمجمه' }, unit: 'mm', step: 0.1, min: 1, max: 250 },
+    ],
+    calc: (v) => v.horn && v.skull ? v.horn / v.skull : null,
+    resultUnit: '', decimals: 2,
+    ranges: [
+      { max: 0.29, label: { de: '< 0,30 – kein Evans-Kriterium', en: '<0.30 – Evans criterion not met', fa: '<۰٫۳۰ – معیار ایوانز ندارد' }, color: '#16a34a' },
+      { max: Infinity, label: { de: '≥ 0,30 – Ventrikulomegalie', en: '≥0.30 – ventriculomegaly', fa: '≥۰٫۳۰ – ونتریکولومگالی' }, color: '#dc2626' },
+    ],
+  },
+
   // Abdomen: Milzindex + geschätztes Milzvolumen
   {
     id: 'milz-index', type: 'multi', color: '#f59e0b',

@@ -531,7 +531,7 @@ const RECHNER_GROUPS = [
     id: 'neuro-gefaesse',
     name: { de: 'Neuro & Gefäße', en: 'Neuro & Vessels', fa: 'نورو و عروق' },
     color: '#7c3aed', iconId: 'neuro',
-    calcIds: ['icb', 'nascet', 'ecst-nascet'],
+    calcIds: ['evans-index', 'icb', 'nascet', 'ecst-nascet'],
   },
   {
     id: 'herz-thorax',
