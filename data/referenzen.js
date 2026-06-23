@@ -751,17 +751,11 @@ export const KLASSIFIKATIONEN = [
         ref: 'Scheltens P et al., J Neurol Neurosurg Psychiatry. 1992;55(10):967–72',
         refUrl: 'https://pubmed.ncbi.nlm.nih.gov/1431963/',
         image: {
-          src: '/mta-score/mta-score-rid42027.jpg',
+          src: '/mta-score/mta-score.jpeg',
           alt: {
             de: 'MTA-Score 0–4: koronale T1-MRT auf Hippocampushöhe (Scheltens)',
             en: 'MTA score 0–4: coronal T1 MRI at hippocampal level (Scheltens)',
             fa: 'امتیاز MTA ۰–۴: T1 کرونال MRI در سطح هیپوکامپ (شلتنز)',
-          },
-          attribution: {
-            name: 'Radiopaedia.org',
-            sourceUrl: 'https://radiopaedia.org',
-            caseUrl: 'https://radiopaedia.org/cases/42027',
-            caseId: '42027',
           },
         },
         einfach: {

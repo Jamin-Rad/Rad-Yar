@@ -45,6 +45,7 @@ const CLASSIFICATION_SEARCH_ALIASES = {
   'lung-rads': ['lungrads', 'lungenscreening', 'lung screening'],
   fleischner: ['lungenrundherd', 'lungenrundherde', 'pulmonary nodule'],
   fazekas: ['fazekes', 'marklager', 'white matter'],
+  'mta-score': ['mta', 'mediale temporalatrophie', 'hippocampus', 'alzheimer', 'demenz'],
   aspects: ['schlaganfall', 'stroke', 'mca'],
   'pc-aspects': ['posterior circulation', 'hintere zirkulation', 'basilaris'],
   recist: ['tumoransprechen', 'response'],
