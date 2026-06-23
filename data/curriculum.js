@@ -162,6 +162,7 @@ export const CURRICULUM = [
         icon: '🧠',
         themen: [
           { id: 'morbus-alzheimer', title: { de: 'Morbus Alzheimer', en: "Alzheimer's Disease", fa: 'بیماری آلزایمر' }, group: ['Demenzen'], tags: ['MRT'], diff: 2 },
+          { id: 'mta-score', title: { de: 'MTA-Score', en: 'MTA Score', fa: 'امتیاز MTA' }, group: ['Klassifikationssysteme'], tags: ['MRT'], diff: 2, link: '/gehirn/degenerativ/mta-score', ready: true, addedAt: '2026-06-23' },
           { id: 'lewy-body-demenz', title: { de: 'Lewy-Body-Demenz', en: 'Lewy Body Dementia', fa: 'دمانس با اجسام لویی' }, group: ['Demenzen'], tags: ['MRT'], diff: 2 },
           { id: 'frontotemporale-demenz', title: { de: 'Frontotemporale Demenz', en: 'Frontotemporal Dementia', fa: 'دمانس فرونتوتمپورال' }, group: ['Demenzen'], tags: ['MRT'], diff: 2 },
           { id: 'vaskulaere-demenz', title: { de: 'Vaskuläre Demenz', en: 'Vascular Dementia', fa: 'دمانس عروقی' }, group: ['Demenzen'], tags: ['MRT','CT'], diff: 2 },
