@@ -7,6 +7,10 @@ import { REF_COPY, REF_DATA, tx } from '@/data/referenzen'
 import styles from './WichtigeReferenzen.module.css'
 
 const HOME_CARD_VISUALS = {
+  anatomie: {
+    src: '/referenzen/anatomie/anatomie-icon.jpg',
+    className: styles.iconBoxPurple,
+  },
   messwerte: {
     src: '/referenzen/messwerte.png',
     className: styles.iconBoxBlue,
@@ -260,17 +264,23 @@ export default function WichtigeReferenzen() {
           <p className={styles.glassSub}>{copy.sub}</p>
         </div>
         <div className={styles.grid}>
-          <button className={`${styles.card} ${styles.cardBlue}`} onClick={() => setModal('messwerte')}>
-            <HomeCardIcon type="messwerte" alt="" />
-            <h3 className={`${styles.cardTitle} ${styles.colorBlue}`}>{copy.btnMesswerte}</h3>
-            <p className={styles.cardDesc}>{copy.btnMesswerteSub}</p>
-            <div className={styles.chips}>{(copy.chipsMesswerte||[]).slice(0,4).map(ch=><span key={ch} className={`${styles.chip} ${styles.chipBlue}`}>{ch}</span>)}</div>
+          <button className={`${styles.card} ${styles.cardPurple}`} onClick={() => setModal('anatomie')}>
+            <HomeCardIcon type="anatomie" alt="" />
+            <h3 className={`${styles.cardTitle} ${styles.colorPurple}`}>{copy.btnAnatomie}</h3>
+            <p className={styles.cardDesc}>{copy.btnAnatomieSub}</p>
+            <div className={styles.chips}>{(copy.chipsAnatomie||[]).slice(0,4).map(ch=><span key={ch} className={`${styles.chip} ${styles.chipPurple}`}>{ch}</span>)}</div>
           </button>
           <button className={`${styles.card} ${styles.cardOrange}`} onClick={() => setModal('klassifikationen')}>
             <HomeCardIcon type="klassifikationen" alt="" />
             <h3 className={`${styles.cardTitle} ${styles.colorOrange}`}>{copy.btnKlass}</h3>
             <p className={styles.cardDesc}>{copy.btnKlassSub}</p>
             <div className={styles.chips}>{(copy.chipsKlass||[]).slice(0,4).map(ch=><span key={ch} className={`${styles.chip} ${styles.chipOrange}`}>{ch}</span>)}</div>
+          </button>
+          <button className={`${styles.card} ${styles.cardBlue}`} onClick={() => setModal('messwerte')}>
+            <HomeCardIcon type="messwerte" alt="" />
+            <h3 className={`${styles.cardTitle} ${styles.colorBlue}`}>{copy.btnMesswerte}</h3>
+            <p className={styles.cardDesc}>{copy.btnMesswerteSub}</p>
+            <div className={styles.chips}>{(copy.chipsMesswerte||[]).slice(0,4).map(ch=><span key={ch} className={`${styles.chip} ${styles.chipBlue}`}>{ch}</span>)}</div>
           </button>
           <button className={`${styles.card} ${styles.cardGreen}`} onClick={() => setModal('rechner')}>
             <HomeCardIcon type="rechner" alt="" />
@@ -281,6 +291,7 @@ export default function WichtigeReferenzen() {
         </div>
       </div>
 
+      {modal==='anatomie'        && <AnatomieModal        copy={copy} lang={lang} onClose={()=>setModal(null)} />}
       {modal==='messwerte'       && <MesswerteModal       copy={copy} lang={lang} onClose={()=>setModal(null)} />}
       {modal==='klassifikationen'&& <KlassifikationenModal copy={copy} lang={lang} onClose={()=>setModal(null)} />}
       {modal==='rechner'         && <RechnerModal          copy={copy} lang={lang} onClose={()=>setModal(null)} />}
@@ -309,6 +320,65 @@ function Modal({ title, subtitle, accent, copy, onClose, children, accentClass, 
         <p className={styles.disclaimer}>⚠️ {copy.disclaimer}</p>
       </div>
     </div>
+  )
+}
+
+/* ── Befundrelevante Anatomie ─────────────────── */
+function AnatomieModal({ copy, lang, onClose }) {
+  const items = REF_DATA.anatomie
+  const [itemId, setItemId] = useState(items[0].id)
+  const [showDetail, setShowDetail] = useState(false)
+  const item = items.find(entry => entry.id === itemId) || items[0]
+
+  return (
+    <Modal title={copy.btnAnatomie} subtitle={showDetail?tx(item.name, lang):null} accent={item.color}
+      copy={copy} onClose={onClose} accentClass={styles.headPurple} wide>
+      <div className={`${styles.split} ${showDetail?styles.showDetail:''}`}>
+        <nav className={styles.sidebar}>
+          {items.map(entry => (
+            <button key={entry.id}
+              className={`${styles.navBtn} ${entry.id===itemId?styles.navActiveOrange:''}`}
+              style={{'--ref-color':entry.color}} onClick={()=>{setItemId(entry.id);setShowDetail(true)}}>
+              <span className={styles.anatomyNavThumb}>
+                <Image src={entry.image} alt="" width={44} height={44} />
+              </span>
+              <span className={styles.navLabel}>{tx(entry.name, lang)}</span>
+            </button>
+          ))}
+        </nav>
+        <div className={styles.content} style={{'--ref-color':item.color}}>
+          <button className={styles.mobileBack} onClick={()=>setShowDetail(false)}>← {copy.back}</button>
+          <h2 className={styles.regionHeading}>
+            <span className={`${styles.regionHeadingIcon} ${styles.klassTopicLogoWrap}`}>
+              <Image src="/referenzen/anatomie/anatomie-icon.jpg" alt="" width={38} height={38} className={styles.klassTopicLogo} />
+            </span>
+            <span style={{color:item.color}}>{tx(item.name,lang)}</span>
+          </h2>
+          <div className={styles.anatomyHero}>
+            <div className={styles.anatomyImageFrame}>
+              <Image src={item.image} alt={tx(item.name, lang)} width={900} height={900} className={styles.anatomyImage} />
+            </div>
+            <div className={styles.anatomyIntro}>
+              <span>{copy.kompakt}</span>
+              <p>{tx(item.kompakt, lang)}</p>
+            </div>
+          </div>
+          <div className={styles.tableWrap}>
+            <table className={styles.mTable}>
+              <thead><tr>
+                {item.cols.map((col, ci) => <th key={ci} className={ci===0?styles.thName:styles.thNote}>{tx(col, lang)}</th>)}
+              </tr></thead>
+              <tbody>{item.rows.map((row, ri)=>(
+                <tr key={ri}>
+                  <td className={styles.tdName}>{tx(row[0], lang)}</td>
+                  <td className={styles.tdNote}>{tx(row[1], lang)}</td>
+                </tr>
+              ))}</tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </Modal>
   )
 }
 

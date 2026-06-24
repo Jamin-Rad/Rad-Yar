@@ -56,7 +56,7 @@
 /* ── 3-Karten-Grid ───────────────────────────── */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   position: relative;
   z-index: 1;
@@ -90,9 +90,11 @@
 }
 .card:hover .cardIconImage { transform: scale(1.045) rotate(-1deg); }
 
+.cardPurple { border-color: #ddd6fe; background: linear-gradient(140deg, #f5f3ff 0%, #fff 70%); }
 .cardBlue   { border-color: #bae6fd; background: linear-gradient(140deg, #f0f9ff 0%, #fff 70%); }
 .cardOrange { border-color: #fed7aa; background: linear-gradient(140deg, #fff7ed 0%, #fff 70%); }
 .cardGreen  { border-color: #a7f3d0; background: linear-gradient(140deg, #ecfdf5 0%, #fff 70%); }
+.cardPurple::after { background: rgba(124, 58, 237, .12); }
 .cardBlue::after   { background: rgba(14, 165, 233, .12); }
 .cardOrange::after { background: rgba(249, 115, 22, .13); }
 .cardGreen::after  { background: rgba(5, 150, 105, .12); }
@@ -106,6 +108,7 @@
   overflow: hidden;
   box-shadow: 0 12px 24px rgba(15, 23, 42, .08);
 }
+.iconBoxPurple { border-color: #c4b5fd; }
 .iconBoxBlue   { border-color: #7dd3fc; }
 .iconBoxOrange { border-color: #fdba74; }
 .iconBoxGreen  { border-color: #6ee7b7; }
@@ -123,6 +126,7 @@
   font-style: italic; font-size: 19px; font-weight: 900;
   margin: 0 0 8px; letter-spacing: -.02em;
 }
+.colorPurple { color: #7c3aed; }
 .colorBlue   { color: #0ea5e9; }
 .colorOrange { color: #f97316; }
 .colorGreen  { color: #059669; }
@@ -138,6 +142,7 @@
   font-size: 11px; padding: 3px 10px; border-radius: 20px;
   border: 1px solid; font-weight: 600;
 }
+.chipPurple { border-color: #ddd6fe; color: #7c3aed; background: #f5f3ff; }
 .chipBlue   { border-color: #bae6fd; color: #0ea5e9; background: #f0f9ff; }
 .chipOrange { border-color: #fed7aa; color: #f97316; background: #fff7ed; }
 .chipGreen  { border-color: #a7f3d0; color: #059669; background: #ecfdf5; }
@@ -165,6 +170,7 @@
   padding: 18px 24px; border-bottom: 1px solid #eef2f7;
   border-radius: 20px 20px 0 0; flex-shrink: 0;
 }
+.headPurple { border-bottom-color: #ddd6fe; background: #f5f3ff; }
 .headBlue   { border-bottom-color: #bae6fd; background: #f0f9ff; }
 .headOrange { border-bottom-color: #fed7aa; background: #fff7ed; }
 .headGreen  { border-bottom-color: #a7f3d0; background: #ecfdf5; }
@@ -381,6 +387,77 @@
   font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
 }
 [dir='rtl'] .tdVal { white-space: normal; }
+
+/* ── Befundrelevante Anatomie ─────────────────── */
+.anatomyNavThumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--ref-color) 28%, transparent);
+  background: #0f172a;
+  box-shadow: inset 0 0 18px rgba(255,255,255,.08);
+}
+.anatomyNavThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.anatomyHero {
+  display: grid;
+  grid-template-columns: minmax(260px, .9fr) minmax(260px, 1fr);
+  gap: 16px;
+  align-items: stretch;
+  margin: 0 0 18px;
+}
+.anatomyImageFrame {
+  position: relative;
+  min-height: 260px;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1.5px solid color-mix(in srgb, var(--ref-color) 32%, #e2e8f0);
+  background:
+    radial-gradient(circle at 20% 18%, color-mix(in srgb, var(--ref-color) 18%, transparent), transparent 38%),
+    #0b1220;
+  box-shadow: 0 18px 40px -28px color-mix(in srgb, var(--ref-color) 70%, transparent);
+}
+.anatomyImage {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  object-fit: cover;
+  display: block;
+}
+.anatomyIntro {
+  border-radius: 18px;
+  padding: 18px 18px 16px;
+  border: 1.5px solid color-mix(in srgb, var(--ref-color) 22%, #e2e8f0);
+  background: color-mix(in srgb, var(--ref-color) 7%, #fff);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+.anatomyIntro span {
+  width: fit-content;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ref-color) 12%, #fff);
+  color: var(--ref-color);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.anatomyIntro p {
+  margin: 0;
+  color: #334155;
+  font-size: 14px;
+  line-height: 1.65;
+  font-weight: 650;
+}
 
 /* ── Klassifikationen-Karten (Kompaktversion) ── */
 .klassSearchWrap {
@@ -836,6 +913,9 @@
   /* Breadcrumb-Titel etwas kompakter auf Mobile */
   .modalTitle { font-size: 16px; }
   .klassCardGrid { grid-template-columns: 1fr; }
+  .anatomyHero { grid-template-columns: 1fr; }
+  .anatomyImageFrame,
+  .anatomyImage { min-height: 230px; }
   .klassSearchWrap { padding: 12px 12px 10px; }
   .klassSearchField { min-height: 44px; }
   .klassSearchGrid { grid-template-columns: 1fr; }
@@ -878,6 +958,7 @@
   background: var(--bg-card, #111b2d);
   border-color: rgba(148,163,184,0.15);
 }
+:global(html[data-theme='dark']) .cardPurple { background: #141129; border-color: rgba(124,58,237,0.24); }
 :global(html[data-theme='dark']) .cardBlue   { background: #0c1929; border-color: rgba(14,165,233,0.22); }
 :global(html[data-theme='dark']) .cardOrange { background: #1a1208; border-color: rgba(249,115,22,0.22); }
 :global(html[data-theme='dark']) .cardGreen  { background: #08180f; border-color: rgba(5,150,105,0.22); }
@@ -887,10 +968,12 @@
 :global(html[data-theme='dark']) .iconBox {
   background: rgba(255,255,255,0.04);
 }
+:global(html[data-theme='dark']) .iconBoxPurple { border-color: rgba(124,58,237,0.35); }
 :global(html[data-theme='dark']) .iconBoxBlue   { border-color: rgba(14,165,233,0.3); }
 :global(html[data-theme='dark']) .iconBoxOrange { border-color: rgba(249,115,22,0.3); }
 :global(html[data-theme='dark']) .iconBoxGreen  { border-color: rgba(5,150,105,0.3); }
 :global(html[data-theme='dark']) .cardDesc  { color: #8fa1ba; }
+:global(html[data-theme='dark']) .chipPurple { background: rgba(124,58,237,0.12); border-color: rgba(124,58,237,0.28); }
 :global(html[data-theme='dark']) .chipBlue   { background: rgba(14,165,233,0.1);  border-color: rgba(14,165,233,0.25); }
 :global(html[data-theme='dark']) .chipOrange { background: rgba(249,115,22,0.1);  border-color: rgba(249,115,22,0.25); }
 :global(html[data-theme='dark']) .chipGreen  { background: rgba(5,150,105,0.1);   border-color: rgba(5,150,105,0.25); }
@@ -901,6 +984,7 @@
   box-shadow: 0 24px 80px rgba(0,0,0,0.55);
 }
 :global(html[data-theme='dark']) .modalHead { border-bottom-color: rgba(148,163,184,0.14); }
+:global(html[data-theme='dark']) .headPurple { background: #141129; border-bottom-color: rgba(124,58,237,0.28); }
 :global(html[data-theme='dark']) .headBlue   { background: #0a1a28; border-bottom-color: rgba(14,165,233,0.25); }
 :global(html[data-theme='dark']) .headOrange { background: #1a1208; border-bottom-color: rgba(249,115,22,0.25); }
 :global(html[data-theme='dark']) .headGreen  { background: #081810; border-bottom-color: rgba(5,150,105,0.25); }
@@ -982,6 +1066,20 @@
   background: rgba(255,255,255,0.03);
 }
 :global(html[data-theme='dark']) .dot { opacity: .85; }
+:global(html[data-theme='dark']) .anatomyImageFrame {
+  border-color: color-mix(in srgb, var(--ref-color) 34%, rgba(148,163,184,.16));
+  background:
+    radial-gradient(circle at 20% 18%, color-mix(in srgb, var(--ref-color) 22%, transparent), transparent 40%),
+    #050b16;
+}
+:global(html[data-theme='dark']) .anatomyIntro {
+  border-color: color-mix(in srgb, var(--ref-color) 26%, rgba(148,163,184,.14));
+  background: color-mix(in srgb, var(--ref-color) 10%, #111b2d);
+}
+:global(html[data-theme='dark']) .anatomyIntro span {
+  background: color-mix(in srgb, var(--ref-color) 15%, #111b2d);
+}
+:global(html[data-theme='dark']) .anatomyIntro p { color: #cbd5e1; }
 
 /* ── Klassifikationen ─────────────────────────── */
 :global(html[data-theme='dark']) .klassCard {
