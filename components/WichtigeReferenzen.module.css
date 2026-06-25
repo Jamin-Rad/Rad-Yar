@@ -628,7 +628,6 @@
 .klassNavBtn.navActiveOrange::before { opacity: 1; transform: scaleY(1); }
 .klassNavText { display: grid; gap: 3px; flex: 1; min-width: 0; }
 .klassNavText .navLabel { color: #1e293b; font-size: 13px; font-weight: 850; }
-.klassNavCount { color: #94a3b8; font-size: 10px; font-weight: 650; }
 .klassNavArrow { color: #cbd5e1; font-size: 22px; line-height: 1; }
 .navActiveOrange .klassNavArrow { color: var(--ref-color); }
 .klassNavLogoWrap {
@@ -663,7 +662,6 @@
   font-style: italic;
   line-height: 1.05;
 }
-.klassTopicHead p { margin: 0; color: #94a3b8; font-size: 11px; font-weight: 650; }
 .klassTopicEyebrow {
   color: #94a3b8;
   font-size: 9px;
@@ -1008,8 +1006,6 @@
   border-color: rgba(148,163,184,.14);
   background: rgba(255,255,255,.045);
 }
-:global(html[data-theme='dark']) .klassNavCount,
-:global(html[data-theme='dark']) .klassTopicHead p,
 :global(html[data-theme='dark']) .klassTopicEyebrow { color: #6b7f9a; }
 :global(html[data-theme='dark']) .klassTopicHead {
   border-bottom-color: color-mix(in srgb, var(--ref-color) 22%, rgba(148,163,184,.12));

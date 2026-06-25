@@ -181,18 +181,6 @@ function buildClassificationTopics(sourceTopics) {
   ].filter(Boolean)
 }
 
-function classificationCountLabel(count, lang) {
-  if (lang === 'fa') return 'طبقه‌بندی'
-  if (lang === 'en') return count === 1 ? 'classification' : 'classifications'
-  return count === 1 ? 'Klassifikation' : 'Klassifikationen'
-}
-
-function compactReferenceLabel(count, lang) {
-  if (lang === 'fa') return 'مرجع فشرده'
-  if (lang === 'en') return count === 1 ? 'compact reference' : 'compact references'
-  return count === 1 ? 'kompaktes Nachschlagewerk' : 'kompakte Nachschlagewerke'
-}
-
 function sortByLocalizedName(items, lang) {
   return [...items].sort((a, b) => tx(a.name, lang).localeCompare(tx(b.name, lang), lang === 'de' ? 'de' : undefined, { sensitivity: 'base' }))
 }
@@ -567,7 +555,6 @@ function KlassifikationenModal({ copy, lang, onClose }) {
               </span>
               <span className={styles.klassNavText}>
                 <span className={styles.navLabel}>{tx(t.name,lang)}</span>
-                <span className={styles.klassNavCount}>{t.items.length} {classificationCountLabel(t.items.length, lang)}</span>
               </span>
               <span className={styles.klassNavArrow}>›</span>
             </button>
@@ -582,7 +569,6 @@ function KlassifikationenModal({ copy, lang, onClose }) {
             <div>
               <span className={styles.klassTopicEyebrow}>{copy.btnKlass}</span>
               <h2 style={{color:topic.color}}>{tx(topic.name,lang)}</h2>
-              <p>{topic.items.length} {compactReferenceLabel(topic.items.length, lang)}</p>
             </div>
           </div>
           <div className={styles.klassCardGrid}>
