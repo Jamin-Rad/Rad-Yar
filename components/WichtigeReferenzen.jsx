@@ -430,6 +430,19 @@ function MesswerteModal({ copy, lang, onClose }) {
                   ))}</tbody>
                 </table>
               </div>
+              {(group.note || group.source) && (
+                <div className={styles.measurementFootnotes}>
+                  {group.note && <p className={styles.measurementNote}>{tx(group.note, lang)}</p>}
+                  {group.source && (
+                    <p className={styles.measurementSource}>
+                      {copy.reference}:{' '}
+                      <a href={group.source.url} target="_blank" rel="noreferrer">
+                        {tx(group.source.label, lang)}
+                      </a>
+                    </p>
+                  )}
+                </div>
+              )}
             </CollapseGroup>
           ))}
         </div>
