@@ -1635,6 +1635,44 @@ export const KLASSIFIKATIONEN = [
         ],
       },
       {
+        id: 'salter-harris',
+        name: { de: 'Salter-Harris', en: 'Salter-Harris', fa: 'سالتر-هریس' },
+        kompakt: {
+          de: 'Klassifikation kindlicher Epiphysenfugenfrakturen (Typ I–V) nach Beteiligung von Physe, Metaphyse und Epiphyse; wichtig für Wachstumsstörungsrisiko und Therapie.',
+          en: 'Classification of paediatric physeal fractures (type I–V) by involvement of physis, metaphysis and epiphysis; important for growth-arrest risk and treatment.',
+          fa: 'طبقه‌بندی شکستگی‌های فیز کودکان (نوع I–V) بر اساس درگیری فیز، متافیز و اپی‌فیز؛ مهم برای خطر اختلال رشد و درمان.',
+        },
+        ref: 'Salter & Harris, JBJS 1963',
+        einfach: {
+          cols: [{ de: 'Merkwort', en: 'Mnemonic', fa: 'یادآور' }, { de: 'Bedeutung', en: 'Meaning', fa: 'معنا' }],
+          rows: [
+            ['S – Slip', { de: 'Typ I: Fraktur nur durch die Wachstumsfuge.', en: 'Type I: fracture through the physis only.', fa: 'نوع I: شکستگی فقط از فیز عبور می‌کند.' }],
+            ['A – Above', { de: 'Typ II: zusätzlich Metaphyse oberhalb der Fuge.', en: 'Type II: extends above the physis into the metaphysis.', fa: 'نوع II: به متافیز در بالای فیز امتداد دارد.' }],
+            ['L – Lower', { de: 'Typ III: zusätzlich Epiphyse unterhalb der Fuge, intraartikulär.', en: 'Type III: extends below the physis into the epiphysis, intra-articular.', fa: 'نوع III: به اپی‌فیز زیر فیز امتداد دارد، داخل مفصلی.' }],
+            ['T – Through', { de: 'Typ IV: durch Metaphyse, Physe und Epiphyse.', en: 'Type IV: through metaphysis, physis and epiphysis.', fa: 'نوع IV: از متافیز، فیز و اپی‌فیز عبور می‌کند.' }],
+            ['R – Rammed', { de: 'Typ V: Kompressions-/Quetschverletzung der Fuge.', en: 'Type V: crush/compression injury of the physis.', fa: 'نوع V: آسیب فشاری/له‌شدگی فیز.' }],
+          ],
+        },
+        cols: [{ de: 'Typ', en: 'Type', fa: 'نوع' }, { de: 'Frakturverlauf', en: 'Fracture pattern', fa: 'الگوی شکستگی' }, { de: 'Radiologische Relevanz', en: 'Radiology relevance', fa: 'اهمیت رادیولوژیک' }],
+        rows: [
+          ['I', { de: 'Nur durch die Physe; keine metaphysäre oder epiphysäre Frakturlinie', en: 'Through the physis only; no metaphyseal or epiphyseal fracture line', fa: 'فقط از فیز؛ بدون خط شکستگی متافیزی یا اپی‌فیزی' }, { de: 'Im Röntgen ggf. okkult; Fugenverbreiterung/Fehlstellung und Klinik beachten', en: 'May be radiographically occult; look for physeal widening/malalignment and clinical tenderness', fa: 'ممکن است در رادیوگرافی مخفی باشد؛ به پهن‌شدن فیز/بدراستایی و علائم بالینی توجه شود' }],
+          ['II', { de: 'Physe + Metaphyse; epiphysäre Gelenkfläche ausgespart', en: 'Physis + metaphysis; epiphyseal articular surface spared', fa: 'فیز + متافیز؛ سطح مفصلی اپی‌فیز سالم می‌ماند' }, { de: 'Häufigster Typ; Thurston-Holland-Fragment typisch', en: 'Most common type; classic Thurston-Holland fragment', fa: 'شایع‌ترین نوع؛ قطعه تورستون-هالند تیپیک است' }],
+          ['III', { de: 'Physe + Epiphyse bis in die Gelenkfläche', en: 'Physis + epiphysis extending into the articular surface', fa: 'فیز + اپی‌فیز با امتداد به سطح مفصلی' }, { de: 'Intraartikulär; Stufenbildung/Dislokation exakt beurteilen, CT/MRT ggf. hilfreich', en: 'Intra-articular; assess step-off/displacement precisely, CT/MRI may help', fa: 'داخل مفصلی؛ پله/جابجایی دقیق ارزیابی شود، CT/MRI ممکن است کمک کند' }],
+          ['IV', { de: 'Durch Metaphyse, Physe und Epiphyse', en: 'Through metaphysis, physis and epiphysis', fa: 'از متافیز، فیز و اپی‌فیز عبور می‌کند' }, { de: 'Intraartikulär und fugenquerend; anatomische Reposition wichtig', en: 'Intra-articular and crosses the physis; anatomical reduction is important', fa: 'داخل مفصلی و عبورکننده از فیز؛ جااندازی آناتومیک مهم است' }],
+          ['V', { de: 'Axiale Kompression/Crush der Physe', en: 'Axial compression/crush injury of the physis', fa: 'آسیب فشاری محوری/له‌شدگی فیز' }, { de: 'Akut oft schwer erkennbar; hohes Risiko für Wachstumsstörung', en: 'Often difficult to recognise acutely; high risk of growth arrest', fa: 'در فاز حاد اغلب دشوار تشخیص داده می‌شود؛ خطر بالای توقف رشد' }],
+        ],
+        detail: [
+          {
+            stage: { de: 'Befund-Tipp', en: 'Reporting tip', fa: 'نکته گزارش' },
+            text: {
+              de: 'Im Befund Typ, betroffene Fuge, Dislokation/Angulation, Gelenkbeteiligung und ggf. metaphysäres Fragment nennen. Bei unklarem Röntgen und lokaler Druckdolenz die Fuge gezielt mitbeurteilen.',
+              en: 'Report the type, involved physis, displacement/angulation, articular involvement and any metaphyseal fragment. If radiographs are unclear but focal tenderness is present, assess the physis specifically.',
+              fa: 'در گزارش نوع، فیز درگیر، جابجایی/زاویه‌دار شدن، درگیری مفصل و قطعه متافیزی احتمالی ذکر شود. اگر رادیوگرافی نامشخص ولی درد موضعی وجود دارد، فیز را دقیق بررسی کنید.',
+            },
+          },
+        ],
+      },
+      {
         id: 'kellgren-lawrence',
         name: { de: 'Kellgren-Lawrence', en: 'Kellgren-Lawrence', fa: 'کلگرن-لارنس' },
         kompakt: {

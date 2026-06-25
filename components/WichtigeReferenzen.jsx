@@ -50,6 +50,7 @@ const CLASSIFICATION_SEARCH_ALIASES = {
   'lung-rads': ['lungrads', 'lungenscreening', 'lung screening'],
   fleischner: ['lungenrundherd', 'lungenrundherde', 'pulmonary nodule', 'milchglas', 'ggo', 'ground glass', 'part solid', 'subsolid', 'nodulus', 'rundherd'],
   'stanford-debakey': ['stanford', 'debakey', 'aortendissektion', 'aortic dissection', 'dissektion'],
+  'salter-harris': ['salter harris', 'salterharis', 'salter-haris', 'wachstumsfuge', 'epiphysenfuge', 'physis', 'kindesfraktur', 'child fracture', 'physeal fracture'],
   fazekas: ['fazekes', 'marklager', 'white matter'],
   'mta-score': ['mta', 'mediale temporalatrophie', 'hippocampus', 'alzheimer', 'demenz'],
   aspects: ['schlaganfall', 'stroke', 'mca'],
