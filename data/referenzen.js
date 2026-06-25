@@ -1636,8 +1636,12 @@ export const KLASSIFIKATIONEN = [
         name: { de: 'Salter-Harris', en: 'Salter-Harris', fa: 'سالتر-هریس' },
         kompakt: {
           de: 'Typ-I–V-Einteilung kindlicher Epiphysenfugenfrakturen.',
-          en: 'Classification of paediatric physeal fractures (type I–V) by involvement of physis, metaphysis and epiphysis; important for growth-arrest risk and treatment.',
-          fa: 'طبقه‌بندی شکستگی‌های فیز کودکان (نوع I–V) بر اساس درگیری فیز، متافیز و اپی‌فیز؛ مهم برای خطر اختلال رشد و درمان.',
+          en: 'Type I–V classification of paediatric physeal fractures.',
+          fa: 'طبقه‌بندی نوع I تا V شکستگی‌های فیز کودکان.',
+        },
+        image: {
+          src: '/referenzen/klassifikationen/salter-harris.jpg',
+          alt: { de: 'Salter-Harris Typ I bis V', en: 'Salter-Harris types I to V', fa: 'انواع I تا V سالتر-هریس' },
         },
         ref: 'Salter & Harris, JBJS 1963',
         einfach: {

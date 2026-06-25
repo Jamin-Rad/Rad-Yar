@@ -604,8 +604,8 @@
   text-align: center;
 }
 .klassCardGrid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 14px; align-items: stretch;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 10px; align-items: stretch;
 }
 .klassNavBtn {
   position: relative;
@@ -672,11 +672,11 @@
   text-transform: uppercase;
 }
 .klassCard {
-  display: flex; flex-direction: column; gap: 8px;
-  min-height: 166px;
+  display: flex; flex-direction: column; gap: 6px;
+  min-height: 112px;
   width: 100%; text-align: start; cursor: pointer;
-  border: 1.5px solid #eef2f7; border-radius: 14px;
-  background: #fff; padding: 16px 18px; transition: all .18s;
+  border: 1.5px solid #eef2f7; border-radius: 13px;
+  background: #fff; padding: 13px 15px; transition: all .18s;
   font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
 }
 .klassCard:hover {
@@ -687,28 +687,18 @@
 }
 .klassCardName {
   font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
-  font-style: italic; font-weight: 900; font-size: 18px; letter-spacing: -.02em;
+  font-style: italic; font-weight: 900; font-size: 16.5px; letter-spacing: -.02em;
 }
 .klassCardText {
   display: -webkit-box;
   overflow: hidden;
-  min-height: calc(1.55em * 3);
+  min-height: calc(1.45em * 2);
   color: #475569;
-  font-size: 13px;
-  line-height: 1.55;
+  font-size: 12.5px;
+  line-height: 1.45;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
 }
-.klassCardFoot {
-  display: flex; align-items: center; gap: 6px; margin-top: auto;
-}
-.klassCardLink {
-  font-size: 12px; font-weight: 700; color: var(--ref-color);
-}
-.klassCardArrow { font-size: 14px; color: var(--ref-color); transition: transform .18s; }
-.klassCard:hover .klassCardArrow { transform: translateX(3px); }
-[dir='rtl'] .klassCardArrow { transform: scaleX(-1); }
-[dir='rtl'] .klassCard:hover .klassCardArrow { transform: scaleX(-1) translateX(3px); }
 
 /* ── Modal breit (Rechner) ────────────────────── */
 .modalWide { max-width: 1100px; }
