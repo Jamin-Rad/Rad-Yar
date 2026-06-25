@@ -93,18 +93,21 @@ function SourceLinks({ item, lang, copy }) {
   )
 }
 
+function sortByLocalizedName(items, lang) {
+  return [...items].sort((a, b) => tx(a.name, lang).localeCompare(tx(b.name, lang), lang === 'de' ? 'de' : undefined, { sensitivity: 'base' }))
+}
+
 export default function KlassDetailPage({ topic, item }) {
   const { lang } = useLanguage()
   const copy = REF_COPY[lang] || REF_COPY.de
   const color = topic.color
-  const siblings = topic.items
-  const otherTopics = REF_DATA.klassifikationen.filter(t => t.id !== topic.id)
-  const backHref = lang !== 'de' ? `/?lang=${lang}#referenzen` : '/#referenzen'
+  const siblings = sortByLocalizedName(topic.items, lang)
+  const otherTopics = REF_DATA.klassifikationen
+    .filter(t => t.id !== topic.id)
+    .map(t => ({ ...t, items: sortByLocalizedName(t.items, lang) }))
+  const backHref = lang !== 'de' ? `/?lang=${lang}&ref=klassifikationen#referenzen` : '/?ref=klassifikationen#referenzen'
   const [zoomSrc, setZoomSrc] = useState(null)
-  const sectionLabels = {
-    erklaerung: lang === 'de' ? 'Einordnung' : lang === 'fa' ? 'توضیح' : 'Context',
-    radiologie: lang === 'de' ? 'Radiologie-Check' : lang === 'fa' ? 'چک رادیولوژی' : 'Radiology check',
-  }
+  const infoLabel = lang === 'de' ? 'Einordnung & Radiologie-Check' : lang === 'fa' ? 'توضیح و چک رادیولوژی' : 'Context & radiology check'
 
   return (
     <main className={styles.page}>
@@ -174,17 +177,11 @@ export default function KlassDetailPage({ topic, item }) {
         <article className={styles.content} style={{ '--ref-color': color }}>
           <h1 className={styles.heading}>{tx(item.name, lang)}</h1>
 
-          {item.erklaerung && (
+          {(item.erklaerung || item.radiologie) && (
             <section id="erklaerung" className={styles.infoPanel}>
-              <span className={styles.infoPanelLabel}>{sectionLabels.erklaerung}</span>
-              <p>{tx(item.erklaerung, lang)}</p>
-            </section>
-          )}
-
-          {item.radiologie && (
-            <section id="radiologie" className={styles.infoPanel}>
-              <span className={styles.infoPanelLabel}>{sectionLabels.radiologie}</span>
-              <DetailList detail={item.radiologie} lang={lang} color={color} />
+              <span className={styles.infoPanelLabel}>{infoLabel}</span>
+              {item.erklaerung && <p>{tx(item.erklaerung, lang)}</p>}
+              {item.radiologie && <DetailList detail={item.radiologie} lang={lang} color={color} />}
             </section>
           )}
 

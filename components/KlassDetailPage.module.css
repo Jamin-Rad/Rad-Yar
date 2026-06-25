@@ -154,6 +154,9 @@
   font-size: 14px;
   line-height: 1.7;
 }
+.infoPanel > p + .detailList {
+  margin-top: 12px;
+}
 .infoPanel .detailList {
   padding: 0;
 }

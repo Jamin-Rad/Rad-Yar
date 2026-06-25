@@ -513,7 +513,6 @@
   cursor: pointer;
   font-size: 18px;
 }
-.klassSearchHint,
 .klassSearchSuggestion {
   margin: 7px 2px 0;
   color: #94a3b8;
@@ -1108,7 +1107,6 @@
   background: rgba(249,115,22,.12);
   color: #fdba74;
 }
-:global(html[data-theme='dark']) .klassSearchHint { color: #6b7f9a; }
 :global(html[data-theme='dark']) .klassSearchSuggestion { color: #fdba74; }
 :global(html[data-theme='dark']) .klassSearchSuggestion button { color: #fb923c; }
 :global(html[data-theme='dark']) .klassSearchResultsHead { color: #b8c4d8; }

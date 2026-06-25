@@ -193,6 +193,10 @@ function compactReferenceLabel(count, lang) {
   return count === 1 ? 'kompaktes Nachschlagewerk' : 'kompakte Nachschlagewerke'
 }
 
+function sortByLocalizedName(items, lang) {
+  return [...items].sort((a, b) => tx(a.name, lang).localeCompare(tx(b.name, lang), lang === 'de' ? 'de' : undefined, { sensitivity: 'base' }))
+}
+
 const MEASUREMENT_REGION_LOGOS = {
   neuro: '/fach/gehirn.png',
   thorax: '/fach/thorax.png',
@@ -247,6 +251,12 @@ export default function WichtigeReferenzen() {
   const { lang } = useLanguage()
   const copy = REF_COPY[lang] || REF_COPY.de
   const [modal, setModal] = useState(null)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('ref') === 'klassifikationen') setModal('klassifikationen')
+  }, [])
 
   useEffect(() => {
     if (!modal) return
@@ -443,6 +453,7 @@ function MesswerteModal({ copy, lang, onClose }) {
 function KlassifikationenModal({ copy, lang, onClose }) {
   const router = useRouter()
   const topics = buildClassificationTopics(REF_DATA.klassifikationen)
+    .map(topic => ({ ...topic, items: sortByLocalizedName(topic.items, lang) }))
   const [topicId, setTopicId] = useState(topics[0].id)
   const [showDetail, setShowDetail] = useState(false)
   const [query, setQuery] = useState('')
@@ -502,7 +513,6 @@ function KlassifikationenModal({ copy, lang, onClose }) {
             <button type="button" className={styles.klassSearchClear} onClick={() => setQuery('')} aria-label={searchCopy.clear}>×</button>
           )}
         </div>
-        {!query && <p className={styles.klassSearchHint}>{searchCopy.hint}</p>}
         {suggestedResult && (
           <p className={styles.klassSearchSuggestion}>
             {searchCopy.suggestion}:{' '}
@@ -580,10 +590,6 @@ function KlassifikationenModal({ copy, lang, onClose }) {
               <button key={item.id} className={styles.klassCard} style={{'--ref-color':topic.color}} onClick={()=>go(topic.sourceTopicId || topic.id,item.id)}>
                 <span className={styles.klassCardName} style={{color:topic.color}}>{tx(item.name,lang)}</span>
                 <span className={styles.klassCardText}>{tx(item.kompakt,lang)}</span>
-                <span className={styles.klassCardFoot}>
-                  <span className={styles.klassCardLink}>{copy.openDetail}</span>
-                  <span className={styles.klassCardArrow}>→</span>
-                </span>
               </button>
             ))}
           </div>
