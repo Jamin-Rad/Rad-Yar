@@ -1811,6 +1811,260 @@ export const KLASSIFIKATIONEN = [
   },
 ]
 
+const CLASSIFICATION_ENHANCEMENTS = {
+  fazekas: {
+    erklaerung: { de: 'Fazekas beschreibt die Ausprägung chronischer Marklagerläsionen in der MRT. Nützlich ist die Skala vor allem, um Mikroangiopathie standardisiert, knapp und verlaufstauglich zu berichten.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'T2/FLAIR: punktförmige, konfluierende oder ausgedehnte periventrikuläre und tiefe Marklagerhyperintensitäten getrennt beurteilen.' } },
+      { stage: { de: 'Wichtig im Befund' }, text: { de: 'Alter, vaskuläre Risikofaktoren, Lakunen/Mikroblutungen und Differenzialdiagnosen wie MS oder vaskulitische Muster mitdenken.' } },
+    ],
+    sources: [{ label: { de: 'Fazekas et al., AJR 1987' }, url: 'https://pubmed.ncbi.nlm.nih.gov/3496763/' }],
+  },
+  aspects: {
+    erklaerung: { de: 'ASPECTS quantifiziert frühe Ischämiezeichen im Mediastromgebiet im nativen CT oder in der DWI. Ausgangspunkt sind 10 Punkte; für jedes betroffene Areal wird 1 Punkt abgezogen.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Caudatus, Lentiforme, Insula, Kapsel sowie M1–M6 systematisch prüfen; Hypodensität, Schwellung und aufgehobene Rinden-Mark-Grenze zählen.' } },
+      { stage: { de: 'Vorgehen' }, text: { de: 'Immer Seite, Modalität und Endpunkt nennen, z. B. „ASPECTS rechts 7/10 im nativen CT“.' } },
+    ],
+    sources: [{ label: { de: 'Barber et al., Lancet 2000' }, url: 'https://pubmed.ncbi.nlm.nih.gov/10972352/' }],
+  },
+  'pc-aspects': {
+    erklaerung: { de: 'pc-ASPECTS überträgt das ASPECTS-Prinzip auf den posterioren Kreislauf. Er dient der standardisierten Beschreibung früher Ischämiezeichen in Hirnstamm, Thalamus, Okzipitallappen und Kleinhirn.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Mittelhirn und Pons sind doppelt gewichtet; Thalami, Okzipitallappen und Kleinhirnseiten werden einzeln bewertet.' } },
+      { stage: { de: 'Vorgehen' }, text: { de: 'DWI ist sensitiver als CT; bei Basilarisverschluss Score und betroffene Kernstrukturen klar benennen.' } },
+    ],
+    sources: [{ label: { de: 'Puetz et al., Stroke 2008' }, url: 'https://pubmed.ncbi.nlm.nih.gov/18719026/' }],
+  },
+  mcdonald: {
+    erklaerung: { de: 'Die McDonald-Kriterien dienen der MS-Diagnose durch Nachweis räumlicher und zeitlicher Dissemination. Radiologisch geht es um typische Läsionsorte, neue Läsionen und Kontrastmittelaufnahme.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Periventrikulär, kortikal/juxtakortikal, infratentoriell und spinal prüfen; typische Dawson-Finger und KM-aktive Läsionen erwähnen.' } },
+      { stage: { de: 'Vorgehen' }, text: { de: 'MRT-Befund nicht allein als MS diagnostizieren: klinischen Schub, Liquor und Differenzialdiagnosen berücksichtigen.' } },
+    ],
+    sources: [{ label: { de: 'Thompson et al., Lancet Neurol 2018' }, url: 'https://pubmed.ncbi.nlm.nih.gov/29275977/' }],
+  },
+  fisher: {
+    erklaerung: { de: 'Die Fisher-Skala beschreibt Blutmenge und Blutverteilung bei aneurysmatischer SAB im CT. Sie wird genutzt, um Vasospasmus-Risiko grob zu kommunizieren.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Dicke subarachnoidaler Blutauflagerungen, intraventrikuläre Blutanteile und intrazerebrale Hämatome im initialen CT beurteilen.' } },
+      { stage: { de: 'Befund-Tipp' }, text: { de: 'Zusätzlich Hydrozephalus, Aneurysmaverdacht und Blutverteilung zur Lokalisation der Blutungsquelle nennen.' } },
+    ],
+    sources: [{ label: { de: 'Fisher et al., Neurosurgery 1980' }, url: 'https://pubmed.ncbi.nlm.nih.gov/7354890/' }],
+  },
+  'mta-score': {
+    erklaerung: { de: 'Der MTA-Score bewertet mediale Temporallappenatrophie, insbesondere Hippokampusatrophie. Er hilft als strukturierter Baustein bei Demenzabklärung, ersetzt aber keine klinische Diagnose.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Koronare T1/T2-Ebene: Choroidfissur, Temporalhornweite und Hippokampushöhe beidseits beurteilen.' } },
+      { stage: { de: 'Befund-Tipp' }, text: { de: 'Seitendifferenz, Alter und zusätzliche Atrophiemuster wie frontotemporal oder posterior-kortikal erwähnen.' } },
+    ],
+    sources: [{ label: { de: 'Scheltens et al., J Neurol Sci 1992' }, url: 'https://pubmed.ncbi.nlm.nih.gov/1431963/' }],
+  },
+  'lung-rads': {
+    erklaerung: { de: 'Lung-RADS standardisiert CT-Lungenkrebs-Screeningbefunde. Es ist für Screening-Programme gedacht und nicht identisch mit Fleischner-Management inzidenteller Rundherde.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Nodulustyp, mittlere Größe, Wachstum, neue Noduli und solide Komponente bei subsoliden Herden erfassen.' } },
+      { stage: { de: 'Vorgehen' }, text: { de: 'Kategorie und Managementempfehlung nennen; Zusatzmodifier wie S oder C nur bei passenden Befunden verwenden.' } },
+    ],
+    sources: [{ label: { de: 'ACR Lung-RADS' }, url: 'https://www.acr.org/Clinical-Resources/Reporting-and-Data-Systems/Lung-Rads' }],
+  },
+  'co-rads': {
+    erklaerung: { de: 'CO-RADS beschreibt die CT-Wahrscheinlichkeit einer COVID-19-Pneumonie. Es ist ein Befundwahrscheinlichkeits-System und keine klinische Schweregradeinteilung.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Bilaterale periphere Milchglastrübungen, Crazy Paving, Konsolidierungen, Verteilung und alternative Diagnosen prüfen.' } },
+      { stage: { de: 'Befund-Tipp' }, text: { de: 'Kategorie mit klinischem Kontext und PCR/Labordaten korrelieren; andere infektiöse oder ödematöse Muster nennen.' } },
+    ],
+    sources: [{ label: { de: 'Prokop et al., Radiology 2020' }, url: 'https://pubmed.ncbi.nlm.nih.gov/32339082/' }],
+  },
+  fleischner: {
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Nodulustyp, mittlere Größe, solitär/multipel, Wachstum, solide Komponente und suspekte Morphologie wie Spikulation beurteilen.' } },
+      { stage: { de: 'Anwendung prüfen' }, text: { de: 'Nur für inzidentelle Rundherde bei Erwachsenen ohne bekannte aktive Tumorerkrankung/Immunsuppression; Screening fällt eher unter Lung-RADS.' } },
+    ],
+    sources: [
+      { label: { de: 'MacMahon et al., Radiology 2017' }, url: 'https://pubmed.ncbi.nlm.nih.gov/28240562/' },
+      { label: { de: 'Tabellen: NCBI Bookshelf' }, url: 'https://www.ncbi.nlm.nih.gov/books/NBK553863/table/ch5.Tab1/' },
+    ],
+  },
+  'stanford-debakey': {
+    erklaerung: { de: 'Stanford und DeBakey klassifizieren Aortendissektionen anatomisch. Für die Akutentscheidung ist vor allem wichtig, ob die Aorta ascendens beteiligt ist.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Intimaflap, Entry, Ausdehnung, Aorta ascendens, supraaortale Äste, viszerale/renale Gefäße und Malperfusion systematisch prüfen.' } },
+      { stage: { de: 'Befund-Tipp' }, text: { de: 'Stanford-Typ immer nennen; zusätzlich Komplikationen wie Perikarderguss, Rupturzeichen oder Organischämie beschreiben.' } },
+    ],
+    sources: [{ label: { de: 'Daily et al., Ann Thorac Surg 1970' }, url: 'https://pubmed.ncbi.nlm.nih.gov/?term=Daily+Stanford+classification+aortic+dissection+1970' }],
+  },
+  'ti-rads': {
+    erklaerung: { de: 'ACR TI-RADS ist ein punktbasiertes Ultraschallsystem für Schilddrüsenknoten. Aus Morphologiepunkten ergeben sich TR-Kategorie, FNA-Schwelle und Verlaufsempfehlung.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Zusammensetzung, Echogenität, Form, Rand und echogene Foci einzeln bewerten und Punkte addieren.' } },
+      { stage: { de: 'Vorgehen' }, text: { de: 'Knotengröße mit Kategorie kombinieren; FNA und Verlaufsschwelle sind größenabhängig.' } },
+    ],
+    sources: [
+      { label: { de: 'Tessler et al., JACR 2017' }, url: 'https://pubmed.ncbi.nlm.nih.gov/28372962/' },
+      { label: { de: 'ACR TI-RADS' }, url: 'https://www.acr.org/Clinical-Resources/Reporting-and-Data-Systems/TI-RADS' },
+    ],
+  },
+  'li-rads': {
+    erklaerung: { de: 'LI-RADS standardisiert die CT/MRT-Diagnostik von Leberläsionen bei HCC-Risikopatient:innen. Es verbindet Hauptkriterien, Zusatzkriterien und Managementsprache.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Nicht-randständige arterielle Hyperenhancement, Washout, Kapsel, Schwellenwachstum und Läsionsgröße prüfen.' } },
+      { stage: { de: 'Vorgehen' }, text: { de: 'Nur bei passender Risikopopulation anwenden; Tumor-in-Vein und nicht-HCC-Malignitätszeichen separat kennzeichnen.' } },
+    ],
+    sources: [{ label: { de: 'ACR LI-RADS' }, url: 'https://www.acr.org/Clinical-Resources/Reporting-and-Data-Systems/LI-RADS' }],
+  },
+  bosniak: {
+    erklaerung: { de: 'Bosniak klassifiziert zystische Nierenläsionen nach Malignitätsrisiko. Entscheidend sind Septen, Wandverdickung, Verkalkungen, KM-Enhancement und solide Anteile.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Kontrastmittel-Enhancement sauber von hyperdensen Blut-/Proteinanteilen trennen; bei Zweifel Subtraktion/MRT erwägen.' } },
+      { stage: { de: 'Befund-Tipp' }, text: { de: 'Kategorie, maximalen Durchmesser und die begründenden Merkmale nennen, z. B. „Bosniak IIF wegen multipler dünner septaler KM-Aufnahme“.' } },
+    ],
+    sources: [{ label: { de: 'Bosniak v2019, Radiology' }, url: 'https://pubmed.ncbi.nlm.nih.gov/31210616/' }],
+  },
+  balthazar: {
+    erklaerung: { de: 'Balthazar/CTSI bewertet CT-Schweregrad der akuten Pankreatitis anhand entzündlicher Morphologie und Nekroseausmaß. Nützlich ist es für strukturierte Risikokommunikation.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Pankreasvergrößerung, peripankreatische Entzündung, Flüssigkeitskollektionen und prozentuale Nekrose nach KM beurteilen.' } },
+      { stage: { de: 'Vorgehen' }, text: { de: 'Zeitpunkt der CT beachten: Nekrose ist früh oft unterschätzt; Komplikationen wie Thrombosen oder infizierte Nekrose separat nennen.' } },
+    ],
+    sources: [{ label: { de: 'Balthazar et al., Radiology 1990' }, url: 'https://pubmed.ncbi.nlm.nih.gov/?term=Balthazar+CT+severity+index+acute+pancreatitis+1990' }],
+  },
+  couinaud: {
+    erklaerung: { de: 'Couinaud teilt die Leber nach portaler Versorgung und venöser Drainage in funktionelle Segmente. Radiologisch ist es vor allem für Läsionslokalisation und OP-/Interventionsplanung relevant.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Portalvenenäste teilen kraniokaudal, Lebervenen trennen rechts/links/anterior/posterior; Segment I separat betrachten.' } },
+      { stage: { de: 'Befund-Tipp' }, text: { de: 'Läsionen immer mit Segment, Größe, Gefäß-/Gallengangsbezug und Resektabilitätsaspekten beschreiben.' } },
+    ],
+    sources: [{ label: { de: 'Couinaud-Leberanatomie, NCBI Bookshelf' }, url: 'https://www.ncbi.nlm.nih.gov/books/?term=Couinaud+liver+segments' }],
+  },
+  cdd: {
+    erklaerung: { de: 'Die CDD-Klassifikation strukturiert die Divertikelkrankheit inklusive unkomplizierter und komplizierter Divertikulitis. In der CT hilft sie, Abszess, Perforation und freie Luft konsistent einzuordnen.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Wandverdickung, entzündliches Fettgewebe, gedeckte/freie Perforation, Abszessgröße, Fistel und Stenose beurteilen.' } },
+      { stage: { de: 'Befund-Tipp' }, text: { de: 'Abszesse mit Größe und Drainagezugang beschreiben; freie Luft/Peritonitis klar von Mikroperforation abgrenzen.' } },
+    ],
+    sources: [{ label: { de: 'AWMF Divertikelkrankheit/Divertikulitis' }, url: 'https://register.awmf.org/de/leitlinien/detail/021-020' }],
+  },
+  'aast-ois': {
+    erklaerung: { de: 'AAST-OIS beschreibt traumatische Organverletzungen graduiert nach CT-Morphologie und Gefäß-/Hilusbeteiligung. Es unterstützt Kommunikation zwischen Radiologie, Chirurgie und Intervention.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Lazerationstiefe, Hämatom, Devaskularisation, aktive Blutung, Pseudoaneurysma, AV-Fistel und Hilarverletzung prüfen.' } },
+      { stage: { de: 'Befund-Tipp' }, text: { de: 'Organ, Grad, aktive Kontrastmittelextravasation und relevante Begleitverletzungen getrennt nennen.' } },
+    ],
+  },
+  'bi-rads': {
+    erklaerung: { de: 'BI-RADS standardisiert Brustbildgebung und Managementempfehlungen. Es ist modalitätsübergreifend für Mammographie, Ultraschall und MRT nutzbar, die Deskriptoren unterscheiden sich aber.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Befundtyp, Form, Rand, Dichte/Echogenität, Verkalkungsmuster, Verteilung, KM-Dynamik und Vergleich zu Voraufnahmen prüfen.' } },
+      { stage: { de: 'Vorgehen' }, text: { de: 'Erst deskriptiv sauber benennen, dann BI-RADS-Kategorie und konkrete Empfehlung formulieren.' } },
+    ],
+    sources: [{ label: { de: 'ACR BI-RADS' }, url: 'https://www.acr.org/Clinical-Resources/Reporting-and-Data-Systems/Bi-Rads' }],
+  },
+  'mamma-mrt-dichte': {
+    erklaerung: { de: 'Drüsendichte und Background Parenchymal Enhancement beschreiben die Beurteilbarkeit und hormonell geprägte KM-Aufnahme im Mamma-MRT. Sie sind Kontextmerkmale, keine Läsionskategorie.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Fibroglanduläres Gewebe und BPE getrennt bewerten; BPE symmetrisch/asymmetrisch und fokal/diffus einordnen.' } },
+      { stage: { de: 'Befund-Tipp' }, text: { de: 'Starkes BPE kann kleine Läsionen maskieren; Zyklus, Hormontherapie und Voraufnahmen berücksichtigen.' } },
+    ],
+    sources: [{ label: { de: 'ACR BI-RADS' }, url: 'https://www.acr.org/Clinical-Resources/Reporting-and-Data-Systems/Bi-Rads' }],
+  },
+  'pi-rads': {
+    erklaerung: { de: 'PI-RADS standardisiert die mpMRT der Prostata zur Wahrscheinlichkeit eines klinisch signifikanten Karzinoms. Dominante Sequenz hängt von peripherer Zone oder Transitionalzone ab.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Periphere Zone: DWI/ADC dominant; Transitionalzone: T2-Morphologie dominant; DCE kann PI-RADS 3 in PZ aufwerten.' } },
+      { stage: { de: 'Befund-Tipp' }, text: { de: 'Läsion mit Zone, Sektor, Größe, PI-RADS, Kapselkontakt/EPE-Zeichen und Biopsierelevanz berichten.' } },
+    ],
+    sources: [{ label: { de: 'ACR PI-RADS' }, url: 'https://www.acr.org/Clinical-Resources/Reporting-and-Data-Systems/PI-RADS' }],
+  },
+  pfirrmann: {
+    erklaerung: { de: 'Pfirrmann graduiert Bandscheibendegeneration in der T2-MRT nach Signal, Struktur und Höhenverlust. Es hilft, degenerative Befunde einheitlich zu beschreiben.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'T2-Signal des Nucleus, Homogenität, Abgrenzbarkeit von Anulus/Nucleus und Bandscheibenhöhe prüfen.' } },
+      { stage: { de: 'Befund-Tipp' }, text: { de: 'Grad nicht isoliert interpretieren: Protrusion/Extrusion, Modic-Veränderungen, Stenose und klinische Seite ergänzen.' } },
+    ],
+    sources: [{ label: { de: 'Pfirrmann et al., Spine 2001' }, url: 'https://pubmed.ncbi.nlm.nih.gov/11725234/' }],
+  },
+  modic: {
+    erklaerung: { de: 'Modic beschreibt reaktive Knochenmarkveränderungen angrenzend an degenerierte Endplatten. Die Typen spiegeln Ödem, Fettumbau oder Sklerose wider.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'T1/T2/STIR-Signal an den Endplatten beurteilen; erosive Infektion von degenerativem Modic-1-Muster abgrenzen.' } },
+      { stage: { de: 'Befund-Tipp' }, text: { de: 'Etage, Typ, Aktivitätszeichen und begleitende Diskus-/Endplattenveränderungen nennen.' } },
+    ],
+    sources: [{ label: { de: 'Modic et al., Radiology 1988' }, url: 'https://pubmed.ncbi.nlm.nih.gov/3336678/' }],
+  },
+  genant: {
+    erklaerung: { de: 'Genant ist eine semiquantitative Methode zur Einteilung osteoporotischer Wirbelkörperfrakturen nach Höhenminderung. Sie hilft, Frakturlast und Verlauf zu standardisieren.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Vordere, mittlere und hintere Wirbelkörperhöhe vergleichen; Keil-, bikonkave und Kompressionsform beschreiben.' } },
+      { stage: { de: 'Befund-Tipp' }, text: { de: 'Akuität nicht allein aus Genant ableiten: Knochenmarködem/STIR, Frakturlinie und Hinterkantenbeteiligung separat beurteilen.' } },
+    ],
+    sources: [{ label: { de: 'Genant et al., JBMR 1993' }, url: 'https://pubmed.ncbi.nlm.nih.gov/8237484/' }],
+  },
+  'salter-harris': {
+    erklaerung: { de: 'Salter-Harris klassifiziert Frakturen mit Beteiligung der Wachstumsfuge. Radiologisch geht es darum, ob nur die Physe oder zusätzlich Metaphyse, Epiphyse und Gelenkfläche betroffen sind.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Fugenverbreiterung, metaphysäres Thurston-Holland-Fragment, epiphysäre Gelenkbeteiligung, Dislokation und Achsfehler prüfen.' } },
+      { stage: { de: 'Befund-Tipp' }, text: { de: 'Bei Kindern mit lokaler Druckdolenz kann Typ I röntgenokkult sein; Vergleichsaufnahme, Verlauf oder MRT je nach Situation erwägen.' } },
+    ],
+    sources: [{ label: { de: 'Salter & Harris, JBJS 1963' }, url: 'https://pubmed.ncbi.nlm.nih.gov/14056420/' }],
+  },
+  'kellgren-lawrence': {
+    erklaerung: { de: 'Kellgren-Lawrence graduiert radiologische Arthrosezeichen. Es ist eine Röntgenskala, die Osteophyten, Gelenkspaltverschmälerung, Sklerose und Deformierung kombiniert.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Belastungsaufnahme bevorzugen; Osteophyten, Gelenkspalt, subchondrale Sklerose und Achs-/Formveränderung beurteilen.' } },
+      { stage: { de: 'Befund-Tipp' }, text: { de: 'Grad mit Kompartiment/Lokalisation nennen, z. B. medial betonte Gonarthrose KL 3.' } },
+    ],
+    sources: [{ label: { de: 'Kellgren & Lawrence, Ann Rheum Dis 1957' }, url: 'https://pubmed.ncbi.nlm.nih.gov/13498604/' }],
+  },
+  garden: {
+    erklaerung: { de: 'Garden klassifiziert mediale Schenkelhalsfrakturen nach Dislokation. Die Einteilung ist therapeutisch relevant, weil Dislokation mit Durchblutungsrisiko des Hüftkopfs korreliert.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'AP-Becken und axiale Aufnahme: Vollständigkeit, Valgusimpaktion, Trabekelkontinuität und Dislokation beurteilen.' } },
+      { stage: { de: 'Befund-Tipp' }, text: { de: 'Zusätzlich Pauwels-Winkel, Hinterwand-/Trochanterbeteiligung und CT-Bedarf bei okkulter Fraktur erwähnen.' } },
+    ],
+    sources: [{ label: { de: 'Garden, JBJS 1961' }, url: 'https://pubmed.ncbi.nlm.nih.gov/13748280/' }],
+  },
+  recist: {
+    erklaerung: { de: 'RECIST 1.1 standardisiert das Therapieansprechen solider Tumoren anhand der Summe langer Durchmesser von Zielläsionen. Es ist für Studien/Verlauf gedacht, nicht für jede klinische Einzelsituation ausreichend.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Zielläsionen messbar auswählen, kurze Achse pathologischer Lymphknoten beachten und Nicht-Zielläsionen separat verfolgen.' } },
+      { stage: { de: 'Vorgehen' }, text: { de: 'Baseline-Summe, Nadir, prozentuale Änderung, neue Läsionen und eindeutige Progression getrennt dokumentieren.' } },
+    ],
+    sources: [{ label: { de: 'Eisenhauer et al., EJC 2009' }, url: 'https://pubmed.ncbi.nlm.nih.gov/19097774/' }],
+  },
+  tnm: {
+    erklaerung: { de: 'TNM beschreibt anatomische Tumorausdehnung: Primärtumor, regionäre Lymphknoten und Fernmetastasen. Radiologisch ist es Grundlage für Staging, Therapieplanung und Tumorboard.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Tumorgröße/Organüberschreitung, Gefäß-/Nachbarorganinvasion, regionäre Lymphknotenstationen und Fernmetastasen systematisch prüfen.' } },
+      { stage: { de: 'Befund-Tipp' }, text: { de: 'TNM ist tumorspezifisch: immer die jeweilige Entität/Auflage verwenden und unsichere Befunde als cT/cN/cM kontextualisieren.' } },
+    ],
+    sources: [{ label: { de: 'UICC TNM' }, url: 'https://www.uicc.org/resources/tnm' }],
+  },
+  deauville: {
+    erklaerung: { de: 'Deauville ist eine 5-Punkte-PET-Skala für FDG-avid Lymphome. Sie vergleicht Läsionsuptake mit Mediastinum und Leber und steuert die metabolische Response-Beurteilung.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Uptake der Läsion relativ zu Mediastinum und Leber beurteilen; neue FDG-avide Herde separat bewerten.' } },
+      { stage: { de: 'Befund-Tipp' }, text: { de: 'Interim- und Abschluss-PET unterscheiden; Entzündung, Therapieeffekte und physiologische Uptakes nicht als Progress fehlwerten.' } },
+    ],
+    sources: [{ label: { de: 'Meignan et al., Leuk Lymphoma 2009' }, url: 'https://pubmed.ncbi.nlm.nih.gov/19622555/' }],
+  },
+  lugano: {
+    erklaerung: { de: 'Lugano standardisiert Staging und Response bei Lymphomen. Für FDG-avide Lymphome ist PET/CT zentral; bei anderen Subtypen bleibt CT-Morphologie wichtig.' },
+    radiologie: [
+      { stage: { de: 'Was ansehen?' }, text: { de: 'Nodale Stationen beidseits des Zwerchfells, Milz, extranodale Organe, Bulky Disease und Knochenmarkbeteiligung beurteilen.' } },
+      { stage: { de: 'Vorgehen' }, text: { de: 'Bei Response FDG-Avidität und Deauville-Score mit morphologischer Restmasse und neuen Läsionen kombinieren.' } },
+    ],
+  },
+}
+
+const KLASSIFIKATIONEN_ERWEITERT = KLASSIFIKATIONEN.map(topic => ({
+  ...topic,
+  items: topic.items.map(item => ({
+    ...item,
+    ...(CLASSIFICATION_ENHANCEMENTS[item.id] || {}),
+  })),
+}))
+
 // ── Rechner ──────────────────────────────────────────────────
 export const RECHNER = [
 
@@ -2064,4 +2318,4 @@ export const RECHNER = [
   },
 ]
 
-export const REF_DATA = { anatomie: ANATOMIE, messwerte: MESSWERTE, klassifikationen: KLASSIFIKATIONEN, rechner: RECHNER }
+export const REF_DATA = { anatomie: ANATOMIE, messwerte: MESSWERTE, klassifikationen: KLASSIFIKATIONEN_ERWEITERT, rechner: RECHNER }

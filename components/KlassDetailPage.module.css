@@ -131,6 +131,31 @@
   line-height: 1.15;
 }
 
+/* ── Inhaltsverzeichnis ─────────────────────────────────────────────────── */
+.sectionDirectory {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: -8px 0 18px;
+}
+.sectionDirectory a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--ref-color) 24%, transparent);
+  background: color-mix(in srgb, var(--ref-color) 7%, transparent);
+  color: #8aa5be;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 750;
+}
+.sectionDirectory a:hover {
+  color: var(--ref-color);
+  background: color-mix(in srgb, var(--ref-color) 12%, transparent);
+}
+
 /* ── Beschreibungs-Box ───────────────────────────────────────────────────── */
 .beschreibungBox {
   border: 1px solid; border-radius: 12px;
@@ -140,6 +165,36 @@
 }
 .beschreibungText {
   margin: 0; font-size: 14.5px; color: #a8bfd4; line-height: 1.7;
+}
+
+/* ── Erklärungs- und Radiologie-Panel ───────────────────────────────────── */
+.infoPanel {
+  margin: 0 0 16px;
+  padding: 16px 18px;
+  border: 1px solid color-mix(in srgb, var(--ref-color) 24%, transparent);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.025);
+}
+.infoPanelLabel {
+  display: inline-flex;
+  margin-bottom: 8px;
+  color: var(--ref-color);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.infoPanel > p {
+  margin: 0;
+  color: #a8bfd4;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.infoPanel .detailList {
+  padding: 0;
+}
+.infoPanel .detailBlock {
+  background: rgba(0,0,0,0.12);
 }
 
 /* ── Tabelle + Bild Grid ─────────────────────────────────────────────────── */
@@ -252,6 +307,9 @@
 /* ── Referenz & Disclaimer ───────────────────────────────────────────────── */
 .ref { margin: 28px 0 0; font-size: 12.5px; color: #4e6a87; }
 .refLabel { font-weight: 700; color: #6b87a3; }
+.refLinks { display: inline-flex; flex-wrap: wrap; gap: 4px 6px; }
+.refLinkItem { display: inline-flex; align-items: center; gap: 6px; }
+.refSep { color: #36506a; }
 .refLink { color: var(--ref-color, #f97316); text-decoration: none; font-weight: 500; }
 .refLink:hover { text-decoration: underline; }
 .disclaimer { margin: 12px 0 0; font-size: 11.5px; color: #2e4a64; line-height: 1.5; }
@@ -279,6 +337,17 @@
 :global(html[data-theme='light']) .table tbody td { border-color: #f1f5f9; color: #334155; }
 :global(html[data-theme='light']) .cellRest { color: #334155; }
 :global(html[data-theme='light']) .beschreibungText { color: #334155; }
+:global(html[data-theme='light']) .sectionDirectory a {
+  color: #475569;
+  background: color-mix(in srgb, var(--ref-color) 6%, #fff);
+}
+:global(html[data-theme='light']) .sectionDirectory a:hover { color: var(--ref-color); }
+:global(html[data-theme='light']) .infoPanel {
+  background: #fcfcfd;
+  border-color: color-mix(in srgb, var(--ref-color) 18%, #e2e8f0);
+}
+:global(html[data-theme='light']) .infoPanel > p { color: #334155; }
+:global(html[data-theme='light']) .infoPanel .detailBlock { background: #fff; }
 :global(html[data-theme='light']) .detailBlock { background: #fcfcfd; }
 :global(html[data-theme='light']) .detailText { color: #334155; }
 :global(html[data-theme='light']) .detailStage { color: var(--ref-color); }

@@ -76,6 +76,33 @@ function DetailList({ detail, lang, color }) {
   )
 }
 
+function SourceLinks({ item, lang, copy }) {
+  const sources = item.sources || (item.refUrl ? [{ label: item.ref, url: item.refUrl }] : [])
+  if (!sources.length) return item.ref || null
+  return (
+    <span className={styles.refLinks}>
+      {sources.map((source, index) => (
+        <span key={`${source.url}-${index}`} className={styles.refLinkItem}>
+          <a href={source.url} target="_blank" rel="noopener noreferrer" className={styles.refLink}>
+            {tx(source.label, lang)}
+          </a>
+          {index < sources.length - 1 && <span className={styles.refSep}>·</span>}
+        </span>
+      ))}
+    </span>
+  )
+}
+
+function SectionDirectory({ sections, color }) {
+  return (
+    <nav className={styles.sectionDirectory} style={{ '--ref-color': color }} aria-label="Inhaltsverzeichnis">
+      {sections.map(section => (
+        <a key={section.id} href={`#${section.id}`}>{section.label}</a>
+      ))}
+    </nav>
+  )
+}
+
 export default function KlassDetailPage({ topic, item }) {
   const { lang } = useLanguage()
   const copy = REF_COPY[lang] || REF_COPY.de
@@ -84,6 +111,22 @@ export default function KlassDetailPage({ topic, item }) {
   const otherTopics = REF_DATA.klassifikationen.filter(t => t.id !== topic.id)
   const backHref = lang !== 'de' ? `/?lang=${lang}#referenzen` : '/#referenzen'
   const [zoomSrc, setZoomSrc] = useState(null)
+  const directoryLabels = {
+    kurz: lang === 'de' ? 'Kurz' : lang === 'fa' ? 'خلاصه' : 'Short',
+    erklaerung: lang === 'de' ? 'Einordnung' : lang === 'fa' ? 'توضیح' : 'Context',
+    radiologie: lang === 'de' ? 'Radiologie-Check' : lang === 'fa' ? 'چک رادیولوژی' : 'Radiology check',
+    einfach: copy.einfachUebersicht,
+    voll: copy.vollstaendig,
+    quelle: copy.reference,
+  }
+  const sections = [
+    { id: 'kurz', label: directoryLabels.kurz },
+    item.erklaerung && { id: 'erklaerung', label: directoryLabels.erklaerung },
+    item.radiologie && { id: 'radiologie', label: directoryLabels.radiologie },
+    item.einfach && { id: 'einfach', label: directoryLabels.einfach },
+    { id: 'vollstaendig', label: directoryLabels.voll },
+    { id: 'quelle', label: directoryLabels.quelle },
+  ].filter(Boolean)
 
   return (
     <main className={styles.page}>
@@ -152,11 +195,26 @@ export default function KlassDetailPage({ topic, item }) {
         {/* Hauptinhalt */}
         <article className={styles.content} style={{ '--ref-color': color }}>
           <h1 className={styles.heading}>{tx(item.name, lang)}</h1>
+          <SectionDirectory sections={sections} color={color} />
 
           {/* Beschreibung */}
-          <div className={styles.beschreibungBox} style={{ borderColor: color + '44', background: color + '0d' }}>
+          <div id="kurz" className={styles.beschreibungBox} style={{ borderColor: color + '44', background: color + '0d' }}>
             <p className={styles.beschreibungText}>{tx(item.kompakt, lang)}</p>
           </div>
+
+          {item.erklaerung && (
+            <section id="erklaerung" className={styles.infoPanel}>
+              <span className={styles.infoPanelLabel}>{directoryLabels.erklaerung}</span>
+              <p>{tx(item.erklaerung, lang)}</p>
+            </section>
+          )}
+
+          {item.radiologie && (
+            <section id="radiologie" className={styles.infoPanel}>
+              <span className={styles.infoPanelLabel}>{directoryLabels.radiologie}</span>
+              <DetailList detail={item.radiologie} lang={lang} color={color} />
+            </section>
+          )}
 
           <div className={item.image ? styles.tableImageGrid : undefined}>
             {/* Tabellen-Sektion */}
@@ -167,18 +225,22 @@ export default function KlassDetailPage({ topic, item }) {
                 </CollapseSection>
               )}
               {item.einfach && (
+                <div id="einfach">
                 <CollapseSection title={copy.einfachUebersicht} color={color} defaultOpen={true}>
                   <ClassTable cols={item.einfach.cols} rows={item.einfach.rows} lang={lang} />
                 </CollapseSection>
+                </div>
               )}
               {item.tables ? (
-                item.tables.map((table, i) => (
+                <div id="vollstaendig">
+                {item.tables.map((table, i) => (
                   <CollapseSection key={i} title={tx(table.title, lang)} color={color} defaultOpen={true}>
                     <ClassTable cols={table.cols} rows={table.rows} lang={lang} />
                   </CollapseSection>
-                ))
+                ))}
+                </div>
               ) : (
-                <>
+                <div id="vollstaendig">
                   <CollapseSection title={copy.vollstaendig} color={color} defaultOpen={!item.einfach}>
                     <ClassTable cols={item.cols} rows={item.rows} lang={lang} />
                     {item.tableNote && (
@@ -188,7 +250,7 @@ export default function KlassDetailPage({ topic, item }) {
                       </div>
                     )}
                   </CollapseSection>
-                </>
+                </div>
               )}
               {item.detail && item.detailPosition !== 'beforeTables' && (
                 <CollapseSection title={copy.ausfuehrlich} color={color} defaultOpen={false}>
@@ -222,13 +284,9 @@ export default function KlassDetailPage({ topic, item }) {
           </div>
 
           {/* Quelle */}
-          <p className={styles.ref}>
+          <p id="quelle" className={styles.ref}>
             <span className={styles.refLabel}>{copy.reference}:</span>{' '}
-            {item.refUrl ? (
-              <a href={item.refUrl} target="_blank" rel="noopener noreferrer" className={styles.refLink}>
-                {item.ref}
-              </a>
-            ) : item.ref}
+            <SourceLinks item={item} lang={lang} copy={copy} />
           </p>
 
           <p className={styles.disclaimer}>⚠️ {copy.disclaimer}</p>
