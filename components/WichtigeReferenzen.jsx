@@ -226,6 +226,7 @@ function CollapseGroup({ name, color, defaultOpen = false, children }) {
         onClick={() => setOpen(o => !o)}
         aria-expanded={open}
       >
+        <span className={styles.groupHeadingMarker} aria-hidden="true" />
         <span className={styles.groupHeadingText}>{name}</span>
         <span className={styles.groupChevron} aria-hidden="true" />
       </button>
