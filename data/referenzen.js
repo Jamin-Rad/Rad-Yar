@@ -9,6 +9,7 @@
 export function tx(field, lang) {
   if (field == null) return ''
   if (typeof field === 'string') return field
+  if (lang === 'fa') return field.fa ?? field.en ?? field.de ?? ''
   return field[lang] ?? field.de ?? field.en ?? ''
 }
 
@@ -22,8 +23,8 @@ export const REF_COPY = {
     btnAnatomieSub: 'Segmentanatomie, Gefäßterritorien und schnelle Orientierung für CT/MRT-Befunde.',
     btnMesswerte: 'Größen & Messwerte',
     btnMesswerteSub: 'Normwerte, Grenzwerte und Messpunkte nach Körperregion.',
-    btnKlass: 'Klassifikationen & Scores',
-    btnKlassSub: 'Radiologische Scoring-Systeme und Einteilungen – kompakt und vollständig.',
+    btnKlass: 'Klassifikationen und Scores',
+    btnKlassSub: 'Radiologische Einteilungen, Scores und Befundkategorien – kurz erklärt und vollständig dargestellt.',
     btnRechner: 'Rechner',
     btnRechnerSub: 'Organe vermessen und sofort Volumen + Bewertung erhalten.',
     chipsAnatomie: ['Lebersegmente', 'Lunge', 'Beckenarterien', 'Hirngefäße'],
@@ -39,7 +40,7 @@ export const REF_COPY = {
     search: 'Suchen …',
     colStruktur: 'Struktur',
     colWert: 'Normwert',
-    colHinweis: 'Hinweis / Grenzwert',
+    colHinweis: 'Hinweis',
     kompakt: 'Kompakt',
     voll: 'Übersicht',
     einfachUebersicht: 'Einfache Übersicht',
@@ -61,8 +62,8 @@ export const REF_COPY = {
     btnAnatomieSub: 'Segment anatomy, vascular territories and fast orientation for CT/MRI reporting.',
     btnMesswerte: 'Sizes & Measurements',
     btnMesswerteSub: 'Normal values, thresholds and measurement points by body region.',
-    btnKlass: 'Classifications & Scores',
-    btnKlassSub: 'Radiology scoring systems and grading – compact and full.',
+    btnKlass: 'Classifications and Scores',
+    btnKlassSub: 'Radiology classifications, scoring systems and reporting categories – concise overview plus full details.',
     btnRechner: 'Calculators',
     btnRechnerSub: 'Measure organs and instantly get volume + interpretation.',
     chipsAnatomie: ['Liver segments', 'Lung', 'Pelvic arteries', 'Brain vessels'],
@@ -78,7 +79,7 @@ export const REF_COPY = {
     search: 'Search …',
     colStruktur: 'Structure',
     colWert: 'Normal',
-    colHinweis: 'Note / threshold',
+    colHinweis: 'Note',
     kompakt: 'Compact',
     voll: 'Overview',
     einfachUebersicht: 'Simple Overview',
@@ -100,8 +101,8 @@ export const REF_COPY = {
     btnAnatomieSub: 'آناتومی سگمنتال، قلمروهای عروقی و جهت‌یابی سریع برای گزارش CT/MRI.',
     btnMesswerte: 'اندازه‌ها و مقادیر',
     btnMesswerteSub: 'مقادیر طبیعی، حدود و نقاط اندازه‌گیری بر اساس ناحیه بدن.',
-    btnKlass: 'طبقه‌بندی‌ها و اسکورها',
-    btnKlassSub: 'سیستم‌های امتیازدهی و درجه‌بندی رادیولوژی – خلاصه و کامل.',
+    btnKlass: 'طبقه‌بندی‌ها و سیستم‌های امتیازدهی',
+    btnKlassSub: 'طبقه‌بندی‌ها، سیستم‌های امتیازدهی و دسته‌بندی‌های گزارش‌نویسی در رادیولوژی – با خلاصه کوتاه و جزئیات کامل.',
     btnRechner: 'ماشین‌حساب',
     btnRechnerSub: 'اندازه‌گیری اندام‌ها و دریافت فوری حجم + تفسیر.',
     chipsAnatomie: ['سگمان‌های کبد', 'ریه', 'شریان‌های لگن', 'عروق مغز'],
@@ -117,12 +118,12 @@ export const REF_COPY = {
     search: 'جستجو …',
     colStruktur: 'ساختار',
     colWert: 'مقدار طبیعی',
-    colHinweis: 'نکته / حد آستانه',
+    colHinweis: 'نکته',
     kompakt: 'خلاصه',
     voll: 'نمای کلی',
-    einfachUebersicht: 'نمای ساده',
+    einfachUebersicht: 'نمای خلاصه',
     vollstaendig: 'طبقه‌بندی کامل',
-    ausfuehrlich: 'مراحل و درجه‌بندی به‌تفصیل',
+    ausfuehrlich: 'مراحل و جزئیات طبقه‌بندی',
     reference: 'منبع',
     close: 'بستن',
     zoomImage: 'بزرگ‌نمایی',
@@ -734,7 +735,7 @@ export const KLASSIFIKATIONEN = [
         kompakt: {
           de: 'CT/DWI-Score (0–10) für frühe Ischämiezeichen im MCA-Territorium.',
           en: 'CT score (0–10) quantifying early ischaemic changes in the MCA territory.',
-          fa: 'نمره CT (۰–۱۰) برای کمّی‌سازی تغییرات ایسکمیک زودرس در قلمرو MCA.',
+          fa: 'امتیاز CT (۰–۱۰) برای سنجش تغییرات ایسکمیک زودرس در قلمرو MCA.',
         },
         image: {
           src: '/stroke/aspects-schema.png',
@@ -760,7 +761,7 @@ export const KLASSIFIKATIONEN = [
         kompakt: {
           de: 'CT/MRT-Score (0–10) für frühe Ischämiezeichen im vertebrobasilären Territorium.',
           en: 'CT/MRI score (0–10) for early ischaemic changes in the posterior circulation (vertebrobasilar territory) – 1 point deducted per affected region; ≤ 6 points indicates large infarct with unfavourable outcome.',
-          fa: 'نمره CT/MRI (۰–۱۰) برای تغییرات ایسکمیک زودرس در گردش پسین (قلمرو مهره‌ای-بازیلار) – به ازای هر ناحیه درگیر ۱ امتیاز کم می‌شود؛ ≤ ۶ امتیاز نشانه انفارکت وسیع با نتیجه نامطلوب.',
+          fa: 'امتیاز CT/MRI (۰–۱۰) برای تغییرات ایسکمیک زودرس در گردش خلفی (قلمرو ورتبروبازیلار)؛ به ازای هر ناحیه درگیر امتیاز کم می‌شود و ≤۶ امتیاز به نفع انفارکت وسیع با پیش‌آگهی نامطلوب است.',
         },
         ref: 'Puetz V et al., AJNR Am J Neuroradiol. 2008;29(10):1862–8',
         refUrl: 'https://pubmed.ncbi.nlm.nih.gov/18719026/',
@@ -778,7 +779,7 @@ export const KLASSIFIKATIONEN = [
         ],
         tableNote: {
           start: { de: 'Ausgangspunkt: 10 Punkte', en: 'Starting point: 10 points', fa: 'نقطه شروع: ۱۰ امتیاز' },
-          cutoff: { de: '≤ 6 Punkte = ausgedehnter Posteriorinfarkt → schlechteres Outcome', en: '≤ 6 points = large posterior infarct → worse outcome', fa: '≤ ۶ امتیاز = انفارکت پوستریور وسیع → نتیجه بدتر' },
+          cutoff: { de: '≤ 6 Punkte = ausgedehnter Posteriorinfarkt → schlechteres Outcome', en: '≤ 6 points = large posterior infarct → worse outcome', fa: '≤ ۶ امتیاز = انفارکت وسیع گردش خلفی → پیش‌آگهی بدتر' },
         },
       },
       {
@@ -863,7 +864,7 @@ export const KLASSIFIKATIONEN = [
         kompakt: {
           de: 'CT-Skala der SAB-Blutmenge zur groben Vasospasmus-Risikoeinschätzung.',
           en: 'CT score quantifying SAH blood volume as a vasospasm predictor (original grade 1–4 / modified grade 0–4).',
-          fa: 'نمره CT برای کمّی‌سازی حجم خون SAB به‌عنوان پیش‌بینی‌کننده وازواسپاسم (اصلی درجه ۱–۴ / اصلاح‌شده درجه ۰–۴).',
+          fa: 'امتیاز CT برای برآورد حجم خون SAH به‌عنوان شاخص خطر وازواسپاسم (نسخه اصلی درجه ۱–۴ / نسخه اصلاح‌شده درجه ۰–۴).',
         },
         ref: 'Fisher et al., Neurosurgery 1980 · Claassen et al., Stroke 2001',
         tables: [
@@ -875,8 +876,8 @@ export const KLASSIFIKATIONEN = [
             ],
             rows: [
               ['1', { de: 'Kein Blut nachweisbar', en: 'No blood detected', fa: 'بدون خون قابل تشخیص' }],
-              ['2', { de: 'Diffuse dünne SAB (< 1 mm)', en: 'Diffuse thin SAH (< 1 mm)', fa: 'SAH منتشر نازک (< ۱ mm)' }],
-              ['3', { de: 'Lokalisierte / dicke SAB (≥ 1 mm) – höchstes Risiko', en: 'Localised / thick SAH (≥ 1 mm) — highest risk', fa: 'SAH موضعی / ضخیم (≥ ۱ mm) — بیشترین خطر' }],
+              ['2', { de: 'Diffuse dünne SAB (< 1 mm)', en: 'Diffuse thin SAH (< 1 mm)', fa: 'SAH منتشر و نازک (< ۱ mm)' }],
+              ['3', { de: 'Lokalisierte / dicke SAB (≥ 1 mm) – höchstes Risiko', en: 'Localised / thick SAH (≥ 1 mm) — highest risk', fa: 'SAH موضعی یا ضخیم (≥ ۱ mm) — بیشترین خطر' }],
               ['4', { de: 'Intraventrikuläre oder intrazerebrale Blutung', en: 'Intraventricular or intracerebral haemorrhage', fa: 'خونریزی داخل بطنی یا داخل مغزی' }],
             ],
           },
@@ -889,7 +890,7 @@ export const KLASSIFIKATIONEN = [
               { de: 'Vasospasmus-Risiko', en: 'Vasospasm risk', fa: 'خطر وازواسپاسم' },
             ],
             rows: [
-              ['0', { de: 'Kein SAB', en: 'No SAH', fa: 'بدون SAB' }, { de: 'Nein', en: 'No', fa: 'خیر' }, '~0 %'],
+              ['0', { de: 'Kein SAB', en: 'No SAH', fa: 'بدون SAH' }, { de: 'Nein', en: 'No', fa: 'خیر' }, '~0 %'],
               ['1', { de: 'Dünn (< 1 mm)', en: 'Thin (< 1 mm)', fa: 'نازک (< ۱ mm)' }, { de: 'Nein', en: 'No', fa: 'خیر' }, '~6 %'],
               ['2', { de: 'Dünn (< 1 mm)', en: 'Thin (< 1 mm)', fa: 'نازک (< ۱ mm)' }, { de: 'Ja ✓', en: 'Yes ✓', fa: 'بله ✓' }, '~14 %'],
               ['3', { de: 'Dick (≥ 1 mm)', en: 'Thick (≥ 1 mm)', fa: 'ضخیم (≥ ۱ mm)' }, { de: 'Nein', en: 'No', fa: 'خیر' }, '~12 %'],
@@ -925,7 +926,7 @@ export const KLASSIFIKATIONEN = [
         einfach: {
           cols: [
             { de: 'Altersgruppe', en: 'Age group', fa: 'گروه سنی' },
-            { de: 'Pathologisch ab', en: 'Pathological at', fa: 'پاتولوژیک از' },
+            { de: 'Pathologisch ab', en: 'Pathological at', fa: 'غیرطبیعی از' },
           ],
           rows: [
             [{ de: '< 75 Jahre', en: '< 75 yr', fa: '< ۷۵ سال' }, 'MTA ≥ 2'],
@@ -948,7 +949,7 @@ export const KLASSIFIKATIONEN = [
           ['4', { de: 'Schwer', en: 'Severe', fa: 'شدید' }, { de: 'Stark ↑', en: 'Severe ↑', fa: 'شدید ↑' }, { de: 'Stark ↑', en: 'Severe ↑', fa: 'شدید ↑' }, { de: '> 50 % ↓', en: '> 50 % ↓', fa: '> ۵۰٪ ↓' }],
         ],
         tableNote: {
-          start: { de: 'Score 0–1: meist physiologisch · Score 3–4: immer pathologisch', en: 'Score 0–1: usually physiological · Score 3–4: always pathological', fa: 'امتیاز ۰–۱: اغلب فیزیولوژیک · امتیاز ۳–۴: همیشه پاتولوژیک' },
+          start: { de: 'Score 0–1: meist physiologisch · Score 3–4: immer pathologisch', en: 'Score 0–1: usually physiological · Score 3–4: always pathological', fa: 'امتیاز ۰–۱: اغلب فیزیولوژیک · امتیاز ۳–۴: همیشه غیرطبیعی' },
           cutoff: { de: 'Score 2: altersabhängig (s. oben) — jede Hemisphäre separat bewerten', en: 'Score 2: age-dependent (see above) — rate each hemisphere separately', fa: 'امتیاز ۲: وابسته به سن (ر.ک. بالا) — هر نیمکره جداگانه ارزیابی شود' },
         },
       },
@@ -964,7 +965,7 @@ export const KLASSIFIKATIONEN = [
         kompakt: {
           de: 'ACR-Kategorien (0–4X) für Befunde im LDCT-Lungenkrebsscreening.',
           en: 'ACR scoring (cat. 0–4X) for low-dose CT lung cancer screening – each category directly specifies the recommended management.',
-          fa: 'امتیازبندی ACR (دسته ۰–4X) برای غربالگری سرطان ریه با CT دز پایین – هر دسته مستقیماً مدیریت توصیه‌شده را تعیین می‌کند.',
+          fa: 'سیستم ACR با دسته‌های ۰ تا 4X برای غربالگری سرطان ریه با CT دوز پایین؛ هر دسته توصیه مدیریتی مشخصی دارد.',
         },
         ref: 'ACR Lung-RADS v2022',
         einfach: {
@@ -1000,20 +1001,20 @@ export const KLASSIFIKATIONEN = [
         cols: [{ de: 'Kategorie', en: 'Category', fa: 'دسته' }, { de: 'Wahrscheinlichkeit', en: 'Probability', fa: 'احتمال' }],
         rows: [
           ['1', { de: 'Sehr niedrig (normal / nicht-infektiös)', en: 'Very low (normal / non-infectious)', fa: 'بسیار پایین (طبیعی / غیرعفونی)' }],
-          ['2', { de: 'Niedrig (typisch andere Infektion)', en: 'Low (typical of other infection)', fa: 'پایین (تیپیک عفونت دیگر)' }],
+          ['2', { de: 'Niedrig (typisch andere Infektion)', en: 'Low (typical of other infection)', fa: 'پایین (به نفع عفونت دیگر)' }],
           ['3', { de: 'Unklar / unspezifisch', en: 'Indeterminate / unspecific', fa: 'نامشخص / غیراختصاصی' }],
           ['4', { de: 'Hoch', en: 'High', fa: 'بالا' }],
-          ['5', { de: 'Sehr hoch (typisches COVID-Muster)', en: 'Very high (typical COVID pattern)', fa: 'بسیار بالا (الگوی تیپیک COVID)' }],
+          ['5', { de: 'Sehr hoch (typisches COVID-Muster)', en: 'Very high (typical COVID pattern)', fa: 'بسیار بالا (الگوی معمول COVID-19)' }],
           ['6', { de: 'PCR-bestätigt', en: 'PCR confirmed', fa: 'تأییدشده با PCR' }],
         ],
       },
       {
         id: 'fleischner',
-        name: { de: 'Fleischner-Kriterien', en: 'Fleischner criteria', fa: 'معیار فلایشنر' },
+        name: { de: 'Fleischner-Kriterien', en: 'Fleischner criteria', fa: 'معیارهای Fleischner' },
         kompakt: {
           de: 'Fleischner-Society-Leitlinien (2017) für Management inzidenteller Lungenrundherde.',
           en: 'Fleischner Society guidelines (2017) for management of incidental pulmonary nodules.',
-          fa: 'دستورالعمل‌های جامعه فلایشنر (۲۰۱۷) برای مدیریت ندول‌های ریوی تصادفی.',
+          fa: 'دستورالعمل‌های انجمن Fleischner در سال ۲۰۱۷ برای مدیریت ندول‌های ریوی اتفاقی.',
         },
         ref: 'MacMahon et al., Radiology 2017;284:228–243 (Fleischner Society 2017)',
         refUrl: 'https://www.ncbi.nlm.nih.gov/books/NBK553863/table/ch5.Tab1/',
@@ -1024,9 +1025,9 @@ export const KLASSIFIKATIONEN = [
             [{ de: 'Sehr kleine solide Rundherde (< 6 mm)', en: 'Very small solid nodules (< 6 mm)', fa: 'ندول‌های جامد بسیار کوچک (< ۶ mm)' }, { de: 'Meist keine Kontrolle; bei hohem Risiko kann eine CT-Kontrolle nach 12 Monaten sinnvoll sein.', en: 'Usually no follow-up; in high-risk patients, CT at 12 months can be considered.', fa: 'معمولاً پیگیری لازم نیست؛ در خطر بالا می‌توان CT در ۱۲ ماه را در نظر گرفت.' }],
             [{ de: 'Solide Rundherde 6–8 mm', en: 'Solid nodules 6–8 mm', fa: 'ندول‌های جامد ۶–۸ mm' }, { de: 'Kontroll-CT: solitär eher 6–12 Monate, multipel eher früher nach 3–6 Monaten; danach ggf. zweite Kontrolle.', en: 'Follow-up CT: single nodules usually at 6–12 months, multiple nodules earlier at 3–6 months; then consider a second follow-up.', fa: 'CT پیگیری: ندول منفرد معمولاً ۶–۱۲ ماه، ندول‌های متعدد زودتر در ۳–۶ ماه؛ سپس در صورت نیاز کنترل دوم.' }],
             [{ de: 'Solide Rundherde > 8 mm', en: 'Solid nodules > 8 mm', fa: 'ندول‌های جامد > ۸ mm' }, { de: 'Aktivere Abklärung: kurze CT-Kontrolle, PET/CT und/oder Gewebesicherung je nach Morphologie und Risiko.', en: 'More active work-up: short-interval CT, PET/CT and/or tissue sampling depending on morphology and risk.', fa: 'بررسی فعال‌تر: CT کوتاه‌مدت، PET/CT و/یا نمونه‌برداری بر اساس مورفولوژی و خطر.' }],
-            [{ de: 'Reines Milchglas ≥ 6 mm', en: 'Pure ground-glass ≥ 6 mm', fa: 'گراندگلس خالص ≥ ۶ mm' }, { de: 'Zuerst Persistenz prüfen; wenn persistiert, langfristige Verlaufskontrollen bis 5 Jahre.', en: 'First confirm persistence; if persistent, long-term surveillance up to 5 years.', fa: 'ابتدا پایداری بررسی شود؛ در صورت پایداری، پیگیری طولانی‌مدت تا ۵ سال.' }],
-            [{ de: 'Part-solid ≥ 6 mm', en: 'Part-solid ≥ 6 mm', fa: 'نیمه‌جامد ≥ ۶ mm' }, { de: 'Frühe Kontrolle nach 3–6 Monaten; der solide Anteil ist entscheidend für die weitere Abklärung.', en: 'Early follow-up at 3–6 months; the solid component drives further management.', fa: 'کنترل زودهنگام در ۳–۶ ماه؛ جزء جامد تعیین‌کننده ادامه مدیریت است.' }],
-            [{ de: 'Multiple subsolide Rundherde', en: 'Multiple subsolid nodules', fa: 'ندول‌های ساب‌سالید متعدد' }, { de: 'Zunächst kurzfristige Kontrolle; danach richtet sich das Vorgehen nach dem suspektesten Herd.', en: 'Start with short-interval follow-up; subsequent management is based on the most suspicious nodule.', fa: 'ابتدا کنترل کوتاه‌مدت؛ سپس ادامه مدیریت بر اساس مشکوک‌ترین ندول.' }],
+            [{ de: 'Reines Milchglas ≥ 6 mm', en: 'Pure ground-glass ≥ 6 mm', fa: 'ground-glass خالص ≥ ۶ mm' }, { de: 'Zuerst Persistenz prüfen; wenn persistiert, langfristige Verlaufskontrollen bis 5 Jahre.', en: 'First confirm persistence; if persistent, long-term surveillance up to 5 years.', fa: 'ابتدا پایداری بررسی شود؛ در صورت باقی‌ماندن، پیگیری طولانی‌مدت تا ۵ سال.' }],
+            [{ de: 'Part-solid ≥ 6 mm', en: 'Part-solid ≥ 6 mm', fa: 'part-solid ≥ ۶ mm' }, { de: 'Frühe Kontrolle nach 3–6 Monaten; der solide Anteil ist entscheidend für die weitere Abklärung.', en: 'Early follow-up at 3–6 months; the solid component drives further management.', fa: 'کنترل زودهنگام در ۳–۶ ماه؛ جزء جامد تعیین‌کننده ادامه تصمیم‌گیری است.' }],
+            [{ de: 'Multiple subsolide Rundherde', en: 'Multiple subsolid nodules', fa: 'ندول‌های subsolid متعدد' }, { de: 'Zunächst kurzfristige Kontrolle; danach richtet sich das Vorgehen nach dem suspektesten Herd.', en: 'Start with short-interval follow-up; subsequent management is based on the most suspicious nodule.', fa: 'ابتدا کنترل کوتاه‌مدت؛ سپس ادامه تصمیم‌گیری بر اساس مشکوک‌ترین ندول انجام می‌شود.' }],
           ],
         },
         tables: [
@@ -1043,11 +1044,11 @@ export const KLASSIFIKATIONEN = [
             ],
           },
           {
-            title: { de: 'Standardversion – subsolide Lungenrundherde', en: 'Standard version – subsolid pulmonary nodules', fa: 'نسخه استاندارد – ندول‌های ساب‌سالید ریوی' },
+            title: { de: 'Standardversion – subsolide Lungenrundherde', en: 'Standard version – subsolid pulmonary nodules', fa: 'نسخه استاندارد – ندول‌های subsolid ریوی' },
             cols: [{ de: 'Rundherd', en: 'Nodule', fa: 'ندول' }, { de: '< 6 mm', en: '< 6 mm', fa: '< ۶ mm' }, { de: '≥ 6 mm', en: '≥ 6 mm', fa: '≥ ۶ mm' }],
             rows: [
-              [{ de: 'Solitär: reines Milchglas', en: 'Single: pure ground-glass', fa: 'منفرد: گراندگلس خالص' }, { de: 'Keine Routinekontrolle', en: 'No routine follow-up', fa: 'بدون پیگیری روتین' }, { de: 'CT nach 6–12 Monaten zur Persistenzkontrolle; dann alle 2 Jahre bis 5 Jahre', en: 'CT at 6–12 months to confirm persistence; then every 2 years until 5 years', fa: 'CT پس از ۶–۱۲ ماه برای تأیید پایداری؛ سپس هر ۲ سال تا ۵ سال' }],
-              [{ de: 'Solitär: part-solid', en: 'Single: part-solid', fa: 'منفرد: نیمه‌جامد' }, { de: 'Keine Routinekontrolle', en: 'No routine follow-up', fa: 'بدون پیگیری روتین' }, { de: 'CT nach 3–6 Monaten zur Persistenzkontrolle; bei stabilem Befund und Solid-Anteil < 6 mm jährlich bis 5 Jahre', en: 'CT at 3–6 months to confirm persistence; if unchanged and solid component < 6 mm, annual CT until 5 years', fa: 'CT پس از ۳–۶ ماه برای تأیید پایداری؛ اگر ثابت و جزء جامد < ۶ mm باشد، CT سالانه تا ۵ سال' }],
+              [{ de: 'Solitär: reines Milchglas', en: 'Single: pure ground-glass', fa: 'منفرد: ground-glass خالص' }, { de: 'Keine Routinekontrolle', en: 'No routine follow-up', fa: 'بدون پیگیری روتین' }, { de: 'CT nach 6–12 Monaten zur Persistenzkontrolle; dann alle 2 Jahre bis 5 Jahre', en: 'CT at 6–12 months to confirm persistence; then every 2 years until 5 years', fa: 'CT پس از ۶–۱۲ ماه برای تأیید پایداری؛ سپس هر ۲ سال تا ۵ سال' }],
+              [{ de: 'Solitär: part-solid', en: 'Single: part-solid', fa: 'منفرد: part-solid' }, { de: 'Keine Routinekontrolle', en: 'No routine follow-up', fa: 'بدون پیگیری روتین' }, { de: 'CT nach 3–6 Monaten zur Persistenzkontrolle; bei stabilem Befund und Solid-Anteil < 6 mm jährlich bis 5 Jahre', en: 'CT at 3–6 months to confirm persistence; if unchanged and solid component < 6 mm, annual CT until 5 years', fa: 'CT پس از ۳–۶ ماه برای تأیید پایداری؛ اگر ثابت باشد و جزء جامد < ۶ mm باشد، CT سالانه تا ۵ سال' }],
               [{ de: 'Multipel', en: 'Multiple', fa: 'متعدد' }, { de: 'CT nach 3–6 Monaten; bei stabilem Befund CT nach 2 und 4 Jahren erwägen', en: 'CT at 3–6 months; if stable, consider CT at 2 and 4 years', fa: 'CT پس از ۳–۶ ماه؛ اگر پایدار باشد CT در ۲ و ۴ سال در نظر گرفته شود' }, { de: 'CT nach 3–6 Monaten; weiteres Management nach suspektestem Rundherd', en: 'CT at 3–6 months; subsequent management based on the most suspicious nodule(s)', fa: 'CT پس از ۳–۶ ماه؛ ادامه مدیریت بر اساس مشکوک‌ترین ندول' }],
             ],
           },
@@ -1584,7 +1585,7 @@ export const KLASSIFIKATIONEN = [
             text: {
               de: 'Ein signifikantes Karzinom ist sehr wahrscheinlich. Gleiche Kriterien wie PI-RADS 4, aber Läsion ≥ 1,5 cm oder mit Zeichen der extraprostatischen Ausbreitung. Biopsie und Staging (Lokalstaging, ggf. PSMA-PET).',
               en: 'A significant cancer is very likely. Same criteria as PI-RADS 4 but lesion ≥ 1.5 cm or with signs of extraprostatic extension. Biopsy and staging (local staging, possibly PSMA-PET).',
-              fa: 'سرطان مهم بسیار محتمل است. معیارهای مشابه PI-RADS ۴ اما ضایعه ≥ ۱٫۵ سانتی‌متر یا با نشانه‌های گسترش خارج پروستات. بیوپسی و استیجینگ (احتمالاً PSMA-PET).',
+              fa: 'سرطان clinically significant بسیار محتمل است. معیارها مشابه PI-RADS ۴ هستند، اما ضایعه ≥ ۱٫۵ سانتی‌متر است یا نشانه‌های گسترش خارج پروستات دارد. بیوپسی و مرحله‌بندی، احتمالاً با PSMA-PET، مطرح می‌شود.',
             },
           },
         ],
@@ -1672,7 +1673,7 @@ export const KLASSIFIKATIONEN = [
         cols: [{ de: 'Typ', en: 'Type', fa: 'نوع' }, { de: 'Frakturverlauf', en: 'Fracture pattern', fa: 'الگوی شکستگی' }, { de: 'Radiologische Relevanz', en: 'Radiology relevance', fa: 'اهمیت رادیولوژیک' }],
         rows: [
           ['I', { de: 'Nur durch die Physe; keine metaphysäre oder epiphysäre Frakturlinie', en: 'Through the physis only; no metaphyseal or epiphyseal fracture line', fa: 'فقط از فیز؛ بدون خط شکستگی متافیزی یا اپی‌فیزی' }, { de: 'Im Röntgen ggf. okkult; Fugenverbreiterung/Fehlstellung und Klinik beachten', en: 'May be radiographically occult; look for physeal widening/malalignment and clinical tenderness', fa: 'ممکن است در رادیوگرافی مخفی باشد؛ به پهن‌شدن فیز/بدراستایی و علائم بالینی توجه شود' }],
-          ['II', { de: 'Physe + Metaphyse; epiphysäre Gelenkfläche ausgespart', en: 'Physis + metaphysis; epiphyseal articular surface spared', fa: 'فیز + متافیز؛ سطح مفصلی اپی‌فیز سالم می‌ماند' }, { de: 'Häufigster Typ; Thurston-Holland-Fragment typisch', en: 'Most common type; classic Thurston-Holland fragment', fa: 'شایع‌ترین نوع؛ قطعه تورستون-هالند تیپیک است' }],
+          ['II', { de: 'Physe + Metaphyse; epiphysäre Gelenkfläche ausgespart', en: 'Physis + metaphysis; epiphyseal articular surface spared', fa: 'فیز + متافیز؛ سطح مفصلی اپی‌فیز سالم می‌ماند' }, { de: 'Häufigster Typ; Thurston-Holland-Fragment typisch', en: 'Most common type; classic Thurston-Holland fragment', fa: 'شایع‌ترین نوع؛ قطعه Thurston-Holland کلاسیک است' }],
           ['III', { de: 'Physe + Epiphyse bis in die Gelenkfläche', en: 'Physis + epiphysis extending into the articular surface', fa: 'فیز + اپی‌فیز با امتداد به سطح مفصلی' }, { de: 'Intraartikulär; Stufenbildung/Dislokation exakt beurteilen, CT/MRT ggf. hilfreich', en: 'Intra-articular; assess step-off/displacement precisely, CT/MRI may help', fa: 'داخل مفصلی؛ پله/جابجایی دقیق ارزیابی شود، CT/MRI ممکن است کمک کند' }],
           ['IV', { de: 'Durch Metaphyse, Physe und Epiphyse', en: 'Through metaphysis, physis and epiphysis', fa: 'از متافیز، فیز و اپی‌فیز عبور می‌کند' }, { de: 'Intraartikulär und fugenquerend; anatomische Reposition wichtig', en: 'Intra-articular and crosses the physis; anatomical reduction is important', fa: 'داخل مفصلی و عبورکننده از فیز؛ جااندازی آناتومیک مهم است' }],
           ['V', { de: 'Axiale Kompression/Crush der Physe', en: 'Axial compression/crush injury of the physis', fa: 'آسیب فشاری محوری/له‌شدگی فیز' }, { de: 'Akut oft schwer erkennbar; hohes Risiko für Wachstumsstörung', en: 'Often difficult to recognise acutely; high risk of growth arrest', fa: 'در فاز حاد اغلب دشوار تشخیص داده می‌شود؛ خطر بالای توقف رشد' }],
@@ -1752,7 +1753,7 @@ export const KLASSIFIKATIONEN = [
         kompakt: {
           de: 'Staging-System solider Tumoren nach T, N und M.',
           en: 'Universal staging system for solid tumours: T (size/extent), N (lymph nodes), M (metastasis) – combined into overall stage I–IV.',
-          fa: 'سیستم استیجینگ جهانی برای تومورهای جامد: T (اندازه/گسترش)، N (غدد لنفاوی)، M (متاستاز) – مرحله کلی I–IV را می‌سازد.',
+          fa: 'سیستم جهانی مرحله‌بندی تومورهای جامد: T برای اندازه/گسترش تومور، N برای غدد لنفاوی و M برای متاستاز؛ در نهایت مرحله کلی I–IV تعیین می‌شود.',
         },
         ref: 'UICC TNM, 8. Auflage',
         cols: [{ de: 'Komponente', en: 'Component', fa: 'مؤلفه' }, { de: 'Bedeutung', en: 'Meaning', fa: 'معنی' }],
@@ -1786,7 +1787,7 @@ export const KLASSIFIKATIONEN = [
         kompakt: {
           de: 'Staging- und Response-Kriterien für Lymphome.',
           en: 'Standard for lymphoma staging and treatment response: anatomical stage I–IV and, for FDG-avid lymphomas, PET/CT-based response using Deauville.',
-          fa: 'استاندارد مرحله‌بندی و پاسخ درمانی لنفوم: مراحل آناتومیک I تا IV و در لنفوم‌های FDG-avid پاسخ مبتنی بر PET/CT با دوویل.',
+          fa: 'استاندارد مرحله‌بندی و ارزیابی پاسخ درمانی لنفوم: مراحل آناتومیک I تا IV و در لنفوم‌های FDG-avid، پاسخ بر پایه PET/CT و Deauville سنجیده می‌شود.',
         },
         ref: 'Cheson et al., J Clin Oncol. 2014;32:3059–3068',
         refUrl: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4979083/',
@@ -1802,13 +1803,13 @@ export const KLASSIFIKATIONEN = [
             ],
           },
           {
-            title: { de: 'PET/CT-Therapieansprechen bei FDG-aviden Lymphomen', en: 'PET/CT treatment response in FDG-avid lymphomas', fa: 'پاسخ درمانی PET/CT در لنفوم‌های FDG-avid' },
+            title: { de: 'PET/CT-Therapieansprechen bei FDG-aviden Lymphomen', en: 'PET/CT treatment response in FDG-avid lymphomas', fa: 'ارزیابی پاسخ درمانی با PET/CT در لنفوم‌های FDG-avid' },
             cols: [{ de: 'Response', en: 'Response', fa: 'پاسخ' }, { de: 'Lugano-Kriterium', en: 'Lugano criterion', fa: 'معیار لوگانو' }],
             rows: [
               ['CMR', { de: 'Komplette metabolische Response: Deauville 1–3, mit oder ohne Residualmasse', en: 'Complete metabolic response: Deauville 1–3, with or without a residual mass', fa: 'پاسخ متابولیک کامل: دوویل ۱–۳، با یا بدون توده باقیمانده' }],
               ['PMR', { de: 'Partielle metabolische Response: Deauville 4–5 mit gegenüber Ausgangsbefund vermindertem Uptake, keine neuen Läsionen', en: 'Partial metabolic response: Deauville 4–5 with reduced uptake from baseline and no new lesions', fa: 'پاسخ متابولیک نسبی: دوویل ۴–۵ با کاهش جذب نسبت به پایه و بدون ضایعه جدید' }],
               ['NMR', { de: 'Keine metabolische Response: Deauville 4–5 ohne wesentliche Änderung, keine neuen Läsionen', en: 'No metabolic response: Deauville 4–5 without significant change and no new lesions', fa: 'بدون پاسخ متابولیک: دوویل ۴–۵ بدون تغییر معنی‌دار و بدون ضایعه جدید' }],
-              ['PMD', { de: 'Progressive metabolische Erkrankung: Deauville 4–5 mit zunehmendem Uptake und/oder neue FDG-avide Herde', en: 'Progressive metabolic disease: Deauville 4–5 with increased uptake and/or new FDG-avid foci', fa: 'بیماری متابولیک پیشرونده: دوویل ۴–۵ با افزایش جذب و/یا کانون‌های جدید FDG-avid' }],
+              ['PMD', { de: 'Progressive metabolische Erkrankung: Deauville 4–5 mit zunehmendem Uptake und/oder neue FDG-avide Herde', en: 'Progressive metabolic disease: Deauville 4–5 with increased uptake and/or new FDG-avid foci', fa: 'بیماری متابولیک پیشرونده: Deauville ۴–۵ با افزایش uptake و/یا کانون‌های جدید FDG-avid' }],
             ],
           },
         ],
@@ -1818,7 +1819,7 @@ export const KLASSIFIKATIONEN = [
             text: {
               de: 'PET/CT ist für FDG-avide Lymphome bevorzugt. Bei nicht oder variabel FDG-aviden Subtypen erfolgt die Responsebeurteilung primär CT-basiert. Bulky Disease wird über die größte Tumormasse dokumentiert; B-Symptome werden separat erfasst.',
               en: 'PET/CT is preferred for FDG-avid lymphomas. In non- or variably FDG-avid subtypes, response is assessed primarily by CT. Bulky disease is documented using the largest tumour mass; B symptoms are recorded separately.',
-              fa: 'PET/CT برای لنفوم‌های FDG-avid ارجح است. در انواع با جذب کم یا متغیر، پاسخ عمدتاً با CT ارزیابی می‌شود. بیماری حجیم با بزرگ‌ترین توده ثبت و علائم B جداگانه گزارش می‌شوند.',
+              fa: 'PET/CT برای لنفوم‌های FDG-avid ارجح است. در انواع با uptake کم یا متغیر، پاسخ عمدتاً با CT ارزیابی می‌شود. bulky disease با بزرگ‌ترین توده ثبت می‌شود و علائم B جداگانه گزارش می‌شوند.',
             },
           },
         ],
@@ -2073,11 +2074,246 @@ const CLASSIFICATION_ENHANCEMENTS = {
   },
 }
 
+const CLASSIFICATION_FA_ENHANCEMENTS = {
+  fazekas: {
+    erklaerung: { fa: 'مقیاس فازکاس شدت ضایعات مزمن ماده سفید را در MRI توصیف می‌کند. برای گزارش استاندارد میکروآنژیوپاتی و مقایسه در پیگیری مفید است.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'در T2/FLAIR، هایپراینتنسیتی‌های نقطه‌ای، همگرا یا وسیعِ پری‌ونتریکولار و ماده سفید عمقی را جداگانه ارزیابی کنید.' } },
+      { stage: { fa: 'نکته گزارش' }, text: { fa: 'سن، عوامل خطر عروقی، لاکون‌ها/میکروبلیدها و افتراق‌هایی مثل MS یا الگوی واسکولیتی را در نظر بگیرید.' } },
+    ],
+  },
+  aspects: {
+    erklaerung: { fa: 'ASPECTS تغییرات ایسکمیک زودرس در قلمرو MCA را در CT بدون کنتراست یا DWI عددی می‌کند. شروع از ۱۰ امتیاز است و برای هر ناحیه درگیر ۱ امتیاز کم می‌شود.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'کادات، لنتیفرم، اینسولا، کپسول داخلی و نواحی M1 تا M6 را سیستماتیک بررسی کنید؛ هیپودنسیتی، تورم و از بین رفتن تمایز خاکستری-سفید مهم‌اند.' } },
+      { stage: { fa: 'روش گزارش' }, text: { fa: 'همیشه سمت، روش تصویربرداری و امتیاز نهایی را بنویسید؛ مثال: «ASPECTS راست ۷/۱۰ در CT بدون کنتراست».' } },
+    ],
+  },
+  'pc-aspects': {
+    erklaerung: { fa: 'pc-ASPECTS همان منطق ASPECTS را برای گردش خون خلفی به کار می‌برد و تغییرات ایسکمیک زودرس در ساقه مغز، تالاموس، لوب اکسیپیتال و مخچه را استاندارد گزارش می‌کند.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'مغز میانی و پونز وزن بیشتری دارند؛ تالاموس‌ها، لوب‌های اکسیپیتال و نیمکره‌های مخچه هر سمت جداگانه امتیازدهی می‌شوند.' } },
+      { stage: { fa: 'روش گزارش' }, text: { fa: 'DWI از CT حساس‌تر است؛ در انسداد بازیلار، امتیاز و ساختارهای اصلی درگیر را واضح ذکر کنید.' } },
+    ],
+  },
+  mcdonald: {
+    erklaerung: { fa: 'معیارهای مک‌دونالد برای تشخیص MS بر اساس اثبات انتشار ضایعات در فضا و زمان به کار می‌روند. نقش رادیولوژی تشخیص محل‌های معمول، ضایعات جدید و ضایعات فعال با کنتراست است.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'ناحیه پری‌ونتریکولار، کورتیکال/جوکستاکورتیکال، اینفراتنتوریال و نخاع را بررسی کنید؛ Dawson fingers و ضایعات فعال با کنتراست را ذکر کنید.' } },
+      { stage: { fa: 'روش گزارش' }, text: { fa: 'MRI به‌تنهایی تشخیص MS نیست؛ حمله بالینی، CSF و تشخیص‌های افتراقی باید در نظر گرفته شوند.' } },
+    ],
+  },
+  fisher: {
+    erklaerung: { fa: 'مقیاس فیشر مقدار و توزیع خون در خونریزی ساب‌آراکنوئید آنوریسمال را در CT توصیف می‌کند و برای بیان تقریبی خطر وازواسپاسم به کار می‌رود.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'ضخامت خون ساب‌آراکنوئید، خون داخل بطنی و هماتوم داخل مغزی را در CT اولیه ارزیابی کنید.' } },
+      { stage: { fa: 'نکته گزارش' }, text: { fa: 'هیدروسفالی، شک به آنوریسم و توزیع خون برای حدس محل منبع خونریزی را جداگانه ذکر کنید.' } },
+    ],
+  },
+  'mta-score': {
+    erklaerung: { fa: 'MTA آتروفی لوب تمپورال داخلی، به‌خصوص هیپوکامپ، را به‌صورت بصری امتیازدهی می‌کند. در بررسی دمانس کمک‌کننده است اما جایگزین تشخیص بالینی نمی‌شود.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'در برش کرونال T1/T2، شیار کورویید، عرض شاخ تمپورال و ارتفاع هیپوکامپ را در دو طرف ارزیابی کنید.' } },
+      { stage: { fa: 'نکته گزارش' }, text: { fa: 'اختلاف دو طرف، سن بیمار و الگوهای دیگر آتروفی مثل فرونتوتمپورال یا پس‌سری-کورتیکال را هم بنویسید.' } },
+    ],
+  },
+  'lung-rads': {
+    erklaerung: { fa: 'Lung-RADS یافته‌های CT در غربالگری سرطان ریه را استاندارد می‌کند. این سیستم برای برنامه‌های غربالگری است و با مدیریت ندول‌های اتفاقی بر اساس Fleischner یکی نیست.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'نوع ندول، اندازه میانگین، رشد، ندول جدید و جزء جامد در ندول‌های ساب‌سالید را ثبت کنید.' } },
+      { stage: { fa: 'روش گزارش' }, text: { fa: 'دسته و توصیه مدیریتی را ذکر کنید؛ modifierهایی مثل S یا C فقط در صورت وجود یافته مناسب استفاده شوند.' } },
+    ],
+  },
+  'co-rads': {
+    erklaerung: { fa: 'CO-RADS احتمال پنومونی COVID-19 را در CT بیان می‌کند. این یک سیستم احتمال تشخیصی است، نه درجه‌بندی شدت بالینی بیماری.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'کدورت‌های ground-glass محیطی دوطرفه، crazy paving، consolidation، توزیع ضایعات و تشخیص‌های جایگزین را بررسی کنید.' } },
+      { stage: { fa: 'نکته گزارش' }, text: { fa: 'دسته CO-RADS باید با زمینه بالینی و PCR/آزمایش‌ها تفسیر شود؛ الگوهای عفونی دیگر یا ادم را هم ذکر کنید.' } },
+    ],
+  },
+  fleischner: {
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'نوع ندول، اندازه میانگین، منفرد/متعدد بودن، رشد، جزء جامد و مورفولوژی مشکوک مثل spiculation را ارزیابی کنید.' } },
+      { stage: { fa: 'کاربرد را چک کنید' }, text: { fa: 'فقط برای ندول‌های اتفاقی در بزرگسالان بدون بدخیمی فعال شناخته‌شده یا سرکوب ایمنی؛ غربالگری بیشتر با Lung-RADS گزارش می‌شود.' } },
+    ],
+  },
+  'stanford-debakey': {
+    erklaerung: { fa: 'Stanford و DeBakey دیسکسیون آئورت را بر اساس آناتومی طبقه‌بندی می‌کنند. برای تصمیم حاد، مهم‌ترین نکته درگیری یا عدم درگیری آئورت صعودی است.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'intimal flap، محل entry، وسعت، آئورت صعودی، شاخه‌های سوپرا آئورتیک، عروق احشایی/کلیوی و malperfusion را سیستماتیک بررسی کنید.' } },
+      { stage: { fa: 'نکته گزارش' }, text: { fa: 'نوع Stanford را همیشه ذکر کنید؛ عوارضی مثل افیوژن پریکارد، علائم پارگی یا ایسکمی ارگان را جداگانه بنویسید.' } },
+    ],
+  },
+  'ti-rads': {
+    erklaerung: { fa: 'ACR TI-RADS یک سیستم امتیازدهی سونوگرافی برای ندول تیروئید است. از امتیازهای مورفولوژی، دسته TR، آستانه FNA و توصیه پیگیری به دست می‌آید.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'ترکیب، اکوژنیسیته، شکل، حاشیه و کانون‌های اکوژن را جداگانه ارزیابی و امتیازها را جمع کنید.' } },
+      { stage: { fa: 'روش گزارش' }, text: { fa: 'اندازه ندول را با دسته TR ترکیب کنید؛ آستانه FNA و پیگیری وابسته به اندازه است.' } },
+    ],
+  },
+  'li-rads': {
+    erklaerung: { fa: 'LI-RADS تشخیص ضایعات کبدی در CT/MRI بیماران پرخطر برای HCC را استاندارد می‌کند و معیارهای اصلی، فرعی و زبان مدیریتی را یکپارچه می‌کند.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'enhancement شریانی غیرحاشیه‌ای، washout، کپسول، رشد آستانه‌ای و اندازه ضایعه را بررسی کنید.' } },
+      { stage: { fa: 'روش گزارش' }, text: { fa: 'فقط در جمعیت پرخطر مناسب استفاده شود؛ tumor-in-vein و نشانه‌های بدخیمی غیر HCC جداگانه مشخص شوند.' } },
+    ],
+  },
+  bosniak: {
+    erklaerung: { fa: 'Bosniak ضایعات کیستیک کلیه را بر اساس خطر بدخیمی طبقه‌بندی می‌کند. سپتا، ضخامت دیواره، کلسیفیکاسیون، enhancement و جزء جامد تعیین‌کننده‌اند.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'enhancement واقعی را از محتوای خون/پروتئین هایپردنس جدا کنید؛ در موارد مبهم MRI یا subtraction کمک‌کننده است.' } },
+      { stage: { fa: 'نکته گزارش' }, text: { fa: 'دسته، اندازه بیشینه و علت دسته‌بندی را ذکر کنید؛ مثال: «Bosniak IIF به علت چند سپتای نازک با enhancement».' } },
+    ],
+  },
+  balthazar: {
+    erklaerung: { fa: 'Balthazar/CTSI شدت CT پانکراتیت حاد را بر اساس مورفولوژی التهاب و میزان نکروز ارزیابی می‌کند و برای گزارش ساختارمند خطر مفید است.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'بزرگی پانکراس، التهاب پری‌پانکراتیک، کالکشن‌های مایع و درصد نکروز پس از کنتراست را ارزیابی کنید.' } },
+      { stage: { fa: 'روش گزارش' }, text: { fa: 'زمان CT مهم است؛ نکروز در مراحل خیلی زود ممکن است کمتر برآورد شود. ترومبوز یا نکروز عفونی را جداگانه ذکر کنید.' } },
+    ],
+  },
+  couinaud: {
+    erklaerung: { fa: 'Couinaud کبد را بر اساس خون‌رسانی پورتال و درناژ وریدی به سگمان‌های عملکردی تقسیم می‌کند. برای محل‌یابی ضایعه و برنامه‌ریزی جراحی/مداخله‌ای مهم است.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'شاخه‌های پورتال تقسیم کرانیوکودال را نشان می‌دهند؛ وریدهای کبدی مرزهای راست/چپ و قدامی/خلفی را جدا می‌کنند؛ سگمان I جداگانه است.' } },
+      { stage: { fa: 'نکته گزارش' }, text: { fa: 'ضایعه را با سگمان، اندازه، ارتباط با عروق/مجاری صفراوی و نکات مربوط به رزکتابیلیتی توصیف کنید.' } },
+    ],
+  },
+  cdd: {
+    erklaerung: { fa: 'CDD بیماری دیورتیکولی و دیورتیکولیت بدون عارضه یا عارضه‌دار را ساختارمند می‌کند. در CT برای طبقه‌بندی آبسه، پرفوراسیون و هوای آزاد مفید است.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'ضخیم‌شدن دیواره، التهاب چربی اطراف، پرفوراسیون محدود یا آزاد، اندازه آبسه، فیستول و تنگی را ارزیابی کنید.' } },
+      { stage: { fa: 'نکته گزارش' }, text: { fa: 'آبسه‌ها را با اندازه و مسیر احتمالی درناژ توصیف کنید؛ هوای آزاد/پریتونیت را از میکروپرفوراسیون جدا کنید.' } },
+    ],
+  },
+  'aast-ois': {
+    erklaerung: { fa: 'AAST-OIS آسیب‌های تروماتیک ارگان را بر اساس مورفولوژی CT و درگیری عروقی/ناف ارگان درجه‌بندی می‌کند و زبان مشترک بین رادیولوژی، جراحی و مداخله می‌سازد.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'عمق پارگی، هماتوم، devascularization، خونریزی فعال، pseudoaneurysm، AV fistula و آسیب ناف ارگان را بررسی کنید.' } },
+      { stage: { fa: 'نکته گزارش' }, text: { fa: 'ارگان، درجه، extravasation فعال کنتراست و آسیب‌های همراه مهم را جداگانه ذکر کنید.' } },
+    ],
+  },
+  'bi-rads': {
+    erklaerung: { fa: 'BI-RADS گزارش تصویربرداری پستان و توصیه مدیریتی را استاندارد می‌کند. برای ماموگرافی، سونوگرافی و MRI کاربرد دارد، ولی descriptorها در هر روش متفاوت‌اند.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'نوع یافته، شکل، حاشیه، دانسیته/اکوژنیسیته، الگوی کلسیفیکاسیون، توزیع، دینامیک کنتراست و مقایسه با تصاویر قبلی را بررسی کنید.' } },
+      { stage: { fa: 'روش گزارش' }, text: { fa: 'ابتدا descriptorها را دقیق بنویسید، سپس دسته BI-RADS و توصیه مشخص را ذکر کنید.' } },
+    ],
+  },
+  'mamma-mrt-dichte': {
+    erklaerung: { fa: 'دانسیته بافت غده‌ای و Background Parenchymal Enhancement میزان قابلیت ارزیابی و enhancement هورمونی در MRI پستان را توصیف می‌کنند؛ این‌ها دسته ضایعه نیستند.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'مقدار fibroglandular tissue و BPE را جداگانه ارزیابی کنید؛ BPE را از نظر تقارن و الگوی focal/diffuse توصیف کنید.' } },
+      { stage: { fa: 'نکته گزارش' }, text: { fa: 'BPE شدید می‌تواند ضایعات کوچک را پنهان کند؛ سیکل قاعدگی، هورمون‌درمانی و تصاویر قبلی را در نظر بگیرید.' } },
+    ],
+  },
+  'pi-rads': {
+    erklaerung: { fa: 'PI-RADS mpMRI پروستات را برای احتمال سرطان clinically significant استاندارد می‌کند. توالی غالب بسته به زون محیطی یا transition zone متفاوت است.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'در زون محیطی DWI/ADC غالب است؛ در transition zone مورفولوژی T2 غالب است؛ DCE می‌تواند PI-RADS 3 در PZ را ارتقا دهد.' } },
+      { stage: { fa: 'نکته گزارش' }, text: { fa: 'ضایعه را با زون، سکتور، اندازه، PI-RADS، تماس با کپسول/نشانه‌های EPE و اهمیت برای بیوپسی گزارش کنید.' } },
+    ],
+  },
+  pfirrmann: {
+    erklaerung: { fa: 'Pfirrmann دژنراسیون دیسک را در MRI T2 بر اساس سیگنال، ساختار و کاهش ارتفاع درجه‌بندی می‌کند و برای توصیف یکنواخت تغییرات دژنراتیو مفید است.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'سیگنال T2 نوکلئوس، همگنی، تفکیک آنولوس/نوکلئوس و ارتفاع دیسک را بررسی کنید.' } },
+      { stage: { fa: 'نکته گزارش' }, text: { fa: 'درجه را تنها تفسیر نکنید؛ protrusion/extrusion، تغییرات Modic، تنگی کانال و سمت علائم را اضافه کنید.' } },
+    ],
+  },
+  modic: {
+    erklaerung: { fa: 'Modic تغییرات واکنشی مغز استخوان در مجاورت endplateهای دژنراتیو را توصیف می‌کند. انواع آن بازتاب ادم، تبدیل چربی یا اسکلروز هستند.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'سیگنال T1/T2/STIR در endplateها را بررسی کنید؛ Modic 1 دژنراتیو را از عفونت erosive جدا کنید.' } },
+      { stage: { fa: 'نکته گزارش' }, text: { fa: 'سطح، نوع، نشانه‌های فعالیت و تغییرات همراه دیسک/endplate را ذکر کنید.' } },
+    ],
+  },
+  genant: {
+    erklaerung: { fa: 'Genant یک روش نیمه‌کمی برای درجه‌بندی شکستگی‌های استئوپروتیک مهره بر اساس کاهش ارتفاع است و برای استانداردسازی بار شکستگی و پیگیری کمک می‌کند.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'ارتفاع قدامی، میانی و خلفی جسم مهره را مقایسه کنید و شکل wedge، biconcave یا compression را بنویسید.' } },
+      { stage: { fa: 'نکته گزارش' }, text: { fa: 'حاد بودن را فقط از Genant نتیجه نگیرید؛ ادم مغز استخوان/STIR، خط شکستگی و درگیری دیواره خلفی را جداگانه ارزیابی کنید.' } },
+    ],
+  },
+  'salter-harris': {
+    erklaerung: { fa: 'Salter-Harris شکستگی‌های درگیرکننده صفحه رشد را طبقه‌بندی می‌کند. در گزارش باید مشخص شود فقط فیز درگیر است یا متافیز، اپی‌فیز و سطح مفصلی هم درگیرند.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'گشادشدن فیز، قطعه متافیزی Thurston-Holland، درگیری سطح مفصلی اپی‌فیز، جابه‌جایی و خطای محور را بررسی کنید.' } },
+      { stage: { fa: 'نکته گزارش' }, text: { fa: 'در کودکان با درد موضعی، نوع I ممکن است در رادیوگرافی دیده نشود؛ بسته به شرایط مقایسه دو طرف، پیگیری یا MRI را در نظر بگیرید.' } },
+    ],
+  },
+  'kellgren-lawrence': {
+    erklaerung: { fa: 'Kellgren-Lawrence علائم رادیوگرافیک آرتروز را درجه‌بندی می‌کند و استئوفیت، کاهش فضای مفصلی، اسکلروز و تغییر شکل را با هم در نظر می‌گیرد.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'تصویر weight-bearing ترجیح دارد؛ استئوفیت، فضای مفصلی، اسکلروز ساب‌کندرال و تغییر محور/شکل را ارزیابی کنید.' } },
+      { stage: { fa: 'نکته گزارش' }, text: { fa: 'درجه را همراه compartment/محل ذکر کنید؛ مثال: گونارتروز غالب مدیال KL 3.' } },
+    ],
+  },
+  garden: {
+    erklaerung: { fa: 'Garden شکستگی‌های گردن فمور داخل‌کپسولی را بر اساس میزان جابه‌جایی طبقه‌بندی می‌کند و از نظر درمانی مهم است، چون جابه‌جایی با خطر اختلال خون‌رسانی سر فمور مرتبط است.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'در AP لگن و نمای axial، کامل بودن شکستگی، valgus impaction، پیوستگی ترابکول‌ها و جابه‌جایی را بررسی کنید.' } },
+      { stage: { fa: 'نکته گزارش' }, text: { fa: 'زاویه Pauwels، درگیری دیواره خلفی/تروکانتر و نیاز به CT در شکستگی مخفی را هم ذکر کنید.' } },
+    ],
+  },
+  recist: {
+    erklaerung: { fa: 'RECIST 1.1 پاسخ درمانی تومورهای جامد را بر اساس مجموع قطرهای بلند ضایعات هدف استاندارد می‌کند. برای مطالعات و پیگیری طراحی شده و همیشه برای همه تصمیم‌های بالینی کافی نیست.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'ضایعات هدف قابل اندازه‌گیری را انتخاب کنید، محور کوتاه غدد لنفاوی غیرطبیعی را در نظر بگیرید و ضایعات غیرهدف را جداگانه دنبال کنید.' } },
+      { stage: { fa: 'روش گزارش' }, text: { fa: 'مجموع baseline، nadir، درصد تغییر، ضایعات جدید و progression واضح را جداگانه ثبت کنید.' } },
+    ],
+  },
+  tnm: {
+    erklaerung: { fa: 'TNM گسترش آناتومیک تومور را با T برای تومور اولیه، N برای غدد لنفاوی ناحیه‌ای و M برای متاستاز دور توصیف می‌کند و پایه staging، برنامه درمان و tumor board است.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'اندازه تومور/عبور از ارگان، تهاجم به عروق یا ارگان‌های مجاور، ایستگاه‌های لنفاوی ناحیه‌ای و متاستاز دور را سیستماتیک بررسی کنید.' } },
+      { stage: { fa: 'نکته گزارش' }, text: { fa: 'TNM وابسته به نوع تومور است؛ همیشه نسخه و entity مناسب را به کار ببرید و یافته‌های نامطمئن را به‌صورت cT/cN/cM در زمینه بالینی بنویسید.' } },
+    ],
+  },
+  deauville: {
+    erklaerung: { fa: 'Deauville یک مقیاس ۵ امتیازی PET برای لنفوم‌های FDG-avid است. uptake ضایعه را با مدیاستن و کبد مقایسه می‌کند و ارزیابی پاسخ متابولیک را هدایت می‌کند.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'uptake ضایعه را نسبت به مدیاستن و کبد ارزیابی کنید و کانون‌های جدید FDG-avid را جداگانه بسنجید.' } },
+      { stage: { fa: 'نکته گزارش' }, text: { fa: 'PET میانی درمان و پایان درمان را جدا کنید؛ التهاب، اثرات درمان و uptake فیزیولوژیک را اشتباهاً progression گزارش نکنید.' } },
+    ],
+  },
+  lugano: {
+    erklaerung: { fa: 'Lugano مرحله‌بندی و ارزیابی پاسخ درمانی لنفوم را استاندارد می‌کند. برای لنفوم‌های FDG-avid، PET/CT مرکزی است؛ در سایر زیرگروه‌ها مورفولوژی CT همچنان مهم می‌ماند.' },
+    radiologie: [
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'ایستگاه‌های لنفاوی در دو سوی دیافراگم، طحال، ارگان‌های خارج‌گرهی، bulky disease و درگیری مغز استخوان را بررسی کنید.' } },
+      { stage: { fa: 'روش گزارش' }, text: { fa: 'در ارزیابی پاسخ، FDG-avidity و Deauville score را با توده باقیمانده مورفولوژیک و ضایعات جدید ترکیب کنید.' } },
+    ],
+  },
+}
+
+function mergeClassificationEnhancement(base = {}, localized = {}) {
+  return {
+    ...base,
+    ...localized,
+    erklaerung: { ...(base.erklaerung || {}), ...(localized.erklaerung || {}) },
+    radiologie: (base.radiologie || localized.radiologie)
+      ? (base.radiologie || []).map((entry, index) => {
+          const localEntry = localized.radiologie?.[index] || {}
+          return {
+            ...entry,
+            ...localEntry,
+            stage: { ...(entry.stage || {}), ...(localEntry.stage || {}) },
+            text: { ...(entry.text || {}), ...(localEntry.text || {}) },
+          }
+        })
+      : undefined,
+    sources: base.sources,
+  }
+}
+
 const KLASSIFIKATIONEN_ERWEITERT = KLASSIFIKATIONEN.map(topic => ({
   ...topic,
   items: topic.items.map(item => ({
     ...item,
-    ...(CLASSIFICATION_ENHANCEMENTS[item.id] || {}),
+    ...mergeClassificationEnhancement(
+      CLASSIFICATION_ENHANCEMENTS[item.id] || {},
+      CLASSIFICATION_FA_ENHANCEMENTS[item.id] || {},
+    ),
   })),
 }))
 
