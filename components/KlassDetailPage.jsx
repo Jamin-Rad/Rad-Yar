@@ -93,16 +93,6 @@ function SourceLinks({ item, lang, copy }) {
   )
 }
 
-function SectionDirectory({ sections, color }) {
-  return (
-    <nav className={styles.sectionDirectory} style={{ '--ref-color': color }} aria-label="Inhaltsverzeichnis">
-      {sections.map(section => (
-        <a key={section.id} href={`#${section.id}`}>{section.label}</a>
-      ))}
-    </nav>
-  )
-}
-
 export default function KlassDetailPage({ topic, item }) {
   const { lang } = useLanguage()
   const copy = REF_COPY[lang] || REF_COPY.de
@@ -111,22 +101,10 @@ export default function KlassDetailPage({ topic, item }) {
   const otherTopics = REF_DATA.klassifikationen.filter(t => t.id !== topic.id)
   const backHref = lang !== 'de' ? `/?lang=${lang}#referenzen` : '/#referenzen'
   const [zoomSrc, setZoomSrc] = useState(null)
-  const directoryLabels = {
-    kurz: lang === 'de' ? 'Kurz' : lang === 'fa' ? 'خلاصه' : 'Short',
+  const sectionLabels = {
     erklaerung: lang === 'de' ? 'Einordnung' : lang === 'fa' ? 'توضیح' : 'Context',
     radiologie: lang === 'de' ? 'Radiologie-Check' : lang === 'fa' ? 'چک رادیولوژی' : 'Radiology check',
-    einfach: copy.einfachUebersicht,
-    voll: copy.vollstaendig,
-    quelle: copy.reference,
   }
-  const sections = [
-    { id: 'kurz', label: directoryLabels.kurz },
-    item.erklaerung && { id: 'erklaerung', label: directoryLabels.erklaerung },
-    item.radiologie && { id: 'radiologie', label: directoryLabels.radiologie },
-    item.einfach && { id: 'einfach', label: directoryLabels.einfach },
-    { id: 'vollstaendig', label: directoryLabels.voll },
-    { id: 'quelle', label: directoryLabels.quelle },
-  ].filter(Boolean)
 
   return (
     <main className={styles.page}>
@@ -195,23 +173,17 @@ export default function KlassDetailPage({ topic, item }) {
         {/* Hauptinhalt */}
         <article className={styles.content} style={{ '--ref-color': color }}>
           <h1 className={styles.heading}>{tx(item.name, lang)}</h1>
-          <SectionDirectory sections={sections} color={color} />
-
-          {/* Beschreibung */}
-          <div id="kurz" className={styles.beschreibungBox} style={{ borderColor: color + '44', background: color + '0d' }}>
-            <p className={styles.beschreibungText}>{tx(item.kompakt, lang)}</p>
-          </div>
 
           {item.erklaerung && (
             <section id="erklaerung" className={styles.infoPanel}>
-              <span className={styles.infoPanelLabel}>{directoryLabels.erklaerung}</span>
+              <span className={styles.infoPanelLabel}>{sectionLabels.erklaerung}</span>
               <p>{tx(item.erklaerung, lang)}</p>
             </section>
           )}
 
           {item.radiologie && (
             <section id="radiologie" className={styles.infoPanel}>
-              <span className={styles.infoPanelLabel}>{directoryLabels.radiologie}</span>
+              <span className={styles.infoPanelLabel}>{sectionLabels.radiologie}</span>
               <DetailList detail={item.radiologie} lang={lang} color={color} />
             </section>
           )}

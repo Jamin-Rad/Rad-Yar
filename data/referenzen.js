@@ -664,7 +664,7 @@ export const KLASSIFIKATIONEN = [
         id: 'fazekas',
         name: { de: 'Fazekas', en: 'Fazekas', fa: 'فازکاس' },
         kompakt: {
-          de: 'MRT-Skala (Grad 0–3) zur Beurteilung zerebraler Kleingefäß-Marklagerläsionen im FLAIR/T2.',
+          de: 'MRT-Skala (Grad 0–3) für Marklagerläsionen bei zerebraler Mikroangiopathie.',
           en: 'MRI scale (grade 0–3) for grading cerebral small-vessel white-matter lesions on FLAIR/T2.',
           fa: 'مقیاس MRI (درجه ۰–۳) برای ارزیابی ضایعات ماده سفید عروق کوچک مغزی در FLAIR/T2.',
         },
@@ -720,7 +720,7 @@ export const KLASSIFIKATIONEN = [
         id: 'aspects',
         name: { de: 'ASPECTS', en: 'ASPECTS', fa: 'ASPECTS' },
         kompakt: {
-          de: 'CT-Score (0–10) zur Quantifizierung früher Ischämiezeichen im MCA-Versorgungsgebiet.',
+          de: 'CT/DWI-Score (0–10) für frühe Ischämiezeichen im MCA-Territorium.',
           en: 'CT score (0–10) quantifying early ischaemic changes in the MCA territory.',
           fa: 'نمره CT (۰–۱۰) برای کمّی‌سازی تغییرات ایسکمیک زودرس در قلمرو MCA.',
         },
@@ -746,7 +746,7 @@ export const KLASSIFIKATIONEN = [
         id: 'pc-aspects',
         name: { de: 'pc-ASPECTS', en: 'pc-ASPECTS', fa: 'pc-ASPECTS' },
         kompakt: {
-          de: 'CT/MRT-Score (0–10) für frühe Ischämiezeichen im Posteriorkreislauf (vertebrobasiläres Territorium) – je befallene Region −1 Punkt; ≤ 6 Punkte gelten als ausgedehnter Infarkt mit ungünstigem Outcome.',
+          de: 'CT/MRT-Score (0–10) für frühe Ischämiezeichen im vertebrobasilären Territorium.',
           en: 'CT/MRI score (0–10) for early ischaemic changes in the posterior circulation (vertebrobasilar territory) – 1 point deducted per affected region; ≤ 6 points indicates large infarct with unfavourable outcome.',
           fa: 'نمره CT/MRI (۰–۱۰) برای تغییرات ایسکمیک زودرس در گردش پسین (قلمرو مهره‌ای-بازیلار) – به ازای هر ناحیه درگیر ۱ امتیاز کم می‌شود؛ ≤ ۶ امتیاز نشانه انفارکت وسیع با نتیجه نامطلوب.',
         },
@@ -773,7 +773,7 @@ export const KLASSIFIKATIONEN = [
         id: 'mcdonald',
         name: { de: 'McDonald-Kriterien', en: 'McDonald Criteria', fa: 'معیارهای مک‌دونالد' },
         kompakt: {
-          de: 'Diagnosekriterien der Multiplen Sklerose (Revision 2017): Nachweis von Dissemination in Raum (DIS – ≥2 MS-typische Regionen) und Zeit (DIT – verschiedene Zeitpunkte oder Liquor-OCBs). Erlauben die MS-Diagnose bereits nach dem ersten klinischen Schub (CIS).',
+          de: 'MS-Diagnosekriterien über räumliche und zeitliche Dissemination typischer ZNS-Läsionen.',
           en: 'Diagnostic criteria for multiple sclerosis (2017 revision): demonstration of dissemination in space (DIS – ≥2 MS-typical regions) and time (DIT – different time points or CSF OCBs). Allow MS diagnosis after the very first clinical attack (CIS).',
           fa: 'معیارهای تشخیصی مالتیپل اسکلروز (بازنگری ۲۰۱۷): اثبات انتشار در فضا (DIS – ≥۲ ناحیه معمول MS) و زمان (DIT – نقاط زمانی مختلف یا OCB مایع نخاعی). امکان تشخیص MS پس از اولین حمله بالینی (CIS) را می‌دهند.',
         },
@@ -849,7 +849,7 @@ export const KLASSIFIKATIONEN = [
         id: 'fisher',
         name: { de: 'Fisher-Skala', en: 'Fisher scale', fa: 'مقیاس فیشر' },
         kompakt: {
-          de: 'CT-Score zur Quantifizierung der SAB-Blutmenge als Vasospasmus-Prädiktor (Original Grad 1–4 / Modifiziert Grad 0–4).',
+          de: 'CT-Skala der SAB-Blutmenge zur groben Vasospasmus-Risikoeinschätzung.',
           en: 'CT score quantifying SAH blood volume as a vasospasm predictor (original grade 1–4 / modified grade 0–4).',
           fa: 'نمره CT برای کمّی‌سازی حجم خون SAB به‌عنوان پیش‌بینی‌کننده وازواسپاسم (اصلی درجه ۱–۴ / اصلاح‌شده درجه ۰–۴).',
         },
@@ -890,7 +890,7 @@ export const KLASSIFIKATIONEN = [
         id: 'mta-score',
         name: { de: 'MTA-Score', en: 'MTA Score', fa: 'امتیاز MTA' },
         kompakt: {
-          de: 'Visuelles MRT-Rating (0–4) der medialen Temporalatrophie (Hippocampus) als Alzheimer-Bildgebungsmarker – Sequenz: T1 koronar auf Höhe des Mammillarkörpers, jede Hemisphäre separat.',
+          de: 'Visueller MRT-Score (0–4) der medialen Temporalatrophie/Hippokampusatrophie.',
           en: 'Visual MRI rating (0–4) of medial temporal atrophy (hippocampus) as an Alzheimer imaging marker — T1 coronal at mamillary body level, each hemisphere rated separately.',
           fa: 'امتیازدهی بصری MRI (۰–۴) آتروفی گیجگاهی مدیال (هیپوکامپ) به عنوان نشانگر تصویربرداری آلزهایمر — T1 کرونال در سطح جسم ماميلار، هر نیمکره جداگانه.',
         },
@@ -950,7 +950,7 @@ export const KLASSIFIKATIONEN = [
         id: 'lung-rads',
         name: { de: 'Lung-RADS', en: 'Lung-RADS', fa: 'Lung-RADS' },
         kompakt: {
-          de: 'ACR-Scoring (Kat. 0–4X) für das LDCT-Lungenkrebsscreening – jede Kategorie legt direkt das empfohlene Management fest.',
+          de: 'ACR-Kategorien (0–4X) für Befunde im LDCT-Lungenkrebsscreening.',
           en: 'ACR scoring (cat. 0–4X) for low-dose CT lung cancer screening – each category directly specifies the recommended management.',
           fa: 'امتیازبندی ACR (دسته ۰–4X) برای غربالگری سرطان ریه با CT دز پایین – هر دسته مستقیماً مدیریت توصیه‌شده را تعیین می‌کند.',
         },
@@ -980,7 +980,7 @@ export const KLASSIFIKATIONEN = [
         id: 'co-rads',
         name: { de: 'CO-RADS', en: 'CO-RADS', fa: 'CO-RADS' },
         kompakt: {
-          de: 'Standardisiert die CT-Befundung bei V.a. COVID-19-Pneumonie in 6 Kategorien von „normal/nicht-infektiös" (1) bis „PCR-bestätigt" (6).',
+          de: 'CT-Kategorien (1–6) für die Wahrscheinlichkeit einer COVID-19-Pneumonie.',
           en: 'Standardises CT reporting in suspected COVID-19 pneumonia across 6 categories from "normal/non-infectious" (1) to "PCR-confirmed" (6).',
           fa: 'گزارش‌دهی CT در مشکوک به پنومونی COVID-19 را در ۶ دسته از «طبیعی/غیرعفونی» (۱) تا «تأییدشده با PCR» (۶) استانداردسازی می‌کند.',
         },
@@ -1063,7 +1063,7 @@ export const KLASSIFIKATIONEN = [
         id: 'stanford-debakey',
         name: { de: 'Stanford / DeBakey', en: 'Stanford / DeBakey', fa: 'استنفورد / دبیکی' },
         kompakt: {
-          de: 'Zwei gebräuchliche anatomische Klassifikationen der Aortendissektion: Stanford richtet sich nach der Beteiligung der Aorta ascendens, DeBakey nach Ursprung und Ausdehnung.',
+          de: 'Anatomische Einteilung der Aortendissektion nach Ascendens-Beteiligung und Ausdehnung.',
           en: 'Two commonly used anatomical classifications of aortic dissection: Stanford is based on ascending aortic involvement, while DeBakey describes origin and extent.',
           fa: 'دو طبقه‌بندی آناتومیک رایج دیسکسیون آئورت: استنفورد بر درگیری آئورت صعودی و دبیکی بر محل شروع و وسعت تکیه دارد.',
         },
@@ -1093,7 +1093,7 @@ export const KLASSIFIKATIONEN = [
         id: 'ti-rads',
         name: { de: 'TI-RADS (ACR)', en: 'TI-RADS (ACR)', fa: 'TI-RADS' },
         kompakt: {
-          de: 'Punktbasiertes ACR-Ultraschallsystem für Schilddrüsenknoten (TR1–TR5) mit direkter FNA-Empfehlung nach Kategorie und Knotengröße.',
+          de: 'ACR-Ultraschallscore (TR1–TR5) für Schilddrüsenknoten und FNA-Schwellen.',
           en: 'Point-based ACR ultrasound system for thyroid nodules (TR1–TR5) with direct FNA recommendation by category and nodule size.',
           fa: 'سیستم امتیازی ACR سونوگرافی برای ندول‌های تیروئید (TR1–TR5) با توصیه مستقیم FNA بر اساس دسته و اندازه ندول.',
         },
@@ -1167,7 +1167,7 @@ export const KLASSIFIKATIONEN = [
         id: 'li-rads',
         name: { de: 'LI-RADS', en: 'LI-RADS', fa: 'LI-RADS' },
         kompakt: {
-          de: 'ACR-Kategorisierung hepatischer Läsionen bei HCC-Risikopatienten (LR-1 bis LR-5, plus LR-M und LR-TIV) in CT und MRT.',
+          de: 'ACR-Kategorien für Leberläsionen bei HCC-Risikopatient:innen in CT/MRT.',
           en: 'ACR categorisation of hepatic lesions in HCC-risk patients (LR-1 to LR-5, plus LR-M and LR-TIV) on CT and MRI.',
           fa: 'دسته‌بندی ACR ضایعات کبدی در بیماران پرخطر HCC (LR-1 تا LR-5، به‌اضافه LR-M و LR-TIV) در CT و MRI.',
         },
@@ -1197,7 +1197,7 @@ export const KLASSIFIKATIONEN = [
         id: 'bosniak',
         name: { de: 'Bosniak', en: 'Bosniak', fa: 'بوسنیاک' },
         kompakt: {
-          de: 'Klassifikation zystischer Nierenläsionen (Kat. I–IV) nach Malignitätsrisiko mit direkten Management-Empfehlungen.',
+          de: 'Kategorien zystischer Nierenläsionen nach Malignitätsrisiko und Management.',
           en: 'Classification of cystic renal lesions (cat. I–IV) by malignancy risk with direct management recommendations.',
           fa: 'طبقه‌بندی ضایعات کیستیک کلیه (دسته I–IV) بر اساس خطر بدخیمی با توصیه‌های مدیریتی مستقیم.',
         },
@@ -1225,7 +1225,7 @@ export const KLASSIFIKATIONEN = [
         id: 'balthazar',
         name: { de: 'Balthazar / CTSI', en: 'Balthazar / CTSI', fa: 'بالتازار / CTSI' },
         kompakt: {
-          de: 'Kombiniert Balthazar-Grad (A–E, 0–4 Pkt.) und Nekroseausmaß (0–6 Pkt.) zum CT-Severity-Index (0–10) für den Schweregrad der akuten Pankreatitis.',
+          de: 'CT-Severity-Index (0–10) für den Schweregrad der akuten Pankreatitis.',
           en: 'Combines the Balthazar grade (A–E, 0–4 pts) and degree of necrosis (0–6 pts) into the CT Severity Index (0–10) for grading acute pancreatitis.',
           fa: 'درجه بالتازار (A–E، ۰–۴ امتیاز) را با میزان نکروز (۰–۶ امتیاز) در شاخص شدت CT (۰–۱۰) برای درجه‌بندی پانکراتیت حاد ترکیب می‌کند.',
         },
@@ -1254,7 +1254,7 @@ export const KLASSIFIKATIONEN = [
         id: 'couinaud',
         name: { de: 'Couinaud-Segmente', en: 'Couinaud segments', fa: 'سگمان‌های کوینو' },
         kompakt: {
-          de: 'Teilt die Leber in 8 funktionell unabhängige Segmente (I–VIII) mit eigener Gefäß- und Galleversorgung – Grundlage jeder hepatischen Operationsplanung.',
+          de: 'Funktionelle Lebersegment-Anatomie (I–VIII) für Läsionslokalisation und OP-Planung.',
           en: 'Divides the liver into 8 functionally independent segments (I–VIII) with individual vascular and biliary supply – the basis for all hepatic surgical planning.',
           fa: 'کبد را به ۸ سگمان مستقل عملکردی (I–VIII) با تأمین عروقی و صفراوی مجزا تقسیم می‌کند – پایه هر برنامه‌ریزی جراحی کبدی.',
         },
@@ -1275,7 +1275,7 @@ export const KLASSIFIKATIONEN = [
         id: 'cdd',
         name: { de: 'CDD-Klassifikation', en: 'CDD Classification', fa: 'طبقه‌بندی CDD' },
         kompakt: {
-          de: 'DGAV/DGVS-Klassifikation der Divertikelkrankheit (Typ 0–4 mit CT-basierten Subtypen), bestimmt direkt das therapeutische Vorgehen.',
+          de: 'CT-orientierte Einteilung der Divertikelkrankheit und Divertikulitis.',
           en: 'DGAV/DGVS classification of diverticular disease (type 0–4 with CT-based subtypes), directly determining the therapeutic approach.',
           fa: 'طبقه‌بندی DGAV/DGVS بیماری دیورتیکولی (نوع ۰–۴ با زیرگروه‌های مبتنی بر CT)، که مستقیماً رویکرد درمانی را تعیین می‌کند.',
         },
@@ -1308,7 +1308,7 @@ export const KLASSIFIKATIONEN = [
         id: 'aast-ois',
         name: { de: 'AAST Organ Injury Scale', en: 'AAST Organ Injury Scale', fa: 'مقیاس آسیب اندام AAST' },
         kompakt: {
-          de: 'CT-basierte Schweregrade traumatischer Leber-, Milz- und Nierenverletzungen nach der gemeinsamen AAST-OIS-Revision 2018.',
+          de: 'CT-Schweregrade traumatischer Leber-, Milz- und Nierenverletzungen.',
           en: 'CT-based grading of traumatic liver, spleen and kidney injuries according to the joint 2018 AAST OIS revision.',
           fa: 'درجه‌بندی مبتنی بر CT آسیب‌های تروماتیک کبد، طحال و کلیه بر اساس بازنگری مشترک AAST OIS سال ۲۰۱۸.',
         },
@@ -1371,7 +1371,7 @@ export const KLASSIFIKATIONEN = [
         id: 'bi-rads',
         name: { de: 'BI-RADS', en: 'BI-RADS', fa: 'BI-RADS' },
         kompakt: {
-          de: 'ACR-Standardisierung von Mammografie, Brust-US und Mamma-MRT in Kategorien 0–6, mit direkt zugeordnetem Management von Routine bis Biopsie.',
+          de: 'ACR-Kategorien 0–6 für Brustbildgebung und Managementempfehlung.',
           en: 'ACR standardisation of mammography, breast US and breast MRI into categories 0–6, with directly assigned management from routine to biopsy.',
           fa: 'استانداردسازی ACR ماموگرافی، سونوگرافی و MRI پستان در دسته‌های ۰–۶، با اقدام مستقیم از روتین تا بیوپسی.',
         },
@@ -1449,7 +1449,7 @@ export const KLASSIFIKATIONEN = [
         id: 'mamma-mrt-dichte',
         name: { de: 'Mamma-MRT: Drüsendichte & BPE', en: 'Breast MRI: Fibroglandular Tissue & BPE', fa: 'MRI پستان: بافت غده‌ای و BPE' },
         kompakt: {
-          de: 'ACR BI-RADS MRT beschreibt das Fibroglanduläre Gewebe (FGT a–d) und das Background Parenchymal Enhancement (BPE). Beide beeinflussen die Sensitivität der Mamma-MRT und das individuelle Karzinomrisiko.',
+          de: 'Mamma-MRT-Kategorien für fibroglanduläres Gewebe und Background Enhancement.',
           en: 'ACR BI-RADS MRI describes fibroglandular tissue (FGT a–d) and background parenchymal enhancement (BPE). Both affect breast MRI sensitivity and individual cancer risk.',
           fa: 'BI-RADS MRI پستان بافت فیبروغده‌ای (FGT a–d) و تقویت زمینه پارانشیمی (BPE) را توصیف می‌کند. هر دو بر حساسیت MRI پستان و خطر فردی سرطان تأثیر می‌گذارند.',
         },
@@ -1520,7 +1520,7 @@ export const KLASSIFIKATIONEN = [
         id: 'pi-rads',
         name: { de: 'PI-RADS', en: 'PI-RADS', fa: 'PI-RADS' },
         kompakt: {
-          de: 'MRT-Klassifikation der Prostata (Stufe 1–5) für die Wahrscheinlichkeit eines klinisch signifikanten Prostatakarzinoms.',
+          de: 'mpMRT-Kategorien 1–5 für klinisch signifikantes Prostatakarzinom.',
           en: 'Prostate MRI classification (level 1–5) for the probability of clinically significant prostate cancer.',
           fa: 'طبقه‌بندی MRI پروستات (سطح ۱–۵) برای احتمال سرطان پروستات مهم بالینی.',
         },
@@ -1587,7 +1587,7 @@ export const KLASSIFIKATIONEN = [
         id: 'pfirrmann',
         name: { de: 'Pfirrmann', en: 'Pfirrmann', fa: 'فیرمن' },
         kompakt: {
-          de: 'Graduiert die Bandscheibendegeneration in der T2-MRT (Grad I–V) nach Signal, Struktur und Höhe.',
+          de: 'T2-MRT-Gradierung (I–V) der Bandscheibendegeneration.',
           en: 'Grades intervertebral disc degeneration on T2 MRI (grade I–V) by signal, structure and height.',
           fa: 'دژنراسیون دیسک بین‌مهره‌ای را در T2 MRI بر اساس سیگنال، ساختار و ارتفاع (درجه I–V) درجه‌بندی می‌کند.',
         },
@@ -1605,7 +1605,7 @@ export const KLASSIFIKATIONEN = [
         id: 'modic',
         name: { de: 'Modic', en: 'Modic', fa: 'مودیک' },
         kompakt: {
-          de: 'Klassifiziert reaktive Knochenmarkveränderungen an Wirbelendplatten im MRT: Typ 1 = Ödem (T1↓ T2↑), Typ 2 = fettig (T1↑), Typ 3 = Sklerose (T1↓ T2↓).',
+          de: 'MRT-Typen reaktiver Knochenmarkveränderungen an Wirbelendplatten.',
           en: 'Classifies reactive bone marrow changes at vertebral endplates on MRI: type 1 = oedema (T1↓ T2↑), type 2 = fatty (T1↑), type 3 = sclerosis (T1↓ T2↓).',
           fa: 'تغییرات واکنشی مغز استخوان در صفحات انتهایی مهره‌ها را در MRI طبقه‌بندی می‌کند: نوع ۱ = ادم (T1↓ T2↑)، نوع ۲ = چربی (T1↑)، نوع ۳ = اسکلروز (T1↓ T2↓).',
         },
@@ -1621,7 +1621,7 @@ export const KLASSIFIKATIONEN = [
         id: 'genant',
         name: { de: 'Genant', en: 'Genant', fa: 'ژنانت' },
         kompakt: {
-          de: 'Semiquantitative Röntgen-Graduierung osteoporotischer Wirbelkörperfrakturen nach Höhenminderung (Grad 1–3).',
+          de: 'Semiquantitative Graduierung osteoporotischer Wirbelkörperfrakturen.',
           en: 'Semi-quantitative radiographic grading of osteoporotic vertebral fractures by height loss (grade 1–3).',
           fa: 'درجه‌بندی نیمه‌کمی رادیوگرافیک شکستگی‌های مهره‌ای استئوپروتیک بر اساس کاهش ارتفاع (درجه ۱–۳).',
         },
@@ -1638,7 +1638,7 @@ export const KLASSIFIKATIONEN = [
         id: 'salter-harris',
         name: { de: 'Salter-Harris', en: 'Salter-Harris', fa: 'سالتر-هریس' },
         kompakt: {
-          de: 'Klassifikation kindlicher Epiphysenfugenfrakturen (Typ I–V) nach Beteiligung von Physe, Metaphyse und Epiphyse; wichtig für Wachstumsstörungsrisiko und Therapie.',
+          de: 'Typ-I–V-Einteilung kindlicher Epiphysenfugenfrakturen.',
           en: 'Classification of paediatric physeal fractures (type I–V) by involvement of physis, metaphysis and epiphysis; important for growth-arrest risk and treatment.',
           fa: 'طبقه‌بندی شکستگی‌های فیز کودکان (نوع I–V) بر اساس درگیری فیز، متافیز و اپی‌فیز؛ مهم برای خطر اختلال رشد و درمان.',
         },
@@ -1676,7 +1676,7 @@ export const KLASSIFIKATIONEN = [
         id: 'kellgren-lawrence',
         name: { de: 'Kellgren-Lawrence', en: 'Kellgren-Lawrence', fa: 'کلگرن-لارنس' },
         kompakt: {
-          de: 'Röntgenologische Schweregradeinteilung der Osteoarthrose (Grad 0–4) nach Osteophyten, Gelenkspaltverschmälerung und Sklerose.',
+          de: 'Röntgen-Gradierung (0–4) der Osteoarthrose.',
           en: 'Radiographic severity grading of osteoarthritis (grade 0–4) based on osteophytes, joint-space narrowing and sclerosis.',
           fa: 'درجه‌بندی شدت رادیوگرافیک استئوآرتریت (درجه ۰–۴) بر اساس استئوفیت، باریک‌شدن فضای مفصلی و اسکلروز.',
         },
@@ -1694,7 +1694,7 @@ export const KLASSIFIKATIONEN = [
         id: 'garden',
         name: { de: 'Garden', en: 'Garden', fa: 'گاردن' },
         kompakt: {
-          de: 'Klassifiziert mediale Schenkelhalsfrakturen nach Dislokation (Grad I–IV) – entscheidend für die Wahl zwischen Osteosynthese (I/II) und Prothesenversorgung (III/IV).',
+          de: 'Dislokationsgrade I–IV medialer Schenkelhalsfrakturen.',
           en: 'Classifies medial femoral neck fractures by displacement (grade I–IV) – key for choosing between osteosynthesis (I/II) and arthroplasty (III/IV).',
           fa: 'شکستگی‌های گردن داخلی فمور را بر اساس جابجایی (درجه I–IV) طبقه‌بندی می‌کند – تعیین‌کننده انتخاب بین استئوسنتز (I/II) و پروتز (III/IV).',
         },
@@ -1717,7 +1717,7 @@ export const KLASSIFIKATIONEN = [
         id: 'recist',
         name: { de: 'RECIST 1.1', en: 'RECIST 1.1', fa: 'RECIST 1.1' },
         kompakt: {
-          de: 'Internationaler Standard für das Therapieansprechen solider Tumoren (CR/PR/SD/PD) anhand der prozentualen Veränderung der Zielläsions-Durchmessersumme.',
+          de: 'Standardisierte Response-Kategorien solider Tumoren nach Größenänderung.',
           en: 'International standard for solid tumour treatment response (CR/PR/SD/PD) based on percentage change in the sum of target lesion diameters.',
           fa: 'استاندارد بین‌المللی برای پاسخ به درمان تومورهای جامد (CR/PR/SD/PD) بر اساس درصد تغییر مجموع قطرهای ضایعات هدف.',
         },
@@ -1734,7 +1734,7 @@ export const KLASSIFIKATIONEN = [
         id: 'tnm',
         name: { de: 'TNM', en: 'TNM', fa: 'TNM' },
         kompakt: {
-          de: 'Universelles Staging-System für solide Tumoren: T (Größe/Ausdehnung), N (Lymphknoten), M (Metastasen) – ergibt das Gesamtstadium I–IV.',
+          de: 'Staging-System solider Tumoren nach T, N und M.',
           en: 'Universal staging system for solid tumours: T (size/extent), N (lymph nodes), M (metastasis) – combined into overall stage I–IV.',
           fa: 'سیستم استیجینگ جهانی برای تومورهای جامد: T (اندازه/گسترش)، N (غدد لنفاوی)، M (متاستاز) – مرحله کلی I–IV را می‌سازد.',
         },
@@ -1750,7 +1750,7 @@ export const KLASSIFIKATIONEN = [
         id: 'deauville',
         name: { de: 'Deauville (PET)', en: 'Deauville (PET)', fa: 'دوویل (PET)' },
         kompakt: {
-          de: '5-Punkte-PET/CT-Skala für das metabolische Therapieansprechen bei Lymphomen (Referenz: Mediastinum / Leber).',
+          de: '5-Punkte-PET/CT-Skala für metabolisches Lymphom-Ansprechen.',
           en: '5-point PET/CT scale for metabolic treatment response in lymphomas (reference: mediastinum / liver).',
           fa: 'مقیاس ۵ امتیازی PET/CT برای پاسخ متابولیک به درمان در لنفوم (مرجع: مدیاستینوم / کبد).',
         },
@@ -1768,7 +1768,7 @@ export const KLASSIFIKATIONEN = [
         id: 'lugano',
         name: { de: 'Lugano-Kriterien', en: 'Lugano criteria', fa: 'معیارهای لوگانو' },
         kompakt: {
-          de: 'Standard für Staging und Therapieansprechen bei Lymphomen: anatomisches Stadium I–IV und bei FDG-aviden Lymphomen PET/CT-basierte Response nach Deauville.',
+          de: 'Staging- und Response-Kriterien für Lymphome.',
           en: 'Standard for lymphoma staging and treatment response: anatomical stage I–IV and, for FDG-avid lymphomas, PET/CT-based response using Deauville.',
           fa: 'استاندارد مرحله‌بندی و پاسخ درمانی لنفوم: مراحل آناتومیک I تا IV و در لنفوم‌های FDG-avid پاسخ مبتنی بر PET/CT با دوویل.',
         },
