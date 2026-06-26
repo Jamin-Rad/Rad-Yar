@@ -321,13 +321,18 @@ export const MESSWERTE = [
       {
         name: { de: 'Ventrikel', en: 'Ventricles', fa: 'بطن‌ها' },
         entries: [
-          { s: { de: 'Vorderhorn Seitenventrikel (< 40 J.)', en: 'Lateral ventricle frontal horn (< 40 y)', fa: 'شاخ قدامی بطن جانبی (< ۴۰ سال)' }, v: '≤ 12 mm', h: { de: 'In Höhe Foramen Monroi', en: 'At foramen of Monro', fa: 'در سطح فورامن مونرو' } },
-          { s: { de: 'Vorderhorn Seitenventrikel (> 40 J.)', en: 'Lateral ventricle frontal horn (> 40 y)', fa: 'شاخ قدامی بطن جانبی (> ۴۰ سال)' }, v: '≤ 15 mm', h: { de: 'Altersbedingte Normweitung', en: 'Age-related normal widening', fa: 'گشادی طبیعی وابسته به سن' } },
-          { s: { de: 'III. Ventrikel (Kind)', en: '3rd ventricle (child)', fa: 'بطن سوم (کودک)' }, v: '≤ 5 mm', h: { de: 'Säuglinge etwas mehr normal', en: 'Infants slightly more normal', fa: 'نوزادان کمی بیشتر' } },
-          { s: { de: 'III. Ventrikel (Erw. < 60 J.)', en: '3rd ventricle (adult < 60 y)', fa: 'بطن سوم (بزرگسال < ۶۰)' }, v: '≤ 7 mm', h: { de: 'Erweiterung → Hydrozephalus oder Atrophie', en: 'Dilation → hydrocephalus or atrophy', fa: 'گشادی → هیدروسفالی یا آتروفی' } },
-          { s: { de: 'III. Ventrikel (Erw. > 60 J.)', en: '3rd ventricle (adult > 60 y)', fa: 'بطن سوم (بزرگسال > ۶۰)' }, v: '≤ 9 mm', h: { de: 'Altersbezogene Normweitung', en: 'Age-related normal widening', fa: 'گشادی طبیعی وابسته به سن' } },
-          { s: { de: 'Evans-Index', en: 'Evans index', fa: 'شاخص ایوانز' }, v: '< 0,30', h: { de: 'Frontalhorn / max. Schädelbreite; ≥ 0,3 = Hydrozephalus', en: 'Frontal horn / max. skull width; ≥ 0.3 = hydrocephalus', fa: '≥ ۰٫۳ = هیدروسفالی' } },
+          { s: { de: 'Vorderhorn Seitenventrikel (< 40 J.)', en: 'Lateral ventricle frontal horn (< 40 y)', fa: 'شاخ قدامی بطن جانبی (< ۴۰ سال)' }, v: '≤ 12 mm', h: { de: 'Dilatation ab > 12 mm; Messung in Höhe Foramen Monroi', en: 'Dilatation if > 12 mm; measure at the foramen of Monro', fa: 'اتساع از >۱۲ میلی‌متر؛ اندازه‌گیری در سطح فورامن مونرو' } },
+          { s: { de: 'Vorderhorn Seitenventrikel (> 40 J.)', en: 'Lateral ventricle frontal horn (> 40 y)', fa: 'شاخ قدامی بطن جانبی (> ۴۰ سال)' }, v: '≤ 15 mm', h: { de: 'Dilatation ab > 15 mm; altersbezogene Normweitung beachten', en: 'Dilatation if > 15 mm; consider age-related widening', fa: 'اتساع از >۱۵ میلی‌متر؛ گشادی وابسته به سن در نظر گرفته شود' } },
+          { s: { de: 'III. Ventrikel (Kind)', en: '3rd ventricle (child)', fa: 'بطن سوم (کودک)' }, v: '≤ 5 mm', h: { de: 'Dilatation ab > 5 mm; Säuglinge können etwas weiter sein', en: 'Dilatation if > 5 mm; infants may be slightly wider', fa: 'اتساع از >۵ میلی‌متر؛ در شیرخواران ممکن است کمی بیشتر باشد' } },
+          { s: { de: 'III. Ventrikel (Erw. < 60 J.)', en: '3rd ventricle (adult < 60 y)', fa: 'بطن سوم (بزرگسال < ۶۰)' }, v: '≤ 7 mm', h: { de: 'Dilatation ab > 7 mm; Hydrozephalus vs. Atrophie im Kontext beurteilen', en: 'Dilatation if > 7 mm; assess hydrocephalus vs atrophy in context', fa: 'اتساع از >۷ میلی‌متر؛ هیدروسفالی در برابر آتروفی در زمینه بالینی/تصویری ارزیابی شود' } },
+          { s: { de: 'III. Ventrikel (Erw. > 60 J.)', en: '3rd ventricle (adult > 60 y)', fa: 'بطن سوم (بزرگسال > ۶۰)' }, v: '≤ 9 mm', h: { de: 'Dilatation ab > 9 mm; altersbezogene Normweitung beachten', en: 'Dilatation if > 9 mm; consider age-related widening', fa: 'اتساع از >۹ میلی‌متر؛ گشادی وابسته به سن در نظر گرفته شود' } },
+          { s: { de: 'Evans-Index', en: 'Evans index', fa: 'شاخص ایوانز' }, v: '< 0,30', h: { de: 'Frontalhorn / max. innere Schädelbreite; ≥ 0,30 = Ventrikulomegalie-Kriterium', en: 'Frontal horn / max. inner skull width; ≥ 0.30 = ventriculomegaly criterion', fa: 'عرض شاخ‌های فرونتال / بیشترین عرض داخلی جمجمه؛ ≥۰٫۳۰ معیار ونتریکولومگالی' } },
         ],
+        note: {
+          de: 'Als Dilatation gilt ein Messwert oberhalb des jeweiligen altersbezogenen Grenzwerts. Hydrozephalus nicht nur über die Größe diagnostizieren: Temporalhörner, Sulci, transependymales Ödem, Callosal angle und klinischen Kontext mitbeurteilen.',
+          en: 'Dilatation means a value above the age-related threshold. Do not diagnose hydrocephalus from size alone: also assess temporal horns, sulci, transependymal oedema, callosal angle and clinical context.',
+          fa: 'اتساع یعنی مقدار بالاتر از حد آستانه وابسته به سن. هیدروسفالی را فقط با اندازه تشخیص ندهید؛ شاخ‌های تمپورال، سولکوس‌ها، ادم ترانس‌اپندیمال، زاویه کالوزال و زمینه بالینی را هم ارزیابی کنید.',
+        },
       },
       {
         name: { de: 'Sehnerv & Orbita', en: 'Optic Nerve & Orbit', fa: 'عصب بینایی و اوربیت' },
