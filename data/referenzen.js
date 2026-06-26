@@ -28,7 +28,7 @@ export const REF_COPY = {
     btnRechner: 'Rechner',
     btnRechnerSub: 'Organe vermessen und sofort Volumen + Bewertung erhalten.',
     chipsAnatomie: ['Lebersegmente', 'Lunge', 'Beckenarterien', 'Hirngefäße'],
-    chipsMesswerte: ['Neuro', 'Thorax', 'Herz', 'Abdomen', 'Urogenital', 'Wirbelsäule', 'CT-HE'],
+    chipsMesswerte: ['Neuro', 'Thorax', 'Herz und Aorta', 'Abdomen', 'Urogenital', 'Wirbelsäule', 'CT-HE'],
     chipsKlass: ['BI-RADS', 'LI-RADS', 'PI-RADS', 'Fazekas', 'Bosniak', 'RECIST'],
     chipsRechner: ['Prostata', 'Milz', 'Niere', 'PSA-D'],
     calcResult: 'Ergebnis',
@@ -67,7 +67,7 @@ export const REF_COPY = {
     btnRechner: 'Calculators',
     btnRechnerSub: 'Measure organs and instantly get volume + interpretation.',
     chipsAnatomie: ['Liver segments', 'Lung', 'Pelvic arteries', 'Brain vessels'],
-    chipsMesswerte: ['Neuro', 'Thorax', 'Heart', 'Abdomen', 'Urogenital', 'Spine', 'CT-HU'],
+    chipsMesswerte: ['Neuro', 'Thorax', 'Heart & Aorta', 'Abdomen', 'Urogenital', 'Spine', 'CT-HU'],
     chipsKlass: ['BI-RADS', 'LI-RADS', 'PI-RADS', 'Fazekas', 'Bosniak', 'RECIST'],
     chipsRechner: ['Prostate', 'Spleen', 'Kidney', 'PSA-D'],
     calcResult: 'Result',
@@ -106,7 +106,7 @@ export const REF_COPY = {
     btnRechner: 'ماشین‌حساب',
     btnRechnerSub: 'اندازه‌گیری اندام‌ها و دریافت فوری حجم + تفسیر.',
     chipsAnatomie: ['سگمان‌های کبد', 'ریه', 'شریان‌های لگن', 'عروق مغز'],
-    chipsMesswerte: ['نورو', 'توراکس', 'قلب', 'شکم', 'اوروژنیتال', 'ستون فقرات', 'CT-HU'],
+    chipsMesswerte: ['نورو', 'توراکس', 'قلب و آئورت', 'شکم', 'اوروژنیتال', 'ستون فقرات', 'CT-HU'],
     chipsKlass: ['BI-RADS', 'LI-RADS', 'PI-RADS', 'فازکاس', 'بوسنیاک', 'RECIST'],
     chipsRechner: ['پروستات', 'طحال', 'کلیه', 'PSA-D'],
     calcResult: 'نتیجه',
@@ -391,10 +391,6 @@ export const MESSWERTE = [
     name: { de: 'Thorax / Lunge', en: 'Thorax / Lung', fa: 'توراکس / ریه' },
     groups: [
       {
-        name: { de: 'Aorta thorakalis', en: 'Thoracic Aorta', fa: 'آئورت توراسیک' },
-        entries: THORACIC_AORTA_ENTRIES,
-      },
-      {
         name: { de: 'Pulmonalgefäße & V. cava', en: 'Pulmonary Vessels & SVC', fa: 'عروق ریوی و ورید اجوف فوقانی' },
         entries: [
           { s: { de: 'Truncus pulmonalis', en: 'Pulmonary trunk', fa: 'تنه ریوی' }, v: '2,4 ± 0,2 cm', h: { de: 'PH wahrscheinlich wenn > Aorta ascendens', en: 'PH likely if > ascending aorta', fa: 'احتمال PH اگر > آئورت صعودی' } },
@@ -433,7 +429,7 @@ export const MESSWERTE = [
   // ── 3. Herz ─────────────────────────────────────────────────
   {
     id: 'herz', color: '#be185d',
-    name: { de: 'Herz', en: 'Heart', fa: 'قلب' },
+    name: { de: 'Herz und Aorta', en: 'Heart and Aorta', fa: 'قلب و آئورت' },
     groups: [
       {
         name: { de: 'Aorta thorakalis', en: 'Thoracic Aorta', fa: 'آئورت توراسیک' },
@@ -448,8 +444,12 @@ export const MESSWERTE = [
         ],
       },
       {
-        name: { de: 'Ventrikel & Septum', en: 'Ventricles & Septum', fa: 'بطن‌ها و سپتوم' },
+        name: { de: 'Ventrikelweite (Volumen) & Septum', en: 'Ventricular size (volume) & Septum', fa: 'اندازه بطنی (حجم) و سپتوم' },
         entries: [
+          { s: { de: 'LV enddiastolisches Volumen indexiert (LVEDVi)', en: 'LV end-diastolic volume index (LVEDVi)', fa: 'شاخص حجم پایان دیاستولی بطن چپ (LVEDVi)' }, v: 'ca. 55–100 ml/m²', h: { de: 'MRT/CT; nach Körperoberfläche indexieren, geschlechts- und methodenabhängig', en: 'CMR/CT; index to body surface area, sex- and method-dependent', fa: 'MRI/CT؛ بر اساس سطح بدن شاخص‌گذاری شود، وابسته به جنس و روش' } },
+          { s: { de: 'LV endsystolisches Volumen indexiert (LVESVi)', en: 'LV end-systolic volume index (LVESVi)', fa: 'شاخص حجم پایان سیستولی بطن چپ (LVESVi)' }, v: 'ca. 15–45 ml/m²', h: { de: 'Immer zusammen mit Schlagvolumen und Ejektionsfraktion beurteilen', en: 'Assess together with stroke volume and ejection fraction', fa: 'همراه با حجم ضربه‌ای و کسر جهشی ارزیابی شود' } },
+          { s: { de: 'RV enddiastolisches Volumen indexiert (RVEDVi)', en: 'RV end-diastolic volume index (RVEDVi)', fa: 'شاخص حجم پایان دیاستولی بطن راست (RVEDVi)' }, v: 'ca. 60–110 ml/m²', h: { de: 'Rechter Ventrikel physiologisch oft etwas größer als LV; BSA-indexiert bewerten', en: 'The right ventricle is often physiologically slightly larger than the LV; evaluate indexed to BSA', fa: 'بطن راست از نظر فیزیولوژیک اغلب کمی بزرگ‌تر از بطن چپ است؛ بر اساس BSA ارزیابی شود' } },
+          { s: { de: 'RV endsystolisches Volumen indexiert (RVESVi)', en: 'RV end-systolic volume index (RVESVi)', fa: 'شاخص حجم پایان سیستولی بطن راست (RVESVi)' }, v: 'ca. 20–50 ml/m²', h: { de: 'Grenzwerte variieren je nach Referenzkollektiv und Software', en: 'Thresholds vary by reference cohort and software', fa: 'حدود طبیعی بسته به جمعیت مرجع و نرم‌افزار متفاوت است' } },
           { s: { de: 'Ventrikelseptum (Dicke)', en: 'Interventricular septum (thickness)', fa: 'سپتوم بین‌بطنی' }, v: '5–10 mm', h: { de: 'Winkel Mediosagittale/Septum = 38°; Hypertrophie > 12 mm', en: 'Angle midsagittal/septum = 38°; hypertrophy > 12 mm', fa: 'زاویه میانی-ساژیتال/سپتوم = ۳۸°؛ هایپرتروفی > ۱۲' } },
           { s: { de: 'Myokard LV (Wanddicke)', en: 'LV myocardium (wall thickness)', fa: 'میوکارد بطن چپ' }, v: '10–12 mm', h: { de: 'Hypertrophie > 12 mm; Dilatative KMP < 6 mm', en: 'Hypertrophy > 12 mm; dilated CMP < 6 mm', fa: 'هایپرتروفی > ۱۲؛ کاردیومیوپاتی اتساعی < ۶' } },
         ],
