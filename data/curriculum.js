@@ -1429,14 +1429,8 @@ export const CURRICULUM = [
         title: { de: '6. Trauma', en: '6. Trauma', fa: '۶. تروما' },
         icon: '🚑',
         themen: [
-          { id: 'ws-trauma-grundlagen', title: { de: 'Grundlagen der WS-Traumabildgebung', en: 'Fundamentals of Spinal Trauma Imaging', fa: 'مبانی تصویربرداری تروما ستون فقرات' }, tags: ['Rö','CT','MRT'], diff: 1 },
           { id: 'kraniozervikaler-uebergang-trauma', title: { de: 'Kraniozervikaler Übergang', en: 'Craniocervical Junction', fa: 'محل اتصال کرانیوسرویکال' }, tags: ['CT','MRT'], diff: 3 },
           { id: 'hws-verletzungen', title: { de: 'HWS-Verletzungen', en: 'Cervical Spine Injuries', fa: 'آسیب‌های ستون فقرات گردنی' }, tags: ['CT','MRT'], diff: 2 },
-          { id: 'bws-lws-frakturen', title: { de: 'BWS / LWS-Frakturen', en: 'Thoracic / Lumbar Spine Fractures', fa: 'شکستگی ستون فقرات توراسیک / کمری' }, tags: ['CT','MRT'], diff: 2 },
-          { id: 'ao-tlics', title: { de: 'Klassifikationssysteme (AO, TLICS)', en: 'Classification Systems (AO, TLICS)', fa: 'سیستم‌های طبقه‌بندی (AO، TLICS)' }, tags: ['CT','MRT'], diff: 3 },
-          { id: 'traumatische-bandscheibenvorfaelle', title: { de: 'Traumatische Bandscheibenvorfälle', en: 'Traumatic Disc Herniation', fa: 'فتق دیسک تروماتیک' }, tags: ['MRT'], diff: 3 },
-          { id: 'myelonverletzungen', title: { de: 'Myelonverletzungen', en: 'Spinal Cord Injuries', fa: 'آسیب نخاع' }, tags: ['MRT'], diff: 3 },
-          { id: 'nervenwurzelverletzungen', title: { de: 'Nervenwurzelverletzungen', en: 'Nerve Root Injuries', fa: 'آسیب ریشه عصبی' }, tags: ['MRT'], diff: 3 },
         ],
       },
       {
