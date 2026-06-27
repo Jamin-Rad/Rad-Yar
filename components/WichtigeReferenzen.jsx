@@ -972,5 +972,3 @@ function FleischnerCalc({ calc, lang }) {
     </>
   )
 }
-
-export { AnatomieModal, MesswerteModal, KlassifikationenModal, RechnerModal }
