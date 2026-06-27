@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Häufige Normvarianten des Aortenbogens</title>
+  <desc id="desc">Schematische Übersicht häufiger Aortenbogenvarianten: gemeinsamer Ursprung von Truncus brachiocephalicus und linker Karotis, linke Vertebralarterie aus dem Aortenbogen, aberrante rechte Subclavia, rechter Aortenbogen und doppelter Aortenbogen.</desc>
+  <defs>
+    <linearGradient id="red" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fb7185"/>
+      <stop offset="1" stop-color="#b91c1c"/>
+    </linearGradient>
+    <style>
+      .card{fill:#fff;stroke:#e2e8f0;stroke-width:2}
+      .vessel{fill:none;stroke:url(#red);stroke-width:18;stroke-linecap:round;stroke-linejoin:round}
+      .thin{fill:none;stroke:#ef4444;stroke-width:10;stroke-linecap:round}
+      .ring{fill:none;stroke:#ef4444;stroke-width:15;stroke-linecap:round}
+      .title{font:800 24px Arial,sans-serif;fill:#0f172a}
+      .label{font:700 16px Arial,sans-serif;fill:#475569}
+      .note{font:400 15px Arial,sans-serif;fill:#64748b}
+    </style>
+  </defs>
+  <rect width="1200" height="760" rx="34" fill="#f8fafc"/>
+
+  <rect class="card" x="34" y="34" width="348" height="310" rx="24"/>
+  <path class="vessel" d="M95 265 C170 290 234 254 241 189 C249 115 338 117 338 212"/>
+  <path class="thin" d="M226 140 C215 95 192 69 158 51"/>
+  <path class="thin" d="M226 140 C241 96 260 70 291 53"/>
+  <path class="thin" d="M292 136 C322 99 348 78 373 67"/>
+  <text class="title" x="58" y="386">Gemeinsamer Ursprung</text>
+  <text class="note" x="58" y="414">Truncus brachiocephalicus und</text>
+  <text class="note" x="58" y="436">linke A. carotis communis</text>
+
+  <rect class="card" x="426" y="34" width="348" height="310" rx="24"/>
+  <path class="vessel" d="M487 265 C562 290 626 254 633 189 C641 115 730 117 730 212"/>
+  <path class="thin" d="M602 142 C594 96 574 69 540 51"/>
+  <path class="thin" d="M602 142 C621 103 642 78 670 61"/>
+  <path class="thin" d="M658 126 C666 85 682 59 707 42"/>
+  <path class="thin" d="M705 142 C735 99 760 78 785 67"/>
+  <text class="title" x="450" y="386">A. vertebralis links aus Bogen</text>
+  <text class="note" x="450" y="414">Zusätzlicher Abgang zwischen linker</text>
+  <text class="note" x="450" y="436">Karotis und linker Subclavia</text>
+
+  <rect class="card" x="818" y="34" width="348" height="310" rx="24"/>
+  <path class="vessel" d="M879 265 C954 290 1018 254 1025 189 C1033 115 1122 117 1122 212"/>
+  <path class="thin" d="M1014 143 C1011 101 995 72 966 50"/>
+  <path class="thin" d="M1068 128 C1083 92 1104 68 1135 52"/>
+  <path class="thin" d="M1117 214 C1056 210 1007 226 967 267"/>
+  <text class="title" x="842" y="386">Aberrante rechte Subclavia</text>
+  <text class="note" x="842" y="414">Distaler letzter Abgang, meist</text>
+  <text class="note" x="842" y="436">retrooesophagealer Verlauf</text>
+
+  <rect class="card" x="230" y="454" width="348" height="240" rx="24"/>
+  <path class="vessel" d="M300 645 C372 659 432 626 438 572 C445 510 520 508 524 587"/>
+  <path class="thin" d="M435 543 C402 510 375 488 344 474"/>
+  <path class="thin" d="M454 523 C466 489 489 468 523 454"/>
+  <path class="thin" d="M500 548 C532 514 558 495 589 487"/>
+  <text class="title" x="254" y="733">Rechter Aortenbogen</text>
+  <text class="note" x="254" y="758">Spiegelbildlich oder mit aberranter Subclavia</text>
+
+  <rect class="card" x="622" y="454" width="348" height="240" rx="24"/>
+  <path class="ring" d="M696 630 C744 670 832 668 879 627"/>
+  <path class="ring" d="M696 630 C740 552 835 550 879 627"/>
+  <path class="thin" d="M735 587 C720 550 696 524 659 506"/>
+  <path class="thin" d="M799 558 C808 520 830 496 864 479"/>
+  <path class="thin" d="M855 592 C891 562 922 546 956 539"/>
+  <ellipse cx="788" cy="621" rx="34" ry="23" fill="#e0f2fe" stroke="#38bdf8" stroke-width="2"/>
+  <text class="label" x="756" y="627">Trachea</text>
+  <text class="title" x="646" y="733">Doppelter Aortenbogen</text>
+  <text class="note" x="646" y="758">Vaskulärer Ring um Trachea/Oesophagus</text>
+</svg>

@@ -385,7 +385,15 @@ export const CURRICULUM = [
           { id: 'mediastinum-anatomie', title: { de: 'Mediastinale Anatomie & Kompartimente', en: 'Mediastinal Anatomy & Compartments', fa: 'آناتومی مدیاستن و کمپارتمان‌ها' }, tags: ['CT','MRT'], diff: 1 },
           { id: 'pleura-anatomie', title: { de: 'Pleura & Pleurahöhle', en: 'Pleura & Pleural Cavity', fa: 'پلور و حفره پلور' }, tags: ['CT'], diff: 1 },
           { id: 'herzanatomie', title: { de: 'Herzanatomie (Grundlagen)', en: 'Cardiac Anatomy (Basics)', fa: 'آناتومی قلب (مبانی)' }, tags: ['CT','MRT'], diff: 1 },
-          { id: 'gefaesse-anatomie-thorax', title: { de: 'Gefäßanatomie (Aorta, Pulmonalgefäße)', en: 'Vascular Anatomy (Aorta, Pulmonary Vessels)', fa: 'آناتومی عروقی (آئورت، عروق ریوی)' }, tags: ['CT','MRT'], diff: 1 },
+          {
+            id: 'gefaesse-anatomie-thorax',
+            title: { de: 'Gefäßanatomie (Aorta, Pulmonalgefäße)', en: 'Vascular Anatomy (Aorta, Pulmonary Vessels)', fa: 'آناتومی عروقی (آئورت، عروق ریوی)' },
+            tags: ['CT','MRT'],
+            diff: 1,
+            sub: [
+              { id: 'aortenbogen', title: { de: 'Aortenbogen', en: 'Aortic Arch', fa: 'قوس آئورت' }, tags: ['CT','MRT'], diff: 1, link: '/thorax/anatomie/aortenbogen', ready: true, updatedAt: '2026-06-27' },
+            ],
+          },
           { id: 'zwerchfell-thoraxwand-anatomie', title: { de: 'Zwerchfell & Thoraxwand', en: 'Diaphragm & Chest Wall', fa: 'دیافراگم و دیواره قفسه سینه' }, tags: ['CT','MRT'], diff: 1 },
         ],
       },
