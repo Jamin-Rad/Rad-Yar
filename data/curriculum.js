@@ -1431,6 +1431,7 @@ export const CURRICULUM = [
         themen: [
           { id: 'kraniozervikaler-uebergang-trauma', title: { de: 'Kraniozervikaler Übergang', en: 'Craniocervical Junction', fa: 'محل اتصال کرانیوسرویکال' }, tags: ['CT','MRT'], diff: 3 },
           { id: 'hws-verletzungen', title: { de: 'HWS-Verletzungen', en: 'Cervical Spine Injuries', fa: 'آسیب‌های ستون فقرات گردنی' }, tags: ['CT','MRT'], diff: 2 },
+          { id: 'bws-lws-frakturen', title: { de: 'BWS / LWS-Frakturen', en: 'Thoracic / Lumbar Spine Fractures', fa: 'شکستگی ستون فقرات توراسیک / کمری' }, tags: ['CT','MRT'], diff: 2 },
         ],
       },
       {
