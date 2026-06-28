@@ -409,7 +409,10 @@ export default function Hero() {
 
   return (
     <section className={styles.hero}>
-      <div className={styles.bg}/>
+      <div className={styles.bg}>
+        <div className={styles.bgOrb3}/>
+        <div className={styles.bgNoise}/>
+      </div>
       <div className={styles.bgGrid}/>
 
       <div className={`${styles.heroHeader} ${mounted?styles.leftIn:''}`}>

@@ -13,7 +13,6 @@
   --hero-card-shadow: rgba(0,0,0,.28);
   --hero-indicator-bg: rgba(8,14,28,.54);
   --hero-indicator-text: rgba(226,232,240,.74);
-  --hero-title-font: 'Avenir Next', 'Inter', 'SF Pro Display', var(--font-main), system-ui, sans-serif;
   --body-shift-x: 10px;
   position: relative;
   min-height: 100vh;
@@ -43,36 +42,84 @@
 /* ── BACKGROUND ──────────────────────────────────────── */
 .bg {
   position: absolute; inset: 0; z-index: 0;
-  background:
-    radial-gradient(ellipse 55% 80% at 5% 50%, color-mix(in srgb, var(--hero-bg-deep) 72%, transparent) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 60% at 50% 20%, rgba(30,15,60,0.7) 0%, transparent 60%),
-    radial-gradient(ellipse 42% 56% at 91% 68%, rgba(5,30,40,0.8) 0%, transparent 62%),
-    linear-gradient(160deg, var(--hero-bg) 0%, var(--hero-bg-deep) 100%);
+  background: #030712;
+  overflow: hidden;
+}
+
+/* Aurora orbs */
+.bg::before {
+  content: '';
+  position: absolute;
+  width: 70vw; height: 70vw;
+  top: -20%; left: -10%;
+  background: radial-gradient(circle, rgba(124,58,237,0.28) 0%, rgba(99,38,200,0.12) 40%, transparent 70%);
+  border-radius: 50%;
+  animation: orbDrift1 18s ease-in-out infinite alternate;
+  filter: blur(60px);
+}
+
+.bg::after {
+  content: '';
+  position: absolute;
+  width: 55vw; height: 55vw;
+  bottom: -15%; right: -8%;
+  background: radial-gradient(circle, rgba(249,115,22,0.22) 0%, rgba(251,191,36,0.10) 40%, transparent 70%);
+  border-radius: 50%;
+  animation: orbDrift2 22s ease-in-out infinite alternate;
+  filter: blur(50px);
+}
+
+@keyframes orbDrift1 {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(6vw, 8vh) scale(1.12); }
+}
+@keyframes orbDrift2 {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-5vw, -6vh) scale(1.08); }
+}
+
+.bgOrb3 {
+  position: absolute; z-index: 0; pointer-events: none;
+  width: 40vw; height: 40vw;
+  top: 30%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(14,165,233,0.14) 0%, transparent 65%);
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: orbDrift3 26s ease-in-out infinite alternate;
+}
+
+@keyframes orbDrift3 {
+  0%   { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  50%  { transform: translate(-42%, -58%) scale(1.15); opacity: 1; }
+  100% { transform: translate(-58%, -44%) scale(0.9); opacity: 0.7; }
+}
+
+/* Noise grain for texture depth */
+.bgNoise {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  opacity: 0.022;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
 }
 
 .bgGrid {
-  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
   background-image:
-    linear-gradient(var(--hero-grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--hero-grid) 1px, transparent 1px);
-  background-size: 52px 52px;
-  mask-image: radial-gradient(ellipse 90% 90% at 60% 50%, black 10%, transparent 100%);
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 85% 85% at 55% 50%, black 5%, transparent 100%);
 }
 
+/* Subtle top glow line */
 .hero::before {
   content: '';
   position: absolute;
-  inset: 11% 25% 10%;
-  z-index: 1;
+  top: 0; left: 15%; right: 15%; height: 1px;
+  z-index: 3;
+  background: linear-gradient(90deg, transparent, rgba(124,58,237,0.5), rgba(249,115,22,0.4), transparent);
   pointer-events: none;
-  background:
-    linear-gradient(90deg, transparent, rgba(56,189,248,.08), transparent),
-    repeating-linear-gradient(90deg, transparent 0 22px, rgba(148,163,184,.035) 22px 23px, transparent 23px 44px);
-  border: 1px solid rgba(56,189,248,.08);
-  border-radius: 8px;
-  box-shadow: 0 30px 90px rgba(0,0,0,.20);
-  transform: skewX(-6deg);
-  mask-image: linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent);
 }
 
 .heroHeader {
@@ -141,7 +188,7 @@
 }
 .wmSub {
   /* Sub-label uses main font but also protected from Vazirmatn */
-  font-family: var(--hero-title-font) !important;
+  font-family: var(--font-main, 'Manrope', sans-serif) !important;
   font-style: normal !important;
   font-size: 10.5px; letter-spacing: 0.22em !important; text-transform: uppercase;
   color: rgba(249,115,22,0.82); font-weight: 800;
@@ -232,7 +279,7 @@
 .hoverText {
   font-size: 11px; font-weight: 850; letter-spacing: 0.06em;
   text-transform: uppercase;
-  font-family: var(--hero-title-font);
+  font-family: var(--font-main, sans-serif);
   color: var(--hero-indicator-text);
   transition: color 0.3s; white-space: nowrap;
 }
@@ -245,7 +292,7 @@
 .columnLabel {
   position: absolute;
   top: 4px;
-  font-family: var(--hero-title-font);
+  font-family: var(--font-main, sans-serif);
   font-size: 10px;
   font-weight: 900;
   letter-spacing: .18em;
@@ -308,10 +355,11 @@
   gap: 4px;
 }
 .floatText strong {
-  font-family: var(--hero-title-font);
+  font-family: var(--font-fraunces, serif);
+  font-style: italic;
   color: color-mix(in srgb, var(--card-color) 82%, white);
   font-size: 15px;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.15;
 }
 .floatText small {
@@ -397,7 +445,7 @@
   position: absolute; top: 14px; left: 50%;
   transform: translateX(-50%);
   display: flex; align-items: center; gap: 8px;
-  font-family: var(--hero-title-font);
+  font-family: var(--font-main, sans-serif);
   font-size: 11px; font-weight: 700;
   letter-spacing: 0.1em; text-transform: uppercase;
   border: 1px solid; border-radius: 50px;
@@ -552,7 +600,8 @@
     position: relative;
     z-index: 1;
     min-width: 0;
-    font-family: var(--hero-title-font);
+    font-family: var(--font-fraunces, serif);
+    font-style: italic;
     font-size: 12.5px;
     font-weight: 950;
     letter-spacing: .07em;
