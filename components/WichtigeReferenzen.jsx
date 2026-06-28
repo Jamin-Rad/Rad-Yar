@@ -146,6 +146,8 @@ const ANATOMY_SEARCH_COPY = {
   },
 }
 
+const REFERENCE_MODAL_FIXED_BODY = { minHeight: 'min(620px, calc(88vh - 128px))' }
+
 function normaliseSearch(value) {
   return String(value || '')
     .normalize('NFD')
@@ -488,7 +490,7 @@ function AnatomieModal({ copy, lang, onClose }) {
       </div>
 
       {query.trim() ? (
-        <div className={styles.klassSearchResults}>
+        <div className={styles.klassSearchResults} style={REFERENCE_MODAL_FIXED_BODY}>
           <div className={`${styles.klassSearchResultsHead} ${styles.anatomySearchResultsHead}`}>
             <strong>{searchCopy.results}</strong>
             <span>{searchResults.length}</span>
@@ -519,7 +521,7 @@ function AnatomieModal({ copy, lang, onClose }) {
           )}
         </div>
       ) : (
-      <div className={`${styles.split} ${showDetail?styles.showDetail:''}`}>
+      <div className={`${styles.split} ${showDetail?styles.showDetail:''}`} style={REFERENCE_MODAL_FIXED_BODY}>
         <nav className={styles.sidebar}>
           {topics.map(entry => (
             <button key={entry.id}
