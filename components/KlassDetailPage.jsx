@@ -8,6 +8,10 @@ import styles from './KlassDetailPage.module.css'
 
 const TOPIC_LOGOS = {
   anatomie: '/fach/technik.png',
+  'anatomie-neuro': '/fach/gehirn.png',
+  'anatomie-thorax-herz': '/fach/thorax.png',
+  'anatomie-abdomen': '/fach/abdomen.png',
+  'anatomie-urogenital': '/fach/becken-m.png',
   neuro: '/fach/gehirn.png',
   thorax: '/fach/thorax.png',
   abdomen: '/fach/abdomen.png',
@@ -15,6 +19,33 @@ const TOPIC_LOGOS = {
   msk: '/fach/msk.png',
   onko: '/fach/technik.png',
 }
+
+const ANATOMY_TOPIC_ORDER = [
+  {
+    id: 'anatomie-neuro',
+    name: { de: 'Neuro', en: 'Neuro', fa: 'نورولوژی' },
+    color: '#7c3aed',
+    itemIds: ['hirngefaess-territorien'],
+  },
+  {
+    id: 'anatomie-thorax-herz',
+    name: { de: 'Thorax & Herz', en: 'Thorax & Heart', fa: 'توراکس و قلب' },
+    color: '#0ea5e9',
+    itemIds: ['lungensegmente', 'bronchopulmonal-gefaesse', 'koronararterien-territorien'],
+  },
+  {
+    id: 'anatomie-abdomen',
+    name: { de: 'Abdomen', en: 'Abdomen', fa: 'شکم' },
+    color: '#f59e0b',
+    itemIds: ['lebersegmente-couinaud', 'pankreas-gallenwege'],
+  },
+  {
+    id: 'anatomie-urogenital',
+    name: { de: 'Urogenital', en: 'Urogenital', fa: 'اوروژنیتال' },
+    color: '#ef4444',
+    itemIds: ['beckenarterien'],
+  },
+]
 
 function ClassificationTopicLogo({ topicId, size = 30 }) {
   return <Image src={TOPIC_LOGOS[topicId] || '/fach/technik.png'} alt="" width={size} height={size} className={styles.topicLogo} />
@@ -98,6 +129,16 @@ function sortByLocalizedName(items, lang) {
   return [...items].sort((a, b) => tx(a.name, lang).localeCompare(tx(b.name, lang), lang === 'de' ? 'de' : undefined, { sensitivity: 'base' }))
 }
 
+function buildAnatomyDetailTopics(items, lang) {
+  const byId = Object.fromEntries(items.map(item => [item.id, item]))
+  return ANATOMY_TOPIC_ORDER
+    .map(topic => ({
+      ...topic,
+      items: sortByLocalizedName(topic.itemIds.map(id => byId[id]).filter(Boolean), lang),
+    }))
+    .filter(topic => topic.items.length)
+}
+
 function normalizeDetailImage(item, lang) {
   if (!item.image) return null
   if (typeof item.image === 'string') {
@@ -110,17 +151,22 @@ export default function KlassDetailPage({ topic, item, section = 'klassifikation
   const { lang } = useLanguage()
   const copy = REF_COPY[lang] || REF_COPY.de
   const isAnatomie = section === 'anatomie'
-  const color = topic.color
-  const siblings = sortByLocalizedName(topic.items, lang)
-  const otherTopics = isAnatomie ? [] : REF_DATA.klassifikationen
-    .filter(t => t.id !== topic.id)
-    .map(t => ({ ...t, items: sortByLocalizedName(t.items, lang) }))
+  const anatomyTopics = isAnatomie ? buildAnatomyDetailTopics(topic.items, lang) : []
+  const anatomyTopic = isAnatomie
+    ? (anatomyTopics.find(entry => entry.items.some(sib => sib.id === item.id)) || anatomyTopics[0])
+    : null
+  const activeTopic = anatomyTopic || topic
+  const color = isAnatomie ? activeTopic.color : topic.color
+  const siblings = isAnatomie ? activeTopic.items : sortByLocalizedName(topic.items, lang)
+  const otherTopics = isAnatomie
+    ? anatomyTopics.filter(entry => entry.id !== activeTopic.id)
+    : REF_DATA.klassifikationen
+      .filter(t => t.id !== topic.id)
+      .map(t => ({ ...t, items: sortByLocalizedName(t.items, lang) }))
   const refParam = isAnatomie ? 'anatomie' : 'klassifikationen'
   const backHref = lang !== 'de' ? `/?lang=${lang}&ref=${refParam}#referenzen` : `/?ref=${refParam}#referenzen`
   const [zoomSrc, setZoomSrc] = useState(null)
-  const infoLabel = isAnatomie
-    ? (lang === 'de' ? 'Kompakt' : lang === 'fa' ? 'خلاصه' : 'Compact')
-    : (lang === 'de' ? 'Einordnung & Radiologie-Check' : lang === 'fa' ? 'توضیح و چک رادیولوژی' : 'Context & radiology check')
+  const infoLabel = lang === 'de' ? 'Einordnung & Radiologie-Check' : lang === 'fa' ? 'توضیح و چک رادیولوژی' : 'Context & radiology check'
   const image = isAnatomie ? null : normalizeDetailImage(item, lang)
   const sourceLinks = SourceLinks({ item, lang })
 
@@ -130,7 +176,7 @@ export default function KlassDetailPage({ topic, item, section = 'klassifikation
       <div className={styles.breadcrumb}>
         <Link href={backHref} className={styles.backLink}>← {isAnatomie ? copy.btnAnatomie : copy.btnKlass}</Link>
         <span className={styles.breadSep}>/</span>
-        <span style={{ color }}>{tx(topic.name, lang)}</span>
+        <span style={{ color }}>{tx(activeTopic.name, lang)}</span>
         <span className={styles.breadSep}>/</span>
         <strong>{tx(item.name, lang)}</strong>
       </div>
@@ -143,10 +189,10 @@ export default function KlassDetailPage({ topic, item, section = 'klassifikation
             <span>{isAnatomie ? copy.btnAnatomie : copy.btnKlass}</span>
           </Link>
           <div className={styles.currentTopic} style={{ '--ref-color': color }}>
-            <span className={styles.currentTopicIcon}><ClassificationTopicLogo topicId={topic.id} size={32} /></span>
+            <span className={styles.currentTopicIcon}><ClassificationTopicLogo topicId={activeTopic.id} size={32} /></span>
             <span>
               <small>{lang === 'de' ? 'Aktueller Bereich' : lang === 'fa' ? 'بخش فعلی' : 'Current section'}</small>
-              <strong>{tx(topic.name, lang)}</strong>
+              <strong>{tx(activeTopic.name, lang)}</strong>
             </span>
           </div>
           <div className={styles.currentList}>
@@ -156,7 +202,7 @@ export default function KlassDetailPage({ topic, item, section = 'klassifikation
             {siblings.map((sib, index) => (
               <Link
                 key={sib.id}
-                href={`/referenzen/${topic.id}/${sib.id}${lang !== 'de' ? `?lang=${lang}` : ''}`}
+                href={`/referenzen/${isAnatomie ? 'anatomie' : topic.id}/${sib.id}${lang !== 'de' ? `?lang=${lang}` : ''}`}
                 className={`${styles.sibLink} ${sib.id === item.id ? styles.sibActive : ''}`}
                 style={{ '--ref-color': color }}
                 aria-current={sib.id === item.id ? 'page' : undefined}
@@ -167,7 +213,7 @@ export default function KlassDetailPage({ topic, item, section = 'klassifikation
             ))}
           </div>
 
-          {!isAnatomie && <div className={styles.otherGroup}>
+          <div className={styles.otherGroup}>
             <div className={styles.sidebarSectionLabel}>
               {lang === 'de' ? 'Bereich wechseln' : lang === 'fa' ? 'تغییر بخش' : 'Switch section'}
             </div>
@@ -175,7 +221,7 @@ export default function KlassDetailPage({ topic, item, section = 'klassifikation
               {otherTopics.map(t => (
                 <Link
                   key={t.id}
-                  href={`/referenzen/${t.id}/${t.items[0].id}${lang !== 'de' ? `?lang=${lang}` : ''}`}
+                  href={`/referenzen/${isAnatomie ? 'anatomie' : t.id}/${t.items[0].id}${lang !== 'de' ? `?lang=${lang}` : ''}`}
                   className={styles.otherTopicLink}
                   style={{ '--ref-color': t.color }}
                 >
@@ -185,14 +231,14 @@ export default function KlassDetailPage({ topic, item, section = 'klassifikation
                 </Link>
               ))}
             </div>
-          </div>}
+          </div>
         </nav>
 
         {/* Hauptinhalt */}
         <article className={styles.content} style={{ '--ref-color': color }}>
           <h1 className={styles.heading}>{tx(item.name, lang)}</h1>
 
-          {(item.kompakt || item.erklaerung || item.radiologie) && (
+          {!isAnatomie && (item.kompakt || item.erklaerung || item.radiologie) && (
             <section id="erklaerung" className={styles.infoPanel}>
               <span className={styles.infoPanelLabel}>{infoLabel}</span>
               {item.kompakt && <p>{tx(item.kompakt, lang)}</p>}

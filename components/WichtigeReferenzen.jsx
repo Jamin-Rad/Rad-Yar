@@ -434,7 +434,6 @@ function AnatomieModal({ copy, lang, onClose }) {
           tx(entry.name, 'de'),
           tx(entry.name, 'en'),
           tx(entry.topic.name, lang),
-          tx(entry.kompakt, lang),
           ...(entry.rows || []).flatMap(row => row.map(cell => tx(cell, lang))),
         ]
         const scores = candidates
@@ -510,7 +509,6 @@ function AnatomieModal({ copy, lang, onClose }) {
                   </span>
                   <span className={styles.klassSearchResultText}>
                     <strong>{tx(resultItem.name, lang)}</strong>
-                    <small>{tx(resultItem.topic.name, lang)}</small>
                   </span>
                   <span className={styles.klassSearchResultArrow}>→</span>
                 </button>
@@ -561,7 +559,6 @@ function AnatomieModal({ copy, lang, onClose }) {
                 onClick={() => go(entry.id)}
               >
                 <span className={styles.klassCardName} style={{color: entry.color}}>{tx(entry.name, lang)}</span>
-                <span className={styles.klassCardText}>{tx(entry.kompakt, lang)}</span>
               </button>
             ))}
           </div>
