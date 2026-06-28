@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useTheme } from '@/providers/ThemeProvider'
 import SearchBar from './SearchBar'
@@ -57,6 +58,8 @@ function getGreeting(lang) {
 export default function Navbar() {
   const { lang, texts, setLang } = useLanguage()
   const { theme, toggleTheme } = useTheme()
+  const pathname = usePathname()
+  const isHome = pathname === '/'
   const [search, setSearch] = useState(false)
   const [authReady, setAuthReady] = useState(false)
   const signInLabel = lang === 'fa' ? 'ورود' : lang === 'en' ? 'Sign in' : 'Anmelden'
@@ -71,10 +74,12 @@ export default function Navbar() {
       <nav className={styles.nav}>
         <Link href="/" className={styles.brand} dir="ltr">
           <HexLogo size={28} />
-          <span className={styles.wordmark} dir="ltr">
-            <span className={styles.rad}>RAD</span>
-            <span className={styles.yar}>YAR</span>
-          </span>
+          {!isHome && (
+            <span className={styles.wordmark} dir="ltr">
+              <span className={styles.rad}>RAD</span>
+              <span className={styles.yar}>YAR</span>
+            </span>
+          )}
         </Link>
 
         <div className={styles.right} data-lang={lang}>
