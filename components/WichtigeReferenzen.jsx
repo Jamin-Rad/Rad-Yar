@@ -394,7 +394,7 @@ export default function WichtigeReferenzen({ mode = 'section' }) {
 }
 
 /* ── Modal-Hülle ──────────────────────────────── */
-function Modal({ title, subtitle, accent, copy, onClose, children, accentClass, wide }) {
+function Modal({ title, subtitle, accent, copy, onClose, children, accentClass, wide, showDisclaimer = true }) {
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={`${styles.modal} ${wide ? styles.modalWide : ''}`}
@@ -411,7 +411,7 @@ function Modal({ title, subtitle, accent, copy, onClose, children, accentClass, 
           <button className={styles.closeBtn} onClick={onClose} aria-label={copy.close}>×</button>
         </header>
         <div className={styles.modalBody}>{children}</div>
-        <p className={styles.disclaimer}>⚠️ {copy.disclaimer}</p>
+        {showDisclaimer && <p className={styles.disclaimer}>⚠️ {copy.disclaimer}</p>}
       </div>
     </div>
   )
@@ -461,7 +461,7 @@ function AnatomieModal({ copy, lang, onClose }) {
 
   return (
     <Modal title={copy.btnAnatomie} subtitle={showDetail?tx(topic.name, lang):null} accent={topic.color}
-      copy={copy} onClose={onClose} accentClass={styles.headPurple} wide>
+      copy={copy} onClose={onClose} accentClass={styles.headPurple} wide showDisclaimer={false}>
       <div className={`${styles.klassSearchWrap} ${styles.anatomySearchWrap}`}>
         <div className={`${styles.klassSearchField} ${styles.anatomySearchField}`}>
           <span className={`${styles.klassSearchIcon} ${styles.anatomySearchIcon}`} aria-hidden="true">⌕</span>
@@ -686,7 +686,7 @@ function KlassifikationenModal({ copy, lang, onClose }) {
   }
   return (
     <Modal title={copy.btnKlass} subtitle={showDetail?tx(topic.name,lang):null} accent={topic.color}
-      copy={copy} onClose={onClose} accentClass={styles.headOrange} wide>
+      copy={copy} onClose={onClose} accentClass={styles.headOrange} wide showDisclaimer={false}>
       <div className={styles.klassSearchWrap}>
         <div className={styles.klassSearchField}>
           <span className={styles.klassSearchIcon} aria-hidden="true">⌕</span>

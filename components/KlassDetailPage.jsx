@@ -322,7 +322,6 @@ export default function KlassDetailPage({ topic, item, section = 'klassifikation
             </p>
           )}
 
-          <p className={styles.disclaimer}>⚠️ {copy.disclaimer}</p>
         </article>
       </div>
 
