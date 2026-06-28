@@ -1,0 +1,276 @@
+/* ==========================================================================
+   HOME GLASS — Glassmorphism Command Center
+   ========================================================================== */
+
+/* ── Scene (full-viewport dark background) ── */
+.scene {
+  position: relative;
+  min-height: calc(100vh - 64px);
+  margin-top: 64px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #050a14;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 55% at 50% 10%, rgba(12,28,58,0.95) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(56,189,248,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(139,92,246,0.04) 0%, transparent 60%),
+    #050a14;
+  z-index: 0;
+}
+
+.magnetCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* ── Header / existing heading ── */
+.header {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 1.8rem 1rem 0.4rem;
+  opacity: 0;
+  transform: translateY(-12px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.headerIn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.heroSub {
+  display: inline-block;
+  font-family: var(--font-manrope, 'Manrope', sans-serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #f97316;
+  margin-bottom: 6px;
+}
+
+.tagline {
+  font-family: var(--font-fraunces, 'Fraunces', 'Georgia', serif);
+  font-style: italic;
+  font-size: clamp(1rem, 2.2vw, 1.55rem);
+  font-weight: 700;
+  color: rgba(240, 225, 200, 0.88);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* ── Three-column layout ── */
+.layout {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 300px 1fr;
+  gap: 0 2.5rem;
+  width: 100%;
+  max-width: 1280px;
+  padding: 1rem 3rem 2.5rem;
+  flex: 1;
+  align-items: center;
+  min-height: calc(100vh - 64px - 140px); /* subtract header & footer */
+}
+
+/* ── Column ── */
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.colLabel {
+  font-family: var(--font-manrope, 'Manrope', sans-serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin: 0 0 14px 4px;
+}
+.colLabelCyan   { color: rgba(56, 189, 248, 0.65); }
+.colLabelPurple { color: rgba(167, 139, 250, 0.65); }
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Glass Card ── */
+.card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 11px 15px;
+  border-radius: 14px;
+  background: rgba(8, 18, 36, 0.52);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+  cursor: pointer;
+
+  /* Float animation — runs continuously */
+  animation: floatCard 4.5s ease-in-out calc(var(--i, 0) * 0.65s) infinite alternate;
+
+  /* Entrance fade */
+  opacity: 0;
+  transition:
+    opacity 0.55s ease calc(var(--i, 0) * 0.11s + 0.15s),
+    border-color 0.25s,
+    box-shadow 0.25s,
+    background 0.25s;
+}
+
+.cardIn {
+  opacity: 1;
+}
+
+/* Cyan (Lernbereich) */
+.cardCyan {
+  border-color: rgba(56, 189, 248, 0.15);
+}
+.cardCyan:hover {
+  background: rgba(10, 26, 52, 0.72);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow:
+    0 0 22px rgba(56, 189, 248, 0.14),
+    0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* Purple (Schnellzugriff) */
+.cardPurple {
+  border-color: rgba(167, 139, 250, 0.15);
+}
+.cardPurple:hover {
+  background: rgba(18, 10, 40, 0.72);
+  border-color: rgba(167, 139, 250, 0.45);
+  box-shadow:
+    0 0 22px rgba(167, 139, 250, 0.14),
+    0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Icon box ── */
+.iconBox {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.iconCyan   { border-color: rgba(56, 189, 248, 0.3);  background: rgba(56, 189, 248, 0.08); }
+.iconPurple { border-color: rgba(167, 139, 250, 0.3); background: rgba(167, 139, 250, 0.08); }
+
+.iconImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 9px;
+}
+
+/* ── Card name ── */
+.cardName {
+  font-family: var(--font-manrope, 'Manrope', sans-serif);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: rgba(236, 226, 210, 0.88);
+  flex: 1;
+  white-space: nowrap;
+}
+
+/* ── Arrow ── */
+.arrow {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.22);
+  transition: color 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+.card:hover .arrow {
+  color: rgba(255, 255, 255, 0.6);
+  transform: translateX(3px);
+}
+
+/* ── Center body ── */
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.bodyWrap {
+  position: relative;
+  width: 300px;
+  height: 540px;
+}
+
+.bodyGlow {
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(
+    ellipse 65% 75% at 50% 42%,
+    rgba(56, 189, 248, 0.13) 0%,
+    rgba(99, 102, 241, 0.06) 50%,
+    transparent 72%
+  );
+  animation: pulseGlow 3.2s ease-in-out infinite alternate;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.bodyImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 0 28px rgba(56, 189, 248, 0.38))
+          drop-shadow(0 0 8px rgba(56, 189, 248, 0.18));
+}
+
+/* ── Keyframe animations ── */
+@keyframes floatCard {
+  from { transform: translateY(0px); }
+  to   { transform: translateY(-9px); }
+}
+
+@keyframes pulseGlow {
+  from { opacity: 0.55; transform: scale(0.94); }
+  to   { opacity: 1;    transform: scale(1.06); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .layout {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    padding-inline: 1.5rem;
+  }
+  .center { display: none; } /* hide body on small screens */
+}
+
+@media (max-width: 640px) {
+  .layout {
+    grid-template-columns: 1fr;
+    padding-inline: 1rem;
+  }
+  .center { display: none; }
+}
