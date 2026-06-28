@@ -2,17 +2,17 @@
    HERO
 ═══════════════════════════════════════════════════════ */
 .hero {
-  --hero-bg: #f4f7f2;
-  --hero-bg-deep: #dfe9e0;
-  --hero-grid: rgba(26,32,81,.040);
-  --hero-word: #142033;
-  --hero-muted: rgba(63,74,92,.82);
-  --hero-card-bg: rgba(255,255,255,.76);
-  --hero-card-bg-strong: rgba(255,255,255,.96);
-  --hero-card-border: rgba(40,57,82,.14);
-  --hero-card-shadow: rgba(45,65,98,.16);
-  --hero-indicator-bg: rgba(255,255,255,.74);
-  --hero-indicator-text: #475569;
+  --hero-bg: #080e1c;
+  --hero-bg-deep: #07101e;
+  --hero-grid: rgba(96,165,250,.025);
+  --hero-word: #f0ece8;
+  --hero-muted: rgba(210,200,185,.62);
+  --hero-card-bg: rgba(7,12,24,.72);
+  --hero-card-bg-strong: rgba(7,12,24,.84);
+  --hero-card-border: rgba(255,255,255,.16);
+  --hero-card-shadow: rgba(0,0,0,.28);
+  --hero-indicator-bg: rgba(8,14,28,.54);
+  --hero-indicator-text: rgba(226,232,240,.74);
   --body-shift-x: 10px;
   position: relative;
   min-height: 100vh;
@@ -43,17 +43,8 @@
 .bg {
   position: absolute; inset: 0; z-index: 0;
   background:
-    radial-gradient(circle at 50% 44%, rgba(255,255,255,.88) 0 10%, rgba(255,255,255,.36) 24%, transparent 45%),
-    linear-gradient(120deg, rgba(249,115,22,.13) 0 13%, transparent 13% 100%),
-    linear-gradient(300deg, rgba(14,165,233,.12) 0 16%, transparent 16% 100%),
-    conic-gradient(from 225deg at 18% 86%, rgba(20,184,166,.18), transparent 24%, rgba(251,191,36,.16), transparent 52%, rgba(14,165,233,.14), transparent 78%, rgba(20,184,166,.18)),
-    linear-gradient(150deg, #fbfcf8 0%, #edf4ef 42%, #e1edf2 100%);
-}
-
-:global(html[data-theme='dark']) .bg {
-  background:
-    radial-gradient(ellipse 55% 80% at 5%  50%,  color-mix(in srgb, var(--hero-bg-deep) 72%, transparent) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 60% at 50% 20%,  rgba(30,15,60,0.7) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 80% at 5% 50%, color-mix(in srgb, var(--hero-bg-deep) 72%, transparent) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 50% 20%, rgba(30,15,60,0.7) 0%, transparent 60%),
     radial-gradient(ellipse 42% 56% at 91% 68%, rgba(5,30,40,0.8) 0%, transparent 62%),
     linear-gradient(160deg, var(--hero-bg) 0%, var(--hero-bg-deep) 100%);
 }
@@ -74,20 +65,13 @@
   z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(145deg, rgba(255,255,255,.58), rgba(255,255,255,.16)),
-    repeating-linear-gradient(135deg, transparent 0 18px, rgba(15,23,42,.035) 18px 19px, transparent 19px 36px);
-  border: 1px solid rgba(255,255,255,.58);
-  border-radius: 8px;
-  box-shadow: 0 30px 90px rgba(50,70,105,.10);
-  transform: skewX(-6deg);
-  mask-image: linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent);
-}
-
-:global(html[data-theme='dark']) .hero::before {
-  background:
     linear-gradient(90deg, transparent, rgba(56,189,248,.08), transparent),
     repeating-linear-gradient(90deg, transparent 0 22px, rgba(148,163,184,.035) 22px 23px, transparent 23px 44px);
-  border-inline-color: rgba(56,189,248,.08);
+  border: 1px solid rgba(56,189,248,.08);
+  border-radius: 8px;
+  box-shadow: 0 30px 90px rgba(0,0,0,.20);
+  transform: skewX(-6deg);
+  mask-image: linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent);
 }
 
 .heroHeader {
@@ -524,10 +508,10 @@
   }
   .mobilePanelButton {
     min-height: 48px;
-    border: 1px solid rgba(249,115,22,.28);
+    border: 1px solid rgba(255,255,255,.14);
     border-radius: 8px;
-    background: rgba(255,255,255,.72);
-    color: var(--hero-word);
+    background: rgba(7,12,24,.72);
+    color: rgba(226,232,240,.86);
     font-family: var(--font-main, sans-serif);
     font-size: 12px;
     font-weight: 900;
@@ -536,16 +520,6 @@
     box-shadow: 0 12px 28px rgba(30,64,112,.12);
   }
   .mobilePanelButtonActive {
-    color: #f97316;
-    background: rgba(255,247,237,.86);
-    border-color: rgba(249,115,22,.52);
-  }
-  :global(html[data-theme='dark']) .mobilePanelButton {
-    background: rgba(7,12,24,.72);
-    border-color: rgba(255,255,255,.14);
-    color: rgba(226,232,240,.86);
-  }
-  :global(html[data-theme='dark']) .mobilePanelButtonActive {
     color: #fbbf24;
     border-color: rgba(249,115,22,.46);
     background: rgba(249,115,22,.12);
