@@ -182,10 +182,6 @@ const ZONES = [
     transform: 'translate(-5 0)',
     d: 'M366 207 C367 225 371 245 371 263 C371 276 362 288 348 298 C365 307 387 313 413 315 C439 313 461 307 483 298 C468 288 460 276 456 263 C455 245 453 225 463 207 C449 228 436 239 413 239 C391 239 378 228 366 207 Z',
   },
-  {
-    id: 'Technik',
-    d: 'M705 1347 C750 1335 812 1341 852 1370 C883 1393 898 1433 899 1483 C900 1519 893 1548 879 1568 C900 1577 910 1590 906 1604 C900 1622 860 1632 787 1636 L663 1636 C627 1633 608 1623 609 1608 C610 1594 626 1582 650 1573 L650 1537 L601 1537 C582 1537 572 1529 574 1517 C576 1505 591 1499 614 1499 L677 1499 C674 1470 679 1432 688 1398 C692 1378 698 1361 705 1347 Z M746 1411 C724 1424 715 1447 716 1474 C717 1500 729 1517 750 1524 C776 1532 801 1522 815 1500 C830 1477 826 1445 808 1426 C791 1408 766 1400 746 1411 Z',
-  },
 ]
 
 // ── MAGNETIC FIELD ANIMATION ──────────────────────────────────────────────
@@ -423,12 +419,9 @@ export default function Hero() {
               <span className={styles.wmRad}>RAD</span>
               <span className={styles.wmYar}>YAR</span>
             </span>
-            <span className={styles.wmSub} dir="ltr" lang="en">
-              {texts.heroSub||'Radiology Education'}
-            </span>
+            <span className={styles.wmSub} dir="ltr" lang="en">{texts.tagline}</span>
           </div>
         </div>
-        <p className={styles.tagline}>{texts.tagline}</p>
       </div>
 
       <div className={`${styles.stage} ${mounted?styles.stageIn:''}`}>
@@ -457,14 +450,14 @@ export default function Hero() {
           <MagneticField/>
           <div className={styles.bodyWrap}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/body-anatomy.png" alt="Anatomy" className={styles.bodyImg} draggable={false}/>
+            <img src="/body-anatomy-clean.png" alt="Anatomy" className={styles.bodyImg} draggable={false}/>
 
             <div className={styles.bodyColorWash}
               style={{background:hovFach
                 ?`radial-gradient(ellipse 60% 70% at 50% 38%, ${hovFach.color}1a 0%, transparent 70%)`
                 :'none'}}/>
 
-            <svg className={styles.zoneSvg} viewBox="0 0 941 1672" preserveAspectRatio="none" aria-label={hintLabel}>
+            <svg className={styles.zoneSvg} viewBox="0 0 842 1672" preserveAspectRatio="none" aria-label={hintLabel}>
               <g transform="translate(-8 0)">
                 {ZONES.map((zone,i)=>{
                   const isHov = hovered===zone.id
@@ -500,9 +493,9 @@ export default function Hero() {
           </div>
           <div className={styles.hoverIndicator}
             style={hovFach ? {
-              borderColor: hovFach.color,
-              background: hovFach.color+'22',
-              boxShadow: `0 0 18px ${hovFach.color}44`
+              borderColor: hovFach.color+'88',
+              background: hovFach.color+'12',
+              boxShadow: `0 8px 20px ${hovFach.color}22`
             } : {}}>
             <span className={styles.hoverDot}
               style={{ background: hovFach?.color || '#f97316' }}/>

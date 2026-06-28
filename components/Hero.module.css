@@ -2,6 +2,17 @@
    HERO
 ═══════════════════════════════════════════════════════ */
 .hero {
+  --hero-bg: #edf3fb;
+  --hero-bg-deep: #dce8f5;
+  --hero-grid: rgba(26,32,81,.055);
+  --hero-word: #13203a;
+  --hero-muted: rgba(71,85,105,.78);
+  --hero-card-bg: rgba(255,255,255,.78);
+  --hero-card-bg-strong: rgba(255,255,255,.94);
+  --hero-card-border: rgba(15,23,42,.12);
+  --hero-card-shadow: rgba(30,41,59,.14);
+  --hero-indicator-bg: rgba(255,255,255,.66);
+  --hero-indicator-text: #475569;
   position: relative;
   min-height: 100vh;
   padding: 86px clamp(18px, 4vw, 58px) 42px;
@@ -9,25 +20,38 @@
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  background: #080e1c;
+  background: var(--hero-bg);
+}
+
+:global(html[data-theme='dark']) .hero {
+  --hero-bg: #080e1c;
+  --hero-bg-deep: #07101e;
+  --hero-grid: rgba(96,165,250,.025);
+  --hero-word: #f0ece8;
+  --hero-muted: rgba(210,200,185,.62);
+  --hero-card-bg: rgba(7,12,24,.72);
+  --hero-card-bg-strong: rgba(7,12,24,.84);
+  --hero-card-border: rgba(255,255,255,.16);
+  --hero-card-shadow: rgba(0,0,0,.28);
+  --hero-indicator-bg: rgba(8,14,28,.54);
+  --hero-indicator-text: rgba(226,232,240,.74);
 }
 
 /* ── BACKGROUND ──────────────────────────────────────── */
 .bg {
   position: absolute; inset: 0; z-index: 0;
   background:
-    radial-gradient(ellipse 55% 80% at 5%  50%,  rgba(26,32,81,0.95)   0%, transparent 70%),
-    radial-gradient(ellipse 50% 60% at 50% 20%,  rgba(30,15,60,0.7)    0%, transparent 60%),
-    radial-gradient(ellipse 40% 50% at 90% 70%,  rgba(5,30,40,0.8)     0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(10,20,50,0.6)    0%, transparent 70%),
-    linear-gradient(160deg, #060b18 0%, #0b1428 35%, #07101e 65%, #060d1a 100%);
+    radial-gradient(ellipse 55% 80% at 5%  50%,  color-mix(in srgb, var(--hero-bg-deep) 72%, transparent) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 50% 20%,  rgba(249,115,22,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 42% 56% at 91% 68%, rgba(14,165,233,0.14) 0%, transparent 62%),
+    linear-gradient(160deg, var(--hero-bg) 0%, var(--hero-bg-deep) 100%);
 }
 
 .bgGrid {
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background-image:
-    linear-gradient(rgba(96,165,250,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(96,165,250,0.025) 1px, transparent 1px);
+    linear-gradient(var(--hero-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hero-grid) 1px, transparent 1px);
   background-size: 52px 52px;
   mask-image: radial-gradient(ellipse 90% 90% at 60% 50%, black 10%, transparent 100%);
 }
@@ -76,7 +100,7 @@
   direction: ltr; letter-spacing: -1.5px;
 }
 .wmRad {
-  color: #f0ece8;
+  color: var(--hero-word);
   font-family: var(--font-fraunces, 'Georgia', serif) !important;
   font-style: italic !important;
   letter-spacing: -1.5px !important;
@@ -97,7 +121,7 @@
   font-family: var(--font-main, 'Manrope', sans-serif) !important;
   font-style: normal !important;
   font-size: 10.5px; letter-spacing: 0.22em !important; text-transform: uppercase;
-  color: rgba(249,115,22,0.5); font-weight: 600;
+  color: rgba(249,115,22,0.82); font-weight: 800;
   word-spacing: 0 !important; line-height: 1.4 !important;
 }
 
@@ -106,7 +130,7 @@
   font-family: var(--font-main, sans-serif);
   font-size: 11px; font-weight: 500;
   letter-spacing: 0.18em; text-transform: uppercase;
-  color: rgba(240,225,200,0.45);
+  color: var(--hero-muted);
   text-align: end;
   max-width: 330px;
 }
@@ -157,23 +181,22 @@
 /* ── HOVER INDICATOR ─────────────────────────────────── */
 .hoverIndicator {
   display: flex; align-items: center; gap: 12px;
-  padding: 13px 24px;
-  background: rgba(249,115,22,0.12);
-  border: 2px solid #f97316;
-  border-radius: 50px; width: fit-content; min-width: 280px; max-width: 100%;
+  padding: 8px 15px;
+  background: var(--hero-indicator-bg);
+  border: 1px solid rgba(249,115,22,.32);
+  border-radius: 50px; width: fit-content; min-width: 210px; max-width: 100%;
   box-sizing: border-box;
   transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
   cursor: default;
-  box-shadow: 0 0 20px rgba(249,115,22,0.25);
-  margin: -22px auto 0;
-  animation: indicatorPulse 2.5s ease-in-out infinite;
+  box-shadow: 0 8px 22px rgba(15,23,42,.10);
+  margin: -12px auto 0;
 }
 @keyframes indicatorPulse {
   0%,100% { box-shadow: 0 0 16px rgba(249,115,22,0.2); }
   50%      { box-shadow: 0 0 32px rgba(249,115,22,0.45); }
 }
 .hoverDot {
-  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
   background: #f97316;
   box-shadow: 0 0 8px #f97316;
   animation: dotPulse 2s ease-in-out infinite;
@@ -184,10 +207,10 @@
   50%      { transform: scale(0.75); opacity:0.6; }
 }
 .hoverText {
-  font-size: 13.5px; font-weight: 800; letter-spacing: 0.06em;
+  font-size: 11px; font-weight: 850; letter-spacing: 0.06em;
   text-transform: uppercase;
   font-family: var(--font-main, sans-serif);
-  color: #f97316;
+  color: var(--hero-indicator-text);
   transition: color 0.3s; white-space: nowrap;
 }
 
@@ -211,22 +234,21 @@
 
 .floatCard {
   position: absolute;
-  width: min(100%, 304px);
-  min-height: 112px;
+  width: min(100%, 328px);
+  min-height: 124px;
   display: grid;
-  grid-template-columns: 62px 1fr;
-  gap: 13px;
+  grid-template-columns: 72px 1fr;
+  gap: 15px;
   align-items: center;
-  padding: 13px;
-  border: 1px solid color-mix(in srgb, var(--card-color) 38%, rgba(255,255,255,.18));
+  padding: 15px;
+  border: 1px solid color-mix(in srgb, var(--card-color) 38%, var(--hero-card-border));
   border-radius: 8px;
   background:
-    linear-gradient(145deg, color-mix(in srgb, var(--card-color) 15%, rgba(255,255,255,.09)), rgba(255,255,255,.045) 62%),
-    rgba(7, 12, 24, .72);
-  color: rgba(248,250,252,.92);
+    linear-gradient(145deg, color-mix(in srgb, var(--card-color) 13%, var(--hero-card-bg-strong)), var(--hero-card-bg) 64%);
+  color: var(--hero-word);
   text-align: start;
   cursor: pointer;
-  box-shadow: 0 22px 55px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.08);
+  box-shadow: 0 24px 58px var(--hero-card-shadow), inset 0 1px 0 rgba(255,255,255,.12);
   backdrop-filter: blur(16px);
   transform: translate3d(var(--x, 0), var(--y, 0), 0) rotate(var(--rot, 0deg));
   animation: floatDrift var(--duration, 8s) ease-in-out infinite;
@@ -243,8 +265,8 @@
 }
 
 .floatIcon {
-  width: 62px;
-  height: 62px;
+  width: 72px;
+  height: 72px;
   display: block;
   overflow: hidden;
   border-radius: 8px;
@@ -265,7 +287,7 @@
 .floatText strong {
   font-family: var(--font-main, sans-serif);
   color: color-mix(in srgb, var(--card-color) 82%, white);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 900;
   line-height: 1.15;
 }
@@ -275,8 +297,8 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   font-family: var(--font-main, sans-serif);
-  color: rgba(226,232,240,.68);
-  font-size: 11.2px;
+  color: var(--hero-muted);
+  font-size: 11.8px;
   line-height: 1.45;
 }
 
@@ -313,20 +335,14 @@
   position: relative; z-index: 2;
   height: min(76vh, 780px);
   max-height: 780px;
-  aspect-ratio: 941 / 1672;
+  aspect-ratio: 842 / 1672;
   user-select: none;
   /* No background needed — image is now truly transparent */
 }
 
 /* Soft vignette at edges to blend into page */
 .bodyWrap::after {
-  content: '';
-  position: absolute; inset: 0; z-index: 5; pointer-events: none;
-  background:
-    linear-gradient(to right,  rgba(8,14,28,0.3) 0%, transparent 8%),
-    linear-gradient(to left,   rgba(8,14,28,0.3) 0%, transparent 8%),
-    linear-gradient(to bottom, rgba(8,14,28,0.5) 0%, transparent 6%),
-    linear-gradient(to top,    rgba(8,14,28,0.6) 0%, transparent 8%);
+  display: none;
 }
 
 .bodyImg {
@@ -488,7 +504,7 @@
   .bodyWrap {
     height: min(112vw, 700px);
     max-height: none;
-    aspect-ratio: 941 / 1672;
+    aspect-ratio: 842 / 1672;
     width: auto;
     max-width: 92vw;
   }
@@ -500,7 +516,7 @@
   .cardColumn { grid-template-columns: 1fr; }
   .floatCard { grid-template-columns: 56px 1fr; min-height: 96px; padding: 11px; }
   .floatIcon { width: 56px; height: 56px; }
-  .bodyWrap { width: 100%; max-width: 100vw; height: auto; flex: 0 0 auto; aspect-ratio: 941 / 1672; }
+  .bodyWrap { width: 100%; max-width: 100vw; height: auto; flex: 0 0 auto; aspect-ratio: 842 / 1672; }
   .bodyWrap::after { display: none; }
   .bodyImg { object-fit: contain; object-position: center top; }
   .hoverIndicator { width: 100%; min-width: 0; padding-inline: 18px; }
