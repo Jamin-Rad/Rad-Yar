@@ -1,13 +1,18 @@
 import { LanguageProvider } from '@/providers/LanguageProvider'
 import Navbar from '@/components/Navbar'
-import HomeGlass from '@/components/HomeGlass'
+import Hero from '@/components/Hero'
+import LernPfade from '@/components/LernPfade'
+import WichtigeReferenzen from '@/components/WichtigeReferenzen'
 import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
     <LanguageProvider>
       <Navbar />
-      <HomeGlass />
+      <Hero />
+      <div className="divider" />
+      <LernPfade />
+      <WichtigeReferenzen />
       <Footer />
     </LanguageProvider>
   )
