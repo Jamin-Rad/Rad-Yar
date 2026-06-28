@@ -2,18 +2,18 @@
    HERO
 ═══════════════════════════════════════════════════════ */
 .hero {
-  --hero-bg: #f7fbff;
-  --hero-bg-deep: #dfeaf7;
-  --hero-grid: rgba(26,32,81,.045);
-  --hero-word: #10203a;
-  --hero-muted: rgba(55,65,81,.80);
-  --hero-card-bg: rgba(255,255,255,.72);
-  --hero-card-bg-strong: rgba(255,255,255,.94);
-  --hero-card-border: rgba(15,23,42,.12);
-  --hero-card-shadow: rgba(30,64,112,.16);
-  --hero-indicator-bg: rgba(255,255,255,.70);
+  --hero-bg: #f4f7f2;
+  --hero-bg-deep: #dfe9e0;
+  --hero-grid: rgba(26,32,81,.040);
+  --hero-word: #142033;
+  --hero-muted: rgba(63,74,92,.82);
+  --hero-card-bg: rgba(255,255,255,.76);
+  --hero-card-bg-strong: rgba(255,255,255,.96);
+  --hero-card-border: rgba(40,57,82,.14);
+  --hero-card-shadow: rgba(45,65,98,.16);
+  --hero-indicator-bg: rgba(255,255,255,.74);
   --hero-indicator-text: #475569;
-  --body-shift-x: 28px;
+  --body-shift-x: 10px;
   position: relative;
   min-height: 100vh;
   padding: 86px clamp(18px, 4vw, 58px) 42px;
@@ -36,20 +36,18 @@
   --hero-card-shadow: rgba(0,0,0,.28);
   --hero-indicator-bg: rgba(8,14,28,.54);
   --hero-indicator-text: rgba(226,232,240,.74);
-  --body-shift-x: 28px;
+  --body-shift-x: 10px;
 }
 
 /* ── BACKGROUND ──────────────────────────────────────── */
 .bg {
   position: absolute; inset: 0; z-index: 0;
   background:
-    linear-gradient(118deg, transparent 0 18%, rgba(255,255,255,.62) 18% 31%, transparent 31% 100%),
-    linear-gradient(64deg, transparent 0 58%, rgba(14,165,233,.10) 58% 72%, transparent 72% 100%),
-    radial-gradient(ellipse 40% 64% at 50% 48%, rgba(255,255,255,.64) 0%, rgba(255,255,255,.16) 42%, transparent 70%),
-    radial-gradient(ellipse 56% 78% at 0% 48%, rgba(125,211,252,.28) 0%, transparent 68%),
-    radial-gradient(ellipse 44% 58% at 88% 20%, rgba(251,191,36,.20) 0%, transparent 62%),
-    radial-gradient(ellipse 42% 56% at 91% 72%, rgba(20,184,166,.16) 0%, transparent 66%),
-    linear-gradient(160deg, var(--hero-bg) 0%, var(--hero-bg-deep) 100%);
+    radial-gradient(circle at 50% 44%, rgba(255,255,255,.88) 0 10%, rgba(255,255,255,.36) 24%, transparent 45%),
+    linear-gradient(120deg, rgba(249,115,22,.13) 0 13%, transparent 13% 100%),
+    linear-gradient(300deg, rgba(14,165,233,.12) 0 16%, transparent 16% 100%),
+    conic-gradient(from 225deg at 18% 86%, rgba(20,184,166,.18), transparent 24%, rgba(251,191,36,.16), transparent 52%, rgba(14,165,233,.14), transparent 78%, rgba(20,184,166,.18)),
+    linear-gradient(150deg, #fbfcf8 0%, #edf4ef 42%, #e1edf2 100%);
 }
 
 :global(html[data-theme='dark']) .bg {
@@ -72,14 +70,16 @@
 .hero::before {
   content: '';
   position: absolute;
-  inset: 9% 27% 8%;
+  inset: 11% 25% 10%;
   z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(90deg, transparent, rgba(255,255,255,.52), transparent),
-    repeating-linear-gradient(90deg, transparent 0 22px, rgba(15,23,42,.035) 22px 23px, transparent 23px 44px);
-  border-inline: 1px solid rgba(14,165,233,.16);
-  transform: skewX(-8deg);
+    linear-gradient(145deg, rgba(255,255,255,.58), rgba(255,255,255,.16)),
+    repeating-linear-gradient(135deg, transparent 0 18px, rgba(15,23,42,.035) 18px 19px, transparent 19px 36px);
+  border: 1px solid rgba(255,255,255,.58);
+  border-radius: 8px;
+  box-shadow: 0 30px 90px rgba(50,70,105,.10);
+  transform: skewX(-6deg);
   mask-image: linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent);
 }
 
@@ -117,6 +117,10 @@
   transition: opacity .8s ease .1s, transform .8s ease .1s;
 }
 .stageIn { opacity: 1; transform: translateY(0); }
+
+.mobilePanelToggles {
+  display: none;
+}
 
 /* ── WORDMARK ────────────────────────────────────────── */
 .wordmark {
@@ -512,18 +516,55 @@
     grid-template-columns: 1fr;
     gap: 26px;
   }
+  .mobilePanelToggles {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    order: 2;
+  }
+  .mobilePanelButton {
+    min-height: 48px;
+    border: 1px solid rgba(249,115,22,.28);
+    border-radius: 8px;
+    background: rgba(255,255,255,.72);
+    color: var(--hero-word);
+    font-family: var(--font-main, sans-serif);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    box-shadow: 0 12px 28px rgba(30,64,112,.12);
+  }
+  .mobilePanelButtonActive {
+    color: #f97316;
+    background: rgba(255,247,237,.86);
+    border-color: rgba(249,115,22,.52);
+  }
+  :global(html[data-theme='dark']) .mobilePanelButton {
+    background: rgba(7,12,24,.72);
+    border-color: rgba(255,255,255,.14);
+    color: rgba(226,232,240,.86);
+  }
+  :global(html[data-theme='dark']) .mobilePanelButtonActive {
+    color: #fbbf24;
+    border-color: rgba(249,115,22,.46);
+    background: rgba(249,115,22,.12);
+  }
   .centerStage {
     min-height: auto;
     order: 1;
   }
   .cardColumn {
-    display: grid;
+    display: none;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
     min-height: 0;
-    order: 2;
+    order: 3;
   }
-  .cardColumnRight { order: 3; }
+  .cardColumnMobileOpen {
+    display: grid;
+  }
+  .cardColumnRight { order: 4; }
   .columnLabel {
     position: static;
     grid-column: 1 / -1;
@@ -547,7 +588,7 @@
 }
 @media (max-width: 640px) {
   .hero { --body-shift-x: 0px; padding: 74px 14px 28px; }
-  .hero::before { inset: 6% -12% 55%; transform: skewX(-10deg); }
+  .hero::before { inset: 6% -12% 55%; transform: skewX(-8deg); }
   .wmTitle { font-size: 38px; }
   .stage { gap: 20px; }
   .cardColumn { grid-template-columns: 1fr; }

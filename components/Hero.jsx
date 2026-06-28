@@ -357,6 +357,7 @@ export default function Hero() {
   const router = useRouter()
   const [hovered, setHovered] = useState(null)
   const [mounted, setMounted] = useState(false)
+  const [mobilePanel, setMobilePanel] = useState(null)
   useEffect(()=>{ setMounted(true) },[])
 
   const hovFach = hovered ? FACH_DATA[hovered] : null
@@ -425,7 +426,26 @@ export default function Hero() {
       </div>
 
       <div className={`${styles.stage} ${mounted?styles.stageIn:''}`}>
-        <div className={`${styles.cardColumn} ${styles.cardColumnLeft}`} aria-label={texts.section1Title}>
+        <div className={styles.mobilePanelToggles} aria-label="Homepage shortcuts">
+          <button
+            type="button"
+            className={`${styles.mobilePanelButton} ${mobilePanel === 'learning' ? styles.mobilePanelButtonActive : ''}`}
+            onClick={() => setMobilePanel(panel => panel === 'learning' ? null : 'learning')}
+            aria-expanded={mobilePanel === 'learning'}
+          >
+            {texts.section1Label}
+          </button>
+          <button
+            type="button"
+            className={`${styles.mobilePanelButton} ${mobilePanel === 'references' ? styles.mobilePanelButtonActive : ''}`}
+            onClick={() => setMobilePanel(panel => panel === 'references' ? null : 'references')}
+            aria-expanded={mobilePanel === 'references'}
+          >
+            {referenceCopy.sectionLabel}
+          </button>
+        </div>
+
+        <div className={`${styles.cardColumn} ${styles.cardColumnLeft} ${mobilePanel === 'learning' ? styles.cardColumnMobileOpen : ''}`} aria-label={texts.section1Title}>
           <span className={styles.columnLabel}>{texts.section1Label}</span>
           {texts.pillars.map((pillar, index) => (
             <button
@@ -506,7 +526,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className={`${styles.cardColumn} ${styles.cardColumnRight}`} aria-label={referenceCopy.sectionLabel}>
+        <div className={`${styles.cardColumn} ${styles.cardColumnRight} ${mobilePanel === 'references' ? styles.cardColumnMobileOpen : ''}`} aria-label={referenceCopy.sectionLabel}>
           <span className={styles.columnLabel}>{referenceCopy.sectionLabel}</span>
           {REFERENCE_CARDS.map((card, index) => (
             <button
