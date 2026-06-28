@@ -13,6 +13,7 @@
   --hero-card-shadow: rgba(0,0,0,.28);
   --hero-indicator-bg: rgba(8,14,28,.54);
   --hero-indicator-text: rgba(226,232,240,.74);
+  --hero-title-font: 'Avenir Next', 'Inter', 'SF Pro Display', var(--font-main), system-ui, sans-serif;
   --body-shift-x: 10px;
   position: relative;
   min-height: 100vh;
@@ -119,13 +120,13 @@
   font-size: clamp(38px, 4.8vw, 64px);
   font-weight: 900; line-height: 1;
   display: flex; align-items: baseline;
-  direction: ltr; letter-spacing: -1.1px;
+  direction: ltr; letter-spacing: -1.5px;
 }
 .wmRad {
   color: var(--hero-word);
   font-family: var(--font-fraunces, 'Georgia', serif) !important;
   font-style: italic !important;
-  letter-spacing: -1.1px !important;
+  letter-spacing: -1.5px !important;
   word-spacing: 0 !important;
 }
 .wmYar {
@@ -135,15 +136,15 @@
   filter: drop-shadow(0 0 22px rgba(249,115,22,0.5));
   font-family: var(--font-fraunces, 'Georgia', serif) !important;
   font-style: italic !important;
-  letter-spacing: -1.1px !important;
+  letter-spacing: -1.5px !important;
   word-spacing: 0 !important;
 }
 .wmSub {
   /* Sub-label uses main font but also protected from Vazirmatn */
-  font-family: var(--font-main, 'Manrope', sans-serif) !important;
+  font-family: var(--hero-title-font) !important;
   font-style: normal !important;
-  font-size: 10.5px; letter-spacing: 0.16em !important; text-transform: uppercase;
-  color: rgba(249,115,22,0.84); font-weight: 700;
+  font-size: 10.5px; letter-spacing: 0.22em !important; text-transform: uppercase;
+  color: rgba(249,115,22,0.82); font-weight: 800;
   word-spacing: 0 !important; line-height: 1.4 !important;
 }
 
@@ -229,9 +230,9 @@
   50%      { transform: scale(0.75); opacity:0.6; }
 }
 .hoverText {
-  font-size: 11px; font-weight: 800; letter-spacing: 0.045em;
+  font-size: 11px; font-weight: 850; letter-spacing: 0.06em;
   text-transform: uppercase;
-  font-family: var(--font-main, sans-serif);
+  font-family: var(--hero-title-font);
   color: var(--hero-indicator-text);
   transition: color 0.3s; white-space: nowrap;
 }
@@ -244,10 +245,10 @@
 .columnLabel {
   position: absolute;
   top: 4px;
-  font-family: var(--font-main, sans-serif);
+  font-family: var(--hero-title-font);
   font-size: 10px;
-  font-weight: 800;
-  letter-spacing: .14em;
+  font-weight: 900;
+  letter-spacing: .18em;
   text-transform: uppercase;
   color: rgba(249,115,22,.68);
 }
@@ -307,12 +308,11 @@
   gap: 4px;
 }
 .floatText strong {
-  font-family: var(--font-main, sans-serif);
+  font-family: var(--hero-title-font);
   color: color-mix(in srgb, var(--card-color) 82%, white);
   font-size: 15px;
-  font-weight: 760;
-  letter-spacing: .01em;
-  line-height: 1.18;
+  font-weight: 900;
+  line-height: 1.15;
 }
 .floatText small {
   display: -webkit-box;
@@ -397,9 +397,9 @@
   position: absolute; top: 14px; left: 50%;
   transform: translateX(-50%);
   display: flex; align-items: center; gap: 8px;
-  font-family: var(--font-main, sans-serif);
-  font-size: 11px; font-weight: 750;
-  letter-spacing: 0.075em; text-transform: uppercase;
+  font-family: var(--hero-title-font);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
   border: 1px solid; border-radius: 50px;
   padding: 5px 16px; white-space: nowrap;
   pointer-events: none; z-index: 10;
@@ -552,9 +552,10 @@
     position: relative;
     z-index: 1;
     min-width: 0;
+    font-family: var(--hero-title-font);
     font-size: 12.5px;
-    font-weight: 780;
-    letter-spacing: .055em;
+    font-weight: 950;
+    letter-spacing: .07em;
     text-transform: uppercase;
     line-height: 1.2;
   }
