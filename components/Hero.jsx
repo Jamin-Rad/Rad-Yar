@@ -250,10 +250,11 @@ function GalaxyAtom() {
     const drawGalaxy = (gx, gy, time) => {
       const pulse = (Math.sin(time * 0.00038) + 1) / 2
 
-      // Outer haze
-      const haze = ctx.createRadialGradient(gx, gy, 0, gx, gy, w * 0.22)
-      haze.addColorStop(0,   `rgba(160,100,255,${0.18 + pulse*0.06})`)
-      haze.addColorStop(0.45,'rgba(80,60,200,0.07)')
+      // Outer haze — large so it bleeds into center
+      const haze = ctx.createRadialGradient(gx, gy, 0, gx, gy, w * 0.55)
+      haze.addColorStop(0,   `rgba(160,100,255,${0.22 + pulse*0.08})`)
+      haze.addColorStop(0.3, `rgba(100,60,220,0.12)`)
+      haze.addColorStop(0.6, `rgba(60,40,180,0.05)`)
       haze.addColorStop(1,   'rgba(40,20,140,0)')
       ctx.fillStyle = haze
       ctx.fillRect(0, 0, w, h)
@@ -323,6 +324,13 @@ function GalaxyAtom() {
     const drawAtom = (ax, ay, time) => {
       const pulse = (Math.sin(time * 0.00065) + 1) / 2
 
+      // Nucleus outer glow — large so it bleeds into center
+      const outerNg = ctx.createRadialGradient(ax, ay, 0, ax, ay, w * 0.45)
+      outerNg.addColorStop(0,   `rgba(170,130,255,0.18)`)
+      outerNg.addColorStop(0.35,`rgba(110,80,230,0.08)`)
+      outerNg.addColorStop(1,   'rgba(80,50,190,0)')
+      ctx.fillStyle = outerNg; ctx.fillRect(0, 0, w, h)
+
       // Nucleus glow
       const ng = ctx.createRadialGradient(ax, ay, 0, ax, ay, w * 0.055)
       ng.addColorStop(0,   `rgba(170,130,255,${0.65+pulse*0.2})`)
@@ -373,8 +381,8 @@ function GalaxyAtom() {
         ctx.fillStyle = `rgba(200,218,255,${a})`; ctx.fill()
       })
 
-      const gx = w * 0.24, gy = h * 0.68
-      const ax = w * 0.76, ay = h * 0.40
+      const gx = w * 0.06, gy = h * 0.82
+      const ax = w * 0.94, ay = h * 0.22
 
       drawGalaxy(gx, gy, time)
       drawStreams(gx, gy, ax, ay, time)
