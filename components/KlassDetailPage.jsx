@@ -7,6 +7,7 @@ import { REF_COPY, REF_DATA, tx } from '@/data/referenzen'
 import styles from './KlassDetailPage.module.css'
 
 const TOPIC_LOGOS = {
+  anatomie: '/referenzen/anatomie/anatomie-icon.jpg',
   neuro: '/fach/gehirn.png',
   thorax: '/fach/thorax.png',
   abdomen: '/fach/abdomen.png',
@@ -76,7 +77,7 @@ function DetailList({ detail, lang, color }) {
   )
 }
 
-function SourceLinks({ item, lang, copy }) {
+function SourceLinks({ item, lang }) {
   const sources = item.sources || (item.refUrl ? [{ label: item.ref, url: item.refUrl }] : [])
   if (!sources.length) return item.ref || null
   return (
@@ -97,23 +98,37 @@ function sortByLocalizedName(items, lang) {
   return [...items].sort((a, b) => tx(a.name, lang).localeCompare(tx(b.name, lang), lang === 'de' ? 'de' : undefined, { sensitivity: 'base' }))
 }
 
-export default function KlassDetailPage({ topic, item }) {
+function normalizeDetailImage(item, lang) {
+  if (!item.image) return null
+  if (typeof item.image === 'string') {
+    return { src: item.image, alt: tx(item.name, lang) }
+  }
+  return { src: item.image.src, alt: tx(item.image.alt, lang), attribution: item.image.attribution }
+}
+
+export default function KlassDetailPage({ topic, item, section = 'klassifikationen' }) {
   const { lang } = useLanguage()
   const copy = REF_COPY[lang] || REF_COPY.de
+  const isAnatomie = section === 'anatomie'
   const color = topic.color
   const siblings = sortByLocalizedName(topic.items, lang)
-  const otherTopics = REF_DATA.klassifikationen
+  const otherTopics = isAnatomie ? [] : REF_DATA.klassifikationen
     .filter(t => t.id !== topic.id)
     .map(t => ({ ...t, items: sortByLocalizedName(t.items, lang) }))
-  const backHref = lang !== 'de' ? `/?lang=${lang}&ref=klassifikationen#referenzen` : '/?ref=klassifikationen#referenzen'
+  const refParam = isAnatomie ? 'anatomie' : 'klassifikationen'
+  const backHref = lang !== 'de' ? `/?lang=${lang}&ref=${refParam}#referenzen` : `/?ref=${refParam}#referenzen`
   const [zoomSrc, setZoomSrc] = useState(null)
-  const infoLabel = lang === 'de' ? 'Einordnung & Radiologie-Check' : lang === 'fa' ? 'توضیح و چک رادیولوژی' : 'Context & radiology check'
+  const infoLabel = isAnatomie
+    ? (lang === 'de' ? 'Kompakt' : lang === 'fa' ? 'خلاصه' : 'Compact')
+    : (lang === 'de' ? 'Einordnung & Radiologie-Check' : lang === 'fa' ? 'توضیح و چک رادیولوژی' : 'Context & radiology check')
+  const image = normalizeDetailImage(item, lang)
+  const sourceLinks = SourceLinks({ item, lang })
 
   return (
     <main className={styles.page}>
       {/* Breadcrumb */}
       <div className={styles.breadcrumb}>
-        <Link href={backHref} className={styles.backLink}>← {copy.btnKlass}</Link>
+        <Link href={backHref} className={styles.backLink}>← {isAnatomie ? copy.btnAnatomie : copy.btnKlass}</Link>
         <span className={styles.breadSep}>/</span>
         <span style={{ color }}>{tx(topic.name, lang)}</span>
         <span className={styles.breadSep}>/</span>
@@ -125,7 +140,7 @@ export default function KlassDetailPage({ topic, item }) {
         <nav className={styles.sidebar} aria-label={copy.chooseClass}>
           <Link href={backHref} className={styles.sidebarBack}>
             <span>←</span>
-            <span>{copy.btnKlass}</span>
+            <span>{isAnatomie ? copy.btnAnatomie : copy.btnKlass}</span>
           </Link>
           <div className={styles.currentTopic} style={{ '--ref-color': color }}>
             <span className={styles.currentTopicIcon}><ClassificationTopicLogo topicId={topic.id} size={32} /></span>
@@ -152,7 +167,7 @@ export default function KlassDetailPage({ topic, item }) {
             ))}
           </div>
 
-          <div className={styles.otherGroup}>
+          {!isAnatomie && <div className={styles.otherGroup}>
             <div className={styles.sidebarSectionLabel}>
               {lang === 'de' ? 'Bereich wechseln' : lang === 'fa' ? 'تغییر بخش' : 'Switch section'}
             </div>
@@ -170,22 +185,23 @@ export default function KlassDetailPage({ topic, item }) {
                 </Link>
               ))}
             </div>
-          </div>
+          </div>}
         </nav>
 
         {/* Hauptinhalt */}
         <article className={styles.content} style={{ '--ref-color': color }}>
           <h1 className={styles.heading}>{tx(item.name, lang)}</h1>
 
-          {(item.erklaerung || item.radiologie) && (
+          {(item.kompakt || item.erklaerung || item.radiologie) && (
             <section id="erklaerung" className={styles.infoPanel}>
               <span className={styles.infoPanelLabel}>{infoLabel}</span>
+              {item.kompakt && <p>{tx(item.kompakt, lang)}</p>}
               {item.erklaerung && <p>{tx(item.erklaerung, lang)}</p>}
               {item.radiologie && <DetailList detail={item.radiologie} lang={lang} color={color} />}
             </section>
           )}
 
-          <div className={item.image ? styles.tableImageGrid : undefined}>
+          <div className={image ? styles.tableImageGrid : undefined}>
             {/* Tabellen-Sektion */}
             <div>
               {item.detail && item.detailPosition === 'beforeTables' && (
@@ -210,7 +226,7 @@ export default function KlassDetailPage({ topic, item }) {
                 </div>
               ) : (
                 <div id="vollstaendig">
-                  <CollapseSection title={copy.vollstaendig} color={color} defaultOpen={!item.einfach}>
+                  <CollapseSection title={isAnatomie ? copy.voll : copy.vollstaendig} color={color} defaultOpen={!item.einfach}>
                     <ClassTable cols={item.cols} rows={item.rows} lang={lang} />
                     {item.tableNote && (
                       <div className={styles.tableNote}>
@@ -229,23 +245,23 @@ export default function KlassDetailPage({ topic, item }) {
             </div>
 
             {/* Bild rechts (optional) */}
-            {item.image && (
+            {image && (
               <figure className={styles.imageFigure}>
                 <button
                   type="button"
                   className={styles.imageBtn}
-                  onClick={() => setZoomSrc({ src: item.image.src, alt: tx(item.image.alt, lang) })}
+                  onClick={() => setZoomSrc({ src: image.src, alt: image.alt })}
                   aria-label={copy.zoomImage || 'Vergrößern'}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={item.image.src} alt={tx(item.image.alt, lang)} className={styles.image} />
+                  <img src={image.src} alt={image.alt} className={styles.image} />
                   <span className={styles.zoomHint}>🔍 {copy.zoomImage || 'Vergrößern'}</span>
                 </button>
-                {item.image.attribution && (
+                {image.attribution && (
                   <figcaption className={styles.imageCaption}>
-                    Case courtesy of <strong>{item.image.attribution.name}</strong>,{' '}
-                    <a href={item.image.attribution.sourceUrl} target="_blank" rel="noopener noreferrer">Radiopaedia.org</a>.
-                    From the case <a href={item.image.attribution.caseUrl} target="_blank" rel="noopener noreferrer">rID: {item.image.attribution.caseId}</a>
+                    Case courtesy of <strong>{image.attribution.name}</strong>,{' '}
+                    <a href={image.attribution.sourceUrl} target="_blank" rel="noopener noreferrer">Radiopaedia.org</a>.
+                    From the case <a href={image.attribution.caseUrl} target="_blank" rel="noopener noreferrer">rID: {image.attribution.caseId}</a>
                   </figcaption>
                 )}
               </figure>
@@ -253,10 +269,12 @@ export default function KlassDetailPage({ topic, item }) {
           </div>
 
           {/* Quelle */}
-          <p id="quelle" className={styles.ref}>
-            <span className={styles.refLabel}>{copy.reference}:</span>{' '}
-            <SourceLinks item={item} lang={lang} copy={copy} />
-          </p>
+          {sourceLinks && (
+            <p id="quelle" className={styles.ref}>
+              <span className={styles.refLabel}>{copy.reference}:</span>{' '}
+              {sourceLinks}
+            </p>
+          )}
 
           <p className={styles.disclaimer}>⚠️ {copy.disclaimer}</p>
         </article>

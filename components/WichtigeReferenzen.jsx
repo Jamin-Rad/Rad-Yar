@@ -269,6 +269,7 @@ export default function WichtigeReferenzen({ mode = 'section' }) {
   useEffect(() => {
     if (typeof window === 'undefined') return
     const params = new URLSearchParams(window.location.search)
+    if (params.get('ref') === 'anatomie') setModal('anatomie')
     if (params.get('ref') === 'klassifikationen') setModal('klassifikationen')
   }, [])
 
@@ -372,6 +373,7 @@ function Modal({ title, subtitle, accent, copy, onClose, children, accentClass, 
 
 /* ── Befundrelevante Anatomie ─────────────────── */
 function AnatomieModal({ copy, lang, onClose }) {
+  const router = useRouter()
   const items = sortByLocalizedName(REF_DATA.anatomie, lang)
   const [itemId, setItemId] = useState(items[0].id)
   const [showDetail, setShowDetail] = useState(false)
@@ -409,6 +411,10 @@ function AnatomieModal({ copy, lang, onClose }) {
     setItemId(nextItem.id)
     setShowDetail(true)
     setQuery('')
+  }
+  const go = id => {
+    onClose()
+    router.push(`/referenzen/anatomie/${id}${lang!=='de'?`?lang=${lang}`:''}`)
   }
 
   return (
@@ -506,6 +512,26 @@ function AnatomieModal({ copy, lang, onClose }) {
             <div className={styles.anatomyIntro}>
               <span>{copy.kompakt}</span>
               <p>{tx(item.kompakt, lang)}</p>
+              <button
+                type="button"
+                onClick={() => go(item.id)}
+                style={{
+                  alignSelf: 'flex-start',
+                  marginTop: 4,
+                  minHeight: 36,
+                  padding: '0 14px',
+                  border: 0,
+                  borderRadius: 10,
+                  background: item.color,
+                  color: '#fff',
+                  cursor: 'pointer',
+                  font: 'inherit',
+                  fontSize: 12,
+                  fontWeight: 850,
+                }}
+              >
+                {copy.openDetail}
+              </button>
             </div>
           </div>
           <div className={styles.tableWrap}>
