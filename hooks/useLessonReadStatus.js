@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useAuth } from '@clerk/nextjs'
 import { pullReadStatusFromServer } from '@/utils/readStatus'
-import { markProgressSyncPending } from '@/utils/syncProgressToServer'
+import { persistProgressWrite } from '@/utils/progressSync'
 
 export function useLessonReadStatus(topicId) {
   const { isLoaded, userId } = useAuth()
@@ -49,13 +49,12 @@ export function useLessonReadStatus(topicId) {
           next ? [...withoutTopic, { topicId, learnedAt: new Date().toISOString() }] : withoutTopic
         ))
       } catch {}
-      fetch('/api/progress/read-status', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ themaId: topicId, read: next }),
-      }).then(response => {
-        if (!response.ok) markProgressSyncPending(userId)
-      }).catch(() => markProgressSyncPending(userId))
+      persistProgressWrite(
+        `read:${topicId}`,
+        '/api/progress/read-status',
+        { themaId: topicId, read: next },
+        Boolean(userId)
+      )
       if (next) {
         window.dispatchEvent(new CustomEvent('radyar:lesson-read', { detail: { topicId } }))
       }

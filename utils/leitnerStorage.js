@@ -137,22 +137,13 @@ export function syncLeitnerCardToServer(cardId, record, userId = null) {
   const queueKey = `${userId || 'anon'}:${cardId}`
   const previous = syncQueues.get(queueKey) || Promise.resolve()
   const next = previous.then(async () => {
-    try {
-      const response = await fetch('/api/progress/leitner', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ cardId, record }),
-      })
-      if (!response.ok && userId) {
-        const { markProgressSyncPending } = await import('@/utils/syncProgressToServer')
-        markProgressSyncPending(userId)
-      }
-    } catch (_) {
-      if (userId) {
-        const { markProgressSyncPending } = await import('@/utils/syncProgressToServer')
-        markProgressSyncPending(userId)
-      }
-    }
+    const { persistProgressWrite } = await import('@/utils/progressSync')
+    await persistProgressWrite(
+      `leitner:${cardId}`,
+      '/api/progress/leitner',
+      { cardId, record },
+      Boolean(userId)
+    )
   })
   syncQueues.set(queueKey, next)
   next.then(() => {

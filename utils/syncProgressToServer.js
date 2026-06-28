@@ -129,15 +129,24 @@ function postJson(url, body) {
 async function reconcileProgress(userId) {
   activateUserCache(userId)
 
-  const [readServer, mcqServer, leitnerServer] = await Promise.all([
+  const [readResult, mcqResult, leitnerResult] = await Promise.allSettled([
     requestJson('/api/progress/read-status'),
     requestJson('/api/progress/mcq-results'),
     requestJson('/api/progress/leitner'),
   ])
 
-  const read = mergeReadProgress(readServer)
-  const mcqScores = mergeMcqProgress(mcqServer)
-  const leitnerState = mergeLeitnerProgress(userId, leitnerServer)
+  const read = readResult.status === 'fulfilled'
+    ? mergeReadProgress(readResult.value)
+    : {
+        articles: readJson('radyar_read_articles', {}),
+        history: readJson('radyar_learning_history', []),
+      }
+  const mcqScores = mcqResult.status === 'fulfilled'
+    ? mergeMcqProgress(mcqResult.value)
+    : readJson('radyar_mcq_scores', {})
+  const leitnerState = leitnerResult.status === 'fulfilled'
+    ? mergeLeitnerProgress(userId, leitnerResult.value)
+    : readJson(`radyar_leitner_${userId}`, {})
   persistCurrentUserCache(userId)
   const historyByTopic = new Map(read.history.map(item => [item.topicId, item.learnedAt]))
   const readBulk = Object.entries(read.articles)
@@ -148,7 +157,15 @@ async function reconcileProgress(userId) {
   if (readBulk.length) uploads.push(postJson('/api/progress/read-status', { bulk: readBulk }))
   if (Object.keys(mcqScores).length) uploads.push(postJson('/api/progress/mcq-results', { bulk: mcqScores }))
   if (Object.keys(leitnerState).length) uploads.push(postJson('/api/progress/leitner', { bulk: leitnerState }))
-  await Promise.all(uploads)
+  const uploadResults = await Promise.allSettled(uploads)
+  const failedUpload = uploadResults.find(result => result.status === 'rejected')
+  if (failedUpload) {
+    throw failedUpload.reason || new Error('Progress upload failed')
+  }
+  const failedPull = [readResult, mcqResult, leitnerResult].find(result => result.status === 'rejected')
+  if (failedPull) {
+    throw failedPull.reason || new Error('Progress download failed')
+  }
 
   sessionStorage.setItem(`${SESSION_KEY_PREFIX}${userId}`, '1')
   window.dispatchEvent(new CustomEvent('radyar:progress-synced', {
