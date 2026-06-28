@@ -232,20 +232,23 @@
 .cardColumn {
   position: relative;
   min-height: min(69vh, 650px);
+  margin-top: -48px;
 }
 
 .columnLabel {
   position: absolute;
-  top: 4px;
-  font-family: var(--font-main, sans-serif);
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: rgba(249,115,22,.68);
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: var(--font-fraunces, Georgia, serif);
+  font-style: italic;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: rgba(249,115,22,.92);
+  text-shadow: 0 0 22px rgba(249,115,22,0.35);
 }
-.cardColumnLeft .columnLabel { left: 10px; }
-.cardColumnRight .columnLabel { right: 10px; }
 
 .floatCard {
   position: absolute;
