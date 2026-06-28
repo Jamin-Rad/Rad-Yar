@@ -433,7 +433,8 @@ export default function Hero() {
             onClick={() => setMobilePanel(panel => panel === 'learning' ? null : 'learning')}
             aria-expanded={mobilePanel === 'learning'}
           >
-            {texts.section1Label}
+            <span className={styles.mobilePanelIcon}>01</span>
+            <span className={styles.mobilePanelText}>{texts.section1Label}</span>
           </button>
           <button
             type="button"
@@ -441,7 +442,8 @@ export default function Hero() {
             onClick={() => setMobilePanel(panel => panel === 'references' ? null : 'references')}
             aria-expanded={mobilePanel === 'references'}
           >
-            {referenceCopy.sectionLabel}
+            <span className={styles.mobilePanelIcon}>02</span>
+            <span className={styles.mobilePanelText}>{referenceCopy.sectionLabel}</span>
           </button>
         </div>
 
