@@ -237,7 +237,7 @@ function CollapseGroup({ name, color, defaultOpen = false, children }) {
 }
 
 /* ── Hauptkomponente ──────────────────────────── */
-export default function WichtigeReferenzen() {
+export default function WichtigeReferenzen({ mode = 'section' }) {
   const { lang } = useLanguage()
   const copy = REF_COPY[lang] || REF_COPY.de
   const [modal, setModal] = useState(null)
@@ -254,6 +254,28 @@ export default function WichtigeReferenzen() {
     document.body.style.overflow = 'hidden'
     return () => { document.body.style.overflow = prev }
   }, [modal])
+
+  useEffect(() => {
+    const openReferenceModal = (event) => {
+      const modalId = event.detail?.modal
+      if (['anatomie', 'messwerte', 'klassifikationen', 'rechner'].includes(modalId)) {
+        setModal(modalId)
+      }
+    }
+    window.addEventListener('radyar:open-reference-modal', openReferenceModal)
+    return () => window.removeEventListener('radyar:open-reference-modal', openReferenceModal)
+  }, [])
+
+  if (mode === 'modals') {
+    return (
+      <>
+        {modal==='anatomie'        && <AnatomieModal        copy={copy} lang={lang} onClose={()=>setModal(null)} />}
+        {modal==='messwerte'       && <MesswerteModal       copy={copy} lang={lang} onClose={()=>setModal(null)} />}
+        {modal==='klassifikationen'&& <KlassifikationenModal copy={copy} lang={lang} onClose={()=>setModal(null)} />}
+        {modal==='rechner'         && <RechnerModal          copy={copy} lang={lang} onClose={()=>setModal(null)} />}
+      </>
+    )
+  }
 
   return (
     <section className={styles.section} id="referenzen">

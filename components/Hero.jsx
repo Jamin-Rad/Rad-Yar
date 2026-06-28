@@ -1,8 +1,26 @@
 'use client'
-import Link from 'next/link'
+import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
+import { useRouter } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
+import { REF_COPY } from '@/data/referenzen'
 import styles from './Hero.module.css'
+
+const PILLAR_ICONS = [
+  '/lernbereiche/lektionen.jpg',
+  '/lernbereiche/fallpruefung.jpg',
+  '/lernbereiche/mcq.jpg',
+  '/lernbereiche/flashcards.jpg',
+]
+
+const LEARNING_CARD_COLORS = ['#f97316', '#0ea5e9', '#10b981', '#2563eb']
+
+const REFERENCE_CARDS = [
+  { key: 'anatomie', title: 'btnAnatomie', desc: 'btnAnatomieSub', image: '/referenzen/anatomie/anatomie-icon.jpg', color: '#7c3aed' },
+  { key: 'klassifikationen', title: 'btnKlass', desc: 'btnKlassSub', image: '/referenzen/klassifikation.png', color: '#f97316' },
+  { key: 'messwerte', title: 'btnMesswerte', desc: 'btnMesswerteSub', image: '/referenzen/messwerte.png', color: '#0ea5e9' },
+  { key: 'rechner', title: 'btnRechner', desc: 'btnRechnerSub', image: '/referenzen/rechner.png', color: '#059669' },
+]
 
 // ── FACHGEBIETE ───────────────────────────────────────────────────────────
 const FACH_DATA = {
@@ -340,6 +358,7 @@ const ZONE_TO_LERNEN = {
 // ── MAIN ──────────────────────────────────────────────────────────────────
 export default function Hero() {
   const { texts, lang } = useLanguage()
+  const router = useRouter()
   const [hovered, setHovered] = useState(null)
   const [mounted, setMounted] = useState(false)
   useEffect(()=>{ setMounted(true) },[])
@@ -378,14 +397,25 @@ export default function Hero() {
     if (url) window.location.href = url
   }
 
+  const handleLearningCard = (index) => {
+    if (index === 0) router.push('/lernen')
+    if (index === 1) router.push('/faelle')
+    if (index === 2) router.push('/ueben')
+    if (index === 3) router.push('/flashcards')
+  }
+
+  const openReferenceCard = (modal) => {
+    window.dispatchEvent(new CustomEvent('radyar:open-reference-modal', { detail: { modal } }))
+  }
+
+  const referenceCopy = REF_COPY[lang] || REF_COPY.de
+
   return (
     <section className={styles.hero}>
       <div className={styles.bg}/>
       <div className={styles.bgGrid}/>
 
-      {/* ── LEFT ── */}
-      <div className={`${styles.left} ${mounted?styles.leftIn:''}`}>
-
+      <div className={`${styles.heroHeader} ${mounted?styles.leftIn:''}`}>
         <div className={styles.wordmark} dir="ltr" lang="en">
           <HexLogo/>
           <div className={styles.wmText} dir="ltr" lang="en">
@@ -398,74 +428,110 @@ export default function Hero() {
             </span>
           </div>
         </div>
-
         <p className={styles.tagline}>{texts.tagline}</p>
-        <div className={styles.bar}/>
-        <p className={styles.desc}>{texts.heroDesc}</p>
-
-
-
-        <div className={styles.hoverIndicator}
-          style={hovFach ? {
-            borderColor: hovFach.color,
-            background: hovFach.color+'22',
-            boxShadow: `0 0 18px ${hovFach.color}44`
-          } : {}}>
-          <span className={styles.hoverDot}
-            style={{ background: hovFach?.color || '#f97316' }}/>
-          <span className={styles.hoverText}
-            style={{ color: hovFach ? hovFach.color : '#f97316' }}>
-            {hovName || hintLabel}
-          </span>
-        </div>
       </div>
 
-      {/* ── RIGHT ── */}
-      <div className={`${styles.right} ${mounted?styles.rightIn:''}`}>
-        <MagneticField/>
+      <div className={`${styles.stage} ${mounted?styles.stageIn:''}`}>
+        <div className={`${styles.cardColumn} ${styles.cardColumnLeft}`} aria-label={texts.section1Title}>
+          <span className={styles.columnLabel}>{texts.section1Label}</span>
+          {texts.pillars.map((pillar, index) => (
+            <button
+              key={pillar.title}
+              type="button"
+              className={`${styles.floatCard} ${styles[`floatLeft${index}`] || ''}`}
+              style={{ '--card-color': LEARNING_CARD_COLORS[index] }}
+              onClick={() => handleLearningCard(index)}
+            >
+              <span className={styles.floatIcon}>
+                <Image src={PILLAR_ICONS[index]} alt="" width={62} height={62} />
+              </span>
+              <span className={styles.floatText}>
+                <strong>{pillar.title}</strong>
+                <small>{pillar.desc}</small>
+              </span>
+            </button>
+          ))}
+        </div>
 
-        <div className={styles.bodyWrap}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/body-anatomy.png" alt="Anatomy" className={styles.bodyImg} draggable={false}/>
+        <div className={styles.centerStage}>
+          <MagneticField/>
+          <div className={styles.bodyWrap}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/body-anatomy.png" alt="Anatomy" className={styles.bodyImg} draggable={false}/>
 
-          <div className={styles.bodyColorWash}
-            style={{background:hovFach
-              ?`radial-gradient(ellipse 60% 70% at 50% 38%, ${hovFach.color}1a 0%, transparent 70%)`
-              :'none'}}/>
+            <div className={styles.bodyColorWash}
+              style={{background:hovFach
+                ?`radial-gradient(ellipse 60% 70% at 50% 38%, ${hovFach.color}1a 0%, transparent 70%)`
+                :'none'}}/>
 
-          <svg className={styles.zoneSvg} viewBox="0 0 941 1672" preserveAspectRatio="none" aria-label={hintLabel}>
-            <g transform="translate(-8 0)">
-              {ZONES.map((zone,i)=>{
-                const isHov = hovered===zone.id
-                const color = FACH_DATA[zone.id]?.color||'#f97316'
-                const commonProps = {
-                  'data-zone': zone.id,
-                  'aria-label': FACH_NAMES[lang]?.[zone.id] || FACH_NAMES.de[zone.id],
-                  fill: isHov ? color+'2f' : 'transparent',
-                  stroke: isHov ? color : 'transparent',
-                  strokeWidth: '4',
-                  strokeLinejoin: 'round',
-                  fillRule: 'evenodd',
-                  transform: zone.transform,
-                  style: { cursor:'pointer', transition:'fill 0.2s,stroke 0.2s' },
-                  onMouseEnter: () => setHovered(zone.id),
-                  onMouseLeave: () => setHovered(null),
-                  onClick: () => handleZoneClick(zone.id),
-                  pointerEvents: 'all',
-                }
+            <svg className={styles.zoneSvg} viewBox="0 0 941 1672" preserveAspectRatio="none" aria-label={hintLabel}>
+              <g transform="translate(-8 0)">
+                {ZONES.map((zone,i)=>{
+                  const isHov = hovered===zone.id
+                  const color = FACH_DATA[zone.id]?.color||'#f97316'
+                  const commonProps = {
+                    'data-zone': zone.id,
+                    'aria-label': FACH_NAMES[lang]?.[zone.id] || FACH_NAMES.de[zone.id],
+                    fill: isHov ? color+'2f' : 'transparent',
+                    stroke: isHov ? color : 'transparent',
+                    strokeWidth: '4',
+                    strokeLinejoin: 'round',
+                    fillRule: 'evenodd',
+                    transform: zone.transform,
+                    style: { cursor:'pointer', transition:'fill 0.2s,stroke 0.2s' },
+                    onMouseEnter: () => setHovered(zone.id),
+                    onMouseLeave: () => setHovered(null),
+                    onClick: () => handleZoneClick(zone.id),
+                    pointerEvents: 'all',
+                  }
 
-                return <path key={i} {...commonProps} d={zone.d} />
-              })}
-            </g>
-          </svg>
+                  return <path key={i} {...commonProps} d={zone.d} />
+                })}
+              </g>
+            </svg>
 
-          {hovered && hovFach && (
-            <div className={styles.zoneLabel}
-              style={{color:hovFach.color,borderColor:hovFach.color+'55',background:'rgba(8,14,28,0.88)'}}>
-              <span className={styles.zoneDot} style={{background:hovFach.color}}/>
-              {hovName}
-            </div>
-          )}
+            {hovered && hovFach && (
+              <div className={styles.zoneLabel}
+                style={{color:hovFach.color,borderColor:hovFach.color+'55',background:'rgba(8,14,28,0.88)'}}>
+                <span className={styles.zoneDot} style={{background:hovFach.color}}/>
+                {hovName}
+              </div>
+            )}
+          </div>
+          <div className={styles.hoverIndicator}
+            style={hovFach ? {
+              borderColor: hovFach.color,
+              background: hovFach.color+'22',
+              boxShadow: `0 0 18px ${hovFach.color}44`
+            } : {}}>
+            <span className={styles.hoverDot}
+              style={{ background: hovFach?.color || '#f97316' }}/>
+            <span className={styles.hoverText}
+              style={{ color: hovFach ? hovFach.color : '#f97316' }}>
+              {hovName || hintLabel}
+            </span>
+          </div>
+        </div>
+
+        <div className={`${styles.cardColumn} ${styles.cardColumnRight}`} aria-label={referenceCopy.sectionLabel}>
+          <span className={styles.columnLabel}>{referenceCopy.sectionLabel}</span>
+          {REFERENCE_CARDS.map((card, index) => (
+            <button
+              key={card.key}
+              type="button"
+              className={`${styles.floatCard} ${styles[`floatRight${index}`] || ''}`}
+              style={{ '--card-color': card.color }}
+              onClick={() => openReferenceCard(card.key)}
+            >
+              <span className={styles.floatIcon}>
+                <Image src={card.image} alt="" width={62} height={62} />
+              </span>
+              <span className={styles.floatText}>
+                <strong>{referenceCopy[card.title]}</strong>
+                <small>{referenceCopy[card.desc]}</small>
+              </span>
+            </button>
+          ))}
         </div>
       </div>
 
