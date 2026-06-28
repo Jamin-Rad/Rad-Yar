@@ -26,6 +26,7 @@ import { RADIUSKOPF_QUESTIONS } from './radiuskopf'
 import { UNTERARM_QUESTIONS } from './unterarmschaftfrakturen'
 import { DISTALE_RADIUS_QUESTIONS } from './distale-radiusfraktur'
 import { HRCT_QUESTIONS } from './hrct-muster'
+import { SPINE_TRAUMA_QUESTIONS } from './spineTrauma'
 
 const DIVERTICULITIS_QUESTION_CONTENT = [
   {
@@ -352,6 +353,7 @@ export const QUESTION_BANK = {
     ...RADIUSKOPF_QUESTIONS.de,
     ...UNTERARM_QUESTIONS.de,
     ...DISTALE_RADIUS_QUESTIONS.de,
+    ...SPINE_TRAUMA_QUESTIONS.de,
     ...HRCT_QUESTIONS.de,
     {
       "id": "meniskus-de-01",
@@ -1706,6 +1708,7 @@ export const QUESTION_BANK = {
     ...RADIUSKOPF_QUESTIONS.en,
     ...UNTERARM_QUESTIONS.en,
     ...DISTALE_RADIUS_QUESTIONS.en,
+    ...SPINE_TRAUMA_QUESTIONS.en,
     ...HRCT_QUESTIONS.en,
     {
       "id": "meniskus-en-01",
@@ -3060,6 +3063,7 @@ export const QUESTION_BANK = {
     ...RADIUSKOPF_QUESTIONS.fa,
     ...UNTERARM_QUESTIONS.fa,
     ...DISTALE_RADIUS_QUESTIONS.fa,
+    ...SPINE_TRAUMA_QUESTIONS.fa,
     ...HRCT_QUESTIONS.fa,
     {
       "id": "meniskus-fa-01",
@@ -4458,6 +4462,16 @@ export const MCQ_TOPIC_GROUPS = [
       { id: 'radiuskoepfchenfraktur', title: { de: 'Radiusköpfchenfraktur', en: 'Radial Head Fracture', fa: 'شکستگی سر رادیوس' } },
       { id: 'unterarmschaftfrakturen', title: { de: 'Unterarmschaftfrakturen', en: 'Forearm Shaft Fractures', fa: 'شکستگی‌های تنه ساعد' } },
       { id: 'distale-radiusfraktur', title: { de: 'Distale Radiusfraktur', en: 'Distal Radius Fracture', fa: 'شکستگی دیستال رادیوس' } },
+    ],
+  },
+  {
+    fachId: 'wirbelsaeule',
+    kapitelId: 'wirbelsaeule-trauma',
+    title: { de: '6. Trauma', en: '6. Trauma', fa: '۶. تروما' },
+    topics: [
+      { id: 'kraniozervikaler-uebergang-trauma', title: { de: 'Kraniozervikaler Übergang', en: 'Craniocervical Junction', fa: 'محل اتصال کرانیوسرویکال' } },
+      { id: 'hws-verletzungen', title: { de: 'HWS-Verletzungen', en: 'Cervical Spine Injuries', fa: 'آسیب‌های ستون فقرات گردنی' } },
+      { id: 'bws-lws-frakturen', title: { de: 'BWS / LWS-Frakturen', en: 'Thoracic / Lumbar Spine Fractures', fa: 'شکستگی ستون فقرات توراسیک / کمری' } },
     ],
   },
   {

@@ -279,6 +279,347 @@ const LESSONS = {
   },
 }
 
+const SECTION_LABELS = {
+  en: {
+    grundlagen: 'Basics',
+    anatomie: 'Relevant anatomy',
+    klassifikation: 'Classification',
+    bildgebung: 'Imaging',
+    befundung: 'Reporting',
+    fallstricke: 'Pitfalls',
+    takehome: 'Take home',
+  },
+  fa: {
+    grundlagen: 'مبانی',
+    anatomie: 'آناتومی مرتبط با گزارش',
+    klassifikation: 'طبقه بندی',
+    bildgebung: 'تصویربرداری',
+    befundung: 'گزارش ساختاریافته',
+    fallstricke: 'دام ها',
+    takehome: 'نکات کلیدی',
+  },
+}
+
+const baseSections = lang => LESSONS.kraniozervikaler.sections.map(section => ({
+  id: section.id,
+  label: SECTION_LABELS[lang]?.[section.id] || section.label,
+}))
+
+const LOCALIZED_LESSONS = {
+  en: {
+    kraniozervikaler: {
+      readId: 'kraniozervikaler-uebergang-trauma',
+      href: '/wirbelsaeule/trauma/kraniozervikaler-uebergang',
+      title: 'Craniocervical junction',
+      subtitle: 'Assess occiput, C1, C2, dens and ligamentous stability in a structured way',
+      heroCards: [
+        { value: 'C0-C2', label: 'high-risk zone', text: 'Instability can be severe despite a small fracture' },
+        { value: 'CT + MPR', label: 'acute standard', text: 'Thin-slice reconstructions in all planes' },
+        { value: 'MRI/CTA', label: 'targeted add-on', text: 'Ligaments, cord, epidural haematoma and vessels' },
+      ],
+      sections: baseSections('en'),
+      basics: {
+        title: 'Why C0 to C2 is critical',
+        lead: 'Craniocervical injuries are uncommon but decisive: subtle malalignment or ligament injury may indicate an unstable lesion with cord risk.',
+        items: [
+          { title: 'Systematic review', text: 'Check occipital condyles, C1 ring, dens, C2 arch and atlanto-occipital/atlanto-axial joints in a fixed order.' },
+          { title: 'Stability', text: 'Bone injury alone is not enough. Transverse ligament, alar ligaments and tectorial membrane define clinical relevance.' },
+          { title: 'Emergency question', text: 'Report dissociation, subluxation, canal compromise and vascular risk, not just fracture yes or no.' },
+        ],
+        key: 'At the craniocervical junction, joint alignment is as important as the fracture line.',
+      },
+      anatomy: {
+        title: 'Relevant anatomy for reporting',
+        lead: 'Read the anatomy with active search for instability signs.',
+        headers: ['Structure', 'What to check', 'Meaning'],
+        rows: [
+          ['Occipital condyles', 'Fracture, impaction, displacement, joint incongruity', 'Axial compression or dissociation'],
+          ['C1 ring', 'Anterior/posterior arch, lateral masses, lateral mass offset', 'Jefferson pattern and transverse ligament risk'],
+          ['Dens / C2', 'Fracture line, base involvement, angulation, C2 arch', 'Separate dens fracture from hangman injury'],
+          ['Ligaments', 'Transverse ligament, alar ligaments, tectorial membrane', 'MRI-relevant stability component'],
+        ],
+      },
+      classification: {
+        title: 'Important injury patterns',
+        lead: 'Pattern names help, but displacement and stability must still be described.',
+        headers: ['Pattern', 'Key finding', 'Reporting relevance'],
+        rows: [
+          ['Occipital condyle fracture', 'Fragment, impaction or avulsion', 'Risk depends on displacement and C0/C1 alignment'],
+          ['Jefferson fracture', 'C1 ring fracture with lateral mass spread', 'Consider transverse ligament injury'],
+          ['Dens fracture', 'Anderson-D’Alonzo type I to III', 'Type II has high non-union risk'],
+          ['Hangman fracture', 'Traumatic C2 spondylolisthesis with pars/arch injury', 'Check C2/C3 displacement and disc-ligament complex'],
+          ['Atlanto-occipital dissociation', 'C0/C1 malalignment, widened joints, ligament injury', 'Highly unstable emergency finding'],
+        ],
+        key: 'For every pattern, state alignment, canal compromise and suspected ligament injury.',
+      },
+      imaging: {
+        title: 'Imaging',
+        lead: 'CT, MRI and CTA answer different questions and should be combined selectively.',
+        items: [
+          { title: 'CT', text: 'Thin-slice CT with sagittal, coronal and axial reconstructions is the acute trauma basis.' },
+          { title: 'MRI', text: 'Indicated for neurological deficit, suspected ligament injury, epidural haematoma, myelopathy or clinical mismatch.' },
+          { title: 'CTA', text: 'Consider with transverse foramen fracture, subluxation, high-energy upper cervical trauma or vascular symptoms.' },
+        ],
+        cave: 'Normal osseous alignment on CT does not safely exclude relevant ligament injury.',
+      },
+      reporting: {
+        title: 'Structured report',
+        lead: 'A good report answers the mechanical and clinical management questions.',
+        items: [
+          { title: '1. Segment and pattern', text: 'Name C0/C1/C2 precisely and describe fracture type plus involved joints.' },
+          { title: '2. Alignment', text: 'Describe atlantodental interval, C0/C1 and C1/C2 alignment, lateral masses and angulation.' },
+          { title: '3. Neurologic risk', text: 'Address canal width, cord compression, epidural haematoma and prevertebral soft tissues.' },
+          { title: '4. Additional imaging', text: 'Recommend MRI or CTA when ligament, cord or vascular risk is present.' },
+        ],
+        key: 'Suspected instability belongs clearly in the impression, not hidden in the body text.',
+      },
+      pitfalls: {
+        title: 'Pitfalls',
+        lead: 'Errors often happen when the reading stops after the first visible fracture.',
+        items: [
+          { title: 'Small condyle fragment', text: 'Do not dismiss it as incidental; check C0/C1 alignment and ligament signs.' },
+          { title: 'Rotation', text: 'Can mimic or mask C1/C2 subluxation. Compare symmetry in multiple planes.' },
+          { title: 'Dens fracture', text: 'Fine basal fracture lines may be missed in a single plane.' },
+        ],
+      },
+      takehome: [
+        { title: 'Alignment first', text: 'At C0 to C2, alignment and dissociation are core emergency questions.' },
+        { title: 'Think ligaments', text: 'Transverse ligament, alar ligaments and tectorial membrane determine stability.' },
+        { title: 'Escalate selectively', text: 'Recommend MRI and CTA when clear risk signs are present.' },
+      ],
+    },
+    hws: {
+      readId: 'hws-verletzungen',
+      href: '/wirbelsaeule/trauma/hws-verletzungen',
+      title: 'Cervical spine injuries',
+      subtitle: 'Subaxial cervical spine from C3 to C7: fracture, dislocation, disc, ligaments and cord',
+      heroCards: [
+        { value: 'C3-C7', label: 'subaxial C-spine', text: 'Alignment, facets and posterior complex matter' },
+        { value: 'CT', label: 'fracture diagnosis', text: 'Bone, facet position and spinal canal' },
+        { value: 'MRI', label: 'ligaments/cord', text: 'For deficit, mismatch or suspected instability' },
+      ],
+      sections: baseSections('en'),
+      basics: {
+        title: 'Read the subaxial cervical spine systematically',
+        lead: 'Cervical trauma assessment combines osseous injury, facet alignment, disco-ligamentous damage and cord risk.',
+        items: [
+          { title: 'Alignment', text: 'Check anterior/posterior vertebral lines, spinolaminar line and spinous process row for steps or widening.' },
+          { title: 'Facets', text: 'Unilateral or bilateral locking may be subtle and is highly relevant for stability.' },
+          { title: 'Soft tissues', text: 'Actively search for prevertebral swelling, epidural haematoma and cord signal.' },
+        ],
+        key: 'A cervical injury is completely assessed only when facets, posterior complex and cord are considered.',
+      },
+      anatomy: {
+        title: 'Relevant anatomy for reporting',
+        lead: 'Translate the subaxial cervical spine into anterior, middle and posterior stability components.',
+        headers: ['Component', 'CT/MRI sign', 'Meaning'],
+        rows: [
+          ['Vertebral body / posterior wall', 'Wedge, burst, retropulsion, canal stenosis', 'Compression or burst injury'],
+          ['Disc / longitudinal ligaments', 'Disc injury, ALL/PLL signal, disc-space widening', 'Disco-ligamentous instability'],
+          ['Facets / pedicles / laminae', 'Dislocation, subluxation, fracture, joint widening', 'Rotational or distraction injury'],
+          ['Posterior ligamentous complex', 'Interspinous widening, STIR oedema, capsular injury', 'Instability marker'],
+        ],
+      },
+      classification: {
+        title: 'Recognise patterns',
+        lead: 'Mechanism and morphology communicate severity clearly.',
+        headers: ['Pattern', 'Typical signs', 'Why relevant?'],
+        rows: [
+          ['Compression / burst', 'Body height loss, posterior wall involvement', 'Canal and kyphosis define risk'],
+          ['Flexion-distraction', 'Interspinous widening, facet subluxation, posterior complex injury', 'Often unstable'],
+          ['Facet dislocation', 'Unilateral or bilateral locked facets', 'Affects reduction, MRI and surgery planning'],
+          ['Extension', 'Anterior disc-space widening, ALL injury, teardrop fragment', 'Especially dangerous in ankylosed spine'],
+          ['Spinous process fracture', 'Clay-shoveler pattern or associated signs', 'May mark larger flexion trauma'],
+        ],
+        key: 'Facet dislocation and disco-ligamentous injury often matter more than fragment size.',
+      },
+      imaging: {
+        title: 'Imaging',
+        lead: 'CT and MRI are complementary: CT shows fracture, MRI shows the injured functional apparatus.',
+        items: [
+          { title: 'CT', text: 'Standard for relevant trauma. Sagittal and coronal reconstructions are essential for alignment and facets.' },
+          { title: 'MRI', text: 'Use for neurological deficit, radicular symptoms, myelopathy, suspected ligament injury or clinical-CT mismatch.' },
+          { title: 'Vessels', text: 'CTA for transverse foramen involvement, subluxation, high-energy trauma or suspected vertebral artery injury.' },
+        ],
+        cave: 'Degenerative stenosis can make a small traumatic additional injury clinically important.',
+      },
+      reporting: {
+        title: 'Structured report',
+        lead: 'The report should directly support operative or conservative management.',
+        items: [
+          { title: '1. Level and morphology', text: 'Name segment, fracture parts, body height, posterior wall, laminae, pedicles and spinous process.' },
+          { title: '2. Alignment and facets', text: 'Describe subluxation, dislocation, locked facets and interspinous distance.' },
+          { title: '3. Canal / cord', text: 'Document retropulsion, epidural haematoma, cord compression and intramedullary signal.' },
+          { title: '4. Stability', text: 'Clearly communicate stable, potentially unstable or highly unstable pattern.' },
+        ],
+        key: 'Impression should combine level, injury pattern, instability and neurologic compression in one clear statement.',
+      },
+      pitfalls: {
+        title: 'Pitfalls',
+        lead: 'Subtle malalignment is often more important than an obvious isolated finding.',
+        items: [
+          { title: 'Unilateral locked facet', text: 'May be mistaken for rotation. Compare facets on axial and sagittal images.' },
+          { title: 'Isolated spinous fracture', text: 'Not automatically trivial. Look for posterior ligament injury after high-energy trauma.' },
+          { title: 'Prevertebral swelling', text: 'Can indicate disc, ligament or adjacent aerodigestive injury.' },
+        ],
+      },
+      takehome: [
+        { title: 'Alignment matters', text: 'Lines, facets and interspinous distance are mandatory in every cervical trauma read.' },
+        { title: 'Use MRI selectively', text: 'MRI answers the key extra question when neurology or instability is suspected.' },
+        { title: 'Name stability', text: 'Management depends on clear communication of instability.' },
+      ],
+    },
+    thorakolumbal: {
+      readId: 'bws-lws-frakturen',
+      href: '/wirbelsaeule/trauma/bws-lws-frakturen',
+      title: 'Thoracic / lumbar spine fractures',
+      subtitle: 'Classify thoracolumbar fractures by morphology, posterior ligament integrity and canal compromise',
+      heroCards: [
+        { value: 'AO Spine', label: 'morphology', text: 'Compression, distraction or translation' },
+        { value: 'PLC', label: 'posterior complex', text: 'Central for stability and surgery indication' },
+        { value: 'CT/MRI', label: 'complementary', text: 'Bone pattern plus ligaments, oedema and neural structures' },
+      ],
+      sections: baseSections('en'),
+      basics: {
+        title: 'Stability, not just height loss',
+        lead: 'Thoracolumbar fractures are assessed by morphology, posterior ligamentous complex and neurologic risk. Percent height loss alone is not enough.',
+        items: [
+          { title: 'Mechanism', text: 'Compression, burst, distraction and translation produce different stability risks.' },
+          { title: 'Junction zone', text: 'The thoracolumbar junction is vulnerable and should be assessed generously after trauma.' },
+          { title: 'Neural structures', text: 'Explicitly report retropulsion, canal stenosis and conus or cauda compression.' },
+        ],
+        key: 'The central question is: stable compression or unstable multi-column injury?',
+      },
+      anatomy: {
+        title: 'Relevant anatomy for reporting',
+        lead: 'Translate the fracture into anterior column, posterior wall, pedicles/arches and posterior ligament complex.',
+        headers: ['Structure', 'Finding', 'Meaning'],
+        rows: [
+          ['Vertebral body', 'Height loss, cleft, wedging, burst', 'Morphology and kyphosis'],
+          ['Posterior wall', 'Retropulsion, fragment, canal narrowing', 'Neurologic risk'],
+          ['Pedicles / laminae / spinous process', 'Fracture or widening', 'Multi-column injury clue'],
+          ['Posterior ligamentous complex', 'Interspinous oedema, facet capsule, supraspinous ligament', 'Stability decision'],
+        ],
+      },
+      classification: {
+        title: 'AO Spine logic for reporting',
+        lead: 'AO Spine categories help sort CT and MRI findings into stable and unstable patterns.',
+        headers: ['Category', 'Morphology', 'Radiologic message'],
+        rows: [
+          ['A1', 'Wedge compression / endplate impaction', 'Usually stable, posterior wall intact'],
+          ['A3', 'Incomplete burst', 'One endplate plus posterior wall involved'],
+          ['A4', 'Complete burst', 'Both endplates and posterior wall involved'],
+          ['B', 'Distraction injury', 'Posterior or anterior tension-band failure'],
+          ['C', 'Translation / rotation', 'Displacement in any plane, highly unstable'],
+        ],
+        key: 'When distraction or translation is present, it is not a simple compression fracture.',
+      },
+      imaging: {
+        title: 'Imaging',
+        lead: 'Modality depends on acuity, stability question and fracture age.',
+        items: [
+          { title: 'CT', text: 'Shows morphology, posterior wall, spinal canal and associated fractures. Sagittal reconstructions are mandatory.' },
+          { title: 'MRI', text: 'Use for suspected PLC injury, cord/conus/cauda involvement or unclear fracture age.' },
+          { title: 'Osteoporosis / tumour', text: 'Use STIR oedema, convex posterior wall, soft-tissue mass and pedicle involvement for differentiation.' },
+        ],
+        cave: 'In ankylosed spine, a subtle fracture line can represent a highly unstable three-column injury.',
+      },
+      reporting: {
+        title: 'Structured report',
+        lead: 'A good report makes the fracture actionable for trauma surgery, neurosurgery and pain therapy.',
+        items: [
+          { title: '1. Segment', text: 'State level, junctional involvement and multilevel injury.' },
+          { title: '2. Morphology', text: 'Describe compression, burst, distraction or translation; add AO-like classification when possible.' },
+          { title: '3. Stability', text: 'Address PLC, facet joints, pedicles/laminae and kyphosis.' },
+          { title: '4. Canal / nerves', text: 'Report retropulsion, qualitative or percent canal stenosis and conus/cauda compression.' },
+          { title: '5. Age / cause', text: 'Differentiate acute oedematous, chronic or suspicious malignant fracture when MRI is available.' },
+        ],
+        key: 'Impression should briefly state level, morphology, stability suspicion and canal relevance.',
+      },
+      pitfalls: {
+        title: 'Pitfalls',
+        lead: 'Thoracolumbar fractures are often underestimated as simple compression deformities.',
+        items: [
+          { title: 'Missed distraction', text: 'Actively look for interspinous widening and horizontal fracture components on sagittal images.' },
+          { title: 'Acute vs chronic', text: 'Often uncertain on CT. MRI oedema pattern or prior imaging helps.' },
+          { title: 'Ankylosed spine', text: 'DISH or ankylosing spondylitis creates long lever arms and unstable fractures.' },
+        ],
+      },
+      takehome: [
+        { title: 'Name morphology', text: 'Compression, burst, distraction or translation is more useful than isolated height loss.' },
+        { title: 'PLC matters', text: 'The posterior ligamentous complex is central for stability and treatment.' },
+        { title: 'Quantify canal relevance', text: 'Posterior wall retropulsion and neural compression belong in the report.' },
+      ],
+    },
+  },
+}
+
+LOCALIZED_LESSONS.fa = {
+  kraniozervikaler: {
+    ...LOCALIZED_LESSONS.en.kraniozervikaler,
+    title: 'محل اتصال کرانیوسرویکال',
+    subtitle: 'ارزیابی ساختاریافته اکسیپوت، C1، C2، دنس و پایداری رباطی',
+    heroCards: [
+      { value: 'C0-C2', label: 'ناحیه پرخطر', text: 'ناپایداری می تواند با وجود شکستگی کوچک شدید باشد' },
+      { value: 'CT + MPR', label: 'استاندارد حاد', text: 'بازسازی نازک در همه صفحات' },
+      { value: 'MRI/CTA', label: 'تکمیلی هدفمند', text: 'رباط ها، نخاع، هماتوم اپیدورال و عروق' },
+    ],
+    sections: baseSections('fa'),
+    basics: {
+      title: 'چرا C0 تا C2 حیاتی است',
+      lead: 'آسیب های کرانیوسرویکال نادرند اما از نظر رادیولوژی تعیین کننده اند؛ عدم هم راستایی ظریف یا آسیب رباطی می تواند ناپایداری با خطر نخاعی را نشان دهد.',
+      items: [
+        { title: 'بررسی سیستماتیک', text: 'کندیل های اکسیپیتال، حلقه C1، دنس، قوس C2 و مفاصل C0/C1 و C1/C2 را با ترتیب ثابت بررسی کنید.' },
+        { title: 'پایداری', text: 'فقط شکستگی کافی نیست؛ رباط عرضی، رباط های آلار و ممبران تکتوریا اهمیت بالینی را تعیین می کنند.' },
+        { title: 'سؤال اورژانسی', text: 'دیسوسیشن، ساب لوکسیشن، تنگی کانال و خطر عروقی را صریح گزارش کنید.' },
+      ],
+      key: 'در محل اتصال کرانیوسرویکال، هم راستایی مفصل به اندازه خط شکستگی مهم است.',
+    },
+  },
+  hws: {
+    ...LOCALIZED_LESSONS.en.hws,
+    title: 'آسیب های ستون فقرات گردنی',
+    subtitle: 'HWS تحتانی از C3 تا C7: شکستگی، دررفتگی، دیسک، رباط ها و نخاع',
+    heroCards: [
+      { value: 'C3-C7', label: 'گردنی تحتانی', text: 'هم راستایی، فاست ها و کمپلکس خلفی مهم اند' },
+      { value: 'CT', label: 'تشخیص شکستگی', text: 'استخوان، وضعیت فاست و کانال نخاعی' },
+      { value: 'MRI', label: 'رباط/نخاع', text: 'در نقص عصبی، عدم تطابق یا شک به ناپایداری' },
+    ],
+    sections: baseSections('fa'),
+    basics: {
+      title: 'خواندن سیستماتیک HWS تحتانی',
+      lead: 'در ترومای گردن باید آسیب استخوانی، وضعیت فاست، آسیب دیسک و رباط و خطر نخاعی با هم ارزیابی شوند.',
+      items: [
+        { title: 'هم راستایی', text: 'خطوط قدامی و خلفی جسم مهره، خط اسپینولامینار و ردیف زوائد خاری را برای پله یا بازشدگی بررسی کنید.' },
+        { title: 'فاست ها', text: 'گیر افتادگی یک طرفه یا دوطرفه فاست می تواند ظریف اما از نظر پایداری بسیار مهم باشد.' },
+        { title: 'بافت نرم', text: 'تورم پره ورتبرال، هماتوم اپیدورال و سیگنال نخاع را فعالانه جستجو کنید.' },
+      ],
+      key: 'آسیب HWS زمانی کامل ارزیابی شده که فاست ها، کمپلکس خلفی و نخاع هم بررسی شده باشند.',
+    },
+  },
+  thorakolumbal: {
+    ...LOCALIZED_LESSONS.en.thorakolumbal,
+    title: 'شکستگی های BWS / LWS',
+    subtitle: 'طبقه بندی شکستگی های توراکولومبار بر اساس مورفولوژی، PLC و کانال نخاعی',
+    heroCards: [
+      { value: 'AO Spine', label: 'مورفولوژی', text: 'کمپرشن، دیستراکشن یا ترانسلیشن' },
+      { value: 'PLC', label: 'کمپلکس خلفی', text: 'برای پایداری و اندیکاسیون جراحی مهم است' },
+      { value: 'CT/MRI', label: 'مکمل', text: 'الگوی استخوانی به همراه رباط، ادم و عناصر عصبی' },
+    ],
+    sections: baseSections('fa'),
+    basics: {
+      title: 'پایداری، نه فقط کاهش ارتفاع',
+      lead: 'شکستگی های توراکولومبار بر اساس مورفولوژی، کمپلکس رباطی خلفی و خطر عصبی ارزیابی می شوند. درصد کاهش ارتفاع به تنهایی کافی نیست.',
+      items: [
+        { title: 'مکانیسم', text: 'کمپرشن، برست، دیستراکشن و ترانسلیشن خطرهای پایداری متفاوت ایجاد می کنند.' },
+        { title: 'ناحیه گذار', text: 'محل اتصال توراکولومبار آسیب پذیر است و پس از تروما باید سخاوتمندانه بررسی شود.' },
+        { title: 'ساختارهای عصبی', text: 'رتروپالژن، تنگی کانال و فشار بر کونوس یا کودا را صریح گزارش کنید.' },
+      ],
+      key: 'سؤال اصلی این است: کمپرشن پایدار یا آسیب چندستونی ناپایدار؟',
+    },
+  },
+}
+
 const UI = {
   de: {
     toc: 'Inhaltsverzeichnis',
@@ -286,6 +627,8 @@ const UI = {
     breadcrumbCurrent: 'Trauma',
     sourceLabel: 'Dr. Zia',
     actionBack: 'Wirbelsäule',
+    actionQuiz: 'MCQs üben',
+    actionFlashcards: 'Flashcards',
     keyLabel: 'Merke',
     caveLabel: 'CAVE',
     mark: 'Als gelesen markieren',
@@ -299,6 +642,8 @@ const UI = {
     breadcrumbCurrent: 'Trauma',
     sourceLabel: 'Dr. Zia',
     actionBack: 'Spine',
+    actionQuiz: 'Practice MCQs',
+    actionFlashcards: 'Flashcards',
     keyLabel: 'Key point',
     caveLabel: 'Caution',
     mark: 'Mark as read',
@@ -312,6 +657,8 @@ const UI = {
     breadcrumbCurrent: 'تروما',
     sourceLabel: 'Dr. Zia',
     actionBack: 'ستون فقرات',
+    actionQuiz: 'تمرین MCQ',
+    actionFlashcards: 'فلش کارت',
     keyLabel: 'نکته مهم',
     caveLabel: 'احتیاط',
     mark: 'علامت گذاری به عنوان خوانده شده',
@@ -403,7 +750,8 @@ function SpineDiagram({ topicId }) {
 export default function SpineTraumaLesson({ topicId }) {
   const { lang } = useLanguage()
   const copy = UI[lang] || UI.de
-  const topic = LESSONS[topicId] || LESSONS.kraniozervikaler
+  const baseTopic = LESSONS[topicId] || LESSONS.kraniozervikaler
+  const topic = LOCALIZED_LESSONS[lang]?.[topicId] || baseTopic
   const isRTL = lang === 'fa'
   const [activeId, setActiveId] = useState(topic.sections[0].id)
   const { isRead, toggleRead, authError } = useLessonReadStatus(topic.readId)
@@ -439,6 +787,18 @@ export default function SpineTraumaLesson({ topicId }) {
             <p>{topic.subtitle}</p>
             <div className={styles.actions}>
               <Link href={withLang('/lernen/wirbelsaeule')} className={styles.actionBtn}>{copy.actionBack}</Link>
+              <Link
+                href={withLang(`/ueben/quiz?fach=wirbelsaeule&n=10&themen=${topic.readId}&from=${encodeURIComponent(withLang(topic.href))}`)}
+                className={styles.actionBtn}
+              >
+                {copy.actionQuiz}
+              </Link>
+              <Link
+                href={withLang(`/flashcards/${topic.readId}?from=${encodeURIComponent(withLang(topic.href))}`)}
+                className={styles.actionBtn}
+              >
+                {copy.actionFlashcards}
+              </Link>
             </div>
           </div>
           <div className={styles.heroStats}>
@@ -473,7 +833,7 @@ export default function SpineTraumaLesson({ topicId }) {
           <div className={styles.visualIntro}>
             <SpineDiagram topicId={topicId} />
             <div>
-              <span>Wirbelsäule · Trauma</span>
+              <span>{copy.breadcrumbSpine} · {copy.breadcrumbCurrent}</span>
               <h2>{topic.title}</h2>
               <p>{topic.subtitle}</p>
             </div>
@@ -507,7 +867,7 @@ export default function SpineTraumaLesson({ topicId }) {
             <Cards items={topic.pitfalls.items} />
           </Section>
 
-          <Section id="takehome" title="Take home message">
+          <Section id="takehome" title={topic.sections.find(section => section.id === 'takehome')?.label || 'Take home message'}>
             <div className={styles.takeHomeGrid}>
               {topic.takehome.map((item, index) => (
                 <div className={styles.takeHomeItem} key={item.title}>
