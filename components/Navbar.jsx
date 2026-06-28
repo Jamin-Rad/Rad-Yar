@@ -72,7 +72,7 @@ export default function Navbar() {
   return (
     <>
       <nav className={styles.nav}>
-        {!isHome && (
+        {isHome ? <div /> : (
           <Link href="/" className={styles.brand} dir="ltr">
             <HexLogo size={28} />
             <span className={styles.wordmark} dir="ltr">
