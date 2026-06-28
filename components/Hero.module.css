@@ -355,8 +355,8 @@
 /* ── BODY WRAP ───────────────────────────────────────── */
 .bodyWrap {
   position: relative; z-index: 2;
-  height: min(82vh, 860px);
-  max-height: 860px;
+  height: min(96vh, 1120px);
+  max-height: 1120px;
   aspect-ratio: 842 / 1672;
   user-select: none;
   transform: translateX(var(--body-shift-x));
