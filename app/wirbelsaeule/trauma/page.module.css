@@ -339,37 +339,6 @@
   opacity: .55;
 }
 
-.siblingNav {
-  display: grid;
-  gap: 8px;
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--border);
-}
-
-.siblingNav > strong {
-  color: var(--text-muted);
-  font-size: 11px;
-  font-weight: 950;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
-
-.siblingLink {
-  padding: 10px 11px;
-  border-radius: 14px;
-  color: var(--text-soft);
-  font-size: 13px;
-  font-weight: 850;
-  text-decoration: none;
-}
-
-.siblingLink:hover,
-.siblingLinkActive {
-  background: rgba(245, 158, 11, 0.14);
-  color: #92400e;
-}
-
 .main {
   display: grid;
   gap: 22px;

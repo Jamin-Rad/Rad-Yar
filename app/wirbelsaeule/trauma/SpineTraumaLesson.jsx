@@ -285,10 +285,7 @@ const UI = {
     breadcrumbSpine: 'Wirbelsäule',
     breadcrumbCurrent: 'Trauma',
     sourceLabel: 'Dr. Zia',
-    actionQuiz: 'MCQ',
-    actionFlashcards: 'Flashcards',
     actionBack: 'Wirbelsäule',
-    siblingTitle: 'Trauma-Lernseiten',
     keyLabel: 'Merke',
     caveLabel: 'CAVE',
     mark: 'Als gelesen markieren',
@@ -301,10 +298,7 @@ const UI = {
     breadcrumbSpine: 'Spine',
     breadcrumbCurrent: 'Trauma',
     sourceLabel: 'Dr. Zia',
-    actionQuiz: 'MCQ',
-    actionFlashcards: 'Flashcards',
     actionBack: 'Spine',
-    siblingTitle: 'Trauma lessons',
     keyLabel: 'Key point',
     caveLabel: 'Caution',
     mark: 'Mark as read',
@@ -317,10 +311,7 @@ const UI = {
     breadcrumbSpine: 'ستون فقرات',
     breadcrumbCurrent: 'تروما',
     sourceLabel: 'Dr. Zia',
-    actionQuiz: 'MCQ',
-    actionFlashcards: 'فلش کارت',
     actionBack: 'ستون فقرات',
-    siblingTitle: 'درس های تروما',
     keyLabel: 'نکته مهم',
     caveLabel: 'احتیاط',
     mark: 'علامت گذاری به عنوان خوانده شده',
@@ -329,8 +320,6 @@ const UI = {
     signIn: 'ورود',
   },
 }
-
-const LESSON_ORDER = ['kraniozervikaler', 'hws', 'thorakolumbal']
 
 function ReadButton({ isRead, onClick, authError }) {
   const { lang } = useLanguage()
@@ -449,8 +438,6 @@ export default function SpineTraumaLesson({ topicId }) {
             <h1>{topic.title}</h1>
             <p>{topic.subtitle}</p>
             <div className={styles.actions}>
-              <Link href={withLang(`/ueben/quiz?fach=wirbelsaeule&n=10&themen=${topic.readId}&from=${encodeURIComponent(withLang(topic.href))}`)} className={styles.actionBtn}>{copy.actionQuiz}</Link>
-              <Link href={withLang(`/flashcards/${topic.readId}?from=${encodeURIComponent(withLang(topic.href))}`)} className={styles.actionBtn}>{copy.actionFlashcards}</Link>
               <Link href={withLang('/lernen/wirbelsaeule')} className={styles.actionBtn}>{copy.actionBack}</Link>
             </div>
           </div>
@@ -480,14 +467,6 @@ export default function SpineTraumaLesson({ topicId }) {
               <strong>{section.label}</strong>
             </button>
           ))}
-          <div className={styles.siblingNav}>
-            <strong>{copy.siblingTitle}</strong>
-            {LESSON_ORDER.map(id => (
-              <Link key={id} href={withLang(LESSONS[id].href)} className={`${styles.siblingLink} ${id === topicId ? styles.siblingLinkActive : ''}`}>
-                {LESSONS[id].title}
-              </Link>
-            ))}
-          </div>
         </aside>
 
         <div className={styles.main}>
