@@ -42,8 +42,9 @@
 /* ── BACKGROUND ──────────────────────────────────────── */
 .bg {
   position: absolute; inset: 0; z-index: 0;
-  background: #030712;
-  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 46%, rgba(8,20,40,1) 0%, transparent 75%),
+    linear-gradient(170deg, #080e1c 0%, #060c18 60%, #07101f 100%);
 }
 
 

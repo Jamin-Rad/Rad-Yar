@@ -184,8 +184,8 @@ const ZONES = [
   },
 ]
 
-// ── AURORA BACKGROUND ANIMATION ───────────────────────────────────────────
-function AuroraBackground() {
+// ── SCANNER PULSE ANIMATION ────────────────────────────────────────────────
+function ScannerPulse() {
   const canvasRef = useRef(null)
   useEffect(() => {
     const canvas = canvasRef.current
@@ -206,100 +206,44 @@ function AuroraBackground() {
 
     const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
 
-    // Floating stars
-    const stars = Array.from({ length: 90 }, () => ({
-      x: Math.random(),
-      y: Math.random(),
-      r: Math.random() * 0.9 + 0.2,
-      alpha: Math.random() * 0.5 + 0.1,
-      twinkle: Math.random() * Math.PI * 2,
-      speed: 0.0008 + Math.random() * 0.0016,
-    }))
-
-    // Aurora wave streams
-    const streams = [
-      { baseY: 0.14, amp: 0.065, freq: 0.7, speed: 0.00022, phase: 0.0,  color: [124,58,237],  alpha: 0.20, thick: 0.18 },
-      { baseY: 0.30, amp: 0.085, freq: 1.0, speed: 0.00016, phase: 1.8,  color: [99,102,241],  alpha: 0.16, thick: 0.14 },
-      { baseY: 0.50, amp: 0.055, freq: 0.6, speed: 0.00028, phase: 0.9,  color: [14,165,233],  alpha: 0.13, thick: 0.11 },
-      { baseY: 0.67, amp: 0.09,  freq: 1.2, speed: 0.00019, phase: 3.0,  color: [249,115,22],  alpha: 0.15, thick: 0.14 },
-      { baseY: 0.84, amp: 0.045, freq: 0.85,speed: 0.00025, phase: 2.2,  color: [139,92,246],  alpha: 0.11, thick: 0.09 },
-    ]
-
-    const STEPS = 90
-    let animId
-
-    const waveY = (s, i, t) => {
-      const x = i / STEPS
-      return s.baseY * h
-        + s.amp * h * Math.sin(t + x * Math.PI * 2 * s.freq)
-        + s.amp * h * 0.38 * Math.sin(t * 1.7 + x * Math.PI * 3.4 * s.freq)
-        + s.amp * h * 0.18 * Math.sin(t * 0.6 + x * Math.PI * 1.1 * s.freq)
-    }
+    // Staggered pulse rings — each at a different phase so they expand continuously
+    const RINGS = 5
+    const PERIOD = 9000 // ms for one full expansion
 
     const draw = (time = 0) => {
       ctx.clearRect(0, 0, w, h)
 
-      // Stars
-      stars.forEach(star => {
-        star.twinkle += star.speed
-        const a = star.alpha * (0.5 + 0.5 * Math.sin(star.twinkle))
-        ctx.beginPath()
-        ctx.arc(star.x * w, star.y * h, star.r, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(220,230,255,${a})`
-        ctx.fill()
-      })
+      const cx = w * 0.5
+      const cy = h * 0.46
+      const maxR = Math.hypot(w, h) * 0.62
 
-      // Aurora ribbons
-      streams.forEach(s => {
-        const t = time * s.speed + s.phase
-        const thick = s.thick * h
-        const pulse = (Math.sin(time * 0.0005 + s.phase) + 1) / 2
-        const [r, g, b] = s.color
-        const alpha = s.alpha * (0.7 + pulse * 0.3)
-
-        const top = Array.from({ length: STEPS + 1 }, (_, i) => ({ x: (i / STEPS) * w, y: waveY(s, i, t) }))
-        const bot = top.map(p => ({ x: p.x, y: p.y + thick }))
-
-        // Filled band with vertical gradient
-        const minY = Math.min(...top.map(p => p.y))
-        const maxY = Math.max(...bot.map(p => p.y))
-        const bandGrad = ctx.createLinearGradient(0, minY, 0, maxY)
-        bandGrad.addColorStop(0,    `rgba(${r},${g},${b},0)`)
-        bandGrad.addColorStop(0.2,  `rgba(${r},${g},${b},${alpha * 0.55})`)
-        bandGrad.addColorStop(0.5,  `rgba(${r},${g},${b},${alpha})`)
-        bandGrad.addColorStop(0.8,  `rgba(${r},${g},${b},${alpha * 0.45})`)
-        bandGrad.addColorStop(1,    `rgba(${r},${g},${b},0)`)
+      for (let i = 0; i < RINGS; i++) {
+        const t = ((time + i * (PERIOD / RINGS)) % PERIOD) / PERIOD // 0→1
+        const r = t * maxR
+        // Alpha: fade in fast, then fade out gently
+        const alpha = t < 0.12
+          ? (t / 0.12) * 0.13
+          : (1 - t) * 0.13
 
         ctx.beginPath()
-        top.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y))
-        for (let i = bot.length - 1; i >= 0; i--) ctx.lineTo(bot[i].x, bot[i].y)
-        ctx.closePath()
-        ctx.fillStyle = bandGrad
-        ctx.fill()
-
-        // Glowing core line
-        const coreAlpha = 0.45 + pulse * 0.35
-        const lineGrad = ctx.createLinearGradient(0, 0, w, 0)
-        lineGrad.addColorStop(0,    `rgba(${r},${g},${b},0)`)
-        lineGrad.addColorStop(0.12, `rgba(${r},${g},${b},${coreAlpha})`)
-        lineGrad.addColorStop(0.45, `rgba(255,255,255,${coreAlpha * 0.85})`)
-        lineGrad.addColorStop(0.88, `rgba(${r},${g},${b},${coreAlpha})`)
-        lineGrad.addColorStop(1,    `rgba(${r},${g},${b},0)`)
-
-        ctx.beginPath()
-        top.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y))
-        ctx.strokeStyle = lineGrad
-        ctx.lineWidth = 1.0 + pulse * 0.8
-        ctx.shadowColor = `rgba(${r},${g},${b},0.7)`
-        ctx.shadowBlur = 10 + pulse * 8
+        ctx.arc(cx, cy, r, 0, Math.PI * 2)
+        ctx.strokeStyle = `rgba(125,211,252,${alpha})`
+        ctx.lineWidth = 1
         ctx.stroke()
-        ctx.shadowBlur = 0
-      })
+      }
+
+      // Soft centered glow — always visible, very subtle
+      const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, maxR * 0.55)
+      glow.addColorStop(0,   'rgba(56,189,248,0.055)')
+      glow.addColorStop(0.4, 'rgba(56,189,248,0.018)')
+      glow.addColorStop(1,   'rgba(56,189,248,0)')
+      ctx.fillStyle = glow
+      ctx.fillRect(0, 0, w, h)
 
       if (!reducedMotion) animId = requestAnimationFrame(draw)
     }
 
-    animId = requestAnimationFrame(draw)
+    let animId = requestAnimationFrame(draw)
     return () => { cancelAnimationFrame(animId); window.removeEventListener('resize', resize) }
   }, [])
   return <canvas ref={canvasRef} className={styles.auroraCanvas} />
@@ -415,7 +359,7 @@ export default function Hero() {
   return (
     <section className={styles.hero}>
       <div className={styles.bg}/>
-      <AuroraBackground/>
+      <ScannerPulse/>
       <div className={styles.bgGrid}/>
 
       <div className={`${styles.heroHeader} ${mounted?styles.leftIn:''}`}>
