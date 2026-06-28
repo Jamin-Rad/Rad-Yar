@@ -259,6 +259,7 @@
 }
 .navActiveBlue .navIconWrap,
 .navActiveGreen .navIconWrap,
+.navActivePurple .navIconWrap,
 .navActiveOrange .navIconWrap { opacity: 1; }
 
 .navIconWrap {
@@ -676,11 +677,13 @@
   transform: scaleY(.45);
   transition: opacity .18s, transform .18s;
 }
-.klassNavBtn.navActiveOrange::before { opacity: 1; transform: scaleY(1); }
+.klassNavBtn.navActiveOrange::before,
+.klassNavBtn.navActivePurple::before { opacity: 1; transform: scaleY(1); }
 .klassNavText { display: grid; gap: 3px; flex: 1; min-width: 0; }
 .klassNavText .navLabel { color: #1e293b; font-size: 13px; font-weight: 850; }
 .klassNavArrow { color: #cbd5e1; font-size: 22px; line-height: 1; }
-.navActiveOrange .klassNavArrow { color: var(--ref-color); }
+.navActiveOrange .klassNavArrow,
+.navActivePurple .klassNavArrow { color: var(--ref-color); }
 .klassNavLogoWrap {
   width: 40px;
   height: 40px;
@@ -747,6 +750,34 @@
   line-height: 1.45;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+}
+
+.anatomySearchWrap {
+  background: #fbf7ff;
+}
+.anatomySearchField {
+  border-color: #ddd6fe;
+}
+.anatomySearchField:focus-within {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 4px rgba(124,58,237,.10);
+}
+.anatomySearchIcon {
+  color: #7c3aed;
+}
+.anatomySearchClear {
+  background: #f5f3ff;
+  color: #6d28d9;
+}
+.anatomySearchSuggestion {
+  color: #6d28d9;
+}
+.anatomySearchSuggestion button {
+  color: #7c3aed;
+}
+.anatomySearchResultsHead span {
+  background: #f5f3ff;
+  color: #7c3aed;
 }
 
 /* ── Modal breit (Rechner) ────────────────────── */
@@ -940,13 +971,16 @@
   .mobileBack { display: inline-flex; }
 
   /* In der mobilen Auswahlliste ist noch kein Bereich geöffnet. */
-  .split:not(.showDetail) .navActiveOrange {
+  .split:not(.showDetail) .navActiveOrange,
+  .split:not(.showDetail) .navActivePurple {
     border-color: transparent;
     color: #475569;
     background: transparent;
   }
-  .split:not(.showDetail) .navActiveOrange::before { opacity: 0; transform: scaleY(.45); }
-  .split:not(.showDetail) .navActiveOrange .klassNavArrow { color: #cbd5e1; }
+  .split:not(.showDetail) .navActiveOrange::before,
+  .split:not(.showDetail) .navActivePurple::before { opacity: 0; transform: scaleY(.45); }
+  .split:not(.showDetail) .navActiveOrange .klassNavArrow,
+  .split:not(.showDetail) .navActivePurple .klassNavArrow { color: #cbd5e1; }
 
   /* Breadcrumb-Titel etwas kompakter auf Mobile */
   .modalTitle { font-size: 16px; }
@@ -1172,6 +1206,28 @@
 :global(html[data-theme='dark']) .klassSearchResultsHead span {
   background: rgba(249,115,22,.12);
   color: #fdba74;
+}
+:global(html[data-theme='dark']) .anatomySearchWrap {
+  background: #13111d;
+}
+:global(html[data-theme='dark']) .anatomySearchField {
+  border-color: rgba(124,58,237,.30);
+  background: rgba(255,255,255,.045);
+}
+:global(html[data-theme='dark']) .anatomySearchField:focus-within {
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 4px rgba(124,58,237,.14);
+}
+:global(html[data-theme='dark']) .anatomySearchIcon { color: #a78bfa; }
+:global(html[data-theme='dark']) .anatomySearchClear {
+  background: rgba(124,58,237,.14);
+  color: #c4b5fd;
+}
+:global(html[data-theme='dark']) .anatomySearchSuggestion { color: #c4b5fd; }
+:global(html[data-theme='dark']) .anatomySearchSuggestion button { color: #a78bfa; }
+:global(html[data-theme='dark']) .anatomySearchResultsHead span {
+  background: rgba(124,58,237,.14);
+  color: #c4b5fd;
 }
 :global(html[data-theme='dark']) .klassSearchResult {
   border-color: rgba(148,163,184,.15);

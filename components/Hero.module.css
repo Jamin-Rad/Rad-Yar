@@ -252,13 +252,13 @@
 
 .floatCard {
   position: absolute;
-  width: min(100%, 328px);
-  min-height: 124px;
+  width: min(100%, 394px);
+  min-height: 149px;
   display: grid;
-  grid-template-columns: 72px 1fr;
-  gap: 15px;
+  grid-template-columns: 86px 1fr;
+  gap: 18px;
   align-items: center;
-  padding: 15px;
+  padding: 18px;
   border: 1px solid color-mix(in srgb, var(--card-color) 38%, var(--hero-card-border));
   border-radius: 8px;
   background:
@@ -283,8 +283,8 @@
 }
 
 .floatIcon {
-  width: 72px;
-  height: 72px;
+  width: 86px;
+  height: 86px;
   display: block;
   overflow: hidden;
   border-radius: 8px;
@@ -306,7 +306,7 @@
   font-family: var(--font-fraunces, serif);
   font-style: italic;
   color: color-mix(in srgb, var(--card-color) 82%, white);
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 700;
   line-height: 1.15;
 }
@@ -317,7 +317,7 @@
   overflow: hidden;
   font-family: var(--font-main, sans-serif);
   color: var(--hero-muted);
-  font-size: 11.8px;
+  font-size: 14px;
   line-height: 1.45;
 }
 

@@ -88,6 +88,30 @@ const CLASSIFICATION_SEARCH_COPY = {
   },
 }
 
+const ANATOMY_SEARCH_COPY = {
+  de: {
+    placeholder: 'Anatomie oder Region suchen …',
+    results: 'Treffer',
+    suggestion: 'Meintest du',
+    empty: 'Keine passende Anatomie gefunden.',
+    clear: 'Suche löschen',
+  },
+  en: {
+    placeholder: 'Search anatomy or region …',
+    results: 'Results',
+    suggestion: 'Did you mean',
+    empty: 'No matching anatomy found.',
+    clear: 'Clear search',
+  },
+  fa: {
+    placeholder: 'جستجوی آناتومی یا ناحیه …',
+    results: 'نتایج',
+    suggestion: 'منظورتان این بود',
+    empty: 'آناتومی مرتبطی پیدا نشد.',
+    clear: 'پاک کردن جستجو',
+  },
+}
+
 function normaliseSearch(value) {
   return String(value || '')
     .normalize('NFD')
@@ -348,35 +372,133 @@ function Modal({ title, subtitle, accent, copy, onClose, children, accentClass, 
 
 /* ── Befundrelevante Anatomie ─────────────────── */
 function AnatomieModal({ copy, lang, onClose }) {
-  const items = REF_DATA.anatomie
+  const items = sortByLocalizedName(REF_DATA.anatomie, lang)
   const [itemId, setItemId] = useState(items[0].id)
   const [showDetail, setShowDetail] = useState(false)
+  const [query, setQuery] = useState('')
   const item = items.find(entry => entry.id === itemId) || items[0]
+  const searchCopy = ANATOMY_SEARCH_COPY[lang] || ANATOMY_SEARCH_COPY.de
+  const searchResults = query.trim()
+    ? items.map(entry => {
+        const candidates = [
+          tx(entry.name, lang),
+          tx(entry.name, 'de'),
+          tx(entry.name, 'en'),
+          tx(entry.kompakt, lang),
+          ...(entry.rows || []).flatMap(row => row.map(cell => tx(cell, lang))),
+        ]
+        const scores = candidates
+          .map(candidate => classificationSearchScore(query, candidate))
+          .filter(score => score !== null)
+        if (!scores.length) return null
+        return { item: entry, score: Math.min(...scores) }
+      }).filter(Boolean)
+        .sort((a, b) => a.score - b.score || tx(a.item.name, lang).localeCompare(tx(b.item.name, lang)))
+        .slice(0, 8)
+    : []
+  const topResultNameScore = searchResults[0]
+    ? classificationSearchScore(query, tx(searchResults[0].item.name, lang))
+    : null
+  const suggestedResult = query.trim().length >= 3
+    && searchResults[0]
+    && topResultNameScore !== null
+    && normaliseSearch(query) !== normaliseSearch(tx(searchResults[0].item.name, lang))
+    ? searchResults[0]
+    : null
+  const openItem = nextItem => {
+    setItemId(nextItem.id)
+    setShowDetail(true)
+    setQuery('')
+  }
 
   return (
     <Modal title={copy.btnAnatomie} subtitle={showDetail?tx(item.name, lang):null} accent={item.color}
       copy={copy} onClose={onClose} accentClass={styles.headPurple} wide>
+      <div className={`${styles.klassSearchWrap} ${styles.anatomySearchWrap}`}>
+        <div className={`${styles.klassSearchField} ${styles.anatomySearchField}`}>
+          <span className={`${styles.klassSearchIcon} ${styles.anatomySearchIcon}`} aria-hidden="true">⌕</span>
+          <input
+            type="search"
+            value={query}
+            onChange={event => setQuery(event.target.value)}
+            className={styles.klassSearchInput}
+            placeholder={searchCopy.placeholder}
+            aria-label={searchCopy.placeholder}
+          />
+          {query && (
+            <button type="button" className={`${styles.klassSearchClear} ${styles.anatomySearchClear}`} onClick={() => setQuery('')} aria-label={searchCopy.clear}>×</button>
+          )}
+        </div>
+        {suggestedResult && (
+          <p className={`${styles.klassSearchSuggestion} ${styles.anatomySearchSuggestion}`}>
+            {searchCopy.suggestion}:{' '}
+            <button type="button" onClick={() => setQuery(tx(suggestedResult.item.name, lang))}>
+              {tx(suggestedResult.item.name, lang)}
+            </button>
+            ?
+          </p>
+        )}
+      </div>
+
+      {query.trim() ? (
+        <div className={styles.klassSearchResults}>
+          <div className={`${styles.klassSearchResultsHead} ${styles.anatomySearchResultsHead}`}>
+            <strong>{searchCopy.results}</strong>
+            <span>{searchResults.length}</span>
+          </div>
+          {searchResults.length ? (
+            <div className={styles.klassSearchGrid}>
+              {searchResults.map(({ item: resultItem }) => (
+                <button
+                  key={resultItem.id}
+                  type="button"
+                  className={styles.klassSearchResult}
+                  style={{ '--ref-color': resultItem.color }}
+                  onClick={() => openItem(resultItem)}
+                >
+                  <span className={styles.anatomyNavThumb}>
+                    <Image src={resultItem.image} alt="" width={44} height={44} />
+                  </span>
+                  <span className={styles.klassSearchResultText}>
+                    <strong>{tx(resultItem.name, lang)}</strong>
+                    <small>{tx(resultItem.kompakt, lang)}</small>
+                  </span>
+                  <span className={styles.klassSearchResultArrow}>→</span>
+                </button>
+              ))}
+            </div>
+          ) : (
+            <p className={styles.klassSearchEmpty}>{searchCopy.empty}</p>
+          )}
+        </div>
+      ) : (
       <div className={`${styles.split} ${showDetail?styles.showDetail:''}`}>
         <nav className={styles.sidebar}>
           {items.map(entry => (
             <button key={entry.id}
-              className={`${styles.navBtn} ${entry.id===itemId?styles.navActiveOrange:''}`}
-              style={{'--ref-color':entry.color}} onClick={()=>{setItemId(entry.id);setShowDetail(true)}}>
+              className={`${styles.navBtn} ${styles.klassNavBtn} ${entry.id===itemId?styles.navActivePurple:''}`}
+              style={{'--ref-color':entry.color}} onClick={()=>openItem(entry)}>
               <span className={styles.anatomyNavThumb}>
                 <Image src={entry.image} alt="" width={44} height={44} />
               </span>
-              <span className={styles.navLabel}>{tx(entry.name, lang)}</span>
+              <span className={styles.klassNavText}>
+                <span className={styles.navLabel}>{tx(entry.name, lang)}</span>
+              </span>
+              <span className={styles.klassNavArrow}>›</span>
             </button>
           ))}
         </nav>
         <div className={styles.content} style={{'--ref-color':item.color}}>
           <button className={styles.mobileBack} onClick={()=>setShowDetail(false)}>← {copy.back}</button>
-          <h2 className={styles.regionHeading}>
+          <div className={styles.klassTopicHead}>
             <span className={`${styles.regionHeadingIcon} ${styles.klassTopicLogoWrap}`}>
               <Image src="/referenzen/anatomie/anatomie-icon.jpg" alt="" width={38} height={38} className={styles.klassTopicLogo} />
             </span>
-            <span style={{color:item.color}}>{tx(item.name,lang)}</span>
-          </h2>
+            <div>
+              <span className={styles.klassTopicEyebrow}>{copy.btnAnatomie}</span>
+              <h2 style={{color:item.color}}>{tx(item.name,lang)}</h2>
+            </div>
+          </div>
           <div className={styles.anatomyHero}>
             <div className={styles.anatomyImageFrame}>
               <Image src={item.image} alt={tx(item.name, lang)} width={900} height={900} className={styles.anatomyImage} />
@@ -401,6 +523,7 @@ function AnatomieModal({ copy, lang, onClose }) {
           </div>
         </div>
       </div>
+      )}
     </Modal>
   )
 }
