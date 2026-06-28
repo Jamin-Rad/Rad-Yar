@@ -8,7 +8,7 @@ import styles from './WichtigeReferenzen.module.css'
 
 const HOME_CARD_VISUALS = {
   anatomie: {
-    src: '/referenzen/anatomie/anatomie-icon.jpg',
+    src: '/fach/technik.png',
     className: styles.iconBoxPurple,
   },
   messwerte: {
@@ -36,6 +36,40 @@ const CLASSIFICATION_TOPIC_LOGOS = {
   msk: '/fach/msk.png',
   onko: '/fach/technik.png',
 }
+
+const ANATOMY_TOPIC_LOGOS = {
+  neuro: '/fach/gehirn.png',
+  'thorax-herz': '/fach/thorax.png',
+  abdomen: '/fach/abdomen.png',
+  urogenital: '/fach/becken-m.png',
+}
+
+const ANATOMY_TOPIC_ORDER = [
+  {
+    id: 'neuro',
+    name: { de: 'Neuro', en: 'Neuro', fa: 'نورولوژی' },
+    color: '#7c3aed',
+    itemIds: ['hirngefaess-territorien'],
+  },
+  {
+    id: 'thorax-herz',
+    name: { de: 'Thorax & Herz', en: 'Thorax & Heart', fa: 'توراکس و قلب' },
+    color: '#0ea5e9',
+    itemIds: ['lungensegmente', 'bronchopulmonal-gefaesse', 'koronararterien-territorien'],
+  },
+  {
+    id: 'abdomen',
+    name: { de: 'Abdomen', en: 'Abdomen', fa: 'شکم' },
+    color: '#f59e0b',
+    itemIds: ['lebersegmente-couinaud', 'pankreas-gallenwege'],
+  },
+  {
+    id: 'urogenital',
+    name: { de: 'Urogenital', en: 'Urogenital', fa: 'اوروژنیتال' },
+    color: '#ef4444',
+    itemIds: ['beckenarterien'],
+  },
+]
 
 const CLASSIFICATION_SEARCH_ALIASES = {
   'ti-rads': ['tirads', 'schilddrüse', 'schilddruesenknoten', 'thyroid'],
@@ -206,6 +240,16 @@ function buildClassificationTopics(sourceTopics) {
   ].filter(Boolean)
 }
 
+function buildAnatomyTopics(sourceItems, lang) {
+  const byId = Object.fromEntries(sourceItems.map(item => [item.id, item]))
+  return ANATOMY_TOPIC_ORDER
+    .map(topic => ({
+      ...topic,
+      items: sortByLocalizedName(topic.itemIds.map(id => byId[id]).filter(Boolean), lang),
+    }))
+    .filter(topic => topic.items.length)
+}
+
 function sortByLocalizedName(items, lang) {
   return [...items].sort((a, b) => tx(a.name, lang).localeCompare(tx(b.name, lang), lang === 'de' ? 'de' : undefined, { sensitivity: 'base' }))
 }
@@ -374,10 +418,13 @@ function Modal({ title, subtitle, accent, copy, onClose, children, accentClass, 
 /* ── Befundrelevante Anatomie ─────────────────── */
 function AnatomieModal({ copy, lang, onClose }) {
   const router = useRouter()
-  const items = sortByLocalizedName(REF_DATA.anatomie, lang)
-  const [itemId, setItemId] = useState(items[0].id)
+  const topics = buildAnatomyTopics(REF_DATA.anatomie, lang)
+  const [topicId, setTopicId] = useState(topics[0].id)
+  const [itemId, setItemId] = useState(topics[0].items[0].id)
   const [showDetail, setShowDetail] = useState(false)
   const [query, setQuery] = useState('')
+  const topic = topics.find(entry => entry.id === topicId) || topics[0]
+  const items = topics.flatMap(entry => entry.items.map(item => ({ ...item, topic: entry })))
   const item = items.find(entry => entry.id === itemId) || items[0]
   const searchCopy = ANATOMY_SEARCH_COPY[lang] || ANATOMY_SEARCH_COPY.de
   const searchResults = query.trim()
@@ -386,6 +433,7 @@ function AnatomieModal({ copy, lang, onClose }) {
           tx(entry.name, lang),
           tx(entry.name, 'de'),
           tx(entry.name, 'en'),
+          tx(entry.topic.name, lang),
           tx(entry.kompakt, lang),
           ...(entry.rows || []).flatMap(row => row.map(cell => tx(cell, lang))),
         ]
@@ -409,6 +457,7 @@ function AnatomieModal({ copy, lang, onClose }) {
     : null
   const openItem = nextItem => {
     setItemId(nextItem.id)
+    setTopicId(nextItem.topic?.id || topicId)
     setShowDetail(true)
     setQuery('')
   }
@@ -418,7 +467,7 @@ function AnatomieModal({ copy, lang, onClose }) {
   }
 
   return (
-    <Modal title={copy.btnAnatomie} subtitle={showDetail?tx(item.name, lang):null} accent={item.color}
+    <Modal title={copy.btnAnatomie} subtitle={showDetail?tx(topic.name, lang):null} accent={topic.color}
       copy={copy} onClose={onClose} accentClass={styles.headPurple} wide>
       <div className={`${styles.klassSearchWrap} ${styles.anatomySearchWrap}`}>
         <div className={`${styles.klassSearchField} ${styles.anatomySearchField}`}>
@@ -462,12 +511,12 @@ function AnatomieModal({ copy, lang, onClose }) {
                   style={{ '--ref-color': resultItem.color }}
                   onClick={() => openItem(resultItem)}
                 >
-                  <span className={styles.anatomyNavThumb}>
-                    <Image src={resultItem.image} alt="" width={44} height={44} />
+                  <span className={`${styles.navIconWrap} ${styles.klassNavLogoWrap}`}>
+                    <Image src={ANATOMY_TOPIC_LOGOS[resultItem.topic.id] || '/fach/technik.png'} alt="" width={30} height={30} className={styles.klassNavLogo} />
                   </span>
                   <span className={styles.klassSearchResultText}>
                     <strong>{tx(resultItem.name, lang)}</strong>
-                    <small>{tx(resultItem.kompakt, lang)}</small>
+                    <small>{tx(resultItem.topic.name, lang)}</small>
                   </span>
                   <span className={styles.klassSearchResultArrow}>→</span>
                 </button>
@@ -480,12 +529,16 @@ function AnatomieModal({ copy, lang, onClose }) {
       ) : (
       <div className={`${styles.split} ${showDetail?styles.showDetail:''}`}>
         <nav className={styles.sidebar}>
-          {items.map(entry => (
+          {topics.map(entry => (
             <button key={entry.id}
-              className={`${styles.navBtn} ${styles.klassNavBtn} ${entry.id===itemId?styles.navActivePurple:''}`}
-              style={{'--ref-color':entry.color}} onClick={()=>openItem(entry)}>
-              <span className={styles.anatomyNavThumb}>
-                <Image src={entry.image} alt="" width={44} height={44} />
+              className={`${styles.navBtn} ${styles.klassNavBtn} ${entry.id===topicId?styles.navActivePurple:''}`}
+              style={{'--ref-color':entry.color}} onClick={()=>{
+                setTopicId(entry.id)
+                setItemId(entry.items[0].id)
+                setShowDetail(true)
+              }}>
+              <span className={`${styles.navIconWrap} ${styles.klassNavLogoWrap}`}>
+                <Image src={ANATOMY_TOPIC_LOGOS[entry.id] || '/fach/technik.png'} alt="" width={30} height={30} className={styles.klassNavLogo} />
               </span>
               <span className={styles.klassNavText}>
                 <span className={styles.navLabel}>{tx(entry.name, lang)}</span>
@@ -498,19 +551,31 @@ function AnatomieModal({ copy, lang, onClose }) {
           <button className={styles.mobileBack} onClick={()=>setShowDetail(false)}>← {copy.back}</button>
           <div className={styles.klassTopicHead}>
             <span className={`${styles.regionHeadingIcon} ${styles.klassTopicLogoWrap}`}>
-              <Image src="/referenzen/anatomie/anatomie-icon.jpg" alt="" width={38} height={38} className={styles.klassTopicLogo} />
+              <Image src={ANATOMY_TOPIC_LOGOS[topic.id] || '/fach/technik.png'} alt="" width={38} height={38} className={styles.klassTopicLogo} />
             </span>
             <div>
               <span className={styles.klassTopicEyebrow}>{copy.btnAnatomie}</span>
-              <h2 style={{color:item.color}}>{tx(item.name,lang)}</h2>
+              <h2 style={{color:topic.color}}>{tx(topic.name,lang)}</h2>
             </div>
           </div>
-          <div className={styles.anatomyHero}>
-            <div className={styles.anatomyImageFrame}>
-              <Image src={item.image} alt={tx(item.name, lang)} width={900} height={900} className={styles.anatomyImage} />
-            </div>
+          <div className={styles.klassCardGrid}>
+            {topic.items.map(entry => (
+              <button
+                key={entry.id}
+                type="button"
+                className={styles.klassCard}
+                style={{'--ref-color': entry.color}}
+                onClick={() => setItemId(entry.id)}
+              >
+                <span className={styles.klassCardName} style={{color: entry.color}}>{tx(entry.name, lang)}</span>
+                <span className={styles.klassCardText}>{tx(entry.kompakt, lang)}</span>
+              </button>
+            ))}
+          </div>
+          <div className={styles.anatomyHero} style={{ gridTemplateColumns: '1fr' }}>
             <div className={styles.anatomyIntro}>
               <span>{copy.kompakt}</span>
+              <h3 style={{ margin: 0, color: '#0f172a', fontSize: 18, lineHeight: 1.25, fontWeight: 900 }}>{tx(item.name, lang)}</h3>
               <p>{tx(item.kompakt, lang)}</p>
               <button
                 type="button"

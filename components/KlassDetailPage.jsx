@@ -7,7 +7,7 @@ import { REF_COPY, REF_DATA, tx } from '@/data/referenzen'
 import styles from './KlassDetailPage.module.css'
 
 const TOPIC_LOGOS = {
-  anatomie: '/referenzen/anatomie/anatomie-icon.jpg',
+  anatomie: '/fach/technik.png',
   neuro: '/fach/gehirn.png',
   thorax: '/fach/thorax.png',
   abdomen: '/fach/abdomen.png',
@@ -121,7 +121,7 @@ export default function KlassDetailPage({ topic, item, section = 'klassifikation
   const infoLabel = isAnatomie
     ? (lang === 'de' ? 'Kompakt' : lang === 'fa' ? 'خلاصه' : 'Compact')
     : (lang === 'de' ? 'Einordnung & Radiologie-Check' : lang === 'fa' ? 'توضیح و چک رادیولوژی' : 'Context & radiology check')
-  const image = normalizeDetailImage(item, lang)
+  const image = isAnatomie ? null : normalizeDetailImage(item, lang)
   const sourceLinks = SourceLinks({ item, lang })
 
   return (

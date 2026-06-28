@@ -16,7 +16,7 @@ const PILLAR_ICONS = [
 const LEARNING_CARD_COLORS = ['#f97316', '#0ea5e9', '#10b981', '#2563eb']
 
 const REFERENCE_CARDS = [
-  { key: 'anatomie', title: 'btnAnatomie', desc: 'btnAnatomieSub', image: '/referenzen/anatomie/anatomie-icon.jpg', color: '#7c3aed' },
+  { key: 'anatomie', title: 'btnAnatomie', desc: 'btnAnatomieSub', image: '/fach/technik.png', color: '#7c3aed' },
   { key: 'klassifikationen', title: 'btnKlass', desc: 'btnKlassSub', image: '/referenzen/klassifikation.png', color: '#f97316' },
   { key: 'messwerte', title: 'btnMesswerte', desc: 'btnMesswerteSub', image: '/referenzen/messwerte.png', color: '#0ea5e9' },
   { key: 'rechner', title: 'btnRechner', desc: 'btnRechnerSub', image: '/referenzen/rechner.png', color: '#059669' },
