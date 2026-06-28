@@ -72,15 +72,15 @@ export default function Navbar() {
   return (
     <>
       <nav className={styles.nav}>
-        <Link href="/" className={styles.brand} dir="ltr">
-          <HexLogo size={28} />
-          {!isHome && (
+        {!isHome && (
+          <Link href="/" className={styles.brand} dir="ltr">
+            <HexLogo size={28} />
             <span className={styles.wordmark} dir="ltr">
               <span className={styles.rad}>RAD</span>
               <span className={styles.yar}>YAR</span>
             </span>
-          )}
-        </Link>
+          </Link>
+        )}
 
         <div className={styles.right} data-lang={lang}>
           <div className={styles.authSlot}>
