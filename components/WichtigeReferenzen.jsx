@@ -420,12 +420,10 @@ function AnatomieModal({ copy, lang, onClose }) {
   const router = useRouter()
   const topics = buildAnatomyTopics(REF_DATA.anatomie, lang)
   const [topicId, setTopicId] = useState(topics[0].id)
-  const [itemId, setItemId] = useState(topics[0].items[0].id)
   const [showDetail, setShowDetail] = useState(false)
   const [query, setQuery] = useState('')
   const topic = topics.find(entry => entry.id === topicId) || topics[0]
   const items = topics.flatMap(entry => entry.items.map(item => ({ ...item, topic: entry })))
-  const item = items.find(entry => entry.id === itemId) || items[0]
   const searchCopy = ANATOMY_SEARCH_COPY[lang] || ANATOMY_SEARCH_COPY.de
   const searchResults = query.trim()
     ? items.map(entry => {
@@ -455,12 +453,6 @@ function AnatomieModal({ copy, lang, onClose }) {
     && normaliseSearch(query) !== normaliseSearch(tx(searchResults[0].item.name, lang))
     ? searchResults[0]
     : null
-  const openItem = nextItem => {
-    setItemId(nextItem.id)
-    setTopicId(nextItem.topic?.id || topicId)
-    setShowDetail(true)
-    setQuery('')
-  }
   const go = id => {
     onClose()
     router.push(`/referenzen/anatomie/${id}${lang!=='de'?`?lang=${lang}`:''}`)
@@ -509,7 +501,7 @@ function AnatomieModal({ copy, lang, onClose }) {
                   type="button"
                   className={styles.klassSearchResult}
                   style={{ '--ref-color': resultItem.color }}
-                  onClick={() => openItem(resultItem)}
+                  onClick={() => go(resultItem.id)}
                 >
                   <span className={`${styles.navIconWrap} ${styles.klassNavLogoWrap}`}>
                     <Image src={ANATOMY_TOPIC_LOGOS[resultItem.topic.id] || '/fach/technik.png'} alt="" width={30} height={30} className={styles.klassNavLogo} />
@@ -534,7 +526,6 @@ function AnatomieModal({ copy, lang, onClose }) {
               className={`${styles.navBtn} ${styles.klassNavBtn} ${entry.id===topicId?styles.navActivePurple:''}`}
               style={{'--ref-color':entry.color}} onClick={()=>{
                 setTopicId(entry.id)
-                setItemId(entry.items[0].id)
                 setShowDetail(true)
               }}>
               <span className={`${styles.navIconWrap} ${styles.klassNavLogoWrap}`}>
@@ -547,7 +538,7 @@ function AnatomieModal({ copy, lang, onClose }) {
             </button>
           ))}
         </nav>
-        <div className={styles.content} style={{'--ref-color':item.color}}>
+        <div className={styles.content} style={{'--ref-color':topic.color}}>
           <button className={styles.mobileBack} onClick={()=>setShowDetail(false)}>← {copy.back}</button>
           <div className={styles.klassTopicHead}>
             <span className={`${styles.regionHeadingIcon} ${styles.klassTopicLogoWrap}`}>
@@ -565,52 +556,12 @@ function AnatomieModal({ copy, lang, onClose }) {
                 type="button"
                 className={styles.klassCard}
                 style={{'--ref-color': entry.color}}
-                onClick={() => setItemId(entry.id)}
+                onClick={() => go(entry.id)}
               >
                 <span className={styles.klassCardName} style={{color: entry.color}}>{tx(entry.name, lang)}</span>
                 <span className={styles.klassCardText}>{tx(entry.kompakt, lang)}</span>
               </button>
             ))}
-          </div>
-          <div className={styles.anatomyHero} style={{ gridTemplateColumns: '1fr' }}>
-            <div className={styles.anatomyIntro}>
-              <span>{copy.kompakt}</span>
-              <h3 style={{ margin: 0, color: '#0f172a', fontSize: 18, lineHeight: 1.25, fontWeight: 900 }}>{tx(item.name, lang)}</h3>
-              <p>{tx(item.kompakt, lang)}</p>
-              <button
-                type="button"
-                onClick={() => go(item.id)}
-                style={{
-                  alignSelf: 'flex-start',
-                  marginTop: 4,
-                  minHeight: 36,
-                  padding: '0 14px',
-                  border: 0,
-                  borderRadius: 10,
-                  background: item.color,
-                  color: '#fff',
-                  cursor: 'pointer',
-                  font: 'inherit',
-                  fontSize: 12,
-                  fontWeight: 850,
-                }}
-              >
-                {copy.openDetail}
-              </button>
-            </div>
-          </div>
-          <div className={styles.tableWrap}>
-            <table className={styles.mTable}>
-              <thead><tr>
-                {item.cols.map((col, ci) => <th key={ci} className={ci===0?styles.thName:styles.thNote}>{tx(col, lang)}</th>)}
-              </tr></thead>
-              <tbody>{item.rows.map((row, ri)=>(
-                <tr key={ri}>
-                  <td className={styles.tdName}>{tx(row[0], lang)}</td>
-                  <td className={styles.tdNote}>{tx(row[1], lang)}</td>
-                </tr>
-              ))}</tbody>
-            </table>
           </div>
         </div>
       </div>
