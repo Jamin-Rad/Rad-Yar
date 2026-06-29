@@ -341,3 +341,234 @@
 :global(html[data-theme='dark']) .fallTopicCard small,
 :global(html[data-theme='dark']) .emptyFallTopics { color: #b8c4d8; }
 :global(html[data-theme='dark']) .fallTopicIcon { background: rgba(249,115,22,0.14); }
+
+/* Film plate redesign for the home learning block */
+.section {
+  position: relative;
+  isolation: isolate;
+  padding: 96px 7vw 58px;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(249,115,22,0.18), transparent 28rem),
+    radial-gradient(circle at 82% 28%, rgba(14,165,233,0.10), transparent 32rem),
+    linear-gradient(180deg, #080e1c 0%, #0b1424 48%, #090f1d 100%);
+  overflow: hidden;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 30px 4vw 18px;
+  z-index: -1;
+  border: 1px solid rgba(249,115,22,0.24);
+  border-radius: 34px;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.035) 42%, rgba(249,115,22,0.045));
+  background-size: 44px 44px, 44px 44px, auto;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.16),
+    inset 0 -1px 0 rgba(249,115,22,0.14),
+    0 34px 110px rgba(0,0,0,0.42);
+  backdrop-filter: blur(18px);
+}
+
+.section::after {
+  content: '';
+  position: absolute;
+  inset: 30px 4vw 18px;
+  z-index: -1;
+  border-radius: 34px;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent),
+    repeating-linear-gradient(180deg, rgba(255,255,255,0.045) 0 1px, transparent 1px 7px);
+  opacity: 0.42;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 16%, #000 86%, transparent 100%);
+}
+
+.section :global(.sLabel),
+.section :global(.sTitle),
+.section :global(.sSub) {
+  position: relative;
+  z-index: 1;
+}
+
+.section :global(.sLabel) {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #fdba74;
+  text-shadow: 0 0 18px rgba(249,115,22,0.36);
+}
+
+.section :global(.sLabel)::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 99px;
+  background: #f97316;
+  box-shadow: 0 0 18px rgba(249,115,22,0.78);
+}
+
+.section :global(.sTitle) {
+  color: #f8fafc;
+  text-shadow: 0 12px 38px rgba(0,0,0,0.36);
+}
+
+.section :global(.sSub) {
+  color: rgba(226,232,240,0.70);
+  margin-bottom: 34px;
+}
+
+.section :global(.sTitle)::after {
+  content: 'LERNPLATTE 01';
+  display: inline-flex;
+  margin-left: 14px;
+  transform: translateY(-6px);
+  font-family: var(--font-main, system-ui, sans-serif);
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  color: rgba(253,186,116,0.68);
+  border: 1px solid rgba(253,186,116,0.24);
+  border-radius: 999px;
+  padding: 3px 9px;
+  background: rgba(249,115,22,0.08);
+}
+
+.grid {
+  position: relative;
+  z-index: 1;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.grid::before,
+.grid::after {
+  content: '';
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  pointer-events: none;
+  opacity: 0.72;
+}
+
+.grid::before {
+  top: -48px;
+  left: -24px;
+  border-top: 2px solid rgba(253,186,116,0.62);
+  border-left: 2px solid rgba(253,186,116,0.62);
+}
+
+.grid::after {
+  right: -24px;
+  bottom: -34px;
+  border-right: 2px solid rgba(253,186,116,0.50);
+  border-bottom: 2px solid rgba(253,186,116,0.50);
+}
+
+.card {
+  position: relative;
+  min-height: 334px;
+  padding: 24px 22px 22px;
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.16) !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.96), rgba(248,250,252,0.88)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.92),
+    0 20px 60px rgba(0,0,0,0.22);
+  transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease, filter .24s ease;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent),
+    repeating-linear-gradient(180deg, rgba(15,23,42,0.040) 0 1px, transparent 1px 8px);
+  opacity: 0;
+  transform: translateX(-32%);
+  transition: opacity .24s ease, transform .36s ease;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border-radius: 16px;
+  border: 1px solid rgba(15,23,42,0.08);
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(249,115,22,0.54) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.95),
+    0 26px 76px rgba(0,0,0,0.28),
+    0 0 38px rgba(249,115,22,0.18);
+  filter: saturate(1.04);
+}
+
+.card:hover::before {
+  opacity: 1;
+  transform: translateX(22%);
+}
+
+.icon {
+  position: relative;
+  z-index: 1;
+  width: 104px;
+  height: 104px;
+  border-radius: 18px;
+  border: 1px solid rgba(15,23,42,0.10) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.58),
+    0 16px 34px rgba(15,23,42,0.12);
+}
+
+.title,
+.desc,
+.chips {
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  color: #111827 !important;
+  font-size: 19px;
+}
+
+.desc {
+  color: #475569;
+}
+
+.chip {
+  border-radius: 999px;
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(8px);
+}
+
+@media (max-width: 1100px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 700px) {
+  .section { padding: 78px 5vw 46px; }
+  .section::before,
+  .section::after { inset: 18px 3vw 12px; border-radius: 24px; }
+  .grid { grid-template-columns: 1fr; }
+  .card { min-height: auto; }
+  .section :global(.sTitle)::after {
+    display: flex;
+    width: fit-content;
+    margin: 10px 0 0;
+    transform: none;
+  }
+}

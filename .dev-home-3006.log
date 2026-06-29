@@ -1,0 +1,109 @@
+
+> radpilot@0.1.0 dev
+> next dev --hostname 127.0.0.1 --port 3006
+
+   ▲ Next.js 15.5.19
+   - Local:        http://127.0.0.1:3006
+   - Network:      http://127.0.0.1:3006
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 2.8s
+ ✓ Compiled /middleware in 446ms (222 modules)
+ ○ Compiling / ...
+<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (192kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+ ✓ Compiled / in 7.1s (1343 modules)
+ GET / 200 in 7887ms
+ POST / 200 in 65ms
+ ○ Compiling /api/analytics/track ...
+ ✓ Compiled /api/analytics/track in 2.1s (1318 modules)
+Analytics-Fehler: Error: Clerk: auth() was called but Clerk can't detect usage of clerkMiddleware(). Please ensure the following:
+- Your Middleware exists at ./middleware.(ts|js)
+- clerkMiddleware() is used in your Next.js Middleware.
+- Your Middleware matcher is configured to match this route or page.
+- If you are using the src directory, make sure the Middleware file is inside of it.
+
+For more details, see https://clerk.com/err/auth-middleware
+
+    at async POST (app\api\analytics\track\route.js:30:24)
+  28 |     }
+  29 |
+> 30 |     const { userId } = await auth()
+     |                        ^
+  31 |     const { error } = await supabaseAdmin.rpc('record_site_activity', {
+  32 |       p_visitor_id: visitorId,
+  33 |       p_user_id: userId || null,
+ POST /api/analytics/track 400 in 2477ms
+Error: Clerk: auth() was called but Clerk can't detect usage of clerkMiddleware(). Please ensure the following:
+- Your Middleware exists at ./middleware.(ts|js)
+- clerkMiddleware() is used in your Next.js Middleware.
+- Your Middleware matcher is configured to match this route or page.
+- If you are using the src directory, make sure the Middleware file is inside of it.
+
+For more details, see https://clerk.com/err/auth-middleware
+
+    at async GET (app\api\copy-permission\route.js:6:16)
+  4 |
+  5 | export async function GET() {
+> 6 |   const user = await currentUser()
+    |                ^
+  7 |   const canCopy = hasCopyAllowedEmail(user?.emailAddresses)
+  8 |
+  9 |   return NextResponse.json({ canCopy })
+ GET /api/copy-permission 500 in 2532ms
+Analytics-Fehler: Error: Clerk: auth() was called but Clerk can't detect usage of clerkMiddleware(). Please ensure the following:
+- Your Middleware exists at ./middleware.(ts|js)
+- clerkMiddleware() is used in your Next.js Middleware.
+- Your Middleware matcher is configured to match this route or page.
+- If you are using the src directory, make sure the Middleware file is inside of it.
+
+For more details, see https://clerk.com/err/auth-middleware
+
+    at async POST (app\api\analytics\track\route.js:30:24)
+  28 |     }
+  29 |
+> 30 |     const { userId } = await auth()
+     |                        ^
+  31 |     const { error } = await supabaseAdmin.rpc('record_site_activity', {
+  32 |       p_visitor_id: visitorId,
+  33 |       p_user_id: userId || null,
+ POST /api/analytics/track 400 in 104ms
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Users\Drham\Documents\GitHub\Rad-Yar\.next\prerender-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\Drham\\Documents\\GitHub\\Rad-Yar\\.next\\prerender-manifest.json',
+  page: '/api/analytics/track'
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 702ms (1664 modules)
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Users\Drham\Documents\GitHub\Rad-Yar\.next\prerender-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\Drham\\Documents\\GitHub\\Rad-Yar\\.next\\prerender-manifest.json',
+  page: '/'
+}
+ POST /api/analytics/track 500 in 1992ms
+ GET / 500 in 1565ms
+ GET / 200 in 122ms
+ GET / 200 in 430ms
+Analytics-Fehler: Error: Clerk: auth() was called but Clerk can't detect usage of clerkMiddleware(). Please ensure the following:
+- Your Middleware exists at ./middleware.(ts|js)
+- clerkMiddleware() is used in your Next.js Middleware.
+- Your Middleware matcher is configured to match this route or page.
+- If you are using the src directory, make sure the Middleware file is inside of it.
+
+For more details, see https://clerk.com/err/auth-middleware
+
+    at async POST (app\api\analytics\track\route.js:30:24)
+  28 |     }
+  29 |
+> 30 |     const { userId } = await auth()
+     |                        ^
+  31 |     const { error } = await supabaseAdmin.rpc('record_site_activity', {
+  32 |       p_visitor_id: visitorId,
+  33 |       p_user_id: userId || null,
+ POST /api/analytics/track 400 in 188ms
+ GET / 200 in 99ms
+ GET / 200 in 105ms
