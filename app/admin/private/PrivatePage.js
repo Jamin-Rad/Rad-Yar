@@ -12,7 +12,6 @@ function makeId() {
 }
 
 export default function PrivatePage() {
-  const router = useRouter()
   const [items, setItems] = useState([])
   const [loaded, setLoaded] = useState(false)
   const [form, setForm] = useState({ title: '', note: '', status: 'offen' })

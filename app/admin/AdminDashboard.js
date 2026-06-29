@@ -64,8 +64,6 @@ function RegistrationChart({ users }) {
 }
 
 export default function AdminDashboard() {
-  const router = useRouter()
-
   const [users, setUsers] = useState([])
   const [totalCount, setTotalCount] = useState(0)
   const [promoActivatedCount, setPromoActivatedCount] = useState(0)

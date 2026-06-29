@@ -20,7 +20,6 @@ function number(value) {
 }
 
 export default function HealthPage() {
-  const router = useRouter()
   const [records, setRecords] = useState([])
   const [loaded, setLoaded] = useState(false)
   const [form, setForm] = useState({

@@ -72,7 +72,6 @@ function emptyMonth() {
 }
 
 export default function BudgetPage() {
-  const router = useRouter()
   const [tab, setTab] = useState('kategorien')
   const [month, setMonth] = useState(getMonthKey())
   const [store, setStore] = useState({})
