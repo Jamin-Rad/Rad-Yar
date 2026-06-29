@@ -349,6 +349,225 @@
   font-size: 13px;
 }
 
+.budgetHero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.budgetMonthPicker {
+  display: grid;
+  gap: 6px;
+  min-width: 190px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.budgetMonthPicker input,
+.budgetForm input {
+  width: 100%;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #fff;
+  color: #0d1b2a;
+  font: inherit;
+  font-size: 14px;
+  outline: none;
+  padding: 10px 12px;
+  transition: border-color .15s, box-shadow .15s;
+}
+
+.budgetMonthPicker input:focus,
+.budgetForm input:focus {
+  border-color: #f97316;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, .12);
+}
+
+.budgetSummaryGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.budgetMetric {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+
+.budgetMetric span {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.budgetMetric strong {
+  overflow-wrap: anywhere;
+  color: #0d1b2a;
+  font-size: 23px;
+  line-height: 1.15;
+}
+
+.budgetGrid {
+  display: grid;
+  grid-template-columns: minmax(280px, .8fr) minmax(320px, 1.2fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.budgetPanel {
+  margin-bottom: 24px;
+  padding: 24px;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+
+.budgetForm {
+  display: grid;
+  gap: 14px;
+}
+
+.budgetForm label {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.budgetFieldRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.segmentedControl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 4px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.segmentedControl button {
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 9px 10px;
+}
+
+.segmentedControl .segmentActive {
+  background: #fff;
+  color: #f97316;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+
+.primaryBudgetBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  border: 0;
+  border-radius: 10px;
+  background: #f97316;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 900;
+  padding: 10px 16px;
+  transition: background .15s, transform .15s;
+}
+
+.primaryBudgetBtn:hover {
+  background: #ea580c;
+  transform: translateY(-1px);
+}
+
+.budgetEntryList {
+  display: grid;
+  gap: 10px;
+}
+
+.budgetEntry {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #eef2f7;
+  border-radius: 14px;
+  background: #f8fafc;
+}
+
+.budgetEntryType {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  font-weight: 900;
+}
+
+.entryIncome {
+  background: rgba(22, 163, 74, .12);
+  color: #15803d;
+}
+
+.entryExpense {
+  background: rgba(220, 38, 38, .10);
+  color: #b91c1c;
+}
+
+.budgetEntryMain {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.budgetEntryMain strong {
+  overflow: hidden;
+  color: #0d1b2a;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.budgetEntryMain span {
+  overflow: hidden;
+  color: #64748b;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.moneyPositive {
+  color: #15803d !important;
+}
+
+.moneyNegative {
+  color: #b91c1c !important;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -524,6 +743,29 @@
 
   .analyticsGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .budgetHero {
+    flex-direction: column;
+  }
+
+  .budgetMonthPicker {
+    width: 100%;
+  }
+
+  .budgetSummaryGrid,
+  .budgetGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .budgetEntry {
+    grid-template-columns: 32px minmax(0, 1fr);
+  }
+
+  .budgetEntry > strong,
+  .budgetEntry > button {
+    grid-column: 2;
+    justify-self: start;
   }
 
   .pageRankHead {
