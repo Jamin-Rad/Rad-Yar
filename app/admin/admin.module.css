@@ -1248,4 +1248,310 @@
     flex-direction: column;
     gap: 2px;
   }
+
+  .financeMetrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .categoryRow {
+    grid-template-columns: 90px 1fr 70px;
+  }
+
+  .financeTab,
+  .financeTabActive {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}
+
+/* ── DARK MODE ─────────────────────────────────── */
+:global(html[data-theme='dark']) .page {
+  background: var(--bg);
+}
+
+:global(html[data-theme='dark']) .adminBar {
+  background: var(--bg-card);
+  border-bottom-color: var(--border);
+}
+
+:global(html[data-theme='dark']) .adminIdentity {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .homeBtn,
+:global(html[data-theme='dark']) .profileBtn,
+:global(html[data-theme='dark']) .signOutBtn {
+  background: var(--bg-soft);
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .title {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .sub {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .sectionTitle {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .sectionHeader p {
+  color: var(--text-soft);
+}
+
+:global(html[data-theme='dark']) .emptyAnalytics {
+  color: var(--text-soft);
+}
+
+/* Stats */
+:global(html[data-theme='dark']) .statCard {
+  background: var(--bg-card);
+  border-color: var(--border);
+}
+
+:global(html[data-theme='dark']) .statLabel {
+  color: var(--text-muted);
+}
+
+/* Chart */
+:global(html[data-theme='dark']) .chartWrapper {
+  background: var(--bg-card);
+  border-color: var(--border);
+}
+
+:global(html[data-theme='dark']) .chartLabel {
+  color: var(--text-soft);
+}
+
+/* Table */
+:global(html[data-theme='dark']) .tableWrapper {
+  background: var(--bg-card);
+  border-color: var(--border);
+}
+
+:global(html[data-theme='dark']) .table th {
+  color: var(--text-soft);
+  border-bottom-color: var(--border-soft);
+}
+
+:global(html[data-theme='dark']) .table td {
+  color: var(--text);
+  border-bottom-color: var(--border-soft);
+}
+
+:global(html[data-theme='dark']) .table tbody tr:hover td {
+  background: var(--bg-soft);
+}
+
+:global(html[data-theme='dark']) .searchInput {
+  background: var(--bg-soft);
+  border-color: var(--border);
+  color: var(--text-strong);
+}
+
+/* Analytics */
+:global(html[data-theme='dark']) .analyticsSection,
+:global(html[data-theme='dark']) .pagesPanel {
+  background: var(--bg-card);
+  border-color: var(--border);
+}
+
+:global(html[data-theme='dark']) .analyticsSection p,
+:global(html[data-theme='dark']) .pagesPanel p {
+  color: var(--text-soft);
+}
+
+:global(html[data-theme='dark']) .analyticsCard {
+  background: var(--bg-soft);
+}
+
+:global(html[data-theme='dark']) .analyticsCard strong {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .analyticsCard span {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .pageRankHead a,
+:global(html[data-theme='dark']) .pageRankHead strong {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .pageRankHead span {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .pageRankTrack {
+  background: var(--bg-soft);
+}
+
+/* Budget panels */
+:global(html[data-theme='dark']) .budgetPanel {
+  background: var(--bg-card);
+  border-color: var(--border);
+}
+
+:global(html[data-theme='dark']) .budgetMetric {
+  background: var(--bg-card);
+  border-color: var(--border);
+}
+
+:global(html[data-theme='dark']) .budgetMetric span {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .budgetMetric strong {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .budgetForm label {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .budgetMonthPicker input,
+:global(html[data-theme='dark']) .budgetForm input {
+  background: var(--bg-soft);
+  border-color: var(--border);
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .segmentedControl {
+  background: var(--bg-soft);
+  border-color: var(--border);
+}
+
+:global(html[data-theme='dark']) .segmentedControl button {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .segmentedControl .segmentActive {
+  background: var(--bg-card);
+  color: #f97316;
+}
+
+:global(html[data-theme='dark']) .budgetEntry {
+  background: var(--bg-soft);
+  border-color: var(--border-soft);
+}
+
+:global(html[data-theme='dark']) .budgetEntryMain strong {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .budgetEntryMain span {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .actionBtn {
+  background: var(--bg-soft);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+:global(html[data-theme='dark']) .muted {
+  color: var(--border);
+}
+
+/* Finance redesign */
+:global(html[data-theme='dark']) .financeMetric {
+  background: var(--bg-card);
+  border-color: var(--border);
+}
+
+:global(html[data-theme='dark']) .financeMetric span {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .financeMetric strong {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .financeTabs {
+  border-bottom-color: var(--border);
+}
+
+:global(html[data-theme='dark']) .financeTab {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .monthNavBtn {
+  background: var(--bg-card);
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .monthDisplay {
+  background: var(--bg-card);
+  border-color: var(--border);
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .budgetSettingRow {
+  background: var(--bg-soft);
+  border-color: var(--border);
+}
+
+:global(html[data-theme='dark']) .budgetSettingRow label {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .budgetSettingRow input {
+  background: var(--bg-card);
+  border-color: var(--border);
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .categoryName {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .categoryBarTrack {
+  background: var(--bg-soft);
+}
+
+:global(html[data-theme='dark']) .categoryAmount {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .reportCard {
+  background: var(--bg-soft);
+  border-color: var(--border-soft);
+}
+
+:global(html[data-theme='dark']) .reportCard span {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .reportCard strong {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .reportSectionTitle {
+  color: var(--text-soft);
+}
+
+:global(html[data-theme='dark']) .reportTotalRow {
+  border-color: var(--border);
+}
+
+:global(html[data-theme='dark']) .reportTotalRow span {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .reportSaldoRow span {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .reportHeader p {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .printBtn {
+  background: var(--bg-soft);
+  border-color: var(--border);
+  color: var(--text-muted);
 }
