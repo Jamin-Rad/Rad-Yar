@@ -6,39 +6,58 @@ import styles from '../admin.module.css'
 const STORAGE_KEY    = 'radyar_private_budget_v1'
 const RECURRING_KEY  = 'radyar_recurring_v1'
 const CAT_BUDGET_KEY = 'radyar_cat_budget_v1'
-const CATEGORIES_KEY = 'radyar_categories_v1'
+const CATEGORIES_KEY = 'radyar_categories_v2'
 
 function makeId() {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
 }
 
+function buildCat(name, subs = []) {
+  return { id: makeId(), name, subs: subs.map(s => ({ id: makeId(), name: s })) }
+}
+
+const DEFAULT_CATEGORIES = [
+  buildCat('Lebensmittel',  ['Aldi', 'Lidl', 'Bonus', 'Edeka/Rewe/Netto', 'DM', 'Türkischer Markt', 'Supermarkt']),
+  buildCat('Restaurant',    ['Eis/Coffee/Bäckerei', 'Essen gehen']),
+  buildCat('Auto',          ['Tanken', 'Leasing', 'Werkstatt', 'Bus-Ticket', 'Laden']),
+  buildCat('Zu Hause',      ['Miete', 'Darlehen', 'Strom', 'Haushaltgerät']),
+  buildCat('Kleidung',      []),
+  buildCat('Jamin',         ['Konto/Bank', 'Versicherung', 'Medikamente']),
+  buildCat('Fatima',        ['iPhone-Rate', 'Kleidung', 'Medikamente']),
+  buildCat('Mobin',         ['Schule', 'Taschengeld', 'Bus-Ticket', 'SIM-Karte']),
+  buildCat('Mobina',        ['Kindergarten', 'Kleidung']),
+  buildCat('Meine Eltern',  ['Apotheke', 'Versicherung']),
+  buildCat('Moschee',       ['Spende/Nazri']),
+  buildCat('Einnahmen',     ['Gehalt', 'Familienkasse']),
+]
+
 const APRIL_2026_EXAMPLE = {
   budget: '',
   entries: [
-    ['income',  'Einnahmen',           6601.50, 'Einnahmen',    '',                    '2026-04-01', []],
-    ['income',  'Familienkasse',        518,     'Einnahmen',    '',                    '2026-04-01', []],
+    ['income',  'Einnahmen',           6601.50, 'Einnahmen',    '',                    '2026-04-01', ['Einnahmen']],
+    ['income',  'Familienkasse',        518,     'Einnahmen',    '',                    '2026-04-01', ['Einnahmen']],
     ['expense', 'Aldi',                 161,     'Lebensmittel', 'Wocheneinkauf',       '2026-04-02', ['Lebensmittel']],
     ['expense', 'Lidl',                 535,     'Lebensmittel', 'Wocheneinkauf',       '2026-04-03', ['Lebensmittel']],
     ['expense', 'Bonus',                60,      'Lebensmittel', '',                    '2026-04-04', ['Lebensmittel']],
     ['expense', 'Edeka/Rewe/Netto',     53,      'Lebensmittel', '',                    '2026-04-05', ['Lebensmittel']],
     ['expense', 'DM',                   20,      'Lebensmittel', 'Drogerie',            '2026-04-06', ['Lebensmittel']],
-    ['expense', 'Türkei',               182,     'Lebensmittel', 'Türkischer Markt',   '2026-04-07', ['Lebensmittel']],
+    ['expense', 'Türkischer Markt',     182,     'Lebensmittel', '',                    '2026-04-07', ['Lebensmittel']],
     ['expense', 'Supermarkt',           5,       'Kleidung',     'Für Mobin',           '2026-04-08', ['Kleidung', 'Mobin']],
     ['expense', 'Eis/Coffee/Bäckerei', 19,      'Restaurant',   '',                    '2026-04-09', ['Restaurant']],
-    ['expense', 'Essen',                193,     'Restaurant',   'Auswärts',            '2026-04-10', ['Restaurant']],
+    ['expense', 'Essen gehen',          193,     'Restaurant',   'Auswärts',            '2026-04-10', ['Restaurant']],
     ['expense', 'Tanken',               39,      'Auto',         '',                    '2026-04-11', ['Auto']],
-    ['expense', 'Strom Auto',           13,      'Auto',         'Laden',               '2026-04-12', ['Auto']],
-    ['expense', 'Reparatur/Service',    1392,    'Auto',         'Werkstatt',           '2026-04-13', ['Auto']],
+    ['expense', 'Laden',                13,      'Auto',         'Strom',               '2026-04-12', ['Auto']],
+    ['expense', 'Werkstatt',            1392,    'Auto',         'Reparatur/Service',   '2026-04-13', ['Auto']],
     ['expense', 'Leasing',              348,     'Auto',         'Monatlich',           '2026-04-14', ['Auto']],
     ['expense', 'Bus-Ticket',           92,      'Auto',         'Öffentlich',          '2026-04-15', ['Auto']],
     ['expense', 'Miete',                2025,    'Zu Hause',     'Monatlich',           '2026-04-01', ['Zu Hause']],
     ['expense', 'Darlehen',             475,     'Zu Hause',     '',                    '2026-04-02', ['Zu Hause']],
     ['expense', 'Strom',                91,      'Zu Hause',     '',                    '2026-04-03', ['Zu Hause']],
     ['expense', 'Haushaltgerät',        95,      'Zu Hause',     '',                    '2026-04-04', ['Zu Hause']],
-    ['expense', 'Konto',                11,      'Jamin',        'Bankgebühr',          '2026-04-16', ['Jamin']],
-    ['expense', 'Gothaer',              22,      'Jamin',        'Versicherung',        '2026-04-17', ['Jamin']],
+    ['expense', 'Konto/Bank',           11,      'Jamin',        'Bankgebühr',          '2026-04-16', ['Jamin']],
+    ['expense', 'Versicherung',         22,      'Jamin',        'Gothaer',             '2026-04-17', ['Jamin']],
     ['expense', 'Medikamente',          10,      'Jamin',        '',                    '2026-04-18', ['Jamin']],
-    ['expense', 'iPhone 16',            53,      'Fatima',       'Rate',                '2026-04-19', ['Fatima']],
+    ['expense', 'iPhone-Rate',          53,      'Fatima',       '',                    '2026-04-19', ['Fatima']],
     ['expense', 'Kleidung',             5,       'Fatima',       'Für Fatima',          '2026-04-20', ['Kleidung', 'Fatima']],
     ['expense', 'Medikamente',          296,     'Fatima',       '',                    '2026-04-21', ['Fatima']],
     ['expense', 'Schule',               1029,    'Mobin',        'Schulgeld',           '2026-04-22', ['Mobin']],
@@ -49,16 +68,11 @@ const APRIL_2026_EXAMPLE = {
     ['expense', 'Kleidung',             10,      'Mobina',       'Für Mobina',          '2026-04-27', ['Kleidung', 'Mobina']],
     ['expense', 'Apotheke',             46,      'Meine Eltern', 'Versicherung',        '2026-04-28', ['Meine Eltern']],
     ['expense', 'Sonst',                3,       'Meine Eltern', '',                    '2026-04-28', ['Meine Eltern']],
-    ['expense', 'Nazri Iran',           77,      'Moschee',      '',                    '2026-04-29', ['Moschee']],
+    ['expense', 'Spende/Nazri',         77,      'Moschee',      '',                    '2026-04-29', ['Moschee']],
   ].map(([type, title, amount, category, subtitle, date, tags]) => ({
     id: makeId(), type, title, amount, category, subtitle, date, tags,
   })),
 }
-
-const APRIL_CATEGORIES = [
-  'Einnahmen','Lebensmittel','Restaurant','Auto','Zu Hause',
-  'Kleidung','Jamin','Fatima','Mobin','Mobina','Meine Eltern','Moschee',
-].map(name => ({ id: makeId(), name }))
 
 const MONTH_SHORT = ['Jan','Feb','Mrz','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez']
 const MONTH_LONG  = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember']
@@ -133,6 +147,7 @@ export default function BudgetPage() {
   const [budgetInput, setBudgetInput] = useState('')
   const [catEdits, setCatEdits]       = useState({})
   const [newCatName, setNewCatName]   = useState('')
+  const [newSubInputs, setNewSubInputs] = useState({}) // catId → string
   const [selectedCats, setSelectedCats] = useState([])
 
   const [entry, setEntry] = useState({
@@ -142,12 +157,16 @@ export default function BudgetPage() {
     type: 'expense', title: '', subtitle: '', amount: '', category: '', dayOfMonth: '1',
   })
 
-  // ── Persistence ────────────────────────────────────────────────────────────
+  // ── Load ───────────────────────────────────────────────────────────────────
   useEffect(() => {
     try { const r = localStorage.getItem(STORAGE_KEY);    if (r) setStore(JSON.parse(r))      } catch {}
     try { const r = localStorage.getItem(RECURRING_KEY);  if (r) setRecurring(JSON.parse(r))  } catch {}
     try { const r = localStorage.getItem(CAT_BUDGET_KEY); if (r) setCatBudgets(JSON.parse(r)) } catch {}
-    try { const r = localStorage.getItem(CATEGORIES_KEY); if (r) setCategories(JSON.parse(r)) } catch {}
+    try {
+      const r = localStorage.getItem(CATEGORIES_KEY)
+      const parsed = r ? JSON.parse(r) : []
+      setCategories(parsed.length > 0 ? parsed : DEFAULT_CATEGORIES)
+    } catch { setCategories(DEFAULT_CATEGORIES) }
     setLoaded(true)
   }, [])
 
@@ -185,9 +204,14 @@ export default function BudgetPage() {
     return Object.entries(t).sort((a, b) => b[1] - a[1])
   }, [monthData.entries])
 
+  const catSpending = useMemo(() => {
+    const m = {}
+    categoryTotals.forEach(([name, total]) => { m[name] = total })
+    return m
+  }, [categoryTotals])
+
   const maxCategory = categoryTotals.length ? Math.max(...categoryTotals.map(([, v]) => v)) : 1
 
-  // Annual data
   const annualData = useMemo(() => Array.from({ length: 12 }, (_, i) => {
     const key  = `${year}-${String(i + 1).padStart(2, '0')}`
     const data = store[key] || emptyMonth()
@@ -209,20 +233,11 @@ export default function BudgetPage() {
   const totalFixkosten = recurring.filter(r => r.type === 'expense').reduce((s, r) => s + Number(r.amount || 0), 0)
 
   // ── Actions ────────────────────────────────────────────────────────────────
-  function prevMonth() {
-    const [y, m] = month.split('-').map(Number)
-    setMonth(getMonthKey(new Date(y, m - 2, 1)))
-  }
-  function nextMonth() {
-    const [y, m] = month.split('-').map(Number)
-    setMonth(getMonthKey(new Date(y, m, 1)))
-  }
+  function prevMonth() { const [y, m] = month.split('-').map(Number); setMonth(getMonthKey(new Date(y, m - 2, 1))) }
+  function nextMonth() { const [y, m] = month.split('-').map(Number); setMonth(getMonthKey(new Date(y, m, 1))) }
 
   function updateMonth(updater) {
-    setStore(prev => {
-      const cur = prev[month] || emptyMonth()
-      return { ...prev, [month]: updater(cur) }
-    })
+    setStore(prev => { const cur = prev[month] || emptyMonth(); return { ...prev, [month]: updater(cur) } })
   }
 
   function saveBudget(e) {
@@ -234,11 +249,12 @@ export default function BudgetPage() {
     setCatBudgets(prev => ({ ...prev, [cat]: Number(value) || 0 }))
   }
 
+  // Category CRUD
   function addCategory(e) {
     e.preventDefault()
     const name = newCatName.trim()
     if (!name || categories.some(c => c.name === name)) return
-    setCategories(prev => [...prev, { id: makeId(), name }])
+    setCategories(prev => [...prev, buildCat(name)])
     setNewCatName('')
   }
 
@@ -247,8 +263,33 @@ export default function BudgetPage() {
     setCategories(prev => prev.filter(c => c.id !== id))
   }
 
+  function addSubCategory(catId) {
+    const name = (newSubInputs[catId] || '').trim()
+    if (!name) return
+    setCategories(prev => prev.map(c => c.id === catId
+      ? { ...c, subs: [...c.subs, { id: makeId(), name }] }
+      : c
+    ))
+    setNewSubInputs(p => ({ ...p, [catId]: '' }))
+  }
+
+  function removeSubCategory(catId, subId) {
+    setCategories(prev => prev.map(c => c.id === catId
+      ? { ...c, subs: c.subs.filter(s => s.id !== subId) }
+      : c
+    ))
+  }
+
+  // Entry form
   function toggleCat(name) {
     setSelectedCats(prev => prev.includes(name) ? prev.filter(n => n !== name) : [...prev, name])
+  }
+
+  function selectSub(catName, subName) {
+    if (!selectedCats.includes(catName)) {
+      setSelectedCats(prev => [catName, ...prev])
+    }
+    setEntry(p => ({ ...p, title: subName }))
   }
 
   function addEntry(e) {
@@ -260,13 +301,9 @@ export default function BudgetPage() {
       ...c,
       entries: [
         {
-          id: makeId(),
-          type: entry.type,
-          amount,
-          title: entry.title.trim(),
-          subtitle: entry.subtitle.trim(),
-          category: primaryCat,
-          tags: selectedCats.length ? [...selectedCats] : [primaryCat].filter(Boolean),
+          id: makeId(), type: entry.type, amount,
+          title: entry.title.trim(), subtitle: entry.subtitle.trim(),
+          category: primaryCat, tags: selectedCats.length ? [...selectedCats] : [primaryCat].filter(Boolean),
           date: entry.date || new Date().toISOString().slice(0, 10),
         },
         ...c.entries,
@@ -317,35 +354,10 @@ export default function BudgetPage() {
     setView('monat')
   }
 
-  function goToMonth(key) {
-    setMonth(key)
-    setView('monat')
-  }
+  function goToMonth(key) { setMonth(key); setView('monat') }
+  function navEinstellung(sub) { setView('einstellung'); setSubView(sub) }
 
-  function navEinstellung(sub) {
-    setView('einstellung')
-    setSubView(sub)
-  }
-
-  function loadAprilExample() {
-    if (!window.confirm('April 2026 Beispieldaten + Kategorien laden?')) return
-    setMonth('2026-04')
-    setStore(p => ({ ...p, '2026-04': APRIL_2026_EXAMPLE }))
-    setCategories(prev => {
-      const existing = new Set(prev.map(c => c.name))
-      const toAdd = APRIL_CATEGORIES.filter(c => !existing.has(c.name))
-      return [...prev, ...toAdd]
-    })
-  }
-
-  const catSpending = useMemo(() => {
-    const map = {}
-    categoryTotals.forEach(([name, total]) => { map[name] = total })
-    return map
-  }, [categoryTotals])
-
-  // Sidebar helper
-  function SidebarItem({ id, icon, label, active, onClick }) {
+  function SidebarItem({ icon, label, active, onClick }) {
     return (
       <button className={active ? styles.sidebarItemActive : styles.sidebarItem} onClick={onClick} aria-current={active ? 'page' : undefined}>
         {icon}{label}
@@ -353,11 +365,11 @@ export default function BudgetPage() {
     )
   }
 
+  // ── Render ─────────────────────────────────────────────────────────────────
   return (
     <div className={styles.page}>
       <main className={styles.content}>
 
-        {/* Header */}
         <div className={styles.financeHeader}>
           <div>
             <h1 className={styles.title}>Private Finanzen</h1>
@@ -370,38 +382,19 @@ export default function BudgetPage() {
           </div>
         </div>
 
-        {/* Metriken */}
         <div className={styles.financeMetrics}>
-          <div className={styles.financeMetric}>
-            <span>Einnahmen</span>
-            <strong className={styles.moneyPositive}>{formatMoney(summary.income)}</strong>
-          </div>
-          <div className={styles.financeMetric}>
-            <span>Ausgaben</span>
-            <strong className={styles.moneyNegative}>{formatMoney(summary.expenses)}</strong>
-          </div>
-          <div className={styles.financeMetric}>
-            <span>Saldo</span>
-            <strong className={summary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(summary.balance)}</strong>
-          </div>
-          <div className={styles.financeMetric}>
-            <span>Sparquote</span>
-            <strong className={summary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>
-              {summary.income ? `${sparquote(summary.income, summary.expenses)} %` : '—'}
-            </strong>
-          </div>
+          <div className={styles.financeMetric}><span>Einnahmen</span><strong className={styles.moneyPositive}>{formatMoney(summary.income)}</strong></div>
+          <div className={styles.financeMetric}><span>Ausgaben</span><strong className={styles.moneyNegative}>{formatMoney(summary.expenses)}</strong></div>
+          <div className={styles.financeMetric}><span>Saldo</span><strong className={summary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(summary.balance)}</strong></div>
+          <div className={styles.financeMetric}><span>Sparquote</span><strong className={summary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{summary.income ? `${sparquote(summary.income, summary.expenses)} %` : '—'}</strong></div>
         </div>
 
-        {/* Layout */}
         <div className={styles.financeLayout}>
-
-          {/* Sidebar */}
           <aside className={styles.financeSidebar}>
             <nav className={styles.sidebarNav}>
               <SidebarItem icon={<IconCalendar />} label="Monatsübersicht" active={view === 'monat'} onClick={() => setView('monat')} />
               <SidebarItem icon={<IconChart />} label="Jahresübersicht" active={view === 'jahr'} onClick={() => setView('jahr')} />
               <SidebarItem icon={<IconSettings />} label="Einstellung" active={view === 'einstellung'} onClick={() => navEinstellung(subView)} />
-
               {view === 'einstellung' && (
                 <div className={styles.sidebarSubGroup}>
                   <button className={subView === 'kategorien' ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('kategorien')}>Kategorien</button>
@@ -413,7 +406,6 @@ export default function BudgetPage() {
             </nav>
           </aside>
 
-          {/* Content */}
           <div className={styles.financeMain}>
 
             {/* ── MONATSÜBERSICHT ── */}
@@ -438,16 +430,11 @@ export default function BudgetPage() {
                             <div className={styles.categoryBarFill} style={{ width: `${Math.max((total / maxCategory) * 100, 2)}%` }} />
                           </div>
                           <span className={styles.categoryAmount}>{formatMoney(total)}</span>
-                          <span className={styles.trafficDot}
-                            style={{ background: color || 'transparent', border: color ? 'none' : '1px dashed #cbd5e1' }}
-                            title={budget ? `Budget: ${formatMoney(budget)}` : 'Kein Budget gesetzt'} />
+                          <span className={styles.trafficDot} style={{ background: color || 'transparent', border: color ? 'none' : '1px dashed #cbd5e1' }} title={budget ? `Budget: ${formatMoney(budget)}` : 'Kein Budget gesetzt'} />
                           <input className={styles.catBudgetInput} type="number" min="0" step="1" placeholder="Budget €"
                             value={catEdits[cat] !== undefined ? catEdits[cat] : (catBudgets[cat] || '')}
                             onChange={e => setCatEdits(p => ({ ...p, [cat]: e.target.value }))}
-                            onBlur={e => {
-                              saveCatBudget(cat, e.target.value)
-                              setCatEdits(p => { const n = { ...p }; delete n[cat]; return n })
-                            }} />
+                            onBlur={e => { saveCatBudget(cat, e.target.value); setCatEdits(p => { const n = { ...p }; delete n[cat]; return n }) }} />
                         </div>
                       )
                     })}
@@ -472,7 +459,6 @@ export default function BudgetPage() {
                     <button className={styles.monthNavBtn} onClick={() => setYear(y => y + 1)}>›</button>
                   </div>
                 </div>
-
                 <div className={styles.budgetPanel} style={{ marginBottom: 20 }}>
                   <div className={styles.annualChart}>
                     {annualData.map(m => (
@@ -492,13 +478,10 @@ export default function BudgetPage() {
                     <span className={styles.annualLegend}><span style={{ background: '#f97316' }} />Ausgaben</span>
                   </div>
                 </div>
-
                 <div className={styles.budgetPanel}>
                   {annualSummary ? (
                     <table className={styles.annualTable}>
-                      <thead>
-                        <tr><th>Monat</th><th>Einnahmen</th><th>Ausgaben</th><th>Saldo</th><th>Sparquote</th></tr>
-                      </thead>
+                      <thead><tr><th>Monat</th><th>Einnahmen</th><th>Ausgaben</th><th>Saldo</th><th>Sparquote</th></tr></thead>
                       <tbody>
                         {annualData.map(m => (
                           <tr key={m.key} onClick={() => goToMonth(m.key)} style={{ cursor: 'pointer' }}
@@ -535,17 +518,13 @@ export default function BudgetPage() {
               </div>
             )}
 
-            {/* ── EINSTELLUNG: KATEGORIEN ── */}
+            {/* ── KATEGORIEN ── */}
             {view === 'einstellung' && subView === 'kategorien' && (
               <div>
-                <div className={styles.reportHeader}>
-                  <div>
-                    <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Kategorien</h2>
-                    <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>
-                      Verwalte deine Kategorien — beim Eintrag kannst du eine oder mehrere auswählen.
-                    </p>
-                  </div>
-                </div>
+                <h2 className={styles.sectionTitle}>Kategorien verwalten</h2>
+                <p className={styles.sub} style={{ marginBottom: 20 }}>
+                  Klicke auf eine Unterkategorie, um einen Eintrag schnell zu erstellen. Unterkategorien kannst du direkt im Kästchen hinzufügen.
+                </p>
 
                 <div className={styles.categoryTileGrid}>
                   {categories.map(cat => {
@@ -554,40 +533,56 @@ export default function BudgetPage() {
                     return (
                       <div key={cat.id} className={styles.categoryManagedTile}
                         style={{ background: color.bg, border: `1px solid ${color.border}` }}>
-                        <div className={styles.categoryTileName} style={{ color: color.text }}>{cat.name}</div>
-                        {spending > 0 && (
-                          <div className={styles.categoryTileAmount} style={{ color: color.text }}>{formatMoney(spending)}</div>
+                        <div className={styles.categoryTileHeader}>
+                          <div>
+                            <div className={styles.categoryTileName} style={{ color: color.text }}>{cat.name}</div>
+                            {spending > 0 && <div className={styles.categoryTileAmount} style={{ color: color.text }}>{formatMoney(spending)}</div>}
+                          </div>
+                          <button className={styles.categoryTileDelete} style={{ color: color.text }}
+                            onClick={() => removeCategory(cat.id)} aria-label={`${cat.name} löschen`}>×</button>
+                        </div>
+
+                        {(cat.subs.length > 0 || true) && (
+                          <div className={styles.categorySubsRow}>
+                            {cat.subs.map(sub => (
+                              <span key={sub.id} className={styles.categorySubChip} style={{ color: color.text, borderColor: color.border }}>
+                                {sub.name}
+                                <button type="button" onClick={() => removeSubCategory(cat.id, sub.id)} aria-label={`${sub.name} löschen`}>×</button>
+                              </span>
+                            ))}
+                            <form className={styles.categorySubAddForm} onSubmit={e => { e.preventDefault(); addSubCategory(cat.id) }}>
+                              <input
+                                className={styles.categorySubInput}
+                                style={{ color: color.text }}
+                                value={newSubInputs[cat.id] || ''}
+                                onChange={e => setNewSubInputs(p => ({ ...p, [cat.id]: e.target.value }))}
+                                placeholder="+ Hinzufügen"
+                              />
+                            </form>
+                          </div>
                         )}
-                        <button className={styles.categoryTileDelete} style={{ color: color.text }}
-                          onClick={() => removeCategory(cat.id)} aria-label={`${cat.name} löschen`}>×</button>
                       </div>
                     )
                   })}
 
-                  {/* Add tile */}
                   <form className={styles.categoryAddTile} onSubmit={addCategory}>
-                    <input
-                      className={styles.categoryAddInput}
-                      value={newCatName}
-                      onChange={e => setNewCatName(e.target.value)}
-                      placeholder="Neue Kategorie…"
-                    />
+                    <input className={styles.categoryAddInput} value={newCatName} onChange={e => setNewCatName(e.target.value)} placeholder="Neue Kategorie…" />
                     <button type="submit" className={styles.categoryAddBtn} disabled={!newCatName.trim()}>+</button>
                   </form>
                 </div>
 
-                <div style={{ marginTop: 32 }}>
-                  <button className={styles.actionBtn} type="button" onClick={loadAprilExample}>
-                    April-Beispiel + Kategorien laden
+                <div style={{ marginTop: 28 }}>
+                  <button className={styles.actionBtn} type="button"
+                    onClick={() => { if (window.confirm('April 2026 Beispiel-Einträge laden?')) { setMonth('2026-04'); setStore(p => ({ ...p, '2026-04': APRIL_2026_EXAMPLE })) } }}>
+                    April-Beispiel-Einträge laden
                   </button>
                 </div>
               </div>
             )}
 
-            {/* ── EINSTELLUNG: EINTRÄGE ── */}
+            {/* ── EINTRÄGE ── */}
             {view === 'einstellung' && subView === 'eintraege' && (
               <div>
-                {/* Add form */}
                 <div className={styles.budgetPanel} style={{ marginBottom: 24 }}>
                   <h2 className={styles.sectionTitle}>Neuer Eintrag — {formatMonthLabel(month)}</h2>
                   <form className={styles.budgetForm} onSubmit={addEntry}>
@@ -595,84 +590,85 @@ export default function BudgetPage() {
                       <button type="button" className={entry.type === 'income' ? styles.segmentActive : ''} onClick={() => setEntry(p => ({ ...p, type: 'income' }))}>Einnahme</button>
                       <button type="button" className={entry.type === 'expense' ? styles.segmentActive : ''} onClick={() => setEntry(p => ({ ...p, type: 'expense' }))}>Ausgabe</button>
                     </div>
+
+                    {/* Category tile selection */}
+                    <div>
+                      <span style={{ display: 'block', fontSize: 12, fontWeight: 700, color: '#64748b', marginBottom: 10 }}>
+                        Kategorie wählen — Klicke direkt auf eine Unterkategorie für schnellen Titel
+                        {selectedCats.length > 0 && <span style={{ color: '#f97316' }}> · {selectedCats.join(' + ')}</span>}
+                      </span>
+                      <div className={styles.catSelectorGrid}>
+                        {categories.map(cat => {
+                          const color    = getCatColor(cat.name)
+                          const isSelected = selectedCats.includes(cat.name)
+                          return (
+                            <div key={cat.id} className={styles.catSelectorGroup}>
+                              <button type="button"
+                                className={isSelected ? styles.catGroupBtnActive : styles.catGroupBtn}
+                                style={isSelected ? { background: color.bg, borderColor: color.border, color: color.text } : {}}
+                                onClick={() => toggleCat(cat.name)}>
+                                {cat.name}
+                              </button>
+                              {cat.subs.length > 0 && (
+                                <div className={styles.catSubPills}>
+                                  {cat.subs.map(sub => (
+                                    <button key={sub.id} type="button"
+                                      className={entry.title === sub.name && isSelected ? styles.catSubPillActive : styles.catSubPill}
+                                      style={{ borderColor: color.border, color: color.text }}
+                                      onClick={() => selectSub(cat.name, sub.name)}>
+                                      {sub.name}
+                                    </button>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          )
+                        })}
+                      </div>
+                    </div>
+
                     <div className={styles.budgetFieldRow}>
                       <label>
                         <span>Titel</span>
-                        <input value={entry.title} onChange={e => setEntry(p => ({ ...p, title: e.target.value }))}
-                          placeholder={entry.type === 'income' ? 'z. B. Gehalt' : 'z. B. Miete, Lidl'} required />
+                        <input value={entry.title} onChange={e => setEntry(p => ({ ...p, title: e.target.value }))} placeholder="Wird automatisch gesetzt" required />
                       </label>
                       <label>
                         <span>Untertitel</span>
-                        <input value={entry.subtitle} onChange={e => setEntry(p => ({ ...p, subtitle: e.target.value }))}
-                          placeholder="z. B. Amazon · Für Mobin" />
+                        <input value={entry.subtitle} onChange={e => setEntry(p => ({ ...p, subtitle: e.target.value }))} placeholder="z. B. Für Mobin" />
                       </label>
                     </div>
                     <div className={styles.budgetFieldRow}>
                       <label>
                         <span>Betrag (€)</span>
-                        <input type="number" step="0.01" inputMode="decimal" value={entry.amount}
-                          onChange={e => setEntry(p => ({ ...p, amount: e.target.value }))} placeholder="0,00" required />
+                        <input type="number" step="0.01" inputMode="decimal" value={entry.amount} onChange={e => setEntry(p => ({ ...p, amount: e.target.value }))} placeholder="0,00" required />
                       </label>
                       <label>
                         <span>Datum</span>
                         <input type="date" value={entry.date} onChange={e => setEntry(p => ({ ...p, date: e.target.value }))} />
                       </label>
                     </div>
-
-                    {categories.length > 0 && (
-                      <div>
-                        <span className={styles.budgetForm + ' label'} style={{ display: 'block', fontSize: 12, fontWeight: 700, color: '#64748b', marginBottom: 8 }}>
-                          Kategorien auswählen {selectedCats.length > 0 && `(${selectedCats.join(', ')})`}
-                        </span>
-                        <div className={styles.catSelector}>
-                          {categories.map(cat => (
-                            <button key={cat.id} type="button"
-                              className={selectedCats.includes(cat.name) ? styles.catTileSelected : styles.catTile}
-                              onClick={() => toggleCat(cat.name)}>
-                              {cat.name}
-                              {selectedCats.includes(cat.name) && <span className={styles.catTileCheck}>✓</span>}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
                     <button className={styles.primaryBudgetBtn} type="submit">Eintrag speichern</button>
                   </form>
                 </div>
 
-                {/* Entry list */}
                 <div>
                   <div className={styles.tableHead}>
-                    <h2 className={styles.sectionTitle} style={{ margin: 0 }}>
-                      Alle Einträge — {formatMonthLabel(month)} ({monthData.entries.length})
-                    </h2>
+                    <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Einträge — {formatMonthLabel(month)} ({monthData.entries.length})</h2>
                     <button className={`${styles.actionBtn} ${styles.actionBtnDanger}`} type="button" onClick={clearMonth}>Monat löschen</button>
                   </div>
-
                   {monthData.entries.length ? (
                     <div className={styles.budgetEntryList} style={{ marginTop: 16 }}>
                       {monthData.entries.map(item => (
                         <div className={styles.budgetEntry} key={item.id}>
-                          <span className={`${styles.budgetEntryType} ${item.type === 'income' ? styles.entryIncome : styles.entryExpense}`}>
-                            {item.type === 'income' ? '+' : '−'}
-                          </span>
+                          <span className={`${styles.budgetEntryType} ${item.type === 'income' ? styles.entryIncome : styles.entryExpense}`}>{item.type === 'income' ? '+' : '−'}</span>
                           <div className={styles.budgetEntryMain}>
                             <strong>{item.title}</strong>
-                            <span>
-                              {item.subtitle ? `${item.subtitle} · ` : ''}
-                              {new Date(item.date).toLocaleDateString('de-DE')}
-                              {item.category ? ` · ${item.category}` : ''}
-                            </span>
+                            <span>{item.subtitle ? `${item.subtitle} · ` : ''}{new Date(item.date).toLocaleDateString('de-DE')}{item.category ? ` · ${item.category}` : ''}</span>
                             {Array.isArray(item.tags) && item.tags.length > 1 && (
-                              <span className={styles.entryTags}>
-                                {item.tags.map(t => <span key={t} className={styles.entryTag}>{t}</span>)}
-                              </span>
+                              <span className={styles.entryTags}>{item.tags.map(t => <span key={t} className={styles.entryTag}>{t}</span>)}</span>
                             )}
                           </div>
-                          <strong className={item.type === 'income' ? styles.moneyPositive : styles.moneyNegative}>
-                            {item.type === 'income' ? '+' : '−'}{formatMoney(item.amount)}
-                          </strong>
+                          <strong className={item.type === 'income' ? styles.moneyPositive : styles.moneyNegative}>{item.type === 'income' ? '+' : '−'}{formatMoney(item.amount)}</strong>
                           <button className={styles.actionBtn} type="button" onClick={() => deleteEntry(item.id)}>×</button>
                         </div>
                       ))}
@@ -684,25 +680,16 @@ export default function BudgetPage() {
               </div>
             )}
 
-            {/* ── EINSTELLUNG: FIXKOSTEN ── */}
+            {/* ── FIXKOSTEN ── */}
             {view === 'einstellung' && subView === 'fixkosten' && (
               <div>
                 <div className={styles.reportHeader}>
                   <div>
                     <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Fixkosten</h2>
-                    {totalFixkosten > 0 && (
-                      <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>
-                        Gesamt: <strong style={{ color: '#0d1b2a' }}>{formatMoney(totalFixkosten)} / Monat</strong>
-                      </p>
-                    )}
+                    {totalFixkosten > 0 && <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>Gesamt: <strong style={{ color: '#0d1b2a' }}>{formatMoney(totalFixkosten)} / Monat</strong></p>}
                   </div>
-                  {recurring.length > 0 && (
-                    <button className={styles.primaryBudgetBtn} type="button" onClick={insertFixInMonth}>
-                      Für {formatMonthLabel(month)} eintragen
-                    </button>
-                  )}
+                  {recurring.length > 0 && <button className={styles.primaryBudgetBtn} type="button" onClick={insertFixInMonth}>Für {formatMonthLabel(month)} eintragen</button>}
                 </div>
-
                 {recurring.length > 0 && (
                   <div className={styles.fixedList} style={{ marginBottom: 28 }}>
                     {recurring.map(r => (
@@ -717,7 +704,6 @@ export default function BudgetPage() {
                     ))}
                   </div>
                 )}
-
                 <div className={styles.budgetPanel} style={{ maxWidth: 500 }}>
                   <h2 className={styles.sectionTitle}>Fixkosten hinzufügen</h2>
                   <form className={styles.budgetForm} onSubmit={addFixeintrag}>
@@ -726,17 +712,15 @@ export default function BudgetPage() {
                       <button type="button" className={newFix.type === 'expense' ? styles.segmentActive : ''} onClick={() => setNewFix(p => ({ ...p, type: 'expense' }))}>Ausgabe</button>
                     </div>
                     <label><span>Titel</span><input value={newFix.title} onChange={e => setNewFix(p => ({ ...p, title: e.target.value }))} placeholder="z. B. Miete, Leasing" required /></label>
-                    <label><span>Untertitel (optional)</span><input value={newFix.subtitle} onChange={e => setNewFix(p => ({ ...p, subtitle: e.target.value }))} placeholder="z. B. Volksbank · Monatlich" /></label>
+                    <label><span>Untertitel (optional)</span><input value={newFix.subtitle} onChange={e => setNewFix(p => ({ ...p, subtitle: e.target.value }))} placeholder="z. B. Monatlich" /></label>
                     <div className={styles.budgetFieldRow}>
                       <label><span>Betrag (€)</span><input type="number" step="0.01" inputMode="decimal" value={newFix.amount} onChange={e => setNewFix(p => ({ ...p, amount: e.target.value }))} placeholder="0,00" required /></label>
                       <label><span>Tag des Monats</span><input type="number" min="1" max="28" value={newFix.dayOfMonth} onChange={e => setNewFix(p => ({ ...p, dayOfMonth: e.target.value }))} /></label>
                     </div>
                     <label>
                       <span>Kategorie</span>
-                      <input list="fix-cat-list" value={newFix.category} onChange={e => setNewFix(p => ({ ...p, category: e.target.value }))} placeholder="z. B. Zu Hause, Auto" />
-                      <datalist id="fix-cat-list">
-                        {categories.map(c => <option key={c.id} value={c.name} />)}
-                      </datalist>
+                      <input list="fix-cat-list" value={newFix.category} onChange={e => setNewFix(p => ({ ...p, category: e.target.value }))} placeholder="z. B. Zu Hause" />
+                      <datalist id="fix-cat-list">{categories.map(c => <option key={c.id} value={c.name} />)}</datalist>
                     </label>
                     <button className={styles.primaryBudgetBtn} type="submit">Fixkosten speichern</button>
                   </form>
@@ -744,7 +728,7 @@ export default function BudgetPage() {
               </div>
             )}
 
-            {/* ── EINSTELLUNG: BERICHT ── */}
+            {/* ── BERICHT ── */}
             {view === 'einstellung' && subView === 'bericht' && (
               <div>
                 <div className={styles.reportHeader}>
@@ -754,44 +738,27 @@ export default function BudgetPage() {
                   </div>
                   <button className={styles.printBtn} type="button" onClick={() => window.print()}>Drucken</button>
                 </div>
-
                 {incomeTotals.length > 0 && (
                   <div className={styles.reportSection}>
                     <p className={styles.reportSectionTitle}>Einnahmen</p>
-                    <div className={styles.reportGrid}>
-                      {incomeTotals.map(([cat, total]) => (
-                        <div className={styles.reportCard} key={cat}><span>{cat}</span><strong className={styles.moneyPositive}>{formatMoney(total)}</strong></div>
-                      ))}
-                    </div>
+                    <div className={styles.reportGrid}>{incomeTotals.map(([cat, total]) => <div className={styles.reportCard} key={cat}><span>{cat}</span><strong className={styles.moneyPositive}>{formatMoney(total)}</strong></div>)}</div>
                     <div className={styles.reportTotalRow}><span>Gesamt Einnahmen</span><strong className={styles.moneyPositive}>{formatMoney(summary.income)}</strong></div>
                   </div>
                 )}
-
                 {categoryTotals.length > 0 && (
                   <div className={styles.reportSection}>
                     <p className={styles.reportSectionTitle}>Ausgaben nach Kategorie</p>
-                    <div className={styles.reportGrid}>
-                      {categoryTotals.map(([cat, total]) => (
-                        <div className={styles.reportCard} key={cat}><span>{cat}</span><strong>{formatMoney(total)}</strong></div>
-                      ))}
-                    </div>
+                    <div className={styles.reportGrid}>{categoryTotals.map(([cat, total]) => <div className={styles.reportCard} key={cat}><span>{cat}</span><strong>{formatMoney(total)}</strong></div>)}</div>
                     <div className={styles.reportTotalRow}><span>Gesamt Ausgaben</span><strong className={styles.moneyNegative}>{formatMoney(summary.expenses)}</strong></div>
                   </div>
                 )}
-
                 {(incomeTotals.length > 0 || categoryTotals.length > 0) && (
-                  <div className={styles.reportSaldoRow} style={{
-                    border: `1px solid ${summary.balance >= 0 ? '#16a34a' : '#dc2626'}`,
-                    background: summary.balance >= 0 ? 'rgba(22,163,74,0.05)' : 'rgba(220,38,38,0.05)',
-                  }}>
+                  <div className={styles.reportSaldoRow} style={{ border: `1px solid ${summary.balance >= 0 ? '#16a34a' : '#dc2626'}`, background: summary.balance >= 0 ? 'rgba(22,163,74,0.05)' : 'rgba(220,38,38,0.05)' }}>
                     <span>Monats-Saldo</span>
                     <strong className={summary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(summary.balance)}</strong>
                   </div>
                 )}
-
-                {!incomeTotals.length && !categoryTotals.length && (
-                  <p className={styles.emptyAnalytics}>Noch keine Einträge für {formatMonthLabel(month)}.</p>
-                )}
+                {!incomeTotals.length && !categoryTotals.length && <p className={styles.emptyAnalytics}>Noch keine Einträge für {formatMonthLabel(month)}.</p>}
               </div>
             )}
 
