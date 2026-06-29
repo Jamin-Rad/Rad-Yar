@@ -310,7 +310,8 @@
   margin-bottom: 7px;
 }
 
-.pageRankHead a {
+.pageRankHead a,
+.pageRankHead strong {
   overflow: hidden;
   color: #0d1b2a;
   font-size: 12px;
@@ -355,6 +356,13 @@
   justify-content: space-between;
   gap: 18px;
   margin-bottom: 24px;
+}
+
+.privateQuickActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: -10px 0 24px;
 }
 
 .budgetMonthPicker {
@@ -560,6 +568,112 @@
   white-space: nowrap;
 }
 
+.privateChart {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  height: 220px;
+  padding: 16px 4px 0;
+}
+
+.privateChartCol {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+}
+
+.privateChartBars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  min-height: 0;
+}
+
+.privateCaloriesBar,
+.privateSportBar {
+  display: block;
+  width: 12px;
+  min-height: 4px;
+  border-radius: 7px 7px 0 0;
+}
+
+.privateCaloriesBar {
+  background: linear-gradient(180deg, #f97316, #fbbf24);
+}
+
+.privateSportBar {
+  background: linear-gradient(180deg, #0284c7, #38bdf8);
+}
+
+.privateChartCol small {
+  overflow: hidden;
+  color: #94a3b8;
+  font-size: 10px;
+  text-align: center;
+  text-overflow: ellipsis;
+}
+
+.privateLegend,
+.privateAreaGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.privateLegend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.privateLegend i {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+}
+
+.legendCalories {
+  background: #f97316;
+}
+
+.legendSport {
+  background: #0284c7;
+}
+
+.privateAreaGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.privateAreaGrid a {
+  display: flex;
+  min-height: 92px;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  background: #f8fafc;
+  color: #0d1b2a;
+  font-size: 14px;
+  font-weight: 900;
+  text-align: center;
+  text-decoration: none;
+}
+
+.privateAreaGrid a:hover {
+  border-color: rgba(249,115,22,.45);
+  color: #f97316;
+}
+
 .moneyPositive {
   color: #15803d !important;
 }
@@ -755,6 +869,10 @@
 
   .budgetSummaryGrid,
   .budgetGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .privateAreaGrid {
     grid-template-columns: 1fr;
   }
 

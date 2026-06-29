@@ -193,7 +193,9 @@ export default function AdminDashboard() {
           <strong>Administrationsprofil</strong>
         </div>
         <div className={styles.headerActions}>
-          <Link className={styles.profileBtn} href="/admin/budget">Privat-Budget</Link>
+          <Link className={styles.profileBtn} href="/admin/health">Kalorien & Sport</Link>
+          <Link className={styles.profileBtn} href="/admin/budget">Finanzen</Link>
+          <Link className={styles.profileBtn} href="/admin/private">Privat</Link>
           <Link className={styles.profileBtn} href="/profil">Ben-Profil</Link>
           <Link className={styles.homeBtn} href="/">Zur Hauptseite</Link>
           <button className={styles.signOutBtn} onClick={handleLogout}>

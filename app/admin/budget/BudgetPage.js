@@ -7,6 +7,47 @@ import styles from '../admin.module.css'
 
 const STORAGE_KEY = 'radyar_private_budget_v1'
 
+const APRIL_2026_EXAMPLE = {
+  budget: '',
+  entries: [
+    ['income', 'Einnahmen', 6601.50, 'Einnahmen', '2026-04-01'],
+    ['income', 'Familienkasse', 518, 'Einnahmen', '2026-04-01'],
+    ['expense', 'Aldi', 161, 'Lebensmittel', '2026-04-02'],
+    ['expense', 'Lidl', 535, 'Lebensmittel', '2026-04-03'],
+    ['expense', 'Bonus', 60, 'Lebensmittel', '2026-04-04'],
+    ['expense', 'Edeka/Rewe/Netto', 53, 'Lebensmittel', '2026-04-05'],
+    ['expense', 'DM', 20, 'Lebensmittel', '2026-04-06'],
+    ['expense', 'Türkei', 182, 'Lebensmittel', '2026-04-07'],
+    ['expense', 'Supermarkt', 5, 'Kleidung', '2026-04-08'],
+    ['expense', 'Eis/Coffee/Bäckerei', 19, 'Restaurant', '2026-04-09'],
+    ['expense', 'Essen', 193, 'Restaurant', '2026-04-10'],
+    ['expense', 'Tanken', 39, 'Auto', '2026-04-11'],
+    ['expense', 'Strom', 13, 'Auto', '2026-04-12'],
+    ['expense', 'Reparatur/Service', 1392, 'Auto', '2026-04-13'],
+    ['expense', 'Leasing', 348, 'Auto', '2026-04-14'],
+    ['expense', 'Bus-Ticket', 92, 'Auto', '2026-04-15'],
+    ['expense', 'Miete', 2025, 'Zu Hause', '2026-04-01'],
+    ['expense', 'Darlehen', 475, 'Zu Hause', '2026-04-02'],
+    ['expense', 'Strom', 91, 'Zu Hause', '2026-04-03'],
+    ['expense', 'Haushaltgerät', 95, 'Zu Hause', '2026-04-04'],
+    ['expense', 'Konto', 11, 'Jamin', '2026-04-16'],
+    ['expense', 'Gothaer', 22, 'Jamin', '2026-04-17'],
+    ['expense', 'Medikamente', 10, 'Jamin', '2026-04-18'],
+    ['expense', 'iPhone 16', 53, 'Fatima', '2026-04-19'],
+    ['expense', 'Kleidung', 5, 'Fatima', '2026-04-20'],
+    ['expense', 'Medikamente', 296, 'Fatima', '2026-04-21'],
+    ['expense', 'Schule', 1029, 'Mobin', '2026-04-22'],
+    ['expense', 'Taschengeld', 18, 'Mobin', '2026-04-23'],
+    ['expense', 'Bus-Ticket', 45, 'Mobin', '2026-04-24'],
+    ['expense', 'SIM-Karte', 9, 'Mobin', '2026-04-25'],
+    ['expense', 'Kindergarten', 370, 'Mobina', '2026-04-26'],
+    ['expense', 'Kleidung', 10, 'Mobina', '2026-04-27'],
+    ['expense', 'Apotheke, Versicherung', 46, 'Meine Eltern', '2026-04-28'],
+    ['expense', 'Sonst', 3, 'Meine Eltern', '2026-04-28'],
+    ['expense', 'Nazri Iran', 77, 'Moschee', '2026-04-29'],
+  ].map(([type, title, amount, category, date]) => ({ id: makeEntryId(), type, title, amount, category, date })),
+}
+
 function getMonthKey(date = new Date()) {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`
 }
@@ -84,6 +125,17 @@ export default function BudgetPage() {
     }
   }, [monthData])
 
+  const categoryTotals = useMemo(() => {
+    const totals = {}
+    monthData.entries
+      .filter(item => item.type === 'expense')
+      .forEach(item => {
+        const key = item.category || 'Ohne Kategorie'
+        totals[key] = (totals[key] || 0) + Number(item.amount || 0)
+      })
+    return Object.entries(totals).sort((a, b) => b[1] - a[1])
+  }, [monthData.entries])
+
   async function handleLogout() {
     await fetch('/api/admin/logout', { method: 'POST' })
     document.documentElement.classList.remove('admin-copy-enabled')
@@ -143,6 +195,12 @@ export default function BudgetPage() {
     })
   }
 
+  function loadAprilExample() {
+    if (!window.confirm('April-Beispiel aus dem Screenshot laden und vorhandene April-Daten ersetzen?')) return
+    setMonth('2026-04')
+    setStore(prev => ({ ...prev, '2026-04': APRIL_2026_EXAMPLE }))
+  }
+
   return (
     <div className={styles.page}>
       <div className={styles.adminBar}>
@@ -160,13 +218,18 @@ export default function BudgetPage() {
       <main className={styles.content}>
         <div className={styles.budgetHero}>
           <div>
-            <h1 className={styles.title}>Privates Budget</h1>
-            <p className={styles.sub}>Monatsbudget, Einnahmen und Ausgaben lokal und privat verwalten.</p>
+            <h1 className={styles.title}>Private Finanzen</h1>
+            <p className={styles.sub}>Einnahmen, Ausgaben, Kategorien und Monatsbilanz lokal und privat verwalten.</p>
           </div>
           <label className={styles.budgetMonthPicker}>
             <span>Monat</span>
             <input type="month" value={month} onChange={event => setMonth(event.target.value || getMonthKey())} />
           </label>
+        </div>
+        <div className={styles.privateQuickActions}>
+          <button className={styles.actionBtn} type="button" onClick={loadAprilExample}>April-Beispiel laden</button>
+          <Link className={styles.actionBtn} href="/admin/health">Zu Kalorien & Sport</Link>
+          <Link className={styles.actionBtn} href="/admin/private">Zur privaten dritten Seite</Link>
         </div>
 
         <section className={styles.budgetSummaryGrid} aria-label="Budget Übersicht">
@@ -253,6 +316,30 @@ export default function BudgetPage() {
             </form>
           </section>
         </div>
+
+        <section className={styles.budgetPanel}>
+          <h2 className={styles.sectionTitle}>Ausgaben nach Kategorie</h2>
+          {categoryTotals.length ? (
+            <div className={styles.pageRanking}>
+              {categoryTotals.map(([category, total], index) => (
+                <div className={styles.pageRankRow} key={category}>
+                  <span className={styles.pageRankNum}>{String(index + 1).padStart(2, '0')}</span>
+                  <div className={styles.pageRankMain}>
+                    <div className={styles.pageRankHead}>
+                      <strong>{category}</strong>
+                      <span>{formatMoney(total)}</span>
+                    </div>
+                    <div className={styles.pageRankTrack}>
+                      <span style={{ width: `${Math.max((total / Math.max(...categoryTotals.map(([, value]) => value))) * 100, 2)}%` }} />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className={styles.emptyAnalytics}>Noch keine Ausgaben-Kategorien für diesen Monat.</p>
+          )}
+        </section>
 
         <section className={styles.budgetPanel}>
           <div className={styles.tableHead}>
