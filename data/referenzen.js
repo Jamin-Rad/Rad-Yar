@@ -159,7 +159,25 @@ export const ANATOMIE = [
     id: 'lungensegmente',
     color: '#0ea5e9',
     name: { de: 'Lungensegmente', en: 'Lung segments', fa: 'سگمان‌های ریه' },
-    image: '/referenzen/anatomie/lungensegmente.jpg',
+    image: '/referenzen/anatomie/lungensegmente-ventral-medial.png',
+    images: [
+      {
+        src: '/referenzen/anatomie/lungensegmente-ventral-medial.png',
+        alt: {
+          de: 'Lungensegmente und Segmentbronchien von ventral und medial',
+          en: 'Lung segments and segmental bronchi from ventral and medial views',
+          fa: 'سگمان‌های ریه و برونش‌های سگمنتال در نماهای قدامی و مدیال',
+        },
+      },
+      {
+        src: '/referenzen/anatomie/lungensegmente-ct-axial.png',
+        alt: {
+          de: 'Lungensegmente in axialen CT-Schnitten',
+          en: 'Lung segments on axial CT slices',
+          fa: 'سگمان‌های ریه در برش‌های محوری CT',
+        },
+      },
+    ],
     kompakt: {
       de: 'Bronchopulmonale Segmente für Herdlokalisation, Pneumonieverteilung, Atelektasen und OP-Planung.',
       en: 'Bronchopulmonary segments for lesion localisation, pneumonia distribution, atelectasis and surgical planning.',

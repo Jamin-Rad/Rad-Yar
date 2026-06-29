@@ -147,6 +147,18 @@ function normalizeDetailImage(item, lang) {
   return { src: item.image.src, alt: tx(item.image.alt, lang), attribution: item.image.attribution }
 }
 
+function normalizeDetailImages(item, lang) {
+  if (item.images?.length) {
+    return item.images.map(image => ({
+      src: image.src,
+      alt: tx(image.alt || item.name, lang),
+      attribution: image.attribution,
+    }))
+  }
+  const image = normalizeDetailImage(item, lang)
+  return image ? [image] : []
+}
+
 export default function KlassDetailPage({ topic, item, section = 'klassifikationen' }) {
   const { lang } = useLanguage()
   const copy = REF_COPY[lang] || REF_COPY.de
@@ -167,7 +179,7 @@ export default function KlassDetailPage({ topic, item, section = 'klassifikation
   const backHref = lang !== 'de' ? `/?lang=${lang}&ref=${refParam}#referenzen` : `/?ref=${refParam}#referenzen`
   const [zoomSrc, setZoomSrc] = useState(null)
   const infoLabel = lang === 'de' ? 'Einordnung & Radiologie-Check' : lang === 'fa' ? 'توضیح و چک رادیولوژی' : 'Context & radiology check'
-  const image = isAnatomie ? null : normalizeDetailImage(item, lang)
+  const images = normalizeDetailImages(item, lang)
   const sourceLinks = SourceLinks({ item, lang })
 
   return (
@@ -247,7 +259,7 @@ export default function KlassDetailPage({ topic, item, section = 'klassifikation
             </section>
           )}
 
-          <div className={image ? styles.tableImageGrid : undefined}>
+          <div className={images.length ? styles.tableImageGrid : undefined}>
             {/* Tabellen-Sektion */}
             <div>
               {item.detail && item.detailPosition === 'beforeTables' && (
@@ -290,27 +302,34 @@ export default function KlassDetailPage({ topic, item, section = 'klassifikation
               )}
             </div>
 
-            {/* Bild rechts (optional) */}
-            {image && (
-              <figure className={styles.imageFigure}>
-                <button
-                  type="button"
-                  className={styles.imageBtn}
-                  onClick={() => setZoomSrc({ src: image.src, alt: image.alt })}
-                  aria-label={copy.zoomImage || 'Vergrößern'}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={image.src} alt={image.alt} className={styles.image} />
-                  <span className={styles.zoomHint}>🔍 {copy.zoomImage || 'Vergrößern'}</span>
-                </button>
-                {image.attribution && (
-                  <figcaption className={styles.imageCaption}>
-                    Case courtesy of <strong>{image.attribution.name}</strong>,{' '}
-                    <a href={image.attribution.sourceUrl} target="_blank" rel="noopener noreferrer">Radiopaedia.org</a>.
-                    From the case <a href={image.attribution.caseUrl} target="_blank" rel="noopener noreferrer">rID: {image.attribution.caseId}</a>
-                  </figcaption>
-                )}
-              </figure>
+            {/* Bilder rechts (optional) */}
+            {images.length > 0 && (
+              <div className={styles.imageStack}>
+                {images.map((image, index) => (
+                  <figure className={styles.imageFigure} key={image.src}>
+                    <button
+                      type="button"
+                      className={styles.imageBtn}
+                      onClick={() => setZoomSrc({ src: image.src, alt: image.alt })}
+                      aria-label={copy.zoomImage || 'Vergrößern'}
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={image.src} alt={image.alt} className={styles.image} />
+                      <span className={styles.zoomHint}>🔍 {copy.zoomImage || 'Vergrößern'}</span>
+                    </button>
+                    {images.length > 1 && (
+                      <figcaption className={styles.imageCaption}>{index + 1}. {image.alt}</figcaption>
+                    )}
+                    {image.attribution && (
+                      <figcaption className={styles.imageCaption}>
+                        Case courtesy of <strong>{image.attribution.name}</strong>,{' '}
+                        <a href={image.attribution.sourceUrl} target="_blank" rel="noopener noreferrer">Radiopaedia.org</a>.
+                        From the case <a href={image.attribution.caseUrl} target="_blank" rel="noopener noreferrer">rID: {image.attribution.caseId}</a>
+                      </figcaption>
+                    )}
+                  </figure>
+                ))}
+              </div>
             )}
           </div>
 

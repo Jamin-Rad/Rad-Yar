@@ -171,6 +171,11 @@
 }
 
 /* ── Bild ────────────────────────────────────────────────────────────────── */
+.imageStack {
+  display: grid;
+  gap: 16px;
+}
+
 .imageFigure {
   margin: 0; border-radius: 14px; overflow: hidden;
   border: 1px solid rgba(148,163,184,0.12);
