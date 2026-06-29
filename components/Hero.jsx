@@ -1,9 +1,19 @@
 'use client'
 import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
+import { useRouter } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { REF_COPY } from '@/data/referenzen'
 import styles from './Hero.module.css'
+
+const PILLAR_ICONS = [
+  '/lernbereiche/lektionen.jpg',
+  '/lernbereiche/fallpruefung.jpg',
+  '/lernbereiche/mcq.jpg',
+  '/lernbereiche/flashcards.jpg',
+]
+
+const LEARNING_CARD_COLORS = ['#f97316', '#0ea5e9', '#10b981', '#2563eb']
 
 const REFERENCE_CARDS = [
   { key: 'anatomie', title: 'btnAnatomie', desc: 'btnAnatomieSub', image: '/fach/technik.png', color: '#7c3aed' },
@@ -433,6 +443,7 @@ const ZONE_TO_LERNEN = {
 // ── MAIN ──────────────────────────────────────────────────────────────────
 export default function Hero() {
   const { texts, lang } = useLanguage()
+  const router = useRouter()
   const [hovered, setHovered] = useState(null)
   const [mounted, setMounted] = useState(false)
   const [mobilePanel, setMobilePanel] = useState(null)
@@ -472,6 +483,13 @@ export default function Hero() {
     if (url) window.location.href = url
   }
 
+  const handleLearningCard = (index) => {
+    if (index === 0) router.push('/lernen')
+    if (index === 1) router.push('/faelle')
+    if (index === 2) router.push('/ueben')
+    if (index === 3) router.push('/flashcards')
+  }
+
   const openReferenceCard = (modal) => {
     window.dispatchEvent(new CustomEvent('radyar:open-reference-modal', { detail: { modal } }))
   }
@@ -501,12 +519,41 @@ export default function Hero() {
         <div className={styles.mobilePanelToggles} aria-label="Homepage shortcuts">
           <button
             type="button"
+            className={`${styles.mobilePanelButton} ${mobilePanel === 'learning' ? styles.mobilePanelButtonActive : ''}`}
+            onClick={() => setMobilePanel(panel => panel === 'learning' ? null : 'learning')}
+            aria-expanded={mobilePanel === 'learning'}
+          >
+            <span className={styles.mobilePanelText}>{texts.section1Label}</span>
+          </button>
+          <button
+            type="button"
             className={`${styles.mobilePanelButton} ${mobilePanel === 'references' ? styles.mobilePanelButtonActive : ''}`}
             onClick={() => setMobilePanel(panel => panel === 'references' ? null : 'references')}
             aria-expanded={mobilePanel === 'references'}
           >
             <span className={styles.mobilePanelText}>{referenceCopy.sectionLabel}</span>
           </button>
+        </div>
+
+        <div className={`${styles.cardColumn} ${styles.cardColumnLeft} ${mobilePanel === 'learning' ? styles.cardColumnMobileOpen : ''}`} aria-label={texts.section1Title}>
+          <span className={styles.columnLabel}>{texts.section1Label}</span>
+          {texts.pillars.map((pillar, index) => (
+            <button
+              key={pillar.title}
+              type="button"
+              className={`${styles.floatCard} ${styles[`floatLeft${index}`] || ''}`}
+              style={{ '--card-color': LEARNING_CARD_COLORS[index] }}
+              onClick={() => handleLearningCard(index)}
+            >
+              <span className={styles.floatIcon}>
+                <Image src={PILLAR_ICONS[index]} alt="" width={62} height={62} />
+              </span>
+              <span className={styles.floatText}>
+                <strong>{pillar.title}</strong>
+                <small>{pillar.desc}</small>
+              </span>
+            </button>
+          ))}
         </div>
 
         <div className={styles.centerStage}>
