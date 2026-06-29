@@ -164,6 +164,80 @@
   transform: translateY(-1px);
 }
 
+/* ── PRIVATE ZONE DROPDOWN ────────────────────── */
+.privateZone {
+  position: relative;
+}
+
+.privateBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(249,115,22,0.45);
+  background: rgba(249,115,22,0.10);
+  color: #f97316;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+  font-family: var(--font-manrope, sans-serif);
+  letter-spacing: 0.02em;
+}
+
+.privateBtn:hover {
+  background: rgba(249,115,22,0.18);
+  border-color: rgba(249,115,22,0.65);
+}
+
+.privateDropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: rgba(6,12,26,0.97);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 14px;
+  padding: 6px;
+  min-width: 176px;
+  z-index: 200;
+  backdrop-filter: blur(20px);
+}
+
+.privateDropdownLink {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 12px;
+  border-radius: 9px;
+  color: rgba(240,225,200,0.82);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .12s, color .12s;
+  font-family: var(--font-manrope, sans-serif);
+}
+
+.privateDropdownLink:hover {
+  background: rgba(249,115,22,0.15);
+  color: #f97316;
+}
+
+.privateDropdownMuted {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.privateDropdownMuted:hover {
+  opacity: 1;
+}
+
+.privateDropdownSep {
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin: 5px 2px;
+}
+
 /* ── DARK MODE ────────────────────────────────── */
 :global(html[data-theme='dark']) .nav {
   background: rgba(3,7,18,0.95);

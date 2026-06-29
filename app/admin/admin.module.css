@@ -830,6 +830,363 @@
   margin-bottom: 16px;
 }
 
+/* ── FINANCE REDESIGN ────────────────────────── */
+.financeHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.monthNav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.monthNavBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #475569;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all .15s;
+}
+
+.monthNavBtn:hover {
+  border-color: #f97316;
+  color: #f97316;
+}
+
+.monthDisplay {
+  padding: 7px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #fff;
+  color: #0d1b2a;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  outline: none;
+  cursor: pointer;
+  transition: border-color .15s;
+}
+
+.monthDisplay:focus {
+  border-color: #f97316;
+}
+
+.financeMetrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.financeMetric {
+  display: grid;
+  gap: 6px;
+  padding: 16px 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,.05);
+}
+
+.financeMetric span {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.financeMetric strong {
+  font-size: 21px;
+  font-weight: 900;
+  color: #0d1b2a;
+  line-height: 1.1;
+}
+
+.financeTabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 24px;
+}
+
+.financeTab,
+.financeTabActive {
+  padding: 10px 18px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color .15s, border-color .15s;
+  margin-bottom: -1px;
+  white-space: nowrap;
+}
+
+.financeTab {
+  color: #64748b;
+}
+
+.financeTab:hover {
+  color: #f97316;
+}
+
+.financeTabActive {
+  color: #f97316;
+  border-bottom-color: #f97316;
+}
+
+.financeTab span,
+.financeTabActive span {
+  font-size: 11px;
+  color: #94a3b8;
+  margin-left: 3px;
+}
+
+/* Budget setting row */
+.budgetSettingRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.budgetSettingRow label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.budgetSettingRow input {
+  flex: 1;
+  min-width: 120px;
+  max-width: 180px;
+  padding: 7px 11px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #fff;
+  color: #0d1b2a;
+  font: inherit;
+  font-size: 13px;
+  outline: none;
+  transition: border-color .15s;
+}
+
+.budgetSettingRow input:focus {
+  border-color: #f97316;
+}
+
+.budgetSettingRow button {
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(249,115,22,.45);
+  background: rgba(249,115,22,.08);
+  color: #c2410c;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+}
+
+.budgetSettingRow button:hover {
+  background: rgba(249,115,22,.16);
+}
+
+/* Category bars */
+.categoryList {
+  display: grid;
+  gap: 11px;
+}
+
+.categoryRow {
+  display: grid;
+  grid-template-columns: 130px 1fr 90px;
+  align-items: center;
+  gap: 12px;
+}
+
+.categoryName {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0d1b2a;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.categoryBarTrack {
+  height: 8px;
+  background: #f1f5f9;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.categoryBarFill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #f97316, #fbbf24);
+  transition: width .45s ease;
+}
+
+.categoryAmount {
+  font-size: 13px;
+  font-weight: 800;
+  color: #0d1b2a;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Bericht tab */
+.reportHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.reportHeader p {
+  margin: 4px 0 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.printBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #475569;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+}
+
+.printBtn:hover {
+  border-color: #f97316;
+  color: #f97316;
+}
+
+.reportSection {
+  margin-bottom: 28px;
+}
+
+.reportSectionTitle {
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 10px;
+}
+
+.reportGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.reportCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: #f8fafc;
+  border-radius: 10px;
+  border: 1px solid #f1f5f9;
+  gap: 10px;
+}
+
+.reportCard span {
+  font-size: 13px;
+  color: #475569;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reportCard strong {
+  font-size: 13px;
+  font-weight: 800;
+  color: #0d1b2a;
+  white-space: nowrap;
+}
+
+.reportTotalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  gap: 12px;
+}
+
+.reportTotalRow span {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0d1b2a;
+}
+
+.reportTotalRow strong {
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.reportSaldoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 18px;
+  border-radius: 14px;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.reportSaldoRow span {
+  font-size: 15px;
+  font-weight: 900;
+  color: #0d1b2a;
+}
+
+.reportSaldoRow strong {
+  font-size: 22px;
+  font-weight: 900;
+}
+
 @media (max-width: 620px) {
   .adminBar {
     align-items: flex-start;
