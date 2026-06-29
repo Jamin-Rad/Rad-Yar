@@ -27,11 +27,7 @@ export default function AdminPrivateNav() {
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 10h12M4 14h12M19.5 9a7.5 7.5 0 1 0 0 6"/></svg>
           Finanzen
         </Link>
-        <Link href="/profil" className={styles.link}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-          Ben Profil
-        </Link>
-        <Link href="/admin" className={`${styles.link} ${pathname === '/admin' ? styles.active : ''}`}>
+<Link href="/admin" className={`${styles.link} ${pathname === '/admin' ? styles.active : ''}`}>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
           Dashboard
         </Link>
