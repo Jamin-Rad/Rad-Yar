@@ -12,61 +12,61 @@ function makeId() {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
 }
 
-function buildCat(name, subs = []) {
-  return { id: makeId(), name, subs: subs.map(s => ({ id: makeId(), name: s })) }
+function buildCat(name, subs = [], type = 'expense') {
+  return { id: makeId(), name, type, subs: subs.map(s => ({ id: makeId(), name: s })) }
 }
 
 const DEFAULT_CATEGORIES = [
-  buildCat('Lebensmittel',  ['Aldi', 'Lidl', 'Bonus', 'Edeka/Rewe/Netto', 'DM', 'Türkischer Markt', 'Supermarkt']),
-  buildCat('Restaurant',    ['Eis/Coffee/Bäckerei', 'Essen gehen']),
-  buildCat('Auto',          ['Tanken', 'Leasing', 'Werkstatt', 'Bus-Ticket', 'Laden']),
-  buildCat('Zu Hause',      ['Miete', 'Darlehen', 'Strom', 'Haushaltgerät']),
-  buildCat('Kleidung',      []),
-  buildCat('Jamin',         ['Konto/Bank', 'Versicherung', 'Medikamente']),
-  buildCat('Fatima',        ['iPhone-Rate', 'Kleidung', 'Medikamente']),
-  buildCat('Mobin',         ['Schule', 'Taschengeld', 'Bus-Ticket', 'SIM-Karte']),
-  buildCat('Mobina',        ['Kindergarten', 'Kleidung']),
-  buildCat('Meine Eltern',  ['Apotheke', 'Versicherung']),
-  buildCat('Moschee',       ['Spende/Nazri']),
-  buildCat('Einnahmen',     ['Gehalt', 'Familienkasse']),
+  buildCat('Lebensmittel',  ['Aldi', 'Lidl', 'Bonus', 'Edeka/Rewe/Netto', 'DM', 'Türkischer Markt', 'Supermarkt'], 'expense'),
+  buildCat('Restaurant',    ['Eis/Coffee/Bäckerei', 'Essen gehen'], 'expense'),
+  buildCat('Auto',          ['Tanken', 'Leasing', 'Werkstatt', 'Bus-Ticket', 'Laden'], 'expense'),
+  buildCat('Zu Hause',      ['Miete', 'Darlehen', 'Strom', 'Haushaltgerät'], 'expense'),
+  buildCat('Kleidung',      [], 'expense'),
+  buildCat('Jamin',         ['Konto/Bank', 'Versicherung', 'Medikamente'], 'expense'),
+  buildCat('Fatima',        ['iPhone-Rate', 'Kleidung', 'Medikamente'], 'expense'),
+  buildCat('Mobin',         ['Schule', 'Taschengeld', 'Bus-Ticket', 'SIM-Karte'], 'expense'),
+  buildCat('Mobina',        ['Kindergarten', 'Kleidung'], 'expense'),
+  buildCat('Meine Eltern',  ['Apotheke', 'Versicherung'], 'expense'),
+  buildCat('Moschee',       ['Spende/Nazri'], 'expense'),
+  buildCat('Einkommen',     ['Gehalt', 'Familienkasse'], 'income'),
 ]
 
 const APRIL_2026_EXAMPLE = {
-  budget: '7500',
+  budget: '',
   entries: [
-    ['income',  'Einnahmen',           6601.50, 'Einnahmen',    '',                    '2026-04-01', ['Einnahmen']],
-    ['income',  'Familienkasse',        518,     'Einnahmen',    '',                    '2026-04-01', ['Einnahmen']],
+    ['income',  'Gehalt',              6601.50, 'Einkommen',    '',                    '2026-04-01', ['Einkommen']],
+    ['income',  'Familienkasse',        518,     'Einkommen',    '',                    '2026-04-01', ['Einkommen']],
     ['expense', 'Aldi',                 161,     'Lebensmittel', 'Wocheneinkauf',       '2026-04-02', ['Lebensmittel']],
     ['expense', 'Lidl',                 535,     'Lebensmittel', 'Wocheneinkauf',       '2026-04-03', ['Lebensmittel']],
     ['expense', 'Bonus',                60,      'Lebensmittel', '',                    '2026-04-04', ['Lebensmittel']],
     ['expense', 'Edeka/Rewe/Netto',     53,      'Lebensmittel', '',                    '2026-04-05', ['Lebensmittel']],
     ['expense', 'DM',                   20,      'Lebensmittel', 'Drogerie',            '2026-04-06', ['Lebensmittel']],
     ['expense', 'Türkischer Markt',     182,     'Lebensmittel', '',                    '2026-04-07', ['Lebensmittel']],
-    ['expense', 'Supermarkt',           5,       'Kleidung',     'Für Mobin',           '2026-04-08', ['Kleidung', 'Mobin']],
+    ['expense', 'Kleidung',             5,       'Kleidung',     'Für Mobin',           '2026-04-08', ['Kleidung', 'Mobin']],
     ['expense', 'Eis/Coffee/Bäckerei', 19,      'Restaurant',   '',                    '2026-04-09', ['Restaurant']],
     ['expense', 'Essen gehen',          193,     'Restaurant',   'Auswärts',            '2026-04-10', ['Restaurant']],
     ['expense', 'Tanken',               39,      'Auto',         '',                    '2026-04-11', ['Auto']],
     ['expense', 'Laden',                13,      'Auto',         'Strom',               '2026-04-12', ['Auto']],
-    ['expense', 'Werkstatt',            1392,    'Auto',         'Reparatur/Service',   '2026-04-13', ['Auto']],
-    ['expense', 'Leasing',              348,     'Auto',         'Monatlich',           '2026-04-14', ['Auto']],
-    ['expense', 'Bus-Ticket',           92,      'Auto',         'Öffentlich',          '2026-04-15', ['Auto']],
-    ['expense', 'Miete',                2025,    'Zu Hause',     'Monatlich',           '2026-04-01', ['Zu Hause']],
+    ['expense', 'Werkstatt',            1392,    'Auto',         'Reparatur',           '2026-04-13', ['Auto']],
+    ['expense', 'Leasing',              348,     'Auto',         '',                    '2026-04-14', ['Auto']],
+    ['expense', 'Bus-Ticket',           92,      'Auto',         '',                    '2026-04-15', ['Auto']],
+    ['expense', 'Miete',                2025,    'Zu Hause',     '',                    '2026-04-01', ['Zu Hause']],
     ['expense', 'Darlehen',             475,     'Zu Hause',     '',                    '2026-04-02', ['Zu Hause']],
     ['expense', 'Strom',                91,      'Zu Hause',     '',                    '2026-04-03', ['Zu Hause']],
     ['expense', 'Haushaltgerät',        95,      'Zu Hause',     '',                    '2026-04-04', ['Zu Hause']],
-    ['expense', 'Konto/Bank',           11,      'Jamin',        'Bankgebühr',          '2026-04-16', ['Jamin']],
+    ['expense', 'Konto/Bank',           11,      'Jamin',        '',                    '2026-04-16', ['Jamin']],
     ['expense', 'Versicherung',         22,      'Jamin',        'Gothaer',             '2026-04-17', ['Jamin']],
     ['expense', 'Medikamente',          10,      'Jamin',        '',                    '2026-04-18', ['Jamin']],
     ['expense', 'iPhone-Rate',          53,      'Fatima',       '',                    '2026-04-19', ['Fatima']],
-    ['expense', 'Kleidung',             5,       'Fatima',       'Für Fatima',          '2026-04-20', ['Kleidung', 'Fatima']],
+    ['expense', 'Kleidung',             5,       'Fatima',       '',                    '2026-04-20', ['Kleidung', 'Fatima']],
     ['expense', 'Medikamente',          296,     'Fatima',       '',                    '2026-04-21', ['Fatima']],
-    ['expense', 'Schule',               1029,    'Mobin',        'Schulgeld',           '2026-04-22', ['Mobin']],
+    ['expense', 'Schule',               1029,    'Mobin',        '',                    '2026-04-22', ['Mobin']],
     ['expense', 'Taschengeld',          18,      'Mobin',        '',                    '2026-04-23', ['Mobin']],
-    ['expense', 'Bus-Ticket',           45,      'Mobin',        'Schulweg',            '2026-04-24', ['Mobin', 'Auto']],
+    ['expense', 'Bus-Ticket',           45,      'Mobin',        '',                    '2026-04-24', ['Mobin']],
     ['expense', 'SIM-Karte',            9,       'Mobin',        '',                    '2026-04-25', ['Mobin']],
-    ['expense', 'Kindergarten',         370,     'Mobina',       'Monatsbeitrag',       '2026-04-26', ['Mobina']],
-    ['expense', 'Kleidung',             10,      'Mobina',       'Für Mobina',          '2026-04-27', ['Kleidung', 'Mobina']],
-    ['expense', 'Apotheke',             46,      'Meine Eltern', 'Versicherung',        '2026-04-28', ['Meine Eltern']],
+    ['expense', 'Kindergarten',         370,     'Mobina',       '',                    '2026-04-26', ['Mobina']],
+    ['expense', 'Kleidung',             10,      'Mobina',       '',                    '2026-04-27', ['Kleidung', 'Mobina']],
+    ['expense', 'Apotheke',             46,      'Meine Eltern', '',                    '2026-04-28', ['Meine Eltern']],
     ['expense', 'Sonst',                3,       'Meine Eltern', '',                    '2026-04-28', ['Meine Eltern']],
     ['expense', 'Spende/Nazri',         77,      'Moschee',      '',                    '2026-04-29', ['Moschee']],
   ].map(([type, title, amount, category, subtitle, date, tags]) => ({
@@ -133,6 +133,9 @@ function IconChart() {
 function IconSettings() {
   return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
 }
+function ChevronDown() {
+  return <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+}
 
 export default function BudgetPage() {
   const [view, setView]       = useState('monat')
@@ -144,14 +147,19 @@ export default function BudgetPage() {
   const [recurring, setRecurring]   = useState([])
   const [categories, setCategories] = useState([])
   const [loaded, setLoaded]         = useState(false)
-  const [budgetInput, setBudgetInput] = useState('')
-  const [catEdits, setCatEdits]       = useState({})
-  const [newCatName, setNewCatName]   = useState('')
+  const [catEdits, setCatEdits]     = useState({})
+  const [newCatName, setNewCatName] = useState('')
+  const [newCatType, setNewCatType] = useState('expense')
   const [newSubInputs, setNewSubInputs] = useState({})
-  const [selectedCats, setSelectedCats] = useState([])
-  const [entry, setEntry] = useState({
-    type: 'expense', title: '', subtitle: '', amount: '', date: new Date().toISOString().slice(0, 10),
-  })
+
+  // Entry form state
+  const [entryType, setEntryType]         = useState('expense')
+  const [entryAmount, setEntryAmount]     = useState('')
+  const [entryDate, setEntryDate]         = useState(new Date().toISOString().slice(0, 10))
+  const [selectedItems, setSelectedItems] = useState([]) // [{catId, catName, subId, subName}]
+  const [expandedCats, setExpandedCats]   = useState(new Set())
+
+  // Fixkosten state
   const [newFix, setNewFix] = useState({
     type: 'expense', title: '', subtitle: '', amount: '', category: '', dayOfMonth: '1',
   })
@@ -174,13 +182,12 @@ export default function BudgetPage() {
   useEffect(() => { if (loaded) localStorage.setItem(CATEGORIES_KEY, JSON.stringify(categories)) }, [categories, loaded])
 
   const monthData = store[month] || emptyMonth()
-  useEffect(() => { setBudgetInput(monthData.budget || '') }, [month, loaded]) // eslint-disable-line
 
+  // ── Derived ────────────────────────────────────────────────────────────────
   const summary = useMemo(() => {
     const income   = monthData.entries.filter(i => i.type === 'income').reduce((s, i) => s + Number(i.amount || 0), 0)
     const expenses = monthData.entries.filter(i => i.type === 'expense').reduce((s, i) => s + Number(i.amount || 0), 0)
-    const budget   = Number(monthData.budget || 0)
-    return { income, expenses, budget, balance: income - expenses, remaining: budget - expenses }
+    return { income, expenses, balance: income - expenses }
   }, [monthData])
 
   const categoryTotals = useMemo(() => {
@@ -195,7 +202,7 @@ export default function BudgetPage() {
   const incomeTotals = useMemo(() => {
     const t = {}
     monthData.entries.filter(i => i.type === 'income').forEach(i => {
-      const k = i.title || 'Einnahme'
+      const k = i.title || 'Einkommen'
       t[k] = (t[k] || 0) + Number(i.amount || 0)
     })
     return Object.entries(t).sort((a, b) => b[1] - a[1])
@@ -210,6 +217,42 @@ export default function BudgetPage() {
   const maxCategory = categoryTotals.length ? Math.max(...categoryTotals.map(([, v]) => v)) : 1
   const maxIncome   = incomeTotals.length   ? Math.max(...incomeTotals.map(([, v]) => v))   : 1
 
+  // Auto-calculated budget from category budgets
+  const totalCatBudget = useMemo(() => {
+    return categories
+      .filter(c => c.type !== 'income')
+      .reduce((s, c) => s + (catBudgets[c.name] || 0), 0)
+  }, [categories, catBudgets])
+
+  const budgetRemaining = totalCatBudget - summary.expenses
+  const budgetOver      = totalCatBudget > 0 && budgetRemaining < 0
+  const budgetPct       = totalCatBudget > 0 ? Math.min((summary.expenses / totalCatBudget) * 100, 100) : 0
+
+  // Filtered categories for entry form
+  const entryCategories = useMemo(() => {
+    return categories.filter(c => c.type === entryType)
+  }, [categories, entryType])
+
+  // Entry title derived from selection
+  const entryTitle = useMemo(() => {
+    const firstSub = selectedItems.find(i => i.subName)
+    if (firstSub) {
+      const allSubs = selectedItems.filter(i => i.subName).map(i => i.subName)
+      return allSubs.length > 1 ? allSubs.join(' / ') : firstSub.subName
+    }
+    return selectedItems[0]?.catName || ''
+  }, [selectedItems])
+
+  const entrySubtitle = useMemo(() => {
+    const cats = [...new Set(selectedItems.map(i => i.catName))]
+    return cats.join(' · ')
+  }, [selectedItems])
+
+  const entryCatNames = useMemo(() => {
+    return [...new Set(selectedItems.map(i => i.catName))]
+  }, [selectedItems])
+
+  // Annual
   const annualData = useMemo(() => Array.from({ length: 12 }, (_, i) => {
     const key  = `${year}-${String(i + 1).padStart(2, '0')}`
     const data = store[key] || emptyMonth()
@@ -230,18 +273,17 @@ export default function BudgetPage() {
 
   const totalFixkosten = recurring.filter(r => r.type === 'expense').reduce((s, r) => s + Number(r.amount || 0), 0)
 
+  // ── Actions ────────────────────────────────────────────────────────────────
   function prevMonth() { const [y, m] = month.split('-').map(Number); setMonth(getMonthKey(new Date(y, m - 2, 1))) }
   function nextMonth() { const [y, m] = month.split('-').map(Number); setMonth(getMonthKey(new Date(y, m, 1))) }
   function updateMonth(updater) { setStore(prev => { const cur = prev[month] || emptyMonth(); return { ...prev, [month]: updater(cur) } }) }
-
-  function saveBudget(e) { e.preventDefault(); updateMonth(c => ({ ...c, budget: budgetInput })) }
   function saveCatBudget(cat, value) { setCatBudgets(prev => ({ ...prev, [cat]: Number(value) || 0 })) }
 
   function addCategory(e) {
     e.preventDefault()
     const name = newCatName.trim()
     if (!name || categories.some(c => c.name === name)) return
-    setCategories(prev => [...prev, buildCat(name)])
+    setCategories(prev => [...prev, buildCat(name, [], newCatType)])
     setNewCatName('')
   }
   function removeCategory(id) { if (!window.confirm('Kategorie löschen?')) return; setCategories(prev => prev.filter(c => c.id !== id)) }
@@ -253,28 +295,48 @@ export default function BudgetPage() {
   }
   function removeSubCategory(catId, subId) { setCategories(prev => prev.map(c => c.id === catId ? { ...c, subs: c.subs.filter(s => s.id !== subId) } : c)) }
 
-  function toggleCat(name) { setSelectedCats(prev => prev.includes(name) ? prev.filter(n => n !== name) : [...prev, name]) }
-  function selectSub(catName, subName) {
-    if (!selectedCats.includes(catName)) setSelectedCats(prev => [catName, ...prev])
-    setEntry(p => ({ ...p, title: subName }))
+  // Entry form
+  function toggleExpand(catId) {
+    setExpandedCats(prev => {
+      const next = new Set(prev)
+      if (next.has(catId)) next.delete(catId); else next.add(catId)
+      return next
+    })
+  }
+
+  function toggleItem(catId, catName, subId, subName) {
+    setSelectedItems(prev => {
+      const key = subId ? `${catId}:${subId}` : catId
+      const exists = prev.find(i => (subId ? i.catId === catId && i.subId === subId : i.catId === catId && !i.subId))
+      if (exists) return prev.filter(i => !(subId ? i.catId === catId && i.subId === subId : i.catId === catId && !i.subId))
+      return [...prev, { catId, catName, subId: subId || null, subName: subName || null, key }]
+    })
+  }
+
+  function isItemSelected(catId, subId) {
+    return selectedItems.some(i => subId ? i.catId === catId && i.subId === subId : i.catId === catId && !i.subId)
   }
 
   function addEntry(e) {
     e.preventDefault()
-    const amount = Number(entry.amount)
-    if (!entry.title.trim() || !amount) return
-    const primaryCat = selectedCats[0] || ''
+    const amount = Number(entryAmount)
+    if (!amount || !entryTitle) return
     updateMonth(c => ({
       ...c,
       entries: [{
-        id: makeId(), type: entry.type, amount,
-        title: entry.title.trim(), subtitle: entry.subtitle.trim(),
-        category: primaryCat, tags: selectedCats.length ? [...selectedCats] : [primaryCat].filter(Boolean),
-        date: entry.date || new Date().toISOString().slice(0, 10),
+        id: makeId(),
+        type: entryType,
+        amount,
+        title: entryTitle,
+        subtitle: entrySubtitle,
+        category: entryCatNames[0] || '',
+        tags: entryCatNames,
+        date: entryDate || new Date().toISOString().slice(0, 10),
       }, ...c.entries],
     }))
-    setEntry(p => ({ ...p, amount: '', title: '', subtitle: '' }))
-    setSelectedCats([])
+    setEntryAmount('')
+    setSelectedItems([])
+    setExpandedCats(new Set())
   }
 
   function deleteEntry(id) { updateMonth(c => ({ ...c, entries: c.entries.filter(i => i.id !== id) })) }
@@ -304,14 +366,11 @@ export default function BudgetPage() {
     return <button className={active ? styles.sidebarItemActive : styles.sidebarItem} onClick={onClick} aria-current={active ? 'page' : undefined}>{icon}{label}</button>
   }
 
-  const budgetPct = summary.budget > 0 ? Math.min((summary.expenses / summary.budget) * 100, 100) : 0
-  const budgetOver = summary.budget > 0 && summary.remaining < 0
-
+  // ── Render ─────────────────────────────────────────────────────────────────
   return (
     <div className={styles.page}>
       <main className={styles.content}>
 
-        {/* ── HEADER ── */}
         <div className={styles.financeHeader}>
           <div>
             <h1 className={styles.title}>Private Finanzen</h1>
@@ -324,10 +383,9 @@ export default function BudgetPage() {
           </div>
         </div>
 
-        {/* ── METRIKEN ── */}
         <div className={styles.financeMetrics}>
           <div className={styles.financeMetric} style={{ borderTop: '3px solid #16a34a' }}>
-            <span>Einnahmen</span>
+            <span>Einkommen</span>
             <strong className={styles.moneyPositive}>{formatMoney(summary.income)}</strong>
           </div>
           <div className={styles.financeMetric} style={{ borderTop: '3px solid #dc2626' }}>
@@ -346,7 +404,6 @@ export default function BudgetPage() {
           </div>
         </div>
 
-        {/* ── LAYOUT ── */}
         <div className={styles.financeLayout}>
           <aside className={styles.financeSidebar}>
             <nav className={styles.sidebarNav}>
@@ -369,40 +426,42 @@ export default function BudgetPage() {
             {/* ── MONATSÜBERSICHT ── */}
             {view === 'monat' && (
               <div>
-                {/* EINNAHMEN */}
                 <div className={styles.sectionCard} style={{ borderColor: 'rgba(22,163,74,.2)' }}>
                   <div className={styles.sectionCardHead} style={{ background: 'rgba(22,163,74,.07)', borderBottom: '1px solid rgba(22,163,74,.15)' }}>
-                    <span className={styles.sectionCardLabel} style={{ color: '#15803d' }}>Einnahmen</span>
+                    <span className={styles.sectionCardLabel} style={{ color: '#15803d' }}>Einkommen</span>
                     <strong className={styles.moneyPositive} style={{ fontSize: 18 }}>{formatMoney(summary.income)}</strong>
                   </div>
                   <div className={styles.sectionCardBody}>
                     {incomeTotals.length ? incomeTotals.map(([cat, total]) => (
                       <div className={styles.incomeRow} key={cat}>
                         <span className={styles.incomeRowName}>{cat}</span>
-                        <div className={styles.incomeBarTrack}>
-                          <div className={styles.incomeBarFill} style={{ width: `${Math.max((total / maxIncome) * 100, 3)}%` }} />
-                        </div>
+                        <div className={styles.incomeBarTrack}><div className={styles.incomeBarFill} style={{ width: `${Math.max((total / maxIncome) * 100, 3)}%` }} /></div>
                         <span className={styles.moneyPositive} style={{ fontSize: 13, fontWeight: 800, textAlign: 'right' }}>{formatMoney(total)}</span>
                       </div>
-                    )) : <p className={styles.emptyAnalytics}>Keine Einnahmen eingetragen.</p>}
+                    )) : <p className={styles.emptyAnalytics}>Kein Einkommen eingetragen.</p>}
                   </div>
                 </div>
 
-                {/* AUSGABEN */}
                 <div className={styles.sectionCard} style={{ borderColor: 'rgba(249,115,22,.2)' }}>
                   <div className={styles.sectionCardHead} style={{ background: 'rgba(249,115,22,.07)', borderBottom: '1px solid rgba(249,115,22,.15)' }}>
                     <span className={styles.sectionCardLabel} style={{ color: '#c2410c' }}>Ausgaben</span>
-                    <strong className={styles.moneyNegative} style={{ fontSize: 18 }}>{formatMoney(summary.expenses)}</strong>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                      {totalCatBudget > 0 && <span style={{ fontSize: 12, color: budgetOver ? '#dc2626' : '#64748b' }}>{budgetOver ? `${formatMoney(-budgetRemaining)} überzogen` : `${formatMoney(budgetRemaining)} übrig`}</span>}
+                      <strong className={styles.moneyNegative} style={{ fontSize: 18 }}>{formatMoney(summary.expenses)}</strong>
+                    </div>
                   </div>
+                  {totalCatBudget > 0 && (
+                    <div className={styles.budgetBar} style={{ margin: '0', borderRadius: 0, height: 4 }}>
+                      <div className={budgetOver ? styles.budgetBarOver : styles.budgetBarGood} style={{ width: `${budgetPct}%` }} />
+                    </div>
+                  )}
                   <div className={styles.sectionCardBody}>
                     {categoryTotals.length ? categoryTotals.map(([cat, total]) => {
                       const color = trafficColor(total, catBudgets[cat] || 0)
                       return (
                         <div className={styles.expenseRow} key={cat}>
                           <span className={styles.categoryName}>{cat}</span>
-                          <div className={styles.categoryBarTrack}>
-                            <div className={styles.categoryBarFill} style={{ width: `${Math.max((total / maxCategory) * 100, 2)}%` }} />
-                          </div>
+                          <div className={styles.categoryBarTrack}><div className={styles.categoryBarFill} style={{ width: `${Math.max((total / maxCategory) * 100, 2)}%` }} /></div>
                           <span className={styles.categoryAmount}>{formatMoney(total)}</span>
                           <span className={styles.trafficDot} style={{ background: color || 'transparent', border: color ? 'none' : '1px dashed #cbd5e1' }} title={catBudgets[cat] ? `Budget: ${formatMoney(catBudgets[cat])}` : 'Kein Budget'} />
                         </div>
@@ -433,9 +492,7 @@ export default function BudgetPage() {
                 <div className={styles.budgetPanel} style={{ marginBottom: 20 }}>
                   <div className={styles.annualChart}>
                     {annualData.map(m => (
-                      <div key={m.key} onClick={() => goToMonth(m.key)}
-                        className={`${styles.annualCol} ${m.key === month ? styles.annualColActive : ''}`}
-                        title={m.hasData ? `${MONTH_LONG[m.i]}: ${formatMoney(m.income)} / ${formatMoney(m.expenses)}` : MONTH_LONG[m.i]}>
+                      <div key={m.key} onClick={() => goToMonth(m.key)} className={`${styles.annualCol} ${m.key === month ? styles.annualColActive : ''}`} title={m.hasData ? `${MONTH_LONG[m.i]}: ${formatMoney(m.income)} / ${formatMoney(m.expenses)}` : MONTH_LONG[m.i]}>
                         <div className={styles.annualBars}>
                           <div className={styles.annualBarIn} style={{ height: `${m.hasData ? Math.max((m.income / maxAnnual) * 100, 4) : 3}%`, opacity: m.hasData ? 1 : 0.12 }} />
                           <div className={styles.annualBarEx} style={{ height: `${m.hasData ? Math.max((m.expenses / maxAnnual) * 100, 4) : 3}%`, opacity: m.hasData ? 1 : 0.12 }} />
@@ -445,18 +502,17 @@ export default function BudgetPage() {
                     ))}
                   </div>
                   <div style={{ display: 'flex', gap: 14, marginTop: 8 }}>
-                    <span className={styles.annualLegend}><span style={{ background: '#16a34a' }} />Einnahmen</span>
+                    <span className={styles.annualLegend}><span style={{ background: '#16a34a' }} />Einkommen</span>
                     <span className={styles.annualLegend}><span style={{ background: '#f97316' }} />Ausgaben</span>
                   </div>
                 </div>
                 <div className={styles.budgetPanel}>
                   {annualSummary ? (
                     <table className={styles.annualTable}>
-                      <thead><tr><th>Monat</th><th>Einnahmen</th><th>Ausgaben</th><th>Saldo</th><th>Sparquote</th></tr></thead>
+                      <thead><tr><th>Monat</th><th>Einkommen</th><th>Ausgaben</th><th>Saldo</th><th>Sparquote</th></tr></thead>
                       <tbody>
                         {annualData.map(m => (
-                          <tr key={m.key} onClick={() => goToMonth(m.key)} style={{ cursor: 'pointer' }}
-                            className={m.key === month ? styles.annualRowActive : !m.hasData ? styles.annualRowEmpty : ''}>
+                          <tr key={m.key} onClick={() => goToMonth(m.key)} style={{ cursor: 'pointer' }} className={m.key === month ? styles.annualRowActive : !m.hasData ? styles.annualRowEmpty : ''}>
                             <td>{MONTH_LONG[m.i]}{m.key === month ? ' ●' : ''}</td>
                             <td className={styles.moneyPositive}>{m.hasData ? formatMoney(m.income) : '—'}</td>
                             <td>{m.hasData ? formatMoney(m.expenses) : '—'}</td>
@@ -490,54 +546,52 @@ export default function BudgetPage() {
             {/* ── KATEGORIEN ── */}
             {view === 'einstellung' && subView === 'kategorien' && (
               <div>
-                {/* Global Budget */}
+                {/* Auto budget summary */}
                 <div className={styles.budgetGlobalCard}>
                   <div className={styles.budgetGlobalTop}>
                     <div>
-                      <p className={styles.budgetGlobalLabel}>Monatsbudget — {formatMonthLabel(month)}</p>
-                      {summary.budget > 0 && (
-                        <p className={styles.budgetGlobalSub}>
-                          {formatMoney(summary.expenses)} ausgegeben ·{' '}
-                          <span className={budgetOver ? styles.moneyNegative : styles.moneyPositive}>
-                            {budgetOver ? `${formatMoney(-summary.remaining)} überzogen` : `${formatMoney(summary.remaining)} übrig`}
-                          </span>
-                        </p>
+                      <p className={styles.budgetGlobalLabel}>Gesamtbudget — {formatMonthLabel(month)}</p>
+                      <p className={styles.budgetGlobalSub}>Automatisch aus Kategorie-Budgets berechnet</p>
+                    </div>
+                    <div style={{ textAlign: 'right' }}>
+                      <strong style={{ fontSize: 26, fontWeight: 900, color: '#0d1b2a', display: 'block' }}>{totalCatBudget > 0 ? formatMoney(totalCatBudget) : '—'}</strong>
+                      {totalCatBudget > 0 && (
+                        <span style={{ fontSize: 12, color: budgetOver ? '#dc2626' : '#16a34a', fontWeight: 700 }}>
+                          {budgetOver ? `${formatMoney(-budgetRemaining)} überzogen` : `${formatMoney(budgetRemaining)} übrig`}
+                        </span>
                       )}
                     </div>
-                    <form className={styles.budgetGlobalForm} onSubmit={saveBudget}>
-                      <input type="number" min="0" step="0.01" inputMode="decimal"
-                        value={budgetInput} onChange={e => setBudgetInput(e.target.value)}
-                        placeholder="z. B. 7500" className={styles.budgetGlobalInput} />
-                      <span className={styles.budgetGlobalUnit}>€</span>
-                      <button type="submit" className={styles.primaryBudgetBtn}>Speichern</button>
-                    </form>
                   </div>
-                  {summary.budget > 0 && (
+                  {totalCatBudget > 0 && (
                     <div className={styles.budgetBar}>
                       <div className={budgetOver ? styles.budgetBarOver : styles.budgetBarGood} style={{ width: `${budgetPct}%` }} />
                     </div>
                   )}
                 </div>
 
-                {/* Category tiles */}
-                <h2 className={styles.sectionTitle} style={{ marginBottom: 14 }}>Kategorien &amp; Budgets</h2>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
+                  <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Kategorien &amp; Budgets</h2>
+                </div>
+
                 <div className={styles.categoryTileGrid}>
                   {categories.map(cat => {
                     const color    = getCatColor(cat.name)
                     const spending = catSpending[cat.name] || 0
-                    const catBudget = catBudgets[cat.name] || 0
-                    const tc = trafficColor(spending, catBudget)
+                    const tc       = trafficColor(spending, catBudgets[cat.name] || 0)
                     return (
                       <div key={cat.id} className={styles.categoryManagedTile} style={{ background: color.bg, border: `1px solid ${color.border}` }}>
                         <div className={styles.categoryTileHeader}>
                           <div>
-                            <div className={styles.categoryTileName} style={{ color: color.text }}>{cat.name}</div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                              <div className={styles.categoryTileName} style={{ color: color.text }}>{cat.name}</div>
+                              <span style={{ fontSize: 10, fontWeight: 700, padding: '1px 6px', borderRadius: 999, background: cat.type === 'income' ? 'rgba(22,163,74,.2)' : 'rgba(0,0,0,.08)', color: cat.type === 'income' ? '#15803d' : color.text }}>
+                                {cat.type === 'income' ? 'Einkommen' : 'Ausgabe'}
+                              </span>
+                            </div>
                             {spending > 0 && <div className={styles.categoryTileAmount} style={{ color: color.text }}>{formatMoney(spending)}</div>}
                           </div>
-                          <button className={styles.categoryTileDelete} style={{ color: color.text }} onClick={() => removeCategory(cat.id)} aria-label={`${cat.name} löschen`}>×</button>
+                          <button className={styles.categoryTileDelete} style={{ color: color.text }} onClick={() => removeCategory(cat.id)}>×</button>
                         </div>
-
-                        {/* Budget input in tile */}
                         <div className={styles.tileBudgetRow}>
                           <span className={styles.tileBudgetLabel} style={{ color: color.text }}>Budget</span>
                           <input className={styles.tileBudgetInput} style={{ borderColor: color.border, color: color.text }}
@@ -548,34 +602,35 @@ export default function BudgetPage() {
                           <span className={styles.tileBudgetUnit} style={{ color: color.text }}>€</span>
                           {tc && <span className={styles.trafficDot} style={{ background: tc, flexShrink: 0 }} />}
                         </div>
-
                         <div className={styles.categorySubsRow}>
                           {cat.subs.map(sub => (
                             <span key={sub.id} className={styles.categorySubChip} style={{ color: color.text, borderColor: color.border }}>
                               {sub.name}
-                              <button type="button" onClick={() => removeSubCategory(cat.id, sub.id)} aria-label={`${sub.name} löschen`}>×</button>
+                              <button type="button" onClick={() => removeSubCategory(cat.id, sub.id)}>×</button>
                             </span>
                           ))}
                           <form className={styles.categorySubAddForm} onSubmit={e => { e.preventDefault(); addSubCategory(cat.id) }}>
-                            <input className={styles.categorySubInput} style={{ color: color.text }}
-                              value={newSubInputs[cat.id] || ''}
-                              onChange={e => setNewSubInputs(p => ({ ...p, [cat.id]: e.target.value }))}
-                              placeholder="+ Hinzufügen" />
+                            <input className={styles.categorySubInput} style={{ color: color.text }} value={newSubInputs[cat.id] || ''} onChange={e => setNewSubInputs(p => ({ ...p, [cat.id]: e.target.value }))} placeholder="+ Hinzufügen" />
                           </form>
                         </div>
                       </div>
                     )
                   })}
-
                   <form className={styles.categoryAddTile} onSubmit={addCategory}>
-                    <input className={styles.categoryAddInput} value={newCatName} onChange={e => setNewCatName(e.target.value)} placeholder="Neue Kategorie…" />
-                    <button type="submit" className={styles.categoryAddBtn} disabled={!newCatName.trim()}>+</button>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 6, width: '100%' }}>
+                      <div className={styles.segmentedControl} style={{ padding: 2 }}>
+                        <button type="button" className={newCatType === 'expense' ? styles.segmentActive : ''} onClick={() => setNewCatType('expense')}>Ausgabe</button>
+                        <button type="button" className={newCatType === 'income' ? styles.segmentActive : ''} onClick={() => setNewCatType('income')}>Einkommen</button>
+                      </div>
+                      <div style={{ display: 'flex', gap: 6 }}>
+                        <input className={styles.categoryAddInput} value={newCatName} onChange={e => setNewCatName(e.target.value)} placeholder="Neue Kategorie…" />
+                        <button type="submit" className={styles.categoryAddBtn} disabled={!newCatName.trim()}>+</button>
+                      </div>
+                    </div>
                   </form>
                 </div>
-
                 <div style={{ marginTop: 24 }}>
-                  <button className={styles.actionBtn} type="button"
-                    onClick={() => { if (window.confirm('April 2026 Beispiel-Einträge laden?')) { setMonth('2026-04'); setStore(p => ({ ...p, '2026-04': APRIL_2026_EXAMPLE })) } }}>
+                  <button className={styles.actionBtn} type="button" onClick={() => { if (window.confirm('April 2026 Beispiel-Einträge laden?')) { setMonth('2026-04'); setStore(p => ({ ...p, '2026-04': APRIL_2026_EXAMPLE })) } }}>
                     April-Beispiel laden
                   </button>
                 </div>
@@ -588,37 +643,55 @@ export default function BudgetPage() {
                 <div className={styles.budgetPanel} style={{ marginBottom: 24 }}>
                   <h2 className={styles.sectionTitle}>Neuer Eintrag — {formatMonthLabel(month)}</h2>
                   <form className={styles.budgetForm} onSubmit={addEntry}>
+
+                    {/* Type toggle */}
                     <div className={styles.segmentedControl}>
-                      <button type="button" className={entry.type === 'income' ? styles.segmentActive : ''} onClick={() => setEntry(p => ({ ...p, type: 'income' }))}>Einnahme</button>
-                      <button type="button" className={entry.type === 'expense' ? styles.segmentActive : ''} onClick={() => setEntry(p => ({ ...p, type: 'expense' }))}>Ausgabe</button>
+                      <button type="button" className={entryType === 'income' ? styles.segmentActive : ''} onClick={() => { setEntryType('income'); setSelectedItems([]); setExpandedCats(new Set()) }}>Einkommen</button>
+                      <button type="button" className={entryType === 'expense' ? styles.segmentActive : ''} onClick={() => { setEntryType('expense'); setSelectedItems([]); setExpandedCats(new Set()) }}>Ausgabe</button>
                     </div>
-                    {categories.length > 0 && (
+
+                    {/* Category accordion */}
+                    {entryCategories.length > 0 ? (
                       <div>
-                        <span style={{ display: 'block', fontSize: 12, fontWeight: 700, color: '#64748b', marginBottom: 10 }}>
-                          Kategorie{selectedCats.length > 0 && <span style={{ color: '#f97316' }}> · {selectedCats.join(' + ')}</span>}
+                        <span style={{ display: 'block', fontSize: 12, fontWeight: 700, color: '#64748b', marginBottom: 8 }}>
+                          Kategorie wählen
+                          {selectedItems.length > 0 && <span style={{ color: '#f97316', marginLeft: 8 }}>· {entryTitle}</span>}
                         </span>
-                        <div className={styles.catSelectorGrid}>
-                          {categories.map(cat => {
-                            const color = getCatColor(cat.name)
-                            const isSelected = selectedCats.includes(cat.name)
+                        <div className={styles.catAccordion}>
+                          {entryCategories.map(cat => {
+                            const color      = getCatColor(cat.name)
+                            const isExpanded = expandedCats.has(cat.id)
+                            const hasSubs    = cat.subs.length > 0
+                            const isSelected = selectedItems.some(i => i.catId === cat.id)
                             return (
-                              <div key={cat.id} className={styles.catSelectorGroup}>
+                              <div key={cat.id} className={styles.catAccordionItem} style={{ borderColor: isSelected ? color.border : undefined }}>
                                 <button type="button"
-                                  className={isSelected ? styles.catGroupBtnActive : styles.catGroupBtn}
-                                  style={isSelected ? { background: color.bg, borderColor: color.border, color: color.text } : {}}
-                                  onClick={() => toggleCat(cat.name)}>
-                                  {cat.name}
+                                  className={`${styles.catAccordionHeader} ${isExpanded ? styles.catAccordionHeaderOpen : ''} ${isSelected ? styles.catAccordionHeaderSelected : ''}`}
+                                  style={isSelected ? { background: color.bg, color: color.text } : {}}
+                                  onClick={() => {
+                                    if (hasSubs) { toggleExpand(cat.id) }
+                                    else { toggleItem(cat.id, cat.name, null, null) }
+                                  }}>
+                                  <span>{cat.name}</span>
+                                  {hasSubs ? (
+                                    <span className={`${styles.catAccordionChevron} ${isExpanded ? styles.catAccordionChevronOpen : ''}`}><ChevronDown /></span>
+                                  ) : isSelected ? (
+                                    <span style={{ fontSize: 14, fontWeight: 700 }}>✓</span>
+                                  ) : null}
                                 </button>
-                                {cat.subs.length > 0 && (
-                                  <div className={styles.catSubPills}>
-                                    {cat.subs.map(sub => (
-                                      <button key={sub.id} type="button"
-                                        className={entry.title === sub.name && isSelected ? styles.catSubPillActive : styles.catSubPill}
-                                        style={{ borderColor: color.border, color: color.text }}
-                                        onClick={() => selectSub(cat.name, sub.name)}>
-                                        {sub.name}
-                                      </button>
-                                    ))}
+                                {hasSubs && isExpanded && (
+                                  <div className={styles.catAccordionSubs}>
+                                    {cat.subs.map(sub => {
+                                      const sel = isItemSelected(cat.id, sub.id)
+                                      return (
+                                        <button key={sub.id} type="button"
+                                          className={sel ? styles.catSubSelectPillActive : styles.catSubSelectPill}
+                                          style={sel ? { background: color.bg, borderColor: color.border, color: color.text } : { borderColor: color.border, color: color.text }}
+                                          onClick={() => toggleItem(cat.id, cat.name, sub.id, sub.name)}>
+                                          {sub.name}
+                                        </button>
+                                      )
+                                    })}
                                   </div>
                                 )}
                               </div>
@@ -626,18 +699,38 @@ export default function BudgetPage() {
                           })}
                         </div>
                       </div>
+                    ) : (
+                      <p className={styles.emptyAnalytics}>
+                        Keine {entryType === 'income' ? 'Einkommens' : 'Ausgaben'}-Kategorien.{' '}
+                        <button type="button" className={styles.actionBtn} onClick={() => navEinstellung('kategorien')}>Kategorien verwalten</button>
+                      </p>
                     )}
+
+                    {/* Selected summary */}
+                    {selectedItems.length > 0 && (
+                      <div className={styles.entrySelectionSummary}>
+                        <span className={styles.entrySelectionTitle}>{entryTitle}</span>
+                        {entryCatNames.length > 0 && <span className={styles.entrySelectionCats}>{entryCatNames.join(' · ')}</span>}
+                        <button type="button" onClick={() => { setSelectedItems([]); setExpandedCats(new Set()) }} className={styles.actionBtn} style={{ padding: '3px 8px', fontSize: 11 }}>Auswahl löschen</button>
+                      </div>
+                    )}
+
                     <div className={styles.budgetFieldRow}>
-                      <label><span>Titel</span><input value={entry.title} onChange={e => setEntry(p => ({ ...p, title: e.target.value }))} placeholder="Wird automatisch gesetzt" required /></label>
-                      <label><span>Untertitel</span><input value={entry.subtitle} onChange={e => setEntry(p => ({ ...p, subtitle: e.target.value }))} placeholder="z. B. Für Mobin" /></label>
+                      <label>
+                        <span>Betrag (€)</span>
+                        <input type="number" step="0.01" inputMode="decimal" value={entryAmount} onChange={e => setEntryAmount(e.target.value)} placeholder="0,00" required />
+                      </label>
+                      <label>
+                        <span>Datum</span>
+                        <input type="date" value={entryDate} onChange={e => setEntryDate(e.target.value)} />
+                      </label>
                     </div>
-                    <div className={styles.budgetFieldRow}>
-                      <label><span>Betrag (€)</span><input type="number" step="0.01" inputMode="decimal" value={entry.amount} onChange={e => setEntry(p => ({ ...p, amount: e.target.value }))} placeholder="0,00" required /></label>
-                      <label><span>Datum</span><input type="date" value={entry.date} onChange={e => setEntry(p => ({ ...p, date: e.target.value }))} /></label>
-                    </div>
-                    <button className={styles.primaryBudgetBtn} type="submit">Eintrag speichern</button>
+                    <button className={styles.primaryBudgetBtn} type="submit" disabled={!entryTitle || !entryAmount}>
+                      Eintrag speichern
+                    </button>
                   </form>
                 </div>
+
                 <div>
                   <div className={styles.tableHead}>
                     <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Einträge — {formatMonthLabel(month)} ({monthData.entries.length})</h2>
@@ -677,7 +770,7 @@ export default function BudgetPage() {
                   <div className={styles.fixedList} style={{ marginBottom: 28 }}>
                     {recurring.map(r => (
                       <div className={styles.fixedItem} key={r.id}>
-                        <div className={styles.fixedItemMain}><strong>{r.title}</strong><span>{r.subtitle ? `${r.subtitle} · ` : ''}{r.category || 'Keine Kategorie'} · Tag {r.dayOfMonth}</span></div>
+                        <div className={styles.fixedItemMain}><strong>{r.title}</strong><span>{r.category || 'Keine Kategorie'} · Tag {r.dayOfMonth}</span></div>
                         <strong className={r.type === 'income' ? styles.moneyPositive : ''}>{formatMoney(r.amount)}</strong>
                         <button className={styles.actionBtn} type="button" onClick={() => removeFixeintrag(r.id)}>×</button>
                       </div>
@@ -688,11 +781,10 @@ export default function BudgetPage() {
                   <h2 className={styles.sectionTitle}>Fixkosten hinzufügen</h2>
                   <form className={styles.budgetForm} onSubmit={addFixeintrag}>
                     <div className={styles.segmentedControl}>
-                      <button type="button" className={newFix.type === 'income' ? styles.segmentActive : ''} onClick={() => setNewFix(p => ({ ...p, type: 'income' }))}>Einnahme</button>
+                      <button type="button" className={newFix.type === 'income' ? styles.segmentActive : ''} onClick={() => setNewFix(p => ({ ...p, type: 'income' }))}>Einkommen</button>
                       <button type="button" className={newFix.type === 'expense' ? styles.segmentActive : ''} onClick={() => setNewFix(p => ({ ...p, type: 'expense' }))}>Ausgabe</button>
                     </div>
                     <label><span>Titel</span><input value={newFix.title} onChange={e => setNewFix(p => ({ ...p, title: e.target.value }))} placeholder="z. B. Miete, Leasing" required /></label>
-                    <label><span>Untertitel</span><input value={newFix.subtitle} onChange={e => setNewFix(p => ({ ...p, subtitle: e.target.value }))} placeholder="z. B. Monatlich" /></label>
                     <div className={styles.budgetFieldRow}>
                       <label><span>Betrag (€)</span><input type="number" step="0.01" inputMode="decimal" value={newFix.amount} onChange={e => setNewFix(p => ({ ...p, amount: e.target.value }))} placeholder="0,00" required /></label>
                       <label><span>Tag des Monats</span><input type="number" min="1" max="28" value={newFix.dayOfMonth} onChange={e => setNewFix(p => ({ ...p, dayOfMonth: e.target.value }))} /></label>
@@ -717,9 +809,9 @@ export default function BudgetPage() {
                 </div>
                 {incomeTotals.length > 0 && (
                   <div className={styles.reportSection}>
-                    <p className={styles.reportSectionTitle}>Einnahmen</p>
+                    <p className={styles.reportSectionTitle}>Einkommen</p>
                     <div className={styles.reportGrid}>{incomeTotals.map(([cat, total]) => <div className={styles.reportCard} key={cat}><span>{cat}</span><strong className={styles.moneyPositive}>{formatMoney(total)}</strong></div>)}</div>
-                    <div className={styles.reportTotalRow}><span>Gesamt Einnahmen</span><strong className={styles.moneyPositive}>{formatMoney(summary.income)}</strong></div>
+                    <div className={styles.reportTotalRow}><span>Gesamt Einkommen</span><strong className={styles.moneyPositive}>{formatMoney(summary.income)}</strong></div>
                   </div>
                 )}
                 {categoryTotals.length > 0 && (
