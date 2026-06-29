@@ -149,19 +149,35 @@ function EntryForm({ categories, type, onTypeChange, selectedItems, onToggleItem
   }
 
   return (
-    <form className={styles.budgetForm} onSubmit={onSubmit}>
+    <form className={`${styles.budgetForm} ${styles.financeEntryForm}`} onSubmit={onSubmit}>
       {/* Type */}
-      <div className={styles.segmentedControl}>
+      <div className={`${styles.segmentedControl} ${styles.entryTypeSwitch}`}>
         <button type="button" className={type === 'income' ? styles.segmentActive : ''} onClick={() => onTypeChange('income')}>Einkommen</button>
         <button type="button" className={type === 'expense' ? styles.segmentActive : ''} onClick={() => onTypeChange('expense')}>Ausgabe</button>
       </div>
 
-      {/* Accordion category selector */}
+      {/* Amount + Date */}
+      <div className={styles.entryAmountPanel}>
+        <label className={styles.entryAmountField}>
+          <span>Betrag</span>
+          <div className={styles.entryAmountInputWrap}>
+            <input type="number" step="0.01" inputMode="decimal" value={entryAmount} onChange={e => onAmountChange(e.target.value)} placeholder="0,00" required autoFocus />
+            <em>€</em>
+          </div>
+        </label>
+        <label className={styles.entryDateField}>
+          <span>Datum</span>
+          <input type="date" value={entryDate} onChange={e => onDateChange(e.target.value)} />
+        </label>
+      </div>
+
+      {/* Category selector */}
       {filteredCats.length > 0 ? (
-        <div>
-          <span style={{ display: 'block', fontSize: 11, fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '.06em', marginBottom: 8 }}>
-            Kategorie wählen
-          </span>
+        <div className={styles.entryCategoryBlock}>
+          <div className={styles.entryFormLabelRow}>
+            <span>Kategorie wählen</span>
+            <small>{selectedItems.length ? `${selectedItems.length} ausgewählt` : 'Eine oder mehrere auswählen'}</small>
+          </div>
           <div className={styles.catAccordion}>
             {filteredCats.map(cat => {
               const color      = getCatColor(cat.name)
@@ -216,21 +232,15 @@ function EntryForm({ categories, type, onTypeChange, selectedItems, onToggleItem
         </div>
       )}
 
-      {/* Amount + Date */}
-      <div className={styles.budgetFieldRow}>
-        <label>
-          <span>Betrag (€)</span>
-          <input type="number" step="0.01" inputMode="decimal" value={entryAmount} onChange={e => onAmountChange(e.target.value)} placeholder="0,00" required />
-        </label>
-        <label>
-          <span>Datum</span>
-          <input type="date" value={entryDate} onChange={e => onDateChange(e.target.value)} />
-        </label>
+      <div className={styles.entrySubmitBar}>
+        <div>
+          <span>{entryTitle || 'Noch keine Kategorie'}</span>
+          <strong>{entryAmount ? `${entryAmount.replace('.', ',')} €` : '0,00 €'}</strong>
+        </div>
+        <button className={styles.primaryBudgetBtn} type="submit" disabled={!entryTitle || !entryAmount}>
+          Speichern
+        </button>
       </div>
-
-      <button className={styles.primaryBudgetBtn} type="submit" disabled={!entryTitle || !entryAmount}>
-        Eintrag speichern
-      </button>
     </form>
   )
 }
