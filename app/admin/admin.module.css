@@ -1249,6 +1249,38 @@
     gap: 2px;
   }
 
+  .financeLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .financeSidebar {
+    position: static;
+  }
+
+  .sidebarNav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .sidebarItem,
+  .sidebarItemActive {
+    width: auto;
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+
+  .sidebarSubGroup {
+    flex-direction: row;
+    border-left: none;
+    border-top: 2px solid rgba(249,115,22,.25);
+    margin-left: 0;
+    margin-top: 4px;
+    padding-left: 0;
+    padding-top: 6px;
+    width: 100%;
+  }
+
   .financeMetrics {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1262,6 +1294,161 @@
     padding: 8px 12px;
     font-size: 12px;
   }
+}
+
+/* ── SIDEBAR LAYOUT ──────────────────────────── */
+.financeLayout {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.financeSidebar {
+  position: sticky;
+  top: 130px;
+}
+
+.sidebarNav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebarItem,
+.sidebarItemActive {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: all .15s;
+}
+
+.sidebarItem {
+  background: transparent;
+  color: #475569;
+}
+
+.sidebarItem:hover {
+  background: rgba(249,115,22,.08);
+  color: #f97316;
+}
+
+.sidebarItemActive {
+  background: rgba(249,115,22,.12);
+  color: #ea580c;
+  font-weight: 700;
+}
+
+.sidebarSubGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-top: 2px;
+  padding-left: 8px;
+  border-left: 2px solid rgba(249,115,22,.25);
+  margin-left: 14px;
+}
+
+.sidebarSub,
+.sidebarSubActive {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: all .15s;
+}
+
+.sidebarSub {
+  background: transparent;
+  color: #64748b;
+}
+
+.sidebarSub:hover {
+  background: rgba(249,115,22,.07);
+  color: #f97316;
+}
+
+.sidebarSubActive {
+  background: rgba(249,115,22,.1);
+  color: #ea580c;
+  font-weight: 700;
+}
+
+.financeMain {
+  min-width: 0;
+}
+
+/* ── CATEGORY DIAGRAM ────────────────────────── */
+.categoryDiagram {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.categoryBox {
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
+}
+
+.categoryBox:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,.1);
+}
+
+.categoryBoxName {
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.categoryBoxAmount {
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 3px;
+}
+
+.categoryBoxPct {
+  font-size: 11px;
+  opacity: .75;
+  font-weight: 600;
+}
+
+/* ── ENTRY TAGS ───────────────────────────────── */
+.entryTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 3px;
+}
+
+.entryTag {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(249,115,22,.1);
+  color: #c2410c;
+  border: 1px solid rgba(249,115,22,.25);
 }
 
 /* ── TABS SCROLLBAR (mobile) ─────────────────── */
@@ -1749,6 +1936,35 @@
   background: var(--bg-soft);
   border-color: var(--border);
   color: var(--text-muted);
+}
+
+/* Sidebar dark mode */
+:global(html[data-theme='dark']) .sidebarItem {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .sidebarItemActive {
+  background: rgba(249,115,22,.18);
+  color: #f97316;
+}
+
+:global(html[data-theme='dark']) .sidebarSub {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .sidebarSubActive {
+  background: rgba(249,115,22,.15);
+  color: #f97316;
+}
+
+:global(html[data-theme='dark']) .sidebarSubGroup {
+  border-left-color: rgba(249,115,22,.2);
+}
+
+:global(html[data-theme='dark']) .entryTag {
+  background: rgba(249,115,22,.15);
+  color: #fb923c;
+  border-color: rgba(249,115,22,.3);
 }
 
 /* New features dark mode */

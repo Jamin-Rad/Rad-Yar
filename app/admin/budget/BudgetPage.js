@@ -3,8 +3,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import styles from '../admin.module.css'
 
-const STORAGE_KEY   = 'radyar_private_budget_v1'
-const RECURRING_KEY = 'radyar_recurring_v1'
+const STORAGE_KEY    = 'radyar_private_budget_v1'
+const RECURRING_KEY  = 'radyar_recurring_v1'
 const CAT_BUDGET_KEY = 'radyar_cat_budget_v1'
 
 function makeId() {
@@ -14,46 +14,67 @@ function makeId() {
 const APRIL_2026_EXAMPLE = {
   budget: '',
   entries: [
-    ['income', 'Einnahmen', 6601.50, 'Einnahmen', '2026-04-01'],
-    ['income', 'Familienkasse', 518, 'Einnahmen', '2026-04-01'],
-    ['expense', 'Aldi', 161, 'Lebensmittel', '2026-04-02'],
-    ['expense', 'Lidl', 535, 'Lebensmittel', '2026-04-03'],
-    ['expense', 'Bonus', 60, 'Lebensmittel', '2026-04-04'],
-    ['expense', 'Edeka/Rewe/Netto', 53, 'Lebensmittel', '2026-04-05'],
-    ['expense', 'DM', 20, 'Lebensmittel', '2026-04-06'],
-    ['expense', 'Türkei', 182, 'Lebensmittel', '2026-04-07'],
-    ['expense', 'Supermarkt', 5, 'Kleidung', '2026-04-08'],
-    ['expense', 'Eis/Coffee/Bäckerei', 19, 'Restaurant', '2026-04-09'],
-    ['expense', 'Essen', 193, 'Restaurant', '2026-04-10'],
-    ['expense', 'Tanken', 39, 'Auto', '2026-04-11'],
-    ['expense', 'Strom', 13, 'Auto', '2026-04-12'],
-    ['expense', 'Reparatur/Service', 1392, 'Auto', '2026-04-13'],
-    ['expense', 'Leasing', 348, 'Auto', '2026-04-14'],
-    ['expense', 'Bus-Ticket', 92, 'Auto', '2026-04-15'],
-    ['expense', 'Miete', 2025, 'Zu Hause', '2026-04-01'],
-    ['expense', 'Darlehen', 475, 'Zu Hause', '2026-04-02'],
-    ['expense', 'Strom', 91, 'Zu Hause', '2026-04-03'],
-    ['expense', 'Haushaltgerät', 95, 'Zu Hause', '2026-04-04'],
-    ['expense', 'Konto', 11, 'Jamin', '2026-04-16'],
-    ['expense', 'Gothaer', 22, 'Jamin', '2026-04-17'],
-    ['expense', 'Medikamente', 10, 'Jamin', '2026-04-18'],
-    ['expense', 'iPhone 16', 53, 'Fatima', '2026-04-19'],
-    ['expense', 'Kleidung', 5, 'Fatima', '2026-04-20'],
-    ['expense', 'Medikamente', 296, 'Fatima', '2026-04-21'],
-    ['expense', 'Schule', 1029, 'Mobin', '2026-04-22'],
-    ['expense', 'Taschengeld', 18, 'Mobin', '2026-04-23'],
-    ['expense', 'Bus-Ticket', 45, 'Mobin', '2026-04-24'],
-    ['expense', 'SIM-Karte', 9, 'Mobin', '2026-04-25'],
-    ['expense', 'Kindergarten', 370, 'Mobina', '2026-04-26'],
-    ['expense', 'Kleidung', 10, 'Mobina', '2026-04-27'],
-    ['expense', 'Apotheke, Versicherung', 46, 'Meine Eltern', '2026-04-28'],
-    ['expense', 'Sonst', 3, 'Meine Eltern', '2026-04-28'],
-    ['expense', 'Nazri Iran', 77, 'Moschee', '2026-04-29'],
-  ].map(([type, title, amount, category, date]) => ({ id: makeId(), type, title, amount, category, date })),
+    ['income',  'Einnahmen',           6601.50, 'Einnahmen',    '',                    '2026-04-01', []],
+    ['income',  'Familienkasse',        518,     'Einnahmen',    '',                    '2026-04-01', []],
+    ['expense', 'Aldi',                 161,     'Lebensmittel', 'Wocheneinkauf',       '2026-04-02', ['Lebensmittel']],
+    ['expense', 'Lidl',                 535,     'Lebensmittel', 'Wocheneinkauf',       '2026-04-03', ['Lebensmittel']],
+    ['expense', 'Bonus',                60,      'Lebensmittel', '',                    '2026-04-04', ['Lebensmittel']],
+    ['expense', 'Edeka/Rewe/Netto',     53,      'Lebensmittel', '',                    '2026-04-05', ['Lebensmittel']],
+    ['expense', 'DM',                   20,      'Lebensmittel', 'Drogerie',            '2026-04-06', ['Lebensmittel']],
+    ['expense', 'Türkei',               182,     'Lebensmittel', 'Türkischer Markt',   '2026-04-07', ['Lebensmittel']],
+    ['expense', 'Supermarkt',           5,       'Kleidung',     'Für Mobin',           '2026-04-08', ['Kleidung', 'Mobin']],
+    ['expense', 'Eis/Coffee/Bäckerei', 19,      'Restaurant',   '',                    '2026-04-09', ['Restaurant']],
+    ['expense', 'Essen',                193,     'Restaurant',   'Auswärts essen',      '2026-04-10', ['Restaurant']],
+    ['expense', 'Tanken',               39,      'Auto',         '',                    '2026-04-11', ['Auto']],
+    ['expense', 'Strom Auto',           13,      'Auto',         'Laden',               '2026-04-12', ['Auto']],
+    ['expense', 'Reparatur/Service',    1392,    'Auto',         'Werkstatt',           '2026-04-13', ['Auto']],
+    ['expense', 'Leasing',              348,     'Auto',         'Monatlich',           '2026-04-14', ['Auto']],
+    ['expense', 'Bus-Ticket',           92,      'Auto',         'Öffentlich',          '2026-04-15', ['Auto']],
+    ['expense', 'Miete',                2025,    'Zu Hause',     'Monatlich',           '2026-04-01', ['Zu Hause']],
+    ['expense', 'Darlehen',             475,     'Zu Hause',     '',                    '2026-04-02', ['Zu Hause']],
+    ['expense', 'Strom',                91,      'Zu Hause',     '',                    '2026-04-03', ['Zu Hause']],
+    ['expense', 'Haushaltgerät',        95,      'Zu Hause',     '',                    '2026-04-04', ['Zu Hause']],
+    ['expense', 'Konto',                11,      'Jamin',        'Bankgebühr',          '2026-04-16', ['Jamin']],
+    ['expense', 'Gothaer',              22,      'Jamin',        'Versicherung',        '2026-04-17', ['Jamin']],
+    ['expense', 'Medikamente',          10,      'Jamin',        '',                    '2026-04-18', ['Jamin']],
+    ['expense', 'iPhone 16',            53,      'Fatima',       'Rate',                '2026-04-19', ['Fatima']],
+    ['expense', 'Kleidung',             5,       'Fatima',       'Für Fatima',          '2026-04-20', ['Kleidung', 'Fatima']],
+    ['expense', 'Medikamente',          296,     'Fatima',       '',                    '2026-04-21', ['Fatima']],
+    ['expense', 'Schule',               1029,    'Mobin',        'Schulgeld',           '2026-04-22', ['Mobin']],
+    ['expense', 'Taschengeld',          18,      'Mobin',        '',                    '2026-04-23', ['Mobin']],
+    ['expense', 'Bus-Ticket',           45,      'Mobin',        'Schulweg',            '2026-04-24', ['Mobin', 'Auto']],
+    ['expense', 'SIM-Karte',            9,       'Mobin',        '',                    '2026-04-25', ['Mobin']],
+    ['expense', 'Kindergarten',         370,     'Mobina',       'Monatsbeitrag',       '2026-04-26', ['Mobina']],
+    ['expense', 'Kleidung',             10,      'Mobina',       'Für Mobina',          '2026-04-27', ['Kleidung', 'Mobina']],
+    ['expense', 'Apotheke',             46,      'Meine Eltern', 'Versicherung',        '2026-04-28', ['Meine Eltern']],
+    ['expense', 'Sonst',                3,       'Meine Eltern', '',                    '2026-04-28', ['Meine Eltern']],
+    ['expense', 'Nazri Iran',           77,      'Moschee',      '',                    '2026-04-29', ['Moschee']],
+  ].map(([type, title, amount, category, subtitle, date, tags]) => ({
+    id: makeId(), type, title, amount, category, subtitle, date, tags,
+  })),
 }
 
 const MONTH_SHORT = ['Jan','Feb','Mrz','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez']
 const MONTH_LONG  = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember']
+
+const CAT_COLORS = [
+  { bg: '#fef3c7', border: '#f59e0b', text: '#92400e' },
+  { bg: '#dbeafe', border: '#3b82f6', text: '#1e3a8a' },
+  { bg: '#dcfce7', border: '#22c55e', text: '#14532d' },
+  { bg: '#fce7f3', border: '#ec4899', text: '#831843' },
+  { bg: '#ede9fe', border: '#8b5cf6', text: '#4c1d95' },
+  { bg: '#ffedd5', border: '#f97316', text: '#7c2d12' },
+  { bg: '#e0f2fe', border: '#0ea5e9', text: '#0c4a6e' },
+  { bg: '#f0fdf4', border: '#16a34a', text: '#14532d' },
+  { bg: '#fdf4ff', border: '#d946ef', text: '#701a75' },
+  { bg: '#fff1f2', border: '#f43f5e', text: '#881337' },
+]
+
+function getCatColor(name) {
+  let h = 0
+  for (const c of name) h = ((h << 5) - h) + c.charCodeAt(0)
+  return CAT_COLORS[Math.abs(h) % CAT_COLORS.length]
+}
 
 function getMonthKey(date = new Date()) {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`
@@ -83,24 +104,63 @@ function trafficColor(spent, budget) {
   return '#16a34a'
 }
 
+// ── Icons ─────────────────────────────────────────────────────────────────────
+
+function IconCalendar() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+    </svg>
+  )
+}
+
+function IconChart() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+    </svg>
+  )
+}
+
+function IconDoc() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+    </svg>
+  )
+}
+
+function IconSettings() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+    </svg>
+  )
+}
+
+// ── Main Component ─────────────────────────────────────────────────────────────
+
 export default function BudgetPage() {
-  const [tab, setTab]     = useState('uebersicht')
-  const [month, setMonth] = useState(getMonthKey())
-  const [year, setYear]   = useState(new Date().getFullYear())
-  const [store, setStore] = useState({})
+  const [view, setView]       = useState('monat')         // monat | jahr | bericht | einstellung
+  const [subView, setSubView] = useState('diagram')       // diagram | fixkosten | eintraege
+  const [month, setMonth]     = useState(getMonthKey())
+  const [year, setYear]       = useState(new Date().getFullYear())
+  const [store, setStore]     = useState({})
   const [catBudgets, setCatBudgets] = useState({})
   const [recurring, setRecurring]   = useState([])
   const [loaded, setLoaded]         = useState(false)
   const [budgetInput, setBudgetInput] = useState('')
   const [catEdits, setCatEdits]       = useState({})
+
   const [entry, setEntry] = useState({
-    type: 'expense', amount: '', title: '', category: '',
-    date: new Date().toISOString().slice(0, 10),
+    type: 'expense', title: '', subtitle: '', amount: '', category: '', tags: '', date: new Date().toISOString().slice(0, 10),
   })
   const [newFix, setNewFix] = useState({
-    type: 'expense', title: '', amount: '', category: '', dayOfMonth: '1',
+    type: 'expense', title: '', subtitle: '', amount: '', category: '', dayOfMonth: '1',
   })
+  const [editingId, setEditingId] = useState(null)
 
+  // ── Persistence ────────────────────────────────────────────────────────────
   useEffect(() => {
     try { const r = localStorage.getItem(STORAGE_KEY);    if (r) setStore(JSON.parse(r))      } catch {}
     try { const r = localStorage.getItem(RECURRING_KEY);  if (r) setRecurring(JSON.parse(r))  } catch {}
@@ -113,9 +173,9 @@ export default function BudgetPage() {
   useEffect(() => { if (loaded) localStorage.setItem(CAT_BUDGET_KEY, JSON.stringify(catBudgets)) }, [catBudgets, loaded])
 
   const monthData = store[month] || emptyMonth()
-
   useEffect(() => { setBudgetInput(monthData.budget || '') }, [month, loaded]) // eslint-disable-line
 
+  // ── Derived state ──────────────────────────────────────────────────────────
   const summary = useMemo(() => {
     const income   = monthData.entries.filter(i => i.type === 'income').reduce((s, i) => s + Number(i.amount || 0), 0)
     const expenses = monthData.entries.filter(i => i.type === 'expense').reduce((s, i) => s + Number(i.amount || 0), 0)
@@ -141,6 +201,16 @@ export default function BudgetPage() {
     return Object.entries(t).sort((a, b) => b[1] - a[1])
   }, [monthData.entries])
 
+  // Tag-based totals (multi-category): each entry's amount counted per tag
+  const tagTotals = useMemo(() => {
+    const t = {}
+    monthData.entries.filter(i => i.type === 'expense').forEach(i => {
+      const tags = Array.isArray(i.tags) && i.tags.length ? i.tags : [i.category || 'Ohne Kategorie']
+      tags.forEach(tag => { if (tag) t[tag] = (t[tag] || 0) + Number(i.amount || 0) })
+    })
+    return Object.entries(t).sort((a, b) => b[1] - a[1])
+  }, [monthData.entries])
+
   const allCategories = useMemo(() => {
     const s = new Set()
     Object.values(store).forEach(m => m.entries?.forEach(e => { if (e.category) s.add(e.category) }))
@@ -149,7 +219,7 @@ export default function BudgetPage() {
 
   const maxCategory = categoryTotals.length ? Math.max(...categoryTotals.map(([, v]) => v)) : 1
 
-  // ── Jahres-Daten ──
+  // Annual data
   const annualData = useMemo(() => Array.from({ length: 12 }, (_, i) => {
     const key  = `${year}-${String(i + 1).padStart(2, '0')}`
     const data = store[key] || emptyMonth()
@@ -170,6 +240,7 @@ export default function BudgetPage() {
 
   const totalFixkosten = recurring.filter(r => r.type === 'expense').reduce((s, r) => s + Number(r.amount || 0), 0)
 
+  // ── Actions ────────────────────────────────────────────────────────────────
   function prevMonth() {
     const [y, m] = month.split('-').map(Number)
     setMonth(getMonthKey(new Date(y, m - 2, 1)))
@@ -199,19 +270,29 @@ export default function BudgetPage() {
     e.preventDefault()
     const amount = Number(entry.amount)
     if (!entry.title.trim() || !amount) return
+    const tags = entry.tags ? entry.tags.split(',').map(t => t.trim()).filter(Boolean) : []
     updateMonth(c => ({
       ...c,
       entries: [
-        { id: makeId(), type: entry.type, amount, title: entry.title.trim(), category: entry.category.trim(), date: entry.date || new Date().toISOString().slice(0, 10) },
+        {
+          id: makeId(),
+          type: entry.type,
+          amount,
+          title: entry.title.trim(),
+          subtitle: entry.subtitle.trim(),
+          category: entry.category.trim() || tags[0] || '',
+          tags: tags.length ? tags : [entry.category.trim()].filter(Boolean),
+          date: entry.date || new Date().toISOString().slice(0, 10),
+        },
         ...c.entries,
       ],
     }))
-    setEntry(p => ({ ...p, amount: '', title: '', category: '' }))
-    setTab('eintraege')
+    setEntry(p => ({ ...p, amount: '', title: '', subtitle: '', category: '', tags: '' }))
   }
 
   function deleteEntry(id) {
     updateMonth(c => ({ ...c, entries: c.entries.filter(i => i.id !== id) }))
+    if (editingId === id) setEditingId(null)
   }
 
   function clearMonth() {
@@ -224,7 +305,7 @@ export default function BudgetPage() {
     const amount = Number(newFix.amount)
     if (!newFix.title.trim() || !amount) return
     setRecurring(prev => [...prev, { id: makeId(), ...newFix, amount }])
-    setNewFix(p => ({ ...p, title: '', amount: '', category: '' }))
+    setNewFix(p => ({ ...p, title: '', subtitle: '', amount: '', category: '' }))
   }
 
   function removeFixeintrag(id) {
@@ -240,36 +321,52 @@ export default function BudgetPage() {
       ...c,
       entries: [
         ...toAdd.map(r => ({
-          id: makeId(), type: r.type, amount: Number(r.amount), title: r.title, category: r.category,
+          id: makeId(), type: r.type, amount: Number(r.amount), title: r.title,
+          subtitle: r.subtitle || '', category: r.category,
+          tags: [r.category].filter(Boolean),
           date: `${y}-${String(m).padStart(2, '0')}-${String(Math.min(Number(r.dayOfMonth), 28)).padStart(2, '0')}`,
         })),
         ...c.entries,
       ],
     }))
-    setTab('eintraege')
+    setView('monat')
   }
 
   function goToMonth(key) {
     setMonth(key)
-    setTab('uebersicht')
+    setView('monat')
   }
 
-  const TABS = [
-    { id: 'uebersicht', label: 'Übersicht' },
-    { id: 'eintraege',  label: `Einträge (${monthData.entries.length})` },
-    { id: 'jahr',       label: 'Jahr' },
-    { id: 'fixkosten',  label: 'Fixkosten' },
-    { id: 'bericht',    label: 'Bericht' },
-    { id: 'neu',        label: '+ Eintrag' },
-  ]
+  function navEinstellung(sub) {
+    setView('einstellung')
+    setSubView(sub)
+  }
 
+  // ── Sidebar ────────────────────────────────────────────────────────────────
+  function SidebarItem({ id, icon, label, active, onClick }) {
+    return (
+      <button
+        className={active ? styles.sidebarItemActive : styles.sidebarItem}
+        onClick={onClick}
+        aria-current={active ? 'page' : undefined}
+      >
+        {icon}
+        {label}
+      </button>
+    )
+  }
+
+  // ── Render ─────────────────────────────────────────────────────────────────
   return (
     <div className={styles.page}>
       <main className={styles.content}>
 
         {/* Header + Monatsnavigation */}
         <div className={styles.financeHeader}>
-          <h1 className={styles.title}>Private Finanzen</h1>
+          <div>
+            <h1 className={styles.title}>Private Finanzen</h1>
+            <p className={styles.sub} style={{ margin: 0 }}>{formatMonthLabel(month)}</p>
+          </div>
           <div className={styles.monthNav}>
             <button className={styles.monthNavBtn} onClick={prevMonth} aria-label="Vorheriger Monat">‹</button>
             <input type="month" className={styles.monthDisplay} value={month} onChange={e => setMonth(e.target.value || getMonthKey())} />
@@ -299,354 +396,456 @@ export default function BudgetPage() {
           </div>
         </div>
 
-        {/* Tabs */}
-        <div className={styles.financeTabs} role="tablist">
-          {TABS.map(t => (
-            <button key={t.id} role="tab" aria-selected={tab === t.id}
-              className={tab === t.id ? styles.financeTabActive : styles.financeTab}
-              onClick={() => setTab(t.id)}>
-              {t.label}
-            </button>
-          ))}
-        </div>
+        {/* Sidebar + Content Layout */}
+        <div className={styles.financeLayout}>
 
-        {/* ── ÜBERSICHT ── */}
-        {tab === 'uebersicht' && (
-          <div>
-            <form className={styles.budgetSettingRow} onSubmit={saveBudget}>
-              <label htmlFor="budget-input">Monatsbudget (€)</label>
-              <input id="budget-input" type="number" min="0" step="0.01" inputMode="decimal"
-                value={budgetInput} onChange={e => setBudgetInput(e.target.value)} placeholder="z. B. 7000" />
-              <button type="submit">Speichern</button>
-            </form>
+          {/* Left Sidebar */}
+          <aside className={styles.financeSidebar}>
+            <nav className={styles.sidebarNav}>
+              <SidebarItem id="monat" icon={<IconCalendar />} label="Monatsübersicht"
+                active={view === 'monat'} onClick={() => setView('monat')} />
+              <SidebarItem id="jahr" icon={<IconChart />} label="Jahresübersicht"
+                active={view === 'jahr'} onClick={() => setView('jahr')} />
+              <SidebarItem id="bericht" icon={<IconDoc />} label="Bericht"
+                active={view === 'bericht'} onClick={() => setView('bericht')} />
+              <SidebarItem id="einstellung" icon={<IconSettings />} label="Einstellung"
+                active={view === 'einstellung'} onClick={() => navEinstellung(subView)} />
 
-            {categoryTotals.length ? (
-              <div className={styles.categoryList}>
-                {categoryTotals.map(([cat, total]) => {
-                  const budget = catBudgets[cat] || 0
-                  const color  = trafficColor(total, budget)
-                  return (
-                    <div className={styles.catBudgetRow} key={cat}>
-                      <span className={styles.categoryName}>{cat}</span>
-                      <div className={styles.categoryBarTrack}>
-                        <div className={styles.categoryBarFill} style={{ width: `${Math.max((total / maxCategory) * 100, 2)}%` }} />
-                      </div>
-                      <span className={styles.categoryAmount}>{formatMoney(total)}</span>
-                      <span className={styles.trafficDot} style={{ background: color || 'transparent', border: color ? 'none' : '1px dashed #cbd5e1' }} title={budget ? `Budget: ${formatMoney(budget)}` : 'Kein Budget gesetzt'} />
-                      <input
-                        className={styles.catBudgetInput}
-                        type="number" min="0" step="1"
-                        placeholder="Budget €"
-                        value={catEdits[cat] !== undefined ? catEdits[cat] : (catBudgets[cat] || '')}
-                        onChange={e => setCatEdits(p => ({ ...p, [cat]: e.target.value }))}
-                        onBlur={e => {
-                          saveCatBudget(cat, e.target.value)
-                          setCatEdits(p => { const n = { ...p }; delete n[cat]; return n })
-                        }}
-                      />
-                    </div>
-                  )
-                })}
-              </div>
-            ) : (
-              <p className={styles.emptyAnalytics}>
-                Noch keine Ausgaben für {formatMonthLabel(month)}.{' '}
-                <button className={styles.actionBtn} type="button" onClick={() => setTab('neu')}>+ Eintrag hinzufügen</button>
-              </p>
-            )}
-          </div>
-        )}
-
-        {/* ── EINTRÄGE ── */}
-        {tab === 'eintraege' && (
-          <div>
-            <div className={styles.tableHead}>
-              <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Einträge — {formatMonthLabel(month)}</h2>
-              <button className={`${styles.actionBtn} ${styles.actionBtnDanger}`} type="button" onClick={clearMonth}>Monat löschen</button>
-            </div>
-            {monthData.entries.length ? (
-              <div className={styles.budgetEntryList} style={{ marginTop: 20 }}>
-                {monthData.entries.map(item => (
-                  <div className={styles.budgetEntry} key={item.id}>
-                    <span className={`${styles.budgetEntryType} ${item.type === 'income' ? styles.entryIncome : styles.entryExpense}`}>
-                      {item.type === 'income' ? '+' : '−'}
-                    </span>
-                    <div className={styles.budgetEntryMain}>
-                      <strong>{item.title}</strong>
-                      <span>{new Date(item.date).toLocaleDateString('de-DE')}{item.category ? ` · ${item.category}` : ''}</span>
-                    </div>
-                    <strong className={item.type === 'income' ? styles.moneyPositive : styles.moneyNegative}>
-                      {item.type === 'income' ? '+' : '−'}{formatMoney(item.amount)}
-                    </strong>
-                    <button className={styles.actionBtn} type="button" onClick={() => deleteEntry(item.id)}>×</button>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p className={styles.emptyAnalytics} style={{ marginTop: 20 }}>
-                Noch keine Einträge.{' '}
-                <button className={styles.actionBtn} type="button" onClick={() => setTab('neu')}>+ Eintrag hinzufügen</button>
-              </p>
-            )}
-          </div>
-        )}
-
-        {/* ── JAHR ── */}
-        {tab === 'jahr' && (
-          <div>
-            <div className={styles.reportHeader}>
-              <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Jahresübersicht</h2>
-              <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
-                <button className={styles.monthNavBtn} onClick={() => setYear(y => y - 1)}>‹</button>
-                <span className={styles.monthDisplay}>{year}</span>
-                <button className={styles.monthNavBtn} onClick={() => setYear(y => y + 1)}>›</button>
-              </div>
-            </div>
-
-            <div className={styles.budgetPanel} style={{ marginBottom: 20 }}>
-              <div className={styles.annualChart}>
-                {annualData.map(m => (
-                  <div key={m.key} onClick={() => goToMonth(m.key)}
-                    className={`${styles.annualCol} ${m.key === month ? styles.annualColActive : ''}`}
-                    title={m.hasData ? `${MONTH_LONG[m.i]}: ${formatMoney(m.income)} / ${formatMoney(m.expenses)}` : MONTH_LONG[m.i]}>
-                    <div className={styles.annualBars}>
-                      <div className={styles.annualBarIn} style={{ height: `${m.hasData ? Math.max((m.income / maxAnnual) * 100, 4) : 3}%`, opacity: m.hasData ? 1 : 0.12 }} />
-                      <div className={styles.annualBarEx} style={{ height: `${m.hasData ? Math.max((m.expenses / maxAnnual) * 100, 4) : 3}%`, opacity: m.hasData ? 1 : 0.12 }} />
-                    </div>
-                    <span className={styles.annualColLabel}>{MONTH_SHORT[m.i]}</span>
-                  </div>
-                ))}
-              </div>
-              <div style={{ display: 'flex', gap: 14, marginTop: 8 }}>
-                <span className={styles.annualLegend}><span style={{ background: '#16a34a' }} />Einnahmen</span>
-                <span className={styles.annualLegend}><span style={{ background: '#f97316' }} />Ausgaben</span>
-              </div>
-            </div>
-
-            <div className={styles.budgetPanel}>
-              {annualSummary ? (
-                <table className={styles.annualTable}>
-                  <thead>
-                    <tr>
-                      <th>Monat</th>
-                      <th>Einnahmen</th>
-                      <th>Ausgaben</th>
-                      <th>Saldo</th>
-                      <th>Sparquote</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {annualData.map(m => (
-                      <tr key={m.key} onClick={() => goToMonth(m.key)} style={{ cursor: 'pointer' }}
-                        className={m.key === month ? styles.annualRowActive : !m.hasData ? styles.annualRowEmpty : ''}>
-                        <td>{MONTH_LONG[m.i]}{m.key === month ? ' ●' : ''}</td>
-                        <td className={styles.moneyPositive}>{m.hasData ? formatMoney(m.income) : '—'}</td>
-                        <td>{m.hasData ? formatMoney(m.expenses) : '—'}</td>
-                        <td className={m.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{m.hasData ? formatMoney(m.balance) : '—'}</td>
-                        <td className={m.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{m.hasData && m.income ? `${sparquote(m.income, m.expenses)} %` : '—'}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <td>Jahresgesamt ({annualSummary.count} Monate)</td>
-                      <td className={styles.moneyPositive}>{formatMoney(annualSummary.ti)}</td>
-                      <td>{formatMoney(annualSummary.te)}</td>
-                      <td className={annualSummary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(annualSummary.balance)}</td>
-                      <td className={annualSummary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{sparquote(annualSummary.ti, annualSummary.te)} %</td>
-                    </tr>
-                    <tr className={styles.annualRowAvg}>
-                      <td>Ø pro Monat</td>
-                      <td className={styles.moneyPositive}>{formatMoney(annualSummary.avgI)}</td>
-                      <td>{formatMoney(annualSummary.avgE)}</td>
-                      <td className={annualSummary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(annualSummary.balance / annualSummary.count)}</td>
-                      <td>—</td>
-                    </tr>
-                  </tfoot>
-                </table>
-              ) : (
-                <p className={styles.emptyAnalytics}>Noch keine Daten für {year}. Trage Einträge in einen Monat ein.</p>
+              {view === 'einstellung' && (
+                <div className={styles.sidebarSubGroup}>
+                  <button className={subView === 'diagram' ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('diagram')}>
+                    Kategorie-Diagramm
+                  </button>
+                  <button className={subView === 'fixkosten' ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('fixkosten')}>
+                    Fixkosten
+                  </button>
+                  <button className={subView === 'eintraege' ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('eintraege')}>
+                    Einträge
+                  </button>
+                </div>
               )}
-            </div>
-          </div>
-        )}
+            </nav>
+          </aside>
 
-        {/* ── FIXKOSTEN ── */}
-        {tab === 'fixkosten' && (
-          <div>
-            <div className={styles.reportHeader}>
+          {/* Main Content */}
+          <div className={styles.financeMain}>
+
+            {/* ── MONATSÜBERSICHT ── */}
+            {view === 'monat' && (
               <div>
-                <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Wiederkehrende Ausgaben</h2>
-                {totalFixkosten > 0 && (
-                  <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>
-                    Fixkosten gesamt: <strong style={{ color: '#0d1b2a' }}>{formatMoney(totalFixkosten)} / Monat</strong>
+                <form className={styles.budgetSettingRow} onSubmit={saveBudget}>
+                  <label htmlFor="budget-input">Monatsbudget (€)</label>
+                  <input id="budget-input" type="number" min="0" step="0.01" inputMode="decimal"
+                    value={budgetInput} onChange={e => setBudgetInput(e.target.value)} placeholder="z. B. 7000" />
+                  <button type="submit">Speichern</button>
+                </form>
+
+                {categoryTotals.length ? (
+                  <div className={styles.categoryList}>
+                    {categoryTotals.map(([cat, total]) => {
+                      const budget = catBudgets[cat] || 0
+                      const color  = trafficColor(total, budget)
+                      return (
+                        <div className={styles.catBudgetRow} key={cat}>
+                          <span className={styles.categoryName}>{cat}</span>
+                          <div className={styles.categoryBarTrack}>
+                            <div className={styles.categoryBarFill} style={{ width: `${Math.max((total / maxCategory) * 100, 2)}%` }} />
+                          </div>
+                          <span className={styles.categoryAmount}>{formatMoney(total)}</span>
+                          <span className={styles.trafficDot}
+                            style={{ background: color || 'transparent', border: color ? 'none' : '1px dashed #cbd5e1' }}
+                            title={budget ? `Budget: ${formatMoney(budget)}` : 'Kein Budget gesetzt'} />
+                          <input className={styles.catBudgetInput} type="number" min="0" step="1" placeholder="Budget €"
+                            value={catEdits[cat] !== undefined ? catEdits[cat] : (catBudgets[cat] || '')}
+                            onChange={e => setCatEdits(p => ({ ...p, [cat]: e.target.value }))}
+                            onBlur={e => {
+                              saveCatBudget(cat, e.target.value)
+                              setCatEdits(p => { const n = { ...p }; delete n[cat]; return n })
+                            }} />
+                        </div>
+                      )
+                    })}
+                  </div>
+                ) : (
+                  <p className={styles.emptyAnalytics}>
+                    Noch keine Ausgaben für {formatMonthLabel(month)}.{' '}
+                    <button className={styles.actionBtn} type="button" onClick={() => navEinstellung('eintraege')}>
+                      + Eintrag hinzufügen
+                    </button>
                   </p>
                 )}
               </div>
-              {recurring.length > 0 && (
-                <button className={styles.primaryBudgetBtn} type="button" onClick={insertFixInMonth}>
-                  Für {formatMonthLabel(month)} eintragen
-                </button>
-              )}
-            </div>
-
-            {recurring.length > 0 && (
-              <div className={styles.fixedList} style={{ marginBottom: 28 }}>
-                {recurring.map(r => (
-                  <div className={styles.fixedItem} key={r.id}>
-                    <div className={styles.fixedItemMain}>
-                      <strong>{r.title}</strong>
-                      <span>{r.category || 'Keine Kategorie'} · Tag {r.dayOfMonth} · {r.type === 'income' ? 'Einnahme' : 'Ausgabe'}</span>
-                    </div>
-                    <strong className={r.type === 'income' ? styles.moneyPositive : ''}>{formatMoney(r.amount)}</strong>
-                    <button className={styles.actionBtn} type="button" onClick={() => removeFixeintrag(r.id)}>×</button>
-                  </div>
-                ))}
-              </div>
             )}
 
-            <div className={styles.budgetPanel} style={{ maxWidth: 520 }}>
-              <h2 className={styles.sectionTitle}>Fixkosten hinzufügen</h2>
-              <form className={styles.budgetForm} onSubmit={addFixeintrag}>
-                <div className={styles.segmentedControl}>
-                  <button type="button" className={newFix.type === 'income' ? styles.segmentActive : ''} onClick={() => setNewFix(p => ({ ...p, type: 'income' }))}>Einnahme</button>
-                  <button type="button" className={newFix.type === 'expense' ? styles.segmentActive : ''} onClick={() => setNewFix(p => ({ ...p, type: 'expense' }))}>Ausgabe</button>
-                </div>
-                <label>
-                  <span>Titel</span>
-                  <input value={newFix.title} onChange={e => setNewFix(p => ({ ...p, title: e.target.value }))} placeholder="z. B. Miete, Leasing, Kindergarten" required />
-                </label>
-                <div className={styles.budgetFieldRow}>
-                  <label>
-                    <span>Betrag (€)</span>
-                    <input type="number" step="0.01" inputMode="decimal" value={newFix.amount} onChange={e => setNewFix(p => ({ ...p, amount: e.target.value }))} placeholder="0,00" required />
-                  </label>
-                  <label>
-                    <span>Tag des Monats</span>
-                    <input type="number" min="1" max="28" value={newFix.dayOfMonth} onChange={e => setNewFix(p => ({ ...p, dayOfMonth: e.target.value }))} />
-                  </label>
-                </div>
-                <label>
-                  <span>Kategorie</span>
-                  <input list="fix-cat-list" value={newFix.category} onChange={e => setNewFix(p => ({ ...p, category: e.target.value }))} placeholder="z. B. Zu Hause, Auto" />
-                  <datalist id="fix-cat-list">
-                    {allCategories.map(c => <option key={c} value={c} />)}
-                  </datalist>
-                </label>
-                <button className={styles.primaryBudgetBtn} type="submit">Fixkosten speichern</button>
-              </form>
-            </div>
-          </div>
-        )}
-
-        {/* ── BERICHT ── */}
-        {tab === 'bericht' && (
-          <div>
-            <div className={styles.reportHeader}>
+            {/* ── JAHRESÜBERSICHT ── */}
+            {view === 'jahr' && (
               <div>
-                <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Monatsbericht</h2>
-                <p>{formatMonthLabel(month)}</p>
-              </div>
-              <button className={styles.printBtn} type="button" onClick={() => window.print()}>🖨 Drucken</button>
-            </div>
+                <div className={styles.reportHeader}>
+                  <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Jahresübersicht</h2>
+                  <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
+                    <button className={styles.monthNavBtn} onClick={() => setYear(y => y - 1)}>‹</button>
+                    <span className={styles.monthDisplay}>{year}</span>
+                    <button className={styles.monthNavBtn} onClick={() => setYear(y => y + 1)}>›</button>
+                  </div>
+                </div>
 
-            {incomeTotals.length > 0 && (
-              <div className={styles.reportSection}>
-                <p className={styles.reportSectionTitle}>Einnahmen</p>
-                <div className={styles.reportGrid}>
-                  {incomeTotals.map(([cat, total]) => (
-                    <div className={styles.reportCard} key={cat}>
-                      <span>{cat}</span>
-                      <strong className={styles.moneyPositive}>{formatMoney(total)}</strong>
+                <div className={styles.budgetPanel} style={{ marginBottom: 20 }}>
+                  <div className={styles.annualChart}>
+                    {annualData.map(m => (
+                      <div key={m.key} onClick={() => goToMonth(m.key)}
+                        className={`${styles.annualCol} ${m.key === month ? styles.annualColActive : ''}`}
+                        title={m.hasData ? `${MONTH_LONG[m.i]}: ${formatMoney(m.income)} / ${formatMoney(m.expenses)}` : MONTH_LONG[m.i]}>
+                        <div className={styles.annualBars}>
+                          <div className={styles.annualBarIn} style={{ height: `${m.hasData ? Math.max((m.income / maxAnnual) * 100, 4) : 3}%`, opacity: m.hasData ? 1 : 0.12 }} />
+                          <div className={styles.annualBarEx} style={{ height: `${m.hasData ? Math.max((m.expenses / maxAnnual) * 100, 4) : 3}%`, opacity: m.hasData ? 1 : 0.12 }} />
+                        </div>
+                        <span className={styles.annualColLabel}>{MONTH_SHORT[m.i]}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ display: 'flex', gap: 14, marginTop: 8 }}>
+                    <span className={styles.annualLegend}><span style={{ background: '#16a34a' }} />Einnahmen</span>
+                    <span className={styles.annualLegend}><span style={{ background: '#f97316' }} />Ausgaben</span>
+                  </div>
+                </div>
+
+                <div className={styles.budgetPanel}>
+                  {annualSummary ? (
+                    <table className={styles.annualTable}>
+                      <thead>
+                        <tr><th>Monat</th><th>Einnahmen</th><th>Ausgaben</th><th>Saldo</th><th>Sparquote</th></tr>
+                      </thead>
+                      <tbody>
+                        {annualData.map(m => (
+                          <tr key={m.key} onClick={() => goToMonth(m.key)} style={{ cursor: 'pointer' }}
+                            className={m.key === month ? styles.annualRowActive : !m.hasData ? styles.annualRowEmpty : ''}>
+                            <td>{MONTH_LONG[m.i]}{m.key === month ? ' ●' : ''}</td>
+                            <td className={styles.moneyPositive}>{m.hasData ? formatMoney(m.income) : '—'}</td>
+                            <td>{m.hasData ? formatMoney(m.expenses) : '—'}</td>
+                            <td className={m.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{m.hasData ? formatMoney(m.balance) : '—'}</td>
+                            <td className={m.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{m.hasData && m.income ? `${sparquote(m.income, m.expenses)} %` : '—'}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <td>Jahresgesamt ({annualSummary.count} Monate)</td>
+                          <td className={styles.moneyPositive}>{formatMoney(annualSummary.ti)}</td>
+                          <td>{formatMoney(annualSummary.te)}</td>
+                          <td className={annualSummary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(annualSummary.balance)}</td>
+                          <td className={annualSummary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{sparquote(annualSummary.ti, annualSummary.te)} %</td>
+                        </tr>
+                        <tr className={styles.annualRowAvg}>
+                          <td>Ø pro Monat</td>
+                          <td className={styles.moneyPositive}>{formatMoney(annualSummary.avgI)}</td>
+                          <td>{formatMoney(annualSummary.avgE)}</td>
+                          <td className={annualSummary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(annualSummary.balance / annualSummary.count)}</td>
+                          <td>—</td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  ) : (
+                    <p className={styles.emptyAnalytics}>Noch keine Daten für {year}.</p>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* ── BERICHT ── */}
+            {view === 'bericht' && (
+              <div>
+                <div className={styles.reportHeader}>
+                  <div>
+                    <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Monatsbericht</h2>
+                    <p className={styles.reportHeader + ' p'}>{formatMonthLabel(month)}</p>
+                  </div>
+                  <button className={styles.printBtn} type="button" onClick={() => window.print()}>Drucken</button>
+                </div>
+
+                {incomeTotals.length > 0 && (
+                  <div className={styles.reportSection}>
+                    <p className={styles.reportSectionTitle}>Einnahmen</p>
+                    <div className={styles.reportGrid}>
+                      {incomeTotals.map(([cat, total]) => (
+                        <div className={styles.reportCard} key={cat}>
+                          <span>{cat}</span>
+                          <strong className={styles.moneyPositive}>{formatMoney(total)}</strong>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-                <div className={styles.reportTotalRow}>
-                  <span>Gesamt Einnahmen</span>
-                  <strong className={styles.moneyPositive}>{formatMoney(summary.income)}</strong>
-                </div>
-              </div>
-            )}
-
-            {categoryTotals.length > 0 && (
-              <div className={styles.reportSection}>
-                <p className={styles.reportSectionTitle}>Ausgaben nach Kategorie</p>
-                <div className={styles.reportGrid}>
-                  {categoryTotals.map(([cat, total]) => (
-                    <div className={styles.reportCard} key={cat}>
-                      <span>{cat}</span>
-                      <strong>{formatMoney(total)}</strong>
+                    <div className={styles.reportTotalRow}>
+                      <span>Gesamt Einnahmen</span>
+                      <strong className={styles.moneyPositive}>{formatMoney(summary.income)}</strong>
                     </div>
-                  ))}
+                  </div>
+                )}
+
+                {categoryTotals.length > 0 && (
+                  <div className={styles.reportSection}>
+                    <p className={styles.reportSectionTitle}>Ausgaben nach Kategorie</p>
+                    <div className={styles.reportGrid}>
+                      {categoryTotals.map(([cat, total]) => (
+                        <div className={styles.reportCard} key={cat}>
+                          <span>{cat}</span>
+                          <strong>{formatMoney(total)}</strong>
+                        </div>
+                      ))}
+                    </div>
+                    <div className={styles.reportTotalRow}>
+                      <span>Gesamt Ausgaben</span>
+                      <strong className={styles.moneyNegative}>{formatMoney(summary.expenses)}</strong>
+                    </div>
+                  </div>
+                )}
+
+                {(incomeTotals.length > 0 || categoryTotals.length > 0) && (
+                  <div className={styles.reportSaldoRow} style={{
+                    border: `1px solid ${summary.balance >= 0 ? '#16a34a' : '#dc2626'}`,
+                    background: summary.balance >= 0 ? 'rgba(22,163,74,0.05)' : 'rgba(220,38,38,0.05)',
+                  }}>
+                    <span>Monats-Saldo</span>
+                    <strong className={summary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(summary.balance)}</strong>
+                  </div>
+                )}
+
+                {!incomeTotals.length && !categoryTotals.length && (
+                  <p className={styles.emptyAnalytics}>Noch keine Einträge für {formatMonthLabel(month)}.</p>
+                )}
+              </div>
+            )}
+
+            {/* ── EINSTELLUNG: KATEGORIE-DIAGRAMM ── */}
+            {view === 'einstellung' && subView === 'diagram' && (
+              <div>
+                <h2 className={styles.sectionTitle}>Kategorie-Diagramm — {formatMonthLabel(month)}</h2>
+                <p className={styles.sub} style={{ marginBottom: 20 }}>
+                  Jedes Kästchen zeigt eine Kategorie — Größe proportional zu den Ausgaben.
+                  Ein Eintrag kann mehrere Tags haben und in mehreren Bereichen auftauchen.
+                </p>
+
+                {categoryTotals.length > 0 ? (
+                  <>
+                    <div className={styles.categoryDiagram}>
+                      {categoryTotals.map(([cat, total]) => {
+                        const pct = summary.expenses ? (total / summary.expenses * 100) : 0
+                        const color = getCatColor(cat)
+                        const isLarge = pct > 22
+                        return (
+                          <div key={cat} className={styles.categoryBox}
+                            style={{
+                              background: color.bg,
+                              border: `1px solid ${color.border}`,
+                              gridColumn: isLarge ? 'span 2' : 'span 1',
+                              padding: isLarge ? '20px 18px' : '14px 12px',
+                            }}>
+                            <div className={styles.categoryBoxName} style={{ color: color.text }}>{cat}</div>
+                            <div className={styles.categoryBoxAmount} style={{ color: color.text, fontSize: isLarge ? 22 : 17 }}>{formatMoney(total)}</div>
+                            <div className={styles.categoryBoxPct} style={{ color: color.text }}>{pct.toFixed(1)} %</div>
+                          </div>
+                        )
+                      })}
+                    </div>
+
+                    {tagTotals.length > categoryTotals.length && (
+                      <div style={{ marginTop: 28 }}>
+                        <p className={styles.reportSectionTitle} style={{ marginBottom: 12 }}>Tag-Übersicht (mit Mehrfachzuordnungen)</p>
+                        <div className={styles.reportGrid}>
+                          {tagTotals.map(([tag, total]) => {
+                            const color = getCatColor(tag)
+                            return (
+                              <div className={styles.reportCard} key={tag}
+                                style={{ background: color.bg, border: `1px solid ${color.border}` }}>
+                                <span style={{ color: color.text }}>{tag}</span>
+                                <strong style={{ color: color.text }}>{formatMoney(total)}</strong>
+                              </div>
+                            )
+                          })}
+                        </div>
+                        <p style={{ color: '#94a3b8', fontSize: 12, marginTop: 8 }}>
+                          Tag-Summen können höher als Gesamtausgaben sein (Mehrfachzuordnungen).
+                        </p>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <p className={styles.emptyAnalytics}>Noch keine Ausgaben für {formatMonthLabel(month)}.</p>
+                )}
+              </div>
+            )}
+
+            {/* ── EINSTELLUNG: FIXKOSTEN ── */}
+            {view === 'einstellung' && subView === 'fixkosten' && (
+              <div>
+                <div className={styles.reportHeader}>
+                  <div>
+                    <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Fixkosten</h2>
+                    {totalFixkosten > 0 && (
+                      <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>
+                        Gesamt: <strong style={{ color: '#0d1b2a' }}>{formatMoney(totalFixkosten)} / Monat</strong>
+                      </p>
+                    )}
+                  </div>
+                  {recurring.length > 0 && (
+                    <button className={styles.primaryBudgetBtn} type="button" onClick={insertFixInMonth}>
+                      Für {formatMonthLabel(month)} eintragen
+                    </button>
+                  )}
                 </div>
-                <div className={styles.reportTotalRow}>
-                  <span>Gesamt Ausgaben</span>
-                  <strong className={styles.moneyNegative}>{formatMoney(summary.expenses)}</strong>
+
+                {recurring.length > 0 && (
+                  <div className={styles.fixedList} style={{ marginBottom: 28 }}>
+                    {recurring.map(r => (
+                      <div className={styles.fixedItem} key={r.id}>
+                        <div className={styles.fixedItemMain}>
+                          <strong>{r.title}</strong>
+                          <span>{r.subtitle ? `${r.subtitle} · ` : ''}{r.category || 'Keine Kategorie'} · Tag {r.dayOfMonth}</span>
+                        </div>
+                        <strong className={r.type === 'income' ? styles.moneyPositive : ''}>{formatMoney(r.amount)}</strong>
+                        <button className={styles.actionBtn} type="button" onClick={() => removeFixeintrag(r.id)}>×</button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <div className={styles.budgetPanel} style={{ maxWidth: 500 }}>
+                  <h2 className={styles.sectionTitle}>Fixkosten hinzufügen</h2>
+                  <form className={styles.budgetForm} onSubmit={addFixeintrag}>
+                    <div className={styles.segmentedControl}>
+                      <button type="button" className={newFix.type === 'income' ? styles.segmentActive : ''} onClick={() => setNewFix(p => ({ ...p, type: 'income' }))}>Einnahme</button>
+                      <button type="button" className={newFix.type === 'expense' ? styles.segmentActive : ''} onClick={() => setNewFix(p => ({ ...p, type: 'expense' }))}>Ausgabe</button>
+                    </div>
+                    <label>
+                      <span>Titel</span>
+                      <input value={newFix.title} onChange={e => setNewFix(p => ({ ...p, title: e.target.value }))} placeholder="z. B. Miete, Leasing" required />
+                    </label>
+                    <label>
+                      <span>Untertitel (optional)</span>
+                      <input value={newFix.subtitle} onChange={e => setNewFix(p => ({ ...p, subtitle: e.target.value }))} placeholder="z. B. Monatlich · Volksbank" />
+                    </label>
+                    <div className={styles.budgetFieldRow}>
+                      <label>
+                        <span>Betrag (€)</span>
+                        <input type="number" step="0.01" inputMode="decimal" value={newFix.amount} onChange={e => setNewFix(p => ({ ...p, amount: e.target.value }))} placeholder="0,00" required />
+                      </label>
+                      <label>
+                        <span>Tag des Monats</span>
+                        <input type="number" min="1" max="28" value={newFix.dayOfMonth} onChange={e => setNewFix(p => ({ ...p, dayOfMonth: e.target.value }))} />
+                      </label>
+                    </div>
+                    <label>
+                      <span>Kategorie</span>
+                      <input list="fix-cat-list" value={newFix.category} onChange={e => setNewFix(p => ({ ...p, category: e.target.value }))} placeholder="z. B. Zu Hause, Auto" />
+                      <datalist id="fix-cat-list">
+                        {allCategories.map(c => <option key={c} value={c} />)}
+                      </datalist>
+                    </label>
+                    <button className={styles.primaryBudgetBtn} type="submit">Fixkosten speichern</button>
+                  </form>
                 </div>
               </div>
             )}
 
-            {(incomeTotals.length > 0 || categoryTotals.length > 0) && (
-              <div className={styles.reportSaldoRow} style={{
-                border: `1px solid ${summary.balance >= 0 ? '#16a34a' : '#dc2626'}`,
-                background: summary.balance >= 0 ? 'rgba(22,163,74,0.05)' : 'rgba(220,38,38,0.05)',
-              }}>
-                <span>Monats-Saldo</span>
-                <strong className={summary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(summary.balance)}</strong>
+            {/* ── EINSTELLUNG: EINTRÄGE ── */}
+            {view === 'einstellung' && subView === 'eintraege' && (
+              <div>
+                {/* Add entry form */}
+                <div className={styles.budgetPanel} style={{ marginBottom: 24 }}>
+                  <h2 className={styles.sectionTitle}>Neuer Eintrag — {formatMonthLabel(month)}</h2>
+                  <form className={styles.budgetForm} onSubmit={addEntry}>
+                    <div className={styles.segmentedControl}>
+                      <button type="button" className={entry.type === 'income' ? styles.segmentActive : ''} onClick={() => setEntry(p => ({ ...p, type: 'income' }))}>Einnahme</button>
+                      <button type="button" className={entry.type === 'expense' ? styles.segmentActive : ''} onClick={() => setEntry(p => ({ ...p, type: 'expense' }))}>Ausgabe</button>
+                    </div>
+                    <div className={styles.budgetFieldRow}>
+                      <label>
+                        <span>Titel</span>
+                        <input value={entry.title} onChange={e => setEntry(p => ({ ...p, title: e.target.value }))}
+                          placeholder={entry.type === 'income' ? 'z. B. Gehalt' : 'z. B. Miete, Lidl'} required />
+                      </label>
+                      <label>
+                        <span>Untertitel</span>
+                        <input value={entry.subtitle} onChange={e => setEntry(p => ({ ...p, subtitle: e.target.value }))} placeholder="z. B. Amazon · Für Mobin" />
+                      </label>
+                    </div>
+                    <div className={styles.budgetFieldRow}>
+                      <label>
+                        <span>Betrag (€)</span>
+                        <input type="number" step="0.01" inputMode="decimal" value={entry.amount} onChange={e => setEntry(p => ({ ...p, amount: e.target.value }))} placeholder="0,00" required />
+                      </label>
+                      <label>
+                        <span>Datum</span>
+                        <input type="date" value={entry.date} onChange={e => setEntry(p => ({ ...p, date: e.target.value }))} />
+                      </label>
+                    </div>
+                    <div className={styles.budgetFieldRow}>
+                      <label>
+                        <span>Hauptkategorie</span>
+                        <input list="cat-suggestions" value={entry.category} onChange={e => setEntry(p => ({ ...p, category: e.target.value }))} placeholder="z. B. Kleidung" />
+                        <datalist id="cat-suggestions">
+                          {allCategories.map(c => <option key={c} value={c} />)}
+                        </datalist>
+                      </label>
+                      <label>
+                        <span>Tags (Komma-getrennt)</span>
+                        <input value={entry.tags} onChange={e => setEntry(p => ({ ...p, tags: e.target.value }))} placeholder="z. B. Kleidung, Mobin, Amazon" />
+                      </label>
+                    </div>
+                    <button className={styles.primaryBudgetBtn} type="submit">Eintrag speichern</button>
+                  </form>
+                </div>
+
+                {/* Entry list */}
+                <div>
+                  <div className={styles.tableHead}>
+                    <h2 className={styles.sectionTitle} style={{ margin: 0 }}>
+                      Alle Einträge — {formatMonthLabel(month)} ({monthData.entries.length})
+                    </h2>
+                    <button className={`${styles.actionBtn} ${styles.actionBtnDanger}`} type="button" onClick={clearMonth}>Monat löschen</button>
+                  </div>
+
+                  {monthData.entries.length ? (
+                    <div className={styles.budgetEntryList} style={{ marginTop: 16 }}>
+                      {monthData.entries.map(item => (
+                        <div className={styles.budgetEntry} key={item.id}>
+                          <span className={`${styles.budgetEntryType} ${item.type === 'income' ? styles.entryIncome : styles.entryExpense}`}>
+                            {item.type === 'income' ? '+' : '−'}
+                          </span>
+                          <div className={styles.budgetEntryMain}>
+                            <strong>{item.title}</strong>
+                            <span>
+                              {item.subtitle ? `${item.subtitle} · ` : ''}
+                              {new Date(item.date).toLocaleDateString('de-DE')}
+                              {item.category ? ` · ${item.category}` : ''}
+                            </span>
+                            {Array.isArray(item.tags) && item.tags.length > 1 && (
+                              <span className={styles.entryTags}>
+                                {item.tags.map(t => <span key={t} className={styles.entryTag}>{t}</span>)}
+                              </span>
+                            )}
+                          </div>
+                          <strong className={item.type === 'income' ? styles.moneyPositive : styles.moneyNegative}>
+                            {item.type === 'income' ? '+' : '−'}{formatMoney(item.amount)}
+                          </strong>
+                          <button className={styles.actionBtn} type="button" onClick={() => deleteEntry(item.id)}>×</button>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className={styles.emptyAnalytics} style={{ marginTop: 16 }}>Noch keine Einträge.</p>
+                  )}
+                </div>
+
+                <div style={{ marginTop: 32 }}>
+                  <button className={styles.actionBtn} type="button"
+                    onClick={() => { if (window.confirm('April 2026 Beispiel laden?')) { setMonth('2026-04'); setStore(p => ({ ...p, '2026-04': APRIL_2026_EXAMPLE })) } }}>
+                    April-Beispiel laden
+                  </button>
+                </div>
               </div>
             )}
 
-            {!incomeTotals.length && !categoryTotals.length && (
-              <p className={styles.emptyAnalytics}>Noch keine Einträge für {formatMonthLabel(month)}.</p>
-            )}
-          </div>
-        )}
-
-        {/* ── NEU ── */}
-        {tab === 'neu' && (
-          <div className={styles.budgetPanel} style={{ maxWidth: 520 }}>
-            <h2 className={styles.sectionTitle}>Eintrag hinzufügen</h2>
-            <form className={styles.budgetForm} onSubmit={addEntry}>
-              <div className={styles.segmentedControl}>
-                <button type="button" className={entry.type === 'income' ? styles.segmentActive : ''} onClick={() => setEntry(p => ({ ...p, type: 'income' }))}>Einnahme</button>
-                <button type="button" className={entry.type === 'expense' ? styles.segmentActive : ''} onClick={() => setEntry(p => ({ ...p, type: 'expense' }))}>Ausgabe</button>
-              </div>
-              <label>
-                <span>Titel</span>
-                <input value={entry.title} onChange={e => setEntry(p => ({ ...p, title: e.target.value }))}
-                  placeholder={entry.type === 'income' ? 'z. B. Gehalt, Familienkasse' : 'z. B. Miete, Arzt, Aldi'} required />
-              </label>
-              <div className={styles.budgetFieldRow}>
-                <label>
-                  <span>Betrag (€)</span>
-                  <input type="number" step="0.01" inputMode="decimal" value={entry.amount}
-                    onChange={e => setEntry(p => ({ ...p, amount: e.target.value }))} placeholder="0,00" required />
-                </label>
-                <label>
-                  <span>Datum</span>
-                  <input type="date" value={entry.date} onChange={e => setEntry(p => ({ ...p, date: e.target.value }))} />
-                </label>
-              </div>
-              <label>
-                <span>Kategorie</span>
-                <input list="cat-suggestions" value={entry.category}
-                  onChange={e => setEntry(p => ({ ...p, category: e.target.value }))}
-                  placeholder="z. B. Zu Hause, Auto, Mobin" />
-                <datalist id="cat-suggestions">
-                  {allCategories.map(c => <option key={c} value={c} />)}
-                </datalist>
-              </label>
-              <button className={styles.primaryBudgetBtn} type="submit">Eintrag speichern</button>
-            </form>
-          </div>
-        )}
-
-        <div style={{ marginTop: 32 }}>
-          <button className={styles.actionBtn} type="button"
-            onClick={() => { if (window.confirm('April 2026 Beispiel laden?')) { setMonth('2026-04'); setStore(p => ({ ...p, '2026-04': APRIL_2026_EXAMPLE })) } }}>
-            April-Beispiel laden
-          </button>
-        </div>
+          </div>{/* financeMain */}
+        </div>{/* financeLayout */}
 
       </main>
     </div>
