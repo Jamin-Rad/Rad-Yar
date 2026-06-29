@@ -70,6 +70,13 @@ function CollapseSection({ title, color, defaultOpen = true, children }) {
 }
 
 function ClassTable({ cols, rows, lang }) {
+  const renderCell = (cell) => tx(cell, lang).split('\n').map((line, index, lines) => (
+    <span key={index}>
+      {line}
+      {index < lines.length - 1 && <br />}
+    </span>
+  ))
+
   return (
     <div className={styles.tableWrap}>
       <table className={styles.table}>
@@ -81,7 +88,7 @@ function ClassTable({ cols, rows, lang }) {
             <tr key={ri}>
               {row.map((cell, ci) => (
                 <td key={ci} className={ci === 0 ? styles.cellFirst : styles.cellRest}>
-                  {tx(cell, lang)}
+                  {renderCell(cell)}
                 </td>
               ))}
             </tr>
