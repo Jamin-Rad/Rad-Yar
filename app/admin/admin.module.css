@@ -894,27 +894,231 @@
 
 .financeMetric {
   display: grid;
-  gap: 6px;
-  padding: 16px 18px;
+  gap: 8px;
+  padding: 18px 20px 16px;
   border: 1px solid #e2e8f0;
-  border-radius: 14px;
+  border-radius: 16px;
   background: #fff;
-  box-shadow: 0 1px 3px rgba(0,0,0,.05);
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
 }
 
 .financeMetric span {
-  font-size: 11px;
-  font-weight: 700;
-  color: #64748b;
+  font-size: 10px;
+  font-weight: 800;
+  color: #94a3b8;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
 }
 
 .financeMetric strong {
-  font-size: 21px;
+  font-size: 26px;
   font-weight: 900;
   color: #0d1b2a;
-  line-height: 1.1;
+  line-height: 1;
+}
+
+/* ── SECTION CARDS (Monatsübersicht) ─────────── */
+.sectionCard {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  margin-bottom: 16px;
+}
+
+.sectionCardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+}
+
+.sectionCardLabel {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.sectionCardBody {
+  padding: 6px 20px 10px;
+}
+
+.sectionCardFoot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  border-top: 1px solid #f1f5f9;
+  background: #fafbff;
+}
+
+.incomeRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) 1fr 95px;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid #f8fafc;
+}
+
+.incomeRow:last-child { border-bottom: none; }
+
+.incomeRowName {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0d1b2a;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.incomeBarTrack {
+  height: 7px;
+  background: #f0fdf4;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(22,163,74,.15);
+}
+
+.incomeBarFill {
+  height: 100%;
+  border-radius: 999px;
+  background: #16a34a;
+  transition: width .4s ease;
+}
+
+.expenseRow {
+  display: grid;
+  grid-template-columns: 130px 1fr 90px 14px;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid #f8fafc;
+}
+
+.expenseRow:last-child { border-bottom: none; }
+
+/* ── GLOBAL BUDGET CARD ──────────────────────── */
+.budgetGlobalCard {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 18px 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  margin-bottom: 28px;
+}
+
+.budgetGlobalTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.budgetGlobalLabel {
+  font-size: 14px;
+  font-weight: 800;
+  color: #0d1b2a;
+  margin: 0 0 4px;
+}
+
+.budgetGlobalSub {
+  font-size: 12px;
+  color: #64748b;
+  margin: 0;
+}
+
+.budgetGlobalForm {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.budgetGlobalInput {
+  width: 120px;
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+  background: #f8fafc;
+  color: #0d1b2a;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: right;
+  outline: none;
+  transition: border-color .15s;
+}
+
+.budgetGlobalInput:focus { border-color: #f97316; background: #fff; }
+
+.budgetGlobalUnit {
+  font-size: 14px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.budgetBar {
+  height: 8px;
+  background: #f1f5f9;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 14px;
+}
+
+.budgetBarGood {
+  height: 100%;
+  border-radius: 999px;
+  background: #f97316;
+  transition: width .4s ease;
+}
+
+.budgetBarOver {
+  height: 100%;
+  border-radius: 999px;
+  background: #dc2626;
+  transition: width .4s ease;
+}
+
+/* ── TILE BUDGET INPUT ───────────────────────── */
+.tileBudgetRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0 8px;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  margin-bottom: 8px;
+}
+
+.tileBudgetLabel {
+  font-size: 11px;
+  font-weight: 700;
+  opacity: .65;
+  flex-shrink: 0;
+}
+
+.tileBudgetInput {
+  flex: 1;
+  max-width: 80px;
+  padding: 3px 7px;
+  border: 1px solid;
+  border-radius: 6px;
+  background: rgba(255,255,255,.55);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: right;
+  outline: none;
+}
+
+.tileBudgetUnit {
+  font-size: 11px;
+  font-weight: 600;
+  opacity: .65;
+  flex-shrink: 0;
 }
 
 .financeTabs {
@@ -2180,6 +2384,56 @@
 
 :global(html[data-theme='dark']) .categoryTileDelete {
   background: rgba(0,0,0,.25);
+}
+
+:global(html[data-theme='dark']) .sectionCard {
+  background: var(--bg-card);
+  border-color: var(--border);
+}
+
+:global(html[data-theme='dark']) .sectionCardFoot {
+  background: var(--bg-soft);
+  border-top-color: var(--border-soft);
+}
+
+:global(html[data-theme='dark']) .incomeRowName {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .incomeBarTrack {
+  background: rgba(22,163,74,.1);
+  border-color: rgba(22,163,74,.2);
+}
+
+:global(html[data-theme='dark']) .expenseRow {
+  border-bottom-color: var(--border-soft);
+}
+
+:global(html[data-theme='dark']) .budgetGlobalCard {
+  background: var(--bg-card);
+  border-color: var(--border);
+}
+
+:global(html[data-theme='dark']) .budgetGlobalLabel {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .budgetGlobalSub {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .budgetGlobalInput {
+  background: var(--bg-soft);
+  border-color: var(--border);
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .budgetGlobalUnit {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .budgetBar {
+  background: var(--bg-soft);
 }
 
 /* New features dark mode */
