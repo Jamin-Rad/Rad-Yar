@@ -1264,6 +1264,201 @@
   }
 }
 
+/* ── TABS SCROLLBAR (mobile) ─────────────────── */
+.financeTabs {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.financeTabs::-webkit-scrollbar { display: none; }
+
+/* ── ANNUAL CHART ────────────────────────────── */
+.annualChart {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 110px;
+  padding-top: 4px;
+  margin-bottom: 4px;
+}
+
+.annualCol {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 2px;
+  transition: background .15s;
+}
+
+.annualCol:hover { background: rgba(249,115,22,.09); }
+
+.annualColActive { background: rgba(249,115,22,.14); }
+
+.annualBars {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 2px;
+}
+
+.annualBarIn {
+  width: 42%;
+  min-height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: #16a34a;
+  transition: height .35s ease;
+}
+
+.annualBarEx {
+  width: 42%;
+  min-height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: #f97316;
+  transition: height .35s ease;
+}
+
+.annualColLabel {
+  font-size: 9px;
+  color: #94a3b8;
+  margin-top: 4px;
+  white-space: nowrap;
+}
+
+.annualLegend {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: #64748b;
+}
+
+.annualLegend span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ── ANNUAL TABLE ────────────────────────────── */
+.annualTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.annualTable th {
+  text-align: right;
+  padding: 8px 10px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 700;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.annualTable th:first-child { text-align: left; }
+
+.annualTable td {
+  padding: 8px 10px;
+  text-align: right;
+  color: #374151;
+  border-bottom: 1px solid #f8fafc;
+  white-space: nowrap;
+}
+
+.annualTable td:first-child { text-align: left; color: #0d1b2a; font-weight: 600; }
+
+.annualRowActive td { background: rgba(249,115,22,.06); }
+.annualRowActive td:first-child { color: #c2410c; }
+.annualRowEmpty { opacity: .4; }
+
+.annualTable tfoot td {
+  font-weight: 700;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: none;
+  color: #0d1b2a;
+}
+
+.annualRowAvg td {
+  font-weight: 400 !important;
+  color: #64748b !important;
+  font-size: 12px;
+  border-top: none;
+}
+
+/* ── CATEGORY BUDGET ROW ─────────────────────── */
+.catBudgetRow {
+  display: grid;
+  grid-template-columns: 130px 1fr 90px 14px 100px;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 0;
+}
+
+.catBudgetInput {
+  width: 100%;
+  padding: 5px 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 7px;
+  background: #fff;
+  color: #0d1b2a;
+  font: inherit;
+  font-size: 12px;
+  text-align: right;
+  outline: none;
+  transition: border-color .15s;
+}
+
+.catBudgetInput:focus { border-color: #f97316; }
+
+.catBudgetInput::placeholder { color: #cbd5e1; }
+
+.trafficDot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: background .2s;
+}
+
+/* ── FIXKOSTEN ───────────────────────────────── */
+.fixedList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fixedItem {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #eef2f7;
+}
+
+.fixedItemMain strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0d1b2a;
+  margin-bottom: 2px;
+}
+
+.fixedItemMain span {
+  font-size: 11px;
+  color: #64748b;
+}
+
 /* ── DARK MODE ─────────────────────────────────── */
 :global(html[data-theme='dark']) .page {
   background: var(--bg);
@@ -1553,5 +1748,56 @@
 :global(html[data-theme='dark']) .printBtn {
   background: var(--bg-soft);
   border-color: var(--border);
+  color: var(--text-muted);
+}
+
+/* New features dark mode */
+:global(html[data-theme='dark']) .annualColLabel {
+  color: var(--text-soft);
+}
+
+:global(html[data-theme='dark']) .annualLegend {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .annualTable th {
+  color: var(--text-soft);
+  border-bottom-color: var(--border);
+}
+
+:global(html[data-theme='dark']) .annualTable td {
+  color: var(--text);
+  border-bottom-color: var(--border-soft);
+}
+
+:global(html[data-theme='dark']) .annualTable td:first-child {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .annualTable tfoot td {
+  color: var(--text-strong);
+  border-top-color: var(--border);
+}
+
+:global(html[data-theme='dark']) .annualRowActive td {
+  background: rgba(249,115,22,.1);
+}
+
+:global(html[data-theme='dark']) .catBudgetInput {
+  background: var(--bg-soft);
+  border-color: var(--border);
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .fixedItem {
+  background: var(--bg-soft);
+  border-color: var(--border-soft);
+}
+
+:global(html[data-theme='dark']) .fixedItemMain strong {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .fixedItemMain span {
   color: var(--text-muted);
 }
