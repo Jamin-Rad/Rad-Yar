@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
-import { useRouter } from 'next/navigation'
+
 import styles from '../admin.module.css'
 
 const STORAGE_KEY = 'radyar_private_health_v1'
@@ -70,12 +70,6 @@ export default function HealthPage() {
     }
   }, [records])
 
-  async function handleLogout() {
-    await fetch('/api/admin/logout', { method: 'POST' })
-    document.documentElement.classList.remove('admin-copy-enabled')
-    router.push('/admin/login')
-  }
-
   function saveRecord(event) {
     event.preventDefault()
     const nextRecord = {
@@ -100,19 +94,6 @@ export default function HealthPage() {
 
   return (
     <div className={styles.page}>
-      <div className={styles.adminBar}>
-        <div className={styles.adminIdentity}>
-          <span className={styles.adminBadge}>Privat</span>
-          <strong>Kalorien & Sport</strong>
-        </div>
-        <div className={styles.headerActions}>
-          <Link className={styles.profileBtn} href="/admin">Admin-Dashboard</Link>
-          <Link className={styles.profileBtn} href="/admin/budget">Finanzen</Link>
-          <Link className={styles.profileBtn} href="/admin/private">Privat</Link>
-          <button className={styles.signOutBtn} onClick={handleLogout}>Admin abmelden</button>
-        </div>
-      </div>
-
       <main className={styles.content}>
         <div className={styles.budgetHero}>
           <div>

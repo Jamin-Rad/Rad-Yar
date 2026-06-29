@@ -1,8 +1,6 @@
 'use client'
 
-import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
-import { useRouter } from 'next/navigation'
 import styles from '../admin.module.css'
 
 const STORAGE_KEY = 'radyar_private_budget_v1'
@@ -154,12 +152,6 @@ export default function BudgetPage() {
     setMonth(getMonthKey(new Date(y, m, 1)))
   }
 
-  async function handleLogout() {
-    await fetch('/api/admin/logout', { method: 'POST' })
-    document.documentElement.classList.remove('admin-copy-enabled')
-    router.push('/admin/login')
-  }
-
   function updateMonth(updater) {
     setStore(prev => {
       const current = prev[month] || emptyMonth()
@@ -211,18 +203,6 @@ export default function BudgetPage() {
 
   return (
     <div className={styles.page}>
-      <div className={styles.adminBar}>
-        <div className={styles.adminIdentity}>
-          <span className={styles.adminBadge}>Privat</span>
-          <strong>Finanzen</strong>
-        </div>
-        <div className={styles.headerActions}>
-          <Link className={styles.profileBtn} href="/admin/health">Gesundheit</Link>
-          <Link className={styles.homeBtn} href="/">Hauptseite</Link>
-          <button className={styles.signOutBtn} onClick={handleLogout}>Abmelden</button>
-        </div>
-      </div>
-
       <main className={styles.content}>
 
         {/* Page header + month navigation */}

@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+
 import styles from '../admin.module.css'
 
 const STORAGE_KEY = 'radyar_private_notes_v1'
@@ -32,12 +32,6 @@ export default function PrivatePage() {
     if (loaded) localStorage.setItem(STORAGE_KEY, JSON.stringify(items))
   }, [items, loaded])
 
-  async function handleLogout() {
-    await fetch('/api/admin/logout', { method: 'POST' })
-    document.documentElement.classList.remove('admin-copy-enabled')
-    router.push('/admin/login')
-  }
-
   function addItem(event) {
     event.preventDefault()
     if (!form.title.trim()) return
@@ -63,19 +57,6 @@ export default function PrivatePage() {
 
   return (
     <div className={styles.page}>
-      <div className={styles.adminBar}>
-        <div className={styles.adminIdentity}>
-          <span className={styles.adminBadge}>Privat</span>
-          <strong>Dritte private Seite</strong>
-        </div>
-        <div className={styles.headerActions}>
-          <Link className={styles.profileBtn} href="/admin">Admin-Dashboard</Link>
-          <Link className={styles.profileBtn} href="/admin/health">Kalorien & Sport</Link>
-          <Link className={styles.profileBtn} href="/admin/budget">Finanzen</Link>
-          <button className={styles.signOutBtn} onClick={handleLogout}>Admin abmelden</button>
-        </div>
-      </div>
-
       <main className={styles.content}>
         <div className={styles.budgetHero}>
           <div>

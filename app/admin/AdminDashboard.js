@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+
 import { useEffect, useMemo, useState } from 'react'
 import styles from './admin.module.css'
 import { PROMO_LIMIT, PROMO_MONTHS, isSubscriptionActive } from '@/utils/subscription'
@@ -177,33 +177,10 @@ export default function AdminDashboard() {
     }
   }
 
-  async function handleLogout() {
-    await fetch('/api/admin/logout', { method: 'POST' })
-    document.documentElement.classList.remove('admin-copy-enabled')
-    router.push('/admin/login')
-  }
-
   const maxPageViews = Math.max(1, ...analytics.topPages.map(page => page.views))
 
   return (
     <div className={styles.page}>
-      <div className={styles.adminBar}>
-        <div className={styles.adminIdentity}>
-          <span className={styles.adminBadge}>Admin</span>
-          <strong>Administrationsprofil</strong>
-        </div>
-        <div className={styles.headerActions}>
-          <Link className={styles.profileBtn} href="/admin/health">Kalorien & Sport</Link>
-          <Link className={styles.profileBtn} href="/admin/budget">Finanzen</Link>
-          <Link className={styles.profileBtn} href="/admin/private">Privat</Link>
-          <Link className={styles.profileBtn} href="/profil">Ben-Profil</Link>
-          <Link className={styles.homeBtn} href="/">Zur Hauptseite</Link>
-          <button className={styles.signOutBtn} onClick={handleLogout}>
-            Admin abmelden
-          </button>
-        </div>
-      </div>
-
       <div className={styles.content}>
         <h1 className={styles.title}>Admin-Dashboard</h1>
         <p className={styles.sub}>Nutzer, Abonnements und Website-Nutzung im Überblick</p>
