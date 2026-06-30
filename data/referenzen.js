@@ -655,6 +655,24 @@ export const MESSWERTE = [
       {
         name: { de: 'Knie & Patella', en: 'Knee & Patella', fa: 'زانو و کشکک' },
         entries: [
+          {
+            s: { de: 'Mechanische femorotibiale Achse (mFTA / HKA)', en: 'Mechanical femorotibial axis (mFTA / HKA)', fa: 'محور مکانیکی فموروتیبیال (mFTA / HKA)' },
+            v: 'ca. 180° / 0° ± 3°',
+            h: {
+              de: 'Ganzbeinstandaufnahme: Winkel zwischen mechanischer Femurachse (Hüftkopfzentrum–Kniezentrum) und mechanischer Tibiaachse (Kniezentrum–Sprunggelenkzentrum). Je nach Konvention wird neutral als 180° oder als HKA 0° angegeben; Abweichung nach medial = Varus, nach lateral = Valgus.',
+              en: 'Standing long-leg radiograph: angle between the mechanical femoral axis (femoral head centre to knee centre) and mechanical tibial axis (knee centre to ankle centre). Depending on convention, neutral is reported as 180° or HKA 0°; medial deviation indicates varus, lateral deviation valgus.',
+              fa: 'رادیوگرافی ایستاده تمام اندام: زاویه بین محور مکانیکی فمور (مرکز سر فمور تا مرکز زانو) و محور مکانیکی تیبیا (مرکز زانو تا مرکز مچ). بسته به قرارداد، حالت خنثی به صورت ۱۸۰ درجه یا HKA برابر ۰ درجه گزارش می‌شود؛ انحراف به داخل واروس و به خارج والگوس است.',
+            },
+          },
+          {
+            s: { de: 'Traglinie / Mikulicz-Linie', en: 'Weight-bearing line / Mikulicz line', fa: 'خط تحمل وزن / خط میکولیچ' },
+            v: 'durch Kniezentrum, leicht medial',
+            h: {
+              de: 'Linie vom Hüftkopfzentrum zum Zentrum des oberen Sprunggelenks. Physiologisch verläuft sie durch das Kniezentrum oder gering medial davon; deutliche mediale Verlagerung spricht für Varus-, deutliche laterale Verlagerung für Valgusbelastung.',
+              en: 'Line from the femoral head centre to the centre of the ankle joint. Physiologically it passes through the knee centre or slightly medial to it; marked medial shift suggests varus loading, marked lateral shift valgus loading.',
+              fa: 'خطی از مرکز سر فمور تا مرکز مفصل مچ پا. به طور طبیعی از مرکز زانو یا کمی مدیال آن عبور می‌کند؛ جابه‌جایی واضح به مدیال به نفع بارگذاری واروس و جابه‌جایی واضح به لترال به نفع والگوس است.',
+            },
+          },
           { s: { de: 'Insall-Salvati-Index', en: 'Insall-Salvati index', fa: 'شاخص اینسال-سالواتی' }, v: '0,8–1,2', h: { de: '> 1,2 Patella alta; < 0,8 Patella baja', en: '> 1.2 patella alta; < 0.8 patella baja', fa: '> ۱٫۲ پاتلا آلتا؛ < ۰٫۸ باجا' } },
         ],
       },
