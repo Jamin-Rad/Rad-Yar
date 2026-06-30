@@ -88,6 +88,7 @@ const CLASSIFICATION_SEARCH_ALIASES = {
   'salter-harris': ['salter harris', 'salterharis', 'salter-haris', 'wachstumsfuge', 'epiphysenfuge', 'physis', 'kindesfraktur', 'child fracture', 'physeal fracture'],
   fazekas: ['fazekes', 'marklager', 'white matter'],
   'mta-score': ['mta', 'mediale temporalatrophie', 'hippocampus', 'alzheimer', 'demenz'],
+  modic: ['endplatte', 'abschlussplatte', 'wirbelkoerperabschlussplatte', 'wirbelkörperabschlussplatte', 'bone marrow', 'endplate', 'spine'],
   aspects: ['schlaganfall', 'stroke', 'mca'],
   'pc-aspects': ['posterior circulation', 'hintere zirkulation', 'basilaris'],
   recist: ['tumoransprechen', 'response'],

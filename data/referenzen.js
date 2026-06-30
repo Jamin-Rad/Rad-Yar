@@ -1708,18 +1708,32 @@ export const KLASSIFIKATIONEN = [
       },
       {
         id: 'modic',
-        name: { de: 'Modic', en: 'Modic', fa: 'مودیک' },
+        name: { de: 'Modic-Klassifikation', en: 'Modic classification', fa: 'مودیک' },
         kompakt: {
-          de: 'MRT-Typen reaktiver Knochenmarkveränderungen an Wirbelendplatten.',
-          en: 'Classifies reactive bone marrow changes at vertebral endplates on MRI: type 1 = oedema (T1↓ T2↑), type 2 = fatty (T1↑), type 3 = sclerosis (T1↓ T2↓).',
+          de: 'Reaktive Veränderungen der angrenzenden Wirbelkörperabschlussplatten im MRT.',
+          en: 'Reactive MRI changes of the adjacent vertebral body endplates.',
           fa: 'تغییرات واکنشی مغز استخوان در صفحات انتهایی مهره‌ها را در MRI طبقه‌بندی می‌کند: نوع ۱ = ادم (T1↓ T2↑)، نوع ۲ = چربی (T1↑)، نوع ۳ = اسکلروز (T1↓ T2↓).',
         },
+        image: {
+          src: '/referenzen/klassifikationen/modic.png',
+          alt: { de: 'Modic-Typen I bis III an Wirbelkörperabschlussplatten', en: 'Modic types I to III at vertebral endplates', fa: 'انواع مودیک I تا III در صفحات انتهایی مهره' },
+        },
         ref: 'Modic et al., Radiology 1988',
-        cols: [{ de: 'Typ', en: 'Type', fa: 'نوع' }, { de: 'Substrat', en: 'Substrate', fa: 'بستر' }, { de: 'Signal (T1 / T2)', en: 'Signal (T1 / T2)', fa: 'سیگنال (T1 / T2)' }],
+        cols: [{ de: 'Stadium', en: 'Stage', fa: 'نوع' }, { de: 'Pathologie', en: 'Pathology', fa: 'بستر' }, { de: 'T1-Signal', en: 'T1 signal', fa: 'سیگنال T1' }, { de: 'T2-Signal', en: 'T2 signal', fa: 'سیگنال T2' }],
         rows: [
-          ['1', { de: 'Ödem / Entzündung', en: 'Oedema / inflammation', fa: 'ادم / التهاب' }, 'T1 ↓ / T2 ↑'],
-          ['2', { de: 'Fettige Degeneration', en: 'Fatty degeneration', fa: 'دژنراسیون چربی' }, 'T1 ↑ / T2 ↔–↑'],
-          ['3', { de: 'Sklerose', en: 'Sclerosis', fa: 'اسکلروز' }, 'T1 ↓ / T2 ↓'],
+          [{ de: 'Modic I', en: 'Modic I', fa: 'Modic I' }, { de: 'Ödem (akut/aktiv)', en: 'Oedema (acute/active)', fa: 'ادم / التهاب' }, '↓', '↑'],
+          [{ de: 'Modic II', en: 'Modic II', fa: 'Modic II' }, { de: 'Fett (chronisch)', en: 'Fatty change (chronic)', fa: 'دژنراسیون چربی' }, '↑', '↑'],
+          [{ de: 'Modic III', en: 'Modic III', fa: 'Modic III' }, { de: 'Sklerose (Endstadium)', en: 'Sclerosis (end stage)', fa: 'اسکلروز' }, '↓', '↓'],
+        ],
+        detail: [
+          {
+            stage: { de: 'Befund-Tipp', en: 'Reporting tip', fa: 'نکته گزارش' },
+            text: {
+              de: 'Typ, Segmenthöhe und angrenzende Abschlussplatten nennen. Modic-I-Veränderungen können aktiv-entzündlich wirken und sollten bei Rückenschmerz oder Infektdifferenzialdiagnose im klinischen Kontext bewertet werden.',
+              en: 'Report type, spinal level and involved adjacent endplates. Modic type I can appear active/inflammatory and should be interpreted in clinical context, especially when infection is a differential diagnosis.',
+              fa: 'نوع، سطح ستون فقرات و صفحات انتهایی درگیر را گزارش کنید.',
+            },
+          },
         ],
       },
       {
