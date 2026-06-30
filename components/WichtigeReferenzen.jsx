@@ -637,16 +637,7 @@ function MesswerteModal({ copy, lang, onClose }) {
                 </table>
               </div>
               {(group.note || group.source || group.image) && (
-                <div className={styles.measurementFootnotes}>
-                  {group.note && <p className={styles.measurementNote}>{tx(group.note, lang)}</p>}
-                  {group.source && (
-                    <p className={styles.measurementSource}>
-                      {copy.reference}:{' '}
-                      <a href={group.source.url} target="_blank" rel="noreferrer">
-                        {tx(group.source.label, lang)}
-                      </a>
-                    </p>
-                  )}
+                <div className={`${styles.measurementFootnotes} ${group.image ? styles.measurementFootnotesWithImage : ''}`}>
                   {group.image && (
                     <figure className={styles.measurementImageFigure}>
                       <button
@@ -667,6 +658,17 @@ function MesswerteModal({ copy, lang, onClose }) {
                       </button>
                     </figure>
                   )}
+                  <div className={styles.measurementFootnoteText}>
+                    {group.note && <p className={styles.measurementNote}>{tx(group.note, lang)}</p>}
+                    {group.source && (
+                      <p className={styles.measurementSource}>
+                        {copy.reference}:{' '}
+                        <a href={group.source.url} target="_blank" rel="noreferrer">
+                          {tx(group.source.label, lang)}
+                        </a>
+                      </p>
+                    )}
+                  </div>
                 </div>
               )}
             </CollapseGroup>
