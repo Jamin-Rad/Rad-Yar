@@ -359,16 +359,31 @@ export const MESSWERTE = [
             s: { de: 'Optikusscheide / ONSD', en: 'Optic nerve sheath / ONSD', fa: 'غلاف عصب بینایی / ONSD' },
             v: '< 5,7 mm',
             h: {
-              de: 'Äußerer Durchmesser der Optikusscheide, 3 mm dorsal/posterior des Bulbus gemessen, senkrecht zur Verlaufsachse des N. opticus, von Außenkante zu Außenkante der Scheide. Nicht den reinen Durchmesser des N. opticus messen.',
-              en: 'Outer diameter of the optic nerve sheath, measured 3 mm posterior to the globe, perpendicular to the optic nerve axis, outer edge to outer edge of the sheath. Do not measure the optic nerve diameter alone.',
-              fa: 'قطر خارجی غلاف عصب بینایی، ۳ میلی‌متر خلف کره چشم، عمود بر محور عصب بینایی، از لبه خارجی تا لبه خارجی غلاف اندازه‌گیری شود؛ قطر خود عصب به‌تنهایی اندازه‌گیری نشود.',
+              de: [
+                'Messpunkt: 3 mm dorsal/posterior des Bulbus.',
+                'Messrichtung: senkrecht zur Verlaufsachse des N. opticus.',
+                'Messung: Außenkante zu Außenkante der Optikusscheide.',
+                'Nicht den reinen Durchmesser des N. opticus messen.',
+              ],
+              en: [
+                'Measurement point: 3 mm posterior to the globe.',
+                'Measurement direction: perpendicular to the optic nerve axis.',
+                'Measurement: outer edge to outer edge of the optic nerve sheath.',
+                'Do not measure the optic nerve diameter alone.',
+              ],
+              fa: [
+                'نقطه اندازه‌گیری: ۳ میلی‌متر خلف کره چشم.',
+                'جهت اندازه‌گیری: عمود بر محور عصب بینایی.',
+                'اندازه‌گیری: از لبه خارجی تا لبه خارجی غلاف عصب بینایی.',
+                'قطر خود عصب بینایی به‌تنهایی اندازه‌گیری نشود.',
+              ],
             },
           },
         ],
         note: {
-          de: 'ONSD beschreibt den Durchmesser der Optikusscheide und nicht den Durchmesser des N. opticus selbst. Die Messung dient als indirekter Bildgebungsparameter bei Verdacht auf erhöhten intrakraniellen Druck.',
-          en: 'ONSD describes the diameter of the optic nerve sheath, not the diameter of the optic nerve itself. It is used as an indirect imaging parameter when raised intracranial pressure is suspected.',
-          fa: 'ONSD قطر غلاف عصب بینایی را توصیف می‌کند، نه قطر خود عصب بینایی. این اندازه‌گیری به‌عنوان شاخص غیرمستقیم تصویربرداری در شک به افزایش فشار داخل جمجمه استفاده می‌شود.',
+          de: 'ONSD dient als indirekter Bildgebungsparameter bei Verdacht auf erhöhten intrakraniellen Druck.',
+          en: 'ONSD is used as an indirect imaging parameter when raised intracranial pressure is suspected.',
+          fa: 'ONSD به‌عنوان شاخص غیرمستقیم تصویربرداری در شک به افزایش فشار داخل جمجمه استفاده می‌شود.',
         },
         image: {
           src: '/referenzen/messwerte/sehnerv-onsd.png',
@@ -376,11 +391,6 @@ export const MESSWERTE = [
             de: 'Messung des Optikusscheidendurchmessers 3 mm posterior des Bulbus',
             en: 'Optic nerve sheath diameter measurement 3 mm posterior to the globe',
             fa: 'اندازه‌گیری قطر غلاف عصب بینایی ۳ میلی‌متر پشت کره چشم',
-          },
-          caption: {
-            de: 'ONSD: Messpunkt 3 mm posterior des Bulbus, Außenkante zu Außenkante der Optikusscheide.',
-            en: 'ONSD: measurement point 3 mm posterior to the globe, outer edge to outer edge of the optic nerve sheath.',
-            fa: 'ONSD: نقطه اندازه‌گیری ۳ میلی‌متر خلف کره چشم، از لبه خارجی تا لبه خارجی غلاف عصب بینایی.',
           },
         },
         source: {

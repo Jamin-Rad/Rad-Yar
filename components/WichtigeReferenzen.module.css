@@ -421,29 +421,89 @@
   text-decoration: none;
 }
 .measurementSource a:hover { text-decoration: underline; }
+.measurementList {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  padding: 0 0 0 17px;
+}
+[dir='rtl'] .measurementList {
+  padding: 0 17px 0 0;
+}
+.measurementList li::marker {
+  color: var(--ref-color, #2563eb);
+}
 .measurementImageFigure {
   margin: 10px 0 0;
+  width: min(100%, 420px);
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--ref-color, #94a3b8) 16%, #e2e8f0);
   border-radius: 14px;
   background: #020617;
   box-shadow: 0 16px 32px -28px rgba(15, 23, 42, .5);
 }
+.measurementImageButton {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
 .measurementImage {
   display: block;
   width: 100%;
   height: auto;
 }
-.measurementImageFigure figcaption {
-  margin: 0;
-  padding: 10px 12px;
-  color: #64748b;
-  background: color-mix(in srgb, var(--ref-color, #94a3b8) 5%, #fff);
-  border-top: 1px solid color-mix(in srgb, var(--ref-color, #94a3b8) 14%, #e2e8f0);
+.measurementImageButton span {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  color: #e0f2fe;
+  background: rgba(2, 6, 23, .74);
+  border: 1px solid rgba(255,255,255,.18);
   font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
-  font-size: 11.5px;
-  line-height: 1.55;
-  font-weight: 700;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 850;
+}
+.measurementZoomBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(2, 6, 23, .82);
+  backdrop-filter: blur(6px);
+  cursor: zoom-out;
+}
+.measurementZoomImage {
+  display: block;
+  width: min(96vw, 1180px);
+  height: auto;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 26px 80px rgba(0,0,0,.45);
+}
+.measurementZoomClose {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 1;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(15, 23, 42, .78);
+  font-size: 26px;
+  line-height: 34px;
+  cursor: pointer;
 }
 
 .tdName {
@@ -1178,11 +1238,6 @@
 :global(html[data-theme='dark']) .measurementImageFigure {
   border-color: color-mix(in srgb, var(--ref-color, #334155) 20%, rgba(148,163,184,.14));
   background: #020617;
-}
-:global(html[data-theme='dark']) .measurementImageFigure figcaption {
-  color: #8fa1ba;
-  background: color-mix(in srgb, var(--ref-color, #334155) 7%, #0b1526);
-  border-top-color: color-mix(in srgb, var(--ref-color, #334155) 18%, rgba(148,163,184,.12));
 }
 :global(html[data-theme='dark']) .tdName { color: #e5edf8; border-bottom-color: rgba(148,163,184,0.08); }
 :global(html[data-theme='dark']) .tdVal  { border-bottom-color: rgba(148,163,184,0.08); }
