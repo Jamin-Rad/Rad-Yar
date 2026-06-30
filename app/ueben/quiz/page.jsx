@@ -441,6 +441,12 @@ function QuizContent() {
           </div>
 
           {checked && (
+            <button className={styles.nextBtnFull} onClick={handleNext}>
+              {isLast ? ui.resultBtn : ui.nextBtn} →
+            </button>
+          )}
+
+          {checked && (
             <div className={`${styles.feedback} ${isCorrect ? styles.fbOk : styles.fbErr}`}>
               <div className={styles.fbHead}>
                 <span>{isCorrect ? '✅' : '❌'}</span>
@@ -460,12 +466,6 @@ function QuizContent() {
                   <div className={styles.fbText}>{wrongExplanation}</div>
                 </div>
               )}
-            </div>
-          )}
-
-          {checked && (
-            <div className={styles.actionRow}>
-              <button className={styles.nextBtn} onClick={handleNext}>{isLast ? ui.resultBtn : ui.nextBtn} →</button>
             </div>
           )}
         </div>
