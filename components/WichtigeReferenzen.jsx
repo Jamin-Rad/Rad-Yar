@@ -618,7 +618,7 @@ function MesswerteModal({ copy, lang, onClose }) {
           </h2>
           {region.groups.map((group,gi)=>(
             <CollapseGroup key={gi} name={tx(group.name,lang)} color={region.color}>
-              <div className={`${styles.tableWrap} ${group.image ? styles.tableWrapWithImage : ''}`}>
+              <div className={styles.tableWrap}>
                 <table className={styles.mTable}>
                   <thead><tr>
                     <th className={styles.thName}>{copy.colStruktur}</th>
@@ -635,28 +635,8 @@ function MesswerteModal({ copy, lang, onClose }) {
                     </tr>
                   ))}</tbody>
                 </table>
-                {group.image && (
-                  <figure className={styles.measurementImageFigure}>
-                    <button
-                      type="button"
-                      className={styles.measurementImageButton}
-                      onClick={() => setZoomImage(group.image)}
-                      aria-label={copy.zoomImage}
-                    >
-                      <Image
-                        src={group.image.src}
-                        alt={tx(group.image.alt, lang)}
-                        width={1448}
-                        height={1086}
-                        className={styles.measurementImage}
-                        sizes="170px"
-                      />
-                      <span>{copy.zoomImage}</span>
-                    </button>
-                  </figure>
-                )}
               </div>
-              {(group.note || group.source) && (
+              {(group.note || group.source || group.image) && (
                 <div className={styles.measurementFootnotes}>
                   {group.note && <p className={styles.measurementNote}>{tx(group.note, lang)}</p>}
                   {group.source && (
@@ -666,6 +646,26 @@ function MesswerteModal({ copy, lang, onClose }) {
                         {tx(group.source.label, lang)}
                       </a>
                     </p>
+                  )}
+                  {group.image && (
+                    <figure className={styles.measurementImageFigure}>
+                      <button
+                        type="button"
+                        className={styles.measurementImageButton}
+                        onClick={() => setZoomImage(group.image)}
+                        aria-label={copy.zoomImage}
+                      >
+                        <Image
+                          src={group.image.src}
+                          alt={tx(group.image.alt, lang)}
+                          width={1448}
+                          height={1086}
+                          className={styles.measurementImage}
+                          sizes="240px"
+                        />
+                        <span>{copy.zoomImage}</span>
+                      </button>
+                    </figure>
                   )}
                 </div>
               )}
