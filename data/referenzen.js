@@ -1823,15 +1823,30 @@ export const KLASSIFIKATIONEN = [
         id: 'vancouver',
         name: { de: 'Vancouver-Klassifikation', en: 'Vancouver classification', fa: 'طبقه‌بندی ونکوور' },
         kompakt: {
-          de: 'Einteilung periprothetischer Femurfrakturen nach Hüft-TEP. Entscheidend sind Frakturlokalisation, Stabilität der Prothese und Knochenqualität.',
-          en: 'Classification of periprosthetic femoral fractures after total hip arthroplasty. Key criteria are fracture location, implant stability and bone quality.',
-          fa: 'طبقه‌بندی شکستگی‌های فمور اطراف پروتز پس از تعویض کامل مفصل ران. معیارهای اصلی محل شکستگی، پایداری پروتز و کیفیت استخوان هستند.',
+          de: 'Einteilung periprothetischer Femurfrakturen nach Hüft-TEP.\nEntscheidend sind Frakturlokalisation, Stabilität der Prothese und Knochenqualität.',
+          en: 'Classification of periprosthetic femoral fractures after total hip arthroplasty.\nKey criteria are fracture location, implant stability and bone quality.',
+          fa: 'طبقه‌بندی شکستگی‌های فمور اطراف پروتز پس از تعویض کامل مفصل ران.\nمعیارهای اصلی محل شکستگی، پایداری پروتز و کیفیت استخوان هستند.',
         },
+        imagePosition: 'beforeTables',
         image: {
           src: '/referenzen/klassifikationen/vancouver.png',
           alt: { de: 'Vancouver-Klassifikation periprothetischer Femurfrakturen', en: 'Vancouver classification of periprosthetic femoral fractures', fa: 'طبقه‌بندی ونکوور شکستگی‌های فمور اطراف پروتز' },
         },
         ref: 'Vancouver classification of periprosthetic femoral fractures',
+        sources: [
+          { label: { de: 'Orthobullets – THA Periprosthetic Fracture', en: 'Orthobullets – THA Periprosthetic Fracture', fa: 'Orthobullets – THA Periprosthetic Fracture' }, url: 'https://www.orthobullets.com/recon/5013/tha-periprosthetic-fracture' },
+        ],
+        einfach: {
+          cols: [
+            { de: 'Typ', en: 'Type', fa: 'نوع' },
+            { de: 'Klassifikation', en: 'Classification', fa: 'طبقه‌بندی' },
+          ],
+          rows: [
+            [{ de: 'Typ A', en: 'Type A', fa: 'نوع A' }, { de: 'Region des Trochanters: AG Trochanter major, AL Trochanter minor.', en: 'Trochanteric region: AG greater trochanter, AL lesser trochanter.', fa: 'ناحیه تروکانتر: AG تروکانتر بزرگ، AL تروکانتر کوچک.' }],
+            [{ de: 'Typ B', en: 'Type B', fa: 'نوع B' }, { de: 'Fraktur im Bereich des Prothesenschafts; Unterteilung nach Prothesenstabilität und Knochenqualität.', en: 'Fracture around the prosthetic stem; subdivided by implant stability and bone quality.', fa: 'شکستگی در ناحیه ساقه پروتز؛ بر اساس پایداری پروتز و کیفیت استخوان تقسیم می‌شود.' }],
+            [{ de: 'Typ C', en: 'Type C', fa: 'نوع C' }, { de: 'Fraktur distal des Prothesenschafts unterhalb der Prothesenspitze.', en: 'Fracture distal to the prosthetic stem below the stem tip.', fa: 'شکستگی دیستال نسبت به ساقه پروتز و زیر نوک پروتز.' }],
+          ],
+        },
         cols: [
           { de: 'Typ', en: 'Type', fa: 'نوع' },
           { de: 'Lokalisation / Stabilität', en: 'Location / stability', fa: 'محل / پایداری' },
