@@ -434,13 +434,13 @@
   color: var(--ref-color, #2563eb);
 }
 .measurementImageFigure {
-  margin: 10px 0 0;
-  width: min(100%, 420px);
+  margin: 8px 0 0 auto;
+  width: min(100%, 220px);
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--ref-color, #94a3b8) 16%, #e2e8f0);
-  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--ref-color, #94a3b8) 18%, #e2e8f0);
+  border-radius: 10px;
   background: #020617;
-  box-shadow: 0 16px 32px -28px rgba(15, 23, 42, .5);
+  box-shadow: 0 10px 22px -20px rgba(15, 23, 42, .55);
 }
 .measurementImageButton {
   position: relative;
@@ -458,15 +458,15 @@
 }
 .measurementImageButton span {
   position: absolute;
-  right: 10px;
-  bottom: 10px;
-  padding: 5px 9px;
+  right: 6px;
+  bottom: 6px;
+  padding: 4px 7px;
   border-radius: 999px;
   color: #e0f2fe;
   background: rgba(2, 6, 23, .74);
   border: 1px solid rgba(255,255,255,.18);
   font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
-  font-size: 10px;
+  font-size: 9px;
   line-height: 1;
   font-weight: 850;
 }

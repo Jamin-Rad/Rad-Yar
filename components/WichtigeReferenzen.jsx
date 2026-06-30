@@ -631,31 +631,31 @@ function MesswerteModal({ copy, lang, onClose }) {
                       <td className={styles.tdVal}>{e.v}</td>
                       <td className={styles.tdNote}>
                         <MeasurementText value={e.h} lang={lang} />
+                        {group.image && ei === group.entries.length - 1 && (
+                          <figure className={styles.measurementImageFigure}>
+                            <button
+                              type="button"
+                              className={styles.measurementImageButton}
+                              onClick={() => setZoomImage(group.image)}
+                              aria-label={copy.zoomImage}
+                            >
+                              <Image
+                                src={group.image.src}
+                                alt={tx(group.image.alt, lang)}
+                                width={1448}
+                                height={1086}
+                                className={styles.measurementImage}
+                                sizes="220px"
+                              />
+                              <span>{copy.zoomImage}</span>
+                            </button>
+                          </figure>
+                        )}
                       </td>
                     </tr>
                   ))}</tbody>
                 </table>
               </div>
-              {group.image && (
-                <figure className={styles.measurementImageFigure}>
-                  <button
-                    type="button"
-                    className={styles.measurementImageButton}
-                    onClick={() => setZoomImage(group.image)}
-                    aria-label={copy.zoomImage}
-                  >
-                    <Image
-                      src={group.image.src}
-                      alt={tx(group.image.alt, lang)}
-                      width={1448}
-                      height={1086}
-                      className={styles.measurementImage}
-                      sizes="(max-width: 760px) 58vw, 420px"
-                    />
-                    <span>{copy.zoomImage}</span>
-                  </button>
-                </figure>
-              )}
               {(group.note || group.source) && (
                 <div className={styles.measurementFootnotes}>
                   {group.note && <p className={styles.measurementNote}>{tx(group.note, lang)}</p>}
