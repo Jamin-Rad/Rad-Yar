@@ -621,6 +621,21 @@ function MesswerteModal({ copy, lang, onClose }) {
                   ))}</tbody>
                 </table>
               </div>
+              {group.image && (
+                <figure className={styles.measurementImageFigure}>
+                  <Image
+                    src={group.image.src}
+                    alt={tx(group.image.alt, lang)}
+                    width={1448}
+                    height={1086}
+                    className={styles.measurementImage}
+                    sizes="(max-width: 760px) 92vw, 760px"
+                  />
+                  {group.image.caption && (
+                    <figcaption>{tx(group.image.caption, lang)}</figcaption>
+                  )}
+                </figure>
+              )}
               {(group.note || group.source) && (
                 <div className={styles.measurementFootnotes}>
                   {group.note && <p className={styles.measurementNote}>{tx(group.note, lang)}</p>}
