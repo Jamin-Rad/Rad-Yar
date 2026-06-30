@@ -381,7 +381,7 @@
   min-height: 180px;
 }
 .tableWrapWithImage .tdNote {
-  padding-inline-end: 194px;
+  padding-inline-start: 194px;
 }
 .mTable {
   width: 100%; border-collapse: collapse; font-size: 13.5px;
@@ -442,7 +442,7 @@
 }
 .measurementImageFigure {
   position: absolute;
-  right: 10px;
+  left: 10px;
   bottom: 10px;
   z-index: 2;
   margin: 0;
@@ -519,12 +519,12 @@
 
 @media (max-width: 640px) {
   .tableWrapWithImage .tdNote {
-    padding-inline-end: 14px;
+    padding-inline-start: 14px;
     padding-bottom: 116px;
   }
   .measurementImageFigure {
     width: 140px;
-    right: 8px;
+    left: 8px;
     bottom: 8px;
   }
   .measurementImageButton span {
