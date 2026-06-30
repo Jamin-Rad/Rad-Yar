@@ -268,6 +268,96 @@
 .cellRest  { color: #a8bfd4; }
 [dir='rtl'] .cellFirst { white-space: normal; }
 
+.groupStack {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--ref-color) 11%, transparent), transparent 46%),
+    rgba(0,0,0,0.08);
+  overflow-x: auto;
+}
+.groupRow {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.22fr) minmax(0, 1fr);
+  gap: 10px;
+  min-width: 620px;
+}
+.groupType {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  padding: 16px;
+  border: 1px solid color-mix(in srgb, var(--ref-color) 38%, transparent);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--ref-color) 12%, rgba(0,0,0,0.2));
+}
+.groupType strong {
+  color: var(--ref-color);
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+}
+.groupType span {
+  color: #9ab4cc;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.groupItems {
+  display: grid;
+  gap: 8px;
+}
+.groupItem {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1.25fr) minmax(180px, 0.9fr);
+  align-items: stretch;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid rgba(148,163,184,0.12);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.026);
+}
+.groupCode {
+  display: grid;
+  place-items: center;
+  color: #07111f;
+  background: var(--ref-color);
+  font-size: 16px;
+  font-weight: 950;
+}
+.groupText,
+.groupTherapy {
+  padding: 12px 14px;
+  line-height: 1.45;
+}
+.groupText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.groupText strong {
+  color: #dce9f6;
+  font-size: 13.5px;
+}
+.groupText span {
+  color: #7995af;
+  font-size: 12px;
+}
+.groupTherapy {
+  display: flex;
+  align-items: center;
+  color: #a8bfd4;
+  font-size: 12.5px;
+  border-left: 1px solid rgba(148,163,184,0.1);
+  background: rgba(0,0,0,0.14);
+}
+[dir='rtl'] .groupTherapy {
+  border-left: none;
+  border-right: 1px solid rgba(148,163,184,0.1);
+}
+
 /* ── Detail-Stadien ──────────────────────────────────────────────────────── */
 .detailList { display: flex; flex-direction: column; gap: 10px; padding: 12px; }
 .detailBlock {
@@ -318,6 +408,13 @@
 :global(html[data-theme='light']) .table thead th { background: #fafbfc; color: #94a3b8; }
 :global(html[data-theme='light']) .table tbody td { border-color: #f1f5f9; color: #334155; }
 :global(html[data-theme='light']) .cellRest { color: #334155; }
+:global(html[data-theme='light']) .groupStack { background: color-mix(in srgb, var(--ref-color) 5%, #fff); }
+:global(html[data-theme='light']) .groupType { background: color-mix(in srgb, var(--ref-color) 8%, #fff); }
+:global(html[data-theme='light']) .groupType span { color: #475569; }
+:global(html[data-theme='light']) .groupItem { background: #fff; border-color: #e2e8f0; }
+:global(html[data-theme='light']) .groupText strong { color: #1e293b; }
+:global(html[data-theme='light']) .groupText span { color: #64748b; }
+:global(html[data-theme='light']) .groupTherapy { color: #334155; background: #f8fafc; }
 :global(html[data-theme='light']) .infoPanel {
   background: #fcfcfd;
   border-color: color-mix(in srgb, var(--ref-color) 18%, #e2e8f0);

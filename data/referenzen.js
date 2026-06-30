@@ -1834,7 +1834,7 @@ export const KLASSIFIKATIONEN = [
         },
         ref: 'Vancouver classification of periprosthetic femoral fractures',
         sources: [
-          { label: { de: 'Orthobullets – THA Periprosthetic Fracture', en: 'Orthobullets – THA Periprosthetic Fracture', fa: 'Orthobullets – THA Periprosthetic Fracture' }, url: 'https://www.orthobullets.com/recon/5013/tha-periprosthetic-fracture' },
+          { label: { de: 'Duncan & Masri, Instr Course Lect 1995', en: 'Duncan & Masri, Instr Course Lect 1995', fa: 'Duncan & Masri, Instr Course Lect 1995' }, url: 'https://pubmed.ncbi.nlm.nih.gov/?term=%22Fractures+of+the+femur+after+hip+replacement%22' },
         ],
         einfach: {
           cols: [
@@ -1868,6 +1868,62 @@ export const KLASSIFIKATIONEN = [
             { de: 'Fraktur distal des Prothesenschafts unterhalb der Prothesenspitze; Schaft stabil.', en: 'Fracture distal to the stem below the stem tip; stable stem.', fa: 'شکستگی دیستال نسبت به ساقه پروتز و زیر نوک پروتز؛ ساقه پایدار است.' },
             { de: 'Therapie wie bei normaler Femurschaftfraktur, meist Plattenosteosynthese; Hüft-TEP bleibt erhalten.', en: 'Treat like a native femoral shaft fracture, usually plate osteosynthesis; hip implant is retained.', fa: 'درمان مانند شکستگی معمول شفت فمور، اغلب با پلاک؛ پروتز ران حفظ می‌شود.' },
           ],
+        ],
+        groupedRows: [
+          {
+            type: { de: 'Typ A', en: 'Type A', fa: 'نوع A' },
+            location: { de: 'Trochanterregion', en: 'Trochanteric region', fa: 'ناحیه تروکانتر' },
+            items: [
+              {
+                code: 'AG',
+                finding: { de: 'Fraktur des Trochanter major', en: 'Greater trochanter fracture', fa: 'شکستگی تروکانتر بزرگ' },
+                note: { de: 'Prothese sitzt stabil', en: 'Stable implant', fa: 'پروتز پایدار است' },
+                therapy: { de: 'oft konservative Therapie möglich', en: 'often suitable for conservative treatment', fa: 'اغلب درمان محافظه‌کارانه ممکن است' },
+              },
+              {
+                code: 'AL',
+                finding: { de: 'Fraktur des Trochanter minor', en: 'Lesser trochanter fracture', fa: 'شکستگی تروکانتر کوچک' },
+                note: { de: 'Prothese sitzt stabil', en: 'Stable implant', fa: 'پروتز پایدار است' },
+                therapy: { de: 'oft konservative Therapie möglich', en: 'often suitable for conservative treatment', fa: 'اغلب درمان محافظه‌کارانه ممکن است' },
+              },
+            ],
+          },
+          {
+            type: { de: 'Typ B', en: 'Type B', fa: 'نوع B' },
+            location: { de: 'Bereich des Prothesenschafts', en: 'Around the prosthetic stem', fa: 'اطراف ساقه پروتز' },
+            items: [
+              {
+                code: 'B1',
+                finding: { de: 'Prothese stabil, Knochen gut', en: 'Stable implant, good bone stock', fa: 'پروتز پایدار، کیفیت استخوان خوب' },
+                note: { de: 'Fraktur am Schaft bei stabilem Implantat', en: 'Stem-region fracture with stable implant', fa: 'شکستگی اطراف ساقه با پروتز پایدار' },
+                therapy: { de: 'Osteosynthese möglich', en: 'osteosynthesis is possible', fa: 'استئوسنتز امکان‌پذیر است' },
+              },
+              {
+                code: 'B2',
+                finding: { de: 'Prothese locker, Knochen gut', en: 'Loose implant, good bone stock', fa: 'پروتز لق، کیفیت استخوان خوب' },
+                note: { de: 'Stabilität der Prothese entscheidet', en: 'Implant stability is decisive', fa: 'پایداری پروتز تعیین‌کننده است' },
+                therapy: { de: 'Revisions-TEP erforderlich', en: 'revision arthroplasty is required', fa: 'تعویض/بازنگری پروتز لازم است' },
+              },
+              {
+                code: 'B3',
+                finding: { de: 'Prothese locker, Knochen schlecht', en: 'Loose implant, poor bone stock', fa: 'پروتز لق، کیفیت استخوان نامناسب' },
+                note: { de: 'Knochenverlust mit einbeziehen', en: 'Consider associated bone loss', fa: 'کاهش استخوان را هم در نظر بگیرید' },
+                therapy: { de: 'Revisions-TEP plus alloplastischer Aufbau, z. B. Allograft oder langer Schaft', en: 'revision arthroplasty plus reconstruction, e.g. allograft or long stem', fa: 'تعویض/بازنگری پروتز همراه با بازسازی، مانند آلوگرافت یا ساقه بلند' },
+              },
+            ],
+          },
+          {
+            type: { de: 'Typ C', en: 'Type C', fa: 'نوع C' },
+            location: { de: 'Distal des Prothesenschafts', en: 'Distal to the prosthetic stem', fa: 'دیستال نسبت به ساقه پروتز' },
+            items: [
+              {
+                code: 'C',
+                finding: { de: 'Fraktur unterhalb der Prothesenspitze, Schaft stabil', en: 'Fracture below the stem tip, stable stem', fa: 'شکستگی زیر نوک پروتز، ساقه پایدار' },
+                note: { de: 'Hüft-TEP bleibt in der Regel erhalten', en: 'Hip implant is usually retained', fa: 'پروتز ران معمولا حفظ می‌شود' },
+                therapy: { de: 'wie normale Femurschaftfraktur, meist Plattenosteosynthese', en: 'treat like a native femoral shaft fracture, usually plate osteosynthesis', fa: 'مانند شکستگی معمول شفت فمور، اغلب با پلاک' },
+              },
+            ],
+          },
         ],
       },
       {
@@ -2435,7 +2491,7 @@ const CLASSIFICATION_FA_ENHANCEMENTS = {
 }
 
 function mergeClassificationEnhancement(base = {}, localized = {}) {
-  return {
+  const merged = {
     ...base,
     ...localized,
     erklaerung: { ...(base.erklaerung || {}), ...(localized.erklaerung || {}) },
@@ -2450,8 +2506,11 @@ function mergeClassificationEnhancement(base = {}, localized = {}) {
           }
         })
       : undefined,
-    sources: base.sources,
   }
+  if (base.sources || localized.sources) {
+    merged.sources = localized.sources || base.sources
+  }
+  return merged
 }
 
 const KLASSIFIKATIONEN_ERWEITERT = KLASSIFIKATIONEN.map(topic => ({

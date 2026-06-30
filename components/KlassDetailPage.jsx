@@ -100,6 +100,33 @@ function ClassTable({ cols, rows, lang }) {
   )
 }
 
+function GroupedClassStack({ groups, lang }) {
+  return (
+    <div className={styles.groupStack}>
+      {groups.map(group => (
+        <section className={styles.groupRow} key={tx(group.type, lang)}>
+          <div className={styles.groupType}>
+            <strong>{tx(group.type, lang)}</strong>
+            {group.location && <span>{tx(group.location, lang)}</span>}
+          </div>
+          <div className={styles.groupItems}>
+            {group.items.map(subtype => (
+              <article className={styles.groupItem} key={tx(subtype.code, lang)}>
+                <div className={styles.groupCode}>{tx(subtype.code, lang)}</div>
+                <div className={styles.groupText}>
+                  <strong>{tx(subtype.finding, lang)}</strong>
+                  {subtype.note && <span>{tx(subtype.note, lang)}</span>}
+                </div>
+                {subtype.therapy && <div className={styles.groupTherapy}>{tx(subtype.therapy, lang)}</div>}
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  )
+}
+
 function InfoText({ text }) {
   return (
     <p>
@@ -344,8 +371,12 @@ export default function KlassDetailPage({ topic, item, section = 'klassifikation
                 </div>
               ) : (
                 <div id="vollstaendig">
-                  <CollapseSection title={isAnatomie ? copy.voll : copy.vollstaendig} color={color} defaultOpen={!item.einfach}>
-                    <ClassTable cols={item.cols} rows={item.rows} lang={lang} />
+                  <CollapseSection title={isAnatomie ? copy.voll : copy.vollstaendig} color={color} defaultOpen={!item.einfach || Boolean(item.groupedRows)}>
+                    {item.groupedRows ? (
+                      <GroupedClassStack groups={item.groupedRows} lang={lang} />
+                    ) : (
+                      <ClassTable cols={item.cols} rows={item.rows} lang={lang} />
+                    )}
                     {item.tableNote && (
                       <div className={styles.tableNote}>
                         <span className={styles.tableNoteStart}>⬤ {tx(item.tableNote.start, lang)}</span>
