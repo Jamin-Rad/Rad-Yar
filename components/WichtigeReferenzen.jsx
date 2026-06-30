@@ -90,6 +90,7 @@ const CLASSIFICATION_SEARCH_ALIASES = {
   fazekas: ['fazekes', 'marklager', 'white matter'],
   'mta-score': ['mta', 'mediale temporalatrophie', 'hippocampus', 'alzheimer', 'demenz'],
   modic: ['endplatte', 'abschlussplatte', 'wirbelkoerperabschlussplatte', 'wirbelkörperabschlussplatte', 'bone marrow', 'endplate', 'spine'],
+  vancouver: ['vancover', 'periprothetisch', 'periprothetische fraktur', 'hueft tep', 'hüft tep', 'prothesenschaft', 'femurfraktur'],
   aspects: ['schlaganfall', 'stroke', 'mca'],
   'pc-aspects': ['posterior circulation', 'hintere zirkulation', 'basilaris'],
   recist: ['tumoransprechen', 'response'],

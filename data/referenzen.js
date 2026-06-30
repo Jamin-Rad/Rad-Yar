@@ -1820,6 +1820,57 @@ export const KLASSIFIKATIONEN = [
         ],
       },
       {
+        id: 'vancouver',
+        name: { de: 'Vancouver-Klassifikation', en: 'Vancouver classification', fa: 'طبقه‌بندی ونکوور' },
+        kompakt: {
+          de: 'Einteilung periprothetischer Femurfrakturen nach Hüft-TEP. Entscheidend sind Frakturlokalisation, Stabilität der Prothese und Knochenqualität.',
+          en: 'Classification of periprosthetic femoral fractures after total hip arthroplasty. Key criteria are fracture location, implant stability and bone quality.',
+          fa: 'طبقه‌بندی شکستگی‌های فمور اطراف پروتز پس از تعویض کامل مفصل ران. معیارهای اصلی محل شکستگی، پایداری پروتز و کیفیت استخوان هستند.',
+        },
+        image: {
+          src: '/referenzen/klassifikationen/vancouver.png',
+          alt: { de: 'Vancouver-Klassifikation periprothetischer Femurfrakturen', en: 'Vancouver classification of periprosthetic femoral fractures', fa: 'طبقه‌بندی ونکوور شکستگی‌های فمور اطراف پروتز' },
+        },
+        ref: 'Vancouver classification of periprosthetic femoral fractures',
+        cols: [
+          { de: 'Typ', en: 'Type', fa: 'نوع' },
+          { de: 'Lokalisation / Stabilität', en: 'Location / stability', fa: 'محل / پایداری' },
+          { de: 'Therapieprinzip', en: 'Treatment principle', fa: 'اصل درمان' },
+        ],
+        rows: [
+          [
+            { de: 'AG', en: 'AG', fa: 'AG' },
+            { de: 'Fraktur des Trochanter major. Prothese stabil.', en: 'Greater trochanter fracture. Stable implant.', fa: 'شکستگی تروکانتر بزرگ؛ پروتز پایدار است.' },
+            { de: 'Oft konservative Therapie möglich.', en: 'Often suitable for conservative treatment.', fa: 'اغلب درمان محافظه‌کارانه ممکن است.' },
+          ],
+          [
+            { de: 'AL', en: 'AL', fa: 'AL' },
+            { de: 'Fraktur des Trochanter minor. Prothese stabil.', en: 'Lesser trochanter fracture. Stable implant.', fa: 'شکستگی تروکانتر کوچک؛ پروتز پایدار است.' },
+            { de: 'Oft konservative Therapie möglich.', en: 'Often suitable for conservative treatment.', fa: 'اغلب درمان محافظه‌کارانه ممکن است.' },
+          ],
+          [
+            { de: 'B1', en: 'B1', fa: 'B1' },
+            { de: 'Fraktur im Bereich des Prothesenschafts; Prothese stabil, Knochen gut.', en: 'Fracture around the stem; stable implant, good bone stock.', fa: 'شکستگی در ناحیه ساقه پروتز؛ پروتز پایدار و کیفیت استخوان خوب است.' },
+            { de: 'Osteosynthese möglich.', en: 'Osteosynthesis is possible.', fa: 'استئوسنتز امکان‌پذیر است.' },
+          ],
+          [
+            { de: 'B2', en: 'B2', fa: 'B2' },
+            { de: 'Fraktur im Bereich des Prothesenschafts; Prothese locker, Knochen gut.', en: 'Fracture around the stem; loose implant, good bone stock.', fa: 'شکستگی در ناحیه ساقه پروتز؛ پروتز لق ولی کیفیت استخوان خوب است.' },
+            { de: 'Revisions-TEP erforderlich.', en: 'Revision arthroplasty is required.', fa: 'تعویض/بازنگری پروتز لازم است.' },
+          ],
+          [
+            { de: 'B3', en: 'B3', fa: 'B3' },
+            { de: 'Fraktur im Bereich des Prothesenschafts; Prothese locker, Knochen schlecht mit Knochenverlust.', en: 'Fracture around the stem; loose implant, poor bone stock with bone loss.', fa: 'شکستگی در ناحیه ساقه پروتز؛ پروتز لق و کیفیت استخوان نامناسب همراه با کاهش استخوان است.' },
+            { de: 'Revisions-TEP plus alloplastischer Aufbau, z. B. Allograft oder langer Schaft.', en: 'Revision arthroplasty plus reconstruction, e.g. allograft or long stem.', fa: 'تعویض/بازنگری پروتز همراه با بازسازی، مانند آلوگرافت یا ساقه بلند.' },
+          ],
+          [
+            { de: 'C', en: 'C', fa: 'C' },
+            { de: 'Fraktur distal des Prothesenschafts unterhalb der Prothesenspitze; Schaft stabil.', en: 'Fracture distal to the stem below the stem tip; stable stem.', fa: 'شکستگی دیستال نسبت به ساقه پروتز و زیر نوک پروتز؛ ساقه پایدار است.' },
+            { de: 'Therapie wie bei normaler Femurschaftfraktur, meist Plattenosteosynthese; Hüft-TEP bleibt erhalten.', en: 'Treat like a native femoral shaft fracture, usually plate osteosynthesis; hip implant is retained.', fa: 'درمان مانند شکستگی معمول شفت فمور، اغلب با پلاک؛ پروتز ران حفظ می‌شود.' },
+          ],
+        ],
+      },
+      {
         id: 'garden',
         name: { de: 'Garden', en: 'Garden', fa: 'گاردن' },
         kompakt: {
