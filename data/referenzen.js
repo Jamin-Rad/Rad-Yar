@@ -1685,27 +1685,9 @@ export const KLASSIFIKATIONEN = [
     ],
   },
   {
-    id: 'msk', color: '#f97316', iconId: 'msk',
-    name: { de: 'MSK', en: 'MSK', fa: 'اسکلتی-عضلانی' },
+    id: 'wirbelsaeule', color: '#0d9488', iconId: 'wirbelsaeule',
+    name: { de: 'Wirbelsäule', en: 'Spine', fa: 'ستون فقرات' },
     items: [
-      {
-        id: 'pfirrmann',
-        name: { de: 'Pfirrmann', en: 'Pfirrmann', fa: 'فیرمن' },
-        kompakt: {
-          de: 'T2-MRT-Gradierung (I–V) der Bandscheibendegeneration.',
-          en: 'Grades intervertebral disc degeneration on T2 MRI (grade I–V) by signal, structure and height.',
-          fa: 'دژنراسیون دیسک بین‌مهره‌ای را در T2 MRI بر اساس سیگنال، ساختار و ارتفاع (درجه I–V) درجه‌بندی می‌کند.',
-        },
-        ref: 'Pfirrmann et al., Spine 2001',
-        cols: [{ de: 'Grad', en: 'Grade', fa: 'درجه' }, { de: 'Befund (T2)', en: 'Finding (T2)', fa: 'یافته (T2)' }],
-        rows: [
-          ['I', { de: 'Homogen hyperintens, normale Höhe', en: 'Homogeneous hyperintense, normal height', fa: 'همگن هایپرانتنس، ارتفاع طبیعی' }],
-          ['II', { de: 'Inhomogen, klare Grenze Anulus/Nucleus', en: 'Inhomogeneous, clear annulus/nucleus border', fa: 'ناهمگن، مرز آنولوس/نوکلئوس واضح' }],
-          ['III', { de: 'Inhomogen grau, leichte Höhenminderung', en: 'Inhomogeneous grey, mild height loss', fa: 'ناهمگن خاکستری، کاهش خفیف ارتفاع' }],
-          ['IV', { de: 'Grau-schwarz, mäßige Höhenminderung', en: 'Grey-black, moderate height loss', fa: 'خاکستری-سیاه، کاهش متوسط ارتفاع' }],
-          ['V', { de: 'Schwarz, Bandscheibenraum kollabiert', en: 'Black, collapsed disc space', fa: 'سیاه، فضای دیسک تخریب شده' }],
-        ],
-      },
       {
         id: 'modic',
         name: { de: 'Modic-Klassifikation', en: 'Modic classification', fa: 'مودیک' },
@@ -1734,6 +1716,30 @@ export const KLASSIFIKATIONEN = [
               fa: 'نوع، سطح ستون فقرات و صفحات انتهایی درگیر را گزارش کنید.',
             },
           },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'msk', color: '#f97316', iconId: 'msk',
+    name: { de: 'MSK', en: 'MSK', fa: 'اسکلتی-عضلانی' },
+    items: [
+      {
+        id: 'pfirrmann',
+        name: { de: 'Pfirrmann', en: 'Pfirrmann', fa: 'فیرمن' },
+        kompakt: {
+          de: 'T2-MRT-Gradierung (I–V) der Bandscheibendegeneration.',
+          en: 'Grades intervertebral disc degeneration on T2 MRI (grade I–V) by signal, structure and height.',
+          fa: 'دژنراسیون دیسک بین‌مهره‌ای را در T2 MRI بر اساس سیگنال، ساختار و ارتفاع (درجه I–V) درجه‌بندی می‌کند.',
+        },
+        ref: 'Pfirrmann et al., Spine 2001',
+        cols: [{ de: 'Grad', en: 'Grade', fa: 'درجه' }, { de: 'Befund (T2)', en: 'Finding (T2)', fa: 'یافته (T2)' }],
+        rows: [
+          ['I', { de: 'Homogen hyperintens, normale Höhe', en: 'Homogeneous hyperintense, normal height', fa: 'همگن هایپرانتنس، ارتفاع طبیعی' }],
+          ['II', { de: 'Inhomogen, klare Grenze Anulus/Nucleus', en: 'Inhomogeneous, clear annulus/nucleus border', fa: 'ناهمگن، مرز آنولوس/نوکلئوس واضح' }],
+          ['III', { de: 'Inhomogen grau, leichte Höhenminderung', en: 'Inhomogeneous grey, mild height loss', fa: 'ناهمگن خاکستری، کاهش خفیف ارتفاع' }],
+          ['IV', { de: 'Grau-schwarz, mäßige Höhenminderung', en: 'Grey-black, moderate height loss', fa: 'خاکستری-سیاه، کاهش متوسط ارتفاع' }],
+          ['V', { de: 'Schwarz, Bandscheibenraum kollabiert', en: 'Black, collapsed disc space', fa: 'سیاه، فضای دیسک تخریب شده' }],
         ],
       },
       {

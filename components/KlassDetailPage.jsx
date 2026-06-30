@@ -16,6 +16,7 @@ const TOPIC_LOGOS = {
   thorax: '/fach/thorax.png',
   abdomen: '/fach/abdomen.png',
   'mamma-uro': '/fach/mamma.png',
+  wirbelsaeule: '/fach/wirbelsaeule.png',
   msk: '/fach/msk.png',
   onko: '/fach/technik.png',
 }

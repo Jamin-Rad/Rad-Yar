@@ -33,6 +33,7 @@ const CLASSIFICATION_TOPIC_LOGOS = {
   mamma: '/fach/mamma.png',
   urogenital: '/fach/becken-m.png',
   'mamma-uro': '/fach/mamma.png',
+  wirbelsaeule: '/fach/wirbelsaeule.png',
   msk: '/fach/msk.png',
   onko: '/fach/technik.png',
 }
@@ -238,6 +239,7 @@ function buildClassificationTopics(sourceTopics) {
       mammaUro.items.filter(item => ['pi-rads', 'harnstau-grad'].includes(item.id)),
       '#0ea5e9',
     ),
+    byId.wirbelsaeule,
     byId.msk,
     byId.onko,
   ].filter(Boolean)
