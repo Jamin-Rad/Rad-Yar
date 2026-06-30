@@ -37,6 +37,8 @@ const UI = {
     noQSub: 'Die Fragendatenbank wird laufend erweitert.',
     backSetup: '← Zur Auswahl',
     questionOf: (c, t) => `Frage ${c} von ${t}`,
+    confirmQ: 'Bist du sicher?',
+    confirmBtn: 'Bestätigen',
     checkBtn: 'Antwort prüfen',
     nextBtn: 'Nächste Frage',
     resultBtn: 'Ergebnis anzeigen',
@@ -66,6 +68,8 @@ const UI = {
     noQSub: 'The question database is continuously growing.',
     backSetup: '← Back to setup',
     questionOf: (c, t) => `Question ${c} of ${t}`,
+    confirmQ: 'Are you sure?',
+    confirmBtn: 'Confirm',
     checkBtn: 'Check answer',
     nextBtn: 'Next question',
     resultBtn: 'Show results',
@@ -95,6 +99,8 @@ const UI = {
     noQSub: 'بانک سوالات در حال توسعه است.',
     backSetup: '← بازگشت به انتخاب',
     questionOf: (c, t) => `سوال ${c} از ${t}`,
+    confirmQ: 'مطمئنی؟',
+    confirmBtn: 'تأیید',
     checkBtn: 'بررسی پاسخ',
     nextBtn: 'سوال بعدی',
     resultBtn: 'نمایش نتیجه',
@@ -425,11 +431,8 @@ function QuizContent() {
                   </button>
                   {isThisSelected && (
                     <div className={styles.confirmPopup}>
-                      <span className={styles.confirmQuestion}>Bist du sicher?</span>
-                      <div className={styles.confirmBtns}>
-                        <button className={styles.confirmYes} onClick={handleCheck}>✓ Bestätigen</button>
-                        <button className={styles.confirmNo} onClick={() => setSelected(null)}>Ändern</button>
-                      </div>
+                      <span className={styles.confirmQuestion}>{ui.confirmQ}</span>
+                      <button className={styles.confirmYes} onClick={handleCheck}>✓ {ui.confirmBtn}</button>
                     </div>
                   )}
                 </div>

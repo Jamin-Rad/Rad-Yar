@@ -89,36 +89,51 @@
 /* ── CONFIRM POPUP ─────────────────────────────── */
 .optWrap { display: flex; flex-direction: column; }
 .confirmPopup {
-  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
-  margin-top: -4px; padding: 10px 16px 12px 16px;
-  background: #fff; border: 1.5px solid #f97316; border-top: none;
-  border-radius: 0 0 12px 12px;
-  box-shadow: 0 6px 18px rgba(249,115,22,0.15);
-  animation: confirmIn .2s cubic-bezier(.34,1.56,.64,1) both;
+  position: relative;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  margin: 6px 12px 0;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #fff7ed 0%, #fffbf5 100%);
+  border: 1.5px solid rgba(249,115,22,0.35);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(249,115,22,0.14), 0 2px 6px rgba(0,0,0,0.05);
+  animation: confirmIn .28s cubic-bezier(.34,1.56,.64,1) both;
+}
+.confirmPopup::before {
+  content: '';
+  position: absolute; top: -8px; left: 28px;
+  border: 8px solid transparent;
+  border-bottom-color: rgba(249,115,22,0.35);
+  border-top: none; width: 0; height: 0;
+}
+.confirmPopup::after {
+  content: '';
+  position: absolute; top: -6px; left: 29px;
+  border: 7px solid transparent;
+  border-bottom-color: #fff7ed;
+  border-top: none; width: 0; height: 0;
 }
 @keyframes confirmIn {
-  from { opacity: 0; transform: translateY(-6px) scale(0.97); }
+  from { opacity: 0; transform: translateY(-8px) scale(0.95); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 .confirmQuestion {
-  font-size: 13px; font-weight: 600; color: #92400e;
+  font-size: 13px; font-weight: 700; color: #92400e; letter-spacing: .01em;
 }
-.confirmBtns { display: flex; gap: 8px; }
 .confirmYes {
-  padding: 6px 18px; border-radius: 50px; border: none; cursor: pointer;
+  flex-shrink: 0;
+  padding: 8px 22px; border-radius: 50px; border: none; cursor: pointer;
   background: linear-gradient(130deg,#f97316,#fbbf24);
   color: #fff; font-size: 13px; font-weight: 700; font-family: inherit;
   box-shadow: 0 2px 8px rgba(249,115,22,0.35);
-  transition: transform .15s, box-shadow .15s;
+  animation: confirmPulse 2s ease-in-out infinite;
+  transition: transform .15s;
 }
-.confirmYes:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(249,115,22,0.45); }
-.confirmNo {
-  padding: 6px 14px; border-radius: 50px; cursor: pointer;
-  background: transparent; border: 1.5px solid #e2e6f0;
-  color: #64748b; font-size: 13px; font-weight: 600; font-family: inherit;
-  transition: background .15s;
+.confirmYes:hover { transform: translateY(-1px); }
+@keyframes confirmPulse {
+  0%, 100% { box-shadow: 0 2px 8px rgba(249,115,22,0.35); }
+  50%       { box-shadow: 0 4px 18px rgba(249,115,22,0.62); }
 }
-.confirmNo:hover { background: #f0f2f8; }
 
 /* ── FEEDBACK ──────────────────────────────────── */
 .feedback {
@@ -306,10 +321,8 @@
 }
 :global(html[data-theme='dark']) .nextBtn { background: #f8fafc; color: #0f172a; }
 :global(html[data-theme='dark']) .confirmPopup {
-  background: rgba(15,23,42,0.97); border-color: #f97316;
+  background: linear-gradient(135deg, rgba(120,53,15,0.25) 0%, rgba(15,23,42,0.97) 100%);
+  border-color: rgba(249,115,22,0.45);
 }
+:global(html[data-theme='dark']) .confirmPopup::after { border-bottom-color: #1c1408; }
 :global(html[data-theme='dark']) .confirmQuestion { color: #fdba74; }
-:global(html[data-theme='dark']) .confirmNo {
-  border-color: rgba(148,163,184,0.25); color: #94a3b8;
-}
-:global(html[data-theme='dark']) .confirmNo:hover { background: rgba(30,41,59,0.8); }
