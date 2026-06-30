@@ -1,21 +1,29 @@
+export const sportKategorien = [
+  { id: "ausdauer",    de: "Ausdauer & Cardio"     },
+  { id: "kraft",       de: "Kraft & Fitness"        },
+  { id: "entspannung", de: "Entspannung & Mobility" },
+  { id: "mannschaft",  de: "Mannschaftssport"       },
+  { id: "alltag",      de: "Alltagsbewegung"        },
+];
+
 // Kalorien pro Minute (Durchschnitt ~70 kg Person)
 export const sportarten = [
-  { id: "gehen",          de: "Spazierengehen",       fa: "پیاده‌روی آرام",     kcalPerMin: 3 },
-  { id: "schnell-gehen",  de: "Schnell gehen",        fa: "پیاده‌روی تند",      kcalPerMin: 5 },
-  { id: "joggen",         de: "Joggen",                fa: "آهسته دویدن",        kcalPerMin: 8 },
-  { id: "laufen",         de: "Laufen",                fa: "دویدن",              kcalPerMin: 12 },
-  { id: "radfahren",      de: "Radfahren",             fa: "دوچرخه‌سواری",       kcalPerMin: 7 },
-  { id: "schwimmen",      de: "Schwimmen",             fa: "شنا",                kcalPerMin: 9 },
-  { id: "krafttraining",  de: "Krafttraining",         fa: "تمرین با وزنه",      kcalPerMin: 6 },
-  { id: "calisthenics",   de: "Calisthenics",          fa: "تمرین بدون ابزار",   kcalPerMin: 8 },
-  { id: "yoga",           de: "Yoga",                  fa: "یوگا",               kcalPerMin: 3 },
-  { id: "hiit",           de: "HIIT",                  fa: "تمرین تناوبی",       kcalPerMin: 12 },
-  { id: "fussball",       de: "Fußball",               fa: "فوتبال",             kcalPerMin: 9 },
-  { id: "basketball",     de: "Basketball",            fa: "بسکتبال",            kcalPerMin: 8 },
-  { id: "tanzen",         de: "Tanzen",                fa: "رقص",                kcalPerMin: 5 },
-  { id: "treppensteigen", de: "Treppensteigen",        fa: "بالا رفتن از پله",   kcalPerMin: 9 },
-  { id: "pilates",        de: "Pilates",               fa: "پیلاتس",             kcalPerMin: 4 },
-  { id: "hausarbeit",     de: "Hausarbeit",            fa: "کارهای خانگی",       kcalPerMin: 3 },
+  { id: "joggen",         cat: "ausdauer",    de: "Joggen",            kcalPerMin: 8  },
+  { id: "laufen",         cat: "ausdauer",    de: "Laufen",            kcalPerMin: 12 },
+  { id: "radfahren",      cat: "ausdauer",    de: "Radfahren",         kcalPerMin: 7  },
+  { id: "schwimmen",      cat: "ausdauer",    de: "Schwimmen",         kcalPerMin: 9  },
+  { id: "schnell-gehen",  cat: "ausdauer",    de: "Schnell gehen",     kcalPerMin: 5  },
+  { id: "krafttraining",  cat: "kraft",       de: "Krafttraining",     kcalPerMin: 6  },
+  { id: "calisthenics",   cat: "kraft",       de: "Calisthenics",      kcalPerMin: 8  },
+  { id: "hiit",           cat: "kraft",       de: "HIIT",              kcalPerMin: 12 },
+  { id: "yoga",           cat: "entspannung", de: "Yoga",              kcalPerMin: 3  },
+  { id: "pilates",        cat: "entspannung", de: "Pilates",           kcalPerMin: 4  },
+  { id: "tanzen",         cat: "entspannung", de: "Tanzen",            kcalPerMin: 5  },
+  { id: "fussball",       cat: "mannschaft",  de: "Fußball",           kcalPerMin: 9  },
+  { id: "basketball",     cat: "mannschaft",  de: "Basketball",        kcalPerMin: 8  },
+  { id: "gehen",          cat: "alltag",      de: "Spazierengehen",    kcalPerMin: 3  },
+  { id: "treppensteigen", cat: "alltag",      de: "Treppensteigen",    kcalPerMin: 9  },
+  { id: "hausarbeit",     cat: "alltag",      de: "Hausarbeit",        kcalPerMin: 3  },
 ];
 
 // category: Gruppierung für UI

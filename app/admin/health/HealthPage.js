@@ -1,15 +1,23 @@
 'use client'
-
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import { sportarten as DEFAULT_SPORTS, lebensmittel as DEFAULT_FOODS, kategorien } from '@/data/health'
+import { useState, useEffect, useRef } from 'react'
 import s from './health.module.css'
+import {
+  sportarten, sportKategorien,
+  lebensmittel, kategorien,
+  berechneKcalSport, berechneKcalEssen,
+} from '@/data/health'
 
-function today() { return new Date().toISOString().slice(0, 10) }
-function makeId() { return `${Date.now()}-${Math.random().toString(36).slice(2, 8)}` }
-function num(v)   { return Number(v) || 0 }
-function initials(str) { return str.slice(0, 2).toUpperCase() }
+const SPORT_ICONS = {
+  ausdauer: '🏃', kraft: '💪', entspannung: '🧘',
+  mannschaft: '⚽', alltag: '🚶', custom: '⭐',
+}
+const FOOD_ICONS = {
+  'irani-haupt': '🫕', kebab: '🍖', 'reis-brot': '🍚',
+  'brot-frueh': '🍞', fleisch: '🥩', eier: '🥚',
+  milch: '🧀', salat: '🥗', gemuese: '🥦', fette: '🫙', sonstiges: '🍽️',
+}
 
-const emptyForm = () => ({ date: today(), weight: '', note: '', manualKcal: '', sports: [], foods: [] })
+const TODAY = new Date().toISOString().slice(0, 10)
 
 async function api(path, method = 'GET', body) {
   const res = await fetch(`/api/admin/health${path}`, {
@@ -20,451 +28,667 @@ async function api(path, method = 'GET', body) {
   return res.ok ? res.json() : null
 }
 
+const EMPTY_FORM = { date: TODAY, weight: '', note: '', manualKcal: 0, sports: [], foods: [] }
+
 export default function HealthPage() {
-  const [tab, setTab]         = useState('log')
-  const [listTab, setListTab] = useState('sport')
+  const [tab, setTab] = useState('eintragen')
+  const [records, setRecords] = useState([])
+  const [customSports, setCustomSports] = useState([])
+  const [deletedSports, setDeletedSports] = useState([])
+  const [customFoods, setCustomFoods] = useState([])
+  const [deletedFoods, setDeletedFoods] = useState([])
   const [loading, setLoading] = useState(true)
 
-  const [records, setRecords]               = useState([])
-  const [customSports, setCustomSports]     = useState([])
-  const [deletedSports, setDeletedSports]   = useState(new Set())
-  const [customFoods, setCustomFoods]       = useState([])
-  const [deletedFoods, setDeletedFoods]     = useState(new Set())
+  // 3-level nav state
+  const [view, setView] = useState('home') // home | sport-cats | sport-items | food-cats | food-items
+  const [selectedCat, setSelectedCat] = useState(null)
 
-  const [form, setForm]   = useState(emptyForm())
+  // inline input
+  const [activeId, setActiveId] = useState(null)
+  const [inputVal, setInputVal] = useState('')
+  const inputRef = useRef(null)
+
+  // form
+  const [form, setForm] = useState(EMPTY_FORM)
   const [saving, setSaving] = useState(false)
 
-  const [activeSportId, setActiveSportId] = useState(null)
-  const [sportMinutes, setSportMinutes]   = useState('')
-  const [activeFoodId, setActiveFoodId]   = useState(null)
-  const [foodGrams, setFoodGrams]         = useState('')
-  const [catFilter, setCatFilter]         = useState('all')
-
+  // management form state
+  const [mgmtMode, setMgmtMode] = useState('sport')
   const [newSport, setNewSport] = useState({ de: '', kcalPerMin: '' })
-  const [newFood, setNewFood]   = useState({ de: '', cat: 'irani-haupt', kcalPer100g: '', portionG: '' })
+  const [newFood, setNewFood] = useState({ de: '', cat: 'sonstiges', kcalPer100g: '', portionG: '' })
 
-  const loadAll = useCallback(async () => {
+  useEffect(() => { loadAll() }, [])
+
+  async function loadAll() {
     setLoading(true)
-    const data = await api('')
+    const data = await api('/')
     if (data) {
-      setRecords(data.records.map(r => ({ ...r, manualKcal: r.manual_kcal, sports: r.sports || [], foods: r.foods || [] })))
-      setCustomSports(data.customSports.map(s => ({ id: s.id, de: s.de, kcalPerMin: Number(s.kcal_per_min), custom: true })))
-      setCustomFoods(data.customFoods.map(f => ({ id: f.id, de: f.de, cat: f.cat, kcalPer100g: f.kcal_per_100g, portionG: f.portion_g, custom: true })))
-      setDeletedSports(new Set(data.deletedIds.filter(d => d.item_type === 'sport').map(d => d.item_id)))
-      setDeletedFoods(new Set(data.deletedIds.filter(d => d.item_type === 'food').map(d => d.item_id)))
+      setRecords(data.records || [])
+      setCustomSports(data.customSports || [])
+      setDeletedSports(data.deletedSports || [])
+      setCustomFoods(data.customFoods || [])
+      setDeletedFoods(data.deletedFoods || [])
+      const today = (data.records || []).find(r => r.date === TODAY)
+      if (today) {
+        setForm({
+          date: today.date,
+          weight: today.weight ?? '',
+          note: today.note ?? '',
+          manualKcal: today.manual_kcal ?? 0,
+          sports: today.sports ?? [],
+          foods: today.foods ?? [],
+        })
+      }
     }
     setLoading(false)
-  }, [])
-
-  useEffect(() => { loadAll() }, [loadAll])
-
-  const activeSports = useMemo(() => [
-    ...DEFAULT_SPORTS.filter(s => !deletedSports.has(s.id)),
-    ...customSports,
-  ], [deletedSports, customSports])
-
-  const activeFoods = useMemo(() => [
-    ...DEFAULT_FOODS.filter(f => !deletedFoods.has(f.id)),
-    ...customFoods,
-  ], [deletedFoods, customFoods])
-
-  const visibleFoods = useMemo(() =>
-    catFilter === 'all' ? activeFoods : activeFoods.filter(f => f.cat === catFilter),
-  [activeFoods, catFilter])
-
-  const totalFoodKcal  = num(form.manualKcal) + form.foods.reduce((t, f) => t + f.kcal, 0)
-  const totalSportKcal = form.sports.reduce((t, sp) => t + sp.kcal, 0)
-  const netKcal        = totalFoodKcal - totalSportKcal
-
-  function toggleSport(sport) {
-    if (activeSportId === sport.id) { setActiveSportId(null); setSportMinutes(''); return }
-    setActiveSportId(sport.id); setSportMinutes('')
   }
 
-  function commitSport(sport) {
-    if (!sportMinutes) return
-    const kcal = Math.round(sport.kcalPerMin * num(sportMinutes))
-    setForm(p => ({ ...p, sports: [...p.sports, { id: makeId(), name: sport.de, sportId: sport.id, minutes: num(sportMinutes), kcal }] }))
-    setActiveSportId(null); setSportMinutes('')
+  // ── Computed active lists ──────────────────────────────────────────
+  const activeSports = [
+    ...sportarten.filter(sp => !deletedSports.includes(sp.id)),
+    ...customSports.map(cs => ({
+      id: cs.id, cat: 'custom', de: cs.de, fa: cs.fa || '',
+      kcalPerMin: cs.kcal_per_min,
+    })),
+  ]
+
+  const activeFoods = [
+    ...lebensmittel.filter(lm => !deletedFoods.includes(lm.id)),
+    ...customFoods.map(cf => ({
+      id: cf.id, cat: cf.cat || 'sonstiges', de: cf.de, fa: cf.fa || '',
+      kcalPer100g: cf.kcal_per_100g, portionG: cf.portion_g || 100,
+    })),
+  ]
+
+  // ── Sport categories with count ────────────────────────────────────
+  const sportCatsWithCount = [
+    ...sportKategorien.map(sc => ({
+      ...sc,
+      icon: SPORT_ICONS[sc.id] || '🏅',
+      count: activeSports.filter(sp => sp.cat === sc.id).length,
+    })).filter(sc => sc.count > 0),
+    ...(activeSports.some(sp => sp.cat === 'custom') ? [{
+      id: 'custom', de: 'Benutzerdefiniert',
+      icon: '⭐', count: activeSports.filter(sp => sp.cat === 'custom').length,
+    }] : []),
+  ]
+
+  // ── Food categories with count ─────────────────────────────────────
+  const usedFoodCatIds = [...new Set(activeFoods.map(f => f.cat))]
+  const foodCatsWithCount = [
+    ...kategorien.filter(k => usedFoodCatIds.includes(k.id)).map(k => ({
+      ...k, icon: FOOD_ICONS[k.id] || '🍽️',
+      count: activeFoods.filter(f => f.cat === k.id).length,
+    })),
+    ...(usedFoodCatIds.includes('sonstiges') ? [{
+      id: 'sonstiges', de: 'Sonstige',
+      icon: '🍽️', count: activeFoods.filter(f => f.cat === 'sonstiges').length,
+    }] : []),
+  ]
+
+  // ── Totals ─────────────────────────────────────────────────────────
+  const totalSportKcal = form.sports.reduce((sum, item) => {
+    const sp = activeSports.find(x => x.id === item.id)
+    return sum + (sp ? Math.round(sp.kcalPerMin * item.min) : 0)
+  }, 0)
+  const totalFoodKcal = form.foods.reduce((sum, item) => {
+    const food = activeFoods.find(x => x.id === item.id)
+    return sum + (food ? Math.round((food.kcalPer100g / 100) * item.g) : 0)
+  }, 0)
+  const totalKcal = totalFoodKcal + (form.manualKcal || 0) - totalSportKcal
+
+  // ── Navigation helpers ─────────────────────────────────────────────
+  function goHome() { setView('home'); setSelectedCat(null); setActiveId(null) }
+  function goSportCats() { setView('sport-cats'); setSelectedCat(null); setActiveId(null) }
+  function goFoodCats() { setView('food-cats'); setSelectedCat(null); setActiveId(null) }
+  function selectSportCat(catId) { setView('sport-items'); setSelectedCat(catId); setActiveId(null) }
+  function selectFoodCat(catId) { setView('food-items'); setSelectedCat(catId); setActiveId(null) }
+
+  // ── Inline input ───────────────────────────────────────────────────
+  function openInput(id, defaultVal = '') {
+    setActiveId(id)
+    setInputVal(String(defaultVal || ''))
+    setTimeout(() => inputRef.current?.focus(), 50)
   }
 
-  function toggleFood(food) {
-    if (activeFoodId === food.id) { setActiveFoodId(null); setFoodGrams(''); return }
-    setActiveFoodId(food.id); setFoodGrams('')
+  function confirmSport(id) {
+    const min = parseInt(inputVal)
+    if (!min || min <= 0) { setActiveId(null); return }
+    setForm(f => {
+      const others = f.sports.filter(x => x.id !== id)
+      return { ...f, sports: [...others, { id, min }] }
+    })
+    setActiveId(null)
   }
 
-  function commitFood(food) {
-    const grams = num(foodGrams) || food.portionG
-    const kcal  = Math.round((food.kcalPer100g / 100) * grams)
-    setForm(p => ({ ...p, foods: [...p.foods, { id: makeId(), name: food.de, foodId: food.id, grams, kcal }] }))
-    setActiveFoodId(null); setFoodGrams('')
+  function confirmFood(id) {
+    const g = parseInt(inputVal)
+    if (!g || g <= 0) { setActiveId(null); return }
+    setForm(f => {
+      const others = f.foods.filter(x => x.id !== id)
+      return { ...f, foods: [...others, { id, g }] }
+    })
+    setActiveId(null)
   }
 
-  async function saveRecord(e) {
-    e.preventDefault(); setSaving(true)
-    const rec = { id: makeId(), date: form.date || today(), weight: form.weight ? num(form.weight) : null, note: form.note.trim(), manual_kcal: num(form.manualKcal), sports: form.sports, foods: form.foods }
-    await api('/records', 'POST', rec)
+  function removeSportFromForm(id) {
+    setForm(f => ({ ...f, sports: f.sports.filter(x => x.id !== id) }))
+  }
+  function removeFoodFromForm(id) {
+    setForm(f => ({ ...f, foods: f.foods.filter(x => x.id !== id) }))
+  }
+
+  // ── Save ───────────────────────────────────────────────────────────
+  async function handleSave() {
+    setSaving(true)
+    const id = `record-${form.date}`
+    await api('/records', 'POST', {
+      id, date: form.date,
+      weight: form.weight ? parseFloat(form.weight) : null,
+      note: form.note || '',
+      manual_kcal: form.manualKcal || 0,
+      sports: form.sports,
+      foods: form.foods,
+    })
     await loadAll()
-    setForm(emptyForm()); setSaving(false)
+    setSaving(false)
   }
 
-  async function deleteRecord(id) { await api(`/records?id=${id}`, 'DELETE'); setRecords(p => p.filter(r => r.id !== id)) }
-
-  async function doDeleteSport(id)   { await api(`/sports?id=${id}&custom=false`, 'DELETE'); setDeletedSports(p => new Set([...p, id])) }
-  async function doRestoreSport(id)  { await api('/sports', 'PATCH', { id }); setDeletedSports(p => { const n = new Set(p); n.delete(id); return n }) }
-  async function doDelCustomSport(id){ await api(`/sports?id=${id}&custom=true`, 'DELETE'); setCustomSports(p => p.filter(x => x.id !== id)) }
-  async function addCustomSport(e) {
+  // ── Management ─────────────────────────────────────────────────────
+  async function handleAddSport(e) {
     e.preventDefault()
     if (!newSport.de || !newSport.kcalPerMin) return
-    const sp = { id: makeId(), de: newSport.de, kcalPerMin: num(newSport.kcalPerMin), custom: true }
-    await api('/sports', 'POST', sp)
-    setCustomSports(p => [...p, sp]); setNewSport({ de: '', kcalPerMin: '' })
+    const id = 'custom-' + newSport.de.toLowerCase().replace(/\s+/g, '-') + '-' + Date.now()
+    await api('/sports', 'POST', { id, de: newSport.de, fa: '', kcalPerMin: parseFloat(newSport.kcalPerMin) })
+    setNewSport({ de: '', kcalPerMin: '' })
+    loadAll()
   }
-
-  async function doDeleteFood(id)    { await api(`/foods?id=${id}&custom=false`, 'DELETE'); setDeletedFoods(p => new Set([...p, id])) }
-  async function doRestoreFood(id)   { await api('/foods', 'PATCH', { id }); setDeletedFoods(p => { const n = new Set(p); n.delete(id); return n }) }
-  async function doDelCustomFood(id) { await api(`/foods?id=${id}&custom=true`, 'DELETE'); setCustomFoods(p => p.filter(x => x.id !== id)) }
-  async function addCustomFood(e) {
+  async function handleAddFood(e) {
     e.preventDefault()
     if (!newFood.de || !newFood.kcalPer100g) return
-    const fd = { id: makeId(), de: newFood.de, cat: newFood.cat, kcalPer100g: num(newFood.kcalPer100g), portionG: num(newFood.portionG) || 100, custom: true }
-    await api('/foods', 'POST', fd)
-    setCustomFoods(p => [...p, fd]); setNewFood({ de: '', cat: 'irani-haupt', kcalPer100g: '', portionG: '' })
+    const id = 'custom-' + newFood.de.toLowerCase().replace(/\s+/g, '-') + '-' + Date.now()
+    await api('/foods', 'POST', {
+      id, de: newFood.de, fa: '', cat: newFood.cat,
+      kcalPer100g: parseInt(newFood.kcalPer100g),
+      portionG: parseInt(newFood.portionG) || 100,
+    })
+    setNewFood({ de: '', cat: 'sonstiges', kcalPer100g: '', portionG: '' })
+    loadAll()
   }
+  async function deleteSport(id, isCustom) {
+    if (isCustom) await api(`/sports?id=${id}&custom=true`, 'DELETE')
+    else await api(`/sports?id=${id}&custom=false`, 'DELETE')
+    loadAll()
+  }
+  async function deleteFood(id, isCustom) {
+    if (isCustom) await api(`/foods?id=${id}&custom=true`, 'DELETE')
+    else await api(`/foods?id=${id}&custom=false`, 'DELETE')
+    loadAll()
+  }
+  async function restoreSport(id) { await api('/sports', 'PATCH', { id }); loadAll() }
+  async function restoreFood(id) { await api('/foods', 'PATCH', { id }); loadAll() }
 
-  const summary = useMemo(() => {
-    const days      = records.length
-    const totalKcal = records.reduce((t, r) => t + num(r.manualKcal) + (r.foods || []).reduce((ft, f) => ft + f.kcal, 0), 0)
-    const totalMin  = records.reduce((t, r) => t + (r.sports || []).reduce((st, sp) => st + sp.minutes, 0), 0)
-    const lastW     = [...records].sort((a, b) => b.date.localeCompare(a.date)).find(r => r.weight)?.weight
-    return { days, avgKcal: days ? Math.round(totalKcal / days) : 0, totalMin, lastW }
-  }, [records])
+  // ── Computed items for current view ───────────────────────────────
+  const viewSportItems = selectedCat ? activeSports.filter(sp => sp.cat === selectedCat) : []
+  const viewFoodItems  = selectedCat ? activeFoods.filter(f => f.cat === selectedCat) : []
 
-  const chartRecords = useMemo(() => [...records].sort((a, b) => a.date.localeCompare(b.date)).slice(-14), [records])
-  const maxKcal  = Math.max(1, ...chartRecords.map(r => num(r.manualKcal) + (r.foods || []).reduce((t, f) => t + f.kcal, 0)))
-  const maxSport = Math.max(1, ...chartRecords.map(r => (r.sports || []).reduce((t, sp) => t + sp.minutes, 0)))
-  const sorted   = useMemo(() => [...records].sort((a, b) => b.date.localeCompare(a.date)), [records])
+  const navTitle = {
+    'home': '',
+    'sport-cats': 'Sport',
+    'sport-items': sportCatsWithCount.find(c => c.id === selectedCat)?.de || '',
+    'food-cats': 'Essen',
+    'food-items': foodCatsWithCount.find(c => c.id === selectedCat)?.de || '',
+  }[view] || ''
 
-  const activeFood  = activeFoods.find(f => f.id === activeFoodId)
-  const activeSport = activeSports.find(s => s.id === activeSportId)
-
-  if (loading) return <div className={s.page}><p className={s.emptyHistory}>Wird geladen…</p></div>
+  if (loading) return (
+    <div className={s.page}>
+      <div className={s.hero}><p style={{ color: '#94a3b8' }}>Lädt…</p></div>
+    </div>
+  )
 
   return (
     <div className={s.page}>
       <div className={s.hero}>
-        <h1>Kalorien & Sport</h1>
-        <p>Sport und Essen auswählen — Kalorien werden automatisch berechnet.</p>
+        <h1>Gesundheit</h1>
+        <p>Kalorien, Gewicht und Sport verfolgen</p>
+      </div>
+
+      <div className={s.statsRow}>
+        <div className={s.stat}><span>Heute gegessen</span><strong>{totalFoodKcal} kcal</strong></div>
+        <div className={s.stat}><span>Heute trainiert</span><strong>{totalSportKcal} kcal</strong></div>
+        <div className={s.stat}><span>Netto</span><strong>{totalKcal} kcal</strong></div>
+        <div className={s.stat}><span>Einträge</span><strong>{records.length}</strong></div>
       </div>
 
       <div className={s.tabs}>
-        <button className={tab === 'log'   ? s.tabActive : s.tab} onClick={() => setTab('log')}>Tagesbuch</button>
-        <button className={tab === 'lists' ? s.tabActive : s.tab} onClick={() => setTab('lists')}>Listen bearbeiten</button>
+        {[['eintragen', 'Eintragen'], ['verlauf', 'Verlauf'], ['verwaltung', 'Verwaltung']].map(([id, label]) => (
+          <button key={id} className={tab === id ? s.tabActive : s.tab} onClick={() => setTab(id)}>{label}</button>
+        ))}
       </div>
 
-      {/* ── TAGESBUCH ── */}
-      {tab === 'log' && (
-        <>
-          <div className={s.statsRow}>
-            <div className={s.stat}><span>Erfasste Tage</span><strong>{summary.days}</strong></div>
-            <div className={s.stat}><span>Ø Kalorien</span><strong>{summary.avgKcal}</strong></div>
-            <div className={s.stat}><span>Sport gesamt</span><strong>{summary.totalMin} Min.</strong></div>
-            <div className={s.stat}><span>Letztes Gewicht</span><strong>{summary.lastW ? `${summary.lastW} kg` : '—'}</strong></div>
-          </div>
+      {/* ── TAB: Eintragen ────────────────────────────────────────── */}
+      {tab === 'eintragen' && (
+        <div className={s.grid}>
+          {/* Left: navigation panel */}
+          <div className={s.panel}>
 
-          <form onSubmit={saveRecord}>
-            <div className={s.grid}>
-
-              {/* LEFT */}
-              <div>
-                {/* Sport */}
-                <div className={s.panel}>
-                  <div className={s.panelLabel}>Sport</div>
-                  <hr className={s.divider} />
-                  {activeSports.map(sport => {
-                    const isActive   = activeSportId === sport.id
-                    const kcalPrev   = isActive && sportMinutes ? Math.round(sport.kcalPerMin * num(sportMinutes)) : null
-                    return (
-                      <div key={sport.id}>
-                        <div className={isActive ? s.rowActive : s.row} onClick={() => toggleSport(sport)}>
-                          <div className={isActive ? s.rowInitialActive : s.rowInitial}>{initials(sport.de)}</div>
-                          <div className={s.rowMain}>
-                            <div className={isActive ? s.rowNameActive : s.rowName}>{sport.de}</div>
-                            <div className={s.rowSub}>{sport.kcalPerMin} kcal/min</div>
-                          </div>
-                          <button
-                            type="button"
-                            className={isActive ? s.addBtnActive : s.addBtn}
-                            onClick={e => { e.stopPropagation(); toggleSport(sport) }}
-                          >{isActive ? '✕' : '+'}</button>
-                        </div>
-
-                        {isActive && (
-                          <>
-                            <div className={s.inlineInput}>
-                              <input
-                                type="number" min="1" inputMode="numeric"
-                                value={sportMinutes}
-                                onChange={e => setSportMinutes(e.target.value)}
-                                placeholder="Minuten eingeben…"
-                                autoFocus
-                                onKeyDown={e => e.key === 'Enter' && (e.preventDefault(), commitSport(sport))}
-                              />
-                              <button type="button" className={s.confirmBtn} onClick={() => commitSport(sport)}>
-                                + Hinzufügen
-                              </button>
-                            </div>
-                            {kcalPrev !== null && <div className={s.kcalPreview}>≈ −{kcalPrev} kcal verbrannt</div>}
-                          </>
-                        )}
-                      </div>
-                    )
-                  })}
-                </div>
-
-                {/* Essen */}
-                <div className={s.panel}>
-                  <div className={s.panelLabel}>Essen</div>
-                  <hr className={s.divider} />
-                  <div className={s.catBar}>
-                    <button type="button" className={catFilter === 'all' ? s.catPillActive : s.catPill} onClick={() => setCatFilter('all')}>Alle</button>
-                    {kategorien.filter(cat => activeFoods.some(f => f.cat === cat.id)).map(cat => (
-                      <button key={cat.id} type="button" className={catFilter === cat.id ? s.catPillActive : s.catPill} onClick={() => setCatFilter(cat.id)}>
-                        {cat.de}
-                      </button>
-                    ))}
-                  </div>
-                  <hr className={s.divider} />
-                  {visibleFoods.map(food => {
-                    const isActive = activeFoodId === food.id
-                    const grams    = num(foodGrams) || food.portionG
-                    const kcalPrev = isActive ? Math.round((food.kcalPer100g / 100) * grams) : null
-                    return (
-                      <div key={food.id}>
-                        <div className={isActive ? s.rowActive : s.row} onClick={() => toggleFood(food)}>
-                          <div className={isActive ? s.rowInitialActive : s.rowInitial}>{initials(food.de)}</div>
-                          <div className={s.rowMain}>
-                            <div className={isActive ? s.rowNameActive : s.rowName}>{food.de}</div>
-                            <div className={s.rowSub}>{food.portionG}g Portion</div>
-                          </div>
-                          <div className={s.rowMeta}>{food.kcalPer100g} kcal/100g</div>
-                          <button
-                            type="button"
-                            className={isActive ? s.addBtnActive : s.addBtn}
-                            onClick={e => { e.stopPropagation(); toggleFood(food) }}
-                          >{isActive ? '✕' : '+'}</button>
-                        </div>
-
-                        {isActive && (
-                          <>
-                            <div className={s.inlineInput}>
-                              <input
-                                type="number" min="1" inputMode="numeric"
-                                value={foodGrams}
-                                onChange={e => setFoodGrams(e.target.value)}
-                                placeholder={`${food.portionG}g (Standardportion)`}
-                                autoFocus
-                                onKeyDown={e => e.key === 'Enter' && (e.preventDefault(), commitFood(food))}
-                              />
-                              <button type="button" className={s.confirmBtn} onClick={() => commitFood(food)}>
-                                + Hinzufügen
-                              </button>
-                            </div>
-                            {kcalPrev !== null && <div className={s.kcalPreview}>≈ {kcalPrev} kcal</div>}
-                          </>
-                        )}
-                      </div>
-                    )
-                  })}
-                </div>
-              </div>
-
-              {/* RIGHT: Summary */}
-              <div className={s.summaryPanel}>
-                <div className={s.summaryMeta}>
-                  <input type="date" value={form.date} onChange={e => setForm(p => ({ ...p, date: e.target.value }))} />
-                  <input type="number" step="0.1" inputMode="decimal" value={form.weight} onChange={e => setForm(p => ({ ...p, weight: e.target.value }))} placeholder="Gewicht kg" style={{ width: 96 }} />
-                </div>
-
-                <div className={s.kcalHero}>
-                  <div className={s.kcalNum}>{netKcal.toLocaleString('de')}</div>
-                  <div className={s.kcalLabel}>kcal netto heute</div>
-                </div>
-
-                <div className={s.summaryItems}>
-                  {form.sports.length === 0 && form.foods.length === 0
-                    ? <div className={s.emptyItems}>Noch nichts hinzugefügt</div>
-                    : <>
-                        {form.sports.map(sp => (
-                          <div key={sp.id} className={s.summaryItem}>
-                            <div className={`${s.summaryDot} ${s.dotSport}`} />
-                            <div className={s.summaryItemName}>{sp.name} · {sp.minutes} min</div>
-                            <div className={`${s.summaryItemKcal} ${s.summaryItemKcalSport}`}>−{sp.kcal}</div>
-                            <button type="button" className={s.summaryRemove} onClick={() => setForm(p => ({ ...p, sports: p.sports.filter(x => x.id !== sp.id) }))}>✕</button>
-                          </div>
-                        ))}
-                        {form.foods.map(f => (
-                          <div key={f.id} className={s.summaryItem}>
-                            <div className={`${s.summaryDot} ${s.dotFood}`} />
-                            <div className={s.summaryItemName}>{f.name} · {f.grams}g</div>
-                            <div className={s.summaryItemKcal}>{f.kcal}</div>
-                            <button type="button" className={s.summaryRemove} onClick={() => setForm(p => ({ ...p, foods: p.foods.filter(x => x.id !== f.id) }))}>✕</button>
-                          </div>
-                        ))}
-                      </>
-                  }
-                </div>
-
-                <div className={s.manualRow}>
-                  <span>+ Manuell</span>
-                  <input type="number" min="0" inputMode="numeric" value={form.manualKcal} onChange={e => setForm(p => ({ ...p, manualKcal: e.target.value }))} placeholder="kcal" />
-                </div>
-
-                {(form.foods.length > 0 || totalSportKcal > 0 || form.manualKcal) && (
-                  <div className={s.totalsBlock}>
-                    {totalFoodKcal > 0 && <div className={s.totalsRow}><span>Essen</span><span>{totalFoodKcal} kcal</span></div>}
-                    {totalSportKcal > 0 && <div className={`${s.totalsRow} ${s.totalsRowSport}`}><span>Sport</span><span>−{totalSportKcal} kcal</span></div>}
-                    <div className={s.totalsNet}><span>Netto</span><span>{netKcal} kcal</span></div>
-                  </div>
-                )}
-
-                <input className={s.noteInput} value={form.note} onChange={e => setForm(p => ({ ...p, note: e.target.value }))} placeholder="Notiz (optional)…" />
-                <button className={s.saveBtn} type="submit" disabled={saving}>
-                  {saving ? 'Wird gespeichert…' : 'Tag speichern'}
+            {/* Home: two big buttons */}
+            {view === 'home' && (
+              <div className={s.homeBtns}>
+                <button className={s.bigBtnSport} onClick={goSportCats}>
+                  <span className={s.bigBtnIcon}>🏃</span>
+                  Sport
+                  <span className={s.bigBtnSub}>
+                    {form.sports.length > 0 ? `${form.sports.length} gewählt` : 'hinzufügen'}
+                  </span>
+                </button>
+                <button className={s.bigBtnEssen} onClick={goFoodCats}>
+                  <span className={s.bigBtnIcon}>🥗</span>
+                  Essen
+                  <span className={s.bigBtnSub}>
+                    {form.foods.length > 0 ? `${form.foods.length} gewählt` : 'hinzufügen'}
+                  </span>
                 </button>
               </div>
-            </div>
-          </form>
+            )}
 
-          {/* Chart + History */}
-          <div className={s.historyGrid}>
-            <div className={s.panel} style={{ overflow: 'hidden' }}>
-              <div className={s.panelLabel}>Verlauf — letzte 14 Tage</div>
-              <hr className={s.divider} />
-              {chartRecords.length ? (
-                <div style={{ display: 'flex', alignItems: 'flex-end', gap: 6, padding: '16px 16px 8px', height: 120 }}>
-                  {chartRecords.map(r => {
-                    const kcal  = num(r.manualKcal) + (r.foods || []).reduce((t, f) => t + f.kcal, 0)
-                    const sport = (r.sports || []).reduce((t, sp) => t + sp.minutes, 0)
-                    return (
-                      <div key={r.id} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
-                        <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', height: 80, gap: 2 }}>
-                          <div title={`${kcal} kcal`} style={{ background: '#f97316', borderRadius: 3, height: `${Math.max((kcal / maxKcal) * 72, 3)}px` }} />
-                          {sport > 0 && <div title={`${sport} Min.`} style={{ background: '#22c55e', borderRadius: 3, height: `${Math.max((sport / maxSport) * 20, 3)}px` }} />}
-                        </div>
-                        <div style={{ fontSize: 9, color: '#cbd5e1', whiteSpace: 'nowrap' }}>{r.date.slice(5)}</div>
-                      </div>
-                    )
-                  })}
+            {/* Sport categories */}
+            {view === 'sport-cats' && (
+              <>
+                <div className={s.navHeader}>
+                  <button className={s.backBtn} onClick={goHome}>←</button>
+                  <span className={s.navTitle}>Sport — Kategorie wählen</span>
                 </div>
-              ) : <p className={s.emptyHistory}>Noch keine Werte.</p>}
-              <div style={{ display: 'flex', gap: 12, padding: '0 16px 12px', fontSize: 11, color: '#94a3b8' }}>
-                <span><span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: 2, background: '#f97316', marginRight: 4 }} />Kalorien</span>
-                <span><span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: 2, background: '#22c55e', marginRight: 4 }} />Sport</span>
+                {sportCatsWithCount.map(cat => (
+                  <div key={cat.id} className={s.catRow} onClick={() => selectSportCat(cat.id)}>
+                    <div className={`${s.catIcon} ${s.catIconSport}`}>{cat.icon}</div>
+                    <div className={s.catRowMain}>
+                      <div className={s.catRowName}>{cat.de}</div>
+                      <div className={s.catRowCount}>{cat.count} Sportarten</div>
+                    </div>
+                    <span className={s.catRowArrow}>›</span>
+                  </div>
+                ))}
+              </>
+            )}
+
+            {/* Sport items */}
+            {view === 'sport-items' && (
+              <>
+                <div className={s.navHeader}>
+                  <button className={s.backBtn} onClick={goSportCats}>←</button>
+                  <span className={s.navTitle}>{navTitle}</span>
+                  <span className={s.navCrumb}>Sport</span>
+                </div>
+                {viewSportItems.map(sp => {
+                  const existing = form.sports.find(x => x.id === sp.id)
+                  const isActive = activeId === sp.id
+                  return (
+                    <div key={sp.id}>
+                      <div
+                        className={isActive ? s.rowActive : s.row}
+                        onClick={() => !isActive && openInput(sp.id, existing?.min || '')}
+                      >
+                        <div className={existing ? s.rowInitialActive : s.rowInitial}>
+                          {sp.de.slice(0, 2).toUpperCase()}
+                        </div>
+                        <div className={s.rowMain}>
+                          <div className={existing ? s.rowNameActive : s.rowName}>{sp.de}</div>
+                        </div>
+                        <span className={s.rowMeta}>{sp.kcalPerMin} kcal/min</span>
+                        {existing && !isActive && (
+                          <span style={{ fontSize: '11px', color: '#f97316', fontWeight: 600, marginLeft: 4 }}>
+                            {existing.min} min
+                          </span>
+                        )}
+                        <button
+                          className={isActive ? s.addBtnActive : s.addBtn}
+                          onClick={e => {
+                            e.stopPropagation()
+                            isActive ? setActiveId(null) : openInput(sp.id, existing?.min || '')
+                          }}
+                        >
+                          {isActive ? '×' : existing ? '✓' : '+'}
+                        </button>
+                      </div>
+                      {isActive && (
+                        <>
+                          <div className={s.inlineInput}>
+                            <input
+                              ref={inputRef}
+                              type="number" min="1" max="360"
+                              placeholder="Minuten…"
+                              value={inputVal}
+                              onChange={e => setInputVal(e.target.value)}
+                              onKeyDown={e => {
+                                if (e.key === 'Enter') confirmSport(sp.id)
+                                if (e.key === 'Escape') setActiveId(null)
+                              }}
+                            />
+                            <button className={s.confirmBtn} onClick={() => confirmSport(sp.id)}>
+                              Bestätigen
+                            </button>
+                          </div>
+                          {parseInt(inputVal) > 0 && (
+                            <div className={s.kcalPreview}>
+                              ≈ {Math.round(sp.kcalPerMin * parseInt(inputVal))} kcal verbrannt
+                            </div>
+                          )}
+                        </>
+                      )}
+                    </div>
+                  )
+                })}
+              </>
+            )}
+
+            {/* Food categories */}
+            {view === 'food-cats' && (
+              <>
+                <div className={s.navHeader}>
+                  <button className={s.backBtn} onClick={goHome}>←</button>
+                  <span className={s.navTitle}>Essen — Kategorie wählen</span>
+                </div>
+                {foodCatsWithCount.map(cat => (
+                  <div key={cat.id} className={s.catRow} onClick={() => selectFoodCat(cat.id)}>
+                    <div className={`${s.catIcon} ${s.catIconFood}`}>{cat.icon}</div>
+                    <div className={s.catRowMain}>
+                      <div className={s.catRowName}>{cat.de}</div>
+                      <div className={s.catRowCount}>{cat.count} Lebensmittel</div>
+                    </div>
+                    <span className={s.catRowArrow}>›</span>
+                  </div>
+                ))}
+              </>
+            )}
+
+            {/* Food items */}
+            {view === 'food-items' && (
+              <>
+                <div className={s.navHeader}>
+                  <button className={s.backBtn} onClick={goFoodCats}>←</button>
+                  <span className={s.navTitle}>{navTitle}</span>
+                  <span className={s.navCrumb}>Essen</span>
+                </div>
+                {viewFoodItems.map(food => {
+                  const existing = form.foods.find(x => x.id === food.id)
+                  const isActive = activeId === food.id
+                  return (
+                    <div key={food.id}>
+                      <div
+                        className={isActive ? s.rowActive : s.row}
+                        style={isActive ? { background: '#f0fdf4' } : undefined}
+                        onClick={() => !isActive && openInput(food.id, existing?.g || food.portionG || '')}
+                      >
+                        <div className={existing
+                          ? s.rowInitialFoodActive
+                          : `${s.rowInitial} ${s.rowInitialFood}`
+                        }>
+                          {food.de.slice(0, 2).toUpperCase()}
+                        </div>
+                        <div className={s.rowMain}>
+                          <div className={existing ? s.rowNameFoodActive : s.rowName}>{food.de}</div>
+                        </div>
+                        <span className={s.rowMeta}>{food.kcalPer100g} kcal/100g</span>
+                        {existing && !isActive && (
+                          <span style={{ fontSize: '11px', color: '#16a34a', fontWeight: 600, marginLeft: 4 }}>
+                            {existing.g}g
+                          </span>
+                        )}
+                        <button
+                          className={isActive ? s.addBtnFoodActive : `${s.addBtn} ${s.addBtnFood}`}
+                          onClick={e => {
+                            e.stopPropagation()
+                            isActive ? setActiveId(null) : openInput(food.id, existing?.g || food.portionG || '')
+                          }}
+                        >
+                          {isActive ? '×' : existing ? '✓' : '+'}
+                        </button>
+                      </div>
+                      {isActive && (
+                        <>
+                          <div className={`${s.inlineInput} ${s.inlineInputFood}`}>
+                            <input
+                              ref={inputRef}
+                              type="number" min="1"
+                              placeholder={`Gramm… (Portion: ${food.portionG}g)`}
+                              value={inputVal}
+                              onChange={e => setInputVal(e.target.value)}
+                              onKeyDown={e => {
+                                if (e.key === 'Enter') confirmFood(food.id)
+                                if (e.key === 'Escape') setActiveId(null)
+                              }}
+                            />
+                            <button className={s.confirmBtnFood} onClick={() => confirmFood(food.id)}>
+                              Bestätigen
+                            </button>
+                          </div>
+                          {parseInt(inputVal) > 0 && (
+                            <div className={`${s.kcalPreview} ${s.kcalPreviewFood}`}>
+                              ≈ {Math.round((food.kcalPer100g / 100) * parseInt(inputVal))} kcal
+                            </div>
+                          )}
+                        </>
+                      )}
+                    </div>
+                  )
+                })}
+              </>
+            )}
+          </div>
+
+          {/* Right: summary panel */}
+          <div className={s.summaryPanel}>
+            <div className={s.summaryMeta}>
+              <input
+                type="date" value={form.date}
+                onChange={e => setForm(f => ({ ...f, date: e.target.value }))}
+              />
+              <input
+                type="number" placeholder="Gewicht kg" step="0.1"
+                value={form.weight}
+                onChange={e => setForm(f => ({ ...f, weight: e.target.value }))}
+                style={{ width: 90 }}
+              />
+            </div>
+
+            <div className={s.kcalHero}>
+              <div className={s.kcalNum}>{totalKcal}</div>
+              <div className={s.kcalLabel}>kcal netto heute</div>
+            </div>
+
+            <div className={s.summaryItems}>
+              {form.sports.length === 0 && form.foods.length === 0 && (
+                <div className={s.emptyItems}>Noch nichts eingetragen</div>
+              )}
+              {form.sports.map(item => {
+                const sp = activeSports.find(x => x.id === item.id)
+                if (!sp) return null
+                const kcal = Math.round(sp.kcalPerMin * item.min)
+                return (
+                  <div key={item.id} className={s.summaryItem}>
+                    <div className={`${s.summaryDot} ${s.dotSport}`} />
+                    <span className={s.summaryItemName}>{sp.de} ({item.min} min)</span>
+                    <span className={`${s.summaryItemKcal} ${s.summaryItemKcalSport}`}>−{kcal}</span>
+                    <button className={s.summaryRemove} onClick={() => removeSportFromForm(item.id)}>×</button>
+                  </div>
+                )
+              })}
+              {form.foods.map(item => {
+                const food = activeFoods.find(x => x.id === item.id)
+                if (!food) return null
+                const kcal = Math.round((food.kcalPer100g / 100) * item.g)
+                return (
+                  <div key={item.id} className={s.summaryItem}>
+                    <div className={`${s.summaryDot} ${s.dotFood}`} />
+                    <span className={s.summaryItemName}>{food.de} ({item.g}g)</span>
+                    <span className={`${s.summaryItemKcal} ${s.summaryItemKcalFood}`}>+{kcal}</span>
+                    <button className={s.summaryRemove} onClick={() => removeFoodFromForm(item.id)}>×</button>
+                  </div>
+                )
+              })}
+            </div>
+
+            <div className={s.manualRow}>
+              <span>Extra kcal</span>
+              <input
+                type="number" placeholder="0"
+                value={form.manualKcal || ''}
+                onChange={e => setForm(f => ({ ...f, manualKcal: parseInt(e.target.value) || 0 }))}
+              />
+            </div>
+
+            <div className={s.totalsBlock}>
+              <div className={`${s.totalsRow} ${s.totalsRowFood}`}>
+                <span>Gegessen</span><span>+{totalFoodKcal + (form.manualKcal || 0)} kcal</span>
+              </div>
+              <div className={`${s.totalsRow} ${s.totalsRowSport}`}>
+                <span>Sport verbrannt</span><span>−{totalSportKcal} kcal</span>
+              </div>
+              <div className={s.totalsNet}>
+                <span>Netto</span><span>{totalKcal} kcal</span>
               </div>
             </div>
 
-            <div className={s.panel}>
-              <div className={s.panelLabel}>Tagebuch</div>
-              <hr className={s.divider} />
-              {sorted.length ? sorted.map(r => {
-                const kcal     = num(r.manualKcal) + (r.foods || []).reduce((t, f) => t + f.kcal, 0)
-                const sportMin = (r.sports || []).reduce((t, sp) => t + sp.minutes, 0)
-                const sportK   = (r.sports || []).reduce((t, sp) => t + sp.kcal, 0)
-                return (
-                  <div key={r.id} className={s.mgmtRow}>
-                    <div className={s.mgmtRowMain}>
-                      <strong>{r.date.slice(8)}.{r.date.slice(5, 7)} · {kcal - sportK} kcal netto{r.weight ? ` · ${r.weight} kg` : ''}</strong>
-                      <span>
-                        {(r.sports || []).map(sp => sp.name).join(', ')}
-                        {(r.sports || []).length > 0 && (r.foods || []).length > 0 ? ' · ' : ''}
-                        {(r.foods  || []).map(f => f.name).join(', ')}
-                        {r.note ? ` · ${r.note}` : ''}
-                      </span>
-                    </div>
-                    <button className={s.delBtn} type="button" onClick={() => deleteRecord(r.id)}>Löschen</button>
-                  </div>
-                )
-              }) : <p className={s.emptyHistory}>Noch keine Einträge.</p>}
-            </div>
+            <input
+              className={s.noteInput}
+              placeholder="Notiz…"
+              value={form.note}
+              onChange={e => setForm(f => ({ ...f, note: e.target.value }))}
+            />
+
+            <button className={s.saveBtn} onClick={handleSave} disabled={saving}>
+              {saving ? 'Speichert…' : 'Speichern'}
+            </button>
           </div>
-        </>
+        </div>
       )}
 
-      {/* ── LISTEN BEARBEITEN ── */}
-      {tab === 'lists' && (
+      {/* ── TAB: Verlauf ─────────────────────────────────────────────── */}
+      {tab === 'verlauf' && (
+        <div className={s.panel}>
+          <div className={s.panelLabel}>Einträge</div>
+          <hr className={s.divider} />
+          {records.length === 0 && <div className={s.emptyHistory}>Noch keine Einträge</div>}
+          {[...records].sort((a, b) => b.date.localeCompare(a.date)).map(rec => {
+            const sportKcal = (rec.sports || []).reduce((sum, item) => {
+              const sp = activeSports.find(x => x.id === item.id)
+              return sum + (sp ? Math.round(sp.kcalPerMin * item.min) : 0)
+            }, 0)
+            const foodKcal = (rec.foods || []).reduce((sum, item) => {
+              const food = activeFoods.find(x => x.id === item.id)
+              return sum + (food ? Math.round((food.kcalPer100g / 100) * item.g) : 0)
+            }, 0)
+            const net = foodKcal + (rec.manual_kcal || 0) - sportKcal
+            return (
+              <div key={rec.id} className={s.row} style={{ cursor: 'default' }}>
+                <div className={s.rowInitial}>{rec.date.slice(5)}</div>
+                <div className={s.rowMain}>
+                  <div className={s.rowName}>{rec.date}</div>
+                  <div style={{ fontSize: '11px', color: '#94a3b8', marginTop: 2 }}>
+                    {rec.weight ? `${rec.weight} kg · ` : ''}{(rec.sports || []).length} Sport · {(rec.foods || []).length} Essen
+                    {rec.note ? ` · ${rec.note}` : ''}
+                  </div>
+                </div>
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ fontSize: '14px', fontWeight: 600, color: '#0f172a' }}>{net} kcal</div>
+                  <div style={{ fontSize: '11px', color: '#94a3b8' }}>netto</div>
+                </div>
+                <button
+                  className={s.delBtn}
+                  onClick={async () => { await api(`/records?id=${rec.id}`, 'DELETE'); loadAll() }}
+                >
+                  ×
+                </button>
+              </div>
+            )
+          })}
+        </div>
+      )}
+
+      {/* ── TAB: Verwaltung ──────────────────────────────────────────── */}
+      {tab === 'verwaltung' && (
         <>
-          <div className={s.tabs} style={{ marginBottom: 20 }}>
-            <button className={listTab === 'sport' ? s.tabActive : s.tab} onClick={() => setListTab('sport')}>
-              Sportarten ({activeSports.length})
-            </button>
-            <button className={listTab === 'food' ? s.tabActive : s.tab} onClick={() => setListTab('food')}>
-              Lebensmittel ({activeFoods.length})
-            </button>
+          <div className={s.tabs} style={{ borderBottom: 'none', marginBottom: 12 }}>
+            <button className={mgmtMode === 'sport' ? s.tabActive : s.tab} onClick={() => setMgmtMode('sport')}>Sportarten</button>
+            <button className={mgmtMode === 'food' ? s.tabActive : s.tab} onClick={() => setMgmtMode('food')}>Lebensmittel</button>
           </div>
 
-          {listTab === 'sport' && (
+          {mgmtMode === 'sport' && (
             <div className={s.mgmtGrid}>
               <div className={s.panel}>
                 <div className={s.panelLabel}>Neue Sportart</div>
-                <hr className={s.divider} />
-                <form className={s.mgmtForm} onSubmit={addCustomSport}>
-                  <label>Name<input value={newSport.de} onChange={e => setNewSport(p => ({ ...p, de: e.target.value }))} placeholder="z. B. Kampfsport" required /></label>
-                  <label>kcal pro Minute<input type="number" min="1" max="30" step="0.5" value={newSport.kcalPerMin} onChange={e => setNewSport(p => ({ ...p, kcalPerMin: e.target.value }))} placeholder="z. B. 7" required /></label>
+                <form className={s.mgmtForm} onSubmit={handleAddSport}>
+                  <label>Name<input value={newSport.de} onChange={e => setNewSport(p => ({ ...p, de: e.target.value }))} placeholder="z. B. Klettern" /></label>
+                  <label>kcal/min<input type="number" min="1" max="30" value={newSport.kcalPerMin} onChange={e => setNewSport(p => ({ ...p, kcalPerMin: e.target.value }))} placeholder="z. B. 7" /></label>
                   <button className={s.mgmtSubmit} type="submit">Hinzufügen</button>
                 </form>
               </div>
-
               <div className={s.panel}>
-                <div className={s.panelLabel}>Alle Sportarten</div>
-                <hr className={s.divider} />
                 <div className={s.mgmtList}>
-                  {activeSports.map(sp => (
-                    <div key={sp.id} className={s.mgmtRow}>
-                      <div className={s.mgmtRowMain}>
-                        <strong>{sp.de}{sp.custom ? ' ✦' : ''}</strong>
-                        <span>{sp.kcalPerMin} kcal/min</span>
+                  {sportKategorien.map(cat => {
+                    const items = activeSports.filter(sp => sp.cat === cat.id)
+                    if (!items.length) return null
+                    return (
+                      <div key={cat.id}>
+                        <div className={s.mgmtCatLabel}>{cat.de}</div>
+                        {items.map(sp => (
+                          <div key={sp.id} className={s.mgmtRow}>
+                            <div className={s.mgmtRowMain}>
+                              <strong>{sp.de}</strong>
+                              <span>{sp.kcalPerMin} kcal/min</span>
+                            </div>
+                            <button className={s.delBtn} onClick={() => deleteSport(sp.id, sp.cat === 'custom')}>Löschen</button>
+                          </div>
+                        ))}
                       </div>
-                      <button className={s.delBtn} onClick={() => sp.custom ? doDelCustomSport(sp.id) : doDeleteSport(sp.id)}>Löschen</button>
+                    )
+                  })}
+                  {activeSports.filter(sp => sp.cat === 'custom').length > 0 && (
+                    <div>
+                      <div className={s.mgmtCatLabel}>Benutzerdefiniert</div>
+                      {activeSports.filter(sp => sp.cat === 'custom').map(sp => (
+                        <div key={sp.id} className={s.mgmtRow}>
+                          <div className={s.mgmtRowMain}><strong>{sp.de}</strong><span>{sp.kcalPerMin} kcal/min</span></div>
+                          <button className={s.delBtn} onClick={() => deleteSport(sp.id, true)}>Löschen</button>
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  )}
+                  {deletedSports.length > 0 && (
+                    <div className={s.deletedSection}>
+                      <div className={s.deletedLabel}>Gelöschte Standardsportarten</div>
+                      {sportarten.filter(sp => deletedSports.includes(sp.id)).map(sp => (
+                        <div key={sp.id} className={s.mgmtRow}>
+                          <div className={s.mgmtRowMain}><strong>{sp.de}</strong><span>{sp.kcalPerMin} kcal/min</span></div>
+                          <button className={s.restoreBtn} onClick={() => restoreSport(sp.id)}>Wiederherstellen</button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
-                {deletedSports.size > 0 && (
-                  <div className={s.deletedSection}>
-                    <div className={s.deletedLabel}>Gelöscht — wiederherstellbar</div>
-                    {DEFAULT_SPORTS.filter(sp => deletedSports.has(sp.id)).map(sp => (
-                      <div key={sp.id} className={s.mgmtRow}>
-                        <div className={s.mgmtRowMain}><strong>{sp.de}</strong><span>{sp.kcalPerMin} kcal/min</span></div>
-                        <button className={s.restoreBtn} onClick={() => doRestoreSport(sp.id)}>Wiederherstellen</button>
-                      </div>
-                    ))}
-                  </div>
-                )}
               </div>
             </div>
           )}
 
-          {listTab === 'food' && (
+          {mgmtMode === 'food' && (
             <div className={s.mgmtGrid}>
               <div className={s.panel}>
                 <div className={s.panelLabel}>Neues Lebensmittel</div>
-                <hr className={s.divider} />
-                <form className={s.mgmtForm} onSubmit={addCustomFood}>
-                  <label>Name<input value={newFood.de} onChange={e => setNewFood(p => ({ ...p, de: e.target.value }))} placeholder="z. B. Käsekuchen" required /></label>
+                <form className={s.mgmtForm} onSubmit={handleAddFood}>
+                  <label>Name<input value={newFood.de} onChange={e => setNewFood(p => ({ ...p, de: e.target.value }))} placeholder="z. B. Baklava" /></label>
                   <label>Kategorie
                     <select value={newFood.cat} onChange={e => setNewFood(p => ({ ...p, cat: e.target.value }))}>
-                      {kategorien.map(c => <option key={c.id} value={c.id}>{c.de}</option>)}
+                      {kategorien.map(k => <option key={k.id} value={k.id}>{k.de}</option>)}
+                      <option value="sonstiges">Sonstige</option>
                     </select>
                   </label>
-                  <label>kcal / 100g<input type="number" min="0" inputMode="numeric" value={newFood.kcalPer100g} onChange={e => setNewFood(p => ({ ...p, kcalPer100g: e.target.value }))} placeholder="z. B. 250" required /></label>
-                  <label>Standardportion (g)<input type="number" min="1" inputMode="numeric" value={newFood.portionG} onChange={e => setNewFood(p => ({ ...p, portionG: e.target.value }))} placeholder="z. B. 150" /></label>
+                  <label>kcal/100g<input type="number" min="0" value={newFood.kcalPer100g} onChange={e => setNewFood(p => ({ ...p, kcalPer100g: e.target.value }))} placeholder="z. B. 250" /></label>
+                  <label>Portion (g)<input type="number" min="1" value={newFood.portionG} onChange={e => setNewFood(p => ({ ...p, portionG: e.target.value }))} placeholder="100" /></label>
                   <button className={s.mgmtSubmit} type="submit">Hinzufügen</button>
                 </form>
               </div>
-
               <div className={s.panel}>
-                <div className={s.panelLabel}>Alle Lebensmittel</div>
-                <hr className={s.divider} />
                 <div className={s.mgmtList}>
                   {kategorien.map(cat => {
                     const items = activeFoods.filter(f => f.cat === cat.id)
@@ -475,27 +699,27 @@ export default function HealthPage() {
                         {items.map(f => (
                           <div key={f.id} className={s.mgmtRow}>
                             <div className={s.mgmtRowMain}>
-                              <strong>{f.de}{f.custom ? ' ✦' : ''}</strong>
-                              <span>{f.kcalPer100g} kcal/100g · {f.portionG}g Portion</span>
+                              <strong>{f.de}</strong>
+                              <span>{f.kcalPer100g} kcal/100g · Portion {f.portionG}g</span>
                             </div>
-                            <button className={s.delBtn} onClick={() => f.custom ? doDelCustomFood(f.id) : doDeleteFood(f.id)}>Löschen</button>
+                            <button className={s.delBtn} onClick={() => deleteFood(f.id, !!customFoods.find(cf => cf.id === f.id))}>Löschen</button>
                           </div>
                         ))}
                       </div>
                     )
                   })}
+                  {deletedFoods.length > 0 && (
+                    <div className={s.deletedSection}>
+                      <div className={s.deletedLabel}>Gelöschte Standardlebensmittel</div>
+                      {lebensmittel.filter(f => deletedFoods.includes(f.id)).map(f => (
+                        <div key={f.id} className={s.mgmtRow}>
+                          <div className={s.mgmtRowMain}><strong>{f.de}</strong><span>{f.kcalPer100g} kcal/100g</span></div>
+                          <button className={s.restoreBtn} onClick={() => restoreFood(f.id)}>Wiederherstellen</button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
-                {deletedFoods.size > 0 && (
-                  <div className={s.deletedSection}>
-                    <div className={s.deletedLabel}>Gelöscht — wiederherstellbar</div>
-                    {DEFAULT_FOODS.filter(f => deletedFoods.has(f.id)).map(f => (
-                      <div key={f.id} className={s.mgmtRow}>
-                        <div className={s.mgmtRowMain}><strong>{f.de}</strong><span>{f.kcalPer100g} kcal/100g</span></div>
-                        <button className={s.restoreBtn} onClick={() => doRestoreFood(f.id)}>Wiederherstellen</button>
-                      </div>
-                    ))}
-                  </div>
-                )}
               </div>
             </div>
           )}
