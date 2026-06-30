@@ -71,9 +71,10 @@
 }
 .option:hover:not(:disabled) { border-color: #fdba74; background: rgba(249,115,22,0.04); }
 .option:disabled { cursor: default; }
-.optSel  { border-color: #f97316 !important; background: rgba(249,115,22,0.08) !important; }
-.optOk   { border-color: #059669 !important; background: rgba(5,150,105,0.08)   !important; }
-.optErr  { border-color: #ef4444 !important; background: rgba(239,68,68,0.08)   !important; }
+.optSel   { border-color: #f97316 !important; background: rgba(249,115,22,0.10) !important; transform: scale(1.01); box-shadow: 0 2px 12px rgba(249,115,22,0.18); }
+.optUnsel { opacity: 0.52; }
+.optOk    { border-color: #059669 !important; background: rgba(5,150,105,0.08)   !important; }
+.optErr   { border-color: #ef4444 !important; background: rgba(239,68,68,0.08)   !important; }
 .optLetter {
   width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
@@ -84,6 +85,40 @@
 .optSel .optLetter { background: #f97316; color: #fff; }
 .optText { flex: 1; font-size: 14px; color: #334155; line-height: 1.45; }
 .optMark { font-size: 16px; flex-shrink: 0; }
+
+/* ── CONFIRM POPUP ─────────────────────────────── */
+.optWrap { display: flex; flex-direction: column; }
+.confirmPopup {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+  margin-top: -4px; padding: 10px 16px 12px 16px;
+  background: #fff; border: 1.5px solid #f97316; border-top: none;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 6px 18px rgba(249,115,22,0.15);
+  animation: confirmIn .2s cubic-bezier(.34,1.56,.64,1) both;
+}
+@keyframes confirmIn {
+  from { opacity: 0; transform: translateY(-6px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.confirmQuestion {
+  font-size: 13px; font-weight: 600; color: #92400e;
+}
+.confirmBtns { display: flex; gap: 8px; }
+.confirmYes {
+  padding: 6px 18px; border-radius: 50px; border: none; cursor: pointer;
+  background: linear-gradient(130deg,#f97316,#fbbf24);
+  color: #fff; font-size: 13px; font-weight: 700; font-family: inherit;
+  box-shadow: 0 2px 8px rgba(249,115,22,0.35);
+  transition: transform .15s, box-shadow .15s;
+}
+.confirmYes:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(249,115,22,0.45); }
+.confirmNo {
+  padding: 6px 14px; border-radius: 50px; cursor: pointer;
+  background: transparent; border: 1.5px solid #e2e6f0;
+  color: #64748b; font-size: 13px; font-weight: 600; font-family: inherit;
+  transition: background .15s;
+}
+.confirmNo:hover { background: #f0f2f8; }
 
 /* ── FEEDBACK ──────────────────────────────────── */
 .feedback {
@@ -270,3 +305,11 @@
   border-color: rgba(249,115,22,0.38);
 }
 :global(html[data-theme='dark']) .nextBtn { background: #f8fafc; color: #0f172a; }
+:global(html[data-theme='dark']) .confirmPopup {
+  background: rgba(15,23,42,0.97); border-color: #f97316;
+}
+:global(html[data-theme='dark']) .confirmQuestion { color: #fdba74; }
+:global(html[data-theme='dark']) .confirmNo {
+  border-color: rgba(148,163,184,0.25); color: #94a3b8;
+}
+:global(html[data-theme='dark']) .confirmNo:hover { background: rgba(30,41,59,0.8); }

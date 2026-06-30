@@ -409,17 +409,30 @@ function QuizContent() {
 
           <div className={styles.options}>
             {q.options.map(opt => {
+              const isThisSelected = selected === opt.id && !checked
               let cls = styles.option
+              if (selected && selected !== opt.id && !checked) cls = `${styles.option} ${styles.optUnsel}`
               if (selected === opt.id && !checked) cls = `${styles.option} ${styles.optSel}`
               if (checked && opt.id === q.correct) cls = `${styles.option} ${styles.optOk}`
               if (checked && selected === opt.id && opt.id !== q.correct) cls = `${styles.option} ${styles.optErr}`
               return (
-                <button key={opt.id} className={cls} disabled={checked} onClick={() => setSelected(opt.id)}>
-                  <span className={styles.optLetter}>{opt.id}</span>
-                  <span className={styles.optText}>{opt.text}</span>
-                  {checked && opt.id === q.correct && <span className={styles.optMark}>✓</span>}
-                  {checked && selected === opt.id && opt.id !== q.correct && <span className={styles.optMark}>✗</span>}
-                </button>
+                <div key={opt.id} className={styles.optWrap}>
+                  <button className={cls} disabled={checked} onClick={() => setSelected(opt.id)}>
+                    <span className={styles.optLetter}>{opt.id}</span>
+                    <span className={styles.optText}>{opt.text}</span>
+                    {checked && opt.id === q.correct && <span className={styles.optMark}>✓</span>}
+                    {checked && selected === opt.id && opt.id !== q.correct && <span className={styles.optMark}>✗</span>}
+                  </button>
+                  {isThisSelected && (
+                    <div className={styles.confirmPopup}>
+                      <span className={styles.confirmQuestion}>Bist du sicher?</span>
+                      <div className={styles.confirmBtns}>
+                        <button className={styles.confirmYes} onClick={handleCheck}>✓ Bestätigen</button>
+                        <button className={styles.confirmNo} onClick={() => setSelected(null)}>Ändern</button>
+                      </div>
+                    </div>
+                  )}
+                </div>
               )
             })}
           </div>
@@ -447,12 +460,11 @@ function QuizContent() {
             </div>
           )}
 
-          <div className={styles.actionRow}>
-            {!checked
-              ? <button className={`${styles.checkBtn} ${!selected ? styles.checkDisabled : ''}`} onClick={handleCheck} disabled={!selected}>{ui.checkBtn}</button>
-              : <button className={styles.nextBtn} onClick={handleNext}>{isLast ? ui.resultBtn : ui.nextBtn} →</button>
-            }
-          </div>
+          {checked && (
+            <div className={styles.actionRow}>
+              <button className={styles.nextBtn} onClick={handleNext}>{isLast ? ui.resultBtn : ui.nextBtn} →</button>
+            </div>
+          )}
         </div>
 
         {/* Score tracker */}
