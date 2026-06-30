@@ -100,6 +100,22 @@ function ClassTable({ cols, rows, lang }) {
   )
 }
 
+function InfoText({ text }) {
+  return (
+    <p>
+      {text.split('\n').map((line, index, lines) => {
+        const isCave = ['Cave:', 'نکته احتیاط:'].includes(line.trim())
+        return (
+          <span key={index}>
+            {isCave ? <strong className={styles.infoCave}>{line}</strong> : line}
+            {index < lines.length - 1 && <br />}
+          </span>
+        )
+      })}
+    </p>
+  )
+}
+
 function DetailList({ detail, lang, color }) {
   return (
     <div className={styles.detailList}>
@@ -261,8 +277,8 @@ export default function KlassDetailPage({ topic, item, section = 'klassifikation
           {!isAnatomie && (item.kompakt || item.erklaerung || item.radiologie) && (
             <section id="erklaerung" className={styles.infoPanel}>
               <span className={styles.infoPanelLabel}>{infoLabel}</span>
-              {item.kompakt && <p>{tx(item.kompakt, lang)}</p>}
-              {item.erklaerung && <p>{tx(item.erklaerung, lang)}</p>}
+              {item.kompakt && <InfoText text={tx(item.kompakt, lang)} />}
+              {item.erklaerung && <InfoText text={tx(item.erklaerung, lang)} />}
               {item.radiologie && <DetailList detail={item.radiologie} lang={lang} color={color} />}
             </section>
           )}
