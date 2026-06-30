@@ -1692,9 +1692,9 @@ export const KLASSIFIKATIONEN = [
         id: 'modic',
         name: { de: 'Modic-Klassifikation', en: 'Modic classification', fa: 'مودیک' },
         kompakt: {
-          de: 'Modic beschreibt reaktive Veränderungen der angrenzenden Wirbelkörperabschlussplatten im MRT. Die Typen spiegeln Ödem, Fettumbau oder Sklerose wider.\nCave:\nModic-I-Veränderungen können aktiv-entzündlich wirken und sollten bei Rückenschmerz oder Infektdifferenzialdiagnose im klinischen Kontext bewertet werden.',
-          en: 'Modic describes reactive changes of the adjacent vertebral body endplates on MRI. The types reflect oedema, fatty conversion or sclerosis.\nCave:\nModic type I changes can appear active/inflammatory and should be interpreted in clinical context, especially in back pain or when infection is a differential diagnosis.',
-          fa: 'مودیک تغییرات واکنشی صفحات انتهایی مجاور جسم مهره‌ها را در MRI توصیف می‌کند. انواع آن نشان‌دهنده ادم، تبدیل چربی یا اسکلروز هستند.\nنکته احتیاط:\nتغییرات مودیک نوع I می‌توانند ظاهری فعال یا التهابی داشته باشند و در صورت کمردرد یا مطرح بودن تشخیص افتراقی عفونت باید در زمینه بالینی ارزیابی شوند.',
+          de: 'Modic beschreibt reaktive Veränderungen der angrenzenden Wirbelkörperabschlussplatten im MRT. Die Typen spiegeln Ödem, Fettumbau oder Sklerose wider.',
+          en: 'Modic describes reactive changes of the adjacent vertebral body endplates on MRI. The types reflect oedema, fatty conversion or sclerosis.',
+          fa: 'مودیک تغییرات واکنشی صفحات انتهایی مجاور جسم مهره‌ها را در MRI توصیف می‌کند. انواع آن نشان‌دهنده ادم، تبدیل چربی یا اسکلروز هستند.',
         },
         image: {
           src: '/referenzen/klassifikationen/modic.png',
@@ -1706,6 +1706,16 @@ export const KLASSIFIKATIONEN = [
           [{ de: 'Modic I', en: 'Modic I', fa: 'Modic I' }, { de: 'Ödem (akut/aktiv)', en: 'Oedema (acute/active)', fa: 'ادم / التهاب' }, '↓', '↑'],
           [{ de: 'Modic II', en: 'Modic II', fa: 'Modic II' }, { de: 'Fett (chronisch)', en: 'Fatty change (chronic)', fa: 'دژنراسیون چربی' }, '↑', '↑'],
           [{ de: 'Modic III', en: 'Modic III', fa: 'Modic III' }, { de: 'Sklerose (Endstadium)', en: 'Sclerosis (end stage)', fa: 'اسکلروز' }, '↓', '↓'],
+        ],
+        radiologie: [
+          {
+            stage: { de: 'Cave', en: 'Cave', fa: 'نکته احتیاط' },
+            text: {
+              de: 'Modic-I-Veränderungen können aktiv-entzündlich wirken und sollten bei Rückenschmerz oder Infektdifferenzialdiagnose im klinischen Kontext bewertet werden.',
+              en: 'Modic type I changes can appear active/inflammatory and should be interpreted in clinical context, especially in back pain or when infection is a differential diagnosis.',
+              fa: 'تغییرات مودیک نوع I می‌توانند ظاهری فعال یا التهابی داشته باشند و در صورت کمردرد یا مطرح بودن تشخیص افتراقی عفونت باید در زمینه بالینی ارزیابی شوند.',
+            },
+          },
         ],
       },
     ],
@@ -2103,14 +2113,6 @@ const CLASSIFICATION_ENHANCEMENTS = {
     ],
     sources: [{ label: { de: 'Pfirrmann et al., Spine 2001' }, url: 'https://pubmed.ncbi.nlm.nih.gov/11725234/' }],
   },
-  modic: {
-    erklaerung: { de: 'Modic beschreibt reaktive Knochenmarkveränderungen angrenzend an degenerierte Endplatten. Die Typen spiegeln Ödem, Fettumbau oder Sklerose wider.' },
-    radiologie: [
-      { stage: { de: 'Was ansehen?' }, text: { de: 'T1/T2/STIR-Signal an den Endplatten beurteilen; erosive Infektion von degenerativem Modic-1-Muster abgrenzen.' } },
-      { stage: { de: 'Befund-Tipp' }, text: { de: 'Etage, Typ, Aktivitätszeichen und begleitende Diskus-/Endplattenveränderungen nennen.' } },
-    ],
-    sources: [{ label: { de: 'Modic et al., Radiology 1988' }, url: 'https://pubmed.ncbi.nlm.nih.gov/3336678/' }],
-  },
   genant: {
     erklaerung: { de: 'Genant ist eine semiquantitative Methode zur Einteilung osteoporotischer Wirbelkörperfrakturen nach Höhenminderung. Sie hilft, Frakturlast und Verlauf zu standardisieren.' },
     radiologie: [
@@ -2321,13 +2323,6 @@ const CLASSIFICATION_FA_ENHANCEMENTS = {
     radiologie: [
       { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'سیگنال T2 نوکلئوس، همگنی، تفکیک آنولوس/نوکلئوس و ارتفاع دیسک را بررسی کنید.' } },
       { stage: { fa: 'نکته گزارش' }, text: { fa: 'درجه را تنها تفسیر نکنید؛ protrusion/extrusion، تغییرات Modic، تنگی کانال و سمت علائم را اضافه کنید.' } },
-    ],
-  },
-  modic: {
-    erklaerung: { fa: 'Modic تغییرات واکنشی مغز استخوان در مجاورت endplateهای دژنراتیو را توصیف می‌کند. انواع آن بازتاب ادم، تبدیل چربی یا اسکلروز هستند.' },
-    radiologie: [
-      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'سیگنال T1/T2/STIR در endplateها را بررسی کنید؛ Modic 1 دژنراتیو را از عفونت erosive جدا کنید.' } },
-      { stage: { fa: 'نکته گزارش' }, text: { fa: 'سطح، نوع، نشانه‌های فعالیت و تغییرات همراه دیسک/endplate را ذکر کنید.' } },
     ],
   },
   genant: {
