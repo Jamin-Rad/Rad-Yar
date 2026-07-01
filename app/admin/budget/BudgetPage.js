@@ -599,7 +599,8 @@ export default function BudgetPage() {
               {view === 'einstellung' && (
                 <div className={styles.sidebarSubGroup}>
                   <button className={subView === 'kategorien' ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('kategorien')}>Kategorien</button>
-                  <button className={subView === 'fixkosten'  ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('fixkosten')}>Fixkosten &amp; Budget</button>
+                  <button className={subView === 'budget'  ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('budget')}>Budget</button>
+                  <button className={subView === 'fixkosten'  ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('fixkosten')}>Fixkosten</button>
                 </div>
               )}
             </nav>
@@ -824,11 +825,10 @@ export default function BudgetPage() {
               </div>
             )}
 
-            {/* ── FIXKOSTEN & BUDGET ── */}
-            {view === 'einstellung' && subView === 'fixkosten' && (
+            {/* ── BUDGET ── */}
+            {view === 'einstellung' && subView === 'budget' && (
               <div>
-                {/* Budget pro Kategorie */}
-                <div className={styles.budgetPanel} style={{ marginBottom: 24 }}>
+                <div className={styles.budgetPanel}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
                     <div>
                       <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Budget pro Kategorie</h2>
@@ -856,27 +856,44 @@ export default function BudgetPage() {
                     })}
                   </div>
                 </div>
+              </div>
+            )}
 
-                {/* Monatliche Fixkosten */}
-                <div className={styles.budgetPanel}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+            {/* ── FIXKOSTEN ── */}
+            {view === 'einstellung' && subView === 'fixkosten' && (
+              <div>
+                <div className={styles.fixedCostsPanel}>
+                  <div className={styles.fixedCostsHeader}>
                     <div>
                       <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Monatliche Fixkosten</h2>
-                      {totalFixkosten > 0 && <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>{formatMoney(totalFixkosten)} / Monat</p>}
+                      <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>Wiederkehrende Beträge für deine Planung.</p>
+                    </div>
+                    <div className={styles.fixedTotalPill}>
+                      <span>Summe pro Monat</span>
+                      <strong>{totalFixkosten > 0 ? formatMoney(totalFixkosten) : '—'}</strong>
                     </div>
                   </div>
-                  {recurring.length > 0 && (
-                    <div className={styles.fixedList} style={{ marginBottom: 20 }}>
+                  {recurring.length > 0 ? (
+                    <div className={styles.fixedCardGrid}>
                       {recurring.map(r => (
-                        <div className={styles.fixedItem} key={r.id}>
-                          <div className={styles.fixedItemMain}><strong>{r.title}</strong><span>{r.category || 'Keine Kategorie'} · Tag {r.dayOfMonth}</span></div>
-                          <strong className={r.type === 'income' ? styles.moneyPositive : ''}>{formatMoney(r.amount)}</strong>
-                          <button className={styles.actionBtn} type="button" onClick={() => removeFixeintrag(r.id)}>×</button>
+                        <div className={styles.fixedCard} key={r.id}>
+                          <div className={styles.fixedCardHead}>
+                            <strong>{r.title}</strong>
+                            <span className={r.type === 'income' ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(r.amount)}</span>
+                          </div>
+                          <div className={styles.fixedMetaRow}>
+                            <span className={r.type === 'income' ? styles.fixedMetaIncome : styles.fixedMetaExpense}>{r.type === 'income' ? 'Einnahme' : 'Ausgabe'}</span>
+                            <span className={styles.fixedMetaPill}>Tag {r.dayOfMonth}</span>
+                            {r.category && <span className={styles.fixedMetaPill}>{r.category}</span>}
+                          </div>
+                          <button className={styles.fixedDeleteBtn} type="button" onClick={() => removeFixeintrag(r.id)} aria-label={`${r.title} löschen`}>×</button>
                         </div>
                       ))}
                     </div>
+                  ) : (
+                    <p className={styles.emptyAnalytics}>Noch keine Fixkosten gespeichert.</p>
                   )}
-                  <form className={styles.budgetForm} onSubmit={addFixeintrag}>
+                  <form className={`${styles.budgetForm} ${styles.fixedFormPanel}`} onSubmit={addFixeintrag}>
                     <div className={styles.segmentedControl}>
                       <button type="button" className={newFix.type === 'income' ? styles.segmentActive : ''} onClick={() => setNewFix(p => ({ ...p, type: 'income' }))}>Einkommen</button>
                       <button type="button" className={newFix.type === 'expense' ? styles.segmentActive : ''} onClick={() => setNewFix(p => ({ ...p, type: 'expense' }))}>Ausgabe</button>
@@ -884,9 +901,11 @@ export default function BudgetPage() {
                     <div className={styles.budgetFieldRow}>
                       <label><span>Titel</span><input value={newFix.title} onChange={e => setNewFix(p => ({ ...p, title: e.target.value }))} placeholder="z. B. Miete, Leasing" required /></label>
                       <label>
-                        <span>Kategorie</span>
-                        <input list="fix-cat-list" value={newFix.category} onChange={e => setNewFix(p => ({ ...p, category: e.target.value }))} placeholder="Wähle Kategorie" />
-                        <datalist id="fix-cat-list">{categories.map(c => <option key={c.id} value={c.name} />)}</datalist>
+                        <span>Zuordnung</span>
+                        <select value={newFix.category} onChange={e => setNewFix(p => ({ ...p, category: e.target.value }))}>
+                          <option value="">Ohne Zuordnung</option>
+                          {categories.filter(c => c.type === newFix.type).map(c => <option key={c.id} value={c.name}>{c.name}</option>)}
+                        </select>
                       </label>
                     </div>
                     <div className={styles.budgetFieldRow}>

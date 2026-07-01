@@ -375,7 +375,8 @@
 }
 
 .budgetMonthPicker input,
-.budgetForm input {
+.budgetForm input,
+.budgetForm select {
   width: 100%;
   border: 1px solid #e2e8f0;
   border-radius: 10px;
@@ -389,9 +390,19 @@
 }
 
 .budgetMonthPicker input:focus,
-.budgetForm input:focus {
+.budgetForm input:focus,
+.budgetForm select:focus {
   border-color: #f97316;
   box-shadow: 0 0 0 3px rgba(249, 115, 22, .12);
+}
+
+.budgetForm select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, #64748b 50%), linear-gradient(135deg, #64748b 50%, transparent 50%);
+  background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 34px;
 }
 
 .budgetSummaryGrid {
@@ -1430,6 +1441,24 @@
 
   .budgetSummaryGrid,
   .budgetGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .budgetFieldRow,
+  .fixedCostsHeader {
+    grid-template-columns: 1fr;
+  }
+
+  .fixedCostsHeader {
+    flex-direction: column;
+  }
+
+  .fixedTotalPill {
+    width: 100%;
+    text-align: left;
+  }
+
+  .fixedCardGrid {
     grid-template-columns: 1fr;
   }
 
@@ -2592,34 +2621,146 @@
 }
 
 /* ── FIXKOSTEN ───────────────────────────────── */
-.fixedList {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.fixedItem {
+.fixedCostsPanel {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto;
-  align-items: center;
-  gap: 12px;
-  padding: 11px 14px;
+  gap: 18px;
+}
+
+.fixedCostsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 22px 24px;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+
+.fixedTotalPill {
+  display: grid;
+  gap: 4px;
+  min-width: 150px;
+  padding: 10px 14px;
+  border-radius: 14px;
   background: #f8fafc;
-  border-radius: 12px;
-  border: 1px solid #eef2f7;
+  border: 1px solid #e2e8f0;
+  text-align: right;
 }
 
-.fixedItemMain strong {
-  display: block;
-  font-size: 13px;
-  font-weight: 700;
-  color: #0d1b2a;
-  margin-bottom: 2px;
-}
-
-.fixedItemMain span {
-  font-size: 11px;
+.fixedTotalPill span {
   color: #64748b;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.fixedTotalPill strong {
+  color: #0d1b2a;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.fixedCardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 12px;
+}
+
+.fixedCard {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  min-height: 116px;
+  padding: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.05);
+}
+
+.fixedCardHead {
+  display: grid;
+  gap: 4px;
+  padding-right: 26px;
+}
+
+.fixedCardHead strong {
+  color: #0d1b2a;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.fixedCardHead span {
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.fixedMetaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.fixedMetaPill,
+.fixedMetaIncome,
+.fixedMetaExpense {
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.fixedMetaPill {
+  background: #f8fafc;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.fixedMetaIncome {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.fixedMetaExpense {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.fixedDeleteBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid #e2e8f0;
+  border-radius: 50%;
+  background: #fff;
+  color: #64748b;
+  font: inherit;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all .15s;
+}
+
+.fixedDeleteBtn:hover {
+  border-color: #fecaca;
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.fixedFormPanel {
+  padding: 22px;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
 }
 
 /* ── DARK MODE ─────────────────────────────────── */
@@ -2771,10 +2912,18 @@
 }
 
 :global(html[data-theme='dark']) .budgetMonthPicker input,
-:global(html[data-theme='dark']) .budgetForm input {
+:global(html[data-theme='dark']) .budgetForm input,
+:global(html[data-theme='dark']) .budgetForm select {
   background: var(--bg-soft);
   border-color: var(--border);
   color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .budgetForm select {
+  background-image: linear-gradient(45deg, transparent 50%, var(--text-muted) 50%), linear-gradient(135deg, var(--text-muted) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
 }
 
 :global(html[data-theme='dark']) .segmentedControl {
@@ -3116,16 +3265,32 @@
   color: var(--text-strong);
 }
 
-:global(html[data-theme='dark']) .fixedItem {
+:global(html[data-theme='dark']) .fixedCostsHeader,
+:global(html[data-theme='dark']) .fixedCard,
+:global(html[data-theme='dark']) .fixedFormPanel {
+  background: var(--bg-card);
+  border-color: var(--border);
+}
+
+:global(html[data-theme='dark']) .fixedTotalPill,
+:global(html[data-theme='dark']) .fixedMetaPill {
   background: var(--bg-soft);
   border-color: var(--border-soft);
 }
 
-:global(html[data-theme='dark']) .fixedItemMain strong {
+:global(html[data-theme='dark']) .fixedCardHead strong,
+:global(html[data-theme='dark']) .fixedTotalPill strong {
   color: var(--text-strong);
 }
 
-:global(html[data-theme='dark']) .fixedItemMain span {
+:global(html[data-theme='dark']) .fixedTotalPill span,
+:global(html[data-theme='dark']) .fixedMetaPill {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .fixedDeleteBtn {
+  background: var(--bg-soft);
+  border-color: var(--border);
   color: var(--text-muted);
 }
 
