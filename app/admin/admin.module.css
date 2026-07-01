@@ -2283,7 +2283,7 @@
 
 .entryCategoryBlock {
   display: grid;
-  gap: 9px;
+  gap: 10px;
 }
 
 .entryFormLabelRow {
@@ -2302,19 +2302,19 @@
 .catAccordion {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 9px;
+  gap: 10px;
 }
 
 .catAccordionItem {
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--cat-border, #e2e8f0) 26%, #e2e8f0);
+  border-radius: 14px;
   overflow: hidden;
   background: #fff;
   transition: border-color .15s, box-shadow .15s, transform .15s;
 }
 
 .catAccordionItem:has(.catAccordionHeaderSelected) {
-  box-shadow: 0 8px 20px rgba(15,23,42,.08);
+  box-shadow: 0 10px 22px rgba(15,23,42,.08);
   transform: translateY(-1px);
 }
 
@@ -2323,23 +2323,48 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  min-height: 48px;
-  padding: 10px 12px;
+  min-height: 50px;
+  padding: 11px 13px;
   border: none;
   background: #fff;
   font: inherit;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 800;
   color: #0d1b2a;
   cursor: pointer;
   text-align: left;
   transition: background .12s, color .12s;
 }
 
-.catAccordionHeader:hover { background: rgba(249,115,22,.06); color: #c2410c; }
+.catAccordionHeader:hover {
+  background: var(--cat-bg, rgba(249,115,22,.06));
+  color: var(--cat-text, #c2410c);
+}
+
+.catAccordionTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+}
+
+.catAccordionTitle > span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.catAccordionDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--cat-border, #f97316);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--cat-bg, #ffedd5) 82%, transparent);
+  flex-shrink: 0;
+}
 
 .catAccordionHeaderOpen {
-  border-bottom: 1px solid rgba(226,232,240,.8);
+  border-bottom: 1px solid color-mix(in srgb, var(--cat-border, #e2e8f0) 22%, #e2e8f0);
 }
 
 .catAccordionHeaderSelected {
@@ -2348,8 +2373,9 @@
 
 .catAccordionChevron {
   display: inline-flex;
+  color: var(--cat-text, #64748b);
   transition: transform .15s;
-  opacity: .5;
+  opacity: .7;
 }
 
 .catAccordionChevronOpen {
@@ -2357,37 +2383,63 @@
 }
 
 .catAccordionSubs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  padding: 10px 12px 12px;
-  background: #f8fafc;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+  gap: 7px;
+  padding: 11px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--cat-bg, #f8fafc) 56%, #fff), #fff);
 }
 
 .catSubSelectPill,
 .catSubSelectPillActive {
   display: inline-flex;
   align-items: center;
-  padding: 7px 10px;
-  border-radius: 8px;
+  justify-content: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 8px 10px;
+  border-radius: 10px;
   font: inherit;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 800;
   cursor: pointer;
   transition: all .12s;
   border: 1px solid;
+  text-align: center;
+  overflow-wrap: anywhere;
 }
 
 .catSubSelectPill {
-  background: #f8fafc;
-  color: #475569;
-  border-color: #e2e8f0;
+  background: rgba(255,255,255,.86);
+  color: var(--cat-text, #475569);
+  border-color: color-mix(in srgb, var(--cat-border, #e2e8f0) 34%, #e2e8f0);
 }
 
-.catSubSelectPill:hover { border-color: #f97316; color: #c2410c; }
+.catSubSelectPill:hover {
+  border-color: var(--cat-border, #f97316);
+  background: var(--cat-bg, #fff7ed);
+  color: var(--cat-text, #c2410c);
+}
 
 .catSubSelectPillActive {
+  border-color: var(--cat-border, #f97316);
+  background: var(--cat-bg, #fff7ed);
+  color: var(--cat-text, #c2410c);
   font-weight: 800;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--cat-border, #f97316) 28%, transparent);
+}
+
+.catSubSelectCheck {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--cat-border, #f97316);
+  color: #fff;
+  font-size: 10px;
+  line-height: 1;
+  flex-shrink: 0;
 }
 
 /* Entry selection summary */
@@ -3090,6 +3142,23 @@
   background: rgba(249,115,22,.15);
   color: #fb923c;
   border-color: rgba(249,115,22,.3);
+}
+
+:global(html[data-theme='dark']) .catAccordionItem,
+:global(html[data-theme='dark']) .catAccordionHeader {
+  background: var(--bg-card);
+}
+
+:global(html[data-theme='dark']) .catAccordionHeader {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .catAccordionSubs {
+  background: color-mix(in srgb, var(--cat-bg, var(--bg-soft)) 16%, var(--bg-soft));
+}
+
+:global(html[data-theme='dark']) .catSubSelectPill {
+  background: var(--bg-card);
 }
 
 :global(html[data-theme='dark']) .categoryAddTile {

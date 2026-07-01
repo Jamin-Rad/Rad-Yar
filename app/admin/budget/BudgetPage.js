@@ -30,10 +30,10 @@ function buildCat(name, subs = [], type = 'expense') {
 const DEFAULT_EXPENSE_CATEGORIES = [
   ['Lebensmittel', ['Aldi', 'Lidl', 'Bonus', 'Edeka/Rewe/Netto', 'DM', 'Türkei']],
   ['Kleidung', ['Supermarkt', 'Takko', 'Ernstings Family', 'Deichman']],
-  ['Online', ['Amazon', 'AliExpress', 'Temu']],
   ['Restaurant', ['Eis/Coffee/Bäckerei', 'Essen', 'Krankenhaus']],
   ['Auto', ['Tanken', 'Strom', 'Parekn', 'Waschen', 'Reparatur/Service', 'Leasing', 'Bus-Ticket', 'ADAC', 'Bußgeld']],
   ['Zu Hause', ['Miete', 'Darlehen', 'Strom', 'Internet', 'Netflix', 'Fisch', 'Haushaltgerät', 'Papierkram']],
+  ['Ausflug', ['Aufenthalt', 'Transport', 'Essen', 'Ticket']],
   ['Jamin', ['Konto', 'Gothaer', 'Kleidung', 'SIM-Karte', 'Frisur', 'Sonst', 'Medikamente', 'Versicherung']],
   ['Fatima', ['Iphone 16', 'Gift', 'Kleidung', 'Medikamente', 'Cosmetics']],
   ['Mobin', ['Schule', 'Taschengeld', 'Bus-Ticket', 'Kleidung', 'SIM-Karte', 'Schulsachen', 'Sonst', 'Spielzeug']],
@@ -43,12 +43,11 @@ const DEFAULT_EXPENSE_CATEGORIES = [
   ['Fatima Eltern', ['Apotheke', 'Gift']],
   ['Mohsen', ['Gift']],
   ['Nazri', ['Mosche', 'Iran']],
-  ['Ausflug', ['Aufenthalt', 'Transport', 'Essen', 'Ticket']],
 ]
 
 const KNOWN_OLD_EXPENSE_CATEGORY_NAMES = new Set([
   'Lebensmittel', 'Restaurant', 'Auto', 'Zu Hause', 'Kleidung', 'Jamin',
-  'Fatima', 'Mobin', 'Mobina', 'Meine Eltern', 'Moschee',
+  'Fatima', 'Mobin', 'Mobina', 'Meine Eltern', 'Moschee', 'Online',
 ])
 
 function createDefaultCategories() {
@@ -97,23 +96,23 @@ function mergeExpenseDefaults(categories) {
 const MONTH_SHORT = ['Jan','Feb','Mrz','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez']
 const MONTH_LONG  = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember']
 
-const CAT_COLORS = [
-  { bg: '#fef3c7', border: '#f59e0b', text: '#92400e' },
-  { bg: '#dbeafe', border: '#3b82f6', text: '#1e3a8a' },
-  { bg: '#dcfce7', border: '#22c55e', text: '#14532d' },
-  { bg: '#fce7f3', border: '#ec4899', text: '#831843' },
-  { bg: '#ede9fe', border: '#8b5cf6', text: '#4c1d95' },
-  { bg: '#ffedd5', border: '#f97316', text: '#7c2d12' },
-  { bg: '#e0f2fe', border: '#0ea5e9', text: '#0c4a6e' },
-  { bg: '#f0fdf4', border: '#16a34a', text: '#14532d' },
-  { bg: '#fdf4ff', border: '#d946ef', text: '#701a75' },
-  { bg: '#fff1f2', border: '#f43f5e', text: '#881337' },
+const CAT_GROUP_COLORS = {
+  base:   { bg: '#ecfdf5', border: '#10b981', text: '#065f46' },
+  people: { bg: '#eff6ff', border: '#3b82f6', text: '#1e3a8a' },
+  family: { bg: '#fff1f2', border: '#f43f5e', text: '#881337' },
+  income: { bg: '#f0fdf4', border: '#16a34a', text: '#14532d' },
+  custom: { bg: '#f8fafc', border: '#64748b', text: '#334155' },
+}
+
+const CATEGORY_COLOR_GROUPS = [
+  { names: new Set(['Lebensmittel', 'Kleidung', 'Restaurant', 'Auto', 'Zu Hause', 'Ausflug']), color: CAT_GROUP_COLORS.base },
+  { names: new Set(['Jamin', 'Fatima', 'Mobin', 'Mobina']), color: CAT_GROUP_COLORS.people },
+  { names: new Set(['Meine Eltern', 'Hossein', 'Fatima Eltern', 'Mohsen', 'Nazri', 'Moschee']), color: CAT_GROUP_COLORS.family },
+  { names: new Set(['Einkommen']), color: CAT_GROUP_COLORS.income },
 ]
 
 function getCatColor(name) {
-  let h = 0
-  for (const c of name) h = ((h << 5) - h) + c.charCodeAt(0)
-  return CAT_COLORS[Math.abs(h) % CAT_COLORS.length]
+  return CATEGORY_COLOR_GROUPS.find(group => group.names.has(name))?.color || CAT_GROUP_COLORS.custom
 }
 
 function getMonthKey(date = new Date()) {
@@ -205,7 +204,7 @@ function EntryForm({ categories, type, onTypeChange, selectedItems, onToggleItem
               const hasSubs    = cat.subs.length > 0
               const isSelected = selectedItems.some(i => i.catId === cat.id)
               return (
-                <div key={cat.id} className={styles.catAccordionItem} style={{ borderColor: isSelected ? color.border : undefined }}>
+                <div key={cat.id} className={styles.catAccordionItem} style={{ '--cat-bg': color.bg, '--cat-border': color.border, '--cat-text': color.text, borderColor: isSelected ? color.border : undefined }}>
                   <button type="button"
                     className={`${styles.catAccordionHeader} ${isExpanded ? styles.catAccordionHeaderOpen : ''} ${isSelected ? styles.catAccordionHeaderSelected : ''}`}
                     style={isSelected ? { background: color.bg, color: color.text } : {}}
@@ -213,7 +212,10 @@ function EntryForm({ categories, type, onTypeChange, selectedItems, onToggleItem
                       if (hasSubs) onToggleExpand(cat.id)
                       else onToggleItem(cat.id, cat.name, null, null)
                     }}>
-                    <span>{cat.name}</span>
+                    <span className={styles.catAccordionTitle}>
+                      <span className={styles.catAccordionDot} />
+                      <span>{cat.name}</span>
+                    </span>
                     {hasSubs ? (
                       <span className={`${styles.catAccordionChevron} ${isExpanded ? styles.catAccordionChevronOpen : ''}`}><ChevronDown /></span>
                     ) : isSelected ? <span style={{ fontSize: 13 }}>✓</span> : null}
@@ -225,8 +227,8 @@ function EntryForm({ categories, type, onTypeChange, selectedItems, onToggleItem
                         return (
                           <button key={sub.id} type="button"
                             className={sel ? styles.catSubSelectPillActive : styles.catSubSelectPill}
-                            style={sel ? { background: color.bg, borderColor: color.border, color: color.text } : { borderColor: color.border, color: color.text }}
                             onClick={() => onToggleItem(cat.id, cat.name, sub.id, sub.name)}>
+                            {sel && <span className={styles.catSubSelectCheck}>✓</span>}
                             {sub.name}
                           </button>
                         )
