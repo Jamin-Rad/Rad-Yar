@@ -454,13 +454,17 @@ export default function BudgetPage() {
     return () => window.clearTimeout(timer)
   }, [store, recurring, catBudgets, categories, loaded])
 
-  // Close popup on Escape
+  // Close any open popup on Escape
   useEffect(() => {
-    if (!showPopup) return
-    const handler = e => { if (e.key === 'Escape') closePopup() }
+    if (!showPopup && !catDetail) return
+    const handler = e => {
+      if (e.key !== 'Escape') return
+      if (showPopup) closePopup()
+      else if (catDetail) closeCatDetail()
+    }
     document.addEventListener('keydown', handler)
     return () => document.removeEventListener('keydown', handler)
-  }, [showPopup])
+  }, [showPopup, catDetail])
 
   const monthData = useMemo(() => monthWithRecurring(month, store, recurring), [month, store, recurring])
 
@@ -642,6 +646,7 @@ export default function BudgetPage() {
 
   // Popup
   function openPopup(type = 'expense') {
+    setCatDetail(null)   // close category detail if open
     setEntryType(type)
     setSelectedItems([])
     setExpandedCats(initialExpandedForType(type))
@@ -736,6 +741,7 @@ export default function BudgetPage() {
   function navEinstellung(sub) { setView('einstellung'); setSubView(sub) }
 
   function openCatDetail(type, key, label) {
+    setShowPopup(false)  // close entry popup if open
     setCatDetail({ type, key, label })
     setExpandedSubtitles(new Set())
     setEditingEntry(null)
