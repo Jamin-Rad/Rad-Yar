@@ -1462,6 +1462,14 @@
     grid-template-columns: 1fr;
   }
 
+  .planActionBar {
+    grid-template-columns: 1fr;
+  }
+
+  .planActionBar .primaryBudgetBtn {
+    width: 100%;
+  }
+
   .privateAreaGrid {
     grid-template-columns: 1fr;
   }
@@ -2465,6 +2473,35 @@
   -webkit-backdrop-filter: blur(14px) saturate(1.12);
 }
 
+.planComposerPanel {
+  display: grid;
+  gap: 16px;
+}
+
+.planTotalsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.planActionBar {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) auto auto;
+  align-items: end;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  background: rgba(255,255,255,.72);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
+}
+
+.planActionBar .primaryBudgetBtn {
+  min-height: 44px;
+  white-space: nowrap;
+}
+
 /* Entry selection summary */
 .entrySelectionSummary {
   display: flex;
@@ -3368,6 +3405,7 @@
 :global(html[data-theme='dark']) .fixedCostsHeader,
 :global(html[data-theme='dark']) .fixedCard,
 :global(html[data-theme='dark']) .fixedFormPanel,
+:global(html[data-theme='dark']) .planActionBar,
 :global(html[data-theme='dark']) .settingsBudgetStack > .budgetPanel {
   background: color-mix(in srgb, var(--bg-card) 86%, transparent);
   border-color: var(--border);

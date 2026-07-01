@@ -159,8 +159,7 @@ function IconPlus() {
   return <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
 }
 
-// ── Entry form (shared between popup and elsewhere) ────────────────────────────
-function EntryForm({ categories, type, onTypeChange, selectedItems, onToggleItem, expandedCats, onToggleExpand, entryAmount, onAmountChange, entryDate, onDateChange, onSubmit, entryTitle, entryCatNames }) {
+function CategoryPicker({ categories, type, selectedItems, onToggleItem, expandedCats, onToggleExpand, label = 'Kategorie wählen', emptyText = 'Keine Kategorien für diesen Typ.', selectionHint = 'Eine oder mehrere auswählen' }) {
   const filteredCats = categories.filter(c => c.type === type)
 
   function isItemSelected(catId, subId) {
@@ -168,34 +167,12 @@ function EntryForm({ categories, type, onTypeChange, selectedItems, onToggleItem
   }
 
   return (
-    <form className={`${styles.budgetForm} ${styles.financeEntryForm}`} onSubmit={onSubmit}>
-      {/* Type */}
-      <div className={`${styles.segmentedControl} ${styles.entryTypeSwitch}`}>
-        <button type="button" className={type === 'income' ? styles.segmentActive : ''} onClick={() => onTypeChange('income')}>Einkommen</button>
-        <button type="button" className={type === 'expense' ? styles.segmentActive : ''} onClick={() => onTypeChange('expense')}>Ausgabe</button>
-      </div>
-
-      {/* Amount + Date */}
-      <div className={styles.entryAmountPanel}>
-        <label className={styles.entryAmountField}>
-          <span>Betrag</span>
-          <div className={styles.entryAmountInputWrap}>
-            <input type="number" step="0.01" inputMode="decimal" value={entryAmount} onChange={e => onAmountChange(e.target.value)} placeholder="0,00" required autoFocus />
-            <em>€</em>
-          </div>
-        </label>
-        <label className={styles.entryDateField}>
-          <span>Datum</span>
-          <input type="date" value={entryDate} onChange={e => onDateChange(e.target.value)} />
-        </label>
-      </div>
-
-      {/* Category selector */}
+    <>
       {filteredCats.length > 0 ? (
         <div className={styles.entryCategoryBlock}>
           <div className={styles.entryFormLabelRow}>
-            <span>Kategorie wählen</span>
-            <small>{selectedItems.length ? `${selectedItems.length} ausgewählt` : 'Eine oder mehrere auswählen'}</small>
+            <span>{label}</span>
+            <small>{selectedItems.length ? `${selectedItems.length} ausgewählt` : selectionHint}</small>
           </div>
           <div className={styles.catAccordion}>
             {filteredCats.map(cat => {
@@ -241,8 +218,45 @@ function EntryForm({ categories, type, onTypeChange, selectedItems, onToggleItem
           </div>
         </div>
       ) : (
-        <p className={styles.emptyAnalytics}>Keine Kategorien für diesen Typ.</p>
+        <p className={styles.emptyAnalytics}>{emptyText}</p>
       )}
+    </>
+  )
+}
+
+// ── Entry form (shared between popup and elsewhere) ────────────────────────────
+function EntryForm({ categories, type, onTypeChange, selectedItems, onToggleItem, expandedCats, onToggleExpand, entryAmount, onAmountChange, entryDate, onDateChange, onSubmit, entryTitle, entryCatNames }) {
+  return (
+    <form className={`${styles.budgetForm} ${styles.financeEntryForm}`} onSubmit={onSubmit}>
+      {/* Type */}
+      <div className={`${styles.segmentedControl} ${styles.entryTypeSwitch}`}>
+        <button type="button" className={type === 'income' ? styles.segmentActive : ''} onClick={() => onTypeChange('income')}>Einkommen</button>
+        <button type="button" className={type === 'expense' ? styles.segmentActive : ''} onClick={() => onTypeChange('expense')}>Ausgabe</button>
+      </div>
+
+      {/* Amount + Date */}
+      <div className={styles.entryAmountPanel}>
+        <label className={styles.entryAmountField}>
+          <span>Betrag</span>
+          <div className={styles.entryAmountInputWrap}>
+            <input type="number" step="0.01" inputMode="decimal" value={entryAmount} onChange={e => onAmountChange(e.target.value)} placeholder="0,00" required autoFocus />
+            <em>€</em>
+          </div>
+        </label>
+        <label className={styles.entryDateField}>
+          <span>Datum</span>
+          <input type="date" value={entryDate} onChange={e => onDateChange(e.target.value)} />
+        </label>
+      </div>
+
+      <CategoryPicker
+        categories={categories}
+        type={type}
+        selectedItems={selectedItems}
+        onToggleItem={onToggleItem}
+        expandedCats={expandedCats}
+        onToggleExpand={onToggleExpand}
+      />
 
       {/* Selection summary */}
       {selectedItems.length > 0 && (
@@ -279,7 +293,6 @@ export default function BudgetPage() {
   const [loaded, setLoaded]         = useState(false)
   const [syncError, setSyncError]   = useState('')
   const didHydrate = useRef(false)
-  const [catEdits, setCatEdits]     = useState({})
   const [newCatName, setNewCatName] = useState('')
   const [newCatType, setNewCatType] = useState('expense')
   const [newSubInputs, setNewSubInputs] = useState({})
@@ -293,9 +306,9 @@ export default function BudgetPage() {
   const [expandedCats, setExpandedCats]   = useState(new Set())
 
   // Fixkosten new entry form
-  const [newFix, setNewFix] = useState({
-    type: 'expense', title: '', amount: '', category: '', dayOfMonth: '1',
-  })
+  const [planAmount, setPlanAmount] = useState('')
+  const [planSelectedItems, setPlanSelectedItems] = useState([])
+  const [planExpandedCats, setPlanExpandedCats] = useState(new Set())
 
   useEffect(() => {
     let cancelled = false
@@ -441,6 +454,17 @@ export default function BudgetPage() {
 
   const entryCatNames = useMemo(() => [...new Set(selectedItems.map(i => i.catName))], [selectedItems])
 
+  const planTitle = useMemo(() => {
+    const firstSub = planSelectedItems.find(i => i.subName)
+    if (firstSub) {
+      const subs = planSelectedItems.filter(i => i.subName).map(i => i.subName)
+      return subs.length > 1 ? subs.join(' / ') : firstSub.subName
+    }
+    return planSelectedItems[0]?.catName || ''
+  }, [planSelectedItems])
+
+  const planCatNames = useMemo(() => [...new Set(planSelectedItems.map(i => i.catName))], [planSelectedItems])
+
   const annualData = useMemo(() => Array.from({ length: 12 }, (_, i) => {
     const key  = `${year}-${String(i + 1).padStart(2, '0')}`
     const data = store[key] || emptyMonth()
@@ -507,6 +531,18 @@ export default function BudgetPage() {
     })
   }
 
+  function togglePlanExpand(catId) {
+    setPlanExpandedCats(prev => { const n = new Set(prev); if (n.has(catId)) n.delete(catId); else n.add(catId); return n })
+  }
+
+  function togglePlanItem(catId, catName, subId, subName) {
+    const item = { catId, catName, subId: subId || null, subName: subName || null }
+    setPlanSelectedItems(prev => {
+      const exists = prev.find(i => subId ? i.catId === catId && i.subId === subId : i.catId === catId && !i.subId)
+      return exists ? [] : [item]
+    })
+  }
+
   function handleTypeChange(newType) {
     setEntryType(newType)
     setSelectedItems([])
@@ -532,12 +568,25 @@ export default function BudgetPage() {
   function deleteEntry(id) { updateMonth(c => ({ ...c, entries: c.entries.filter(i => i.id !== id) })) }
   function clearMonth() { if (!window.confirm(`Alle Einträge für ${formatMonthLabel(month)} löschen?`)) return; setStore(prev => { const n = { ...prev }; delete n[month]; return n }) }
 
-  function addFixeintrag(e) {
-    e.preventDefault()
-    const amount = Number(newFix.amount)
-    if (!newFix.title.trim() || !amount) return
-    setRecurring(prev => [...prev, { id: makeId(), ...newFix, amount }])
-    setNewFix(p => ({ ...p, title: '', amount: '', category: '' }))
+  function savePlanBudget() {
+    const amount = Number(planAmount)
+    if (!amount || planCatNames.length === 0) return
+    setCatBudgets(prev => ({ ...prev, [planCatNames[0]]: amount }))
+    setPlanAmount('')
+  }
+
+  function addFixeintrag() {
+    const amount = Number(planAmount)
+    if (!amount || !planTitle) return
+    setRecurring(prev => [...prev, {
+      id: makeId(),
+      type: 'expense',
+      title: planTitle,
+      amount,
+      category: planCatNames[0] || '',
+      dayOfMonth: '1',
+    }])
+    setPlanAmount('')
   }
   function removeFixeintrag(id) { setRecurring(prev => prev.filter(r => r.id !== id)) }
 
@@ -829,46 +878,76 @@ export default function BudgetPage() {
             {/* ── BUDGET & FIXKOSTEN ── */}
             {view === 'einstellung' && (subView === 'budget' || subView === 'fixkosten') && (
               <div className={styles.settingsBudgetStack}>
-                <div className={styles.budgetPanel}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+                <div className={`${styles.budgetPanel} ${styles.planComposerPanel}`}>
+                  <div className={styles.fixedCostsHeader}>
                     <div>
-                      <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Budget pro Kategorie</h2>
-                      <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>
-                        Geplantes Gesamtbudget: <strong style={{ color: '#0d1b2a' }}>{totalCatBudget > 0 ? formatMoney(totalCatBudget) : '—'}</strong>
-                      </p>
+                      <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Budget &amp; Fixkosten</h2>
+                      <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>Kategorie wählen, Betrag eintragen, dann als Budget oder Fixkosten speichern.</p>
+                    </div>
+                    <div className={styles.planTotalsRow}>
+                      <div className={styles.fixedTotalPill}>
+                        <span>Budget gesamt</span>
+                        <strong>{totalCatBudget > 0 ? formatMoney(totalCatBudget) : '—'}</strong>
+                      </div>
+                      <div className={styles.fixedTotalPill}>
+                        <span>Fixkosten</span>
+                        <strong>{totalFixkosten > 0 ? formatMoney(totalFixkosten) : '—'}</strong>
+                      </div>
                     </div>
                   </div>
+
+                  <CategoryPicker
+                    categories={categories}
+                    type="expense"
+                    selectedItems={planSelectedItems}
+                    onToggleItem={togglePlanItem}
+                    expandedCats={planExpandedCats}
+                    onToggleExpand={togglePlanExpand}
+                    label="Kategorie oder Unterkategorie wählen"
+                    selectionHint="Eine Kategorie auswählen"
+                  />
+
+                  {planSelectedItems.length > 0 && (
+                    <div className={styles.entrySelectionSummary}>
+                      <div>
+                        <span className={styles.entrySelectionTitle}>{planTitle}</span>
+                        {planCatNames.length > 0 && <span className={styles.entrySelectionCats}>{planCatNames.join(' · ')}</span>}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className={styles.planActionBar}>
+                    <label className={styles.entryAmountField}>
+                      <span>Betrag</span>
+                      <div className={styles.entryAmountInputWrap}>
+                        <input type="number" step="0.01" inputMode="decimal" value={planAmount} onChange={e => setPlanAmount(e.target.value)} placeholder="0,00" />
+                        <em>€</em>
+                      </div>
+                    </label>
+                    <button className={styles.primaryBudgetBtn} type="button" disabled={!planTitle || !planAmount} onClick={savePlanBudget}>Budget speichern</button>
+                    <button className={styles.primaryBudgetBtn} type="button" disabled={!planTitle || !planAmount} onClick={addFixeintrag}>Fixkosten speichern</button>
+                  </div>
+                </div>
+
+                <div className={styles.budgetPanel}>
+                  <h2 className={styles.sectionTitle} style={{ margin: '0 0 16px' }}>Gespeicherte Budgets</h2>
                   <div className={styles.budgetCatList}>
-                    {categories.filter(c => c.type === 'expense').map(cat => {
-                      const color   = getCatColor(cat.name)
+                    {categories.filter(c => c.type === 'expense' && catBudgets[c.name]).map(cat => {
+                      const color = getCatColor(cat.name)
                       return (
                         <div key={cat.id} className={styles.budgetCatRow} style={{ borderLeft: `3px solid ${color.border}` }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                            <span className={styles.budgetCatName}>{cat.name}</span>
-                          </div>
-                          <input className={styles.budgetCatInput}
-                            type="number" min="0" step="1" placeholder="—"
-                            value={catEdits[cat.name] !== undefined ? catEdits[cat.name] : (catBudgets[cat.name] || '')}
-                            onChange={e => setCatEdits(p => ({ ...p, [cat.name]: e.target.value }))}
-                            onBlur={e => { saveCatBudget(cat.name, e.target.value); setCatEdits(p => { const n = { ...p }; delete n[cat.name]; return n }) }} />
-                          <span className={styles.budgetCatUnit}>€</span>
+                          <span className={styles.budgetCatName}>{cat.name}</span>
+                          <strong>{formatMoney(catBudgets[cat.name])}</strong>
+                          <button className={styles.actionBtn} type="button" onClick={() => saveCatBudget(cat.name, 0)}>×</button>
                         </div>
                       )
                     })}
+                    {!categories.some(c => c.type === 'expense' && catBudgets[c.name]) && <p className={styles.emptyAnalytics}>Noch kein Budget gespeichert.</p>}
                   </div>
                 </div>
 
                 <div className={styles.fixedCostsPanel}>
-                  <div className={styles.fixedCostsHeader}>
-                    <div>
-                      <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Monatliche Fixkosten</h2>
-                      <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>Wiederkehrende Beträge für deine Planung.</p>
-                    </div>
-                    <div className={styles.fixedTotalPill}>
-                      <span>Summe pro Monat</span>
-                      <strong>{totalFixkosten > 0 ? formatMoney(totalFixkosten) : '—'}</strong>
-                    </div>
-                  </div>
+                  <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Gespeicherte Fixkosten</h2>
                   {recurring.length > 0 ? (
                     <div className={styles.fixedCardGrid}>
                       {recurring.map(r => (
@@ -879,7 +958,6 @@ export default function BudgetPage() {
                           </div>
                           <div className={styles.fixedMetaRow}>
                             <span className={r.type === 'income' ? styles.fixedMetaIncome : styles.fixedMetaExpense}>{r.type === 'income' ? 'Einnahme' : 'Ausgabe'}</span>
-                            <span className={styles.fixedMetaPill}>Tag {r.dayOfMonth}</span>
                             {r.category && <span className={styles.fixedMetaPill}>{r.category}</span>}
                           </div>
                           <button className={styles.fixedDeleteBtn} type="button" onClick={() => removeFixeintrag(r.id)} aria-label={`${r.title} löschen`}>×</button>
@@ -889,27 +967,6 @@ export default function BudgetPage() {
                   ) : (
                     <p className={styles.emptyAnalytics}>Noch keine Fixkosten gespeichert.</p>
                   )}
-                  <form className={`${styles.budgetForm} ${styles.fixedFormPanel}`} onSubmit={addFixeintrag}>
-                    <div className={styles.segmentedControl}>
-                      <button type="button" className={newFix.type === 'income' ? styles.segmentActive : ''} onClick={() => setNewFix(p => ({ ...p, type: 'income' }))}>Einkommen</button>
-                      <button type="button" className={newFix.type === 'expense' ? styles.segmentActive : ''} onClick={() => setNewFix(p => ({ ...p, type: 'expense' }))}>Ausgabe</button>
-                    </div>
-                    <div className={styles.budgetFieldRow}>
-                      <label><span>Titel</span><input value={newFix.title} onChange={e => setNewFix(p => ({ ...p, title: e.target.value }))} placeholder="z. B. Miete, Leasing" required /></label>
-                      <label>
-                        <span>Zuordnung</span>
-                        <select value={newFix.category} onChange={e => setNewFix(p => ({ ...p, category: e.target.value }))}>
-                          <option value="">Ohne Zuordnung</option>
-                          {categories.filter(c => c.type === newFix.type).map(c => <option key={c.id} value={c.name}>{c.name}</option>)}
-                        </select>
-                      </label>
-                    </div>
-                    <div className={styles.budgetFieldRow}>
-                      <label><span>Betrag (€)</span><input type="number" step="0.01" inputMode="decimal" value={newFix.amount} onChange={e => setNewFix(p => ({ ...p, amount: e.target.value }))} placeholder="0,00" required /></label>
-                      <label><span>Tag des Monats</span><input type="number" min="1" max="28" value={newFix.dayOfMonth} onChange={e => setNewFix(p => ({ ...p, dayOfMonth: e.target.value }))} /></label>
-                    </div>
-                    <button className={styles.primaryBudgetBtn} type="submit">Fixkosten speichern</button>
-                  </form>
                 </div>
               </div>
             )}
