@@ -12,9 +12,9 @@ const SPORT_ICONS = {
   mannschaft: '⚽', alltag: '🚶', custom: '⭐',
 }
 const FOOD_ICONS = {
-  'irani-haupt': '🫕', kebab: '🍖', 'reis-brot': '🍚',
-  'brot-frueh': '🍞', fleisch: '🥩', eier: '🥚',
-  milch: '🧀', salat: '🥗', gemuese: '🥦', fette: '🫙', sonstiges: '🍽️',
+  haupt: '🫕', kebab: '🍖', reis: '🍚', brot: '🍞',
+  fruehstueck: '🍳', fleisch: '🥩', gemuese: '🥗',
+  obst: '🍎', getraenke: '🥛', sonstiges: '🍽️',
 }
 
 const TODAY = new Date().toISOString().slice(0, 10)
@@ -133,7 +133,7 @@ export default function HealthPage() {
   }, 0)
   const totalFoodKcal = form.foods.reduce((sum, item) => {
     const food = activeFoods.find(x => x.id === item.id)
-    return sum + (food ? Math.round((food.kcalPer100g / 100) * item.g) : 0)
+    return sum + (food ? Math.round((food.kcalPer100g / 100) * (item.count ?? item.g ?? 1) * (item.count != null ? food.portionG : 1)) : 0)
   }, 0)
   const totalKcal = totalFoodKcal + (form.manualKcal || 0) - totalSportKcal
 
@@ -162,11 +162,11 @@ export default function HealthPage() {
   }
 
   function confirmFood(id) {
-    const g = parseInt(inputVal)
-    if (!g || g <= 0) { setActiveId(null); return }
+    const count = parseInt(inputVal)
+    if (!count || count <= 0) { setActiveId(null); return }
     setForm(f => {
       const others = f.foods.filter(x => x.id !== id)
-      return { ...f, foods: [...others, { id, g }] }
+      return { ...f, foods: [...others, { id, count }] }
     })
     setActiveId(null)
   }

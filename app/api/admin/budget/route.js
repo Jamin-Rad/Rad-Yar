@@ -15,11 +15,14 @@ export async function GET() {
 
   const { data, error } = await supabaseAdmin
     .from('admin_budget_state')
-    .select('store, recurring, cat_budgets, categories, updated_at')
+    .select('store,recurring,cat_budgets,categories,updated_at')
     .eq('id', BUDGET_ID)
     .maybeSingle()
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  if (error) {
+    console.error('[admin-budget] GET failed', error)
+    return NextResponse.json({ error: error.message }, { status: 500 })
+  }
 
   return NextResponse.json({
     store: data?.store ?? {},
@@ -35,7 +38,13 @@ export async function PUT(request) {
   if (admin.error) return NextResponse.json({ error: admin.error }, { status: admin.status })
   if (!isSupabaseAdminConfigured) return unavailable()
 
-  const body = await request.json()
+  let body = {}
+  try {
+    body = await request.json()
+  } catch {
+    return NextResponse.json({ error: 'Ungültige Budget-Daten.' }, { status: 400 })
+  }
+
   const { store, recurring, catBudgets, categories } = body
 
   const { error } = await supabaseAdmin
@@ -49,7 +58,9 @@ export async function PUT(request) {
       updated_at: new Date().toISOString(),
     }, { onConflict: 'id' })
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  if (error) {
+    console.error('[admin-budget] PUT failed', error)
+    return NextResponse.json({ error: error.message }, { status: 500 })
+  }
   return NextResponse.json({ ok: true })
 }
-

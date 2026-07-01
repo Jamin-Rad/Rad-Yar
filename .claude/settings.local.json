@@ -68,7 +68,11 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"http://localhost:3000/spickzettel\")",
       "Bash(curl -s \"http://localhost:3000\")",
       "Bash(curl -s \"http://localhost:3000/referenzen\")",
-      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\Drham\\\\Documents\\\\GitHub\\\\Rad-Yar\\\\data\\\\\" -Filter \"*.js\" | Select-Object -ExpandProperty Name | Sort-Object)"
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\Drham\\\\Documents\\\\GitHub\\\\Rad-Yar\\\\data\\\\\" -Filter \"*.js\" | Select-Object -ExpandProperty Name | Sort-Object)",
+      "mcp__visualize__read_me",
+      "mcp__visualize__show_widget",
+      "Bash(git stash *)",
+      "Bash(xargs ls -la)"
     ]
   }
 }
