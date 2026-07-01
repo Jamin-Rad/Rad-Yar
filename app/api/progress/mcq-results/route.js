@@ -1,6 +1,6 @@
-import { auth } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
+import { getSignedInUserIdentity } from '@/lib/userIdentity'
 
 function toClient(row) {
   const details = row.details && typeof row.details === 'object' ? row.details : {}
@@ -27,8 +27,8 @@ function toRow(userId, themaId, result) {
 }
 
 export async function GET() {
-  const { userId } = await auth()
-  if (!userId) {
+  const identity = await getSignedInUserIdentity()
+  if (!identity) {
     return NextResponse.json({ error: 'Nicht angemeldet' }, { status: 401 })
   }
   if (!isSupabaseAdminConfigured || !supabaseAdmin) {
@@ -38,7 +38,7 @@ export async function GET() {
   const { data, error } = await supabaseAdmin
     .from('mcq_results')
     .select('*')
-    .eq('user_id', userId)
+    .in('user_id', identity.lookupIds)
 
   if (error) {
     console.error('MCQ-Ergebnisse konnten nicht geladen werden:', error)
@@ -47,14 +47,18 @@ export async function GET() {
 
   const scores = {}
   for (const row of data || []) {
-    scores[row.thema_id] = toClient(row)
+    const next = toClient(row)
+    const previous = scores[row.thema_id]
+    if (!previous || new Date(next.lastDate || 0) >= new Date(previous.lastDate || 0)) {
+      scores[row.thema_id] = next
+    }
   }
   return NextResponse.json({ scores })
 }
 
 export async function POST(request) {
-  const { userId } = await auth()
-  if (!userId) {
+  const identity = await getSignedInUserIdentity()
+  if (!identity) {
     return NextResponse.json({ error: 'Nicht angemeldet' }, { status: 401 })
   }
   if (!isSupabaseAdminConfigured || !supabaseAdmin) {
@@ -72,9 +76,9 @@ export async function POST(request) {
   if (payload.bulk && typeof payload.bulk === 'object') {
     rows = Object.entries(payload.bulk)
       .filter(([themaId, result]) => typeof themaId === 'string' && result && typeof result === 'object')
-      .map(([themaId, result]) => toRow(userId, themaId, result))
+      .map(([themaId, result]) => toRow(identity.ownerId, themaId, result))
   } else if (typeof payload.themaId === 'string' && payload.result && typeof payload.result === 'object') {
-    rows = [toRow(userId, payload.themaId, payload.result)]
+    rows = [toRow(identity.ownerId, payload.themaId, payload.result)]
   } else {
     return NextResponse.json({ error: 'Ungültige Anfrage' }, { status: 400 })
   }

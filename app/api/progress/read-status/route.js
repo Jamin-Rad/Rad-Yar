@@ -1,10 +1,10 @@
-import { auth } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
+import { getSignedInUserIdentity } from '@/lib/userIdentity'
 
 export async function GET() {
-  const { userId } = await auth()
-  if (!userId) {
+  const identity = await getSignedInUserIdentity()
+  if (!identity) {
     return NextResponse.json({ error: 'Nicht angemeldet' }, { status: 401 })
   }
   if (!isSupabaseAdminConfigured || !supabaseAdmin) {
@@ -14,7 +14,7 @@ export async function GET() {
   const { data, error } = await supabaseAdmin
     .from('user_progress')
     .select('thema_id,read_pct,updated_at')
-    .eq('user_id', userId)
+    .in('user_id', identity.lookupIds)
 
   if (error) {
     console.error('Lesefortschritt konnte nicht geladen werden:', error)
@@ -22,21 +22,25 @@ export async function GET() {
   }
 
   const read = {}
-  const history = []
+  const historyByTopic = new Map()
   for (const row of data || []) {
     if (Number(row.read_pct) >= 1) {
       read[row.thema_id] = true
-      history.push({ topicId: row.thema_id, learnedAt: row.updated_at })
+      const previous = historyByTopic.get(row.thema_id)
+      if (!previous || new Date(row.updated_at) > new Date(previous.learnedAt)) {
+        historyByTopic.set(row.thema_id, { topicId: row.thema_id, learnedAt: row.updated_at })
+      }
     }
   }
+  const history = [...historyByTopic.values()]
   history.sort((a, b) => new Date(b.learnedAt) - new Date(a.learnedAt))
 
   return NextResponse.json({ read, history })
 }
 
 export async function POST(request) {
-  const { userId } = await auth()
-  if (!userId) {
+  const identity = await getSignedInUserIdentity()
+  if (!identity) {
     return NextResponse.json({ error: 'Nicht angemeldet' }, { status: 401 })
   }
   if (!isSupabaseAdminConfigured || !supabaseAdmin) {
@@ -55,14 +59,14 @@ export async function POST(request) {
     rows = payload.bulk
       .filter(item => typeof item?.themaId === 'string')
       .map(item => ({
-        user_id: userId,
+        user_id: identity.ownerId,
         thema_id: item.themaId,
         read_pct: item.read ? 1 : 0,
         updated_at: item.learnedAt || new Date().toISOString(),
       }))
   } else if (typeof payload.themaId === 'string') {
     rows = [{
-      user_id: userId,
+      user_id: identity.ownerId,
       thema_id: payload.themaId,
       read_pct: payload.read ? 1 : 0,
       updated_at: new Date().toISOString(),

@@ -1,10 +1,10 @@
-import { auth } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
+import { getSignedInUserIdentity } from '@/lib/userIdentity'
 
 export async function GET() {
-  const { userId } = await auth()
-  if (!userId) {
+  const identity = await getSignedInUserIdentity()
+  if (!identity) {
     return NextResponse.json({ error: 'Nicht angemeldet' }, { status: 401 })
   }
   if (!isSupabaseAdminConfigured || !supabaseAdmin) {
@@ -14,7 +14,7 @@ export async function GET() {
   const { data, error } = await supabaseAdmin
     .from('analytics_daily')
     .select('day,active_seconds,visits')
-    .eq('user_id', userId)
+    .in('user_id', identity.lookupIds)
     .order('day', { ascending: true })
 
   if (error) {

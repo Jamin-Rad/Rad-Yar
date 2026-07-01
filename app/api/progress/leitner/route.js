@@ -1,6 +1,6 @@
-import { auth } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
+import { getSignedInUserIdentity } from '@/lib/userIdentity'
 
 function toClient(row) {
   return {
@@ -34,8 +34,8 @@ function toRow(userId, cardId, record) {
 }
 
 export async function GET() {
-  const { userId } = await auth()
-  if (!userId) {
+  const identity = await getSignedInUserIdentity()
+  if (!identity) {
     return NextResponse.json({ error: 'Nicht angemeldet' }, { status: 401 })
   }
   if (!isSupabaseAdminConfigured || !supabaseAdmin) {
@@ -45,7 +45,7 @@ export async function GET() {
   const { data, error } = await supabaseAdmin
     .from('leitner_cards')
     .select('*')
-    .eq('user_id', userId)
+    .in('user_id', identity.lookupIds)
 
   if (error) {
     console.error('Leitner-Fortschritt konnte nicht geladen werden:', error)
@@ -54,14 +54,18 @@ export async function GET() {
 
   const cards = {}
   for (const row of data || []) {
-    cards[row.card_id] = toClient(row)
+    const next = toClient(row)
+    const previous = cards[row.card_id]
+    const nextTime = new Date(next.lastReviewedAt || next.lastSeenAt || next.addedAt || 0).getTime()
+    const previousTime = new Date(previous?.lastReviewedAt || previous?.lastSeenAt || previous?.addedAt || 0).getTime()
+    if (!previous || nextTime >= previousTime) cards[row.card_id] = next
   }
   return NextResponse.json({ cards })
 }
 
 export async function POST(request) {
-  const { userId } = await auth()
-  if (!userId) {
+  const identity = await getSignedInUserIdentity()
+  if (!identity) {
     return NextResponse.json({ error: 'Nicht angemeldet' }, { status: 401 })
   }
   if (!isSupabaseAdminConfigured || !supabaseAdmin) {
@@ -79,9 +83,9 @@ export async function POST(request) {
   if (payload.bulk && typeof payload.bulk === 'object') {
     rows = Object.entries(payload.bulk)
       .filter(([cardId, record]) => typeof cardId === 'string' && record && typeof record === 'object')
-      .map(([cardId, record]) => toRow(userId, cardId, record))
+      .map(([cardId, record]) => toRow(identity.ownerId, cardId, record))
   } else if (typeof payload.cardId === 'string' && payload.record && typeof payload.record === 'object') {
-    rows = [toRow(userId, payload.cardId, payload.record)]
+    rows = [toRow(identity.ownerId, payload.cardId, payload.record)]
   } else {
     return NextResponse.json({ error: 'Ungültige Anfrage' }, { status: 400 })
   }

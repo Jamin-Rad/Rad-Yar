@@ -1,6 +1,6 @@
-import { auth } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
+import { getSignedInUserIdentity } from '@/lib/userIdentity'
 
 const VISITOR_PATTERN = /^[a-zA-Z0-9_-]{12,80}$/
 
@@ -27,10 +27,10 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Ungültige Besucher-ID' }, { status: 400 })
     }
 
-    const { userId } = await auth()
+    const identity = await getSignedInUserIdentity()
     const { error } = await supabaseAdmin.rpc('record_site_activity', {
       p_visitor_id: visitorId,
-      p_user_id: userId || null,
+      p_user_id: identity?.ownerId || null,
       p_path: cleanPath(payload.path),
       p_visits: boundedInt(payload.visits, 1),
       p_page_views: boundedInt(payload.pageViews, 1),
