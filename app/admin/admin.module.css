@@ -2975,7 +2975,7 @@
 /* ── ENTRY FORM: inline accordion (no floating dropdown) ─── */
 /* In the popup the subs must stay inside the scroll container */
 .financeEntryForm .catAccordion {
-  grid-template-columns: 1fr;   /* single column — no cramping */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .financeEntryForm .catAccordionItem {
