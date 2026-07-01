@@ -4322,3 +4322,175 @@
   .healthGrid { grid-template-columns: 1fr; }
   .healthSummaryPanel { position: static; }
 }
+
+/* ── POPUP ENTRY FORM – DARK MODE ─────────────── */
+:global(html[data-theme='dark']) .catSubSelectPill {
+  color: var(--text-strong);
+  border-color: color-mix(in srgb, var(--cat-border, var(--border)) 36%, var(--border));
+}
+
+:global(html[data-theme='dark']) .catSubSelectPill:hover {
+  color: var(--cat-border, #fb923c);
+  background: color-mix(in srgb, var(--cat-bg, var(--bg-card)) 22%, var(--bg-card));
+}
+
+:global(html[data-theme='dark']) .catSubSelectPillActive {
+  background: color-mix(in srgb, var(--cat-bg, var(--bg-card)) 22%, var(--bg-card));
+  color: var(--cat-border, #fb923c);
+  border-color: var(--cat-border, #fb923c);
+}
+
+:global(html[data-theme='dark']) .financeEntryForm .catAccordionSubs {
+  border-top-color: color-mix(in srgb, var(--cat-border, var(--border)) 30%, var(--border));
+}
+
+:global(html[data-theme='dark']) .catAccordionDot {
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--cat-border, var(--border)) 18%, var(--bg-card)), 0 5px 12px color-mix(in srgb, var(--cat-border, #f97316) 28%, transparent);
+}
+
+:global(html[data-theme='dark']) .clickableRow:hover {
+  background: rgba(255,255,255,.05);
+}
+
+/* ── CATEGORY DETAIL POPUP – DARK MODE ──────── */
+:global(html[data-theme='dark']) .catDetailGroup {
+  border-color: var(--border);
+  background: var(--bg-card);
+}
+
+:global(html[data-theme='dark']) .catDetailGroupHead {
+  background: var(--bg-soft);
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .catDetailGroupHead:hover {
+  background: color-mix(in srgb, var(--border) 30%, var(--bg-card));
+}
+
+:global(html[data-theme='dark']) .catDetailGroupMeta small {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .catDetailEntries {
+  border-top-color: var(--border);
+}
+
+:global(html[data-theme='dark']) .catDetailEntry {
+  border-bottom-color: var(--border-soft);
+}
+
+:global(html[data-theme='dark']) .catDetailDate {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .catDetailFixBadge {
+  background: var(--bg-soft);
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .catDetailInput {
+  background: var(--bg-soft);
+  border-color: var(--border);
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .catDetailCancelBtn {
+  background: var(--bg-soft);
+  border-color: var(--border);
+  color: var(--text-soft);
+}
+
+/* ── REPORT TABS – DARK MODE ─────────────────── */
+:global(html[data-theme='dark']) .reportTabBtn {
+  background: var(--bg-soft);
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .reportTabActive {
+  background: rgba(249,115,22,.15);
+  border-color: rgba(249,115,22,.4);
+}
+
+:global(html[data-theme='dark']) .berichtKPICard {
+  background: var(--bg-soft);
+  border-color: var(--border);
+}
+
+:global(html[data-theme='dark']) .berichtKPILabel {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .berichtKPISub {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .berichtRow {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .berichtRowLabel {
+  color: var(--text-soft);
+}
+
+:global(html[data-theme='dark']) .berichtBarTrack {
+  background: var(--bg-soft);
+}
+
+:global(html[data-theme='dark']) .berichtEntryTable {
+  border-color: var(--border);
+}
+
+:global(html[data-theme='dark']) .berichtEntryRow {
+  border-bottom-color: var(--border-soft);
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .berichtEntryDate,
+:global(html[data-theme='dark']) .berichtEntryCat,
+:global(html[data-theme='dark']) .berichtTopRank {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .berichtMiniCol {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .berichtHighlight {
+  background: var(--bg-soft) !important;
+}
+
+:global(html[data-theme='dark']) .berichtHighlight strong {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .berichtStatCard {
+  background: var(--bg-soft);
+  border-color: var(--border);
+}
+
+:global(html[data-theme='dark']) .berichtStatCard span {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .berichtStatCard strong {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .berichtBudgetOverview {
+  border-color: var(--border);
+  background: var(--bg-soft);
+}
+
+:global(html[data-theme='dark']) .berichtBudgetRow {
+  border-bottom-color: var(--border-soft);
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .reportSectionTitle {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .reportTotalRow {
+  color: var(--text-soft);
+}
