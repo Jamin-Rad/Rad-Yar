@@ -577,20 +577,22 @@ export default function ProfilPage() {
     } catch { setContactState('error') }
   }
 
-  function handleResetFlashcards() {
+  async function handleResetFlashcards() {
     if (!window.confirm(t.resetFlashcardsAsk)) return
     resetLeitnerState(user.id)
     setLeitner({})
     setResetMsg(t.resetDone)
+    try { await fetch('/api/progress/leitner', { method: 'DELETE' }) } catch {}
   }
 
-  function handleResetLearning() {
+  async function handleResetLearning() {
     if (!window.confirm(t.resetLearningAsk)) return
     try { localStorage.removeItem('radyar_read_articles') } catch {}
     try { localStorage.removeItem('radyar_learning_history') } catch {}
     setReadArticles({})
     setLearningHistory([])
     setResetMsg(t.resetDone)
+    try { await fetch('/api/progress/read-status', { method: 'DELETE' }) } catch {}
   }
 
   function selectView(nextView) {

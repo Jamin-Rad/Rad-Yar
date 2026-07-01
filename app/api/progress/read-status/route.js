@@ -92,3 +92,25 @@ export async function POST(request) {
 
   return NextResponse.json({ ok: true })
 }
+
+export async function DELETE() {
+  const identity = await getSignedInUserIdentity()
+  if (!identity) {
+    return NextResponse.json({ error: 'Nicht angemeldet' }, { status: 401 })
+  }
+  if (!isSupabaseAdminConfigured || !supabaseAdmin) {
+    return NextResponse.json({ error: 'Speicher nicht verfügbar' }, { status: 503 })
+  }
+
+  const { error } = await supabaseAdmin
+    .from('user_progress')
+    .delete()
+    .eq('user_id', identity.ownerId)
+
+  if (error) {
+    console.error('Lesefortschritt konnte nicht gelöscht werden:', error)
+    return NextResponse.json({ error: 'Löschen fehlgeschlagen' }, { status: 503 })
+  }
+
+  return NextResponse.json({ ok: true })
+}
