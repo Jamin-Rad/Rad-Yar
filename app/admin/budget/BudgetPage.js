@@ -910,6 +910,56 @@ ${manualEntries.length ? `
   function goToMonth(key) { setMonth(key); setView('monat') }
   function navEinstellung(sub) { setView('einstellung'); setSubView(sub) }
 
+  function seedMai2026() {
+    if (!window.confirm('Mai 2026 Ausgaben eintragen? Bereits vorhandene Einträge bleiben erhalten.')) return
+    const mk = id => `seed-mai-${Date.now()}-${Math.random().toString(36).slice(2, 6)}-${id}`
+    const e = (category, title, amount, sub) => ({
+      id: mk(title), type: 'expense', amount, title,
+      subtitle: category, category, tags: [category],
+      catSubtitles: sub ? { [category]: sub } : undefined,
+      date: '2026-05-01',
+    })
+    const entries = [
+      // Lebensmittel
+      e('Lebensmittel','Aldi',72), e('Lebensmittel','Lidl',446),
+      e('Lebensmittel','Bonus',42), e('Lebensmittel','Edeka/Rewe/Netto',5),
+      e('Lebensmittel','DM',96), e('Lebensmittel','Türkei',113),
+      // Kleidung
+      e('Kleidung','Takko',42), e('Kleidung','Deichman',84),
+      // Restaurant
+      e('Restaurant','Essen',108), e('Restaurant','Krankenhaus',52),
+      // Auto (ohne Leasing)
+      e('Auto','Tanken',156), e('Auto','Parken',18), e('Auto','Bus-Ticket',62),
+      // Zu Hause (ohne Miete, Darlehen, Internet, Netflix)
+      e('Zu Hause','Strom',91), e('Zu Hause','Haushaltgerät',19),
+      // Jamin (ohne Konto, Gothaer)
+      e('Jamin','Kleidung',90), e('Jamin','Sonst',98),
+      // Fatima (ohne Iphone 16)
+      e('Fatima','Gift',95), e('Fatima','Kleidung',201), e('Fatima','Medikamente',383),
+      // Mobin (ohne Schule, Bus-Ticket, SIM-Karte)
+      e('Mobin','Taschengeld',18), e('Mobin','Kleidung',165), e('Mobin','Sonst',15),
+      // Mobina (ohne Kindergarten)
+      e('Mobina','Kleidung',77), e('Mobina','Sport',61),
+      // Meine Eltern
+      e('Meine Eltern','Apotheke/Versicherung',81,'Apotheke/Versicherung'),
+      e('Meine Eltern','Sonst',535,'Sonst'),
+      e('Meine Eltern','Flugticket',260,'Flugticket'),
+      // Moschee (Nazri leer diesen Monat)
+      e('Moschee','Iran',180,'Iran'),
+      // Ausflug
+      e('Ausflug','Aufenthalt',158), e('Ausflug','Transport',112),
+      e('Ausflug','Essen',91), e('Ausflug','Ticket',77),
+    ]
+    setStore(prev => {
+      const cur = prev['2026-05'] || { entries: [] }
+      const alreadyDone = cur.entries.some(x => String(x.id).startsWith('seed-mai-'))
+      if (alreadyDone) { alert('Einträge für Mai 2026 sind bereits vorhanden.'); return prev }
+      return { ...prev, '2026-05': { ...cur, entries: [...entries, ...cur.entries] } }
+    })
+    setMonth('2026-05')
+    setView('monat')
+  }
+
   function seedApr2026() {
     if (!window.confirm('April 2026 Ausgaben eintragen? Bereits vorhandene Einträge bleiben erhalten.')) return
     const mk = id => `seed-apr-${Date.now()}-${Math.random().toString(36).slice(2, 6)}-${id}`
@@ -1335,10 +1385,10 @@ ${manualEntries.length ? `
                 {/* One-time data import */}
                 <div style={{ marginTop: 16, padding: '14px 16px', borderRadius: 12, border: '1px dashed var(--border,#e2e8f0)', background: 'var(--bg-soft,#f8fafc)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
                   <div>
-                    <p style={{ margin: 0, fontWeight: 800, fontSize: 13, color: 'var(--text-strong,#0d1b2a)' }}>Ausgaben April 2026 importieren</p>
+                    <p style={{ margin: 0, fontWeight: 800, fontSize: 13, color: 'var(--text-strong,#0d1b2a)' }}>Ausgaben Mai 2026 importieren</p>
                     <p style={{ margin: '2px 0 0', fontSize: 12, color: 'var(--text-muted,#94a3b8)' }}>Variable Einträge – ohne Fixkosten</p>
                   </div>
-                  <button type="button" className={styles.primaryBudgetBtn} style={{ whiteSpace: 'nowrap', flexShrink: 0 }} onClick={seedApr2026}>
+                  <button type="button" className={styles.primaryBudgetBtn} style={{ whiteSpace: 'nowrap', flexShrink: 0 }} onClick={seedMai2026}>
                     Jetzt importieren
                   </button>
                 </div>
