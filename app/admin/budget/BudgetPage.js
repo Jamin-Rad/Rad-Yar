@@ -27,20 +27,72 @@ function buildCat(name, subs = [], type = 'expense') {
   return { id: makeId(), name, type, subs: subs.map(s => ({ id: makeId(), name: s })) }
 }
 
-const DEFAULT_CATEGORIES = [
-  buildCat('Lebensmittel',  ['Aldi', 'Lidl', 'Bonus', 'Edeka/Rewe/Netto', 'DM', 'Türkischer Markt', 'Supermarkt']),
-  buildCat('Restaurant',    ['Eis/Coffee/Bäckerei', 'Essen gehen']),
-  buildCat('Auto',          ['Tanken', 'Leasing', 'Werkstatt', 'Bus-Ticket', 'Laden']),
-  buildCat('Zu Hause',      ['Miete', 'Darlehen', 'Strom', 'Haushaltgerät']),
-  buildCat('Kleidung',      []),
-  buildCat('Jamin',         ['Konto/Bank', 'Versicherung', 'Medikamente']),
-  buildCat('Fatima',        ['iPhone-Rate', 'Kleidung', 'Medikamente']),
-  buildCat('Mobin',         ['Schule', 'Taschengeld', 'Bus-Ticket', 'SIM-Karte']),
-  buildCat('Mobina',        ['Kindergarten', 'Kleidung']),
-  buildCat('Meine Eltern',  ['Apotheke', 'Versicherung']),
-  buildCat('Moschee',       ['Spende/Nazri']),
-  buildCat('Einkommen',     ['Gehalt', 'Familienkasse'], 'income'),
+const DEFAULT_EXPENSE_CATEGORIES = [
+  ['Lebensmittel', ['Aldi', 'Lidl', 'Bonus', 'Edeka/Rewe/Netto', 'DM', 'Türkei']],
+  ['Kleidung', ['Supermarkt', 'Takko', 'Ernstings Family', 'Deichman']],
+  ['Online', ['Amazon', 'AliExpress', 'Temu']],
+  ['Restaurant', ['Eis/Coffee/Bäckerei', 'Essen', 'Krankenhaus']],
+  ['Auto', ['Tanken', 'Strom', 'Parekn', 'Waschen', 'Reparatur/Service', 'Leasing', 'Bus-Ticket', 'ADAC', 'Bußgeld']],
+  ['Zu Hause', ['Miete', 'Darlehen', 'Strom', 'Internet', 'Netflix', 'Fisch', 'Haushaltgerät', 'Papierkram']],
+  ['Jamin', ['Konto', 'Gothaer', 'Kleidung', 'SIM-Karte', 'Frisur', 'Sonst', 'Medikamente', 'Versicherung']],
+  ['Fatima', ['Iphone 16', 'Gift', 'Kleidung', 'Medikamente', 'Cosmetics']],
+  ['Mobin', ['Schule', 'Taschengeld', 'Bus-Ticket', 'Kleidung', 'SIM-Karte', 'Schulsachen', 'Sonst', 'Spielzeug']],
+  ['Mobina', ['Kindergarten', 'Kleidung', 'Spielzeug', 'Schule', 'Sport']],
+  ['Meine Eltern', ['Apotheke, Versicherung', 'Sonst', 'Flugticket']],
+  ['Hossein', ['Gift']],
+  ['Fatima Eltern', ['Apotheke', 'Gift']],
+  ['Mohsen', ['Gift']],
+  ['Nazri', ['Mosche', 'Iran']],
+  ['Ausflug', ['Aufenthalt', 'Transport', 'Essen', 'Ticket']],
 ]
+
+const KNOWN_OLD_EXPENSE_CATEGORY_NAMES = new Set([
+  'Lebensmittel', 'Restaurant', 'Auto', 'Zu Hause', 'Kleidung', 'Jamin',
+  'Fatima', 'Mobin', 'Mobina', 'Meine Eltern', 'Moschee',
+])
+
+function createDefaultCategories() {
+  return [
+    ...DEFAULT_EXPENSE_CATEGORIES.map(([name, subs]) => buildCat(name, subs)),
+    buildCat('Einkommen', ['Gehalt', 'Familienkasse'], 'income'),
+  ]
+}
+
+function mergeExpenseDefaults(categories) {
+  const existing = Array.isArray(categories) ? categories : []
+  const existingByName = new Map(existing.map(cat => [cat.name, cat]))
+  const defaultNames = new Set(DEFAULT_EXPENSE_CATEGORIES.map(([name]) => name))
+  const needsUpgrade = DEFAULT_EXPENSE_CATEGORIES.some(([name, subs]) => {
+    const cat = existingByName.get(name)
+    if (!cat || cat.type !== 'expense') return true
+    const subNames = new Set((cat.subs || []).map(sub => sub.name))
+    return subs.some(sub => !subNames.has(sub))
+  }) || existing.some(cat => cat.type === 'expense' && KNOWN_OLD_EXPENSE_CATEGORY_NAMES.has(cat.name) && !defaultNames.has(cat.name))
+
+  if (!needsUpgrade) return existing.length ? existing : createDefaultCategories()
+
+  const expenseCategories = DEFAULT_EXPENSE_CATEGORIES.map(([name, subs]) => {
+    const current = existingByName.get(name)
+    const currentSubsByName = new Map((current?.subs || []).map(sub => [sub.name, sub]))
+    return {
+      id: current?.id || makeId(),
+      name,
+      type: 'expense',
+      subs: subs.map(subName => currentSubsByName.get(subName) || { id: makeId(), name: subName }),
+    }
+  })
+  const customExpenses = existing.filter(cat =>
+    cat.type === 'expense' &&
+    !defaultNames.has(cat.name) &&
+    !KNOWN_OLD_EXPENSE_CATEGORY_NAMES.has(cat.name)
+  )
+  const incomes = existing.filter(cat => cat.type === 'income')
+  return [
+    ...expenseCategories,
+    ...customExpenses,
+    ...(incomes.length ? incomes : [buildCat('Einkommen', ['Gehalt', 'Familienkasse'], 'income')]),
+  ]
+}
 
 const APRIL_2026_EXAMPLE = {
   budget: '',
@@ -293,7 +345,7 @@ export default function BudgetPage() {
       let localStore = {}
       let localRecurring = []
       let localCatBudgets = {}
-      let localCategories = DEFAULT_CATEGORIES
+      let localCategories = createDefaultCategories()
 
       try { const r = localStorage.getItem(STORAGE_KEY);    if (r) localStore = JSON.parse(r)      } catch {}
       try { const r = localStorage.getItem(RECURRING_KEY);  if (r) localRecurring = JSON.parse(r)  } catch {}
@@ -301,7 +353,7 @@ export default function BudgetPage() {
       try {
         const r = localStorage.getItem(CATEGORIES_KEY)
         const p = r ? JSON.parse(r) : []
-        localCategories = p.length > 0 ? p : DEFAULT_CATEGORIES
+        localCategories = mergeExpenseDefaults(p.length > 0 ? p : createDefaultCategories())
       } catch {}
 
       try {
@@ -318,12 +370,12 @@ export default function BudgetPage() {
           store: remote.store || {},
           recurring: remote.recurring || [],
           catBudgets: remote.catBudgets || {},
-          categories: (remote.categories || []).length > 0 ? remote.categories : DEFAULT_CATEGORIES,
+          categories: mergeExpenseDefaults((remote.categories || []).length > 0 ? remote.categories : createDefaultCategories()),
         } : {
           store: localStore,
           recurring: localRecurring,
           catBudgets: localCatBudgets,
-          categories: localCategories,
+          categories: mergeExpenseDefaults(localCategories),
         }
 
         setStore(nextState.store)
