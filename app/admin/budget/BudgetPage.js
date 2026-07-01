@@ -718,8 +718,10 @@ ${manualEntries.length ? `
 
   const catDetailGrouped = useMemo(() => {
     const groups = {}
+    const ctxKey = catDetail?.key
     catDetailEntries.forEach(e => {
-      const k = e.title || 'Sonstiges'
+      // Richtigen Untertitel für diese Kategorie anzeigen (z.B. in Mobin → "Kleidung", in Kleidung → "Ernstings Family")
+      const k = (ctxKey && e.catSubtitles?.[ctxKey]) || e.title || 'Sonstiges'
       if (!groups[k]) groups[k] = []
       groups[k].push(e)
     })
@@ -845,7 +847,13 @@ ${manualEntries.length ? `
     const amount = Number(entryAmount)
     if (!amount || !entryTitle) return
     const date = entryDate || new Date().toISOString().slice(0, 10)
-    const targetKey = date.slice(0, 7) // YYYY-MM aus dem eingetragenen Datum
+    const targetKey = date.slice(0, 7)
+    // Für jede gewählte Kategorie den richtigen Untertitel merken
+    // z.B. { Mobin: 'Kleidung', Kleidung: 'Ernstings Family' }
+    const catSubtitles = {}
+    selectedItems.forEach(item => {
+      catSubtitles[item.catName] = item.subName || item.catName
+    })
     setStore(prev => {
       const cur = prev[targetKey] || emptyMonth()
       return {
@@ -856,6 +864,7 @@ ${manualEntries.length ? `
             id: makeId(), type: entryType, amount, title: entryTitle,
             subtitle: entryCatNames.join(' · '),
             category: entryCatNames[0] || '', tags: entryCatNames,
+            catSubtitles,
             date,
           }, ...cur.entries],
         },
