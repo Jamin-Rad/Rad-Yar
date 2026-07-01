@@ -740,7 +740,7 @@ export default function BudgetPage() {
                   <div className={styles.sectionCardHead} style={{ background: 'rgba(22,163,74,.07)', borderBottom: '1px solid rgba(22,163,74,.15)' }}>
                     <span className={styles.sectionCardLabel} style={{ color: '#15803d' }}>Einkommen</span>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                      <strong className={styles.moneyPositive} style={{ fontSize: 14, fontWeight: 800 }}>{formatMoney(summary.income)}</strong>
+                      <strong className={styles.moneyPositive} style={{ fontSize: 18 }}>{formatMoney(summary.income)}</strong>
                       <button className={styles.sectionAddBtn} style={{ background: '#16a34a' }} onClick={() => openPopup('income')} aria-label="Einkommen hinzufügen"><IconPlus /></button>
                     </div>
                   </div>
@@ -749,7 +749,7 @@ export default function BudgetPage() {
                       <div className={styles.incomeRow} key={cat}>
                         <span className={styles.incomeRowName}>{cat}</span>
                         <div className={styles.incomeBarTrack}><div className={styles.incomeBarFill} style={{ width: `${Math.max((total / maxIncome) * 100, 3)}%` }} /></div>
-                        <span className={styles.moneyPositive} style={{ fontSize: 12, fontWeight: 750, textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>{formatMoney(total)}</span>
+                        <span className={styles.moneyPositive} style={{ fontSize: 13, fontWeight: 800, textAlign: 'right' }}>{formatMoney(total)}</span>
                       </div>
                     )) : (
                       <div className={styles.sectionEmptyRow}>
@@ -770,7 +770,7 @@ export default function BudgetPage() {
                           {budgetOver ? `${formatMoney(-budgetRemaining)} überzogen` : `${formatMoney(budgetRemaining)} übrig`}
                         </span>
                       )}
-                      <strong className={styles.moneyNegative} style={{ fontSize: 14, fontWeight: 800 }}>{formatMoney(summary.expenses)}</strong>
+                      <strong className={styles.moneyNegative} style={{ fontSize: 18 }}>{formatMoney(summary.expenses)}</strong>
                       <button className={styles.sectionAddBtn} style={{ background: '#f97316' }} onClick={() => openPopup('expense')} aria-label="Ausgabe hinzufügen"><IconPlus /></button>
                     </div>
                   </div>
@@ -801,7 +801,7 @@ export default function BudgetPage() {
                     <div className={styles.sectionCardFoot}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                         <span style={{ fontSize: 13, fontWeight: 700, color: '#475569' }}>Saldo</span>
-                        <strong className={summary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative} style={{ fontSize: 13, fontWeight: 800 }}>{formatMoney(summary.balance)}</strong>
+                        <strong className={summary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative} style={{ fontSize: 16 }}>{formatMoney(summary.balance)}</strong>
                       </div>
                       <button className={styles.actionBtn} style={{ fontSize: 11 }} type="button" onClick={clearMonth}>Monat löschen</button>
                     </div>
