@@ -1624,30 +1624,106 @@
 /* ── CATEGORY TILE MANAGER ───────────────────── */
 .categoryTileGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  align-items: stretch;
 }
 
 .categoryManagedTile {
-  border-radius: 14px;
-  padding: 14px;
-  transition: transform .15s;
+  --cat-accent: #f97316;
+  position: relative;
+  overflow: hidden;
+  min-height: 152px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(15,23,42,.04);
+  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
 }
 
-.categoryManagedTile:hover { transform: translateY(-2px); }
+.categoryManagedTile::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--cat-accent);
+}
+
+.categoryManagedTile:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 14px 30px rgba(15,23,42,.08);
+  transform: translateY(-1px);
+}
 
 .categoryTileHeader {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.categoryTileTitleRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 10px;
+  min-width: 0;
+}
+
+.categoryTileAccent {
+  width: 10px;
+  height: 10px;
+  flex: 0 0 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(15,23,42,.05);
 }
 
 .categoryTileName {
-  font-size: 14px;
+  min-width: 0;
+  color: #0f172a;
+  font-size: 15px;
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.categoryTypeIncome,
+.categoryTypeExpense {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  border-radius: 999px;
+  padding: 0 8px;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.categoryTypeIncome {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.categoryTypeExpense {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.categoryTileMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin-top: 7px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.categoryTileMeta strong {
+  color: #0f172a;
+  font-weight: 800;
 }
 
 .categoryTileAmount {
@@ -1659,105 +1735,147 @@
 
 .categoryTileDelete {
   flex-shrink: 0;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(0,0,0,.12);
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #94a3b8;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 900;
   line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: opacity .15s;
+  opacity: 1;
+  transition: border-color .15s ease, color .15s ease, background .15s ease;
 }
 
-.categoryManagedTile:hover .categoryTileDelete { opacity: 1; }
+.categoryTileDelete:hover {
+  border-color: #fecaca;
+  background: #fef2f2;
+  color: #dc2626;
+}
 
 .categorySubsRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 8px;
   align-items: center;
 }
 
 .categorySubChip {
   display: inline-flex;
   align-items: center;
-  gap: 3px;
-  padding: 3px 8px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 600;
-  background: rgba(0,0,0,.07);
+  max-width: 100%;
+  min-height: 28px;
+  gap: 6px;
+  padding: 5px 8px 5px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 7px;
+  background: #f8fafc;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
 }
 
 .categorySubChip button {
-  border: none;
-  background: none;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #94a3b8;
   cursor: pointer;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 900;
   line-height: 1;
   padding: 0;
-  opacity: .5;
-  transition: opacity .1s;
+  transition: background .15s ease, color .15s ease;
 }
 
-.categorySubChip button:hover { opacity: 1; }
+.categorySubChip button:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
 
 .categorySubAddForm {
   display: inline-flex;
   align-items: center;
+  min-width: 138px;
+  flex: 1 1 138px;
+  max-width: 210px;
 }
 
 .categorySubInput {
-  border: none;
-  background: rgba(0,0,0,.07);
-  border-radius: 999px;
-  padding: 3px 10px;
+  width: 100%;
+  min-height: 28px;
+  border: 1px dashed #cbd5e1;
+  background: #fff;
+  border-radius: 7px;
+  padding: 5px 10px;
   font: inherit;
-  font-size: 11px;
-  font-weight: 600;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
   outline: none;
-  width: 110px;
+  transition: border-color .15s ease, background .15s ease;
 }
 
-.categorySubInput::placeholder { opacity: .55; }
+.categorySubInput:focus {
+  border-color: #f97316;
+  background: #fff7ed;
+}
+
+.categorySubInput::placeholder { color: #94a3b8; }
 
 .categoryAddTile {
   display: flex;
   align-items: center;
   gap: 8px;
-  border: 2px dashed #e2e8f0;
-  border-radius: 14px;
-  padding: 14px;
-  background: transparent;
-  transition: border-color .15s;
-  min-height: 56px;
+  min-height: 152px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 16px;
+  background: #f8fafc;
+  transition: border-color .15s ease, background .15s ease;
 }
 
-.categoryAddTile:focus-within { border-color: #f97316; }
+.categoryAddTile:focus-within {
+  border-color: #f97316;
+  background: #fff;
+}
 
 .categoryAddInput {
   flex: 1;
-  border: none;
-  background: transparent;
+  min-width: 0;
+  height: 36px;
+  border: 1px solid #e2e8f0;
+  border-radius: 7px;
+  background: #fff;
   outline: none;
   font: inherit;
+  padding: 0 11px;
   font-size: 13px;
-  color: #64748b;
+  font-weight: 700;
+  color: #0f172a;
+  transition: border-color .15s ease;
 }
 
-.categoryAddInput::placeholder { color: #cbd5e1; }
+.categoryAddInput:focus {
+  border-color: #f97316;
+}
+
+.categoryAddInput::placeholder { color: #94a3b8; }
 
 .categoryAddBtn {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  border-radius: 7px;
   border: none;
   background: #f97316;
   color: #fff;
@@ -2826,11 +2944,65 @@
 }
 
 :global(html[data-theme='dark']) .categoryAddTile {
+  background: var(--bg-soft);
   border-color: var(--border);
 }
 
 :global(html[data-theme='dark']) .categoryAddInput {
+  background: var(--bg-card);
+  border-color: var(--border);
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .categoryManagedTile {
+  background: var(--bg-card);
+  border-color: var(--border);
+  box-shadow: none;
+}
+
+:global(html[data-theme='dark']) .categoryManagedTile:hover {
+  border-color: var(--border-soft);
+  box-shadow: 0 16px 34px rgba(0,0,0,.22);
+}
+
+:global(html[data-theme='dark']) .categoryTileAccent {
+  box-shadow: 0 0 0 3px rgba(255,255,255,.06);
+}
+
+:global(html[data-theme='dark']) .categoryTileName,
+:global(html[data-theme='dark']) .categoryTileMeta strong {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .categoryTileMeta {
   color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .categoryTypeExpense {
+  background: var(--bg-soft);
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .categoryTypeIncome {
+  background: rgba(22,163,74,.18);
+  color: #86efac;
+}
+
+:global(html[data-theme='dark']) .categorySubChip {
+  background: var(--bg-soft);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+:global(html[data-theme='dark']) .categorySubInput {
+  background: var(--bg-card);
+  border-color: var(--border);
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .categorySubInput:focus {
+  background: rgba(249,115,22,.1);
+  border-color: #f97316;
 }
 
 :global(html[data-theme='dark']) .catTile {
@@ -2845,7 +3017,15 @@
 }
 
 :global(html[data-theme='dark']) .categoryTileDelete {
-  background: rgba(0,0,0,.25);
+  background: var(--bg-soft);
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .categoryTileDelete:hover {
+  background: rgba(220,38,38,.14);
+  border-color: rgba(248,113,113,.35);
+  color: #fca5a5;
 }
 
 :global(html[data-theme='dark']) .sectionCard {

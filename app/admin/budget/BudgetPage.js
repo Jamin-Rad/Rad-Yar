@@ -785,28 +785,32 @@ export default function BudgetPage() {
                     const color    = getCatColor(cat.name)
                     const spending = catSpending[cat.name] || 0
                     return (
-                      <div key={cat.id} className={styles.categoryManagedTile} style={{ background: color.bg, border: `1px solid ${color.border}` }}>
+                      <div key={cat.id} className={styles.categoryManagedTile} style={{ '--cat-accent': color.border }}>
                         <div className={styles.categoryTileHeader}>
                           <div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                              <div className={styles.categoryTileName} style={{ color: color.text }}>{cat.name}</div>
-                              <span style={{ fontSize: 10, fontWeight: 700, padding: '1px 6px', borderRadius: 999, background: cat.type === 'income' ? 'rgba(22,163,74,.2)' : 'rgba(0,0,0,.08)', color: cat.type === 'income' ? '#15803d' : color.text }}>
+                            <div className={styles.categoryTileTitleRow}>
+                              <span className={styles.categoryTileAccent} style={{ background: color.border }} />
+                              <div className={styles.categoryTileName}>{cat.name}</div>
+                              <span className={cat.type === 'income' ? styles.categoryTypeIncome : styles.categoryTypeExpense}>
                                 {cat.type === 'income' ? 'Einkommen' : 'Ausgabe'}
                               </span>
                             </div>
-                            {spending > 0 && <div className={styles.categoryTileAmount} style={{ color: color.text }}>{formatMoney(spending)}</div>}
+                            <div className={styles.categoryTileMeta}>
+                              <span>{cat.subs.length} Unterkategorien</span>
+                              {spending > 0 && <strong>{formatMoney(spending)} diesen Monat</strong>}
+                            </div>
                           </div>
-                          <button className={styles.categoryTileDelete} style={{ color: color.text }} onClick={() => removeCategory(cat.id)}>×</button>
+                          <button className={styles.categoryTileDelete} onClick={() => removeCategory(cat.id)} aria-label={`${cat.name} löschen`}>×</button>
                         </div>
                         <div className={styles.categorySubsRow}>
                           {cat.subs.map(sub => (
-                            <span key={sub.id} className={styles.categorySubChip} style={{ color: color.text, borderColor: color.border }}>
+                            <span key={sub.id} className={styles.categorySubChip}>
                               {sub.name}
-                              <button type="button" onClick={() => removeSubCategory(cat.id, sub.id)}>×</button>
+                              <button type="button" onClick={() => removeSubCategory(cat.id, sub.id)} aria-label={`${sub.name} löschen`}>×</button>
                             </span>
                           ))}
                           <form className={styles.categorySubAddForm} onSubmit={e => { e.preventDefault(); addSubCategory(cat.id) }}>
-                            <input className={styles.categorySubInput} style={{ color: color.text }} value={newSubInputs[cat.id] || ''} onChange={e => setNewSubInputs(p => ({ ...p, [cat.id]: e.target.value }))} placeholder="+ Hinzufügen" />
+                            <input className={styles.categorySubInput} value={newSubInputs[cat.id] || ''} onChange={e => setNewSubInputs(p => ({ ...p, [cat.id]: e.target.value }))} placeholder="+ Unterkategorie" />
                           </form>
                         </div>
                       </div>
