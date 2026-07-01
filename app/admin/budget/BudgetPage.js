@@ -130,6 +130,42 @@ function formatMonthLabel(key) {
 
 function emptyMonth() { return { budget: '', entries: [] } }
 
+function monthIsOnOrAfter(monthKey, startMonth) {
+  return !startMonth || monthKey >= startMonth
+}
+
+function recurringEntriesForMonth(monthKey, recurring = []) {
+  return recurring
+    .filter(item => monthIsOnOrAfter(monthKey, item.startMonth))
+    .map(item => {
+      const category = item.category || ''
+      const budgetKey = item.budgetKey || category
+      return {
+        id: `recurring:${item.id}:${monthKey}`,
+        recurringId: item.id,
+        generatedRecurring: true,
+        type: item.type || 'expense',
+        title: item.title,
+        amount: Number(item.amount || 0),
+        category,
+        subtitle: 'Fixkosten',
+        tags: [category, budgetKey].filter(Boolean),
+        date: `${monthKey}-01`,
+      }
+    })
+}
+
+function monthWithRecurring(monthKey, store, recurring) {
+  const base = store[monthKey] || emptyMonth()
+  return {
+    ...base,
+    entries: [
+      ...recurringEntriesForMonth(monthKey, recurring),
+      ...(base.entries || []),
+    ],
+  }
+}
+
 function sparquote(income, expenses) {
   if (!income) return null
   return ((income - expenses) / income * 100).toFixed(1)
@@ -406,7 +442,7 @@ export default function BudgetPage() {
     return () => document.removeEventListener('keydown', handler)
   }, [showPopup])
 
-  const monthData = store[month] || emptyMonth()
+  const monthData = useMemo(() => monthWithRecurring(month, store, recurring), [month, store, recurring])
 
   const summary = useMemo(() => {
     const income   = monthData.entries.filter(i => i.type === 'income').reduce((s, i) => s + Number(i.amount || 0), 0)
@@ -473,11 +509,11 @@ export default function BudgetPage() {
 
   const annualData = useMemo(() => Array.from({ length: 12 }, (_, i) => {
     const key  = `${year}-${String(i + 1).padStart(2, '0')}`
-    const data = store[key] || emptyMonth()
+    const data = monthWithRecurring(key, store, recurring)
     const income   = data.entries.filter(e => e.type === 'income').reduce((s, e)  => s + Number(e.amount || 0), 0)
     const expenses = data.entries.filter(e => e.type === 'expense').reduce((s, e) => s + Number(e.amount || 0), 0)
     return { key, i, income, expenses, balance: income - expenses, hasData: data.entries.length > 0 }
-  }), [store, year])
+  }), [store, recurring, year])
 
   const maxAnnual = useMemo(() => Math.max(1, ...annualData.map(m => Math.max(m.income, m.expenses))), [annualData])
 
@@ -571,7 +607,14 @@ export default function BudgetPage() {
     closePopup()
   }
 
-  function deleteEntry(id) { updateMonth(c => ({ ...c, entries: c.entries.filter(i => i.id !== id) })) }
+  function deleteEntry(id) {
+    if (String(id).startsWith('recurring:')) {
+      const recurringId = String(id).split(':')[1]
+      if (recurringId) removeFixeintrag(recurringId)
+      return
+    }
+    updateMonth(c => ({ ...c, entries: c.entries.filter(i => i.id !== id) }))
+  }
   function clearMonth() { if (!window.confirm(`Alle Einträge für ${formatMonthLabel(month)} löschen?`)) return; setStore(prev => { const n = { ...prev }; delete n[month]; return n }) }
 
   function savePlanBudget() {
@@ -590,6 +633,8 @@ export default function BudgetPage() {
       title: planTitle,
       amount,
       category: planCatNames[0] || '',
+      budgetKey: planBudgetKey,
+      startMonth: month,
       dayOfMonth: '1',
     }])
     setPlanAmount('')
@@ -750,7 +795,7 @@ export default function BudgetPage() {
                           <span className={`${styles.budgetEntryType} ${item.type === 'income' ? styles.entryIncome : styles.entryExpense}`}>{item.type === 'income' ? '+' : '−'}</span>
                           <div className={styles.budgetEntryMain}>
                             <strong>{item.title}</strong>
-                            <span>{new Date(item.date).toLocaleDateString('de-DE')}{item.category ? ` · ${item.category}` : ''}</span>
+                            <span>{new Date(item.date).toLocaleDateString('de-DE')}{item.category ? ` · ${item.category}` : ''}{item.generatedRecurring ? ' · Fixkosten' : ''}</span>
                             {Array.isArray(item.tags) && item.tags.length > 1 && <span className={styles.entryTags}>{item.tags.map(t => <span key={t} className={styles.entryTag}>{t}</span>)}</span>}
                           </div>
                           <strong className={item.type === 'income' ? styles.moneyPositive : styles.moneyNegative}>{item.type === 'income' ? '+' : '−'}{formatMoney(item.amount)}</strong>
