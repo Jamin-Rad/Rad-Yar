@@ -851,7 +851,15 @@ ${manualEntries.length ? `
           entries: [{
             id: makeId(), type: entryType, amount, title: entryTitle,
             subtitle: entryCatNames.join(' · '),
-            category: entryCatNames[0] || '', tags: entryCatNames,
+            category: entryCatNames[0] || '',
+            // Auto-Tag: wenn ein Unterkategorie-Name einer eigenen Hauptkategorie entspricht,
+            // wird der Eintrag auch dieser Kategorie zugerechnet (z.B. Mobin > Kleidung → auch Kleidung)
+            tags: [...new Set([
+              ...entryCatNames,
+              ...selectedItems
+                .filter(i => i.subName && categories.some(c => c.name === i.subName && c.type === entryType))
+                .map(i => i.subName),
+            ])],
             date,
           }, ...cur.entries],
         },
