@@ -222,7 +222,8 @@ function CategoryPicker({ categories, type, selectedItems, onToggleItem, expande
                     className={`${styles.catAccordionHeader} ${isExpanded ? styles.catAccordionHeaderOpen : ''} ${isSelected ? styles.catAccordionHeaderSelected : ''}`}
                     style={isSelected ? { background: color.bg, color: color.text } : {}}
                     onClick={() => {
-                      if (hasSubs) onToggleExpand(cat.id)
+                      if (hasSubs && showParentOption) onToggleItem(cat.id, cat.name, null, null)
+                      else if (hasSubs) onToggleExpand(cat.id)
                       else onToggleItem(cat.id, cat.name, null, null)
                     }}>
                     <span className={styles.catAccordionTitle}>
@@ -230,7 +231,21 @@ function CategoryPicker({ categories, type, selectedItems, onToggleItem, expande
                       <span>{cat.name}</span>
                     </span>
                     {hasSubs ? (
-                      <span className={`${styles.catAccordionChevron} ${isExpanded ? styles.catAccordionChevronOpen : ''}`}><ChevronDown /></span>
+                      <span
+                        className={`${styles.catAccordionChevron} ${isExpanded ? styles.catAccordionChevronOpen : ''}`}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={`${cat.name} Unterkategorien öffnen`}
+                        onClick={e => { e.stopPropagation(); onToggleExpand(cat.id) }}
+                        onKeyDown={e => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault()
+                            e.stopPropagation()
+                            onToggleExpand(cat.id)
+                          }
+                        }}>
+                        <ChevronDown />
+                      </span>
                     ) : isSelected ? <span style={{ fontSize: 13 }}>✓</span> : null}
                   </button>
                   {hasSubs && isExpanded && (
