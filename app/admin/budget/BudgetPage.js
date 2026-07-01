@@ -1,12 +1,23 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import styles from '../admin.module.css'
 
 const STORAGE_KEY    = 'radyar_private_budget_v1'
 const RECURRING_KEY  = 'radyar_recurring_v1'
 const CAT_BUDGET_KEY = 'radyar_cat_budget_v1'
 const CATEGORIES_KEY = 'radyar_categories_v2'
+
+async function budgetApi(method = 'GET', body) {
+  const res = await fetch('/api/admin/budget', {
+    method,
+    headers: body ? { 'Content-Type': 'application/json' } : undefined,
+    body: body ? JSON.stringify(body) : undefined,
+  })
+  const data = await res.json().catch(() => ({}))
+  if (!res.ok) throw new Error(data.error || 'Budget konnte nicht gespeichert werden.')
+  return data
+}
 
 function makeId() {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
@@ -255,6 +266,8 @@ export default function BudgetPage() {
   const [recurring, setRecurring]   = useState([])
   const [categories, setCategories] = useState([])
   const [loaded, setLoaded]         = useState(false)
+  const [syncError, setSyncError]   = useState('')
+  const didHydrate = useRef(false)
   const [catEdits, setCatEdits]     = useState({})
   const [newCatName, setNewCatName] = useState('')
   const [newCatType, setNewCatType] = useState('expense')
@@ -274,21 +287,92 @@ export default function BudgetPage() {
   })
 
   useEffect(() => {
-    try { const r = localStorage.getItem(STORAGE_KEY);    if (r) setStore(JSON.parse(r))      } catch {}
-    try { const r = localStorage.getItem(RECURRING_KEY);  if (r) setRecurring(JSON.parse(r))  } catch {}
-    try { const r = localStorage.getItem(CAT_BUDGET_KEY); if (r) setCatBudgets(JSON.parse(r)) } catch {}
-    try {
-      const r = localStorage.getItem(CATEGORIES_KEY)
-      const p = r ? JSON.parse(r) : []
-      setCategories(p.length > 0 ? p : DEFAULT_CATEGORIES)
-    } catch { setCategories(DEFAULT_CATEGORIES) }
-    setLoaded(true)
+    let cancelled = false
+
+    async function loadBudget() {
+      let localStore = {}
+      let localRecurring = []
+      let localCatBudgets = {}
+      let localCategories = DEFAULT_CATEGORIES
+
+      try { const r = localStorage.getItem(STORAGE_KEY);    if (r) localStore = JSON.parse(r)      } catch {}
+      try { const r = localStorage.getItem(RECURRING_KEY);  if (r) localRecurring = JSON.parse(r)  } catch {}
+      try { const r = localStorage.getItem(CAT_BUDGET_KEY); if (r) localCatBudgets = JSON.parse(r) } catch {}
+      try {
+        const r = localStorage.getItem(CATEGORIES_KEY)
+        const p = r ? JSON.parse(r) : []
+        localCategories = p.length > 0 ? p : DEFAULT_CATEGORIES
+      } catch {}
+
+      try {
+        const remote = await budgetApi()
+        if (cancelled) return
+
+        const remoteHasData =
+          Object.keys(remote.store || {}).length > 0 ||
+          (remote.recurring || []).length > 0 ||
+          Object.keys(remote.catBudgets || {}).length > 0 ||
+          (remote.categories || []).length > 0
+
+        const nextState = remoteHasData ? {
+          store: remote.store || {},
+          recurring: remote.recurring || [],
+          catBudgets: remote.catBudgets || {},
+          categories: (remote.categories || []).length > 0 ? remote.categories : DEFAULT_CATEGORIES,
+        } : {
+          store: localStore,
+          recurring: localRecurring,
+          catBudgets: localCatBudgets,
+          categories: localCategories,
+        }
+
+        setStore(nextState.store)
+        setRecurring(nextState.recurring)
+        setCatBudgets(nextState.catBudgets)
+        setCategories(nextState.categories)
+        setSyncError('')
+        didHydrate.current = true
+        setLoaded(true)
+
+        if (!remoteHasData) await budgetApi('PUT', nextState)
+      } catch (err) {
+        if (cancelled) return
+        setStore(localStore)
+        setRecurring(localRecurring)
+        setCatBudgets(localCatBudgets)
+        setCategories(localCategories)
+        setSyncError(err.message)
+        didHydrate.current = true
+        setLoaded(true)
+      }
+    }
+
+    loadBudget()
+    return () => { cancelled = true }
   }, [])
 
-  useEffect(() => { if (loaded) localStorage.setItem(STORAGE_KEY,    JSON.stringify(store))      }, [store, loaded])
-  useEffect(() => { if (loaded) localStorage.setItem(RECURRING_KEY,  JSON.stringify(recurring))  }, [recurring, loaded])
-  useEffect(() => { if (loaded) localStorage.setItem(CAT_BUDGET_KEY, JSON.stringify(catBudgets)) }, [catBudgets, loaded])
-  useEffect(() => { if (loaded) localStorage.setItem(CATEGORIES_KEY, JSON.stringify(categories)) }, [categories, loaded])
+  useEffect(() => {
+    if (!loaded || !didHydrate.current) return
+    const payload = { store, recurring, catBudgets, categories }
+
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(store))
+      localStorage.setItem(RECURRING_KEY, JSON.stringify(recurring))
+      localStorage.setItem(CAT_BUDGET_KEY, JSON.stringify(catBudgets))
+      localStorage.setItem(CATEGORIES_KEY, JSON.stringify(categories))
+    } catch {}
+
+    const timer = window.setTimeout(async () => {
+      try {
+        await budgetApi('PUT', payload)
+        setSyncError('')
+      } catch (err) {
+        setSyncError(err.message)
+      }
+    }, 500)
+
+    return () => window.clearTimeout(timer)
+  }, [store, recurring, catBudgets, categories, loaded])
 
   // Close popup on Escape
   useEffect(() => {
@@ -479,6 +563,7 @@ export default function BudgetPage() {
           <div>
             <h1 className={styles.title}>Private Finanzen</h1>
             <p className={styles.sub} style={{ margin: 0 }}>{formatMonthLabel(month)}</p>
+            {syncError && <p className={styles.sub} style={{ margin: '4px 0 0', color: '#dc2626' }}>Online-Speichern fehlgeschlagen: {syncError}</p>}
           </div>
           <div className={styles.monthNav}>
             <button className={styles.monthNavBtn} onClick={prevMonth}>‹</button>
