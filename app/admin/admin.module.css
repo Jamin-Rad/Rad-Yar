@@ -854,7 +854,8 @@
 .monthNav {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+  position: relative;
 }
 
 .monthNavBtn {
@@ -863,37 +864,152 @@
   justify-content: center;
   width: 34px;
   height: 34px;
-  border-radius: 8px;
-  border: 1px solid #e2e8f0;
-  background: #fff;
-  color: #475569;
-  font-size: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border, #e2e8f0);
+  background: var(--bg-card, #fff);
+  color: var(--text-muted, #475569);
+  font-size: 18px;
   line-height: 1;
   cursor: pointer;
   transition: all .15s;
+  flex-shrink: 0;
 }
 
 .monthNavBtn:hover {
   border-color: #f97316;
   color: #f97316;
+  background: rgba(249,115,22,.06);
 }
 
 .monthDisplay {
-  padding: 7px 12px;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  background: #fff;
-  color: #0d1b2a;
-  font: inherit;
-  font-size: 14px;
-  font-weight: 700;
-  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 10px;
+  background: var(--bg-card, #fff);
   cursor: pointer;
-  transition: border-color .15s;
+  font: inherit;
+  outline: none;
+  transition: all .15s;
+  min-width: 90px;
+  justify-content: center;
 }
 
-.monthDisplay:focus {
+.monthDisplay:hover {
   border-color: #f97316;
+  background: rgba(249,115,22,.06);
+}
+
+.monthDisplayLabel {
+  font-size: 15px;
+  font-weight: 900;
+  color: var(--text-strong, #0d1b2a);
+  letter-spacing: .01em;
+}
+
+.monthDisplayYear {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted, #94a3b8);
+}
+
+/* ── MONTH PICKER DROPDOWN ───────────────────── */
+.monthPickerDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 600;
+  background: var(--bg-card, #fff);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 16px;
+  box-shadow: 0 20px 48px rgba(0,0,0,.18), 0 0 0 1px rgba(0,0,0,.04);
+  padding: 14px;
+  width: 220px;
+  animation: popIn .2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.monthPickerYearRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding: 0 2px;
+}
+
+.monthPickerYearBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid var(--border, #e2e8f0);
+  background: var(--bg-soft, #f8fafc);
+  color: var(--text-muted, #64748b);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all .13s;
+}
+
+.monthPickerYearBtn:hover {
+  border-color: #f97316;
+  color: #f97316;
+  background: rgba(249,115,22,.07);
+}
+
+.monthPickerYearLabel {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text-strong, #0d1b2a);
+}
+
+.monthPickerGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+
+.monthPickerCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  border-radius: 9px;
+  border: 1px solid transparent;
+  background: transparent;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-soft, #536174);
+  cursor: pointer;
+  transition: all .13s;
+}
+
+.monthPickerCell:hover {
+  background: rgba(249,115,22,.08);
+  color: #f97316;
+  border-color: rgba(249,115,22,.2);
+}
+
+.monthPickerCellToday {
+  border-color: var(--border, #e2e8f0);
+  color: var(--text-strong, #0d1b2a);
+  background: var(--bg-soft, #f8fafc);
+}
+
+.monthPickerCellSelected {
+  background: #f97316;
+  color: #fff;
+  border-color: #f97316;
+  box-shadow: 0 4px 12px rgba(249,115,22,.35);
+}
+
+.monthPickerCellSelected:hover {
+  background: #ea580c;
+  color: #fff;
+  border-color: #ea580c;
 }
 
 .financeMetrics {
@@ -4493,4 +4609,15 @@
 
 :global(html[data-theme='dark']) .reportTotalRow {
   color: var(--text-soft);
+}
+
+/* ── MONTH PICKER – DARK MODE ────────────────── */
+:global(html[data-theme='dark']) .monthPickerDropdown {
+  box-shadow: 0 20px 48px rgba(0,0,0,.44), 0 0 0 1px rgba(255,255,255,.06);
+}
+
+:global(html[data-theme='dark']) .monthPickerCellToday {
+  border-color: var(--border);
+  background: var(--bg-soft);
+  color: var(--text-strong);
 }

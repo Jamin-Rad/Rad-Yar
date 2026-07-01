@@ -370,6 +370,8 @@ export default function BudgetPage() {
 
   const [catError, setCatError] = useState('')
   const [reportTab, setReportTab] = useState('monat')
+  const [showMonthPicker, setShowMonthPicker] = useState(false)
+  const monthPickerRef = useRef(null)
 
   // Fixkosten new entry form
   const [planAmount, setPlanAmount] = useState('')
@@ -463,6 +465,18 @@ export default function BudgetPage() {
 
     return () => window.clearTimeout(timer)
   }, [store, recurring, catBudgets, categories, loaded])
+
+  // Close month picker on outside click
+  useEffect(() => {
+    if (!showMonthPicker) return
+    const handler = e => {
+      if (monthPickerRef.current && !monthPickerRef.current.contains(e.target)) {
+        setShowMonthPicker(false)
+      }
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [showMonthPicker])
 
   // One-time migration: set all existing fixkosten to start from 2025-01
   useEffect(() => {
@@ -917,10 +931,53 @@ ${manualEntries.length ? `
             <p className={styles.sub} style={{ margin: 0 }}>{formatMonthLabel(month)}</p>
             {syncError && <p className={styles.sub} style={{ margin: '4px 0 0', color: '#dc2626' }}>Online-Speichern fehlgeschlagen: {syncError}</p>}
           </div>
-          <div className={styles.monthNav}>
-            <button className={styles.monthNavBtn} onClick={prevMonth}>‹</button>
-            <input type="month" className={styles.monthDisplay} value={month} onChange={e => setMonth(e.target.value || getMonthKey())} />
-            <button className={styles.monthNavBtn} onClick={nextMonth}>›</button>
+          <div className={styles.monthNav} ref={monthPickerRef}>
+            <button className={styles.monthNavBtn} onClick={prevMonth} aria-label="Vorheriger Monat">‹</button>
+            <button
+              className={styles.monthDisplay}
+              onClick={() => setShowMonthPicker(p => !p)}
+              aria-label="Monat auswählen"
+            >
+              <span className={styles.monthDisplayLabel}>{MONTH_SHORT[Number(month.split('-')[1]) - 1]}</span>
+              <span className={styles.monthDisplayYear}>{month.split('-')[0]}</span>
+            </button>
+            <button className={styles.monthNavBtn} onClick={nextMonth} aria-label="Nächster Monat">›</button>
+
+            {showMonthPicker && (() => {
+              const [pickerYear, setPickerYear] = [
+                Number(month.split('-')[0]),
+                y => {
+                  const m = month.split('-')[1]
+                  setMonth(`${y}-${m}`)
+                }
+              ]
+              const todayKey = getMonthKey()
+              return (
+                <div className={styles.monthPickerDropdown}>
+                  <div className={styles.monthPickerYearRow}>
+                    <button className={styles.monthPickerYearBtn} onClick={() => setPickerYear(pickerYear - 1)}>‹</button>
+                    <span className={styles.monthPickerYearLabel}>{pickerYear}</span>
+                    <button className={styles.monthPickerYearBtn} onClick={() => setPickerYear(pickerYear + 1)}>›</button>
+                  </div>
+                  <div className={styles.monthPickerGrid}>
+                    {MONTH_SHORT.map((label, i) => {
+                      const key = `${pickerYear}-${String(i + 1).padStart(2, '0')}`
+                      const isSelected = key === month
+                      const isToday = key === todayKey
+                      return (
+                        <button
+                          key={key}
+                          className={`${styles.monthPickerCell} ${isSelected ? styles.monthPickerCellSelected : ''} ${isToday && !isSelected ? styles.monthPickerCellToday : ''}`}
+                          onClick={() => { setMonth(key); setShowMonthPicker(false) }}
+                        >
+                          {label}
+                        </button>
+                      )
+                    })}
+                  </div>
+                </div>
+              )
+            })()}
           </div>
         </div>
 
