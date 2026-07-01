@@ -160,7 +160,7 @@ export default function SignInPage() {
       await signIn.authenticateWithRedirect({
         strategy: `oauth_${provider}`,
         redirectUrl: '/sso-callback',
-        redirectUrlComplete: '/',
+        redirectUrlComplete: '/onboarding',
       })
     } catch (err) { showError(err) }
   }

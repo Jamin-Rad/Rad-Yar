@@ -1,6 +1,18 @@
 import { NextResponse } from 'next/server'
 import { requireAdmin, hasAdminEmail } from '@/lib/adminAuth'
 
+function primaryEmail(user) {
+  const primary = user.emailAddresses?.find(email => email.id === user.primaryEmailAddressId)
+  return (primary?.emailAddress || user.emailAddresses?.[0]?.emailAddress || '').toLowerCase()
+}
+
+async function getSameEmailUsers(client, user) {
+  const email = primaryEmail(user)
+  if (!email) return [user]
+  const { data } = await client.users.getUserList({ emailAddress: [email], limit: 20 })
+  return data?.length ? data : [user]
+}
+
 export async function PATCH(request, { params }) {
   try {
     const admin = await requireAdmin()
@@ -35,18 +47,26 @@ export async function PATCH(request, { params }) {
         activatedAt: existing.activatedAt || new Date().toISOString(),
         promo: !!promo || !!existing.promo,
       }
-      const updated = await client.users.updateUser(userId, {
-        publicMetadata: { ...target.publicMetadata, subscription },
-      })
+      const sameEmailUsers = await getSameEmailUsers(client, target)
+      const updatedUsers = await Promise.all(sameEmailUsers.map(user =>
+        client.users.updateUser(user.id, {
+          publicMetadata: { ...user.publicMetadata, subscription },
+        })
+      ))
+      const updated = updatedUsers.find(user => user.id === userId) || updatedUsers[0]
       return NextResponse.json({ subscription: updated.publicMetadata?.subscription ?? subscription })
     }
 
     if (action === 'clearSubscription') {
-      const existing = target.publicMetadata?.subscription || {}
-      const subscription = { ...existing, status: 'inactive' }
-      const updated = await client.users.updateUser(userId, {
-        publicMetadata: { ...target.publicMetadata, subscription },
-      })
+      const sameEmailUsers = await getSameEmailUsers(client, target)
+      const updatedUsers = await Promise.all(sameEmailUsers.map(user => {
+        const existing = user.publicMetadata?.subscription || {}
+        const subscription = { ...existing, status: 'inactive' }
+        return client.users.updateUser(user.id, {
+          publicMetadata: { ...user.publicMetadata, subscription },
+        })
+      }))
+      const updated = updatedUsers.find(user => user.id === userId) || updatedUsers[0]
       return NextResponse.json({ subscription: updated.publicMetadata?.subscription ?? subscription })
     }
 
