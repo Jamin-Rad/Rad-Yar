@@ -436,8 +436,8 @@ export default function BudgetPage() {
   const maxIncome   = incomeTotals.length   ? Math.max(...incomeTotals.map(([, v]) => v))   : 1
 
   const totalCatBudget = useMemo(() => {
-    return categories.filter(c => c.type !== 'income').reduce((s, c) => s + (catBudgets[c.name] || 0), 0)
-  }, [categories, catBudgets])
+    return Object.values(catBudgets).reduce((s, value) => s + Number(value || 0), 0)
+  }, [catBudgets])
 
   const budgetRemaining = totalCatBudget - summary.expenses
   const budgetOver      = totalCatBudget > 0 && budgetRemaining < 0
@@ -464,6 +464,12 @@ export default function BudgetPage() {
   }, [planSelectedItems])
 
   const planCatNames = useMemo(() => [...new Set(planSelectedItems.map(i => i.catName))], [planSelectedItems])
+
+  const planBudgetKey = useMemo(() => {
+    const selected = planSelectedItems[0]
+    if (!selected) return ''
+    return selected.subName ? `${selected.catName} / ${selected.subName}` : selected.catName
+  }, [planSelectedItems])
 
   const annualData = useMemo(() => Array.from({ length: 12 }, (_, i) => {
     const key  = `${year}-${String(i + 1).padStart(2, '0')}`
@@ -570,8 +576,8 @@ export default function BudgetPage() {
 
   function savePlanBudget() {
     const amount = Number(planAmount)
-    if (!amount || planCatNames.length === 0) return
-    setCatBudgets(prev => ({ ...prev, [planCatNames[0]]: amount }))
+    if (!amount || !planBudgetKey) return
+    setCatBudgets(prev => ({ ...prev, [planBudgetKey]: amount }))
     setPlanAmount('')
   }
 
@@ -910,7 +916,7 @@ export default function BudgetPage() {
                   {planSelectedItems.length > 0 && (
                     <div className={styles.entrySelectionSummary}>
                       <div>
-                        <span className={styles.entrySelectionTitle}>{planTitle}</span>
+                        <span className={styles.entrySelectionTitle}>{planBudgetKey}</span>
                         {planCatNames.length > 0 && <span className={styles.entrySelectionCats}>{planCatNames.join(' · ')}</span>}
                       </div>
                     </div>
@@ -932,17 +938,18 @@ export default function BudgetPage() {
                 <div className={styles.budgetPanel}>
                   <h2 className={styles.sectionTitle} style={{ margin: '0 0 16px' }}>Gespeicherte Budgets</h2>
                   <div className={styles.budgetCatList}>
-                    {categories.filter(c => c.type === 'expense' && catBudgets[c.name]).map(cat => {
-                      const color = getCatColor(cat.name)
+                    {Object.entries(catBudgets).filter(([, amount]) => Number(amount || 0) > 0).map(([name, amount]) => {
+                      const baseName = name.split(' / ')[0]
+                      const color = getCatColor(baseName)
                       return (
-                        <div key={cat.id} className={styles.budgetCatRow} style={{ borderLeft: `3px solid ${color.border}` }}>
-                          <span className={styles.budgetCatName}>{cat.name}</span>
-                          <strong>{formatMoney(catBudgets[cat.name])}</strong>
-                          <button className={styles.actionBtn} type="button" onClick={() => saveCatBudget(cat.name, 0)}>×</button>
+                        <div key={name} className={styles.budgetCatRow} style={{ borderLeft: `3px solid ${color.border}` }}>
+                          <span className={styles.budgetCatName}>{name}</span>
+                          <strong>{formatMoney(amount)}</strong>
+                          <button className={styles.actionBtn} type="button" onClick={() => saveCatBudget(name, 0)}>×</button>
                         </div>
                       )
                     })}
-                    {!categories.some(c => c.type === 'expense' && catBudgets[c.name]) && <p className={styles.emptyAnalytics}>Noch kein Budget gespeichert.</p>}
+                    {!Object.values(catBudgets).some(amount => Number(amount || 0) > 0) && <p className={styles.emptyAnalytics}>Noch kein Budget gespeichert.</p>}
                   </div>
                 </div>
 
