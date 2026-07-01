@@ -59,26 +59,35 @@ function createDefaultCategories() {
 
 function mergeExpenseDefaults(categories) {
   const existing = Array.isArray(categories) ? categories : []
+  if (!existing.length) return createDefaultCategories()
+
   const existingByName = new Map(existing.map(cat => [cat.name, cat]))
   const defaultNames = new Set(DEFAULT_EXPENSE_CATEGORIES.map(([name]) => name))
-  const needsUpgrade = DEFAULT_EXPENSE_CATEGORIES.some(([name, subs]) => {
+
+  // Only check for completely missing top-level categories or old names to clean up
+  const missingTopLevel = DEFAULT_EXPENSE_CATEGORIES.some(([name]) => {
     const cat = existingByName.get(name)
-    if (!cat || cat.type !== 'expense') return true
-    const subNames = new Set((cat.subs || []).map(sub => sub.name))
-    return subs.some(sub => !subNames.has(sub))
-  }) || existing.some(cat => cat.type === 'expense' && KNOWN_OLD_EXPENSE_CATEGORY_NAMES.has(cat.name) && !defaultNames.has(cat.name))
+    return !cat || cat.type !== 'expense'
+  })
+  const hasOldNames = existing.some(
+    cat => cat.type === 'expense' && KNOWN_OLD_EXPENSE_CATEGORY_NAMES.has(cat.name) && !defaultNames.has(cat.name)
+  )
 
-  if (!needsUpgrade) return existing.length ? existing : createDefaultCategories()
+  if (!missingTopLevel && !hasOldNames) {
+    // Preserve incomes with Familienkasse→Kindergeld rename only
+    const incomes = existing.filter(cat => cat.type === 'income')
+      .map(cat => ({
+        ...cat,
+        subs: (cat.subs || []).map(sub => sub.name === 'Familienkasse' ? { ...sub, name: 'Kindergeld' } : sub),
+      }))
+    if (!incomes.length) return [...existing, buildCat('Einkommen', ['Gehalt', 'Kindergeld'], 'income')]
+    return existing.map(cat => cat.type !== 'income' ? cat : incomes.find(i => i.id === cat.id) || cat)
+  }
 
+  // Add only missing top-level categories; keep existing ones exactly as-is
   const expenseCategories = DEFAULT_EXPENSE_CATEGORIES.map(([name, subs]) => {
     const current = existingByName.get(name)
-    const currentSubsByName = new Map((current?.subs || []).map(sub => [sub.name, sub]))
-    return {
-      id: current?.id || makeId(),
-      name,
-      type: 'expense',
-      subs: subs.map(subName => currentSubsByName.get(subName) || { id: makeId(), name: subName }),
-    }
+    return current && current.type === 'expense' ? current : buildCat(name, subs)
   })
   const customExpenses = existing.filter(cat =>
     cat.type === 'expense' &&
