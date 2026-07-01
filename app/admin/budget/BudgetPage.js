@@ -195,7 +195,7 @@ function IconPlus() {
   return <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
 }
 
-function CategoryPicker({ categories, type, selectedItems, onToggleItem, expandedCats, onToggleExpand, label = 'Kategorie wählen', emptyText = 'Keine Kategorien für diesen Typ.', selectionHint = 'Eine oder mehrere auswählen' }) {
+function CategoryPicker({ categories, type, selectedItems, onToggleItem, expandedCats, onToggleExpand, label = 'Kategorie wählen', emptyText = 'Keine Kategorien für diesen Typ.', selectionHint = 'Eine oder mehrere auswählen', showParentOption = false }) {
   const filteredCats = categories.filter(c => c.type === type)
 
   function isItemSelected(catId, subId) {
@@ -235,6 +235,14 @@ function CategoryPicker({ categories, type, selectedItems, onToggleItem, expande
                   </button>
                   {hasSubs && isExpanded && (
                     <div className={styles.catAccordionSubs}>
+                      {showParentOption && (
+                        <button type="button"
+                          className={isItemSelected(cat.id, null) ? styles.catSubSelectPillActive : styles.catSubSelectPill}
+                          onClick={() => onToggleItem(cat.id, cat.name, null, null)}>
+                          {isItemSelected(cat.id, null) && <span className={styles.catSubSelectCheck}>✓</span>}
+                          Gesamte Kategorie
+                        </button>
+                      )}
                       {cat.subs.map(sub => {
                         const sel = isItemSelected(cat.id, sub.id)
                         return (
@@ -956,6 +964,7 @@ export default function BudgetPage() {
                     onToggleExpand={togglePlanExpand}
                     label="Kategorie oder Unterkategorie wählen"
                     selectionHint="Eine Kategorie auswählen"
+                    showParentOption
                   />
 
                   {planSelectedItems.length > 0 && (
