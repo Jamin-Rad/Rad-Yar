@@ -1,16 +1,13 @@
 import { NextResponse } from 'next/server'
 import { requireAdmin, hasAdminEmail } from '@/lib/adminAuth'
-
-function primaryEmail(user) {
-  const primary = user.emailAddresses?.find(email => email.id === user.primaryEmailAddressId)
-  return (primary?.emailAddress || user.emailAddresses?.[0]?.emailAddress || '').toLowerCase()
-}
+import { canonicalUserEmail } from '@/lib/emailIdentity'
 
 async function getSameEmailUsers(client, user) {
-  const email = primaryEmail(user)
+  const email = canonicalUserEmail(user)
   if (!email) return [user]
-  const { data } = await client.users.getUserList({ emailAddress: [email], limit: 20 })
-  return data?.length ? data : [user]
+  const { data } = await client.users.getUserList({ limit: 200 })
+  const matching = (data || []).filter(candidate => canonicalUserEmail(candidate) === email)
+  return matching.length ? matching : [user]
 }
 
 export async function PATCH(request, { params }) {

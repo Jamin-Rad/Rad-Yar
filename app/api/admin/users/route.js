@@ -1,6 +1,40 @@
 import { NextResponse } from 'next/server'
 import { requireAdmin, hasAdminEmail } from '@/lib/adminAuth'
+import { canonicalUserEmail } from '@/lib/emailIdentity'
 import { isSubscriptionActive } from '@/utils/subscription'
+
+function toClientUser(u) {
+  return {
+    id: u.id,
+    firstName: u.firstName,
+    lastName: u.lastName,
+    emailAddresses: u.emailAddresses,
+    createdAt: u.createdAt,
+    lastSignInAt: u.lastSignInAt,
+    lastActiveAt: u.lastActiveAt,
+    banned: u.banned,
+    locked: u.locked,
+    isAdmin: hasAdminEmail(u.emailAddresses),
+    subscription: u.publicMetadata?.subscription ?? null,
+  }
+}
+
+function mergeSameEmailUsers(users) {
+  const byEmail = new Map()
+  for (const user of users) {
+    const key = canonicalUserEmail(user) || user.id
+    const previous = byEmail.get(key)
+    if (!previous) {
+      byEmail.set(key, user)
+      continue
+    }
+
+    const previousScore = Number(hasAdminEmail(previous.emailAddresses)) * 3 + Number(isSubscriptionActive(previous)) * 2 + Number(previous.lastSignInAt || 0) / 1e15
+    const userScore = Number(hasAdminEmail(user.emailAddresses)) * 3 + Number(isSubscriptionActive(user)) * 2 + Number(user.lastSignInAt || 0) / 1e15
+    if (userScore > previousScore) byEmail.set(key, user)
+  }
+  return [...byEmail.values()]
+}
 
 export async function GET(request) {
   try {
@@ -18,28 +52,18 @@ export async function GET(request) {
       client.users.getUserList({ limit: 200, orderBy: '-created_at' }),
     ])
 
-    const cleaned = users.map(u => ({
-      id: u.id,
-      firstName: u.firstName,
-      lastName: u.lastName,
-      emailAddresses: u.emailAddresses,
-      createdAt: u.createdAt,
-      lastSignInAt: u.lastSignInAt,
-      lastActiveAt: u.lastActiveAt,
-      banned: u.banned,
-      locked: u.locked,
-      isAdmin: hasAdminEmail(u.emailAddresses),
-      subscription: u.publicMetadata?.subscription ?? null,
-    }))
+    const visibleUsers = mergeSameEmailUsers(users)
+    const canonicalSummaryUsers = mergeSameEmailUsers(summaryUsers)
+    const cleaned = visibleUsers.map(toClientUser)
 
-    const promoActivatedCount = summaryUsers.filter(u => u.publicMetadata?.subscription?.promo).length
-    const activeSubscriptionCount = summaryUsers.filter(u => isSubscriptionActive(u)).length
+    const promoActivatedCount = canonicalSummaryUsers.filter(u => u.publicMetadata?.subscription?.promo).length
+    const activeSubscriptionCount = canonicalSummaryUsers.filter(u => isSubscriptionActive(u)).length
     const weekAgo = Date.now() - 7 * 24 * 60 * 60 * 1000
-    const newUsers7Count = summaryUsers.filter(u => u.createdAt && new Date(u.createdAt).getTime() >= weekAgo).length
+    const newUsers7Count = canonicalSummaryUsers.filter(u => u.createdAt && new Date(u.createdAt).getTime() >= weekAgo).length
 
     return NextResponse.json({
       users: cleaned,
-      totalCount,
+      totalCount: canonicalSummaryUsers.length || totalCount,
       promoActivatedCount,
       activeSubscriptionCount,
       newUsers7Count,
