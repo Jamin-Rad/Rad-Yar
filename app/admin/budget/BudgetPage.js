@@ -778,7 +778,10 @@ ${manualEntries.length ? `
     setSelectedItems([])
     setExpandedCats(initialExpandedForType(type))
     setEntryAmount('')
-    setEntryDate(new Date().toISOString().slice(0, 10))
+    const todayKey = getMonthKey()
+    setEntryDate(month === todayKey
+      ? new Date().toISOString().slice(0, 10)
+      : `${month}-01`)
     setShowPopup(true)
   }
 
@@ -818,15 +821,23 @@ ${manualEntries.length ? `
     e.preventDefault()
     const amount = Number(entryAmount)
     if (!amount || !entryTitle) return
-    updateMonth(c => ({
-      ...c,
-      entries: [{
-        id: makeId(), type: entryType, amount, title: entryTitle,
-        subtitle: entryCatNames.join(' · '),
-        category: entryCatNames[0] || '', tags: entryCatNames,
-        date: entryDate || new Date().toISOString().slice(0, 10),
-      }, ...c.entries],
-    }))
+    const date = entryDate || new Date().toISOString().slice(0, 10)
+    const targetKey = date.slice(0, 7) // YYYY-MM aus dem eingetragenen Datum
+    setStore(prev => {
+      const cur = prev[targetKey] || emptyMonth()
+      return {
+        ...prev,
+        [targetKey]: {
+          ...cur,
+          entries: [{
+            id: makeId(), type: entryType, amount, title: entryTitle,
+            subtitle: entryCatNames.join(' · '),
+            category: entryCatNames[0] || '', tags: entryCatNames,
+            date,
+          }, ...cur.entries],
+        },
+      }
+    })
     closePopup()
   }
 
