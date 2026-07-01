@@ -2660,6 +2660,278 @@
   min-width: 132px;
 }
 
+/* ── BERICHT ─────────────────────────────────── */
+.reportTabBar {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.reportTabBtn {
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #64748b;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+}
+
+.reportTabBtn:hover { border-color: #f97316; color: #f97316; }
+
+.reportTabActive {
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 1px solid #f97316;
+  background: #fff7ed;
+  color: #f97316;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.berichtKPIGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 720px) {
+  .berichtKPIGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.berichtKPICard {
+  padding: 14px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #fff;
+  display: grid;
+  gap: 4px;
+}
+
+.berichtKPILabel {
+  font-size: 11px;
+  font-weight: 800;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.berichtKPIValue {
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+
+.berichtKPISub {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.berichtRow {
+  display: grid;
+  grid-template-columns: 140px 1fr 100px 10px;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid #f8fafc;
+}
+
+.berichtRow:last-child { border-bottom: none; }
+
+.berichtRowLabel {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.berichtBarTrack {
+  height: 8px;
+  background: #f1f5f9;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.berichtBarIncome {
+  height: 100%;
+  border-radius: 999px;
+  background: #16a34a;
+  transition: width .4s;
+}
+
+.berichtBarExpense {
+  height: 100%;
+  border-radius: 999px;
+  background: #f97316;
+  transition: width .4s;
+}
+
+.berichtRowAmt {
+  display: grid;
+  gap: 1px;
+  text-align: right;
+}
+
+.berichtRowAmt strong { font-size: 13px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.berichtRowAmt small  { font-size: 10px; color: #94a3b8; }
+
+.berichtEntryTable {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.berichtEntryRow {
+  display: grid;
+  grid-template-columns: 44px 1fr 90px auto;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  border-bottom: 1px solid #f8fafc;
+  font-size: 13px;
+}
+
+.berichtEntryRow:last-child { border-bottom: none; }
+
+.berichtTopRow {
+  display: grid;
+  grid-template-columns: 28px 44px 1fr 90px 80px auto;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-bottom: 1px solid #f8fafc;
+  font-size: 13px;
+}
+
+.berichtTopRow:last-child { border-bottom: none; }
+
+.berichtTopRank {
+  font-size: 11px;
+  font-weight: 900;
+  color: #94a3b8;
+}
+
+.berichtEntryDate {
+  color: #94a3b8;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.berichtEntryTitle {
+  font-weight: 700;
+  color: #1e293b;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.berichtEntryCat {
+  font-size: 11px;
+  color: #64748b;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.berichtMiniChart {
+  display: flex;
+  gap: 8px;
+  height: 100px;
+  align-items: flex-end;
+  margin-bottom: 6px;
+}
+
+.berichtMiniCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+}
+
+.berichtMiniBars {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  gap: 3px;
+  align-items: flex-end;
+}
+
+.berichtMiniBars > div { flex: 1; min-height: 2px; }
+
+.berichtMiniLabel { font-size: 11px; font-weight: 700; color: #64748b; }
+.berichtMiniSaldo { font-size: 10px; font-weight: 800; }
+
+.berichtHighlight {
+  display: grid;
+  gap: 4px;
+  padding: 12px 16px;
+  border: 1px solid;
+  border-radius: 12px;
+}
+
+.berichtHighlight small { font-size: 11px; color: #64748b; }
+.berichtHighlight strong { font-size: 15px; font-weight: 900; color: #0d1b2a; }
+.berichtHighlight span { font-size: 18px; font-weight: 900; }
+
+.berichtStatGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.berichtStatCard {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.berichtStatCard span { font-size: 11px; color: #94a3b8; font-weight: 700; }
+.berichtStatCard strong { font-size: 16px; font-weight: 900; color: #0d1b2a; }
+
+.berichtBudgetOverview {
+  padding: 14px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.berichtBudgetRow {
+  display: grid;
+  grid-template-columns: 130px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f8fafc;
+}
+
+.berichtBudgetRow:last-child { border-bottom: none; }
+
+.berichtStatusBadge {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
 /* ── CATEGORY ERROR BANNER ───────────────────── */
 .catErrorBanner {
   display: flex;

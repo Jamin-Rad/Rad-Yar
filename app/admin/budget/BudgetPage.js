@@ -360,6 +360,7 @@ export default function BudgetPage() {
   const [editingEntry, setEditingEntry]           = useState(null) // { id, amount }
 
   const [catError, setCatError] = useState('')
+  const [reportTab, setReportTab] = useState('monat')
 
   // Fixkosten new entry form
   const [planAmount, setPlanAmount] = useState('')
@@ -819,6 +820,7 @@ export default function BudgetPage() {
                 <div className={styles.sidebarSubGroup}>
                   <button className={subView === 'kategorien' ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('kategorien')}>Kategorien</button>
                   <button className={subView === 'budget' || subView === 'fixkosten' ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('budget')}>Budget &amp; Fixkosten</button>
+                  <button className={subView === 'bericht' ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('bericht')}>Bericht</button>
                 </div>
               )}
             </nav>
@@ -1131,6 +1133,412 @@ export default function BudgetPage() {
                 </div>
               </div>
             )}
+
+            {/* ── BERICHT ── */}
+            {view === 'einstellung' && subView === 'bericht' && (() => {
+              const fixEntries   = monthData.entries.filter(e => e.generatedRecurring)
+              const manualEntries = monthData.entries.filter(e => !e.generatedRecurring)
+              const topExpenses  = monthData.entries
+                .filter(e => e.type === 'expense' && !e.generatedRecurring)
+                .sort((a, b) => b.amount - a.amount)
+                .slice(0, 8)
+              const topCats = [...categoryTotals].slice(0, 6)
+              const budgetCats = categoryTotals.map(([cat, actual]) => {
+                const budget = categoryBudgetValue(catBudgets, cat)
+                const pct = budget > 0 ? Math.min((actual / budget) * 100, 100) : null
+                const status = !budget ? 'none' : actual >= budget ? 'over' : actual / budget >= 0.75 ? 'warn' : 'ok'
+                return { cat, actual, budget, pct, status }
+              })
+              const budgetedCats   = budgetCats.filter(c => c.budget > 0)
+              const unbudgetedCats = budgetCats.filter(c => c.budget === 0)
+              const overBudgetCats = budgetedCats.filter(c => c.status === 'over')
+              const totalBudget    = budgetedCats.reduce((s, c) => s + c.budget, 0)
+              const totalActual    = budgetedCats.reduce((s, c) => s + c.actual, 0)
+              const totalBudgetPct = totalBudget > 0 ? Math.min((totalActual / totalBudget) * 100, 100) : 0
+
+              // last 6 months data for trend
+              const last6 = Array.from({ length: 6 }, (_, i) => {
+                const d = new Date()
+                d.setMonth(d.getMonth() - (5 - i))
+                const key = getMonthKey(d)
+                const data = monthWithRecurring(key, store, recurring)
+                const inc = data.entries.filter(e => e.type === 'income').reduce((s, e) => s + Number(e.amount), 0)
+                const exp = data.entries.filter(e => e.type === 'expense').reduce((s, e) => s + Number(e.amount), 0)
+                return { key, label: MONTH_SHORT[d.getMonth()], inc, exp, bal: inc - exp }
+              })
+              const max6 = Math.max(1, ...last6.map(m => Math.max(m.inc, m.exp)))
+
+              const statusColor = { over: '#dc2626', warn: '#d97706', ok: '#16a34a', none: '#cbd5e1' }
+              const statusLabel = { over: 'Überzogen', warn: 'Achtung', ok: 'OK', none: '—' }
+
+              return (
+                <div>
+                  {/* ── Header ── */}
+                  <div className={styles.reportHeader}>
+                    <div>
+                      <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Bericht</h2>
+                      <p>{formatMonthLabel(month)}</p>
+                    </div>
+                    <div style={{ display: 'flex', gap: 8 }}>
+                      <button className={styles.printBtn} type="button" onClick={() => window.print()}>🖨 Drucken</button>
+                    </div>
+                  </div>
+
+                  {/* ── Report Tabs ── */}
+                  <div className={styles.reportTabBar}>
+                    {[['monat','📅 Monat'],['jahr','📊 Jahr'],['top','🏆 Top-Ausgaben'],['budget','🎯 Budget']].map(([id, label]) => (
+                      <button key={id} type="button"
+                        className={reportTab === id ? styles.reportTabActive : styles.reportTabBtn}
+                        onClick={() => setReportTab(id)}>
+                        {label}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* ══ TAB: MONAT ══ */}
+                  {reportTab === 'monat' && (
+                    <div>
+                      {/* KPI Cards */}
+                      <div className={styles.berichtKPIGrid}>
+                        {[
+                          { label: 'Einkommen', value: formatMoney(summary.income),   color: '#16a34a', sub: `${incomeTotals.length} Quellen` },
+                          { label: 'Ausgaben',  value: formatMoney(summary.expenses),  color: '#f97316', sub: `${categoryTotals.length} Kategorien` },
+                          { label: 'Saldo',     value: formatMoney(summary.balance),   color: summary.balance >= 0 ? '#16a34a' : '#dc2626', sub: summary.balance >= 0 ? 'Positiv' : 'Negativ' },
+                          { label: 'Sparquote', value: summary.income ? `${sparquote(summary.income, summary.expenses)} %` : '—', color: '#0ea5e9', sub: 'des Einkommens' },
+                        ].map(k => (
+                          <div key={k.label} className={styles.berichtKPICard} style={{ borderTop: `3px solid ${k.color}` }}>
+                            <span className={styles.berichtKPILabel}>{k.label}</span>
+                            <strong className={styles.berichtKPIValue} style={{ color: k.color }}>{k.value}</strong>
+                            <small className={styles.berichtKPISub}>{k.sub}</small>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Einnahmen */}
+                      {incomeTotals.length > 0 && (
+                        <div className={styles.reportSection}>
+                          <p className={styles.reportSectionTitle}>Einnahmen</p>
+                          {incomeTotals.map(([cat, total]) => {
+                            const pct = summary.income > 0 ? (total / summary.income) * 100 : 0
+                            return (
+                              <div key={cat} className={styles.berichtRow}>
+                                <span className={styles.berichtRowLabel}>{cat}</span>
+                                <div className={styles.berichtBarTrack}><div className={styles.berichtBarIncome} style={{ width: `${Math.max(pct,2)}%` }} /></div>
+                                <span className={styles.berichtRowAmt}><strong className={styles.moneyPositive}>{formatMoney(total)}</strong><small>{pct.toFixed(0)} %</small></span>
+                              </div>
+                            )
+                          })}
+                          <div className={styles.reportTotalRow} style={{ marginTop: 8 }}><span>Gesamt Einnahmen</span><strong className={styles.moneyPositive}>{formatMoney(summary.income)}</strong></div>
+                        </div>
+                      )}
+
+                      {/* Ausgaben nach Kategorie */}
+                      {categoryTotals.length > 0 && (
+                        <div className={styles.reportSection}>
+                          <p className={styles.reportSectionTitle}>Ausgaben nach Kategorie</p>
+                          {categoryTotals.map(([cat, total]) => {
+                            const budget = categoryBudgetValue(catBudgets, cat)
+                            const pct = budget > 0 ? Math.min((total / budget) * 100, 100) : 0
+                            const col = trafficColor(total, budget)
+                            return (
+                              <div key={cat} className={styles.berichtRow}>
+                                <span className={styles.berichtRowLabel}>{cat}</span>
+                                <div className={styles.berichtBarTrack}>
+                                  <div className={styles.berichtBarExpense} style={{ width: `${budget > 0 ? Math.max(pct,2) : 0}%`, background: col || '#f97316' }} />
+                                </div>
+                                <span className={styles.berichtRowAmt}>
+                                  <strong>{formatMoney(total)}</strong>
+                                  <small>{budget ? `${pct.toFixed(0)} %` : '—'}</small>
+                                </span>
+                                <span style={{ width: 8, height: 8, borderRadius: '50%', background: col || '#e2e8f0', flexShrink: 0 }} />
+                              </div>
+                            )
+                          })}
+                          <div className={styles.reportTotalRow} style={{ marginTop: 8 }}><span>Gesamt Ausgaben</span><strong className={styles.moneyNegative}>{formatMoney(summary.expenses)}</strong></div>
+                        </div>
+                      )}
+
+                      {/* Fixkosten */}
+                      {fixEntries.length > 0 && (
+                        <div className={styles.reportSection}>
+                          <p className={styles.reportSectionTitle}>Fixkosten diesen Monat ({fixEntries.length})</p>
+                          <div className={styles.berichtEntryTable}>
+                            {fixEntries.map(e => (
+                              <div key={e.id} className={styles.berichtEntryRow}>
+                                <span className={styles.berichtEntryDate}>—</span>
+                                <span className={styles.berichtEntryTitle}>{e.title}</span>
+                                <span className={styles.berichtEntryCat}>{e.category}</span>
+                                <strong className={styles.moneyNegative}>− {formatMoney(e.amount)}</strong>
+                              </div>
+                            ))}
+                          </div>
+                          <div className={styles.reportTotalRow} style={{ marginTop: 8 }}><span>Fixkosten gesamt</span><strong className={styles.moneyNegative}>{formatMoney(fixEntries.reduce((s,e) => s + e.amount, 0))}</strong></div>
+                        </div>
+                      )}
+
+                      {/* Alle Einträge */}
+                      {manualEntries.length > 0 && (
+                        <div className={styles.reportSection}>
+                          <p className={styles.reportSectionTitle}>Manuelle Einträge ({manualEntries.length})</p>
+                          <div className={styles.berichtEntryTable}>
+                            {[...manualEntries].sort((a,b) => (b.date||'').localeCompare(a.date||'')).map(e => (
+                              <div key={e.id} className={styles.berichtEntryRow}>
+                                <span className={styles.berichtEntryDate}>{new Date(e.date).toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'})}</span>
+                                <span className={styles.berichtEntryTitle}>{e.title}</span>
+                                <span className={styles.berichtEntryCat}>{e.category || '—'}</span>
+                                <strong className={e.type === 'income' ? styles.moneyPositive : styles.moneyNegative}>
+                                  {e.type === 'income' ? '+' : '−'} {formatMoney(e.amount)}
+                                </strong>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {(incomeTotals.length > 0 || categoryTotals.length > 0) && (
+                        <div className={styles.reportSaldoRow} style={{ border: `1px solid ${summary.balance >= 0 ? '#16a34a' : '#dc2626'}`, background: summary.balance >= 0 ? 'rgba(22,163,74,.05)' : 'rgba(220,38,38,.05)' }}>
+                          <span>Monats-Saldo</span>
+                          <strong className={summary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(summary.balance)}</strong>
+                        </div>
+                      )}
+                      {!incomeTotals.length && !categoryTotals.length && <p className={styles.emptyAnalytics}>Noch keine Einträge für {formatMonthLabel(month)}.</p>}
+                    </div>
+                  )}
+
+                  {/* ══ TAB: JAHR ══ */}
+                  {reportTab === 'jahr' && (
+                    <div>
+                      {/* 6-Monats-Mini-Chart */}
+                      <div className={styles.reportSection}>
+                        <p className={styles.reportSectionTitle}>Letzte 6 Monate</p>
+                        <div className={styles.berichtMiniChart}>
+                          {last6.map(m => (
+                            <div key={m.key} className={styles.berichtMiniCol} onClick={() => { setMonth(m.key); setView('monat') }} title={`${m.label}: ${formatMoney(m.inc)} / ${formatMoney(m.exp)}`}>
+                              <div className={styles.berichtMiniBars}>
+                                <div style={{ height: `${Math.max((m.inc / max6) * 100, m.inc ? 3 : 0)}%`, background: '#16a34a', borderRadius: '3px 3px 0 0' }} />
+                                <div style={{ height: `${Math.max((m.exp / max6) * 100, m.exp ? 3 : 0)}%`, background: '#f97316', borderRadius: '3px 3px 0 0' }} />
+                              </div>
+                              <span className={styles.berichtMiniLabel}>{m.label}</span>
+                              <span className={styles.berichtMiniSaldo} style={{ color: m.bal >= 0 ? '#16a34a' : '#dc2626' }}>{m.bal >= 0 ? '+' : ''}{Math.round(m.bal / 1000 * 10) / 10}k</span>
+                            </div>
+                          ))}
+                        </div>
+                        <div style={{ display: 'flex', gap: 14, marginTop: 6 }}>
+                          <span className={styles.annualLegend}><span style={{ background: '#16a34a' }} />Einkommen</span>
+                          <span className={styles.annualLegend}><span style={{ background: '#f97316' }} />Ausgaben</span>
+                        </div>
+                      </div>
+
+                      {/* Jahres-Tabelle */}
+                      <div className={styles.reportSection}>
+                        <div className={styles.reportHeader} style={{ marginBottom: 12 }}>
+                          <p className={styles.reportSectionTitle} style={{ margin: 0 }}>Jahresübersicht {year}</p>
+                          <div style={{ display: 'flex', gap: 4 }}>
+                            <button className={styles.monthNavBtn} onClick={() => setYear(y => y - 1)}>‹</button>
+                            <span className={styles.monthDisplay}>{year}</span>
+                            <button className={styles.monthNavBtn} onClick={() => setYear(y => y + 1)}>›</button>
+                          </div>
+                        </div>
+                        <div className={styles.budgetPanel} style={{ padding: 0, overflowX: 'auto' }}>
+                          <table className={styles.annualTable}>
+                            <thead><tr><th>Monat</th><th>Einkommen</th><th>Ausgaben</th><th>Saldo</th><th>Sparquote</th></tr></thead>
+                            <tbody>
+                              {annualData.map(m => (
+                                <tr key={m.key} onClick={() => goToMonth(m.key)} style={{ cursor: 'pointer' }} className={m.key === month ? styles.annualRowActive : !m.hasData ? styles.annualRowEmpty : ''}>
+                                  <td>{MONTH_LONG[m.i]}</td>
+                                  <td className={styles.moneyPositive}>{m.hasData ? formatMoney(m.income) : '—'}</td>
+                                  <td>{m.hasData ? formatMoney(m.expenses) : '—'}</td>
+                                  <td className={m.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{m.hasData ? formatMoney(m.balance) : '—'}</td>
+                                  <td>{m.hasData && m.income ? `${sparquote(m.income, m.expenses)} %` : '—'}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                            {annualSummary && (
+                              <tfoot>
+                                <tr>
+                                  <td>Jahresgesamt</td>
+                                  <td className={styles.moneyPositive}>{formatMoney(annualSummary.ti)}</td>
+                                  <td>{formatMoney(annualSummary.te)}</td>
+                                  <td className={annualSummary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(annualSummary.balance)}</td>
+                                  <td>{sparquote(annualSummary.ti, annualSummary.te)} %</td>
+                                </tr>
+                                <tr className={styles.annualRowAvg}>
+                                  <td>Ø pro Monat</td>
+                                  <td className={styles.moneyPositive}>{formatMoney(annualSummary.avgI)}</td>
+                                  <td>{formatMoney(annualSummary.avgE)}</td>
+                                  <td className={annualSummary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(annualSummary.balance / annualSummary.count)}</td>
+                                  <td>—</td>
+                                </tr>
+                              </tfoot>
+                            )}
+                          </table>
+                        </div>
+                        {annualSummary && (() => {
+                          const best = [...annualData].filter(m => m.hasData).sort((a,b) => b.balance - a.balance)[0]
+                          const worst = [...annualData].filter(m => m.hasData).sort((a,b) => a.balance - b.balance)[0]
+                          return (
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginTop: 12 }}>
+                              {best && <div className={styles.berichtHighlight} style={{ borderColor: '#16a34a', background: 'rgba(22,163,74,.04)' }}>
+                                <small>🏆 Bester Monat</small>
+                                <strong>{MONTH_LONG[best.i]}</strong>
+                                <span className={styles.moneyPositive}>{formatMoney(best.balance)}</span>
+                              </div>}
+                              {worst && worst !== best && <div className={styles.berichtHighlight} style={{ borderColor: '#dc2626', background: 'rgba(220,38,38,.04)' }}>
+                                <small>⚠ Schlechtester Monat</small>
+                                <strong>{MONTH_LONG[worst.i]}</strong>
+                                <span className={styles.moneyNegative}>{formatMoney(worst.balance)}</span>
+                              </div>}
+                            </div>
+                          )
+                        })()}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* ══ TAB: TOP-AUSGABEN ══ */}
+                  {reportTab === 'top' && (
+                    <div>
+                      {/* Größte Einzelposten */}
+                      <div className={styles.reportSection}>
+                        <p className={styles.reportSectionTitle}>Größte Einzelausgaben ({formatMonthLabel(month)})</p>
+                        {topExpenses.length > 0 ? (
+                          <div className={styles.berichtEntryTable}>
+                            {topExpenses.map((e, idx) => (
+                              <div key={e.id} className={styles.berichtTopRow}>
+                                <span className={styles.berichtTopRank}>#{idx+1}</span>
+                                <span className={styles.berichtEntryDate}>{new Date(e.date).toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'})}</span>
+                                <span className={styles.berichtEntryTitle}>{e.title}</span>
+                                <span className={styles.berichtEntryCat}>{e.category || '—'}</span>
+                                <div className={styles.berichtBarTrack} style={{ maxWidth: 80 }}>
+                                  <div className={styles.berichtBarExpense} style={{ width: `${topExpenses[0]?.amount ? (e.amount / topExpenses[0].amount) * 100 : 0}%`, background: idx === 0 ? '#dc2626' : '#f97316' }} />
+                                </div>
+                                <strong className={styles.moneyNegative}>− {formatMoney(e.amount)}</strong>
+                              </div>
+                            ))}
+                          </div>
+                        ) : <p className={styles.emptyAnalytics}>Noch keine Ausgaben eingetragen.</p>}
+                      </div>
+
+                      {/* Top Kategorien */}
+                      <div className={styles.reportSection}>
+                        <p className={styles.reportSectionTitle}>Top Ausgabe-Kategorien</p>
+                        {topCats.length > 0 ? topCats.map(([cat, total], idx) => {
+                          const pct = categoryTotals[0]?.[1] > 0 ? (total / categoryTotals[0][1]) * 100 : 0
+                          const entryCount = monthData.entries.filter(e => e.type === 'expense' && e.category === cat).length
+                          return (
+                            <div key={cat} className={styles.berichtRow}>
+                              <span className={styles.berichtRowLabel} style={{ fontWeight: idx === 0 ? 900 : 700 }}>
+                                {idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : `  ${idx+1}.`} {cat}
+                              </span>
+                              <div className={styles.berichtBarTrack}><div className={styles.berichtBarExpense} style={{ width: `${Math.max(pct,2)}%` }} /></div>
+                              <span className={styles.berichtRowAmt}>
+                                <strong>{formatMoney(total)}</strong>
+                                <small>{entryCount} Eintr.</small>
+                              </span>
+                            </div>
+                          )
+                        }) : <p className={styles.emptyAnalytics}>Keine Ausgaben.</p>}
+                      </div>
+
+                      {/* Statistiken */}
+                      {monthData.entries.filter(e => e.type === 'expense').length > 0 && (
+                        <div className={styles.reportSection}>
+                          <p className={styles.reportSectionTitle}>Statistiken</p>
+                          <div className={styles.berichtStatGrid}>
+                            {(() => {
+                              const expEntries = monthData.entries.filter(e => e.type === 'expense')
+                              const avgExp = expEntries.length > 0 ? summary.expenses / expEntries.length : 0
+                              const maxCat = categoryTotals[0]
+                              const fixTotal = fixEntries.reduce((s,e) => s + e.amount, 0)
+                              const fixPct = summary.expenses > 0 ? (fixTotal / summary.expenses) * 100 : 0
+                              return [
+                                { label: 'Ø pro Ausgabe', value: formatMoney(avgExp) },
+                                { label: 'Anzahl Ausgaben', value: expEntries.length },
+                                { label: 'Größte Kategorie', value: maxCat ? maxCat[0] : '—' },
+                                { label: 'Fixkosten-Anteil', value: fixPct > 0 ? `${fixPct.toFixed(0)} %` : '—' },
+                              ].map(s => (
+                                <div key={s.label} className={styles.berichtStatCard}>
+                                  <span>{s.label}</span>
+                                  <strong>{s.value}</strong>
+                                </div>
+                              ))
+                            })()}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* ══ TAB: BUDGET ══ */}
+                  {reportTab === 'budget' && (
+                    <div>
+                      {/* Gesamtübersicht */}
+                      {totalBudget > 0 && (
+                        <div className={styles.reportSection}>
+                          <p className={styles.reportSectionTitle}>Budget-Gesamtstatus</p>
+                          <div className={styles.berichtBudgetOverview}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
+                              <span style={{ fontSize: 13, fontWeight: 700 }}>Gesamtbudget</span>
+                              <span style={{ fontSize: 13 }}><strong style={{ color: totalActual > totalBudget ? '#dc2626' : '#0d1b2a' }}>{formatMoney(totalActual)}</strong> / {formatMoney(totalBudget)}</span>
+                            </div>
+                            <div className={styles.budgetBar} style={{ height: 10, borderRadius: 6 }}>
+                              <div className={totalActual >= totalBudget ? styles.budgetBarOver : styles.budgetBarGood} style={{ width: `${totalBudgetPct}%`, borderRadius: 6 }} />
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 6 }}>
+                              <span style={{ fontSize: 11, color: '#94a3b8' }}>{totalBudgetPct.toFixed(0)} % verbraucht</span>
+                              <span style={{ fontSize: 11, color: totalActual > totalBudget ? '#dc2626' : '#16a34a' }}>
+                                {totalActual > totalBudget ? `${formatMoney(totalActual - totalBudget)} überzogen` : `${formatMoney(totalBudget - totalActual)} übrig`}
+                              </span>
+                            </div>
+                          </div>
+                          {overBudgetCats.length > 0 && (
+                            <div className={styles.catErrorBanner} style={{ marginTop: 10 }}>
+                              <span>⚠ {overBudgetCats.length} Kategorie{overBudgetCats.length > 1 ? 'n' : ''} überzogen: {overBudgetCats.map(c => c.cat).join(', ')}</span>
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Per-Kategorie */}
+                      <div className={styles.reportSection}>
+                        <p className={styles.reportSectionTitle}>Kategorien mit Budget ({budgetedCats.length})</p>
+                        {budgetedCats.length > 0 ? budgetedCats.sort((a,b) => (b.pct||0) - (a.pct||0)).map(({ cat, actual, budget, pct, status }) => (
+                          <div key={cat} className={styles.berichtBudgetRow}>
+                            <span className={styles.berichtRowLabel}>{cat}</span>
+                            <div style={{ flex: 1, minWidth: 0 }}>
+                              <div className={styles.berichtBarTrack} style={{ marginBottom: 2 }}>
+                                <div style={{ height: '100%', width: `${pct||0}%`, background: statusColor[status], borderRadius: 4, transition: 'width .4s' }} />
+                              </div>
+                              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <small style={{ color: '#94a3b8', fontSize: 11 }}>{formatMoney(actual)} / {formatMoney(budget)}</small>
+                                <small style={{ color: '#94a3b8', fontSize: 11 }}>{pct?.toFixed(0)} %</small>
+                              </div>
+                            </div>
+                            <span className={styles.berichtStatusBadge} style={{ background: `${statusColor[status]}18`, color: statusColor[status] }}>{statusLabel[status]}</span>
+                          </div>
+                        )) : <p className={styles.emptyAnalytics}>Noch kein Budget gespeichert.</p>}
+                      </div>
+
+                      {unbudgetedCats.length > 0 && (
+                        <div className={styles.reportSection}>
+                          <p className={styles.reportSectionTitle}>Ohne Budget ({unbudgetedCats.length})</p>
+                          <div className={styles.reportGrid}>
+                            {unbudgetedCats.map(({ cat, actual }) => (
+                              <div key={cat} className={styles.reportCard}>
+                                <span>{cat}</span>
+                                <strong>{formatMoney(actual)}</strong>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {categoryTotals.length === 0 && <p className={styles.emptyAnalytics}>Keine Ausgaben für {formatMonthLabel(month)}.</p>}
+                    </div>
+                  )}
+                </div>
+              )
+            })()}
 
           </div>
         </div>
