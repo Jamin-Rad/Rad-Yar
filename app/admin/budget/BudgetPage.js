@@ -1676,7 +1676,7 @@ ${manualEntries.length ? `
               {/* Header */}
               <div className={styles.popupHeader} style={{ borderBottom: `2px solid ${popupAccent}` }}>
                 <div>
-                  <p style={{ fontSize: 11, fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '.06em', margin: '0 0 2px' }}>
+                  <p className={styles.popupMonthLabel}>
                     {formatMonthLabel(month)}
                   </p>
                   <h3 className={styles.popupTitle} style={{ color: popupAccent }}>
@@ -1728,7 +1728,7 @@ ${manualEntries.length ? `
               {/* Header */}
               <div className={styles.popupHeader} style={{ borderBottom: `2px solid ${catDetail.type === 'income' ? '#16a34a' : '#f97316'}` }}>
                 <div>
-                  <p style={{ fontSize: 11, fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '.06em', margin: '0 0 2px' }}>
+                  <p className={styles.popupMonthLabel}>
                     {formatMonthLabel(month)}
                   </p>
                   <h3 className={styles.popupTitle} style={{ color: catDetail.type === 'income' ? '#16a34a' : '#f97316' }}>

@@ -2077,7 +2077,7 @@
 }
 
 .popupPanel {
-  background: #fff;
+  background: var(--bg-card, #fff);
   border-radius: 18px;
   width: 100%;
   max-width: 560px;
@@ -2105,13 +2105,22 @@
   line-height: 1.1;
 }
 
+.popupMonthLabel {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--text-muted, #94a3b8);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin: 0 0 2px;
+}
+
 .popupClose {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 1px solid #e2e8f0;
-  background: #f8fafc;
-  color: #64748b;
+  border: 1px solid var(--border, #e2e8f0);
+  background: var(--bg-soft, #f8fafc);
+  color: var(--text-muted, #64748b);
   font-size: 19px;
   line-height: 1;
   cursor: pointer;
@@ -2286,8 +2295,9 @@
 
 .entryTypeSwitch {
   border-radius: 999px;
-  background: #eef2f7;
+  background: var(--bg-soft, #eef2f7);
   padding: 5px;
+  border: 1px solid var(--border, transparent);
 }
 
 .entryTypeSwitch button {
@@ -2300,9 +2310,9 @@
   grid-template-columns: minmax(0, 1.3fr) minmax(145px, .7fr);
   gap: 12px;
   padding: 14px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border, #e2e8f0);
   border-radius: 16px;
-  background: linear-gradient(180deg, #fff, #f8fafc);
+  background: var(--bg-soft, #f8fafc);
 }
 
 .entryAmountField,
@@ -2315,7 +2325,7 @@
 .entryAmountField span,
 .entryDateField span,
 .entryFormLabelRow span {
-  color: #64748b;
+  color: var(--text-muted, #64748b);
   font-size: 11px;
   font-weight: 900;
   letter-spacing: .06em;
@@ -2328,9 +2338,9 @@
   align-items: center;
   gap: 8px;
   padding: 0 12px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border, #e2e8f0);
   border-radius: 12px;
-  background: #fff;
+  background: var(--bg-card, #fff);
 }
 
 .entryAmountInputWrap:focus-within {
@@ -2346,10 +2356,12 @@
   font-weight: 800;
   line-height: 1.25;
   font-variant-numeric: tabular-nums;
+  background: transparent;
+  color: var(--text-strong, #0d1b2a);
 }
 
 .entryAmountInputWrap em {
-  color: #94a3b8;
+  color: var(--text-muted, #94a3b8);
   font-style: normal;
   font-size: 18px;
   font-weight: 900;
@@ -2359,6 +2371,9 @@
   min-height: 48px;
   border-radius: 12px;
   font-weight: 800;
+  background: var(--bg-card, #fff);
+  color: var(--text-strong, #0d1b2a);
+  border-color: var(--border, #e2e8f0);
 }
 
 .entryCategoryBlock {
@@ -2374,7 +2389,7 @@
 }
 
 .entryFormLabelRow small {
-  color: #94a3b8;
+  color: var(--text-muted, #94a3b8);
   font-size: 11px;
   font-weight: 800;
 }
@@ -2630,9 +2645,8 @@
   justify-content: space-between;
   gap: 14px;
   padding: 12px 20px 16px;
-  border-top: 1px solid #e2e8f0;
-  background: rgba(255,255,255,.96);
-  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border, #e2e8f0);
+  background: var(--bg-card, #fff);
 }
 
 .entrySubmitBar div {
@@ -2643,7 +2657,7 @@
 
 .entrySubmitBar span {
   overflow: hidden;
-  color: #94a3b8;
+  color: var(--text-muted, #94a3b8);
   font-size: 11px;
   font-weight: 800;
   text-overflow: ellipsis;
@@ -2651,7 +2665,7 @@
 }
 
 .entrySubmitBar strong {
-  color: #0d1b2a;
+  color: var(--text-strong, #0d1b2a);
   font-size: 18px;
   line-height: 1.1;
 }
