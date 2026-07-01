@@ -2624,13 +2624,11 @@
 }
 
 .entrySubmitBar {
-  position: sticky;
-  bottom: 0;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-  margin: 0 -20px;
   padding: 12px 20px 16px;
   border-top: 1px solid #e2e8f0;
   background: rgba(255,255,255,.96);

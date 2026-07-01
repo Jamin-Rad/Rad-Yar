@@ -284,9 +284,9 @@ function CategoryPicker({ categories, type, selectedItems, onToggleItem, expande
 }
 
 // ── Entry form (shared between popup and elsewhere) ────────────────────────────
-function EntryForm({ categories, type, onTypeChange, selectedItems, onToggleItem, expandedCats, onToggleExpand, entryAmount, onAmountChange, entryDate, onDateChange, onSubmit, entryTitle, entryCatNames }) {
+function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onToggleItem, expandedCats, onToggleExpand, entryAmount, onAmountChange, entryDate, onDateChange, onSubmit, entryTitle, entryCatNames }) {
   return (
-    <form className={`${styles.budgetForm} ${styles.financeEntryForm}`} onSubmit={onSubmit}>
+    <form id={formId} className={`${styles.budgetForm} ${styles.financeEntryForm}`} onSubmit={onSubmit}>
       {/* Type */}
       <div className={`${styles.segmentedControl} ${styles.entryTypeSwitch}`}>
         <button type="button" className={type === 'income' ? styles.segmentActive : ''} onClick={() => onTypeChange('income')}>Einkommen</button>
@@ -326,16 +326,6 @@ function EntryForm({ categories, type, onTypeChange, selectedItems, onToggleItem
           </div>
         </div>
       )}
-
-      <div className={styles.entrySubmitBar}>
-        <div>
-          <span>{entryTitle || 'Noch keine Kategorie'}</span>
-          <strong>{entryAmount ? `${entryAmount.replace('.', ',')} €` : '0,00 €'}</strong>
-        </div>
-        <button className={styles.primaryBudgetBtn} type="submit" disabled={!entryTitle || !entryAmount}>
-          Speichern
-        </button>
-      </div>
     </form>
   )
 }
@@ -1072,6 +1062,7 @@ export default function BudgetPage() {
               {/* Body */}
               <div className={styles.popupBody}>
                 <EntryForm
+                  formId="budget-entry-form"
                   categories={categories}
                   type={entryType}
                   onTypeChange={handleTypeChange}
@@ -1087,6 +1078,17 @@ export default function BudgetPage() {
                   entryTitle={entryTitle}
                   entryCatNames={entryCatNames}
                 />
+              </div>
+
+              {/* Submit bar – outside popupBody so it never covers scrollable content */}
+              <div className={styles.entrySubmitBar}>
+                <div>
+                  <span>{entryTitle || 'Noch keine Kategorie'}</span>
+                  <strong>{entryAmount ? `${entryAmount.replace('.', ',')} €` : '0,00 €'}</strong>
+                </div>
+                <button form="budget-entry-form" className={styles.primaryBudgetBtn} type="submit" disabled={!entryTitle || !entryAmount}>
+                  Speichern
+                </button>
               </div>
             </div>
           </div>
