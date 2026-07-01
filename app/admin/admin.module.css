@@ -432,8 +432,10 @@
 .budgetMetric strong {
   overflow-wrap: anywhere;
   color: #0d1b2a;
-  font-size: 23px;
+  font-size: 19px;
+  font-weight: 800;
   line-height: 1.15;
+  font-variant-numeric: tabular-nums;
 }
 
 .budgetGrid {
@@ -905,8 +907,8 @@
 
 .financeMetric {
   display: grid;
-  gap: 8px;
-  padding: 18px 20px 16px;
+  gap: 7px;
+  padding: 15px 17px 14px;
   border: 1px solid #e2e8f0;
   border-radius: 16px;
   background: #fff;
@@ -922,10 +924,11 @@
 }
 
 .financeMetric strong {
-  font-size: 26px;
-  font-weight: 900;
+  font-size: 20px;
+  font-weight: 800;
   color: #0d1b2a;
-  line-height: 1;
+  line-height: 1.12;
+  font-variant-numeric: tabular-nums;
 }
 
 /* ── SECTION CARDS (Monatsübersicht) ─────────── */
@@ -1268,11 +1271,12 @@
 }
 
 .categoryAmount {
-  font-size: 13px;
-  font-weight: 800;
+  font-size: 12px;
+  font-weight: 750;
   color: #0d1b2a;
   text-align: right;
   white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 
 /* Bericht tab */
@@ -2587,8 +2591,10 @@
 
 .entrySubmitBar strong {
   color: #0d1b2a;
-  font-size: 18px;
+  font-size: 15px;
+  font-weight: 800;
   line-height: 1.1;
+  font-variant-numeric: tabular-nums;
 }
 
 .entrySubmitBar .primaryBudgetBtn {
@@ -2783,7 +2789,7 @@
   display: grid;
   gap: 4px;
   min-width: 150px;
-  padding: 10px 14px;
+  padding: 9px 12px;
   border-radius: 14px;
   background: #f8fafc;
   border: 1px solid #e2e8f0;
@@ -2799,8 +2805,9 @@
 
 .fixedTotalPill strong {
   color: #0d1b2a;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 800;
+  font-variant-numeric: tabular-nums;
 }
 
 .fixedCardGrid {
@@ -2836,8 +2843,9 @@
 }
 
 .fixedCardHead span {
-  font-size: 18px;
-  font-weight: 900;
+  font-size: 15px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
 }
 
 .fixedMetaRow {
