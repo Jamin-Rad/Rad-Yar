@@ -2660,6 +2660,32 @@
   min-width: 132px;
 }
 
+/* ── CATEGORY ERROR BANNER ───────────────────── */
+.catErrorBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 16px;
+  margin-bottom: 14px;
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  border-radius: 10px;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 600;
+}
+.catErrorBanner button {
+  background: none;
+  border: none;
+  color: #dc2626;
+  font-size: 17px;
+  cursor: pointer;
+  line-height: 1;
+  flex-shrink: 0;
+  padding: 0 2px;
+}
+
 /* ── CLICKABLE ROWS ──────────────────────────── */
 .clickableRow {
   cursor: pointer;

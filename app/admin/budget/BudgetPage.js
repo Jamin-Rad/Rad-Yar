@@ -359,6 +359,8 @@ export default function BudgetPage() {
   const [expandedSubtitles, setExpandedSubtitles] = useState(new Set())
   const [editingEntry, setEditingEntry]           = useState(null) // { id, amount }
 
+  const [catError, setCatError] = useState('')
+
   // Fixkosten new entry form
   const [planAmount, setPlanAmount] = useState('')
   const [planSelectedItems, setPlanSelectedItems] = useState([])
@@ -582,21 +584,54 @@ export default function BudgetPage() {
   function updateMonth(updater) { setStore(prev => { const cur = prev[month] || emptyMonth(); return { ...prev, [month]: updater(cur) } }) }
   function saveCatBudget(cat, value) { setCatBudgets(prev => ({ ...prev, [cat]: Number(value) || 0 })) }
 
+  function allEntries() {
+    return Object.values(store).flatMap(m => m.entries || [])
+  }
+  function catHasEntries(catName) {
+    return allEntries().some(e => e.category === catName || e.title === catName) ||
+      recurring.some(r => r.category === catName || r.title === catName)
+  }
+  function subHasEntries(catName, subName) {
+    return allEntries().some(e => e.category === catName && e.title === subName) ||
+      recurring.some(r => r.category === catName && r.title === subName)
+  }
+
   function addCategory(e) {
     e.preventDefault()
     const name = newCatName.trim()
     if (!name || categories.some(c => c.name === name)) return
     setCategories(prev => [...prev, buildCat(name, [], newCatType)])
     setNewCatName('')
+    setCatError('')
   }
-  function removeCategory(id) { if (!window.confirm('Kategorie löschen?')) return; setCategories(prev => prev.filter(c => c.id !== id)) }
+  function removeCategory(id) {
+    const cat = categories.find(c => c.id === id)
+    if (!cat) return
+    if (catHasEntries(cat.name)) {
+      setCatError(`„${cat.name}" hat noch Einträge. Bitte erst alle Einträge dieser Kategorie löschen.`)
+      return
+    }
+    setCatError('')
+    setCategories(prev => prev.filter(c => c.id !== id))
+  }
   function addSubCategory(catId) {
     const name = (newSubInputs[catId] || '').trim()
     if (!name) return
     setCategories(prev => prev.map(c => c.id === catId ? { ...c, subs: [...c.subs, { id: makeId(), name }] } : c))
     setNewSubInputs(p => ({ ...p, [catId]: '' }))
+    setCatError('')
   }
-  function removeSubCategory(catId, subId) { setCategories(prev => prev.map(c => c.id === catId ? { ...c, subs: c.subs.filter(s => s.id !== subId) } : c)) }
+  function removeSubCategory(catId, subId) {
+    const cat = categories.find(c => c.id === catId)
+    const sub = cat?.subs.find(s => s.id === subId)
+    if (!cat || !sub) return
+    if (subHasEntries(cat.name, sub.name)) {
+      setCatError(`„${sub.name}" (${cat.name}) hat noch Einträge. Bitte erst alle Einträge dieser Unterkategorie löschen.`)
+      return
+    }
+    setCatError('')
+    setCategories(prev => prev.map(c => c.id === catId ? { ...c, subs: c.subs.filter(s => s.id !== subId) } : c))
+  }
 
   function initialExpandedForType(type) {
     if (type === 'income') {
@@ -937,6 +972,12 @@ export default function BudgetPage() {
             {/* ── KATEGORIEN ── */}
             {view === 'einstellung' && subView === 'kategorien' && (
               <div>
+                {catError && (
+                  <div className={styles.catErrorBanner}>
+                    <span>⚠ {catError}</span>
+                    <button type="button" onClick={() => setCatError('')}>×</button>
+                  </div>
+                )}
                 <div className={styles.categoryTileGrid}>
                   {categories.map(cat => {
                     const color    = getCatColor(cat.name)
