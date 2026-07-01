@@ -757,8 +757,8 @@ export const CURRICULUM = [
         title: { de: '5. Pankreas', en: '5. Pancreas', fa: '۵. پانکراس' },
         icon: '🟡',
         themen: [
-          { id: 'akute-pankreatitis', title: { de: 'Akute Pankreatitis', en: 'Acute Pancreatitis', fa: 'پانکراتیت حاد' }, tags: ['CT'], diff: 2 },
-          { id: 'chronische-pankreatitis', title: { de: 'Chronische Pankreatitis', en: 'Chronic Pancreatitis', fa: 'پانکراتیت مزمن' }, tags: ['CT','MRT'], diff: 2 },
+          { id: 'akute-pankreatitis', title: { de: 'Akute Pankreatitis', en: 'Acute Pancreatitis', fa: 'پانکراتیت حاد' }, tags: ['CT'], diff: 2, link: '/abdomen/pankreas/pankreatitis', mcqLink: '/ueben/quiz?fach=abdomen&n=10&themen=pankreatitis', flashcardLink: '/flashcards/pankreatitis', ready: true, updatedAt: '2026-07-02' },
+          { id: 'chronische-pankreatitis', title: { de: 'Chronische Pankreatitis', en: 'Chronic Pancreatitis', fa: 'پانکراتیت مزمن' }, tags: ['CT','MRT'], diff: 2, link: '/abdomen/pankreas/pankreatitis', mcqLink: '/ueben/quiz?fach=abdomen&n=10&themen=pankreatitis', flashcardLink: '/flashcards/pankreatitis', ready: true, updatedAt: '2026-07-02' },
           { id: 'pdac', title: { de: 'Duktales Adenokarzinom (PDAC)', en: 'Ductal Adenocarcinoma (PDAC)', fa: 'آدنوکارسینوم داکتال پانکراس (PDAC)' }, tags: ['CT','MRT'], diff: 3 },
           { id: 'pnet', title: { de: 'Neuroendokrine Tumoren (pNET)', en: 'Neuroendocrine Tumours (pNET)', fa: 'تومورهای نورواندوکرین پانکراس (pNET)' }, tags: ['CT','MRT'], diff: 3 },
           { id: 'ipmn', title: { de: 'IPMN', en: 'IPMN', fa: 'IPMN' }, tags: ['MRT','CT'], diff: 2 },

@@ -246,6 +246,224 @@ const DIVERTICULITIS_QUESTIONS = Object.fromEntries(
   ])
 )
 
+const PANCREATITIS_QUESTION_CONTENT = [
+  {
+    id: 'biliary-cause',
+    question: {
+      de: 'Was ist der typische Mechanismus einer biliären akuten Pankreatitis?',
+      en: 'What is the typical mechanism of biliary acute pancreatitis?',
+      fa: 'مکانیسم تیپیک پانکراتیت حاد صفراوی چیست؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Obstruktion der Papilla duodeni major mit Druckanstieg oder Galle-Reflux im Pankreasgang', en: 'Obstruction of the major papilla with ductal pressure rise or bile reflux into the pancreatic duct', fa: 'انسداد پاپیلای اصلی با افزایش فشار مجرا یا رفلاکس صفرا به مجرای پانکراس' } },
+      { id: 'B', text: { de: 'Primäre arterielle Embolie der A. lienalis', en: 'Primary arterial embolism of the splenic artery', fa: 'آمبولی اولیه شریان طحالی' } },
+      { id: 'C', text: { de: 'Isolierte Obstruktion des Ductus cysticus ohne Pankreasgangbeteiligung', en: 'Isolated cystic duct obstruction without pancreatic duct involvement', fa: 'انسداد منفرد مجرای سیستیک بدون درگیری مجرای پانکراس' } },
+      { id: 'D', text: { de: 'Hämatogene Aussaat in das Pankreasparenchym', en: 'Haematogenous seeding of the pancreatic parenchyma', fa: 'انتشار هماتوژن به پارانشیم پانکراس' } },
+    ],
+    correct: 'A',
+    explanation: {
+      de: 'Choledocholithiasis oder Mikrolithiasis kann die Papille verlegen. Druckanstieg oder Reflux begünstigen die vorzeitige Enzymaktivierung.',
+      en: 'Choledocholithiasis or microlithiasis may obstruct the papilla. Increased pressure or reflux promotes premature enzyme activation.',
+      fa: 'سنگ کلدوک یا میکرولیتیازیس می‌تواند پاپیلا را مسدود کند. افزایش فشار یا رفلاکس باعث فعال شدن زودرس آنزیم‌ها می‌شود.',
+    },
+  },
+  {
+    id: 'alcohol',
+    question: {
+      de: 'Welche Aussage zur alkoholtoxischen Pankreatitis ist richtig?',
+      en: 'Which statement about alcohol-related pancreatitis is correct?',
+      fa: 'کدام عبارت درباره پانکراتیت ناشی از الکل درست است؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Ethanol wirkt direkt toxisch auf Azinuszellen und erhöht die Sekretviskosität.', en: 'Ethanol directly injures acinar cells and increases secretion viscosity.', fa: 'اتانول به سلول‌های آسینار آسیب مستقیم می‌زند و ویسکوزیته ترشحات را افزایش می‌دهد.' } },
+      { id: 'B', text: { de: 'Sie entsteht ausschließlich nach ERCP.', en: 'It occurs only after ERCP.', fa: 'فقط پس از ERCP رخ می‌دهد.' } },
+      { id: 'C', text: { de: 'Sie ist immer eine Autoimmunreaktion.', en: 'It is always an autoimmune reaction.', fa: 'همیشه یک واکنش خودایمنی است.' } },
+      { id: 'D', text: { de: 'Protein-Plugs spielen dabei keine Rolle.', en: 'Protein plugs have no role.', fa: 'پلاگ‌های پروتئینی هیچ نقشی ندارند.' } },
+    ],
+    correct: 'A',
+    explanation: {
+      de: 'Alkohol kann Azinuszellen direkt schädigen und zähere Sekrete mit Protein-Plugs fördern.',
+      en: 'Alcohol can directly damage acinar cells and promote viscous secretions with protein plugs.',
+      fa: 'الکل می‌تواند سلول‌های آسینار را مستقیماً آسیب بزند و ترشحات غلیظ با پلاگ پروتئینی ایجاد کند.',
+    },
+  },
+  {
+    id: 'necrosis-timing',
+    question: {
+      de: 'Wann ist der CT-Nachweis einer Pankreasnekrose typischerweise zuverlässig?',
+      en: 'When is CT detection of pancreatic necrosis typically reliable?',
+      fa: 'تشخیص نکروز پانکراس در CT معمولاً چه زمانی قابل اعتماد است؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Sofort in der ersten Stunde', en: 'Immediately in the first hour', fa: 'بلافاصله در ساعت اول' } },
+      { id: 'B', text: { de: 'Nach 48–72 Stunden', en: 'After 48–72 hours', fa: 'پس از ۴۸–۷۲ ساعت' } },
+      { id: 'C', text: { de: 'Erst nach 12 Monaten', en: 'Only after 12 months', fa: 'فقط پس از ۱۲ ماه' } },
+      { id: 'D', text: { de: 'Nur in der Nativ-CT', en: 'Only on non-contrast CT', fa: 'فقط در CT بدون کنتراست' } },
+    ],
+    correct: 'B',
+    explanation: {
+      de: 'Nekrosen können in sehr früher Bildgebung unterschätzt werden. Nach 48–72 Stunden ist fehlendes Enhancement besser beurteilbar.',
+      en: 'Necrosis may be underestimated very early. After 48–72 hours absent enhancement is more reliably assessed.',
+      fa: 'نکروز در تصویربرداری خیلی زود ممکن است کمتر دیده شود. پس از ۴۸–۷۲ ساعت عدم enhancement قابل اعتمادتر است.',
+    },
+  },
+  {
+    id: 'atlanta-morphology',
+    question: {
+      de: 'Welche Bildgebungskonstellation passt zur interstitiell-ödematösen Pankreatitis?',
+      en: 'Which imaging pattern fits interstitial oedematous pancreatitis?',
+      fa: 'کدام الگوی تصویربرداری با پانکراتیت ادماتوی بینابینی سازگار است؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Diffuse Schwellung mit homogener Kontrastmittelaufnahme', en: 'Diffuse swelling with homogeneous enhancement', fa: 'تورم منتشر با enhancement همگن' } },
+      { id: 'B', text: { de: 'Kompletter Enhancement-Ausfall des gesamten Pankreas', en: 'Complete lack of enhancement of the entire pancreas', fa: 'عدم enhancement کامل تمام پانکراس' } },
+      { id: 'C', text: { de: 'Solide hypervaskuläre Raumforderung im Pankreaskopf', en: 'Solid hypervascular mass in the pancreatic head', fa: 'توده جامد هایپرووسکولار در سر پانکراس' } },
+      { id: 'D', text: { de: 'Ausschließlich intraduktale Verkalkungen ohne Ödem', en: 'Only intraductal calcifications without oedema', fa: 'فقط کلسیفیکاسیون داخل مجرا بدون ادم' } },
+    ],
+    correct: 'A',
+    explanation: {
+      de: 'Die ödematöse Form zeigt Schwellung, homogene Anreicherung und peripankreatisches Fett-Stranding, aber keine Nekrose.',
+      en: 'The oedematous form shows swelling, homogeneous enhancement and peripancreatic fat stranding, without necrosis.',
+      fa: 'نوع ادماتوی با تورم، enhancement همگن و stranding چربی اطراف پانکراس دیده می‌شود، بدون نکروز.',
+    },
+  },
+  {
+    id: 'collections',
+    question: {
+      de: 'Welche Zuordnung nach Atlanta ist korrekt?',
+      en: 'Which Atlanta collection assignment is correct?',
+      fa: 'کدام نام‌گذاری تجمعات بر اساس آتلانتا درست است؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Ödematöse Pankreatitis <4 Wochen: APFC ohne Kapsel', en: 'Oedematous pancreatitis <4 weeks: APFC without a capsule', fa: 'پانکراتیت ادماتوی کمتر از ۴ هفته: APFC بدون کپسول' } },
+      { id: 'B', text: { de: 'Nekrotisierende Pankreatitis <4 Wochen: Pseudozyste', en: 'Necrotising pancreatitis <4 weeks: pseudocyst', fa: 'پانکراتیت نکروزان کمتر از ۴ هفته: پسودوسیست' } },
+      { id: 'C', text: { de: 'Ödematöse Pankreatitis >4 Wochen: ANC', en: 'Oedematous pancreatitis >4 weeks: ANC', fa: 'پانکراتیت ادماتوی بیش از ۴ هفته: ANC' } },
+      { id: 'D', text: { de: 'Nekrotisierende Pankreatitis >4 Wochen: APFC', en: 'Necrotising pancreatitis >4 weeks: APFC', fa: 'پانکراتیت نکروزان بیش از ۴ هفته: APFC' } },
+    ],
+    correct: 'A',
+    explanation: {
+      de: 'APFC ist eine frühe, nicht gekapselte Flüssigkeitskollektion bei ödematöser Pankreatitis.',
+      en: 'APFC is an early non-encapsulated fluid collection in oedematous pancreatitis.',
+      fa: 'APFC تجمع مایع زودرس و بدون کپسول در پانکراتیت ادماتوی است.',
+    },
+  },
+  {
+    id: 'walled-off-necrosis',
+    question: {
+      de: 'Was beschreibt Walled-Off Necrosis (WON)?',
+      en: 'What does walled-off necrosis (WON) describe?',
+      fa: 'Walled-off necrosis یا WON چه چیزی را توصیف می‌کند؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Organisierte Kapsel um Nekroseareal nach meist >4 Wochen', en: 'An organised capsule around necrotic material, usually after >4 weeks', fa: 'کپسول سازمان‌یافته اطراف نکروز، معمولاً پس از بیش از ۴ هفته' } },
+      { id: 'B', text: { de: 'Rein flüssige Kapsel ohne nekrotisches Material nach ödematöser Pankreatitis', en: 'A purely fluid capsule without necrotic material after oedematous pancreatitis', fa: 'کپسول کاملاً مایع بدون مواد نکروتیک پس از پانکراتیت ادماتوی' } },
+      { id: 'C', text: { de: 'Normales Pankreas ohne Stranding', en: 'Normal pancreas without stranding', fa: 'پانکراس طبیعی بدون stranding' } },
+      { id: 'D', text: { de: 'Ein isolierter Gallenstein', en: 'An isolated gallstone', fa: 'یک سنگ صفراوی منفرد' } },
+    ],
+    correct: 'A',
+    explanation: {
+      de: 'WON ist die organisierte, abgekapselte Spätform einer nekrotisierenden Pankreatitis.',
+      en: 'WON is the organised encapsulated late form of necrotising pancreatitis.',
+      fa: 'WON شکل دیررس، سازمان‌یافته و کپسول‌دار پانکراتیت نکروزان است.',
+    },
+  },
+  {
+    id: 'ctsi-severe',
+    question: {
+      de: 'Welche CTSI-Konstellation gilt als schwer?',
+      en: 'Which CTSI range is considered severe?',
+      fa: 'کدام محدوده CTSI شدید محسوب می‌شود؟',
+    },
+    options: [
+      { id: 'A', text: { de: '0–3 Punkte', en: '0–3 points', fa: '۰–۳ امتیاز' } },
+      { id: 'B', text: { de: '4–6 Punkte', en: '4–6 points', fa: '۴–۶ امتیاز' } },
+      { id: 'C', text: { de: '7–10 Punkte', en: '7–10 points', fa: '۷–۱۰ امتیاز' } },
+      { id: 'D', text: { de: 'Immer Grad A unabhängig von Nekrose', en: 'Always grade A regardless of necrosis', fa: 'همیشه گرید A مستقل از نکروز' } },
+    ],
+    correct: 'C',
+    explanation: {
+      de: 'CTSI 7–10 entspricht einer schweren Pankreatitis und ist mit deutlich erhöhter Mortalität assoziiert.',
+      en: 'CTSI 7–10 indicates severe pancreatitis and is associated with clearly increased mortality.',
+      fa: 'CTSI ۷–۱۰ نشان‌دهنده پانکراتیت شدید و افزایش واضح مرگ‌ومیر است.',
+    },
+  },
+  {
+    id: 'pseudoaneurysm',
+    question: {
+      de: 'Welcher Befund spricht bei akuter Pankreatitis für ein Pseudoaneurysma?',
+      en: 'Which finding suggests a pseudoaneurysm in acute pancreatitis?',
+      fa: 'کدام یافته در پانکراتیت حاد به نفع پسودوآنوریسم است؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Rundliche, scharf begrenzte arterielle Struktur in oder nahe einer Kollektion', en: 'Round sharply marginated arterial structure in or near a collection', fa: 'ساختار گرد و واضح شریانی داخل یا نزدیک تجمع' } },
+      { id: 'B', text: { de: 'Rein zystische Läsion ohne Enhancement', en: 'Purely cystic lesion without enhancement', fa: 'ضایعه کاملاً کیستیک بدون enhancement' } },
+      { id: 'C', text: { de: 'Symmetrische Nierenkelchdilatation', en: 'Symmetric renal calyceal dilatation', fa: 'اتساع متقارن کالیس‌های کلیه' } },
+      { id: 'D', text: { de: 'Luft in der Harnblase nach Katheter', en: 'Gas in the bladder after catheterisation', fa: 'گاز مثانه پس از کاتترگذاری' } },
+    ],
+    correct: 'A',
+    explanation: {
+      de: 'Pseudoaneurysmata entstehen durch Arrosion der Gefäßwand durch Pankreasenzyme, häufig an der A. lienalis.',
+      en: 'Pseudoaneurysms result from enzymatic arterial wall erosion, commonly involving the splenic artery.',
+      fa: 'پسودوآنوریسم بر اثر خوردگی دیواره عروق توسط آنزیم‌های پانکراس ایجاد می‌شود و اغلب شریان طحالی را درگیر می‌کند.',
+    },
+  },
+  {
+    id: 'infected-necrosis',
+    question: {
+      de: 'Welcher CT-Befund ist praktisch pathognomonisch für infizierte Nekrose?',
+      en: 'Which CT finding is virtually pathognomonic for infected necrosis?',
+      fa: 'کدام یافته CT تقریباً پاتوگنومونیک نکروز عفونی است؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Gas im Nekroseareal', en: 'Gas within the necrotic area', fa: 'گاز داخل ناحیه نکروز' } },
+      { id: 'B', text: { de: 'Homogenes Enhancement des Pankreas', en: 'Homogeneous pancreatic enhancement', fa: 'enhancement همگن پانکراس' } },
+      { id: 'C', text: { de: 'Ein einzelner Nierenstein', en: 'A single renal stone', fa: 'یک سنگ کلیه منفرد' } },
+      { id: 'D', text: { de: 'Normale Lebergröße', en: 'Normal liver size', fa: 'اندازه طبیعی کبد' } },
+    ],
+    correct: 'A',
+    explanation: {
+      de: 'Gas in Nekrosegewebe ist ein hochspezifisches Zeichen einer Infektion.',
+      en: 'Gas within necrotic tissue is a highly specific sign of infection.',
+      fa: 'گاز داخل بافت نکروتیک نشانه بسیار اختصاصی عفونت است.',
+    },
+  },
+  {
+    id: 'carcinoma-dd',
+    question: {
+      de: 'Welcher Befund spricht eher für Pankreaskarzinom als für chronische Pankreatitis?',
+      en: 'Which finding favours pancreatic carcinoma over chronic pancreatitis?',
+      fa: 'کدام یافته بیشتر به نفع کارسینوم پانکراس نسبت به پانکراتیت مزمن است؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Abrupter Gangabbruch mit konsekutiver Schwanzatrophie', en: 'Abrupt duct cut-off with downstream tail atrophy', fa: 'قطع ناگهانی مجرا همراه آتروفی دم پانکراس' } },
+      { id: 'B', text: { de: 'Duct-penetrating-sign', en: 'Duct-penetrating sign', fa: 'علامت duct-penetrating' } },
+      { id: 'C', text: { de: 'Intraduktale und parenchymale Verkalkungen', en: 'Intraductal and parenchymal calcifications', fa: 'کلسیفیکاسیون داخل مجرا و پارانشیم' } },
+      { id: 'D', text: { de: 'Perlschnurartig wechselnde Gangweiten', en: 'Chain-of-lakes ductal irregularity', fa: 'نامنظمی زنجیره‌ای مجرا' } },
+    ],
+    correct: 'A',
+    explanation: {
+      de: 'Abrupter Gangabbruch, Schwanzatrophie, fehlende Verkalkungen in der Masse und Gefäßinfiltration sprechen für Karzinom.',
+      en: 'Abrupt duct cut-off, tail atrophy, absent calcifications within the mass and vascular infiltration favour carcinoma.',
+      fa: 'قطع ناگهانی مجرا، آتروفی دم، نبود کلسیفیکاسیون در توده و درگیری عروقی به نفع کارسینوم است.',
+    },
+  },
+]
+
+const PANCREATITIS_QUESTIONS = Object.fromEntries(
+  ['de', 'en', 'fa'].map(lang => [
+    lang,
+    PANCREATITIS_QUESTION_CONTENT.map(item => ({
+      id: `pankreatitis-${lang}-${item.id}`,
+      tags: ['pankreatitis', 'akute-pankreatitis', 'chronische-pankreatitis', 'abdomen'],
+      fach: 'abdomen',
+      question: item.question[lang],
+      options: item.options.map(option => ({ id: option.id, text: option.text[lang] })),
+      correct: item.correct,
+      explanation: item.explanation[lang],
+    })),
+  ])
+)
+
 const MIDLINE_CAVA_QUESTION_CONTENT = [
   {
     id: 'flow',
@@ -328,6 +546,7 @@ export const QUESTION_BANK = {
   "de": [
     ...CONTRAST_QUESTIONS.de,
     ...DIVERTICULITIS_QUESTIONS.de,
+    ...PANCREATITIS_QUESTIONS.de,
     ...STROKE_QUESTIONS.de,
     ...ICB_QUESTIONS.de,
     ...HIE_QUESTIONS.de,
@@ -1683,6 +1902,7 @@ export const QUESTION_BANK = {
   "en": [
     ...CONTRAST_QUESTIONS.en,
     ...DIVERTICULITIS_QUESTIONS.en,
+    ...PANCREATITIS_QUESTIONS.en,
     ...STROKE_QUESTIONS.en,
     ...ICB_QUESTIONS.en,
     ...HIE_QUESTIONS.en,
@@ -3038,6 +3258,7 @@ export const QUESTION_BANK = {
   "fa": [
     ...CONTRAST_QUESTIONS.fa,
     ...DIVERTICULITIS_QUESTIONS.fa,
+    ...PANCREATITIS_QUESTIONS.fa,
     ...STROKE_QUESTIONS.fa,
     ...ICB_QUESTIONS.fa,
     ...HIE_QUESTIONS.fa,
@@ -4499,6 +4720,14 @@ export const MCQ_TOPIC_GROUPS = [
       { id: 'fnh', title: { de: 'FNH', en: 'FNH', fa: 'FNH' } },
       { id: 'hcc', title: { de: 'HCC', en: 'HCC', fa: 'HCC' } },
       { id: 'avm', title: { de: 'AVM der Leber', en: 'Hepatic AVM', fa: 'AVM کبد' } },
+    ],
+  },
+  {
+    fachId: 'abdomen',
+    kapitelId: 'abdomen-pankreas',
+    title: { de: 'Pankreas', en: 'Pancreas', fa: 'پانکراس' },
+    topics: [
+      { id: 'pankreatitis', title: { de: 'Pankreatitis', en: 'Pancreatitis', fa: 'پانکراتیت' } },
     ],
   },
   {

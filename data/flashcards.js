@@ -131,6 +131,25 @@ export const FLASHCARD_TOPICS = [
     },
   },
   {
+    id: 'pankreatitis',
+    area: 'Abdomen',
+    chapter: 'Pankreas',
+    icon: 'CT',
+    iconImage: '/fach/abdomen.png',
+    color: '#10b981',
+    href: '/flashcards/pankreatitis',
+    title: {
+      de: 'Pankreatitis',
+      en: 'Pancreatitis',
+      fa: 'پانکراتیت',
+    },
+    subtitle: {
+      de: 'Atlanta · CTSI · Nekrose · Kollektionen · Komplikationen · DD Karzinom',
+      en: 'Atlanta · CTSI · necrosis · collections · complications · carcinoma DD',
+      fa: 'آتلانتا · CTSI · نکروز · تجمعات · عوارض · افتراق کارسینوم',
+    },
+  },
+  {
     "id": "meniskus",
     "area": "MSK",
     "chapter": "Knie",
@@ -374,6 +393,107 @@ const DIVERTICULITIS_FLASHCARDS = DIVERTICULITIS_FLASHCARD_CONTENT.map(item => (
   diagram: item.diagram,
 }))
 
+const PANCREATITIS_FLASHCARD_CONTENT = [
+  {
+    id: 'causes',
+    category: { de: 'Ätiologie', en: 'Aetiology', fa: 'اتیولوژی' },
+    front: { de: 'Was sind die häufigsten Ursachen der akuten Pankreatitis?', en: 'What are the most common causes of acute pancreatitis?', fa: 'شایع‌ترین علل پانکراتیت حاد چیست؟' },
+    answer: { de: 'Biliär ca. 40–50 %, alkoholtoxisch ca. 30–35 %. Seltener metabolisch, medikamentös, viral, autoimmun oder iatrogen.', en: 'Biliary disease about 40–50%, alcohol about 30–35%. Less often metabolic, drug-related, viral, autoimmune or iatrogenic.', fa: 'علت صفراوی حدود ۴۰–۵۰٪ و الکلی حدود ۳۰–۳۵٪ است. علل متابولیک، دارویی، ویروسی، خودایمنی و یاتروژنیک کمتر شایع‌اند.' },
+    explanation: { de: 'Choledocholithiasis/Mikrolithiasis und Alkoholabusus sind klinisch am wichtigsten; post-ERCP ist die wichtigste iatrogene Konstellation.', en: 'Choledocholithiasis/microlithiasis and alcohol misuse dominate clinically; post-ERCP is the key iatrogenic setting.', fa: 'سنگ کلدوک/میکرولیتیازیس و مصرف الکل از نظر بالینی مهم‌ترند؛ پس از ERCP مهم‌ترین زمینه یاتروژنیک است.' },
+    diagram: { de: 'biliär > Alkohol > metabolisch/medikamentös/viral/autoimmun/iatrogen', en: 'biliary > alcohol > metabolic/drugs/viral/autoimmune/iatrogenic', fa: 'صفراوی > الکل > متابولیک/دارویی/ویروسی/خودایمنی/یاتروژنیک' },
+  },
+  {
+    id: 'biliary-mechanism',
+    category: { de: 'Pathophysiologie', en: 'Pathophysiology', fa: 'پاتوفیزیولوژی' },
+    front: { de: 'Wie entsteht eine biliäre akute Pankreatitis?', en: 'How does biliary acute pancreatitis develop?', fa: 'پانکراتیت حاد صفراوی چگونه ایجاد می‌شود؟' },
+    answer: { de: 'Stein oder Mikrolithiasis obstruiert die Papilla duodeni major → Druckanstieg oder Galle-Reflux → vorzeitige Enzymaktivierung.', en: 'A stone or microlithiasis obstructs the major papilla → pressure rise or bile reflux → premature enzyme activation.', fa: 'سنگ یا میکرولیتیازیس پاپیلای اصلی را مسدود می‌کند → افزایش فشار یا رفلاکس صفرا → فعال‌شدن زودرس آنزیم‌ها.' },
+    explanation: { de: 'Das erklärt, warum Gallenwegserweiterung und Choledocholithiasis aktiv gesucht werden sollten.', en: 'This is why bile duct dilatation and choledocholithiasis should be actively sought.', fa: 'به همین دلیل باید اتساع مجاری صفراوی و سنگ کلدوک فعالانه جست‌وجو شود.' },
+    diagram: { de: 'Papilla blockiert → Pankreasgangdruck↑ → Enzymaktivierung', en: 'papilla blocked → duct pressure↑ → enzyme activation', fa: 'انسداد پاپیلا → فشار مجرا↑ → فعال شدن آنزیم' },
+  },
+  {
+    id: 'necrosis-timing',
+    category: { de: 'CT-Zeitpunkt', en: 'CT timing', fa: 'زمان CT' },
+    front: { de: 'Warum ist die Nekrosebeurteilung in der Frühphase schwierig?', en: 'Why is necrosis assessment difficult early on?', fa: 'چرا ارزیابی نکروز در فاز خیلی زود دشوار است؟' },
+    answer: { de: 'Pankreasnekrosen sind erst nach 48–72 Stunden zuverlässig nachweisbar.', en: 'Pancreatic necrosis is reliably detected only after 48–72 hours.', fa: 'نکروز پانکراس معمولاً فقط پس از ۴۸–۷۲ ساعت قابل اعتماد ارزیابی می‌شود.' },
+    explanation: { de: 'Eine sehr frühe CT kann das Ausmaß der Nekrose unterschätzen; Verlauf und Klinik entscheiden über Wiederholung.', en: 'Very early CT can underestimate necrosis; clinical course determines follow-up imaging.', fa: 'CT خیلی زود ممکن است نکروز را کمتر نشان دهد؛ روند بالینی تعیین‌کننده تصویربرداری پیگیری است.' },
+    diagram: { de: '<48 h: vorsichtig\n48–72 h: Nekrose besser sichtbar', en: '<48 h: cautious\n48–72 h: necrosis clearer', fa: '<۴۸ ساعت: احتیاط\n۴۸–۷۲ ساعت: نکروز واضح‌تر' },
+  },
+  {
+    id: 'atlanta-morphology',
+    category: { de: 'Atlanta', en: 'Atlanta', fa: 'آتلانتا' },
+    front: { de: 'Wie unterscheidet Atlanta ödematöse und nekrotisierende Pankreatitis?', en: 'How does Atlanta distinguish oedematous from necrotising pancreatitis?', fa: 'آتلانتا چگونه پانکراتیت ادماتوی را از نکروزان جدا می‌کند؟' },
+    answer: { de: 'Ödematös: Schwellung mit homogener KM-Aufnahme. Nekrotisierend: fehlendes Enhancement in Parenchym und/oder Fettgewebe.', en: 'Oedematous: swelling with homogeneous enhancement. Necrotising: absent enhancement in parenchyma and/or fat.', fa: 'ادماتوی: تورم با enhancement همگن. نکروزان: عدم enhancement در پارانشیم و/یا چربی.' },
+    explanation: { de: 'Nekrose kann pankreatisch, peripankreatisch oder kombiniert auftreten.', en: 'Necrosis may be pancreatic, peripancreatic or combined.', fa: 'نکروز می‌تواند پانکراسی، اطراف پانکراس یا ترکیبی باشد.' },
+    diagram: { de: 'homogenes Enhancement → ödematös\nEnhancement-Ausfall → nekrotisierend', en: 'homogeneous enhancement → oedematous\nnon-enhancement → necrotising', fa: 'enhancement همگن → ادماتوی\nعدم enhancement → نکروزان' },
+  },
+  {
+    id: 'collections',
+    category: { de: 'Kollektionen', en: 'Collections', fa: 'تجمعات' },
+    front: { de: 'Wie heißen die vier Atlanta-Kollektionen?', en: 'What are the four Atlanta collection terms?', fa: 'چهار اصطلاح تجمعات در آتلانتا چیست؟' },
+    answer: { de: 'APFC, Pseudozyste, ANC und WON.', en: 'APFC, pseudocyst, ANC and WON.', fa: 'APFC، پسودوسیست، ANC و WON.' },
+    explanation: { de: 'Ödematös: APFC <4 Wochen, Pseudozyste >4 Wochen. Nekrotisierend: ANC <4 Wochen, WON >4 Wochen.', en: 'Oedematous: APFC <4 weeks, pseudocyst >4 weeks. Necrotising: ANC <4 weeks, WON >4 weeks.', fa: 'ادماتوی: APFC کمتر از ۴ هفته، پسودوسیست بیش از ۴ هفته. نکروزان: ANC کمتر از ۴ هفته، WON بیش از ۴ هفته.' },
+    diagram: { de: 'ödematös: APFC → Pseudozyste\nnekrotisch: ANC → WON', en: 'oedematous: APFC → pseudocyst\nnecrotic: ANC → WON', fa: 'ادماتوی: APFC → پسودوسیست\nنکروزان: ANC → WON' },
+  },
+  {
+    id: 'ctsi',
+    category: { de: 'CTSI', en: 'CTSI', fa: 'CTSI' },
+    front: { de: 'Woraus besteht der CT-Schweregrad-Index nach Balthazar?', en: 'What makes up the Balthazar CT severity index?', fa: 'شاخص شدت CT بر اساس Balthazar از چه چیزهایی تشکیل می‌شود؟' },
+    answer: { de: 'Balthazar-Grad A–E plus Nekrose-Score; maximal 10 Punkte.', en: 'Balthazar grade A–E plus necrosis score; maximum 10 points.', fa: 'گرید Balthazar از A تا E به‌علاوه امتیاز نکروز؛ حداکثر ۱۰ امتیاز.' },
+    explanation: { de: 'Balthazar E gibt 4 Punkte; Nekrose >50 % gibt zusätzlich 6 Punkte.', en: 'Balthazar E gives 4 points; >50% necrosis adds 6 points.', fa: 'گرید E چهار امتیاز دارد؛ نکروز بیش از ۵۰٪ شش امتیاز اضافه می‌کند.' },
+    diagram: { de: 'CTSI = Balthazar + Nekrose\n0–3 mild · 4–6 moderat · 7–10 schwer', en: 'CTSI = Balthazar + necrosis\n0–3 mild · 4–6 moderate · 7–10 severe', fa: 'CTSI = Balthazar + نکروز\n۰–۳ خفیف · ۴–۶ متوسط · ۷–۱۰ شدید' },
+  },
+  {
+    id: 'pseudoaneurysm',
+    category: { de: 'Komplikationen', en: 'Complications', fa: 'عوارض' },
+    front: { de: 'Wie erkennt man ein Pseudoaneurysma bei Pankreatitis?', en: 'How is a pseudoaneurysm recognised in pancreatitis?', fa: 'پسودوآنوریسم در پانکراتیت چگونه تشخیص داده می‌شود؟' },
+    answer: { de: 'Rundliche, scharf begrenzte arterielle Struktur in oder nahe einer Kollektion/Nekrose.', en: 'A round sharply defined arterial structure in or near a collection/necrosis.', fa: 'ساختار گرد و واضح شریانی داخل یا نزدیک تجمع/نکروز.' },
+    explanation: { de: 'Es entsteht durch enzymatische Arrosion der Gefäßwand; häufig ist die A. lienalis betroffen.', en: 'It results from enzymatic arterial wall erosion; the splenic artery is commonly involved.', fa: 'به علت خوردگی آنزیمی دیواره عروق ایجاد می‌شود؛ شریان طحالی شایعاً درگیر است.' },
+    diagram: { de: 'Nekrose/Kollektion + arterielle Rundstruktur → Pseudoaneurysma', en: 'collection/necrosis + arterial round focus → pseudoaneurysm', fa: 'تجمع/نکروز + کانون گرد شریانی → پسودوآنوریسم' },
+  },
+  {
+    id: 'infected-necrosis',
+    category: { de: 'Komplikationen', en: 'Complications', fa: 'عوارض' },
+    front: { de: 'Welches Zeichen spricht im CT für infizierte Nekrose?', en: 'Which CT sign indicates infected necrosis?', fa: 'کدام علامت CT به نفع نکروز عفونی است؟' },
+    answer: { de: 'Gas im Nekroseareal.', en: 'Gas within the necrotic area.', fa: 'گاز داخل ناحیه نکروز.' },
+    explanation: { de: 'Gas in der Nekrose ist praktisch pathognomonisch, wenn kein Eingriff vorausgegangen ist.', en: 'Gas in necrosis is virtually pathognomonic if there has been no intervention.', fa: 'گاز داخل نکروز، در نبود مداخله قبلی، تقریباً پاتوگنومونیک است.' },
+    diagram: { de: 'Nekrose + Gas → infiziert', en: 'necrosis + gas → infected', fa: 'نکروز + گاز → عفونی' },
+  },
+  {
+    id: 'chronic-triad',
+    category: { de: 'Chronisch', en: 'Chronic', fa: 'مزمن' },
+    front: { de: 'Wie lautet die klassische Trias der chronischen Pankreatitis?', en: 'What is the classic triad of chronic pancreatitis?', fa: 'تریاد کلاسیک پانکراتیت مزمن چیست؟' },
+    answer: { de: 'Pankreasverkalkungen, Parenchymatrophie und dilatierter unregelmäßiger Ductus pancreaticus.', en: 'Pancreatic calcifications, parenchymal atrophy and a dilated irregular pancreatic duct.', fa: 'کلسیفیکاسیون پانکراس، آتروفی پارانشیم و اتساع نامنظم مجرای پانکراس.' },
+    explanation: { de: 'Der Gang ist oft >3 mm weit und zeigt wechselnde Stenosen und Erweiterungen.', en: 'The duct is often >3 mm and shows alternating strictures and dilatations.', fa: 'مجرای پانکراس اغلب بیش از ۳ میلی‌متر است و تنگی و گشادشدگی متناوب دارد.' },
+    diagram: { de: 'Verkalkung + Atrophie + Perlschnur-Gang', en: 'calcification + atrophy + chain-of-lakes duct', fa: 'کلسیفیکاسیون + آتروفی + مجرای زنجیره‌ای' },
+  },
+  {
+    id: 'carcinoma-dd',
+    category: { de: 'Differenzialdiagnose', en: 'Differential diagnosis', fa: 'تشخیص افتراقی' },
+    front: { de: 'Was spricht eher für Pankreaskarzinom als für chronische Pankreatitis?', en: 'What favours pancreatic carcinoma over chronic pancreatitis?', fa: 'چه چیزی بیشتر به نفع کارسینوم پانکراس نسبت به پانکراتیت مزمن است؟' },
+    answer: { de: 'Abrupter Gangabbruch, Schwanzatrophie, Gefäßinfiltration und keine Verkalkungen in der Masse.', en: 'Abrupt duct cut-off, tail atrophy, vascular infiltration and no calcifications within the mass.', fa: 'قطع ناگهانی مجرا، آتروفی دم، درگیری عروقی و نبود کلسیفیکاسیون داخل توده.' },
+    explanation: { de: 'Bei Pankreatitis spricht ein langer Gangverschluss und das Duct-penetrating-sign eher gegen Karzinom.', en: 'A long ductal narrowing and duct-penetrating sign favour pancreatitis over carcinoma.', fa: 'تنگی طولانی مجرا و علامت duct-penetrating بیشتر به نفع پانکراتیت است تا کارسینوم.' },
+    diagram: { de: 'Karzinom: abrupt + Atrophie\nPankreatitis: langer Gang + duct penetrating', en: 'carcinoma: abrupt + atrophy\npancreatitis: long duct + duct penetrating', fa: 'کارسینوم: قطع ناگهانی + آتروفی\nپانکراتیت: مجرای طولانی + duct penetrating' },
+  },
+  {
+    id: 'autoimmune',
+    category: { de: 'Differenzialdiagnose', en: 'Differential diagnosis', fa: 'تشخیص افتراقی' },
+    front: { de: 'Welche Zeichen sprechen für Autoimmunpankreatitis Typ 1?', en: 'Which signs suggest type 1 autoimmune pancreatitis?', fa: 'کدام علائم به نفع پانکراتیت خودایمنی نوع ۱ است؟' },
+    answer: { de: 'Wurstförmige Konfiguration, Verlust der Lobulierung, hypodenser Halo und schnelle Steroidantwort.', en: 'Sausage-shaped pancreas, loss of lobulation, hypodense halo and rapid steroid response.', fa: 'ظاهر سوسیسی، از بین رفتن لوبولاسیون، halo هیپودنس و پاسخ سریع به استروئید.' },
+    explanation: { de: 'Der Steroid-Test ist ein diagnostisches Kriterium, darf aber nur im passenden klinischen Kontext erfolgen.', en: 'Steroid response is a diagnostic criterion but must be interpreted in the correct clinical setting.', fa: 'پاسخ به استروئید معیار تشخیصی است، اما باید در زمینه بالینی مناسب تفسیر شود.' },
+    diagram: { de: 'sausage pancreas + Halo + Steroidantwort → AIP', en: 'sausage pancreas + halo + steroid response → AIP', fa: 'پانکراس سوسیسی + halo + پاسخ استروئید → AIP' },
+  },
+]
+
+const PANCREATITIS_FLASHCARDS = PANCREATITIS_FLASHCARD_CONTENT.map(item => ({
+  id: `pankreatitis-${item.id}`,
+  topicId: 'pankreatitis',
+  category: item.category,
+  front: item.front,
+  answer: item.answer,
+  explanation: item.explanation,
+  diagram: item.diagram,
+}))
+
 const MIDLINE_CAVA_FLASHCARD_CONTENT = [
   {
     id: 'csp-location',
@@ -555,6 +675,7 @@ const CSF_SYSTEM_FLASHCARDS = [
 export const FLASHCARDS = [
   ...CONTRAST_FLASHCARDS,
   ...DIVERTICULITIS_FLASHCARDS,
+  ...PANCREATITIS_FLASHCARDS,
   ...STROKE_FLASHCARDS,
   ...ICB_FLASHCARDS,
   ...SAB_FLASHCARDS,
