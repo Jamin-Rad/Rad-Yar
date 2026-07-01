@@ -892,6 +892,46 @@ ${manualEntries.length ? `
   function goToMonth(key) { setMonth(key); setView('monat') }
   function navEinstellung(sub) { setView('einstellung'); setSubView(sub) }
 
+  function seedJan2026() {
+    if (!window.confirm('Januar 2026 Ausgaben eintragen? Bereits vorhandene Einträge bleiben erhalten.')) return
+    const mk = id => `seed-${Date.now()}-${Math.random().toString(36).slice(2, 6)}-${id}`
+    const e = (category, title, amount) => ({
+      id: mk(title), type: 'expense', amount, title,
+      subtitle: category, category, tags: [category, title], date: '2026-01-15',
+    })
+    const entries = [
+      e('Lebensmittel','Aldi',266), e('Lebensmittel','Lidl',288),
+      e('Lebensmittel','Bonus',2), e('Lebensmittel','Edeka/Rewe/Netto',21),
+      e('Lebensmittel','DM',60), e('Lebensmittel','Türkei',116),
+      e('Kleidung','Takko',44), e('Kleidung','Ernstings Family',41),
+      e('Restaurant','Essen',171),
+      e('Auto','Tanken',100), e('Auto','Strom',8), e('Auto','Parekn',3),
+      e('Auto','Waschen',3), e('Auto','Leasing',348),
+      e('Zu Hause','Miete',2025), e('Zu Hause','Darlehen',475),
+      e('Zu Hause','Strom',153), e('Zu Hause','Internet',47),
+      e('Zu Hause','Netflix',12), e('Zu Hause','Haushaltgerät',25),
+      e('Jamin','Konto',11), e('Jamin','Gothaer',22), e('Jamin','SIM-Karte',31),
+      e('Jamin','Sonst',34), e('Jamin','Medikamente',10), e('Jamin','Versicherung',78),
+      e('Fatima','Iphone 16',53), e('Fatima','Kleidung',31),
+      e('Fatima','Medikamente',287), e('Fatima','Cosmetics',10),
+      e('Mobin','Schule',1029), e('Mobin','Taschengeld',18), e('Mobin','Bus-Ticket',45),
+      e('Mobin','Kleidung',38), e('Mobin','SIM-Karte',9), e('Mobin','Schulsachen',71),
+      e('Mobin','Gift',444), e('Mobin','Sonst',80),
+      e('Mobina','Kindergarten',370), e('Mobina','Kleidung',45),
+      e('Mobina','Spielzeug',9), e('Mobina','Sonst',114),
+      e('Moschee','Nazri',21), e('Moschee','Sonst',50),
+      e('Ausflug','Milan',1400),
+    ]
+    setStore(prev => {
+      const cur = prev['2026-01'] || { entries: [] }
+      const alreadyDone = cur.entries.some(x => String(x.id).startsWith('seed-'))
+      if (alreadyDone) { alert('Einträge für Januar 2026 sind bereits vorhanden.'); return prev }
+      return { ...prev, '2026-01': { ...cur, entries: [...entries, ...cur.entries] } }
+    })
+    setMonth('2026-01')
+    setView('monat')
+  }
+
   function openCatDetail(type, key, label) {
     setShowPopup(false)  // close entry popup if open
     setCatDetail({ type, key, label })
@@ -1226,6 +1266,17 @@ ${manualEntries.length ? `
                       </div>
                     </div>
                   </form>
+                </div>
+
+                {/* One-time data import */}
+                <div style={{ marginTop: 16, padding: '14px 16px', borderRadius: 12, border: '1px dashed var(--border,#e2e8f0)', background: 'var(--bg-soft,#f8fafc)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+                  <div>
+                    <p style={{ margin: 0, fontWeight: 800, fontSize: 13, color: 'var(--text-strong,#0d1b2a)' }}>Ausgaben Januar 2026 importieren</p>
+                    <p style={{ margin: '2px 0 0', fontSize: 12, color: 'var(--text-muted,#94a3b8)' }}>44 Einträge – Lebensmittel, Auto, Zu Hause, Personen, Ausflug Mailand…</p>
+                  </div>
+                  <button type="button" className={styles.primaryBudgetBtn} style={{ whiteSpace: 'nowrap', flexShrink: 0 }} onClick={seedJan2026}>
+                    Jetzt importieren
+                  </button>
                 </div>
               </div>
             )}
