@@ -522,13 +522,19 @@ export default function BudgetPage() {
     return selected.subName ? `${selected.catName} / ${selected.subName}` : `${selected.catName} / Gesamt`
   }, [planSelectedItems])
 
-  const annualData = useMemo(() => Array.from({ length: 12 }, (_, i) => {
-    const key  = `${year}-${String(i + 1).padStart(2, '0')}`
-    const data = monthWithRecurring(key, store, recurring)
-    const income   = data.entries.filter(e => e.type === 'income').reduce((s, e)  => s + Number(e.amount || 0), 0)
-    const expenses = data.entries.filter(e => e.type === 'expense').reduce((s, e) => s + Number(e.amount || 0), 0)
-    return { key, i, income, expenses, balance: income - expenses, hasData: data.entries.length > 0 }
-  }), [store, recurring, year])
+  const annualData = useMemo(() => {
+    const todayKey = getMonthKey()
+    return Array.from({ length: 12 }, (_, i) => {
+      const key  = `${year}-${String(i + 1).padStart(2, '0')}`
+      // Zukünftige Monate: Fixkosten nicht einrechnen
+      const data = key <= todayKey
+        ? monthWithRecurring(key, store, recurring)
+        : (store[key] || emptyMonth())
+      const income   = data.entries.filter(e => e.type === 'income').reduce((s, e)  => s + Number(e.amount || 0), 0)
+      const expenses = data.entries.filter(e => e.type === 'expense').reduce((s, e) => s + Number(e.amount || 0), 0)
+      return { key, i, income, expenses, balance: income - expenses, hasData: data.entries.length > 0 }
+    })
+  }, [store, recurring, year])
 
   const maxAnnual = useMemo(() => Math.max(1, ...annualData.map(m => Math.max(m.income, m.expenses))), [annualData])
 
