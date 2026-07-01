@@ -1285,17 +1285,6 @@ ${manualEntries.length ? `
                     </div>
                   </form>
                 </div>
-
-                {/* One-time data import */}
-                <div style={{ marginTop: 16, padding: '14px 16px', borderRadius: 12, border: '1px dashed var(--border,#e2e8f0)', background: 'var(--bg-soft,#f8fafc)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
-                  <div>
-                    <p style={{ margin: 0, fontWeight: 800, fontSize: 13, color: 'var(--text-strong,#0d1b2a)' }}>Ausgaben Januar 2026 importieren</p>
-                    <p style={{ margin: '2px 0 0', fontSize: 12, color: 'var(--text-muted,#94a3b8)' }}>44 Einträge – Lebensmittel, Auto, Zu Hause, Personen, Ausflug Mailand…</p>
-                  </div>
-                  <button type="button" className={styles.primaryBudgetBtn} style={{ whiteSpace: 'nowrap', flexShrink: 0 }} onClick={seedJan2026}>
-                    Jetzt importieren
-                  </button>
-                </div>
               </div>
             )}
 
