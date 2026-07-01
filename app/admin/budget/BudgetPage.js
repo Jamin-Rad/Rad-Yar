@@ -658,7 +658,7 @@ export default function BudgetPage() {
   function closePopup() { setShowPopup(false) }
 
   function toggleExpand(catId) {
-    setExpandedCats(prev => { const n = new Set(prev); if (n.has(catId)) n.delete(catId); else n.add(catId); return n })
+    setExpandedCats(prev => prev.has(catId) ? new Set() : new Set([catId]))
   }
 
   function toggleItem(catId, catName, subId, subName) {

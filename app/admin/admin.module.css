@@ -2686,6 +2686,35 @@
   padding: 0 2px;
 }
 
+/* ── ENTRY FORM: inline accordion (no floating dropdown) ─── */
+/* In the popup the subs must stay inside the scroll container */
+.financeEntryForm .catAccordion {
+  grid-template-columns: 1fr;   /* single column — no cramping */
+}
+
+.financeEntryForm .catAccordionItem {
+  overflow: hidden;             /* clip the inline subs properly */
+}
+
+.financeEntryForm .catAccordionItem:has(.catAccordionHeaderOpen) {
+  z-index: auto;                /* don't break out of the popup */
+}
+
+.financeEntryForm .catAccordionSubs {
+  /* override the float-out behavior — become inline block */
+  position: static;
+  top: auto;
+  left: auto;
+  right: auto;
+  z-index: auto;
+  min-width: unset;
+  max-height: none;
+  border: none;
+  border-top: 1px solid color-mix(in srgb, var(--cat-border, #e2e8f0) 28%, #e2e8f0);
+  border-radius: 0 0 13px 13px;
+  box-shadow: none;
+}
+
 /* ── CLICKABLE ROWS ──────────────────────────── */
 .clickableRow {
   cursor: pointer;
