@@ -910,49 +910,50 @@ ${manualEntries.length ? `
   function goToMonth(key) { setMonth(key); setView('monat') }
   function navEinstellung(sub) { setView('einstellung'); setSubView(sub) }
 
-  function seedMar2026() {
-    if (!window.confirm('März 2026 Ausgaben eintragen? Bereits vorhandene Einträge bleiben erhalten.')) return
-    const mk = id => `seed-mar-${Date.now()}-${Math.random().toString(36).slice(2, 6)}-${id}`
+  function seedApr2026() {
+    if (!window.confirm('April 2026 Ausgaben eintragen? Bereits vorhandene Einträge bleiben erhalten.')) return
+    const mk = id => `seed-apr-${Date.now()}-${Math.random().toString(36).slice(2, 6)}-${id}`
     const e = (category, title, amount, sub) => ({
       id: mk(title), type: 'expense', amount, title,
       subtitle: category, category, tags: [category],
       catSubtitles: sub ? { [category]: sub } : undefined,
-      date: '2026-03-01',
+      date: '2026-04-01',
     })
     const entries = [
       // Lebensmittel
-      e('Lebensmittel','Aldi',152), e('Lebensmittel','Lidl',663),
-      e('Lebensmittel','Bonus',20), e('Lebensmittel','Edeka/Rewe/Netto',14),
-      e('Lebensmittel','DM',70), e('Lebensmittel','Türkei',156),
+      e('Lebensmittel','Aldi',161), e('Lebensmittel','Lidl',535),
+      e('Lebensmittel','Bonus',60), e('Lebensmittel','Edeka/Rewe/Netto',53),
+      e('Lebensmittel','DM',20), e('Lebensmittel','Türkei',182),
       // Kleidung
-      e('Kleidung','Supermarkt',20), e('Kleidung','Ernstings Family',61),
+      e('Kleidung','Supermarkt',5),
       // Restaurant
-      e('Restaurant','Essen',87), e('Restaurant','Krankenhaus',50),
-      // Auto (ohne Leasing)
-      e('Auto','Tanken',205), e('Auto','Strom',16), e('Auto','Parken',4),
-      e('Auto','Waschen',6), e('Auto','Reparatur/Service',52), e('Auto','Bußgeld',10),
+      e('Restaurant','Eis/Coffee/Bäckerei',19), e('Restaurant','Essen',193),
+      // Auto (ohne Leasing; Bus-Ticket hier ist Auto-Kategorie, nicht Mobin)
+      e('Auto','Tanken',39), e('Auto','Strom',13),
+      e('Auto','Reparatur/Service',1392), e('Auto','Bus-Ticket',92),
       // Zu Hause (ohne Miete, Darlehen, Internet, Netflix)
-      e('Zu Hause','Strom',91), e('Zu Hause','Haushaltgerät',80), e('Zu Hause','Papierkram',191),
+      e('Zu Hause','Strom',91), e('Zu Hause','Haushaltgerät',95),
       // Jamin (ohne Konto, Gothaer)
-      e('Jamin','Sonst',129),
+      e('Jamin','Medikamente',10),
       // Fatima (ohne Iphone 16)
-      e('Fatima','Kleidung',20),
+      e('Fatima','Kleidung',5), e('Fatima','Medikamente',296),
       // Mobin (ohne Schule, Bus-Ticket, SIM-Karte)
-      e('Mobin','Taschengeld',18), e('Mobin','Sonst',15), e('Mobin','Spielzeug',13),
+      e('Mobin','Taschengeld',18),
       // Mobina (ohne Kindergarten)
-      e('Mobina','Kleidung',20), e('Mobina','Sonst',138),
+      e('Mobina','Kleidung',10),
       // Meine Eltern
-      e('Meine Eltern','Apotheke/Versicherung',620,'Apotheke/Versicherung'),
-      // Moschee
-      e('Moschee','Nazri',135,'Nazri'), e('Moschee','Iran',44,'Iran'), e('Moschee','Sonst',175,'Sonst'),
+      e('Meine Eltern','Apotheke/Versicherung',46,'Apotheke/Versicherung'),
+      e('Meine Eltern','Sonst',3,'Sonst'),
+      // Moschee (Nazri leer diesen Monat)
+      e('Moschee','Iran',77,'Iran'),
     ]
     setStore(prev => {
-      const cur = prev['2026-03'] || { entries: [] }
-      const alreadyDone = cur.entries.some(x => String(x.id).startsWith('seed-mar-'))
-      if (alreadyDone) { alert('Einträge für März 2026 sind bereits vorhanden.'); return prev }
-      return { ...prev, '2026-03': { ...cur, entries: [...entries, ...cur.entries] } }
+      const cur = prev['2026-04'] || { entries: [] }
+      const alreadyDone = cur.entries.some(x => String(x.id).startsWith('seed-apr-'))
+      if (alreadyDone) { alert('Einträge für April 2026 sind bereits vorhanden.'); return prev }
+      return { ...prev, '2026-04': { ...cur, entries: [...entries, ...cur.entries] } }
     })
-    setMonth('2026-03')
+    setMonth('2026-04')
     setView('monat')
   }
 
@@ -1334,10 +1335,10 @@ ${manualEntries.length ? `
                 {/* One-time data import */}
                 <div style={{ marginTop: 16, padding: '14px 16px', borderRadius: 12, border: '1px dashed var(--border,#e2e8f0)', background: 'var(--bg-soft,#f8fafc)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
                   <div>
-                    <p style={{ margin: 0, fontWeight: 800, fontSize: 13, color: 'var(--text-strong,#0d1b2a)' }}>Ausgaben März 2026 importieren</p>
+                    <p style={{ margin: 0, fontWeight: 800, fontSize: 13, color: 'var(--text-strong,#0d1b2a)' }}>Ausgaben April 2026 importieren</p>
                     <p style={{ margin: '2px 0 0', fontSize: 12, color: 'var(--text-muted,#94a3b8)' }}>Variable Einträge – ohne Fixkosten</p>
                   </div>
-                  <button type="button" className={styles.primaryBudgetBtn} style={{ whiteSpace: 'nowrap', flexShrink: 0 }} onClick={seedMar2026}>
+                  <button type="button" className={styles.primaryBudgetBtn} style={{ whiteSpace: 'nowrap', flexShrink: 0 }} onClick={seedApr2026}>
                     Jetzt importieren
                   </button>
                 </div>
