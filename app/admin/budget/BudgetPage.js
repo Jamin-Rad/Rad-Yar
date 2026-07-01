@@ -179,6 +179,10 @@ function trafficColor(spent, budget) {
   return '#16a34a'
 }
 
+function categoryBudgetValue(catBudgets, categoryName) {
+  return catBudgets[categoryName] || catBudgets[`${categoryName} / Gesamt`] || 0
+}
+
 function IconCalendar() {
   return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
 }
@@ -250,14 +254,6 @@ function CategoryPicker({ categories, type, selectedItems, onToggleItem, expande
                   </button>
                   {hasSubs && isExpanded && (
                     <div className={styles.catAccordionSubs}>
-                      {showParentOption && (
-                        <button type="button"
-                          className={isItemSelected(cat.id, null) ? styles.catSubSelectPillActive : styles.catSubSelectPill}
-                          onClick={() => onToggleItem(cat.id, cat.name, null, null)}>
-                          {isItemSelected(cat.id, null) && <span className={styles.catSubSelectCheck}>✓</span>}
-                          Gesamte Kategorie
-                        </button>
-                      )}
                       {cat.subs.map(sub => {
                         const sel = isItemSelected(cat.id, sub.id)
                         return (
@@ -527,7 +523,7 @@ export default function BudgetPage() {
   const planBudgetKey = useMemo(() => {
     const selected = planSelectedItems[0]
     if (!selected) return ''
-    return selected.subName ? `${selected.catName} / ${selected.subName}` : selected.catName
+    return selected.subName ? `${selected.catName} / ${selected.subName}` : `${selected.catName} / Gesamt`
   }, [planSelectedItems])
 
   const annualData = useMemo(() => Array.from({ length: 12 }, (_, i) => {
@@ -781,13 +777,14 @@ export default function BudgetPage() {
                   )}
                   <div className={styles.sectionCardBody}>
                     {categoryTotals.length ? categoryTotals.map(([cat, total]) => {
-                      const color = trafficColor(total, catBudgets[cat] || 0)
+                      const budget = categoryBudgetValue(catBudgets, cat)
+                      const color = trafficColor(total, budget)
                       return (
                         <div className={styles.expenseRow} key={cat}>
                           <span className={styles.categoryName}>{cat}</span>
                           <div className={styles.categoryBarTrack}><div className={styles.categoryBarFill} style={{ width: `${Math.max((total / maxCategory) * 100, 2)}%` }} /></div>
                           <span className={styles.categoryAmount}>{formatMoney(total)}</span>
-                          <span className={styles.trafficDot} style={{ background: color || 'transparent', border: color ? 'none' : '1px dashed #cbd5e1' }} title={catBudgets[cat] ? `Budget: ${formatMoney(catBudgets[cat])}` : 'Kein Budget'} />
+                          <span className={styles.trafficDot} style={{ background: color || 'transparent', border: color ? 'none' : '1px dashed #cbd5e1' }} title={budget ? `Budget: ${formatMoney(budget)}` : 'Kein Budget'} />
                         </div>
                       )
                     }) : (
