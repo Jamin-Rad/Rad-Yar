@@ -1000,6 +1000,27 @@
   transition: width .4s ease;
 }
 
+.financeRowAmount {
+  display: grid;
+  gap: 1px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.financeRowAmount strong {
+  color: #0d1b2a;
+  font-size: 13px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.financeRowAmount small {
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+}
+
 .expenseRow {
   display: grid;
   grid-template-columns: 130px 1fr 90px 14px;
@@ -2184,6 +2205,50 @@
   background: #f8fafc;
 }
 
+.savedBudgetGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.savedBudgetBox {
+  position: relative;
+  display: grid;
+  gap: 6px;
+  min-height: 88px;
+  padding: 13px 38px 13px 13px;
+  border: 1px solid color-mix(in srgb, var(--cat-border, #e2e8f0) 24%, #e2e8f0);
+  border-radius: 14px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--cat-bg, #f8fafc) 66%, #fff), rgba(255,255,255,.78)),
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--cat-border, #f97316) 16%, transparent), transparent 44%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 8px 20px rgba(15,23,42,.06);
+}
+
+.savedBudgetBox span {
+  color: var(--cat-text, #475569);
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 1.25;
+}
+
+.savedBudgetBox strong {
+  color: #0d1b2a;
+  font-size: 15px;
+  font-weight: 850;
+  font-variant-numeric: tabular-nums;
+}
+
+.savedBudgetBox .actionBtn {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border-radius: 999px;
+}
+
 .budgetCatName {
   font-size: 13px;
   font-weight: 700;
@@ -3169,6 +3234,22 @@
 
 :global(html[data-theme='dark']) .categoryAmount {
   color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .financeRowAmount strong,
+:global(html[data-theme='dark']) .savedBudgetBox strong {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .financeRowAmount small {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .savedBudgetBox {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--cat-bg, var(--bg-card)) 16%, var(--bg-card)), color-mix(in srgb, var(--bg-card) 88%, transparent)),
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--cat-border, #f97316) 18%, transparent), transparent 44%);
+  border-color: var(--border);
 }
 
 :global(html[data-theme='dark']) .reportCard {

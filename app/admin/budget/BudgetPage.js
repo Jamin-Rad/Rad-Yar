@@ -53,7 +53,7 @@ const KNOWN_OLD_EXPENSE_CATEGORY_NAMES = new Set([
 function createDefaultCategories() {
   return [
     ...DEFAULT_EXPENSE_CATEGORIES.map(([name, subs]) => buildCat(name, subs)),
-    buildCat('Einkommen', ['Gehalt', 'Familienkasse'], 'income'),
+    buildCat('Einkommen', ['Gehalt', 'Kindergeld'], 'income'),
   ]
 }
 
@@ -86,10 +86,14 @@ function mergeExpenseDefaults(categories) {
     !KNOWN_OLD_EXPENSE_CATEGORY_NAMES.has(cat.name)
   )
   const incomes = existing.filter(cat => cat.type === 'income')
+    .map(cat => ({
+      ...cat,
+      subs: (cat.subs || []).map(sub => sub.name === 'Familienkasse' ? { ...sub, name: 'Kindergeld' } : sub),
+    }))
   return [
     ...expenseCategories,
     ...customExpenses,
-    ...(incomes.length ? incomes : [buildCat('Einkommen', ['Gehalt', 'Familienkasse'], 'income')]),
+    ...(incomes.length ? incomes : [buildCat('Einkommen', ['Gehalt', 'Kindergeld'], 'income')]),
   ]
 }
 
@@ -481,14 +485,11 @@ export default function BudgetPage() {
   const incomeTotals = useMemo(() => {
     const t = {}
     monthData.entries.filter(i => i.type === 'income').forEach(i => {
-      const k = i.title || 'Einkommen'
+      const k = i.title === 'Familienkasse' ? 'Kindergeld' : (i.title || 'Einkommen')
       t[k] = (t[k] || 0) + Number(i.amount || 0)
     })
     return Object.entries(t).sort((a, b) => b[1] - a[1])
   }, [monthData.entries])
-
-  const maxCategory = categoryTotals.length ? Math.max(...categoryTotals.map(([, v]) => v)) : 1
-  const maxIncome   = incomeTotals.length   ? Math.max(...incomeTotals.map(([, v]) => v))   : 1
 
   const totalCatBudget = useMemo(() => {
     return Object.values(catBudgets).reduce((s, value) => s + Number(value || 0), 0)
@@ -741,13 +742,16 @@ export default function BudgetPage() {
                     </div>
                   </div>
                   <div className={styles.sectionCardBody}>
-                    {incomeTotals.length ? incomeTotals.map(([cat, total]) => (
-                      <div className={styles.incomeRow} key={cat}>
-                        <span className={styles.incomeRowName}>{cat}</span>
-                        <div className={styles.incomeBarTrack}><div className={styles.incomeBarFill} style={{ width: `${Math.max((total / maxIncome) * 100, 3)}%` }} /></div>
-                        <span className={styles.moneyPositive} style={{ fontSize: 13, fontWeight: 800, textAlign: 'right' }}>{formatMoney(total)}</span>
-                      </div>
-                    )) : (
+                    {incomeTotals.length ? incomeTotals.map(([cat, total]) => {
+                      const pct = summary.income > 0 ? (total / summary.income) * 100 : 0
+                      return (
+                        <div className={styles.incomeRow} key={cat}>
+                          <span className={styles.incomeRowName}>{cat}</span>
+                          <div className={styles.incomeBarTrack}><div className={styles.incomeBarFill} style={{ width: `${Math.max(pct, 3)}%` }} /></div>
+                          <span className={styles.financeRowAmount}><strong className={styles.moneyPositive}>{formatMoney(total)}</strong><small>{pct.toFixed(0)} %</small></span>
+                        </div>
+                      )
+                    }) : (
                       <div className={styles.sectionEmptyRow}>
                         <p>Kein Einkommen eingetragen.</p>
                         <button className={styles.sectionEmptyBtn} type="button" onClick={() => openPopup('income')}>+ Einkommen eintragen</button>
@@ -779,11 +783,12 @@ export default function BudgetPage() {
                     {categoryTotals.length ? categoryTotals.map(([cat, total]) => {
                       const budget = categoryBudgetValue(catBudgets, cat)
                       const color = trafficColor(total, budget)
+                      const pct = budget > 0 ? Math.min((total / budget) * 100, 100) : 0
                       return (
                         <div className={styles.expenseRow} key={cat}>
                           <span className={styles.categoryName}>{cat}</span>
-                          <div className={styles.categoryBarTrack}><div className={styles.categoryBarFill} style={{ width: `${Math.max((total / maxCategory) * 100, 2)}%` }} /></div>
-                          <span className={styles.categoryAmount}>{formatMoney(total)}</span>
+                          <div className={styles.categoryBarTrack}><div className={styles.categoryBarFill} style={{ width: `${budget > 0 ? Math.max(pct, 2) : 0}%`, background: color || undefined }} /></div>
+                          <span className={styles.financeRowAmount}><strong>{formatMoney(total)}</strong><small>{budget ? `${pct.toFixed(0)} %` : 'kein Budget'}</small></span>
                           <span className={styles.trafficDot} style={{ background: color || 'transparent', border: color ? 'none' : '1px dashed #cbd5e1' }} title={budget ? `Budget: ${formatMoney(budget)}` : 'Kein Budget'} />
                         </div>
                       )
@@ -1003,13 +1008,13 @@ export default function BudgetPage() {
 
                 <div className={styles.budgetPanel}>
                   <h2 className={styles.sectionTitle} style={{ margin: '0 0 16px' }}>Gespeicherte Budgets</h2>
-                  <div className={styles.budgetCatList}>
+                  <div className={styles.savedBudgetGrid}>
                     {Object.entries(catBudgets).filter(([, amount]) => Number(amount || 0) > 0).map(([name, amount]) => {
                       const baseName = name.split(' / ')[0]
                       const color = getCatColor(baseName)
                       return (
-                        <div key={name} className={styles.budgetCatRow} style={{ borderLeft: `3px solid ${color.border}` }}>
-                          <span className={styles.budgetCatName}>{name}</span>
+                        <div key={name} className={styles.savedBudgetBox} style={{ '--cat-border': color.border, '--cat-bg': color.bg, '--cat-text': color.text }}>
+                          <span>{name}</span>
                           <strong>{formatMoney(amount)}</strong>
                           <button className={styles.actionBtn} type="button" onClick={() => saveCatBudget(name, 0)}>×</button>
                         </div>
