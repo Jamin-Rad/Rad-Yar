@@ -48,7 +48,7 @@ export async function GET() {
     .eq('user_id', userId)
 
   if (error) {
-    console.error('Leitner-Fortschritt konnte nicht geladen werden:', error.message)
+    console.error('Leitner-Fortschritt konnte nicht geladen werden:', error)
     return NextResponse.json({ error: 'Fortschritt nicht verfügbar' }, { status: 503 })
   }
 
@@ -95,7 +95,7 @@ export async function POST(request) {
     .upsert(rows, { onConflict: 'user_id,card_id' })
 
   if (error) {
-    console.error('Leitner-Fortschritt konnte nicht gespeichert werden:', error.message)
+    console.error('Leitner-Fortschritt konnte nicht gespeichert werden:', error)
     return NextResponse.json({ error: 'Speichern fehlgeschlagen' }, { status: 503 })
   }
 

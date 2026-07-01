@@ -23,6 +23,15 @@ export function queueProgressWrite(key, endpoint, payload) {
   savePending(pending)
 }
 
+async function progressError(response) {
+  let message = `Progress write failed: ${response.status}`
+  try {
+    const body = await response.json()
+    if (body?.error) message = `${message} (${body.error})`
+  } catch {}
+  return new Error(message)
+}
+
 export async function persistProgressWrite(key, endpoint, payload, canSync) {
   if (!canSync) {
     queueProgressWrite(key, endpoint, payload)
@@ -35,13 +44,14 @@ export async function persistProgressWrite(key, endpoint, payload, canSync) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     })
-    if (!response.ok) throw new Error(`Progress write failed: ${response.status}`)
+    if (!response.ok) throw await progressError(response)
 
     const pending = loadPending()
     delete pending[key]
     savePending(pending)
     return true
-  } catch {
+  } catch (error) {
+    console.error('Fortschritt konnte nicht gespeichert werden:', error.message)
     queueProgressWrite(key, endpoint, payload)
     return false
   }
@@ -61,11 +71,13 @@ export async function flushPendingProgress() {
         body: JSON.stringify(item.payload),
       })
       if (!response.ok) {
+        console.error('Ausstehender Fortschritt konnte nicht gespeichert werden:', (await progressError(response)).message)
         allSucceeded = false
         continue
       }
       delete pending[key]
-    } catch {
+    } catch (error) {
+      console.error('Ausstehender Fortschritt konnte nicht gespeichert werden:', error.message)
       allSucceeded = false
     }
   }

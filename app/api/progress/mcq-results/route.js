@@ -41,7 +41,7 @@ export async function GET() {
     .eq('user_id', userId)
 
   if (error) {
-    console.error('MCQ-Ergebnisse konnten nicht geladen werden:', error.message)
+    console.error('MCQ-Ergebnisse konnten nicht geladen werden:', error)
     return NextResponse.json({ error: 'Ergebnisse nicht verfügbar' }, { status: 503 })
   }
 
@@ -88,7 +88,7 @@ export async function POST(request) {
     .upsert(rows, { onConflict: 'user_id,thema_id' })
 
   if (error) {
-    console.error('MCQ-Ergebnisse konnten nicht gespeichert werden:', error.message)
+    console.error('MCQ-Ergebnisse konnten nicht gespeichert werden:', error)
     return NextResponse.json({ error: 'Speichern fehlgeschlagen' }, { status: 503 })
   }
 

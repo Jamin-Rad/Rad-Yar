@@ -13,12 +13,12 @@ export async function GET() {
 
   const { data, error } = await supabaseAdmin
     .from('analytics_daily')
-    .select('day, active_seconds, visits')
+    .select('day,active_seconds,visits')
     .eq('user_id', userId)
     .order('day', { ascending: true })
 
   if (error) {
-    console.error('Aktivitätsdaten konnten nicht geladen werden:', error.message)
+    console.error('Aktivitätsdaten konnten nicht geladen werden:', error)
     return NextResponse.json({ error: 'Aktivität nicht verfügbar' }, { status: 503 })
   }
 

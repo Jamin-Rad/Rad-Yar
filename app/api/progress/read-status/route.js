@@ -13,11 +13,11 @@ export async function GET() {
 
   const { data, error } = await supabaseAdmin
     .from('user_progress')
-    .select('thema_id, read_pct, updated_at')
+    .select('thema_id,read_pct,updated_at')
     .eq('user_id', userId)
 
   if (error) {
-    console.error('Lesefortschritt konnte nicht geladen werden:', error.message)
+    console.error('Lesefortschritt konnte nicht geladen werden:', error)
     return NextResponse.json({ error: 'Lesefortschritt nicht verfügbar' }, { status: 503 })
   }
 
@@ -80,7 +80,7 @@ export async function POST(request) {
     .upsert(rows, { onConflict: 'user_id,thema_id' })
 
   if (error) {
-    console.error('Lesefortschritt konnte nicht gespeichert werden:', error.message)
+    console.error('Lesefortschritt konnte nicht gespeichert werden:', error)
     return NextResponse.json({ error: 'Speichern fehlgeschlagen' }, { status: 503 })
   }
 
