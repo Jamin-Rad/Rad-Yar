@@ -598,11 +598,18 @@ export default function BudgetPage() {
   }
   function removeSubCategory(catId, subId) { setCategories(prev => prev.map(c => c.id === catId ? { ...c, subs: c.subs.filter(s => s.id !== subId) } : c)) }
 
+  function initialExpandedForType(type) {
+    if (type === 'income') {
+      return new Set(categories.filter(c => c.type === 'income').map(c => c.id))
+    }
+    return new Set()
+  }
+
   // Popup
   function openPopup(type = 'expense') {
     setEntryType(type)
     setSelectedItems([])
-    setExpandedCats(new Set())
+    setExpandedCats(initialExpandedForType(type))
     setEntryAmount('')
     setEntryDate(new Date().toISOString().slice(0, 10))
     setShowPopup(true)
@@ -637,7 +644,7 @@ export default function BudgetPage() {
   function handleTypeChange(newType) {
     setEntryType(newType)
     setSelectedItems([])
-    setExpandedCats(new Set())
+    setExpandedCats(initialExpandedForType(newType))
   }
 
   function addEntry(e) {
