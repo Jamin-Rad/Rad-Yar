@@ -516,6 +516,113 @@ export default function BudgetPage() {
     return Object.values(catBudgets).reduce((s, value) => s + Number(value || 0), 0)
   }, [catBudgets])
 
+  function printBericht() {
+    const fixEntries    = monthData.entries.filter(e => e.generatedRecurring)
+    const manualEntries = [...monthData.entries.filter(e => !e.generatedRecurring)].sort((a, b) => (b.date || '').localeCompare(a.date || ''))
+    const monthLabel    = formatMonthLabel(month)
+    const fmtDate       = d => { try { return new Date(d).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' }) } catch { return '—' } }
+
+    const incomeRows = incomeTotals.map(([cat, total]) => {
+      const pct = summary.income > 0 ? ((total / summary.income) * 100).toFixed(1) : '0'
+      return `<tr><td>${cat}</td><td class="amt green">${formatMoney(total)}</td><td class="pct">${pct} %</td></tr>`
+    }).join('')
+
+    const expenseRows = categoryTotals.map(([cat, total]) => {
+      const budget = categoryBudgetValue(catBudgets, cat)
+      const pct    = budget > 0 ? ((total / budget) * 100).toFixed(1) : '—'
+      const status = !budget ? '' : total >= budget ? '⚠ Überzogen' : total / budget >= 0.75 ? '~ Achtung' : '✓ OK'
+      return `<tr><td>${cat}</td><td class="amt red">${formatMoney(total)}</td><td class="amt">${budget ? formatMoney(budget) : '—'}</td><td class="pct">${pct !== '—' ? pct + ' %' : '—'}</td><td>${status}</td></tr>`
+    }).join('')
+
+    const fixRows = fixEntries.map(e =>
+      `<tr><td>${e.title}</td><td>${e.category || '—'}</td><td class="amt red">${formatMoney(e.amount)}</td></tr>`
+    ).join('')
+
+    const manualRows = manualEntries.map(e =>
+      `<tr><td>${fmtDate(e.date)}</td><td>${e.title}</td><td>${e.category || '—'}</td><td class="amt ${e.type === 'income' ? 'green' : 'red'}">${e.type === 'income' ? '+' : '−'} ${formatMoney(e.amount)}</td></tr>`
+    ).join('')
+
+    const html = `<!DOCTYPE html><html lang="de"><head><meta charset="utf-8">
+<title>Finanzbericht – ${monthLabel}</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, Arial, sans-serif; font-size: 13px; color: #1e293b; padding: 32px; }
+  h1 { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+  .sub { color: #64748b; font-size: 12px; margin-bottom: 24px; }
+  h2 { font-size: 14px; font-weight: 700; margin: 20px 0 8px; padding-bottom: 4px; border-bottom: 2px solid #e2e8f0; }
+  .kpi { display: flex; gap: 16px; margin-bottom: 24px; }
+  .kpi-card { flex: 1; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px; }
+  .kpi-label { font-size: 11px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
+  .kpi-value { font-size: 20px; font-weight: 800; display: block; margin: 4px 0 2px; }
+  .kpi-sub { font-size: 11px; color: #94a3b8; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 8px; }
+  th { text-align: left; font-size: 11px; font-weight: 700; color: #64748b; padding: 5px 8px; border-bottom: 1px solid #e2e8f0; text-transform: uppercase; letter-spacing: .4px; }
+  td { padding: 6px 8px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  .amt { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .pct { text-align: right; color: #64748b; width: 70px; }
+  .green { color: #16a34a; }
+  .red { color: #dc2626; }
+  .total-row td { font-weight: 800; border-top: 2px solid #e2e8f0; padding-top: 8px; }
+  .saldo { margin-top: 16px; padding: 12px 16px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 15px; border: 1.5px solid ${summary.balance >= 0 ? '#16a34a' : '#dc2626'}; background: ${summary.balance >= 0 ? '#f0fdf4' : '#fef2f2'}; }
+  .footer { margin-top: 32px; font-size: 11px; color: #94a3b8; text-align: center; }
+  @media print {
+    body { padding: 16px; }
+    .kpi { flex-wrap: wrap; }
+    .kpi-card { page-break-inside: avoid; }
+    h2 { page-break-after: avoid; }
+    table { page-break-inside: auto; }
+    tr { page-break-inside: avoid; }
+  }
+</style></head><body>
+<h1>Finanzbericht</h1>
+<p class="sub">${monthLabel} · Erstellt am ${fmtDate(new Date().toISOString())}</p>
+
+<div class="kpi">
+  <div class="kpi-card"><div class="kpi-label">Einkommen</div><span class="kpi-value green">${formatMoney(summary.income)}</span><span class="kpi-sub">${incomeTotals.length} Quellen</span></div>
+  <div class="kpi-card"><div class="kpi-label">Ausgaben</div><span class="kpi-value red">${formatMoney(summary.expenses)}</span><span class="kpi-sub">${categoryTotals.length} Kategorien</span></div>
+  <div class="kpi-card"><div class="kpi-label">Saldo</div><span class="kpi-value ${summary.balance >= 0 ? 'green' : 'red'}">${formatMoney(summary.balance)}</span><span class="kpi-sub">${summary.balance >= 0 ? 'Positiv' : 'Negativ'}</span></div>
+  <div class="kpi-card"><div class="kpi-label">Sparquote</div><span class="kpi-value" style="color:#0ea5e9">${summary.income ? sparquote(summary.income, summary.expenses) + ' %' : '—'}</span><span class="kpi-sub">des Einkommens</span></div>
+</div>
+
+${incomeTotals.length ? `
+<h2>Einkommen</h2>
+<table><thead><tr><th>Quelle</th><th style="text-align:right">Betrag</th><th style="text-align:right">Anteil</th></tr></thead>
+<tbody>${incomeRows}</tbody>
+<tfoot><tr class="total-row"><td>Gesamt</td><td class="amt green">${formatMoney(summary.income)}</td><td></td></tr></tfoot>
+</table>` : ''}
+
+${categoryTotals.length ? `
+<h2>Ausgaben nach Kategorie</h2>
+<table><thead><tr><th>Kategorie</th><th style="text-align:right">Ausgegeben</th><th style="text-align:right">Budget</th><th style="text-align:right">% Budget</th><th>Status</th></tr></thead>
+<tbody>${expenseRows}</tbody>
+<tfoot><tr class="total-row"><td>Gesamt</td><td class="amt red">${formatMoney(summary.expenses)}</td><td></td><td></td><td></td></tr></tfoot>
+</table>` : ''}
+
+${fixEntries.length ? `
+<h2>Fixkosten (${fixEntries.length})</h2>
+<table><thead><tr><th>Bezeichnung</th><th>Kategorie</th><th style="text-align:right">Betrag/Monat</th></tr></thead>
+<tbody>${fixRows}</tbody>
+<tfoot><tr class="total-row"><td>Gesamt</td><td></td><td class="amt red">${formatMoney(fixEntries.reduce((s, e) => s + e.amount, 0))}</td></tr></tfoot>
+</table>` : ''}
+
+${manualEntries.length ? `
+<h2>Alle Einträge (${manualEntries.length})</h2>
+<table><thead><tr><th>Datum</th><th>Bezeichnung</th><th>Kategorie</th><th style="text-align:right">Betrag</th></tr></thead>
+<tbody>${manualRows}</tbody>
+</table>` : ''}
+
+<div class="saldo"><span>Monats-Saldo</span><span class="${summary.balance >= 0 ? 'green' : 'red'}">${formatMoney(summary.balance)}</span></div>
+<div class="footer">Rad-Yar · Finanzübersicht ${monthLabel}</div>
+</body></html>`
+
+    const win = window.open('', '_blank', 'width=900,height=700')
+    win.document.write(html)
+    win.document.close()
+    win.focus()
+    setTimeout(() => win.print(), 400)
+  }
+
   const budgetRemaining = totalCatBudget - summary.expenses
   const budgetOver      = totalCatBudget > 0 && budgetRemaining < 0
   const budgetPct       = totalCatBudget > 0 ? Math.min((summary.expenses / totalCatBudget) * 100, 100) : 0
@@ -1199,7 +1306,7 @@ export default function BudgetPage() {
                       <p>{formatMonthLabel(month)}</p>
                     </div>
                     <div style={{ display: 'flex', gap: 8 }}>
-                      <button className={styles.printBtn} type="button" onClick={() => window.print()}>🖨 Drucken</button>
+                      <button className={styles.printBtn} type="button" onClick={printBericht}>🖨 Als PDF / Drucken</button>
                     </div>
                   </div>
 
