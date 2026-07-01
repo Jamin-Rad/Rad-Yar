@@ -94,49 +94,6 @@ function mergeExpenseDefaults(categories) {
   ]
 }
 
-const APRIL_2026_EXAMPLE = {
-  budget: '',
-  entries: [
-    ['income',  'Gehalt',              6601.50, 'Einkommen',    '',                    '2026-04-01', ['Einkommen']],
-    ['income',  'Familienkasse',        518,     'Einkommen',    '',                    '2026-04-01', ['Einkommen']],
-    ['expense', 'Aldi',                 161,     'Lebensmittel', '',                    '2026-04-02', ['Lebensmittel']],
-    ['expense', 'Lidl',                 535,     'Lebensmittel', '',                    '2026-04-03', ['Lebensmittel']],
-    ['expense', 'Bonus',                60,      'Lebensmittel', '',                    '2026-04-04', ['Lebensmittel']],
-    ['expense', 'Edeka/Rewe/Netto',     53,      'Lebensmittel', '',                    '2026-04-05', ['Lebensmittel']],
-    ['expense', 'DM',                   20,      'Lebensmittel', '',                    '2026-04-06', ['Lebensmittel']],
-    ['expense', 'Türkischer Markt',     182,     'Lebensmittel', '',                    '2026-04-07', ['Lebensmittel']],
-    ['expense', 'Kleidung',             5,       'Kleidung',     'Für Mobin',           '2026-04-08', ['Kleidung', 'Mobin']],
-    ['expense', 'Eis/Coffee/Bäckerei', 19,      'Restaurant',   '',                    '2026-04-09', ['Restaurant']],
-    ['expense', 'Essen gehen',          193,     'Restaurant',   '',                    '2026-04-10', ['Restaurant']],
-    ['expense', 'Tanken',               39,      'Auto',         '',                    '2026-04-11', ['Auto']],
-    ['expense', 'Laden',                13,      'Auto',         '',                    '2026-04-12', ['Auto']],
-    ['expense', 'Werkstatt',            1392,    'Auto',         '',                    '2026-04-13', ['Auto']],
-    ['expense', 'Leasing',              348,     'Auto',         '',                    '2026-04-14', ['Auto']],
-    ['expense', 'Bus-Ticket',           92,      'Auto',         '',                    '2026-04-15', ['Auto']],
-    ['expense', 'Miete',                2025,    'Zu Hause',     '',                    '2026-04-01', ['Zu Hause']],
-    ['expense', 'Darlehen',             475,     'Zu Hause',     '',                    '2026-04-02', ['Zu Hause']],
-    ['expense', 'Strom',                91,      'Zu Hause',     '',                    '2026-04-03', ['Zu Hause']],
-    ['expense', 'Haushaltgerät',        95,      'Zu Hause',     '',                    '2026-04-04', ['Zu Hause']],
-    ['expense', 'Konto/Bank',           11,      'Jamin',        '',                    '2026-04-16', ['Jamin']],
-    ['expense', 'Versicherung',         22,      'Jamin',        '',                    '2026-04-17', ['Jamin']],
-    ['expense', 'Medikamente',          10,      'Jamin',        '',                    '2026-04-18', ['Jamin']],
-    ['expense', 'iPhone-Rate',          53,      'Fatima',       '',                    '2026-04-19', ['Fatima']],
-    ['expense', 'Kleidung',             5,       'Fatima',       '',                    '2026-04-20', ['Kleidung', 'Fatima']],
-    ['expense', 'Medikamente',          296,     'Fatima',       '',                    '2026-04-21', ['Fatima']],
-    ['expense', 'Schule',               1029,    'Mobin',        '',                    '2026-04-22', ['Mobin']],
-    ['expense', 'Taschengeld',          18,      'Mobin',        '',                    '2026-04-23', ['Mobin']],
-    ['expense', 'Bus-Ticket',           45,      'Mobin',        '',                    '2026-04-24', ['Mobin']],
-    ['expense', 'SIM-Karte',            9,       'Mobin',        '',                    '2026-04-25', ['Mobin']],
-    ['expense', 'Kindergarten',         370,     'Mobina',       '',                    '2026-04-26', ['Mobina']],
-    ['expense', 'Kleidung',             10,      'Mobina',       '',                    '2026-04-27', ['Kleidung', 'Mobina']],
-    ['expense', 'Apotheke',             46,      'Meine Eltern', '',                    '2026-04-28', ['Meine Eltern']],
-    ['expense', 'Sonst',                3,       'Meine Eltern', '',                    '2026-04-28', ['Meine Eltern']],
-    ['expense', 'Spende/Nazri',         77,      'Moschee',      '',                    '2026-04-29', ['Moschee']],
-  ].map(([type, title, amount, category, subtitle, date, tags]) => ({
-    id: makeId(), type, title, amount, category, subtitle, date, tags,
-  })),
-}
-
 const MONTH_SHORT = ['Jan','Feb','Mrz','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez']
 const MONTH_LONG  = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember']
 
@@ -460,12 +417,6 @@ export default function BudgetPage() {
     return Object.entries(t).sort((a, b) => b[1] - a[1])
   }, [monthData.entries])
 
-  const catSpending = useMemo(() => {
-    const m = {}
-    categoryTotals.forEach(([name, total]) => { m[name] = total })
-    return m
-  }, [categoryTotals])
-
   const maxCategory = categoryTotals.length ? Math.max(...categoryTotals.map(([, v]) => v)) : 1
   const maxIncome   = incomeTotals.length   ? Math.max(...incomeTotals.map(([, v]) => v))   : 1
 
@@ -587,14 +538,6 @@ export default function BudgetPage() {
     setNewFix(p => ({ ...p, title: '', amount: '', category: '' }))
   }
   function removeFixeintrag(id) { setRecurring(prev => prev.filter(r => r.id !== id)) }
-  function insertFixInMonth() {
-    const [y, m] = month.split('-').map(Number)
-    const existing = new Set(monthData.entries.map(e => `${e.title}||${e.amount}`))
-    const toAdd    = recurring.filter(r => !existing.has(`${r.title}||${r.amount}`))
-    if (!toAdd.length) { window.alert('Alle Fixkosten bereits eingetragen.'); return }
-    updateMonth(c => ({ ...c, entries: [...toAdd.map(r => ({ id: makeId(), type: r.type, amount: Number(r.amount), title: r.title, subtitle: '', category: r.category, tags: [r.category].filter(Boolean), date: `${y}-${String(m).padStart(2, '0')}-${String(Math.min(Number(r.dayOfMonth), 28)).padStart(2, '0')}` })), ...c.entries] }))
-    setView('monat')
-  }
 
   function goToMonth(key) { setMonth(key); setView('monat') }
   function navEinstellung(sub) { setView('einstellung'); setSubView(sub) }
@@ -657,7 +600,6 @@ export default function BudgetPage() {
                 <div className={styles.sidebarSubGroup}>
                   <button className={subView === 'kategorien' ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('kategorien')}>Kategorien</button>
                   <button className={subView === 'fixkosten'  ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('fixkosten')}>Fixkosten &amp; Budget</button>
-                  <button className={subView === 'bericht'    ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('bericht')}>Bericht</button>
                 </div>
               )}
             </nav>
@@ -835,7 +777,6 @@ export default function BudgetPage() {
                 <div className={styles.categoryTileGrid}>
                   {categories.map(cat => {
                     const color    = getCatColor(cat.name)
-                    const spending = catSpending[cat.name] || 0
                     return (
                       <div key={cat.id} className={styles.categoryManagedTile} style={{ '--cat-accent': color.border }}>
                         <div className={styles.categoryTileHeader}>
@@ -849,7 +790,6 @@ export default function BudgetPage() {
                             </div>
                             <div className={styles.categoryTileMeta}>
                               <span>{cat.subs.length} Unterkategorien</span>
-                              {spending > 0 && <strong>{formatMoney(spending)} diesen Monat</strong>}
                             </div>
                           </div>
                           <button className={styles.categoryTileDelete} onClick={() => removeCategory(cat.id)} aria-label={`${cat.name} löschen`}>×</button>
@@ -881,11 +821,6 @@ export default function BudgetPage() {
                     </div>
                   </form>
                 </div>
-                <div style={{ marginTop: 20 }}>
-                  <button className={styles.actionBtn} type="button" onClick={() => { if (window.confirm('April 2026 Beispiel-Einträge laden?')) { setMonth('2026-04'); setStore(p => ({ ...p, '2026-04': APRIL_2026_EXAMPLE })) } }}>
-                    April-Beispiel laden
-                  </button>
-                </div>
               </div>
             )}
 
@@ -898,28 +833,17 @@ export default function BudgetPage() {
                     <div>
                       <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Budget pro Kategorie</h2>
                       <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>
-                        Gesamtbudget: <strong style={{ color: '#0d1b2a' }}>{totalCatBudget > 0 ? formatMoney(totalCatBudget) : '—'}</strong>
-                        {totalCatBudget > 0 && <span style={{ marginLeft: 8, color: budgetOver ? '#dc2626' : '#16a34a', fontWeight: 700 }}>{budgetOver ? `${formatMoney(-budgetRemaining)} überzogen` : `${formatMoney(budgetRemaining)} übrig`}</span>}
+                        Geplantes Gesamtbudget: <strong style={{ color: '#0d1b2a' }}>{totalCatBudget > 0 ? formatMoney(totalCatBudget) : '—'}</strong>
                       </p>
                     </div>
                   </div>
-                  {totalCatBudget > 0 && (
-                    <div className={styles.budgetBar} style={{ marginBottom: 16 }}>
-                      <div className={budgetOver ? styles.budgetBarOver : styles.budgetBarGood} style={{ width: `${budgetPct}%` }} />
-                    </div>
-                  )}
                   <div className={styles.budgetCatList}>
                     {categories.filter(c => c.type === 'expense').map(cat => {
                       const color   = getCatColor(cat.name)
-                      const spent   = catSpending[cat.name] || 0
-                      const budget  = catBudgets[cat.name] || 0
-                      const tc      = trafficColor(spent, budget)
                       return (
                         <div key={cat.id} className={styles.budgetCatRow} style={{ borderLeft: `3px solid ${color.border}` }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                             <span className={styles.budgetCatName}>{cat.name}</span>
-                            {spent > 0 && <span style={{ fontSize: 12, color: '#64748b' }}>{formatMoney(spent)}</span>}
-                            {tc && <span className={styles.trafficDot} style={{ background: tc }} />}
                           </div>
                           <input className={styles.budgetCatInput}
                             type="number" min="0" step="1" placeholder="—"
@@ -940,7 +864,6 @@ export default function BudgetPage() {
                       <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Monatliche Fixkosten</h2>
                       {totalFixkosten > 0 && <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>{formatMoney(totalFixkosten)} / Monat</p>}
                     </div>
-                    {recurring.length > 0 && <button className={styles.primaryBudgetBtn} type="button" onClick={insertFixInMonth}>Für {formatMonthLabel(month)} eintragen</button>}
                   </div>
                   {recurring.length > 0 && (
                     <div className={styles.fixedList} style={{ marginBottom: 20 }}>
@@ -976,36 +899,6 @@ export default function BudgetPage() {
               </div>
             )}
 
-            {/* ── BERICHT ── */}
-            {view === 'einstellung' && subView === 'bericht' && (
-              <div>
-                <div className={styles.reportHeader}>
-                  <div><h2 className={styles.sectionTitle} style={{ margin: 0 }}>Monatsbericht</h2><p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>{formatMonthLabel(month)}</p></div>
-                  <button className={styles.printBtn} type="button" onClick={() => window.print()}>Drucken</button>
-                </div>
-                {incomeTotals.length > 0 && (
-                  <div className={styles.reportSection}>
-                    <p className={styles.reportSectionTitle}>Einkommen</p>
-                    <div className={styles.reportGrid}>{incomeTotals.map(([cat, total]) => <div className={styles.reportCard} key={cat}><span>{cat}</span><strong className={styles.moneyPositive}>{formatMoney(total)}</strong></div>)}</div>
-                    <div className={styles.reportTotalRow}><span>Gesamt Einkommen</span><strong className={styles.moneyPositive}>{formatMoney(summary.income)}</strong></div>
-                  </div>
-                )}
-                {categoryTotals.length > 0 && (
-                  <div className={styles.reportSection}>
-                    <p className={styles.reportSectionTitle}>Ausgaben nach Kategorie</p>
-                    <div className={styles.reportGrid}>{categoryTotals.map(([cat, total]) => <div className={styles.reportCard} key={cat}><span>{cat}</span><strong>{formatMoney(total)}</strong></div>)}</div>
-                    <div className={styles.reportTotalRow}><span>Gesamt Ausgaben</span><strong className={styles.moneyNegative}>{formatMoney(summary.expenses)}</strong></div>
-                  </div>
-                )}
-                {(incomeTotals.length > 0 || categoryTotals.length > 0) && (
-                  <div className={styles.reportSaldoRow} style={{ border: `1px solid ${summary.balance >= 0 ? '#16a34a' : '#dc2626'}`, background: summary.balance >= 0 ? 'rgba(22,163,74,0.05)' : 'rgba(220,38,38,0.05)' }}>
-                    <span>Monats-Saldo</span>
-                    <strong className={summary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(summary.balance)}</strong>
-                  </div>
-                )}
-                {!incomeTotals.length && !categoryTotals.length && <p className={styles.emptyAnalytics}>Noch keine Einträge für {formatMonthLabel(month)}.</p>}
-              </div>
-            )}
           </div>
         </div>
 
