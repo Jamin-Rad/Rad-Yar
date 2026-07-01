@@ -2660,6 +2660,131 @@
   min-width: 132px;
 }
 
+/* ── CLICKABLE ROWS ──────────────────────────── */
+.clickableRow {
+  cursor: pointer;
+  transition: background .13s;
+  border-radius: 8px;
+  margin: 0 -8px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.clickableRow:hover { background: rgba(0,0,0,.03); }
+
+/* ── CATEGORY DETAIL POPUP ───────────────────── */
+.catDetailGroup {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.catDetailGroupHead {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 14px;
+  background: #f8fafc;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+  transition: background .13s;
+}
+.catDetailGroupHead:hover { background: #f1f5f9; }
+
+.catDetailGroupMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  font-size: 13px;
+}
+.catDetailGroupMeta strong { font-variant-numeric: tabular-nums; }
+.catDetailGroupMeta small { color: #94a3b8; font-size: 11px; }
+
+.catDetailChevron { display: flex; transition: transform .2s; }
+.catDetailChevronOpen { display: flex; transform: rotate(180deg); }
+
+.catDetailEntries { border-top: 1px solid #e2e8f0; }
+
+.catDetailEntry {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 13px;
+}
+.catDetailEntry:last-child { border-bottom: none; }
+
+.catDetailDate {
+  color: #64748b;
+  font-size: 12px;
+  min-width: 72px;
+  flex-shrink: 0;
+}
+
+.catDetailFixBadge {
+  font-size: 10px;
+  font-weight: 700;
+  color: #64748b;
+  background: #f1f5f9;
+  border-radius: 4px;
+  padding: 1px 5px;
+  flex-shrink: 0;
+}
+
+.catDetailAmount {
+  flex: 1;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.catDetailEditRow {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: flex-end;
+}
+
+.catDetailInput {
+  width: 85px;
+  padding: 3px 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.catDetailSaveBtn {
+  padding: 3px 9px;
+  background: #16a34a;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.catDetailCancelBtn {
+  padding: 3px 9px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
 /* ── TABS SCROLLBAR (mobile) ─────────────────── */
 .financeTabs {
   overflow-x: auto;

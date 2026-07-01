@@ -354,6 +354,11 @@ export default function BudgetPage() {
   const [selectedItems, setSelectedItems] = useState([])
   const [expandedCats, setExpandedCats]   = useState(new Set())
 
+  // Category detail popup
+  const [catDetail, setCatDetail]               = useState(null) // { type, key, label }
+  const [expandedSubtitles, setExpandedSubtitles] = useState(new Set())
+  const [editingEntry, setEditingEntry]           = useState(null) // { id, amount }
+
   // Fixkosten new entry form
   const [planAmount, setPlanAmount] = useState('')
   const [planSelectedItems, setPlanSelectedItems] = useState([])
@@ -537,6 +542,34 @@ export default function BudgetPage() {
 
   const totalFixkosten = recurring.filter(r => r.type === 'expense').reduce((s, r) => s + Number(r.amount || 0), 0)
 
+  const catDetailEntries = useMemo(() => {
+    if (!catDetail) return []
+    const { type, key } = catDetail
+    if (type === 'income') {
+      return monthData.entries.filter(e =>
+        e.type === 'income' &&
+        (e.title === key || (key === 'Kindergeld' && e.title === 'Familienkasse'))
+      )
+    }
+    return monthData.entries.filter(e =>
+      e.type === 'expense' && (e.category || 'Ohne Kategorie') === key
+    )
+  }, [catDetail, monthData.entries])
+
+  const catDetailGrouped = useMemo(() => {
+    const groups = {}
+    catDetailEntries.forEach(e => {
+      const k = e.title || 'Sonstiges'
+      if (!groups[k]) groups[k] = []
+      groups[k].push(e)
+    })
+    return Object.entries(groups).sort(
+      (a, b) =>
+        b[1].reduce((s, e) => s + Number(e.amount), 0) -
+        a[1].reduce((s, e) => s + Number(e.amount), 0)
+    )
+  }, [catDetailEntries])
+
   // ── Actions ────────────────────────────────────────────────────────────────
   function prevMonth() { const [y, m] = month.split('-').map(Number); setMonth(getMonthKey(new Date(y, m - 2, 1))) }
   function nextMonth() { const [y, m] = month.split('-').map(Number); setMonth(getMonthKey(new Date(y, m, 1))) }
@@ -654,6 +687,26 @@ export default function BudgetPage() {
   function goToMonth(key) { setMonth(key); setView('monat') }
   function navEinstellung(sub) { setView('einstellung'); setSubView(sub) }
 
+  function openCatDetail(type, key, label) {
+    setCatDetail({ type, key, label })
+    setExpandedSubtitles(new Set())
+    setEditingEntry(null)
+  }
+  function closeCatDetail() { setCatDetail(null); setEditingEntry(null) }
+  function toggleCatSubtitle(key) {
+    setExpandedSubtitles(prev => {
+      const n = new Set(prev)
+      if (n.has(key)) n.delete(key); else n.add(key)
+      return n
+    })
+  }
+  function saveEntryEdit(id, newAmount) {
+    const amount = Number(newAmount)
+    if (!amount) return
+    updateMonth(c => ({ ...c, entries: c.entries.map(e => e.id === id ? { ...e, amount } : e) }))
+    setEditingEntry(null)
+  }
+
   function SidebarItem({ icon, label, active, onClick }) {
     return <button className={active ? styles.sidebarItemActive : styles.sidebarItem} onClick={onClick} aria-current={active ? 'page' : undefined}>{icon}{label}</button>
   }
@@ -735,7 +788,7 @@ export default function BudgetPage() {
                     {incomeTotals.length ? incomeTotals.map(([cat, total]) => {
                       const pct = summary.income > 0 ? (total / summary.income) * 100 : 0
                       return (
-                        <div className={styles.incomeRow} key={cat}>
+                        <div className={`${styles.incomeRow} ${styles.clickableRow}`} key={cat} onClick={() => openCatDetail('income', cat, cat)} role="button" tabIndex={0} onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && openCatDetail('income', cat, cat)}>
                           <span className={styles.incomeRowName}>{cat}</span>
                           <div className={styles.incomeBarTrack}><div className={styles.incomeBarFill} style={{ width: `${Math.max(pct, 3)}%` }} /></div>
                           <span className={styles.financeRowAmount}><strong className={styles.moneyPositive}>{formatMoney(total)}</strong><small>{pct.toFixed(0)} %</small></span>
@@ -775,7 +828,7 @@ export default function BudgetPage() {
                       const color = trafficColor(total, budget)
                       const pct = budget > 0 ? Math.min((total / budget) * 100, 100) : 0
                       return (
-                        <div className={styles.expenseRow} key={cat}>
+                        <div className={`${styles.expenseRow} ${styles.clickableRow}`} key={cat} onClick={() => openCatDetail('expense', cat, cat)} role="button" tabIndex={0} onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && openCatDetail('expense', cat, cat)}>
                           <span className={styles.categoryName}>{cat}</span>
                           <div className={styles.categoryBarTrack}><div className={styles.categoryBarFill} style={{ width: `${budget > 0 ? Math.max(pct, 2) : 0}%`, background: color || undefined }} /></div>
                           <span className={styles.financeRowAmount}><strong>{formatMoney(total)}</strong><small>{budget ? `${pct.toFixed(0)} %` : 'kein Budget'}</small></span>
@@ -800,26 +853,6 @@ export default function BudgetPage() {
                   )}
                 </div>
 
-                {/* Entry list */}
-                {monthData.entries.length > 0 && (
-                  <div>
-                    <p className={styles.reportSectionTitle} style={{ marginBottom: 8 }}>Alle Einträge ({monthData.entries.length})</p>
-                    <div className={styles.budgetEntryList}>
-                      {monthData.entries.map(item => (
-                        <div className={styles.budgetEntry} key={item.id}>
-                          <span className={`${styles.budgetEntryType} ${item.type === 'income' ? styles.entryIncome : styles.entryExpense}`}>{item.type === 'income' ? '+' : '−'}</span>
-                          <div className={styles.budgetEntryMain}>
-                            <strong>{item.title}</strong>
-                            <span>{new Date(item.date).toLocaleDateString('de-DE')}{item.category ? ` · ${item.category}` : ''}{item.generatedRecurring ? ' · Fixkosten' : ''}</span>
-                            {Array.isArray(item.tags) && item.tags.length > 1 && <span className={styles.entryTags}>{item.tags.map(t => <span key={t} className={styles.entryTag}>{t}</span>)}</span>}
-                          </div>
-                          <strong className={item.type === 'income' ? styles.moneyPositive : styles.moneyNegative}>{item.type === 'income' ? '+' : '−'}{formatMoney(item.amount)}</strong>
-                          <button className={styles.actionBtn} type="button" onClick={() => deleteEntry(item.id)}>×</button>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </div>
             )}
 
@@ -1089,6 +1122,79 @@ export default function BudgetPage() {
                 <button form="budget-entry-form" className={styles.primaryBudgetBtn} type="submit" disabled={!entryTitle || !entryAmount}>
                   Speichern
                 </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ── KATEGORIE-DETAIL POPUP ── */}
+        {catDetail && (
+          <div className={styles.popupOverlay} onClick={closeCatDetail} role="dialog" aria-modal="true" aria-label={catDetail.label}>
+            <div className={styles.popupPanel} style={{ maxWidth: 480 }} onClick={e => e.stopPropagation()}>
+              {/* Header */}
+              <div className={styles.popupHeader} style={{ borderBottom: `2px solid ${catDetail.type === 'income' ? '#16a34a' : '#f97316'}` }}>
+                <div>
+                  <p style={{ fontSize: 11, fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '.06em', margin: '0 0 2px' }}>
+                    {formatMonthLabel(month)}
+                  </p>
+                  <h3 className={styles.popupTitle} style={{ color: catDetail.type === 'income' ? '#16a34a' : '#f97316' }}>
+                    {catDetail.label}
+                  </h3>
+                  <p style={{ margin: '4px 0 0', fontSize: 18, fontWeight: 900, color: '#0d1b2a' }}>
+                    {formatMoney(catDetailEntries.reduce((s, e) => s + Number(e.amount), 0))}
+                  </p>
+                </div>
+                <button className={styles.popupClose} onClick={closeCatDetail} aria-label="Schließen">×</button>
+              </div>
+
+              {/* Body */}
+              <div className={styles.popupBody} style={{ paddingBottom: 16 }}>
+                {catDetailGrouped.length === 0 ? (
+                  <p style={{ color: '#94a3b8', textAlign: 'center', padding: '24px 0' }}>Keine Einträge.</p>
+                ) : catDetailGrouped.map(([subtitle, entries]) => {
+                  const groupTotal = entries.reduce((s, e) => s + Number(e.amount), 0)
+                  const autoExpand = catDetailGrouped.length === 1
+                  const isExpanded = autoExpand || expandedSubtitles.has(subtitle)
+                  return (
+                    <div key={subtitle} className={styles.catDetailGroup}>
+                      <button type="button" className={styles.catDetailGroupHead} onClick={() => toggleCatSubtitle(subtitle)}>
+                        <span>{subtitle}</span>
+                        <span className={styles.catDetailGroupMeta}>
+                          <strong>{formatMoney(groupTotal)}</strong>
+                          <small>{entries.length} Eintr.</small>
+                          <span className={isExpanded ? styles.catDetailChevronOpen : styles.catDetailChevron}><ChevronDown /></span>
+                        </span>
+                      </button>
+                      {isExpanded && (
+                        <div className={styles.catDetailEntries}>
+                          {entries.slice().sort((a, b) => (b.date || '').localeCompare(a.date || '')).map(entry => (
+                            <div key={entry.id} className={styles.catDetailEntry}>
+                              <span className={styles.catDetailDate}>{new Date(entry.date).toLocaleDateString('de-DE')}</span>
+                              {entry.generatedRecurring && <span className={styles.catDetailFixBadge}>Fixkosten</span>}
+                              {editingEntry?.id === entry.id ? (
+                                <div className={styles.catDetailEditRow}>
+                                  <input type="number" step="0.01" value={editingEntry.amount} onChange={e => setEditingEntry(p => ({ ...p, amount: e.target.value }))} className={styles.catDetailInput} autoFocus />
+                                  <button type="button" className={styles.catDetailSaveBtn} onClick={() => saveEntryEdit(entry.id, editingEntry.amount)}>✓</button>
+                                  <button type="button" className={styles.catDetailCancelBtn} onClick={() => setEditingEntry(null)}>✗</button>
+                                </div>
+                              ) : (
+                                <strong
+                                  className={`${styles.catDetailAmount} ${catDetail.type === 'income' ? styles.moneyPositive : ''}`}
+                                  onClick={() => !entry.generatedRecurring && setEditingEntry({ id: entry.id, amount: String(entry.amount) })}
+                                  title={entry.generatedRecurring ? undefined : 'Klicken zum Bearbeiten'}
+                                  style={{ cursor: entry.generatedRecurring ? 'default' : 'pointer' }}
+                                >
+                                  {formatMoney(entry.amount)}
+                                </strong>
+                              )}
+                              <button type="button" className={styles.actionBtn} onClick={() => deleteEntry(entry.id)}>×</button>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </div>
