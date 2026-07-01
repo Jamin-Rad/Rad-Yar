@@ -944,6 +944,8 @@ ${manualEntries.length ? `
       e('Meine Eltern','Apotheke/Versicherung',81,'Apotheke/Versicherung'),
       e('Meine Eltern','Sonst',535,'Sonst'),
       e('Meine Eltern','Flugticket',260,'Flugticket'),
+      // Fatima Eltern
+      e('Fatima Eltern','Apotheke',56,'Apotheke'),
       // Moschee (Nazri leer diesen Monat)
       e('Moschee','Iran',180,'Iran'),
       // Ausflug
