@@ -420,10 +420,14 @@ export default function ProfilPage() {
         const mergedRead = { ...localReadArticles }
         for (const [id, read] of Object.entries(data.read || {})) {
           if (read) mergedRead[id] = 1
+          else delete mergedRead[id]
         }
         setReadArticles(mergedRead)
         localStorage.setItem('radyar_read_articles', JSON.stringify(mergedRead))
         const historyById = new Map(localLearningHistory.map(item => [item.topicId, item]))
+        for (const [id, read] of Object.entries(data.read || {})) {
+          if (!read) historyById.delete(id)
+        }
         for (const item of data.history || []) {
           historyById.set(item.topicId, item)
         }

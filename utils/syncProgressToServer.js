@@ -77,6 +77,10 @@ function mergeReadProgress(serverData) {
 
   for (const [topicId, read] of Object.entries(serverData.read || {})) {
     if (read) articles[topicId] = 1
+    else {
+      delete articles[topicId]
+      historyByTopic.delete(topicId)
+    }
   }
   for (const item of serverData.history || []) {
     const localItem = historyByTopic.get(item.topicId)

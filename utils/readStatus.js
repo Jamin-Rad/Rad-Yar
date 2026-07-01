@@ -10,11 +10,15 @@ export async function pullReadStatusFromServer() {
   const articles = JSON.parse(localStorage.getItem('radyar_read_articles') || '{}')
   for (const [id, read] of Object.entries(data.read || {})) {
     if (read) articles[id] = 1
+    else delete articles[id]
   }
   localStorage.setItem('radyar_read_articles', JSON.stringify(articles))
 
   const history = JSON.parse(localStorage.getItem('radyar_learning_history') || '[]')
   const historyById = new Map(history.map(item => [item.topicId, item]))
+  for (const [id, read] of Object.entries(data.read || {})) {
+    if (!read) historyById.delete(id)
+  }
   for (const item of data.history || []) {
     historyById.set(item.topicId, item)
   }

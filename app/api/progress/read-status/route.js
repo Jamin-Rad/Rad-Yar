@@ -24,7 +24,9 @@ export async function GET() {
   const read = {}
   const historyByTopic = new Map()
   for (const row of data || []) {
-    if (Number(row.read_pct) >= 1) {
+    const isRead = Number(row.read_pct) >= 1
+    read[row.thema_id] = isRead
+    if (isRead) {
       read[row.thema_id] = true
       const previous = historyByTopic.get(row.thema_id)
       if (!previous || new Date(row.updated_at) > new Date(previous.learnedAt)) {
