@@ -16,7 +16,7 @@ function entry(category, title, amount, date = '2026-01-01') {
     title,
     subtitle: category,
     category,
-    tags: [category, title],
+    tags: [category],
     date,
   }
 }
