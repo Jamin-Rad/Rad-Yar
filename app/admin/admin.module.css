@@ -2309,12 +2309,17 @@
   border: 1px solid color-mix(in srgb, var(--cat-border, #e2e8f0) 26%, #e2e8f0);
   border-radius: 14px;
   overflow: hidden;
-  background: #fff;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--cat-bg, #fff) 82%, #fff), rgba(255,255,255,.7)),
+    radial-gradient(circle at 12% 0%, color-mix(in srgb, var(--cat-border, #f97316) 24%, transparent), transparent 38%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.82), 0 10px 28px rgba(15,23,42,.08);
+  backdrop-filter: blur(14px) saturate(1.25);
+  -webkit-backdrop-filter: blur(14px) saturate(1.25);
   transition: border-color .15s, box-shadow .15s, transform .15s;
 }
 
 .catAccordionItem:has(.catAccordionHeaderSelected) {
-  box-shadow: 0 10px 22px rgba(15,23,42,.08);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 14px 30px color-mix(in srgb, var(--cat-border, #f97316) 24%, rgba(15,23,42,.08));
   transform: translateY(-1px);
 }
 
@@ -2326,7 +2331,7 @@
   min-height: 50px;
   padding: 11px 13px;
   border: none;
-  background: #fff;
+  background: rgba(255,255,255,.62);
   font: inherit;
   font-size: 13px;
   font-weight: 800;
@@ -2337,7 +2342,7 @@
 }
 
 .catAccordionHeader:hover {
-  background: var(--cat-bg, rgba(249,115,22,.06));
+  background: color-mix(in srgb, var(--cat-bg, rgba(249,115,22,.06)) 72%, #fff);
   color: var(--cat-text, #c2410c);
 }
 
@@ -2355,11 +2360,11 @@
 }
 
 .catAccordionDot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 999px;
   background: var(--cat-border, #f97316);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--cat-bg, #ffedd5) 82%, transparent);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--cat-bg, #ffedd5) 88%, transparent), 0 5px 12px color-mix(in srgb, var(--cat-border, #f97316) 38%, transparent);
   flex-shrink: 0;
 }
 
@@ -2387,7 +2392,9 @@
   grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
   gap: 7px;
   padding: 11px;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--cat-bg, #f8fafc) 56%, #fff), #fff);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--cat-bg, #f8fafc) 74%, rgba(255,255,255,.72)), rgba(255,255,255,.56)),
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--cat-border, #f97316) 16%, transparent), transparent 42%);
 }
 
 .catSubSelectPill,
@@ -2410,23 +2417,27 @@
 }
 
 .catSubSelectPill {
-  background: rgba(255,255,255,.86);
+  background: rgba(255,255,255,.74);
   color: var(--cat-text, #475569);
   border-color: color-mix(in srgb, var(--cat-border, #e2e8f0) 34%, #e2e8f0);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .catSubSelectPill:hover {
   border-color: var(--cat-border, #f97316);
-  background: var(--cat-bg, #fff7ed);
+  background: color-mix(in srgb, var(--cat-bg, #fff7ed) 82%, #fff);
   color: var(--cat-text, #c2410c);
+  transform: translateY(-1px);
 }
 
 .catSubSelectPillActive {
   border-color: var(--cat-border, #f97316);
-  background: var(--cat-bg, #fff7ed);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--cat-bg, #fff7ed) 88%, #fff), rgba(255,255,255,.72));
   color: var(--cat-text, #c2410c);
   font-weight: 800;
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--cat-border, #f97316) 28%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--cat-border, #f97316) 32%, transparent), 0 8px 18px color-mix(in srgb, var(--cat-border, #f97316) 18%, transparent);
 }
 
 .catSubSelectCheck {
@@ -2440,6 +2451,18 @@
   font-size: 10px;
   line-height: 1;
   flex-shrink: 0;
+}
+
+.settingsBudgetStack {
+  display: grid;
+  gap: 22px;
+}
+
+.settingsBudgetStack > .budgetPanel {
+  background: rgba(255,255,255,.78);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.74), 0 12px 32px rgba(15,23,42,.08);
+  backdrop-filter: blur(14px) saturate(1.12);
+  -webkit-backdrop-filter: blur(14px) saturate(1.12);
 }
 
 /* Entry selection summary */
@@ -2686,8 +2709,10 @@
   padding: 22px 24px;
   border: 1px solid #e2e8f0;
   border-radius: 20px;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  background: rgba(255,255,255,.78);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.76), 0 12px 32px rgba(15,23,42,.08);
+  backdrop-filter: blur(14px) saturate(1.15);
+  -webkit-backdrop-filter: blur(14px) saturate(1.15);
 }
 
 .fixedTotalPill {
@@ -2728,8 +2753,10 @@
   padding: 18px;
   border: 1px solid #e2e8f0;
   border-radius: 18px;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0,0,0,.05);
+  background: rgba(255,255,255,.78);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.72), 0 10px 26px rgba(15,23,42,.07);
+  backdrop-filter: blur(12px) saturate(1.12);
+  -webkit-backdrop-filter: blur(12px) saturate(1.12);
 }
 
 .fixedCardHead {
@@ -2811,8 +2838,10 @@
   padding: 22px;
   border: 1px solid #e2e8f0;
   border-radius: 20px;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  background: rgba(255,255,255,.78);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.74), 0 12px 32px rgba(15,23,42,.08);
+  backdrop-filter: blur(14px) saturate(1.12);
+  -webkit-backdrop-filter: blur(14px) saturate(1.12);
 }
 
 /* ── DARK MODE ─────────────────────────────────── */
@@ -3146,7 +3175,7 @@
 
 :global(html[data-theme='dark']) .catAccordionItem,
 :global(html[data-theme='dark']) .catAccordionHeader {
-  background: var(--bg-card);
+  background: color-mix(in srgb, var(--cat-bg, var(--bg-card)) 14%, var(--bg-card));
 }
 
 :global(html[data-theme='dark']) .catAccordionHeader {
@@ -3154,11 +3183,13 @@
 }
 
 :global(html[data-theme='dark']) .catAccordionSubs {
-  background: color-mix(in srgb, var(--cat-bg, var(--bg-soft)) 16%, var(--bg-soft));
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--cat-bg, var(--bg-soft)) 20%, var(--bg-soft)), var(--bg-soft)),
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--cat-border, #f97316) 18%, transparent), transparent 42%);
 }
 
 :global(html[data-theme='dark']) .catSubSelectPill {
-  background: var(--bg-card);
+  background: color-mix(in srgb, var(--cat-bg, var(--bg-card)) 10%, var(--bg-card));
 }
 
 :global(html[data-theme='dark']) .categoryAddTile {
@@ -3336,8 +3367,9 @@
 
 :global(html[data-theme='dark']) .fixedCostsHeader,
 :global(html[data-theme='dark']) .fixedCard,
-:global(html[data-theme='dark']) .fixedFormPanel {
-  background: var(--bg-card);
+:global(html[data-theme='dark']) .fixedFormPanel,
+:global(html[data-theme='dark']) .settingsBudgetStack > .budgetPanel {
+  background: color-mix(in srgb, var(--bg-card) 86%, transparent);
   border-color: var(--border);
 }
 

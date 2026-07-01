@@ -97,10 +97,10 @@ const MONTH_SHORT = ['Jan','Feb','Mrz','Apr','Mai','Jun','Jul','Aug','Sep','Okt'
 const MONTH_LONG  = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember']
 
 const CAT_GROUP_COLORS = {
-  base:   { bg: '#ecfdf5', border: '#10b981', text: '#065f46' },
-  people: { bg: '#eff6ff', border: '#3b82f6', text: '#1e3a8a' },
-  family: { bg: '#fff1f2', border: '#f43f5e', text: '#881337' },
-  income: { bg: '#f0fdf4', border: '#16a34a', text: '#14532d' },
+  base:   { bg: '#d1fae5', border: '#059669', text: '#064e3b' },
+  people: { bg: '#dbeafe', border: '#2563eb', text: '#1e3a8a' },
+  family: { bg: '#ffe4e6', border: '#e11d48', text: '#881337' },
+  income: { bg: '#dcfce7', border: '#16a34a', text: '#14532d' },
   custom: { bg: '#f8fafc', border: '#64748b', text: '#334155' },
 }
 
@@ -601,8 +601,7 @@ export default function BudgetPage() {
               {view === 'einstellung' && (
                 <div className={styles.sidebarSubGroup}>
                   <button className={subView === 'kategorien' ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('kategorien')}>Kategorien</button>
-                  <button className={subView === 'budget'  ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('budget')}>Budget</button>
-                  <button className={subView === 'fixkosten'  ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('fixkosten')}>Fixkosten</button>
+                  <button className={subView === 'budget' || subView === 'fixkosten' ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('budget')}>Budget &amp; Fixkosten</button>
                 </div>
               )}
             </nav>
@@ -827,9 +826,9 @@ export default function BudgetPage() {
               </div>
             )}
 
-            {/* ── BUDGET ── */}
-            {view === 'einstellung' && subView === 'budget' && (
-              <div>
+            {/* ── BUDGET & FIXKOSTEN ── */}
+            {view === 'einstellung' && (subView === 'budget' || subView === 'fixkosten') && (
+              <div className={styles.settingsBudgetStack}>
                 <div className={styles.budgetPanel}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
                     <div>
@@ -858,12 +857,7 @@ export default function BudgetPage() {
                     })}
                   </div>
                 </div>
-              </div>
-            )}
 
-            {/* ── FIXKOSTEN ── */}
-            {view === 'einstellung' && subView === 'fixkosten' && (
-              <div>
                 <div className={styles.fixedCostsPanel}>
                   <div className={styles.fixedCostsHeader}>
                     <div>
