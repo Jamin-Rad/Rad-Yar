@@ -455,6 +455,16 @@ export default function BudgetPage() {
     return () => window.clearTimeout(timer)
   }, [store, recurring, catBudgets, categories, loaded])
 
+  // One-time migration: set all existing fixkosten to start from 2025-01
+  useEffect(() => {
+    if (!loaded) return
+    setRecurring(prev => {
+      const needsMigration = prev.some(r => !r.startMonth || r.startMonth > '2025-01')
+      if (!needsMigration) return prev
+      return prev.map(r => ({ ...r, startMonth: '2025-01' }))
+    })
+  }, [loaded])
+
   // Close any open popup on Escape
   useEffect(() => {
     if (!showPopup && !catDetail) return
@@ -731,7 +741,7 @@ export default function BudgetPage() {
       amount,
       category: planCatNames[0] || '',
       budgetKey: planBudgetKey,
-      startMonth: month,
+      startMonth: getMonthKey(), // immer ab aktuellem Monat, egal welcher Monat angezeigt wird
       dayOfMonth: '1',
     }])
     setPlanAmount('')
