@@ -511,8 +511,9 @@ export default function BudgetPage() {
   const categoryTotals = useMemo(() => {
     const t = {}
     monthData.entries.filter(i => i.type === 'expense').forEach(i => {
-      const k = i.category || 'Ohne Kategorie'
-      t[k] = (t[k] || 0) + Number(i.amount || 0)
+      // Eintrag in ALLE gewählten Kategorien einrechnen (tags), aber Gesamt-Total bleibt unberührt
+      const cats = Array.isArray(i.tags) && i.tags.length ? [...new Set(i.tags)] : [i.category || 'Ohne Kategorie']
+      cats.forEach(k => { t[k] = (t[k] || 0) + Number(i.amount || 0) })
     })
     return Object.entries(t).sort((a, b) => b[1] - a[1])
   }, [monthData.entries])
@@ -704,9 +705,11 @@ ${manualEntries.length ? `
         (e.title === key || (key === 'Kindergeld' && e.title === 'Familienkasse'))
       )
     }
-    return monthData.entries.filter(e =>
-      e.type === 'expense' && (e.category || 'Ohne Kategorie') === key
-    )
+    return monthData.entries.filter(e => {
+      if (e.type !== 'expense') return false
+      const cats = Array.isArray(e.tags) && e.tags.length ? e.tags : [e.category || 'Ohne Kategorie']
+      return cats.includes(key)
+    })
   }, [catDetail, monthData.entries])
 
   const catDetailGrouped = useMemo(() => {
@@ -733,8 +736,10 @@ ${manualEntries.length ? `
     return Object.values(store).flatMap(m => m.entries || [])
   }
   function catHasEntries(catName) {
-    return allEntries().some(e => e.category === catName || e.title === catName) ||
-      recurring.some(r => r.category === catName || r.title === catName)
+    return allEntries().some(e => {
+      const cats = Array.isArray(e.tags) && e.tags.length ? e.tags : [e.category]
+      return cats.includes(catName) || e.title === catName
+    }) || recurring.some(r => r.category === catName || r.title === catName)
   }
   function subHasEntries(catName, subName) {
     return allEntries().some(e => e.category === catName && e.title === subName) ||
