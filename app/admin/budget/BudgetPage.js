@@ -296,7 +296,7 @@ function CategoryPicker({ categories, type, selectedItems, onToggleItem, expande
 }
 
 // ── Entry form (shared between popup and elsewhere) ────────────────────────────
-function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onToggleItem, expandedCats, onToggleExpand, entryAmount, onAmountChange, entryDate, onDateChange, onSubmit, entryTitle, entryCatNames }) {
+function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onToggleItem, expandedCats, onToggleExpand, entryAmount, onAmountChange, entryDate, onDateChange, onSubmit, entryTitle, entryCatNames, paidByFatima, onToggleFatima }) {
   return (
     <form id={formId} className={`${styles.budgetForm} ${styles.financeEntryForm}`} onSubmit={onSubmit}>
       {/* Type */}
@@ -319,6 +319,26 @@ function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onTo
           <input type="date" value={entryDate} onChange={e => onDateChange(e.target.value)} />
         </label>
       </div>
+
+      {/* Fatima toggle — only for expenses */}
+      {type === 'expense' && (
+        <button
+          type="button"
+          onClick={onToggleFatima}
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: 6,
+            padding: '5px 12px', borderRadius: 20, fontSize: 13, fontWeight: 700,
+            border: `1.5px solid ${paidByFatima ? '#8b5cf6' : 'rgba(148,163,184,0.4)'}`,
+            background: paidByFatima ? 'rgba(139,92,246,0.12)' : 'rgba(248,250,252,0.8)',
+            color: paidByFatima ? '#7c3aed' : '#94a3b8',
+            cursor: 'pointer', transition: 'all .15s',
+            alignSelf: 'flex-start',
+          }}
+        >
+          👩 Fatima
+          {paidByFatima && <span style={{ fontSize: 11 }}>✓ hat bezahlt</span>}
+        </button>
+      )}
 
       <CategoryPicker
         categories={categories}
@@ -365,6 +385,7 @@ export default function BudgetPage() {
   const [entryDate, setEntryDate]         = useState(new Date().toISOString().slice(0, 10))
   const [selectedItems, setSelectedItems] = useState([])
   const [expandedCats, setExpandedCats]   = useState(new Set())
+  const [paidByFatima, setPaidByFatima]   = useState(false)
 
   // Category detail popup
   const [catDetail, setCatDetail]               = useState(null) // { type, key, label }
@@ -809,6 +830,7 @@ ${manualEntries.length ? `
     setSelectedItems([])
     setExpandedCats(initialExpandedForType(type))
     setEntryAmount('')
+    setPaidByFatima(false)
     const todayKey = getMonthKey()
     setEntryDate(month === todayKey
       ? new Date().toISOString().slice(0, 10)
@@ -816,7 +838,7 @@ ${manualEntries.length ? `
     setShowPopup(true)
   }
 
-  function closePopup() { setShowPopup(false) }
+  function closePopup() { setShowPopup(false); setPaidByFatima(false) }
 
   function toggleExpand(catId) {
     setExpandedCats(prev => prev.has(catId) ? new Set() : new Set([catId]))
@@ -872,6 +894,7 @@ ${manualEntries.length ? `
             category: entryCatNames[0] || '', tags: entryCatNames,
             catSubtitles,
             date,
+            ...(paidByFatima && entryType === 'expense' ? { paidByFatima: true } : {}),
           }, ...cur.entries],
         },
       }
@@ -2242,7 +2265,10 @@ ${manualEntries.length ? `
                   </div>
 
                   {/* ══ TAB: MONAT ══ */}
-                  {reportTab === 'monat' && (
+                  {reportTab === 'monat' && (() => {
+                    const fatimaPaidEntries = manualEntries.filter(e => e.type === 'expense' && e.paidByFatima)
+                    const fatimaPaidTotal = fatimaPaidEntries.reduce((s, e) => s + e.amount, 0)
+                    return (
                     <div>
                       {/* KPI Cards */}
                       <div className={styles.berichtKPIGrid}>
@@ -2259,6 +2285,27 @@ ${manualEntries.length ? `
                           </div>
                         ))}
                       </div>
+
+                      {/* Fatima */}
+                      {fatimaPaidTotal > 0 && (
+                        <div className={styles.reportSection} style={{ borderLeft: '3px solid #8b5cf6', paddingLeft: 12 }}>
+                          <p className={styles.reportSectionTitle} style={{ color: '#7c3aed' }}>👩 Fatima hat bezahlt</p>
+                          <div className={styles.berichtEntryTable}>
+                            {fatimaPaidEntries.sort((a,b) => (b.date||'').localeCompare(a.date||'')).map(e => (
+                              <div key={e.id} className={styles.berichtEntryRow}>
+                                <span className={styles.berichtEntryDate}>{new Date(e.date).toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'})}</span>
+                                <span className={styles.berichtEntryTitle}>{e.title}</span>
+                                <span className={styles.berichtEntryCat}>{e.category || '—'}</span>
+                                <strong style={{ color: '#7c3aed' }}>− {formatMoney(e.amount)}</strong>
+                              </div>
+                            ))}
+                          </div>
+                          <div className={styles.reportTotalRow} style={{ marginTop: 8 }}>
+                            <span>Fatima gesamt</span>
+                            <strong style={{ color: '#7c3aed' }}>{formatMoney(fatimaPaidTotal)}</strong>
+                          </div>
+                        </div>
+                      )}
 
                       {/* Einnahmen */}
                       {incomeTotals.length > 0 && (
@@ -2349,7 +2396,8 @@ ${manualEntries.length ? `
                       )}
                       {!incomeTotals.length && !categoryTotals.length && <p className={styles.emptyAnalytics}>Noch keine Einträge für {formatMonthLabel(month)}.</p>}
                     </div>
-                  )}
+                  )
+                  })()}
 
                   {/* ══ TAB: JAHR ══ */}
                   {reportTab === 'jahr' && (
@@ -2625,6 +2673,8 @@ ${manualEntries.length ? `
                   onSubmit={addEntry}
                   entryTitle={entryTitle}
                   entryCatNames={entryCatNames}
+                  paidByFatima={paidByFatima}
+                  onToggleFatima={() => setPaidByFatima(v => !v)}
                 />
               </div>
 
