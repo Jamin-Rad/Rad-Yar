@@ -1278,67 +1278,204 @@ ${manualEntries.length ? `
             )}
 
             {/* ── JAHRESÜBERSICHT ── */}
-            {view === 'jahr' && (
-              <div>
-                <div className={styles.reportHeader}>
-                  <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Jahresübersicht</h2>
-                  <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
-                    <button className={styles.monthNavBtn} onClick={() => setYear(y => y - 1)}>‹</button>
-                    <span className={styles.monthDisplay}>{year}</span>
-                    <button className={styles.monthNavBtn} onClick={() => setYear(y => y + 1)}>›</button>
+            {view === 'jahr' && (() => {
+              const W = 640, H = 210
+              const PAD = { l: 56, r: 14, t: 22, b: 40 }
+              const cW = W - PAD.l - PAD.r, cH = H - PAD.t - PAD.b
+              const slotW = cW / 12
+              const barW = Math.max(9, slotW * 0.3)
+              const cx = i => PAD.l + (i + 0.5) * slotW
+              const bh = v => Math.max((v / maxAnnual) * cH, 0)
+              const by = v => PAD.t + cH - bh(v)
+              const fmtY = v => v >= 1000 ? `${(v / 1000).toFixed(v >= 10000 ? 0 : 1)}k` : Math.round(v)
+              const sq = annualSummary ? sparquote(annualSummary.ti, annualSummary.te) : null
+
+              return (
+                <div>
+                  {/* ── Header ── */}
+                  <div className={styles.reportHeader}>
+                    <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Jahresübersicht</h2>
+                    <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
+                      <button className={styles.monthNavBtn} onClick={() => setYear(y => y - 1)}>‹</button>
+                      <span className={styles.monthDisplay}>{year}</span>
+                      <button className={styles.monthNavBtn} onClick={() => setYear(y => y + 1)}>›</button>
+                    </div>
                   </div>
-                </div>
-                <div className={styles.budgetPanel} style={{ marginBottom: 20 }}>
-                  <div className={styles.annualChart}>
-                    {annualData.map(m => (
-                      <div key={m.key} onClick={() => goToMonth(m.key)} className={`${styles.annualCol} ${m.key === month ? styles.annualColActive : ''}`} title={m.hasData ? `${MONTH_LONG[m.i]}: ${formatMoney(m.income)} / ${formatMoney(m.expenses)}` : MONTH_LONG[m.i]}>
-                        <div className={styles.annualBars}>
-                          <div className={styles.annualBarIn} style={{ height: `${m.hasData ? Math.max((m.income / maxAnnual) * 100, 4) : 3}%`, opacity: m.hasData ? 1 : 0.12 }} />
-                          <div className={styles.annualBarEx} style={{ height: `${m.hasData ? Math.max((m.expenses / maxAnnual) * 100, 4) : 3}%`, opacity: m.hasData ? 1 : 0.12 }} />
+
+                  {/* ── KPI Cards ── */}
+                  {annualSummary && (
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: 10, marginBottom: 16 }}>
+                      {[
+                        { icon: '💰', label: 'Einkommen', value: formatMoney(annualSummary.ti), sub: `Ø ${formatMoney(annualSummary.avgI)}`, color: '#16a34a', bg: '#f0fdf4', border: '#bbf7d0' },
+                        { icon: '💸', label: 'Ausgaben', value: formatMoney(annualSummary.te), sub: `Ø ${formatMoney(annualSummary.avgE)}`, color: '#f97316', bg: '#fff7ed', border: '#fed7aa' },
+                        { icon: annualSummary.balance >= 0 ? '📈' : '📉', label: 'Saldo', value: formatMoney(annualSummary.balance), sub: `${annualSummary.count} Monate`, color: annualSummary.balance >= 0 ? '#16a34a' : '#dc2626', bg: annualSummary.balance >= 0 ? '#f0fdf4' : '#fef2f2', border: annualSummary.balance >= 0 ? '#bbf7d0' : '#fecaca' },
+                        { icon: '🐖', label: 'Sparquote', value: sq ? `${sq} %` : '—', sub: 'Jahresschnitt', color: '#0ea5e9', bg: '#f0f9ff', border: '#bae6fd' },
+                      ].map(k => (
+                        <div key={k.label} style={{ padding: '14px 14px 12px', borderRadius: 16, background: `linear-gradient(145deg, ${k.bg}, rgba(255,255,255,0.7))`, border: `1.5px solid ${k.border}`, backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)', boxShadow: `0 2px 12px ${k.color}14` }}>
+                          <div style={{ fontSize: 20, marginBottom: 4 }}>{k.icon}</div>
+                          <p style={{ margin: '0 0 2px', fontSize: 10, fontWeight: 700, color: k.color, textTransform: 'uppercase', letterSpacing: '0.06em' }}>{k.label}</p>
+                          <p style={{ margin: '0 0 4px', fontSize: 16, fontWeight: 800, color: k.color, lineHeight: 1.1 }}>{k.value}</p>
+                          <p style={{ margin: 0, fontSize: 10, color: '#94a3b8', fontWeight: 600 }}>{k.sub}</p>
                         </div>
-                        <span className={styles.annualColLabel}>{MONTH_SHORT[m.i]}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div style={{ display: 'flex', gap: 14, marginTop: 8 }}>
-                    <span className={styles.annualLegend}><span style={{ background: '#16a34a' }} />Einkommen</span>
-                    <span className={styles.annualLegend}><span style={{ background: '#f97316' }} />Ausgaben</span>
-                  </div>
-                </div>
-                <div className={styles.budgetPanel}>
-                  {annualSummary ? (
-                    <table className={styles.annualTable}>
-                      <thead><tr><th>Monat</th><th>Einkommen</th><th>Ausgaben</th><th>Saldo</th><th>Sparquote</th></tr></thead>
-                      <tbody>
-                        {annualData.map(m => (
-                          <tr key={m.key} onClick={() => goToMonth(m.key)} style={{ cursor: 'pointer' }} className={m.key === month ? styles.annualRowActive : !m.hasData ? styles.annualRowEmpty : ''}>
-                            <td>{MONTH_LONG[m.i]}{m.key === month ? ' ●' : ''}</td>
-                            <td className={styles.moneyPositive}>{m.hasData ? formatMoney(m.income) : '—'}</td>
-                            <td>{m.hasData ? formatMoney(m.expenses) : '—'}</td>
-                            <td className={m.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{m.hasData ? formatMoney(m.balance) : '—'}</td>
-                            <td className={m.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{m.hasData && m.income ? `${sparquote(m.income, m.expenses)} %` : '—'}</td>
-                          </tr>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* ── SVG Chart ── */}
+                  <div style={{ padding: '16px 16px 12px', marginBottom: 16, borderRadius: 18, background: 'rgba(255,255,255,0.72)', border: '1.5px solid rgba(255,255,255,0.95)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', boxShadow: '0 4px 24px rgba(0,0,0,0.07), 0 1px 0 rgba(255,255,255,1) inset' }}>
+                    <div style={{ overflowX: 'auto' }}>
+                      <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', minWidth: 380, display: 'block' }}>
+                        <defs>
+                          <linearGradient id="gradIn" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="#16a34a" />
+                            <stop offset="100%" stopColor="#86efac" stopOpacity="0.5" />
+                          </linearGradient>
+                          <linearGradient id="gradEx" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="#f97316" />
+                            <stop offset="100%" stopColor="#fed7aa" stopOpacity="0.5" />
+                          </linearGradient>
+                          <filter id="barGlow">
+                            <feGaussianBlur stdDeviation="1.5" result="blur" />
+                            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                          </filter>
+                        </defs>
+
+                        {/* Y grid */}
+                        {[0, 0.25, 0.5, 0.75, 1].map((f, i) => {
+                          const gy = PAD.t + cH * (1 - f)
+                          return (
+                            <g key={i}>
+                              <line x1={PAD.l} y1={gy} x2={W - PAD.r} y2={gy}
+                                stroke={i === 0 ? '#cbd5e1' : '#e2e8f0'}
+                                strokeWidth={i === 0 ? 1.5 : 1}
+                                strokeDasharray={i === 0 || i === 4 ? 'none' : '4 3'} />
+                              <text x={PAD.l - 7} y={gy + 4} textAnchor="end" fontSize="9.5" fill="#94a3b8" fontWeight="700" fontFamily="inherit">
+                                {fmtY(maxAnnual * f)}
+                              </text>
+                            </g>
+                          )
+                        })}
+
+                        {/* Active month backdrop */}
+                        {annualData.map((m, i) => m.key === month ? (
+                          <rect key="active" x={cx(i) - slotW / 2 + 2} y={PAD.t - 6}
+                            width={slotW - 4} height={cH + 10} rx={8}
+                            fill="rgba(249,115,22,0.09)" />
+                        ) : null)}
+
+                        {/* Bars */}
+                        {annualData.map((m, i) => {
+                          const x = cx(i)
+                          const ih = bh(m.income), ey = by(m.expenses), eh = bh(m.expenses), iy = by(m.income)
+                          const op = m.hasData ? 1 : 0.13
+                          const r = Math.min(barW / 2, 4)
+                          return (
+                            <g key={m.key} onClick={() => goToMonth(m.key)} style={{ cursor: 'pointer' }}>
+                              {/* Income */}
+                              {ih > 0 && <rect x={x - barW - 2} y={iy} width={barW} height={Math.max(ih, 3)}
+                                rx={r} fill="url(#gradIn)" opacity={op}
+                                filter={m.hasData && m.income > 0 ? 'url(#barGlow)' : undefined} />}
+                              {/* Expense */}
+                              {eh > 0 && <rect x={x + 2} y={ey} width={barW} height={Math.max(eh, 3)}
+                                rx={r} fill="url(#gradEx)" opacity={op}
+                                filter={m.hasData && m.expenses > 0 ? 'url(#barGlow)' : undefined} />}
+                              {/* Saldo dot */}
+                              {m.hasData && (
+                                <circle cx={x} cy={Math.min(iy, ey) - 6}
+                                  r={3.5}
+                                  fill={m.balance >= 0 ? '#16a34a' : '#dc2626'}
+                                  opacity={0.85} />
+                              )}
+                            </g>
+                          )
+                        })}
+
+                        {/* Saldo connecting line */}
+                        {(() => {
+                          const pts = annualData.filter(m => m.hasData).map(m => {
+                            const i = m.i
+                            return `${cx(i).toFixed(1)},${(Math.min(by(m.income), by(m.expenses)) - 6).toFixed(1)}`
+                          })
+                          return pts.length > 1 ? (
+                            <polyline points={pts.join(' ')} fill="none"
+                              stroke="rgba(100,116,139,0.3)" strokeWidth="1.5"
+                              strokeDasharray="3 3" strokeLinecap="round" />
+                          ) : null
+                        })()}
+
+                        {/* X labels */}
+                        {annualData.map((m, i) => (
+                          <text key={m.key} x={cx(i)} y={H - 8} textAnchor="middle"
+                            fontSize="9.5" fontWeight={m.key === month ? '800' : '600'}
+                            fill={m.key === month ? '#f97316' : '#94a3b8'} fontFamily="inherit">
+                            {MONTH_SHORT[m.i]}
+                          </text>
                         ))}
-                      </tbody>
-                      <tfoot>
-                        <tr>
-                          <td>Jahresgesamt ({annualSummary.count} Monate)</td>
-                          <td className={styles.moneyPositive}>{formatMoney(annualSummary.ti)}</td>
-                          <td>{formatMoney(annualSummary.te)}</td>
-                          <td className={annualSummary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(annualSummary.balance)}</td>
-                          <td className={annualSummary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{sparquote(annualSummary.ti, annualSummary.te)} %</td>
-                        </tr>
-                        <tr className={styles.annualRowAvg}>
-                          <td>Ø pro Monat</td>
-                          <td className={styles.moneyPositive}>{formatMoney(annualSummary.avgI)}</td>
-                          <td>{formatMoney(annualSummary.avgE)}</td>
-                          <td className={annualSummary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(annualSummary.balance / annualSummary.count)}</td>
-                          <td>—</td>
-                        </tr>
-                      </tfoot>
-                    </table>
-                  ) : <p className={styles.emptyAnalytics}>Noch keine Daten für {year}.</p>}
-                </div>
+                      </svg>
+                    </div>
+
+                    {/* Legend */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 18, marginTop: 10, flexWrap: 'wrap' }}>
+                      {[['url(#gradIn)', '#16a34a', 'Einkommen'], ['url(#gradEx)', '#f97316', 'Ausgaben']].map(([grad, c, lbl]) => (
+                        <span key={lbl} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 700, color: c }}>
+                          <span style={{ width: 12, height: 12, borderRadius: 3, background: c, opacity: 0.85, display: 'inline-block' }} />
+                          {lbl}
+                        </span>
+                      ))}
+                      <span style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 700, color: '#64748b' }}>
+                        <svg width="20" height="8"><line x1="0" y1="4" x2="12" y2="4" stroke="#94a3b8" strokeWidth="1.5" strokeDasharray="3 3"/><circle cx="16" cy="4" r="3" fill="#16a34a"/></svg>
+                        Saldo
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* ── Table ── */}
+                  <div style={{ borderRadius: 18, background: 'rgba(255,255,255,0.72)', border: '1.5px solid rgba(255,255,255,0.9)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', boxShadow: '0 2px 16px rgba(0,0,0,0.05)', overflow: 'hidden' }}>
+                    {annualSummary ? (
+                      <table className={styles.annualTable}>
+                        <thead>
+                          <tr>
+                            <th>Monat</th>
+                            <th style={{ color: '#16a34a' }}>Einkommen</th>
+                            <th style={{ color: '#f97316' }}>Ausgaben</th>
+                            <th>Saldo</th>
+                            <th>Sparquote</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {annualData.map(m => (
+                            <tr key={m.key} onClick={() => goToMonth(m.key)} style={{ cursor: 'pointer' }}
+                              className={m.key === month ? styles.annualRowActive : !m.hasData ? styles.annualRowEmpty : ''}>
+                              <td style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                                {m.key === month && <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#f97316', display: 'inline-block', flexShrink: 0 }} />}
+                                {MONTH_LONG[m.i]}
+                              </td>
+                              <td className={styles.moneyPositive}>{m.hasData ? formatMoney(m.income) : '—'}</td>
+                              <td>{m.hasData ? formatMoney(m.expenses) : '—'}</td>
+                              <td className={m.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{m.hasData ? formatMoney(m.balance) : '—'}</td>
+                              <td className={m.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{m.hasData && m.income ? `${sparquote(m.income, m.expenses)} %` : '—'}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td>Gesamt {year} ({annualSummary.count} Mon.)</td>
+                            <td className={styles.moneyPositive}>{formatMoney(annualSummary.ti)}</td>
+                            <td>{formatMoney(annualSummary.te)}</td>
+                            <td className={annualSummary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(annualSummary.balance)}</td>
+                            <td className={annualSummary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{sparquote(annualSummary.ti, annualSummary.te)} %</td>
+                          </tr>
+                          <tr className={styles.annualRowAvg}>
+                            <td>Ø pro Monat</td>
+                            <td className={styles.moneyPositive}>{formatMoney(annualSummary.avgI)}</td>
+                            <td>{formatMoney(annualSummary.avgE)}</td>
+                            <td className={annualSummary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(annualSummary.balance / annualSummary.count)}</td>
+                            <td>—</td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    ) : <p className={styles.emptyAnalytics} style={{ padding: 24 }}>Noch keine Daten für {year}.</p>}
+                  </div>
 
                 {/* ── KATEGORIE-VERLAUF (moved to own view) ── */}
                 {false && (() => {
@@ -1556,7 +1693,8 @@ ${manualEntries.length ? `
                   )
                 })()}
               </div>
-            )}
+            )
+          })()}
 
             {/* ── VERLAUF ── */}
             {view === 'verlauf' && (() => {
