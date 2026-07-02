@@ -78,7 +78,7 @@ function SubThemen({ sub, fachColor, lang }) {
   }
 
   const labels = T[lang] || T.de
-  const renderSubActions = (item) => {
+  const renderActions = (item) => {
     if (!item.mcqLink && !item.flashcardLink && !item.fallStatus) return null
     return (
       <div className={styles.subLearningActions}>
@@ -115,7 +115,7 @@ function SubThemen({ sub, fachColor, lang }) {
                 ) : (
                   <div className={styles.subItem}>{content}</div>
                 )}
-                {renderSubActions(s)}
+                {renderActions(s)}
               </div>
             )
           })}
@@ -204,17 +204,6 @@ export default function LernenFachPage() {
     return href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`
   }
 
-  const renderTopicActions = (item) => {
-    if (!item.mcqLink && !item.flashcardLink && !item.fallStatus) return null
-    return (
-      <div className={styles.topicLearningActions}>
-        {item.mcqLink && <Link href={withPageLang(item.mcqLink)} className={`${styles.subLearningBtn} ${styles.subLearningMcq}`}>{t.mcq}</Link>}
-        {item.flashcardLink && <Link href={withPageLang(item.flashcardLink)} className={`${styles.subLearningBtn} ${styles.subLearningFlash}`}>{t.flash}</Link>}
-        {item.fallStatus && <span className={`${styles.subLearningBtn} ${styles.subLearningFall}`} aria-disabled="true">{t.fall} · {t.building}</span>}
-      </div>
-    )
-  }
-
   return (
     <div className={styles.page}>
 
@@ -228,6 +217,7 @@ export default function LernenFachPage() {
             </div>
             <div className={styles.topHeading}>
               <h1 className={styles.topTitle} style={{ color: fach.color }}>{fachName}</h1>
+              <span className={styles.topSubtitle}>{t.lessonsTitle} · {t.lessonsLead}</span>
             </div>
           </div>
         </div>
@@ -319,23 +309,25 @@ export default function LernenFachPage() {
                     )}
                     <div className={styles.topicList}>
                       {section.items.map(th => {
+                        const available = isAvailable(th)
+                        const rowContent = (
+                          <>
+                            <span className={styles.topicRowTitle}>{getThemaTitle(th, lang)}</span>
+                            {isRead(th, readArticles) && <span className={styles.readBadge}>✓ {t.read}</span>}
+                            <span className={`${styles.topicRowStatus} ${available ? styles.topicRowStatusReady : ''}`}>
+                              {available ? t.available : t.building}
+                            </span>
+                            {th.link && <span className={styles.topicRowArrow}>→</span>}
+                          </>
+                        )
+
                         return (
                           <div key={th.id} className={styles.topicListItem}>
-                            <div className={styles.topicRow}>
-                              {th.link ? (
-                                <Link href={withPageLang(th.link)} className={styles.topicRowMain}>
-                                  <span className={styles.topicRowTitle}>{getThemaTitle(th, lang)}</span>
-                                  {isRead(th, readArticles) && <span className={styles.readBadge}>✓ {t.read}</span>}
-                                  <span className={styles.topicRowArrow}>→</span>
-                                </Link>
-                              ) : (
-                                <div className={styles.topicRowMain}>
-                                  <span className={styles.topicRowTitle}>{getThemaTitle(th, lang)}</span>
-                                  {isRead(th, readArticles) && <span className={styles.readBadge}>✓ {t.read}</span>}
-                                </div>
-                              )}
-                              {renderTopicActions(th)}
-                            </div>
+                            {th.link ? (
+                              <Link href={withPageLang(th.link)} className={styles.topicRow}>{rowContent}</Link>
+                            ) : (
+                              <div className={styles.topicRow}>{rowContent}</div>
+                            )}
                             {th.sub && <SubThemen sub={th.sub} fachColor={fach.color} lang={lang} />}
                           </div>
                         )
