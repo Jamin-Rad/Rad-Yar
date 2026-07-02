@@ -1565,6 +1565,32 @@ ${manualEntries.length ? `
               const catAllNames = new Set(categories.map(c => c.name))
               const selectedCats = [...chartCats]
 
+              // Stable color per category (doesn't shift when others are toggled)
+              const catColorMap = {}
+              expCats.forEach((cat, i) => { catColorMap[cat] = COLORS[i % COLORS.length] })
+
+              const CAT_EMOJI = {
+                'Lebensmittel':'🛒','Kleidung':'👕','Restaurant':'🍽️','Auto':'🚗',
+                'Zu Hause':'🏠','Ausflug':'✈️','Jamin':'🧔','Fatima':'👩',
+                'Mobin':'👦','Mobina':'👧','Meine Eltern':'👴','Hossein':'🧓',
+                'Fatima Eltern':'👵','Mohsen':'👨','Nazri':'🕌','Moschee':'🕌',
+              }
+
+              const GROUPS = [
+                { key:'family', label:'Unsere Familie', emoji:'👨‍👩‍👧‍👦',
+                  color:'#2563eb', bg:'#eff6ff', border:'#bfdbfe',
+                  cats:['Jamin','Fatima','Mobin','Mobina'].filter(c => expCats.includes(c)) },
+                { key:'verwandte', label:'Verwandte & Freunde', emoji:'🤝',
+                  color:'#7c3aed', bg:'#f5f3ff', border:'#ddd6fe',
+                  cats:['Meine Eltern','Fatima Eltern','Hossein','Mohsen','Nazri','Moschee'].filter(c => expCats.includes(c)) },
+                { key:'alltag', label:'Alltag & Haushalt', emoji:'🏡',
+                  color:'#059669', bg:'#f0fdf4', border:'#bbf7d0',
+                  cats:['Lebensmittel','Kleidung','Restaurant','Auto','Zu Hause','Ausflug'].filter(c => expCats.includes(c)) },
+              ]
+              const knownCats = new Set(GROUPS.flatMap(g => g.cats))
+              const otherCats = expCats.filter(c => !knownCats.has(c))
+              if (otherCats.length) GROUPS.push({ key:'sonst', label:'Sonstiges', emoji:'📦', color:'#64748b', bg:'#f8fafc', border:'#e2e8f0', cats: otherCats })
+
               function getMonthsInRange(from, to) {
                 const months = []
                 let [fy, fm] = from.split('-').map(Number)
@@ -1579,6 +1605,21 @@ ${manualEntries.length ? `
               const availableMonths = getMonthsInRange('2026-01', getMonthKey())
               const chartMonths = getMonthsInRange(chartFrom, chartTo)
 
+              // Compute totals for ALL cats (for card preview amounts)
+              const allCatTotals = {}
+              expCats.forEach(cat => {
+                allCatTotals[cat] = chartMonths.reduce((sum, key) => {
+                  const md = monthWithRecurring(key, store, recurring)
+                  return sum + md.entries.filter(e => {
+                    if (e.type !== 'expense') return false
+                    const vt = Array.isArray(e.tags) ? e.tags.filter(t => catAllNames.has(t)) : []
+                    const keys = vt.length ? vt : [e.category || 'Ohne Kategorie']
+                    return keys.includes(cat)
+                  }).reduce((s, e) => s + Number(e.amount), 0)
+                }, 0)
+              })
+
+              // Chart data only for selected cats
               const chartData = chartMonths.map(key => {
                 const md = monthWithRecurring(key, store, recurring)
                 const totals = {}
@@ -1590,12 +1631,11 @@ ${manualEntries.length ? `
                     return keys.includes(cat)
                   }).reduce((s, e) => s + Number(e.amount), 0)
                 })
-                const mo = Number(key.split('-')[1]) - 1
-                return { key, label: MONTH_SHORT[mo], totals }
+                return { key, label: MONTH_SHORT[Number(key.split('-')[1]) - 1], totals }
               })
 
               const maxVal = Math.max(1, ...selectedCats.flatMap(cat => chartData.map(d => d.totals[cat] || 0)))
-              const W = 600, H = 240
+              const W = 600, H = 250
               const PAD = { l: 62, r: 20, t: 24, b: 44 }
               const cW = W - PAD.l - PAD.r, cH = H - PAD.t - PAD.b
               const xOf = i => chartMonths.length === 1 ? PAD.l + cW / 2 : PAD.l + (i / (chartMonths.length - 1)) * cW
@@ -1611,72 +1651,130 @@ ${manualEntries.length ? `
                 }).join(' ')
               }
 
+              function toggleCat(cat) {
+                setChartCats(prev => { const n = new Set(prev); n.has(cat) ? n.delete(cat) : n.add(cat); return n })
+              }
+              function toggleGroup(cats) {
+                const allSel = cats.every(c => chartCats.has(c))
+                setChartCats(prev => { const n = new Set(prev); cats.forEach(c => allSel ? n.delete(c) : n.add(c)); return n })
+              }
+
               return (
                 <div>
-                  {/* Page header */}
+                  {/* ── Header ── */}
                   <div className={styles.reportHeader}>
                     <div>
                       <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Kategorie-Verlauf</h2>
-                      <p style={{ margin: '3px 0 0', fontSize: 12, color: 'var(--text-muted,#94a3b8)', fontWeight: 600 }}>Ausgaben pro Kategorie über Zeit</p>
+                      <p style={{ margin:'3px 0 0', fontSize:12, color:'var(--text-muted,#94a3b8)', fontWeight:600 }}>Ausgaben pro Kategorie über Zeit</p>
                     </div>
-                    {/* Date range */}
-                    <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
-                      {[['Von', chartFrom, v => { if (v <= chartTo) setChartFrom(v) }], ['Bis', chartTo, v => { if (v >= chartFrom) setChartTo(v) }]].map(([lbl, val, onChange]) => (
-                        <div key={lbl} style={{ display: 'flex', alignItems: 'center', gap: 5, background: 'var(--bg-soft,#f8fafc)', border: '1.5px solid var(--border,#e2e8f0)', borderRadius: 10, padding: '5px 12px' }}>
-                          <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-muted,#94a3b8)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{lbl}</span>
+                    <div style={{ display:'flex', gap:8, alignItems:'center', flexWrap:'wrap' }}>
+                      {[['Von', chartFrom, v => { if (v <= chartTo) setChartFrom(v) }],
+                        ['Bis', chartTo, v => { if (v >= chartFrom) setChartTo(v) }]].map(([lbl, val, onChange]) => (
+                        <div key={lbl} style={{ display:'flex', alignItems:'center', gap:5, background:'var(--bg-soft,#f8fafc)', border:'1.5px solid var(--border,#e2e8f0)', borderRadius:10, padding:'5px 12px' }}>
+                          <span style={{ fontSize:11, fontWeight:700, color:'var(--text-muted,#94a3b8)', textTransform:'uppercase', letterSpacing:'0.05em' }}>{lbl}</span>
                           <select value={val} onChange={e => onChange(e.target.value)}
-                            style={{ border: 'none', background: 'transparent', color: 'var(--text-strong,#0d1b2a)', fontSize: 13, fontWeight: 700, cursor: 'pointer', outline: 'none' }}>
-                            {availableMonths.map(m => (
-                              <option key={m} value={m}>{MONTH_SHORT[Number(m.split('-')[1])-1]} {m.split('-')[0]}</option>
-                            ))}
+                            style={{ border:'none', background:'transparent', color:'var(--text-strong,#0d1b2a)', fontSize:13, fontWeight:700, cursor:'pointer', outline:'none' }}>
+                            {availableMonths.map(m => <option key={m} value={m}>{MONTH_SHORT[Number(m.split('-')[1])-1]} {m.split('-')[0]}</option>)}
                           </select>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* Category pills */}
-                  <div className={styles.budgetPanel} style={{ padding: '14px 16px', marginBottom: 16 }}>
-                    <p style={{ margin: '0 0 10px', fontSize: 11, fontWeight: 700, color: 'var(--text-muted,#94a3b8)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Kategorien auswählen</p>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7 }}>
-                      {expCats.map(cat => {
-                        const sel = chartCats.has(cat)
-                        const ci = selectedCats.indexOf(cat)
-                        return (
-                          <button key={cat} type="button"
-                            onClick={() => setChartCats(prev => { const n = new Set(prev); sel ? n.delete(cat) : n.add(cat); return n })}
-                            style={{
-                              padding: '6px 14px 6px 10px', borderRadius: 24,
-                              border: sel ? `2px solid ${COLORS[ci % COLORS.length]}` : '2px solid var(--border,#e2e8f0)',
-                              background: sel ? `${COLORS[ci % COLORS.length]}15` : 'transparent',
-                              color: sel ? COLORS[ci % COLORS.length] : 'var(--text-muted,#94a3b8)',
-                              fontWeight: 700, fontSize: 12, cursor: 'pointer', transition: 'all .15s',
-                              display: 'flex', alignItems: 'center', gap: 6,
-                              boxShadow: sel ? `0 0 0 3px ${COLORS[ci % COLORS.length]}18` : 'none',
-                            }}>
-                            {sel && <span style={{ width: 8, height: 8, borderRadius: '50%', background: COLORS[ci % COLORS.length], flexShrink: 0, display: 'inline-block' }} />}
-                            {cat}
+                  {/* ── Kategorie-Auswahl ── */}
+                  {GROUPS.map(group => {
+                    if (!group.cats.length) return null
+                    const allSel = group.cats.every(c => chartCats.has(c))
+                    const someSel = group.cats.some(c => chartCats.has(c))
+                    return (
+                      <div key={group.key} style={{ marginBottom:16 }}>
+                        {/* Group header */}
+                        <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:10 }}>
+                          <div style={{ display:'flex', alignItems:'center', gap:7, padding:'5px 14px', borderRadius:20, background:group.bg, border:`1.5px solid ${group.border}`, flexShrink:0 }}>
+                            <span style={{ fontSize:14 }}>{group.emoji}</span>
+                            <span style={{ fontSize:11, fontWeight:800, color:group.color, textTransform:'uppercase', letterSpacing:'0.06em' }}>{group.label}</span>
+                          </div>
+                          <div style={{ flex:1, height:1, background:'var(--border,#e2e8f0)' }} />
+                          <button type="button" onClick={() => toggleGroup(group.cats)}
+                            style={{ padding:'4px 12px', borderRadius:20, border:`1.5px solid ${group.border}`, background: allSel ? group.bg : 'transparent', color:group.color, fontSize:11, fontWeight:700, cursor:'pointer', flexShrink:0, transition:'all .15s' }}>
+                            {allSel ? 'Alle ab' : someSel ? 'Alle' : 'Alle'}
                           </button>
-                        )
-                      })}
-                    </div>
-                  </div>
+                        </div>
+                        {/* Cards */}
+                        <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(100px, 1fr))', gap:8 }}>
+                          {group.cats.map(cat => {
+                            const sel = chartCats.has(cat)
+                            const color = catColorMap[cat]
+                            const total = allCatTotals[cat] || 0
+                            const emoji = CAT_EMOJI[cat] || '💰'
+                            return (
+                              <button key={cat} type="button" onClick={() => toggleCat(cat)}
+                                style={{
+                                  display:'flex', flexDirection:'column', alignItems:'center', gap:6,
+                                  padding:'14px 10px 12px', borderRadius:14, cursor:'pointer',
+                                  border: sel ? `2px solid ${color}` : `2px solid var(--border,#e2e8f0)`,
+                                  background: sel ? `${color}12` : 'var(--bg-card,#fff)',
+                                  boxShadow: sel ? `0 4px 18px ${color}28, 0 1px 3px rgba(0,0,0,0.06)` : '0 1px 3px rgba(0,0,0,0.05)',
+                                  transform: sel ? 'translateY(-2px)' : 'none',
+                                  transition:'all .18s cubic-bezier(.34,1.56,.64,1)',
+                                  position:'relative',
+                                }}>
+                                {/* Checkmark badge */}
+                                {sel && (
+                                  <span style={{ position:'absolute', top:6, right:6, width:16, height:16, borderRadius:'50%', background:color, display:'flex', alignItems:'center', justifyContent:'center' }}>
+                                    <svg width="9" height="9" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                  </span>
+                                )}
+                                {/* Color dot */}
+                                <span style={{ fontSize:28, lineHeight:1 }}>{emoji}</span>
+                                <span style={{ fontSize:12, fontWeight:700, color: sel ? color : 'var(--text-strong,#0d1b2a)', textAlign:'center', lineHeight:1.2 }}>{cat}</span>
+                                <span style={{ fontSize:11, fontWeight:600, color: sel ? color : 'var(--text-muted,#94a3b8)', opacity: total > 0 ? 1 : 0.5 }}>
+                                  {total > 0 ? (total >= 1000 ? `${(total/1000).toFixed(1)}k €` : `${Math.round(total)} €`) : '—'}
+                                </span>
+                              </button>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    )
+                  })}
 
+                  {/* ── Chart ── */}
                   {selectedCats.length === 0 ? (
-                    <div className={styles.budgetPanel} style={{ padding: '40px 24px', textAlign: 'center' }}>
-                      <p style={{ margin: 0, fontSize: 28, marginBottom: 10 }}>📈</p>
-                      <p style={{ margin: 0, fontSize: 14, color: 'var(--text-muted,#94a3b8)', fontWeight: 600 }}>Wähle oben mindestens eine Kategorie aus.</p>
+                    <div className={styles.budgetPanel} style={{ padding:'48px 24px', textAlign:'center', marginTop:8 }}>
+                      <p style={{ margin:'0 0 8px', fontSize:36 }}>📈</p>
+                      <p style={{ margin:0, fontSize:14, color:'var(--text-muted,#94a3b8)', fontWeight:600 }}>Wähle oben eine oder mehrere Kategorien aus.</p>
                     </div>
                   ) : (
-                    <div className={styles.budgetPanel} style={{ padding: '20px 20px 16px' }}>
+                    <div className={styles.budgetPanel} style={{ padding:'18px 18px 14px', marginTop:8 }}>
+                      {/* Selected summary chips */}
+                      <div style={{ display:'flex', flexWrap:'wrap', gap:8, marginBottom:14 }}>
+                        {selectedCats.map(cat => {
+                          const color = catColorMap[cat]
+                          const total = allCatTotals[cat] || 0
+                          const emoji = CAT_EMOJI[cat] || '💰'
+                          return (
+                            <div key={cat} style={{ display:'flex', alignItems:'center', gap:6, padding:'5px 10px 5px 8px', borderRadius:20, background:`${color}12`, border:`1.5px solid ${color}40` }}>
+                              <span style={{ fontSize:14 }}>{emoji}</span>
+                              <span style={{ fontSize:12, fontWeight:700, color }}>{cat}</span>
+                              <span style={{ fontSize:11, fontWeight:600, color, opacity:.8 }}>
+                                {total >= 1000 ? `${(total/1000).toFixed(1)}k €` : `${Math.round(total)} €`}
+                              </span>
+                              <button type="button" onClick={() => toggleCat(cat)}
+                                style={{ marginLeft:2, width:14, height:14, borderRadius:'50%', border:'none', background:`${color}30`, color, cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', fontSize:10, fontWeight:900, padding:0, lineHeight:1 }}>×</button>
+                            </div>
+                          )
+                        })}
+                      </div>
+
                       {/* SVG chart */}
-                      <div style={{ overflowX: 'auto', margin: '0 -4px' }}>
-                        <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', minWidth: Math.max(340, chartMonths.length * 56), display: 'block' }}>
+                      <div style={{ overflowX:'auto' }}>
+                        <svg viewBox={`0 0 ${W} ${H}`} style={{ width:'100%', minWidth:Math.max(340, chartMonths.length * 58), display:'block' }}>
                           <defs>
                             {selectedCats.map((cat, ci) => (
                               <linearGradient key={cat} id={`vg${ci}`} x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stopColor={COLORS[ci % COLORS.length]} stopOpacity="0.2" />
-                                <stop offset="100%" stopColor={COLORS[ci % COLORS.length]} stopOpacity="0" />
+                                <stop offset="0%" stopColor={catColorMap[cat]} stopOpacity="0.22" />
+                                <stop offset="100%" stopColor={catColorMap[cat]} stopOpacity="0" />
                               </linearGradient>
                             ))}
                           </defs>
@@ -1686,44 +1784,43 @@ ${manualEntries.length ? `
                             const gv = maxVal * (1 - i / 4)
                             return (
                               <g key={i}>
-                                <line x1={PAD.l} y1={gy} x2={W - PAD.r} y2={gy}
-                                  stroke={i === 4 ? 'var(--border,#cbd5e1)' : 'var(--border,#e2e8f0)'}
-                                  strokeWidth={i === 4 ? 1.5 : 1}
-                                  strokeDasharray={i === 0 || i === 4 ? 'none' : '4 3'} />
-                                <text x={PAD.l - 8} y={gy + 4} textAnchor="end" fontSize="10" fill="var(--text-muted,#94a3b8)" fontWeight="700" fontFamily="inherit">
-                                  {gv >= 1000 ? `${(gv/1000).toFixed(gv >= 10000 ? 0 : 1)}k` : Math.round(gv)}
+                                <line x1={PAD.l} y1={gy} x2={W-PAD.r} y2={gy}
+                                  stroke={i===4 ? 'var(--border,#cbd5e1)' : 'var(--border,#e2e8f0)'}
+                                  strokeWidth={i===4 ? 1.5 : 1}
+                                  strokeDasharray={i===0||i===4 ? 'none':'4 3'} />
+                                <text x={PAD.l-8} y={gy+4} textAnchor="end" fontSize="10" fill="var(--text-muted,#94a3b8)" fontWeight="700" fontFamily="inherit">
+                                  {gv>=1000 ? `${(gv/1000).toFixed(gv>=10000?0:1)}k` : Math.round(gv)}
                                 </text>
                               </g>
                             )
                           })}
                           {/* X labels */}
-                          {chartData.map((d, i) => (
-                            <text key={d.key} x={xOf(i)} y={H - 10} textAnchor="middle" fontSize="10" fill="var(--text-muted,#94a3b8)" fontWeight="700" fontFamily="inherit">{d.label}</text>
+                          {chartData.map((d,i) => (
+                            <text key={d.key} x={xOf(i)} y={H-10} textAnchor="middle" fontSize="10" fill="var(--text-muted,#94a3b8)" fontWeight="700" fontFamily="inherit">{d.label}</text>
                           ))}
                           {/* Area fills */}
-                          {selectedCats.map((cat, ci) => {
-                            const pts = chartData.map((d, i) => ({ x: xOf(i), y: yOf(d.totals[cat] || 0) }))
+                          {selectedCats.map((cat,ci) => {
+                            const pts = chartData.map((d,i) => ({ x:xOf(i), y:yOf(d.totals[cat]||0) }))
                             const baseY = yOf(0)
-                            const areaPath = `${smoothPath(pts)} L${pts[pts.length-1].x.toFixed(1)},${baseY.toFixed(1)} L${pts[0].x.toFixed(1)},${baseY.toFixed(1)} Z`
-                            return <path key={cat} d={areaPath} fill={`url(#vg${ci})`} />
+                            return <path key={cat} d={`${smoothPath(pts)} L${pts[pts.length-1].x.toFixed(1)},${baseY.toFixed(1)} L${pts[0].x.toFixed(1)},${baseY.toFixed(1)} Z`} fill={`url(#vg${ci})`} />
                           })}
                           {/* Lines */}
-                          {selectedCats.map((cat, ci) => {
-                            const pts = chartData.map((d, i) => ({ x: xOf(i), y: yOf(d.totals[cat] || 0) }))
-                            return <path key={cat} d={smoothPath(pts)} fill="none" stroke={COLORS[ci % COLORS.length]} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
+                          {selectedCats.map(cat => {
+                            const pts = chartData.map((d,i) => ({ x:xOf(i), y:yOf(d.totals[cat]||0) }))
+                            return <path key={cat} d={smoothPath(pts)} fill="none" stroke={catColorMap[cat]} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
                           })}
                           {/* Dots + labels */}
-                          {selectedCats.map((cat, ci) => {
-                            const color = COLORS[ci % COLORS.length]
-                            return chartData.map((d, i) => {
-                              const x = xOf(i), y = yOf(d.totals[cat] || 0), v = d.totals[cat] || 0
+                          {selectedCats.map(cat => {
+                            const color = catColorMap[cat]
+                            return chartData.map((d,i) => {
+                              const x=xOf(i), y=yOf(d.totals[cat]||0), v=d.totals[cat]||0
                               return (
                                 <g key={`${cat}-${i}`}>
                                   <circle cx={x} cy={y} r={6} fill="white" stroke={color} strokeWidth="2.5" />
                                   <circle cx={x} cy={y} r={3} fill={color} />
                                   {v > 0 && (
-                                    <text x={x} y={y - 12} textAnchor="middle" fontSize="10" fill={color} fontWeight="800" fontFamily="inherit">
-                                      {v >= 1000 ? `${(v/1000).toFixed(1)}k` : Math.round(v)}
+                                    <text x={x} y={y-12} textAnchor="middle" fontSize="9.5" fill={color} fontWeight="800" fontFamily="inherit">
+                                      {v>=1000 ? `${(v/1000).toFixed(1)}k` : Math.round(v)}
                                     </text>
                                   )}
                                 </g>
@@ -1732,39 +1829,40 @@ ${manualEntries.length ? `
                           })}
                         </svg>
                       </div>
-                      {/* Legend */}
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, marginTop: 12, paddingTop: 12, borderTop: '1px solid var(--border,#e2e8f0)' }}>
-                        {selectedCats.map((cat, ci) => (
-                          <span key={cat} style={{ display: 'flex', alignItems: 'center', gap: 7, fontSize: 12, fontWeight: 700, color: 'var(--text-strong,#0d1b2a)' }}>
-                            <span style={{ width: 20, height: 3, background: COLORS[ci % COLORS.length], borderRadius: 2, display: 'inline-block' }} />
-                            <span style={{ width: 7, height: 7, borderRadius: '50%', background: COLORS[ci % COLORS.length], display: 'inline-block', marginLeft: -16 }} />
-                            {cat}
-                          </span>
-                        ))}
-                      </div>
+
                       {/* Data table */}
-                      <div style={{ marginTop: 16, overflowX: 'auto' }}>
+                      <div style={{ marginTop:14, overflowX:'auto' }}>
                         <table className={styles.annualTable}>
                           <thead>
                             <tr>
                               <th>Monat</th>
-                              {selectedCats.map((cat, ci) => (
-                                <th key={cat} style={{ color: COLORS[ci % COLORS.length] }}>{cat}</th>
+                              {selectedCats.map(cat => (
+                                <th key={cat} style={{ color:catColorMap[cat] }}>{CAT_EMOJI[cat] || ''} {cat}</th>
                               ))}
                             </tr>
                           </thead>
                           <tbody>
                             {chartData.map(d => (
-                              <tr key={d.key} onClick={() => goToMonth(d.key)} style={{ cursor: 'pointer' }}>
+                              <tr key={d.key} onClick={() => goToMonth(d.key)} style={{ cursor:'pointer' }}>
                                 <td>{MONTH_SHORT[Number(d.key.split('-')[1])-1]} {d.key.split('-')[0]}</td>
                                 {selectedCats.map(cat => (
-                                  <td key={cat} style={{ textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>
+                                  <td key={cat} style={{ textAlign:'right', fontVariantNumeric:'tabular-nums' }}>
                                     {d.totals[cat] > 0 ? formatMoney(d.totals[cat]) : '—'}
                                   </td>
                                 ))}
                               </tr>
                             ))}
                           </tbody>
+                          <tfoot>
+                            <tr>
+                              <td>Gesamt</td>
+                              {selectedCats.map(cat => (
+                                <td key={cat} style={{ textAlign:'right', fontVariantNumeric:'tabular-nums', color:catColorMap[cat], fontWeight:800 }}>
+                                  {formatMoney(allCatTotals[cat] || 0)}
+                                </td>
+                              ))}
+                            </tr>
+                          </tfoot>
                         </table>
                       </div>
                     </div>
