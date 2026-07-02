@@ -1687,17 +1687,17 @@ ${manualEntries.length ? `
                     const allSel = group.cats.every(c => chartCats.has(c))
                     const someSel = group.cats.some(c => chartCats.has(c))
                     return (
-                      <div key={group.key} style={{ marginBottom:16 }}>
+                      <div key={group.key} style={{ marginBottom:16, borderRadius:18, padding:'14px 14px 12px', background:`linear-gradient(135deg, ${group.bg}cc, ${group.bg}55)`, border:`1.5px solid ${group.border}88`, backdropFilter:'blur(8px)', WebkitBackdropFilter:'blur(8px)' }}>
                         {/* Group header */}
-                        <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:10 }}>
-                          <div style={{ display:'flex', alignItems:'center', gap:7, padding:'5px 14px', borderRadius:20, background:group.bg, border:`1.5px solid ${group.border}`, flexShrink:0 }}>
-                            <span style={{ fontSize:14 }}>{group.emoji}</span>
-                            <span style={{ fontSize:11, fontWeight:800, color:group.color, textTransform:'uppercase', letterSpacing:'0.06em' }}>{group.label}</span>
+                        <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:12 }}>
+                          <div style={{ display:'flex', alignItems:'center', gap:7, padding:'6px 14px', borderRadius:20, background:`linear-gradient(135deg, ${group.color}22, ${group.color}0d)`, border:`1.5px solid ${group.color}40`, boxShadow:`0 2px 8px ${group.color}18`, flexShrink:0 }}>
+                            <span style={{ fontSize:15 }}>{group.emoji}</span>
+                            <span style={{ fontSize:11, fontWeight:800, color:group.color, textTransform:'uppercase', letterSpacing:'0.07em' }}>{group.label}</span>
                           </div>
-                          <div style={{ flex:1, height:1, background:'var(--border,#e2e8f0)' }} />
+                          <div style={{ flex:1, height:1, background:`linear-gradient(to right, ${group.border}, transparent)` }} />
                           <button type="button" onClick={() => toggleGroup(group.cats)}
-                            style={{ padding:'4px 12px', borderRadius:20, border:`1.5px solid ${group.border}`, background: allSel ? group.bg : 'transparent', color:group.color, fontSize:11, fontWeight:700, cursor:'pointer', flexShrink:0, transition:'all .15s' }}>
-                            {allSel ? 'Alle ab' : someSel ? 'Alle' : 'Alle'}
+                            style={{ padding:'5px 13px', borderRadius:20, border:`1.5px solid ${group.color}50`, background: allSel ? `${group.color}18` : 'rgba(255,255,255,0.6)', color:group.color, fontSize:11, fontWeight:700, cursor:'pointer', flexShrink:0, transition:'all .15s', backdropFilter:'blur(4px)' }}>
+                            {allSel ? '✓ Alle ab' : '+ Alle'}
                           </button>
                         </div>
                         {/* Cards */}
@@ -1711,24 +1711,28 @@ ${manualEntries.length ? `
                               <button key={cat} type="button" onClick={() => toggleCat(cat)}
                                 style={{
                                   display:'flex', flexDirection:'column', alignItems:'center', gap:6,
-                                  padding:'14px 10px 12px', borderRadius:14, cursor:'pointer',
-                                  border: sel ? `2px solid ${color}` : `2px solid var(--border,#e2e8f0)`,
-                                  background: sel ? `${color}12` : 'var(--bg-card,#fff)',
-                                  boxShadow: sel ? `0 4px 18px ${color}28, 0 1px 3px rgba(0,0,0,0.06)` : '0 1px 3px rgba(0,0,0,0.05)',
-                                  transform: sel ? 'translateY(-2px)' : 'none',
-                                  transition:'all .18s cubic-bezier(.34,1.56,.64,1)',
+                                  padding:'16px 10px 12px', borderRadius:16, cursor:'pointer',
+                                  border: sel ? `2px solid ${color}90` : '1.5px solid rgba(255,255,255,0.9)',
+                                  background: sel
+                                    ? `linear-gradient(145deg, ${color}22, ${color}0a)`
+                                    : 'rgba(255,255,255,0.65)',
+                                  backdropFilter:'blur(12px)', WebkitBackdropFilter:'blur(12px)',
+                                  boxShadow: sel
+                                    ? `0 6px 24px ${color}30, 0 1px 0 rgba(255,255,255,0.8) inset`
+                                    : '0 2px 8px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.9) inset',
+                                  transform: sel ? 'translateY(-3px) scale(1.02)' : 'translateY(0) scale(1)',
+                                  transition:'all .2s cubic-bezier(.34,1.56,.64,1)',
                                   position:'relative',
                                 }}>
-                                {/* Checkmark badge */}
+                                {/* Checkmark */}
                                 {sel && (
-                                  <span style={{ position:'absolute', top:6, right:6, width:16, height:16, borderRadius:'50%', background:color, display:'flex', alignItems:'center', justifyContent:'center' }}>
-                                    <svg width="9" height="9" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                  <span style={{ position:'absolute', top:7, right:7, width:17, height:17, borderRadius:'50%', background:`linear-gradient(135deg, ${color}, ${color}bb)`, boxShadow:`0 2px 6px ${color}50`, display:'flex', alignItems:'center', justifyContent:'center' }}>
+                                    <svg width="9" height="9" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                                   </span>
                                 )}
-                                {/* Color dot */}
-                                <span style={{ fontSize:28, lineHeight:1 }}>{emoji}</span>
-                                <span style={{ fontSize:12, fontWeight:700, color: sel ? color : 'var(--text-strong,#0d1b2a)', textAlign:'center', lineHeight:1.2 }}>{cat}</span>
-                                <span style={{ fontSize:11, fontWeight:600, color: sel ? color : 'var(--text-muted,#94a3b8)', opacity: total > 0 ? 1 : 0.5 }}>
+                                <span style={{ fontSize:30, lineHeight:1, filter: sel ? 'drop-shadow(0 2px 4px rgba(0,0,0,0.15))' : 'none', transition:'filter .2s' }}>{emoji}</span>
+                                <span style={{ fontSize:12, fontWeight:700, color: sel ? color : 'var(--text-strong,#1e293b)', textAlign:'center', lineHeight:1.2 }}>{cat}</span>
+                                <span style={{ fontSize:11, fontWeight:600, color: sel ? color : 'var(--text-muted,#94a3b8)', background: total > 0 && sel ? `${color}15` : 'transparent', padding:'2px 7px', borderRadius:10 }}>
                                   {total > 0 ? (total >= 1000 ? `${(total/1000).toFixed(1)}k €` : `${Math.round(total)} €`) : '—'}
                                 </span>
                               </button>
@@ -1741,27 +1745,27 @@ ${manualEntries.length ? `
 
                   {/* ── Chart ── */}
                   {selectedCats.length === 0 ? (
-                    <div className={styles.budgetPanel} style={{ padding:'48px 24px', textAlign:'center', marginTop:8 }}>
-                      <p style={{ margin:'0 0 8px', fontSize:36 }}>📈</p>
+                    <div style={{ padding:'48px 24px', textAlign:'center', marginTop:8, borderRadius:18, background:'rgba(255,255,255,0.6)', border:'1.5px solid rgba(226,232,240,0.8)', backdropFilter:'blur(12px)', WebkitBackdropFilter:'blur(12px)' }}>
+                      <p style={{ margin:'0 0 8px', fontSize:40 }}>📈</p>
                       <p style={{ margin:0, fontSize:14, color:'var(--text-muted,#94a3b8)', fontWeight:600 }}>Wähle oben eine oder mehrere Kategorien aus.</p>
                     </div>
                   ) : (
-                    <div className={styles.budgetPanel} style={{ padding:'18px 18px 14px', marginTop:8 }}>
+                    <div style={{ padding:'18px 18px 14px', marginTop:8, borderRadius:18, background:'rgba(255,255,255,0.7)', border:'1.5px solid rgba(255,255,255,0.9)', backdropFilter:'blur(16px)', WebkitBackdropFilter:'blur(16px)', boxShadow:'0 4px 24px rgba(0,0,0,0.07), 0 1px 0 rgba(255,255,255,1) inset' }}>
                       {/* Selected summary chips */}
-                      <div style={{ display:'flex', flexWrap:'wrap', gap:8, marginBottom:14 }}>
+                      <div style={{ display:'flex', flexWrap:'wrap', gap:8, marginBottom:16 }}>
                         {selectedCats.map(cat => {
                           const color = catColorMap[cat]
                           const total = allCatTotals[cat] || 0
                           const emoji = CAT_EMOJI[cat] || '💰'
                           return (
-                            <div key={cat} style={{ display:'flex', alignItems:'center', gap:6, padding:'5px 10px 5px 8px', borderRadius:20, background:`${color}12`, border:`1.5px solid ${color}40` }}>
+                            <div key={cat} style={{ display:'flex', alignItems:'center', gap:6, padding:'6px 10px 6px 9px', borderRadius:20, background:`linear-gradient(135deg, ${color}18, ${color}08)`, border:`1.5px solid ${color}45`, backdropFilter:'blur(8px)', boxShadow:`0 2px 8px ${color}18` }}>
                               <span style={{ fontSize:14 }}>{emoji}</span>
                               <span style={{ fontSize:12, fontWeight:700, color }}>{cat}</span>
-                              <span style={{ fontSize:11, fontWeight:600, color, opacity:.8 }}>
+                              <span style={{ fontSize:11, fontWeight:600, color, opacity:.75 }}>
                                 {total >= 1000 ? `${(total/1000).toFixed(1)}k €` : `${Math.round(total)} €`}
                               </span>
                               <button type="button" onClick={() => toggleCat(cat)}
-                                style={{ marginLeft:2, width:14, height:14, borderRadius:'50%', border:'none', background:`${color}30`, color, cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', fontSize:10, fontWeight:900, padding:0, lineHeight:1 }}>×</button>
+                                style={{ marginLeft:2, width:16, height:16, borderRadius:'50%', border:'none', background:`${color}25`, color, cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', fontSize:11, fontWeight:900, padding:0, lineHeight:1, transition:'all .15s' }}>×</button>
                             </div>
                           )
                         })}
