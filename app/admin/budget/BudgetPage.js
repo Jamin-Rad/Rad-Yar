@@ -205,6 +205,9 @@ function IconChart() {
 function IconSettings() {
   return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
 }
+function IconTrend() {
+  return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+}
 function ChevronDown() {
   return <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
 }
@@ -1073,8 +1076,14 @@ ${manualEntries.length ? `
     setEditingEntry(null)
   }
 
-  function SidebarItem({ icon, label, active, onClick }) {
-    return <button className={active ? styles.sidebarItemActive : styles.sidebarItem} onClick={onClick} aria-current={active ? 'page' : undefined}>{icon}{label}</button>
+  function SidebarItem({ icon, label, active, onClick, badge }) {
+    return (
+      <button className={active ? styles.sidebarItemActive : styles.sidebarItem} onClick={onClick} aria-current={active ? 'page' : undefined}>
+        <span className={styles.sidebarIcon}>{icon}</span>
+        <span className={styles.sidebarLabel}>{label}</span>
+        {badge && <span className={styles.sidebarBadge}>{badge}</span>}
+      </button>
+    )
   }
 
   const isIncome = entryType === 'income'
@@ -1169,6 +1178,8 @@ ${manualEntries.length ? `
             <nav className={styles.sidebarNav}>
               <SidebarItem icon={<IconCalendar />} label="Monatsübersicht" active={view === 'monat'} onClick={() => setView('monat')} />
               <SidebarItem icon={<IconChart />} label="Jahresübersicht" active={view === 'jahr'} onClick={() => setView('jahr')} />
+              <SidebarItem icon={<IconTrend />} label="Verlauf" active={view === 'verlauf'} onClick={() => setView('verlauf')} />
+              <div className={styles.sidebarDivider} />
               <SidebarItem icon={<IconSettings />} label="Einstellung" active={view === 'einstellung'} onClick={() => navEinstellung(subView)} />
               {view === 'einstellung' && (
                 <div className={styles.sidebarSubGroup}>
@@ -1329,8 +1340,8 @@ ${manualEntries.length ? `
                   ) : <p className={styles.emptyAnalytics}>Noch keine Daten für {year}.</p>}
                 </div>
 
-                {/* ── KATEGORIE-VERLAUF ── */}
-                {(() => {
+                {/* ── KATEGORIE-VERLAUF (moved to own view) ── */}
+                {false && (() => {
                   const COLORS = ['#f97316','#0ea5e9','#8b5cf6','#16a34a','#dc2626','#d97706','#ec4899','#14b8a6']
                   const expCats = categories.filter(c => c.type === 'expense').map(c => c.name)
                   const catAllNames = new Set(categories.map(c => c.name))
@@ -1546,6 +1557,221 @@ ${manualEntries.length ? `
                 })()}
               </div>
             )}
+
+            {/* ── VERLAUF ── */}
+            {view === 'verlauf' && (() => {
+              const COLORS = ['#f97316','#0ea5e9','#8b5cf6','#16a34a','#dc2626','#d97706','#ec4899','#14b8a6']
+              const expCats = categories.filter(c => c.type === 'expense').map(c => c.name)
+              const catAllNames = new Set(categories.map(c => c.name))
+              const selectedCats = [...chartCats]
+
+              function getMonthsInRange(from, to) {
+                const months = []
+                let [fy, fm] = from.split('-').map(Number)
+                const [ey, em] = to.split('-').map(Number)
+                while (fy < ey || (fy === ey && fm <= em)) {
+                  months.push(`${fy}-${String(fm).padStart(2,'0')}`)
+                  fm++; if (fm > 12) { fm = 1; fy++ }
+                }
+                return months
+              }
+
+              const availableMonths = getMonthsInRange('2026-01', getMonthKey())
+              const chartMonths = getMonthsInRange(chartFrom, chartTo)
+
+              const chartData = chartMonths.map(key => {
+                const md = monthWithRecurring(key, store, recurring)
+                const totals = {}
+                selectedCats.forEach(cat => {
+                  totals[cat] = md.entries.filter(e => {
+                    if (e.type !== 'expense') return false
+                    const vt = Array.isArray(e.tags) ? e.tags.filter(t => catAllNames.has(t)) : []
+                    const keys = vt.length ? vt : [e.category || 'Ohne Kategorie']
+                    return keys.includes(cat)
+                  }).reduce((s, e) => s + Number(e.amount), 0)
+                })
+                const mo = Number(key.split('-')[1]) - 1
+                return { key, label: MONTH_SHORT[mo], totals }
+              })
+
+              const maxVal = Math.max(1, ...selectedCats.flatMap(cat => chartData.map(d => d.totals[cat] || 0)))
+              const W = 600, H = 240
+              const PAD = { l: 62, r: 20, t: 24, b: 44 }
+              const cW = W - PAD.l - PAD.r, cH = H - PAD.t - PAD.b
+              const xOf = i => chartMonths.length === 1 ? PAD.l + cW / 2 : PAD.l + (i / (chartMonths.length - 1)) * cW
+              const yOf = v => PAD.t + cH - Math.min(v / maxVal, 1) * cH
+
+              function smoothPath(pts) {
+                if (pts.length < 2) return pts.map((p,i) => `${i===0?'M':'L'}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ')
+                return pts.map((p, i) => {
+                  if (i === 0) return `M${p.x.toFixed(1)},${p.y.toFixed(1)}`
+                  const prev = pts[i - 1]
+                  const cpx = ((prev.x + p.x) / 2).toFixed(1)
+                  return `C${cpx},${prev.y.toFixed(1)} ${cpx},${p.y.toFixed(1)} ${p.x.toFixed(1)},${p.y.toFixed(1)}`
+                }).join(' ')
+              }
+
+              return (
+                <div>
+                  {/* Page header */}
+                  <div className={styles.reportHeader}>
+                    <div>
+                      <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Kategorie-Verlauf</h2>
+                      <p style={{ margin: '3px 0 0', fontSize: 12, color: 'var(--text-muted,#94a3b8)', fontWeight: 600 }}>Ausgaben pro Kategorie über Zeit</p>
+                    </div>
+                    {/* Date range */}
+                    <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+                      {[['Von', chartFrom, v => { if (v <= chartTo) setChartFrom(v) }], ['Bis', chartTo, v => { if (v >= chartFrom) setChartTo(v) }]].map(([lbl, val, onChange]) => (
+                        <div key={lbl} style={{ display: 'flex', alignItems: 'center', gap: 5, background: 'var(--bg-soft,#f8fafc)', border: '1.5px solid var(--border,#e2e8f0)', borderRadius: 10, padding: '5px 12px' }}>
+                          <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-muted,#94a3b8)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{lbl}</span>
+                          <select value={val} onChange={e => onChange(e.target.value)}
+                            style={{ border: 'none', background: 'transparent', color: 'var(--text-strong,#0d1b2a)', fontSize: 13, fontWeight: 700, cursor: 'pointer', outline: 'none' }}>
+                            {availableMonths.map(m => (
+                              <option key={m} value={m}>{MONTH_SHORT[Number(m.split('-')[1])-1]} {m.split('-')[0]}</option>
+                            ))}
+                          </select>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Category pills */}
+                  <div className={styles.budgetPanel} style={{ padding: '14px 16px', marginBottom: 16 }}>
+                    <p style={{ margin: '0 0 10px', fontSize: 11, fontWeight: 700, color: 'var(--text-muted,#94a3b8)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Kategorien auswählen</p>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7 }}>
+                      {expCats.map(cat => {
+                        const sel = chartCats.has(cat)
+                        const ci = selectedCats.indexOf(cat)
+                        return (
+                          <button key={cat} type="button"
+                            onClick={() => setChartCats(prev => { const n = new Set(prev); sel ? n.delete(cat) : n.add(cat); return n })}
+                            style={{
+                              padding: '6px 14px 6px 10px', borderRadius: 24,
+                              border: sel ? `2px solid ${COLORS[ci % COLORS.length]}` : '2px solid var(--border,#e2e8f0)',
+                              background: sel ? `${COLORS[ci % COLORS.length]}15` : 'transparent',
+                              color: sel ? COLORS[ci % COLORS.length] : 'var(--text-muted,#94a3b8)',
+                              fontWeight: 700, fontSize: 12, cursor: 'pointer', transition: 'all .15s',
+                              display: 'flex', alignItems: 'center', gap: 6,
+                              boxShadow: sel ? `0 0 0 3px ${COLORS[ci % COLORS.length]}18` : 'none',
+                            }}>
+                            {sel && <span style={{ width: 8, height: 8, borderRadius: '50%', background: COLORS[ci % COLORS.length], flexShrink: 0, display: 'inline-block' }} />}
+                            {cat}
+                          </button>
+                        )
+                      })}
+                    </div>
+                  </div>
+
+                  {selectedCats.length === 0 ? (
+                    <div className={styles.budgetPanel} style={{ padding: '40px 24px', textAlign: 'center' }}>
+                      <p style={{ margin: 0, fontSize: 28, marginBottom: 10 }}>📈</p>
+                      <p style={{ margin: 0, fontSize: 14, color: 'var(--text-muted,#94a3b8)', fontWeight: 600 }}>Wähle oben mindestens eine Kategorie aus.</p>
+                    </div>
+                  ) : (
+                    <div className={styles.budgetPanel} style={{ padding: '20px 20px 16px' }}>
+                      {/* SVG chart */}
+                      <div style={{ overflowX: 'auto', margin: '0 -4px' }}>
+                        <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', minWidth: Math.max(340, chartMonths.length * 56), display: 'block' }}>
+                          <defs>
+                            {selectedCats.map((cat, ci) => (
+                              <linearGradient key={cat} id={`vg${ci}`} x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stopColor={COLORS[ci % COLORS.length]} stopOpacity="0.2" />
+                                <stop offset="100%" stopColor={COLORS[ci % COLORS.length]} stopOpacity="0" />
+                              </linearGradient>
+                            ))}
+                          </defs>
+                          {/* Grid */}
+                          {[0,1,2,3,4].map(i => {
+                            const gy = PAD.t + (cH * i / 4)
+                            const gv = maxVal * (1 - i / 4)
+                            return (
+                              <g key={i}>
+                                <line x1={PAD.l} y1={gy} x2={W - PAD.r} y2={gy}
+                                  stroke={i === 4 ? 'var(--border,#cbd5e1)' : 'var(--border,#e2e8f0)'}
+                                  strokeWidth={i === 4 ? 1.5 : 1}
+                                  strokeDasharray={i === 0 || i === 4 ? 'none' : '4 3'} />
+                                <text x={PAD.l - 8} y={gy + 4} textAnchor="end" fontSize="10" fill="var(--text-muted,#94a3b8)" fontWeight="700" fontFamily="inherit">
+                                  {gv >= 1000 ? `${(gv/1000).toFixed(gv >= 10000 ? 0 : 1)}k` : Math.round(gv)}
+                                </text>
+                              </g>
+                            )
+                          })}
+                          {/* X labels */}
+                          {chartData.map((d, i) => (
+                            <text key={d.key} x={xOf(i)} y={H - 10} textAnchor="middle" fontSize="10" fill="var(--text-muted,#94a3b8)" fontWeight="700" fontFamily="inherit">{d.label}</text>
+                          ))}
+                          {/* Area fills */}
+                          {selectedCats.map((cat, ci) => {
+                            const pts = chartData.map((d, i) => ({ x: xOf(i), y: yOf(d.totals[cat] || 0) }))
+                            const baseY = yOf(0)
+                            const areaPath = `${smoothPath(pts)} L${pts[pts.length-1].x.toFixed(1)},${baseY.toFixed(1)} L${pts[0].x.toFixed(1)},${baseY.toFixed(1)} Z`
+                            return <path key={cat} d={areaPath} fill={`url(#vg${ci})`} />
+                          })}
+                          {/* Lines */}
+                          {selectedCats.map((cat, ci) => {
+                            const pts = chartData.map((d, i) => ({ x: xOf(i), y: yOf(d.totals[cat] || 0) }))
+                            return <path key={cat} d={smoothPath(pts)} fill="none" stroke={COLORS[ci % COLORS.length]} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
+                          })}
+                          {/* Dots + labels */}
+                          {selectedCats.map((cat, ci) => {
+                            const color = COLORS[ci % COLORS.length]
+                            return chartData.map((d, i) => {
+                              const x = xOf(i), y = yOf(d.totals[cat] || 0), v = d.totals[cat] || 0
+                              return (
+                                <g key={`${cat}-${i}`}>
+                                  <circle cx={x} cy={y} r={6} fill="white" stroke={color} strokeWidth="2.5" />
+                                  <circle cx={x} cy={y} r={3} fill={color} />
+                                  {v > 0 && (
+                                    <text x={x} y={y - 12} textAnchor="middle" fontSize="10" fill={color} fontWeight="800" fontFamily="inherit">
+                                      {v >= 1000 ? `${(v/1000).toFixed(1)}k` : Math.round(v)}
+                                    </text>
+                                  )}
+                                </g>
+                              )
+                            })
+                          })}
+                        </svg>
+                      </div>
+                      {/* Legend */}
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, marginTop: 12, paddingTop: 12, borderTop: '1px solid var(--border,#e2e8f0)' }}>
+                        {selectedCats.map((cat, ci) => (
+                          <span key={cat} style={{ display: 'flex', alignItems: 'center', gap: 7, fontSize: 12, fontWeight: 700, color: 'var(--text-strong,#0d1b2a)' }}>
+                            <span style={{ width: 20, height: 3, background: COLORS[ci % COLORS.length], borderRadius: 2, display: 'inline-block' }} />
+                            <span style={{ width: 7, height: 7, borderRadius: '50%', background: COLORS[ci % COLORS.length], display: 'inline-block', marginLeft: -16 }} />
+                            {cat}
+                          </span>
+                        ))}
+                      </div>
+                      {/* Data table */}
+                      <div style={{ marginTop: 16, overflowX: 'auto' }}>
+                        <table className={styles.annualTable}>
+                          <thead>
+                            <tr>
+                              <th>Monat</th>
+                              {selectedCats.map((cat, ci) => (
+                                <th key={cat} style={{ color: COLORS[ci % COLORS.length] }}>{cat}</th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {chartData.map(d => (
+                              <tr key={d.key} onClick={() => goToMonth(d.key)} style={{ cursor: 'pointer' }}>
+                                <td>{MONTH_SHORT[Number(d.key.split('-')[1])-1]} {d.key.split('-')[0]}</td>
+                                {selectedCats.map(cat => (
+                                  <td key={cat} style={{ textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>
+                                    {d.totals[cat] > 0 ? formatMoney(d.totals[cat]) : '—'}
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )
+            })()}
 
             {/* ── KATEGORIEN ── */}
             {view === 'einstellung' && subView === 'kategorien' && (
