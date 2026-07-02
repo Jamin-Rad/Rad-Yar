@@ -370,6 +370,9 @@ export default function BudgetPage() {
 
   const [catError, setCatError] = useState('')
   const [reportTab, setReportTab] = useState('monat')
+  const [chartCats, setChartCats] = useState(new Set())
+  const [chartFrom, setChartFrom] = useState('2026-01')
+  const [chartTo, setChartTo]     = useState(() => getMonthKey())
   const [showMonthPicker, setShowMonthPicker] = useState(false)
   const monthPickerRef = useRef(null)
 
@@ -1547,7 +1550,7 @@ ${manualEntries.length ? `
 
                   {/* ── Report Tabs ── */}
                   <div className={styles.reportTabBar}>
-                    {[['monat','📅 Monat'],['jahr','📊 Jahr'],['top','🏆 Top-Ausgaben'],['budget','🎯 Budget']].map(([id, label]) => (
+                    {[['monat','📅 Monat'],['jahr','📊 Jahr'],['top','🏆 Top-Ausgaben'],['budget','🎯 Budget'],['verlauf','📈 Verlauf']].map(([id, label]) => (
                       <button key={id} type="button"
                         className={reportTab === id ? styles.reportTabActive : styles.reportTabBtn}
                         onClick={() => setReportTab(id)}>
@@ -1897,6 +1900,177 @@ ${manualEntries.length ? `
                       {categoryTotals.length === 0 && <p className={styles.emptyAnalytics}>Keine Ausgaben für {formatMonthLabel(month)}.</p>}
                     </div>
                   )}
+
+                  {/* ══ TAB: VERLAUF ══ */}
+                  {reportTab === 'verlauf' && (() => {
+                    const COLORS = ['#f97316','#0ea5e9','#8b5cf6','#16a34a','#dc2626','#d97706']
+                    const expCats = categories.filter(c => c.type === 'expense').map(c => c.name)
+                    const catAllNames = new Set(categories.map(c => c.name))
+                    const selectedCats = [...chartCats]
+
+                    function getMonthsInRange(from, to) {
+                      const months = []
+                      let [y, m] = from.split('-').map(Number)
+                      const [ey, em] = to.split('-').map(Number)
+                      while (y < ey || (y === ey && m <= em)) {
+                        months.push(`${y}-${String(m).padStart(2,'0')}`)
+                        m++; if (m > 12) { m = 1; y++ }
+                      }
+                      return months
+                    }
+
+                    const availableMonths = getMonthsInRange('2026-01', getMonthKey())
+                    const chartMonths = getMonthsInRange(chartFrom, chartTo)
+
+                    const chartData = chartMonths.map(key => {
+                      const md = monthWithRecurring(key, store, recurring)
+                      const totals = {}
+                      selectedCats.forEach(cat => {
+                        totals[cat] = md.entries.filter(e => {
+                          if (e.type !== 'expense') return false
+                          const vt = Array.isArray(e.tags) ? e.tags.filter(t => catAllNames.has(t)) : []
+                          const keys = vt.length ? vt : [e.category || 'Ohne Kategorie']
+                          return keys.includes(cat)
+                        }).reduce((s, e) => s + Number(e.amount), 0)
+                      })
+                      const mo = Number(key.split('-')[1]) - 1
+                      return { key, label: `${MONTH_SHORT[mo]}'${key.split('-')[0].slice(2)}`, totals }
+                    })
+
+                    const maxVal = Math.max(1, ...selectedCats.flatMap(cat => chartData.map(d => d.totals[cat] || 0)))
+                    const W = 540, H = 190
+                    const PAD = { l: 58, r: 12, t: 16, b: 36 }
+                    const cW = W - PAD.l - PAD.r, cH = H - PAD.t - PAD.b
+                    const xOf = (i) => chartMonths.length === 1 ? PAD.l + cW / 2 : PAD.l + (i / (chartMonths.length - 1)) * cW
+                    const yOf = (v) => PAD.t + cH - Math.min(v / maxVal, 1) * cH
+
+                    return (
+                      <div>
+                        {/* Category pills */}
+                        <div className={styles.reportSection}>
+                          <p className={styles.reportSectionTitle}>Kategorien auswählen</p>
+                          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                            {expCats.map(cat => {
+                              const sel = chartCats.has(cat)
+                              const ci = selectedCats.indexOf(cat)
+                              const color = sel ? COLORS[ci % COLORS.length] : 'var(--text-muted,#94a3b8)'
+                              return (
+                                <button key={cat} type="button"
+                                  style={{ padding: '5px 13px', borderRadius: 20, border: `2px solid ${sel ? COLORS[ci % COLORS.length] : 'var(--border,#e2e8f0)'}`, background: sel ? `${COLORS[ci % COLORS.length]}18` : 'var(--bg-soft,#f8fafc)', color, fontWeight: 700, fontSize: 12, cursor: 'pointer', transition: 'all .15s' }}
+                                  onClick={() => setChartCats(prev => { const n = new Set(prev); sel ? n.delete(cat) : n.add(cat); return n })}
+                                >{cat}</button>
+                              )
+                            })}
+                          </div>
+                        </div>
+
+                        {/* Date range */}
+                        <div className={styles.reportSection}>
+                          <p className={styles.reportSectionTitle}>Zeitraum</p>
+                          <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
+                            {[['Von', chartFrom, v => { if (v <= chartTo) setChartFrom(v) }], ['Bis', chartTo, v => { if (v >= chartFrom) setChartTo(v) }]].map(([label, val, onChange]) => (
+                              <div key={label} style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                                <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-muted,#94a3b8)' }}>{label}</span>
+                                <select value={val} onChange={e => onChange(e.target.value)}
+                                  style={{ padding: '6px 10px', borderRadius: 8, border: '1px solid var(--border,#e2e8f0)', background: 'var(--bg-card,#fff)', color: 'var(--text-strong,#0d1b2a)', fontSize: 12, fontWeight: 700 }}>
+                                  {availableMonths.map(m => (
+                                    <option key={m} value={m}>{MONTH_SHORT[Number(m.split('-')[1])-1]} {m.split('-')[0]}</option>
+                                  ))}
+                                </select>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Chart or empty state */}
+                        {selectedCats.length === 0 ? (
+                          <div className={styles.reportSection}>
+                            <p className={styles.emptyAnalytics}>Wähle oben mindestens eine Kategorie aus.</p>
+                          </div>
+                        ) : (
+                          <div className={styles.reportSection}>
+                            {/* SVG line chart */}
+                            <div style={{ overflowX: 'auto' }}>
+                              <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', minWidth: Math.max(280, chartMonths.length * 42), display: 'block' }}>
+                                {/* Y grid + labels */}
+                                {[0,1,2,3,4].map(i => {
+                                  const y = PAD.t + (cH * i / 4)
+                                  const v = maxVal * (1 - i / 4)
+                                  return (
+                                    <g key={i}>
+                                      <line x1={PAD.l} y1={y} x2={W - PAD.r} y2={y} stroke="var(--border,#e2e8f0)" strokeWidth={i === 4 ? 1.5 : 1} />
+                                      <text x={PAD.l - 5} y={y + 4} textAnchor="end" fontSize="9" fill="var(--text-muted,#94a3b8)" fontWeight="700">
+                                        {v >= 1000 ? `${(v/1000).toFixed(v >= 10000 ? 0 : 1)}k` : Math.round(v)}
+                                      </text>
+                                    </g>
+                                  )
+                                })}
+                                {/* X labels */}
+                                {chartData.map((d, i) => (
+                                  <text key={d.key} x={xOf(i)} y={H - 4} textAnchor="middle" fontSize="9" fill="var(--text-muted,#94a3b8)" fontWeight="700">{d.label}</text>
+                                ))}
+                                {/* Lines + dots per category */}
+                                {selectedCats.map((cat, ci) => {
+                                  const color = COLORS[ci % COLORS.length]
+                                  const pts = chartData.map((d, i) => ({ x: xOf(i), y: yOf(d.totals[cat] || 0), v: d.totals[cat] || 0 }))
+                                  const d = pts.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ')
+                                  return (
+                                    <g key={cat}>
+                                      <path d={d} fill="none" stroke={color} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
+                                      {pts.map((p, i) => (
+                                        <g key={i}>
+                                          <circle cx={p.x} cy={p.y} r={5} fill={color} />
+                                          {p.v > 0 && (
+                                            <text x={p.x} y={p.y - 9} textAnchor="middle" fontSize="9" fill={color} fontWeight="800">
+                                              {p.v >= 1000 ? `${(p.v/1000).toFixed(1)}k` : Math.round(p.v)}
+                                            </text>
+                                          )}
+                                        </g>
+                                      ))}
+                                    </g>
+                                  )
+                                })}
+                              </svg>
+                            </div>
+                            {/* Legend */}
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, marginTop: 6 }}>
+                              {selectedCats.map((cat, ci) => (
+                                <span key={cat} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 700, color: 'var(--text-strong,#0d1b2a)' }}>
+                                  <span style={{ width: 18, height: 3, background: COLORS[ci % COLORS.length], borderRadius: 2, display: 'inline-block' }} />
+                                  {cat}
+                                </span>
+                              ))}
+                            </div>
+                            {/* Data table */}
+                            <div style={{ marginTop: 14, overflowX: 'auto' }}>
+                              <table className={styles.annualTable}>
+                                <thead>
+                                  <tr>
+                                    <th>Monat</th>
+                                    {selectedCats.map((cat, ci) => (
+                                      <th key={cat} style={{ color: COLORS[ci % COLORS.length] }}>{cat}</th>
+                                    ))}
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {chartData.map(d => (
+                                    <tr key={d.key} onClick={() => goToMonth(d.key)} style={{ cursor: 'pointer' }}>
+                                      <td>{MONTH_SHORT[Number(d.key.split('-')[1])-1]} {d.key.split('-')[0]}</td>
+                                      {selectedCats.map(cat => (
+                                        <td key={cat} style={{ textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>
+                                          {d.totals[cat] > 0 ? formatMoney(d.totals[cat]) : '—'}
+                                        </td>
+                                      ))}
+                                    </tr>
+                                  ))}
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })()}
                 </div>
               )
             })()}
