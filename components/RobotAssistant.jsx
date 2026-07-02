@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 import { useUser } from '@clerk/nextjs'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { getThemaTitle } from '@/data/curriculum'
@@ -67,10 +68,13 @@ function AssistantImage({ className, size }) {
 }
 
 export default function RobotAssistant() {
+  const pathname = usePathname()
   const { lang } = useLanguage()
   const { user, isLoaded, isSignedIn } = useUser()
   const t = T[lang] || T.de
   const isRTL = lang === 'fa'
+
+  if (pathname?.startsWith('/admin/budget') || pathname?.startsWith('/admin/health')) return null
 
   const [mounted, setMounted] = useState(false)
   const [open, setOpen] = useState(false)
