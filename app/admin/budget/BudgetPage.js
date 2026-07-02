@@ -2032,7 +2032,40 @@ ${manualEntries.length ? `
                       </div>
                     </div>
                   )}
-                </div>
+                {/* ── Fatima-Übersicht ── */}
+                {(() => {
+                  const fatimaByMonth = chartMonths.map(key => {
+                    const md = monthWithRecurring(key, store, recurring)
+                    const entries = md.entries.filter(e => e.type === 'expense' && e.paidByFatima)
+                    const total = entries.reduce((s, e) => s + Number(e.amount), 0)
+                    const cats = [...new Set(entries.flatMap(e => {
+                      const vt = Array.isArray(e.tags) ? e.tags.filter(t => catAllNames.has(t)) : []
+                      return vt.length ? vt : [e.category || '—']
+                    }))]
+                    return { key, total, cats }
+                  }).filter(m => m.total > 0)
+
+                  if (!fatimaByMonth.length) return null
+                  return (
+                    <div style={{ marginTop: 20, padding: '12px 16px', borderRadius: 14, background: 'rgba(248,245,255,0.7)', border: '1px solid rgba(139,92,246,0.15)' }}>
+                      <p style={{ margin: '0 0 10px', fontSize: 12, fontWeight: 700, color: '#a78bfa', letterSpacing: '0.05em', textTransform: 'uppercase' }}>👩 Fatima – monatliche Ausgaben</p>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                        {fatimaByMonth.map(m => (
+                          <div key={m.key} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13 }}>
+                            <span style={{ color: '#94a3b8', fontWeight: 600, minWidth: 56 }}>{MONTH_SHORT[Number(m.key.split('-')[1])-1]} {m.key.split('-')[0]}</span>
+                            <span style={{ color: '#7c3aed', fontWeight: 700, minWidth: 64 }}>{formatMoney(m.total)}</span>
+                            <span style={{ color: '#c4b5fd', fontSize: 11, fontWeight: 600 }}>{m.cats.join(' · ')}</span>
+                          </div>
+                        ))}
+                        <div style={{ marginTop: 6, paddingTop: 6, borderTop: '1px solid rgba(139,92,246,0.15)', display: 'flex', gap: 10, fontSize: 13 }}>
+                          <span style={{ color: '#94a3b8', fontWeight: 600, minWidth: 56 }}>Gesamt</span>
+                          <span style={{ color: '#7c3aed', fontWeight: 700 }}>{formatMoney(fatimaByMonth.reduce((s,m) => s + m.total, 0))}</span>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })()}
+              </div>
               )
             })()}
 
@@ -2265,10 +2298,7 @@ ${manualEntries.length ? `
                   </div>
 
                   {/* ══ TAB: MONAT ══ */}
-                  {reportTab === 'monat' && (() => {
-                    const fatimaPaidEntries = manualEntries.filter(e => e.type === 'expense' && e.paidByFatima)
-                    const fatimaPaidTotal = fatimaPaidEntries.reduce((s, e) => s + e.amount, 0)
-                    return (
+                  {reportTab === 'monat' && (
                     <div>
                       {/* KPI Cards */}
                       <div className={styles.berichtKPIGrid}>
@@ -2285,27 +2315,6 @@ ${manualEntries.length ? `
                           </div>
                         ))}
                       </div>
-
-                      {/* Fatima */}
-                      {fatimaPaidTotal > 0 && (
-                        <div className={styles.reportSection} style={{ borderLeft: '3px solid #8b5cf6', paddingLeft: 12 }}>
-                          <p className={styles.reportSectionTitle} style={{ color: '#7c3aed' }}>👩 Fatima hat bezahlt</p>
-                          <div className={styles.berichtEntryTable}>
-                            {fatimaPaidEntries.sort((a,b) => (b.date||'').localeCompare(a.date||'')).map(e => (
-                              <div key={e.id} className={styles.berichtEntryRow}>
-                                <span className={styles.berichtEntryDate}>{new Date(e.date).toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'})}</span>
-                                <span className={styles.berichtEntryTitle}>{e.title}</span>
-                                <span className={styles.berichtEntryCat}>{e.category || '—'}</span>
-                                <strong style={{ color: '#7c3aed' }}>− {formatMoney(e.amount)}</strong>
-                              </div>
-                            ))}
-                          </div>
-                          <div className={styles.reportTotalRow} style={{ marginTop: 8 }}>
-                            <span>Fatima gesamt</span>
-                            <strong style={{ color: '#7c3aed' }}>{formatMoney(fatimaPaidTotal)}</strong>
-                          </div>
-                        </div>
-                      )}
 
                       {/* Einnahmen */}
                       {incomeTotals.length > 0 && (
@@ -2396,8 +2405,7 @@ ${manualEntries.length ? `
                       )}
                       {!incomeTotals.length && !categoryTotals.length && <p className={styles.emptyAnalytics}>Noch keine Einträge für {formatMonthLabel(month)}.</p>}
                     </div>
-                  )
-                  })()}
+                  )}
 
                   {/* ══ TAB: JAHR ══ */}
                   {reportTab === 'jahr' && (
