@@ -1701,6 +1701,57 @@
   .entrySubmitBar .primaryBudgetBtn {
     width: 100%;
   }
+
+  /* Metric cards: tighter padding, smaller number */
+  .financeMetric {
+    padding: 12px 14px 10px;
+  }
+  .financeMetric strong {
+    font-size: 20px;
+  }
+
+  /* Section cards: less horizontal padding on mobile */
+  .sectionCardHead {
+    padding: 10px 14px;
+  }
+  .sectionCardBody {
+    padding: 4px 10px 6px;
+  }
+  .sectionCardFoot {
+    padding: 10px 14px;
+  }
+
+  /* Income row: drop bar, 2-col layout */
+  .incomeRow {
+    grid-template-columns: minmax(0, 1fr) 82px;
+    gap: 8px;
+  }
+  .incomeBarTrack {
+    display: none;
+  }
+
+  /* Expense row: drop bar, 3-col layout (name | amount | dot) */
+  .expenseRow {
+    grid-template-columns: minmax(0, 1fr) 78px 12px;
+    gap: 8px;
+  }
+  .expenseRow .categoryBarTrack {
+    display: none;
+  }
+
+  /* Month picker: open to the left on small screens */
+  .monthPickerDropdown {
+    right: auto;
+    left: 0;
+    width: calc(100vw - 28px);
+    max-width: 280px;
+  }
+
+  /* Finance header: a bit tighter */
+  .financeHeader {
+    gap: 10px;
+    margin-bottom: 14px;
+  }
 }
 
 /* ── SIDEBAR LAYOUT ──────────────────────────── */
