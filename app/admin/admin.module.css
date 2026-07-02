@@ -1851,6 +1851,37 @@
   min-width: 0;
 }
 
+/* ── MOBILE OVERRIDES (must be after base sidebar rules) ────── */
+@media (max-width: 620px) {
+  .financeLayout {
+    grid-template-columns: 1fr;
+  }
+  .financeSidebar {
+    position: static;
+  }
+  .sidebarNav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .sidebarItem,
+  .sidebarItemActive {
+    width: auto;
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+  .sidebarSubGroup {
+    flex-direction: row;
+    border-left: none;
+    border-top: 2px solid rgba(249,115,22,.25);
+    margin-left: 0;
+    margin-top: 4px;
+    padding-left: 0;
+    padding-top: 6px;
+    width: 100%;
+  }
+}
+
 /* ── CATEGORY TILE MANAGER ───────────────────── */
 .categoryTileGrid {
   display: grid;

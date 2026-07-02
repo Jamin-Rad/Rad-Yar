@@ -115,8 +115,21 @@
 
 @media (max-width: 600px) {
   .nav {
-    padding: 0 3vw;
+    padding: 0;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    justify-content: flex-start;
+  }
+
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .links {
     gap: 4px;
+    padding: 0 10px;
+    flex-shrink: 0;
   }
 
   .link,
@@ -124,6 +137,12 @@
     padding: 6px 10px;
     font-size: 12px;
     gap: 5px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .logout {
+    margin-right: 10px;
   }
 
   .link svg,
