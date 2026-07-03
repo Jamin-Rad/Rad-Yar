@@ -5,11 +5,11 @@ import { useRef, useState } from 'react'
 import styles from './page.module.css'
 
 const tiles = [
-  { title: 'Routine', tone: 'amber' },
-  { title: 'Planen', tone: 'blue' },
-  { title: 'Flashcards', tone: 'violet' },
-  { title: 'Finanzen', tone: 'green' },
-  { title: 'Gesundheit', tone: 'rose' },
+  { title: 'Routine', tone: 'sun', orbit: 'one' },
+  { title: 'Planen', tone: 'moon', orbit: 'two' },
+  { title: 'Flashcards', tone: 'nova', orbit: 'three' },
+  { title: 'Finanzen', tone: 'aurora', orbit: 'four' },
+  { title: 'Gesundheit', tone: 'ember', orbit: 'five' },
 ]
 
 export default function AndarunLanding() {
@@ -35,26 +35,24 @@ export default function AndarunLanding() {
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
     >
-      <section className={styles.hero} aria-labelledby="andarun-title">
-        <div className={styles.brandRow}>
-          <span className={styles.mark}>A</span>
-          <span>Andarun</span>
-        </div>
-
-        <div className={styles.copy}>
+      <section className={styles.stage} aria-labelledby="andarun-title">
+        <div className={styles.centerpiece}>
+          <span className={styles.sigil}>A</span>
           <h1 id="andarun-title">Andarun</h1>
         </div>
 
-        <div className={styles.tileGrid} aria-label="Private Bereiche">
+        <div className={styles.orbit} aria-hidden="true" />
+
+        <div className={styles.tileLayer} aria-label="Private Bereiche">
           {tiles.map((tile, index) => (
-            <article
-              className={`${styles.tile} ${styles[tile.tone]}`}
-              style={{ '--delay': `${index * 80}ms`, '--depth': `${index + 1}` }}
+            <button
+              className={`${styles.tile} ${styles[tile.tone]} ${styles[tile.orbit]}`}
+              style={{ '--delay': `${index * 90}ms`, '--depth': `${index + 1}` }}
+              type="button"
               key={tile.title}
             >
-              <span className={styles.tileIndex}>{String(index + 1).padStart(2, '0')}</span>
-              <h2>{tile.title}</h2>
-            </article>
+              {tile.title}
+            </button>
           ))}
         </div>
       </section>
