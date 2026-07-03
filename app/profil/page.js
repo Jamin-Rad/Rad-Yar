@@ -7,7 +7,7 @@ import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { resetLeitnerState, filterLeitnerState, isDue, pullLeitnerStateFromServer } from '@/utils/leitnerStorage'
-import { syncLocalProgressToServer } from '@/utils/syncProgressToServer'
+import { syncLocalProgressToServer, activateUserCache } from '@/utils/syncProgressToServer'
 import { flushPendingProgress } from '@/utils/progressSync'
 import { loadSettings, saveSettings } from '@/utils/settingsStorage'
 import { CURRICULUM, getFachTitle, getKapitelTitle, getThemaTitle } from '@/data/curriculum'
@@ -388,10 +388,11 @@ export default function ProfilPage() {
 
   useEffect(() => {
     if (!isLoaded || !user) return
+    activateUserCache(user.id)
     setSpitzname(user.firstName ?? '')
     setFach(user.unsafeMetadata?.fachrichtung ?? '')
     setStufe(user.unsafeMetadata?.ausbildungsstufe ?? '')
-    setSettings(loadSettings())
+    setSettings(loadSettings(user.id))
     let localReadArticles = {}
     let localMcqScores = {}
     let localLearningHistory = []
@@ -918,7 +919,7 @@ export default function ProfilPage() {
                       value={settings.mcqDailyGoal || 10}
                       onChange={event => {
                         const next = { ...settings, mcqDailyGoal: Number(event.target.value) }
-                        setSettings(next); saveSettings(next)
+                        setSettings(next); saveSettings(next, user.id)
                       }}
                     >
                       {[5, 10, 15, 20, 30, 50].map(value => <option key={value} value={value}>{value} MCQs</option>)}
@@ -930,7 +931,7 @@ export default function ProfilPage() {
                     <button type="button" className={`${styles.toggleSwitch} ${settings.longBoxesEnabled ? styles.toggleSwitchActive : ''}`}
                       onClick={() => {
                         const next = { ...settings, longBoxesEnabled: !settings.longBoxesEnabled }
-                        setSettings(next); saveSettings(next)
+                        setSettings(next); saveSettings(next, user.id)
                       }} role="switch" aria-checked={settings.longBoxesEnabled}>
                       <span className={styles.toggleKnob} />
                     </button>

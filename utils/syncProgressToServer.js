@@ -7,6 +7,7 @@ const SHARED_CACHE_KEYS = [
   ['radyar_read_articles', {}],
   ['radyar_learning_history', []],
   ['radyar_mcq_scores', {}],
+  ['radyar_settings', {}],
 ]
 const inFlight = new Map()
 
@@ -33,7 +34,7 @@ function saveSharedCacheForUser(userId) {
   }
 }
 
-function activateUserCache(userId) {
+export function activateUserCache(userId) {
   const owner = localStorage.getItem(CACHE_OWNER_KEY)
   if (!owner) {
     // Existing unscoped data predates account-specific caches and belongs to

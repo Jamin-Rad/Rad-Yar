@@ -177,7 +177,7 @@ export default function FlashcardsPage() {
 
   const refresh = () => {
     setState(loadLeitnerState(userId))
-    setSettings(loadSettings())
+    setSettings(loadSettings(userId))
   }
 
   useEffect(() => {

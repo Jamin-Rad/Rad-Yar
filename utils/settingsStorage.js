@@ -1,4 +1,4 @@
-// ─── App-Einstellungen (geräteweit, localStorage) ──────
+// ─── App-Einstellungen (pro Benutzer, localStorage) ──────
 
 const KEY = 'radyar_settings'
 
@@ -7,17 +7,21 @@ const DEFAULTS = {
   mcqDailyGoal: 10,
 }
 
-export function loadSettings() {
+function keyFor(userId) {
+  return userId ? `${KEY}_${userId}` : KEY
+}
+
+export function loadSettings(userId) {
   if (typeof window === 'undefined') return { ...DEFAULTS }
   try {
-    const raw = window.localStorage.getItem(KEY)
+    const raw = window.localStorage.getItem(keyFor(userId))
     return { ...DEFAULTS, ...(raw ? JSON.parse(raw) : {}) }
   } catch {
     return { ...DEFAULTS }
   }
 }
 
-export function saveSettings(settings) {
+export function saveSettings(settings, userId) {
   if (typeof window === 'undefined') return
-  try { window.localStorage.setItem(KEY, JSON.stringify(settings)) } catch (_) {}
+  try { window.localStorage.setItem(keyFor(userId), JSON.stringify(settings)) } catch (_) {}
 }
