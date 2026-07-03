@@ -580,12 +580,15 @@
 }
 
 .entryDescription {
-  overflow: visible !important;
-  color: #94a3b8 !important;
-  font-size: 11px !important;
+  overflow: hidden;
+  color: #94a3b8;
+  font-size: 12px;
   font-weight: 500;
-  white-space: normal !important;
   font-style: italic;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  flex: 1 1 auto;
 }
 
 .privateChart {
@@ -3365,17 +3368,11 @@
 }
 .catDetailEntry:last-child { border-bottom: none; }
 
-.catDetailDateCol {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 72px;
-  flex-shrink: 0;
-}
-
 .catDetailDate {
   color: #64748b;
   font-size: 12px;
+  min-width: 72px;
+  flex-shrink: 0;
 }
 
 .catDetailFixBadge {

@@ -2752,11 +2752,9 @@ ${manualEntries.length ? `
                         <div className={styles.catDetailEntries}>
                           {entries.slice().sort((a, b) => (b.date || '').localeCompare(a.date || '')).map(entry => (
                             <div key={entry.id} className={styles.catDetailEntry}>
-                              <div className={styles.catDetailDateCol}>
-                                <span className={styles.catDetailDate}>{new Date(entry.date).toLocaleDateString('de-DE')}</span>
-                                {entry.generatedRecurring && <span className={styles.catDetailFixBadge}>Fixkosten</span>}
-                                {entry.description && <span className={styles.entryDescription}>{entry.description}</span>}
-                              </div>
+                              <span className={styles.catDetailDate}>{new Date(entry.date).toLocaleDateString('de-DE')}</span>
+                              {entry.description && <span className={styles.entryDescription}>{entry.description}</span>}
+                              {entry.generatedRecurring && <span className={styles.catDetailFixBadge}>Fixkosten</span>}
                               {editingEntry?.id === entry.id ? (
                                 <div className={styles.catDetailEditRow}>
                                   <input type="number" step="0.01" value={editingEntry.amount} onChange={e => setEditingEntry(p => ({ ...p, amount: e.target.value }))} className={styles.catDetailInput} autoFocus />
