@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
+import Link from 'next/link'
 
 import styles from './page.module.css'
 
@@ -33,11 +34,12 @@ export default function AndarunLanding() {
       className={styles.shell}
       style={pointerStyle}
       onPointerMove={handlePointerMove}
-        onPointerLeave={handlePointerLeave}
-      >
-        <section className={styles.stage} aria-labelledby="andarun-title">
-          <div className={styles.centerpiece}>
+      onPointerLeave={handlePointerLeave}
+    >
+      <section className={styles.stage} aria-labelledby="andarun-title">
+        <div className={styles.centerpiece}>
           <h1 id="andarun-title">Andarun</h1>
+          <Link className={styles.loginLink} href="/andarun/login">Log in</Link>
         </div>
 
         <div className={styles.orbit} aria-hidden="true" />

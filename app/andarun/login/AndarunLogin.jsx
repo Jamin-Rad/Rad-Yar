@@ -38,7 +38,7 @@ export default function AndarunLogin() {
   const [loading, setLoading] = useState(false)
 
   function showError(err) {
-    setError(err?.errors?.[0]?.longMessage || err?.errors?.[0]?.message || err?.message || 'Anmeldung fehlgeschlagen.')
+    setError(err?.errors?.[0]?.longMessage || err?.errors?.[0]?.message || err?.message || 'Sign-in failed.')
   }
 
   function resetForm(nextMode) {
@@ -58,7 +58,7 @@ export default function AndarunLogin() {
 
   async function prepareClientTrust(result) {
     const emailFactor = result.supportedSecondFactors?.find(factor => factor.strategy === 'email_code')
-    if (!emailFactor) throw new Error('Dieses Geraet muss bestaetigt werden, aber E-Mail-Code ist nicht verfuegbar.')
+    if (!emailFactor) throw new Error('This device needs confirmation, but email code is not available.')
 
     await result.prepareSecondFactor({
       strategy: 'email_code',
@@ -78,7 +78,7 @@ export default function AndarunLogin() {
       await prepareClientTrust(result)
       return
     }
-    setError(`Unerwarteter Status: ${result.status}`)
+    setError(`Unexpected status: ${result.status}`)
   }
 
   async function handleSocial() {
@@ -147,7 +147,7 @@ export default function AndarunLogin() {
         await setSignUpActive({ session: result.createdSessionId })
         router.push('/andarun')
       } else {
-        setError(`Unerwarteter Status: ${result.status}`)
+        setError(`Unexpected status: ${result.status}`)
       }
     } catch (err) {
       showError(err)
@@ -179,7 +179,7 @@ export default function AndarunLogin() {
       <section className={styles.panel}>
         <div className={styles.header}>
           <span>Andarun</span>
-          <h1>{mode === 'signin' ? 'Anmelden' : 'Zugang erstellen'}</h1>
+          <h1>{mode === 'signin' ? 'Log in' : 'Create account'}</h1>
         </div>
 
         {error && <div className={styles.error}>{error}</div>}
@@ -188,7 +188,7 @@ export default function AndarunLogin() {
           <>
             <button className={styles.googleBtn} type="button" onClick={handleSocial}>
               <GoogleIcon />
-              Mit Google fortfahren
+              Continue with Google
             </button>
 
             <div className={styles.divider}><span /></div>
@@ -197,53 +197,53 @@ export default function AndarunLogin() {
               {mode === 'signup' && (
                 <label>
                   Nickname
-                  <input value={nickname} onChange={event => setNickname(event.target.value)} placeholder="z. B. Ben" required />
+                  <input value={nickname} onChange={event => setNickname(event.target.value)} placeholder="e.g. Ben" required />
                 </label>
               )}
 
               <label>
-                E-Mail
+                Email
                 <input type="email" value={email} onChange={event => setEmail(event.target.value)} placeholder="name@example.com" required autoComplete="email" />
               </label>
 
               <label>
-                Passwort
-                <input type="password" value={password} onChange={event => setPassword(event.target.value)} placeholder="Mindestens 8 Zeichen" required minLength={8} autoComplete={mode === 'signin' ? 'current-password' : 'new-password'} />
+                Password
+                <input type="password" value={password} onChange={event => setPassword(event.target.value)} placeholder="At least 8 characters" required minLength={8} autoComplete={mode === 'signin' ? 'current-password' : 'new-password'} />
               </label>
 
               <button className={styles.submitBtn} type="submit" disabled={loading || !email || !password || (mode === 'signup' && !nickname)}>
-                {loading ? 'Bitte warten...' : mode === 'signin' ? 'Einloggen' : 'Registrieren'}
+                {loading ? 'Please wait...' : mode === 'signin' ? 'Log in' : 'Create account'}
               </button>
             </form>
 
             <button className={styles.switchBtn} type="button" onClick={() => resetForm(mode === 'signin' ? 'signup' : 'signin')}>
-              {mode === 'signin' ? 'Neuen Andarun-Zugang erstellen' : 'Ich habe schon einen Zugang'}
+              {mode === 'signin' ? 'Create a new Andarun account' : 'I already have an account'}
             </button>
           </>
         )}
 
         {view === 'verify' && (
           <form className={styles.form} onSubmit={handleVerify}>
-            <p className={styles.note}>Wir haben einen Code an deine E-Mail gesendet.</p>
+            <p className={styles.note}>We sent a code to your email.</p>
             <label>
               Code
               <input value={code} onChange={event => setCode(event.target.value.replace(/\D/g, '').slice(0, 6))} placeholder="______" inputMode="numeric" maxLength={6} required />
             </label>
             <button className={styles.submitBtn} type="submit" disabled={loading || code.length < 6}>
-              {loading ? 'Pruefe...' : 'E-Mail bestaetigen'}
+              {loading ? 'Checking...' : 'Verify email'}
             </button>
           </form>
         )}
 
         {view === 'trust' && (
           <form className={styles.form} onSubmit={handleClientTrust}>
-            <p className={styles.note}>Dieses Geraet braucht einen Sicherheitscode.</p>
+            <p className={styles.note}>This device needs a security code.</p>
             <label>
-              Sicherheitscode
+              Security code
               <input value={trustCode} onChange={event => setTrustCode(event.target.value.replace(/\D/g, '').slice(0, 6))} placeholder="______" inputMode="numeric" maxLength={6} required />
             </label>
             <button className={styles.submitBtn} type="submit" disabled={loading || trustCode.length < 6 || !trustFactor}>
-              {loading ? 'Pruefe...' : 'Geraet bestaetigen'}
+              {loading ? 'Checking...' : 'Confirm device'}
             </button>
           </form>
         )}
