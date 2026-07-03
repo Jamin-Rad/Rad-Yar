@@ -62,8 +62,6 @@
   display: grid;
   place-items: center;
   gap: 18px;
-  transform: translate3d(calc(var(--mx) * -12px), calc(var(--my) * -9px), 0);
-  transition: transform .16s ease-out;
 }
 
 .centerpiece h1 {
@@ -90,7 +88,7 @@
   box-shadow:
     0 0 70px rgba(147, 197, 253, .12),
     inset 0 0 70px rgba(255, 255, 255, .045);
-  transform: rotate(-10deg) translate3d(calc(var(--mx) * 8px), calc(var(--my) * 6px), 0);
+  transform: rotate(-10deg);
   opacity: .64;
   pointer-events: none;
 }
@@ -141,9 +139,7 @@
   padding: 0 26px;
   pointer-events: auto;
   text-shadow: 0 2px 12px rgba(0,0,0,.4);
-  transform:
-    translate3d(calc(var(--mx) * var(--depth) * 6px), calc(var(--my) * var(--depth) * 5px), 0)
-    scale(.96);
+  transform: scale(.96);
   animation: appear .72s cubic-bezier(.2, .8, .2, 1) forwards;
   animation-delay: var(--delay);
   transition: border-color .18s, background .18s, box-shadow .18s;
@@ -173,10 +169,7 @@
 .three {
   left: 50%;
   bottom: 8%;
-  transform:
-    translateX(-50%)
-    translate3d(calc(var(--mx) * var(--depth) * 6px), calc(var(--my) * var(--depth) * 5px), 0)
-    scale(.96);
+  transform: translateX(-50%) scale(.96);
 }
 
 .four {
