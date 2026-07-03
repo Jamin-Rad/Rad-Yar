@@ -33,11 +33,10 @@ export default function AndarunLanding() {
       className={styles.shell}
       style={pointerStyle}
       onPointerMove={handlePointerMove}
-      onPointerLeave={handlePointerLeave}
-    >
-      <section className={styles.stage} aria-labelledby="andarun-title">
-        <div className={styles.centerpiece}>
-          <span className={styles.sigil}>A</span>
+        onPointerLeave={handlePointerLeave}
+      >
+        <section className={styles.stage} aria-labelledby="andarun-title">
+          <div className={styles.centerpiece}>
           <h1 id="andarun-title">Andarun</h1>
         </div>
 

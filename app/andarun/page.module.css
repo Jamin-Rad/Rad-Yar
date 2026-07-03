@@ -66,26 +66,6 @@
   transition: transform .16s ease-out;
 }
 
-.sigil {
-  display: grid;
-  width: clamp(62px, 8vw, 92px);
-  height: clamp(62px, 8vw, 92px);
-  place-items: center;
-  border: 1px solid rgba(255, 255, 255, .24);
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 35% 25%, rgba(255,255,255,.38), transparent 32%),
-    rgba(255, 255, 255, .1);
-  box-shadow:
-    0 0 80px rgba(147, 197, 253, .26),
-    inset 0 1px 0 rgba(255, 255, 255, .28);
-  color: #fde68a;
-  font-family: var(--font-fraunces, serif);
-  font-size: clamp(32px, 5vw, 52px);
-  font-weight: 900;
-  line-height: 1;
-}
-
 .centerpiece h1 {
   margin: 0;
   color: #fff;
