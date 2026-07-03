@@ -320,31 +320,32 @@ function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onTo
         </label>
       </div>
 
-      {/* Description */}
-      <label className={styles.entryDescriptionField}>
-        <span>Beschreibung (optional)</span>
-        <input type="text" value={entryDescription} onChange={e => onDescriptionChange(e.target.value)} placeholder="Notiz zu diesem Eintrag" />
-      </label>
+      {/* Description + Fatima toggle */}
+      <div className={styles.entryDescriptionRow}>
+        <label className={styles.entryDescriptionField}>
+          <span>Beschreibung (optional)</span>
+          <input type="text" value={entryDescription} onChange={e => onDescriptionChange(e.target.value)} placeholder="Notiz zu diesem Eintrag" />
+        </label>
 
-      {/* Fatima toggle — only for expenses */}
-      {type === 'expense' && (
-        <button
-          type="button"
-          onClick={onToggleFatima}
-          style={{
-            display: 'inline-flex', alignItems: 'center', gap: 6,
-            padding: '5px 12px', borderRadius: 20, fontSize: 13, fontWeight: 700,
-            border: `1.5px solid ${paidByFatima ? '#8b5cf6' : 'rgba(148,163,184,0.4)'}`,
-            background: paidByFatima ? 'rgba(139,92,246,0.12)' : 'rgba(248,250,252,0.8)',
-            color: paidByFatima ? '#7c3aed' : '#94a3b8',
-            cursor: 'pointer', transition: 'all .15s',
-            alignSelf: 'flex-start',
-          }}
-        >
-          👩 Fatima
-          {paidByFatima && <span style={{ fontSize: 11 }}>✓ hat bezahlt</span>}
-        </button>
-      )}
+        {type === 'expense' && (
+          <button
+            type="button"
+            onClick={onToggleFatima}
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 6,
+              padding: '5px 12px', borderRadius: 20, fontSize: 13, fontWeight: 700,
+              border: `1.5px solid ${paidByFatima ? '#8b5cf6' : 'rgba(148,163,184,0.4)'}`,
+              background: paidByFatima ? 'rgba(139,92,246,0.12)' : 'rgba(248,250,252,0.8)',
+              color: paidByFatima ? '#7c3aed' : '#94a3b8',
+              cursor: 'pointer', transition: 'all .15s',
+              flexShrink: 0,
+            }}
+          >
+            👩 Fatima
+            {paidByFatima && <span style={{ fontSize: 11 }}>✓ hat bezahlt</span>}
+          </button>
+        )}
+      </div>
 
       <CategoryPicker
         categories={categories}

@@ -2667,10 +2667,17 @@
   border-color: var(--border, #e2e8f0);
 }
 
+.entryDescriptionRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
 .entryDescriptionField {
   display: grid;
   gap: 6px;
   min-width: 0;
+  flex: 1 1 auto;
 }
 
 .entryDescriptionField span {
