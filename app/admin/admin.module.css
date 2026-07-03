@@ -579,6 +579,15 @@
   white-space: nowrap;
 }
 
+.entryDescription {
+  overflow: visible !important;
+  color: #94a3b8 !important;
+  font-size: 11px !important;
+  font-weight: 500;
+  white-space: normal !important;
+  font-style: italic;
+}
+
 .privateChart {
   display: flex;
   align-items: flex-end;
@@ -2655,6 +2664,20 @@
   border-color: var(--border, #e2e8f0);
 }
 
+.entryDescriptionField {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.entryDescriptionField span {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
 .entryCategoryBlock {
   display: grid;
   gap: 10px;
@@ -3342,11 +3365,17 @@
 }
 .catDetailEntry:last-child { border-bottom: none; }
 
+.catDetailDateCol {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 72px;
+  flex-shrink: 0;
+}
+
 .catDetailDate {
   color: #64748b;
   font-size: 12px;
-  min-width: 72px;
-  flex-shrink: 0;
 }
 
 .catDetailFixBadge {
@@ -4684,6 +4713,10 @@
 
 :global(html[data-theme='dark']) .catDetailDate {
   color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .entryDescription {
+  color: var(--text-muted) !important;
 }
 
 :global(html[data-theme='dark']) .catDetailFixBadge {

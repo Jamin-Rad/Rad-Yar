@@ -296,7 +296,7 @@ function CategoryPicker({ categories, type, selectedItems, onToggleItem, expande
 }
 
 // ── Entry form (shared between popup and elsewhere) ────────────────────────────
-function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onToggleItem, expandedCats, onToggleExpand, entryAmount, onAmountChange, entryDate, onDateChange, onSubmit, entryTitle, entryCatNames, paidByFatima, onToggleFatima }) {
+function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onToggleItem, expandedCats, onToggleExpand, entryAmount, onAmountChange, entryDate, onDateChange, entryDescription, onDescriptionChange, onSubmit, entryTitle, entryCatNames, paidByFatima, onToggleFatima }) {
   return (
     <form id={formId} className={`${styles.budgetForm} ${styles.financeEntryForm}`} onSubmit={onSubmit}>
       {/* Type */}
@@ -319,6 +319,12 @@ function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onTo
           <input type="date" value={entryDate} onChange={e => onDateChange(e.target.value)} />
         </label>
       </div>
+
+      {/* Description */}
+      <label className={styles.entryDescriptionField}>
+        <span>Beschreibung (optional)</span>
+        <input type="text" value={entryDescription} onChange={e => onDescriptionChange(e.target.value)} placeholder="Notiz zu diesem Eintrag" />
+      </label>
 
       {/* Fatima toggle — only for expenses */}
       {type === 'expense' && (
@@ -383,6 +389,7 @@ export default function BudgetPage() {
   const [entryType, setEntryType]         = useState('expense')
   const [entryAmount, setEntryAmount]     = useState('')
   const [entryDate, setEntryDate]         = useState(new Date().toISOString().slice(0, 10))
+  const [entryDescription, setEntryDescription] = useState('')
   const [selectedItems, setSelectedItems] = useState([])
   const [expandedCats, setExpandedCats]   = useState(new Set())
   const [paidByFatima, setPaidByFatima]   = useState(false)
@@ -831,6 +838,7 @@ ${manualEntries.length ? `
     setExpandedCats(initialExpandedForType(type))
     setEntryAmount('')
     setPaidByFatima(false)
+    setEntryDescription('')
     const todayKey = getMonthKey()
     setEntryDate(month === todayKey
       ? new Date().toISOString().slice(0, 10)
@@ -894,6 +902,7 @@ ${manualEntries.length ? `
             category: entryCatNames[0] || '', tags: entryCatNames,
             catSubtitles,
             date,
+            description: entryDescription.trim(),
             ...(paidByFatima && entryType === 'expense' ? { paidByFatima: true } : {}),
           }, ...cur.entries],
         },
@@ -1296,7 +1305,6 @@ ${manualEntries.length ? `
                     </div>
                   )}
                 </div>
-
               </div>
             )}
 
@@ -2678,6 +2686,8 @@ ${manualEntries.length ? `
                   onAmountChange={setEntryAmount}
                   entryDate={entryDate}
                   onDateChange={setEntryDate}
+                  entryDescription={entryDescription}
+                  onDescriptionChange={setEntryDescription}
                   onSubmit={addEntry}
                   entryTitle={entryTitle}
                   entryCatNames={entryCatNames}
@@ -2742,8 +2752,11 @@ ${manualEntries.length ? `
                         <div className={styles.catDetailEntries}>
                           {entries.slice().sort((a, b) => (b.date || '').localeCompare(a.date || '')).map(entry => (
                             <div key={entry.id} className={styles.catDetailEntry}>
-                              <span className={styles.catDetailDate}>{new Date(entry.date).toLocaleDateString('de-DE')}</span>
-                              {entry.generatedRecurring && <span className={styles.catDetailFixBadge}>Fixkosten</span>}
+                              <div className={styles.catDetailDateCol}>
+                                <span className={styles.catDetailDate}>{new Date(entry.date).toLocaleDateString('de-DE')}</span>
+                                {entry.generatedRecurring && <span className={styles.catDetailFixBadge}>Fixkosten</span>}
+                                {entry.description && <span className={styles.entryDescription}>{entry.description}</span>}
+                              </div>
                               {editingEntry?.id === entry.id ? (
                                 <div className={styles.catDetailEditRow}>
                                   <input type="number" step="0.01" value={editingEntry.amount} onChange={e => setEditingEntry(p => ({ ...p, amount: e.target.value }))} className={styles.catDetailInput} autoFocus />
