@@ -185,19 +185,45 @@
   display: flex !important;
   grid-template-columns: none !important;
   align-items: center;
-  gap: 8px !important;
-  min-height: 28px;
-  color: rgba(226,232,240,.74) !important;
-  font-size: 11px !important;
+  justify-content: center;
+  gap: 9px !important;
+  min-height: 42px;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 16px;
+  background: rgba(255,255,255,.09);
+  color: rgba(226,232,240,.84) !important;
+  cursor: pointer;
+  font-size: 12px !important;
+  font-weight: 950 !important;
   line-height: 1.2;
+  padding: 0 12px;
+  transition: background .15s, border-color .15s, color .15s, box-shadow .15s, transform .15s;
 }
 
 .eventToggle input {
-  width: 17px;
-  height: 17px;
+  width: 15px;
+  height: 15px;
   min-height: 0;
   accent-color: #fbbf24;
   flex-shrink: 0;
+}
+
+.eventToggle:hover {
+  border-color: rgba(251,191,36,.35);
+  background: rgba(255,255,255,.14);
+  color: #fff !important;
+  transform: translateY(-1px);
+}
+
+.eventToggleActive {
+  border: 0;
+  background: linear-gradient(135deg, #facc15, #fb923c);
+  color: #111827 !important;
+  box-shadow: 0 16px 36px rgba(251,146,60,.22);
+}
+
+.eventToggleActive input {
+  accent-color: #111827;
 }
 
 .addBtn,
@@ -731,9 +757,14 @@
   }
 
   .eventToggle input {
-    width: 17px;
-    height: 17px;
+    width: 15px;
+    height: 15px;
     min-height: 0;
+  }
+
+  .eventToggle {
+    min-height: 42px;
+    border-radius: 13px;
   }
 
   .addBtn {

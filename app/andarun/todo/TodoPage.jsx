@@ -373,7 +373,7 @@ export default function TodoPage() {
             </label>
           )}
           <div className={styles.formActions}>
-            <label className={styles.eventToggle}>
+            <label className={`${styles.eventToggle} ${form.itemType === 'event' ? styles.eventToggleActive : ''}`}>
               <input
                 type="checkbox"
                 checked={form.itemType === 'event'}
@@ -384,7 +384,7 @@ export default function TodoPage() {
                   eventTime: event.target.checked ? prev.eventTime : '',
                 }))}
               />
-              <span>Add to Termin</span>
+              <span>Termin</span>
             </label>
             {form.itemType === 'event' && (
               <label className={styles.eventToggle}>
