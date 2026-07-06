@@ -245,9 +245,6 @@ export default function TodoPage() {
             {saving ? 'Saving...' : 'Add ToDo'}
           </button>
         </form>
-        <span className={`${styles.storageBadge} ${storageMode === 'online' ? styles.online : styles.local}`}>
-          {storageMode === 'online' ? 'Online' : 'Local fallback'}
-        </span>
       </section>
 
       <section className={styles.board} aria-label="ToDo board">
