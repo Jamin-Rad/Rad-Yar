@@ -616,21 +616,8 @@ export default function TodoPage() {
                 <input value={detailForm.note} onChange={event => setDetailForm(prev => ({ ...prev, note: event.target.value }))} placeholder="Optional" />
               </label>
 
-              <div className={styles.detailSwitchRow}>
-                <label className={`${styles.eventToggle} ${detailForm.itemType === 'event' ? styles.eventToggleActive : ''}`}>
-                  <input
-                    type="checkbox"
-                    checked={detailForm.itemType === 'event'}
-                    onChange={event => setDetailForm(prev => ({
-                      ...prev,
-                      itemType: event.target.checked ? 'event' : 'todo',
-                      allDay: event.target.checked ? prev.allDay : false,
-                      eventTime: event.target.checked ? prev.eventTime : '',
-                    }))}
-                  />
-                  <span>Termin</span>
-                </label>
-                {detailForm.itemType === 'event' && (
+              {detailForm.itemType === 'event' && (
+                <div className={styles.detailSwitchRow}>
                   <label className={styles.eventToggle}>
                     <input
                       type="checkbox"
@@ -643,8 +630,8 @@ export default function TodoPage() {
                     />
                     <span>Ganztag</span>
                   </label>
-                )}
-              </div>
+                </div>
+              )}
 
               {detailForm.itemType === 'event' && (
                 <label>
