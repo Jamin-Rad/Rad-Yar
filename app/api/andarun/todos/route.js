@@ -4,6 +4,8 @@ import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 
 const LANES = new Set(['urgent', 'today', 'watch'])
 const ITEM_TYPES = new Set(['todo', 'event'])
+const META_PREFIX = '[[andarun:todo-meta:'
+const META_SUFFIX = ']]'
 
 function unavailable() {
   return NextResponse.json({ error: 'Andarun storage is not available.' }, { status: 503 })
@@ -14,15 +16,17 @@ async function getAndarunIdentity() {
 }
 
 function toClient(row) {
+  const parsedNote = parseStoredNote(row.note || '')
+  const itemType = parsedNote.itemType === 'event' ? 'event' : row.item_type || 'todo'
   return {
     id: row.id,
     title: row.title,
-    note: row.note || '',
+    note: parsedNote.note,
     lane: row.lane,
     deadline: row.deadline || '',
-    itemType: row.item_type || 'todo',
-    eventTime: row.event_time ? String(row.event_time).slice(0, 5) : '',
-    allDay: Boolean(row.all_day),
+    itemType,
+    eventTime: row.event_time ? String(row.event_time).slice(0, 5) : parsedNote.eventTime,
+    allDay: itemType === 'event' ? (row.all_day != null ? Boolean(row.all_day) : parsedNote.allDay) : false,
     done: Boolean(row.done),
     completedAt: row.completed_at || null,
     createdAt: row.created_at,
@@ -42,6 +46,40 @@ function cleanDeadline(value) {
 function cleanTime(value) {
   if (typeof value !== 'string' || !value) return null
   return /^\d{2}:\d{2}$/.test(value) ? value : null
+}
+
+function parseStoredNote(value) {
+  const fallback = { note: value || '', itemType: 'todo', eventTime: '', allDay: false }
+  if (typeof value !== 'string' || !value.startsWith(META_PREFIX)) return fallback
+  const end = value.indexOf(META_SUFFIX)
+  if (end < 0) return fallback
+  try {
+    const meta = JSON.parse(value.slice(META_PREFIX.length, end))
+    const note = value.slice(end + META_SUFFIX.length).replace(/^\n/, '')
+    return {
+      note,
+      itemType: ITEM_TYPES.has(meta.itemType) ? meta.itemType : 'todo',
+      eventTime: cleanTime(meta.eventTime) || '',
+      allDay: Boolean(meta.allDay),
+    }
+  } catch {
+    return fallback
+  }
+}
+
+function encodeStoredNote(note, itemType, eventTime, allDay) {
+  if (itemType !== 'event') return note || null
+  const meta = JSON.stringify({
+    itemType,
+    eventTime: allDay ? '' : eventTime || '',
+    allDay: Boolean(allDay),
+  })
+  return `${META_PREFIX}${meta}${META_SUFFIX}${note ? `\n${note}` : ''}`
+}
+
+function missingEventColumns(error) {
+  const text = `${error?.message || ''} ${error?.details || ''} ${error?.hint || ''}`
+  return /item_type|event_time|all_day|schema cache/i.test(text)
 }
 
 function todayDate() {
@@ -101,6 +139,7 @@ export async function POST(request) {
   }
 
   const title = cleanText(body.title)
+  const note = cleanText(body.note, 500)
   const deadline = cleanDeadline(body.deadline)
   const itemType = ITEM_TYPES.has(body.itemType) ? body.itemType : 'todo'
   const allDay = itemType === 'event' ? Boolean(body.allDay) : false
@@ -116,7 +155,7 @@ export async function POST(request) {
     .insert({
       owner_id: identity.ownerId,
       title,
-      note: cleanText(body.note, 500) || null,
+      note: note || null,
       lane,
       deadline,
       item_type: itemType,
@@ -129,6 +168,25 @@ export async function POST(request) {
     .single()
 
   if (error) {
+    if (missingEventColumns(error)) {
+      const fallback = await supabaseAdmin
+        .from('andarun_todos')
+        .insert({
+          owner_id: identity.ownerId,
+          title,
+          note: encodeStoredNote(note, itemType, eventTime, allDay),
+          lane,
+          deadline,
+          done: false,
+          updated_at: new Date().toISOString(),
+        })
+        .select('*')
+        .single()
+
+      if (!fallback.error) return NextResponse.json({ todo: toClient(fallback.data) })
+      console.error('[andarun-todos] POST fallback failed', fallback.error)
+      return NextResponse.json({ error: fallback.error.message }, { status: 503 })
+    }
     console.error('[andarun-todos] POST failed', error)
     return NextResponse.json({ error: error.message }, { status: 503 })
   }
@@ -186,6 +244,38 @@ export async function PATCH(request) {
     .maybeSingle()
 
   if (error) {
+    if (missingEventColumns(error)) {
+      const fallbackUpdate = { updated_at: new Date().toISOString() }
+      const itemType = ITEM_TYPES.has(body.itemType) ? body.itemType : null
+      const allDay = itemType === 'event' ? Boolean(body.allDay) : false
+      const eventTime = itemType === 'event' && !allDay ? cleanTime(body.eventTime) : null
+
+      if (typeof body.title === 'string') fallbackUpdate.title = cleanText(body.title)
+      if (typeof body.note === 'string') fallbackUpdate.note = encodeStoredNote(cleanText(body.note, 500), itemType || 'todo', eventTime, allDay)
+      if (typeof body.lane === 'string' && LANES.has(body.lane)) fallbackUpdate.lane = body.lane
+      if (typeof body.deadline === 'string') {
+        fallbackUpdate.deadline = cleanDeadline(body.deadline)
+        fallbackUpdate.lane = laneFromDeadline(fallbackUpdate.deadline, fallbackUpdate.lane || 'today')
+      }
+      if (typeof body.done === 'boolean') {
+        fallbackUpdate.done = body.done
+        fallbackUpdate.completed_at = body.done ? new Date().toISOString() : null
+      }
+      if (fallbackUpdate.title === '') return NextResponse.json({ error: 'Title is required.' }, { status: 400 })
+
+      const fallback = await supabaseAdmin
+        .from('andarun_todos')
+        .update(fallbackUpdate)
+        .eq('id', id)
+        .eq('owner_id', identity.ownerId)
+        .select('*')
+        .maybeSingle()
+
+      if (!fallback.error && fallback.data) return NextResponse.json({ todo: toClient(fallback.data) })
+      if (!fallback.error && !fallback.data) return NextResponse.json({ error: 'Todo not found.' }, { status: 404 })
+      console.error('[andarun-todos] PATCH fallback failed', fallback.error)
+      return NextResponse.json({ error: fallback.error.message }, { status: 503 })
+    }
     console.error('[andarun-todos] PATCH failed', error)
     return NextResponse.json({ error: error.message }, { status: 503 })
   }
