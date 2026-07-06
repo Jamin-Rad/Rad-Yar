@@ -39,7 +39,7 @@ export default function AndarunLanding() {
       <section className={styles.stage} aria-labelledby="andarun-title">
         <div className={styles.centerpiece}>
           <h1 id="andarun-title">Andarun</h1>
-          <Link className={styles.loginLink} href="/andarun/login">Log in</Link>
+          <Link className={styles.loginLink} href="/andarun/login">Enter</Link>
         </div>
 
         <div className={styles.orbit} aria-hidden="true" />

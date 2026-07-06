@@ -1,7 +1,5 @@
-import { currentUser } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
-import { isAndarunUser } from '@/lib/andarunAuth'
-import { canonicalUserEmail } from '@/lib/emailIdentity'
+import { requireAndarunSession } from '@/lib/andarunPasswordAuth'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 
 const LANES = new Set(['urgent', 'today', 'watch'])
@@ -11,12 +9,7 @@ function unavailable() {
 }
 
 async function getAndarunIdentity() {
-  const user = await currentUser()
-  if (!user) return { error: 'Not signed in', status: 401 }
-  if (!isAndarunUser(user)) return { error: 'Not allowed for Andarun', status: 403 }
-
-  const email = canonicalUserEmail(user)
-  return { ownerId: `email:${email}` }
+  return requireAndarunSession()
 }
 
 function toClient(row) {
