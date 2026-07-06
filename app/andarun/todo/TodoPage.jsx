@@ -185,6 +185,12 @@ export default function TodoPage() {
       const lane = result[effectiveLane(todo)] ? effectiveLane(todo) : 'today'
       result[lane].push(todo)
     }
+    result.watch.sort((a, b) => {
+      if (!a.deadline && !b.deadline) return 0
+      if (!a.deadline) return 1
+      if (!b.deadline) return -1
+      return a.deadline.localeCompare(b.deadline)
+    })
     return result
   }, [todos])
 
