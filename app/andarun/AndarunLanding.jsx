@@ -6,11 +6,11 @@ import Link from 'next/link'
 import styles from './page.module.css'
 
 const tiles = [
-  { title: 'Routine', tone: 'sun', orbit: 'one' },
-  { title: 'Planen', tone: 'moon', orbit: 'two' },
-  { title: 'Flashcards', tone: 'nova', orbit: 'three' },
-  { title: 'Finanzen', tone: 'aurora', orbit: 'four' },
-  { title: 'Gesundheit', tone: 'ember', orbit: 'five' },
+  { title: 'Routine', tone: 'sun', orbit: 'one', href: '#' },
+  { title: 'ToDo', tone: 'moon', orbit: 'two', href: '/andarun/todo' },
+  { title: 'Flashcards', tone: 'nova', orbit: 'three', href: '#' },
+  { title: 'Finanzen', tone: 'aurora', orbit: 'four', href: '#' },
+  { title: 'Gesundheit', tone: 'ember', orbit: 'five', href: '#' },
 ]
 
 export default function AndarunLanding() {
@@ -46,14 +46,14 @@ export default function AndarunLanding() {
 
         <div className={styles.tileLayer} aria-label="Private Bereiche">
           {tiles.map((tile, index) => (
-            <button
+            <Link
               className={`${styles.tile} ${styles[tile.tone]} ${styles[tile.orbit]}`}
+              href={tile.href}
               style={{ '--delay': `${index * 90}ms`, '--depth': `${index + 1}` }}
-              type="button"
               key={tile.title}
             >
               {tile.title}
-            </button>
+            </Link>
           ))}
         </div>
       </section>
