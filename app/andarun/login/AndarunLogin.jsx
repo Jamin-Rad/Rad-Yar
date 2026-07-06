@@ -37,6 +37,7 @@ export default function AndarunLogin() {
   const [code, setCode] = useState('')
   const [trustCode, setTrustCode] = useState('')
   const [trustFactor, setTrustFactor] = useState(null)
+  const [trustLabel, setTrustLabel] = useState('This device needs a security code.')
   const [view, setView] = useState('form')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
@@ -60,15 +61,32 @@ export default function AndarunLogin() {
     router.push('/andarun')
   }
 
-  async function prepareClientTrust(result) {
-    const emailFactor = result.supportedSecondFactors?.find(factor => factor.strategy === 'email_code')
-    if (!emailFactor) throw new Error('This device needs confirmation, but email code is not available.')
+  async function prepareSecondFactor(result) {
+    const factors = result.supportedSecondFactors || signIn?.supportedSecondFactors || []
+    const factor =
+      factors.find(item => item.strategy === 'email_code') ||
+      factors.find(item => item.strategy === 'phone_code') ||
+      factors.find(item => item.strategy === 'totp')
 
-    await result.prepareSecondFactor({
-      strategy: 'email_code',
-      emailAddressId: emailFactor.emailAddressId,
-    })
-    setTrustFactor(emailFactor)
+    if (!factor) throw new Error('A second factor is required, but no supported method is available here.')
+
+    if (factor.strategy === 'email_code') {
+      await result.prepareSecondFactor({
+        strategy: 'email_code',
+        emailAddressId: factor.emailAddressId,
+      })
+      setTrustLabel('We sent a security code to your email.')
+    } else if (factor.strategy === 'phone_code') {
+      await result.prepareSecondFactor({
+        strategy: 'phone_code',
+        phoneNumberId: factor.phoneNumberId,
+      })
+      setTrustLabel('We sent a security code to your phone.')
+    } else {
+      setTrustLabel('Enter the code from your authenticator app.')
+    }
+
+    setTrustFactor(factor)
     setTrustCode('')
     setView('trust')
   }
@@ -79,11 +97,11 @@ export default function AndarunLogin() {
       return
     }
     if (needsClientTrust(result.status)) {
-      await prepareClientTrust(result)
+      await prepareSecondFactor(result)
       return
     }
     if (needsSecondFactor(result.status)) {
-      await prepareClientTrust(result)
+      await prepareSecondFactor(result)
       return
     }
     setError(`Unexpected status: ${result.status}`)
@@ -171,7 +189,7 @@ export default function AndarunLogin() {
     setError('')
     try {
       const result = await signIn.attemptSecondFactor({
-        strategy: 'email_code',
+        strategy: trustFactor.strategy,
         code: trustCode,
       })
       await handleSignInResult(result)
@@ -245,7 +263,7 @@ export default function AndarunLogin() {
 
         {view === 'trust' && (
           <form className={styles.form} onSubmit={handleClientTrust}>
-            <p className={styles.note}>This device needs a security code.</p>
+            <p className={styles.note}>{trustLabel}</p>
             <label>
               Security code
               <input value={trustCode} onChange={event => setTrustCode(event.target.value.replace(/\D/g, '').slice(0, 6))} placeholder="______" inputMode="numeric" maxLength={6} required />
