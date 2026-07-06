@@ -93,7 +93,7 @@ function PrivateZoneMenu() {
       </button>
       {open && (
         <div className={styles.privateDropdown} role="menu">
-          <Link href="/admin/budget" className={styles.privateDropdownLink} onClick={() => setOpen(false)} role="menuitem">
+          <Link href="/andarun/finanz" className={styles.privateDropdownLink} onClick={() => setOpen(false)} role="menuitem">
             <EuroIcon />
             Finanzen
           </Link>

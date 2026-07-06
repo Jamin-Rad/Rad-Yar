@@ -90,7 +90,7 @@ export default function PrivatePage() {
             <h2 className={styles.sectionTitle}>Private Bereiche</h2>
             <div className={styles.privateAreaGrid}>
               <Link href="/admin/health">Kalorien & Sport</Link>
-              <Link href="/admin/budget">Finanzen</Link>
+              <Link href="/andarun/finanz">Finanzen</Link>
               <Link href="/admin/private">Ziele & Notizen</Link>
             </div>
           </section>

@@ -4028,6 +4028,15 @@
 }
 
 /* Finance redesign */
+:global(html[data-theme='dark']) .financeHeader {
+  background:
+    linear-gradient(135deg, rgba(15,23,42,.76), rgba(15,23,42,.48)),
+    radial-gradient(circle at 12% 0%, rgba(249,115,22,.14), transparent 38%),
+    radial-gradient(circle at 100% 20%, rgba(14,165,233,.10), transparent 36%);
+  border-color: rgba(148,163,184,.18);
+  box-shadow: var(--finance-glass-shadow);
+}
+
 :global(html[data-theme='dark']) .financeMetric {
   background:
     linear-gradient(145deg, rgba(15,23,42,.74), rgba(15,23,42,.52)),
@@ -4107,8 +4116,9 @@
 }
 
 :global(html[data-theme='dark']) .reportCard {
-  background: var(--bg-soft);
-  border-color: var(--border-soft);
+  background: rgba(15,23,42,.52);
+  border-color: rgba(148,163,184,.16);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 8px 22px rgba(0,0,0,.16);
 }
 
 :global(html[data-theme='dark']) .reportCard span {
@@ -4124,7 +4134,9 @@
 }
 
 :global(html[data-theme='dark']) .reportTotalRow {
-  border-color: var(--border);
+  background: rgba(15,23,42,.52);
+  border-color: rgba(148,163,184,.18);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 10px 24px rgba(0,0,0,.16);
 }
 
 :global(html[data-theme='dark']) .reportTotalRow span {
@@ -4140,7 +4152,7 @@
 }
 
 :global(html[data-theme='dark']) .printBtn {
-  background: var(--bg-soft);
+  background: rgba(15,23,42,.58);
   border-color: var(--border);
   color: var(--text-muted);
 }
@@ -4314,6 +4326,22 @@
 :global(html[data-theme='dark']) .sectionCardFoot {
   background: rgba(15,23,42,.44);
   border-top-color: var(--border-soft);
+}
+
+:global(html[data-theme='dark']) .popupPanel {
+  background:
+    linear-gradient(145deg, rgba(15,23,42,.82), rgba(15,23,42,.62)),
+    radial-gradient(circle at 100% 0%, rgba(249,115,22,.14), transparent 38%);
+  border-color: rgba(148,163,184,.18);
+  box-shadow: 0 24px 64px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.07);
+}
+
+:global(html[data-theme='dark']) .entryAmountPanel,
+:global(html[data-theme='dark']) .entrySubmitBar,
+:global(html[data-theme='dark']) .budgetCatRow {
+  background: rgba(15,23,42,.50);
+  border-color: rgba(148,163,184,.16);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 8px 22px rgba(0,0,0,.14);
 }
 
 :global(html[data-theme='dark']) .incomeRowName {
@@ -4919,7 +4947,11 @@
 
 /* ── MONTH PICKER – DARK MODE ────────────────── */
 :global(html[data-theme='dark']) .monthPickerDropdown {
-  box-shadow: 0 20px 48px rgba(0,0,0,.44), 0 0 0 1px rgba(255,255,255,.06);
+  background:
+    linear-gradient(180deg, rgba(15,23,42,.82), rgba(15,23,42,.64)),
+    radial-gradient(circle at 100% 0%, rgba(249,115,22,.14), transparent 40%);
+  border-color: rgba(148,163,184,.18);
+  box-shadow: 0 20px 48px rgba(0,0,0,.44), inset 0 1px 0 rgba(255,255,255,.06);
 }
 
 :global(html[data-theme='dark']) .monthPickerCellToday {
