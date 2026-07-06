@@ -27,6 +27,7 @@ function toClient(row) {
     lane: row.lane,
     deadline: row.deadline || '',
     done: Boolean(row.done),
+    completedAt: row.completed_at || null,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
   }
@@ -154,6 +155,9 @@ export async function PATCH(request) {
     update.lane = laneFromDeadline(update.deadline, update.lane || 'today')
   }
   if (typeof body.done === 'boolean') update.done = body.done
+  if (typeof body.done === 'boolean') {
+    update.completed_at = body.done ? new Date().toISOString() : null
+  }
 
   if (update.title === '') return NextResponse.json({ error: 'Title is required.' }, { status: 400 })
 

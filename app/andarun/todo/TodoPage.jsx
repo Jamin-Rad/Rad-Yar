@@ -85,7 +85,7 @@ export default function TodoPage() {
   const [saving, setSaving] = useState(false)
   const [storageMode, setStorageMode] = useState('online')
   const [message, setMessage] = useState('')
-  const [showCompleted, setShowCompleted] = useState(false)
+  const [completedOpen, setCompletedOpen] = useState(false)
 
   useEffect(() => {
     let active = true
@@ -136,13 +136,35 @@ export default function TodoPage() {
 
   const grouped = useMemo(() => {
     const result = Object.fromEntries(LANES.map(lane => [lane.id, []]))
-    const visibleTodos = showCompleted ? todos : todos.filter(todo => !todo.done)
+    const visibleTodos = todos.filter(todo => !todo.done)
     for (const todo of visibleTodos) {
       const lane = result[effectiveLane(todo)] ? effectiveLane(todo) : 'today'
       result[lane].push(todo)
     }
     return result
-  }, [todos, showCompleted])
+  }, [todos])
+
+  const completedGroups = useMemo(() => {
+    const groups = new Map()
+    const completed = todos
+      .filter(todo => todo.done)
+      .sort((a, b) => new Date(b.completedAt || b.updatedAt || 0) - new Date(a.completedAt || a.updatedAt || 0))
+
+    for (const todo of completed) {
+      const stamp = todo.completedAt || todo.updatedAt || new Date().toISOString()
+      const date = new Date(stamp)
+      const key = Number.isNaN(date.getTime()) ? 'Unknown date' : date.toLocaleDateString('en-GB', {
+        weekday: 'short',
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric',
+      })
+      if (!groups.has(key)) groups.set(key, [])
+      groups.get(key).push(todo)
+    }
+
+    return [...groups.entries()].map(([date, items]) => ({ date, items }))
+  }, [todos])
 
   async function createTodo(event) {
     event.preventDefault()
@@ -158,6 +180,7 @@ export default function TodoPage() {
       lane: form.lane,
       deadline: form.deadline,
       done: false,
+      completedAt: null,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     }
@@ -191,7 +214,10 @@ export default function TodoPage() {
 
   async function patchTodo(id, patch) {
     const previous = todos
-    setTodos(prev => prev.map(todo => todo.id === id ? { ...todo, ...patch, updatedAt: new Date().toISOString() } : todo))
+    const normalizedPatch = typeof patch.done === 'boolean'
+      ? { ...patch, completedAt: patch.done ? new Date().toISOString() : null }
+      : patch
+    setTodos(prev => prev.map(todo => todo.id === id ? { ...todo, ...normalizedPatch, updatedAt: new Date().toISOString() } : todo))
 
     if (storageMode === 'local' || id.startsWith('local-')) return
 
@@ -237,8 +263,8 @@ export default function TodoPage() {
           <span><strong>{stats.open}</strong> open</span>
           <span><strong>{stats.dueToday}</strong> today</span>
           <span><strong>{stats.done}</strong> done</span>
-          <button className={styles.completedToggle} type="button" onClick={() => setShowCompleted(value => !value)}>
-            {showCompleted ? 'Hide completed' : 'Show completed'}
+          <button className={styles.completedToggle} type="button" onClick={() => setCompletedOpen(true)}>
+            Completed
           </button>
         </div>
       </section>
@@ -311,6 +337,43 @@ export default function TodoPage() {
           </article>
         ))}
       </section>
+
+      {completedOpen && (
+        <div className={styles.modalBackdrop} role="presentation" onMouseDown={() => setCompletedOpen(false)}>
+          <section className={styles.completedModal} role="dialog" aria-modal="true" aria-labelledby="completed-title" onMouseDown={event => event.stopPropagation()}>
+            <header className={styles.modalHeader}>
+              <div>
+                <span className={styles.kicker}>Archive</span>
+                <h2 id="completed-title">Completed</h2>
+              </div>
+              <button type="button" className={styles.modalClose} onClick={() => setCompletedOpen(false)} aria-label="Close completed tasks">×</button>
+            </header>
+
+            {completedGroups.length ? (
+              <div className={styles.completedList}>
+                {completedGroups.map(group => (
+                  <article className={styles.completedGroup} key={group.date}>
+                    <h3>{group.date}</h3>
+                    <div className={styles.completedItems}>
+                      {group.items.map(todo => (
+                        <div className={styles.completedItem} key={todo.id}>
+                          <div>
+                            <strong>{todo.title}</strong>
+                            {todo.note && <p>{todo.note}</p>}
+                          </div>
+                          <button type="button" onClick={() => patchTodo(todo.id, { done: false })}>Reopen</button>
+                        </div>
+                      ))}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            ) : (
+              <p className={styles.emptyCompleted}>No completed tasks yet.</p>
+            )}
+          </section>
+        </div>
+      )}
     </main>
   )
 }
