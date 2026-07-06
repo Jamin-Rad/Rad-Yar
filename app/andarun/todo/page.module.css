@@ -448,6 +448,16 @@
   border-radius: 20px;
   background: rgba(255,255,255,.09);
   box-shadow: 0 12px 28px rgba(0,0,0,.18);
+  cursor: pointer;
+  transition: border-color .15s, background .15s, transform .15s;
+}
+
+.card:hover,
+.card:focus-visible {
+  border-color: rgba(255,255,255,.24);
+  background: rgba(255,255,255,.12);
+  outline: none;
+  transform: translateY(-1px);
 }
 
 .card.done {
@@ -563,6 +573,20 @@
   box-shadow: 0 34px 110px rgba(0,0,0,.48);
 }
 
+.detailModal {
+  width: min(640px, 100%);
+  max-height: min(780px, calc(100vh - 36px));
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,.13), transparent 42%),
+    rgba(8, 13, 31, .88);
+  box-shadow: 0 34px 110px rgba(0,0,0,.48);
+}
+
 .modalHeader {
   display: flex;
   align-items: flex-start;
@@ -598,6 +622,86 @@
   gap: 16px;
   overflow: auto;
   padding: 18px;
+}
+
+.detailForm {
+  display: grid;
+  gap: 13px;
+  overflow: auto;
+  padding: 18px;
+}
+
+.detailForm label {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+  color: rgba(226, 232, 240, .72);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.detailForm input {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 15px;
+  background: rgba(255,255,255,.10);
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+  outline: none;
+  padding: 0 13px;
+}
+
+.detailForm input:focus {
+  border-color: rgba(251,191,36,.58);
+  box-shadow: 0 0 0 4px rgba(251,191,36,.12);
+}
+
+.detailForm input:disabled {
+  opacity: .48;
+  cursor: not-allowed;
+}
+
+.detailSwitchRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.detailActions {
+  display: grid;
+  grid-template-columns: minmax(120px, .8fr) minmax(130px, .9fr) minmax(140px, 1fr);
+  gap: 10px;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.detailDeleteBtn,
+.detailGhostBtn {
+  min-height: 44px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 16px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.detailDeleteBtn {
+  background: rgba(244,63,94,.16);
+  color: #fecdd3;
+}
+
+.detailGhostBtn {
+  background: rgba(255,255,255,.09);
+  color: rgba(226,232,240,.84);
+}
+
+.detailDeleteBtn:hover,
+.detailGhostBtn:hover {
+  border-color: rgba(255,255,255,.26);
+  filter: brightness(1.08);
 }
 
 .completedGroup {
@@ -885,6 +989,11 @@
     border-radius: 20px;
   }
 
+  .detailModal {
+    max-height: calc(100svh - 24px);
+    border-radius: 20px;
+  }
+
   .modalBackdrop {
     padding: 12px;
   }
@@ -899,6 +1008,21 @@
 
   .completedList {
     padding: 12px;
+  }
+
+  .detailForm {
+    padding: 12px;
+  }
+
+  .detailSwitchRow,
+  .detailActions {
+    grid-template-columns: 1fr;
+  }
+
+  .detailDeleteBtn,
+  .detailGhostBtn {
+    min-height: 42px;
+    border-radius: 13px;
   }
 
   .completedItem {

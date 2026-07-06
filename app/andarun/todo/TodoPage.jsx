@@ -116,6 +116,18 @@ function emptyForm() {
   }
 }
 
+function formFromTodo(todo) {
+  return {
+    title: todo?.title || '',
+    note: todo?.note || '',
+    lane: todo?.lane || laneFromDeadline(todo?.deadline),
+    deadline: todo?.deadline || todayValue(),
+    itemType: todo?.itemType || 'todo',
+    eventTime: todo?.eventTime || '',
+    allDay: Boolean(todo?.allDay),
+  }
+}
+
 function effectiveLane(todo) {
   if (!todo?.deadline || todo.done) return todo?.lane || 'today'
   return laneFromDeadline(todo.deadline)
@@ -130,6 +142,8 @@ export default function TodoPage() {
   const [message, setMessage] = useState('')
   const [completedOpen, setCompletedOpen] = useState(false)
   const [monthView, setMonthView] = useState(() => monthKeyFromDate())
+  const [detailId, setDetailId] = useState(null)
+  const [detailForm, setDetailForm] = useState(() => emptyForm())
 
   useEffect(() => {
     let active = true
@@ -323,6 +337,44 @@ export default function TodoPage() {
     }
   }
 
+  function openDetail(todo) {
+    setDetailId(todo.id)
+    setDetailForm(formFromTodo(todo))
+  }
+
+  function closeDetail() {
+    setDetailId(null)
+    setDetailForm(emptyForm())
+  }
+
+  async function saveDetail(event) {
+    event.preventDefault()
+    const title = detailForm.title.trim()
+    if (!detailId || !title) return
+
+    const patch = {
+      title,
+      note: detailForm.note.trim(),
+      deadline: detailForm.deadline,
+      lane: laneFromDeadline(detailForm.deadline),
+      itemType: detailForm.itemType,
+      allDay: detailForm.itemType === 'event' ? detailForm.allDay : false,
+      eventTime: detailForm.itemType === 'event' && !detailForm.allDay ? detailForm.eventTime : '',
+    }
+
+    await patchTodo(detailId, patch)
+    if (patch.itemType === 'event' && patch.deadline) setMonthView(monthKeyFromDate(patch.deadline))
+    closeDetail()
+  }
+
+  async function deleteDetail() {
+    if (!detailId) return
+    await deleteTodo(detailId)
+    closeDetail()
+  }
+
+  const detailTodo = detailId ? todos.find(todo => todo.id === detailId) : null
+
   return (
     <main className={styles.page}>
       <section className={styles.hero}>
@@ -423,9 +475,16 @@ export default function TodoPage() {
                 const deadlineDiff = daysUntil(todo.deadline)
                 const isSoon = deadlineDiff !== null && deadlineDiff <= 2 && deadlineDiff >= 0 && !todo.done
                 return (
-                  <div className={`${styles.card} ${todo.done ? styles.done : ''}`} key={todo.id}>
+                  <div
+                    className={`${styles.card} ${todo.done ? styles.done : ''}`}
+                    key={todo.id}
+                    onClick={() => openDetail(todo)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={event => (event.key === 'Enter' || event.key === ' ') && openDetail(todo)}
+                  >
                     <div className={styles.cardTop}>
-                      <button type="button" className={styles.checkBtn} onClick={() => patchTodo(todo.id, { done: !todo.done })} aria-label={todo.done ? 'Mark open' : 'Mark done'}>
+                      <button type="button" className={styles.checkBtn} onClick={event => { event.stopPropagation(); patchTodo(todo.id, { done: !todo.done }) }} aria-label={todo.done ? 'Mark open' : 'Mark done'}>
                         {todo.done ? '✓' : ''}
                       </button>
                       <strong>{todo.title}</strong>
@@ -438,7 +497,7 @@ export default function TodoPage() {
                         </span>
                       ) : <span />}
                       <div className={styles.cardActions}>
-                        <button type="button" onClick={() => deleteTodo(todo.id)}>Delete</button>
+                        <button type="button" onClick={event => { event.stopPropagation(); openDetail(todo) }}>Edit</button>
                       </div>
                     </div>
                   </div>
@@ -478,8 +537,8 @@ export default function TodoPage() {
                   <button
                     className={styles.monthEvent}
                     type="button"
-                    onClick={() => patchTodo(event.id, { done: true })}
-                    title="Als erledigt markieren"
+                    onClick={() => openDetail(event)}
+                    title="Termin bearbeiten"
                     key={event.id}
                   >
                     <strong>{event.allDay ? 'Ganztag' : event.eventTime || '--:--'}</strong>
@@ -525,6 +584,88 @@ export default function TodoPage() {
             ) : (
               <p className={styles.emptyCompleted}>No completed tasks yet.</p>
             )}
+          </section>
+        </div>
+      )}
+
+      {detailTodo && (
+        <div className={styles.modalBackdrop} role="presentation" onMouseDown={closeDetail}>
+          <section className={styles.detailModal} role="dialog" aria-modal="true" aria-labelledby="detail-title" onMouseDown={event => event.stopPropagation()}>
+            <header className={styles.modalHeader}>
+              <div>
+                <span className={styles.kicker}>{detailForm.itemType === 'event' ? 'Termin' : 'ToDo'}</span>
+                <h2 id="detail-title">{detailForm.itemType === 'event' ? 'Termin' : 'ToDo'}</h2>
+              </div>
+              <button type="button" className={styles.modalClose} onClick={closeDetail} aria-label="Close detail">×</button>
+            </header>
+
+            <form className={styles.detailForm} onSubmit={saveDetail}>
+              <label>
+                Titel
+                <input value={detailForm.title} onChange={event => setDetailForm(prev => ({ ...prev, title: event.target.value }))} required />
+              </label>
+              <label>
+                Datum
+                <input type="date" value={detailForm.deadline} min={todayValue()} onChange={event => {
+                  const deadline = event.target.value
+                  setDetailForm(prev => ({ ...prev, deadline, lane: laneFromDeadline(deadline) }))
+                }} />
+              </label>
+              <label>
+                Notiz
+                <input value={detailForm.note} onChange={event => setDetailForm(prev => ({ ...prev, note: event.target.value }))} placeholder="Optional" />
+              </label>
+
+              <div className={styles.detailSwitchRow}>
+                <label className={`${styles.eventToggle} ${detailForm.itemType === 'event' ? styles.eventToggleActive : ''}`}>
+                  <input
+                    type="checkbox"
+                    checked={detailForm.itemType === 'event'}
+                    onChange={event => setDetailForm(prev => ({
+                      ...prev,
+                      itemType: event.target.checked ? 'event' : 'todo',
+                      allDay: event.target.checked ? prev.allDay : false,
+                      eventTime: event.target.checked ? prev.eventTime : '',
+                    }))}
+                  />
+                  <span>Termin</span>
+                </label>
+                {detailForm.itemType === 'event' && (
+                  <label className={styles.eventToggle}>
+                    <input
+                      type="checkbox"
+                      checked={detailForm.allDay}
+                      onChange={event => setDetailForm(prev => ({
+                        ...prev,
+                        allDay: event.target.checked,
+                        eventTime: event.target.checked ? '' : prev.eventTime,
+                      }))}
+                    />
+                    <span>Ganztag</span>
+                  </label>
+                )}
+              </div>
+
+              {detailForm.itemType === 'event' && (
+                <label>
+                  Uhrzeit
+                  <input
+                    type="time"
+                    value={detailForm.eventTime}
+                    disabled={detailForm.allDay}
+                    onChange={event => setDetailForm(prev => ({ ...prev, eventTime: event.target.value }))}
+                  />
+                </label>
+              )}
+
+              <div className={styles.detailActions}>
+                <button className={styles.detailDeleteBtn} type="button" onClick={deleteDetail}>Löschen</button>
+                <button className={styles.detailGhostBtn} type="button" onClick={() => patchTodo(detailId, { done: !detailTodo.done }).then(closeDetail)}>
+                  {detailTodo.done ? 'Wieder öffnen' : 'Erledigt'}
+                </button>
+                <button className={styles.addBtn} type="submit">Speichern</button>
+              </div>
+            </form>
           </section>
         </div>
       )}
