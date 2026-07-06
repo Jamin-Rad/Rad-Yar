@@ -85,6 +85,7 @@ export default function TodoPage() {
   const [saving, setSaving] = useState(false)
   const [storageMode, setStorageMode] = useState('online')
   const [message, setMessage] = useState('')
+  const [showCompleted, setShowCompleted] = useState(false)
 
   useEffect(() => {
     let active = true
@@ -135,12 +136,13 @@ export default function TodoPage() {
 
   const grouped = useMemo(() => {
     const result = Object.fromEntries(LANES.map(lane => [lane.id, []]))
-    for (const todo of todos) {
+    const visibleTodos = showCompleted ? todos : todos.filter(todo => !todo.done)
+    for (const todo of visibleTodos) {
       const lane = result[effectiveLane(todo)] ? effectiveLane(todo) : 'today'
       result[lane].push(todo)
     }
     return result
-  }, [todos])
+  }, [todos, showCompleted])
 
   async function createTodo(event) {
     event.preventDefault()
@@ -235,6 +237,9 @@ export default function TodoPage() {
           <span><strong>{stats.open}</strong> open</span>
           <span><strong>{stats.dueToday}</strong> today</span>
           <span><strong>{stats.done}</strong> done</span>
+          <button className={styles.completedToggle} type="button" onClick={() => setShowCompleted(value => !value)}>
+            {showCompleted ? 'Hide completed' : 'Show completed'}
+          </button>
         </div>
       </section>
 
@@ -257,13 +262,6 @@ export default function TodoPage() {
             Note
             <input value={form.note} onChange={event => setForm(prev => ({ ...prev, note: event.target.value }))} placeholder="Optional" />
           </label>
-          <div className={styles.segmented} aria-label="Priority">
-            {LANES.map(lane => (
-              <button key={lane.id} type="button" className={form.lane === lane.id ? styles.activeSegment : ''} onClick={() => setForm(prev => ({ ...prev, lane: lane.id }))}>
-                {lane.title}
-              </button>
-            ))}
-          </div>
           <button className={styles.addBtn} type="submit" disabled={saving || !form.title.trim()}>
             {saving ? 'Saving...' : 'Add ToDo'}
           </button>
@@ -278,7 +276,7 @@ export default function TodoPage() {
                 <h2>{lane.title}</h2>
                 <p>{lane.subtitle}</p>
               </div>
-              <strong>{grouped[lane.id].filter(todo => !todo.done).length}</strong>
+              <strong>{grouped[lane.id].length}</strong>
             </header>
 
             <div className={styles.cards}>
@@ -301,9 +299,6 @@ export default function TodoPage() {
                         </span>
                       ) : <span />}
                       <div className={styles.cardActions}>
-                        {LANES.filter(next => next.id !== todo.lane).map(next => (
-                          <button key={next.id} type="button" onClick={() => patchTodo(todo.id, { lane: next.id })}>{next.title}</button>
-                        ))}
                         <button type="button" onClick={() => deleteTodo(todo.id)}>Delete</button>
                       </div>
                     </div>
