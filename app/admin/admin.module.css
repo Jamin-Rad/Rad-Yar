@@ -1,6 +1,14 @@
 .page {
   min-height: 100vh;
-  background: #f8fafc;
+  --finance-glass-bg: rgba(255,255,255,.72);
+  --finance-glass-bg-strong: rgba(255,255,255,.82);
+  --finance-glass-border: rgba(255,255,255,.82);
+  --finance-glass-shadow: 0 18px 44px rgba(15,23,42,.09), inset 0 1px 0 rgba(255,255,255,.82);
+  --finance-glass-soft-shadow: 0 10px 30px rgba(15,23,42,.07), inset 0 1px 0 rgba(255,255,255,.72);
+  background:
+    radial-gradient(circle at 8% 0%, rgba(249,115,22,.10), transparent 30%),
+    radial-gradient(circle at 94% 12%, rgba(14,165,233,.10), transparent 28%),
+    linear-gradient(180deg, #f8fafc 0%, #eef4fb 100%);
   font-family: var(--font-main);
 }
 
@@ -861,6 +869,16 @@
   gap: 16px;
   margin-bottom: 20px;
   flex-wrap: wrap;
+  padding: 20px 22px;
+  border: 1px solid var(--finance-glass-border);
+  border-radius: 22px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.86), rgba(255,255,255,.56)),
+    radial-gradient(circle at 12% 0%, rgba(249,115,22,.13), transparent 38%),
+    radial-gradient(circle at 100% 20%, rgba(14,165,233,.12), transparent 36%);
+  box-shadow: var(--finance-glass-shadow);
+  backdrop-filter: blur(18px) saturate(1.18);
+  -webkit-backdrop-filter: blur(18px) saturate(1.18);
 }
 
 .monthNav {
@@ -878,8 +896,11 @@
   height: 34px;
   border-radius: 10px;
   border: 1px solid var(--border, #e2e8f0);
-  background: var(--bg-card, #fff);
+  background: rgba(255,255,255,.72);
   color: var(--text-muted, #475569);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.75), 0 6px 16px rgba(15,23,42,.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   font-size: 18px;
   line-height: 1;
   cursor: pointer;
@@ -900,13 +921,16 @@
   padding: 7px 14px;
   border: 1px solid var(--border, #e2e8f0);
   border-radius: 10px;
-  background: var(--bg-card, #fff);
+  background: rgba(255,255,255,.74);
   cursor: pointer;
   font: inherit;
   outline: none;
   transition: all .15s;
   min-width: 90px;
   justify-content: center;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.78), 0 8px 18px rgba(15,23,42,.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .monthDisplay:hover {
@@ -933,10 +957,14 @@
   top: calc(100% + 8px);
   right: 0;
   z-index: 600;
-  background: var(--bg-card, #fff);
-  border: 1px solid var(--border, #e2e8f0);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.72)),
+    radial-gradient(circle at 100% 0%, rgba(249,115,22,.14), transparent 40%);
+  border: 1px solid rgba(255,255,255,.86);
   border-radius: 16px;
-  box-shadow: 0 20px 48px rgba(0,0,0,.18), 0 0 0 1px rgba(0,0,0,.04);
+  box-shadow: 0 20px 48px rgba(15,23,42,.18), inset 0 1px 0 rgba(255,255,255,.8);
+  backdrop-filter: blur(18px) saturate(1.16);
+  -webkit-backdrop-filter: blur(18px) saturate(1.16);
   padding: 14px;
   width: 220px;
   animation: popIn .2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1035,10 +1063,14 @@
   display: grid;
   gap: 8px;
   padding: 18px 20px 16px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--finance-glass-border);
   border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.82), rgba(255,255,255,.58)),
+    radial-gradient(circle at 100% 0%, rgba(249,115,22,.08), transparent 42%);
+  box-shadow: var(--finance-glass-soft-shadow);
+  backdrop-filter: blur(16px) saturate(1.14);
+  -webkit-backdrop-filter: blur(16px) saturate(1.14);
 }
 
 .financeMetric span {
@@ -1058,11 +1090,15 @@
 
 /* ── SECTION CARDS (Monatsübersicht) ─────────── */
 .sectionCard {
-  background: #fff;
-  border: 1px solid #e2e8f0;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.80), rgba(255,255,255,.60)),
+    radial-gradient(circle at 0% 0%, rgba(249,115,22,.08), transparent 38%);
+  border: 1px solid var(--finance-glass-border);
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  box-shadow: var(--finance-glass-shadow);
+  backdrop-filter: blur(16px) saturate(1.14);
+  -webkit-backdrop-filter: blur(16px) saturate(1.14);
   margin-bottom: 16px;
 }
 
@@ -1089,8 +1125,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 20px;
-  border-top: 1px solid #f1f5f9;
-  background: #fafbff;
+  border-top: 1px solid rgba(226,232,240,.68);
+  background: rgba(255,255,255,.46);
 }
 
 .incomeRow {
@@ -1487,10 +1523,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 14px;
-  background: #f8fafc;
+  background: rgba(255,255,255,.58);
   border-radius: 10px;
-  border: 1px solid #f1f5f9;
+  border: 1px solid rgba(255,255,255,.74);
   gap: 10px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.68), 0 6px 18px rgba(15,23,42,.04);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .reportCard span {
@@ -1514,9 +1553,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 13px 16px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(255,255,255,.78);
   border-radius: 12px;
   gap: 12px;
+  background: rgba(255,255,255,.58);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 8px 20px rgba(15,23,42,.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .reportTotalRow span {
@@ -1783,11 +1826,15 @@
   display: flex;
   flex-direction: column;
   gap: 3px;
-  background: rgba(248,250,252,0.7);
-  border: 1px solid rgba(226,232,240,0.8);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.48)),
+    radial-gradient(circle at 100% 0%, rgba(249,115,22,.10), transparent 42%);
+  border: 1px solid rgba(255,255,255,.78);
   border-radius: 16px;
   padding: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  box-shadow: var(--finance-glass-soft-shadow);
+  backdrop-filter: blur(16px) saturate(1.14);
+  -webkit-backdrop-filter: blur(16px) saturate(1.14);
 }
 
 .sidebarItem,
@@ -1855,10 +1902,10 @@
 }
 
 .sidebarItemActive {
-  background: rgba(249,115,22,.1);
+  background: rgba(255,255,255,.68);
   color: #c2410c;
   font-weight: 700;
-  box-shadow: 0 1px 3px rgba(249,115,22,.12);
+  box-shadow: inset 0 0 0 1px rgba(249,115,22,.16), 0 8px 18px rgba(249,115,22,.10);
 }
 
 .sidebarItemActive .sidebarIcon {
@@ -2368,7 +2415,10 @@
 }
 
 .popupPanel {
-  background: var(--bg-card, #fff);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.86), rgba(255,255,255,.66)),
+    radial-gradient(circle at 100% 0%, rgba(249,115,22,.12), transparent 38%);
+  border: 1px solid rgba(255,255,255,.84);
   border-radius: 18px;
   width: 100%;
   max-width: 560px;
@@ -2376,7 +2426,9 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 24px 64px rgba(0,0,0,.28), 0 0 0 1px rgba(0,0,0,.06);
+  box-shadow: 0 24px 64px rgba(15,23,42,.24), inset 0 1px 0 rgba(255,255,255,.82);
+  backdrop-filter: blur(18px) saturate(1.16);
+  -webkit-backdrop-filter: blur(18px) saturate(1.16);
   animation: popIn .28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -2500,9 +2552,12 @@
   gap: 10px;
   padding: 10px 14px;
   border-radius: 10px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(255,255,255,.74);
   border-left-width: 3px;
-  background: #f8fafc;
+  background: rgba(255,255,255,.58);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.68), 0 6px 16px rgba(15,23,42,.04);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .savedBudgetGrid {
@@ -2523,6 +2578,8 @@
     linear-gradient(135deg, color-mix(in srgb, var(--cat-bg, #f8fafc) 66%, #fff), rgba(255,255,255,.78)),
     radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--cat-border, #f97316) 16%, transparent), transparent 44%);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 8px 20px rgba(15,23,42,.06);
+  backdrop-filter: blur(12px) saturate(1.12);
+  -webkit-backdrop-filter: blur(12px) saturate(1.12);
 }
 
 .savedBudgetBox span {
@@ -2603,7 +2660,10 @@
   padding: 14px;
   border: 1px solid var(--border, #e2e8f0);
   border-radius: 16px;
-  background: var(--bg-soft, #f8fafc);
+  background: rgba(255,255,255,.54);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .entryAmountField,
@@ -2958,7 +3018,9 @@
   gap: 14px;
   padding: 12px 20px 16px;
   border-top: 1px solid var(--border, #e2e8f0);
-  background: var(--bg-card, #fff);
+  background: rgba(255,255,255,.60);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .entrySubmitBar div {
@@ -3753,7 +3815,15 @@
 
 /* ── DARK MODE ─────────────────────────────────── */
 :global(html[data-theme='dark']) .page {
-  background: var(--bg);
+  --finance-glass-bg: rgba(15,23,42,.58);
+  --finance-glass-bg-strong: rgba(15,23,42,.72);
+  --finance-glass-border: rgba(148,163,184,.18);
+  --finance-glass-shadow: 0 20px 48px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.07);
+  --finance-glass-soft-shadow: 0 12px 32px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.06);
+  background:
+    radial-gradient(circle at 8% 0%, rgba(249,115,22,.12), transparent 30%),
+    radial-gradient(circle at 94% 10%, rgba(14,165,233,.10), transparent 28%),
+    var(--bg);
 }
 
 :global(html[data-theme='dark']) .adminBar {
@@ -3878,13 +3948,19 @@
 
 /* Budget panels */
 :global(html[data-theme='dark']) .budgetPanel {
-  background: var(--bg-card);
+  background: color-mix(in srgb, var(--bg-card) 78%, transparent);
   border-color: var(--border);
+  box-shadow: var(--finance-glass-soft-shadow);
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
 }
 
 :global(html[data-theme='dark']) .budgetMetric {
-  background: var(--bg-card);
+  background: color-mix(in srgb, var(--bg-card) 78%, transparent);
   border-color: var(--border);
+  box-shadow: var(--finance-glass-soft-shadow);
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
 }
 
 :global(html[data-theme='dark']) .budgetMetric span {
@@ -3953,7 +4029,9 @@
 
 /* Finance redesign */
 :global(html[data-theme='dark']) .financeMetric {
-  background: var(--bg-card);
+  background:
+    linear-gradient(145deg, rgba(15,23,42,.74), rgba(15,23,42,.52)),
+    radial-gradient(circle at 100% 0%, rgba(249,115,22,.12), transparent 42%);
   border-color: var(--border);
 }
 
@@ -3974,13 +4052,13 @@
 }
 
 :global(html[data-theme='dark']) .monthNavBtn {
-  background: var(--bg-card);
+  background: rgba(15,23,42,.64);
   border-color: var(--border);
   color: var(--text-muted);
 }
 
 :global(html[data-theme='dark']) .monthDisplay {
-  background: var(--bg-card);
+  background: rgba(15,23,42,.64);
   border-color: var(--border);
   color: var(--text-strong);
 }
@@ -4069,7 +4147,9 @@
 
 /* Sidebar dark mode */
 :global(html[data-theme='dark']) .sidebarNav {
-  background: rgba(15,23,42,.5);
+  background:
+    linear-gradient(180deg, rgba(15,23,42,.66), rgba(15,23,42,.42)),
+    radial-gradient(circle at 100% 0%, rgba(249,115,22,.12), transparent 42%);
   border-color: rgba(249,115,22,.12);
 }
 
@@ -4225,12 +4305,14 @@
 }
 
 :global(html[data-theme='dark']) .sectionCard {
-  background: var(--bg-card);
+  background:
+    linear-gradient(145deg, rgba(15,23,42,.72), rgba(15,23,42,.50)),
+    radial-gradient(circle at 0% 0%, rgba(249,115,22,.10), transparent 38%);
   border-color: var(--border);
 }
 
 :global(html[data-theme='dark']) .sectionCardFoot {
-  background: var(--bg-soft);
+  background: rgba(15,23,42,.44);
   border-top-color: var(--border-soft);
 }
 
