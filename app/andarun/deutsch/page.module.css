@@ -117,6 +117,7 @@
 }
 
 .dashboard,
+.homeGrid,
 .lessonGrid,
 .writingGrid,
 .importGrid,
@@ -129,6 +130,13 @@
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
   gap: 16px;
+}
+
+.homeGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr);
+  gap: 16px;
+  align-items: start;
 }
 
 .reviewPanel,
@@ -238,12 +246,68 @@
 }
 
 .empty,
+.homeLead,
 .listeningHint,
 .taskText,
 .explanation {
   margin: 0;
   color: rgba(226,232,240,.72);
   line-height: 1.6;
+}
+
+.homeLead {
+  margin-bottom: 16px;
+}
+
+.lessonCards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.lessonCard {
+  min-height: 190px;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(187,247,208,.20), transparent 52%),
+    rgba(255,255,255,.08);
+  color: #fff;
+  cursor: pointer;
+  display: grid;
+  align-content: space-between;
+  gap: 12px;
+  padding: 18px;
+  text-align: left;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+}
+
+.lessonCard:hover {
+  border-color: rgba(187,247,208,.42);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(187,247,208,.28), transparent 58%),
+    rgba(255,255,255,.12);
+  transform: translateY(-2px);
+}
+
+.lessonCard span,
+.lessonCard small {
+  color: rgba(226,232,240,.62);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.lessonCard h2 {
+  margin: 0;
+  font-size: clamp(24px, 3vw, 38px);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.lessonCard p {
+  margin: 0;
+  color: rgba(226,232,240,.76);
+  line-height: 1.45;
 }
 
 .lessonList {
@@ -569,6 +633,7 @@
 @media (max-width: 900px) {
   .hero,
   .dashboard,
+  .homeGrid,
   .lessonGrid,
   .writingGrid,
   .importGrid {
@@ -600,6 +665,7 @@
   }
 
   .heroStats,
+  .lessonCards,
   .optionsGrid {
     grid-template-columns: 1fr;
   }

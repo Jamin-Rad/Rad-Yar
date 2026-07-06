@@ -4,18 +4,19 @@ Kopiere diesen Prompt in ChatGPT, um eine neue Tageslektion zu erzeugen. Die Ant
 
 ```text
 Erstelle eine Tageslektion Deutsch für Andarun als reines JSON ohne Markdown.
-Niveau: B1/B2, anspruchsvoll, aber alltagsnah.
+Niveau: B2. Thema soll aus echter täglicher Sprachbenutzung kommen: Arbeit, Familie, Behörden, Gesundheit, Wohnung, Konflikte, Diskussionen, Meinung äußern, Entscheidungen begründen.
+Der Stil soll natürlich und alltagsnah sein, aber nicht einfach. Keine Kindersprache, keine A2/B1-Übungen.
 
 Schema:
 {
   "id": "deutsch-YYYY-MM-DD-kurzer-slug",
   "date": "YYYY-MM-DD",
-  "level": "B1/B2",
+  "level": "B2",
   "title": "...",
   "topic": "...",
   "reading": {
     "title": "...",
-    "text": "120-180 Wörter auf Deutsch",
+    "text": "170-230 Wörter auf Deutsch mit B2-Satzbau",
     "vocabulary": [
       { "term": "...", "de": "einfache Erklärung auf Deutsch", "fa": "persische Bedeutung", "example": "deutscher Beispielsatz" }
     ],
@@ -46,8 +47,9 @@ Regeln:
 - mindestens 8 vocabulary Einträge
 - answer ist der Index der richtigen Option, beginnend bei 0
 - vocabulary.term muss exakt im Lesetext vorkommen, wenn möglich
-- Die MCQs sollen schwierig sein und nicht nur offensichtliche Wortsuche.
-- Die Grammatikfragen sollen aus echten Sätzen des Lesetextes kommen.
+- Die MCQs sollen schwierig sein: Bedeutung, Schlussfolgerung, Haltung, indirekte Aussage, nicht nur Wortsuche.
+- Die Grammatikfragen sollen aus echten Sätzen des Lesetextes kommen: Konjunktiv, Nebensatz, Passiv, Präposition, Satzstellung, Nominalisierung.
 - Der Hörtext soll ähnliche Wörter nutzen, aber ein anderer Text sein.
+- Die Schreibaufgabe soll eine Meinung oder Entscheidung verlangen.
 - Keine Kommentare, keine Erklärung außerhalb des JSON.
 ```

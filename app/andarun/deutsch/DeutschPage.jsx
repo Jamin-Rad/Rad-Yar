@@ -66,19 +66,71 @@ const sampleLesson = {
   },
 }
 
+const upgradedSampleLesson = {
+  id: 'deutsch-001-digitale-erreichbarkeit',
+  date: todayIso(),
+  level: 'B2',
+  title: 'Immer erreichbar sein?',
+  topic: 'Alltag, Arbeit und digitale Grenzen',
+  reading: {
+    title: 'Die unsichtbare Pflicht zur Antwort',
+    text: 'Seit Leyla im Projektteam arbeitet, erwartet niemand offiziell, dass sie abends erreichbar ist. Trotzdem entsteht ein subtiler Druck: Wenn eine Nachricht im Gruppenchat unbeantwortet bleibt, wirkt es schnell, als nehme sie ihre Aufgaben nicht ernst. Einige Kolleginnen beantworten jede Anfrage sofort, andere schalten nach Feierabend konsequent ab. In der woechentlichen Besprechung spricht Leyla das Thema vorsichtig an. Sie sagt nicht, dass jemand falsch handelt, sondern fragt, ob das Team gemeinsame Regeln braucht. Ihr Vorschlag ist einfach: Dringende Fragen sollen telefonisch geklaert werden, normale Nachrichten koennen bis zum naechsten Arbeitstag warten. Zunaechst reagieren manche skeptisch, weil sie Flexibilitaet verlieren koennten. Nach einer kurzen Diskussion merken jedoch viele, dass klare Grenzen nicht gegen Zusammenarbeit sprechen, sondern sie verlaesslicher machen.',
+    vocabulary: [
+      { term: 'erreichbar', de: 'so verfuegbar, dass andere einen kontaktieren koennen', fa: 'در دسترس', example: 'Nach Feierabend bin ich nur in Notfaellen erreichbar.' },
+      { term: 'subtiler Druck', de: 'ein Druck, der nicht direkt ausgesprochen wird, aber trotzdem spuerbar ist', fa: 'فشار پنهان', example: 'In manchen Teams entsteht subtiler Druck, sofort zu antworten.' },
+      { term: 'unbeantwortet', de: 'ohne Antwort geblieben', fa: 'بی پاسخ', example: 'Die Nachricht blieb bis zum Morgen unbeantwortet.' },
+      { term: 'konsequent', de: 'klar, bewusst und ohne staendige Ausnahme', fa: 'قاطعانه', example: 'Sie schaltet ihr Diensthandy konsequent aus.' },
+      { term: 'Besprechung', de: 'ein berufliches Treffen, bei dem Themen diskutiert werden', fa: 'جلسه', example: 'In der Besprechung wurde ueber neue Regeln gesprochen.' },
+      { term: 'Dringende Fragen', de: 'Fragen, die schnell geklaert werden muessen', fa: 'سوالات فوری', example: 'Dringende Fragen sollen telefonisch geklaert werden.' },
+      { term: 'Flexibilitaet', de: 'die Moeglichkeit, sich an verschiedene Situationen anzupassen', fa: 'انعطاف پذیری', example: 'Homeoffice bietet mehr Flexibilitaet.' },
+      { term: 'verlaesslicher', de: 'zuverlaessiger und besser planbar', fa: 'قابل اعتمادتر', example: 'Klare Regeln machen die Zusammenarbeit verlaesslicher.' },
+    ],
+    questions: [
+      { question: 'Was ist das zentrale Problem im Text?', options: ['Eine offizielle Pflicht, nachts zu arbeiten.', 'Unausgesprochene Erwartungen an schnelle Antworten.', 'Leylas fehlende Verantwortung im Projekt.', 'Ein technisches Problem im Gruppenchat.'], answer: 1, explanation: 'Der Text betont, dass niemand offiziell Erreichbarkeit verlangt, aber trotzdem subtiler Druck entsteht.' },
+      { question: 'Warum formuliert Leyla ihr Anliegen vorsichtig?', options: ['Sie will niemanden direkt beschuldigen.', 'Sie hat keine eigene Meinung.', 'Sie will die Besprechung vermeiden.', 'Sie kennt die Regeln bereits.'], answer: 0, explanation: 'Sie sagt nicht, dass jemand falsch handelt, sondern fragt nach gemeinsamen Regeln.' },
+      { question: 'Welche Loesung schlaegt Leyla vor?', options: ['Alle Nachrichten ignorieren.', 'Nur die Teamleitung darf schreiben.', 'Dringendes telefonisch, Normales am naechsten Arbeitstag.', 'Den Gruppenchat loeschen.'], answer: 2, explanation: 'Ihr Vorschlag unterscheidet zwischen dringenden Fragen und normalen Nachrichten.' },
+      { question: 'Was zeigt die skeptische Reaktion einiger Kolleginnen und Kollegen?', options: ['Sie lehnen Zusammenarbeit grundsaetzlich ab.', 'Sie befuerchten weniger Flexibilitaet.', 'Sie verstehen Feierabend nicht.', 'Sie wollen nur telefonisch arbeiten.'], answer: 1, explanation: 'Im Text steht, dass manche skeptisch reagieren, weil sie Flexibilitaet verlieren koennten.' },
+      { question: 'Welche Schlussfolgerung passt am besten?', options: ['Grenzen verhindern Zusammenarbeit.', 'Klare Regeln koennen Zusammenarbeit planbarer machen.', 'Schnelle Antworten sind immer professioneller.', 'Private Zeit ist beruflich unwichtig.'], answer: 1, explanation: 'Am Ende erkennen viele, dass klare Grenzen die Zusammenarbeit verlaesslicher machen.' },
+    ],
+  },
+  grammar: [
+    { question: 'Welche Funktion hat "Wenn eine Nachricht unbeantwortet bleibt"?', options: ['Konditionaler Nebensatz', 'Relativsatz', 'Infinitivsatz', 'Indirekte Rede'], answer: 0, explanation: '"Wenn" leitet hier einen Nebensatz ein; das finite Verb steht am Ende.' },
+    { question: 'Warum steht "als nehme sie ihre Aufgaben nicht ernst"?', options: ['Konjunktiv I zur Wiedergabe eines Eindrucks', 'Imperativ', 'Passiv Praeteritum', 'Futur II'], answer: 0, explanation: 'Nach vergleichendem "als" kann Konjunktiv I stehen: als nehme sie...' },
+    { question: 'Welche Umformung ist korrekt?', options: ['Auf normale Nachrichten kann bis morgen gewartet werden.', 'Normale Nachrichten sind gewartet.', 'Normale Nachrichten werden warten lassen.', 'Normale Nachrichten lassen sich warten.'], answer: 0, explanation: 'Das unpersoenliche Passiv mit "kann ... gewartet werden" ist grammatisch moeglich.' },
+    { question: 'Welche Bedeutung hat "nicht ..., sondern ..."?', options: ['Gegensatz und Korrektur', 'Grund und Folge', 'Zeitliche Reihenfolge', 'Vermutung'], answer: 0, explanation: 'Die Struktur korrigiert eine Erwartung: nicht gegen Zusammenarbeit, sondern verlaesslicher.' },
+    { question: 'Welche Form ist standardsprachlich korrekt?', options: ['wegen der Flexibilitaet', 'wegen die Flexibilitaet', 'wegen den Flexibilitaet', 'wegen dem Flexibilitaet'], answer: 0, explanation: '"Wegen" steht in Standardsprache mit Genitiv: wegen der Flexibilitaet.' },
+  ],
+  listening: {
+    title: 'Eine Diskussion im Team',
+    text: 'In unserem Team ist niemand verpflichtet, nach Feierabend zu antworten. Trotzdem haben viele das Gefuehl, sie muessten kurz reagieren, sobald eine Nachricht erscheint. Ich schlage deshalb vor, zwischen echten Notfaellen und normalen Rueckfragen zu unterscheiden. Wenn etwas dringend ist, sollte man anrufen. Alles andere kann bis zum naechsten Morgen warten. So bleiben wir flexibel, ohne staendig unter Druck zu stehen.',
+    questions: [
+      { question: 'Was ist laut Hoertext nicht offiziell vorgeschrieben?', options: ['Nach Feierabend zu antworten', 'Morgens zu arbeiten', 'Telefonisch erreichbar zu sein', 'Im Team zu diskutieren'], answer: 0, explanation: 'Es wird gesagt, dass niemand verpflichtet ist, nach Feierabend zu antworten.' },
+      { question: 'Welches Gefuehl beschreibt der Sprecher?', options: ['Viele fuehlen sich zu kurzen Reaktionen gedraengt.', 'Viele wollen keine Nachrichten mehr bekommen.', 'Viele verstehen die Aufgaben nicht.', 'Viele arbeiten nur nachts gut.'], answer: 0, explanation: 'Der Hoertext spricht von dem Gefuehl, kurz reagieren zu muessen.' },
+      { question: 'Was soll telefonisch passieren?', options: ['Jede normale Rueckfrage', 'Nur echte Notfaelle oder Dringendes', 'Jede Nachricht nach 18 Uhr', 'Alle Besprechungen'], answer: 1, explanation: 'Bei Dringendem soll man anrufen.' },
+      { question: 'Welche Balance wird gesucht?', options: ['Flexibilitaet ohne staendigen Druck', 'Mehr Kontrolle und weniger Vertrauen', 'Schnellere Antworten ohne Regeln', 'Weniger Zusammenarbeit'], answer: 0, explanation: 'Der letzte Satz nennt genau diese Balance.' },
+      { question: 'Wie unterscheidet sich der Hoertext vom Lesetext?', options: ['Er formuliert den Vorschlag direkter.', 'Er widerspricht dem Lesetext.', 'Er handelt von einem Arzttermin.', 'Er verbietet Flexibilitaet.'], answer: 0, explanation: 'Der Hoertext klingt wie ein direkter Beitrag in einer Diskussion.' },
+    ],
+  },
+  writing: {
+    prompt: 'Schreibe einen kurzen Diskussionsbeitrag: Soll man nach Feierabend fuer Arbeit erreichbar sein? Begruende deine Meinung mit mindestens zwei Argumenten und einem konkreten Beispiel.',
+    checklist: ['klare Position', 'zwei Argumente', 'ein Alltagsbeispiel', 'Gegenargument kurz nennen', 'ruhiger B2-Stil'],
+  },
+}
+
 const contentPrompt = `Erstelle eine Tageslektion Deutsch für Andarun als reines JSON ohne Markdown.
-Niveau: B1/B2, anspruchsvoll, aber alltagsnah.
+Niveau: B2. Thema soll aus echter täglicher Sprachbenutzung kommen: Arbeit, Familie, Behörden, Gesundheit, Wohnung, Konflikte, Diskussionen, Meinung äußern, Entscheidungen begründen.
+Der Stil soll natürlich und alltagsnah sein, aber nicht einfach. Keine Kindersprache, keine A2/B1-Übungen.
 
 Schema:
 {
   "id": "deutsch-YYYY-MM-DD-kurzer-slug",
   "date": "YYYY-MM-DD",
-  "level": "B1/B2",
+  "level": "B2",
   "title": "...",
   "topic": "...",
   "reading": {
     "title": "...",
-    "text": "120-180 Wörter auf Deutsch",
+    "text": "170-230 Wörter auf Deutsch mit B2-Satzbau",
     "vocabulary": [
       { "term": "...", "de": "einfache Erklärung auf Deutsch", "fa": "persische Bedeutung", "example": "deutscher Beispielsatz" }
     ],
@@ -108,7 +160,11 @@ Regeln:
 - genau 5 listening.questions
 - mindestens 8 vocabulary Einträge
 - answer ist der Index der richtigen Option, beginnend bei 0
-- vocabulary.term muss exakt im Lesetext vorkommen, wenn möglich`
+- vocabulary.term muss exakt im Lesetext vorkommen, wenn möglich
+- MCQs müssen schwierig sein: Bedeutung, Schlussfolgerung, Haltung, indirekte Aussage, nicht nur Wortsuche
+- Grammatikfragen müssen aus echten Sätzen des Lesetextes kommen: Konjunktiv, Nebensatz, Passiv, Präposition, Satzstellung, Nominalisierung
+- Der Hörtext soll ähnliche Wörter nutzen, aber ein anderer Text sein
+- Die Schreibaufgabe soll eine Meinung oder Entscheidung verlangen`
 
 function normalizeState(value) {
   return {
@@ -210,7 +266,7 @@ export default function DeutschPage() {
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [activeLessonId, setActiveLessonId] = useState('')
-  const [activeTab, setActiveTab] = useState('lesen')
+  const [activeTab, setActiveTab] = useState('home')
   const [selectedWord, setSelectedWord] = useState(null)
   const [importText, setImportText] = useState('')
   const [writingText, setWritingText] = useState('')
@@ -226,14 +282,17 @@ export default function DeutschPage() {
       .then(data => {
         if (ignore) return
         const loaded = normalizeState(data.state)
-        if (!loaded.lessons.length) loaded.lessons = [sampleLesson]
+        loaded.lessons = loaded.lessons.map(lesson => lesson.id === sampleLesson.id ? upgradedSampleLesson : lesson)
+        if (!loaded.lessons.length) {
+          loaded.lessons = [upgradedSampleLesson]
+        }
         setState(loaded)
-        setActiveLessonId(loaded.lessons[0]?.id || sampleLesson.id)
+        setActiveLessonId(loaded.lessons[0]?.id || upgradedSampleLesson.id)
       })
       .catch(() => {
-        const fallback = { ...emptyState, lessons: [sampleLesson] }
+        const fallback = { ...emptyState, lessons: [upgradedSampleLesson] }
         setState(fallback)
-        setActiveLessonId(sampleLesson.id)
+        setActiveLessonId(upgradedSampleLesson.id)
         setMessage('Online-Speicherung ist gerade nicht erreichbar. Änderungen bleiben in dieser Sitzung sichtbar.')
       })
       .finally(() => !ignore && setLoading(false))
@@ -264,7 +323,7 @@ export default function DeutschPage() {
   }
 
   const activeLesson = useMemo(
-    () => state.lessons.find(lesson => lesson.id === activeLessonId) || state.lessons[0] || sampleLesson,
+    () => state.lessons.find(lesson => lesson.id === activeLessonId) || state.lessons[0] || upgradedSampleLesson,
     [state.lessons, activeLessonId]
   )
   const dueCards = useMemo(() => state.cards.filter(isDue), [state.cards])
@@ -320,6 +379,7 @@ export default function DeutschPage() {
       const lessons = [lesson, ...state.lessons.filter(item => item.id !== lesson.id)]
       persist({ ...state, lessons })
       setActiveLessonId(lesson.id)
+      setActiveTab('home')
       setImportText('')
       setMessage('Neue Lektion importiert.')
     } catch {
@@ -450,17 +510,72 @@ export default function DeutschPage() {
 
       <nav className={styles.tabs} aria-label="Deutschbereiche">
         {[
+          ['home', 'Kurs'],
           ['lesen', 'Lesen'],
           ['grammatik', 'Grammatik'],
           ['hoeren', 'Hören'],
           ['schreiben', 'Schreiben'],
-          ['import', 'Import'],
         ].map(([id, label]) => (
           <button type="button" key={id} className={activeTab === id ? styles.activeTab : ''} onClick={() => setActiveTab(id)}>
             {label}
           </button>
         ))}
       </nav>
+
+      {activeTab === 'home' && (
+        <>
+          <section className={styles.homeGrid}>
+            <article className={styles.textPanel}>
+              <div className={styles.panelHead}>
+                <span>Kursübersicht</span>
+                <strong>B2 Alltag und Diskussion</strong>
+              </div>
+              <p className={styles.homeLead}>Wähle eine Lektion nach Thema. Jede Lektion enthält Lesen, anspruchsvolle MCQs, Grammatik aus echten Sätzen, Hören, Schreiben und Wiederholungskarten.</p>
+              <div className={styles.lessonCards}>
+                {state.lessons.map(lesson => (
+                  <button
+                    type="button"
+                    className={styles.lessonCard}
+                    key={lesson.id}
+                    onClick={() => {
+                      setActiveLessonId(lesson.id)
+                      setActiveTab('lesen')
+                    }}
+                  >
+                    <span>{lesson.date} · {lesson.level}</span>
+                    <h2>{lesson.title}</h2>
+                    <p>{lesson.topic}</p>
+                    <small>{lesson.reading?.vocabulary?.length || 0} Wörter · 15 Fragen · Schreiben</small>
+                  </button>
+                ))}
+              </div>
+            </article>
+
+            <article className={styles.textPanel}>
+              <div className={styles.panelHead}>
+                <span>Import</span>
+                <strong>Neue Tageslektion</strong>
+              </div>
+              <p className={styles.homeLead}>Füge hier das JSON ein, das du mit ChatGPT erzeugt hast. Danach erscheint die Lektion sofort in der Kursübersicht.</p>
+              <textarea value={importText} onChange={event => setImportText(event.target.value)} placeholder="Hier das JSON von ChatGPT einfügen..." />
+              <div className={styles.actionRow}>
+                <button type="button" className={styles.primaryBtn} onClick={importLesson}>Lektion importieren</button>
+                <button type="button" onClick={() => navigator.clipboard?.writeText(contentPrompt).then(() => setMessage('Prompt kopiert.'))}>Prompt kopieren</button>
+              </div>
+            </article>
+          </section>
+
+          <section className={styles.importGrid}>
+            <article className={styles.textPanel}>
+              <div className={styles.panelHead}>
+                <span>Prompt für ChatGPT</span>
+                <strong>Inhalt vorbereiten</strong>
+              </div>
+              <textarea readOnly value={contentPrompt} className={styles.promptBox} />
+            </article>
+          </section>
+        </>
+      )}
 
       {activeTab === 'lesen' && (
         <section className={styles.lessonGrid}>
