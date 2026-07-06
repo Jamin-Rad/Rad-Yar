@@ -41,6 +41,18 @@ function cleanDeadline(value) {
   return /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : null
 }
 
+function laneFromDeadline(deadline, fallback = 'today') {
+  if (!deadline) return fallback
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+  const date = new Date(`${deadline}T00:00:00`)
+  if (Number.isNaN(date.getTime())) return fallback
+  const diff = Math.round((date - today) / 86400000)
+  if (diff < 0) return 'urgent'
+  if (diff === 0) return 'today'
+  return 'watch'
+}
+
 export async function GET() {
   const identity = await getAndarunIdentity()
   if (identity.error) return NextResponse.json({ error: identity.error }, { status: identity.status })
@@ -74,7 +86,8 @@ export async function POST(request) {
   }
 
   const title = cleanText(body.title)
-  const lane = LANES.has(body.lane) ? body.lane : 'today'
+  const deadline = cleanDeadline(body.deadline)
+  const lane = laneFromDeadline(deadline, LANES.has(body.lane) ? body.lane : 'today')
   if (!title) return NextResponse.json({ error: 'Title is required.' }, { status: 400 })
 
   const { data, error } = await supabaseAdmin
@@ -84,7 +97,7 @@ export async function POST(request) {
       title,
       note: cleanText(body.note, 500) || null,
       lane,
-      deadline: cleanDeadline(body.deadline),
+      deadline,
       done: false,
       updated_at: new Date().toISOString(),
     })
@@ -118,7 +131,10 @@ export async function PATCH(request) {
   if (typeof body.title === 'string') update.title = cleanText(body.title)
   if (typeof body.note === 'string') update.note = cleanText(body.note, 500) || null
   if (typeof body.lane === 'string' && LANES.has(body.lane)) update.lane = body.lane
-  if (typeof body.deadline === 'string') update.deadline = cleanDeadline(body.deadline)
+  if (typeof body.deadline === 'string') {
+    update.deadline = cleanDeadline(body.deadline)
+    update.lane = laneFromDeadline(update.deadline, update.lane || 'today')
+  }
   if (typeof body.done === 'boolean') update.done = body.done
 
   if (update.title === '') return NextResponse.json({ error: 'Title is required.' }, { status: 400 })

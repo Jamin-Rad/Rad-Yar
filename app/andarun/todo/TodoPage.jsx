@@ -27,15 +27,16 @@ const LANES = [
   },
 ]
 
-const EMPTY_FORM = {
-  title: '',
-  note: '',
-  lane: 'today',
-  deadline: '',
-}
-
 function makeId() {
   return `local-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
+}
+
+function todayValue() {
+  const date = new Date()
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}`
 }
 
 function formatDeadline(value) {
@@ -54,9 +55,32 @@ function daysUntil(value) {
   return Math.round((date - today) / 86400000)
 }
 
+function laneFromDeadline(value) {
+  const diff = daysUntil(value)
+  if (diff === null) return 'today'
+  if (diff < 0) return 'urgent'
+  if (diff === 0) return 'today'
+  return 'watch'
+}
+
+function emptyForm() {
+  const deadline = todayValue()
+  return {
+    title: '',
+    note: '',
+    lane: laneFromDeadline(deadline),
+    deadline,
+  }
+}
+
+function effectiveLane(todo) {
+  if (!todo?.deadline || todo.done) return todo?.lane || 'today'
+  return laneFromDeadline(todo.deadline)
+}
+
 export default function TodoPage() {
   const [todos, setTodos] = useState([])
-  const [form, setForm] = useState(EMPTY_FORM)
+  const [form, setForm] = useState(() => emptyForm())
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [storageMode, setStorageMode] = useState('online')
@@ -116,7 +140,7 @@ export default function TodoPage() {
   const grouped = useMemo(() => {
     const result = Object.fromEntries(LANES.map(lane => [lane.id, []]))
     for (const todo of todos) {
-      const lane = result[todo.lane] ? todo.lane : 'today'
+      const lane = result[effectiveLane(todo)] ? effectiveLane(todo) : 'today'
       result[lane].push(todo)
     }
     return result
@@ -142,7 +166,7 @@ export default function TodoPage() {
 
     if (storageMode === 'local') {
       setTodos(prev => [optimistic, ...prev])
-      setForm(EMPTY_FORM)
+      setForm(emptyForm())
       setSaving(false)
       return
     }
@@ -156,12 +180,12 @@ export default function TodoPage() {
       if (!response.ok) throw new Error('Could not save online.')
       const payload = await response.json()
       setTodos(prev => [payload.todo, ...prev])
-      setForm(EMPTY_FORM)
+      setForm(emptyForm())
     } catch (error) {
       setTodos(prev => [optimistic, ...prev])
       setStorageMode('local')
       setMessage(`${error.message} Saved locally for now.`)
-      setForm(EMPTY_FORM)
+      setForm(emptyForm())
     } finally {
       setSaving(false)
     }
@@ -228,7 +252,10 @@ export default function TodoPage() {
           </label>
           <label>
             Deadline
-            <input type="date" value={form.deadline} onChange={event => setForm(prev => ({ ...prev, deadline: event.target.value }))} />
+            <input type="date" value={form.deadline} onChange={event => {
+              const deadline = event.target.value
+              setForm(prev => ({ ...prev, deadline, lane: laneFromDeadline(deadline) }))
+            }} />
           </label>
           <label>
             Note
