@@ -617,8 +617,17 @@ export default function TodoPage() {
               </label>
 
               {detailForm.itemType === 'event' && (
-                <div className={styles.detailSwitchRow}>
-                  <label className={styles.eventToggle}>
+                <div className={styles.detailTimeRow}>
+                  <label>
+                    Uhrzeit
+                    <input
+                      type="time"
+                      value={detailForm.eventTime}
+                      disabled={detailForm.allDay}
+                      onChange={event => setDetailForm(prev => ({ ...prev, eventTime: event.target.value }))}
+                    />
+                  </label>
+                  <label className={styles.detailAllDayToggle}>
                     <input
                       type="checkbox"
                       checked={detailForm.allDay}
@@ -631,18 +640,6 @@ export default function TodoPage() {
                     <span>Ganztag</span>
                   </label>
                 </div>
-              )}
-
-              {detailForm.itemType === 'event' && (
-                <label>
-                  Uhrzeit
-                  <input
-                    type="time"
-                    value={detailForm.eventTime}
-                    disabled={detailForm.allDay}
-                    onChange={event => setDetailForm(prev => ({ ...prev, eventTime: event.target.value }))}
-                  />
-                </label>
               )}
 
               <div className={styles.detailActions}>
