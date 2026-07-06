@@ -21,6 +21,10 @@ function needsClientTrust(status) {
   return normalizedStatus === 'needs_client_trust' || normalizedStatus === 'need_client_trust'
 }
 
+function needsSecondFactor(status) {
+  return status?.replaceAll('-', '_') === 'needs_second_factor'
+}
+
 export default function AndarunLogin() {
   const { isLoaded: signInLoaded, signIn, setActive: setSignInActive } = useSignIn()
   const { isLoaded: signUpLoaded, signUp, setActive: setSignUpActive } = useSignUp()
@@ -75,6 +79,10 @@ export default function AndarunLogin() {
       return
     }
     if (needsClientTrust(result.status)) {
+      await prepareClientTrust(result)
+      return
+    }
+    if (needsSecondFactor(result.status)) {
       await prepareClientTrust(result)
       return
     }
