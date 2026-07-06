@@ -3,6 +3,7 @@ import { requireAndarunSession } from '@/lib/andarunPasswordAuth'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 
 const LANES = new Set(['urgent', 'today', 'watch'])
+const ITEM_TYPES = new Set(['todo', 'event'])
 
 function unavailable() {
   return NextResponse.json({ error: 'Andarun storage is not available.' }, { status: 503 })
@@ -19,6 +20,9 @@ function toClient(row) {
     note: row.note || '',
     lane: row.lane,
     deadline: row.deadline || '',
+    itemType: row.item_type || 'todo',
+    eventTime: row.event_time ? String(row.event_time).slice(0, 5) : '',
+    allDay: Boolean(row.all_day),
     done: Boolean(row.done),
     completedAt: row.completed_at || null,
     createdAt: row.created_at,
@@ -33,6 +37,11 @@ function cleanText(value, maxLength = 240) {
 function cleanDeadline(value) {
   if (typeof value !== 'string' || !value) return null
   return /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : null
+}
+
+function cleanTime(value) {
+  if (typeof value !== 'string' || !value) return null
+  return /^\d{2}:\d{2}$/.test(value) ? value : null
 }
 
 function todayDate() {
@@ -93,6 +102,9 @@ export async function POST(request) {
 
   const title = cleanText(body.title)
   const deadline = cleanDeadline(body.deadline)
+  const itemType = ITEM_TYPES.has(body.itemType) ? body.itemType : 'todo'
+  const allDay = itemType === 'event' ? Boolean(body.allDay) : false
+  const eventTime = itemType === 'event' && !allDay ? cleanTime(body.eventTime) : null
   if (isPastDeadline(deadline)) {
     return NextResponse.json({ error: 'Past deadlines are not allowed.' }, { status: 400 })
   }
@@ -107,6 +119,9 @@ export async function POST(request) {
       note: cleanText(body.note, 500) || null,
       lane,
       deadline,
+      item_type: itemType,
+      event_time: eventTime,
+      all_day: allDay,
       done: false,
       updated_at: new Date().toISOString(),
     })
@@ -140,6 +155,9 @@ export async function PATCH(request) {
   if (typeof body.title === 'string') update.title = cleanText(body.title)
   if (typeof body.note === 'string') update.note = cleanText(body.note, 500) || null
   if (typeof body.lane === 'string' && LANES.has(body.lane)) update.lane = body.lane
+  if (typeof body.itemType === 'string' && ITEM_TYPES.has(body.itemType)) update.item_type = body.itemType
+  if (typeof body.allDay === 'boolean') update.all_day = body.allDay
+  if (typeof body.eventTime === 'string') update.event_time = cleanTime(body.eventTime)
   if (typeof body.deadline === 'string') {
     update.deadline = cleanDeadline(body.deadline)
     if (isPastDeadline(update.deadline)) {
@@ -147,6 +165,11 @@ export async function PATCH(request) {
     }
     update.lane = laneFromDeadline(update.deadline, update.lane || 'today')
   }
+  if (update.item_type === 'todo') {
+    update.event_time = null
+    update.all_day = false
+  }
+  if (update.all_day) update.event_time = null
   if (typeof body.done === 'boolean') update.done = body.done
   if (typeof body.done === 'boolean') {
     update.completed_at = body.done ? new Date().toISOString() : null

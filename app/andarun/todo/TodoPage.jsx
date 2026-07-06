@@ -27,6 +27,8 @@ const LANES = [
   },
 ]
 
+const MONTH_LABELS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
 function makeId() {
   return `local-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
 }
@@ -44,6 +46,44 @@ function formatDeadline(value) {
   const date = new Date(`${value}T00:00:00`)
   if (Number.isNaN(date.getTime())) return value
   return date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' })
+}
+
+function formatEventMeta(todo) {
+  if (todo?.itemType !== 'event') return ''
+  if (todo.allDay) return 'Ganztag'
+  return todo.eventTime || 'ohne Uhrzeit'
+}
+
+function formatMonthTitle(monthKey) {
+  const [year, month] = monthKey.split('-').map(Number)
+  return `${MONTH_LABELS[month - 1]} ${year}`
+}
+
+function monthKeyFromDate(value = new Date()) {
+  const date = typeof value === 'string' ? new Date(`${value}T00:00:00`) : value
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  return `${year}-${month}`
+}
+
+function shiftMonth(monthKey, delta) {
+  const [year, month] = monthKey.split('-').map(Number)
+  const date = new Date(year, month - 1 + delta, 1)
+  return monthKeyFromDate(date)
+}
+
+function buildMonthDays(monthKey) {
+  const [year, month] = monthKey.split('-').map(Number)
+  const first = new Date(year, month - 1, 1)
+  const last = new Date(year, month, 0)
+  const offset = (first.getDay() + 6) % 7
+  const days = []
+  for (let i = 0; i < offset; i += 1) days.push(null)
+  for (let day = 1; day <= last.getDate(); day += 1) {
+    days.push(`${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`)
+  }
+  while (days.length % 7 !== 0) days.push(null)
+  return days
 }
 
 function daysUntil(value) {
@@ -70,6 +110,9 @@ function emptyForm() {
     note: '',
     lane: laneFromDeadline(deadline),
     deadline,
+    itemType: 'todo',
+    eventTime: '',
+    allDay: false,
   }
 }
 
@@ -86,6 +129,7 @@ export default function TodoPage() {
   const [storageMode, setStorageMode] = useState('online')
   const [message, setMessage] = useState('')
   const [completedOpen, setCompletedOpen] = useState(false)
+  const [monthView, setMonthView] = useState(() => monthKeyFromDate())
 
   useEffect(() => {
     let active = true
@@ -179,6 +223,9 @@ export default function TodoPage() {
       note: form.note.trim(),
       lane: form.lane,
       deadline: form.deadline,
+      itemType: form.itemType,
+      eventTime: form.itemType === 'event' && !form.allDay ? form.eventTime : '',
+      allDay: form.itemType === 'event' ? form.allDay : false,
       done: false,
       completedAt: null,
       createdAt: new Date().toISOString(),
@@ -211,6 +258,25 @@ export default function TodoPage() {
       setSaving(false)
     }
   }
+
+  const monthDays = useMemo(() => buildMonthDays(monthView), [monthView])
+
+  const eventsByDate = useMemo(() => {
+    const map = new Map()
+    for (const todo of todos) {
+      if (todo.done || todo.itemType !== 'event' || !todo.deadline || !todo.deadline.startsWith(monthView)) continue
+      if (!map.has(todo.deadline)) map.set(todo.deadline, [])
+      map.get(todo.deadline).push(todo)
+    }
+    for (const items of map.values()) {
+      items.sort((a, b) => {
+        if (a.allDay && !b.allDay) return -1
+        if (!a.allDay && b.allDay) return 1
+        return (a.eventTime || '').localeCompare(b.eventTime || '')
+      })
+    }
+    return map
+  }, [todos, monthView])
 
   async function patchTodo(id, patch) {
     const previous = todos
@@ -282,15 +348,56 @@ export default function TodoPage() {
             <input type="date" value={form.deadline} onChange={event => {
               const deadline = event.target.value
               setForm(prev => ({ ...prev, deadline, lane: laneFromDeadline(deadline) }))
+              if (deadline) setMonthView(monthKeyFromDate(deadline))
             }} min={todayValue()} />
           </label>
           <label>
             Note
             <input value={form.note} onChange={event => setForm(prev => ({ ...prev, note: event.target.value }))} placeholder="Optional" />
           </label>
-          <button className={styles.addBtn} type="submit" disabled={saving || !form.title.trim()}>
-            {saving ? 'Saving...' : 'Add ToDo'}
-          </button>
+          {form.itemType === 'event' && (
+            <label className={styles.timeField}>
+              Time
+              <input
+                type="time"
+                value={form.eventTime}
+                onChange={event => setForm(prev => ({ ...prev, eventTime: event.target.value }))}
+                disabled={form.allDay}
+              />
+            </label>
+          )}
+          <div className={styles.formActions}>
+            <label className={styles.eventToggle}>
+              <input
+                type="checkbox"
+                checked={form.itemType === 'event'}
+                onChange={event => setForm(prev => ({
+                  ...prev,
+                  itemType: event.target.checked ? 'event' : 'todo',
+                  allDay: event.target.checked ? prev.allDay : false,
+                  eventTime: event.target.checked ? prev.eventTime : '',
+                }))}
+              />
+              <span>Add to Termin</span>
+            </label>
+            {form.itemType === 'event' && (
+              <label className={styles.eventToggle}>
+                <input
+                  type="checkbox"
+                  checked={form.allDay}
+                  onChange={event => setForm(prev => ({
+                    ...prev,
+                    allDay: event.target.checked,
+                    eventTime: event.target.checked ? '' : prev.eventTime,
+                  }))}
+                />
+                <span>Ganztag</span>
+              </label>
+            )}
+            <button className={styles.addBtn} type="submit" disabled={saving || !form.title.trim()}>
+              {saving ? 'Saving...' : form.itemType === 'event' ? 'Add Termin' : 'Add ToDo'}
+            </button>
+          </div>
         </form>
       </section>
 
@@ -321,7 +428,7 @@ export default function TodoPage() {
                     <div className={styles.cardFooter}>
                       {todo.deadline ? (
                         <span className={`${styles.deadline} ${isSoon ? styles.soon : ''}`}>
-                          {formatDeadline(todo.deadline)}
+                          {todo.itemType === 'event' ? `${formatDeadline(todo.deadline)} · ${formatEventMeta(todo)}` : formatDeadline(todo.deadline)}
                         </span>
                       ) : <span />}
                       <div className={styles.cardActions}>
@@ -336,6 +443,47 @@ export default function TodoPage() {
             </div>
           </article>
         ))}
+      </section>
+
+      <section className={styles.monthPanel} aria-label="Termin month view">
+        <header className={styles.monthHeader}>
+          <div>
+            <span className={styles.kicker}>Termine</span>
+            <h2>{formatMonthTitle(monthView)}</h2>
+          </div>
+          <div className={styles.monthControls}>
+            <button type="button" onClick={() => setMonthView(prev => shiftMonth(prev, -1))} aria-label="Previous month">‹</button>
+            <button type="button" onClick={() => setMonthView(monthKeyFromDate())}>Today</button>
+            <button type="button" onClick={() => setMonthView(prev => shiftMonth(prev, 1))} aria-label="Next month">›</button>
+          </div>
+        </header>
+
+        <div className={styles.monthGrid}>
+          {['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'].map(day => (
+            <div className={styles.weekday} key={day}>{day}</div>
+          ))}
+          {monthDays.map((day, index) => {
+            const events = day ? eventsByDate.get(day) || [] : []
+            const isToday = day === todayValue()
+            return (
+              <div className={`${styles.monthCell} ${!day ? styles.monthCellEmpty : ''} ${isToday ? styles.monthCellToday : ''}`} key={day || `empty-${index}`}>
+                {day && <span className={styles.monthDay}>{Number(day.slice(-2))}</span>}
+                {events.map(event => (
+                  <button
+                    className={styles.monthEvent}
+                    type="button"
+                    onClick={() => patchTodo(event.id, { done: true })}
+                    title="Als erledigt markieren"
+                    key={event.id}
+                  >
+                    <strong>{event.allDay ? 'Ganztag' : event.eventTime || '--:--'}</strong>
+                    <span>{event.title}</span>
+                  </button>
+                ))}
+              </div>
+            )
+          })}
+        </div>
       </section>
 
       {completedOpen && (
