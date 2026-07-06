@@ -201,7 +201,7 @@
 .reviewActions button,
 .actionRow button,
 .primaryBtn,
-.lessonList button,
+.lessonList a,
 .tabs button,
 .wordShelf button,
 .optionBtn,
@@ -223,7 +223,7 @@
 .reviewActions button:hover,
 .actionRow button:hover,
 .primaryBtn:hover,
-.lessonList button:hover,
+.lessonList a:hover,
 .tabs button:hover,
 .wordShelf button:hover,
 .optionBtn:hover,
@@ -279,6 +279,7 @@
   gap: 12px;
   padding: 18px;
   text-align: left;
+  text-decoration: none;
   transition: transform .18s ease, border-color .18s ease, background .18s ease;
 }
 
@@ -317,15 +318,16 @@
   overflow: auto;
 }
 
-.lessonList button {
+.lessonList a {
   display: grid;
   gap: 4px;
   justify-items: start;
   min-height: 64px;
   text-align: left;
+  text-decoration: none;
 }
 
-.lessonList button span {
+.lessonList a span {
   color: rgba(226,232,240,.58);
   font-size: 11px;
 }

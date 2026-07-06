@@ -261,12 +261,12 @@ function QuestionBlock({ id, items, answers, onAnswer }) {
   )
 }
 
-export default function DeutschPage() {
+export default function DeutschPage({ initialLessonId = '', lessonMode = false }) {
   const [state, setState] = useState(emptyState)
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [activeLessonId, setActiveLessonId] = useState('')
-  const [activeTab, setActiveTab] = useState('home')
+  const [activeTab, setActiveTab] = useState(lessonMode ? 'lesen' : 'home')
   const [selectedWord, setSelectedWord] = useState(null)
   const [importText, setImportText] = useState('')
   const [writingText, setWritingText] = useState('')
@@ -287,17 +287,18 @@ export default function DeutschPage() {
           loaded.lessons = [upgradedSampleLesson]
         }
         setState(loaded)
-        setActiveLessonId(loaded.lessons[0]?.id || upgradedSampleLesson.id)
+        const preferredLesson = loaded.lessons.find(lesson => lesson.id === initialLessonId)
+        setActiveLessonId(preferredLesson?.id || loaded.lessons[0]?.id || upgradedSampleLesson.id)
       })
       .catch(() => {
         const fallback = { ...emptyState, lessons: [upgradedSampleLesson] }
         setState(fallback)
-        setActiveLessonId(upgradedSampleLesson.id)
+        setActiveLessonId(initialLessonId || upgradedSampleLesson.id)
         setMessage('Online-Speicherung ist gerade nicht erreichbar. Änderungen bleiben in dieser Sitzung sichtbar.')
       })
       .finally(() => !ignore && setLoading(false))
     return () => { ignore = true }
-  }, [])
+  }, [initialLessonId, lessonMode])
 
   function persist(nextState) {
     setState(nextState)
@@ -450,10 +451,10 @@ export default function DeutschPage() {
     <main className={styles.shell}>
       <header className={styles.hero}>
         <div>
-          <Link className={styles.backLink} href="/andarun">Andarun</Link>
+          <Link className={styles.backLink} href={lessonMode ? '/andarun/deutsch' : '/andarun'}>{lessonMode ? 'Deutschlernen' : 'Andarun'}</Link>
           <span className={styles.kicker}>Deutschlernen</span>
-          <h1>Lesen, Hören, Schreiben, Wiederholen.</h1>
-          <p>Manuelle Tageslektionen mit KI-Vorbereitung, schwierigen Fragen und einem eigenen Leitner-System für deine Wörter und Fehler.</p>
+          <h1>{lessonMode ? activeLesson.title : 'B2 Alltag und Diskussion.'}</h1>
+          <p>{lessonMode ? activeLesson.topic : 'Wähle eine Lektion nach Thema, importiere neue Tageslektionen und wiederhole Wörter und Fehler mit Leitner.'}</p>
         </div>
         <div className={styles.heroStats}>
           <span><strong>{state.lessons.length}</strong>Lektionen</span>
@@ -464,65 +465,67 @@ export default function DeutschPage() {
 
       {message && <div className={styles.status}>{message} {saving ? 'Speichert...' : ''}</div>}
 
-      <section className={styles.dashboard}>
-        <article className={styles.reviewPanel}>
-          <div className={styles.panelHead}>
-            <span>Wiederholung</span>
-            <strong>{dueCards.length ? 'Heute dran' : 'Alles ruhig'}</strong>
-          </div>
-          {nextCard ? (
-            <div className={styles.reviewCard}>
-              <small>{nextCard.type === 'mistake' ? 'Fehlerkarte' : 'Wortkarte'} · Box {nextCard.box + 1}</small>
-              <h2>{nextCard.front}</h2>
-              <p>{nextCard.back}</p>
-              {nextCard.example && <em>{nextCard.example}</em>}
-              <div className={styles.reviewActions}>
-                <button type="button" onClick={() => reviewCard(nextCard, 'hard')}>Schwer</button>
-                <button type="button" onClick={() => reviewCard(nextCard, 'good')}>Gut</button>
-                <button type="button" onClick={() => reviewCard(nextCard, 'easy')}>Leicht</button>
+      {lessonMode && (
+        <>
+          <section className={styles.dashboard}>
+            <article className={styles.reviewPanel}>
+              <div className={styles.panelHead}>
+                <span>Wiederholung</span>
+                <strong>{dueCards.length ? 'Heute dran' : 'Alles ruhig'}</strong>
               </div>
-            </div>
-          ) : (
-            <p className={styles.empty}>Keine fälligen Karten. Neue Wörter entstehen beim Lesen durch Klick auf ein Wort.</p>
-          )}
-        </article>
+              {nextCard ? (
+                <div className={styles.reviewCard}>
+                  <small>{nextCard.type === 'mistake' ? 'Fehlerkarte' : 'Wortkarte'} · Box {nextCard.box + 1}</small>
+                  <h2>{nextCard.front}</h2>
+                  <p>{nextCard.back}</p>
+                  {nextCard.example && <em>{nextCard.example}</em>}
+                  <div className={styles.reviewActions}>
+                    <button type="button" onClick={() => reviewCard(nextCard, 'hard')}>Schwer</button>
+                    <button type="button" onClick={() => reviewCard(nextCard, 'good')}>Gut</button>
+                    <button type="button" onClick={() => reviewCard(nextCard, 'easy')}>Leicht</button>
+                  </div>
+                </div>
+              ) : (
+                <p className={styles.empty}>Keine fälligen Karten. Neue Wörter entstehen beim Lesen durch Klick auf ein Wort.</p>
+              )}
+            </article>
 
-        <aside className={styles.lessonPicker}>
-          <div className={styles.panelHead}>
-            <span>Lektionen</span>
-            <strong>{activeLesson.title}</strong>
-          </div>
-          <div className={styles.lessonList}>
-            {state.lessons.map(lesson => (
-              <button
-                type="button"
-                key={lesson.id}
-                className={lesson.id === activeLesson.id ? styles.activeLesson : ''}
-                onClick={() => setActiveLessonId(lesson.id)}
-              >
-                <span>{lesson.date}</span>
-                <strong>{lesson.title}</strong>
+            <aside className={styles.lessonPicker}>
+              <div className={styles.panelHead}>
+                <span>Lektionen</span>
+                <strong>{activeLesson.title}</strong>
+              </div>
+              <div className={styles.lessonList}>
+                {state.lessons.map(lesson => (
+                  <Link
+                    key={lesson.id}
+                    className={lesson.id === activeLesson.id ? styles.activeLesson : ''}
+                    href={`/andarun/deutsch/${lesson.id}`}
+                  >
+                    <span>{lesson.date}</span>
+                    <strong>{lesson.title}</strong>
+                  </Link>
+                ))}
+              </div>
+            </aside>
+          </section>
+
+          <nav className={styles.tabs} aria-label="Deutschbereiche">
+            {[
+              ['lesen', 'Lesen'],
+              ['grammatik', 'Grammatik'],
+              ['hoeren', 'Hören'],
+              ['schreiben', 'Schreiben'],
+            ].map(([id, label]) => (
+              <button type="button" key={id} className={activeTab === id ? styles.activeTab : ''} onClick={() => setActiveTab(id)}>
+                {label}
               </button>
             ))}
-          </div>
-        </aside>
-      </section>
+          </nav>
+        </>
+      )}
 
-      <nav className={styles.tabs} aria-label="Deutschbereiche">
-        {[
-          ['home', 'Kurs'],
-          ['lesen', 'Lesen'],
-          ['grammatik', 'Grammatik'],
-          ['hoeren', 'Hören'],
-          ['schreiben', 'Schreiben'],
-        ].map(([id, label]) => (
-          <button type="button" key={id} className={activeTab === id ? styles.activeTab : ''} onClick={() => setActiveTab(id)}>
-            {label}
-          </button>
-        ))}
-      </nav>
-
-      {activeTab === 'home' && (
+      {!lessonMode && activeTab === 'home' && (
         <>
           <section className={styles.homeGrid}>
             <article className={styles.textPanel}>
@@ -533,20 +536,16 @@ export default function DeutschPage() {
               <p className={styles.homeLead}>Wähle eine Lektion nach Thema. Jede Lektion enthält Lesen, anspruchsvolle MCQs, Grammatik aus echten Sätzen, Hören, Schreiben und Wiederholungskarten.</p>
               <div className={styles.lessonCards}>
                 {state.lessons.map(lesson => (
-                  <button
-                    type="button"
+                  <Link
                     className={styles.lessonCard}
                     key={lesson.id}
-                    onClick={() => {
-                      setActiveLessonId(lesson.id)
-                      setActiveTab('lesen')
-                    }}
+                    href={`/andarun/deutsch/${lesson.id}`}
                   >
                     <span>{lesson.date} · {lesson.level}</span>
                     <h2>{lesson.title}</h2>
                     <p>{lesson.topic}</p>
                     <small>{lesson.reading?.vocabulary?.length || 0} Wörter · 15 Fragen · Schreiben</small>
-                  </button>
+                  </Link>
                 ))}
               </div>
             </article>
