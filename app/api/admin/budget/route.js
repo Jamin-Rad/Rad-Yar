@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { requireAdmin } from '@/lib/adminAuth'
+import { requireAndarunSession } from '@/lib/andarunPasswordAuth'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 
 const BUDGET_ID = 'default'
@@ -8,9 +9,19 @@ function unavailable() {
   return NextResponse.json({ error: 'Supabase ist nicht konfiguriert.' }, { status: 503 })
 }
 
-export async function GET() {
+async function requireBudgetAccess() {
   const admin = await requireAdmin()
-  if (admin.error) return NextResponse.json({ error: admin.error }, { status: admin.status })
+  if (!admin.error) return { ok: true }
+
+  const andarun = await requireAndarunSession()
+  if (!andarun.error) return { ok: true }
+
+  return admin
+}
+
+export async function GET() {
+  const access = await requireBudgetAccess()
+  if (access.error) return NextResponse.json({ error: access.error }, { status: access.status })
   if (!isSupabaseAdminConfigured) return unavailable()
 
   const { data, error } = await supabaseAdmin
@@ -34,8 +45,8 @@ export async function GET() {
 }
 
 export async function PUT(request) {
-  const admin = await requireAdmin()
-  if (admin.error) return NextResponse.json({ error: admin.error }, { status: admin.status })
+  const access = await requireBudgetAccess()
+  if (access.error) return NextResponse.json({ error: access.error }, { status: access.status })
   if (!isSupabaseAdminConfigured) return unavailable()
 
   let body = {}

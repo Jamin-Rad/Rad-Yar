@@ -9,7 +9,7 @@ const tiles = [
   { title: 'Routine', tone: 'sun', orbit: 'one', href: '#' },
   { title: 'ToDo', tone: 'moon', orbit: 'two', href: '/andarun/todo' },
   { title: 'Flashcards', tone: 'nova', orbit: 'three', href: '#' },
-  { title: 'Finanzen', tone: 'aurora', orbit: 'four', href: '#' },
+  { title: 'Finanzen', tone: 'aurora', orbit: 'four', href: '/andarun/finanz' },
   { title: 'Gesundheit', tone: 'ember', orbit: 'five', href: '#' },
 ]
 
