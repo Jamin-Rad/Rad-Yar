@@ -10,13 +10,13 @@ const LANES = [
   {
     id: 'urgent',
     title: 'Urgent',
-    subtitle: 'needs attention now',
+    subtitle: 'due today',
     color: 'red',
   },
   {
     id: 'today',
-    title: 'Today',
-    subtitle: 'for this day',
+    title: 'Next',
+    subtitle: 'tomorrow',
     color: 'gold',
   },
   {
@@ -58,8 +58,8 @@ function daysUntil(value) {
 function laneFromDeadline(value) {
   const diff = daysUntil(value)
   if (diff === null) return 'today'
-  if (diff < 0) return 'urgent'
-  if (diff === 0) return 'today'
+  if (diff <= 0) return 'urgent'
+  if (diff === 1) return 'today'
   return 'watch'
 }
 
@@ -126,14 +126,10 @@ export default function TodoPage() {
 
   const stats = useMemo(() => {
     const open = todos.filter(todo => !todo.done)
-    const overdue = open.filter(todo => {
-      const diff = daysUntil(todo.deadline)
-      return diff !== null && diff < 0
-    })
     return {
       open: open.length,
       done: todos.length - open.length,
-      overdue: overdue.length,
+      dueToday: open.filter(todo => daysUntil(todo.deadline) === 0).length,
     }
   }, [todos])
 
@@ -237,7 +233,7 @@ export default function TodoPage() {
         </div>
         <div className={styles.stats}>
           <span><strong>{stats.open}</strong> open</span>
-          <span><strong>{stats.overdue}</strong> overdue</span>
+          <span><strong>{stats.dueToday}</strong> today</span>
           <span><strong>{stats.done}</strong> done</span>
         </div>
       </section>
@@ -255,7 +251,7 @@ export default function TodoPage() {
             <input type="date" value={form.deadline} onChange={event => {
               const deadline = event.target.value
               setForm(prev => ({ ...prev, deadline, lane: laneFromDeadline(deadline) }))
-            }} />
+            }} min={todayValue()} />
           </label>
           <label>
             Note
@@ -288,7 +284,6 @@ export default function TodoPage() {
             <div className={styles.cards}>
               {grouped[lane.id].length ? grouped[lane.id].map(todo => {
                 const deadlineDiff = daysUntil(todo.deadline)
-                const isOverdue = deadlineDiff !== null && deadlineDiff < 0 && !todo.done
                 const isSoon = deadlineDiff !== null && deadlineDiff <= 2 && deadlineDiff >= 0 && !todo.done
                 return (
                   <div className={`${styles.card} ${todo.done ? styles.done : ''}`} key={todo.id}>
@@ -301,7 +296,7 @@ export default function TodoPage() {
                     {todo.note && <p>{todo.note}</p>}
                     <div className={styles.cardFooter}>
                       {todo.deadline ? (
-                        <span className={`${styles.deadline} ${isOverdue ? styles.overdue : ''} ${isSoon ? styles.soon : ''}`}>
+                        <span className={`${styles.deadline} ${isSoon ? styles.soon : ''}`}>
                           {formatDeadline(todo.deadline)}
                         </span>
                       ) : <span />}

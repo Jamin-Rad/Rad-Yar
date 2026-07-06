@@ -333,11 +333,6 @@
   color: #fde68a;
 }
 
-.overdue {
-  background: rgba(248,113,113,.18);
-  color: #fecaca;
-}
-
 .cardActions {
   display: flex;
   flex-wrap: wrap;

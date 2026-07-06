@@ -41,15 +41,27 @@ function cleanDeadline(value) {
   return /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : null
 }
 
-function laneFromDeadline(deadline, fallback = 'today') {
-  if (!deadline) return fallback
+function todayDate() {
   const today = new Date()
   today.setHours(0, 0, 0, 0)
+  return today
+}
+
+function isPastDeadline(deadline) {
+  if (!deadline) return false
+  const date = new Date(`${deadline}T00:00:00`)
+  if (Number.isNaN(date.getTime())) return false
+  return date < todayDate()
+}
+
+function laneFromDeadline(deadline, fallback = 'today') {
+  if (!deadline) return fallback
+  const today = todayDate()
   const date = new Date(`${deadline}T00:00:00`)
   if (Number.isNaN(date.getTime())) return fallback
   const diff = Math.round((date - today) / 86400000)
-  if (diff < 0) return 'urgent'
-  if (diff === 0) return 'today'
+  if (diff <= 0) return 'urgent'
+  if (diff === 1) return 'today'
   return 'watch'
 }
 
@@ -87,6 +99,9 @@ export async function POST(request) {
 
   const title = cleanText(body.title)
   const deadline = cleanDeadline(body.deadline)
+  if (isPastDeadline(deadline)) {
+    return NextResponse.json({ error: 'Past deadlines are not allowed.' }, { status: 400 })
+  }
   const lane = laneFromDeadline(deadline, LANES.has(body.lane) ? body.lane : 'today')
   if (!title) return NextResponse.json({ error: 'Title is required.' }, { status: 400 })
 
@@ -133,6 +148,9 @@ export async function PATCH(request) {
   if (typeof body.lane === 'string' && LANES.has(body.lane)) update.lane = body.lane
   if (typeof body.deadline === 'string') {
     update.deadline = cleanDeadline(body.deadline)
+    if (isPastDeadline(update.deadline)) {
+      return NextResponse.json({ error: 'Past deadlines are not allowed.' }, { status: 400 })
+    }
     update.lane = laneFromDeadline(update.deadline, update.lane || 'today')
   }
   if (typeof body.done === 'boolean') update.done = body.done
