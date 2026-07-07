@@ -181,6 +181,9 @@
   transform: rotate(var(--tilt));
   animation: softWobble var(--speed) ease-in-out infinite;
   transition: transform .22s ease, border-color .22s ease, background .22s ease;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
 }
 
 .glassButton::before {
@@ -772,6 +775,453 @@
 .earth { --routine: #76e3b5; }
 .nebula { --routine: #9cc9ff; }
 
+.examHero,
+.progressCard,
+.practicePanel,
+.subjectModal,
+.studyCard {
+  border: 1px solid rgba(255, 255, 255, .42);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(255, 255, 255, .18), transparent 34%),
+    rgba(255, 255, 255, .13);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, .30), inset 0 1px 0 rgba(255, 255, 255, .25);
+  backdrop-filter: blur(22px) saturate(1.2);
+}
+
+.examHero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 18px;
+  padding: clamp(20px, 4vw, 34px);
+}
+
+.examScore {
+  display: grid;
+  min-width: 150px;
+  min-height: 112px;
+  place-items: center;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, .30);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .12);
+}
+
+.examScore strong {
+  color: #ffffff;
+  font-size: clamp(36px, 6vw, 58px);
+  line-height: .9;
+}
+
+.examScore span {
+  color: rgba(238, 248, 255, .76);
+  font-size: 12px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.topicGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.topicCard,
+.modeButton,
+.subjectButton,
+.answerButton,
+.flashStudyCard,
+.primaryAction,
+.ghostAction,
+.closeButton {
+  cursor: pointer;
+  font: inherit;
+}
+
+.topicCard {
+  display: grid;
+  gap: 10px;
+  min-height: 162px;
+  padding: 17px;
+  border: 1px solid rgba(255, 255, 255, .28);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, .18), rgba(255, 255, 255, .08)),
+    rgba(255, 255, 255, .10);
+  color: #ffffff;
+  text-align: left;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .20), 0 16px 38px rgba(0, 0, 0, .18);
+}
+
+.topicCardActive {
+  border-color: rgba(255, 232, 153, .68);
+  box-shadow: 0 0 0 4px rgba(255, 232, 153, .12), 0 20px 48px rgba(0, 0, 0, .24);
+}
+
+.topicCard span {
+  font-size: 20px;
+  font-weight: 950;
+  line-height: 1.12;
+}
+
+.topicCard small,
+.topicCard em {
+  color: rgba(238, 248, 255, .74);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 850;
+  line-height: 1.35;
+}
+
+.progressTrack,
+.progressTrackLarge {
+  display: block;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .14);
+}
+
+.progressTrack {
+  height: 8px;
+}
+
+.progressTrack b,
+.progressTrackLarge span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ffe48a, #75d7ff, #76e3b5);
+}
+
+.practicePanel,
+.studyCard {
+  padding: clamp(16px, 3vw, 24px);
+}
+
+.practiceHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.practiceHeader h2,
+.subjectModal h2,
+.progressCard h2 {
+  margin: 0;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 5vw, 54px);
+  line-height: .95;
+}
+
+.practiceHeader p {
+  margin: 7px 0 0;
+  color: rgba(238, 248, 255, .76);
+  font-weight: 750;
+  line-height: 1.55;
+}
+
+.practiceHeader > span {
+  display: grid;
+  min-width: 74px;
+  height: 48px;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .13);
+  color: #ffffff;
+  font-weight: 950;
+}
+
+.modeGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.modeButton,
+.subjectButton {
+  display: grid;
+  gap: 5px;
+  min-height: 86px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, .24);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .11);
+  color: #ffffff;
+  text-align: left;
+}
+
+.modeButtonActive {
+  border-color: rgba(117, 215, 255, .70);
+  background: rgba(117, 215, 255, .15);
+}
+
+.modeButton strong,
+.subjectButton strong {
+  font-size: 18px;
+  line-height: 1.15;
+}
+
+.modeButton span,
+.subjectButton span {
+  color: rgba(238, 248, 255, .72);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.learningList {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.learningList article {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  padding: 13px;
+  border: 1px solid rgba(255, 255, 255, .20);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .09);
+}
+
+.learningList span {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255, 232, 153, .18);
+  color: #ffffff;
+  font-weight: 950;
+}
+
+.learningList p {
+  margin: 0;
+  color: rgba(244, 250, 255, .86);
+  font-weight: 720;
+  line-height: 1.6;
+}
+
+.mcqTop,
+.actionRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.mcqTop span,
+.mcqTop strong {
+  color: rgba(238, 248, 255, .82);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.mcqQuestion {
+  margin: 16px 0;
+  color: #ffffff;
+  font-size: clamp(21px, 3vw, 30px);
+  line-height: 1.2;
+}
+
+.answerGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.answerButton {
+  min-height: 58px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, .24);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .11);
+  color: rgba(247, 251, 255, .90);
+  font-weight: 850;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.answerCorrect {
+  border-color: rgba(118, 227, 181, .78);
+  background: rgba(118, 227, 181, .18);
+}
+
+.answerWrong {
+  border-color: rgba(255, 159, 159, .78);
+  background: rgba(255, 159, 159, .18);
+}
+
+.feedbackBox,
+.mcqResult {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .10);
+}
+
+.feedbackBox strong,
+.mcqResult strong {
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.feedbackBox span,
+.mcqResult span {
+  color: rgba(238, 248, 255, .78);
+  font-weight: 750;
+  line-height: 1.5;
+}
+
+.flashStudyCard {
+  display: grid;
+  gap: 18px;
+  width: 100%;
+  min-height: 220px;
+  place-items: center;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, .30);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255, 232, 153, .18), transparent 36%),
+    rgba(255, 255, 255, .10);
+  color: #ffffff;
+  text-align: center;
+  margin: 16px 0;
+}
+
+.flashStudyCard strong {
+  font-size: clamp(28px, 5vw, 52px);
+  line-height: 1.05;
+}
+
+.flashStudyCard span {
+  color: rgba(238, 248, 255, .84);
+  font-size: 18px;
+  font-weight: 850;
+  line-height: 1.5;
+}
+
+.primaryAction,
+.ghostAction {
+  min-height: 44px;
+  border-radius: 8px;
+  padding: 0 16px;
+  font-weight: 950;
+}
+
+.primaryAction {
+  border: 0;
+  background: linear-gradient(135deg, #ffe48a, #75d7ff);
+  color: #07111f;
+}
+
+.ghostAction {
+  border: 1px solid rgba(255, 255, 255, .24);
+  background: rgba(255, 255, 255, .10);
+  color: rgba(241, 249, 255, .88);
+}
+
+.subjectBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(3, 6, 18, .64);
+  backdrop-filter: blur(12px);
+}
+
+.subjectModal {
+  width: min(720px, 100%);
+  max-height: min(720px, calc(100svh - 40px));
+  overflow: auto;
+  padding: clamp(18px, 4vw, 30px);
+}
+
+.subjectModalTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.closeButton {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .24);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .12);
+  color: #ffffff;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.subjectGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.subjectButton {
+  min-height: 122px;
+}
+
+.subjectButtonDisabled {
+  cursor: not-allowed;
+  opacity: .48;
+}
+
+.progressCard {
+  display: grid;
+  gap: 14px;
+  padding: clamp(16px, 3vw, 24px);
+}
+
+.progressTrackLarge {
+  height: 11px;
+}
+
+.progressStatGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.progressStatGrid span {
+  display: grid;
+  gap: 4px;
+  min-height: 74px;
+  align-content: center;
+  padding: 11px;
+  border: 1px solid rgba(255, 255, 255, .20);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .09);
+  color: rgba(238, 248, 255, .72);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.progressStatGrid strong {
+  color: #ffffff;
+  font-size: 22px;
+  line-height: 1;
+}
+
 .footer {
   color: rgba(235, 246, 255, .74);
   font-size: 13px;
@@ -833,7 +1283,12 @@
   .routineForm,
   .routineCards,
   .prepGrid,
-  .flashGrid {
+  .flashGrid,
+  .examHero,
+  .topicGrid,
+  .modeGrid,
+  .answerGrid,
+  .progressStatGrid {
     grid-template-columns: 1fr;
   }
 
@@ -848,6 +1303,14 @@
 
   .glassButton {
     min-height: 118px;
+  }
+
+  .examScore {
+    width: 100%;
+  }
+
+  .subjectGrid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -919,5 +1382,21 @@
 
   .routineLineBar {
     height: 4px;
+  }
+
+  .practiceHeader,
+  .subjectModalTop,
+  .actionRow {
+    flex-direction: column;
+  }
+
+  .practiceHeader > span,
+  .primaryAction,
+  .ghostAction {
+    width: 100%;
+  }
+
+  .flashStudyCard {
+    min-height: 190px;
   }
 }

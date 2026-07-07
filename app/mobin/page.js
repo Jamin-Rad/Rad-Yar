@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import MobinProgress from './MobinProgress'
 import styles from './mobin.module.css'
 
 const pages = [
@@ -73,6 +74,8 @@ export default function MobinPage() {
               </Link>
             ))}
           </nav>
+
+          <MobinProgress />
         </section>
 
         <footer className={styles.footer}>Für Mobin gemacht.</footer>
