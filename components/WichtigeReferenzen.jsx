@@ -935,17 +935,7 @@ function RechnerCard({ calc, lang }) {
     <div className={styles.rechnerCard} style={{'--rc': calc.color}}>
       <div className={styles.rcHead}>
         <div className={styles.rcName} style={{color: calc.color}}>{tx(calc.name, lang)}</div>
-        {(calc.formula || calc.help) && (
-          <div className={styles.rcFormulaRow}>
-            {calc.formula && <div className={styles.rcFormula}>{calc.formula}</div>}
-            {calc.help && (
-              <span className={styles.rcHelp} tabIndex={0} aria-label={tx(calc.help, lang)}>
-                ?
-                <span className={styles.rcHelpBubble}>{tx(calc.help, lang)}</span>
-              </span>
-            )}
-          </div>
-        )}
+        {calc.formula && <div className={styles.rcFormula}>{calc.formula}</div>}
       </div>
 
       {calc.type === 'single'     && <SingleCalc     calc={calc} lang={lang} />}
@@ -968,10 +958,18 @@ function getRange(ranges, val) {
   if (val == null || ranges == null) return null
   return ranges.find(r => val <= r.max) || null
 }
-function FieldRow({ label, id, val, onChange, unit, step = 0.1, min, max }) {
+function FieldRow({ label, help, id, val, onChange, unit, step = 0.1, min, max }) {
   return (
     <label className={styles.rcField}>
-      <span className={styles.rcFieldLabel}>{label}</span>
+      <span className={styles.rcFieldLabel}>
+        {label}
+        {help && (
+          <span className={styles.rcHelp} tabIndex={0} aria-label={help}>
+            ?
+            <span className={styles.rcHelpBubble}>{help}</span>
+          </span>
+        )}
+      </span>
       <div className={styles.rcInputWrap}>
         <input type="number" className={styles.rcInput}
           placeholder="—" min={min} max={max} step={step}
@@ -1012,7 +1010,7 @@ function SingleCalc({ calc, lang }) {
     <>
       <div className={styles.rcFields}>
         {calc.fields.map(f => (
-          <FieldRow key={f.id} id={f.id} label={tx(f.label,lang)} val={v[f.id]} onChange={set}
+          <FieldRow key={f.id} id={f.id} label={tx(f.label,lang)} help={f.help ? tx(f.help, lang) : null} val={v[f.id]} onChange={set}
             unit={f.unit} step={f.step} min={f.min} max={f.max} />
         ))}
       </div>
@@ -1029,7 +1027,7 @@ function MultiCalc({ calc, lang }) {
     <>
       <div className={styles.rcFields}>
         {calc.fields.map(f => (
-          <FieldRow key={f.id} id={f.id} label={tx(f.label,lang)} val={v[f.id]} onChange={set}
+          <FieldRow key={f.id} id={f.id} label={tx(f.label,lang)} help={f.help ? tx(f.help, lang) : null} val={v[f.id]} onChange={set}
             unit={f.unit} step={f.step} min={f.min} max={f.max} />
         ))}
       </div>

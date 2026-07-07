@@ -2761,23 +2761,60 @@ export const RECHNER = [
       fa: 'حجم‌های بطن چپ دوصفحه‌ای (CMR)',
     },
     formula: 'Volumen = 0,85 × Fläche 4K × Fläche 2K ÷ LV-Länge',
-    help: {
-      de: 'LV-Fläche: Endokard im 4K/2K konturieren. Blutpool bis Mitralklappenebene und Apex einschließen; Ausgabe meist in cm².',
-      en: 'LV area: trace the endocardium in 4CH/2CH. Include blood pool to mitral valve plane and apex; usually reported in cm².',
-      fa: 'مساحت LV: اندوکارد را در نمای ۴ و ۲ حفره‌ای دورگیری کنید؛ حفره خون تا صفحه میترال و اپکس را شامل کنید.',
-    },
     hint: {
       de: 'Eingaben sind planimetrierte LV-Flächen in 4-Kammer- und 2-Kammerblick sowie die LV-Länge, nicht Kurzachs-Durchmesser. Geometrische Näherung. Für exakte CMR-Volumetrie ist die Kurzachsen-Simpson-Methode Standard. Die biplane Flächen-Längen-Methode ist vor allem für eine schnelle orientierende LV-Funktionsabschätzung geeignet und nicht zuverlässig für den rechten Ventrikel.',
       en: 'Geometric approximation. For exact CMR volumetry, short-axis Simpson quantification is the standard. The biplane area-length method is mainly suitable for quick orienting LV function assessment and is not reliable for the right ventricle.',
       fa: 'یک تقریب هندسی است. برای حجم‌سنجی دقیق CMR، روش سیمپسون در محور کوتاه استاندارد است. روش دوصفحه‌ای مساحت-طول بیشتر برای برآورد سریع عملکرد بطن چپ مناسب است و برای بطن راست قابل اعتماد نیست.',
     },
     fields: [
-      { id: 'a4cEd', label: { de: 'LV-Fläche 4K ED', en: 'LV area 4CH ED', fa: 'مساحت LV چهارحفره‌ای ED' }, unit: 'cm²', step: 0.1, min: 0.1, max: 250 },
-      { id: 'a2cEd', label: { de: 'LV-Fläche 2K ED', en: 'LV area 2CH ED', fa: 'مساحت LV دوحفره‌ای ED' }, unit: 'cm²', step: 0.1, min: 0.1, max: 250 },
-      { id: 'lEd', label: { de: 'LV-Länge ED', en: 'LV length ED', fa: 'طول LV در ED' }, unit: 'cm', step: 0.1, min: 0.1, max: 30 },
-      { id: 'a4cEs', label: { de: 'LV-Fläche 4K ES', en: 'LV area 4CH ES', fa: 'مساحت LV چهارحفره‌ای ES' }, unit: 'cm²', step: 0.1, min: 0.1, max: 250 },
-      { id: 'a2cEs', label: { de: 'LV-Fläche 2K ES', en: 'LV area 2CH ES', fa: 'مساحت LV دوحفره‌ای ES' }, unit: 'cm²', step: 0.1, min: 0.1, max: 250 },
-      { id: 'lEs', label: { de: 'LV-Länge ES', en: 'LV length ES', fa: 'طول LV در ES' }, unit: 'cm', step: 0.1, min: 0.1, max: 30 },
+      {
+        id: 'a4cEd', label: { de: 'LV-Fläche 4K ED', en: 'LV area 4CH ED', fa: 'مساحت LV چهارحفره‌ای ED' }, unit: 'cm²', step: 0.1, min: 0.1, max: 250,
+        help: {
+          de: 'Enddiastolische LV-Blutpoolfläche im 4-Kammerblick. In der Phase mit größtem LV das Endokard nachzeichnen, Apex einschließen und basal an der Mitralklappenebene begrenzen. Falls die Software mm² ausgibt: durch 100 teilen.',
+          en: 'End-diastolic LV blood-pool area in 4-chamber view. Trace endocardium in the largest LV phase; include apex and stop at the mitral valve plane. If reported in mm², divide by 100.',
+          fa: 'مساحت حفره خون LV در پایان دیاستول در نمای ۴ حفره‌ای؛ اندوکارد را در بزرگ‌ترین فاز LV دورگیری کنید و تا صفحه میترال محدود کنید.',
+        },
+      },
+      {
+        id: 'a2cEd', label: { de: 'LV-Fläche 2K ED', en: 'LV area 2CH ED', fa: 'مساحت LV دوحفره‌ای ED' }, unit: 'cm²', step: 0.1, min: 0.1, max: 250,
+        help: {
+          de: 'Enddiastolische LV-Blutpoolfläche im 2-Kammerblick. Gleiche ED-Phase wie im 4K verwenden, Endokard konturieren, linken Vorhof nicht einschließen und basal an der Mitralklappenebene abschneiden.',
+          en: 'End-diastolic LV blood-pool area in 2-chamber view. Use the same ED phase as 4CH, trace endocardium, exclude left atrium, and stop at the mitral valve plane.',
+          fa: 'مساحت حفره خون LV در پایان دیاستول در نمای ۲ حفره‌ای؛ همان فاز ED را استفاده کنید و دهلیز چپ را وارد نکنید.',
+        },
+      },
+      {
+        id: 'lEd', label: { de: 'LV-Länge ED', en: 'LV length ED', fa: 'طول LV در ED' }, unit: 'cm', step: 0.1, min: 0.1, max: 30,
+        help: {
+          de: 'Enddiastolische LV-Länge von der Mitte der Mitralklappenebene bis zum Apex entlang der langen LV-Achse messen. Eingabe in cm, nicht in mm.',
+          en: 'End-diastolic LV length from the center of the mitral valve plane to the apex along the long LV axis. Enter in cm, not mm.',
+          fa: 'طول LV در پایان دیاستول از مرکز صفحه میترال تا اپکس در امتداد محور بلند؛ مقدار را به cm وارد کنید.',
+        },
+      },
+      {
+        id: 'a4cEs', label: { de: 'LV-Fläche 4K ES', en: 'LV area 4CH ES', fa: 'مساحت LV چهارحفره‌ای ES' }, unit: 'cm²', step: 0.1, min: 0.1, max: 250,
+        help: {
+          de: 'Endsystolische LV-Blutpoolfläche im 4-Kammerblick. In der Phase mit kleinstem LV konturieren; Apex einschließen und die basale Grenze wieder an der Mitralklappenebene setzen.',
+          en: 'End-systolic LV blood-pool area in 4-chamber view. Trace in the smallest LV phase; include apex and set the basal border at the mitral valve plane.',
+          fa: 'مساحت حفره خون LV در پایان سیستول در نمای ۴ حفره‌ای؛ در کوچک‌ترین فاز LV دورگیری کنید.',
+        },
+      },
+      {
+        id: 'a2cEs', label: { de: 'LV-Fläche 2K ES', en: 'LV area 2CH ES', fa: 'مساحت LV دوحفره‌ای ES' }, unit: 'cm²', step: 0.1, min: 0.1, max: 250,
+        help: {
+          de: 'Endsystolische LV-Blutpoolfläche im 2-Kammerblick. Kleinste LV-Phase wählen, Endokard konturieren, linken Vorhof ausschließen und basal an der Mitralklappenebene begrenzen.',
+          en: 'End-systolic LV blood-pool area in 2-chamber view. Use smallest LV phase, trace endocardium, exclude left atrium, and stop at the mitral valve plane.',
+          fa: 'مساحت حفره خون LV در پایان سیستول در نمای ۲ حفره‌ای؛ کوچک‌ترین فاز LV را انتخاب کنید.',
+        },
+      },
+      {
+        id: 'lEs', label: { de: 'LV-Länge ES', en: 'LV length ES', fa: 'طول LV در ES' }, unit: 'cm', step: 0.1, min: 0.1, max: 30,
+        help: {
+          de: 'Endsystolische LV-Länge von der Mitte der Mitralklappenebene bis zum Apex messen. Möglichst dieselbe Achsendefinition wie bei ED verwenden.',
+          en: 'End-systolic LV length from the center of the mitral valve plane to the apex. Use the same axis definition as in ED when possible.',
+          fa: 'طول LV در پایان سیستول از مرکز صفحه میترال تا اپکس؛ ترجیحاً همان محور ED را استفاده کنید.',
+        },
+      },
     ],
     outputs: [
       {
