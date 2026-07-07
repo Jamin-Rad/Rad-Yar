@@ -1448,6 +1448,15 @@ export const KLASSIFIKATIONEN = [
         },
         ref: 'Kozar et al., J Trauma Acute Care Surg. 2018;85:1119–1122 (AAST-OIS 2018)',
         refUrl: 'https://www.aast.org/resources-detail/injury-scoring-scale',
+        imagePosition: 'beforeTables',
+        image: {
+          src: '/referenzen/klassifikationen/aast-renal-injury-grading.png',
+          alt: {
+            de: 'AAST Renal Injury Grading Grad I bis V',
+            en: 'AAST renal injury grading grades I to V',
+            fa: 'درجه‌بندی آسیب کلیه AAST از درجه I تا V',
+          },
+        },
         einfach: {
           cols: [
             { de: 'Grad', en: 'Grade', fa: 'درجه' },
