@@ -133,7 +133,7 @@ function effectiveLane(todo) {
   return laneFromDeadline(todo.deadline)
 }
 
-export default function TodoPage() {
+export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/andarun', homeLabel = 'Andarun' }) {
   const [todos, setTodos] = useState([])
   const [form, setForm] = useState(() => emptyForm())
   const [loading, setLoading] = useState(true)
@@ -150,7 +150,7 @@ export default function TodoPage() {
 
     async function loadTodos() {
       try {
-        const response = await fetch('/api/andarun/todos', { cache: 'no-store' })
+        const response = await fetch(apiBase, { cache: 'no-store' })
         if (!response.ok) throw new Error('Online storage is not ready yet.')
         const payload = await response.json()
         if (!active) return
@@ -260,7 +260,7 @@ export default function TodoPage() {
     }
 
     try {
-      const response = await fetch('/api/andarun/todos', {
+      const response = await fetch(apiBase, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -308,7 +308,7 @@ export default function TodoPage() {
     if (storageMode === 'local' || id.startsWith('local-')) return
 
     try {
-      const response = await fetch('/api/andarun/todos', {
+      const response = await fetch(apiBase, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id, ...patch }),
@@ -329,7 +329,7 @@ export default function TodoPage() {
     if (storageMode === 'local' || id.startsWith('local-')) return
 
     try {
-      const response = await fetch(`/api/andarun/todos?id=${encodeURIComponent(id)}`, { method: 'DELETE' })
+      const response = await fetch(`${apiBase}?id=${encodeURIComponent(id)}`, { method: 'DELETE' })
       if (!response.ok) throw new Error('Could not delete online.')
     } catch (error) {
       setTodos(previous)
@@ -378,7 +378,7 @@ export default function TodoPage() {
   return (
     <main className={styles.page}>
       <section className={styles.hero}>
-        <Link href="/andarun" className={styles.backLink}>Andarun</Link>
+        <Link href={homeHref} className={styles.backLink}>{homeLabel}</Link>
         <div>
           <span className={styles.kicker}>Private planning</span>
           <h1>ToDo</h1>

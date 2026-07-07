@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { requireAndarunSession } from '@/lib/andarunPasswordAuth'
+import { requireFatimaSession, SHARED_ANDARUN_OWNER_ID } from '@/lib/fatimaPasswordAuth'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 
 const LANES = new Set(['urgent', 'today', 'watch'])
@@ -12,7 +13,11 @@ function unavailable() {
 }
 
 async function getAndarunIdentity() {
-  return requireAndarunSession()
+  const andarun = await requireAndarunSession()
+  if (!andarun.error) return andarun
+  const fatima = await requireFatimaSession()
+  if (!fatima.error) return { ownerId: SHARED_ANDARUN_OWNER_ID }
+  return andarun
 }
 
 function toClient(row) {

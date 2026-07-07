@@ -261,7 +261,16 @@ function QuestionBlock({ id, items, answers, onAnswer }) {
   )
 }
 
-export default function DeutschPage({ initialLessonId = '', lessonMode = false }) {
+export default function DeutschPage({
+  initialLessonId = '',
+  lessonMode = false,
+  apiBase = '/api/andarun/deutsch',
+  correctEndpoint = '/api/andarun/deutsch/correct',
+  homeHref = '/andarun',
+  courseHref = '/andarun/deutsch',
+  lessonBase = '/andarun/deutsch',
+  canImport = true,
+}) {
   const [state, setState] = useState(emptyState)
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
@@ -277,7 +286,7 @@ export default function DeutschPage({ initialLessonId = '', lessonMode = false }
 
   useEffect(() => {
     let ignore = false
-    fetch('/api/andarun/deutsch')
+    fetch(apiBase)
       .then(res => res.ok ? res.json() : Promise.reject(new Error('load failed')))
       .then(data => {
         if (ignore) return
@@ -306,7 +315,7 @@ export default function DeutschPage({ initialLessonId = '', lessonMode = false }
     saveTimer.current = window.setTimeout(async () => {
       setSaving(true)
       try {
-        const res = await fetch('/api/andarun/deutsch', {
+        const res = await fetch(apiBase, {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ state: nextState }),
@@ -412,7 +421,7 @@ export default function DeutschPage({ initialLessonId = '', lessonMode = false }
     setCorrecting(true)
     setCorrection(null)
     try {
-      const res = await fetch('/api/andarun/deutsch/correct', {
+      const res = await fetch(correctEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: writingText, task: activeLesson.writing?.prompt || '' }),
@@ -451,7 +460,7 @@ export default function DeutschPage({ initialLessonId = '', lessonMode = false }
     <main className={styles.shell}>
       <header className={styles.hero}>
         <div>
-          <Link className={styles.backLink} href={lessonMode ? '/andarun/deutsch' : '/andarun'}>{lessonMode ? 'Deutschlernen' : 'Andarun'}</Link>
+          <Link className={styles.backLink} href={lessonMode ? courseHref : homeHref}>{lessonMode ? 'Deutschlernen' : 'Zurück'}</Link>
           <span className={styles.kicker}>Deutschlernen</span>
           <h1>{lessonMode ? activeLesson.title : 'B2 Alltag und Diskussion.'}</h1>
           <p>{lessonMode ? activeLesson.topic : 'Wähle eine Lektion nach Thema, importiere neue Tageslektionen und wiederhole Wörter und Fehler mit Leitner.'}</p>
@@ -500,7 +509,7 @@ export default function DeutschPage({ initialLessonId = '', lessonMode = false }
                   <Link
                     key={lesson.id}
                     className={lesson.id === activeLesson.id ? styles.activeLesson : ''}
-                    href={`/andarun/deutsch/${lesson.id}`}
+                    href={`${lessonBase}/${lesson.id}`}
                   >
                     <span>{lesson.date}</span>
                     <strong>{lesson.title}</strong>
@@ -539,7 +548,7 @@ export default function DeutschPage({ initialLessonId = '', lessonMode = false }
                   <Link
                     className={styles.lessonCard}
                     key={lesson.id}
-                    href={`/andarun/deutsch/${lesson.id}`}
+                    href={`${lessonBase}/${lesson.id}`}
                   >
                     <span>{lesson.date} · {lesson.level}</span>
                     <h2>{lesson.title}</h2>
@@ -550,7 +559,7 @@ export default function DeutschPage({ initialLessonId = '', lessonMode = false }
               </div>
             </article>
 
-            <article className={styles.textPanel}>
+            {canImport && <article className={styles.textPanel}>
               <div className={styles.panelHead}>
                 <span>Import</span>
                 <strong>Neue Tageslektion</strong>
@@ -561,10 +570,10 @@ export default function DeutschPage({ initialLessonId = '', lessonMode = false }
                 <button type="button" className={styles.primaryBtn} onClick={importLesson}>Lektion importieren</button>
                 <button type="button" onClick={() => navigator.clipboard?.writeText(contentPrompt).then(() => setMessage('Prompt kopiert.'))}>Prompt kopieren</button>
               </div>
-            </article>
+            </article>}
           </section>
 
-          <section className={styles.importGrid}>
+          {canImport && <section className={styles.importGrid}>
             <article className={styles.textPanel}>
               <div className={styles.panelHead}>
                 <span>Prompt für ChatGPT</span>
@@ -572,7 +581,7 @@ export default function DeutschPage({ initialLessonId = '', lessonMode = false }
               </div>
               <textarea readOnly value={contentPrompt} className={styles.promptBox} />
             </article>
-          </section>
+          </section>}
         </>
       )}
 

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { requireAndarunSession } from '@/lib/andarunPasswordAuth'
+import { requireFatimaSession } from '@/lib/fatimaPasswordAuth'
 
 const MODEL = process.env.OPENAI_DEUTSCH_MODEL || 'gpt-5.4-mini'
 const MAX_TEXT_LENGTH = 5000
@@ -21,7 +22,8 @@ function extractJson(value) {
 }
 
 export async function POST(request) {
-  const identity = await requireAndarunSession()
+  const andarun = await requireAndarunSession()
+  const identity = andarun.error ? await requireFatimaSession() : andarun
   if (identity.error) return NextResponse.json({ error: identity.error }, { status: identity.status })
   if (!process.env.OPENAI_API_KEY) {
     return NextResponse.json({ error: 'OPENAI_API_KEY is not configured.' }, { status: 503 })
