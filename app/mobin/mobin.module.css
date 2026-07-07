@@ -269,6 +269,390 @@
   font-weight: 650;
 }
 
+.routineHero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 18px;
+  padding-top: 18px;
+}
+
+.routineStats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.routineStats span {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  gap: 7px;
+  padding: 0 13px;
+  border: 1px solid rgba(255, 255, 255, .28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .12);
+  color: rgba(241, 249, 255, .82);
+  font-size: 12px;
+  font-weight: 900;
+  backdrop-filter: blur(16px);
+}
+
+.routineStats strong {
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.routineComposer,
+.routineDayPanel,
+.routineMonthPanel {
+  border: 1px solid rgba(255, 255, 255, .42);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(255, 255, 255, .18), transparent 34%),
+    rgba(255, 255, 255, .13);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, .30), inset 0 1px 0 rgba(255, 255, 255, .25);
+  backdrop-filter: blur(22px) saturate(1.2);
+}
+
+.routineComposer,
+.routineDayPanel,
+.routineMonthPanel {
+  padding: clamp(14px, 2.5vw, 22px);
+}
+
+.routineForm {
+  display: grid;
+  grid-template-columns: minmax(210px, 1.1fr) minmax(120px, .58fr) 118px 144px minmax(128px, .48fr);
+  gap: 12px;
+  align-items: end;
+}
+
+.routineForm label {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+  color: rgba(238, 248, 255, .78);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.routineForm input,
+.routineDatePicker,
+.routineEntryRow input {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid rgba(255, 255, 255, .24);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .14);
+  color: #ffffff;
+  font: inherit;
+  font-size: 14px;
+  outline: none;
+  padding: 0 13px;
+}
+
+.routineForm input::placeholder,
+.routineEntryRow input::placeholder {
+  color: rgba(238, 248, 255, .42);
+}
+
+.routineForm input:focus,
+.routineDatePicker:focus,
+.routineEntryRow input:focus {
+  border-color: rgba(255, 232, 153, .72);
+  box-shadow: 0 0 0 4px rgba(255, 232, 153, .14);
+}
+
+.routineSwatches {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.routineSwatch {
+  min-height: 44px;
+  border: 1px solid rgba(255, 255, 255, .24);
+  border-radius: 8px;
+  background: var(--routine);
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .28);
+}
+
+.routineSwatchActive {
+  outline: 3px solid rgba(255, 255, 255, .58);
+  outline-offset: 2px;
+}
+
+.routineFormActions {
+  display: grid;
+  gap: 8px;
+}
+
+.routineAddButton,
+.routineGhostButton,
+.routineEntryRow button,
+.routineCardActions button,
+.routineMonthControls button,
+.routineMonthCell {
+  cursor: pointer;
+  font: inherit;
+}
+
+.routineAddButton,
+.routineGhostButton {
+  min-height: 44px;
+  border-radius: 8px;
+  font-weight: 950;
+}
+
+.routineAddButton {
+  border: 0;
+  background: linear-gradient(135deg, #ffe48a, #75d7ff);
+  color: #07111f;
+  box-shadow: 0 18px 38px rgba(75, 190, 255, .20);
+}
+
+.routineGhostButton {
+  border: 1px solid rgba(255, 255, 255, .22);
+  background: rgba(255, 255, 255, .10);
+  color: rgba(241, 249, 255, .88);
+}
+
+.routinePanelHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.routinePanelHeader h2 {
+  margin: 5px 0 0;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: clamp(30px, 5vw, 52px);
+  line-height: .95;
+}
+
+.routineDatePicker {
+  width: auto;
+  min-width: 160px;
+}
+
+.routineCards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.routineCard {
+  --routine-soft: color-mix(in srgb, var(--routine) 20%, transparent);
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, .28);
+  border-left: 4px solid var(--routine);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .22), 0 16px 38px rgba(0, 0, 0, .22);
+}
+
+.routineCardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.routineCardTop h3 {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.routineCardTop p {
+  margin: 5px 0 0;
+  color: rgba(238, 248, 255, .68);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.routineCardTop strong {
+  display: grid;
+  min-width: 48px;
+  height: 34px;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--routine-soft);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.routineProgress {
+  height: 9px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .14);
+}
+
+.routineProgress span,
+.routineLineBar i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--routine);
+}
+
+.routineEntryRow {
+  display: grid;
+  grid-template-columns: minmax(70px, 1fr) auto auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.routineEntryRow span {
+  color: rgba(238, 248, 255, .78);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.routineEntryRow button,
+.routineCardActions button {
+  min-height: 38px;
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .11);
+  color: rgba(241, 249, 255, .88);
+  font-size: 12px;
+  font-weight: 900;
+  padding: 0 12px;
+}
+
+.routineCardActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.routineMonthControls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 7px;
+}
+
+.routineMonthControls button {
+  min-height: 34px;
+  border: 1px solid rgba(255, 255, 255, .24);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .12);
+  color: rgba(241, 249, 255, .88);
+  font-size: 12px;
+  font-weight: 900;
+  padding: 0 12px;
+}
+
+.routineMonthGrid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.routineWeekday {
+  color: rgba(255, 232, 153, .82);
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: .08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.routineMonthCell {
+  display: grid;
+  align-content: start;
+  gap: 5px;
+  min-height: 128px;
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .09);
+  color: #ffffff;
+  text-align: left;
+}
+
+.routineMonthCell:disabled {
+  cursor: default;
+}
+
+.routineMonthCellEmpty {
+  opacity: .35;
+}
+
+.routineMonthCellToday {
+  border-color: rgba(255, 232, 153, .58);
+  box-shadow: inset 0 0 0 1px rgba(255, 232, 153, .16);
+}
+
+.routineMonthCellSelected {
+  border-color: rgba(255, 255, 255, .56);
+  background: rgba(255, 255, 255, .15);
+}
+
+.routineMonthDay {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .12);
+  color: rgba(255, 255, 255, .9);
+  font-size: 11px;
+  font-weight: 950;
+}
+
+.routineCalendarLine {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(18px, 1fr) 34px;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+
+.routineLineName,
+.routineLinePercent {
+  overflow: hidden;
+  color: rgba(238, 248, 255, .76);
+  font-size: 9px;
+  font-weight: 900;
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.routineLinePercent {
+  color: rgba(255, 255, 255, .9);
+  text-align: right;
+}
+
+.routineLineBar {
+  height: 5px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .13);
+}
+
+.sun { --routine: #ffe48a; }
+.comet { --routine: #ff9f9f; }
+.earth { --routine: #76e3b5; }
+.nebula { --routine: #9cc9ff; }
+
 .footer {
   color: rgba(235, 246, 255, .74);
   font-size: 13px;
@@ -326,8 +710,19 @@
   }
 
   .buttonField,
-  .routineGrid {
+  .routineGrid,
+  .routineForm,
+  .routineCards {
     grid-template-columns: 1fr;
+  }
+
+  .routineHero {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .routineStats {
+    justify-content: flex-start;
   }
 
   .glassButton {
@@ -342,5 +737,66 @@
 
   .title {
     font-size: clamp(56px, 23vw, 94px);
+  }
+
+  .routineStats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    gap: 8px;
+  }
+
+  .routineStats span {
+    justify-content: center;
+    padding: 0 9px;
+  }
+
+  .routinePanelHeader {
+    flex-direction: column;
+  }
+
+  .routineDatePicker {
+    width: 100%;
+  }
+
+  .routineMonthControls {
+    width: 100%;
+  }
+
+  .routineMonthControls button {
+    flex: 1 1 0;
+  }
+
+  .routineMonthGrid {
+    gap: 4px;
+  }
+
+  .routineMonthCell {
+    min-height: 104px;
+    gap: 3px;
+    padding: 5px;
+  }
+
+  .routineMonthDay {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
+
+  .routineCalendarLine {
+    grid-template-columns: 1fr 30px;
+    gap: 3px;
+  }
+
+  .routineLineName {
+    display: none;
+  }
+
+  .routineLinePercent {
+    font-size: 8px;
+  }
+
+  .routineLineBar {
+    height: 4px;
   }
 }
