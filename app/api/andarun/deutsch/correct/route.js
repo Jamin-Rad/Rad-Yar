@@ -54,6 +54,11 @@ Gib ausschließlich gültiges JSON in dieser Form zurück:
     "offTopicParts": ["Textstelle, die nicht zur Aufgabe passt"]
   },
   "corrected": "vollständig korrigierte Version",
+  "annotatedCorrection": [
+    { "text": "unveränderter Textteil", "type": "same" },
+    { "text": "korrigierter Textteil", "type": "correction" },
+    { "text": "neu ergänzter fehlender Inhalt", "type": "addition" }
+  ],
   "teacherVersion": "gute Musterlösung passend zur Aufgabe und zum Niveau des Lernenden",
   "summary": "kurze Rückmeldung auf Deutsch",
   "grammarErrors": [
@@ -83,6 +88,10 @@ Regeln:
 - Wenn der Text die Aufgabe verfehlt, setze taskFulfillment.status auf "Thema verfehlt".
 - Wenn nur Teile fehlen, setze "teilweise erfüllt".
 - Korrigiere die Sprache, aber erkläre deutlich den Aufgabenbezug.
+- annotatedCorrection muss zusammen exakt die korrigierte Version ergeben.
+- Markiere in annotatedCorrection sprachlich korrigierte Wörter/Satzteile mit type "correction".
+- Markiere neu ergänzte Inhalte, die wegen Aufgabe oder Checkliste gefehlt haben, mit type "addition".
+- Unveränderte Teile bekommen type "same".
 - grammarErrors müssen am Ende die wichtigsten relevanten Grammatikfehler nummeriert erklären.
 - Maximal 6 grammarErrors und maximal 8 mistakes auswählen.
 - Keine erfundenen Fehler.
@@ -214,6 +223,7 @@ export async function POST(request) {
       corrected: output,
       summary: 'Die KI-Antwort konnte nicht strukturiert gelesen werden.',
       taskFulfillment: null,
+      annotatedCorrection: [],
       teacherVersion: '',
       grammarErrors: [],
       mistakes: [],

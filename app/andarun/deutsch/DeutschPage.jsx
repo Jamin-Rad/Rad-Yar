@@ -281,6 +281,29 @@ function QuestionBlock({ id, items, answers, onAnswer }) {
   )
 }
 
+function MarkedCorrection({ correction }) {
+  const segments = Array.isArray(correction?.annotatedCorrection)
+    ? correction.annotatedCorrection.filter(segment => typeof segment?.text === 'string' && segment.text)
+    : []
+
+  if (!segments.length) return <p>{correction?.corrected || ''}</p>
+
+  return (
+    <p className={styles.markedCorrection}>
+      {segments.map((segment, index) => {
+        const className = segment.type === 'addition'
+          ? styles.markAddition
+          : segment.type === 'correction'
+            ? styles.markCorrection
+            : ''
+        return className
+          ? <span className={className} key={`${segment.text}-${index}`}>{segment.text}</span>
+          : <span key={`${segment.text}-${index}`}>{segment.text}</span>
+      })}
+    </p>
+  )
+}
+
 export default function DeutschPage({
   initialLessonId = '',
   lessonMode = false,
@@ -731,7 +754,13 @@ export default function DeutschPage({
                   </div>
                 )}
                 <h3>Korrigierte Version</h3>
-                <p>{correction.corrected}</p>
+                <MarkedCorrection correction={correction} />
+                {!!correction.annotatedCorrection?.length && (
+                  <div className={styles.markLegend} aria-label="Markierungslegende">
+                    <span><i className={styles.legendCorrection} /> rot: korrigiert</span>
+                    <span><i className={styles.legendAddition} /> gelb: ergänzt</span>
+                  </div>
+                )}
                 {correction.teacherVersion && (
                   <>
                     <h3>Passende Musterlösung</h3>
