@@ -31,7 +31,6 @@
 .flashPanel,
 .questionCard,
 .correctionPanel,
-.coachPanel,
 .wordModal,
 .importModal,
 .flashModal {
@@ -145,7 +144,6 @@
 .lessonGrid,
 .writingGrid,
 .importGrid,
-.coachGrid,
 .singleSection {
   width: min(1320px, 100%);
   margin: 0 auto 18px;
@@ -493,8 +491,7 @@
 
 .lessonGrid,
 .writingGrid,
-.importGrid,
-.coachGrid {
+.importGrid {
   display: grid;
   grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
   gap: 16px;
@@ -687,163 +684,10 @@
   color: #bbf7d0;
 }
 
-.correctionPanel p,
-.coachAnswer p {
+.correctionPanel p {
   color: rgba(248,250,252,.86);
   line-height: 1.7;
   white-space: pre-line;
-}
-
-.coachPanel {
-  border-radius: 22px;
-  padding: 18px;
-}
-
-.coachLead {
-  margin: 0 0 14px;
-  color: rgba(226,232,240,.74);
-  line-height: 1.6;
-}
-
-.coachModes {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 9px;
-  margin-bottom: 12px;
-}
-
-.coachModes button,
-.coachCards button {
-  min-height: 42px;
-  border: 1px solid rgba(255,255,255,.16);
-  border-radius: 14px;
-  background: rgba(255,255,255,.10);
-  color: rgba(248,250,252,.92);
-  cursor: pointer;
-  font: inherit;
-  font-size: 13px;
-  font-weight: 950;
-  padding: 0 14px;
-}
-
-.coachModes button:hover,
-.coachCards button:hover {
-  border-color: rgba(187, 247, 208, .42);
-  background: rgba(255,255,255,.16);
-}
-
-.coachModes button:disabled {
-  cursor: not-allowed;
-  opacity: .55;
-}
-
-.coachModes .activeCoachMode {
-  border-color: rgba(45, 212, 191, .52);
-  background: rgba(20,184,166,.18);
-  color: #ccfbf1;
-}
-
-.coachTextarea {
-  width: 100%;
-  min-height: 150px;
-  resize: vertical;
-  border: 1px solid rgba(255,255,255,.15);
-  border-radius: 18px;
-  background: rgba(2,6,23,.38);
-  color: #fff;
-  font: inherit;
-  line-height: 1.6;
-  outline: none;
-  padding: 14px;
-}
-
-.coachAnswer {
-  display: grid;
-  gap: 14px;
-}
-
-.coachAnswer aside {
-  border: 1px solid rgba(251,191,36,.24);
-  border-radius: 16px;
-  background: rgba(251,191,36,.10);
-  color: #fde68a;
-  line-height: 1.65;
-  padding: 12px 14px;
-}
-
-.coachAnswer h3 {
-  margin: 4px 0 0;
-  color: #bbf7d0;
-}
-
-.coachAnswer ul {
-  display: grid;
-  gap: 8px;
-  margin: 0;
-  padding-left: 20px;
-}
-
-.coachAnswer li {
-  color: rgba(226,232,240,.82);
-  line-height: 1.55;
-}
-
-.coachExercise {
-  display: grid;
-  gap: 9px;
-}
-
-.coachExercise details {
-  border: 1px solid rgba(255,255,255,.14);
-  border-radius: 16px;
-  background: rgba(255,255,255,.08);
-  padding: 12px;
-}
-
-.coachExercise summary {
-  color: #fff;
-  cursor: pointer;
-  font-weight: 900;
-}
-
-.coachExercise strong {
-  display: block;
-  margin-top: 10px;
-  color: #bbf7d0;
-}
-
-.coachExercise span {
-  display: block;
-  margin-top: 6px;
-  color: rgba(226,232,240,.72);
-  line-height: 1.5;
-}
-
-.coachCards {
-  display: grid;
-  gap: 10px;
-}
-
-.coachCards article {
-  display: grid;
-  gap: 8px;
-  border: 1px solid rgba(255,255,255,.14);
-  border-radius: 16px;
-  background: rgba(255,255,255,.08);
-  padding: 12px;
-}
-
-.coachCards strong {
-  color: #fff;
-}
-
-.coachCards span {
-  color: rgba(226,232,240,.75);
-  line-height: 1.5;
-}
-
-.coachCards button {
-  justify-self: start;
 }
 
 .mistakeRow {
@@ -1051,8 +895,7 @@
   .homeGrid,
   .lessonGrid,
   .writingGrid,
-  .importGrid,
-  .coachGrid {
+  .importGrid {
     grid-template-columns: 1fr;
   }
 
@@ -1075,8 +918,7 @@
   .reviewPanel,
   .lessonPicker,
   .textPanel,
-  .correctionPanel,
-  .coachPanel {
+  .correctionPanel {
     border-radius: 18px;
     padding: 14px;
   }
@@ -1085,8 +927,7 @@
   .lessonCards,
   .lessonRow,
   .boxGrid,
-  .optionsGrid,
-  .coachModes {
+  .optionsGrid {
     grid-template-columns: 1fr;
   }
 
