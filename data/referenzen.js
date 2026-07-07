@@ -2760,19 +2760,19 @@ export const RECHNER = [
       en: 'Biplane LV Volumes (CMR)',
       fa: 'حجم‌های بطن چپ دوصفحه‌ای (CMR)',
     },
-    formula: 'EDV/ESV = 0,85 × A4C × A2C ÷ L',
+    formula: 'Volumen = 0,85 × Fläche 4K × Fläche 2K ÷ LV-Länge',
     hint: {
-      de: 'Geometrische Näherung. Für exakte CMR-Volumetrie ist die Kurzachsen-Simpson-Methode Standard. Die biplane Flächen-Längen-Methode ist vor allem für eine schnelle orientierende LV-Funktionsabschätzung geeignet und nicht zuverlässig für den rechten Ventrikel.',
+      de: 'Eingaben sind planimetrierte LV-Flächen in 4-Kammer- und 2-Kammerblick sowie die LV-Länge, nicht Kurzachs-Durchmesser. Geometrische Näherung. Für exakte CMR-Volumetrie ist die Kurzachsen-Simpson-Methode Standard. Die biplane Flächen-Längen-Methode ist vor allem für eine schnelle orientierende LV-Funktionsabschätzung geeignet und nicht zuverlässig für den rechten Ventrikel.',
       en: 'Geometric approximation. For exact CMR volumetry, short-axis Simpson quantification is the standard. The biplane area-length method is mainly suitable for quick orienting LV function assessment and is not reliable for the right ventricle.',
       fa: 'یک تقریب هندسی است. برای حجم‌سنجی دقیق CMR، روش سیمپسون در محور کوتاه استاندارد است. روش دوصفحه‌ای مساحت-طول بیشتر برای برآورد سریع عملکرد بطن چپ مناسب است و برای بطن راست قابل اعتماد نیست.',
     },
     fields: [
-      { id: 'a4cEd', label: { de: 'A4C_ED', en: 'A4C_ED', fa: 'A4C_ED' }, unit: 'cm²', step: 0.1, min: 0.1, max: 250 },
-      { id: 'a2cEd', label: { de: 'A2C_ED', en: 'A2C_ED', fa: 'A2C_ED' }, unit: 'cm²', step: 0.1, min: 0.1, max: 250 },
-      { id: 'lEd', label: { de: 'L_ED', en: 'L_ED', fa: 'L_ED' }, unit: 'cm', step: 0.1, min: 0.1, max: 30 },
-      { id: 'a4cEs', label: { de: 'A4C_ES', en: 'A4C_ES', fa: 'A4C_ES' }, unit: 'cm²', step: 0.1, min: 0.1, max: 250 },
-      { id: 'a2cEs', label: { de: 'A2C_ES', en: 'A2C_ES', fa: 'A2C_ES' }, unit: 'cm²', step: 0.1, min: 0.1, max: 250 },
-      { id: 'lEs', label: { de: 'L_ES', en: 'L_ES', fa: 'L_ES' }, unit: 'cm', step: 0.1, min: 0.1, max: 30 },
+      { id: 'a4cEd', label: { de: 'LV-Fläche 4K ED', en: 'LV area 4CH ED', fa: 'مساحت LV چهارحفره‌ای ED' }, unit: 'cm²', step: 0.1, min: 0.1, max: 250 },
+      { id: 'a2cEd', label: { de: 'LV-Fläche 2K ED', en: 'LV area 2CH ED', fa: 'مساحت LV دوحفره‌ای ED' }, unit: 'cm²', step: 0.1, min: 0.1, max: 250 },
+      { id: 'lEd', label: { de: 'LV-Länge ED', en: 'LV length ED', fa: 'طول LV در ED' }, unit: 'cm', step: 0.1, min: 0.1, max: 30 },
+      { id: 'a4cEs', label: { de: 'LV-Fläche 4K ES', en: 'LV area 4CH ES', fa: 'مساحت LV چهارحفره‌ای ES' }, unit: 'cm²', step: 0.1, min: 0.1, max: 250 },
+      { id: 'a2cEs', label: { de: 'LV-Fläche 2K ES', en: 'LV area 2CH ES', fa: 'مساحت LV دوحفره‌ای ES' }, unit: 'cm²', step: 0.1, min: 0.1, max: 250 },
+      { id: 'lEs', label: { de: 'LV-Länge ES', en: 'LV length ES', fa: 'طول LV در ES' }, unit: 'cm', step: 0.1, min: 0.1, max: 30 },
     ],
     outputs: [
       {
