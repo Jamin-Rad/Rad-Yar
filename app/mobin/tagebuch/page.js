@@ -12,6 +12,10 @@ export default function TagebuchPage() {
         <header className={styles.topbar}>
           <Link className={styles.brand} href="/mobin">
             <span className={styles.mark}>M</span>
+            <span className={styles.brandText}>
+              <span className={styles.brandName}>Mobin</span>
+              <span className={styles.brandSub}>Tagebuch</span>
+            </span>
           </Link>
         </header>
 
@@ -19,7 +23,7 @@ export default function TagebuchPage() {
           <div className={styles.wideCard}>
             <h1 className={styles.sectionTitle}>Tagebuch</h1>
             <p className={styles.sectionText}>
-              Ein Ort für kleine Erinnerungen: Was war schön, was war schwer,
+              Ein Ort fuer kleine Erinnerungen: Was war schoen, was war schwer,
               was soll morgen besser werden?
             </p>
           </div>
@@ -36,7 +40,7 @@ export default function TagebuchPage() {
           </nav>
         </section>
 
-        <footer className={styles.footer}>Zurück zu <Link href="/mobin">Mobin</Link></footer>
+        <footer className={styles.footer}>Zurueck zu <Link href="/mobin">Mobin</Link></footer>
       </div>
     </main>
   )

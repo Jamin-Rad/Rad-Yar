@@ -27,7 +27,7 @@ const pages = [
 
 export const metadata = {
   title: 'Mobin',
-  description: 'Private Seite für Mobin mit Routine, Bildschirmzeit und Tagebuch.',
+  description: 'Private Seite fuer Mobin mit Routine, Bildschirmzeit und Tagebuch.',
 }
 
 export default function MobinPage() {
@@ -37,15 +37,19 @@ export default function MobinPage() {
         <header className={styles.topbar}>
           <Link className={styles.brand} href="/mobin" aria-label="Mobin Startseite">
             <span className={styles.mark}>M</span>
+            <span className={styles.brandText}>
+              <span className={styles.brandName}>Mobin</span>
+              <span className={styles.brandSub}>Privates Sternenbuch</span>
+            </span>
           </Link>
         </header>
 
         <section className={styles.main}>
           <div className={styles.hero}>
-            <span className={styles.eyebrow}>Milchstraße und Andromeda</span>
+            <span className={styles.eyebrow}>Milchstrasse und Andromeda</span>
             <h1 className={styles.title}>Mobin</h1>
             <p className={styles.lead}>
-              Ein kleiner Raum im Universum für Alltag, Lernen, Pausen und Geschichten.
+              Ein kleiner Raum im Universum fuer Alltag, Lernen, Pausen und Geschichten.
             </p>
           </div>
 
@@ -64,7 +68,7 @@ export default function MobinPage() {
           </nav>
         </section>
 
-        <footer className={styles.footer}>Für Mobin gemacht.</footer>
+        <footer className={styles.footer}>Fuer Mobin gemacht.</footer>
       </div>
     </main>
   )
