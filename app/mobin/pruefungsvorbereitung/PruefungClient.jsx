@@ -551,8 +551,8 @@ export default function PruefungClient() {
       </div>
 
       {subjectModalOpen ? (
-        <div className={styles.subjectBackdrop} role="presentation">
-          <div className={styles.subjectModal} role="dialog" aria-modal="true" aria-labelledby="subject-title">
+        <div className={styles.subjectBackdrop} role="presentation" onClick={() => { if (subject) setSubjectModalOpen(false) }}>
+          <div className={styles.subjectModal} role="dialog" aria-modal="true" aria-labelledby="subject-title" onClick={(e) => e.stopPropagation()}>
             <div className={styles.subjectModalTop}>
               <div>
                 <span className={styles.eyebrow}>Prüfungsfach</span>
