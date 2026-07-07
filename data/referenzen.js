@@ -1438,6 +1438,91 @@ export const KLASSIFIKATIONEN = [
           },
         ],
       },
+      {
+        id: 'nierenverletzung',
+        name: { de: 'Nierenverletzung-Grading', en: 'Kidney Injury Grading', fa: 'درجه‌بندی آسیب کلیه' },
+        kompakt: {
+          de: 'AAST-Grading (2018) traumatischer Nierenverletzungen im CT – Grad I bis V.',
+          en: 'AAST grading (2018) of traumatic kidney injuries on CT – Grade I to V.',
+          fa: 'درجه‌بندی AAST (۲۰۱۸) آسیب‌های تروماتیک کلیه در CT – درجه I تا V.',
+        },
+        ref: 'Kozar et al., J Trauma Acute Care Surg. 2018;85:1119–1122 (AAST-OIS 2018)',
+        refUrl: 'https://www.aast.org/resources-detail/injury-scoring-scale',
+        einfach: {
+          cols: [
+            { de: 'Grad', en: 'Grade', fa: 'درجه' },
+            { de: 'CT-Befund (Kurzform)', en: 'CT finding (summary)', fa: 'یافته CT (خلاصه)' },
+          ],
+          rows: [
+            ['I',   { de: 'Kontusion / subkaps. Hämatom, kein Parenchymriss', en: 'Contusion / subcapsular haematoma, no parenchymal laceration', fa: 'کوفتگی / هماتوم ساب‌کپسولار، بدون پارگی پارانشیم' }],
+            ['II',  { de: 'Perirenales Hämatom (Gerota); Riss ≤ 1 cm, kein Urinaustritt', en: 'Perirenal haematoma (Gerota); laceration ≤ 1 cm, no urinary extravasation', fa: 'هماتوم پری‌رنال (ژروتا)؛ پارگی ≤ ۱ سانتی‌متر، بدون نشت ادرار' }],
+            ['III', { de: 'Riss > 1 cm, Hohlsystem intakt; Gefäßverletzung innerhalb Gerota', en: 'Laceration > 1 cm, collecting system intact; vascular injury within Gerota', fa: 'پارگی > ۱ سانتی‌متر، سیستم جمع‌کننده سالم؛ آسیب عروقی داخل ژروتا' }],
+            ['IV',  { de: 'Riss ins Hohlsystem mit Urinextravasation; segmentale Gefäß-/UPJ-Verletzung; Blutung über Gerota hinaus', en: 'Laceration into collecting system with urinary extravasation; segmental vascular / UPJ injury; active bleeding beyond Gerota', fa: 'پارگی تا سیستم جمع‌کننده با نشت ادرار؛ آسیب عروقی سگمنتال/UPJ؛ خونریزی فراتر از ژروتا' }],
+            ['V',   { de: 'Zertrümmerte Niere; Abriss/Thrombose A./V. renalis; Hilusavulsion', en: 'Shattered kidney; avulsion / thrombosis of main renal artery or vein; hilar avulsion', fa: 'کلیه متلاشی؛ کنده‌شدن/ترومبوز شریان یا ورید اصلی کلیه؛ کنده‌شدن ناف' }],
+          ],
+        },
+        cols: [
+          { de: 'Grad', en: 'Grade', fa: 'درجه' },
+          { de: 'CT-/Verletzungskriterium', en: 'CT / injury criterion', fa: 'معیار CT / آسیب' },
+        ],
+        rows: [
+          ['I',   { de: 'Kontusion oder subkapsuläres Hämatom ohne Parenchymriss', en: 'Contusion or subcapsular haematoma without parenchymal laceration', fa: 'کوفتگی یا هماتوم ساب‌کپسولار بدون پارگی پارانشیم' }],
+          ['II',  { de: 'Perirenales Hämatom innerhalb der Gerota-Faszie; Parenchymriss ≤ 1 cm ohne Urinextravasation', en: 'Perirenal haematoma confined within Gerota fascia; parenchymal laceration ≤ 1 cm without urinary extravasation', fa: 'هماتوم پری‌رنال محدود به فاسیای ژروتا؛ پارگی پارانشیم ≤ ۱ سانتی‌متر بدون نشت ادرار' }],
+          ['III', { de: 'Parenchymriss > 1 cm ohne Verletzung des Hohlsystems; Gefäßverletzung/aktive Blutung innerhalb der Gerota-Faszie', en: 'Parenchymal laceration > 1 cm without collecting-system injury; vascular injury/active bleeding contained within Gerota fascia', fa: 'پارگی پارانشیم > ۱ سانتی‌متر بدون آسیب سیستم جمع‌کننده؛ آسیب عروقی/خونریزی فعال محدود به فاسیای ژروتا' }],
+          ['IV',  { de: 'Riss bis ins Hohlsystem mit Urinextravasation; Nierenbecken-/UPJ-Verletzung; segmentale Gefäßverletzung; aktive Blutung über die Gerota-Faszie hinaus', en: 'Laceration into the collecting system with urinary extravasation; renal pelvis/UPJ injury; segmental vascular injury; active bleeding beyond Gerota fascia', fa: 'پارگی تا سیستم جمع‌کننده با نشت ادرار؛ آسیب لگنچه/UPJ؛ آسیب عروق سگمنتال؛ خونریزی فعال فراتر از فاسیای ژروتا' }],
+          ['V',   { de: 'Zertrümmerte Niere; Verletzung/Abriss der Hauptnierenarterie oder -vene; Hilusavulsion mit Devaskularisation', en: 'Shattered kidney; main renal artery or vein laceration/avulsion; hilar avulsion with devascularisation', fa: 'کلیه متلاشی؛ پارگی/کنده‌شدن شریان یا ورید اصلی کلیه؛ کنده‌شدن ناف با قطع خون‌رسانی' }],
+        ],
+        detail: [
+          {
+            stage: { de: 'Grad I – Kontusion', en: 'Grade I – Contusion', fa: 'درجه I – کوفتگی' },
+            text: {
+              de: 'Nierenparenchym intakt; subkapsuläres Hämatom ohne Ausdehnung. Im CT: hypodenses Areal oder subkapsuläres Hämatom ohne Parenchymriss. Kein Urinaustritt. Management: konservativ, Bettruhe.',
+              en: 'Renal parenchyma intact; non-expanding subcapsular haematoma. On CT: hypodense area or subcapsular haematoma without parenchymal laceration. No urinary extravasation. Management: conservative, bed rest.',
+              fa: 'پارانشیم کلیه سالم؛ هماتوم ساب‌کپسولار بدون گسترش. در CT: ناحیه هیپودنس یا هماتوم ساب‌کپسولار بدون پارگی پارانشیم. بدون نشت ادرار. مدیریت: محافظه‌کارانه، استراحت.',
+            },
+          },
+          {
+            stage: { de: 'Grad II – Kleiner Parenchymriss', en: 'Grade II – Minor laceration', fa: 'درجه II – پارگی کوچک' },
+            text: {
+              de: 'Perirenales Hämatom innerhalb der Gerota-Faszie; Parenchymriss ≤ 1 cm Tiefe ohne Beteiligung des Hohlsystems und ohne Urinextravasation. Im CT: perirenale Flüssigkeit; Riss als Hypodensität erkennbar. Management: konservativ.',
+              en: 'Perirenal haematoma confined to Gerota fascia; parenchymal laceration ≤ 1 cm deep without collecting-system injury and without urinary extravasation. On CT: perirenal fluid; laceration visible as hypodensity. Management: conservative.',
+              fa: 'هماتوم پری‌رنال محدود به فاسیای ژروتا؛ پارگی پارانشیم ≤ ۱ سانتی‌متر بدون آسیب سیستم جمع‌کننده و بدون نشت ادرار. در CT: مایع پری‌رنال؛ پارگی به‌صورت هیپودنسیتی. مدیریت: محافظه‌کارانه.',
+            },
+          },
+          {
+            stage: { de: 'Grad III – Tiefer Parenchymriss', en: 'Grade III – Deep laceration', fa: 'درجه III – پارگی عمیق' },
+            text: {
+              de: 'Parenchymriss > 1 cm ohne Verletzung des Hohlsystems (kein Urinaustritt) oder Gefäßverletzung/aktive Blutung, die innerhalb der Gerota-Faszie bleibt. Im CT: ausgedehntes perirenales Hämatom, evtl. aktives Kontrastmittelextravasat innerhalb Gerota. Management: meist konservativ; bei Blutung Embolisation.',
+              en: 'Parenchymal laceration > 1 cm without collecting-system rupture (no urinary extravasation) or vascular injury/active bleeding confined within Gerota fascia. On CT: large perirenal haematoma, possible active contrast extravasation within Gerota. Management: mostly conservative; embolisation for bleeding.',
+              fa: 'پارگی پارانشیم > ۱ سانتی‌متر بدون پارگی سیستم جمع‌کننده (بدون نشت ادرار) یا آسیب عروقی/خونریزی فعال محدود به فاسیای ژروتا. در CT: هماتوم پری‌رنال گسترده، احتمالاً اکستراواسیون فعال KM درون ژروتا. مدیریت: معمولاً محافظه‌کارانه؛ آمبولیزاسیون در صورت خونریزی.',
+            },
+          },
+          {
+            stage: { de: 'Grad IV – Hohlsystem/Gefäße betroffen', en: 'Grade IV – Collecting system / vascular', fa: 'درجه IV – آسیب سیستم جمع‌کننده/عروقی' },
+            text: {
+              de: 'Riss bis ins Hohlsystem mit Urinextravasation (KM im Ausscheidungsurogram extrakaliziell); oder UPJ-Verletzung; oder segmentale Nierengefäßverletzung; oder aktive Blutung über die Gerota-Faszie hinaus. Im CT: KM-Extravasat in der Ausscheidungsphase (Urinleck), expandierendes Hämatom. Management: Ureterstent/PCN oder selektive Embolisation.',
+              en: 'Laceration into collecting system with urinary extravasation (contrast outside the calices on urographic phase); or UPJ disruption; or segmental renal vascular injury; or active bleeding beyond Gerota fascia. On CT: contrast extravasation on excretory phase (urine leak), expanding haematoma. Management: ureteric stent/PCN or selective embolisation.',
+              fa: 'پارگی تا سیستم جمع‌کننده با نشت ادرار (KM خارج از کالیس در فاز دفعی)؛ یا پارگی UPJ؛ یا آسیب عروق سگمنتال کلیه؛ یا خونریزی فعال فراتر از ژروتا. در CT: اکستراواسیون KM در فاز دفعی (نشت ادرار)، هماتوم در حال گسترش. مدیریت: استنت حالب/PCN یا آمبولیزاسیون انتخابی.',
+            },
+          },
+          {
+            stage: { de: 'Grad V – Zerstörte Niere / Hilusverletzung', en: 'Grade V – Shattered kidney / hilar injury', fa: 'درجه V – کلیه متلاشی / آسیب ناف' },
+            text: {
+              de: 'Zertrümmerte Niere (kein zusammenhängendes Parenchym erkennbar); oder Verletzung/Abriss der Hauptnierenarterie oder -vene; oder Hilusavulsion mit vollständiger Devaskularisation. Im CT: keine Kontrastaufnahme der Niere, massives retroperitoneales Hämatom, avulsionierte Gefäße. Management: chirurgische Exploration, evtl. Nephrektomie.',
+              en: 'Shattered kidney (no coherent parenchyma identifiable); or main renal artery or vein laceration/avulsion; or hilar avulsion with complete devascularisation. On CT: absent renal enhancement, massive retroperitoneal haematoma, avulsed vessels. Management: surgical exploration, possibly nephrectomy.',
+              fa: 'کلیه متلاشی (پارانشیم منسجم قابل شناسایی نیست)؛ یا پارگی/کنده‌شدن شریان یا ورید اصلی کلیه؛ یا کنده‌شدن ناف با قطع کامل خون‌رسانی. در CT: بدون تقویت کلیه، هماتوم رتروپریتونئال گسترده، عروق کنده‌شده. مدیریت: اکسپلوراسیون جراحی، احتمالاً نفرکتومی.',
+            },
+          },
+          {
+            stage: { de: 'Klinischer Kontext', en: 'Clinical context', fa: 'زمینه بالینی' },
+            text: {
+              de: 'Das AAST-Nierenverletzungs-Grading basiert auf der Revision 2018. Grade I–III werden in der Regel konservativ behandelt; ab Grad IV ist eine interventionelle oder chirurgische Therapie häufiger indiziert. Grad V erfordert fast immer operatives Vorgehen. Das Grading basiert auf dem CT-Befund der portalvenösen und Ausscheidungsphase.',
+              en: 'AAST kidney injury grading is based on the 2018 revision. Grades I–III are usually managed conservatively; from Grade IV onwards, interventional or surgical treatment is more frequently indicated. Grade V almost always requires surgery. Grading is based on portal-venous and excretory-phase CT findings.',
+              fa: 'درجه‌بندی آسیب کلیه AAST بر اساس بازنگری ۲۰۱۸ است. درجات I–III معمولاً محافظه‌کارانه درمان می‌شوند؛ از درجه IV به بعد، درمان مداخله‌ای یا جراحی بیشتر شایع است. درجه V تقریباً همیشه نیاز به جراحی دارد. درجه‌بندی بر اساس CT فاز پورتال‌وریدی و دفعی.',
+            },
+          },
+        ],
+      },
     ],
   },
   {

@@ -83,6 +83,7 @@ const CLASSIFICATION_SEARCH_ALIASES = {
   balthazar: ['ctsi', 'pankreatitis', 'pancreatitis'],
   cdd: ['divertikulitis', 'divertikelkrankheit', 'diverticular'],
   'aast-ois': ['aast', 'ois', 'organ injury scale', 'lebertrauma', 'milztrauma', 'nierentrauma', 'liver trauma', 'spleen trauma', 'kidney trauma'],
+  'nierenverletzung': ['nierenverletzung', 'nierentrauma', 'kidney injury', 'kidney trauma', 'renal injury', 'renal trauma', 'niere trauma', 'nierenlazeration', 'kidney laceration', 'kidney grading', 'آسیب کلیه', 'ترومای کلیه'],
   'lung-rads': ['lungrads', 'lungenscreening', 'lung screening'],
   fleischner: ['lungenrundherd', 'lungenrundherde', 'pulmonary nodule', 'milchglas', 'ggo', 'ground glass', 'part solid', 'subsolid', 'nodulus', 'rundherd'],
   'stanford-debakey': ['stanford', 'debakey', 'aortendissektion', 'aortic dissection', 'dissektion'],
