@@ -1400,3 +1400,224 @@
     min-height: 190px;
   }
 }
+
+/* ── FLASHCARD FLIP ANIMATION ───────────────────────── */
+.flipStage {
+  width: 100%;
+  perspective: 1600px;
+  cursor: pointer;
+  outline: none;
+  border-radius: 8px;
+  transition: opacity 0.28s ease, transform 0.28s ease;
+  margin: 16px 0;
+}
+
+.flipStage:focus-visible {
+  box-shadow: 0 0 0 3px rgba(117, 215, 255, .45);
+}
+
+.flipStage.flipExiting {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.flipStage.flipExitRight { transform: translateX(130%) rotate(10deg) scale(0.96); }
+.flipStage.flipExitLeft  { transform: translateX(-130%) rotate(-10deg) scale(0.96); }
+
+.flipInner {
+  display: grid;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.60s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flipInner.flipInnerFlipped {
+  transform: rotateY(180deg);
+}
+
+.flipFront,
+.flipBack {
+  grid-row: 1;
+  grid-column: 1;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 8px;
+  padding: clamp(22px, 4vw, 34px);
+  border: 1px solid rgba(255, 232, 153, .30);
+  background:
+    radial-gradient(circle at 80% 10%, rgba(255, 232, 153, .18), transparent 34%),
+    rgba(255, 255, 255, .13);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, .30), inset 0 1px 0 rgba(255, 255, 255, .22);
+  backdrop-filter: blur(22px) saturate(1.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 260px;
+}
+
+.flipBack {
+  transform: rotateY(180deg);
+  border-color: rgba(118, 227, 181, .35);
+  background:
+    radial-gradient(circle at 10% 90%, rgba(118, 227, 181, .18), transparent 34%),
+    rgba(255, 255, 255, .13);
+}
+
+.flipQuestion {
+  margin: 0;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: clamp(22px, 4vw, 34px);
+  font-weight: 900;
+  line-height: 1.22;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.flipAnswerText {
+  margin: 0;
+  color: rgba(238, 248, 255, .92);
+  font-size: clamp(15px, 2vw, 18px);
+  font-weight: 750;
+  line-height: 1.7;
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+}
+
+.flipLabel {
+  color: rgba(238, 248, 255, .52);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.flipHint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: rgba(238, 248, 255, .46);
+  font-size: 12px;
+  font-weight: 700;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, .12);
+  margin-top: auto;
+}
+
+.flipAnswerRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.flipAnswerRow.flipAnswerVisible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.flipKnowBtn,
+.flipMissBtn {
+  border: none;
+  border-radius: 999px;
+  padding: 14px 16px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 850;
+  cursor: pointer;
+  min-height: 50px;
+  transition: transform .16s ease, box-shadow .16s ease;
+}
+
+.flipKnowBtn {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff;
+  box-shadow: 0 12px 28px rgba(34, 197, 94, .28);
+}
+
+.flipMissBtn {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #fff;
+  box-shadow: 0 12px 28px rgba(239, 68, 68, .26);
+}
+
+.flipKnowBtn:hover { transform: translateY(-2px); box-shadow: 0 18px 38px rgba(34, 197, 94, .38); }
+.flipMissBtn:hover  { transform: translateY(-2px); box-shadow: 0 18px 38px rgba(239, 68, 68, .36); }
+.flipKnowBtn:active,
+.flipMissBtn:active { transform: scale(.97); }
+
+.flipNavRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 6px;
+}
+
+.flipDot {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, .20);
+  background: rgba(255, 255, 255, .08);
+  color: rgba(238, 248, 255, .55);
+  font-size: 11px;
+  font-weight: 850;
+  cursor: default;
+  display: grid;
+  place-items: center;
+}
+
+.flipDotKnown {
+  background: rgba(34, 197, 94, .18);
+  border-color: rgba(34, 197, 94, .40);
+  color: rgba(34, 197, 94, .90);
+}
+
+.flipDotMissed {
+  background: rgba(239, 68, 68, .18);
+  border-color: rgba(239, 68, 68, .38);
+  color: rgba(239, 68, 68, .90);
+}
+
+.flipDotActive {
+  border-color: rgba(255, 232, 153, .70);
+  background: rgba(255, 232, 153, .14);
+  color: #ffffff;
+}
+
+.flipResult {
+  display: grid;
+  gap: 16px;
+  padding: clamp(20px, 4vw, 32px);
+  border: 1px solid rgba(255, 255, 255, .28);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(255, 255, 255, .16), transparent 34%),
+    rgba(255, 255, 255, .11);
+  text-align: center;
+}
+
+.flipResultScore {
+  color: #ffffff;
+  font-size: clamp(40px, 7vw, 62px);
+  font-weight: 950;
+  line-height: 1;
+}
+
+.flipResultSub {
+  color: rgba(238, 248, 255, .76);
+  font-weight: 750;
+  line-height: 1.5;
+}
+
+@media (max-width: 520px) {
+  .flipAnswerRow { grid-template-columns: 1fr; }
+}

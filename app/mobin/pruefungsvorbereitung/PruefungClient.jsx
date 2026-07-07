@@ -25,34 +25,34 @@ const topics = [
     ],
     mcqs: [
       {
-        question: 'Welche Probe hilft besonders gut, Satzglieder als Block zu erkennen?',
-        options: ['Umstellprobe', 'Silbenprobe', 'Reimprobe', 'Großschreibprobe'],
-        answer: 'Umstellprobe',
-        help: 'Wenn ein Ausdruck zusammen verschoben werden kann, ist er oft ein Satzglied.',
+        question: 'In „Wegen des starken Regens blieben die Kinder heute drinnen” ist „Wegen des starken Regens” ...',
+        options: ['eine Grundangabe', 'eine Zeitangabe', 'eine Ortsangabe', 'ein Akkusativobjekt'],
+        answer: 'eine Grundangabe',
+        help: 'Frage: Warum blieben die Kinder drinnen? → Wegen des starken Regens. Das ist eine kausale Bestimmung.',
       },
       {
-        question: 'In „Am Abend liest Mobin ein Buch“ ist „Am Abend“ ...',
-        options: ['eine Zeitangabe', 'das Subjekt', 'das Prädikat', 'ein Akkusativobjekt'],
-        answer: 'eine Zeitangabe',
-        help: 'Frage: Wann liest Mobin ein Buch?',
+        question: 'Welcher Ausdruck ist KEIN eigenständiges Satzglied?',
+        options: ['”den” (einzelner Artikel)', '”im Park”', '”sehr schnell”', '”am Dienstag”'],
+        answer: '”den” (einzelner Artikel)',
+        help: 'Ein einzelner Artikel kann nicht als Block verschoben werden – er gehört immer zum nächsten Nomen.',
       },
       {
-        question: 'Welche Reihenfolge ist beim Bestimmen von Satzgliedern sinnvoll?',
-        options: ['Prädikat, Subjekt, Ergänzungen', 'Artikel, Nomen, Silben', 'Komma, Punkt, Fragezeichen', 'Erstes Wort, letztes Wort, Mitte'],
-        answer: 'Prädikat, Subjekt, Ergänzungen',
-        help: 'Das Prädikat zeigt, was geschieht. Von dort aus fragst du weiter.',
+        question: 'In „Gestern haben die Kinder im Wald Pilze gesucht” gibt es wie viele Satzglieder?',
+        options: ['5', '3', '4', '6'],
+        answer: '5',
+        help: 'Gestern (Zeit) | haben gesucht (Prädikat) | die Kinder (Subjekt) | im Wald (Ort) | Pilze (Akkusativobjekt) → 5 Satzglieder.',
       },
       {
-        question: 'Was ist in „Im Park fährt Sara Fahrrad“ ein Satzglied?',
-        options: ['Im Park', 'im', 'Park fährt', 'fährt Sara Fahrrad im'],
-        answer: 'Im Park',
-        help: '„Im Park“ kann als Block nach vorne oder hinten verschoben werden.',
+        question: 'Was beweist die Umstellprobe im Satz „Am Abend kocht Oma Suppe”?',
+        options: ['„Am Abend” kann als Block vorgezogen werden', '„Oma” ist das Prädikat', '„Suppe” ist das Subjekt', 'Der Satz ist grammatisch falsch'],
+        answer: '„Am Abend” kann als Block vorgezogen werden',
+        help: '„Am Abend kocht Oma Suppe” → „Oma kocht am Abend Suppe.” „Am Abend” bleibt als Block erhalten – das ist die Umstellprobe.',
       },
       {
-        question: 'Welche Gruppe enthält nur typische Satzglied-Fragen?',
-        options: ['Wer? Was tut? Wen? Wo?', 'der, die, das, ein', 'hell, heller, am hellsten', 'Punkt, Komma, Doppelpunkt'],
-        answer: 'Wer? Was tut? Wen? Wo?',
-        help: 'Mit diesen Fragen findest du Funktionen im Satz.',
+        question: 'In „Der fleißige Mobin erklärt seiner Schwester geduldig die Aufgabe” sind „seiner Schwester” und „die Aufgabe” ...',
+        options: ['Dativobjekt und Akkusativobjekt', 'zwei Akkusativobjekte', 'Subjekt und Prädikat', 'zwei Zeitangaben'],
+        answer: 'Dativobjekt und Akkusativobjekt',
+        help: 'Wem erklärt er? → seiner Schwester (Dativ). Wen oder was erklärt er? → die Aufgabe (Akkusativ).',
       },
     ],
     flashcards: [
@@ -60,7 +60,7 @@ const topics = [
       { front: 'Umstellprobe', back: 'Verschiebe Satzteile. Was zusammenbleibt, ist oft ein Satzglied.' },
       { front: 'Frageprobe', back: 'Frage nach der Funktion: Wer? Wen? Wann? Wo? Wie? Warum?' },
       { front: 'Start beim Bestimmen', back: 'Suche zuerst das Prädikat, dann Subjekt und Ergänzungen.' },
-      { front: 'Beispiel', back: '„Morgen spielt Leo Tennis.“ Morgen = Zeitangabe.' },
+      { front: 'Beispiel', back: '„Morgen spielt Leo Tennis.” Morgen = Zeitangabe.' },
     ],
   },
   {
@@ -69,46 +69,51 @@ const topics = [
     meta: 'Verb, Personalform, zweiteiliges Prädikat',
     learn: [
       'Das Prädikat sagt, was jemand tut oder was geschieht. Es enthält immer eine Verbform.',
-      'Ein Prädikat kann einteilig sein: „Mobin liest.“ Es kann auch zweiteilig sein: „Mobin hat gelesen.“',
+      'Ein Prädikat kann einteilig sein: „Mobin liest.” Es kann auch zweiteilig sein: „Mobin hat gelesen.”',
       'Bei zweiteiligen Prädikaten entsteht oft eine Satzklammer: Ein Teil steht vorne, der andere am Satzende.',
     ],
     mcqs: [
       {
-        question: 'Was ist das Prädikat in „Der Ball liegt unter dem Tisch“?',
-        options: ['liegt', 'Der Ball', 'unter dem Tisch', 'Tisch'],
-        answer: 'liegt',
-        help: 'Frage: Was geschieht mit dem Ball?',
+        question: 'In „Die Schüler haben gestern fleißig gelernt” ist das Prädikat ...',
+        options: ['haben gelernt', 'gelernt', 'haben fleißig gelernt', 'haben gestern gelernt'],
+        answer: 'haben gelernt',
+        help: 'Das Prädikat = Personalform + Partizip/Infinitiv. „fleißig” und „gestern” sind adverbiale Bestimmungen und gehören nicht zum Prädikat.',
       },
       {
-        question: 'Welches Prädikat ist zweiteilig?',
-        options: ['hat gelernt', 'rennt', 'lacht', 'schläft'],
-        answer: 'hat gelernt',
-        help: 'Zweiteilige Prädikate bestehen aus zwei Verbteilen.',
+        question: 'Welche Aussage zur Satzklammer ist richtig?',
+        options: [
+          'Die Personalform steht auf Position 2, der Rest am Satzende.',
+          'Beide Verbteile stehen immer direkt nebeneinander.',
+          'Im Fragesatz gibt es keine Satzklammer.',
+          'Die Satzklammer gibt es nur im Nebensatz.',
+        ],
+        answer: 'Die Personalform steht auf Position 2, der Rest am Satzende.',
+        help: 'Beispiel: „Mobin [hat] das Buch bis Mitternacht [gelesen].” – Satzklammer schließt den Rest des Satzes ein.',
       },
       {
-        question: 'In „Wir können Fußball spielen gehen“ ist das Prädikat ...',
-        options: ['können spielen gehen', 'Wir', 'Fußball', 'gehen'],
-        answer: 'können spielen gehen',
-        help: 'Alle Verbteile gehören zum Prädikat.',
+        question: 'In „Wirst du morgen zur Schule kommen?” ist das Prädikat ...',
+        options: ['Wirst kommen', 'kommen', 'Wirst', 'morgen kommen'],
+        answer: 'Wirst kommen',
+        help: 'Hilfsverb + Infinitiv bilden zusammen das Prädikat. „morgen” ist eine Zeitangabe.',
       },
       {
-        question: 'Welche Frage passt zum Prädikat?',
-        options: ['Was tut jemand? Was geschieht?', 'Wer oder was?', 'Wen oder was?', 'Wann?'],
-        answer: 'Was tut jemand? Was geschieht?',
-        help: 'Das Prädikat ist der Handlungskern des Satzes.',
+        question: 'In „Er soll das Buch bereits gelesen haben” ist das Prädikat ...',
+        options: ['soll gelesen haben', 'gelesen haben', 'soll', 'bereits gelesen'],
+        answer: 'soll gelesen haben',
+        help: 'Alle Verbteile zusammen bilden das Prädikat: soll ... gelesen haben. „bereits” ist eine Zeitangabe.',
       },
       {
-        question: 'In „Hast du den Ball abgespielt?“ steht die Personalform ...',
-        options: ['an erster Stelle', 'am Satzende', 'nie im Satz', 'nach dem Objekt'],
-        answer: 'an erster Stelle',
-        help: 'Ja-/Nein-Fragen sind häufig Verberstsätze.',
+        question: 'Welcher Satz hat ein einteiliges Prädikat?',
+        options: ['Die Vögel singen.', 'Mobin hat gegessen.', 'Sie wird kommen.', 'Er konnte schlafen.'],
+        answer: 'Die Vögel singen.',
+        help: 'Nur „singen” ist einteilig. Bei den anderen gibt es Hilfsverb + Infinitiv/Partizip → zweiteilig.',
       },
     ],
     flashcards: [
       { front: 'Prädikat', back: 'Der Verbteil des Satzes: Was tut jemand? Was geschieht?' },
       { front: 'Personalform', back: 'Die gebeugte Verbform, z. B. ich lese, du liest, er liest.' },
-      { front: 'Einteiliges Prädikat', back: '„Sara malt.“ Prädikat: malt.' },
-      { front: 'Zweiteiliges Prädikat', back: '„Sara hat gemalt.“ Prädikat: hat gemalt.' },
+      { front: 'Einteiliges Prädikat', back: '„Sara malt.” Prädikat: malt.' },
+      { front: 'Zweiteiliges Prädikat', back: '„Sara hat gemalt.” Prädikat: hat gemalt.' },
       { front: 'Satzklammer', back: 'Bei zweiteiligem Prädikat steht ein Verbteil oft am Satzende.' },
     ],
   },
@@ -118,46 +123,51 @@ const topics = [
     meta: 'Wer oder was?',
     learn: [
       'Das Subjekt nennt, wer oder was etwas tut oder wer/was in einem Zustand ist.',
-      'Du findest es mit der Frage „Wer oder was?“ zusammen mit dem Prädikat.',
+      'Du findest es mit der Frage „Wer oder was?” zusammen mit dem Prädikat.',
       'Das Subjekt steht im Nominativ und passt in Person und Zahl zum Prädikat.',
     ],
     mcqs: [
       {
-        question: 'Mit welcher Frage findest du das Subjekt?',
-        options: ['Wer oder was?', 'Wen oder was?', 'Wann?', 'Wie?'],
-        answer: 'Wer oder was?',
-        help: 'Frage immer mit dem Prädikat: Wer oder was spielt?',
+        question: 'In „Mobin und seine Schwester spielen heute im Garten” ist das Subjekt ...',
+        options: ['Mobin und seine Schwester', 'Mobin', 'spielen', 'heute im Garten'],
+        answer: 'Mobin und seine Schwester',
+        help: 'Wer spielt im Garten? → Mobin und seine Schwester. Beide zusammen bilden das Subjekt.',
       },
       {
-        question: 'In „Die Kinder spielen im Garten“ ist das Subjekt ...',
-        options: ['Die Kinder', 'spielen', 'im Garten', 'Garten'],
-        answer: 'Die Kinder',
-        help: 'Wer spielt im Garten?',
+        question: 'In „Dem Lehrer gefällt das Ergebnis” ist das Subjekt ...',
+        options: ['das Ergebnis', 'Dem Lehrer', 'gefällt', 'Das Ergebnis und der Lehrer'],
+        answer: 'das Ergebnis',
+        help: 'Wer oder was gefällt? → das Ergebnis (Nominativ). „Dem Lehrer” steht im Dativ → Dativobjekt, nicht Subjekt.',
       },
       {
-        question: 'In „Heute regnet es stark“ ist das Subjekt ...',
-        options: ['es', 'Heute', 'regnet', 'stark'],
-        answer: 'es',
-        help: 'Wer oder was regnet? Es regnet.',
+        question: 'Welche Aussage über das Subjekt ist falsch?',
+        options: [
+          'Das Subjekt steht immer am Satzanfang.',
+          'Das Subjekt steht im Nominativ.',
+          'Das Subjekt passt in Person und Zahl zum Prädikat.',
+          'Das Subjekt antwortet auf „Wer oder was?”.',
+        ],
+        answer: 'Das Subjekt steht immer am Satzanfang.',
+        help: 'Das Subjekt kann überall im Satz stehen. Beispiel: „Heute spielt Mobin.” – Subjekt Mobin steht nicht am Anfang.',
       },
       {
-        question: 'Welche Aussage stimmt?',
-        options: ['Das Subjekt steht im Nominativ.', 'Das Subjekt ist immer eine Zeitangabe.', 'Das Subjekt steht immer am Satzanfang.', 'Das Subjekt ist immer ein einzelnes Wort.'],
-        answer: 'Das Subjekt steht im Nominativ.',
-        help: 'Das Subjekt kann vorne, in der Mitte oder selten hinten stehen.',
+        question: 'In „Es regnet heute stark” ist „es” ...',
+        options: ['das Subjekt (formales Subjekt)', 'ein Akkusativobjekt', 'eine Zeitangabe', 'das Prädikat'],
+        answer: 'das Subjekt (formales Subjekt)',
+        help: '„Es” übernimmt die Funktion des Subjekts, auch wenn es keinen konkreten Gegenstand nennt – man nennt das formales Subjekt.',
       },
       {
-        question: 'In „Nach der Schule isst Mobin einen Apfel“ ist das Subjekt ...',
-        options: ['Mobin', 'Nach der Schule', 'isst', 'einen Apfel'],
-        answer: 'Mobin',
-        help: 'Wer isst einen Apfel?',
+        question: 'In „Heute wird das Buch von der Lehrerin vorgelesen” ist das Subjekt ...',
+        options: ['das Buch', 'die Lehrerin', 'Heute', 'vorgelesen'],
+        answer: 'das Buch',
+        help: 'Wer oder was wird vorgelesen? → das Buch (Nominativ). „von der Lehrerin” ist eine adverbiale Bestimmung (Agens im Passiv).',
       },
     ],
     flashcards: [
       { front: 'Subjekt-Frage', back: 'Wer oder was tut etwas?' },
       { front: 'Kasus', back: 'Das Subjekt steht im Nominativ.' },
-      { front: 'Beispiel', back: '„Der Hund schläft.“ Subjekt: Der Hund.' },
-      { front: 'Nicht immer vorne', back: '„Heute spielt Mobin.“ Subjekt: Mobin.' },
+      { front: 'Beispiel', back: '„Der Hund schläft.” Subjekt: Der Hund.' },
+      { front: 'Nicht immer vorne', back: '„Heute spielt Mobin.” Subjekt: Mobin.' },
       { front: 'Zusammenhang', back: 'Subjekt und Prädikat passen zusammen: ich gehe, wir gehen.' },
     ],
   },
@@ -166,48 +176,48 @@ const topics = [
     title: 'Akkusativ',
     meta: 'Wen oder was?',
     learn: [
-      'Das Akkusativobjekt ergänzt viele Verben. Du fragst danach mit „Wen oder was?“',
+      'Das Akkusativobjekt ergänzt viele Verben. Du fragst danach mit „Wen oder was?”',
       'Typische Verben mit Akkusativ sind sehen, lesen, kaufen, malen, essen, suchen.',
       'Achte auf die Artikel: der wird im Akkusativ oft zu den, ein zu einen.',
     ],
     mcqs: [
       {
-        question: 'Welche Frage findet ein Akkusativobjekt?',
-        options: ['Wen oder was?', 'Wer oder was?', 'Wem?', 'Wo?'],
-        answer: 'Wen oder was?',
-        help: 'Diese Frage ist der schnellste Weg zum Akkusativobjekt.',
+        question: 'In „Der Vater zeigt dem Kind das neue Fahrrad” ist das Akkusativobjekt ...',
+        options: ['das neue Fahrrad', 'dem Kind', 'Der Vater', 'zeigt'],
+        answer: 'das neue Fahrrad',
+        help: 'Wen oder was zeigt der Vater? → das neue Fahrrad. „dem Kind” ist Dativobjekt (Wem?).',
       },
       {
-        question: 'In „Der Lehrer erklärt die Aufgabe“ ist das Akkusativobjekt ...',
-        options: ['die Aufgabe', 'Der Lehrer', 'erklärt', 'Lehrer'],
-        answer: 'die Aufgabe',
-        help: 'Wen oder was erklärt der Lehrer?',
+        question: 'Welche Artikelform zeigt an, dass ein maskulines Nomen im Akkusativ steht?',
+        options: ['den / einen', 'dem / einem', 'der / einer', 'des / eines'],
+        answer: 'den / einen',
+        help: 'Maskulin im Akkusativ: der → den, ein → einen. Bei Feminin und Neutrum ändert sich der Artikel nicht.',
       },
       {
-        question: 'Welche Form ist richtig?',
-        options: ['Ich sehe den Hund.', 'Ich sehe der Hund.', 'Ich sehe dem Hund.', 'Ich sehe des Hund.'],
-        answer: 'Ich sehe den Hund.',
-        help: '„der Hund“ wird im Akkusativ zu „den Hund“.',
+        question: 'In „Mobin liest seiner Mutter einen langen Brief vor” gibt es ...',
+        options: ['ein Dativobjekt und ein Akkusativobjekt', 'zwei Akkusativobjekte', 'nur ein Akkusativobjekt', 'kein Objekt'],
+        answer: 'ein Dativobjekt und ein Akkusativobjekt',
+        help: 'Wem liest er vor? → seiner Mutter (Dativ). Wen oder was liest er vor? → einen langen Brief (Akkusativ).',
       },
       {
-        question: 'In „Oma gibt dem Kind ein Geschenk“ ist „ein Geschenk“ ...',
-        options: ['Akkusativobjekt', 'Subjekt', 'Dativobjekt', 'Zeitangabe'],
-        answer: 'Akkusativobjekt',
-        help: 'Wen oder was gibt Oma?',
+        question: 'Welches Verb verlangt typischerweise KEIN Akkusativobjekt?',
+        options: ['schlafen', 'lesen', 'kaufen', 'sehen'],
+        answer: 'schlafen',
+        help: 'Intransitive Verben wie „schlafen” oder „laufen” haben kein Akkusativobjekt. Transitive Verben (lesen, kaufen, sehen) haben eines.',
       },
       {
-        question: 'In „Die Katze jagt die Maus“ ist „die Maus“ ...',
-        options: ['Akkusativobjekt', 'Subjekt', 'Prädikat', 'Ortsangabe'],
-        answer: 'Akkusativobjekt',
-        help: 'Wen oder was jagt die Katze?',
+        question: 'In „Das Mädchen vermisst ihre Freundin sehr” ist „sehr” ...',
+        options: ['eine Art-und-Weise-Angabe', 'das Akkusativobjekt', 'das Subjekt', 'ein Dativobjekt'],
+        answer: 'eine Art-und-Weise-Angabe',
+        help: '„sehr” beantwortet Wie? → Art-und-Weise. Akkusativobjekt: ihre Freundin (Wen vermisst sie?).',
       },
     ],
     flashcards: [
       { front: 'Akkusativ-Frage', back: 'Wen oder was?' },
-      { front: 'Beispiel', back: '„Ich lese ein Buch.“ Akkusativobjekt: ein Buch.' },
-      { front: 'Artikelwechsel', back: 'der Hund -> den Hund, ein Hund -> einen Hund.' },
+      { front: 'Beispiel', back: '„Ich lese ein Buch.” Akkusativobjekt: ein Buch.' },
+      { front: 'Artikelwechsel', back: 'der Hund → den Hund, ein Hund → einen Hund.' },
       { front: 'Typische Verben', back: 'sehen, kaufen, essen, suchen, lesen, malen.' },
-      { front: 'Abgrenzung', back: 'Subjekt: Wer? Akkusativobjekt: Wen oder was?' },
+      { front: 'Abgrenzung Dativ', back: 'Akkusativ: Wen oder was? | Dativ: Wem?' },
     ],
   },
   {
@@ -217,38 +227,43 @@ const topics = [
     learn: [
       'Adverbiale Bestimmungen geben genauere Umstände an: Zeit, Ort, Art und Weise oder Grund.',
       'Typische Fragen sind: Wann? Wo? Wohin? Wie? Warum? Weshalb?',
-      'Sie sind oft verschiebbar: „Am Morgen fährt Ali zur Schule“ und „Ali fährt am Morgen zur Schule“.',
+      'Sie sind oft verschiebbar: „Am Morgen fährt Ali zur Schule” und „Ali fährt am Morgen zur Schule”.',
     ],
     mcqs: [
       {
-        question: 'Welche Frage passt zur Zeitangabe?',
-        options: ['Wann?', 'Wer?', 'Wen?', 'Wie?'],
-        answer: 'Wann?',
-        help: 'Zeitangaben antworten auf Wann? Seit wann? Wie lange?',
+        question: 'In „Wegen der Krankheit konnte Mobin nicht am Unterricht teilnehmen” ist „Wegen der Krankheit” ...',
+        options: ['Grundangabe (kausal)', 'Zeitangabe (temporal)', 'Ortsangabe (lokal)', 'Art-und-Weise-Angabe (modal)'],
+        answer: 'Grundangabe (kausal)',
+        help: 'Frage: Warum konnte er nicht teilnehmen? → Wegen der Krankheit. Kausal = Grund.',
       },
       {
-        question: 'In „Die Kinder spielen im Garten“ ist „im Garten“ ...',
-        options: ['Ortsangabe', 'Subjekt', 'Prädikat', 'Akkusativobjekt'],
-        answer: 'Ortsangabe',
-        help: 'Frage: Wo spielen die Kinder?',
+        question: 'Welcher Ausdruck ist eine modale Bestimmung (Art und Weise)?',
+        options: ['mit großer Sorgfalt', 'am Dienstag', 'im Klassenzimmer', 'wegen des Wetters'],
+        answer: 'mit großer Sorgfalt',
+        help: 'Frage: Wie? → mit großer Sorgfalt. Temporal: Wann? | Lokal: Wo? | Kausal: Warum?',
       },
       {
-        question: 'In „Mila schreibt sorgfältig“ ist „sorgfältig“ ...',
-        options: ['Art-und-Weise-Angabe', 'Zeitangabe', 'Subjekt', 'Akkusativobjekt'],
-        answer: 'Art-und-Weise-Angabe',
-        help: 'Frage: Wie schreibt Mila?',
+        question: 'In „Ali läuft jeden Morgen sehr schnell zur Schule” sind „jeden Morgen” und „sehr schnell” ...',
+        options: ['eine Zeitangabe und eine Art-und-Weise-Angabe', 'zwei Ortsangaben', 'zwei Zeitangaben', 'ein Akkusativobjekt und ein Subjekt'],
+        answer: 'eine Zeitangabe und eine Art-und-Weise-Angabe',
+        help: 'Jeden Morgen → Wann? (Zeitangabe). Sehr schnell → Wie? (Art-und-Weise-Angabe).',
       },
       {
-        question: 'Welche Frage passt zur Grundangabe?',
-        options: ['Warum?', 'Wem?', 'Wer?', 'Wen?'],
-        answer: 'Warum?',
-        help: 'Grundangaben erklären den Grund oder die Ursache.',
+        question: 'Welcher Satz enthält eine lokale Bestimmung?',
+        options: ['Sie schläft im Zelt.', 'Er schläft tief.', 'Wir essen jetzt.', 'Sie lacht laut.'],
+        answer: 'Sie schläft im Zelt.',
+        help: '„im Zelt” beantwortet: Wo schläft sie? → Das ist eine lokale (Orts-) Bestimmung.',
       },
       {
-        question: 'In „Wegen des Regens bleiben wir drinnen“ ist „Wegen des Regens“ ...',
-        options: ['Grundangabe', 'Prädikat', 'Subjekt', 'Akkusativobjekt'],
-        answer: 'Grundangabe',
-        help: 'Frage: Warum bleiben wir drinnen?',
+        question: 'Adverbiale Bestimmungen können ...',
+        options: [
+          'als Block im Satz verschoben werden',
+          'nie an den Satzanfang gestellt werden',
+          'nie weggelassen werden',
+          'immer nur ein einziges Wort sein',
+        ],
+        answer: 'als Block im Satz verschoben werden',
+        help: '„Im Garten spielen die Kinder.” → „Die Kinder spielen im Garten.” Die Ortsangabe lässt sich als Block verschieben.',
       },
     ],
     flashcards: [
@@ -256,62 +271,66 @@ const topics = [
       { front: 'Lokal', back: 'Ort: Wo? Wohin? Woher?' },
       { front: 'Modal', back: 'Art und Weise: Wie?' },
       { front: 'Kausal', back: 'Grund: Warum? Weshalb?' },
-      { front: 'Beispiel', back: '„Am Morgen fährt Ali zur Schule.“ Am Morgen = Zeitangabe.' },
+      { front: 'Beispiel', back: '„Am Morgen fährt Ali zur Schule.” Am Morgen = Zeitangabe.' },
     ],
   },
   {
     id: 'satzreihe-satzgefuege',
-    title: 'Satzreihe / Satzgefüge + Satzbaupläne zeichnen',
+    title: 'Satzreihe & Satzgefüge',
     meta: 'Hauptsatz, Nebensatz, Komma, Verbstellung',
     learn: [
       'Eine Satzreihe besteht aus Hauptsatz + Hauptsatz. Die Hauptsätze werden oft durch Komma oder nebenordnende Konjunktionen verbunden: und, oder, aber, sondern, denn, doch.',
       'Ein Satzgefüge besteht aus Hauptsatz + Nebensatz. Hauptsatz und Nebensatz werden immer durch Komma getrennt.',
       'Nebensätze werden oft durch unterordnende Konjunktionen eingeleitet: weil, da, obwohl, damit, dass, sodass, nachdem, während.',
-      'Im Nebensatz steht die Personalform des Verbs am Ende: „weil die Sonne scheint“. Deshalb nennt man ihn Verbletztsatz.',
+      'Im Nebensatz steht die Personalform des Verbs am Ende: „weil die Sonne scheint”. Deshalb nennt man ihn Verbletztsatz.',
       'Satzbaupläne kannst du so zeichnen: HS + NS, NS + HS oder HS Teil 1 + NS + HS Teil 2.',
       'Satzarten helfen beim Satzbau: Aussagesatz mit Punkt, Fragesatz mit Fragezeichen, Aufforderungssatz meist mit Ausrufezeichen.',
     ],
     mcqs: [
       {
-        question: 'Was ist eine Satzreihe?',
-        options: ['Hauptsatz + Hauptsatz', 'Hauptsatz + Nebensatz', 'Nur ein Nebensatz', 'Nur ein Satzglied'],
-        answer: 'Hauptsatz + Hauptsatz',
-        help: 'Eine Satzreihe verknüpft mindestens zwei Hauptsätze.',
+        question: 'Welcher Satz ist ein Satzgefüge?',
+        options: [
+          'Sie kam zu spät, weil der Bus ausfiel.',
+          'Er schläft und sie liest.',
+          'Mobin läuft schnell, aber Sara geht langsam.',
+          'Es regnete, doch wir gingen trotzdem raus.',
+        ],
+        answer: 'Sie kam zu spät, weil der Bus ausfiel.',
+        help: '„weil” ist eine unterordnende Konjunktion → Nebensatz → Satzgefüge. Die anderen verbinden zwei Hauptsätze (Satzreihe).',
       },
       {
-        question: 'Was ist ein Satzgefüge?',
-        options: ['Hauptsatz + Nebensatz', 'Subjekt + Prädikat', 'Akkusativ + Dativ', 'Frage + Antwort'],
-        answer: 'Hauptsatz + Nebensatz',
-        help: 'Ein Satzgefüge enthält mindestens einen Hauptsatz und einen Nebensatz.',
+        question: 'Welche Konjunktion leitet IMMER einen Nebensatz ein?',
+        options: ['obwohl', 'aber', 'oder', 'und'],
+        answer: 'obwohl',
+        help: '„obwohl” ist unterordnend → Nebensatz. „aber”, „oder”, „und” sind nebenordnend → Satzreihe.',
       },
       {
-        question: 'Welche Konjunktion leitet typischerweise einen Nebensatz ein?',
-        options: ['weil', 'und', 'oder', 'aber'],
-        answer: 'weil',
-        help: '„weil“ ist eine unterordnende Konjunktion. Danach steht das gebeugte Verb am Ende.',
+        question: 'In „Mobin lernte fleißig, damit er die Prüfung besteht” steht das Verb im Nebensatz ...',
+        options: ['am Satzende: besteht', 'an erster Stelle: damit', 'an zweiter Stelle: lernte', 'an erster Stelle: besteht'],
+        answer: 'am Satzende: besteht',
+        help: 'Im Nebensatz steht die Personalform ganz am Ende: „damit er die Prüfung besteht.”',
       },
       {
-        question: 'Welche Verbstellung ist im Nebensatz richtig?',
-        options: ['..., weil die Sonne scheint.', '..., weil scheint die Sonne.', '..., weil die Sonne scheint heute.', '..., weil scheint heute die Sonne.'],
-        answer: '..., weil die Sonne scheint.',
-        help: 'Im Nebensatz steht die Personalform am Ende.',
+        question: 'Was ist die Regel für das Komma zwischen Haupt- und Nebensatz?',
+        options: [
+          'Haupt- und Nebensatz werden immer durch ein Komma getrennt.',
+          'Ein Komma steht nur bei „weil” und „da”.',
+          'Kein Komma, wenn der Nebensatz am Satzende steht.',
+          'Komma nur, wenn der Nebensatz vorne steht.',
+        ],
+        answer: 'Haupt- und Nebensatz werden immer durch ein Komma getrennt.',
+        help: 'Ob der Nebensatz vorne oder hinten steht – das Komma steht immer zwischen Haupt- und Nebensatz.',
       },
       {
-        question: 'Welcher Satzbauplan passt zu „Wir trainieren heute, weil die Sonne scheint, im Freien“?',
-        options: ['HS Teil 1 + NS + HS Teil 2', 'NS + NS', 'HS + HS ohne Komma', 'Nur Prädikat'],
-        answer: 'HS Teil 1 + NS + HS Teil 2',
-        help: 'Der Nebensatz ist in den Hauptsatz eingeschoben.',
-      },
-      {
-        question: 'Welches Satzschlusszeichen passt zu „Sollen wir Fußball spielen gehen“?',
-        options: ['?', '.', ',', ':'],
-        answer: '?',
-        help: 'Das ist ein Fragesatz.',
+        question: 'Wie lautet der Satzbauplan von „Obwohl es regnete, fuhren wir in den Park”?',
+        options: ['NS + HS', 'HS + NS', 'HS + HS', 'HS + NS + HS'],
+        answer: 'NS + HS',
+        help: '„Obwohl es regnete” ist der Nebensatz (steht vorne), „fuhren wir in den Park” ist der Hauptsatz.',
       },
     ],
     flashcards: [
-      { front: 'Satzreihe', back: 'Hauptsatz + Hauptsatz, oft mit Komma oder und/oder/aber/denn/doch.' },
-      { front: 'Satzgefüge', back: 'Hauptsatz + Nebensatz. Zwischen beiden steht ein Komma.' },
+      { front: 'Satzreihe', back: 'Hauptsatz + Hauptsatz, oft mit und / oder / aber / denn / doch.' },
+      { front: 'Satzgefüge', back: 'Hauptsatz + Nebensatz. Zwischen beiden steht immer ein Komma.' },
       { front: 'Nebensatz-Merkmal', back: 'Er kann nicht allein stehen und ist dem Hauptsatz untergeordnet.' },
       { front: 'Unterordnende Konjunktionen', back: 'weil, da, obwohl, damit, dass, sodass, nachdem, während.' },
       { front: 'Verbletztsatz', back: 'Im Nebensatz steht die Personalform des Verbs am Ende.' },
@@ -673,34 +692,127 @@ function McqMode({ topic, onComplete }) {
 
 function FlashcardMode({ topic, onProgress }) {
   const [index, setIndex] = useState(0)
-  const [revealed, setRevealed] = useState(false)
-  const [seen, setSeen] = useState([])
-  const current = topic.flashcards[index]
+  const [flipped, setFlipped] = useState(false)
+  const [exiting, setExiting] = useState(false)
+  const [exitDir, setExitDir] = useState(null)
+  const [results, setResults] = useState({}) // { [index]: 'known' | 'missed' }
+  const [done, setDone] = useState(false)
+  const cards = topic.flashcards
+  const current = cards[index]
 
-  function markSeen() {
-    const nextSeen = seen.includes(index) ? seen : [...seen, index]
-    setSeen(nextSeen)
-    onProgress(nextSeen.length, topic.flashcards.length)
-    setIndex((value) => (value + 1) % topic.flashcards.length)
-    setRevealed(false)
+  const knownCount = Object.values(results).filter((r) => r === 'known').length
+
+  useEffect(() => {
+    function onKey(e) {
+      if (done) return
+      if (e.code === 'Space' || e.code === 'ArrowUp') {
+        e.preventDefault()
+        if (!exiting) setFlipped((v) => !v)
+      }
+      if (flipped && !exiting) {
+        if (e.code === 'ArrowRight') answer(true)
+        if (e.code === 'ArrowLeft') answer(false)
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  })
+
+  function answer(knew) {
+    if (!flipped || exiting) return
+    const dir = knew ? 'right' : 'left'
+    setExiting(true)
+    setExitDir(dir)
+    const nextResults = { ...results, [index]: knew ? 'known' : 'missed' }
+    setResults(nextResults)
+    const knownTotal = Object.values(nextResults).filter((r) => r === 'known').length
+    onProgress(knownTotal, cards.length)
+    setTimeout(() => {
+      setFlipped(false)
+      setExiting(false)
+      setExitDir(null)
+      if (index + 1 >= cards.length) setDone(true)
+      else setIndex((i) => i + 1)
+    }, 300)
   }
+
+  if (done) {
+    const total = cards.length
+    const known = Object.values(results).filter((r) => r === 'known').length
+    return (
+      <div className={styles.studyCard}>
+        <div className={styles.flipResult}>
+          <div className={styles.flipResultScore}>{known}/{total}</div>
+          <p className={styles.flipResultSub}>
+            {known === total ? 'Alle gewusst – sehr gut!' : `${known} von ${total} gewusst. Noch einmal üben?`}
+          </p>
+          <button
+            className={styles.primaryAction}
+            type="button"
+            onClick={() => { setIndex(0); setFlipped(false); setResults({}); setDone(false) }}
+          >
+            Nochmal üben
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  const stageClass = [
+    styles.flipStage,
+    exiting ? styles.flipExiting : '',
+    exitDir === 'right' ? styles.flipExitRight : exitDir === 'left' ? styles.flipExitLeft : '',
+  ].filter(Boolean).join(' ')
 
   return (
     <div className={styles.studyCard}>
       <div className={styles.mcqTop}>
-        <span>Karte {index + 1} von {topic.flashcards.length}</span>
-        <strong>{seen.length} gelernt</strong>
+        <span>Karte {index + 1} von {cards.length}</span>
+        <strong>{knownCount} gewusst</strong>
       </div>
-      <button className={styles.flashStudyCard} type="button" onClick={() => setRevealed((value) => !value)}>
-        <strong>{current.front}</strong>
-        <span>{revealed ? current.back : 'Antippen zum Umdrehen'}</span>
-      </button>
-      <div className={styles.actionRow}>
-        <button className={styles.ghostAction} type="button" onClick={() => setRevealed((value) => !value)}>
-          {revealed ? 'Vorderseite' : 'Antwort zeigen'}
+
+      <div className={styles.flipNavRow}>
+        {cards.map((_, i) => {
+          const r = results[i]
+          const dotClass = [
+            styles.flipDot,
+            r === 'known' ? styles.flipDotKnown : '',
+            r === 'missed' ? styles.flipDotMissed : '',
+            i === index && !r ? styles.flipDotActive : '',
+          ].filter(Boolean).join(' ')
+          return <span key={i} className={dotClass}>{i + 1}</span>
+        })}
+      </div>
+
+      <div
+        className={stageClass}
+        role="button"
+        tabIndex={0}
+        aria-label={flipped ? 'Karte umdrehen' : 'Antwort zeigen'}
+        onClick={() => { if (!exiting) setFlipped((v) => !v) }}
+        onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); if (!exiting) setFlipped((v) => !v) } }}
+      >
+        <div className={`${styles.flipInner} ${flipped ? styles.flipInnerFlipped : ''}`}>
+          <div className={styles.flipFront}>
+            <strong className={styles.flipQuestion}>{current.front}</strong>
+            <span className={styles.flipHint}>↕ Antippen zum Umdrehen</span>
+          </div>
+          <div className={styles.flipBack}>
+            <div>
+              <span className={styles.flipLabel}>Antwort</span>
+              <p className={styles.flipAnswerText}>{current.back}</p>
+            </div>
+            <span className={styles.flipHint}>↕ Antippen zum Zurückdrehen</span>
+          </div>
+        </div>
+      </div>
+
+      <div className={`${styles.flipAnswerRow} ${flipped ? styles.flipAnswerVisible : ''}`}>
+        <button className={styles.flipMissBtn} type="button" onClick={() => answer(false)}>
+          Noch einmal ✗
         </button>
-        <button className={styles.primaryAction} type="button" onClick={markSeen}>
-          Karte gelernt
+        <button className={styles.flipKnowBtn} type="button" onClick={() => answer(true)}>
+          Gewusst ✓
         </button>
       </div>
     </div>
