@@ -2761,6 +2761,11 @@ export const RECHNER = [
       fa: 'حجم‌های بطن چپ دوصفحه‌ای (CMR)',
     },
     formula: 'Volumen = 0,85 × Fläche 4K × Fläche 2K ÷ LV-Länge',
+    help: {
+      de: 'LV-Fläche: Endokard im 4K/2K konturieren. Blutpool bis Mitralklappenebene und Apex einschließen; Ausgabe meist in cm².',
+      en: 'LV area: trace the endocardium in 4CH/2CH. Include blood pool to mitral valve plane and apex; usually reported in cm².',
+      fa: 'مساحت LV: اندوکارد را در نمای ۴ و ۲ حفره‌ای دورگیری کنید؛ حفره خون تا صفحه میترال و اپکس را شامل کنید.',
+    },
     hint: {
       de: 'Eingaben sind planimetrierte LV-Flächen in 4-Kammer- und 2-Kammerblick sowie die LV-Länge, nicht Kurzachs-Durchmesser. Geometrische Näherung. Für exakte CMR-Volumetrie ist die Kurzachsen-Simpson-Methode Standard. Die biplane Flächen-Längen-Methode ist vor allem für eine schnelle orientierende LV-Funktionsabschätzung geeignet und nicht zuverlässig für den rechten Ventrikel.',
       en: 'Geometric approximation. For exact CMR volumetry, short-axis Simpson quantification is the standard. The biplane area-length method is mainly suitable for quick orienting LV function assessment and is not reliable for the right ventricle.',

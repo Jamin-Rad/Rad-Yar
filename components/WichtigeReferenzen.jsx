@@ -935,7 +935,17 @@ function RechnerCard({ calc, lang }) {
     <div className={styles.rechnerCard} style={{'--rc': calc.color}}>
       <div className={styles.rcHead}>
         <div className={styles.rcName} style={{color: calc.color}}>{tx(calc.name, lang)}</div>
-        {calc.formula && <div className={styles.rcFormula}>{calc.formula}</div>}
+        {(calc.formula || calc.help) && (
+          <div className={styles.rcFormulaRow}>
+            {calc.formula && <div className={styles.rcFormula}>{calc.formula}</div>}
+            {calc.help && (
+              <span className={styles.rcHelp} tabIndex={0} aria-label={tx(calc.help, lang)}>
+                ?
+                <span className={styles.rcHelpBubble}>{tx(calc.help, lang)}</span>
+              </span>
+            )}
+          </div>
+        )}
       </div>
 
       {calc.type === 'single'     && <SingleCalc     calc={calc} lang={lang} />}
