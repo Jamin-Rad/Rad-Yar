@@ -2754,6 +2754,56 @@ export const RECHNER = [
 
   // 6. Kardiothorakaler Quotient
   {
+    id: 'lv-biplan-volumen', type: 'multi', color: '#be185d',
+    name: {
+      de: 'LV-Volumina biplan (CMR)',
+      en: 'Biplane LV Volumes (CMR)',
+      fa: 'حجم‌های بطن چپ دوصفحه‌ای (CMR)',
+    },
+    formula: 'EDV/ESV = 0,85 × A4C × A2C ÷ L',
+    hint: {
+      de: 'Geometrische Näherung. Für exakte CMR-Volumetrie ist die Kurzachsen-Simpson-Methode Standard. Die biplane Flächen-Längen-Methode ist vor allem für eine schnelle orientierende LV-Funktionsabschätzung geeignet und nicht zuverlässig für den rechten Ventrikel.',
+      en: 'Geometric approximation. For exact CMR volumetry, short-axis Simpson quantification is the standard. The biplane area-length method is mainly suitable for quick orienting LV function assessment and is not reliable for the right ventricle.',
+      fa: 'یک تقریب هندسی است. برای حجم‌سنجی دقیق CMR، روش سیمپسون در محور کوتاه استاندارد است. روش دوصفحه‌ای مساحت-طول بیشتر برای برآورد سریع عملکرد بطن چپ مناسب است و برای بطن راست قابل اعتماد نیست.',
+    },
+    fields: [
+      { id: 'a4cEd', label: { de: 'A4C_ED', en: 'A4C_ED', fa: 'A4C_ED' }, unit: 'cm²', step: 0.1, min: 0.1, max: 250 },
+      { id: 'a2cEd', label: { de: 'A2C_ED', en: 'A2C_ED', fa: 'A2C_ED' }, unit: 'cm²', step: 0.1, min: 0.1, max: 250 },
+      { id: 'lEd', label: { de: 'L_ED', en: 'L_ED', fa: 'L_ED' }, unit: 'cm', step: 0.1, min: 0.1, max: 30 },
+      { id: 'a4cEs', label: { de: 'A4C_ES', en: 'A4C_ES', fa: 'A4C_ES' }, unit: 'cm²', step: 0.1, min: 0.1, max: 250 },
+      { id: 'a2cEs', label: { de: 'A2C_ES', en: 'A2C_ES', fa: 'A2C_ES' }, unit: 'cm²', step: 0.1, min: 0.1, max: 250 },
+      { id: 'lEs', label: { de: 'L_ES', en: 'L_ES', fa: 'L_ES' }, unit: 'cm', step: 0.1, min: 0.1, max: 30 },
+    ],
+    outputs: [
+      {
+        label: { de: 'EDV', en: 'EDV', fa: 'EDV' }, unit: 'ml', decimals: 1,
+        calc: (v) => v.a4cEd && v.a2cEd && v.lEd ? 0.85 * v.a4cEd * v.a2cEd / v.lEd : null,
+      },
+      {
+        label: { de: 'ESV', en: 'ESV', fa: 'ESV' }, unit: 'ml', decimals: 1,
+        calc: (v) => v.a4cEs && v.a2cEs && v.lEs ? 0.85 * v.a4cEs * v.a2cEs / v.lEs : null,
+      },
+      {
+        label: { de: 'SV', en: 'SV', fa: 'SV' }, unit: 'ml', decimals: 1,
+        calc: (v) => {
+          const edv = v.a4cEd && v.a2cEd && v.lEd ? 0.85 * v.a4cEd * v.a2cEd / v.lEd : null
+          const esv = v.a4cEs && v.a2cEs && v.lEs ? 0.85 * v.a4cEs * v.a2cEs / v.lEs : null
+          return edv != null && esv != null ? edv - esv : null
+        },
+      },
+      {
+        label: { de: 'LVEF', en: 'LVEF', fa: 'LVEF' }, unit: '%', decimals: 1,
+        calc: (v) => {
+          const edv = v.a4cEd && v.a2cEd && v.lEd ? 0.85 * v.a4cEd * v.a2cEd / v.lEd : null
+          const esv = v.a4cEs && v.a2cEs && v.lEs ? 0.85 * v.a4cEs * v.a2cEs / v.lEs : null
+          return edv != null && esv != null && edv > 0 ? (edv - esv) / edv * 100 : null
+        },
+      },
+    ],
+  },
+
+  // 7. Kardiothorakaler Quotient
+  {
     id: 'ktq', type: 'single', color: '#be185d',
     name: { de: 'Kardiothorak. Quotient (CTR)', en: 'Cardiothoracic Ratio (CTR)', fa: 'نسبت قلب‌به‌قفسه‌سینه (CTR)' },
     formula: 'CTR = Herzbreite ÷ Thoraxbreite',
@@ -2771,7 +2821,7 @@ export const RECHNER = [
     ],
   },
 
-  // 7. Meyerding – Spondylolisthesis
+  // 8. Meyerding – Spondylolisthesis
   {
     id: 'meyerding', type: 'single', color: '#f97316',
     name: { de: 'Meyerding – Spondylolisthesis', en: 'Meyerding – Spondylolisthesis', fa: 'مایردینگ – اسپوندیلولیستز' },
@@ -2792,7 +2842,7 @@ export const RECHNER = [
     ],
   },
 
-  // 8. Fleischner-Assistent
+  // 9. Fleischner-Assistent
   {
     id: 'fleischner', type: 'fleischner', color: '#0891b2',
     name: { de: 'Fleischner – Lungenrundherde', en: 'Fleischner – Pulmonary Nodule', fa: 'Fleischner – ندول ریوی' },

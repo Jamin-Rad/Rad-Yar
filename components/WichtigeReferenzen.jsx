@@ -855,7 +855,7 @@ const RECHNER_GROUPS = [
     id: 'herz-thorax',
     name: { de: 'Herz & Thorax', en: 'Heart & Thorax', fa: 'قلب و توراکس' },
     color: '#be185d', iconId: 'herz',
-    calcIds: ['ktq', 'fleischner'],
+    calcIds: ['lv-biplan-volumen', 'ktq', 'fleischner'],
   },
   {
     id: 'abdomen',
