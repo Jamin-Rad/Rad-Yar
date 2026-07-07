@@ -5,12 +5,18 @@ import { requireFatimaSession } from '@/lib/fatimaPasswordAuth'
 const AI_PROVIDER = (process.env.DEUTSCH_AI_PROVIDER || 'openai').toLowerCase()
 const OPENAI_MODEL = process.env.OPENAI_DEUTSCH_MODEL || 'gpt-5.4-mini'
 const DEEPSEEK_MODEL = process.env.DEEPSEEK_DEUTSCH_MODEL || 'deepseek-v4-flash'
-const DEUTSCH_AI_MAX_OUTPUT_TOKENS = Number(process.env.DEUTSCH_AI_MAX_OUTPUT_TOKENS || 1800)
+const DEUTSCH_AI_MAX_OUTPUT_TOKENS = Number(process.env.DEUTSCH_AI_MAX_OUTPUT_TOKENS || 2400)
 const DEUTSCH_AI_TEMPERATURE = Number(process.env.DEUTSCH_AI_TEMPERATURE || 0.2)
 const MAX_TEXT_LENGTH = 5000
 
 function cleanText(value) {
   return typeof value === 'string' ? value.trim().slice(0, MAX_TEXT_LENGTH) : ''
+}
+
+function cleanChecklist(value) {
+  return Array.isArray(value)
+    ? value.map(item => cleanText(item).slice(0, 240)).filter(Boolean).slice(0, 8)
+    : []
 }
 
 function extractJson(value) {
@@ -25,26 +31,62 @@ function extractJson(value) {
   }
 }
 
-function getPrompt({ task, text }) {
+function getPrompt({ task, checklist, text }) {
+  const checklistText = checklist.length
+    ? checklist.map((item, index) => `${index + 1}. ${item}`).join('\n')
+    : 'Keine Checkliste angegeben.'
+
   return `Aufgabe: ${task}
 
-Korrigiere den folgenden Deutschtext. Gib JSON in dieser Form zurück:
+Checkliste:
+${checklistText}
+
+Bewerte den Text wie ein strenger, aber freundlicher Deutschlehrer.
+Wichtig: Prüfe zuerst, ob der Text die Aufgabe wirklich erfüllt. Wenn der Text am Thema vorbeigeht oder wichtige Punkte fehlen, sage das klar. Korrigiere nicht nur Grammatik.
+
+Gib ausschließlich gültiges JSON in dieser Form zurück:
 {
+  "taskFulfillment": {
+    "status": "erfüllt | teilweise erfüllt | Thema verfehlt",
+    "score": 0,
+    "feedback": "kurze klare Rückmeldung zum Aufgabenbezug",
+    "missingPoints": ["fehlender Checklistenpunkt"],
+    "offTopicParts": ["Textstelle, die nicht zur Aufgabe passt"]
+  },
   "corrected": "vollständig korrigierte Version",
+  "teacherVersion": "gute Musterlösung passend zur Aufgabe und zum Niveau des Lernenden",
   "summary": "kurze Rückmeldung auf Deutsch",
+  "grammarErrors": [
+    {
+      "number": 1,
+      "wrong": "Originalfehler",
+      "correct": "Korrektur",
+      "rule": "Grammatikregel kurz erklärt",
+      "example": "kurzer Beispielsatz"
+    }
+  ],
   "mistakes": [
     {
       "wrong": "Originalfehler",
       "correct": "Korrektur",
       "reason": "kurze Erklärung auf Deutsch",
+      "type": "Aufgabe | Grammatik | Wortschatz | Satzbau | Stil",
       "cardFront": "Lückensatz oder Frage für Wiederholung",
       "cardBack": "richtige Antwort"
     }
   ],
-  "betterPhrases": ["natürliche Alternative 1", "natürliche Alternative 2"]
+  "betterPhrases": ["natürliche Alternative 1", "natürliche Alternative 2"],
+  "nextStep": "eine konkrete nächste Aufgabe"
 }
 
-Maximal 8 wichtigste Fehler auswählen. Keine erfundenen Fehler.
+Regeln:
+- Wenn der Text die Aufgabe verfehlt, setze taskFulfillment.status auf "Thema verfehlt".
+- Wenn nur Teile fehlen, setze "teilweise erfüllt".
+- Korrigiere die Sprache, aber erkläre deutlich den Aufgabenbezug.
+- grammarErrors müssen am Ende die wichtigsten relevanten Grammatikfehler nummeriert erklären.
+- Maximal 6 grammarErrors und maximal 8 mistakes auswählen.
+- Keine erfundenen Fehler.
+- Schreibe kindgerecht/klar, aber nicht herablassend.
 
 Text:
 ${text}`
@@ -158,9 +200,10 @@ export async function POST(request) {
 
   const text = cleanText(body.text)
   const task = cleanText(body.task || 'Freier Schreibtext')
+  const checklist = cleanChecklist(body.checklist)
   if (!text) return NextResponse.json({ error: 'Text is required.' }, { status: 400 })
 
-  const result = await callAiProvider(getPrompt({ task, text }))
+  const result = await callAiProvider(getPrompt({ task, checklist, text }))
   if (result.error) return NextResponse.json({ error: result.error }, { status: result.status || 503 })
 
   const output = result.output || ''
@@ -170,8 +213,12 @@ export async function POST(request) {
     result: parsed || {
       corrected: output,
       summary: 'Die KI-Antwort konnte nicht strukturiert gelesen werden.',
+      taskFulfillment: null,
+      teacherVersion: '',
+      grammarErrors: [],
       mistakes: [],
       betterPhrases: [],
+      nextStep: '',
     },
   })
 }

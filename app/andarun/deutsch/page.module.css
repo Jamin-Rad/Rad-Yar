@@ -690,6 +690,78 @@
   white-space: pre-line;
 }
 
+.fulfillmentBox {
+  display: grid;
+  gap: 8px;
+  border: 1px solid rgba(251,191,36,.28);
+  border-radius: 18px;
+  background: rgba(251,191,36,.10);
+  margin-bottom: 14px;
+  padding: 14px;
+}
+
+.fulfillmentBox > span {
+  color: #fde68a;
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.fulfillmentBox > strong {
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.fulfillmentBox h4 {
+  margin: 8px 0 0;
+  color: #fde68a;
+}
+
+.fulfillmentBox ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.fulfillmentBox li {
+  color: rgba(248,250,252,.84);
+  line-height: 1.45;
+}
+
+.grammarList {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 22px;
+}
+
+.grammarList li {
+  border-radius: 16px;
+  background: rgba(255,255,255,.08);
+  color: rgba(248,250,252,.86);
+  line-height: 1.55;
+  padding: 12px;
+}
+
+.grammarList strong,
+.grammarList span,
+.grammarList em {
+  display: block;
+}
+
+.grammarList span {
+  color: rgba(226,232,240,.76);
+  margin-top: 5px;
+}
+
+.grammarList em {
+  color: #fde68a;
+  font-style: normal;
+  margin-top: 5px;
+}
+
 .mistakeRow {
   display: grid;
   gap: 7px;

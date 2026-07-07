@@ -457,7 +457,11 @@ export default function DeutschPage({
       const res = await fetch(correctEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: writingText, task: activeLesson.writing?.prompt || '' }),
+        body: JSON.stringify({
+          text: writingText,
+          task: activeLesson.writing?.prompt || '',
+          checklist: activeLesson.writing?.checklist || [],
+        }),
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'KI nicht verfügbar')
@@ -703,16 +707,65 @@ export default function DeutschPage({
             </div>
             {correction ? (
               <>
+                {correction.taskFulfillment && (
+                  <div className={styles.fulfillmentBox}>
+                    <span>{correction.taskFulfillment.status || 'Aufgabenbezug'}</span>
+                    <strong>{typeof correction.taskFulfillment.score === 'number' ? `${correction.taskFulfillment.score}%` : 'Bewertet'}</strong>
+                    <p>{correction.taskFulfillment.feedback}</p>
+                    {!!correction.taskFulfillment.missingPoints?.length && (
+                      <>
+                        <h4>Fehlende Punkte</h4>
+                        <ul>
+                          {correction.taskFulfillment.missingPoints.map((item, index) => <li key={`${item}-${index}`}>{item}</li>)}
+                        </ul>
+                      </>
+                    )}
+                    {!!correction.taskFulfillment.offTopicParts?.length && (
+                      <>
+                        <h4>Nicht passend zur Aufgabe</h4>
+                        <ul>
+                          {correction.taskFulfillment.offTopicParts.map((item, index) => <li key={`${item}-${index}`}>{item}</li>)}
+                        </ul>
+                      </>
+                    )}
+                  </div>
+                )}
                 <h3>Korrigierte Version</h3>
                 <p>{correction.corrected}</p>
-                <h3>Wichtigste Fehler</h3>
+                {correction.teacherVersion && (
+                  <>
+                    <h3>Passende Musterlösung</h3>
+                    <p>{correction.teacherVersion}</p>
+                  </>
+                )}
+                {!!correction.grammarErrors?.length && (
+                  <>
+                    <h3>Relevante Grammatikfehler</h3>
+                    <ol className={styles.grammarList}>
+                      {correction.grammarErrors.map((error, index) => (
+                        <li key={`${error.wrong}-${index}`}>
+                          <strong>{error.wrong} → {error.correct}</strong>
+                          <span>{error.rule}</span>
+                          {error.example && <em>{error.example}</em>}
+                        </li>
+                      ))}
+                    </ol>
+                  </>
+                )}
+                <h3>Weitere wichtige Fehler</h3>
                 {(correction.mistakes || []).map((mistake, index) => (
                   <div className={styles.mistakeRow} key={`${mistake.wrong}-${index}`}>
                     <strong>{mistake.wrong} → {mistake.correct}</strong>
-                    <span>{mistake.reason}</span>
+                    <span>{mistake.type ? `${mistake.type}: ` : ''}{mistake.reason}</span>
                     <button type="button" onClick={() => addMistakeCard(mistake)}>Als Karte speichern</button>
                   </div>
                 ))}
+                {correction.nextStep && (
+                  <>
+                    <h3>Nächster Schritt</h3>
+                    <p>{correction.nextStep}</p>
+                  </>
+                )}
               </>
             ) : (
               <p className={styles.empty}>Hier erscheint die KI-Korrektur, sobald der KI-Anbieter online konfiguriert ist.</p>
