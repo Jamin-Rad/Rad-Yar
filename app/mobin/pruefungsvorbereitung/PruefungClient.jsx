@@ -604,14 +604,50 @@ function calculateTopicProgress(topic, saved) {
   return Math.round(((learnPercent + mcqPercent + flashPercent) / 3) * 100)
 }
 
+// ── Leitner helpers ─────────────────────────────────────────
+const LEITNER_DAYS = [1, 3, 7, 14, 30]
+
+function cardId(topicId, i) { return `${topicId}:${i}` }
+
+function leitnerIsDue(entry) {
+  if (!entry?.nextReview) return true
+  return new Date(entry.nextReview) <= new Date()
+}
+
+function advanceLeitnerBox(entry, knew) {
+  const box = entry?.box ?? 0
+  const next = knew ? Math.min(box + 1, 5) : 1
+  const d = new Date()
+  d.setDate(d.getDate() + LEITNER_DAYS[next - 1])
+  return { box: next, nextReview: d.toISOString().slice(0, 10) }
+}
+
+function buildDueCards(leitner) {
+  const arr = []
+  for (const topic of topics) {
+    for (let i = 0; i < topic.flashcards.length; i++) {
+      if (leitnerIsDue(leitner[cardId(topic.id, i)])) {
+        arr.push({ topicId: topic.id, topicTitle: topic.title, cardIndex: i, card: topic.flashcards[i] })
+      }
+    }
+  }
+  return arr.sort(() => Math.random() - 0.5)
+}
+// ─────────────────────────────────────────────────────────────
+
 export { STORAGE_KEY, topics, calculateTopicProgress }
 
 export default function PruefungClient() {
   const [progress, setProgress] = useState({})
-  const [subjectModalOpen, setSubjectModalOpen] = useState(true)
-  const [subject, setSubject] = useState(null)
+  const [subject, setSubject] = useState('deutsch')
   const [topicId, setTopicId] = useState(null)
   const [mode, setMode] = useState(null)
+  const [reviewAll, setReviewAll] = useState(false)
+
+  const leitner = progress.leitner || {}
+
+  const dueCards = useMemo(() => buildDueCards(leitner), [leitner])
+  const dueCount = dueCards.length
 
   useEffect(() => {
     fetchProgress().then(setProgress)
@@ -625,26 +661,18 @@ export default function PruefungClient() {
   }, [progress])
 
   function saveTopicProgress(id, patch) {
-    const nextProgress = {
+    const next = {
       ...progress,
-      [id]: {
-        ...(progress[id] || {}),
-        ...patch,
-        updatedAt: new Date().toISOString(),
-      },
+      [id]: { ...(progress[id] || {}), ...patch, updatedAt: new Date().toISOString() },
     }
-
-    setProgress(nextProgress)
-    saveProgress(nextProgress)
+    setProgress(next)
+    saveProgress(next)
   }
 
-  function chooseSubject(nextSubject) {
-    if (!nextSubject.active) return
-
-    setSubject(nextSubject.id)
-    setSubjectModalOpen(false)
-    setTopicId(null)
-    setMode(null)
+  function saveLeitner(nextLeitner) {
+    const next = { ...progress, leitner: nextLeitner }
+    setProgress(next)
+    saveProgress(next)
   }
 
   return (
@@ -659,15 +687,6 @@ export default function PruefungClient() {
             </span>
           </Link>
           <nav className={styles.nav} aria-label="Mobin Navigation">
-            <button
-              className={styles.glassButton}
-              type="button"
-              onClick={() => setSubjectModalOpen(true)}
-              style={{ '--tilt': '-1.2deg', '--speed': '7.5s' }}
-            >
-              <span className={styles.buttonTitle}>{selectedSubject?.title || 'Fach wählen'}</span>
-              <span className={styles.buttonMeta}>Popup öffnen</span>
-            </button>
             <Link className={styles.glassButton} href="/mobin" style={{ '--tilt': '1.1deg', '--speed': '8s' }}>
               <span className={styles.buttonTitle}>Start</span>
               <span className={styles.buttonMeta}>Fortschritt ansehen</span>
@@ -681,13 +700,48 @@ export default function PruefungClient() {
               <span className={styles.eyebrow}>Klasse 5 Gymnasium</span>
               <h1 className={styles.sectionTitle}>Prüfungsvorbereitung</h1>
               <p className={styles.sectionText}>
-                Wähle ein Fach, dann ein Thema und danach Lernbereich, MCQs oder Flashcards.
+                Wähle ein Thema, dann Lernbereich, MCQs oder Flashcards.
               </p>
             </div>
             <div className={styles.examScore}>
-              <strong>{overall}%</strong>
-              <span>Deutsch Fortschritt</span>
+              {dueCount > 0 ? (
+                <button
+                  className={styles.examScoreBtn}
+                  type="button"
+                  onClick={() => { setReviewAll(true); setTopicId(null); setMode(null) }}
+                >
+                  <strong>{dueCount}</strong>
+                  <span>Karten fällig</span>
+                </button>
+              ) : (
+                <div className={styles.examScore}>
+                  <strong>{overall}%</strong>
+                  <span>Deutsch Fortschritt</span>
+                </div>
+              )}
             </div>
+          </div>
+
+          {/* ── Fach-Auswahl inline über den Themen ── */}
+          <div className={styles.subjectRow}>
+            {subjects.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                className={`${styles.subjectPill} ${subject === item.id ? styles.subjectPillActive : ''} ${!item.active ? styles.subjectPillDisabled : ''}`}
+                disabled={!item.active}
+                onClick={() => {
+                  if (!item.active) return
+                  setSubject(item.id)
+                  setTopicId(null)
+                  setMode(null)
+                  setReviewAll(false)
+                }}
+              >
+                {item.title}
+                {!item.active && <span> (bald)</span>}
+              </button>
+            ))}
           </div>
 
           {subject === 'deutsch' ? (
@@ -696,22 +750,20 @@ export default function PruefungClient() {
                 {topics.map((topic) => {
                   const saved = progress[topic.id] || {}
                   const percent = calculateTopicProgress(topic, saved)
+                  const topicDue = topic.flashcards.filter((_, i) => leitnerIsDue(leitner[cardId(topic.id, i)])).length
                   return (
                     <button
-                      className={`${styles.topicCard} ${topic.id === topicId ? styles.topicCardActive : ''}`}
+                      className={`${styles.topicCard} ${topic.id === topicId && !reviewAll ? styles.topicCardActive : ''}`}
                       key={topic.id}
                       type="button"
-                      onClick={() => {
-                        setTopicId(topic.id)
-                        setMode(null)
-                      }}
+                      onClick={() => { setTopicId(topic.id); setMode(null); setReviewAll(false) }}
                     >
                       <span>{topic.title}</span>
                       <small>{topic.meta}</small>
                       <i className={styles.progressTrack} aria-hidden="true">
                         <b style={{ width: `${percent}%` }} />
                       </i>
-                      <em>{percent}% geschafft</em>
+                      <em>{topicDue > 0 ? `${topicDue} fällig · ` : ''}{percent}% geschafft</em>
                     </button>
                   )
                 })}
@@ -761,69 +813,45 @@ export default function PruefungClient() {
                   {mode === 'flashcards' ? (
                     <FlashcardMode
                       topic={selectedTopic}
+                      leitner={leitner}
                       onProgress={(seen, total) => saveTopicProgress(selectedTopic.id, { flashSeen: seen, flashTotal: total })}
+                      onLeitnerUpdate={saveLeitner}
                     />
                   ) : null}
+                </section>
+              ) : reviewAll ? (
+                <section className={styles.practicePanel}>
+                  <div className={styles.practiceHeader}>
+                    <div>
+                      <h2>Alle fälligen Karten</h2>
+                      <p>{dueCount} Karten aus allen Themen — nach dem Leitner-System.</p>
+                    </div>
+                    <button className={styles.ghostAction} type="button" onClick={() => setReviewAll(false)}>Abbrechen</button>
+                  </div>
+                  <AllFlashcardsMode
+                    cards={dueCards}
+                    leitner={leitner}
+                    onLeitnerUpdate={saveLeitner}
+                  />
                 </section>
               ) : (
                 <section className={styles.practicePanel}>
                   <div className={styles.practiceHeader}>
                     <div>
-                      <h2>Deutsch-Thema wählen</h2>
-                      <p>Danach öffnest du Lernbereich, MCQs oder Flashcards.</p>
+                      <h2>Thema wählen</h2>
+                      <p>Oben ein Thema auswählen, dann Lernbereich, MCQs oder Flashcards öffnen.</p>
                     </div>
                   </div>
                 </section>
               )}
             </>
-          ) : (
-            <section className={styles.practicePanel}>
-              <div className={styles.practiceHeader}>
-                <div>
-                  <h2>Bitte ein Fach wählen</h2>
-                  <p>Deutsch ist jetzt fertig vorbereitet. Die anderen Fächer kommen später dazu.</p>
-                </div>
-              </div>
-            </section>
-          )}
+          ) : null}
         </section>
 
         <footer className={styles.footer}>
           Zurück zu <Link href="/mobin">Mobin</Link>
         </footer>
       </div>
-
-      {subjectModalOpen ? (
-        <div className={styles.subjectBackdrop} role="presentation" onClick={() => setSubjectModalOpen(false)}>
-          <div className={styles.subjectModal} role="dialog" aria-modal="true" aria-labelledby="subject-title" onClick={(e) => e.stopPropagation()}>
-            <div className={styles.subjectModalTop}>
-              <div>
-                <span className={styles.eyebrow}>Prüfungsfach</span>
-                <h2 id="subject-title">Was möchtest du üben?</h2>
-              </div>
-              {subject ? (
-                <button className={styles.closeButton} type="button" onClick={() => setSubjectModalOpen(false)} aria-label="Popup schließen">
-                  ×
-                </button>
-              ) : null}
-            </div>
-            <div className={styles.subjectGrid}>
-              {subjects.map((item) => (
-                <button
-                  className={`${styles.subjectButton} ${!item.active ? styles.subjectButtonDisabled : ''}`}
-                  disabled={!item.active}
-                  key={item.id}
-                  type="button"
-                  onClick={() => chooseSubject(item)}
-                >
-                  <strong>{item.title}</strong>
-                  <span>{item.meta}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      ) : null}
     </main>
   )
 }
@@ -933,12 +961,12 @@ function McqMode({ topic, onComplete }) {
   )
 }
 
-function FlashcardMode({ topic, onProgress }) {
+function FlashcardMode({ topic, leitner, onProgress, onLeitnerUpdate }) {
   const [index, setIndex] = useState(0)
   const [flipped, setFlipped] = useState(false)
   const [exiting, setExiting] = useState(false)
   const [exitDir, setExitDir] = useState(null)
-  const [results, setResults] = useState({}) // { [index]: 'known' | 'missed' }
+  const [results, setResults] = useState({})
   const [done, setDone] = useState(false)
   const cards = topic.flashcards
   const current = cards[index]
@@ -970,6 +998,8 @@ function FlashcardMode({ topic, onProgress }) {
     setResults(nextResults)
     const knownTotal = Object.values(nextResults).filter((r) => r === 'known').length
     onProgress(knownTotal, cards.length)
+    const id = cardId(topic.id, index)
+    onLeitnerUpdate({ ...leitner, [id]: advanceLeitnerBox(leitner[id], knew) })
     setTimeout(() => {
       setFlipped(false)
       setExiting(false)
@@ -1038,7 +1068,10 @@ function FlashcardMode({ topic, onProgress }) {
         <div className={`${styles.flipInner} ${flipped ? styles.flipInnerFlipped : ''}`}>
           <div className={styles.flipFront}>
             <strong className={styles.flipQuestion}>{current.front}</strong>
-            <span className={styles.flipHint}>↕ Antippen zum Umdrehen</span>
+            <span className={styles.flipHint}>
+              {(() => { const b = leitner[cardId(topic.id, index)]?.box; return b ? `Box ${b}` : 'Neu' })()}
+              {' · '}↕ Antippen
+            </span>
           </div>
           <div className={styles.flipBack}>
             <div>
@@ -1057,6 +1090,113 @@ function FlashcardMode({ topic, onProgress }) {
         <button className={styles.flipKnowBtn} type="button" onClick={() => answer(true)}>
           Gewusst ✓
         </button>
+      </div>
+    </div>
+  )
+}
+
+function AllFlashcardsMode({ cards, leitner, onLeitnerUpdate }) {
+  const [index, setIndex] = useState(0)
+  const [flipped, setFlipped] = useState(false)
+  const [exiting, setExiting] = useState(false)
+  const [exitDir, setExitDir] = useState(null)
+  const [results, setResults] = useState({})
+  const [done, setDone] = useState(false)
+
+  const current = cards[index]
+
+  useEffect(() => {
+    function onKey(e) {
+      if (done) return
+      if (e.code === 'Space' || e.code === 'ArrowUp') { e.preventDefault(); if (!exiting) setFlipped((v) => !v) }
+      if (flipped && !exiting) {
+        if (e.code === 'ArrowRight') answer(true)
+        if (e.code === 'ArrowLeft') answer(false)
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  })
+
+  function answer(knew) {
+    if (!flipped || exiting) return
+    setExiting(true)
+    setExitDir(knew ? 'right' : 'left')
+    setResults((r) => ({ ...r, [index]: knew ? 'known' : 'missed' }))
+    const id = cardId(current.topicId, current.cardIndex)
+    onLeitnerUpdate({ ...leitner, [id]: advanceLeitnerBox(leitner[id], knew) })
+    setTimeout(() => {
+      setFlipped(false)
+      setExiting(false)
+      setExitDir(null)
+      if (index + 1 >= cards.length) setDone(true)
+      else setIndex((i) => i + 1)
+    }, 300)
+  }
+
+  if (!current && !done) return null
+
+  if (done) {
+    const known = Object.values(results).filter((r) => r === 'known').length
+    return (
+      <div className={styles.flipResult}>
+        <div className={styles.flipResultScore}>{known}/{cards.length}</div>
+        <p className={styles.flipResultSub}>
+          {known === cards.length ? 'Alle gewusst – hervorragend!' : `${known} von ${cards.length} gewusst. Weiter üben!`}
+        </p>
+      </div>
+    )
+  }
+
+  const stageClass = [
+    styles.flipStage,
+    exiting ? styles.flipExiting : '',
+    exitDir === 'right' ? styles.flipExitRight : exitDir === 'left' ? styles.flipExitLeft : '',
+  ].filter(Boolean).join(' ')
+
+  const box = leitner[cardId(current.topicId, current.cardIndex)]?.box
+
+  return (
+    <div>
+      <div className={styles.mcqTop}>
+        <span>{current.topicTitle}</span>
+        <strong>{index + 1} / {cards.length}</strong>
+      </div>
+
+      <div className={styles.flipNavRow}>
+        {cards.map((_, i) => {
+          const r = results[i]
+          const dotClass = [styles.flipDot, r === 'known' ? styles.flipDotKnown : '', r === 'missed' ? styles.flipDotMissed : '', i === index && !r ? styles.flipDotActive : ''].filter(Boolean).join(' ')
+          return <span key={i} className={dotClass}>{i + 1}</span>
+        })}
+      </div>
+
+      <div
+        className={stageClass}
+        role="button"
+        tabIndex={0}
+        aria-label="Karte umdrehen"
+        onClick={() => { if (!exiting) setFlipped((v) => !v) }}
+        onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); if (!exiting) setFlipped((v) => !v) } }}
+      >
+        <div className={`${styles.flipInner} ${flipped ? styles.flipInnerFlipped : ''}`}>
+          <div className={styles.flipFront}>
+            <strong className={styles.flipQuestion}>{current.card.front}</strong>
+            <span className={styles.flipHint}>{box ? `Box ${box}` : 'Neu'} · ↕ Antippen</span>
+          </div>
+          <div className={styles.flipBack}>
+            <div>
+              <span className={styles.flipLabel}>Antwort</span>
+              <p className={styles.flipAnswerText}>{current.card.back}</p>
+            </div>
+            <span className={styles.flipHint}>↕ Antippen zum Zurückdrehen</span>
+          </div>
+        </div>
+      </div>
+
+      <div className={`${styles.flipAnswerRow} ${flipped ? styles.flipAnswerVisible : ''}`}>
+        <button className={styles.flipMissBtn} type="button" onClick={() => answer(false)}>Noch einmal ✗</button>
+        <button className={styles.flipKnowBtn} type="button" onClick={() => answer(true)}>Gewusst ✓</button>
       </div>
     </div>
   )
