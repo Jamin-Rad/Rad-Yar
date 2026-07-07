@@ -918,7 +918,7 @@ function RechnerModal({ copy, lang, onClose }) {
             </span>
             <span style={{color: group.color}}>{tx(group.name, lang)}</span>
           </h2>
-          <div className={styles.rechnerSubGrid}>
+          <div className={`${styles.rechnerSubGrid} ${group.id === 'herz-thorax' ? styles.rechnerThoraxGrid : ''}`}>
             {calcs.map(calc => (
               <RechnerCard key={calc.id} calc={calc} lang={lang} />
             ))}
@@ -932,7 +932,7 @@ function RechnerModal({ copy, lang, onClose }) {
 /* ── Rechner-Karte (dispatch by type) ────────── */
 function RechnerCard({ calc, lang }) {
   return (
-    <div className={styles.rechnerCard} style={{'--rc': calc.color}}>
+    <div className={styles.rechnerCard} data-calc-id={calc.id} style={{'--rc': calc.color}}>
       <div className={styles.rcHead}>
         <div className={styles.rcName} style={{color: calc.color}}>{tx(calc.name, lang)}</div>
         {calc.formula && <div className={styles.rcFormula}>{calc.formula}</div>}

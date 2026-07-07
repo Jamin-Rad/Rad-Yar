@@ -896,6 +896,25 @@
   align-items: start;
 }
 
+.rechnerThoraxGrid {
+  grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr);
+  grid-auto-flow: row;
+}
+
+.rechnerThoraxGrid .rechnerCard[data-calc-id='lv-biplan-volumen'] {
+  grid-row: 1 / span 2;
+}
+
+.rechnerThoraxGrid .rechnerCard[data-calc-id='ktq'] {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.rechnerThoraxGrid .rechnerCard[data-calc-id='fleischner'] {
+  grid-column: 2;
+  grid-row: 2;
+}
+
 .rechnerCard {
   border: 1.5px solid color-mix(in srgb, var(--rc) 25%, #e2e8f0);
   border-radius: 16px; padding: 18px 18px 14px;
@@ -1087,6 +1106,13 @@
 @media (max-width: 900px) {
   .grid { grid-template-columns: repeat(2, 1fr); }
   .rechnerGrid { grid-template-columns: 1fr; }
+  .rechnerThoraxGrid { grid-template-columns: 1fr; }
+  .rechnerThoraxGrid .rechnerCard[data-calc-id='lv-biplan-volumen'],
+  .rechnerThoraxGrid .rechnerCard[data-calc-id='ktq'],
+  .rechnerThoraxGrid .rechnerCard[data-calc-id='fleischner'] {
+    grid-column: auto;
+    grid-row: auto;
+  }
   .glassHeader { padding: 26px 24px 30px; }
   .glassTitle { font-size: 26px; }
   .modalWide { max-width: 100%; }
