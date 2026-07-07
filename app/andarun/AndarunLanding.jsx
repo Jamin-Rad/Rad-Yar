@@ -6,7 +6,7 @@ import Link from 'next/link'
 import styles from './page.module.css'
 
 const tiles = [
-  { title: 'Routine', tone: 'sun', orbit: 'one', href: '#' },
+  { title: 'Routine', tone: 'sun', orbit: 'one', href: '/andarun/routine' },
   { title: 'ToDo', tone: 'moon', orbit: 'two', href: '/andarun/todo' },
   { title: 'Deutschlernen', tone: 'nova', orbit: 'three', href: '/andarun/deutsch' },
   { title: 'Finanzen', tone: 'aurora', orbit: 'four', href: '/andarun/finanz' },
