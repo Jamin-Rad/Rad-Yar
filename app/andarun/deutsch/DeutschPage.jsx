@@ -9,6 +9,7 @@ const INTERVALS = [0, 1, 3, 7, 14, 30]
 
 const todayIso = () => new Date().toISOString().slice(0, 10)
 const uid = prefix => `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`
+const LEITNER_BOXES = [0, 1, 2, 3, 4, 5]
 
 const emptyState = {
   lessons: [],
@@ -187,6 +188,25 @@ function isDue(card) {
   return !card.dueAt || new Date(card.dueAt) <= new Date()
 }
 
+function isToday(value) {
+  return typeof value === 'string' && value.slice(0, 10) === todayIso()
+}
+
+function getLessonQuestions(lesson) {
+  return [
+    ...(lesson?.reading?.questions || []).map((_, index) => `${lesson.id}-reading-${index}`),
+    ...(lesson?.grammar || []).map((_, index) => `${lesson.id}-grammar-${index}`),
+    ...(lesson?.listening?.questions || []).map((_, index) => `${lesson.id}-listening-${index}`),
+  ]
+}
+
+function getLessonProgress(lesson, answers) {
+  const keys = getLessonQuestions(lesson)
+  if (!keys.length) return 0
+  const done = keys.filter(key => typeof answers[key] === 'number').length
+  return Math.round((done / keys.length) * 100)
+}
+
 function speak(text) {
   if (typeof window === 'undefined' || !('speechSynthesis' in window)) return false
   window.speechSynthesis.cancel()
@@ -282,6 +302,11 @@ export default function DeutschPage({
   const [correction, setCorrection] = useState(null)
   const [correcting, setCorrecting] = useState(false)
   const [message, setMessage] = useState('')
+  const [importOpen, setImportOpen] = useState(false)
+  const [flashOpen, setFlashOpen] = useState(false)
+  const [flashView, setFlashView] = useState({ mode: 'boxes', box: 0, practice: false })
+  const [showBack, setShowBack] = useState(false)
+  const [practiceIndex, setPracticeIndex] = useState(0)
   const saveTimer = useRef(null)
 
   useEffect(() => {
@@ -339,6 +364,12 @@ export default function DeutschPage({
   const dueCards = useMemo(() => state.cards.filter(isDue), [state.cards])
   const nextCard = dueCards[0]
   const learnedWords = new Set(state.cards.map(card => card.term.toLowerCase()))
+  const dueDoneToday = useMemo(() => state.reviews.filter(review => isToday(review.at)).length, [state.reviews])
+  const flashCards = useMemo(() => {
+    if (flashView.practice) return state.cards
+    return state.cards.filter(card => (card.box || 0) === flashView.box && isDue(card))
+  }, [flashView, state.cards])
+  const activeFlashCard = flashView.practice ? flashCards[practiceIndex % Math.max(flashCards.length, 1)] : flashCards[0]
 
   function answerQuestion(key, optionIndex) {
     persist({ ...state, answers: { ...state.answers, [key]: optionIndex } })
@@ -375,6 +406,7 @@ export default function DeutschPage({
   function reviewCard(card, quality) {
     const box = quality === 'hard' ? 0 : Math.min((card.box || 0) + (quality === 'easy' ? 2 : 1), INTERVALS.length - 1)
     const nextCardState = { ...card, box, dueAt: dueDateForBox(box), lastReviewedAt: new Date().toISOString() }
+    setShowBack(false)
     persist({
       ...state,
       cards: state.cards.map(item => item.id === card.id ? nextCardState : item),
@@ -391,6 +423,7 @@ export default function DeutschPage({
       setActiveLessonId(lesson.id)
       setActiveTab('home')
       setImportText('')
+      setImportOpen(false)
       setMessage('Neue Lektion importiert.')
     } catch {
       setMessage('JSON konnte nicht als Lektion gelesen werden.')
@@ -458,18 +491,23 @@ export default function DeutschPage({
 
   return (
     <main className={styles.shell}>
-      <header className={styles.hero}>
+      <header className={`${styles.hero} ${!lessonMode ? styles.heroSimple : ''}`}>
         <div>
           <Link className={styles.backLink} href={lessonMode ? courseHref : homeHref}>{lessonMode ? 'Deutschlernen' : 'Zurück'}</Link>
           <span className={styles.kicker}>Deutschlernen</span>
-          <h1>{lessonMode ? activeLesson.title : 'B2 Alltag und Diskussion.'}</h1>
-          <p>{lessonMode ? activeLesson.topic : 'Wähle eine Lektion nach Thema, importiere neue Tageslektionen und wiederhole Wörter und Fehler mit Leitner.'}</p>
+          <h1>{lessonMode ? activeLesson.title : 'B2/C1 Alltag'}</h1>
+          {lessonMode && <p>{activeLesson.topic}</p>}
+          {!lessonMode && canImport && (
+            <button type="button" className={styles.importMiniBtn} onClick={() => setImportOpen(true)}>
+              Import
+            </button>
+          )}
         </div>
-        <div className={styles.heroStats}>
+        {lessonMode && <div className={styles.heroStats}>
           <span><strong>{state.lessons.length}</strong>Lektionen</span>
           <span><strong>{dueCards.length}</strong>heute fällig</span>
           <span><strong>{state.cards.length}</strong>Karten</span>
-        </div>
+        </div>}
       </header>
 
       {message && <div className={styles.status}>{message} {saving ? 'Speichert...' : ''}</div>}
@@ -535,54 +573,59 @@ export default function DeutschPage({
       )}
 
       {!lessonMode && activeTab === 'home' && (
-        <>
-          <section className={styles.homeGrid}>
-            <article className={styles.textPanel}>
-              <div className={styles.panelHead}>
-                <span>Kursübersicht</span>
-                <strong>B2 Alltag und Diskussion</strong>
-              </div>
-              <p className={styles.homeLead}>Wähle eine Lektion nach Thema. Jede Lektion enthält Lesen, anspruchsvolle MCQs, Grammatik aus echten Sätzen, Hören, Schreiben und Wiederholungskarten.</p>
-              <div className={styles.lessonCards}>
-                {state.lessons.map(lesson => (
+        <section className={styles.homeGrid}>
+          <article className={styles.textPanel}>
+            <div className={styles.panelHead}>
+              <span>Lektionen</span>
+              <strong>Themen und Zeit</strong>
+            </div>
+            <div className={styles.lessonRows}>
+              {state.lessons.map(lesson => {
+                const progress = getLessonProgress(lesson, state.answers)
+                return (
                   <Link
-                    className={styles.lessonCard}
+                    className={styles.lessonRow}
                     key={lesson.id}
                     href={`${lessonBase}/${lesson.id}`}
                   >
-                    <span>{lesson.date} · {lesson.level}</span>
-                    <h2>{lesson.title}</h2>
-                    <p>{lesson.topic}</p>
-                    <small>{lesson.reading?.vocabulary?.length || 0} Wörter · 15 Fragen · Schreiben</small>
+                    <div>
+                      <span>{lesson.date} · {lesson.level}</span>
+                      <strong>{lesson.title}</strong>
+                      <small>{lesson.topic}</small>
+                    </div>
+                    <div className={styles.progressWrap} aria-label={`${progress}% gelernt`}>
+                      <b>{progress === 100 ? 'vollständig' : `${progress}%`}</b>
+                      <i><em style={{ width: `${progress}%` }} /></i>
+                    </div>
                   </Link>
-                ))}
-              </div>
-            </article>
+                )
+              })}
+            </div>
+          </article>
 
-            {canImport && <article className={styles.textPanel}>
-              <div className={styles.panelHead}>
-                <span>Import</span>
-                <strong>Neue Tageslektion</strong>
-              </div>
-              <p className={styles.homeLead}>Füge hier das JSON ein, das du mit ChatGPT erzeugt hast. Danach erscheint die Lektion sofort in der Kursübersicht.</p>
-              <textarea value={importText} onChange={event => setImportText(event.target.value)} placeholder="Hier das JSON von ChatGPT einfügen..." />
-              <div className={styles.actionRow}>
-                <button type="button" className={styles.primaryBtn} onClick={importLesson}>Lektion importieren</button>
-                <button type="button" onClick={() => navigator.clipboard?.writeText(contentPrompt).then(() => setMessage('Prompt kopiert.'))}>Prompt kopieren</button>
-              </div>
-            </article>}
-          </section>
-
-          {canImport && <section className={styles.importGrid}>
-            <article className={styles.textPanel}>
-              <div className={styles.panelHead}>
-                <span>Prompt für ChatGPT</span>
-                <strong>Inhalt vorbereiten</strong>
-              </div>
-              <textarea readOnly value={contentPrompt} className={styles.promptBox} />
-            </article>
-          </section>}
-        </>
+          <aside className={styles.flashPanel}>
+            <div className={styles.panelHead}>
+              <span>Flashcards</span>
+              <strong>Heute</strong>
+            </div>
+            <div className={styles.flashNumbers}>
+              <span><strong>{dueCards.length}</strong>fällig</span>
+              <span><strong>{dueDoneToday}</strong>erledigt</span>
+              <span><strong>{state.cards.length}</strong>gesamt</span>
+            </div>
+            <button
+              type="button"
+              className={styles.primaryBtn}
+              onClick={() => {
+                setFlashView({ mode: 'boxes', box: 0, practice: false })
+                setShowBack(false)
+                setFlashOpen(true)
+              }}
+            >
+              Wiederholen
+            </button>
+          </aside>
+        </section>
       )}
 
       {activeTab === 'lesen' && (
@@ -678,24 +721,98 @@ export default function DeutschPage({
         </section>
       )}
 
-      {activeTab === 'import' && (
-        <section className={styles.importGrid}>
-          <article className={styles.textPanel}>
-            <div className={styles.panelHead}>
-              <span>Prompt für ChatGPT</span>
-              <strong>Tageslektion erzeugen</strong>
-            </div>
-            <textarea readOnly value={contentPrompt} className={styles.promptBox} />
-          </article>
-          <article className={styles.textPanel}>
-            <div className={styles.panelHead}>
-              <span>JSON Import</span>
-              <strong>Neue Lektion hinzufügen</strong>
-            </div>
+      {importOpen && (
+        <div className={styles.modalBackdrop} role="presentation" onMouseDown={() => setImportOpen(false)}>
+          <section className={styles.importModal} role="dialog" aria-modal="true" onMouseDown={event => event.stopPropagation()}>
+            <button type="button" className={styles.closeBtn} onClick={() => setImportOpen(false)}>Schließen</button>
+            <span>Import</span>
+            <h2>Neue Lektion</h2>
             <textarea value={importText} onChange={event => setImportText(event.target.value)} placeholder="Hier das JSON von ChatGPT einfügen..." />
-            <button type="button" className={styles.primaryBtn} onClick={importLesson}>Lektion importieren</button>
-          </article>
-        </section>
+            <div className={styles.actionRow}>
+              <button type="button" className={styles.primaryBtn} onClick={importLesson}>Lektion importieren</button>
+              <button type="button" onClick={() => navigator.clipboard?.writeText(contentPrompt).then(() => setMessage('Prompt kopiert.'))}>Prompt kopieren</button>
+            </div>
+            <details className={styles.promptDetails}>
+              <summary>Prompt anzeigen</summary>
+              <textarea readOnly value={contentPrompt} className={styles.promptBox} />
+            </details>
+          </section>
+        </div>
+      )}
+
+      {flashOpen && (
+        <div className={styles.modalBackdrop} role="presentation" onMouseDown={() => setFlashOpen(false)}>
+          <section className={styles.flashModal} role="dialog" aria-modal="true" onMouseDown={event => event.stopPropagation()}>
+            <button type="button" className={styles.closeBtn} onClick={() => setFlashOpen(false)}>Schließen</button>
+            <span>Leitner</span>
+            <h2>Flashcards</h2>
+
+            {flashView.mode === 'boxes' && (
+              <>
+                <div className={styles.boxGrid}>
+                  {LEITNER_BOXES.map(box => {
+                    const cards = state.cards.filter(card => (card.box || 0) === box)
+                    const due = cards.filter(isDue)
+                    return (
+                      <button
+                        type="button"
+                        className={styles.boxBtn}
+                        key={box}
+                        onClick={() => {
+                          setFlashView({ mode: 'review', box, practice: false })
+                          setShowBack(false)
+                        }}
+                      >
+                        <strong>Box {box + 1}</strong>
+                        <span>{due.length} fällig · {cards.length} gesamt</span>
+                      </button>
+                    )
+                  })}
+                </div>
+                <button
+                  type="button"
+                  className={styles.practiceAllBtn}
+                  onClick={() => {
+                    setFlashView({ mode: 'review', box: 0, practice: true })
+                    setPracticeIndex(0)
+                    setShowBack(false)
+                  }}
+                >
+                  Alle Karten ansehen
+                </button>
+              </>
+            )}
+
+            {flashView.mode === 'review' && (
+              <div className={styles.flashReview}>
+                <button type="button" className={styles.ghostBtn} onClick={() => setFlashView({ mode: 'boxes', box: 0, practice: false })}>Zurück zu Boxen</button>
+                {activeFlashCard ? (
+                  <article className={styles.flashCardFace}>
+                    <small>{flashView.practice ? 'Ansehen ohne Speichern' : `Box ${flashView.box + 1}`}</small>
+                    <h3>{activeFlashCard.front}</h3>
+                    {showBack && <p>{activeFlashCard.back}</p>}
+                    {!showBack ? (
+                      <button type="button" className={styles.primaryBtn} onClick={() => setShowBack(true)}>Antwort zeigen</button>
+                    ) : flashView.practice ? (
+                      <button type="button" onClick={() => {
+                        setPracticeIndex(index => index + 1)
+                        setShowBack(false)
+                      }}>Nächste ansehen</button>
+                    ) : (
+                      <div className={styles.reviewActions}>
+                        <button type="button" onClick={() => reviewCard(activeFlashCard, 'hard')}>Schwer</button>
+                        <button type="button" onClick={() => reviewCard(activeFlashCard, 'good')}>Gut</button>
+                        <button type="button" onClick={() => reviewCard(activeFlashCard, 'easy')}>Leicht</button>
+                      </div>
+                    )}
+                  </article>
+                ) : (
+                  <p className={styles.empty}>{flashView.practice ? 'Noch keine Karten gespeichert.' : 'In dieser Box ist gerade nichts fällig.'}</p>
+                )}
+              </div>
+            )}
+          </section>
+        </div>
       )}
 
       {selectedWord && (

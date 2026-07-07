@@ -18,14 +18,22 @@
   margin: 0 auto 18px;
 }
 
+.heroSimple {
+  grid-template-columns: minmax(0, 1fr);
+  margin-bottom: 14px;
+}
+
 .hero > div:first-child,
 .heroStats,
 .reviewPanel,
 .lessonPicker,
 .textPanel,
+.flashPanel,
 .questionCard,
 .correctionPanel,
-.wordModal {
+.wordModal,
+.importModal,
+.flashModal {
   border: 1px solid rgba(255,255,255,.16);
   background:
     linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.065)),
@@ -76,6 +84,21 @@
   color: rgba(226, 232, 240, .78);
   font-size: clamp(15px, 1.4vw, 18px);
   line-height: 1.65;
+}
+
+.importMiniBtn {
+  width: fit-content;
+  min-height: 32px;
+  border: 1px solid rgba(187,247,208,.34);
+  border-radius: 999px;
+  background: rgba(187,247,208,.16);
+  color: #dcfce7;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 950;
+  margin-top: 12px;
+  padding: 0 14px;
 }
 
 .heroStats {
@@ -134,7 +157,7 @@
 
 .homeGrid {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr);
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, .58fr);
   gap: 16px;
   align-items: start;
 }
@@ -263,6 +286,109 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+}
+
+.lessonRows {
+  display: grid;
+  gap: 10px;
+}
+
+.lessonRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(120px, 160px);
+  gap: 14px;
+  align-items: center;
+  min-height: 92px;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 18px;
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  padding: 14px;
+  text-decoration: none;
+  transition: transform .16s ease, border-color .16s ease, background .16s ease;
+}
+
+.lessonRow:hover {
+  border-color: rgba(187,247,208,.38);
+  background: rgba(255,255,255,.13);
+  transform: translateY(-1px);
+}
+
+.lessonRow div:first-child {
+  display: grid;
+  gap: 5px;
+}
+
+.lessonRow span,
+.lessonRow small {
+  color: rgba(226,232,240,.62);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.lessonRow strong {
+  color: #fff;
+  font-size: clamp(18px, 2vw, 25px);
+  line-height: 1.08;
+}
+
+.progressWrap {
+  display: grid;
+  gap: 8px;
+  justify-items: end;
+}
+
+.progressWrap b {
+  color: #bbf7d0;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.progressWrap i {
+  display: block;
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.12);
+  overflow: hidden;
+}
+
+.progressWrap em {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #86efac, #38bdf8);
+}
+
+.flashPanel {
+  border-radius: 22px;
+  padding: 18px;
+}
+
+.flashNumbers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin-bottom: 14px;
+}
+
+.flashNumbers span {
+  display: grid;
+  gap: 4px;
+  min-height: 76px;
+  align-content: center;
+  border-radius: 16px;
+  background: rgba(255,255,255,.08);
+  color: rgba(226,232,240,.66);
+  font-size: 12px;
+  font-weight: 850;
+  padding: 10px;
+}
+
+.flashNumbers strong {
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
 }
 
 .lessonCard {
@@ -592,29 +718,160 @@
   padding: 18px;
 }
 
-.wordModal {
+.wordModal,
+.importModal,
+.flashModal {
   width: min(560px, 100%);
   border-radius: 24px;
   padding: 22px;
 }
 
-.wordModal span {
+.importModal {
+  width: min(860px, 100%);
+  max-height: min(820px, calc(100vh - 36px));
+  overflow: auto;
+}
+
+.flashModal {
+  width: min(920px, 100%);
+  max-height: min(820px, calc(100vh - 36px));
+  overflow: auto;
+}
+
+.wordModal span,
+.importModal span,
+.flashModal > span {
   color: #bbf7d0;
   font-size: 12px;
   font-weight: 950;
   text-transform: uppercase;
 }
 
-.wordModal h2 {
+.wordModal h2,
+.importModal h2,
+.flashModal h2 {
   margin: 8px 0 14px;
   color: #fff;
   font-size: clamp(34px, 8vw, 62px);
   letter-spacing: 0;
 }
 
-.wordModal p {
+.wordModal p,
+.flashCardFace p {
   color: rgba(226,232,240,.84);
   line-height: 1.65;
+  white-space: pre-line;
+}
+
+.importModal textarea {
+  width: 100%;
+  min-height: 230px;
+  resize: vertical;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 18px;
+  background: rgba(2,6,23,.38);
+  color: #fff;
+  font: inherit;
+  line-height: 1.6;
+  outline: none;
+  padding: 14px;
+}
+
+.promptDetails {
+  margin-top: 14px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.08);
+  padding: 12px;
+}
+
+.promptDetails summary {
+  cursor: pointer;
+  font-weight: 950;
+}
+
+.boxGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.boxBtn {
+  min-height: 130px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(187,247,208,.20), transparent 56%),
+    rgba(255,255,255,.08);
+  color: #fff;
+  cursor: pointer;
+  display: grid;
+  align-content: end;
+  gap: 8px;
+  padding: 16px;
+  text-align: left;
+  transition: transform .16s ease, border-color .16s ease, background .16s ease;
+}
+
+.boxBtn:hover {
+  border-color: rgba(187,247,208,.42);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(187,247,208,.28), transparent 62%),
+    rgba(255,255,255,.12);
+  transform: translateY(-2px);
+}
+
+.boxBtn strong {
+  font-size: 24px;
+}
+
+.boxBtn span {
+  color: rgba(226,232,240,.68);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.practiceAllBtn,
+.ghostBtn {
+  min-height: 42px;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 14px;
+  background: rgba(255,255,255,.10);
+  color: rgba(248,250,252,.92);
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 950;
+  margin-top: 12px;
+  padding: 0 14px;
+}
+
+.flashReview {
+  display: grid;
+  gap: 14px;
+}
+
+.flashCardFace {
+  display: grid;
+  gap: 14px;
+  min-height: 280px;
+  align-content: center;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 22px;
+  background: rgba(255,255,255,.08);
+  padding: clamp(18px, 4vw, 34px);
+}
+
+.flashCardFace small {
+  color: rgba(226,232,240,.62);
+  font-weight: 950;
+}
+
+.flashCardFace h3 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(30px, 6vw, 62px);
+  letter-spacing: 0;
+  line-height: 1;
 }
 
 .closeBtn {
@@ -668,8 +925,18 @@
 
   .heroStats,
   .lessonCards,
+  .lessonRow,
+  .boxGrid,
   .optionsGrid {
     grid-template-columns: 1fr;
+  }
+
+  .flashNumbers {
+    grid-template-columns: 1fr;
+  }
+
+  .progressWrap {
+    justify-items: stretch;
   }
 
   .tabs {
