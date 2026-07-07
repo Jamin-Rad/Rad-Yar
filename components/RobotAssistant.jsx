@@ -74,7 +74,12 @@ export default function RobotAssistant() {
   const t = T[lang] || T.de
   const isRTL = lang === 'fa'
 
-  if (pathname?.startsWith('/admin/budget') || pathname?.startsWith('/admin/health') || pathname?.startsWith('/andarun')) return null
+  if (
+    pathname?.startsWith('/admin/budget')
+    || pathname?.startsWith('/admin/health')
+    || pathname?.startsWith('/andarun')
+    || pathname?.startsWith('/mobin')
+  ) return null
 
   const [mounted, setMounted] = useState(false)
   const [open, setOpen] = useState(false)
