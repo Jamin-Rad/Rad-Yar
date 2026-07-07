@@ -1,38 +1,29 @@
 import Link from 'next/link'
 import styles from '../mobin.module.css'
 
-const sentenceParts = [
+const mcqs = [
   {
-    title: 'Prädikat',
-    text: 'Was tut jemand? Was geschieht? Das Prädikat ist meistens das Verb.',
+    question: 'Welches Satzglied ist das Prädikat?',
+    options: ['das Verb im Satz', 'der Ort', 'eine Person'],
+    answer: 'das Verb im Satz',
   },
   {
-    title: 'Subjekt',
-    text: 'Wer oder was tut etwas? Frage mit: Wer oder was?',
+    question: 'Mit welcher Frage findest du das Subjekt?',
+    options: ['Wer oder was?', 'Wann?', 'Wem?'],
+    answer: 'Wer oder was?',
   },
   {
-    title: 'Objekt',
-    text: 'Wen oder was? Wem? Wessen? Objekte ergänzen den Satz.',
-  },
-  {
-    title: 'Adverbiale',
-    text: 'Wann, wo, wie oder warum passiert etwas?',
+    question: 'In „Mobin liest ein Buch“ ist „ein Buch“ ...',
+    options: ['Objekt', 'Subjekt', 'Prädikat'],
+    answer: 'Objekt',
   },
 ]
 
-const exercises = [
-  {
-    sentence: 'Mobin liest am Abend ein spannendes Buch.',
-    answer: 'Subjekt: Mobin | Prädikat: liest | Zeit: am Abend | Objekt: ein spannendes Buch',
-  },
-  {
-    sentence: 'Der kleine Stern leuchtet über dem Garten.',
-    answer: 'Subjekt: Der kleine Stern | Prädikat: leuchtet | Ort: über dem Garten',
-  },
-  {
-    sentence: 'Morgen schreibt die Klasse eine Deutsch-Klassenarbeit.',
-    answer: 'Zeit: Morgen | Prädikat: schreibt | Subjekt: die Klasse | Objekt: eine Deutsch-Klassenarbeit',
-  },
+const flashcards = [
+  { front: 'Prädikat', back: 'Was tut jemand? Was geschieht?' },
+  { front: 'Subjekt', back: 'Wer oder was tut etwas?' },
+  { front: 'Objekt', back: 'Wen oder was? Wem? Wessen?' },
+  { front: 'Adverbiale', back: 'Wann, wo, wie oder warum?' },
 ]
 
 export const metadata = {
@@ -48,7 +39,7 @@ export default function PruefungsvorbereitungPage() {
             <span className={styles.mark}>M</span>
             <span className={styles.brandText}>
               <span className={styles.brandName}>Mobin</span>
-              <span className={styles.brandSub}>Prüfung</span>
+              <span className={styles.brandSub}>Deutsch</span>
             </span>
           </Link>
           <nav className={styles.nav} aria-label="Mobin Navigation">
@@ -65,57 +56,57 @@ export default function PruefungsvorbereitungPage() {
 
         <section className={styles.main}>
           <div className={styles.wideCard}>
-            <h1 className={styles.sectionTitle}>Prüfungsvorbereitung</h1>
+            <h1 className={styles.sectionTitle}>Deutsch üben</h1>
             <p className={styles.sectionText}>
-              Deutsch Klasse 5: Vorbereitung auf die Klassenarbeit. Erstes Thema:
-              Satzglieder erkennen, fragen und im Satz markieren.
+              Klasse 5, Thema Satzglieder. Kurz lernen, dann MCQs und Flashcards.
             </p>
+          </div>
 
-            <div className={styles.prepGrid}>
-              {sentenceParts.map((part) => (
-                <article className={styles.prepItem} key={part.title}>
-                  <h2>{part.title}</h2>
-                  <p>{part.text}</p>
+          <div className={styles.prepGrid}>
+            <section className={styles.prepItem}>
+              <h2>Lernen</h2>
+              <p>
+                Satzglieder sind Bausteine im Satz. Zuerst suchst du das Prädikat,
+                dann fragst du nach Subjekt, Objekt und adverbialen Bestimmungen.
+              </p>
+            </section>
+
+            <section className={styles.prepItem}>
+              <h2>Mini-Beispiel</h2>
+              <p>
+                Mobin liest am Abend ein Buch. Prädikat: liest. Subjekt: Mobin.
+                Zeit: am Abend. Objekt: ein Buch.
+              </p>
+            </section>
+          </div>
+
+          <div className={styles.wideCard}>
+            <h2 className={styles.sectionTitle}>MCQs</h2>
+            <div className={styles.quizList}>
+              {mcqs.map((mcq) => (
+                <article className={styles.quizItem} key={mcq.question}>
+                  <h3>{mcq.question}</h3>
+                  <div className={styles.optionGrid}>
+                    {mcq.options.map((option) => (
+                      <span className={option === mcq.answer ? styles.correctOption : styles.option} key={option}>
+                        {option}
+                      </span>
+                    ))}
+                  </div>
                 </article>
               ))}
             </div>
           </div>
 
           <div className={styles.wideCard}>
-            <h2 className={styles.sectionTitle}>Üben</h2>
-            <p className={styles.sectionText}>
-              Frage zuerst nach dem Prädikat, dann nach Subjekt, Objekt und den
-              adverbialen Bestimmungen.
-            </p>
-            <div className={styles.exerciseList}>
-              {exercises.map((exercise) => (
-                <article className={styles.exercise} key={exercise.sentence}>
-                  {exercise.sentence}
-                  <span className={styles.answer}>{exercise.answer}</span>
+            <h2 className={styles.sectionTitle}>Flashcards</h2>
+            <div className={styles.flashGrid}>
+              {flashcards.map((card) => (
+                <article className={styles.flashCard} key={card.front}>
+                  <strong>{card.front}</strong>
+                  <span>{card.back}</span>
                 </article>
               ))}
-            </div>
-          </div>
-
-          <div className={styles.wideCard}>
-            <h2 className={styles.sectionTitle}>Lernplan</h2>
-            <div className={styles.prepGrid}>
-              <article className={styles.prepItem}>
-                <h3>Tag 1</h3>
-                <p>Prädikat und Subjekt finden. Jeden Satz mit Fragen prüfen.</p>
-              </article>
-              <article className={styles.prepItem}>
-                <h3>Tag 2</h3>
-                <p>Objekte und adverbiale Bestimmungen unterscheiden.</p>
-              </article>
-              <article className={styles.prepItem}>
-                <h3>Tag 3</h3>
-                <p>Gemischte Übungssätze markieren und laut erklären.</p>
-              </article>
-              <article className={styles.prepItem}>
-                <h3>Tag 4</h3>
-                <p>Kleine Probe-Klassenarbeit mit Ruhe und sauberer Schrift.</p>
-              </article>
             </div>
           </div>
         </section>
