@@ -3,7 +3,7 @@ import styles from '../mobin.module.css'
 
 const tasks = [
   { title: 'Mathe', text: 'Kurze Aufgaben, klare Schritte, jeden Tag ein bisschen.', tilt: '-1.8deg' },
-  { title: 'Englisch', text: 'Woerter, Saetze und kleine Geschichten zum Ueben.', tilt: '1.4deg' },
+  { title: 'Englisch', text: 'Wörter, Sätze und kleine Geschichten zum Üben.', tilt: '1.4deg' },
   { title: 'Radfahren', text: 'Bewegung, Gleichgewicht und frische Luft.', tilt: '-.9deg' },
 ]
 
@@ -18,10 +18,6 @@ export default function RoutinePage() {
         <header className={styles.topbar}>
           <Link className={styles.brand} href="/mobin">
             <span className={styles.mark}>M</span>
-            <span className={styles.brandText}>
-              <span className={styles.brandName}>Mobin</span>
-              <span className={styles.brandSub}>Routine</span>
-            </span>
           </Link>
           <nav className={styles.nav} aria-label="Mobin Navigation">
             <Link className={styles.glassButton} href="/mobin/bildschirmzeit" style={{ '--tilt': '1.2deg', '--speed': '8s' }}>
@@ -39,8 +35,8 @@ export default function RoutinePage() {
           <div className={styles.wideCard}>
             <h1 className={styles.sectionTitle}>Routine</h1>
             <p className={styles.sectionText}>
-              Drei kleine Bereiche fuer den Tag. Spaeter koennen hier Checklisten,
-              Punkte oder Wochenplaene dazukommen.
+              Drei kleine Bereiche für den Tag. Später können hier Checklisten,
+              Punkte oder Wochenpläne dazukommen.
             </p>
             <div className={styles.routineGrid}>
               {tasks.map((task) => (
@@ -53,7 +49,7 @@ export default function RoutinePage() {
           </div>
         </section>
 
-        <footer className={styles.footer}>Zurueck zu <Link href="/mobin">Mobin</Link></footer>
+        <footer className={styles.footer}>Zurück zu <Link href="/mobin">Mobin</Link></footer>
       </div>
     </main>
   )
