@@ -286,6 +286,7 @@ export default function DeutschPage({
   lessonMode = false,
   apiBase = '/api/andarun/deutsch',
   correctEndpoint = '/api/andarun/deutsch/correct',
+  coachEndpoint = '/api/andarun/deutsch/coach',
   homeHref = '/andarun',
   courseHref = '/andarun/deutsch',
   lessonBase = '/andarun/deutsch',
@@ -301,6 +302,10 @@ export default function DeutschPage({
   const [writingText, setWritingText] = useState('')
   const [correction, setCorrection] = useState(null)
   const [correcting, setCorrecting] = useState(false)
+  const [coachMode, setCoachMode] = useState('explain')
+  const [coachQuestion, setCoachQuestion] = useState('')
+  const [coachResult, setCoachResult] = useState(null)
+  const [coachLoading, setCoachLoading] = useState(false)
   const [message, setMessage] = useState('')
   const [importOpen, setImportOpen] = useState(false)
   const [flashOpen, setFlashOpen] = useState(false)
@@ -489,6 +494,51 @@ export default function DeutschPage({
     setMessage('Fehler wurde als Wiederholungskarte gespeichert.')
   }
 
+  async function askCoach(mode = coachMode) {
+    setCoachMode(mode)
+    setCoachLoading(true)
+    setCoachResult(null)
+    try {
+      const res = await fetch(coachEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          mode,
+          question: coachQuestion,
+          lesson: activeLesson,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'KI-Coach nicht verfügbar')
+      setCoachResult(data.result)
+      setMessage('KI-Coach ist fertig.')
+    } catch (error) {
+      setMessage(error.message || 'KI-Coach ist gerade nicht verfügbar.')
+    } finally {
+      setCoachLoading(false)
+    }
+  }
+
+  function addCoachCard(card) {
+    if (!card?.front || !card?.back) return
+    const nextCard = {
+      id: uid('coach-card'),
+      lessonId: activeLesson.id,
+      type: 'coach',
+      term: card.term || card.front,
+      front: card.front,
+      back: card.back,
+      de: '',
+      fa: '',
+      example: '',
+      box: 0,
+      dueAt: new Date().toISOString(),
+      createdAt: new Date().toISOString(),
+    }
+    persist({ ...state, cards: [nextCard, ...state.cards] })
+    setMessage('KI-Karte wurde gespeichert.')
+  }
+
   return (
     <main className={styles.shell}>
       <header className={`${styles.hero} ${!lessonMode ? styles.heroSimple : ''}`}>
@@ -563,6 +613,7 @@ export default function DeutschPage({
               ['grammatik', 'Grammatik'],
               ['hoeren', 'Hören'],
               ['schreiben', 'Schreiben'],
+              ['ki', 'KI-Coach'],
             ].map(([id, label]) => (
               <button type="button" key={id} className={activeTab === id ? styles.activeTab : ''} onClick={() => setActiveTab(id)}>
                 {label}
@@ -716,6 +767,106 @@ export default function DeutschPage({
               </>
             ) : (
               <p className={styles.empty}>Hier erscheint die KI-Korrektur, sobald `OPENAI_API_KEY` online gesetzt ist.</p>
+            )}
+          </article>
+        </section>
+      )}
+
+      {activeTab === 'ki' && (
+        <section className={styles.coachGrid}>
+          <article className={styles.textPanel}>
+            <div className={styles.panelHead}>
+              <span>KI-Coach</span>
+              <strong>Zur aktuellen Lektion</strong>
+            </div>
+            <p className={styles.coachLead}>
+              Stelle eine Frage zur Lektion oder wähle einen Fokus. Die Antwort bleibt beim aktuellen Text und kann neue Flashcards vorbereiten.
+            </p>
+            <div className={styles.coachModes} aria-label="KI-Fokus">
+              {[
+                ['explain', 'Einfach erklären'],
+                ['grammar', 'Grammatik'],
+                ['vocabulary', 'Wortschatz'],
+                ['writing', 'Schreiben'],
+                ['exercise', 'Mini-Übung'],
+              ].map(([id, label]) => (
+                <button
+                  type="button"
+                  key={id}
+                  className={coachMode === id ? styles.activeCoachMode : ''}
+                  onClick={() => askCoach(id)}
+                  disabled={coachLoading}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+            <textarea
+              className={styles.coachTextarea}
+              value={coachQuestion}
+              onChange={event => setCoachQuestion(event.target.value)}
+              placeholder="Zum Beispiel: Erkläre mir den Nebensatz im zweiten Satz. Oder: Gib mir eine Mini-Übung zu den Präpositionen."
+            />
+            <div className={styles.actionRow}>
+              <button type="button" className={styles.primaryBtn} onClick={() => askCoach()} disabled={coachLoading}>
+                {coachLoading ? 'KI denkt...' : 'KI fragen'}
+              </button>
+              <button type="button" onClick={() => setCoachQuestion('')}>Frage leeren</button>
+            </div>
+          </article>
+
+          <article className={styles.coachPanel}>
+            <div className={styles.panelHead}>
+              <span>Antwort</span>
+              <strong>{coachResult?.title || 'Bereit'}</strong>
+            </div>
+            {coachResult ? (
+              <div className={styles.coachAnswer}>
+                <p>{coachResult.answer}</p>
+                {coachResult.persianHint ? <aside>{coachResult.persianHint}</aside> : null}
+
+                {Array.isArray(coachResult.examples) && coachResult.examples.length ? (
+                  <>
+                    <h3>Beispiele</h3>
+                    <ul>
+                      {coachResult.examples.map((example, index) => <li key={`${example}-${index}`}>{example}</li>)}
+                    </ul>
+                  </>
+                ) : null}
+
+                {coachResult.miniExercise?.items?.length ? (
+                  <>
+                    <h3>Mini-Übung</h3>
+                    <p>{coachResult.miniExercise.instruction}</p>
+                    <div className={styles.coachExercise}>
+                      {coachResult.miniExercise.items.map((item, index) => (
+                        <details key={`${item.prompt}-${index}`}>
+                          <summary>{item.prompt}</summary>
+                          <strong>{item.answer}</strong>
+                          <span>{item.explanation}</span>
+                        </details>
+                      ))}
+                    </div>
+                  </>
+                ) : null}
+
+                {Array.isArray(coachResult.cards) && coachResult.cards.length ? (
+                  <>
+                    <h3>Flashcards aus der Antwort</h3>
+                    <div className={styles.coachCards}>
+                      {coachResult.cards.map((card, index) => (
+                        <article key={`${card.front}-${index}`}>
+                          <strong>{card.front}</strong>
+                          <span>{card.back}</span>
+                          <button type="button" onClick={() => addCoachCard(card)}>Als Karte speichern</button>
+                        </article>
+                      ))}
+                    </div>
+                  </>
+                ) : null}
+              </div>
+            ) : (
+              <p className={styles.empty}>Der KI-Coach kann Grammatik erklären, Wortschatz vereinfachen, Schreibideen geben und kleine Übungen aus der aktuellen Lektion erstellen.</p>
             )}
           </article>
         </section>
