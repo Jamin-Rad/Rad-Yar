@@ -339,18 +339,22 @@ const topics = [
   },
 ]
 
-function readProgress() {
-  if (typeof window === 'undefined') return {}
-
+async function fetchProgress() {
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}') || {}
+    const res = await fetch('/api/mobin/progress')
+    if (!res.ok) return {}
+    return await res.json()
   } catch {
     return {}
   }
 }
 
-function writeProgress(nextProgress) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(nextProgress))
+function saveProgress(nextProgress) {
+  fetch('/api/mobin/progress', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(nextProgress),
+  }).catch(() => {})
   window.dispatchEvent(new Event('mobin-pruefung-progress'))
 }
 
@@ -371,7 +375,7 @@ export default function PruefungClient() {
   const [mode, setMode] = useState(null)
 
   useEffect(() => {
-    setProgress(readProgress())
+    fetchProgress().then(setProgress)
   }, [])
 
   const selectedTopic = useMemo(() => topics.find((topic) => topic.id === topicId) || null, [topicId])
@@ -392,7 +396,7 @@ export default function PruefungClient() {
     }
 
     setProgress(nextProgress)
-    writeProgress(nextProgress)
+    saveProgress(nextProgress)
   }
 
   function chooseSubject(nextSubject) {

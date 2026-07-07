@@ -83,6 +83,10 @@
 .brandName {
   font-size: clamp(22px, 4vw, 32px);
   font-weight: 900;
+  background: linear-gradient(135deg, #a8d4ff 20%, #e8c6ff 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .brandSub {
@@ -134,12 +138,14 @@
 
 .title {
   margin: 0;
-  color: #ffffff;
   font-family: var(--font-display);
   font-size: clamp(58px, 14vw, 136px);
   font-weight: 900;
   line-height: .88;
-  text-shadow: 0 18px 58px rgba(0, 0, 0, .42);
+  background: linear-gradient(135deg, #a8d4ff 20%, #e8c6ff 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .lead {
@@ -231,10 +237,13 @@
 
 .sectionTitle {
   margin: 0 0 16px;
-  color: #ffffff;
   font-size: clamp(30px, 7vw, 66px);
   font-family: var(--font-display);
   line-height: .95;
+  background: linear-gradient(135deg, #a8d4ff 20%, #e8c6ff 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .sectionText {
@@ -553,10 +562,13 @@
 
 .routinePanelHeader h2 {
   margin: 5px 0 0;
-  color: #ffffff;
   font-family: var(--font-display);
   font-size: clamp(30px, 5vw, 52px);
   line-height: .95;
+  background: linear-gradient(135deg, #a8d4ff 20%, #e8c6ff 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .routineDatePicker {
@@ -912,10 +924,13 @@
 .subjectModal h2,
 .progressCard h2 {
   margin: 0;
-  color: #ffffff;
   font-family: var(--font-display);
   font-size: clamp(28px, 5vw, 54px);
   line-height: .95;
+  background: linear-gradient(135deg, #a8d4ff 20%, #e8c6ff 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .practiceHeader p {

@@ -1,34 +1,25 @@
 'use client'
 
 import { useEffect, useMemo, useState } from 'react'
-import { STORAGE_KEY, calculateTopicProgress, topics } from './pruefungsvorbereitung/PruefungClient'
+import { calculateTopicProgress, topics } from './pruefungsvorbereitung/PruefungClient'
 import styles from './mobin.module.css'
-
-function loadProgress() {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}') || {}
-  } catch {
-    return {}
-  }
-}
 
 export default function MobinProgress() {
   const [progress, setProgress] = useState({})
   const [mounted, setMounted] = useState(false)
 
-  useEffect(() => {
-    function refresh() {
-      setProgress(loadProgress())
-      setMounted(true)
-    }
+  async function refresh() {
+    try {
+      const res = await fetch('/api/mobin/progress')
+      if (res.ok) setProgress(await res.json())
+    } catch {}
+    setMounted(true)
+  }
 
+  useEffect(() => {
     refresh()
-    window.addEventListener('storage', refresh)
     window.addEventListener('mobin-pruefung-progress', refresh)
-    return () => {
-      window.removeEventListener('storage', refresh)
-      window.removeEventListener('mobin-pruefung-progress', refresh)
-    }
+    return () => window.removeEventListener('mobin-pruefung-progress', refresh)
   }, [])
 
   const summary = useMemo(() => {
@@ -46,7 +37,6 @@ export default function MobinProgress() {
       },
       { correct: 0, total: 0 },
     )
-
     return { overall, started, done, mcq }
   }, [progress])
 
