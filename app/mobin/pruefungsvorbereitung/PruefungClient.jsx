@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import styles from '../mobin.module.css'
 
 const STORAGE_KEY = 'mobin-pruefung-progress-v2'
@@ -622,6 +622,14 @@ function advanceLeitnerBox(entry, knew) {
   return { box: next, nextReview: d.toISOString().slice(0, 10) }
 }
 
+function formatStudyTime(seconds) {
+  if (!seconds || seconds < 60) return null
+  const h = Math.floor(seconds / 3600)
+  const m = Math.floor((seconds % 3600) / 60)
+  if (h > 0) return `${h} Std ${m} Min`
+  return `${m} Min`
+}
+
 function buildDueCards(leitner) {
   const arr = []
   for (const topic of topics) {
@@ -645,6 +653,8 @@ export default function PruefungClient() {
   const [reviewAll, setReviewAll] = useState(false)
 
   const leitner = progress.leitner || {}
+  const progressRef = useRef(progress)
+  useEffect(() => { progressRef.current = progress }, [progress])
 
   const dueCards = useMemo(() => buildDueCards(leitner), [leitner])
   const dueCount = dueCards.length
@@ -652,6 +662,20 @@ export default function PruefungClient() {
   useEffect(() => {
     fetchProgress().then(setProgress)
   }, [])
+
+  // Track time spent in any study mode
+  useEffect(() => {
+    if (!mode) return
+    const start = Date.now()
+    return () => {
+      const elapsed = Math.floor((Date.now() - start) / 1000)
+      if (elapsed < 10) return
+      const prev = progressRef.current
+      const next = { ...prev, totalSeconds: (prev.totalSeconds || 0) + elapsed }
+      setProgress(next)
+      saveProgress(next)
+    }
+  }, [mode])
 
   const selectedTopic = useMemo(() => topics.find((topic) => topic.id === topicId) || null, [topicId])
   const selectedSubject = subjects.find((item) => item.id === subject)
@@ -703,7 +727,7 @@ export default function PruefungClient() {
                 Wähle ein Thema, dann Lernbereich, MCQs oder Flashcards.
               </p>
             </div>
-            <div className={styles.examScore}>
+            <div className={styles.examScoreStack}>
               {dueCount > 0 ? (
                 <button
                   className={styles.examScoreBtn}
@@ -717,6 +741,12 @@ export default function PruefungClient() {
                 <div className={styles.examScore}>
                   <strong>{overall}%</strong>
                   <span>Deutsch Fortschritt</span>
+                </div>
+              )}
+              {formatStudyTime(progress.totalSeconds) && (
+                <div className={styles.studyTimeStat}>
+                  <strong>{formatStudyTime(progress.totalSeconds)}</strong>
+                  <span>gelernt</span>
                 </div>
               )}
             </div>
