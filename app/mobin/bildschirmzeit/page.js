@@ -23,7 +23,7 @@ export default function BildschirmzeitPage() {
           <div className={styles.wideCard}>
             <h1 className={styles.sectionTitle}>Bildschirmzeit</h1>
             <p className={styles.sectionText}>
-              Platz fuer Bildschirm-Regeln, Zeiten, Pausen und Belohnungen.
+              Platz für Bildschirm-Regeln, Zeiten, Pausen und Belohnungen.
               Die erste Version ist bewusst ruhig und gut erweiterbar.
             </p>
           </div>
@@ -40,7 +40,7 @@ export default function BildschirmzeitPage() {
           </nav>
         </section>
 
-        <footer className={styles.footer}>Zurueck zu <Link href="/mobin">Mobin</Link></footer>
+        <footer className={styles.footer}>Zurück zu <Link href="/mobin">Mobin</Link></footer>
       </div>
     </main>
   )
