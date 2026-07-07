@@ -23,11 +23,18 @@ const pages = [
     tilt: '-1.2deg',
     speed: '8.1s',
   },
+  {
+    href: '/mobin/pruefungsvorbereitung',
+    title: 'Prüfung',
+    meta: 'Deutsch Klasse 5, Satzglieder',
+    tilt: '2.1deg',
+    speed: '7.7s',
+  },
 ]
 
 export const metadata = {
   title: 'Mobin',
-  description: 'Private Seite für Mobin mit Routine, Bildschirmzeit und Tagebuch.',
+  description: 'Private Seite für Mobin mit Routine, Bildschirmzeit, Tagebuch und Prüfungsvorbereitung.',
 }
 
 export default function MobinPage() {
