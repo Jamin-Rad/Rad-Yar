@@ -715,7 +715,7 @@ export default function DeutschPage({
                 ))}
               </>
             ) : (
-              <p className={styles.empty}>Hier erscheint die KI-Korrektur, sobald `OPENAI_API_KEY` online gesetzt ist.</p>
+              <p className={styles.empty}>Hier erscheint die KI-Korrektur, sobald der KI-Anbieter online konfiguriert ist.</p>
             )}
           </article>
         </section>
