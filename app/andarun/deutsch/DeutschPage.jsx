@@ -393,6 +393,10 @@ export default function DeutschPage({
     return state.cards.filter(card => (card.box || 0) === flashView.box && isDue(card))
   }, [flashView, state.cards])
   const activeFlashCard = flashView.practice ? flashCards[practiceIndex % Math.max(flashCards.length, 1)] : flashCards[0]
+  const lessonWritings = useMemo(
+    () => state.writings.filter(item => item.lessonId === activeLesson.id),
+    [state.writings, activeLesson.id]
+  )
 
   function answerQuestion(key, optionIndex) {
     persist({ ...state, answers: { ...state.answers, [key]: optionIndex } })
@@ -488,8 +492,21 @@ export default function DeutschPage({
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'KI nicht verfügbar')
-      setCorrection(data.result)
-      setMessage('KI-Korrektur ist fertig.')
+      const nextCorrection = data.result
+      setCorrection(nextCorrection)
+      persist({
+        ...state,
+        writings: [{
+          id: uid('writing'),
+          lessonId: activeLesson.id,
+          task: activeLesson.writing?.prompt || '',
+          checklist: activeLesson.writing?.checklist || [],
+          text: writingText.trim(),
+          correction: nextCorrection,
+          createdAt: new Date().toISOString(),
+        }, ...state.writings],
+      })
+      setMessage('KI-Korrektur ist fertig und gespeichert.')
     } catch (error) {
       setMessage(error.message || 'KI-Korrektur ist gerade nicht verfügbar.')
     } finally {
@@ -721,6 +738,26 @@ export default function DeutschPage({
               <button type="button" className={styles.primaryBtn} onClick={correctWriting} disabled={correcting}>{correcting ? 'Korrigiert...' : 'Mit KI korrigieren'}</button>
               <button type="button" onClick={saveWritingDraft}>Speichern</button>
             </div>
+            {!!lessonWritings.length && (
+              <section className={styles.writingHistory}>
+                <h3>Gespeicherte Texte</h3>
+                {lessonWritings.slice(0, 6).map(item => (
+                  <button
+                    type="button"
+                    key={item.id}
+                    onClick={() => {
+                      setWritingText(item.text || '')
+                      setCorrection(item.correction || null)
+                      setMessage('Gespeicherte Korrektur geladen.')
+                    }}
+                  >
+                    <span>{new Date(item.createdAt).toLocaleString('de-DE', { dateStyle: 'short', timeStyle: 'short' })}</span>
+                    <strong>{item.correction ? 'mit KI-Korrektur' : 'Entwurf'}</strong>
+                    <small>{(item.text || '').slice(0, 120)}{(item.text || '').length > 120 ? '...' : ''}</small>
+                  </button>
+                ))}
+              </section>
+            )}
           </article>
 
           <article className={styles.correctionPanel}>

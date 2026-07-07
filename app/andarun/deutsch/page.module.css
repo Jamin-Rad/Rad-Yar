@@ -659,6 +659,49 @@
   font-weight: 850;
 }
 
+.writingHistory {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.writingHistory h3 {
+  margin: 0;
+  color: #bbf7d0;
+  font-size: 18px;
+}
+
+.writingHistory button {
+  display: grid;
+  gap: 5px;
+  min-height: 82px;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 16px;
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  padding: 12px;
+  text-align: left;
+}
+
+.writingHistory button:hover {
+  border-color: rgba(187,247,208,.36);
+  background: rgba(255,255,255,.12);
+}
+
+.writingHistory span,
+.writingHistory small {
+  color: rgba(226,232,240,.64);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.writingHistory strong {
+  color: #fff;
+}
+
 .textPanel textarea,
 .promptBox {
   width: 100%;
