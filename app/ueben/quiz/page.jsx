@@ -421,24 +421,26 @@ function QuizContent() {
               if (selected === opt.id && !checked) cls = `${styles.option} ${isRtl ? styles.optSelRtl : styles.optSel}`
               if (checked && opt.id === q.correct) cls = `${styles.option} ${styles.optOk}`
               if (checked && selected === opt.id && opt.id !== q.correct) cls = `${styles.option} ${styles.optErr}`
+              const showConfirm = selected === opt.id && !checked
               return (
-                <button key={opt.id} className={cls} disabled={checked} onClick={() => setSelected(opt.id)}>
-                  <span className={styles.optLetter}>{opt.id}</span>
-                  <span className={styles.optText}>{opt.text}</span>
-                  {checked && opt.id === q.correct && <span className={styles.optMark}>✓</span>}
-                  {checked && selected === opt.id && opt.id !== q.correct && <span className={styles.optMark}>✗</span>}
-                </button>
+                <div key={opt.id} className={styles.optWrap}>
+                  <button className={cls} disabled={checked} onClick={() => setSelected(opt.id)}>
+                    <span className={styles.optLetter}>{opt.id}</span>
+                    <span className={styles.optText}>{opt.text}</span>
+                    {checked && opt.id === q.correct && <span className={styles.optMark}>✓</span>}
+                    {checked && selected === opt.id && opt.id !== q.correct && <span className={styles.optMark}>✗</span>}
+                  </button>
+                  {showConfirm && (
+                    <button className={styles.confirmIcon} onClick={handleCheck} aria-label={ui.confirmBtn}>
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.5 9.5L7 13L14.5 5.5" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </button>
+                  )}
+                </div>
               )
             })}
           </div>
-
-          {selected && !checked && (
-            <div className={styles.confirmBar}>
-              <button className={styles.confirmBarBtn} onClick={handleCheck}>
-                ✓ {ui.confirmBtn}
-              </button>
-            </div>
-          )}
 
           {checked && (
             <button className={styles.nextBtnFull} onClick={handleNext}>
