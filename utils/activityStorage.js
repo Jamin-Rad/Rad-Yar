@@ -62,9 +62,8 @@ export function getActivitySummary(userId) {
   return { days: activity.days, totalSeconds, streak, visitedDays: dates.length }
 }
 
-// Merge server-side activity (from analytics_daily) into local storage.
-// Server data covers all devices; per day we take the higher value.
-// Local categories (lessons/practice/flashcards) are preserved.
+// Merge server-side activity into local storage.
+// Server data covers all devices; per day/category we take the higher value.
 export function mergeServerActivity(userId, serverDays) {
   if (typeof window === 'undefined' || !serverDays) return null
   const activity = loadActivity(userId)
@@ -73,8 +72,26 @@ export function mergeServerActivity(userId, serverDays) {
     const local = activity.days[day] || { activeSeconds: 0, visits: 0 }
     const mergedSeconds = Math.max(Number(local.activeSeconds || 0), Number(serverDay.activeSeconds || 0))
     const mergedVisits = Math.max(Number(local.visits || 0), Number(serverDay.visits || 0))
-    if (mergedSeconds !== Number(local.activeSeconds || 0) || mergedVisits !== Number(local.visits || 0)) {
-      activity.days[day] = { ...local, activeSeconds: mergedSeconds, visits: mergedVisits }
+    const mergedCategories = { ...(local.categories || {}) }
+    let categoriesChanged = false
+    for (const [category, seconds] of Object.entries(serverDay.categories || {})) {
+      const mergedCategorySeconds = Math.max(Number(mergedCategories[category] || 0), Number(seconds || 0))
+      if (mergedCategorySeconds !== Number(mergedCategories[category] || 0)) {
+        mergedCategories[category] = mergedCategorySeconds
+        categoriesChanged = true
+      }
+    }
+    if (
+      mergedSeconds !== Number(local.activeSeconds || 0) ||
+      mergedVisits !== Number(local.visits || 0) ||
+      categoriesChanged
+    ) {
+      activity.days[day] = {
+        ...local,
+        activeSeconds: mergedSeconds,
+        visits: mergedVisits,
+        categories: mergedCategories,
+      }
       changed = true
     }
   }

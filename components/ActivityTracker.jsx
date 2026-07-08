@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { useUser } from '@clerk/nextjs'
 import { usePathname } from 'next/navigation'
 import { addActiveSeconds, IDLE_MS, registerVisit } from '@/utils/activityStorage'
+import { getActivityCategory } from '@/utils/activityCategory'
 import { syncLocalProgressToServer } from '@/utils/syncProgressToServer'
 import { flushPendingProgress } from '@/utils/progressSync'
 
@@ -26,19 +27,6 @@ function sendActivity(payload) {
     body: JSON.stringify(payload),
     keepalive: true,
   }).catch(() => {})
-}
-
-function getActivityCategory(pathname) {
-  if (pathname.startsWith('/flashcards')) return 'flashcards'
-  if (pathname.startsWith('/ueben') || pathname.startsWith('/mcq') || pathname.startsWith('/faelle')) return 'practice'
-  if (
-    pathname.startsWith('/lernen') ||
-    pathname.startsWith('/abdomen') ||
-    pathname.startsWith('/lunge') ||
-    pathname.startsWith('/msk') ||
-    pathname.startsWith('/technik')
-  ) return 'lessons'
-  return 'other'
 }
 
 export default function ActivityTracker() {
