@@ -382,6 +382,7 @@ function QuizContent() {
   const isCorrect = checked && selected === q.correct
   const correctOpt = q.options.find(o => o.id === q.correct)
   const wrongExplanation = getWrongAnswerExplanation(q, selected, lang)
+  const isRtl = lang === 'fa'
 
   return (
     <div className={styles.page}>
@@ -415,30 +416,29 @@ function QuizContent() {
 
           <div className={styles.options}>
             {q.options.map(opt => {
-              const isThisSelected = selected === opt.id && !checked
               let cls = styles.option
               if (selected && selected !== opt.id && !checked) cls = `${styles.option} ${styles.optUnsel}`
-              if (selected === opt.id && !checked) cls = `${styles.option} ${styles.optSel}`
+              if (selected === opt.id && !checked) cls = `${styles.option} ${isRtl ? styles.optSelRtl : styles.optSel}`
               if (checked && opt.id === q.correct) cls = `${styles.option} ${styles.optOk}`
               if (checked && selected === opt.id && opt.id !== q.correct) cls = `${styles.option} ${styles.optErr}`
               return (
-                <div key={opt.id} className={styles.optWrap}>
-                  <button className={cls} disabled={checked} onClick={() => setSelected(opt.id)}>
-                    <span className={styles.optLetter}>{opt.id}</span>
-                    <span className={styles.optText}>{opt.text}</span>
-                    {checked && opt.id === q.correct && <span className={styles.optMark}>✓</span>}
-                    {checked && selected === opt.id && opt.id !== q.correct && <span className={styles.optMark}>✗</span>}
-                  </button>
-                  {isThisSelected && (
-                    <div className={styles.confirmPopup}>
-                      <span className={styles.confirmQuestion}>{ui.confirmQ}</span>
-                      <button className={styles.confirmYes} onClick={handleCheck}>✓ {ui.confirmBtn}</button>
-                    </div>
-                  )}
-                </div>
+                <button key={opt.id} className={cls} disabled={checked} onClick={() => setSelected(opt.id)}>
+                  <span className={styles.optLetter}>{opt.id}</span>
+                  <span className={styles.optText}>{opt.text}</span>
+                  {checked && opt.id === q.correct && <span className={styles.optMark}>✓</span>}
+                  {checked && selected === opt.id && opt.id !== q.correct && <span className={styles.optMark}>✗</span>}
+                </button>
               )
             })}
           </div>
+
+          {selected && !checked && (
+            <div className={styles.confirmBar}>
+              <button className={styles.confirmBarBtn} onClick={handleCheck}>
+                ✓ {ui.confirmBtn}
+              </button>
+            </div>
+          )}
 
           {checked && (
             <button className={styles.nextBtnFull} onClick={handleNext}>
