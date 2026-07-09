@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { requireAndarunSession } from '@/lib/andarunPasswordAuth'
-import { requireFatimaSession, SHARED_ANDARUN_OWNER_ID } from '@/lib/fatimaPasswordAuth'
+import { requireFatimaSession, SHARED_ANDARUN_LOOKUP_OWNER_IDS, SHARED_ANDARUN_OWNER_ID } from '@/lib/fatimaPasswordAuth'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 
 const LANES = new Set(['urgent', 'today', 'watch'])
@@ -16,8 +16,14 @@ async function getAndarunIdentity() {
   const andarun = await requireAndarunSession()
   if (!andarun.error) return andarun
   const fatima = await requireFatimaSession()
-  if (!fatima.error) return { ownerId: SHARED_ANDARUN_OWNER_ID }
+  if (!fatima.error) return { ownerId: SHARED_ANDARUN_OWNER_ID, lookupOwnerIds: SHARED_ANDARUN_LOOKUP_OWNER_IDS }
   return andarun
+}
+
+function lookupOwnerIds(identity) {
+  return Array.isArray(identity.lookupOwnerIds) && identity.lookupOwnerIds.length
+    ? identity.lookupOwnerIds
+    : [identity.ownerId]
 }
 
 function toClient(row) {
@@ -93,13 +99,6 @@ function todayDate() {
   return today
 }
 
-function isPastDeadline(deadline) {
-  if (!deadline) return false
-  const date = new Date(`${deadline}T00:00:00`)
-  if (Number.isNaN(date.getTime())) return false
-  return date < todayDate()
-}
-
 function laneFromDeadline(deadline, fallback = 'today') {
   if (!deadline) return fallback
   const today = todayDate()
@@ -119,7 +118,7 @@ export async function GET() {
   const { data, error } = await supabaseAdmin
     .from('andarun_todos')
     .select('*')
-    .eq('owner_id', identity.ownerId)
+    .in('owner_id', lookupOwnerIds(identity))
     .order('done', { ascending: true })
     .order('updated_at', { ascending: false })
 
@@ -149,9 +148,6 @@ export async function POST(request) {
   const itemType = ITEM_TYPES.has(body.itemType) ? body.itemType : 'todo'
   const allDay = itemType === 'event' ? Boolean(body.allDay) : false
   const eventTime = itemType === 'event' && !allDay ? cleanTime(body.eventTime) : null
-  if (isPastDeadline(deadline)) {
-    return NextResponse.json({ error: 'Past deadlines are not allowed.' }, { status: 400 })
-  }
   const lane = laneFromDeadline(deadline, LANES.has(body.lane) ? body.lane : 'today')
   if (!title) return NextResponse.json({ error: 'Title is required.' }, { status: 400 })
 
@@ -223,9 +219,6 @@ export async function PATCH(request) {
   if (typeof body.eventTime === 'string') update.event_time = cleanTime(body.eventTime)
   if (typeof body.deadline === 'string') {
     update.deadline = cleanDeadline(body.deadline)
-    if (isPastDeadline(update.deadline)) {
-      return NextResponse.json({ error: 'Past deadlines are not allowed.' }, { status: 400 })
-    }
     update.lane = laneFromDeadline(update.deadline, update.lane || 'today')
   }
   if (update.item_type === 'todo') {
@@ -244,7 +237,7 @@ export async function PATCH(request) {
     .from('andarun_todos')
     .update(update)
     .eq('id', id)
-    .eq('owner_id', identity.ownerId)
+    .in('owner_id', lookupOwnerIds(identity))
     .select('*')
     .maybeSingle()
 
@@ -272,7 +265,7 @@ export async function PATCH(request) {
         .from('andarun_todos')
         .update(fallbackUpdate)
         .eq('id', id)
-        .eq('owner_id', identity.ownerId)
+        .in('owner_id', lookupOwnerIds(identity))
         .select('*')
         .maybeSingle()
 
@@ -302,7 +295,7 @@ export async function DELETE(request) {
     .from('andarun_todos')
     .delete()
     .eq('id', id)
-    .eq('owner_id', identity.ownerId)
+    .in('owner_id', lookupOwnerIds(identity))
 
   if (error) {
     console.error('[andarun-todos] DELETE failed', error)

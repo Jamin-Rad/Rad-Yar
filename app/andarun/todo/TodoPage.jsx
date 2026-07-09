@@ -33,6 +33,34 @@ function makeId() {
   return `local-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
 }
 
+function readLocalTodos() {
+  try {
+    const local = localStorage.getItem(STORAGE_KEY)
+    const parsed = local ? JSON.parse(local) : []
+    return Array.isArray(parsed) ? parsed : []
+  } catch {
+    return []
+  }
+}
+
+function clearLocalTodos() {
+  try {
+    localStorage.removeItem(STORAGE_KEY)
+  } catch {}
+}
+
+function todoPayload(todo) {
+  return {
+    title: todo.title || '',
+    note: todo.note || '',
+    lane: todo.lane || laneFromDeadline(todo.deadline),
+    deadline: todo.deadline || '',
+    itemType: todo.itemType || 'todo',
+    eventTime: todo.itemType === 'event' && !todo.allDay ? todo.eventTime || '' : '',
+    allDay: todo.itemType === 'event' ? Boolean(todo.allDay) : false,
+  }
+}
+
 function todayValue() {
   const date = new Date()
   const year = date.getFullYear()
@@ -149,21 +177,46 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
     let active = true
 
     async function loadTodos() {
+      const localTodos = readLocalTodos()
+
       try {
         const response = await fetch(apiBase, { cache: 'no-store' })
         if (!response.ok) throw new Error('Online storage is not ready yet.')
         const payload = await response.json()
         if (!active) return
-        setTodos(Array.isArray(payload.todos) ? payload.todos : [])
+        const onlineTodos = Array.isArray(payload.todos) ? payload.todos : []
+        const unsyncedTodos = localTodos.filter(todo => String(todo.id || '').startsWith('local-'))
+
+        if (!unsyncedTodos.length) {
+          clearLocalTodos()
+          setTodos(onlineTodos)
+          setStorageMode('online')
+          return
+        }
+
+        setTodos([...unsyncedTodos, ...onlineTodos])
         setStorageMode('online')
+        setMessage('Lokale ToDos werden mit dem Online-Speicher synchronisiert...')
+
+        const syncedTodos = []
+        for (const todo of unsyncedTodos) {
+          const syncResponse = await fetch(apiBase, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(todoPayload(todo)),
+          })
+          if (!syncResponse.ok) throw new Error('Could not sync local ToDos online.')
+          const syncPayload = await syncResponse.json()
+          if (syncPayload.todo) syncedTodos.push(syncPayload.todo)
+        }
+
+        if (!active) return
+        clearLocalTodos()
+        setTodos([...syncedTodos, ...onlineTodos])
+        setMessage('')
       } catch (error) {
         if (!active) return
-        try {
-          const local = localStorage.getItem(STORAGE_KEY)
-          setTodos(local ? JSON.parse(local) : [])
-        } catch {
-          setTodos([])
-        }
+        setTodos(localTodos)
         setStorageMode('local')
         setMessage(error.message)
       } finally {
