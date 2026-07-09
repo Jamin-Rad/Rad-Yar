@@ -144,6 +144,18 @@ function emptyForm() {
   }
 }
 
+function eventFormForDate(deadline = todayValue()) {
+  return {
+    title: '',
+    note: '',
+    lane: laneFromDeadline(deadline),
+    deadline,
+    itemType: 'event',
+    eventTime: '',
+    allDay: false,
+  }
+}
+
 function formFromTodo(todo) {
   return {
     title: todo?.title || '',
@@ -172,6 +184,8 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   const [monthView, setMonthView] = useState(() => monthKeyFromDate())
   const [detailId, setDetailId] = useState(null)
   const [detailForm, setDetailForm] = useState(() => emptyForm())
+  const [newEventOpen, setNewEventOpen] = useState(false)
+  const [newEventForm, setNewEventForm] = useState(() => eventFormForDate())
 
   useEffect(() => {
     let active = true
@@ -332,6 +346,65 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
     }
   }
 
+  async function saveNewEvent(event) {
+    event.preventDefault()
+    const title = newEventForm.title.trim()
+    if (!title) return
+
+    setSaving(true)
+    setMessage('')
+    const optimistic = {
+      id: makeId(),
+      title,
+      note: newEventForm.note.trim(),
+      lane: laneFromDeadline(newEventForm.deadline),
+      deadline: newEventForm.deadline,
+      itemType: 'event',
+      eventTime: newEventForm.allDay ? '' : newEventForm.eventTime,
+      allDay: Boolean(newEventForm.allDay),
+      done: false,
+      completedAt: null,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    }
+
+    if (storageMode === 'local') {
+      setTodos(prev => [optimistic, ...prev])
+      setMonthView(monthKeyFromDate(newEventForm.deadline))
+      closeNewEvent()
+      setSaving(false)
+      return
+    }
+
+    try {
+      const response = await fetch(apiBase, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...newEventForm,
+          title,
+          note: newEventForm.note.trim(),
+          lane: laneFromDeadline(newEventForm.deadline),
+          itemType: 'event',
+          eventTime: newEventForm.allDay ? '' : newEventForm.eventTime,
+        }),
+      })
+      if (!response.ok) throw new Error('Could not save online.')
+      const payload = await response.json()
+      setTodos(prev => [payload.todo, ...prev])
+      setMonthView(monthKeyFromDate(newEventForm.deadline))
+      closeNewEvent()
+    } catch (error) {
+      setTodos(prev => [optimistic, ...prev])
+      setStorageMode('local')
+      setMessage(`${error.message} Saved locally for now.`)
+      setMonthView(monthKeyFromDate(newEventForm.deadline))
+      closeNewEvent()
+    } finally {
+      setSaving(false)
+    }
+  }
+
   const monthDays = useMemo(() => buildMonthDays(monthView), [monthView])
 
   const eventsByDate = useMemo(() => {
@@ -393,6 +466,18 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   function openDetail(todo) {
     setDetailId(todo.id)
     setDetailForm(formFromTodo(todo))
+  }
+
+  function openNewEvent(day) {
+    if (!day) return
+    setDetailId(null)
+    setNewEventForm(eventFormForDate(day))
+    setNewEventOpen(true)
+  }
+
+  function closeNewEvent() {
+    setNewEventOpen(false)
+    setNewEventForm(eventFormForDate())
   }
 
   function closeDetail() {
@@ -584,13 +669,29 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
             const events = day ? eventsByDate.get(day) || [] : []
             const isToday = day === todayValue()
             return (
-              <div className={`${styles.monthCell} ${!day ? styles.monthCellEmpty : ''} ${isToday ? styles.monthCellToday : ''}`} key={day || `empty-${index}`}>
+              <div
+                className={`${styles.monthCell} ${!day ? styles.monthCellEmpty : ''} ${isToday ? styles.monthCellToday : ''}`}
+                key={day || `empty-${index}`}
+                onClick={() => openNewEvent(day)}
+                onKeyDown={event => {
+                  if (!day || (event.key !== 'Enter' && event.key !== ' ')) return
+                  event.preventDefault()
+                  openNewEvent(day)
+                }}
+                role={day ? 'button' : undefined}
+                tabIndex={day ? 0 : undefined}
+                aria-label={day ? `Termin am ${formatDeadline(day)} hinzufügen` : undefined}
+              >
                 {day && <span className={styles.monthDay}>{Number(day.slice(-2))}</span>}
                 {events.map(event => (
                   <button
                     className={styles.monthEvent}
                     type="button"
-                    onClick={() => openDetail(event)}
+                    onClick={clickEvent => {
+                      clickEvent.stopPropagation()
+                      openDetail(event)
+                    }}
+                    onKeyDown={keyEvent => keyEvent.stopPropagation()}
                     title="Termin bearbeiten"
                     key={event.id}
                   >
@@ -637,6 +738,69 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
             ) : (
               <p className={styles.emptyCompleted}>No completed tasks yet.</p>
             )}
+          </section>
+        </div>
+      )}
+
+      {newEventOpen && (
+        <div className={styles.modalBackdrop} role="presentation" onMouseDown={closeNewEvent}>
+          <section className={styles.detailModal} role="dialog" aria-modal="true" aria-labelledby="new-event-title" onMouseDown={event => event.stopPropagation()}>
+            <header className={styles.modalHeader}>
+              <div>
+                <span className={styles.kicker}>{formatDeadline(newEventForm.deadline)}</span>
+                <h2 id="new-event-title">Neuer Termin</h2>
+              </div>
+              <button type="button" className={styles.modalClose} onClick={closeNewEvent} aria-label="Close new event">Ã—</button>
+            </header>
+
+            <form className={styles.detailForm} onSubmit={saveNewEvent}>
+              <label>
+                Titel
+                <input value={newEventForm.title} onChange={event => setNewEventForm(prev => ({ ...prev, title: event.target.value }))} placeholder="Was steht an?" required autoFocus />
+              </label>
+              <label>
+                Datum
+                <input type="date" value={newEventForm.deadline} onChange={event => {
+                  const deadline = event.target.value
+                  setNewEventForm(prev => ({ ...prev, deadline, lane: laneFromDeadline(deadline) }))
+                }} />
+              </label>
+              <label>
+                Notiz
+                <input value={newEventForm.note} onChange={event => setNewEventForm(prev => ({ ...prev, note: event.target.value }))} placeholder="Optional" />
+              </label>
+
+              <div className={styles.detailTimeRow}>
+                <label>
+                  Uhrzeit
+                  <input
+                    type="time"
+                    value={newEventForm.eventTime}
+                    disabled={newEventForm.allDay}
+                    onChange={event => setNewEventForm(prev => ({ ...prev, eventTime: event.target.value }))}
+                  />
+                </label>
+                <label className={styles.detailAllDayToggle}>
+                  <input
+                    type="checkbox"
+                    checked={newEventForm.allDay}
+                    onChange={event => setNewEventForm(prev => ({
+                      ...prev,
+                      allDay: event.target.checked,
+                      eventTime: event.target.checked ? '' : prev.eventTime,
+                    }))}
+                  />
+                  <span>Ganztag</span>
+                </label>
+              </div>
+
+              <div className={styles.newEventActions}>
+                <button className={styles.detailGhostBtn} type="button" onClick={closeNewEvent}>Abbrechen</button>
+                <button className={styles.addBtn} type="submit" disabled={saving || !newEventForm.title.trim()}>
+                  {saving ? 'Saving...' : 'Termin speichern'}
+                </button>
+              </div>
+            </form>
           </section>
         </div>
       )}

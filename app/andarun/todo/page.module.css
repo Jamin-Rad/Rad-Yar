@@ -333,10 +333,28 @@
   border: 1px solid rgba(255,255,255,.10);
   border-radius: 16px;
   background: rgba(255,255,255,.07);
+  cursor: pointer;
+  transition: border-color .15s, background .15s, transform .15s;
+}
+
+.monthCell:hover,
+.monthCell:focus-visible {
+  border-color: rgba(251,191,36,.34);
+  background: rgba(255,255,255,.11);
+  outline: none;
+  transform: translateY(-1px);
 }
 
 .monthCellEmpty {
+  cursor: default;
   opacity: .35;
+}
+
+.monthCellEmpty:hover,
+.monthCellEmpty:focus-visible {
+  border-color: rgba(255,255,255,.10);
+  background: rgba(255,255,255,.07);
+  transform: none;
 }
 
 .monthCellToday {
@@ -714,6 +732,14 @@
   margin-top: 4px;
 }
 
+.newEventActions {
+  display: grid;
+  grid-template-columns: minmax(120px, .8fr) minmax(160px, 1fr);
+  gap: 10px;
+  align-items: center;
+  margin-top: 4px;
+}
+
 .detailDeleteBtn,
 .detailGhostBtn {
   min-height: 44px;
@@ -1052,6 +1078,10 @@
   }
 
   .detailActions {
+    grid-template-columns: 1fr;
+  }
+
+  .newEventActions {
     grid-template-columns: 1fr;
   }
 
