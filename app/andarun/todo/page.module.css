@@ -703,6 +703,13 @@
   align-items: end;
 }
 
+.detailScheduleRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(118px, .42fr);
+  gap: 10px;
+  align-items: end;
+}
+
 .detailAllDayToggle {
   min-height: 44px;
   border: 1px solid rgba(255,255,255,.15);
@@ -1097,6 +1104,10 @@
   }
 
   .newEventActions {
+    grid-template-columns: 1fr;
+  }
+
+  .detailScheduleRow {
     grid-template-columns: 1fr;
   }
 

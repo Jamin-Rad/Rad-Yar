@@ -37,6 +37,8 @@ function toClient(row) {
     deadline: row.deadline || '',
     itemType,
     eventTime: row.event_time ? String(row.event_time).slice(0, 5) : parsedNote.eventTime,
+    endDate: parsedNote.endDate,
+    endTime: parsedNote.endTime,
     allDay: itemType === 'event' ? (row.all_day != null ? Boolean(row.all_day) : parsedNote.allDay) : false,
     done: Boolean(row.done),
     completedAt: row.completed_at || null,
@@ -60,7 +62,7 @@ function cleanTime(value) {
 }
 
 function parseStoredNote(value) {
-  const fallback = { note: value || '', itemType: 'todo', eventTime: '', allDay: false }
+  const fallback = { note: value || '', itemType: 'todo', eventTime: '', endDate: '', endTime: '', allDay: false }
   if (typeof value !== 'string' || !value.startsWith(META_PREFIX)) return fallback
   const end = value.indexOf(META_SUFFIX)
   if (end < 0) return fallback
@@ -71,6 +73,8 @@ function parseStoredNote(value) {
       note,
       itemType: ITEM_TYPES.has(meta.itemType) ? meta.itemType : 'todo',
       eventTime: cleanTime(meta.eventTime) || '',
+      endDate: cleanDeadline(meta.endDate) || '',
+      endTime: cleanTime(meta.endTime) || '',
       allDay: Boolean(meta.allDay),
     }
   } catch {
@@ -78,14 +82,21 @@ function parseStoredNote(value) {
   }
 }
 
-function encodeStoredNote(note, itemType, eventTime, allDay) {
+function encodeStoredNote(note, itemType, eventTime, allDay, endDate = '', endTime = '') {
   if (itemType !== 'event') return note || null
   const meta = JSON.stringify({
     itemType,
     eventTime: allDay ? '' : eventTime || '',
+    endDate: allDay ? endDate || '' : '',
+    endTime: allDay ? '' : endTime || '',
     allDay: Boolean(allDay),
   })
   return `${META_PREFIX}${meta}${META_SUFFIX}${note ? `\n${note}` : ''}`
+}
+
+function normalizeEndDate(deadline, endDate, allDay) {
+  if (!allDay || !deadline || !endDate) return ''
+  return endDate >= deadline ? endDate : deadline
 }
 
 function missingEventColumns(error) {
@@ -148,6 +159,8 @@ export async function POST(request) {
   const itemType = ITEM_TYPES.has(body.itemType) ? body.itemType : 'todo'
   const allDay = itemType === 'event' ? Boolean(body.allDay) : false
   const eventTime = itemType === 'event' && !allDay ? cleanTime(body.eventTime) : null
+  const endDate = normalizeEndDate(deadline, cleanDeadline(body.endDate), allDay)
+  const endTime = itemType === 'event' && !allDay ? cleanTime(body.endTime) : null
   const lane = laneFromDeadline(deadline, LANES.has(body.lane) ? body.lane : 'today')
   if (!title) return NextResponse.json({ error: 'Title is required.' }, { status: 400 })
 
@@ -156,7 +169,7 @@ export async function POST(request) {
     .insert({
       owner_id: identity.ownerId,
       title,
-      note: note || null,
+      note: itemType === 'event' ? encodeStoredNote(note, itemType, eventTime, allDay, endDate, endTime) : note || null,
       lane,
       deadline,
       item_type: itemType,
@@ -175,7 +188,7 @@ export async function POST(request) {
         .insert({
           owner_id: identity.ownerId,
           title,
-          note: encodeStoredNote(note, itemType, eventTime, allDay),
+          note: encodeStoredNote(note, itemType, eventTime, allDay, endDate, endTime),
           lane,
           deadline,
           done: false,
@@ -212,7 +225,6 @@ export async function PATCH(request) {
 
   const update = { updated_at: new Date().toISOString() }
   if (typeof body.title === 'string') update.title = cleanText(body.title)
-  if (typeof body.note === 'string') update.note = cleanText(body.note, 500) || null
   if (typeof body.lane === 'string' && LANES.has(body.lane)) update.lane = body.lane
   if (typeof body.itemType === 'string' && ITEM_TYPES.has(body.itemType)) update.item_type = body.itemType
   if (typeof body.allDay === 'boolean') update.all_day = body.allDay
@@ -220,6 +232,17 @@ export async function PATCH(request) {
   if (typeof body.deadline === 'string') {
     update.deadline = cleanDeadline(body.deadline)
     update.lane = laneFromDeadline(update.deadline, update.lane || 'today')
+  }
+  if (typeof body.note === 'string') {
+    const itemType = update.item_type || (ITEM_TYPES.has(body.itemType) ? body.itemType : 'todo')
+    const allDay = typeof update.all_day === 'boolean' ? update.all_day : Boolean(body.allDay)
+    const deadline = update.deadline || cleanDeadline(body.deadline)
+    const eventTime = itemType === 'event' && !allDay ? cleanTime(body.eventTime) : null
+    const endDate = normalizeEndDate(deadline, cleanDeadline(body.endDate), allDay)
+    const endTime = itemType === 'event' && !allDay ? cleanTime(body.endTime) : null
+    update.note = itemType === 'event'
+      ? encodeStoredNote(cleanText(body.note, 500), itemType, eventTime, allDay, endDate, endTime)
+      : cleanText(body.note, 500) || null
   }
   if (update.item_type === 'todo') {
     update.event_time = null
@@ -247,9 +270,11 @@ export async function PATCH(request) {
       const itemType = ITEM_TYPES.has(body.itemType) ? body.itemType : null
       const allDay = itemType === 'event' ? Boolean(body.allDay) : false
       const eventTime = itemType === 'event' && !allDay ? cleanTime(body.eventTime) : null
+      const endDate = normalizeEndDate(cleanDeadline(body.deadline), cleanDeadline(body.endDate), allDay)
+      const endTime = itemType === 'event' && !allDay ? cleanTime(body.endTime) : null
 
       if (typeof body.title === 'string') fallbackUpdate.title = cleanText(body.title)
-      if (typeof body.note === 'string') fallbackUpdate.note = encodeStoredNote(cleanText(body.note, 500), itemType || 'todo', eventTime, allDay)
+      if (typeof body.note === 'string') fallbackUpdate.note = encodeStoredNote(cleanText(body.note, 500), itemType || 'todo', eventTime, allDay, endDate, endTime)
       if (typeof body.lane === 'string' && LANES.has(body.lane)) fallbackUpdate.lane = body.lane
       if (typeof body.deadline === 'string') {
         fallbackUpdate.deadline = cleanDeadline(body.deadline)

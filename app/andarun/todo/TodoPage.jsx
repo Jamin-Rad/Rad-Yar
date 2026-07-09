@@ -57,6 +57,8 @@ function todoPayload(todo) {
     deadline: todo.deadline || '',
     itemType: todo.itemType || 'todo',
     eventTime: todo.itemType === 'event' && !todo.allDay ? todo.eventTime || '' : '',
+    endDate: todo.itemType === 'event' && todo.allDay ? todo.endDate || todo.deadline || '' : '',
+    endTime: todo.itemType === 'event' && !todo.allDay ? todo.endTime || '' : '',
     allDay: todo.itemType === 'event' ? Boolean(todo.allDay) : false,
   }
 }
@@ -78,7 +80,11 @@ function formatDeadline(value) {
 
 function formatEventMeta(todo) {
   if (todo?.itemType !== 'event') return ''
-  if (todo.allDay) return 'Ganztag'
+  if (todo.allDay) {
+    const range = todo.endDate && todo.endDate !== todo.deadline ? ` · bis ${formatDeadline(todo.endDate)}` : ''
+    return `Ganztag${range}`
+  }
+  if (todo.eventTime && todo.endTime) return `${todo.eventTime}-${todo.endTime}`
   return todo.eventTime || 'ohne Uhrzeit'
 }
 
@@ -114,6 +120,19 @@ function buildMonthDays(monthKey) {
   return days
 }
 
+function datesBetween(startValue, endValue) {
+  if (!startValue) return []
+  const start = new Date(`${startValue}T00:00:00`)
+  const end = endValue ? new Date(`${endValue}T00:00:00`) : start
+  if (Number.isNaN(start.getTime())) return []
+  const finalDate = Number.isNaN(end.getTime()) || end < start ? start : end
+  const days = []
+  for (const date = new Date(start); date <= finalDate; date.setDate(date.getDate() + 1)) {
+    days.push(`${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`)
+  }
+  return days
+}
+
 function daysUntil(value) {
   if (!value) return null
   const today = new Date()
@@ -140,6 +159,8 @@ function emptyForm() {
     deadline,
     itemType: 'todo',
     eventTime: '',
+    endDate: deadline,
+    endTime: '',
     allDay: false,
   }
 }
@@ -152,6 +173,8 @@ function eventFormForDate(deadline = todayValue()) {
     deadline,
     itemType: 'event',
     eventTime: '',
+    endDate: deadline,
+    endTime: '',
     allDay: false,
   }
 }
@@ -164,6 +187,8 @@ function formFromTodo(todo) {
     deadline: todo?.deadline || todayValue(),
     itemType: todo?.itemType || 'todo',
     eventTime: todo?.eventTime || '',
+    endDate: todo?.endDate || todo?.deadline || todayValue(),
+    endTime: todo?.endTime || '',
     allDay: Boolean(todo?.allDay),
   }
 }
@@ -313,6 +338,8 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
       deadline: form.deadline,
       itemType: form.itemType,
       eventTime: form.itemType === 'event' && !form.allDay ? form.eventTime : '',
+      endDate: form.itemType === 'event' && form.allDay ? form.endDate || form.deadline : '',
+      endTime: form.itemType === 'event' && !form.allDay ? form.endTime : '',
       allDay: form.itemType === 'event' ? form.allDay : false,
       done: false,
       completedAt: null,
@@ -362,6 +389,8 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
       deadline: newEventForm.deadline,
       itemType: 'event',
       eventTime: newEventForm.allDay ? '' : newEventForm.eventTime,
+      endDate: newEventForm.allDay ? newEventForm.endDate || newEventForm.deadline : '',
+      endTime: newEventForm.allDay ? '' : newEventForm.endTime,
       allDay: Boolean(newEventForm.allDay),
       done: false,
       completedAt: null,
@@ -388,6 +417,8 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
           lane: laneFromDeadline(newEventForm.deadline),
           itemType: 'event',
           eventTime: newEventForm.allDay ? '' : newEventForm.eventTime,
+          endDate: newEventForm.allDay ? newEventForm.endDate || newEventForm.deadline : '',
+          endTime: newEventForm.allDay ? '' : newEventForm.endTime,
         }),
       })
       if (!response.ok) throw new Error('Could not save online.')
@@ -411,9 +442,13 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   const eventsByDate = useMemo(() => {
     const map = new Map()
     for (const todo of todos) {
-      if (todo.itemType !== 'event' || !todo.deadline || !todo.deadline.startsWith(monthView)) continue
-      if (!map.has(todo.deadline)) map.set(todo.deadline, [])
-      map.get(todo.deadline).push(todo)
+      if (todo.itemType !== 'event' || !todo.deadline) continue
+      const eventDays = todo.allDay ? datesBetween(todo.deadline, todo.endDate) : [todo.deadline]
+      for (const day of eventDays) {
+        if (!day.startsWith(monthView)) continue
+        if (!map.has(day)) map.set(day, [])
+        map.get(day).push(todo)
+      }
     }
     for (const items of map.values()) {
       items.sort((a, b) => {
@@ -499,6 +534,8 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
       itemType: detailForm.itemType,
       allDay: detailForm.itemType === 'event' ? detailForm.allDay : false,
       eventTime: detailForm.itemType === 'event' && !detailForm.allDay ? detailForm.eventTime : '',
+      endDate: detailForm.itemType === 'event' && detailForm.allDay ? detailForm.endDate || detailForm.deadline : '',
+      endTime: detailForm.itemType === 'event' && !detailForm.allDay ? detailForm.endTime : '',
     }
 
     await patchTodo(detailId, patch)
@@ -573,6 +610,8 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
                   itemType: event.target.checked ? 'event' : 'todo',
                   allDay: event.target.checked ? prev.allDay : false,
                   eventTime: event.target.checked ? prev.eventTime : '',
+                  endDate: event.target.checked ? prev.endDate || prev.deadline : '',
+                  endTime: event.target.checked ? prev.endTime : '',
                 }))}
               />
               <span>Termin</span>
@@ -586,6 +625,8 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
                     ...prev,
                     allDay: event.target.checked,
                     eventTime: event.target.checked ? '' : prev.eventTime,
+                    endDate: event.target.checked ? prev.endDate || prev.deadline : '',
+                    endTime: event.target.checked ? '' : prev.endTime,
                   }))}
                 />
                 <span>Ganztag</span>
@@ -696,7 +737,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
                     title="Termin bearbeiten"
                     key={event.id}
                   >
-                    <strong>{event.allDay ? 'Ganztag' : event.eventTime || '--:--'}</strong>
+                    <strong>{formatEventMeta(event)}</strong>
                     <span>{event.title}</span>
                   </button>
                 ))}
@@ -751,7 +792,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
                 <span className={styles.kicker}>{formatDeadline(newEventForm.deadline)}</span>
                 <h2 id="new-event-title">Neuer Termin</h2>
               </div>
-              <button type="button" className={styles.modalClose} onClick={closeNewEvent} aria-label="Close new event">Ã—</button>
+              <button type="button" className={styles.modalClose} onClick={closeNewEvent} aria-label="Close new event">x</button>
             </header>
 
             <form className={styles.detailForm} onSubmit={saveNewEvent}>
@@ -763,24 +804,43 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
                 Datum
                 <input type="date" value={newEventForm.deadline} onChange={event => {
                   const deadline = event.target.value
-                  setNewEventForm(prev => ({ ...prev, deadline, lane: laneFromDeadline(deadline) }))
+                  setNewEventForm(prev => ({
+                    ...prev,
+                    deadline,
+                    endDate: !prev.endDate || prev.endDate < deadline ? deadline : prev.endDate,
+                    lane: laneFromDeadline(deadline),
+                  }))
                 }} />
               </label>
-              <label>
-                Notiz
-                <input value={newEventForm.note} onChange={event => setNewEventForm(prev => ({ ...prev, note: event.target.value }))} placeholder="Optional" />
-              </label>
 
-              <div className={styles.detailTimeRow}>
+              {newEventForm.allDay && (
                 <label>
-                  Uhrzeit
-                  <input
-                    type="time"
-                    value={newEventForm.eventTime}
-                    disabled={newEventForm.allDay}
-                    onChange={event => setNewEventForm(prev => ({ ...prev, eventTime: event.target.value }))}
-                  />
+                  Bis
+                  <input type="date" value={newEventForm.endDate || newEventForm.deadline} min={newEventForm.deadline} onChange={event => setNewEventForm(prev => ({ ...prev, endDate: event.target.value }))} />
                 </label>
+              )}
+
+              <div className={styles.detailScheduleRow}>
+                {!newEventForm.allDay && (
+                  <>
+                    <label>
+                      Uhrzeit
+                      <input
+                        type="time"
+                        value={newEventForm.eventTime}
+                        onChange={event => setNewEventForm(prev => ({ ...prev, eventTime: event.target.value }))}
+                      />
+                    </label>
+                    <label>
+                      Ende
+                      <input
+                        type="time"
+                        value={newEventForm.endTime}
+                        onChange={event => setNewEventForm(prev => ({ ...prev, endTime: event.target.value }))}
+                      />
+                    </label>
+                  </>
+                )}
                 <label className={styles.detailAllDayToggle}>
                   <input
                     type="checkbox"
@@ -789,11 +849,18 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
                       ...prev,
                       allDay: event.target.checked,
                       eventTime: event.target.checked ? '' : prev.eventTime,
+                      endDate: event.target.checked ? prev.endDate || prev.deadline : '',
+                      endTime: event.target.checked ? '' : prev.endTime,
                     }))}
                   />
                   <span>Ganztag</span>
                 </label>
               </div>
+
+              <label>
+                Notiz
+                <input value={newEventForm.note} onChange={event => setNewEventForm(prev => ({ ...prev, note: event.target.value }))} placeholder="Optional" />
+              </label>
 
               <div className={styles.newEventActions}>
                 <button className={styles.detailGhostBtn} type="button" onClick={closeNewEvent}>Abbrechen</button>
@@ -826,25 +893,44 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
                 Datum
                 <input type="date" value={detailForm.deadline} min={todayValue()} onChange={event => {
                   const deadline = event.target.value
-                  setDetailForm(prev => ({ ...prev, deadline, lane: laneFromDeadline(deadline) }))
+                  setDetailForm(prev => ({
+                    ...prev,
+                    deadline,
+                    endDate: !prev.endDate || prev.endDate < deadline ? deadline : prev.endDate,
+                    lane: laneFromDeadline(deadline),
+                  }))
                 }} />
-              </label>
-              <label>
-                Notiz
-                <input value={detailForm.note} onChange={event => setDetailForm(prev => ({ ...prev, note: event.target.value }))} placeholder="Optional" />
               </label>
 
               {detailForm.itemType === 'event' && (
-                <div className={styles.detailTimeRow}>
+                <>
+                {detailForm.allDay && (
                   <label>
-                    Uhrzeit
-                    <input
-                      type="time"
-                      value={detailForm.eventTime}
-                      disabled={detailForm.allDay}
-                      onChange={event => setDetailForm(prev => ({ ...prev, eventTime: event.target.value }))}
-                    />
+                    Bis
+                    <input type="date" value={detailForm.endDate || detailForm.deadline} min={detailForm.deadline} onChange={event => setDetailForm(prev => ({ ...prev, endDate: event.target.value }))} />
                   </label>
+                )}
+                <div className={styles.detailScheduleRow}>
+                  {!detailForm.allDay && (
+                    <>
+                      <label>
+                        Uhrzeit
+                        <input
+                          type="time"
+                          value={detailForm.eventTime}
+                          onChange={event => setDetailForm(prev => ({ ...prev, eventTime: event.target.value }))}
+                        />
+                      </label>
+                      <label>
+                        Ende
+                        <input
+                          type="time"
+                          value={detailForm.endTime}
+                          onChange={event => setDetailForm(prev => ({ ...prev, endTime: event.target.value }))}
+                        />
+                      </label>
+                    </>
+                  )}
                   <label className={styles.detailAllDayToggle}>
                     <input
                       type="checkbox"
@@ -853,12 +939,20 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
                         ...prev,
                         allDay: event.target.checked,
                         eventTime: event.target.checked ? '' : prev.eventTime,
+                        endDate: event.target.checked ? prev.endDate || prev.deadline : '',
+                        endTime: event.target.checked ? '' : prev.endTime,
                       }))}
                     />
                     <span>Ganztag</span>
                   </label>
                 </div>
+                </>
               )}
+
+              <label>
+                Notiz
+                <input value={detailForm.note} onChange={event => setDetailForm(prev => ({ ...prev, note: event.target.value }))} placeholder="Optional" />
+              </label>
 
               <div className={styles.detailActions}>
                 <button className={styles.detailDeleteBtn} type="button" onClick={deleteDetail}>Löschen</button>
