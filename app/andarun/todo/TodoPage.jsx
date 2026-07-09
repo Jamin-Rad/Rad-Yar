@@ -251,17 +251,18 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   }, [todos, storageMode, loading])
 
   const stats = useMemo(() => {
-    const open = todos.filter(todo => !todo.done)
+    const taskTodos = todos.filter(todo => todo.itemType !== 'event')
+    const open = taskTodos.filter(todo => !todo.done)
     return {
       open: open.length,
-      done: todos.length - open.length,
+      done: taskTodos.length - open.length,
       dueToday: open.filter(todo => daysUntil(todo.deadline) === 0).length,
     }
   }, [todos])
 
   const grouped = useMemo(() => {
     const result = Object.fromEntries(LANES.map(lane => [lane.id, []]))
-    const visibleTodos = todos.filter(todo => !todo.done)
+    const visibleTodos = todos.filter(todo => todo.itemType !== 'event' && !todo.done)
     for (const todo of visibleTodos) {
       const lane = result[effectiveLane(todo)] ? effectiveLane(todo) : 'today'
       result[lane].push(todo)
@@ -278,7 +279,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   const completedGroups = useMemo(() => {
     const groups = new Map()
     const completed = todos
-      .filter(todo => todo.done)
+      .filter(todo => todo.itemType !== 'event' && todo.done)
       .sort((a, b) => new Date(b.completedAt || b.updatedAt || 0) - new Date(a.completedAt || a.updatedAt || 0))
 
     for (const todo of completed) {
@@ -410,7 +411,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   const eventsByDate = useMemo(() => {
     const map = new Map()
     for (const todo of todos) {
-      if (todo.done || todo.itemType !== 'event' || !todo.deadline || !todo.deadline.startsWith(monthView)) continue
+      if (todo.itemType !== 'event' || !todo.deadline || !todo.deadline.startsWith(monthView)) continue
       if (!map.has(todo.deadline)) map.set(todo.deadline, [])
       map.get(todo.deadline).push(todo)
     }
@@ -685,7 +686,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
                 {day && <span className={styles.monthDay}>{Number(day.slice(-2))}</span>}
                 {events.map(event => (
                   <button
-                    className={styles.monthEvent}
+                    className={`${styles.monthEvent} ${event.done ? styles.monthEventDone : ''}`}
                     type="button"
                     onClick={clickEvent => {
                       clickEvent.stopPropagation()

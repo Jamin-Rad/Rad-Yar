@@ -404,6 +404,21 @@
   white-space: nowrap;
 }
 
+.monthEventDone {
+  background: rgba(148,163,184,.14);
+  color: rgba(226,232,240,.72);
+}
+
+.monthEventDone strong {
+  color: rgba(226,232,240,.64);
+}
+
+.monthEventDone span {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: rgba(226,232,240,.36);
+}
+
 .column {
   min-height: 460px;
   border-radius: 30px;
