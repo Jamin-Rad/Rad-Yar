@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { ClerkLoaded, ClerkLoading, useUser } from '@clerk/nextjs'
 import styles from './Navbar.module.css'
 
-const ADMIN_EMAIL = 'dr.benjamin.zia@gmail.com'
+const ADMIN_EMAIL = 'dr.benjaminzia@gmail.com'
 
 function getGreeting(lang) {
   const h = new Date().getHours()

@@ -196,9 +196,13 @@
   width: 28px; height: 28px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   font-size: 11px; font-weight: 700;
+  border: 0;
   background: #f0f2f8; color: #94a3b8;
+  cursor: pointer;
+  font-family: inherit;
   transition: all .2s;
 }
+.dot:hover { transform: translateY(-1px); }
 .dotCur { background: #f97316 !important; color: #fff !important; box-shadow: 0 2px 8px rgba(249,115,22,0.4); }
 .dotOk  { background: #059669 !important; color: #fff !important; }
 .dotErr { background: #ef4444 !important; color: #fff !important; }

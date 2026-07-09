@@ -1,4 +1,6 @@
 // ─── Abo- und Zugriffsstufen ────────────────────────────
+import { canonicalEmail, primaryEmailFromUser } from '@/lib/emailIdentity'
+
 // Subscription-Status wird serverseitig in Clerk `publicMetadata.subscription`
 // gepflegt (manuell durch den Admin), siehe app/api/admin/users/[userId]/route.js.
 
@@ -9,6 +11,11 @@ export const PROMO_LIMIT = 1000
 export const PROMO_MONTHS = 5
 export const TECHNIK_FACH_ID = 'technik'
 export const TECHNIK_FREE_KAPITEL_IDS = ['technik-kontrastmittel']
+export const ADMIN_ACCESS_EMAIL = 'dr.benjaminzia@gmail.com'
+
+export function isAdminAccessUser(user) {
+  return canonicalEmail(primaryEmailFromUser(user)) === canonicalEmail(ADMIN_ACCESS_EMAIL)
+}
 
 export function getSubscription(user) {
   const sub = user?.publicMetadata?.subscription
@@ -22,6 +29,7 @@ export function getSubscription(user) {
 }
 
 export function isSubscriptionActive(user) {
+  if (isAdminAccessUser(user)) return true
   const sub = getSubscription(user)
   if (sub.status !== 'active') return false
   if (!sub.until) return true

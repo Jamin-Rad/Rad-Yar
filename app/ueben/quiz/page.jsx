@@ -148,6 +148,64 @@ function formatTime(seconds) {
   return `${m}:${String(s).padStart(2, '0')}`
 }
 
+function readStoredSession(key) {
+  if (typeof window === 'undefined') return null
+  try {
+    const parsed = JSON.parse(localStorage.getItem(key) || 'null')
+    return parsed && typeof parsed === 'object' ? parsed : null
+  } catch {
+    return null
+  }
+}
+
+function hashString(value) {
+  let hash = 2166136261
+  for (let index = 0; index < value.length; index += 1) {
+    hash ^= value.charCodeAt(index)
+    hash = Math.imul(hash, 16777619)
+  }
+  return hash >>> 0
+}
+
+function seededShuffle(items, seedInput) {
+  const result = [...items]
+  let seed = hashString(seedInput) || 1
+  for (let index = result.length - 1; index > 0; index -= 1) {
+    seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0
+    const swapIndex = seed % (index + 1)
+    ;[result[index], result[swapIndex]] = [result[swapIndex], result[index]]
+  }
+  return result
+}
+
+function shuffleOptionsForSession(question, sessionKey) {
+  const originalOptions = question.options || []
+  const orderedOriginalIds = seededShuffle(
+    originalOptions.map(option => option.id),
+    `${sessionKey}:${question.id}:options`
+  )
+  const originalById = new Map(originalOptions.map(option => [option.id, option]))
+  const idMap = new Map()
+  const options = orderedOriginalIds.map((oldId, index) => {
+    const nextId = String.fromCharCode(65 + index)
+    idMap.set(oldId, nextId)
+    const option = originalById.get(oldId)
+    return { ...option, id: nextId, originalId: oldId }
+  })
+  const wrongExplanations = question.wrongExplanations
+    ? Object.fromEntries(
+        Object.entries(question.wrongExplanations).map(([oldId, explanation]) => [idMap.get(oldId) || oldId, explanation])
+      )
+    : question.wrongExplanations
+  return {
+    ...question,
+    options,
+    correct: idMap.get(question.correct) || question.correct,
+    originalCorrect: question.correct,
+    wrongExplanations,
+  }
+}
+
 function QuizContent() {
   const { lang } = useLanguage()
   const searchParams = useSearchParams()
@@ -170,43 +228,80 @@ function QuizContent() {
 
   // Kostenlose Konten: max. FREE_ITEM_LIMIT Fragen pro Durchgang
   const effectiveN = subscriptionActive ? nParam : Math.min(nParam, FREE_ITEM_LIMIT)
+  const timed = searchParams.get('timed') === '1'
+  const sessionKey = useMemo(() => {
+    const parts = [
+      fachIds.join(','),
+      themenIds.join(','),
+      questionIds.join(','),
+      effectiveN,
+      timed ? 'timed' : 'untimed',
+    ]
+    return `radyar_mcq_session_v2:${parts.join('|')}`
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fachParam, themenParam, fragenParam, effectiveN, timed])
+  const storedSession = useMemo(() => readStoredSession(sessionKey), [sessionKey])
 
   // Stable question order — fixed on mount, does NOT change when lang changes
   const orderedIds = useMemo(
-    () => questionIds.length
-      ? questionIds.slice(0, effectiveN)
-      : shuffleQuestionIds(themenIds, effectiveN),
+    () => Array.isArray(storedSession?.orderedIds) && storedSession.orderedIds.length
+      ? storedSession.orderedIds.slice(0, effectiveN)
+      : questionIds.length
+        ? questionIds.slice(0, effectiveN)
+        : shuffleQuestionIds(themenIds, effectiveN),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [themenParam, fragenParam, effectiveN]
+    [themenParam, fragenParam, effectiveN, storedSession]
   )
 
   // Translate to current language without re-shuffling
-  const questions = useMemo(
+  const rawQuestions = useMemo(
     () => questionIds.length
       ? getQuestionsByIds(orderedIds, lang)
       : getQuestionsForIds(orderedIds, lang),
     [orderedIds, lang]
   )
+  const questions = useMemo(
+    () => rawQuestions.map(question => shuffleOptionsForSession(question, sessionKey)),
+    [rawQuestions, sessionKey]
+  )
   const total = questions.length
 
   // Quiz state
-  const [current, setCurrent] = useState(0)
-  const [selected, setSelected] = useState(null)
-  const [checked,  setChecked]  = useState(false)
-  const [answers,  setAnswers]  = useState([])
-  const [phase,    setPhase]    = useState('quiz') // 'quiz' | 'result'
+  const [current, setCurrent] = useState(() => Math.max(0, Number(storedSession?.current) || 0))
+  const [selected, setSelected] = useState(() => storedSession?.selected || null)
+  const [checked,  setChecked]  = useState(() => Boolean(storedSession?.checked))
+  const [answers,  setAnswers]  = useState(() => Array.isArray(storedSession?.answers) ? storedSession.answers : [])
+  const [phase,    setPhase]    = useState(() => storedSession?.phase === 'result' ? 'result' : 'quiz') // 'quiz' | 'result'
   const [filter,   setFilter]   = useState('all')
 
   // Zeitlimit (optional): 60 Sekunden pro Frage für den ganzen Durchgang
-  const timed = searchParams.get('timed') === '1'
   const totalSeconds = total * 60
-  const [timeLeft, setTimeLeft] = useState(totalSeconds)
+  const [timeLeft, setTimeLeft] = useState(() => Number(storedSession?.timeLeft) || totalSeconds)
   const timeUpRef = useRef(false)
 
   useEffect(() => {
-    setTimeLeft(totalSeconds)
+    if (!storedSession?.timeLeft) setTimeLeft(totalSeconds)
     timeUpRef.current = false
-  }, [totalSeconds])
+  }, [totalSeconds, storedSession])
+
+  useEffect(() => {
+    if (current < total) return
+    setCurrent(Math.max(0, total - 1))
+  }, [current, total])
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || total === 0) return
+    localStorage.setItem(sessionKey, JSON.stringify({
+      orderedIds,
+      current,
+      selected,
+      checked,
+      answers,
+      phase,
+      timeLeft,
+      updatedAt: new Date().toISOString(),
+    }))
+  }, [answers, checked, current, orderedIds, phase, selected, sessionKey, timeLeft, total])
 
   useEffect(() => {
     if (!timed || phase !== 'quiz' || total === 0) return
@@ -228,6 +323,15 @@ function QuizContent() {
       ...prev.filter(a => a.qId !== q.id),
       { qId: q.id, selected, correct: selected === q.correct },
     ])
+  }
+
+  const goToQuestion = (index) => {
+    const nextQuestion = questions[index]
+    if (!nextQuestion) return
+    const existingAnswer = answers.find(answer => answer.qId === nextQuestion.id)
+    setCurrent(index)
+    setSelected(existingAnswer?.selected || null)
+    setChecked(Boolean(existingAnswer))
   }
 
   const saveMcqResult = (finalAnswers) => {
@@ -270,12 +374,11 @@ function QuizContent() {
     if (isLast) {
       const finalAnswers = [...answers.filter(a => a.qId !== q.id), { qId: q.id, selected, correct: selected === q.correct }]
       saveMcqResult(finalAnswers)
+      setAnswers(finalAnswers)
       setPhase('result')
       return
     }
-    setCurrent(c => c + 1)
-    setSelected(null)
-    setChecked(false)
+    goToQuestion(current + 1)
   }
 
   // Zeit abgelaufen → Durchgang sofort beenden
@@ -295,6 +398,7 @@ function QuizContent() {
     setCurrent(0); setSelected(null); setChecked(false)
     setAnswers([]); setPhase('quiz'); setFilter('all')
     setTimeLeft(totalSeconds); timeUpRef.current = false
+    if (typeof window !== 'undefined') localStorage.removeItem(sessionKey)
   }
 
   // ── NO QUESTIONS ──────────────────────────────
@@ -479,7 +583,17 @@ function QuizContent() {
             {questions.map((_, i) => {
               const ans = answers.find(a => a.qId === questions[i].id)
               const cls = i === current ? styles.dotCur : ans?.correct ? styles.dotOk : ans ? styles.dotErr : styles.dot
-              return <div key={i} className={`${styles.dot} ${cls}`}>{i+1}</div>
+              return (
+                <button
+                  key={questions[i].id}
+                  type="button"
+                  className={`${styles.dot} ${cls}`}
+                  onClick={() => goToQuestion(i)}
+                  aria-label={`Frage ${i + 1} anzeigen`}
+                >
+                  {i+1}
+                </button>
+              )
             })}
           </div>
           <div className={styles.trackerScore}>

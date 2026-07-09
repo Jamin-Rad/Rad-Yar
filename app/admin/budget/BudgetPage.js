@@ -920,7 +920,6 @@ ${manualEntries.length ? `
     }
     updateMonth(c => ({ ...c, entries: c.entries.filter(i => i.id !== id) }))
   }
-  function clearMonth() { if (!window.confirm(`Alle Einträge für ${formatMonthLabel(month)} löschen?`)) return; setStore(prev => { const n = { ...prev }; delete n[month]; return n }) }
 
   function savePlanBudget() {
     const amount = Number(planAmount)
@@ -1302,7 +1301,6 @@ ${manualEntries.length ? `
                         <span style={{ fontSize: 13, fontWeight: 700, color: '#475569' }}>Saldo</span>
                         <strong className={summary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative} style={{ fontSize: 16 }}>{formatMoney(summary.balance)}</strong>
                       </div>
-                      <button className={styles.actionBtn} style={{ fontSize: 11 }} type="button" onClick={clearMonth}>Monat löschen</button>
                     </div>
                   )}
                 </div>
