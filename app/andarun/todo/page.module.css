@@ -10,6 +10,236 @@
   font-family: var(--font-manrope, sans-serif);
 }
 
+.lightPage {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(254, 205, 211, .72), transparent 30%),
+    radial-gradient(circle at 82% 0%, rgba(186, 230, 253, .72), transparent 32%),
+    linear-gradient(180deg, #fff7ed 0%, #f8fafc 42%, #eef7f2 100%);
+  color: #1f2937;
+}
+
+.lightPage .backLink,
+.lightPage .stats span,
+.lightPage .completedToggle,
+.lightPage .monthControls button,
+.lightPage .modalClose {
+  border-color: rgba(148, 163, 184, .34);
+  background: rgba(255, 255, 255, .72);
+  color: #475569;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, .06);
+}
+
+.lightPage .completedToggle:hover,
+.lightPage .monthControls button:hover,
+.lightPage .backLink:hover {
+  border-color: rgba(14, 165, 233, .32);
+  background: rgba(255, 255, 255, .94);
+  color: #0f172a;
+}
+
+.lightPage .kicker {
+  color: #0f766e;
+}
+
+.lightPage .hero h1 {
+  color: #1f2937;
+  text-shadow: 0 14px 36px rgba(15, 23, 42, .12);
+}
+
+.lightPage .stats strong {
+  color: #0f172a;
+}
+
+.lightPage .message {
+  border-color: rgba(217, 119, 6, .2);
+  background: rgba(255, 251, 235, .9);
+  color: #92400e;
+}
+
+.lightPage .composer,
+.lightPage .column,
+.lightPage .monthPanel,
+.lightPage .completedModal,
+.lightPage .detailModal {
+  border-color: rgba(148, 163, 184, .26);
+  background:
+    radial-gradient(circle at 24% 0%, rgba(255,255,255,.92), transparent 38%),
+    rgba(255, 255, 255, .76);
+  box-shadow:
+    0 24px 70px rgba(15, 23, 42, .10),
+    inset 0 1px 0 rgba(255, 255, 255, .9);
+}
+
+.lightPage .form label,
+.lightPage .detailForm label {
+  color: #64748b;
+}
+
+.lightPage .form input,
+.lightPage .detailForm input {
+  border-color: rgba(148, 163, 184, .34);
+  background: rgba(255, 255, 255, .82);
+  color: #0f172a;
+}
+
+.lightPage .form input::placeholder,
+.lightPage .detailForm input::placeholder {
+  color: #94a3b8;
+}
+
+.lightPage .form input:focus,
+.lightPage .detailForm input:focus {
+  border-color: rgba(20, 184, 166, .58);
+  box-shadow: 0 0 0 4px rgba(20, 184, 166, .14);
+}
+
+.lightPage .eventToggle,
+.lightPage .detailAllDayToggle,
+.lightPage .detailGhostBtn {
+  border-color: rgba(148, 163, 184, .30);
+  background: rgba(255, 255, 255, .72);
+  color: #475569 !important;
+}
+
+.lightPage .eventToggle:hover,
+.lightPage .detailAllDayToggle:hover,
+.lightPage .detailGhostBtn:hover {
+  border-color: rgba(20, 184, 166, .34);
+  background: rgba(255, 255, 255, .94);
+  color: #0f172a !important;
+}
+
+.lightPage .eventToggleActive,
+.lightPage .addBtn {
+  background: linear-gradient(135deg, #99f6e4, #fde68a);
+  color: #134e4a !important;
+  box-shadow: 0 16px 36px rgba(20, 184, 166, .16);
+}
+
+.lightPage .detailAllDayToggle:has(input:checked) {
+  border-color: rgba(20, 184, 166, .42);
+  background: rgba(204, 251, 241, .72);
+  color: #0f766e;
+}
+
+.lightPage .monthHeader h2,
+.lightPage .columnHeader h2,
+.lightPage .modalHeader h2 {
+  color: #1f2937;
+}
+
+.lightPage .weekday,
+.lightPage .completedGroup h3 {
+  color: #0f766e;
+}
+
+.lightPage .monthCell {
+  border-color: rgba(148, 163, 184, .24);
+  background: rgba(255, 255, 255, .68);
+}
+
+.lightPage .monthCell:hover,
+.lightPage .monthCell:focus-visible {
+  border-color: rgba(20, 184, 166, .34);
+  background: rgba(255, 255, 255, .96);
+}
+
+.lightPage .monthCellEmpty:hover,
+.lightPage .monthCellEmpty:focus-visible {
+  border-color: rgba(148, 163, 184, .24);
+  background: rgba(255, 255, 255, .68);
+}
+
+.lightPage .monthCellToday {
+  border-color: rgba(20, 184, 166, .52);
+  box-shadow: inset 0 0 0 1px rgba(20, 184, 166, .16);
+}
+
+.lightPage .monthDay {
+  background: rgba(15, 118, 110, .10);
+  color: #0f766e;
+}
+
+.lightPage .monthEvent {
+  background: rgba(20, 184, 166, .14);
+  color: #0f172a;
+}
+
+.lightPage .monthEvent strong {
+  color: #0f766e;
+}
+
+.lightPage .monthEventDone {
+  background: rgba(148, 163, 184, .14);
+  color: #64748b;
+}
+
+.lightPage .monthEventDone strong {
+  color: #64748b;
+}
+
+.lightPage .columnHeader {
+  border-bottom-color: rgba(148, 163, 184, .22);
+}
+
+.lightPage .columnHeader p,
+.lightPage .empty,
+.lightPage .card p,
+.lightPage .completedItem p,
+.lightPage .emptyCompleted {
+  color: #64748b;
+}
+
+.lightPage .card,
+.lightPage .completedItem {
+  border-color: rgba(148, 163, 184, .24);
+  background: rgba(255, 255, 255, .78);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, .08);
+}
+
+.lightPage .card:hover,
+.lightPage .card:focus-visible {
+  border-color: rgba(20, 184, 166, .28);
+  background: rgba(255, 255, 255, .94);
+}
+
+.lightPage .cardTop strong,
+.lightPage .completedItem strong {
+  color: #0f172a;
+}
+
+.lightPage .checkBtn {
+  border-color: rgba(148, 163, 184, .34);
+  background: rgba(255, 255, 255, .78);
+  color: #0f766e;
+}
+
+.lightPage .deadline,
+.lightPage .cardActions button,
+.lightPage .completedItem button {
+  background: rgba(15, 118, 110, .08);
+  color: #0f766e;
+}
+
+.lightPage .soon {
+  background: rgba(251, 191, 36, .22);
+  color: #92400e;
+}
+
+.lightPage .modalBackdrop {
+  background: rgba(248, 250, 252, .72);
+}
+
+.lightPage .modalHeader {
+  border-bottom-color: rgba(148, 163, 184, .24);
+}
+
+.lightPage .detailDeleteBtn {
+  border-color: rgba(244, 63, 94, .18);
+  background: rgba(255, 228, 230, .78);
+  color: #be123c;
+}
+
 .hero {
   width: min(1180px, 100%);
   display: grid;

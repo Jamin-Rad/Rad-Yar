@@ -16,5 +16,5 @@ export const dynamic = 'force-dynamic'
 export default async function FatimaTodoPage() {
   if (!(await hasFatimaSession())) redirect('/fatima/login')
 
-  return <TodoPage apiBase="/api/fatima/todos" homeHref="/fatima" homeLabel="Fatima" />
+  return <TodoPage apiBase="/api/fatima/todos" homeHref="/fatima" homeLabel="Fatima" theme="light" />
 }

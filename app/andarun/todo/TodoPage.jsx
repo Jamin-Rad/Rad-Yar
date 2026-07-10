@@ -198,7 +198,7 @@ function effectiveLane(todo) {
   return laneFromDeadline(todo.deadline)
 }
 
-export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/andarun', homeLabel = 'Andarun' }) {
+export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/andarun', homeLabel = 'Andarun', theme = 'dark' }) {
   const [todos, setTodos] = useState([])
   const [form, setForm] = useState(() => emptyForm())
   const [loading, setLoading] = useState(true)
@@ -552,7 +552,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   const detailTodo = detailId ? todos.find(todo => todo.id === detailId) : null
 
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page} ${theme === 'light' ? styles.lightPage : ''}`}>
       <section className={styles.hero}>
         <Link href={homeHref} className={styles.backLink}>{homeLabel}</Link>
         <div>
