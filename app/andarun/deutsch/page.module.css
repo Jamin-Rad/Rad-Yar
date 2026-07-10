@@ -23,7 +23,6 @@
   margin-bottom: 14px;
 }
 
-.hero > div:first-child,
 .heroStats,
 .reviewPanel,
 .lessonPicker,
@@ -42,11 +41,6 @@
     0 24px 80px rgba(0, 0, 0, .28),
     inset 0 1px 0 rgba(255,255,255,.18);
   backdrop-filter: blur(18px);
-}
-
-.hero > div:first-child {
-  border-radius: 26px;
-  padding: clamp(22px, 4vw, 42px);
 }
 
 .backLink,
@@ -77,11 +71,12 @@
   margin: 6px 0 14px;
   color: #fff;
   font-family: var(--font-fraunces, serif);
-  font-size: clamp(44px, 7vw, 92px);
+  font-size: clamp(62px, 12vw, 142px);
   font-style: italic;
   font-weight: 950;
   letter-spacing: 0;
-  line-height: .9;
+  line-height: .86;
+  text-shadow: 0 16px 50px rgba(0,0,0,.44);
 }
 
 .hero p {
@@ -1079,7 +1074,6 @@
     linear-gradient(180deg, #fff7f5 0%, #fffaf0 48%, #f5fbff 100%);
 }
 
-.lightShell .hero > div:first-child,
 .lightShell .heroStats,
 .lightShell .reviewPanel,
 .lightShell .lessonPicker,
@@ -1131,6 +1125,10 @@
 .lightShell .flashNumbers strong,
 .lightShell .fulfillmentBox > strong {
   color: #4a1f32;
+}
+
+.lightShell .hero h1 {
+  text-shadow: 0 16px 42px rgba(157, 23, 77, .14);
 }
 
 .lightShell .hero p,
@@ -1356,7 +1354,6 @@
     padding: 12px;
   }
 
-  .hero > div:first-child,
   .heroStats,
   .reviewPanel,
   .lessonPicker,
