@@ -560,9 +560,9 @@ export default function DeutschPage({
       <header className={`${styles.hero} ${!lessonMode ? styles.heroSimple : ''}`}>
         <div>
           <Link className={styles.backLink} href={homeHref}>{homeLabel}</Link>
-          <span className={styles.kicker}>{lessonMode ? 'Deutschlektion' : 'B2/C1 Alltag'}</span>
-          <h1>{lessonMode ? activeLesson.title : 'Deutschlernen'}</h1>
-          {lessonMode && <p>{activeLesson.topic}</p>}
+          <span className={styles.kicker}>{lessonMode ? activeLesson.level : 'Sprachtraining'}</span>
+          <h1>{lessonMode ? activeLesson.title : 'Deutsch lernen'}</h1>
+          <p>{lessonMode ? activeLesson.topic : 'Lesen, Hören, Schreiben und Wiederholen in einem ruhigen Lernbereich.'}</p>
           {!lessonMode && canImport && (
             <button type="button" className={styles.importMiniBtn} onClick={() => setImportOpen(true)}>
               Import

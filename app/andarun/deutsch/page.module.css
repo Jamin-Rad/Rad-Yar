@@ -1395,3 +1395,573 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Deutsch learning redesign */
+.shell {
+  --pageText: #eef7f4;
+  --mutedText: rgba(226, 232, 240, .70);
+  --softText: rgba(226, 232, 240, .56);
+  --panelBg: rgba(10, 17, 31, .74);
+  --panelBgStrong: rgba(12, 20, 36, .88);
+  --panelBorder: rgba(255, 255, 255, .13);
+  --panelHover: rgba(255, 255, 255, .10);
+  --fieldBg: rgba(255, 255, 255, .075);
+  --accent: #2dd4bf;
+  --accent2: #f59e0b;
+  --accent3: #fb7185;
+  --accentSoft: rgba(45, 212, 191, .14);
+  --shadow: 0 24px 70px rgba(0, 0, 0, .24);
+  padding: clamp(18px, 4vw, 54px);
+  color: var(--pageText);
+  background:
+    radial-gradient(circle at 12% 8%, rgba(45, 212, 191, .22), transparent 28%),
+    radial-gradient(circle at 86% 10%, rgba(251, 113, 133, .16), transparent 28%),
+    radial-gradient(circle at 58% 96%, rgba(245, 158, 11, .12), transparent 30%),
+    linear-gradient(145deg, #07111f 0%, #0f172a 54%, #111827 100%);
+}
+
+.lightShell {
+  --pageText: #3b1f2d;
+  --mutedText: rgba(84, 48, 64, .72);
+  --softText: rgba(107, 58, 77, .62);
+  --panelBg: rgba(255, 255, 255, .72);
+  --panelBgStrong: rgba(255, 255, 255, .88);
+  --panelBorder: rgba(244, 114, 182, .18);
+  --panelHover: rgba(255, 255, 255, .94);
+  --fieldBg: rgba(255, 255, 255, .76);
+  --accent: #db2777;
+  --accent2: #ea580c;
+  --accent3: #0284c7;
+  --accentSoft: rgba(252, 231, 243, .74);
+  --shadow: 0 24px 70px rgba(157, 23, 77, .10);
+  background:
+    radial-gradient(circle at 14% 8%, rgba(251, 207, 232, .78), transparent 28%),
+    radial-gradient(circle at 84% 4%, rgba(254, 215, 170, .70), transparent 30%),
+    radial-gradient(circle at 76% 88%, rgba(186, 230, 253, .52), transparent 30%),
+    linear-gradient(180deg, #fff7f5 0%, #fffaf0 48%, #f5fbff 100%);
+}
+
+.hero,
+.dashboard,
+.homeGrid,
+.lessonGrid,
+.writingGrid,
+.importGrid,
+.singleSection,
+.tabs,
+.status {
+  width: min(1180px, 100%);
+}
+
+.hero {
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 340px);
+  align-items: end;
+  gap: 22px;
+  margin-bottom: 22px;
+}
+
+.heroSimple {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.hero > div:first-child {
+  max-width: 900px;
+}
+
+.backLink {
+  min-height: 38px;
+  border-color: var(--panelBorder);
+  background: rgba(255, 255, 255, .08);
+  color: var(--mutedText);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
+  backdrop-filter: blur(12px);
+  transition: transform .16s, background .16s, border-color .16s, color .16s;
+}
+
+.lightShell .backLink {
+  border-color: var(--panelBorder);
+  background: rgba(255, 255, 255, .72);
+  color: #6b3a4d;
+}
+
+.backLink:hover {
+  border-color: color-mix(in srgb, var(--accent) 44%, transparent);
+  background: var(--panelHover);
+  color: var(--pageText);
+  transform: translateY(-1px);
+}
+
+.kicker,
+.panelHead span,
+.sectionIntro span {
+  color: var(--accent);
+  letter-spacing: .16em;
+}
+
+.hero h1 {
+  max-width: 980px;
+  margin: 4px 0 10px;
+  color: var(--pageText);
+  font-size: clamp(58px, 10vw, 132px);
+  line-height: .86;
+  text-shadow: 0 18px 58px rgba(0, 0, 0, .24);
+}
+
+.lightShell .hero h1 {
+  color: #4a1f32;
+  text-shadow: 0 18px 48px rgba(157, 23, 77, .13);
+}
+
+.hero p {
+  max-width: 680px;
+  color: var(--mutedText);
+  font-size: clamp(16px, 1.5vw, 19px);
+  line-height: 1.62;
+}
+
+.heroStats,
+.reviewPanel,
+.lessonPicker,
+.textPanel,
+.flashPanel,
+.questionCard,
+.correctionPanel,
+.sectionIntro,
+.wordModal,
+.importModal,
+.flashModal {
+  border: 1px solid var(--panelBorder);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .03)),
+    var(--panelBg);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.lightShell .heroStats,
+.lightShell .reviewPanel,
+.lightShell .lessonPicker,
+.lightShell .textPanel,
+.lightShell .flashPanel,
+.lightShell .questionCard,
+.lightShell .correctionPanel,
+.lightShell .sectionIntro,
+.lightShell .wordModal,
+.lightShell .importModal,
+.lightShell .flashModal {
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255, 255, 255, .96), transparent 38%),
+    var(--panelBg);
+}
+
+.heroStats {
+  border-radius: 22px;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  padding: 12px;
+}
+
+.heroStats span,
+.flashNumbers span {
+  min-height: 76px;
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .06);
+  color: var(--softText);
+}
+
+.lightShell .heroStats span,
+.lightShell .flashNumbers span {
+  border-color: rgba(244, 114, 182, .12);
+  background: rgba(255, 255, 255, .54);
+}
+
+.heroStats strong,
+.flashNumbers strong {
+  color: var(--pageText);
+}
+
+.dashboard,
+.homeGrid,
+.lessonGrid,
+.writingGrid,
+.importGrid {
+  gap: 18px;
+}
+
+.reviewPanel,
+.lessonPicker,
+.textPanel,
+.flashPanel,
+.correctionPanel,
+.sectionIntro {
+  border-radius: 22px;
+  padding: clamp(16px, 2vw, 22px);
+}
+
+.panelHead {
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.panelHead strong {
+  color: var(--pageText);
+  font-size: clamp(16px, 1.6vw, 22px);
+  line-height: 1.15;
+}
+
+.reviewCard h2,
+.sectionIntro h2,
+.wordModal h2,
+.importModal h2,
+.flashModal h2,
+.flashCardFace h3 {
+  color: var(--pageText);
+}
+
+.reviewCard p,
+.empty,
+.homeLead,
+.listeningHint,
+.taskText,
+.explanation,
+.lessonCard p,
+.readingText,
+.transcript p,
+.checklist li,
+.correctionPanel p,
+.grammarList li,
+.wordModal p,
+.flashCardFace p {
+  color: var(--mutedText);
+}
+
+.lessonRows,
+.lessonList,
+.questionList {
+  gap: 12px;
+}
+
+.lessonRow,
+.lessonList a,
+.writingHistory button {
+  border: 1px solid var(--panelBorder);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .055);
+  color: var(--pageText);
+  box-shadow: none;
+}
+
+.lightShell .lessonRow,
+.lightShell .lessonList a,
+.lightShell .writingHistory button {
+  background: rgba(255, 255, 255, .58);
+}
+
+.lessonRow {
+  min-height: 104px;
+  grid-template-columns: minmax(0, 1fr) minmax(120px, 170px);
+}
+
+.lessonRow:hover,
+.lessonList a:hover,
+.writingHistory button:hover {
+  border-color: color-mix(in srgb, var(--accent) 36%, transparent);
+  background: var(--panelHover);
+}
+
+.lessonRow span,
+.lessonRow small,
+.lessonRow small,
+.lessonList a span,
+.reviewCard small,
+.writingHistory span,
+.writingHistory small,
+.flashCardFace small,
+.grammarList span,
+.mistakeRow span {
+  color: var(--softText);
+}
+
+.lessonRow strong,
+.lessonList a strong,
+.writingHistory strong,
+.questionTop strong,
+.completedItem strong {
+  color: var(--pageText);
+}
+
+.progressWrap b {
+  color: var(--accent);
+}
+
+.progressWrap i {
+  background: rgba(255, 255, 255, .10);
+}
+
+.lightShell .progressWrap i {
+  background: rgba(244, 114, 182, .14);
+}
+
+.progressWrap em {
+  background: linear-gradient(90deg, var(--accent), var(--accent3), var(--accent2));
+}
+
+.flashNumbers {
+  gap: 10px;
+}
+
+.tabs {
+  position: sticky;
+  top: 10px;
+  z-index: 5;
+  gap: 6px;
+  border: 1px solid var(--panelBorder);
+  border-radius: 18px;
+  background: rgba(7, 17, 31, .78);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, .18);
+  backdrop-filter: blur(18px);
+}
+
+.lightShell .tabs {
+  background: rgba(255, 255, 255, .68);
+}
+
+.tabs button,
+.reviewActions button,
+.actionRow button,
+.primaryBtn,
+.wordShelf button,
+.optionBtn,
+.mistakeRow button,
+.closeBtn,
+.practiceAllBtn,
+.ghostBtn {
+  border-color: var(--panelBorder);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .07);
+  color: var(--mutedText);
+}
+
+.lightShell .tabs button,
+.lightShell .reviewActions button,
+.lightShell .actionRow button,
+.lightShell .primaryBtn,
+.lightShell .wordShelf button,
+.lightShell .optionBtn,
+.lightShell .mistakeRow button,
+.lightShell .closeBtn,
+.lightShell .practiceAllBtn,
+.lightShell .ghostBtn {
+  background: rgba(255, 255, 255, .64);
+}
+
+.tabs button:hover,
+.reviewActions button:hover,
+.actionRow button:hover,
+.primaryBtn:hover,
+.wordShelf button:hover,
+.optionBtn:hover,
+.mistakeRow button:hover,
+.closeBtn:hover,
+.practiceAllBtn:hover,
+.ghostBtn:hover {
+  border-color: color-mix(in srgb, var(--accent) 38%, transparent);
+  background: var(--panelHover);
+  color: var(--pageText);
+}
+
+.tabs .activeTab,
+.activeLesson {
+  border-color: color-mix(in srgb, var(--accent) 50%, transparent) !important;
+  background: var(--accentSoft) !important;
+  color: var(--pageText) !important;
+}
+
+.primaryBtn {
+  border: 0;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #07111f;
+  box-shadow: 0 18px 40px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.lightShell .primaryBtn {
+  color: #4a1f32;
+}
+
+.readingText {
+  color: var(--pageText);
+  font-size: clamp(18px, 1.8vw, 22px);
+  line-height: 1.85;
+}
+
+.wordBtn {
+  background: var(--accentSoft);
+  color: var(--accent);
+}
+
+.plainWordBtn:hover {
+  background: var(--accentSoft);
+  color: var(--pageText);
+}
+
+.wordShelf .savedWord {
+  border-color: color-mix(in srgb, var(--accent2) 44%, transparent);
+  background: color-mix(in srgb, var(--accent2) 18%, transparent);
+  color: var(--accent2);
+}
+
+.questionCard {
+  display: grid;
+  gap: 14px;
+}
+
+.questionTop {
+  margin-bottom: 0;
+}
+
+.questionTop span {
+  background: var(--accentSoft);
+  color: var(--accent);
+}
+
+.optionBtn {
+  min-height: 52px;
+}
+
+.correct {
+  border-color: rgba(34, 197, 94, .58) !important;
+  background: rgba(34, 197, 94, .16) !important;
+}
+
+.wrong {
+  border-color: rgba(248, 113, 113, .58) !important;
+  background: rgba(248, 113, 113, .16) !important;
+}
+
+.explanation {
+  border-left-color: color-mix(in srgb, var(--accent) 46%, transparent);
+}
+
+.transcript,
+.checklist li,
+.markedCorrection,
+.markLegend span,
+.grammarList li,
+.mistakeRow,
+.promptDetails,
+.flashCardFace,
+.fulfillmentBox {
+  border: 1px solid var(--panelBorder);
+  background: rgba(255, 255, 255, .055);
+}
+
+.lightShell .transcript,
+.lightShell .checklist li,
+.lightShell .markedCorrection,
+.lightShell .markLegend span,
+.lightShell .grammarList li,
+.lightShell .mistakeRow,
+.lightShell .promptDetails,
+.lightShell .flashCardFace,
+.lightShell .fulfillmentBox {
+  background: rgba(255, 255, 255, .60);
+}
+
+.textPanel textarea,
+.promptBox,
+.importModal textarea {
+  border-color: var(--panelBorder);
+  background: var(--fieldBg);
+  color: var(--pageText);
+}
+
+.textPanel textarea:focus,
+.promptBox:focus,
+.importModal textarea:focus {
+  border-color: color-mix(in srgb, var(--accent) 46%, transparent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+.writingHistory h3,
+.correctionPanel h3,
+.grammarList em,
+.reviewCard em,
+.wordModal em,
+.fulfillmentBox > span,
+.fulfillmentBox h4 {
+  color: var(--accent);
+}
+
+.fulfillmentBox > strong {
+  color: var(--pageText);
+}
+
+.modalBackdrop {
+  background: rgba(3, 7, 18, .68);
+  backdrop-filter: blur(14px);
+}
+
+.lightShell .modalBackdrop {
+  background: rgba(255, 247, 245, .72);
+}
+
+.loading,
+.lightShell .loading {
+  background: var(--panelBgStrong);
+  color: var(--pageText);
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .dashboard,
+  .homeGrid,
+  .lessonGrid,
+  .writingGrid,
+  .importGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroStats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .shell {
+    padding: 14px;
+  }
+
+  .hero {
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-size: clamp(48px, 18vw, 78px);
+  }
+
+  .heroStats,
+  .flashNumbers,
+  .lessonRow,
+  .boxGrid,
+  .optionsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .reviewPanel,
+  .lessonPicker,
+  .textPanel,
+  .flashPanel,
+  .questionCard,
+  .correctionPanel,
+  .sectionIntro {
+    border-radius: 18px;
+    padding: 14px;
+  }
+
+  .tabs {
+    position: static;
+  }
+}
