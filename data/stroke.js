@@ -50,11 +50,11 @@ export const STROKE_LESSON = {
     },
   ],
   basics: {
-    title: L('Klinik und Gefäßterritorien', 'Clinical presentation and vascular territories', 'تظاهرات بالینی و قلمروهای عروقی'),
+    title: L('Klinische Merkmale', 'Clinical features', 'ویژگی‌های بالینی'),
     lead: L(
-      'Der ischämische Schlaganfall entsteht durch einen akuten arteriellen Gefäßverschluss. Die Klinik lokalisiert häufig das betroffene Stromgebiet; die Bildgebung schließt Blutung aus, zeigt den Verschluss und schätzt Infarktkern sowie rettbare Penumbra.',
-      'Ischaemic stroke results from acute arterial occlusion. Clinical findings often localise the vascular territory; imaging excludes haemorrhage, identifies the occlusion and estimates infarct core and salvageable penumbra.',
-      'سکته ایسکمیک در اثر انسداد حاد شریانی ایجاد می‌شود. علائم بالینی اغلب قلمرو درگیر را مشخص می‌کنند و تصویربرداری خونریزی را رد، محل انسداد را تعیین و هسته انفارکت و پنومبرای قابل نجات را برآورد می‌کند.'
+      'Der Schlaganfall ist ein klinisches Syndrom, das radiologisch in zwei Hauptformen unterteilt wird: ischämischer Schlaganfall durch akute arterielle Durchblutungsstörung etwa 80-85% und hämorrhagischer Schlaganfall etwa 15-20%, davon intrazerebrale Blutung 10-15% und Subarachnoidalblutung etwa 5%. Die klinische Schwere wird primär mit dem NIHSS beurteilt.',
+      'Stroke is a clinical syndrome that is radiologically divided into two main forms: ischaemic stroke from acute arterial perfusion failure in about 80-85% and haemorrhagic stroke in about 15-20%, including intracerebral haemorrhage in 10-15% and subarachnoid haemorrhage in about 5%. Clinical severity is primarily assessed with the NIHSS.',
+      'سکته مغزی یک سندرم بالینی است که از نظر تصویربرداری به دو شکل اصلی تقسیم می‌شود: سکته ایسکمیک ناشی از اختلال حاد خون‌رسانی شریانی در حدود ۸۰ تا ۸۵٪ و سکته هموراژیک در حدود ۱۵ تا ۲۰٪، شامل خونریزی داخل مغزی ۱۰ تا ۱۵٪ و خونریزی ساب‌آراکنوئید حدود ۵٪. شدت بالینی عمدتاً با NIHSS ارزیابی می‌شود.'
     ),
     headers: [
       L('Gefäß', 'Vessel', 'رگ'),
@@ -65,39 +65,48 @@ export const STROKE_LESSON = {
       [
         'ACA',
         L('Medialer Frontal- und Parietallappen', 'Medial frontal and parietal lobes', 'لوب فرونتال و پاریتال مدیال'),
-        L('Kontralaterale beinbetonte Parese, Antriebsstörung, ggf. Harninkontinenz', 'Contralateral leg-predominant weakness, abulia, sometimes urinary incontinence', 'ضعف بیشتر در پای مقابل، ابولیا و گاهی بی‌اختیاری ادرار'),
+        L('Kontralaterale beinbetonte Hemiparese, ggf. Harninkontinenz', 'Contralateral leg-predominant hemiparesis, sometimes urinary incontinence', 'همی‌پارزی غالب پا در سمت مقابل، گاهی بی‌اختیاری ادرار'),
       ],
       [
         'MCA',
         L('Lateraler Frontal-, Parietal- und Temporallappen, tiefe Kerne', 'Lateral frontal, parietal and temporal lobes; deep nuclei', 'لوب‌های فرونتال، پاریتال و تمپورال لترال و هسته‌های عمقی'),
-        L('Gesichts-/armbetonte Hemiparese; dominant Aphasie, nicht dominant Neglect; Hemianopsie', 'Face/arm-predominant hemiparesis; aphasia if dominant, neglect if non-dominant; hemianopia', 'همی‌پارزی غالب صورت و دست؛ آفازی در نیمکره غالب، نگلکت در غیرغالب و همی‌آنوپی'),
+        L('Arm- und gesichtsbetonte Hemiparese, homonyme Hemianopsie. Dominante Hemisphäre: Aphasie; nicht dominante Hemisphäre: Neglect. Meist gilt links Aphasie, rechts Neglect.', 'Arm- and face-predominant hemiparesis, homonymous hemianopia. Dominant hemisphere: aphasia; non-dominant hemisphere: neglect. Usually left-sided lesions cause aphasia and right-sided lesions cause neglect.', 'همی‌پارزی غالب دست و صورت، همی‌آنوپی هومونیم. نیمکره غالب: آفازی؛ نیمکره غیرغالب: نگلکت. معمولاً ضایعه چپ باعث آفازی و ضایعه راست باعث نگلکت می‌شود.'),
       ],
       [
         'PCA',
         L('Okzipitallappen, inferomedialer Temporallappen, Thalamus', 'Occipital lobe, inferomedial temporal lobe and thalamus', 'لوب اکسیپیتال، تمپورال اینفرومدیال و تالاموس'),
-        L('Kontralaterale homonyme Hemianopsie, Gedächtnis- oder thalamische Sensibilitätsstörung', 'Contralateral homonymous hemianopia, memory deficit or thalamic sensory syndrome', 'همی‌آنوپی هومونیم مقابل، اختلال حافظه یا سندرم حسی تالامیک'),
+        L('Kontralaterale homonyme Hemianopsie, ggf. Sensibilitätsstörung bei Thalamusbeteiligung', 'Contralateral homonymous hemianopia, sometimes sensory disturbance with thalamic involvement', 'همی‌آنوپی هومونیم مقابل، گاهی اختلال حسی در درگیری تالاموس'),
       ],
       [
-        L('Vertebrobasilär', 'Vertebrobasilar', 'ورتبروبازیلار'),
+        L('A. basilaris / Vertebralis', 'Basilar / vertebral arteries', 'شریان بازیلار / ورتبرال'),
         L('Hirnstamm und Kleinhirn', 'Brainstem and cerebellum', 'ساقه مغز و مخچه'),
-        L('Schwindel, Ataxie, Diplopie, Dysarthrie, gekreuzte Defizite oder Bewusstseinsstörung', 'Vertigo, ataxia, diplopia, dysarthria, crossed deficits or impaired consciousness', 'سرگیجه، آتاکسی، دوبینی، دیزآرتری، نقص متقاطع یا اختلال هوشیاری'),
+        L('Schwindel, Ataxie, Diplopie, Dysarthrie, Bewusstseinsstörungen', 'Vertigo, ataxia, diplopia, dysarthria, impaired consciousness', 'سرگیجه، آتاکسی، دوبینی، دیزآرتری، اختلال هوشیاری'),
+      ],
+      [
+        L('PICA (Wallenberg-Syndrom)', 'PICA (Wallenberg syndrome)', 'PICA (سندرم والنبرگ)'),
+        L('Kleinhirnunterfläche, Medulla oblongata', 'Inferior cerebellar surface and medulla oblongata', 'سطح تحتانی مخچه و بصل‌النخاع'),
+        L('Ipsilateral Horner-Syndrom und Ataxie; kontralaterale dissoziierte Sensibilitätsstörung für Schmerz und Temperatur', 'Ipsilateral Horner syndrome and ataxia; contralateral dissociated sensory loss for pain and temperature', 'سندرم هورنر و آتاکسی همان‌طرف؛ اختلال حسی تفکیک‌شده سمت مقابل برای درد و حرارت'),
       ],
     ],
     items: [
       {
-        title: 'NIHSS',
-        text: L('Standardisierte Schweregradeinschätzung von 0 bis 42. Ein niedriger Wert schließt ein behinderndes Defizit nicht aus.', 'Standardised severity score from 0 to 42. A low score does not exclude a disabling deficit.', 'مقیاس استاندارد شدت از ۰ تا ۴۲؛ نمره پایین، نقص ناتوان‌کننده را رد نمی‌کند.'),
+        title: L('Sprachdominanz', 'Language dominance', 'غلبه زبانی'),
+        text: L('Bei etwa 95% der Rechtshänder liegt das Sprachzentrum links. Auch bei den meisten Linkshändern ist die linke Hemisphäre sprachdominant; häufiger als bei Rechtshändern kann Sprache aber rechts oder beidseitig organisiert sein.', 'In about 95% of right-handed people, language is left-dominant. Most left-handed people are also left-dominant, although right-sided or bilateral language organisation is more common than in right-handed people.', 'در حدود ۹۵٪ راست‌دست‌ها مرکز زبان در نیمکره چپ است. در بیشتر چپ‌دست‌ها نیز نیمکره چپ غالب زبانی است، اما سازمان‌دهی راست‌طرفه یا دوطرفه زبان نسبت به راست‌دست‌ها شایع‌تر است.'),
       },
       {
-        title: L('Zeitpunkt sichern', 'Establish timing', 'تعیین زمان'),
-        text: L('„Last known well“ ist der letzte sicher symptomfreie Zeitpunkt und steuert die zeitbasierte Therapieauswahl.', '“Last known well” is the last definitely symptom-free time and guides time-based treatment selection.', 'آخرین زمان قطعاً بدون علامت، مبنای انتخاب درمان بر اساس زمان است.'),
+        title: 'NIHSS',
+        text: L('Standardisierte Schweregradeinschätzung von 0 bis 42. Ein Wert > 6 deutet auf eine deutliche funktionelle Beeinträchtigung hin; ein niedriger Wert schließt ein behinderndes Defizit nicht aus.', 'Standardised severity score from 0 to 42. A score > 6 suggests relevant functional impairment; a low score does not exclude a disabling deficit.', 'مقیاس استاندارد شدت از ۰ تا ۴۲. نمره بیش از ۶ به ناتوانی عملکردی قابل توجه اشاره دارد؛ نمره پایین نقص ناتوان‌کننده را رد نمی‌کند.'),
+      },
+      {
+        title: L('Homonyme Hemianopsie', 'Homonymous hemianopia', 'همی‌آنوپی هومونیم'),
+        text: L('Ausfall der gleichseitigen Gesichtsfeldhälften beider Augen.', 'Loss of the same-sided visual field halves in both eyes.', 'از بین رفتن نیمه‌های هم‌نام میدان بینایی در هر دو چشم.'),
       },
       {
         title: L('Mimics bedenken', 'Consider mimics', 'در نظر گرفتن تقلیدکننده‌ها'),
         text: L('Hypoglykämie, postiktale Parese, Migräne, Tumor, Enzephalitis und funktionelle Symptome können einen Schlaganfall imitieren.', 'Hypoglycaemia, postictal paresis, migraine, tumour, encephalitis and functional symptoms may mimic stroke.', 'هیپوگلیسمی، پارزی پس از تشنج، میگرن، تومور، انسفالیت و علائم عملکردی ممکن است سکته را تقلید کنند.'),
       },
     ],
-    key: L('Zeit ist Hirn: Akutbildgebung soll schnell erfolgen, ohne eine indizierte Reperfusion unnötig zu verzögern.', 'Time is brain: perform acute imaging rapidly without unnecessarily delaying indicated reperfusion.', 'زمان یعنی مغز: تصویربرداری حاد باید سریع انجام شود بدون تأخیر غیرضروری در بازپرفیوژن لازم.'),
+    key: L('Dominante Hemisphäre: Aphasie. Nicht dominante Hemisphäre: Neglect. Meist gilt: links Aphasie, rechts Neglect.', 'Dominant hemisphere: aphasia. Non-dominant hemisphere: neglect. In most patients: left means aphasia, right means neglect.', 'نیمکره غالب: آفازی. نیمکره غیرغالب: نگلکت. در بیشتر بیماران: چپ یعنی آفازی، راست یعنی نگلکت.'),
   },
   acuteCt: {
     title: L('Multimodale CT im Akutsetting', 'Multimodal CT in the acute setting', 'CT چندوجهی در فاز حاد'),
