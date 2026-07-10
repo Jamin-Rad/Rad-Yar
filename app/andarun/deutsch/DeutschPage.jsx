@@ -559,10 +559,7 @@ export default function DeutschPage({
     <main className={`${styles.shell} ${theme === 'light' ? styles.lightShell : ''}`}>
       <header className={`${styles.hero} ${!lessonMode ? styles.heroSimple : ''}`}>
         <div>
-          <div className={styles.topLinks}>
-            <Link className={styles.backLink} href={homeHref}>{homeLabel}</Link>
-            {lessonMode && <Link className={styles.backLink} href={courseHref}>Deutschlernen</Link>}
-          </div>
+          <Link className={styles.backLink} href={homeHref}>{homeLabel}</Link>
           <span className={styles.kicker}>Deutschlernen</span>
           <h1>{lessonMode ? activeLesson.title : 'B2/C1 Alltag'}</h1>
           {lessonMode && <p>{activeLesson.topic}</p>}

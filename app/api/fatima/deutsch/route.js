@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { requireFatimaSession, SHARED_ANDARUN_OWNER_ID } from '@/lib/fatimaPasswordAuth'
+import { requireFatimaSession, SHARED_ANDARUN_LOOKUP_OWNER_IDS } from '@/lib/fatimaPasswordAuth'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 
 const EMPTY_STATE = {
@@ -36,6 +36,15 @@ function cleanState(value) {
   }
 }
 
+function isMissingDeutschTable(error) {
+  const text = `${error?.message || ''} ${error?.details || ''} ${error?.hint || ''} ${error?.code || ''}`
+  return /andarun_deutsch_state|relation .* does not exist|schema cache|PGRST205|42P01/i.test(text)
+}
+
+function fallbackId(ownerId) {
+  return `deutsch:${ownerId}`
+}
+
 async function readState(ownerId) {
   const { data, error } = await supabaseAdmin
     .from('andarun_deutsch_state')
@@ -43,8 +52,61 @@ async function readState(ownerId) {
     .eq('owner_id', ownerId)
     .maybeSingle()
 
-  if (error) throw error
+  if (error) {
+    if (!isMissingDeutschTable(error)) throw error
+
+    const fallback = await supabaseAdmin
+      .from('admin_budget_state')
+      .select('store')
+      .eq('id', fallbackId(ownerId))
+      .maybeSingle()
+
+    if (fallback.error) throw fallback.error
+    return normalizeState(fallback.data?.store || EMPTY_STATE)
+  }
+
   return normalizeState(data?.state || EMPTY_STATE)
+}
+
+async function readFirstState(ownerIds) {
+  for (const ownerId of ownerIds) {
+    const state = await readState(ownerId)
+    if (state.lessons.length || state.cards.length || state.reviews.length || state.writings.length || Object.keys(state.answers).length) {
+      return state
+    }
+  }
+  return normalizeState(EMPTY_STATE)
+}
+
+async function writeState(ownerId, state) {
+  const result = await supabaseAdmin
+    .from('andarun_deutsch_state')
+    .upsert({
+      owner_id: ownerId,
+      state,
+      updated_at: new Date().toISOString(),
+    }, { onConflict: 'owner_id' })
+    .select('state')
+    .single()
+
+  if (!result.error) return normalizeState(result.data?.state || state)
+  if (!isMissingDeutschTable(result.error)) throw result.error
+
+  const fallback = await supabaseAdmin
+    .from('admin_budget_state')
+    .upsert({
+      id: fallbackId(ownerId),
+      store: state,
+      recurring: [],
+      cat_budgets: {},
+      categories: [],
+      updated_at: new Date().toISOString(),
+    }, { onConflict: 'id' })
+    .select('store')
+    .single()
+
+  if (fallback.error) throw fallback.error
+  return normalizeState(fallback.data?.store || state)
 }
 
 export async function GET() {
@@ -53,7 +115,7 @@ export async function GET() {
   if (!isSupabaseAdminConfigured || !supabaseAdmin) return unavailable()
 
   try {
-    const shared = await readState(SHARED_ANDARUN_OWNER_ID)
+    const shared = await readFirstState(SHARED_ANDARUN_LOOKUP_OWNER_IDS)
     const own = await readState(identity.ownerId)
     return NextResponse.json({ state: { ...own, lessons: shared.lessons } })
   } catch (error) {
@@ -75,21 +137,12 @@ export async function PATCH(request) {
   }
 
   const state = cleanState(body.state)
-  const { data, error } = await supabaseAdmin
-    .from('andarun_deutsch_state')
-    .upsert({
-      owner_id: identity.ownerId,
-      state,
-      updated_at: new Date().toISOString(),
-    }, { onConflict: 'owner_id' })
-    .select('state')
-    .single()
-
-  if (error) {
+  try {
+    const saved = await writeState(identity.ownerId, state)
+    const shared = await readFirstState(SHARED_ANDARUN_LOOKUP_OWNER_IDS)
+    return NextResponse.json({ state: { ...saved, lessons: shared.lessons } })
+  } catch (error) {
     console.error('[fatima-deutsch] PATCH failed', error)
     return NextResponse.json({ error: error.message }, { status: 503 })
   }
-
-  const shared = await readState(SHARED_ANDARUN_OWNER_ID)
-  return NextResponse.json({ state: { ...normalizeState(data?.state || state), lessons: shared.lessons } })
 }

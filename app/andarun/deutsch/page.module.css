@@ -60,21 +60,15 @@
   text-transform: uppercase;
 }
 
-.topLinks {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-
 .backLink {
   display: inline-flex;
-  min-height: 34px;
+  min-height: 38px;
   align-items: center;
   border: 1px solid rgba(255,255,255,.14);
   border-radius: 999px;
   background: rgba(255,255,255,.08);
-  padding: 0 13px;
+  margin-bottom: 16px;
+  padding: 0 16px;
   text-decoration: none;
 }
 
