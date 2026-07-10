@@ -51,31 +51,52 @@ export const STROKE_LESSON = {
   ],
   basics: {
     title: L('Klinische Merkmale', 'Clinical features', 'ویژگی‌های بالینی'),
-    lead: L(
-      'Der Schlaganfall ist ein klinisches Syndrom, das radiologisch in zwei Hauptformen unterteilt wird: ischämischer Schlaganfall durch akute arterielle Durchblutungsstörung etwa 80-85% und hämorrhagischer Schlaganfall etwa 15-20%, davon intrazerebrale Blutung 10-15% und Subarachnoidalblutung etwa 5%. Die klinische Schwere wird primär mit dem NIHSS beurteilt.',
-      'Stroke is a clinical syndrome that is radiologically divided into two main forms: ischaemic stroke from acute arterial perfusion failure in about 80-85% and haemorrhagic stroke in about 15-20%, including intracerebral haemorrhage in 10-15% and subarachnoid haemorrhage in about 5%. Clinical severity is primarily assessed with the NIHSS.',
-      'سکته مغزی یک سندرم بالینی است که از نظر تصویربرداری به دو شکل اصلی تقسیم می‌شود: سکته ایسکمیک ناشی از اختلال حاد خون‌رسانی شریانی در حدود ۸۰ تا ۸۵٪ و سکته هموراژیک در حدود ۱۵ تا ۲۰٪، شامل خونریزی داخل مغزی ۱۰ تا ۱۵٪ و خونریزی ساب‌آراکنوئید حدود ۵٪. شدت بالینی عمدتاً با NIHSS ارزیابی می‌شود.'
-    ),
+    introTitle: L('Einleitung und Klassifikation', 'Introduction and classification', 'مقدمه و طبقه‌بندی'),
+    introGroups: [
+      {
+        title: L('Der Schlaganfall ist ein klinisches Syndrom, das radiologisch in zwei Hauptformen unterteilt wird:', 'Stroke is a clinical syndrome that is radiologically divided into two main forms:', 'سکته مغزی یک سندرم بالینی است که از نظر تصویربرداری به دو شکل اصلی تقسیم می‌شود:'),
+        items: [
+          {
+            text: L('Ischämischer Schlaganfall (~80-85%):', 'Ischaemic stroke (~80-85%):', 'سکته ایسکمیک (~۸۰-۸۵٪):'),
+            detail: L('Akute arterielle Durchblutungsstörung.', 'Acute arterial perfusion disturbance.', 'اختلال حاد خون‌رسانی شریانی.'),
+          },
+          {
+            text: L('Hämorrhagischer Schlaganfall (~15-20%):', 'Haemorrhagic stroke (~15-20%):', 'سکته هموراژیک (~۱۵-۲۰٪):'),
+            detail: L('Intrazerebrale Blutung (10-15%) oder Subarachnoidalblutung (~5%).', 'Intracerebral haemorrhage (10-15%) or subarachnoid haemorrhage (~5%).', 'خونریزی داخل مغزی (۱۰-۱۵٪) یا خونریزی ساب‌آراکنوئید (~۵٪).'),
+          },
+        ],
+      },
+      {
+        title: L('Klinische Beurteilung:', 'Clinical assessment:', 'ارزیابی بالینی:'),
+        items: [
+          {
+            text: L('erfolgt primär über den NIHSS (0-42 Punkte).', 'is primarily performed with the NIHSS (0-42 points).', 'عمدتاً با NIHSS (۰-۴۲ امتیاز) انجام می‌شود.'),
+            detail: L('Ein Wert > 6 deutet auf eine deutliche funktionelle Beeinträchtigung hin.', 'A score > 6 suggests relevant functional impairment.', 'نمره بیش از ۶ به ناتوانی عملکردی قابل توجه اشاره دارد.'),
+          },
+        ],
+      },
+    ],
+    territoriesTitle: L('Gefäßterritorien und klinische Syndrome', 'Vascular territories and clinical syndromes', 'قلمروهای عروقی و سندرم‌های بالینی'),
     headers: [
       L('Gefäß', 'Vessel', 'رگ'),
       L('Versorgungsgebiet', 'Territory', 'قلمرو خون‌رسانی'),
-      L('Typische Klinik', 'Typical presentation', 'تظاهرات تیپیک'),
+      L('Leitsymptomatik', 'Key symptoms', 'علائم کلیدی'),
     ],
     rows: [
       [
-        'ACA',
+        L('A. cerebri anterior (ACA)', 'Anterior cerebral artery (ACA)', 'شریان مغزی قدامی (ACA)'),
         L('Medialer Frontal- und Parietallappen', 'Medial frontal and parietal lobes', 'لوب فرونتال و پاریتال مدیال'),
-        L('Kontralaterale beinbetonte Hemiparese, ggf. Harninkontinenz', 'Contralateral leg-predominant hemiparesis, sometimes urinary incontinence', 'همی‌پارزی غالب پا در سمت مقابل، گاهی بی‌اختیاری ادرار'),
+        L('Kontralaterale beinbetonte Hemiparese; Harninkontinenz', 'Contralateral leg-predominant hemiparesis; urinary incontinence', 'همی‌پارزی غالب پا در سمت مقابل؛ بی‌اختیاری ادرار'),
       ],
       [
-        'MCA',
-        L('Lateraler Frontal-, Parietal- und Temporallappen, tiefe Kerne', 'Lateral frontal, parietal and temporal lobes; deep nuclei', 'لوب‌های فرونتال، پاریتال و تمپورال لترال و هسته‌های عمقی'),
-        L('Arm- und gesichtsbetonte Hemiparese, homonyme Hemianopsie. Dominante Hemisphäre: Aphasie; nicht dominante Hemisphäre: Neglect. Meist gilt links Aphasie, rechts Neglect.', 'Arm- and face-predominant hemiparesis, homonymous hemianopia. Dominant hemisphere: aphasia; non-dominant hemisphere: neglect. Usually left-sided lesions cause aphasia and right-sided lesions cause neglect.', 'همی‌پارزی غالب دست و صورت، همی‌آنوپی هومونیم. نیمکره غالب: آفازی؛ نیمکره غیرغالب: نگلکت. معمولاً ضایعه چپ باعث آفازی و ضایعه راست باعث نگلکت می‌شود.'),
+        L('A. cerebri media (MCA)', 'Middle cerebral artery (MCA)', 'شریان مغزی میانی (MCA)'),
+        L('Lateraler Frontal-, Parietal- und Temporallappen', 'Lateral frontal, parietal and temporal lobes', 'لوب‌های فرونتال، پاریتال و تمپورال لترال'),
+        L('Arm- und gesichtsbetonte Hemiparese, homonyme Hemianopsie. Links: Aphasie. Rechts: Neglect.', 'Arm- and face-predominant hemiparesis, homonymous hemianopia. Left: aphasia. Right: neglect.', 'همی‌پارزی غالب دست و صورت، همی‌آنوپی هومونیم. چپ: آفازی. راست: نگلکت.'),
       ],
       [
-        'PCA',
-        L('Okzipitallappen, inferomedialer Temporallappen, Thalamus', 'Occipital lobe, inferomedial temporal lobe and thalamus', 'لوب اکسیپیتال، تمپورال اینفرومدیال و تالاموس'),
-        L('Kontralaterale homonyme Hemianopsie, ggf. Sensibilitätsstörung bei Thalamusbeteiligung', 'Contralateral homonymous hemianopia, sometimes sensory disturbance with thalamic involvement', 'همی‌آنوپی هومونیم مقابل، گاهی اختلال حسی در درگیری تالاموس'),
+        L('A. cerebri posterior (PCA)', 'Posterior cerebral artery (PCA)', 'شریان مغزی خلفی (PCA)'),
+        L('Okzipitallappen, Thalamus', 'Occipital lobe and thalamus', 'لوب اکسیپیتال و تالاموس'),
+        L('Kontralaterale homonyme Hemianopsie; Sensibilitätsstörung (Thalamus)', 'Contralateral homonymous hemianopia; sensory disturbance (thalamus)', 'همی‌آنوپی هومونیم مقابل؛ اختلال حسی (تالاموس)'),
       ],
       [
         L('A. basilaris / Vertebralis', 'Basilar / vertebral arteries', 'شریان بازیلار / ورتبرال'),
@@ -88,6 +109,7 @@ export const STROKE_LESSON = {
         L('Ipsilateral Horner-Syndrom und Ataxie; kontralaterale dissoziierte Sensibilitätsstörung für Schmerz und Temperatur', 'Ipsilateral Horner syndrome and ataxia; contralateral dissociated sensory loss for pain and temperature', 'سندرم هورنر و آتاکسی همان‌طرف؛ اختلال حسی تفکیک‌شده سمت مقابل برای درد و حرارت'),
       ],
     ],
+    footnote: L('Homonyme Hemianopsie = Ausfall der gleichseitigen Gesichtsfeldhälften beider Augen', 'Homonymous hemianopia = loss of the same-sided visual field halves in both eyes', 'همی‌آنوپی هومونیم = از بین رفتن نیمه‌های هم‌نام میدان بینایی در هر دو چشم'),
     items: [
       {
         title: L('Sprachdominanz', 'Language dominance', 'غلبه زبانی'),
@@ -96,10 +118,6 @@ export const STROKE_LESSON = {
       {
         title: 'NIHSS',
         text: L('Standardisierte Schweregradeinschätzung von 0 bis 42. Ein Wert > 6 deutet auf eine deutliche funktionelle Beeinträchtigung hin; ein niedriger Wert schließt ein behinderndes Defizit nicht aus.', 'Standardised severity score from 0 to 42. A score > 6 suggests relevant functional impairment; a low score does not exclude a disabling deficit.', 'مقیاس استاندارد شدت از ۰ تا ۴۲. نمره بیش از ۶ به ناتوانی عملکردی قابل توجه اشاره دارد؛ نمره پایین نقص ناتوان‌کننده را رد نمی‌کند.'),
-      },
-      {
-        title: L('Homonyme Hemianopsie', 'Homonymous hemianopia', 'همی‌آنوپی هومونیم'),
-        text: L('Ausfall der gleichseitigen Gesichtsfeldhälften beider Augen.', 'Loss of the same-sided visual field halves in both eyes.', 'از بین رفتن نیمه‌های هم‌نام میدان بینایی در هر دو چشم.'),
       },
       {
         title: L('Mimics bedenken', 'Consider mimics', 'در نظر گرفتن تقلیدکننده‌ها'),

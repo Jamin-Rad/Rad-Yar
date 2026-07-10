@@ -75,6 +75,63 @@ function Cards({ items }) {
   return <div className={styles.cardsGrid}>{items.map(item => <div className={styles.infoCard} key={item.title}><h3>{item.title}</h3><p>{item.text}</p></div>)}</div>
 }
 
+function ClinicalBasics({ lesson, lang, localizeValue }) {
+  const rows = localizedRows(lesson.rows, lang)
+  const headers = lesson.headers.map(localizeValue)
+  const notes = localizedItems(lesson.items, lang)
+
+  return (
+    <div className={styles.clinicalSheet}>
+      <div className={styles.clinicalIntro}>
+        <h3>{localizeValue(lesson.introTitle)}</h3>
+        {lesson.introGroups.map(group => (
+          <div className={styles.clinicalIntroGroup} key={localizeValue(group.title)}>
+            <p>{localizeValue(group.title)}</p>
+            <ul>
+              {group.items.map(item => (
+                <li key={localizeValue(item.text)}>
+                  <span>{localizeValue(item.text)}</span>
+                  {item.detail && <small>{localizeValue(item.detail)}</small>}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div className={styles.clinicalTableBlock}>
+        <h3>{localizeValue(lesson.territoriesTitle)}</h3>
+        <div className={styles.clinicalTableWrap}>
+          <table className={styles.clinicalTable}>
+            <thead>
+              <tr>{headers.map(header => <th key={header}>{header}</th>)}</tr>
+            </thead>
+            <tbody>
+              {rows.map((row, rowIndex) => (
+                <tr key={row[0]}>
+                  {row.map((cell, cellIndex) => (
+                    <td key={`${rowIndex}-${cellIndex}`} className={cellIndex === 0 ? styles.clinicalVessel : undefined}>{cell}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className={styles.clinicalFootnote}>{localizeValue(lesson.footnote)}</p>
+      </div>
+
+      <div className={styles.clinicalNotes}>
+        {notes.map(note => (
+          <div className={styles.clinicalNote} key={note.title}>
+            <h3>{note.title}</h3>
+            <p>{note.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 function Section({ id, title, lead, children }) {
   const isMobile = useMobileLearningLayout()
   const [open, setOpen] = useState(true)
@@ -187,9 +244,8 @@ export default function IschaemischerSchlaganfallPage() {
         </aside>
 
         <div className={styles.main}>
-          <Section id="grundlagen" title={c(STROKE_LESSON.basics.title)} lead={c(STROKE_LESSON.basics.lead)}>
-            <Table headers={STROKE_LESSON.basics.headers.map(c)} rows={localizedRows(STROKE_LESSON.basics.rows, lang)} />
-            <Cards items={localizedItems(STROKE_LESSON.basics.items, lang)} />
+          <Section id="grundlagen" title={c(STROKE_LESSON.basics.title)}>
+            <ClinicalBasics lesson={STROKE_LESSON.basics} lang={lang} localizeValue={c} />
             <Callout label={c(STROKE_LESSON.keyLabel)}>{c(STROKE_LESSON.basics.key)}</Callout>
           </Section>
 
