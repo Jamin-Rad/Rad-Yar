@@ -24,6 +24,7 @@ export default async function FatimaDeutschPage() {
       courseHref="/fatima/deutsch"
       lessonBase="/fatima/deutsch"
       canImport={false}
+      theme="light"
     />
   )
 }

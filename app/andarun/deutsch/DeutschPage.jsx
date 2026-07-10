@@ -313,6 +313,7 @@ export default function DeutschPage({
   courseHref = '/andarun/deutsch',
   lessonBase = '/andarun/deutsch',
   canImport = true,
+  theme = 'dark',
 }) {
   const [state, setState] = useState(emptyState)
   const [loading, setLoading] = useState(true)
@@ -534,7 +535,7 @@ export default function DeutschPage({
   }
 
   return (
-    <main className={styles.shell}>
+    <main className={`${styles.shell} ${theme === 'light' ? styles.lightShell : ''}`}>
       <header className={`${styles.hero} ${!lessonMode ? styles.heroSimple : ''}`}>
         <div>
           <Link className={styles.backLink} href={lessonMode ? courseHref : homeHref}>{lessonMode ? 'Deutschlernen' : 'Zurück'}</Link>
