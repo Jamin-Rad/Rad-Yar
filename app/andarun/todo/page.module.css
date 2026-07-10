@@ -2,7 +2,10 @@
   min-height: 100vh;
   padding: clamp(18px, 4vw, 54px);
   background:
-    linear-gradient(180deg, rgba(2, 6, 23, .24), rgba(2, 6, 23, .88)),
+    radial-gradient(circle at 15% 10%, rgba(20, 184, 166, .34), transparent 28%),
+    radial-gradient(circle at 84% 14%, rgba(244, 114, 182, .22), transparent 26%),
+    radial-gradient(circle at 70% 82%, rgba(250, 204, 21, .16), transparent 26%),
+    linear-gradient(145deg, rgba(5, 12, 26, .84), rgba(9, 14, 30, .96)),
     url('https://images.unsplash.com/photo-1465101162946-4377e57745c3?auto=format&fit=crop&w=2600&q=90');
   background-position: center;
   background-size: cover;
@@ -12,10 +15,11 @@
 
 .lightPage {
   background:
-    radial-gradient(circle at 12% 8%, rgba(254, 205, 211, .72), transparent 30%),
-    radial-gradient(circle at 82% 0%, rgba(186, 230, 253, .72), transparent 32%),
-    linear-gradient(180deg, #fff7ed 0%, #f8fafc 42%, #eef7f2 100%);
-  color: #1f2937;
+    radial-gradient(circle at 14% 7%, rgba(251, 207, 232, .78), transparent 28%),
+    radial-gradient(circle at 82% 2%, rgba(254, 215, 170, .70), transparent 30%),
+    radial-gradient(circle at 74% 84%, rgba(186, 230, 253, .55), transparent 28%),
+    linear-gradient(180deg, #fff7f5 0%, #fffaf0 46%, #f5fbff 100%);
+  color: #3b1f2d;
 }
 
 .lightPage .backLink,
@@ -23,31 +27,31 @@
 .lightPage .completedToggle,
 .lightPage .monthControls button,
 .lightPage .modalClose {
-  border-color: rgba(148, 163, 184, .34);
-  background: rgba(255, 255, 255, .72);
-  color: #475569;
-  box-shadow: 0 10px 28px rgba(15, 23, 42, .06);
+  border-color: rgba(244, 114, 182, .20);
+  background: rgba(255, 255, 255, .74);
+  color: #6b3a4d;
+  box-shadow: 0 12px 30px rgba(157, 23, 77, .07);
 }
 
 .lightPage .completedToggle:hover,
 .lightPage .monthControls button:hover,
 .lightPage .backLink:hover {
-  border-color: rgba(14, 165, 233, .32);
+  border-color: rgba(236, 72, 153, .28);
   background: rgba(255, 255, 255, .94);
-  color: #0f172a;
+  color: #4a1f32;
 }
 
 .lightPage .kicker {
-  color: #0f766e;
+  color: #be185d;
 }
 
 .lightPage .hero h1 {
-  color: #1f2937;
-  text-shadow: 0 14px 36px rgba(15, 23, 42, .12);
+  color: #4a1f32;
+  text-shadow: 0 16px 42px rgba(157, 23, 77, .14);
 }
 
 .lightPage .stats strong {
-  color: #0f172a;
+  color: #4a1f32;
 }
 
 .lightPage .message {
@@ -61,25 +65,25 @@
 .lightPage .monthPanel,
 .lightPage .completedModal,
 .lightPage .detailModal {
-  border-color: rgba(148, 163, 184, .26);
+  border-color: rgba(255, 255, 255, .72);
   background:
-    radial-gradient(circle at 24% 0%, rgba(255,255,255,.92), transparent 38%),
-    rgba(255, 255, 255, .76);
+    radial-gradient(circle at 20% 0%, rgba(255,255,255,.94), transparent 38%),
+    linear-gradient(145deg, rgba(255,255,255,.82), rgba(255,255,255,.60));
   box-shadow:
-    0 24px 70px rgba(15, 23, 42, .10),
+    0 24px 70px rgba(157, 23, 77, .10),
     inset 0 1px 0 rgba(255, 255, 255, .9);
 }
 
 .lightPage .form label,
 .lightPage .detailForm label {
-  color: #64748b;
+  color: #8a4a61;
 }
 
 .lightPage .form input,
 .lightPage .detailForm input {
-  border-color: rgba(148, 163, 184, .34);
-  background: rgba(255, 255, 255, .82);
-  color: #0f172a;
+  border-color: rgba(244, 114, 182, .22);
+  background: rgba(255, 255, 255, .80);
+  color: #3b1f2d;
 }
 
 .lightPage .form input::placeholder,
@@ -89,84 +93,86 @@
 
 .lightPage .form input:focus,
 .lightPage .detailForm input:focus {
-  border-color: rgba(20, 184, 166, .58);
-  box-shadow: 0 0 0 4px rgba(20, 184, 166, .14);
+  border-color: rgba(236, 72, 153, .42);
+  box-shadow: 0 0 0 4px rgba(236, 72, 153, .12);
 }
 
 .lightPage .eventToggle,
 .lightPage .detailAllDayToggle,
 .lightPage .detailGhostBtn {
-  border-color: rgba(148, 163, 184, .30);
+  border-color: rgba(244, 114, 182, .22);
   background: rgba(255, 255, 255, .72);
-  color: #475569 !important;
+  color: #6b3a4d !important;
 }
 
 .lightPage .eventToggle:hover,
 .lightPage .detailAllDayToggle:hover,
 .lightPage .detailGhostBtn:hover {
-  border-color: rgba(20, 184, 166, .34);
+  border-color: rgba(236, 72, 153, .30);
   background: rgba(255, 255, 255, .94);
-  color: #0f172a !important;
+  color: #4a1f32 !important;
 }
 
 .lightPage .eventToggleActive,
 .lightPage .addBtn {
-  background: linear-gradient(135deg, #99f6e4, #fde68a);
-  color: #134e4a !important;
-  box-shadow: 0 16px 36px rgba(20, 184, 166, .16);
+  background: linear-gradient(135deg, #f9a8d4, #fed7aa);
+  color: #4a1f32 !important;
+  box-shadow: 0 16px 36px rgba(236, 72, 153, .16);
 }
 
 .lightPage .detailAllDayToggle:has(input:checked) {
-  border-color: rgba(20, 184, 166, .42);
-  background: rgba(204, 251, 241, .72);
-  color: #0f766e;
+  border-color: rgba(236, 72, 153, .38);
+  background: rgba(252, 231, 243, .76);
+  color: #be185d;
 }
 
 .lightPage .monthHeader h2,
 .lightPage .columnHeader h2,
 .lightPage .modalHeader h2 {
-  color: #1f2937;
+  color: #4a1f32;
 }
 
 .lightPage .weekday,
 .lightPage .completedGroup h3 {
-  color: #0f766e;
+  color: #be185d;
 }
 
 .lightPage .monthCell {
-  border-color: rgba(148, 163, 184, .24);
-  background: rgba(255, 255, 255, .68);
+  border-color: rgba(244, 114, 182, .14);
+  background: rgba(255, 255, 255, .62);
 }
 
 .lightPage .monthCell:hover,
 .lightPage .monthCell:focus-visible {
-  border-color: rgba(20, 184, 166, .34);
+  border-color: rgba(236, 72, 153, .28);
   background: rgba(255, 255, 255, .96);
 }
 
 .lightPage .monthCellEmpty:hover,
 .lightPage .monthCellEmpty:focus-visible {
-  border-color: rgba(148, 163, 184, .24);
-  background: rgba(255, 255, 255, .68);
+  border-color: rgba(244, 114, 182, .14);
+  background: rgba(255, 255, 255, .62);
 }
 
 .lightPage .monthCellToday {
-  border-color: rgba(20, 184, 166, .52);
-  box-shadow: inset 0 0 0 1px rgba(20, 184, 166, .16);
+  border-color: rgba(236, 72, 153, .46);
+  box-shadow:
+    inset 0 0 0 1px rgba(236, 72, 153, .16),
+    0 12px 28px rgba(236, 72, 153, .10);
 }
 
 .lightPage .monthDay {
-  background: rgba(15, 118, 110, .10);
-  color: #0f766e;
+  background: rgba(252, 231, 243, .96);
+  color: #be185d;
 }
 
 .lightPage .monthEvent {
-  background: rgba(20, 184, 166, .14);
-  color: #0f172a;
+  background: linear-gradient(135deg, rgba(252, 231, 243, .96), rgba(255, 237, 213, .92));
+  color: #3b1f2d;
 }
 
 .lightPage .monthEvent strong {
-  color: #0f766e;
+  color: #be185d;
 }
 
 .lightPage .monthEventDone {
@@ -187,38 +193,38 @@
 .lightPage .card p,
 .lightPage .completedItem p,
 .lightPage .emptyCompleted {
-  color: #64748b;
+  color: #85586b;
 }
 
 .lightPage .card,
 .lightPage .completedItem {
-  border-color: rgba(148, 163, 184, .24);
-  background: rgba(255, 255, 255, .78);
-  box-shadow: 0 12px 28px rgba(15, 23, 42, .08);
+  border-color: rgba(244, 114, 182, .18);
+  background: rgba(255, 255, 255, .74);
+  box-shadow: 0 12px 28px rgba(157, 23, 77, .08);
 }
 
 .lightPage .card:hover,
 .lightPage .card:focus-visible {
-  border-color: rgba(20, 184, 166, .28);
+  border-color: rgba(236, 72, 153, .26);
   background: rgba(255, 255, 255, .94);
 }
 
 .lightPage .cardTop strong,
 .lightPage .completedItem strong {
-  color: #0f172a;
+  color: #3b1f2d;
 }
 
 .lightPage .checkBtn {
-  border-color: rgba(148, 163, 184, .34);
+  border-color: rgba(244, 114, 182, .26);
   background: rgba(255, 255, 255, .78);
-  color: #0f766e;
+  color: #be185d;
 }
 
 .lightPage .deadline,
 .lightPage .cardActions button,
 .lightPage .completedItem button {
-  background: rgba(15, 118, 110, .08);
-  color: #0f766e;
+  background: rgba(252, 231, 243, .76);
+  color: #be185d;
 }
 
 .lightPage .soon {
@@ -263,6 +269,11 @@
   font-weight: 900;
   text-decoration: none;
   backdrop-filter: blur(12px);
+  transition: transform .16s, background .16s, border-color .16s;
+}
+
+.backLink:hover {
+  transform: translateY(-1px);
 }
 
 .kicker {
@@ -336,12 +347,13 @@
 
 .composer,
 .column {
-  border: 1px solid rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.16);
   background:
-    radial-gradient(circle at 30% 0%, rgba(255,255,255,.12), transparent 38%),
-    rgba(8, 13, 31, .54);
+    radial-gradient(circle at 22% 0%, rgba(20, 184, 166, .16), transparent 34%),
+    radial-gradient(circle at 86% 14%, rgba(244, 114, 182, .10), transparent 28%),
+    rgba(8, 13, 31, .62);
   box-shadow:
-    0 24px 70px rgba(0,0,0,.28),
+    0 24px 70px rgba(0,0,0,.30),
     inset 0 1px 0 rgba(255,255,255,.16);
   backdrop-filter: blur(18px);
 }
@@ -376,9 +388,9 @@
 
 .form input {
   width: 100%;
-  min-height: 44px;
+  min-height: 46px;
   border: 1px solid rgba(255,255,255,.15);
-  border-radius: 15px;
+  border-radius: 14px;
   background: rgba(255,255,255,.10);
   color: #fff;
   font: inherit;
@@ -419,7 +431,7 @@
   gap: 9px !important;
   min-height: 42px;
   border: 1px solid rgba(255,255,255,.16);
-  border-radius: 16px;
+  border-radius: 14px;
   background: rgba(255,255,255,.09);
   color: rgba(226,232,240,.84) !important;
   cursor: pointer;
@@ -466,11 +478,17 @@
 
 .addBtn {
   min-height: 44px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #facc15, #fb923c);
+  border-radius: 14px;
+  background: linear-gradient(135deg, #2dd4bf, #facc15);
   color: #111827;
   font-weight: 950;
-  box-shadow: 0 16px 36px rgba(251,146,60,.22);
+  box-shadow: 0 16px 36px rgba(20,184,166,.20);
+  transition: transform .16s, box-shadow .16s, opacity .16s;
+}
+
+.addBtn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 44px rgba(20,184,166,.25);
 }
 
 .addBtn:disabled {
@@ -489,13 +507,14 @@
 
 .monthPanel {
   width: min(1180px, 100%);
-  margin: 18px auto 0;
-  padding: 18px;
-  border: 1px solid rgba(255,255,255,.14);
-  border-radius: 30px;
+  margin: 20px auto 0;
+  padding: clamp(14px, 2vw, 22px);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 26px;
   background:
-    radial-gradient(circle at 18% 0%, rgba(255,255,255,.12), transparent 34%),
-    rgba(8, 13, 31, .58);
+    radial-gradient(circle at 18% 0%, rgba(20, 184, 166, .18), transparent 34%),
+    radial-gradient(circle at 100% 0%, rgba(250, 204, 21, .10), transparent 30%),
+    rgba(8, 13, 31, .64);
   box-shadow:
     0 24px 70px rgba(0,0,0,.26),
     inset 0 1px 0 rgba(255,255,255,.16);
@@ -526,7 +545,7 @@
 }
 
 .monthControls button {
-  min-height: 34px;
+  min-height: 36px;
   border: 1px solid rgba(255,255,255,.15);
   border-radius: 999px;
   background: rgba(255,255,255,.08);
@@ -536,12 +555,19 @@
   font-size: 12px;
   font-weight: 900;
   padding: 0 12px;
+  transition: transform .15s, background .15s, border-color .15s;
+}
+
+.monthControls button:hover {
+  border-color: rgba(45, 212, 191, .36);
+  background: rgba(255,255,255,.14);
+  transform: translateY(-1px);
 }
 
 .monthGrid {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 7px;
+  gap: 8px;
 }
 
 .weekday {
@@ -556,21 +582,22 @@
 .monthCell {
   display: grid;
   align-content: start;
-  gap: 5px;
-  min-height: 104px;
+  gap: 6px;
+  min-height: 112px;
   min-width: 0;
-  padding: 8px;
-  border: 1px solid rgba(255,255,255,.10);
-  border-radius: 16px;
-  background: rgba(255,255,255,.07);
+  padding: 9px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 18px;
+  background: rgba(255,255,255,.075);
   cursor: pointer;
-  transition: border-color .15s, background .15s, transform .15s;
+  transition: border-color .15s, background .15s, transform .15s, box-shadow .15s;
 }
 
 .monthCell:hover,
 .monthCell:focus-visible {
-  border-color: rgba(251,191,36,.34);
-  background: rgba(255,255,255,.11);
+  border-color: rgba(45, 212, 191, .34);
+  background: rgba(255,255,255,.12);
+  box-shadow: 0 14px 32px rgba(0,0,0,.16);
   outline: none;
   transform: translateY(-1px);
 }
@@ -588,8 +615,10 @@
 }
 
 .monthCellToday {
-  border-color: rgba(251,191,36,.42);
-  box-shadow: inset 0 0 0 1px rgba(251,191,36,.12);
+  border-color: rgba(45, 212, 191, .48);
+  box-shadow:
+    inset 0 0 0 1px rgba(45, 212, 191, .16),
+    0 14px 34px rgba(20,184,166,.12);
 }
 
 .monthDay {
@@ -598,8 +627,8 @@
   height: 24px;
   place-items: center;
   border-radius: 50%;
-  background: rgba(255,255,255,.08);
-  color: rgba(255,255,255,.82);
+  background: rgba(45, 212, 191, .12);
+  color: #99f6e4;
   font-size: 11px;
   font-weight: 950;
 }
@@ -610,17 +639,23 @@
   width: 100%;
   min-width: 0;
   border: 0;
-  border-radius: 11px;
-  background: rgba(251,191,36,.15);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(45, 212, 191, .18), rgba(250, 204, 21, .15));
   color: #fff;
   cursor: pointer;
   font: inherit;
-  padding: 6px 7px;
+  padding: 7px 8px;
   text-align: left;
+  transition: transform .14s, filter .14s;
+}
+
+.monthEvent:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
 }
 
 .monthEvent strong {
-  color: #fde68a;
+  color: #99f6e4;
   font-size: 10px;
   font-weight: 950;
 }
@@ -651,7 +686,7 @@
 
 .column {
   min-height: 460px;
-  border-radius: 30px;
+  border-radius: 26px;
   overflow: hidden;
 }
 
@@ -660,7 +695,7 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 14px;
-  padding: 20px 20px 15px;
+  padding: 18px 18px 14px;
   border-bottom: 1px solid rgba(255,255,255,.10);
 }
 
@@ -681,10 +716,10 @@
 
 .columnHeader strong {
   display: grid;
-  min-width: 38px;
-  height: 38px;
+  min-width: 40px;
+  height: 32px;
   place-items: center;
-  border-radius: 50%;
+  border-radius: 999px;
   background: var(--lane-soft);
   color: var(--lane);
   font-size: 16px;
@@ -698,7 +733,7 @@
   display: grid;
   gap: 11px;
   min-width: 0;
-  padding: 14px;
+  padding: 12px;
 }
 
 .card {
@@ -708,17 +743,18 @@
   padding: 14px;
   border: 1px solid rgba(255,255,255,.12);
   border-left: 4px solid var(--lane);
-  border-radius: 20px;
+  border-radius: 18px;
   background: rgba(255,255,255,.09);
   box-shadow: 0 12px 28px rgba(0,0,0,.18);
   cursor: pointer;
-  transition: border-color .15s, background .15s, transform .15s;
+  transition: border-color .15s, background .15s, transform .15s, box-shadow .15s;
 }
 
 .card:hover,
 .card:focus-visible {
   border-color: rgba(255,255,255,.24);
   background: rgba(255,255,255,.12);
+  box-shadow: 0 16px 34px rgba(0,0,0,.22);
   outline: none;
   transform: translateY(-1px);
 }

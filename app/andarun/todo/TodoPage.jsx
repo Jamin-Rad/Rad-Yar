@@ -9,20 +9,20 @@ const STORAGE_KEY = 'andarun_todos_fallback_v1'
 const LANES = [
   {
     id: 'urgent',
-    title: 'Urgent',
-    subtitle: 'due today',
+    title: 'Heute',
+    subtitle: 'faellig oder wichtig',
     color: 'red',
   },
   {
     id: 'today',
-    title: 'Next',
-    subtitle: 'tomorrow',
+    title: 'Morgen',
+    subtitle: 'als Naechstes',
     color: 'gold',
   },
   {
     id: 'watch',
-    title: 'In sight',
-    subtitle: 'long-term, keep visible',
+    title: 'Im Blick',
+    subtitle: 'spaeter, aber sichtbar',
     color: 'violet',
   },
 ]
@@ -556,15 +556,15 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
       <section className={styles.hero}>
         <Link href={homeHref} className={styles.backLink}>{homeLabel}</Link>
         <div>
-          <span className={styles.kicker}>Private planning</span>
-          <h1>ToDo</h1>
+          <span className={styles.kicker}>Private Planung</span>
+          <h1>ToDos</h1>
         </div>
         <div className={styles.stats}>
-          <span><strong>{stats.open}</strong> open</span>
-          <span><strong>{stats.dueToday}</strong> today</span>
-          <span><strong>{stats.done}</strong> done</span>
+          <span><strong>{stats.open}</strong> offen</span>
+          <span><strong>{stats.dueToday}</strong> heute</span>
+          <span><strong>{stats.done}</strong> fertig</span>
           <button className={styles.completedToggle} type="button" onClick={() => setCompletedOpen(true)}>
-            Completed
+            Archiv
           </button>
         </div>
       </section>
@@ -574,11 +574,11 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
       <section className={styles.composer}>
         <form onSubmit={createTodo} className={styles.form}>
           <label className={styles.titleField}>
-            Task
-            <input value={form.title} onChange={event => setForm(prev => ({ ...prev, title: event.target.value }))} placeholder="What needs to be done?" required />
+            Aufgabe
+            <input value={form.title} onChange={event => setForm(prev => ({ ...prev, title: event.target.value }))} placeholder="Was steht an?" required />
           </label>
           <label>
-            Deadline
+            Datum
             <input type="date" value={form.deadline} onChange={event => {
               const deadline = event.target.value
               setForm(prev => ({ ...prev, deadline, lane: laneFromDeadline(deadline) }))
@@ -586,12 +586,12 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
             }} min={todayValue()} />
           </label>
           <label>
-            Note
+            Notiz
             <input value={form.note} onChange={event => setForm(prev => ({ ...prev, note: event.target.value }))} placeholder="Optional" />
           </label>
           {form.itemType === 'event' && (
             <label className={styles.timeField}>
-              Time
+              Uhrzeit
               <input
                 type="time"
                 value={form.eventTime}
@@ -633,7 +633,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
               </label>
             )}
             <button className={styles.addBtn} type="submit" disabled={saving || !form.title.trim()}>
-              {saving ? 'Saving...' : form.itemType === 'event' ? 'Add Termin' : 'Add ToDo'}
+              {saving ? 'Speichert...' : form.itemType === 'event' ? 'Termin anlegen' : 'ToDo anlegen'}
             </button>
           </div>
         </form>
@@ -683,7 +683,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
                   </div>
                 )
               }) : (
-                <p className={styles.empty}>Nothing here.</p>
+                <p className={styles.empty}>Alles ruhig.</p>
               )}
             </div>
           </article>
