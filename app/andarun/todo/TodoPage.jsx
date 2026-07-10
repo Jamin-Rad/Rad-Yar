@@ -15,8 +15,8 @@ const LANES = [
   },
   {
     id: 'today',
-    title: 'Morgen',
-    subtitle: 'als Naechstes',
+    title: 'Diese Woche',
+    subtitle: 'die naechsten 7 Tage',
     color: 'gold',
   },
   {
@@ -146,7 +146,7 @@ function laneFromDeadline(value) {
   const diff = daysUntil(value)
   if (diff === null) return 'today'
   if (diff <= 0) return 'urgent'
-  if (diff === 1) return 'today'
+  if (diff <= 7) return 'today'
   return 'watch'
 }
 
