@@ -16,7 +16,7 @@ const LANES = [
   {
     id: 'today',
     title: 'Diese Woche',
-    subtitle: 'die naechsten 7 Tage',
+    subtitle: 'bis Sonntag',
     color: 'gold',
   },
   {
@@ -142,11 +142,23 @@ function daysUntil(value) {
   return Math.round((date - today) / 86400000)
 }
 
+function isInCurrentWeek(value) {
+  if (!value) return false
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+  const weekEnd = new Date(today)
+  const daysToSunday = (7 - today.getDay()) % 7
+  weekEnd.setDate(today.getDate() + daysToSunday)
+  const date = new Date(`${value}T00:00:00`)
+  if (Number.isNaN(date.getTime())) return false
+  return date > today && date <= weekEnd
+}
+
 function laneFromDeadline(value) {
   const diff = daysUntil(value)
   if (diff === null) return 'today'
   if (diff <= 0) return 'urgent'
-  if (diff <= 7) return 'today'
+  if (isInCurrentWeek(value)) return 'today'
   return 'watch'
 }
 
