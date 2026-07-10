@@ -310,6 +310,7 @@ export default function DeutschPage({
   apiBase = '/api/andarun/deutsch',
   correctEndpoint = '/api/andarun/deutsch/correct',
   homeHref = '/andarun',
+  homeLabel = 'Privat',
   courseHref = '/andarun/deutsch',
   lessonBase = '/andarun/deutsch',
   canImport = true,
@@ -332,6 +333,25 @@ export default function DeutschPage({
   const [showBack, setShowBack] = useState(false)
   const [practiceIndex, setPracticeIndex] = useState(0)
   const saveTimer = useRef(null)
+  const localStorageKey = `deutsch_state_${apiBase.replace(/[^a-z0-9]/gi, '_')}`
+
+  function readLocalState() {
+    try {
+      const local = window.localStorage.getItem(localStorageKey)
+      return local ? normalizeState(JSON.parse(local)) : null
+    } catch {
+      return null
+    }
+  }
+
+  function writeLocalState(nextState) {
+    try {
+      window.localStorage.setItem(localStorageKey, JSON.stringify(normalizeState(nextState)))
+      return true
+    } catch {
+      return false
+    }
+  }
 
   useEffect(() => {
     let ignore = false
@@ -349,14 +369,14 @@ export default function DeutschPage({
         setActiveLessonId(preferredLesson?.id || loaded.lessons[0]?.id || upgradedSampleLesson.id)
       })
       .catch(() => {
-        const fallback = { ...emptyState, lessons: [upgradedSampleLesson] }
+        const fallback = readLocalState() || { ...emptyState, lessons: [upgradedSampleLesson] }
         setState(fallback)
-        setActiveLessonId(initialLessonId || upgradedSampleLesson.id)
-        setMessage('Online-Speicherung ist gerade nicht erreichbar. Änderungen bleiben in dieser Sitzung sichtbar.')
+        setActiveLessonId(initialLessonId || fallback.lessons[0]?.id || upgradedSampleLesson.id)
+        setMessage('Online-Speicherung ist gerade nicht erreichbar. Dein Fortschritt wird lokal auf diesem Gerät gespeichert.')
       })
       .finally(() => !ignore && setLoading(false))
     return () => { ignore = true }
-  }, [initialLessonId, lessonMode])
+  }, [initialLessonId, lessonMode, apiBase])
 
   function persist(nextState) {
     setState(nextState)
@@ -374,7 +394,8 @@ export default function DeutschPage({
         setState(normalizeState(data.state))
         setMessage('Gespeichert.')
       } catch {
-        setMessage('Speichern online fehlgeschlagen.')
+        const stored = writeLocalState(nextState)
+        setMessage(stored ? 'Lokal gespeichert. Online-Speicherung ist gerade nicht erreichbar.' : 'Speichern ist gerade nicht möglich.')
       } finally {
         setSaving(false)
       }
@@ -538,7 +559,10 @@ export default function DeutschPage({
     <main className={`${styles.shell} ${theme === 'light' ? styles.lightShell : ''}`}>
       <header className={`${styles.hero} ${!lessonMode ? styles.heroSimple : ''}`}>
         <div>
-          <Link className={styles.backLink} href={lessonMode ? courseHref : homeHref}>{lessonMode ? 'Deutschlernen' : 'Zurück'}</Link>
+          <div className={styles.topLinks}>
+            <Link className={styles.backLink} href={homeHref}>{homeLabel}</Link>
+            {lessonMode && <Link className={styles.backLink} href={courseHref}>Deutschlernen</Link>}
+          </div>
           <span className={styles.kicker}>Deutschlernen</span>
           <h1>{lessonMode ? activeLesson.title : 'B2/C1 Alltag'}</h1>
           {lessonMode && <p>{activeLesson.topic}</p>}

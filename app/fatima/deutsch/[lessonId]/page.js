@@ -24,6 +24,7 @@ export default async function FatimaDeutschLessonPage({ params }) {
       apiBase="/api/fatima/deutsch"
       correctEndpoint="/api/fatima/deutsch/correct"
       homeHref="/fatima"
+      homeLabel="Fatima"
       courseHref="/fatima/deutsch"
       lessonBase="/fatima/deutsch"
       canImport={false}
