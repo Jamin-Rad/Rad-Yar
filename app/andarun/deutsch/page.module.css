@@ -2391,6 +2391,57 @@
   .listenExampleBtn { align-self: flex-start; }
 }
 
+/* Word modal — card-style layout matching flashcard vocabulary blocks. */
+.shell .wordModal {
+  width: min(560px, calc(100% - 28px));
+  max-height: min(780px, 90svh);
+  overflow-y: auto;
+  padding: clamp(18px, 4vw, 28px);
+  display: grid;
+  gap: 14px;
+}
+
+.wordModalHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.shell .wordModal h2 {
+  margin: 0;
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(34px, 8vw, 56px);
+  font-weight: 400;
+  line-height: .95;
+  letter-spacing: -.04em;
+  color: var(--d-text);
+}
+
+.shell .wordModal .closeBtn {
+  float: none;
+  min-height: 34px;
+  width: 34px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 14px;
+  flex: 0 0 auto;
+}
+
+.shell .wordModal .flashAnswer {
+  margin: 0;
+}
+
+.shell .wordModal .actionRow {
+  margin-top: 4px;
+}
+
+.shell .wordModal .primaryBtn {
+  flex: 1;
+}
+
 .resetAnswers {
   min-height: 46px;
   width: 100%;

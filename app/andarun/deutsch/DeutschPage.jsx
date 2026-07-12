@@ -1061,17 +1061,41 @@ export default function DeutschPage({
       {selectedWord && (
         <div className={styles.modalBackdrop} role="presentation" onMouseDown={() => setSelectedWord(null)}>
           <section className={styles.wordModal} role="dialog" aria-modal="true" onMouseDown={event => event.stopPropagation()}>
-            <button type="button" className={styles.closeBtn} onClick={() => setSelectedWord(null)}>Schließen</button>
-            <span>Wortkarte</span>
+            <div className={styles.wordModalHead}>
+              <span>Wortkarte</span>
+              <button type="button" className={styles.closeBtn} onClick={() => setSelectedWord(null)}>✕</button>
+            </div>
             <h2>{selectedWord.term}</h2>
-            <p><strong>Deutsch:</strong> {selectedWord.de}</p>
-            <p><strong>Persisch:</strong> {selectedWord.fa}</p>
-            {selectedWord.example && <em>{selectedWord.example}</em>}
+            <div className={styles.flashAnswer}>
+              <div className={styles.flashMeaning}>
+                <span>Deutsch</span>
+                <p>{selectedWord.de}</p>
+              </div>
+              {selectedWord.fa && (
+                <div className={`${styles.flashMeaning} ${styles.persianMeaning}`} dir="rtl">
+                  <span>فارسی</span>
+                  <p>{selectedWord.fa}</p>
+                </div>
+              )}
+            </div>
+            {selectedWord.example && (
+              <div className={styles.flashExample}>
+                <div>
+                  <span>Beispiel</span>
+                  <p>{selectedWord.example}</p>
+                </div>
+                <button type="button" className={styles.listenExampleBtn} onClick={() => speak(selectedWord.example)}>
+                  <span aria-hidden="true">◖))</span> Anhören
+                </button>
+              </div>
+            )}
             <div className={styles.actionRow}>
               <button type="button" className={styles.primaryBtn} disabled={selectedWordSaved} onClick={() => addWordCard(selectedWord)}>
                 {selectedWordSaved ? '✓ Bereits gespeichert' : 'Als Flashcard speichern'}
               </button>
-              <button type="button" onClick={() => speak(selectedWord.example || selectedWord.term)}>Anhören</button>
+              {!selectedWord.example && (
+                <button type="button" onClick={() => speak(selectedWord.term)}>Anhören</button>
+              )}
             </div>
           </section>
         </div>
