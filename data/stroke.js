@@ -23,6 +23,7 @@ export const STROKE_LESSON = {
   sections: [
     { id: 'grundlagen', label: L('Grundlagen & Territorien', 'Basics & territories', 'مبانی و قلمروهای عروقی'), icon: '🧠' },
     { id: 'akut-ct', label: L('Akut-CT, CTA & CTP', 'Acute CT, CTA & CTP', 'CT حاد، CTA و CTP'), icon: '🩻' },
+    { id: 'ctp', label: L('CT-Perfusion interpretieren', 'Interpreting CT perfusion', 'تفسیر پرفیوژن CT'), icon: '🌡️' },
     { id: 'aspects', label: L('ASPECTS', 'ASPECTS', 'ASPECTS'), icon: '🔟' },
     { id: 'ct-verlauf', label: L('CT-Zeitverlauf', 'CT evolution', 'سیر زمانی CT'), icon: '⏱️' },
     { id: 'mrt', label: L('MRT-Protokoll', 'MRI protocol', 'پروتکل MRI'), icon: '🧲' },
@@ -146,6 +147,23 @@ export const STROKE_LESSON = {
       { title: L('Sulcal effacement', 'Sulcal effacement', 'محو شدن سولکوس'), text: L('Fokale Gyrusschwellung durch frühes zytotoxisches Ödem.', 'Focal gyral swelling caused by early cytotoxic oedema.', 'تورم فوکال ژیروس در اثر ادم سیتوتوکسیک اولیه.') },
     ],
     cave: L('In der ersten Stunde ist die native CT in der Regel unauffällig; die DWI kann bereits positiv sein.', 'During the first hour, non-contrast CT is usually normal while DWI may already be positive.', 'در ساعت اول CT بدون کنتراست معمولاً طبیعی است، در حالی که DWI ممکن است مثبت باشد.'),
+  },
+  ctpInterpretation: {
+    title: L('CT-Perfusion interpretieren', 'Interpreting CT perfusion', 'تفسیر پرفیوژن CT'),
+    lead: L('Zuerst die Parameterkarten prüfen, dann Infarktkern und hypoperfundiertes Gewebe vergleichen.', 'First review the parameter maps, then compare infarct core with hypoperfused tissue.', 'ابتدا نقشه‌های پارامتری را بررسی کنید، سپس هسته انفارکت را با بافت کم‌پرفیوژن مقایسه کنید.'),
+    items: [
+      { title: 'CBF', text: L('Cerebral Blood Flow: Blutfluss pro Gewebeeinheit. Stark vermindert im Infarktkern; relatives CBF < 30 % wird in etablierter automatisierter Auswertung häufig als Kernschwelle verwendet.', 'Cerebral blood flow per tissue unit. Markedly reduced in the infarct core; relative CBF <30% is commonly used as a core threshold in established automated processing.', 'جریان خون مغزی در هر واحد بافت. در هسته انفارکت به‌شدت کاهش می‌یابد؛ CBF نسبی کمتر از ۳۰٪ اغلب به‌عنوان آستانه هسته استفاده می‌شود.') },
+      { title: 'CBV', text: L('Cerebral Blood Volume: Blutvolumen im Gewebe. Im Kern meist vermindert, in der Penumbra anfangs relativ erhalten; nicht isoliert beurteilen.', 'Cerebral blood volume in tissue. Usually reduced in the core and initially relatively preserved in the penumbra; do not interpret it in isolation.', 'حجم خون مغزی در بافت. در هسته معمولاً کاهش می‌یابد و در پنومبرا در ابتدا نسبتاً حفظ می‌شود؛ به‌تنهایی تفسیر نشود.') },
+      { title: 'MTT / Tmax', text: L('Zeitparameter der Boluspassage. Eine Verlängerung zeigt verzögerte Perfusion; Tmax > 6 s wird häufig zur Abgrenzung relevant hypoperfundierten Gewebes verwendet.', 'Time parameters of bolus passage. Prolongation indicates delayed perfusion; Tmax >6 s is commonly used to define relevant hypoperfused tissue.', 'پارامترهای زمانی عبور بولوس. طولانی‌شدن نشان‌دهنده پرفیوژن تأخیری است؛ Tmax بیش از ۶ ثانیه اغلب برای تعیین بافت کم‌پرفیوژن مهم استفاده می‌شود.') },
+      { title: L('Mismatch / Penumbra', 'Mismatch / penumbra', 'عدم تطابق / پنومبرا'), text: L('Ist das Volumen mit Tmax > 6 s größer als der rCBF-<30-%-Kern, entspricht die Differenz dem potenziell rettbaren Gewebe.', 'When the Tmax >6 s volume is larger than the rCBF <30% core, the difference represents potentially salvageable tissue.', 'اگر حجم Tmax بیش از ۶ ثانیه بزرگ‌تر از هسته rCBF کمتر از ۳۰٪ باشد، اختلاف نمایانگر بافت بالقوه قابل نجات است.') },
+    ],
+    steps: [
+      { title: L('1. Technische Qualität', '1. Technical quality', '۱. کیفیت فنی'), text: L('Bewegung, unvollständige Abdeckung und fehlerhaften Kontrastmittelbolus ausschließen.', 'Exclude motion, incomplete coverage and an inadequate contrast bolus.', 'حرکت، پوشش ناقص و بولوس نامناسب ماده حاجب را رد کنید.') },
+      { title: L('2. Seitenvergleich', '2. Side comparison', '۲. مقایسه دو طرف'), text: L('CBF/CBV und Zeitkarten mit der Gegenseite vergleichen und das Muster einem Gefäßterritorium zuordnen.', 'Compare CBF/CBV and time maps with the opposite side and assign the pattern to a vascular territory.', 'نقشه‌های CBF/CBV و زمان را با سمت مقابل مقایسه و الگو را به یک قلمرو عروقی نسبت دهید.') },
+      { title: L('3. Kern und Mismatch', '3. Core and mismatch', '۳. هسته و عدم تطابق'), text: L('Kernvolumen bestimmen und prüfen, ob darüber hinaus relevantes verzögert perfundiertes Gewebe besteht.', 'Determine core volume and assess whether additional relevant delayed-perfusion tissue is present.', 'حجم هسته را تعیین و وجود بافت اضافی با پرفیوژن تأخیری مهم را بررسی کنید.') },
+      { title: L('4. Plausibilitätskontrolle', '4. Plausibility check', '۴. کنترل سازگاری'), text: L('Ergebnis immer mit Klinik, nativer CT und CTA abgleichen.', 'Always correlate the result with clinical findings, non-contrast CT and CTA.', 'نتیجه را همیشه با یافته‌های بالینی، CT بدون کنتراست و CTA تطبیق دهید.') },
+    ],
+    cave: L('Schwellenwerte sind softwareabhängig. Sehr frühe Untersuchung, Rekanalisation, Bewegung, schlechter Bolus und chronische Stenosen können Kern oder Penumbra falsch abschätzen.', 'Thresholds are software-dependent. Very early imaging, recanalisation, motion, a poor bolus and chronic stenoses may misestimate core or penumbra.', 'آستانه‌ها به نرم‌افزار وابسته‌اند. تصویربرداری بسیار زودرس، بازشدن مجدد عروق، حرکت، بولوس ضعیف و تنگی‌های مزمن می‌توانند هسته یا پنومبرا را نادرست برآورد کنند.'),
   },
   aspects: {
     title: L('ASPECTS richtig anwenden', 'Using ASPECTS correctly', 'کاربرد صحیح ASPECTS'),

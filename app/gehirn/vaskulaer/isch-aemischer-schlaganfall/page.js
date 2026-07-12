@@ -255,6 +255,12 @@ export default function IschaemischerSchlaganfallPage() {
             <Callout type="cave" label={c(STROKE_LESSON.caveLabel)}>{c(STROKE_LESSON.acuteCt.cave)}</Callout>
           </Section>
 
+          <Section id="ctp" title={c(STROKE_LESSON.ctpInterpretation.title)} lead={c(STROKE_LESSON.ctpInterpretation.lead)}>
+            <Cards items={localizedItems(STROKE_LESSON.ctpInterpretation.items, lang)} />
+            <Cards items={localizedItems(STROKE_LESSON.ctpInterpretation.steps, lang)} />
+            <Callout type="cave" label={c(STROKE_LESSON.caveLabel)}>{c(STROKE_LESSON.ctpInterpretation.cave)}</Callout>
+          </Section>
+
           <Section id="aspects" title={c(STROKE_LESSON.aspects.title)} lead={c(STROKE_LESSON.aspects.lead)}>
             <Cards items={localizedItems(STROKE_LESSON.aspects.items, lang)} />
           </Section>
