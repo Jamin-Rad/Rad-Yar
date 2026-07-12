@@ -2412,3 +2412,56 @@
 }
 .resetAnswers span { font-size: 19px; }
 .resetAnswers:hover { border-color: var(--d-accent); background: color-mix(in srgb, var(--d-accent) 9%, transparent); color: var(--d-text); }
+
+.shell .status { z-index: 4; margin-bottom: 64px; }
+
+@media (max-width: 620px) {
+  .shell .hero, .shell .heroSimple { min-height: 390px; padding-bottom: 42px; }
+  .shell .hero h1 { overflow-wrap: anywhere; hyphens: auto; }
+  .shell .hero p { max-width: 92%; line-height: 1.5; }
+  .shell .status { width: calc(100% - 28px); margin: -14px auto 52px; }
+  .shell .tabs { margin-top: -28px; margin-bottom: 18px; }
+  .shell .homeGrid { margin-top: 0; }
+  .shell .lessonRow {
+    min-height: 148px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 18px 16px 16px 66px;
+  }
+  .shell .lessonRow > div:not(.progressWrap) { padding-right: 0; }
+  .shell .progressWrap { width: 100%; min-width: 0; margin: 4px 0 0; justify-items: start; }
+  .shell .progressWrap b { width: fit-content; }
+  .shell .flashPanel { min-height: 300px; }
+  .shell .flashNumbers { gap: 6px; }
+  .shell .flashNumbers span { min-width: 0; padding: 9px 5px; font-size: 9px; }
+  .shell .questionCard { padding: 16px; }
+  .shell .questionTop { align-items: flex-start; }
+  .shell .optionBtn { min-height: 56px; padding: 10px 13px; line-height: 1.4; }
+  .shell .wordShelf { gap: 7px; }
+  .shell .wordShelf button { min-height: 38px; padding: 0 10px; }
+}
+
+.lessonBoot {
+  min-height: 100svh;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 16px;
+  color: var(--d-muted);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.lessonBoot span {
+  width: 38px;
+  height: 38px;
+  border: 2px solid var(--d-border);
+  border-top-color: var(--d-accent);
+  border-radius: 50%;
+  animation: lessonSpin .8s linear infinite;
+}
+.lessonBoot p { margin: 0; }
+@keyframes lessonSpin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .lessonBoot span { animation: none; } }

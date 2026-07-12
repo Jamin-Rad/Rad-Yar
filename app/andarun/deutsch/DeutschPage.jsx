@@ -118,6 +118,43 @@ const upgradedSampleLesson = {
   },
 }
 
+const vocabularyEnrichments = {
+  'deutsch-2026-07-12-homeoffice-entscheidung': [
+    { term: 'Vorgesetzter', de: 'eine Person, die beruflich Weisungen geben und Entscheidungen treffen darf', fa: 'مدیر، سرپرست', example: 'Mein Vorgesetzter unterstützt flexible Arbeitszeiten.' },
+    { term: 'nachvollziehen', de: 'die Gründe oder Gefühle einer anderen Person verstehen können', fa: 'درک کردن، قابل فهم دانستن', example: 'Ich kann deine Entscheidung gut nachvollziehen.' },
+    { term: 'erfordern', de: 'etwas notwendig machen oder voraussetzen', fa: 'لازم داشتن، ایجاب کردن', example: 'Diese Aufgabe wird viel Geduld erfordern.' },
+    { term: 'erheblich', de: 'deutlich, beträchtlich oder von großer Bedeutung', fa: 'قابل توجه، چشمگیر', example: 'Die neue Regelung verursacht erheblich mehr Aufwand.' },
+    { term: 'verbindlich', de: 'fest vereinbart und deshalb einzuhalten', fa: 'الزام‌آور، قطعی', example: 'Wir müssen den Termin verbindlich vereinbaren.' },
+    { term: 'transparent dokumentiert', de: 'so schriftlich festgehalten, dass der Ablauf für alle nachvollziehbar ist', fa: 'به‌صورت شفاف مستند شده', example: 'Alle Entscheidungen werden transparent dokumentiert.' },
+    { term: 'sachliche Argumente', de: 'ruhige, faktenbezogene Gründe ohne persönliche Angriffe', fa: 'استدلال‌های منطقی و عینی', example: 'Sachliche Argumente überzeugen oft mehr als Vorwürfe.' },
+    { term: 'grundsätzliche Ablehnung', de: 'eine allgemeine Zurückweisung, die keine Ausnahme zulässt', fa: 'مخالفت اصولی و کلی', example: 'Seine grundsätzliche Ablehnung verhindert jeden Kompromiss.' },
+  ],
+  'deutsch-001-digitale-erreichbarkeit': [
+    { term: 'offiziell', de: 'ausdrücklich, formell und von einer zuständigen Stelle bestätigt', fa: 'رسمی، به‌طور رسمی', example: 'Die Änderung wurde gestern offiziell bestätigt.' },
+    { term: 'entsteht', de: 'beginnt sich zu entwickeln oder kommt neu zustande', fa: 'به‌وجود می‌آید', example: 'Ohne klare Regeln entsteht schnell ein Missverständnis.' },
+    { term: 'Anfrage', de: 'eine Bitte um Information, Antwort oder Unterstützung', fa: 'درخواست، پرس‌وجو', example: 'Ihre Anfrage wird innerhalb eines Tages beantwortet.' },
+    { term: 'nach Feierabend', de: 'in der freien Zeit nach dem Ende des Arbeitstages', fa: 'بعد از پایان ساعت کاری', example: 'Nach Feierabend schalte ich das Diensthandy aus.' },
+    { term: 'vorsichtig an', de: 'auf behutsame Weise erwähnen oder zur Diskussion stellen', fa: 'با احتیاط مطرح می‌کند', example: 'Sie spricht das schwierige Problem vorsichtig an.' },
+    { term: 'skeptisch', de: 'zweifelnd und noch nicht von einer Idee überzeugt', fa: 'مردد، شکاک', example: 'Das Team reagiert auf den Vorschlag zunächst skeptisch.' },
+    { term: 'klare Grenzen', de: 'eindeutige Regeln dafür, was möglich oder akzeptabel ist', fa: 'مرزهای روشن', example: 'Klare Grenzen schützen die private Zeit.' },
+    { term: 'Zusammenarbeit', de: 'gemeinsames Arbeiten an einer Aufgabe oder einem Ziel', fa: 'همکاری', example: 'Gute Kommunikation verbessert die Zusammenarbeit.' },
+  ],
+}
+
+function enrichLessonVocabulary(lesson) {
+  const additions = vocabularyEnrichments[lesson?.id] || []
+  if (!additions.length) return lesson
+  const vocabulary = lesson.reading?.vocabulary || []
+  const existing = new Set(vocabulary.map(item => item.term.toLocaleLowerCase('de')))
+  return {
+    ...lesson,
+    reading: {
+      ...lesson.reading,
+      vocabulary: [...vocabulary, ...additions.filter(item => !existing.has(item.term.toLocaleLowerCase('de')))],
+    },
+  }
+}
+
 const contentPrompt = `Erstelle eine Tageslektion Deutsch für Andarun als reines JSON ohne Markdown.
 Niveau: B2. Thema soll aus echter täglicher Sprachbenutzung kommen: Arbeit, Familie, Behörden, Gesundheit, Wohnung, Konflikte, Diskussionen, Meinung äußern, Entscheidungen begründen.
 Der Stil soll natürlich und alltagsnah sein, aber nicht einfach. Keine Kindersprache, keine A2/B1-Übungen.
@@ -394,7 +431,9 @@ export default function DeutschPage({
       .then(data => {
         if (ignore) return
         const loaded = normalizeState(data.state)
-        loaded.lessons = loaded.lessons.map(lesson => lesson.id === sampleLesson.id ? upgradedSampleLesson : lesson)
+        loaded.lessons = loaded.lessons.map(lesson => enrichLessonVocabulary(
+          lesson.id === sampleLesson.id ? upgradedSampleLesson : lesson
+        ))
         if (!loaded.lessons.length) {
           loaded.lessons = [upgradedSampleLesson]
         }
@@ -404,6 +443,8 @@ export default function DeutschPage({
       })
       .catch(() => {
         const fallback = readLocalState() || { ...emptyState, lessons: [upgradedSampleLesson] }
+        if (!fallback.lessons.length) fallback.lessons = [upgradedSampleLesson]
+        fallback.lessons = fallback.lessons.map(enrichLessonVocabulary)
         setState(fallback)
         setActiveLessonId(initialLessonId || fallback.lessons[0]?.id || upgradedSampleLesson.id)
         setMessage('Online-Speicherung ist gerade nicht erreichbar. Dein Fortschritt wird lokal auf diesem Gerät gespeichert.')
@@ -437,7 +478,7 @@ export default function DeutschPage({
         if (!res.ok) throw new Error('save failed')
         const data = await res.json()
         setState(normalizeState(data.state))
-        setMessage('Gespeichert.')
+        setMessage('')
       } catch {
         const stored = writeLocalState(nextState)
         setMessage(stored ? 'Lokal gespeichert. Online-Speicherung ist gerade nicht erreichbar.' : 'Speichern ist gerade nicht möglich.')
@@ -527,9 +568,10 @@ export default function DeutschPage({
     try {
       const lesson = JSON.parse(importText)
       if (!lesson.id || !lesson.title || !lesson.reading?.text) throw new Error('bad lesson')
-      const lessons = [lesson, ...state.lessons.filter(item => item.id !== lesson.id)]
+      const enrichedLesson = enrichLessonVocabulary(lesson)
+      const lessons = [enrichedLesson, ...state.lessons.filter(item => item.id !== lesson.id)]
       persist({ ...state, lessons })
-      setActiveLessonId(lesson.id)
+      setActiveLessonId(enrichedLesson.id)
       setActiveTab('home')
       setImportText('')
       setImportOpen(false)
@@ -613,6 +655,17 @@ export default function DeutschPage({
     }
     persist({ ...state, cards: [card, ...state.cards] })
     setMessage('Fehler wurde als Wiederholungskarte gespeichert.')
+  }
+
+  if (lessonMode && loading) {
+    return (
+      <main className={`${styles.shell} ${visualTheme === 'light' ? styles.lightShell : ''}`}>
+        <div className={styles.lessonBoot} role="status" aria-live="polite">
+          <span aria-hidden="true" />
+          <p>Lektion wird geladen</p>
+        </div>
+      </main>
+    )
   }
 
   return (

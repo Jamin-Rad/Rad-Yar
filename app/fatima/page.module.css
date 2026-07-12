@@ -271,12 +271,18 @@
 
   .tileGrid {
     grid-template-columns: 1fr;
+    gap: 10px;
   }
 
   .tile {
-    min-height: 118px;
+    width: 100%;
+    min-height: 126px;
     border-radius: 20px;
+    padding: 18px;
   }
+
+  .hero { gap: 14px; }
+  .hero p { max-width: 92%; font-size: 15px; line-height: 1.55; }
 
   .hearts i:nth-child(2),
   .hearts i:nth-child(4) {
