@@ -7,7 +7,7 @@ const spaces = [
   {
     number: '01',
     title: 'Routine',
-    description: 'Rituale, die den Alltag leichter machen.',
+    description: 'Dein Rhythmus',
     href: '/andarun/routine',
     theme: 'cobalt',
     icon: 'sun',
@@ -15,7 +15,7 @@ const spaces = [
   {
     number: '02',
     title: 'Aufgaben',
-    description: 'Klarer Kopf. Alles Wichtige an einem Ort.',
+    description: 'Klar im Blick',
     href: '/andarun/todo',
     theme: 'coral',
     icon: 'check',
@@ -23,7 +23,7 @@ const spaces = [
   {
     number: '03',
     title: 'Deutsch',
-    description: 'Jeden Tag ein kleines Stück sicherer.',
+    description: 'Jeden Tag weiter',
     href: '/andarun/deutsch',
     theme: 'lemon',
     icon: 'type',
@@ -31,7 +31,7 @@ const spaces = [
   {
     number: '04',
     title: 'Finanzen',
-    description: 'Überblick behalten, entspannt vorausplanen.',
+    description: 'Sicher planen',
     href: '/andarun/finanz',
     theme: 'mint',
     icon: 'chart',
@@ -62,37 +62,34 @@ export default function AndarunLanding() {
           <span>ANDARUN</span>
         </Link>
         <div className={styles.navRight}>
-          <span className={styles.privateLabel}><i /> Privater Raum</span>
+          <span className={styles.privateLabel}><i /> Privat</span>
           <Link className={styles.login} href="/andarun/login">
-            Anmelden <span aria-hidden="true">↗</span>
+            Enter <span aria-hidden="true">↗</span>
           </Link>
         </div>
       </header>
 
       <section className={styles.hero} aria-labelledby="andarun-title">
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>Dein persönlicher Raum</p>
-          <h1 id="andarun-title">Das Leben,<br/><em>gut sortiert.</em></h1>
-          <p className={styles.intro}>Ein ruhiger Ort für alles, was deinen Alltag bewegt – von kleinen Gewohnheiten bis zu großen Plänen.</p>
+          <p className={styles.eyebrow}>Dein Universum</p>
+          <h1 id="andarun-title">Alles an<br/><em>einem Ort.</em></h1>
+          <Link className={styles.launch} href="#spaces-title">Entdecken <span>↓</span></Link>
         </div>
 
         <div className={styles.heroArt} aria-hidden="true">
-          <div className={styles.blueShape} />
-          <div className={styles.sunShape} />
-          <div className={styles.archShape} />
-          <span className={styles.sparkOne}>✦</span>
-          <span className={styles.sparkTwo}>✦</span>
-          <p>MAKE SPACE<br/>FOR WHAT<br/><b>MATTERS</b></p>
+          <span className={styles.orbitOne} />
+          <span className={styles.orbitTwo} />
+          <span className={styles.coordinate}>47° 22′ 12″</span>
         </div>
       </section>
 
       <section className={styles.workspace} aria-labelledby="spaces-title">
         <div className={styles.sectionHead}>
           <div>
-            <p className={styles.eyebrow}>Arbeitsbereiche</p>
-            <h2 id="spaces-title">Wo möchtest du anfangen?</h2>
+            <p className={styles.eyebrow}>Deine Welten</p>
+            <h2 id="spaces-title">Wähle dein Ziel.</h2>
           </div>
-          <p>Vier Bereiche.<br/>Ein gutes Gefühl.</p>
+          <p>04 Module</p>
         </div>
 
         <div className={styles.grid}>
@@ -113,8 +110,8 @@ export default function AndarunLanding() {
       </section>
 
       <footer className={styles.footer}>
-        <p>ANDARUN <span>—</span> DEIN ALLTAG, DEIN RHYTHMUS.</p>
-        <span>Mit Ruhe gemacht · 2026</span>
+        <p>ANDARUN <span>✦</span> PERSONAL SPACE</p>
+        <span>2026</span>
       </footer>
     </main>
   )
