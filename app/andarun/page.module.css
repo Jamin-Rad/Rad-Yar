@@ -21,15 +21,9 @@
   border-bottom: 1px solid rgba(255, 255, 255, .14);
 }
 
-.brand, .navRight, .login, .privateLabel { display: flex; align-items: center; }
+.brand { display: flex; align-items: center; }
 .brand { gap: 12px; color: #fff; text-decoration: none; font-size: 13px; font-weight: 800; letter-spacing: .2em; }
 .brandMark { width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.5); border-radius: 50%; color: #fff; font-family: var(--font-fraunces), serif; font-size: 18px; font-style: italic; letter-spacing: 0; }
-.navRight { gap: 28px; }
-.privateLabel { gap: 9px; color: rgba(255,255,255,.55); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-.privateLabel i { width: 7px; height: 7px; border-radius: 50%; background: #b5c0ff; box-shadow: 0 0 0 4px rgba(181,192,255,.14); }
-.login { gap: 15px; min-height: 43px; padding: 0 18px; border: 1px solid rgba(255,255,255,.45); color: #fff; text-decoration: none; font-size: 12px; font-weight: 800; letter-spacing: .05em; transition: .25s ease; }
-.login span { font-size: 17px; }
-.login:hover { background: #fff; color: #101224; }
 
 .hero {
   position: relative;
@@ -89,7 +83,7 @@
 
 @media (max-width: 620px) {
   .nav, .hero { width: calc(100% - 36px); }
-  .nav { height: 78px; }.privateLabel { display: none; }.login { padding: 0 13px; }
+  .nav { height: 78px; }
   .hero { min-height: calc(100svh - 78px); padding: 54px 0 64px; gap: 54px; }.hero h1 { font-size: clamp(55px, 17vw, 84px); }
   .hero::before { background: linear-gradient(0deg, #070817 0%, transparent 40%), linear-gradient(90deg, rgba(4,5,18,.82), rgba(4,5,18,.15)), url('/andarun-galaxy-v2.png') 69% center / cover no-repeat; }
   .workspace { padding: 68px 18px 72px; }.sectionHead > p { display: none; }.grid { grid-template-columns: 1fr; gap: 10px; }
@@ -97,4 +91,4 @@
   .footer { padding: 30px 18px; gap: 15px; align-items: flex-start; flex-direction: column; }
 }
 
-@media (prefers-reduced-motion: reduce) { .card, .icon svg, .arrow, .login { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .card, .icon svg, .arrow { transition: none; } }

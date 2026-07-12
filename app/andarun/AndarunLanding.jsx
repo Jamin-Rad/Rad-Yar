@@ -61,12 +61,6 @@ export default function AndarunLanding() {
           <span className={styles.brandMark}>A</span>
           <span>ANDARUN</span>
         </Link>
-        <div className={styles.navRight}>
-          <span className={styles.privateLabel}><i /> Privat</span>
-          <Link className={styles.login} href="/andarun/login">
-            Enter <span aria-hidden="true">↗</span>
-          </Link>
-        </div>
       </header>
 
       <section className={styles.hero} aria-labelledby="andarun-title">

@@ -2326,3 +2326,67 @@
   .shell .flashNumbers { grid-template-columns: repeat(3, 1fr); }
   .shell .boxGrid, .shell .optionsGrid { grid-template-columns: 1fr; }
 }
+
+/* Spacious flashcards shared by Andarun and Fatima. */
+.shell .flashModal {
+  width: min(820px, calc(100% - 28px));
+  max-height: min(900px, 92svh);
+  padding: clamp(20px, 4vw, 38px);
+}
+.shell .flashReview { gap: 18px; }
+.shell .flashCardFace {
+  min-height: 500px;
+  padding: clamp(26px, 5vw, 54px);
+  align-content: start;
+  gap: 24px;
+  border-radius: 28px;
+}
+.shell .flashCardFace > small { color: var(--d-muted); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; }
+.shell .flashCardFace > h3 { margin: 8px 0 4px; color: var(--d-text); font-size: clamp(42px, 7vw, 76px); line-height: .95; }
+.flashAnswer { display: grid; gap: 18px; margin: 6px 0 10px; }
+.flashMeaning {
+  display: grid;
+  gap: 7px;
+  padding: 18px 20px;
+  border: 1px solid var(--d-border);
+  border-radius: 18px;
+  background: rgba(255,255,255,.045);
+}
+.lightShell .flashMeaning { background: rgba(255,255,255,.62); }
+.flashMeaning > span, .flashExample > div > span { color: var(--d-accent); font-size: 9px; font-weight: 900; letter-spacing: .17em; text-transform: uppercase; }
+.shell .flashMeaning p { margin: 0; color: var(--d-text); font-size: clamp(17px, 2vw, 21px); line-height: 1.65; white-space: pre-line; }
+.shell .persianMeaning p { font-family: var(--font-persian), Tahoma, sans-serif; font-size: clamp(19px, 2.2vw, 23px); line-height: 1.9; }
+.shell .persianMeaning > span { justify-self: end; }
+.flashExample {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--d-accent) 12%, transparent);
+}
+.flashExample > div { display: grid; gap: 7px; }
+.shell .flashExample p { margin: 0; color: var(--d-text); font-family: var(--font-fraunces), Georgia, serif; font-size: clamp(18px, 2.2vw, 24px); line-height: 1.5; }
+.listenExampleBtn {
+  min-height: 42px;
+  flex: 0 0 auto;
+  padding: 0 15px;
+  border: 1px solid var(--d-border);
+  border-radius: 999px;
+  background: var(--d-text);
+  color: var(--d-bg);
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 900;
+}
+.listenExampleBtn span { margin-right: 5px; }
+.shell .wordModal .primaryBtn:disabled { cursor: default; opacity: .65; }
+
+@media (max-width: 560px) {
+  .shell .flashModal { width: calc(100% - 18px); padding: 14px; }
+  .shell .flashCardFace { min-height: 430px; padding: 22px 18px; gap: 18px; }
+  .flashExample { align-items: stretch; flex-direction: column; }
+  .listenExampleBtn { align-self: flex-start; }
+}

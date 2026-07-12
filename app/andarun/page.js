@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation'
+import { hasAndarunSession } from '@/lib/andarunPasswordAuth'
 import AndarunLanding from './AndarunLanding'
 
 export const metadata = {
@@ -9,6 +11,10 @@ export const metadata = {
   },
 }
 
-export default function AndarunPage() {
+export const dynamic = 'force-dynamic'
+
+export default async function AndarunPage() {
+  if (!(await hasAndarunSession())) redirect('/andarun/login')
+
   return <AndarunLanding />
 }

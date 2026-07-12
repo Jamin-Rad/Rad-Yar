@@ -133,7 +133,7 @@ Schema:
     "title": "...",
     "text": "170-230 Wörter auf Deutsch mit B2-Satzbau",
     "vocabulary": [
-      { "term": "...", "de": "einfache Erklärung auf Deutsch", "fa": "persische Bedeutung", "example": "deutscher Beispielsatz" }
+      { "term": "exakte Form aus dem Lesetext", "de": "klare Bedeutung auf Deutsch", "fa": "präzise persische Übersetzung", "example": "natürlicher deutscher Beispielsatz mit dem Begriff" }
     ],
     "questions": [
       { "question": "...", "options": ["...", "...", "...", "..."], "answer": 0, "explanation": "..." }
@@ -159,13 +159,28 @@ Regeln:
 - genau 5 reading.questions
 - genau 5 grammar Fragen
 - genau 5 listening.questions
-- mindestens 8 vocabulary Einträge
+- genau 12 bis 16 vocabulary Einträge
 - answer ist der Index der richtigen Option, beginnend bei 0
-- vocabulary.term muss exakt im Lesetext vorkommen, wenn möglich
+- Die vocabulary-Liste ist die Grundlage der Flashcards und muss vollständig ausgefüllt sein: term, de, fa und example dürfen niemals leer sein.
+- Erfasse ALLE lernrelevanten B2-Wörter und festen Wendungen des Lesetextes: Verben mit Präposition, idiomatische Ausdrücke, wichtige Nomen, Adjektive und Konnektoren. Kein wichtiges B2-Wort darf fehlen.
+- vocabulary.term muss buchstabengetreu in derselben Form im Lesetext vorkommen. Bei trennbaren Verben oder festen Wendungen verwende eine tatsächlich zusammenhängend vorkommende Formulierung.
+- Nutze für term bevorzugt die konkrete Textform, damit das Wort im Lesetext anklickbar ist. Keine Grundform angeben, wenn im Text nur eine flektierte Form vorkommt.
+- de erklärt die Bedeutung verständlich auf B2-Niveau und ist keine bloße Wiederholung des Begriffs.
+- fa ist eine natürliche, inhaltlich genaue persische Übersetzung in persischer Schrift.
+- example ist ein neuer, natürlicher deutscher Satz und enthält term exakt in derselben Schreibweise. Der Beispielsatz darf nicht aus dem Lesetext kopiert sein.
+- Keine sehr einfachen A1-Wörter wie „machen“, „gehen“, „gut“ oder „heute“ aufnehmen, außer sie sind Teil einer festen B2-Wendung.
 - MCQs müssen schwierig sein: Bedeutung, Schlussfolgerung, Haltung, indirekte Aussage, nicht nur Wortsuche
 - Grammatikfragen müssen aus echten Sätzen des Lesetextes kommen: Konjunktiv, Nebensatz, Passiv, Präposition, Satzstellung, Nominalisierung
 - Der Hörtext soll ähnliche Wörter nutzen, aber ein anderer Text sein
-- Die Schreibaufgabe soll eine Meinung oder Entscheidung verlangen`
+- Die Schreibaufgabe soll eine Meinung oder Entscheidung verlangen
+
+Pflichtprüfung vor der Ausgabe:
+1. Zähle 12 bis 16 vocabulary-Einträge.
+2. Suche jeden vocabulary.term exakt im reading.text.
+3. Prüfe bei jeder Karte de, fa und example auf Inhalt und korrekte Sprache.
+4. Prüfe, dass jeder example-Satz den jeweiligen term exakt enthält.
+5. Ergänze jedes wichtige B2-Wort aus dem Lesetext, das noch keine Flashcard hat.
+6. Gib danach ausschließlich valides JSON aus, ohne Kommentar und ohne Markdown.`
 
 function normalizeState(value) {
   return {
@@ -446,6 +461,7 @@ export default function DeutschPage({
   const dueCards = useMemo(() => state.cards.filter(isDue), [state.cards])
   const nextCard = dueCards[0]
   const learnedWords = new Set(state.cards.map(card => card.term.toLowerCase()))
+  const selectedWordSaved = selectedWord ? learnedWords.has(selectedWord.term.toLowerCase()) : false
   const dueDoneToday = useMemo(() => state.reviews.filter(review => isToday(review.at)).length, [state.reviews])
   const flashCards = useMemo(() => {
     if (flashView.practice) return state.cards
@@ -926,7 +942,40 @@ export default function DeutschPage({
                   <article className={styles.flashCardFace}>
                     <small>{flashView.practice ? 'Ansehen ohne Speichern' : `Box ${flashView.box + 1}`}</small>
                     <h3>{activeFlashCard.front}</h3>
-                    {showBack && <p>{activeFlashCard.back}</p>}
+                    {showBack && (
+                      <div className={styles.flashAnswer}>
+                        {activeFlashCard.type === 'word' ? (
+                          <>
+                            <div className={styles.flashMeaning}>
+                              <span>Deutsch</span>
+                              <p>{activeFlashCard.de}</p>
+                            </div>
+                            {activeFlashCard.fa && (
+                              <div className={`${styles.flashMeaning} ${styles.persianMeaning}`} dir="rtl">
+                                <span>فارسی</span>
+                                <p>{activeFlashCard.fa}</p>
+                              </div>
+                            )}
+                          </>
+                        ) : (
+                          <div className={styles.flashMeaning}>
+                            <span>Antwort</span>
+                            <p>{activeFlashCard.back}</p>
+                          </div>
+                        )}
+                        {activeFlashCard.example && (
+                          <div className={styles.flashExample}>
+                            <div>
+                              <span>Beispiel</span>
+                              <p>{activeFlashCard.example}</p>
+                            </div>
+                            <button type="button" className={styles.listenExampleBtn} onClick={() => speak(activeFlashCard.example)}>
+                              <span aria-hidden="true">◖))</span> Anhören
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    )}
                     {!showBack ? (
                       <button type="button" className={styles.primaryBtn} onClick={() => setShowBack(true)}>Antwort zeigen</button>
                     ) : flashView.practice ? (
@@ -960,7 +1009,9 @@ export default function DeutschPage({
             <p><strong>Persisch:</strong> {selectedWord.fa}</p>
             {selectedWord.example && <em>{selectedWord.example}</em>}
             <div className={styles.actionRow}>
-              <button type="button" className={styles.primaryBtn} onClick={() => addWordCard(selectedWord)}>Als Flashcard speichern</button>
+              <button type="button" className={styles.primaryBtn} disabled={selectedWordSaved} onClick={() => addWordCard(selectedWord)}>
+                {selectedWordSaved ? '✓ Bereits gespeichert' : 'Als Flashcard speichern'}
+              </button>
               <button type="button" onClick={() => speak(selectedWord.example || selectedWord.term)}>Anhören</button>
             </div>
           </section>
