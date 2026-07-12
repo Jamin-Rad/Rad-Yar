@@ -51,7 +51,7 @@ export const STROKE_LESSON = {
     },
   ],
   basics: {
-    title: L('Klinische Merkmale', 'Clinical features', 'ویژگی‌های بالینی'),
+    title: L('Klinische Grundlagen', 'Clinical basics', 'مبانی بالینی'),
     introTitle: L('Einleitung und Klassifikation', 'Introduction and classification', 'مقدمه و طبقه‌بندی'),
     introGroups: [
       {

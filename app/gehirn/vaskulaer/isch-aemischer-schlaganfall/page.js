@@ -79,55 +79,21 @@ function ClinicalBasics({ lesson, lang, localizeValue }) {
   const rows = localizedRows(lesson.rows, lang)
   const headers = lesson.headers.map(localizeValue)
   const notes = localizedItems(lesson.items, lang)
+  const introCards = lesson.introGroups.flatMap(group => group.items.map(item => ({
+    title: localizeValue(item.text),
+    text: localizeValue(item.detail),
+  })))
 
   return (
-    <div className={styles.clinicalSheet}>
-      <div className={styles.clinicalIntro}>
-        <h3>{localizeValue(lesson.introTitle)}</h3>
-        {lesson.introGroups.map(group => (
-          <div className={styles.clinicalIntroGroup} key={localizeValue(group.title)}>
-            <p>{localizeValue(group.title)}</p>
-            <ul>
-              {group.items.map(item => (
-                <li key={localizeValue(item.text)}>
-                  <span>{localizeValue(item.text)}</span>
-                  {item.detail && <small>{localizeValue(item.detail)}</small>}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
+    <div>
+      <p className={styles.lead}>{localizeValue(lesson.introTitle)}</p>
+      <Cards items={introCards} />
 
-      <div className={styles.clinicalTableBlock}>
-        <h3>{localizeValue(lesson.territoriesTitle)}</h3>
-        <div className={styles.clinicalTableWrap}>
-          <table className={styles.clinicalTable}>
-            <thead>
-              <tr>{headers.map(header => <th key={header}>{header}</th>)}</tr>
-            </thead>
-            <tbody>
-              {rows.map((row, rowIndex) => (
-                <tr key={row[0]}>
-                  {row.map((cell, cellIndex) => (
-                    <td key={`${rowIndex}-${cellIndex}`} className={cellIndex === 0 ? styles.clinicalVessel : undefined}>{cell}</td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <p className={styles.clinicalFootnote}>{localizeValue(lesson.footnote)}</p>
-      </div>
+      <h3 style={{ margin: '28px 0 14px', color: 'var(--text-strong)' }}>{localizeValue(lesson.territoriesTitle)}</h3>
+      <Table headers={headers} rows={rows} />
+      <Callout label={localizeValue('Definition')}>{localizeValue(lesson.footnote)}</Callout>
 
-      <div className={styles.clinicalNotes}>
-        {notes.map(note => (
-          <div className={styles.clinicalNote} key={note.title}>
-            <h3>{note.title}</h3>
-            <p>{note.text}</p>
-          </div>
-        ))}
-      </div>
+      <Cards items={notes} />
     </div>
   )
 }
