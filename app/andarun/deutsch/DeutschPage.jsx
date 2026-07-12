@@ -332,6 +332,7 @@ export default function DeutschPage({
   const [flashView, setFlashView] = useState({ mode: 'boxes', box: 0, practice: false })
   const [showBack, setShowBack] = useState(false)
   const [practiceIndex, setPracticeIndex] = useState(0)
+  const [visualTheme, setVisualTheme] = useState(theme)
   const saveTimer = useRef(null)
   const localStorageKey = `deutsch_state_${apiBase.replace(/[^a-z0-9]/gi, '_')}`
 
@@ -378,6 +379,17 @@ export default function DeutschPage({
     return () => { ignore = true }
   }, [initialLessonId, lessonMode, apiBase])
 
+  useEffect(() => {
+    const stored = window.localStorage.getItem('andarun-deutsch-theme')
+    if (stored === 'dark' || stored === 'light') setVisualTheme(stored)
+  }, [])
+
+  function toggleVisualTheme() {
+    const next = visualTheme === 'dark' ? 'light' : 'dark'
+    setVisualTheme(next)
+    window.localStorage.setItem('andarun-deutsch-theme', next)
+  }
+
   function persist(nextState) {
     setState(nextState)
     window.clearTimeout(saveTimer.current)
@@ -405,6 +417,10 @@ export default function DeutschPage({
   const activeLesson = useMemo(
     () => state.lessons.find(lesson => lesson.id === activeLessonId) || state.lessons[0] || upgradedSampleLesson,
     [state.lessons, activeLessonId]
+  )
+  const sortedLessons = useMemo(
+    () => [...state.lessons].sort((a, b) => `${b.date || ''}`.localeCompare(`${a.date || ''}`)),
+    [state.lessons]
   )
   const dueCards = useMemo(() => state.cards.filter(isDue), [state.cards])
   const nextCard = dueCards[0]
@@ -557,13 +573,19 @@ export default function DeutschPage({
   }
 
   return (
-    <main className={`${styles.shell} ${theme === 'light' ? styles.lightShell : ''}`}>
+    <main className={`${styles.shell} ${visualTheme === 'light' ? styles.lightShell : ''}`}>
       <header className={`${styles.hero} ${!lessonMode ? styles.heroSimple : ''}`}>
         <div>
-          <Link className={styles.backLink} href={homeHref}>{homeLabel}</Link>
-          <span className={styles.kicker}>{lessonMode ? activeLesson.level : 'Sprachtraining'}</span>
-          <h1>{lessonMode ? activeLesson.title : 'Deutsch lernen'}</h1>
-          <p>{lessonMode ? activeLesson.topic : 'Lesen, Hören, Schreiben und Wiederholen in einem ruhigen Lernbereich.'}</p>
+          <div className={styles.heroNav}>
+            <Link className={styles.backLink} href={lessonMode ? courseHref : homeHref}>← {lessonMode ? 'Kurs' : homeLabel}</Link>
+            <button type="button" className={styles.themeToggle} onClick={toggleVisualTheme} aria-label="Farbschema wechseln">
+              <span>{visualTheme === 'dark' ? '☾' : '☼'}</span>
+              {visualTheme === 'dark' ? 'Galaxy' : 'Heaven'}
+            </button>
+          </div>
+          <span className={styles.kicker}>{lessonMode ? `${activeLesson.level} · Lektion` : 'Deutsch · B2'}</span>
+          <h1>{lessonMode ? activeLesson.title : <>Deutsch<br/><em>lernen.</em></>}</h1>
+          <p>{lessonMode ? activeLesson.topic : 'Lesen. Testen. Sprechen.'}</p>
           {!lessonMode && canImport && (
             <button type="button" className={styles.importMiniBtn} onClick={() => setImportOpen(true)}>
               Import
@@ -571,9 +593,9 @@ export default function DeutschPage({
           )}
         </div>
         {lessonMode && <div className={styles.heroStats}>
-          <span><strong>{state.lessons.length}</strong>Lektionen</span>
-          <span><strong>{dueCards.length}</strong>heute fällig</span>
-          <span><strong>{state.cards.length}</strong>Karten</span>
+          <span><strong>{getLessonProgress(activeLesson, state.answers)}%</strong>Fortschritt</span>
+          <span><strong>{dueCards.length}</strong>fällig</span>
+          <span><strong>{state.cards.length}</strong>Wörter</span>
         </div>}
       </header>
 
@@ -581,6 +603,19 @@ export default function DeutschPage({
 
       {lessonMode && (
         <>
+          <nav className={styles.tabs} aria-label="Deutschbereiche">
+            {[
+              ['lesen', '01 · Lesen'],
+              ['grammatik', '02 · Test'],
+              ['hoeren', '03 · Hören'],
+              ['schreiben', '04 · Schreiben'],
+            ].map(([id, label]) => (
+              <button type="button" key={id} className={activeTab === id ? styles.activeTab : ''} onClick={() => setActiveTab(id)}>
+                {label}
+              </button>
+            ))}
+          </nav>
+
           <section className={styles.dashboard}>
             <article className={styles.reviewPanel}>
               <div className={styles.panelHead}>
@@ -599,7 +634,7 @@ export default function DeutschPage({
                   </div>
                 </div>
               ) : (
-                <p className={styles.empty}>Keine fälligen Karten. Neue Wörter entstehen beim Lesen durch Klick auf ein Wort.</p>
+                <p className={styles.empty}>Alles wiederholt. ✦</p>
               )}
             </article>
 
@@ -609,13 +644,13 @@ export default function DeutschPage({
                 <strong>{activeLesson.title}</strong>
               </div>
               <div className={styles.lessonList}>
-                {state.lessons.map(lesson => (
+                {sortedLessons.map((lesson, index) => (
                   <Link
                     key={lesson.id}
                     className={lesson.id === activeLesson.id ? styles.activeLesson : ''}
                     href={`${lessonBase}/${lesson.id}`}
                   >
-                    <span>{lesson.date}</span>
+                    <span>{String(index + 1).padStart(2, '0')} · {lesson.level}</span>
                     <strong>{lesson.title}</strong>
                   </Link>
                 ))}
@@ -623,18 +658,6 @@ export default function DeutschPage({
             </aside>
           </section>
 
-          <nav className={styles.tabs} aria-label="Deutschbereiche">
-            {[
-              ['lesen', 'Lesen'],
-              ['grammatik', 'Grammatik'],
-              ['hoeren', 'Hören'],
-              ['schreiben', 'Schreiben'],
-            ].map(([id, label]) => (
-              <button type="button" key={id} className={activeTab === id ? styles.activeTab : ''} onClick={() => setActiveTab(id)}>
-                {label}
-              </button>
-            ))}
-          </nav>
         </>
       )}
 
@@ -642,11 +665,11 @@ export default function DeutschPage({
         <section className={styles.homeGrid}>
           <article className={styles.textPanel}>
             <div className={styles.panelHead}>
-              <span>Lektionen</span>
-              <strong>Themen und Zeit</strong>
+              <span>Dein Kurs</span>
+              <strong>{state.lessons.length} Lektionen</strong>
             </div>
             <div className={styles.lessonRows}>
-              {state.lessons.map(lesson => {
+              {sortedLessons.map((lesson, index) => {
                 const progress = getLessonProgress(lesson, state.answers)
                 return (
                   <Link
@@ -654,8 +677,9 @@ export default function DeutschPage({
                     key={lesson.id}
                     href={`${lessonBase}/${lesson.id}`}
                   >
+                    <span className={styles.lessonNumber}>{String(index + 1).padStart(2, '0')}</span>
                     <div>
-                      <span>{lesson.date} · {lesson.level}</span>
+                      <span>{lesson.level} · {lesson.date}</span>
                       <strong>{lesson.title}</strong>
                       <small>{lesson.topic}</small>
                     </div>
@@ -671,8 +695,8 @@ export default function DeutschPage({
 
           <aside className={styles.flashPanel}>
             <div className={styles.panelHead}>
-              <span>Flashcards</span>
-              <strong>Heute</strong>
+              <span>Quick Practice</span>
+              <strong>Flashcards</strong>
             </div>
             <div className={styles.flashNumbers}>
               <span><strong>{dueCards.length}</strong>fällig</span>
@@ -688,7 +712,7 @@ export default function DeutschPage({
                 setFlashOpen(true)
               }}
             >
-              Wiederholen
+              Training starten →
             </button>
           </aside>
         </section>

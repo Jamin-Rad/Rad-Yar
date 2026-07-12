@@ -1790,6 +1790,230 @@
   color: #4a1f32;
 }
 
+/* ── Andarun Deutsch 2026: Galaxy / Heaven ───────────────────────── */
+.shell {
+  --d-bg: #08091a;
+  --d-bg2: #11142d;
+  --d-surface: rgba(19, 22, 52, .72);
+  --d-surface-strong: rgba(24, 28, 65, .9);
+  --d-border: rgba(190, 198, 255, .16);
+  --d-text: #f6f3ff;
+  --d-muted: #9da3bd;
+  --d-accent: #aeb9ff;
+  --d-hot: #e3a6ff;
+  min-height: 100svh;
+  padding: 0 0 80px;
+  color: var(--d-text);
+  background:
+    linear-gradient(180deg, rgba(5, 6, 22, .28), #08091a 710px),
+    url('/andarun-galaxy-v2.png') top center / 100% auto no-repeat,
+    var(--d-bg);
+  font-family: var(--font-manrope), sans-serif;
+}
+
+.lightShell {
+  --d-bg: #eef8ff;
+  --d-bg2: #f9fcff;
+  --d-surface: rgba(255, 255, 255, .7);
+  --d-surface-strong: rgba(255, 255, 255, .92);
+  --d-border: rgba(100, 146, 190, .2);
+  --d-text: #1b3550;
+  --d-muted: #6f8da8;
+  --d-accent: #4c84ba;
+  --d-hot: #cb85a5;
+  background:
+    radial-gradient(ellipse at 12% 8%, rgba(255,255,255,.98) 0 8%, transparent 24%),
+    radial-gradient(ellipse at 78% 16%, rgba(255,255,255,.94) 0 9%, transparent 27%),
+    radial-gradient(ellipse at 48% -5%, rgba(255,255,255,.9), transparent 34%),
+    linear-gradient(180deg, #a8d8f4 0, #dff2fc 560px, #f5fbff 900px, #eef8ff 100%);
+  color: var(--d-text);
+}
+
+.shell::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .26;
+  background-image: radial-gradient(circle, #fff 0 1px, transparent 1.5px);
+  background-size: 73px 73px;
+  mask-image: linear-gradient(#000, transparent 70%);
+}
+
+.lightShell::before {
+  opacity: .44;
+  background: radial-gradient(ellipse at 25% 20%, rgba(255,255,255,.75), transparent 28%), radial-gradient(ellipse at 85% 32%, rgba(255,255,255,.62), transparent 24%);
+  mask-image: none;
+}
+
+.hero,
+.status,
+.dashboard,
+.homeGrid,
+.lessonGrid,
+.writingGrid,
+.singleSection,
+.tabs {
+  position: relative;
+  z-index: 1;
+  width: min(1240px, calc(100% - 48px));
+}
+
+.hero {
+  min-height: 440px;
+  margin: 0 auto 24px;
+  padding: 38px 0 54px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  align-items: end;
+  gap: 48px;
+}
+
+.heroSimple { min-height: 560px; grid-template-columns: 1fr; }
+.hero > div:first-child { padding: 0; border: 0; background: none; box-shadow: none; }
+.heroNav { position: absolute; top: 30px; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between; }
+.backLink, .themeToggle {
+  min-height: 42px;
+  margin: 0;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid var(--d-border);
+  border-radius: 999px;
+  background: rgba(8, 9, 26, .36);
+  color: var(--d-text);
+  backdrop-filter: blur(18px);
+  text-decoration: none;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.themeToggle { cursor: pointer; }
+.themeToggle span { font-size: 17px; line-height: 1; }
+.lightShell .backLink, .lightShell .themeToggle { background: rgba(255,255,255,.5); color: var(--d-text); }
+
+.kicker { display: block; margin-bottom: 16px; color: var(--d-accent); font-size: 10px; letter-spacing: .24em; }
+.hero h1, .lightShell .hero h1 {
+  max-width: 900px;
+  margin: 0;
+  color: var(--d-text);
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(58px, 8.4vw, 124px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: .83;
+  letter-spacing: -.065em;
+  text-shadow: none;
+}
+.hero h1 em { color: var(--d-accent); font-weight: 700; }
+.hero p, .lightShell .hero p { margin-top: 24px; color: var(--d-muted); font-size: 14px; letter-spacing: .06em; }
+.importMiniBtn { opacity: .42; margin-top: 18px; border-color: var(--d-border); background: transparent; color: var(--d-muted); }
+
+.heroStats, .reviewPanel, .lessonPicker, .textPanel, .flashPanel, .questionCard, .correctionPanel, .sectionIntro, .wordModal, .importModal, .flashModal,
+.lightShell .heroStats, .lightShell .reviewPanel, .lightShell .lessonPicker, .lightShell .textPanel, .lightShell .flashPanel, .lightShell .questionCard, .lightShell .correctionPanel, .lightShell .sectionIntro, .lightShell .wordModal, .lightShell .importModal, .lightShell .flashModal {
+  border: 1px solid var(--d-border);
+  background: var(--d-surface);
+  color: var(--d-text);
+  box-shadow: 0 28px 80px rgba(2, 4, 20, .22), inset 0 1px 0 rgba(255,255,255,.09);
+  backdrop-filter: blur(24px);
+}
+
+.heroStats { padding: 12px; border-radius: 26px; }
+.heroStats span, .lightShell .heroStats span { min-height: 74px; padding: 12px 16px; border-radius: 18px; background: rgba(255,255,255,.055); color: var(--d-muted); }
+.lightShell .heroStats span { background: rgba(255,255,255,.5); }
+.heroStats strong, .lightShell .heroStats strong { color: var(--d-text); font-family: var(--font-fraunces), serif; font-size: 29px; font-weight: 500; }
+
+.tabs, .lightShell .tabs {
+  top: 12px;
+  margin: -49px auto 28px;
+  padding: 7px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  border: 1px solid var(--d-border);
+  border-radius: 20px;
+  background: rgba(9, 11, 30, .78);
+  backdrop-filter: blur(24px);
+}
+.lightShell .tabs { background: rgba(255,255,255,.76); }
+.tabs button, .lightShell .tabs button { min-height: 48px; border: 0; border-radius: 14px; background: transparent; color: var(--d-muted); font-size: 11px; letter-spacing: .08em; }
+.tabs .activeTab, .lightShell .tabs .activeTab { background: var(--d-text) !important; color: var(--d-bg) !important; box-shadow: 0 10px 28px rgba(0,0,0,.16); }
+
+.dashboard { grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr); margin-bottom: 42px; }
+.reviewPanel, .lessonPicker, .textPanel, .correctionPanel { border-radius: 26px; padding: 24px; }
+.panelHead { margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--d-border); }
+.panelHead span, .sectionIntro span, .lightShell .panelHead span, .lightShell .sectionIntro span { color: var(--d-accent); font-size: 9px; letter-spacing: .18em; }
+.panelHead strong, .lightShell .panelHead strong { color: var(--d-text); font-size: 14px; }
+.empty, .lightShell .empty { color: var(--d-muted); }
+
+.lessonList { max-height: 248px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.lessonList a, .lightShell .lessonList a { min-height: 76px; padding: 13px 15px; border: 1px solid var(--d-border); border-radius: 16px; background: rgba(255,255,255,.035); color: var(--d-text); }
+.lightShell .lessonList a { background: rgba(255,255,255,.52); }
+.lessonList a span, .lightShell .lessonList a span { color: var(--d-muted); font-size: 9px; }
+.lessonList .activeLesson, .lightShell .lessonList .activeLesson { border-color: color-mix(in srgb, var(--d-accent) 65%, transparent) !important; background: color-mix(in srgb, var(--d-accent) 15%, transparent) !important; }
+
+.homeGrid { grid-template-columns: minmax(0, 1.4fr) minmax(280px, .6fr); align-items: start; gap: 18px; margin-top: -82px; }
+.lessonRows { gap: 8px; }
+.lessonRow, .lightShell .lessonRow { position: relative; min-height: 112px; padding: 18px 20px 18px 84px; border: 1px solid var(--d-border); border-radius: 18px; background: rgba(255,255,255,.035); color: var(--d-text); }
+.lightShell .lessonRow { background: rgba(255,255,255,.56); }
+.lessonRow:hover, .lightShell .lessonRow:hover { border-color: color-mix(in srgb, var(--d-accent) 65%, transparent); background: color-mix(in srgb, var(--d-accent) 10%, var(--d-surface)); transform: translateX(5px); }
+.lessonNumber { position: absolute; left: 20px; top: 22px; color: var(--d-accent) !important; font-family: var(--font-fraunces), serif; font-size: 28px !important; }
+.lessonRow strong, .lightShell .lessonRow strong { color: var(--d-text); font-family: var(--font-fraunces), serif; font-size: 23px; font-weight: 600; }
+.lessonRow span, .lessonRow small, .lightShell .lessonRow span, .lightShell .lessonRow small { color: var(--d-muted); }
+.progressWrap b, .lightShell .progressWrap b { color: var(--d-accent); }
+.progressWrap i, .lightShell .progressWrap i { background: color-mix(in srgb, var(--d-accent) 14%, transparent); }
+.progressWrap em, .lightShell .progressWrap em { background: linear-gradient(90deg, var(--d-accent), var(--d-hot)); }
+
+.flashPanel { position: sticky; top: 20px; min-height: 350px; padding: 24px; border-radius: 26px; overflow: hidden; }
+.flashPanel::after { content: 'Aa'; position: absolute; right: -12px; bottom: -38px; color: color-mix(in srgb, var(--d-accent) 16%, transparent); font-family: var(--font-fraunces), serif; font-size: 180px; line-height: 1; pointer-events: none; }
+.flashNumbers { position: relative; z-index: 1; grid-template-columns: repeat(3, 1fr); }
+.flashNumbers span, .lightShell .flashNumbers span { min-height: 88px; border: 1px solid var(--d-border); background: rgba(255,255,255,.04); color: var(--d-muted); }
+.flashNumbers strong, .lightShell .flashNumbers strong { color: var(--d-text); }
+.primaryBtn, .lightShell .primaryBtn { position: relative; z-index: 1; border: 0; background: var(--d-text); color: var(--d-bg); }
+
+.lessonGrid { grid-template-columns: minmax(0, 1.12fr) minmax(340px, .88fr); gap: 18px; }
+.readingText, .lightShell .readingText { color: var(--d-text); font-family: var(--font-fraunces), Georgia, serif; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.9; }
+.wordBtn, .lightShell .wordBtn { border-radius: 5px; background: color-mix(in srgb, var(--d-accent) 18%, transparent); color: var(--d-accent); }
+.questionCard { border-radius: 22px; }
+.questionTop strong, .lightShell .questionTop strong { color: var(--d-text); }
+.optionBtn, .lightShell .optionBtn { border-color: var(--d-border); background: rgba(255,255,255,.045); color: var(--d-text); }
+.lightShell .optionBtn { background: rgba(255,255,255,.6); }
+.sectionIntro h2, .lightShell .sectionIntro h2 { color: var(--d-text); font-family: var(--font-fraunces), serif; font-weight: 500; }
+
+.modalBackdrop { z-index: 50; background: rgba(3,4,17,.78); backdrop-filter: blur(18px); }
+.lightShell .modalBackdrop { background: rgba(204,229,244,.72); }
+.flashModal { border-radius: 30px; }
+.flashCardFace, .lightShell .flashCardFace { border-color: var(--d-border); background: var(--d-surface-strong); }
+.flashCardFace h3, .lightShell .flashCardFace h3 { color: var(--d-text); font-family: var(--font-fraunces), serif; font-size: clamp(34px, 6vw, 64px); }
+
+@media (max-width: 900px) {
+  .hero, .heroSimple { min-height: 460px; grid-template-columns: 1fr; }
+  .heroStats { display: none; }
+  .homeGrid { margin-top: -50px; }
+  .dashboard, .homeGrid, .lessonGrid, .writingGrid { grid-template-columns: 1fr; }
+  .flashPanel { position: static; }
+}
+
+@media (max-width: 620px) {
+  .shell { padding-bottom: 48px; background-size: auto 520px; }
+  .hero, .status, .dashboard, .homeGrid, .lessonGrid, .writingGrid, .singleSection, .tabs { width: calc(100% - 28px); }
+  .hero, .heroSimple { min-height: 420px; padding-top: 22px; }
+  .heroNav { top: 18px; }
+  .backLink, .themeToggle { min-height: 38px; padding: 0 12px; }
+  .hero h1, .lightShell .hero h1 { font-size: clamp(48px, 15vw, 74px); }
+  .tabs, .lightShell .tabs { position: relative; top: 0; margin-top: -46px; grid-template-columns: repeat(2, 1fr); }
+  .homeGrid { margin-top: -48px; }
+  .lessonList { grid-template-columns: 1fr; }
+  .lessonRow, .lightShell .lessonRow { padding-left: 66px; }
+  .lessonNumber { left: 15px; }
+  .flashNumbers { grid-template-columns: repeat(3, 1fr); }
+  .reviewPanel, .lessonPicker, .textPanel, .correctionPanel, .flashPanel, .sectionIntro { padding: 18px; border-radius: 22px; }
+}
+
 .reviewActions {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2003,4 +2227,36 @@
   .tabs {
     position: static;
   }
+}
+
+/* Final cascade guard for the Galaxy / Heaven redesign. */
+.shell .readingText { color: var(--d-text); font-family: var(--font-fraunces), Georgia, serif; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.9; }
+.shell .wordBtn { background: color-mix(in srgb, var(--d-accent) 18%, transparent); color: var(--d-accent); }
+.shell .questionTop span { background: color-mix(in srgb, var(--d-accent) 14%, transparent); color: var(--d-accent); }
+.shell .optionBtn { border-color: var(--d-border); background: rgba(255,255,255,.045); color: var(--d-text); }
+.lightShell .optionBtn { background: rgba(255,255,255,.6); }
+.shell .flashCardFace { border-color: var(--d-border); background: var(--d-surface-strong); }
+.shell .modalBackdrop { background: rgba(3,4,17,.78); backdrop-filter: blur(18px); }
+.lightShell .modalBackdrop { background: rgba(204,229,244,.72); }
+
+@media (max-width: 900px) {
+  .shell .hero, .shell .heroSimple { min-height: 460px; grid-template-columns: 1fr; }
+  .shell .heroStats { display: none; }
+  .shell .homeGrid { margin-top: -50px; }
+  .shell .dashboard, .shell .homeGrid, .shell .lessonGrid, .shell .writingGrid { grid-template-columns: 1fr; }
+  .shell .flashPanel { position: static; }
+}
+
+@media (max-width: 560px) {
+  .shell { padding: 0 0 48px; background-size: auto 520px; }
+  .shell .hero, .shell .status, .shell .dashboard, .shell .homeGrid, .shell .lessonGrid, .shell .writingGrid, .shell .singleSection, .shell .tabs { width: calc(100% - 28px); }
+  .shell .hero, .shell .heroSimple { min-height: 420px; margin-bottom: 24px; padding-top: 22px; }
+  .shell .heroNav { top: 18px; }
+  .shell .hero h1 { font-size: clamp(48px, 15vw, 74px); }
+  .shell .tabs { position: relative; top: 0; margin-top: -46px; grid-template-columns: repeat(2, 1fr); }
+  .shell .homeGrid { margin-top: -48px; }
+  .shell .lessonList { grid-template-columns: 1fr; }
+  .shell .lessonRow { display: flex; grid-template-columns: none; padding: 18px 18px 18px 66px; }
+  .shell .flashNumbers { grid-template-columns: repeat(3, 1fr); }
+  .shell .boxGrid, .shell .optionsGrid { grid-template-columns: 1fr; }
 }
