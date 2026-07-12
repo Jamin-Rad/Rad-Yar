@@ -452,8 +452,9 @@ export default function DeutschPage({
     setMessage(`"${word.term}" wurde als Flashcard gespeichert.`)
   }
 
-  function reviewCard(card, quality) {
-    const box = quality === 'hard' ? 0 : Math.min((card.box || 0) + (quality === 'easy' ? 2 : 1), INTERVALS.length - 1)
+  function reviewCard(card, knew) {
+    const quality = knew ? 'known' : 'unknown'
+    const box = knew ? Math.min((card.box || 0) + 1, INTERVALS.length - 1) : 0
     const nextCardState = { ...card, box, dueAt: dueDateForBox(box), lastReviewedAt: new Date().toISOString() }
     setShowBack(false)
     persist({
@@ -593,9 +594,8 @@ export default function DeutschPage({
                   <p>{nextCard.back}</p>
                   {nextCard.example && <em>{nextCard.example}</em>}
                   <div className={styles.reviewActions}>
-                    <button type="button" onClick={() => reviewCard(nextCard, 'hard')}>Schwer</button>
-                    <button type="button" onClick={() => reviewCard(nextCard, 'good')}>Gut</button>
-                    <button type="button" onClick={() => reviewCard(nextCard, 'easy')}>Leicht</button>
+                    <button type="button" className={styles.missedBtn} onClick={() => reviewCard(nextCard, false)}>Nicht gewusst</button>
+                    <button type="button" className={styles.knewBtn} onClick={() => reviewCard(nextCard, true)}>Gewusst</button>
                   </div>
                 </div>
               ) : (
@@ -941,9 +941,8 @@ export default function DeutschPage({
                       }}>Nächste ansehen</button>
                     ) : (
                       <div className={styles.reviewActions}>
-                        <button type="button" onClick={() => reviewCard(activeFlashCard, 'hard')}>Schwer</button>
-                        <button type="button" onClick={() => reviewCard(activeFlashCard, 'good')}>Gut</button>
-                        <button type="button" onClick={() => reviewCard(activeFlashCard, 'easy')}>Leicht</button>
+                        <button type="button" className={styles.missedBtn} onClick={() => reviewCard(activeFlashCard, false)}>Nicht gewusst</button>
+                        <button type="button" className={styles.knewBtn} onClick={() => reviewCard(activeFlashCard, true)}>Gewusst</button>
                       </div>
                     )}
                   </article>
