@@ -259,16 +259,14 @@ function tokenizeText(text, vocabulary, onWordClick) {
   })
 }
 
-function QuestionBlock({ id, items, answers, onAnswer }) {
-  const [draftChoices, setDraftChoices] = useState({})
-
+function QuestionBlock({ id, items, answers, onAnswer, onReset }) {
+  const hasAnswers = Object.keys(answers).some(key => key.startsWith(`${id}-`))
   return (
     <div className={styles.questionList}>
       {items.map((item, index) => {
         const key = `${id}-${index}`
-        const confirmed = answers[key]
-        const answered = typeof confirmed === 'number'
-        const selected = answered ? confirmed : draftChoices[key]
+        const selected = answers[key]
+        const answered = typeof selected === 'number'
         return (
           <article className={styles.questionCard} key={key}>
             <div className={styles.questionTop}>
@@ -281,7 +279,6 @@ function QuestionBlock({ id, items, answers, onAnswer }) {
                 const isCorrect = item.answer === optionIndex
                 const className = [
                   styles.optionBtn,
-                  !answered && isSelected ? styles.pendingOption : '',
                   answered && isCorrect ? styles.correct : '',
                   answered && isSelected && !isCorrect ? styles.wrong : '',
                 ].filter(Boolean).join(' ')
@@ -291,7 +288,7 @@ function QuestionBlock({ id, items, answers, onAnswer }) {
                     className={className}
                     key={option}
                     disabled={answered}
-                    onClick={() => setDraftChoices(current => ({ ...current, [key]: optionIndex }))}
+                    onClick={() => onAnswer(key, optionIndex)}
                   >
                     <span>{option}</span>
                     {isSelected && <b aria-hidden="true">✓</b>}
@@ -299,20 +296,20 @@ function QuestionBlock({ id, items, answers, onAnswer }) {
                 )
               })}
             </div>
-            {!answered && typeof selected === 'number' && (
-              <button type="button" className={styles.confirmAnswer} onClick={() => onAnswer(key, selected)}>
-                Antwort bestätigen <span>✓</span>
-              </button>
-            )}
             {answered && (
-              <div className={`${styles.answerFeedback} ${confirmed === item.answer ? styles.feedbackCorrect : styles.feedbackWrong}`}>
-                <strong>{confirmed === item.answer ? 'Richtig' : 'Noch nicht ganz'}</strong>
+              <div className={`${styles.answerFeedback} ${selected === item.answer ? styles.feedbackCorrect : styles.feedbackWrong}`}>
+                <strong>{selected === item.answer ? 'Richtig' : 'Noch nicht ganz'}</strong>
                 <p className={styles.explanation}>{item.explanation}</p>
               </div>
             )}
           </article>
         )
       })}
+      {hasAnswers && (
+        <button type="button" className={styles.resetAnswers} onClick={onReset}>
+          Antworten zurücksetzen <span aria-hidden="true">↻</span>
+        </button>
+      )}
     </div>
   )
 }
@@ -475,6 +472,15 @@ export default function DeutschPage({
 
   function answerQuestion(key, optionIndex) {
     persist({ ...state, answers: { ...state.answers, [key]: optionIndex } })
+  }
+
+  function resetSectionAnswers(section) {
+    const prefix = `${activeLesson.id}-${section}-`
+    const answers = Object.fromEntries(
+      Object.entries(state.answers).filter(([key]) => !key.startsWith(prefix))
+    )
+    persist({ ...state, answers })
+    setMessage('Antworten zurückgesetzt.')
   }
 
   function addWordCard(word) {
@@ -725,7 +731,7 @@ export default function DeutschPage({
               ))}
             </div>
           </article>
-          <QuestionBlock id={`${activeLesson.id}-reading`} items={activeLesson.reading.questions || []} answers={state.answers} onAnswer={answerQuestion} />
+          <QuestionBlock id={`${activeLesson.id}-reading`} items={activeLesson.reading.questions || []} answers={state.answers} onAnswer={answerQuestion} onReset={() => resetSectionAnswers('reading')} />
         </section>
       )}
 
@@ -735,7 +741,7 @@ export default function DeutschPage({
             <span>Aus dem Lesetext</span>
             <h2>Grammatik in echten Sätzen</h2>
           </div>
-          <QuestionBlock id={`${activeLesson.id}-grammar`} items={activeLesson.grammar || []} answers={state.answers} onAnswer={answerQuestion} />
+          <QuestionBlock id={`${activeLesson.id}-grammar`} items={activeLesson.grammar || []} answers={state.answers} onAnswer={answerQuestion} onReset={() => resetSectionAnswers('grammar')} />
         </section>
       )}
 
@@ -753,7 +759,7 @@ export default function DeutschPage({
               <p>{activeLesson.listening.text}</p>
             </details>
           </article>
-          <QuestionBlock id={`${activeLesson.id}-listening`} items={activeLesson.listening.questions || []} answers={state.answers} onAnswer={answerQuestion} />
+          <QuestionBlock id={`${activeLesson.id}-listening`} items={activeLesson.listening.questions || []} answers={state.answers} onAnswer={answerQuestion} onReset={() => resetSectionAnswers('listening')} />
         </section>
       )}
 

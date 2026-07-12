@@ -2390,3 +2390,25 @@
   .flashExample { align-items: stretch; flex-direction: column; }
   .listenExampleBtn { align-self: flex-start; }
 }
+
+.resetAnswers {
+  min-height: 46px;
+  width: 100%;
+  margin-top: 4px;
+  padding: 0 17px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--d-border);
+  border-radius: 14px;
+  background: transparent;
+  color: var(--d-muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .07em;
+  transition: border-color .2s, color .2s, background .2s;
+}
+.resetAnswers span { font-size: 19px; }
+.resetAnswers:hover { border-color: var(--d-accent); background: color-mix(in srgb, var(--d-accent) 9%, transparent); color: var(--d-text); }
