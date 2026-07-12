@@ -1790,6 +1790,72 @@
   color: #4a1f32;
 }
 
+/* Focused lesson flow and confirmed-answer interaction. */
+.shell .hero:not(.heroSimple) { grid-template-columns: 1fr; min-height: 390px; }
+.shell .lessonRow > div:not(.progressWrap) { display: grid; gap: 4px; min-width: 0; }
+.shell .lessonRow > div:not(.progressWrap) small { display: block; margin-top: 3px; line-height: 1.45; }
+.shell .progressWrap { min-width: 112px; justify-items: end; }
+.shell .progressWrap b { padding: 7px 11px; border: 1px solid var(--d-border); border-radius: 999px; background: color-mix(in srgb, var(--d-accent) 10%, transparent); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+
+.shell .optionBtn {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  text-align: left;
+  isolation: isolate;
+}
+.shell .optionBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, #f2934a, #f8b35f);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .38s cubic-bezier(.2,.8,.2,1);
+}
+.shell .optionBtn span { position: relative; z-index: 1; }
+.shell .optionBtn b { position: relative; z-index: 1; width: 25px; height: 25px; flex: 0 0 25px; display: grid; place-items: center; border-radius: 50%; background: rgba(255,255,255,.88); color: #9b4d16; font-size: 13px; }
+.shell .pendingOption { border-color: rgba(248,179,95,.8); color: #28170c; }
+.shell .pendingOption::before { transform: scaleX(1); }
+.shell .optionBtn:disabled { cursor: default; opacity: 1; }
+.shell .optionBtn.correct::before { background: linear-gradient(90deg, #72c99a, #9cddb9); transform: scaleX(1); }
+.shell .optionBtn.wrong::before { background: linear-gradient(90deg, #ed7c7c, #f0a09b); transform: scaleX(1); }
+.shell .optionBtn.correct, .shell .optionBtn.wrong { color: #102018; }
+
+.confirmAnswer {
+  min-height: 48px;
+  width: 100%;
+  margin-top: 4px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 0;
+  border-radius: 14px;
+  background: #f2934a;
+  color: #25150a;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .04em;
+}
+.confirmAnswer span { width: 27px; height: 27px; display: grid; place-items: center; border-radius: 50%; background: rgba(255,255,255,.75); }
+.answerFeedback { margin-top: 4px; padding: 16px 18px; border-radius: 14px; border-left: 4px solid; }
+.answerFeedback > strong { display: block; margin-bottom: 4px; font-size: 13px; }
+.answerFeedback .explanation { margin: 0; padding: 0; border: 0; background: transparent; }
+.feedbackCorrect { border-color: #72c99a; background: rgba(114,201,154,.12); }
+.feedbackWrong { border-color: #ed7c7c; background: rgba(237,124,124,.12); }
+
+@media (max-width: 560px) {
+  .shell .lessonRow { align-items: flex-start; }
+  .shell .progressWrap { min-width: auto; margin-left: auto; }
+}
+
 /* ── Andarun Deutsch 2026: Galaxy / Heaven ───────────────────────── */
 .shell {
   --d-bg: #08091a;

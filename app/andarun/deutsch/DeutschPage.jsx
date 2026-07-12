@@ -245,12 +245,15 @@ function tokenizeText(text, vocabulary, onWordClick) {
 }
 
 function QuestionBlock({ id, items, answers, onAnswer }) {
+  const [draftChoices, setDraftChoices] = useState({})
+
   return (
     <div className={styles.questionList}>
       {items.map((item, index) => {
         const key = `${id}-${index}`
-        const selected = answers[key]
-        const answered = typeof selected === 'number'
+        const confirmed = answers[key]
+        const answered = typeof confirmed === 'number'
+        const selected = answered ? confirmed : draftChoices[key]
         return (
           <article className={styles.questionCard} key={key}>
             <div className={styles.questionTop}>
@@ -263,17 +266,35 @@ function QuestionBlock({ id, items, answers, onAnswer }) {
                 const isCorrect = item.answer === optionIndex
                 const className = [
                   styles.optionBtn,
+                  !answered && isSelected ? styles.pendingOption : '',
                   answered && isCorrect ? styles.correct : '',
                   answered && isSelected && !isCorrect ? styles.wrong : '',
                 ].filter(Boolean).join(' ')
                 return (
-                  <button type="button" className={className} key={option} onClick={() => onAnswer(key, optionIndex)}>
-                    {option}
+                  <button
+                    type="button"
+                    className={className}
+                    key={option}
+                    disabled={answered}
+                    onClick={() => setDraftChoices(current => ({ ...current, [key]: optionIndex }))}
+                  >
+                    <span>{option}</span>
+                    {isSelected && <b aria-hidden="true">✓</b>}
                   </button>
                 )
               })}
             </div>
-            {answered && <p className={styles.explanation}>{item.explanation}</p>}
+            {!answered && typeof selected === 'number' && (
+              <button type="button" className={styles.confirmAnswer} onClick={() => onAnswer(key, selected)}>
+                Antwort bestätigen <span>✓</span>
+              </button>
+            )}
+            {answered && (
+              <div className={`${styles.answerFeedback} ${confirmed === item.answer ? styles.feedbackCorrect : styles.feedbackWrong}`}>
+                <strong>{confirmed === item.answer ? 'Richtig' : 'Noch nicht ganz'}</strong>
+                <p className={styles.explanation}>{item.explanation}</p>
+              </div>
+            )}
           </article>
         )
       })}
@@ -592,11 +613,6 @@ export default function DeutschPage({
             </button>
           )}
         </div>
-        {lessonMode && <div className={styles.heroStats}>
-          <span><strong>{getLessonProgress(activeLesson, state.answers)}%</strong>Fortschritt</span>
-          <span><strong>{dueCards.length}</strong>fällig</span>
-          <span><strong>{state.cards.length}</strong>Wörter</span>
-        </div>}
       </header>
 
       {message && <div className={styles.status}>{message} {saving ? 'Speichert...' : ''}</div>}
@@ -615,48 +631,6 @@ export default function DeutschPage({
               </button>
             ))}
           </nav>
-
-          <section className={styles.dashboard}>
-            <article className={styles.reviewPanel}>
-              <div className={styles.panelHead}>
-                <span>Wiederholung</span>
-                <strong>{dueCards.length ? 'Heute dran' : 'Alles ruhig'}</strong>
-              </div>
-              {nextCard ? (
-                <div className={styles.reviewCard}>
-                  <small>{nextCard.type === 'mistake' ? 'Fehlerkarte' : 'Wortkarte'} · Box {nextCard.box + 1}</small>
-                  <h2>{nextCard.front}</h2>
-                  <p>{nextCard.back}</p>
-                  {nextCard.example && <em>{nextCard.example}</em>}
-                  <div className={styles.reviewActions}>
-                    <button type="button" className={styles.missedBtn} onClick={() => reviewCard(nextCard, false)}>Nicht gewusst</button>
-                    <button type="button" className={styles.knewBtn} onClick={() => reviewCard(nextCard, true)}>Gewusst</button>
-                  </div>
-                </div>
-              ) : (
-                <p className={styles.empty}>Alles wiederholt. ✦</p>
-              )}
-            </article>
-
-            <aside className={styles.lessonPicker}>
-              <div className={styles.panelHead}>
-                <span>Lektionen</span>
-                <strong>{activeLesson.title}</strong>
-              </div>
-              <div className={styles.lessonList}>
-                {sortedLessons.map((lesson, index) => (
-                  <Link
-                    key={lesson.id}
-                    className={lesson.id === activeLesson.id ? styles.activeLesson : ''}
-                    href={`${lessonBase}/${lesson.id}`}
-                  >
-                    <span>{String(index + 1).padStart(2, '0')} · {lesson.level}</span>
-                    <strong>{lesson.title}</strong>
-                  </Link>
-                ))}
-              </div>
-            </aside>
-          </section>
 
         </>
       )}
@@ -679,13 +653,12 @@ export default function DeutschPage({
                   >
                     <span className={styles.lessonNumber}>{String(index + 1).padStart(2, '0')}</span>
                     <div>
-                      <span>{lesson.level} · {lesson.date}</span>
+                      <span>{lesson.level}</span>
                       <strong>{lesson.title}</strong>
                       <small>{lesson.topic}</small>
                     </div>
-                    <div className={styles.progressWrap} aria-label={`${progress}% gelernt`}>
-                      <b>{progress === 100 ? 'vollständig' : `${progress}%`}</b>
-                      <i><em style={{ width: `${progress}%` }} /></i>
+                    <div className={styles.progressWrap} aria-label={progress ? 'Gespeicherter Fortschritt' : 'Noch nicht begonnen'}>
+                      <b>{progress ? '✓ Gespeichert' : 'Start →'}</b>
                     </div>
                   </Link>
                 )
@@ -879,9 +852,7 @@ export default function DeutschPage({
                   </>
                 )}
               </>
-            ) : (
-              <p className={styles.empty}>Hier erscheint die KI-Korrektur, sobald der KI-Anbieter online konfiguriert ist.</p>
-            )}
+            ) : null}
           </article>
         </section>
       )}
