@@ -77,6 +77,53 @@ export const STROKE_LESSON = {
         ],
       },
     ],
+    classificationTitle: 'Einteilung des Schlaganfalls',
+    classificationGroups: [
+      {
+        title: 'Ursachenbezogene Definitionen',
+        items: [
+          { title: 'Ischämischer Schlaganfall (Infarkt)', text: 'Akut einsetzende, umschriebene Mangeldurchblutung des Gehirns mit fokal-neurologischen Defiziten unterschiedlicher Dauer.' },
+          { title: 'Hämorrhagischer Schlaganfall', text: 'Akutes neurologisches Defizit infolge einer akut eingetretenen intrakraniellen Blutung.' },
+        ],
+      },
+      {
+        title: 'Pathophysiologische und pathoanatomische Definitionen',
+        items: [
+          { title: 'Territorialinfarkt', text: 'Ischämischer Infarkt im Versorgungsgebiet einer großen pialen Arterie.' },
+          { title: 'Lakunärer Hirninfarkt', text: 'Maximal 1,5 cm großer subkortikaler oder hirnstammnaher Infarkt durch Verschluss einer kleinen penetrierenden Arterie.' },
+          { title: 'Endstrominfarkt', text: 'Umschriebene Ischämie im distalen Versorgungsgebiet einer nicht kollateralisierten Endarterie.' },
+          { title: 'Grenzzoneninfarkt', text: 'Ischämische Nekrose im Grenzgebiet zwischen den Territorien zweier oder dreier großer pialer Arterien.' },
+          { title: 'Hämorrhagischer Hirninfarkt', text: 'Sekundäre Diapedeseblutung in einem primär ischämischen Infarkt durch erhöhte Kapillarpermeabilität.' },
+          { title: 'Venöser Infarkt', text: 'Infarkt durch behinderten venösen Abstrom mit Stauungsödem; häufig hämorrhagisch imbibiert.' },
+          { title: 'Ischämische Penumbra', text: 'Kritisch hypoperfundiertes, funktionell ausgefallenes, aber strukturell noch nicht irreversibel geschädigtes und damit potenziell rettbares Gewebe.' },
+          { title: 'Intrazerebrale Blutung (ICB)', text: 'Primäre Blutung in zuvor gesundes Hirnparenchym; auch Parenchymblutung oder intrazerebrales Hämatom genannt.' },
+          { title: 'Subarachnoidalblutung (SAB)', text: 'Blutung in den Subarachnoidalraum.' },
+        ],
+      },
+      {
+        title: 'Ätiopathogenetische Definitionen',
+        items: [
+          { title: 'Embolischer Infarkt', text: 'Verschluss einer hirnversorgenden Arterie durch eingeschwemmtes embolisches Material.' },
+          { title: 'Kardioembolischer Infarkt', text: 'Embolischer Gefäßverschluss mit Ursprung des Embolus im Herzen.' },
+          { title: 'Arterio-arteriell-embolischer Infarkt', text: 'Distaler arterieller Verschluss durch einen Embolus aus einer größeren proximalen hirnversorgenden Arterie.' },
+          { title: 'Thrombotischer Infarkt', text: 'Lokaler, autochthon entstandener thrombotischer Verschluss einer hirnversorgenden Arterie.' },
+          { title: 'Makroangiopathischer Schlaganfall', text: 'Schlaganfall durch Erkrankung großer extra- oder intrakranieller Arterien, etwa Arteriosklerose, Dissektion oder Vaskulitis.' },
+          { title: 'Mikroangiopathischer Schlaganfall', text: 'Schlaganfall durch Erkrankung kleiner penetrierender Arterien, etwa bei Lipohyalinose, Amyloidangiopathie, CADASIL oder Vaskulitis.' },
+          { title: 'Sinus- und Hirnvenenthrombose', text: 'Venöse Abflussstörung durch thrombotischen Verschluss zerebraler Venen und/oder Sinus.' },
+        ],
+      },
+      {
+        title: 'Definitionen nach Symptomverlauf',
+        items: [
+          { title: 'Transitorisch ischämische Attacke (TIA)', text: 'Vollständig rückläufiges fokal-neurologisches Defizit, meist unter 1 Stunde und klassisch spätestens nach 24 Stunden; eine ischämische Läsion kann dennoch nachweisbar sein.' },
+          { title: 'Reversibles ischämisches neurologisches Defizit (RIND)', text: 'Vollständige Rückbildung der neurologischen Symptomatik nach mehr als 24 Stunden.' },
+          { title: 'Partiell reversibles Defizit (PRIND)', text: 'Weitgehende Rückbildung mit nur minimaler, nicht behindernder Residualsymptomatik ohne festes Zeitlimit.' },
+          { title: 'Progredienter Schlaganfall', text: 'Zunehmende neurologische Symptomatik während der Akutphase.' },
+          { title: 'Vollendeter Schlaganfall (Completed Stroke)', text: 'Bleibendes neurologisches Defizit unterschiedlichen Schweregrades.' },
+        ],
+      },
+    ],
+    classificationCave: 'Ein hämorrhagischer Hirninfarkt ist eine sekundäre Einblutung in ein primär ischämisches Areal und nicht mit einem primär hämorrhagischen Schlaganfall gleichzusetzen.',
     territoriesTitle: L('Gefäßterritorien und klinische Syndrome', 'Vascular territories and clinical syndromes', 'قلمروهای عروقی و سندرم‌های بالینی'),
     headers: [
       L('Gefäß', 'Vessel', 'رگ'),

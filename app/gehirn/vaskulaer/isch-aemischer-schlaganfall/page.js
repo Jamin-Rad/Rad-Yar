@@ -89,6 +89,15 @@ function ClinicalBasics({ lesson, lang, localizeValue }) {
       <p className={styles.lead}>{localizeValue(lesson.introTitle)}</p>
       <Cards items={introCards} />
 
+      <h3 style={{ margin: '30px 0 14px', color: 'var(--text-strong)' }}>{localizeValue(lesson.classificationTitle)}</h3>
+      {lesson.classificationGroups.map(group => (
+        <div key={localizeValue(group.title)} style={{ marginTop: 22 }}>
+          <h3 style={{ margin: '0 0 12px', color: 'var(--text-strong)' }}>{localizeValue(group.title)}</h3>
+          <Cards items={localizedItems(group.items, lang)} />
+        </div>
+      ))}
+      <Callout type="cave" label={localizeValue('Abgrenzung')}>{localizeValue(lesson.classificationCave)}</Callout>
+
       <h3 style={{ margin: '28px 0 14px', color: 'var(--text-strong)' }}>{localizeValue(lesson.territoriesTitle)}</h3>
       <Table headers={headers} rows={rows} />
       <Callout label={localizeValue('Definition')}>{localizeValue(lesson.footnote)}</Callout>
