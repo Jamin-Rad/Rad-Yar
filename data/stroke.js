@@ -10,9 +10,9 @@ export const STROKE_LESSON = {
   ),
   title: L('Ischämischer Schlaganfall', 'Ischaemic stroke', 'سکته مغزی ایسکمیک'),
   subtitle: L(
-    'Akutbildgebung, Gefäßverschluss, ASPECTS, Perfusions-Mismatch und zeitlicher Verlauf',
-    'Acute imaging, vessel occlusion, ASPECTS, perfusion mismatch and temporal evolution',
-    'تصویربرداری حاد، انسداد عروقی، ASPECTS، عدم تطابق پرفیوژن و سیر زمانی'
+    'Klinische Merkmale, CT- und MRT-Diagnostik, Verlauf und Therapie',
+    'Clinical features, CT and MRI diagnosis, evolution and treatment',
+    'ویژگی‌های بالینی، تشخیص CT و MRI، سیر و درمان'
   ),
   sourceLabel: 'Dr. Zia',
   actionMcq: 'MCQ',
@@ -28,25 +28,25 @@ export const STROKE_LESSON = {
     { id: 'mrt', label: L('MRT-Protokoll', 'MRI protocol', 'پروتکل MRI'), icon: '🧲' },
     { id: 'mrt-verlauf', label: L('MRT-Zeitverlauf', 'MRI evolution', 'سیر زمانی MRI'), icon: '📈' },
     { id: 'verlauf', label: L('Fallstricke & Komplikationen', 'Pitfalls & complications', 'دام‌ها و عوارض'), icon: '⚠️' },
-    { id: 'therapie', label: L('Therapie & Befundung', 'Treatment & reporting', 'درمان و گزارش'), icon: '🚑' },
+    { id: 'therapie', label: L('Therapie & Akutbefund', 'Treatment & acute report', 'درمان و گزارش حاد'), icon: '🚑' },
     { id: 'faelle', label: L('Fallbeispiele', 'Cases', 'نمونه کیس‌ها'), icon: '🔬' },
     { id: 'takehome', label: L('Take home message', 'Take-home messages', 'نکات کلیدی'), icon: '💡' },
   ],
   heroCards: [
     {
-      value: 'TIME',
-      label: L('Zeitpunkt sichern', 'establish timing', 'تعیین زمان'),
-      text: L('Last known well steuert die Reperfusionsauswahl', 'Last known well guides reperfusion selection', 'آخرین زمان سالم انتخاب بازپرفیوژن را هدایت می‌کند'),
+      value: '80–85%',
+      label: L('Ischämisch', 'ischaemic', 'ایسکمیک'),
+      text: L('Akute arterielle Durchblutungsstörung', 'Acute arterial perfusion disturbance', 'اختلال حاد خون‌رسانی شریانی'),
     },
     {
-      value: 'LVO',
-      label: L('Verschluss lokalisieren', 'localise occlusion', 'تعیین محل انسداد'),
-      text: L('Verschlusshöhe, Tandemläsion und Kollateralen', 'Occlusion level, tandem lesion and collaterals', 'سطح انسداد، ضایعه تاندوم و کولترال‌ها'),
+      value: '0–42',
+      label: 'NIHSS',
+      text: L('Klinische Beurteilung des Schweregrads', 'Clinical severity assessment', 'ارزیابی بالینی شدت'),
     },
     {
-      value: 'CORE ↔',
-      label: L('Penumbra erkennen', 'identify penumbra', 'شناسایی پنومبرا'),
-      text: L('Irreversiblen Kern von rettbarem Gewebe trennen', 'Separate irreversible core from salvageable tissue', 'تفکیک هسته غیرقابل برگشت از بافت قابل نجات'),
+      value: '4,5 h',
+      label: L('IV-Lyse', 'IV thrombolysis', 'ترومبولیز وریدی'),
+      text: L('Standardzeitfenster mit Alteplase', 'Standard window with alteplase', 'پنجره استاندارد با آلتپلاز'),
     },
   ],
   basics: {
@@ -135,9 +135,9 @@ export const STROKE_LESSON = {
       L('Wichtige Befunde', 'Key findings', 'یافته‌های مهم'),
     ],
     rows: [
-      ['NCCT', L('Blutung? Frühe Ischämie? Großer Kern?', 'Haemorrhage? Early ischaemia? Large core?', 'خونریزی؟ ایسکمی زودرس؟ هسته بزرگ؟'), L('Hyperdenses Gefäß, Verlust der Grau-Weiß-Grenze, Insular ribbon, Sulcusverstrich, ASPECTS', 'Hyperdense vessel, loss of grey-white differentiation, insular ribbon loss, sulcal effacement, ASPECTS', 'رگ هایپردنس، از بین رفتن تمایز خاکستری-سفید، محوشدن نوار اینسولا، محوشدن سولکوس و ASPECTS')],
-      ['CTA', L('Wo liegt der Verschluss?', 'Where is the occlusion?', 'انسداد کجاست؟'), L('ICA-/M1-/M2-/Basilarisverschluss, Tandemläsion, Stenose, Dissektion, Kollateralen', 'ICA/M1/M2/basilar occlusion, tandem lesion, stenosis, dissection and collaterals', 'انسداد ICA/M1/M2/بازیلار، ضایعه تاندوم، تنگی، دیسکسیون و کولترال‌ها')],
-      ['CTP', L('Kern oder Penumbra?', 'Core or penumbra?', 'هسته یا پنومبرا؟'), L('Kern: stark reduziertes CBF; Penumbra: verzögertes Tmax/MTT bei relativ erhaltenem Blutvolumen', 'Core: markedly reduced CBF; penumbra: delayed Tmax/MTT with relatively preserved blood volume', 'هسته: کاهش شدید CBF؛ پنومبرا: تأخیر Tmax/MTT با حجم خون نسبتاً حفظ‌شده')],
+      ['NCCT', L('Ischämiefrühzeichen?', 'Early signs of ischaemia?', 'علائم اولیه ایسکمی؟'), L('Hyperdenses Gefäß, Verlust der Grau-Weiß-Grenze und fokale Schwellung mit Sulcusverstrich', 'Hyperdense vessel, loss of grey-white differentiation and focal swelling with sulcal effacement', 'رگ هایپردنس، از بین رفتن تمایز خاکستری-سفید و تورم فوکال با محوشدن سولکوس')],
+      ['CTA', L('Liegt ein Gefäßverschluss vor?', 'Is there a vessel occlusion?', 'آیا انسداد عروقی وجود دارد؟'), L('Nachweis von Gefäßverschlüssen', 'Detection of vessel occlusion', 'تشخیص انسداد عروقی')],
+      ['CTP', L('Infarktkern oder Penumbra?', 'Infarct core or penumbra?', 'هسته انفارکت یا پنومبرا؟'), L('Unterscheidung von Infarktkern und rettbarem Gewebe, besonders bei unklarem Zeitfenster', 'Distinguishes infarct core from salvageable tissue, especially when the time window is unclear', 'تفکیک هسته انفارکت از بافت قابل نجات، به‌ویژه در پنجره زمانی نامشخص')],
     ],
     earlySigns: [
       { title: L('Dense artery sign', 'Dense artery sign', 'علامت رگ هایپردنس'), text: L('Hyperdenses thrombosiertes Gefäß, klassisch als Dense-MCA-Zeichen.', 'Hyperdense thrombosed vessel, classically the dense MCA sign.', 'رگ ترومبوزه هایپردنس، به‌طور کلاسیک علامت MCA هایپردنس.') },
@@ -145,15 +145,14 @@ export const STROKE_LESSON = {
       { title: L('Nucleus lentiformis', 'Lentiform nucleus', 'هسته لنتی‌فرم'), text: L('Verwaschene Kontur oder Hypodensität bei tiefem MCA-Befall.', 'Obscuration or low attenuation with deep MCA involvement.', 'محو شدن یا هیپودنس شدن در درگیری عمقی MCA.') },
       { title: L('Sulcal effacement', 'Sulcal effacement', 'محو شدن سولکوس'), text: L('Fokale Gyrusschwellung durch frühes zytotoxisches Ödem.', 'Focal gyral swelling caused by early cytotoxic oedema.', 'تورم فوکال ژیروس در اثر ادم سیتوتوکسیک اولیه.') },
     ],
-    cave: L('Eine unauffällige frühe NCCT schließt akute Ischämie nicht aus. Bei passender Klinik Gefäßbildgebung und gegebenenfalls MRT/Perfusion fortführen.', 'A normal early NCCT does not exclude acute ischaemia. Continue with vascular imaging and, where appropriate, MRI/perfusion.', 'CT اولیه طبیعی ایسکمی حاد را رد نمی‌کند؛ در صورت تطابق بالینی CTA و در صورت لزوم MRI/پرفیوژن ادامه یابد.'),
+    cave: L('In der ersten Stunde ist die native CT in der Regel unauffällig; die DWI kann bereits positiv sein.', 'During the first hour, non-contrast CT is usually normal while DWI may already be positive.', 'در ساعت اول CT بدون کنتراست معمولاً طبیعی است، در حالی که DWI ممکن است مثبت باشد.'),
   },
   aspects: {
     title: L('ASPECTS richtig anwenden', 'Using ASPECTS correctly', 'کاربرد صحیح ASPECTS'),
     lead: L('ASPECTS bewertet zehn definierte Regionen des MCA-Territoriums. Ausgangswert 10; für jede Region mit frühen ischämischen Veränderungen wird ein Punkt abgezogen.', 'ASPECTS evaluates ten defined MCA-territory regions. Start at 10 and subtract one point for each region with early ischaemic change.', 'ASPECTS ده ناحیه مشخص در قلمرو MCA را ارزیابی می‌کند؛ از ۱۰ شروع و برای هر ناحیه ایسکمیک یک امتیاز کم می‌شود.'),
     items: [
-      { title: L('Tiefe Regionen', 'Deep regions', 'نواحی عمقی'), text: L('C = Nucleus caudatus, L = Nucleus lentiformis, IC = Capsula interna, I = Insula.', 'C = caudate, L = lentiform nucleus, IC = internal capsule, I = insula.', 'C = کودیت، L = لنتی‌فرم، IC = کپسول داخلی و I = اینسولا.') },
-      { title: L('Kortikale Regionen', 'Cortical regions', 'نواحی کورتیکال'), text: L('M1–M3 auf Basalganglienhöhe und M4–M6 supraganglionär.', 'M1–M3 at basal ganglia level and M4–M6 supraganglionic.', 'M1 تا M3 در سطح گانگلیون‌های قاعده‌ای و M4 تا M6 در سطح سوپراگانگلیونیک.') },
-      { title: L('Interpretation', 'Interpretation', 'تفسیر'), text: L('Je niedriger der Score, desto größer die frühe Infarktausdehnung. Kein isoliertes absolutes Ausschlusskriterium.', 'The lower the score, the larger the early infarct extent. It is not an isolated absolute exclusion criterion.', 'هرچه نمره پایین‌تر باشد وسعت انفارکت بیشتر است؛ این نمره به‌تنهایی معیار مطلق حذف درمان نیست.') },
+      { title: 'ASPECTS 10', text: L('Unauffälliger Befund.', 'Normal examination.', 'یافته طبیعی.') },
+      { title: 'ASPECTS 0', text: L('Kompletter Mediainfarkt.', 'Complete MCA infarction.', 'انفارکت کامل MCA.') },
     ],
     imageAlt: L('ASPECTS-Schema mit den zehn MCA-Regionen', 'ASPECTS diagram showing the ten MCA regions', 'نمودار ASPECTS با ده ناحیه MCA'),
     key: L('ASPECTS bewertet Parenchymveränderungen, nicht den Gefäßverschluss selbst.', 'ASPECTS scores parenchymal change, not the vessel occlusion itself.', 'ASPECTS تغییرات پارانشیم را امتیازدهی می‌کند، نه خود انسداد عروقی را.'),
@@ -172,17 +171,17 @@ export const STROKE_LESSON = {
   },
   mri: {
     title: L('MRT-Schlaganfallprotokoll', 'MRI stroke protocol', 'پروتکل MRI سکته'),
-    lead: L('Die MRT ist besonders sensitiv für kleine, frühe und posterior gelegene Infarkte sowie bei unklarem Symptombeginn.', 'MRI is particularly sensitive for small, early and posterior circulation infarcts and when onset is unknown.', 'MRI برای انفارکت‌های کوچک، زودرس، گردش خلفی و زمان شروع نامشخص حساسیت بالایی دارد.'),
+    lead: L('Alternative bei unklarem Zeitfenster oder zur Detektion von Kleinstinfarkten; in manchen Kliniken primär statt multimodaler CT.', 'Alternative when the time window is unclear or for detecting very small infarcts; used primarily instead of multimodal CT in some centres.', 'جایگزین در پنجره زمانی نامشخص یا برای تشخیص انفارکت‌های بسیار کوچک؛ در برخی مراکز به‌جای CT چندوجهی استفاده می‌شود.'),
     headers: [L('Sequenz', 'Sequence', 'سکانس'), L('Akutbefund', 'Acute finding', 'یافته حاد'), L('Nutzen', 'Purpose', 'کاربرد')],
     rows: [
       ['DWI + ADC', L('DWI hyperintens, ADC vermindert', 'DWI high, ADC low', 'DWI بالا و ADC پایین'), L('Frühester Nachweis des zytotoxischen Ödems; echte Restriktion bestätigen', 'Earliest detection of cytotoxic oedema; confirms true restriction', 'زودترین تشخیص ادم سیتوتوکسیک و تأیید محدودیت واقعی')],
       ['FLAIR/T2', L('Früh oft unauffällig, später hyperintens und geschwollen', 'Often normal early, then high signal and swelling', 'ابتدا اغلب طبیعی و سپس هایپراینتنس و متورم'), L('Infarktalter, Ödem und DWI-FLAIR-Mismatch', 'Infarct age, oedema and DWI-FLAIR mismatch', 'سن انفارکت، ادم و عدم تطابق DWI-FLAIR')],
-      ['T2*/SWI', L('Suszeptibilitätszeichen oder Einblutung', 'Susceptibility vessel sign or haemorrhage', 'علامت حساسیت عروقی یا خونریزی'), L('Blutung, Mikroblutungen und Thrombus erkennen', 'Detect haemorrhage, microbleeds and thrombus', 'تشخیص خونریزی، میکروبلید و ترومبوس')],
+      ['T2*/SWI', L('Signalabsenkungen bei Blutungen oder Eisenablagerungen', 'Low signal from haemorrhage or iron deposits', 'کاهش سیگنال در خونریزی یا رسوب آهن'), L('Blutungsausschluss als Ersatz für die native CT', 'Exclusion of haemorrhage as a substitute for non-contrast CT', 'رد خونریزی به‌عنوان جایگزین CT بدون کنتراست')],
       ['MRA', L('Fehlender Flow im verschlossenen Gefäß', 'Absent flow in the occluded vessel', 'عدم جریان در رگ مسدود'), L('Nicht-invasive Gefäßdarstellung, häufig TOF', 'Non-invasive vascular imaging, often TOF', 'تصویربرداری غیرتهاجمی عروق، اغلب TOF')],
-      ['PWI', L('Perfusionsdefizit größer als DWI-Kern', 'Perfusion deficit larger than DWI core', 'نقص پرفیوژن بزرگ‌تر از هسته DWI'), L('DWI-PWI-Mismatch als Hinweis auf Penumbra', 'DWI-PWI mismatch suggests penumbra', 'عدم تطابق DWI-PWI به نفع پنومبرا')],
+      ['PWI', L('Optionale Perfusions-MRT', 'Optional perfusion MRI', 'MRI پرفیوژن اختیاری'), L('Ergänzende Perfusionsbeurteilung', 'Additional perfusion assessment', 'ارزیابی تکمیلی پرفیوژن')],
     ],
     mismatchTitle: L('DWI-FLAIR-Mismatch', 'DWI-FLAIR mismatch', 'عدم تطابق DWI-FLAIR'),
-    mismatchText: L('DWI positiv bei noch fehlender deutlicher FLAIR-Hyperintensität spricht für einen wahrscheinlich frühen Infarkt und kann bei unbekanntem Beginn die Reperfusionsauswahl unterstützen.', 'Positive DWI without marked FLAIR hyperintensity suggests an early infarct and may support reperfusion selection when onset is unknown.', 'DWI مثبت بدون هایپراینتنس واضح FLAIR به نفع انفارکت زودرس است و در شروع نامشخص می‌تواند به انتخاب بازپرفیوژن کمک کند.'),
+    mismatchText: L('Die Ischämie ist in der DWI sichtbar, aber in der FLAIR noch nicht. Der Schlaganfall ist wahrscheinlich jünger als 4,5 Stunden.', 'The ischaemia is visible on DWI but not yet on FLAIR. The stroke is probably less than 4.5 hours old.', 'ایسکمی در DWI دیده می‌شود اما هنوز در FLAIR دیده نمی‌شود؛ سکته احتمالاً کمتر از ۴٫۵ ساعت قدمت دارد.'),
     cave: L('DWI-Hyperintensität allein beweist keine fortbestehende Restriktion: ADC prüfen, da ab etwa Tag 10 T2-shine-through auftreten kann.', 'DWI hyperintensity alone does not prove ongoing restriction: check ADC because T2 shine-through may occur from about day 10.', 'هایپراینتنس DWI به‌تنهایی محدودیت فعال را ثابت نمی‌کند؛ ADC بررسی شود زیرا از حدود روز ۱۰ T2 shine-through ممکن است رخ دهد.'),
   },
   mriTimeline: {
@@ -194,21 +193,20 @@ export const STROKE_LESSON = {
     title: L('Fallstricke und Verlaufskomplikationen', 'Pitfalls and complications', 'دام‌ها و عوارض سیر بیماری'),
     lead: L('Subakute Veränderungen können Blutung oder Tumor imitieren und verlangen die gemeinsame Bewertung aller Sequenzen und des zeitlichen Verlaufs.', 'Subacute changes may mimic haemorrhage or tumour and require combined assessment of all sequences and the timeline.', 'تغییرات تحت‌حاد ممکن است خونریزی یا تومور را تقلید کنند و نیازمند ارزیابی همزمان سکانس‌ها و سیر زمانی هستند.'),
     items: [
-      { title: L('Hämorrhagische Transformation', 'Haemorrhagic transformation', 'تبدیل هموراژیک'), text: L('Petechiale Einblutung bis Parenchymhämatom; in NCCT hyperdens und in T2*/SWI suszeptibel.', 'Ranges from petechial haemorrhage to parenchymal haematoma; hyperdense on NCCT and susceptible on T2*/SWI.', 'از خونریزی پتشیال تا هماتوم پارانشیمی؛ در NCCT هایپردنس و در T2*/SWI دارای susceptibility.') },
+      { title: L('Hämorrhagische Transformation', 'Haemorrhagic transformation', 'تبدیل هموراژیک'), text: L('Kann sekundär als Einblutung eines Infarkts auftreten; in der nativen CT zeigt sie sich als hyperdense Fläche.', 'May occur secondarily as haemorrhage into an infarct and appears hyperdense on non-contrast CT.', 'ممکن است به‌صورت ثانویه به شکل خونریزی در انفارکت رخ دهد و در CT بدون کنتراست هایپردنس دیده شود.') },
       { title: L('Fogging-Effekt', 'Fogging effect', 'اثر Fogging'), text: L('Vorübergehende Normalisierung der CT-Dichte beziehungsweise Abschwächung des T2-Signals in der subakuten Phase.', 'Temporary normalisation of CT density or attenuation of T2 abnormality in the subacute phase.', 'طبیعی‌شدن موقت دانسیته CT یا کاهش تغییرات T2 در فاز تحت‌حاد.') },
       { title: L('Luxusperfusion', 'Luxury perfusion', 'پرفیوژن لوکس'), text: L('Hyperämie nach Reperfusion bei gestörter Autoregulation; Enhancement und erhöhtes CBF sind nicht automatisch Tumor.', 'Post-reperfusion hyperaemia from impaired autoregulation; enhancement and raised CBF do not automatically indicate tumour.', 'هایپرمی پس از بازپرفیوژن به‌دلیل اختلال اتورگولاسیون؛ enhancement و CBF بالا الزاماً تومور نیستند.') },
-      { title: L('Maligner MCA-Infarkt', 'Malignant MCA infarction', 'انفارکت بدخیم MCA'), text: L('Ausgedehntes Ödem mit Mittellinienverlagerung und Herniationsgefahr, typischerweise in den ersten Tagen.', 'Extensive oedema with midline shift and risk of herniation, typically during the first days.', 'ادم وسیع با شیفت خط وسط و خطر هرنیاسیون، معمولاً در روزهای نخست.') },
     ],
-    cave: L('Gyriformes Enhancement in einem passenden vaskulären Territorium kann subakut normal sein. Klinischer Verlauf, DWI/ADC und Voraufnahmen verhindern die Fehldiagnose eines Tumors.', 'Gyriform enhancement in an appropriate vascular territory may be normal subacutely. Clinical course, DWI/ADC and prior imaging help avoid a false tumour diagnosis.', 'enhancement ژیری‌فرم در قلمرو عروقی مناسب می‌تواند در فاز تحت‌حاد طبیعی باشد؛ سیر بالینی، DWI/ADC و تصاویر قبلی مانع تشخیص اشتباه تومور می‌شوند.'),
+    cave: L('Kontrastmittelaufnahme und Fogging können einen Tumor imitieren. Verlauf, Klinik und DWI helfen bei der Einordnung.', 'Enhancement and fogging can mimic a tumour. Evolution, clinical findings and DWI help with interpretation.', 'جذب ماده حاجب و Fogging می‌توانند تومور را تقلید کنند؛ سیر، یافته‌های بالینی و DWI به تفسیر کمک می‌کنند.'),
   },
   treatment: {
-    title: L('Reperfusion und strukturierte Befundung', 'Reperfusion and structured reporting', 'بازپرفیوژن و گزارش ساختاریافته'),
-    lead: L('Die Bildgebung soll die schnellste sichere Therapieentscheidung ermöglichen. Nach der AHA/ASA-Leitlinie 2026 sind Alteplase oder Tenecteplase innerhalb des geeigneten intravenösen Lysefensters Optionen; die Thrombektomieauswahl kann bei geeigneter Bildgebung bis 24 Stunden reichen.', 'Imaging should enable the fastest safe treatment decision. The 2026 AHA/ASA guideline supports alteplase or tenecteplase in eligible patients within the intravenous thrombolysis window; selected patients may undergo thrombectomy up to 24 hours with appropriate imaging.', 'تصویربرداری باید سریع‌ترین تصمیم درمانی ایمن را ممکن کند. بر اساس راهنمای AHA/ASA سال ۲۰۲۶، آلتپلاز یا تنکتپلاز در بیماران واجد شرایط در پنجره ترومبولیز وریدی قابل استفاده‌اند و ترومبکتومی در بیماران منتخب با تصویربرداری مناسب تا ۲۴ ساعت ممکن است.')
+    title: L('Therapiekonzepte', 'Treatment concepts', 'مفاهیم درمانی'),
+    lead: L('Intravenöse Thrombolyse und mechanische Thrombektomie.', 'Intravenous thrombolysis and mechanical thrombectomy.', 'ترومبولیز وریدی و ترومبکتومی مکانیکی.')
     ,
     items: [
-      { title: L('IV-Thrombolyse', 'IV thrombolysis', 'ترومبولیز وریدی'), text: L('Bei geeignetem behinderndem Defizit und fehlenden Kontraindikationen so früh wie möglich; Standardfenster bis 4,5 Stunden, erweiterte Auswahl in definierten Mismatch-Situationen.', 'For eligible disabling deficits without contraindications, treat as early as possible; standard window up to 4.5 hours with extended selection in defined mismatch settings.', 'در نقص ناتوان‌کننده واجد شرایط و بدون منع، هرچه زودتر؛ پنجره استاندارد تا ۴٫۵ ساعت و انتخاب گسترده‌تر در شرایط مشخص mismatch.') },
-      { title: L('Mechanische Thrombektomie', 'Mechanical thrombectomy', 'ترومبکتومی مکانیکی'), text: L('Standard bei geeignetem Großgefäßverschluss; bei ausgewählten Patienten einschließlich bestimmter großer Infarktkerne bis 24 Stunden.', 'Standard for eligible large-vessel occlusion; selected patients, including some with large cores, may benefit up to 24 hours.', 'استاندارد برای انسداد عروق بزرگ واجد شرایط؛ در بیماران منتخب از جمله برخی هسته‌های بزرگ تا ۲۴ ساعت.') },
-      { title: L('Nicht verzögern', 'Do not delay', 'عدم تأخیر'), text: L('Perfusions- oder MRT-Zusatzbildgebung darf eine klar indizierte Therapie im frühen Zeitfenster nicht unnötig verzögern.', 'Additional perfusion or MRI must not unnecessarily delay clearly indicated early-window treatment.', 'CTP یا MRI اضافی نباید درمان واضح در پنجره زودرس را بی‌دلیل به تأخیر اندازد.') },
+      { title: L('IV-Thrombolyse', 'IV thrombolysis', 'ترومبولیز وریدی'), text: L('Mit Alteplase innerhalb von 4,5 Stunden; erweitert bis 9 Stunden bei positivem CTP-Befund.', 'With alteplase within 4.5 hours; extended to 9 hours with a positive CTP finding.', 'با آلتپلاز در ۴٫۵ ساعت؛ با یافته مثبت CTP تا ۹ ساعت گسترش می‌یابد.') },
+      { title: L('Mechanische Thrombektomie', 'Mechanical thrombectomy', 'ترومبکتومی مکانیکی'), text: L('Goldstandard bei Großgefäßverschlüssen; Zeitfenster bis 24 Stunden bei entsprechendem Mismatch und vorhandener Penumbra.', 'Gold standard for large-vessel occlusion; window up to 24 hours with an appropriate mismatch and preserved penumbra.', 'استاندارد طلایی در انسداد عروق بزرگ؛ پنجره تا ۲۴ ساعت در صورت mismatch مناسب و وجود پنومبرا.') },
+      { title: L('Techniken', 'Techniques', 'تکنیک‌ها'), text: L('Aspiration, Stent-Retriever oder kombiniert.', 'Aspiration, stent retriever or a combined technique.', 'آسپیراسیون، استنت رتریور یا روش ترکیبی.') },
     ],
     reportItems: [
       { title: L('1. Blutung und Mimic', '1. Haemorrhage and mimic', '۱. خونریزی و تقلیدکننده'), text: L('Intrakranielle Blutung, Raumforderung oder andere akute Alternative?', 'Any intracranial haemorrhage, mass lesion or alternative acute diagnosis?', 'آیا خونریزی داخل جمجمه، توده یا تشخیص حاد دیگری وجود دارد؟') },

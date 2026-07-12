@@ -257,8 +257,6 @@ export default function IschaemischerSchlaganfallPage() {
 
           <Section id="aspects" title={c(STROKE_LESSON.aspects.title)} lead={c(STROKE_LESSON.aspects.lead)}>
             <Cards items={localizedItems(STROKE_LESSON.aspects.items, lang)} />
-            <LearningFigure src="/stroke/aspects.png" alt={c(STROKE_LESSON.aspects.imageAlt)} onZoom={setPreviewImage} zoomLabel={imageUi.zoom} />
-            <Callout label={c(STROKE_LESSON.keyLabel)}>{c(STROKE_LESSON.aspects.key)}</Callout>
           </Section>
 
           <Section id="ct-verlauf" title={c(STROKE_LESSON.ctTimeline.title)} lead={c(STROKE_LESSON.ctTimeline.lead)}>
