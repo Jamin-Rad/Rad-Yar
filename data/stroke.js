@@ -88,22 +88,23 @@ export const STROKE_LESSON = {
       {
         title: 'Grundformen',
         items: [
-          { title: 'Ischämischer Schlaganfall', text: 'Akute fokale Hirnischämie mit neurologischem Defizit; synonym: Hirninfarkt.' },
-          { title: 'Hämorrhagischer Schlaganfall', text: 'Akutes neurologisches Defizit durch eine intrakranielle Blutung.' },
-          { title: 'Intrazerebrale Blutung (ICB)', text: 'Primäre Blutung in zuvor gesundes Hirnparenchym.' },
-          { title: 'Subarachnoidalblutung (SAB)', text: 'Blutung in den Subarachnoidalraum.' },
+          {
+            title: 'Ischämischer Schlaganfall',
+            text: 'Akut einsetzende, umschriebene Mangeldurchblutung des Gehirns mit fokal-neurologischem Defizit. Anteil: etwa 80–85 % aller Schlaganfälle.',
+          },
+          {
+            title: 'Hämorrhagischer Schlaganfall',
+            text: 'Akutes neurologisches Defizit durch eine intrakranielle Blutung. Anteil: etwa 15–20 % — davon ICB (Blutung ins Hirnparenchym) etwa 10–15 % und SAB (Blutung in den Subarachnoidalraum) etwa 5 % aller Schlaganfälle.',
+          },
         ],
       },
       {
-        title: 'Infarktmuster & Gewebekonzepte',
+        title: 'Infarktmuster',
         items: [
           { title: 'Territorialinfarkt', text: 'Infarkt im Gebiet einer großen pialen Arterie.' },
           { title: 'Lakunärer Infarkt', text: 'Kleiner Infarkt (≤ 1,5 cm) durch Verschluss eines Perforators.' },
           { title: 'Endstrominfarkt', text: 'Distaler Infarkt im Gebiet einer nicht kollateralisierten Endarterie.' },
           { title: 'Grenzzoneninfarkt', text: 'Infarkt zwischen benachbarten arteriellen Versorgungsgebieten.' },
-          { title: 'Hämorrhagischer Hirninfarkt', text: 'Sekundäre Einblutung in einen primär ischämischen Infarkt.' },
-          { title: 'Venöser Infarkt', text: 'Infarkt durch venöse Abflussstörung; oft hämorrhagisch.' },
-          { title: 'Penumbra', text: 'Funktionsgestörtes, aber potenziell rettbares Gewebe um den Infarktkern.' },
         ],
       },
       {
@@ -115,7 +116,7 @@ export const STROKE_LESSON = {
           { title: 'Thrombotisch', text: 'Lokal entstandener Gefäßthrombus.' },
           { title: 'Makroangiopathisch', text: 'Erkrankung großer Arterien, z. B. Atherosklerose oder Dissektion.' },
           { title: 'Mikroangiopathisch', text: 'Erkrankung kleiner penetrierender Arterien.' },
-          { title: 'Venöse Thrombose', text: 'Thrombotischer Verschluss zerebraler Venen oder Sinus.' },
+          { title: 'Venöser Infarkt', text: 'Venöse Abflussstörung durch Venen- oder Sinusthrombose; häufig hämorrhagisch.' },
         ],
       },
       {
