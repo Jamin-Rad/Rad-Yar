@@ -92,14 +92,8 @@ function ClinicalBasics({ lesson, lang, localizeValue }) {
 }
 
 function StrokeClassification({ lesson, lang, localizeValue }) {
-  const overview = lesson.introGroups.flatMap(group => group.items.map(item => ({
-    title: localizeValue(item.text),
-    text: localizeValue(item.detail),
-  })))
-
   return (
     <div>
-      <Cards items={overview} />
       {lesson.classificationGroups.map(group => (
         <div key={localizeValue(group.title)} style={{ marginTop: 26 }}>
           <h3 style={{ margin: '0 0 12px', color: 'var(--text-strong)' }}>{localizeValue(group.title)}</h3>
