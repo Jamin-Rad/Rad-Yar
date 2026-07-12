@@ -21,7 +21,8 @@ export const STROKE_LESSON = {
   caveLabel: L('CAVE', 'Caution', 'احتیاط'),
   openCase: L('Fall in Radiopaedia öffnen', 'Open case in Radiopaedia', 'باز کردن کیس در Radiopaedia'),
   sections: [
-    { id: 'grundlagen', label: L('Grundlagen & Territorien', 'Basics & territories', 'مبانی و قلمروهای عروقی'), icon: '🧠' },
+    { id: 'klassifikation', label: L('Klassifikation & Begriffe', 'Classification & terms', 'طبقه‌بندی و اصطلاحات'), icon: '🗂️' },
+    { id: 'grundlagen', label: L('Klinische Grundlagen', 'Clinical basics', 'مبانی بالینی'), icon: '🧠' },
     { id: 'akut-ct', label: L('Akut-CT, CTA & CTP', 'Acute CT, CTA & CTP', 'CT حاد، CTA و CTP'), icon: '🩻' },
     { id: 'ctp', label: L('CT-Perfusion interpretieren', 'Interpreting CT perfusion', 'تفسیر پرفیوژن CT'), icon: '🌡️' },
     { id: 'aspects', label: L('ASPECTS', 'ASPECTS', 'ASPECTS'), icon: '🔟' },
@@ -77,17 +78,22 @@ export const STROKE_LESSON = {
         ],
       },
     ],
-    classificationTitle: 'Einteilung des Schlaganfalls',
+    classificationTitle: 'Klassifikation & Begriffe',
+    classificationLead: L(
+      'Die wichtigsten Begriffe – geordnet nach Form, Verteilung, Entstehung und zeitlichem Verlauf.',
+      'The key terms, organised by form, distribution, mechanism and clinical course.',
+      'مهم‌ترین اصطلاحات بر اساس نوع، توزیع، مکانیسم و سیر بالینی مرتب شده‌اند.'
+    ),
     classificationGroups: [
       {
-        title: 'Ursachenbezogene Definitionen',
+        title: '1. Grundformen',
         items: [
           { title: 'Ischämischer Schlaganfall (Infarkt)', text: 'Akut einsetzende, umschriebene Mangeldurchblutung des Gehirns mit fokal-neurologischen Defiziten unterschiedlicher Dauer.' },
           { title: 'Hämorrhagischer Schlaganfall', text: 'Akutes neurologisches Defizit infolge einer akut eingetretenen intrakraniellen Blutung.' },
         ],
       },
       {
-        title: 'Pathophysiologische und pathoanatomische Definitionen',
+        title: '2. Infarktmuster und Blutungsformen',
         items: [
           { title: 'Territorialinfarkt', text: 'Ischämischer Infarkt im Versorgungsgebiet einer großen pialen Arterie.' },
           { title: 'Lakunärer Hirninfarkt', text: 'Maximal 1,5 cm großer subkortikaler oder hirnstammnaher Infarkt durch Verschluss einer kleinen penetrierenden Arterie.' },
@@ -101,7 +107,7 @@ export const STROKE_LESSON = {
         ],
       },
       {
-        title: 'Ätiopathogenetische Definitionen',
+        title: '3. Entstehungsmechanismus',
         items: [
           { title: 'Embolischer Infarkt', text: 'Verschluss einer hirnversorgenden Arterie durch eingeschwemmtes embolisches Material.' },
           { title: 'Kardioembolischer Infarkt', text: 'Embolischer Gefäßverschluss mit Ursprung des Embolus im Herzen.' },
@@ -113,7 +119,7 @@ export const STROKE_LESSON = {
         ],
       },
       {
-        title: 'Definitionen nach Symptomverlauf',
+        title: '4. Klinischer Verlauf',
         items: [
           { title: 'Transitorisch ischämische Attacke (TIA)', text: 'Vollständig rückläufiges fokal-neurologisches Defizit, meist unter 1 Stunde und klassisch spätestens nach 24 Stunden; eine ischämische Läsion kann dennoch nachweisbar sein.' },
           { title: 'Reversibles ischämisches neurologisches Defizit (RIND)', text: 'Vollständige Rückbildung der neurologischen Symptomatik nach mehr als 24 Stunden.' },

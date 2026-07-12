@@ -79,30 +79,34 @@ function ClinicalBasics({ lesson, lang, localizeValue }) {
   const rows = localizedRows(lesson.rows, lang)
   const headers = lesson.headers.map(localizeValue)
   const notes = localizedItems(lesson.items, lang)
-  const introCards = lesson.introGroups.flatMap(group => group.items.map(item => ({
+
+  return (
+    <div>
+      <p className={styles.lead}>{localizeValue(lesson.territoriesTitle)}</p>
+      <Table headers={headers} rows={rows} />
+      <Callout label={localizeValue('Definition')}>{localizeValue(lesson.footnote)}</Callout>
+
+      <Cards items={notes} />
+    </div>
+  )
+}
+
+function StrokeClassification({ lesson, lang, localizeValue }) {
+  const overview = lesson.introGroups.flatMap(group => group.items.map(item => ({
     title: localizeValue(item.text),
     text: localizeValue(item.detail),
   })))
 
   return (
     <div>
-      <p className={styles.lead}>{localizeValue(lesson.introTitle)}</p>
-      <Cards items={introCards} />
-
-      <h3 style={{ margin: '30px 0 14px', color: 'var(--text-strong)' }}>{localizeValue(lesson.classificationTitle)}</h3>
+      <Cards items={overview} />
       {lesson.classificationGroups.map(group => (
-        <div key={localizeValue(group.title)} style={{ marginTop: 22 }}>
+        <div key={localizeValue(group.title)} style={{ marginTop: 26 }}>
           <h3 style={{ margin: '0 0 12px', color: 'var(--text-strong)' }}>{localizeValue(group.title)}</h3>
           <Cards items={localizedItems(group.items, lang)} />
         </div>
       ))}
-      <Callout type="cave" label={localizeValue('Abgrenzung')}>{localizeValue(lesson.classificationCave)}</Callout>
-
-      <h3 style={{ margin: '28px 0 14px', color: 'var(--text-strong)' }}>{localizeValue(lesson.territoriesTitle)}</h3>
-      <Table headers={headers} rows={rows} />
-      <Callout label={localizeValue('Definition')}>{localizeValue(lesson.footnote)}</Callout>
-
-      <Cards items={notes} />
+      <Callout type="cave" label={localizeValue('Wichtige Abgrenzung')}>{localizeValue(lesson.classificationCave)}</Callout>
     </div>
   )
 }
@@ -219,6 +223,10 @@ export default function IschaemischerSchlaganfallPage() {
         </aside>
 
         <div className={styles.main}>
+          <Section id="klassifikation" title={c(STROKE_LESSON.basics.classificationTitle)} lead={c(STROKE_LESSON.basics.classificationLead)}>
+            <StrokeClassification lesson={STROKE_LESSON.basics} lang={lang} localizeValue={c} />
+          </Section>
+
           <Section id="grundlagen" title={c(STROKE_LESSON.basics.title)}>
             <ClinicalBasics lesson={STROKE_LESSON.basics} lang={lang} localizeValue={c} />
             <Callout label={c(STROKE_LESSON.keyLabel)}>{c(STROKE_LESSON.basics.key)}</Callout>
