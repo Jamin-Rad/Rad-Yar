@@ -934,6 +934,70 @@
   font-weight: 850;
 }
 
+.amountPicker {
+  display: grid;
+  gap: 8px;
+  padding: 0 12px 12px 64px;
+}
+
+.amountPickerHint {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.amountPickerRail {
+  display: grid;
+  gap: 8px;
+  max-height: 188px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 2px 8px 8px 2px;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: thin;
+}
+
+.amountOption,
+.amountOptionActive {
+  display: grid;
+  min-height: 56px;
+  align-content: center;
+  gap: 4px;
+  border: 1px solid rgba(148, 163, 184, .24);
+  border-radius: 8px;
+  background: #fff;
+  color: #0f172a;
+  cursor: pointer;
+  font: inherit;
+  padding: 9px 10px;
+  scroll-snap-align: start;
+  text-align: center;
+  transition: border-color .16s, background .16s, transform .16s, box-shadow .16s;
+}
+
+.amountOption:hover,
+.amountOptionActive {
+  border-color: rgba(16, 185, 129, .5);
+  background: #ecfdf5;
+  box-shadow: 0 12px 24px rgba(16, 185, 129, .14);
+  transform: translateY(-1px);
+}
+
+.amountOption strong,
+.amountOptionActive strong {
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.amountOption span,
+.amountOptionActive span {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 850;
+}
+
 :global(html[data-theme='dark']) .choiceBtn,
 :global(html[data-theme='dark']) .choiceActive,
 :global(html[data-theme='dark']) .choiceActiveFood {
@@ -945,6 +1009,23 @@
 :global(html[data-theme='dark']) .choiceBtn:hover,
 :global(html[data-theme='dark']) .choiceActive,
 :global(html[data-theme='dark']) .choiceActiveFood {
+  border-color: rgba(45, 212, 191, .42);
+  background: rgba(45, 212, 191, .12);
+}
+
+:global(html[data-theme='dark']) .amountPickerHint {
+  color: #94a3b8;
+}
+
+:global(html[data-theme='dark']) .amountOption,
+:global(html[data-theme='dark']) .amountOptionActive {
+  border-color: rgba(148, 163, 184, .18);
+  background: rgba(15, 23, 42, .62);
+  color: #f8fafc;
+}
+
+:global(html[data-theme='dark']) .amountOption:hover,
+:global(html[data-theme='dark']) .amountOptionActive {
   border-color: rgba(45, 212, 191, .42);
   background: rgba(45, 212, 191, .12);
 }
@@ -1804,6 +1885,10 @@
 
   .choiceGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-left: 12px;
+  }
+
+  .amountPicker {
     padding-left: 12px;
   }
 

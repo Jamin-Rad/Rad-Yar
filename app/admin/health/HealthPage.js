@@ -15,17 +15,31 @@ const FOOD_ICONS = {
   fruehstueck: '🍳', fleisch: '🥩', gemuese: '🥗',
   obst: '🍎', getraenke: '🥛', sonstiges: '🍽️',
 }
+const UNIT_BY_CATEGORY = {
+  getraenke: 'Glas',
+  obst: 'Stück',
+  brot: 'Scheibe',
+  gemuese: 'Schüssel',
+}
+const UNIT_PLURALS = {
+  Portion: 'Portionen',
+  Glas: 'Gläser',
+  Tasse: 'Tassen',
+  Stück: 'Stück',
+  Scheibe: 'Scheiben',
+  Schüssel: 'Schüsseln',
+  Spieß: 'Spieße',
+  Blatt: 'Blätter',
+  Esslöffel: 'Esslöffel',
+  Teelöffel: 'Teelöffel',
+  Patty: 'Pattys',
+}
 
 const TODAY = new Date().toISOString().slice(0, 10)
 const RING_R = 50
 const RING_C = 2 * Math.PI * RING_R
 const SPORT_MINUTES = [10, 20, 30, 45, 60, 90]
-const FOOD_PORTIONS = [
-  { label: '½ Portion', factor: 0.5 },
-  { label: '1 Portion', factor: 1 },
-  { label: '1½ Portionen', factor: 1.5 },
-  { label: '2 Portionen', factor: 2 },
-]
+const FOOD_AMOUNTS = [0.25, 0.5, 0.75, 1, 1.5, 2, 2.5, 3, 4]
 const ACTIVITY_LEVELS = [
   { id: 'low', label: 'Wenig aktiv', factor: 1.2 },
   { id: 'light', label: 'Leicht aktiv', factor: 1.375 },
@@ -59,6 +73,31 @@ function weekDaysFor(value = TODAY) {
     date.setDate(monday.getDate() + index)
     return dateValue(date)
   })
+}
+
+function formatAmount(value) {
+  const exact = Number(value)
+  if (exact === 0.25) return '¼'
+  if (exact === 0.5) return '½'
+  if (exact === 0.75) return '¾'
+  if (exact === 1.5) return '1½'
+  if (exact === 2.5) return '2½'
+  return Number.isInteger(exact) ? String(exact) : exact.toString().replace('.', ',')
+}
+
+function unitForFood(food) {
+  return food?.unit || UNIT_BY_CATEGORY[food?.cat] || 'Portion'
+}
+
+function unitLabel(unit, amount) {
+  return Number(amount) === 1 ? unit : (UNIT_PLURALS[unit] || unit)
+}
+
+function foodAmountText(food, grams) {
+  const portionG = food?.portionG || 100
+  const amount = portionG ? grams / portionG : 1
+  const unit = unitForFood(food)
+  return `${formatAmount(amount)} ${unitLabel(unit, amount)}`
 }
 
 export default function HealthPage({ apiBase = '/api/admin/health' }) {
@@ -142,6 +181,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
     ...customFoods.map(cf => ({
       id: cf.id, cat: cf.cat || 'sonstiges', de: cf.de, fa: cf.fa || '',
       kcalPer100g: cf.kcal_per_100g, portionG: cf.portion_g || 100,
+      unit: cf.unit || UNIT_BY_CATEGORY[cf.cat] || 'Portion',
     })),
   ]
 
@@ -218,8 +258,8 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
     setActiveId(null)
   }
 
-  function chooseFoodPortion(food, factor) {
-    const g = Math.round((food.portionG || 100) * factor)
+  function chooseFoodAmount(food, amount) {
+    const g = Math.round((food.portionG || 100) * amount)
     setForm(f => ({ ...f, foods: [...f.foods.filter(x => x.id !== food.id), { id: food.id, g }] }))
     setActiveId(null)
   }
@@ -449,7 +489,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                     <div key={item.id} className={s.summaryItem}>
                       <div className={s.summaryPill + ' ' + s.pillFood}>Essen</div>
                       <span className={s.summaryName}>{food.de}</span>
-                      <span className={s.summaryDuration}>{g}g</span>
+                      <span className={s.summaryDuration}>{foodAmountText(food, g)}</span>
                       <span className={s.summaryKcalFood}>+{kcal}</span>
                       <button className={s.summaryRemove} onClick={() => removeFoodFromForm(item.id)}>×</button>
                     </div>
@@ -566,28 +606,35 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                     const existing = form.foods.find(x => x.id === food.id)
                     const isActive = activeId === food.id
                     const currentG = existing?.g ?? (existing?.count != null ? existing.count * food.portionG : null)
+                    const unit = unitForFood(food)
                     return (
                       <div className={`${s.pickerItem} ${existing ? s.pickerItemSelectedFood : ''}`} key={food.id}>
                         <button className={s.pickerItemButton} type="button" onClick={() => setActiveId(isActive ? null : food.id)}>
                           <span className={s.itemAvatar + ' ' + s.itemAvatarFood}>{food.de.slice(0, 2).toUpperCase()}</span>
                           <span className={s.pickerItemText}>
                             <strong>{food.de}</strong>
-                            <small>{food.kcalPer100g} kcal/100g · Portion {food.portionG}g{currentG ? ` · ${currentG}g gewählt` : ''}</small>
+                            <small>
+                              {food.kcalPer100g} kcal/100g · 1 {unit} ≈ {food.portionG}g
+                              {currentG ? ` · ${foodAmountText(food, currentG)} gewählt` : ''}
+                            </small>
                           </span>
                           <span className={s.itemToggle}>{isActive ? '×' : existing ? '✓' : '+'}</span>
                         </button>
                         {isActive && (
-                          <div className={s.choiceGrid}>
-                            {FOOD_PORTIONS.map(portion => {
-                              const g = Math.round((food.portionG || 100) * portion.factor)
+                          <div className={s.amountPicker}>
+                            <div className={s.amountPickerHint}>Menge wählen</div>
+                            <div className={s.amountPickerRail} role="listbox" aria-label={`${food.de} Menge`}>
+                              {FOOD_AMOUNTS.map(amount => {
+                              const g = Math.round((food.portionG || 100) * amount)
                               const kcal = Math.round((food.kcalPer100g / 100) * g)
                               return (
-                                <button key={portion.label} className={currentG === g ? s.choiceActiveFood : s.choiceBtn} type="button" onClick={() => chooseFoodPortion(food, portion.factor)}>
-                                  <strong>{portion.label}</strong>
+                                <button key={amount} className={currentG === g ? s.amountOptionActive : s.amountOption} type="button" onClick={() => chooseFoodAmount(food, amount)} role="option" aria-selected={currentG === g}>
+                                  <strong>{formatAmount(amount)} {unitLabel(unit, amount)}</strong>
                                   <span>{g}g · {kcal} kcal</span>
                                 </button>
                               )
                             })}
+                            </div>
                           </div>
                         )}
                       </div>
@@ -855,7 +902,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                       </select>
                     </label>
                     <label>kcal/100g<input type="number" min="0" value={newFood.kcalPer100g} onChange={e => setNewFood(p => ({ ...p, kcalPer100g: e.target.value }))} placeholder="z. B. 250" /></label>
-                    <label>Portion (g)<input type="number" min="1" value={newFood.portionG} onChange={e => setNewFood(p => ({ ...p, portionG: e.target.value }))} placeholder="100" /></label>
+                    <label>Einheit in g<input type="number" min="1" value={newFood.portionG} onChange={e => setNewFood(p => ({ ...p, portionG: e.target.value }))} placeholder="100" /></label>
                     <button className={s.mgmtSubmit} type="submit">Hinzufügen</button>
                   </form>
                 </div>
@@ -868,7 +915,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                         <div className={s.mgmtCatLabel}>{cat.de}</div>
                         {items.map(f => (
                           <div key={f.id} className={s.mgmtItem}>
-                            <div className={s.mgmtItemMain}><strong>{f.de}</strong><span>{f.kcalPer100g} kcal/100g · Portion {f.portionG}g</span></div>
+                            <div className={s.mgmtItemMain}><strong>{f.de}</strong><span>{f.kcalPer100g} kcal/100g · 1 {unitForFood(f)} ≈ {f.portionG}g</span></div>
                             <button className={s.mgmtDelBtn} onClick={() => deleteFood(f.id, !!customFoods.find(cf => cf.id === f.id))}>Löschen</button>
                           </div>
                         ))}
