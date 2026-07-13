@@ -162,6 +162,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
   const [newFood, setNewFood] = useState({ de: '', cat: 'sonstiges', kcalPer100g: '', portionG: '', unit: 'Portion' })
   const [caloriePlan, setCaloriePlan] = useState(DEFAULT_CALORIE_PLAN)
   const sparkPathRef = useRef(null)
+  const activeWeightRef = useRef(null)
   const loadedRef = useRef(false)
   const saveTimerRef = useRef(null)
   const lastSavedRef = useRef('')
@@ -329,6 +330,21 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
   const foodFraction  = Math.min((totalFoodKcal + (form.manualKcal || 0)) / 2000, 1)
   const sportFraction = Math.min(totalSportKcal / 2000, 1)
   const latestWeight = [...records].filter(record => record.weight).sort((a, b) => b.date.localeCompare(a.date))[0]?.weight || ''
+  const previousWeight = [...records]
+    .filter(record => record.weight && record.date < TODAY)
+    .sort((a, b) => b.date.localeCompare(a.date))[0]?.weight || ''
+  const weightBase = parseFloat(form.weight || previousWeight || caloriePlan.currentWeight || latestWeight || 80)
+  const weightStart = Math.max(30, Math.round((weightBase - 4) * 10) / 10)
+  const weightOptions = Array.from({ length: 81 }, (_, index) => (Math.round((weightStart + index * 0.1) * 10) / 10).toFixed(1))
+  const activeWeight = (parseFloat(form.weight || weightBase) || weightBase).toFixed(1)
+
+  useEffect(() => {
+    if (!weightOpen) return
+    requestAnimationFrame(() => {
+      activeWeightRef.current?.scrollIntoView({ block: 'center' })
+    })
+  }, [weightOpen, activeWeight])
+
   const planCurrentWeight = parseFloat(caloriePlan.currentWeight || form.weight || latestWeight || 0)
   const planTargetWeight = parseFloat(caloriePlan.targetWeight || 0)
   const planWeeks = Math.max(parseInt(caloriePlan.weeks) || 1, 1)
@@ -509,27 +525,6 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
 
         {tab === 'eintragen' && (
           <div className={s.todayView}>
-            <section className={s.todayActionPanel}>
-              <div className={s.todayPanelHead}>
-                <span>{formatHealthDate(TODAY)}</span>
-                <strong>{saving ? 'Speichert…' : saveMessage && !saveMessage.includes('fehl') && !saveMessage.includes('nicht') ? 'Gespeichert' : 'Heute'}</strong>
-              </div>
-              <div className={s.todayActions}>
-                <button className={s.todayActionWeight} type="button" onClick={() => setWeightOpen(true)}>
-                  <span>Gewicht</span>
-                  <strong>{form.weight ? `${form.weight} kg` : 'Eintragen'}</strong>
-                </button>
-                <button className={s.todayActionSport} type="button" onClick={() => openPicker('sport')}>
-                  <span>Sport</span>
-                  <strong>Auswählen</strong>
-                </button>
-                <button className={s.todayActionFood} type="button" onClick={() => openPicker('food')}>
-                  <span>Essen</span>
-                  <strong>Auswählen</strong>
-                </button>
-              </div>
-            </section>
-
             <section className={s.todayDashboard}>
               <div className={s.todayKcalCard}>
                 <div className={s.todayRing}>
@@ -587,6 +582,27 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                 </div>
               </div>
             </section>
+
+            <section className={s.todayActionPanel}>
+              <div className={s.todayPanelHead}>
+                <span>{formatHealthDate(TODAY)}</span>
+                <strong>{saving ? 'Speichert…' : saveMessage && !saveMessage.includes('fehl') && !saveMessage.includes('nicht') ? 'Gespeichert' : 'Heute'}</strong>
+              </div>
+              <div className={s.todayActions}>
+                <button className={s.todayActionWeight} type="button" onClick={() => setWeightOpen(true)}>
+                  <i className={s.actionVisual} aria-hidden="true" />
+                  <span>Gewicht</span>
+                </button>
+                <button className={s.todayActionSport} type="button" onClick={() => openPicker('sport')}>
+                  <i className={s.actionVisual} aria-hidden="true" />
+                  <span>Sport</span>
+                </button>
+                <button className={s.todayActionFood} type="button" onClick={() => openPicker('food')}>
+                  <i className={s.actionVisual} aria-hidden="true" />
+                  <span>Essen</span>
+                </button>
+              </div>
+            </section>
           </div>
         )}
 
@@ -597,13 +613,29 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                 <button className={s.backBtn} type="button" onClick={() => setWeightOpen(false)} aria-label="Gewicht schließen">×</button>
                 <div>
                   <span className={s.pickerKicker}>Gewicht</span>
-                  <h2>Heute eintragen</h2>
+                  <h2>Heute wählen</h2>
                 </div>
               </header>
-              <label className={s.weightField}>
-                <span>kg</span>
-                <input autoFocus type="number" step="0.1" placeholder="z. B. 82.4" value={form.weight} onChange={e => setForm(f => ({ ...f, weight: e.target.value, date: TODAY }))} />
-              </label>
+              <div className={s.weightPicker}>
+                <div className={s.weightCurrent}>
+                  <span>Startwert</span>
+                  <strong>{activeWeight} kg</strong>
+                </div>
+                <div className={s.weightWheel} role="listbox" aria-label="Gewicht auswählen">
+                  {weightOptions.map(value => (
+                    <button
+                      key={value}
+                      ref={value === activeWeight ? activeWeightRef : null}
+                      type="button"
+                      className={value === activeWeight ? s.weightOptionActive : s.weightOption}
+                      onClick={() => setForm(f => ({ ...f, weight: value, date: TODAY }))}
+                      aria-selected={value === activeWeight}
+                    >
+                      {value} kg
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         )}
