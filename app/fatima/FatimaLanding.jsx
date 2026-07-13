@@ -4,7 +4,7 @@ import Link from 'next/link'
 import styles from './page.module.css'
 
 const tiles = [
-  { title: 'Gesundheit', text: 'Sanfte Erinnerungen fuer dich', href: '#', tone: 'rose' },
+  { title: 'Gesundheit', text: 'Sanfte Erinnerungen fuer dich', href: '/fatima/gesundheit', tone: 'rose' },
   { title: 'ToDo', text: 'Gemeinsame Aufgaben und kleine Plaene', href: '/fatima/todo', tone: 'peach' },
   { title: 'Deutschlernen', text: 'Lernen in deinem eigenen Tempo', href: '/fatima/deutsch', tone: 'sky' },
 ]

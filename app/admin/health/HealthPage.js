@@ -20,8 +20,8 @@ const TODAY = new Date().toISOString().slice(0, 10)
 const RING_R = 50
 const RING_C = 2 * Math.PI * RING_R
 
-async function api(path, method = 'GET', body) {
-  const res = await fetch(`/api/admin/health${path}`, {
+async function apiRequest(apiBase, path, method = 'GET', body) {
+  const res = await fetch(`${apiBase}${path}`, {
     method,
     headers: body ? { 'Content-Type': 'application/json' } : undefined,
     body: body ? JSON.stringify(body) : undefined,
@@ -31,7 +31,7 @@ async function api(path, method = 'GET', body) {
 
 const EMPTY_FORM = { date: TODAY, weight: '', note: '', manualKcal: 0, sports: [], foods: [] }
 
-export default function HealthPage() {
+export default function HealthPage({ apiBase = '/api/admin/health' }) {
   const [tab, setTab] = useState('eintragen')
   const [records, setRecords] = useState([])
   const [customSports, setCustomSports] = useState([])
@@ -51,6 +51,7 @@ export default function HealthPage() {
   const [newSport, setNewSport] = useState({ de: '', kcalPerMin: '' })
   const [newFood, setNewFood] = useState({ de: '', cat: 'sonstiges', kcalPer100g: '', portionG: '' })
   const sparkPathRef = useRef(null)
+  const api = (path, method = 'GET', body) => apiRequest(apiBase, path, method, body)
 
   useEffect(() => { loadAll() }, [])
 
