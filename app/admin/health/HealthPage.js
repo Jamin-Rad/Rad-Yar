@@ -36,6 +36,7 @@ const UNIT_PLURALS = {
   Dose: 'Dosen',
   Kugel: 'Kugeln',
 }
+const FOOD_UNITS = Object.keys(UNIT_PLURALS)
 
 const TODAY = new Date().toISOString().slice(0, 10)
 const RING_R = 50
@@ -130,7 +131,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
   const [saveMessage, setSaveMessage] = useState('')
   const [mgmtMode, setMgmtMode] = useState('sport')
   const [newSport, setNewSport] = useState({ de: '', kcalPerMin: '' })
-  const [newFood, setNewFood] = useState({ de: '', cat: 'sonstiges', kcalPer100g: '', portionG: '' })
+  const [newFood, setNewFood] = useState({ de: '', cat: 'sonstiges', kcalPer100g: '', portionG: '', unit: 'Portion' })
   const [caloriePlan, setCaloriePlan] = useState(DEFAULT_CALORIE_PLAN)
   const sparkPathRef = useRef(null)
   const loadedRef = useRef(false)
@@ -325,12 +326,14 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
   function chooseSportMinutes(id, min) {
     setForm(f => ({ ...f, sports: [...f.sports.filter(x => x.id !== id), { id, min }] }))
     setActiveId(null)
+    closePicker()
   }
 
   function chooseFoodAmount(food, amount) {
     const g = Math.round((food.portionG || 100) * amount)
     setForm(f => ({ ...f, foods: [...f.foods.filter(x => x.id !== food.id), { id: food.id, g }] }))
     setActiveId(null)
+    closePicker()
   }
   function removeSportFromForm(id) { setForm(f => ({ ...f, sports: f.sports.filter(x => x.id !== id) })) }
   function removeFoodFromForm(id)  { setForm(f => ({ ...f, foods:  f.foods.filter(x => x.id !== id) })) }
@@ -381,8 +384,9 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
       id, de: newFood.de, fa: '', cat: newFood.cat,
       kcalPer100g: parseInt(newFood.kcalPer100g),
       portionG: parseInt(newFood.portionG) || 100,
+      unit: newFood.unit || UNIT_BY_CATEGORY[newFood.cat] || 'Portion',
     })
-    setNewFood({ de: '', cat: 'sonstiges', kcalPer100g: '', portionG: '' }); loadAll()
+    setNewFood({ de: '', cat: 'sonstiges', kcalPer100g: '', portionG: '', unit: 'Portion' }); loadAll()
   }
   async function deleteSport(id, isCustom) { await api(`/sports?id=${id}&custom=${isCustom}`, 'DELETE'); loadAll() }
   async function deleteFood(id, isCustom)  { await api(`/foods?id=${id}&custom=${isCustom}`, 'DELETE'); loadAll() }
@@ -515,7 +519,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
         {/* ── TABS ── */}
         <div className={s.tabRow}>
           {[['eintragen', 'Heute', '✏️'], ['verlauf', 'Verlauf', '📈'], ['verwaltung', 'Verwaltung', '⚙️']].map(([id, label, icon]) => (
-            <button key={id} className={tab === id ? s.tabActive : s.tab} onClick={() => setTab(id)}>
+            <button key={id} type="button" className={tab === id ? s.tabActive : s.tab} onClick={() => setTab(id)}>
               <span className={s.tabIcon}>{icon}</span>{label}
             </button>
           ))}
@@ -527,19 +531,35 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
 
             {/* Browse panel */}
             <div className={s.browsePanel}>
+              <div className={s.todayPanelHead}>
+                <div>
+                  <span className={s.sparkLabel}>Heute</span>
+                  <h2>Schnell erfassen</h2>
+                </div>
+                <div className={s.todayNetBadge}>
+                  <span>Netto</span>
+                  <strong>{totalKcal}</strong>
+                </div>
+              </div>
               <div className={s.homeTiles}>
-                <button className={s.homeTileSport} onClick={() => openPicker('sport')}>
+                <button className={s.homeTileSport} type="button" onClick={() => openPicker('sport')}>
                   <div className={s.homeTileIcon}>🏃</div>
                   <div className={s.homeTileLabel}>Sport</div>
                   <div className={s.homeTileSub}>{form.sports.length > 0 ? `${form.sports.length} gewählt` : 'Kategorie auswählen'}</div>
                   {form.sports.length > 0 && <div className={s.homeTileBadge}>{form.sports.length}</div>}
                 </button>
-                <button className={s.homeTileFood} onClick={() => openPicker('food')}>
+                <button className={s.homeTileFood} type="button" onClick={() => openPicker('food')}>
                   <div className={s.homeTileIcon}>🥗</div>
                   <div className={s.homeTileLabel}>Essen</div>
                   <div className={s.homeTileSub}>{form.foods.length > 0 ? `${form.foods.length} gewählt` : 'Kategorie auswählen'}</div>
                   {form.foods.length > 0 && <div className={s.homeTileBadge + ' ' + s.homeTileBadgeFood}>{form.foods.length}</div>}
                 </button>
+              </div>
+
+              <div className={s.todayQuickStats}>
+                <div><span>Gegessen</span><strong>+{totalFoodKcal + (form.manualKcal || 0)} kcal</strong></div>
+                <div><span>Verbrannt</span><strong>−{totalSportKcal} kcal</strong></div>
+                <div><span>Einträge</span><strong>{form.foods.length + form.sports.length}</strong></div>
               </div>
             </div>
 
@@ -567,7 +587,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                       <span className={s.summaryName}>{sp.de}</span>
                       <span className={s.summaryDuration}>{item.min} min</span>
                       <span className={s.summaryKcalSport}>−{kcal}</span>
-                      <button className={s.summaryRemove} onClick={() => removeSportFromForm(item.id)}>×</button>
+                      <button className={s.summaryRemove} type="button" onClick={() => removeSportFromForm(item.id)}>×</button>
                     </div>
                   )
                 })}
@@ -582,7 +602,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                       <span className={s.summaryName}>{food.de}</span>
                       <span className={s.summaryDuration}>{foodAmountText(food, g)}</span>
                       <span className={s.summaryKcalFood}>+{kcal}</span>
-                      <button className={s.summaryRemove} onClick={() => removeFoodFromForm(item.id)}>×</button>
+                      <button className={s.summaryRemove} type="button" onClick={() => removeFoodFromForm(item.id)}>×</button>
                     </div>
                   )
                 })}
@@ -938,14 +958,17 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
             </section>
 
             <div className={s.mgmtTabs}>
-              <button className={mgmtMode === 'sport' ? s.mgmtTabActive : s.mgmtTab} onClick={() => setMgmtMode('sport')}>Sportarten</button>
-              <button className={mgmtMode === 'food' ? s.mgmtTabActive : s.mgmtTab} onClick={() => setMgmtMode('food')}>Lebensmittel</button>
+              <button type="button" className={mgmtMode === 'sport' ? s.mgmtTabActive : s.mgmtTab} onClick={() => setMgmtMode('sport')}>Sportarten</button>
+              <button type="button" className={mgmtMode === 'food' ? s.mgmtTabActive : s.mgmtTab} onClick={() => setMgmtMode('food')}>Lebensmittel</button>
             </div>
 
             {mgmtMode === 'sport' && (
               <div className={s.mgmtGrid}>
                 <div className={s.mgmtFormCard}>
-                  <h3 className={s.mgmtFormTitle}>Neue Sportart</h3>
+                  <div className={s.mgmtFormHeader}>
+                    <span>Sport verwalten</span>
+                    <h3 className={s.mgmtFormTitle}>Neue Sportart</h3>
+                  </div>
                   <form className={s.mgmtForm} onSubmit={handleAddSport}>
                     <label>Name<input value={newSport.de} onChange={e => setNewSport(p => ({ ...p, de: e.target.value }))} placeholder="z. B. Klettern" /></label>
                     <label>kcal/min<input type="number" min="1" max="30" value={newSport.kcalPerMin} onChange={e => setNewSport(p => ({ ...p, kcalPerMin: e.target.value }))} placeholder="z. B. 7" /></label>
@@ -962,7 +985,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                         {items.map(sp => (
                           <div key={sp.id} className={s.mgmtItem}>
                             <div className={s.mgmtItemMain}><strong>{sp.de}</strong><span>{sp.kcalPerMin} kcal/min</span></div>
-                            <button className={s.mgmtDelBtn} onClick={() => deleteSport(sp.id, sp.cat === 'custom')}>Löschen</button>
+                            <button className={s.mgmtDelBtn} type="button" onClick={() => deleteSport(sp.id, sp.cat === 'custom')}>Löschen</button>
                           </div>
                         ))}
                       </div>
@@ -974,7 +997,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                       {activeSports.filter(sp => sp.cat === 'custom').map(sp => (
                         <div key={sp.id} className={s.mgmtItem}>
                           <div className={s.mgmtItemMain}><strong>{sp.de}</strong><span>{sp.kcalPerMin} kcal/min</span></div>
-                          <button className={s.mgmtDelBtn} onClick={() => deleteSport(sp.id, true)}>Löschen</button>
+                          <button className={s.mgmtDelBtn} type="button" onClick={() => deleteSport(sp.id, true)}>Löschen</button>
                         </div>
                       ))}
                     </div>
@@ -985,7 +1008,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                       {sportarten.filter(sp => deletedSports.includes(sp.id)).map(sp => (
                         <div key={sp.id} className={s.mgmtItem}>
                           <div className={s.mgmtItemMain}><strong>{sp.de}</strong><span>{sp.kcalPerMin} kcal/min</span></div>
-                          <button className={s.mgmtRestoreBtn} onClick={() => restoreSport(sp.id)}>Wiederherstellen</button>
+                          <button className={s.mgmtRestoreBtn} type="button" onClick={() => restoreSport(sp.id)}>Wiederherstellen</button>
                         </div>
                       ))}
                     </div>
@@ -997,7 +1020,10 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
             {mgmtMode === 'food' && (
               <div className={s.mgmtGrid}>
                 <div className={s.mgmtFormCard}>
-                  <h3 className={s.mgmtFormTitle}>Neues Lebensmittel</h3>
+                  <div className={s.mgmtFormHeader}>
+                    <span>Essen verwalten</span>
+                    <h3 className={s.mgmtFormTitle}>Neues Lebensmittel</h3>
+                  </div>
                   <form className={s.mgmtForm} onSubmit={handleAddFood}>
                     <label>Name<input value={newFood.de} onChange={e => setNewFood(p => ({ ...p, de: e.target.value }))} placeholder="z. B. Baklava" /></label>
                     <label>Kategorie
@@ -1007,7 +1033,12 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                       </select>
                     </label>
                     <label>kcal/100g<input type="number" min="0" value={newFood.kcalPer100g} onChange={e => setNewFood(p => ({ ...p, kcalPer100g: e.target.value }))} placeholder="z. B. 250" /></label>
-                    <label>Einheit in g<input type="number" min="1" value={newFood.portionG} onChange={e => setNewFood(p => ({ ...p, portionG: e.target.value }))} placeholder="100" /></label>
+                    <label>Einheit
+                      <select value={newFood.unit} onChange={e => setNewFood(p => ({ ...p, unit: e.target.value }))}>
+                        {FOOD_UNITS.map(unit => <option key={unit} value={unit}>{unit}</option>)}
+                      </select>
+                    </label>
+                    <label>Menge pro Einheit in g<input type="number" min="1" value={newFood.portionG} onChange={e => setNewFood(p => ({ ...p, portionG: e.target.value }))} placeholder="100" /></label>
                     <button className={s.mgmtSubmit} type="submit">Hinzufügen</button>
                   </form>
                 </div>
@@ -1021,7 +1052,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                         {items.map(f => (
                           <div key={f.id} className={s.mgmtItem}>
                             <div className={s.mgmtItemMain}><strong>{f.de}</strong><span>{f.kcalPer100g} kcal/100g · 1 {unitForFood(f)} ≈ {f.portionG}g</span></div>
-                            <button className={s.mgmtDelBtn} onClick={() => deleteFood(f.id, !!customFoods.find(cf => cf.id === f.id))}>Löschen</button>
+                            <button className={s.mgmtDelBtn} type="button" onClick={() => deleteFood(f.id, !!customFoods.find(cf => cf.id === f.id))}>Löschen</button>
                           </div>
                         ))}
                       </div>
@@ -1033,7 +1064,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                       {lebensmittel.filter(f => deletedFoods.includes(f.id)).map(f => (
                         <div key={f.id} className={s.mgmtItem}>
                           <div className={s.mgmtItemMain}><strong>{f.de}</strong><span>{f.kcalPer100g} kcal/100g</span></div>
-                          <button className={s.mgmtRestoreBtn} onClick={() => restoreFood(f.id)}>Wiederherstellen</button>
+                          <button className={s.mgmtRestoreBtn} type="button" onClick={() => restoreFood(f.id)}>Wiederherstellen</button>
                         </div>
                       ))}
                     </div>
