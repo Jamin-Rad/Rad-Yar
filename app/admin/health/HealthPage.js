@@ -815,7 +815,6 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
               <div className={s.goalCopy}>
                 <span className={s.sparkLabel}>Kalorienziel</span>
                 <h2>Tägliche Empfehlung</h2>
-                <p>Orientierung nach Mifflin-St-Jeor: Gewicht, Größe, Alter, Geschlecht und Aktivität ergeben den Erhaltungsbedarf; Ziel und Wochen passen ihn an.</p>
               </div>
               <div className={s.goalForm}>
                 <label>Gewicht
@@ -887,7 +886,9 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
               <div className={s.goalResult}>
                 <span>Empfohlen</span>
                 <strong>{recommendedKcal ? `${recommendedKcal} kcal` : '—'}</strong>
-                <small>{recommendedKcal ? `Erhalt ${maintenanceKcal} kcal · ${planDailyDelta >= 0 ? '+' : ''}${planDailyDelta} kcal/Tag · ${planWeeklyChange} kg/Woche · ${planWeeks} Wochen` : 'Gewicht, Größe, Alter, Ziel und Wochen eingeben'}</small>
+                {recommendedKcal && (
+                  <small>Erhalt {maintenanceKcal} kcal · {planDailyDelta >= 0 ? '+' : ''}{planDailyDelta} kcal/Tag · {planWeeklyChange} kg/Woche · {planWeeks} Wochen</small>
+                )}
               </div>
             </section>
 
