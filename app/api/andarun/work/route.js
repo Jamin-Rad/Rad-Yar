@@ -149,6 +149,18 @@ export async function POST(request) {
       return NextResponse.json(await writeState(next))
     }
 
+    if (body.type === 'shiftRange') {
+      const shifts = Array.isArray(body.shifts) ? body.shifts.map(sanitizeShift).filter(shift => shift.date && shift.model) : []
+      if (!shifts.length) return NextResponse.json({ error: 'Zeitraum fehlt.' }, { status: 400 })
+      const dates = new Set(shifts.map(shift => shift.date))
+      const next = {
+        ...state,
+        shifts: [...shifts, ...state.shifts.filter(item => !dates.has(item.date))]
+          .sort((a, b) => String(a.date).localeCompare(String(b.date))),
+      }
+      return NextResponse.json(await writeState(next))
+    }
+
     if (body.type === 'finding') {
       const finding = sanitizeFinding(body.finding)
       if (!finding.examDate && !finding.question) return NextResponse.json({ error: 'Befunddaten fehlen.' }, { status: 400 })

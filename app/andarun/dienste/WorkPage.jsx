@@ -74,6 +74,20 @@ function previousDateValue(value) {
   return dateValue(date)
 }
 
+function dateRangeValues(startValue, endValue) {
+  const start = parseDate(startValue)
+  const end = parseDate(endValue || startValue)
+  const from = start <= end ? start : end
+  const to = start <= end ? end : start
+  const values = []
+  const cursor = new Date(from)
+  while (cursor <= to) {
+    values.push(dateValue(cursor))
+    cursor.setDate(cursor.getDate() + 1)
+  }
+  return values
+}
+
 function isNightShift(shift) {
   return shift?.model === 'N' || /^BD[1-4]$/.test(shift?.duty || '')
 }
@@ -158,6 +172,7 @@ export default function WorkPage() {
   const [findings, setFindings] = useState([])
   const [selectedDate, setSelectedDate] = useState(todayValue())
   const [shiftForm, setShiftForm] = useState(emptyShift(todayValue()))
+  const [rangeEndDate, setRangeEndDate] = useState(todayValue())
   const [findingForm, setFindingForm] = useState(EMPTY_FINDING)
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(true)
@@ -192,6 +207,7 @@ export default function WorkPage() {
 
   function selectDate(date) {
     setSelectedDate(date)
+    setRangeEndDate(date)
     const existing = shiftsByDate.get(date)
     setShiftForm(existing ? normalizeShift(existing) : emptyShift(date))
   }
@@ -211,9 +227,27 @@ export default function WorkPage() {
   async function saveShift(event) {
     event.preventDefault()
     try {
-      const data = await apiRequest('/', 'POST', { type: 'shift', shift: shiftForm })
+      const isAbsence = shiftForm.model === 'U' || shiftForm.model === 'K'
+      const payload = isAbsence
+        ? {
+            type: 'shiftRange',
+            shifts: dateRangeValues(shiftForm.date, rangeEndDate).map(date => {
+              const resolved = resolveDuty(date, shiftForm.model)
+              return {
+                ...shiftForm,
+                id: `shift-${date}`,
+                date,
+                ...resolved,
+                actualStart: '',
+                actualEnd: '',
+                assignment: '',
+              }
+            }),
+          }
+        : { type: 'shift', shift: shiftForm }
+      const data = await apiRequest('/', 'POST', payload)
       setShifts((data.shifts || []).map(normalizeShift))
-      setMessage('Dienst gespeichert.')
+      setMessage(isAbsence ? 'Zeitraum gespeichert.' : 'Dienst gespeichert.')
     } catch (error) {
       setMessage(error.message)
     }
@@ -331,6 +365,27 @@ export default function WorkPage() {
             <strong>{shiftForm.duty || '—'}</strong>
             <span>{timeRange(shiftForm.plannedStart, shiftForm.plannedEnd)}</span>
           </div>
+
+          {(shiftForm.model === 'U' || shiftForm.model === 'K') && (
+            <div className={styles.formGrid}>
+              <label>Ab
+                <input
+                  type="date"
+                  value={shiftForm.date}
+                  onChange={event => {
+                    const nextDate = event.target.value
+                    const resolved = resolveDuty(nextDate, shiftForm.model)
+                    setSelectedDate(nextDate)
+                    setShiftForm(prev => ({ ...prev, date: nextDate, id: `shift-${nextDate}`, ...resolved }))
+                    if (rangeEndDate < nextDate) setRangeEndDate(nextDate)
+                  }}
+                />
+              </label>
+              <label>Bis
+                <input type="date" value={rangeEndDate} onChange={event => setRangeEndDate(event.target.value)} />
+              </label>
+            </div>
+          )}
 
           {shiftForm.model !== 'U' && shiftForm.model !== 'K' && (
             <>
