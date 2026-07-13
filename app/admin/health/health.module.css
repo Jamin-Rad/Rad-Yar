@@ -369,6 +369,36 @@
   color: #f8fafc;
 }
 
+.todayFields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(160px, .42fr);
+  gap: 12px;
+  padding: 14px;
+  border-bottom: 1px solid rgba(148, 163, 184, .16);
+}
+
+.todayField {
+  display: grid;
+  gap: 7px;
+  border: 1px solid rgba(148, 163, 184, .16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .72);
+  padding: 12px;
+}
+
+:global(html[data-theme='dark']) .todayField {
+  border-color: rgba(148, 163, 184, .14);
+  background: rgba(30, 41, 59, .34);
+}
+
+.todayField span {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
 .todayNetBadge {
   display: grid;
   min-width: 98px;
@@ -401,7 +431,7 @@
 .homeTiles {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  min-height: 210px;
+  min-height: 190px;
 }
 
 .homeTileSport,
@@ -418,7 +448,7 @@
   color: #0f172a;
   cursor: pointer;
   font: inherit;
-  padding: clamp(28px, 5vw, 54px);
+  padding: clamp(22px, 4vw, 38px);
   text-align: left;
   transition: background .18s, transform .18s;
 }
@@ -1136,11 +1166,42 @@
 
 .summaryHead {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 92px;
-  gap: 8px;
-  padding: 14px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding: 18px;
   border-bottom: 1px solid rgba(148, 163, 184, .16);
   background: rgba(248, 250, 252, .84);
+}
+
+.summaryHead h2 {
+  margin: 3px 0 0;
+  color: #0f172a;
+  font-size: 24px;
+  font-weight: 950;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+:global(html[data-theme='dark']) .summaryHead h2 {
+  color: #f8fafc;
+}
+
+.summaryHead > strong {
+  display: grid;
+  min-width: 38px;
+  height: 34px;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, .12);
+  color: #0f766e;
+  font-size: 15px;
+  font-weight: 950;
+}
+
+:global(html[data-theme='dark']) .summaryHead > strong {
+  background: rgba(45, 212, 191, .14);
+  color: #5eead4;
 }
 
 :global(html[data-theme='dark']) .summaryHead {
@@ -1148,6 +1209,7 @@
 }
 
 .summaryInput,
+.todayField input,
 .manualRow input,
 .noteInput,
 .goalForm input,
@@ -1167,6 +1229,7 @@
 }
 
 :global(html[data-theme='dark']) .summaryInput,
+:global(html[data-theme='dark']) .todayField input,
 :global(html[data-theme='dark']) .manualRow input,
 :global(html[data-theme='dark']) .noteInput,
 :global(html[data-theme='dark']) .goalForm input,
@@ -2029,6 +2092,10 @@
   .todayNetBadge {
     width: 100%;
     justify-items: start;
+  }
+
+  .todayFields {
+    grid-template-columns: 1fr;
   }
 
   .todayQuickStats {

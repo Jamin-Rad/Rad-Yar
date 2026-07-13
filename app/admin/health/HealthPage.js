@@ -115,6 +115,12 @@ function foodAmountText(food, grams) {
   return `${formatAmount(amount)} ${unitLabel(unit, amount)}`
 }
 
+function formatHealthDate(value) {
+  const date = new Date(`${value}T12:00:00`)
+  if (Number.isNaN(date.getTime())) return 'Heute'
+  return date.toLocaleDateString('de-DE', { weekday: 'long', day: '2-digit', month: 'long' })
+}
+
 export default function HealthPage({ apiBase = '/api/admin/health' }) {
   const [tab, setTab] = useState('eintragen')
   const [records, setRecords] = useState([])
@@ -534,13 +540,27 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
               <div className={s.todayPanelHead}>
                 <div>
                   <span className={s.sparkLabel}>Heute</span>
-                  <h2>Schnell erfassen</h2>
-                </div>
-                <div className={s.todayNetBadge}>
-                  <span>Netto</span>
-                  <strong>{totalKcal}</strong>
+                  <h2>{formatHealthDate(form.date)}</h2>
                 </div>
               </div>
+
+              <div className={s.todayFields}>
+                <label className={s.todayField}>
+                  <span>Datum</span>
+                  <input type="date" value={form.date} onChange={e => setForm(f => ({ ...f, date: e.target.value }))} />
+                </label>
+                <label className={s.todayField}>
+                  <span>Gewicht heute</span>
+                  <input
+                    type="number"
+                    placeholder="kg"
+                    step="0.1"
+                    value={form.weight}
+                    onChange={e => setForm(f => ({ ...f, weight: e.target.value }))}
+                  />
+                </label>
+              </div>
+
               <div className={s.homeTiles}>
                 <button className={s.homeTileSport} type="button" onClick={() => openPicker('sport')}>
                   <div className={s.homeTileIcon}>🏃</div>
@@ -555,22 +575,16 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                   {form.foods.length > 0 && <div className={s.homeTileBadge + ' ' + s.homeTileBadgeFood}>{form.foods.length}</div>}
                 </button>
               </div>
-
-              <div className={s.todayQuickStats}>
-                <div><span>Gegessen</span><strong>+{totalFoodKcal + (form.manualKcal || 0)} kcal</strong></div>
-                <div><span>Verbrannt</span><strong>−{totalSportKcal} kcal</strong></div>
-                <div><span>Einträge</span><strong>{form.foods.length + form.sports.length}</strong></div>
-              </div>
             </div>
 
             {/* Summary sidebar */}
             <div className={s.summaryPanel}>
               <div className={s.summaryHead}>
-                <input className={s.summaryInput} type="date" value={form.date}
-                  onChange={e => setForm(f => ({ ...f, date: e.target.value }))} />
-                <input className={s.summaryInput} type="number" placeholder="kg" step="0.1"
-                  value={form.weight} style={{ width: 64 }}
-                  onChange={e => setForm(f => ({ ...f, weight: e.target.value }))} />
+                <div>
+                  <span className={s.sparkLabel}>Liste</span>
+                  <h2>Einträge heute</h2>
+                </div>
+                <strong>{form.foods.length + form.sports.length}</strong>
               </div>
 
               <div className={s.summaryItems}>
