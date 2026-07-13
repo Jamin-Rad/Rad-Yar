@@ -15,6 +15,18 @@ const FOOD_ICONS = {
   fruehstueck: '🍳', fleisch: '🥩', gemuese: '🥗',
   obst: '🍎', getraenke: '🥛', sonstiges: '🍽️',
 }
+const FOOD_IMAGE_CLASSES = {
+  haupt: 'foodImageMain',
+  kebab: 'foodImageKebab',
+  reis: 'foodImageRice',
+  brot: 'foodImageBread',
+  fruehstueck: 'foodImageBreakfast',
+  fleisch: 'foodImageMeat',
+  gemuese: 'foodImageVeg',
+  obst: 'foodImageFruit',
+  getraenke: 'foodImageDrink',
+  sonstiges: 'foodImageOther',
+}
 const UNIT_BY_CATEGORY = {
   getraenke: 'Glas',
   obst: 'Stück',
@@ -125,6 +137,10 @@ function foodAmountText(food, grams) {
   const amount = portionG ? grams / portionG : 1
   const unit = unitForFood(food)
   return `${formatAmount(amount)} ${unitLabel(unit, amount)}`
+}
+
+function foodImageClass(food) {
+  return FOOD_IMAGE_CLASSES[food?.cat] || FOOD_IMAGE_CLASSES.sonstiges
 }
 
 function formatHealthDate(value) {
@@ -748,7 +764,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                     return (
                       <div className={`${s.pickerItem} ${existing ? s.pickerItemSelectedFood : ''}`} key={food.id}>
                         <button className={s.pickerItemButton} type="button" onClick={() => setActiveId(isActive ? null : food.id)}>
-                          <span className={s.itemAvatar + ' ' + s.itemAvatarFood}>{food.de.slice(0, 2).toUpperCase()}</span>
+                          <span className={`${s.foodImage} ${s[foodImageClass(food)]}`} aria-hidden="true" />
                           <span className={s.pickerItemText}>
                             <strong>{food.de}</strong>
                             <small>
