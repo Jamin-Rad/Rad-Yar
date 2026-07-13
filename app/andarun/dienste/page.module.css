@@ -198,14 +198,17 @@
 }
 
 .dayFree {
-  border-color: rgba(148, 163, 184, .20);
+  border-color: rgba(187, 247, 208, .44);
   background:
-    repeating-linear-gradient(135deg, rgba(148, 163, 184, .10) 0 8px, rgba(148, 163, 184, .04) 8px 16px),
-    rgba(15, 23, 42, .46);
+    radial-gradient(circle at 18% 20%, rgba(240, 253, 244, .38), transparent 28%),
+    radial-gradient(circle at 82% 76%, rgba(134, 239, 172, .26), transparent 32%),
+    linear-gradient(135deg, rgba(220, 252, 231, .28), rgba(34, 197, 94, .12) 45%, rgba(15, 118, 110, .16)),
+    rgba(6, 78, 59, .22);
+  box-shadow: inset 0 0 0 1px rgba(240, 253, 244, .08);
 }
 
 .dayFree span {
-  color: #94a3b8;
+  color: #dcfce7;
 }
 
 .cardHead span {
