@@ -1341,6 +1341,24 @@
   color: #0f766e;
 }
 
+.weekTotals .overTarget {
+  border-color: rgba(244, 63, 94, .28);
+  color: #be123c;
+}
+
+.weekTotals .overTarget strong {
+  color: #be123c;
+}
+
+.weekTotals .underTarget {
+  border-color: rgba(16, 185, 129, .28);
+  color: #047857;
+}
+
+.weekTotals .underTarget strong {
+  color: #047857;
+}
+
 .weekChart {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
@@ -1532,6 +1550,16 @@
 .historyTagWeight {
   background: #f0f9ff;
   color: #0369a1;
+}
+
+.historyTagOver {
+  background: rgba(244, 63, 94, .12);
+  color: #be123c;
+}
+
+.historyTagUnder {
+  background: rgba(16, 185, 129, .12);
+  color: #047857;
 }
 
 .kcalBar {

@@ -50,6 +50,15 @@ const ACTIVITY_LEVELS = [
 ]
 const DAY_MS = 86400000
 const WEEKDAY_SHORT = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
+const DEFAULT_CALORIE_PLAN = {
+  currentWeight: '',
+  targetWeight: '',
+  weeks: '12',
+  sex: 'male',
+  activity: 'moderate',
+  height: '',
+  age: '',
+}
 
 async function apiRequest(apiBase, path, method = 'GET', body) {
   const res = await fetch(`${apiBase}${path}`, {
@@ -122,19 +131,14 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
   const [mgmtMode, setMgmtMode] = useState('sport')
   const [newSport, setNewSport] = useState({ de: '', kcalPerMin: '' })
   const [newFood, setNewFood] = useState({ de: '', cat: 'sonstiges', kcalPer100g: '', portionG: '' })
-  const [caloriePlan, setCaloriePlan] = useState({
-    currentWeight: '',
-    targetWeight: '',
-    weeks: '12',
-    sex: 'male',
-    activity: 'moderate',
-    height: '',
-    age: '',
-  })
+  const [caloriePlan, setCaloriePlan] = useState(DEFAULT_CALORIE_PLAN)
   const sparkPathRef = useRef(null)
   const loadedRef = useRef(false)
   const saveTimerRef = useRef(null)
   const lastSavedRef = useRef('')
+  const settingsLoadedRef = useRef(false)
+  const settingsTimerRef = useRef(null)
+  const lastSavedSettingsRef = useRef('')
   const api = (path, method = 'GET', body) => apiRequest(apiBase, path, method, body)
 
   useEffect(() => { loadAll() }, [])
@@ -142,7 +146,10 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
   async function loadAll() {
     setLoading(true)
     try {
-      const data = await api('/')
+      const [data, settings] = await Promise.all([
+        api('/'),
+        api('/settings').catch(() => ({})),
+      ])
       setRecords(data.records || [])
       setCustomSports(data.customSports || [])
       setDeletedSports(data.deletedSports || [])
@@ -163,7 +170,13 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
       } else {
         lastSavedRef.current = JSON.stringify(EMPTY_FORM)
       }
+      const loadedPlan = settings.caloriePlan && typeof settings.caloriePlan === 'object'
+        ? { ...DEFAULT_CALORIE_PLAN, ...settings.caloriePlan }
+        : DEFAULT_CALORIE_PLAN
+      setCaloriePlan(loadedPlan)
+      lastSavedSettingsRef.current = JSON.stringify(loadedPlan)
       loadedRef.current = true
+      settingsLoadedRef.current = true
       setSaveMessage('')
     } catch (error) {
       setSaveMessage(error.message || 'Daten konnten nicht geladen werden.')
@@ -190,6 +203,25 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
 
     return () => clearTimeout(saveTimerRef.current)
   }, [form, loading, records])
+
+  useEffect(() => {
+    if (!settingsLoadedRef.current || loading) return undefined
+
+    const serialized = JSON.stringify(caloriePlan)
+    if (serialized === lastSavedSettingsRef.current) return undefined
+
+    clearTimeout(settingsTimerRef.current)
+    settingsTimerRef.current = setTimeout(async () => {
+      try {
+        await api('/settings', 'POST', { caloriePlan })
+        lastSavedSettingsRef.current = serialized
+      } catch (error) {
+        setSaveMessage(error.message || 'Kalorienziel konnte nicht gespeichert werden.')
+      }
+    }, 700)
+
+    return () => clearTimeout(settingsTimerRef.current)
+  }, [caloriePlan, loading])
 
   // Animate sparkline on mount/change
   useEffect(() => {
@@ -396,6 +428,8 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
     sportKcal: totals.sportKcal + day.sportKcal,
     net: totals.net + day.net,
   }), { foodKcal: 0, sportKcal: 0, net: 0 })
+  const weekTarget = recommendedKcal ? recommendedKcal * 7 : null
+  const weekDelta = weekTarget ? weekTotals.net - weekTarget : null
 
   if (loading) return (
     <div className={s.page}>
@@ -718,6 +752,11 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                   <span><strong>{weekTotals.foodKcal}</strong> gegessen</span>
                   <span><strong>{weekTotals.sportKcal}</strong> verbrannt</span>
                   <span><strong>{weekTotals.net}</strong> netto</span>
+                  {weekDelta !== null && (
+                    <span className={weekDelta > 0 ? s.overTarget : s.underTarget}>
+                      <strong>{weekDelta > 0 ? '+' : ''}{weekDelta}</strong> {weekDelta > 0 ? 'über Ziel' : 'unter Ziel'}
+                    </span>
+                  )}
                 </div>
               </header>
 
@@ -776,6 +815,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
             <div className={s.historyList}>
               {[...records].sort((a, b) => b.date.localeCompare(a.date)).map((rec, idx) => {
                 const { foodKcal, sportKcal, net } = caloriesForRecord(rec)
+                const targetDelta = recommendedKcal ? net - recommendedKcal : null
                 const dateObj = new Date(rec.date + 'T12:00:00')
                 return (
                   <div key={rec.id} className={s.historyCard} style={{ animationDelay: `${idx * 0.04}s` }}>
@@ -788,6 +828,11 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                         {rec.weight && <span className={s.historyTag + ' ' + s.historyTagWeight}>{rec.weight} kg</span>}
                         {(rec.sports || []).length > 0 && <span className={s.historyTag + ' ' + s.historyTagSport}>{(rec.sports || []).length} Sport</span>}
                         {(rec.foods || []).length > 0 && <span className={s.historyTag + ' ' + s.historyTagFood}>{(rec.foods || []).length} Mahlzeiten</span>}
+                        {targetDelta !== null && (
+                          <span className={`${s.historyTag} ${targetDelta > 0 ? s.historyTagOver : s.historyTagUnder}`}>
+                            {targetDelta > 0 ? '+' : ''}{targetDelta} zum Ziel
+                          </span>
+                        )}
                       </div>
                       <div className={s.kcalBar}>
                         <div className={s.kcalBarFood} style={{ width: `${Math.min((foodKcal / 2500) * 100, 100)}%` }} />
