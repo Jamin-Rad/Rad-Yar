@@ -37,6 +37,18 @@ const UNIT_PLURALS = {
   Kugel: 'Kugeln',
 }
 const FOOD_UNITS = Object.keys(UNIT_PLURALS)
+const MACRO_PROFILES = {
+  haupt: { protein: .055, sugar: .018, fat: .045 },
+  kebab: { protein: .12, sugar: .012, fat: .095 },
+  reis: { protein: .026, sugar: .002, fat: .006 },
+  brot: { protein: .085, sugar: .035, fat: .035 },
+  fruehstueck: { protein: .09, sugar: .055, fat: .07 },
+  fleisch: { protein: .2, sugar: .004, fat: .09 },
+  gemuese: { protein: .025, sugar: .025, fat: .018 },
+  obst: { protein: .008, sugar: .11, fat: .003 },
+  getraenke: { protein: .01, sugar: .06, fat: .006 },
+  sonstiges: { protein: .055, sugar: .22, fat: .16 },
+}
 
 const TODAY = new Date().toISOString().slice(0, 10)
 const RING_R = 50
@@ -121,6 +133,15 @@ function formatHealthDate(value) {
   return date.toLocaleDateString('de-DE', { weekday: 'long', day: '2-digit', month: 'long' })
 }
 
+function estimateMacros(food, grams) {
+  const profile = MACRO_PROFILES[food?.cat] || MACRO_PROFILES.sonstiges
+  return {
+    protein: Math.round(grams * profile.protein),
+    sugar: Math.round(grams * profile.sugar),
+    fat: Math.round(grams * profile.fat),
+  }
+}
+
 export default function HealthPage({ apiBase = '/api/admin/health' }) {
   const [tab, setTab] = useState('eintragen')
   const [records, setRecords] = useState([])
@@ -131,6 +152,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
   const [loading, setLoading] = useState(true)
 
   const [picker, setPicker] = useState(null)
+  const [weightOpen, setWeightOpen] = useState(false)
   const [activeId, setActiveId] = useState(null)
   const [form, setForm] = useState(EMPTY_FORM)
   const [saving, setSaving] = useState(false)
@@ -292,6 +314,17 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
     const food = activeFoods.find(x => x.id === item.id)
     return sum + (food ? Math.round((food.kcalPer100g / 100) * (item.g ?? (item.count != null ? item.count * food.portionG : 0))) : 0)
   }, 0)
+  const todayMacros = form.foods.reduce((sum, item) => {
+    const food = activeFoods.find(x => x.id === item.id)
+    if (!food) return sum
+    const grams = item.g ?? (item.count != null ? item.count * food.portionG : 0)
+    const macros = estimateMacros(food, grams)
+    return {
+      protein: sum.protein + macros.protein,
+      sugar: sum.sugar + macros.sugar,
+      fat: sum.fat + macros.fat,
+    }
+  }, { protein: 0, sugar: 0, fat: 0 })
   const totalKcal = totalFoodKcal + (form.manualKcal || 0) - totalSportKcal
   const foodFraction  = Math.min((totalFoodKcal + (form.manualKcal || 0)) / 2000, 1)
   const sportFraction = Math.min(totalSportKcal / 2000, 1)
@@ -462,195 +495,115 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
 
       <div className={s.inner}>
 
-        {/* ── HERO ── */}
-        <div className={s.hero}>
-          <div className={s.heroMeta}>
-            <span className={s.heroDate}>
-              {new Date().toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long' })}
-            </span>
-          </div>
+        <header className={s.simpleHero}>
           <h1 className={s.heroTitle}>Gesundheit</h1>
+        </header>
 
-          <div className={s.heroRingArea}>
-            <div className={s.ringWrap + ' ' + s.ringWrapPulsing}>
-              <svg className={s.ringSvg} viewBox="0 0 120 120">
-                <defs>
-                  <linearGradient id="foodGrad" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="#10b981" />
-                    <stop offset="100%" stopColor="#34d399" />
-                  </linearGradient>
-                  <linearGradient id="sportGrad" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="#7c3aed" />
-                    <stop offset="100%" stopColor="#a78bfa" />
-                  </linearGradient>
-                </defs>
-                <circle cx="60" cy="60" r={RING_R} className={s.ringTrack} />
-                <circle cx="60" cy="60" r={RING_R} className={s.ringFood}
-                  style={{ strokeDasharray: RING_C, strokeDashoffset: RING_C * (1 - foodFraction) }}
-                />
-                {sportFraction > 0 && (
-                  <circle cx="60" cy="60" r={RING_R} className={s.ringSport}
-                    style={{ strokeDasharray: RING_C, strokeDashoffset: RING_C * (1 - sportFraction) }}
-                  />
-                )}
-              </svg>
-              <div className={s.ringCenter}>
-                <div className={s.ringNum}>{totalKcal}</div>
-                <div className={s.ringUnit}>kcal netto</div>
-              </div>
-            </div>
-          </div>
-
-          <div className={s.heroChips}>
-            <div className={s.chip + ' ' + s.chipFood}>
-              <span className={s.chipDot} />
-              Gegessen · {totalFoodKcal + (form.manualKcal || 0)} kcal
-            </div>
-            <div className={s.chip + ' ' + s.chipSport}>
-              <span className={s.chipDot} />
-              Verbrannt · {totalSportKcal} kcal
-            </div>
-            {form.weight && (
-              <div className={s.chip + ' ' + s.chipWeight}>
-                <span className={s.chipDot} />
-                {form.weight} kg
-              </div>
-            )}
-            <div className={s.chip + ' ' + s.chipRecords}>
-              {records.length} Einträge
-            </div>
-          </div>
-        </div>
-
-        {/* ── TABS ── */}
         <div className={s.tabRow}>
-          {[['eintragen', 'Heute', '✏️'], ['verlauf', 'Verlauf', '📈'], ['verwaltung', 'Verwaltung', '⚙️']].map(([id, label, icon]) => (
+          {[['eintragen', 'Heute'], ['verlauf', 'Verlauf'], ['einstellung', 'Einstellung']].map(([id, label]) => (
             <button key={id} type="button" className={tab === id ? s.tabActive : s.tab} onClick={() => setTab(id)}>
-              <span className={s.tabIcon}>{icon}</span>{label}
+              {label}
             </button>
           ))}
         </div>
 
-        {/* ── TAB: Heute ── */}
         {tab === 'eintragen' && (
-          <div className={s.enterGrid}>
-
-            {/* Browse panel */}
-            <div className={s.browsePanel}>
+          <div className={s.todayView}>
+            <section className={s.todayActionPanel}>
               <div className={s.todayPanelHead}>
-                <div>
-                  <span className={s.sparkLabel}>Heute</span>
-                  <h2>{formatHealthDate(form.date)}</h2>
-                </div>
+                <span>{formatHealthDate(TODAY)}</span>
+                <strong>{saving ? 'Speichert…' : saveMessage && !saveMessage.includes('fehl') && !saveMessage.includes('nicht') ? 'Gespeichert' : 'Heute'}</strong>
               </div>
-
-              <div className={s.todayFields}>
-                <label className={s.todayField}>
-                  <span>Datum</span>
-                  <input type="date" value={form.date} onChange={e => setForm(f => ({ ...f, date: e.target.value }))} />
-                </label>
-                <label className={s.todayField}>
-                  <span>Gewicht heute</span>
-                  <input
-                    type="number"
-                    placeholder="kg"
-                    step="0.1"
-                    value={form.weight}
-                    onChange={e => setForm(f => ({ ...f, weight: e.target.value }))}
-                  />
-                </label>
-              </div>
-
-              <div className={s.homeTiles}>
-                <button className={s.homeTileSport} type="button" onClick={() => openPicker('sport')}>
-                  <div className={s.homeTileIcon}>🏃</div>
-                  <div className={s.homeTileLabel}>Sport</div>
-                  <div className={s.homeTileSub}>{form.sports.length > 0 ? `${form.sports.length} gewählt` : 'Kategorie auswählen'}</div>
-                  {form.sports.length > 0 && <div className={s.homeTileBadge}>{form.sports.length}</div>}
+              <div className={s.todayActions}>
+                <button className={s.todayActionWeight} type="button" onClick={() => setWeightOpen(true)}>
+                  <span>Gewicht</span>
+                  <strong>{form.weight ? `${form.weight} kg` : 'Eintragen'}</strong>
                 </button>
-                <button className={s.homeTileFood} type="button" onClick={() => openPicker('food')}>
-                  <div className={s.homeTileIcon}>🥗</div>
-                  <div className={s.homeTileLabel}>Essen</div>
-                  <div className={s.homeTileSub}>{form.foods.length > 0 ? `${form.foods.length} gewählt` : 'Kategorie auswählen'}</div>
-                  {form.foods.length > 0 && <div className={s.homeTileBadge + ' ' + s.homeTileBadgeFood}>{form.foods.length}</div>}
+                <button className={s.todayActionSport} type="button" onClick={() => openPicker('sport')}>
+                  <span>Sport</span>
+                  <strong>Auswählen</strong>
+                </button>
+                <button className={s.todayActionFood} type="button" onClick={() => openPicker('food')}>
+                  <span>Essen</span>
+                  <strong>Auswählen</strong>
                 </button>
               </div>
-            </div>
+            </section>
 
-            {/* Summary sidebar */}
-            <div className={s.summaryPanel}>
-              <div className={s.summaryHead}>
+            <section className={s.todayDashboard}>
+              <div className={s.todayKcalCard}>
+                <div className={s.todayRing}>
+                  <svg viewBox="0 0 120 120">
+                    <circle cx="60" cy="60" r={RING_R} className={s.ringTrack} />
+                    <circle cx="60" cy="60" r={RING_R} className={s.ringFood}
+                      style={{ strokeDasharray: RING_C, strokeDashoffset: RING_C * (1 - foodFraction) }}
+                    />
+                    {sportFraction > 0 && (
+                      <circle cx="60" cy="60" r={RING_R} className={s.ringSport}
+                        style={{ strokeDasharray: RING_C, strokeDashoffset: RING_C * (1 - sportFraction) }}
+                      />
+                    )}
+                  </svg>
+                  <div>
+                    <strong>{totalKcal}</strong>
+                    <span>kcal netto</span>
+                  </div>
+                </div>
+                <div className={s.todayKcalRows}>
+                  <div><span>Gegessen</span><strong>+{totalFoodKcal + (form.manualKcal || 0)}</strong></div>
+                  <div><span>Sport</span><strong>−{totalSportKcal}</strong></div>
+                </div>
+              </div>
+              <div className={s.macroPanel}>
+                {[
+                  ['Protein', todayMacros.protein, 120, s.macroProtein],
+                  ['Zucker', todayMacros.sugar, 90, s.macroSugar],
+                  ['Fett', todayMacros.fat, 80, s.macroFat],
+                ].map(([label, value, max, className]) => (
+                  <div className={s.macroRow} key={label}>
+                    <div><span>{label}</span><strong>{value} g</strong></div>
+                    <div className={s.macroTrack}><i className={className} style={{ width: `${Math.min((value / max) * 100, 100)}%` }} /></div>
+                  </div>
+                ))}
+              </div>
+              <div className={s.todayDetailGrid}>
                 <div>
-                  <span className={s.sparkLabel}>Liste</span>
-                  <h2>Einträge heute</h2>
+                  <h3>Gegessen</h3>
+                  {form.foods.length ? form.foods.map(item => {
+                    const food = activeFoods.find(x => x.id === item.id)
+                    if (!food) return null
+                    const g = item.g ?? (item.count != null ? item.count * food.portionG : 0)
+                    const kcal = Math.round((food.kcalPer100g / 100) * g)
+                    return <span key={item.id}>{food.de} · {foodAmountText(food, g)} · {kcal} kcal</span>
+                  }) : <span>Keine Mahlzeit eingetragen</span>}
                 </div>
-                <strong>{form.foods.length + form.sports.length}</strong>
-              </div>
-
-              <div className={s.summaryItems}>
-                {form.sports.length === 0 && form.foods.length === 0 && (
-                  <div className={s.summaryEmpty}>Noch nichts eingetragen</div>
-                )}
-                {form.sports.map(item => {
-                  const sp = activeSports.find(x => x.id === item.id)
-                  if (!sp) return null
-                  const kcal = Math.round(sp.kcalPerMin * item.min)
-                  return (
-                    <div key={item.id} className={s.summaryItem}>
-                      <div className={s.summaryPill + ' ' + s.pillSport}>Sport</div>
-                      <span className={s.summaryName}>{sp.de}</span>
-                      <span className={s.summaryDuration}>{item.min} min</span>
-                      <span className={s.summaryKcalSport}>−{kcal}</span>
-                      <button className={s.summaryRemove} type="button" onClick={() => removeSportFromForm(item.id)}>×</button>
-                    </div>
-                  )
-                })}
-                {form.foods.map(item => {
-                  const food = activeFoods.find(x => x.id === item.id)
-                  if (!food) return null
-                  const g = item.g ?? (item.count != null ? item.count * food.portionG : 0)
-                  const kcal = Math.round((food.kcalPer100g / 100) * g)
-                  return (
-                    <div key={item.id} className={s.summaryItem}>
-                      <div className={s.summaryPill + ' ' + s.pillFood}>Essen</div>
-                      <span className={s.summaryName}>{food.de}</span>
-                      <span className={s.summaryDuration}>{foodAmountText(food, g)}</span>
-                      <span className={s.summaryKcalFood}>+{kcal}</span>
-                      <button className={s.summaryRemove} type="button" onClick={() => removeFoodFromForm(item.id)}>×</button>
-                    </div>
-                  )
-                })}
-              </div>
-
-              <div className={s.summaryTotals}>
-                <div className={s.summaryTotalRow}>
-                  <span>Gegessen</span>
-                  <span className={s.summaryTotalFood}>+{totalFoodKcal + (form.manualKcal || 0)} kcal</span>
-                </div>
-                <div className={s.summaryTotalRow}>
-                  <span>Verbrannt</span>
-                  <span className={s.summaryTotalSport}>−{totalSportKcal} kcal</span>
-                </div>
-                <div className={s.manualRow}>
-                  <span>Extra kcal</span>
-                  <input type="number" placeholder="0"
-                    value={form.manualKcal || ''}
-                    onChange={e => setForm(f => ({ ...f, manualKcal: parseInt(e.target.value) || 0 }))} />
-                </div>
-                <div className={s.summaryNet}>
-                  <span>Netto</span><span>{totalKcal} kcal</span>
+                <div>
+                  <h3>Sport</h3>
+                  {form.sports.length ? form.sports.map(item => {
+                    const sp = activeSports.find(x => x.id === item.id)
+                    if (!sp) return null
+                    return <span key={item.id}>{sp.de} · {item.min} min · −{Math.round(sp.kcalPerMin * item.min)} kcal</span>
+                  }) : <span>Kein Sport eingetragen</span>}
                 </div>
               </div>
+            </section>
+          </div>
+        )}
 
-              <input className={s.noteInput} placeholder=""
-                value={form.note}
-                onChange={e => setForm(f => ({ ...f, note: e.target.value }))} />
-
-              {(saving || saveMessage) && (
-                <div className={saveMessage.includes('fehl') || saveMessage.includes('nicht') ? s.saveError : s.saveOk}>
-                  {saving ? 'Speichert automatisch…' : saveMessage}
+        {tab === 'eintragen' && weightOpen && (
+          <div className={s.pickerBackdrop} role="dialog" aria-modal="true" aria-label="Gewicht eintragen" onClick={() => setWeightOpen(false)}>
+            <div className={s.weightModal} onClick={event => event.stopPropagation()}>
+              <header className={s.pickerHeader}>
+                <button className={s.backBtn} type="button" onClick={() => setWeightOpen(false)} aria-label="Gewicht schließen">×</button>
+                <div>
+                  <span className={s.pickerKicker}>Gewicht</span>
+                  <h2>Heute eintragen</h2>
                 </div>
-              )}
+              </header>
+              <label className={s.weightField}>
+                <span>kg</span>
+                <input autoFocus type="number" step="0.1" placeholder="z. B. 82.4" value={form.weight} onChange={e => setForm(f => ({ ...f, weight: e.target.value, date: TODAY }))} />
+              </label>
             </div>
           </div>
         )}
@@ -709,7 +662,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                             <strong>{sp.de}</strong>
                             <small>{sp.kcalPerMin} kcal/min{existing ? ` · ${existing.min} min gewählt` : ''}</small>
                           </span>
-                          <span className={s.itemToggle}>{isActive ? '×' : existing ? '✓' : '+'}</span>
+                          <span className={s.itemToggle}>{isActive ? '×' : '+'}</span>
                         </button>
                         {isActive && (
                           <div className={s.choiceGrid}>
@@ -745,7 +698,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                               {currentG ? ` · ${foodAmountText(food, currentG)} gewählt` : ''}
                             </small>
                           </span>
-                          <span className={s.itemToggle}>{isActive ? '×' : existing ? '✓' : '+'}</span>
+                          <span className={s.itemToggle}>{isActive ? '×' : '+'}</span>
                         </button>
                         {isActive && (
                           <div className={s.amountPicker}>
@@ -887,8 +840,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
           </div>
         )}
 
-        {/* ── TAB: Verwaltung ── */}
-        {tab === 'verwaltung' && (
+        {tab === 'einstellung' && (
           <div className={s.mgmtView}>
             <section className={s.goalCard}>
               <div className={s.goalCopy}>
@@ -970,122 +922,6 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                 )}
               </div>
             </section>
-
-            <div className={s.mgmtTabs}>
-              <button type="button" className={mgmtMode === 'sport' ? s.mgmtTabActive : s.mgmtTab} onClick={() => setMgmtMode('sport')}>Sportarten</button>
-              <button type="button" className={mgmtMode === 'food' ? s.mgmtTabActive : s.mgmtTab} onClick={() => setMgmtMode('food')}>Lebensmittel</button>
-            </div>
-
-            {mgmtMode === 'sport' && (
-              <div className={s.mgmtGrid}>
-                <div className={s.mgmtFormCard}>
-                  <div className={s.mgmtFormHeader}>
-                    <span>Sport verwalten</span>
-                    <h3 className={s.mgmtFormTitle}>Neue Sportart</h3>
-                  </div>
-                  <form className={s.mgmtForm} onSubmit={handleAddSport}>
-                    <label>Name<input value={newSport.de} onChange={e => setNewSport(p => ({ ...p, de: e.target.value }))} placeholder="z. B. Klettern" /></label>
-                    <label>kcal/min<input type="number" min="1" max="30" value={newSport.kcalPerMin} onChange={e => setNewSport(p => ({ ...p, kcalPerMin: e.target.value }))} placeholder="z. B. 7" /></label>
-                    <button className={s.mgmtSubmit} type="submit">Hinzufügen</button>
-                  </form>
-                </div>
-                <div className={s.mgmtListCard}>
-                  {sportKategorien.map(cat => {
-                    const items = activeSports.filter(sp => sp.cat === cat.id)
-                    if (!items.length) return null
-                    return (
-                      <div key={cat.id}>
-                        <div className={s.mgmtCatLabel}>{cat.de}</div>
-                        {items.map(sp => (
-                          <div key={sp.id} className={s.mgmtItem}>
-                            <div className={s.mgmtItemMain}><strong>{sp.de}</strong><span>{sp.kcalPerMin} kcal/min</span></div>
-                            <button className={s.mgmtDelBtn} type="button" onClick={() => deleteSport(sp.id, sp.cat === 'custom')}>Löschen</button>
-                          </div>
-                        ))}
-                      </div>
-                    )
-                  })}
-                  {activeSports.filter(sp => sp.cat === 'custom').length > 0 && (
-                    <div>
-                      <div className={s.mgmtCatLabel}>Benutzerdefiniert</div>
-                      {activeSports.filter(sp => sp.cat === 'custom').map(sp => (
-                        <div key={sp.id} className={s.mgmtItem}>
-                          <div className={s.mgmtItemMain}><strong>{sp.de}</strong><span>{sp.kcalPerMin} kcal/min</span></div>
-                          <button className={s.mgmtDelBtn} type="button" onClick={() => deleteSport(sp.id, true)}>Löschen</button>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                  {deletedSports.length > 0 && (
-                    <div className={s.mgmtDeleted}>
-                      <div className={s.mgmtCatLabel}>Gelöschte Standards</div>
-                      {sportarten.filter(sp => deletedSports.includes(sp.id)).map(sp => (
-                        <div key={sp.id} className={s.mgmtItem}>
-                          <div className={s.mgmtItemMain}><strong>{sp.de}</strong><span>{sp.kcalPerMin} kcal/min</span></div>
-                          <button className={s.mgmtRestoreBtn} type="button" onClick={() => restoreSport(sp.id)}>Wiederherstellen</button>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-
-            {mgmtMode === 'food' && (
-              <div className={s.mgmtGrid}>
-                <div className={s.mgmtFormCard}>
-                  <div className={s.mgmtFormHeader}>
-                    <span>Essen verwalten</span>
-                    <h3 className={s.mgmtFormTitle}>Neues Lebensmittel</h3>
-                  </div>
-                  <form className={s.mgmtForm} onSubmit={handleAddFood}>
-                    <label>Name<input value={newFood.de} onChange={e => setNewFood(p => ({ ...p, de: e.target.value }))} placeholder="z. B. Baklava" /></label>
-                    <label>Kategorie
-                      <select value={newFood.cat} onChange={e => setNewFood(p => ({ ...p, cat: e.target.value }))}>
-                        {kategorien.map(k => <option key={k.id} value={k.id}>{k.de}</option>)}
-                        <option value="sonstiges">Sonstige</option>
-                      </select>
-                    </label>
-                    <label>kcal/100g<input type="number" min="0" value={newFood.kcalPer100g} onChange={e => setNewFood(p => ({ ...p, kcalPer100g: e.target.value }))} placeholder="z. B. 250" /></label>
-                    <label>Einheit
-                      <select value={newFood.unit} onChange={e => setNewFood(p => ({ ...p, unit: e.target.value }))}>
-                        {FOOD_UNITS.map(unit => <option key={unit} value={unit}>{unit}</option>)}
-                      </select>
-                    </label>
-                    <label>Menge pro Einheit in g<input type="number" min="1" value={newFood.portionG} onChange={e => setNewFood(p => ({ ...p, portionG: e.target.value }))} placeholder="100" /></label>
-                    <button className={s.mgmtSubmit} type="submit">Hinzufügen</button>
-                  </form>
-                </div>
-                <div className={s.mgmtListCard}>
-                  {kategorien.map(cat => {
-                    const items = activeFoods.filter(f => f.cat === cat.id)
-                    if (!items.length) return null
-                    return (
-                      <div key={cat.id}>
-                        <div className={s.mgmtCatLabel}>{cat.de}</div>
-                        {items.map(f => (
-                          <div key={f.id} className={s.mgmtItem}>
-                            <div className={s.mgmtItemMain}><strong>{f.de}</strong><span>{f.kcalPer100g} kcal/100g · 1 {unitForFood(f)} ≈ {f.portionG}g</span></div>
-                            <button className={s.mgmtDelBtn} type="button" onClick={() => deleteFood(f.id, !!customFoods.find(cf => cf.id === f.id))}>Löschen</button>
-                          </div>
-                        ))}
-                      </div>
-                    )
-                  })}
-                  {deletedFoods.length > 0 && (
-                    <div className={s.mgmtDeleted}>
-                      <div className={s.mgmtCatLabel}>Gelöschte Standards</div>
-                      {lebensmittel.filter(f => deletedFoods.includes(f.id)).map(f => (
-                        <div key={f.id} className={s.mgmtItem}>
-                          <div className={s.mgmtItemMain}><strong>{f.de}</strong><span>{f.kcalPer100g} kcal/100g</span></div>
-                          <button className={s.mgmtRestoreBtn} type="button" onClick={() => restoreFood(f.id)}>Wiederherstellen</button>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
           </div>
         )}
 

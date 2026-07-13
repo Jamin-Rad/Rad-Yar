@@ -25,6 +25,11 @@
   margin: 0 auto;
 }
 
+.simpleHero {
+  margin-bottom: 18px;
+  padding: 28px 0 6px;
+}
+
 .loadingHero {
   min-height: 360px;
   display: grid;
@@ -250,21 +255,21 @@
 
 .tabRow,
 .mgmtTabs {
-  display: inline-grid;
-  grid-auto-flow: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
   margin-bottom: 16px;
-  padding: 4px;
-  border: 1px solid rgba(148, 163, 184, .22);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, .72);
-  box-shadow: 0 10px 28px rgba(15, 23, 42, .05);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 :global(html[data-theme='dark']) .tabRow,
 :global(html[data-theme='dark']) .mgmtTabs {
-  border-color: rgba(148, 163, 184, .18);
-  background: rgba(15, 23, 42, .62);
+  background: transparent;
 }
 
 .tab,
@@ -272,15 +277,16 @@
 .mgmtTab,
 .mgmtTabActive {
   min-height: 38px;
-  border: 0;
-  border-radius: 6px;
-  background: transparent;
-  color: #64748b;
+  border: 1px solid rgba(148, 163, 184, .22);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .56);
+  color: #0f172a;
   cursor: pointer;
   font: inherit;
-  font-size: 13px;
-  font-weight: 900;
-  padding: 0 16px;
+  font-size: 16px;
+  font-weight: 950;
+  padding: 18px 16px;
+  backdrop-filter: blur(18px);
   transition: background .16s, color .16s, transform .16s;
 }
 
@@ -292,9 +298,10 @@
 
 .tabActive,
 .mgmtTabActive {
-  background: #0f766e;
-  color: #fff;
-  box-shadow: 0 8px 18px rgba(15, 118, 110, .22);
+  border-color: rgba(15, 118, 110, .34);
+  background: linear-gradient(135deg, rgba(236, 253, 245, .86), rgba(255, 255, 255, .58));
+  color: #0f766e;
+  box-shadow: 0 18px 42px rgba(15, 118, 110, .12);
 }
 
 .tabIcon {
@@ -331,6 +338,315 @@
   grid-template-columns: minmax(0, 1fr) 340px;
   gap: 16px;
   align-items: start;
+}
+
+.todayView {
+  display: grid;
+  gap: 16px;
+}
+
+.todayActionPanel,
+.todayDashboard,
+.weightModal {
+  border: 1px solid rgba(148, 163, 184, .22);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(45, 212, 191, .14), transparent 34%),
+    rgba(255, 255, 255, .74);
+  box-shadow: 0 18px 42px rgba(15, 23, 42, .08);
+  backdrop-filter: blur(18px);
+  overflow: hidden;
+}
+
+:global(html[data-theme='dark']) .todayActionPanel,
+:global(html[data-theme='dark']) .todayDashboard,
+:global(html[data-theme='dark']) .weightModal {
+  border-color: rgba(148, 163, 184, .18);
+  background:
+    radial-gradient(circle at 18% 0%, rgba(45, 212, 191, .12), transparent 34%),
+    rgba(15, 23, 42, .72);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, .28);
+}
+
+.todayPanelHead span {
+  color: #0f766e;
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.todayPanelHead strong {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.todayActions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  padding: 14px;
+}
+
+.todayActionWeight,
+.todayActionSport,
+.todayActionFood {
+  display: grid;
+  min-height: 128px;
+  align-content: end;
+  gap: 8px;
+  border: 1px solid rgba(148, 163, 184, .18);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.86), rgba(240,253,250,.70));
+  color: #0f172a;
+  cursor: pointer;
+  font: inherit;
+  padding: 18px;
+  text-align: left;
+  transition: transform .16s, box-shadow .16s, border-color .16s;
+}
+
+.todayActionSport {
+  background: linear-gradient(145deg, rgba(239,246,255,.92), rgba(255,255,255,.70));
+}
+
+.todayActionFood {
+  background: linear-gradient(145deg, rgba(236,253,245,.94), rgba(255,255,255,.70));
+}
+
+.todayActionWeight:hover,
+.todayActionSport:hover,
+.todayActionFood:hover {
+  border-color: rgba(15, 118, 110, .34);
+  box-shadow: 0 18px 34px rgba(15, 118, 110, .10);
+  transform: translateY(-2px);
+}
+
+:global(html[data-theme='dark']) .todayActionWeight,
+:global(html[data-theme='dark']) .todayActionSport,
+:global(html[data-theme='dark']) .todayActionFood {
+  border-color: rgba(148, 163, 184, .16);
+  background: rgba(30, 41, 59, .42);
+  color: #f8fafc;
+}
+
+.todayActionWeight span,
+.todayActionSport span,
+.todayActionFood span {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.todayActionWeight strong,
+.todayActionSport strong,
+.todayActionFood strong {
+  font-size: clamp(24px, 4vw, 38px);
+  font-weight: 950;
+  line-height: 1;
+}
+
+.todayDashboard {
+  display: grid;
+  grid-template-columns: minmax(280px, .72fr) minmax(0, 1fr);
+  gap: 16px;
+  padding: 16px;
+}
+
+.todayKcalCard {
+  display: grid;
+  gap: 14px;
+  border-radius: 8px;
+  background: rgba(248, 250, 252, .74);
+  padding: 16px;
+}
+
+:global(html[data-theme='dark']) .todayKcalCard {
+  background: rgba(15, 23, 42, .48);
+}
+
+.todayRing {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 220px;
+}
+
+.todayRing svg {
+  width: 190px;
+  height: 190px;
+  transform: rotate(-90deg);
+}
+
+.todayRing > div {
+  position: absolute;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+
+.todayRing strong {
+  color: #0f172a;
+  font-size: 44px;
+  font-weight: 950;
+  line-height: 1;
+}
+
+:global(html[data-theme='dark']) .todayRing strong {
+  color: #f8fafc;
+}
+
+.todayRing span {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.todayKcalRows {
+  display: grid;
+  gap: 8px;
+}
+
+.todayKcalRows div,
+.macroRow {
+  display: grid;
+  gap: 8px;
+  border: 1px solid rgba(148, 163, 184, .14);
+  border-radius: 8px;
+  background: rgba(255,255,255,.58);
+  padding: 12px;
+}
+
+:global(html[data-theme='dark']) .todayKcalRows div,
+:global(html[data-theme='dark']) .macroRow {
+  background: rgba(30, 41, 59, .34);
+}
+
+.todayKcalRows span,
+.macroRow span {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.todayKcalRows strong,
+.macroRow strong {
+  color: #0f172a;
+  font-size: 20px;
+  font-weight: 950;
+}
+
+:global(html[data-theme='dark']) .todayKcalRows strong,
+:global(html[data-theme='dark']) .macroRow strong {
+  color: #f8fafc;
+}
+
+.macroPanel {
+  display: grid;
+  gap: 10px;
+}
+
+.macroRow > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.macroTrack {
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, .18);
+}
+
+.macroTrack i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.macroProtein { background: #2563eb; }
+.macroSugar { background: #f59e0b; }
+.macroFat { background: #ef4444; }
+
+.todayDetailGrid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.todayDetailGrid div {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  border-radius: 8px;
+  background: rgba(248, 250, 252, .70);
+  padding: 14px;
+}
+
+:global(html[data-theme='dark']) .todayDetailGrid div {
+  background: rgba(15, 23, 42, .42);
+}
+
+.todayDetailGrid h3 {
+  margin: 0 0 4px;
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: 950;
+}
+
+:global(html[data-theme='dark']) .todayDetailGrid h3 {
+  color: #f8fafc;
+}
+
+.todayDetailGrid span {
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.weightModal {
+  width: min(420px, 100%);
+}
+
+.weightField {
+  display: grid;
+  gap: 8px;
+  padding: 18px;
+}
+
+.weightField span {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.weightField input {
+  min-height: 58px;
+  border: 1px solid rgba(148, 163, 184, .24);
+  border-radius: 8px;
+  background: #fff;
+  color: #0f172a;
+  font: inherit;
+  font-size: 24px;
+  font-weight: 950;
+  padding: 0 14px;
+}
+
+:global(html[data-theme='dark']) .weightField input {
+  border-color: rgba(148, 163, 184, .18);
+  background: rgba(15, 23, 42, .72);
+  color: #f8fafc;
 }
 
 .browsePanel {
