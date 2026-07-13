@@ -26,6 +26,12 @@ const FOOD_PORTIONS = [
   { label: '1½ Portionen', factor: 1.5 },
   { label: '2 Portionen', factor: 2 },
 ]
+const ACTIVITY_LEVELS = [
+  { id: 'low', label: 'Wenig aktiv', factor: 1.2 },
+  { id: 'light', label: 'Leicht aktiv', factor: 1.375 },
+  { id: 'moderate', label: 'Mittel aktiv', factor: 1.55 },
+  { id: 'high', label: 'Sehr aktiv', factor: 1.725 },
+]
 const DAY_MS = 86400000
 const WEEKDAY_SHORT = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
 
@@ -71,7 +77,15 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
   const [mgmtMode, setMgmtMode] = useState('sport')
   const [newSport, setNewSport] = useState({ de: '', kcalPerMin: '' })
   const [newFood, setNewFood] = useState({ de: '', cat: 'sonstiges', kcalPer100g: '', portionG: '' })
-  const [caloriePlan, setCaloriePlan] = useState({ currentWeight: '', targetWeight: '', weeks: '12' })
+  const [caloriePlan, setCaloriePlan] = useState({
+    currentWeight: '',
+    targetWeight: '',
+    weeks: '12',
+    sex: 'male',
+    activity: 'moderate',
+    height: '',
+    age: '',
+  })
   const sparkPathRef = useRef(null)
   const api = (path, method = 'GET', body) => apiRequest(apiBase, path, method, body)
 
@@ -169,10 +183,17 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
   const planCurrentWeight = parseFloat(caloriePlan.currentWeight || form.weight || latestWeight || 0)
   const planTargetWeight = parseFloat(caloriePlan.targetWeight || 0)
   const planWeeks = Math.max(parseInt(caloriePlan.weeks) || 1, 1)
+  const planHeight = parseFloat(caloriePlan.height || 0)
+  const planAge = parseInt(caloriePlan.age) || 0
+  const activityFactor = ACTIVITY_LEVELS.find(level => level.id === caloriePlan.activity)?.factor || 1.55
+  const bmr = planCurrentWeight && planHeight && planAge
+    ? Math.round((10 * planCurrentWeight) + (6.25 * planHeight) - (5 * planAge) + (caloriePlan.sex === 'female' ? -161 : 5))
+    : null
+  const maintenanceKcal = bmr ? Math.round(bmr * activityFactor) : null
   const planDailyDelta = planCurrentWeight && planTargetWeight
     ? Math.round(((planTargetWeight - planCurrentWeight) * 7700) / (planWeeks * 7))
     : 0
-  const recommendedKcal = planCurrentWeight && planTargetWeight ? Math.max(1100, 2000 + planDailyDelta) : null
+  const recommendedKcal = maintenanceKcal && planTargetWeight ? Math.max(caloriePlan.sex === 'female' ? 1200 : 1500, maintenanceKcal + planDailyDelta) : null
   const planWeeklyChange = planCurrentWeight && planTargetWeight
     ? ((planTargetWeight - planCurrentWeight) / planWeeks).toFixed(2)
     : null
@@ -688,7 +709,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
               <div className={s.goalCopy}>
                 <span className={s.sparkLabel}>Kalorienziel</span>
                 <h2>Tägliche Empfehlung</h2>
-                <p>Grobe Orientierung aus aktuellem Gewicht, Zielgewicht und Zeitraum. Basis ist 2000 kcal/Tag plus Ziel-Anpassung.</p>
+                <p>Orientierung nach Mifflin-St-Jeor: Gewicht, Größe, Alter, Geschlecht und Aktivität ergeben den Erhaltungsbedarf; Ziel und Wochen passen ihn an.</p>
               </div>
               <div className={s.goalForm}>
                 <label>Gewicht
@@ -701,6 +722,43 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                     onChange={event => setCaloriePlan(prev => ({ ...prev, currentWeight: event.target.value }))}
                   />
                 </label>
+                <label>Größe
+                  <input
+                    type="number"
+                    min="100"
+                    value={caloriePlan.height}
+                    placeholder="cm"
+                    onChange={event => setCaloriePlan(prev => ({ ...prev, height: event.target.value }))}
+                  />
+                </label>
+                <label>Alter
+                  <input
+                    type="number"
+                    min="12"
+                    value={caloriePlan.age}
+                    placeholder="Jahre"
+                    onChange={event => setCaloriePlan(prev => ({ ...prev, age: event.target.value }))}
+                  />
+                </label>
+                <label>Geschlecht
+                  <select
+                    value={caloriePlan.sex}
+                    onChange={event => setCaloriePlan(prev => ({ ...prev, sex: event.target.value }))}
+                  >
+                    <option value="male">Männlich</option>
+                    <option value="female">Weiblich</option>
+                  </select>
+                </label>
+                <label>Aktivität
+                  <select
+                    value={caloriePlan.activity}
+                    onChange={event => setCaloriePlan(prev => ({ ...prev, activity: event.target.value }))}
+                  >
+                    {ACTIVITY_LEVELS.map(level => (
+                      <option key={level.id} value={level.id}>{level.label}</option>
+                    ))}
+                  </select>
+                </label>
                 <label>Ziel
                   <input
                     type="number"
@@ -711,7 +769,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                     onChange={event => setCaloriePlan(prev => ({ ...prev, targetWeight: event.target.value }))}
                   />
                 </label>
-                <label>Zeit
+                <label>Zeit in Wochen
                   <input
                     type="number"
                     min="1"
@@ -723,7 +781,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
               <div className={s.goalResult}>
                 <span>Empfohlen</span>
                 <strong>{recommendedKcal ? `${recommendedKcal} kcal` : '—'}</strong>
-                <small>{recommendedKcal ? `${planDailyDelta >= 0 ? '+' : ''}${planDailyDelta} kcal/Tag · ${planWeeklyChange} kg/Woche` : 'Gewicht, Ziel und Wochen eingeben'}</small>
+                <small>{recommendedKcal ? `Erhalt ${maintenanceKcal} kcal · ${planDailyDelta >= 0 ? '+' : ''}${planDailyDelta} kcal/Tag · ${planWeeklyChange} kg/Woche · ${planWeeks} Wochen` : 'Gewicht, Größe, Alter, Ziel und Wochen eingeben'}</small>
               </div>
             </section>
 

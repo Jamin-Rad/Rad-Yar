@@ -972,6 +972,7 @@
 .manualRow input,
 .noteInput,
 .goalForm input,
+.goalForm select,
 .mgmtForm input,
 .mgmtForm select {
   min-height: 40px;
@@ -990,6 +991,7 @@
 :global(html[data-theme='dark']) .manualRow input,
 :global(html[data-theme='dark']) .noteInput,
 :global(html[data-theme='dark']) .goalForm input,
+:global(html[data-theme='dark']) .goalForm select,
 :global(html[data-theme='dark']) .mgmtForm input,
 :global(html[data-theme='dark']) .mgmtForm select {
   border-color: rgba(148, 163, 184, .22);
@@ -1510,7 +1512,7 @@
 
 .goalCard {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, .85fr) minmax(190px, .55fr);
+  grid-template-columns: minmax(220px, .72fr) minmax(0, 1.2fr) minmax(210px, .55fr);
   gap: 16px;
   align-items: center;
   padding: 18px;
@@ -1527,7 +1529,7 @@
 
 .goalForm {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 9px;
 }
 
