@@ -688,6 +688,15 @@
   min-height: 460px;
   border-radius: 26px;
   overflow: hidden;
+  transition: border-color .16s, box-shadow .16s, transform .16s;
+}
+
+.dropActive {
+  border-color: rgba(45, 212, 191, .55);
+  box-shadow:
+    0 28px 80px rgba(20,184,166,.20),
+    inset 0 0 0 1px rgba(45, 212, 191, .22);
+  transform: translateY(-2px);
 }
 
 .columnHeader {
@@ -746,7 +755,7 @@
   border-radius: 18px;
   background: rgba(255,255,255,.09);
   box-shadow: 0 12px 28px rgba(0,0,0,.18);
-  cursor: pointer;
+  cursor: grab;
   transition: border-color .15s, background .15s, transform .15s, box-shadow .15s;
 }
 
@@ -757,6 +766,15 @@
   box-shadow: 0 16px 34px rgba(0,0,0,.22);
   outline: none;
   transform: translateY(-1px);
+}
+
+.card:active {
+  cursor: grabbing;
+}
+
+.dragging {
+  opacity: .46;
+  transform: rotate(.4deg) scale(.99);
 }
 
 .card.done {

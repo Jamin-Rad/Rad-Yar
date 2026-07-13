@@ -162,6 +162,25 @@ function laneFromDeadline(value) {
   return 'watch'
 }
 
+function nextSundayValue() {
+  const date = new Date()
+  const daysToSunday = (7 - date.getDay()) % 7
+  date.setDate(date.getDate() + daysToSunday)
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}`
+}
+
+function deadlineForLane(laneId, currentDeadline) {
+  if (laneId === 'urgent') return todayValue()
+  if (laneId === 'today') {
+    return currentDeadline && isInCurrentWeek(currentDeadline) ? currentDeadline : nextSundayValue()
+  }
+  if (laneId === 'watch') return ''
+  return currentDeadline || ''
+}
+
 function emptyForm() {
   const deadline = todayValue()
   return {
@@ -196,7 +215,7 @@ function formFromTodo(todo) {
     title: todo?.title || '',
     note: todo?.note || '',
     lane: todo?.lane || laneFromDeadline(todo?.deadline),
-    deadline: todo?.deadline || todayValue(),
+    deadline: todo?.deadline || '',
     itemType: todo?.itemType || 'todo',
     eventTime: todo?.eventTime || '',
     endDate: todo?.endDate || todo?.deadline || todayValue(),
@@ -223,6 +242,8 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   const [detailForm, setDetailForm] = useState(() => emptyForm())
   const [newEventOpen, setNewEventOpen] = useState(false)
   const [newEventForm, setNewEventForm] = useState(() => eventFormForDate())
+  const [draggingId, setDraggingId] = useState(null)
+  const [dropLaneId, setDropLaneId] = useState(null)
 
   useEffect(() => {
     let active = true
@@ -301,7 +322,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
     const result = Object.fromEntries(LANES.map(lane => [lane.id, []]))
     const visibleTodos = todos.filter(todo => todo.itemType !== 'event' && !todo.done)
     for (const todo of visibleTodos) {
-      const lane = result[effectiveLane(todo)] ? effectiveLane(todo) : 'today'
+      const lane = result[todo.lane] ? todo.lane : result[effectiveLane(todo)] ? effectiveLane(todo) : 'today'
       result[lane].push(todo)
     }
     result.watch.sort((a, b) => {
@@ -496,6 +517,12 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
     }
   }
 
+  function moveTodoToLane(todo, laneId) {
+    if (!todo || !LANES.some(lane => lane.id === laneId) || todo.lane === laneId) return
+    const deadline = deadlineForLane(laneId, todo.deadline)
+    patchTodo(todo.id, { lane: laneId, deadline })
+  }
+
   async function deleteTodo(id) {
     const previous = todos
     setTodos(prev => prev.filter(todo => todo.id !== id))
@@ -531,6 +558,32 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   function closeDetail() {
     setDetailId(null)
     setDetailForm(emptyForm())
+  }
+
+  function handleDragStart(event, todo) {
+    setDraggingId(todo.id)
+    event.dataTransfer.effectAllowed = 'move'
+    event.dataTransfer.setData('text/plain', todo.id)
+  }
+
+  function handleDragEnd() {
+    setDraggingId(null)
+    setDropLaneId(null)
+  }
+
+  function handleDragOver(event, laneId) {
+    if (!draggingId) return
+    event.preventDefault()
+    event.dataTransfer.dropEffect = 'move'
+    setDropLaneId(laneId)
+  }
+
+  function handleDrop(event, laneId) {
+    event.preventDefault()
+    const id = event.dataTransfer.getData('text/plain') || draggingId
+    const todo = todos.find(item => item.id === id)
+    moveTodoToLane(todo, laneId)
+    handleDragEnd()
   }
 
   async function saveDetail(event) {
@@ -653,7 +706,15 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
 
       <section className={styles.board} aria-label="ToDo board">
         {LANES.map(lane => (
-          <article className={`${styles.column} ${styles[lane.color]}`} key={lane.id}>
+          <article
+            className={`${styles.column} ${styles[lane.color]} ${dropLaneId === lane.id ? styles.dropActive : ''}`}
+            key={lane.id}
+            onDragOver={event => handleDragOver(event, lane.id)}
+            onDragLeave={event => {
+              if (!event.currentTarget.contains(event.relatedTarget)) setDropLaneId(null)
+            }}
+            onDrop={event => handleDrop(event, lane.id)}
+          >
             <header className={styles.columnHeader}>
               <div>
                 <h2>{lane.title}</h2>
@@ -668,8 +729,11 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
                 const isSoon = deadlineDiff !== null && deadlineDiff <= 2 && deadlineDiff >= 0 && !todo.done
                 return (
                   <div
-                    className={`${styles.card} ${todo.done ? styles.done : ''}`}
+                    className={`${styles.card} ${todo.done ? styles.done : ''} ${draggingId === todo.id ? styles.dragging : ''}`}
                     key={todo.id}
+                    draggable
+                    onDragStart={event => handleDragStart(event, todo)}
+                    onDragEnd={handleDragEnd}
                     onClick={() => openDetail(todo)}
                     role="button"
                     tabIndex={0}

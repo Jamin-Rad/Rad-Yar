@@ -231,7 +231,7 @@ export async function PATCH(request) {
   if (typeof body.eventTime === 'string') update.event_time = cleanTime(body.eventTime)
   if (typeof body.deadline === 'string') {
     update.deadline = cleanDeadline(body.deadline)
-    update.lane = laneFromDeadline(update.deadline, update.lane || 'today')
+    if (!update.lane) update.lane = laneFromDeadline(update.deadline, 'today')
   }
   if (typeof body.note === 'string') {
     const itemType = update.item_type || (ITEM_TYPES.has(body.itemType) ? body.itemType : 'todo')
@@ -278,7 +278,7 @@ export async function PATCH(request) {
       if (typeof body.lane === 'string' && LANES.has(body.lane)) fallbackUpdate.lane = body.lane
       if (typeof body.deadline === 'string') {
         fallbackUpdate.deadline = cleanDeadline(body.deadline)
-        fallbackUpdate.lane = laneFromDeadline(fallbackUpdate.deadline, fallbackUpdate.lane || 'today')
+        if (!fallbackUpdate.lane) fallbackUpdate.lane = laneFromDeadline(fallbackUpdate.deadline, 'today')
       }
       if (typeof body.done === 'boolean') {
         fallbackUpdate.done = body.done
