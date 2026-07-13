@@ -323,11 +323,13 @@ export default function WorkPage() {
               const previousShift = shiftsByDate.get(previousDateValue(day.date))
               const isWeekendFree = !shift && (day.weekday === 0 || day.weekday === 6)
               const isPostNightFree = !shift && day.weekday >= 1 && day.weekday <= 5 && isNightShift(previousShift)
+              const isNight = isNightShift(shift)
+              const isWeekendDayShift = shift?.model === 'BD' && (day.weekday === 0 || day.weekday === 6)
               const isFree = isWeekendFree || isPostNightFree
               const active = day.date === selectedDate
               return (
                 <button
-                  className={`${styles.dayCell} ${active ? styles.dayActive : ''} ${shift ? styles.dayHasShift : ''} ${isFree ? styles.dayFree : ''}`}
+                  className={`${styles.dayCell} ${active ? styles.dayActive : ''} ${shift ? styles.dayHasShift : ''} ${isNight ? styles.dayNightShift : ''} ${isWeekendDayShift ? styles.dayWeekendShift : ''} ${isFree ? styles.dayFree : ''}`}
                   type="button"
                   key={day.date}
                   onClick={() => selectDate(day.date)}
