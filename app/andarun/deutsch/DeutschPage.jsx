@@ -94,12 +94,19 @@ const upgradedSampleLesson = {
       { question: 'Welche Schlussfolgerung passt am besten?', options: ['Grenzen verhindern Zusammenarbeit.', 'Klare Regeln koennen Zusammenarbeit planbarer machen.', 'Schnelle Antworten sind immer professioneller.', 'Private Zeit ist beruflich unwichtig.'], answer: 1, explanation: 'Am Ende erkennen viele, dass klare Grenzen die Zusammenarbeit verlaesslicher machen.' },
     ],
   },
+  vocabulary_quiz: [
+    { question: 'Was bedeutet „erreichbar" in diesem Text?', options: ['so verfügbar, dass andere einen kontaktieren können', 'körperlich sportlich aktiv sein', 'eine Nachricht absenden', 'offiziell verpflichtet sein'], answer: 0, explanation: '„Erreichbar" bedeutet, dass man kontaktiert werden kann — hier: telefonisch oder per Chat nach der Arbeit.' },
+    { question: 'Was meint „subtiler Druck" im Text?', options: ['ein Druck, der nicht ausgesprochen wird, aber spürbar ist', 'körperliche Anstrengung bei der Arbeit', 'ein offizieller Befehl vom Chef', 'eine direkte Kritik an der Arbeit'], answer: 0, explanation: '„Subtil" bedeutet nicht offensichtlich. Der Druck entsteht durch das Verhalten anderer, nicht durch eine direkte Anweisung.' },
+    { question: 'Was bedeutet „konsequent abschalten"?', options: ['klar und ohne Ausnahme die Arbeit beenden', 'den Computer ausschalten', 'manchmal früher nach Hause gehen', 'alle Nachrichten sofort beantworten'], answer: 0, explanation: '„Konsequent" bedeutet: immer, ohne Ausnahme. Abschalten = aufhören, erreichbar zu sein.' },
+    { question: 'Was ist eine „Besprechung" im beruflichen Kontext?', options: ['ein geplantes Treffen zur Diskussion von Themen', 'ein privates Telefonat mit Kollegen', 'eine schriftliche Beschwerde', 'ein Mittagessen mit dem Team'], answer: 0, explanation: '„Besprechung" ist das deutsche Wort für Meeting — ein strukturiertes berufliches Treffen.' },
+    { question: 'Was bedeutet „Zusammenarbeit verlässlicher machen"?', options: ['die Zusammenarbeit besser planbar und stabiler machen', 'weniger miteinander arbeiten', 'schneller antworten als vorher', 'die Gruppe kleiner machen'], answer: 0, explanation: '„Verlässlich" kommt von verlassen = sich auf etwas stützen können. Verlässlicher = besser planbar.' },
+  ],
   grammar: [
-    { question: 'Welche Funktion hat "Wenn eine Nachricht unbeantwortet bleibt"?', options: ['Konditionaler Nebensatz', 'Relativsatz', 'Infinitivsatz', 'Indirekte Rede'], answer: 0, explanation: '"Wenn" leitet hier einen Nebensatz ein; das finite Verb steht am Ende.' },
-    { question: 'Warum steht "als nehme sie ihre Aufgaben nicht ernst"?', options: ['Konjunktiv I zur Wiedergabe eines Eindrucks', 'Imperativ', 'Passiv Praeteritum', 'Futur II'], answer: 0, explanation: 'Nach vergleichendem "als" kann Konjunktiv I stehen: als nehme sie...' },
-    { question: 'Welche Umformung ist korrekt?', options: ['Auf normale Nachrichten kann bis morgen gewartet werden.', 'Normale Nachrichten sind gewartet.', 'Normale Nachrichten werden warten lassen.', 'Normale Nachrichten lassen sich warten.'], answer: 0, explanation: 'Das unpersoenliche Passiv mit "kann ... gewartet werden" ist grammatisch moeglich.' },
-    { question: 'Welche Bedeutung hat "nicht ..., sondern ..."?', options: ['Gegensatz und Korrektur', 'Grund und Folge', 'Zeitliche Reihenfolge', 'Vermutung'], answer: 0, explanation: 'Die Struktur korrigiert eine Erwartung: nicht gegen Zusammenarbeit, sondern verlaesslicher.' },
-    { question: 'Welche Form ist standardsprachlich korrekt?', options: ['wegen der Flexibilitaet', 'wegen die Flexibilitaet', 'wegen den Flexibilitaet', 'wegen dem Flexibilitaet'], answer: 0, explanation: '"Wegen" steht in Standardsprache mit Genitiv: wegen der Flexibilitaet.' },
+    { question: 'Ergänze: „Niemand ___ verpflichtet, nach Feierabend zu antworten."', options: ['ist', 'sind', 'war früher', 'haben'], answer: 0, explanation: '„Niemand" ist grammatisch Singular → Verb in der 3. Person Singular: „ist". Nicht „sind".' },
+    { question: 'Welche Präposition und welcher Kasus passen: „Sie spricht das Thema ___ an."', options: ['vorsichtig (kein Objekt)', 'für das Thema', 'mit dem Thema', 'auf das Thema'], answer: 0, explanation: '„Ansprechen" ist ein trennbares Verb: „sie spricht … an". Das Thema ist hier direktes Objekt im Akkusativ — ohne Präposition.' },
+    { question: 'Wähle die richtige Form: „wegen ___ Flexibilität"', options: ['der (Genitiv)', 'die (Nominativ)', 'dem (Dativ)', 'den (Akkusativ)'], answer: 0, explanation: '„Wegen" verlangt den Genitiv. „die Flexibilität" (Femininum) → Genitiv Singular: „der Flexibilität". Korrekt: wegen der Flexibilität.' },
+    { question: 'Welche Satzstellung ist korrekt nach „sobald"?', options: ['sobald eine Nachricht erscheint', 'sobald erscheint eine Nachricht', 'sobald eine Nachricht erscheinen', 'sobald erschienen eine Nachricht'], answer: 0, explanation: '„Sobald" ist eine subordinierende Konjunktion → das Verb steht am Ende des Nebensatzes: „sobald eine Nachricht erscheint".' },
+    { question: 'Ergänze richtig: „Ich schlage vor, ___ Notfällen und normalen Rückfragen zu unterscheiden."', options: ['zwischen (+ Dativ)', 'unter (+ Akkusativ)', 'bei (+ Dativ)', 'von (+ Dativ)'], answer: 0, explanation: '„Unterscheiden zwischen" ist eine feste Verbindung: zwischen + Dativ. „zwischen echten Notfällen und normalen Rückfragen" (Dativ Plural).' },
   ],
   listening: {
     title: 'Eine Diskussion im Team',
@@ -156,68 +163,99 @@ function enrichLessonVocabulary(lesson) {
 }
 
 const contentPrompt = `Erstelle eine Tageslektion Deutsch für Andarun als reines JSON ohne Markdown.
-Niveau: B2. Thema soll aus echter täglicher Sprachbenutzung kommen: Arbeit, Familie, Behörden, Gesundheit, Wohnung, Konflikte, Diskussionen, Meinung äußern, Entscheidungen begründen.
-Der Stil soll natürlich und alltagsnah sein, aber nicht einfach. Keine Kindersprache, keine A2/B1-Übungen.
+Niveau: B2. Thema aus echter täglicher Sprachbenutzung: Arbeit, Familie, Behörden, Gesundheit, Wohnung, Konflikte, Diskussionen, Meinung äußern, Entscheidungen begründen.
+Stil: natürlich und alltagsnah, aber anspruchsvoll. Keine Kindersprache, keine A2/B1-Übungen.
 
 Schema:
 {
-  "id": "deutsch-YYYY-MM-DD-kurzer-slug",
-  "date": "YYYY-MM-DD",
-  "level": "B2",
-  "title": "...",
-  "topic": "...",
-  "reading": {
-    "title": "...",
-    "text": "170-230 Wörter auf Deutsch mit B2-Satzbau",
-    "vocabulary": [
-      { "term": "exakte Form aus dem Lesetext", "de": "klare Bedeutung auf Deutsch", "fa": "präzise persische Übersetzung", "example": "natürlicher deutscher Beispielsatz mit dem Begriff" }
+  “id”: “deutsch-YYYY-MM-DD-kurzer-slug”,
+  “date”: “YYYY-MM-DD”,
+  “level”: “B2”,
+  “title”: “...”,
+  “topic”: “...”,
+  “reading”: {
+    “title”: “...”,
+    “text”: “170-230 Wörter auf Deutsch mit B2-Satzbau”,
+    “vocabulary”: [
+      { “term”: “exakte Form aus dem Lesetext”, “de”: “klare Bedeutung auf Deutsch”, “fa”: “präzise persische Übersetzung”, “example”: “natürlicher deutscher Beispielsatz mit dem Begriff” }
     ],
-    "questions": [
-      { "question": "...", "options": ["...", "...", "...", "..."], "answer": 0, "explanation": "..." }
+    “questions”: [
+      { “question”: “...”, “options”: [“...”, “...”, “...”, “...”], “answer”: 0, “explanation”: “...” }
     ]
   },
-  "grammar": [
-    { "question": "Grammatikfrage aus einem Satz des Lesetextes", "options": ["...", "...", "...", "..."], "answer": 0, "explanation": "kurze Erklärung" }
+  “vocabulary_quiz”: [
+    { “question”: “...”, “options”: [“...”, “...”, “...”, “...”], “answer”: 0, “explanation”: “...” }
   ],
-  "listening": {
-    "title": "...",
-    "text": "ähnlicher Text mit ähnlichen Wörtern, aber nicht identisch",
-    "questions": [
-      { "question": "...", "options": ["...", "...", "...", "..."], "answer": 0, "explanation": "..." }
+  “grammar”: [
+    { “question”: “...”, “options”: [“...”, “...”, “...”, “...”], “answer”: 0, “explanation”: “...” }
+  ],
+  “listening”: {
+    “title”: “...”,
+    “text”: “ähnlicher Text mit ähnlichen Wörtern, aber nicht identisch”,
+    “questions”: [
+      { “question”: “...”, “options”: [“...”, “...”, “...”, “...”], “answer”: 0, “explanation”: “...” }
     ]
   },
-  "writing": {
-    "prompt": "konkrete Schreibaufgabe",
-    "checklist": ["...", "...", "..."]
+  “writing”: {
+    “prompt”: “konkrete Schreibaufgabe”,
+    “checklist”: [“...”, “...”, “...”]
   }
 }
 
-Regeln:
-- genau 5 reading.questions
-- genau 5 grammar Fragen
-- genau 5 listening.questions
-- genau 12 bis 16 vocabulary Einträge
-- answer ist der Index der richtigen Option, beginnend bei 0
-- Die vocabulary-Liste ist die Grundlage der Flashcards und muss vollständig ausgefüllt sein: term, de, fa und example dürfen niemals leer sein.
-- Erfasse ALLE lernrelevanten B2-Wörter und festen Wendungen des Lesetextes: Verben mit Präposition, idiomatische Ausdrücke, wichtige Nomen, Adjektive und Konnektoren. Kein wichtiges B2-Wort darf fehlen.
-- vocabulary.term muss buchstabengetreu in derselben Form im Lesetext vorkommen. Bei trennbaren Verben oder festen Wendungen verwende eine tatsächlich zusammenhängend vorkommende Formulierung.
-- Nutze für term bevorzugt die konkrete Textform, damit das Wort im Lesetext anklickbar ist. Keine Grundform angeben, wenn im Text nur eine flektierte Form vorkommt.
-- de erklärt die Bedeutung verständlich auf B2-Niveau und ist keine bloße Wiederholung des Begriffs.
-- fa ist eine natürliche, inhaltlich genaue persische Übersetzung in persischer Schrift.
-- example ist ein neuer, natürlicher deutscher Satz und enthält term exakt in derselben Schreibweise. Der Beispielsatz darf nicht aus dem Lesetext kopiert sein.
-- Keine sehr einfachen A1-Wörter wie „machen“, „gehen“, „gut“ oder „heute“ aufnehmen, außer sie sind Teil einer festen B2-Wendung.
-- MCQs müssen schwierig sein: Bedeutung, Schlussfolgerung, Haltung, indirekte Aussage, nicht nur Wortsuche
-- Grammatikfragen müssen aus echten Sätzen des Lesetextes kommen: Konjunktiv, Nebensatz, Passiv, Präposition, Satzstellung, Nominalisierung
-- Der Hörtext soll ähnliche Wörter nutzen, aber ein anderer Text sein
-- Die Schreibaufgabe soll eine Meinung oder Entscheidung verlangen
+REGELN FÜR VOCABULARY:
+- genau 15 bis 20 vocabulary Einträge (so viele lernrelevante B2-Wörter wie möglich)
+- term muss buchstabengetreu in derselben Form im reading.text vorkommen
+- de erklärt die Bedeutung verständlich, ist keine bloße Wiederholung des Begriffs
+- fa ist eine natürliche, genaue persische Übersetzung in persischer Schrift
+- example ist ein neuer, natürlicher Satz (nicht aus dem Lesetext kopiert) und enthält term exakt
+- Keine A1-Wörter (machen, gehen, gut, heute) außer in B2-Wendungen
+- Pflicht: alle Verben mit fester Präposition, idiomatische Ausdrücke, wichtige Nomen, Konnektoren erfassen
+
+REGELN FÜR READING QUESTIONS:
+- genau 5 Fragen
+- Schwierig: Bedeutung, Schlussfolgerung, Haltung, indirekte Aussage — keine einfache Wortsuche
+
+REGELN FÜR VOCABULARY_QUIZ (5 Fragen):
+- Jede Frage testet die Bedeutung eines Wortes oder einer Wendung aus dem vocabulary
+- Frageformat: „Was bedeutet ‚X'?” oder „Welche Bedeutung hat ‚X' in diesem Kontext?” oder „Was ist das Gegenteil von ‚X'?”
+- Die 4 Optionen sind kurze deutsche Bedeutungserklärungen (nicht Übersetzungen)
+- KEIN Regelwissen abfragen — nur Wortbedeutung und Verwendung
+
+REGELN FÜR GRAMMAR (5 Fragen):
+- Praktische Lückentext- oder Wahlaufgaben aus echten Sätzen des Lesetextes
+- KEIN Format „Welche grammatische Funktion hat X?” oder „Warum steht Y?”
+- Stattdessen: „Ergänze: ...”, „Wähle die richtige Form:”, „Welche Präposition passt?”, „Welcher Artikel ist korrekt?”
+- Pflichtthemen (mindestens eines von jedem):
+  * Artikel mit korrektem Kasus — z.B. „Wähle: mit ___ Kollegin (dem/der/die/den)”
+  * Präposition + richtiger Kasus — z.B. „Welche Präposition? ___ dem Arzt sprechen (mit/bei/von/für)”
+  * Verb mit fester Präposition — z.B. „Sie bittet ___ einen neuen Termin (um/für/an/mit)”
+  * Satzstellung nach Konjunktion/Adverb — Verb-am-Ende oder V2
+  * Konjunktiv, Passiv oder trennbares Verb
+
+REGELN FÜR GRAMMAR EXPLANATIONS (explanation-Feld):
+- Immer ausführlich und konkret, mindestens 2 Sätze
+- Bei Präpositionen: immer den verlangten Kasus nennen (Akkusativ/Dativ/Genitiv) und ein weiteres Beispiel geben
+- Bei Artikeln: Genus des Substantivs + Kasus + Deklinationsform erklären. Beispiel: „‚Arzt' ist maskulin (der Arzt). Im Dativ Singular lautet der bestimmte Artikel ‚dem': mit dem Arzt.”
+- Bei Konjunktionen: Satzstellung klar erklären: „Nach ‚weil' steht das Verb am Ende des Nebensatzes.”
+- Bei Verben mit Präposition: die feste Verbindung vollständig nennen: „bitten um + Akkusativ. Er bittet um Hilfe.”
+- Erkläre auch, warum die anderen Optionen falsch sind, wenn es lehrreich ist
+
+REGELN FÜR LISTENING:
+- genau 5 Fragen
+- Ähnliche Situation wie Lesetext, aber ein anderer Text und eine andere Perspektive
+
+REGELN FÜR WRITING:
+- Schreibaufgabe verlangt eine Meinung, Entscheidung oder Argumentation
+- checklist: 5 Punkte
 
 Pflichtprüfung vor der Ausgabe:
-1. Zähle 12 bis 16 vocabulary-Einträge.
-2. Suche jeden vocabulary.term exakt im reading.text.
-3. Prüfe bei jeder Karte de, fa und example auf Inhalt und korrekte Sprache.
-4. Prüfe, dass jeder example-Satz den jeweiligen term exakt enthält.
-5. Ergänze jedes wichtige B2-Wort aus dem Lesetext, das noch keine Flashcard hat.
-6. Gib danach ausschließlich valides JSON aus, ohne Kommentar und ohne Markdown.`
+1. Zähle 15 bis 20 vocabulary-Einträge — zu wenig = Fehler.
+2. Prüfe jeden vocabulary.term exakt im reading.text.
+3. Prüfe de, fa, example bei jeder Karte.
+4. Zähle genau 5 vocabulary_quiz Fragen.
+5. Zähle genau 5 grammar Fragen. Prüfe: keine Frage fragt nach grammatischer Funktion oder Regelname.
+6. Prüfe alle explanation-Felder bei grammar: Sind sie ausführlich? Wird der Kasus bei Präpositionen genannt?
+7. Gib ausschließlich valides JSON aus, ohne Kommentar und ohne Markdown.`
 
 function normalizeState(value) {
   return {
@@ -247,6 +285,7 @@ function isToday(value) {
 function getLessonQuestions(lesson) {
   return [
     ...(lesson?.reading?.questions || []).map((_, index) => `${lesson.id}-reading-${index}`),
+    ...(lesson?.vocabulary_quiz || []).map((_, index) => `${lesson.id}-vocabquiz-${index}`),
     ...(lesson?.grammar || []).map((_, index) => `${lesson.id}-grammar-${index}`),
     ...(lesson?.listening?.questions || []).map((_, index) => `${lesson.id}-listening-${index}`),
   ]
@@ -677,6 +716,34 @@ export default function DeutschPage({
     }
   }
 
+  function addAllVocabCards() {
+    const vocab = activeLesson.reading?.vocabulary || []
+    let added = 0
+    let next = { ...state, cards: [...state.cards] }
+    for (const word of vocab) {
+      if (word.incomplete) continue
+      const cardId = `${activeLesson.id}-${word.term.toLowerCase().replace(/\s+/g, '-')}`
+      if (next.cards.some(card => card.id === cardId)) continue
+      next.cards = [{
+        id: cardId,
+        lessonId: activeLesson.id,
+        type: 'word',
+        term: word.term,
+        front: word.term,
+        back: `${word.de}\n\nPersisch: ${word.fa}`,
+        de: word.de,
+        fa: word.fa,
+        example: word.example || '',
+        box: 0,
+        dueAt: new Date().toISOString(),
+        createdAt: new Date().toISOString(),
+      }, ...next.cards]
+      added++
+    }
+    if (added > 0) { persist(next); setMessage(`${added} neue Flashcard${added > 1 ? 's' : ''} gespeichert.`) }
+    else setMessage('Alle Vokabeln sind bereits als Flashcards gespeichert.')
+  }
+
   function addMistakeCard(mistake) {
     const card = {
       id: uid('mistake'),
@@ -815,12 +882,19 @@ export default function DeutschPage({
             <p className={styles.readingText}>
               {tokenizeText(activeLesson.reading.text, activeLesson.reading.vocabulary || [], setSelectedWord)}
             </p>
-            <div className={styles.wordShelf}>
-              {(activeLesson.reading.vocabulary || []).map(word => (
-                <button type="button" key={word.term} onClick={() => setSelectedWord(word)} className={learnedWords.has(word.term.toLowerCase()) ? styles.savedWord : ''}>
-                  {word.term}
+            <div className={styles.wordShelfWrap}>
+              <div className={styles.wordShelf}>
+                {(activeLesson.reading.vocabulary || []).map(word => (
+                  <button type="button" key={word.term} onClick={() => setSelectedWord(word)} className={learnedWords.has(word.term.toLowerCase()) ? styles.savedWord : ''}>
+                    {word.term}
+                  </button>
+                ))}
+              </div>
+              {(activeLesson.reading.vocabulary || []).length > 0 && (
+                <button type="button" className={styles.saveAllBtn} onClick={addAllVocabCards}>
+                  Alle {(activeLesson.reading.vocabulary || []).length} Vokabeln als Flashcard speichern
                 </button>
-              ))}
+              )}
             </div>
           </article>
           <QuestionBlock id={`${activeLesson.id}-reading`} items={activeLesson.reading.questions || []} answers={state.answers} onAnswer={answerQuestion} onReset={() => resetSectionAnswers('reading')} />
@@ -830,8 +904,21 @@ export default function DeutschPage({
       {activeTab === 'grammatik' && (
         <section className={styles.singleSection}>
           <div className={styles.sectionIntro}>
-            <span>Aus dem Lesetext</span>
-            <h2>Grammatik in echten Sätzen</h2>
+            <span>10 Fragen · Wörter & Grammatik</span>
+            <h2>Tagestest</h2>
+          </div>
+          {(activeLesson.vocabulary_quiz || []).length > 0 && (
+            <>
+              <div className={styles.testSubHead}>
+                <span className={styles.testSubLabel}>Teil 1 · Wortbedeutung</span>
+                <span className={styles.testSubCount}>{(activeLesson.vocabulary_quiz || []).length} Fragen</span>
+              </div>
+              <QuestionBlock id={`${activeLesson.id}-vocabquiz`} items={activeLesson.vocabulary_quiz || []} answers={state.answers} onAnswer={answerQuestion} onReset={() => resetSectionAnswers('vocabquiz')} />
+            </>
+          )}
+          <div className={styles.testSubHead}>
+            <span className={styles.testSubLabel}>Teil 2 · Grammatik</span>
+            <span className={styles.testSubCount}>{(activeLesson.grammar || []).length} Fragen</span>
           </div>
           <QuestionBlock id={`${activeLesson.id}-grammar`} items={activeLesson.grammar || []} answers={state.answers} onAnswer={answerQuestion} onReset={() => resetSectionAnswers('grammar')} />
         </section>
