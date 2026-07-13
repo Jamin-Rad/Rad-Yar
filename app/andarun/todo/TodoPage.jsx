@@ -229,6 +229,13 @@ function effectiveLane(todo) {
   return laneFromDeadline(todo.deadline)
 }
 
+function displayLane(todo) {
+  if (!todo?.deadline || todo.done) return todo?.lane || 'today'
+  const diff = daysUntil(todo.deadline)
+  if (diff !== null && diff <= 0) return 'urgent'
+  return LANES.some(lane => lane.id === todo.lane) ? todo.lane : effectiveLane(todo)
+}
+
 export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/andarun', homeLabel = 'Andarun', theme = 'dark' }) {
   const [todos, setTodos] = useState([])
   const [form, setForm] = useState(() => emptyForm())
@@ -322,7 +329,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
     const result = Object.fromEntries(LANES.map(lane => [lane.id, []]))
     const visibleTodos = todos.filter(todo => todo.itemType !== 'event' && !todo.done)
     for (const todo of visibleTodos) {
-      const lane = result[todo.lane] ? todo.lane : result[effectiveLane(todo)] ? effectiveLane(todo) : 'today'
+      const lane = result[displayLane(todo)] ? displayLane(todo) : 'today'
       result[lane].push(todo)
     }
     result.watch.sort((a, b) => {
