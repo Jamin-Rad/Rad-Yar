@@ -537,95 +537,98 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
 
         {tab === 'eintragen' && (
           <div className={s.todayView}>
-            <section className={s.todayDashboard}>
-              <div className={s.todayKcalCard}>
-                <div className={s.todayRing}>
-                  <svg viewBox="0 0 120 120">
-                    <circle cx="60" cy="60" r={RING_R} className={s.ringTrack} />
-                    <circle cx="60" cy="60" r={RING_R} className={`${s.ringFood} ${isKcalOverTarget ? s.ringOver : ''}`}
-                      style={{ strokeDasharray: RING_C, strokeDashoffset: RING_C * (1 - foodFraction) }}
-                    />
-                    {sportFraction > 0 && (
-                      <circle cx="60" cy="60" r={RING_R} className={s.ringSport}
-                        style={{ strokeDasharray: RING_C, strokeDashoffset: RING_C * (1 - sportFraction) }}
-                      />
-                    )}
-                  </svg>
-                  <div>
-                    <strong>{totalKcal}</strong>
-                    <span>{recommendedKcal ? `von ${recommendedKcal} kcal` : 'kcal netto'}</span>
-                  </div>
-                </div>
-                <div className={s.todayKcalRows}>
-                  <div><span>Gegessen</span><strong>+{eatenKcal}</strong></div>
-                  <div><span>Sport</span><strong>−{totalSportKcal}</strong></div>
-                  <div><span>Empfehlung</span><strong>{recommendedKcal ? recommendedKcal : '—'}</strong></div>
-                  <div className={isKcalOverTarget ? s.kcalOverRow : s.kcalGoodRow}>
-                    <span>{recommendedKcal ? (isKcalOverTarget ? 'Überschritten' : 'Übrig') : 'Status'}</span>
-                    <strong>{recommendedKcal ? `${Math.abs(kcalDelta)} kcal` : 'Einstellung'}</strong>
-                  </div>
-                </div>
-              </div>
-              <div className={s.macroPanel}>
-                {[
-                  ['Protein', todayMacros.protein, macroTargets.protein, s.macroProtein, 'Ziel'],
-                  ['Zucker', todayMacros.sugar, macroTargets.sugar, s.macroSugar, 'Limit'],
-                  ['Fett', todayMacros.fat, macroTargets.fat, s.macroFat, 'Limit'],
-                ].map(([label, value, max, className, targetLabel]) => (
-                  <div className={s.macroRow} key={label}>
-                    <div>
-                      <span>{label}</span>
-                      <div className={s.macroValue}>
-                        <strong>{value} g</strong>
-                        <em>{targetLabel} {max} g</em>
-                      </div>
-                    </div>
-                    <div className={s.macroTrack}><i className={className} style={{ width: `${Math.min((value / max) * 100, 100)}%` }} /></div>
-                  </div>
-                ))}
-              </div>
-              <div className={s.todayDetailGrid}>
-                <div>
-                  <h3>Gegessen</h3>
-                  {form.foods.length ? form.foods.map(item => {
-                    const food = activeFoods.find(x => x.id === item.id)
-                    if (!food) return null
-                    const g = item.g ?? (item.count != null ? item.count * food.portionG : 0)
-                    const kcal = Math.round((food.kcalPer100g / 100) * g)
-                    return <span key={item.id}>{food.de} · {foodAmountText(food, g)} · {kcal} kcal</span>
-                  }) : <span>Keine Mahlzeit eingetragen</span>}
-                </div>
-                <div>
-                  <h3>Sport</h3>
-                  {form.sports.length ? form.sports.map(item => {
-                    const sp = activeSports.find(x => x.id === item.id)
-                    if (!sp) return null
-                    return <span key={item.id}>{sp.de} · {item.min} min · −{Math.round(sp.kcalPerMin * item.min)} kcal</span>
-                  }) : <span>Kein Sport eingetragen</span>}
-                </div>
-              </div>
-            </section>
+            <div className={s.todayDateBar}>
+              <span>{formatHealthDate(TODAY)}</span>
+              <strong>{saving ? 'Speichert…' : saveMessage && !saveMessage.includes('fehl') && !saveMessage.includes('nicht') ? 'Gespeichert' : 'Heute'}</strong>
+            </div>
 
-            <section className={s.todayActionPanel}>
-              <div className={s.todayPanelHead}>
-                <span>{formatHealthDate(TODAY)}</span>
-                <strong>{saving ? 'Speichert…' : saveMessage && !saveMessage.includes('fehl') && !saveMessage.includes('nicht') ? 'Gespeichert' : 'Heute'}</strong>
-              </div>
-              <div className={s.todayActions}>
-                <button className={s.todayActionWeight} type="button" onClick={() => setWeightOpen(true)}>
-                  <i className={s.actionVisual} aria-hidden="true" />
-                  <span>Gewicht</span>
-                </button>
-                <button className={s.todayActionSport} type="button" onClick={() => openPicker('sport')}>
-                  <i className={s.actionVisual} aria-hidden="true" />
-                  <span>Sport</span>
-                </button>
-                <button className={s.todayActionFood} type="button" onClick={() => openPicker('food')}>
-                  <i className={s.actionVisual} aria-hidden="true" />
-                  <span>Essen</span>
-                </button>
-              </div>
-            </section>
+            <div className={s.todayMainGrid}>
+              <section className={s.todayActionPanel}>
+                <div className={s.todayActions}>
+                  <button className={s.todayActionWeight} type="button" onClick={() => setWeightOpen(true)}>
+                    <i className={s.actionVisual} aria-hidden="true" />
+                    <span>Gewicht</span>
+                  </button>
+                  <button className={s.todayActionFood} type="button" onClick={() => openPicker('food')}>
+                    <i className={s.actionVisual} aria-hidden="true" />
+                    <span>Essen</span>
+                  </button>
+                  <button className={s.todayActionSport} type="button" onClick={() => openPicker('sport')}>
+                    <i className={s.actionVisual} aria-hidden="true" />
+                    <span>Sport</span>
+                  </button>
+                </div>
+              </section>
+
+              <section className={s.todayDashboard}>
+                <div className={s.todayKcalCard}>
+                  <div className={s.todayRing}>
+                    <svg viewBox="0 0 120 120">
+                      <circle cx="60" cy="60" r={RING_R} className={s.ringTrack} />
+                      <circle cx="60" cy="60" r={RING_R} className={`${s.ringFood} ${isKcalOverTarget ? s.ringOver : ''}`}
+                        style={{ strokeDasharray: RING_C, strokeDashoffset: RING_C * (1 - foodFraction) }}
+                      />
+                      {sportFraction > 0 && (
+                        <circle cx="60" cy="60" r={RING_R} className={s.ringSport}
+                          style={{ strokeDasharray: RING_C, strokeDashoffset: RING_C * (1 - sportFraction) }}
+                        />
+                      )}
+                    </svg>
+                    <div>
+                      <strong>{totalKcal}</strong>
+                      <span>{recommendedKcal ? `von ${recommendedKcal} kcal` : 'kcal netto'}</span>
+                    </div>
+                  </div>
+                  <div className={s.todayKcalRows}>
+                    <div><span>Gegessen</span><strong>+{eatenKcal}</strong></div>
+                    <div><span>Sport</span><strong>−{totalSportKcal}</strong></div>
+                    <div><span>Empfehlung</span><strong>{recommendedKcal ? recommendedKcal : '—'}</strong></div>
+                    <div className={isKcalOverTarget ? s.kcalOverRow : s.kcalGoodRow}>
+                      <span>{recommendedKcal ? (isKcalOverTarget ? 'Überschritten' : 'Übrig') : 'Status'}</span>
+                      <strong>{recommendedKcal ? `${Math.abs(kcalDelta)} kcal` : 'Einstellung'}</strong>
+                    </div>
+                  </div>
+                </div>
+                <div className={s.macroPanel}>
+                  {[
+                    ['Protein', todayMacros.protein, macroTargets.protein, s.macroProtein, 'Ziel'],
+                    ['Zucker', todayMacros.sugar, macroTargets.sugar, s.macroSugar, 'Limit'],
+                    ['Fett', todayMacros.fat, macroTargets.fat, s.macroFat, 'Limit'],
+                  ].map(([label, value, max, className, targetLabel]) => (
+                    <div className={s.macroRow} key={label}>
+                      <div>
+                        <span>{label}</span>
+                        <div className={s.macroValue}>
+                          <strong>{value} g</strong>
+                          <em>{targetLabel} {max} g</em>
+                        </div>
+                      </div>
+                      <div className={s.macroTrack}><i className={className} style={{ width: `${Math.min((value / max) * 100, 100)}%` }} /></div>
+                    </div>
+                  ))}
+                </div>
+                <div className={s.todayDetailGrid}>
+                  <div>
+                    <h3>Gegessen</h3>
+                    {form.foods.length ? form.foods.map(item => {
+                      const food = activeFoods.find(x => x.id === item.id)
+                      if (!food) return null
+                      const g = item.g ?? (item.count != null ? item.count * food.portionG : 0)
+                      const kcal = Math.round((food.kcalPer100g / 100) * g)
+                      return <span key={item.id}>{food.de} · {foodAmountText(food, g)} · {kcal} kcal</span>
+                    }) : <span>Keine Mahlzeit eingetragen</span>}
+                  </div>
+                  <div>
+                    <h3>Sport</h3>
+                    {form.sports.length ? form.sports.map(item => {
+                      const sp = activeSports.find(x => x.id === item.id)
+                      if (!sp) return null
+                      return <span key={item.id}>{sp.de} · {item.min} min · −{Math.round(sp.kcalPerMin * item.min)} kcal</span>
+                    }) : <span>Kein Sport eingetragen</span>}
+                  </div>
+                </div>
+              </section>
+            </div>
           </div>
         )}
 

@@ -349,6 +349,14 @@
   gap: 16px;
 }
 
+.todayMainGrid {
+  display: grid;
+  grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.todayDateBar,
 .todayActionPanel,
 .todayDashboard,
 .weightModal {
@@ -362,6 +370,7 @@
   overflow: hidden;
 }
 
+:global(html[data-theme='dark']) .todayDateBar,
 :global(html[data-theme='dark']) .todayActionPanel,
 :global(html[data-theme='dark']) .todayDashboard,
 :global(html[data-theme='dark']) .weightModal {
@@ -370,6 +379,44 @@
     radial-gradient(circle at 18% 0%, rgba(45, 212, 191, .12), transparent 34%),
     rgba(15, 23, 42, .72);
   box-shadow: 0 22px 55px rgba(0, 0, 0, .28);
+}
+
+.todayDateBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+}
+
+.todayDateBar span {
+  color: #0f766e;
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 950;
+  line-height: 1;
+}
+
+.todayDateBar strong {
+  display: inline-grid;
+  min-height: 34px;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, .10);
+  color: #0f766e;
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: .08em;
+  padding: 0 12px;
+  text-transform: uppercase;
+}
+
+:global(html[data-theme='dark']) .todayDateBar span {
+  color: #5eead4;
+}
+
+:global(html[data-theme='dark']) .todayDateBar strong {
+  background: rgba(45, 212, 191, .12);
+  color: #5eead4;
 }
 
 .todayPanelHead span {
@@ -388,7 +435,7 @@
 
 .todayActions {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 12px;
   padding: 14px;
 }
@@ -398,7 +445,7 @@
 .todayActionFood {
   position: relative;
   display: grid;
-  min-height: 164px;
+  min-height: 170px;
   align-content: end;
   gap: 8px;
   border: 1px solid rgba(148, 163, 184, .18);
@@ -2529,6 +2576,20 @@
     grid-template-columns: 1fr;
   }
 
+  .todayMainGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .todayActions {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .todayActionWeight,
+  .todayActionSport,
+  .todayActionFood {
+    min-height: 138px;
+  }
+
   .summaryPanel {
     position: static;
   }
@@ -2565,6 +2626,10 @@
   .todayActions,
   .catTileGrid {
     grid-template-columns: 1fr;
+  }
+
+  .todayDateBar {
+    display: grid;
   }
 
   .todayActionWeight,
