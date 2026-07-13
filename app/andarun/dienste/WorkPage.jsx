@@ -78,6 +78,11 @@ function isNightShift(shift) {
   return shift?.model === 'N' || /^BD[1-4]$/.test(shift?.duty || '')
 }
 
+function calendarDutyLabel(shift) {
+  if (shift?.model === 'N') return 'Nacht'
+  return shift?.duty || ''
+}
+
 function resolveDuty(dateValueText, type) {
   const date = parseDate(dateValueText)
   const weekday = date.getDay()
@@ -294,7 +299,7 @@ export default function WorkPage() {
                   onClick={() => selectDate(day.date)}
                 >
                   <span>{day.day}</span>
-                  {shift && <strong>{shift.duty}</strong>}
+                  {shift && <strong>{calendarDutyLabel(shift)}</strong>}
                   {shift && <small>{timeRange(shift.actualStart || shift.plannedStart, shift.actualEnd || shift.plannedEnd)}</small>}
                   {shift?.assignment && <em>{shift.assignment}</em>}
                 </button>
@@ -436,7 +441,6 @@ export default function WorkPage() {
               <th>Datum</th>
               <th>Dienst</th>
               <th>Arbeitszeit von bis</th>
-              <th>Einteilung</th>
             </tr>
           </thead>
           <tbody>
@@ -448,12 +452,11 @@ export default function WorkPage() {
                   <td>{date.toLocaleDateString('de-DE')}</td>
                   <td>{shift.duty}</td>
                   <td>{timeRange(shift.actualStart || shift.plannedStart, shift.actualEnd || shift.plannedEnd)}</td>
-                  <td>{shift.assignment || ''}</td>
                 </tr>
               )
             })}
             {!monthShifts.length && (
-              <tr><td colSpan="5">Keine Dienste eingetragen</td></tr>
+              <tr><td colSpan="4">Keine Dienste eingetragen</td></tr>
             )}
           </tbody>
         </table>
