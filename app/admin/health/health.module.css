@@ -167,6 +167,10 @@
   transition: stroke-dashoffset .75s ease;
 }
 
+.ringOver {
+  stroke: #ef4444;
+}
+
 .ringCenter {
   position: absolute;
   inset: 0;
@@ -596,6 +600,7 @@
 
 .todayKcalRows {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
 }
 
@@ -635,6 +640,32 @@
   color: #f8fafc;
 }
 
+.kcalGoodRow {
+  border-color: rgba(16, 185, 129, .22) !important;
+  background: rgba(236, 253, 245, .70) !important;
+}
+
+.kcalGoodRow strong {
+  color: #047857 !important;
+}
+
+.kcalOverRow {
+  border-color: rgba(239, 68, 68, .24) !important;
+  background: rgba(254, 242, 242, .78) !important;
+}
+
+.kcalOverRow strong {
+  color: #dc2626 !important;
+}
+
+:global(html[data-theme='dark']) .kcalGoodRow {
+  background: rgba(16, 185, 129, .12) !important;
+}
+
+:global(html[data-theme='dark']) .kcalOverRow {
+  background: rgba(239, 68, 68, .13) !important;
+}
+
 .macroPanel {
   display: grid;
   gap: 10px;
@@ -645,6 +676,20 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+}
+
+.macroValue {
+  display: grid;
+  justify-items: end;
+  gap: 2px;
+}
+
+.macroValue em {
+  color: #64748b;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 900;
+  white-space: nowrap;
 }
 
 .macroTrack {

@@ -326,9 +326,8 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
       fat: sum.fat + macros.fat,
     }
   }, { protein: 0, sugar: 0, fat: 0 })
+  const eatenKcal = totalFoodKcal + (form.manualKcal || 0)
   const totalKcal = totalFoodKcal + (form.manualKcal || 0) - totalSportKcal
-  const foodFraction  = Math.min((totalFoodKcal + (form.manualKcal || 0)) / 2000, 1)
-  const sportFraction = Math.min(totalSportKcal / 2000, 1)
   const latestWeight = [...records].filter(record => record.weight).sort((a, b) => b.date.localeCompare(a.date))[0]?.weight || ''
   const previousWeight = [...records]
     .filter(record => record.weight && record.date < TODAY)
@@ -362,6 +361,19 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
   const planWeeklyChange = planCurrentWeight && planTargetWeight
     ? ((planTargetWeight - planCurrentWeight) / planWeeks).toFixed(2)
     : null
+  const dailyKcalTarget = recommendedKcal || maintenanceKcal || 2000
+  const kcalDelta = recommendedKcal ? totalKcal - recommendedKcal : null
+  const foodFraction = Math.min(Math.max(totalKcal, 0) / dailyKcalTarget, 1)
+  const sportFraction = Math.min(totalSportKcal / dailyKcalTarget, 1)
+  const isKcalOverTarget = recommendedKcal ? totalKcal > recommendedKcal : false
+  const proteinFactor = planTargetWeight && planCurrentWeight && planTargetWeight < planCurrentWeight
+    ? 1.6
+    : planTargetWeight && planCurrentWeight && planTargetWeight > planCurrentWeight ? 1.8 : 1.25
+  const macroTargets = {
+    protein: Math.max(50, Math.round((planCurrentWeight || parseFloat(activeWeight) || 75) * proteinFactor)),
+    sugar: Math.max(25, Math.round((dailyKcalTarget * 0.1) / 4)),
+    fat: Math.max(35, Math.round((dailyKcalTarget * 0.3) / 9)),
+  }
 
   function openPicker(type) {
     setPicker({ type, step: 'cats', catId: null })
@@ -530,7 +542,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                 <div className={s.todayRing}>
                   <svg viewBox="0 0 120 120">
                     <circle cx="60" cy="60" r={RING_R} className={s.ringTrack} />
-                    <circle cx="60" cy="60" r={RING_R} className={s.ringFood}
+                    <circle cx="60" cy="60" r={RING_R} className={`${s.ringFood} ${isKcalOverTarget ? s.ringOver : ''}`}
                       style={{ strokeDasharray: RING_C, strokeDashoffset: RING_C * (1 - foodFraction) }}
                     />
                     {sportFraction > 0 && (
@@ -541,22 +553,33 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                   </svg>
                   <div>
                     <strong>{totalKcal}</strong>
-                    <span>kcal netto</span>
+                    <span>{recommendedKcal ? `von ${recommendedKcal} kcal` : 'kcal netto'}</span>
                   </div>
                 </div>
                 <div className={s.todayKcalRows}>
-                  <div><span>Gegessen</span><strong>+{totalFoodKcal + (form.manualKcal || 0)}</strong></div>
+                  <div><span>Gegessen</span><strong>+{eatenKcal}</strong></div>
                   <div><span>Sport</span><strong>−{totalSportKcal}</strong></div>
+                  <div><span>Empfehlung</span><strong>{recommendedKcal ? recommendedKcal : '—'}</strong></div>
+                  <div className={isKcalOverTarget ? s.kcalOverRow : s.kcalGoodRow}>
+                    <span>{recommendedKcal ? (isKcalOverTarget ? 'Überschritten' : 'Übrig') : 'Status'}</span>
+                    <strong>{recommendedKcal ? `${Math.abs(kcalDelta)} kcal` : 'Einstellung'}</strong>
+                  </div>
                 </div>
               </div>
               <div className={s.macroPanel}>
                 {[
-                  ['Protein', todayMacros.protein, 120, s.macroProtein],
-                  ['Zucker', todayMacros.sugar, 90, s.macroSugar],
-                  ['Fett', todayMacros.fat, 80, s.macroFat],
-                ].map(([label, value, max, className]) => (
+                  ['Protein', todayMacros.protein, macroTargets.protein, s.macroProtein, 'Ziel'],
+                  ['Zucker', todayMacros.sugar, macroTargets.sugar, s.macroSugar, 'Limit'],
+                  ['Fett', todayMacros.fat, macroTargets.fat, s.macroFat, 'Limit'],
+                ].map(([label, value, max, className, targetLabel]) => (
                   <div className={s.macroRow} key={label}>
-                    <div><span>{label}</span><strong>{value} g</strong></div>
+                    <div>
+                      <span>{label}</span>
+                      <div className={s.macroValue}>
+                        <strong>{value} g</strong>
+                        <em>{targetLabel} {max} g</em>
+                      </div>
+                    </div>
                     <div className={s.macroTrack}><i className={className} style={{ width: `${Math.min((value / max) * 100, 100)}%` }} /></div>
                   </div>
                 ))}
