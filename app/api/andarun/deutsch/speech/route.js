@@ -1,13 +1,14 @@
 import { NextResponse } from 'next/server'
 import { requireAndarunSession } from '@/lib/andarunPasswordAuth'
 
-const TTS_MODEL = process.env.OPENAI_DEUTSCH_TTS_MODEL || 'tts-1-hd'
-const TTS_VOICE = process.env.OPENAI_DEUTSCH_TTS_VOICE || 'nova'
+const GOOGLE_TTS_VOICE = process.env.GOOGLE_TTS_VOICE || 'de-DE-Wavenet-C'
+const GOOGLE_TTS_RATE  = parseFloat(process.env.GOOGLE_TTS_RATE || '0.92')
 
 export async function POST(request) {
   const identity = await requireAndarunSession()
   if (identity.error) return NextResponse.json({ error: identity.error }, { status: identity.status })
-  if (!process.env.OPENAI_API_KEY) {
+
+  if (!process.env.GOOGLE_TTS_API_KEY) {
     return NextResponse.json({ error: 'Die KI-Stimme ist nicht konfiguriert.' }, { status: 503 })
   }
 
@@ -19,33 +20,34 @@ export async function POST(request) {
   }
 
   const text = typeof body?.text === 'string' ? body.text.trim() : ''
-  if (!text || text.length > 6000) {
+  if (!text || text.length > 5000) {
     return NextResponse.json({ error: 'Der Hörtext fehlt oder ist zu lang.' }, { status: 400 })
   }
 
   try {
-    const response = await fetch('https://api.openai.com/v1/audio/speech', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: TTS_MODEL,
-        voice: TTS_VOICE,
-        input: text,
-        response_format: 'mp3',
-        speed: 0.95,
-      }),
-    })
+    const response = await fetch(
+      `https://texttospeech.googleapis.com/v1/text:synthesize?key=${process.env.GOOGLE_TTS_API_KEY}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          input: { text },
+          voice: { languageCode: 'de-DE', name: GOOGLE_TTS_VOICE },
+          audioConfig: { audioEncoding: 'MP3', speakingRate: GOOGLE_TTS_RATE },
+        }),
+      }
+    )
 
     if (!response.ok) {
       const errorText = await response.text()
-      console.error('[andarun-deutsch-speech] OpenAI failed', response.status, errorText)
+      console.error('[andarun-deutsch-speech] Google TTS failed', response.status, errorText)
       return NextResponse.json({ error: 'Die KI-Stimme ist gerade nicht verfügbar.' }, { status: 502 })
     }
 
-    return new Response(await response.arrayBuffer(), {
+    const data = await response.json()
+    const audioBuffer = Buffer.from(data.audioContent, 'base64')
+
+    return new Response(audioBuffer, {
       headers: {
         'Content-Type': 'audio/mpeg',
         'Cache-Control': 'private, max-age=3600',
