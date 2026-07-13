@@ -93,6 +93,24 @@ function formatMonthTitle(monthKey) {
   return `${MONTH_LABELS[month - 1]} ${year}`
 }
 
+function workDutyLabel(shift) {
+  if (shift?.model === 'N') return 'Nacht'
+  if (shift?.model === 'T') return 'Tag'
+  if (shift?.model === 'S') return 'Spät'
+  if (shift?.model === 'U') return 'Urlaub'
+  if (shift?.model === 'K') return 'Krank'
+  if (shift?.model === 'BD') return 'BD'
+  return shift?.duty || ''
+}
+
+function workDutyClass(shift) {
+  if (shift?.model === 'N') return styles.workNight
+  if (shift?.model === 'S') return styles.workLate
+  if (shift?.model === 'BD') return styles.workWeekend
+  if (shift?.model === 'U' || shift?.model === 'K') return styles.workAbsence
+  return styles.workDay
+}
+
 function monthKeyFromDate(value = new Date()) {
   const date = typeof value === 'string' ? new Date(`${value}T00:00:00`) : value
   const year = date.getFullYear()
@@ -238,6 +256,8 @@ function displayLane(todo) {
 
 export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/andarun', homeLabel = 'Andarun', theme = 'dark' }) {
   const [todos, setTodos] = useState([])
+  const [workShifts, setWorkShifts] = useState([])
+  const [workMessage, setWorkMessage] = useState('')
   const [form, setForm] = useState(() => emptyForm())
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
@@ -251,6 +271,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   const [newEventForm, setNewEventForm] = useState(() => eventFormForDate())
   const [draggingId, setDraggingId] = useState(null)
   const [dropLaneId, setDropLaneId] = useState(null)
+  const showWorkPlan = apiBase === '/api/andarun/todos'
 
   useEffect(() => {
     let active = true
@@ -308,6 +329,30 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
       active = false
     }
   }, [])
+
+  useEffect(() => {
+    if (!showWorkPlan) return
+    let active = true
+
+    async function loadWorkPlan() {
+      try {
+        const response = await fetch('/api/andarun/work', { cache: 'no-store' })
+        if (!response.ok) throw new Error('Dienstplan konnte nicht geladen werden.')
+        const payload = await response.json()
+        if (!active) return
+        setWorkShifts(Array.isArray(payload.shifts) ? payload.shifts : [])
+        setWorkMessage('')
+      } catch (error) {
+        if (!active) return
+        setWorkMessage(error.message)
+      }
+    }
+
+    loadWorkPlan()
+    return () => {
+      active = false
+    }
+  }, [showWorkPlan])
 
   useEffect(() => {
     if (storageMode === 'local' && !loading) {
@@ -478,6 +523,14 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   }
 
   const monthDays = useMemo(() => buildMonthDays(monthView), [monthView])
+
+  const workByDate = useMemo(() => {
+    const map = new Map()
+    for (const shift of workShifts) {
+      if (shift?.date?.startsWith(monthView)) map.set(shift.date, shift)
+    }
+    return map
+  }, [workShifts, monthView])
 
   const eventsByDate = useMemo(() => {
     const map = new Map()
@@ -829,6 +882,43 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
           })}
         </div>
       </section>
+
+      {showWorkPlan && (
+        <section className={`${styles.monthPanel} ${styles.workPlanPanel}`} aria-label="Dienstplan overview">
+          <header className={styles.monthHeader}>
+            <div>
+              <span className={styles.kicker}>Dienstplan</span>
+              <h2>{formatMonthTitle(monthView)}</h2>
+            </div>
+            <Link className={styles.workPlanLink} href="/andarun/dienste">Dienste öffnen</Link>
+          </header>
+
+          {workMessage && <p className={styles.workPlanNotice}>{workMessage}</p>}
+
+          <div className={styles.workPlanGrid}>
+            {['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'].map(day => (
+              <div className={styles.weekday} key={day}>{day}</div>
+            ))}
+            {monthDays.map((day, index) => {
+              const shift = day ? workByDate.get(day) : null
+              const isToday = day === todayValue()
+              return (
+                <div
+                  className={`${styles.workPlanCell} ${!day ? styles.workPlanCellEmpty : ''} ${isToday ? styles.workPlanToday : ''}`}
+                  key={day || `work-empty-${index}`}
+                >
+                  {day && <span className={styles.workPlanDay}>{Number(day.slice(-2))}</span>}
+                  {shift && (
+                    <span className={`${styles.workBadge} ${workDutyClass(shift)}`}>
+                      {workDutyLabel(shift)}
+                    </span>
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        </section>
+      )}
 
       {completedOpen && (
         <div className={styles.modalBackdrop} role="presentation" onMouseDown={() => setCompletedOpen(false)}>

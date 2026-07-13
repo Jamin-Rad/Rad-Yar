@@ -184,6 +184,30 @@
   color: #64748b;
 }
 
+.lightPage .workPlanCell {
+  border-color: rgba(244, 114, 182, .13);
+  background: rgba(255, 255, 255, .56);
+}
+
+.lightPage .workPlanToday {
+  border-color: rgba(236, 72, 153, .36);
+  box-shadow: inset 0 0 0 1px rgba(236, 72, 153, .12);
+}
+
+.lightPage .workPlanDay {
+  color: #8a4a61;
+}
+
+.lightPage .workPlanNotice {
+  color: #92400e;
+}
+
+.lightPage .workPlanLink {
+  border-color: rgba(244, 114, 182, .20);
+  background: rgba(255, 255, 255, .74);
+  color: #6b3a4d;
+}
+
 .lightPage .columnHeader {
   border-bottom-color: rgba(148, 163, 184, .22);
 }
@@ -682,6 +706,104 @@
   text-decoration: line-through;
   text-decoration-thickness: 2px;
   text-decoration-color: rgba(226,232,240,.36);
+}
+
+.workPlanPanel {
+  margin-top: 18px;
+}
+
+.workPlanLink {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  color: rgba(255,255,255,.82);
+  font-size: 12px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.workPlanNotice {
+  margin: 0 0 12px;
+  color: #fde68a;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.workPlanGrid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.workPlanCell {
+  display: grid;
+  align-content: space-between;
+  gap: 8px;
+  height: 78px;
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 14px;
+  background: rgba(255,255,255,.055);
+  overflow: hidden;
+}
+
+.workPlanCellEmpty {
+  opacity: .28;
+}
+
+.workPlanToday {
+  border-color: rgba(45, 212, 191, .44);
+  box-shadow: inset 0 0 0 1px rgba(45, 212, 191, .14);
+}
+
+.workPlanDay {
+  color: rgba(226,232,240,.72);
+  font-size: 11px;
+  font-weight: 950;
+}
+
+.workBadge {
+  display: block;
+  max-width: 100%;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 950;
+  line-height: 1;
+  overflow: hidden;
+  padding: 6px 8px;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.workDay {
+  background: rgba(45, 212, 191, .18);
+  color: #99f6e4;
+}
+
+.workLate {
+  background: rgba(56, 189, 248, .18);
+  color: #bae6fd;
+}
+
+.workNight {
+  background: rgba(196, 181, 253, .22);
+  color: #ddd6fe;
+}
+
+.workWeekend {
+  background: rgba(253, 224, 71, .20);
+  color: #fef08a;
+}
+
+.workAbsence {
+  background: rgba(187, 247, 208, .18);
+  color: #dcfce7;
 }
 
 .column {
@@ -1284,6 +1406,10 @@
     gap: 4px;
   }
 
+  .workPlanGrid {
+    gap: 4px;
+  }
+
   .monthCell {
     min-height: 74px;
     border-radius: 11px;
@@ -1291,10 +1417,22 @@
     padding: 5px;
   }
 
+  .workPlanCell {
+    height: 58px;
+    border-radius: 11px;
+    gap: 4px;
+    padding: 5px;
+  }
+
   .monthDay {
     width: 20px;
     height: 20px;
     font-size: 10px;
+  }
+
+  .workBadge {
+    font-size: 9px;
+    padding: 5px 4px;
   }
 
   .monthEvent {
