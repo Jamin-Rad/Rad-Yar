@@ -95,7 +95,7 @@ function formatMonthTitle(monthKey) {
 
 function workDutyLabel(shift) {
   if (shift?.model === 'N') return 'Nacht'
-  if (shift?.model === 'T') return 'Tag'
+  if (shift?.model === 'T') return shift.assignment || 'T'
   if (shift?.model === 'S') return 'Spät'
   if (shift?.model === 'U') return 'Urlaub'
   if (shift?.model === 'K') return 'Krank'
@@ -679,7 +679,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   return (
     <main className={`${styles.page} ${theme === 'light' ? styles.lightPage : ''}`}>
       <section className={styles.hero}>
-        <Link href={homeHref} className={styles.backLink}>{homeLabel}</Link>
+        <Link href={homeHref} className={styles.backLink}>← {homeLabel}</Link>
         <div>
           <span className={styles.kicker}>Private Planung</span>
           <h1>ToDos</h1>
@@ -839,12 +839,15 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
           </div>
         </header>
 
+        {showWorkPlan && workMessage && <p className={styles.workPlanNotice}>{workMessage}</p>}
+
         <div className={styles.monthGrid}>
           {['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'].map(day => (
             <div className={styles.weekday} key={day}>{day}</div>
           ))}
           {monthDays.map((day, index) => {
             const events = day ? eventsByDate.get(day) || [] : []
+            const shift = day ? workByDate.get(day) : null
             const isToday = day === todayValue()
             return (
               <div
@@ -861,6 +864,11 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
                 aria-label={day ? `Termin am ${formatDeadline(day)} hinzufügen` : undefined}
               >
                 {day && <span className={styles.monthDay}>{Number(day.slice(-2))}</span>}
+                {shift && (
+                  <span className={`${styles.workBadge} ${styles.monthWorkBadge} ${workDutyClass(shift)}`}>
+                    {workDutyLabel(shift)}
+                  </span>
+                )}
                 {events.map(event => (
                   <button
                     className={`${styles.monthEvent} ${event.done ? styles.monthEventDone : ''}`}
@@ -882,43 +890,6 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
           })}
         </div>
       </section>
-
-      {showWorkPlan && (
-        <section className={`${styles.monthPanel} ${styles.workPlanPanel}`} aria-label="Dienstplan overview">
-          <header className={styles.monthHeader}>
-            <div>
-              <span className={styles.kicker}>Dienstplan</span>
-              <h2>{formatMonthTitle(monthView)}</h2>
-            </div>
-            <Link className={styles.workPlanLink} href="/andarun/dienste">Dienste öffnen</Link>
-          </header>
-
-          {workMessage && <p className={styles.workPlanNotice}>{workMessage}</p>}
-
-          <div className={styles.workPlanGrid}>
-            {['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'].map(day => (
-              <div className={styles.weekday} key={day}>{day}</div>
-            ))}
-            {monthDays.map((day, index) => {
-              const shift = day ? workByDate.get(day) : null
-              const isToday = day === todayValue()
-              return (
-                <div
-                  className={`${styles.workPlanCell} ${!day ? styles.workPlanCellEmpty : ''} ${isToday ? styles.workPlanToday : ''}`}
-                  key={day || `work-empty-${index}`}
-                >
-                  {day && <span className={styles.workPlanDay}>{Number(day.slice(-2))}</span>}
-                  {shift && (
-                    <span className={`${styles.workBadge} ${workDutyClass(shift)}`}>
-                      {workDutyLabel(shift)}
-                    </span>
-                  )}
-                </div>
-              )
-            })}
-          </div>
-        </section>
-      )}
 
       {completedOpen && (
         <div className={styles.modalBackdrop} role="presentation" onMouseDown={() => setCompletedOpen(false)}>

@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import styles from '../admin.module.css'
 
@@ -369,7 +370,7 @@ function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onTo
   )
 }
 
-export default function BudgetPage() {
+export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
   const [view, setView]       = useState('monat')
   const [subView, setSubView] = useState('kategorien')
   const [month, setMonth]     = useState(getMonthKey())
@@ -1126,6 +1127,11 @@ ${manualEntries.length ? `
       <main className={styles.content}>
 
         {/* ── HEADER ── */}
+        {homeHref && (
+          <Link className={styles.financeBackLink} href={homeHref}>
+            ← {homeLabel || 'Zurück'}
+          </Link>
+        )}
         <div className={styles.financeHeader}>
           <div>
             <h1 className={styles.title}>Private Finanzen</h1>

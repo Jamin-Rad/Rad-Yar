@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
 import s from './health.module.css'
 import {
@@ -158,7 +159,7 @@ function estimateMacros(food, grams) {
   }
 }
 
-export default function HealthPage({ apiBase = '/api/admin/health' }) {
+export default function HealthPage({ apiBase = '/api/admin/health', homeHref = '', homeLabel = '' }) {
   const [tab, setTab] = useState('eintragen')
   const [records, setRecords] = useState([])
   const [customSports, setCustomSports] = useState([])
@@ -540,6 +541,11 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
       <div className={s.inner}>
 
         <header className={s.simpleHero}>
+          {homeHref && (
+            <Link className={s.healthBackLink} href={homeHref}>
+              ← {homeLabel || 'Zurück'}
+            </Link>
+          )}
           <h1 className={s.heroTitle}>Gesundheit</h1>
         </header>
 

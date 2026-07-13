@@ -282,7 +282,7 @@ export default function RoutinePage({ apiBase = '/api/andarun/routines', homeHre
   return (
     <main className={styles.page}>
       <section className={styles.hero}>
-        <Link href={homeHref} className={styles.backLink}>{homeLabel}</Link>
+        <Link href={homeHref} className={styles.backLink}>← {homeLabel}</Link>
         <div>
           <span className={styles.kicker}>Private Routine</span>
           <h1>Routine</h1>

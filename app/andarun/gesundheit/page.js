@@ -16,5 +16,5 @@ export const dynamic = 'force-dynamic'
 export default async function AndarunHealthPage() {
   if (!(await hasAndarunSession())) redirect('/andarun/login')
 
-  return <HealthPage apiBase="/api/andarun/health" />
+  return <HealthPage apiBase="/api/andarun/health" homeHref="/andarun" homeLabel="Andarun" />
 }

@@ -16,5 +16,5 @@ export const dynamic = 'force-dynamic'
 export default async function FatimaHealthPage() {
   if (!(await hasFatimaSession())) redirect('/fatima/login')
 
-  return <HealthPage apiBase="/api/fatima/health" />
+  return <HealthPage apiBase="/api/fatima/health" homeHref="/fatima" homeLabel="Fatima" />
 }

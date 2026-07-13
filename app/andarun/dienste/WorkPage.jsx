@@ -295,7 +295,7 @@ export default function WorkPage() {
   return (
     <main className={styles.page}>
       <header className={styles.header}>
-        <Link href="/andarun" className={styles.back}>Andarun</Link>
+        <Link href="/andarun" className={styles.back}>← Andarun</Link>
         <div>
           <span className={styles.kicker}>Dienstplanung</span>
           <h1>Dienste & Befunde</h1>

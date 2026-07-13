@@ -16,5 +16,5 @@ export const dynamic = 'force-dynamic'
 export default async function AndarunFinanzPage() {
   if (!(await hasAndarunSession())) redirect('/andarun/login')
 
-  return <BudgetPage />
+  return <BudgetPage homeHref="/andarun" homeLabel="Andarun" />
 }

@@ -17,5 +17,5 @@ export default async function AndarunDeutschLessonPage({ params }) {
   if (!(await hasAndarunSession())) redirect('/andarun/login')
   const resolvedParams = await params
 
-  return <DeutschPage initialLessonId={resolvedParams.lessonId} lessonMode />
+  return <DeutschPage initialLessonId={resolvedParams.lessonId} lessonMode homeHref="/andarun" homeLabel="Andarun" courseHref="/andarun/deutsch" lessonBase="/andarun/deutsch" />
 }

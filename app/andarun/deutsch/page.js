@@ -16,5 +16,5 @@ export const dynamic = 'force-dynamic'
 export default async function AndarunDeutschPage() {
   if (!(await hasAndarunSession())) redirect('/andarun/login')
 
-  return <DeutschPage />
+  return <DeutschPage homeHref="/andarun" homeLabel="Andarun" />
 }

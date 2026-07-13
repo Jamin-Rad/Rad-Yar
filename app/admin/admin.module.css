@@ -90,6 +90,28 @@
   padding: 40px 24px;
 }
 
+.financeBackLink {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  margin-bottom: 16px;
+  border: 1px solid rgba(15, 23, 42, .10);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .78);
+  color: #475569;
+  font-size: 13px;
+  font-weight: 850;
+  padding: 0 16px;
+  text-decoration: none;
+  box-shadow: var(--finance-glass-soft-shadow);
+  backdrop-filter: blur(14px);
+}
+
+.financeBackLink:hover {
+  border-color: rgba(249, 115, 22, .28);
+  color: #f97316;
+}
+
 .title {
   font-family: var(--font-display);
   font-size: 32px;

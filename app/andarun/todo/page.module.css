@@ -781,6 +781,16 @@
   white-space: nowrap;
 }
 
+.monthWorkBadge {
+  order: 1;
+  margin-top: -2px;
+  text-align: left;
+}
+
+.monthCell .monthEvent {
+  order: 2;
+}
+
 .workDay {
   background: rgba(45, 212, 191, .18);
   color: #99f6e4;
