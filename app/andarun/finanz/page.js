@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
 import { hasAndarunSession } from '@/lib/andarunPasswordAuth'
+import AndarunNav from '../AndarunNav'
 import BudgetPage from '@/app/admin/budget/BudgetPage'
 
 export const metadata = {
@@ -16,5 +17,10 @@ export const dynamic = 'force-dynamic'
 export default async function AndarunFinanzPage() {
   if (!(await hasAndarunSession())) redirect('/andarun/login')
 
-  return <BudgetPage homeHref="/andarun" homeLabel="Andarun" />
+  return (
+    <>
+      <AndarunNav />
+      <BudgetPage />
+    </>
+  )
 }

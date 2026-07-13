@@ -254,7 +254,7 @@ function displayLane(todo) {
   return LANES.some(lane => lane.id === todo.lane) ? todo.lane : effectiveLane(todo)
 }
 
-export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/andarun', homeLabel = 'Andarun', theme = 'dark' }) {
+export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/andarun', homeLabel = 'Andarun', theme = 'dark', showHomeLink = true }) {
   const [todos, setTodos] = useState([])
   const [workShifts, setWorkShifts] = useState([])
   const [workMessage, setWorkMessage] = useState('')
@@ -679,7 +679,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   return (
     <main className={`${styles.page} ${theme === 'light' ? styles.lightPage : ''}`}>
       <section className={styles.hero}>
-        <Link href={homeHref} className={styles.backLink}>← {homeLabel}</Link>
+        {showHomeLink ? <Link href={homeHref} className={styles.backLink}>← {homeLabel}</Link> : <span />}
         <div>
           <span className={styles.kicker}>Private Planung</span>
           <h1>ToDos</h1>

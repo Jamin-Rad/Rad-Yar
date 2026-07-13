@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation'
 import { hasAndarunSession } from '@/lib/andarunPasswordAuth'
 import HealthPage from '@/app/admin/health/HealthPage'
+import AndarunNav from '../AndarunNav'
 
 export const metadata = {
   title: 'Andarun Gesundheit',
@@ -16,5 +17,10 @@ export const dynamic = 'force-dynamic'
 export default async function AndarunHealthPage() {
   if (!(await hasAndarunSession())) redirect('/andarun/login')
 
-  return <HealthPage apiBase="/api/andarun/health" homeHref="/andarun" homeLabel="Andarun" />
+  return (
+    <>
+      <AndarunNav />
+      <HealthPage apiBase="/api/andarun/health" homeLabel="Andarun" />
+    </>
+  )
 }

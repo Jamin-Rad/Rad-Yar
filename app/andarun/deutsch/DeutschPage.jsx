@@ -779,7 +779,9 @@ export default function DeutschPage({
       <header className={`${styles.hero} ${!lessonMode ? styles.heroSimple : ''}`}>
         <div>
           <div className={styles.heroNav}>
-            <Link className={styles.backLink} href={lessonMode ? courseHref : homeHref}>← {lessonMode ? 'Kurs' : homeLabel}</Link>
+            {(lessonMode || homeLabel) && (
+              <Link className={styles.backLink} href={lessonMode ? courseHref : homeHref}>← {lessonMode ? 'Kurs' : homeLabel}</Link>
+            )}
             <button type="button" className={styles.themeToggle} onClick={toggleVisualTheme} aria-label="Farbschema wechseln">
               <span>{visualTheme === 'dark' ? '☾' : '☼'}</span>
               {visualTheme === 'dark' ? 'Galaxy' : 'Heaven'}

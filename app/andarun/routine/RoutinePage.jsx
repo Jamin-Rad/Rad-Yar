@@ -71,7 +71,7 @@ function logKey(routineId, date) {
   return `${routineId}:${date}`
 }
 
-export default function RoutinePage({ apiBase = '/api/andarun/routines', homeHref = '/andarun', homeLabel = 'Andarun' }) {
+export default function RoutinePage({ apiBase = '/api/andarun/routines', homeHref = '/andarun', homeLabel = 'Andarun', showHomeLink = true }) {
   const [routines, setRoutines] = useState([])
   const [logs, setLogs] = useState({})
   const [form, setForm] = useState(() => emptyForm())
@@ -282,7 +282,7 @@ export default function RoutinePage({ apiBase = '/api/andarun/routines', homeHre
   return (
     <main className={styles.page}>
       <section className={styles.hero}>
-        <Link href={homeHref} className={styles.backLink}>← {homeLabel}</Link>
+        {showHomeLink ? <Link href={homeHref} className={styles.backLink}>← {homeLabel}</Link> : <span />}
         <div>
           <span className={styles.kicker}>Private Routine</span>
           <h1>Routine</h1>

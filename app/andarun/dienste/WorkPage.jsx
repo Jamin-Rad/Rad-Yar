@@ -166,7 +166,7 @@ const EMPTY_FINDING = {
   status: 'offen',
 }
 
-export default function WorkPage() {
+export default function WorkPage({ showHomeLink = true }) {
   const [month, setMonth] = useState(monthValue())
   const [shifts, setShifts] = useState([])
   const [findings, setFindings] = useState([])
@@ -295,7 +295,7 @@ export default function WorkPage() {
   return (
     <main className={styles.page}>
       <header className={styles.header}>
-        <Link href="/andarun" className={styles.back}>← Andarun</Link>
+        {showHomeLink ? <Link href="/andarun" className={styles.back}>← Andarun</Link> : <span />}
         <div>
           <span className={styles.kicker}>Dienstplanung</span>
           <h1>Dienste & Befunde</h1>

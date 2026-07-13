@@ -29,10 +29,21 @@ const FOOD_IMAGE_CLASSES = {
   sonstiges: 'foodImageOther',
 }
 const FOOD_SYMBOLS = {
+  'ghormeh-sabzi': '🥬', fesenjan: '🌰', 'mirza-ghasemi': '🍆', 'kashk-bademjan': '🍆',
+  dolmeh: '🍃', 'ash-reshteh': '🍲', adasi: '🫘', abgoosht: '🥘', 'makaroni-irani': '🍝',
+  kotlet: '🥔', 'kuku-sabzi': '🌿', pizza: '🍕', 'pasta-tomate': '🍝', pommes: '🍟',
+  koobideh: '🍢', 'kebab-barg': '🥩', 'joojeh-kebab': '🍗', doner: '🥙', 'falafel-wrap': '🧆',
+  chelo: '🍚', tahdig: '🟨', 'zereshk-polo': '🍒', 'baghali-polo': '🌱', 'adas-polo': '🫘', kateh: '🍚',
+  naan: '🫓', lavash: '📄', sangak: '🥖', 'brot-kuerbis': '🌻', 'brot-walnuss': '🌰',
+  toast: '🍞', broetchen: '🥐', croissant: '🥐',
+  ei: '🥚', 'ei-tomate': '🍳', kaese: '🧀', mast: '🥣', marmelade: '🍓', honig: '🍯',
+  haferflocken: '🥣', muesli: '🥣', milch: '🥛', quark: '🥣', butter: '🧈',
+  huehnchen: '🍗', 'nugget-huhn': '🍗', 'nugget-fisch': '🐟', lachs: '🐟', 'cordon-bleu': '🥩',
+  burger: '🍔', kalbsalas: '🥓', hackfleisch: '🥩', putenbrust: '🍗', thunfisch: '🐟', wurst: '🌭',
+  'salad-shirazi': '🥗', 'salad-mayo': '🥗', torshi: '🥒', tomate: '🍅', gurke: '🥒',
+  olivenoel: '🫒', kartoffel: '🥔', brokkoli: '🥦', avocado: '🥑', linsen: '🫘',
   apfel: '🍎', banane: '🍌', orange: '🍊', trauben: '🍇', erdbeeren: '🍓', datteln: '🌴',
-  tomate: '🍅', gurke: '🥒', brokkoli: '🥦', avocado: '🥑', kartoffel: '🥔',
-  pizza: '🍕', pommes: '🍟', burger: '🍔', ei: '🥚', milch: '🥛', kaese: '🧀',
-  wasser: '💧', tee: '🍵', kaffee: '☕', cola: '🥤', orangensaft: '🍊',
+  doogh: '🥛', wasser: '💧', tee: '🍵', kaffee: '☕', cola: '🥤', orangensaft: '🍊', ayran: '🥛',
   schokolade: '🍫', kuchen: '🍰', chips: '🥨', nuesse: '🥜', eis: '🍨',
 }
 const UNIT_BY_CATEGORY = {

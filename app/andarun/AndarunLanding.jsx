@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import AndarunNav from './AndarunNav'
 import styles from './page.module.css'
 
 const spaces = [
@@ -78,12 +79,7 @@ function SpaceIcon({ name }) {
 export default function AndarunLanding() {
   return (
     <main className={styles.page}>
-      <header className={styles.nav}>
-        <Link className={styles.brand} href="/andarun" aria-label="Andarun Startseite">
-          <span className={styles.brandMark}>A</span>
-          <span>ANDARUN</span>
-        </Link>
-      </header>
+      <AndarunNav />
 
       <section className={styles.hero} aria-labelledby="andarun-title">
         <div className={styles.heroCopy}>
