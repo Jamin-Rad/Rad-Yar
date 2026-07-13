@@ -721,6 +721,234 @@
   padding: 0 14px;
 }
 
+.pickerBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(15, 23, 42, .46);
+  backdrop-filter: blur(14px);
+}
+
+.pickerModal {
+  width: min(760px, 100%);
+  max-height: min(820px, calc(100vh - 36px));
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, .22);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 30px 90px rgba(15, 23, 42, .28);
+}
+
+:global(html[data-theme='dark']) .pickerModal {
+  border-color: rgba(148, 163, 184, .2);
+  background: #111827;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, .52);
+}
+
+.pickerHeader {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid rgba(148, 163, 184, .18);
+  background:
+    linear-gradient(135deg, rgba(236, 253, 245, .95), rgba(248, 250, 252, .96));
+}
+
+:global(html[data-theme='dark']) .pickerHeader {
+  border-color: rgba(148, 163, 184, .16);
+  background:
+    linear-gradient(135deg, rgba(15, 118, 110, .18), rgba(15, 23, 42, .5));
+}
+
+.pickerKicker {
+  color: #0f766e;
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.pickerHeader h2 {
+  margin: 3px 0 0;
+  overflow-wrap: anywhere;
+  color: #0f172a;
+  font-size: clamp(24px, 4vw, 34px);
+  font-weight: 950;
+  line-height: 1.05;
+}
+
+:global(html[data-theme='dark']) .pickerKicker {
+  color: #5eead4;
+}
+
+:global(html[data-theme='dark']) .pickerHeader h2 {
+  color: #f8fafc;
+}
+
+.pickerCatGrid {
+  max-height: calc(100vh - 190px);
+  overflow: auto;
+}
+
+.pickerList {
+  display: grid;
+  max-height: calc(100vh - 168px);
+  overflow: auto;
+  padding: 10px;
+}
+
+.pickerItem {
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, .16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .72);
+}
+
+.pickerItem + .pickerItem {
+  margin-top: 8px;
+}
+
+.pickerItemSelected {
+  border-color: rgba(99, 102, 241, .34);
+  background: rgba(239, 246, 255, .92);
+}
+
+.pickerItemSelectedFood {
+  border-color: rgba(16, 185, 129, .34);
+  background: rgba(236, 253, 245, .92);
+}
+
+:global(html[data-theme='dark']) .pickerItem {
+  border-color: rgba(148, 163, 184, .14);
+  background: rgba(30, 41, 59, .46);
+}
+
+:global(html[data-theme='dark']) .pickerItemSelected,
+:global(html[data-theme='dark']) .pickerItemSelectedFood {
+  background: rgba(45, 212, 191, .08);
+}
+
+.pickerItemButton {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 42px minmax(0, 1fr) 34px;
+  gap: 10px;
+  align-items: center;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: 12px;
+  text-align: left;
+}
+
+.pickerItemText {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+
+.pickerItemText strong {
+  overflow: hidden;
+  color: #0f172a;
+  font-size: 14px;
+  font-weight: 950;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pickerItemText small {
+  overflow: hidden;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+:global(html[data-theme='dark']) .pickerItemText strong {
+  color: #f8fafc;
+}
+
+.choiceGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  padding: 0 12px 12px 64px;
+}
+
+.choiceBtn,
+.choiceActive,
+.choiceActiveFood {
+  display: grid;
+  gap: 3px;
+  min-height: 58px;
+  align-content: center;
+  border: 1px solid rgba(148, 163, 184, .24);
+  border-radius: 8px;
+  background: #fff;
+  color: #0f172a;
+  cursor: pointer;
+  font: inherit;
+  padding: 8px;
+  text-align: center;
+  transition: border-color .16s, background .16s, transform .16s;
+}
+
+.choiceBtn:hover,
+.choiceActive,
+.choiceActiveFood {
+  border-color: rgba(15, 118, 110, .38);
+  background: #ecfdf5;
+  transform: translateY(-1px);
+}
+
+.choiceActive {
+  border-color: rgba(99, 102, 241, .5);
+  background: #eff6ff;
+}
+
+.choiceActiveFood {
+  border-color: rgba(16, 185, 129, .5);
+  background: #ecfdf5;
+}
+
+.choiceBtn strong,
+.choiceActive strong,
+.choiceActiveFood strong {
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.choiceBtn span,
+.choiceActive span,
+.choiceActiveFood span {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 850;
+}
+
+:global(html[data-theme='dark']) .choiceBtn,
+:global(html[data-theme='dark']) .choiceActive,
+:global(html[data-theme='dark']) .choiceActiveFood {
+  border-color: rgba(148, 163, 184, .18);
+  background: rgba(15, 23, 42, .62);
+  color: #f8fafc;
+}
+
+:global(html[data-theme='dark']) .choiceBtn:hover,
+:global(html[data-theme='dark']) .choiceActive,
+:global(html[data-theme='dark']) .choiceActiveFood {
+  border-color: rgba(45, 212, 191, .42);
+  background: rgba(45, 212, 191, .12);
+}
+
 .summaryPanel {
   position: sticky;
   top: 92px;
@@ -1349,6 +1577,19 @@
   .inputRow,
   .inputRowFood {
     grid-template-columns: 1fr;
+  }
+
+  .pickerBackdrop {
+    padding: 10px;
+  }
+
+  .pickerModal {
+    max-height: calc(100vh - 20px);
+  }
+
+  .choiceGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-left: 12px;
   }
 
   .summaryItem {

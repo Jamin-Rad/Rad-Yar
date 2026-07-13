@@ -19,6 +19,13 @@ const FOOD_ICONS = {
 const TODAY = new Date().toISOString().slice(0, 10)
 const RING_R = 50
 const RING_C = 2 * Math.PI * RING_R
+const SPORT_MINUTES = [10, 20, 30, 45, 60, 90]
+const FOOD_PORTIONS = [
+  { label: '½ Portion', factor: 0.5 },
+  { label: '1 Portion', factor: 1 },
+  { label: '1½ Portionen', factor: 1.5 },
+  { label: '2 Portionen', factor: 2 },
+]
 
 async function apiRequest(apiBase, path, method = 'GET', body) {
   const res = await fetch(`${apiBase}${path}`, {
@@ -40,11 +47,8 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
   const [deletedFoods, setDeletedFoods] = useState([])
   const [loading, setLoading] = useState(true)
 
-  const [view, setView] = useState('home')
-  const [selectedCat, setSelectedCat] = useState(null)
+  const [picker, setPicker] = useState(null)
   const [activeId, setActiveId] = useState(null)
-  const [inputVal, setInputVal] = useState('')
-  const inputRef = useRef(null)
   const [form, setForm] = useState(EMPTY_FORM)
   const [saving, setSaving] = useState(false)
   const [mgmtMode, setMgmtMode] = useState('sport')
@@ -144,26 +148,29 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
   const foodFraction  = Math.min((totalFoodKcal + (form.manualKcal || 0)) / 2000, 1)
   const sportFraction = Math.min(totalSportKcal / 2000, 1)
 
-  function goHome()           { setView('home');        setSelectedCat(null); setActiveId(null) }
-  function goSportCats()      { setView('sport-cats');  setSelectedCat(null); setActiveId(null) }
-  function goFoodCats()       { setView('food-cats');   setSelectedCat(null); setActiveId(null) }
-  function selectSportCat(id) { setView('sport-items'); setSelectedCat(id);   setActiveId(null) }
-  function selectFoodCat(id)  { setView('food-items');  setSelectedCat(id);   setActiveId(null) }
-
-  function openInput(id, defaultVal = '') {
-    setActiveId(id); setInputVal(String(defaultVal || ''))
-    setTimeout(() => inputRef.current?.focus(), 50)
+  function openPicker(type) {
+    setPicker({ type, step: 'cats', catId: null })
+    setActiveId(null)
   }
-  function confirmSport(id) {
-    const min = parseInt(inputVal)
-    if (!min || min <= 0) { setActiveId(null); return }
+
+  function closePicker() {
+    setPicker(null)
+    setActiveId(null)
+  }
+
+  function selectPickerCat(catId) {
+    setPicker(prev => prev ? { ...prev, step: 'items', catId } : prev)
+    setActiveId(null)
+  }
+
+  function chooseSportMinutes(id, min) {
     setForm(f => ({ ...f, sports: [...f.sports.filter(x => x.id !== id), { id, min }] }))
     setActiveId(null)
   }
-  function confirmFood(id) {
-    const g = parseInt(inputVal)
-    if (!g || g <= 0) { setActiveId(null); return }
-    setForm(f => ({ ...f, foods: [...f.foods.filter(x => x.id !== id), { id, g }] }))
+
+  function chooseFoodPortion(food, factor) {
+    const g = Math.round((food.portionG || 100) * factor)
+    setForm(f => ({ ...f, foods: [...f.foods.filter(x => x.id !== food.id), { id: food.id, g }] }))
     setActiveId(null)
   }
   function removeSportFromForm(id) { setForm(f => ({ ...f, sports: f.sports.filter(x => x.id !== id) })) }
@@ -203,8 +210,8 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
   async function restoreSport(id) { await api('/sports', 'PATCH', { id }); loadAll() }
   async function restoreFood(id)  { await api('/foods',  'PATCH', { id }); loadAll() }
 
-  const viewSportItems = selectedCat ? activeSports.filter(sp => sp.cat === selectedCat) : []
-  const viewFoodItems  = selectedCat ? activeFoods.filter(f => f.cat === selectedCat) : []
+  const pickerSportItems = picker?.catId ? activeSports.filter(sp => sp.cat === picker.catId) : []
+  const pickerFoodItems  = picker?.catId ? activeFoods.filter(f => f.cat === picker.catId) : []
 
   const weightSeries = [...records]
     .filter(r => r.weight)
@@ -307,168 +314,20 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
 
             {/* Browse panel */}
             <div className={s.browsePanel}>
-
-              {view === 'home' && (
-                <div className={s.homeTiles}>
-                  <button className={s.homeTileSport} onClick={goSportCats}>
-                    <div className={s.homeTileIcon}>🏃</div>
-                    <div className={s.homeTileLabel}>Sport</div>
-                    <div className={s.homeTileSub}>{form.sports.length > 0 ? `${form.sports.length} gewählt` : 'hinzufügen'}</div>
-                    {form.sports.length > 0 && <div className={s.homeTileBadge}>{form.sports.length}</div>}
-                  </button>
-                  <button className={s.homeTileFood} onClick={goFoodCats}>
-                    <div className={s.homeTileIcon}>🥗</div>
-                    <div className={s.homeTileLabel}>Essen</div>
-                    <div className={s.homeTileSub}>{form.foods.length > 0 ? `${form.foods.length} gewählt` : 'hinzufügen'}</div>
-                    {form.foods.length > 0 && <div className={s.homeTileBadge + ' ' + s.homeTileBadgeFood}>{form.foods.length}</div>}
-                  </button>
-                </div>
-              )}
-
-              {view === 'sport-cats' && (
-                <div className={s.catView}>
-                  <div className={s.browseHeader}>
-                    <button className={s.backBtn} onClick={goHome}>←</button>
-                    <span className={s.browseTitle}>Sport — Kategorie</span>
-                  </div>
-                  <div className={s.catTileGrid}>
-                    {sportCatsWithCount.map(cat => (
-                      <button key={cat.id} className={s.catTile} onClick={() => selectSportCat(cat.id)}>
-                        <span className={s.catTileEmoji}>{cat.icon}</span>
-                        <span className={s.catTileName}>{cat.de}</span>
-                        <span className={s.catTileCount}>{cat.count}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {view === 'sport-items' && (
-                <div className={s.itemView}>
-                  <div className={s.browseHeader}>
-                    <button className={s.backBtn} onClick={goSportCats}>←</button>
-                    <span className={s.browseTitle}>{sportCatsWithCount.find(c => c.id === selectedCat)?.de}</span>
-                  </div>
-                  <div className={s.itemList}>
-                    {viewSportItems.map(sp => {
-                      const existing = form.sports.find(x => x.id === sp.id)
-                      const isActive = activeId === sp.id
-                      return (
-                        <div key={sp.id}>
-                          <div
-                            className={[s.itemRow, existing ? s.itemRowSelected : '', isActive ? s.itemRowOpen : ''].join(' ')}
-                            onClick={() => !isActive && openInput(sp.id, existing?.min || '')}
-                          >
-                            <div className={s.itemAvatar}>{sp.de.slice(0, 2).toUpperCase()}</div>
-                            <div className={s.itemInfo}>
-                              <div className={s.itemName}>{sp.de}</div>
-                              <div className={s.itemMeta}>{sp.kcalPerMin} kcal/min</div>
-                            </div>
-                            {existing && !isActive && (
-                              <div className={s.itemChip}>{existing.min} min</div>
-                            )}
-                            <button
-                              className={[s.itemToggle, isActive ? s.itemToggleClose : existing ? s.itemToggleOn : ''].join(' ')}
-                              onClick={e => { e.stopPropagation(); isActive ? setActiveId(null) : openInput(sp.id, existing?.min || '') }}
-                            >
-                              {isActive ? '×' : existing ? '✓' : '+'}
-                            </button>
-                          </div>
-                          {isActive && (
-                            <div className={s.inputRow}>
-                              <input
-                                ref={inputRef} type="number" min="1" max="360"
-                                placeholder="Minuten…" value={inputVal}
-                                onChange={e => setInputVal(e.target.value)}
-                                onKeyDown={e => { if (e.key === 'Enter') confirmSport(sp.id); if (e.key === 'Escape') setActiveId(null) }}
-                              />
-                              {parseInt(inputVal) > 0 && (
-                                <span className={s.inputPreview}>≈ {Math.round(sp.kcalPerMin * parseInt(inputVal))} kcal</span>
-                              )}
-                              <button className={s.inputConfirm} onClick={() => confirmSport(sp.id)}>OK</button>
-                            </div>
-                          )}
-                        </div>
-                      )
-                    })}
-                  </div>
-                </div>
-              )}
-
-              {view === 'food-cats' && (
-                <div className={s.catView}>
-                  <div className={s.browseHeader}>
-                    <button className={s.backBtn} onClick={goHome}>←</button>
-                    <span className={s.browseTitle}>Essen — Kategorie</span>
-                  </div>
-                  <div className={s.catTileGrid}>
-                    {foodCatsWithCount.map(cat => (
-                      <button key={cat.id} className={s.catTile + ' ' + s.catTileFood} onClick={() => selectFoodCat(cat.id)}>
-                        <span className={s.catTileEmoji}>{cat.icon}</span>
-                        <span className={s.catTileName}>{cat.de}</span>
-                        <span className={s.catTileCount}>{cat.count}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {view === 'food-items' && (
-                <div className={s.itemView}>
-                  <div className={s.browseHeader}>
-                    <button className={s.backBtn} onClick={goFoodCats}>←</button>
-                    <span className={s.browseTitle}>{foodCatsWithCount.find(c => c.id === selectedCat)?.de}</span>
-                  </div>
-                  <div className={s.itemList}>
-                    {viewFoodItems.map(food => {
-                      const existing = form.foods.find(x => x.id === food.id)
-                      const isActive = activeId === food.id
-                      return (
-                        <div key={food.id}>
-                          <div
-                            className={[s.itemRow, existing ? s.itemRowSelectedFood : '', isActive ? s.itemRowOpenFood : ''].join(' ')}
-                            onClick={() => !isActive && openInput(food.id, existing?.g || food.portionG || '')}
-                          >
-                            <div className={s.itemAvatar + ' ' + s.itemAvatarFood}>{food.de.slice(0, 2).toUpperCase()}</div>
-                            <div className={s.itemInfo}>
-                              <div className={s.itemName}>{food.de}</div>
-                              <div className={s.itemMeta}>{food.kcalPer100g} kcal/100g · Portion {food.portionG}g</div>
-                            </div>
-                            {existing && !isActive && (
-                              <div className={s.itemChip + ' ' + s.itemChipFood}>
-                                {existing.g ?? (existing.count != null ? existing.count * food.portionG : '?')}g
-                              </div>
-                            )}
-                            <button
-                              className={[s.itemToggle, s.itemToggleFood, isActive ? s.itemToggleClose : existing ? s.itemToggleOnFood : ''].join(' ')}
-                              onClick={e => { e.stopPropagation(); isActive ? setActiveId(null) : openInput(food.id, existing?.g || food.portionG || '') }}
-                            >
-                              {isActive ? '×' : existing ? '✓' : '+'}
-                            </button>
-                          </div>
-                          {isActive && (
-                            <div className={s.inputRow + ' ' + s.inputRowFood}>
-                              <input
-                                ref={inputRef} type="number" min="1"
-                                placeholder={`Gramm… (Portion: ${food.portionG}g)`}
-                                value={inputVal}
-                                onChange={e => setInputVal(e.target.value)}
-                                onKeyDown={e => { if (e.key === 'Enter') confirmFood(food.id); if (e.key === 'Escape') setActiveId(null) }}
-                              />
-                              {parseInt(inputVal) > 0 && (
-                                <span className={s.inputPreview + ' ' + s.inputPreviewFood}>
-                                  ≈ {Math.round((food.kcalPer100g / 100) * parseInt(inputVal))} kcal
-                                </span>
-                              )}
-                              <button className={s.inputConfirm + ' ' + s.inputConfirmFood} onClick={() => confirmFood(food.id)}>OK</button>
-                            </div>
-                          )}
-                        </div>
-                      )
-                    })}
-                  </div>
-                </div>
-              )}
+              <div className={s.homeTiles}>
+                <button className={s.homeTileSport} onClick={() => openPicker('sport')}>
+                  <div className={s.homeTileIcon}>🏃</div>
+                  <div className={s.homeTileLabel}>Sport</div>
+                  <div className={s.homeTileSub}>{form.sports.length > 0 ? `${form.sports.length} gewählt` : 'Kategorie auswählen'}</div>
+                  {form.sports.length > 0 && <div className={s.homeTileBadge}>{form.sports.length}</div>}
+                </button>
+                <button className={s.homeTileFood} onClick={() => openPicker('food')}>
+                  <div className={s.homeTileIcon}>🥗</div>
+                  <div className={s.homeTileLabel}>Essen</div>
+                  <div className={s.homeTileSub}>{form.foods.length > 0 ? `${form.foods.length} gewählt` : 'Kategorie auswählen'}</div>
+                  {form.foods.length > 0 && <div className={s.homeTileBadge + ' ' + s.homeTileBadgeFood}>{form.foods.length}</div>}
+                </button>
+              </div>
             </div>
 
             {/* Summary sidebar */}
@@ -543,6 +402,117 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
               <button className={s.saveBtn} onClick={handleSave} disabled={saving}>
                 {saving ? 'Speichert…' : 'Heute speichern'}
               </button>
+            </div>
+          </div>
+        )}
+
+        {tab === 'eintragen' && picker && (
+          <div className={s.pickerBackdrop} role="dialog" aria-modal="true" aria-label={picker.type === 'sport' ? 'Sport auswählen' : 'Essen auswählen'}>
+            <div className={s.pickerModal}>
+              <header className={s.pickerHeader}>
+                <button
+                  className={s.backBtn}
+                  type="button"
+                  onClick={() => picker.step === 'items' ? setPicker(prev => ({ ...prev, step: 'cats', catId: null })) : closePicker()}
+                  aria-label={picker.step === 'items' ? 'Zurück zu Kategorien' : 'Auswahl schließen'}
+                >
+                  {picker.step === 'items' ? '←' : '×'}
+                </button>
+                <div>
+                  <span className={s.pickerKicker}>{picker.type === 'sport' ? 'Sport' : 'Essen'}</span>
+                  <h2>
+                    {picker.step === 'cats'
+                      ? 'Kategorie auswählen'
+                      : picker.type === 'sport'
+                        ? sportCatsWithCount.find(cat => cat.id === picker.catId)?.de
+                        : foodCatsWithCount.find(cat => cat.id === picker.catId)?.de}
+                  </h2>
+                </div>
+              </header>
+
+              {picker.step === 'cats' && (
+                <div className={s.catTileGrid + ' ' + s.pickerCatGrid}>
+                  {(picker.type === 'sport' ? sportCatsWithCount : foodCatsWithCount).map(cat => (
+                    <button
+                      key={cat.id}
+                      className={`${s.catTile} ${picker.type === 'food' ? s.catTileFood : ''}`}
+                      type="button"
+                      onClick={() => selectPickerCat(cat.id)}
+                    >
+                      <span className={s.catTileEmoji}>{cat.icon}</span>
+                      <span className={s.catTileName}>{cat.de}</span>
+                      <span className={s.catTileCount}>{cat.count}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {picker.step === 'items' && picker.type === 'sport' && (
+                <div className={s.pickerList}>
+                  {pickerSportItems.map(sp => {
+                    const existing = form.sports.find(x => x.id === sp.id)
+                    const isActive = activeId === sp.id
+                    return (
+                      <div className={`${s.pickerItem} ${existing ? s.pickerItemSelected : ''}`} key={sp.id}>
+                        <button className={s.pickerItemButton} type="button" onClick={() => setActiveId(isActive ? null : sp.id)}>
+                          <span className={s.itemAvatar}>{sp.de.slice(0, 2).toUpperCase()}</span>
+                          <span className={s.pickerItemText}>
+                            <strong>{sp.de}</strong>
+                            <small>{sp.kcalPerMin} kcal/min{existing ? ` · ${existing.min} min gewählt` : ''}</small>
+                          </span>
+                          <span className={s.itemToggle}>{isActive ? '×' : existing ? '✓' : '+'}</span>
+                        </button>
+                        {isActive && (
+                          <div className={s.choiceGrid}>
+                            {SPORT_MINUTES.map(min => (
+                              <button key={min} className={existing?.min === min ? s.choiceActive : s.choiceBtn} type="button" onClick={() => chooseSportMinutes(sp.id, min)}>
+                                <strong>{min} min</strong>
+                                <span>{Math.round(sp.kcalPerMin * min)} kcal</span>
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
+              )}
+
+              {picker.step === 'items' && picker.type === 'food' && (
+                <div className={s.pickerList}>
+                  {pickerFoodItems.map(food => {
+                    const existing = form.foods.find(x => x.id === food.id)
+                    const isActive = activeId === food.id
+                    const currentG = existing?.g ?? (existing?.count != null ? existing.count * food.portionG : null)
+                    return (
+                      <div className={`${s.pickerItem} ${existing ? s.pickerItemSelectedFood : ''}`} key={food.id}>
+                        <button className={s.pickerItemButton} type="button" onClick={() => setActiveId(isActive ? null : food.id)}>
+                          <span className={s.itemAvatar + ' ' + s.itemAvatarFood}>{food.de.slice(0, 2).toUpperCase()}</span>
+                          <span className={s.pickerItemText}>
+                            <strong>{food.de}</strong>
+                            <small>{food.kcalPer100g} kcal/100g · Portion {food.portionG}g{currentG ? ` · ${currentG}g gewählt` : ''}</small>
+                          </span>
+                          <span className={s.itemToggle}>{isActive ? '×' : existing ? '✓' : '+'}</span>
+                        </button>
+                        {isActive && (
+                          <div className={s.choiceGrid}>
+                            {FOOD_PORTIONS.map(portion => {
+                              const g = Math.round((food.portionG || 100) * portion.factor)
+                              const kcal = Math.round((food.kcalPer100g / 100) * g)
+                              return (
+                                <button key={portion.label} className={currentG === g ? s.choiceActiveFood : s.choiceBtn} type="button" onClick={() => chooseFoodPortion(food, portion.factor)}>
+                                  <strong>{portion.label}</strong>
+                                  <span>{g}g · {kcal} kcal</span>
+                                </button>
+                              )
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
+              )}
             </div>
           </div>
         )}
