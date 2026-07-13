@@ -137,7 +137,7 @@ export default function HealthPage() {
   }, 0)
   const totalFoodKcal = form.foods.reduce((sum, item) => {
     const food = activeFoods.find(x => x.id === item.id)
-    return sum + (food ? Math.round((food.kcalPer100g / 100) * (item.count ?? item.g ?? 1) * (item.count != null ? food.portionG : 1)) : 0)
+    return sum + (food ? Math.round((food.kcalPer100g / 100) * (item.g ?? (item.count != null ? item.count * food.portionG : 0))) : 0)
   }, 0)
   const totalKcal = totalFoodKcal + (form.manualKcal || 0) - totalSportKcal
   const foodFraction  = Math.min((totalFoodKcal + (form.manualKcal || 0)) / 2000, 1)
@@ -160,9 +160,9 @@ export default function HealthPage() {
     setActiveId(null)
   }
   function confirmFood(id) {
-    const count = parseInt(inputVal)
-    if (!count || count <= 0) { setActiveId(null); return }
-    setForm(f => ({ ...f, foods: [...f.foods.filter(x => x.id !== id), { id, count }] }))
+    const g = parseInt(inputVal)
+    if (!g || g <= 0) { setActiveId(null); return }
+    setForm(f => ({ ...f, foods: [...f.foods.filter(x => x.id !== id), { id, g }] }))
     setActiveId(null)
   }
   function removeSportFromForm(id) { setForm(f => ({ ...f, sports: f.sports.filter(x => x.id !== id) })) }
@@ -598,7 +598,7 @@ export default function HealthPage() {
                 }, 0)
                 const foodKcal = (rec.foods || []).reduce((sum, item) => {
                   const food = activeFoods.find(x => x.id === item.id)
-                  return sum + (food ? Math.round((food.kcalPer100g / 100) * (item.count ?? item.g ?? 1) * (item.count != null ? food.portionG : 1)) : 0)
+                  return sum + (food ? Math.round((food.kcalPer100g / 100) * (item.g ?? (item.count != null ? item.count * food.portionG : 0))) : 0)
                 }, 0)
                 const net = foodKcal + (rec.manual_kcal || 0) - sportKcal
                 const dateObj = new Date(rec.date + 'T12:00:00')
