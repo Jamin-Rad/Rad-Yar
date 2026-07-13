@@ -68,6 +68,16 @@ function addMonths(value, delta) {
   return monthValue(new Date(year, month - 1 + delta, 1))
 }
 
+function previousDateValue(value) {
+  const date = parseDate(value)
+  date.setDate(date.getDate() - 1)
+  return dateValue(date)
+}
+
+function isNightShift(shift) {
+  return shift?.model === 'N' || /^BD[1-4]$/.test(shift?.duty || '')
+}
+
 function resolveDuty(dateValueText, type) {
   const date = parseDate(dateValueText)
   const weekday = date.getDay()
@@ -271,10 +281,14 @@ export default function WorkPage() {
             {monthDays.map((day, index) => {
               if (!day.current) return <div className={styles.emptyDay} key={day.id || index} />
               const shift = shiftsByDate.get(day.date)
+              const previousShift = shiftsByDate.get(previousDateValue(day.date))
+              const isWeekendFree = !shift && (day.weekday === 0 || day.weekday === 6)
+              const isPostNightFree = !shift && day.weekday >= 1 && day.weekday <= 5 && isNightShift(previousShift)
+              const isFree = isWeekendFree || isPostNightFree
               const active = day.date === selectedDate
               return (
                 <button
-                  className={`${styles.dayCell} ${active ? styles.dayActive : ''} ${shift ? styles.dayHasShift : ''}`}
+                  className={`${styles.dayCell} ${active ? styles.dayActive : ''} ${shift ? styles.dayHasShift : ''} ${isFree ? styles.dayFree : ''}`}
                   type="button"
                   key={day.date}
                   onClick={() => selectDate(day.date)}

@@ -197,6 +197,17 @@
   background: rgba(8, 47, 73, .52);
 }
 
+.dayFree {
+  border-color: rgba(148, 163, 184, .20);
+  background:
+    repeating-linear-gradient(135deg, rgba(148, 163, 184, .10) 0 8px, rgba(148, 163, 184, .04) 8px 16px),
+    rgba(15, 23, 42, .46);
+}
+
+.dayFree span {
+  color: #94a3b8;
+}
+
 .cardHead span {
   color: #67e8f9;
   font-size: 12px;
