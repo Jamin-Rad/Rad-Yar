@@ -379,6 +379,7 @@ export default function DeutschPage({
   lessonMode = false,
   apiBase = '/api/andarun/deutsch',
   correctEndpoint = '/api/andarun/deutsch/correct',
+  speechEndpoint = '/api/andarun/deutsch/speech',
   homeHref = '/andarun',
   homeLabel = 'Privat',
   courseHref = '/andarun/deutsch',
@@ -396,6 +397,7 @@ export default function DeutschPage({
   const [writingText, setWritingText] = useState('')
   const [correction, setCorrection] = useState(null)
   const [correcting, setCorrecting] = useState(false)
+  const [speechLoading, setSpeechLoading] = useState(false)
   const [message, setMessage] = useState('')
   const [importOpen, setImportOpen] = useState(false)
   const [flashOpen, setFlashOpen] = useState(false)
@@ -404,6 +406,8 @@ export default function DeutschPage({
   const [practiceIndex, setPracticeIndex] = useState(0)
   const [visualTheme, setVisualTheme] = useState(theme)
   const saveTimer = useRef(null)
+  const activeAudio = useRef(null)
+  const speechCache = useRef(new Map())
   const localStorageKey = `deutsch_state_${apiBase.replace(/[^a-z0-9]/gi, '_')}`
 
   function readLocalState() {
@@ -463,6 +467,41 @@ export default function DeutschPage({
     setVisualTheme(next)
     window.localStorage.setItem('andarun-deutsch-theme', next)
   }
+
+  async function speakListeningText(text) {
+    if (!text || speechLoading) return
+    activeAudio.current?.pause()
+    window.speechSynthesis?.cancel()
+    setSpeechLoading(true)
+
+    try {
+      let audioUrl = speechCache.current.get(text)
+      if (!audioUrl) {
+        const response = await fetch(speechEndpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text }),
+        })
+        if (!response.ok) throw new Error('KI-Stimme nicht verfügbar')
+        audioUrl = URL.createObjectURL(await response.blob())
+        speechCache.current.set(text, audioUrl)
+      }
+
+      const audio = new Audio(audioUrl)
+      activeAudio.current = audio
+      await audio.play()
+    } catch {
+      speak(text)
+      setMessage('Die KI-Stimme war nicht erreichbar. Die Gerätestimme wird als Ersatz verwendet.')
+    } finally {
+      setSpeechLoading(false)
+    }
+  }
+
+  useEffect(() => () => {
+    activeAudio.current?.pause()
+    speechCache.current.forEach(url => URL.revokeObjectURL(url))
+  }, [])
 
   function persist(nextState) {
     setState(nextState)
@@ -806,7 +845,14 @@ export default function DeutschPage({
               <strong>{activeLesson.listening.title}</strong>
             </div>
             <p className={styles.listeningHint}>Höre zuerst ohne mitzulesen. Danach kannst du den Text öffnen und die Fragen beantworten.</p>
-            <button type="button" className={styles.primaryBtn} onClick={() => speak(activeLesson.listening.text)}>Vorlesen</button>
+            <button
+              type="button"
+              className={styles.primaryBtn}
+              onClick={() => speakListeningText(activeLesson.listening.text)}
+              disabled={speechLoading}
+            >
+              {speechLoading ? 'KI-Stimme wird vorbereitet …' : 'Mit KI-Stimme anhören'}
+            </button>
             <details className={styles.transcript}>
               <summary>Transkript anzeigen</summary>
               <p>{activeLesson.listening.text}</p>
