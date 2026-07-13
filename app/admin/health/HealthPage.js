@@ -26,6 +26,8 @@ const FOOD_PORTIONS = [
   { label: '1½ Portionen', factor: 1.5 },
   { label: '2 Portionen', factor: 2 },
 ]
+const DAY_MS = 86400000
+const WEEKDAY_SHORT = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
 
 async function apiRequest(apiBase, path, method = 'GET', body) {
   const res = await fetch(`${apiBase}${path}`, {
@@ -37,6 +39,21 @@ async function apiRequest(apiBase, path, method = 'GET', body) {
 }
 
 const EMPTY_FORM = { date: TODAY, weight: '', note: '', manualKcal: 0, sports: [], foods: [] }
+
+function dateValue(date) {
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+}
+
+function weekDaysFor(value = TODAY) {
+  const current = new Date(`${value}T12:00:00`)
+  const monday = new Date(current)
+  monday.setDate(current.getDate() - ((current.getDay() + 6) % 7))
+  return Array.from({ length: 7 }, (_, index) => {
+    const date = new Date(monday)
+    date.setDate(monday.getDate() + index)
+    return dateValue(date)
+  })
+}
 
 export default function HealthPage({ apiBase = '/api/admin/health' }) {
   const [tab, setTab] = useState('eintragen')
@@ -54,6 +71,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
   const [mgmtMode, setMgmtMode] = useState('sport')
   const [newSport, setNewSport] = useState({ de: '', kcalPerMin: '' })
   const [newFood, setNewFood] = useState({ de: '', cat: 'sonstiges', kcalPer100g: '', portionG: '' })
+  const [caloriePlan, setCaloriePlan] = useState({ currentWeight: '', targetWeight: '', weeks: '12' })
   const sparkPathRef = useRef(null)
   const api = (path, method = 'GET', body) => apiRequest(apiBase, path, method, body)
 
@@ -147,6 +165,17 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
   const totalKcal = totalFoodKcal + (form.manualKcal || 0) - totalSportKcal
   const foodFraction  = Math.min((totalFoodKcal + (form.manualKcal || 0)) / 2000, 1)
   const sportFraction = Math.min(totalSportKcal / 2000, 1)
+  const latestWeight = [...records].filter(record => record.weight).sort((a, b) => b.date.localeCompare(a.date))[0]?.weight || ''
+  const planCurrentWeight = parseFloat(caloriePlan.currentWeight || form.weight || latestWeight || 0)
+  const planTargetWeight = parseFloat(caloriePlan.targetWeight || 0)
+  const planWeeks = Math.max(parseInt(caloriePlan.weeks) || 1, 1)
+  const planDailyDelta = planCurrentWeight && planTargetWeight
+    ? Math.round(((planTargetWeight - planCurrentWeight) * 7700) / (planWeeks * 7))
+    : 0
+  const recommendedKcal = planCurrentWeight && planTargetWeight ? Math.max(1100, 2000 + planDailyDelta) : null
+  const planWeeklyChange = planCurrentWeight && planTargetWeight
+    ? ((planTargetWeight - planCurrentWeight) / planWeeks).toFixed(2)
+    : null
 
   function openPicker(type) {
     setPicker({ type, step: 'cats', catId: null })
@@ -217,6 +246,38 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
     .filter(r => r.weight)
     .sort((a, b) => a.date.localeCompare(b.date))
     .slice(-8)
+  const weekDays = weekDaysFor(TODAY)
+  const recordsByDate = new Map(records.map(record => [record.date, record]))
+
+  function caloriesForRecord(rec) {
+    if (!rec) return { foodKcal: 0, sportKcal: 0, net: 0 }
+    const sportKcal = (rec.sports || []).reduce((sum, item) => {
+      const sp = activeSports.find(x => x.id === item.id)
+      return sum + (sp ? Math.round(sp.kcalPerMin * item.min) : 0)
+    }, 0)
+    const foodKcal = (rec.foods || []).reduce((sum, item) => {
+      const food = activeFoods.find(x => x.id === item.id)
+      return sum + (food ? Math.round((food.kcalPer100g / 100) * (item.g ?? (item.count != null ? item.count * food.portionG : 0))) : 0)
+    }, 0)
+    return { foodKcal, sportKcal, net: foodKcal + (rec.manual_kcal || 0) - sportKcal }
+  }
+
+  const weekData = weekDays.map((day, index) => {
+    const rec = recordsByDate.get(day)
+    const kcal = caloriesForRecord(rec)
+    return {
+      day,
+      label: WEEKDAY_SHORT[index],
+      rec,
+      ...kcal,
+    }
+  })
+  const weekMax = Math.max(1, ...weekData.map(day => Math.max(day.foodKcal, day.sportKcal, Math.abs(day.net))))
+  const weekTotals = weekData.reduce((totals, day) => ({
+    foodKcal: totals.foodKcal + day.foodKcal,
+    sportKcal: totals.sportKcal + day.sportKcal,
+    net: totals.net + day.net,
+  }), { foodKcal: 0, sportKcal: 0, net: 0 })
 
   if (loading) return (
     <div className={s.page}>
@@ -407,8 +468,8 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
         )}
 
         {tab === 'eintragen' && picker && (
-          <div className={s.pickerBackdrop} role="dialog" aria-modal="true" aria-label={picker.type === 'sport' ? 'Sport auswählen' : 'Essen auswählen'}>
-            <div className={s.pickerModal}>
+          <div className={s.pickerBackdrop} role="dialog" aria-modal="true" aria-label={picker.type === 'sport' ? 'Sport auswählen' : 'Essen auswählen'} onClick={closePicker}>
+            <div className={s.pickerModal} onClick={event => event.stopPropagation()}>
               <header className={s.pickerHeader}>
                 <button
                   className={s.backBtn}
@@ -520,6 +581,37 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
         {/* ── TAB: Verlauf ── */}
         {tab === 'verlauf' && (
           <div className={s.historyView}>
+            <section className={s.weekPanel}>
+              <header className={s.weekHeader}>
+                <div>
+                  <span className={s.sparkLabel}>Wochenview</span>
+                  <h2>Diese Woche</h2>
+                </div>
+                <div className={s.weekTotals}>
+                  <span><strong>{weekTotals.foodKcal}</strong> gegessen</span>
+                  <span><strong>{weekTotals.sportKcal}</strong> verbrannt</span>
+                  <span><strong>{weekTotals.net}</strong> netto</span>
+                </div>
+              </header>
+
+              <div className={s.weekChart} aria-label="Kalorien pro Woche">
+                {weekData.map(day => {
+                  const dateObj = new Date(`${day.day}T12:00:00`)
+                  const foodHeight = Math.max(4, Math.round((day.foodKcal / weekMax) * 100))
+                  const sportHeight = Math.max(4, Math.round((day.sportKcal / weekMax) * 100))
+                  return (
+                    <div className={s.weekDay} key={day.day}>
+                      <div className={s.weekBars}>
+                        <span className={s.weekFoodBar} style={{ height: `${day.foodKcal ? foodHeight : 4}%` }} />
+                        <span className={s.weekSportBar} style={{ height: `${day.sportKcal ? sportHeight : 4}%` }} />
+                      </div>
+                      <strong>{day.label}</strong>
+                      <small>{dateObj.getDate()}</small>
+                    </div>
+                  )
+                })}
+              </div>
+            </section>
 
             {weightSeries.length >= 2 && (() => {
               const weights = weightSeries.map(d => d.weight)
@@ -554,24 +646,9 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
               )
             })()}
 
-            {records.length === 0 && (
-              <div className={s.emptyState}>
-                <div className={s.emptyIcon}>📊</div>
-                <div className={s.emptyText}>Noch keine Einträge vorhanden</div>
-              </div>
-            )}
-
             <div className={s.historyList}>
               {[...records].sort((a, b) => b.date.localeCompare(a.date)).map((rec, idx) => {
-                const sportKcal = (rec.sports || []).reduce((sum, item) => {
-                  const sp = activeSports.find(x => x.id === item.id)
-                  return sum + (sp ? Math.round(sp.kcalPerMin * item.min) : 0)
-                }, 0)
-                const foodKcal = (rec.foods || []).reduce((sum, item) => {
-                  const food = activeFoods.find(x => x.id === item.id)
-                  return sum + (food ? Math.round((food.kcalPer100g / 100) * (item.g ?? (item.count != null ? item.count * food.portionG : 0))) : 0)
-                }, 0)
-                const net = foodKcal + (rec.manual_kcal || 0) - sportKcal
+                const { foodKcal, sportKcal, net } = caloriesForRecord(rec)
                 const dateObj = new Date(rec.date + 'T12:00:00')
                 return (
                   <div key={rec.id} className={s.historyCard} style={{ animationDelay: `${idx * 0.04}s` }}>
@@ -607,6 +684,49 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
         {/* ── TAB: Verwaltung ── */}
         {tab === 'verwaltung' && (
           <div className={s.mgmtView}>
+            <section className={s.goalCard}>
+              <div className={s.goalCopy}>
+                <span className={s.sparkLabel}>Kalorienziel</span>
+                <h2>Tägliche Empfehlung</h2>
+                <p>Grobe Orientierung aus aktuellem Gewicht, Zielgewicht und Zeitraum. Basis ist 2000 kcal/Tag plus Ziel-Anpassung.</p>
+              </div>
+              <div className={s.goalForm}>
+                <label>Gewicht
+                  <input
+                    type="number"
+                    step="0.1"
+                    min="20"
+                    value={caloriePlan.currentWeight}
+                    placeholder={form.weight || latestWeight || 'kg'}
+                    onChange={event => setCaloriePlan(prev => ({ ...prev, currentWeight: event.target.value }))}
+                  />
+                </label>
+                <label>Ziel
+                  <input
+                    type="number"
+                    step="0.1"
+                    min="20"
+                    value={caloriePlan.targetWeight}
+                    placeholder="kg"
+                    onChange={event => setCaloriePlan(prev => ({ ...prev, targetWeight: event.target.value }))}
+                  />
+                </label>
+                <label>Zeit
+                  <input
+                    type="number"
+                    min="1"
+                    value={caloriePlan.weeks}
+                    onChange={event => setCaloriePlan(prev => ({ ...prev, weeks: event.target.value }))}
+                  />
+                </label>
+              </div>
+              <div className={s.goalResult}>
+                <span>Empfohlen</span>
+                <strong>{recommendedKcal ? `${recommendedKcal} kcal` : '—'}</strong>
+                <small>{recommendedKcal ? `${planDailyDelta >= 0 ? '+' : ''}${planDailyDelta} kcal/Tag · ${planWeeklyChange} kg/Woche` : 'Gewicht, Ziel und Wochen eingeben'}</small>
+              </div>
+            </section>
+
             <div className={s.mgmtTabs}>
               <button className={mgmtMode === 'sport' ? s.mgmtTabActive : s.mgmtTab} onClick={() => setMgmtMode('sport')}>Sportarten</button>
               <button className={mgmtMode === 'food' ? s.mgmtTabActive : s.mgmtTab} onClick={() => setMgmtMode('food')}>Lebensmittel</button>

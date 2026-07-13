@@ -971,6 +971,7 @@
 .summaryInput,
 .manualRow input,
 .noteInput,
+.goalForm input,
 .mgmtForm input,
 .mgmtForm select {
   min-height: 40px;
@@ -988,6 +989,7 @@
 :global(html[data-theme='dark']) .summaryInput,
 :global(html[data-theme='dark']) .manualRow input,
 :global(html[data-theme='dark']) .noteInput,
+:global(html[data-theme='dark']) .goalForm input,
 :global(html[data-theme='dark']) .mgmtForm input,
 :global(html[data-theme='dark']) .mgmtForm select {
   border-color: rgba(148, 163, 184, .22);
@@ -1186,6 +1188,133 @@
   gap: 14px;
 }
 
+.weekPanel,
+.goalCard {
+  border: 1px solid rgba(148, 163, 184, .22);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .86);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, .06);
+}
+
+:global(html[data-theme='dark']) .weekPanel,
+:global(html[data-theme='dark']) .goalCard {
+  border-color: rgba(148, 163, 184, .18);
+  background: rgba(15, 23, 42, .72);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, .26);
+}
+
+.weekPanel {
+  overflow: hidden;
+}
+
+.weekHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px;
+  border-bottom: 1px solid rgba(148, 163, 184, .16);
+}
+
+.weekHeader h2,
+.goalCopy h2 {
+  margin: 4px 0 0;
+  color: #0f172a;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 950;
+  line-height: 1;
+}
+
+:global(html[data-theme='dark']) .weekHeader h2,
+:global(html[data-theme='dark']) .goalCopy h2 {
+  color: #f8fafc;
+}
+
+.weekTotals {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.weekTotals span {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(148, 163, 184, .22);
+  border-radius: 999px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 900;
+  padding: 0 10px;
+}
+
+.weekTotals strong {
+  color: #0f766e;
+}
+
+.weekChart {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 10px;
+  padding: 18px;
+}
+
+.weekDay {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+  justify-items: center;
+}
+
+.weekBars {
+  display: flex;
+  height: 150px;
+  width: 100%;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 7px;
+  border-radius: 8px;
+  background: rgba(241, 245, 249, .9);
+  padding: 10px 6px;
+}
+
+:global(html[data-theme='dark']) .weekBars {
+  background: rgba(30, 41, 59, .52);
+}
+
+.weekFoodBar,
+.weekSportBar {
+  width: min(22px, 38%);
+  min-height: 4px;
+  border-radius: 999px 999px 3px 3px;
+}
+
+.weekFoodBar {
+  background: linear-gradient(180deg, #34d399, #047857);
+}
+
+.weekSportBar {
+  background: linear-gradient(180deg, #a5b4fc, #4f46e5);
+}
+
+.weekDay strong {
+  color: #0f172a;
+  font-size: 13px;
+  font-weight: 950;
+}
+
+:global(html[data-theme='dark']) .weekDay strong {
+  color: #f8fafc;
+}
+
+.weekDay small {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 850;
+}
+
 .sparkCard {
   padding: 20px;
   background:
@@ -1379,6 +1508,58 @@
   gap: 14px;
 }
 
+.goalCard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, .85fr) minmax(190px, .55fr);
+  gap: 16px;
+  align-items: center;
+  padding: 18px;
+}
+
+.goalCopy p {
+  max-width: 54ch;
+  margin: 9px 0 0;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.5;
+}
+
+.goalForm {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.goalForm label {
+  display: grid;
+  gap: 6px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.goalResult {
+  display: grid;
+  gap: 4px;
+  justify-items: end;
+  text-align: right;
+}
+
+.goalResult span,
+.goalResult small {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.goalResult strong {
+  color: #0f766e;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 950;
+  line-height: 1;
+}
+
 .mgmtGrid {
   display: grid;
   grid-template-columns: 320px minmax(0, 1fr);
@@ -1516,6 +1697,15 @@
     grid-template-columns: 1fr;
   }
 
+  .goalCard {
+    grid-template-columns: 1fr;
+  }
+
+  .goalResult {
+    justify-items: start;
+    text-align: left;
+  }
+
   .summaryPanel {
     position: static;
   }
@@ -1550,6 +1740,29 @@
 
   .homeTiles,
   .catTileGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .weekHeader {
+    display: grid;
+  }
+
+  .weekTotals {
+    justify-content: flex-start;
+  }
+
+  .weekChart {
+    gap: 6px;
+    padding: 12px;
+  }
+
+  .weekBars {
+    height: 110px;
+    gap: 4px;
+    padding: 8px 4px;
+  }
+
+  .goalForm {
     grid-template-columns: 1fr;
   }
 
