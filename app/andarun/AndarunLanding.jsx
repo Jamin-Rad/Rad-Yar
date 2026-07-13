@@ -44,6 +44,14 @@ const spaces = [
     theme: 'cobalt',
     icon: 'chart',
   },
+  {
+    number: '06',
+    title: 'Dienste',
+    description: 'Arbeit & Befunde',
+    href: '/andarun/dienste',
+    theme: 'mint',
+    icon: 'briefcase',
+  },
 ]
 
 function SpaceIcon({ name }) {
@@ -58,6 +66,9 @@ function SpaceIcon({ name }) {
   )
   if (name === 'heart') return (
     <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 39S9 30 9 18a8 8 0 0 1 14-5 8 8 0 0 1 14 5c0 12-13 21-13 21Z"/><path d="M15 24h6l3-7 4 13 3-6h4"/></svg>
+  )
+  if (name === 'briefcase') return (
+    <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="14" width="34" height="25" rx="3"/><path d="M18 14v-3a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v3M7 24h34M21 24v4h6v-4"/></svg>
   )
   return (
     <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 40V27h8v13M20 40V18h8v22M32 40V8h8v32M5 40h38"/></svg>
@@ -94,7 +105,7 @@ export default function AndarunLanding() {
             <p className={styles.eyebrow}>Deine Welten</p>
             <h2 id="spaces-title">Wähle dein Ziel.</h2>
           </div>
-          <p>05 Module</p>
+          <p>06 Module</p>
         </div>
 
         <div className={styles.grid}>

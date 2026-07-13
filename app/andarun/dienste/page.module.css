@@ -1,0 +1,494 @@
+.page {
+  min-height: 100vh;
+  padding: clamp(18px, 4vw, 42px);
+  background:
+    radial-gradient(circle at 12% 8%, rgba(96, 165, 250, .26), transparent 30%),
+    radial-gradient(circle at 88% 14%, rgba(45, 212, 191, .22), transparent 30%),
+    linear-gradient(145deg, #07111f, #111827 48%, #0b1120);
+  color: #f8fafc;
+  font-family: var(--font-manrope), system-ui, sans-serif;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  margin: 0 auto 22px;
+  max-width: 1320px;
+}
+
+.back,
+.printBtn,
+.actions button,
+.findingForm button,
+.ghostBtn {
+  border: 1px solid rgba(148, 163, 184, .28);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .08);
+  color: #f8fafc;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 900;
+  padding: 11px 14px;
+  text-decoration: none;
+}
+
+.printBtn,
+.actions button,
+.findingForm button {
+  border: 0;
+  background: linear-gradient(135deg, #14b8a6, #38bdf8);
+  color: #04111d;
+}
+
+.ghostBtn {
+  background: rgba(255, 255, 255, .08) !important;
+  color: #cbd5e1 !important;
+}
+
+.kicker {
+  color: #67e8f9;
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.header h1,
+.sectionTitle h2 {
+  margin: 4px 0 0;
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(34px, 5vw, 68px);
+  line-height: .95;
+}
+
+.message {
+  max-width: 1320px;
+  margin: 0 auto 16px;
+  border: 1px solid rgba(45, 212, 191, .22);
+  border-radius: 8px;
+  background: rgba(20, 184, 166, .12);
+  color: #99f6e4;
+  font-size: 13px;
+  font-weight: 850;
+  padding: 12px 14px;
+}
+
+.shell,
+.findings {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(360px, .7fr);
+  gap: 16px;
+  max-width: 1320px;
+  margin: 0 auto 18px;
+}
+
+.calendarPanel,
+.shiftEditor,
+.findings {
+  border: 1px solid rgba(148, 163, 184, .18);
+  border-radius: 8px;
+  background: rgba(15, 23, 42, .72);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .24);
+}
+
+.calendarPanel,
+.shiftEditor {
+  padding: 16px;
+}
+
+.monthBar {
+  display: grid;
+  grid-template-columns: 42px 1fr 42px;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.monthBar button {
+  min-height: 42px;
+  border: 1px solid rgba(148, 163, 184, .22);
+  border-radius: 8px;
+  background: rgba(255,255,255,.07);
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 25px;
+}
+
+.monthBar strong {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 950;
+}
+
+.weekHeader,
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.weekHeader {
+  margin-bottom: 8px;
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 950;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.dayCell,
+.emptyDay {
+  min-height: 104px;
+  border: 1px solid rgba(148, 163, 184, .16);
+  border-radius: 8px;
+  background: rgba(255,255,255,.05);
+}
+
+.dayCell {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  color: #f8fafc;
+  cursor: pointer;
+  font: inherit;
+  padding: 10px;
+  text-align: left;
+}
+
+.dayCell span {
+  color: #cbd5e1;
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.dayCell strong {
+  width: fit-content;
+  border-radius: 999px;
+  background: rgba(45, 212, 191, .16);
+  color: #5eead4;
+  font-size: 13px;
+  font-weight: 950;
+  padding: 4px 9px;
+}
+
+.dayCell small {
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.dayActive {
+  border-color: rgba(56, 189, 248, .62);
+  box-shadow: inset 0 0 0 1px rgba(56, 189, 248, .25);
+}
+
+.dayHasShift {
+  background: rgba(8, 47, 73, .52);
+}
+
+.cardHead span {
+  color: #67e8f9;
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.cardHead h2 {
+  margin: 5px 0 14px;
+  font-size: 25px;
+}
+
+.segmented {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.segment,
+.segmentActive {
+  min-height: 44px;
+  border: 1px solid rgba(148, 163, 184, .22);
+  border-radius: 8px;
+  background: rgba(255,255,255,.07);
+  color: #cbd5e1;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 950;
+}
+
+.segmentActive {
+  border: 0;
+  background: #67e8f9;
+  color: #06121e;
+}
+
+.dutyPreview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  background: rgba(255,255,255,.07);
+  padding: 14px;
+}
+
+.dutyPreview strong {
+  font-size: 24px;
+}
+
+.formGrid,
+.findingForm {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.shiftEditor label,
+.findingForm label {
+  display: grid;
+  gap: 6px;
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.shiftEditor input,
+.findingForm input,
+.findingForm select {
+  min-height: 42px;
+  border: 1px solid rgba(148, 163, 184, .22);
+  border-radius: 7px;
+  background: rgba(2, 6, 23, .48);
+  color: #f8fafc;
+  font: inherit;
+  font-weight: 850;
+  padding: 0 11px;
+}
+
+.fullLabel {
+  margin-top: 10px;
+}
+
+.actions {
+  display: flex;
+  gap: 9px;
+  margin-top: 14px;
+}
+
+.findings {
+  grid-template-columns: 1fr;
+  padding: 18px;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.sectionTitle h2 {
+  font-size: clamp(26px, 3vw, 42px);
+}
+
+.findingForm {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 16px;
+}
+
+.questionField {
+  grid-column: span 2;
+}
+
+.findingForm button {
+  align-self: end;
+  min-height: 42px;
+}
+
+.findingTable {
+  display: grid;
+  gap: 6px;
+  margin-top: 16px;
+  overflow-x: auto;
+}
+
+.findingHead,
+.findingRow {
+  display: grid;
+  grid-template-columns: 100px 100px 88px 1.2fr 1fr 100px 1.5fr 32px;
+  gap: 8px;
+  min-width: 980px;
+  align-items: center;
+}
+
+.findingHead {
+  color: #67e8f9;
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.findingRow {
+  border-radius: 8px;
+  background: rgba(255,255,255,.055);
+  color: #e2e8f0;
+  font-size: 13px;
+  font-weight: 780;
+  padding: 9px 0;
+}
+
+.findingRow span,
+.findingHead span {
+  min-width: 0;
+  overflow: hidden;
+  padding: 0 8px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.findingRow button {
+  width: 26px;
+  height: 26px;
+  border: 0;
+  border-radius: 6px;
+  background: rgba(244, 63, 94, .16);
+  color: #fecdd3;
+  cursor: pointer;
+}
+
+.emptyTable {
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 850;
+  padding: 18px 0;
+}
+
+.printSheet {
+  display: none;
+}
+
+@media (max-width: 980px) {
+  .header,
+  .shell {
+    grid-template-columns: 1fr;
+  }
+
+  .printBtn {
+    width: fit-content;
+  }
+
+  .findingForm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 14px;
+  }
+
+  .calendarGrid,
+  .weekHeader {
+    gap: 5px;
+  }
+
+  .dayCell,
+  .emptyDay {
+    min-height: 78px;
+    padding: 7px;
+  }
+
+  .findingForm,
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .questionField {
+    grid-column: auto;
+  }
+}
+
+@media print {
+  .page {
+    min-height: auto;
+    padding: 0;
+    background: #fff;
+    color: #000;
+  }
+
+  .header,
+  .message,
+  .shell,
+  .findings {
+    display: none !important;
+  }
+
+  .printSheet {
+    display: block;
+    padding: 18mm 16mm;
+    color: #000;
+    font-family: Arial, sans-serif;
+  }
+
+  .printTop {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 12mm;
+  }
+
+  .printTop h1 {
+    margin: 0;
+    font-size: 22pt;
+  }
+
+  .printTop div {
+    display: grid;
+    gap: 4px;
+    text-align: right;
+  }
+
+  .printSheet table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10.5pt;
+  }
+
+  .printSheet th,
+  .printSheet td {
+    border: 1px solid #000;
+    padding: 7px 8px;
+    text-align: left;
+  }
+
+  .printSheet th {
+    background: #efefef;
+  }
+
+  .signatures {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr 1.2fr;
+    gap: 18mm;
+    margin-top: 28mm;
+  }
+
+  .signatures div {
+    display: grid;
+    gap: 18mm;
+  }
+
+  .signatures strong {
+    display: block;
+    border-bottom: 1px solid #000;
+  }
+}
