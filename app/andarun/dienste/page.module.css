@@ -212,7 +212,7 @@
 
 .segmented {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
   margin-bottom: 14px;
 }
@@ -251,7 +251,7 @@
 }
 
 .formGrid,
-.modalityCounts,
+.assignmentPicker,
 .findingForm {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -259,7 +259,6 @@
 }
 
 .shiftEditor label,
-.modalityCounts label,
 .findingForm label {
   display: grid;
   gap: 6px;
@@ -271,7 +270,6 @@
 }
 
 .shiftEditor input,
-.modalityCounts input,
 .findingForm input,
 .findingForm select {
   min-height: 42px;
@@ -288,9 +286,29 @@
   margin-top: 10px;
 }
 
-.modalityCounts {
+.assignmentPicker {
+  display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
   margin-top: 10px;
+}
+
+.assignmentBtn,
+.assignmentActive {
+  min-height: 42px;
+  border: 1px solid rgba(148, 163, 184, .22);
+  border-radius: 8px;
+  background: rgba(255,255,255,.07);
+  color: #cbd5e1;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 950;
+}
+
+.assignmentActive {
+  border-color: rgba(45, 212, 191, .5);
+  background: rgba(45, 212, 191, .18);
+  color: #99f6e4;
 }
 
 .actions {
@@ -425,7 +443,7 @@
 
   .findingForm,
   .formGrid,
-  .modalityCounts {
+  .assignmentPicker {
     grid-template-columns: 1fr;
   }
 

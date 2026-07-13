@@ -14,15 +14,17 @@ const EXAM_AREAS = [
   'Gefäße', 'Ganzkörper',
 ]
 const DAILY_MODALITIES = [
-  { key: 'xray', label: 'Röntgen' },
-  { key: 'ct', label: 'CT' },
-  { key: 'mri', label: 'MRT' },
+  { id: 'Röntgen', label: 'Röntgen' },
+  { id: 'CT', label: 'CT' },
+  { id: 'MRT', label: 'MRT' },
 ]
 const SHIFT_TYPES = [
   { id: 'T', label: 'Tagdienst', short: 'T' },
   { id: 'S', label: 'Spätdienst', short: 'S' },
   { id: 'BD', label: 'Tagdienst Freitag/WE/Ft', short: 'BD' },
   { id: 'N', label: 'Nachtdienst', short: 'Nacht' },
+  { id: 'U', label: 'Urlaub', short: 'Urlaub' },
+  { id: 'K', label: 'Krank', short: 'Krank' },
 ]
 
 function todayValue() {
@@ -78,6 +80,8 @@ function resolveDuty(dateValueText, type) {
     if (weekday === 6) return { duty: 'BD3', plannedStart: '19:00', plannedEnd: '09:00' }
     return { duty: 'BD4', plannedStart: '19:00', plannedEnd: '08:00' }
   }
+  if (type === 'U') return { duty: 'Urlaub', plannedStart: '', plannedEnd: '' }
+  if (type === 'K') return { duty: 'Krank', plannedStart: '', plannedEnd: '' }
   return { duty: '', plannedStart: '', plannedEnd: '' }
 }
 
@@ -107,7 +111,7 @@ function emptyShift(date) {
     ...resolved,
     actualStart: resolved.plannedStart,
     actualEnd: resolved.plannedEnd,
-    counts: { xray: '', ct: '', mri: '' },
+    assignment: '',
     note: '',
   }
 }
@@ -117,7 +121,7 @@ function normalizeShift(shift) {
   return {
     ...emptyShift(shift.date),
     ...shift,
-    counts: { xray: '', ct: '', mri: '', ...(shift.counts || {}) },
+    assignment: shift.assignment || '',
   }
 }
 
@@ -185,6 +189,7 @@ export default function WorkPage() {
       ...resolved,
       actualStart: resolved.plannedStart,
       actualEnd: resolved.plannedEnd,
+      assignment: model === 'U' || model === 'K' ? '' : prev.assignment,
     }))
   }
 
@@ -277,11 +282,7 @@ export default function WorkPage() {
                   <span>{day.day}</span>
                   {shift && <strong>{shift.duty}</strong>}
                   {shift && <small>{timeRange(shift.actualStart || shift.plannedStart, shift.actualEnd || shift.plannedEnd)}</small>}
-                  {shift && (
-                    <em>
-                      R {shift.counts?.xray || 0} · CT {shift.counts?.ct || 0} · MRT {shift.counts?.mri || 0}
-                    </em>
-                  )}
+                  {shift?.assignment && <em>{shift.assignment}</em>}
                 </button>
               )
             })}
@@ -312,30 +313,30 @@ export default function WorkPage() {
             <span>{timeRange(shiftForm.plannedStart, shiftForm.plannedEnd)}</span>
           </div>
 
-          <div className={styles.formGrid}>
-            <label>Von
-              <input type="time" value={shiftForm.actualStart} onChange={event => setShiftForm(prev => ({ ...prev, actualStart: event.target.value }))} />
-            </label>
-            <label>Bis
-              <input type="time" value={shiftForm.actualEnd} onChange={event => setShiftForm(prev => ({ ...prev, actualEnd: event.target.value }))} />
-            </label>
-          </div>
-          <div className={styles.modalityCounts}>
-            {DAILY_MODALITIES.map(item => (
-              <label key={item.key}>{item.label}
-                <input
-                  type="number"
-                  min="0"
-                  inputMode="numeric"
-                  value={shiftForm.counts?.[item.key] || ''}
-                  onChange={event => setShiftForm(prev => ({
-                    ...prev,
-                    counts: { xray: '', ct: '', mri: '', ...(prev.counts || {}), [item.key]: event.target.value },
-                  }))}
-                />
-              </label>
-            ))}
-          </div>
+          {shiftForm.model !== 'U' && shiftForm.model !== 'K' && (
+            <>
+              <div className={styles.formGrid}>
+                <label>Von
+                  <input type="time" value={shiftForm.actualStart} onChange={event => setShiftForm(prev => ({ ...prev, actualStart: event.target.value }))} />
+                </label>
+                <label>Bis
+                  <input type="time" value={shiftForm.actualEnd} onChange={event => setShiftForm(prev => ({ ...prev, actualEnd: event.target.value }))} />
+                </label>
+              </div>
+              <div className={styles.assignmentPicker}>
+                {DAILY_MODALITIES.map(item => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    className={shiftForm.assignment === item.id ? styles.assignmentActive : styles.assignmentBtn}
+                    onClick={() => setShiftForm(prev => ({ ...prev, assignment: prev.assignment === item.id ? '' : item.id }))}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
           <label className={styles.fullLabel}>Notiz
             <input value={shiftForm.note} onChange={event => setShiftForm(prev => ({ ...prev, note: event.target.value }))} />
           </label>
@@ -421,9 +422,7 @@ export default function WorkPage() {
               <th>Datum</th>
               <th>Dienst</th>
               <th>Arbeitszeit von bis</th>
-              <th>Röntgen</th>
-              <th>CT</th>
-              <th>MRT</th>
+              <th>Einteilung</th>
             </tr>
           </thead>
           <tbody>
@@ -435,14 +434,12 @@ export default function WorkPage() {
                   <td>{date.toLocaleDateString('de-DE')}</td>
                   <td>{shift.duty}</td>
                   <td>{timeRange(shift.actualStart || shift.plannedStart, shift.actualEnd || shift.plannedEnd)}</td>
-                  <td>{shift.counts?.xray || ''}</td>
-                  <td>{shift.counts?.ct || ''}</td>
-                  <td>{shift.counts?.mri || ''}</td>
+                  <td>{shift.assignment || ''}</td>
                 </tr>
               )
             })}
             {!monthShifts.length && (
-              <tr><td colSpan="7">Keine Dienste eingetragen</td></tr>
+              <tr><td colSpan="5">Keine Dienste eingetragen</td></tr>
             )}
           </tbody>
         </table>
