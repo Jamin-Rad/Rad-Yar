@@ -2,14 +2,16 @@
   min-height: calc(100vh - 116px);
   padding: 32px 24px 72px;
   background:
-    linear-gradient(180deg, rgba(236, 253, 245, .86), rgba(248, 250, 252, .96) 34%, #f8fafc 100%);
+    linear-gradient(180deg, rgba(248, 253, 250, .78), rgba(248, 250, 252, .92) 42%, #f8fafc 100%),
+    url('/health-wellness-bg.png') center top / cover fixed no-repeat;
   color: #172033;
   font-family: var(--font-manrope, system-ui, sans-serif);
 }
 
 :global(html[data-theme='dark']) .page {
   background:
-    linear-gradient(180deg, #0c1513 0%, #101820 42%, #111827 100%);
+    linear-gradient(180deg, rgba(12, 21, 19, .88) 0%, rgba(16, 24, 32, .92) 42%, #111827 100%),
+    url('/health-wellness-bg.png') center top / cover fixed no-repeat;
   color: #f8fafc;
 }
 
@@ -620,6 +622,64 @@
   grid-template-columns: minmax(280px, .72fr) minmax(0, 1fr);
   gap: 16px;
   padding: 16px;
+}
+
+.injectionReminder {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  min-height: 64px;
+  border: 1px solid rgba(14, 165, 233, .24);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 16% 0%, rgba(14, 165, 233, .20), transparent 42%),
+    rgba(240, 249, 255, .82);
+  color: #0f172a;
+  cursor: pointer;
+  font: inherit;
+  padding: 12px;
+  text-align: left;
+}
+
+.injectionReminder span {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 2px solid rgba(14, 165, 233, .34);
+  border-radius: 50%;
+  color: #0284c7;
+  font-weight: 950;
+}
+
+.injectionReminder strong {
+  font-size: 18px;
+  font-weight: 950;
+}
+
+.injectionReminder small {
+  color: #0369a1;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.injectionDone {
+  border-color: rgba(16, 185, 129, .30);
+  background: rgba(236, 253, 245, .84);
+}
+
+.injectionDone span {
+  border-color: rgba(16, 185, 129, .42);
+  background: #10b981;
+  color: #fff;
+}
+
+:global(html[data-theme='dark']) .injectionReminder {
+  border-color: rgba(125, 211, 252, .22);
+  background: rgba(14, 165, 233, .12);
+  color: #f8fafc;
 }
 
 .todayKcalCard {
@@ -1305,7 +1365,8 @@
 
 .foodImage {
   position: relative;
-  display: block;
+  display: grid;
+  place-items: center;
   width: 48px;
   height: 48px;
   overflow: hidden;
@@ -1315,6 +1376,19 @@
     radial-gradient(circle at 28% 22%, rgba(255,255,255,.86), transparent 24%),
     linear-gradient(145deg, #ecfdf5, #d1fae5);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.68), 0 10px 22px rgba(15, 23, 42, .08);
+}
+
+.foodImage em {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  font-size: 26px;
+  font-style: normal;
+  line-height: 1;
+  filter: drop-shadow(0 4px 8px rgba(15, 23, 42, .18));
 }
 
 .foodImage::before,
@@ -2268,6 +2342,74 @@
   overflow: hidden;
 }
 
+.flowChart {
+  overflow-x: auto;
+  padding: 18px 18px 0;
+}
+
+.flowChart svg {
+  display: block;
+  width: 100%;
+  min-width: 520px;
+  height: 260px;
+}
+
+.flowArea {
+  fill: url(#flowFill);
+}
+
+.flowLine {
+  fill: none;
+  stroke: #059669;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 4;
+}
+
+.flowDot {
+  fill: #ecfdf5;
+  stroke: #059669;
+  stroke-width: 3;
+}
+
+.flowTargetLine {
+  stroke: #f59e0b;
+  stroke-dasharray: 7 7;
+  stroke-linecap: round;
+  stroke-width: 3;
+}
+
+.flowLegend {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 12px 18px 18px;
+}
+
+.flowLegend span {
+  display: grid;
+  min-width: 96px;
+  gap: 3px;
+  border: 1px solid rgba(148, 163, 184, .18);
+  border-radius: 8px;
+  background: rgba(248, 250, 252, .72);
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 850;
+  padding: 10px;
+}
+
+.flowLegend strong {
+  color: #0f766e;
+  font-size: 13px;
+  font-weight: 950;
+}
+
+:global(html[data-theme='dark']) .flowLegend span {
+  background: rgba(30, 41, 59, .44);
+  border-color: rgba(148, 163, 184, .14);
+}
+
 .weekHeader {
   display: flex;
   align-items: flex-start;
@@ -2599,10 +2741,10 @@
 
 .goalCard {
   display: grid;
-  grid-template-columns: minmax(220px, .72fr) minmax(0, 1.2fr) minmax(210px, .55fr);
-  gap: 16px;
-  align-items: center;
-  padding: 18px;
+  grid-template-columns: minmax(220px, .62fr) minmax(0, 1.38fr);
+  gap: 22px;
+  align-items: start;
+  padding: clamp(22px, 4vw, 34px);
 }
 
 .goalCopy p {
@@ -2616,23 +2758,31 @@
 
 .goalForm {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 9px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
 }
 
 .goalForm label {
   display: grid;
-  gap: 6px;
+  gap: 8px;
+  border: 1px solid rgba(148, 163, 184, .16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .54);
   color: #64748b;
   font-size: 12px;
   font-weight: 900;
+  padding: 12px;
 }
 
 .goalResult {
+  grid-column: 1 / -1;
   display: grid;
-  gap: 4px;
-  justify-items: end;
-  text-align: right;
+  gap: 6px;
+  justify-items: start;
+  border-radius: 8px;
+  background: rgba(236, 253, 245, .76);
+  padding: 18px;
+  text-align: left;
 }
 
 .goalResult span,
@@ -2647,6 +2797,86 @@
   font-size: clamp(28px, 4vw, 40px);
   font-weight: 950;
   line-height: 1;
+}
+
+.injectionSettings {
+  display: grid;
+  grid-template-columns: minmax(220px, .8fr) minmax(220px, 1fr) minmax(200px, .8fr);
+  gap: 18px;
+  align-items: center;
+  border: 1px solid rgba(148, 163, 184, .22);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .86);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, .06);
+  padding: clamp(20px, 3vw, 28px);
+}
+
+.injectionSettings h2 {
+  margin: 4px 0 0;
+  color: #0f172a;
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 950;
+  line-height: 1;
+}
+
+.injectionSettings label {
+  display: grid;
+  gap: 8px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.injectionSettings select {
+  min-height: 46px;
+  border: 1px solid rgba(148, 163, 184, .28);
+  border-radius: 8px;
+  background: #fff;
+  color: #0f172a;
+  font: inherit;
+  font-weight: 850;
+  padding: 0 12px;
+}
+
+.injectionPreview {
+  display: grid;
+  gap: 4px;
+  border-radius: 8px;
+  background: rgba(240, 249, 255, .86);
+  padding: 16px;
+}
+
+.injectionPreview strong {
+  color: #0369a1;
+  font-size: 24px;
+  font-weight: 950;
+}
+
+.injectionPreview span {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+:global(html[data-theme='dark']) .goalForm label,
+:global(html[data-theme='dark']) .goalResult,
+:global(html[data-theme='dark']) .injectionSettings,
+:global(html[data-theme='dark']) .injectionPreview {
+  background: rgba(15, 23, 42, .48);
+}
+
+:global(html[data-theme='dark']) .injectionSettings {
+  border-color: rgba(148, 163, 184, .18);
+}
+
+:global(html[data-theme='dark']) .injectionSettings h2 {
+  color: #f8fafc;
+}
+
+:global(html[data-theme='dark']) .injectionSettings select {
+  border-color: rgba(148, 163, 184, .22);
+  background: rgba(15, 23, 42, .72);
+  color: #f8fafc;
 }
 
 .mgmtGrid {
@@ -2819,6 +3049,11 @@
     grid-template-columns: 1fr;
   }
 
+  .goalForm,
+  .injectionSettings {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .goalResult {
     justify-items: start;
     text-align: left;
@@ -2888,6 +3123,11 @@
   .todayActionSport,
   .todayActionFood {
     min-height: 132px;
+  }
+
+  .goalForm,
+  .injectionSettings {
+    grid-template-columns: 1fr;
   }
 
   .weekHeader {

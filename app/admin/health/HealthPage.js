@@ -28,6 +28,13 @@ const FOOD_IMAGE_CLASSES = {
   getraenke: 'foodImageDrink',
   sonstiges: 'foodImageOther',
 }
+const FOOD_SYMBOLS = {
+  apfel: '🍎', banane: '🍌', orange: '🍊', trauben: '🍇', erdbeeren: '🍓', datteln: '🌴',
+  tomate: '🍅', gurke: '🥒', brokkoli: '🥦', avocado: '🥑', kartoffel: '🥔',
+  pizza: '🍕', pommes: '🍟', burger: '🍔', ei: '🥚', milch: '🥛', kaese: '🧀',
+  wasser: '💧', tee: '🍵', kaffee: '☕', cola: '🥤', orangensaft: '🍊',
+  schokolade: '🍫', kuchen: '🍰', chips: '🥨', nuesse: '🥜', eis: '🍨',
+}
 const UNIT_BY_CATEGORY = {
   getraenke: 'Glas',
   obst: 'Stück',
@@ -76,6 +83,16 @@ const ACTIVITY_LEVELS = [
 ]
 const DAY_MS = 86400000
 const WEEKDAY_SHORT = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
+const WEEKDAY_OPTIONS = [
+  { id: '', label: 'Nicht festgelegt' },
+  { id: '1', label: 'Montag' },
+  { id: '2', label: 'Dienstag' },
+  { id: '3', label: 'Mittwoch' },
+  { id: '4', label: 'Donnerstag' },
+  { id: '5', label: 'Freitag' },
+  { id: '6', label: 'Samstag' },
+  { id: '0', label: 'Sonntag' },
+]
 const DEFAULT_CALORIE_PLAN = {
   currentWeight: '',
   targetWeight: '',
@@ -84,6 +101,8 @@ const DEFAULT_CALORIE_PLAN = {
   activity: 'moderate',
   height: '',
   age: '',
+  injectionDay: '',
+  injectionDoneDates: [],
 }
 
 async function apiRequest(apiBase, path, method = 'GET', body) {
@@ -142,6 +161,25 @@ function foodAmountText(food, grams) {
 
 function foodImageClass(food) {
   return FOOD_IMAGE_CLASSES[food?.cat] || FOOD_IMAGE_CLASSES.sonstiges
+}
+
+function foodSymbol(food) {
+  if (FOOD_SYMBOLS[food?.id]) return FOOD_SYMBOLS[food.id]
+  const name = String(food?.de || '').toLowerCase()
+  if (name.includes('apfel')) return '🍎'
+  if (name.includes('traube')) return '🍇'
+  if (name.includes('orange')) return '🍊'
+  if (name.includes('banane')) return '🍌'
+  if (name.includes('erdbeer')) return '🍓'
+  if (name.includes('tomate')) return '🍅'
+  if (name.includes('gurke')) return '🥒'
+  if (name.includes('reis') || name.includes('polo')) return '🍚'
+  if (name.includes('brot') || name.includes('naan') || name.includes('lavash')) return '🍞'
+  if (name.includes('kaffee')) return '☕'
+  if (name.includes('tee')) return '🍵'
+  if (name.includes('wasser')) return '💧'
+  if (name.includes('kebab') || name.includes('döner')) return '🥙'
+  return FOOD_ICONS[food?.cat] || '🍽️'
 }
 
 function formatHealthDate(value) {
@@ -379,10 +417,10 @@ export default function HealthPage({ apiBase = '/api/admin/health', homeHref = '
     ? ((planTargetWeight - planCurrentWeight) / planWeeks).toFixed(2)
     : null
   const dailyKcalTarget = recommendedKcal || maintenanceKcal || 2000
-  const kcalDelta = recommendedKcal ? totalKcal - recommendedKcal : null
-  const foodFraction = Math.min(Math.max(totalKcal, 0) / dailyKcalTarget, 1)
+  const kcalDelta = recommendedKcal ? eatenKcal - recommendedKcal : null
+  const foodFraction = Math.min(Math.max(eatenKcal, 0) / dailyKcalTarget, 1)
   const sportFraction = Math.min(totalSportKcal / dailyKcalTarget, 1)
-  const isKcalOverTarget = recommendedKcal ? totalKcal > recommendedKcal : false
+  const isKcalOverTarget = recommendedKcal ? eatenKcal > recommendedKcal : false
   const proteinFactor = planTargetWeight && planCurrentWeight && planTargetWeight < planCurrentWeight
     ? 1.6
     : planTargetWeight && planCurrentWeight && planTargetWeight > planCurrentWeight ? 1.8 : 1.25
@@ -390,6 +428,22 @@ export default function HealthPage({ apiBase = '/api/admin/health', homeHref = '
     protein: Math.max(50, Math.round((planCurrentWeight || parseFloat(activeWeight) || 75) * proteinFactor)),
     sugar: Math.max(25, Math.round((dailyKcalTarget * 0.1) / 4)),
     fat: Math.max(35, Math.round((dailyKcalTarget * 0.3) / 9)),
+  }
+  const medicationName = homeLabel === 'Fatima' ? 'Mounjaro' : homeLabel === 'Andarun' ? 'Ozempic' : ''
+  const todayWeekday = String(new Date(`${TODAY}T12:00:00`).getDay())
+  const injectionDueToday = medicationName && caloriePlan.injectionDay === todayWeekday
+  const injectionDoneToday = Array.isArray(caloriePlan.injectionDoneDates) && caloriePlan.injectionDoneDates.includes(TODAY)
+
+  function toggleInjectionDone() {
+    setCaloriePlan(prev => {
+      const doneDates = Array.isArray(prev.injectionDoneDates) ? prev.injectionDoneDates : []
+      return {
+        ...prev,
+        injectionDoneDates: doneDates.includes(TODAY)
+          ? doneDates.filter(day => day !== TODAY)
+          : [...doneDates, TODAY].slice(-80),
+      }
+    })
   }
 
   function openPicker(type) {
@@ -518,6 +572,25 @@ export default function HealthPage({ apiBase = '/api/admin/health', homeHref = '
   }), { foodKcal: 0, sportKcal: 0, net: 0 })
   const weekTarget = recommendedKcal ? recommendedKcal * 7 : null
   const weekDelta = weekTarget ? weekTotals.net - weekTarget : null
+  const weekWeights = weekData.map(day => day.rec?.weight).filter(Boolean)
+  const weekAvgWeight = weekWeights.length
+    ? (weekWeights.reduce((sum, value) => sum + Number(value), 0) / weekWeights.length).toFixed(1)
+    : null
+  const historySeries = [...records]
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .slice(-28)
+    .map(record => ({ ...record, ...caloriesForRecord(record) }))
+  const historyMax = Math.max(1, recommendedKcal || 0, ...historySeries.map(day => Math.max(day.foodKcal, day.net)))
+  const historyW = Math.max(320, historySeries.length * 46)
+  const historyPts = historySeries.map((day, index) => {
+    const x = historySeries.length === 1 ? historyW / 2 : 18 + (index * ((historyW - 36) / (historySeries.length - 1)))
+    const y = 190 - (Math.min(day.foodKcal, historyMax) / historyMax) * 150
+    return [x, y]
+  })
+  const historyPath = historyPts.map((point, index) => `${index === 0 ? 'M' : 'L'}${point[0]},${point[1]}`).join(' ')
+  const historyArea = historyPts.length
+    ? `${historyPath} L${historyPts[historyPts.length - 1][0]},202 L${historyPts[0][0]},202 Z`
+    : ''
 
   if (loading) return (
     <div className={s.page}>
@@ -583,9 +656,30 @@ export default function HealthPage({ apiBase = '/api/admin/health', homeHref = '
               </section>
 
               <section className={s.todayDashboard}>
+                {injectionDueToday && (
+                  <button
+                    className={`${s.injectionReminder} ${injectionDoneToday ? s.injectionDone : ''}`}
+                    type="button"
+                    onClick={toggleInjectionDone}
+                  >
+                    <span>{injectionDoneToday ? '✓' : ''}</span>
+                    <strong>{medicationName}</strong>
+                    <small>Spritze heute</small>
+                  </button>
+                )}
                 <div className={s.todayKcalCard}>
                   <div className={s.todayRing}>
                     <svg viewBox="0 0 120 120">
+                      <defs>
+                        <linearGradient id="foodGrad" x1="0" y1="0" x2="1" y2="1">
+                          <stop offset="0%" stopColor="#34d399" />
+                          <stop offset="100%" stopColor="#0f766e" />
+                        </linearGradient>
+                        <linearGradient id="sportGrad" x1="0" y1="0" x2="1" y2="1">
+                          <stop offset="0%" stopColor="#a5b4fc" />
+                          <stop offset="100%" stopColor="#4f46e5" />
+                        </linearGradient>
+                      </defs>
                       <circle cx="60" cy="60" r={RING_R} className={s.ringTrack} />
                       <circle cx="60" cy="60" r={RING_R} className={`${s.ringFood} ${isKcalOverTarget ? s.ringOver : ''}`}
                         style={{ strokeDasharray: RING_C, strokeDashoffset: RING_C * (1 - foodFraction) }}
@@ -597,13 +691,14 @@ export default function HealthPage({ apiBase = '/api/admin/health', homeHref = '
                       )}
                     </svg>
                     <div>
-                      <strong>{totalKcal}</strong>
-                      <span>{recommendedKcal ? `von ${recommendedKcal} kcal` : 'kcal netto'}</span>
+                      <strong>{eatenKcal}</strong>
+                      <span>{recommendedKcal ? `gegessen von ${recommendedKcal}` : 'kcal gegessen'}</span>
                     </div>
                   </div>
                   <div className={s.todayKcalRows}>
                     <div><span>Gegessen</span><strong>+{eatenKcal}</strong></div>
                     <div><span>Sport</span><strong>−{totalSportKcal}</strong></div>
+                    <div><span>Netto</span><strong>{totalKcal}</strong></div>
                     <div><span>Empfehlung</span><strong>{recommendedKcal ? recommendedKcal : '—'}</strong></div>
                     <div className={isKcalOverTarget ? s.kcalOverRow : s.kcalGoodRow}>
                       <span>{recommendedKcal ? (isKcalOverTarget ? 'Überschritten' : 'Übrig') : 'Status'}</span>
@@ -770,7 +865,9 @@ export default function HealthPage({ apiBase = '/api/admin/health', homeHref = '
                     return (
                       <div className={`${s.pickerItem} ${existing ? s.pickerItemSelectedFood : ''}`} key={food.id}>
                         <button className={s.pickerItemButton} type="button" onClick={() => setActiveId(isActive ? null : food.id)}>
-                          <span className={`${s.foodImage} ${s[foodImageClass(food)]}`} aria-hidden="true" />
+                          <span className={`${s.foodImage} ${s[foodImageClass(food)]}`} aria-hidden="true">
+                            <em>{foodSymbol(food)}</em>
+                          </span>
                           <span className={s.pickerItemText}>
                             <strong>{food.de}</strong>
                             <small>
@@ -819,6 +916,7 @@ export default function HealthPage({ apiBase = '/api/admin/health', homeHref = '
                   <span><strong>{weekTotals.foodKcal}</strong> gegessen</span>
                   <span><strong>{weekTotals.sportKcal}</strong> verbrannt</span>
                   <span><strong>{weekTotals.net}</strong> netto</span>
+                  {weekAvgWeight && <span><strong>{weekAvgWeight}</strong> kg Ø</span>}
                   {weekDelta !== null && (
                     <span className={weekDelta > 0 ? s.overTarget : s.underTarget}>
                       <strong>{weekDelta > 0 ? '+' : ''}{weekDelta}</strong> {weekDelta > 0 ? 'über Ziel' : 'unter Ziel'}
@@ -827,96 +925,47 @@ export default function HealthPage({ apiBase = '/api/admin/health', homeHref = '
                 </div>
               </header>
 
-              <div className={s.weekChart} aria-label="Kalorien pro Woche">
-                {weekData.map(day => {
-                  const dateObj = new Date(`${day.day}T12:00:00`)
-                  const foodHeight = Math.max(4, Math.round((day.foodKcal / weekMax) * 100))
-                  const sportHeight = Math.max(4, Math.round((day.sportKcal / weekMax) * 100))
+              <div className={s.flowChart} aria-label="Kalorienverlauf">
+                {historySeries.length ? (
+                  <svg viewBox={`0 0 ${historyW} 220`} preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id="flowFill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#10b981" stopOpacity="0.46" />
+                        <stop offset="100%" stopColor="#10b981" stopOpacity="0.03" />
+                      </linearGradient>
+                    </defs>
+                    {recommendedKcal && (
+                      <line
+                        x1="18"
+                        x2={historyW - 18}
+                        y1={190 - (Math.min(recommendedKcal, historyMax) / historyMax) * 150}
+                        y2={190 - (Math.min(recommendedKcal, historyMax) / historyMax) * 150}
+                        className={s.flowTargetLine}
+                      />
+                    )}
+                    <path d={historyArea} className={s.flowArea} />
+                    <path ref={sparkPathRef} d={historyPath} className={s.flowLine} />
+                    {historyPts.map((point, index) => (
+                      <circle key={historySeries[index]?.date || index} cx={point[0]} cy={point[1]} r="4" className={s.flowDot} />
+                    ))}
+                  </svg>
+                ) : (
+                  <p className={s.emptyText}>Noch kein Verlauf.</p>
+                )}
+              </div>
+              <div className={s.flowLegend}>
+                {historySeries.map(day => {
+                  const dateObj = new Date(`${day.date}T12:00:00`)
                   return (
-                    <div className={s.weekDay} key={day.day}>
-                      <div className={s.weekBars}>
-                        <span className={s.weekFoodBar} style={{ height: `${day.foodKcal ? foodHeight : 4}%` }} />
-                        <span className={s.weekSportBar} style={{ height: `${day.sportKcal ? sportHeight : 4}%` }} />
-                      </div>
-                      <strong>{day.label}</strong>
-                      <small>{dateObj.getDate()}</small>
-                    </div>
+                    <span key={day.date}>
+                      <strong>{dateObj.toLocaleDateString('de-DE', { weekday: 'short' })}</strong>
+                      {day.foodKcal} kcal
+                      {day.weight ? ` · ${day.weight} kg` : ''}
+                    </span>
                   )
                 })}
               </div>
             </section>
-
-            {weightSeries.length >= 2 && (() => {
-              const weights = weightSeries.map(d => d.weight)
-              const min = Math.min(...weights)
-              const max = Math.max(...weights)
-              const range = max - min || 1
-              const W = weightSeries.length * 50
-              const pts = weightSeries.map((d, i) => [i * 50 + 8, 52 - ((d.weight - min) / range) * 40])
-              const pathD = pts.map((p, i) => `${i === 0 ? 'M' : 'L'}${p[0]},${p[1]}`).join(' ')
-              const areaD = `${pathD} L${pts[pts.length - 1][0]},60 L${pts[0][0]},60 Z`
-              return (
-                <div className={s.sparkCard}>
-                  <div className={s.sparkHeader}>
-                    <span className={s.sparkLabel}>Gewichtsverlauf</span>
-                    <span className={s.sparkRange}>{weights[0]} → {weights[weights.length - 1]} kg</span>
-                  </div>
-                  <svg className={s.sparkSvg} viewBox={`0 0 ${W} 60`} preserveAspectRatio="none">
-                    <defs>
-                      <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#818cf8" stopOpacity="0.4" />
-                        <stop offset="100%" stopColor="#818cf8" stopOpacity="0" />
-                      </linearGradient>
-                    </defs>
-                    <path d={areaD} fill="url(#sparkGrad)" />
-                    <path ref={sparkPathRef} d={pathD} fill="none" stroke="#818cf8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                    {pts.map((p, i) => <circle key={i} cx={p[0]} cy={p[1]} r="3.5" fill="#818cf8" />)}
-                  </svg>
-                  <div className={s.sparkDots}>
-                    {weightSeries.map((d, i) => <span key={i}>{d.weight}</span>)}
-                  </div>
-                </div>
-              )
-            })()}
-
-            <div className={s.historyList}>
-              {[...records].sort((a, b) => b.date.localeCompare(a.date)).map((rec, idx) => {
-                const { foodKcal, sportKcal, net } = caloriesForRecord(rec)
-                const targetDelta = recommendedKcal ? net - recommendedKcal : null
-                const dateObj = new Date(rec.date + 'T12:00:00')
-                return (
-                  <div key={rec.id} className={s.historyCard} style={{ animationDelay: `${idx * 0.04}s` }}>
-                    <div className={s.historyDate}>
-                      <div className={s.historyDay}>{dateObj.getDate()}</div>
-                      <div className={s.historyMonth}>{dateObj.toLocaleDateString('de-DE', { month: 'short' })}</div>
-                    </div>
-                    <div className={s.historyBody}>
-                      <div className={s.historyMeta}>
-                        {rec.weight && <span className={s.historyTag + ' ' + s.historyTagWeight}>{rec.weight} kg</span>}
-                        {(rec.sports || []).length > 0 && <span className={s.historyTag + ' ' + s.historyTagSport}>{(rec.sports || []).length} Sport</span>}
-                        {(rec.foods || []).length > 0 && <span className={s.historyTag + ' ' + s.historyTagFood}>{(rec.foods || []).length} Mahlzeiten</span>}
-                        {targetDelta !== null && (
-                          <span className={`${s.historyTag} ${targetDelta > 0 ? s.historyTagOver : s.historyTagUnder}`}>
-                            {targetDelta > 0 ? '+' : ''}{targetDelta} zum Ziel
-                          </span>
-                        )}
-                      </div>
-                      <div className={s.kcalBar}>
-                        <div className={s.kcalBarFood} style={{ width: `${Math.min((foodKcal / 2500) * 100, 100)}%` }} />
-                        <div className={s.kcalBarSport} style={{ width: `${Math.min((sportKcal / 2500) * 100, 100)}%` }} />
-                      </div>
-                      {rec.note && <div className={s.historyNote}>{rec.note}</div>}
-                    </div>
-                    <div className={s.historyNet}>
-                      <div className={s.historyNetNum}>{net}</div>
-                      <div className={s.historyNetLabel}>kcal</div>
-                    </div>
-                    <button className={s.historyDel}
-                      onClick={async () => { await api(`/records?id=${rec.id}`, 'DELETE'); loadAll() }}>×</button>
-                  </div>
-                )
-              })}
-            </div>
           </div>
         )}
 
@@ -1002,6 +1051,30 @@ export default function HealthPage({ apiBase = '/api/admin/health', homeHref = '
                 )}
               </div>
             </section>
+
+            {medicationName && (
+              <section className={s.injectionSettings}>
+                <div>
+                  <span className={s.sparkLabel}>{medicationName}</span>
+                  <h2>Tag der Spritze</h2>
+                </div>
+                <label>
+                  Wochentag
+                  <select
+                    value={caloriePlan.injectionDay || ''}
+                    onChange={event => setCaloriePlan(prev => ({ ...prev, injectionDay: event.target.value }))}
+                  >
+                    {WEEKDAY_OPTIONS.map(day => (
+                      <option key={day.id || 'empty'} value={day.id}>{day.label}</option>
+                    ))}
+                  </select>
+                </label>
+                <div className={s.injectionPreview}>
+                  <strong>{caloriePlan.injectionDay ? WEEKDAY_OPTIONS.find(day => day.id === caloriePlan.injectionDay)?.label : '—'}</strong>
+                  <span>{caloriePlan.injectionDay ? 'Erscheint dann auf Heute zum Abhaken.' : 'Noch nicht festgelegt.'}</span>
+                </div>
+              </section>
+            )}
           </div>
         )}
 
