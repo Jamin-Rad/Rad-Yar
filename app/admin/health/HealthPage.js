@@ -33,6 +33,8 @@ const UNIT_PLURALS = {
   Esslöffel: 'Esslöffel',
   Teelöffel: 'Teelöffel',
   Patty: 'Pattys',
+  Dose: 'Dosen',
+  Kugel: 'Kugeln',
 }
 
 const TODAY = new Date().toISOString().slice(0, 10)
@@ -130,6 +132,9 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
     age: '',
   })
   const sparkPathRef = useRef(null)
+  const loadedRef = useRef(false)
+  const saveTimerRef = useRef(null)
+  const lastSavedRef = useRef('')
   const api = (path, method = 'GET', body) => apiRequest(apiBase, path, method, body)
 
   useEffect(() => { loadAll() }, [])
@@ -145,21 +150,46 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
       setDeletedFoods(data.deletedFoods || [])
       const today = (data.records || []).find(r => r.date === TODAY)
       if (today) {
-        setForm({
+        const nextForm = {
           date: today.date,
           weight: today.weight ?? '',
           note: today.note ?? '',
           manualKcal: today.manual_kcal ?? 0,
           sports: today.sports ?? [],
           foods: today.foods ?? [],
-        })
+        }
+        setForm(nextForm)
+        lastSavedRef.current = JSON.stringify(nextForm)
+      } else {
+        lastSavedRef.current = JSON.stringify(EMPTY_FORM)
       }
+      loadedRef.current = true
       setSaveMessage('')
     } catch (error) {
       setSaveMessage(error.message || 'Daten konnten nicht geladen werden.')
     }
     setLoading(false)
   }
+
+  useEffect(() => {
+    if (!loadedRef.current || loading) return undefined
+
+    const serialized = JSON.stringify(form)
+    if (serialized === lastSavedRef.current) return undefined
+
+    const hasContent = form.weight || form.note || form.manualKcal || form.sports.length || form.foods.length
+    const existingRecord = records.some(record => record.date === form.date)
+    if (!hasContent && !existingRecord) return undefined
+
+    setSaving(true)
+    setSaveMessage('Speichert automatisch…')
+    clearTimeout(saveTimerRef.current)
+    saveTimerRef.current = setTimeout(() => {
+      saveCurrentForm(form, serialized)
+    }, 700)
+
+    return () => clearTimeout(saveTimerRef.current)
+  }, [form, loading, records])
 
   // Animate sparkline on mount/change
   useEffect(() => {
@@ -273,18 +303,30 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
   function removeSportFromForm(id) { setForm(f => ({ ...f, sports: f.sports.filter(x => x.id !== id) })) }
   function removeFoodFromForm(id)  { setForm(f => ({ ...f, foods:  f.foods.filter(x => x.id !== id) })) }
 
-  async function handleSave() {
-    setSaving(true)
-    setSaveMessage('')
+  async function saveCurrentForm(snapshot, serialized) {
     try {
       await api('/records', 'POST', {
-        id: `record-${form.date}`, date: form.date,
-        weight: form.weight ? parseFloat(form.weight) : null,
-        note: form.note || '', manual_kcal: form.manualKcal || 0,
-        sports: form.sports, foods: form.foods,
+        id: `record-${snapshot.date}`, date: snapshot.date,
+        weight: snapshot.weight ? parseFloat(snapshot.weight) : null,
+        note: snapshot.note || '', manual_kcal: snapshot.manualKcal || 0,
+        sports: snapshot.sports, foods: snapshot.foods,
       })
-      await loadAll()
-      setSaveMessage('Gespeichert.')
+      lastSavedRef.current = serialized
+      setRecords(current => {
+        const record = {
+          id: `record-${snapshot.date}`,
+          date: snapshot.date,
+          weight: snapshot.weight ? parseFloat(snapshot.weight) : null,
+          note: snapshot.note || '',
+          manual_kcal: snapshot.manualKcal || 0,
+          sports: snapshot.sports,
+          foods: snapshot.foods,
+          updated_at: new Date().toISOString(),
+        }
+        return [record, ...current.filter(item => item.date !== snapshot.date)]
+          .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')))
+      })
+      setSaveMessage('Automatisch gespeichert.')
     } catch (error) {
       setSaveMessage(error.message || 'Speichern fehlgeschlagen.')
     } finally {
@@ -438,14 +480,14 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
 
         {/* ── TABS ── */}
         <div className={s.tabRow}>
-          {[['eintragen', 'Eintragen', '✏️'], ['verlauf', 'Verlauf', '📈'], ['verwaltung', 'Verwaltung', '⚙️']].map(([id, label, icon]) => (
+          {[['eintragen', 'Heute', '✏️'], ['verlauf', 'Verlauf', '📈'], ['verwaltung', 'Verwaltung', '⚙️']].map(([id, label, icon]) => (
             <button key={id} className={tab === id ? s.tabActive : s.tab} onClick={() => setTab(id)}>
               <span className={s.tabIcon}>{icon}</span>{label}
             </button>
           ))}
         </div>
 
-        {/* ── TAB: Eintragen ── */}
+        {/* ── TAB: Heute ── */}
         {tab === 'eintragen' && (
           <div className={s.enterGrid}>
 
@@ -536,14 +578,9 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                 value={form.note}
                 onChange={e => setForm(f => ({ ...f, note: e.target.value }))} />
 
-              <button className={s.saveBtn} onClick={handleSave} disabled={saving}>
-                {saving ? 'Speichert…' : 'Heute speichern'}
-              </button>
-              {saveMessage && (
-                <div className={saveMessage === 'Gespeichert.' ? s.saveOk : s.saveError}>
-                  {saveMessage}
-                </div>
-              )}
+              <div className={saving || saveMessage ? (saveMessage.includes('fehl') || saveMessage.includes('nicht') ? s.saveError : s.saveOk) : s.saveHint}>
+                {saving ? 'Speichert automatisch…' : (saveMessage || 'Änderungen werden automatisch gespeichert.')}
+              </div>
             </div>
           </div>
         )}
