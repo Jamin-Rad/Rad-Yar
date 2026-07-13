@@ -574,13 +574,15 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
                 </div>
               </div>
 
-              <input className={s.noteInput} placeholder="Notiz für heute…"
+              <input className={s.noteInput} placeholder=""
                 value={form.note}
                 onChange={e => setForm(f => ({ ...f, note: e.target.value }))} />
 
-              <div className={saving || saveMessage ? (saveMessage.includes('fehl') || saveMessage.includes('nicht') ? s.saveError : s.saveOk) : s.saveHint}>
-                {saving ? 'Speichert automatisch…' : (saveMessage || 'Änderungen werden automatisch gespeichert.')}
-              </div>
+              {(saving || saveMessage) && (
+                <div className={saveMessage.includes('fehl') || saveMessage.includes('nicht') ? s.saveError : s.saveOk}>
+                  {saving ? 'Speichert automatisch…' : saveMessage}
+                </div>
+              )}
             </div>
           </div>
         )}

@@ -1241,7 +1241,6 @@
   margin: 14px;
 }
 
-.saveHint,
 .saveOk,
 .saveError {
   width: calc(100% - 28px);
@@ -1251,11 +1250,6 @@
   font-size: 12px;
   font-weight: 900;
   padding: 10px 12px;
-}
-
-.saveHint {
-  background: rgba(148, 163, 184, .12);
-  color: #64748b;
 }
 
 .saveOk {
@@ -1270,10 +1264,6 @@
 
 :global(html[data-theme='dark']) .saveOk {
   color: #6ee7b7;
-}
-
-:global(html[data-theme='dark']) .saveHint {
-  color: #cbd5e1;
 }
 
 :global(html[data-theme='dark']) .saveError {
