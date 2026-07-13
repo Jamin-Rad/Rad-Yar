@@ -52,10 +52,13 @@ const WEEKDAY_SHORT = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
 async function apiRequest(apiBase, path, method = 'GET', body) {
   const res = await fetch(`${apiBase}${path}`, {
     method,
+    cache: 'no-store',
     headers: body ? { 'Content-Type': 'application/json' } : undefined,
     body: body ? JSON.stringify(body) : undefined,
   })
-  return res.ok ? res.json() : null
+  const data = await res.json().catch(() => ({}))
+  if (!res.ok) throw new Error(data?.error || 'Speichern fehlgeschlagen')
+  return data
 }
 
 const EMPTY_FORM = { date: TODAY, weight: '', note: '', manualKcal: 0, sports: [], foods: [] }
@@ -113,6 +116,7 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
   const [activeId, setActiveId] = useState(null)
   const [form, setForm] = useState(EMPTY_FORM)
   const [saving, setSaving] = useState(false)
+  const [saveMessage, setSaveMessage] = useState('')
   const [mgmtMode, setMgmtMode] = useState('sport')
   const [newSport, setNewSport] = useState({ de: '', kcalPerMin: '' })
   const [newFood, setNewFood] = useState({ de: '', cat: 'sonstiges', kcalPer100g: '', portionG: '' })
@@ -132,8 +136,8 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
 
   async function loadAll() {
     setLoading(true)
-    const data = await api('/')
-    if (data) {
+    try {
+      const data = await api('/')
       setRecords(data.records || [])
       setCustomSports(data.customSports || [])
       setDeletedSports(data.deletedSports || [])
@@ -150,6 +154,9 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
           foods: today.foods ?? [],
         })
       }
+      setSaveMessage('')
+    } catch (error) {
+      setSaveMessage(error.message || 'Daten konnten nicht geladen werden.')
     }
     setLoading(false)
   }
@@ -268,13 +275,21 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
 
   async function handleSave() {
     setSaving(true)
-    await api('/records', 'POST', {
-      id: `record-${form.date}`, date: form.date,
-      weight: form.weight ? parseFloat(form.weight) : null,
-      note: form.note || '', manual_kcal: form.manualKcal || 0,
-      sports: form.sports, foods: form.foods,
-    })
-    await loadAll(); setSaving(false)
+    setSaveMessage('')
+    try {
+      await api('/records', 'POST', {
+        id: `record-${form.date}`, date: form.date,
+        weight: form.weight ? parseFloat(form.weight) : null,
+        note: form.note || '', manual_kcal: form.manualKcal || 0,
+        sports: form.sports, foods: form.foods,
+      })
+      await loadAll()
+      setSaveMessage('Gespeichert.')
+    } catch (error) {
+      setSaveMessage(error.message || 'Speichern fehlgeschlagen.')
+    } finally {
+      setSaving(false)
+    }
   }
 
   async function handleAddSport(e) {
@@ -524,6 +539,11 @@ export default function HealthPage({ apiBase = '/api/admin/health' }) {
               <button className={s.saveBtn} onClick={handleSave} disabled={saving}>
                 {saving ? 'Speichert…' : 'Heute speichern'}
               </button>
+              {saveMessage && (
+                <div className={saveMessage === 'Gespeichert.' ? s.saveOk : s.saveError}>
+                  {saveMessage}
+                </div>
+              )}
             </div>
           </div>
         )}

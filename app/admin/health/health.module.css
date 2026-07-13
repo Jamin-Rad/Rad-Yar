@@ -1266,6 +1266,33 @@
   opacity: .52;
 }
 
+.saveOk,
+.saveError {
+  margin: 0 14px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 900;
+  padding: 10px 12px;
+}
+
+.saveOk {
+  background: rgba(16, 185, 129, .12);
+  color: #047857;
+}
+
+.saveError {
+  background: rgba(244, 63, 94, .12);
+  color: #be123c;
+}
+
+:global(html[data-theme='dark']) .saveOk {
+  color: #6ee7b7;
+}
+
+:global(html[data-theme='dark']) .saveError {
+  color: #fda4af;
+}
+
 .historyView {
   display: grid;
   gap: 14px;

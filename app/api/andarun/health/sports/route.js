@@ -1,7 +1,7 @@
 import { requireAndarunSession } from '@/lib/andarunPasswordAuth'
 import { createPrivateHealthHandlers } from '@/lib/privateHealthApi'
 
-const handlers = createPrivateHealthHandlers(requireAndarunSession, 'Andarun')
+const handlers = createPrivateHealthHandlers(requireAndarunSession, 'Andarun', 'andarun')
 
 export const POST = handlers.sports.POST
 export const DELETE = handlers.sports.DELETE
