@@ -4,7 +4,6 @@ import s from './health.module.css'
 import {
   sportarten, sportKategorien,
   lebensmittel, kategorien,
-  berechneKcalSport, berechneKcalEssen,
 } from '@/data/health'
 
 const SPORT_ICONS = {
@@ -18,6 +17,8 @@ const FOOD_ICONS = {
 }
 
 const TODAY = new Date().toISOString().slice(0, 10)
+const RING_R = 50
+const RING_CIRCUMFERENCE = 2 * Math.PI * RING_R
 
 async function api(path, method = 'GET', body) {
   const res = await fetch(`/api/admin/health${path}`, {
@@ -39,20 +40,13 @@ export default function HealthPage() {
   const [deletedFoods, setDeletedFoods] = useState([])
   const [loading, setLoading] = useState(true)
 
-  // 3-level nav state
-  const [view, setView] = useState('home') // home | sport-cats | sport-items | food-cats | food-items
+  const [view, setView] = useState('home')
   const [selectedCat, setSelectedCat] = useState(null)
-
-  // inline input
   const [activeId, setActiveId] = useState(null)
   const [inputVal, setInputVal] = useState('')
   const inputRef = useRef(null)
-
-  // form
   const [form, setForm] = useState(EMPTY_FORM)
   const [saving, setSaving] = useState(false)
-
-  // management form state
   const [mgmtMode, setMgmtMode] = useState('sport')
   const [newSport, setNewSport] = useState({ de: '', kcalPerMin: '' })
   const [newFood, setNewFood] = useState({ de: '', cat: 'sonstiges', kcalPer100g: '', portionG: '' })
@@ -83,7 +77,6 @@ export default function HealthPage() {
     setLoading(false)
   }
 
-  // ── Computed active lists ──────────────────────────────────────────
   const activeSports = [
     ...sportarten.filter(sp => !deletedSports.includes(sp.id)),
     ...customSports.map(cs => ({
@@ -100,7 +93,6 @@ export default function HealthPage() {
     })),
   ]
 
-  // ── Sport categories with count ────────────────────────────────────
   const sportCatsWithCount = [
     ...sportKategorien.map(sc => ({
       ...sc,
@@ -113,7 +105,6 @@ export default function HealthPage() {
     }] : []),
   ]
 
-  // ── Food categories with count ─────────────────────────────────────
   const usedFoodCatIds = [...new Set(activeFoods.map(f => f.cat))]
   const foodCatsWithCount = [
     ...kategorien.filter(k => usedFoodCatIds.includes(k.id)).map(k => ({
@@ -126,7 +117,6 @@ export default function HealthPage() {
     }] : []),
   ]
 
-  // ── Totals ─────────────────────────────────────────────────────────
   const totalSportKcal = form.sports.reduce((sum, item) => {
     const sp = activeSports.find(x => x.id === item.id)
     return sum + (sp ? Math.round(sp.kcalPerMin * item.min) : 0)
@@ -137,14 +127,15 @@ export default function HealthPage() {
   }, 0)
   const totalKcal = totalFoodKcal + (form.manualKcal || 0) - totalSportKcal
 
-  // ── Navigation helpers ─────────────────────────────────────────────
-  function goHome() { setView('home'); setSelectedCat(null); setActiveId(null) }
-  function goSportCats() { setView('sport-cats'); setSelectedCat(null); setActiveId(null) }
-  function goFoodCats() { setView('food-cats'); setSelectedCat(null); setActiveId(null) }
-  function selectSportCat(catId) { setView('sport-items'); setSelectedCat(catId); setActiveId(null) }
-  function selectFoodCat(catId) { setView('food-items'); setSelectedCat(catId); setActiveId(null) }
+  const foodFraction  = Math.min((totalFoodKcal + (form.manualKcal || 0)) / 2000, 1)
+  const sportFraction = Math.min(totalSportKcal / 2000, 1)
 
-  // ── Inline input ───────────────────────────────────────────────────
+  function goHome()           { setView('home');        setSelectedCat(null); setActiveId(null) }
+  function goSportCats()      { setView('sport-cats');  setSelectedCat(null); setActiveId(null) }
+  function goFoodCats()       { setView('food-cats');   setSelectedCat(null); setActiveId(null) }
+  function selectSportCat(id) { setView('sport-items'); setSelectedCat(id);   setActiveId(null) }
+  function selectFoodCat(id)  { setView('food-items');  setSelectedCat(id);   setActiveId(null) }
+
   function openInput(id, defaultVal = '') {
     setActiveId(id)
     setInputVal(String(defaultVal || ''))
@@ -154,54 +145,38 @@ export default function HealthPage() {
   function confirmSport(id) {
     const min = parseInt(inputVal)
     if (!min || min <= 0) { setActiveId(null); return }
-    setForm(f => {
-      const others = f.sports.filter(x => x.id !== id)
-      return { ...f, sports: [...others, { id, min }] }
-    })
+    setForm(f => ({ ...f, sports: [...f.sports.filter(x => x.id !== id), { id, min }] }))
     setActiveId(null)
   }
 
   function confirmFood(id) {
     const count = parseInt(inputVal)
     if (!count || count <= 0) { setActiveId(null); return }
-    setForm(f => {
-      const others = f.foods.filter(x => x.id !== id)
-      return { ...f, foods: [...others, { id, count }] }
-    })
+    setForm(f => ({ ...f, foods: [...f.foods.filter(x => x.id !== id), { id, count }] }))
     setActiveId(null)
   }
 
-  function removeSportFromForm(id) {
-    setForm(f => ({ ...f, sports: f.sports.filter(x => x.id !== id) }))
-  }
-  function removeFoodFromForm(id) {
-    setForm(f => ({ ...f, foods: f.foods.filter(x => x.id !== id) }))
-  }
+  function removeSportFromForm(id) { setForm(f => ({ ...f, sports: f.sports.filter(x => x.id !== id) })) }
+  function removeFoodFromForm(id)  { setForm(f => ({ ...f, foods:  f.foods.filter(x => x.id !== id) })) }
 
-  // ── Save ───────────────────────────────────────────────────────────
   async function handleSave() {
     setSaving(true)
-    const id = `record-${form.date}`
     await api('/records', 'POST', {
-      id, date: form.date,
+      id: `record-${form.date}`, date: form.date,
       weight: form.weight ? parseFloat(form.weight) : null,
-      note: form.note || '',
-      manual_kcal: form.manualKcal || 0,
-      sports: form.sports,
-      foods: form.foods,
+      note: form.note || '', manual_kcal: form.manualKcal || 0,
+      sports: form.sports, foods: form.foods,
     })
     await loadAll()
     setSaving(false)
   }
 
-  // ── Management ─────────────────────────────────────────────────────
   async function handleAddSport(e) {
     e.preventDefault()
     if (!newSport.de || !newSport.kcalPerMin) return
     const id = 'custom-' + newSport.de.toLowerCase().replace(/\s+/g, '-') + '-' + Date.now()
     await api('/sports', 'POST', { id, de: newSport.de, fa: '', kcalPerMin: parseFloat(newSport.kcalPerMin) })
-    setNewSport({ de: '', kcalPerMin: '' })
-    loadAll()
+    setNewSport({ de: '', kcalPerMin: '' }); loadAll()
   }
   async function handleAddFood(e) {
     e.preventDefault()
@@ -212,294 +187,280 @@ export default function HealthPage() {
       kcalPer100g: parseInt(newFood.kcalPer100g),
       portionG: parseInt(newFood.portionG) || 100,
     })
-    setNewFood({ de: '', cat: 'sonstiges', kcalPer100g: '', portionG: '' })
-    loadAll()
+    setNewFood({ de: '', cat: 'sonstiges', kcalPer100g: '', portionG: '' }); loadAll()
   }
   async function deleteSport(id, isCustom) {
-    if (isCustom) await api(`/sports?id=${id}&custom=true`, 'DELETE')
-    else await api(`/sports?id=${id}&custom=false`, 'DELETE')
-    loadAll()
+    await api(`/sports?id=${id}&custom=${isCustom}`, 'DELETE'); loadAll()
   }
   async function deleteFood(id, isCustom) {
-    if (isCustom) await api(`/foods?id=${id}&custom=true`, 'DELETE')
-    else await api(`/foods?id=${id}&custom=false`, 'DELETE')
-    loadAll()
+    await api(`/foods?id=${id}&custom=${isCustom}`, 'DELETE'); loadAll()
   }
   async function restoreSport(id) { await api('/sports', 'PATCH', { id }); loadAll() }
-  async function restoreFood(id) { await api('/foods', 'PATCH', { id }); loadAll() }
+  async function restoreFood(id)  { await api('/foods',  'PATCH', { id }); loadAll() }
 
-  // ── Computed items for current view ───────────────────────────────
   const viewSportItems = selectedCat ? activeSports.filter(sp => sp.cat === selectedCat) : []
   const viewFoodItems  = selectedCat ? activeFoods.filter(f => f.cat === selectedCat) : []
 
-  const navTitle = {
-    'home': '',
-    'sport-cats': 'Sport',
-    'sport-items': sportCatsWithCount.find(c => c.id === selectedCat)?.de || '',
-    'food-cats': 'Essen',
-    'food-items': foodCatsWithCount.find(c => c.id === selectedCat)?.de || '',
-  }[view] || ''
+  const weightSeries = [...records]
+    .filter(r => r.weight)
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .slice(-8)
 
   if (loading) return (
     <div className={s.page}>
-      <div className={s.hero}><p style={{ color: '#94a3b8' }}>Lädt…</p></div>
+      <div className={s.loadingHero}><div className={s.loadingRing} /><p>Lädt…</p></div>
     </div>
   )
 
   return (
     <div className={s.page}>
-      <div className={s.hero}>
-        <h1>Gesundheit</h1>
-        <p>Kalorien, Gewicht und Sport verfolgen</p>
+
+      {/* ── Hero Card ── */}
+      <div className={s.todayCard}>
+        <div className={s.todayRingWrap}>
+          <svg className={s.todayRing} viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r={RING_R} className={s.ringTrack} />
+            <circle cx="60" cy="60" r={RING_R} className={s.ringArcFood}
+              style={{ strokeDasharray: RING_CIRCUMFERENCE, strokeDashoffset: RING_CIRCUMFERENCE * (1 - foodFraction) }}
+            />
+            {sportFraction > 0 && (
+              <circle cx="60" cy="60" r={RING_R} className={s.ringArcSport}
+                style={{ strokeDasharray: RING_CIRCUMFERENCE, strokeDashoffset: RING_CIRCUMFERENCE * (1 - sportFraction) }}
+              />
+            )}
+          </svg>
+          <div className={s.ringCenter}>
+            <div className={s.ringNum}>{totalKcal}</div>
+            <div className={s.ringUnit}>kcal netto</div>
+          </div>
+        </div>
+
+        <div className={s.todayInfo}>
+          <div className={s.todayDate}>
+            {new Date().toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long' })}
+          </div>
+          <h1 className={s.todayTitle}>Gesundheit</h1>
+          <div className={s.todayMetrics}>
+            <div className={s.todayMetric}>
+              <span className={s.metricDot + ' ' + s.dotFood} />
+              <span className={s.metricLabel}>Gegessen</span>
+              <span className={s.metricValue}>{totalFoodKcal} kcal</span>
+            </div>
+            <div className={s.todayMetric}>
+              <span className={s.metricDot + ' ' + s.dotSport} />
+              <span className={s.metricLabel}>Verbrannt</span>
+              <span className={s.metricValue}>{totalSportKcal} kcal</span>
+            </div>
+            {form.weight && (
+              <div className={s.todayMetric}>
+                <span className={s.metricDot + ' ' + s.dotWeight} />
+                <span className={s.metricLabel}>Gewicht</span>
+                <span className={s.metricValue}>{form.weight} kg</span>
+              </div>
+            )}
+            <div className={s.todayMetric}>
+              <span className={s.metricDot + ' ' + s.dotRecords} />
+              <span className={s.metricLabel}>Einträge</span>
+              <span className={s.metricValue}>{records.length}</span>
+            </div>
+          </div>
+        </div>
+        <div className={s.cardOrb1} aria-hidden="true" />
+        <div className={s.cardOrb2} aria-hidden="true" />
       </div>
 
-      <div className={s.statsRow}>
-        <div className={s.stat}><span>Heute gegessen</span><strong>{totalFoodKcal} kcal</strong></div>
-        <div className={s.stat}><span>Heute trainiert</span><strong>{totalSportKcal} kcal</strong></div>
-        <div className={s.stat}><span>Netto</span><strong>{totalKcal} kcal</strong></div>
-        <div className={s.stat}><span>Einträge</span><strong>{records.length}</strong></div>
-      </div>
-
-      <div className={s.tabs}>
-        {[['eintragen', 'Eintragen'], ['verlauf', 'Verlauf'], ['verwaltung', 'Verwaltung']].map(([id, label]) => (
-          <button key={id} className={tab === id ? s.tabActive : s.tab} onClick={() => setTab(id)}>{label}</button>
+      {/* ── Tabs ── */}
+      <div className={s.tabRow}>
+        {[['eintragen', 'Eintragen', '✏️'], ['verlauf', 'Verlauf', '📈'], ['verwaltung', 'Verwaltung', '⚙️']].map(([id, label, icon]) => (
+          <button key={id} className={tab === id ? s.tabActive : s.tab} onClick={() => setTab(id)}>
+            <span className={s.tabIcon}>{icon}</span>{label}
+          </button>
         ))}
       </div>
 
-      {/* ── TAB: Eintragen ────────────────────────────────────────── */}
+      {/* ── TAB: Eintragen ── */}
       {tab === 'eintragen' && (
-        <div className={s.grid}>
-          {/* Left: navigation panel */}
-          <div className={s.panel}>
+        <div className={s.enterGrid}>
 
-            {/* Home: two big buttons */}
+          {/* Left: Browse */}
+          <div className={s.browsePanel}>
+
             {view === 'home' && (
-              <div className={s.homeBtns}>
-                <button className={s.bigBtnSport} onClick={goSportCats}>
-                  <span className={s.bigBtnIcon}>🏃</span>
-                  Sport
-                  <span className={s.bigBtnSub}>
-                    {form.sports.length > 0 ? `${form.sports.length} gewählt` : 'hinzufügen'}
-                  </span>
+              <div className={s.homeTiles}>
+                <button className={s.homeTileSport} onClick={goSportCats}>
+                  <div className={s.homeTileIcon}>🏃</div>
+                  <div className={s.homeTileLabel}>Sport</div>
+                  <div className={s.homeTileSub}>{form.sports.length > 0 ? `${form.sports.length} gewählt` : 'hinzufügen'}</div>
+                  {form.sports.length > 0 && <div className={s.homeTileBadge}>{form.sports.length}</div>}
                 </button>
-                <button className={s.bigBtnEssen} onClick={goFoodCats}>
-                  <span className={s.bigBtnIcon}>🥗</span>
-                  Essen
-                  <span className={s.bigBtnSub}>
-                    {form.foods.length > 0 ? `${form.foods.length} gewählt` : 'hinzufügen'}
-                  </span>
+                <button className={s.homeTileFood} onClick={goFoodCats}>
+                  <div className={s.homeTileIcon}>🥗</div>
+                  <div className={s.homeTileLabel}>Essen</div>
+                  <div className={s.homeTileSub}>{form.foods.length > 0 ? `${form.foods.length} gewählt` : 'hinzufügen'}</div>
+                  {form.foods.length > 0 && <div className={s.homeTileBadge + ' ' + s.homeTileBadgeFood}>{form.foods.length}</div>}
                 </button>
               </div>
             )}
 
-            {/* Sport categories */}
             {view === 'sport-cats' && (
-              <>
-                <div className={s.navHeader}>
+              <div className={s.catView}>
+                <div className={s.browseHeader}>
                   <button className={s.backBtn} onClick={goHome}>←</button>
-                  <span className={s.navTitle}>Sport — Kategorie wählen</span>
+                  <span className={s.browseTitle}>Sport — Kategorie</span>
                 </div>
-                {sportCatsWithCount.map(cat => (
-                  <div key={cat.id} className={s.catRow} onClick={() => selectSportCat(cat.id)}>
-                    <div className={`${s.catIcon} ${s.catIconSport}`}>{cat.icon}</div>
-                    <div className={s.catRowMain}>
-                      <div className={s.catRowName}>{cat.de}</div>
-                      <div className={s.catRowCount}>{cat.count} Sportarten</div>
-                    </div>
-                    <span className={s.catRowArrow}>›</span>
-                  </div>
-                ))}
-              </>
+                <div className={s.catTileGrid}>
+                  {sportCatsWithCount.map(cat => (
+                    <button key={cat.id} className={s.catTile} onClick={() => selectSportCat(cat.id)}>
+                      <span className={s.catTileEmoji}>{cat.icon}</span>
+                      <span className={s.catTileName}>{cat.de}</span>
+                      <span className={s.catTileCount}>{cat.count}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
             )}
 
-            {/* Sport items */}
             {view === 'sport-items' && (
-              <>
-                <div className={s.navHeader}>
+              <div className={s.itemView}>
+                <div className={s.browseHeader}>
                   <button className={s.backBtn} onClick={goSportCats}>←</button>
-                  <span className={s.navTitle}>{navTitle}</span>
-                  <span className={s.navCrumb}>Sport</span>
+                  <span className={s.browseTitle}>{sportCatsWithCount.find(c => c.id === selectedCat)?.de}</span>
                 </div>
-                {viewSportItems.map(sp => {
-                  const existing = form.sports.find(x => x.id === sp.id)
-                  const isActive = activeId === sp.id
-                  return (
-                    <div key={sp.id}>
-                      <div
-                        className={isActive ? s.rowActive : s.row}
-                        onClick={() => !isActive && openInput(sp.id, existing?.min || '')}
-                      >
-                        <div className={existing ? s.rowInitialActive : s.rowInitial}>
-                          {sp.de.slice(0, 2).toUpperCase()}
-                        </div>
-                        <div className={s.rowMain}>
-                          <div className={existing ? s.rowNameActive : s.rowName}>{sp.de}</div>
-                        </div>
-                        <span className={s.rowMeta}>{sp.kcalPerMin} kcal/min</span>
-                        {existing && !isActive && (
-                          <span style={{ fontSize: '11px', color: '#f97316', fontWeight: 600, marginLeft: 4 }}>
-                            {existing.min} min
-                          </span>
-                        )}
-                        <button
-                          className={isActive ? s.addBtnActive : s.addBtn}
-                          onClick={e => {
-                            e.stopPropagation()
-                            isActive ? setActiveId(null) : openInput(sp.id, existing?.min || '')
-                          }}
+                <div className={s.itemList}>
+                  {viewSportItems.map(sp => {
+                    const existing = form.sports.find(x => x.id === sp.id)
+                    const isActive = activeId === sp.id
+                    return (
+                      <div key={sp.id}>
+                        <div
+                          className={[s.itemRow, existing ? s.itemRowSelected : '', isActive ? s.itemRowOpen : ''].join(' ')}
+                          onClick={() => !isActive && openInput(sp.id, existing?.min || '')}
                         >
-                          {isActive ? '×' : existing ? '✓' : '+'}
-                        </button>
-                      </div>
-                      {isActive && (
-                        <>
-                          <div className={s.inlineInput}>
-                            <input
-                              ref={inputRef}
-                              type="number" min="1" max="360"
-                              placeholder="Minuten…"
-                              value={inputVal}
-                              onChange={e => setInputVal(e.target.value)}
-                              onKeyDown={e => {
-                                if (e.key === 'Enter') confirmSport(sp.id)
-                                if (e.key === 'Escape') setActiveId(null)
-                              }}
-                            />
-                            <button className={s.confirmBtn} onClick={() => confirmSport(sp.id)}>
-                              Bestätigen
-                            </button>
+                          <div className={s.itemAvatar}>{sp.de.slice(0, 2).toUpperCase()}</div>
+                          <div className={s.itemInfo}>
+                            <div className={s.itemName}>{sp.de}</div>
+                            <div className={s.itemMeta}>{sp.kcalPerMin} kcal/min</div>
                           </div>
-                          {parseInt(inputVal) > 0 && (
-                            <div className={s.kcalPreview}>
-                              ≈ {Math.round(sp.kcalPerMin * parseInt(inputVal))} kcal verbrannt
+                          {existing && !isActive && (
+                            <div className={s.itemChip}>{existing.min} min</div>
+                          )}
+                          <button
+                            className={[s.itemToggle, isActive ? s.itemToggleClose : existing ? s.itemToggleOn : ''].join(' ')}
+                            onClick={e => { e.stopPropagation(); isActive ? setActiveId(null) : openInput(sp.id, existing?.min || '') }}
+                          >
+                            {isActive ? '×' : existing ? '✓' : '+'}
+                          </button>
+                        </div>
+                        {isActive && (
+                          <div className={s.inputRow}>
+                            <input
+                              ref={inputRef} type="number" min="1" max="360"
+                              placeholder="Minuten…" value={inputVal}
+                              onChange={e => setInputVal(e.target.value)}
+                              onKeyDown={e => { if (e.key === 'Enter') confirmSport(sp.id); if (e.key === 'Escape') setActiveId(null) }}
+                            />
+                            {parseInt(inputVal) > 0 && (
+                              <span className={s.inputPreview}>≈ {Math.round(sp.kcalPerMin * parseInt(inputVal))} kcal</span>
+                            )}
+                            <button className={s.inputConfirm} onClick={() => confirmSport(sp.id)}>OK</button>
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            )}
+
+            {view === 'food-cats' && (
+              <div className={s.catView}>
+                <div className={s.browseHeader}>
+                  <button className={s.backBtn} onClick={goHome}>←</button>
+                  <span className={s.browseTitle}>Essen — Kategorie</span>
+                </div>
+                <div className={s.catTileGrid}>
+                  {foodCatsWithCount.map(cat => (
+                    <button key={cat.id} className={s.catTile + ' ' + s.catTileFood} onClick={() => selectFoodCat(cat.id)}>
+                      <span className={s.catTileEmoji}>{cat.icon}</span>
+                      <span className={s.catTileName}>{cat.de}</span>
+                      <span className={s.catTileCount}>{cat.count}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {view === 'food-items' && (
+              <div className={s.itemView}>
+                <div className={s.browseHeader}>
+                  <button className={s.backBtn} onClick={goFoodCats}>←</button>
+                  <span className={s.browseTitle}>{foodCatsWithCount.find(c => c.id === selectedCat)?.de}</span>
+                </div>
+                <div className={s.itemList}>
+                  {viewFoodItems.map(food => {
+                    const existing = form.foods.find(x => x.id === food.id)
+                    const isActive = activeId === food.id
+                    return (
+                      <div key={food.id}>
+                        <div
+                          className={[s.itemRow, existing ? s.itemRowSelectedFood : '', isActive ? s.itemRowOpenFood : ''].join(' ')}
+                          onClick={() => !isActive && openInput(food.id, existing?.g || food.portionG || '')}
+                        >
+                          <div className={s.itemAvatar + ' ' + s.itemAvatarFood}>{food.de.slice(0, 2).toUpperCase()}</div>
+                          <div className={s.itemInfo}>
+                            <div className={s.itemName}>{food.de}</div>
+                            <div className={s.itemMeta}>{food.kcalPer100g} kcal/100g</div>
+                          </div>
+                          {existing && !isActive && (
+                            <div className={s.itemChip + ' ' + s.itemChipFood}>
+                              {existing.g ?? (existing.count != null ? existing.count * food.portionG : '?')}g
                             </div>
                           )}
-                        </>
-                      )}
-                    </div>
-                  )
-                })}
-              </>
-            )}
-
-            {/* Food categories */}
-            {view === 'food-cats' && (
-              <>
-                <div className={s.navHeader}>
-                  <button className={s.backBtn} onClick={goHome}>←</button>
-                  <span className={s.navTitle}>Essen — Kategorie wählen</span>
-                </div>
-                {foodCatsWithCount.map(cat => (
-                  <div key={cat.id} className={s.catRow} onClick={() => selectFoodCat(cat.id)}>
-                    <div className={`${s.catIcon} ${s.catIconFood}`}>{cat.icon}</div>
-                    <div className={s.catRowMain}>
-                      <div className={s.catRowName}>{cat.de}</div>
-                      <div className={s.catRowCount}>{cat.count} Lebensmittel</div>
-                    </div>
-                    <span className={s.catRowArrow}>›</span>
-                  </div>
-                ))}
-              </>
-            )}
-
-            {/* Food items */}
-            {view === 'food-items' && (
-              <>
-                <div className={s.navHeader}>
-                  <button className={s.backBtn} onClick={goFoodCats}>←</button>
-                  <span className={s.navTitle}>{navTitle}</span>
-                  <span className={s.navCrumb}>Essen</span>
-                </div>
-                {viewFoodItems.map(food => {
-                  const existing = form.foods.find(x => x.id === food.id)
-                  const isActive = activeId === food.id
-                  return (
-                    <div key={food.id}>
-                      <div
-                        className={isActive ? s.rowActive : s.row}
-                        style={isActive ? { background: '#f0fdf4' } : undefined}
-                        onClick={() => !isActive && openInput(food.id, existing?.g || food.portionG || '')}
-                      >
-                        <div className={existing
-                          ? s.rowInitialFoodActive
-                          : `${s.rowInitial} ${s.rowInitialFood}`
-                        }>
-                          {food.de.slice(0, 2).toUpperCase()}
+                          <button
+                            className={[s.itemToggle, s.itemToggleFood, isActive ? s.itemToggleClose : existing ? s.itemToggleOnFood : ''].join(' ')}
+                            onClick={e => { e.stopPropagation(); isActive ? setActiveId(null) : openInput(food.id, existing?.g || food.portionG || '') }}
+                          >
+                            {isActive ? '×' : existing ? '✓' : '+'}
+                          </button>
                         </div>
-                        <div className={s.rowMain}>
-                          <div className={existing ? s.rowNameFoodActive : s.rowName}>{food.de}</div>
-                        </div>
-                        <span className={s.rowMeta}>{food.kcalPer100g} kcal/100g</span>
-                        {existing && !isActive && (
-                          <span style={{ fontSize: '11px', color: '#16a34a', fontWeight: 600, marginLeft: 4 }}>
-                            {existing.g}g
-                          </span>
-                        )}
-                        <button
-                          className={isActive ? s.addBtnFoodActive : `${s.addBtn} ${s.addBtnFood}`}
-                          onClick={e => {
-                            e.stopPropagation()
-                            isActive ? setActiveId(null) : openInput(food.id, existing?.g || food.portionG || '')
-                          }}
-                        >
-                          {isActive ? '×' : existing ? '✓' : '+'}
-                        </button>
-                      </div>
-                      {isActive && (
-                        <>
-                          <div className={`${s.inlineInput} ${s.inlineInputFood}`}>
+                        {isActive && (
+                          <div className={s.inputRow + ' ' + s.inputRowFood}>
                             <input
-                              ref={inputRef}
-                              type="number" min="1"
+                              ref={inputRef} type="number" min="1"
                               placeholder={`Gramm… (Portion: ${food.portionG}g)`}
                               value={inputVal}
                               onChange={e => setInputVal(e.target.value)}
-                              onKeyDown={e => {
-                                if (e.key === 'Enter') confirmFood(food.id)
-                                if (e.key === 'Escape') setActiveId(null)
-                              }}
+                              onKeyDown={e => { if (e.key === 'Enter') confirmFood(food.id); if (e.key === 'Escape') setActiveId(null) }}
                             />
-                            <button className={s.confirmBtnFood} onClick={() => confirmFood(food.id)}>
-                              Bestätigen
-                            </button>
+                            {parseInt(inputVal) > 0 && (
+                              <span className={s.inputPreview + ' ' + s.inputPreviewFood}>
+                                ≈ {Math.round((food.kcalPer100g / 100) * parseInt(inputVal))} kcal
+                              </span>
+                            )}
+                            <button className={s.inputConfirm + ' ' + s.inputConfirmFood} onClick={() => confirmFood(food.id)}>OK</button>
                           </div>
-                          {parseInt(inputVal) > 0 && (
-                            <div className={`${s.kcalPreview} ${s.kcalPreviewFood}`}>
-                              ≈ {Math.round((food.kcalPer100g / 100) * parseInt(inputVal))} kcal
-                            </div>
-                          )}
-                        </>
-                      )}
-                    </div>
-                  )
-                })}
-              </>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
             )}
           </div>
 
-          {/* Right: summary panel */}
+          {/* Right: Summary */}
           <div className={s.summaryPanel}>
-            <div className={s.summaryMeta}>
-              <input
-                type="date" value={form.date}
-                onChange={e => setForm(f => ({ ...f, date: e.target.value }))}
-              />
-              <input
-                type="number" placeholder="Gewicht kg" step="0.1"
-                value={form.weight}
-                onChange={e => setForm(f => ({ ...f, weight: e.target.value }))}
-                style={{ width: 90 }}
-              />
-            </div>
-
-            <div className={s.kcalHero}>
-              <div className={s.kcalNum}>{totalKcal}</div>
-              <div className={s.kcalLabel}>kcal netto heute</div>
+            <div className={s.summaryHead}>
+              <input className={s.summaryInput} type="date" value={form.date}
+                onChange={e => setForm(f => ({ ...f, date: e.target.value }))} />
+              <input className={s.summaryInput} type="number" placeholder="kg" step="0.1"
+                value={form.weight} style={{ width: 64 }}
+                onChange={e => setForm(f => ({ ...f, weight: e.target.value }))} />
             </div>
 
             <div className={s.summaryItems}>
               {form.sports.length === 0 && form.foods.length === 0 && (
-                <div className={s.emptyItems}>Noch nichts eingetragen</div>
+                <div className={s.summaryEmpty}>Noch nichts eingetragen</div>
               )}
               {form.sports.map(item => {
                 const sp = activeSports.find(x => x.id === item.id)
@@ -507,9 +468,10 @@ export default function HealthPage() {
                 const kcal = Math.round(sp.kcalPerMin * item.min)
                 return (
                   <div key={item.id} className={s.summaryItem}>
-                    <div className={`${s.summaryDot} ${s.dotSport}`} />
-                    <span className={s.summaryItemName}>{sp.de} ({item.min} min)</span>
-                    <span className={`${s.summaryItemKcal} ${s.summaryItemKcalSport}`}>−{kcal}</span>
+                    <div className={s.summaryPill + ' ' + s.pillSport}>Sport</div>
+                    <span className={s.summaryName}>{sp.de}</span>
+                    <span className={s.summaryDuration}>{item.min} min</span>
+                    <span className={s.summaryKcalSport}>−{kcal}</span>
                     <button className={s.summaryRemove} onClick={() => removeSportFromForm(item.id)}>×</button>
                   </div>
                 )
@@ -517,45 +479,43 @@ export default function HealthPage() {
               {form.foods.map(item => {
                 const food = activeFoods.find(x => x.id === item.id)
                 if (!food) return null
-                const kcal = Math.round((food.kcalPer100g / 100) * item.g)
+                const g = item.g ?? (item.count != null ? item.count * food.portionG : 0)
+                const kcal = Math.round((food.kcalPer100g / 100) * g)
                 return (
                   <div key={item.id} className={s.summaryItem}>
-                    <div className={`${s.summaryDot} ${s.dotFood}`} />
-                    <span className={s.summaryItemName}>{food.de} ({item.g}g)</span>
-                    <span className={`${s.summaryItemKcal} ${s.summaryItemKcalFood}`}>+{kcal}</span>
+                    <div className={s.summaryPill + ' ' + s.pillFood}>Essen</div>
+                    <span className={s.summaryName}>{food.de}</span>
+                    <span className={s.summaryDuration}>{g}g</span>
+                    <span className={s.summaryKcalFood}>+{kcal}</span>
                     <button className={s.summaryRemove} onClick={() => removeFoodFromForm(item.id)}>×</button>
                   </div>
                 )
               })}
             </div>
 
-            <div className={s.manualRow}>
-              <span>Extra kcal</span>
-              <input
-                type="number" placeholder="0"
-                value={form.manualKcal || ''}
-                onChange={e => setForm(f => ({ ...f, manualKcal: parseInt(e.target.value) || 0 }))}
-              />
-            </div>
-
-            <div className={s.totalsBlock}>
-              <div className={`${s.totalsRow} ${s.totalsRowFood}`}>
-                <span>Gegessen</span><span>+{totalFoodKcal + (form.manualKcal || 0)} kcal</span>
+            <div className={s.summaryTotals}>
+              <div className={s.summaryTotalRow}>
+                <span>Gegessen</span>
+                <span className={s.summaryTotalFood}>+{totalFoodKcal + (form.manualKcal || 0)} kcal</span>
               </div>
-              <div className={`${s.totalsRow} ${s.totalsRowSport}`}>
-                <span>Sport verbrannt</span><span>−{totalSportKcal} kcal</span>
+              <div className={s.summaryTotalRow}>
+                <span>Verbrannt</span>
+                <span className={s.summaryTotalSport}>−{totalSportKcal} kcal</span>
               </div>
-              <div className={s.totalsNet}>
+              <div className={s.manualRow}>
+                <span>Extra kcal</span>
+                <input type="number" placeholder="0"
+                  value={form.manualKcal || ''}
+                  onChange={e => setForm(f => ({ ...f, manualKcal: parseInt(e.target.value) || 0 }))} />
+              </div>
+              <div className={s.summaryNet}>
                 <span>Netto</span><span>{totalKcal} kcal</span>
               </div>
             </div>
 
-            <input
-              className={s.noteInput}
-              placeholder="Notiz…"
+            <input className={s.noteInput} placeholder="Notiz für heute…"
               value={form.note}
-              onChange={e => setForm(f => ({ ...f, note: e.target.value }))}
-            />
+              onChange={e => setForm(f => ({ ...f, note: e.target.value }))} />
 
             <button className={s.saveBtn} onClick={handleSave} disabled={saving}>
               {saving ? 'Speichert…' : 'Speichern'}
@@ -564,117 +524,157 @@ export default function HealthPage() {
         </div>
       )}
 
-      {/* ── TAB: Verlauf ─────────────────────────────────────────────── */}
+      {/* ── TAB: Verlauf ── */}
       {tab === 'verlauf' && (
-        <div className={s.panel}>
-          <div className={s.panelLabel}>Einträge</div>
-          <hr className={s.divider} />
-          {records.length === 0 && <div className={s.emptyHistory}>Noch keine Einträge</div>}
-          {[...records].sort((a, b) => b.date.localeCompare(a.date)).map(rec => {
-            const sportKcal = (rec.sports || []).reduce((sum, item) => {
-              const sp = activeSports.find(x => x.id === item.id)
-              return sum + (sp ? Math.round(sp.kcalPerMin * item.min) : 0)
-            }, 0)
-            const foodKcal = (rec.foods || []).reduce((sum, item) => {
-              const food = activeFoods.find(x => x.id === item.id)
-              return sum + (food ? Math.round((food.kcalPer100g / 100) * item.g) : 0)
-            }, 0)
-            const net = foodKcal + (rec.manual_kcal || 0) - sportKcal
+        <div className={s.historyView}>
+
+          {weightSeries.length >= 2 && (() => {
+            const weights = weightSeries.map(d => d.weight)
+            const min = Math.min(...weights)
+            const max = Math.max(...weights)
+            const range = max - min || 1
+            const W = weightSeries.length * 50
+            const pts = weightSeries.map((d, i) => [i * 50 + 8, 52 - ((d.weight - min) / range) * 40])
+            const pathD = pts.map((p, i) => `${i === 0 ? 'M' : 'L'}${p[0]},${p[1]}`).join(' ')
+            const areaD = `${pathD} L${pts[pts.length-1][0]},60 L${pts[0][0]},60 Z`
             return (
-              <div key={rec.id} className={s.row} style={{ cursor: 'default' }}>
-                <div className={s.rowInitial}>{rec.date.slice(5)}</div>
-                <div className={s.rowMain}>
-                  <div className={s.rowName}>{rec.date}</div>
-                  <div style={{ fontSize: '11px', color: '#94a3b8', marginTop: 2 }}>
-                    {rec.weight ? `${rec.weight} kg · ` : ''}{(rec.sports || []).length} Sport · {(rec.foods || []).length} Essen
-                    {rec.note ? ` · ${rec.note}` : ''}
-                  </div>
+              <div className={s.sparkCard}>
+                <div className={s.sparkTitle}>
+                  <span>Gewichtsverlauf</span>
+                  <span className={s.sparkRange}>{weights[0]} → {weights[weights.length-1]} kg</span>
                 </div>
-                <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontSize: '14px', fontWeight: 600, color: '#0f172a' }}>{net} kcal</div>
-                  <div style={{ fontSize: '11px', color: '#94a3b8' }}>netto</div>
+                <svg className={s.sparkSvg} viewBox={`0 0 ${W} 60`} preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#818cf8" stopOpacity="0.35" />
+                      <stop offset="100%" stopColor="#818cf8" stopOpacity="0" />
+                    </linearGradient>
+                  </defs>
+                  <path d={areaD} fill="url(#sg)" />
+                  <path d={pathD} fill="none" stroke="#818cf8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                  {pts.map((p, i) => <circle key={i} cx={p[0]} cy={p[1]} r="3.5" fill="#818cf8" />)}
+                </svg>
+                <div className={s.sparkLabels}>
+                  {weightSeries.map((d, i) => <span key={i}>{d.weight}</span>)}
                 </div>
-                <button
-                  className={s.delBtn}
-                  onClick={async () => { await api(`/records?id=${rec.id}`, 'DELETE'); loadAll() }}
-                >
-                  ×
-                </button>
               </div>
             )
-          })}
+          })()}
+
+          {records.length === 0 && (
+            <div className={s.emptyState}>
+              <div className={s.emptyIcon}>📊</div>
+              <div className={s.emptyText}>Noch keine Einträge vorhanden</div>
+            </div>
+          )}
+
+          <div className={s.historyList}>
+            {[...records].sort((a, b) => b.date.localeCompare(a.date)).map(rec => {
+              const sportKcal = (rec.sports || []).reduce((sum, item) => {
+                const sp = activeSports.find(x => x.id === item.id)
+                return sum + (sp ? Math.round(sp.kcalPerMin * item.min) : 0)
+              }, 0)
+              const foodKcal = (rec.foods || []).reduce((sum, item) => {
+                const food = activeFoods.find(x => x.id === item.id)
+                return sum + (food ? Math.round((food.kcalPer100g / 100) * (item.count ?? item.g ?? 1) * (item.count != null ? food.portionG : 1)) : 0)
+              }, 0)
+              const net = foodKcal + (rec.manual_kcal || 0) - sportKcal
+              const dateObj = new Date(rec.date + 'T12:00:00')
+              return (
+                <div key={rec.id} className={s.historyCard}>
+                  <div className={s.historyDate}>
+                    <div className={s.historyDay}>{dateObj.getDate()}</div>
+                    <div className={s.historyMonth}>{dateObj.toLocaleDateString('de-DE', { month: 'short' })}</div>
+                  </div>
+                  <div className={s.historyBody}>
+                    <div className={s.historyMeta}>
+                      {rec.weight && <span className={s.historyTag + ' ' + s.historyTagWeight}>{rec.weight} kg</span>}
+                      {(rec.sports || []).length > 0 && <span className={s.historyTag + ' ' + s.historyTagSport}>{(rec.sports || []).length} Sport</span>}
+                      {(rec.foods || []).length > 0  && <span className={s.historyTag + ' ' + s.historyTagFood}>{(rec.foods || []).length} Mahlzeiten</span>}
+                    </div>
+                    <div className={s.kcalBar}>
+                      <div className={s.kcalBarFood}  style={{ width: `${Math.min((foodKcal / 2500) * 100, 100)}%` }} />
+                      <div className={s.kcalBarSport} style={{ width: `${Math.min((sportKcal / 2500) * 100, 100)}%` }} />
+                    </div>
+                    {rec.note && <div className={s.historyNote}>{rec.note}</div>}
+                  </div>
+                  <div className={s.historyNet}>
+                    <div className={s.historyNetNum}>{net}</div>
+                    <div className={s.historyNetLabel}>kcal</div>
+                  </div>
+                  <button className={s.historyDel}
+                    onClick={async () => { await api(`/records?id=${rec.id}`, 'DELETE'); loadAll() }}>×</button>
+                </div>
+              )
+            })}
+          </div>
         </div>
       )}
 
-      {/* ── TAB: Verwaltung ──────────────────────────────────────────── */}
+      {/* ── TAB: Verwaltung ── */}
       {tab === 'verwaltung' && (
-        <>
-          <div className={s.tabs} style={{ borderBottom: 'none', marginBottom: 12 }}>
-            <button className={mgmtMode === 'sport' ? s.tabActive : s.tab} onClick={() => setMgmtMode('sport')}>Sportarten</button>
-            <button className={mgmtMode === 'food' ? s.tabActive : s.tab} onClick={() => setMgmtMode('food')}>Lebensmittel</button>
+        <div className={s.mgmtView}>
+          <div className={s.mgmtTabs}>
+            <button className={mgmtMode === 'sport' ? s.mgmtTabActive : s.mgmtTab} onClick={() => setMgmtMode('sport')}>Sportarten</button>
+            <button className={mgmtMode === 'food'  ? s.mgmtTabActive : s.mgmtTab} onClick={() => setMgmtMode('food')}>Lebensmittel</button>
           </div>
 
           {mgmtMode === 'sport' && (
             <div className={s.mgmtGrid}>
-              <div className={s.panel}>
-                <div className={s.panelLabel}>Neue Sportart</div>
+              <div className={s.mgmtFormCard}>
+                <h3 className={s.mgmtFormTitle}>Neue Sportart</h3>
                 <form className={s.mgmtForm} onSubmit={handleAddSport}>
                   <label>Name<input value={newSport.de} onChange={e => setNewSport(p => ({ ...p, de: e.target.value }))} placeholder="z. B. Klettern" /></label>
                   <label>kcal/min<input type="number" min="1" max="30" value={newSport.kcalPerMin} onChange={e => setNewSport(p => ({ ...p, kcalPerMin: e.target.value }))} placeholder="z. B. 7" /></label>
                   <button className={s.mgmtSubmit} type="submit">Hinzufügen</button>
                 </form>
               </div>
-              <div className={s.panel}>
-                <div className={s.mgmtList}>
-                  {sportKategorien.map(cat => {
-                    const items = activeSports.filter(sp => sp.cat === cat.id)
-                    if (!items.length) return null
-                    return (
-                      <div key={cat.id}>
-                        <div className={s.mgmtCatLabel}>{cat.de}</div>
-                        {items.map(sp => (
-                          <div key={sp.id} className={s.mgmtRow}>
-                            <div className={s.mgmtRowMain}>
-                              <strong>{sp.de}</strong>
-                              <span>{sp.kcalPerMin} kcal/min</span>
-                            </div>
-                            <button className={s.delBtn} onClick={() => deleteSport(sp.id, sp.cat === 'custom')}>Löschen</button>
-                          </div>
-                        ))}
+              <div className={s.mgmtListCard}>
+                {sportKategorien.map(cat => {
+                  const items = activeSports.filter(sp => sp.cat === cat.id)
+                  if (!items.length) return null
+                  return (
+                    <div key={cat.id}>
+                      <div className={s.mgmtCatLabel}>{cat.de}</div>
+                      {items.map(sp => (
+                        <div key={sp.id} className={s.mgmtItem}>
+                          <div className={s.mgmtItemMain}><strong>{sp.de}</strong><span>{sp.kcalPerMin} kcal/min</span></div>
+                          <button className={s.mgmtDelBtn} onClick={() => deleteSport(sp.id, sp.cat === 'custom')}>Löschen</button>
+                        </div>
+                      ))}
+                    </div>
+                  )
+                })}
+                {activeSports.filter(sp => sp.cat === 'custom').length > 0 && (
+                  <div>
+                    <div className={s.mgmtCatLabel}>Benutzerdefiniert</div>
+                    {activeSports.filter(sp => sp.cat === 'custom').map(sp => (
+                      <div key={sp.id} className={s.mgmtItem}>
+                        <div className={s.mgmtItemMain}><strong>{sp.de}</strong><span>{sp.kcalPerMin} kcal/min</span></div>
+                        <button className={s.mgmtDelBtn} onClick={() => deleteSport(sp.id, true)}>Löschen</button>
                       </div>
-                    )
-                  })}
-                  {activeSports.filter(sp => sp.cat === 'custom').length > 0 && (
-                    <div>
-                      <div className={s.mgmtCatLabel}>Benutzerdefiniert</div>
-                      {activeSports.filter(sp => sp.cat === 'custom').map(sp => (
-                        <div key={sp.id} className={s.mgmtRow}>
-                          <div className={s.mgmtRowMain}><strong>{sp.de}</strong><span>{sp.kcalPerMin} kcal/min</span></div>
-                          <button className={s.delBtn} onClick={() => deleteSport(sp.id, true)}>Löschen</button>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                  {deletedSports.length > 0 && (
-                    <div className={s.deletedSection}>
-                      <div className={s.deletedLabel}>Gelöschte Standardsportarten</div>
-                      {sportarten.filter(sp => deletedSports.includes(sp.id)).map(sp => (
-                        <div key={sp.id} className={s.mgmtRow}>
-                          <div className={s.mgmtRowMain}><strong>{sp.de}</strong><span>{sp.kcalPerMin} kcal/min</span></div>
-                          <button className={s.restoreBtn} onClick={() => restoreSport(sp.id)}>Wiederherstellen</button>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                    ))}
+                  </div>
+                )}
+                {deletedSports.length > 0 && (
+                  <div className={s.mgmtDeleted}>
+                    <div className={s.mgmtCatLabel}>Gelöschte Standards</div>
+                    {sportarten.filter(sp => deletedSports.includes(sp.id)).map(sp => (
+                      <div key={sp.id} className={s.mgmtItem}>
+                        <div className={s.mgmtItemMain}><strong>{sp.de}</strong><span>{sp.kcalPerMin} kcal/min</span></div>
+                        <button className={s.mgmtRestoreBtn} onClick={() => restoreSport(sp.id)}>Wiederherstellen</button>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           )}
 
           {mgmtMode === 'food' && (
             <div className={s.mgmtGrid}>
-              <div className={s.panel}>
-                <div className={s.panelLabel}>Neues Lebensmittel</div>
+              <div className={s.mgmtFormCard}>
+                <h3 className={s.mgmtFormTitle}>Neues Lebensmittel</h3>
                 <form className={s.mgmtForm} onSubmit={handleAddFood}>
                   <label>Name<input value={newFood.de} onChange={e => setNewFood(p => ({ ...p, de: e.target.value }))} placeholder="z. B. Baklava" /></label>
                   <label>Kategorie
@@ -688,42 +688,37 @@ export default function HealthPage() {
                   <button className={s.mgmtSubmit} type="submit">Hinzufügen</button>
                 </form>
               </div>
-              <div className={s.panel}>
-                <div className={s.mgmtList}>
-                  {kategorien.map(cat => {
-                    const items = activeFoods.filter(f => f.cat === cat.id)
-                    if (!items.length) return null
-                    return (
-                      <div key={cat.id}>
-                        <div className={s.mgmtCatLabel}>{cat.de}</div>
-                        {items.map(f => (
-                          <div key={f.id} className={s.mgmtRow}>
-                            <div className={s.mgmtRowMain}>
-                              <strong>{f.de}</strong>
-                              <span>{f.kcalPer100g} kcal/100g · Portion {f.portionG}g</span>
-                            </div>
-                            <button className={s.delBtn} onClick={() => deleteFood(f.id, !!customFoods.find(cf => cf.id === f.id))}>Löschen</button>
-                          </div>
-                        ))}
-                      </div>
-                    )
-                  })}
-                  {deletedFoods.length > 0 && (
-                    <div className={s.deletedSection}>
-                      <div className={s.deletedLabel}>Gelöschte Standardlebensmittel</div>
-                      {lebensmittel.filter(f => deletedFoods.includes(f.id)).map(f => (
-                        <div key={f.id} className={s.mgmtRow}>
-                          <div className={s.mgmtRowMain}><strong>{f.de}</strong><span>{f.kcalPer100g} kcal/100g</span></div>
-                          <button className={s.restoreBtn} onClick={() => restoreFood(f.id)}>Wiederherstellen</button>
+              <div className={s.mgmtListCard}>
+                {kategorien.map(cat => {
+                  const items = activeFoods.filter(f => f.cat === cat.id)
+                  if (!items.length) return null
+                  return (
+                    <div key={cat.id}>
+                      <div className={s.mgmtCatLabel}>{cat.de}</div>
+                      {items.map(f => (
+                        <div key={f.id} className={s.mgmtItem}>
+                          <div className={s.mgmtItemMain}><strong>{f.de}</strong><span>{f.kcalPer100g} kcal/100g · Portion {f.portionG}g</span></div>
+                          <button className={s.mgmtDelBtn} onClick={() => deleteFood(f.id, !!customFoods.find(cf => cf.id === f.id))}>Löschen</button>
                         </div>
                       ))}
                     </div>
-                  )}
-                </div>
+                  )
+                })}
+                {deletedFoods.length > 0 && (
+                  <div className={s.mgmtDeleted}>
+                    <div className={s.mgmtCatLabel}>Gelöschte Standards</div>
+                    {lebensmittel.filter(f => deletedFoods.includes(f.id)).map(f => (
+                      <div key={f.id} className={s.mgmtItem}>
+                        <div className={s.mgmtItemMain}><strong>{f.de}</strong><span>{f.kcalPer100g} kcal/100g</span></div>
+                        <button className={s.mgmtRestoreBtn} onClick={() => restoreFood(f.id)}>Wiederherstellen</button>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           )}
-        </>
+        </div>
       )}
     </div>
   )
