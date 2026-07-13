@@ -142,10 +142,11 @@
 
 .dayCell,
 .emptyDay {
-  min-height: 104px;
+  height: 112px;
   border: 1px solid rgba(148, 163, 184, .16);
   border-radius: 8px;
   background: rgba(255,255,255,.05);
+  overflow: hidden;
 }
 
 .dayCell {
@@ -166,26 +167,38 @@
 }
 
 .dayCell strong {
+  max-width: 100%;
   width: fit-content;
   border-radius: 999px;
   background: rgba(45, 212, 191, .16);
   color: #5eead4;
   font-size: 13px;
   font-weight: 950;
+  overflow: hidden;
   padding: 4px 9px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .dayCell small {
   color: #94a3b8;
+  display: block;
   font-size: 11px;
   font-weight: 850;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .dayCell em {
   color: #bae6fd;
+  display: block;
   font-size: 10px;
   font-style: normal;
   font-weight: 900;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .dayActive {
@@ -477,7 +490,7 @@
 
   .dayCell,
   .emptyDay {
-    min-height: 78px;
+    height: 82px;
     padding: 7px;
   }
 
