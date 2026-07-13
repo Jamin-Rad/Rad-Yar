@@ -181,6 +181,13 @@
   font-weight: 850;
 }
 
+.dayCell em {
+  color: #bae6fd;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 900;
+}
+
 .dayActive {
   border-color: rgba(56, 189, 248, .62);
   box-shadow: inset 0 0 0 1px rgba(56, 189, 248, .25);
@@ -244,6 +251,7 @@
 }
 
 .formGrid,
+.modalityCounts,
 .findingForm {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -251,6 +259,7 @@
 }
 
 .shiftEditor label,
+.modalityCounts label,
 .findingForm label {
   display: grid;
   gap: 6px;
@@ -262,6 +271,7 @@
 }
 
 .shiftEditor input,
+.modalityCounts input,
 .findingForm input,
 .findingForm select {
   min-height: 42px;
@@ -275,6 +285,11 @@
 }
 
 .fullLabel {
+  margin-top: 10px;
+}
+
+.modalityCounts {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-top: 10px;
 }
 
@@ -324,9 +339,9 @@
 .findingHead,
 .findingRow {
   display: grid;
-  grid-template-columns: 100px 100px 88px 1.2fr 1fr 100px 1.5fr 32px;
+  grid-template-columns: 100px 100px 88px 110px 1.1fr 1fr 100px 1.5fr 32px;
   gap: 8px;
-  min-width: 980px;
+  min-width: 1120px;
   align-items: center;
 }
 
@@ -409,7 +424,8 @@
   }
 
   .findingForm,
-  .formGrid {
+  .formGrid,
+  .modalityCounts {
     grid-template-columns: 1fr;
   }
 

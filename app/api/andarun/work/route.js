@@ -33,6 +33,12 @@ function cleanTime(value) {
   return typeof value === 'string' && /^\d{2}:\d{2}$/.test(value) ? value : ''
 }
 
+function cleanCount(value) {
+  const number = Number(value)
+  if (!Number.isFinite(number)) return ''
+  return String(Math.max(0, Math.round(number)))
+}
+
 async function readState() {
   const { data, error } = await supabaseAdmin
     .from('admin_budget_state')
@@ -90,6 +96,11 @@ function sanitizeShift(value) {
     plannedEnd: cleanTime(value?.plannedEnd),
     actualStart: cleanTime(value?.actualStart),
     actualEnd: cleanTime(value?.actualEnd),
+    counts: {
+      xray: cleanCount(value?.counts?.xray),
+      ct: cleanCount(value?.counts?.ct),
+      mri: cleanCount(value?.counts?.mri),
+    },
     note: cleanText(value?.note, 280),
     updatedAt: new Date().toISOString(),
   }
@@ -101,6 +112,7 @@ function sanitizeFinding(value) {
     examDate: cleanDate(value?.examDate),
     birthDate: cleanDate(value?.birthDate),
     modality: cleanText(value?.modality, 40),
+    examArea: cleanText(value?.examArea, 80),
     exam: cleanText(value?.exam, 120),
     vd: cleanText(value?.vd, 160),
     organ: cleanText(value?.organ, 100),

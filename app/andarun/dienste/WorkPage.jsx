@@ -7,7 +7,17 @@ import styles from './page.module.css'
 const NAME = 'Hamed Zia'
 const WEEKDAYS_LONG = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag']
 const MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
-const MODALITIES = ['CT', 'MRT', 'Röntgen', 'Sono', 'Durchleuchtung', 'Angio', 'PET-CT']
+const MODALITIES = ['Röntgen', 'CT', 'MRT']
+const EXAM_AREAS = [
+  'Schädel', 'Hals', 'Thorax', 'Abdomen', 'Becken', 'Wirbelsäule',
+  'Schulter', 'Ellenbogen', 'Hand', 'Hüfte', 'Knie', 'Sprunggelenk',
+  'Gefäße', 'Ganzkörper',
+]
+const DAILY_MODALITIES = [
+  { key: 'xray', label: 'Röntgen' },
+  { key: 'ct', label: 'CT' },
+  { key: 'mri', label: 'MRT' },
+]
 const SHIFT_TYPES = [
   { id: 'T', label: 'Tagdienst', short: 'T' },
   { id: 'S', label: 'Spätdienst', short: 'S' },
@@ -97,15 +107,26 @@ function emptyShift(date) {
     ...resolved,
     actualStart: resolved.plannedStart,
     actualEnd: resolved.plannedEnd,
+    counts: { xray: '', ct: '', mri: '' },
     note: '',
+  }
+}
+
+function normalizeShift(shift) {
+  if (!shift?.date) return shift
+  return {
+    ...emptyShift(shift.date),
+    ...shift,
+    counts: { xray: '', ct: '', mri: '', ...(shift.counts || {}) },
   }
 }
 
 const EMPTY_FINDING = {
   examDate: todayValue(),
   birthDate: '',
-  modality: 'CT',
-  exam: '',
+  modality: 'Röntgen',
+  examArea: 'Thorax',
+  exam: 'Thorax',
   vd: '',
   organ: '',
   question: '',
@@ -137,9 +158,10 @@ export default function WorkPage() {
     setLoading(true)
     try {
       const data = await apiRequest('/')
-      setShifts(data.shifts || [])
+      const loadedShifts = (data.shifts || []).map(normalizeShift)
+      setShifts(loadedShifts)
       setFindings(data.findings || [])
-      const existing = (data.shifts || []).find(item => item.date === selectedDate)
+      const existing = loadedShifts.find(item => item.date === selectedDate)
       setShiftForm(existing || emptyShift(selectedDate))
       setMessage('')
     } catch (error) {
@@ -151,7 +173,8 @@ export default function WorkPage() {
 
   function selectDate(date) {
     setSelectedDate(date)
-    setShiftForm(shiftsByDate.get(date) || emptyShift(date))
+    const existing = shiftsByDate.get(date)
+    setShiftForm(existing ? normalizeShift(existing) : emptyShift(date))
   }
 
   function updateShiftModel(model) {
@@ -169,7 +192,7 @@ export default function WorkPage() {
     event.preventDefault()
     try {
       const data = await apiRequest('/', 'POST', { type: 'shift', shift: shiftForm })
-      setShifts(data.shifts || [])
+      setShifts((data.shifts || []).map(normalizeShift))
       setMessage('Dienst gespeichert.')
     } catch (error) {
       setMessage(error.message)
@@ -179,7 +202,7 @@ export default function WorkPage() {
   async function deleteShift(id) {
     try {
       const data = await apiRequest(`/?type=shift&id=${encodeURIComponent(id)}`, 'DELETE')
-      setShifts(data.shifts || [])
+      setShifts((data.shifts || []).map(normalizeShift))
       setShiftForm(emptyShift(selectedDate))
     } catch (error) {
       setMessage(error.message)
@@ -254,6 +277,11 @@ export default function WorkPage() {
                   <span>{day.day}</span>
                   {shift && <strong>{shift.duty}</strong>}
                   {shift && <small>{timeRange(shift.actualStart || shift.plannedStart, shift.actualEnd || shift.plannedEnd)}</small>}
+                  {shift && (
+                    <em>
+                      R {shift.counts?.xray || 0} · CT {shift.counts?.ct || 0} · MRT {shift.counts?.mri || 0}
+                    </em>
+                  )}
                 </button>
               )
             })}
@@ -292,6 +320,22 @@ export default function WorkPage() {
               <input type="time" value={shiftForm.actualEnd} onChange={event => setShiftForm(prev => ({ ...prev, actualEnd: event.target.value }))} />
             </label>
           </div>
+          <div className={styles.modalityCounts}>
+            {DAILY_MODALITIES.map(item => (
+              <label key={item.key}>{item.label}
+                <input
+                  type="number"
+                  min="0"
+                  inputMode="numeric"
+                  value={shiftForm.counts?.[item.key] || ''}
+                  onChange={event => setShiftForm(prev => ({
+                    ...prev,
+                    counts: { xray: '', ct: '', mri: '', ...(prev.counts || {}), [item.key]: event.target.value },
+                  }))}
+                />
+              </label>
+            ))}
+          </div>
           <label className={styles.fullLabel}>Notiz
             <input value={shiftForm.note} onChange={event => setShiftForm(prev => ({ ...prev, note: event.target.value }))} />
           </label>
@@ -321,6 +365,14 @@ export default function WorkPage() {
               {MODALITIES.map(modality => <option key={modality}>{modality}</option>)}
             </select>
           </label>
+          <label>Gebiet
+            <select
+              value={findingForm.examArea}
+              onChange={event => setFindingForm(prev => ({ ...prev, examArea: event.target.value, exam: event.target.value }))}
+            >
+              {EXAM_AREAS.map(area => <option key={area}>{area}</option>)}
+            </select>
+          </label>
           <label>Untersuchung
             <input value={findingForm.exam} onChange={event => setFindingForm(prev => ({ ...prev, exam: event.target.value }))} />
           </label>
@@ -338,13 +390,14 @@ export default function WorkPage() {
 
         <div className={styles.findingTable}>
           <div className={styles.findingHead}>
-            <span>Datum</span><span>Geb.</span><span>Modalität</span><span>Untersuchung</span><span>VD</span><span>Organ</span><span>Frage</span><span />
+            <span>Datum</span><span>Geb.</span><span>Modalität</span><span>Gebiet</span><span>Untersuchung</span><span>VD</span><span>Organ</span><span>Frage</span><span />
           </div>
           {findings.map(finding => (
             <div className={styles.findingRow} key={finding.id}>
               <span>{finding.examDate}</span>
               <span>{finding.birthDate || '—'}</span>
               <span>{finding.modality}</span>
+              <span>{finding.examArea || finding.organ || '—'}</span>
               <span>{finding.exam || '—'}</span>
               <span>{finding.vd || '—'}</span>
               <span>{finding.organ || '—'}</span>
@@ -368,6 +421,9 @@ export default function WorkPage() {
               <th>Datum</th>
               <th>Dienst</th>
               <th>Arbeitszeit von bis</th>
+              <th>Röntgen</th>
+              <th>CT</th>
+              <th>MRT</th>
             </tr>
           </thead>
           <tbody>
@@ -379,11 +435,14 @@ export default function WorkPage() {
                   <td>{date.toLocaleDateString('de-DE')}</td>
                   <td>{shift.duty}</td>
                   <td>{timeRange(shift.actualStart || shift.plannedStart, shift.actualEnd || shift.plannedEnd)}</td>
+                  <td>{shift.counts?.xray || ''}</td>
+                  <td>{shift.counts?.ct || ''}</td>
+                  <td>{shift.counts?.mri || ''}</td>
                 </tr>
               )
             })}
             {!monthShifts.length && (
-              <tr><td colSpan="4">Keine Dienste eingetragen</td></tr>
+              <tr><td colSpan="7">Keine Dienste eingetragen</td></tr>
             )}
           </tbody>
         </table>
