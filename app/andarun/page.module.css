@@ -1,14 +1,15 @@
 .page {
   --ink: #18222b;
-  --paper: #070817;
+  --paper: #04060f;
   --blue: #a9b5ff;
   min-height: 100vh;
-  overflow: hidden;
   background: var(--paper);
   color: #f5f2ff;
   font-family: var(--font-manrope), sans-serif;
+  overflow-x: hidden;
 }
 
+/* ── HERO ─────────────────────────────────────────────────────────────────── */
 .hero {
   position: relative;
   width: min(1380px, calc(100% - 64px));
@@ -21,52 +22,404 @@
   padding: 70px 0 90px;
 }
 
-.hero::before { content: ''; position: absolute; top: 0; bottom: 0; left: calc((100vw - 100%) / -2); right: calc((100vw - 100%) / -2); z-index: 0; background: linear-gradient(90deg, rgba(4,5,18,.96) 0%, rgba(4,5,18,.70) 40%, rgba(4,5,18,.08) 72%), linear-gradient(0deg, #070817 0%, transparent 25%), url('/andarun-galaxy-v2.png') 64% center / cover no-repeat; transform: translateY(var(--parallax-y, 0)); will-change: transform; }
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: calc((100vw - 100%) / -2);
+  right: calc((100vw - 100%) / -2);
+  z-index: 0;
+  background:
+    linear-gradient(90deg, rgba(4,5,18,.96) 0%, rgba(4,5,18,.70) 40%, rgba(4,5,18,.08) 72%),
+    linear-gradient(0deg, #04060f 0%, transparent 25%),
+    url('/andarun-galaxy-v2.png') 64% center / cover no-repeat;
+  transform: translateY(var(--parallax-y, 0));
+  will-change: transform;
+}
+
 .heroCopy, .heroArt { position: relative; z-index: 2; }
 
-.eyebrow { margin: 0 0 24px; color: var(--blue); font-size: 11px; font-weight: 800; letter-spacing: .22em; text-transform: uppercase; }
-.eyebrow::before { content: ''; display: inline-block; width: 30px; height: 1px; margin: 0 12px 3px 0; background: currentColor; }
-.hero h1 { margin: 0; max-width: 720px; font-family: var(--font-fraunces), Georgia, serif; font-size: clamp(67px, 7.7vw, 124px); font-weight: 400; line-height: .84; letter-spacing: -.065em; text-shadow: 0 10px 50px rgba(0,0,0,.4); }
+.eyebrow {
+  margin: 0 0 24px;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 30px; height: 1px;
+  margin: 0 12px 3px 0;
+  background: currentColor;
+}
+.hero h1 {
+  margin: 0;
+  max-width: 720px;
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(67px, 7.7vw, 124px);
+  font-weight: 400;
+  line-height: .84;
+  letter-spacing: -.065em;
+  text-shadow: 0 10px 50px rgba(0,0,0,.4);
+}
 .hero h1 em { color: #bdc5ff; font-weight: 700; }
-.launch { display: inline-flex; align-items: center; gap: 20px; margin-top: 40px; color: rgba(255,255,255,.72); text-decoration: none; text-transform: uppercase; font-size: 10px; font-weight: 800; letter-spacing: .18em; }
-.launch span { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; }
+.launch {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 40px;
+  color: rgba(255,255,255,.72);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .18em;
+}
+.launch span {
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+}
 
-.heroArt { position: relative; justify-self: end; width: min(100%, 570px); aspect-ratio: 1.04; }
-.orbitOne, .orbitTwo { position: absolute; border: 1px solid rgba(255,255,255,.17); border-radius: 50%; transform: rotate(-18deg); }
-.orbitOne { width: 88%; height: 42%; right: -6%; top: 29%; }.orbitTwo { width: 62%; height: 27%; right: 7%; top: 37%; }
-.coordinate { position: absolute; right: 0; bottom: 3%; color: rgba(255,255,255,.4); font-size: 9px; letter-spacing: .25em; }
+.heroArt {
+  position: relative;
+  justify-self: end;
+  width: min(100%, 570px);
+  aspect-ratio: 1.04;
+}
+.orbitOne, .orbitTwo {
+  position: absolute;
+  border: 1px solid rgba(255,255,255,.17);
+  border-radius: 50%;
+  transform: rotate(-18deg);
+}
+.orbitOne { width: 88%; height: 42%; right: -6%; top: 29%; }
+.orbitTwo { width: 62%; height: 27%; right: 7%;  top: 37%; }
+.coordinate {
+  position: absolute;
+  right: 0; bottom: 3%;
+  color: rgba(255,255,255,.4);
+  font-size: 9px;
+  letter-spacing: .25em;
+}
 
-.workspace { position: relative; background: radial-gradient(circle at 75% 0%, rgba(78,61,150,.3), transparent 35%), #080a18; color: #f8f5ed; padding: 88px max(32px, calc((100vw - 1380px) / 2)) 100px; overflow: hidden; }
+/* ── WORKSPACE ────────────────────────────────────────────────────────────── */
+.workspace {
+  position: relative;
+  background: #04060f;
+  color: #f8f5ed;
+  padding: 0;
+  overflow: hidden;
+  isolation: isolate;
+}
 
-.workspace::after { content: ''; position: absolute; inset: 0; z-index: 0; background: url('/andarun-galaxy-v2.png') center / cover no-repeat; opacity: 0; transform: scale(1.1); transition: opacity 2s cubic-bezier(.2,.8,.2,1), transform 2.4s cubic-bezier(.2,.8,.2,1); pointer-events: none; }
-.galaxyOpen::after { opacity: 0.18; transform: scale(1); }
-.workspace > * { position: relative; z-index: 1; }
-.sectionHead { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; margin-bottom: 42px; }
+/* Canvas warp stars — fills the section */
+.galaxyCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.galaxyOpen .galaxyCanvas { opacity: 1; }
+
+/* ── LIGHT LAYERS ─────────────────────────────────────────────────────────── */
+
+/* Bright white-blue core — detonates then fades to a steady glow */
+.lightCore {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 38% 28% at 50% 42%,
+    rgba(220,235,255,0.0) 0%,
+    rgba(140,165,255,0.0) 40%,
+    transparent 100%);
+  transition: none;
+}
+
+@keyframes coreBurst {
+  0%   { opacity: 0; transform: scale(0.6); }
+  8%   { opacity: 1; transform: scale(1.08); }
+  30%  { opacity: 0.7; transform: scale(1); }
+  100% { opacity: 0.22; transform: scale(1); }
+}
+.galaxyOpen .lightCore {
+  background: radial-gradient(ellipse 38% 28% at 50% 42%,
+    rgba(220,235,255,0.92) 0%,
+    rgba(140,165,255,0.55) 18%,
+    rgba(90,60,255,0.22)   45%,
+    transparent 100%);
+  animation: coreBurst 2.4s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+/* Rotating ray fan 1 — blue-white */
+.lightRays {
+  position: absolute;
+  inset: -30%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transform-origin: center center;
+  background: conic-gradient(
+    from 0deg at 50% 55%,
+    transparent 0deg,
+    rgba(180,210,255,0.07) 3deg,
+    transparent 7deg,
+    transparent 37deg,
+    rgba(160,190,255,0.055) 40deg,
+    transparent 44deg,
+    transparent 82deg,
+    rgba(200,220,255,0.065) 85deg,
+    transparent 89deg,
+    transparent 127deg,
+    rgba(170,200,255,0.05) 130deg,
+    transparent 134deg,
+    transparent 172deg,
+    rgba(185,210,255,0.07) 175deg,
+    transparent 179deg,
+    transparent 217deg,
+    rgba(160,185,255,0.055) 220deg,
+    transparent 224deg,
+    transparent 262deg,
+    rgba(195,215,255,0.065) 265deg,
+    transparent 269deg,
+    transparent 305deg,
+    rgba(175,200,255,0.06) 308deg,
+    transparent 312deg,
+    transparent 360deg
+  );
+}
+
+@keyframes spinRays { to { transform: rotate(360deg); } }
+@keyframes fadeInRays {
+  0%   { opacity: 0; }
+  15%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+.galaxyOpen .lightRays {
+  animation:
+    fadeInRays 1.8s ease forwards,
+    spinRays 38s linear infinite;
+}
+
+/* Rotating ray fan 2 — violet-magenta, slower, offset */
+.lightRays2 {
+  position: absolute;
+  inset: -30%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transform-origin: center center;
+  background: conic-gradient(
+    from 55deg at 50% 55%,
+    transparent 0deg,
+    rgba(180,80,255,0.05) 4deg,
+    transparent 8deg,
+    transparent 52deg,
+    rgba(200,90,255,0.04) 56deg,
+    transparent 60deg,
+    transparent 112deg,
+    rgba(160,70,255,0.05) 116deg,
+    transparent 120deg,
+    transparent 168deg,
+    rgba(190,85,255,0.04) 172deg,
+    transparent 176deg,
+    transparent 228deg,
+    rgba(170,75,255,0.05) 232deg,
+    transparent 236deg,
+    transparent 288deg,
+    rgba(200,90,255,0.04) 292deg,
+    transparent 296deg,
+    transparent 360deg
+  );
+}
+.galaxyOpen .lightRays2 {
+  animation:
+    fadeInRays 2.2s 0.3s ease forwards,
+    spinRays 58s linear infinite reverse;
+}
+
+/* Expanding rings */
+@keyframes ringExpand {
+  0%   { transform: scale(0); opacity: 0.9; }
+  60%  { opacity: 0.35; }
+  100% { transform: scale(3.2); opacity: 0; }
+}
+
+.ringA, .ringB, .ringC {
+  position: absolute;
+  left: 50%; top: 42%;
+  translate: -50% -50%;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.ringA {
+  width: 180px; height: 90px;
+  border: 1.5px solid rgba(180,210,255,0.75);
+  box-shadow: 0 0 18px rgba(140,170,255,0.45), inset 0 0 10px rgba(140,170,255,0.2);
+}
+.ringB {
+  width: 180px; height: 90px;
+  border: 1px solid rgba(160,80,255,0.6);
+  box-shadow: 0 0 14px rgba(160,80,255,0.35);
+}
+.ringC {
+  width: 180px; height: 90px;
+  border: 1px solid rgba(220,240,255,0.5);
+  box-shadow: 0 0 22px rgba(200,230,255,0.3);
+}
+
+.galaxyOpen .ringA { animation: ringExpand 2.0s 0.0s cubic-bezier(.1,.6,.3,1) forwards; }
+.galaxyOpen .ringB { animation: ringExpand 2.0s 0.3s cubic-bezier(.1,.6,.3,1) forwards; }
+.galaxyOpen .ringC { animation: ringExpand 2.0s 0.6s cubic-bezier(.1,.6,.3,1) forwards; }
+
+/* Content sits above all light layers */
+.workspaceContent {
+  position: relative;
+  z-index: 3;
+  padding: 88px max(32px, calc((100vw - 1380px) / 2)) 100px;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 42px;
+}
 .sectionHead .eyebrow { color: #8ba2ff; margin-bottom: 15px; }
-.sectionHead h2 { margin: 0; font-family: var(--font-fraunces), Georgia, serif; font-size: clamp(37px, 4vw, 62px); font-weight: 400; letter-spacing: -.035em; }
-.sectionHead > p { margin: 0 8px 6px 0; color: #90999e; font-size: 12px; line-height: 1.6; text-align: right; text-transform: uppercase; letter-spacing: .12em; }
-.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.card { min-height: 380px; padding: 24px; display: flex; flex-direction: column; color: #f7f5ff; text-decoration: none; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.07); backdrop-filter: blur(12px); transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, background .35s; opacity: 0; }
-.card:hover { transform: translateY(-9px); background: rgba(255,255,255,.13); box-shadow: 0 25px 60px rgba(0,0,0,.4), 0 0 50px rgba(111,91,220,.12); }
+.sectionHead h2 {
+  margin: 0;
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(37px, 4vw, 62px);
+  font-weight: 400;
+  letter-spacing: -.035em;
+}
+.sectionHead > p {
+  margin: 0 8px 6px 0;
+  color: #90999e;
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: right;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
 
-@keyframes cardReveal { from { opacity: 0; transform: translateY(52px) scale(.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
-.cardRevealed { animation: cardReveal .7s cubic-bezier(.2,.8,.2,1) var(--reveal-delay, 0s) forwards; }
+/* ── GRID & CARDS ─────────────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.card {
+  min-height: 380px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  color: #f7f5ff;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.07);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  transition:
+    transform .35s cubic-bezier(.2,.8,.2,1),
+    box-shadow .35s,
+    background .35s;
+}
+.card:hover {
+  transform: translateY(-9px);
+  background: rgba(255,255,255,.13);
+  box-shadow: 0 25px 60px rgba(0,0,0,.4), 0 0 50px rgba(111,91,220,.12);
+}
+
+@keyframes cardReveal {
+  from { opacity: 0; transform: translateY(44px) scale(.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);   }
+}
+.cardRevealed {
+  animation: cardReveal .65s cubic-bezier(.2,.8,.2,1) var(--reveal-delay, 0s) forwards;
+}
 .cardRevealed:hover { transform: translateY(-9px); }
+
 .cardTop { display: flex; justify-content: space-between; align-items: center; }
-.number { font-size: 11px; font-weight: 800; letter-spacing: .14em; }
-.arrow { width: 39px; height: 39px; display: grid; place-items: center; border: 1px solid currentColor; border-radius: 50%; font-size: 19px; transition: transform .3s, background .3s, color .3s; }
+.number  { font-size: 11px; font-weight: 800; letter-spacing: .14em; }
+.arrow   {
+  width: 39px; height: 39px;
+  display: grid; place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 19px;
+  transition: transform .3s, background .3s, color .3s;
+}
 .card:hover .arrow { transform: rotate(45deg); background: #fff; color: #101224; }
+
 .icon { flex: 1; display: grid; place-items: center; }
-.icon svg { width: 90px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; transition: transform .35s; }
+.icon svg {
+  width: 90px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform .35s;
+}
 .card:hover .icon svg { transform: scale(1.1) rotate(-3deg); }
-.cardCopy h3 { margin: 0 0 10px; font-family: var(--font-fraunces), Georgia, serif; font-size: 37px; font-weight: 700; letter-spacing: -.04em; }
+
+.cardCopy h3 {
+  margin: 0 0 10px;
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: 37px;
+  font-weight: 700;
+  letter-spacing: -.04em;
+}
 .cardCopy p { max-width: 245px; margin: 0; font-size: 13px; line-height: 1.65; }
-.cobalt { --glow: #6479e8; }.coral { --glow: #b66da7; }.lemon { --glow: #7565c5; }.mint { --glow: #458da2; }
-.card::before { content: ''; position: absolute; width: 180px; height: 180px; right: -80px; top: -80px; border-radius: 50%; background: var(--glow); filter: blur(65px); opacity: .42; }
 
-.footer { min-height: 98px; padding: 0 max(32px, calc((100vw - 1380px) / 2)); display: flex; align-items: center; justify-content: space-between; background: #050611; color: #646878; font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
-.footer p { margin: 0; }.footer p span { color: #ef866f; margin: 0 8px; }
+.cobalt { --glow: #6479e8; }
+.coral  { --glow: #b66da7; }
+.lemon  { --glow: #7565c5; }
+.mint   { --glow: #458da2; }
+.card::before {
+  content: '';
+  position: absolute;
+  width: 180px; height: 180px;
+  right: -80px; top: -80px;
+  border-radius: 50%;
+  background: var(--glow);
+  filter: blur(65px);
+  opacity: .42;
+}
 
+/* ── FOOTER ───────────────────────────────────────────────────────────────── */
+.footer {
+  min-height: 98px;
+  padding: 0 max(32px, calc((100vw - 1380px) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #020409;
+  color: #646878;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.footer p { margin: 0; }
+.footer p span { color: #ef866f; margin: 0 8px; }
+
+/* ── RESPONSIVE ───────────────────────────────────────────────────────────── */
 @media (max-width: 980px) {
   .hero { grid-template-columns: 1fr; padding-top: 60px; }
   .heroArt { display: none; }
@@ -74,12 +427,26 @@
 }
 
 @media (max-width: 620px) {
-  .hero { width: calc(100% - 36px); }
-  .hero { min-height: calc(100svh - 78px); padding: 54px 0 64px; gap: 54px; }.hero h1 { font-size: clamp(55px, 17vw, 84px); }
-  .hero::before { background: linear-gradient(0deg, #070817 0%, transparent 40%), linear-gradient(90deg, rgba(4,5,18,.82), rgba(4,5,18,.15)), url('/andarun-galaxy-v2.png') 69% center / cover no-repeat; }
-  .workspace { padding: 68px 18px 72px; }.sectionHead > p { display: none; }.grid { grid-template-columns: 1fr; gap: 10px; }
-  .card { min-height: 275px; }.icon svg { width: 70px; }.cardCopy h3 { font-size: 32px; }
+  .hero { width: calc(100% - 36px); min-height: calc(100svh - 78px); padding: 54px 0 64px; gap: 54px; }
+  .hero h1 { font-size: clamp(55px, 17vw, 84px); }
+  .hero::before {
+    background:
+      linear-gradient(0deg, #04060f 0%, transparent 40%),
+      linear-gradient(90deg, rgba(4,5,18,.82), rgba(4,5,18,.15)),
+      url('/andarun-galaxy-v2.png') 69% center / cover no-repeat;
+  }
+  .workspaceContent { padding: 68px 18px 72px; }
+  .sectionHead > p { display: none; }
+  .grid { grid-template-columns: 1fr; gap: 10px; }
+  .card { min-height: 275px; }
+  .icon svg { width: 70px; }
+  .cardCopy h3 { font-size: 32px; }
   .footer { padding: 30px 18px; gap: 15px; align-items: flex-start; flex-direction: column; }
 }
 
-@media (prefers-reduced-motion: reduce) { .card, .icon svg, .arrow { transition: none; animation: none; opacity: 1; } .workspace::after { transition: none; } .hero::before { transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .card, .icon svg, .arrow { transition: none; }
+  .card { opacity: 1; animation: none; }
+  .lightCore, .lightRays, .lightRays2, .ringA, .ringB, .ringC { animation: none; }
+  .hero::before { transform: none !important; }
+}
