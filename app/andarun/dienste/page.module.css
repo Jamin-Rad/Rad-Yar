@@ -475,6 +475,43 @@
   margin-top: 16px;
 }
 
+.caseTypePicker {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.caseType,
+.caseTypeActive {
+  min-height: 48px;
+  display: flex !important;
+  align-items: center;
+  gap: 10px !important;
+  border: 1px solid rgba(148, 163, 184, .22);
+  border-radius: 8px;
+  background: rgba(255,255,255,.06);
+  color: #cbd5e1 !important;
+  cursor: pointer;
+  font-size: 13px !important;
+  letter-spacing: 0 !important;
+  padding: 0 14px;
+  text-transform: none !important;
+}
+
+.caseType input,
+.caseTypeActive input {
+  width: 16px;
+  min-height: 16px;
+  accent-color: #22d3ee;
+}
+
+.caseTypeActive {
+  border-color: rgba(34, 211, 238, .52);
+  background: rgba(14, 165, 233, .18);
+  color: #e0f2fe !important;
+}
+
 .questionField {
   grid-column: span 2;
 }
@@ -482,6 +519,75 @@
 .findingForm button {
   align-self: end;
   min-height: 42px;
+}
+
+.findingLists {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.findingBox {
+  min-width: 0;
+  border: 1px solid rgba(148, 163, 184, .18);
+  border-radius: 8px;
+  background: rgba(2, 6, 23, .28);
+  padding: 14px;
+}
+
+.listHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.listHead h3 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.1;
+}
+
+.listHead span {
+  min-width: 34px;
+  border-radius: 999px;
+  background: rgba(103, 232, 249, .16);
+  color: #a5f3fc;
+  font-size: 12px;
+  font-weight: 950;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.findingFilters {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr) minmax(0, 1fr);
+  gap: 9px;
+}
+
+.findingFilters label {
+  display: grid;
+  gap: 6px;
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.findingFilters input,
+.findingFilters select {
+  min-height: 38px;
+  border: 1px solid rgba(148, 163, 184, .22);
+  border-radius: 7px;
+  background: rgba(2, 6, 23, .48);
+  color: #f8fafc;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 850;
+  padding: 0 10px;
 }
 
 .findingTable {
@@ -494,9 +600,9 @@
 .findingHead,
 .findingRow {
   display: grid;
-  grid-template-columns: 100px 100px 88px 110px 1.1fr 1fr 100px 1.5fr 32px;
+  grid-template-columns: 92px 120px 92px 82px 120px minmax(140px, 1.1fr) minmax(160px, 1.3fr) 32px;
   gap: 8px;
-  min-width: 1120px;
+  min-width: 900px;
   align-items: center;
 }
 
@@ -560,6 +666,10 @@
   .findingForm {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .findingLists {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 640px) {
@@ -580,7 +690,9 @@
 
   .findingForm,
   .formGrid,
-  .assignmentPicker {
+  .assignmentPicker,
+  .caseTypePicker,
+  .findingFilters {
     grid-template-columns: 1fr;
   }
 

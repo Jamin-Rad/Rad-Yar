@@ -135,11 +135,14 @@ function sanitizeShift(value) {
 function sanitizeFinding(value) {
   return {
     id: cleanText(value?.id, 80) || `finding-${Date.now()}`,
+    type: cleanText(value?.type, 20) === 'question' ? 'question' : 'case',
     examDate: cleanDate(value?.examDate),
+    name: cleanText(value?.name, 120),
     birthDate: cleanDate(value?.birthDate),
     modality: cleanText(value?.modality, 40),
     examArea: cleanText(value?.examArea, 80),
     exam: cleanText(value?.exam, 120),
+    diagnosis: cleanText(value?.diagnosis, 180),
     vd: cleanText(value?.vd, 160),
     organ: cleanText(value?.organ, 100),
     question: cleanText(value?.question, 500),

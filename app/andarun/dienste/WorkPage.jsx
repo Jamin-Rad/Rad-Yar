@@ -8,11 +8,22 @@ const NAME = 'Hamed Zia'
 const WEEKDAYS_LONG = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag']
 const MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
 const MODALITIES = ['Röntgen', 'CT', 'MRT']
-const EXAM_AREAS = [
-  'Schädel', 'Hals', 'Thorax', 'Abdomen', 'Becken', 'Wirbelsäule',
-  'Schulter', 'Ellenbogen', 'Hand', 'Hüfte', 'Knie', 'Sprunggelenk',
-  'Gefäße', 'Ganzkörper',
+const CASE_TYPES = [
+  { id: 'case', label: 'Relevante Fälle' },
+  { id: 'question', label: 'Verlaufskontrolle & Fragen' },
 ]
+const AREA_OPTIONS = {
+  CT: ['Schädel', 'HWS', 'Thorax', 'Abdomen', 'BBA', 'Obere Extremität', 'Untere Extremität'],
+  Röntgen: [
+    'Thorax', 'Abdomen', 'Becken', 'HWS', 'BWS', 'LWS', 'Schulter', 'Clavicula',
+    'Oberarm', 'Ellenbogen', 'Unterarm', 'Handgelenk', 'Hand', 'Finger',
+    'Hüfte', 'Oberschenkel', 'Knie', 'Unterschenkel', 'OSG', 'Fuß', 'Zehen',
+  ],
+  MRT: [
+    'Kopf', 'Wirbelsäule', 'Herz', 'Prostata', 'Mamma', 'Oberbauch', 'Becken',
+    'Sellink', 'Knie', 'Schulter', 'Hand', 'Ellenbogen', 'OSG', 'Sonstiges',
+  ],
+}
 const DAILY_MODALITIES = [
   { id: 'Röntgen', label: 'Röntgen' },
   { id: 'CT', label: 'CT' },
@@ -162,16 +173,39 @@ function normalizeShift(shift) {
   }
 }
 
+function findingMatchesFilter(finding, filter) {
+  const diagnosisText = `${finding.diagnosis || ''} ${finding.vd || ''}`.toLowerCase()
+  const organText = `${finding.organ || ''} ${finding.examArea || ''} ${finding.exam || ''}`.toLowerCase()
+  const diagnosisFilter = filter.diagnosis.trim().toLowerCase()
+  const organFilter = filter.organ.trim().toLowerCase()
+  return (!filter.modality || finding.modality === filter.modality)
+    && (!diagnosisFilter || diagnosisText.includes(diagnosisFilter))
+    && (!organFilter || organText.includes(organFilter))
+}
+
+function filterFindings(items, filter) {
+  return items.filter(item => findingMatchesFilter(item, filter))
+}
+
 const EMPTY_FINDING = {
+  type: 'case',
   examDate: todayValue(),
+  name: '',
   birthDate: '',
   modality: 'Röntgen',
-  examArea: 'Thorax',
-  exam: 'Thorax',
+  examArea: AREA_OPTIONS['Röntgen'][0],
+  exam: AREA_OPTIONS['Röntgen'][0],
+  diagnosis: '',
   vd: '',
   organ: '',
   question: '',
   status: 'offen',
+}
+
+const EMPTY_FILTER = {
+  modality: '',
+  diagnosis: '',
+  organ: '',
 }
 
 export default function WorkPage({ showHomeLink = true }) {
@@ -182,6 +216,8 @@ export default function WorkPage({ showHomeLink = true }) {
   const [shiftForm, setShiftForm] = useState(emptyShift(todayValue()))
   const [rangeEndDate, setRangeEndDate] = useState(todayValue())
   const [findingForm, setFindingForm] = useState(EMPTY_FINDING)
+  const [caseFilter, setCaseFilter] = useState(EMPTY_FILTER)
+  const [questionFilter, setQuestionFilter] = useState(EMPTY_FILTER)
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(true)
 
@@ -204,6 +240,18 @@ export default function WorkPage({ showHomeLink = true }) {
   const monthShifts = useMemo(
     () => shifts.filter(shift => shift.date?.startsWith(month)).sort((a, b) => a.date.localeCompare(b.date)),
     [shifts, month],
+  )
+  const normalizedFindings = useMemo(
+    () => findings.map(finding => ({ type: 'case', diagnosis: '', name: '', ...finding })),
+    [findings],
+  )
+  const relevantCases = useMemo(
+    () => filterFindings(normalizedFindings.filter(finding => finding.type !== 'question'), caseFilter),
+    [normalizedFindings, caseFilter],
+  )
+  const followupQuestions = useMemo(
+    () => filterFindings(normalizedFindings.filter(finding => finding.type === 'question'), questionFilter),
+    [normalizedFindings, questionFilter],
   )
 
   async function loadAll() {
@@ -315,6 +363,58 @@ export default function WorkPage({ showHomeLink = true }) {
 
   function printMonth() {
     window.print()
+  }
+
+  function updateFindingModality(modality) {
+    const nextArea = AREA_OPTIONS[modality]?.[0] || ''
+    setFindingForm(prev => ({
+      ...prev,
+      modality,
+      examArea: nextArea,
+      exam: nextArea,
+    }))
+  }
+
+  function renderFilterControls(filter, setFilter) {
+    return (
+      <div className={styles.findingFilters}>
+        <label>Modalität
+          <select value={filter.modality} onChange={event => setFilter(prev => ({ ...prev, modality: event.target.value }))}>
+            <option value="">Alle</option>
+            {MODALITIES.map(modality => <option key={modality}>{modality}</option>)}
+          </select>
+        </label>
+        <label>Diagnose / VD
+          <input value={filter.diagnosis} onChange={event => setFilter(prev => ({ ...prev, diagnosis: event.target.value }))} />
+        </label>
+        <label>Organ / Gebiet
+          <input value={filter.organ} onChange={event => setFilter(prev => ({ ...prev, organ: event.target.value }))} />
+        </label>
+      </div>
+    )
+  }
+
+  function renderFindingList(items, emptyText) {
+    return (
+      <div className={styles.findingTable}>
+        <div className={styles.findingHead}>
+          <span>Datum</span><span>Name</span><span>Geb.</span><span>Modalität</span><span>Gebiet</span><span>Diagnose / VD</span><span>Frage</span><span />
+        </div>
+        {items.map(finding => (
+          <div className={styles.findingRow} key={finding.id}>
+            <span>{finding.examDate}</span>
+            <span>{finding.name || '—'}</span>
+            <span>{finding.birthDate || '—'}</span>
+            <span>{finding.modality}</span>
+            <span>{finding.examArea || finding.organ || finding.exam || '—'}</span>
+            <span>{finding.type === 'question' ? finding.vd || '—' : finding.diagnosis || finding.vd || '—'}</span>
+            <span>{finding.question || '—'}</span>
+            <button type="button" onClick={() => deleteFinding(finding.id)}>×</button>
+          </div>
+        ))}
+        {!items.length && !loading && <div className={styles.emptyTable}>{emptyText}</div>}
+      </div>
+    )
   }
 
   return (
@@ -481,14 +581,30 @@ export default function WorkPage({ showHomeLink = true }) {
           <h2>Relevante Fälle & Fragen</h2>
         </div>
         <form className={styles.findingForm} onSubmit={saveFinding}>
-          <label>Tag
+          <div className={styles.caseTypePicker}>
+            {CASE_TYPES.map(type => (
+              <label className={findingForm.type === type.id ? styles.caseTypeActive : styles.caseType} key={type.id}>
+                <input
+                  type="radio"
+                  name="findingType"
+                  checked={findingForm.type === type.id}
+                  onChange={() => setFindingForm(prev => ({ ...prev, type: type.id }))}
+                />
+                {type.label}
+              </label>
+            ))}
+          </div>
+          <label>Tag der Untersuchung
             <input type="date" value={findingForm.examDate} onChange={event => setFindingForm(prev => ({ ...prev, examDate: event.target.value }))} />
+          </label>
+          <label>Name
+            <input value={findingForm.name} onChange={event => setFindingForm(prev => ({ ...prev, name: event.target.value }))} />
           </label>
           <label>Geburtsdatum
             <input type="date" value={findingForm.birthDate} onChange={event => setFindingForm(prev => ({ ...prev, birthDate: event.target.value }))} />
           </label>
           <label>Modalität
-            <select value={findingForm.modality} onChange={event => setFindingForm(prev => ({ ...prev, modality: event.target.value }))}>
+            <select value={findingForm.modality} onChange={event => updateFindingModality(event.target.value)}>
               {MODALITIES.map(modality => <option key={modality}>{modality}</option>)}
             </select>
           </label>
@@ -497,42 +613,47 @@ export default function WorkPage({ showHomeLink = true }) {
               value={findingForm.examArea}
               onChange={event => setFindingForm(prev => ({ ...prev, examArea: event.target.value, exam: event.target.value }))}
             >
-              {EXAM_AREAS.map(area => <option key={area}>{area}</option>)}
+              {(AREA_OPTIONS[findingForm.modality] || []).map(area => <option key={area}>{area}</option>)}
             </select>
           </label>
           <label>Untersuchung
             <input value={findingForm.exam} onChange={event => setFindingForm(prev => ({ ...prev, exam: event.target.value }))} />
           </label>
-          <label>VD
-            <input value={findingForm.vd} onChange={event => setFindingForm(prev => ({ ...prev, vd: event.target.value }))} />
-          </label>
+          {findingForm.type === 'case' ? (
+            <label>Diagnose
+              <input value={findingForm.diagnosis} onChange={event => setFindingForm(prev => ({ ...prev, diagnosis: event.target.value }))} />
+            </label>
+          ) : (
+            <label>Verdachtsdiagnose
+              <input value={findingForm.vd} onChange={event => setFindingForm(prev => ({ ...prev, vd: event.target.value }))} />
+            </label>
+          )}
           <label>Organ
             <input value={findingForm.organ} onChange={event => setFindingForm(prev => ({ ...prev, organ: event.target.value }))} />
           </label>
           <label className={styles.questionField}>Frage
             <input value={findingForm.question} onChange={event => setFindingForm(prev => ({ ...prev, question: event.target.value }))} />
           </label>
-          <button type="submit">Befund speichern</button>
+          <button type="submit">Eintrag speichern</button>
         </form>
 
-        <div className={styles.findingTable}>
-          <div className={styles.findingHead}>
-            <span>Datum</span><span>Geb.</span><span>Modalität</span><span>Gebiet</span><span>Untersuchung</span><span>VD</span><span>Organ</span><span>Frage</span><span />
-          </div>
-          {findings.map(finding => (
-            <div className={styles.findingRow} key={finding.id}>
-              <span>{finding.examDate}</span>
-              <span>{finding.birthDate || '—'}</span>
-              <span>{finding.modality}</span>
-              <span>{finding.examArea || finding.organ || '—'}</span>
-              <span>{finding.exam || '—'}</span>
-              <span>{finding.vd || '—'}</span>
-              <span>{finding.organ || '—'}</span>
-              <span>{finding.question || '—'}</span>
-              <button type="button" onClick={() => deleteFinding(finding.id)}>×</button>
+        <div className={styles.findingLists}>
+          <article className={styles.findingBox}>
+            <div className={styles.listHead}>
+              <h3>Relevante Fälle</h3>
+              <span>{relevantCases.length}</span>
             </div>
-          ))}
-          {!findings.length && !loading && <div className={styles.emptyTable}>Noch keine Befunde gespeichert.</div>}
+            {renderFilterControls(caseFilter, setCaseFilter)}
+            {renderFindingList(relevantCases, 'Noch keine relevanten Fälle gespeichert.')}
+          </article>
+          <article className={styles.findingBox}>
+            <div className={styles.listHead}>
+              <h3>Verlaufskontrolle & Fragen</h3>
+              <span>{followupQuestions.length}</span>
+            </div>
+            {renderFilterControls(questionFilter, setQuestionFilter)}
+            {renderFindingList(followupQuestions, 'Noch keine Verlaufskontrollen oder Fragen gespeichert.')}
+          </article>
         </div>
       </section>
 
