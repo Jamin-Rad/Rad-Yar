@@ -92,6 +92,10 @@ function isNightShift(shift) {
   return shift?.model === 'N' || /^BD[1-4]$/.test(shift?.duty || '')
 }
 
+function isAbsenceShift(shift) {
+  return shift?.model === 'U' || shift?.model === 'K'
+}
+
 function calendarDutyLabel(shift) {
   if (shift?.model === 'N') return 'Nacht'
   return shift?.duty || ''
@@ -145,6 +149,10 @@ function emptyShift(date) {
   }
 }
 
+function shiftId(date, model) {
+  return isAbsenceShift({ model }) ? `absence-${model}-${date}` : `shift-${date}`
+}
+
 function normalizeShift(shift) {
   if (!shift?.date) return shift
   return {
@@ -181,7 +189,17 @@ export default function WorkPage({ showHomeLink = true }) {
     loadAll()
   }, [])
 
-  const shiftsByDate = useMemo(() => new Map(shifts.map(shift => [shift.date, shift])), [shifts])
+  const shiftsByDate = useMemo(
+    () => new Map(shifts.filter(shift => !isAbsenceShift(shift)).map(shift => [shift.date, shift])),
+    [shifts],
+  )
+  const absencesByDate = useMemo(() => {
+    const grouped = new Map()
+    shifts.filter(isAbsenceShift).forEach(absence => {
+      grouped.set(absence.date, [...(grouped.get(absence.date) || []), absence])
+    })
+    return grouped
+  }, [shifts])
   const monthDays = useMemo(() => daysForMonth(month), [month])
   const monthShifts = useMemo(
     () => shifts.filter(shift => shift.date?.startsWith(month)).sort((a, b) => a.date.localeCompare(b.date)),
@@ -195,7 +213,8 @@ export default function WorkPage({ showHomeLink = true }) {
       const loadedShifts = (data.shifts || []).map(normalizeShift)
       setShifts(loadedShifts)
       setFindings(data.findings || [])
-      const existing = loadedShifts.find(item => item.date === selectedDate)
+      const existing = loadedShifts.find(item => item.date === selectedDate && !isAbsenceShift(item))
+        || loadedShifts.find(item => item.date === selectedDate)
       setShiftForm(existing || emptyShift(selectedDate))
       setMessage('')
     } catch (error) {
@@ -208,14 +227,19 @@ export default function WorkPage({ showHomeLink = true }) {
   function selectDate(date) {
     setSelectedDate(date)
     setRangeEndDate(date)
-    const existing = shiftsByDate.get(date)
+    const existing = shiftsByDate.get(date) || absencesByDate.get(date)?.[0]
     setShiftForm(existing ? normalizeShift(existing) : emptyShift(date))
   }
 
   function updateShiftModel(model) {
     const resolved = resolveDuty(shiftForm.date, model)
+    const existing = isAbsenceShift({ model })
+      ? absencesByDate.get(shiftForm.date)?.find(item => item.model === model)
+      : shiftsByDate.get(shiftForm.date)
     setShiftForm(prev => ({
       ...prev,
+      ...(existing || {}),
+      id: shiftId(prev.date, model),
       model,
       ...resolved,
       actualStart: resolved.plannedStart,
@@ -235,7 +259,7 @@ export default function WorkPage({ showHomeLink = true }) {
               const resolved = resolveDuty(date, shiftForm.model)
               return {
                 ...shiftForm,
-                id: `shift-${date}`,
+                id: shiftId(date, shiftForm.model),
                 date,
                 ...resolved,
                 actualStart: '',
@@ -257,7 +281,8 @@ export default function WorkPage({ showHomeLink = true }) {
     try {
       const data = await apiRequest(`/?type=shift&id=${encodeURIComponent(id)}`, 'DELETE')
       setShifts((data.shifts || []).map(normalizeShift))
-      setShiftForm(emptyShift(selectedDate))
+      const remaining = (data.shifts || []).map(normalizeShift)
+      setShiftForm(remaining.find(item => item.date === selectedDate && !isAbsenceShift(item)) || emptyShift(selectedDate))
     } catch (error) {
       setMessage(error.message)
     }
@@ -320,6 +345,7 @@ export default function WorkPage({ showHomeLink = true }) {
             {monthDays.map((day, index) => {
               if (!day.current) return <div className={styles.emptyDay} key={day.id || index} />
               const shift = shiftsByDate.get(day.date)
+              const absences = absencesByDate.get(day.date) || []
               const previousShift = shiftsByDate.get(previousDateValue(day.date))
               const isWeekendFree = !shift && (day.weekday === 0 || day.weekday === 6)
               const isPostNightFree = !shift && day.weekday >= 1 && day.weekday <= 5 && isNightShift(previousShift)
@@ -336,10 +362,22 @@ export default function WorkPage({ showHomeLink = true }) {
                   onClick={() => selectDate(day.date)}
                   aria-current={isToday ? 'date' : undefined}
                 >
-                  <span>{day.day}</span>
+                  <span className={styles.dayNumber}>{day.day}</span>
                   {shift && <strong>{calendarDutyLabel(shift)}</strong>}
                   {shift && <small>{timeRange(shift.actualStart || shift.plannedStart, shift.actualEnd || shift.plannedEnd)}</small>}
                   {shift?.assignment && <em>{shift.assignment}</em>}
+                  {absences.length > 0 && (
+                    <span className={styles.absenceBadges}>
+                      {absences.map(absence => (
+                        <b
+                          className={absence.model === 'K' ? styles.absenceSick : styles.absenceVacation}
+                          key={absence.id}
+                        >
+                          {absence.model === 'K' ? 'Krank' : 'Urlaub'}
+                        </b>
+                      ))}
+                    </span>
+                  )}
                 </button>
               )
             })}
@@ -380,7 +418,7 @@ export default function WorkPage({ showHomeLink = true }) {
                     const nextDate = event.target.value
                     const resolved = resolveDuty(nextDate, shiftForm.model)
                     setSelectedDate(nextDate)
-                    setShiftForm(prev => ({ ...prev, date: nextDate, id: `shift-${nextDate}`, ...resolved }))
+                    setShiftForm(prev => ({ ...prev, date: nextDate, id: shiftId(nextDate, prev.model), ...resolved }))
                     if (rangeEndDate < nextDate) setRangeEndDate(nextDate)
                   }}
                 />
@@ -418,9 +456,19 @@ export default function WorkPage({ showHomeLink = true }) {
           <label className={styles.fullLabel}>Notiz
             <input value={shiftForm.note} onChange={event => setShiftForm(prev => ({ ...prev, note: event.target.value }))} />
           </label>
+          {(absencesByDate.get(selectedDate) || []).length > 0 && (
+            <div className={styles.savedAbsences}>
+              <span>Zusätzlich gespeichert</span>
+              {(absencesByDate.get(selectedDate) || []).map(absence => (
+                <button type="button" key={absence.id} onClick={() => deleteShift(absence.id)}>
+                  {absence.model === 'K' ? 'Krank' : 'Urlaub'} ×
+                </button>
+              ))}
+            </div>
+          )}
           <div className={styles.actions}>
             <button type="submit">Speichern</button>
-            {shiftsByDate.has(shiftForm.date) && (
+            {shifts.some(item => item.id === shiftForm.id) && (
               <button type="button" className={styles.ghostBtn} onClick={() => deleteShift(shiftForm.id || shiftForm.date)}>Löschen</button>
             )}
           </div>

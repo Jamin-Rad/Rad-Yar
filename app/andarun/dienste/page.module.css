@@ -142,7 +142,7 @@
 
 .dayCell,
 .emptyDay {
-  height: 112px;
+  min-height: 112px;
   border: 1px solid rgba(148, 163, 184, .16);
   border-radius: 8px;
   background: rgba(255,255,255,.05);
@@ -161,7 +161,7 @@
   text-align: left;
 }
 
-.dayCell span {
+.dayCell > .dayNumber {
   color: #cbd5e1;
   font-size: 13px;
   font-weight: 950;
@@ -247,7 +247,7 @@
   box-shadow: inset 0 0 0 1px rgba(240, 253, 244, .08);
 }
 
-.dayFree span {
+.dayFree > .dayNumber {
   color: #dcfce7;
 }
 
@@ -274,7 +274,7 @@
   text-transform: uppercase;
 }
 
-.dayToday > span {
+.dayToday > .dayNumber {
   display: grid;
   width: 27px;
   height: 27px;
@@ -282,6 +282,56 @@
   border-radius: 50%;
   background: #22d3ee;
   color: #06202a;
+}
+
+.dayCell .absenceBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: auto;
+  padding: 0;
+  background: transparent;
+}
+
+.absenceBadges b {
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 950;
+  line-height: 1;
+  padding: 4px 7px;
+}
+
+.absenceVacation {
+  background: rgba(250, 204, 21, .24);
+  color: #fef08a;
+}
+
+.absenceSick {
+  background: rgba(251, 113, 133, .24);
+  color: #fecdd3;
+}
+
+.savedAbsences {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.savedAbsences button {
+  border: 1px solid rgba(251, 191, 36, .32);
+  border-radius: 999px;
+  background: rgba(251, 191, 36, .12);
+  color: #fef3c7;
+  cursor: pointer;
+  font: inherit;
+  padding: 5px 9px;
+  text-transform: none;
 }
 
 .cardHead span {
@@ -524,7 +574,7 @@
 
   .dayCell,
   .emptyDay {
-    height: 82px;
+    min-height: 92px;
     padding: 7px;
   }
 

@@ -15,8 +15,14 @@ function unavailable() {
 
 function normalizeState(value) {
   const state = value && typeof value === 'object' ? value : {}
+  const shifts = Array.isArray(state.shifts) ? state.shifts : []
+  const normalizedShifts = shifts.map(item => {
+    const date = cleanDate(item?.date)
+    const model = cleanText(item?.model, 20)
+    return { ...item, id: canonicalShiftId(date, model) }
+  })
   return {
-    shifts: Array.isArray(state.shifts) ? state.shifts : [],
+    shifts: [...new Map(normalizedShifts.map(item => [shiftKey(item), item])).values()],
     findings: Array.isArray(state.findings) ? state.findings : [],
   }
 }
@@ -31,6 +37,18 @@ function cleanDate(value) {
 
 function cleanTime(value) {
   return typeof value === 'string' && /^\d{2}:\d{2}$/.test(value) ? value : ''
+}
+
+function isAbsenceModel(model) {
+  return model === 'U' || model === 'K'
+}
+
+function canonicalShiftId(date, model) {
+  return isAbsenceModel(model) ? `absence-${model}-${date}` : `shift-${date}`
+}
+
+function shiftKey(shift) {
+  return `${shift?.date || ''}:${isAbsenceModel(shift?.model) ? shift.model : 'service'}`
 }
 
 async function readState() {
@@ -81,10 +99,11 @@ async function requireAccess() {
 
 function sanitizeShift(value) {
   const date = cleanDate(value?.date)
+  const model = cleanText(value?.model, 20)
   return {
-    id: cleanText(value?.id, 80) || `shift-${date}`,
+    id: canonicalShiftId(date, model),
     date,
-    model: cleanText(value?.model, 20),
+    model,
     duty: cleanText(value?.duty, 20),
     plannedStart: cleanTime(value?.plannedStart),
     plannedEnd: cleanTime(value?.plannedEnd),
@@ -143,7 +162,7 @@ export async function POST(request) {
       if (!shift.date || !shift.model) return NextResponse.json({ error: 'Dienst und Datum fehlen.' }, { status: 400 })
       const next = {
         ...state,
-        shifts: [shift, ...state.shifts.filter(item => item.date !== shift.date)]
+        shifts: [shift, ...state.shifts.filter(item => shiftKey(item) !== shiftKey(shift))]
           .sort((a, b) => String(a.date).localeCompare(String(b.date))),
       }
       return NextResponse.json(await writeState(next))
@@ -152,10 +171,10 @@ export async function POST(request) {
     if (body.type === 'shiftRange') {
       const shifts = Array.isArray(body.shifts) ? body.shifts.map(sanitizeShift).filter(shift => shift.date && shift.model) : []
       if (!shifts.length) return NextResponse.json({ error: 'Zeitraum fehlt.' }, { status: 400 })
-      const dates = new Set(shifts.map(shift => shift.date))
+      const keys = new Set(shifts.map(shiftKey))
       const next = {
         ...state,
-        shifts: [...shifts, ...state.shifts.filter(item => !dates.has(item.date))]
+        shifts: [...shifts, ...state.shifts.filter(item => !keys.has(shiftKey(item)))]
           .sort((a, b) => String(a.date).localeCompare(String(b.date))),
       }
       return NextResponse.json(await writeState(next))
@@ -191,7 +210,7 @@ export async function DELETE(request) {
     const state = await readState()
     const next = type === 'finding'
       ? { ...state, findings: state.findings.filter(item => item.id !== id) }
-      : { ...state, shifts: state.shifts.filter(item => item.id !== id && item.date !== id) }
+      : { ...state, shifts: state.shifts.filter(item => item.id !== id) }
     return NextResponse.json(await writeState(next))
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })
