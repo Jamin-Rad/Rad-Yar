@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { requireAndarunSession } from '@/lib/andarunPasswordAuth'
+import { requireFatimaSession } from '@/lib/fatimaPasswordAuth'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 
 const STATE_ID = 'andarun:work'
@@ -97,6 +98,22 @@ async function requireAccess() {
   return {}
 }
 
+async function requireReadAccess() {
+  const andarun = await requireAndarunSession()
+  if (!andarun.error) {
+    if (!isSupabaseAdminConfigured || !supabaseAdmin) return { response: unavailable() }
+    return {}
+  }
+
+  const fatima = await requireFatimaSession()
+  if (!fatima.error) {
+    if (!isSupabaseAdminConfigured || !supabaseAdmin) return { response: unavailable() }
+    return {}
+  }
+
+  return { response: NextResponse.json({ error: andarun.error }, { status: andarun.status }) }
+}
+
 function sanitizeShift(value) {
   const date = cleanDate(value?.date)
   const model = cleanText(value?.model, 20)
@@ -133,7 +150,7 @@ function sanitizeFinding(value) {
 }
 
 export async function GET() {
-  const access = await requireAccess()
+  const access = await requireReadAccess()
   if (access.response) return access.response
 
   try {
