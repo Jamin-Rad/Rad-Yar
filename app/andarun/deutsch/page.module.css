@@ -2531,6 +2531,34 @@
 
 .shell .status { z-index: 4; margin-bottom: 64px; }
 
+.audioControls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.skipBtn {
+  padding: 0 18px;
+  min-height: 46px;
+  border-radius: 14px;
+  border: 1px solid var(--d-border);
+  background: transparent;
+  color: var(--d-muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  transition: border-color .2s, color .2s, background .2s;
+  white-space: nowrap;
+}
+.skipBtn:hover {
+  border-color: var(--d-accent);
+  background: color-mix(in srgb, var(--d-accent) 9%, transparent);
+  color: var(--d-text);
+}
+
 @media (max-width: 620px) {
   .shell .hero, .shell .heroSimple { min-height: 390px; padding-bottom: 42px; }
   .shell .hero h1 { overflow-wrap: anywhere; hyphens: auto; }

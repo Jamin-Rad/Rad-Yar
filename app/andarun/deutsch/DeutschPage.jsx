@@ -437,6 +437,7 @@ export default function DeutschPage({
   const [correction, setCorrection] = useState(null)
   const [correcting, setCorrecting] = useState(false)
   const [speechLoading, setSpeechLoading] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
   const [message, setMessage] = useState('')
   const [importOpen, setImportOpen] = useState(false)
   const [flashOpen, setFlashOpen] = useState(false)
@@ -507,10 +508,29 @@ export default function DeutschPage({
     window.localStorage.setItem('andarun-deutsch-theme', next)
   }
 
+  function stopAudio() {
+    if (activeAudio.current) {
+      activeAudio.current.pause()
+      activeAudio.current.currentTime = 0
+    }
+    window.speechSynthesis?.cancel()
+    setIsPlaying(false)
+  }
+
+  function skipForward(seconds = 10) {
+    if (activeAudio.current) {
+      activeAudio.current.currentTime = Math.min(
+        activeAudio.current.currentTime + seconds,
+        activeAudio.current.duration || 0
+      )
+    }
+  }
+
   async function speakListeningText(text) {
     if (!text || speechLoading) return
     activeAudio.current?.pause()
     window.speechSynthesis?.cancel()
+    setIsPlaying(false)
     setSpeechLoading(true)
 
     try {
@@ -527,6 +547,9 @@ export default function DeutschPage({
       }
 
       const audio = new Audio(audioUrl)
+      audio.addEventListener('ended', () => setIsPlaying(false))
+      audio.addEventListener('pause', () => setIsPlaying(false))
+      audio.addEventListener('play', () => setIsPlaying(true))
       activeAudio.current = audio
       await audio.play()
     } catch {
@@ -934,14 +957,21 @@ export default function DeutschPage({
               <strong>{activeLesson.listening.title}</strong>
             </div>
             <p className={styles.listeningHint}>Höre zuerst ohne mitzulesen. Danach kannst du den Text öffnen und die Fragen beantworten.</p>
-            <button
-              type="button"
-              className={styles.primaryBtn}
-              onClick={() => speakListeningText(activeLesson.listening.text)}
-              disabled={speechLoading}
-            >
-              {speechLoading ? 'KI-Stimme wird vorbereitet …' : 'Mit KI-Stimme anhören'}
-            </button>
+            <div className={styles.audioControls}>
+              <button
+                type="button"
+                className={styles.primaryBtn}
+                onClick={() => isPlaying ? stopAudio() : speakListeningText(activeLesson.listening.text)}
+                disabled={speechLoading}
+              >
+                {speechLoading ? 'KI-Stimme wird vorbereitet …' : isPlaying ? '⏹ Stoppen' : '▶ Mit KI-Stimme anhören'}
+              </button>
+              {isPlaying && (
+                <button type="button" className={styles.skipBtn} onClick={() => skipForward(10)}>
+                  +10s ⏩
+                </button>
+              )}
+            </div>
             <details className={styles.transcript}>
               <summary>Transkript anzeigen</summary>
               <p>{activeLesson.listening.text}</p>
