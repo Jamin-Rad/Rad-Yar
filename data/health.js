@@ -75,7 +75,10 @@ export const lebensmittel = [
   // ── Frühstück & Beilagen ─────────────────────────────────────────────
   { id: "ei",             cat: "fruehstueck", de: "Ei (gekocht)",          fa: "تخم‌مرغ",       kcalPer100g: 155, portionG: 60,  unit: "Stück",      unitDesc: "1 Ei ≈ 60g" },
   { id: "ei-tomate",      cat: "fruehstueck", de: "Rührei mit Tomate",     fa: "تخم مرغ با گوجه", kcalPer100g: 120, portionG: 150, unit: "Portion",    unitDesc: "1 Portion ≈ 150g / 2 Eier + Tomate" },
-  { id: "kaese",          cat: "fruehstueck", de: "Käse",                  fa: "پنیر",          kcalPer100g: 350, portionG: 30,  unit: "Scheibe",    unitDesc: "1 Scheibe ≈ 30g" },
+  { id: "gouda",          cat: "fruehstueck", de: "Gouda",                 fa: "پنیر گودا",      kcalPer100g: 356, portionG: 30,  unit: "Scheibe",    unitDesc: "1 Scheibe ≈ 30g" },
+  { id: "emmentaler",     cat: "fruehstueck", de: "Emmentaler",            fa: "پنیر امنتالر",    kcalPer100g: 380, portionG: 30,  unit: "Scheibe",    unitDesc: "1 Scheibe ≈ 30g" },
+  { id: "feta",           cat: "fruehstueck", de: "Feta",                  fa: "پنیر فتا",        kcalPer100g: 265, portionG: 30,  unit: "Portion",    unitDesc: "1 Portion ≈ 30g" },
+  { id: "sahnekaese",     cat: "fruehstueck", de: "Sahnekäse (Frischkäse)", fa: "پنیر خامه‌ای",   kcalPer100g: 340, portionG: 30,  unit: "Esslöffel",  unitDesc: "1 EL ≈ 30g" },
   { id: "mast",           cat: "fruehstueck", de: "Joghurt (Mast)",        fa: "ماست",          kcalPer100g: 60,  portionG: 150, unit: "Tasse",      unitDesc: "1 Tasse ≈ 150g (kleine Schüssel)" },
   { id: "marmelade",      cat: "fruehstueck", de: "Marmelade",             fa: "مربا",          kcalPer100g: 250, portionG: 20,  unit: "Esslöffel",  unitDesc: "1 EL ≈ 20g (1 gestrichener Esslöffel)" },
   { id: "honig",          cat: "fruehstueck", de: "Honig",                 fa: "عسل",           kcalPer100g: 300, portionG: 10,  unit: "Teelöffel",  unitDesc: "1 TL ≈ 10g (1 Teelöffel)" },

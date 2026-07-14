@@ -36,7 +36,7 @@ const FOOD_SYMBOLS = {
   chelo: '🍚', tahdig: '🟨', 'zereshk-polo': '🍒', 'baghali-polo': '🌱', 'adas-polo': '🫘', kateh: '🍚',
   naan: '🫓', lavash: '📄', sangak: '🥖', 'brot-kuerbis': '🌻', 'brot-walnuss': '🌰',
   toast: '🍞', broetchen: '🥐', croissant: '🥐',
-  ei: '🥚', 'ei-tomate': '🍳', kaese: '🧀', mast: '🥣', marmelade: '🍓', honig: '🍯',
+  ei: '🥚', 'ei-tomate': '🍳', gouda: '🧀', emmentaler: '🧀', feta: '🧀', sahnekaese: '🧀', mast: '🥣', marmelade: '🍓', honig: '🍯',
   haferflocken: '🥣', muesli: '🥣', milch: '🥛', quark: '🥣', butter: '🧈',
   huehnchen: '🍗', 'nugget-huhn': '🍗', 'nugget-fisch': '🐟', lachs: '🐟', 'cordon-bleu': '🥩',
   burger: '🍔', kalbsalas: '🥓', hackfleisch: '🥩', putenbrust: '🍗', thunfisch: '🐟', wurst: '🌭',
