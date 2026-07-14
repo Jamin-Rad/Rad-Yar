@@ -109,183 +109,57 @@
 /* ── WORKSPACE ────────────────────────────────────────────────────────────── */
 .workspace {
   position: relative;
-  background: #04060f;
   color: #f8f5ed;
   padding: 0;
   overflow: hidden;
   isolation: isolate;
 }
 
-/* Canvas warp stars — fills the section */
-.galaxyCanvas {
+/* ── GALAXY IMAGE ─────────────────────────────────────────────────────────── */
+.galaxyBg {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
   z-index: 0;
-  opacity: 0;
-  transition: opacity 0.6s ease;
+  background: url('/andarun-galaxy-v2.png') center center / cover no-repeat;
+
+  /* Start: zoomed in, dark, slightly rotated */
+  transform: scale(1.18) rotate(2deg);
+  filter: brightness(0.25) saturate(0.6);
+  transition:
+    transform 2.8s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 2.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.galaxyOpen .galaxyCanvas { opacity: 1; }
 
-/* ── LIGHT LAYERS ─────────────────────────────────────────────────────────── */
-
-/* Bright white-blue core — detonates then fades to a steady glow */
-.lightCore {
+/* Dark gradient overlay so text stays readable */
+.galaxyBg::after {
+  content: '';
   position: absolute;
   inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: radial-gradient(ellipse 38% 28% at 50% 42%,
-    rgba(220,235,255,0.0) 0%,
-    rgba(140,165,255,0.0) 40%,
-    transparent 100%);
-  transition: none;
+  background:
+    linear-gradient(0deg,  rgba(4,6,15,0.82) 0%,  rgba(4,6,15,0.32) 55%, rgba(4,6,15,0.18) 100%),
+    linear-gradient(180deg, rgba(4,6,15,0.55) 0%, transparent 20%);
 }
 
-@keyframes coreBurst {
-  0%   { opacity: 0; transform: scale(0.6); }
-  8%   { opacity: 1; transform: scale(1.08); }
-  30%  { opacity: 0.7; transform: scale(1); }
-  100% { opacity: 0.22; transform: scale(1); }
-}
-.galaxyOpen .lightCore {
-  background: radial-gradient(ellipse 38% 28% at 50% 42%,
-    rgba(220,235,255,0.92) 0%,
-    rgba(140,165,255,0.55) 18%,
-    rgba(90,60,255,0.22)   45%,
-    transparent 100%);
-  animation: coreBurst 2.4s cubic-bezier(.2,.8,.2,1) forwards;
+/* Triggered: image opens up, brightens, starts slow drift */
+@keyframes galaxyDrift {
+  0%   { transform: scale(1.0)  rotate(0deg)    translateX(0px); }
+  33%  { transform: scale(1.02) rotate(0.3deg)  translateX(-6px); }
+  66%  { transform: scale(1.01) rotate(-0.2deg) translateX(4px); }
+  100% { transform: scale(1.0)  rotate(0deg)    translateX(0px); }
 }
 
-/* Rotating ray fan 1 — blue-white */
-.lightRays {
-  position: absolute;
-  inset: -30%;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0;
-  transform-origin: center center;
-  background: conic-gradient(
-    from 0deg at 50% 55%,
-    transparent 0deg,
-    rgba(180,210,255,0.07) 3deg,
-    transparent 7deg,
-    transparent 37deg,
-    rgba(160,190,255,0.055) 40deg,
-    transparent 44deg,
-    transparent 82deg,
-    rgba(200,220,255,0.065) 85deg,
-    transparent 89deg,
-    transparent 127deg,
-    rgba(170,200,255,0.05) 130deg,
-    transparent 134deg,
-    transparent 172deg,
-    rgba(185,210,255,0.07) 175deg,
-    transparent 179deg,
-    transparent 217deg,
-    rgba(160,185,255,0.055) 220deg,
-    transparent 224deg,
-    transparent 262deg,
-    rgba(195,215,255,0.065) 265deg,
-    transparent 269deg,
-    transparent 305deg,
-    rgba(175,200,255,0.06) 308deg,
-    transparent 312deg,
-    transparent 360deg
-  );
+.galaxyOpen .galaxyBg {
+  filter: brightness(0.72) saturate(1.15);
+  animation: galaxyDrift 28s ease-in-out infinite;
+  /* Override the transition once animation starts */
+  transition:
+    filter 2.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@keyframes spinRays { to { transform: rotate(360deg); } }
-@keyframes fadeInRays {
-  0%   { opacity: 0; }
-  15%  { opacity: 1; }
-  100% { opacity: 1; }
-}
-.galaxyOpen .lightRays {
-  animation:
-    fadeInRays 1.8s ease forwards,
-    spinRays 38s linear infinite;
-}
-
-/* Rotating ray fan 2 — violet-magenta, slower, offset */
-.lightRays2 {
-  position: absolute;
-  inset: -30%;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0;
-  transform-origin: center center;
-  background: conic-gradient(
-    from 55deg at 50% 55%,
-    transparent 0deg,
-    rgba(180,80,255,0.05) 4deg,
-    transparent 8deg,
-    transparent 52deg,
-    rgba(200,90,255,0.04) 56deg,
-    transparent 60deg,
-    transparent 112deg,
-    rgba(160,70,255,0.05) 116deg,
-    transparent 120deg,
-    transparent 168deg,
-    rgba(190,85,255,0.04) 172deg,
-    transparent 176deg,
-    transparent 228deg,
-    rgba(170,75,255,0.05) 232deg,
-    transparent 236deg,
-    transparent 288deg,
-    rgba(200,90,255,0.04) 292deg,
-    transparent 296deg,
-    transparent 360deg
-  );
-}
-.galaxyOpen .lightRays2 {
-  animation:
-    fadeInRays 2.2s 0.3s ease forwards,
-    spinRays 58s linear infinite reverse;
-}
-
-/* Expanding rings */
-@keyframes ringExpand {
-  0%   { transform: scale(0); opacity: 0.9; }
-  60%  { opacity: 0.35; }
-  100% { transform: scale(3.2); opacity: 0; }
-}
-
-.ringA, .ringB, .ringC {
-  position: absolute;
-  left: 50%; top: 42%;
-  translate: -50% -50%;
-  z-index: 2;
-  pointer-events: none;
-  border-radius: 50%;
-  opacity: 0;
-}
-
-.ringA {
-  width: 180px; height: 90px;
-  border: 1.5px solid rgba(180,210,255,0.75);
-  box-shadow: 0 0 18px rgba(140,170,255,0.45), inset 0 0 10px rgba(140,170,255,0.2);
-}
-.ringB {
-  width: 180px; height: 90px;
-  border: 1px solid rgba(160,80,255,0.6);
-  box-shadow: 0 0 14px rgba(160,80,255,0.35);
-}
-.ringC {
-  width: 180px; height: 90px;
-  border: 1px solid rgba(220,240,255,0.5);
-  box-shadow: 0 0 22px rgba(200,230,255,0.3);
-}
-
-.galaxyOpen .ringA { animation: ringExpand 2.0s 0.0s cubic-bezier(.1,.6,.3,1) forwards; }
-.galaxyOpen .ringB { animation: ringExpand 2.0s 0.3s cubic-bezier(.1,.6,.3,1) forwards; }
-.galaxyOpen .ringC { animation: ringExpand 2.0s 0.6s cubic-bezier(.1,.6,.3,1) forwards; }
-
-/* Content sits above all light layers */
+/* Content sits above the image */
 .workspaceContent {
   position: relative;
-  z-index: 3;
+  z-index: 1;
   padding: 88px max(32px, calc((100vw - 1380px) / 2)) 100px;
 }
 
@@ -331,8 +205,8 @@
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,.16);
-  background: rgba(255,255,255,.07);
-  backdrop-filter: blur(12px);
+  background: rgba(4,6,15,.55);
+  backdrop-filter: blur(14px);
   opacity: 0;
   transition:
     transform .35s cubic-bezier(.2,.8,.2,1),
@@ -341,8 +215,8 @@
 }
 .card:hover {
   transform: translateY(-9px);
-  background: rgba(255,255,255,.13);
-  box-shadow: 0 25px 60px rgba(0,0,0,.4), 0 0 50px rgba(111,91,220,.12);
+  background: rgba(255,255,255,.10);
+  box-shadow: 0 25px 60px rgba(0,0,0,.5), 0 0 50px rgba(111,91,220,.12);
 }
 
 @keyframes cardReveal {
@@ -399,7 +273,7 @@
   border-radius: 50%;
   background: var(--glow);
   filter: blur(65px);
-  opacity: .42;
+  opacity: .38;
 }
 
 /* ── FOOTER ───────────────────────────────────────────────────────────────── */
@@ -447,6 +321,6 @@
 @media (prefers-reduced-motion: reduce) {
   .card, .icon svg, .arrow { transition: none; }
   .card { opacity: 1; animation: none; }
-  .lightCore, .lightRays, .lightRays2, .ringA, .ringB, .ringC { animation: none; }
+  .galaxyBg { transition: none; animation: none; }
   .hero::before { transform: none !important; }
 }

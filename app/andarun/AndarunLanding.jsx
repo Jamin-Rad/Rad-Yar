@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import AndarunNav from './AndarunNav'
-import GalaxyCanvas from './GalaxyCanvas'
 import styles from './page.module.css'
 
 const spaces = [
@@ -84,16 +83,7 @@ export default function AndarunLanding() {
         className={`${styles.workspace} ${galaxyOpen ? styles.galaxyOpen : ''}`}
         aria-labelledby="spaces-title"
       >
-        {/* canvas lives behind everything */}
-        <GalaxyCanvas active={galaxyOpen} />
-
-        {/* CSS light layers */}
-        <div className={styles.lightCore} aria-hidden="true" />
-        <div className={styles.lightRays}  aria-hidden="true" />
-        <div className={styles.lightRays2} aria-hidden="true" />
-        <div className={styles.ringA} aria-hidden="true" />
-        <div className={styles.ringB} aria-hidden="true" />
-        <div className={styles.ringC} aria-hidden="true" />
+        <div className={styles.galaxyBg} aria-hidden="true" />
 
         <div className={styles.workspaceContent}>
           <div className={styles.sectionHead}>
@@ -110,7 +100,7 @@ export default function AndarunLanding() {
                 key={space.title}
                 data-ci={String(i)}
                 className={`${styles.card} ${styles[space.theme]} ${revealedCards.has(String(i)) ? styles.cardRevealed : ''}`}
-                style={{ '--reveal-delay': `${i * 0.06}s` }}
+                style={{ '--reveal-delay': `${i * 0.07}s` }}
                 href={space.href}
               >
                 <div className={styles.cardTop}>
