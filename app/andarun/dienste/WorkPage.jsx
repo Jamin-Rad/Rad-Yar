@@ -208,7 +208,9 @@ const EMPTY_FILTER = {
   organ: '',
 }
 
-export default function WorkPage({ showHomeLink = true }) {
+export default function WorkPage({ showHomeLink = true, view = 'all' }) {
+  const showShifts = view !== 'findings'
+  const showFindings = view !== 'shifts'
   const [month, setMonth] = useState(monthValue())
   const [shifts, setShifts] = useState([])
   const [findings, setFindings] = useState([])
@@ -422,15 +424,15 @@ export default function WorkPage({ showHomeLink = true }) {
       <header className={styles.header}>
         {showHomeLink ? <Link href="/andarun" className={styles.back}>← Andarun</Link> : <span />}
         <div>
-          <span className={styles.kicker}>Dienstplanung</span>
-          <h1>Dienste & Befunde</h1>
+          <span className={styles.kicker}>{showFindings && !showShifts ? 'Befunde' : 'Dienstplanung'}</span>
+          <h1>{showFindings && !showShifts ? 'Befunde speichern' : 'Dienstzeiten'}</h1>
         </div>
-        <button className={styles.printBtn} type="button" onClick={printMonth}>PDF drucken</button>
+        {showShifts ? <button className={styles.printBtn} type="button" onClick={printMonth}>PDF drucken</button> : <span />}
       </header>
 
       {message && <div className={styles.message}>{message}</div>}
 
-      <section className={styles.shell}>
+      {showShifts && <section className={styles.shell}>
         <div className={styles.calendarPanel}>
           <div className={styles.monthBar}>
             <button type="button" onClick={() => setMonth(addMonths(month, -1))}>‹</button>
@@ -573,9 +575,9 @@ export default function WorkPage({ showHomeLink = true }) {
             )}
           </div>
         </form>
-      </section>
+      </section>}
 
-      <section className={styles.findings}>
+      {showFindings && <section className={styles.findings}>
         <div className={styles.sectionTitle}>
           <span className={styles.kicker}>Befunde</span>
           <h2>Relevante Fälle & Fragen</h2>
@@ -655,7 +657,7 @@ export default function WorkPage({ showHomeLink = true }) {
             {renderFindingList(followupQuestions, 'Noch keine Verlaufskontrollen oder Fragen gespeichert.')}
           </article>
         </div>
-      </section>
+      </section>}
 
       <section className={styles.printSheet} aria-hidden="true">
         <div className={styles.printTop}>

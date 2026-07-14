@@ -11,6 +11,7 @@ const navItems = [
   { href: '/andarun/gesundheit', label: 'Gesundheit' },
   { href: '/andarun/finanz', label: 'Finanzen' },
   { href: '/andarun/dienste', label: 'Dienste' },
+  { href: '/andarun/befunde', label: 'Befunde' },
 ]
 
 export default function AndarunNav() {
