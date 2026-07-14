@@ -1,66 +1,18 @@
 'use client'
 
 import Link from 'next/link'
+import { useEffect, useRef, useState } from 'react'
 import AndarunNav from './AndarunNav'
 import styles from './page.module.css'
 
 const spaces = [
-  {
-    number: '01',
-    title: 'Routine',
-    description: 'Dein Rhythmus',
-    href: '/andarun/routine',
-    theme: 'cobalt',
-    icon: 'sun',
-  },
-  {
-    number: '02',
-    title: 'Aufgaben',
-    description: 'Klar im Blick',
-    href: '/andarun/todo',
-    theme: 'coral',
-    icon: 'check',
-  },
-  {
-    number: '03',
-    title: 'Deutsch',
-    description: 'Jeden Tag weiter',
-    href: '/andarun/deutsch',
-    theme: 'lemon',
-    icon: 'type',
-  },
-  {
-    number: '04',
-    title: 'Gesundheit',
-    description: 'Körper im Blick',
-    href: '/andarun/gesundheit',
-    theme: 'mint',
-    icon: 'heart',
-  },
-  {
-    number: '05',
-    title: 'Finanzen',
-    description: 'Sicher planen',
-    href: '/andarun/finanz',
-    theme: 'cobalt',
-    icon: 'chart',
-  },
-  {
-    number: '06',
-    title: 'Dienste',
-    description: 'Dienstzeiten planen',
-    href: '/andarun/dienste',
-    theme: 'mint',
-    icon: 'briefcase',
-  },
-  {
-    number: '07',
-    title: 'Befunde',
-    description: 'Fälle & Fragen',
-    href: '/andarun/befunde',
-    theme: 'coral',
-    icon: 'file',
-  },
+  { number: '01', title: 'Routine',    description: 'Dein Rhythmus',       href: '/andarun/routine',   theme: 'cobalt', icon: 'sun'       },
+  { number: '02', title: 'Aufgaben',   description: 'Klar im Blick',        href: '/andarun/todo',      theme: 'coral',  icon: 'check'     },
+  { number: '03', title: 'Deutsch',    description: 'Jeden Tag weiter',      href: '/andarun/deutsch',   theme: 'lemon',  icon: 'type'      },
+  { number: '04', title: 'Gesundheit', description: 'Körper im Blick',       href: '/andarun/gesundheit',theme: 'mint',   icon: 'heart'     },
+  { number: '05', title: 'Finanzen',   description: 'Sicher planen',         href: '/andarun/finanz',    theme: 'cobalt', icon: 'chart'     },
+  { number: '06', title: 'Dienste',    description: 'Dienstzeiten planen',   href: '/andarun/dienste',   theme: 'mint',   icon: 'briefcase' },
+  { number: '07', title: 'Befunde',    description: 'Fälle & Fragen',        href: '/andarun/befunde',   theme: 'coral',  icon: 'file'      },
 ]
 
 function SpaceIcon({ name }) {
@@ -88,11 +40,53 @@ function SpaceIcon({ name }) {
 }
 
 export default function AndarunLanding() {
+  const [galaxyOpen, setGalaxyOpen] = useState(false)
+  const [revealedCards, setRevealedCards] = useState(new Set())
+  const heroRef = useRef(null)
+  const workspaceRef = useRef(null)
+
+  useEffect(() => {
+    // Parallax on hero galaxy
+    function onScroll() {
+      if (heroRef.current) {
+        heroRef.current.style.setProperty('--parallax-y', `${window.scrollY * 0.32}px`)
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+
+    // Galaxy reveal when workspace enters viewport
+    const workspaceObserver = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setGalaxyOpen(true) },
+      { threshold: 0.08 }
+    )
+    if (workspaceRef.current) workspaceObserver.observe(workspaceRef.current)
+
+    // Staggered card reveal
+    const cardEls = workspaceRef.current?.querySelectorAll('[data-cardindex]') || []
+    const cardObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setRevealedCards(prev => new Set([...prev, entry.target.dataset.cardindex]))
+          }
+        })
+      },
+      { threshold: 0.12 }
+    )
+    cardEls.forEach(el => cardObserver.observe(el))
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      workspaceObserver.disconnect()
+      cardObserver.disconnect()
+    }
+  }, [])
+
   return (
     <main className={styles.page}>
       <AndarunNav />
 
-      <section className={styles.hero} aria-labelledby="andarun-title">
+      <section className={styles.hero} ref={heroRef} aria-labelledby="andarun-title">
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>Dein Universum</p>
           <h1 id="andarun-title">Alles an<br/><em>einem Ort.</em></h1>
@@ -106,7 +100,11 @@ export default function AndarunLanding() {
         </div>
       </section>
 
-      <section className={styles.workspace} aria-labelledby="spaces-title">
+      <section
+        ref={workspaceRef}
+        className={`${styles.workspace} ${galaxyOpen ? styles.galaxyOpen : ''}`}
+        aria-labelledby="spaces-title"
+      >
         <div className={styles.sectionHead}>
           <div>
             <p className={styles.eyebrow}>Deine Welten</p>
@@ -116,8 +114,14 @@ export default function AndarunLanding() {
         </div>
 
         <div className={styles.grid}>
-          {spaces.map((space) => (
-            <Link className={`${styles.card} ${styles[space.theme]}`} href={space.href} key={space.title}>
+          {spaces.map((space, i) => (
+            <Link
+              className={`${styles.card} ${styles[space.theme]} ${revealedCards.has(String(i)) ? styles.cardRevealed : ''}`}
+              data-cardindex={String(i)}
+              style={{ '--reveal-delay': `${i * 0.07}s` }}
+              href={space.href}
+              key={space.title}
+            >
               <div className={styles.cardTop}>
                 <span className={styles.number}>{space.number}</span>
                 <span className={styles.arrow} aria-hidden="true">↗</span>
