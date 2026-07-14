@@ -862,6 +862,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
                 role={day ? 'button' : undefined}
                 tabIndex={day ? 0 : undefined}
                 aria-label={day ? `Termin am ${formatDeadline(day)} hinzufügen` : undefined}
+                aria-current={isToday ? 'date' : undefined}
               >
                 {day && <span className={styles.monthDay}>{Number(day.slice(-2))}</span>}
                 {shift && (

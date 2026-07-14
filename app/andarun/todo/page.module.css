@@ -155,10 +155,22 @@
 }
 
 .lightPage .monthCellToday {
-  border-color: rgba(236, 72, 153, .46);
+  border-color: #db2777;
+  background: rgba(253, 242, 248, .98);
   box-shadow:
-    inset 0 0 0 1px rgba(236, 72, 153, .16),
-    0 12px 28px rgba(236, 72, 153, .10);
+    inset 0 0 0 2px rgba(219, 39, 119, .45),
+    0 0 0 3px rgba(236, 72, 153, .12),
+    0 12px 28px rgba(236, 72, 153, .16);
+}
+
+.lightPage .monthCellToday::after {
+  background: #db2777;
+  color: #fff;
+}
+
+.lightPage .monthCellToday .monthDay {
+  background: #db2777;
+  color: #fff;
 }
 
 .lightPage .monthDay {
@@ -607,6 +619,7 @@
   display: grid;
   align-content: start;
   gap: 6px;
+  position: relative;
   min-height: 112px;
   min-width: 0;
   padding: 9px;
@@ -639,10 +652,32 @@
 }
 
 .monthCellToday {
-  border-color: rgba(45, 212, 191, .48);
+  border-color: #2dd4bf;
+  background: rgba(13, 148, 136, .14);
   box-shadow:
-    inset 0 0 0 1px rgba(45, 212, 191, .16),
-    0 14px 34px rgba(20,184,166,.12);
+    inset 0 0 0 2px rgba(45, 212, 191, .56),
+    0 0 0 3px rgba(45, 212, 191, .12),
+    0 14px 34px rgba(20,184,166,.20);
+}
+
+.monthCellToday::after {
+  content: 'Heute';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border-radius: 999px;
+  background: #2dd4bf;
+  color: #062b28;
+  font-size: 8px;
+  font-weight: 950;
+  letter-spacing: .04em;
+  padding: 3px 6px;
+  text-transform: uppercase;
+}
+
+.monthCellToday .monthDay {
+  background: #2dd4bf;
+  color: #062b28;
 }
 
 .monthDay {

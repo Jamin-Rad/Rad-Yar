@@ -28,7 +28,7 @@ const SHIFT_TYPES = [
 ]
 
 function todayValue() {
-  return new Date().toISOString().slice(0, 10)
+  return dateValue(new Date())
 }
 
 function monthValue(date = new Date()) {
@@ -327,12 +327,14 @@ export default function WorkPage({ showHomeLink = true }) {
               const isWeekendDayShift = shift?.model === 'BD' && (day.weekday === 0 || day.weekday === 6)
               const isFree = isWeekendFree || isPostNightFree
               const active = day.date === selectedDate
+              const isToday = day.date === todayValue()
               return (
                 <button
-                  className={`${styles.dayCell} ${active ? styles.dayActive : ''} ${shift ? styles.dayHasShift : ''} ${isNight ? styles.dayNightShift : ''} ${isWeekendDayShift ? styles.dayWeekendShift : ''} ${isFree ? styles.dayFree : ''}`}
+                  className={`${styles.dayCell} ${active ? styles.dayActive : ''} ${shift ? styles.dayHasShift : ''} ${isNight ? styles.dayNightShift : ''} ${isWeekendDayShift ? styles.dayWeekendShift : ''} ${isFree ? styles.dayFree : ''} ${isToday ? styles.dayToday : ''}`}
                   type="button"
                   key={day.date}
                   onClick={() => selectDate(day.date)}
+                  aria-current={isToday ? 'date' : undefined}
                 >
                   <span>{day.day}</span>
                   {shift && <strong>{calendarDutyLabel(shift)}</strong>}

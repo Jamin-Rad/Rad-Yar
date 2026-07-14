@@ -153,6 +153,7 @@
   display: grid;
   align-content: start;
   gap: 8px;
+  position: relative;
   color: #f8fafc;
   cursor: pointer;
   font: inherit;
@@ -248,6 +249,39 @@
 
 .dayFree span {
   color: #dcfce7;
+}
+
+.dayToday {
+  border-color: #22d3ee;
+  box-shadow:
+    inset 0 0 0 2px rgba(34, 211, 238, .72),
+    0 0 0 3px rgba(34, 211, 238, .16),
+    0 14px 32px rgba(6, 182, 212, .18);
+}
+
+.dayToday::after {
+  content: 'Heute';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border-radius: 999px;
+  background: #22d3ee;
+  color: #06202a;
+  font-size: 9px;
+  font-weight: 950;
+  letter-spacing: .04em;
+  padding: 3px 7px;
+  text-transform: uppercase;
+}
+
+.dayToday > span {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  border-radius: 50%;
+  background: #22d3ee;
+  color: #06202a;
 }
 
 .cardHead span {
