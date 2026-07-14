@@ -882,7 +882,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
                     title="Termin bearbeiten"
                     key={event.id}
                   >
-                    <strong>{formatEventMeta(event)}</strong>
+                    {!event.allDay && <strong>{formatEventMeta(event)}</strong>}
                     <span>{event.title}</span>
                   </button>
                 ))}
