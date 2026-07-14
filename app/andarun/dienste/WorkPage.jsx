@@ -211,6 +211,8 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
   const [shiftForm, setShiftForm] = useState(emptyShift(todayValue()))
   const [rangeEndDate, setRangeEndDate] = useState(todayValue())
   const [findingForm, setFindingForm] = useState(EMPTY_FINDING)
+  const [activeFindingType, setActiveFindingType] = useState('case')
+  const [findingModalType, setFindingModalType] = useState(null)
   const [caseFilter, setCaseFilter] = useState(EMPTY_FILTER)
   const [questionFilter, setQuestionFilter] = useState(EMPTY_FILTER)
   const [message, setMessage] = useState('')
@@ -341,6 +343,8 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
       const data = await apiRequest('/', 'POST', { type: 'finding', finding })
       setFindings(data.findings || [])
       setFindingForm(EMPTY_FINDING)
+      setActiveFindingType(finding.type)
+      setFindingModalType(null)
       setMessage('Befund gespeichert.')
     } catch (error) {
       setMessage(error.message)
@@ -358,6 +362,16 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
 
   function printMonth() {
     window.print()
+  }
+
+  function openFindingModal(type) {
+    setFindingModalType(type)
+    setFindingForm({ ...EMPTY_FINDING, type })
+  }
+
+  function closeFindingModal() {
+    setFindingModalType(null)
+    setFindingForm(EMPTY_FINDING)
   }
 
   function updateFindingModality(modality) {
@@ -382,6 +396,45 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
           <input value={filter.diagnosis} onChange={event => setFilter(prev => ({ ...prev, diagnosis: event.target.value }))} />
         </label>
       </div>
+    )
+  }
+
+  function renderFindingForm() {
+    return (
+      <form className={styles.findingForm} onSubmit={saveFinding}>
+        <label>Tag der Untersuchung
+          <input type="date" value={findingForm.examDate} onChange={event => setFindingForm(prev => ({ ...prev, examDate: event.target.value }))} />
+        </label>
+        <label>Name
+          <input value={findingForm.name} onChange={event => setFindingForm(prev => ({ ...prev, name: event.target.value }))} />
+        </label>
+        <label>Geburtsdatum
+          <input type="date" value={findingForm.birthDate} onChange={event => setFindingForm(prev => ({ ...prev, birthDate: event.target.value }))} />
+        </label>
+        <label>Modalität
+          <select value={findingForm.modality} onChange={event => updateFindingModality(event.target.value)}>
+            {MODALITIES.map(modality => <option key={modality}>{modality}</option>)}
+          </select>
+        </label>
+        <label>Gebiet
+          <select
+            value={findingForm.examArea}
+            onChange={event => setFindingForm(prev => ({ ...prev, examArea: event.target.value }))}
+          >
+            {(AREA_OPTIONS[findingForm.modality] || []).map(area => <option key={area}>{area}</option>)}
+          </select>
+        </label>
+        {findingForm.type === 'case' ? (
+          <label>Diagnose
+            <input value={findingForm.diagnosis} onChange={event => setFindingForm(prev => ({ ...prev, diagnosis: event.target.value }))} />
+          </label>
+        ) : (
+          <label>Verdachtsdiagnose
+            <input value={findingForm.vd} onChange={event => setFindingForm(prev => ({ ...prev, vd: event.target.value }))} />
+          </label>
+        )}
+        <button type="submit">Eintrag speichern</button>
+      </form>
     )
   }
 
@@ -570,72 +623,65 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
           <span className={styles.kicker}>Befunde</span>
           <h2>Relevante Fälle & Fragen</h2>
         </div>
-        <form className={styles.findingForm} onSubmit={saveFinding}>
-          <div className={styles.caseTypePicker}>
-            {CASE_TYPES.map(type => (
-              <label className={findingForm.type === type.id ? styles.caseTypeActive : styles.caseType} key={type.id}>
-                <input
-                  type="radio"
-                  name="findingType"
-                  checked={findingForm.type === type.id}
-                  onChange={() => setFindingForm(prev => ({ ...prev, type: type.id }))}
-                />
-                {type.label}
-              </label>
-            ))}
-          </div>
-          <label>Tag der Untersuchung
-            <input type="date" value={findingForm.examDate} onChange={event => setFindingForm(prev => ({ ...prev, examDate: event.target.value }))} />
-          </label>
-          <label>Name
-            <input value={findingForm.name} onChange={event => setFindingForm(prev => ({ ...prev, name: event.target.value }))} />
-          </label>
-          <label>Geburtsdatum
-            <input type="date" value={findingForm.birthDate} onChange={event => setFindingForm(prev => ({ ...prev, birthDate: event.target.value }))} />
-          </label>
-          <label>Modalität
-            <select value={findingForm.modality} onChange={event => updateFindingModality(event.target.value)}>
-              {MODALITIES.map(modality => <option key={modality}>{modality}</option>)}
-            </select>
-          </label>
-          <label>Gebiet
-            <select
-              value={findingForm.examArea}
-              onChange={event => setFindingForm(prev => ({ ...prev, examArea: event.target.value }))}
-            >
-              {(AREA_OPTIONS[findingForm.modality] || []).map(area => <option key={area}>{area}</option>)}
-            </select>
-          </label>
-          {findingForm.type === 'case' ? (
-            <label>Diagnose
-              <input value={findingForm.diagnosis} onChange={event => setFindingForm(prev => ({ ...prev, diagnosis: event.target.value }))} />
-            </label>
-          ) : (
-            <label>Verdachtsdiagnose
-              <input value={findingForm.vd} onChange={event => setFindingForm(prev => ({ ...prev, vd: event.target.value }))} />
-            </label>
-          )}
-          <button type="submit">Eintrag speichern</button>
-        </form>
 
-        <div className={styles.findingLists}>
-          <article className={styles.findingBox}>
-            <div className={styles.listHead}>
-              <h3>Relevante Fälle</h3>
-              <span>{relevantCases.length}</span>
-            </div>
-            {renderFilterControls(caseFilter, setCaseFilter)}
-            {renderFindingList(relevantCases, 'Noch keine relevanten Fälle gespeichert.')}
-          </article>
-          <article className={styles.findingBox}>
-            <div className={styles.listHead}>
-              <h3>Verlaufskontrolle & Fragen</h3>
-              <span>{followupQuestions.length}</span>
-            </div>
-            {renderFilterControls(questionFilter, setQuestionFilter)}
-            {renderFindingList(followupQuestions, 'Noch keine Verlaufskontrollen oder Fragen gespeichert.')}
-          </article>
+        <div className={styles.findingTypeCards}>
+          {CASE_TYPES.map(type => {
+            const count = type.id === 'case'
+              ? normalizedFindings.filter(finding => finding.type !== 'question').length
+              : normalizedFindings.filter(finding => finding.type === 'question').length
+            return (
+              <article className={activeFindingType === type.id ? styles.findingTypeCardActive : styles.findingTypeCard} key={type.id}>
+                <div>
+                  <span>{count} gespeichert</span>
+                  <h3>{type.label}</h3>
+                </div>
+                <div className={styles.findingTypeActions}>
+                  <button type="button" onClick={() => openFindingModal(type.id)}>Eintrag erfassen</button>
+                  <button type="button" onClick={() => setActiveFindingType(type.id)}>Gespeicherte anzeigen</button>
+                </div>
+              </article>
+            )
+          })}
         </div>
+
+        <div className={styles.findingBox}>
+          <div className={styles.listHead}>
+            <h3>{CASE_TYPES.find(type => type.id === activeFindingType)?.label}</h3>
+            <span>{activeFindingType === 'case' ? relevantCases.length : followupQuestions.length}</span>
+          </div>
+          {activeFindingType === 'case' ? (
+            <>
+              {renderFilterControls(caseFilter, setCaseFilter)}
+              {renderFindingList(relevantCases, 'Noch keine relevanten Fälle gespeichert.')}
+            </>
+          ) : (
+            <>
+              {renderFilterControls(questionFilter, setQuestionFilter)}
+              {renderFindingList(followupQuestions, 'Noch keine Verlaufskontrollen oder Fragen gespeichert.')}
+            </>
+          )}
+        </div>
+
+        {findingModalType && (
+          <div className={styles.modalBackdrop} role="presentation" onMouseDown={closeFindingModal}>
+            <div
+              className={styles.findingModal}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="finding-modal-title"
+              onMouseDown={event => event.stopPropagation()}
+            >
+              <div className={styles.modalHead}>
+                <div>
+                  <span className={styles.kicker}>Neuer Eintrag</span>
+                  <h3 id="finding-modal-title">{CASE_TYPES.find(type => type.id === findingModalType)?.label}</h3>
+                </div>
+                <button type="button" onClick={closeFindingModal} aria-label="Fenster schließen">×</button>
+              </div>
+              {renderFindingForm()}
+            </div>
+          </div>
+        )}
       </section>}
 
       <section className={styles.printSheet} aria-hidden="true">
