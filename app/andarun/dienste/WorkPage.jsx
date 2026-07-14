@@ -175,12 +175,9 @@ function normalizeShift(shift) {
 
 function findingMatchesFilter(finding, filter) {
   const diagnosisText = `${finding.diagnosis || ''} ${finding.vd || ''}`.toLowerCase()
-  const organText = `${finding.organ || ''} ${finding.examArea || ''} ${finding.exam || ''}`.toLowerCase()
   const diagnosisFilter = filter.diagnosis.trim().toLowerCase()
-  const organFilter = filter.organ.trim().toLowerCase()
   return (!filter.modality || finding.modality === filter.modality)
     && (!diagnosisFilter || diagnosisText.includes(diagnosisFilter))
-    && (!organFilter || organText.includes(organFilter))
 }
 
 function filterFindings(items, filter) {
@@ -194,18 +191,14 @@ const EMPTY_FINDING = {
   birthDate: '',
   modality: 'Röntgen',
   examArea: AREA_OPTIONS['Röntgen'][0],
-  exam: AREA_OPTIONS['Röntgen'][0],
   diagnosis: '',
   vd: '',
-  organ: '',
-  question: '',
   status: 'offen',
 }
 
 const EMPTY_FILTER = {
   modality: '',
   diagnosis: '',
-  organ: '',
 }
 
 export default function WorkPage({ showHomeLink = true, view = 'all' }) {
@@ -373,7 +366,6 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
       ...prev,
       modality,
       examArea: nextArea,
-      exam: nextArea,
     }))
   }
 
@@ -389,9 +381,6 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
         <label>Diagnose / VD
           <input value={filter.diagnosis} onChange={event => setFilter(prev => ({ ...prev, diagnosis: event.target.value }))} />
         </label>
-        <label>Organ / Gebiet
-          <input value={filter.organ} onChange={event => setFilter(prev => ({ ...prev, organ: event.target.value }))} />
-        </label>
       </div>
     )
   }
@@ -400,7 +389,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
     return (
       <div className={styles.findingTable}>
         <div className={styles.findingHead}>
-          <span>Datum</span><span>Name</span><span>Geb.</span><span>Modalität</span><span>Gebiet</span><span>Diagnose / VD</span><span>Frage</span><span />
+          <span>Datum</span><span>Name</span><span>Geb.</span><span>Modalität</span><span>Gebiet</span><span>Diagnose / VD</span><span />
         </div>
         {items.map(finding => (
           <div className={styles.findingRow} key={finding.id}>
@@ -408,9 +397,8 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
             <span>{finding.name || '—'}</span>
             <span>{finding.birthDate || '—'}</span>
             <span>{finding.modality}</span>
-            <span>{finding.examArea || finding.organ || finding.exam || '—'}</span>
+            <span>{finding.examArea || '—'}</span>
             <span>{finding.type === 'question' ? finding.vd || '—' : finding.diagnosis || finding.vd || '—'}</span>
-            <span>{finding.question || '—'}</span>
             <button type="button" onClick={() => deleteFinding(finding.id)}>×</button>
           </div>
         ))}
@@ -613,13 +601,10 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
           <label>Gebiet
             <select
               value={findingForm.examArea}
-              onChange={event => setFindingForm(prev => ({ ...prev, examArea: event.target.value, exam: event.target.value }))}
+              onChange={event => setFindingForm(prev => ({ ...prev, examArea: event.target.value }))}
             >
               {(AREA_OPTIONS[findingForm.modality] || []).map(area => <option key={area}>{area}</option>)}
             </select>
-          </label>
-          <label>Untersuchung
-            <input value={findingForm.exam} onChange={event => setFindingForm(prev => ({ ...prev, exam: event.target.value }))} />
           </label>
           {findingForm.type === 'case' ? (
             <label>Diagnose
@@ -630,12 +615,6 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
               <input value={findingForm.vd} onChange={event => setFindingForm(prev => ({ ...prev, vd: event.target.value }))} />
             </label>
           )}
-          <label>Organ
-            <input value={findingForm.organ} onChange={event => setFindingForm(prev => ({ ...prev, organ: event.target.value }))} />
-          </label>
-          <label className={styles.questionField}>Frage
-            <input value={findingForm.question} onChange={event => setFindingForm(prev => ({ ...prev, question: event.target.value }))} />
-          </label>
           <button type="submit">Eintrag speichern</button>
         </form>
 

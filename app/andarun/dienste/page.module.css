@@ -512,10 +512,6 @@
   color: #e0f2fe !important;
 }
 
-.questionField {
-  grid-column: span 2;
-}
-
 .findingForm button {
   align-self: end;
   min-height: 42px;
@@ -563,7 +559,7 @@
 
 .findingFilters {
   display: grid;
-  grid-template-columns: 130px minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: 130px minmax(0, 1fr);
   gap: 9px;
 }
 
@@ -600,9 +596,9 @@
 .findingHead,
 .findingRow {
   display: grid;
-  grid-template-columns: 92px 120px 92px 82px 120px minmax(140px, 1.1fr) minmax(160px, 1.3fr) 32px;
+  grid-template-columns: 92px 140px 92px 90px 140px minmax(180px, 1fr) 32px;
   gap: 8px;
-  min-width: 900px;
+  min-width: 770px;
   align-items: center;
 }
 
@@ -696,9 +692,6 @@
     grid-template-columns: 1fr;
   }
 
-  .questionField {
-    grid-column: auto;
-  }
 }
 
 @media print {
