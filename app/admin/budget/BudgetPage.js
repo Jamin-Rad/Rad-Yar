@@ -133,6 +133,10 @@ function getMonthKey(date = new Date()) {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`
 }
 
+function getDateKey(date = new Date()) {
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+}
+
 function formatMoney(value) {
   return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 2 }).format(Number(value) || 0)
 }
@@ -390,7 +394,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
   const [showPopup, setShowPopup]         = useState(false)
   const [entryType, setEntryType]         = useState('expense')
   const [entryAmount, setEntryAmount]     = useState('')
-  const [entryDate, setEntryDate]         = useState(new Date().toISOString().slice(0, 10))
+  const [entryDate, setEntryDate]         = useState(getDateKey())
   const [entryDescription, setEntryDescription] = useState('')
   const [selectedItems, setSelectedItems] = useState([])
   const [expandedCats, setExpandedCats]   = useState(new Set())
@@ -629,7 +633,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
   }
 </style></head><body>
 <h1>Finanzbericht</h1>
-<p class="sub">${monthLabel} · Erstellt am ${fmtDate(new Date().toISOString())}</p>
+<p class="sub">${monthLabel} · Erstellt am ${fmtDate(getDateKey())}</p>
 
 <div class="kpi">
   <div class="kpi-card"><div class="kpi-label">Einkommen</div><span class="kpi-value green">${formatMoney(summary.income)}</span><span class="kpi-sub">${incomeTotals.length} Quellen</span></div>
@@ -843,7 +847,7 @@ ${manualEntries.length ? `
     setEntryDescription('')
     const todayKey = getMonthKey()
     setEntryDate(month === todayKey
-      ? new Date().toISOString().slice(0, 10)
+      ? getDateKey()
       : `${month}-01`)
     setShowPopup(true)
   }
@@ -884,7 +888,7 @@ ${manualEntries.length ? `
     e.preventDefault()
     const amount = Number(entryAmount)
     if (!amount || !entryTitle) return
-    const date = entryDate || new Date().toISOString().slice(0, 10)
+    const date = entryDate || getDateKey()
     const targetKey = date.slice(0, 7)
     // Für jede gewählte Kategorie den richtigen Untertitel merken
     // z.B. { Mobin: 'Kleidung', Kleidung: 'Ernstings Family' }

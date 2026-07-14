@@ -81,7 +81,12 @@ const MACRO_PROFILES = {
   sonstiges: { protein: .055, sugar: .22, fat: .16 },
 }
 
-const TODAY = new Date().toISOString().slice(0, 10)
+function todayValue() {
+  const date = new Date()
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+}
+
+const TODAY = todayValue()
 const RING_R = 50
 const RING_C = 2 * Math.PI * RING_R
 const SPORT_MINUTES = [10, 20, 30, 45, 60, 90]
