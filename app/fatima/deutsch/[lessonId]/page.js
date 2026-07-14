@@ -23,6 +23,7 @@ export default async function FatimaDeutschLessonPage({ params }) {
       lessonMode
       apiBase="/api/fatima/deutsch"
       correctEndpoint="/api/fatima/deutsch/correct"
+      speechEndpoint="/api/fatima/deutsch/speech"
       homeHref="/fatima"
       homeLabel="Fatima"
       courseHref="/fatima/deutsch"

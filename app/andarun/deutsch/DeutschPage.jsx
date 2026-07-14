@@ -438,6 +438,7 @@ export default function DeutschPage({
   const [correcting, setCorrecting] = useState(false)
   const [speechLoading, setSpeechLoading] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
   const [message, setMessage] = useState('')
   const [importOpen, setImportOpen] = useState(false)
   const [flashOpen, setFlashOpen] = useState(false)
@@ -447,6 +448,9 @@ export default function DeutschPage({
   const [visualTheme, setVisualTheme] = useState(theme)
   const saveTimer = useRef(null)
   const activeAudio = useRef(null)
+  const activeUtterance = useRef(null)
+  const speechText = useRef('')
+  const speechCharIndex = useRef(0)
   const speechCache = useRef(new Map())
   const localStorageKey = `deutsch_state_${apiBase.replace(/[^a-z0-9]/gi, '_')}`
 
@@ -512,17 +516,62 @@ export default function DeutschPage({
     if (activeAudio.current) {
       activeAudio.current.pause()
       activeAudio.current.currentTime = 0
+      activeAudio.current = null
     }
     window.speechSynthesis?.cancel()
+    activeUtterance.current = null
+    speechCharIndex.current = 0
     setIsPlaying(false)
+    setIsPaused(false)
   }
 
-  function skipForward(seconds = 10) {
+  function pauseAudio() {
+    if (activeAudio.current) activeAudio.current.pause()
+    else window.speechSynthesis?.pause()
+    setIsPlaying(false)
+    setIsPaused(true)
+  }
+
+  async function resumeAudio() {
     if (activeAudio.current) {
-      activeAudio.current.currentTime = Math.min(
-        activeAudio.current.currentTime + seconds,
-        activeAudio.current.duration || 0
-      )
+      await activeAudio.current.play()
+    } else if (activeUtterance.current) {
+      window.speechSynthesis?.resume()
+      setIsPlaying(true)
+      setIsPaused(false)
+    }
+  }
+
+  function startDeviceSpeech(text, startIndex = 0) {
+    if (!('speechSynthesis' in window)) return false
+    window.speechSynthesis.cancel()
+    const utterance = new SpeechSynthesisUtterance(text.slice(startIndex))
+    utterance.lang = 'de-DE'
+    utterance.rate = 0.88
+    utterance.pitch = 1
+    utterance.onstart = () => { setIsPlaying(true); setIsPaused(false) }
+    utterance.onpause = () => { setIsPlaying(false); setIsPaused(true) }
+    utterance.onresume = () => { setIsPlaying(true); setIsPaused(false) }
+    utterance.onboundary = event => { speechCharIndex.current = startIndex + event.charIndex }
+    utterance.onend = () => { activeUtterance.current = null; setIsPlaying(false); setIsPaused(false) }
+    utterance.onerror = () => { activeUtterance.current = null; setIsPlaying(false); setIsPaused(false) }
+    speechText.current = text
+    speechCharIndex.current = startIndex
+    activeUtterance.current = utterance
+    window.speechSynthesis.speak(utterance)
+    return true
+  }
+
+  function skipBackward(seconds = 10) {
+    if (activeAudio.current) {
+      activeAudio.current.currentTime = Math.max(0, activeAudio.current.currentTime - seconds)
+      return
+    }
+    if (activeUtterance.current && speechText.current) {
+      const approximateCharacters = seconds * 10
+      let nextIndex = Math.max(0, speechCharIndex.current - approximateCharacters)
+      while (nextIndex > 0 && speechText.current[nextIndex - 1] !== ' ') nextIndex -= 1
+      startDeviceSpeech(speechText.current, nextIndex)
     }
   }
 
@@ -530,7 +579,10 @@ export default function DeutschPage({
     if (!text || speechLoading) return
     activeAudio.current?.pause()
     window.speechSynthesis?.cancel()
+    activeAudio.current = null
+    activeUtterance.current = null
     setIsPlaying(false)
+    setIsPaused(false)
     setSpeechLoading(true)
 
     try {
@@ -541,20 +593,26 @@ export default function DeutschPage({
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ text }),
         })
-        if (!response.ok) throw new Error('KI-Stimme nicht verfügbar')
+        if (!response.ok) {
+          const error = await response.json().catch(() => ({}))
+          throw new Error(error.error || 'Google-Stimme nicht verfügbar')
+        }
         audioUrl = URL.createObjectURL(await response.blob())
         speechCache.current.set(text, audioUrl)
       }
 
       const audio = new Audio(audioUrl)
-      audio.addEventListener('ended', () => setIsPlaying(false))
-      audio.addEventListener('pause', () => setIsPlaying(false))
-      audio.addEventListener('play', () => setIsPlaying(true))
+      audio.addEventListener('ended', () => { activeAudio.current = null; setIsPlaying(false); setIsPaused(false) })
+      audio.addEventListener('pause', () => { setIsPlaying(false); if (!audio.ended && audio.currentTime > 0) setIsPaused(true) })
+      audio.addEventListener('play', () => { setIsPlaying(true); setIsPaused(false) })
       activeAudio.current = audio
       await audio.play()
-    } catch {
-      speak(text)
-      setMessage('Die KI-Stimme war nicht erreichbar. Die Gerätestimme wird als Ersatz verwendet.')
+    } catch (error) {
+      activeAudio.current = null
+      const fallbackStarted = startDeviceSpeech(text)
+      setMessage(fallbackStarted
+        ? `${error.message}. Die Gerätestimme wird als Ersatz verwendet.`
+        : `${error.message}. Auf diesem Gerät ist keine Ersatzstimme verfügbar.`)
     } finally {
       setSpeechLoading(false)
     }
@@ -562,6 +620,7 @@ export default function DeutschPage({
 
   useEffect(() => () => {
     activeAudio.current?.pause()
+    window.speechSynthesis?.cancel()
     speechCache.current.forEach(url => URL.revokeObjectURL(url))
   }, [])
 
@@ -958,18 +1017,33 @@ export default function DeutschPage({
             </div>
             <p className={styles.listeningHint}>Höre zuerst ohne mitzulesen. Danach kannst du den Text öffnen und die Fragen beantworten.</p>
             <div className={styles.audioControls}>
-              <button
-                type="button"
-                className={styles.primaryBtn}
-                onClick={() => isPlaying ? stopAudio() : speakListeningText(activeLesson.listening.text)}
-                disabled={speechLoading}
-              >
-                {speechLoading ? 'KI-Stimme wird vorbereitet …' : isPlaying ? '⏹ Stoppen' : '▶ Mit KI-Stimme anhören'}
-              </button>
-              {isPlaying && (
-                <button type="button" className={styles.skipBtn} onClick={() => skipForward(10)}>
-                  +10s ⏩
+              {!isPlaying && !isPaused ? (
+                <button
+                  type="button"
+                  className={styles.primaryBtn}
+                  onClick={() => speakListeningText(activeLesson.listening.text)}
+                  disabled={speechLoading}
+                >
+                  {speechLoading ? 'Google-Stimme wird vorbereitet …' : '▶ Anhören'}
                 </button>
+              ) : (
+                <>
+                  <button type="button" className={styles.skipBtn} onClick={() => skipBackward(10)}>
+                    ↶ 10 Sek.
+                  </button>
+                  {isPlaying ? (
+                    <button type="button" className={styles.primaryBtn} onClick={pauseAudio}>
+                      ⏸ Pause
+                    </button>
+                  ) : (
+                    <button type="button" className={styles.primaryBtn} onClick={resumeAudio}>
+                      ▶ Weiter
+                    </button>
+                  )}
+                  <button type="button" className={styles.skipBtn} onClick={stopAudio}>
+                    ⏹ Stoppen
+                  </button>
+                </>
               )}
             </div>
             <details className={styles.transcript}>
