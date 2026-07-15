@@ -5,13 +5,6 @@ import styles from './page.module.css'
 
 const STORAGE_KEY = 'andarun_immobilien_v1'
 
-const DEMO_HOMES = [
-  { id: 'demo-1', title: 'Helle Altbauwohnung am Großen Garten', city: 'Dresden', district: 'Stadtmitte', address: 'Nähe Großer Garten', rooms: 3, area: 72, price: 349000, pricePerSqm: 4847, yearBuilt: 1912, energyClass: 'C', floor: '2. OG', elevator: false, balcony: true, parking: false, provider: 'Demo', url: 'https://www.immobilienscout24.de/Suche/de/sachsen/dresden/wohnung-kaufen', features: ['Altbau', 'Tageslichtbad', 'ruhige Lage'], note: 'Beispieldaten – bitte durch echte Angebote ersetzen.', addedAt: '2026-07-15' },
-  { id: 'demo-2', title: 'Neubau mit Balkon und Aufzug', city: 'Dresden', district: 'Seevorstadt-Ost', address: 'Prager Straße Umgebung', rooms: 2, area: 58, price: 338000, pricePerSqm: 5828, yearBuilt: 2024, energyClass: 'A', floor: '4. OG', elevator: true, balcony: true, parking: true, provider: 'Demo', url: 'https://www.immobilienscout24.de/Suche/de/sachsen/dresden/wohnung-kaufen', features: ['Neubau', 'Fußbodenheizung', 'Tiefgarage'], note: 'Beispieldaten – bitte durch echte Angebote ersetzen.', addedAt: '2026-07-15' },
-  { id: 'demo-3', title: 'Kompakte Wohnung nahe Hauptbahnhof', city: 'Dresden', district: 'Südvorstadt', address: 'Hauptbahnhof Umgebung', rooms: 2, area: 53, price: 229000, pricePerSqm: 4321, yearBuilt: 1998, energyClass: 'D', floor: '1. OG', elevator: false, balcony: false, parking: true, provider: 'Demo', url: 'https://www.immobilienscout24.de/Suche/de/sachsen/dresden/wohnung-kaufen', features: ['Stellplatz', 'gute Anbindung'], note: 'Beispieldaten – bitte durch echte Angebote ersetzen.', addedAt: '2026-07-15' },
-  { id: 'demo-4', title: 'Sanierter Klassiker in der Altstadt', city: 'Dresden', district: 'Innere Altstadt', address: 'Altstadtring', rooms: 3, area: 68, price: 389000, pricePerSqm: 5721, yearBuilt: 2009, energyClass: 'B', floor: '3. OG', elevator: true, balcony: false, parking: false, provider: 'Demo', url: 'https://www.immobilienscout24.de/Suche/de/sachsen/dresden/wohnung-kaufen', features: ['Aufzug', 'saniert', 'zentrale Lage'], note: 'Beispieldaten – bitte durch echte Angebote ersetzen.', addedAt: '2026-07-15' },
-]
-
 const EMPTY_FILTERS = { city: 'Alle', district: 'Alle', area: 'Alle', age: 'Alle', energy: 'Alle', rooms: 'Alle', floor: 'Alle', maxPriceSqm: '', maxPrice: '', query: '' }
 
 const Icon = ({ name }) => {
@@ -80,12 +73,15 @@ function normalizeHomes(value) {
   })
 }
 
-function buildPrompt(city) {
+function buildPrompt(city, propertyUrl = '') {
+  if (propertyUrl.trim()) {
+    return `Analysiere dieses konkrete Immobilienangebot:\n${propertyUrl.trim()}\n\nÖffne den Link und übernimm ausschließlich Angaben, die du dort tatsächlich findest. Erfinde keine Werte. Berechne pricePerSqm nur aus Kaufpreis und Wohnfläche, falls er nicht direkt angegeben ist. Wenn eine Angabe fehlt, verwende null.\n\nGib ausschließlich einen gültigen JSON-Codeblock zurück, ohne zusätzlichen Text:\n\n{\n  "properties": [\n    {\n      "id": "Angebots-ID aus dem Link oder eine eindeutige ID",\n      "title": "Titel",\n      "city": "Stadt",\n      "district": "Stadtteil",\n      "address": "Adresse oder Lage",\n      "rooms": 3,\n      "area": 68.5,\n      "price": 350000,\n      "pricePerSqm": 5109,\n      "yearBuilt": 2018,\n      "energyClass": "B",\n      "floor": "2. OG",\n      "elevator": true,\n      "balcony": true,\n      "parking": false,\n      "provider": "ImmobilienScout24",\n      "url": "${propertyUrl.trim()}",\n      "features": ["Balkon", "Einbauküche"],\n      "note": "Besonderheiten oder fehlende Angaben"\n    }\n  ]\n}`
+  }
   return `Suche aktuell zum Kauf stehende Wohnungen in ${city || 'Dresden'}, bevorzugt Stadtmitte und angrenzende zentrale Stadtteile, auf www.immobilienscout24.de.\n\nKriterien:\n- 2 oder 3 Zimmer\n- 50–75 m², gruppiert in 50–59, 60–69 und 70–75 m²\n- Baujahr gruppiert in Neubau, unter 10 Jahre, unter 20 Jahre und 20+ Jahre\n- Energieeffizienz gruppiert in A+ / A, B / C und D oder schlechter\n\nNutze nur Angebote, deren Angaben du auf der verlinkten Seite tatsächlich findest. Erfinde keine Werte. Wenn eine Angabe fehlt, verwende null. Entferne Dubletten. Gib nach einer kurzen Zusammenfassung ausschließlich einen gültigen JSON-Codeblock im folgenden Schema zurück, damit ich ihn in Andarun importieren kann:\n\n{\n  "properties": [\n    {\n      "id": "eindeutige Angebots-ID",\n      "title": "Titel",\n      "city": "${city || 'Dresden'}",\n      "district": "Stadtteil",\n      "address": "Adresse oder Lage",\n      "rooms": 3,\n      "area": 68.5,\n      "price": 350000,\n      "pricePerSqm": 5109,\n      "yearBuilt": 2018,\n      "energyClass": "B",\n      "floor": "2. OG",\n      "elevator": true,\n      "balcony": true,\n      "parking": false,\n      "provider": "ImmobilienScout24",\n      "url": "vollständiger direkter Link",\n      "features": ["Balkon", "Einbauküche"],\n      "note": "Besonderheiten oder fehlende Angaben"\n    }\n  ]\n}`
 }
 
 export default function ImmobilienPage() {
-  const [homes, setHomes] = useState(DEMO_HOMES)
+  const [homes, setHomes] = useState([])
   const [filters, setFilters] = useState(EMPTY_FILTERS)
   const [sort, setSort] = useState('match')
   const [view, setView] = useState('cards')
@@ -95,18 +91,25 @@ export default function ImmobilienPage() {
   const [message, setMessage] = useState('')
   const [selected, setSelected] = useState(null)
   const [favoriteIds, setFavoriteIds] = useState([])
+  const [propertyUrl, setPropertyUrl] = useState('')
+  const [groupBy, setGroupBy] = useState('area')
+  const [storageReady, setStorageReady] = useState(false)
 
   useEffect(() => {
     try {
       const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null')
-      if (Array.isArray(stored?.homes)) setHomes(stored.homes)
+      if (Array.isArray(stored?.homes)) {
+        setHomes(stored.homes.filter(home => !String(home.id).startsWith('demo-') && home.provider !== 'Demo'))
+      }
       if (Array.isArray(stored?.favorites)) setFavoriteIds(stored.favorites)
     } catch {}
+    setStorageReady(true)
   }, [])
 
   useEffect(() => {
+    if (!storageReady) return
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ homes, favorites: favoriteIds })) } catch {}
-  }, [homes, favoriteIds])
+  }, [homes, favoriteIds, storageReady])
 
   const cities = useMemo(() => [...new Set(homes.map(home => home.city).filter(Boolean))].sort(), [homes])
   const districts = useMemo(() => [...new Set(homes.filter(home => filters.city === 'Alle' || home.city === filters.city).map(home => home.district).filter(Boolean))].sort(), [homes, filters.city])
@@ -134,8 +137,21 @@ export default function ImmobilienPage() {
     })
   }, [homes, filters, sort, favoriteIds])
 
+  const avgPrice = visibleHomes.length ? Math.round(visibleHomes.reduce((sum, home) => sum + home.price, 0) / visibleHomes.length) : 0
   const avgSqm = visibleHomes.length ? Math.round(visibleHomes.reduce((sum, home) => sum + home.pricePerSqm, 0) / visibleHomes.length) : 0
-  const prompt = buildPrompt(filters.city === 'Alle' ? (cities[0] || 'Dresden') : filters.city)
+  const prompt = buildPrompt(filters.city === 'Alle' ? (cities[0] || 'Dresden') : filters.city, propertyUrl)
+  const groupedHomes = useMemo(() => {
+    const groups = new Map()
+    visibleHomes.forEach(home => {
+      const label = groupBy === 'area' ? areaGroup(home.area)
+        : groupBy === 'age' ? ageGroup(home.yearBuilt)
+          : groupBy === 'energy' ? energyGroup(home.energyClass)
+            : home.city || 'Stadt unbekannt'
+      if (!groups.has(label)) groups.set(label, [])
+      groups.get(label).push(home)
+    })
+    return [...groups.entries()]
+  }, [visibleHomes, groupBy])
 
   function setFilter(name, value) {
     setFilters(current => ({ ...current, [name]: value, ...(name === 'city' ? { district: 'Alle' } : {}) }))
@@ -189,9 +205,17 @@ export default function ImmobilienPage() {
 
       <section className={styles.stats} aria-label="Übersicht">
         <div><span>Gefunden</span><strong>{visibleHomes.length}</strong><small>Angebote</small></div>
-        <div><span>Ø Preis / m²</span><strong>{avgSqm ? `${avgSqm.toLocaleString('de-DE')} €` : '–'}</strong><small>aktuelle Auswahl</small></div>
+        <div><span>Ø Kaufpreis</span><strong>{avgPrice ? money(avgPrice) : '–'}</strong><small>nach aktuellen Filtern</small></div>
+        <div><span>Ø Preis / m²</span><strong>{avgSqm ? `${avgSqm.toLocaleString('de-DE')} €` : '–'}</strong><small>nach aktuellen Filtern</small></div>
         <div><span>Favoriten</span><strong>{favoriteIds.length}</strong><small>merken & vergleichen</small></div>
-        <div><span>Städte</span><strong>{cities.length}</strong><small>in deiner Sammlung</small></div>
+      </section>
+
+      <section className={styles.linkWorkflow} aria-labelledby="link-workflow-title">
+        <div><span className={styles.eyebrow}>NEUES ANGEBOT</span><h2 id="link-workflow-title">Link rein. Wohnung raus.</h2><p>Füge den Link einer Wohnung ein und kopiere den passenden Analyse-Prompt für ChatGPT.</p></div>
+        <div className={styles.linkComposer}>
+          <input type="url" value={propertyUrl} onChange={event => setPropertyUrl(event.target.value)} placeholder="https://www.immobilienscout24.de/expose/…" aria-label="Link zum Immobilienangebot"/>
+          <button className={styles.primaryButton} type="button" onClick={() => setPromptOpen(true)} disabled={!propertyUrl.trim()}><Icon name="spark"/> Prompt erstellen</button>
+        </div>
       </section>
 
       <section className={styles.content}>
@@ -212,14 +236,23 @@ export default function ImmobilienPage() {
           <header className={styles.resultsHeader}>
             <div><span className={styles.eyebrow}>DEINE AUSWAHL</span><h2>{visibleHomes.length} Wohnungen</h2></div>
             <div className={styles.resultControls}>
+              <select value={groupBy} onChange={event => setGroupBy(event.target.value)} aria-label="Gruppierung"><option value="area">Gruppiert: Wohnfläche</option><option value="age">Gruppiert: Baujahr</option><option value="energy">Gruppiert: Energie</option><option value="city">Gruppiert: Stadt</option></select>
               <select value={sort} onChange={event => setSort(event.target.value)} aria-label="Sortierung"><option value="match">Favoriten zuerst</option><option value="priceAsc">Preis: niedrig zuerst</option><option value="priceDesc">Preis: hoch zuerst</option><option value="sqmAsc">Preis/m²: niedrig zuerst</option><option value="newest">Neuestes Baujahr</option></select>
               <div className={styles.viewSwitch}><button className={view === 'cards' ? styles.viewActive : ''} onClick={() => setView('cards')} type="button" aria-label="Kartenansicht">▦</button><button className={view === 'table' ? styles.viewActive : ''} onClick={() => setView('table')} type="button" aria-label="Tabellenansicht">☷</button></div>
             </div>
           </header>
 
           {view === 'cards' ? (
-            <div className={styles.cards}>
-              {visibleHomes.map((home, index) => <HomeCard home={home} index={index} favorite={favoriteIds.includes(home.id)} onFavorite={() => toggleFavorite(home.id)} onOpen={() => setSelected(home)} key={home.id}/>) }
+            <div className={styles.groupedResults}>
+              {groupedHomes.map(([label, groupHomes]) => {
+                const groupAverage = Math.round(groupHomes.reduce((sum, home) => sum + home.price, 0) / groupHomes.length)
+                return <section className={styles.resultGroup} key={label}>
+                  <header><div><span>GRUPPE</span><h3>{label}</h3></div><div><strong>{groupHomes.length}</strong><small>Wohnungen</small></div><div><strong>{money(groupAverage)}</strong><small>Ø Kaufpreis</small></div></header>
+                  <div className={styles.cards}>
+                    {groupHomes.map((home, index) => <HomeCard home={home} index={index} favorite={favoriteIds.includes(home.id)} onFavorite={() => toggleFavorite(home.id)} onOpen={() => setSelected(home)} key={home.id}/>) }
+                  </div>
+                </section>
+              })}
             </div>
           ) : (
             <HomeTable homes={visibleHomes} favorites={favoriteIds} onOpen={setSelected}/>
@@ -235,7 +268,8 @@ export default function ImmobilienPage() {
       </Modal>}
 
       {promptOpen && <Modal title="Dein Such-Prompt" kicker="CHATGPT WORKFLOW" onClose={() => setPromptOpen(false)} wide>
-        <p className={styles.modalIntro}>Kopiere diesen Prompt in ChatGPT. Den JSON-Block aus der Antwort fügst du anschließend über „Angebote importieren“ ein.</p>
+        <p className={styles.modalIntro}>{propertyUrl.trim() ? 'Dieser Prompt analysiert genau den eingefügten Wohnungslink.' : 'Dieser Prompt sucht mehrere Wohnungen nach deinen ursprünglichen Kriterien.'} Den JSON-Block aus der Antwort fügst du anschließend über „Angebote importieren“ ein.</p>
+        <label className={styles.promptUrlField}><span>Immobilien-Link (optional)</span><input type="url" value={propertyUrl} onChange={event => setPropertyUrl(event.target.value)} placeholder="https://…"/></label>
         <pre className={styles.promptBox}>{prompt}</pre>
         <div className={styles.modalActions}><button className={styles.secondaryButton} type="button" onClick={() => setPromptOpen(false)}>Schließen</button><button className={styles.primaryButton} type="button" onClick={copyPrompt}><Icon name="copy"/> Prompt kopieren</button></div>
       </Modal>}

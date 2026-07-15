@@ -85,6 +85,14 @@
 .stats span, .stats small { color: #7b817c; font-size: 9px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
 .stats strong { grid-row: 1 / span 2; grid-column: 2; align-self: center; font-family: var(--font-fraunces), Georgia, serif; font-size: 34px; font-weight: 700; }
 
+.linkWorkflow { width: min(1380px, calc(100% - 56px)); margin: 26px auto 0; display: grid; grid-template-columns: .8fr 1.2fr; align-items: end; gap: 45px; padding: 30px 34px; border: 1px solid #d3ccc0; background: linear-gradient(120deg, #ebe7dd, #f9f6ef); }
+.linkWorkflow .eyebrow { margin-bottom: 6px; color: var(--orange); }
+.linkWorkflow h2 { margin: 0; font-family: var(--font-fraunces), Georgia, serif; font-size: 31px; letter-spacing: -.025em; }
+.linkWorkflow p { margin: 7px 0 0; color: #777e78; font-size: 11px; line-height: 1.6; }
+.linkComposer { display: grid; grid-template-columns: 1fr auto; gap: 9px; }
+.linkComposer input, .promptUrlField input { min-width: 0; height: 47px; border: 1px solid #cbc4b8; outline: 0; background: #fffdf8; padding: 0 14px; color: var(--ink); font: inherit; font-size: 11px; }
+.linkComposer input:focus, .promptUrlField input:focus { border-color: var(--orange); }
+
 .content { width: min(1380px, calc(100% - 56px)); margin: 0 auto; display: grid; grid-template-columns: 275px minmax(0, 1fr); gap: 44px; padding: 58px 0 100px; }
 .filters { align-self: start; position: sticky; top: 18px; padding: 26px; border: 1px solid #d8d2c7; background: rgba(252,250,245,.82); box-shadow: 0 14px 50px rgba(31,42,35,.045); }
 .filterHeading { display: flex; align-items: center; justify-content: space-between; padding-bottom: 19px; border-bottom: 1px solid #ddd7cc; }
@@ -120,6 +128,12 @@
 .viewSwitch .viewActive { background: var(--forest); color: white; }
 
 .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.groupedResults { display: grid; gap: 38px; }
+.resultGroup > header { min-height: 70px; display: grid; grid-template-columns: 1fr auto auto; align-items: end; gap: 30px; margin-bottom: 13px; padding: 0 3px 12px; border-bottom: 1px solid #cfc8bc; }
+.resultGroup > header span, .resultGroup > header small { display: block; color: #8a908a; font-size: 8px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+.resultGroup > header h3 { margin: 2px 0 0; font-family: var(--font-fraunces), Georgia, serif; font-size: 28px; }
+.resultGroup > header strong { display: block; color: var(--forest); font-family: var(--font-fraunces), Georgia, serif; font-size: 21px; text-align: right; }
+.resultGroup > header small { margin-top: 2px; text-align: right; }
 .card { min-width: 0; border: 1px solid #d8d2c7; background: var(--paper); transition: transform .22s, box-shadow .22s; }
 .card:hover { transform: translateY(-4px); box-shadow: 0 22px 50px rgba(29,48,38,.12); }
 .cardVisual { position: relative; height: 174px; overflow: hidden; background: linear-gradient(145deg, #c7d1c2 0%, #9fad9d 100%); }
@@ -165,6 +179,8 @@
 .modal h2 { margin: 0; font-family: var(--font-fraunces), Georgia, serif; font-size: 35px; line-height: 1.05; }
 .modal > header > button { width: 38px; height: 38px; border: 1px solid #d1cbc0; border-radius: 50%; background: transparent; color: var(--ink); font-size: 23px; cursor: pointer; }
 .modalIntro { margin: 20px 0 15px; color: #717870; font-size: 12px; line-height: 1.7; }
+.promptUrlField { display: grid; gap: 7px; margin-bottom: 12px; }
+.promptUrlField span { color: #899089; font-size: 9px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
 .jsonArea { width: 100%; min-height: 290px; resize: vertical; border: 1px solid #cfc9bd; outline: 0; background: #fffdf9; padding: 15px; color: #26342c; font: 11px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; }
 .jsonArea:focus { border-color: var(--orange); }
 .promptBox { max-height: 52vh; overflow: auto; margin: 0; padding: 19px; border: 1px solid #d6d0c5; background: #eeebe3; color: #27372e; font: 11px/1.65 ui-monospace, SFMono-Regular, Consolas, monospace; white-space: pre-wrap; }
@@ -184,6 +200,8 @@
   .content { grid-template-columns: 230px minmax(0, 1fr); gap: 24px; }
   .cards { grid-template-columns: 1fr; }
   .stats { grid-template-columns: repeat(2, 1fr); }
+  .linkWorkflow { grid-template-columns: 1fr; gap: 20px; }
+  .resultControls { flex-wrap: wrap; justify-content: flex-end; }
 }
 
 @media (max-width: 760px) {
@@ -192,12 +210,15 @@
   .heroActions { flex-wrap: wrap; }
   .heroLine { left: 20px; right: 20px; }
   .stats { width: calc(100% - 28px); }
+  .linkWorkflow { width: calc(100% - 28px); padding: 24px 20px; }
+  .linkComposer { grid-template-columns: 1fr; }
   .stats > div { min-height: 95px; padding: 15px; }
   .stats strong { font-size: 27px; }
   .content { width: calc(100% - 28px); grid-template-columns: 1fr; padding-top: 28px; }
   .filters { position: static; }
   .resultsHeader { align-items: flex-start; flex-direction: column; }
   .resultControls { width: 100%; }.resultControls select { flex: 1; }
+  .resultGroup > header { grid-template-columns: 1fr auto; }.resultGroup > header > div:last-child { grid-column: 1 / -1; display: flex; align-items: baseline; justify-content: space-between; }.resultGroup > header > div:last-child small { margin: 0; }
   .cards { grid-template-columns: 1fr; }
   .modal { padding: 22px; }.modal h2 { font-size: 29px; }.detailGrid { grid-template-columns: repeat(2, 1fr); }.detailGrid span, .detailGrid span:nth-child(3n) { border-right: 1px solid #d8d2c7; border-bottom: 1px solid #d8d2c7; }.detailGrid span:nth-child(2n) { border-right: 0; }.detailGrid span:nth-child(n+5) { border-bottom: 0; }
 }
