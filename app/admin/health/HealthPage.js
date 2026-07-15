@@ -213,7 +213,7 @@ function estimateMacros(food, grams) {
   }
 }
 
-export default function HealthPage({ apiBase = '/api/admin/health', homeHref = '', homeLabel = '' }) {
+export default function HealthPage({ apiBase = '/api/andarun/health', homeHref = '', homeLabel = 'Andarun' }) {
   const [tab, setTab] = useState('eintragen')
   const [records, setRecords] = useState([])
   const [customSports, setCustomSports] = useState([])

@@ -17,6 +17,8 @@ import { getActivitySummary, mergeServerActivity } from '@/utils/activityStorage
 import { getSubscription, isSubscriptionActive } from '@/utils/subscription'
 import styles from './page.module.css'
 
+const ADMIN_EMAIL = 'dr.benjaminzia@gmail.com'
+
 const localDateKey = () => {
   const date = new Date()
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
@@ -380,11 +382,16 @@ export default function ProfilPage() {
   const [openAreaId, setOpenAreaId] = useState(null)
 
   useEffect(() => {
+    const email = user?.primaryEmailAddress?.emailAddress || user?.emailAddresses?.[0]?.emailAddress
+    if (email === ADMIN_EMAIL) {
+      setIsAdmin(true)
+      return
+    }
     fetch('/api/admin/session', { cache: 'no-store' })
       .then(r => r.json())
       .then(data => setIsAdmin(!!data.isAdmin))
       .catch(() => {})
-  }, [])
+  }, [user])
 
   useEffect(() => {
     if (!isLoaded || !user) return
@@ -638,9 +645,18 @@ export default function ProfilPage() {
             </nav>
             <div className={styles.accountActions}>
               {isAdmin && (
-                <Link href="/admin" className={styles.adminLink}>
-                  <span aria-hidden="true">⚙</span>Admin-Dashboard
-                </Link>
+                <div className={styles.portalLinks} aria-label="Persönliche Bereiche">
+                  <Link href="/andarun" className={styles.portalLinkAndarun}>
+                    <span aria-hidden="true">A</span>
+                    <strong>Andarun</strong>
+                    <small>Persönlicher Bereich</small>
+                  </Link>
+                  <Link href="/admin" className={styles.portalLinkAdmin}>
+                    <span aria-hidden="true">⚙</span>
+                    <strong>Admin-Bereich</strong>
+                    <small>RadYar Verwaltung</small>
+                  </Link>
+                </div>
               )}
               <button type="button" className={styles.signOutButton} onClick={() => signOut({ redirectUrl: '/' })}>
                 <span aria-hidden="true">↪</span>{t.signOut}

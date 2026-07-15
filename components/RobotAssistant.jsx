@@ -76,7 +76,6 @@ export default function RobotAssistant() {
 
   if (
     pathname?.startsWith('/admin/budget')
-    || pathname?.startsWith('/admin/health')
     || pathname?.startsWith('/andarun')
     || pathname?.startsWith('/mobin')
   ) return null
