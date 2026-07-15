@@ -242,6 +242,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
   const [timerStartedAt, setTimerStartedAt] = useState(null)
   const [timerNow, setTimerNow] = useState(Date.now())
   const [timerHistoryOpen, setTimerHistoryOpen] = useState(false)
+  const [timerDayModal, setTimerDayModal] = useState(null)
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(true)
 
@@ -431,6 +432,9 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
   }, [findingTimers])
   const maxHistoryCount = Math.max(1, ...timerHistoryDays.map(day => day.count))
   const maxHistoryAvg = Math.max(1, ...timerHistoryDays.map(day => day.avg))
+  const timerDayItems = timerDayModal
+    ? todayTimers.filter(timer => timer.modality === timerDayModal)
+    : []
 
   function updateTimerModality(modality) {
     setTimerForm(prev => ({ ...prev, modality }))
@@ -485,6 +489,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
       setTimerElapsed(0)
       setTimerStartedAt(null)
       setTimerNow(now)
+      setTimerForm(prev => ({ ...prev, count: 1 }))
       setMessage('Befundzeit gespeichert.')
     } catch (error) {
       setMessage(error.message)
@@ -810,18 +815,21 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
               </div>
             </div>
 
-            <button className={styles.timerStatsCard} type="button" onClick={() => setTimerHistoryOpen(true)}>
-              <span className={styles.kicker}>Heute</span>
+            <div className={styles.timerStatsCard}>
+              <button className={styles.timerStatsHeader} type="button" onClick={() => setTimerHistoryOpen(true)}>
+                <span className={styles.kicker}>Heute</span>
+                <em>Verlauf öffnen</em>
+              </button>
               <div className={styles.timerStatsGrid}>
                 {timerStats.map(stat => (
-                  <div key={stat.modality}>
+                  <button type="button" key={stat.modality} onClick={() => setTimerDayModal(stat.modality)}>
                     <strong>{stat.modality}</strong>
                     <span>{stat.count} Befund{stat.count === 1 ? '' : 'e'}</span>
                     <em>{stat.avg ? formatTimerDuration(stat.avg) : '--:--'} Ø</em>
-                  </div>
+                  </button>
                 ))}
               </div>
-            </button>
+            </div>
           </div>
         </div>
 
@@ -925,6 +933,38 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
                   </div>
                 ))}
                 {!timerHistoryDays.length && <p>Noch kein Verlauf gespeichert.</p>}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {timerDayModal && (
+          <div className={styles.modalBackdrop} role="presentation" onMouseDown={() => setTimerDayModal(null)}>
+            <div
+              className={styles.timerHistoryModal}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="timer-day-title"
+              onMouseDown={event => event.stopPropagation()}
+            >
+              <div className={styles.modalHead}>
+                <div>
+                  <span className={styles.kicker}>Heute</span>
+                  <h3 id="timer-day-title">{timerDayModal} Befunde</h3>
+                </div>
+                <button type="button" onClick={() => setTimerDayModal(null)} aria-label="Fenster schließen">×</button>
+              </div>
+              <div className={styles.timerDayList}>
+                {timerDayItems.map(timer => (
+                  <div className={styles.timerDayRow} key={timer.id}>
+                    <strong>{formatTimerDuration(timer.durationMs)}</strong>
+                    <span>×{Number(timer.count) || 1}</span>
+                    <em>{formatTimerDuration(Number(timer.durationMs || 0) / (Number(timer.count) || 1))} Ø</em>
+                    <small>{new Date(timer.createdAt || `${timer.date}T12:00:00`).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}</small>
+                    <button type="button" onClick={() => deleteFindingTimer(timer.id)}>Löschen</button>
+                  </div>
+                ))}
+                {!timerDayItems.length && <p>Noch keine {timerDayModal}-Befunde heute.</p>}
               </div>
             </div>
           </div>

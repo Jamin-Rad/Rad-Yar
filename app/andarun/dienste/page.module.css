@@ -783,10 +783,35 @@
   display: grid;
   gap: 14px;
   color: inherit;
-  cursor: pointer;
   font: inherit;
   padding: 18px;
   text-align: left;
+}
+
+.timerStatsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+  text-align: left;
+}
+
+.timerStatsHeader em {
+  border-radius: 999px;
+  background: rgba(34, 211, 238, .12);
+  color: #a5f3fc;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 950;
+  letter-spacing: .08em;
+  padding: 6px 9px;
+  text-transform: uppercase;
 }
 
 .timerStatsGrid {
@@ -794,15 +819,26 @@
   gap: 10px;
 }
 
-.timerStatsGrid div {
+.timerStatsGrid button {
   display: grid;
   grid-template-columns: 62px minmax(0, 1fr) 72px;
   gap: 10px;
   align-items: center;
+  border: 1px solid rgba(148, 163, 184, .12);
   border-radius: 8px;
   background: rgba(255,255,255,.065);
   color: #cbd5e1;
+  cursor: pointer;
+  font: inherit;
   padding: 10px;
+  text-align: left;
+  transition: border-color .16s, background .16s, transform .16s;
+}
+
+.timerStatsGrid button:hover {
+  border-color: rgba(34, 211, 238, .34);
+  background: rgba(255,255,255,.09);
+  transform: translateY(-1px);
 }
 
 .timerStatsGrid strong {
@@ -890,6 +926,66 @@
 .timerHistoryDay em {
   color: #94a3b8;
   font-style: normal;
+}
+
+.timerDayList {
+  display: grid;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.timerDayList p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 14px;
+  font-weight: 850;
+  padding: 10px 0;
+}
+
+.timerDayRow {
+  display: grid;
+  grid-template-columns: 90px 52px 90px 72px auto;
+  gap: 10px;
+  align-items: center;
+  border-radius: 8px;
+  background: rgba(255,255,255,.065);
+  color: #cbd5e1;
+  font-size: 13px;
+  font-weight: 850;
+  padding: 10px;
+}
+
+.timerDayRow strong {
+  color: #67e8f9;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.timerDayRow em {
+  color: #f8fafc;
+  font-style: normal;
+  font-variant-numeric: tabular-nums;
+  font-weight: 950;
+}
+
+.timerDayRow small {
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.timerDayRow button {
+  justify-self: end;
+  min-height: 32px;
+  border: 1px solid rgba(244, 63, 94, .24);
+  border-radius: 7px;
+  background: rgba(244, 63, 94, .14);
+  color: #fecdd3;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 950;
+  padding: 0 10px;
 }
 
 .timerCompactCard {
@@ -1574,6 +1670,14 @@
 
   .timerRow em {
     grid-column: 1 / 4;
+  }
+
+  .timerDayRow {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .timerDayRow button {
+    justify-self: stretch;
   }
 
 }
