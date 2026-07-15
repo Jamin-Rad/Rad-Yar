@@ -150,6 +150,13 @@ function dateValue(date) {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
 }
 
+function addDays(value, amount) {
+  const date = new Date(`${value || TODAY}T12:00:00`)
+  if (Number.isNaN(date.getTime())) return TODAY
+  date.setDate(date.getDate() + amount)
+  return dateValue(date)
+}
+
 function weekDaysFor(value = TODAY) {
   const current = new Date(`${value}T12:00:00`)
   const monday = new Date(current)
@@ -476,6 +483,10 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
     setForm(nextForm)
   }
 
+  function shiftEntryDate(amount) {
+    selectEntryDate(addDays(form.date, amount))
+  }
+
   function openPicker(type) {
     setPicker({ type, step: 'cats', catId: null })
     setActiveId(null)
@@ -663,12 +674,21 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
         {tab === 'eintragen' && (
           <div className={s.todayView}>
             <div className={s.todayDateBar}>
-              <div>
+              <div className={s.dateHeaderCopy}>
                 <span>{formatHealthDate(form.date)}</span>
-                <label className={s.dateControl}>
-                  <small>Datum</small>
-                  <input type="date" value={form.date} onChange={event => selectEntryDate(event.target.value)} />
-                </label>
+                <div className={s.dateControlGroup}>
+                  <button className={s.dateStepBtn} type="button" onClick={() => shiftEntryDate(-1)} aria-label="Voriger Tag">‹</button>
+                  <label className={s.dateControl}>
+                    <small>Datum</small>
+                    <input type="date" value={form.date} onChange={event => selectEntryDate(event.target.value)} />
+                  </label>
+                  <button className={s.dateStepBtn} type="button" onClick={() => shiftEntryDate(1)} aria-label="Nächster Tag">›</button>
+                  {form.date !== TODAY && (
+                    <button className={s.todayMiniBtn} type="button" onClick={() => selectEntryDate(TODAY)}>
+                      Heute
+                    </button>
+                  )}
+                </div>
               </div>
               <strong>{saving ? 'Speichert…' : saveMessage && !saveMessage.includes('fehl') && !saveMessage.includes('nicht') ? 'Gespeichert' : form.date === TODAY ? 'Heute' : 'Eintragen'}</strong>
             </div>

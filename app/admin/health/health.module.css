@@ -414,12 +414,12 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 18px 20px;
+  padding: 20px;
 }
 
-.todayDateBar > div {
+.dateHeaderCopy {
   display: grid;
-  gap: 10px;
+  gap: 12px;
   min-width: 0;
 }
 
@@ -433,17 +433,21 @@
 .dateControl {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   width: max-content;
   max-width: 100%;
-  border: 1px solid rgba(15, 118, 110, .16);
+  min-height: 44px;
+  border: 1px solid rgba(15, 118, 110, .18);
   border-radius: 8px;
-  background: rgba(255,255,255,.68);
-  padding: 7px 9px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.86), rgba(236,253,245,.72)),
+    rgba(255,255,255,.7);
+  box-shadow: 0 12px 28px rgba(15, 118, 110, .10);
+  padding: 7px 12px;
 }
 
 .dateControl small {
-  color: #64748b;
+  color: #0f766e;
   font-size: 11px;
   font-weight: 950;
   letter-spacing: .08em;
@@ -459,6 +463,47 @@
   font-size: 13px;
   font-weight: 900;
   outline: none;
+}
+
+.dateControlGroup {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dateStepBtn,
+.todayMiniBtn {
+  display: inline-grid;
+  min-width: 44px;
+  min-height: 44px;
+  place-items: center;
+  border: 1px solid rgba(15, 118, 110, .16);
+  border-radius: 8px;
+  background: rgba(255,255,255,.72);
+  color: #0f766e;
+  box-shadow: 0 10px 24px rgba(15, 118, 110, .08);
+  cursor: pointer;
+  font: inherit;
+  font-size: 20px;
+  font-weight: 950;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+}
+
+.todayMiniBtn {
+  min-width: 72px;
+  padding: 0 14px;
+  background: #0f766e;
+  color: #fff;
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.dateStepBtn:hover,
+.todayMiniBtn:hover {
+  border-color: rgba(15, 118, 110, .34);
+  transform: translateY(-1px);
 }
 
 .todayDateBar strong {
@@ -486,15 +531,31 @@
 
 :global(html[data-theme='dark']) .dateControl {
   border-color: rgba(94, 234, 212, .18);
-  background: rgba(15, 23, 42, .58);
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, .88), rgba(20, 83, 73, .42)),
+    rgba(15, 23, 42, .58);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .22);
 }
 
 :global(html[data-theme='dark']) .dateControl small {
-  color: #94a3b8;
+  color: #5eead4;
 }
 
 :global(html[data-theme='dark']) .dateControl input {
   color: #f8fafc;
+}
+
+:global(html[data-theme='dark']) .dateStepBtn {
+  border-color: rgba(94, 234, 212, .16);
+  background: rgba(15, 23, 42, .66);
+  color: #5eead4;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, .22);
+}
+
+:global(html[data-theme='dark']) .todayMiniBtn {
+  border-color: rgba(94, 234, 212, .28);
+  background: #14b8a6;
+  color: #042f2e;
 }
 
 .todayPanelHead span {
@@ -3171,6 +3232,26 @@
 
   .todayDateBar {
     display: grid;
+  }
+
+  .dateControlGroup {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+  }
+
+  .dateControl {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .dateControl input {
+    width: 138px;
+    max-width: 100%;
+  }
+
+  .todayMiniBtn {
+    grid-column: 1 / -1;
+    width: 100%;
   }
 
   .todayActionWeight,
