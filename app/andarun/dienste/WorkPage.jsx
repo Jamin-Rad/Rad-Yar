@@ -798,52 +798,54 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
           </div>
         </div>
 
-        <div className={styles.sectionTitle}>
-          <div>
-            <span className={styles.kicker}>Befundkontrolle</span>
-            <h2>Befundkontrolle</h2>
-          </div>
-        </div>
-
-        <div className={styles.findingTopGrid}>
-          <div className={styles.findingTypeCards}>
-            {CASE_TYPES.map(type => {
-              const count = type.id === 'case'
-                ? normalizedFindings.filter(finding => finding.type !== 'question').length
-                : normalizedFindings.filter(finding => finding.type === 'question').length
-              return (
-                <article className={activeFindingType === type.id ? styles.findingTypeCardActive : styles.findingTypeCard} key={type.id}>
-                  <div>
-                    <span>{count} gespeichert</span>
-                    <h3>{type.label}</h3>
-                  </div>
-                  <div className={styles.findingTypeActions}>
-                    <button type="button" onClick={() => openFindingModal(type.id)}>Eintrag erfassen</button>
-                    <button type="button" onClick={() => setActiveFindingType(type.id)}>Gespeicherte anzeigen</button>
-                  </div>
-                </article>
-              )
-            })}
+        <div className={styles.controlPanel}>
+          <div className={styles.sectionTitle}>
+            <div>
+              <span className={styles.kicker}>Befundkontrolle</span>
+              <h2>Befundkontrolle</h2>
+            </div>
           </div>
 
-        </div>
+          <div className={styles.findingTopGrid}>
+            <div className={styles.findingTypeCards}>
+              {CASE_TYPES.map(type => {
+                const count = type.id === 'case'
+                  ? normalizedFindings.filter(finding => finding.type !== 'question').length
+                  : normalizedFindings.filter(finding => finding.type === 'question').length
+                return (
+                  <article className={activeFindingType === type.id ? styles.findingTypeCardActive : styles.findingTypeCard} key={type.id}>
+                    <div>
+                      <span>{count} gespeichert</span>
+                      <h3>{type.label}</h3>
+                    </div>
+                    <div className={styles.findingTypeActions}>
+                      <button type="button" onClick={() => openFindingModal(type.id)}>Eintrag erfassen</button>
+                      <button type="button" onClick={() => setActiveFindingType(type.id)}>Gespeicherte anzeigen</button>
+                    </div>
+                  </article>
+                )
+              })}
+            </div>
 
-        <div className={styles.findingBox}>
-          <div className={styles.listHead}>
-            <h3>{CASE_TYPES.find(type => type.id === activeFindingType)?.label}</h3>
-            <span>{activeFindingType === 'case' ? relevantCases.length : followupQuestions.length}</span>
           </div>
-          {activeFindingType === 'case' ? (
-            <>
-              {renderFilterControls(caseFilter, setCaseFilter)}
-              {renderFindingList(relevantCases, 'Noch keine relevanten Fälle gespeichert.')}
-            </>
-          ) : (
-            <>
-              {renderFilterControls(questionFilter, setQuestionFilter)}
-              {renderFindingList(followupQuestions, 'Noch keine Verlaufskontrollen oder Fragen gespeichert.')}
-            </>
-          )}
+
+          <div className={styles.findingBox}>
+            <div className={styles.listHead}>
+              <h3>{CASE_TYPES.find(type => type.id === activeFindingType)?.label}</h3>
+              <span>{activeFindingType === 'case' ? relevantCases.length : followupQuestions.length}</span>
+            </div>
+            {activeFindingType === 'case' ? (
+              <>
+                {renderFilterControls(caseFilter, setCaseFilter)}
+                {renderFindingList(relevantCases, 'Noch keine relevanten Fälle gespeichert.')}
+              </>
+            ) : (
+              <>
+                {renderFilterControls(questionFilter, setQuestionFilter)}
+                {renderFindingList(followupQuestions, 'Noch keine Verlaufskontrollen oder Fragen gespeichert.')}
+              </>
+            )}
+          </div>
         </div>
 
         {findingModalType && (

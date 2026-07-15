@@ -459,6 +459,19 @@
   padding: 18px;
 }
 
+.controlPanel {
+  position: relative;
+  display: grid;
+  gap: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, .16);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(34, 211, 238, .12), transparent 32%),
+    rgba(2, 6, 23, .20);
+  padding: 18px;
+}
+
 .sectionTitle {
   display: flex;
   align-items: flex-end;
@@ -571,7 +584,9 @@
 .timerHero {
   display: grid;
   gap: 14px;
-  margin-bottom: 28px;
+  margin-bottom: 34px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(148, 163, 184, .16);
 }
 
 .timerHeroGrid {
