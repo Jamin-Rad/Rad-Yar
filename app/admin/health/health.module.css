@@ -575,8 +575,8 @@
 .todayActions {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
-  padding: 14px;
+  gap: 10px;
+  padding: 12px;
 }
 
 .todayActionWeight,
@@ -584,39 +584,39 @@
 .todayActionFood {
   position: relative;
   display: grid;
-  min-height: 170px;
-  align-content: end;
-  gap: 8px;
-  border: 1px solid rgba(148, 163, 184, .18);
+  grid-template-columns: 54px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  align-items: center;
+  column-gap: 14px;
+  row-gap: 3px;
+  min-height: 82px;
+  border: 1px solid rgba(15, 118, 110, .12);
   border-radius: 8px;
   color: #0f172a;
   cursor: pointer;
   font: inherit;
   overflow: hidden;
-  padding: 20px;
+  padding: 14px 16px;
   text-align: left;
-  transition: transform .16s, box-shadow .16s, border-color .16s;
+  transition: transform .16s, box-shadow .16s, border-color .16s, background .16s;
 }
 
 .todayActionWeight {
   background:
-    radial-gradient(circle at 78% 18%, rgba(56, 189, 248, .42), transparent 26%),
-    radial-gradient(circle at 25% 8%, rgba(14, 165, 233, .24), transparent 32%),
-    linear-gradient(145deg, rgba(240, 249, 255, .98), rgba(224, 242, 254, .68));
+    linear-gradient(90deg, rgba(14, 165, 233, .14), transparent 42%),
+    rgba(255, 255, 255, .78);
 }
 
 .todayActionSport {
   background:
-    radial-gradient(circle at 78% 18%, rgba(129, 140, 248, .40), transparent 27%),
-    radial-gradient(circle at 22% 8%, rgba(45, 212, 191, .20), transparent 32%),
-    linear-gradient(145deg, rgba(239, 246, 255, .98), rgba(238, 242, 255, .68));
+    linear-gradient(90deg, rgba(99, 102, 241, .13), transparent 42%),
+    rgba(255, 255, 255, .78);
 }
 
 .todayActionFood {
   background:
-    radial-gradient(circle at 78% 18%, rgba(251, 191, 36, .42), transparent 27%),
-    radial-gradient(circle at 22% 8%, rgba(16, 185, 129, .22), transparent 32%),
-    linear-gradient(145deg, rgba(236, 253, 245, .98), rgba(255, 251, 235, .72));
+    linear-gradient(90deg, rgba(16, 185, 129, .14), transparent 42%),
+    rgba(255, 255, 255, .78);
 }
 
 .todayActionWeight::before,
@@ -624,12 +624,13 @@
 .todayActionFood::before {
   content: '';
   position: absolute;
-  inset: 12px;
+  inset: 0;
   border-radius: 8px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, .52), transparent 42%),
-    linear-gradient(315deg, rgba(255, 255, 255, .28), transparent 48%);
-  opacity: .9;
+    linear-gradient(180deg, rgba(255, 255, 255, .62), transparent 55%),
+    radial-gradient(circle at 100% 0%, rgba(255, 255, 255, .8), transparent 34%);
+  opacity: .72;
+  pointer-events: none;
 }
 
 .todayActionWeight::after,
@@ -637,52 +638,72 @@
 .todayActionFood::after {
   content: '';
   position: absolute;
-  right: -22px;
-  bottom: -28px;
-  width: 148px;
-  height: 148px;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 3px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, .46);
-  filter: blur(1px);
+  background: #0ea5e9;
+}
+
+.todayActionFood::after {
+  background: #10b981;
+}
+
+.todayActionSport::after {
+  background: #6366f1;
 }
 
 .actionVisual {
-  position: absolute;
-  top: 22px;
-  right: 24px;
+  position: relative;
+  grid-row: 1 / 3;
   z-index: 1;
-  width: 72px;
-  height: 72px;
-  border-radius: 24px;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.62), 0 18px 38px rgba(15, 23, 42, .10);
+  display: grid;
+  width: 54px;
+  height: 54px;
+  place-items: center;
+  border-radius: 8px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.66), 0 12px 22px rgba(15, 23, 42, .08);
+}
+
+.actionVisual::before {
+  color: #fff;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 950;
+  letter-spacing: .03em;
 }
 
 .todayActionWeight .actionVisual {
-  background:
-    linear-gradient(90deg, transparent 48%, rgba(14, 165, 233, .46) 49%, rgba(14, 165, 233, .46) 51%, transparent 52%),
-    linear-gradient(0deg, transparent 48%, rgba(14, 165, 233, .46) 49%, rgba(14, 165, 233, .46) 51%, transparent 52%),
-    radial-gradient(circle, rgba(255,255,255,.95) 0 25%, rgba(186, 230, 253, .92) 26% 44%, rgba(14, 165, 233, .58) 45% 100%);
+  background: linear-gradient(135deg, #38bdf8, #0369a1);
+}
+
+.todayActionWeight .actionVisual::before {
+  content: 'KG';
 }
 
 .todayActionSport .actionVisual {
-  background:
-    radial-gradient(circle at 50% 24%, rgba(255,255,255,.95) 0 13%, transparent 14%),
-    linear-gradient(145deg, transparent 0 41%, rgba(99, 102, 241, .72) 42% 58%, transparent 59%),
-    radial-gradient(circle, rgba(224, 231, 255, .94), rgba(99, 102, 241, .58));
+  background: linear-gradient(135deg, #818cf8, #4338ca);
+}
+
+.todayActionSport .actionVisual::before {
+  content: 'MIN';
 }
 
 .todayActionFood .actionVisual {
-  background:
-    radial-gradient(circle at 36% 35%, rgba(255,255,255,.96) 0 12%, transparent 13%),
-    radial-gradient(circle at 62% 35%, rgba(255,255,255,.88) 0 12%, transparent 13%),
-    linear-gradient(180deg, rgba(16, 185, 129, .74) 0 38%, rgba(245, 158, 11, .72) 39% 100%);
+  background: linear-gradient(135deg, #34d399, #047857);
+}
+
+.todayActionFood .actionVisual::before {
+  content: 'KCAL';
+  font-size: 12px;
 }
 
 .todayActionWeight:hover,
 .todayActionSport:hover,
 .todayActionFood:hover {
   border-color: rgba(15, 118, 110, .34);
-  box-shadow: 0 18px 34px rgba(15, 118, 110, .10);
+  box-shadow: 0 16px 30px rgba(15, 118, 110, .11);
   transform: translateY(-2px);
 }
 
@@ -695,20 +716,20 @@
 
 :global(html[data-theme='dark']) .todayActionWeight {
   background:
-    radial-gradient(circle at 78% 18%, rgba(14, 165, 233, .34), transparent 28%),
-    linear-gradient(145deg, rgba(12, 74, 110, .68), rgba(15, 23, 42, .78));
+    linear-gradient(90deg, rgba(14, 165, 233, .18), transparent 46%),
+    rgba(15, 23, 42, .68);
 }
 
 :global(html[data-theme='dark']) .todayActionSport {
   background:
-    radial-gradient(circle at 78% 18%, rgba(129, 140, 248, .36), transparent 28%),
-    linear-gradient(145deg, rgba(49, 46, 129, .58), rgba(15, 23, 42, .78));
+    linear-gradient(90deg, rgba(129, 140, 248, .18), transparent 46%),
+    rgba(15, 23, 42, .68);
 }
 
 :global(html[data-theme='dark']) .todayActionFood {
   background:
-    radial-gradient(circle at 78% 18%, rgba(251, 191, 36, .32), transparent 28%),
-    linear-gradient(145deg, rgba(6, 78, 59, .62), rgba(15, 23, 42, .78));
+    linear-gradient(90deg, rgba(16, 185, 129, .18), transparent 46%),
+    rgba(15, 23, 42, .68);
 }
 
 .todayActionWeight span,
@@ -717,15 +738,31 @@
   position: relative;
   z-index: 1;
   color: #0f172a;
-  font-size: clamp(24px, 4vw, 38px);
+  font-size: 18px;
   font-weight: 950;
-  line-height: 1;
+  line-height: 1.1;
 }
 
 :global(html[data-theme='dark']) .todayActionWeight span,
 :global(html[data-theme='dark']) .todayActionSport span,
 :global(html[data-theme='dark']) .todayActionFood span {
   color: #f8fafc;
+}
+
+.todayActionWeight small,
+.todayActionSport small,
+.todayActionFood small {
+  position: relative;
+  z-index: 1;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+:global(html[data-theme='dark']) .todayActionWeight small,
+:global(html[data-theme='dark']) .todayActionSport small,
+:global(html[data-theme='dark']) .todayActionFood small {
+  color: #94a3b8;
 }
 
 .todayDashboard {
@@ -3189,7 +3226,7 @@
   .todayActionWeight,
   .todayActionSport,
   .todayActionFood {
-    min-height: 138px;
+    min-height: 82px;
   }
 
   .summaryPanel {
@@ -3257,7 +3294,7 @@
   .todayActionWeight,
   .todayActionSport,
   .todayActionFood {
-    min-height: 132px;
+    min-height: 78px;
   }
 
   .goalForm,
