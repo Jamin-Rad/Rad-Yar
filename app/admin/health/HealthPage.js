@@ -698,18 +698,18 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
                 <div className={s.todayActions}>
                   <button className={s.todayActionWeight} type="button" onClick={() => setWeightOpen(true)}>
                     <i className={s.actionVisual} aria-hidden="true" />
-                    <span>Gewicht</span>
-                    <small>Wert eintragen</small>
+                    <span>Wiegen</span>
+                    <small>Gewicht für den Tag</small>
                   </button>
                   <button className={s.todayActionFood} type="button" onClick={() => openPicker('food')}>
                     <i className={s.actionVisual} aria-hidden="true" />
-                    <span>Essen</span>
-                    <small>Mahlzeit hinzufügen</small>
+                    <span>Mahlzeit</span>
+                    <small>Essen schnell ergänzen</small>
                   </button>
                   <button className={s.todayActionSport} type="button" onClick={() => openPicker('sport')}>
                     <i className={s.actionVisual} aria-hidden="true" />
-                    <span>Sport</span>
-                    <small>Aktivität hinzufügen</small>
+                    <span>Bewegung</span>
+                    <small>Sport oder Alltag</small>
                   </button>
                 </div>
               </section>
