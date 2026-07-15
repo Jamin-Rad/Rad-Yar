@@ -156,12 +156,14 @@ function sanitizeFinding(value) {
 
 function sanitizeFindingTimer(value) {
   const durationMs = Number(value?.durationMs)
+  const count = Number(value?.count)
   return {
     id: cleanText(value?.id, 80) || `finding-timer-${Date.now()}`,
     date: cleanDate(value?.date),
     modality: cleanText(value?.modality, 40),
     examArea: cleanText(value?.examArea, 80),
     note: cleanText(value?.note, 180),
+    count: Number.isFinite(count) && count > 0 ? Math.min(Math.round(count), 20) : 1,
     durationMs: Number.isFinite(durationMs) && durationMs > 0 ? Math.round(durationMs) : 0,
     createdAt: value?.createdAt || new Date().toISOString(),
     updatedAt: new Date().toISOString(),

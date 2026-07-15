@@ -676,6 +676,57 @@
   align-self: stretch;
 }
 
+.timerCountControl {
+  display: grid;
+  grid-column: 2;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid rgba(148, 163, 184, .18);
+  border-radius: 8px;
+  background: rgba(255,255,255,.06);
+  padding: 9px;
+}
+
+.timerCountControl span {
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.timerCountControl div {
+  display: grid;
+  grid-template-columns: 34px 44px 34px;
+  gap: 6px;
+  align-items: center;
+}
+
+.timerCountControl button {
+  display: grid;
+  min-height: 34px;
+  place-items: center;
+  border: 1px solid rgba(148, 163, 184, .22);
+  border-radius: 8px;
+  background: rgba(255,255,255,.08);
+  color: #e2e8f0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 950;
+}
+
+.timerCountControl button:disabled {
+  opacity: .38;
+  cursor: not-allowed;
+}
+
+.timerCountControl strong {
+  color: #f8fafc;
+  font-size: 16px;
+  font-weight: 950;
+  text-align: center;
+}
+
 .timerIconButtons {
   display: grid;
   grid-column: 2;
@@ -1502,6 +1553,10 @@
   }
 
   .timerIconButtons {
+    grid-column: auto;
+  }
+
+  .timerCountControl {
     grid-column: auto;
   }
 

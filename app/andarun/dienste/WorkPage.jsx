@@ -201,8 +201,15 @@ const EMPTY_FILTER = {
   diagnosis: '',
 }
 
+const TIMER_TARGET_MINUTES = {
+  Röntgen: 3,
+  CT: 7,
+  MRT: 15,
+}
+
 const EMPTY_TIMER_FORM = {
   modality: 'Röntgen',
+  count: 1,
 }
 
 function formatTimerDuration(ms) {
@@ -389,8 +396,11 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
 
   const timerDisplayMs = timerElapsed + (timerStartedAt ? timerNow - timerStartedAt : 0)
   const timerRunning = Boolean(timerStartedAt)
-  const timerSegmentMs = 5 * 60 * 1000
-  const timerSegmentTarget = Math.max(1, Math.floor(timerDisplayMs / timerSegmentMs) + 1) * 5
+  const timerBaseTargetMinutes = TIMER_TARGET_MINUTES[timerForm.modality] || 5
+  const timerCount = Math.max(1, Number(timerForm.count) || 1)
+  const timerTargetMinutes = timerBaseTargetMinutes * timerCount
+  const timerSegmentMs = timerTargetMinutes * 60 * 1000
+  const timerSegmentTarget = Math.max(1, Math.floor(timerDisplayMs / timerSegmentMs) + 1) * timerTargetMinutes
   const timerSegmentProgress = timerDisplayMs > 0 ? (timerDisplayMs % timerSegmentMs) / timerSegmentMs : 0
   const todayTimers = useMemo(
     () => findingTimers.filter(timer => timer.date === todayValue()),
@@ -398,10 +408,11 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
   )
   const timerStats = useMemo(() => MODALITIES.map(modality => {
     const items = todayTimers.filter(timer => timer.modality === modality)
-    const avg = items.length
-      ? Math.round(items.reduce((sum, timer) => sum + Number(timer.durationMs || 0), 0) / items.length)
+    const count = items.reduce((sum, timer) => sum + (Number(timer.count) || 1), 0)
+    const avg = count
+      ? Math.round(items.reduce((sum, timer) => sum + Number(timer.durationMs || 0), 0) / count)
       : 0
-    return { modality, count: items.length, avg }
+    return { modality, count, avg }
   }), [todayTimers])
   const timerHistoryDays = useMemo(() => {
     const grouped = new Map()
@@ -409,7 +420,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
       const date = timer.date || ''
       if (!date) return
       const current = grouped.get(date) || { date, count: 0, totalMs: 0 }
-      current.count += 1
+      current.count += Number(timer.count) || 1
       current.totalMs += Number(timer.durationMs || 0)
       grouped.set(date, current)
     })
@@ -423,6 +434,13 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
 
   function updateTimerModality(modality) {
     setTimerForm(prev => ({ ...prev, modality }))
+  }
+
+  function updateTimerCount(delta) {
+    setTimerForm(prev => ({
+      ...prev,
+      count: Math.min(20, Math.max(1, (Number(prev.count) || 1) + delta)),
+    }))
   }
 
   function startFindingTimer() {
@@ -456,6 +474,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
       const timer = {
         ...timerForm,
         id: `finding-timer-${now}`,
+        count: timerCount,
         date: todayValue(),
         examArea: '',
         durationMs,
@@ -769,6 +788,14 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
                     {modality}
                   </button>
                 ))}
+              </div>
+              <div className={styles.timerCountControl}>
+                <span>{timerBaseTargetMinutes} min / Befund</span>
+                <div>
+                  <button type="button" onClick={() => updateTimerCount(-1)} disabled={timerCount <= 1} aria-label="Ein Befund weniger">−</button>
+                  <strong>×{timerCount}</strong>
+                  <button type="button" onClick={() => updateTimerCount(1)} aria-label="Ein Befund mehr">+</button>
+                </div>
               </div>
               <div className={styles.timerIconButtons}>
                 <button type="button" onClick={startFindingTimer} disabled={timerRunning} aria-label="Timer starten">
