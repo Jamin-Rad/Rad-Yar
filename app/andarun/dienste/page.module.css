@@ -483,10 +483,7 @@
 }
 
 .findingTopGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(290px, .42fr);
-  gap: 16px;
-  align-items: stretch;
+  display: block;
   margin-top: 18px;
 }
 
@@ -569,6 +566,264 @@
 .findingForm button:hover {
   filter: brightness(1.06);
   transform: translateY(-1px);
+}
+
+.timerHero {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.timerHeroGrid {
+  display: grid;
+  grid-template-columns: minmax(360px, .92fr) minmax(320px, .68fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.timerDialCard,
+.timerStatsCard,
+.timerHistoryModal {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(125, 211, 252, .22);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 88% 8%, rgba(56, 189, 248, .24), transparent 30%),
+    radial-gradient(circle at 8% 96%, rgba(20, 184, 166, .16), transparent 34%),
+    linear-gradient(145deg, rgba(15, 23, 42, .82), rgba(2, 6, 23, .48));
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, .24),
+    inset 0 1px 0 rgba(255, 255, 255, .08);
+  backdrop-filter: blur(18px);
+}
+
+.timerDialCard {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+  padding: 18px;
+}
+
+.timerDial,
+.timerDialRunning {
+  --progress: 0deg;
+  display: grid;
+  width: 220px;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, rgba(2, 6, 23, .96) 0 59%, transparent 60%),
+    conic-gradient(#38bdf8 var(--progress), rgba(148, 163, 184, .16) 0);
+  box-shadow:
+    0 22px 58px rgba(14, 165, 233, .18),
+    inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+.timerDialRunning {
+  animation: timerPulse 2s ease-in-out infinite;
+}
+
+.timerDial div,
+.timerDialRunning div {
+  display: grid;
+  gap: 8px;
+  place-items: center;
+}
+
+.timerDial strong,
+.timerDialRunning strong {
+  color: #f8fafc;
+  font-family: var(--font-manrope), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: clamp(40px, 5vw, 58px);
+  font-variant-numeric: tabular-nums;
+  font-weight: 950;
+  letter-spacing: .01em;
+  line-height: 1;
+}
+
+.timerDial span,
+.timerDialRunning span {
+  border-radius: 999px;
+  background: rgba(34, 211, 238, .14);
+  color: #a5f3fc;
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: .08em;
+  padding: 6px 11px;
+  text-transform: uppercase;
+}
+
+.timerDialCard .timerModalityPills {
+  grid-template-columns: 1fr;
+  align-self: stretch;
+}
+
+.timerIconButtons {
+  display: grid;
+  grid-column: 2;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.timerIconButtons button {
+  display: grid;
+  min-height: 48px;
+  place-items: center;
+  border: 1px solid rgba(148, 163, 184, .22);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .08);
+  color: #e2e8f0;
+  cursor: pointer;
+}
+
+.timerIconButtons button:first-child,
+.timerIconButtons button:nth-child(2) {
+  border: 0;
+  background: linear-gradient(135deg, #14b8a6, #38bdf8);
+}
+
+.timerIconButtons button:disabled {
+  opacity: .42;
+  cursor: not-allowed;
+}
+
+.iconPlay {
+  width: 0;
+  height: 0;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-left: 15px solid currentColor;
+  transform: translateX(2px);
+}
+
+.iconPause {
+  width: 18px;
+  height: 20px;
+  border-right: 6px solid currentColor;
+  border-left: 6px solid currentColor;
+}
+
+.iconStop {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background: currentColor;
+}
+
+.timerStatsCard {
+  display: grid;
+  gap: 14px;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: 18px;
+  text-align: left;
+}
+
+.timerStatsGrid {
+  display: grid;
+  gap: 10px;
+}
+
+.timerStatsGrid div {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr) 72px;
+  gap: 10px;
+  align-items: center;
+  border-radius: 8px;
+  background: rgba(255,255,255,.065);
+  color: #cbd5e1;
+  padding: 10px;
+}
+
+.timerStatsGrid strong {
+  color: #f8fafc;
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.timerStatsGrid span {
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.timerStatsGrid em {
+  color: #67e8f9;
+  font-size: 13px;
+  font-style: normal;
+  font-variant-numeric: tabular-nums;
+  font-weight: 950;
+  text-align: right;
+}
+
+.timerHistoryModal {
+  width: min(980px, 100%);
+  max-height: min(86vh, 760px);
+  padding: clamp(20px, 3vw, 28px);
+}
+
+.timerHistoryChart {
+  display: grid;
+  grid-template-columns: repeat(14, minmax(44px, 1fr));
+  gap: 10px;
+  align-items: flex-end;
+  min-height: 260px;
+  margin-top: 22px;
+  overflow-x: auto;
+}
+
+.timerHistoryDay {
+  display: grid;
+  gap: 7px;
+  min-width: 44px;
+  color: #cbd5e1;
+  font-size: 11px;
+  font-weight: 850;
+  text-align: center;
+}
+
+.timerHistoryDay div {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  height: 150px;
+  border-radius: 8px;
+  background: rgba(255,255,255,.045);
+  padding: 8px 6px;
+}
+
+.timerHistoryDay i,
+.timerHistoryDay b {
+  display: block;
+  width: 11px;
+  min-height: 8px;
+  border-radius: 999px 999px 3px 3px;
+}
+
+.timerHistoryDay i {
+  background: linear-gradient(180deg, #38bdf8, #0f766e);
+}
+
+.timerHistoryDay b {
+  background: linear-gradient(180deg, #a78bfa, #4338ca);
+}
+
+.timerHistoryDay strong {
+  color: #f8fafc;
+}
+
+.timerHistoryDay span {
+  color: #67e8f9;
+  font-variant-numeric: tabular-nums;
+}
+
+.timerHistoryDay em {
+  color: #94a3b8;
+  font-style: normal;
 }
 
 .timerCompactCard {
@@ -1168,7 +1423,9 @@
   .header,
   .shell,
   .timerPanel,
-  .findingTopGrid {
+  .findingTopGrid,
+  .timerHeroGrid,
+  .timerDialCard {
     grid-template-columns: 1fr;
   }
 
@@ -1217,6 +1474,20 @@
 
   .timerCompactCard {
     min-height: auto;
+  }
+
+  .timerDial,
+  .timerDialRunning {
+    width: min(220px, 100%);
+    justify-self: center;
+  }
+
+  .timerDialCard .timerModalityPills {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .timerIconButtons {
+    grid-column: auto;
   }
 
   .timerCompactHead {

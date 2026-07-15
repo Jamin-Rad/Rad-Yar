@@ -234,6 +234,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
   const [timerElapsed, setTimerElapsed] = useState(0)
   const [timerStartedAt, setTimerStartedAt] = useState(null)
   const [timerNow, setTimerNow] = useState(Date.now())
+  const [timerHistoryOpen, setTimerHistoryOpen] = useState(false)
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(true)
 
@@ -388,6 +389,37 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
 
   const timerDisplayMs = timerElapsed + (timerStartedAt ? timerNow - timerStartedAt : 0)
   const timerRunning = Boolean(timerStartedAt)
+  const timerSegmentMs = 5 * 60 * 1000
+  const timerSegmentTarget = Math.max(1, Math.floor(timerDisplayMs / timerSegmentMs) + 1) * 5
+  const timerSegmentProgress = timerDisplayMs > 0 ? (timerDisplayMs % timerSegmentMs) / timerSegmentMs : 0
+  const todayTimers = useMemo(
+    () => findingTimers.filter(timer => timer.date === todayValue()),
+    [findingTimers],
+  )
+  const timerStats = useMemo(() => MODALITIES.map(modality => {
+    const items = todayTimers.filter(timer => timer.modality === modality)
+    const avg = items.length
+      ? Math.round(items.reduce((sum, timer) => sum + Number(timer.durationMs || 0), 0) / items.length)
+      : 0
+    return { modality, count: items.length, avg }
+  }), [todayTimers])
+  const timerHistoryDays = useMemo(() => {
+    const grouped = new Map()
+    findingTimers.forEach(timer => {
+      const date = timer.date || ''
+      if (!date) return
+      const current = grouped.get(date) || { date, count: 0, totalMs: 0 }
+      current.count += 1
+      current.totalMs += Number(timer.durationMs || 0)
+      grouped.set(date, current)
+    })
+    return [...grouped.values()]
+      .map(day => ({ ...day, avg: day.count ? Math.round(day.totalMs / day.count) : 0 }))
+      .sort((a, b) => a.date.localeCompare(b.date))
+      .slice(-14)
+  }, [findingTimers])
+  const maxHistoryCount = Math.max(1, ...timerHistoryDays.map(day => day.count))
+  const maxHistoryAvg = Math.max(1, ...timerHistoryDays.map(day => day.avg))
 
   function updateTimerModality(modality) {
     setTimerForm(prev => ({ ...prev, modality }))
@@ -555,7 +587,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
         {showHomeLink ? <Link href="/andarun" className={styles.back}>← Andarun</Link> : <span />}
         <div>
           <span className={styles.kicker}>{showFindings && !showShifts ? 'Befunde' : 'Dienstplanung'}</span>
-          <h1>{showFindings && !showShifts ? 'Befunde speichern' : 'Dienstzeiten'}</h1>
+          <h1>{showFindings && !showShifts ? 'Befunde' : 'Dienstzeiten'}</h1>
         </div>
         {showShifts ? <button className={styles.printBtn} type="button" onClick={printMonth}>PDF drucken</button> : <span />}
       </header>
@@ -708,9 +740,69 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
       </section>}
 
       {showFindings && <section className={styles.findings}>
+        <div className={styles.timerHero}>
+          <div className={styles.sectionTitle}>
+            <div>
+              <span className={styles.kicker}>Befundtimer</span>
+              <h2>Befundtimer</h2>
+            </div>
+          </div>
+          <div className={styles.timerHeroGrid}>
+            <div className={styles.timerDialCard}>
+              <div
+                className={timerRunning ? styles.timerDialRunning : styles.timerDial}
+                style={{ '--progress': `${timerSegmentProgress * 360}deg` }}
+              >
+                <div>
+                  <strong>{formatTimerDuration(timerDisplayMs)}</strong>
+                  <span>{timerSegmentTarget} min</span>
+                </div>
+              </div>
+              <div className={styles.timerModalityPills}>
+                {MODALITIES.map(modality => (
+                  <button
+                    key={modality}
+                    type="button"
+                    className={timerForm.modality === modality ? styles.timerModalityActive : styles.timerModality}
+                    onClick={() => updateTimerModality(modality)}
+                  >
+                    {modality}
+                  </button>
+                ))}
+              </div>
+              <div className={styles.timerIconButtons}>
+                <button type="button" onClick={startFindingTimer} disabled={timerRunning} aria-label="Timer starten">
+                  <span className={styles.iconPlay} />
+                </button>
+                <button type="button" onClick={pauseFindingTimer} disabled={!timerRunning} aria-label="Timer halten">
+                  <span className={styles.iconPause} />
+                </button>
+                <button type="button" onClick={finishFindingTimer} disabled={!timerDisplayMs} aria-label="Timer beenden und speichern">
+                  <span className={styles.iconStop} />
+                </button>
+              </div>
+            </div>
+
+            <button className={styles.timerStatsCard} type="button" onClick={() => setTimerHistoryOpen(true)}>
+              <span className={styles.kicker}>Heute</span>
+              <div className={styles.timerStatsGrid}>
+                {timerStats.map(stat => (
+                  <div key={stat.modality}>
+                    <strong>{stat.modality}</strong>
+                    <span>{stat.count} Befund{stat.count === 1 ? '' : 'e'}</span>
+                    <em>{stat.avg ? formatTimerDuration(stat.avg) : '--:--'} Ø</em>
+                  </div>
+                ))}
+              </div>
+            </button>
+          </div>
+        </div>
+
         <div className={styles.sectionTitle}>
-          <span className={styles.kicker}>Befunde</span>
-          <h2>Fälle, Fragen & Zeiten</h2>
+          <div>
+            <span className={styles.kicker}>Befundkontrolle</span>
+            <h2>Befundkontrolle</h2>
+          </div>
         </div>
 
         <div className={styles.findingTopGrid}>
@@ -734,43 +826,6 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
             })}
           </div>
 
-          <div className={styles.timerCompactCard}>
-            <div className={styles.timerCompactHead}>
-              <span className={styles.kicker}>Timer</span>
-              <strong>{formatTimerDuration(timerDisplayMs)}</strong>
-              <small>{timerRunning ? 'läuft' : timerDisplayMs ? 'pausiert' : 'bereit'}</small>
-            </div>
-            <div className={styles.timerModalityPills}>
-              {MODALITIES.map(modality => (
-                <button
-                  key={modality}
-                  type="button"
-                  className={timerForm.modality === modality ? styles.timerModalityActive : styles.timerModality}
-                  onClick={() => updateTimerModality(modality)}
-                >
-                  {modality}
-                </button>
-              ))}
-            </div>
-            <div className={styles.timerButtons}>
-              <button type="button" onClick={timerRunning ? pauseFindingTimer : startFindingTimer}>
-                {timerRunning ? 'Pause' : timerDisplayMs ? 'Weiter' : 'Start'}
-              </button>
-              <button type="button" onClick={finishFindingTimer} disabled={!timerDisplayMs}>Speichern</button>
-              <button type="button" onClick={resetFindingTimer} disabled={!timerDisplayMs}>Reset</button>
-            </div>
-            <div className={styles.timerMiniHistory}>
-              {findingTimers.slice(0, 4).map(timer => (
-                <div className={styles.timerMiniRow} key={timer.id}>
-                  <strong>{formatTimerDuration(timer.durationMs)}</strong>
-                  <span>{timer.modality}</span>
-                  <em>{timer.date}</em>
-                  <button type="button" onClick={() => deleteFindingTimer(timer.id)}>×</button>
-                </div>
-              ))}
-              {!findingTimers.length && !loading && <p>Noch keine Zeiten.</p>}
-            </div>
-          </div>
         </div>
 
         <div className={styles.findingBox}>
@@ -808,6 +863,40 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
                 <button type="button" onClick={closeFindingModal} aria-label="Fenster schließen">×</button>
               </div>
               {renderFindingForm()}
+            </div>
+          </div>
+        )}
+
+        {timerHistoryOpen && (
+          <div className={styles.modalBackdrop} role="presentation" onMouseDown={() => setTimerHistoryOpen(false)}>
+            <div
+              className={styles.timerHistoryModal}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="timer-history-title"
+              onMouseDown={event => event.stopPropagation()}
+            >
+              <div className={styles.modalHead}>
+                <div>
+                  <span className={styles.kicker}>Verlauf</span>
+                  <h3 id="timer-history-title">Befundtimer Verlauf</h3>
+                </div>
+                <button type="button" onClick={() => setTimerHistoryOpen(false)} aria-label="Fenster schließen">×</button>
+              </div>
+              <div className={styles.timerHistoryChart}>
+                {timerHistoryDays.map(day => (
+                  <div className={styles.timerHistoryDay} key={day.date}>
+                    <div>
+                      <i style={{ height: `${Math.max(8, (day.count / maxHistoryCount) * 100)}%` }} />
+                      <b style={{ height: `${Math.max(8, (day.avg / maxHistoryAvg) * 100)}%` }} />
+                    </div>
+                    <strong>{day.count}</strong>
+                    <span>{formatTimerDuration(day.avg)}</span>
+                    <em>{day.date.slice(5)}</em>
+                  </div>
+                ))}
+                {!timerHistoryDays.length && <p>Noch kein Verlauf gespeichert.</p>}
+              </div>
             </div>
           </div>
         )}
