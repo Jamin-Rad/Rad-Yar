@@ -506,6 +506,17 @@
   transform: translateY(-1px);
 }
 
+.dateStepBtn:disabled {
+  opacity: .38;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.dateStepBtn:disabled:hover {
+  border-color: rgba(15, 118, 110, .16);
+  transform: none;
+}
+
 .todayDateBar strong {
   display: inline-grid;
   min-height: 34px;

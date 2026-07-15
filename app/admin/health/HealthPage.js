@@ -157,6 +157,15 @@ function addDays(value, amount) {
   return dateValue(date)
 }
 
+function clampEntryDate(value) {
+  if (!value || typeof value !== 'string') return TODAY
+  return value > TODAY ? TODAY : value
+}
+
+function formHasContent(value) {
+  return Boolean(value.weight || value.note || value.manualKcal || value.sports.length || value.foods.length)
+}
+
 function weekDaysFor(value = TODAY) {
   const current = new Date(`${value}T12:00:00`)
   const monday = new Date(current)
@@ -302,7 +311,7 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
     const serialized = JSON.stringify(form)
     if (serialized === lastSavedRef.current) return undefined
 
-    const hasContent = form.weight || form.note || form.manualKcal || form.sports.length || form.foods.length
+    const hasContent = formHasContent(form)
     const existingRecord = records.some(record => record.date === form.date)
     if (!hasContent && !existingRecord) return undefined
 
@@ -473,8 +482,20 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
     })
   }
 
-  function selectEntryDate(date) {
-    const nextDate = date || TODAY
+  async function selectEntryDate(date) {
+    const nextDate = clampEntryDate(date)
+    if (nextDate === form.date) return
+
+    const currentSerialized = JSON.stringify(form)
+    const currentHasContent = formHasContent(form)
+    const currentExists = records.some(record => record.date === form.date)
+    if (currentSerialized !== lastSavedRef.current && (currentHasContent || currentExists)) {
+      clearTimeout(saveTimerRef.current)
+      setSaving(true)
+      setSaveMessage('Speichert automatisch…')
+      await saveCurrentForm(form, currentSerialized)
+    }
+
     const record = records.find(item => item.date === nextDate)
     const nextForm = formFromRecord(record, nextDate)
     clearTimeout(saveTimerRef.current)
@@ -680,9 +701,22 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
                   <button className={s.dateStepBtn} type="button" onClick={() => shiftEntryDate(-1)} aria-label="Voriger Tag">‹</button>
                   <label className={s.dateControl}>
                     <small>Datum</small>
-                    <input type="date" value={form.date} onChange={event => selectEntryDate(event.target.value)} />
+                    <input
+                      type="date"
+                      max={TODAY}
+                      value={form.date}
+                      onChange={event => selectEntryDate(event.target.value)}
+                    />
                   </label>
-                  <button className={s.dateStepBtn} type="button" onClick={() => shiftEntryDate(1)} aria-label="Nächster Tag">›</button>
+                  <button
+                    className={s.dateStepBtn}
+                    type="button"
+                    onClick={() => shiftEntryDate(1)}
+                    disabled={form.date >= TODAY}
+                    aria-label="Nächster Tag"
+                  >
+                    ›
+                  </button>
                   {form.date !== TODAY && (
                     <button className={s.todayMiniBtn} type="button" onClick={() => selectEntryDate(TODAY)}>
                       Heute
