@@ -229,7 +229,7 @@ export async function POST(request) {
 
     if (body.type === 'findingTimer') {
       const timer = sanitizeFindingTimer(body.timer)
-      if (!timer.date || !timer.modality || !timer.examArea || !timer.durationMs) {
+      if (!timer.date || !timer.modality || !timer.durationMs) {
         return NextResponse.json({ error: 'Timerdaten fehlen.' }, { status: 400 })
       }
       const next = {

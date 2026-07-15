@@ -202,10 +202,7 @@ const EMPTY_FILTER = {
 }
 
 const EMPTY_TIMER_FORM = {
-  date: todayValue(),
   modality: 'Röntgen',
-  examArea: AREA_OPTIONS['Röntgen'][0],
-  note: '',
 }
 
 function formatTimerDuration(ms) {
@@ -393,11 +390,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
   const timerRunning = Boolean(timerStartedAt)
 
   function updateTimerModality(modality) {
-    setTimerForm(prev => ({
-      ...prev,
-      modality,
-      examArea: AREA_OPTIONS[modality]?.[0] || '',
-    }))
+    setTimerForm(prev => ({ ...prev, modality }))
   }
 
   function startFindingTimer() {
@@ -431,6 +424,8 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
       const timer = {
         ...timerForm,
         id: `finding-timer-${now}`,
+        date: todayValue(),
+        examArea: '',
         durationMs,
         createdAt: new Date(now).toISOString(),
       }
@@ -715,88 +710,67 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
       {showFindings && <section className={styles.findings}>
         <div className={styles.sectionTitle}>
           <span className={styles.kicker}>Befunde</span>
-          <h2>Relevante Fälle & Fragen</h2>
+          <h2>Fälle, Fragen & Zeiten</h2>
         </div>
 
-        <div className={styles.timerPanel}>
-          <div className={styles.timerFormGlass}>
-            <div>
-              <span className={styles.kicker}>Befund-Timer</span>
-              <h3>Zeit pro Befund messen</h3>
-            </div>
-            <div className={styles.timerFields}>
-              <label>Datum
-                <input type="date" value={timerForm.date} onChange={event => setTimerForm(prev => ({ ...prev, date: event.target.value }))} />
-              </label>
-              <label>Modalität
-                <select value={timerForm.modality} onChange={event => updateTimerModality(event.target.value)}>
-                  {MODALITIES.map(modality => <option key={modality}>{modality}</option>)}
-                </select>
-              </label>
-              <label>Gebiet
-                <select value={timerForm.examArea} onChange={event => setTimerForm(prev => ({ ...prev, examArea: event.target.value }))}>
-                  {(AREA_OPTIONS[timerForm.modality] || []).map(area => <option key={area}>{area}</option>)}
-                </select>
-              </label>
-              <label>Notiz
-                <input value={timerForm.note} onChange={event => setTimerForm(prev => ({ ...prev, note: event.target.value }))} placeholder="optional" />
-              </label>
-            </div>
+        <div className={styles.findingTopGrid}>
+          <div className={styles.findingTypeCards}>
+            {CASE_TYPES.map(type => {
+              const count = type.id === 'case'
+                ? normalizedFindings.filter(finding => finding.type !== 'question').length
+                : normalizedFindings.filter(finding => finding.type === 'question').length
+              return (
+                <article className={activeFindingType === type.id ? styles.findingTypeCardActive : styles.findingTypeCard} key={type.id}>
+                  <div>
+                    <span>{count} gespeichert</span>
+                    <h3>{type.label}</h3>
+                  </div>
+                  <div className={styles.findingTypeActions}>
+                    <button type="button" onClick={() => openFindingModal(type.id)}>Eintrag erfassen</button>
+                    <button type="button" onClick={() => setActiveFindingType(type.id)}>Gespeicherte anzeigen</button>
+                  </div>
+                </article>
+              )
+            })}
           </div>
 
-          <div className={styles.timerClockGlass}>
-            <div className={timerRunning ? styles.timerOrbRunning : styles.timerOrb}>
-              <span>{formatTimerDuration(timerDisplayMs)}</span>
+          <div className={styles.timerCompactCard}>
+            <div className={styles.timerCompactHead}>
+              <span className={styles.kicker}>Timer</span>
+              <strong>{formatTimerDuration(timerDisplayMs)}</strong>
               <small>{timerRunning ? 'läuft' : timerDisplayMs ? 'pausiert' : 'bereit'}</small>
+            </div>
+            <div className={styles.timerModalityPills}>
+              {MODALITIES.map(modality => (
+                <button
+                  key={modality}
+                  type="button"
+                  className={timerForm.modality === modality ? styles.timerModalityActive : styles.timerModality}
+                  onClick={() => updateTimerModality(modality)}
+                >
+                  {modality}
+                </button>
+              ))}
             </div>
             <div className={styles.timerButtons}>
               <button type="button" onClick={timerRunning ? pauseFindingTimer : startFindingTimer}>
-                {timerRunning ? 'Pause' : timerDisplayMs ? 'Fortsetzen' : 'Start'}
+                {timerRunning ? 'Pause' : timerDisplayMs ? 'Weiter' : 'Start'}
               </button>
-              <button type="button" onClick={finishFindingTimer} disabled={!timerDisplayMs}>Beenden & speichern</button>
+              <button type="button" onClick={finishFindingTimer} disabled={!timerDisplayMs}>Speichern</button>
               <button type="button" onClick={resetFindingTimer} disabled={!timerDisplayMs}>Reset</button>
             </div>
-          </div>
-        </div>
-
-        <div className={styles.timerHistory}>
-          <div className={styles.listHead}>
-            <h3>Gespeicherte Befundzeiten</h3>
-            <span>{findingTimers.length}</span>
-          </div>
-          <div className={styles.timerRows}>
-            {findingTimers.slice(0, 8).map(timer => (
-              <div className={styles.timerRow} key={timer.id}>
-                <strong>{formatTimerDuration(timer.durationMs)}</strong>
-                <span>{timer.date}</span>
-                <span>{timer.modality}</span>
-                <span>{timer.examArea}</span>
-                <em>{timer.note || '—'}</em>
-                <button type="button" onClick={() => deleteFindingTimer(timer.id)}>×</button>
-              </div>
-            ))}
-            {!findingTimers.length && !loading && <div className={styles.emptyTable}>Noch keine Befundzeiten gespeichert.</div>}
-          </div>
-        </div>
-
-        <div className={styles.findingTypeCards}>
-          {CASE_TYPES.map(type => {
-            const count = type.id === 'case'
-              ? normalizedFindings.filter(finding => finding.type !== 'question').length
-              : normalizedFindings.filter(finding => finding.type === 'question').length
-            return (
-              <article className={activeFindingType === type.id ? styles.findingTypeCardActive : styles.findingTypeCard} key={type.id}>
-                <div>
-                  <span>{count} gespeichert</span>
-                  <h3>{type.label}</h3>
+            <div className={styles.timerMiniHistory}>
+              {findingTimers.slice(0, 4).map(timer => (
+                <div className={styles.timerMiniRow} key={timer.id}>
+                  <strong>{formatTimerDuration(timer.durationMs)}</strong>
+                  <span>{timer.modality}</span>
+                  <em>{timer.date}</em>
+                  <button type="button" onClick={() => deleteFindingTimer(timer.id)}>×</button>
                 </div>
-                <div className={styles.findingTypeActions}>
-                  <button type="button" onClick={() => openFindingModal(type.id)}>Eintrag erfassen</button>
-                  <button type="button" onClick={() => setActiveFindingType(type.id)}>Gespeicherte anzeigen</button>
-                </div>
-              </article>
-            )
-          })}
+              ))}
+              {!findingTimers.length && !loading && <p>Noch keine Zeiten.</p>}
+            </div>
+          </div>
         </div>
 
         <div className={styles.findingBox}>

@@ -482,6 +482,18 @@
   margin-top: 18px;
 }
 
+.findingTopGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(290px, .42fr);
+  gap: 16px;
+  align-items: stretch;
+  margin-top: 18px;
+}
+
+.findingTopGrid .findingTypeCards {
+  margin-top: 0;
+}
+
 .findingTypeCard,
 .findingTypeCardActive {
   min-height: 210px;
@@ -557,6 +569,141 @@
 .findingForm button:hover {
   filter: brightness(1.06);
   transform: translateY(-1px);
+}
+
+.timerCompactCard {
+  position: relative;
+  display: grid;
+  align-content: space-between;
+  gap: 14px;
+  min-height: 210px;
+  overflow: hidden;
+  border: 1px solid rgba(125, 211, 252, .22);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 88% 8%, rgba(56, 189, 248, .26), transparent 30%),
+    radial-gradient(circle at 8% 96%, rgba(20, 184, 166, .18), transparent 34%),
+    linear-gradient(145deg, rgba(15, 23, 42, .78), rgba(2, 6, 23, .44));
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, .24),
+    inset 0 1px 0 rgba(255, 255, 255, .08);
+  padding: 18px;
+  backdrop-filter: blur(18px);
+}
+
+.timerCompactCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, rgba(255,255,255,.12), transparent 38%),
+    radial-gradient(circle at 72% 22%, rgba(129, 140, 248, .16), transparent 26%);
+  pointer-events: none;
+}
+
+.timerCompactHead,
+.timerModalityPills,
+.timerButtons,
+.timerMiniHistory {
+  position: relative;
+}
+
+.timerCompactHead {
+  display: grid;
+  gap: 5px;
+}
+
+.timerCompactHead strong {
+  color: #f8fafc;
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(42px, 5vw, 58px);
+  font-variant-numeric: tabular-nums;
+  line-height: .9;
+}
+
+.timerCompactHead small {
+  width: fit-content;
+  border-radius: 999px;
+  background: rgba(34, 211, 238, .14);
+  color: #a5f3fc;
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: .11em;
+  padding: 5px 9px;
+  text-transform: uppercase;
+}
+
+.timerModalityPills {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.timerModality,
+.timerModalityActive {
+  min-height: 38px;
+  border: 1px solid rgba(148, 163, 184, .22);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .08);
+  color: #cbd5e1;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.timerModalityActive {
+  border-color: rgba(34, 211, 238, .42);
+  background: linear-gradient(135deg, rgba(20, 184, 166, .42), rgba(56, 189, 248, .34));
+  color: #f8fafc;
+}
+
+.timerMiniHistory {
+  display: grid;
+  gap: 6px;
+}
+
+.timerMiniHistory p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.timerMiniRow {
+  display: grid;
+  grid-template-columns: 58px 62px minmax(0, 1fr) 24px;
+  gap: 7px;
+  align-items: center;
+  border-radius: 7px;
+  background: rgba(255,255,255,.06);
+  color: #cbd5e1;
+  font-size: 11px;
+  font-weight: 850;
+  padding: 6px 7px;
+}
+
+.timerMiniRow strong {
+  color: #67e8f9;
+  font-variant-numeric: tabular-nums;
+}
+
+.timerMiniRow em {
+  overflow: hidden;
+  color: #94a3b8;
+  font-style: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.timerMiniRow button {
+  width: 22px;
+  height: 22px;
+  border: 0;
+  border-radius: 6px;
+  background: rgba(244, 63, 94, .16);
+  color: #fecdd3;
+  cursor: pointer;
 }
 
 .timerPanel {
@@ -1005,7 +1152,8 @@
 @media (max-width: 980px) {
   .header,
   .shell,
-  .timerPanel {
+  .timerPanel,
+  .findingTopGrid {
     grid-template-columns: 1fr;
   }
 
@@ -1047,8 +1195,13 @@
   .findingTypeActions,
   .findingFilters,
   .timerFields,
-  .timerButtons {
+  .timerButtons,
+  .timerModalityPills {
     grid-template-columns: 1fr;
+  }
+
+  .timerCompactCard {
+    min-height: auto;
   }
 
   .timerRow {
