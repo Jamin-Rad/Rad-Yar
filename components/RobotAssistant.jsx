@@ -73,12 +73,11 @@ export default function RobotAssistant() {
   const { user, isLoaded, isSignedIn } = useUser()
   const t = T[lang] || T.de
   const isRTL = lang === 'fa'
-
-  if (
+  const hiddenRoute = (
     pathname?.startsWith('/admin/budget')
     || pathname?.startsWith('/andarun')
     || pathname?.startsWith('/mobin')
-  ) return null
+  )
 
   const [mounted, setMounted] = useState(false)
   const [open, setOpen] = useState(false)
@@ -86,6 +85,7 @@ export default function RobotAssistant() {
   const [reaction, setReaction] = useState('')
 
   useEffect(() => {
+    if (hiddenRoute) return
     if (!isLoaded || !isSignedIn || !user?.id) return
 
     setMounted(true)
@@ -103,9 +103,10 @@ export default function RobotAssistant() {
       }, 1000)
       return () => clearTimeout(timer)
     }
-  }, [isLoaded, isSignedIn, user?.id])
+  }, [hiddenRoute, isLoaded, isSignedIn, user?.id])
 
   useEffect(() => {
+    if (hiddenRoute) return
     if (!isSignedIn) return
 
     const showLessonReaction = () => {
@@ -114,8 +115,9 @@ export default function RobotAssistant() {
     }
     window.addEventListener('radyar:lesson-read', showLessonReaction)
     return () => window.removeEventListener('radyar:lesson-read', showLessonReaction)
-  }, [isSignedIn, t.lessonRead])
+  }, [hiddenRoute, isSignedIn, t.lessonRead])
 
+  if (hiddenRoute) return null
   if (!mounted || !isLoaded || !isSignedIn) return null
 
   const greeting = `${t[greetingKey()]}${user?.firstName ? `, ${user.firstName}` : ''}!`
