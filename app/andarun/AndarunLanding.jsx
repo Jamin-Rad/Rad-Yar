@@ -26,7 +26,6 @@ function SpaceIcon({ name }) {
 }
 
 export default function AndarunLanding() {
-  const [galaxyOpen, setGalaxyOpen] = useState(false)
   const [revealedCards, setRevealedCards] = useState(new Set())
   const heroRef = useRef(null)
   const workspaceRef = useRef(null)
@@ -39,24 +38,17 @@ export default function AndarunLanding() {
     }
     window.addEventListener('scroll', onScroll, { passive: true })
 
-    const wsObs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) setGalaxyOpen(true) },
-      { threshold: 0.06 }
-    )
-    if (workspaceRef.current) wsObs.observe(workspaceRef.current)
-
     const cardEls = workspaceRef.current?.querySelectorAll('[data-ci]') || []
     const cardObs = new IntersectionObserver(
       (entries) => entries.forEach(e => {
         if (e.isIntersecting) setRevealedCards(p => new Set([...p, e.target.dataset.ci]))
       }),
-      { threshold: 0.1 }
+      { threshold: 0.12 }
     )
     cardEls.forEach(el => cardObs.observe(el))
 
     return () => {
       window.removeEventListener('scroll', onScroll)
-      wsObs.disconnect()
       cardObs.disconnect()
     }
   }, [])
@@ -80,7 +72,7 @@ export default function AndarunLanding() {
 
       <section
         ref={workspaceRef}
-        className={`${styles.workspace} ${galaxyOpen ? styles.galaxyOpen : ''}`}
+        className={styles.workspace}
         aria-labelledby="spaces-title"
       >
         <div className={styles.galaxyBg} aria-hidden="true" />
@@ -100,7 +92,7 @@ export default function AndarunLanding() {
                 key={space.title}
                 data-ci={String(i)}
                 className={`${styles.card} ${styles[space.theme]} ${revealedCards.has(String(i)) ? styles.cardRevealed : ''}`}
-                style={{ '--reveal-delay': `${i * 0.07}s` }}
+                style={{ '--reveal-delay': `${i * 0.08}s` }}
                 href={space.href}
               >
                 <div className={styles.cardTop}>

@@ -115,48 +115,35 @@
   isolation: isolate;
 }
 
-/* ── GALAXY IMAGE ─────────────────────────────────────────────────────────── */
+/* ── GALAXY BACKGROUND — immer sichtbar, langsam driftend ────────────────── */
 .galaxyBg {
   position: absolute;
   inset: 0;
   z-index: 0;
   background: url('/andarun-galaxy-v2.png') center center / cover no-repeat;
-
-  /* Start: zoomed in, dark, slightly rotated */
-  transform: scale(1.18) rotate(2deg);
-  filter: brightness(0.25) saturate(0.6);
-  transition:
-    transform 2.8s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 2.8s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: brightness(0.7) saturate(1.1);
+  animation: galaxyDrift 36s ease-in-out infinite;
 }
 
-/* Dark gradient overlay so text stays readable */
+/* dunkles Overlay damit Text lesbar bleibt */
 .galaxyBg::after {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(0deg,  rgba(4,6,15,0.82) 0%,  rgba(4,6,15,0.32) 55%, rgba(4,6,15,0.18) 100%),
-    linear-gradient(180deg, rgba(4,6,15,0.55) 0%, transparent 20%);
+    linear-gradient(0deg, rgba(4,6,15,0.78) 0%, rgba(4,6,15,0.25) 50%, rgba(4,6,15,0.15) 100%),
+    linear-gradient(180deg, rgba(4,6,15,0.5) 0%, transparent 18%);
 }
 
-/* Triggered: image opens up, brightens, starts slow drift */
 @keyframes galaxyDrift {
-  0%   { transform: scale(1.0)  rotate(0deg)    translateX(0px); }
-  33%  { transform: scale(1.02) rotate(0.3deg)  translateX(-6px); }
-  66%  { transform: scale(1.01) rotate(-0.2deg) translateX(4px); }
-  100% { transform: scale(1.0)  rotate(0deg)    translateX(0px); }
+  0%   { transform: scale(1.0)  translateX(0px)  translateY(0px); }
+  25%  { transform: scale(1.03) translateX(-8px) translateY(-4px); }
+  50%  { transform: scale(1.02) translateX(5px)  translateY(-7px); }
+  75%  { transform: scale(1.03) translateX(-4px) translateY(3px); }
+  100% { transform: scale(1.0)  translateX(0px)  translateY(0px); }
 }
 
-.galaxyOpen .galaxyBg {
-  filter: brightness(0.72) saturate(1.15);
-  animation: galaxyDrift 28s ease-in-out infinite;
-  /* Override the transition once animation starts */
-  transition:
-    filter 2.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Content sits above the image */
+/* ── CONTENT ─────────────────────────────────────────────────────────────── */
 .workspaceContent {
   position: relative;
   z-index: 1;
@@ -195,6 +182,7 @@
   gap: 14px;
 }
 
+/* Kästchen — unsichtbar bis sie reinkommen */
 .card {
   min-height: 380px;
   padding: 24px;
@@ -204,29 +192,36 @@
   text-decoration: none;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,.16);
-  background: rgba(4,6,15,.55);
-  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(4,6,15,.52);
+  backdrop-filter: blur(16px);
   opacity: 0;
+  transform: translateY(70px) scale(0.94);
   transition:
-    transform .35s cubic-bezier(.2,.8,.2,1),
     box-shadow .35s,
     background .35s;
 }
 .card:hover {
-  transform: translateY(-9px);
-  background: rgba(255,255,255,.10);
-  box-shadow: 0 25px 60px rgba(0,0,0,.5), 0 0 50px rgba(111,91,220,.12);
+  background: rgba(255,255,255,.09);
+  box-shadow: 0 28px 65px rgba(0,0,0,.55), 0 0 55px rgba(111,91,220,.13);
 }
 
-@keyframes cardReveal {
-  from { opacity: 0; transform: translateY(44px) scale(.97); }
-  to   { opacity: 1; transform: translateY(0)    scale(1);   }
+/* Kästchen fliegen rein */
+@keyframes cardFlyIn {
+  0%   { opacity: 0; transform: translateY(70px) scale(0.94); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: translateY(0)    scale(1); }
 }
+
 .cardRevealed {
-  animation: cardReveal .65s cubic-bezier(.2,.8,.2,1) var(--reveal-delay, 0s) forwards;
+  animation: cardFlyIn .7s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s) both;
 }
-.cardRevealed:hover { transform: translateY(-9px); }
+
+/* Hover nur wenn schon sichtbar — kein Sprung beim Reinflegen */
+.cardRevealed:hover {
+  transform: translateY(-8px);
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, background .35s;
+}
 
 .cardTop { display: flex; justify-content: space-between; align-items: center; }
 .number  { font-size: 11px; font-weight: 800; letter-spacing: .14em; }
@@ -238,7 +233,7 @@
   font-size: 19px;
   transition: transform .3s, background .3s, color .3s;
 }
-.card:hover .arrow { transform: rotate(45deg); background: #fff; color: #101224; }
+.cardRevealed:hover .arrow { transform: rotate(45deg); background: #fff; color: #101224; }
 
 .icon { flex: 1; display: grid; place-items: center; }
 .icon svg {
@@ -250,7 +245,7 @@
   stroke-linejoin: round;
   transition: transform .35s;
 }
-.card:hover .icon svg { transform: scale(1.1) rotate(-3deg); }
+.cardRevealed:hover .icon svg { transform: scale(1.1) rotate(-3deg); }
 
 .cardCopy h3 {
   margin: 0 0 10px;
@@ -319,8 +314,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .card, .icon svg, .arrow { transition: none; }
-  .card { opacity: 1; animation: none; }
-  .galaxyBg { transition: none; animation: none; }
+  .galaxyBg { animation: none; }
+  .card { opacity: 1; transform: none; }
+  .cardRevealed { animation: none; }
   .hero::before { transform: none !important; }
 }
