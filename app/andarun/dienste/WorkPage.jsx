@@ -201,12 +201,30 @@ const EMPTY_FILTER = {
   diagnosis: '',
 }
 
+const EMPTY_TIMER_FORM = {
+  date: todayValue(),
+  modality: 'Röntgen',
+  examArea: AREA_OPTIONS['Röntgen'][0],
+  note: '',
+}
+
+function formatTimerDuration(ms) {
+  const totalSeconds = Math.max(0, Math.floor(ms / 1000))
+  const hours = Math.floor(totalSeconds / 3600)
+  const minutes = Math.floor((totalSeconds % 3600) / 60)
+  const seconds = totalSeconds % 60
+  const mm = String(minutes).padStart(2, '0')
+  const ss = String(seconds).padStart(2, '0')
+  return hours > 0 ? `${hours}:${mm}:${ss}` : `${mm}:${ss}`
+}
+
 export default function WorkPage({ showHomeLink = true, view = 'all' }) {
   const showShifts = view !== 'findings'
   const showFindings = view !== 'shifts'
   const [month, setMonth] = useState(monthValue())
   const [shifts, setShifts] = useState([])
   const [findings, setFindings] = useState([])
+  const [findingTimers, setFindingTimers] = useState([])
   const [selectedDate, setSelectedDate] = useState(todayValue())
   const [shiftForm, setShiftForm] = useState(emptyShift(todayValue()))
   const [rangeEndDate, setRangeEndDate] = useState(todayValue())
@@ -215,12 +233,22 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
   const [findingModalType, setFindingModalType] = useState(null)
   const [caseFilter, setCaseFilter] = useState(EMPTY_FILTER)
   const [questionFilter, setQuestionFilter] = useState(EMPTY_FILTER)
+  const [timerForm, setTimerForm] = useState(EMPTY_TIMER_FORM)
+  const [timerElapsed, setTimerElapsed] = useState(0)
+  const [timerStartedAt, setTimerStartedAt] = useState(null)
+  const [timerNow, setTimerNow] = useState(Date.now())
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     loadAll()
   }, [])
+
+  useEffect(() => {
+    if (!timerStartedAt) return undefined
+    const id = window.setInterval(() => setTimerNow(Date.now()), 1000)
+    return () => window.clearInterval(id)
+  }, [timerStartedAt])
 
   const shiftsByDate = useMemo(
     () => new Map(shifts.filter(shift => !isAbsenceShift(shift)).map(shift => [shift.date, shift])),
@@ -258,6 +286,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
       const loadedShifts = (data.shifts || []).map(normalizeShift)
       setShifts(loadedShifts)
       setFindings(data.findings || [])
+      setFindingTimers(data.findingTimers || [])
       const existing = loadedShifts.find(item => item.date === selectedDate && !isAbsenceShift(item))
         || loadedShifts.find(item => item.date === selectedDate)
       setShiftForm(existing || emptyShift(selectedDate))
@@ -355,6 +384,71 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
     try {
       const data = await apiRequest(`/?type=finding&id=${encodeURIComponent(id)}`, 'DELETE')
       setFindings(data.findings || [])
+    } catch (error) {
+      setMessage(error.message)
+    }
+  }
+
+  const timerDisplayMs = timerElapsed + (timerStartedAt ? timerNow - timerStartedAt : 0)
+  const timerRunning = Boolean(timerStartedAt)
+
+  function updateTimerModality(modality) {
+    setTimerForm(prev => ({
+      ...prev,
+      modality,
+      examArea: AREA_OPTIONS[modality]?.[0] || '',
+    }))
+  }
+
+  function startFindingTimer() {
+    if (timerRunning) return
+    setTimerNow(Date.now())
+    setTimerStartedAt(Date.now())
+  }
+
+  function pauseFindingTimer() {
+    if (!timerStartedAt) return
+    const now = Date.now()
+    setTimerElapsed(prev => prev + (now - timerStartedAt))
+    setTimerStartedAt(null)
+    setTimerNow(now)
+  }
+
+  function resetFindingTimer() {
+    setTimerElapsed(0)
+    setTimerStartedAt(null)
+    setTimerNow(Date.now())
+  }
+
+  async function finishFindingTimer() {
+    const now = Date.now()
+    const durationMs = timerElapsed + (timerStartedAt ? now - timerStartedAt : 0)
+    if (durationMs < 1000) {
+      setMessage('Timer ist noch zu kurz.')
+      return
+    }
+    try {
+      const timer = {
+        ...timerForm,
+        id: `finding-timer-${now}`,
+        durationMs,
+        createdAt: new Date(now).toISOString(),
+      }
+      const data = await apiRequest('/', 'POST', { type: 'findingTimer', timer })
+      setFindingTimers(data.findingTimers || [])
+      setTimerElapsed(0)
+      setTimerStartedAt(null)
+      setTimerNow(now)
+      setMessage('Befundzeit gespeichert.')
+    } catch (error) {
+      setMessage(error.message)
+    }
+  }
+
+  async function deleteFindingTimer(id) {
+    try {
+      const data = await apiRequest(`/?type=findingTimer&id=${encodeURIComponent(id)}`, 'DELETE')
+      setFindingTimers(data.findingTimers || [])
     } catch (error) {
       setMessage(error.message)
     }
@@ -622,6 +716,67 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
         <div className={styles.sectionTitle}>
           <span className={styles.kicker}>Befunde</span>
           <h2>Relevante Fälle & Fragen</h2>
+        </div>
+
+        <div className={styles.timerPanel}>
+          <div className={styles.timerFormGlass}>
+            <div>
+              <span className={styles.kicker}>Befund-Timer</span>
+              <h3>Zeit pro Befund messen</h3>
+            </div>
+            <div className={styles.timerFields}>
+              <label>Datum
+                <input type="date" value={timerForm.date} onChange={event => setTimerForm(prev => ({ ...prev, date: event.target.value }))} />
+              </label>
+              <label>Modalität
+                <select value={timerForm.modality} onChange={event => updateTimerModality(event.target.value)}>
+                  {MODALITIES.map(modality => <option key={modality}>{modality}</option>)}
+                </select>
+              </label>
+              <label>Gebiet
+                <select value={timerForm.examArea} onChange={event => setTimerForm(prev => ({ ...prev, examArea: event.target.value }))}>
+                  {(AREA_OPTIONS[timerForm.modality] || []).map(area => <option key={area}>{area}</option>)}
+                </select>
+              </label>
+              <label>Notiz
+                <input value={timerForm.note} onChange={event => setTimerForm(prev => ({ ...prev, note: event.target.value }))} placeholder="optional" />
+              </label>
+            </div>
+          </div>
+
+          <div className={styles.timerClockGlass}>
+            <div className={timerRunning ? styles.timerOrbRunning : styles.timerOrb}>
+              <span>{formatTimerDuration(timerDisplayMs)}</span>
+              <small>{timerRunning ? 'läuft' : timerDisplayMs ? 'pausiert' : 'bereit'}</small>
+            </div>
+            <div className={styles.timerButtons}>
+              <button type="button" onClick={timerRunning ? pauseFindingTimer : startFindingTimer}>
+                {timerRunning ? 'Pause' : timerDisplayMs ? 'Fortsetzen' : 'Start'}
+              </button>
+              <button type="button" onClick={finishFindingTimer} disabled={!timerDisplayMs}>Beenden & speichern</button>
+              <button type="button" onClick={resetFindingTimer} disabled={!timerDisplayMs}>Reset</button>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.timerHistory}>
+          <div className={styles.listHead}>
+            <h3>Gespeicherte Befundzeiten</h3>
+            <span>{findingTimers.length}</span>
+          </div>
+          <div className={styles.timerRows}>
+            {findingTimers.slice(0, 8).map(timer => (
+              <div className={styles.timerRow} key={timer.id}>
+                <strong>{formatTimerDuration(timer.durationMs)}</strong>
+                <span>{timer.date}</span>
+                <span>{timer.modality}</span>
+                <span>{timer.examArea}</span>
+                <em>{timer.note || '—'}</em>
+                <button type="button" onClick={() => deleteFindingTimer(timer.id)}>×</button>
+              </div>
+            ))}
+            {!findingTimers.length && !loading && <div className={styles.emptyTable}>Noch keine Befundzeiten gespeichert.</div>}
+          </div>
         </div>
 
         <div className={styles.findingTypeCards}>

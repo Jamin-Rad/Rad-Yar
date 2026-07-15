@@ -559,6 +559,230 @@
   transform: translateY(-1px);
 }
 
+.timerPanel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, .68fr);
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.timerFormGlass,
+.timerClockGlass,
+.timerHistory {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(125, 211, 252, .20);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(34, 211, 238, .16), transparent 34%),
+    linear-gradient(145deg, rgba(15, 23, 42, .74), rgba(2, 6, 23, .46));
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, .24),
+    inset 0 1px 0 rgba(255, 255, 255, .08);
+  backdrop-filter: blur(18px);
+}
+
+.timerFormGlass::before,
+.timerClockGlass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, rgba(255,255,255,.11), transparent 34%),
+    radial-gradient(circle at 90% 10%, rgba(20, 184, 166, .20), transparent 28%);
+  pointer-events: none;
+}
+
+.timerFormGlass {
+  display: grid;
+  gap: 18px;
+  padding: 20px;
+}
+
+.timerFormGlass h3 {
+  position: relative;
+  margin: 6px 0 0;
+  font-size: clamp(24px, 3vw, 36px);
+  line-height: 1;
+}
+
+.timerFields {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.timerFields label {
+  display: grid;
+  gap: 7px;
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.timerFields input,
+.timerFields select {
+  min-height: 48px;
+  border: 1px solid rgba(148, 163, 184, .20);
+  border-radius: 8px;
+  background: rgba(2, 6, 23, .46);
+  color: #f8fafc;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 850;
+  outline: none;
+  padding: 0 13px;
+  transition: border-color .16s, box-shadow .16s, background .16s;
+}
+
+.timerFields input:focus,
+.timerFields select:focus {
+  border-color: rgba(34, 211, 238, .62);
+  background: rgba(2, 6, 23, .58);
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, .12);
+}
+
+.timerClockGlass {
+  display: grid;
+  gap: 18px;
+  place-items: center;
+  padding: 20px;
+}
+
+.timerOrb,
+.timerOrbRunning {
+  position: relative;
+  display: grid;
+  width: min(240px, 100%);
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(125, 211, 252, .22);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(2, 6, 23, .82) 0 45%, transparent 46%),
+    conic-gradient(from 180deg, #14b8a6, #38bdf8, #818cf8, #14b8a6);
+  box-shadow:
+    0 22px 58px rgba(14, 165, 233, .18),
+    inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+.timerOrbRunning {
+  animation: timerPulse 2s ease-in-out infinite;
+}
+
+@keyframes timerPulse {
+  0%, 100% { box-shadow: 0 22px 58px rgba(14, 165, 233, .18), 0 0 0 0 rgba(34, 211, 238, .18); }
+  50% { box-shadow: 0 26px 70px rgba(14, 165, 233, .26), 0 0 0 10px rgba(34, 211, 238, .04); }
+}
+
+.timerOrb span,
+.timerOrbRunning span {
+  margin-top: 18px;
+  color: #f8fafc;
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(42px, 7vw, 66px);
+  font-variant-numeric: tabular-nums;
+  font-weight: 950;
+  line-height: .9;
+}
+
+.timerOrb small,
+.timerOrbRunning small {
+  margin-top: -48px;
+  border-radius: 999px;
+  background: rgba(34, 211, 238, .14);
+  color: #a5f3fc;
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: .12em;
+  padding: 6px 10px;
+  text-transform: uppercase;
+}
+
+.timerButtons {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  width: 100%;
+}
+
+.timerButtons button {
+  min-height: 44px;
+  border: 1px solid rgba(148, 163, 184, .22);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .08);
+  color: #e2e8f0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 950;
+  padding: 0 10px;
+}
+
+.timerButtons button:first-child,
+.timerButtons button:nth-child(2) {
+  border: 0;
+  background: linear-gradient(135deg, #14b8a6, #38bdf8);
+  color: #04111d;
+}
+
+.timerButtons button:disabled {
+  opacity: .42;
+  cursor: not-allowed;
+}
+
+.timerHistory {
+  margin-top: 16px;
+  padding: 14px;
+}
+
+.timerRows {
+  display: grid;
+  gap: 7px;
+}
+
+.timerRow {
+  display: grid;
+  grid-template-columns: 82px 90px 82px 130px minmax(0, 1fr) 32px;
+  gap: 8px;
+  align-items: center;
+  border-radius: 8px;
+  background: rgba(255,255,255,.055);
+  color: #cbd5e1;
+  font-size: 12px;
+  font-weight: 850;
+  padding: 9px;
+}
+
+.timerRow strong {
+  color: #67e8f9;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.timerRow em {
+  min-width: 0;
+  overflow: hidden;
+  color: #94a3b8;
+  font-style: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.timerRow button {
+  width: 26px;
+  height: 26px;
+  border: 0;
+  border-radius: 6px;
+  background: rgba(244, 63, 94, .16);
+  color: #fecdd3;
+  cursor: pointer;
+}
+
 .findingBox {
   min-width: 0;
   border: 1px solid rgba(148, 163, 184, .18);
@@ -780,7 +1004,8 @@
 
 @media (max-width: 980px) {
   .header,
-  .shell {
+  .shell,
+  .timerPanel {
     grid-template-columns: 1fr;
   }
 
@@ -789,7 +1014,8 @@
   }
 
   .findingForm,
-  .findingTypeCards {
+  .findingTypeCards,
+  .timerFields {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -819,8 +1045,18 @@
   .assignmentPicker,
   .findingTypeCards,
   .findingTypeActions,
-  .findingFilters {
+  .findingFilters,
+  .timerFields,
+  .timerButtons {
     grid-template-columns: 1fr;
+  }
+
+  .timerRow {
+    grid-template-columns: 1fr 1fr 1fr 32px;
+  }
+
+  .timerRow em {
+    grid-column: 1 / 4;
   }
 
 }

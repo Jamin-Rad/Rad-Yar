@@ -8,6 +8,7 @@ const STATE_ID = 'andarun:work'
 const EMPTY_STATE = {
   shifts: [],
   findings: [],
+  findingTimers: [],
 }
 
 function unavailable() {
@@ -25,6 +26,7 @@ function normalizeState(value) {
   return {
     shifts: [...new Map(normalizedShifts.map(item => [shiftKey(item), item])).values()],
     findings: Array.isArray(state.findings) ? state.findings : [],
+    findingTimers: Array.isArray(state.findingTimers) ? state.findingTimers : [],
   }
 }
 
@@ -152,6 +154,20 @@ function sanitizeFinding(value) {
   }
 }
 
+function sanitizeFindingTimer(value) {
+  const durationMs = Number(value?.durationMs)
+  return {
+    id: cleanText(value?.id, 80) || `finding-timer-${Date.now()}`,
+    date: cleanDate(value?.date),
+    modality: cleanText(value?.modality, 40),
+    examArea: cleanText(value?.examArea, 80),
+    note: cleanText(value?.note, 180),
+    durationMs: Number.isFinite(durationMs) && durationMs > 0 ? Math.round(durationMs) : 0,
+    createdAt: value?.createdAt || new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  }
+}
+
 export async function GET() {
   const access = await requireReadAccess()
   if (access.response) return access.response
@@ -211,6 +227,19 @@ export async function POST(request) {
       return NextResponse.json(await writeState(next))
     }
 
+    if (body.type === 'findingTimer') {
+      const timer = sanitizeFindingTimer(body.timer)
+      if (!timer.date || !timer.modality || !timer.examArea || !timer.durationMs) {
+        return NextResponse.json({ error: 'Timerdaten fehlen.' }, { status: 400 })
+      }
+      const next = {
+        ...state,
+        findingTimers: [timer, ...state.findingTimers.filter(item => item.id !== timer.id)]
+          .sort((a, b) => String(b.date || b.createdAt).localeCompare(String(a.date || a.createdAt))),
+      }
+      return NextResponse.json(await writeState(next))
+    }
+
     return NextResponse.json({ error: 'Unknown type.' }, { status: 400 })
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })
@@ -230,7 +259,9 @@ export async function DELETE(request) {
     const state = await readState()
     const next = type === 'finding'
       ? { ...state, findings: state.findings.filter(item => item.id !== id) }
-      : { ...state, shifts: state.shifts.filter(item => item.id !== id) }
+      : type === 'findingTimer'
+        ? { ...state, findingTimers: state.findingTimers.filter(item => item.id !== id) }
+        : { ...state, shifts: state.shifts.filter(item => item.id !== id) }
     return NextResponse.json(await writeState(next))
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })
