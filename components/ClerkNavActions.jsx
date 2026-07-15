@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import Link from 'next/link'
 import { ClerkLoaded, ClerkLoading, useUser } from '@clerk/nextjs'
 import styles from './Navbar.module.css'
