@@ -135,6 +135,17 @@ async function apiRequest(apiBase, path, method = 'GET', body) {
 
 const EMPTY_FORM = { date: TODAY, weight: '', note: '', manualKcal: 0, sports: [], foods: [] }
 
+function formFromRecord(record, date = TODAY) {
+  return {
+    date,
+    weight: record?.weight ?? '',
+    note: record?.note ?? '',
+    manualKcal: record?.manual_kcal ?? 0,
+    sports: Array.isArray(record?.sports) ? record.sports : [],
+    foods: Array.isArray(record?.foods) ? record.foods : [],
+  }
+}
+
 function dateValue(date) {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
 }
@@ -258,14 +269,7 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
       setDeletedFoods(data.deletedFoods || [])
       const today = (data.records || []).find(r => r.date === TODAY)
       if (today) {
-        const nextForm = {
-          date: today.date,
-          weight: today.weight ?? '',
-          note: today.note ?? '',
-          manualKcal: today.manual_kcal ?? 0,
-          sports: today.sports ?? [],
-          foods: today.foods ?? [],
-        }
+        const nextForm = formFromRecord(today, today.date)
         setForm(nextForm)
         lastSavedRef.current = JSON.stringify(nextForm)
       } else {
@@ -462,6 +466,16 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
     })
   }
 
+  function selectEntryDate(date) {
+    const nextDate = date || TODAY
+    const record = records.find(item => item.date === nextDate)
+    const nextForm = formFromRecord(record, nextDate)
+    clearTimeout(saveTimerRef.current)
+    lastSavedRef.current = JSON.stringify(nextForm)
+    setSaveMessage('')
+    setForm(nextForm)
+  }
+
   function openPicker(type) {
     setPicker({ type, step: 'cats', catId: null })
     setActiveId(null)
@@ -649,8 +663,14 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
         {tab === 'eintragen' && (
           <div className={s.todayView}>
             <div className={s.todayDateBar}>
-              <span>{formatHealthDate(TODAY)}</span>
-              <strong>{saving ? 'Speichert…' : saveMessage && !saveMessage.includes('fehl') && !saveMessage.includes('nicht') ? 'Gespeichert' : 'Heute'}</strong>
+              <div>
+                <span>{formatHealthDate(form.date)}</span>
+                <label className={s.dateControl}>
+                  <small>Datum</small>
+                  <input type="date" value={form.date} onChange={event => selectEntryDate(event.target.value)} />
+                </label>
+              </div>
+              <strong>{saving ? 'Speichert…' : saveMessage && !saveMessage.includes('fehl') && !saveMessage.includes('nicht') ? 'Gespeichert' : form.date === TODAY ? 'Heute' : 'Eintragen'}</strong>
             </div>
 
             <div className={s.todayMainGrid}>
@@ -772,7 +792,7 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
                 <button className={s.backBtn} type="button" onClick={() => setWeightOpen(false)} aria-label="Gewicht schließen">×</button>
                 <div>
                   <span className={s.pickerKicker}>Gewicht</span>
-                  <h2>Heute wählen</h2>
+                  <h2>{form.date === TODAY ? 'Heute wählen' : 'Gewicht wählen'}</h2>
                 </div>
               </header>
               <div className={s.weightPicker}>
@@ -787,7 +807,7 @@ export default function HealthPage({ apiBase = '/api/andarun/health', homeHref =
                       ref={value === activeWeight ? activeWeightRef : null}
                       type="button"
                       className={value === activeWeight ? s.weightOptionActive : s.weightOption}
-                      onClick={() => setForm(f => ({ ...f, weight: value, date: TODAY }))}
+                      onClick={() => setForm(f => ({ ...f, weight: value }))}
                       aria-selected={value === activeWeight}
                     >
                       {value} kg

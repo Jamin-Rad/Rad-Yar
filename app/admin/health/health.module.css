@@ -417,11 +417,48 @@
   padding: 18px 20px;
 }
 
+.todayDateBar > div {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
 .todayDateBar span {
   color: #0f766e;
   font-size: clamp(22px, 3vw, 34px);
   font-weight: 950;
   line-height: 1;
+}
+
+.dateControl {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  max-width: 100%;
+  border: 1px solid rgba(15, 118, 110, .16);
+  border-radius: 8px;
+  background: rgba(255,255,255,.68);
+  padding: 7px 9px;
+}
+
+.dateControl small {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.dateControl input {
+  min-height: 30px;
+  border: 0;
+  background: transparent;
+  color: #0f172a;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 900;
+  outline: none;
 }
 
 .todayDateBar strong {
@@ -445,6 +482,19 @@
 :global(html[data-theme='dark']) .todayDateBar strong {
   background: rgba(45, 212, 191, .12);
   color: #5eead4;
+}
+
+:global(html[data-theme='dark']) .dateControl {
+  border-color: rgba(94, 234, 212, .18);
+  background: rgba(15, 23, 42, .58);
+}
+
+:global(html[data-theme='dark']) .dateControl small {
+  color: #94a3b8;
+}
+
+:global(html[data-theme='dark']) .dateControl input {
+  color: #f8fafc;
 }
 
 .todayPanelHead span {
