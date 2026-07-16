@@ -98,13 +98,13 @@ const COPY = {
       lateral: [
         ['/knieligamente/lateral-collateral-complex.png', 'Lateraler Kollateralbandkomplex: LCL, Popliteus und Biceps-femoris-Bezug.'],
         ['/knieligamente/lcl-biceps-v-sign.png', 'Sagittales V am Fibulaköpfchen: LCL anteromedial, Biceps-femoris-Sehne posterolateral.'],
-        ['/knieligamente/lcl-acute-followup.png', 'Akute LCL-Verletzung und Verlauf mit morphologischer Rekonstruktion.'],
+        ['/knieligamente/lcl-followup-series.png', 'LCL-Verlauf von links nach rechts: initial, nach 3 Monaten, nach 6 Monaten und nach 24 Monaten. Das akute Umgebungsödem nimmt ab, die Bandkontinuität stellt sich wieder dar; eine milde intraligamentäre Signalhebung kann persistieren.'],
         ['/knieligamente/arcuate-sign.png', 'Arcuate Sign: Avulsion am Fibulaköpfchen als Hinweis auf PLC-Verletzung.'],
       ],
       medial: [
         ['/knieligamente/medial-complex-anatomy.png', 'Medialer Komplex mit MCL, POL und Semimembranosus-Anteilen.'],
         ['/knieligamente/mcl-layered-anatomy.png', 'Oberflächliches und tiefes MCL mit Nähe zum Innenmeniskus.'],
-        ['/knieligamente/mcl-partial-followup.png', 'MCL-Partialruptur mit Verlauf unter konservativer Therapie.'],
+        ['/knieligamente/mcl-partial-followup.png', 'MCL-Partialruptur im Verlauf: Trauma, nach 6 Wochen und nach 12 Wochen. Das periligamentäre Ödem nimmt ab; eine narbige Verdickung bzw. intraligamentäre Signalhebung kann als Heilungszeichen verbleiben.'],
         ['/knieligamente/mcl-pol-rupture.png', 'MCL-Ruptur mit Beteiligung des POL in koronarer und axialer Darstellung.'],
       ],
       acl: [
@@ -222,13 +222,13 @@ COPY.en.figures = {
   lateral: [
     ['/knieligamente/lateral-collateral-complex.png', 'Lateral collateral complex: LCL, popliteus and biceps femoris relationship.'],
     ['/knieligamente/lcl-biceps-v-sign.png', 'Sagittal V at the fibular head: LCL anteromedial, biceps femoris tendon posterolateral.'],
-    ['/knieligamente/lcl-acute-followup.png', 'Acute LCL injury and follow-up with morphologic reconstruction.'],
+    ['/knieligamente/lcl-followup-series.png', 'LCL follow-up from left to right: initial, after 3 months, after 6 months and after 24 months. The acute surrounding oedema decreases and ligament continuity returns; mild intraligamentous signal may persist.'],
     ['/knieligamente/arcuate-sign.png', 'Arcuate sign: fibular head avulsion suggesting PLC injury.'],
   ],
   medial: [
     ['/knieligamente/medial-complex-anatomy.png', 'Medial complex with MCL, POL and semimembranosus components.'],
     ['/knieligamente/mcl-layered-anatomy.png', 'Superficial and deep MCL with close relationship to the medial meniscus.'],
-    ['/knieligamente/mcl-partial-followup.png', 'Partial MCL tear with follow-up under conservative treatment.'],
+    ['/knieligamente/mcl-partial-followup.png', 'Partial MCL tear over time: trauma, after 6 weeks and after 12 weeks. Periligamentous oedema decreases; scar-like thickening or intraligamentous signal may remain as a healing finding.'],
     ['/knieligamente/mcl-pol-rupture.png', 'MCL tear with POL involvement on coronal and axial images.'],
   ],
   acl: [
@@ -311,13 +311,13 @@ COPY.fa.figures = {
   lateral: [
     ['/knieligamente/lateral-collateral-complex.png', 'کمپلکس لترال: ارتباط LCL، پوپلیتئوس و بایسپس فموریس.'],
     ['/knieligamente/lcl-biceps-v-sign.png', 'V ساژیتال در سر فیبولا: LCL قدام-مدیال و تاندون بایسپس فموریس خلف-لترال.'],
-    ['/knieligamente/lcl-acute-followup.png', 'آسیب حاد LCL و پیگیری با بازسازی مورفولوژیک.'],
+    ['/knieligamente/lcl-followup-series.png', 'سیر LCL از چپ به راست: اولیه، پس از ۳ ماه، پس از ۶ ماه و پس از ۲۴ ماه. ادم حاد اطراف رباط کاهش می‌یابد و پیوستگی رباط دوباره دیده می‌شود؛ افزایش خفیف سیگنال داخل رباط می‌تواند باقی بماند.'],
     ['/knieligamente/arcuate-sign.png', 'Arcuate sign: کندگی سر فیبولا به نفع آسیب PLC.'],
   ],
   medial: [
     ['/knieligamente/medial-complex-anatomy.png', 'کمپلکس مدیال شامل MCL، POL و اجزای سمی‌ممبرانوسوس.'],
     ['/knieligamente/mcl-layered-anatomy.png', 'MCL سطحی و عمقی با ارتباط نزدیک به منیسک داخلی.'],
-    ['/knieligamente/mcl-partial-followup.png', 'پارگی نسبی MCL در پیگیری درمان محافظه‌کارانه.'],
+    ['/knieligamente/mcl-partial-followup.png', 'سیر پارگی نسبی MCL: زمان تروما، پس از ۶ هفته و پس از ۱۲ هفته. ادم اطراف رباط کم می‌شود؛ ضخیم‌شدن اسکاری یا سیگنال داخل رباط می‌تواند به عنوان نشانه ترمیم باقی بماند.'],
     ['/knieligamente/mcl-pol-rupture.png', 'پارگی MCL با درگیری POL در تصاویر کرونال و اکسیال.'],
   ],
   acl: [
