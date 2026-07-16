@@ -27,6 +27,7 @@ import { UNTERARM_FLASHCARDS, UNTERARM_FLASHCARD_TOPIC } from './unterarmschaftf
 import { DISTALE_RADIUS_FLASHCARDS, DISTALE_RADIUS_FLASHCARD_TOPIC } from './distale-radiusfraktur'
 import { HRCT_FLASHCARDS, HRCT_FLASHCARD_TOPICS } from './hrct-muster'
 import { SPINE_TRAUMA_FLASHCARDS, SPINE_TRAUMA_FLASHCARD_TOPICS } from './spineTrauma'
+import { KNIE_LIGAMENTE_FLASHCARDS, KNIE_LIGAMENTE_FLASHCARD_TOPIC } from './knieligamente'
 
 export const FLASHCARD_TOPICS = [
   ...CONTRAST_FLASHCARD_TOPICS,
@@ -168,6 +169,7 @@ export const FLASHCARD_TOPICS = [
       "fa": "آناتومی · گریدینگ MRI · تشخیص پارگی · درمان"
     }
   },
+  KNIE_LIGAMENTE_FLASHCARD_TOPIC,
   {
     "id": "haemangiom",
     "area": "Abdomen",
@@ -702,6 +704,7 @@ export const FLASHCARDS = [
   ...RADIUSKOPF_FLASHCARDS,
   ...UNTERARM_FLASHCARDS,
   ...DISTALE_RADIUS_FLASHCARDS,
+  ...KNIE_LIGAMENTE_FLASHCARDS,
   ...SPINE_TRAUMA_FLASHCARDS,
   ...HRCT_FLASHCARDS,
   {

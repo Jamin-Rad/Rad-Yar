@@ -27,6 +27,7 @@ import { UNTERARM_QUESTIONS } from './unterarmschaftfrakturen'
 import { DISTALE_RADIUS_QUESTIONS } from './distale-radiusfraktur'
 import { HRCT_QUESTIONS } from './hrct-muster'
 import { SPINE_TRAUMA_QUESTIONS } from './spineTrauma'
+import { KNIE_LIGAMENTE_QUESTIONS } from './knieligamente'
 
 const DIVERTICULITIS_QUESTION_CONTENT = [
   {
@@ -572,6 +573,7 @@ export const QUESTION_BANK = {
     ...RADIUSKOPF_QUESTIONS.de,
     ...UNTERARM_QUESTIONS.de,
     ...DISTALE_RADIUS_QUESTIONS.de,
+    ...KNIE_LIGAMENTE_QUESTIONS.de,
     ...SPINE_TRAUMA_QUESTIONS.de,
     ...HRCT_QUESTIONS.de,
     {
@@ -1928,6 +1930,7 @@ export const QUESTION_BANK = {
     ...RADIUSKOPF_QUESTIONS.en,
     ...UNTERARM_QUESTIONS.en,
     ...DISTALE_RADIUS_QUESTIONS.en,
+    ...KNIE_LIGAMENTE_QUESTIONS.en,
     ...SPINE_TRAUMA_QUESTIONS.en,
     ...HRCT_QUESTIONS.en,
     {
@@ -3284,6 +3287,7 @@ export const QUESTION_BANK = {
     ...RADIUSKOPF_QUESTIONS.fa,
     ...UNTERARM_QUESTIONS.fa,
     ...DISTALE_RADIUS_QUESTIONS.fa,
+    ...KNIE_LIGAMENTE_QUESTIONS.fa,
     ...SPINE_TRAUMA_QUESTIONS.fa,
     ...HRCT_QUESTIONS.fa,
     {
@@ -4701,6 +4705,7 @@ export const MCQ_TOPIC_GROUPS = [
     title: { de: '15. Knie', en: '15. Knee', fa: '۱۵. زانو' },
     topics: [
       { id: 'meniskus', title: { de: 'Meniskus', en: 'Meniscus', fa: 'منیسک' } },
+      { id: 'kreuzbaender', title: { de: 'Knie-Ligamente', en: 'Knee ligaments', fa: 'رباط‌های زانو' } },
     ],
   },
   {
