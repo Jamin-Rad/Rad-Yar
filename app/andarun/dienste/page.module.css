@@ -805,273 +805,213 @@
   background: currentColor;
 }
 
-/* ── STATS CARD (rebuilt) ────────────────────────────────────────────────── */
 .timerStatsCard {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 20px;
+  display: grid;
+  gap: 14px;
+  color: inherit;
+  font: inherit;
+  padding: 18px;
+  text-align: left;
 }
 
-.timerStatsTop {
+.timerStatsHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.timerStatsTop time {
-  color: #94a3b8;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.timerModalityRows {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.timerModalityRow {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  border: 1px solid rgba(148,163,184,.12);
-  border-radius: 10px;
-  background: rgba(255,255,255,.05);
+  gap: 12px;
+  border: 0;
+  background: transparent;
   color: inherit;
   cursor: pointer;
   font: inherit;
-  padding: 10px 12px;
+  padding: 0;
   text-align: left;
-  transition: background .18s, border-color .18s;
 }
 
-.timerModalityRow:hover {
-  background: rgba(255,255,255,.09);
-  border-color: rgba(34,211,238,.3);
-}
-
-.timerModalityMeta {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-}
-
-.timerModalityMeta strong {
-  color: #f8fafc;
-  font-size: 12px;
-  font-weight: 950;
-  min-width: 56px;
-}
-
-.timerModalityMeta span {
-  color: #94a3b8;
-  font-size: 11px;
-  font-weight: 800;
-  flex: 1;
-}
-
-.timerModalityMeta em {
-  color: #67e8f9;
-  font-size: 12px;
-  font-style: normal;
-  font-variant-numeric: tabular-nums;
-  font-weight: 950;
-}
-
-.timerModalityTrack {
-  height: 3px;
+.timerStatsHeader em {
   border-radius: 999px;
-  background: rgba(255,255,255,.08);
-  overflow: hidden;
-}
-
-.timerModalityFill {
-  height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #6379e8, #38bdf8);
-  transition: width .5s cubic-bezier(.2,.8,.2,1);
-}
-
-.verlaufBtn {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid rgba(34,211,238,.2);
-  border-radius: 8px;
-  background: rgba(34,211,238,.06);
+  background: rgba(34, 211, 238, .12);
   color: #a5f3fc;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 950;
+  letter-spacing: .08em;
+  padding: 6px 9px;
+  text-transform: uppercase;
+}
+
+.timerStatsGrid {
+  display: grid;
+  gap: 10px;
+}
+
+.timerStatsGrid button {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr) 72px;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid rgba(148, 163, 184, .12);
+  border-radius: 8px;
+  background: rgba(255,255,255,.065);
+  color: #cbd5e1;
   cursor: pointer;
   font: inherit;
-  font-size: 12px;
-  font-weight: 950;
-  letter-spacing: .04em;
-  padding: 10px 12px;
+  padding: 10px;
   text-align: left;
-  transition: background .18s, border-color .18s;
+  transition: border-color .16s, background .16s, transform .16s;
 }
 
-.verlaufBtn:hover {
-  background: rgba(34,211,238,.12);
-  border-color: rgba(34,211,238,.4);
+.timerStatsGrid button:hover {
+  border-color: rgba(34, 211, 238, .34);
+  background: rgba(255,255,255,.09);
+  transform: translateY(-1px);
 }
 
-/* ── HISTORY MODAL (rebuilt) ─────────────────────────────────────────────── */
-.timerHistoryModal {
-  width: min(860px, 100%);
-  max-height: min(88vh, 680px);
-  padding: clamp(20px, 3vw, 32px);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.historySummary {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-}
-
-.historySummary > div {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 10px;
-  background: rgba(255,255,255,.05);
-  padding: 12px 14px;
-}
-
-.historySummary strong {
+.timerStatsGrid strong {
   color: #f8fafc;
-  font-size: 22px;
-  font-variant-numeric: tabular-nums;
-  font-weight: 950;
-  line-height: 1;
-}
-
-.historySummary span {
-  color: #64748b;
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: .06em;
-}
-
-.historyLegend {
-  display: flex;
-  gap: 20px;
-}
-
-.historyLegend span {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  color: #94a3b8;
-  font-size: 11px;
-  font-weight: 800;
-}
-
-.legendBar {
-  display: inline-block;
-  width: 14px;
-  height: 10px;
-  border-radius: 3px;
-  background: rgba(99,121,232,0.85);
-}
-
-.legendLine {
-  display: inline-block;
-  width: 14px;
-  height: 3px;
-  border-radius: 999px;
-  background: #fb923c;
-  position: relative;
-}
-
-.historyCanvas {
-  width: 100%;
-  height: 240px;
-  display: block;
-}
-
-.historyEmpty {
-  margin: 0;
-  color: #475569;
-  font-size: 14px;
-  font-weight: 800;
-  padding: 32px 0;
-  text-align: center;
-}
-
-/* ── DAY DETAIL LIST (rebuilt) ───────────────────────────────────────────── */
-.timerDayList {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-top: 4px;
-  max-height: 340px;
-  overflow-y: auto;
-}
-
-.timerDayRow {
-  display: grid;
-  grid-template-columns: 44px 1fr 36px 80px 32px;
-  gap: 10px;
-  align-items: center;
-  border-radius: 8px;
-  background: rgba(255,255,255,.055);
-  padding: 10px 12px;
-}
-
-.dayRowTime {
-  color: #64748b;
-  font-size: 11px;
-  font-variant-numeric: tabular-nums;
-  font-weight: 800;
-}
-
-.dayRowTotal {
-  color: #67e8f9;
-  font-size: 15px;
-  font-variant-numeric: tabular-nums;
+  font-size: 13px;
   font-weight: 950;
 }
 
-.dayRowCount {
-  color: #94a3b8;
-  font-size: 11px;
-  font-weight: 800;
-  text-align: center;
-}
-
-.dayRowAvg {
-  color: #fb923c;
+.timerStatsGrid span {
   font-size: 12px;
+  font-weight: 850;
+}
+
+.timerStatsGrid em {
+  color: #67e8f9;
+  font-size: 13px;
+  font-style: normal;
   font-variant-numeric: tabular-nums;
   font-weight: 950;
   text-align: right;
 }
 
-.dayRowDelete {
-  justify-self: end;
-  width: 28px;
-  height: 28px;
-  border: 1px solid rgba(244,63,94,.22);
-  border-radius: 6px;
-  background: rgba(244,63,94,.1);
-  color: #fca5a5;
-  cursor: pointer;
-  font: inherit;
-  font-size: 14px;
-  font-weight: 950;
-  display: grid;
-  place-items: center;
-  transition: background .15s;
+.timerHistoryModal {
+  width: min(980px, 100%);
+  max-height: min(86vh, 760px);
+  padding: clamp(20px, 3vw, 28px);
 }
 
-.dayRowDelete:hover {
-  background: rgba(244,63,94,.25);
+.timerHistoryChart {
+  display: grid;
+  grid-template-columns: repeat(14, minmax(44px, 1fr));
+  gap: 10px;
+  align-items: flex-end;
+  min-height: 260px;
+  margin-top: 22px;
+  overflow-x: auto;
+}
+
+.timerHistoryDay {
+  display: grid;
+  gap: 7px;
+  min-width: 44px;
+  color: #cbd5e1;
+  font-size: 11px;
+  font-weight: 850;
+  text-align: center;
+}
+
+.timerHistoryDay div {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  height: 150px;
+  border-radius: 8px;
+  background: rgba(255,255,255,.045);
+  padding: 8px 6px;
+}
+
+.timerHistoryDay i,
+.timerHistoryDay b {
+  display: block;
+  width: 11px;
+  min-height: 8px;
+  border-radius: 999px 999px 3px 3px;
+}
+
+.timerHistoryDay i {
+  background: linear-gradient(180deg, #38bdf8, #0f766e);
+}
+
+.timerHistoryDay b {
+  background: linear-gradient(180deg, #a78bfa, #4338ca);
+}
+
+.timerHistoryDay strong {
+  color: #f8fafc;
+}
+
+.timerHistoryDay span {
+  color: #67e8f9;
+  font-variant-numeric: tabular-nums;
+}
+
+.timerHistoryDay em {
+  color: #94a3b8;
+  font-style: normal;
+}
+
+.timerDayList {
+  display: grid;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.timerDayList p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 14px;
+  font-weight: 850;
+  padding: 10px 0;
+}
+
+.timerDayRow {
+  display: grid;
+  grid-template-columns: 90px 52px 90px 72px auto;
+  gap: 10px;
+  align-items: center;
+  border-radius: 8px;
+  background: rgba(255,255,255,.065);
+  color: #cbd5e1;
+  font-size: 13px;
+  font-weight: 850;
+  padding: 10px;
+}
+
+.timerDayRow strong {
+  color: #67e8f9;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.timerDayRow em {
+  color: #f8fafc;
+  font-style: normal;
+  font-variant-numeric: tabular-nums;
+  font-weight: 950;
+}
+
+.timerDayRow small {
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.timerDayRow button {
+  justify-self: end;
+  min-height: 32px;
+  border: 1px solid rgba(244, 63, 94, .24);
+  border-radius: 7px;
+  background: rgba(244, 63, 94, .14);
+  color: #fecdd3;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 950;
+  padding: 0 10px;
 }
 
 .timerCompactCard {
