@@ -201,11 +201,7 @@ const EMPTY_FILTER = {
   diagnosis: '',
 }
 
-const TIMER_TARGET_MINUTES = {
-  Röntgen: 3,
-  CT: 7,
-  MRT: 15,
-}
+const TIMER_INCREMENT_MINUTES = 5
 
 const EMPTY_TIMER_FORM = {
   modality: 'Röntgen',
@@ -241,6 +237,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
   const [timerElapsed, setTimerElapsed] = useState(0)
   const [timerStartedAt, setTimerStartedAt] = useState(null)
   const [timerNow, setTimerNow] = useState(Date.now())
+  const [timerAddedMessage, setTimerAddedMessage] = useState('')
   const [timerHistoryOpen, setTimerHistoryOpen] = useState(false)
   const [timerDayModal, setTimerDayModal] = useState(null)
   const [message, setMessage] = useState('')
@@ -255,6 +252,12 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
     const id = window.setInterval(() => setTimerNow(Date.now()), 1000)
     return () => window.clearInterval(id)
   }, [timerStartedAt])
+
+  useEffect(() => {
+    if (!timerAddedMessage) return undefined
+    const id = window.setTimeout(() => setTimerAddedMessage(''), 2200)
+    return () => window.clearTimeout(id)
+  }, [timerAddedMessage])
 
   const shiftsByDate = useMemo(
     () => new Map(shifts.filter(shift => !isAbsenceShift(shift)).map(shift => [shift.date, shift])),
@@ -397,12 +400,12 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
 
   const timerDisplayMs = timerElapsed + (timerStartedAt ? timerNow - timerStartedAt : 0)
   const timerRunning = Boolean(timerStartedAt)
-  const timerBaseTargetMinutes = TIMER_TARGET_MINUTES[timerForm.modality] || 5
+  const timerBaseTargetMinutes = TIMER_INCREMENT_MINUTES
   const timerCount = Math.max(1, Number(timerForm.count) || 1)
   const timerTargetMinutes = timerBaseTargetMinutes * timerCount
   const timerSegmentMs = timerTargetMinutes * 60 * 1000
-  const timerSegmentTarget = Math.max(1, Math.floor(timerDisplayMs / timerSegmentMs) + 1) * timerTargetMinutes
-  const timerSegmentProgress = timerDisplayMs > 0 ? (timerDisplayMs % timerSegmentMs) / timerSegmentMs : 0
+  const timerOverTarget = timerDisplayMs > timerSegmentMs
+  const timerSegmentProgress = timerDisplayMs > 0 ? Math.min(timerDisplayMs / timerSegmentMs, 1) : 0
   const todayTimers = useMemo(
     () => findingTimers.filter(timer => timer.date === todayValue()),
     [findingTimers],
@@ -441,10 +444,12 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
   }
 
   function updateTimerCount(delta) {
+    const shouldShowAddedMessage = delta > 0 && timerCount < 20
     setTimerForm(prev => ({
       ...prev,
       count: Math.min(20, Math.max(1, (Number(prev.count) || 1) + delta)),
     }))
+    if (shouldShowAddedMessage) setTimerAddedMessage(`+${TIMER_INCREMENT_MINUTES} Minuten hinzugefügt`)
   }
 
   function startFindingTimer() {
@@ -774,12 +779,15 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
           <div className={styles.timerHeroGrid}>
             <div className={styles.timerDialCard}>
               <div
-                className={timerRunning ? styles.timerDialRunning : styles.timerDial}
+                className={[
+                  timerRunning ? styles.timerDialRunning : styles.timerDial,
+                  timerOverTarget ? styles.timerDialOverdue : '',
+                ].filter(Boolean).join(' ')}
                 style={{ '--progress': `${timerSegmentProgress * 360}deg` }}
               >
                 <div>
                   <strong>{formatTimerDuration(timerDisplayMs)}</strong>
-                  <span>{timerSegmentTarget} min</span>
+                  <span>{timerTargetMinutes} min Ziel</span>
                 </div>
               </div>
               <div className={styles.timerModalityPills}>
@@ -801,6 +809,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
                   <strong>×{timerCount}</strong>
                   <button type="button" onClick={() => updateTimerCount(1)} aria-label="Ein Befund mehr">+</button>
                 </div>
+                {timerAddedMessage && <em>{timerAddedMessage}</em>}
               </div>
               <div className={styles.timerIconButtons}>
                 <button type="button" onClick={startFindingTimer} disabled={timerRunning} aria-label="Timer starten">
@@ -818,7 +827,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
             <div className={styles.timerStatsCard}>
               <button className={styles.timerStatsHeader} type="button" onClick={() => setTimerHistoryOpen(true)}>
                 <span className={styles.kicker}>Heute</span>
-                <em>Verlauf öffnen</em>
+                <em>Befundzeiten ansehen</em>
               </button>
               <div className={styles.timerStatsGrid}>
                 {timerStats.map(stat => (

@@ -641,6 +641,15 @@
   animation: timerPulse 2s ease-in-out infinite;
 }
 
+.timerDialOverdue {
+  background:
+    radial-gradient(circle at center, rgba(2, 6, 23, .96) 0 59%, transparent 60%),
+    conic-gradient(#ef4444 var(--progress), rgba(127, 29, 29, .36) 0);
+  box-shadow:
+    0 22px 62px rgba(239, 68, 68, .24),
+    inset 0 1px 0 rgba(255,255,255,.18);
+}
+
 .timerDial div,
 .timerDialRunning div {
   display: grid;
@@ -671,6 +680,15 @@
   text-transform: uppercase;
 }
 
+.timerDialOverdue strong {
+  color: #fecaca;
+}
+
+.timerDialOverdue span {
+  background: rgba(239, 68, 68, .18);
+  color: #fecaca;
+}
+
 .timerDialCard .timerModalityPills {
   grid-template-columns: 1fr;
   align-self: stretch;
@@ -686,6 +704,14 @@
   border-radius: 8px;
   background: rgba(255,255,255,.06);
   padding: 9px;
+}
+
+.timerCountControl em {
+  grid-column: 1 / -1;
+  color: #99f6e4;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 950;
 }
 
 .timerCountControl span {
