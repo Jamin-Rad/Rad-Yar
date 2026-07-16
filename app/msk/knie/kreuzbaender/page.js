@@ -15,6 +15,8 @@ const COPY = {
     lead: 'Kompakte Lernseite zu den Kniebändern: Schweregrade, lateraler und medialer Kollateralbandkomplex, VKB-Ruptur, mukoide VKB-Degeneration und HKB-Ruptur.',
     quiz: 'MCQ',
     cards: 'Flashcards',
+    zoomImage: 'Bild vergrößern',
+    closePreview: 'Bildansicht schließen',
     markRead: 'Als gelesen markieren',
     markedRead: 'Gelesen',
     stats: [
@@ -139,6 +141,8 @@ const COPY = {
     lead: 'Compact lesson on knee ligaments: grading, lateral and medial collateral complexes, ACL tear, mucoid ACL degeneration and PCL tear.',
     quiz: 'MCQ',
     cards: 'Flashcards',
+    zoomImage: 'Enlarge image',
+    closePreview: 'Close image preview',
     markRead: 'Mark as read',
     markedRead: 'Read',
     stats: [['I-III', 'MRI grading from sprain to complete tear'], ['ACL', 'most common knee ligament injury'], ['PLC', 'arcuate sign as red flag']],
@@ -155,6 +159,8 @@ const COPY = {
     lead: 'درس فشرده درباره رباط‌های زانو: درجه‌بندی، کمپلکس لترال و مدیال، پارگی ACL، دژنراسیون موکوئید ACL و پارگی PCL.',
     quiz: 'MCQ',
     cards: 'فلش‌کارت‌ها',
+    zoomImage: 'بزرگ‌نمایی تصویر',
+    closePreview: 'بستن تصویر',
     markRead: 'علامت‌گذاری به عنوان خوانده‌شده',
     markedRead: 'خوانده شد',
     stats: [['I-III', 'درجه‌بندی MRI از کشیدگی تا پارگی کامل'], ['ACL', 'شایع‌ترین آسیب رباطی زانو'], ['PLC', 'Arcuate sign به عنوان هشدار مهم']],
@@ -379,10 +385,13 @@ function Card({ title, bullets }) {
   )
 }
 
-function Figure({ src, caption }) {
+function Figure({ src, caption, zoomLabel, onZoom }) {
   return (
     <figure className={styles.figure}>
-      <img src={src} alt={caption} loading="lazy" />
+      <button type="button" className={styles.figureZoomButton} onClick={onZoom} aria-label={`${zoomLabel}: ${caption}`}>
+        <img src={src} alt={caption} loading="lazy" />
+        <span>{zoomLabel}</span>
+      </button>
       <figcaption>{caption}</figcaption>
     </figure>
   )
@@ -425,7 +434,7 @@ function useIsMobileViewport(query = '(max-width: 900px)') {
   return isMobile
 }
 
-function ReadButton({ isRead, onClick, authError, className = '' }) {
+function ReadButton({ isRead, onClick, authError, signInHref = '/sign-in', className = '' }) {
   const { lang } = useLanguage()
   const labels = READ_LABELS[lang] || READ_LABELS.de
 
@@ -438,14 +447,14 @@ function ReadButton({ isRead, onClick, authError, className = '' }) {
       {authError && (
         <div className={styles.readError} role="alert">
           <span>{labels.error}</span>
-          <Link href="/sign-in">{labels.signIn}</Link>
+          <Link href={signInHref}>{labels.signIn}</Link>
         </div>
       )}
     </div>
   )
 }
 
-function Section({ id, data, figures, children, defaultOpen = true, className = '', showLead = true }) {
+function Section({ id, data, figures, children, defaultOpen = true, className = '', showLead = true, zoomLabel = 'Bild vergrößern', onImageZoom }) {
   const [isOpen, setIsOpen] = useState(defaultOpen)
 
   useEffect(() => {
@@ -486,7 +495,15 @@ function Section({ id, data, figures, children, defaultOpen = true, className = 
         {data.note && <div className={styles.note}>{data.note}</div>}
         {figures?.length > 0 && (
           <div className={styles.imageGrid} style={{ marginTop: 16 }}>
-            {figures.map(([src, caption]) => <Figure key={src} src={src} caption={caption} />)}
+            {figures.map(([src, caption]) => (
+              <Figure
+                key={src}
+                src={src}
+                caption={caption}
+                zoomLabel={zoomLabel}
+                onZoom={() => onImageZoom?.({ src, alt: caption })}
+              />
+            ))}
           </div>
         )}
       </div>
@@ -501,6 +518,20 @@ export default function KneeLigamentsPage() {
   const isMobile = useIsMobileViewport()
   const { isRead, toggleRead, authError } = useLessonReadStatus('kreuzbaender')
   const sectionDefaultOpen = !isMobile
+  const [previewImage, setPreviewImage] = useState(null)
+  const [signInHref, setSignInHref] = useState('/sign-in')
+
+  useEffect(() => {
+    document.body.style.overflow = previewImage ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [previewImage])
+
+  useEffect(() => {
+    const currentPath = `${window.location.pathname}${window.location.search}${window.location.hash}`
+    setSignInHref(`/sign-in?redirect_url=${encodeURIComponent(currentPath)}`)
+  }, [])
 
   return (
     <main className={styles.page} dir={dir}>
@@ -532,7 +563,7 @@ export default function KneeLigamentsPage() {
         </header>
 
         <div className={styles.readBar}>
-          <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} />
+          <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} signInHref={signInHref} />
         </div>
 
         <div className={styles.layout}>
@@ -543,10 +574,10 @@ export default function KneeLigamentsPage() {
 
           <div className={styles.main}>
             <Section id="grading" data={copy.sections.grading} defaultOpen={sectionDefaultOpen} />
-            <Section id="lateral" data={copy.sections.lateral} figures={copy.figures.lateral} defaultOpen={sectionDefaultOpen} />
-            <Section id="medial" data={copy.sections.medial} figures={copy.figures.medial} defaultOpen={sectionDefaultOpen} />
-            <Section id="acl" data={copy.sections.acl} figures={copy.figures.acl} defaultOpen={sectionDefaultOpen} />
-            <Section id="pcl" data={copy.sections.pcl} figures={copy.figures.pcl} defaultOpen={sectionDefaultOpen} />
+            <Section id="lateral" data={copy.sections.lateral} figures={copy.figures.lateral} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage} />
+            <Section id="medial" data={copy.sections.medial} figures={copy.figures.medial} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage} />
+            <Section id="acl" data={copy.sections.acl} figures={copy.figures.acl} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage} />
+            <Section id="pcl" data={copy.sections.pcl} figures={copy.figures.pcl} defaultOpen={sectionDefaultOpen} zoomLabel={copy.zoomImage} onImageZoom={setPreviewImage} />
 
             <Section id="cases" data={copy.sections.cases} defaultOpen={sectionDefaultOpen}>
               <div className={styles.caseGrid}>
@@ -577,11 +608,21 @@ export default function KneeLigamentsPage() {
             </Section>
 
             <div className={styles.readBarBottom}>
-              <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} />
+              <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} signInHref={signInHref} />
             </div>
           </div>
         </div>
       </div>
+
+      {previewImage && (
+        <div className={styles.imageModal} role="dialog" aria-modal="true" onClick={() => setPreviewImage(null)}>
+          <div className={styles.imageModalContent} onClick={(event) => event.stopPropagation()}>
+            <button type="button" className={styles.imageModalClose} onClick={() => setPreviewImage(null)} aria-label={copy.closePreview}>×</button>
+            <img src={previewImage.src} alt={previewImage.alt} />
+            <p>{previewImage.alt}</p>
+          </div>
+        </div>
+      )}
     </main>
   )
 }

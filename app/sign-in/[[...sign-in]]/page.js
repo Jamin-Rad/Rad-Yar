@@ -70,13 +70,37 @@ export default function SignInPage() {
   const [success,     setSuccess]     = useState('')
   const [loading,     setLoading]     = useState(false)
 
+  function getRedirectTarget() {
+    const searchParams = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '')
+    const requested = searchParams.get('redirect_url') || searchParams.get('redirectUrl') || searchParams.get('returnTo')
+    if (requested) {
+      try {
+        const url = new URL(requested, window.location.origin)
+        if (url.origin === window.location.origin && !url.pathname.startsWith('/sign-in') && !url.pathname.startsWith('/sign-up')) {
+          return `${url.pathname}${url.search}${url.hash}`
+        }
+      } catch {}
+    }
+
+    try {
+      if (document.referrer) {
+        const referrer = new URL(document.referrer)
+        if (referrer.origin === window.location.origin && !referrer.pathname.startsWith('/sign-in') && !referrer.pathname.startsWith('/sign-up')) {
+          return `${referrer.pathname}${referrer.search}${referrer.hash}`
+        }
+      }
+    } catch {}
+
+    return '/'
+  }
+
   function showError(err) {
     setError(err?.errors?.[0]?.longMessage || err?.errors?.[0]?.message || err?.message || 'Something went wrong. Please try again.')
   }
 
   async function completeSignIn(result) {
     await setActive({ session: result.createdSessionId })
-    router.push('/')
+    router.push(getRedirectTarget())
   }
 
   async function prepareClientTrust(result) {
@@ -160,7 +184,7 @@ export default function SignInPage() {
       await signIn.authenticateWithRedirect({
         strategy: `oauth_${provider}`,
         redirectUrl: '/sso-callback',
-        redirectUrlComplete: '/onboarding',
+        redirectUrlComplete: getRedirectTarget(),
       })
     } catch (err) { showError(err) }
   }
@@ -191,7 +215,7 @@ export default function SignInPage() {
       if (result.status === 'complete') {
         setSuccess('Password changed! Redirecting…')
         await setActive({ session: result.createdSessionId })
-        setTimeout(() => router.push('/'), 1500)
+        setTimeout(() => router.push(getRedirectTarget()), 1500)
       } else {
         setError(`Unexpected status: ${result.status}`)
       }
