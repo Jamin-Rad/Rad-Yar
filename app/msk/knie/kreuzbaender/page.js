@@ -93,7 +93,14 @@ const COPY = {
       },
       takehome: {
         title: 'Take-home Message',
-        text: 'Freier Platz für deine finale Take-home Message. Vorschlag als Struktur: erst Grading, dann Komplexe, dann direkte und indirekte Rupturzeichen, zuletzt Pitfalls.',
+        lead: 'Für die MRT-Befundung der Knie-Ligamente zählt weniger ein einzelnes Bildzeichen, sondern die Kombination aus Kontur, Signal, Verlauf, Begleitödem und typischem Verletzungsmuster.',
+        items: [
+          ['01', 'Grading zuerst sauber trennen', 'Grad I bedeutet erhaltene Bandkontur mit periligamentösem Ödem. Grad II bedeutet Partialruptur mit Verdickung, Signalsteigerung und noch durchgängigen Fasern. Grad III bedeutet komplette Diskontinuität, oft mit welligem Bandverlauf.'],
+          ['02', 'Lateral heißt immer auch PLC denken', 'Beim lateralen Komplex LCL, Biceps-femoris-Sehne, Popliteus und Arcuate-Komplex gemeinsam betrachten. Das Arcuate Sign am Fibulaköpfchen ist eine Red Flag für posterolaterale Instabilität.'],
+          ['03', 'Bei MCL immer dorsal weitersehen', 'Eine MCL-Verletzung nicht isoliert beenden: Das POL und die posteromediale Ecke aktiv mitbeurteilen. Im Verlauf kann intraligamentäres Signal durch Heilung persistieren und ist nicht automatisch Re-Ruptur.'],
+          ['04', 'VKB-Ruptur über direkte und indirekte Zeichen sichern', 'Direkt: Faserdiskontinuität, T2/PD-Signalsteigerung, flach-welliger Verlauf. Indirekt: Kissing contusions, anteriore Tibiasubluxation und gebogenes HKB. Normale Bündelseptierung nicht als Teilruptur überwerten.'],
+          ['05', 'HKB ist seltener und mechanistisch anders', 'HKB-Rupturen entstehen klassisch durch posterior gerichtete Kraft auf die Tibia bei gebeugtem Knie, zum Beispiel Dashboard Injury. In der MRT wirkt das HKB oft verdickt, signalverändert oder diskontinuierlich.'],
+        ],
       },
     },
     figures: {
@@ -219,7 +226,14 @@ COPY.en.sections = {
   },
   takehome: {
     title: 'Take-home message',
-    text: 'Open space for your final take-home message. Suggested structure: grading first, then complexes, then direct and indirect tear signs, finally pitfalls.',
+    lead: 'For MRI reporting of knee ligaments, the key is not a single sign but the combination of contour, signal, course, surrounding oedema and typical injury pattern.',
+    items: [
+      ['01', 'Separate grading first', 'Grade I means preserved ligament contour with periligamentous oedema. Grade II means partial tear with thickening, increased signal and some continuous fibres. Grade III means complete discontinuity, often with a wavy ligament course.'],
+      ['02', 'Lateral means thinking about the PLC', 'Assess the LCL, biceps femoris tendon, popliteus and arcuate complex together. The arcuate sign at the fibular head is a red flag for posterolateral instability.'],
+      ['03', 'With MCL, keep looking posteriorly', 'Do not stop at the MCL alone: assess the POL and posteromedial corner deliberately. On follow-up, intraligamentous signal can persist as healing and does not automatically mean re-tear.'],
+      ['04', 'Secure ACL tear with direct and indirect signs', 'Direct: fibre discontinuity, T2/PD signal increase, flattened or wavy course. Indirect: kissing contusions, anterior tibial subluxation and buckled PCL. Do not overcall normal bundle septation as partial tear.'],
+      ['05', 'PCL is rarer and mechanically different', 'PCL tears classically result from posteriorly directed force on the tibia with the knee flexed, for example dashboard injury. On MRI the PCL often appears thickened, signal-altered or discontinuous.'],
+    ],
   },
 }
 COPY.en.figures = {
@@ -310,7 +324,14 @@ COPY.fa.sections = {
   },
   takehome: {
     title: 'Take-home message',
-    text: 'فضای آزاد برای پیام نهایی تو. ساختار پیشنهادی: اول درجه‌بندی، بعد کمپلکس‌ها، سپس علائم مستقیم و غیرمستقیم پارگی، و در پایان pitfalls.',
+    lead: 'در گزارش MRI رباط‌های زانو، یک علامت تنها کافی نیست؛ ترکیب کانتور، سیگنال، مسیر رباط، ادم اطراف و الگوی تیپیک آسیب مهم است.',
+    items: [
+      ['01', 'اول درجه‌بندی را جدا کن', 'درجه I یعنی کانتور رباط حفظ شده و فقط ادم اطراف رباط وجود دارد. درجه II یعنی پارگی نسبی با ضخیم‌شدن، افزایش سیگنال و باقی‌ماندن بخشی از فیبرها. درجه III یعنی قطع کامل، اغلب با مسیر موج‌دار رباط.'],
+      ['02', 'لترال یعنی PLC را هم ببین', 'در کمپلکس لترال، LCL، تاندون بایسپس فموریس، پوپلیتئوس و کمپلکس آرکوات را با هم ارزیابی کن. Arcuate sign در سر فیبولا هشدار ناپایداری خلفی-لترال است.'],
+      ['03', 'در MCL نگاه را به خلف ادامه بده', 'آسیب MCL را تنها گزارش نکن: POL و گوشه خلفی-مدیال را فعالانه بررسی کن. در پیگیری، سیگنال داخل رباط می‌تواند نشانه ترمیم باشد و الزاماً پارگی مجدد نیست.'],
+      ['04', 'پارگی ACL را با علائم مستقیم و غیرمستقیم ثابت کن', 'مستقیم: قطع فیبرها، افزایش سیگنال T2/PD و مسیر صاف یا موج‌دار. غیرمستقیم: kissing contusions، سابلوکساسیون قدامی تیبیا و PCL خمیده. سپتاسیون طبیعی باندل‌ها را پارگی نسبی حساب نکن.'],
+      ['05', 'PCL نادرتر و مکانیسم آن متفاوت است', 'پارگی PCL کلاسیک با نیروی رو به عقب روی تیبیا در زانوی خم ایجاد می‌شود، مثل dashboard injury. در MRI معمولاً PCL ضخیم، پرسیگنال یا ناپیوسته دیده می‌شود.'],
+    ],
   },
 }
 COPY.fa.figures = {
@@ -450,7 +471,20 @@ export default function KneeLigamentsPage() {
 
             <section id="takehome" className={styles.takeHome}>
               <h2>{copy.sections.takehome.title}</h2>
-              <p>{copy.sections.takehome.text}</p>
+              <div className={styles.takeHomeBox}>
+                <p className={styles.takeHomeIntro}>{copy.sections.takehome.lead}</p>
+                <div className={styles.takeHomeList}>
+                  {copy.sections.takehome.items.map(([number, title, text]) => (
+                    <article key={number} className={styles.takeHomeItem}>
+                      <span className={styles.takeHomeNumber}>{number}</span>
+                      <div>
+                        <h3>{title}</h3>
+                        <p>{text}</p>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
             </section>
           </div>
         </div>

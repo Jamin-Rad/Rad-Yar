@@ -255,8 +255,7 @@
 }
 
 .card p,
-.placeholder p,
-.takeHome p {
+.placeholder p {
   margin: 0;
   color: #475569;
   line-height: 1.58;
@@ -300,14 +299,118 @@
 }
 
 .takeHome {
-  border-radius: 22px;
-  padding: 20px;
-  background: #ecfdf5;
-  border-color: #99f6e4;
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  padding: 24px;
+  border: 1px solid rgba(20, 184, 166, 0.28);
+  background:
+    radial-gradient(circle at top left, rgba(204, 251, 241, 0.72), transparent 24rem),
+    linear-gradient(180deg, #f0fdfa 0%, #ffffff 100%);
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.07);
 }
 
 .takeHome h2 {
-  margin-bottom: 8px;
+  width: fit-content;
+  margin: 0 auto 18px;
+  padding: 8px 20px 10px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #0f766e;
+  border: 1px solid #99f6e4;
+  font-family: var(--font-fraunces, Georgia, serif);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 950;
+  letter-spacing: 0;
+  box-shadow: 0 14px 28px rgba(20, 184, 166, 0.11);
+}
+
+.takeHomeBox {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  padding: 24px;
+  background:
+    radial-gradient(circle at top right, rgba(20, 184, 166, 0.16), transparent 22rem),
+    radial-gradient(circle at bottom left, rgba(14, 165, 233, 0.12), transparent 20rem),
+    linear-gradient(135deg, #ffffff 0%, #f0fdfa 56%, #f0f9ff 100%);
+  border: 1px solid rgba(153, 246, 228, 0.78);
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.08);
+}
+
+.takeHomeBox::before {
+  content: '';
+  position: absolute;
+  inset: 18px 18px auto auto;
+  width: 86px;
+  height: 86px;
+  border-radius: 26px;
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.18), rgba(14, 165, 233, 0.14));
+  transform: rotate(14deg);
+}
+
+[dir='rtl'] .takeHomeBox::before {
+  inset: 18px auto auto 18px;
+}
+
+.takeHomeIntro {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 18px;
+  max-width: 820px;
+  color: #334155;
+  font-size: 16px;
+  font-weight: 760;
+  line-height: 1.82;
+}
+
+.takeHomeList {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 12px;
+}
+
+.takeHomeItem {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+}
+
+.takeHomeNumber {
+  display: inline-grid;
+  place-items: center;
+  width: 56px;
+  height: 44px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #ccfbf1, #e0f2fe);
+  color: #0f766e;
+  border: 1px solid #99f6e4;
+  font-size: 14px;
+  font-weight: 950;
+}
+
+.takeHomeItem h3 {
+  margin: 0 0 6px;
+  color: #0f766e;
+  font-family: var(--font-fraunces, Georgia, serif);
+  font-size: 19px;
+  line-height: 1.35;
+  font-weight: 950;
+  letter-spacing: 0;
+}
+
+.takeHomeItem p {
+  margin: 0;
+  color: #334155;
+  line-height: 1.76;
+  font-weight: 760;
 }
 
 .note {
@@ -342,8 +445,26 @@
     grid-template-columns: 1fr;
   }
 
+  .takeHome {
+    padding: 18px;
+  }
+
+  .takeHomeBox {
+    padding: 18px;
+  }
+
+  .takeHomeItem {
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .takeHomeNumber {
+    width: 46px;
+    height: 40px;
+  }
+
   .heroMain {
     padding: 26px;
   }
 }
-
