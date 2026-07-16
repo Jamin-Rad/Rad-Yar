@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import styles from './page.module.css'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -9,10 +10,10 @@ const COPY = {
   de: {
     crumbMsk: 'MSK',
     crumbKnee: 'Knie',
-    badge: 'MRT · Knie',
+    badge: 'Dr. Zia',
     title: 'Knie-Ligamente',
     lead: 'Kompakte Lernseite zu den Kniebändern: Schweregrade, lateraler und medialer Kollateralbandkomplex, VKB-Ruptur, mukoide VKB-Degeneration und HKB-Ruptur.',
-    quiz: 'MCQs üben',
+    quiz: 'MCQ',
     cards: 'Flashcards',
     markRead: 'Als gelesen markieren',
     markedRead: 'Gelesen',
@@ -133,10 +134,10 @@ const COPY = {
   en: {
     crumbMsk: 'MSK',
     crumbKnee: 'Knee',
-    badge: 'MRI · Knee',
+    badge: 'Dr. Zia',
     title: 'Knee ligaments',
     lead: 'Compact lesson on knee ligaments: grading, lateral and medial collateral complexes, ACL tear, mucoid ACL degeneration and PCL tear.',
-    quiz: 'Practice MCQs',
+    quiz: 'MCQ',
     cards: 'Flashcards',
     markRead: 'Mark as read',
     markedRead: 'Read',
@@ -149,10 +150,10 @@ const COPY = {
   fa: {
     crumbMsk: 'MSK',
     crumbKnee: 'زانو',
-    badge: 'MRI · زانو',
+    badge: 'Dr. Zia',
     title: 'رباط‌های زانو',
     lead: 'درس فشرده درباره رباط‌های زانو: درجه‌بندی، کمپلکس لترال و مدیال، پارگی ACL، دژنراسیون موکوئید ACL و پارگی PCL.',
-    quiz: 'تمرین MCQ',
+    quiz: 'MCQ',
     cards: 'فلش‌کارت‌ها',
     markRead: 'علامت‌گذاری به عنوان خوانده‌شده',
     markedRead: 'خوانده شد',
@@ -387,20 +388,108 @@ function Figure({ src, caption }) {
   )
 }
 
-function Section({ id, data, figures }) {
+const READ_LABELS = {
+  de: { btn: 'Als gelesen markieren', active: 'Als gelesen markiert', error: 'Bitte melde dich an, um deinen Lernfortschritt zu speichern.', signIn: 'Anmelden' },
+  en: { btn: 'Mark as read', active: 'Marked as read', error: 'Please sign in to save your learning progress.', signIn: 'Sign in' },
+  fa: { btn: 'علامت‌گذاری به‌عنوان خوانده‌شده', active: 'به‌عنوان خوانده‌شده علامت‌گذاری شد', error: 'برای ذخیره پیشرفت یادگیری لطفاً وارد شوید.', signIn: 'ورود' },
+}
+
+function useIsMobileViewport(query = '(max-width: 900px)') {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(query)
+    const updateMobileState = () => setIsMobile(mediaQuery.matches)
+
+    updateMobileState()
+    window.addEventListener('resize', updateMobileState)
+    window.addEventListener('orientationchange', updateMobileState)
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', updateMobileState)
+      return () => {
+        mediaQuery.removeEventListener('change', updateMobileState)
+        window.removeEventListener('resize', updateMobileState)
+        window.removeEventListener('orientationchange', updateMobileState)
+      }
+    }
+
+    mediaQuery.addListener(updateMobileState)
+    return () => {
+      mediaQuery.removeListener(updateMobileState)
+      window.removeEventListener('resize', updateMobileState)
+      window.removeEventListener('orientationchange', updateMobileState)
+    }
+  }, [query])
+
+  return isMobile
+}
+
+function ReadButton({ isRead, onClick, authError, className = '' }) {
+  const { lang } = useLanguage()
+  const labels = READ_LABELS[lang] || READ_LABELS.de
+
   return (
-    <section id={id} className={styles.section}>
-      <h2>{data.title}</h2>
-      <p className={styles.sectionLead}>{data.lead}</p>
-      <div className={styles.grid}>
-        {data.cards.map(([title, bullets]) => <Card key={title} title={title} bullets={bullets} />)}
-      </div>
-      {data.note && <div className={styles.note}>{data.note}</div>}
-      {figures?.length > 0 && (
-        <div className={styles.imageGrid} style={{ marginTop: 16 }}>
-          {figures.map(([src, caption]) => <Figure key={src} src={src} caption={caption} />)}
+    <div className={`${styles.readControl} ${className}`.trim()}>
+      <button type="button" className={`${styles.doneBtn} ${isRead ? styles.doneBtnActive : ''}`} onClick={onClick}>
+        <span className={styles.readCheck} aria-hidden="true">{isRead ? '✓' : ''}</span>
+        <span>{isRead ? labels.active : labels.btn}</span>
+      </button>
+      {authError && (
+        <div className={styles.readError} role="alert">
+          <span>{labels.error}</span>
+          <Link href="/sign-in">{labels.signIn}</Link>
         </div>
       )}
+    </div>
+  )
+}
+
+function Section({ id, data, figures, children, defaultOpen = true, className = '', showLead = true }) {
+  const [isOpen, setIsOpen] = useState(defaultOpen)
+
+  useEffect(() => {
+    setIsOpen(defaultOpen)
+  }, [defaultOpen, id])
+
+  const toggleSection = () => setIsOpen(value => !value)
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault()
+      toggleSection()
+    }
+  }
+
+  return (
+    <section id={id} className={`${styles.section} ${className}`.trim()} data-open={isOpen ? 'true' : 'false'}>
+      <div className={styles.sectionHead}>
+        <div
+          className={styles.sectionToggle}
+          role="button"
+          tabIndex={0}
+          aria-expanded={isOpen}
+          onClick={toggleSection}
+          onKeyDown={handleKeyDown}
+        >
+          <h2>{data.title}</h2>
+          <span className={`${styles.sectionToggleIcon} ${isOpen ? styles.sectionToggleIconOpen : ''}`}>⌄</span>
+        </div>
+      </div>
+      <div className={`${styles.sectionContent} ${isOpen ? '' : styles.sectionContentCollapsed}`.trim()}>
+        {showLead && data.lead && <p className={styles.sectionLead}>{data.lead}</p>}
+        {data.cards && (
+          <div className={styles.grid}>
+            {data.cards.map(([title, bullets]) => <Card key={title} title={title} bullets={bullets} />)}
+          </div>
+        )}
+        {children}
+        {data.note && <div className={styles.note}>{data.note}</div>}
+        {figures?.length > 0 && (
+          <div className={styles.imageGrid} style={{ marginTop: 16 }}>
+            {figures.map(([src, caption]) => <Figure key={src} src={src} caption={caption} />)}
+          </div>
+        )}
+      </div>
     </section>
   )
 }
@@ -409,7 +498,9 @@ export default function KneeLigamentsPage() {
   const { lang } = useLanguage()
   const copy = COPY[lang] || COPY.de
   const dir = lang === 'fa' ? 'rtl' : 'ltr'
-  const { isRead, toggleRead } = useLessonReadStatus('kreuzbaender')
+  const isMobile = useIsMobileViewport()
+  const { isRead, toggleRead, authError } = useLessonReadStatus('kreuzbaender')
+  const sectionDefaultOpen = !isMobile
 
   return (
     <main className={styles.page} dir={dir}>
@@ -428,9 +519,6 @@ export default function KneeLigamentsPage() {
             <div className={styles.actions}>
               <Link className={`${styles.action} ${styles.actionPrimary}`} href={withLang('/ueben/quiz?fach=msk&n=10&themen=kreuzbaender&from=/msk/knie/kreuzbaender', lang)}>{copy.quiz}</Link>
               <Link className={styles.action} href={withLang('/flashcards/kreuzbaender?from=/msk/knie/kreuzbaender', lang)}>{copy.cards}</Link>
-              <button type="button" className={`${styles.readButton} ${isRead ? styles.readButtonActive : ''}`} onClick={toggleRead}>
-                {isRead ? copy.markedRead : copy.markRead}
-              </button>
             </div>
           </div>
           <aside className={styles.heroSide}>
@@ -443,6 +531,10 @@ export default function KneeLigamentsPage() {
           </aside>
         </header>
 
+        <div className={styles.readBar}>
+          <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} />
+        </div>
+
         <div className={styles.layout}>
           <aside className={styles.toc}>
             <strong>{copy.toc}</strong>
@@ -450,15 +542,13 @@ export default function KneeLigamentsPage() {
           </aside>
 
           <div className={styles.main}>
-            <Section id="grading" data={copy.sections.grading} />
-            <Section id="lateral" data={copy.sections.lateral} figures={copy.figures.lateral} />
-            <Section id="medial" data={copy.sections.medial} figures={copy.figures.medial} />
-            <Section id="acl" data={copy.sections.acl} figures={copy.figures.acl} />
-            <Section id="pcl" data={copy.sections.pcl} figures={copy.figures.pcl} />
+            <Section id="grading" data={copy.sections.grading} defaultOpen={sectionDefaultOpen} />
+            <Section id="lateral" data={copy.sections.lateral} figures={copy.figures.lateral} defaultOpen={sectionDefaultOpen} />
+            <Section id="medial" data={copy.sections.medial} figures={copy.figures.medial} defaultOpen={sectionDefaultOpen} />
+            <Section id="acl" data={copy.sections.acl} figures={copy.figures.acl} defaultOpen={sectionDefaultOpen} />
+            <Section id="pcl" data={copy.sections.pcl} figures={copy.figures.pcl} defaultOpen={sectionDefaultOpen} />
 
-            <section id="cases" className={styles.section}>
-              <h2>{copy.sections.cases.title}</h2>
-              <p className={styles.sectionLead}>{copy.sections.cases.lead}</p>
+            <Section id="cases" data={copy.sections.cases} defaultOpen={sectionDefaultOpen}>
               <div className={styles.caseGrid}>
                 {copy.sections.cases.placeholders.map(([title, text]) => (
                   <article className={styles.placeholder} key={title}>
@@ -467,10 +557,9 @@ export default function KneeLigamentsPage() {
                   </article>
                 ))}
               </div>
-            </section>
+            </Section>
 
-            <section id="takehome" className={styles.takeHome}>
-              <h2>{copy.sections.takehome.title}</h2>
+            <Section id="takehome" data={copy.sections.takehome} defaultOpen={!isMobile} className={styles.takeHomeSection} showLead={false}>
               <div className={styles.takeHomeBox}>
                 <p className={styles.takeHomeIntro}>{copy.sections.takehome.lead}</p>
                 <div className={styles.takeHomeList}>
@@ -485,7 +574,11 @@ export default function KneeLigamentsPage() {
                   ))}
                 </div>
               </div>
-            </section>
+            </Section>
+
+            <div className={styles.readBarBottom}>
+              <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} />
+            </div>
           </div>
         </div>
       </div>
