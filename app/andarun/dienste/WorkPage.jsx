@@ -218,6 +218,101 @@ function formatTimerDuration(ms) {
   return hours > 0 ? `${hours}:${mm}:${ss}` : `${mm}:${ss}`
 }
 
+function drawHistoryChart(canvas, days, maxCount, maxAvg) {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2)
+  const W = canvas.offsetWidth
+  const H = canvas.offsetHeight
+  if (!W || !H) return
+  canvas.width = W * dpr
+  canvas.height = H * dpr
+  const ctx = canvas.getContext('2d')
+  ctx.scale(dpr, dpr)
+
+  const pad = { top: 24, right: 20, bottom: 44, left: 42 }
+  const cW = W - pad.left - pad.right
+  const cH = H - pad.top - pad.bottom
+  const n = days.length
+  if (!n) return
+
+  ctx.clearRect(0, 0, W, H)
+
+  // Horizontal grid lines
+  ctx.strokeStyle = 'rgba(255,255,255,0.07)'
+  ctx.lineWidth = 1
+  for (let i = 0; i <= 4; i++) {
+    const y = pad.top + cH - (i / 4) * cH
+    ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(W - pad.right, y); ctx.stroke()
+  }
+
+  // Count y-axis labels (left)
+  ctx.fillStyle = 'rgba(255,255,255,0.3)'
+  ctx.textAlign = 'right'
+  ctx.textBaseline = 'middle'
+  ctx.font = '10px system-ui'
+  for (let i = 0; i <= 4; i++) {
+    const y = pad.top + cH - (i / 4) * cH
+    ctx.fillText(Math.round((i / 4) * maxCount), pad.left - 8, y)
+  }
+
+  const barW = Math.max(6, Math.floor(cW / n * 0.52))
+  const linePoints = []
+
+  days.forEach((day, idx) => {
+    const cx = pad.left + (idx + 0.5) * (cW / n)
+
+    // Bar (count)
+    const barH = maxCount > 0 ? (day.count / maxCount) * cH : 0
+    const barY = pad.top + cH - barH
+    const grad = ctx.createLinearGradient(0, barY, 0, pad.top + cH)
+    grad.addColorStop(0, 'rgba(99,121,232,0.92)')
+    grad.addColorStop(1, 'rgba(99,121,232,0.12)')
+    ctx.fillStyle = grad
+    ctx.beginPath()
+    if (ctx.roundRect) ctx.roundRect(cx - barW / 2, barY, barW, Math.max(barH, 2), [3, 3, 0, 0])
+    else ctx.rect(cx - barW / 2, barY, barW, Math.max(barH, 2))
+    ctx.fill()
+
+    // Count label above bar
+    if (day.count > 0) {
+      ctx.fillStyle = 'rgba(180,190,255,0.75)'
+      ctx.textAlign = 'center'
+      ctx.textBaseline = 'bottom'
+      ctx.font = '9px system-ui'
+      ctx.fillText(day.count, cx, barY - 3)
+    }
+
+    // Avg line point
+    if (day.avg > 0 && maxAvg > 0) {
+      linePoints.push({ x: cx, y: pad.top + cH - (day.avg / maxAvg) * cH })
+    }
+
+    // X-axis date
+    ctx.fillStyle = 'rgba(255,255,255,0.28)'
+    ctx.textAlign = 'center'
+    ctx.textBaseline = 'top'
+    ctx.font = '9px system-ui'
+    ctx.fillText(day.date.slice(5), cx, pad.top + cH + 10)
+  })
+
+  // Avg duration line
+  if (linePoints.length > 1) {
+    ctx.strokeStyle = 'rgba(251,146,60,0.85)'
+    ctx.lineWidth = 2
+    ctx.lineJoin = 'round'
+    ctx.lineCap = 'round'
+    ctx.beginPath()
+    linePoints.forEach((pt, i) => i === 0 ? ctx.moveTo(pt.x, pt.y) : ctx.lineTo(pt.x, pt.y))
+    ctx.stroke()
+
+    ctx.fillStyle = '#fb923c'
+    linePoints.forEach(pt => {
+      ctx.beginPath()
+      ctx.arc(pt.x, pt.y, 3.5, 0, Math.PI * 2)
+      ctx.fill()
+    })
+  }
+}
+
 export default function WorkPage({ showHomeLink = true, view = 'all' }) {
   const showShifts = view !== 'findings'
   const showFindings = view !== 'shifts'
@@ -240,6 +335,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
   const [timerAddedMessage, setTimerAddedMessage] = useState('')
   const [timerHistoryOpen, setTimerHistoryOpen] = useState(false)
   const [timerDayModal, setTimerDayModal] = useState(null)
+  const historyCanvasRef = useRef(null)
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(true)
 
@@ -258,6 +354,11 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
     const id = window.setTimeout(() => setTimerAddedMessage(''), 2200)
     return () => window.clearTimeout(id)
   }, [timerAddedMessage])
+
+  useEffect(() => {
+    if (!timerHistoryOpen || !historyCanvasRef.current || !timerHistoryDays.length) return
+    drawHistoryChart(historyCanvasRef.current, timerHistoryDays, maxHistoryCount, maxHistoryAvg)
+  }, [timerHistoryOpen, timerHistoryDays, maxHistoryCount, maxHistoryAvg])
 
   const shiftsByDate = useMemo(
     () => new Map(shifts.filter(shift => !isAbsenceShift(shift)).map(shift => [shift.date, shift])),
@@ -825,19 +926,30 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
             </div>
 
             <div className={styles.timerStatsCard}>
-              <button className={styles.timerStatsHeader} type="button" onClick={() => setTimerHistoryOpen(true)}>
+              <div className={styles.timerStatsTop}>
                 <span className={styles.kicker}>Heute</span>
-                <em>Befundzeiten ansehen</em>
-              </button>
-              <div className={styles.timerStatsGrid}>
-                {timerStats.map(stat => (
-                  <button type="button" key={stat.modality} onClick={() => setTimerDayModal(stat.modality)}>
-                    <strong>{stat.modality}</strong>
-                    <span>{stat.count} Befund{stat.count === 1 ? '' : 'e'}</span>
-                    <em>{stat.avg ? formatTimerDuration(stat.avg) : '--:--'} Ø</em>
-                  </button>
-                ))}
+                <time>{new Date().toLocaleDateString('de-DE', { weekday: 'short', day: 'numeric', month: 'short' })}</time>
               </div>
+              <div className={styles.timerModalityRows}>
+                {timerStats.map(stat => {
+                  const maxToday = Math.max(1, ...timerStats.map(s => s.count))
+                  return (
+                    <button type="button" key={stat.modality} className={styles.timerModalityRow} onClick={() => setTimerDayModal(stat.modality)}>
+                      <div className={styles.timerModalityMeta}>
+                        <strong>{stat.modality}</strong>
+                        <span>{stat.count} Befund{stat.count === 1 ? '' : 'e'}</span>
+                        <em>{stat.avg ? formatTimerDuration(stat.avg) : '—'} Ø</em>
+                      </div>
+                      <div className={styles.timerModalityTrack}>
+                        <div className={styles.timerModalityFill} style={{ width: `${stat.count > 0 ? (stat.count / maxToday) * 100 : 0}%` }} />
+                      </div>
+                    </button>
+                  )
+                })}
+              </div>
+              <button className={styles.verlaufBtn} type="button" onClick={() => setTimerHistoryOpen(true)}>
+                Verlauf ansehen <span>→</span>
+              </button>
             </div>
           </div>
         </div>
@@ -924,25 +1036,40 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
             >
               <div className={styles.modalHead}>
                 <div>
-                  <span className={styles.kicker}>Verlauf</span>
-                  <h3 id="timer-history-title">Befundtimer Verlauf</h3>
+                  <span className={styles.kicker}>14-Tage-Verlauf</span>
+                  <h3 id="timer-history-title">Befundzeiten</h3>
                 </div>
                 <button type="button" onClick={() => setTimerHistoryOpen(false)} aria-label="Fenster schließen">×</button>
               </div>
-              <div className={styles.timerHistoryChart}>
-                {timerHistoryDays.map(day => (
-                  <div className={styles.timerHistoryDay} key={day.date}>
-                    <div>
-                      <i style={{ height: `${Math.max(8, (day.count / maxHistoryCount) * 100)}%` }} />
-                      <b style={{ height: `${Math.max(8, (day.avg / maxHistoryAvg) * 100)}%` }} />
-                    </div>
-                    <strong>{day.count}</strong>
-                    <span>{formatTimerDuration(day.avg)}</span>
-                    <em>{day.date.slice(5)}</em>
-                  </div>
-                ))}
-                {!timerHistoryDays.length && <p>Noch kein Verlauf gespeichert.</p>}
+
+              <div className={styles.historySummary}>
+                <div>
+                  <strong>{timerHistoryDays.reduce((s, d) => s + d.count, 0)}</strong>
+                  <span>Befunde gesamt</span>
+                </div>
+                <div>
+                  <strong>{timerHistoryDays.length ? Math.round(timerHistoryDays.reduce((s, d) => s + d.count, 0) / timerHistoryDays.length) : 0}</strong>
+                  <span>Ø pro Tag</span>
+                </div>
+                <div>
+                  <strong>{maxHistoryCount}</strong>
+                  <span>Bester Tag</span>
+                </div>
+                <div>
+                  <strong>{maxHistoryAvg ? formatTimerDuration(maxHistoryAvg) : '—'}</strong>
+                  <span>Längste Ø-Zeit</span>
+                </div>
               </div>
+
+              <div className={styles.historyLegend}>
+                <span><i className={styles.legendBar} /> Anzahl Befunde</span>
+                <span><i className={styles.legendLine} /> Ø Befundzeit</span>
+              </div>
+
+              {timerHistoryDays.length > 0
+                ? <canvas ref={historyCanvasRef} className={styles.historyCanvas} />
+                : <p className={styles.historyEmpty}>Noch kein Verlauf gespeichert.</p>
+              }
             </div>
           </div>
         )}
@@ -958,22 +1085,27 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
             >
               <div className={styles.modalHead}>
                 <div>
-                  <span className={styles.kicker}>Heute</span>
-                  <h3 id="timer-day-title">{timerDayModal} Befunde</h3>
+                  <span className={styles.kicker}>Heute · {timerDayModal}</span>
+                  <h3 id="timer-day-title">{timerDayItems.reduce((s, t) => s + (Number(t.count) || 1), 0)} Befunde</h3>
                 </div>
                 <button type="button" onClick={() => setTimerDayModal(null)} aria-label="Fenster schließen">×</button>
               </div>
               <div className={styles.timerDayList}>
-                {timerDayItems.map(timer => (
-                  <div className={styles.timerDayRow} key={timer.id}>
-                    <strong>{formatTimerDuration(timer.durationMs)}</strong>
-                    <span>×{Number(timer.count) || 1}</span>
-                    <em>{formatTimerDuration(Number(timer.durationMs || 0) / (Number(timer.count) || 1))} Ø</em>
-                    <small>{new Date(timer.createdAt || `${timer.date}T12:00:00`).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}</small>
-                    <button type="button" onClick={() => deleteFindingTimer(timer.id)}>Löschen</button>
-                  </div>
-                ))}
-                {!timerDayItems.length && <p>Noch keine {timerDayModal}-Befunde heute.</p>}
+                {timerDayItems.map(timer => {
+                  const count = Number(timer.count) || 1
+                  const avgMs = Number(timer.durationMs || 0) / count
+                  const time = new Date(timer.createdAt || `${timer.date}T12:00:00`).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })
+                  return (
+                    <div className={styles.timerDayRow} key={timer.id}>
+                      <span className={styles.dayRowTime}>{time}</span>
+                      <span className={styles.dayRowTotal}>{formatTimerDuration(timer.durationMs)}</span>
+                      <span className={styles.dayRowCount}>×{count}</span>
+                      <span className={styles.dayRowAvg}>{formatTimerDuration(avgMs)} Ø</span>
+                      <button type="button" className={styles.dayRowDelete} onClick={() => deleteFindingTimer(timer.id)}>×</button>
+                    </div>
+                  )
+                })}
+                {!timerDayItems.length && <p className={styles.historyEmpty}>Noch keine {timerDayModal}-Befunde heute.</p>}
               </div>
             </div>
           </div>
