@@ -201,7 +201,12 @@ const EMPTY_FILTER = {
   diagnosis: '',
 }
 
-const TIMER_INCREMENT_MINUTES = 5
+const TIMER_EXTRA_INCREMENT_MINUTES = 5
+const TIMER_TARGET_MINUTES = {
+  Röntgen: 3,
+  CT: 10,
+  MRT: 15,
+}
 
 const EMPTY_TIMER_FORM = {
   modality: 'Röntgen',
@@ -400,12 +405,20 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
 
   const timerDisplayMs = timerElapsed + (timerStartedAt ? timerNow - timerStartedAt : 0)
   const timerRunning = Boolean(timerStartedAt)
-  const timerBaseTargetMinutes = TIMER_INCREMENT_MINUTES
+  const timerBaseTargetMinutes = TIMER_TARGET_MINUTES[timerForm.modality] || TIMER_EXTRA_INCREMENT_MINUTES
   const timerCount = Math.max(1, Number(timerForm.count) || 1)
   const timerTargetMinutes = timerBaseTargetMinutes * timerCount
   const timerSegmentMs = timerTargetMinutes * 60 * 1000
+  const timerExtraSegmentMs = TIMER_EXTRA_INCREMENT_MINUTES * 60 * 1000
   const timerOverTarget = timerDisplayMs > timerSegmentMs
-  const timerSegmentProgress = timerDisplayMs > 0 ? Math.min(timerDisplayMs / timerSegmentMs, 1) : 0
+  const timerExtraMs = Math.max(0, timerDisplayMs - timerSegmentMs)
+  const timerExtraBlocks = timerExtraMs > 0 ? Math.ceil(timerExtraMs / timerExtraSegmentMs) : 0
+  const timerExtraMinutes = timerExtraBlocks * TIMER_EXTRA_INCREMENT_MINUTES
+  const timerNormalProgress = timerDisplayMs > 0 ? Math.min(timerDisplayMs / timerSegmentMs, 1) : 0
+  const timerExtraProgress = timerExtraMs > 0
+    ? ((timerExtraMs % timerExtraSegmentMs) || timerExtraSegmentMs) / timerExtraSegmentMs
+    : 0
+  const timerDialProgress = timerOverTarget ? timerExtraProgress : timerNormalProgress
   const todayTimers = useMemo(
     () => findingTimers.filter(timer => timer.date === todayValue()),
     [findingTimers],
@@ -449,7 +462,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
       ...prev,
       count: Math.min(20, Math.max(1, (Number(prev.count) || 1) + delta)),
     }))
-    if (shouldShowAddedMessage) setTimerAddedMessage(`+${TIMER_INCREMENT_MINUTES} Minuten hinzugefügt`)
+    if (shouldShowAddedMessage) setTimerAddedMessage(`+${timerBaseTargetMinutes} Minuten Zielzeit hinzugefügt`)
   }
 
   function startFindingTimer() {
@@ -783,11 +796,11 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
                   timerRunning ? styles.timerDialRunning : styles.timerDial,
                   timerOverTarget ? styles.timerDialOverdue : '',
                 ].filter(Boolean).join(' ')}
-                style={{ '--progress': `${timerSegmentProgress * 360}deg` }}
+                style={{ '--progress': `${timerDialProgress * 360}deg` }}
               >
                 <div>
                   <strong>{formatTimerDuration(timerDisplayMs)}</strong>
-                  <span>{timerTargetMinutes} min Ziel</span>
+                  <span>{timerOverTarget ? `+${timerExtraMinutes} min extra` : `${timerTargetMinutes} min Ziel`}</span>
                 </div>
               </div>
               <div className={styles.timerModalityPills}>
