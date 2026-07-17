@@ -134,6 +134,11 @@ function timeRange(start, end) {
   return `${start || '--:--'}-${end || '--:--'}`
 }
 
+function shortDateLabel(value) {
+  const date = parseDate(value)
+  return date.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' })
+}
+
 async function apiRequest(path, method = 'GET', body) {
   const response = await fetch(`/api/andarun/work${path}`, {
     method,
@@ -436,18 +441,49 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
     findingTimers.forEach(timer => {
       const date = timer.date || ''
       if (!date) return
-      const current = grouped.get(date) || { date, count: 0, totalMs: 0 }
-      current.count += Number(timer.count) || 1
+      const modality = MODALITIES.includes(timer.modality) ? timer.modality : 'Röntgen'
+      const count = Number(timer.count) || 1
+      const current = grouped.get(date) || {
+        date,
+        count: 0,
+        totalMs: 0,
+        modalities: Object.fromEntries(MODALITIES.map(item => [item, 0])),
+      }
+      current.count += count
       current.totalMs += Number(timer.durationMs || 0)
+      current.modalities[modality] += count
       grouped.set(date, current)
     })
-    return [...grouped.values()]
-      .map(day => ({ ...day, avg: day.count ? Math.round(day.totalMs / day.count) : 0 }))
-      .sort((a, b) => a.date.localeCompare(b.date))
-      .slice(-14)
+    const cursor = parseDate(todayValue())
+    cursor.setDate(cursor.getDate() - 13)
+    return Array.from({ length: 14 }, () => {
+      const date = dateValue(cursor)
+      const day = grouped.get(date) || {
+        date,
+        count: 0,
+        totalMs: 0,
+        modalities: Object.fromEntries(MODALITIES.map(item => [item, 0])),
+      }
+      cursor.setDate(cursor.getDate() + 1)
+      return { ...day, avg: day.count ? Math.round(day.totalMs / day.count) : 0 }
+    })
   }, [findingTimers])
+  const timerHistoryTotals = useMemo(() => {
+    const count = timerHistoryDays.reduce((sum, day) => sum + day.count, 0)
+    const totalMs = timerHistoryDays.reduce((sum, day) => sum + day.totalMs, 0)
+    const activeDays = timerHistoryDays.filter(day => day.count > 0).length
+    const busiestDay = timerHistoryDays.reduce((best, day) => (day.count > best.count ? day : best), { count: 0 })
+    return {
+      count,
+      totalMs,
+      activeDays,
+      avg: count ? Math.round(totalMs / count) : 0,
+      busiestDay,
+    }
+  }, [timerHistoryDays])
   const maxHistoryCount = Math.max(1, ...timerHistoryDays.map(day => day.count))
   const maxHistoryAvg = Math.max(1, ...timerHistoryDays.map(day => day.avg))
+  const timerHistoryHasData = timerHistoryTotals.count > 0
   const timerDayItems = timerDayModal
     ? todayTimers.filter(timer => timer.modality === timerDayModal)
     : []
@@ -942,19 +978,55 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
                 </div>
                 <button type="button" onClick={() => setTimerHistoryOpen(false)} aria-label="Fenster schließen">×</button>
               </div>
-              <div className={styles.timerHistoryChart}>
-                {timerHistoryDays.map(day => (
-                  <div className={styles.timerHistoryDay} key={day.date}>
-                    <div>
-                      <i style={{ height: `${Math.max(8, (day.count / maxHistoryCount) * 100)}%` }} />
-                      <b style={{ height: `${Math.max(8, (day.avg / maxHistoryAvg) * 100)}%` }} />
-                    </div>
+              <div className={styles.timerHistorySummary}>
+                <div><span>Befunde</span><strong>{timerHistoryTotals.count}</strong></div>
+                <div><span>Ø pro Befund</span><strong>{timerHistoryTotals.avg ? formatTimerDuration(timerHistoryTotals.avg) : '--:--'}</strong></div>
+                <div><span>Aktive Tage</span><strong>{timerHistoryTotals.activeDays}</strong></div>
+                <div><span>Stärkster Tag</span><strong>{timerHistoryTotals.busiestDay?.count ? `${shortDateLabel(timerHistoryTotals.busiestDay.date)} · ${timerHistoryTotals.busiestDay.count}` : '—'}</strong></div>
+              </div>
+              <div className={styles.timerHistoryLegend}>
+                <span><i /> Befunde/Tag</span>
+                <span><b /> Ø Zeit/Befund</span>
+              </div>
+              <div className={styles.timerHistoryChart} aria-label="Befundtimer Verlauf der letzten 14 Tage">
+                <div className={styles.timerHistoryAxis}>
+                  <span>{maxHistoryCount}</span>
+                  <span>{Math.ceil(maxHistoryCount / 2)}</span>
+                  <span>0</span>
+                </div>
+                <div className={styles.timerHistoryPlot}>
+                  {timerHistoryDays.map(day => {
+                    const countHeight = day.count ? Math.max(10, (day.count / maxHistoryCount) * 100) : 0
+                    const avgPosition = day.avg ? Math.max(8, (day.avg / maxHistoryAvg) * 100) : 0
+                    return (
+                      <div className={styles.timerHistoryDay} key={day.date} title={`${shortDateLabel(day.date)}: ${day.count} Befunde, Ø ${day.avg ? formatTimerDuration(day.avg) : '--:--'}`}>
+                        <div className={styles.timerHistoryBars}>
+                          <span style={{ height: `${countHeight}%` }} />
+                          {day.avg > 0 && <em style={{ bottom: `${avgPosition}%` }}>{formatTimerDuration(day.avg)}</em>}
+                        </div>
+                        <strong>{day.count}</strong>
+                        <small>{shortDateLabel(day.date)}</small>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+              <div className={styles.timerHistoryTable}>
+                <div className={styles.timerHistoryTableHead}>
+                  <span>Datum</span><span>Befunde</span><span>Ø</span><span>Gesamt</span><span>Rö</span><span>CT</span><span>MRT</span>
+                </div>
+                {timerHistoryDays.filter(day => day.count > 0).map(day => (
+                  <div className={styles.timerHistoryTableRow} key={`row-${day.date}`}>
+                    <span>{shortDateLabel(day.date)}</span>
                     <strong>{day.count}</strong>
-                    <span>{formatTimerDuration(day.avg)}</span>
-                    <em>{day.date.slice(5)}</em>
+                    <em>{formatTimerDuration(day.avg)}</em>
+                    <em>{formatTimerDuration(day.totalMs)}</em>
+                    <span>{day.modalities['Röntgen']}</span>
+                    <span>{day.modalities.CT}</span>
+                    <span>{day.modalities.MRT}</span>
                   </div>
                 ))}
-                {!timerHistoryDays.length && <p>Noch kein Verlauf gespeichert.</p>}
+                {!timerHistoryHasData && <p>Noch kein Verlauf gespeichert.</p>}
               </div>
             </div>
           </div>
