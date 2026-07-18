@@ -375,13 +375,13 @@ function withLang(path, lang) {
 }
 
 const SECTION_META = {
-  grading: { number: '01', icon: '📊' },
-  lateral: { number: '02', icon: '↗' },
-  medial: { number: '03', icon: '↖' },
-  acl: { number: '04', icon: '✕' },
-  pcl: { number: '05', icon: '↕' },
-  cases: { number: '06', icon: '🧪' },
-  takehome: { number: '07', icon: '💡' },
+  grading: { icon: '📊' },
+  lateral: { icon: '↗' },
+  medial: { icon: '↖' },
+  acl: { icon: '✕' },
+  pcl: { icon: '↕' },
+  cases: { icon: '🧪' },
+  takehome: { icon: '💡' },
 }
 
 function Card({ title, bullets }) {
@@ -491,7 +491,6 @@ function Section({ id, data, figures, children, defaultOpen = true, className = 
           onKeyDown={handleKeyDown}
         >
           <div className={styles.sectionTitleText}>
-            <span className={styles.sectionEyebrow}>{SECTION_META[id]?.number}</span>
             <h2>{data.title}</h2>
           </div>
           <span className={`${styles.sectionToggleIcon} ${isOpen ? styles.sectionToggleIconOpen : ''}`}>⌄</span>
@@ -592,7 +591,6 @@ export default function KneeLigamentsPage() {
             <div className={styles.actions}>
               <Link className={`${styles.action} ${styles.actionPrimary}`} href={withLang('/ueben/quiz?fach=msk&n=10&themen=kreuzbaender&from=/msk/knie/kreuzbaender', lang)}><span>🎯</span>{copy.quiz}</Link>
               <Link className={styles.action} href={withLang('/flashcards/kreuzbaender?from=/msk/knie/kreuzbaender', lang)}><span>🧠</span>{copy.cards}</Link>
-              <button type="button" className={styles.action} onClick={() => scrollTo('cases')}><span>🧪</span>{copy.sections.cases.title}<small>{copy.sections.cases.placeholders.length}</small></button>
             </div>
           </div>
           <aside className={styles.heroSide}>

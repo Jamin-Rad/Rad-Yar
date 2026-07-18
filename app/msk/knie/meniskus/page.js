@@ -4582,11 +4582,6 @@ export default function MeniskusPage() {
                 <span>🧠</span>
                 <span>{copy.actionFlash}</span>
               </Link>
-              <button type="button" onClick={() => scrollTo('fallbeispiele')} className={`${styles.learnAction} ${styles.learnActionMcq}`}>
-                <span>🧪</span>
-                <span>{copy.actionFall}</span>
-                <small>{copy.actionFallStatus}</small>
-              </button>
             </div>
           </div>
           <div className={styles.heroStats}>
