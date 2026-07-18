@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import styles from './page.module.css'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -374,6 +374,16 @@ function withLang(path, lang) {
   return `${path}${separator}lang=${lang}`
 }
 
+const SECTION_META = {
+  grading: { number: '01', icon: '📊' },
+  lateral: { number: '02', icon: '↗' },
+  medial: { number: '03', icon: '↖' },
+  acl: { number: '04', icon: '✕' },
+  pcl: { number: '05', icon: '↕' },
+  cases: { number: '06', icon: '🧪' },
+  takehome: { number: '07', icon: '💡' },
+}
+
 function Card({ title, bullets }) {
   return (
     <article className={styles.card}>
@@ -480,7 +490,10 @@ function Section({ id, data, figures, children, defaultOpen = true, className = 
           onClick={toggleSection}
           onKeyDown={handleKeyDown}
         >
-          <h2>{data.title}</h2>
+          <div className={styles.sectionTitleText}>
+            <span className={styles.sectionEyebrow}>{SECTION_META[id]?.number}</span>
+            <h2>{data.title}</h2>
+          </div>
           <span className={`${styles.sectionToggleIcon} ${isOpen ? styles.sectionToggleIconOpen : ''}`}>⌄</span>
         </div>
       </div>
@@ -520,6 +533,12 @@ export default function KneeLigamentsPage() {
   const sectionDefaultOpen = !isMobile
   const [previewImage, setPreviewImage] = useState(null)
   const [signInHref, setSignInHref] = useState('/sign-in')
+  const [activeId, setActiveId] = useState(copy.nav[0][0])
+  const sectionIds = useMemo(() => copy.nav.map(([id]) => id), [copy.nav])
+
+  const scrollTo = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 
   useEffect(() => {
     document.body.style.overflow = previewImage ? 'hidden' : ''
@@ -533,13 +552,36 @@ export default function KneeLigamentsPage() {
     setSignInHref(`/sign-in?redirect_url=${encodeURIComponent(currentPath)}`)
   }, [])
 
+  useEffect(() => {
+    setActiveId(copy.nav[0][0])
+  }, [copy.nav])
+
+  useEffect(() => {
+    const observers = sectionIds.map(id => {
+      const element = document.getElementById(id)
+      if (!element) return null
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveId(id)
+        },
+        { rootMargin: '-18% 0px -70% 0px', threshold: 0.01 }
+      )
+      observer.observe(element)
+      return observer
+    })
+
+    return () => observers.forEach(observer => observer?.disconnect())
+  }, [sectionIds])
+
   return (
     <main className={styles.page} dir={dir}>
       <div className={styles.shell}>
         <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+          <Link href={withLang('/', lang)}>RadYar</Link>
+          <span>›</span>
           <Link href={withLang('/lernen/msk', lang)}>{copy.crumbMsk}</Link>
-          <span>/</span>
-          <span>{copy.crumbKnee}</span>
+          <span>›</span>
+          <span>{copy.crumbKnee} · {copy.title}</span>
         </nav>
 
         <header className={styles.hero}>
@@ -548,8 +590,9 @@ export default function KneeLigamentsPage() {
             <h1>{copy.title}</h1>
             <p className={styles.lead}>{copy.lead}</p>
             <div className={styles.actions}>
-              <Link className={`${styles.action} ${styles.actionPrimary}`} href={withLang('/ueben/quiz?fach=msk&n=10&themen=kreuzbaender&from=/msk/knie/kreuzbaender', lang)}>{copy.quiz}</Link>
-              <Link className={styles.action} href={withLang('/flashcards/kreuzbaender?from=/msk/knie/kreuzbaender', lang)}>{copy.cards}</Link>
+              <Link className={`${styles.action} ${styles.actionPrimary}`} href={withLang('/ueben/quiz?fach=msk&n=10&themen=kreuzbaender&from=/msk/knie/kreuzbaender', lang)}><span>🎯</span>{copy.quiz}</Link>
+              <Link className={styles.action} href={withLang('/flashcards/kreuzbaender?from=/msk/knie/kreuzbaender', lang)}><span>🧠</span>{copy.cards}</Link>
+              <button type="button" className={styles.action} onClick={() => scrollTo('cases')}><span>🧪</span>{copy.sections.cases.title}<small>{copy.sections.cases.placeholders.length}</small></button>
             </div>
           </div>
           <aside className={styles.heroSide}>
@@ -569,7 +612,19 @@ export default function KneeLigamentsPage() {
         <div className={styles.layout}>
           <aside className={styles.toc}>
             <strong>{copy.toc}</strong>
-            {copy.nav.map(([id, label]) => <a key={id} href={`#${id}`}>{label}</a>)}
+            <nav className={styles.tocNav}>
+              {copy.nav.map(([id, label]) => (
+                <button
+                  type="button"
+                  key={id}
+                  className={`${styles.tocItem} ${activeId === id ? styles.tocItemActive : ''}`}
+                  onClick={() => scrollTo(id)}
+                >
+                  <span className={styles.tocIcon}>{SECTION_META[id]?.icon}</span>
+                  <span>{label}</span>
+                </button>
+              ))}
+            </nav>
           </aside>
 
           <div className={styles.main}>

@@ -281,9 +281,14 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
     return grouped
   }, [shifts])
   const monthDays = useMemo(() => daysForMonth(month), [month])
-  const monthShifts = useMemo(
-    () => shifts.filter(shift => shift.date?.startsWith(month)).sort((a, b) => a.date.localeCompare(b.date)),
-    [shifts, month],
+  const printMonthRows = useMemo(
+    () => daysForMonth(month)
+      .filter(day => day.current)
+      .map(day => ({
+        date: day.date,
+        shift: shiftsByDate.get(day.date) || absencesByDate.get(day.date)?.[0] || null,
+      })),
+    [month, shiftsByDate, absencesByDate],
   )
   const normalizedFindings = useMemo(
     () => findings.map(finding => ({ type: 'case', diagnosis: '', name: '', ...finding })),
@@ -1067,7 +1072,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
 
       <section className={styles.printSheet} aria-hidden="true">
         <div className={styles.printTop}>
-          <h1>Dienstmodell</h1>
+          <h1>Dienstzeiten</h1>
           <div><strong>{NAME}</strong><span>{monthLabel(month)}</span></div>
         </div>
         <table>
@@ -1080,20 +1085,17 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
             </tr>
           </thead>
           <tbody>
-            {monthShifts.map(shift => {
-              const date = parseDate(shift.date)
+            {printMonthRows.map(({ date: dateValueText, shift }) => {
+              const date = parseDate(dateValueText)
               return (
-                <tr key={shift.id}>
+                <tr key={dateValueText}>
                   <td>{WEEKDAYS_LONG[date.getDay()]}</td>
                   <td>{date.toLocaleDateString('de-DE')}</td>
-                  <td>{shift.duty}</td>
-                  <td>{timeRange(shift.actualStart || shift.plannedStart, shift.actualEnd || shift.plannedEnd)}</td>
+                  <td>{shift?.duty || ''}</td>
+                  <td>{shift ? timeRange(shift.actualStart || shift.plannedStart, shift.actualEnd || shift.plannedEnd) : ''}</td>
                 </tr>
               )
             })}
-            {!monthShifts.length && (
-              <tr><td colSpan="4">Keine Dienste eingetragen</td></tr>
-            )}
           </tbody>
         </table>
         <div className={styles.signatures}>

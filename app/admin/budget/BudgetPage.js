@@ -548,6 +548,13 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
     return { income, expenses, balance: income - expenses }
   }, [monthData])
 
+  const fatimaPaid = useMemo(
+    () => monthData.entries
+      .filter(entry => entry.type === 'expense' && entry.paidByFatima)
+      .reduce((sum, entry) => sum + Number(entry.amount || 0), 0),
+    [monthData.entries],
+  )
+
   const categoryTotals = useMemo(() => {
     const catNames = new Set(categories.map(c => c.name))
     const t = {}
@@ -669,7 +676,7 @@ ${manualEntries.length ? `
 <tbody>${manualRows}</tbody>
 </table>` : ''}
 
-<div class="saldo"><span>Monats-Saldo</span><span class="${summary.balance >= 0 ? 'green' : 'red'}">${formatMoney(summary.balance)}</span></div>
+<div class="saldo"><span>Monats-Saldo <small style="color:#7c3aed">(Fatima bezahlt: ${formatMoney(fatimaPaid)})</small></span><span class="${summary.balance >= 0 ? 'green' : 'red'}">${formatMoney(summary.balance)}</span></div>
 <div class="footer">Rad-Yar · Finanzübersicht ${monthLabel}</div>
 </body></html>`
 
@@ -1271,11 +1278,6 @@ ${manualEntries.length ? `
                   <div className={styles.sectionCardHead} style={{ background: 'rgba(249,115,22,.07)', borderBottom: '1px solid rgba(249,115,22,.15)' }}>
                     <span className={styles.sectionCardLabel} style={{ color: '#c2410c' }}>Ausgaben</span>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                      {totalCatBudget > 0 && (
-                        <span style={{ fontSize: 12, color: budgetOver ? '#dc2626' : '#64748b' }}>
-                          {budgetOver ? `${formatMoney(-budgetRemaining)} überzogen` : `${formatMoney(budgetRemaining)} übrig`}
-                        </span>
-                      )}
                       <strong className={styles.moneyNegative} style={{ fontSize: 18 }}>{formatMoney(summary.expenses)}</strong>
                       <button className={styles.sectionAddBtn} style={{ background: '#f97316' }} onClick={() => openPopup('expense')} aria-label="Ausgabe hinzufügen"><IconPlus /></button>
                     </div>
@@ -1307,9 +1309,10 @@ ${manualEntries.length ? `
                   </div>
                   {(incomeTotals.length > 0 || categoryTotals.length > 0) && (
                     <div className={styles.sectionCardFoot}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
                         <span style={{ fontSize: 13, fontWeight: 700, color: '#475569' }}>Saldo</span>
                         <strong className={summary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative} style={{ fontSize: 16 }}>{formatMoney(summary.balance)}</strong>
+                        <span style={{ fontSize: 12, fontWeight: 700, color: '#7c3aed' }}>(Fatima bezahlt: {formatMoney(fatimaPaid)})</span>
                       </div>
                     </div>
                   )}
