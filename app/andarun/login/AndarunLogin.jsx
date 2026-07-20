@@ -24,7 +24,7 @@ export default function AndarunLogin() {
       })
       const data = await response.json()
       if (!response.ok) throw new Error(data.error || 'Access failed.')
-      router.push('/andarun/todo')
+      router.push('/andarun')
       router.refresh()
     } catch (err) {
       setError(err.message)
