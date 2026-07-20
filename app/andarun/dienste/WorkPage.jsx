@@ -269,6 +269,40 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
     return () => window.clearTimeout(id)
   }, [timerAddedMessage])
 
+  useEffect(() => {
+    if (!timerStartedAt || !navigator?.wakeLock) return undefined
+    let wakeLock = null
+    let cancelled = false
+
+    async function requestWakeLock() {
+      try {
+        wakeLock = await navigator.wakeLock.request('screen')
+        if (cancelled) {
+          await wakeLock.release()
+          wakeLock = null
+        }
+      } catch {
+        wakeLock = null
+      }
+    }
+
+    function restoreWakeLock() {
+      if (document.visibilityState === 'visible' && !wakeLock) requestWakeLock()
+    }
+
+    requestWakeLock()
+    document.addEventListener('visibilitychange', restoreWakeLock)
+
+    return () => {
+      cancelled = true
+      document.removeEventListener('visibilitychange', restoreWakeLock)
+      if (wakeLock) {
+        wakeLock.release().catch(() => {})
+        wakeLock = null
+      }
+    }
+  }, [timerStartedAt])
+
   const shiftsByDate = useMemo(
     () => new Map(shifts.filter(shift => !isAbsenceShift(shift)).map(shift => [shift.date, shift])),
     [shifts],
