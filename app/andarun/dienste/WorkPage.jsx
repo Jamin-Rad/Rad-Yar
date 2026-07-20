@@ -562,11 +562,18 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
 
   async function finishFindingTimer() {
     const now = Date.now()
+    const previousElapsed = timerElapsed
+    const previousForm = timerForm
     const durationMs = timerElapsed + (timerStartedAt ? now - timerStartedAt : 0)
     if (durationMs < 1000) {
       setMessage('Timer ist noch zu kurz.')
       return
     }
+    setTimerElapsed(0)
+    setTimerStartedAt(null)
+    setTimerNow(now)
+    setTimerForm(prev => ({ ...prev, count: 1 }))
+    setMessage('Befundzeit wird gespeichert...')
     try {
       const timer = {
         ...timerForm,
@@ -579,12 +586,12 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
       }
       const data = await apiRequest('/', 'POST', { type: 'findingTimer', timer })
       setFindingTimers(data.findingTimers || [])
-      setTimerElapsed(0)
-      setTimerStartedAt(null)
-      setTimerNow(now)
-      setTimerForm(prev => ({ ...prev, count: 1 }))
       setMessage('Befundzeit gespeichert.')
     } catch (error) {
+      setTimerElapsed(durationMs || previousElapsed)
+      setTimerStartedAt(null)
+      setTimerNow(now)
+      setTimerForm(previousForm)
       setMessage(error.message)
     }
   }
