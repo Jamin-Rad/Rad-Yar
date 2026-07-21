@@ -435,6 +435,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
 
   async function saveFinding(event) {
     event.preventDefault()
+    const isEditing = Boolean(findingForm.id)
     try {
       const finding = {
         ...findingForm,
@@ -445,7 +446,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
       setFindingForm(EMPTY_FINDING)
       setActiveFindingType(finding.type)
       setFindingModalType(null)
-      setMessage('Befund gespeichert.')
+      setMessage(isEditing ? 'Befund aktualisiert.' : 'Befund gespeichert.')
     } catch (error) {
       setMessage(error.message)
     }
@@ -455,6 +456,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
     try {
       const data = await apiRequest(`/?type=finding&id=${encodeURIComponent(id)}`, 'DELETE')
       setFindings(data.findings || [])
+      if (findingForm.id === id) closeFindingModal()
     } catch (error) {
       setMessage(error.message)
     }
@@ -671,6 +673,19 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
     setFindingForm({ ...EMPTY_FINDING, type })
   }
 
+  function editFinding(finding) {
+    const type = finding.type === 'question' ? 'question' : 'case'
+    setActiveFindingType(type)
+    setFindingModalType(type)
+    setFindingForm({
+      ...EMPTY_FINDING,
+      ...finding,
+      type,
+      modality: MODALITIES.includes(finding.modality) ? finding.modality : EMPTY_FINDING.modality,
+      examArea: finding.examArea || AREA_OPTIONS[finding.modality]?.[0] || EMPTY_FINDING.examArea,
+    })
+  }
+
   function closeFindingModal() {
     setFindingModalType(null)
     setFindingForm(EMPTY_FINDING)
@@ -735,7 +750,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
             <input value={findingForm.vd} onChange={event => setFindingForm(prev => ({ ...prev, vd: event.target.value }))} />
           </label>
         )}
-        <button type="submit">Eintrag speichern</button>
+        <button type="submit">{findingForm.id ? 'Änderungen speichern' : 'Eintrag speichern'}</button>
       </form>
     )
   }
@@ -754,7 +769,10 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
             <span>{finding.modality}</span>
             <span>{finding.examArea || '—'}</span>
             <span>{finding.type === 'question' ? finding.vd || '—' : finding.diagnosis || finding.vd || '—'}</span>
-            <button type="button" onClick={() => deleteFinding(finding.id)}>×</button>
+            <div className={styles.findingRowActions}>
+              <button type="button" onClick={() => editFinding(finding)}>Bearbeiten</button>
+              <button type="button" onClick={() => deleteFinding(finding.id)}>×</button>
+            </div>
           </div>
         ))}
         {!items.length && !loading && <div className={styles.emptyTable}>{emptyText}</div>}
@@ -1055,7 +1073,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
             >
               <div className={styles.modalHead}>
                 <div>
-                  <span className={styles.kicker}>Neuer Eintrag</span>
+                  <span className={styles.kicker}>{findingForm.id ? 'Eintrag bearbeiten' : 'Neuer Eintrag'}</span>
                   <h3 id="finding-modal-title">{CASE_TYPES.find(type => type.id === findingModalType)?.label}</h3>
                 </div>
                 <button type="button" onClick={closeFindingModal} aria-label="Fenster schließen">×</button>
