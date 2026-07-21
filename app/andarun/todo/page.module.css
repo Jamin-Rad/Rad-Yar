@@ -132,6 +132,16 @@
   color: #4a1f32;
 }
 
+.lightPage .notificationHint {
+  color: #8a4a61;
+}
+
+.lightPage .monthControls .notificationActive {
+  border-color: rgba(236, 72, 153, .28);
+  background: linear-gradient(135deg, #f9a8d4, #fed7aa);
+  color: #4a1f32;
+}
+
 .lightPage .weekday,
 .lightPage .completedGroup h3 {
   color: #be185d;
@@ -598,6 +608,24 @@
   border-color: rgba(45, 212, 191, .36);
   background: rgba(255,255,255,.14);
   transform: translateY(-1px);
+}
+
+.monthControls .notificationBtn,
+.monthControls .notificationActive {
+  min-width: 148px;
+}
+
+.monthControls .notificationActive {
+  border-color: rgba(45, 212, 191, .40);
+  background: linear-gradient(135deg, rgba(20, 184, 166, .36), rgba(56, 189, 248, .26));
+  color: #ecfeff;
+}
+
+.notificationHint {
+  margin: -4px 0 14px;
+  color: rgba(203, 213, 225, .86);
+  font-size: 12px;
+  font-weight: 850;
 }
 
 .monthGrid {

@@ -5,6 +5,8 @@ import { useEffect, useMemo, useState } from 'react'
 import styles from './page.module.css'
 
 const STORAGE_KEY = 'andarun_todos_fallback_v1'
+const EVENT_NOTIFICATION_KEY = 'andarun_event_notifications_v1'
+const EVENT_REMINDER_MS = 15 * 60 * 1000
 
 const LANES = [
   {
@@ -49,6 +51,21 @@ function clearLocalTodos() {
   } catch {}
 }
 
+function readNotifiedEvents() {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(EVENT_NOTIFICATION_KEY) || '[]')
+    return new Set(Array.isArray(parsed) ? parsed : [])
+  } catch {
+    return new Set()
+  }
+}
+
+function writeNotifiedEvents(items) {
+  try {
+    localStorage.setItem(EVENT_NOTIFICATION_KEY, JSON.stringify([...items].slice(-200)))
+  } catch {}
+}
+
 function todoPayload(todo) {
   return {
     title: todo.title || '',
@@ -86,6 +103,16 @@ function formatEventMeta(todo) {
   }
   if (todo.eventTime && todo.endTime) return `${todo.eventTime}-${todo.endTime}`
   return todo.eventTime || 'ohne Uhrzeit'
+}
+
+function eventStartDate(todo) {
+  if (todo?.itemType !== 'event' || todo.allDay || !todo.deadline || !todo.eventTime) return null
+  const date = new Date(`${todo.deadline}T${todo.eventTime}:00`)
+  return Number.isNaN(date.getTime()) ? null : date
+}
+
+function eventNotificationId(todo) {
+  return `${todo.id}:${todo.deadline || ''}:${todo.eventTime || ''}:${todo.title || ''}`
 }
 
 function formatMonthTitle(monthKey) {
@@ -271,7 +298,12 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   const [newEventForm, setNewEventForm] = useState(() => eventFormForDate())
   const [draggingId, setDraggingId] = useState(null)
   const [dropLaneId, setDropLaneId] = useState(null)
+  const [notificationPermission, setNotificationPermission] = useState('unsupported')
   const showWorkPlan = apiBase === '/api/andarun/todos'
+
+  useEffect(() => {
+    setNotificationPermission('Notification' in window ? Notification.permission : 'unsupported')
+  }, [])
 
   useEffect(() => {
     let active = true
@@ -359,6 +391,45 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
       localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
     }
   }, [todos, storageMode, loading])
+
+  useEffect(() => {
+    if (notificationPermission !== 'granted') return undefined
+
+    function notifyUpcomingEvents() {
+      const now = Date.now()
+      const notified = readNotifiedEvents()
+      let changed = false
+
+      for (const todo of todos) {
+        const start = eventStartDate(todo)
+        if (!start || todo.done) continue
+        const diff = start.getTime() - now
+        if (diff > EVENT_REMINDER_MS || diff < -5 * 60 * 1000) continue
+
+        const key = eventNotificationId(todo)
+        if (notified.has(key)) continue
+
+        const startsNow = diff <= 60 * 1000
+        const title = startsNow ? 'Termin jetzt' : 'Termin in 15 Minuten'
+        const body = `${todo.title}${todo.eventTime ? ` · ${formatEventMeta(todo)}` : ''}`
+        try {
+          new Notification(title, {
+            body,
+            tag: key,
+            requireInteraction: true,
+          })
+          notified.add(key)
+          changed = true
+        } catch {}
+      }
+
+      if (changed) writeNotifiedEvents(notified)
+    }
+
+    notifyUpcomingEvents()
+    const id = window.setInterval(notifyUpcomingEvents, 60 * 1000)
+    return () => window.clearInterval(id)
+  }, [todos, notificationPermission])
 
   const stats = useMemo(() => {
     const taskTodos = todos.filter(todo => todo.itemType !== 'event')
@@ -603,6 +674,22 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
     setDetailForm(formFromTodo(todo))
   }
 
+  async function requestEventNotifications() {
+    if (!('Notification' in window)) {
+      setNotificationPermission('unsupported')
+      setMessage('Benachrichtigungen werden in diesem Browser nicht unterstützt.')
+      return
+    }
+
+    const permission = await Notification.requestPermission()
+    setNotificationPermission(permission)
+    setMessage(
+      permission === 'granted'
+        ? 'Terminerinnerungen sind aktiv. Die App erinnert 15 Minuten vorher, solange sie geöffnet ist.'
+        : 'Benachrichtigungen sind nicht erlaubt.',
+    )
+  }
+
   function openNewEvent(day) {
     if (!day) return
     setDetailId(null)
@@ -833,6 +920,14 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
             <h2>{formatMonthTitle(monthView)}</h2>
           </div>
           <div className={styles.monthControls}>
+            <button
+              className={notificationPermission === 'granted' ? styles.notificationActive : styles.notificationBtn}
+              type="button"
+              onClick={requestEventNotifications}
+              disabled={notificationPermission === 'unsupported'}
+            >
+              {notificationPermission === 'granted' ? 'Benachrichtigung an' : 'Benachrichtigung'}
+            </button>
             <button type="button" onClick={() => setMonthView(prev => shiftMonth(prev, -1))} aria-label="Previous month">‹</button>
             <button type="button" onClick={() => setMonthView(monthKeyFromDate())}>Today</button>
             <button type="button" onClick={() => setMonthView(prev => shiftMonth(prev, 1))} aria-label="Next month">›</button>
@@ -840,6 +935,15 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
         </header>
 
         {showWorkPlan && workMessage && <p className={styles.workPlanNotice}>{workMessage}</p>}
+        <p className={styles.notificationHint}>
+          {notificationPermission === 'granted'
+            ? 'Aktiv: Erinnerung 15 Minuten vor Terminen mit Uhrzeit.'
+            : notificationPermission === 'denied'
+              ? 'Blockiert: Benachrichtigungen bitte in den Browser-Einstellungen erlauben.'
+              : notificationPermission === 'unsupported'
+                ? 'Benachrichtigungen werden hier nicht unterstützt.'
+                : 'Optional: Erinnerungen für Termine mit Uhrzeit aktivieren.'}
+        </p>
 
         <div className={styles.monthGrid}>
           {['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'].map(day => (
