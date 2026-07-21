@@ -228,6 +228,17 @@ function formatTimerDuration(ms) {
   return hours > 0 ? `${hours}:${mm}:${ss}` : `${mm}:${ss}`
 }
 
+function timerEditForm(timer) {
+  const totalSeconds = Math.max(0, Math.round(Number(timer?.durationMs || 0) / 1000))
+  return {
+    date: timer?.date || todayValue(),
+    modality: MODALITIES.includes(timer?.modality) ? timer.modality : 'Röntgen',
+    count: String(Math.max(1, Number(timer?.count) || 1)),
+    minutes: String(Math.floor(totalSeconds / 60)),
+    seconds: String(totalSeconds % 60),
+  }
+}
+
 export default function WorkPage({ showHomeLink = true, view = 'all' }) {
   const showShifts = view !== 'findings'
   const showFindings = view !== 'shifts'
@@ -250,6 +261,8 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
   const [timerAddedMessage, setTimerAddedMessage] = useState('')
   const [timerHistoryOpen, setTimerHistoryOpen] = useState(false)
   const [timerDayModal, setTimerDayModal] = useState(null)
+  const [editingTimerId, setEditingTimerId] = useState(null)
+  const [timerEdit, setTimerEdit] = useState(null)
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(true)
 
@@ -600,6 +613,50 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
     try {
       const data = await apiRequest(`/?type=findingTimer&id=${encodeURIComponent(id)}`, 'DELETE')
       setFindingTimers(data.findingTimers || [])
+      if (editingTimerId === id) {
+        setEditingTimerId(null)
+        setTimerEdit(null)
+      }
+    } catch (error) {
+      setMessage(error.message)
+    }
+  }
+
+  function startEditFindingTimer(timer) {
+    setEditingTimerId(timer.id)
+    setTimerEdit(timerEditForm(timer))
+  }
+
+  function cancelEditFindingTimer() {
+    setEditingTimerId(null)
+    setTimerEdit(null)
+  }
+
+  async function saveEditedFindingTimer(timer) {
+    if (!timerEdit) return
+    const minutes = Number(timerEdit.minutes)
+    const seconds = Number(timerEdit.seconds)
+    const count = Number(timerEdit.count)
+    const durationMs = ((Number.isFinite(minutes) ? minutes : 0) * 60 + (Number.isFinite(seconds) ? seconds : 0)) * 1000
+    if (!timerEdit.date || !timerEdit.modality || durationMs < 1000 || !Number.isFinite(count) || count < 1) {
+      setMessage('Bitte Dauer, Datum, Modalität und Befundzahl korrekt ausfüllen.')
+      return
+    }
+    try {
+      const data = await apiRequest('/', 'POST', {
+        type: 'findingTimer',
+        timer: {
+          ...timer,
+          date: timerEdit.date,
+          modality: timerEdit.modality,
+          count,
+          durationMs,
+        },
+      })
+      setFindingTimers(data.findingTimers || [])
+      setEditingTimerId(null)
+      setTimerEdit(null)
+      setMessage('Befundzeit aktualisiert.')
     } catch (error) {
       setMessage(error.message)
     }
@@ -1096,12 +1153,42 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
               </div>
               <div className={styles.timerDayList}>
                 {timerDayItems.map(timer => (
-                  <div className={styles.timerDayRow} key={timer.id}>
-                    <strong>{formatTimerDuration(timer.durationMs)}</strong>
-                    <span>×{Number(timer.count) || 1}</span>
-                    <em>{formatTimerDuration(Number(timer.durationMs || 0) / (Number(timer.count) || 1))} Ø</em>
-                    <small>{new Date(timer.createdAt || `${timer.date}T12:00:00`).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}</small>
-                    <button type="button" onClick={() => deleteFindingTimer(timer.id)}>Löschen</button>
+                  <div className={styles.timerDayItem} key={timer.id}>
+                    <div className={styles.timerDayRow}>
+                      <strong>{formatTimerDuration(timer.durationMs)}</strong>
+                      <span>×{Number(timer.count) || 1}</span>
+                      <em>{formatTimerDuration(Number(timer.durationMs || 0) / (Number(timer.count) || 1))} Ø</em>
+                      <small>{new Date(timer.createdAt || `${timer.date}T12:00:00`).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}</small>
+                      <div className={styles.timerDayActions}>
+                        <button type="button" onClick={() => startEditFindingTimer(timer)}>Bearbeiten</button>
+                        <button type="button" onClick={() => deleteFindingTimer(timer.id)}>Löschen</button>
+                      </div>
+                    </div>
+                    {editingTimerId === timer.id && timerEdit && (
+                      <div className={styles.timerEditPanel}>
+                        <label>Modalität
+                          <select value={timerEdit.modality} onChange={event => setTimerEdit(prev => ({ ...prev, modality: event.target.value }))}>
+                            {MODALITIES.map(modality => <option key={modality}>{modality}</option>)}
+                          </select>
+                        </label>
+                        <label>Datum
+                          <input type="date" value={timerEdit.date} onChange={event => setTimerEdit(prev => ({ ...prev, date: event.target.value }))} />
+                        </label>
+                        <label>Minuten
+                          <input type="number" min="0" value={timerEdit.minutes} onChange={event => setTimerEdit(prev => ({ ...prev, minutes: event.target.value }))} />
+                        </label>
+                        <label>Sekunden
+                          <input type="number" min="0" max="59" value={timerEdit.seconds} onChange={event => setTimerEdit(prev => ({ ...prev, seconds: event.target.value }))} />
+                        </label>
+                        <label>Befunde
+                          <input type="number" min="1" max="20" value={timerEdit.count} onChange={event => setTimerEdit(prev => ({ ...prev, count: event.target.value }))} />
+                        </label>
+                        <div className={styles.timerEditActions}>
+                          <button type="button" onClick={() => saveEditedFindingTimer(timer)}>Speichern</button>
+                          <button type="button" onClick={cancelEditFindingTimer}>Abbrechen</button>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 ))}
                 {!timerDayItems.length && <p>Noch keine {timerDayModal}-Befunde heute.</p>}
