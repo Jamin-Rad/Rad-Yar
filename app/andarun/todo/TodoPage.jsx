@@ -281,11 +281,11 @@ function displayLane(todo) {
   return LANES.some(lane => lane.id === todo.lane) ? todo.lane : effectiveLane(todo)
 }
 
-export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/andarun', homeLabel = 'Andarun', theme = 'dark', showHomeLink = true }) {
+export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/andarun', homeLabel = 'Andarun', theme = 'dark', showHomeLink = true, view = 'all' }) {
   const [todos, setTodos] = useState([])
   const [workShifts, setWorkShifts] = useState([])
   const [workMessage, setWorkMessage] = useState('')
-  const [form, setForm] = useState(() => emptyForm())
+  const [form, setForm] = useState(() => view === 'events' ? eventFormForDate() : emptyForm())
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [storageMode, setStorageMode] = useState('online')
@@ -300,6 +300,12 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
   const [dropLaneId, setDropLaneId] = useState(null)
   const [notificationPermission, setNotificationPermission] = useState('unsupported')
   const showWorkPlan = apiBase === '/api/andarun/todos'
+  const showTodos = view !== 'events'
+  const showEvents = view !== 'todos'
+
+  function resetComposer() {
+    setForm(view === 'events' ? eventFormForDate() : emptyForm())
+  }
 
   useEffect(() => {
     setNotificationPermission('Notification' in window ? Notification.permission : 'unsupported')
@@ -505,7 +511,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
 
     if (storageMode === 'local') {
       setTodos(prev => [optimistic, ...prev])
-      setForm(emptyForm())
+      resetComposer()
       setSaving(false)
       return
     }
@@ -519,12 +525,12 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
       if (!response.ok) throw new Error('Could not save online.')
       const payload = await response.json()
       setTodos(prev => [payload.todo, ...prev])
-      setForm(emptyForm())
+      resetComposer()
     } catch (error) {
       setTodos(prev => [optimistic, ...prev])
       setStorageMode('local')
       setMessage(`${error.message} Saved locally for now.`)
-      setForm(emptyForm())
+      resetComposer()
     } finally {
       setSaving(false)
     }
@@ -769,16 +775,16 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
         {showHomeLink ? <Link href={homeHref} className={styles.backLink}>← {homeLabel}</Link> : <span />}
         <div>
           <span className={styles.kicker}>Private Planung</span>
-          <h1>ToDos</h1>
+          <h1>{view === 'events' ? 'Termine' : 'ToDos'}</h1>
         </div>
-        <div className={styles.stats}>
+        {showTodos ? <div className={styles.stats}>
           <span><strong>{stats.open}</strong> offen</span>
           <span><strong>{stats.dueToday}</strong> heute</span>
           <span><strong>{stats.done}</strong> fertig</span>
           <button className={styles.completedToggle} type="button" onClick={() => setCompletedOpen(true)}>
             Archiv
           </button>
-        </div>
+        </div> : <span />}
       </section>
 
       {message && <div className={styles.message}>{message}</div>}
@@ -786,8 +792,8 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
       <section className={styles.composer}>
         <form onSubmit={createTodo} className={styles.form}>
           <label className={styles.titleField}>
-            Aufgabe
-            <input value={form.title} onChange={event => setForm(prev => ({ ...prev, title: event.target.value }))} placeholder="Was steht an?" required />
+            {view === 'events' ? 'Termin' : 'Aufgabe'}
+            <input value={form.title} onChange={event => setForm(prev => ({ ...prev, title: event.target.value }))} placeholder={view === 'events' ? 'Welcher Termin steht an?' : 'Was ist zu erledigen?'} required />
           </label>
           <label>
             Datum
@@ -797,23 +803,34 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
               if (deadline) setMonthView(monthKeyFromDate(deadline))
             }} min={todayValue()} />
           </label>
-          <label>
-            Notiz
-            <input value={form.note} onChange={event => setForm(prev => ({ ...prev, note: event.target.value }))} placeholder="Optional" />
-          </label>
-          {form.itemType === 'event' && (
+          {form.itemType === 'event' && !form.allDay && (
             <label className={styles.timeField}>
-              Uhrzeit
+              Beginn
               <input
                 type="time"
                 value={form.eventTime}
                 onChange={event => setForm(prev => ({ ...prev, eventTime: event.target.value }))}
-                disabled={form.allDay}
               />
             </label>
           )}
+          {form.itemType === 'event' && !form.allDay && (
+            <label className={styles.timeField}>
+              Ende
+              <input type="time" value={form.endTime} onChange={event => setForm(prev => ({ ...prev, endTime: event.target.value }))} />
+            </label>
+          )}
+          {form.itemType === 'event' && form.allDay && (
+            <label>
+              Bis
+              <input type="date" value={form.endDate || form.deadline} min={form.deadline} onChange={event => setForm(prev => ({ ...prev, endDate: event.target.value }))} />
+            </label>
+          )}
+          <label>
+            Notiz
+            <input value={form.note} onChange={event => setForm(prev => ({ ...prev, note: event.target.value }))} placeholder="Optional" />
+          </label>
           <div className={styles.formActions}>
-            <label className={`${styles.eventToggle} ${form.itemType === 'event' ? styles.eventToggleActive : ''}`}>
+            {view === 'all' && <label className={`${styles.eventToggle} ${form.itemType === 'event' ? styles.eventToggleActive : ''}`}>
               <input
                 type="checkbox"
                 checked={form.itemType === 'event'}
@@ -827,7 +844,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
                 }))}
               />
               <span>Termin</span>
-            </label>
+            </label>}
             {form.itemType === 'event' && (
               <label className={styles.eventToggle}>
                 <input
@@ -851,7 +868,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
         </form>
       </section>
 
-      <section className={styles.board} aria-label="ToDo board">
+      {showTodos && <section className={styles.board} aria-label="ToDo board">
         {LANES.map(lane => (
           <article
             className={`${styles.column} ${styles[lane.color]} ${dropLaneId === lane.id ? styles.dropActive : ''}`}
@@ -911,9 +928,9 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
             </div>
           </article>
         ))}
-      </section>
+      </section>}
 
-      <section className={styles.monthPanel} aria-label="Termin month view">
+      {showEvents && <section className={styles.monthPanel} aria-label="Termin month view">
         <header className={styles.monthHeader}>
           <div>
             <span className={styles.kicker}>Termine</span>
@@ -945,6 +962,7 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
                 : 'Optional: Erinnerungen für Termine mit Uhrzeit aktivieren.'}
         </p>
 
+        <div className={styles.calendarScroller}>
         <div className={styles.monthGrid}>
           {['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'].map(day => (
             <div className={styles.weekday} key={day}>{day}</div>
@@ -994,7 +1012,8 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
             )
           })}
         </div>
-      </section>
+        </div>
+      </section>}
 
       {completedOpen && (
         <div className={styles.modalBackdrop} role="presentation" onMouseDown={() => setCompletedOpen(false)}>
@@ -1203,11 +1222,11 @@ export default function TodoPage({ apiBase = '/api/andarun/todos', homeHref = '/
                 <input value={detailForm.note} onChange={event => setDetailForm(prev => ({ ...prev, note: event.target.value }))} placeholder="Optional" />
               </label>
 
-              <div className={styles.detailActions}>
+              <div className={`${styles.detailActions} ${detailForm.itemType === 'event' ? styles.detailActionsEvent : ''}`}>
                 <button className={styles.detailDeleteBtn} type="button" onClick={deleteDetail}>Löschen</button>
-                <button className={styles.detailGhostBtn} type="button" onClick={() => patchTodo(detailId, { done: !detailTodo.done }).then(closeDetail)}>
+                {detailForm.itemType !== 'event' && <button className={styles.detailGhostBtn} type="button" onClick={() => patchTodo(detailId, { done: !detailTodo.done }).then(closeDetail)}>
                   {detailTodo.done ? 'Wieder öffnen' : 'Erledigt'}
-                </button>
+                </button>}
                 <button className={styles.addBtn} type="submit">Speichern</button>
               </div>
             </form>

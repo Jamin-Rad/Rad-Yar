@@ -414,7 +414,7 @@
 
 .form {
   display: grid;
-  grid-template-columns: minmax(220px, 1.15fr) 150px minmax(170px, .8fr) 130px minmax(160px, .7fr);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 12px;
   align-items: end;
 }
@@ -632,6 +632,13 @@
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 8px;
+}
+
+.calendarScroller {
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(45, 212, 191, .45) transparent;
 }
 
 .weekday {
@@ -1233,6 +1240,10 @@
   margin-top: 4px;
 }
 
+.detailActionsEvent {
+  grid-template-columns: minmax(120px, .8fr) minmax(160px, 1fr);
+}
+
 .newEventActions {
   display: grid;
   grid-template-columns: minmax(120px, .8fr) minmax(160px, 1fr);
@@ -1335,6 +1346,10 @@
     grid-template-columns: 1fr;
     align-items: start;
     gap: 14px;
+  }
+
+  .hero > span:empty {
+    display: none;
   }
 
   .stats {
@@ -1477,6 +1492,7 @@
 
   .monthGrid {
     gap: 4px;
+    min-width: 610px;
   }
 
   .workPlanGrid {

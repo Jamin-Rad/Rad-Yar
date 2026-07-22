@@ -7,17 +7,19 @@ import styles from './page.module.css'
 
 const spaces = [
   { number: '01', title: 'Routine',    description: 'Dein Rhythmus',     href: '/andarun/routine',    theme: 'cobalt', icon: 'sun'       },
-  { number: '02', title: 'Aufgaben',   description: 'Klar im Blick',      href: '/andarun/todo',       theme: 'coral',  icon: 'check'     },
-  { number: '03', title: 'Deutsch',    description: 'Jeden Tag weiter',    href: '/andarun/deutsch',    theme: 'lemon',  icon: 'type'      },
-  { number: '04', title: 'Gesundheit', description: 'Körper im Blick',     href: '/andarun/gesundheit', theme: 'mint',   icon: 'heart'     },
-  { number: '05', title: 'Finanzen',   description: 'Sicher planen',       href: '/andarun/finanz',     theme: 'cobalt', icon: 'chart'     },
-  { number: '06', title: 'Dienste',    description: 'Dienstzeiten planen', href: '/andarun/dienste',    theme: 'mint',   icon: 'briefcase' },
-  { number: '07', title: 'Befunde',    description: 'Fälle & Fragen',      href: '/andarun/befunde',    theme: 'coral',  icon: 'file'      },
+  { number: '02', title: 'ToDos',      description: 'Klar im Blick',       href: '/andarun/todo',       theme: 'coral',  icon: 'check'     },
+  { number: '03', title: 'Termine',    description: 'Zeit bewusst planen', href: '/andarun/termine',    theme: 'lemon',  icon: 'calendar'  },
+  { number: '04', title: 'Deutsch',    description: 'Jeden Tag weiter',    href: '/andarun/deutsch',    theme: 'lemon',  icon: 'type'      },
+  { number: '05', title: 'Gesundheit', description: 'Körper im Blick',     href: '/andarun/gesundheit', theme: 'mint',   icon: 'heart'     },
+  { number: '06', title: 'Finanzen',   description: 'Sicher planen',       href: '/andarun/finanz',     theme: 'cobalt', icon: 'chart'     },
+  { number: '07', title: 'Dienste',    description: 'Dienstzeiten planen', href: '/andarun/dienste',    theme: 'mint',   icon: 'briefcase' },
+  { number: '08', title: 'Befunde',    description: 'Fälle & Fragen',      href: '/andarun/befunde',    theme: 'coral',  icon: 'file'      },
 ]
 
 function SpaceIcon({ name }) {
   if (name === 'sun') return <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="7"/><path d="M24 4v8M24 36v8M4 24h8M36 24h8M10 10l6 6M32 32l6 6M38 10l-6 6M16 32l-6 6"/></svg>
   if (name === 'check') return <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="7" width="34" height="34" rx="3"/><path d="m15 24 6 6 13-14"/></svg>
+  if (name === 'calendar') return <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="10" width="34" height="31" rx="4"/><path d="M15 6v8M33 6v8M7 19h34M15 27h4M24 27h4M33 27h1M15 34h4M24 34h4"/></svg>
   if (name === 'type') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M9 12h30M15 36h18M24 12v24"/></svg>
   if (name === 'heart') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 39S9 30 9 18a8 8 0 0 1 14-5 8 8 0 0 1 14 5c0 12-13 21-13 21Z"/><path d="M15 24h6l3-7 4 13 3-6h4"/></svg>
   if (name === 'briefcase') return <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="14" width="34" height="25" rx="3"/><path d="M18 14v-3a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v3M7 24h34M21 24v4h6v-4"/></svg>
@@ -64,7 +66,7 @@ export default function AndarunLanding() {
             <p className={styles.eyebrow}>Deine Welten</p>
             <h2 id="spaces-title">Wähle dein Ziel.</h2>
           </div>
-          <p>07 Module</p>
+          <p>08 Module</p>
         </div>
 
         <div className={styles.grid} ref={gridRef}>
