@@ -139,6 +139,26 @@ function shortDateLabel(value) {
   return date.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' })
 }
 
+function timerCreatedAfterNightCutoff(timer) {
+  const created = timer?.createdAt ? new Date(timer.createdAt) : null
+  return created && !Number.isNaN(created.getTime()) && created.getHours() >= 21
+}
+
+function findingTimerServiceDate(nowMs, shifts, findingTimers) {
+  const now = new Date(nowMs)
+  const currentDate = dateValue(now)
+  const hour = now.getHours()
+
+  if (hour >= 21) return currentDate
+  if (hour >= 12) return currentDate
+
+  const previousDate = previousDateValue(currentDate)
+  const previousWasNightShift = shifts.some(shift => shift.date === previousDate && isNightShift(shift))
+  const previousHasNightTimers = findingTimers.some(timer => timer.date === previousDate && timerCreatedAfterNightCutoff(timer))
+
+  return previousWasNightShift || previousHasNightTimers ? previousDate : currentDate
+}
+
 async function apiRequest(path, method = 'GET', body) {
   const response = await fetch(`/api/andarun/work${path}`, {
     method,
@@ -478,9 +498,10 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
     ? ((timerExtraMs % timerExtraSegmentMs) || timerExtraSegmentMs) / timerExtraSegmentMs
     : 0
   const timerDialProgress = timerOverTarget ? timerExtraProgress : timerNormalProgress
+  const activeTimerDate = findingTimerServiceDate(timerNow, shifts, findingTimers)
   const todayTimers = useMemo(
-    () => findingTimers.filter(timer => timer.date === todayValue()),
-    [findingTimers],
+    () => findingTimers.filter(timer => timer.date === activeTimerDate),
+    [findingTimers, activeTimerDate],
   )
   const timerStats = useMemo(() => MODALITIES.map(modality => {
     const items = todayTimers.filter(timer => timer.modality === modality)
@@ -508,7 +529,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
       current.modalities[modality] += count
       grouped.set(date, current)
     })
-    const cursor = parseDate(todayValue())
+    const cursor = parseDate(activeTimerDate)
     cursor.setDate(cursor.getDate() - 13)
     return Array.from({ length: 14 }, () => {
       const date = dateValue(cursor)
@@ -521,7 +542,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
       cursor.setDate(cursor.getDate() + 1)
       return { ...day, avg: day.count ? Math.round(day.totalMs / day.count) : 0 }
     })
-  }, [findingTimers])
+  }, [findingTimers, activeTimerDate])
   const timerHistoryTotals = useMemo(() => {
     const count = timerHistoryDays.reduce((sum, day) => sum + day.count, 0)
     const totalMs = timerHistoryDays.reduce((sum, day) => sum + day.totalMs, 0)
@@ -594,7 +615,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
         ...timerForm,
         id: `finding-timer-${now}`,
         count: timerCount,
-        date: todayValue(),
+        date: findingTimerServiceDate(now, shifts, findingTimers),
         examArea: '',
         durationMs,
         createdAt: new Date(now).toISOString(),
@@ -996,7 +1017,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
 
             <div className={styles.timerStatsCard}>
               <button className={styles.timerStatsHeader} type="button" onClick={() => setTimerHistoryOpen(true)}>
-                <span className={styles.kicker}>Heute</span>
+                <span className={styles.kicker}>Diensttag {shortDateLabel(activeTimerDate)}</span>
                 <em>Befundzeiten ansehen</em>
               </button>
               <div className={styles.timerStatsGrid}>
@@ -1164,7 +1185,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
             >
               <div className={styles.modalHead}>
                 <div>
-                  <span className={styles.kicker}>Heute</span>
+                  <span className={styles.kicker}>Diensttag {shortDateLabel(activeTimerDate)}</span>
                   <h3 id="timer-day-title">{timerDayModal} Befunde</h3>
                 </div>
                 <button type="button" onClick={() => setTimerDayModal(null)} aria-label="Fenster schließen">×</button>
@@ -1209,7 +1230,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
                     )}
                   </div>
                 ))}
-                {!timerDayItems.length && <p>Noch keine {timerDayModal}-Befunde heute.</p>}
+                {!timerDayItems.length && <p>Noch keine {timerDayModal}-Befunde für diesen Diensttag.</p>}
               </div>
             </div>
           </div>
