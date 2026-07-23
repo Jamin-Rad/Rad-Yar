@@ -655,6 +655,15 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
     setTimerEdit(null)
   }
 
+  function adjustTimerEdit(field, delta, min, max = Infinity) {
+    setTimerEdit(prev => {
+      if (!prev) return prev
+      const current = Number(prev[field])
+      const next = Math.min(max, Math.max(min, (Number.isFinite(current) ? current : min) + delta))
+      return { ...prev, [field]: String(next) }
+    })
+  }
+
   async function saveEditedFindingTimer(timer) {
     if (!timerEdit) return
     const minutes = Number(timerEdit.minutes)
@@ -1213,15 +1222,24 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
                         <label>Datum
                           <input type="date" value={timerEdit.date} onChange={event => setTimerEdit(prev => ({ ...prev, date: event.target.value }))} />
                         </label>
-                        <label>Minuten
-                          <input type="number" min="0" value={timerEdit.minutes} onChange={event => setTimerEdit(prev => ({ ...prev, minutes: event.target.value }))} />
-                        </label>
-                        <label>Sekunden
-                          <input type="number" min="0" max="59" value={timerEdit.seconds} onChange={event => setTimerEdit(prev => ({ ...prev, seconds: event.target.value }))} />
-                        </label>
-                        <label>Befunde
-                          <input type="number" min="1" max="20" value={timerEdit.count} onChange={event => setTimerEdit(prev => ({ ...prev, count: event.target.value }))} />
-                        </label>
+                        <div className={styles.timerEditStepper}>
+                          <span>Minuten</span>
+                          <button type="button" onClick={() => adjustTimerEdit('minutes', -1, 0)} aria-label="Eine Minute weniger">−</button>
+                          <strong>{timerEdit.minutes}</strong>
+                          <button type="button" onClick={() => adjustTimerEdit('minutes', 1, 0)} aria-label="Eine Minute mehr">+</button>
+                        </div>
+                        <div className={styles.timerEditStepper}>
+                          <span>Sekunden</span>
+                          <button type="button" onClick={() => adjustTimerEdit('seconds', -5, 0, 59)} aria-label="Fünf Sekunden weniger">−</button>
+                          <strong>{String(timerEdit.seconds).padStart(2, '0')}</strong>
+                          <button type="button" onClick={() => adjustTimerEdit('seconds', 5, 0, 59)} aria-label="Fünf Sekunden mehr">+</button>
+                        </div>
+                        <div className={styles.timerEditStepper}>
+                          <span>Befunde</span>
+                          <button type="button" onClick={() => adjustTimerEdit('count', -1, 1, 20)} aria-label="Ein Befund weniger">−</button>
+                          <strong>×{timerEdit.count}</strong>
+                          <button type="button" onClick={() => adjustTimerEdit('count', 1, 1, 20)} aria-label="Ein Befund mehr">+</button>
+                        </div>
                         <div className={styles.timerEditActions}>
                           <button type="button" onClick={() => saveEditedFindingTimer(timer)}>Speichern</button>
                           <button type="button" onClick={cancelEditFindingTimer}>Abbrechen</button>
