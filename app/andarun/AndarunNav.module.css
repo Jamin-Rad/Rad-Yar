@@ -17,11 +17,9 @@
   align-items: center;
   margin: 0 auto;
   padding: 0 clamp(16px, 4vw, 34px);
-  gap: 8px;
 }
 
 .brand {
-  margin-right: auto;
   color: #f8fafc;
   font-size: 16px;
   font-weight: 950;
@@ -29,44 +27,14 @@
   text-decoration: none;
 }
 
-.brand:hover,
-.navLink:hover {
+.brand:hover {
   color: #bae6fd;
 }
-
-.navLink {
-  display: inline-flex;
-  min-height: 36px;
-  align-items: center;
-  padding: 0 14px;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  color: rgba(248, 250, 252, .72);
-  font-size: 13px;
-  font-weight: 850;
-  text-decoration: none;
-  transition: color .16s, border-color .16s, background .16s;
-}
-
-.navLink.active {
-  border-color: rgba(45, 212, 191, .28);
-  background: rgba(45, 212, 191, .12);
-  color: #99f6e4;
-}
-
-.brand.active { color: #99f6e4; }
 
 @media (max-width: 560px) {
   .nav {
     min-height: 50px;
     padding: 0 14px;
-    gap: 4px;
-  }
-
-  .navLink {
-    min-height: 34px;
-    padding: 0 10px;
-    font-size: 12px;
   }
 }
 
