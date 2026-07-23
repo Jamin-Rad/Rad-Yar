@@ -1110,6 +1110,34 @@
   line-height: 1;
 }
 
+.financeMetricTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.financeMetricAdd {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(249, 115, 22, .22);
+  border-radius: 50%;
+  background: rgba(249, 115, 22, .10);
+  color: #ea580c;
+  cursor: pointer;
+  transition: transform .15s, background .15s, border-color .15s;
+}
+
+.financeMetricAdd:hover {
+  border-color: rgba(249, 115, 22, .42);
+  background: rgba(249, 115, 22, .18);
+  transform: translateY(-1px);
+}
+
 /* ── SECTION CARDS (Monatsübersicht) ─────────── */
 .sectionCard {
   background:
@@ -3408,12 +3436,121 @@
 }
 .clickableRow:hover { background: rgba(0,0,0,.03); }
 
+/* Iran trip */
+.iranTripView { display: grid; gap: 16px; }
+
+.iranTripHero,
+.iranExchangeCard,
+.iranTripCard {
+  border: 1px solid var(--finance-glass-border);
+  background: linear-gradient(145deg, rgba(255,255,255,.84), rgba(255,255,255,.60));
+  box-shadow: var(--finance-glass-soft-shadow);
+  backdrop-filter: blur(16px) saturate(1.12);
+  -webkit-backdrop-filter: blur(16px) saturate(1.12);
+}
+
+.iranTripHero {
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 20px;
+  padding: 24px; border-radius: 20px;
+  background: radial-gradient(circle at 0 0, rgba(34,197,94,.14), transparent 38%), radial-gradient(circle at 100% 0, rgba(239,68,68,.10), transparent 34%), linear-gradient(145deg, rgba(255,255,255,.88), rgba(255,255,255,.62));
+}
+
+.iranTripEyebrow,
+.iranTripCardHead span { color: #15803d; font-size: 10px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+.iranTripHero h2 { margin: 5px 0 6px; color: #0d1b2a; font-size: clamp(28px, 4vw, 44px); line-height: 1; }
+.iranTripHero p { margin: 0; color: #64748b; font-size: 13px; font-weight: 650; }
+.iranTripTotal { display: grid; gap: 5px; min-width: 190px; text-align: right; }
+.iranTripTotal span { color: #94a3b8; font-size: 10px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+.iranTripTotal strong { color: #dc2626; font-size: clamp(22px, 3vw, 32px); font-weight: 950; }
+
+.iranExchangeCard { display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; padding: 18px 20px; border-radius: 16px; }
+.iranExchangeCard > label { display: grid; gap: 6px; color: #334155; font-size: 12px; font-weight: 850; }
+.iranExchangeCard small { color: #94a3b8; font-size: 11px; font-weight: 650; }
+.iranRateInput { display: flex; align-items: center; gap: 9px; }
+.iranRateInput em { color: #64748b; font-size: 13px; font-style: normal; font-weight: 800; white-space: nowrap; }
+.iranRateInput input { width: min(220px, 100%); min-height: 40px; padding: 0 12px; border: 1px solid #cbd5e1; border-radius: 10px; background: rgba(248,250,252,.86); color: #0f172a; font: inherit; font-size: 14px; font-weight: 800; }
+
+.iranCurrencySwitch { display: grid; grid-template-columns: 1fr 1fr; min-width: 168px; padding: 4px; border: 1px solid #e2e8f0; border-radius: 12px; background: rgba(248,250,252,.82); }
+.iranCurrencySwitch button { min-height: 34px; border: 0; border-radius: 8px; background: transparent; color: #64748b; cursor: pointer; font: inherit; font-size: 12px; font-weight: 850; }
+.iranCurrencySwitch .iranCurrencyActive { background: #fff; color: #15803d; box-shadow: 0 4px 12px rgba(15,23,42,.10); }
+
+.iranTripGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.iranTripCard { min-width: 0; overflow: hidden; border-radius: 18px; }
+.iranTripCardHead { padding: 16px 18px 13px; border-bottom: 1px solid rgba(148,163,184,.18); background: rgba(248,250,252,.46); }
+.iranTripCardHead h3 { margin: 4px 0 0; color: #0d1b2a; font-size: 18px; font-weight: 900; }
+.iranTripForm { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; padding: 16px 18px 18px; }
+.iranTripForm label { display: grid; gap: 6px; min-width: 0; color: #64748b; font-size: 11px; font-weight: 850; }
+.iranTripForm input,
+.iranTripForm select { width: 100%; min-height: 40px; padding: 0 11px; border: 1px solid #dbe3ec; border-radius: 10px; background: rgba(248,250,252,.82); color: #0f172a; font: inherit; font-size: 13px; outline: none; }
+.iranTripForm input:focus,
+.iranTripForm select:focus { border-color: #22c55e; box-shadow: 0 0 0 3px rgba(34,197,94,.10); }
+.iranTripWideField,
+.iranPrimaryBtn { grid-column: 1 / -1; }
+.iranPrimaryBtn { min-height: 42px; border: 0; border-radius: 11px; background: linear-gradient(135deg, #16a34a, #22c55e); color: #fff; cursor: pointer; font: inherit; font-size: 13px; font-weight: 900; box-shadow: 0 10px 22px rgba(22,163,74,.18); }
+.iranPrimaryBtn:disabled { cursor: not-allowed; opacity: .45; }
+
+.iranCategoryGrid,
+.iranPeopleGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; padding: 16px 18px; }
+.iranCategoryItem,
+.iranPersonCard { display: grid; gap: 6px; padding: 13px; border: 1px solid #e2e8f0; border-radius: 12px; background: rgba(248,250,252,.72); }
+.iranCategoryItem span,
+.iranPersonCard > span { color: #64748b; font-size: 11px; font-weight: 800; }
+.iranCategoryItem strong,
+.iranPersonCard > strong { color: #0f172a; font-size: 15px; font-weight: 900; }
+.iranPersonCard > .iranReceive { color: #15803d; }
+.iranPersonCard > .iranPay { color: #dc2626; }
+.iranPersonCard > small { color: #94a3b8; font-size: 11px; }
+
+.iranEntryList { border-top: 1px solid rgba(148,163,184,.18); padding: 4px 18px 12px; }
+.iranEntryRow,
+.iranSettlementRow { display: grid; grid-template-columns: minmax(0, 1fr) auto 28px; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid #eef2f7; }
+.iranEntryRow > div { display: grid; gap: 3px; min-width: 0; }
+.iranEntryRow > div strong { color: #1e293b; font-size: 13px; }
+.iranEntryRow > div span { overflow: hidden; color: #94a3b8; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.iranEntryRow > b,
+.iranSettlementRow > b { color: #0f172a; font-size: 12px; font-weight: 900; white-space: nowrap; }
+.iranEntryRow > button,
+.iranSettlementRow > button { width: 26px; height: 26px; border: 1px solid #fecaca; border-radius: 50%; background: #fff1f2; color: #dc2626; cursor: pointer; font-size: 16px; }
+.iranSettlementRow { grid-template-columns: minmax(0, 1fr) auto 24px; padding: 7px 0 0; border-bottom: 0; }
+.iranSettlementRow > span { color: #64748b; font-size: 10px; overflow-wrap: anywhere; }
+.iranSettlementRow > button { width: 22px; height: 22px; font-size: 13px; }
+.iranEmpty { margin: 0; padding: 24px 18px; color: #94a3b8; font-size: 13px; text-align: center; }
+
 /* ── CATEGORY DETAIL POPUP ───────────────────── */
 .catDetailGroup {
   border: 1px solid #e2e8f0;
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 8px;
+}
+
+.catDetailHeaderActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.catDetailAddBtn {
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 12px;
+  border: 1px solid rgba(249, 115, 22, .28);
+  border-radius: 999px;
+  background: rgba(249, 115, 22, .10);
+  color: #c2410c;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.catDetailAddBtn:hover {
+  border-color: rgba(249, 115, 22, .44);
+  background: rgba(249, 115, 22, .17);
 }
 
 .catDetailGroupHead {
@@ -4358,6 +4495,69 @@
   box-shadow: 0 24px 64px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.07);
 }
 
+:global(html[data-theme='dark']) .financeMetricAdd,
+:global(html[data-theme='dark']) .catDetailAddBtn {
+  border-color: rgba(251, 146, 60, .32);
+  background: rgba(249, 115, 22, .14);
+  color: #fdba74;
+}
+
+:global(html[data-theme='dark']) .financeMetricAdd:hover,
+:global(html[data-theme='dark']) .catDetailAddBtn:hover {
+  border-color: rgba(251, 146, 60, .48);
+  background: rgba(249, 115, 22, .22);
+}
+
+:global(html[data-theme='dark']) .iranTripHero,
+:global(html[data-theme='dark']) .iranExchangeCard,
+:global(html[data-theme='dark']) .iranTripCard {
+  border-color: var(--border);
+  background: linear-gradient(145deg, rgba(15,23,42,.78), rgba(15,23,42,.56));
+}
+
+:global(html[data-theme='dark']) .iranTripHero h2,
+:global(html[data-theme='dark']) .iranTripCardHead h3,
+:global(html[data-theme='dark']) .iranCategoryItem strong,
+:global(html[data-theme='dark']) .iranPersonCard > strong,
+:global(html[data-theme='dark']) .iranEntryRow > div strong,
+:global(html[data-theme='dark']) .iranEntryRow > b,
+:global(html[data-theme='dark']) .iranSettlementRow > b {
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .iranTripHero p,
+:global(html[data-theme='dark']) .iranExchangeCard > label,
+:global(html[data-theme='dark']) .iranRateInput em,
+:global(html[data-theme='dark']) .iranTripForm label,
+:global(html[data-theme='dark']) .iranCategoryItem span,
+:global(html[data-theme='dark']) .iranPersonCard > span,
+:global(html[data-theme='dark']) .iranSettlementRow > span {
+  color: var(--text-muted);
+}
+
+:global(html[data-theme='dark']) .iranRateInput input,
+:global(html[data-theme='dark']) .iranTripForm input,
+:global(html[data-theme='dark']) .iranTripForm select,
+:global(html[data-theme='dark']) .iranCurrencySwitch,
+:global(html[data-theme='dark']) .iranCategoryItem,
+:global(html[data-theme='dark']) .iranPersonCard {
+  border-color: var(--border);
+  background: var(--bg-soft);
+  color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .iranCurrencySwitch .iranCurrencyActive {
+  background: var(--bg-card);
+  color: #86efac;
+}
+
+:global(html[data-theme='dark']) .iranTripCardHead,
+:global(html[data-theme='dark']) .iranEntryList,
+:global(html[data-theme='dark']) .iranEntryRow {
+  border-color: var(--border-soft);
+  background: transparent;
+}
+
 :global(html[data-theme='dark']) .entryAmountPanel,
 :global(html[data-theme='dark']) .entrySubmitBar,
 :global(html[data-theme='dark']) .budgetCatRow {
@@ -4870,6 +5070,55 @@
   background: var(--bg-soft);
   border-color: var(--border);
   color: var(--text-soft);
+}
+
+@media (max-width: 420px) {
+  .catDetailAddBtn {
+    width: 34px;
+    padding: 0;
+  }
+
+  .catDetailAddBtn span {
+    display: none;
+  }
+
+  .iranTripHero,
+  .iranExchangeCard {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .iranTripTotal {
+    min-width: 0;
+    text-align: left;
+  }
+
+  .iranRateInput {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .iranRateInput input {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .iranTripGrid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  .iranTripHero { padding: 18px; }
+  .iranExchangeCard { padding: 15px; }
+  .iranTripForm { grid-template-columns: 1fr; padding: 14px; }
+  .iranTripWideField,
+  .iranPrimaryBtn { grid-column: auto; }
+  .iranCategoryGrid,
+  .iranPeopleGrid { grid-template-columns: 1fr; padding: 14px; }
+  .iranEntryList { padding-inline: 14px; }
+  .iranEntryRow { grid-template-columns: minmax(0, 1fr) 26px; }
+  .iranEntryRow > b { grid-column: 1; }
+  .iranEntryRow > button { grid-column: 2; grid-row: 1 / span 2; }
 }
 
 /* ── REPORT TABS – DARK MODE ─────────────────── */

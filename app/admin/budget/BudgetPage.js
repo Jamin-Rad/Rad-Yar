@@ -8,6 +8,41 @@ const STORAGE_KEY    = 'radyar_private_budget_v1'
 const RECURRING_KEY  = 'radyar_recurring_v1'
 const CAT_BUDGET_KEY = 'radyar_cat_budget_v1'
 const CATEGORIES_KEY = 'radyar_categories_v2'
+const IRAN_TRIP_KEY  = '__iran_special_trip_v1'
+
+const IRAN_EXPENSE_CATEGORIES = [
+  'Transport',
+  'Aufenthalt',
+  'Essen',
+  'Freizeit & Spaß',
+  'Familie – Fatima',
+  'Familie – Jamin',
+  'Einkäufe',
+  'Gesundheit',
+  'Geschenke',
+  'Sonstiges',
+]
+
+const IRAN_SETTLEMENT_PEOPLE = ['Mohsen', 'Hossein', 'Maman']
+
+function emptyIranTrip() {
+  return { exchangeRate: '', displayCurrency: 'rial', expenses: [], settlements: [] }
+}
+
+function normalizeIranTrip(value) {
+  const fallback = emptyIranTrip()
+  if (!value || typeof value !== 'object') return fallback
+  return {
+    exchangeRate: value.exchangeRate || '',
+    displayCurrency: value.displayCurrency === 'eur' ? 'eur' : 'rial',
+    expenses: Array.isArray(value.expenses) ? value.expenses : [],
+    settlements: Array.isArray(value.settlements) ? value.settlements : [],
+  }
+}
+
+function formatRial(value) {
+  return `${new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 }).format(Number(value || 0))} Rial`
+}
 
 async function budgetApi(method = 'GET', body) {
   const res = await fetch('/api/admin/budget', {
@@ -213,6 +248,9 @@ function IconSettings() {
 function IconTrend() {
   return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
 }
+function IconPlane() {
+  return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 2 9 15"/><path d="m22 2-7 20-4-9-9-4Z"/></svg>
+}
 function ChevronDown() {
   return <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
 }
@@ -413,6 +451,14 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
   const [showMonthPicker, setShowMonthPicker] = useState(false)
   const monthPickerRef = useRef(null)
 
+  // Sonderurlaub Iran
+  const [iranExpenseForm, setIranExpenseForm] = useState(() => ({
+    category: IRAN_EXPENSE_CATEGORIES[0], amount: '', description: '', date: getDateKey(),
+  }))
+  const [iranSettlementForm, setIranSettlementForm] = useState(() => ({
+    person: IRAN_SETTLEMENT_PEOPLE[0], direction: 'receive', amount: '', note: '', date: getDateKey(),
+  }))
+
   // Fixkosten new entry form
   const [planAmount, setPlanAmount] = useState('')
   const [planSelectedItems, setPlanSelectedItems] = useState([])
@@ -541,6 +587,81 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
   }, [showPopup, catDetail])
 
   const monthData = useMemo(() => monthWithRecurring(month, store, recurring), [month, store, recurring])
+  const iranTrip = useMemo(() => normalizeIranTrip(store[IRAN_TRIP_KEY]), [store])
+
+  const iranExpenseTotal = useMemo(
+    () => iranTrip.expenses.reduce((sum, entry) => sum + Number(entry.amountRial || 0), 0),
+    [iranTrip.expenses]
+  )
+
+  const iranCategoryTotals = useMemo(() => IRAN_EXPENSE_CATEGORIES.map(category => ({
+    category,
+    total: iranTrip.expenses
+      .filter(entry => entry.category === category)
+      .reduce((sum, entry) => sum + Number(entry.amountRial || 0), 0),
+  })).filter(item => item.total > 0), [iranTrip.expenses])
+
+  const iranSettlementBalances = useMemo(() => IRAN_SETTLEMENT_PEOPLE.map(person => {
+    const entries = iranTrip.settlements.filter(entry => entry.person === person)
+    const balance = entries.reduce((sum, entry) => (
+      entry.direction === 'receive' ? sum + Number(entry.amountRial || 0) : sum - Number(entry.amountRial || 0)
+    ), 0)
+    return { person, balance, entries }
+  }), [iranTrip.settlements])
+
+  function updateIranTrip(updater) {
+    setStore(prev => ({
+      ...prev,
+      [IRAN_TRIP_KEY]: updater(normalizeIranTrip(prev[IRAN_TRIP_KEY])),
+    }))
+  }
+
+  function iranDisplayAmount(amountRial) {
+    const rate = Number(iranTrip.exchangeRate || 0)
+    if (iranTrip.displayCurrency === 'eur') {
+      return rate > 0 ? formatMoney(Number(amountRial || 0) / rate) : 'Kurs fehlt'
+    }
+    return formatRial(amountRial)
+  }
+
+  function addIranExpense(event) {
+    event.preventDefault()
+    const amountRial = Number(iranExpenseForm.amount)
+    if (!amountRial || !iranExpenseForm.category) return
+    const entry = {
+      id: makeId(),
+      category: iranExpenseForm.category,
+      amountRial,
+      description: iranExpenseForm.description.trim(),
+      date: iranExpenseForm.date || getDateKey(),
+    }
+    updateIranTrip(current => ({ ...current, expenses: [entry, ...current.expenses] }))
+    setIranExpenseForm(prev => ({ ...prev, amount: '', description: '' }))
+  }
+
+  function addIranSettlement(event) {
+    event.preventDefault()
+    const amountRial = Number(iranSettlementForm.amount)
+    if (!amountRial || !iranSettlementForm.person) return
+    const entry = {
+      id: makeId(),
+      person: iranSettlementForm.person,
+      direction: iranSettlementForm.direction,
+      amountRial,
+      note: iranSettlementForm.note.trim(),
+      date: iranSettlementForm.date || getDateKey(),
+    }
+    updateIranTrip(current => ({ ...current, settlements: [entry, ...current.settlements] }))
+    setIranSettlementForm(prev => ({ ...prev, amount: '', note: '' }))
+  }
+
+  function deleteIranExpense(id) {
+    updateIranTrip(current => ({ ...current, expenses: current.expenses.filter(entry => entry.id !== id) }))
+  }
+
+  function deleteIranSettlement(id) {
+    updateIranTrip(current => ({ ...current, settlements: current.settlements.filter(entry => entry.id !== id) }))
+  }
 
   const summary = useMemo(() => {
     const income   = monthData.entries.filter(i => i.type === 'income').reduce((s, i) => s + Number(i.amount || 0), 0)
@@ -857,6 +978,14 @@ ${manualEntries.length ? `
       ? getDateKey()
       : `${month}-01`)
     setShowPopup(true)
+  }
+
+  function openPopupFromDetail() {
+    if (!catDetail) return
+    const detail = catDetail
+    const category = categories.find(cat => cat.type === detail.type && cat.name === detail.key)
+    openPopup(detail.type)
+    if (category) setExpandedCats(new Set([category.id]))
   }
 
   function closePopup() { setShowPopup(false); setPaidByFatima(false) }
@@ -1206,7 +1335,18 @@ ${manualEntries.length ? `
             <strong className={styles.moneyPositive}>{formatMoney(summary.income)}</strong>
           </div>
           <div className={styles.financeMetric} style={{ borderTop: '3px solid #dc2626' }}>
-            <span>Ausgaben</span>
+            <div className={styles.financeMetricTop}>
+              <span>Ausgaben</span>
+              <button
+                type="button"
+                className={styles.financeMetricAdd}
+                onClick={() => openPopup('expense')}
+                aria-label="Neue Ausgabe hinzufügen"
+                title="Neue Ausgabe hinzufügen"
+              >
+                <IconPlus />
+              </button>
+            </div>
             <strong className={styles.moneyNegative}>{formatMoney(summary.expenses)}</strong>
           </div>
           <div className={styles.financeMetric} style={{ borderTop: `3px solid ${summary.balance >= 0 ? '#16a34a' : '#dc2626'}` }}>
@@ -1228,6 +1368,7 @@ ${manualEntries.length ? `
               <SidebarItem icon={<IconCalendar />} label="Monatsübersicht" active={view === 'monat'} onClick={() => setView('monat')} />
               <SidebarItem icon={<IconChart />} label="Jahresübersicht" active={view === 'jahr'} onClick={() => setView('jahr')} />
               <SidebarItem icon={<IconTrend />} label="Verlauf" active={view === 'verlauf'} onClick={() => setView('verlauf')} />
+              <SidebarItem icon={<IconPlane />} label="Sonderurlaub Iran" active={view === 'iranurlaub'} onClick={() => setView('iranurlaub')} />
               <div className={styles.sidebarDivider} />
               <SidebarItem icon={<IconSettings />} label="Einstellung" active={view === 'einstellung'} onClick={() => navEinstellung(subView)} />
               {view === 'einstellung' && (
@@ -1317,6 +1458,161 @@ ${manualEntries.length ? `
                     </div>
                   )}
                 </div>
+              </div>
+            )}
+
+            {/* ── SONDERURLAUB IRAN ── */}
+            {view === 'iranurlaub' && (
+              <div className={styles.iranTripView}>
+                <section className={styles.iranTripHero}>
+                  <div>
+                    <span className={styles.iranTripEyebrow}>Reisekasse</span>
+                    <h2>Sonderurlaub Iran</h2>
+                    <p>Ausgaben in Rial erfassen und jederzeit in Euro ansehen.</p>
+                  </div>
+                  <div className={styles.iranTripTotal}>
+                    <span>Gesamtausgaben</span>
+                    <strong>{iranDisplayAmount(iranExpenseTotal)}</strong>
+                  </div>
+                </section>
+
+                <section className={styles.iranExchangeCard}>
+                  <label>
+                    <span>Fester Wechselkurs</span>
+                    <div className={styles.iranRateInput}>
+                      <em>1 € =</em>
+                      <input
+                        type="number"
+                        min="1"
+                        step="1"
+                        inputMode="numeric"
+                        value={iranTrip.exchangeRate}
+                        onChange={event => updateIranTrip(current => ({ ...current, exchangeRate: event.target.value }))}
+                        placeholder="z. B. 1.050.000"
+                        aria-label="Rial pro Euro"
+                      />
+                      <em>Rial</em>
+                    </div>
+                    <small>Der Kurs bleibt gespeichert, bis du ihn änderst. Beträge bitte in Rial, nicht Toman, eingeben.</small>
+                  </label>
+                  <div className={styles.iranCurrencySwitch} aria-label="Anzeigewährung">
+                    <button type="button" className={iranTrip.displayCurrency === 'rial' ? styles.iranCurrencyActive : ''} onClick={() => updateIranTrip(current => ({ ...current, displayCurrency: 'rial' }))}>Rial</button>
+                    <button type="button" className={iranTrip.displayCurrency === 'eur' ? styles.iranCurrencyActive : ''} onClick={() => updateIranTrip(current => ({ ...current, displayCurrency: 'eur' }))}>Euro</button>
+                  </div>
+                </section>
+
+                <div className={styles.iranTripGrid}>
+                  <section className={styles.iranTripCard}>
+                    <header className={styles.iranTripCardHead}>
+                      <div><span>Neue Ausgabe</span><h3>Reisekosten eintragen</h3></div>
+                    </header>
+                    <form className={styles.iranTripForm} onSubmit={addIranExpense}>
+                      <label>
+                        Kategorie
+                        <select value={iranExpenseForm.category} onChange={event => setIranExpenseForm(prev => ({ ...prev, category: event.target.value }))}>
+                          {IRAN_EXPENSE_CATEGORIES.map(category => <option key={category}>{category}</option>)}
+                        </select>
+                      </label>
+                      <label>
+                        Betrag in Rial
+                        <input type="number" min="1" step="1" inputMode="numeric" value={iranExpenseForm.amount} onChange={event => setIranExpenseForm(prev => ({ ...prev, amount: event.target.value }))} placeholder="0" required />
+                      </label>
+                      <label>
+                        Datum
+                        <input type="date" value={iranExpenseForm.date} onChange={event => setIranExpenseForm(prev => ({ ...prev, date: event.target.value }))} />
+                      </label>
+                      <label className={styles.iranTripWideField}>
+                        Beschreibung
+                        <input value={iranExpenseForm.description} onChange={event => setIranExpenseForm(prev => ({ ...prev, description: event.target.value }))} placeholder="Optional" />
+                      </label>
+                      <button className={styles.iranPrimaryBtn} type="submit" disabled={!iranExpenseForm.amount}>Ausgabe speichern</button>
+                    </form>
+                  </section>
+
+                  <section className={styles.iranTripCard}>
+                    <header className={styles.iranTripCardHead}>
+                      <div><span>Abrechnung</span><h3>Geben &amp; bekommen</h3></div>
+                    </header>
+                    <form className={styles.iranTripForm} onSubmit={addIranSettlement}>
+                      <label>
+                        Person
+                        <select value={iranSettlementForm.person} onChange={event => setIranSettlementForm(prev => ({ ...prev, person: event.target.value }))}>
+                          {IRAN_SETTLEMENT_PEOPLE.map(person => <option key={person}>{person}</option>)}
+                        </select>
+                      </label>
+                      <label>
+                        Richtung
+                        <select value={iranSettlementForm.direction} onChange={event => setIranSettlementForm(prev => ({ ...prev, direction: event.target.value }))}>
+                          <option value="receive">Ich bekomme von</option>
+                          <option value="pay">Ich gebe an</option>
+                        </select>
+                      </label>
+                      <label>
+                        Betrag in Rial
+                        <input type="number" min="1" step="1" inputMode="numeric" value={iranSettlementForm.amount} onChange={event => setIranSettlementForm(prev => ({ ...prev, amount: event.target.value }))} placeholder="0" required />
+                      </label>
+                      <label className={styles.iranTripWideField}>
+                        Notiz
+                        <input value={iranSettlementForm.note} onChange={event => setIranSettlementForm(prev => ({ ...prev, note: event.target.value }))} placeholder="Wofür?" />
+                      </label>
+                      <button className={styles.iranPrimaryBtn} type="submit" disabled={!iranSettlementForm.amount}>Abrechnung speichern</button>
+                    </form>
+                  </section>
+                </div>
+
+                <section className={styles.iranTripCard}>
+                  <header className={styles.iranTripCardHead}>
+                    <div><span>Übersicht</span><h3>Ausgaben nach Kategorie</h3></div>
+                  </header>
+                  {iranCategoryTotals.length ? (
+                    <div className={styles.iranCategoryGrid}>
+                      {iranCategoryTotals.map(item => (
+                        <div className={styles.iranCategoryItem} key={item.category}>
+                          <span>{item.category}</span>
+                          <strong>{iranDisplayAmount(item.total)}</strong>
+                        </div>
+                      ))}
+                    </div>
+                  ) : <p className={styles.iranEmpty}>Noch keine Reisekosten eingetragen.</p>}
+
+                  {iranTrip.expenses.length > 0 && (
+                    <div className={styles.iranEntryList}>
+                      {iranTrip.expenses.map(entry => (
+                        <div className={styles.iranEntryRow} key={entry.id}>
+                          <div>
+                            <strong>{entry.category}</strong>
+                            <span>{entry.description || 'Ohne Beschreibung'} · {new Date(`${entry.date}T00:00:00`).toLocaleDateString('de-DE')}</span>
+                          </div>
+                          <b>{iranDisplayAmount(entry.amountRial)}</b>
+                          <button type="button" onClick={() => deleteIranExpense(entry.id)} aria-label="Ausgabe löschen">×</button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </section>
+
+                <section className={styles.iranTripCard}>
+                  <header className={styles.iranTripCardHead}>
+                    <div><span>Personen</span><h3>Offene Abrechnung</h3></div>
+                  </header>
+                  <div className={styles.iranPeopleGrid}>
+                    {iranSettlementBalances.map(item => (
+                      <article className={styles.iranPersonCard} key={item.person}>
+                        <span>{item.person}</span>
+                        <strong className={item.balance >= 0 ? styles.iranReceive : styles.iranPay}>
+                          {item.balance >= 0 ? 'Du bekommst ' : 'Du gibst '}{iranDisplayAmount(Math.abs(item.balance))}
+                        </strong>
+                        {item.entries.length ? item.entries.map(entry => (
+                          <div className={styles.iranSettlementRow} key={entry.id}>
+                            <span>{entry.direction === 'receive' ? 'Bekommen' : 'Geben'}{entry.note ? ` · ${entry.note}` : ''}</span>
+                            <b>{iranDisplayAmount(entry.amountRial)}</b>
+                            <button type="button" onClick={() => deleteIranSettlement(entry.id)} aria-label="Abrechnung löschen">×</button>
+                          </div>
+                        )) : <small>Noch keine Abrechnung.</small>}
+                      </article>
+                    ))}
+                  </div>
+                </section>
               </div>
             )}
 
@@ -2739,7 +3035,15 @@ ${manualEntries.length ? `
                     {formatMoney(catDetailEntries.reduce((s, e) => s + Number(e.amount), 0))}
                   </p>
                 </div>
-                <button className={styles.popupClose} onClick={closeCatDetail} aria-label="Schließen">×</button>
+                <div className={styles.catDetailHeaderActions}>
+                  {catDetail.type === 'expense' && (
+                    <button type="button" className={styles.catDetailAddBtn} onClick={openPopupFromDetail}>
+                      <IconPlus />
+                      <span>Neue Ausgabe</span>
+                    </button>
+                  )}
+                  <button className={styles.popupClose} onClick={closeCatDetail} aria-label="Schließen">×</button>
+                </div>
               </div>
 
               {/* Body */}
