@@ -434,6 +434,8 @@
 
 .form input {
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
   min-height: 46px;
   border: 1px solid rgba(255,255,255,.15);
   border-radius: 14px;
@@ -1161,6 +1163,8 @@
 
 .detailForm input {
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
   min-height: 44px;
   border: 1px solid rgba(255,255,255,.15);
   border-radius: 15px;
@@ -1492,7 +1496,7 @@
 
   .monthGrid {
     gap: 4px;
-    min-width: 610px;
+    min-width: 0;
   }
 
   .workPlanGrid {
@@ -1503,7 +1507,11 @@
     min-height: 74px;
     border-radius: 11px;
     gap: 3px;
-    padding: 5px;
+    padding: 4px;
+  }
+
+  .monthCellToday::after {
+    display: none;
   }
 
   .workPlanCell {
@@ -1526,7 +1534,7 @@
 
   .monthEvent {
     border-radius: 8px;
-    padding: 4px 5px;
+    padding: 4px 3px;
   }
 
   .monthEvent strong {
