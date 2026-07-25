@@ -988,6 +988,19 @@ ${manualEntries.length ? `
     if (category) setExpandedCats(new Set([category.id]))
   }
 
+  function openPopupForSub(subName) {
+    if (!catDetail) return
+    const category = categories.find(cat => cat.type === catDetail.type && cat.name === catDetail.key)
+    openPopup(catDetail.type)
+    if (category) {
+      setExpandedCats(new Set([category.id]))
+      const sub = category.subs.find(s => s.name === subName)
+      if (sub) {
+        setSelectedItems([{ catId: category.id, catName: category.name, subId: sub.id, subName: sub.name }])
+      }
+    }
+  }
+
   function closePopup() { setShowPopup(false); setPaidByFatima(false) }
 
   function toggleExpand(catId) {
@@ -3056,14 +3069,21 @@ ${manualEntries.length ? `
                   const isExpanded = autoExpand || expandedSubtitles.has(subtitle)
                   return (
                     <div key={subtitle} className={styles.catDetailGroup}>
-                      <button type="button" className={styles.catDetailGroupHead} onClick={() => toggleCatSubtitle(subtitle)}>
-                        <span>{subtitle}</span>
-                        <span className={styles.catDetailGroupMeta}>
-                          <strong>{formatMoney(groupTotal)}</strong>
-                          <small>{entries.length} Eintr.</small>
-                          <span className={isExpanded ? styles.catDetailChevronOpen : styles.catDetailChevron}><ChevronDown /></span>
-                        </span>
-                      </button>
+                      <div className={styles.catDetailGroupHeaderWrap}>
+                        <button type="button" className={styles.catDetailGroupHead} onClick={() => toggleCatSubtitle(subtitle)}>
+                          <span>{subtitle}</span>
+                          <span className={styles.catDetailGroupMeta}>
+                            <strong>{formatMoney(groupTotal)}</strong>
+                            <small>{entries.length} Eintr.</small>
+                            <span className={isExpanded ? styles.catDetailChevronOpen : styles.catDetailChevron}><ChevronDown /></span>
+                          </span>
+                        </button>
+                        {catDetail.type === 'expense' && (
+                          <button type="button" className={styles.catDetailSubAddBtn} onClick={() => openPopupForSub(subtitle)} aria-label={`${subtitle} hinzufügen`} title={`${subtitle} hinzufügen`}>
+                            <IconPlus />
+                          </button>
+                        )}
+                      </div>
                       {isExpanded && (
                         <div className={styles.catDetailEntries}>
                           {entries.slice().sort((a, b) => (b.date || '').localeCompare(a.date || '')).map(entry => (

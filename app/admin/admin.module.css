@@ -3553,8 +3553,14 @@
   background: rgba(249, 115, 22, .17);
 }
 
+.catDetailGroupHeaderWrap {
+  display: flex;
+  align-items: stretch;
+}
+
 .catDetailGroupHead {
-  width: 100%;
+  flex: 1;
+  min-width: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -3570,6 +3576,24 @@
   transition: background .13s;
 }
 .catDetailGroupHead:hover { background: #f1f5f9; }
+
+.catDetailSubAddBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  flex-shrink: 0;
+  border: none;
+  border-left: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #f97316;
+  cursor: pointer;
+  transition: background .13s, color .13s;
+}
+.catDetailSubAddBtn:hover {
+  background: rgba(249, 115, 22, .1);
+  color: #ea6c0a;
+}
 
 .catDetailGroupMeta {
   display: flex;
@@ -5033,6 +5057,16 @@
 
 :global(html[data-theme='dark']) .catDetailGroupHead:hover {
   background: color-mix(in srgb, var(--border) 30%, var(--bg-card));
+}
+
+:global(html[data-theme='dark']) .catDetailSubAddBtn {
+  background: var(--bg-soft);
+  border-left-color: var(--border);
+  color: #fb923c;
+}
+
+:global(html[data-theme='dark']) .catDetailSubAddBtn:hover {
+  background: rgba(249, 115, 22, .18);
 }
 
 :global(html[data-theme='dark']) .catDetailGroupMeta small {
