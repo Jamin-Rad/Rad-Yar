@@ -8,16 +8,17 @@ const MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'A
 const WEEKDAYS = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
 
 const ROUTINES = [
-  { id: 'malen', title: 'Malen', icon: '🎨', count: 2, minutes: 10, color: 'pink' },
-  { id: 'anton', title: 'Anton', icon: '✏️', count: 2, minutes: 15, color: 'blue' },
-  { id: 'sport', title: 'Sport', icon: '🤸‍♀️', count: 1, minutes: 10, color: 'violet' },
-  { id: 'fernsehen', title: 'Fernseher gucken', icon: '📺', count: 6, minutes: 15, color: 'sky' },
-  { id: 'lesen', title: 'Bücher lesen', icon: '📚', count: 2, minutes: 10, color: 'rose' },
-  { id: 'schach', title: 'Schach spielen', icon: '♟️', count: 2, minutes: null, color: 'indigo' },
-  { id: 'tablet', title: 'Tablet spielen', icon: '🎮', count: 2, minutes: 15, color: 'aqua' },
+  { id: 'malen', title: 'Malen', icon: '🎨', count: 2, minutes: 10, color: 'pink', kind: 'goal' },
+  { id: 'anton', title: 'Anton', icon: '✏️', count: 2, minutes: 15, color: 'blue', kind: 'goal' },
+  { id: 'sport', title: 'Sport', icon: '🤸‍♀️', count: 1, minutes: 10, color: 'violet', kind: 'goal' },
+  { id: 'fernsehen', title: 'Fernseher gucken', icon: '📺', count: 6, minutes: 15, color: 'sky', kind: 'limit' },
+  { id: 'lesen', title: 'Bücher lesen', icon: '📚', count: 2, minutes: 10, color: 'rose', kind: 'goal' },
+  { id: 'schach', title: 'Schach spielen', icon: '♟️', count: 2, minutes: null, color: 'indigo', kind: 'goal' },
+  { id: 'tablet', title: 'Tablet spielen', icon: '🎮', count: 2, minutes: 15, color: 'aqua', kind: 'limit' },
 ]
 
-const TOTAL_STEPS = ROUTINES.reduce((sum, routine) => sum + routine.count, 0)
+const GOAL_ROUTINES = ROUTINES.filter(routine => routine.kind === 'goal')
+const TOTAL_GOAL_STEPS = GOAL_ROUTINES.reduce((sum, routine) => sum + routine.count, 0)
 
 function dateKey(date = new Date()) {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
@@ -52,14 +53,14 @@ function monthDays(value) {
 
 function completedCount(logs, day) {
   const daily = logs[day] || {}
-  return ROUTINES.reduce((total, routine) => {
+  return GOAL_ROUTINES.reduce((total, routine) => {
     const entries = Array.isArray(daily[routine.id]) ? daily[routine.id] : []
     return total + entries.slice(0, routine.count).filter(Boolean).length
   }, 0)
 }
 
 function dayPercent(logs, day) {
-  return Math.round((completedCount(logs, day) / TOTAL_STEPS) * 100)
+  return Math.round((completedCount(logs, day) / TOTAL_GOAL_STEPS) * 100)
 }
 
 function formatTimer(seconds) {
@@ -75,6 +76,8 @@ export default function MobinaRoutine() {
   const [loaded, setLoaded] = useState(false)
   const [syncStatus, setSyncStatus] = useState('loading')
   const [timer, setTimer] = useState(null)
+  const [timerRoutineId, setTimerRoutineId] = useState('malen')
+  const [timerMinutes, setTimerMinutes] = useState(10)
   const audioContextRef = useRef(null)
 
   useEffect(() => {
@@ -148,18 +151,21 @@ export default function MobinaRoutine() {
 
   useEffect(() => {
     if (!timer?.running || timer.remaining !== 0) return
-    markStepDone(timer.routineId, timer.index, timer.date)
+    markNextStepDone(timer.routineId, timer.date)
     playRing()
     setTimer(previous => previous ? { ...previous, running: false, finished: true } : null)
   }, [timer?.remaining, timer?.running])
 
   const days = useMemo(() => monthDays(shownMonth), [shownMonth])
   const doneSteps = completedCount(logs, selectedDate)
-  const progress = Math.round((doneSteps / TOTAL_STEPS) * 100)
-  const completedRoutines = ROUTINES.filter(routine => {
+  const progress = Math.round((doneSteps / TOTAL_GOAL_STEPS) * 100)
+  const completedRoutines = GOAL_ROUTINES.filter(routine => {
     const entries = logs[selectedDate]?.[routine.id] || []
     return entries.slice(0, routine.count).filter(Boolean).length === routine.count
   }).length
+  const selectedTimerRoutine = ROUTINES.find(routine => routine.id === timerRoutineId) || ROUTINES[0]
+  const timerDisplaySeconds = timer ? timer.remaining : timerMinutes * 60
+  const timerProgress = timer ? (timer.remaining / timer.total) * 360 : 360
 
   const selectedLabel = useMemo(() => parseDate(selectedDate).toLocaleDateString('de-DE', {
     weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
@@ -177,13 +183,14 @@ export default function MobinaRoutine() {
     })
   }
 
-  function markStepDone(routineId, index, day) {
+  function markNextStepDone(routineId, day) {
     const routine = ROUTINES.find(item => item.id === routineId)
     if (!routine) return
     setLogs(previous => {
       const currentDay = previous[day] || {}
       const currentSteps = Array.from({ length: routine.count }, (_, step) => Boolean(currentDay[routine.id]?.[step]))
-      currentSteps[index] = true
+      const nextOpenIndex = currentSteps.findIndex(checked => !checked)
+      if (nextOpenIndex >= 0) currentSteps[nextOpenIndex] = true
       return { ...previous, [day]: { ...currentDay, [routine.id]: currentSteps } }
     })
   }
@@ -215,16 +222,17 @@ export default function MobinaRoutine() {
     })
   }
 
-  function startTimer(routine, index) {
+  function startTimer() {
     prepareAudio()
+    const routine = ROUTINES.find(item => item.id === timerRoutineId) || ROUTINES[0]
+    const seconds = Math.max(1, Number(timerMinutes) || 10) * 60
     setTimer({
       routineId: routine.id,
       title: routine.title,
-      index,
       date: selectedDate,
-      total: routine.minutes * 60,
-      remaining: routine.minutes * 60,
-      endAt: Date.now() + routine.minutes * 60 * 1000,
+      total: seconds,
+      remaining: seconds,
+      endAt: Date.now() + seconds * 1000,
       running: true,
       finished: false,
     })
@@ -278,25 +286,46 @@ export default function MobinaRoutine() {
           </div>
         </section>
 
-        {timer && (
-          <aside className={`${styles.timerDock} ${timer.finished ? styles.timerFinished : ''}`} aria-live="polite">
-            <div className={styles.timerRing} style={{ '--timer-progress': `${(timer.remaining / timer.total) * 360}deg` }}>
-              <strong>{formatTimer(timer.remaining)}</strong>
+        <section className={`${styles.timerPanel} ${timer?.finished ? styles.timerFinished : ''}`} aria-live="polite">
+          <div className={styles.timerIntro}>
+            <span className={styles.kicker}>Ein Timer für alles</span>
+            <h2>Zeit für deine Runde</h2>
+            <p>Wähle eine Aktivität und starte den großen Timer. Wenn es klingelt, wird die nächste Runde automatisch eingetragen.</p>
+          </div>
+          <div className={styles.timerSetup}>
+            <label>
+              Aktivität
+              <select value={timerRoutineId} onChange={event => {
+                const nextRoutine = ROUTINES.find(routine => routine.id === event.target.value)
+                setTimerRoutineId(event.target.value)
+                if (nextRoutine?.minutes) setTimerMinutes(nextRoutine.minutes)
+              }}>
+                {ROUTINES.map(routine => <option value={routine.id} key={routine.id}>{routine.icon} {routine.title}</option>)}
+              </select>
+            </label>
+            <div className={styles.durationButtons} aria-label="Timerdauer">
+              {[10, 15].map(minutes => (
+                <button className={timerMinutes === minutes ? styles.durationActive : ''} type="button" onClick={() => setTimerMinutes(minutes)} key={minutes}>{minutes} Min</button>
+              ))}
             </div>
-            <div className={styles.timerCopy}>
-              <span>{timer.finished ? 'Klingeling! Geschafft!' : `Timer · Runde ${timer.index + 1}`}</span>
-              <h2>{timer.title}</h2>
+          </div>
+          <div className={styles.timerStage}>
+            <div className={styles.timerRing} style={{ '--timer-progress': `${timerProgress}deg` }}>
+              <strong>{formatTimer(timerDisplaySeconds)}</strong>
+              <small>{timer?.finished ? 'Fertig!' : timer?.running ? 'läuft' : timer ? 'Pause' : selectedTimerRoutine.title}</small>
             </div>
             <div className={styles.timerActions}>
-              {!timer.finished && (
-                <button type="button" onClick={toggleTimer}>
-                  {timer.running ? 'Pause' : 'Weiter'}
-                </button>
+              {(!timer || timer.finished) ? (
+                <button className={styles.timerStart} type="button" onClick={startTimer}>{timer?.finished ? 'Neu starten' : 'Timer starten'}</button>
+              ) : (
+                <>
+                  <button className={styles.timerStart} type="button" onClick={toggleTimer}>{timer.running ? 'Pause' : 'Weiter'}</button>
+                  <button type="button" onClick={() => setTimer(null)}>Stoppen</button>
+                </>
               )}
-              <button type="button" onClick={() => setTimer(null)}>{timer.finished ? 'Schließen' : 'Stoppen'}</button>
             </div>
-          </aside>
-        )}
+          </div>
+        </section>
 
         <section className={styles.dayBar}>
           <div>
@@ -311,8 +340,8 @@ export default function MobinaRoutine() {
             aria-label="Tag auswählen"
           />
           <div className={styles.dayStats}>
-            <span><strong>{doneSteps}</strong> von {TOTAL_STEPS} Häkchen</span>
-            <span><strong>{completedRoutines}</strong> von {ROUTINES.length} Routinen fertig</span>
+            <span><strong>{doneSteps}</strong> von {TOTAL_GOAL_STEPS} Ziel-Runden</span>
+            <span><strong>{completedRoutines}</strong> von {GOAL_ROUTINES.length} Tageszielen fertig</span>
           </div>
         </section>
 
@@ -329,44 +358,31 @@ export default function MobinaRoutine() {
             const steps = Array.from({ length: routine.count }, (_, index) => Boolean(logs[selectedDate]?.[routine.id]?.[index]))
             const done = steps.filter(Boolean).length
             return (
-              <article className={`${styles.routineCard} ${styles[routine.color]} ${done === routine.count ? styles.cardDone : ''}`} key={routine.id}>
+              <article className={`${styles.routineCard} ${styles[routine.color]} ${routine.kind === 'limit' ? styles.limitCard : ''} ${routine.kind === 'goal' && done === routine.count ? styles.cardDone : ''}`} key={routine.id}>
                 <header>
                   <span className={styles.routineIcon} aria-hidden="true">{routine.icon}</span>
                   <div>
+                    <span className={routine.kind === 'goal' ? styles.goalLabel : styles.limitLabel}>{routine.kind === 'goal' ? 'Tagesziel' : 'Tageslimit'}</span>
                     <h3>{routine.title}</h3>
-                    <p>{routine.count}×{routine.minutes ? ` je ${routine.minutes} Minuten` : ''}</p>
+                    <p>{routine.kind === 'goal' ? 'Schaffe' : 'Höchstens'} {routine.count}×{routine.minutes ? ` je ${routine.minutes} Minuten` : ''}</p>
                   </div>
-                  <strong>{done}/{routine.count}</strong>
+                  <strong>{routine.kind === 'goal' ? `${done}/${routine.count}` : `${routine.count - done} frei`}</strong>
                 </header>
                 <div className={styles.stepList}>
-                  {steps.map((checked, index) => {
-                    const timerActive = timer?.routineId === routine.id && timer.index === index
-                    return (
-                      <div className={styles.stepRow} key={`${routine.id}-${index}`}>
-                        <button
-                          className={`${styles.step} ${checked ? styles.stepDone : ''}`}
-                          type="button"
-                          role="checkbox"
-                          aria-checked={checked}
-                          onClick={() => toggleStep(routine, index)}
-                        >
-                          <span className={styles.check}>{checked ? '✓' : index + 1}</span>
-                          <span>{checked ? 'Erledigt!' : `${index + 1}. Runde`}</span>
-                          {routine.minutes && <small>{routine.minutes} Min</small>}
-                        </button>
-                        {routine.minutes && (
-                          <button
-                            className={`${styles.timerButton} ${timerActive ? styles.timerButtonActive : ''}`}
-                            type="button"
-                            onClick={() => startTimer(routine, index)}
-                            aria-label={`${routine.title}, Runde ${index + 1}: Timer für ${routine.minutes} Minuten starten`}
-                          >
-                            <span aria-hidden="true">▶</span> Timer
-                          </button>
-                        )}
-                      </div>
-                    )
-                  })}
+                  {steps.map((checked, index) => (
+                    <button
+                      className={`${styles.step} ${routine.kind === 'limit' ? styles.limitStep : ''} ${checked ? styles.stepDone : ''}`}
+                      type="button"
+                      role="checkbox"
+                      aria-checked={checked}
+                      onClick={() => toggleStep(routine, index)}
+                      key={`${routine.id}-${index}`}
+                    >
+                      <span className={styles.check}>{checked ? '✓' : index + 1}</span>
+                      <span>{routine.kind === 'goal' ? (checked ? 'Geschafft!' : `Runde ${index + 1}`) : (checked ? 'Genutzt' : `Einheit ${index + 1} noch frei`)}</span>
+                      {routine.minutes && <small>{routine.minutes} Minuten</small>}
+                    </button>
+                  ))}
                 </div>
               </article>
             )
