@@ -10,7 +10,7 @@ const MOBIN_COOKIE = 'mobin_session'
 export default clerkMiddleware(async (auth, request) => {
   const { pathname } = request.nextUrl
 
-  if (pathname.startsWith('/mobin') && !pathname.startsWith('/mobin/login')) {
+  if ((pathname === '/mobin' || pathname.startsWith('/mobin/')) && !pathname.startsWith('/mobin/login')) {
     const token = request.cookies.get(MOBIN_COOKIE)?.value
     const secret = process.env.MOBIN_SESSION_SECRET
 
