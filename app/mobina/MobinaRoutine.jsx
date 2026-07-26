@@ -93,7 +93,6 @@ export default function MobinaRoutine() {
   const [timer, setTimer] = useState(null)
   const [timerRoutineId, setTimerRoutineId] = useState('malen')
   const audioContextRef = useRef(null)
-  const timerTapRef = useRef(null)
 
   useEffect(() => {
     let cancelled = false
@@ -163,10 +162,6 @@ export default function MobinaRoutine() {
     }, 250)
     return () => window.clearInterval(interval)
   }, [timer?.running])
-
-  useEffect(() => () => {
-    if (timerTapRef.current) window.clearTimeout(timerTapRef.current)
-  }, [])
 
   useEffect(() => {
     if (!timer?.running || timer.remaining !== 0) return
@@ -279,26 +274,16 @@ export default function MobinaRoutine() {
   }
 
   function handleTimerTap() {
-    if (timer?.finished) {
-      audioContextRef.current?.suspend().catch(() => {})
-      markNextStepDone(timer.routineId, timer.date)
-      setTimer(null)
-      return
-    }
+    if (timer?.finished) return
+    if (!timer) startTimer()
+    else toggleTimer()
+  }
 
-    if (timerTapRef.current) {
-      window.clearTimeout(timerTapRef.current)
-      timerTapRef.current = null
-      if (timer && !timer.finished) markNextStepDone(timer.routineId, timer.date)
-      setTimer(null)
-      return
-    }
-
-    timerTapRef.current = window.setTimeout(() => {
-      timerTapRef.current = null
-      if (!timer || timer.finished) startTimer()
-      else toggleTimer()
-    }, 260)
+  function stopTimer() {
+    if (!timer) return
+    if (timer.finished) audioContextRef.current?.suspend().catch(() => {})
+    markNextStepDone(timer.routineId, timer.date)
+    setTimer(null)
   }
 
   return (
@@ -359,12 +344,17 @@ export default function MobinaRoutine() {
               style={{ '--timer-progress': `${timerProgress}deg` }}
               type="button"
               onClick={handleTimerTap}
-              aria-label={timer?.finished ? 'Klingeln stoppen' : !timer ? 'Timer starten' : timer.running ? 'Timer pausieren; zweimal tippen zum Beenden' : 'Timer fortsetzen; zweimal tippen zum Beenden'}
+              aria-label={timer?.finished ? 'Timer abgelaufen; Stoppknopf drücken' : !timer ? 'Timer starten' : timer.running ? 'Timer pausieren' : 'Timer fortsetzen'}
             >
               <span className={styles.timerActivity} aria-hidden="true">{timer?.finished ? '🎉' : <RoutineSymbol routine={displayedTimerRoutine} />}</span>
               <strong>{formatTimer(timerDisplaySeconds)}</strong>
-              <span className={styles.timerState} aria-hidden="true">{timer?.finished ? '■' : timer?.running ? 'Ⅱ' : '▶'}</span>
+              <span className={styles.timerState} aria-hidden="true">{timer?.finished ? '🔔' : timer?.running ? 'Ⅱ' : '▶'}</span>
             </button>
+            {timer && !timer.running && (
+              <button className={styles.stopTimerButton} type="button" onClick={stopTimer} aria-label={timer.finished ? 'Klingeln stoppen und Runde erledigen' : 'Timer stoppen und Runde erledigen'}>
+                <span aria-hidden="true">■</span>
+              </button>
+            )}
           </div>
         </section>
 
