@@ -15,20 +15,22 @@ const ROUTINES = [
   { id: 'fernsehen', title: 'Fernseher gucken', icon: '📺', count: 6, minutes: 15, color: 'sky', kind: 'limit' },
   { id: 'lesen', title: 'Bücher lesen', icon: '📚', count: 2, minutes: 15, color: 'rose', kind: 'goal' },
   { id: 'schach', title: 'Schach spielen', icon: '♟️', count: 2, minutes: 15, color: 'indigo', kind: 'goal' },
-  { id: 'tablet', title: 'Tablet spielen', icon: '🎮', count: 2, minutes: 15, color: 'aqua', kind: 'limit' },
-  { id: 'basteln', title: 'Basteln', icon: '✂️', count: 1, minutes: 15, color: 'orange', kind: 'goal' },
-  { id: 'vorschulbuch', title: 'Vorschulbuch', icon: '🔤', count: 1, minutes: 15, color: 'lilac', kind: 'goal' },
+  { id: 'tablet', title: 'Tablet spielen', icon: '🎮', count: 3, minutes: 15, color: 'aqua', kind: 'limit' },
+  { id: 'basteln', title: 'Basteln', icon: '✂️', count: 2, minutes: 15, color: 'orange', kind: 'goal' },
+  { id: 'vorschulbuch', title: 'Vorschulbuch', icon: '🔤', count: 2, minutes: 15, color: 'lilac', kind: 'goal' },
+  { id: 'spielzeuge', title: 'Mit Spielzeug spielen', icon: '🧸', count: 2, minutes: 15, color: 'sunny', kind: 'goal' },
 ]
 
 const GOAL_ROUTINES = ROUTINES.filter(routine => routine.kind === 'goal')
+const LIMIT_ROUTINES = ROUTINES.filter(routine => routine.kind === 'limit')
+const ROUTINE_GROUPS = [
+  { id: 'goals', label: 'Tagesziele', icon: '⭐ 🌈 ⭐', routines: GOAL_ROUTINES },
+  { id: 'limits', label: 'Einschränkungen', icon: '🛑 🫧 🛑', routines: LIMIT_ROUTINES },
+]
 const TOTAL_GOAL_STEPS = GOAL_ROUTINES.reduce((sum, routine) => sum + routine.count, 0)
 
 function dateKey(date = new Date()) {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
-}
-
-function parseDate(value) {
-  return new Date(`${value}T12:00:00`)
 }
 
 function monthKey(value = dateKey()) {
@@ -71,10 +73,16 @@ function formatTimer(seconds) {
   return `${String(Math.floor(safeSeconds / 60)).padStart(2, '0')}:${String(safeSeconds % 60).padStart(2, '0')}`
 }
 
+function RoutineSymbol({ routine }) {
+  if (routine.id === 'anton') {
+    return <span className={styles.antonLogo} aria-hidden="true"><i /><b /></span>
+  }
+  return routine.icon
+}
+
 export default function MobinaRoutine() {
   const today = dateKey()
   const [logs, setLogs] = useState({})
-  const [selectedDate, setSelectedDate] = useState(today)
   const [shownMonth, setShownMonth] = useState(monthKey(today))
   const [loaded, setLoaded] = useState(false)
   const [syncStatus, setSyncStatus] = useState('loading')
@@ -170,12 +178,8 @@ export default function MobinaRoutine() {
   }, [timer?.finished])
 
   const days = useMemo(() => monthDays(shownMonth), [shownMonth])
-  const doneSteps = completedCount(logs, selectedDate)
+  const doneSteps = completedCount(logs, today)
   const progress = Math.round((doneSteps / TOTAL_GOAL_STEPS) * 100)
-  const completedRoutines = GOAL_ROUTINES.filter(routine => {
-    const entries = logs[selectedDate]?.[routine.id] || []
-    return entries.slice(0, routine.count).filter(Boolean).length === routine.count
-  }).length
   const selectedTimerRoutine = ROUTINES.find(routine => routine.id === timerRoutineId) || ROUTINES[0]
   const displayedTimerRoutine = timer
     ? ROUTINES.find(routine => routine.id === timer.routineId) || selectedTimerRoutine
@@ -183,18 +187,14 @@ export default function MobinaRoutine() {
   const timerDisplaySeconds = timer ? timer.remaining : 15 * 60
   const timerProgress = timer ? (timer.remaining / timer.total) * 360 : 360
 
-  const selectedLabel = useMemo(() => parseDate(selectedDate).toLocaleDateString('de-DE', {
-    weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
-  }), [selectedDate])
-
   function toggleStep(routine, index) {
     setLogs(previous => {
-      const currentDay = previous[selectedDate] || {}
+      const currentDay = previous[today] || {}
       const currentSteps = Array.from({ length: routine.count }, (_, step) => Boolean(currentDay[routine.id]?.[step]))
       currentSteps[index] = !currentSteps[index]
       return {
         ...previous,
-        [selectedDate]: { ...currentDay, [routine.id]: currentSteps },
+        [today]: { ...currentDay, [routine.id]: currentSteps },
       }
     })
   }
@@ -245,7 +245,7 @@ export default function MobinaRoutine() {
     setTimer({
       routineId: routine.id,
       title: routine.title,
-      date: selectedDate,
+      date: today,
       total: seconds,
       remaining: seconds,
       endAt: Date.now() + seconds * 1000,
@@ -291,12 +291,6 @@ export default function MobinaRoutine() {
     }, 260)
   }
 
-  function chooseDate(day) {
-    if (!day || day > today) return
-    setSelectedDate(day)
-    setShownMonth(monthKey(day))
-  }
-
   return (
     <main className={styles.page}>
       <div className={styles.decorations} aria-hidden="true"><i>★</i><i>♥</i><i>✦</i><i>●</i><i>★</i></div>
@@ -323,19 +317,26 @@ export default function MobinaRoutine() {
         </section>
 
         <section className={`${styles.timerPanel} ${timer?.finished ? styles.timerFinished : ''}`} aria-live="polite">
-          <div className={styles.activityPicker} aria-label="Aktivität auswählen">
-            {ROUTINES.map(routine => (
-              <button
-                className={timerRoutineId === routine.id ? styles.activityActive : ''}
-                type="button"
-                onClick={() => setTimerRoutineId(routine.id)}
-                aria-label={routine.title}
-                aria-pressed={timerRoutineId === routine.id}
-                disabled={Boolean(timer && !timer.finished)}
-                key={routine.id}
-              >
-                <span aria-hidden="true">{routine.icon}</span>
-              </button>
+          <div className={styles.activityGroups} aria-label="Aktivität auswählen">
+            {ROUTINE_GROUPS.map(group => (
+              <div className={`${styles.activityGroup} ${group.id === 'limits' ? styles.activityLimits : ''}`} key={group.id}>
+                <span className={styles.groupSymbol} aria-label={group.label}>{group.icon}</span>
+                <div className={styles.activityPicker}>
+                  {group.routines.map(routine => (
+                    <button
+                      className={timerRoutineId === routine.id ? styles.activityActive : ''}
+                      type="button"
+                      onClick={() => setTimerRoutineId(routine.id)}
+                      aria-label={routine.title}
+                      aria-pressed={timerRoutineId === routine.id}
+                      disabled={Boolean(timer && !timer.finished)}
+                      key={routine.id}
+                    >
+                      <span aria-hidden="true"><RoutineSymbol routine={routine} /></span>
+                    </button>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
           <div className={styles.timerStage}>
@@ -346,28 +347,10 @@ export default function MobinaRoutine() {
               onClick={handleTimerTap}
               aria-label={timer?.finished ? 'Klingeln stoppen' : !timer ? 'Timer starten' : timer.running ? 'Timer pausieren; zweimal tippen zum Beenden' : 'Timer fortsetzen; zweimal tippen zum Beenden'}
             >
-              <span className={styles.timerActivity} aria-hidden="true">{timer?.finished ? '🎉' : displayedTimerRoutine.icon}</span>
+              <span className={styles.timerActivity} aria-hidden="true">{timer?.finished ? '🎉' : <RoutineSymbol routine={displayedTimerRoutine} />}</span>
               <strong>{formatTimer(timerDisplaySeconds)}</strong>
               <span className={styles.timerState} aria-hidden="true">{timer?.finished ? '■' : timer?.running ? 'Ⅱ' : '▶'}</span>
             </button>
-          </div>
-        </section>
-
-        <section className={styles.dayBar}>
-          <div>
-            <span className={styles.kicker}>Ausgewählter Tag</span>
-            <h2>{selectedLabel}</h2>
-          </div>
-          <input
-            type="date"
-            max={today}
-            value={selectedDate}
-            onChange={event => chooseDate(event.target.value)}
-            aria-label="Tag auswählen"
-          />
-          <div className={styles.dayStats}>
-            <span><strong>{doneSteps}</strong> von {TOTAL_GOAL_STEPS} Ziel-Runden</span>
-            <span><strong>{completedRoutines}</strong> von {GOAL_ROUTINES.length} Tageszielen fertig</span>
           </div>
         </section>
 
@@ -375,39 +358,44 @@ export default function MobinaRoutine() {
           <section className={styles.celebration} aria-label="Alle Tagesziele geschafft"><span aria-hidden="true">🎉 🌟 🦄 🌈 ⭐</span></section>
         )}
 
-        <section className={styles.routineGrid} aria-label="Tägliche Routinen">
-          {ROUTINES.map(routine => {
-            const steps = Array.from({ length: routine.count }, (_, index) => Boolean(logs[selectedDate]?.[routine.id]?.[index]))
-            const done = steps.filter(Boolean).length
-            return (
-              <article className={`${styles.routineCard} ${styles[routine.color]} ${routine.kind === 'limit' ? styles.limitCard : ''} ${routine.kind === 'goal' && done === routine.count ? styles.cardDone : ''}`} key={routine.id}>
-                <header>
-                  <span className={styles.routineIcon} aria-hidden="true">{routine.icon}</span>
-                  <div>
-                    <h3>{routine.title}</h3>
-                  </div>
-                  <span className={styles.kindIcon} aria-label={routine.kind === 'goal' ? 'Tagesziel' : 'Tageslimit'}>{routine.kind === 'goal' ? '⭐' : '🛑'}</span>
-                </header>
-                <div className={styles.stepList}>
-                  {steps.map((checked, index) => (
-                    <button
-                      className={`${styles.step} ${routine.kind === 'limit' ? styles.limitStep : ''} ${checked ? styles.stepDone : ''}`}
-                      type="button"
-                      role="checkbox"
-                      aria-checked={checked}
-                      onClick={() => toggleStep(routine, index)}
-                      aria-label={`${routine.title}, ${index + 1}. Runde, ${checked ? 'markiert' : 'nicht markiert'}${routine.minutes ? `, ${routine.minutes} Minuten` : ''}`}
-                      key={`${routine.id}-${index}`}
-                    >
-                      <span className={styles.roundSparkle} aria-hidden="true">{routine.kind === 'goal' ? (checked ? '⭐' : '✨') : (checked ? '⏳' : '🫧')}</span>
-                      <span className={styles.roundNumber} aria-hidden="true">{index + 1}</span>
-                      {routine.minutes && <small aria-hidden="true">{routine.minutes}′</small>}
-                    </button>
-                  ))}
-                </div>
-              </article>
-            )
-          })}
+        <section className={styles.routineGroups} aria-label="Tägliche Routinen">
+          {ROUTINE_GROUPS.map(group => (
+            <section className={`${styles.routineGroup} ${group.id === 'limits' ? styles.limitGroup : ''}`} aria-label={group.label} key={group.id}>
+              <div className={styles.groupBanner} aria-hidden="true">{group.icon}</div>
+              <div className={styles.routineGrid}>
+                {group.routines.map(routine => {
+                  const steps = Array.from({ length: routine.count }, (_, index) => Boolean(logs[today]?.[routine.id]?.[index]))
+                  const done = steps.filter(Boolean).length
+                  return (
+                    <article className={`${styles.routineCard} ${styles[routine.color]} ${routine.kind === 'limit' ? styles.limitCard : ''} ${routine.kind === 'goal' && done === routine.count ? styles.cardDone : ''}`} key={routine.id}>
+                      <header>
+                        <span className={styles.routineIcon} aria-hidden="true"><RoutineSymbol routine={routine} /></span>
+                        <div><h3>{routine.title}</h3></div>
+                        <span className={styles.kindIcon} aria-label={routine.kind === 'goal' ? 'Tagesziel' : 'Tageslimit'}>{routine.kind === 'goal' ? '⭐' : '🛑'}</span>
+                      </header>
+                      <div className={styles.stepList}>
+                        {steps.map((checked, index) => (
+                          <button
+                            className={`${styles.step} ${routine.kind === 'limit' ? styles.limitStep : ''} ${checked ? styles.stepDone : ''}`}
+                            type="button"
+                            role="checkbox"
+                            aria-checked={checked}
+                            onClick={() => toggleStep(routine, index)}
+                            aria-label={`${routine.title}, ${index + 1}. Runde, ${checked ? 'markiert' : 'nicht markiert'}, 15 Minuten`}
+                            key={`${routine.id}-${index}`}
+                          >
+                            <span className={styles.roundSparkle} aria-hidden="true">{routine.kind === 'goal' ? (checked ? '⭐' : '✨') : (checked ? '⏳' : '🫧')}</span>
+                            <span className={styles.roundNumber} aria-hidden="true">{index + 1}</span>
+                            <small aria-hidden="true">15′</small>
+                          </button>
+                        ))}
+                      </div>
+                    </article>
+                  )
+                })}
+              </div>
+            </section>
+          ))}
         </section>
 
         <section className={styles.history}>
@@ -415,7 +403,7 @@ export default function MobinaRoutine() {
             <div className={styles.historyTitle}><span aria-hidden="true">🌷 🦋 ⭐</span><h2>{MONTHS[Number(shownMonth.slice(5)) - 1]} {shownMonth.slice(0, 4)}</h2></div>
             <div className={styles.monthControls}>
               <button type="button" onClick={() => setShownMonth(value => shiftMonth(value, -1))} aria-label="Vorheriger Monat">⬅️</button>
-              <button type="button" onClick={() => chooseDate(today)} aria-label="Heute">🏠</button>
+              <button type="button" onClick={() => setShownMonth(monthKey(today))} aria-label="Heute">🏠</button>
               <button type="button" onClick={() => setShownMonth(value => shiftMonth(value, 1))} disabled={shownMonth >= monthKey(today)} aria-label="Nächster Monat">➡️</button>
             </div>
           </header>
@@ -426,11 +414,8 @@ export default function MobinaRoutine() {
               const stars = Math.min(3, Math.ceil(percent / 34))
               const dayPicture = percent === 100 ? '🏆' : percent >= 67 ? '🌈' : percent > 0 ? '🌱' : '☁️'
               return (
-                <button
-                  className={`${styles.calendarDay} ${!day ? styles.emptyDay : ''} ${day === today ? styles.today : ''} ${day === selectedDate ? styles.selected : ''} ${percent === 100 ? styles.perfectDay : ''}`}
-                  type="button"
-                  disabled={!day || day > today}
-                  onClick={() => chooseDate(day)}
+                <div
+                  className={`${styles.calendarDay} ${!day ? styles.emptyDay : ''} ${day === today ? styles.today : ''} ${day > today ? styles.futureDay : ''} ${percent === 100 ? styles.perfectDay : ''}`}
                   key={day || `empty-${index}`}
                   aria-label={day ? `${day}: ${percent} Prozent geschafft` : undefined}
                 >
@@ -441,7 +426,7 @@ export default function MobinaRoutine() {
                       {[0, 1, 2].map(star => <i className={star < stars ? styles.starEarned : ''} key={star}>★</i>)}
                     </span>
                   </>}
-                </button>
+                </div>
               )
             })}
           </div>

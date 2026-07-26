@@ -54,11 +54,9 @@
 .topbar,
 .brand,
 .hero,
-.dayBar,
 .routineCard header,
 .historyHeader,
 .monthControls,
-.dayStats,
 .celebration {
   display: flex;
   align-items: center;
@@ -183,7 +181,6 @@
 .progressOrb strong { font-size: 40px; font-weight: 950; line-height: 1; }
 .progressOrb span { margin-top: 4px; font-size: 10px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
 
-.dayBar,
 .history {
   margin-top: 18px;
   border: 2px solid rgba(255,255,255,.86);
@@ -193,33 +190,16 @@
   backdrop-filter: blur(18px);
 }
 
-.dayBar { flex-wrap: wrap; gap: 16px; padding: 20px 22px; }
-.dayBar > div:first-child { min-width: 260px; flex: 1 1 auto; }
-.dayBar h2 { margin-top: 3px; color: #29387a; font-family: var(--font-fraunces, serif); font-size: clamp(24px, 4vw, 34px); line-height: 1.1; }
-
-.dayBar input {
-  min-width: 0;
-  min-height: 44px;
-  border: 2px solid #e9d9f4;
-  border-radius: 15px;
-  background: #fff;
-  color: #35417f;
-  font: inherit;
-  font-weight: 850;
-  outline: none;
-  padding: 0 13px;
-}
-
-.dayStats { flex-wrap: wrap; gap: 8px; }
-.dayStats span { min-height: 40px; display: inline-flex; align-items: center; border-radius: 999px; background: #f7edff; color: #746b9a; font-size: 11px; font-weight: 850; padding: 0 13px; }
-.dayStats strong { margin-right: 4px; color: #e54898; font-size: 17px; }
-
 .celebration { justify-content: center; gap: 16px; margin-top: 18px; padding: 22px; border-radius: 25px; background: linear-gradient(110deg, #ffdbef, #dff5ff); box-shadow: 0 14px 36px rgba(95,84,159,.12); text-align: center; }
 .celebration > span { font-size: clamp(32px, 7vw, 62px); letter-spacing: .12em; }
 .celebration strong { color: #d92b87; font-size: 18px; }
 .celebration p { color: #66719e; font-size: 12px; font-weight: 750; }
 
-.routineGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 18px; }
+.routineGroups { display: grid; gap: 24px; margin-top: 18px; }
+.routineGroup { padding: clamp(14px, 3vw, 24px); border: 3px solid rgba(255,255,255,.84); border-radius: 34px; background: linear-gradient(145deg, rgba(255,239,248,.66), rgba(237,249,255,.72)); box-shadow: 0 18px 42px rgba(82,71,140,.09); }
+.limitGroup { border-style: dashed; background: linear-gradient(145deg, rgba(237,249,255,.76), rgba(245,240,255,.78)); }
+.groupBanner { font-size: clamp(30px, 6vw, 54px); letter-spacing: .18em; text-align: center; }
+.routineGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
 
 .routineCard {
   --card-color: #ef5ba8;
@@ -245,6 +225,7 @@
 .aqua { --card-color: #20bdb9; --card-soft: #e9fbfa; }
 .orange { --card-color: #f39a45; --card-soft: #fff4e8; }
 .lilac { --card-color: #b35be5; --card-soft: #f8edff; }
+.sunny { --card-color: #e8a820; --card-soft: #fff8dd; }
 
 .routineCard header { gap: 15px; }
 .routineIcon { width: 78px; height: 78px; display: grid; flex: 0 0 auto; place-items: center; border: 4px solid rgba(255,255,255,.8); border-radius: 27px; background: var(--card-soft); box-shadow: 0 12px 24px rgba(77,69,138,.12); font-size: 40px; transform: rotate(-4deg); }
@@ -284,8 +265,7 @@
 
 .timerPanel {
   display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
+  grid-template-columns: minmax(260px, .8fr) minmax(380px, 1.2fr);
   align-items: center;
   gap: clamp(20px, 4vw, 34px);
   position: relative;
@@ -299,17 +279,26 @@
   backdrop-filter: blur(20px);
 }
 
-.activityPicker { width: min(590px, 100%); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.activityGroups { width: 100%; max-width: 360px; display: grid; gap: 14px; justify-self: end; }
+.activityGroup { padding: 10px; border: 3px solid rgba(255,255,255,.82); border-radius: 27px; background: rgba(255,240,248,.48); }
+.activityLimits { border-style: dashed; background: rgba(232,247,255,.58); }
+.groupSymbol { display: block; margin-bottom: 8px; font-size: 22px; letter-spacing: .13em; text-align: center; }
+.activityPicker { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
 .activityPicker button { aspect-ratio: 1; border: 3px solid rgba(255,255,255,.9); border-radius: 24px; background: rgba(255,255,255,.72); box-shadow: 0 10px 22px rgba(80,69,141,.1); cursor: pointer; transition: transform .16s ease, background .16s ease; }
 .activityPicker button:hover { transform: translateY(-3px) rotate(2deg); }
 .activityPicker button:disabled { cursor: default; opacity: .55; transform: none; }
-.activityPicker button span { font-size: clamp(28px, 5vw, 46px); }
+.activityPicker button > span { display: grid; place-items: center; font-size: clamp(28px, 5vw, 46px); }
 .activityPicker .activityActive { border-color: #ff70b8; background: linear-gradient(145deg, #ffe1f1, #ddf4ff); box-shadow: 0 0 0 5px rgba(255,112,184,.13), 0 14px 28px rgba(93,75,154,.16); transform: translateY(-3px) rotate(-3deg); }
 .timerStage { width: 100%; display: grid; justify-items: center; gap: 18px; }
 
+.antonLogo { width: 1.18em; height: 1em; display: block; position: relative; border-radius: .2em; background: #fff; box-shadow: 0 .1em .25em rgba(36,36,54,.1); color: #111; font-size: 1em; line-height: 1; }
+.antonLogo i::before { content: '•  •'; position: absolute; top: .01em; left: 0; width: 100%; font-size: .42em; font-style: normal; letter-spacing: .28em; text-align: center; }
+.antonLogo b { width: .65em; height: .34em; position: absolute; bottom: .12em; left: 50%; border-bottom: .09em solid currentColor; border-radius: 0 0 50% 50%; transform: translateX(-50%); }
+
 .timerRing {
-  width: min(380px, 78vw);
-  height: min(380px, 78vw);
+  width: min(380px, 100%);
+  height: auto;
+  aspect-ratio: 1;
   display: grid;
   place-items: center;
   align-content: center;
@@ -329,11 +318,11 @@
 .timerRing:active { box-shadow: 0 16px 38px rgba(92,75,148,.2), 0 0 0 17px rgba(255,126,189,.18); transform: scale(.97); }
 .timerRing::before { content: ''; position: absolute; inset: 17px; border-radius: 50%; background: rgba(255,255,255,.96); }
 .timerActivity { position: relative; z-index: 1; margin-bottom: 10px; font-size: clamp(48px, 10vw, 78px); line-height: 1; }
-.timerRing strong { position: relative; z-index: 1; color: #303d7c; font-size: clamp(52px, 13vw, 82px); font-variant-numeric: tabular-nums; line-height: 1; }
+.timerRing > strong { position: relative; z-index: 1; color: #303d7c; font-size: clamp(52px, 13vw, 82px); font-variant-numeric: tabular-nums; line-height: 1; }
 .timerState { width: 50px; height: 50px; display: grid; place-items: center; position: relative; z-index: 1; margin-top: 14px; border-radius: 50%; background: linear-gradient(145deg, #ff64ad, #65c7f7); box-shadow: 0 8px 18px rgba(219,69,149,.24); color: #fff; font-size: 21px; font-weight: 950; }
 .timerFinished { background: linear-gradient(120deg, rgba(255,239,248,.96), rgba(231,248,255,.96)); }
 .timerFinished .timerRing { background: linear-gradient(145deg, #ff64ad, #65c7f7); }
-.timerFinished .timerRing strong { color: #fff; }
+.timerFinished .timerRing > strong { color: #fff; }
 .timerFinished .timerRing::before { display: none; }
 
 .history { position: relative; overflow: hidden; padding: clamp(20px, 4vw, 34px); border-color: #fff; background: radial-gradient(circle at 8% 12%, rgba(255,112,184,.2), transparent 23%), radial-gradient(circle at 92% 90%, rgba(84,196,247,.2), transparent 25%), linear-gradient(155deg, rgba(255,247,252,.96), rgba(239,250,255,.96)); }
@@ -347,9 +336,7 @@
 
 .calendar { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 9px; position: relative; z-index: 1; margin-top: 24px; }
 .weekday { min-height: 34px; display: grid; place-items: center; border-radius: 999px; background: rgba(255,255,255,.6); font-size: clamp(17px, 2.5vw, 24px); text-align: center; }
-.calendarDay { min-width: 0; min-height: 112px; display: grid; grid-template-rows: auto 1fr auto; justify-items: center; gap: 5px; border: 3px solid rgba(255,255,255,.92); border-radius: 22px 28px 20px 30px; background: rgba(255,255,255,.72); box-shadow: 0 8px 18px rgba(79,70,137,.07); color: #485286; cursor: pointer; font: inherit; padding: 8px; transition: transform .16s ease, border-radius .16s ease; }
-.calendarDay:hover { border-radius: 29px 20px 30px 21px; transform: translateY(-3px) rotate(1deg); }
-.calendarDay:disabled { cursor: default; opacity: .38; }
+.calendarDay { min-width: 0; min-height: 112px; display: grid; grid-template-rows: auto 1fr auto; justify-items: center; gap: 5px; border: 3px solid rgba(255,255,255,.92); border-radius: 22px 28px 20px 30px; background: rgba(255,255,255,.72); box-shadow: 0 8px 18px rgba(79,70,137,.07); color: #485286; font: inherit; padding: 8px; }
 .calendarDay strong { width: 27px; height: 27px; display: grid; place-items: center; justify-self: start; border-radius: 50%; background: #f6edfb; color: #776c9a; font-size: 11px; }
 .dayPicture { display: grid; place-items: center; font-size: clamp(24px, 4vw, 37px); line-height: 1; filter: drop-shadow(0 5px 7px rgba(67,62,122,.1)); }
 .starTrail { display: flex; justify-content: center; gap: 2px; }
@@ -357,7 +344,7 @@
 .starTrail .starEarned { color: #ffc83d; filter: drop-shadow(0 2px 2px rgba(237,164,26,.2)); }
 .emptyDay { visibility: hidden; }
 .today { box-shadow: inset 0 0 0 3px #65c7f7, 0 8px 18px rgba(79,70,137,.07); }
-.selected { border-color: #ec5da7; box-shadow: 0 0 0 5px rgba(236,93,167,.14), 0 10px 24px rgba(79,70,137,.1); transform: translateY(-2px); }
+.futureDay { opacity: .3; }
 .perfectDay { background: linear-gradient(145deg, #fff0f8, #e6f8ff); }
 .perfectDay strong { background: linear-gradient(145deg, #ff64ad, #65c7f7); color: #fff; }
 .historyHint { position: relative; z-index: 1; margin-top: 18px; font-size: clamp(25px, 5vw, 44px); letter-spacing: .14em; text-align: center; }
@@ -379,7 +366,11 @@
   .progressOrb { width: 116px; height: 116px; }
   .progressOrb strong { font-size: 27px; }
   .progressOrb::before { inset: 8px; }
-  .timerPanel { grid-template-columns: 1fr; border-radius: 30px; }
+  .timerPanel { grid-template-columns: minmax(130px, .65fr) minmax(0, 1.35fr); gap: 16px; border-radius: 30px; }
+  .activityGroups { gap: 9px; }
+  .activityGroup { padding: 7px; border-radius: 20px; }
+  .groupSymbol { margin-bottom: 6px; font-size: 17px; }
+  .activityPicker { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
   .routineGrid { grid-template-columns: 1fr; }
   .calendar { gap: 4px; }
   .calendarDay { min-height: 82px; gap: 3px; border-radius: 15px 19px 14px 20px; padding: 4px; }
@@ -396,18 +387,17 @@
   .progressOrb div { min-height: 42px; display: flex; align-items: center; justify-content: center; gap: 8px; color: #fff; }
   .progressOrb strong { font-size: 22px; }
   .progressOrb span { margin: 0; }
-  .dayBar { align-items: stretch; padding: 17px; }
-  .dayBar > div:first-child { min-width: 0; width: 100%; }
-  .dayBar input { width: 100%; max-width: 100%; }
-  .dayStats { width: 100%; display: grid; grid-template-columns: 1fr 1fr; }
-  .dayStats span { min-height: 54px; border-radius: 15px; line-height: 1.25; }
   .routineCard { padding: 15px; border-radius: 23px; }
   .routineIcon { width: 62px; height: 62px; border-radius: 21px; font-size: 32px; }
   .routineCard h3 { font-size: 23px; }
-  .timerPanel { grid-template-columns: 1fr; padding: 22px 18px; }
-  .activityPicker { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
-  .activityPicker button { border-radius: 19px; }
+  .timerPanel { grid-template-columns: 108px minmax(0, 1fr); gap: 10px; padding: 18px 12px; }
+  .activityPicker { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+  .activityPicker button { border-width: 2px; border-radius: 16px; }
+  .activityPicker button > span { font-size: 28px; }
   .timerStage { width: 100%; }
+  .timerActivity { font-size: clamp(39px, 11vw, 55px); }
+  .timerRing > strong { font-size: clamp(38px, 11vw, 58px); }
+  .timerState { width: 42px; height: 42px; margin-top: 9px; font-size: 18px; }
   .stepList { grid-template-columns: repeat(3, 82px); gap: 10px; }
   .historyHeader { align-items: flex-start; flex-direction: column; }
   .monthControls { width: 100%; }

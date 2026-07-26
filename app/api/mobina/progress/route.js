@@ -9,7 +9,10 @@ const ROUTINE_LIMITS = {
   fernsehen: 6,
   lesen: 2,
   schach: 2,
-  tablet: 2,
+  tablet: 3,
+  basteln: 2,
+  vorschulbuch: 2,
+  spielzeuge: 2,
 }
 
 export const dynamic = 'force-dynamic'
