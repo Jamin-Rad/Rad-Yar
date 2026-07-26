@@ -6,6 +6,7 @@ import styles from './page.module.css'
 const STORAGE_KEY = 'mobina_daily_routine_v1'
 const MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
 const WEEKDAYS = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
+const WEEKDAY_ICONS = ['🌙', '🌷', '🌈', '🦄', '⭐', '🎈', '☀️']
 
 const ROUTINES = [
   { id: 'malen', title: 'Malen', icon: '🎨', count: 2, minutes: 15, color: 'pink', kind: 'goal' },
@@ -158,9 +159,15 @@ export default function MobinaRoutine() {
   useEffect(() => {
     if (!timer?.running || timer.remaining !== 0) return
     markNextStepDone(timer.routineId, timer.date)
-    playRing()
     setTimer(previous => previous ? { ...previous, running: false, finished: true } : null)
   }, [timer?.remaining, timer?.running])
+
+  useEffect(() => {
+    if (!timer?.finished) return undefined
+    playRing()
+    const interval = window.setInterval(playRing, 1250)
+    return () => window.clearInterval(interval)
+  }, [timer?.finished])
 
   const days = useMemo(() => monthDays(shownMonth), [shownMonth])
   const doneSteps = completedCount(logs, selectedDate)
@@ -264,6 +271,12 @@ export default function MobinaRoutine() {
   }
 
   function handleTimerTap() {
+    if (timer?.finished) {
+      audioContextRef.current?.suspend().catch(() => {})
+      setTimer(null)
+      return
+    }
+
     if (timerTapRef.current) {
       window.clearTimeout(timerTapRef.current)
       timerTapRef.current = null
@@ -331,11 +344,11 @@ export default function MobinaRoutine() {
               style={{ '--timer-progress': `${timerProgress}deg` }}
               type="button"
               onClick={handleTimerTap}
-              aria-label={!timer || timer.finished ? 'Timer starten' : timer.running ? 'Timer pausieren; zweimal tippen zum Beenden' : 'Timer fortsetzen; zweimal tippen zum Beenden'}
+              aria-label={timer?.finished ? 'Klingeln stoppen' : !timer ? 'Timer starten' : timer.running ? 'Timer pausieren; zweimal tippen zum Beenden' : 'Timer fortsetzen; zweimal tippen zum Beenden'}
             >
               <span className={styles.timerActivity} aria-hidden="true">{timer?.finished ? '🎉' : displayedTimerRoutine.icon}</span>
               <strong>{formatTimer(timerDisplaySeconds)}</strong>
-              <span className={styles.timerState} aria-hidden="true">{timer?.running ? 'Ⅱ' : '▶'}</span>
+              <span className={styles.timerState} aria-hidden="true">{timer?.finished ? '■' : timer?.running ? 'Ⅱ' : '▶'}</span>
             </button>
           </div>
         </section>
@@ -399,17 +412,19 @@ export default function MobinaRoutine() {
 
         <section className={styles.history}>
           <header className={styles.historyHeader}>
-            <div><span className={styles.kicker}>Mein Verlauf</span><h2>{MONTHS[Number(shownMonth.slice(5)) - 1]} {shownMonth.slice(0, 4)}</h2></div>
+            <div className={styles.historyTitle}><span aria-hidden="true">🌷 🦋 ⭐</span><h2>{MONTHS[Number(shownMonth.slice(5)) - 1]} {shownMonth.slice(0, 4)}</h2></div>
             <div className={styles.monthControls}>
-              <button type="button" onClick={() => setShownMonth(value => shiftMonth(value, -1))} aria-label="Vorheriger Monat">‹</button>
-              <button type="button" onClick={() => chooseDate(today)}>Heute</button>
-              <button type="button" onClick={() => setShownMonth(value => shiftMonth(value, 1))} disabled={shownMonth >= monthKey(today)} aria-label="Nächster Monat">›</button>
+              <button type="button" onClick={() => setShownMonth(value => shiftMonth(value, -1))} aria-label="Vorheriger Monat">⬅️</button>
+              <button type="button" onClick={() => chooseDate(today)} aria-label="Heute">🏠</button>
+              <button type="button" onClick={() => setShownMonth(value => shiftMonth(value, 1))} disabled={shownMonth >= monthKey(today)} aria-label="Nächster Monat">➡️</button>
             </div>
           </header>
           <div className={styles.calendar}>
-            {WEEKDAYS.map(day => <span className={styles.weekday} key={day}>{day}</span>)}
+            {WEEKDAYS.map((day, index) => <span className={styles.weekday} aria-label={day} role="img" key={day}>{WEEKDAY_ICONS[index]}</span>)}
             {days.map((day, index) => {
               const percent = day ? dayPercent(logs, day) : 0
+              const stars = Math.min(3, Math.ceil(percent / 34))
+              const dayPicture = percent === 100 ? '🏆' : percent >= 67 ? '🌈' : percent > 0 ? '🌱' : '☁️'
               return (
                 <button
                   className={`${styles.calendarDay} ${!day ? styles.emptyDay : ''} ${day === today ? styles.today : ''} ${day === selectedDate ? styles.selected : ''} ${percent === 100 ? styles.perfectDay : ''}`}
@@ -419,12 +434,18 @@ export default function MobinaRoutine() {
                   key={day || `empty-${index}`}
                   aria-label={day ? `${day}: ${percent} Prozent geschafft` : undefined}
                 >
-                  {day && <><strong>{Number(day.slice(-2))}</strong><span><i style={{ width: `${percent}%` }} /></span><small>{percent}%</small></>}
+                  {day && <>
+                    <strong>{Number(day.slice(-2))}</strong>
+                    <span className={styles.dayPicture} aria-hidden="true">{dayPicture}</span>
+                    <span className={styles.starTrail} aria-hidden="true">
+                      {[0, 1, 2].map(star => <i className={star < stars ? styles.starEarned : ''} key={star}>★</i>)}
+                    </span>
+                  </>}
                 </button>
               )
             })}
           </div>
-          <p className={styles.historyHint}>Tippe auf einen vergangenen Tag, um deine Häkchen anzusehen.</p>
+          <div className={styles.historyHint} aria-hidden="true">🌱 ✨ 🌈 ✨ 🏆</div>
         </section>
       </div>
     </main>
