@@ -24,8 +24,8 @@ const ROUTINES = [
 const GOAL_ROUTINES = ROUTINES.filter(routine => routine.kind === 'goal')
 const LIMIT_ROUTINES = ROUTINES.filter(routine => routine.kind === 'limit')
 const ROUTINE_GROUPS = [
-  { id: 'goals', label: 'Tagesziele', icon: '⭐ 🌈 ⭐', routines: GOAL_ROUTINES },
-  { id: 'limits', label: 'Einschränkungen', icon: '🛑 🫧 🛑', routines: LIMIT_ROUTINES },
+  { id: 'goals', label: 'Tagesziele', icon: '⭐', friends: '🌈 ✨ 🦄', routines: GOAL_ROUTINES },
+  { id: 'limits', label: 'Einschränkungen', icon: '🛑', friends: '🫧 ⏳ 🫧', routines: LIMIT_ROUTINES },
 ]
 const TOTAL_GOAL_STEPS = GOAL_ROUTINES.reduce((sum, routine) => sum + routine.count, 0)
 
@@ -320,7 +320,10 @@ export default function MobinaRoutine() {
           <div className={styles.activityGroups} aria-label="Aktivität auswählen">
             {ROUTINE_GROUPS.map(group => (
               <div className={`${styles.activityGroup} ${group.id === 'limits' ? styles.activityLimits : ''}`} key={group.id}>
-                <span className={styles.groupSymbol} aria-label={group.label}>{group.icon}</span>
+                <div className={styles.groupHeader} aria-label={group.label}>
+                  <span className={styles.groupBadge}>{group.icon}</span>
+                  <span className={styles.groupFriends} aria-hidden="true">{group.friends}</span>
+                </div>
                 <div className={styles.activityPicker}>
                   {group.routines.map(routine => (
                     <button
@@ -361,7 +364,10 @@ export default function MobinaRoutine() {
         <section className={styles.routineGroups} aria-label="Tägliche Routinen">
           {ROUTINE_GROUPS.map(group => (
             <section className={`${styles.routineGroup} ${group.id === 'limits' ? styles.limitGroup : ''}`} aria-label={group.label} key={group.id}>
-              <div className={styles.groupBanner} aria-hidden="true">{group.icon}</div>
+              <div className={styles.groupBanner}>
+                <span className={styles.groupBadge} aria-hidden="true">{group.icon}</span>
+                <span className={styles.groupFriends} aria-hidden="true">{group.friends}</span>
+              </div>
               <div className={styles.routineGrid}>
                 {group.routines.map(routine => {
                   const steps = Array.from({ length: routine.count }, (_, index) => Boolean(logs[today]?.[routine.id]?.[index]))
@@ -371,7 +377,6 @@ export default function MobinaRoutine() {
                       <header>
                         <span className={styles.routineIcon} aria-hidden="true"><RoutineSymbol routine={routine} /></span>
                         <div><h3>{routine.title}</h3></div>
-                        <span className={styles.kindIcon} aria-label={routine.kind === 'goal' ? 'Tagesziel' : 'Tageslimit'}>{routine.kind === 'goal' ? '⭐' : '🛑'}</span>
                       </header>
                       <div className={styles.stepList}>
                         {steps.map((checked, index) => (

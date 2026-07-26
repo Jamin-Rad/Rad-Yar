@@ -195,11 +195,20 @@
 .celebration strong { color: #d92b87; font-size: 18px; }
 .celebration p { color: #66719e; font-size: 12px; font-weight: 750; }
 
-.routineGroups { display: grid; gap: 24px; margin-top: 18px; }
-.routineGroup { padding: clamp(14px, 3vw, 24px); border: 3px solid rgba(255,255,255,.84); border-radius: 34px; background: linear-gradient(145deg, rgba(255,239,248,.66), rgba(237,249,255,.72)); box-shadow: 0 18px 42px rgba(82,71,140,.09); }
-.limitGroup { border-style: dashed; background: linear-gradient(145deg, rgba(237,249,255,.76), rgba(245,240,255,.78)); }
-.groupBanner { font-size: clamp(30px, 6vw, 54px); letter-spacing: .18em; text-align: center; }
+.routineGroups { display: grid; grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr); align-items: start; gap: 22px; margin-top: 18px; }
+.routineGroup { position: relative; overflow: hidden; padding: clamp(18px, 3vw, 28px); border: 4px solid rgba(255,255,255,.9); border-radius: 42px 32px 44px 34px; background: radial-gradient(circle at 90% 5%, rgba(255,255,255,.86), transparent 22%), linear-gradient(145deg, rgba(255,224,242,.84), rgba(238,246,255,.8)); box-shadow: 0 22px 52px rgba(82,71,140,.11), inset 0 0 0 5px rgba(255,115,184,.06); }
+.routineGroup::after { content: '✦  •  ✦'; position: absolute; right: 24px; top: 17px; color: rgba(229,75,154,.2); font-size: 28px; letter-spacing: .18em; pointer-events: none; }
+.limitGroup { border: 4px dashed rgba(82,178,229,.32); border-radius: 34px 44px 32px 42px; background: radial-gradient(circle at 8% 8%, rgba(255,255,255,.9), transparent 24%), linear-gradient(145deg, rgba(220,246,255,.9), rgba(242,237,255,.85)); box-shadow: 0 22px 52px rgba(70,126,177,.1), inset 0 0 0 5px rgba(77,187,235,.06); }
+.limitGroup::after { content: '○  ◌  ○'; color: rgba(40,159,215,.2); }
+.groupBanner,
+.groupHeader { display: flex; align-items: center; gap: 12px; }
+.groupBadge { width: 64px; height: 64px; display: grid; flex: 0 0 auto; place-items: center; border: 4px solid #fff; border-radius: 22px 29px 23px 28px; background: linear-gradient(145deg, #ff81bf, #f5a3d2); box-shadow: 0 11px 25px rgba(224,74,151,.2); font-size: 32px; transform: rotate(-5deg); }
+.groupFriends { font-size: clamp(24px, 4vw, 39px); letter-spacing: .1em; white-space: nowrap; }
+.limitGroup .groupBadge,
+.activityLimits .groupBadge { border-radius: 50%; background: linear-gradient(145deg, #7ed8fb, #9ea8f2); box-shadow: 0 11px 25px rgba(63,154,207,.2); transform: rotate(4deg); }
 .routineGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
+.limitGroup .routineGrid { grid-template-columns: 1fr; }
+.limitGroup .stepList { grid-template-columns: repeat(2, 96px); }
 
 .routineCard {
   --card-color: #ef5ba8;
@@ -232,7 +241,6 @@
 .routineCard header div { min-width: 0; flex: 1; }
 .routineCard h3 { color: #29387a; font-family: var(--font-fraunces, serif); font-size: clamp(25px, 4vw, 34px); line-height: 1.05; }
 .cardDone { box-shadow: 0 17px 44px color-mix(in srgb, var(--card-color) 18%, transparent), inset 0 0 0 2px color-mix(in srgb, var(--card-color) 25%, transparent); }
-.kindIcon { width: 52px; height: 52px; display: grid; flex: 0 0 auto; place-items: center; border-radius: 50%; background: rgba(255,255,255,.82); box-shadow: 0 8px 18px rgba(68,64,128,.1); font-size: 25px; }
 
 .stepList { display: grid; grid-template-columns: repeat(3, 96px); gap: 15px; justify-content: center; margin-top: 22px; }
 .step {
@@ -279,10 +287,12 @@
   backdrop-filter: blur(20px);
 }
 
-.activityGroups { width: 100%; max-width: 360px; display: grid; gap: 14px; justify-self: end; }
-.activityGroup { padding: 10px; border: 3px solid rgba(255,255,255,.82); border-radius: 27px; background: rgba(255,240,248,.48); }
-.activityLimits { border-style: dashed; background: rgba(232,247,255,.58); }
-.groupSymbol { display: block; margin-bottom: 8px; font-size: 22px; letter-spacing: .13em; text-align: center; }
+.activityGroups { width: 100%; max-width: 360px; display: grid; gap: 16px; justify-self: end; }
+.activityGroup { padding: 12px; border: 3px solid rgba(255,255,255,.9); border-radius: 30px 23px 31px 25px; background: linear-gradient(145deg, rgba(255,228,244,.82), rgba(255,255,255,.68)); box-shadow: inset 0 0 0 4px rgba(255,100,173,.05); }
+.activityLimits { border: 3px dashed rgba(74,180,230,.3); border-radius: 24px 31px 23px 30px; background: linear-gradient(145deg, rgba(224,247,255,.86), rgba(248,244,255,.7)); box-shadow: inset 0 0 0 4px rgba(69,184,235,.05); }
+.activityGroup .groupHeader { margin-bottom: 10px; }
+.activityGroup .groupBadge { width: 44px; height: 44px; border-width: 3px; border-radius: 15px 20px 16px 19px; font-size: 22px; }
+.activityGroup .groupFriends { overflow: hidden; font-size: 22px; text-overflow: clip; }
 .activityPicker { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
 .activityPicker button { aspect-ratio: 1; border: 3px solid rgba(255,255,255,.9); border-radius: 24px; background: rgba(255,255,255,.72); box-shadow: 0 10px 22px rgba(80,69,141,.1); cursor: pointer; transition: transform .16s ease, background .16s ease; }
 .activityPicker button:hover { transform: translateY(-3px) rotate(2deg); }
@@ -369,8 +379,10 @@
   .timerPanel { grid-template-columns: minmax(130px, .65fr) minmax(0, 1.35fr); gap: 16px; border-radius: 30px; }
   .activityGroups { gap: 9px; }
   .activityGroup { padding: 7px; border-radius: 20px; }
-  .groupSymbol { margin-bottom: 6px; font-size: 17px; }
+  .activityGroup .groupBadge { width: 36px; height: 36px; font-size: 18px; }
+  .activityGroup .groupFriends { font-size: 17px; }
   .activityPicker { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .routineGroups { grid-template-columns: 1fr; }
   .routineGrid { grid-template-columns: 1fr; }
   .calendar { gap: 4px; }
   .calendarDay { min-height: 82px; gap: 3px; border-radius: 15px 19px 14px 20px; padding: 4px; }
@@ -387,6 +399,9 @@
   .progressOrb div { min-height: 42px; display: flex; align-items: center; justify-content: center; gap: 8px; color: #fff; }
   .progressOrb strong { font-size: 22px; }
   .progressOrb span { margin: 0; }
+  .routineGroup { padding: 14px; border-radius: 29px 23px 31px 25px; }
+  .groupBadge { width: 54px; height: 54px; font-size: 27px; }
+  .groupFriends { font-size: 23px; }
   .routineCard { padding: 15px; border-radius: 23px; }
   .routineIcon { width: 62px; height: 62px; border-radius: 21px; font-size: 32px; }
   .routineCard h3 { font-size: 23px; }
@@ -399,6 +414,7 @@
   .timerRing > strong { font-size: clamp(38px, 11vw, 58px); }
   .timerState { width: 42px; height: 42px; margin-top: 9px; font-size: 18px; }
   .stepList { grid-template-columns: repeat(3, 82px); gap: 10px; }
+  .limitGroup .stepList { grid-template-columns: repeat(2, 82px); }
   .historyHeader { align-items: flex-start; flex-direction: column; }
   .monthControls { width: 100%; }
   .monthControls button { flex: 1; }
