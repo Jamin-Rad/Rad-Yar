@@ -164,6 +164,11 @@
   gap: clamp(14px, 2.8vw, 24px);
 }
 
+.buttonField > :only-child {
+  grid-column: 1 / -1;
+  width: min(620px, 100%);
+}
+
 .glassButton {
   min-height: 154px;
   position: relative;

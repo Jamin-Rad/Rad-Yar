@@ -1,9 +1,5 @@
-import PruefungClient from './PruefungClient'
-
-export const metadata = {
-  title: 'Mobin | Prüfungsvorbereitung',
-}
+import { redirect } from 'next/navigation'
 
 export default function PruefungsvorbereitungPage() {
-  return <PruefungClient />
+  redirect('/mobin/tagesplan')
 }

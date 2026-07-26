@@ -1,9 +1,5 @@
-import RoutineClient from './RoutineClient'
-
-export const metadata = {
-  title: 'Mobin | Routine',
-}
+import { redirect } from 'next/navigation'
 
 export default function RoutinePage() {
-  return <RoutineClient />
+  redirect('/mobin/tagesplan')
 }
