@@ -38,18 +38,25 @@
 .sectionHead h2 { margin: 5px 0 0; font-family: var(--font-display); font-size: clamp(34px, 5vw, 56px); line-height: .95; }
 .sectionHead > p { max-width: 340px; margin: 0; color: var(--muted); font-size: 13px; font-weight: 700; text-align: right; }
 
-.goalGrid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
-.goalCard { --accent: #a88aff; display: grid; grid-template-columns: 38px 1fr; gap: 10px 14px; padding: 15px; border: 1px solid rgba(255,255,255,.16); border-radius: 15px; background: rgba(5,10,28,.38); box-shadow: inset 3px 0 var(--accent); }
-.goalNumber { grid-row: 1 / span 3; color: color-mix(in srgb, var(--accent) 78%, white); font-family: var(--font-display); font-size: 25px; font-weight: 900; }
-.goalTitle { display: flex; justify-content: space-between; gap: 12px; }
-.goalTitle h3 { margin: 0; font-size: 16px; line-height: 1.25; }
-.goalTitle span { color: var(--accent); font-size: 12px; font-weight: 950; }
-.progress { height: 7px; overflow: hidden; border-radius: 99px; background: rgba(255,255,255,.1); }
-.progress i { display: block; height: 100%; border-radius: inherit; background: var(--accent); box-shadow: 0 0 14px var(--accent); }
-.amountRow { display: grid; grid-template-columns: 74px 1fr auto; align-items: center; gap: 8px; }
-.amountRow input, .hourRow input, .hourRow select, .goalForm input { min-width: 0; min-height: 38px; border: 1px solid rgba(255,255,255,.16); border-radius: 10px; background: rgba(255,255,255,.08); color: white; padding: 0 10px; font: inherit; font-size: 12px; outline: none; color-scheme: dark; }
-.amountRow span { color: var(--muted); font-size: 11px; font-weight: 800; }
-.amountRow button { min-height: 34px; border: 0; border-radius: 9px; background: var(--accent); color: #07101e; padding: 0 10px; font: inherit; font-size: 11px; font-weight: 950; cursor: pointer; }
+.entryTable { overflow-x: auto; border: 1px solid rgba(255,255,255,.14); border-radius: 16px; background: rgba(5,10,28,.34); }
+.entryTableHead, .entryRow { display: grid; grid-template-columns: minmax(230px, .9fr) minmax(440px, 1.4fr); align-items: center; }
+.entryTableHead, .entryGroup { min-width: 720px; }
+.entryTableHead { min-height: 42px; padding: 0 16px; background: rgba(255,255,255,.08); color: var(--muted); font-size: 10px; font-weight: 950; letter-spacing: .1em; text-transform: uppercase; }
+.entryTableHead span:last-child { text-align: center; }
+.entryGroup h3 { margin: 0; padding: 10px 16px; border-top: 1px solid rgba(255,255,255,.1); border-bottom: 1px solid rgba(255,255,255,.08); background: rgba(112,191,255,.07); color: #a9dcff; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.entryRow { min-height: 78px; padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,.075); }
+.entryGroup .entryRow:last-child { border-bottom: 0; }
+.entryTopic { display: grid; grid-template-columns: 12px 1fr; align-items: center; gap: 3px 9px; min-width: 0; }
+.entryTopic .colorDot { grid-row: 1 / span 2; }
+.entryTopic strong { overflow: hidden; font-size: 13px; text-overflow: ellipsis; white-space: nowrap; }
+.entryTopic small { color: var(--muted); font-size: 10px; }
+.choiceGrid { display: grid; grid-template-columns: repeat(5, minmax(66px,1fr)); gap: 7px; }
+.choiceGrid button { min-height: 54px; display: grid; place-content: center; gap: 2px; border: 1px solid rgba(255,255,255,.15); border-radius: 10px; background: rgba(255,255,255,.065); color: white; font: inherit; cursor: pointer; transition: .18s ease; }
+.choiceGrid button:hover { border-color: var(--accent); transform: translateY(-2px); }
+.choiceGrid button span { font-size: 14px; font-weight: 950; }
+.choiceGrid button small { max-width: 80px; overflow: hidden; color: var(--muted); font-size: 8px; text-overflow: ellipsis; white-space: nowrap; }
+.choiceGrid .choiceActive { border-color: var(--accent); background: var(--accent); color: #07101e; box-shadow: 0 8px 22px color-mix(in srgb, var(--accent) 25%, transparent); }
+.choiceGrid .choiceActive small { color: rgba(7,16,30,.7); }
 
 .violet { --accent: #aa8cff; }
 .blue { --accent: #67c8ff; }
@@ -57,11 +64,18 @@
 .gold { --accent: #ffd36f; }
 .coral { --accent: #ff8f9d; }
 
-.timeline { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 7px 14px; }
-.hourRow { display: grid; grid-template-columns: 55px minmax(130px,.75fr) minmax(140px,1fr); align-items: center; gap: 8px; padding: 6px; border-radius: 11px; border: 1px solid transparent; }
-.hourRow time { color: rgba(218,231,255,.55); font-size: 12px; font-weight: 900; }
-.hourFilled { border-color: rgba(115,208,255,.18); background: rgba(103,200,255,.07); }
-.hourFilled time { color: #9edfff; }
+.hourForm { display: grid; grid-template-columns: 90px minmax(180px,.7fr) minmax(240px,1.2fr) auto; align-items: end; gap: 10px; margin-bottom: 18px; padding: 14px; border: 1px solid rgba(255,255,255,.12); border-radius: 14px; background: rgba(5,10,28,.3); }
+.hourForm label, .manageRow label { display: grid; gap: 6px; min-width: 0; color: var(--muted); font-size: 10px; font-weight: 850; }
+.hourForm input, .hourForm select, .manageRow input, .goalForm input { min-width: 0; min-height: 38px; border: 1px solid rgba(255,255,255,.16); border-radius: 10px; background: rgba(255,255,255,.08); color: white; padding: 0 10px; font: inherit; font-size: 12px; outline: none; color-scheme: dark; }
+.hourForm > button { min-height: 38px; border: 0; border-radius: 10px; background: linear-gradient(135deg,#9be2ff,#d4b4ff); color: #08101e; padding: 0 14px; font: inherit; font-size: 11px; font-weight: 950; cursor: pointer; }
+.timeline { display: grid; gap: 7px; }
+.hourEntry { display: grid; grid-template-columns: 62px 1fr auto; align-items: center; gap: 12px; min-height: 58px; padding: 8px 10px 8px 14px; border: 1px solid rgba(115,208,255,.14); border-radius: 12px; background: rgba(103,200,255,.055); }
+.hourEntry time { color: #9edfff; font-size: 13px; font-weight: 950; }
+.hourEntry > div { display: grid; gap: 3px; }
+.hourEntry strong { font-size: 12px; }
+.hourEntry span, .emptyHours { color: var(--muted); font-size: 11px; }
+.hourEntry button { min-height: 34px; border: 1px solid rgba(255,143,157,.25); border-radius: 9px; background: rgba(255,143,157,.08); color: #ffb7c1; padding: 0 10px; font: inherit; font-size: 10px; font-weight: 850; cursor: pointer; }
+.emptyHours { margin: 0; padding: 18px; text-align: center; }
 
 .periodSwitch { display: flex; gap: 6px; }
 .periodSwitch .active { border-color: #91dcff; background: #91dcff; color: #07101e; }
@@ -88,15 +102,14 @@
 .goalChartRow small { color: var(--muted); font-size: 10px; }
 
 .manageList { display: grid; gap: 7px; }
-.manageRow { display: grid; grid-template-columns: 12px minmax(190px,1fr) minmax(120px,.55fr) auto; align-items: center; gap: 12px; min-height: 51px; padding: 7px 8px 7px 14px; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; background: rgba(5,10,28,.3); }
+.manageRow { display: grid; grid-template-columns: 9px 24px minmax(95px,.55fr) minmax(180px,1fr) minmax(95px,.5fr) 90px auto; align-items: flex-end; gap: 9px; min-height: 67px; padding: 8px; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; background: rgba(5,10,28,.3); }
 .colorDot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
-.manageRow strong { font-size: 13px; }
-.manageRow small { color: var(--muted); }
-.manageRow > div { display: flex; gap: 5px; }
+.orderNumber { align-self: center; color: var(--muted); font-size: 11px; font-weight: 950; }
+.manageActions { display: flex; gap: 5px; }
 .manageRow button { min-height: 34px; border: 1px solid rgba(255,255,255,.14); border-radius: 8px; background: rgba(255,255,255,.08); color: white; padding: 0 10px; font: inherit; font-size: 11px; font-weight: 850; cursor: pointer; }
 .manageRow button:disabled { opacity: .3; cursor: default; }
 .manageRow .deleteButton { color: #ffb7c1; }
-.goalForm { display: grid; grid-template-columns: minmax(180px,1fr) minmax(130px,.6fr) 100px 170px auto; gap: 10px; align-items: end; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.12); }
+.goalForm { display: grid; grid-template-columns: minmax(170px,1fr) minmax(110px,.55fr) minmax(110px,.55fr) 90px 150px auto; gap: 10px; align-items: end; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.12); }
 .goalForm label { display: grid; gap: 6px; color: var(--muted); font-size: 11px; font-weight: 850; }
 .swatches { display: grid; grid-template-columns: repeat(5,1fr); gap: 6px; }
 .swatches button { min-height: 38px; border: 1px solid rgba(255,255,255,.18); border-radius: 9px; background: var(--accent); cursor: pointer; }
@@ -106,7 +119,10 @@
 .footer a { color: white; }
 
 @media (max-width: 900px) {
-  .goalGrid, .timeline { grid-template-columns: 1fr; }
+  .hourForm { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .hourForm > button { min-height: 44px; }
+  .manageRow { grid-template-columns: 9px 24px repeat(2, minmax(0,1fr)); }
+  .manageActions { grid-column: 3 / -1; }
   .goalForm { grid-template-columns: repeat(2, 1fr); }
   .addButton { min-height: 44px; }
 }
@@ -122,16 +138,18 @@
   .dateBar input { width: 138px; }
   .sectionHead { display: grid; }
   .sectionHead > p { text-align: left; }
-  .goalCard { grid-template-columns: 28px 1fr; padding: 12px; }
-  .amountRow { grid-template-columns: 64px 1fr; }
-  .amountRow button { grid-column: 1 / -1; }
-  .hourRow { grid-template-columns: 48px 1fr; }
-  .hourRow input { grid-column: 2; }
+  .entryTableHead, .entryGroup { min-width: 640px; }
+  .entryTableHead, .entryRow { grid-template-columns: 190px 1fr; }
+  .choiceGrid { grid-template-columns: repeat(5, minmax(70px,1fr)); }
+  .hourForm { grid-template-columns: 1fr; }
+  .hourEntry { grid-template-columns: 52px 1fr; }
+  .hourEntry button { grid-column: 2; justify-self: start; }
   .goalChartRow { grid-template-columns: minmax(130px,1fr) 70px; }
   .goalChartRow > div { grid-column: 1 / -1; grid-row: 2; }
   .goalChartRow small { text-align: right; }
-  .manageRow { grid-template-columns: 12px 1fr; }
-  .manageRow small, .manageRow > div { grid-column: 2; }
+  .manageRow { grid-template-columns: 9px 22px 1fr; }
+  .manageRow label { grid-column: 3; }
+  .manageActions { grid-column: 3; flex-wrap: wrap; }
   .goalForm { grid-template-columns: 1fr; }
   .dayChart { gap: 5px; }
 }

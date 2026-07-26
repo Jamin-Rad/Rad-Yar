@@ -6,19 +6,18 @@ import styles from './tagesplan.module.css'
 
 const STORAGE_KEY = 'mobin_tagesplan_v1'
 const COLORS = ['violet', 'blue', 'mint', 'gold', 'coral']
-const HOURS = Array.from({ length: 24 }, (_, hour) => hour)
 const STARTER_GOALS = [
-  ['Programmieren üben (Python)', 'Minuten', 30, 'violet'],
-  ['Englisch mit Duolingo lernen', 'Lektion', 1, 'blue'],
-  ['App mit Swift machen', 'Minuten', 30, 'mint'],
-  ['Fahrrad fahren', 'Minuten', 30, 'gold'],
-  ['Liegestütze', 'Wiederholungen', 20, 'coral'],
-  ['Klimmzüge', 'Wiederholungen', 5, 'violet'],
-  ['Schach', 'Partie', 1, 'blue'],
-  ['Buch lesen', 'Seiten', 10, 'mint'],
-  ['Neuronation', 'Training', 1, 'gold'],
-  ['Matheolympiade üben', 'Minuten', 30, 'coral'],
-  ['Mathe-Video machen', 'Minuten', 30, 'violet'],
+  ['Programmieren üben (Python)', 'Lernen', 'Minuten', 30, 'violet'],
+  ['Englisch mit Duolingo lernen', 'Sprachen', 'Lektionen', 5, 'blue'],
+  ['App mit Swift machen', 'Projekte', 'Minuten', 30, 'mint'],
+  ['Fahrrad fahren', 'Sport', 'Minuten', 30, 'gold'],
+  ['Liegestütze', 'Sport', 'Wiederholungen', 20, 'coral'],
+  ['Klimmzüge', 'Sport', 'Wiederholungen', 5, 'violet'],
+  ['Schach', 'Denken', 'Partien', 5, 'blue'],
+  ['Buch lesen', 'Lernen', 'Seiten', 10, 'mint'],
+  ['Neuronation', 'Denken', 'Übungen', 5, 'gold'],
+  ['Matheolympiade üben', 'Mathematik', 'Minuten', 30, 'coral'],
+  ['Mathe-Video machen', 'Projekte', 'Minuten', 30, 'violet'],
 ]
 
 function dateKey(date = new Date()) {
@@ -39,13 +38,22 @@ function makeId() {
 }
 
 function starterGoals() {
-  return STARTER_GOALS.map(([title, unit, target, color], index) => ({
+  return STARTER_GOALS.map(([title, group, unit, target, color], index) => ({
     id: `starter-${index + 1}`,
     title,
+    group,
     unit,
     target,
     color,
   }))
+}
+
+function normalizeGoals(goals) {
+  const defaults = starterGoals()
+  return goals.map(goal => {
+    const fallback = defaults.find(item => item.id === goal.id || item.title === goal.title)
+    return { ...goal, group: goal.group || fallback?.group || 'Ohne Gruppe' }
+  })
 }
 
 function formatNumber(value) {
@@ -69,12 +77,13 @@ export default function TagesplanClient() {
   const [selectedDate, setSelectedDate] = useState(() => dateKey())
   const [period, setPeriod] = useState(7)
   const [loaded, setLoaded] = useState(false)
-  const [form, setForm] = useState({ title: '', unit: 'Minuten', target: 30, color: 'violet' })
+  const [form, setForm] = useState({ title: '', group: 'Lernen', unit: 'Minuten', target: 30, color: 'violet' })
+  const [hourForm, setHourForm] = useState({ hour: '16', goalId: '', note: '' })
 
   useEffect(() => {
     try {
       const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null')
-      setGoals(Array.isArray(stored?.goals) && stored.goals.length ? stored.goals : starterGoals())
+      setGoals(Array.isArray(stored?.goals) && stored.goals.length ? normalizeGoals(stored.goals) : starterGoals())
       setEntries(stored?.entries && typeof stored.entries === 'object' ? stored.entries : {})
       setHourLogs(stored?.hourLogs && typeof stored.hourLogs === 'object' ? stored.hourLogs : {})
     } catch {
@@ -90,6 +99,13 @@ export default function TagesplanClient() {
 
   const todayEntries = entries[selectedDate] || {}
   const todayHours = hourLogs[selectedDate] || {}
+
+  const groupedGoals = useMemo(() => goals.reduce((groups, goal) => {
+    const group = goal.group?.trim() || 'Ohne Gruppe'
+    if (!groups[group]) groups[group] = []
+    groups[group].push(goal)
+    return groups
+  }, {}), [goals])
 
   const summary = useMemo(() => {
     const values = goals.map(goal => percent(todayEntries[goal.id], goal.target))
@@ -124,14 +140,25 @@ export default function TagesplanClient() {
     }))
   }
 
-  function updateHour(hour, field, value) {
+  function saveHour(event) {
+    event.preventDefault()
+    const hour = String(Math.max(0, Math.min(23, Number(hourForm.hour) || 0))).padStart(2, '0')
     setHourLogs(previous => ({
       ...previous,
       [selectedDate]: {
         ...(previous[selectedDate] || {}),
-        [hour]: { ...(previous[selectedDate]?.[hour] || {}), [field]: value },
+        [hour]: { goalId: hourForm.goalId, note: hourForm.note.trim() },
       },
     }))
+    setHourForm(previous => ({ ...previous, note: '' }))
+  }
+
+  function deleteHour(hour) {
+    setHourLogs(previous => {
+      const day = { ...(previous[selectedDate] || {}) }
+      delete day[hour]
+      return { ...previous, [selectedDate]: day }
+    })
   }
 
   function addGoal(event) {
@@ -140,11 +167,18 @@ export default function TagesplanClient() {
     setGoals(previous => [...previous, {
       id: makeId(),
       title: form.title.trim(),
+      group: form.group.trim() || 'Ohne Gruppe',
       unit: form.unit.trim() || 'Einheit',
       target: Math.max(0.1, Number(form.target) || 1),
       color: form.color,
     }])
     setForm(previous => ({ ...previous, title: '' }))
+  }
+
+  function updateGoal(goalId, field, value) {
+    setGoals(previous => previous.map(goal => goal.id === goalId
+      ? { ...goal, [field]: field === 'target' ? Math.max(0.1, Number(value) || 0.1) : value }
+      : goal))
   }
 
   function moveGoal(index, direction) {
@@ -175,7 +209,7 @@ export default function TagesplanClient() {
             <a href="#heute">Heute</a>
             <a href="#stunden">Stundenplan</a>
             <a href="#verlauf">Verlauf</a>
-            <a href="#ziele">Ziele ordnen</a>
+            <a href="#ziele">Einstellungen</a>
           </nav>
         </header>
 
@@ -203,23 +237,46 @@ export default function TagesplanClient() {
             <div><span className={styles.eyebrow}>Eintragen</span><h2>Meine Ziele</h2></div>
             <p>Trage ein, wie viel du heute geschafft hast.</p>
           </div>
-          <div className={styles.goalGrid}>
-            {goals.map((goal, index) => {
-              const amount = Number(todayEntries[goal.id]) || 0
-              const score = percent(amount, goal.target)
-              return (
-                <article className={`${styles.goalCard} ${styles[goal.color]}`} key={goal.id}>
-                  <div className={styles.goalNumber}>{String(index + 1).padStart(2, '0')}</div>
-                  <div className={styles.goalTitle}><h3>{goal.title}</h3><span>{score}%</span></div>
-                  <div className={styles.progress}><i style={{ width: `${score}%` }} /></div>
-                  <div className={styles.amountRow}>
-                    <input type="number" min="0" step="0.5" value={amount || ''} placeholder="0" onChange={event => setAmount(goal.id, event.target.value)} />
-                    <span>von {formatNumber(goal.target)} {goal.unit}</span>
-                    <button type="button" onClick={() => setAmount(goal.id, goal.target)}>Ziel ✓</button>
-                  </div>
-                </article>
-              )
-            })}
+          <div className={styles.entryTable}>
+            <div className={styles.entryTableHead}>
+              <span>Thema</span>
+              <span>Meine Menge</span>
+            </div>
+            {Object.entries(groupedGoals).map(([group, groupGoals]) => (
+              <div className={styles.entryGroup} key={group}>
+                <h3>{group}</h3>
+                {groupGoals.map(goal => {
+                  const amount = Number(todayEntries[goal.id]) || 0
+                  return (
+                    <div className={`${styles.entryRow} ${styles[goal.color]}`} key={goal.id}>
+                      <div className={styles.entryTopic}>
+                        <span className={styles.colorDot} />
+                        <strong>{goal.title}</strong>
+                        <small>Ziel: {formatNumber(goal.target)} {goal.unit}</small>
+                      </div>
+                      <div className={styles.choiceGrid}>
+                        {[1, 2, 3, 4, 5].map(level => {
+                          const choiceAmount = (Number(goal.target) * level) / 5
+                          const active = amount >= choiceAmount
+                          return (
+                            <button
+                              className={active ? styles.choiceActive : ''}
+                              type="button"
+                              onClick={() => setAmount(goal.id, Math.abs(amount - choiceAmount) < 0.001 ? 0 : choiceAmount)}
+                              aria-label={`${formatNumber(choiceAmount)} ${goal.unit} für ${goal.title}`}
+                              key={level}
+                            >
+                              <span>{formatNumber(choiceAmount)}</span>
+                              <small>{goal.unit}</small>
+                            </button>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            ))}
           </div>
         </section>
 
@@ -228,20 +285,27 @@ export default function TagesplanClient() {
             <div><span className={styles.eyebrow}>Stündlich</span><h2>Was habe ich gemacht?</h2></div>
             <p>Wähle ein Ziel und schreibe eine kurze Notiz.</p>
           </div>
+          <form className={styles.hourForm} onSubmit={saveHour}>
+            <label>Uhrzeit<input type="number" min="0" max="23" value={hourForm.hour} onChange={event => setHourForm({ ...hourForm, hour: event.target.value })} /></label>
+            <label>Thema<select value={hourForm.goalId} onChange={event => setHourForm({ ...hourForm, goalId: event.target.value })}>
+              <option value="">Sonstiges</option>
+              {goals.map(goal => <option value={goal.id} key={goal.id}>{goal.title}</option>)}
+            </select></label>
+            <label>Was habe ich gemacht?<input value={hourForm.note} onChange={event => setHourForm({ ...hourForm, note: event.target.value })} placeholder="z.B. Python-Schleifen geübt" /></label>
+            <button type="submit">+ Stunde eintragen</button>
+          </form>
           <div className={styles.timeline}>
-            {HOURS.map(hour => {
-              const log = todayHours[hour] || {}
+            {Object.entries(todayHours).sort(([a], [b]) => Number(a) - Number(b)).map(([hour, log]) => {
+              const goal = goals.find(item => item.id === log.goalId)
               return (
-                <div className={`${styles.hourRow} ${log.note || log.goalId ? styles.hourFilled : ''}`} key={hour}>
+                <div className={styles.hourEntry} key={hour}>
                   <time>{String(hour).padStart(2, '0')}:00</time>
-                  <select value={log.goalId || ''} onChange={event => updateHour(hour, 'goalId', event.target.value)} aria-label={`Ziel um ${hour} Uhr`}>
-                    <option value="">Kein Ziel gewählt</option>
-                    {goals.map(goal => <option value={goal.id} key={goal.id}>{goal.title}</option>)}
-                  </select>
-                  <input value={log.note || ''} onChange={event => updateHour(hour, 'note', event.target.value)} placeholder="Was hast du gemacht?" aria-label={`Notiz um ${hour} Uhr`} />
+                  <div><strong>{goal?.title || 'Sonstiges'}</strong><span>{log.note || 'Keine Notiz'}</span></div>
+                  <button type="button" onClick={() => deleteHour(hour)}>Löschen</button>
                 </div>
               )
             })}
+            {!Object.keys(todayHours).length && <p className={styles.emptyHours}>Noch keine Stunde eingetragen.</p>}
           </div>
         </section>
 
@@ -283,16 +347,19 @@ export default function TagesplanClient() {
 
         <section className={styles.panel} id="ziele">
           <div className={styles.sectionHead}>
-            <div><span className={styles.eyebrow}>Prioritäten</span><h2>Ziele ordnen</h2></div>
-            <p>Die Reihenfolge wird überall übernommen.</p>
+            <div><span className={styles.eyebrow}>Ziele & Gruppen</span><h2>Einstellungen</h2></div>
+            <p>Definiere Gruppe, Thema, Einheit und Tagesziel.</p>
           </div>
           <div className={styles.manageList}>
             {goals.map((goal, index) => (
-              <div className={styles.manageRow} key={goal.id}>
+              <div className={`${styles.manageRow} ${styles[goal.color]}`} key={goal.id}>
                 <span className={`${styles.colorDot} ${styles[goal.color]}`} />
-                <strong>{index + 1}. {goal.title}</strong>
-                <small>{formatNumber(goal.target)} {goal.unit} pro Tag</small>
-                <div>
+                <span className={styles.orderNumber}>{index + 1}</span>
+                <label>Gruppe<input value={goal.group || ''} onChange={event => updateGoal(goal.id, 'group', event.target.value)} /></label>
+                <label>Thema<input value={goal.title} onChange={event => updateGoal(goal.id, 'title', event.target.value)} /></label>
+                <label>Einheit<input value={goal.unit} onChange={event => updateGoal(goal.id, 'unit', event.target.value)} /></label>
+                <label>Tagesziel<input type="number" min="0.1" step="0.5" value={goal.target} onChange={event => updateGoal(goal.id, 'target', event.target.value)} /></label>
+                <div className={styles.manageActions}>
                   <button type="button" onClick={() => moveGoal(index, -1)} disabled={index === 0} aria-label={`${goal.title} nach oben`}>↑</button>
                   <button type="button" onClick={() => moveGoal(index, 1)} disabled={index === goals.length - 1} aria-label={`${goal.title} nach unten`}>↓</button>
                   <button className={styles.deleteButton} type="button" onClick={() => removeGoal(goal.id)}>Löschen</button>
@@ -303,6 +370,7 @@ export default function TagesplanClient() {
 
           <form className={styles.goalForm} onSubmit={addGoal}>
             <label>Ziel<input value={form.title} onChange={event => setForm({ ...form, title: event.target.value })} placeholder="Neues Ziel" required /></label>
+            <label>Gruppe<input value={form.group} onChange={event => setForm({ ...form, group: event.target.value })} placeholder="z.B. Sport" /></label>
             <label>Einheit<input value={form.unit} onChange={event => setForm({ ...form, unit: event.target.value })} placeholder="Minuten, Seiten …" /></label>
             <label>Pro Tag<input type="number" min="0.1" step="0.5" value={form.target} onChange={event => setForm({ ...form, target: event.target.value })} /></label>
             <div className={styles.swatches}>{COLORS.map(color => <button className={`${styles[color]} ${form.color === color ? styles.selected : ''}`} type="button" onClick={() => setForm({ ...form, color })} aria-label={`Farbe ${color}`} key={color} />)}</div>
