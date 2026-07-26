@@ -72,6 +72,15 @@ function dayPercent(logs, day) {
   return Math.round((completedCount(logs, day) / TOTAL_GOAL_STEPS) * 100)
 }
 
+function limitDayPercent(logs, day) {
+  const daily = logs[day] || {}
+  const used = LIMIT_ROUTINES.reduce((total, routine) => {
+    const entries = Array.isArray(daily[routine.id]) ? daily[routine.id] : []
+    return total + entries.slice(0, routine.count).filter(Boolean).length
+  }, 0)
+  return Math.round((used / TOTAL_LIMIT_STEPS) * 100)
+}
+
 function formatTimer(seconds) {
   const safeSeconds = Math.max(0, Number(seconds) || 0)
   return `${String(Math.floor(safeSeconds / 60)).padStart(2, '0')}:${String(safeSeconds % 60).padStart(2, '0')}`
@@ -409,30 +418,38 @@ export default function MobinaRoutine() {
               <button type="button" onClick={() => setShownMonth(value => shiftMonth(value, 1))} disabled={shownMonth >= monthKey(today)} aria-label="Nächster Monat">➡️</button>
             </div>
           </header>
-          <div className={styles.calendar}>
-            {WEEKDAYS.map((day, index) => <span className={styles.weekday} aria-label={day} role="img" key={day}>{WEEKDAY_ICONS[index]}</span>)}
-            {days.map((day, index) => {
-              const percent = day ? dayPercent(logs, day) : 0
-              const stars = Math.min(3, Math.ceil(percent / 34))
-              const dayPicture = percent === 100 ? '🏆' : percent >= 67 ? '🌈' : percent > 0 ? '🌱' : '☁️'
-              return (
-                <div
-                  className={`${styles.calendarDay} ${!day ? styles.emptyDay : ''} ${day === today ? styles.today : ''} ${day > today ? styles.futureDay : ''} ${percent === 100 ? styles.perfectDay : ''}`}
-                  key={day || `empty-${index}`}
-                  aria-label={day ? `${day}: ${percent} Prozent geschafft` : undefined}
-                >
-                  {day && <>
-                    <strong>{Number(day.slice(-2))}</strong>
-                    <span className={styles.dayPicture} aria-hidden="true">{dayPicture}</span>
-                    <span className={styles.starTrail} aria-hidden="true">
-                      {[0, 1, 2].map(star => <i className={star < stars ? styles.starEarned : ''} key={star}>★</i>)}
-                    </span>
-                  </>}
-                </div>
-              )
-            })}
+          <div className={styles.historyLegend}>
+            <span>⭐ <strong>Erledigt</strong></span>
+            <span>📺📱 <strong>Genutzt</strong></span>
           </div>
-          <div className={styles.historyHint} aria-hidden="true">🌱 ✨ 🌈 ✨ 🏆</div>
+          <div className={styles.calendarViewport}>
+            <div className={styles.calendar}>
+              {WEEKDAYS.map((day, index) => <span className={styles.weekday} aria-label={day} role="img" key={day}>{WEEKDAY_ICONS[index]}</span>)}
+              {days.map((day, index) => {
+                const goalPercent = day ? dayPercent(logs, day) : 0
+                const screenPercent = day ? limitDayPercent(logs, day) : 0
+                return (
+                  <div
+                    className={`${styles.calendarDay} ${!day ? styles.emptyDay : ''} ${day === today ? styles.today : ''} ${day > today ? styles.futureDay : ''} ${goalPercent === 100 ? styles.perfectDay : ''}`}
+                    key={day || `empty-${index}`}
+                    aria-label={day ? `${day}: ${goalPercent} Prozent erledigt, ${screenPercent} Prozent Bildschirmzeit genutzt` : undefined}
+                  >
+                    {day && <>
+                      <strong className={styles.dayNumber}>{Number(day.slice(-2))}</strong>
+                      <div className={`${styles.dayMetric} ${styles.goalMetric}`}>
+                        <span aria-hidden="true">⭐</span><b>{goalPercent}%</b>
+                        <i><em style={{ width: `${goalPercent}%` }} /></i>
+                      </div>
+                      <div className={`${styles.dayMetric} ${styles.screenMetric}`}>
+                        <span aria-hidden="true">📱</span><b>{screenPercent}%</b>
+                        <i><em style={{ width: `${screenPercent}%` }} /></i>
+                      </div>
+                    </>}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
         </section>
       </div>
     </main>

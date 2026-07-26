@@ -346,20 +346,25 @@
 .monthControls button { min-width: 58px; min-height: 54px; border: 3px solid rgba(255,255,255,.88); border-radius: 19px; background: linear-gradient(145deg, #ffe5f3, #e7f7ff); box-shadow: 0 8px 20px rgba(79,70,137,.1); font-size: 23px; padding: 0 12px; }
 .monthControls button:disabled { cursor: not-allowed; opacity: .35; }
 
-.calendar { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 9px; position: relative; z-index: 1; margin-top: 24px; }
+.historyLegend { display: flex; flex-wrap: wrap; gap: 9px; position: relative; z-index: 1; margin-top: 20px; }
+.historyLegend span { min-height: 43px; display: inline-flex; align-items: center; gap: 7px; border: 3px solid rgba(255,255,255,.9); border-radius: 16px; background: rgba(255,255,255,.72); color: #4d5689; font-size: 16px; padding: 0 13px; }
+.historyLegend strong { font-size: 11px; }
+.calendarViewport { position: relative; z-index: 1; overflow-x: auto; margin: 14px -4px 0; padding: 4px 4px 13px; scrollbar-color: #ed77b4 rgba(255,255,255,.55); scrollbar-width: thin; }
+.calendar { min-width: 760px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 9px; }
 .weekday { min-height: 34px; display: grid; place-items: center; border-radius: 999px; background: rgba(255,255,255,.6); font-size: clamp(17px, 2.5vw, 24px); text-align: center; }
-.calendarDay { min-width: 0; min-height: 112px; display: grid; grid-template-rows: auto 1fr auto; justify-items: center; gap: 5px; border: 3px solid rgba(255,255,255,.92); border-radius: 22px 28px 20px 30px; background: rgba(255,255,255,.72); box-shadow: 0 8px 18px rgba(79,70,137,.07); color: #485286; font: inherit; padding: 8px; }
-.calendarDay strong { width: 27px; height: 27px; display: grid; place-items: center; justify-self: start; border-radius: 50%; background: #f6edfb; color: #776c9a; font-size: 11px; }
-.dayPicture { display: grid; place-items: center; font-size: clamp(24px, 4vw, 37px); line-height: 1; filter: drop-shadow(0 5px 7px rgba(67,62,122,.1)); }
-.starTrail { display: flex; justify-content: center; gap: 2px; }
-.starTrail i { color: #e5ddeb; font-size: clamp(9px, 1.5vw, 14px); font-style: normal; }
-.starTrail .starEarned { color: #ffc83d; filter: drop-shadow(0 2px 2px rgba(237,164,26,.2)); }
+.calendarDay { min-width: 0; min-height: 137px; display: grid; align-content: start; gap: 9px; border: 3px solid rgba(255,255,255,.92); border-radius: 22px 28px 20px 30px; background: rgba(255,255,255,.78); box-shadow: 0 8px 18px rgba(79,70,137,.07); color: #485286; padding: 9px; }
+.dayNumber { width: 29px; height: 29px; display: grid; place-items: center; border-radius: 50%; background: #f6edfb; color: #776c9a; font-size: 11px; }
+.dayMetric { display: grid; grid-template-columns: 22px 1fr; align-items: center; gap: 5px; }
+.dayMetric > span { grid-row: 1 / 3; font-size: 17px; }
+.dayMetric b { color: #5d6492; font-size: 11px; text-align: right; }
+.dayMetric i { height: 7px; overflow: hidden; border-radius: 999px; background: #eee5f3; }
+.dayMetric em { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #ff6bae, #ffc859); }
+.screenMetric em { background: linear-gradient(90deg, #59c5ef, #7887e7); }
 .emptyDay { visibility: hidden; }
 .today { box-shadow: inset 0 0 0 3px #65c7f7, 0 8px 18px rgba(79,70,137,.07); }
 .futureDay { opacity: .3; }
 .perfectDay { background: linear-gradient(145deg, #fff0f8, #e6f8ff); }
-.perfectDay strong { background: linear-gradient(145deg, #ff64ad, #65c7f7); color: #fff; }
-.historyHint { position: relative; z-index: 1; margin-top: 18px; font-size: clamp(25px, 5vw, 44px); letter-spacing: .14em; text-align: center; }
+.perfectDay .dayNumber { background: linear-gradient(145deg, #ff64ad, #65c7f7); color: #fff; }
 
 @keyframes drift {
   0%, 100% { transform: translateY(0) rotate(0); }
@@ -392,10 +397,9 @@
   .routineGroups { grid-template-columns: 1fr; }
   .routineGrid { grid-template-columns: 1fr; }
   .limitGroup .routineGrid { grid-template-columns: 1fr; }
-  .calendar { gap: 4px; }
-  .calendarDay { min-height: 82px; gap: 3px; border-radius: 15px 19px 14px 20px; padding: 4px; }
-  .calendarDay strong { width: 21px; height: 21px; font-size: 9px; }
-  .weekday { min-height: 28px; font-size: 16px; }
+  .calendar { gap: 7px; }
+  .calendarDay { min-height: 132px; border-radius: 17px 21px 16px 22px; padding: 8px; }
+  .weekday { min-height: 30px; font-size: 17px; }
 }
 
 @media (max-width: 480px) {
@@ -426,9 +430,7 @@
   .historyHeader { align-items: flex-start; flex-direction: column; }
   .monthControls { width: 100%; }
   .monthControls button { flex: 1; }
-  .calendarDay { min-height: 74px; padding: 3px; }
-  .dayPicture { font-size: 22px; }
-  .starTrail i { font-size: 8px; }
+  .calendarViewport { margin-inline: -10px; padding-inline: 10px; }
   .celebration > span { font-size: 31px; letter-spacing: .04em; }
 }
 
