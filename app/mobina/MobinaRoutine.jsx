@@ -24,10 +24,10 @@ const ROUTINES = [
 const GOAL_ROUTINES = ROUTINES.filter(routine => routine.kind === 'goal')
 const ROUTINE_BY_ID = Object.fromEntries(ROUTINES.map(routine => [routine.id, routine]))
 const ROUTINE_GROUPS = [
-  { id: 'learning', label: 'Lernen', icon: '🧠', friends: '📚 🔤 ⭐', routines: ['vorschulbuch', 'anton', 'lesen'].map(id => ROUTINE_BY_ID[id]) },
-  { id: 'creative', label: 'Kreativ und Spielen', icon: '🎨', friends: '✂️ 🧸 🌈', routines: ['malen', 'basteln', 'spielzeuge'].map(id => ROUTINE_BY_ID[id]) },
-  { id: 'bodymind', label: 'Körper und Kopf', icon: '⚡', friends: '🤸‍♀️ ♟️ ⭐', routines: ['sport', 'schach'].map(id => ROUTINE_BY_ID[id]) },
-  { id: 'limits', label: 'Bildschirmzeit', icon: '🛑', friends: '📺 🎮 🫧', routines: ['fernsehen', 'tablet'].map(id => ROUTINE_BY_ID[id]) },
+  { id: 'learning', label: 'Lernen', routines: ['vorschulbuch', 'anton', 'lesen'].map(id => ROUTINE_BY_ID[id]) },
+  { id: 'creative', label: 'Kreativ und Spielen', routines: ['malen', 'basteln', 'spielzeuge'].map(id => ROUTINE_BY_ID[id]) },
+  { id: 'bodymind', label: 'Körper und Kopf', routines: ['sport', 'schach'].map(id => ROUTINE_BY_ID[id]) },
+  { id: 'limits', label: 'Bildschirmzeit', routines: ['fernsehen', 'tablet'].map(id => ROUTINE_BY_ID[id]) },
 ]
 const TOTAL_GOAL_STEPS = GOAL_ROUTINES.reduce((sum, routine) => sum + routine.count, 0)
 
@@ -168,7 +168,6 @@ export default function MobinaRoutine() {
 
   useEffect(() => {
     if (!timer?.running || timer.remaining !== 0) return
-    markNextStepDone(timer.routineId, timer.date)
     setTimer(previous => previous ? { ...previous, running: false, finished: true } : null)
   }, [timer?.remaining, timer?.running])
 
@@ -275,6 +274,7 @@ export default function MobinaRoutine() {
   function handleTimerTap() {
     if (timer?.finished) {
       audioContextRef.current?.suspend().catch(() => {})
+      markNextStepDone(timer.routineId, timer.date)
       setTimer(null)
       return
     }
@@ -323,10 +323,6 @@ export default function MobinaRoutine() {
           <div className={styles.activityGroups} aria-label="Aktivität auswählen">
             {ROUTINE_GROUPS.map(group => (
               <div className={`${styles.activityGroup} ${group.id === 'limits' ? styles.activityLimits : ''}`} key={group.id}>
-                <div className={styles.groupHeader} aria-label={group.label}>
-                  <span className={styles.groupBadge}>{group.icon}</span>
-                  <span className={styles.groupFriends} aria-hidden="true">{group.friends}</span>
-                </div>
                 <div className={styles.activityPicker}>
                   {group.routines.map(routine => (
                     <button
@@ -367,10 +363,6 @@ export default function MobinaRoutine() {
         <section className={styles.routineGroups} aria-label="Tägliche Routinen">
           {ROUTINE_GROUPS.map(group => (
             <section className={`${styles.routineGroup} ${group.id === 'limits' ? styles.limitGroup : ''}`} aria-label={group.label} key={group.id}>
-              <div className={styles.groupBanner}>
-                <span className={styles.groupBadge} aria-hidden="true">{group.icon}</span>
-                <span className={styles.groupFriends} aria-hidden="true">{group.friends}</span>
-              </div>
               <div className={styles.routineGrid}>
                 {group.routines.map(routine => {
                   const steps = Array.from({ length: routine.count }, (_, index) => Boolean(logs[today]?.[routine.id]?.[index]))

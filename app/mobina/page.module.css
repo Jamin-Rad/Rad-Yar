@@ -197,22 +197,10 @@
 
 .routineGroups { display: grid; gap: 22px; margin-top: 18px; }
 .routineGroup { position: relative; overflow: hidden; padding: clamp(18px, 3vw, 28px); border: 4px solid rgba(255,255,255,.9); border-radius: 42px 32px 44px 34px; background: radial-gradient(circle at 90% 5%, rgba(255,255,255,.86), transparent 22%), linear-gradient(145deg, rgba(255,224,242,.84), rgba(238,246,255,.8)); box-shadow: 0 22px 52px rgba(82,71,140,.11), inset 0 0 0 5px rgba(255,115,184,.06); }
-.routineGroup::after { content: '✦  •  ✦'; position: absolute; right: 24px; top: 17px; color: rgba(229,75,154,.2); font-size: 28px; letter-spacing: .18em; pointer-events: none; }
 .routineGroup:nth-child(2) { background: radial-gradient(circle at 90% 5%, rgba(255,255,255,.86), transparent 22%), linear-gradient(145deg, rgba(255,241,210,.9), rgba(255,226,243,.82)); }
 .routineGroup:nth-child(3) { background: radial-gradient(circle at 90% 5%, rgba(255,255,255,.86), transparent 22%), linear-gradient(145deg, rgba(238,229,255,.9), rgba(225,247,255,.82)); }
 .limitGroup { border: 4px dashed rgba(82,178,229,.32); border-radius: 34px 44px 32px 42px; background: radial-gradient(circle at 8% 8%, rgba(255,255,255,.9), transparent 24%), linear-gradient(145deg, rgba(220,246,255,.9), rgba(242,237,255,.85)); box-shadow: 0 22px 52px rgba(70,126,177,.1), inset 0 0 0 5px rgba(77,187,235,.06); }
-.limitGroup::after { content: '○  ◌  ○'; color: rgba(40,159,215,.2); }
-.groupBanner,
-.groupHeader { display: flex; align-items: center; gap: 12px; }
-.groupBadge { width: 64px; height: 64px; display: grid; flex: 0 0 auto; place-items: center; border: 4px solid #fff; border-radius: 22px 29px 23px 28px; background: linear-gradient(145deg, #ff81bf, #f5a3d2); box-shadow: 0 11px 25px rgba(224,74,151,.2); font-size: 32px; transform: rotate(-5deg); }
-.groupFriends { font-size: clamp(24px, 4vw, 39px); letter-spacing: .1em; white-space: nowrap; }
-.limitGroup .groupBadge,
-.activityLimits .groupBadge { border-radius: 50%; background: linear-gradient(145deg, #7ed8fb, #9ea8f2); box-shadow: 0 11px 25px rgba(63,154,207,.2); transform: rotate(4deg); }
-.routineGroup:nth-child(2) .groupBadge,
-.activityGroup:nth-child(2) .groupBadge { background: linear-gradient(145deg, #ffc55f, #ff8fbd); box-shadow: 0 11px 25px rgba(226,137,64,.2); }
-.routineGroup:nth-child(3) .groupBadge,
-.activityGroup:nth-child(3) .groupBadge { background: linear-gradient(145deg, #ad8df4, #6cccf4); box-shadow: 0 11px 25px rgba(96,106,204,.2); }
-.routineGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 16px; margin-top: 16px; }
+.routineGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 16px; }
 .limitGroup .routineGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .limitGroup .stepList { grid-template-columns: repeat(2, 96px); }
 
@@ -302,9 +290,6 @@
 .activityLimits { border: 3px dashed rgba(74,180,230,.3); border-radius: 24px 31px 23px 30px; background: linear-gradient(145deg, rgba(224,247,255,.86), rgba(248,244,255,.7)); box-shadow: inset 0 0 0 4px rgba(69,184,235,.05); }
 .activityGroup:nth-child(2) { background: linear-gradient(145deg, rgba(255,243,218,.88), rgba(255,235,247,.72)); }
 .activityGroup:nth-child(3) { background: linear-gradient(145deg, rgba(238,232,255,.86), rgba(232,249,255,.72)); }
-.activityGroup .groupHeader { margin-bottom: 10px; }
-.activityGroup .groupBadge { width: 44px; height: 44px; border-width: 3px; border-radius: 15px 20px 16px 19px; font-size: 22px; }
-.activityGroup .groupFriends { overflow: hidden; font-size: 22px; text-overflow: clip; }
 .activityPicker { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
 .activityPicker button { aspect-ratio: 1; border: 3px solid rgba(255,255,255,.9); border-radius: 24px; background: rgba(255,255,255,.72); box-shadow: 0 10px 22px rgba(80,69,141,.1); cursor: pointer; transition: transform .16s ease, background .16s ease; }
 .activityPicker button:hover { transform: translateY(-3px) rotate(2deg); }
@@ -398,8 +383,6 @@
   .activityGroups { gap: 9px; }
   .activityGroups { grid-template-columns: 1fr; }
   .activityGroup { padding: 7px; border-radius: 20px; }
-  .activityGroup .groupBadge { width: 36px; height: 36px; font-size: 18px; }
-  .activityGroup .groupFriends { font-size: 17px; }
   .activityPicker { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
   .routineGroups { grid-template-columns: 1fr; }
   .routineGrid { grid-template-columns: 1fr; }
@@ -420,8 +403,6 @@
   .progressOrb strong { font-size: 22px; }
   .progressOrb span { margin: 0; }
   .routineGroup { padding: 14px; border-radius: 29px 23px 31px 25px; }
-  .groupBadge { width: 54px; height: 54px; font-size: 27px; }
-  .groupFriends { font-size: 23px; }
   .routineCard { padding: 15px; border-radius: 23px; }
   .routineIcon { width: 62px; height: 62px; border-radius: 21px; font-size: 32px; }
   .routineCard h3 { font-size: 23px; }
