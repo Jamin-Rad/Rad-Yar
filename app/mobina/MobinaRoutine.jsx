@@ -164,6 +164,9 @@ export default function MobinaRoutine() {
     return entries.slice(0, routine.count).filter(Boolean).length === routine.count
   }).length
   const selectedTimerRoutine = ROUTINES.find(routine => routine.id === timerRoutineId) || ROUTINES[0]
+  const displayedTimerRoutine = timer
+    ? ROUTINES.find(routine => routine.id === timer.routineId) || selectedTimerRoutine
+    : selectedTimerRoutine
   const timerDisplaySeconds = timer ? timer.remaining : timerMinutes * 60
   const timerProgress = timer ? (timer.remaining / timer.total) * 360 : 360
 
@@ -277,50 +280,50 @@ export default function MobinaRoutine() {
 
         <section className={styles.hero}>
           <div className={styles.heroCopy}>
-            <span className={styles.kicker}>Meine täglichen Abenteuer</span>
-            <h1>Hallo, Mobina!</h1>
-            <p>Jedes Häkchen ist ein kleiner Sieg. Du schaffst das!</p>
+            <span className={styles.heroStars} aria-hidden="true">🌈 ✨ 🦄</span>
+            <h1>Mobina</h1>
           </div>
           <div className={styles.progressOrb} style={{ '--progress': `${progress * 3.6}deg`, '--progress-value': `${progress}%` }}>
-            <div><strong>{progress}%</strong><span>geschafft</span></div>
+            <div><strong>{progress}%</strong><span aria-hidden="true">⭐</span></div>
           </div>
         </section>
 
         <section className={`${styles.timerPanel} ${timer?.finished ? styles.timerFinished : ''}`} aria-live="polite">
-          <div className={styles.timerIntro}>
-            <span className={styles.kicker}>Ein Timer für alles</span>
-            <h2>Zeit für deine Runde</h2>
-            <p>Wähle eine Aktivität und starte den großen Timer. Wenn es klingelt, wird die nächste Runde automatisch eingetragen.</p>
-          </div>
-          <div className={styles.timerSetup}>
-            <label>
-              Aktivität
-              <select value={timerRoutineId} onChange={event => {
-                const nextRoutine = ROUTINES.find(routine => routine.id === event.target.value)
-                setTimerRoutineId(event.target.value)
-                if (nextRoutine?.minutes) setTimerMinutes(nextRoutine.minutes)
-              }}>
-                {ROUTINES.map(routine => <option value={routine.id} key={routine.id}>{routine.icon} {routine.title}</option>)}
-              </select>
-            </label>
-            <div className={styles.durationButtons} aria-label="Timerdauer">
-              {[10, 15].map(minutes => (
-                <button className={timerMinutes === minutes ? styles.durationActive : ''} type="button" onClick={() => setTimerMinutes(minutes)} key={minutes}>{minutes} Min</button>
-              ))}
-            </div>
+          <div className={styles.activityPicker} aria-label="Aktivität auswählen">
+            {ROUTINES.map(routine => (
+              <button
+                className={timerRoutineId === routine.id ? styles.activityActive : ''}
+                type="button"
+                onClick={() => {
+                  setTimerRoutineId(routine.id)
+                  if (routine.minutes) setTimerMinutes(routine.minutes)
+                }}
+                aria-label={routine.title}
+                aria-pressed={timerRoutineId === routine.id}
+                disabled={Boolean(timer && !timer.finished)}
+                key={routine.id}
+              >
+                <span aria-hidden="true">{routine.icon}</span>
+              </button>
+            ))}
           </div>
           <div className={styles.timerStage}>
             <div className={styles.timerRing} style={{ '--timer-progress': `${timerProgress}deg` }}>
+              <span className={styles.timerActivity} aria-hidden="true">{timer?.finished ? '🎉' : displayedTimerRoutine.icon}</span>
               <strong>{formatTimer(timerDisplaySeconds)}</strong>
-              <small>{timer?.finished ? 'Fertig!' : timer?.running ? 'läuft' : timer ? 'Pause' : selectedTimerRoutine.title}</small>
+            </div>
+            <div className={styles.durationButtons} aria-label="Timerdauer">
+              {[10, 15].map(minutes => (
+                <button className={timerMinutes === minutes ? styles.durationActive : ''} type="button" onClick={() => setTimerMinutes(minutes)} aria-label={`${minutes} Minuten`} disabled={Boolean(timer && !timer.finished)} key={minutes}>{minutes}′</button>
+              ))}
             </div>
             <div className={styles.timerActions}>
               {(!timer || timer.finished) ? (
-                <button className={styles.timerStart} type="button" onClick={startTimer}>{timer?.finished ? 'Neu starten' : 'Timer starten'}</button>
+                <button className={styles.timerStart} type="button" onClick={startTimer} aria-label={timer?.finished ? 'Timer neu starten' : 'Timer starten'}><span aria-hidden="true">{timer?.finished ? '↻' : '▶'}</span></button>
               ) : (
                 <>
-                  <button className={styles.timerStart} type="button" onClick={toggleTimer}>{timer.running ? 'Pause' : 'Weiter'}</button>
-                  <button type="button" onClick={() => setTimer(null)}>Stoppen</button>
+                  <button className={styles.timerStart} type="button" onClick={toggleTimer} aria-label={timer.running ? 'Timer pausieren' : 'Timer fortsetzen'}><span aria-hidden="true">{timer.running ? 'Ⅱ' : '▶'}</span></button>
+                  <button type="button" onClick={() => setTimer(null)} aria-label="Timer stoppen"><span aria-hidden="true">■</span></button>
                 </>
               )}
             </div>
@@ -346,11 +349,7 @@ export default function MobinaRoutine() {
         </section>
 
         {progress === 100 && (
-          <section className={styles.celebration}>
-            <span aria-hidden="true">🎉</span>
-            <div><strong>Fantastisch, alles geschafft!</strong><p>Heute warst du ein echter Routine-Star.</p></div>
-            <span aria-hidden="true">🌟</span>
-          </section>
+          <section className={styles.celebration} aria-label="Alle Tagesziele geschafft"><span aria-hidden="true">🎉 🌟 🦄 🌈 ⭐</span></section>
         )}
 
         <section className={styles.routineGrid} aria-label="Tägliche Routinen">
@@ -362,11 +361,9 @@ export default function MobinaRoutine() {
                 <header>
                   <span className={styles.routineIcon} aria-hidden="true">{routine.icon}</span>
                   <div>
-                    <span className={routine.kind === 'goal' ? styles.goalLabel : styles.limitLabel}>{routine.kind === 'goal' ? 'Tagesziel' : 'Tageslimit'}</span>
                     <h3>{routine.title}</h3>
-                    <p>{routine.kind === 'goal' ? 'Schaffe' : 'Höchstens'} {routine.count}×{routine.minutes ? ` je ${routine.minutes} Minuten` : ''}</p>
                   </div>
-                  <strong>{routine.kind === 'goal' ? `${done}/${routine.count}` : `${routine.count - done} frei`}</strong>
+                  <span className={styles.kindIcon} aria-label={routine.kind === 'goal' ? 'Tagesziel' : 'Tageslimit'}>{routine.kind === 'goal' ? '⭐' : '🛑'}</span>
                 </header>
                 <div className={styles.stepList}>
                   {steps.map((checked, index) => (
@@ -376,11 +373,12 @@ export default function MobinaRoutine() {
                       role="checkbox"
                       aria-checked={checked}
                       onClick={() => toggleStep(routine, index)}
+                      aria-label={`${routine.title}, ${index + 1}. Runde, ${checked ? 'markiert' : 'nicht markiert'}${routine.minutes ? `, ${routine.minutes} Minuten` : ''}`}
                       key={`${routine.id}-${index}`}
                     >
-                      <span className={styles.check}>{checked ? '✓' : index + 1}</span>
-                      <span>{routine.kind === 'goal' ? (checked ? 'Geschafft!' : `Runde ${index + 1}`) : (checked ? 'Genutzt' : `Einheit ${index + 1} noch frei`)}</span>
-                      {routine.minutes && <small>{routine.minutes} Minuten</small>}
+                      <span className={styles.roundSparkle} aria-hidden="true">{routine.kind === 'goal' ? (checked ? '⭐' : '✨') : (checked ? '⏳' : '🫧')}</span>
+                      <span className={styles.roundNumber} aria-hidden="true">{index + 1}</span>
+                      {routine.minutes && <small aria-hidden="true">{routine.minutes}′</small>}
                     </button>
                   ))}
                 </div>

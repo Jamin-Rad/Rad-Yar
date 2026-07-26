@@ -161,6 +161,7 @@
 }
 
 .hero .kicker { color: rgba(255,255,255,.85); }
+.heroStars { display: block; margin-bottom: 8px; font-size: clamp(30px, 5vw, 54px); letter-spacing: .14em; }
 .hero h1 { margin: 8px 0 10px; font-family: var(--font-fraunces, serif); font-size: clamp(54px, 9vw, 100px); font-weight: 900; line-height: .88; text-shadow: 0 12px 30px rgba(87,48,139,.18); }
 .hero p { max-width: 520px; color: rgba(255,255,255,.9); font-size: clamp(14px, 2vw, 18px); font-weight: 800; }
 
@@ -213,8 +214,8 @@
 .dayStats span { min-height: 40px; display: inline-flex; align-items: center; border-radius: 999px; background: #f7edff; color: #746b9a; font-size: 11px; font-weight: 850; padding: 0 13px; }
 .dayStats strong { margin-right: 4px; color: #e54898; font-size: 17px; }
 
-.celebration { justify-content: center; gap: 16px; margin-top: 18px; padding: 18px; border-radius: 25px; background: linear-gradient(110deg, #ffdbef, #dff5ff); box-shadow: 0 14px 36px rgba(95,84,159,.12); text-align: center; }
-.celebration > span { font-size: 34px; }
+.celebration { justify-content: center; gap: 16px; margin-top: 18px; padding: 22px; border-radius: 25px; background: linear-gradient(110deg, #ffdbef, #dff5ff); box-shadow: 0 14px 36px rgba(95,84,159,.12); text-align: center; }
+.celebration > span { font-size: clamp(32px, 7vw, 62px); letter-spacing: .12em; }
 .celebration strong { color: #d92b87; font-size: 18px; }
 .celebration p { color: #66719e; font-size: 12px; font-weight: 750; }
 
@@ -243,55 +244,52 @@
 .indigo { --card-color: #5e69d9; --card-soft: #f0f1ff; }
 .aqua { --card-color: #20bdb9; --card-soft: #e9fbfa; }
 
-.routineCard header { gap: 12px; }
-.routineIcon { width: 54px; height: 54px; display: grid; flex: 0 0 auto; place-items: center; border-radius: 18px; background: var(--card-soft); font-size: 27px; }
+.routineCard header { gap: 15px; }
+.routineIcon { width: 78px; height: 78px; display: grid; flex: 0 0 auto; place-items: center; border: 4px solid rgba(255,255,255,.8); border-radius: 27px; background: var(--card-soft); box-shadow: 0 12px 24px rgba(77,69,138,.12); font-size: 40px; transform: rotate(-4deg); }
 .routineCard header div { min-width: 0; flex: 1; }
-.routineCard h3 { color: #29387a; font-family: var(--font-fraunces, serif); font-size: 23px; line-height: 1.1; }
-.routineCard header p { margin-top: 3px; color: #8a83a9; font-size: 11px; font-weight: 850; }
-.routineCard header > strong { min-width: 48px; min-height: 34px; display: grid; place-items: center; border-radius: 999px; background: var(--card-soft); color: var(--card-color); font-size: 13px; }
+.routineCard h3 { color: #29387a; font-family: var(--font-fraunces, serif); font-size: clamp(25px, 4vw, 34px); line-height: 1.05; }
 .cardDone { box-shadow: 0 17px 44px color-mix(in srgb, var(--card-color) 18%, transparent), inset 0 0 0 2px color-mix(in srgb, var(--card-color) 25%, transparent); }
-.goalLabel,
-.limitLabel { display: inline-block; margin-bottom: 4px; color: var(--card-color); font-size: 8px; font-weight: 950; letter-spacing: .12em; text-transform: uppercase; }
-.limitLabel { border-radius: 999px; background: var(--card-soft); padding: 3px 7px; }
+.kindIcon { width: 52px; height: 52px; display: grid; flex: 0 0 auto; place-items: center; border-radius: 50%; background: rgba(255,255,255,.82); box-shadow: 0 8px 18px rgba(68,64,128,.1); font-size: 25px; }
 
-.stepList { display: grid; gap: 11px; margin-top: 17px; }
+.stepList { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 15px; margin-top: 22px; }
 .step {
   width: 100%;
-  min-height: 72px;
+  min-height: 0;
+  aspect-ratio: 1;
   display: grid;
-  grid-template-columns: 48px minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 14px;
-  border: 2px solid color-mix(in srgb, var(--card-color) 18%, transparent);
-  border-radius: 22px;
+  place-items: center;
+  align-content: center;
+  gap: 4px;
+  position: relative;
+  border: 4px solid color-mix(in srgb, var(--card-color) 22%, white);
+  border-radius: 46% 54% 43% 57% / 55% 44% 56% 45%;
   background: linear-gradient(125deg, var(--card-soft), rgba(255,255,255,.92));
   color: #555d8d;
   cursor: pointer;
   font: inherit;
-  font-size: 14px;
-  font-weight: 900;
-  padding: 10px 15px;
-  text-align: left;
-  transition: transform .16s ease, background .16s ease;
+  padding: 10px;
+  text-align: center;
+  transition: transform .18s ease, background .18s ease, border-radius .18s ease;
 }
 
-.step:hover { border-color: color-mix(in srgb, var(--card-color) 42%, white); transform: translateY(-2px) scale(1.005); }
-.check { width: 46px; height: 46px; display: grid; place-items: center; border: 3px solid color-mix(in srgb, var(--card-color) 42%, white); border-radius: 16px; background: #fff; box-shadow: 0 7px 16px rgba(67,65,127,.1); color: var(--card-color); font-size: 16px; font-weight: 950; }
-.step small { border-radius: 999px; background: rgba(255,255,255,.82); color: #8c83a6; font-size: 10px; padding: 6px 9px; }
+.step:hover { border-color: color-mix(in srgb, var(--card-color) 42%, white); border-radius: 56% 44% 57% 43% / 44% 57% 43% 56%; transform: translateY(-4px) rotate(2deg) scale(1.03); }
+.roundSparkle { font-size: clamp(32px, 5vw, 48px); filter: drop-shadow(0 7px 10px rgba(73,65,126,.12)); }
+.roundNumber { position: absolute; top: 10px; left: 12px; color: var(--card-color); font-size: 13px; font-weight: 950; }
+.step small { position: absolute; right: 10px; bottom: 9px; border-radius: 999px; background: rgba(255,255,255,.84); color: var(--card-color); font-size: 11px; font-weight: 950; padding: 4px 7px; }
 .stepDone { border-color: color-mix(in srgb, var(--card-color) 40%, white); background: linear-gradient(125deg, color-mix(in srgb, var(--card-color) 18%, white), #fff); color: var(--card-color); }
-.stepDone .check { border-color: var(--card-color); background: var(--card-color); color: #fff; }
 .limitStep { border-style: dashed; }
 .limitStep.stepDone { opacity: .72; }
 
 .timerPanel {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(190px, .7fr) 190px;
+  grid-template-columns: 1fr;
+  justify-items: center;
   align-items: center;
-  gap: clamp(20px, 4vw, 45px);
+  gap: clamp(20px, 4vw, 34px);
   position: relative;
   overflow: hidden;
   margin-top: 18px;
-  padding: clamp(24px, 5vw, 48px);
+  padding: clamp(26px, 5vw, 52px);
   border: 2px solid rgba(255,255,255,.9);
   border-radius: 36px;
   background: radial-gradient(circle at 88% 20%, rgba(101,199,247,.18), transparent 26%), radial-gradient(circle at 8% 100%, rgba(255,100,173,.16), transparent 30%), rgba(255,255,255,.76);
@@ -299,39 +297,40 @@
   backdrop-filter: blur(20px);
 }
 
-.timerIntro h2 { margin: 7px 0 8px; color: #29387a; font-family: var(--font-fraunces, serif); font-size: clamp(32px, 5vw, 50px); line-height: .98; }
-.timerIntro p { max-width: 460px; color: #77729c; font-size: 12px; font-weight: 750; line-height: 1.6; }
-.timerSetup { display: grid; gap: 12px; }
-.timerSetup label { display: grid; gap: 6px; color: #665f8d; font-size: 10px; font-weight: 950; letter-spacing: .08em; text-transform: uppercase; }
-.timerSetup select { width: 100%; min-width: 0; min-height: 50px; border: 2px solid #eadcf4; border-radius: 16px; background: rgba(255,255,255,.92); color: #34417e; font: inherit; font-size: 13px; font-weight: 850; outline: none; padding: 0 12px; }
-.durationButtons { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.durationButtons button { min-height: 44px; border: 1px solid #e7d9f2; border-radius: 14px; background: #fff; color: #706793; cursor: pointer; font: inherit; font-size: 11px; font-weight: 900; }
+.activityPicker { width: min(760px, 100%); display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 10px; }
+.activityPicker button { aspect-ratio: 1; border: 3px solid rgba(255,255,255,.9); border-radius: 24px; background: rgba(255,255,255,.72); box-shadow: 0 10px 22px rgba(80,69,141,.1); cursor: pointer; transition: transform .16s ease, background .16s ease; }
+.activityPicker button:hover { transform: translateY(-3px) rotate(2deg); }
+.activityPicker button:disabled,
+.durationButtons button:disabled { cursor: default; opacity: .55; transform: none; }
+.activityPicker button span { font-size: clamp(28px, 5vw, 46px); }
+.activityPicker .activityActive { border-color: #ff70b8; background: linear-gradient(145deg, #ffe1f1, #ddf4ff); box-shadow: 0 0 0 5px rgba(255,112,184,.13), 0 14px 28px rgba(93,75,154,.16); transform: translateY(-3px) rotate(-3deg); }
+.durationButtons { width: min(300px, 100%); display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.durationButtons button { min-height: 62px; border: 3px solid #e7d9f2; border-radius: 21px; background: #fff; color: #706793; cursor: pointer; font: inherit; font-size: 23px; font-weight: 950; }
 .durationButtons .durationActive { border-color: transparent; background: linear-gradient(110deg, #ff64ad, #65c7f7); box-shadow: 0 10px 22px rgba(229,82,160,.18); color: #fff; }
-.timerStage { display: grid; justify-items: center; gap: 13px; }
+.timerStage { width: 100%; display: grid; justify-items: center; gap: 18px; }
 
 .timerRing {
-  width: 172px;
-  height: 172px;
+  width: min(380px, 78vw);
+  height: min(380px, 78vw);
   display: grid;
   place-items: center;
   align-content: center;
   position: relative;
   border-radius: 50%;
   background: conic-gradient(#ec5aa7 0 var(--timer-progress), #e9e1f1 var(--timer-progress) 360deg);
-  box-shadow: 0 18px 38px rgba(92,75,148,.18);
+  box-shadow: 0 28px 70px rgba(92,75,148,.22), 0 0 0 12px rgba(255,255,255,.38);
 }
 
-.timerRing::before { content: ''; position: absolute; inset: 10px; border-radius: 50%; background: rgba(255,255,255,.96); }
-.timerRing strong { position: relative; z-index: 1; color: #303d7c; font-size: 34px; font-variant-numeric: tabular-nums; line-height: 1; }
-.timerRing small { position: relative; z-index: 1; max-width: 110px; overflow: hidden; margin-top: 6px; color: #e34396; font-size: 8px; font-weight: 950; letter-spacing: .08em; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
-.timerActions { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
-.timerActions button { min-height: 42px; border: 0; border-radius: 13px; background: #f3eafa; color: #615c8d; cursor: pointer; font: inherit; font-size: 10px; font-weight: 900; padding: 0 10px; }
+.timerRing::before { content: ''; position: absolute; inset: 17px; border-radius: 50%; background: rgba(255,255,255,.96); }
+.timerActivity { position: relative; z-index: 1; margin-bottom: 10px; font-size: clamp(48px, 10vw, 78px); line-height: 1; }
+.timerRing strong { position: relative; z-index: 1; color: #303d7c; font-size: clamp(52px, 13vw, 82px); font-variant-numeric: tabular-nums; line-height: 1; }
+.timerActions { width: min(300px, 100%); display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.timerActions button { min-height: 76px; border: 3px solid rgba(255,255,255,.9); border-radius: 25px; background: #f3eafa; box-shadow: 0 12px 26px rgba(79,67,139,.13); color: #615c8d; cursor: pointer; font: inherit; font-size: 30px; font-weight: 950; padding: 0 12px; }
 .timerActions .timerStart { background: linear-gradient(110deg, #ff64ad, #65c7f7); color: #fff; }
 .timerActions button:only-child { grid-column: 1 / -1; }
 .timerFinished { background: linear-gradient(120deg, rgba(255,239,248,.96), rgba(231,248,255,.96)); }
 .timerFinished .timerRing { background: linear-gradient(145deg, #ff64ad, #65c7f7); }
 .timerFinished .timerRing strong { color: #fff; }
-.timerFinished .timerRing small { color: rgba(255,255,255,.86); }
 .timerFinished .timerRing::before { display: none; }
 
 .history { padding: clamp(16px, 3vw, 26px); }
@@ -373,8 +372,7 @@
   .progressOrb { width: 116px; height: 116px; }
   .progressOrb strong { font-size: 27px; }
   .progressOrb::before { inset: 8px; }
-  .timerPanel { grid-template-columns: minmax(0, 1fr) 180px; border-radius: 30px; }
-  .timerIntro { grid-column: 1 / -1; }
+  .timerPanel { grid-template-columns: 1fr; border-radius: 30px; }
   .routineGrid { grid-template-columns: 1fr; }
   .routineCard:nth-child(4) { grid-row: auto; }
   .calendar { gap: 4px; }
@@ -397,24 +395,20 @@
   .dayStats { width: 100%; display: grid; grid-template-columns: 1fr 1fr; }
   .dayStats span { min-height: 54px; border-radius: 15px; line-height: 1.25; }
   .routineCard { padding: 15px; border-radius: 23px; }
-  .routineIcon { width: 47px; height: 47px; border-radius: 15px; font-size: 23px; }
-  .routineCard h3 { font-size: 20px; }
+  .routineIcon { width: 62px; height: 62px; border-radius: 21px; font-size: 32px; }
+  .routineCard h3 { font-size: 23px; }
   .timerPanel { grid-template-columns: 1fr; padding: 22px 18px; }
-  .timerIntro { grid-column: auto; text-align: center; }
-  .timerIntro p { margin-inline: auto; }
-  .timerSetup { width: 100%; }
+  .activityPicker { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .activityPicker button { border-radius: 19px; }
   .timerStage { width: 100%; }
-  .timerRing { width: 190px; height: 190px; }
-  .timerRing strong { font-size: 38px; }
   .timerActions { width: min(280px, 100%); }
-  .step { min-height: 68px; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 10px; padding: 8px 10px; }
-  .check { width: 42px; height: 42px; border-radius: 14px; }
+  .stepList { grid-template-columns: repeat(auto-fit, minmax(82px, 1fr)); gap: 10px; }
   .historyHeader { align-items: flex-start; flex-direction: column; }
   .monthControls { width: 100%; }
   .monthControls button { flex: 1; }
   .calendarDay { min-height: 64px; padding: 4px; }
   .calendarDay small { font-size: 8px; }
-  .celebration > span { display: none; }
+  .celebration > span { font-size: 31px; letter-spacing: .04em; }
 }
 
 @media (prefers-reduced-motion: reduce) {
