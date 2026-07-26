@@ -176,10 +176,13 @@
   box-shadow: 0 22px 50px rgba(72,75,151,.22);
 }
 
+.heroMeters { display: flex; align-items: center; gap: clamp(13px, 2vw, 22px); position: relative; z-index: 1; }
 .progressOrb::before { content: ''; position: absolute; inset: 11px; border-radius: 50%; background: linear-gradient(145deg, #ec70bb, #6cc8fa); }
 .progressOrb div { display: grid; position: relative; text-align: center; }
 .progressOrb strong { font-size: 40px; font-weight: 950; line-height: 1; }
 .progressOrb span { margin-top: 4px; font-size: 10px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+.limitOrb::before { background: linear-gradient(145deg, #62c8ef, #7a83df); }
+.limitOrb span { font-size: 16px; letter-spacing: 0; }
 
 .history {
   margin-top: 18px;
@@ -202,7 +205,7 @@
 .limitGroup { border: 4px dashed rgba(82,178,229,.32); border-radius: 34px 44px 32px 42px; background: radial-gradient(circle at 8% 8%, rgba(255,255,255,.9), transparent 24%), linear-gradient(145deg, rgba(220,246,255,.9), rgba(242,237,255,.85)); box-shadow: 0 22px 52px rgba(70,126,177,.1), inset 0 0 0 5px rgba(77,187,235,.06); }
 .routineGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 16px; }
 .limitGroup .routineGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.limitGroup .stepList { grid-template-columns: repeat(2, 96px); }
+.limitGroup .stepList { grid-template-columns: repeat(3, 96px); }
 
 .routineCard {
   --card-color: #ef5ba8;
@@ -233,7 +236,7 @@
 .routineCard header { gap: 15px; }
 .routineIcon { width: 78px; height: 78px; display: grid; flex: 0 0 auto; place-items: center; border: 4px solid rgba(255,255,255,.8); border-radius: 27px; background: var(--card-soft); box-shadow: 0 12px 24px rgba(77,69,138,.12); font-size: 40px; transform: rotate(-4deg); }
 .routineCard header div { min-width: 0; flex: 1; }
-.routineCard h3 { color: #29387a; font-family: var(--font-fraunces, serif); font-size: clamp(25px, 4vw, 34px); line-height: 1.05; }
+.routineCard h3 { color: #29387a; font-family: var(--font-fraunces, serif); font-size: clamp(19px, 2.6vw, 25px); line-height: 1.08; }
 .cardDone { border-color: color-mix(in srgb, var(--card-color) 38%, white); background: linear-gradient(145deg, color-mix(in srgb, var(--card-color) 13%, white), rgba(255,255,255,.9)); box-shadow: 0 19px 46px color-mix(in srgb, var(--card-color) 25%, transparent), inset 0 0 0 3px color-mix(in srgb, var(--card-color) 22%, transparent); }
 
 .stepList { display: grid; grid-template-columns: repeat(3, 96px); gap: 15px; justify-content: center; margin-top: 22px; }
@@ -285,7 +288,7 @@
   backdrop-filter: blur(20px);
 }
 
-.activityGroups { width: 100%; max-width: 390px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; justify-self: end; }
+.activityGroups { width: 100%; max-width: 370px; display: grid; grid-template-columns: 1fr; gap: 12px; justify-self: end; }
 .activityGroup { padding: 12px; border: 3px solid rgba(255,255,255,.9); border-radius: 30px 23px 31px 25px; background: linear-gradient(145deg, rgba(255,228,244,.82), rgba(255,255,255,.68)); box-shadow: inset 0 0 0 4px rgba(255,100,173,.05); }
 .activityLimits { border: 3px dashed rgba(74,180,230,.3); border-radius: 24px 31px 23px 30px; background: linear-gradient(145deg, rgba(224,247,255,.86), rgba(248,244,255,.7)); box-shadow: inset 0 0 0 4px rgba(69,184,235,.05); }
 .activityGroup:nth-child(2) { background: linear-gradient(145deg, rgba(255,243,218,.88), rgba(255,235,247,.72)); }
@@ -294,7 +297,7 @@
 .activityPicker button { aspect-ratio: 1; border: 3px solid rgba(255,255,255,.9); border-radius: 24px; background: rgba(255,255,255,.72); box-shadow: 0 10px 22px rgba(80,69,141,.1); cursor: pointer; transition: transform .16s ease, background .16s ease; }
 .activityPicker button:hover { transform: translateY(-3px) rotate(2deg); }
 .activityPicker button:disabled { cursor: default; opacity: .55; transform: none; }
-.activityPicker button > span { display: grid; place-items: center; font-size: clamp(28px, 5vw, 46px); }
+.activityPicker button > span { display: grid; place-items: center; font-size: clamp(38px, 5vw, 56px); }
 .activityPicker .activityActive { border-color: #ff70b8; background: linear-gradient(145deg, #ffe1f1, #ddf4ff); box-shadow: 0 0 0 5px rgba(255,112,184,.13), 0 14px 28px rgba(93,75,154,.16); transform: translateY(-3px) rotate(-3deg); }
 .timerStage { width: 100%; display: grid; justify-items: center; gap: 18px; }
 
@@ -397,6 +400,7 @@
   .brand small { display: none; }
   .syncBadge { min-height: 36px; padding: 0 11px; font-size: 9px; }
   .hero { display: grid; gap: 22px; }
+  .heroMeters { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
   .progressOrb { width: 100%; height: auto; aspect-ratio: auto; display: block; border-radius: 999px; padding: 7px; background: rgba(255,255,255,.28); }
   .progressOrb::before { inset: 7px; border-radius: 999px; background: linear-gradient(90deg, rgba(255,255,255,.96) 0 var(--progress-value), rgba(255,255,255,.25) var(--progress-value) 100%); }
   .progressOrb div { min-height: 42px; display: flex; align-items: center; justify-content: center; gap: 8px; color: #fff; }
@@ -405,17 +409,17 @@
   .routineGroup { padding: 14px; border-radius: 29px 23px 31px 25px; }
   .routineCard { padding: 15px; border-radius: 23px; }
   .routineIcon { width: 62px; height: 62px; border-radius: 21px; font-size: 32px; }
-  .routineCard h3 { font-size: 23px; }
-  .timerPanel { grid-template-columns: 108px minmax(0, 1fr); gap: 10px; padding: 18px 12px; }
+  .routineCard h3 { font-size: 18px; }
+  .timerPanel { grid-template-columns: 132px minmax(0, 1fr); gap: 10px; padding: 18px 10px; }
   .activityPicker { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
   .activityPicker button { border-width: 2px; border-radius: 16px; }
-  .activityPicker button > span { font-size: 28px; }
+  .activityPicker button > span { font-size: 38px; }
   .timerStage { width: 100%; }
   .timerActivity { font-size: clamp(39px, 11vw, 55px); }
   .timerRing > strong { font-size: clamp(38px, 11vw, 58px); }
   .timerState { width: 42px; height: 42px; margin-top: 9px; font-size: 18px; }
   .stepList { grid-template-columns: repeat(3, 82px); gap: 10px; }
-  .limitGroup .stepList { grid-template-columns: repeat(2, 82px); }
+  .limitGroup .stepList { grid-template-columns: repeat(3, 82px); }
   .historyHeader { align-items: flex-start; flex-direction: column; }
   .monthControls { width: 100%; }
   .monthControls button { flex: 1; }

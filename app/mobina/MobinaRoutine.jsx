@@ -22,6 +22,7 @@ const ROUTINES = [
 ]
 
 const GOAL_ROUTINES = ROUTINES.filter(routine => routine.kind === 'goal')
+const LIMIT_ROUTINES = ROUTINES.filter(routine => routine.kind === 'limit')
 const ROUTINE_BY_ID = Object.fromEntries(ROUTINES.map(routine => [routine.id, routine]))
 const ROUTINE_GROUPS = [
   { id: 'learning', label: 'Lernen', routines: ['vorschulbuch', 'anton', 'lesen'].map(id => ROUTINE_BY_ID[id]) },
@@ -30,6 +31,7 @@ const ROUTINE_GROUPS = [
   { id: 'limits', label: 'Bildschirmzeit', routines: ['fernsehen', 'tablet'].map(id => ROUTINE_BY_ID[id]) },
 ]
 const TOTAL_GOAL_STEPS = GOAL_ROUTINES.reduce((sum, routine) => sum + routine.count, 0)
+const TOTAL_LIMIT_STEPS = LIMIT_ROUTINES.reduce((sum, routine) => sum + routine.count, 0)
 
 function dateKey(date = new Date()) {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
@@ -181,6 +183,11 @@ export default function MobinaRoutine() {
   const days = useMemo(() => monthDays(shownMonth), [shownMonth])
   const doneSteps = completedCount(logs, today)
   const progress = Math.round((doneSteps / TOTAL_GOAL_STEPS) * 100)
+  const usedLimitSteps = LIMIT_ROUTINES.reduce((total, routine) => {
+    const entries = Array.isArray(logs[today]?.[routine.id]) ? logs[today][routine.id] : []
+    return total + entries.slice(0, routine.count).filter(Boolean).length
+  }, 0)
+  const limitProgress = Math.round((usedLimitSteps / TOTAL_LIMIT_STEPS) * 100)
   const selectedTimerRoutine = ROUTINES.find(routine => routine.id === timerRoutineId) || ROUTINES[0]
   const displayedTimerRoutine = timer
     ? ROUTINES.find(routine => routine.id === timer.routineId) || selectedTimerRoutine
@@ -314,8 +321,13 @@ export default function MobinaRoutine() {
             <span className={styles.heroStars} aria-hidden="true">🌈 ✨ 🦄</span>
             <h1>Mobina</h1>
           </div>
-          <div className={styles.progressOrb} style={{ '--progress': `${progress * 3.6}deg`, '--progress-value': `${progress}%` }}>
-            <div><strong>{progress}%</strong><span aria-hidden="true">⭐</span></div>
+          <div className={styles.heroMeters}>
+            <div className={styles.progressOrb} style={{ '--progress': `${progress * 3.6}deg`, '--progress-value': `${progress}%` }} aria-label={`${progress} Prozent der Ziele erledigt`}>
+              <div><strong>{progress}%</strong><span aria-hidden="true">⭐</span></div>
+            </div>
+            <div className={`${styles.progressOrb} ${styles.limitOrb}`} style={{ '--progress': `${limitProgress * 3.6}deg`, '--progress-value': `${limitProgress}%` }} aria-label={`${limitProgress} Prozent der Bildschirmzeit genutzt`}>
+              <div><strong>{limitProgress}%</strong><span aria-hidden="true">📺 📱</span></div>
+            </div>
           </div>
         </section>
 
