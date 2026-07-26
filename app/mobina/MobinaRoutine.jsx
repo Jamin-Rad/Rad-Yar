@@ -280,6 +280,7 @@ export default function MobinaRoutine() {
     if (timerTapRef.current) {
       window.clearTimeout(timerTapRef.current)
       timerTapRef.current = null
+      if (timer && !timer.finished) markNextStepDone(timer.routineId, timer.date)
       setTimer(null)
       return
     }

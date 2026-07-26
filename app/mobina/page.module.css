@@ -240,7 +240,7 @@
 .routineIcon { width: 78px; height: 78px; display: grid; flex: 0 0 auto; place-items: center; border: 4px solid rgba(255,255,255,.8); border-radius: 27px; background: var(--card-soft); box-shadow: 0 12px 24px rgba(77,69,138,.12); font-size: 40px; transform: rotate(-4deg); }
 .routineCard header div { min-width: 0; flex: 1; }
 .routineCard h3 { color: #29387a; font-family: var(--font-fraunces, serif); font-size: clamp(25px, 4vw, 34px); line-height: 1.05; }
-.cardDone { box-shadow: 0 17px 44px color-mix(in srgb, var(--card-color) 18%, transparent), inset 0 0 0 2px color-mix(in srgb, var(--card-color) 25%, transparent); }
+.cardDone { border-color: color-mix(in srgb, var(--card-color) 38%, white); background: linear-gradient(145deg, color-mix(in srgb, var(--card-color) 13%, white), rgba(255,255,255,.9)); box-shadow: 0 19px 46px color-mix(in srgb, var(--card-color) 25%, transparent), inset 0 0 0 3px color-mix(in srgb, var(--card-color) 22%, transparent); }
 
 .stepList { display: grid; grid-template-columns: repeat(3, 96px); gap: 15px; justify-content: center; margin-top: 22px; }
 .step {
@@ -267,9 +267,13 @@
 .roundSparkle { font-size: clamp(32px, 5vw, 48px); filter: drop-shadow(0 7px 10px rgba(73,65,126,.12)); }
 .roundNumber { position: absolute; top: 10px; left: 12px; color: var(--card-color); font-size: 13px; font-weight: 950; }
 .step small { position: absolute; right: 10px; bottom: 9px; border-radius: 999px; background: rgba(255,255,255,.84); color: var(--card-color); font-size: 11px; font-weight: 950; padding: 4px 7px; }
-.stepDone { border-color: color-mix(in srgb, var(--card-color) 40%, white); background: linear-gradient(125deg, color-mix(in srgb, var(--card-color) 18%, white), #fff); color: var(--card-color); }
+.stepDone { border-color: rgba(255,255,255,.94); background: linear-gradient(145deg, color-mix(in srgb, var(--card-color) 86%, #27336f), var(--card-color)); box-shadow: 0 13px 28px color-mix(in srgb, var(--card-color) 34%, transparent), inset 0 0 0 3px rgba(255,255,255,.2); color: #fff; transform: scale(.94) rotate(-1deg); animation: donePop .3s ease-out; }
+.stepDone:hover { border-color: #fff; transform: translateY(-2px) scale(.96) rotate(1deg); }
+.stepDone .roundNumber { color: #fff; }
+.stepDone small { background: rgba(255,255,255,.22); color: #fff; }
+.stepDone .roundSparkle { filter: drop-shadow(0 5px 7px rgba(44,36,92,.22)); }
 .limitStep { border-style: dashed; }
-.limitStep.stepDone { opacity: .72; }
+.limitStep.stepDone { border-style: solid; }
 
 .timerPanel {
   display: grid;
@@ -369,6 +373,12 @@
   50% { opacity: 1; transform: scale(1.1); }
 }
 
+@keyframes donePop {
+  0% { transform: scale(.78) rotate(-5deg); }
+  65% { transform: scale(1.02) rotate(2deg); }
+  100% { transform: scale(.94) rotate(-1deg); }
+}
+
 @media (max-width: 760px) {
   .page { padding: 12px; }
   .hero { min-height: 0; align-items: flex-start; padding: 27px 22px; border-radius: 30px; }
@@ -426,5 +436,5 @@
 
 @media (prefers-reduced-motion: reduce) {
   .decorations i { animation: none; }
-  .routineCard, .step { transition: none; }
+  .routineCard, .step { animation: none; transition: none; }
 }
