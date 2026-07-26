@@ -8,13 +8,15 @@ const MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'A
 const WEEKDAYS = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
 
 const ROUTINES = [
-  { id: 'malen', title: 'Malen', icon: '🎨', count: 2, minutes: 10, color: 'pink', kind: 'goal' },
+  { id: 'malen', title: 'Malen', icon: '🎨', count: 2, minutes: 15, color: 'pink', kind: 'goal' },
   { id: 'anton', title: 'Anton', icon: '✏️', count: 2, minutes: 15, color: 'blue', kind: 'goal' },
-  { id: 'sport', title: 'Sport', icon: '🤸‍♀️', count: 1, minutes: 10, color: 'violet', kind: 'goal' },
+  { id: 'sport', title: 'Sport', icon: '🤸‍♀️', count: 1, minutes: 15, color: 'violet', kind: 'goal' },
   { id: 'fernsehen', title: 'Fernseher gucken', icon: '📺', count: 6, minutes: 15, color: 'sky', kind: 'limit' },
-  { id: 'lesen', title: 'Bücher lesen', icon: '📚', count: 2, minutes: 10, color: 'rose', kind: 'goal' },
-  { id: 'schach', title: 'Schach spielen', icon: '♟️', count: 2, minutes: null, color: 'indigo', kind: 'goal' },
+  { id: 'lesen', title: 'Bücher lesen', icon: '📚', count: 2, minutes: 15, color: 'rose', kind: 'goal' },
+  { id: 'schach', title: 'Schach spielen', icon: '♟️', count: 2, minutes: 15, color: 'indigo', kind: 'goal' },
   { id: 'tablet', title: 'Tablet spielen', icon: '🎮', count: 2, minutes: 15, color: 'aqua', kind: 'limit' },
+  { id: 'basteln', title: 'Basteln', icon: '✂️', count: 1, minutes: 15, color: 'orange', kind: 'goal' },
+  { id: 'vorschulbuch', title: 'Vorschulbuch', icon: '🔤', count: 1, minutes: 15, color: 'lilac', kind: 'goal' },
 ]
 
 const GOAL_ROUTINES = ROUTINES.filter(routine => routine.kind === 'goal')
@@ -77,8 +79,8 @@ export default function MobinaRoutine() {
   const [syncStatus, setSyncStatus] = useState('loading')
   const [timer, setTimer] = useState(null)
   const [timerRoutineId, setTimerRoutineId] = useState('malen')
-  const [timerMinutes, setTimerMinutes] = useState(10)
   const audioContextRef = useRef(null)
+  const timerTapRef = useRef(null)
 
   useEffect(() => {
     let cancelled = false
@@ -149,6 +151,10 @@ export default function MobinaRoutine() {
     return () => window.clearInterval(interval)
   }, [timer?.running])
 
+  useEffect(() => () => {
+    if (timerTapRef.current) window.clearTimeout(timerTapRef.current)
+  }, [])
+
   useEffect(() => {
     if (!timer?.running || timer.remaining !== 0) return
     markNextStepDone(timer.routineId, timer.date)
@@ -167,7 +173,7 @@ export default function MobinaRoutine() {
   const displayedTimerRoutine = timer
     ? ROUTINES.find(routine => routine.id === timer.routineId) || selectedTimerRoutine
     : selectedTimerRoutine
-  const timerDisplaySeconds = timer ? timer.remaining : timerMinutes * 60
+  const timerDisplaySeconds = timer ? timer.remaining : 15 * 60
   const timerProgress = timer ? (timer.remaining / timer.total) * 360 : 360
 
   const selectedLabel = useMemo(() => parseDate(selectedDate).toLocaleDateString('de-DE', {
@@ -228,7 +234,7 @@ export default function MobinaRoutine() {
   function startTimer() {
     prepareAudio()
     const routine = ROUTINES.find(item => item.id === timerRoutineId) || ROUTINES[0]
-    const seconds = Math.max(1, Number(timerMinutes) || 10) * 60
+    const seconds = 15 * 60
     setTimer({
       routineId: routine.id,
       title: routine.title,
@@ -255,6 +261,21 @@ export default function MobinaRoutine() {
       }
       return { ...previous, running: true, endAt: Date.now() + previous.remaining * 1000 }
     })
+  }
+
+  function handleTimerTap() {
+    if (timerTapRef.current) {
+      window.clearTimeout(timerTapRef.current)
+      timerTapRef.current = null
+      setTimer(null)
+      return
+    }
+
+    timerTapRef.current = window.setTimeout(() => {
+      timerTapRef.current = null
+      if (!timer || timer.finished) startTimer()
+      else toggleTimer()
+    }, 260)
   }
 
   function chooseDate(day) {
@@ -294,10 +315,7 @@ export default function MobinaRoutine() {
               <button
                 className={timerRoutineId === routine.id ? styles.activityActive : ''}
                 type="button"
-                onClick={() => {
-                  setTimerRoutineId(routine.id)
-                  if (routine.minutes) setTimerMinutes(routine.minutes)
-                }}
+                onClick={() => setTimerRoutineId(routine.id)}
                 aria-label={routine.title}
                 aria-pressed={timerRoutineId === routine.id}
                 disabled={Boolean(timer && !timer.finished)}
@@ -308,25 +326,17 @@ export default function MobinaRoutine() {
             ))}
           </div>
           <div className={styles.timerStage}>
-            <div className={styles.timerRing} style={{ '--timer-progress': `${timerProgress}deg` }}>
+            <button
+              className={styles.timerRing}
+              style={{ '--timer-progress': `${timerProgress}deg` }}
+              type="button"
+              onClick={handleTimerTap}
+              aria-label={!timer || timer.finished ? 'Timer starten' : timer.running ? 'Timer pausieren; zweimal tippen zum Beenden' : 'Timer fortsetzen; zweimal tippen zum Beenden'}
+            >
               <span className={styles.timerActivity} aria-hidden="true">{timer?.finished ? '🎉' : displayedTimerRoutine.icon}</span>
               <strong>{formatTimer(timerDisplaySeconds)}</strong>
-            </div>
-            <div className={styles.durationButtons} aria-label="Timerdauer">
-              {[10, 15].map(minutes => (
-                <button className={timerMinutes === minutes ? styles.durationActive : ''} type="button" onClick={() => setTimerMinutes(minutes)} aria-label={`${minutes} Minuten`} disabled={Boolean(timer && !timer.finished)} key={minutes}>{minutes}′</button>
-              ))}
-            </div>
-            <div className={styles.timerActions}>
-              {(!timer || timer.finished) ? (
-                <button className={styles.timerStart} type="button" onClick={startTimer} aria-label={timer?.finished ? 'Timer neu starten' : 'Timer starten'}><span aria-hidden="true">{timer?.finished ? '↻' : '▶'}</span></button>
-              ) : (
-                <>
-                  <button className={styles.timerStart} type="button" onClick={toggleTimer} aria-label={timer.running ? 'Timer pausieren' : 'Timer fortsetzen'}><span aria-hidden="true">{timer.running ? 'Ⅱ' : '▶'}</span></button>
-                  <button type="button" onClick={() => setTimer(null)} aria-label="Timer stoppen"><span aria-hidden="true">■</span></button>
-                </>
-              )}
-            </div>
+              <span className={styles.timerState} aria-hidden="true">{timer?.running ? 'Ⅱ' : '▶'}</span>
+            </button>
           </div>
         </section>
 

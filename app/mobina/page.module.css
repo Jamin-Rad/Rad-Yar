@@ -225,6 +225,7 @@
   --card-color: #ef5ba8;
   --card-soft: #fff0f8;
   overflow: hidden;
+  height: 100%;
   padding: 20px;
   border: 2px solid rgba(255,255,255,.92);
   border-radius: 29px;
@@ -234,7 +235,6 @@
 }
 
 .routineCard:hover { transform: translateY(-2px); box-shadow: 0 22px 48px rgba(88,77,145,.14); }
-.routineCard:nth-child(4) { grid-row: span 2; }
 .limitCard { border-style: dashed; border-color: color-mix(in srgb, var(--card-color) 35%, white); background: color-mix(in srgb, var(--card-soft) 72%, white); }
 .pink { --card-color: #ee4fa0; --card-soft: #fff0f8; }
 .blue { --card-color: #478be9; --card-soft: #eef5ff; }
@@ -243,6 +243,8 @@
 .rose { --card-color: #ff688e; --card-soft: #fff0f3; }
 .indigo { --card-color: #5e69d9; --card-soft: #f0f1ff; }
 .aqua { --card-color: #20bdb9; --card-soft: #e9fbfa; }
+.orange { --card-color: #f39a45; --card-soft: #fff4e8; }
+.lilac { --card-color: #b35be5; --card-soft: #f8edff; }
 
 .routineCard header { gap: 15px; }
 .routineIcon { width: 78px; height: 78px; display: grid; flex: 0 0 auto; place-items: center; border: 4px solid rgba(255,255,255,.8); border-radius: 27px; background: var(--card-soft); box-shadow: 0 12px 24px rgba(77,69,138,.12); font-size: 40px; transform: rotate(-4deg); }
@@ -251,7 +253,7 @@
 .cardDone { box-shadow: 0 17px 44px color-mix(in srgb, var(--card-color) 18%, transparent), inset 0 0 0 2px color-mix(in srgb, var(--card-color) 25%, transparent); }
 .kindIcon { width: 52px; height: 52px; display: grid; flex: 0 0 auto; place-items: center; border-radius: 50%; background: rgba(255,255,255,.82); box-shadow: 0 8px 18px rgba(68,64,128,.1); font-size: 25px; }
 
-.stepList { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 15px; margin-top: 22px; }
+.stepList { display: grid; grid-template-columns: repeat(3, 96px); gap: 15px; justify-content: center; margin-top: 22px; }
 .step {
   width: 100%;
   min-height: 0;
@@ -297,16 +299,12 @@
   backdrop-filter: blur(20px);
 }
 
-.activityPicker { width: min(760px, 100%); display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 10px; }
+.activityPicker { width: min(590px, 100%); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
 .activityPicker button { aspect-ratio: 1; border: 3px solid rgba(255,255,255,.9); border-radius: 24px; background: rgba(255,255,255,.72); box-shadow: 0 10px 22px rgba(80,69,141,.1); cursor: pointer; transition: transform .16s ease, background .16s ease; }
 .activityPicker button:hover { transform: translateY(-3px) rotate(2deg); }
-.activityPicker button:disabled,
-.durationButtons button:disabled { cursor: default; opacity: .55; transform: none; }
+.activityPicker button:disabled { cursor: default; opacity: .55; transform: none; }
 .activityPicker button span { font-size: clamp(28px, 5vw, 46px); }
 .activityPicker .activityActive { border-color: #ff70b8; background: linear-gradient(145deg, #ffe1f1, #ddf4ff); box-shadow: 0 0 0 5px rgba(255,112,184,.13), 0 14px 28px rgba(93,75,154,.16); transform: translateY(-3px) rotate(-3deg); }
-.durationButtons { width: min(300px, 100%); display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.durationButtons button { min-height: 62px; border: 3px solid #e7d9f2; border-radius: 21px; background: #fff; color: #706793; cursor: pointer; font: inherit; font-size: 23px; font-weight: 950; }
-.durationButtons .durationActive { border-color: transparent; background: linear-gradient(110deg, #ff64ad, #65c7f7); box-shadow: 0 10px 22px rgba(229,82,160,.18); color: #fff; }
 .timerStage { width: 100%; display: grid; justify-items: center; gap: 18px; }
 
 .timerRing {
@@ -316,18 +314,23 @@
   place-items: center;
   align-content: center;
   position: relative;
+  border: 0;
   border-radius: 50%;
   background: conic-gradient(#ec5aa7 0 var(--timer-progress), #e9e1f1 var(--timer-progress) 360deg);
   box-shadow: 0 28px 70px rgba(92,75,148,.22), 0 0 0 12px rgba(255,255,255,.38);
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: transform .16s ease, box-shadow .16s ease;
 }
 
+.timerRing:active { box-shadow: 0 16px 38px rgba(92,75,148,.2), 0 0 0 17px rgba(255,126,189,.18); transform: scale(.97); }
 .timerRing::before { content: ''; position: absolute; inset: 17px; border-radius: 50%; background: rgba(255,255,255,.96); }
 .timerActivity { position: relative; z-index: 1; margin-bottom: 10px; font-size: clamp(48px, 10vw, 78px); line-height: 1; }
 .timerRing strong { position: relative; z-index: 1; color: #303d7c; font-size: clamp(52px, 13vw, 82px); font-variant-numeric: tabular-nums; line-height: 1; }
-.timerActions { width: min(300px, 100%); display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.timerActions button { min-height: 76px; border: 3px solid rgba(255,255,255,.9); border-radius: 25px; background: #f3eafa; box-shadow: 0 12px 26px rgba(79,67,139,.13); color: #615c8d; cursor: pointer; font: inherit; font-size: 30px; font-weight: 950; padding: 0 12px; }
-.timerActions .timerStart { background: linear-gradient(110deg, #ff64ad, #65c7f7); color: #fff; }
-.timerActions button:only-child { grid-column: 1 / -1; }
+.timerState { width: 50px; height: 50px; display: grid; place-items: center; position: relative; z-index: 1; margin-top: 14px; border-radius: 50%; background: linear-gradient(145deg, #ff64ad, #65c7f7); box-shadow: 0 8px 18px rgba(219,69,149,.24); color: #fff; font-size: 21px; font-weight: 950; }
 .timerFinished { background: linear-gradient(120deg, rgba(255,239,248,.96), rgba(231,248,255,.96)); }
 .timerFinished .timerRing { background: linear-gradient(145deg, #ff64ad, #65c7f7); }
 .timerFinished .timerRing strong { color: #fff; }
@@ -374,7 +377,6 @@
   .progressOrb::before { inset: 8px; }
   .timerPanel { grid-template-columns: 1fr; border-radius: 30px; }
   .routineGrid { grid-template-columns: 1fr; }
-  .routineCard:nth-child(4) { grid-row: auto; }
   .calendar { gap: 4px; }
   .calendarDay { min-height: 74px; gap: 4px; border-radius: 12px; padding: 5px; }
   .calendarDay strong { width: 21px; height: 21px; font-size: 9px; }
@@ -398,11 +400,10 @@
   .routineIcon { width: 62px; height: 62px; border-radius: 21px; font-size: 32px; }
   .routineCard h3 { font-size: 23px; }
   .timerPanel { grid-template-columns: 1fr; padding: 22px 18px; }
-  .activityPicker { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .activityPicker { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
   .activityPicker button { border-radius: 19px; }
   .timerStage { width: 100%; }
-  .timerActions { width: min(280px, 100%); }
-  .stepList { grid-template-columns: repeat(auto-fit, minmax(82px, 1fr)); gap: 10px; }
+  .stepList { grid-template-columns: repeat(3, 82px); gap: 10px; }
   .historyHeader { align-items: flex-start; flex-direction: column; }
   .monthControls { width: 100%; }
   .monthControls button { flex: 1; }
