@@ -262,11 +262,13 @@ export default function TagesplanClient() {
                             <button
                               className={active ? styles.choiceActive : ''}
                               type="button"
+                              style={{ '--bar-height': `${30 + (level * 9)}px` }}
                               onClick={() => setAmount(goal.id, Math.abs(amount - choiceAmount) < 0.001 ? 0 : choiceAmount)}
                               aria-label={`${formatNumber(choiceAmount)} ${goal.unit} für ${goal.title}`}
                               key={level}
                             >
-                              <span>{formatNumber(choiceAmount)}</span>
+                              <span className={styles.choiceBar}><i /></span>
+                              <strong>{formatNumber(choiceAmount)}</strong>
                               <small>{goal.unit}</small>
                             </button>
                           )
