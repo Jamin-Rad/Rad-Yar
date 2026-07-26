@@ -22,10 +22,12 @@ const ROUTINES = [
 ]
 
 const GOAL_ROUTINES = ROUTINES.filter(routine => routine.kind === 'goal')
-const LIMIT_ROUTINES = ROUTINES.filter(routine => routine.kind === 'limit')
+const ROUTINE_BY_ID = Object.fromEntries(ROUTINES.map(routine => [routine.id, routine]))
 const ROUTINE_GROUPS = [
-  { id: 'goals', label: 'Tagesziele', icon: '⭐', friends: '🌈 ✨ 🦄', routines: GOAL_ROUTINES },
-  { id: 'limits', label: 'Einschränkungen', icon: '🛑', friends: '🫧 ⏳ 🫧', routines: LIMIT_ROUTINES },
+  { id: 'learning', label: 'Lernen', icon: '🧠', friends: '📚 🔤 ⭐', routines: ['vorschulbuch', 'anton', 'lesen'].map(id => ROUTINE_BY_ID[id]) },
+  { id: 'creative', label: 'Kreativ und Spielen', icon: '🎨', friends: '✂️ 🧸 🌈', routines: ['malen', 'basteln', 'spielzeuge'].map(id => ROUTINE_BY_ID[id]) },
+  { id: 'bodymind', label: 'Körper und Kopf', icon: '⚡', friends: '🤸‍♀️ ♟️ ⭐', routines: ['sport', 'schach'].map(id => ROUTINE_BY_ID[id]) },
+  { id: 'limits', label: 'Bildschirmzeit', icon: '🛑', friends: '📺 🎮 🫧', routines: ['fernsehen', 'tablet'].map(id => ROUTINE_BY_ID[id]) },
 ]
 const TOTAL_GOAL_STEPS = GOAL_ROUTINES.reduce((sum, routine) => sum + routine.count, 0)
 
