@@ -15,7 +15,7 @@ const ROUTINES = [
   { id: 'fernsehen', title: 'Fernseher gucken', icon: '📺', count: 6, minutes: 15, color: 'sky', kind: 'limit' },
   { id: 'lesen', title: 'Bücher lesen', icon: '📚', count: 2, minutes: 15, color: 'rose', kind: 'goal' },
   { id: 'schach', title: 'Schach spielen', icon: '♟️', count: 2, minutes: 15, color: 'indigo', kind: 'goal' },
-  { id: 'tablet', title: 'Tablet spielen', icon: '🎮', count: 3, minutes: 15, color: 'aqua', kind: 'limit' },
+  { id: 'tablet', title: 'Tablet spielen', icon: '📱', count: 3, minutes: 15, color: 'aqua', kind: 'limit' },
   { id: 'basteln', title: 'Basteln', icon: '✂️', count: 2, minutes: 15, color: 'orange', kind: 'goal' },
   { id: 'vorschulbuch', title: 'Vorschulbuch', icon: '🔤', count: 2, minutes: 15, color: 'lilac', kind: 'goal' },
   { id: 'spielzeuge', title: 'Mit Spielzeug spielen', icon: '🧸', count: 2, minutes: 15, color: 'sunny', kind: 'goal' },
