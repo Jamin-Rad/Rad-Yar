@@ -339,7 +339,7 @@ function CategoryPicker({ categories, type, selectedItems, onToggleItem, expande
 }
 
 // ── Entry form (shared between popup and elsewhere) ────────────────────────────
-function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onToggleItem, expandedCats, onToggleExpand, entryAmount, onAmountChange, entryDate, onDateChange, entryDescription, onDescriptionChange, onSubmit, entryTitle, entryCatNames, paidByFatima, onToggleFatima, entryScope, onSelectScopedItem }) {
+function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onToggleItem, expandedCats, onToggleExpand, entryAmount, onAmountChange, entryDate, onDateChange, entryDescription, onDescriptionChange, onSubmit, entryTitle, entryCatNames, paidByFatima, onToggleFatima, entryScope }) {
   const scopedCategory = entryScope ? categories.find(cat => cat.id === entryScope.catId) : null
   const scopedSelection = selectedItems[0]
 
@@ -398,33 +398,14 @@ function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onTo
       {entryScope && scopedCategory ? (
         <div className={styles.scopedCategoryBlock} style={{ '--scope-color': getCatColor(scopedCategory.name).border, '--scope-bg': getCatColor(scopedCategory.name).bg }}>
           <div className={styles.scopedCategoryHead}>
-            <span className={styles.scopedCategoryIcon}>✓</span>
+            <span className={styles.scopedCategoryIcon}>↳</span>
             <div>
-              <small>Ausgewählte Kategorie</small>
+              <small>Kategorie festgelegt</small>
               <strong>{scopedCategory.name}</strong>
+              {scopedSelection?.subName && <span>{scopedSelection.subName}</span>}
             </div>
-            <span className={styles.scopedCategoryLocked}>Fest ausgewählt</span>
+            <span className={styles.scopedCategoryLocked} aria-label="Kategorie kann hier nicht geändert werden">Gesperrt</span>
           </div>
-          {scopedCategory.subs.length > 0 && (
-            <div className={styles.scopedSubcategories}>
-              <span>Wofür genau?</span>
-              <div>
-                <button
-                  type="button"
-                  className={!scopedSelection?.subId ? styles.scopedSubActive : styles.scopedSub}
-                  onClick={() => onSelectScopedItem(scopedCategory, null)}
-                >Allgemein</button>
-                {scopedCategory.subs.map(sub => (
-                  <button
-                    type="button"
-                    key={sub.id}
-                    className={scopedSelection?.subId === sub.id ? styles.scopedSubActive : styles.scopedSub}
-                    onClick={() => onSelectScopedItem(scopedCategory, sub)}
-                  >{sub.name}</button>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       ) : (
         <CategoryPicker
@@ -1037,7 +1018,7 @@ ${manualEntries.length ? `
     openPopup(catDetail.type)
     if (category) {
       const sub = category.subs.find(s => s.name === subName)
-      setEntryScope({ catId: category.id, catName: category.name, subId: sub?.id || null })
+      setEntryScope({ catId: category.id, catName: category.name, subId: sub?.id || null, subName: sub?.name || null })
       if (sub) {
         setSelectedItems([{ catId: category.id, catName: category.name, subId: sub.id, subName: sub.name }])
       } else {
@@ -1076,15 +1057,6 @@ ${manualEntries.length ? `
     setEntryType(newType)
     setSelectedItems([])
     setExpandedCats(initialExpandedForType(newType))
-  }
-
-  function selectScopedItem(category, sub) {
-    setSelectedItems([{
-      catId: category.id,
-      catName: category.name,
-      subId: sub?.id || null,
-      subName: sub?.name || null,
-    }])
   }
 
   function addEntry(e) {
@@ -1341,14 +1313,10 @@ ${manualEntries.length ? `
         )}
         <div className={styles.financeHeader}>
           <div className={styles.financeHeroCopy}>
-            <span className={styles.financeEyebrow}>Finanzübersicht</span>
-            <h1 className={styles.title}>Private Finanzen</h1>
-            <p className={styles.financeHeroText}>Einnahmen, Ausgaben und Budgets auf einen Blick.</p>
+            <span className={styles.financeEyebrow}>Andarun / Finanzen</span>
+            <h1 className={styles.title}>Finanzen</h1>
+            <p className={styles.financeHeroText}>Dein Geld. Klar geordnet.</p>
             {syncError && <p className={styles.sub} style={{ margin: '4px 0 0', color: '#dc2626' }}>Online-Speichern fehlgeschlagen: {syncError}</p>}
-          </div>
-          <div className={styles.financeHeroBalance}>
-            <span>Verfügbar im {MONTH_SHORT[Number(month.split('-')[1]) - 1]}</span>
-            <strong className={summary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(summary.balance)}</strong>
           </div>
           <div className={styles.monthNav} ref={monthPickerRef}>
             <button className={styles.monthNavBtn} onClick={prevMonth} aria-label="Vorheriger Monat">‹</button>
@@ -1401,37 +1369,34 @@ ${manualEntries.length ? `
         </div>
 
         {/* ── METRIKEN ── */}
-        <div className={styles.financeMetrics}>
-          <div className={styles.financeMetric} style={{ borderTop: '3px solid #16a34a' }}>
+        <section className={styles.financeMetrics} aria-label="Monatsbilanz">
+          <div className={styles.financeBalanceCard}>
+            <span className={styles.financeBalanceLabel}>Monatsbilanz · {formatMonthLabel(month)}</span>
+            <strong className={summary.balance >= 0 ? styles.financeBalancePositive : styles.financeBalanceNegative}>{formatMoney(summary.balance)}</strong>
+            <div className={styles.financeBalanceSplit}>
+              <span><small>Eingegangen</small><b>+ {formatMoney(summary.income)}</b></span>
+              <span><small>Ausgegeben</small><b>− {formatMoney(summary.expenses)}</b></span>
+            </div>
+          </div>
+          <div className={styles.financeMetric}>
             <span>Einkommen</span>
             <strong className={styles.moneyPositive}>{formatMoney(summary.income)}</strong>
+            <small>{incomeTotals.length} {incomeTotals.length === 1 ? 'Quelle' : 'Quellen'}</small>
           </div>
-          <div className={styles.financeMetric} style={{ borderTop: '3px solid #dc2626' }}>
+          <div className={styles.financeMetric}>
             <div className={styles.financeMetricTop}>
               <span>Ausgaben</span>
-              <button
-                type="button"
-                className={styles.financeMetricAdd}
-                onClick={() => openPopup('expense')}
-                aria-label="Neue Ausgabe hinzufügen"
-                title="Neue Ausgabe hinzufügen"
-              >
-                <IconPlus />
-              </button>
+              <button type="button" className={styles.financeMetricAdd} onClick={() => openPopup('expense')} aria-label="Neue Ausgabe hinzufügen" title="Neue Ausgabe hinzufügen"><IconPlus /></button>
             </div>
             <strong className={styles.moneyNegative}>{formatMoney(summary.expenses)}</strong>
+            <small>{categoryTotals.length} Kategorien</small>
           </div>
-          <div className={styles.financeMetric} style={{ borderTop: `3px solid ${summary.balance >= 0 ? '#16a34a' : '#dc2626'}` }}>
-            <span>Saldo</span>
-            <strong className={summary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(summary.balance)}</strong>
-          </div>
-          <div className={styles.financeMetric} style={{ borderTop: '3px solid #0ea5e9' }}>
+          <div className={styles.financeMetric}>
             <span>Sparquote</span>
-            <strong className={summary.balance >= 0 ? styles.moneyPositive : styles.moneyNegative}>
-              {summary.income ? `${sparquote(summary.income, summary.expenses)} %` : '—'}
-            </strong>
+            <strong>{summary.income ? `${sparquote(summary.income, summary.expenses)} %` : '—'}</strong>
+            <small>{summary.balance >= 0 ? 'im positiven Bereich' : 'Ausgaben über Einkommen'}</small>
           </div>
-        </div>
+        </section>
 
         {/* ── LAYOUT ── */}
         <div className={styles.financeLayout}>
@@ -1457,7 +1422,7 @@ ${manualEntries.length ? `
 
             {/* ── MONATSÜBERSICHT ── */}
             {view === 'monat' && (
-              <div>
+              <div className={styles.financeMonthGrid}>
                 {/* EINKOMMEN */}
                 <div className={styles.sectionCard} style={{ borderColor: 'rgba(22,163,74,.2)' }}>
                   <div className={styles.sectionCardHead} style={{ background: 'rgba(22,163,74,.07)', borderBottom: '1px solid rgba(22,163,74,.15)' }}>
@@ -3056,7 +3021,7 @@ ${manualEntries.length ? `
                     {formatMonthLabel(month)}
                   </p>
                   <h3 className={styles.popupTitle} style={{ color: popupAccent }}>
-                    {entryScope ? `Neue Ausgabe · ${entryScope.catName}` : `${isIncome ? 'Einkommen' : 'Ausgabe'} eintragen`}
+                    {entryScope ? `Neue Ausgabe · ${entryScope.subName || entryScope.catName}` : `${isIncome ? 'Einkommen' : 'Ausgabe'} eintragen`}
                   </h3>
                 </div>
                 <button className={styles.popupClose} onClick={closePopup} aria-label="Schließen">×</button>
@@ -3085,7 +3050,6 @@ ${manualEntries.length ? `
                   paidByFatima={paidByFatima}
                   onToggleFatima={() => setPaidByFatima(v => !v)}
                   entryScope={entryScope}
-                  onSelectScopedItem={selectScopedItem}
                 />
               </div>
 
