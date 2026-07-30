@@ -11,17 +11,23 @@ const CATEGORIES_KEY = 'radyar_categories_v2'
 const IRAN_TRIP_KEY  = '__iran_special_trip_v1'
 
 const IRAN_EXPENSE_CATEGORIES = [
-  'Transport',
-  'Aufenthalt',
-  'Essen',
-  'Freizeit & Spaß',
-  'Familie – Fatima',
-  'Familie – Jamin',
-  'Einkäufe',
-  'Gesundheit',
-  'Geschenke',
-  'Sonstiges',
+  { name: 'Transport', icon: 'transport', subs: ['Flugzeug', 'Bahn', 'Taxi'] },
+  { name: 'Aufenthalt', icon: 'stay', subs: [] },
+  { name: 'Essen', icon: 'food', subs: ['Restaurant (allein)', 'Restaurant (mit anderen)', 'Supermarkt'] },
+  { name: 'Freizeit & Spaß', icon: 'fun', subs: [] },
+  { name: 'Einkäufe', icon: 'shopping', subs: ['Jamin', 'Fatima', 'Mobin', 'Mobina'] },
+  { name: 'Geschenke und Ausgaben', icon: 'gift', subs: ['Jamins Familie', 'Fatimas Familie'] },
 ]
+
+function iranCategoryValue(category, sub = '') {
+  return sub ? `${category} › ${sub}` : category
+}
+
+function iranCategoryGroup(value) {
+  return IRAN_EXPENSE_CATEGORIES.find(category => (
+    value === category.name || value.startsWith(`${category.name} › `)
+  ))?.name || value
+}
 
 const IRAN_SETTLEMENT_PEOPLE = ['Mohsen', 'Hossein', 'Maman']
 
@@ -251,6 +257,17 @@ function IconTrend() {
 function IconPlane() {
   return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 2 9 15"/><path d="m22 2-7 20-4-9-9-4Z"/></svg>
 }
+function IranCategoryIcon({ type }) {
+  const paths = {
+    transport: <><path d="M3 11h18"/><path d="M5 11l2-6h10l2 6v7H5z"/><circle cx="8" cy="18" r="2"/><circle cx="16" cy="18" r="2"/></>,
+    stay: <><path d="M3 20V9l9-6 9 6v11"/><path d="M8 20v-7h8v7"/></>,
+    food: <><path d="M7 3v8"/><path d="M4 3v5a3 3 0 0 0 6 0V3"/><path d="M7 11v10"/><path d="M17 3v18"/><path d="M17 3c-3 2-3 7 0 9"/></>,
+    fun: <><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01"/><path d="M15 9h.01"/><circle cx="12" cy="12" r="9"/></>,
+    shopping: <><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></>,
+    gift: <><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13"/><path d="M3 12h18"/><path d="M12 8H8.5a2.5 2.5 0 1 1 2.1-3.85L12 8Z"/><path d="M12 8h3.5a2.5 2.5 0 1 0-2.1-3.85L12 8Z"/></>,
+  }
+  return <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[type]}</svg>
+}
 function ChevronDown() {
   return <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
 }
@@ -473,7 +490,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
 
   // Sonderurlaub Iran
   const [iranExpenseForm, setIranExpenseForm] = useState(() => ({
-    category: IRAN_EXPENSE_CATEGORIES[0], amount: '', description: '', date: getDateKey(),
+    category: iranCategoryValue(IRAN_EXPENSE_CATEGORIES[0].name, IRAN_EXPENSE_CATEGORIES[0].subs[0]), amount: '', description: '', date: getDateKey(),
   }))
   const [iranSettlementForm, setIranSettlementForm] = useState(() => ({
     person: IRAN_SETTLEMENT_PEOPLE[0], direction: 'receive', amount: '', note: '', date: getDateKey(),
@@ -615,9 +632,9 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
   )
 
   const iranCategoryTotals = useMemo(() => IRAN_EXPENSE_CATEGORIES.map(category => ({
-    category,
+    category: category.name,
     total: iranTrip.expenses
-      .filter(entry => entry.category === category)
+      .filter(entry => iranCategoryGroup(entry.category) === category.name)
       .reduce((sum, entry) => sum + Number(entry.amountRial || 0), 0),
   })).filter(item => item.total > 0), [iranTrip.expenses])
 
@@ -1544,12 +1561,47 @@ ${manualEntries.length ? `
                       <div><span>Neue Ausgabe</span><h3>Reisekosten eintragen</h3></div>
                     </header>
                     <form className={styles.iranTripForm} onSubmit={addIranExpense}>
-                      <label>
-                        Kategorie
-                        <select value={iranExpenseForm.category} onChange={event => setIranExpenseForm(prev => ({ ...prev, category: event.target.value }))}>
-                          {IRAN_EXPENSE_CATEGORIES.map(category => <option key={category}>{category}</option>)}
-                        </select>
-                      </label>
+                      <fieldset className={styles.iranCategoryPicker}>
+                        <legend>Kategorie</legend>
+                        <div className={styles.iranCategoryChoices}>
+                          {IRAN_EXPENSE_CATEGORIES.map(category => {
+                            const groupActive = iranCategoryGroup(iranExpenseForm.category) === category.name
+                            return (
+                              <div className={`${styles.iranCategoryChoice} ${groupActive ? styles.iranCategoryChoiceActive : ''}`} key={category.name}>
+                                <button
+                                  type="button"
+                                  className={styles.iranCategoryChoiceHead}
+                                  aria-pressed={category.subs.length === 0 && groupActive}
+                                  onClick={() => {
+                                    const nextValue = iranCategoryValue(category.name, category.subs[0])
+                                    setIranExpenseForm(prev => ({ ...prev, category: nextValue }))
+                                  }}
+                                >
+                                  <span className={styles.iranCategoryIcon}><IranCategoryIcon type={category.icon} /></span>
+                                  <span>{category.name}</span>
+                                  {groupActive && <span className={styles.iranCategoryCheck}>✓</span>}
+                                </button>
+                                {category.subs.length > 0 && (
+                                  <div className={styles.iranCategorySubs}>
+                                    {category.subs.map(sub => {
+                                      const value = iranCategoryValue(category.name, sub)
+                                      return (
+                                        <button
+                                          type="button"
+                                          key={sub}
+                                          className={iranExpenseForm.category === value ? styles.iranCategorySubActive : ''}
+                                          aria-pressed={iranExpenseForm.category === value}
+                                          onClick={() => setIranExpenseForm(prev => ({ ...prev, category: value }))}
+                                        >{sub}</button>
+                                      )
+                                    })}
+                                  </div>
+                                )}
+                              </div>
+                            )
+                          })}
+                        </div>
+                      </fieldset>
                       <label>
                         Betrag in Rial
                         <input type="number" min="1" step="1" inputMode="numeric" value={iranExpenseForm.amount} onChange={event => setIranExpenseForm(prev => ({ ...prev, amount: event.target.value }))} placeholder="0" required />
