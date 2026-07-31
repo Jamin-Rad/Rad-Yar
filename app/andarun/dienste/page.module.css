@@ -2067,8 +2067,8 @@
 
 @media print {
   @page {
-    size: A4 landscape;
-    margin: 8mm;
+    size: A4 portrait;
+    margin: 10mm;
   }
 
   .page {
@@ -2087,13 +2087,16 @@
 
   .printSheet {
     display: block;
-    width: 100%;
+    width: 168mm;
+    max-width: 100%;
     height: auto;
+    margin: 0 auto;
     padding: 0;
     color: #000;
     font-family: Arial, sans-serif;
     break-inside: avoid;
     page-break-inside: avoid;
+    page-break-after: avoid;
   }
 
   .printTop {
@@ -2120,8 +2123,8 @@
     width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
-    font-size: 8pt;
-    line-height: 1.05;
+    font-size: 7.5pt;
+    line-height: 1;
     break-inside: avoid;
     page-break-inside: avoid;
   }
@@ -2133,9 +2136,10 @@
 
   .printSheet th,
   .printSheet td {
+    box-sizing: border-box;
     border: 1px solid #000;
-    height: 4.75mm;
-    padding: 1.1mm 2mm;
+    height: 5.2mm;
+    padding: .65mm 1.6mm;
     text-align: left;
   }
 
@@ -2146,16 +2150,16 @@
   .signatures {
     display: grid;
     grid-template-columns: .8fr 1.2fr 1.2fr;
-    gap: 14mm;
-    margin-top: 6mm;
-    font-size: 8pt;
+    gap: 10mm;
+    margin-top: 5mm;
+    font-size: 7.5pt;
     break-inside: avoid;
     page-break-inside: avoid;
   }
 
   .signatures div {
     display: grid;
-    gap: 5mm;
+    gap: 4mm;
   }
 
   .signatures strong {
