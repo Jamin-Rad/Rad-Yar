@@ -62,6 +62,15 @@ function formatIranRial(value) {
   return `${new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 }).format(Number(value || 0))} Rial`
 }
 
+function iranExpenseEuroValue(entry, fallbackRateToman) {
+  const lockedEuro = Number(entry.amountEuroAtEntry)
+  if (lockedEuro > 0) return lockedEuro
+  if (entry.originalCurrency === 'eur' && Number(entry.originalAmount) > 0) return Number(entry.originalAmount)
+  const lockedRate = Number(entry.exchangeRateAtEntryToman || (entry.exchangeRateUnit === 'toman' ? entry.exchangeRateAtEntry : 0))
+  const rateToman = lockedRate > 0 ? lockedRate : Number(fallbackRateToman || 0)
+  return rateToman > 0 ? Number(entry.amountRial || 0) / 10 / rateToman : 0
+}
+
 async function budgetApi(method = 'GET', body) {
   const res = await fetch('/api/admin/budget', {
     method,
@@ -503,7 +512,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
 
   // Sonderurlaub Iran
   const [iranExpenseForm, setIranExpenseForm] = useState(() => ({
-    category: iranCategoryValue(IRAN_EXPENSE_CATEGORIES[0].name, IRAN_EXPENSE_CATEGORIES[0].subs[0]), currency: 'toman', amount: '', description: '', date: getDateKey(),
+    category: iranCategoryValue(IRAN_EXPENSE_CATEGORIES[0].name, IRAN_EXPENSE_CATEGORIES[0].subs[0]), currency: 'toman', amount: '', exchangeRate: '', description: '', date: getDateKey(),
   }))
   const [iranSettlementForm, setIranSettlementForm] = useState(() => ({
     person: IRAN_SETTLEMENT_PEOPLE[0], direction: 'receive', amount: '', note: '', date: getDateKey(),
@@ -643,14 +652,25 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
     () => iranTrip.expenses.reduce((sum, entry) => sum + Number(entry.amountRial || 0), 0),
     [iranTrip.expenses]
   )
+  const iranExpenseTotalEuro = useMemo(
+    () => iranTrip.expenses.reduce((sum, entry) => sum + iranExpenseEuroValue(entry, iranTrip.exchangeRate), 0),
+    [iranTrip.expenses, iranTrip.exchangeRate]
+  )
   const iranAccountRemainingRial = Number(iranTrip.accountBalanceRial || 0) - iranExpenseTotal
 
-  const iranCategoryTotals = useMemo(() => IRAN_EXPENSE_CATEGORIES.map(category => ({
-    category: category.name,
-    total: iranTrip.expenses
-      .filter(entry => iranCategoryGroup(entry.category) === category.name)
-      .reduce((sum, entry) => sum + Number(entry.amountRial || 0), 0),
-  })).filter(item => item.total > 0), [iranTrip.expenses])
+  const iranCategoryTotals = useMemo(() => IRAN_EXPENSE_CATEGORIES.map(category => {
+    const entries = iranTrip.expenses.filter(entry => iranCategoryGroup(entry.category) === category.name)
+    return {
+      category: category.name,
+      icon: category.icon,
+      total: entries.reduce((sum, entry) => sum + Number(entry.amountRial || 0), 0),
+      totalEuro: entries.reduce((sum, entry) => sum + iranExpenseEuroValue(entry, iranTrip.exchangeRate), 0),
+    }
+  }).filter(item => item.total > 0), [iranTrip.expenses, iranTrip.exchangeRate])
+
+  const iranCategoryChartMax = Math.max(1, ...iranCategoryTotals.map(item => (
+    iranTrip.displayCurrency === 'eur' ? item.totalEuro : item.total
+  )))
 
   const iranSettlementBalances = useMemo(() => IRAN_SETTLEMENT_PEOPLE.map(person => {
     const entries = iranTrip.settlements.filter(entry => entry.person === person)
@@ -683,12 +703,18 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
     return formatTomanFromRial(amountRial)
   }
 
+  function iranExpenseDisplayAmount(entry) {
+    return iranTrip.displayCurrency === 'eur'
+      ? formatMoney(iranExpenseEuroValue(entry, iranTrip.exchangeRate))
+      : formatTomanFromRial(entry.amountRial)
+  }
+
   function addIranExpense(event) {
     event.preventDefault()
     const enteredAmount = Number(iranExpenseForm.amount)
     const inputCurrency = iranExpenseForm.currency === 'eur' ? 'eur' : 'toman'
-    const rateToman = Number(iranTrip.exchangeRate || 0)
-    if (!enteredAmount || !iranExpenseForm.category || (inputCurrency === 'eur' && rateToman <= 0)) return
+    const rateToman = Number(iranExpenseForm.exchangeRate || iranTrip.exchangeRate || 0)
+    if (!enteredAmount || !iranExpenseForm.category || rateToman <= 0) return
     const originalAmount = inputCurrency === 'eur' ? enteredAmount : enteredAmount * 1000
     const amountRial = Math.round((inputCurrency === 'eur' ? enteredAmount * rateToman : originalAmount) * 10)
     const entry = {
@@ -697,13 +723,15 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
       amountRial,
       originalAmount,
       originalCurrency: inputCurrency,
-      exchangeRateAtEntry: inputCurrency === 'eur' ? rateToman : null,
-      exchangeRateUnit: inputCurrency === 'eur' ? 'toman' : null,
+      exchangeRateAtEntry: rateToman,
+      exchangeRateAtEntryToman: rateToman,
+      exchangeRateUnit: 'toman',
+      amountEuroAtEntry: inputCurrency === 'eur' ? enteredAmount : amountRial / 10 / rateToman,
       description: iranExpenseForm.description.trim(),
       date: iranExpenseForm.date || getDateKey(),
     }
     updateIranTrip(current => ({ ...current, expenses: [entry, ...current.expenses] }))
-    setIranExpenseForm(prev => ({ ...prev, amount: '', description: '' }))
+    setIranExpenseForm(prev => ({ ...prev, amount: '', exchangeRate: '', description: '' }))
   }
 
   function addIranSettlement(event) {
@@ -1570,7 +1598,7 @@ ${manualEntries.length ? `
                       </div>
                       <div className={styles.iranTripTotal}>
                         <span>Gesamtausgaben</span>
-                        <strong>{iranDisplayAmount(iranExpenseTotal)}</strong>
+                        <strong>{iranTrip.displayCurrency === 'eur' ? formatMoney(iranExpenseTotalEuro) : formatTomanFromRial(iranExpenseTotal)}</strong>
                       </div>
                     </div>
                   </div>
@@ -1578,7 +1606,7 @@ ${manualEntries.length ? `
 
                 <section className={styles.iranExchangeCard}>
                   <label>
-                    <span>Fester Wechselkurs</span>
+                    <span>Standardkurs für neue Ausgaben</span>
                     <div className={styles.iranRateInput}>
                       <em>1 € =</em>
                       <input
@@ -1593,12 +1621,12 @@ ${manualEntries.length ? `
                       />
                       <em>Toman</em>
                     </div>
-                    <small>Der Kurs bleibt gespeichert, bis du ihn änderst. Beträge werden in 1.000 Toman oder Euro eingegeben.</small>
+                    <small>Neue Ausgaben übernehmen diesen Kurs. Bereits gespeicherte Ausgaben behalten immer ihren ursprünglichen Kurs.</small>
                   </label>
                 </section>
 
                 <div className={styles.iranTripGrid}>
-                  <section className={styles.iranTripCard}>
+                  <section className={`${styles.iranTripCard} ${styles.iranExpenseCard}`}>
                     <header className={styles.iranTripCardHead}>
                       <div><span>Neue Ausgabe</span><h3>Reisekosten eintragen</h3></div>
                     </header>
@@ -1623,7 +1651,7 @@ ${manualEntries.length ? `
                                   <span>{category.name}</span>
                                   {groupActive && <span className={styles.iranCategoryCheck}>✓</span>}
                                 </button>
-                                {category.subs.length > 0 && (
+                                {groupActive && category.subs.length > 0 && (
                                   <div className={styles.iranCategorySubs}>
                                     {category.subs.map(sub => {
                                       const value = iranCategoryValue(category.name, sub)
@@ -1666,11 +1694,28 @@ ${manualEntries.length ? `
                           <strong>{iranExpenseForm.currency === 'eur' ? '€' : '× 1.000 Toman'}</strong>
                         </div>
                         {iranExpenseForm.currency === 'eur' ? (
-                          Number(iranTrip.exchangeRate || 0) > 0
-                            ? <small>Wird beim Speichern zu {formatTomanFromRial(Number(iranExpenseForm.amount || 0) * Number(iranTrip.exchangeRate) * 10)} umgerechnet.</small>
-                            : <small className={styles.iranRateWarning}>Bitte zuerst oben einen Wechselkurs eintragen.</small>
+                          Number(iranExpenseForm.exchangeRate || iranTrip.exchangeRate || 0) > 0
+                            ? <small>Wird beim Speichern zu {formatTomanFromRial(Number(iranExpenseForm.amount || 0) * Number(iranExpenseForm.exchangeRate || iranTrip.exchangeRate) * 10)} umgerechnet.</small>
+                            : <small className={styles.iranRateWarning}>Bitte einen Wechselkurs für diese Ausgabe eintragen.</small>
                         ) : <small>Beispiel: 35 entspricht 35.000 Toman.</small>}
                       </div>
+                      <label>
+                        Kurs dieser Ausgabe
+                        <div className={styles.iranLockedRateInput}>
+                          <input
+                            type="number"
+                            min="1"
+                            step="1"
+                            inputMode="numeric"
+                            value={iranExpenseForm.exchangeRate}
+                            onChange={event => setIranExpenseForm(prev => ({ ...prev, exchangeRate: event.target.value }))}
+                            placeholder={iranTrip.exchangeRate || 'z. B. 200.000'}
+                            required={!iranTrip.exchangeRate}
+                          />
+                          <strong>T / €</strong>
+                        </div>
+                        <small>Dieser Kurs wird für den Eintrag fest gespeichert.</small>
+                      </label>
                       <label>
                         Datum
                         <input type="date" value={iranExpenseForm.date} onChange={event => setIranExpenseForm(prev => ({ ...prev, date: event.target.value }))} />
@@ -1679,11 +1724,11 @@ ${manualEntries.length ? `
                         Beschreibung
                         <input value={iranExpenseForm.description} onChange={event => setIranExpenseForm(prev => ({ ...prev, description: event.target.value }))} placeholder="Optional" />
                       </label>
-                      <button className={styles.iranPrimaryBtn} type="submit" disabled={!iranExpenseForm.amount || (iranExpenseForm.currency === 'eur' && Number(iranTrip.exchangeRate || 0) <= 0)}>Ausgabe speichern</button>
+                      <button className={styles.iranPrimaryBtn} type="submit" disabled={!iranExpenseForm.amount || Number(iranExpenseForm.exchangeRate || iranTrip.exchangeRate || 0) <= 0}>Ausgabe speichern</button>
                     </form>
                   </section>
 
-                  <section className={styles.iranTripCard}>
+                  <section className={`${styles.iranTripCard} ${styles.iranSettlementCard}`}>
                     <header className={styles.iranTripCardHead}>
                       <div><span>Abrechnung</span><h3>Geben &amp; bekommen</h3></div>
                     </header>
@@ -1719,13 +1764,19 @@ ${manualEntries.length ? `
                     <div><span>Übersicht</span><h3>Ausgaben nach Kategorie</h3></div>
                   </header>
                   {iranCategoryTotals.length ? (
-                    <div className={styles.iranCategoryGrid}>
-                      {iranCategoryTotals.map(item => (
-                        <div className={styles.iranCategoryItem} key={item.category}>
-                          <span>{item.category}</span>
-                          <strong>{iranDisplayAmount(item.total)}</strong>
+                    <div className={styles.iranCategoryChart}>
+                      {iranCategoryTotals.map(item => {
+                        const chartValue = iranTrip.displayCurrency === 'eur' ? item.totalEuro : item.total
+                        return (
+                        <div className={styles.iranCategoryChartRow} key={item.category}>
+                          <span className={styles.iranCategoryChartIcon}><IranCategoryIcon type={item.icon} /></span>
+                          <div className={styles.iranCategoryChartBody}>
+                            <div><span>{item.category}</span><strong>{iranTrip.displayCurrency === 'eur' ? formatMoney(item.totalEuro) : formatTomanFromRial(item.total)}</strong></div>
+                            <div className={styles.iranCategoryChartTrack}><i style={{ width: `${Math.max(3, (chartValue / iranCategoryChartMax) * 100)}%` }} /></div>
+                          </div>
                         </div>
-                      ))}
+                        )
+                      })}
                     </div>
                   ) : <p className={styles.iranEmpty}>Noch keine Reisekosten eingetragen.</p>}
 
@@ -1735,9 +1786,9 @@ ${manualEntries.length ? `
                         <div className={styles.iranEntryRow} key={entry.id}>
                           <div>
                             <strong>{entry.category}</strong>
-                            <span>{entry.description || 'Ohne Beschreibung'} · {new Date(`${entry.date}T00:00:00`).toLocaleDateString('de-DE')}{entry.originalCurrency === 'eur' ? ` · ursprünglich ${formatMoney(entry.originalAmount)}` : ''}</span>
+                            <span>{entry.description || 'Ohne Beschreibung'} · {new Date(`${entry.date}T00:00:00`).toLocaleDateString('de-DE')}{entry.originalCurrency === 'eur' ? ` · ursprünglich ${formatMoney(entry.originalAmount)}` : ''}{entry.exchangeRateAtEntryToman ? ` · Kurs ${new Intl.NumberFormat('de-DE').format(entry.exchangeRateAtEntryToman)} T/€` : ''}</span>
                           </div>
-                          <b>{iranDisplayAmount(entry.amountRial)}</b>
+                          <b>{iranExpenseDisplayAmount(entry)}</b>
                           <button type="button" onClick={() => deleteIranExpense(entry.id)} aria-label="Ausgabe löschen">×</button>
                         </div>
                       ))}
