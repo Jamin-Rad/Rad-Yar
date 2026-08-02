@@ -55,11 +55,7 @@ function normalizeIranTrip(value) {
 }
 
 function formatTomanFromRial(value) {
-  return `${new Intl.NumberFormat('de-DE', { maximumFractionDigits: 1 }).format(Number(value || 0) / 10)} Toman`
-}
-
-function formatThousandsTomanFromRial(value) {
-  return `${new Intl.NumberFormat('de-DE', { maximumFractionDigits: 1 }).format(Number(value || 0) / 10000)} × 1.000 Toman`
+  return `${new Intl.NumberFormat('de-DE', { maximumFractionDigits: 1 }).format(Number(value || 0) / 10)} T`
 }
 
 function formatIranRial(value) {
@@ -676,7 +672,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
     if (iranTrip.displayCurrency === 'eur') {
       return rateToman > 0 ? formatMoney(Number(amountRial || 0) / 10 / rateToman) : 'Kurs fehlt'
     }
-    return formatThousandsTomanFromRial(amountRial)
+    return formatTomanFromRial(amountRial)
   }
 
   function iranBalanceDisplayAmount(amountRial) {
@@ -684,7 +680,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
     if (iranTrip.displayCurrency === 'eur') {
       return rateToman > 0 ? formatMoney(Number(amountRial || 0) / 10 / rateToman) : 'Kurs fehlt'
     }
-    return formatThousandsTomanFromRial(amountRial)
+    return formatTomanFromRial(amountRial)
   }
 
   function addIranExpense(event) {
@@ -1563,7 +1559,7 @@ ${manualEntries.length ? `
                   </div>
                   <div className={styles.iranTripHeroStats}>
                     <div className={styles.iranCurrencySwitch} aria-label="Anzeigewährung">
-                      <button type="button" className={iranTrip.displayCurrency === 'toman' ? styles.iranCurrencyActive : ''} onClick={() => updateIranTrip(current => ({ ...current, displayCurrency: 'toman' }))}>1.000 Toman</button>
+                      <button type="button" className={iranTrip.displayCurrency === 'toman' ? styles.iranCurrencyActive : ''} onClick={() => updateIranTrip(current => ({ ...current, displayCurrency: 'toman' }))}>Toman</button>
                       <button type="button" className={iranTrip.displayCurrency === 'eur' ? styles.iranCurrencyActive : ''} onClick={() => updateIranTrip(current => ({ ...current, displayCurrency: 'eur' }))}>Euro</button>
                     </div>
                     <div className={styles.iranTripSummaryRow}>
