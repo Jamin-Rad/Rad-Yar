@@ -1604,31 +1604,11 @@ ${manualEntries.length ? `
                   </div>
                 </section>
 
-                <section className={styles.iranExchangeCard}>
-                  <label>
-                    <span>Standardkurs für neue Ausgaben</span>
-                    <div className={styles.iranRateInput}>
-                      <em>1 € =</em>
-                      <input
-                        type="number"
-                        min="1"
-                        step="1"
-                        inputMode="numeric"
-                        value={iranTrip.exchangeRate}
-                        onChange={event => updateIranTrip(current => ({ ...current, exchangeRate: event.target.value }))}
-                        placeholder="z. B. 105.000"
-                        aria-label="Toman pro Euro"
-                      />
-                      <em>Toman</em>
-                    </div>
-                    <small>Neue Ausgaben übernehmen diesen Kurs. Bereits gespeicherte Ausgaben behalten immer ihren ursprünglichen Kurs.</small>
-                  </label>
-                </section>
-
-                <div className={styles.iranTripGrid}>
+                <div className={styles.iranTripWorkspace}>
                   <section className={`${styles.iranTripCard} ${styles.iranExpenseCard}`}>
                     <header className={styles.iranTripCardHead}>
-                      <div><span>Neue Ausgabe</span><h3>Reisekosten eintragen</h3></div>
+                      <b>01</b>
+                      <div><span>Ausgaben erfassen</span><h3>Neue Reisekosten</h3></div>
                     </header>
                     <form className={styles.iranTripForm} onSubmit={addIranExpense}>
                       <fieldset className={styles.iranCategoryPicker}>
@@ -1728,8 +1708,32 @@ ${manualEntries.length ? `
                     </form>
                   </section>
 
+                  <aside className={styles.iranTripSidebar}>
+                    <section className={styles.iranExchangeCard}>
+                      <header className={styles.iranCompactCardHead}><b>02</b><div><span>Umrechnung</span><h3>Standardkurs</h3></div></header>
+                      <label>
+                        <span>Euro in Toman</span>
+                        <div className={styles.iranRateInput}>
+                          <em>1 € =</em>
+                          <input
+                            type="number"
+                            min="1"
+                            step="1"
+                            inputMode="numeric"
+                            value={iranTrip.exchangeRate}
+                            onChange={event => updateIranTrip(current => ({ ...current, exchangeRate: event.target.value }))}
+                            placeholder="z. B. 200.000"
+                            aria-label="Toman pro Euro"
+                          />
+                          <em>T</em>
+                        </div>
+                        <small>Nur neue Ausgaben übernehmen diesen Kurs.</small>
+                      </label>
+                    </section>
+
                   <section className={`${styles.iranTripCard} ${styles.iranSettlementCard}`}>
                     <header className={styles.iranTripCardHead}>
+                      <b>03</b>
                       <div><span>Abrechnung</span><h3>Geben &amp; bekommen</h3></div>
                     </header>
                     <form className={styles.iranTripForm} onSubmit={addIranSettlement}>
@@ -1757,11 +1761,13 @@ ${manualEntries.length ? `
                       <button className={styles.iranPrimaryBtn} type="submit" disabled={!iranSettlementForm.amount}>Abrechnung speichern</button>
                     </form>
                   </section>
+                  </aside>
                 </div>
 
-                <section className={styles.iranTripCard}>
+                <section className={`${styles.iranTripCard} ${styles.iranOverviewCard}`}>
                   <header className={styles.iranTripCardHead}>
-                    <div><span>Übersicht</span><h3>Ausgaben nach Kategorie</h3></div>
+                    <b>04</b>
+                    <div><span>Analyse</span><h3>Ausgaben nach Kategorie</h3></div>
                   </header>
                   {iranCategoryTotals.length ? (
                     <div className={styles.iranCategoryChart}>
@@ -1781,23 +1787,27 @@ ${manualEntries.length ? `
                   ) : <p className={styles.iranEmpty}>Noch keine Reisekosten eingetragen.</p>}
 
                   {iranTrip.expenses.length > 0 && (
-                    <div className={styles.iranEntryList}>
-                      {iranTrip.expenses.map(entry => (
-                        <div className={styles.iranEntryRow} key={entry.id}>
-                          <div>
-                            <strong>{entry.category}</strong>
-                            <span>{entry.description || 'Ohne Beschreibung'} · {new Date(`${entry.date}T00:00:00`).toLocaleDateString('de-DE')}{entry.originalCurrency === 'eur' ? ` · ursprünglich ${formatMoney(entry.originalAmount)}` : ''}{entry.exchangeRateAtEntryToman ? ` · Kurs ${new Intl.NumberFormat('de-DE').format(entry.exchangeRateAtEntryToman)} T/€` : ''}</span>
+                    <div className={styles.iranHistoryBlock}>
+                      <div className={styles.iranHistoryHead}><strong>Letzte Ausgaben</strong><span>{iranTrip.expenses.length} Einträge</span></div>
+                      <div className={styles.iranEntryList}>
+                        {iranTrip.expenses.map(entry => (
+                          <div className={styles.iranEntryRow} key={entry.id}>
+                            <div>
+                              <strong>{entry.category}</strong>
+                              <span>{entry.description || 'Ohne Beschreibung'} · {new Date(`${entry.date}T00:00:00`).toLocaleDateString('de-DE')}{entry.originalCurrency === 'eur' ? ` · ursprünglich ${formatMoney(entry.originalAmount)}` : ''}{entry.exchangeRateAtEntryToman ? ` · Kurs ${new Intl.NumberFormat('de-DE').format(entry.exchangeRateAtEntryToman)} T/€` : ''}</span>
+                            </div>
+                            <b>{iranExpenseDisplayAmount(entry)}</b>
+                            <button type="button" onClick={() => deleteIranExpense(entry.id)} aria-label="Ausgabe löschen">×</button>
                           </div>
-                          <b>{iranExpenseDisplayAmount(entry)}</b>
-                          <button type="button" onClick={() => deleteIranExpense(entry.id)} aria-label="Ausgabe löschen">×</button>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
                   )}
                 </section>
 
-                <section className={styles.iranTripCard}>
+                <section className={`${styles.iranTripCard} ${styles.iranPeopleCard}`}>
                   <header className={styles.iranTripCardHead}>
+                    <b>05</b>
                     <div><span>Personen</span><h3>Offene Abrechnung</h3></div>
                   </header>
                   <div className={styles.iranPeopleGrid}>
