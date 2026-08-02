@@ -33,7 +33,7 @@ function iranCategoryGroup(value) {
 const IRAN_SETTLEMENT_PEOPLE = ['Mohsen', 'Hossein', 'Maman']
 
 function emptyIranTrip() {
-  return { exchangeRate: '', exchangeRateUnit: 'toman', displayCurrency: 'toman', expenses: [], settlements: [] }
+  return { exchangeRate: '', exchangeRateUnit: 'toman', accountBalanceRial: '', displayCurrency: 'toman', expenses: [], settlements: [] }
 }
 
 function normalizeIranTrip(value) {
@@ -46,6 +46,7 @@ function normalizeIranTrip(value) {
   return {
     exchangeRate,
     exchangeRateUnit: 'toman',
+    accountBalanceRial: value.accountBalanceRial || '',
     displayCurrency: value.displayCurrency === 'eur' ? 'eur' : 'toman',
     expenses: Array.isArray(value.expenses) ? value.expenses : [],
     settlements: Array.isArray(value.settlements) ? value.settlements : [],
@@ -54,6 +55,10 @@ function normalizeIranTrip(value) {
 
 function formatTomanFromRial(value) {
   return `${new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 }).format(Number(value || 0) / 10)} Toman`
+}
+
+function formatIranRial(value) {
+  return `${new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 }).format(Number(value || 0))} Rial`
 }
 
 async function budgetApi(method = 'GET', body) {
@@ -637,6 +642,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
     () => iranTrip.expenses.reduce((sum, entry) => sum + Number(entry.amountRial || 0), 0),
     [iranTrip.expenses]
   )
+  const iranAccountRemainingRial = Number(iranTrip.accountBalanceRial || 0) - iranExpenseTotal
 
   const iranCategoryTotals = useMemo(() => IRAN_EXPENSE_CATEGORIES.map(category => ({
     category: category.name,
@@ -1570,6 +1576,35 @@ ${manualEntries.length ? `
                   <div className={styles.iranCurrencySwitch} aria-label="Anzeigewährung">
                     <button type="button" className={iranTrip.displayCurrency === 'toman' ? styles.iranCurrencyActive : ''} onClick={() => updateIranTrip(current => ({ ...current, displayCurrency: 'toman' }))}>Toman</button>
                     <button type="button" className={iranTrip.displayCurrency === 'eur' ? styles.iranCurrencyActive : ''} onClick={() => updateIranTrip(current => ({ ...current, displayCurrency: 'eur' }))}>Euro</button>
+                  </div>
+                </section>
+
+                <section className={styles.iranAccountCard}>
+                  <label>
+                    <span>Kontostand Iran vor Ausgaben</span>
+                    <div className={styles.iranAccountInput}>
+                      <input
+                        type="number"
+                        min="0"
+                        step="1"
+                        inputMode="numeric"
+                        value={iranTrip.accountBalanceRial}
+                        onChange={event => updateIranTrip(current => ({ ...current, accountBalanceRial: event.target.value }))}
+                        placeholder="Kontostand laut Bank"
+                        aria-label="Kontostand des iranischen Kontos in Rial"
+                      />
+                      <strong>Rial</strong>
+                    </div>
+                    <small>Die Bank zeigt Rial. Alle erfassten Ausgaben werden automatisch korrekt abgezogen.</small>
+                  </label>
+                  <div className={styles.iranAccountBalance}>
+                    <span>Verfügbarer Kontostand</span>
+                    {iranTrip.accountBalanceRial !== '' ? (
+                      <>
+                        <strong className={iranAccountRemainingRial < 0 ? styles.iranAccountBalanceNegative : ''}>{formatTomanFromRial(iranAccountRemainingRial)}</strong>
+                        <small>{formatIranRial(iranAccountRemainingRial)} · nach {formatTomanFromRial(iranExpenseTotal)} Ausgaben</small>
+                      </>
+                    ) : <em>Noch kein Kontostand eingetragen</em>}
                   </div>
                 </section>
 
