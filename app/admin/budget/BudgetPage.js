@@ -514,6 +514,8 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
   const [iranExpenseForm, setIranExpenseForm] = useState(() => ({
     category: iranCategoryValue(IRAN_EXPENSE_CATEGORIES[0].name, IRAN_EXPENSE_CATEGORIES[0].subs[0]), currency: 'toman', amount: '', exchangeRate: '', description: '', date: getDateKey(),
   }))
+  const [iranOpenCategory, setIranOpenCategory] = useState(null)
+  const iranCategoryPickerRef = useRef(null)
   const [iranSettlementForm, setIranSettlementForm] = useState(() => ({
     person: IRAN_SETTLEMENT_PEOPLE[0], direction: 'receive', amount: '', note: '', date: getDateKey(),
   }))
@@ -623,6 +625,24 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
     return () => document.removeEventListener('mousedown', handler)
   }, [showMonthPicker])
 
+  useEffect(() => {
+    if (!iranOpenCategory) return
+    const closeOnOutsideClick = event => {
+      if (iranCategoryPickerRef.current && !iranCategoryPickerRef.current.contains(event.target)) {
+        setIranOpenCategory(null)
+      }
+    }
+    const closeOnEscape = event => {
+      if (event.key === 'Escape') setIranOpenCategory(null)
+    }
+    document.addEventListener('mousedown', closeOnOutsideClick)
+    document.addEventListener('keydown', closeOnEscape)
+    return () => {
+      document.removeEventListener('mousedown', closeOnOutsideClick)
+      document.removeEventListener('keydown', closeOnEscape)
+    }
+  }, [iranOpenCategory])
+
   // One-time migration: set all existing fixkosten to start from 2025-01
   useEffect(() => {
     if (!loaded) return
@@ -656,7 +676,13 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
     () => iranTrip.expenses.reduce((sum, entry) => sum + iranExpenseEuroValue(entry, iranTrip.exchangeRate), 0),
     [iranTrip.expenses, iranTrip.exchangeRate]
   )
-  const iranAccountRemainingRial = Number(iranTrip.accountBalanceRial || 0) - iranExpenseTotal
+  const iranAccountExpensesRial = useMemo(
+    () => iranTrip.expenses
+      .filter(entry => entry.originalCurrency !== 'eur')
+      .reduce((sum, entry) => sum + Number(entry.amountRial || 0), 0),
+    [iranTrip.expenses]
+  )
+  const iranAccountRemainingRial = Number(iranTrip.accountBalanceRial || 0) - iranAccountExpensesRial
 
   const iranCategoryTotals = useMemo(() => IRAN_EXPENSE_CATEGORIES.map(category => {
     const entries = iranTrip.expenses.filter(entry => iranCategoryGroup(entry.category) === category.name)
@@ -1611,28 +1637,33 @@ ${manualEntries.length ? `
                       <div><span>Ausgaben erfassen</span><h3>Neue Reisekosten</h3></div>
                     </header>
                     <form className={styles.iranTripForm} onSubmit={addIranExpense}>
-                      <fieldset className={styles.iranCategoryPicker}>
+                      <fieldset className={styles.iranCategoryPicker} ref={iranCategoryPickerRef}>
                         <legend>Kategorie</legend>
                         <div className={styles.iranCategoryChoices}>
                           {IRAN_EXPENSE_CATEGORIES.map(category => {
                             const groupActive = iranCategoryGroup(iranExpenseForm.category) === category.name
                             return (
-                              <div className={`${styles.iranCategoryChoice} ${groupActive ? styles.iranCategoryChoiceActive : ''}`} key={category.name}>
+                              <div className={`${styles.iranCategoryChoice} ${groupActive ? styles.iranCategoryChoiceActive : ''} ${iranOpenCategory === category.name ? styles.iranCategoryChoiceOpen : ''}`} key={category.name}>
                                 <button
                                   type="button"
                                   className={styles.iranCategoryChoiceHead}
                                   aria-pressed={category.subs.length === 0 && groupActive}
+                                  aria-expanded={category.subs.length > 0 ? iranOpenCategory === category.name : undefined}
                                   onClick={() => {
-                                    const nextValue = iranCategoryValue(category.name, category.subs[0])
-                                    setIranExpenseForm(prev => ({ ...prev, category: nextValue }))
+                                    if (category.subs.length > 0) {
+                                      setIranOpenCategory(current => current === category.name ? null : category.name)
+                                    } else {
+                                      setIranExpenseForm(prev => ({ ...prev, category: category.name }))
+                                      setIranOpenCategory(null)
+                                    }
                                   }}
                                 >
                                   <span className={styles.iranCategoryIcon}><IranCategoryIcon type={category.icon} /></span>
                                   <span>{category.name}</span>
                                   {groupActive && <span className={styles.iranCategoryCheck}>✓</span>}
                                 </button>
-                                {groupActive && category.subs.length > 0 && (
-                                  <div className={styles.iranCategorySubs}>
+                                {iranOpenCategory === category.name && category.subs.length > 0 && (
+                                  <div className={styles.iranCategorySubs} role="group" aria-label={`Unterkategorie für ${category.name}`}>
                                     {category.subs.map(sub => {
                                       const value = iranCategoryValue(category.name, sub)
                                       return (
@@ -1641,7 +1672,10 @@ ${manualEntries.length ? `
                                           key={sub}
                                           className={iranExpenseForm.category === value ? styles.iranCategorySubActive : ''}
                                           aria-pressed={iranExpenseForm.category === value}
-                                          onClick={() => setIranExpenseForm(prev => ({ ...prev, category: value }))}
+                                          onClick={() => {
+                                            setIranExpenseForm(prev => ({ ...prev, category: value }))
+                                            setIranOpenCategory(null)
+                                          }}
                                         >{sub}</button>
                                       )
                                     })}
