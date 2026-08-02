@@ -17,6 +17,7 @@ const IRAN_EXPENSE_CATEGORIES = [
   { name: 'Freizeit & Spaß', icon: 'fun', subs: [] },
   { name: 'Einkäufe', icon: 'shopping', subs: ['Jamin', 'Fatima', 'Mobin', 'Mobina'] },
   { name: 'Geschenke und Ausgaben', icon: 'gift', subs: ['Jamins Familie', 'Fatimas Familie'] },
+  { name: 'Hilfe Iran', icon: 'help', subs: [] },
 ]
 
 function iranCategoryValue(category, sub = '') {
@@ -270,6 +271,7 @@ function IranCategoryIcon({ type }) {
     fun: <><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01"/><path d="M15 9h.01"/><circle cx="12" cy="12" r="9"/></>,
     shopping: <><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></>,
     gift: <><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13"/><path d="M3 12h18"/><path d="M12 8H8.5a2.5 2.5 0 1 1 2.1-3.85L12 8Z"/><path d="M12 8h3.5a2.5 2.5 0 1 0-2.1-3.85L12 8Z"/></>,
+    help: <><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/><path d="M9 12h6"/><path d="M12 9v6"/></>,
   }
   return <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[type]}</svg>
 }
