@@ -32,22 +32,27 @@ function iranCategoryGroup(value) {
 const IRAN_SETTLEMENT_PEOPLE = ['Mohsen', 'Hossein', 'Maman']
 
 function emptyIranTrip() {
-  return { exchangeRate: '', displayCurrency: 'rial', expenses: [], settlements: [] }
+  return { exchangeRate: '', exchangeRateUnit: 'toman', displayCurrency: 'toman', expenses: [], settlements: [] }
 }
 
 function normalizeIranTrip(value) {
   const fallback = emptyIranTrip()
   if (!value || typeof value !== 'object') return fallback
+  const rawRate = Number(value.exchangeRate || 0)
+  const exchangeRate = rawRate > 0
+    ? String(value.exchangeRateUnit === 'toman' ? rawRate : rawRate / 10)
+    : ''
   return {
-    exchangeRate: value.exchangeRate || '',
-    displayCurrency: value.displayCurrency === 'eur' ? 'eur' : 'rial',
+    exchangeRate,
+    exchangeRateUnit: 'toman',
+    displayCurrency: value.displayCurrency === 'eur' ? 'eur' : 'toman',
     expenses: Array.isArray(value.expenses) ? value.expenses : [],
     settlements: Array.isArray(value.settlements) ? value.settlements : [],
   }
 }
 
-function formatRial(value) {
-  return `${new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 }).format(Number(value || 0))} Rial`
+function formatTomanFromRial(value) {
+  return `${new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 }).format(Number(value || 0) / 10)} Toman`
 }
 
 async function budgetApi(method = 'GET', body) {
@@ -490,7 +495,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
 
   // Sonderurlaub Iran
   const [iranExpenseForm, setIranExpenseForm] = useState(() => ({
-    category: iranCategoryValue(IRAN_EXPENSE_CATEGORIES[0].name, IRAN_EXPENSE_CATEGORIES[0].subs[0]), currency: 'rial', amount: '', description: '', date: getDateKey(),
+    category: iranCategoryValue(IRAN_EXPENSE_CATEGORIES[0].name, IRAN_EXPENSE_CATEGORIES[0].subs[0]), currency: 'toman', amount: '', description: '', date: getDateKey(),
   }))
   const [iranSettlementForm, setIranSettlementForm] = useState(() => ({
     person: IRAN_SETTLEMENT_PEOPLE[0], direction: 'receive', amount: '', note: '', date: getDateKey(),
@@ -654,27 +659,29 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
   }
 
   function iranDisplayAmount(amountRial) {
-    const rate = Number(iranTrip.exchangeRate || 0)
+    const rateToman = Number(iranTrip.exchangeRate || 0)
     if (iranTrip.displayCurrency === 'eur') {
-      return rate > 0 ? formatMoney(Number(amountRial || 0) / rate) : 'Kurs fehlt'
+      return rateToman > 0 ? formatMoney(Number(amountRial || 0) / 10 / rateToman) : 'Kurs fehlt'
     }
-    return formatRial(amountRial)
+    return formatTomanFromRial(amountRial)
   }
 
   function addIranExpense(event) {
     event.preventDefault()
     const enteredAmount = Number(iranExpenseForm.amount)
-    const inputCurrency = iranExpenseForm.currency === 'eur' ? 'eur' : 'rial'
-    const rate = Number(iranTrip.exchangeRate || 0)
-    if (!enteredAmount || !iranExpenseForm.category || (inputCurrency === 'eur' && rate <= 0)) return
-    const amountRial = inputCurrency === 'eur' ? Math.round(enteredAmount * rate) : enteredAmount
+    const inputCurrency = iranExpenseForm.currency === 'eur' ? 'eur' : 'toman'
+    const rateToman = Number(iranTrip.exchangeRate || 0)
+    if (!enteredAmount || !iranExpenseForm.category || (inputCurrency === 'eur' && rateToman <= 0)) return
+    const originalAmount = inputCurrency === 'eur' ? enteredAmount : enteredAmount * 1000
+    const amountRial = Math.round((inputCurrency === 'eur' ? enteredAmount * rateToman : originalAmount) * 10)
     const entry = {
       id: makeId(),
       category: iranExpenseForm.category,
       amountRial,
-      originalAmount: enteredAmount,
+      originalAmount,
       originalCurrency: inputCurrency,
-      exchangeRateAtEntry: inputCurrency === 'eur' ? rate : null,
+      exchangeRateAtEntry: inputCurrency === 'eur' ? rateToman : null,
+      exchangeRateUnit: inputCurrency === 'eur' ? 'toman' : null,
       description: iranExpenseForm.description.trim(),
       date: iranExpenseForm.date || getDateKey(),
     }
@@ -684,13 +691,16 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
 
   function addIranSettlement(event) {
     event.preventDefault()
-    const amountRial = Number(iranSettlementForm.amount)
-    if (!amountRial || !iranSettlementForm.person) return
+    const enteredThousandsToman = Number(iranSettlementForm.amount)
+    if (!enteredThousandsToman || !iranSettlementForm.person) return
+    const amountRial = Math.round(enteredThousandsToman * 1000 * 10)
     const entry = {
       id: makeId(),
       person: iranSettlementForm.person,
       direction: iranSettlementForm.direction,
       amountRial,
+      originalAmount: enteredThousandsToman * 1000,
+      originalCurrency: 'toman',
       note: iranSettlementForm.note.trim(),
       date: iranSettlementForm.date || getDateKey(),
     }
@@ -1528,7 +1538,7 @@ ${manualEntries.length ? `
                   <div>
                     <span className={styles.iranTripEyebrow}>Reisekasse</span>
                     <h2>Sonderurlaub Iran</h2>
-                    <p>Ausgaben in Rial erfassen und jederzeit in Euro ansehen.</p>
+                    <p>Ausgaben in Tausender-Toman erfassen und jederzeit in Euro ansehen.</p>
                   </div>
                   <div className={styles.iranTripTotal}>
                     <span>Gesamtausgaben</span>
@@ -1548,15 +1558,15 @@ ${manualEntries.length ? `
                         inputMode="numeric"
                         value={iranTrip.exchangeRate}
                         onChange={event => updateIranTrip(current => ({ ...current, exchangeRate: event.target.value }))}
-                        placeholder="z. B. 1.050.000"
-                        aria-label="Rial pro Euro"
+                        placeholder="z. B. 105.000"
+                        aria-label="Toman pro Euro"
                       />
-                      <em>Rial</em>
+                      <em>Toman</em>
                     </div>
-                    <small>Der Kurs bleibt gespeichert, bis du ihn änderst. Ausgaben kannst du in Rial oder Euro eingeben.</small>
+                    <small>Der Kurs bleibt gespeichert, bis du ihn änderst. Beträge werden in 1.000 Toman oder Euro eingegeben.</small>
                   </label>
                   <div className={styles.iranCurrencySwitch} aria-label="Anzeigewährung">
-                    <button type="button" className={iranTrip.displayCurrency === 'rial' ? styles.iranCurrencyActive : ''} onClick={() => updateIranTrip(current => ({ ...current, displayCurrency: 'rial' }))}>Rial</button>
+                    <button type="button" className={iranTrip.displayCurrency === 'toman' ? styles.iranCurrencyActive : ''} onClick={() => updateIranTrip(current => ({ ...current, displayCurrency: 'toman' }))}>Toman</button>
                     <button type="button" className={iranTrip.displayCurrency === 'eur' ? styles.iranCurrencyActive : ''} onClick={() => updateIranTrip(current => ({ ...current, displayCurrency: 'eur' }))}>Euro</button>
                   </div>
                 </section>
@@ -1612,7 +1622,7 @@ ${manualEntries.length ? `
                         <div className={styles.iranAmountFieldHead}>
                           <span>Betrag</span>
                           <div className={styles.iranAmountCurrencySwitch} aria-label="Eingabewährung">
-                            <button type="button" className={iranExpenseForm.currency === 'rial' ? styles.iranAmountCurrencyActive : ''} aria-pressed={iranExpenseForm.currency === 'rial'} onClick={() => setIranExpenseForm(prev => ({ ...prev, currency: 'rial', amount: '' }))}>Rial</button>
+                            <button type="button" className={iranExpenseForm.currency === 'toman' ? styles.iranAmountCurrencyActive : ''} aria-pressed={iranExpenseForm.currency === 'toman'} onClick={() => setIranExpenseForm(prev => ({ ...prev, currency: 'toman', amount: '' }))}>1.000 Toman</button>
                             <button type="button" className={iranExpenseForm.currency === 'eur' ? styles.iranAmountCurrencyActive : ''} aria-pressed={iranExpenseForm.currency === 'eur'} onClick={() => setIranExpenseForm(prev => ({ ...prev, currency: 'eur', amount: '' }))}>Euro</button>
                           </div>
                         </div>
@@ -1627,13 +1637,13 @@ ${manualEntries.length ? `
                             placeholder="0"
                             required
                           />
-                          <strong>{iranExpenseForm.currency === 'eur' ? '€' : 'Rial'}</strong>
+                          <strong>{iranExpenseForm.currency === 'eur' ? '€' : '× 1.000 Toman'}</strong>
                         </div>
-                        {iranExpenseForm.currency === 'eur' && (
+                        {iranExpenseForm.currency === 'eur' ? (
                           Number(iranTrip.exchangeRate || 0) > 0
-                            ? <small>Wird beim Speichern zu {formatRial(Number(iranExpenseForm.amount || 0) * Number(iranTrip.exchangeRate))} umgerechnet.</small>
+                            ? <small>Wird beim Speichern zu {formatTomanFromRial(Number(iranExpenseForm.amount || 0) * Number(iranTrip.exchangeRate) * 10)} umgerechnet.</small>
                             : <small className={styles.iranRateWarning}>Bitte zuerst oben einen Wechselkurs eintragen.</small>
-                        )}
+                        ) : <small>Beispiel: 35 entspricht 35.000 Toman.</small>}
                       </div>
                       <label>
                         Datum
@@ -1666,8 +1676,8 @@ ${manualEntries.length ? `
                         </select>
                       </label>
                       <label>
-                        Betrag in Rial
-                        <input type="number" min="1" step="1" inputMode="numeric" value={iranSettlementForm.amount} onChange={event => setIranSettlementForm(prev => ({ ...prev, amount: event.target.value }))} placeholder="0" required />
+                        Betrag in 1.000 Toman
+                        <input type="number" min="1" step="1" inputMode="numeric" value={iranSettlementForm.amount} onChange={event => setIranSettlementForm(prev => ({ ...prev, amount: event.target.value }))} placeholder="z. B. 35" required />
                       </label>
                       <label className={styles.iranTripWideField}>
                         Notiz
