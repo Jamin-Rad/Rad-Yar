@@ -58,6 +58,10 @@ function formatTomanFromRial(value) {
   return `${new Intl.NumberFormat('de-DE', { maximumFractionDigits: 1 }).format(Number(value || 0) / 10)} Toman`
 }
 
+function formatThousandsTomanFromRial(value) {
+  return `${new Intl.NumberFormat('de-DE', { maximumFractionDigits: 1 }).format(Number(value || 0) / 10000)} × 1.000 Toman`
+}
+
 function formatIranRial(value) {
   return `${new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 }).format(Number(value || 0))} Rial`
 }
@@ -672,7 +676,15 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
     if (iranTrip.displayCurrency === 'eur') {
       return rateToman > 0 ? formatMoney(Number(amountRial || 0) / 10 / rateToman) : 'Kurs fehlt'
     }
-    return formatTomanFromRial(amountRial)
+    return formatThousandsTomanFromRial(amountRial)
+  }
+
+  function iranBalanceDisplayAmount(amountRial) {
+    const rateToman = Number(iranTrip.exchangeRate || 0)
+    if (iranTrip.displayCurrency === 'eur') {
+      return rateToman > 0 ? formatMoney(Number(amountRial || 0) / 10 / rateToman) : 'Kurs fehlt'
+    }
+    return formatThousandsTomanFromRial(amountRial)
   }
 
   function addIranExpense(event) {
@@ -1549,9 +1561,22 @@ ${manualEntries.length ? `
                     <h2>Sonderurlaub Iran</h2>
                     <p>Ausgaben in Tausender-Toman erfassen und jederzeit in Euro ansehen.</p>
                   </div>
-                  <div className={styles.iranTripTotal}>
-                    <span>Gesamtausgaben</span>
-                    <strong>{iranDisplayAmount(iranExpenseTotal)}</strong>
+                  <div className={styles.iranTripHeroStats}>
+                    <div className={styles.iranCurrencySwitch} aria-label="Anzeigewährung">
+                      <button type="button" className={iranTrip.displayCurrency === 'toman' ? styles.iranCurrencyActive : ''} onClick={() => updateIranTrip(current => ({ ...current, displayCurrency: 'toman' }))}>1.000 Toman</button>
+                      <button type="button" className={iranTrip.displayCurrency === 'eur' ? styles.iranCurrencyActive : ''} onClick={() => updateIranTrip(current => ({ ...current, displayCurrency: 'eur' }))}>Euro</button>
+                    </div>
+                    <div className={styles.iranTripSummaryRow}>
+                      <div className={styles.iranAccountBalance}>
+                        <span>Kontostand Iran</span>
+                        <strong className={iranAccountRemainingRial < 0 ? styles.iranAccountBalanceNegative : ''}>{iranBalanceDisplayAmount(iranAccountRemainingRial)}</strong>
+                        <small>{formatIranRial(iranAccountRemainingRial)}</small>
+                      </div>
+                      <div className={styles.iranTripTotal}>
+                        <span>Gesamtausgaben</span>
+                        <strong>{iranDisplayAmount(iranExpenseTotal)}</strong>
+                      </div>
+                    </div>
                   </div>
                 </section>
 
@@ -1574,39 +1599,6 @@ ${manualEntries.length ? `
                     </div>
                     <small>Der Kurs bleibt gespeichert, bis du ihn änderst. Beträge werden in 1.000 Toman oder Euro eingegeben.</small>
                   </label>
-                  <div className={styles.iranCurrencySwitch} aria-label="Anzeigewährung">
-                    <button type="button" className={iranTrip.displayCurrency === 'toman' ? styles.iranCurrencyActive : ''} onClick={() => updateIranTrip(current => ({ ...current, displayCurrency: 'toman' }))}>Toman</button>
-                    <button type="button" className={iranTrip.displayCurrency === 'eur' ? styles.iranCurrencyActive : ''} onClick={() => updateIranTrip(current => ({ ...current, displayCurrency: 'eur' }))}>Euro</button>
-                  </div>
-                </section>
-
-                <section className={styles.iranAccountCard}>
-                  <label>
-                    <span>Kontostand Iran vor Ausgaben</span>
-                    <div className={styles.iranAccountInput}>
-                      <input
-                        type="number"
-                        min="0"
-                        step="1"
-                        inputMode="numeric"
-                        value={iranTrip.accountBalanceRial}
-                        onChange={event => updateIranTrip(current => ({ ...current, accountBalanceRial: event.target.value }))}
-                        placeholder="Kontostand laut Bank"
-                        aria-label="Kontostand des iranischen Kontos in Rial"
-                      />
-                      <strong>Rial</strong>
-                    </div>
-                    <small>Die Bank zeigt Rial. Alle erfassten Ausgaben werden automatisch korrekt abgezogen.</small>
-                  </label>
-                  <div className={styles.iranAccountBalance}>
-                    <span>Verfügbarer Kontostand</span>
-                    {iranTrip.accountBalanceRial !== '' ? (
-                      <>
-                        <strong className={iranAccountRemainingRial < 0 ? styles.iranAccountBalanceNegative : ''}>{formatTomanFromRial(iranAccountRemainingRial)}</strong>
-                        <small>{formatIranRial(iranAccountRemainingRial)} · nach {formatTomanFromRial(iranExpenseTotal)} Ausgaben</small>
-                      </>
-                    ) : <em>Noch kein Kontostand eingetragen</em>}
-                  </div>
                 </section>
 
                 <div className={styles.iranTripGrid}>
