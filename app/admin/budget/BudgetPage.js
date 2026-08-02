@@ -490,7 +490,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
 
   // Sonderurlaub Iran
   const [iranExpenseForm, setIranExpenseForm] = useState(() => ({
-    category: iranCategoryValue(IRAN_EXPENSE_CATEGORIES[0].name, IRAN_EXPENSE_CATEGORIES[0].subs[0]), amount: '', description: '', date: getDateKey(),
+    category: iranCategoryValue(IRAN_EXPENSE_CATEGORIES[0].name, IRAN_EXPENSE_CATEGORIES[0].subs[0]), currency: 'rial', amount: '', description: '', date: getDateKey(),
   }))
   const [iranSettlementForm, setIranSettlementForm] = useState(() => ({
     person: IRAN_SETTLEMENT_PEOPLE[0], direction: 'receive', amount: '', note: '', date: getDateKey(),
@@ -663,12 +663,18 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
 
   function addIranExpense(event) {
     event.preventDefault()
-    const amountRial = Number(iranExpenseForm.amount)
-    if (!amountRial || !iranExpenseForm.category) return
+    const enteredAmount = Number(iranExpenseForm.amount)
+    const inputCurrency = iranExpenseForm.currency === 'eur' ? 'eur' : 'rial'
+    const rate = Number(iranTrip.exchangeRate || 0)
+    if (!enteredAmount || !iranExpenseForm.category || (inputCurrency === 'eur' && rate <= 0)) return
+    const amountRial = inputCurrency === 'eur' ? Math.round(enteredAmount * rate) : enteredAmount
     const entry = {
       id: makeId(),
       category: iranExpenseForm.category,
       amountRial,
+      originalAmount: enteredAmount,
+      originalCurrency: inputCurrency,
+      exchangeRateAtEntry: inputCurrency === 'eur' ? rate : null,
       description: iranExpenseForm.description.trim(),
       date: iranExpenseForm.date || getDateKey(),
     }
@@ -1547,7 +1553,7 @@ ${manualEntries.length ? `
                       />
                       <em>Rial</em>
                     </div>
-                    <small>Der Kurs bleibt gespeichert, bis du ihn änderst. Beträge bitte in Rial, nicht Toman, eingeben.</small>
+                    <small>Der Kurs bleibt gespeichert, bis du ihn änderst. Ausgaben kannst du in Rial oder Euro eingeben.</small>
                   </label>
                   <div className={styles.iranCurrencySwitch} aria-label="Anzeigewährung">
                     <button type="button" className={iranTrip.displayCurrency === 'rial' ? styles.iranCurrencyActive : ''} onClick={() => updateIranTrip(current => ({ ...current, displayCurrency: 'rial' }))}>Rial</button>
@@ -1602,10 +1608,33 @@ ${manualEntries.length ? `
                           })}
                         </div>
                       </fieldset>
-                      <label>
-                        Betrag in Rial
-                        <input type="number" min="1" step="1" inputMode="numeric" value={iranExpenseForm.amount} onChange={event => setIranExpenseForm(prev => ({ ...prev, amount: event.target.value }))} placeholder="0" required />
-                      </label>
+                      <div className={styles.iranAmountField}>
+                        <div className={styles.iranAmountFieldHead}>
+                          <span>Betrag</span>
+                          <div className={styles.iranAmountCurrencySwitch} aria-label="Eingabewährung">
+                            <button type="button" className={iranExpenseForm.currency === 'rial' ? styles.iranAmountCurrencyActive : ''} aria-pressed={iranExpenseForm.currency === 'rial'} onClick={() => setIranExpenseForm(prev => ({ ...prev, currency: 'rial', amount: '' }))}>Rial</button>
+                            <button type="button" className={iranExpenseForm.currency === 'eur' ? styles.iranAmountCurrencyActive : ''} aria-pressed={iranExpenseForm.currency === 'eur'} onClick={() => setIranExpenseForm(prev => ({ ...prev, currency: 'eur', amount: '' }))}>Euro</button>
+                          </div>
+                        </div>
+                        <div className={styles.iranAmountInput}>
+                          <input
+                            type="number"
+                            min={iranExpenseForm.currency === 'eur' ? '0.01' : '1'}
+                            step={iranExpenseForm.currency === 'eur' ? '0.01' : '1'}
+                            inputMode="decimal"
+                            value={iranExpenseForm.amount}
+                            onChange={event => setIranExpenseForm(prev => ({ ...prev, amount: event.target.value }))}
+                            placeholder="0"
+                            required
+                          />
+                          <strong>{iranExpenseForm.currency === 'eur' ? '€' : 'Rial'}</strong>
+                        </div>
+                        {iranExpenseForm.currency === 'eur' && (
+                          Number(iranTrip.exchangeRate || 0) > 0
+                            ? <small>Wird beim Speichern zu {formatRial(Number(iranExpenseForm.amount || 0) * Number(iranTrip.exchangeRate))} umgerechnet.</small>
+                            : <small className={styles.iranRateWarning}>Bitte zuerst oben einen Wechselkurs eintragen.</small>
+                        )}
+                      </div>
                       <label>
                         Datum
                         <input type="date" value={iranExpenseForm.date} onChange={event => setIranExpenseForm(prev => ({ ...prev, date: event.target.value }))} />
@@ -1614,7 +1643,7 @@ ${manualEntries.length ? `
                         Beschreibung
                         <input value={iranExpenseForm.description} onChange={event => setIranExpenseForm(prev => ({ ...prev, description: event.target.value }))} placeholder="Optional" />
                       </label>
-                      <button className={styles.iranPrimaryBtn} type="submit" disabled={!iranExpenseForm.amount}>Ausgabe speichern</button>
+                      <button className={styles.iranPrimaryBtn} type="submit" disabled={!iranExpenseForm.amount || (iranExpenseForm.currency === 'eur' && Number(iranTrip.exchangeRate || 0) <= 0)}>Ausgabe speichern</button>
                     </form>
                   </section>
 
@@ -1670,7 +1699,7 @@ ${manualEntries.length ? `
                         <div className={styles.iranEntryRow} key={entry.id}>
                           <div>
                             <strong>{entry.category}</strong>
-                            <span>{entry.description || 'Ohne Beschreibung'} · {new Date(`${entry.date}T00:00:00`).toLocaleDateString('de-DE')}</span>
+                            <span>{entry.description || 'Ohne Beschreibung'} · {new Date(`${entry.date}T00:00:00`).toLocaleDateString('de-DE')}{entry.originalCurrency === 'eur' ? ` · ursprünglich ${formatMoney(entry.originalAmount)}` : ''}</span>
                           </div>
                           <b>{iranDisplayAmount(entry.amountRial)}</b>
                           <button type="button" onClick={() => deleteIranExpense(entry.id)} aria-label="Ausgabe löschen">×</button>
