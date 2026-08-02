@@ -9,6 +9,7 @@ const RECURRING_KEY  = 'radyar_recurring_v1'
 const CAT_BUDGET_KEY = 'radyar_cat_budget_v1'
 const CATEGORIES_KEY = 'radyar_categories_v2'
 const IRAN_TRIP_KEY  = '__iran_special_trip_v1'
+const IRAN_ACCOUNT_OPENING_BALANCE_RIAL = '2798510103'
 
 const IRAN_EXPENSE_CATEGORIES = [
   { name: 'Transport', icon: 'transport', subs: ['Flugzeug', 'Bahn', 'Taxi'] },
@@ -33,7 +34,7 @@ function iranCategoryGroup(value) {
 const IRAN_SETTLEMENT_PEOPLE = ['Mohsen', 'Hossein', 'Maman']
 
 function emptyIranTrip() {
-  return { exchangeRate: '', exchangeRateUnit: 'toman', accountBalanceRial: '', displayCurrency: 'toman', expenses: [], settlements: [] }
+  return { exchangeRate: '', exchangeRateUnit: 'toman', accountBalanceRial: IRAN_ACCOUNT_OPENING_BALANCE_RIAL, displayCurrency: 'toman', expenses: [], settlements: [] }
 }
 
 function normalizeIranTrip(value) {
@@ -46,7 +47,7 @@ function normalizeIranTrip(value) {
   return {
     exchangeRate,
     exchangeRateUnit: 'toman',
-    accountBalanceRial: value.accountBalanceRial || '',
+    accountBalanceRial: value.accountBalanceRial ?? fallback.accountBalanceRial,
     displayCurrency: value.displayCurrency === 'eur' ? 'eur' : 'toman',
     expenses: Array.isArray(value.expenses) ? value.expenses : [],
     settlements: Array.isArray(value.settlements) ? value.settlements : [],
@@ -54,7 +55,7 @@ function normalizeIranTrip(value) {
 }
 
 function formatTomanFromRial(value) {
-  return `${new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 }).format(Number(value || 0) / 10)} Toman`
+  return `${new Intl.NumberFormat('de-DE', { maximumFractionDigits: 1 }).format(Number(value || 0) / 10)} Toman`
 }
 
 function formatIranRial(value) {
