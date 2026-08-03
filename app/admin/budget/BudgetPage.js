@@ -34,6 +34,9 @@ function iranCategoryGroup(value) {
 }
 
 const IRAN_SETTLEMENT_PEOPLE = ['Hossein', 'Mohsen', 'Maman']
+const IRAN_INITIAL_SETTLEMENTS_RIAL = {
+  Mohsen: 37_500_000 * 10,
+}
 const IRAN_EXPENSE_PAYERS = [
   { value: 'account', label: 'Mein Konto' },
   { value: 'Hossein', label: 'Hossein' },
@@ -722,6 +725,15 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
   )))
 
   const iranSettlementBalances = useMemo(() => IRAN_SETTLEMENT_PEOPLE.map(person => {
+    const openingEntries = IRAN_INITIAL_SETTLEMENTS_RIAL[person]
+      ? [{
+          id: `opening-${person}`,
+          isOpeningBalance: true,
+          direction: 'receive',
+          amountRial: IRAN_INITIAL_SETTLEMENTS_RIAL[person],
+          note: 'Anfangsforderung',
+        }]
+      : []
     const settlementEntries = iranTrip.settlements.filter(entry => entry.person === person)
     const expenseEntries = iranTrip.expenses
       .filter(entry => entry.originalCurrency !== 'eur' && entry.paidBy === person)
@@ -733,7 +745,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
         note: entry.description || entry.category,
         date: entry.date,
       }))
-    const entries = [...expenseEntries, ...settlementEntries]
+    const entries = [...openingEntries, ...expenseEntries, ...settlementEntries]
     const balance = entries.reduce((sum, entry) => (
       entry.direction === 'receive' ? sum + Number(entry.amountRial || 0) : sum - Number(entry.amountRial || 0)
     ), 0)
@@ -1903,8 +1915,8 @@ ${manualEntries.length ? `
                           <div className={styles.iranSettlementRow} key={entry.id}>
                             <span>{entry.expenseId ? 'Ausgabe' : (entry.direction === 'receive' ? 'Bekommen' : 'Geben')}{entry.note ? ` · ${entry.note}` : ''}</span>
                             <b>{iranDisplayAmount(entry.amountRial)}</b>
-                            {entry.expenseId
-                              ? <em className={styles.iranLinkedExpenseBadge}>offen</em>
+                            {entry.expenseId || entry.isOpeningBalance
+                              ? <em className={styles.iranLinkedExpenseBadge}>{entry.isOpeningBalance ? 'Start' : 'offen'}</em>
                               : <button type="button" onClick={() => deleteIranSettlement(entry.id)} aria-label="Abrechnung löschen">×</button>}
                           </div>
                         )) : <small>Noch keine Abrechnung.</small>}
