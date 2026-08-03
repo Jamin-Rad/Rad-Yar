@@ -62,6 +62,15 @@ function formatIranRial(value) {
   return `${new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 }).format(Number(value || 0))} Rial`
 }
 
+function formatTomanInput(value) {
+  const digits = String(value || '').replace(/\D/g, '').replace(/^0+(?=\d)/, '')
+  return digits.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
+
+function parseTomanInput(value) {
+  return Number(String(value || '').replace(/,/g, ''))
+}
+
 function iranExpenseEuroValue(entry, fallbackRateToman) {
   const lockedEuro = Number(entry.amountEuroAtEntry)
   if (lockedEuro > 0) return lockedEuro
@@ -737,8 +746,8 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
 
   function addIranExpense(event) {
     event.preventDefault()
-    const enteredAmount = Number(iranExpenseForm.amount)
     const inputCurrency = iranExpenseForm.currency === 'eur' ? 'eur' : 'toman'
+    const enteredAmount = inputCurrency === 'eur' ? Number(iranExpenseForm.amount) : parseTomanInput(iranExpenseForm.amount)
     const rateToman = Number(iranExpenseForm.exchangeRate || iranTrip.exchangeRate || 0)
     if (!enteredAmount || !iranExpenseForm.category || rateToman <= 0) return
     const originalAmount = enteredAmount
@@ -762,7 +771,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
 
   function addIranSettlement(event) {
     event.preventDefault()
-    const enteredToman = Number(iranSettlementForm.amount)
+    const enteredToman = parseTomanInput(iranSettlementForm.amount)
     if (!enteredToman || !iranSettlementForm.person) return
     const amountRial = Math.round(enteredToman * 10)
     const entry = {
@@ -1696,13 +1705,13 @@ ${manualEntries.length ? `
                         </div>
                         <div className={styles.iranAmountInput}>
                           <input
-                            type="number"
-                            min={iranExpenseForm.currency === 'eur' ? '0.01' : '1'}
-                            step={iranExpenseForm.currency === 'eur' ? '0.01' : '1'}
-                            inputMode="decimal"
+                            type={iranExpenseForm.currency === 'eur' ? 'number' : 'text'}
+                            min={iranExpenseForm.currency === 'eur' ? '0.01' : undefined}
+                            step={iranExpenseForm.currency === 'eur' ? '0.01' : undefined}
+                            inputMode={iranExpenseForm.currency === 'eur' ? 'decimal' : 'numeric'}
                             value={iranExpenseForm.amount}
-                            onChange={event => setIranExpenseForm(prev => ({ ...prev, amount: event.target.value }))}
-                            placeholder="0"
+                            onChange={event => setIranExpenseForm(prev => ({ ...prev, amount: prev.currency === 'eur' ? event.target.value : formatTomanInput(event.target.value) }))}
+                            placeholder={iranExpenseForm.currency === 'eur' ? '0,00' : '10,000'}
                             required
                           />
                           <strong>{iranExpenseForm.currency === 'eur' ? '€' : 'T'}</strong>
@@ -1786,7 +1795,7 @@ ${manualEntries.length ? `
                       </label>
                       <label>
                         Betrag in Toman
-                        <input type="number" min="1" step="1" inputMode="numeric" value={iranSettlementForm.amount} onChange={event => setIranSettlementForm(prev => ({ ...prev, amount: event.target.value }))} placeholder="z. B. 35.000" required />
+                        <input type="text" inputMode="numeric" value={iranSettlementForm.amount} onChange={event => setIranSettlementForm(prev => ({ ...prev, amount: formatTomanInput(event.target.value) }))} placeholder="z. B. 35,000" required />
                       </label>
                       <label className={styles.iranTripWideField}>
                         Notiz
