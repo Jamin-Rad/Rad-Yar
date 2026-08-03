@@ -3667,9 +3667,10 @@
 .iranSettlementRow > b { color: #0f172a; font-size: 12px; font-weight: 900; white-space: nowrap; }
 .iranEntryRow > button,
 .iranSettlementRow > button { width: 26px; height: 26px; border: 1px solid #fecaca; border-radius: 50%; background: #fff1f2; color: #dc2626; cursor: pointer; font-size: 16px; }
-.iranSettlementRow { grid-template-columns: minmax(0, 1fr) auto 24px; padding: 7px 0 0; border-bottom: 0; }
+.iranSettlementRow { grid-template-columns: minmax(0, 1fr) auto auto; padding: 7px 0 0; border-bottom: 0; }
 .iranSettlementRow > span { color: #64748b; font-size: 10px; overflow-wrap: anywhere; }
 .iranSettlementRow > button { width: 22px; height: 22px; font-size: 13px; }
+.iranLinkedExpenseBadge { padding: 3px 6px; border-radius: 999px; background: #fef3c7; color: #b45309; font-size: 8px; font-style: normal; font-weight: 900; text-transform: uppercase; }
 .iranEmpty { margin: 0; padding: 24px 18px; color: #94a3b8; font-size: 13px; text-align: center; }
 
 /* ── CATEGORY DETAIL POPUP ───────────────────── */
@@ -4726,6 +4727,11 @@
   border-color: var(--border);
   background: var(--bg-soft);
   color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .iranLinkedExpenseBadge {
+  background: rgba(245,158,11,.16);
+  color: #fcd34d;
 }
 
 :global(html[data-theme='dark']) .iranAccountBalance > small { color: var(--text-muted); }

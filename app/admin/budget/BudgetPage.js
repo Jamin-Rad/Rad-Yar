@@ -31,7 +31,17 @@ function iranCategoryGroup(value) {
   ))?.name || value
 }
 
-const IRAN_SETTLEMENT_PEOPLE = ['Mohsen', 'Hossein', 'Maman']
+const IRAN_SETTLEMENT_PEOPLE = ['Hossein', 'Mohsen', 'Maman']
+const IRAN_EXPENSE_PAYERS = [
+  { value: 'account', label: 'Mein Konto' },
+  { value: 'Hossein', label: 'Hossein' },
+  { value: 'Mohsen', label: 'Mohsen' },
+  { value: 'Maman', label: 'Mamma' },
+]
+
+function iranPersonLabel(person) {
+  return person === 'Maman' ? 'Mamma' : person
+}
 
 function emptyIranTrip() {
   return { exchangeRate: '', exchangeRateUnit: 'toman', accountBalanceRial: IRAN_ACCOUNT_OPENING_BALANCE_RIAL, displayCurrency: 'toman', expenses: [], settlements: [] }
@@ -521,7 +531,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
 
   // Sonderurlaub Iran
   const [iranExpenseForm, setIranExpenseForm] = useState(() => ({
-    category: iranCategoryValue(IRAN_EXPENSE_CATEGORIES[0].name, IRAN_EXPENSE_CATEGORIES[0].subs[0]), currency: 'toman', amount: '', exchangeRate: '', description: '', date: getDateKey(),
+    category: iranCategoryValue(IRAN_EXPENSE_CATEGORIES[0].name, IRAN_EXPENSE_CATEGORIES[0].subs[0]), currency: 'toman', paidBy: 'account', amount: '', exchangeRate: '', description: '', date: getDateKey(),
   }))
   const [iranOpenCategory, setIranOpenCategory] = useState(null)
   const iranCategoryPickerRef = useRef(null)
@@ -687,7 +697,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
   )
   const iranAccountExpensesRial = useMemo(
     () => iranTrip.expenses
-      .filter(entry => entry.originalCurrency !== 'eur')
+      .filter(entry => entry.originalCurrency !== 'eur' && (entry.paidBy || 'account') === 'account')
       .reduce((sum, entry) => sum + Number(entry.amountRial || 0), 0),
     [iranTrip.expenses]
   )
@@ -708,12 +718,23 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
   )))
 
   const iranSettlementBalances = useMemo(() => IRAN_SETTLEMENT_PEOPLE.map(person => {
-    const entries = iranTrip.settlements.filter(entry => entry.person === person)
+    const settlementEntries = iranTrip.settlements.filter(entry => entry.person === person)
+    const expenseEntries = iranTrip.expenses
+      .filter(entry => entry.originalCurrency !== 'eur' && entry.paidBy === person)
+      .map(entry => ({
+        id: `expense-${entry.id}`,
+        expenseId: entry.id,
+        direction: 'pay',
+        amountRial: entry.amountRial,
+        note: entry.description || entry.category,
+        date: entry.date,
+      }))
+    const entries = [...expenseEntries, ...settlementEntries]
     const balance = entries.reduce((sum, entry) => (
       entry.direction === 'receive' ? sum + Number(entry.amountRial || 0) : sum - Number(entry.amountRial || 0)
     ), 0)
     return { person, balance, entries }
-  }), [iranTrip.settlements])
+  }), [iranTrip.settlements, iranTrip.expenses])
 
   function updateIranTrip(updater) {
     setStore(prev => ({
@@ -758,6 +779,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
       amountRial,
       originalAmount,
       originalCurrency: inputCurrency,
+      paidBy: inputCurrency === 'toman' ? iranExpenseForm.paidBy : 'external',
       exchangeRateAtEntry: rateToman,
       exchangeRateAtEntryToman: rateToman,
       exchangeRateUnit: 'toman',
@@ -1722,6 +1744,19 @@ ${manualEntries.length ? `
                             : <small className={styles.iranRateWarning}>Bitte einen Wechselkurs für diese Ausgabe eintragen.</small>
                         ) : <small>Betrag direkt in Toman eingeben.</small>}
                       </div>
+                      {iranExpenseForm.currency === 'toman' && (
+                        <label>
+                          Bezahlt über
+                          <select value={iranExpenseForm.paidBy} onChange={event => setIranExpenseForm(prev => ({ ...prev, paidBy: event.target.value }))}>
+                            {IRAN_EXPENSE_PAYERS.map(payer => <option key={payer.value} value={payer.value}>{payer.label}</option>)}
+                          </select>
+                          <small>
+                            {iranExpenseForm.paidBy === 'account'
+                              ? 'Wird vom Iran-Kontostand abgezogen.'
+                              : `Wird bei ${iranPersonLabel(iranExpenseForm.paidBy)} als offener Betrag angezeigt.`}
+                          </small>
+                        </label>
+                      )}
                       <label>
                         Kurs dieser Ausgabe
                         <div className={styles.iranLockedRateInput}>
@@ -1783,7 +1818,7 @@ ${manualEntries.length ? `
                       <label>
                         Person
                         <select value={iranSettlementForm.person} onChange={event => setIranSettlementForm(prev => ({ ...prev, person: event.target.value }))}>
-                          {IRAN_SETTLEMENT_PEOPLE.map(person => <option key={person}>{person}</option>)}
+                          {IRAN_SETTLEMENT_PEOPLE.map(person => <option key={person} value={person}>{iranPersonLabel(person)}</option>)}
                         </select>
                       </label>
                       <label>
@@ -1837,7 +1872,7 @@ ${manualEntries.length ? `
                           <div className={styles.iranEntryRow} key={entry.id}>
                             <div>
                               <strong>{entry.category}</strong>
-                              <span>{entry.description || 'Ohne Beschreibung'} · {new Date(`${entry.date}T00:00:00`).toLocaleDateString('de-DE')}{entry.originalCurrency === 'eur' ? ` · ursprünglich ${formatMoney(entry.originalAmount)}` : ''}{entry.exchangeRateAtEntryToman ? ` · Kurs ${new Intl.NumberFormat('de-DE').format(entry.exchangeRateAtEntryToman)} T/€` : ''}</span>
+                              <span>{entry.description || 'Ohne Beschreibung'} · {new Date(`${entry.date}T00:00:00`).toLocaleDateString('de-DE')}{entry.originalCurrency === 'eur' ? ` · ursprünglich ${formatMoney(entry.originalAmount)}` : ` · ${entry.paidBy && entry.paidBy !== 'account' ? `bezahlt von ${iranPersonLabel(entry.paidBy)}` : 'Mein Konto'}`}{entry.exchangeRateAtEntryToman ? ` · Kurs ${new Intl.NumberFormat('de-DE').format(entry.exchangeRateAtEntryToman)} T/€` : ''}</span>
                             </div>
                             <b>{iranExpenseDisplayAmount(entry)}</b>
                             <button type="button" onClick={() => deleteIranExpense(entry.id)} aria-label="Ausgabe löschen">×</button>
@@ -1856,15 +1891,17 @@ ${manualEntries.length ? `
                   <div className={styles.iranPeopleGrid}>
                     {iranSettlementBalances.map(item => (
                       <article className={styles.iranPersonCard} key={item.person}>
-                        <span>{item.person}</span>
+                        <span>{iranPersonLabel(item.person)}</span>
                         <strong className={item.balance >= 0 ? styles.iranReceive : styles.iranPay}>
                           {item.balance >= 0 ? 'Du bekommst ' : 'Du gibst '}{iranDisplayAmount(Math.abs(item.balance))}
                         </strong>
                         {item.entries.length ? item.entries.map(entry => (
                           <div className={styles.iranSettlementRow} key={entry.id}>
-                            <span>{entry.direction === 'receive' ? 'Bekommen' : 'Geben'}{entry.note ? ` · ${entry.note}` : ''}</span>
+                            <span>{entry.expenseId ? 'Ausgabe' : (entry.direction === 'receive' ? 'Bekommen' : 'Geben')}{entry.note ? ` · ${entry.note}` : ''}</span>
                             <b>{iranDisplayAmount(entry.amountRial)}</b>
-                            <button type="button" onClick={() => deleteIranSettlement(entry.id)} aria-label="Abrechnung löschen">×</button>
+                            {entry.expenseId
+                              ? <em className={styles.iranLinkedExpenseBadge}>offen</em>
+                              : <button type="button" onClick={() => deleteIranSettlement(entry.id)} aria-label="Abrechnung löschen">×</button>}
                           </div>
                         )) : <small>Noch keine Abrechnung.</small>}
                       </article>
