@@ -3627,14 +3627,23 @@
 .iranCategorySubs .iranCategorySubActive { background: #16a34a; color: #fff; }
 
 .iranCategoryChart { display: grid; gap: 14px; padding: 20px 22px 22px; }
-.iranCategoryChartRow { display: grid; grid-template-columns: 38px minmax(0, 1fr); align-items: center; gap: 12px; }
+.iranCategoryChartGroup { display: grid; gap: 7px; }
+.iranCategoryChartRow { display: grid; width: 100%; grid-template-columns: 38px minmax(0, 1fr); align-items: center; gap: 12px; padding: 6px; border: 0; border-radius: 13px; background: transparent; color: inherit; cursor: pointer; font: inherit; text-align: left; transition: background .18s ease, transform .18s ease; }
+.iranCategoryChartRow:hover { background: #f8fafc; transform: translateX(2px); }
+.iranCategoryChartRowActive { background: #f0fdf4; }
 .iranCategoryChartIcon { display: grid; width: 38px; height: 38px; place-items: center; border-radius: 11px; background: #f0fdf4; color: #15803d; }
 .iranCategoryChartBody { display: grid; gap: 7px; min-width: 0; }
-.iranCategoryChartBody > div:first-child { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
+.iranCategoryChartBody > span:first-child { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
 .iranCategoryChartBody span { overflow: hidden; color: #334155; font-size: 12px; font-weight: 850; text-overflow: ellipsis; white-space: nowrap; }
 .iranCategoryChartBody strong { color: #0f172a; font-size: 12px; font-weight: 950; white-space: nowrap; }
-.iranCategoryChartTrack { overflow: hidden; height: 9px; border-radius: 999px; background: #eef2f7; }
+.iranCategoryChartTrack { display: block; overflow: hidden; height: 9px; border-radius: 999px; background: #eef2f7; }
 .iranCategoryChartTrack i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #16a34a, #4ade80); box-shadow: 0 2px 8px rgba(22,163,74,.2); transition: width .25s ease; }
+.iranCategoryExpenseDetails { display: grid; gap: 2px; margin-left: 56px; padding: 4px 0 3px 12px; border-left: 2px solid #bbf7d0; }
+.iranCategoryExpenseDetails > div { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 8px; border-radius: 8px; background: #f8fafc; }
+.iranCategoryExpenseDetails > div > span { display: grid; min-width: 0; gap: 2px; }
+.iranCategoryExpenseDetails strong { overflow: hidden; color: #334155; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.iranCategoryExpenseDetails small { overflow: hidden; color: #94a3b8; font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+.iranCategoryExpenseDetails b { color: #0f172a; font-size: 10px; white-space: nowrap; }
 
 .iranOverviewCard { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
 .iranOverviewCard > .iranTripCardHead { grid-column: 1 / -1; }
@@ -4755,6 +4764,13 @@
 :global(html[data-theme='dark']) .iranCategoryChartBody span,
 :global(html[data-theme='dark']) .iranCategoryChartBody strong { color: var(--text-strong); }
 :global(html[data-theme='dark']) .iranCategoryChartTrack { background: var(--bg-soft); }
+:global(html[data-theme='dark']) .iranCategoryChartRow:hover,
+:global(html[data-theme='dark']) .iranCategoryChartRowActive,
+:global(html[data-theme='dark']) .iranCategoryExpenseDetails > div { background: rgba(30,41,59,.72); }
+:global(html[data-theme='dark']) .iranCategoryExpenseDetails { border-color: rgba(74,222,128,.35); }
+:global(html[data-theme='dark']) .iranCategoryExpenseDetails strong,
+:global(html[data-theme='dark']) .iranCategoryExpenseDetails b { color: var(--text-strong); }
+:global(html[data-theme='dark']) .iranCategoryExpenseDetails small { color: var(--text-muted); }
 :global(html[data-theme='dark']) .iranOverviewCard > .iranCategoryChart { border-color: var(--border-soft); }
 :global(html[data-theme='dark']) .iranHistoryHead span { background: var(--bg-soft); color: var(--text-muted); }
 

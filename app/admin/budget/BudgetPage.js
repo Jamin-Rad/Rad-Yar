@@ -541,6 +541,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
     category: iranCategoryValue(IRAN_EXPENSE_CATEGORIES[0].name, IRAN_EXPENSE_CATEGORIES[0].subs[0]), currency: 'toman', paidBy: 'account', amount: '', exchangeRate: '', description: '', date: getDateKey(),
   }))
   const [iranOpenCategory, setIranOpenCategory] = useState(null)
+  const [iranAnalysisCategory, setIranAnalysisCategory] = useState(null)
   const iranCategoryPickerRef = useRef(null)
   const [iranSettlementForm, setIranSettlementForm] = useState(() => ({
     person: IRAN_SETTLEMENT_PEOPLE[0], direction: 'receive', amount: '', note: '', date: getDateKey(),
@@ -715,6 +716,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
     return {
       category: category.name,
       icon: category.icon,
+      entries,
       total: entries.reduce((sum, entry) => sum + Number(entry.amountRial || 0), 0),
       totalEuro: entries.reduce((sum, entry) => sum + iranExpenseEuroValue(entry, iranTrip.exchangeRate), 0),
     }
@@ -1867,13 +1869,34 @@ ${manualEntries.length ? `
                     <div className={styles.iranCategoryChart}>
                       {iranCategoryTotals.map(item => {
                         const chartValue = iranTrip.displayCurrency === 'eur' ? item.totalEuro : item.total
+                        const isOpen = iranAnalysisCategory === item.category
                         return (
-                        <div className={styles.iranCategoryChartRow} key={item.category}>
-                          <span className={styles.iranCategoryChartIcon}><IranCategoryIcon type={item.icon} /></span>
-                          <div className={styles.iranCategoryChartBody}>
-                            <div><span>{item.category}</span><strong>{iranTrip.displayCurrency === 'eur' ? formatMoney(item.totalEuro) : formatTomanFromRial(item.total)}</strong></div>
-                            <div className={styles.iranCategoryChartTrack}><i style={{ width: `${Math.max(3, (chartValue / iranCategoryChartMax) * 100)}%` }} /></div>
-                          </div>
+                        <div className={styles.iranCategoryChartGroup} key={item.category}>
+                          <button
+                            type="button"
+                            className={`${styles.iranCategoryChartRow} ${isOpen ? styles.iranCategoryChartRowActive : ''}`}
+                            aria-expanded={isOpen}
+                            onClick={() => setIranAnalysisCategory(current => current === item.category ? null : item.category)}
+                          >
+                            <span className={styles.iranCategoryChartIcon}><IranCategoryIcon type={item.icon} /></span>
+                            <span className={styles.iranCategoryChartBody}>
+                              <span><span>{item.category}</span><strong>{iranTrip.displayCurrency === 'eur' ? formatMoney(item.totalEuro) : formatTomanFromRial(item.total)}</strong></span>
+                              <span className={styles.iranCategoryChartTrack}><i style={{ width: `${Math.max(3, (chartValue / iranCategoryChartMax) * 100)}%` }} /></span>
+                            </span>
+                          </button>
+                          {isOpen && (
+                            <div className={styles.iranCategoryExpenseDetails}>
+                              {item.entries.map(entry => (
+                                <div key={entry.id}>
+                                  <span>
+                                    <strong>{entry.category.includes(' › ') ? entry.category.split(' › ')[1] : (entry.description || item.category)}</strong>
+                                    <small>{entry.description && entry.category.includes(' › ') ? `${entry.description} · ` : ''}{new Date(`${entry.date}T00:00:00`).toLocaleDateString('de-DE')}</small>
+                                  </span>
+                                  <b>{iranExpenseDisplayAmount(entry)}</b>
+                                </div>
+                              ))}
+                            </div>
+                          )}
                         </div>
                         )
                       })}
