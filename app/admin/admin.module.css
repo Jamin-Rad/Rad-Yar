@@ -3465,6 +3465,7 @@
 .iranTripSummaryRow { display: flex; align-items: stretch; gap: 10px; }
 .iranTripTotal,
 .iranAccountBalance { display: grid; align-content: center; gap: 4px; min-width: 210px; padding: 13px 15px; border: 1px solid rgba(255,255,255,.09); border-radius: 14px; background: rgba(255,255,255,.06); text-align: left; }
+.iranTripTotal { min-width: 165px; }
 .iranTripTotal span,
 .iranAccountBalance > span { color: #94a3b8; font-size: 9px; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; }
 .iranTripTotal strong { color: #fca5a5; font-size: clamp(19px, 2.5vw, 27px); font-weight: 950; }
@@ -3475,6 +3476,22 @@
 .iranRateInput { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 8px; }
 .iranRateInput em { color: #64748b; font-size: 13px; font-style: normal; font-weight: 800; white-space: nowrap; }
 .iranRateInput input { width: min(220px, 100%); min-height: 40px; padding: 0 12px; border: 1px solid #cbd5e1; border-radius: 10px; background: rgba(248,250,252,.86); color: #0f172a; font: inherit; font-size: 14px; font-weight: 800; }
+.iranMoneyExchangeForm { display: grid; gap: 10px; padding-top: 14px; border-top: 1px solid rgba(148,163,184,.2); }
+.iranExchangeFormTitle { display: grid; gap: 3px; }
+.iranExchangeFormTitle strong { color: #0f172a; font-size: 12px; font-weight: 900; }
+.iranMoneyExchangeForm label { display: grid; gap: 6px; color: #64748b; font-size: 10px; font-weight: 850; }
+.iranMoneyExchangeForm input { width: 100%; min-height: 38px; padding: 0 10px; border: 1px solid #dbe3ec; border-radius: 9px; background: rgba(248,250,252,.82); color: #0f172a; font: inherit; font-size: 12px; outline: none; }
+.iranMoneyExchangeForm input:focus { border-color: #22c55e; box-shadow: 0 0 0 3px rgba(34,197,94,.1); }
+.iranExchangePreview { display: grid; gap: 2px; padding: 10px 12px; border: 1px solid #bbf7d0; border-radius: 11px; background: #f0fdf4; }
+.iranExchangePreview span { color: #64748b; font-size: 9px; font-weight: 850; text-transform: uppercase; }
+.iranExchangePreview strong { color: #15803d; font-size: 16px; font-weight: 950; }
+.iranExchangePreview small { font-size: 8px; }
+.iranExchangeHistory { display: grid; gap: 7px; padding-top: 12px; border-top: 1px solid rgba(148,163,184,.2); }
+.iranExchangeHistory > div { display: grid; grid-template-columns: minmax(0, 1fr) 24px; align-items: center; gap: 8px; }
+.iranExchangeHistory > div > span { display: grid; min-width: 0; gap: 2px; }
+.iranExchangeHistory strong { overflow: hidden; color: #334155; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.iranExchangeHistory small { overflow: hidden; font-size: 8px; text-overflow: ellipsis; white-space: nowrap; }
+.iranExchangeHistory button { width: 22px; height: 22px; border: 1px solid #fecaca; border-radius: 50%; background: #fff1f2; color: #dc2626; cursor: pointer; font-size: 13px; }
 
 .iranCurrencySwitch { display: grid; grid-template-columns: 1fr 1fr; min-width: 190px; padding: 3px; border: 1px solid rgba(255,255,255,.10); border-radius: 11px; background: rgba(255,255,255,.06); }
 .iranCurrencySwitch button { min-height: 34px; border: 0; border-radius: 8px; background: transparent; color: #64748b; cursor: pointer; font: inherit; font-size: 12px; font-weight: 850; }
@@ -3504,6 +3521,7 @@
 .iranExpenseCard { border-top: 3px solid #22c55e; }
 .iranExpenseCard .iranTripForm { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; padding: 18px; }
 .iranSettlementCard .iranTripForm { grid-template-columns: 1fr; padding: 15px 17px 17px; }
+.iranSettlementAmountInput { display: grid; grid-template-columns: minmax(0, 1fr) 88px; gap: 7px; }
 .iranTripWideField,
 .iranPrimaryBtn { grid-column: 1 / -1; }
 .iranPrimaryBtn { min-height: 42px; border: 0; border-radius: 11px; background: linear-gradient(135deg, #16a34a, #22c55e); color: #fff; cursor: pointer; font: inherit; font-size: 13px; font-weight: 900; box-shadow: 0 10px 22px rgba(22,163,74,.18); }
@@ -4713,7 +4731,9 @@
 :global(html[data-theme='dark']) .iranPersonCard > strong,
 :global(html[data-theme='dark']) .iranEntryRow > div strong,
 :global(html[data-theme='dark']) .iranEntryRow > b,
-:global(html[data-theme='dark']) .iranSettlementRow > b {
+:global(html[data-theme='dark']) .iranSettlementRow > b,
+:global(html[data-theme='dark']) .iranExchangeFormTitle strong,
+:global(html[data-theme='dark']) .iranExchangeHistory strong {
   color: var(--text-strong);
 }
 
@@ -4728,6 +4748,7 @@
 }
 
 :global(html[data-theme='dark']) .iranRateInput input,
+:global(html[data-theme='dark']) .iranMoneyExchangeForm input,
 :global(html[data-theme='dark']) .iranTripForm input,
 :global(html[data-theme='dark']) .iranTripForm select,
 :global(html[data-theme='dark']) .iranCurrencySwitch,
@@ -4736,6 +4757,11 @@
   border-color: var(--border);
   background: var(--bg-soft);
   color: var(--text-strong);
+}
+
+:global(html[data-theme='dark']) .iranExchangePreview {
+  border-color: rgba(74,222,128,.28);
+  background: rgba(22,101,52,.18);
 }
 
 :global(html[data-theme='dark']) .iranLinkedExpenseBadge {
