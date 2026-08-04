@@ -713,7 +713,6 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
       .reduce((sum, entry) => sum + Number(entry.amountRial || 0), 0),
     [iranTrip.expenses]
   )
-  const iranAccountRemainingRial = Number(iranTrip.accountBalanceRial || 0) - iranAccountExpensesRial
   const iranExchangedTotalEuro = useMemo(
     () => iranTrip.exchanges.reduce((sum, entry) => sum + Number(entry.euroAmount || 0), 0),
     [iranTrip.exchanges]
@@ -722,6 +721,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
     () => iranTrip.exchanges.reduce((sum, entry) => sum + Number(entry.amountRial || 0), 0),
     [iranTrip.exchanges]
   )
+  const iranAccountRemainingRial = Number(iranTrip.accountBalanceRial || 0) + iranExchangedTotalRial - iranAccountExpensesRial
 
   const iranCategoryTotals = useMemo(() => IRAN_EXPENSE_CATEGORIES.map(category => {
     const entries = iranTrip.expenses.filter(entry => iranCategoryGroup(entry.category) === category.name)
