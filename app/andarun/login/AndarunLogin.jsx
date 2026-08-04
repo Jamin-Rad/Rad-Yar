@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import styles from './page.module.css'
 
-export default function AndarunLogin() {
+export default function AndarunLogin({ nextPath = '/andarun' }) {
   const router = useRouter()
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -24,7 +24,7 @@ export default function AndarunLogin() {
       })
       const data = await response.json()
       if (!response.ok) throw new Error(data.error || 'Access failed.')
-      router.push('/andarun')
+      router.push(nextPath)
       router.refresh()
     } catch (err) {
       setError(err.message)

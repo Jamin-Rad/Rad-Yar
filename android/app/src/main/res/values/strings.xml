@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Iran Reisekasse</string>
+    <string name="title_activity_main">Iran Reisekasse</string>
+    <string name="package_name">com.radyar.iran</string>
+    <string name="custom_url_scheme">com.radyar.iran</string>
+</resources>

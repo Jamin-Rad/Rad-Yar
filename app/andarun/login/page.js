@@ -9,6 +9,10 @@ export const metadata = {
   },
 }
 
-export default function AndarunLoginPage() {
-  return <AndarunLogin />
+export default async function AndarunLoginPage({ searchParams }) {
+  const params = await searchParams
+  const requestedPath = params?.next
+  const nextPath = requestedPath?.startsWith('/andarun/') && !requestedPath.startsWith('//') ? requestedPath : '/andarun'
+
+  return <AndarunLogin nextPath={nextPath} />
 }

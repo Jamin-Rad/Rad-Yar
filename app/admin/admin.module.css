@@ -3438,6 +3438,8 @@
 
 /* Iran trip */
 .iranTripView { display: grid; gap: 20px; }
+.iranAppLayout { width: 100%; }
+.iranAppLayout .financeMain { width: 100%; }
 
 .iranTripHero,
 .iranExchangeCard,

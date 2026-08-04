@@ -1,0 +1,14 @@
+{
+  "appId": "com.radyar.iran",
+  "appName": "Iran Reisekasse",
+  "webDir": "android-web",
+  "server": {
+    "url": "https://www.rad-yar.com/andarun/iran-app",
+    "cleartext": false,
+    "androidScheme": "https",
+    "allowNavigation": [
+      "www.rad-yar.com",
+      "rad-yar.com"
+    ]
+  }
+}

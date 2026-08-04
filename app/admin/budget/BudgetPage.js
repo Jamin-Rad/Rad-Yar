@@ -497,8 +497,8 @@ function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onTo
   )
 }
 
-export default function BudgetPage({ homeHref = '', homeLabel = '' }) {
-  const [view, setView]       = useState('monat')
+export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = false }) {
+  const [view, setView]       = useState(() => iranOnly ? 'iranurlaub' : 'monat')
   const [subView, setSubView] = useState('kategorien')
   const [month, setMonth]     = useState(getMonthKey())
   const [year, setYear]       = useState(new Date().getFullYear())
@@ -1496,7 +1496,7 @@ ${manualEntries.length ? `
             ← {homeLabel || 'Zurück'}
           </Link>
         )}
-        <div className={styles.financeHeader}>
+        {!iranOnly && <div className={styles.financeHeader}>
           <div className={styles.financeHeroCopy}>
             <span className={styles.financeEyebrow}>Andarun / Finanzen</span>
             <h1 className={styles.title}>Finanzen</h1>
@@ -1551,10 +1551,10 @@ ${manualEntries.length ? `
               )
             })()}
           </div>
-        </div>
+        </div>}
 
         {/* ── METRIKEN ── */}
-        <section className={styles.financeMetrics} aria-label="Monatsbilanz">
+        {!iranOnly && <section className={styles.financeMetrics} aria-label="Monatsbilanz">
           <div className={styles.financeBalanceCard}>
             <span className={styles.financeBalanceLabel}>Monatsbilanz · {formatMonthLabel(month)}</span>
             <strong className={summary.balance >= 0 ? styles.financeBalancePositive : styles.financeBalanceNegative}>{formatMoney(summary.balance)}</strong>
@@ -1581,11 +1581,11 @@ ${manualEntries.length ? `
             <strong>{summary.income ? `${sparquote(summary.income, summary.expenses)} %` : '—'}</strong>
             <small>{summary.balance >= 0 ? 'im positiven Bereich' : 'Ausgaben über Einkommen'}</small>
           </div>
-        </section>
+        </section>}
 
         {/* ── LAYOUT ── */}
-        <div className={styles.financeLayout}>
-          <aside className={styles.financeSidebar}>
+        <div className={iranOnly ? styles.iranAppLayout : styles.financeLayout}>
+          {!iranOnly && <aside className={styles.financeSidebar}>
             <nav className={styles.sidebarNav}>
               <SidebarItem icon={<IconCalendar />} label="Monatsübersicht" active={view === 'monat'} onClick={() => setView('monat')} />
               <SidebarItem icon={<IconChart />} label="Jahresübersicht" active={view === 'jahr'} onClick={() => setView('jahr')} />
@@ -1601,7 +1601,7 @@ ${manualEntries.length ? `
                 </div>
               )}
             </nav>
-          </aside>
+          </aside>}
 
           <div className={styles.financeMain}>
 
