@@ -3463,8 +3463,8 @@
 .iranTripHero .iranTripEyebrow { color: #86efac; }
 .iranTripHero h2 { margin: 7px 0 8px; color: #fff; font-size: clamp(30px, 4vw, 48px); line-height: .98; }
 .iranTripHero p { margin: 0; color: #a7b2c5; font-size: 13px; font-weight: 650; }
-.iranTripHeroStats { display: grid; justify-items: end; gap: 10px; }
-.iranTripSummaryRow { display: flex; align-items: stretch; gap: 10px; }
+.iranTripHeroStats { display: grid; width: min(100%, 610px); justify-items: stretch; gap: 10px; }
+.iranTripSummaryRow { display: grid; grid-template-columns: minmax(210px, 1.2fr) repeat(2, minmax(155px, 1fr)); align-items: stretch; gap: 10px; }
 .iranTripTotal,
 .iranAccountBalance { display: grid; align-content: center; gap: 4px; min-width: 210px; padding: 13px 15px; border: 1px solid rgba(255,255,255,.09); border-radius: 14px; background: rgba(255,255,255,.06); text-align: left; }
 .iranTripTotal { min-width: 165px; }
@@ -3478,8 +3478,8 @@
 .iranRateInput { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 8px; }
 .iranRateInput em { color: #64748b; font-size: 13px; font-style: normal; font-weight: 800; white-space: nowrap; }
 .iranRateInput input { width: min(220px, 100%); min-height: 40px; padding: 0 12px; border: 1px solid #cbd5e1; border-radius: 10px; background: rgba(248,250,252,.86); color: #0f172a; font: inherit; font-size: 14px; font-weight: 800; }
-.iranMoneyExchangeForm { display: grid; gap: 10px; padding-top: 14px; border-top: 1px solid rgba(148,163,184,.2); }
-.iranExchangeFormTitle { display: grid; gap: 3px; }
+.iranMoneyExchangeForm { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding-top: 16px; border-top: 1px solid rgba(148,163,184,.2); }
+.iranExchangeFormTitle { display: grid; grid-column: 1 / -1; gap: 3px; }
 .iranExchangeFormTitle strong { color: #0f172a; font-size: 12px; font-weight: 900; }
 .iranMoneyExchangeForm label { display: grid; gap: 6px; color: #64748b; font-size: 10px; font-weight: 850; }
 .iranMoneyExchangeForm input { width: 100%; min-height: 38px; padding: 0 10px; border: 1px solid #dbe3ec; border-radius: 9px; background: rgba(248,250,252,.82); color: #0f172a; font: inherit; font-size: 12px; outline: none; }
@@ -3488,6 +3488,7 @@
 .iranExchangePreview span { color: #64748b; font-size: 9px; font-weight: 850; text-transform: uppercase; }
 .iranExchangePreview strong { color: #15803d; font-size: 16px; font-weight: 950; }
 .iranExchangePreview small { font-size: 8px; }
+.iranMoneyExchangeForm > .iranPrimaryBtn { grid-column: 1 / -1; }
 .iranExchangeHistory { display: grid; gap: 7px; padding-top: 12px; border-top: 1px solid rgba(148,163,184,.2); }
 .iranExchangeHistory > div { display: grid; grid-template-columns: minmax(0, 1fr) 24px; align-items: center; gap: 8px; }
 .iranExchangeHistory > div > span { display: grid; min-width: 0; gap: 2px; }
@@ -3503,8 +3504,8 @@
 .iranAccountBalance > .iranAccountBalanceNegative { color: #dc2626; }
 .iranAccountBalance > small { color: #94a3b8; font-size: 8px; font-weight: 650; }
 
-.iranTripWorkspace { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(290px, .68fr); align-items: start; gap: 20px; }
-.iranTripSidebar { display: grid; gap: 16px; min-width: 0; }
+.iranTripWorkspace { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 16px; }
+.iranTripSidebar { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); align-items: start; gap: 16px; min-width: 0; }
 .iranTripCard { min-width: 0; overflow: hidden; border-radius: 18px; }
 .iranTripCardHead,
 .iranCompactCardHead { display: flex; align-items: center; gap: 11px; }
@@ -3521,8 +3522,10 @@
 .iranTripForm input:focus,
 .iranTripForm select:focus { border-color: #22c55e; box-shadow: 0 0 0 3px rgba(34,197,94,.10); }
 .iranExpenseCard { border-top: 3px solid #22c55e; }
+.iranExchangeCard { border-top: 3px solid #0ea5e9; }
+.iranSettlementCard { border-top: 3px solid #f59e0b; }
 .iranExpenseCard .iranTripForm { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; padding: 18px; }
-.iranSettlementCard .iranTripForm { grid-template-columns: 1fr; padding: 15px 17px 17px; }
+.iranSettlementCard .iranTripForm { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 17px; }
 .iranSettlementAmountInput { display: grid; grid-template-columns: minmax(0, 1fr) 88px; gap: 7px; }
 .iranTripWideField,
 .iranPrimaryBtn { grid-column: 1 / -1; }
@@ -5378,13 +5381,13 @@
 
 @media (max-width: 1100px) {
   .iranTripWorkspace { grid-template-columns: 1fr; }
-  .iranTripSidebar { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .iranTripSidebar { grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); align-items: start; }
 }
 
 @media (max-width: 900px) {
   .iranTripHero { align-items: stretch; flex-direction: column; }
-  .iranTripHeroStats { justify-items: start; }
-  .iranTripSummaryRow { flex-wrap: wrap; gap: 18px; }
+  .iranTripHeroStats { width: 100%; justify-items: stretch; }
+  .iranTripSummaryRow { gap: 10px; }
   .iranTripTotal,
   .iranAccountBalance { min-width: 0; text-align: left; }
   .iranExpenseCard .iranTripForm,
@@ -5400,10 +5403,17 @@
 @media (max-width: 560px) {
   .iranTripHero { padding: 18px; }
   .iranExchangeCard { padding: 15px; }
+  .iranTripSummaryRow { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .iranAccountBalance { grid-column: 1 / -1; }
+  .iranTripTotal,
+  .iranAccountBalance { padding: 11px 12px; }
+  .iranMoneyExchangeForm { grid-template-columns: 1fr; }
+  .iranExchangeFormTitle,
+  .iranMoneyExchangeForm > .iranPrimaryBtn { grid-column: auto; }
   .iranTripForm,
   .iranExpenseCard .iranTripForm,
   .iranSettlementCard .iranTripForm { grid-template-columns: 1fr; padding: 14px; }
-  .iranCategoryChoices { grid-template-columns: 1fr; }
+  .iranCategoryChoices { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
   .iranTripWideField,
   .iranPrimaryBtn { grid-column: auto; }
   .iranCategoryGrid,
@@ -5412,6 +5422,12 @@
   .iranEntryRow { grid-template-columns: minmax(0, 1fr) 26px; }
   .iranEntryRow > b { grid-column: 1; }
   .iranEntryRow > button { grid-column: 2; grid-row: 1 / span 2; }
+}
+
+@media (max-width: 390px) {
+  .iranCategoryChoices { grid-template-columns: 1fr; }
+  .iranTripSummaryRow { grid-template-columns: 1fr; }
+  .iranAccountBalance { grid-column: auto; }
 }
 
 /* ── REPORT TABS – DARK MODE ─────────────────── */
