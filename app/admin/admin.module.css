@@ -3531,6 +3531,10 @@
 .iranPrimaryBtn { grid-column: 1 / -1; }
 .iranPrimaryBtn { min-height: 42px; border: 0; border-radius: 11px; background: linear-gradient(135deg, #16a34a, #22c55e); color: #fff; cursor: pointer; font: inherit; font-size: 13px; font-weight: 900; box-shadow: 0 10px 22px rgba(22,163,74,.18); }
 .iranPrimaryBtn:disabled { cursor: not-allowed; opacity: .45; }
+.iranExpenseFormActions { display: flex; grid-column: 1 / -1; gap: 9px; }
+.iranExpenseFormActions .iranPrimaryBtn { flex: 1 1 auto; }
+.iranSecondaryBtn { min-height: 42px; padding: 0 18px; border: 1px solid #cbd5e1; border-radius: 11px; background: #fff; color: #475569; cursor: pointer; font: inherit; font-size: 12px; font-weight: 850; }
+.iranSecondaryBtn:hover { border-color: #94a3b8; background: #f8fafc; }
 
 .iranAmountField { display: grid; align-content: start; gap: 6px; min-width: 0; }
 .iranAmountFieldHead { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: #64748b; font-size: 11px; font-weight: 850; }
@@ -3692,13 +3696,18 @@
 .iranEntryList { border-top: 1px solid rgba(148,163,184,.18); padding: 4px 18px 12px; }
 .iranEntryRow,
 .iranSettlementRow { display: grid; grid-template-columns: minmax(0, 1fr) auto 28px; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid #eef2f7; }
+.iranEntryRow { grid-template-columns: minmax(0, 1fr) auto auto; }
 .iranEntryRow > div { display: grid; gap: 3px; min-width: 0; }
 .iranEntryRow > div strong { color: #1e293b; font-size: 13px; }
 .iranEntryRow > div span { overflow: hidden; color: #94a3b8; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
 .iranEntryRow > b,
 .iranSettlementRow > b { color: #0f172a; font-size: 12px; font-weight: 900; white-space: nowrap; }
-.iranEntryRow > button,
 .iranSettlementRow > button { width: 26px; height: 26px; border: 1px solid #fecaca; border-radius: 50%; background: #fff1f2; color: #dc2626; cursor: pointer; font-size: 16px; }
+.iranEntryActions { display: flex; align-items: center; gap: 5px; }
+.iranEntryActions button { display: grid; width: 26px; height: 26px; padding: 0; place-items: center; border: 1px solid #cbd5e1; border-radius: 50%; background: #f8fafc; color: #475569; cursor: pointer; font-size: 14px; }
+.iranEntryActions button:hover { border-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.iranEntryActions button:last-child { border-color: #fecaca; background: #fff1f2; color: #dc2626; font-size: 16px; }
+.iranEntryActions button:last-child:hover { border-color: #fca5a5; background: #ffe4e6; color: #b91c1c; }
 .iranSettlementRow { grid-template-columns: minmax(0, 1fr) auto auto; padding: 7px 0 0; border-bottom: 0; }
 .iranSettlementRow > span { color: #64748b; font-size: 10px; overflow-wrap: anywhere; }
 .iranSettlementRow > button { width: 22px; height: 22px; font-size: 13px; }
@@ -4804,6 +4813,10 @@
 :global(html[data-theme='dark']) .iranCategoryExpenseDetails small { color: var(--text-muted); }
 :global(html[data-theme='dark']) .iranOverviewCard > .iranCategoryChart { border-color: var(--border-soft); }
 :global(html[data-theme='dark']) .iranHistoryHead span { background: var(--bg-soft); color: var(--text-muted); }
+:global(html[data-theme='dark']) .iranSecondaryBtn,
+:global(html[data-theme='dark']) .iranEntryActions button { border-color: var(--border); background: var(--bg-soft); color: var(--text-muted); }
+:global(html[data-theme='dark']) .iranEntryActions button:hover { border-color: #22c55e; background: rgba(22,101,52,.2); color: #86efac; }
+:global(html[data-theme='dark']) .iranEntryActions button:last-child { border-color: rgba(248,113,113,.35); background: rgba(220,38,38,.14); color: #fca5a5; }
 
 :global(html[data-theme='dark']) .iranCurrencySwitch .iranCurrencyActive {
   background: var(--bg-card);
@@ -5419,9 +5432,9 @@
   .iranCategoryGrid,
   .iranPeopleGrid { grid-template-columns: 1fr; padding: 14px; }
   .iranEntryList { padding-inline: 14px; }
-  .iranEntryRow { grid-template-columns: minmax(0, 1fr) 26px; }
+  .iranEntryRow { grid-template-columns: minmax(0, 1fr) auto; }
   .iranEntryRow > b { grid-column: 1; }
-  .iranEntryRow > button { grid-column: 2; grid-row: 1 / span 2; }
+  .iranEntryActions { grid-column: 2; grid-row: 1 / span 2; }
 }
 
 @media (max-width: 390px) {

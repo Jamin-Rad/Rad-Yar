@@ -541,8 +541,10 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
   const [iranExpenseForm, setIranExpenseForm] = useState(() => ({
     category: iranCategoryValue(IRAN_EXPENSE_CATEGORIES[0].name, IRAN_EXPENSE_CATEGORIES[0].subs[0]), currency: 'toman', paidBy: 'account', amount: '', exchangeRate: '', description: '', date: getDateKey(),
   }))
+  const [editingIranExpenseId, setEditingIranExpenseId] = useState(null)
   const [iranOpenCategory, setIranOpenCategory] = useState(null)
   const [iranAnalysisCategory, setIranAnalysisCategory] = useState(null)
+  const iranExpenseCardRef = useRef(null)
   const iranCategoryPickerRef = useRef(null)
   const [iranSettlementForm, setIranSettlementForm] = useState(() => ({
     person: IRAN_SETTLEMENT_PEOPLE[0], direction: 'receive', currency: 'toman', amount: '', note: '', date: getDateKey(),
@@ -795,7 +797,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
       : formatTomanFromRial(entry.amountRial)
   }
 
-  function addIranExpense(event) {
+  function saveIranExpense(event) {
     event.preventDefault()
     const inputCurrency = iranExpenseForm.currency === 'eur' ? 'eur' : 'toman'
     const enteredAmount = inputCurrency === 'eur' ? Number(iranExpenseForm.amount) : parseTomanInput(iranExpenseForm.amount)
@@ -804,7 +806,6 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
     const originalAmount = enteredAmount
     const amountRial = Math.round((inputCurrency === 'eur' ? enteredAmount * rateToman : originalAmount) * 10)
     const entry = {
-      id: makeId(),
       category: iranExpenseForm.category,
       amountRial,
       originalAmount,
@@ -817,7 +818,44 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
       description: iranExpenseForm.description.trim(),
       date: iranExpenseForm.date || getDateKey(),
     }
-    updateIranTrip(current => ({ ...current, expenses: [entry, ...current.expenses] }))
+    updateIranTrip(current => ({
+      ...current,
+      expenses: editingIranExpenseId
+        ? current.expenses.map(currentEntry => currentEntry.id === editingIranExpenseId ? { ...currentEntry, ...entry } : currentEntry)
+        : [{ id: makeId(), ...entry }, ...current.expenses],
+    }))
+    setEditingIranExpenseId(null)
+    setIranExpenseForm(prev => ({ ...prev, amount: '', exchangeRate: '', description: '' }))
+  }
+
+  function editIranExpense(entry) {
+    const inputCurrency = entry.originalCurrency === 'eur' ? 'eur' : 'toman'
+    const originalAmount = Number(entry.originalAmount || 0)
+    const storedRate = Number(entry.exchangeRateAtEntryToman || 0) || (
+      Number(entry.exchangeRateAtEntry || 0) > 0
+        ? (entry.exchangeRateUnit === 'toman' ? Number(entry.exchangeRateAtEntry) : Number(entry.exchangeRateAtEntry) / 10)
+        : Number(iranTrip.exchangeRate || 0)
+    )
+
+    setEditingIranExpenseId(entry.id)
+    setIranExpenseForm({
+      category: entry.category || iranCategoryValue(IRAN_EXPENSE_CATEGORIES[0].name, IRAN_EXPENSE_CATEGORIES[0].subs[0]),
+      currency: inputCurrency,
+      paidBy: inputCurrency === 'toman' ? (entry.paidBy || 'account') : 'external',
+      amount: inputCurrency === 'eur'
+        ? String(originalAmount || iranExpenseEuroValue(entry, iranTrip.exchangeRate))
+        : formatTomanInput(originalAmount || Number(entry.amountRial || 0) / 10),
+      exchangeRate: storedRate > 0 ? String(storedRate) : '',
+      description: entry.description || '',
+      date: entry.date || getDateKey(),
+    })
+    setIranOpenCategory(null)
+    window.requestAnimationFrame(() => iranExpenseCardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }))
+  }
+
+  function cancelIranExpenseEdit() {
+    setEditingIranExpenseId(null)
+    setIranOpenCategory(null)
     setIranExpenseForm(prev => ({ ...prev, amount: '', exchangeRate: '', description: '' }))
   }
 
@@ -858,6 +896,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
 
   function deleteIranExpense(id) {
     updateIranTrip(current => ({ ...current, expenses: current.expenses.filter(entry => entry.id !== id) }))
+    if (editingIranExpenseId === id) cancelIranExpenseEdit()
   }
 
   function deleteIranSettlement(id) {
@@ -1716,12 +1755,15 @@ ${manualEntries.length ? `
                 </section>
 
                 <div className={styles.iranTripWorkspace}>
-                  <section className={`${styles.iranTripCard} ${styles.iranExpenseCard}`}>
+                  <section className={`${styles.iranTripCard} ${styles.iranExpenseCard}`} ref={iranExpenseCardRef}>
                     <header className={styles.iranTripCardHead}>
                       <b>01</b>
-                      <div><span>Ausgaben erfassen</span><h3>Neue Reisekosten</h3></div>
+                      <div>
+                        <span>{editingIranExpenseId ? 'Ausgabe bearbeiten' : 'Ausgaben erfassen'}</span>
+                        <h3>{editingIranExpenseId ? 'Reisekosten aktualisieren' : 'Neue Reisekosten'}</h3>
+                      </div>
                     </header>
-                    <form className={styles.iranTripForm} onSubmit={addIranExpense}>
+                    <form className={styles.iranTripForm} onSubmit={saveIranExpense}>
                       <fieldset className={styles.iranCategoryPicker} ref={iranCategoryPickerRef}>
                         <legend>Kategorie</legend>
                         <div className={styles.iranCategoryChoices}>
@@ -1836,7 +1878,12 @@ ${manualEntries.length ? `
                         Beschreibung
                         <input value={iranExpenseForm.description} onChange={event => setIranExpenseForm(prev => ({ ...prev, description: event.target.value }))} placeholder="Optional" />
                       </label>
-                      <button className={styles.iranPrimaryBtn} type="submit" disabled={!iranExpenseForm.amount || Number(iranExpenseForm.exchangeRate || iranTrip.exchangeRate || 0) <= 0}>Ausgabe speichern</button>
+                      <div className={styles.iranExpenseFormActions}>
+                        <button className={styles.iranPrimaryBtn} type="submit" disabled={!iranExpenseForm.amount || Number(iranExpenseForm.exchangeRate || iranTrip.exchangeRate || 0) <= 0}>
+                          {editingIranExpenseId ? 'Änderungen speichern' : 'Ausgabe speichern'}
+                        </button>
+                        {editingIranExpenseId && <button className={styles.iranSecondaryBtn} type="button" onClick={cancelIranExpenseEdit}>Abbrechen</button>}
+                      </div>
                     </form>
                   </section>
 
@@ -1999,7 +2046,10 @@ ${manualEntries.length ? `
                               <span>{entry.description || 'Ohne Beschreibung'} · {new Date(`${entry.date}T00:00:00`).toLocaleDateString('de-DE')}{entry.originalCurrency === 'eur' ? ` · ursprünglich ${formatMoney(entry.originalAmount)}` : ` · ${entry.paidBy && entry.paidBy !== 'account' ? `bezahlt von ${iranPersonLabel(entry.paidBy)}` : 'Mein Konto'}`}{entry.exchangeRateAtEntryToman ? ` · Kurs ${new Intl.NumberFormat('de-DE').format(entry.exchangeRateAtEntryToman)} T/€` : ''}</span>
                             </div>
                             <b>{iranExpenseDisplayAmount(entry)}</b>
-                            <button type="button" onClick={() => deleteIranExpense(entry.id)} aria-label="Ausgabe löschen">×</button>
+                            <span className={styles.iranEntryActions}>
+                              <button type="button" onClick={() => editIranExpense(entry)} aria-label="Ausgabe bearbeiten">✎</button>
+                              <button type="button" onClick={() => deleteIranExpense(entry.id)} aria-label="Ausgabe löschen">×</button>
+                            </span>
                           </div>
                         ))}
                       </div>
