@@ -79,54 +79,57 @@ export const STROKE_LESSON = {
       },
     ],
     classificationTitle: 'Klassifikation & Begriffe',
-    classificationLead: L(
-      'Vier Ebenen: Grundform, Infarktmuster, Entstehung und klinischer Verlauf.',
-      'The key terms, organised by form, distribution, mechanism and clinical course.',
-      'مهم‌ترین اصطلاحات بر اساس نوع، توزیع، مکانیسم و سیر بالینی مرتب شده‌اند.'
-    ),
     classificationGroups: [
       {
         title: 'Grundformen',
         items: [
           {
             title: 'Ischämischer Schlaganfall',
-            text: 'Akut einsetzende, umschriebene Mangeldurchblutung des Gehirns mit fokal-neurologischem Defizit. Anteil: etwa 80–85 % aller Schlaganfälle.',
+            text: [
+              'Akut einsetzende, umschriebene Mangeldurchblutung des Gehirns mit fokal-neurologischem Defizit.',
+              'Anteil: etwa 80–85 % aller Schlaganfälle.',
+            ],
           },
           {
             title: 'Hämorrhagischer Schlaganfall',
-            text: 'Akutes neurologisches Defizit durch eine intrakranielle Blutung. Anteil: etwa 15–20 % — davon ICB (Blutung ins Hirnparenchym) etwa 10–15 % und SAB (Blutung in den Subarachnoidalraum) etwa 5 % aller Schlaganfälle.',
+            text: [
+              'Akutes neurologisches Defizit durch eine intrakranielle Blutung.',
+              'Anteil: etwa 15–20 % aller Schlaganfälle.',
+              'Davon ICB (Blutung ins Hirnparenchym): etwa 10–15 %.',
+              'Davon SAB (Blutung in den Subarachnoidalraum): etwa 5 %.',
+            ],
           },
         ],
       },
       {
         title: 'Infarktmuster',
         items: [
-          { title: 'Territorialinfarkt', text: 'Infarkt im Gebiet einer großen pialen Arterie.' },
-          { title: 'Lakunärer Infarkt', text: 'Kleiner Infarkt (≤ 1,5 cm) durch Verschluss eines Perforators.' },
-          { title: 'Endstrominfarkt', text: 'Distaler Infarkt im Gebiet einer nicht kollateralisierten Endarterie.' },
-          { title: 'Grenzzoneninfarkt', text: 'Infarkt zwischen benachbarten arteriellen Versorgungsgebieten.' },
+          { title: 'Territorialinfarkt', text: ['Infarkt im Gebiet einer großen pialen Arterie.'] },
+          { title: 'Lakunärer Infarkt', text: ['Kleiner Infarkt (≤ 1,5 cm) durch Verschluss eines Perforators.'] },
+          { title: 'Endstrominfarkt', text: ['Distaler Infarkt im Gebiet einer nicht kollateralisierten Endarterie.'] },
+          { title: 'Grenzzoneninfarkt', text: ['Infarkt zwischen benachbarten arteriellen Versorgungsgebieten.'] },
         ],
       },
       {
         title: 'Entstehungsmechanismus',
         items: [
-          { title: 'Embolisch', text: 'Arterieller Verschluss durch eingeschwemmtes Material.' },
-          { title: 'Kardioembolisch', text: 'Embolusquelle im Herzen.' },
-          { title: 'Arterio-arteriell', text: 'Embolusquelle in einer proximalen hirnversorgenden Arterie.' },
-          { title: 'Thrombotisch', text: 'Lokal entstandener Gefäßthrombus.' },
-          { title: 'Makroangiopathisch', text: 'Erkrankung großer Arterien, z. B. Atherosklerose oder Dissektion.' },
-          { title: 'Mikroangiopathisch', text: 'Erkrankung kleiner penetrierender Arterien.' },
-          { title: 'Venöser Infarkt', text: 'Venöse Abflussstörung durch Venen- oder Sinusthrombose; häufig hämorrhagisch.' },
+          { title: 'Embolisch', text: ['Arterieller Verschluss durch eingeschwemmtes Material.'] },
+          { title: 'Kardioembolisch', text: ['Embolusquelle im Herzen.'] },
+          { title: 'Arterio-arteriell', text: ['Embolusquelle in einer proximalen hirnversorgenden Arterie.'] },
+          { title: 'Thrombotisch', text: ['Lokal entstandener Gefäßthrombus.'] },
+          { title: 'Makroangiopathisch', text: ['Erkrankung großer Arterien.', 'Beispiele: Atherosklerose oder Dissektion.'] },
+          { title: 'Mikroangiopathisch', text: ['Erkrankung kleiner penetrierender Arterien.'] },
+          { title: 'Venöser Infarkt', text: ['Venöse Abflussstörung durch Venen- oder Sinusthrombose.', 'Häufig hämorrhagisch.'] },
         ],
       },
       {
         title: 'Klinischer Verlauf',
         items: [
-          { title: 'TIA', text: 'Vollständig rückläufiges fokales Defizit; meist < 1 h, klassisch < 24 h.' },
-          { title: 'RIND', text: 'Vollständige Rückbildung nach mehr als 24 Stunden.' },
-          { title: 'PRIND', text: 'Weitgehende Rückbildung mit minimalem Restdefizit.' },
-          { title: 'Progredienter Schlaganfall', text: 'Zunehmende Symptomatik in der Akutphase.' },
-          { title: 'Completed Stroke', text: 'Bleibendes neurologisches Defizit.' },
+          { title: 'TIA', text: ['Vollständig rückläufiges fokales Defizit.', 'Dauer: meist < 1 h, klassisch < 24 h.'] },
+          { title: 'RIND', text: ['Vollständige Rückbildung nach mehr als 24 Stunden.'] },
+          { title: 'PRIND', text: ['Weitgehende Rückbildung mit minimalem Restdefizit.'] },
+          { title: 'Progredienter Schlaganfall', text: ['Zunehmende Symptomatik in der Akutphase.'] },
+          { title: 'Completed Stroke', text: ['Bleibendes neurologisches Defizit.'] },
         ],
       },
     ],

@@ -93,12 +93,21 @@ function ClinicalBasics({ lesson, lang, localizeValue }) {
 
 function StrokeClassification({ lesson, lang, localizeValue }) {
   return (
-    <div>
+    <div className={styles.classificationLessons}>
       {lesson.classificationGroups.map(group => (
-        <div key={localizeValue(group.title)} style={{ marginTop: 26 }}>
-          <h3 style={{ margin: '0 0 12px', color: 'var(--text-strong)' }}>{localizeValue(group.title)}</h3>
-          <Cards items={localizedItems(group.items, lang)} />
-        </div>
+        <section className={styles.classificationGroup} key={localizeValue(group.title)}>
+          <h3 className={styles.classificationTopic}>{localizeValue(group.title)}</h3>
+          <div className={styles.classificationGrid}>
+            {localizedItems(group.items, lang).map(item => (
+              <article className={styles.classificationCard} key={item.title}>
+                <h4 className={styles.classificationSubtitle}>{item.title}</h4>
+                <ul className={styles.classificationPoints}>
+                  {item.text.map(point => <li key={point}>{point}</li>)}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </section>
       ))}
       <Callout type="cave" label={localizeValue('Wichtige Abgrenzung')}>{localizeValue(lesson.classificationCave)}</Callout>
     </div>
@@ -217,7 +226,7 @@ export default function IschaemischerSchlaganfallPage() {
         </aside>
 
         <div className={styles.main}>
-          <Section id="klassifikation" title={c(STROKE_LESSON.basics.classificationTitle)} lead={c(STROKE_LESSON.basics.classificationLead)}>
+          <Section id="klassifikation" title={c(STROKE_LESSON.basics.classificationTitle)}>
             <StrokeClassification lesson={STROKE_LESSON.basics} lang={lang} localizeValue={c} />
           </Section>
 

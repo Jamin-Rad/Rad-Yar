@@ -978,6 +978,73 @@
 }
 .strokePage .caseExternalLink { color: #7c3aed; }
 
+.classificationLessons {
+  display: grid;
+  gap: 34px;
+}
+
+.classificationGroup {
+  display: grid;
+  gap: 14px;
+}
+
+.classificationTopic {
+  margin: 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(124, 58, 237, .22);
+  color: #6d28d9;
+  font-family: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: -.025em;
+  line-height: 1.15;
+}
+
+.classificationGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.classificationCard {
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-inline-start: 4px solid #8b5cf6;
+  border-radius: 6px 18px 18px 6px;
+  background: var(--surface-soft);
+}
+
+[dir='rtl'] .classificationCard {
+  border-radius: 18px 6px 6px 18px;
+}
+
+.classificationSubtitle {
+  margin: 0 0 8px;
+  color: var(--text-strong);
+  font-family: var(--font-manrope), "Avenir Next", "Segoe UI", Arial, sans-serif;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 850;
+  letter-spacing: .005em;
+  line-height: 1.35;
+}
+
+.classificationPoints {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding-inline-start: 20px;
+  color: var(--text-soft);
+  font-family: var(--font-manrope), "Avenir Next", "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.classificationPoints li::marker {
+  color: #8b5cf6;
+}
+
 .clinicalSheet {
   position: relative;
   overflow: hidden;
@@ -1262,6 +1329,9 @@
 }
 
 @media (max-width: 760px) {
+  .classificationLessons { gap: 28px; }
+  .classificationGrid { grid-template-columns: 1fr; }
+  .classificationCard { padding: 16px 17px; }
   .clinicalIntro { padding: 20px 16px 12px; }
   .clinicalIntro h3,
   .clinicalTableBlock h3 { font-size: 25px; }
