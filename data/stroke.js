@@ -113,12 +113,15 @@ export const STROKE_LESSON = {
       {
         title: 'Entstehungsmechanismus',
         items: [
-          { title: 'Embolisch', text: ['Arterieller Verschluss durch eingeschwemmtes Material.'] },
-          { title: 'Kardioembolisch', text: ['Embolusquelle im Herzen.'] },
-          { title: 'Arterio-arteriell', text: ['Embolusquelle in einer proximalen hirnversorgenden Arterie.'] },
+          {
+            title: 'Embolisch',
+            text: [
+              'Arterieller Verschluss durch eingeschwemmtes Material.',
+              'Kardioembolisch: Embolusquelle im Herzen.',
+              'Arterio-arteriell: Embolusquelle in einer proximalen hirnversorgenden Arterie.',
+            ],
+          },
           { title: 'Thrombotisch', text: ['Lokal entstandener Gefäßthrombus.'] },
-          { title: 'Makroangiopathisch', text: ['Erkrankung großer Arterien.', 'Beispiele: Atherosklerose oder Dissektion.'] },
-          { title: 'Mikroangiopathisch', text: ['Erkrankung kleiner penetrierender Arterien.'] },
           { title: 'Venöser Infarkt', text: ['Venöse Abflussstörung durch Venen- oder Sinusthrombose.', 'Häufig hämorrhagisch.'] },
         ],
       },
