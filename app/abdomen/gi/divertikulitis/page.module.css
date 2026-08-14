@@ -990,8 +990,7 @@
 
 .classificationTopic {
   margin: 0;
-  padding-bottom: 8px;
-  border-bottom: 1px solid rgba(124, 58, 237, .20);
+  padding-bottom: 2px;
   color: #6d28d9;
   font-family: var(--font-manrope), "Avenir Next", "Segoe UI", Arial, sans-serif;
   font-size: clamp(18px, 1.7vw, 21px);
@@ -1010,13 +1009,8 @@
 .classificationCard {
   padding: 18px 20px;
   border: 1px solid var(--border);
-  border-inline-start: 4px solid #8b5cf6;
-  border-radius: 6px 18px 18px 6px;
+  border-radius: 18px;
   background: var(--surface-soft);
-}
-
-[dir='rtl'] .classificationCard {
-  border-radius: 18px 6px 6px 18px;
 }
 
 .classificationSubtitle {
