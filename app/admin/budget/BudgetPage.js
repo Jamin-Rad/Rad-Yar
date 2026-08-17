@@ -96,6 +96,16 @@ function iranExpenseEuroValue(entry, fallbackRateToman) {
   return rateToman > 0 ? Number(entry.amountRial || 0) / 10 / rateToman : 0
 }
 
+function iranSettlementAccountDelta(entry) {
+  const amountRial = Number(entry.amountRial || 0)
+  return entry.direction === 'receive' ? amountRial : -amountRial
+}
+
+function iranSettlementBalanceDelta(entry) {
+  const amountRial = Number(entry.amountRial || 0)
+  return entry.direction === 'receive' ? -amountRial : amountRial
+}
+
 async function budgetApi(method = 'GET', body) {
   const res = await fetch('/api/admin/budget', {
     method,
@@ -723,7 +733,14 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
     () => iranTrip.exchanges.reduce((sum, entry) => sum + Number(entry.amountRial || 0), 0),
     [iranTrip.exchanges]
   )
-  const iranAccountRemainingRial = Number(iranTrip.accountBalanceRial || 0) + iranExchangedTotalRial - iranAccountExpensesRial
+  const iranSettlementAccountTotalRial = useMemo(
+    () => iranTrip.settlements.reduce((sum, entry) => sum + iranSettlementAccountDelta(entry), 0),
+    [iranTrip.settlements]
+  )
+  const iranAccountRemainingRial = Number(iranTrip.accountBalanceRial || 0)
+    + iranExchangedTotalRial
+    - iranAccountExpensesRial
+    + iranSettlementAccountTotalRial
 
   const iranCategoryTotals = useMemo(() => IRAN_EXPENSE_CATEGORIES.map(category => {
     const entries = iranTrip.expenses.filter(entry => iranCategoryGroup(entry.category) === category.name)
@@ -762,9 +779,10 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
         date: entry.date,
       }))
     const entries = [...openingEntries, ...expenseEntries, ...settlementEntries]
-    const balance = entries.reduce((sum, entry) => (
-      entry.direction === 'receive' ? sum + Number(entry.amountRial || 0) : sum - Number(entry.amountRial || 0)
-    ), 0)
+    const openingBalance = openingEntries.reduce((sum, entry) => sum + Number(entry.amountRial || 0), 0)
+    const expenseBalance = expenseEntries.reduce((sum, entry) => sum - Number(entry.amountRial || 0), 0)
+    const settlementBalance = settlementEntries.reduce((sum, entry) => sum + iranSettlementBalanceDelta(entry), 0)
+    const balance = openingBalance + expenseBalance + settlementBalance
     return { person, balance, entries }
   }), [iranTrip.settlements, iranTrip.expenses])
 
@@ -1980,7 +1998,11 @@ ${manualEntries.length ? `
                             <option value="rial">Rial</option>
                           </select>
                         </div>
-                        <small>{iranSettlementForm.direction === 'pay' ? `Wird von der offenen Summe bei ${iranPersonLabel(iranSettlementForm.person)} abgezogen.` : `Wird zur Forderung an ${iranPersonLabel(iranSettlementForm.person)} addiert.`}</small>
+                        <small>
+                          {iranSettlementForm.direction === 'pay'
+                            ? `Wird vom Iran-Kontostand abgezogen und mit der offenen Abrechnung bei ${iranPersonLabel(iranSettlementForm.person)} verrechnet.`
+                            : `Wird dem Iran-Kontostand gutgeschrieben und mit der offenen Abrechnung bei ${iranPersonLabel(iranSettlementForm.person)} verrechnet.`}
+                        </small>
                       </label>
                       <label className={styles.iranTripWideField}>
                         Notiz
