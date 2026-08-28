@@ -3,8 +3,8 @@ import { hasDigitDASession } from '@/lib/digitdaAuth'
 import DigitDADashboard from './DigitDADashboard'
 
 export const metadata = {
-  title: 'DigitDA · Finanzen',
-  description: 'Geschütztes Finanzdashboard für DigitDA',
+  title: 'DigitDA · مدیریت مالی',
+  description: 'داشبورد مالی امن شرکت DigitDA',
   robots: { index: false, follow: false },
 }
 export const dynamic = 'force-dynamic'

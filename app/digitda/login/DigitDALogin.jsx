@@ -22,7 +22,7 @@ export default function DigitDALogin() {
         body: JSON.stringify({ password }),
       })
       const data = await response.json().catch(() => ({}))
-      if (!response.ok) throw new Error(data.error || 'Anmeldung fehlgeschlagen.')
+      if (!response.ok) throw new Error(data.error || 'ورود ناموفق بود.')
       router.replace('/digitda')
       router.refresh()
     } catch (err) {
@@ -32,25 +32,25 @@ export default function DigitDALogin() {
   }
 
   return (
-    <main className={styles.page}>
-      <div className={styles.brand}>Digit<span>DA</span></div>
+    <main className={styles.page} dir="rtl">
+      <div className={styles.brand} lang="en" dir="ltr">Digit<span>DA</span></div>
       <form className={styles.panel} onSubmit={submit}>
         <div className={styles.intro}>
-          <span>Unternehmensbereich</span>
-          <h1>Willkommen<br/>zurück.</h1>
-          <p>Finanzen, Projekte und Unternehmenszahlen an einem geschützten Ort.</p>
+          <span>پنل مالی شرکت</span>
+          <h1>خوش<br/>آمدید.</h1>
+          <p>درآمد، هزینه‌ها و سهم شرکا در یک فضای امن و یکپارچه.</p>
         </div>
         <label className={styles.field}>
-          Passwort
-          <input value={password} onChange={event => setPassword(event.target.value)} type="password" autoFocus autoComplete="current-password" placeholder="Passwort eingeben" />
+          رمز عبور
+          <input value={password} onChange={event => setPassword(event.target.value)} type="password" autoFocus autoComplete="current-password" placeholder="رمز عبور را وارد کنید" />
         </label>
         {error ? <p className={styles.error} role="alert">{error}</p> : null}
         <button className={styles.submit} disabled={!password || loading} type="submit">
-          <span>{loading ? 'Wird geöffnet …' : 'Dashboard öffnen'}</span>
-          <span aria-hidden="true">↗</span>
+          <span>{loading ? 'در حال ورود…' : 'ورود به داشبورد'}</span>
+          <span aria-hidden="true">↖</span>
         </button>
       </form>
-      <Link className={styles.back} href="/andarun">← Zurück zu Andarun</Link>
+      <Link className={styles.back} href="/andarun">بازگشت به اندرون ←</Link>
     </main>
   )
 }

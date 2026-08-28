@@ -7,7 +7,7 @@ export async function POST(request) {
   try { body = await request.json() } catch {}
 
   if (!safeEqual(body.password || '', getDigitDAPassword())) {
-    return NextResponse.json({ error: 'Das Passwort ist nicht korrekt.' }, { status: 401 })
+    return NextResponse.json({ error: 'رمز عبور صحیح نیست.' }, { status: 401 })
   }
 
   const response = NextResponse.json({ ok: true })

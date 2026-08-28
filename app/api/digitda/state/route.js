@@ -31,10 +31,10 @@ export async function PUT(request) {
 
   let body = {}
   try { body = await request.json() } catch {
-    return NextResponse.json({ error: 'Ungültige Daten.' }, { status: 400 })
+    return NextResponse.json({ error: 'اطلاعات ارسال‌شده معتبر نیست.' }, { status: 400 })
   }
   if (!body.state || typeof body.state !== 'object') {
-    return NextResponse.json({ error: 'Ungültiger Finanzstatus.' }, { status: 400 })
+    return NextResponse.json({ error: 'ساختار اطلاعات مالی معتبر نیست.' }, { status: 400 })
   }
 
   const { error } = await supabaseAdmin.from('digitda_finance_state').upsert({
