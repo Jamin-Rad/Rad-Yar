@@ -41,10 +41,10 @@ const CONTENT = {
       rows: [
         ['a.-p. / Mortise', '15–20° Innenrotation', 'Gelenkgabel, medialer und superiorer Gelenkspalt, Syndesmose'],
         ['Seitlich', 'Talus und distale Tibia überlagert', 'Hinterkante, Talusstellung, Gelenkerguss, dorsale Fragmente'],
-        ['Zusatzaufnahme', 'je nach Klinik', 'Proximale Fibula bei Druckschmerz oder Verdacht auf Maisonneuve-Verletzung'],
+        ['Zusatzaufnahme', 'je nach Klinik, z. B. prox. Fibula bei Druckschmerz (Maisonneuve?), Belastungsaufnahme bei Außenbandinstabilität, Fuß wenn mitbetroffen', ''],
       ],
       headers: ['Aufnahme', 'Technik', 'Beurteilung'],
-      key: 'Die Fibula darf die Tibia in der Mortise-Aufnahme nicht so stark überlagern, dass die Gelenkgabel nicht mehr sicher beurteilt werden kann.',
+      key: 'Mortise-View: 15–20° Innenrotation – Fibula darf die Gelenkgabel nicht überlagern.',
     },
     analysis: {
       title: 'Systematische Bildanalyse',
@@ -143,10 +143,10 @@ const CONTENT = {
       rows: [
         ['AP / mortise', '15–20° internal rotation', 'mortise, medial and superior clear spaces, syndesmosis'],
         ['Lateral', 'talus and distal tibia aligned', 'posterior malleolus, talar position, effusion, posterior fragments'],
-        ['Additional view', 'based on clinical findings', 'proximal fibula if tender or a Maisonneuve injury is suspected'],
+        ['Additional view', 'as clinically indicated, e.g. proximal fibula if tender (Maisonneuve?), stress view for lateral ligament instability, foot if involved', ''],
       ],
       headers: ['View', 'Technique', 'Assessment'],
-      key: 'On the mortise view, tibiofibular overlap must not obscure assessment of the ankle mortise.',
+      key: 'Mortise view: 15–20° internal rotation – fibula must not overlap the ankle mortise.',
     },
     analysis: {
       title: 'Systematic image analysis',
