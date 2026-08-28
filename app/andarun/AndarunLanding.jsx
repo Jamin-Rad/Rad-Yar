@@ -11,9 +11,16 @@ const spaces = [
   { number: '03', title: 'Termine',    description: 'Zeit bewusst planen', href: '/andarun/termine',    theme: 'lemon',  icon: 'calendar'  },
   { number: '04', title: 'Deutsch',    description: 'Jeden Tag weiter',    href: '/andarun/deutsch',    theme: 'lemon',  icon: 'type'      },
   { number: '05', title: 'Gesundheit', description: 'Körper im Blick',     href: '/andarun/gesundheit', theme: 'mint',   icon: 'heart'     },
-  { number: '06', title: 'Finanzen',   description: 'Sicher planen',       href: '/andarun/finanz',     theme: 'cobalt', icon: 'chart'     },
+  { number: '06', title: 'Finanzen',   description: 'Sicher planen',       action: 'finance',            theme: 'cobalt', icon: 'chart'     },
   { number: '07', title: 'Dienste',    description: 'Dienstzeiten planen', href: '/andarun/dienste',    theme: 'mint',   icon: 'briefcase' },
   { number: '08', title: 'Befunde',    description: 'Fälle & Fragen',      href: '/andarun/befunde',    theme: 'coral',  icon: 'file'      },
+]
+
+const financeSpaces = [
+  { title: 'Monatliche Ausgaben', description: 'Einnahmen, Fixkosten und Budgets im Blick.', href: '/andarun/finanz', icon: 'monthly' },
+  { title: 'Urlaub', description: 'Reisekosten und Urlaubsbudget verwalten.', href: '/andarun/finanz?bereich=urlaub', icon: 'holiday' },
+  { title: 'Familie Zia', description: 'Gemeinsam planen und den Überblick behalten.', href: '/andarun/finanz?bereich=familie', icon: 'family' },
+  { title: 'DigitDA Unternehmen', description: 'Umsatz, Kosten und Gewinn des Unternehmens.', href: '/digitda', icon: 'company' },
 ]
 
 function SpaceIcon({ name }) {
@@ -27,8 +34,16 @@ function SpaceIcon({ name }) {
   return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 40V27h8v13M20 40V18h8v22M32 40V8h8v32M5 40h38"/></svg>
 }
 
+function FinanceIcon({ name }) {
+  if (name === 'monthly') return <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17"/><path d="M24 7v17h17M14 35c3-4 7-7 10-11"/></svg>
+  if (name === 'holiday') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 24c5-11 29-11 34 0M24 13v22M13 24l3 11M35 24l-3 11M8 39h32"/><path d="M24 13c-5 2-8 6-8 11M24 13c5 2 8 6 8 11"/></svg>
+  if (name === 'family') return <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="15" r="6"/><circle cx="10" cy="20" r="4"/><circle cx="38" cy="20" r="4"/><path d="M13 39v-5c0-6 5-10 11-10s11 4 11 10v5M3 39v-4c0-5 4-8 9-8M45 39v-4c0-5-4-8-9-8"/></svg>
+  return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 41h34M11 41V18h10v23M27 41V7h10v34M15 23h2M15 29h2M15 35h2M31 13h2M31 19h2M31 25h2M31 31h2M31 37h2"/></svg>
+}
+
 export default function AndarunLanding() {
   const [revealedCards, setRevealedCards] = useState(new Set())
+  const [financeOpen, setFinanceOpen] = useState(false)
   const gridRef = useRef(null)
 
   useEffect(() => {
@@ -42,6 +57,18 @@ export default function AndarunLanding() {
     cards.forEach(el => obs.observe(el))
     return () => obs.disconnect()
   }, [])
+
+  useEffect(() => {
+    if (!financeOpen) return
+    const previousOverflow = document.body.style.overflow
+    const closeOnEscape = event => event.key === 'Escape' && setFinanceOpen(false)
+    document.body.style.overflow = 'hidden'
+    document.addEventListener('keydown', closeOnEscape)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      document.removeEventListener('keydown', closeOnEscape)
+    }
+  }, [financeOpen])
 
   return (
     <main className={styles.page}>
@@ -70,13 +97,16 @@ export default function AndarunLanding() {
         </div>
 
         <div className={styles.grid} ref={gridRef}>
-          {spaces.map((space, i) => (
-            <Link
+          {spaces.map((space, i) => {
+            const CardTag = space.action === 'finance' ? 'button' : Link
+            return <CardTag
               key={space.title}
               data-ci={String(i)}
               className={`${styles.card} ${styles[space.theme]} ${revealedCards.has(String(i)) ? styles.cardVisible : ''}`}
               style={{ '--delay': `${i * 0.08}s` }}
               href={space.href}
+              type={space.action === 'finance' ? 'button' : undefined}
+              onClick={space.action === 'finance' ? () => setFinanceOpen(true) : undefined}
             >
               <div className={styles.cardTop}>
                 <span className={styles.number}>{space.number}</span>
@@ -87,10 +117,40 @@ export default function AndarunLanding() {
                 <h3>{space.title}</h3>
                 <p>{space.description}</p>
               </div>
-            </Link>
-          ))}
+            </CardTag>
+          })}
         </div>
       </section>
+
+      {financeOpen ? (
+        <div className={styles.financeOverlay} role="presentation" onMouseDown={event => event.target === event.currentTarget && setFinanceOpen(false)}>
+          <section className={styles.financeModal} role="dialog" aria-modal="true" aria-labelledby="finance-dialog-title">
+            <div className={styles.financeModalHead}>
+              <div>
+                <p>Finanzen</p>
+                <h2 id="finance-dialog-title">Wohin möchtest du?</h2>
+              </div>
+              <button className={styles.financeClose} type="button" onClick={() => setFinanceOpen(false)} aria-label="Dialog schließen">
+                <span aria-hidden="true" />
+                <span aria-hidden="true" />
+              </button>
+            </div>
+            <div className={styles.financeChoices}>
+              {financeSpaces.map((item, index) => (
+                <Link className={styles.financeChoice} href={item.href} key={item.title}>
+                  <span className={styles.financeChoiceIndex}>0{index + 1}</span>
+                  <span className={styles.financeChoiceIcon}><FinanceIcon name={item.icon} /></span>
+                  <span className={styles.financeChoiceCopy}>
+                    <strong>{item.title}</strong>
+                    <small>{item.description}</small>
+                  </span>
+                  <span className={styles.financeChoiceArrow} aria-hidden="true">↗</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        </div>
+      ) : null}
 
       <footer className={styles.footer}>
         <p>ANDARUN <span>✦</span> PERSONAL SPACE</p>

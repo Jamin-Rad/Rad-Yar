@@ -55,7 +55,7 @@ export default function RootLayout({ children }) {
       signInFallbackRedirectUrl="/"
       signUpFallbackRedirectUrl="/"
     >
-      <html lang="de" data-theme="light" suppressHydrationWarning>
+      <html lang="de" data-theme="light" data-scroll-behavior="smooth" suppressHydrationWarning>
         <head>
           <link
             href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"

@@ -507,8 +507,8 @@ function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onTo
   )
 }
 
-export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = false }) {
-  const [view, setView]       = useState(() => iranOnly ? 'iranurlaub' : 'monat')
+export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = false, initialView = 'monat' }) {
+  const [view, setView]       = useState(() => iranOnly ? 'iranurlaub' : initialView)
   const [subView, setSubView] = useState('kategorien')
   const [month, setMonth]     = useState(getMonthKey())
   const [year, setYear]       = useState(new Date().getFullYear())

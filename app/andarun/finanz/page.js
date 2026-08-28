@@ -14,13 +14,15 @@ export const metadata = {
 
 export const dynamic = 'force-dynamic'
 
-export default async function AndarunFinanzPage() {
+export default async function AndarunFinanzPage({ searchParams }) {
   if (!(await hasAndarunSession())) redirect('/andarun/login')
+  const params = await searchParams
+  const initialView = params?.bereich === 'urlaub' ? 'iranurlaub' : 'monat'
 
   return (
     <>
       <AndarunNav />
-      <BudgetPage />
+      <BudgetPage initialView={initialView} />
     </>
   )
 }

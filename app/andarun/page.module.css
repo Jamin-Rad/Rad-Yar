@@ -156,7 +156,115 @@
   opacity: 0;
   transform: translateY(60px) scale(0.95);
   transition: box-shadow .35s, background .35s;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
 }
+
+/* ── FINANCE DESTINATION DIALOG ─────────────────────────────────────────── */
+.financeOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background: rgba(1, 7, 20, .82);
+  backdrop-filter: blur(18px) saturate(.75);
+  animation: overlayIn .25s ease-out both;
+}
+
+.financeModal {
+  position: relative;
+  width: min(940px, 100%);
+  max-height: calc(100svh - 56px);
+  overflow: auto;
+  padding: clamp(30px, 5vw, 64px);
+  color: #07152d;
+  background:
+    linear-gradient(rgba(10, 37, 71, .045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 37, 71, .045) 1px, transparent 1px),
+    #fbf9f3;
+  background-size: 38px 38px;
+  border: 1px solid rgba(255,255,255,.45);
+  border-radius: 3px;
+  box-shadow: 0 40px 130px rgba(0,0,0,.55);
+  animation: modalIn .38s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.financeModalHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 30px;
+  padding-bottom: 38px;
+}
+.financeModalHead p {
+  margin: 0 0 12px;
+  color: #2458ed;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+.financeModalHead h2 {
+  margin: 0;
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 400;
+  line-height: .98;
+  letter-spacing: -.05em;
+}
+.financeClose {
+  position: relative;
+  flex: 0 0 auto;
+  width: 54px;
+  height: 54px;
+  border: 1px solid #a8b0bb;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+.financeClose:hover { background: #07152d; transform: rotate(7deg); }
+.financeClose span { position: absolute; inset: 50% auto auto 50%; width: 20px; height: 1px; background: #07152d; }
+.financeClose span:first-child { transform: translate(-50%, -50%) rotate(45deg); }
+.financeClose span:last-child { transform: translate(-50%, -50%) rotate(-45deg); }
+.financeClose:hover span { background: #fff; }
+
+.financeChoices { border-top: 1px solid rgba(7,21,45,.18); }
+.financeChoice {
+  min-height: 128px;
+  display: grid;
+  grid-template-columns: 34px 68px minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: 22px;
+  color: #07152d;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(7,21,45,.18);
+  transition: background .22s, padding .22s;
+}
+.financeChoice:hover { padding-inline: 16px; background: rgba(36,88,237,.055); }
+.financeChoiceIndex { color: #7c8797; font-size: 10px; font-weight: 800; letter-spacing: .12em; }
+.financeChoiceIcon {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #bcc4cf;
+  border-radius: 50%;
+  color: #2458ed;
+  background: rgba(255,255,255,.55);
+}
+.financeChoiceIcon svg { width: 34px; fill: none; stroke: currentColor; stroke-width: 1.55; stroke-linecap: round; stroke-linejoin: round; }
+.financeChoiceCopy { display: grid; gap: 6px; }
+.financeChoiceCopy strong { font-size: clamp(17px, 2vw, 22px); line-height: 1.2; letter-spacing: -.025em; }
+.financeChoiceCopy small { color: #586374; font-size: 13px; line-height: 1.55; }
+.financeChoiceArrow { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid #bbc3ce; border-radius: 50%; font-size: 18px; transition: transform .2s, background .2s, color .2s; }
+.financeChoice:hover .financeChoiceArrow { transform: rotate(45deg); background: #b8f000; border-color: #b8f000; color: #07152d; }
+
+@keyframes overlayIn { from { opacity: 0; } }
+@keyframes modalIn { from { opacity: 0; transform: translateY(22px) scale(.985); } }
 .card:hover {
   background: rgba(255,255,255,.09);
   box-shadow: 0 28px 65px rgba(0,0,0,.55), 0 0 55px rgba(111,91,220,.14);
@@ -256,6 +364,17 @@
   .icon svg { width: 70px; }
   .cardCopy h3 { font-size: 32px; }
   .footer { padding: 30px 18px; gap: 15px; align-items: flex-start; flex-direction: column; }
+  .financeOverlay { padding: 10px; align-items: end; }
+  .financeModal { max-height: calc(100svh - 20px); padding: 26px 20px 20px; border-radius: 20px 20px 4px 4px; }
+  .financeModalHead { padding-bottom: 24px; }
+  .financeModalHead h2 { font-size: 40px; }
+  .financeClose { width: 46px; height: 46px; }
+  .financeChoice { min-height: 112px; grid-template-columns: 48px minmax(0, 1fr) 38px; gap: 14px; }
+  .financeChoiceIndex { display: none; }
+  .financeChoiceIcon { width: 48px; height: 48px; }
+  .financeChoiceIcon svg { width: 27px; }
+  .financeChoiceCopy small { font-size: 11px; }
+  .financeChoiceArrow { width: 36px; height: 36px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
