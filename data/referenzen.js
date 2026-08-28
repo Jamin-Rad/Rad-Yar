@@ -522,7 +522,7 @@ export const MESSWERTE = [
         entries: [
           { s: { de: 'Länge', en: 'Length', fa: 'طول' }, v: '11–15 cm', h: { de: 'Splenomegalie > 15 cm', en: 'Splenomegaly > 15 cm', fa: 'اسپلنومگالی > ۱۵ سانتی‌متر' } },
           { s: { de: 'Breite / Tiefe', en: 'Width / Depth', fa: 'عرض / عمق' }, v: 'B: 7–10 cm / T: 4–6 cm', h: { de: 'Tiefe > 6 cm → Splenomegalie', en: 'Depth > 6 cm → splenomegaly', fa: 'عمق > ۶ سانتی‌متر → اسپلنومگالی' } },
-          { s: { de: 'Milzindex (B×T×L)', en: 'Spleen index (W×D×L)', fa: 'شاخص طحال (ع×ع×ط)' }, v: '160–440 cm³', h: { de: 'Grob-Volumenabschätzung; Splenomegalie > 440 cm³', en: 'Rough volume estimate; splenomegaly > 440 cm³', fa: 'تخمین حجم؛ اسپلنومگالی > ۴۴۰ cm³' } },
+          { s: { de: 'Milzindex (L×B)', en: 'Spleen index (L×W)', fa: 'شاخص طحال (ط×ع)' }, v: '≤ 28 cm²', h: { de: 'Splenomegalie > 28 cm²; Volumen (L×B×T×0,523) normal < 220 ml', en: 'Splenomegaly > 28 cm²; volume (L×W×D×0.523) normal < 220 ml', fa: 'اسپلنومگالی > ۲۸ cm²؛ حجم (ط×ع×ع×۰٫۵۲۳) طبیعی < ۲۲۰ ml' } },
         ],
       },
       {
