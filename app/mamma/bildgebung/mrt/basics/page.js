@@ -286,11 +286,11 @@ export default function MammaMrtBasicsPage() {
               <article className={styles.bpeCard}>
                 <div className={styles.compareHeading}><span className={`${styles.term} ${styles.termBpe}`}>BPE</span><div><small>Normales Parenchym</small><h3>Background Parenchymal Enhancement</h3></div></div>
                 <p className={styles.definition}>BPE beschreibt, wie stark das <strong>normale fibroglanduläre Brustgewebe nach Kontrastmittelgabe anreichert</strong>.</p>
-                <figure className={`${styles.teachingMedia} ${styles.mediaPlaceholder}`}>
-                  <div aria-label="Reservierter Bildbereich für die vier BPE-Kategorien">
-                    <span>BPE</span><strong>Bildbereich vorbereitet</strong><small>Hier wird das Vergleichsbild für Minimal · Mild · Moderate · Marked eingesetzt.</small>
-                  </div>
-                  <figcaption><strong>BPE-Kategorien</strong><span>Gleiche Größe und Position wie das FGT-Bild</span></figcaption>
+                <figure className={styles.teachingMedia}>
+                  <a href="/mamma/mrt/bpe-categories.png" target="_blank" rel="noreferrer" aria-label="BPE-Kategorien in voller Größe öffnen">
+                    <Image src="/mamma/mrt/bpe-categories.png" alt="Vier MRT-Beispiele der BPE-Kategorien minimal, mild, moderate und marked" width={1811} height={868} sizes="(max-width: 900px) calc(100vw - 64px), 820px" loading="eager" />
+                  </a>
+                  <figcaption><strong>BPE minimal–marked im MRT</strong><span>Zum Vergrößern Bild öffnen</span></figcaption>
                 </figure>
                 <p className={styles.categoryIntro}>BI-RADS unterscheidet vier Kategorien:</p>
                 <div className={styles.categoryList}>

@@ -99,11 +99,6 @@
 .teachingMedia figcaption { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 14px; background: var(--bg-card); }
 .teachingMedia figcaption strong { color: var(--text-strong); font-size: 12px; }
 .teachingMedia figcaption span { color: var(--text-muted); font-size: 10px; font-weight: 750; }
-.mediaPlaceholder { border-color: rgba(124,58,237,.22); background: linear-gradient(135deg, #1e1636, #25154a); }
-.mediaPlaceholder > div { aspect-ratio: 2175 / 723; display: grid; place-content: center; justify-items: center; gap: 7px; padding: 20px; text-align: center; }
-.mediaPlaceholder > div > span { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 16px; background: linear-gradient(135deg, #7c3aed, #a855f7); color: white; font-size: 13px; font-weight: 950; box-shadow: 0 12px 28px rgba(124,58,237,.28); }
-.mediaPlaceholder > div > strong { color: white; font-size: 17px; }
-.mediaPlaceholder > div > small { color: rgba(255,255,255,.66); font-size: 11px; }
 .categoryIntro { margin: 20px 0 12px; color: var(--text-strong); font-size: 13px; font-weight: 850; }
 .categoryList { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
 .categoryItem { display: grid; grid-template-columns: 34px 1fr; gap: 11px; padding: 13px; border: 1px solid color-mix(in srgb, #db2777 16%, var(--border)); border-radius: 16px; background: color-mix(in srgb, #fff 72%, transparent); }
@@ -174,9 +169,6 @@
   .categoryList { grid-template-columns: 1fr; }
   .teachingMedia { border-radius: 16px; }
   .teachingMedia figcaption { align-items: flex-start; flex-direction: column; gap: 2px; }
-  .mediaPlaceholder > div > span { width: 42px; height: 42px; border-radius: 13px; }
-  .mediaPlaceholder > div > strong { font-size: 14px; }
-  .mediaPlaceholder > div > small { display: none; }
   .memoryLine { grid-template-columns: 1fr; }
   .memoryLine i { justify-self: center; }
   .workflowTypes { grid-template-columns: 1fr; }
