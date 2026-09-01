@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Navbar from '@/components/Navbar'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
@@ -126,7 +127,9 @@ export default function ContrastGroupPage({ groupId }) {
   const localize = value => value[lang] || value.de
 
   return (
-    <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
+    <>
+      <Navbar />
+      <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
       <header className={styles.header}>
         <nav className={styles.breadcrumb}>
           <Link href={withLang('/')}>RadYar</Link><span>›</span>
@@ -205,6 +208,7 @@ export default function ContrastGroupPage({ groupId }) {
           </SupplementSection>
         </article>
       </div>
-    </main>
+      </main>
+    </>
   )
 }
