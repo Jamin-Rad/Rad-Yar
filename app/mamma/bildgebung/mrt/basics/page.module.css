@@ -61,10 +61,11 @@
 .sequenceCard li::marker { color: var(--accent); }
 .sequenceNotes { display: grid; gap: 9px; margin-top: auto; padding-top: 14px; border-top: 1px solid color-mix(in srgb, var(--accent) 20%, transparent); }
 .sequenceNotes p { margin: 0; color: var(--text-strong); font-size: 13px; font-weight: 750; line-height: 1.6; }
-.sequenceSummary { display: grid; grid-template-columns: 92px 1fr; gap: 18px; margin-top: 18px; padding: 22px; border: 1px solid rgba(219, 39, 119, .30); border-radius: 22px; background: linear-gradient(135deg, rgba(253, 242, 248, .94), var(--bg-card)); }
-.sequenceSummary > span { display: grid; align-self: start; place-items: center; min-height: 42px; border-radius: 14px; background: linear-gradient(135deg, #db2777, #9333ea); color: white; font-size: 11px; font-weight: 950; letter-spacing: .1em; text-transform: uppercase; }
-.sequenceSummary > div { display: grid; gap: 10px; }
-.sequenceSummary p { margin: 0; color: var(--text-strong); line-height: 1.65; }
+.sequenceSummary { display: grid; grid-template-columns: 92px 1fr; gap: 18px; align-items: center; margin-top: 18px; padding: 22px; border: 1px solid rgba(219, 39, 119, .30); border-radius: 22px; background: linear-gradient(135deg, rgba(253, 242, 248, .94), var(--bg-card)); }
+.sequenceSummary > span { display: grid; align-self: center; place-items: center; min-height: 42px; border-radius: 14px; background: linear-gradient(135deg, #db2777, #9333ea); color: white; font-size: 11px; font-weight: 950; letter-spacing: .1em; text-transform: uppercase; }
+.sequenceSummary ul { display: grid; gap: 10px; margin: 0; padding-left: 22px; }
+.sequenceSummary li { padding-left: 3px; color: var(--text-strong); line-height: 1.65; }
+.sequenceSummary li::marker { color: #db2777; font-size: 1.1em; }
 .blue { --accent: #2563eb; } .violet { --accent: #7c3aed; } .rose { --accent: #db2777; } .amber { --accent: #d97706; } .cyan { --accent: #0891b2; } .green { --accent: #059669; }
 
 .workflow { position: relative; display: grid; gap: 0; margin: 8px 0 0; padding: 0; list-style: none; }

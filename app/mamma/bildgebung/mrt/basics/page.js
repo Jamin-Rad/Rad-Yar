@@ -209,11 +209,11 @@ export default function MammaMrtBasicsPage() {
             ))}</div>
             <div className={styles.sequenceSummary}>
               <span>Merke</span>
-              <div>
-                <p><strong>T1 nach Kontrastmittel ist einer der wichtigsten Teile der Mamma-MRT.</strong></p>
-                <p><strong>Ein niedriger ADC bedeutet nicht automatisch Krebs.</strong></p>
-                <p><strong>Die MIP ist perfekt zum Suchen, aber nicht zur endgültigen Beurteilung.</strong></p>
-              </div>
+              <ul>
+                <li><strong>T1 nach Kontrastmittel ist einer der wichtigsten Teile der Mamma-MRT.</strong></li>
+                <li><strong>Ein niedriger ADC bedeutet nicht automatisch Krebs.</strong></li>
+                <li><strong>Die MIP ist perfekt zum Suchen, aber nicht zur endgültigen Beurteilung.</strong></li>
+              </ul>
             </div>
           </Section>
 
