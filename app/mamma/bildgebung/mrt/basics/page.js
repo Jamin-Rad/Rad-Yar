@@ -94,13 +94,10 @@ export default function MammaMrtBasicsPage() {
               <Link className={`${base.actionBtn} ${styles.actionBtn}`} href={withLang(`/flashcards/mamma-mrt-basics?from=${encodeURIComponent(withLang(lessonPath))}`)}>🧠 {tx('Flashcards')}</Link>
             </div>
           </div>
-          <div className={styles.heroBrief}>
-            <div className={styles.heroBriefHeading}><span>{tx('Lernziele')}</span><h2>{tx('Nach dieser Lektion kannst du')}</h2></div>
-            <ol>
-              <li><span>01</span><strong>{tx('Indikationen gezielt einordnen')}</strong></li>
-              <li><span>02</span><strong>{tx('das MRT-Protokoll sicher lesen')}</strong></li>
-              <li><span>03</span><strong>{tx('FGT, BPE, Focus, Mass und NME unterscheiden')}</strong></li>
-            </ol>
+          <div className={base.heroStats}>
+            <div className={`${base.heroStat} ${styles.heroStat}`}><strong>DCE-MRT</strong><span>{tx('Höchste Sensitivität')}</span><small>{tx('Tumorvaskularisation und Kontrastmittelaufnahme sichtbar machen.')}</small></div>
+            <div className={`${base.heroStat} ${styles.heroStat}`}><strong>T2 · T1 · DWI</strong><span>{tx('Multiparametrisch')}</span><small>{tx('Jede Sequenz beantwortet eine andere diagnostische Frage.')}</small></div>
+            <div className={`${base.heroStat} ${styles.heroStat}`}><strong>Focus · Mass · NME</strong><span>{tx('Erst klassifizieren')}</span><small>{tx('Dann Morphologie, Diffusion und Kinetik bewerten.')}</small></div>
           </div>
         </div>
       </header>
@@ -255,9 +252,11 @@ export default function MammaMrtBasicsPage() {
             </div>
           </Section>
 
-          <Section id="prinzip" eyebrow={tx('06 · Take home')} title={tx('Das wichtigste Prinzip')}>
-            <div className={styles.dontAsk}><span>{tx('Nicht sofort fragen')}</span><p>{tx('„Ist das Krebs?“')}</p></div>
-            <div className={styles.decisionFlow} dir="ltr"><div><small>{tx('Schritt 1')}</small><strong>{tx('BPE oder echter Befund?')}</strong></div><b>→</b><div><small>{tx('Schritt 2')}</small><strong>{tx('Focus, Mass oder NME?')}</strong></div><b>→</b><div><small>{tx('Schritt 3')}</small><strong>{tx('Morphologie · T2 · DWI · Kinetik · Begleitbefunde')}</strong></div></div>
+          <Section id="prinzip" eyebrow={tx('06 · Take home')} title={tx('Take-Home Message')}>
+            <div className={styles.takeHomePanel}>
+              <div className={styles.dontAsk}><span>{tx('Nicht sofort fragen')}</span><p>{tx('„Ist das Krebs?“')}</p></div>
+              <div className={styles.decisionFlow} dir="ltr"><div><small>{tx('Schritt 1')}</small><strong>{tx('BPE oder echter Befund?')}</strong></div><i className={styles.flowArrow} aria-hidden="true" /><div><small>{tx('Schritt 2')}</small><strong>{tx('Focus, Mass oder NME?')}</strong></div><i className={styles.flowArrow} aria-hidden="true" /><div><small>{tx('Schritt 3')}</small><strong>{tx('Morphologie · T2 · DWI · Kinetik · Begleitbefunde')}</strong></div></div>
+            </div>
           </Section>
 
           <div className={base.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} /></div>
