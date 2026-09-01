@@ -31,38 +31,38 @@ export const FOCUS_POINTS = [
 ]
 
 export const MASS_SHAPES = [
-  { term: 'Round', text: L('Rund.', 'Round.', 'گرد.') },
-  { term: 'Oval', text: L('Oval; hierzu können auch gelappte Konturen gehören.', 'Oval; lobulated contours may also be included.', 'بیضی؛ کانتورهای لوبوله نیز می‌توانند در این گروه قرار گیرند.') },
-  { term: 'Irregular', text: L('Keine eindeutig runde oder ovale Form. Verdächtiger, aber allein kein Beweis für Malignität.', 'Neither clearly round nor oval. More suspicious, but not proof of malignancy by itself.', 'نه کاملاً گرد و نه بیضی. مشکوک‌تر است، اما به‌تنهایی بدخیمی را اثبات نمی‌کند.') },
+  { term: L('Rund', 'Round', 'گرد'), text: L('Runde Form.', 'Round shape.', 'شکل گرد.') },
+  { term: L('Oval', 'Oval', 'بیضی'), text: L('Ovale Form; auch leicht gelappte Konturen können noch als oval gelten.', 'Oval shape; mildly lobulated contours may still be classified as oval.', 'شکل بیضی؛ کانتورهای کمی لوبوله نیز می‌توانند همچنان در گروه بیضی قرار گیرند.') },
+  { term: L('Irregulär', 'Irregular', 'نامنظم'), text: L('Weder rund noch oval. Eine irreguläre Form ist suspekter, beweist für sich allein aber keine Malignität.', 'Neither round nor oval. An irregular shape is more suspicious but does not prove malignancy by itself.', 'نه گرد و نه بیضی. شکل نامنظم مشکوک‌تر است، اما به‌تنهایی بدخیمی را اثبات نمی‌کند.') },
 ]
 
 export const MASS_MARGINS = [
-  { term: 'Circumscribed', text: L('Scharf und glatt begrenzt – eher typisch für benigne Läsionen.', 'Sharply and smoothly defined – more typical of benign lesions.', 'حاشیه واضح و صاف؛ بیشتر به نفع ضایعات خوش‌خیم است.'), level: 'low' },
-  { term: 'Irregular', text: L('Unregelmäßige Begrenzung – suspekter.', 'Irregular border – more suspicious.', 'حاشیه نامنظم؛ مشکوک‌تر است.'), level: 'mid' },
-  { term: 'Spiculated', text: L('Strahlenförmige Ausläufer in das umgebende Gewebe – hochgradig suspekt.', 'Radiating lines into the surrounding tissue – highly suspicious.', 'امتدادهای شعاعی به بافت اطراف؛ بسیار مشکوک است.'), level: 'high' },
+  { term: L('Scharf begrenzt', 'Circumscribed', 'واضح و صاف'), text: L('Der Übergang zum umgebenden Gewebe ist klar und glatt. Dieses Merkmal spricht eher für eine benigne Läsion.', 'The transition to surrounding tissue is sharp and smooth. This feature is more typical of a benign lesion.', 'مرز ضایعه با بافت اطراف واضح و صاف است؛ این ویژگی بیشتر به نفع یک ضایعه خوش‌خیم است.'), level: 'low' },
+  { term: L('Irregulär', 'Irregular', 'نامنظم'), text: L('Der Rand ist unregelmäßig und nicht glatt. Dies ist ein suspektes Merkmal.', 'The margin is irregular and not smooth. This is a suspicious feature.', 'حاشیه نامنظم و ناصاف است؛ این یک ویژگی مشکوک محسوب می‌شود.'), level: 'mid' },
+  { term: L('Spikuliert', 'Spiculated', 'اسپیکوله'), text: L('Vom Rand ziehen strahlenförmige Ausläufer in das umgebende Gewebe. Dieses Merkmal ist hochgradig malignitätsverdächtig.', 'Radiating lines extend from the margin into surrounding tissue. This feature is highly suspicious for malignancy.', 'امتدادهای شعاعی از حاشیه به بافت اطراف کشیده می‌شوند؛ این ویژگی به‌شدت به بدخیمی مشکوک است.'), level: 'high' },
 ]
 
 export const MASS_ENHANCEMENT = [
-  { term: 'Homogeneous', text: L('Die gesamte Läsion nimmt relativ gleichmäßig Kontrastmittel auf.', 'The entire lesion enhances relatively uniformly.', 'تمام ضایعه به‌طور نسبتاً یکنواخت Enhancement نشان می‌دهد.') },
-  { term: 'Heterogeneous', text: L('Unterschiedlich starkes Enhancement innerhalb der Läsion.', 'Varying degrees of enhancement within the lesion.', 'شدت Enhancement در بخش‌های مختلف ضایعه متفاوت است.') },
-  { term: 'Rim Enhancement', text: L('Vorwiegendes Enhancement am Rand – häufig suspekt, insbesondere bei invasiven Karzinomen.', 'Predominant peripheral enhancement – often suspicious, particularly in invasive carcinomas.', 'Enhancement غالب در حاشیه ضایعه؛ اغلب مشکوک، به‌ویژه در کارسینوم‌های مهاجم.') },
-  { term: 'Dark Internal Septations', text: L('Nicht anreichernde dunkle Septen – hilfreiches klassisches Zeichen eines Fibroadenoms bei sonst benigner Morphologie.', 'Non-enhancing dark septa – a helpful classic sign of fibroadenoma when the remaining morphology is benign.', 'سپتاهای تیره بدون Enhancement؛ در صورت وجود سایر ویژگی‌های خوش‌خیم، نشانه کلاسیک و کمک‌کننده فیبروآدنوم است.') },
+  { term: L('Homogen', 'Homogeneous', 'همگن'), text: L('Die gesamte Mass reichert gleichmäßig Kontrastmittel an.', 'The entire mass enhances uniformly.', 'تمام Mass به‌صورت یکنواخت Enhancement نشان می‌دهد.') },
+  { term: L('Heterogen', 'Heterogeneous', 'ناهمگن'), text: L('Die Kontrastmittelanreicherung ist innerhalb der Mass ungleichmäßig verteilt.', 'Enhancement is unevenly distributed within the mass.', 'Enhancement در بخش‌های مختلف Mass به‌صورت ناهمگون توزیع شده است.') },
+  { term: L('Randständige Anreicherung', 'Rim Enhancement', 'Enhancement حاشیه‌ای'), text: L('Vorwiegende Anreicherung am Läsionsrand. Dieses Muster ist häufig suspekt, besonders bei invasiven Karzinomen.', 'Predominant enhancement at the lesion rim. This pattern is often suspicious, particularly in invasive carcinomas.', 'Enhancement عمدتاً در حاشیه ضایعه دیده می‌شود؛ این الگو اغلب مشکوک است، به‌ویژه در کارسینوم‌های مهاجم.') },
+  { term: L('Dunkle interne Septierungen', 'Dark Internal Septations', 'سپتاهای داخلی تیره'), text: L('Nicht anreichernde dunkle Septen innerhalb einer anreichernden Mass. Bei ansonsten benigner Morphologie ein klassischer Hinweis auf ein Fibroadenom.', 'Non-enhancing dark septa within an enhancing mass. With otherwise benign morphology, this is a classic clue to fibroadenoma.', 'سپتاهای تیره و بدون Enhancement درون یک Mass دارای Enhancement؛ در صورت مورفولوژی خوش‌خیم، یافته‌ای کلاسیک به نفع فیبروآدنوم است.') },
 ]
 
 export const NME_DISTRIBUTION = [
-  { term: 'Focal', text: L('Auf einen kleinen Bereich begrenzt.', 'Confined to a small area.', 'محدود به یک ناحیه کوچک.') },
-  { term: 'Linear', text: L('Linienförmig, häufig entlang eines einzelnen Ganges orientiert.', 'Linear, often oriented along a single duct.', 'خطی و اغلب در امتداد یک مجرای منفرد.') },
-  { term: 'Segmental', text: L('Keil- oder dreieckförmig in Richtung Mamille; kann einem Gangsystem entsprechen – verdächtiger.', 'Wedge- or triangular-shaped toward the nipple; may follow a ductal system – more suspicious.', 'گوه‌ای یا مثلثی رو به نوک پستان؛ ممکن است با یک سیستم مجرایی منطبق باشد و مشکوک‌تر است.') },
-  { term: 'Regional', text: L('Größeres zusammenhängendes Areal ohne eindeutige Zuordnung zu einem einzelnen Gangsystem.', 'A larger contiguous area not clearly corresponding to a single ductal system.', 'ناحیه پیوسته بزرگ‌تر که به‌طور مشخص با یک سیستم مجرایی منفرد تطابق ندارد.') },
-  { term: 'Multiple Regions', text: L('Mehrere getrennte größere Areale.', 'Several separate larger areas.', 'چند ناحیه بزرگ و جدا از یکدیگر.') },
-  { term: 'Diffuse', text: L('Weit verteiltes Enhancement.', 'Widely distributed enhancement.', 'Enhancement با توزیع گسترده.') },
+  { term: L('Fokal', 'Focal', 'کانونی'), text: L('Die Anreicherung ist auf ein kleines, umschriebenes Areal begrenzt.', 'The enhancement is confined to a small, defined area.', 'Enhancement به یک ناحیه کوچک و مشخص محدود است.') },
+  { term: L('Linear', 'Linear', 'خطی'), text: L('Linienförmige Anreicherung, häufig entlang eines einzelnen Milchganges.', 'Linear enhancement, often following a single duct.', 'Enhancement خطی که اغلب در امتداد یک مجرای منفرد قرار دارد.') },
+  { term: L('Segmental', 'Segmental', 'سگمنتال'), text: L('Keil- oder dreieckförmige Anreicherung in Richtung Mamille; sie entspricht häufig einem Gangsystem und ist suspekter.', 'Wedge- or triangular-shaped enhancement toward the nipple; it often follows a ductal system and is more suspicious.', 'Enhancement گوه‌ای یا مثلثی رو به نوک پستان که اغلب با یک سیستم مجرایی مطابقت دارد و مشکوک‌تر است.') },
+  { term: L('Regional', 'Regional', 'ناحیه‌ای'), text: L('Größeres zusammenhängendes Areal, das keinem einzelnen Gangsystem eindeutig zugeordnet werden kann.', 'A larger contiguous area that does not clearly correspond to a single ductal system.', 'یک ناحیه پیوسته بزرگ‌تر که به‌طور مشخص به یک سیستم مجرایی منفرد محدود نیست.') },
+  { term: L('Mehrere Regionen', 'Multiple Regions', 'چند ناحیه'), text: L('Mindestens zwei voneinander getrennte größere Anreicherungsareale.', 'At least two separate larger areas of enhancement.', 'دست‌کم دو ناحیه بزرگ و جدا از Enhancement.') },
+  { term: L('Diffus', 'Diffuse', 'منتشر'), text: L('Weitläufige Anreicherung über große Teile der Brust.', 'Widespread enhancement involving large parts of the breast.', 'Enhancement گسترده که بخش بزرگی از پستان را درگیر می‌کند.') },
 ]
 
 export const NME_PATTERNS = [
-  { term: 'Homogeneous', text: L('Gleichmäßiges Enhancement.', 'Uniform enhancement.', 'Enhancement یکنواخت.') },
-  { term: 'Heterogeneous', text: L('Uneinheitliches Enhancement.', 'Non-uniform enhancement.', 'Enhancement غیریکنواخت.') },
-  { term: 'Clumped', text: L('Gruppierte, unregelmäßige kleine Enhancement-Areale – suspekt.', 'Grouped, irregular small areas of enhancement – suspicious.', 'کانون‌های کوچک، گروهی و نامنظم Enhancement؛ مشکوک است.') },
-  { term: 'Clustered Ring', text: L('Viele kleine ringförmige Enhancements um Gangstrukturen – besonders suspekt.', 'Numerous small ring-like enhancements around ductal structures – particularly suspicious.', 'Enhancementهای حلقوی کوچک متعدد در اطراف ساختارهای مجرایی؛ به‌طور ویژه مشکوک است.') },
+  { term: L('Homogen', 'Homogeneous', 'همگن'), text: L('Gleichmäßige, zusammenfließende Anreicherung innerhalb des NME.', 'Uniform, confluent enhancement within the NME.', 'Enhancement یکنواخت و به‌هم‌پیوسته در محدوده NME.') },
+  { term: L('Heterogen', 'Heterogeneous', 'ناهمگن'), text: L('Ungleichmäßige, unterschiedlich starke Anreicherung innerhalb des NME.', 'Non-uniform enhancement of varying intensity within the NME.', 'Enhancement ناهمگون با شدت‌های متفاوت در محدوده NME.') },
+  { term: L('Klumpig', 'Clumped', 'توده‌ای و خوشه‌ای'), text: L('Kleine, dicht gruppierte Anreicherungsareale unterschiedlicher Form und Größe; ein suspektes Muster.', 'Small, tightly grouped areas of enhancement of varying shape and size; a suspicious pattern.', 'نواحی کوچک Enhancement با شکل و اندازه متفاوت که به‌صورت فشرده کنار هم قرار گرفته‌اند؛ الگویی مشکوک.') },
+  { term: L('Gruppiert ringförmig', 'Clustered Ring', 'حلقه‌های خوشه‌ای'), text: L('Mehrere dünne, ringförmige Anreicherungen um Gangstrukturen; ein besonders suspektes Muster.', 'Multiple thin ring-like enhancements around ductal structures; a particularly suspicious pattern.', 'چندین Enhancement حلقوی ظریف پیرامون ساختارهای مجرایی؛ الگویی به‌طور ویژه مشکوک.') },
 ]
 
 export const KINETIC_PHASES = [
@@ -71,14 +71,14 @@ export const KINETIC_PHASES = [
 ]
 
 export const CURVES = [
-  { type: 'I', name: 'Persistent', symbol: '↗', text: L('Das Enhancement nimmt weiter zu – eher benign.', 'Enhancement continues to increase – more often benign.', 'Enhancement همچنان افزایش می‌یابد؛ بیشتر به نفع خوش‌خیمی است.'), tone: 'green' },
+  { type: 'I', name: 'Persistent', symbol: '↗', tag: L('eher benign', 'more likely benign', 'بیشتر خوش‌خیم'), text: L('Das Enhancement nimmt weiter zu – eher benign.', 'Enhancement continues to increase – more often benign.', 'Enhancement همچنان افزایش می‌یابد؛ بیشتر به نفع خوش‌خیمی است.'), tone: 'green' },
   { type: 'II', name: 'Plateau', symbol: '↗ →', text: L('Nach dem Anstieg bleibt das Signal ungefähr konstant – intermediär/suspekt.', 'After the rise, the signal remains approximately constant – intermediate/suspicious.', 'پس از افزایش اولیه، سیگنال تقریباً ثابت می‌ماند؛ بینابینی/مشکوک.'), tone: 'amber' },
-  { type: 'III', name: 'Washout', symbol: '↗ ↘', text: L('Nach starker Aufnahme nimmt das Signal wieder ab – stärker malignitätsverdächtig.', 'After strong uptake, the signal decreases – more suspicious for malignancy.', 'پس از Enhancement شدید، سیگنال کاهش می‌یابد؛ بیشتر به نفع بدخیمی است.'), tone: 'red' },
+  { type: 'III', name: 'Washout', symbol: '↗ ↘', tag: L('malignomsuspekt', 'suspicious for malignancy', 'مشکوک به بدخیمی'), text: L('Nach starker Aufnahme nimmt das Signal wieder ab – stärker malignitätsverdächtig.', 'After strong uptake, the signal decreases – more suspicious for malignancy.', 'پس از Enhancement شدید، سیگنال کاهش می‌یابد؛ بیشتر به نفع بدخیمی است.'), tone: 'red' },
 ]
 
 export const SUMMARY_STEPS = [
   L('Focus, Mass oder NME?', 'Focus, mass or NME?', 'Focus، Mass یا NME؟'),
-  L('Mass: Form → Rand → internes Enhancement', 'Mass: shape → margin → internal enhancement', 'Mass: شکل ← حاشیه ← الگوی Enhancement داخلی'),
-  L('NME: Distribution → internes Enhancement-Muster', 'NME: distribution → internal enhancement pattern', 'NME: توزیع ← الگوی Enhancement داخلی'),
+  L('Mass: Form → Rand → internes Anreicherungsmuster', 'Mass: shape → margin → internal enhancement', 'Mass: شکل ← حاشیه ← الگوی Enhancement داخلی'),
+  L('NME: Verteilung → internes Anreicherungsmuster', 'NME: distribution → internal enhancement pattern', 'NME: توزیع ← الگوی Enhancement داخلی'),
   L('Danach: T2 → DWI/ADC → Kinetik → Voraufnahmen', 'Then: T2 → DWI/ADC → kinetics → prior studies', 'سپس: T2 ← DWI/ADC ← کینتیک ← بررسی‌های قبلی'),
 ]
