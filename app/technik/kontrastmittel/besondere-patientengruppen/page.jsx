@@ -1,5 +1,5 @@
-import ContrastGroupPage from '../ContrastGroupPage'
+import { redirect } from 'next/navigation'
 
 export default function SpecialPatientGroupsPage() {
-  return <ContrastGroupPage groupId="besondere-patientengruppen" />
+  redirect('/technik/kontrastmittel/nierenfunktion')
 }

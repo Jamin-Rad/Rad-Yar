@@ -1,5 +1,5 @@
-import ContrastGroupPage from '../ContrastGroupPage'
+import { redirect } from 'next/navigation'
 
 export default function IodinatedContrastPage() {
-  return <ContrastGroupPage groupId="jodhaltige" />
+  redirect('/technik/kontrastmittel/roentgen')
 }
