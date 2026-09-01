@@ -155,7 +155,6 @@ export default function MammaMrtBasicsPage() {
             <div className={styles.indicationGrid}>{INDICATIONS.map(item => <article className={styles.indicationCard} key={item.title}><span>{item.tag}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
             <div className={styles.problemBox}><div><span>Problem Solving · Beispiele</span><h3>Wenn die konventionelle Diagnostik unklar bleibt</h3></div><ul><li>nicht sicher erklärbare Asymmetrie</li><li>unklare Architekturstörung</li><li>diskrepante Befunde zwischen Mammographie und Sonographie</li><li>schwer beurteilbare postoperative Veränderungen</li></ul></div>
             <Callout cave label="Wichtig">Die MRT sollte nicht dazu verwendet werden, eine indizierte Biopsie eines suspekten Befundes zu vermeiden. Ein klar suspekter und bioptisch zugänglicher Befund sollte in der Regel histologisch abgeklärt werden.</Callout>
-            <Callout label="Implantatdiagnostik">Für die reine Beurteilung einer möglichen Implantatruptur ist keine intravenöse Gadoliniumgabe erforderlich. Soll gleichzeitig das Brustparenchym hinsichtlich eines Tumors beurteilt werden, ist eine kontrastmittelgestützte Untersuchung erforderlich.</Callout>
           </Section>
 
           <Section id="sequenzen" eyebrow="02 · Protokoll" title="Welche Sequenzen brauchen wir?">
