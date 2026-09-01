@@ -132,10 +132,15 @@
 .bpeImportance strong { display: block; margin-top: 13px; padding-left: 12px; border-left: 3px solid #7c3aed; color: var(--text-strong); font-size: 13px; line-height: 1.65; }
 
 .enhancementGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-.enhancementGrid article { padding: 16px 16px 20px; border: 1px solid var(--border); border-radius: 24px; background: var(--surface-soft); }
+.enhancementGrid article { display: flex; flex-direction: column; padding: 16px 16px 20px; border: 1px solid var(--border); border-radius: 24px; background: var(--surface-soft); }
 .enhancementGrid article > span { color: #be185d; font-size: 10px; font-weight: 950; letter-spacing: .12em; }
 .enhancementGrid h3 { margin: 5px 0 8px; color: var(--text-strong); font-size: 20px; }
 .enhancementGrid p { margin: 0; color: var(--text-soft); font-size: 13px; }
+.enhancementGrid p strong { color: var(--text-strong); }
+.enhancementFacts { display: grid; gap: 9px; margin: 11px 0 0; padding-left: 19px; color: var(--text-soft); font-size: 13px; line-height: 1.6; }
+.enhancementFacts li { padding-left: 2px; }
+.enhancementFacts li::marker { color: #db2777; }
+.enhancementFacts strong { color: #be185d; font-size: 15px; }
 .enhancementSketch { position: relative; height: 150px; margin-bottom: 15px; overflow: hidden; border-radius: 18px; background: radial-gradient(circle at 50% 50%, #391e37, #120c17 70%); }
 .focusSketch i { position: absolute; top: 50%; left: 50%; width: 10px; height: 10px; transform: translate(-50%, -50%); border-radius: 50%; background: #fff; box-shadow: 0 0 12px 4px #f472b6; }
 .massSketch i { position: absolute; top: 50%; left: 50%; width: 58px; height: 50px; transform: translate(-50%, -50%) rotate(-10deg); border-radius: 45% 55% 42% 58%; background: radial-gradient(circle at 42% 40%, #fff, #f9a8d4 35%, #be185d 70%); box-shadow: 0 0 25px #db2777; }

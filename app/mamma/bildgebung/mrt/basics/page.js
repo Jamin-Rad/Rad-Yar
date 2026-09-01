@@ -330,9 +330,19 @@ export default function MammaMrtBasicsPage() {
 
           <Section id="enhancement" eyebrow="05 · BI-RADS-Logik" title="Die drei wichtigsten Enhancement-Typen">
             <div className={styles.enhancementGrid}>
-              <article><div className={`${styles.enhancementSketch} ${styles.focusSketch}`}><i /></div><span>01</span><h3>Focus</h3><p>Ein sehr kleiner Punkt mit Enhancement. Er ist zu klein, um seine Form zuverlässig zu beurteilen.</p></article>
-              <article><div className={`${styles.enhancementSketch} ${styles.massSketch}`}><i /></div><span>02</span><h3>Mass</h3><p>Eine echte dreidimensionale Läsion. Form, Rand und internes Enhancement können beurteilt werden.</p></article>
-              <article><div className={`${styles.enhancementSketch} ${styles.nmeSketch}`}><i /><i /><i /><i /><i /></div><span>03</span><h3>Non-Mass Enhancement</h3><p>Enhancement ohne klare dreidimensionale Raumforderung, etwa regional oder entlang eines Gangsystems. Wichtig bei DCIS, aber nicht automatisch maligne.</p></article>
+              <article>
+                <div className={`${styles.enhancementSketch} ${styles.focusSketch}`}><i /></div><span>01</span><h3>Focus, Foci</h3>
+                <ul className={styles.enhancementFacts}><li><strong>&lt; 5 mm</strong></li><li>Zu klein für eine zuverlässige morphologische Charakterisierung.</li></ul>
+              </article>
+              <article>
+                <div className={`${styles.enhancementSketch} ${styles.massSketch}`}><i /></div><span>02</span><h3>Mass</h3>
+                <ul className={styles.enhancementFacts}><li>Eine echte dreidimensionale Läsion.</li><li>Form, Rand und internes Enhancement können beurteilt werden.</li></ul>
+              </article>
+              <article>
+                <div className={`${styles.enhancementSketch} ${styles.nmeSketch}`}><i /><i /><i /><i /><i /></div><span>03</span><h3>Non-Mass Enhancement</h3>
+                <p>Ein <strong>Non-Mass Enhancement</strong> ist ein kontrastmittelaufnehmender Bereich, der:</p>
+                <ul className={styles.enhancementFacts}><li>vom normalen BPE abgrenzbar ist,</li><li>aber keine dreidimensionale Mass bildet</li><li>und nicht lediglich einen kleinen Focus darstellt.</li></ul>
+              </article>
             </div>
           </Section>
 
