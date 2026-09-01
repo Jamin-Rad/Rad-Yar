@@ -12,18 +12,15 @@ export const COPY = {
   flashcards: L('Flashcards', 'Flashcards', 'فلش‌کارت‌ها'),
   zoom: L('Bild in voller Größe öffnen', 'Open full-size image', 'نمایش تصویر در اندازه کامل'),
   figureCaption: L('Systematische Läsionscharakterisierung in der Mamma-MRT', 'Systematic lesion characterisation in breast MRI', 'ارزیابی سیستماتیک ضایعات در MRI پستان'),
-  intro: L('Wenn in der Mamma-MRT ein auffälliges Enhancement gefunden wurde, beginnt die eigentliche Charakterisierung.', 'Once suspicious enhancement is detected on breast MRI, the actual characterisation begins.', 'پس از مشاهده یک Enhancement غیرطبیعی در MRI پستان، مرحله اصلی ارزیابی و توصیف ضایعه آغاز می‌شود.'),
-  principle: L('Nicht ein einzelnes Merkmal entscheidet über Benignität oder Malignität. Wir kombinieren Morphologie, Enhancement, T2-Signal, Diffusion und Kinetik.', 'No single feature determines benignity or malignancy. Morphology, enhancement, T2 signal, diffusion and kinetics are combined.', 'هیچ ویژگی منفردی به‌تنهایی خوش‌خیم یا بدخیم بودن ضایعه را تعیین نمی‌کند. مورفولوژی، Enhancement، سیگنال T2، دیفیوژن و کینتیک باید در کنار هم ارزیابی شوند.'),
 }
 
 export const SECTIONS = [
-  { id: 'start', icon: '01', label: L('Start & Focus', 'Start & focus', 'شروع و Focus') },
-  { id: 'mass-morphologie', icon: '02', label: L('Mass: Form & Rand', 'Mass: shape & margin', 'Mass: شکل و حاشیه') },
-  { id: 'mass-enhancement', icon: '03', label: L('Mass: internes Enhancement', 'Mass: internal enhancement', 'Mass: الگوی Enhancement داخلی') },
-  { id: 'nme', icon: '04', label: L('Non-Mass Enhancement', 'Non-mass enhancement', 'Non-Mass Enhancement') },
-  { id: 'kinetik', icon: '05', label: L('Kinetik', 'Kinetics', 'کینتیک') },
-  { id: 't2-diffusion', icon: '06', label: L('T2 & Diffusion', 'T2 & diffusion', 'T2 و دیفیوژن') },
-  { id: 'algorithmus', icon: '07', label: L('Gesamtbewertung', 'Overall assessment', 'ارزیابی نهایی') },
+  { id: 'start', icon: '01', label: L('Enhancement-Typen & Focus', 'Enhancement types & focus', 'انواع Enhancement و Focus') },
+  { id: 'mass', icon: '02', label: L('Mass', 'Mass', 'Mass') },
+  { id: 'nme', icon: '03', label: L('Non-Mass Enhancement', 'Non-mass enhancement', 'Non-Mass Enhancement') },
+  { id: 'kinetik', icon: '04', label: L('Kinetik', 'Kinetics', 'کینتیک') },
+  { id: 't2-diffusion', icon: '05', label: L('T2 & Diffusion', 'T2 & diffusion', 'T2 و دیفیوژن') },
+  { id: 'algorithmus', icon: '06', label: L('Gesamtbewertung', 'Overall assessment', 'ارزیابی نهایی') },
 ]
 
 export const FOCUS_POINTS = [
