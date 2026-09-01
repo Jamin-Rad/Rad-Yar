@@ -6,7 +6,6 @@ import Image from 'next/image'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
-import InProgressBanner from '@/components/InProgressBanner'
 import base from '@/app/abdomen/gi/divertikulitis/page.module.css'
 import styles from './page.module.css'
 import { BPE_CATEGORIES, FGT_CATEGORIES, INDICATIONS, SECTIONS, SEQUENCES, WORKFLOW, translate } from './content'
@@ -75,7 +74,6 @@ export default function MammaMrtBasicsPage() {
 
   return (
     <main className={`${base.page} ${styles.page} ${lang === 'fa' ? styles.rtl : ''}`} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
-      <InProgressBanner lang={lang} />
       <header className={base.header}>
         <nav className={`${base.breadcrumb} ${styles.breadcrumb}`} aria-label={tx('Inhaltsverzeichnis')}>
           <Link href={withLang('/')}>RadYar</Link><span>›</span>
