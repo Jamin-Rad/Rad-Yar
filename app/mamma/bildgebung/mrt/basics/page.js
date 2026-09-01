@@ -93,6 +93,7 @@ export default function MammaMrtBasicsPage() {
   const [activeId, setActiveId] = useState(SECTIONS[0].id)
   const { isRead, toggleRead, authError } = useLessonReadStatus('mamma-mrt-basics')
   const withLang = href => lang === 'de' ? href : `${href}${href.includes('?') ? '&' : '?'}lang=${lang}`
+  const lessonPath = '/mamma/bildgebung/mrt/basics'
   const sectionIds = useMemo(() => SECTIONS.map(section => section.id), [])
 
   useEffect(() => {
@@ -121,10 +122,12 @@ export default function MammaMrtBasicsPage() {
 
         <div className={base.hero}>
           <div className={`${base.heroText} ${styles.heroText}`}>
-            <span className={`${base.sourceBadge} ${styles.sourceBadge}`}>Mamma · Bildgebung</span>
+            <span className={`${base.sourceBadge} ${styles.sourceBadge}`}>Dr. Zia</span>
             <h1>Mamma-MRT:<br />Basics</h1>
             <p>Indikationen, Sequenzen und ein systematischer Einstieg in die Befundung.</p>
             <div className={base.actions}>
+              <Link className={`${base.actionBtn} ${styles.actionBtn}`} href={withLang(`/ueben/quiz?fach=mamma&n=10&themen=mamma-mrt-basics&from=${encodeURIComponent(withLang(lessonPath))}`)}>🎯 MCQ</Link>
+              <Link className={`${base.actionBtn} ${styles.actionBtn}`} href={withLang(`/flashcards/mamma-mrt-basics?from=${encodeURIComponent(withLang(lessonPath))}`)}>🧠 Flashcards</Link>
               <a className={`${base.actionBtn} ${styles.actionBtn}`} href="#indikationen">Indikationen</a>
               <a className={`${base.actionBtn} ${styles.actionBtn}`} href="#sequenzen">Sequenzen</a>
               <a className={`${base.actionBtn} ${styles.actionBtn}`} href="#systematik">Befundungsablauf</a>
