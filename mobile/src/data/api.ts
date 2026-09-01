@@ -45,7 +45,7 @@ export async function requestJson<T>(path: string, init: RequestInit = {}): Prom
     headers: {
       Accept: 'application/json',
       ...(init.body ? { 'Content-Type': 'application/json' } : {}),
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...(token ? { 'X-Andarun-Token': token } : {}),
       ...(init.headers || {}),
     },
   })
