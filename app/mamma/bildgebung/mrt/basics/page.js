@@ -71,15 +71,25 @@ const SEQUENCES = [
 ]
 
 const WORKFLOW = [
-  ['Indikation klären', 'Screening, Staging, Therapiekontrolle oder Implantatdiagnostik?'],
-  ['Voruntersuchungen öffnen', 'Mammographie, Sonographie, alte MRT und Biopsieergebnisse vergleichen.'],
-  ['Technik prüfen', 'Bewegung, Fettsättigung und korrekte Kontrastmittelgabe beurteilen.'],
-  ['MIP ansehen', 'Beide Brüste im schnellen Gesamtüberblick vergleichen.'],
-  ['FGT bestimmen', 'Wie viel fibroglanduläres Gewebe ist vorhanden?'],
-  ['BPE beurteilen', 'Wie stark enhancet das normale Drüsengewebe?'],
-  ['Enhancement einordnen', 'Zuerst zwischen Focus, Mass und NME unterscheiden.'],
-  ['Sequenzen abgleichen', 'T2, DWI, ADC und dynamische Serien zusammenführen.'],
-  ['Umgebung prüfen', 'Haut, Mamille, Pectoralis, Thoraxwand und Lymphknoten nicht vergessen.'],
+  {
+    title: 'Indikation und Voruntersuchungen klären',
+    text: 'Warum wurde die MRT durchgeführt: Screening, Staging, Therapiekontrolle oder Implantatdiagnostik? Mammographie, Sonographie, alte MRT und Biopsieergebnisse öffnen und vergleichen.',
+  },
+  { title: 'Technik prüfen', text: 'Bewegung, Fettsättigung und korrekte Kontrastmittelgabe beurteilen.' },
+  {
+    title: 'MIP ansehen und FGT bestimmen',
+    text: 'Beide Brüste im schnellen Gesamtüberblick vergleichen und bestimmen, wie viel fibroglanduläres Gewebe vorhanden ist.',
+  },
+  { title: 'BPE beurteilen', text: 'Wie stark enhancet das normale Drüsengewebe?' },
+  {
+    title: 'Auffällige Enhancements suchen',
+    text: 'Nun systematisch beide Brüste durchsuchen.',
+    detail: 'Jedes auffällige Enhancement zunächst einer der drei Grundkategorien zuordnen:',
+    emphasis: 'Focus → Mass → Non-Mass Enhancement',
+    conclusion: 'Erst danach erfolgt die weitere Charakterisierung.',
+  },
+  { title: 'Sequenzen abgleichen', text: 'Suspekte Läsionen in allen Sequenzen korrelieren.' },
+  { title: 'Umgebung prüfen', text: 'Haut, Mamille, Pectoralis, Thoraxwand und Lymphknoten nicht vergessen.' },
 ]
 
 function ReadButton({ isRead, onClick, authError }) {
@@ -210,7 +220,18 @@ export default function MammaMrtBasicsPage() {
 
           <Section id="systematik" eyebrow="03 · Workflow" title="Wie liest man eine Mamma-MRT systematisch?">
             <p className={styles.lead}>Ein fester Ablauf hilft, nichts zu übersehen.</p>
-            <ol className={styles.workflow}>{WORKFLOW.map(([title, text], index) => <li key={title}><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol>
+            <ol className={styles.workflow}>{WORKFLOW.map((step, index) => (
+              <li key={step.title}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <div>
+                  <h3>{step.title}</h3>
+                  <p>{step.text}</p>
+                  {step.detail && <p className={styles.workflowDetail}>{step.detail}</p>}
+                  {step.emphasis && <strong className={styles.workflowEmphasis}>{step.emphasis}</strong>}
+                  {step.conclusion && <p className={styles.workflowConclusion}>{step.conclusion}</p>}
+                </div>
+              </li>
+            ))}</ol>
           </Section>
 
           <Section id="fgt-bpe" eyebrow="04 · Nicht verwechseln" title="FGT und BPE">
