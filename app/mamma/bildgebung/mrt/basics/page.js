@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
@@ -262,6 +263,12 @@ export default function MammaMrtBasicsPage() {
               <article className={styles.fgtCard}>
                 <div className={styles.compareHeading}><span className={styles.term}>FGT</span><div><small>Fibroglanduläres Gewebe</small><h3>Fibroglandular Tissue</h3></div></div>
                 <p className={styles.definition}>FGT beschreibt die <strong>Menge des fibroglandulären Brustgewebes</strong> – unabhängig davon, wie stark dieses nach Kontrastmittelgabe anreichert.</p>
+                <figure className={styles.teachingMedia}>
+                  <a href="/mamma/mrt/fgt-categories.png" target="_blank" rel="noreferrer" aria-label="FGT-Kategorien in voller Größe öffnen">
+                    <Image src="/mamma/mrt/fgt-categories.png" alt="Vier MRT-Beispiele der FGT-Kategorien von fast vollständig fettig bis extrem fibroglandulär" width={2175} height={723} sizes="(max-width: 900px) calc(100vw - 64px), 820px" loading="eager" />
+                  </a>
+                  <figcaption><strong>FGT 1–4 im MRT</strong><span>Zum Vergrößern Bild öffnen</span></figcaption>
+                </figure>
                 <p className={styles.categoryIntro}>Nach BI-RADS wird das FGT qualitativ in vier Kategorien eingeteilt:</p>
                 <div className={styles.categoryList}>
                   {FGT_CATEGORIES.map((category) => (
@@ -279,6 +286,12 @@ export default function MammaMrtBasicsPage() {
               <article className={styles.bpeCard}>
                 <div className={styles.compareHeading}><span className={`${styles.term} ${styles.termBpe}`}>BPE</span><div><small>Normales Parenchym</small><h3>Background Parenchymal Enhancement</h3></div></div>
                 <p className={styles.definition}>BPE beschreibt, wie stark das <strong>normale fibroglanduläre Brustgewebe nach Kontrastmittelgabe anreichert</strong>.</p>
+                <figure className={`${styles.teachingMedia} ${styles.mediaPlaceholder}`}>
+                  <div aria-label="Reservierter Bildbereich für die vier BPE-Kategorien">
+                    <span>BPE</span><strong>Bildbereich vorbereitet</strong><small>Hier wird das Vergleichsbild für Minimal · Mild · Moderate · Marked eingesetzt.</small>
+                  </div>
+                  <figcaption><strong>BPE-Kategorien</strong><span>Gleiche Größe und Position wie das FGT-Bild</span></figcaption>
+                </figure>
                 <p className={styles.categoryIntro}>BI-RADS unterscheidet vier Kategorien:</p>
                 <div className={styles.categoryList}>
                   {BPE_CATEGORIES.map((category) => (

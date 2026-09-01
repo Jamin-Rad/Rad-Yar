@@ -82,7 +82,7 @@
 .workflowTypes strong { color: #9d174d; font-size: 12px; line-height: 1.35; }
 .workflow .workflowTypes li > span { display: block; width: auto; height: auto; border: 0; border-radius: 0; background: none; color: var(--text-soft); font-size: 11px; font-weight: 400; line-height: 1.45; }
 
-.compareGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
+.compareGrid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
 .compareGrid article { padding: 26px; border: 1px solid #fbcfe8; border-radius: 28px; background: linear-gradient(145deg, #fdf2f8, var(--bg-card)); }
 .compareGrid article:last-child { border-color: #ddd6fe; background: linear-gradient(145deg, #f5f3ff, var(--bg-card)); }
 .compareHeading { display: flex; align-items: center; gap: 14px; }
@@ -91,10 +91,21 @@
 .term { display: inline-grid; place-items: center; min-width: 68px; height: 42px; padding: 0 12px; border-radius: 14px; background: #db2777; color: white; font-weight: 950; }
 .termBpe { background: #7c3aed; }
 .compareGrid h3 { margin: 0; color: var(--text-strong); font-size: 19px; line-height: 1.25; }
-.definition { min-height: 108px; margin: 20px 0 0; color: var(--text-soft); font-size: 14px; }
+.definition { margin: 20px 0 0; color: var(--text-soft); font-size: 14px; }
 .definition strong { color: var(--text-strong); }
+.teachingMedia { margin: 20px 0 0; overflow: hidden; border: 1px solid rgba(219,39,119,.20); border-radius: 20px; background: #0b0b0d; }
+.teachingMedia a { display: block; }
+.teachingMedia img { display: block; width: 100%; height: auto; }
+.teachingMedia figcaption { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 14px; background: var(--bg-card); }
+.teachingMedia figcaption strong { color: var(--text-strong); font-size: 12px; }
+.teachingMedia figcaption span { color: var(--text-muted); font-size: 10px; font-weight: 750; }
+.mediaPlaceholder { border-color: rgba(124,58,237,.22); background: linear-gradient(135deg, #1e1636, #25154a); }
+.mediaPlaceholder > div { aspect-ratio: 2175 / 723; display: grid; place-content: center; justify-items: center; gap: 7px; padding: 20px; text-align: center; }
+.mediaPlaceholder > div > span { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 16px; background: linear-gradient(135deg, #7c3aed, #a855f7); color: white; font-size: 13px; font-weight: 950; box-shadow: 0 12px 28px rgba(124,58,237,.28); }
+.mediaPlaceholder > div > strong { color: white; font-size: 17px; }
+.mediaPlaceholder > div > small { color: rgba(255,255,255,.66); font-size: 11px; }
 .categoryIntro { margin: 20px 0 12px; color: var(--text-strong); font-size: 13px; font-weight: 850; }
-.categoryList { display: grid; gap: 9px; }
+.categoryList { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
 .categoryItem { display: grid; grid-template-columns: 34px 1fr; gap: 11px; padding: 13px; border: 1px solid color-mix(in srgb, #db2777 16%, var(--border)); border-radius: 16px; background: color-mix(in srgb, #fff 72%, transparent); }
 .bpeCard .categoryItem { border-color: color-mix(in srgb, #7c3aed 16%, var(--border)); }
 .categoryItem > span { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; background: rgba(219, 39, 119, .10); color: #be185d; font-size: 10px; font-weight: 950; text-transform: uppercase; }
@@ -147,8 +158,6 @@
 
 @media (max-width: 900px) {
   .problemBox { grid-template-columns: 1fr; }
-  .compareGrid { grid-template-columns: 1fr; }
-  .definition { min-height: 0; }
   .bpeImportance { grid-template-columns: 1fr; }
   .enhancementGrid { grid-template-columns: 1fr; }
   .enhancementSketch { height: 180px; }
@@ -162,6 +171,12 @@
   .compareGrid article { padding: 20px 16px; border-radius: 22px; }
   .compareHeading { align-items: flex-start; }
   .compareGrid h3 { font-size: 17px; }
+  .categoryList { grid-template-columns: 1fr; }
+  .teachingMedia { border-radius: 16px; }
+  .teachingMedia figcaption { align-items: flex-start; flex-direction: column; gap: 2px; }
+  .mediaPlaceholder > div > span { width: 42px; height: 42px; border-radius: 13px; }
+  .mediaPlaceholder > div > strong { font-size: 14px; }
+  .mediaPlaceholder > div > small { display: none; }
   .memoryLine { grid-template-columns: 1fr; }
   .memoryLine i { justify-self: center; }
   .workflowTypes { grid-template-columns: 1fr; }
