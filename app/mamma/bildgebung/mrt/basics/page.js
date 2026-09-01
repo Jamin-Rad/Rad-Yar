@@ -95,9 +95,9 @@ export default function MammaMrtBasicsPage() {
             </div>
           </div>
           <div className={base.heroStats}>
-            <div className={`${base.heroStat} ${styles.heroStat}`}><strong>DCE-MRT</strong><span>{tx('Höchste Sensitivität')}</span><small>{tx('Tumorvaskularisation und Kontrastmittelaufnahme sichtbar machen.')}</small></div>
-            <div className={`${base.heroStat} ${styles.heroStat}`}><strong>T2 · T1 · DWI</strong><span>{tx('Multiparametrisch')}</span><small>{tx('Jede Sequenz beantwortet eine andere diagnostische Frage.')}</small></div>
-            <div className={`${base.heroStat} ${styles.heroStat}`}><strong>Focus · Mass · NME</strong><span>{tx('Erst klassifizieren')}</span><small>{tx('Dann Morphologie, Diffusion und Kinetik bewerten.')}</small></div>
+            <div className={`${base.heroStat} ${styles.heroStat}`}><strong>T1 post KM</strong><span>{tx('Kernsequenz')}</span><small>{tx('Enhancement beurteilen.')}</small></div>
+            <div className={`${base.heroStat} ${styles.heroStat}`}><strong>ADC ↓ ≠ Krebs</strong><span>{tx('Nur Zusatzbaustein')}</span><small>{tx('Nie isoliert bewerten.')}</small></div>
+            <div className={`${base.heroStat} ${styles.heroStat}`}><strong>MIP</strong><span>{tx('Suchen, nicht entscheiden')}</span><small>{tx('Schneller Überblick.')}</small></div>
           </div>
         </div>
       </header>
@@ -235,27 +235,26 @@ export default function MammaMrtBasicsPage() {
           </Section>
 
           <Section id="enhancement" eyebrow={tx('05 · BI-RADS-Logik')} title={tx('Die drei wichtigsten Enhancement-Typen')}>
-            <div className={styles.enhancementGrid}>
-              <article>
-                <div className={`${styles.enhancementSketch} ${styles.focusSketch}`}><i /></div><span>01</span><h3>Focus, Foci</h3>
-                <ul className={styles.enhancementFacts}><li><strong>&lt; 5 mm</strong></li><li>{tx('Zu klein für eine zuverlässige morphologische Charakterisierung.')}</li></ul>
-              </article>
-              <article>
-                <div className={`${styles.enhancementSketch} ${styles.massSketch}`}><i /></div><span>02</span><h3>Mass</h3>
-                <ul className={styles.enhancementFacts}><li>{tx('Eine echte dreidimensionale Läsion.')}</li><li>{tx('Form, Rand und internes Enhancement können beurteilt werden.')}</li></ul>
-              </article>
-              <article>
-                <div className={`${styles.enhancementSketch} ${styles.nmeSketch}`}><i /><i /><i /><i /><i /></div><span>03</span><h3>Non-Mass Enhancement</h3>
-                <p>{tx('Ein')} <strong>Non-Mass Enhancement</strong> {tx('ist ein kontrastmittelaufnehmender Bereich, der:')}</p>
-                <ul className={styles.enhancementFacts}><li>{tx('vom normalen BPE abgrenzbar ist,')}</li><li>{tx('aber keine dreidimensionale Mass bildet')}</li><li>{tx('und nicht lediglich einen kleinen Focus darstellt.')}</li></ul>
-              </article>
-            </div>
+            <figure className={styles.enhancementMedia}>
+              <a href="/mamma/mrt/enhancement-types.png" target="_blank" rel="noreferrer" aria-label={tx('Enhancement-Typen in voller Größe öffnen')}>
+                <Image src="/mamma/mrt/enhancement-types.png" alt={tx('MRT-Beispiele für Focus, Mass und Non-Mass Enhancement')} width={1536} height={1024} sizes="(max-width: 900px) calc(100vw - 48px), 860px" />
+              </a>
+              <figcaption><strong>Focus · Mass · Non-Mass Enhancement</strong><span>{tx('Zum Vergrößern Bild öffnen')}</span></figcaption>
+            </figure>
           </Section>
 
           <Section id="prinzip" eyebrow={tx('06 · Take home')} title={tx('Take-Home Message')}>
-            <div className={styles.takeHomePanel}>
-              <div className={styles.dontAsk}><span>{tx('Nicht sofort fragen')}</span><p>{tx('„Ist das Krebs?“')}</p></div>
-              <div className={styles.decisionFlow} dir="ltr"><div><small>{tx('Schritt 1')}</small><strong>{tx('BPE oder echter Befund?')}</strong></div><i className={styles.flowArrow} aria-hidden="true" /><div><small>{tx('Schritt 2')}</small><strong>{tx('Focus, Mass oder NME?')}</strong></div><i className={styles.flowArrow} aria-hidden="true" /><div><small>{tx('Schritt 3')}</small><strong>{tx('Morphologie · T2 · DWI · Kinetik · Begleitbefunde')}</strong></div></div>
+            <div className={styles.takeHomeAlgorithm}>
+              <div className={styles.takeHomeQuestion}>
+                <span>{tx('Auch bei auffälligem Enhancement')}</span>
+                <h3>{tx('„Ist das Krebs?“')}</h3>
+                <p>{tx('Diese Frage lässt sich nicht sofort beantworten.')}</p>
+              </div>
+              <ol className={styles.diagnosticPath}>
+                <li><span>01</span><div><small>{tx('Zuerst klären')}</small><strong>{tx('BPE oder echter Befund?')}</strong></div></li>
+                <li><span>02</span><div><small>{tx('Dann einordnen')}</small><strong>Focus · Mass · Non-Mass Enhancement</strong></div></li>
+                <li><span>03</span><div><small>{tx('Erst danach beurteilen')}</small><strong>{tx('Morphologie · T2 · DWI · Kinetik · Begleitbefunde')}</strong></div></li>
+              </ol>
             </div>
           </Section>
 

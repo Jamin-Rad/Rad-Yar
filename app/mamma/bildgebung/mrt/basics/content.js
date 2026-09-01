@@ -54,6 +54,8 @@ export const BPE_CATEGORIES = [
 ]
 
 const EN = {
+  'Kernsequenz':'Core sequence','Enhancement beurteilen.':'Assess enhancement.','Nur Zusatzbaustein':'Adjunct only','Nie isoliert bewerten.':'Never assess in isolation.','Suchen, nicht entscheiden':'Search, not decide','Schneller Überblick.':'Rapid overview.',
+  'Enhancement-Typen in voller Größe öffnen':'Open enhancement types full size','MRT-Beispiele für Focus, Mass und Non-Mass Enhancement':'MRI examples of focus, mass and non-mass enhancement','Auch bei auffälligem Enhancement':'Even with abnormal enhancement','Diese Frage lässt sich nicht sofort beantworten.':'This question cannot be answered immediately.','Zuerst klären':'First clarify','Dann einordnen':'Then classify','Erst danach beurteilen':'Only then assess',
   'Indikationen':'Indications','Sequenzen':'Sequences','Systematisch lesen':'Systematic reading','Enhancement-Typen':'Enhancement types','Das wichtigste Prinzip':'The key principle','Take-Home Message':'Take-home message',
   'Höchste Sensitivität':'Highest sensitivity','Tumorvaskularisation und Kontrastmittelaufnahme sichtbar machen.':'Visualise tumour vascularity and contrast enhancement.','Multiparametrisch':'Multiparametric','Jede Sequenz beantwortet eine andere diagnostische Frage.':'Each sequence answers a different diagnostic question.','Erst klassifizieren':'Classify first','Dann Morphologie, Diffusion und Kinetik bewerten.':'Then assess morphology, diffusion and kinetics.',
   'Mamma':'Breast','Bildgebung':'Imaging','Mamma-MRT':'Breast MRI','Basics':'Basics','Inhaltsverzeichnis':'Contents',
@@ -97,6 +99,19 @@ const FA = {
 }
 
 const FA_REFINED = {
+  'Kernsequenz': 'Sequence اصلی',
+  'Enhancement beurteilen.': 'برای ارزیابی Enhancement.',
+  'Nur Zusatzbaustein': 'فقط یک یافته تکمیلی',
+  'Nie isoliert bewerten.': 'هرگز به‌تنهایی تفسیر نشود.',
+  'Suchen, nicht entscheiden': 'برای جست‌وجو، نه قضاوت نهایی',
+  'Schneller Überblick.': 'نمای کلی سریع.',
+  'Enhancement-Typen in voller Größe öffnen': 'باز کردن تصویر انواع Enhancement در اندازه کامل',
+  'MRT-Beispiele für Focus, Mass und Non-Mass Enhancement': 'نمونه‌های MRI از Focus، Mass و Non-Mass Enhancement',
+  'Auch bei auffälligem Enhancement': 'حتی در صورت وجود Enhancement غیرطبیعی',
+  'Diese Frage lässt sich nicht sofort beantworten.': 'نمی‌توان مستقیماً به این سؤال پاسخ داد.',
+  'Zuerst klären': 'ابتدا مشخص کنید',
+  'Dann einordnen': 'سپس طبقه‌بندی کنید',
+  'Erst danach beurteilen': 'پس از آن ارزیابی کنید',
   'Indikationen': 'موارد کاربرد',
   'Sequenzen': 'MRI Sequences',
   'Systematisch lesen': 'روش سیستماتیک بررسی',
