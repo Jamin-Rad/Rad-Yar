@@ -9,11 +9,17 @@
 .principle { padding: 22px 24px; border: 1px solid rgba(217, 155, 37, .32); border-left: 5px solid var(--lesion-gold); background: linear-gradient(110deg, rgba(255, 248, 231, .95), var(--bg-card)); border-radius: 8px; display: grid; gap: 7px; }
 .principle span, .suspiciousCombo span { color: #9a6412; text-transform: uppercase; letter-spacing: .1em; font-size: .72rem; font-weight: 850; }
 .principle strong { color: #243047; font-family: Georgia, serif; font-size: 1.12rem; line-height: 1.65; }
-.overviewMedia { margin: 0; overflow: hidden; border: 1px solid rgba(148, 163, 184, .34); border-radius: 9px; background: #05080e; box-shadow: 0 22px 50px rgba(15, 23, 42, .2); }
-.overviewMedia a { display: block; }
-.overviewMedia img { display: block; width: 100%; height: auto; }
-.overviewMedia figcaption { padding: 12px 16px; background: var(--bg-card); display: flex; justify-content: space-between; gap: 14px; color: var(--text-muted); font-size: .82rem; }
-.overviewMedia figcaption strong { color: var(--text-strong); }
+.topicMedia { width: min(100%, 640px); margin: 0 auto; overflow: hidden; border: 1px solid rgba(148, 163, 184, .34); border-radius: 9px; background: #05080e; box-shadow: 0 22px 50px rgba(15, 23, 42, .2); }
+.topicMedia a { display: block; background: #fff; }
+.topicMedia img { display: block; width: 100%; height: auto; }
+.topicMedia figcaption { padding: 12px 16px; background: var(--bg-card); display: flex; justify-content: space-between; gap: 14px; color: var(--text-muted); font-size: .82rem; }
+.topicMedia figcaption strong { color: var(--text-strong); }
+.topicMediaCompact { width: 100%; margin: 2px 0 20px; box-shadow: 0 16px 34px rgba(15, 23, 42, .24); }
+.topicMediaCompact figcaption { display: none; }
+.cropRightTall a, .cropRightShort a { overflow: hidden; }
+.cropRightTall a { aspect-ratio: .88; }
+.cropRightShort a { aspect-ratio: .96; }
+.cropRightTall img, .cropRightShort img { width: 110%; max-width: none; height: auto; }
 .focusBox { display: grid; grid-template-columns: .9fr 1.1fr; gap: 22px; padding: 26px; border-radius: 10px; background: linear-gradient(135deg, #111827, #1e293b); color: #fff; }
 .focusBox > div > span { display: inline-flex; color: #fde68a; font-weight: 900; font-size: 1.4rem; }
 .focusBox h3 { margin: 3px 0 8px; font: 800 1.8rem/1.1 Georgia, serif; }
@@ -90,8 +96,8 @@
 }
 @media (max-width: 620px) {
   .heroText { min-height: auto; }
-  .overviewMedia { margin-inline: -10px; border-radius: 4px; }
-  .overviewMedia figcaption { display: grid; }
+  .topicMedia { border-radius: 4px; }
+  .topicMedia figcaption { display: grid; }
   .descriptorGrid, .fourGrid, .threeGrid, .curveGrid { grid-template-columns: 1fr; }
   .curveGrid article { min-height: 0; border-right: 0; border-bottom: 1px solid rgba(148, 163, 184, .28); }
   .formula { width: 100%; justify-content: center; gap: 9px; padding-inline: 8px; font-size: .9rem; }
