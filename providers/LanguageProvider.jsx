@@ -30,13 +30,10 @@ function getInitialBrowserLang() {
 }
 
 export function LanguageProvider({ children }) {
-  // Sofort aus localStorage lesen → kein Sprachenflackern mehr
-  const [lang, setLangState] = useState(() => {
-    if (typeof window === 'undefined') return 'de'
-    return getInitialBrowserLang()
-  })
+  // Server und erster Client-Render müssen identisch sein. Die gewünschte
+  // Sprache wird direkt nach dem Mount aus URL beziehungsweise Storage gesetzt.
+  const [lang, setLangState] = useState('de')
 
-  // Fallback für SSR-Hydration
   useEffect(() => {
     const resolved = getInitialBrowserLang()
     if (resolved !== lang) setLangState(resolved)

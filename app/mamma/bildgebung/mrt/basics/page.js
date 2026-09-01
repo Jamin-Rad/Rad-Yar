@@ -9,15 +9,7 @@ import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import InProgressBanner from '@/components/InProgressBanner'
 import base from '@/app/abdomen/gi/divertikulitis/page.module.css'
 import styles from './page.module.css'
-
-const SECTIONS = [
-  { id: 'indikationen', label: 'Indikationen', icon: '01' },
-  { id: 'sequenzen', label: 'Sequenzen', icon: '02' },
-  { id: 'systematik', label: 'Systematisch lesen', icon: '03' },
-  { id: 'fgt-bpe', label: 'FGT & BPE', icon: '04' },
-  { id: 'enhancement', label: 'Enhancement-Typen', icon: '05' },
-  { id: 'prinzip', label: 'Das wichtigste Prinzip', icon: '06' },
-]
+import { BPE_CATEGORIES, FGT_CATEGORIES, INDICATIONS, SECTIONS, SEQUENCES, WORKFLOW, translate } from './content'
 
 const READ_COPY = {
   de: { mark: 'Als gelesen markieren', read: 'Als gelesen markiert', error: 'Bitte melde dich an, um deinen Lernfortschritt zu speichern.', signIn: 'Anmelden' },
@@ -25,93 +17,6 @@ const READ_COPY = {
   fa: { mark: 'علامت‌گذاری به‌عنوان خوانده‌شده', read: 'به‌عنوان خوانده‌شده علامت‌گذاری شد', error: 'برای ذخیره پیشرفت یادگیری لطفاً وارد شوید.', signIn: 'ورود' },
 }
 
-const INDICATIONS = [
-  { tag: 'Screening', title: 'Hochrisiko-Screening', text: 'Die kontrastmittelgestützte Mamma-MRT ist besonders wichtig bei Frauen mit deutlich erhöhtem Lebenszeitrisiko für ein Mammakarzinom.' },
-  { tag: 'Staging', title: 'Präoperatives Staging', text: 'Bei histologisch gesichertem Mammakarzinom kann die MRT helfen, die tatsächliche Tumorausdehnung besser einzuschätzen.' },
-  { tag: 'Response', title: 'Neoadjuvante Therapie', text: 'Die MRT dient zur Verlaufskontrolle des Tumoransprechens und zur Einschätzung eines möglichen Residualtumors.' },
-  { tag: 'Suche', title: 'Okkultes Mammakarzinom', text: 'Bei axillärer Lymphknotenmetastase, aber fehlendem Primärtumornachweis in Mammographie und Sonographie, kann die MRT nach dem okkulten Primärtumor suchen.' },
-  { tag: 'Klärung', title: 'Problem Solving', text: 'Ausgewählte, trotz vollständiger konventioneller Diagnostik unklar gebliebene Befunde können weiter abgeklärt werden.' },
-  { tag: 'Implantat', title: 'Implantatdiagnostik', text: 'Silikon-sensitive Sequenzen beurteilen die Implantatintegrität. Für die reine Rupturdiagnostik ist kein intravenöses Gadolinium erforderlich.' },
-]
-
-const SEQUENCES = [
-  {
-    key: 'T2', role: 'T2', accent: 'blue',
-    intro: 'Hier schauen wir vor allem auf:',
-    points: ['Zysten und Flüssigkeit', 'Ödem', 'Hautverdickung', 'Lymphknoten', 'T2-Signal einer Läsion'],
-    followUp: 'T2 hilft uns vor allem dabei, eine Läsion besser zu charakterisieren.',
-  },
-  {
-    key: 'T1', role: 'T1 vor Kontrastmittel', accent: 'violet',
-    intro: 'Diese Sequenz ist unsere Ausgangsbasis. Sie hilft unter anderem bei der Erkennung von:',
-    points: ['Fett', 'Blutprodukten', 'bereits vorher hohem T1-Signal'],
-    note: 'Außerdem brauchen wir sie für die spätere Subtraktion.',
-  },
-  {
-    key: 'T1+', role: 'T1 nach Kontrastmittel', accent: 'rose',
-    intro: 'Nach Gadolinium werden mehrere Serien aufgenommen. Hier schauen wir:',
-    points: ['Wo nimmt etwas Kontrastmittel auf?', 'Wie sieht das Enhancement aus?', 'Wie schnell kommt es?', 'Bleibt es bestehen oder nimmt es wieder ab?'],
-  },
-  {
-    key: 'SUB', role: 'Subtraktion', accent: 'amber',
-    intro: 'Dabei wird vereinfacht das Bild vor Kontrastmittel vom Bild nach Kontrastmittel abgezogen. Dadurch sieht man Enhancement deutlich besser. Sehr hilfreich bei:',
-    points: ['kleinen Läsionen', 'Non-Mass Enhancement', 'unübersichtlichem Drüsengewebe'],
-  },
-  {
-    key: 'MIP', role: 'Maximum Intensity Projection', accent: 'cyan',
-    intro: 'Die MIP gibt uns einen schnellen Überblick über beide Brüste. Hier sieht man oft sofort:',
-    points: ['Verteilung des Drüsengewebes und BPE', 'Symmetrie und Seitenunterschiede', 'auffällige Enhancements', 'Anzahl potenzieller Läsionen'],
-  },
-  {
-    key: 'DWI', role: 'DWI / ADC', accent: 'green',
-    intro: 'Viele maligne Tumoren zeigen eine eingeschränkte Diffusion. Typisch ist:',
-    points: ['hohes Signal in DWI', 'niedriger ADC'],
-    note: 'DWI ist immer nur ein zusätzlicher Baustein.',
-  },
-]
-
-const WORKFLOW = [
-  {
-    title: 'Indikation und Voruntersuchungen klären',
-    text: 'Warum wurde die MRT durchgeführt: Screening, Staging, Therapiekontrolle oder Implantatdiagnostik?',
-    detail: 'Mammographie, Sonographie, alte MRT und Biopsieergebnisse öffnen und vergleichen.',
-  },
-  { title: 'Technik prüfen', text: 'Bewegung, Fettsättigung und korrekte Kontrastmittelgabe beurteilen.' },
-  {
-    title: 'MIP ansehen',
-    text: 'Beide Brüste im schnellen Gesamtüberblick vergleichen.',
-  },
-  {
-    title: 'FGT und BPE beurteilen',
-    text: 'Wie viel fibroglanduläres Gewebe ist vorhanden und wie stark enhancet das normale Drüsengewebe?',
-  },
-  {
-    title: 'Auffällige Enhancements suchen',
-    text: 'Nun systematisch beide Brüste durchsuchen. Jedes auffällige Enhancement zunächst einer der drei Grundkategorien zuordnen,',
-    inlineEmphasis: 'erst danach erfolgt die weitere Charakterisierung.',
-    categories: [
-      { title: 'Focus', text: 'Sehr kleiner Punkt, dessen Form nicht sicher beurteilbar ist.' },
-      { title: 'Mass', text: 'Dreidimensionale raumfordernde Läsion.' },
-      { title: 'Non-Mass Enhancement', text: 'Enhancement ohne klare dreidimensionale Raumforderung.' },
-    ],
-  },
-  { title: 'Sequenzen abgleichen', text: 'Suspekte Läsionen in allen Sequenzen korrelieren.' },
-  { title: 'Umgebung prüfen', text: 'Haut, Mamille, Pectoralis, Thoraxwand und Lymphknoten nicht vergessen.' },
-]
-
-const FGT_CATEGORIES = [
-  { key: 'a', title: 'Almost entirely fat', text: 'Fast vollständig fettige Brust mit nur sehr wenig fibroglandulärem Gewebe.' },
-  { key: 'b', title: 'Scattered fibroglandular tissue', text: 'Vereinzelte Bereiche fibroglandulären Gewebes.' },
-  { key: 'c', title: 'Heterogeneous fibroglandular tissue', text: 'Deutlich vorhandenes, heterogen verteiltes fibroglanduläres Gewebe.' },
-  { key: 'd', title: 'Extreme fibroglandular tissue', text: 'Sehr große Menge fibroglandulären Gewebes.' },
-]
-
-const BPE_CATEGORIES = [
-  { key: '01', title: 'Minimal', text: 'Kaum Enhancement des normalen Brustparenchyms.' },
-  { key: '02', title: 'Mild', text: 'Geringes Enhancement.' },
-  { key: '03', title: 'Moderate', text: 'Deutlich sichtbares Enhancement größerer Anteile des Drüsengewebes.' },
-  { key: '04', title: 'Marked', text: 'Ausgeprägtes Enhancement des normalen Brustparenchyms.' },
-]
 
 function ReadButton({ isRead, onClick, authError }) {
   const { lang } = useLanguage()
@@ -148,6 +53,7 @@ function Callout({ cave = false, label, children }) {
 
 export default function MammaMrtBasicsPage() {
   const { lang } = useLanguage()
+  const tx = value => translate(lang, value)
   const [activeId, setActiveId] = useState(SECTIONS[0].id)
   const { isRead, toggleRead, authError } = useLessonReadStatus('mamma-mrt-basics')
   const withLang = href => lang === 'de' ? href : `${href}${href.includes('?') ? '&' : '?'}lang=${lang}`
@@ -168,30 +74,33 @@ export default function MammaMrtBasicsPage() {
   }, [sectionIds])
 
   return (
-    <main className={`${base.page} ${styles.page}`} dir="ltr" lang="de">
+    <main className={`${base.page} ${styles.page} ${lang === 'fa' ? styles.rtl : ''}`} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
       <InProgressBanner lang={lang} />
       <header className={base.header}>
-        <nav className={`${base.breadcrumb} ${styles.breadcrumb}`} aria-label="Brotkrümelnavigation">
+        <nav className={`${base.breadcrumb} ${styles.breadcrumb}`} aria-label={tx('Inhaltsverzeichnis')}>
           <Link href={withLang('/')}>RadYar</Link><span>›</span>
-          <Link href={withLang('/lernen/mamma')}>Mamma</Link><span>›</span>
-          <Link href={withLang('/lernen/mamma')}>Bildgebung</Link><span>›</span>
-          <span>Mamma-MRT</span><span>›</span><strong>Basics</strong>
+          <Link href={withLang('/lernen/mamma')}>{tx('Mamma')}</Link><span>›</span>
+          <Link href={withLang('/lernen/mamma')}>{tx('Bildgebung')}</Link><span>›</span>
+          <span>{tx('Mamma-MRT')}</span><span>›</span><strong>{tx('Basics')}</strong>
         </nav>
 
         <div className={base.hero}>
           <div className={`${base.heroText} ${styles.heroText}`}>
             <span className={`${base.sourceBadge} ${styles.sourceBadge}`}>Dr. Zia</span>
-            <h1>Mamma-MRT:<br />Basics</h1>
-            <p>Indikationen, Sequenzen und ein systematischer Einstieg in die Befundung.</p>
+            <h1>{tx('Mamma-MRT')}:<br />{tx('Basics')}</h1>
+            <p>{tx('Indikationen, Sequenzen und ein systematischer Einstieg in die Befundung.')}</p>
             <div className={base.actions}>
               <Link className={`${base.actionBtn} ${styles.actionBtn}`} href={withLang(`/ueben/quiz?fach=mamma&n=10&themen=mamma-mrt-basics&from=${encodeURIComponent(withLang(lessonPath))}`)}>🎯 MCQ</Link>
-              <Link className={`${base.actionBtn} ${styles.actionBtn}`} href={withLang(`/flashcards/mamma-mrt-basics?from=${encodeURIComponent(withLang(lessonPath))}`)}>🧠 Flashcards</Link>
+              <Link className={`${base.actionBtn} ${styles.actionBtn}`} href={withLang(`/flashcards/mamma-mrt-basics?from=${encodeURIComponent(withLang(lessonPath))}`)}>🧠 {tx('Flashcards')}</Link>
             </div>
           </div>
-          <div className={base.heroStats}>
-            <div className={`${base.heroStat} ${styles.heroStat}`}><strong>DCE-MRT</strong><span>Höchste Sensitivität</span><small>Tumorvaskularisation und Kontrastmittelaufnahme sichtbar machen.</small></div>
-            <div className={`${base.heroStat} ${styles.heroStat}`}><strong>T2 · T1 · DWI</strong><span>Multiparametrisch</span><small>Jede Sequenz beantwortet eine andere diagnostische Frage.</small></div>
-            <div className={`${base.heroStat} ${styles.heroStat}`}><strong>Focus · Mass · NME</strong><span>Erst klassifizieren</span><small>Dann Morphologie, Diffusion und Kinetik bewerten.</small></div>
+          <div className={styles.heroBrief}>
+            <div className={styles.heroBriefHeading}><span>{tx('Lernziele')}</span><h2>{tx('Nach dieser Lektion kannst du')}</h2></div>
+            <ol>
+              <li><span>01</span><strong>{tx('Indikationen gezielt einordnen')}</strong></li>
+              <li><span>02</span><strong>{tx('das MRT-Protokoll sicher lesen')}</strong></li>
+              <li><span>03</span><strong>{tx('FGT, BPE, Focus, Mass und NME unterscheiden')}</strong></li>
+            </ol>
           </div>
         </div>
       </header>
@@ -200,57 +109,57 @@ export default function MammaMrtBasicsPage() {
 
       <div className={base.layout}>
         <aside className={`${base.sidebar} ${styles.sidebar}`}>
-          <div className={base.sideTitle}>Inhaltsverzeichnis</div>
+          <div className={base.sideTitle}>{tx('Inhaltsverzeichnis')}</div>
           {SECTIONS.map(section => (
             <button key={section.id} type="button" className={`${base.sideItem} ${styles.sideItem} ${activeId === section.id ? `${base.sideItemActive} ${styles.sideItemActive}` : ''}`} onClick={() => document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
-              <span className={styles.sideNumber}>{section.icon}</span><strong>{section.label}</strong>
+              <span className={styles.sideNumber}>{section.icon}</span><strong>{tx(section.label)}</strong>
             </button>
           ))}
         </aside>
 
         <div className={base.main}>
-          <Section id="indikationen" eyebrow="01 · Wann einsetzen?" title="Indikationen">
-            <p className={styles.lead}>Die Mamma-MRT ist die <strong>sensitivste bildgebende Methode</strong> zum Nachweis eines Mammakarzinoms. Ihre hohe Sensitivität beruht vor allem auf der Darstellung der <strong>Tumorvaskularisation und Kontrastmittelaufnahme</strong>. Gleichzeitig ist die Spezifität begrenzt: Auch zahlreiche benigne Veränderungen können Kontrastmittel aufnehmen.</p>
-            <div className={styles.indicationGrid}>{INDICATIONS.map(item => <article className={styles.indicationCard} key={item.title}><span>{item.tag}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
-            <div className={styles.problemBox}><div><span>Problem Solving · Beispiele</span><h3>Wenn die konventionelle Diagnostik unklar bleibt</h3></div><ul><li>nicht sicher erklärbare Asymmetrie</li><li>unklare Architekturstörung</li><li>diskrepante Befunde zwischen Mammographie und Sonographie</li><li>schwer beurteilbare postoperative Veränderungen</li></ul></div>
-            <Callout cave label="Wichtig">Die MRT sollte nicht dazu verwendet werden, eine indizierte Biopsie eines suspekten Befundes zu vermeiden. Ein klar suspekter und bioptisch zugänglicher Befund sollte in der Regel histologisch abgeklärt werden.</Callout>
+          <Section id="indikationen" eyebrow={tx('01 · Wann einsetzen?')} title={tx('Indikationen')}>
+            <p className={styles.lead}>{tx('Die Mamma-MRT ist die')} <strong>{tx('sensitivste bildgebende Methode')}</strong> {tx('zum Nachweis eines Mammakarzinoms. Ihre hohe Sensitivität beruht vor allem auf der Darstellung der')} <strong>{tx('Tumorvaskularisation und Kontrastmittelaufnahme')}</strong>. {tx('Gleichzeitig ist die Spezifität begrenzt: Auch zahlreiche benigne Veränderungen können Kontrastmittel aufnehmen.')}</p>
+            <div className={styles.indicationGrid}>{INDICATIONS.map(item => <article className={styles.indicationCard} key={item.title}><span>{tx(item.tag)}</span><h3>{tx(item.title)}</h3><p>{tx(item.text)}</p></article>)}</div>
+            <div className={styles.problemBox}><div><span>{tx('Problem Solving · Beispiele')}</span><h3>{tx('Wenn die konventionelle Diagnostik unklar bleibt')}</h3></div><ul><li>{tx('nicht sicher erklärbare Asymmetrie')}</li><li>{tx('unklare Architekturstörung')}</li><li>{tx('diskrepante Befunde zwischen Mammographie und Sonographie')}</li><li>{tx('schwer beurteilbare postoperative Veränderungen')}</li></ul></div>
+            <Callout cave label={tx('Wichtig')}>{tx('Die MRT sollte nicht dazu verwendet werden, eine indizierte Biopsie eines suspekten Befundes zu vermeiden. Ein klar suspekter und bioptisch zugänglicher Befund sollte in der Regel histologisch abgeklärt werden.')}</Callout>
           </Section>
 
-          <Section id="sequenzen" eyebrow="02 · Protokoll" title="Welche Sequenzen brauchen wir?">
-            <p className={styles.lead}>Ein typisches Mamma-MRT-Protokoll besteht aus mehreren Sequenzen. Jede beantwortet eine andere Frage.</p>
+          <Section id="sequenzen" eyebrow={tx('02 · Protokoll')} title={tx('Welche Sequenzen brauchen wir?')}>
+            <p className={styles.lead}>{tx('Ein typisches Mamma-MRT-Protokoll besteht aus mehreren Sequenzen. Jede beantwortet eine andere Frage.')}</p>
             <div className={styles.sequenceGrid}>{SEQUENCES.map(sequence => (
               <article className={`${styles.sequenceCard} ${styles[sequence.accent]}`} key={sequence.key}>
-                <div className={styles.sequenceTop}><strong>{sequence.key}</strong><span>{sequence.role}</span></div>
-                <p className={styles.sequenceIntro}>{sequence.intro}</p>
-                <ul>{sequence.points.map(point => <li key={point}>{point}</li>)}</ul>
+                <div className={styles.sequenceTop}><strong>{sequence.key}</strong><span>{tx(sequence.role)}</span></div>
+                <p className={styles.sequenceIntro}>{tx(sequence.intro)}</p>
+                <ul>{sequence.points.map(point => <li key={point}>{tx(point)}</li>)}</ul>
                 <div className={styles.sequenceNotes}>
-                  {sequence.note && <p>{sequence.note}</p>}
-                  {sequence.followUp && <p>{sequence.followUp}</p>}
+                  {sequence.note && <p>{tx(sequence.note)}</p>}
+                  {sequence.followUp && <p>{tx(sequence.followUp)}</p>}
                 </div>
               </article>
             ))}</div>
             <div className={styles.sequenceSummary}>
-              <span>Merke</span>
+              <span>{tx('Merke')}</span>
               <ul>
-                <li><strong>T1 nach Kontrastmittel ist einer der wichtigsten Teile der Mamma-MRT.</strong></li>
-                <li><strong>Ein niedriger ADC bedeutet nicht automatisch Krebs.</strong></li>
-                <li><strong>Die MIP ist perfekt zum Suchen, aber nicht zur endgültigen Beurteilung.</strong></li>
+                <li><strong>{tx('T1 nach Kontrastmittel ist einer der wichtigsten Teile der Mamma-MRT.')}</strong></li>
+                <li><strong>{tx('Ein niedriger ADC bedeutet nicht automatisch Krebs.')}</strong></li>
+                <li><strong>{tx('Die MIP ist perfekt zum Suchen, aber nicht zur endgültigen Beurteilung.')}</strong></li>
               </ul>
             </div>
           </Section>
 
-          <Section id="systematik" eyebrow="03 · Workflow" title="Wie liest man eine Mamma-MRT systematisch?">
-            <p className={styles.lead}>Ein fester Ablauf hilft, nichts zu übersehen.</p>
+          <Section id="systematik" eyebrow={tx('03 · Workflow')} title={tx('Wie liest man eine Mamma-MRT systematisch?')}>
+            <p className={styles.lead}>{tx('Ein fester Ablauf hilft, nichts zu übersehen.')}</p>
             <ol className={styles.workflow}>{WORKFLOW.map((step, index) => (
               <li key={step.title}>
                 <span>{String(index + 1).padStart(2, '0')}</span>
                 <div>
-                  <h3>{step.title}</h3>
-                  <p>{step.text}{step.inlineEmphasis && <> <strong className={styles.workflowInlineEmphasis}>{step.inlineEmphasis}</strong></>}</p>
-                  {step.detail && <p className={styles.workflowDetail}>{step.detail}</p>}
+                  <h3>{tx(step.title)}</h3>
+                  <p>{tx(step.text)}{step.inlineEmphasis && <> <strong className={styles.workflowInlineEmphasis}>{tx(step.inlineEmphasis)}</strong></>}</p>
+                  {step.detail && <p className={styles.workflowDetail}>{tx(step.detail)}</p>}
                   {step.categories && (
                     <ul className={styles.workflowTypes}>
-                      {step.categories.map((category) => <li key={category.title}><strong>{category.title}</strong><span>{category.text}</span></li>)}
+                      {step.categories.map((category) => <li key={category.title}><strong>{category.title}</strong><span>{tx(category.text)}</span></li>)}
                     </ul>
                   )}
                 </div>
@@ -258,97 +167,97 @@ export default function MammaMrtBasicsPage() {
             ))}</ol>
           </Section>
 
-          <Section id="fgt-bpe" eyebrow="04 · Nicht verwechseln" title="FGT und BPE">
+          <Section id="fgt-bpe" eyebrow={tx('04 · Nicht verwechseln')} title={tx('FGT und BPE')}>
             <div className={styles.compareGrid}>
               <article className={styles.fgtCard}>
-                <div className={styles.compareHeading}><span className={styles.term}>FGT</span><div><small>Fibroglanduläres Gewebe</small><h3>Fibroglandular Tissue</h3></div></div>
-                <p className={styles.definition}>FGT beschreibt die <strong>Menge des fibroglandulären Brustgewebes</strong> – unabhängig davon, wie stark dieses nach Kontrastmittelgabe anreichert.</p>
+                <div className={styles.compareHeading}><span className={styles.term}>FGT</span><div><small>{tx('Fibroglanduläres Gewebe')}</small><h3>Fibroglandular Tissue</h3></div></div>
+                <p className={styles.definition}>{tx('FGT beschreibt die')} <strong>{tx('Menge des fibroglandulären Brustgewebes')}</strong> {tx('– unabhängig davon, wie stark dieses nach Kontrastmittelgabe anreichert.')}</p>
                 <figure className={styles.teachingMedia}>
-                  <a href="/mamma/mrt/fgt-categories-abcd.png" target="_blank" rel="noreferrer" aria-label="FGT-Kategorien in voller Größe öffnen">
-                    <Image src="/mamma/mrt/fgt-categories-abcd.png" alt="Vier MRT-Beispiele der FGT-Kategorien von fast vollständig fettig bis extrem fibroglandulär" width={2170} height={725} sizes="(max-width: 900px) calc(100vw - 64px), 820px" loading="eager" />
+                  <a href="/mamma/mrt/fgt-categories-abcd.png" target="_blank" rel="noreferrer" aria-label={tx('FGT-Kategorien in voller Größe öffnen')}>
+                    <Image src="/mamma/mrt/fgt-categories-abcd.png" alt={tx('Vier MRT-Beispiele der FGT-Kategorien von fast vollständig fettig bis extrem fibroglandulär')} width={2170} height={725} sizes="(max-width: 900px) calc(100vw - 64px), 820px" loading="eager" />
                   </a>
-                  <figcaption><strong>FGT a–d im MRT</strong><span>Zum Vergrößern Bild öffnen</span></figcaption>
+                  <figcaption><strong>{tx('FGT a–d im MRT')}</strong><span>{tx('Zum Vergrößern Bild öffnen')}</span></figcaption>
                 </figure>
-                <p className={styles.categoryIntro}>Nach BI-RADS wird das FGT qualitativ in vier Kategorien eingeteilt:</p>
+                <p className={styles.categoryIntro}>{tx('Nach BI-RADS wird das FGT qualitativ in vier Kategorien eingeteilt:')}</p>
                 <div className={styles.categoryList}>
                   {FGT_CATEGORIES.map((category) => (
                     <div key={category.key} className={styles.categoryItem}>
-                      <span>{category.key}</span><div><h4>{category.title}</h4><p>{category.text}</p></div>
+                      <span>{category.key}</span><div><h4>{category.title}</h4><p>{tx(category.text)}</p></div>
                     </div>
                   ))}
                 </div>
                 <div className={styles.modalityNote}>
-                  <strong>FGT ist nicht dasselbe wie mammographische Brustdichte</strong>
-                  <p>Beide beschreiben zwar die Zusammensetzung der Brust, werden jedoch mit unterschiedlichen Modalitäten beurteilt. Die MRT-Kategorie beschreibt die sichtbare Menge des fibroglandulären Gewebes in der MRT.</p>
+                  <strong>{tx('FGT ist nicht dasselbe wie mammographische Brustdichte')}</strong>
+                  <p>{tx('Beide beschreiben zwar die Zusammensetzung der Brust, werden jedoch mit unterschiedlichen Modalitäten beurteilt. Die MRT-Kategorie beschreibt die sichtbare Menge des fibroglandulären Gewebes in der MRT.')}</p>
                 </div>
               </article>
 
               <article className={styles.bpeCard}>
-                <div className={styles.compareHeading}><span className={`${styles.term} ${styles.termBpe}`}>BPE</span><div><small>Normales Parenchym</small><h3>Background Parenchymal Enhancement</h3></div></div>
-                <p className={styles.definition}>BPE beschreibt, wie stark das <strong>normale fibroglanduläre Brustgewebe nach Kontrastmittelgabe anreichert</strong>.</p>
+                <div className={styles.compareHeading}><span className={`${styles.term} ${styles.termBpe}`}>BPE</span><div><small>{tx('Normales Parenchym')}</small><h3>Background Parenchymal Enhancement</h3></div></div>
+                <p className={styles.definition}>{tx('BPE beschreibt, wie stark das')} <strong>{tx('normale fibroglanduläre Brustgewebe nach Kontrastmittelgabe anreichert')}</strong>.</p>
                 <figure className={styles.teachingMedia}>
-                  <a href="/mamma/mrt/bpe-categories.png" target="_blank" rel="noreferrer" aria-label="BPE-Kategorien in voller Größe öffnen">
-                    <Image src="/mamma/mrt/bpe-categories.png" alt="Vier MRT-Beispiele der BPE-Kategorien minimal, mild, moderate und marked" width={1811} height={868} sizes="(max-width: 900px) calc(100vw - 64px), 820px" loading="eager" />
+                  <a href="/mamma/mrt/bpe-categories.png" target="_blank" rel="noreferrer" aria-label={tx('BPE-Kategorien in voller Größe öffnen')}>
+                    <Image src="/mamma/mrt/bpe-categories.png" alt={tx('Vier MRT-Beispiele der BPE-Kategorien minimal, mild, moderate und marked')} width={1811} height={868} sizes="(max-width: 900px) calc(100vw - 64px), 820px" loading="eager" />
                   </a>
-                  <figcaption><strong>BPE minimal–marked im MRT</strong><span>Zum Vergrößern Bild öffnen</span></figcaption>
+                  <figcaption><strong>{tx('BPE minimal–marked im MRT')}</strong><span>{tx('Zum Vergrößern Bild öffnen')}</span></figcaption>
                 </figure>
-                <p className={styles.categoryIntro}>BI-RADS unterscheidet vier Kategorien:</p>
+                <p className={styles.categoryIntro}>{tx('BI-RADS unterscheidet vier Kategorien:')}</p>
                 <div className={styles.categoryList}>
                   {BPE_CATEGORIES.map((category) => (
                     <div key={category.key} className={styles.categoryItem}>
-                      <span>{category.key}</span><div><h4>{category.title}</h4><p>{category.text}</p></div>
+                      <span>{category.key}</span><div><h4>{category.title}</h4><p>{tx(category.text)}</p></div>
                     </div>
                   ))}
                 </div>
                 <div className={`${styles.modalityNote} ${styles.bpeNote}`}>
-                  <strong>Visuelle Beurteilung</strong>
-                  <p>Diese Einteilung erfolgt visuell. BI-RADS empfiehlt keine starre prozentuale Einteilung.</p>
+                  <strong>{tx('Visuelle Beurteilung')}</strong>
+                  <p>{tx('Diese Einteilung erfolgt visuell. BI-RADS empfiehlt keine starre prozentuale Einteilung.')}</p>
                 </div>
               </article>
             </div>
             <div className={styles.contrastBlock}>
-              <span className={styles.contrastEyebrow}>Das wichtigste Prinzip</span>
-              <h3>FGT und BPE nicht verwechseln</h3>
+              <span className={styles.contrastEyebrow}>{tx('Das wichtigste Prinzip')}</span>
+              <h3>{tx('FGT und BPE nicht verwechseln')}</h3>
               <div className={styles.memoryLine}>
-                <div><strong>FGT beantwortet:</strong><span>Wie viel Drüsengewebe ist vorhanden?</span></div>
+                <div><strong>{tx('FGT beantwortet:')}</strong><span>{tx('Wie viel Drüsengewebe ist vorhanden?')}</span></div>
                 <i>≠</i>
-                <div><strong>BPE beantwortet:</strong><span>Wie stark nimmt dieses normale Drüsengewebe Kontrastmittel auf?</span></div>
+                <div><strong>{tx('BPE beantwortet:')}</strong><span>{tx('Wie stark nimmt dieses normale Drüsengewebe Kontrastmittel auf?')}</span></div>
               </div>
-              <p className={styles.exampleLead}>Daher können beispielsweise beide Konstellationen auftreten:</p>
-              <div className={styles.examplePair}><strong>viel FGT + minimales BPE</strong><span>oder</span><strong>wenig FGT + relativ deutliches BPE</strong></div>
-              <p className={styles.centerNote}>Die beiden Parameter sind miteinander verbunden, aber nicht identisch.</p>
+              <p className={styles.exampleLead}>{tx('Daher können beispielsweise beide Konstellationen auftreten:')}</p>
+              <div className={styles.examplePair}><strong>{tx('viel FGT + minimales BPE')}</strong><span>{tx('oder')}</span><strong>{tx('wenig FGT + relativ deutliches BPE')}</strong></div>
+              <p className={styles.centerNote}>{tx('Die beiden Parameter sind miteinander verbunden, aber nicht identisch.')}</p>
             </div>
             <aside className={styles.bpeImportance}>
-              <div><span>Interpretation</span><h3>Warum ist BPE wichtig?</h3></div>
+              <div><span>{tx('Interpretation')}</span><h3>{tx('Warum ist BPE wichtig?')}</h3></div>
               <div>
-                <p>Starkes BPE kann kleine Läsionen schwieriger erkennbar machen und die Interpretation erschweren.</p>
-                <p>BPE kann asymmetrisch oder fokal ausgeprägt sein und dadurch eine Läsion imitieren. Sein Ausmaß wird unter anderem durch hormonelle Faktoren beeinflusst.</p>
-                <strong>Ein scheinbares Enhancement deshalb immer im Kontext des gesamten Parenchyms beurteilen.</strong>
+                <p>{tx('Starkes BPE kann kleine Läsionen schwieriger erkennbar machen und die Interpretation erschweren.')}</p>
+                <p>{tx('BPE kann asymmetrisch oder fokal ausgeprägt sein und dadurch eine Läsion imitieren. Sein Ausmaß wird unter anderem durch hormonelle Faktoren beeinflusst.')}</p>
+                <strong>{tx('Ein scheinbares Enhancement deshalb immer im Kontext des gesamten Parenchyms beurteilen.')}</strong>
               </div>
             </aside>
           </Section>
 
-          <Section id="enhancement" eyebrow="05 · BI-RADS-Logik" title="Die drei wichtigsten Enhancement-Typen">
+          <Section id="enhancement" eyebrow={tx('05 · BI-RADS-Logik')} title={tx('Die drei wichtigsten Enhancement-Typen')}>
             <div className={styles.enhancementGrid}>
               <article>
                 <div className={`${styles.enhancementSketch} ${styles.focusSketch}`}><i /></div><span>01</span><h3>Focus, Foci</h3>
-                <ul className={styles.enhancementFacts}><li><strong>&lt; 5 mm</strong></li><li>Zu klein für eine zuverlässige morphologische Charakterisierung.</li></ul>
+                <ul className={styles.enhancementFacts}><li><strong>&lt; 5 mm</strong></li><li>{tx('Zu klein für eine zuverlässige morphologische Charakterisierung.')}</li></ul>
               </article>
               <article>
                 <div className={`${styles.enhancementSketch} ${styles.massSketch}`}><i /></div><span>02</span><h3>Mass</h3>
-                <ul className={styles.enhancementFacts}><li>Eine echte dreidimensionale Läsion.</li><li>Form, Rand und internes Enhancement können beurteilt werden.</li></ul>
+                <ul className={styles.enhancementFacts}><li>{tx('Eine echte dreidimensionale Läsion.')}</li><li>{tx('Form, Rand und internes Enhancement können beurteilt werden.')}</li></ul>
               </article>
               <article>
                 <div className={`${styles.enhancementSketch} ${styles.nmeSketch}`}><i /><i /><i /><i /><i /></div><span>03</span><h3>Non-Mass Enhancement</h3>
-                <p>Ein <strong>Non-Mass Enhancement</strong> ist ein kontrastmittelaufnehmender Bereich, der:</p>
-                <ul className={styles.enhancementFacts}><li>vom normalen BPE abgrenzbar ist,</li><li>aber keine dreidimensionale Mass bildet</li><li>und nicht lediglich einen kleinen Focus darstellt.</li></ul>
+                <p>{tx('Ein')} <strong>Non-Mass Enhancement</strong> {tx('ist ein kontrastmittelaufnehmender Bereich, der:')}</p>
+                <ul className={styles.enhancementFacts}><li>{tx('vom normalen BPE abgrenzbar ist,')}</li><li>{tx('aber keine dreidimensionale Mass bildet')}</li><li>{tx('und nicht lediglich einen kleinen Focus darstellt.')}</li></ul>
               </article>
             </div>
           </Section>
 
-          <Section id="prinzip" eyebrow="06 · Take home" title="Das wichtigste Prinzip">
-            <div className={styles.dontAsk}><span>Nicht sofort fragen</span><p>„Ist das Krebs?“</p></div>
-            <div className={styles.decisionFlow}><div><small>Schritt 1</small><strong>BPE oder echter Befund?</strong></div><b>→</b><div><small>Schritt 2</small><strong>Focus, Mass oder NME?</strong></div><b>→</b><div><small>Schritt 3</small><strong>Morphologie · T2 · DWI · Kinetik · Begleitbefunde</strong></div></div>
+          <Section id="prinzip" eyebrow={tx('06 · Take home')} title={tx('Das wichtigste Prinzip')}>
+            <div className={styles.dontAsk}><span>{tx('Nicht sofort fragen')}</span><p>{tx('„Ist das Krebs?“')}</p></div>
+            <div className={styles.decisionFlow} dir="ltr"><div><small>{tx('Schritt 1')}</small><strong>{tx('BPE oder echter Befund?')}</strong></div><b>→</b><div><small>{tx('Schritt 2')}</small><strong>{tx('Focus, Mass oder NME?')}</strong></div><b>→</b><div><small>{tx('Schritt 3')}</small><strong>{tx('Morphologie · T2 · DWI · Kinetik · Begleitbefunde')}</strong></div></div>
           </Section>
 
           <div className={base.readBarBottom}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} /></div>

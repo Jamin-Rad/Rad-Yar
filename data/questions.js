@@ -28,6 +28,7 @@ import { DISTALE_RADIUS_QUESTIONS } from './distale-radiusfraktur'
 import { HRCT_QUESTIONS } from './hrct-muster'
 import { SPINE_TRAUMA_QUESTIONS } from './spineTrauma'
 import { KNIE_LIGAMENTE_QUESTIONS } from './knieligamente'
+import { MAMMA_MRT_QUESTIONS } from './mammaMrtBasics'
 
 const DIVERTICULITIS_QUESTION_CONTENT = [
   {
@@ -576,6 +577,7 @@ export const QUESTION_BANK = {
     ...KNIE_LIGAMENTE_QUESTIONS.de,
     ...SPINE_TRAUMA_QUESTIONS.de,
     ...HRCT_QUESTIONS.de,
+    ...MAMMA_MRT_QUESTIONS.de,
     {
       "id": "meniskus-de-01",
       "tags": [
@@ -1902,6 +1904,7 @@ export const QUESTION_BANK = {
     }
   ],
   "en": [
+    ...MAMMA_MRT_QUESTIONS.en,
     ...CONTRAST_QUESTIONS.en,
     ...DIVERTICULITIS_QUESTIONS.en,
     ...PANCREATITIS_QUESTIONS.en,
@@ -3259,6 +3262,7 @@ export const QUESTION_BANK = {
     }
   ],
   "fa": [
+    ...MAMMA_MRT_QUESTIONS.fa,
     ...CONTRAST_QUESTIONS.fa,
     ...DIVERTICULITIS_QUESTIONS.fa,
     ...PANCREATITIS_QUESTIONS.fa,
@@ -4618,6 +4622,14 @@ export const QUESTION_BANK = {
 }
 
 export const MCQ_TOPIC_GROUPS = [
+  {
+    fachId: 'mamma',
+    kapitelId: 'mamma-bildgebung',
+    title: { de: 'Bildgebung', en: 'Imaging', fa: 'تصویربرداری' },
+    topics: [
+      { id: 'mamma-mrt-basics', title: { de: 'Mamma-MRT: Basics', en: 'Breast MRI: Basics', fa: 'MRI پستان: مبانی' } },
+    ],
+  },
   {
     fachId: 'thorax',
     kapitelId: 'thorax-grundlagen',
