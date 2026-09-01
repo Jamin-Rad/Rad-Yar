@@ -94,6 +94,20 @@ const WORKFLOW = [
   { title: 'Umgebung prüfen', text: 'Haut, Mamille, Pectoralis, Thoraxwand und Lymphknoten nicht vergessen.' },
 ]
 
+const FGT_CATEGORIES = [
+  { key: 'a', title: 'Almost entirely fat', text: 'Fast vollständig fettige Brust mit nur sehr wenig fibroglandulärem Gewebe.' },
+  { key: 'b', title: 'Scattered fibroglandular tissue', text: 'Vereinzelte Bereiche fibroglandulären Gewebes.' },
+  { key: 'c', title: 'Heterogeneous fibroglandular tissue', text: 'Deutlich vorhandenes, heterogen verteiltes fibroglanduläres Gewebe.' },
+  { key: 'd', title: 'Extreme fibroglandular tissue', text: 'Sehr große Menge fibroglandulären Gewebes.' },
+]
+
+const BPE_CATEGORIES = [
+  { key: '01', title: 'Minimal', text: 'Kaum Enhancement des normalen Brustparenchyms.' },
+  { key: '02', title: 'Mild', text: 'Geringes Enhancement.' },
+  { key: '03', title: 'Moderate', text: 'Deutlich sichtbares Enhancement größerer Anteile des Drüsengewebes.' },
+  { key: '04', title: 'Marked', text: 'Ausgeprägtes Enhancement des normalen Brustparenchyms.' },
+]
+
 function ReadButton({ isRead, onClick, authError }) {
   const { lang } = useLanguage()
   const copy = READ_COPY[lang] || READ_COPY.de
@@ -238,11 +252,60 @@ export default function MammaMrtBasicsPage() {
 
           <Section id="fgt-bpe" eyebrow="04 · Nicht verwechseln" title="FGT und BPE">
             <div className={styles.compareGrid}>
-              <article><span className={styles.term}>FGT</span><h3>Fibroglandular Tissue</h3><p className={styles.question}>Wie viel Drüsengewebe ist überhaupt vorhanden?</p><div className={styles.pillList}><span>almost entirely fatty</span><span>scattered</span><span>heterogeneous</span><span>extreme</span></div></article>
-              <article><span className={`${styles.term} ${styles.termBpe}`}>BPE</span><h3>Background Parenchymal Enhancement</h3><p className={styles.question}>Wie stark nimmt normales Drüsengewebe Kontrastmittel auf?</p><div className={styles.pillList}><span>minimal</span><span>mild</span><span>moderate</span><span>marked</span></div></article>
+              <article className={styles.fgtCard}>
+                <div className={styles.compareHeading}><span className={styles.term}>FGT</span><div><small>Fibroglanduläres Gewebe</small><h3>Fibroglandular Tissue</h3></div></div>
+                <p className={styles.definition}>FGT beschreibt die <strong>Menge des fibroglandulären Brustgewebes</strong> – unabhängig davon, wie stark dieses nach Kontrastmittelgabe anreichert.</p>
+                <p className={styles.categoryIntro}>Nach BI-RADS wird das FGT qualitativ in vier Kategorien eingeteilt:</p>
+                <div className={styles.categoryList}>
+                  {FGT_CATEGORIES.map((category) => (
+                    <div key={category.key} className={styles.categoryItem}>
+                      <span>{category.key}</span><div><h4>{category.title}</h4><p>{category.text}</p></div>
+                    </div>
+                  ))}
+                </div>
+                <div className={styles.modalityNote}>
+                  <strong>FGT ist nicht dasselbe wie mammographische Brustdichte</strong>
+                  <p>Beide beschreiben zwar die Zusammensetzung der Brust, werden jedoch mit unterschiedlichen Modalitäten beurteilt. Die MRT-Kategorie beschreibt die sichtbare Menge des fibroglandulären Gewebes in der MRT.</p>
+                </div>
+              </article>
+
+              <article className={styles.bpeCard}>
+                <div className={styles.compareHeading}><span className={`${styles.term} ${styles.termBpe}`}>BPE</span><div><small>Normales Parenchym</small><h3>Background Parenchymal Enhancement</h3></div></div>
+                <p className={styles.definition}>BPE beschreibt, wie stark das <strong>normale fibroglanduläre Brustgewebe nach Kontrastmittelgabe anreichert</strong>.</p>
+                <p className={styles.categoryIntro}>BI-RADS unterscheidet vier Kategorien:</p>
+                <div className={styles.categoryList}>
+                  {BPE_CATEGORIES.map((category) => (
+                    <div key={category.key} className={styles.categoryItem}>
+                      <span>{category.key}</span><div><h4>{category.title}</h4><p>{category.text}</p></div>
+                    </div>
+                  ))}
+                </div>
+                <div className={`${styles.modalityNote} ${styles.bpeNote}`}>
+                  <strong>Visuelle Beurteilung</strong>
+                  <p>Diese Einteilung erfolgt visuell. BI-RADS empfiehlt keine starre prozentuale Einteilung.</p>
+                </div>
+              </article>
             </div>
-            <div className={styles.memoryLine}><strong>FGT</strong><span>= Menge des Drüsengewebes</span><i>≠</i><strong>BPE</strong><span>= Aktivität nach Kontrastmittel</span></div>
-            <p className={styles.centerNote}>Man kann viel FGT und trotzdem wenig BPE haben.</p>
+            <div className={styles.contrastBlock}>
+              <span className={styles.contrastEyebrow}>Das wichtigste Prinzip</span>
+              <h3>FGT und BPE nicht verwechseln</h3>
+              <div className={styles.memoryLine}>
+                <div><strong>FGT beantwortet:</strong><span>Wie viel Drüsengewebe ist vorhanden?</span></div>
+                <i>≠</i>
+                <div><strong>BPE beantwortet:</strong><span>Wie stark nimmt dieses normale Drüsengewebe Kontrastmittel auf?</span></div>
+              </div>
+              <p className={styles.exampleLead}>Daher können beispielsweise beide Konstellationen auftreten:</p>
+              <div className={styles.examplePair}><strong>viel FGT + minimales BPE</strong><span>oder</span><strong>wenig FGT + relativ deutliches BPE</strong></div>
+              <p className={styles.centerNote}>Die beiden Parameter sind miteinander verbunden, aber nicht identisch.</p>
+            </div>
+            <aside className={styles.bpeImportance}>
+              <div><span>Interpretation</span><h3>Warum ist BPE wichtig?</h3></div>
+              <div>
+                <p>Starkes BPE kann kleine Läsionen schwieriger erkennbar machen und die Interpretation erschweren.</p>
+                <p>BPE kann asymmetrisch oder fokal ausgeprägt sein und dadurch eine Läsion imitieren. Sein Ausmaß wird unter anderem durch hormonelle Faktoren beeinflusst.</p>
+                <strong>Ein scheinbares Enhancement deshalb immer im Kontext des gesamten Parenchyms beurteilen.</strong>
+              </div>
+            </aside>
           </Section>
 
           <Section id="enhancement" eyebrow="05 · BI-RADS-Logik" title="Die drei wichtigsten Enhancement-Typen">
