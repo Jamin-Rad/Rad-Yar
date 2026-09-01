@@ -76,8 +76,11 @@
 .workflow h3 { margin: 0 0 4px; color: var(--text-strong); font-size: 16px; }
 .workflow p { margin: 0; color: var(--text-soft); font-size: 13px; }
 .workflow .workflowDetail { margin-top: 10px; }
-.workflowEmphasis { display: inline-flex; margin-top: 10px; padding: 9px 12px; border-radius: 12px; background: linear-gradient(135deg, rgba(219,39,119,.10), rgba(147,51,234,.10)); color: #9d174d; font-size: 14px; line-height: 1.5; }
-.workflow .workflowConclusion { margin-top: 10px; color: var(--text-strong); font-weight: 850; }
+.workflowInlineEmphasis { color: var(--text-strong); font-weight: 900; }
+.workflowTypes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 13px 0 0; padding: 0; list-style: none; }
+.workflowTypes li { display: grid; grid-template-columns: 1fr; gap: 3px; align-content: start; padding: 10px 11px; border: 1px solid rgba(219,39,119,.16); border-radius: 13px; background: linear-gradient(135deg, rgba(219,39,119,.08), rgba(147,51,234,.06)); }
+.workflowTypes strong { color: #9d174d; font-size: 12px; line-height: 1.35; }
+.workflow .workflowTypes li > span { display: block; width: auto; height: auto; border: 0; border-radius: 0; background: none; color: var(--text-soft); font-size: 11px; font-weight: 400; line-height: 1.45; }
 
 .compareGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
 .compareGrid article { padding: 26px; border: 1px solid #fbcfe8; border-radius: 28px; background: linear-gradient(145deg, #fdf2f8, var(--bg-card)); }
@@ -161,6 +164,7 @@
   .compareGrid h3 { font-size: 17px; }
   .memoryLine { grid-template-columns: 1fr; }
   .memoryLine i { justify-self: center; }
+  .workflowTypes { grid-template-columns: 1fr; }
   .contrastBlock, .bpeImportance { padding: 20px 16px; }
   .dontAsk { align-items: flex-start; flex-direction: column; }
   .sectionBody { padding: 20px 16px 22px; }

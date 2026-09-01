@@ -86,9 +86,13 @@ const WORKFLOW = [
   },
   {
     title: 'Auffällige Enhancements suchen',
-    text: 'Nun systematisch beide Brüste durchsuchen. Jedes auffällige Enhancement zunächst einer der drei Grundkategorien zuordnen:',
-    emphasis: 'Focus → Mass → Non-Mass Enhancement',
-    conclusion: 'Erst danach erfolgt die weitere Charakterisierung.',
+    text: 'Nun systematisch beide Brüste durchsuchen. Jedes auffällige Enhancement zunächst einer der drei Grundkategorien zuordnen,',
+    inlineEmphasis: 'erst danach erfolgt die weitere Charakterisierung.',
+    categories: [
+      { title: 'Focus', text: 'Sehr kleiner Punkt, dessen Form nicht sicher beurteilbar ist.' },
+      { title: 'Mass', text: 'Dreidimensionale raumfordernde Läsion.' },
+      { title: 'Non-Mass Enhancement', text: 'Enhancement ohne klare dreidimensionale Raumforderung.' },
+    ],
   },
   { title: 'Sequenzen abgleichen', text: 'Suspekte Läsionen in allen Sequenzen korrelieren.' },
   { title: 'Umgebung prüfen', text: 'Haut, Mamille, Pectoralis, Thoraxwand und Lymphknoten nicht vergessen.' },
@@ -241,10 +245,13 @@ export default function MammaMrtBasicsPage() {
                 <span>{String(index + 1).padStart(2, '0')}</span>
                 <div>
                   <h3>{step.title}</h3>
-                  <p>{step.text}</p>
+                  <p>{step.text}{step.inlineEmphasis && <> <strong className={styles.workflowInlineEmphasis}>{step.inlineEmphasis}</strong></>}</p>
                   {step.detail && <p className={styles.workflowDetail}>{step.detail}</p>}
-                  {step.emphasis && <strong className={styles.workflowEmphasis}>{step.emphasis}</strong>}
-                  {step.conclusion && <p className={styles.workflowConclusion}>{step.conclusion}</p>}
+                  {step.categories && (
+                    <ul className={styles.workflowTypes}>
+                      {step.categories.map((category) => <li key={category.title}><strong>{category.title}</strong><span>{category.text}</span></li>)}
+                    </ul>
+                  )}
                 </div>
               </li>
             ))}</ol>
