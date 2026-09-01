@@ -286,6 +286,60 @@
 }
 .mainTopicCardActive .mainTopicCount { color: var(--topic-color); }
 
+/* ── MAMMA: MODALITY-FIRST IMAGING MENU ────────── */
+.mammaImagingCard {
+  aspect-ratio: auto;
+  min-height: 330px;
+  justify-content: flex-start;
+  gap: 20px;
+  cursor: default;
+}
+.mainTopicCardButton {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  text-align: start;
+}
+.modalityChips {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+.modalityChip {
+  min-height: 34px;
+  padding: 7px 11px;
+  border: 1px solid color-mix(in srgb, var(--topic-color) 28%, #e2e8f0);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--topic-color) 6%, #fff);
+  color: #475569;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 10.5px;
+  font-weight: 800;
+  line-height: 1.25;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease, color .18s ease;
+}
+.modalityChip:hover,
+.modalityChip:focus-visible {
+  border-color: var(--topic-color);
+  background: color-mix(in srgb, var(--topic-color) 12%, #fff);
+  color: #1e293b;
+  outline: none;
+  transform: translateY(-1px);
+}
+
 /* ── TOPIC MODAL ───────────────────────────────── */
 .topicModalBackdrop {
   position: fixed;
@@ -341,6 +395,24 @@
   line-height: 1;
   transition: color .18s ease, border-color .18s ease, transform .18s ease;
 }
+.topicModalBack {
+  display: inline-flex;
+  min-height: 36px;
+  margin-inline-start: auto;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 11px;
+  border: 1px solid color-mix(in srgb, var(--topic-color) 28%, #e2e8f0);
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--topic-color) 6%, #fff);
+  color: var(--topic-color);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 10.5px;
+  font-weight: 850;
+  white-space: nowrap;
+}
+[dir="rtl"] .topicModalBack span { transform: rotate(180deg); }
 .topicModalClose:hover {
   color: var(--topic-color);
   border-color: color-mix(in srgb, var(--topic-color) 40%, #e2e8f0);
@@ -466,6 +538,46 @@ a.topicRow:hover {
   font-size: 17px;
   font-weight: 900;
 }
+.topicRowButton {
+  width: 100%;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: start;
+}
+.topicRowButton:hover,
+.topicRowButton:focus-visible {
+  border-color: color-mix(in srgb, var(--topic-color) 40%, #e2e8f0);
+  background: color-mix(in srgb, var(--topic-color) 5%, white);
+  outline: none;
+  transform: translateX(3px);
+}
+[dir="rtl"] .topicRowButton:hover,
+[dir="rtl"] .topicRowButton:focus-visible { transform: translateX(-3px); }
+.subtopicPopupList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 22px 24px;
+}
+.subtopicPopupRow {
+  min-height: 62px;
+  border-color: #e2e8f0;
+  background: #f8fafc;
+}
+.subtopicPopupNumber {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--topic-color) 11%, #fff);
+  color: var(--topic-color);
+  font-size: 10px;
+  font-weight: 900;
+}
+.subtopicPopupRow:not(a) .topicRowArrow { opacity: .35; }
 [dir="rtl"] a.topicRow:hover { transform: translateX(-3px); }
 [dir="rtl"] .topicRowArrow { transform: rotate(180deg); }
 
@@ -710,6 +822,14 @@ a.topicRow:hover {
   .accBody { padding: 14px; }
   .mainTopicGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .mainTopicCard { padding: 16px; border-radius: 19px; }
+  .mammaImagingCard {
+    grid-column: span 2;
+    min-height: 260px;
+    padding: 18px;
+  }
+  .mammaImagingCard .mainTopicTitle { font-size: 18px; }
+  .modalityChips { gap: 7px; }
+  .modalityChip { min-height: 32px; padding: 6px 10px; }
   .mainTopicCardFeatured {
     grid-column: span 2;
     aspect-ratio: 2 / 1;
@@ -734,7 +854,12 @@ a.topicRow:hover {
   .topicModalBackdrop { align-items: end; padding: 12px; }
   .topicModal { width: 100%; max-height: 86vh; border-radius: 24px 24px 18px 18px; }
   .topicListHeader { padding: 16px; }
+  .topicListHeader > div { min-width: 0; }
+  .topicListHeader h3 { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .topicModalBack { width: 38px; padding: 0; justify-content: center; font-size: 0; }
+  .topicModalBack span { font-size: 16px; }
   .topicGroups { padding: 14px 14px 18px; }
+  .subtopicPopupList { padding: 14px 14px 18px; }
   .topicRow { gap: 9px; padding: 10px; }
   .topicRowStatus { display: none; }
 }
@@ -1017,6 +1142,19 @@ a.topicRow:hover {
 :global(html[data-theme='dark']) .topicListIcon {
   background: rgba(15,23,42,.94);
   border-color: rgba(148,163,184,.18);
+}
+:global(html[data-theme='dark']) .modalityChip,
+:global(html[data-theme='dark']) .topicModalBack {
+  background: color-mix(in srgb, var(--topic-color) 10%, rgba(30,41,59,.9));
+  border-color: color-mix(in srgb, var(--topic-color) 28%, rgba(148,163,184,.18));
+  color: #dbe6f4;
+}
+:global(html[data-theme='dark']) .subtopicPopupRow {
+  background: rgba(30,41,59,.42);
+  border-color: rgba(148,163,184,.16);
+}
+:global(html[data-theme='dark']) .subtopicPopupNumber {
+  background: color-mix(in srgb, var(--topic-color) 14%, rgba(15,23,42,.88));
 }
 :global(html[data-theme='dark']) .mainTopicCardActive {
   background: color-mix(in srgb, var(--topic-color) 12%, rgba(15,23,42,.94));

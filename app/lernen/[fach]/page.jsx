@@ -12,9 +12,9 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
 
 const T = {
-  de: { back:'← Körperregionen', search:'Thema suchen…', readNow:'Artikel öffnen', noResult:'Kein Treffer für', themen:'Themen', available:'Verfügbar', unread:'Noch nicht gelernt', read:'Gelernt', all:'Alle', mcq:'MCQ', flash:'Flashcards', fall:'Fallbeispiele', building:'Geplant', emptyAvailable:'In diesem Fachgebiet ist noch kein Thema freigeschaltet.', emptyUnread:'Alle verfügbaren Lektionen in diesem Fachgebiet sind bereits gelernt.', emptyRead:'Du hast in diesem Fachgebiet noch nichts als gelesen markiert.', emptyAllFach:'Dieses Fachgebiet ist noch im Aufbau – schau bald wieder vorbei.', showAll:'Alle Themen anzeigen', lessonsTitle:'Hauptthemen', lessonsLead:'Thema wählen und Lektionen öffnen', close:'Schließen' },
-  en: { back:'← Body regions', search:'Search topic…', readNow:'Open article', noResult:'No results for', themen:'Topics', available:'Available', unread:'Not learned yet', read:'Learned', all:'All', mcq:'MCQ', flash:'Flashcards', fall:'Cases', building:'Planned', emptyAvailable:'No topics are unlocked in this specialty yet.', emptyUnread:'All available lessons in this specialty have already been learned.', emptyRead:"You haven't marked anything as read in this specialty yet.", emptyAllFach:'This specialty is still being built – check back soon.', showAll:'Show all topics', lessonsTitle:'Main topics', lessonsLead:'Choose a topic and open its lessons', close:'Close' },
-  fa: { back:'ناحیه‌های بدن →', search:'جستجوی موضوع…', readNow:'مطالعه کنید', noResult:'نتیجه‌ای برای', themen:'موضوع', available:'موجود', unread:'هنوز یاد نگرفته‌ام', read:'یاد گرفته‌ام', all:'همه', mcq:'MCQ', flash:'فلش‌کارت', fall:'کیس', building:'برنامه‌ریزی‌شده', emptyAvailable:'هنوز موضوعی در این تخصص فعال نشده.', emptyUnread:'همه درس‌های موجود در این تخصص مطالعه شده‌اند.', emptyRead:'هنوز چیزی را در این تخصص خوانده‌شده علامت نزده‌ای.', emptyAllFach:'این تخصص هنوز در حال آماده‌سازی است – بزودی برمی‌گردیم.', showAll:'نمایش همه موضوعات', lessonsTitle:'موضوعات اصلی', lessonsLead:'موضوع را انتخاب کنید و درس‌ها را ببینید', close:'بستن' },
+  de: { back:'← Körperregionen', search:'Thema suchen…', readNow:'Artikel öffnen', noResult:'Kein Treffer für', themen:'Themen', available:'Verfügbar', unread:'Noch nicht gelernt', read:'Gelernt', all:'Alle', mcq:'MCQ', flash:'Flashcards', fall:'Fallbeispiele', building:'Geplant', emptyAvailable:'In diesem Fachgebiet ist noch kein Thema freigeschaltet.', emptyUnread:'Alle verfügbaren Lektionen in diesem Fachgebiet sind bereits gelernt.', emptyRead:'Du hast in diesem Fachgebiet noch nichts als gelesen markiert.', emptyAllFach:'Dieses Fachgebiet ist noch im Aufbau – schau bald wieder vorbei.', showAll:'Alle Themen anzeigen', lessonsTitle:'Hauptthemen', lessonsLead:'Thema wählen und Lektionen öffnen', close:'Schließen', backToModalities:'Zurück zu den Verfahren', chooseModality:'Verfahren auswählen', subtopics:'Unterthemen' },
+  en: { back:'← Body regions', search:'Search topic…', readNow:'Open article', noResult:'No results for', themen:'Topics', available:'Available', unread:'Not learned yet', read:'Learned', all:'All', mcq:'MCQ', flash:'Flashcards', fall:'Cases', building:'Planned', emptyAvailable:'No topics are unlocked in this specialty yet.', emptyUnread:'All available lessons in this specialty have already been learned.', emptyRead:"You haven't marked anything as read in this specialty yet.", emptyAllFach:'This specialty is still being built – check back soon.', showAll:'Show all topics', lessonsTitle:'Main topics', lessonsLead:'Choose a topic and open its lessons', close:'Close', backToModalities:'Back to modalities', chooseModality:'Choose a modality', subtopics:'Subtopics' },
+  fa: { back:'ناحیه‌های بدن →', search:'جستجوی موضوع…', readNow:'مطالعه کنید', noResult:'نتیجه‌ای برای', themen:'موضوع', available:'موجود', unread:'هنوز یاد نگرفته‌ام', read:'یاد گرفته‌ام', all:'همه', mcq:'MCQ', flash:'فلش‌کارت', fall:'کیس', building:'برنامه‌ریزی‌شده', emptyAvailable:'هنوز موضوعی در این تخصص فعال نشده.', emptyUnread:'همه درس‌های موجود در این تخصص مطالعه شده‌اند.', emptyRead:'هنوز چیزی را در این تخصص خوانده‌شده علامت نزده‌ای.', emptyAllFach:'این تخصص هنوز در حال آماده‌سازی است – بزودی برمی‌گردیم.', showAll:'نمایش همه موضوعات', lessonsTitle:'موضوعات اصلی', lessonsLead:'موضوع را انتخاب کنید و درس‌ها را ببینید', close:'بستن', backToModalities:'بازگشت به روش‌ها', chooseModality:'انتخاب روش تصویربرداری', subtopics:'زیرعنوان' },
 }
 
 // Gruppiert Themen anhand thema.group (Reihenfolge wie in den Daten):
@@ -134,6 +134,7 @@ export default function LernenFachPage() {
   const fach = getFach(params?.fach)
 
   const [selectedKapitel, setSelectedKapitel] = useState(null)
+  const [selectedThema, setSelectedThema] = useState(null)
   const [mounted, setMounted] = useState(false)
   const [filter, setFilter] = useState('available')
   const [readArticles, setReadArticles] = useState({})
@@ -149,6 +150,7 @@ export default function LernenFachPage() {
     setMounted(true)
     if (fach) {
       setSelectedKapitel(null)
+      setSelectedThema(null)
       const hasAvailableTopics = fach.kapitel.some(kapitel => getKapitelThemen(kapitel).some(isAvailable))
       setFilter(hasAvailableTopics ? 'available' : 'all')
     }
@@ -177,7 +179,10 @@ export default function LernenFachPage() {
   useEffect(() => {
     if (!selectedKapitel) return
     const closeOnEscape = (event) => {
-      if (event.key === 'Escape') setSelectedKapitel(null)
+      if (event.key === 'Escape') {
+        if (selectedThema) setSelectedThema(null)
+        else setSelectedKapitel(null)
+      }
     }
     document.addEventListener('keydown', closeOnEscape)
     const previousOverflow = document.body.style.overflow
@@ -186,7 +191,7 @@ export default function LernenFachPage() {
       document.removeEventListener('keydown', closeOnEscape)
       document.body.style.overflow = previousOverflow
     }
-  }, [selectedKapitel])
+  }, [selectedKapitel, selectedThema])
 
   if (!fach) return (
     <div className={styles.notFound}>
@@ -198,6 +203,7 @@ export default function LernenFachPage() {
   const fachName = getFachTitle(fach, lang)
   const fachIcon = fach.icon
   const selectedEntry = visibleKapitel.find(({ kapitel }) => kapitel.id === selectedKapitel)
+  const selectedTopic = selectedEntry?.themen.find(thema => thema.id === selectedThema)
 
   const withPageLang = (href) => {
     if (!href || lang === 'de') return href
@@ -257,7 +263,33 @@ export default function LernenFachPage() {
               {visibleKapitel.map(({ kapitel: k, themen }) => {
                 const active = selectedKapitel === k.id
                 const isFeatured = fach.id === 'msk' && k.id === 'msk-trauma'
+                const isMammaImaging = fach.id === 'mamma' && k.id === 'mamma-bildgebung'
                 const count = themen.reduce((sum, th) => sum + 1 + (th.sub?.length || 0), 0)
+                if (isMammaImaging) return (
+                  <article key={k.id} className={`${styles.mainTopicCard} ${styles.mammaImagingCard}`}
+                    style={{ '--topic-color': fach.color }}>
+                    <button className={styles.mainTopicCardButton} onClick={() => {
+                      setSelectedThema(null)
+                      setSelectedKapitel(k.id)
+                    }} aria-label={`${getKapitelTitle(k, lang)} – ${t.chooseModality}`}>
+                      <span className={styles.mainTopicIcon}>
+                        <ChapterIcon fachId={fach.id} kapitel={k} className={styles.chapterIconSvg} />
+                      </span>
+                      <span className={styles.mainTopicTitle}>{withoutLeadingNumber(getKapitelTitle(k, lang))}</span>
+                      <span className={styles.mainTopicCount}>{t.chooseModality}</span>
+                    </button>
+                    <div className={styles.modalityChips}>
+                      {themen.map(thema => (
+                        <button key={thema.id} className={styles.modalityChip} onClick={() => {
+                          setSelectedKapitel(k.id)
+                          setSelectedThema(thema.id)
+                        }}>
+                          {getThemaTitle(thema, lang)}
+                        </button>
+                      ))}
+                    </div>
+                  </article>
+                )
                 return (
                   <button key={k.id}
                     className={`${styles.mainTopicCard} ${isFeatured ? styles.mainTopicCardFeatured : ''}`}
@@ -281,7 +313,10 @@ export default function LernenFachPage() {
       </div>
 
       {selectedEntry && (
-        <div className={styles.topicModalBackdrop} onMouseDown={() => setSelectedKapitel(null)}>
+        <div className={styles.topicModalBackdrop} onMouseDown={() => {
+          setSelectedThema(null)
+          setSelectedKapitel(null)
+        }}>
           <section className={styles.topicModal} style={{ '--topic-color': fach.color }}
             role="dialog" aria-modal="true" aria-labelledby="topic-modal-title"
             onMouseDown={event => event.stopPropagation()}>
@@ -290,15 +325,44 @@ export default function LernenFachPage() {
                 <ChapterIcon fachId={fach.id} kapitel={selectedEntry.kapitel} className={styles.chapterIconSvg} />
               </span>
               <div>
-                <h3 id="topic-modal-title">{withoutLeadingNumber(getKapitelTitle(selectedEntry.kapitel, lang))}</h3>
-                <p>{selectedEntry.themen.length} {t.themen}</p>
+                <h3 id="topic-modal-title">{selectedTopic ? getThemaTitle(selectedTopic, lang) : withoutLeadingNumber(getKapitelTitle(selectedEntry.kapitel, lang))}</h3>
+                <p>{selectedTopic ? `${selectedTopic.sub?.length || 0} ${t.subtopics}` : `${selectedEntry.themen.length} ${t.themen}`}</p>
               </div>
-              <button className={styles.topicModalClose} onClick={() => setSelectedKapitel(null)}
+              {selectedTopic && (
+                <button className={styles.topicModalBack} onClick={() => setSelectedThema(null)}>
+                  <span aria-hidden="true">←</span> {t.backToModalities}
+                </button>
+              )}
+              <button className={styles.topicModalClose} onClick={() => {
+                setSelectedThema(null)
+                setSelectedKapitel(null)
+              }}
                 aria-label={t.close}>×</button>
             </header>
 
             <div className={styles.topicModalBody}>
-              <div className={styles.topicGroups}>
+              {selectedTopic ? (
+                <div className={styles.subtopicPopupList}>
+                  {selectedTopic.sub?.map((subtopic, index) => {
+                    const href = withPageLang(subtopic.link)
+                    const content = (
+                      <>
+                        <span className={styles.subtopicPopupNumber}>{String(index + 1).padStart(2, '0')}</span>
+                        <span className={styles.topicRowTitle}>{getThemaTitle(subtopic, lang)}</span>
+                        <span className={`${styles.topicRowStatus} ${subtopic.link ? styles.topicRowStatusReady : ''}`}>
+                          {subtopic.link ? t.available : t.building}
+                        </span>
+                        <span className={styles.topicRowArrow}>→</span>
+                      </>
+                    )
+                    return href ? (
+                      <Link key={subtopic.id} href={href} className={`${styles.topicRow} ${styles.subtopicPopupRow}`}>{content}</Link>
+                    ) : (
+                      <div key={subtopic.id} className={`${styles.topicRow} ${styles.subtopicPopupRow}`}>{content}</div>
+                    )
+                  })}
+                </div>
+              ) : <div className={styles.topicGroups}>
                 {groupThemen(selectedEntry.themen).map((section, groupIndex) => (
                   <div key={groupIndex} className={styles.topicGroup}>
                     {section.key && (
@@ -323,19 +387,21 @@ export default function LernenFachPage() {
 
                         return (
                           <div key={th.id} className={styles.topicListItem}>
-                            {th.link ? (
+                            {th.sub && fach.id === 'mamma' && selectedEntry.kapitel.id === 'mamma-bildgebung' ? (
+                              <button className={`${styles.topicRow} ${styles.topicRowButton}`} onClick={() => setSelectedThema(th.id)}>{rowContent}<span className={styles.topicRowArrow}>→</span></button>
+                            ) : th.link ? (
                               <Link href={withPageLang(th.link)} className={styles.topicRow}>{rowContent}</Link>
                             ) : (
                               <div className={styles.topicRow}>{rowContent}</div>
                             )}
-                            {th.sub && <SubThemen sub={th.sub} fachColor={fach.color} lang={lang} />}
+                            {th.sub && !(fach.id === 'mamma' && selectedEntry.kapitel.id === 'mamma-bildgebung') && <SubThemen sub={th.sub} fachColor={fach.color} lang={lang} />}
                           </div>
                         )
                       })}
                     </div>
                   </div>
                 ))}
-              </div>
+              </div>}
             </div>
           </section>
         </div>

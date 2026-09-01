@@ -597,14 +597,57 @@ export const CURRICULUM = [
       },
       {
         id: 'mamma-bildgebung',
-        title: { de: '2. Bildgebung & BI-RADS', en: '2. Imaging & BI-RADS', fa: '۲. تصویربرداری و BI-RADS' },
+        title: { de: '2. Bildgebung & BI-RADS', en: '2. Imaging & BI-RADS', fa: '۲. تصویربرداری و بایراد' },
         icon: '🩻',
         themen: [
-          { id: 'mammographie', title: { de: 'Mammographie', en: 'Mammography', fa: 'ماموگرافی' }, tags: ['Mammo'], diff: 1 },
-          { id: 'mamma-sonographie', title: { de: 'Sonographie', en: 'Ultrasound', fa: 'سونوگرافی' }, tags: ['Sono'], diff: 1 },
-          { id: 'mamma-mrt', title: { de: 'MRT der Mamma', en: 'Breast MRI', fa: 'MRI پستان' }, tags: ['MRT'], diff: 2 },
-          { id: 'mamma-befundmuster', title: { de: 'Befundmuster', en: 'Imaging Findings', fa: 'الگوهای تصویربرداری' }, tags: ['Mammo','Sono','MRT'], diff: 2 },
-          { id: 'bi-rads', title: { de: 'BI-RADS', en: 'BI-RADS', fa: 'BI-RADS' }, tags: ['Mammo','Sono','MRT'], diff: 2 },
+          {
+            id: 'mammographie', title: { de: 'Mammographie', en: 'Mammography', fa: 'ماموگرافی' }, tags: ['Mammo'], diff: 1,
+            sub: [
+              { id: 'mammographie-grundlagen', title: { de: 'Grundlagen & Standardprojektionen', en: 'Basics & Standard Views', fa: 'مبانی و نماهای استاندارد' } },
+              { id: 'mammographie-dichte', title: { de: 'Brustdichte', en: 'Breast Density', fa: 'دانسیته پستان' } },
+              { id: 'mammographie-herdbefunde', title: { de: 'Herdbefunde & Asymmetrien', en: 'Masses & Asymmetries', fa: 'توده‌ها و آسیمتری‌ها' } },
+              { id: 'mammographie-mikrokalk', title: { de: 'Mikroverkalkungen', en: 'Calcifications', fa: 'میکروکلسیفیکاسیون‌ها' } },
+              { id: 'mammographie-architekturstoerung', title: { de: 'Architekturstörung', en: 'Architectural Distortion', fa: 'دیستورشن معماری' } },
+            ],
+          },
+          {
+            id: 'mamma-sonographie', title: { de: 'Sonographie', en: 'Ultrasound', fa: 'سونوگرافی' }, tags: ['Sono'], diff: 1,
+            sub: [
+              { id: 'mamma-sonographie-technik', title: { de: 'Technik & Dokumentation', en: 'Technique & Documentation', fa: 'تکنیک و مستندسازی' } },
+              { id: 'mamma-sonographie-herdbefunde', title: { de: 'Solide Herdbefunde', en: 'Solid Masses', fa: 'توده‌های جامد' } },
+              { id: 'mamma-sonographie-zystisch', title: { de: 'Zystische Läsionen', en: 'Cystic Lesions', fa: 'ضایعات کیستیک' } },
+              { id: 'mamma-sonographie-axilla', title: { de: 'Axilla & Lymphknoten', en: 'Axilla & Lymph Nodes', fa: 'آگزیلا و غدد لنفاوی' } },
+              { id: 'mamma-sonographie-doppler', title: { de: 'Doppler & Elastografie', en: 'Doppler & Elastography', fa: 'داپلر و الاستوگرافی' } },
+            ],
+          },
+          {
+            id: 'mamma-mrt', title: { de: 'MRT der Mamma', en: 'Breast MRI', fa: 'MRI پستان' }, tags: ['MRT'], diff: 2,
+            sub: [
+              { id: 'mamma-mrt-indikationen', title: { de: 'Indikationen & Kontraindikationen', en: 'Indications & Contraindications', fa: 'اندیکاسیون‌ها و کنتراندیکاسیون‌ها' } },
+              { id: 'mamma-mrt-protokoll', title: { de: 'Protokoll & Sequenzen', en: 'Protocol & Sequences', fa: 'پروتکل و سکانس‌ها' } },
+              { id: 'mamma-mrt-fgt-bpe', title: { de: 'FGT & Background Parenchymal Enhancement', en: 'FGT & Background Parenchymal Enhancement', fa: 'FGT و تقویت زمینه‌ای پارانشیم (BPE)' } },
+              { id: 'mamma-mrt-mass', title: { de: 'Mass & Non-Mass Enhancement', en: 'Mass & Non-Mass Enhancement', fa: 'Mass و Non-mass enhancement' } },
+              { id: 'mamma-mrt-kinetik', title: { de: 'Kinetik & Diffusion', en: 'Kinetics & Diffusion', fa: 'کینتیک و دیفیوژن' } },
+              { id: 'mamma-mrt-implantate', title: { de: 'Implantate', en: 'Implants', fa: 'ایمپلنت‌ها' } },
+            ],
+          },
+          {
+            id: 'mamma-weitere-verfahren', title: { de: 'Weitere Verfahren', en: 'Other Modalities', fa: 'سایر روش‌ها' }, tags: ['Mammo','Sono','MRT'], diff: 2,
+            sub: [
+              { id: 'mamma-tomosynthese', title: { de: 'Tomosynthese', en: 'Digital Breast Tomosynthesis', fa: 'توموسنتز' } },
+              { id: 'mamma-km-mammographie', title: { de: 'Kontrastmittel-Mammographie', en: 'Contrast-Enhanced Mammography', fa: 'ماموگرافی با تزریق کنتراست' } },
+              { id: 'mamma-interventionelle-bildgebung', title: { de: 'Bildgesteuerte Interventionen', en: 'Image-Guided Interventions', fa: 'مداخلات تحت هدایت تصویر' } },
+            ],
+          },
+          {
+            id: 'bi-rads', title: { de: 'BI-RADS', en: 'BI-RADS', fa: 'BI-RADS' }, tags: ['Mammo','Sono','MRT'], diff: 2,
+            sub: [
+              { id: 'bi-rads-lexikon', title: { de: 'Lexikon & Deskriptoren', en: 'Lexicon & Descriptors', fa: 'واژگان و دسکریپتورها' } },
+              { id: 'bi-rads-kategorien', title: { de: 'Kategorien 0–6', en: 'Categories 0–6', fa: 'دسته‌بندی‌های ۰ تا ۶' } },
+              { id: 'bi-rads-management', title: { de: 'Managementempfehlungen', en: 'Management Recommendations', fa: 'توصیه‌های مدیریتی' } },
+              { id: 'bi-rads-befundaufbau', title: { de: 'Strukturierter Befund', en: 'Structured Report', fa: 'گزارش ساختاریافته' } },
+            ],
+          },
         ],
       },
       {
