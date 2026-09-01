@@ -623,6 +623,7 @@ export const CURRICULUM = [
           {
             id: 'mamma-mrt', title: { de: 'MRT der Mamma', en: 'Breast MRI', fa: 'MRI پستان' }, tags: ['MRT'], diff: 2,
             sub: [
+              { id: 'mamma-mrt-basics', title: { de: 'Basics', en: 'Basics', fa: 'مبانی' }, link: '/mamma/bildgebung/mrt/basics' },
               { id: 'mamma-mrt-indikationen', title: { de: 'Indikationen & Kontraindikationen', en: 'Indications & Contraindications', fa: 'اندیکاسیون‌ها و کنتراندیکاسیون‌ها' } },
               { id: 'mamma-mrt-protokoll', title: { de: 'Protokoll & Sequenzen', en: 'Protocol & Sequences', fa: 'پروتکل و سکانس‌ها' } },
               { id: 'mamma-mrt-fgt-bpe', title: { de: 'FGT & Background Parenchymal Enhancement', en: 'FGT & Background Parenchymal Enhancement', fa: 'FGT و تقویت زمینه‌ای پارانشیم (BPE)' } },

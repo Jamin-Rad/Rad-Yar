@@ -288,18 +288,39 @@
 
 /* ── MAMMA: MODALITY-FIRST IMAGING MENU ────────── */
 .mammaImagingCard {
+  grid-column: 1 / -1;
+  order: -1;
   aspect-ratio: auto;
-  min-height: 330px;
+  min-height: 360px;
   justify-content: flex-start;
-  gap: 20px;
+  gap: 28px;
+  padding: 30px;
+  border-color: color-mix(in srgb, var(--topic-color) 28%, #e2e8f0);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 92% 8%, color-mix(in srgb, var(--topic-color) 13%, transparent), transparent 34%),
+    linear-gradient(145deg, color-mix(in srgb, var(--topic-color) 4%, #fff), #fff 64%);
+  box-shadow: 0 18px 44px rgba(89, 37, 73, .08);
   cursor: default;
 }
+.mammaImagingCard::after {
+  width: 260px;
+  height: 260px;
+  inset: auto -85px -115px auto;
+  opacity: .045;
+}
+.mammaImagingCard:hover {
+  border-color: color-mix(in srgb, var(--topic-color) 42%, #e2e8f0);
+  box-shadow: 0 22px 54px rgba(89, 37, 73, .11);
+  transform: none;
+}
 .mainTopicCardButton {
+  position: relative;
+  z-index: 1;
   display: flex;
   width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 14px;
+  align-items: center;
+  gap: 18px;
   padding: 0;
   border: 0;
   background: transparent;
@@ -308,36 +329,139 @@
   font: inherit;
   text-align: start;
 }
+.imagingMainIcon {
+  width: 82px;
+  height: 82px;
+  flex: 0 0 82px;
+  border-radius: 24px;
+  box-shadow: 0 14px 28px color-mix(in srgb, var(--topic-color) 18%, transparent);
+}
+.imagingMainIcon .chapterIconSvg { width: 48px; height: 48px; }
+.imagingHeading {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 7px;
+}
+.mammaImagingCard .mainTopicTitle {
+  max-width: none;
+  font-size: clamp(25px, 2.4vw, 34px);
+  font-weight: 900;
+  line-height: 1.2 !important;
+}
+.mammaImagingCard .mainTopicCount {
+  color: #8b6b80;
+  font-size: 12px;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.5 !important;
+}
+.imagingHeaderArrow {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  color: var(--topic-color);
+  transition: transform .18s ease;
+}
+.mainTopicCardButton:hover .imagingHeaderArrow { transform: translateX(4px); }
+[dir="rtl"] .imagingHeaderArrow,
+[dir="rtl"] .modalityArrow { transform: rotate(180deg); }
+[dir="rtl"] .mainTopicCardButton:hover .imagingHeaderArrow { transform: rotate(180deg) translateX(4px); }
 .modalityChips {
   position: relative;
   z-index: 1;
-  display: flex;
+  display: grid;
   width: 100%;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: auto;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
 }
 .modalityChip {
-  min-height: 34px;
-  padding: 7px 11px;
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 166px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 19px;
+  overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--topic-color) 28%, #e2e8f0);
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--topic-color) 6%, #fff);
-  color: #475569;
+  border-radius: 20px;
+  background: rgba(255,255,255,.88);
+  box-shadow: 0 10px 26px rgba(50, 24, 44, .065);
+  color: #253047;
   cursor: pointer;
   font-family: inherit;
+  text-align: start;
+  transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.modalityChip::after {
+  position: absolute;
+  width: 82px;
+  height: 82px;
+  inset: auto -28px -34px auto;
+  border-radius: 50%;
+  background: var(--topic-color);
+  content: '';
+  opacity: .055;
+}
+.modalityIcon {
+  display: inline-flex;
+  width: 58px;
+  height: 58px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid color-mix(in srgb, var(--topic-color) 25%, #e2e8f0);
+  border-radius: 17px;
+  background: color-mix(in srgb, var(--topic-color) 9%, #fff);
+  color: var(--topic-color);
+}
+.modalityIconSvg { width: 34px; height: 34px; }
+.modalityText {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+}
+.modalityTitle {
+  color: #202a40;
+  font-size: 16px;
+  font-weight: 880;
+  line-height: 1.35 !important;
+}
+.modalityCount {
+  color: #94a3b8;
   font-size: 10.5px;
-  font-weight: 800;
-  line-height: 1.25;
-  transition: transform .18s ease, border-color .18s ease, background .18s ease, color .18s ease;
+  font-weight: 750;
+  line-height: 1.45 !important;
+}
+.modalityArrow {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  inset-block-start: 20px;
+  inset-inline-end: 18px;
+  color: color-mix(in srgb, var(--topic-color) 70%, #64748b);
+  opacity: .75;
 }
 .modalityChip:hover,
 .modalityChip:focus-visible {
   border-color: var(--topic-color);
-  background: color-mix(in srgb, var(--topic-color) 12%, #fff);
-  color: #1e293b;
+  background: color-mix(in srgb, var(--topic-color) 7%, #fff);
+  box-shadow: 0 18px 34px color-mix(in srgb, var(--topic-color) 14%, transparent);
   outline: none;
-  transform: translateY(-1px);
+  transform: translateY(-5px);
+}
+.modalityChip:hover .modalityIcon,
+.modalityChip:focus-visible .modalityIcon {
+  background: color-mix(in srgb, var(--topic-color) 16%, #fff);
+}
+
+@media (max-width: 960px) {
+  .modalityChips { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .modalityChip { min-height: 150px; }
 }
 
 /* ── TOPIC MODAL ───────────────────────────────── */
@@ -823,13 +947,24 @@ a.topicRow:hover {
   .mainTopicGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .mainTopicCard { padding: 16px; border-radius: 19px; }
   .mammaImagingCard {
-    grid-column: span 2;
-    min-height: 260px;
+    grid-column: 1 / -1;
+    min-height: 0;
+    gap: 20px;
     padding: 18px;
+    border-radius: 22px;
   }
-  .mammaImagingCard .mainTopicTitle { font-size: 18px; }
-  .modalityChips { gap: 7px; }
-  .modalityChip { min-height: 32px; padding: 6px 10px; }
+  .mainTopicCardButton { gap: 13px; }
+  .mammaImagingCard .mainTopicTitle { font-size: 22px; }
+  .mammaImagingCard .mainTopicCount { font-size: 10.5px; }
+  .imagingHeaderArrow { width: 22px; height: 22px; flex-basis: 22px; }
+  .modalityChips { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .modalityChip { min-height: 136px; gap: 13px; padding: 14px; border-radius: 17px; }
+  .modalityChip:last-child { grid-column: 1 / -1; min-height: 118px; }
+  .modalityIcon { width: 49px; height: 49px; border-radius: 15px; }
+  .modalityIconSvg { width: 29px; height: 29px; }
+  .modalityTitle { font-size: 13.5px; }
+  .modalityCount { font-size: 9px; }
+  .modalityArrow { width: 18px; height: 18px; inset-block-start: 16px; inset-inline-end: 13px; }
   .mainTopicCardFeatured {
     grid-column: span 2;
     aspect-ratio: 2 / 1;
@@ -849,6 +984,8 @@ a.topicRow:hover {
   .mainTopicCardFeatured .mainTopicCount { font-size: 9px; }
   .mainTopicIcon { width: 52px; height: 52px; border-radius: 16px; }
   .mainTopicIcon .chapterIconSvg { width: 31px; height: 31px; }
+  .mammaImagingCard .imagingMainIcon { width: 62px; height: 62px; flex-basis: 62px; border-radius: 19px; }
+  .mammaImagingCard .imagingMainIcon .chapterIconSvg { width: 37px; height: 37px; }
   .mainTopicTitle { font-size: 13.5px; }
   .mainTopicCount { font-size: 8.5px; }
   .topicModalBackdrop { align-items: end; padding: 12px; }
@@ -1148,6 +1285,17 @@ a.topicRow:hover {
   background: color-mix(in srgb, var(--topic-color) 10%, rgba(30,41,59,.9));
   border-color: color-mix(in srgb, var(--topic-color) 28%, rgba(148,163,184,.18));
   color: #dbe6f4;
+}
+:global(html[data-theme='dark']) .modalityTitle { color: #f8fafc; }
+:global(html[data-theme='dark']) .modalityCount,
+:global(html[data-theme='dark']) .mammaImagingCard .mainTopicCount { color: #9eabc0; }
+:global(html[data-theme='dark']) .modalityIcon {
+  background: color-mix(in srgb, var(--topic-color) 12%, rgba(15,23,42,.86));
+  border-color: color-mix(in srgb, var(--topic-color) 30%, rgba(148,163,184,.18));
+}
+:global(html[data-theme='dark']) .modalityChip:hover,
+:global(html[data-theme='dark']) .modalityChip:focus-visible {
+  background: color-mix(in srgb, var(--topic-color) 16%, rgba(30,41,59,.94));
 }
 :global(html[data-theme='dark']) .subtopicPopupRow {
   background: rgba(30,41,59,.42);

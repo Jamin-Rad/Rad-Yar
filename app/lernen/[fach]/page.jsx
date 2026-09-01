@@ -66,6 +66,50 @@ function getKapitelThemen(kapitel) {
   }))
 }
 
+function MammaModalityIcon({ id, className }) {
+  const common = {
+    className,
+    viewBox: '0 0 48 48',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2.2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    'aria-hidden': true,
+  }
+
+  if (id === 'mammographie') return (
+    <svg {...common}>
+      <path d="M13 8h22v7H13z" /><path d="M17 15v22h18" /><path d="M17 32h13a5 5 0 0 0 5-5v-4" />
+      <path d="M23 19c5 0 9 4 9 9v4H17v-4c0-5 2-9 6-9Z" /><path d="M12 39h25" />
+    </svg>
+  )
+  if (id === 'mamma-sonographie') return (
+    <svg {...common}>
+      <path d="M11 10h18v9H11z" /><path d="M20 19v6" /><path d="M16 27c0-2 1.8-3.5 4-3.5s4 1.5 4 3.5v3h-8z" />
+      <path d="M30 17c5 3 8 8 8 14" /><path d="M30 23c3 2 5 5 5 9" /><path d="M30 29c1 .8 2 2 2 4" /><path d="M12 38h25" />
+    </svg>
+  )
+  if (id === 'mamma-mrt') return (
+    <svg {...common}>
+      <rect x="7" y="8" width="34" height="32" rx="8" /><circle cx="24" cy="24" r="9" />
+      <circle cx="24" cy="24" r="3" /><path d="M24 11v4M24 33v4M11 24h4M33 24h4" />
+    </svg>
+  )
+  if (id === 'bi-rads') return (
+    <svg {...common}>
+      <path d="M14 7h20a4 4 0 0 1 4 4v30H10V11a4 4 0 0 1 4-4Z" /><path d="M16 16h16M16 23h8" />
+      <circle cx="19" cy="32" r="4" /><path d="m29 33 3 3 6-7" />
+    </svg>
+  )
+  return (
+    <svg {...common}>
+      <rect x="8" y="8" width="13" height="13" rx="3" /><rect x="27" y="8" width="13" height="13" rx="3" />
+      <rect x="8" y="27" width="13" height="13" rx="3" /><rect x="27" y="27" width="13" height="13" rx="3" />
+    </svg>
+  )
+}
+
 // Sub-thema expandable (for Knie etc.)
 function SubThemen({ sub, fachColor, lang }) {
   const [open, setOpen] = useState(false)
@@ -272,19 +316,33 @@ export default function LernenFachPage() {
                       setSelectedThema(null)
                       setSelectedKapitel(k.id)
                     }} aria-label={`${getKapitelTitle(k, lang)} – ${t.chooseModality}`}>
-                      <span className={styles.mainTopicIcon}>
+                      <span className={`${styles.mainTopicIcon} ${styles.imagingMainIcon}`}>
                         <ChapterIcon fachId={fach.id} kapitel={k} className={styles.chapterIconSvg} />
                       </span>
-                      <span className={styles.mainTopicTitle}>{withoutLeadingNumber(getKapitelTitle(k, lang))}</span>
-                      <span className={styles.mainTopicCount}>{t.chooseModality}</span>
+                      <span className={styles.imagingHeading}>
+                        <span className={styles.mainTopicTitle}>{withoutLeadingNumber(getKapitelTitle(k, lang))}</span>
+                        <span className={styles.mainTopicCount}>{t.chooseModality}</span>
+                      </span>
+                      <svg className={styles.imagingHeaderArrow} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
                     </button>
                     <div className={styles.modalityChips}>
                       {themen.map(thema => (
                         <button key={thema.id} className={styles.modalityChip} onClick={() => {
                           setSelectedKapitel(k.id)
                           setSelectedThema(thema.id)
-                        }}>
-                          {getThemaTitle(thema, lang)}
+                        }} aria-label={`${getThemaTitle(thema, lang)} – ${thema.sub?.length || 0} ${t.subtopics}`}>
+                          <span className={styles.modalityIcon}>
+                            <MammaModalityIcon id={thema.id} className={styles.modalityIconSvg} />
+                          </span>
+                          <span className={styles.modalityText}>
+                            <span className={styles.modalityTitle}>{getThemaTitle(thema, lang)}</span>
+                            <span className={styles.modalityCount}>{thema.sub?.length || 0} {t.subtopics}</span>
+                          </span>
+                          <svg className={styles.modalityArrow} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                            <path d="m9 18 6-6-6-6" />
+                          </svg>
                         </button>
                       ))}
                     </div>
