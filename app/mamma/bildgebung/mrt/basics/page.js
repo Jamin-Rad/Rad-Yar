@@ -38,7 +38,6 @@ const SEQUENCES = [
     key: 'T2', role: 'T2', accent: 'blue',
     intro: 'Hier schauen wir vor allem auf:',
     points: ['Zysten und Flüssigkeit', 'Ödem', 'Hautverdickung', 'Lymphknoten', 'T2-Signal einer Läsion'],
-    note: 'Flüssigkeit ist typischerweise hell.',
     followUp: 'T2 hilft uns vor allem dabei, eine Läsion besser zu charakterisieren.',
   },
   {
