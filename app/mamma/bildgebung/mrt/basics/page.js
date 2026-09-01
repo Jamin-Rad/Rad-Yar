@@ -10,13 +10,12 @@ import base from '@/app/abdomen/gi/divertikulitis/page.module.css'
 import styles from './page.module.css'
 
 const SECTIONS = [
-  { id: 'grundlagen', label: 'Grundlagen', icon: '01' },
-  { id: 'indikationen', label: 'Indikationen', icon: '02' },
-  { id: 'sequenzen', label: 'Sequenzen', icon: '03' },
-  { id: 'systematik', label: 'Systematisch lesen', icon: '04' },
-  { id: 'fgt-bpe', label: 'FGT & BPE', icon: '05' },
-  { id: 'enhancement', label: 'Enhancement-Typen', icon: '06' },
-  { id: 'prinzip', label: 'Das wichtigste Prinzip', icon: '07' },
+  { id: 'indikationen', label: 'Indikationen', icon: '01' },
+  { id: 'sequenzen', label: 'Sequenzen', icon: '02' },
+  { id: 'systematik', label: 'Systematisch lesen', icon: '03' },
+  { id: 'fgt-bpe', label: 'FGT & BPE', icon: '04' },
+  { id: 'enhancement', label: 'Enhancement-Typen', icon: '05' },
+  { id: 'prinzip', label: 'Das wichtigste Prinzip', icon: '06' },
 ]
 
 const READ_COPY = {
@@ -128,9 +127,6 @@ export default function MammaMrtBasicsPage() {
             <div className={base.actions}>
               <Link className={`${base.actionBtn} ${styles.actionBtn}`} href={withLang(`/ueben/quiz?fach=mamma&n=10&themen=mamma-mrt-basics&from=${encodeURIComponent(withLang(lessonPath))}`)}>🎯 MCQ</Link>
               <Link className={`${base.actionBtn} ${styles.actionBtn}`} href={withLang(`/flashcards/mamma-mrt-basics?from=${encodeURIComponent(withLang(lessonPath))}`)}>🧠 Flashcards</Link>
-              <a className={`${base.actionBtn} ${styles.actionBtn}`} href="#indikationen">Indikationen</a>
-              <a className={`${base.actionBtn} ${styles.actionBtn}`} href="#sequenzen">Sequenzen</a>
-              <a className={`${base.actionBtn} ${styles.actionBtn}`} href="#systematik">Befundungsablauf</a>
             </div>
           </div>
           <div className={base.heroStats}>
@@ -154,32 +150,25 @@ export default function MammaMrtBasicsPage() {
         </aside>
 
         <div className={base.main}>
-          <Section id="grundlagen" eyebrow="01 · Einstieg" title="Was macht die Mamma-MRT besonders?">
-            <div className={styles.introGrid}>
-              <div><p className={styles.lead}>Die Mamma-MRT ist die <strong>sensitivste bildgebende Methode</strong> zum Nachweis eines Mammakarzinoms. Ihre hohe Sensitivität beruht vor allem auf der Darstellung der <strong>Tumorvaskularisation und Kontrastmittelaufnahme</strong>.</p><p>Gleichzeitig ist die Spezifität begrenzt: Auch zahlreiche benigne Veränderungen können Kontrastmittel aufnehmen.</p></div>
-              <div className={styles.balanceCard}><span>Sensitivität</span><strong>sehr hoch</strong><div className={styles.meter}><i /></div><span>Spezifität</span><strong>begrenzt</strong><div className={`${styles.meter} ${styles.meterShort}`}><i /></div></div>
-            </div>
-            <Callout label="Einordnung">Die Mamma-MRT ist keine allgemeine Ersatzuntersuchung für Mammographie oder Sonographie. Sie wird gezielt eingesetzt, wenn ihre hohe Sensitivität einen zusätzlichen diagnostischen Nutzen bietet.</Callout>
-          </Section>
-
-          <Section id="indikationen" eyebrow="02 · Wann einsetzen?" title="Indikationen">
+          <Section id="indikationen" eyebrow="01 · Wann einsetzen?" title="Indikationen">
+            <p className={styles.lead}>Die Mamma-MRT ist die <strong>sensitivste bildgebende Methode</strong> zum Nachweis eines Mammakarzinoms. Ihre hohe Sensitivität beruht vor allem auf der Darstellung der <strong>Tumorvaskularisation und Kontrastmittelaufnahme</strong>. Gleichzeitig ist die Spezifität begrenzt: Auch zahlreiche benigne Veränderungen können Kontrastmittel aufnehmen.</p>
             <div className={styles.indicationGrid}>{INDICATIONS.map(item => <article className={styles.indicationCard} key={item.title}><span>{item.tag}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
             <div className={styles.problemBox}><div><span>Problem Solving · Beispiele</span><h3>Wenn die konventionelle Diagnostik unklar bleibt</h3></div><ul><li>nicht sicher erklärbare Asymmetrie</li><li>unklare Architekturstörung</li><li>diskrepante Befunde zwischen Mammographie und Sonographie</li><li>schwer beurteilbare postoperative Veränderungen</li></ul></div>
             <Callout cave label="Wichtig">Die MRT sollte nicht dazu verwendet werden, eine indizierte Biopsie eines suspekten Befundes zu vermeiden. Ein klar suspekter und bioptisch zugänglicher Befund sollte in der Regel histologisch abgeklärt werden.</Callout>
             <Callout label="Implantatdiagnostik">Für die reine Beurteilung einer möglichen Implantatruptur ist keine intravenöse Gadoliniumgabe erforderlich. Soll gleichzeitig das Brustparenchym hinsichtlich eines Tumors beurteilt werden, ist eine kontrastmittelgestützte Untersuchung erforderlich.</Callout>
           </Section>
 
-          <Section id="sequenzen" eyebrow="03 · Protokoll" title="Welche Sequenzen brauchen wir?">
+          <Section id="sequenzen" eyebrow="02 · Protokoll" title="Welche Sequenzen brauchen wir?">
             <p className={styles.lead}>Ein typisches Mamma-MRT-Protokoll besteht aus mehreren Sequenzen. Jede beantwortet eine andere Frage.</p>
             <div className={styles.sequenceGrid}>{SEQUENCES.map(sequence => <article className={`${styles.sequenceCard} ${styles[sequence.accent]}`} key={sequence.key}><div className={styles.sequenceTop}><strong>{sequence.key}</strong><span>{sequence.role}</span></div><ul>{sequence.points.map(point => <li key={point}>{point}</li>)}</ul><p>{sequence.note}</p></article>)}</div>
           </Section>
 
-          <Section id="systematik" eyebrow="04 · Workflow" title="Wie liest man eine Mamma-MRT systematisch?">
+          <Section id="systematik" eyebrow="03 · Workflow" title="Wie liest man eine Mamma-MRT systematisch?">
             <p className={styles.lead}>Ein fester Ablauf hilft, nichts zu übersehen.</p>
             <ol className={styles.workflow}>{WORKFLOW.map(([title, text], index) => <li key={title}><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol>
           </Section>
 
-          <Section id="fgt-bpe" eyebrow="05 · Nicht verwechseln" title="FGT und BPE">
+          <Section id="fgt-bpe" eyebrow="04 · Nicht verwechseln" title="FGT und BPE">
             <div className={styles.compareGrid}>
               <article><span className={styles.term}>FGT</span><h3>Fibroglandular Tissue</h3><p className={styles.question}>Wie viel Drüsengewebe ist überhaupt vorhanden?</p><div className={styles.pillList}><span>almost entirely fatty</span><span>scattered</span><span>heterogeneous</span><span>extreme</span></div></article>
               <article><span className={`${styles.term} ${styles.termBpe}`}>BPE</span><h3>Background Parenchymal Enhancement</h3><p className={styles.question}>Wie stark nimmt normales Drüsengewebe Kontrastmittel auf?</p><div className={styles.pillList}><span>minimal</span><span>mild</span><span>moderate</span><span>marked</span></div></article>
@@ -188,7 +177,7 @@ export default function MammaMrtBasicsPage() {
             <p className={styles.centerNote}>Man kann viel FGT und trotzdem wenig BPE haben.</p>
           </Section>
 
-          <Section id="enhancement" eyebrow="06 · BI-RADS-Logik" title="Die drei wichtigsten Enhancement-Typen">
+          <Section id="enhancement" eyebrow="05 · BI-RADS-Logik" title="Die drei wichtigsten Enhancement-Typen">
             <div className={styles.enhancementGrid}>
               <article><div className={`${styles.enhancementSketch} ${styles.focusSketch}`}><i /></div><span>01</span><h3>Focus</h3><p>Ein sehr kleiner Punkt mit Enhancement. Er ist zu klein, um seine Form zuverlässig zu beurteilen.</p></article>
               <article><div className={`${styles.enhancementSketch} ${styles.massSketch}`}><i /></div><span>02</span><h3>Mass</h3><p>Eine echte dreidimensionale Läsion. Form, Rand und internes Enhancement können beurteilt werden.</p></article>
@@ -196,7 +185,7 @@ export default function MammaMrtBasicsPage() {
             </div>
           </Section>
 
-          <Section id="prinzip" eyebrow="07 · Take home" title="Das wichtigste Prinzip">
+          <Section id="prinzip" eyebrow="06 · Take home" title="Das wichtigste Prinzip">
             <div className={styles.dontAsk}><span>Nicht sofort fragen</span><p>„Ist das Krebs?“</p></div>
             <div className={styles.decisionFlow}><div><small>Schritt 1</small><strong>BPE oder echter Befund?</strong></div><b>→</b><div><small>Schritt 2</small><strong>Focus, Mass oder NME?</strong></div><b>→</b><div><small>Schritt 3</small><strong>Morphologie · T2 · DWI · Kinetik · Begleitbefunde</strong></div></div>
           </Section>

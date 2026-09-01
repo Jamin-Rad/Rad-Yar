@@ -37,15 +37,6 @@
 .lead { margin: 0 0 18px; color: var(--text-soft); font-size: 17px; line-height: 1.8; }
 .sectionBody p { line-height: 1.75; }
 
-.introGrid { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(230px, .55fr); gap: 20px; align-items: stretch; }
-.introGrid > div:first-child { padding: 6px 4px; }
-.balanceCard { display: grid; align-content: center; gap: 6px; padding: 22px; border: 1px solid #fbcfe8; border-radius: 24px; background: linear-gradient(145deg, #fff, #fdf2f8); }
-.balanceCard span { color: #9d174d; font-size: 11px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
-.balanceCard strong { margin-bottom: 4px; font-size: 22px; color: #4a1537; }
-.meter { height: 8px; margin-bottom: 15px; overflow: hidden; border-radius: 99px; background: #fce7f3; }
-.meter i { display: block; width: 94%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #db2777, #a855f7); }
-.meterShort i { width: 58%; }
-
 .callout { background: linear-gradient(135deg, rgba(253, 242, 248, .92), var(--bg-card)); border-color: rgba(219, 39, 119, .30); color: #831843; }
 .callout.cave { background: linear-gradient(135deg, #fff1f2, var(--bg-card)); border-color: #fda4af; color: #9f1239; }
 
@@ -113,7 +104,7 @@
 .decisionFlow > b { align-self: center; color: #db2777; font-size: 24px; }
 
 @media (max-width: 900px) {
-  .introGrid, .problemBox { grid-template-columns: 1fr; }
+  .problemBox { grid-template-columns: 1fr; }
   .enhancementGrid { grid-template-columns: 1fr; }
   .enhancementSketch { height: 180px; }
   .decisionFlow { grid-template-columns: 1fr; }
@@ -129,7 +120,6 @@
 }
 
 :global(html[data-theme='dark']) .heroText { background: radial-gradient(circle at 90% 10%, rgba(219,39,119,.16), transparent 20rem), linear-gradient(135deg, var(--bg-card), var(--surface-soft)); }
-:global(html[data-theme='dark']) .balanceCard,
 :global(html[data-theme='dark']) .compareGrid article,
 :global(html[data-theme='dark']) .decisionFlow > div { background: var(--surface-soft); border-color: rgba(244,114,182,.20); }
 :global(html[data-theme='dark']) .problemBox,
