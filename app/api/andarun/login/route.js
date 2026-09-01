@@ -1,9 +1,14 @@
 import { NextResponse } from 'next/server'
-import { ANDARUN_COOKIE, getAndarunPassword, getAndarunSessionSecret } from '@/lib/andarunPasswordAuth'
+import {
+  ANDARUN_COOKIE,
+  createAndarunMobileToken,
+  getAndarunPassword,
+  getAndarunSessionSecret,
+} from '@/lib/andarunPasswordAuth'
 import { safeEqual } from '@/lib/adminAuth'
 
 export async function POST(request) {
-  const { password } = await request.json()
+  const { password, client } = await request.json()
   const expectedPassword = getAndarunPassword()
   const sessionSecret = getAndarunSessionSecret()
 
@@ -15,7 +20,11 @@ export async function POST(request) {
     return NextResponse.json({ error: 'Wrong password.' }, { status: 401 })
   }
 
-  const response = NextResponse.json({ ok: true })
+  const mobileToken = client === 'mobile' ? createAndarunMobileToken() : ''
+  const response = NextResponse.json({
+    ok: true,
+    ...(mobileToken ? { token: mobileToken, expiresIn: 60 * 60 * 24 * 90 } : {}),
+  })
   response.cookies.set(ANDARUN_COOKIE, sessionSecret, {
     httpOnly: true,
     secure: true,
