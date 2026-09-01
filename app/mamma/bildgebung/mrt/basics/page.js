@@ -39,7 +39,7 @@ const SEQUENCES = [
     intro: 'Hier schauen wir vor allem auf:',
     points: ['Zysten und Flüssigkeit', 'Ödem', 'Hautverdickung', 'Lymphknoten', 'T2-Signal einer Läsion'],
     note: 'Flüssigkeit ist typischerweise hell.',
-    takeaway: 'T2 hilft uns vor allem dabei, eine Läsion besser zu charakterisieren.',
+    followUp: 'T2 hilft uns vor allem dabei, eine Läsion besser zu charakterisieren.',
   },
   {
     key: 'T1', role: 'T1 vor Kontrastmittel', accent: 'violet',
@@ -51,25 +51,21 @@ const SEQUENCES = [
     key: 'T1+', role: 'T1 nach Kontrastmittel', accent: 'rose',
     intro: 'Nach Gadolinium werden mehrere Serien aufgenommen. Hier schauen wir:',
     points: ['Wo nimmt etwas Kontrastmittel auf?', 'Wie sieht das Enhancement aus?', 'Wie schnell kommt es?', 'Bleibt es bestehen oder nimmt es wieder ab?'],
-    takeaway: 'Das ist einer der wichtigsten Teile der Mamma-MRT.',
   },
   {
     key: 'SUB', role: 'Subtraktion', accent: 'amber',
     intro: 'Dabei wird vereinfacht das Bild vor Kontrastmittel vom Bild nach Kontrastmittel abgezogen. Dadurch sieht man Enhancement deutlich besser. Sehr hilfreich bei:',
     points: ['kleinen Läsionen', 'Non-Mass Enhancement', 'unübersichtlichem Drüsengewebe'],
-    cave: 'Bewegung kann falsche Signale erzeugen.',
   },
   {
     key: 'MIP', role: 'Maximum Intensity Projection', accent: 'cyan',
     intro: 'Die MIP gibt uns einen schnellen Überblick über beide Brüste. Hier sieht man oft sofort:',
-    points: ['stärkere Enhancements', 'mehrere Läsionen', 'Seitenunterschiede', 'auffälliges Background Enhancement'],
-    takeaway: 'Die MIP ist perfekt zum Suchen, aber nicht zur endgültigen Beurteilung.',
+    points: ['Verteilung des Drüsengewebes und BPE', 'Symmetrie und Seitenunterschiede', 'auffällige Enhancements', 'Anzahl potenzieller Läsionen'],
   },
   {
     key: 'DWI', role: 'DWI / ADC', accent: 'green',
     intro: 'Viele maligne Tumoren zeigen eine eingeschränkte Diffusion. Typisch ist:',
     points: ['hohes Signal in DWI', 'niedriger ADC'],
-    cave: 'Ein niedriger ADC bedeutet nicht automatisch Krebs.',
     note: 'DWI ist immer nur ein zusätzlicher Baustein.',
   },
 ]
@@ -198,11 +194,18 @@ export default function MammaMrtBasicsPage() {
                 <ul>{sequence.points.map(point => <li key={point}>{point}</li>)}</ul>
                 <div className={styles.sequenceNotes}>
                   {sequence.note && <p>{sequence.note}</p>}
-                  {sequence.takeaway && <p className={styles.sequenceTakeaway}><b>Merke:</b> {sequence.takeaway}</p>}
-                  {sequence.cave && <p className={styles.sequenceCave}><b>Vorsicht:</b> {sequence.cave}</p>}
+                  {sequence.followUp && <p>{sequence.followUp}</p>}
                 </div>
               </article>
             ))}</div>
+            <div className={styles.sequenceSummary}>
+              <span>Merke</span>
+              <div>
+                <p><strong>T1 nach Kontrastmittel ist einer der wichtigsten Teile der Mamma-MRT.</strong></p>
+                <p><strong>Ein niedriger ADC bedeutet nicht automatisch Krebs.</strong></p>
+                <p><strong>Die MIP ist perfekt zum Suchen, aber nicht zur endgültigen Beurteilung.</strong></p>
+              </div>
+            </div>
           </Section>
 
           <Section id="systematik" eyebrow="03 · Workflow" title="Wie liest man eine Mamma-MRT systematisch?">
