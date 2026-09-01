@@ -72,18 +72,21 @@ const SEQUENCES = [
 const WORKFLOW = [
   {
     title: 'Indikation und Voruntersuchungen klären',
-    text: 'Warum wurde die MRT durchgeführt: Screening, Staging, Therapiekontrolle oder Implantatdiagnostik? Mammographie, Sonographie, alte MRT und Biopsieergebnisse öffnen und vergleichen.',
+    text: 'Warum wurde die MRT durchgeführt: Screening, Staging, Therapiekontrolle oder Implantatdiagnostik?',
+    detail: 'Mammographie, Sonographie, alte MRT und Biopsieergebnisse öffnen und vergleichen.',
   },
   { title: 'Technik prüfen', text: 'Bewegung, Fettsättigung und korrekte Kontrastmittelgabe beurteilen.' },
   {
-    title: 'MIP ansehen und FGT bestimmen',
-    text: 'Beide Brüste im schnellen Gesamtüberblick vergleichen und bestimmen, wie viel fibroglanduläres Gewebe vorhanden ist.',
+    title: 'MIP ansehen',
+    text: 'Beide Brüste im schnellen Gesamtüberblick vergleichen.',
   },
-  { title: 'BPE beurteilen', text: 'Wie stark enhancet das normale Drüsengewebe?' },
+  {
+    title: 'FGT und BPE beurteilen',
+    text: 'Wie viel fibroglanduläres Gewebe ist vorhanden und wie stark enhancet das normale Drüsengewebe?',
+  },
   {
     title: 'Auffällige Enhancements suchen',
-    text: 'Nun systematisch beide Brüste durchsuchen.',
-    detail: 'Jedes auffällige Enhancement zunächst einer der drei Grundkategorien zuordnen:',
+    text: 'Nun systematisch beide Brüste durchsuchen. Jedes auffällige Enhancement zunächst einer der drei Grundkategorien zuordnen:',
     emphasis: 'Focus → Mass → Non-Mass Enhancement',
     conclusion: 'Erst danach erfolgt die weitere Charakterisierung.',
   },
