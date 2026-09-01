@@ -52,13 +52,19 @@
 .problemBox ul { display: grid; gap: 8px; margin: 0; padding-left: 20px; color: rgba(255,255,255,.84); }
 
 .sequenceGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-.sequenceCard { --accent: #db2777; min-height: 250px; display: grid; grid-template-rows: auto 1fr auto; padding: 20px; border: 1px solid color-mix(in srgb, var(--accent) 26%, transparent); border-radius: 24px; background: color-mix(in srgb, var(--accent) 6%, var(--bg-card)); }
+.sequenceCard { --accent: #db2777; min-height: 390px; display: flex; flex-direction: column; padding: 22px; border: 1px solid color-mix(in srgb, var(--accent) 26%, transparent); border-radius: 24px; background: color-mix(in srgb, var(--accent) 6%, var(--bg-card)); }
 .sequenceTop { display: flex; align-items: center; gap: 12px; }
 .sequenceTop strong { display: grid; place-items: center; width: 58px; height: 58px; border-radius: 18px; background: var(--accent); color: white; font-size: 18px; box-shadow: 0 12px 24px color-mix(in srgb, var(--accent) 25%, transparent); }
 .sequenceTop span { color: var(--text-strong); font-size: 17px; font-weight: 900; }
-.sequenceCard ul { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 18px; margin: 18px 0; padding-left: 18px; color: var(--text-soft); font-size: 13px; }
+.sequenceIntro { margin: 18px 0 0; color: var(--text-soft); font-size: 14px; line-height: 1.7 !important; }
+.sequenceCard ul { display: grid; gap: 8px; margin: 14px 0 18px; padding-left: 20px; color: var(--text-soft); font-size: 14px; line-height: 1.55; }
 .sequenceCard li::marker { color: var(--accent); }
-.sequenceCard > p { margin: 0; padding-top: 13px; border-top: 1px solid color-mix(in srgb, var(--accent) 20%, transparent); color: var(--text-strong); font-size: 13px; font-weight: 850; }
+.sequenceNotes { display: grid; gap: 9px; margin-top: auto; padding-top: 14px; border-top: 1px solid color-mix(in srgb, var(--accent) 20%, transparent); }
+.sequenceNotes p { margin: 0; color: var(--text-strong); font-size: 13px; font-weight: 750; line-height: 1.6; }
+.sequenceTakeaway, .sequenceCave { padding: 10px 12px; border-radius: 13px; background: color-mix(in srgb, var(--accent) 10%, var(--bg-card)); }
+.sequenceTakeaway b { color: var(--accent); }
+.sequenceCave { background: color-mix(in srgb, #ef4444 9%, var(--bg-card)); color: #991b1b !important; }
+.sequenceCave b { color: #dc2626; }
 .blue { --accent: #2563eb; } .violet { --accent: #7c3aed; } .rose { --accent: #db2777; } .amber { --accent: #d97706; } .cyan { --accent: #0891b2; } .green { --accent: #059669; }
 
 .workflow { position: relative; display: grid; gap: 0; margin: 8px 0 0; padding: 0; list-style: none; }
@@ -114,7 +120,6 @@
 @media (max-width: 700px) {
   .indicationGrid, .sequenceGrid, .compareGrid { grid-template-columns: 1fr; }
   .sequenceCard { min-height: 0; }
-  .sequenceCard ul { grid-template-columns: 1fr; }
   .dontAsk { align-items: flex-start; flex-direction: column; }
   .sectionBody { padding: 20px 16px 22px; }
 }

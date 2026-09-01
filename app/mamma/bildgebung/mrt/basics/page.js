@@ -34,12 +34,44 @@ const INDICATIONS = [
 ]
 
 const SEQUENCES = [
-  { key: 'T2', role: 'Charakterisierung', accent: 'blue', points: ['Zysten & Flüssigkeit', 'Ödem & Hautverdickung', 'Lymphknoten', 'T2-Signal der Läsion'], note: 'Flüssigkeit ist typischerweise hell.' },
-  { key: 'T1', role: 'Vor Kontrastmittel', accent: 'violet', points: ['Ausgangsbasis', 'Fett', 'Blutprodukte', 'Basis für die Subtraktion'], note: 'Vorher hohes T1-Signal erkennen.' },
-  { key: 'DCE', role: 'T1 nach Gadolinium', accent: 'rose', points: ['Ort des Enhancements', 'Morphologie', 'Frühe Aufnahme', 'Persistenz oder Abnahme'], note: 'Mehrere dynamische Serien sind zentral.' },
-  { key: 'SUB', role: 'Subtraktion', accent: 'amber', points: ['Kleine Läsionen', 'Non-Mass Enhancement', 'Dichtes Drüsengewebe'], note: 'Bewegung kann falsche Signale erzeugen.' },
-  { key: 'MIP', role: 'Schneller Überblick', accent: 'cyan', points: ['Starke Enhancements', 'Multifokalität', 'Seitenunterschiede', 'Background Enhancement'], note: 'Perfekt zum Suchen, nicht zur Endbeurteilung.' },
-  { key: 'DWI', role: 'Diffusion / ADC', accent: 'green', points: ['Hohes DWI-Signal', 'Niedriger ADC', 'Zusätzlicher Baustein'], note: 'Ein niedriger ADC bedeutet nicht automatisch Krebs.' },
+  {
+    key: 'T2', role: 'T2', accent: 'blue',
+    intro: 'Hier schauen wir vor allem auf:',
+    points: ['Zysten und Flüssigkeit', 'Ödem', 'Hautverdickung', 'Lymphknoten', 'T2-Signal einer Läsion'],
+    note: 'Flüssigkeit ist typischerweise hell.',
+    takeaway: 'T2 hilft uns vor allem dabei, eine Läsion besser zu charakterisieren.',
+  },
+  {
+    key: 'T1', role: 'T1 vor Kontrastmittel', accent: 'violet',
+    intro: 'Diese Sequenz ist unsere Ausgangsbasis. Sie hilft unter anderem bei der Erkennung von:',
+    points: ['Fett', 'Blutprodukten', 'bereits vorher hohem T1-Signal'],
+    note: 'Außerdem brauchen wir sie für die spätere Subtraktion.',
+  },
+  {
+    key: 'T1+', role: 'T1 nach Kontrastmittel', accent: 'rose',
+    intro: 'Nach Gadolinium werden mehrere Serien aufgenommen. Hier schauen wir:',
+    points: ['Wo nimmt etwas Kontrastmittel auf?', 'Wie sieht das Enhancement aus?', 'Wie schnell kommt es?', 'Bleibt es bestehen oder nimmt es wieder ab?'],
+    takeaway: 'Das ist einer der wichtigsten Teile der Mamma-MRT.',
+  },
+  {
+    key: 'SUB', role: 'Subtraktion', accent: 'amber',
+    intro: 'Dabei wird vereinfacht das Bild vor Kontrastmittel vom Bild nach Kontrastmittel abgezogen. Dadurch sieht man Enhancement deutlich besser. Sehr hilfreich bei:',
+    points: ['kleinen Läsionen', 'Non-Mass Enhancement', 'unübersichtlichem Drüsengewebe'],
+    cave: 'Bewegung kann falsche Signale erzeugen.',
+  },
+  {
+    key: 'MIP', role: 'Maximum Intensity Projection', accent: 'cyan',
+    intro: 'Die MIP gibt uns einen schnellen Überblick über beide Brüste. Hier sieht man oft sofort:',
+    points: ['stärkere Enhancements', 'mehrere Läsionen', 'Seitenunterschiede', 'auffälliges Background Enhancement'],
+    takeaway: 'Die MIP ist perfekt zum Suchen, aber nicht zur endgültigen Beurteilung.',
+  },
+  {
+    key: 'DWI', role: 'DWI / ADC', accent: 'green',
+    intro: 'Viele maligne Tumoren zeigen eine eingeschränkte Diffusion. Typisch ist:',
+    points: ['hohes Signal in DWI', 'niedriger ADC'],
+    cave: 'Ein niedriger ADC bedeutet nicht automatisch Krebs.',
+    note: 'DWI ist immer nur ein zusätzlicher Baustein.',
+  },
 ]
 
 const WORKFLOW = [
@@ -159,7 +191,18 @@ export default function MammaMrtBasicsPage() {
 
           <Section id="sequenzen" eyebrow="02 · Protokoll" title="Welche Sequenzen brauchen wir?">
             <p className={styles.lead}>Ein typisches Mamma-MRT-Protokoll besteht aus mehreren Sequenzen. Jede beantwortet eine andere Frage.</p>
-            <div className={styles.sequenceGrid}>{SEQUENCES.map(sequence => <article className={`${styles.sequenceCard} ${styles[sequence.accent]}`} key={sequence.key}><div className={styles.sequenceTop}><strong>{sequence.key}</strong><span>{sequence.role}</span></div><ul>{sequence.points.map(point => <li key={point}>{point}</li>)}</ul><p>{sequence.note}</p></article>)}</div>
+            <div className={styles.sequenceGrid}>{SEQUENCES.map(sequence => (
+              <article className={`${styles.sequenceCard} ${styles[sequence.accent]}`} key={sequence.key}>
+                <div className={styles.sequenceTop}><strong>{sequence.key}</strong><span>{sequence.role}</span></div>
+                <p className={styles.sequenceIntro}>{sequence.intro}</p>
+                <ul>{sequence.points.map(point => <li key={point}>{point}</li>)}</ul>
+                <div className={styles.sequenceNotes}>
+                  {sequence.note && <p>{sequence.note}</p>}
+                  {sequence.takeaway && <p className={styles.sequenceTakeaway}><b>Merke:</b> {sequence.takeaway}</p>}
+                  {sequence.cave && <p className={styles.sequenceCave}><b>Vorsicht:</b> {sequence.cave}</p>}
+                </div>
+              </article>
+            ))}</div>
           </Section>
 
           <Section id="systematik" eyebrow="03 · Workflow" title="Wie liest man eine Mamma-MRT systematisch?">
