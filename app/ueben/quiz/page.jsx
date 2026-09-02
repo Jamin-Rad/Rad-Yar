@@ -609,10 +609,20 @@ function QuizContent() {
 
 export const dynamic = 'force-dynamic'
 
+const QUIZ_LOADING = <div style={{display:'flex',alignItems:'center',justifyContent:'center',minHeight:'100vh',color:'#94a3b8',fontFamily:'system-ui'}}>Loading…</div>
+
+function ClientQuiz() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => setMounted(true), [])
+
+  return mounted ? <QuizContent /> : QUIZ_LOADING
+}
+
 export default function QuizPage() {
   return (
-    <Suspense fallback={<div style={{display:'flex',alignItems:'center',justifyContent:'center',minHeight:'100vh',color:'#94a3b8',fontFamily:'system-ui'}}>Loading…</div>}>
-      <QuizContent />
+    <Suspense fallback={QUIZ_LOADING}>
+      <ClientQuiz />
     </Suspense>
   )
 }
