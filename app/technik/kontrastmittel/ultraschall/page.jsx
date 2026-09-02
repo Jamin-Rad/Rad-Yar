@@ -1,5 +1,5 @@
-import ContrastGroupPage from '../ContrastGroupPage'
+import { redirect } from 'next/navigation'
 
 export default function UltrasoundContrastPage() {
-  return <ContrastGroupPage groupId="ultraschall" />
+  redirect('/technik/kontrastmittel/roentgen')
 }

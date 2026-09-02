@@ -7,11 +7,11 @@ import styles from './page.module.css'
 const TOPICS = [
   {
     key: 'kontrastmittel',
-    href: '/ueben/quiz?fach=technik&n=10&themen=km-jod-typen,km-jod-reaktionen,km-gastrointestinal,km-gadolinium,km-gadolinium-retention-nsf,km-ultraschall,km-niereninsuffizienz,km-schilddruese,km-schwangerschaft-stillzeit',
+    href: '/ueben/quiz?fach=technik&n=10&themen=km-jod-typen,km-jod-reaktionen,km-gastrointestinal,km-gadolinium,km-gadolinium-retention-nsf,km-niereninsuffizienz,km-schilddruese,km-schwangerschaft-stillzeit',
     icon: '💉', iconImage: '/fach/technik.png', color: '#22c55e', available: true,
-    count: { de: '18 Fragen', en: '18 Questions', fa: '۱۸ سوال' },
+    count: { de: '16 Fragen', en: '16 Questions', fa: '۱۶ سؤال' },
     name: { de: 'Technik · Kontrastmittel', en: 'Technology · Contrast Media', fa: 'تکنیک · مواد حاجب' },
-    desc: { de: 'Jod · Gadolinium · USKM · Risikogruppen', en: 'Iodine · gadolinium · UCA · risk groups', fa: 'ید · گادولینیوم · USKM · گروه‌های پرخطر' },
+    desc: { de: 'Röntgen · MRT · Schwangerschaft · Nierenfunktion', en: 'X-ray · MRI · pregnancy · renal function', fa: 'اشعهٔ ایکس · MRI · بارداری · عملکرد کلیه' },
   },
   {
     key: 'meniskus',

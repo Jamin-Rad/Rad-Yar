@@ -1,19 +1,19 @@
 export const CONTRAST_TOPICS = [
   {
     id: 'km-jod-typen',
-    group: { de: 'Jodhaltige Kontrastmittel', en: 'Iodinated contrast media', fa: 'مواد حاجب یددار' },
+    group: { de: 'Röntgen-Kontrastmittel', en: 'X-ray contrast media', fa: 'مواد حاجب اشعهٔ ایکس' },
     title: { de: 'Typen & Eigenschaften', en: 'Types & properties', fa: 'انواع و ویژگی‌ها' },
     icon: '🧪',
   },
   {
     id: 'km-jod-reaktionen',
-    group: { de: 'Jodhaltige Kontrastmittel', en: 'Iodinated contrast media', fa: 'مواد حاجب یددار' },
+    group: { de: 'Röntgen-Kontrastmittel', en: 'X-ray contrast media', fa: 'مواد حاجب اشعهٔ ایکس' },
     title: { de: 'Nebenwirkungen & Notfallmanagement', en: 'Adverse reactions & emergency management', fa: 'عوارض و مدیریت اورژانسی' },
     icon: '🚨',
   },
   {
     id: 'km-gastrointestinal',
-    group: { de: 'Jodhaltige Kontrastmittel', en: 'Iodinated contrast media', fa: 'مواد حاجب یددار' },
+    group: { de: 'Röntgen-Kontrastmittel', en: 'X-ray contrast media', fa: 'مواد حاجب اشعهٔ ایکس' },
     title: { de: 'Gastrointestinale KM', en: 'Gastrointestinal contrast media', fa: 'مواد حاجب گوارشی' },
     icon: '🥤',
   },
@@ -30,44 +30,38 @@ export const CONTRAST_TOPICS = [
     icon: '🛡️',
   },
   {
-    id: 'km-ultraschall',
-    group: { de: 'Ultraschallkontrastmittel', en: 'Ultrasound contrast media', fa: 'مواد حاجب سونوگرافی' },
-    title: { de: 'Ultraschallkontrastmittel (USKM)', en: 'Ultrasound contrast media (UCA)', fa: 'مواد حاجب سونوگرافی' },
-    icon: '🫧',
-  },
-  {
     id: 'km-niereninsuffizienz',
-    group: { de: 'Besondere Patientengruppen', en: 'Special patient groups', fa: 'گروه‌های ویژه بیماران' },
-    title: { de: 'Niereninsuffizienz', en: 'Renal impairment', fa: 'نارسایی کلیه' },
+    group: { de: 'Nierenfunktion und KM', en: 'Renal function and contrast media', fa: 'عملکرد کلیه و مواد حاجب' },
+    title: { de: 'Nierenfunktion und KM', en: 'Renal function and contrast media', fa: 'عملکرد کلیه و مواد حاجب' },
     icon: '🫘',
   },
   {
     id: 'km-schilddruese',
-    group: { de: 'Besondere Patientengruppen', en: 'Special patient groups', fa: 'گروه‌های ویژه بیماران' },
+    group: { de: 'Röntgen-Kontrastmittel', en: 'X-ray contrast media', fa: 'مواد حاجب اشعهٔ ایکس' },
     title: { de: 'Schilddrüsenerkrankungen', en: 'Thyroid disease', fa: 'بیماری‌های تیروئید' },
     icon: '🦋',
   },
   {
     id: 'km-schwangerschaft-stillzeit',
-    group: { de: 'Besondere Patientengruppen', en: 'Special patient groups', fa: 'گروه‌های ویژه بیماران' },
-    title: { de: 'Schwangerschaft & Stillzeit', en: 'Pregnancy & breastfeeding', fa: 'بارداری و شیردهی' },
+    group: { de: 'Schwangere und Stillende', en: 'Pregnancy and breastfeeding', fa: 'بارداری و شیردهی' },
+    title: { de: 'Schwangere und Stillende', en: 'Pregnancy and breastfeeding', fa: 'بارداری و شیردهی' },
     icon: '🤰',
   },
 ]
 
 export const CONTRAST_GROUPS = [
   {
-    id: 'jodhaltige',
-    readId: 'kontrastmittel-jodhaltige',
-    flashcardId: 'kontrastmittel-jodhaltige',
+    id: 'roentgen',
+    readId: 'kontrastmittel-roentgen',
+    flashcardId: 'kontrastmittel-roentgen',
     icon: '🧪',
-    title: { de: 'Jodhaltige Kontrastmittel', en: 'Iodinated contrast media', fa: 'مواد حاجب یددار' },
+    title: { de: 'Röntgen-Kontrastmittel', en: 'X-ray contrast media', fa: 'مواد حاجب اشعهٔ ایکس' },
     subtitle: {
-      de: 'Typen, Eigenschaften, Reaktionen und gastrointestinale Anwendung',
-      en: 'Types, properties, reactions and gastrointestinal use',
-      fa: 'انواع، ویژگی‌ها، واکنش‌ها و کاربرد گوارشی',
+      de: 'Arten, Applikation, Ausscheidung, Reaktionen und gastrointestinale Anwendung',
+      en: 'Types, administration, elimination, reactions and gastrointestinal use',
+      fa: 'انواع، تجویز، دفع، واکنش‌ها و کاربرد گوارشی',
     },
-    topicIds: ['km-jod-typen', 'km-jod-reaktionen', 'km-gastrointestinal'],
+    topicIds: ['km-jod-typen', 'km-jod-reaktionen', 'km-gastrointestinal', 'km-schilddruese'],
   },
   {
     id: 'mrt',
@@ -83,34 +77,30 @@ export const CONTRAST_GROUPS = [
     topicIds: ['km-gadolinium', 'km-gadolinium-retention-nsf'],
   },
   {
-    id: 'ultraschall',
-    readId: 'kontrastmittel-ultraschall',
-    flashcardId: 'kontrastmittel-ultraschall',
-    icon: '🫧',
-    title: { de: 'Ultraschallkontrastmittel', en: 'Ultrasound contrast media', fa: 'مواد حاجب سونوگرافی' },
+    id: 'schwangerschaft',
+    readId: 'kontrastmittel-schwangerschaft',
+    flashcardId: 'kontrastmittel-schwangerschaft',
+    icon: '🤰',
+    title: { de: 'Schwangere und Stillende', en: 'Pregnancy and breastfeeding', fa: 'بارداری و شیردهی' },
     subtitle: {
-      de: 'Mikrobläschen, Signalverhalten, Elimination und klinische Anwendung',
-      en: 'Microbubbles, signal behaviour, elimination and clinical use',
-      fa: 'میکروبابل‌ها، رفتار سیگنال، دفع و کاربرد بالینی',
+      de: 'Jodhaltige und gadoliniumhaltige Kontrastmittel sicher abwägen',
+      en: 'Balancing iodinated and gadolinium contrast safely',
+      fa: 'ارزیابی ایمن مواد یددار و گادولینیومی',
     },
-    topicIds: ['km-ultraschall'],
+    topicIds: ['km-schwangerschaft-stillzeit'],
   },
   {
-    id: 'besondere-patientengruppen',
-    readId: 'kontrastmittel-besondere-patientengruppen',
-    flashcardId: 'kontrastmittel-besondere-patientengruppen',
-    icon: '🛡️',
-    title: {
-      de: 'Besondere Patientengruppen bei KM-Gabe',
-      en: 'Special patient groups receiving contrast media',
-      fa: 'گروه‌های ویژه بیماران هنگام دریافت ماده حاجب',
-    },
+    id: 'nierenfunktion',
+    readId: 'kontrastmittel-nierenfunktion',
+    flashcardId: 'kontrastmittel-nierenfunktion',
+    icon: '🫘',
+    title: { de: 'Nierenfunktion und KM', en: 'Renal function and contrast media', fa: 'عملکرد کلیه و مواد حاجب' },
     subtitle: {
-      de: 'Niereninsuffizienz, Schilddrüsenerkrankungen, Schwangerschaft und Stillzeit',
-      en: 'Renal impairment, thyroid disease, pregnancy and breastfeeding',
-      fa: 'نارسایی کلیه، بیماری تیروئید، بارداری و شیردهی',
+      de: 'Jodhaltige und gadoliniumhaltige Kontrastmittel gemeinsam beurteilen',
+      en: 'Assessing iodinated and gadolinium agents together',
+      fa: 'ارزیابی هم‌زمان مواد یددار و گادولینیومی',
     },
-    topicIds: ['km-niereninsuffizienz', 'km-schilddruese', 'km-schwangerschaft-stillzeit'],
+    topicIds: ['km-niereninsuffizienz'],
   },
 ]
 
@@ -120,7 +110,7 @@ export const getContrastGroupForTopic = topicId => CONTRAST_GROUPS.find(group =>
 export const CONTRAST_LESSON = {
   de: {
     title: 'Kontrastmittel',
-    subtitle: 'Sichere Anwendung von jodhaltigen, gadoliniumhaltigen und Ultraschall-Kontrastmitteln',
+    subtitle: 'Sichere Anwendung von Röntgen- und MRT-Kontrastmitteln in allgemeinen und besonderen Risikosituationen',
     intro: 'Kontrastmittel verbessern die diagnostische Aussagekraft, benötigen aber eine klare Indikation, passende Patientenselektion und ein vorbereitetes Reaktionsmanagement.',
     key: 'Immer zuerst fragen: Verändert die Kontrastmittelgabe die Diagnose oder das Management? Danach Wirkstoffklasse, Risikoprofil und niedrigste diagnostisch ausreichende Dosis wählen.',
     sections: {
@@ -169,15 +159,6 @@ export const CONTRAST_LESSON = {
         ],
         takeHome: 'Retention und NSF sind nicht dasselbe: NSF ist eine seltene fibrosierende Erkrankung bei Hochrisikokonstellation.',
       },
-      'km-ultraschall': {
-        lead: 'USKM bestehen aus gasgefüllten Mikrobläschen und bleiben intravaskulär.',
-        points: [
-          ['Signal', 'Die Mikrobläschen oszillieren im Schallfeld und ermöglichen eine Echtzeitdarstellung von Perfusion und Enhancement.'],
-          ['Elimination', 'Das Gas wird überwiegend pulmonal abgeatmet; die Hülle wird metabolisiert. Eine renale Ausscheidung ist nicht erforderlich.'],
-          ['Einsatz', 'Typisch sind Leberläsionscharakterisierung, Organperfusion und ausgewählte vaskuläre Fragestellungen.'],
-        ],
-        takeHome: 'USKM sind weder jod- noch gadoliniumhaltig und bei Niereninsuffizienz besonders hilfreich.',
-      },
       'km-niereninsuffizienz': {
         lead: 'Das Risiko hängt von Nierenfunktion, akutem Nierenschaden, Applikationsweg und klinischer Gesamtsituation ab.',
         points: [
@@ -209,7 +190,7 @@ export const CONTRAST_LESSON = {
   },
   en: {
     title: 'Contrast media',
-    subtitle: 'Safe use of iodinated, gadolinium-based and ultrasound contrast agents',
+    subtitle: 'Safe use of X-ray and MRI contrast media in general and special-risk settings',
     intro: 'Contrast agents improve diagnostic information but require a clear indication, appropriate patient selection and prepared reaction management.',
     key: 'First ask whether contrast will change diagnosis or management. Then select the agent class, assess risk and use the lowest diagnostically adequate dose.',
     sections: {
@@ -218,7 +199,6 @@ export const CONTRAST_LESSON = {
       'km-gastrointestinal': { lead: 'Enteric agents mark or distend the gastrointestinal tract.', points: [['Barium sulphate', 'Excellent mucosal coating; problematic with suspected perforation or significant aspiration risk.'], ['Water-soluble iodine', 'Often preferred if perforation is possible; hyperosmolar agents can cause severe pulmonary oedema if aspirated.'], ['Neutral/negative', 'Water or dedicated solutions are used for CT or MR enterography.']], takeHome: 'Choice depends mainly on the question, suspected perforation and aspiration risk.' },
       'km-gadolinium': { lead: 'Gadolinium mainly shortens T1 relaxation and is administered as a stable chelate.', points: [['Classes', 'Macrocyclic chelates are more stable than linear chelates and release less free gadolinium.'], ['Distribution', 'Most agents are extracellular; gadoxetate also has hepatobiliary uptake.'], ['Use', 'Use only for added diagnostic value and at the lowest dose that provides adequate enhancement.']], takeHome: 'Several linear intravenous agents are suspended or restricted in the EU; macrocyclic agents are preferred.' },
       'km-gadolinium-retention-nsf': { lead: 'Gadolinium can remain detectable in tissues after repeated doses; clinical harm from brain deposition has not been established.', points: [['Retention', 'Linear agents show more retention than macrocyclic agents. Avoid unnecessary repeat doses.'], ['NSF', 'Nephrogenic systemic fibrosis is mainly linked to older, less stable agents in severe renal impairment.'], ['Risk reduction', 'In AKI or eGFR below 30, confirm necessity and select a very-low-NSF-risk agent.']], takeHome: 'Retention and NSF are different: NSF is a rare fibrosing disease in a high-risk setting.' },
-      'km-ultraschall': { lead: 'Ultrasound agents are gas-filled microbubbles that remain intravascular.', points: [['Signal', 'Microbubbles oscillate in the ultrasound field and show perfusion and enhancement in real time.'], ['Elimination', 'Gas is mainly exhaled through the lungs and the shell is metabolised; renal excretion is not required.'], ['Use', 'Common uses include liver lesion characterisation, organ perfusion and selected vascular questions.']], takeHome: 'Ultrasound agents contain neither iodine nor gadolinium and are valuable in renal impairment.' },
       'km-niereninsuffizienz': { lead: 'Risk depends on renal function, acute kidney injury, route of administration and the overall clinical setting.', points: [['Screening', 'Check current eGFR and signs of AKI in at-risk patients.'], ['Iodine', 'In AKI or eGFR below 30, assess benefit and risk individually, optimise volume status and avoid unnecessary repeat doses.'], ['Gadolinium', 'Choose a low-NSF-risk agent. Do not initiate dialysis solely because contrast was administered.']], takeHome: 'Renal impairment is not an automatic contraindication; it requires a justified and documented strategy.' },
       'km-schilddruese': { lead: 'The iodine load may trigger or worsen hyperthyroidism in susceptible patients.', points: [['High risk', 'Overt hyperthyroidism and thyroid autonomy are particularly relevant.'], ['Preparation', 'If clinically suspected, check TSH and additional thyroid tests before elective administration.'], ['Follow-up', 'Watch high-risk patients for delayed symptoms; iodine also interferes with nuclear thyroid imaging.']], takeHome: 'Avoid iodinated contrast in overt hyperthyroidism when possible; make emergency decisions collaboratively.' },
       'km-schwangerschaft-stillzeit': { lead: 'Use contrast only when the additional information is clinically necessary.', points: [['Pregnancy', 'Iodinated contrast crosses the placenta. Gadolinium should be reserved for critical indications.'], ['Newborn', 'After iodinated contrast in pregnancy, follow local neonatal thyroid screening recommendations.'], ['Breastfeeding', 'Current guidance generally does not require interruption after iodinated or gadolinium contrast.']], takeHome: 'Do not inappropriately delay necessary imaging, but document indication, alternatives and counselling.' },
@@ -226,7 +206,7 @@ export const CONTRAST_LESSON = {
   },
   fa: {
     title: 'مواد حاجب',
-    subtitle: 'کاربرد ایمن مواد حاجب یددار، گادولینیوم و سونوگرافی',
+    subtitle: 'کاربرد ایمن مواد حاجب اشعهٔ ایکس و MRI در شرایط عمومی و گروه‌های پرخطر',
     intro: 'مواد حاجب ارزش تشخیصی را افزایش می‌دهند، اما به اندیکاسیون روشن، انتخاب درست بیمار و آمادگی برای واکنش‌های حاد نیاز دارند.',
     key: 'ابتدا بپرسید آیا تزریق ماده حاجب تشخیص یا درمان را تغییر می‌دهد؛ سپس نوع ماده، خطر بیمار و کمترین دوز تشخیصی کافی را انتخاب کنید.',
     sections: {
@@ -235,7 +215,6 @@ export const CONTRAST_LESSON = {
       'km-gastrointestinal': { lead: 'مواد خوراکی یا رکتال لومن دستگاه گوارش را مشخص یا متسع می‌کنند.', points: [['باریم', 'پوشش مخاطی عالی؛ در شک به پرفوراسیون یا خطر مهم آسپیراسیون مشکل‌ساز است.'], ['ید محلول در آب', 'در احتمال پرفوراسیون اغلب ترجیح داده می‌شود؛ آسپیراسیون مواد هایپراسمولار خطر ادم ریه دارد.'], ['خنثی/منفی', 'آب یا محلول‌های ویژه در CT یا MR انتروگرافی استفاده می‌شوند.']], takeHome: 'انتخاب بر اساس سؤال بالینی، احتمال پرفوراسیون و خطر آسپیراسیون است.' },
       'km-gadolinium': { lead: 'گادولینیوم عمدتاً زمان T1 را کوتاه می‌کند و به شکل کلات پایدار تزریق می‌شود.', points: [['کلاس‌ها', 'کلات‌های ماکروسیکلیک از خطی پایدارترند و گادولینیوم آزاد کمتری رها می‌کنند.'], ['توزیع', 'بیشتر مواد خارج‌سلولی‌اند؛ گادوکسیتات جذب کبدی-صفراوی نیز دارد.'], ['کاربرد', 'فقط در صورت ارزش تشخیصی افزوده و با کمترین دوز کافی استفاده شود.']], takeHome: 'چند ماده خطی وریدی در اروپا محدود یا تعلیق شده‌اند؛ مواد ماکروسیکلیک ترجیح دارند.' },
       'km-gadolinium-retention-nsf': { lead: 'پس از تزریق‌های مکرر، گادولینیوم ممکن است در بافت قابل اندازه‌گیری بماند؛ آسیب بالینی ناشی از رسوب مغزی ثابت نشده است.', points: [['احتباس', 'مواد خطی احتباس بیشتری از ماکروسیکلیک دارند؛ تزریق‌های غیرضروری تکرار نشوند.'], ['NSF', 'فیبروز سیستمیک نفروژنیک عمدتاً با مواد قدیمی و ناپایدار در نارسایی شدید کلیه مرتبط است.'], ['کاهش خطر', 'در AKI یا eGFR زیر ۳۰، ضرورت را تأیید و ماده با خطر بسیار پایین NSF انتخاب کنید.']], takeHome: 'احتباس و NSF یکسان نیستند؛ NSF بیماری فیبروزان نادر در شرایط پرخطر است.' },
-      'km-ultraschall': { lead: 'مواد حاجب سونوگرافی میکروبابل‌های گازی و داخل‌عروقی هستند.', points: [['سیگنال', 'میکروبابل‌ها در میدان صوتی نوسان می‌کنند و پرفیوژن را در زمان واقعی نشان می‌دهند.'], ['دفع', 'گاز عمدتاً از ریه دفع و پوسته متابولیزه می‌شود؛ دفع کلیوی لازم نیست.'], ['کاربرد', 'مشخص‌کردن ضایعات کبدی، پرفیوژن ارگان و برخی سؤالات عروقی.']], takeHome: 'USKM نه ید دارد نه گادولینیوم و در نارسایی کلیه بسیار مفید است.' },
       'km-niereninsuffizienz': { lead: 'خطر به عملکرد کلیه، AKI، مسیر تزریق و وضعیت کلی بیمار بستگی دارد.', points: [['غربالگری', 'در بیماران پرخطر eGFR به‌روز و نشانه‌های AKI را بررسی کنید.'], ['ید', 'در AKI یا eGFR زیر ۳۰ سود و خطر را فردی بسنجید، وضعیت حجم را بهینه و تزریق تکراری غیرضروری را حذف کنید.'], ['گادولینیوم', 'ماده با خطر پایین NSF انتخاب شود؛ دیالیز فقط به علت تزریق آغاز نشود.']], takeHome: 'نارسایی کلیه منع مطلق نیست؛ به راهبرد مستند و منطقی نیاز دارد.' },
       'km-schilddruese': { lead: 'بار ید می‌تواند در افراد مستعد پرکاری تیروئید ایجاد یا تشدید کند.', points: [['خطر بالا', 'پرکاری آشکار و اتونومی تیروئید مهم‌اند.'], ['آمادگی', 'در شک بالینی، پیش از تزریق الکتیو TSH و آزمایش‌های تکمیلی بررسی شوند.'], ['پیگیری', 'در افراد پرخطر به علائم دیررس توجه کنید؛ ید بر تصویربرداری هسته‌ای تیروئید نیز اثر دارد.']], takeHome: 'در پرکاری آشکار تا حد امکان از ماده یددار اجتناب شود؛ در اورژانس تصمیم مشترک بگیرید.' },
       'km-schwangerschaft-stillzeit': { lead: 'ماده حاجب فقط زمانی استفاده شود که اطلاعات اضافی از نظر بالینی ضروری باشد.', points: [['بارداری', 'ماده یددار از جفت عبور می‌کند؛ گادولینیوم برای اندیکاسیون‌های حیاتی محدود شود.'], ['نوزاد', 'پس از ماده یددار در بارداری، توصیه محلی غربالگری تیروئید نوزاد رعایت شود.'], ['شیردهی', 'طبق راهنماهای فعلی معمولاً پس از ید یا گادولینیوم نیازی به قطع شیردهی نیست.']], takeHome: 'تصویربرداری ضروری را بی‌دلیل به تأخیر نیندازید، اما اندیکاسیون، جایگزین‌ها و مشاوره را ثبت کنید.' },
@@ -263,10 +242,6 @@ const QUESTION_SEEDS = {
   'km-gadolinium-retention-nsf': [
     ['Welche Konstellation ist klassisch mit NSF verbunden?', 'Schwere Niereninsuffizienz plus weniger stabiles GBCA', ['Normale Nierenfunktion plus USKM', 'Schwere Niereninsuffizienz plus weniger stabiles GBCA', 'Hyperthyreose plus Jod-KM', 'Stillzeit plus CT'], 'B'],
     ['Welche Aussage zur Gadolinium-Retention ist korrekt?', 'Retention ist nachweisbar, ein klinischer Hirnschaden aber nicht belegt', ['Sie tritt nur bei Niereninsuffizienz auf', 'Retention ist nachweisbar, ein klinischer Hirnschaden aber nicht belegt', 'Makrozyklische Präparate retinieren immer mehr', 'Sie ist identisch mit NSF'], 'B'],
-  ],
-  'km-ultraschall': [
-    ['Wo verbleiben diagnostische Ultraschall-Mikrobläschen?', 'Im Gefäßraum', ['Intrazellulär', 'Im Gefäßraum', 'Nur im Gallengang', 'Im Knochenmark'], 'B'],
-    ['Wie wird der Gasanteil von USKM überwiegend eliminiert?', 'Über die Lunge', ['Über die Niere', 'Über die Lunge', 'Über die Schilddrüse', 'Über die Haut'], 'B'],
   ],
   'km-niereninsuffizienz': [
     ['Ab welcher eGFR ist eine besonders sorgfältige Nutzen-Risiko-Abwägung üblich?', 'Unter 30 ml/min/1,73 m²', ['Unter 120', 'Unter 90', 'Unter 60 bei jedem Patienten', 'Unter 30 ml/min/1,73 m²'], 'D'],
