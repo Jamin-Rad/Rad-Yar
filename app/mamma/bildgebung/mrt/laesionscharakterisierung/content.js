@@ -15,12 +15,13 @@ export const COPY = {
 }
 
 export const SECTIONS = [
-  { id: 'start', icon: '01', label: L('Enhancement-Typen & Focus', 'Enhancement types & focus', 'انواع Enhancement و Focus') },
-  { id: 'mass', icon: '02', label: L('Mass', 'Mass', 'Mass') },
-  { id: 'nme', icon: '03', label: L('Non-Mass Enhancement', 'Non-mass enhancement', 'Non-Mass Enhancement') },
-  { id: 'kinetik', icon: '04', label: L('Kinetik', 'Kinetics', 'کینتیک') },
-  { id: 't2-diffusion', icon: '05', label: L('T2 & Diffusion', 'T2 & diffusion', 'T2 و دیفیوژن') },
-  { id: 'algorithmus', icon: '06', label: L('Gesamtbewertung', 'Overall assessment', 'ارزیابی نهایی') },
+  { id: 'start', icon: '01', label: L('Enhancement-Typen', 'Enhancement types', 'انواع Enhancement') },
+  { id: 'focus', icon: '02', label: L('Focus', 'Focus', 'Focus') },
+  { id: 'mass', icon: '03', label: L('Mass', 'Mass', 'Mass') },
+  { id: 'nme', icon: '04', label: L('Non-Mass Enhancement', 'Non-mass enhancement', 'Non-Mass Enhancement') },
+  { id: 'kinetik', icon: '05', label: L('Kinetik', 'Kinetics', 'کینتیک') },
+  { id: 't2-diffusion', icon: '06', label: L('T2 & Diffusion', 'T2 & diffusion', 'T2 و دیفیوژن') },
+  { id: 'algorithmus', icon: '07', label: L('Gesamtbewertung', 'Overall assessment', 'ارزیابی نهایی') },
 ]
 
 export const FOCUS_POINTS = [
@@ -32,14 +33,14 @@ export const FOCUS_POINTS = [
 
 export const MASS_SHAPES = [
   { term: L('Rund', 'Round', 'گرد'), text: L('Runde Form.', 'Round shape.', 'شکل گرد.') },
-  { term: L('Oval', 'Oval', 'بیضی'), text: L('Ovale Form; auch leicht gelappte Konturen können noch als oval gelten.', 'Oval shape; mildly lobulated contours may still be classified as oval.', 'شکل بیضی؛ کانتورهای کمی لوبوله نیز می‌توانند همچنان در گروه بیضی قرار گیرند.') },
-  { term: L('Irregulär', 'Irregular', 'نامنظم'), text: L('Weder rund noch oval. Eine irreguläre Form ist suspekter, beweist für sich allein aber keine Malignität.', 'Neither round nor oval. An irregular shape is more suspicious but does not prove malignancy by itself.', 'نه گرد و نه بیضی. شکل نامنظم مشکوک‌تر است، اما به‌تنهایی بدخیمی را اثبات نمی‌کند.') },
+  { term: L('Oval', 'Oval', 'بیضی'), text: L('Ovale Form.', 'Oval shape.', 'شکل بیضی.'), sub: L('Auch leicht gelappte Konturen können noch als oval gelten.', 'Mildly lobulated contours may still be classified as oval.', 'کانتورهای کمی لوبوله نیز می‌توانند همچنان در گروه بیضی قرار گیرند.') },
+  { term: L('Irregulär', 'Irregular', 'نامنظم'), text: L('Weder rund noch oval.', 'Neither round nor oval.', 'نه گرد و نه بیضی.'), sub: L('Eine irreguläre Form ist suspekter, beweist für sich allein aber keine Malignität.', 'An irregular shape is more suspicious but does not prove malignancy by itself.', 'شکل نامنظم مشکوک‌تر است، اما به‌تنهایی بدخیمی را اثبات نمی‌کند.') },
 ]
 
 export const MASS_MARGINS = [
-  { term: L('Scharf begrenzt', 'Circumscribed', 'واضح و صاف'), text: L('Der Übergang zum umgebenden Gewebe ist klar und glatt. Dieses Merkmal spricht eher für eine benigne Läsion.', 'The transition to surrounding tissue is sharp and smooth. This feature is more typical of a benign lesion.', 'مرز ضایعه با بافت اطراف واضح و صاف است؛ این ویژگی بیشتر به نفع یک ضایعه خوش‌خیم است.'), level: 'low' },
-  { term: L('Irregulär', 'Irregular', 'نامنظم'), text: L('Der Rand ist unregelmäßig und nicht glatt. Dies ist ein suspektes Merkmal.', 'The margin is irregular and not smooth. This is a suspicious feature.', 'حاشیه نامنظم و ناصاف است؛ این یک ویژگی مشکوک محسوب می‌شود.'), level: 'mid' },
-  { term: L('Spikuliert', 'Spiculated', 'اسپیکوله'), text: L('Vom Rand ziehen strahlenförmige Ausläufer in das umgebende Gewebe. Dieses Merkmal ist hochgradig malignitätsverdächtig.', 'Radiating lines extend from the margin into surrounding tissue. This feature is highly suspicious for malignancy.', 'امتدادهای شعاعی از حاشیه به بافت اطراف کشیده می‌شوند؛ این ویژگی به‌شدت به بدخیمی مشکوک است.'), level: 'high' },
+  { term: L('Scharf begrenzt', 'Circumscribed', 'واضح و صاف'), text: L('Der Übergang zum umgebenden Gewebe ist klar und glatt.', 'The transition to surrounding tissue is sharp and smooth.', 'مرز ضایعه با بافت اطراف واضح و صاف است.'), sub: L('Dieses Merkmal spricht eher für eine benigne Läsion.', 'This feature is more typical of a benign lesion.', 'این ویژگی بیشتر به نفع یک ضایعه خوش‌خیم است.'), level: 'low' },
+  { term: L('Irregulär', 'Irregular', 'نامنظم'), text: L('Der Rand ist unregelmäßig und nicht glatt.', 'The margin is irregular and not smooth.', 'حاشیه نامنظم و ناصاف است.'), sub: L('Dies ist ein suspektes Merkmal.', 'This is a suspicious feature.', 'این یک ویژگی مشکوک محسوب می‌شود.'), level: 'mid' },
+  { term: L('Spikuliert', 'Spiculated', 'اسپیکوله'), text: L('Vom Rand ziehen strahlenförmige Ausläufer in das umgebende Gewebe.', 'Radiating lines extend from the margin into surrounding tissue.', 'امتدادهای شعاعی از حاشیه به بافت اطراف کشیده می‌شوند.'), sub: L('Dieses Merkmal ist hochgradig malignitätsverdächtig.', 'This feature is highly suspicious for malignancy.', 'این ویژگی به‌شدت به بدخیمی مشکوک است.'), level: 'high' },
 ]
 
 export const MASS_ENHANCEMENT = [

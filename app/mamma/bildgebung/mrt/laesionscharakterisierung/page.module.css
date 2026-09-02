@@ -40,6 +40,7 @@
 .descriptor { position: relative; padding: 20px; border: 1px solid rgba(148, 163, 184, .28); border-top: 4px solid #86b44c; border-radius: 8px; background: var(--bg-card); box-shadow: 0 10px 25px rgba(15, 23, 42, .055); }
 .descriptor h3 { margin: 0 0 10px; color: #4d7c0f; font-size: 1rem; }
 .descriptor p { margin: 0; color: var(--text); line-height: 1.6; font-size: .93rem; }
+.descriptorSub { margin: 7px 0 0; color: var(--text-muted); font-size: .88rem; line-height: 1.55; }
 .descriptor.mid { border-top-color: #f59e0b; }
 .descriptor.mid h3 { color: #b45309; }
 .descriptor.high { border-top-color: #dc2626; }
