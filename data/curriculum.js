@@ -625,6 +625,7 @@ export const CURRICULUM = [
             sub: [
               { id: 'mamma-mrt-basics', title: { de: 'Basics', en: 'Basics', fa: 'مبانی' }, link: '/mamma/bildgebung/mrt/basics' },
               { id: 'mamma-mrt-laesionscharakterisierung', title: { de: 'Läsionscharakterisierung', en: 'Lesion Characterisation', fa: 'ارزیابی و توصیف ضایعه' }, link: '/mamma/bildgebung/mrt/laesionscharakterisierung' },
+              { id: 'mamma-mrt-besondere-mammakarzinome', title: { de: 'Besondere Mammakarzinome', en: 'Special Breast Carcinomas', fa: 'کارسینوم‌های ویژه پستان' }, link: '/mamma/bildgebung/mrt/besondere-mammakarzinome' },
             ],
           },
           {
