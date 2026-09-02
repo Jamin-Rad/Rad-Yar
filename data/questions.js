@@ -30,6 +30,7 @@ import { SPINE_TRAUMA_QUESTIONS } from './spineTrauma'
 import { KNIE_LIGAMENTE_QUESTIONS } from './knieligamente'
 import { MAMMA_MRT_QUESTIONS } from './mammaMrtBasics'
 import { MAMMA_MRT_LESION_QUESTIONS } from './mammaMrtLesions'
+import { MAMMA_MRT_SPECIAL_CARCINOMA_QUESTIONS } from './mammaMrtSpecialCarcinomas'
 
 const DIVERTICULITIS_QUESTION_CONTENT = [
   {
@@ -580,6 +581,7 @@ export const QUESTION_BANK = {
     ...HRCT_QUESTIONS.de,
     ...MAMMA_MRT_QUESTIONS.de,
     ...MAMMA_MRT_LESION_QUESTIONS.de,
+    ...MAMMA_MRT_SPECIAL_CARCINOMA_QUESTIONS.de,
     {
       "id": "meniskus-de-01",
       "tags": [
@@ -1908,6 +1910,7 @@ export const QUESTION_BANK = {
   "en": [
     ...MAMMA_MRT_QUESTIONS.en,
     ...MAMMA_MRT_LESION_QUESTIONS.en,
+    ...MAMMA_MRT_SPECIAL_CARCINOMA_QUESTIONS.en,
     ...CONTRAST_QUESTIONS.en,
     ...DIVERTICULITIS_QUESTIONS.en,
     ...PANCREATITIS_QUESTIONS.en,
@@ -3267,6 +3270,7 @@ export const QUESTION_BANK = {
   "fa": [
     ...MAMMA_MRT_QUESTIONS.fa,
     ...MAMMA_MRT_LESION_QUESTIONS.fa,
+    ...MAMMA_MRT_SPECIAL_CARCINOMA_QUESTIONS.fa,
     ...CONTRAST_QUESTIONS.fa,
     ...DIVERTICULITIS_QUESTIONS.fa,
     ...PANCREATITIS_QUESTIONS.fa,
