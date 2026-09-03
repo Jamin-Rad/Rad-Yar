@@ -22,34 +22,30 @@ function GermanContent(){return <>
     <div className={styles.techSplit}>
       <article><small>01</small><h3>Kalziumoxalat</h3><p><Lines>{`• deutlich seltener
 • typischerweise mit benignen Pathologien assoziiert
-• beispielsweise in benignen Zysten oder terminalen Duktuli
-• häufig in Verbindung mit Sekreten apokrin differenzierten Epithels`}</Lines></p></article>
+• beispielsweise in Sekreten apokrin differenzierten Epithels innerhalb benigner Zysten oder terminaler Duktuli`}</Lines></p></article>
       <article><small>02</small><h3>Kalziumphosphat</h3><p><Lines>{`• häufigste Form mammographisch relevanter Verkalkungen
-• meist als Hydroxylapatit
 • kann bei benignen, atypischen und malignen Veränderungen auftreten
 • mit abnormaler epithelialer Zellproliferation und Nekrose assoziiert`}</Lines></p></article>
     </div>
     <h3 className={styles.takeTitle}>Systematische Beurteilung</h3>
     <div className={styles.context}>
-      <article><span>01</span><h3>Partikelgröße</h3><p>Wie groß sind die einzelnen Verkalkungen?<br/><br/>Makroverkalkungen beziehungsweise typisch grobschollige Verkalkungen sind in der Regel benign. Die Größe allein beweist jedoch keine Benignität: Grob heterogene Verkalkungen gehören zu den suspekten Morphologien.</p></article>
+      <article><span>01</span><h3>Partikelgröße</h3><p>Wie groß sind die einzelnen Verkalkungen?<br/><br/>Makroverkalkungen beziehungsweise typisch grobschollige Verkalkungen sind in der Regel benign.<br/><br/>Die Größe allein beweist jedoch keine Benignität: Grob heterogene Verkalkungen gehören zu den suspekten Morphologien.</p></article>
       <article><span>02</span><h3>Morphologie</h3><p>Wie sehen die einzelnen Kalkpartikel aus?</p></article>
       <article><span>03</span><h3>Verteilungsmuster</h3><p>Wie sind die Kalkpartikel innerhalb der Brust räumlich angeordnet?</p></article>
-      <article><span>04</span><h3>Ausdehnung</h3><p>Wie groß ist das gesamte betroffene Kalkareal – zum Beispiel 8 mm oder 5 cm?</p></article>
     </div>
     <p className={styles.lead}>Auch Verlauf, klinischer Kontext und Begleitbefunde – insbesondere eine assoziierte Masse oder Architekturstörung – sind für die Gesamtbeurteilung relevant.</p>
     <div className={styles.rule}><strong>Grundprinzip</strong><p>Kalk ist ein bildgebender Phänotyp und allein keine Diagnose.</p></div>
   </Section>
 
   <Section {...GERMAN_SECTIONS[1]} title={GERMAN_SECTIONS[1].label.de}>
-    <p className={styles.lead}>Einige Kalkformen können aufgrund ihrer typischen Morphologie meist direkt als benign eingeordnet werden.</p>
     <h3 className={styles.takeTitle}>Typisch benigne Verkalkungen außerhalb des Drüsenparenchyms</h3>
     <div className={styles.techSplit}>
       <article><small>HAUT</small><h3>Hautverkalkungen</h3><p>Typischerweise rund oder oval und oberflächlich gelegen.</p></article>
-      <article><small>GEFÄSS</small><h3>Vaskuläre Verkalkungen</h3><p><Lines>{`Typischerweise dicht und linear entlang eines Gefäßverlaufs. Häufig verlaufen zwei Verkalkungslinien parallel.
+      <article><small>GEFÄSS</small><h3>Vaskuläre Verkalkungen</h3><p><Lines>{`Typischerweise dicht und linear entlang eines Gefäßverlaufs.
 
 Mammographisch gelten sie als benigne.`}</Lines></p></article>
     </div>
-    <div className={styles.rule}><strong>Wichtiger vaskulärer Hinweis</strong><p>Vaskuläre Verkalkungen sind ein relevanter Marker für ein erhöhtes Risiko kardiovaskulärer Erkrankungen. Daher sollte eine klinische kardiovaskuläre Risikoevaluation erfolgen. Insbesondere bei ausgeprägtem Befund oder zusätzlichen Risikofaktoren sollte eine kardiologische Abklärung empfohlen werden.</p></div>
+    <div className={styles.rule}><strong>Wichtiger vaskulärer Hinweis</strong><p>Vaskuläre Verkalkungen sind ein relevanter Marker für ein erhöhtes Risiko kardiovaskulärer Erkrankungen. Daher sollte eine klinische kardiovaskuläre Risikoevaluation erfolgen.</p></div>
     <div className={styles.benignList}>
       <article><span>Popcorn</span><div><h3>Grobschollig</h3><p><Lines>{`Große, grobe Verkalkungen, meist > 2 mm.
 
