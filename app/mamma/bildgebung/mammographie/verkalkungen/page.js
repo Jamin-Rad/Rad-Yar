@@ -17,22 +17,28 @@ function RiskLab({lang}){const tx=v=>pick(v,lang);const[morph,setMorph]=useState
 function Lines({children}){return <span style={{whiteSpace:'pre-line'}}>{children}</span>}
 function GermanContent(){return <>
   <Section {...GERMAN_SECTIONS[0]} title={GERMAN_SECTIONS[0].label.de}>
-    <p className={styles.lead}>Mammographische Verkalkungen sind häufig und überwiegend benigne. Entscheidend ist jedoch nicht allein das Vorhandensein von Kalk, sondern dessen Morphologie, Verteilung, Verlauf und bildgebender Kontext.</p>
-    <p className={styles.lead}>Die Risikoeinschätzung folgt im Wesentlichen diesem Prinzip:</p>
-    <div className={styles.equation}><strong>Morphologie</strong><span>×</span><strong>Verteilung</strong><span>→</span><strong>Risikoeinschätzung</strong></div>
-    <p className={styles.lead}>ergänzt durch Ausdehnung, Verlauf und Begleitbefunde.</p>
+    <h3 className={styles.takeTitle}>Pathologie</h3>
     <div className={styles.techSplit}>
-      <article><small>01</small><h3>Kalziumphosphat</h3><p>Der häufigste mammographisch relevante Kalk besteht aus Kalziumphosphat. Er kann sowohl bei benignen als auch bei atypischen und malignen Veränderungen auftreten, unter anderem bei Zelluntergang und Nekrose.</p></article>
-      <article><small>02</small><h3>Kalziumoxalat</h3><p>Kalziumoxalat findet sich dagegen häufiger bei benignen, insbesondere apokrinen Veränderungen.</p></article>
+      <article><small>01</small><h3>Kalziumphosphat</h3><p><Lines>{`• häufigste Form mammographisch relevanter Verkalkungen
+• meist als Hydroxylapatit
+• kann bei benignen, atypischen und malignen Veränderungen auftreten
+• unter anderem bei Zelluntergang und Nekrose`}</Lines></p></article>
+      <article><small>02</small><h3>Kalziumoxalat</h3><p><Lines>{`• deutlich seltener
+• typischerweise mit benignen Veränderungen assoziiert
+• insbesondere in benignen Zysten oder terminalen Duktuli mit apokriner Differenzierung`}</Lines></p></article>
     </div>
     <p className={styles.lead}>Für die radiologische Beurteilung ist die chemische Zusammensetzung jedoch weniger wichtig als das mammographische Erscheinungsbild.</p>
-    <div className={styles.rule}><strong>Größe</strong><p><Lines>{`Große Verkalkungen sind meist benign. Maligne Verkalkungen sind häufig sehr klein, oftmals unter 0,5 mm.
-
-Bei Mikroverkalkungen gilt jedoch:
-
-Die Größe allein unterscheidet nicht zwischen benign und maligne.
-
-Entscheidend sind Morphologie und Verteilung.`}</Lines></p></div>
+    <div className={styles.rule}><strong>Grundprinzip</strong><p>Kalk ist ein bildgebender Phänotyp und allein keine Diagnose.</p></div>
+    <h3 className={styles.takeTitle}>Systematische Beurteilung</h3>
+    <div className={styles.context}>
+      <article><span>01</span><h3>Morphologie</h3><p>Wie sehen die einzelnen Kalkpartikel aus?</p></article>
+      <article><span>02</span><h3>Partikelgröße</h3><p>Wie groß sind die einzelnen Verkalkungen? Die Größe ist relevant, aber allein nicht diagnostisch.</p></article>
+      <article><span>03</span><h3>Verteilung</h3><p>Wie sind die Kalkpartikel innerhalb der Brust räumlich angeordnet?</p></article>
+    </div>
+    <div className={styles.techSplit}>
+      <article><small>04</small><h3>Ausdehnung</h3><p>Wie groß ist das gesamte betroffene Kalkareal – zum Beispiel 8 mm oder 5 cm?</p></article>
+      <article><small>05</small><h3>Verlauf und Kontext</h3><p>Ist der Befund neu oder zunehmend? Bestehen eine assoziierte Masse, Architekturstörung oder weitere Begleitbefunde?</p></article>
+    </div>
   </Section>
 
   <Section {...GERMAN_SECTIONS[1]} title={GERMAN_SECTIONS[1].label.de}>
