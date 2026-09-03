@@ -603,7 +603,7 @@ export const CURRICULUM = [
           {
             id: 'mammographie', title: { de: 'Mammographie', en: 'Mammography', fa: 'ماموگرافی' }, tags: ['Mammo'], diff: 1,
             sub: [
-              { id: 'mammographie-grundlagen', title: { de: 'Grundlagen & Standardprojektionen', en: 'Basics & Standard Views', fa: 'مبانی و نماهای استاندارد' } },
+              { id: 'mammographie-grundlagen', title: { de: 'Grundlagen der Befundung', en: 'Reporting Fundamentals', fa: 'مبانی گزارش‌نویسی' }, link: '/mamma/bildgebung/mammographie/grundlagen' },
               { id: 'mammographie-dichte', title: { de: 'Brustdichte', en: 'Breast Density', fa: 'دانسیته پستان' } },
               { id: 'mammographie-herdbefunde', title: { de: 'Herdbefunde & Asymmetrien', en: 'Masses & Asymmetries', fa: 'توده‌ها و آسیمتری‌ها' } },
               { id: 'mammographie-mikrokalk', title: { de: 'Mikroverkalkungen', en: 'Calcifications', fa: 'میکروکلسیفیکاسیون‌ها' } },
