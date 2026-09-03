@@ -42,17 +42,17 @@ function GermanContent(){return <>
   </Section>
 
   <Section {...GERMAN_SECTIONS[1]} title={GERMAN_SECTIONS[1].label.de}>
-    <p className={styles.lead}>Bei unklaren oder kleinen Verkalkungen sind gezielte Vergrößerungsaufnahmen wichtig. Sie ermöglichen eine deutlich bessere Beurteilung von Form und Verteilung.</p>
-    <div className={styles.techSplit}>
-      <article><small>2D / MAG</small><h3>Synthetische Mammographie</h3><p>Bei synthetischer Mammographie können Rekonstruktionsalgorithmen Verkalkungen verstärken, abschwächen oder in ihrer Erscheinung verändern. Auch Artefakte können Pseudoverkalkungen imitieren.</p></article>
-      <article><small>DBT</small><h3>Daher:</h3><p><Lines>{`DBT-Schichten zur Bestätigung und Lokalisation prüfen.
-Morphologie bei Bedarf mit gezielten 2D-/Vergrößerungsaufnahmen beurteilen.`}</Lines></p></article>
-    </div>
-    <div className={styles.caution}><strong>Merke</strong><br/>DBT liefert vor allem räumlichen Kontext – die detaillierte Kalkanalyse bleibt eine Aufgabe der hochauflösenden Mammographie.</div>
-  </Section>
-
-  <Section {...GERMAN_SECTIONS[2]} title={GERMAN_SECTIONS[2].label.de}>
     <p className={styles.lead}>Einige Kalkformen können aufgrund ihrer typischen Morphologie meist direkt als benign eingeordnet werden.</p>
+    <h3 className={styles.takeTitle}>Typisch benigne Verkalkungen außerhalb des Drüsenparenchyms</h3>
+    <div className={styles.techSplit}>
+      <article><small>HAUT</small><h3>Hautverkalkungen</h3><p><Lines>{`Typischerweise rund oder oval, oberflächlich gelegen und häufig mit zentraler Aufhellung.
+
+Die Tomosynthese kann ihre Lage in der Haut sichtbar machen. Bei unklarer Zuordnung kann eine Tangentialaufnahme die dermale Lokalisation bestätigen.`}</Lines></p></article>
+      <article><small>GEFÄSS</small><h3>Vaskuläre Verkalkungen</h3><p><Lines>{`Typischerweise dicht und linear entlang eines Gefäßverlaufs. Parallel verlaufende Kalklinien erzeugen ein schienen- oder tram-track-artiges Erscheinungsbild.
+
+Mammographisch gelten sie als benigne.`}</Lines></p></article>
+    </div>
+    <div className={styles.rule}><strong>Kardiovaskulärer Hinweis</strong><p>Vaskuläre Verkalkungen sollten im Befund erwähnt werden und Anlass zur klinischen Prüfung kardiovaskulärer Risikofaktoren geben. Eine weiterführende hausärztliche oder kardiologische Abklärung richtet sich nach Ausprägung, Alter, Symptomen und Gesamtrisikoprofil; sie ist nicht allein aufgrund des Mammographiebefunds automatisch obligat.</p></div>
     <div className={styles.benignList}>
       <article><span>Popcorn</span><div><h3>Grobschollig</h3><p><Lines>{`Große, grobe Verkalkungen, meist > 2 mm.
 
@@ -88,7 +88,7 @@ In geeigneter Projektion entsteht das klassische Teacup-Zeichen.`}</Lines></p></
     </div>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[3]} title={GERMAN_SECTIONS[3].label.de}>
+  <Section {...GERMAN_SECTIONS[2]} title={GERMAN_SECTIONS[2].label.de}>
     <p className={styles.lead}>Sind Verkalkungen nicht typisch benign, erfolgt die weitere Charakterisierung anhand ihrer Morphologie.</p>
     <div className={styles.riskArrow}>steigende Suspektheit →</div>
     <div className={styles.morphRail} style={{gridTemplateColumns:'repeat(4, minmax(0, 1fr))'}}>
@@ -102,7 +102,7 @@ In geeigneter Projektion entsteht das klassische Teacup-Zeichen.`}</Lines></p></
 Die Suspektheit nimmt dabei grundsätzlich von links nach rechts zu.`}</Lines></p></div>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[4]} title={GERMAN_SECTIONS[4].label.de}>
+  <Section {...GERMAN_SECTIONS[3]} title={GERMAN_SECTIONS[3].label.de}>
     <p className={styles.lead}>Neben der Morphologie muss immer beschrieben werden, wie sich die Verkalkungen innerhalb der Brust verteilen.</p>
     <div className={styles.distribution}>
       <article><span>01</span><strong>Diffus</strong><p>Weit über die Brust verteilt, häufig bilateral.<br/><br/>Bei entsprechender Morphologie meistens benign.</p></article>
@@ -114,7 +114,7 @@ Die Suspektheit nimmt dabei grundsätzlich von links nach rechts zu.`}</Lines></
     <div className={styles.rule}><strong>Merke</strong><p>Lineare und segmentale Verteilungsmuster sind besonders relevant, da sie auf eine duktale Ausbreitung hinweisen können.</p></div>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[5]} title={GERMAN_SECTIONS[5].label.de}>
+  <Section {...GERMAN_SECTIONS[4]} title={GERMAN_SECTIONS[4].label.de}>
     <p className={styles.lead}>Dies ist der zentrale Schritt der Kalkdiagnostik.</p>
     <p className={styles.lead}>Die Morphologie bestimmt das Ausgangsrisiko, die Verteilung modifiziert dieses Risiko.</p>
     <h3 className={styles.takeTitle}>Beispiele:</h3>
@@ -127,7 +127,7 @@ Die Suspektheit nimmt dabei grundsätzlich von links nach rechts zu.`}</Lines></
     <div className={styles.rule}><strong>Merke</strong><p>Nicht Morphologie oder Verteilung allein, sondern ihre Kombination bestimmt die klinische Risikoklasse.</p></div>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[6]} title={GERMAN_SECTIONS[6].label.de}>
+  <Section {...GERMAN_SECTIONS[5]} title={GERMAN_SECTIONS[5].label.de}>
     <p className={styles.lead}>Nach Morphologie und Verteilung müssen drei weitere Fragen beantwortet werden.</p>
     <div className={styles.context}>
       <article><span>01</span><h3>Sind die Verkalkungen neu oder zunehmend?</h3><p>Neue oder zunehmende Verkalkungen sind verdächtiger als langfristig stabile Befunde.<br/><br/>Deshalb sollten Voraufnahmen konsequent verglichen werden.</p></article>
@@ -142,7 +142,7 @@ Haut- oder Mamillenveränderung?`}</Lines></p></article>
     <div className={styles.caution}>Eine assoziierte Masse oder Architekturstörung kann insbesondere auf eine invasive Komponente hinweisen.</div>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[7]} title={GERMAN_SECTIONS[7].label.de}>
+  <Section {...GERMAN_SECTIONS[6]} title={GERMAN_SECTIONS[6].label.de}>
     <div className={styles.modalityRows}>
       <article><strong>DCIS</strong><p>Suspekte Mikroverkalkungen sind häufig mit einem duktalen Carcinoma in situ (DCIS) assoziiert.</p></article>
       <article><strong>Maligner Kalk</strong><p>Maligner Kalk bedeutet jedoch nicht automatisch reines DCIS. Es kann ebenfalls ein invasives Karzinom mit begleitender intraduktaler Komponente vorliegen.</p></article>
@@ -150,7 +150,7 @@ Haut- oder Mamillenveränderung?`}</Lines></p></article>
     </div>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[8]} title={GERMAN_SECTIONS[8].label.de}>
+  <Section {...GERMAN_SECTIONS[7]} title={GERMAN_SECTIONS[7].label.de}>
     <p className={styles.lead}>Die Mammographie bleibt die wichtigste Methode zur Detektion und Charakterisierung von Mikroverkalkungen.</p>
     <div className={styles.techSplit}>
       <article><small>US</small><h3>Makroverkalkungen</h3><p><Lines>{`Sie können im Ultraschall echogen erscheinen und einen dorsalen Schallschatten verursachen, beispielsweise bei:
@@ -169,7 +169,7 @@ liegen.`}</Lines></p></article>
     <div className={styles.rule}><strong>Biopsieplanung</strong><p>Ein sonographisches Korrelat kann insbesondere für die weitere Biopsieplanung hilfreich sein.</p></div>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[9]} title={GERMAN_SECTIONS[9].label.de}>
+  <Section {...GERMAN_SECTIONS[8]} title={GERMAN_SECTIONS[8].label.de}>
     <p className={styles.lead}>Die MRT kann die Risikoeinschätzung ergänzen, ersetzt aber nicht die Histologie.</p>
     <div className={styles.techSplit}>
       <article><small>MRT</small><h3>Sie kann:</h3><p><Lines>{`eine invasive Komponente erkennen,
@@ -182,7 +182,7 @@ eine klare Biopsieindikation bei suspektem Mikrokalk nicht automatisch aufheben.
     <div className={styles.caution}>Ein negatives MRT macht einen suspekten mammographischen Kalkbefund nicht automatisch benign.</div>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[10]} title={GERMAN_SECTIONS[10].label.de}>
+  <Section {...GERMAN_SECTIONS[9]} title={GERMAN_SECTIONS[9].label.de}>
     <ol className={styles.algorithm}>
       <li><span>1</span><strong>Kalk erkennen</strong></li>
       <li><span>2</span><strong><Lines>{`Darstellung ausreichend?
