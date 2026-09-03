@@ -44,14 +44,12 @@ function GermanContent(){return <>
     <p className={styles.lead}>Einige Kalkformen können aufgrund ihrer typischen Morphologie meist direkt als benign eingeordnet werden.</p>
     <h3 className={styles.takeTitle}>Typisch benigne Verkalkungen außerhalb des Drüsenparenchyms</h3>
     <div className={styles.techSplit}>
-      <article><small>HAUT</small><h3>Hautverkalkungen</h3><p><Lines>{`Typischerweise rund oder oval, oberflächlich gelegen und häufig mit zentraler Aufhellung.
-
-Die Tomosynthese kann ihre Lage in der Haut sichtbar machen. Bei unklarer Zuordnung kann eine Tangentialaufnahme die dermale Lokalisation bestätigen.`}</Lines></p></article>
-      <article><small>GEFÄSS</small><h3>Vaskuläre Verkalkungen</h3><p><Lines>{`Typischerweise dicht und linear entlang eines Gefäßverlaufs. Parallel verlaufende Kalklinien erzeugen ein schienen- oder tram-track-artiges Erscheinungsbild.
+      <article><small>HAUT</small><h3>Hautverkalkungen</h3><p>Typischerweise rund oder oval und oberflächlich gelegen.</p></article>
+      <article><small>GEFÄSS</small><h3>Vaskuläre Verkalkungen</h3><p><Lines>{`Typischerweise dicht und linear entlang eines Gefäßverlaufs. Häufig verlaufen zwei Verkalkungslinien parallel.
 
 Mammographisch gelten sie als benigne.`}</Lines></p></article>
     </div>
-    <div className={styles.rule}><strong>Kardiovaskulärer Hinweis</strong><p>Vaskuläre Verkalkungen sollten im Befund erwähnt werden und Anlass zur klinischen Prüfung kardiovaskulärer Risikofaktoren geben. Eine weiterführende hausärztliche oder kardiologische Abklärung richtet sich nach Ausprägung, Alter, Symptomen und Gesamtrisikoprofil; sie ist nicht allein aufgrund des Mammographiebefunds automatisch obligat.</p></div>
+    <div className={styles.rule}><strong>Wichtiger vaskulärer Hinweis</strong><p>Vaskuläre Verkalkungen sind ein relevanter Marker für ein erhöhtes Risiko kardiovaskulärer Erkrankungen. Daher sollte eine klinische kardiovaskuläre Risikoevaluation erfolgen. Insbesondere bei ausgeprägtem Befund oder zusätzlichen Risikofaktoren sollte eine kardiologische Abklärung empfohlen werden.</p></div>
     <div className={styles.benignList}>
       <article><span>Popcorn</span><div><h3>Grobschollig</h3><p><Lines>{`Große, grobe Verkalkungen, meist > 2 mm.
 
