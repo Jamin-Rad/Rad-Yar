@@ -606,7 +606,7 @@ export const CURRICULUM = [
               { id: 'mammographie-grundlagen', title: { de: 'Grundlagen der Befundung', en: 'Reporting Fundamentals', fa: 'مبانی گزارش‌نویسی' }, link: '/mamma/bildgebung/mammographie/grundlagen' },
               { id: 'mammographie-dichte', title: { de: 'Brustdichte', en: 'Breast Density', fa: 'دانسیته پستان' } },
               { id: 'mammographie-herdbefunde', title: { de: 'Herdbefunde & Asymmetrien', en: 'Masses & Asymmetries', fa: 'توده‌ها و آسیمتری‌ها' } },
-              { id: 'mammographie-mikrokalk', title: { de: 'Mikroverkalkungen', en: 'Calcifications', fa: 'میکروکلسیفیکاسیون‌ها' } },
+              { id: 'mammographie-mikrokalk', title: { de: 'Verkalkungen', en: 'Calcifications', fa: 'کلسیفیکاسیون‌ها' }, link: '/mamma/bildgebung/mammographie/verkalkungen' },
               { id: 'mammographie-architekturstoerung', title: { de: 'Architekturstörung', en: 'Architectural Distortion', fa: 'دیستورشن معماری' } },
             ],
           },
