@@ -860,6 +860,12 @@ const RECHNER_GROUPS = [
     calcIds: ['lv-biplan-volumen', 'ktq', 'fleischner'],
   },
   {
+    id: 'mamma',
+    name: { de: 'Mamma', en: 'Breast', fa: 'پستان' },
+    color: '#db2777', iconId: 'mamma',
+    calcIds: ['birads-masse', 'birads-kalk', 'node-rads'],
+  },
+  {
     id: 'abdomen',
     name: { de: 'Abdomen', en: 'Abdomen', fa: 'شکم' },
     color: '#f59e0b', iconId: 'abdomen',
@@ -883,12 +889,6 @@ const RECHNER_GROUPS = [
     color: '#f97316', iconId: 'wirbelsaeule',
     calcIds: ['meyerding'],
   },
-  {
-    id: 'mamma',
-    name: { de: 'Mamma', en: 'Breast', fa: 'پستان' },
-    color: '#db2777', iconId: 'mamma',
-    calcIds: ['birads-kalk', 'node-rads'],
-  },
 ]
 
 /* ── Rechner-Modal ────────────────────────────── */
@@ -897,6 +897,15 @@ function RechnerModal({ copy, lang, onClose }) {
   const [showDetail, setShowDetail] = useState(false)
   const group = RECHNER_GROUPS.find(g => g.id === groupId) || RECHNER_GROUPS[0]
   const calcs = group.calcIds.map(id => REF_DATA.rechner.find(c => c.id === id)).filter(Boolean)
+  const [openCalcId, setOpenCalcId] = useState(calcs[0]?.id ?? null)
+
+  function switchGroup(id) {
+    setGroupId(id)
+    setShowDetail(true)
+    const grp = RECHNER_GROUPS.find(g => g.id === id)
+    const first = grp?.calcIds[0]
+    setOpenCalcId(first ?? null)
+  }
 
   return (
     <Modal title={copy.btnRechner} subtitle={showDetail?tx(group.name,lang):null} accent={group.color}
@@ -908,7 +917,7 @@ function RechnerModal({ copy, lang, onClose }) {
             <button key={g.id}
               className={`${styles.navBtn} ${g.id === groupId ? styles.navActiveGreen : ''}`}
               style={{'--ref-color': g.color}}
-              onClick={() => {setGroupId(g.id);setShowDetail(true)}}>
+              onClick={() => switchGroup(g.id)}>
               <span className={`${styles.navIconWrap} ${styles.klassNavLogoWrap}`}>
                 <Image src={CALCULATOR_GROUP_LOGOS[g.id] || '/fach/technik.png'} alt="" width={30} height={30} className={styles.klassNavLogo} />
               </span>
@@ -917,7 +926,7 @@ function RechnerModal({ copy, lang, onClose }) {
           ))}
         </nav>
 
-        {/* Inhalt – Rechner der gewählten Gruppe */}
+        {/* Inhalt – Rechner der gewählten Gruppe als Akkordeon */}
         <div className={styles.content} style={{'--ref-color': group.color}}>
           <button className={styles.mobileBack} onClick={()=>setShowDetail(false)}>← {copy.back}</button>
           <h2 className={styles.regionHeading}>
@@ -926,9 +935,15 @@ function RechnerModal({ copy, lang, onClose }) {
             </span>
             <span style={{color: group.color}}>{tx(group.name, lang)}</span>
           </h2>
-          <div className={`${styles.rechnerSubGrid} ${group.id === 'herz-thorax' ? styles.rechnerThoraxGrid : ''}`}>
+          <div style={{display:'flex',flexDirection:'column',gap:10}}>
             {calcs.map(calc => (
-              <RechnerCard key={calc.id} calc={calc} lang={lang} />
+              <RechnerCard
+                key={calc.id}
+                calc={calc}
+                lang={lang}
+                isOpen={openCalcId === calc.id}
+                onToggle={() => setOpenCalcId(prev => prev === calc.id ? null : calc.id)}
+              />
             ))}
           </div>
         </div>
@@ -937,24 +952,56 @@ function RechnerModal({ copy, lang, onClose }) {
   )
 }
 
-/* ── Rechner-Karte (dispatch by type) ────────── */
-function RechnerCard({ calc, lang }) {
+/* ── Rechner-Karte (Akkordeon) ────────────────── */
+function RechnerCard({ calc, lang, isOpen, onToggle }) {
   return (
     <div className={styles.rechnerCard} data-calc-id={calc.id} style={{'--rc': calc.color}}>
-      <div className={styles.rcHead}>
-        <div className={styles.rcName} style={{color: calc.color}}>{tx(calc.name, lang)}</div>
-        {calc.formula && <div className={styles.rcFormula}>{calc.formula}</div>}
-      </div>
+      {/* Akkordeon-Kopf – immer sichtbar, klickbar */}
+      <button
+        type="button"
+        onClick={onToggle}
+        style={{
+          display:'flex', alignItems:'center', justifyContent:'space-between',
+          width:'100%', background:'none', border:'none', cursor:'pointer',
+          padding:0, textAlign:'left', gap:8,
+        }}
+        aria-expanded={isOpen}
+      >
+        <div style={{flex:1, minWidth:0}}>
+          <div className={styles.rcName} style={{color: calc.color}}>{tx(calc.name, lang)}</div>
+          {calc.formula && !isOpen && (
+            <div className={styles.rcFormula} style={{marginTop:2}}>{calc.formula}</div>
+          )}
+        </div>
+        <span style={{
+          flexShrink:0, width:22, height:22, borderRadius:'50%',
+          background: calc.color+'18', border:`1.5px solid ${calc.color}44`,
+          display:'flex', alignItems:'center', justifyContent:'center',
+          color: calc.color, fontSize:14, fontWeight:700,
+          transition:'transform 0.2s',
+          transform: isOpen ? 'rotate(45deg)' : 'none',
+        }}>
+          +
+        </span>
+      </button>
 
-      {calc.type === 'single'      && <SingleCalc      calc={calc} lang={lang} />}
-      {calc.type === 'multi'       && <MultiCalc       calc={calc} lang={lang} />}
-      {calc.type === 'conversion'  && <ConversionCalc  calc={calc} lang={lang} />}
-      {calc.type === 'recist'      && <RecistCalc      calc={calc} lang={lang} />}
-      {calc.type === 'fleischner'  && <FleischnerCalc  calc={calc} lang={lang} />}
-      {calc.type === 'birads-kalk' && <BiRadsKalkCalc  calc={calc} lang={lang} />}
-      {calc.type === 'node-rads'   && <NodeRadsCalc    calc={calc} lang={lang} />}
+      {/* Akkordeon-Inhalt – nur wenn offen */}
+      {isOpen && (
+        <div style={{marginTop:14, borderTop:`1px solid ${calc.color}22`, paddingTop:14}}>
+          {calc.formula && <div className={styles.rcFormula} style={{marginBottom:12}}>{calc.formula}</div>}
 
-      {calc.hint && <p className={styles.rcHint}>{tx(calc.hint, lang)}</p>}
+          {calc.type === 'single'       && <SingleCalc      calc={calc} lang={lang} />}
+          {calc.type === 'multi'        && <MultiCalc       calc={calc} lang={lang} />}
+          {calc.type === 'conversion'   && <ConversionCalc  calc={calc} lang={lang} />}
+          {calc.type === 'recist'       && <RecistCalc      calc={calc} lang={lang} />}
+          {calc.type === 'fleischner'   && <FleischnerCalc  calc={calc} lang={lang} />}
+          {calc.type === 'birads-kalk'  && <BiRadsKalkCalc  calc={calc} lang={lang} />}
+          {calc.type === 'birads-masse' && <BiRadsMasseCalc calc={calc} lang={lang} />}
+          {calc.type === 'node-rads'    && <NodeRadsCalc    calc={calc} lang={lang} />}
+
+          {calc.hint && <p className={styles.rcHint}>{tx(calc.hint, lang)}</p>}
+        </div>
+      )}
     </div>
   )
 }
@@ -1006,6 +1053,108 @@ function ResultBox({ val, unit, decimals, range, lang }) {
       ) : (
         <span className={styles.rcResultPlaceholder}>—</span>
       )}
+    </div>
+  )
+}
+
+/* ── BiRadsMasseCalc ──────────────────────────── */
+// ACR BI-RADS 5th Ed. – Masse in der Mammographie
+// Form × Rand → BI-RADS 2–5; fetthaltig → immer BI-RADS 2
+const BRM_MATRIX = {
+  // [form][rand] → kategorie
+  oval_rund: { circumscribed:'3', microlobulated:'4A', indistinct:'4B', angular:'4B', spiculated:'4C' },
+  irregular: { circumscribed:'4A', microlobulated:'4B', indistinct:'4B', angular:'4C', spiculated:'5' },
+}
+const BRM_CAT_COLORS = { '2':'#16a34a','3':'#16a34a','4A':'#0891b2','4B':'#2563eb','4C':'#d97706','5':'#dc2626' }
+const BRM_CAT_BG     = { '2':'#dcfce7','3':'#dcfce7','4A':'#cffafe','4B':'#dbeafe','4C':'#fef3c7','5':'#fee2e2' }
+const BRM_INTERP = {
+  '2':  { de:'Benigne · Keine weitere Abklärung',                    en:'Benign · No further workup',              fa:'خوش‌خیم · بدون بررسی بیشتر' },
+  '3':  { de:'Wahrscheinlich benigne · Verlaufskontrolle 6 Mon.',    en:'Probably benign · Follow-up 6 mo',        fa:'احتمالاً خوش‌خیم · پیگیری ۶ ماهه' },
+  '4A': { de:'Gering suspekt (2–10 %) · Biopsie erwägen',           en:'Low suspicion (2–10 %) · Consider biopsy', fa:'شک کم (۲–۱۰٪) · بیوپسی مد نظر' },
+  '4B': { de:'Mäßig suspekt (10–50 %) · Biopsie empfohlen',         en:'Moderate suspicion (10–50 %) · Biopsy rec.', fa:'شک متوسط (۱۰–۵۰٪) · بیوپسی توصیه' },
+  '4C': { de:'Stark suspekt (50–95 %) · Biopsie dringend empfohlen', en:'High suspicion (50–95 %) · Biopsy strongly rec.', fa:'شک زیاد (۵۰–۹۵٪) · بیوپسی اکید' },
+  '5':  { de:'Hochgradig malignomverdächtig (> 95 %) · Biopsie obligat', en:'Highly suspicious (>95 %) · Biopsy mandatory', fa:'بسیار مشکوک (>۹۵٪) · بیوپسی اجباری' },
+}
+function BiRadsMasseCalc({ calc, lang }) {
+  const [fat,   setFat]   = useState(false)
+  const [shape, setShape] = useState('')
+  const [rand,  setRand]  = useState('')
+  const lbl = (obj) => obj[lang] || obj.de
+  const result = fat ? '2' : (shape && rand ? BRM_MATRIX[shape]?.[rand] ?? null : null)
+  const color  = result ? BRM_CAT_COLORS[result] : '#db2777'
+  const bg     = result ? BRM_CAT_BG[result]     : 'var(--surface-soft)'
+  const interp = result ? (BRM_INTERP[result][lang] || BRM_INTERP[result].de) : null
+
+  const chipSt = (on) => ({
+    padding:'6px 10px', borderRadius:8,
+    border:`1.5px solid ${on ? color : 'var(--border)'}`,
+    background: on ? color+'18' : 'var(--surface)',
+    cursor:'pointer', fontSize:12, fontWeight: on ? 700 : 500,
+    color: on ? color : 'var(--text)', transition:'all 0.12s',
+    fontFamily:'var(--font-main)', textAlign:'left',
+  })
+
+  const SHAPES = [
+    { k:'oval_rund', de:'Rund / Oval', en:'Round / Oval', fa:'گرد / بیضی' },
+    { k:'irregular', de:'Irregulär',   en:'Irregular',    fa:'نامنظم' },
+  ]
+  const RAENDER = [
+    { k:'circumscribed',  de:'Umschrieben',     en:'Circumscribed',  fa:'محدود' },
+    { k:'microlobulated', de:'Mikrolobuliert',   en:'Microlobulated', fa:'میکرولوبوله' },
+    { k:'indistinct',     de:'Unscharf',         en:'Indistinct',     fa:'نامشخص' },
+    { k:'angular',        de:'Eckig',            en:'Angular',        fa:'زاویه‌دار' },
+    { k:'spiculated',     de:'Spekuliert',       en:'Spiculated',     fa:'اسپیکوله' },
+  ]
+
+  return (
+    <div style={{display:'flex',flexDirection:'column',gap:10}}>
+      {/* Fetthaltig – Sonderfall */}
+      <button type="button" onClick={()=>{setFat(f=>!f); if(!fat){setShape('');setRand('')}}}
+        style={{...chipSt(fat), color: fat?'#16a34a':'var(--text)', border:`1.5px solid ${fat?'#16a34a':'var(--border)'}`, background: fat?'#dcfce718':'var(--surface)', display:'flex', alignItems:'center', gap:8}}>
+        <span style={{width:14,height:14,borderRadius:3,border:`2px solid ${fat?'#16a34a':'var(--border)'}`,background:fat?'#16a34a':'transparent',flexShrink:0,display:'flex',alignItems:'center',justifyContent:'center'}}>
+          {fat && <svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+        </span>
+        <span style={{fontSize:12,fontWeight:600}}>
+          {lang==='fa'?'حاوی چربی':lang==='en'?'Fat-containing':'Fetthaltig'}
+          <span style={{fontSize:11,fontWeight:400,marginLeft:6,opacity:0.7}}>→ BI-RADS 2</span>
+        </span>
+      </button>
+
+      {!fat && (<>
+        {/* Form */}
+        <div>
+          <div style={{fontSize:10.5,fontWeight:700,letterSpacing:'0.07em',textTransform:'uppercase',color:'var(--text-muted)',marginBottom:5}}>
+            {lang==='fa'?'شکل':lang==='en'?'Shape':'Form'}
+          </div>
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:5}}>
+            {SHAPES.map(s=>(
+              <button key={s.k} type="button" onClick={()=>setShape(s.k)} style={chipSt(shape===s.k)}>{lbl(s)}</button>
+            ))}
+          </div>
+        </div>
+        {/* Rand */}
+        <div>
+          <div style={{fontSize:10.5,fontWeight:700,letterSpacing:'0.07em',textTransform:'uppercase',color:'var(--text-muted)',marginBottom:5}}>
+            {lang==='fa'?'حاشیه':lang==='en'?'Margin':'Rand'}
+          </div>
+          <div style={{display:'flex',flexDirection:'column',gap:4}}>
+            {RAENDER.map(r=>(
+              <button key={r.k} type="button" onClick={()=>setRand(r.k)} style={chipSt(rand===r.k)}>{lbl(r)}</button>
+            ))}
+          </div>
+        </div>
+      </>)}
+
+      {/* Ergebnis */}
+      <div style={{background:bg,border:`1.5px solid ${result?color+'44':'var(--border)'}`,borderRadius:12,padding:'13px 16px',textAlign:'center',transition:'all 0.25s',minHeight:56,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center'}}>
+        {result ? (
+          <>
+            <div style={{fontFamily:'var(--font-display)',fontSize:'1.6rem',fontWeight:700,color,lineHeight:1}}>{result}</div>
+            <div style={{fontSize:11.5,color,fontWeight:600,marginTop:3,opacity:0.9}}>{interp}</div>
+          </>
+        ) : <span style={{color:'var(--text-muted)',fontSize:13}}>—</span>}
+      </div>
+      <div style={{fontSize:10,color:'var(--text-muted)'}}>ACR BI-RADS® Atlas, 5. Auflage</div>
     </div>
   )
 }
