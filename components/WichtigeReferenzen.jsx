@@ -280,6 +280,7 @@ const CALCULATOR_GROUP_LOGOS = {
   urogenital: '/fach/becken-m.png',
   onko: '/fach/technik.png',
   wirbelsaeule: '/fach/wirbelsaeule.png',
+  mamma: '/fach/mamma.png',
 }
 
 function HomeCardIcon({ type, alt }) {
@@ -882,6 +883,12 @@ const RECHNER_GROUPS = [
     color: '#f97316', iconId: 'wirbelsaeule',
     calcIds: ['meyerding'],
   },
+  {
+    id: 'mamma',
+    name: { de: 'Mamma', en: 'Breast', fa: 'پستان' },
+    color: '#db2777', iconId: 'mamma',
+    calcIds: ['birads-kalk'],
+  },
 ]
 
 /* ── Rechner-Modal ────────────────────────────── */
@@ -939,11 +946,12 @@ function RechnerCard({ calc, lang }) {
         {calc.formula && <div className={styles.rcFormula}>{calc.formula}</div>}
       </div>
 
-      {calc.type === 'single'     && <SingleCalc     calc={calc} lang={lang} />}
-      {calc.type === 'multi'      && <MultiCalc      calc={calc} lang={lang} />}
-      {calc.type === 'conversion' && <ConversionCalc calc={calc} lang={lang} />}
-      {calc.type === 'recist'     && <RecistCalc     calc={calc} lang={lang} />}
-      {calc.type === 'fleischner' && <FleischnerCalc calc={calc} lang={lang} />}
+      {calc.type === 'single'      && <SingleCalc      calc={calc} lang={lang} />}
+      {calc.type === 'multi'       && <MultiCalc       calc={calc} lang={lang} />}
+      {calc.type === 'conversion'  && <ConversionCalc  calc={calc} lang={lang} />}
+      {calc.type === 'recist'      && <RecistCalc      calc={calc} lang={lang} />}
+      {calc.type === 'fleischner'  && <FleischnerCalc  calc={calc} lang={lang} />}
+      {calc.type === 'birads-kalk' && <BiRadsKalkCalc  calc={calc} lang={lang} />}
 
       {calc.hint && <p className={styles.rcHint}>{tx(calc.hint, lang)}</p>}
     </div>
@@ -997,6 +1005,111 @@ function ResultBox({ val, unit, decimals, range, lang }) {
       ) : (
         <span className={styles.rcResultPlaceholder}>—</span>
       )}
+    </div>
+  )
+}
+
+/* ── BiRadsKalkCalc ───────────────────────────── */
+const BIRKALK_MATRIX = {
+  rund:           { diffus:'3', regional:'3', gruppiert:'3',  linear:'3',  segmental:'4B' },
+  amorph:         { diffus:'3', regional:'3', gruppiert:'4B', linear:'4B', segmental:'4B' },
+  grob_heterogen: { diffus:'3', regional:'3', gruppiert:'4A', linear:'4B', segmental:'4B' },
+  fein_pleomorph: { diffus:'4B',regional:'4B',gruppiert:'4C', linear:'4C', segmental:'4C' },
+  fein_linear:    { diffus:'4C',regional:'4B',gruppiert:'4C', linear:'5',  segmental:'5'  },
+}
+const BIRKALK_MORPHS = [
+  { k:'rund',           de:'Rund / oval',            en:'Round / oval',          fa:'گرد / بیضی' },
+  { k:'amorph',         de:'Amorph',                 en:'Amorphous',             fa:'بی‌شکل' },
+  { k:'grob_heterogen', de:'Grob heterogen',          en:'Coarse heterogeneous',  fa:'ناهمگن درشت' },
+  { k:'fein_pleomorph', de:'Fein pleomorph',          en:'Fine pleomorphic',      fa:'پلئومورف ریز' },
+  { k:'fein_linear',    de:'Fein linear / verzweigt', en:'Fine linear/branching', fa:'خطی ریز / شاخه‌دار' },
+]
+const BIRKALK_DISTS = [
+  { k:'diffus',    de:'Diffus',    en:'Diffuse',   fa:'منتشر' },
+  { k:'regional',  de:'Regional',  en:'Regional',  fa:'ناحیه‌ای' },
+  { k:'gruppiert', de:'Gruppiert', en:'Grouped',   fa:'گروهی' },
+  { k:'linear',    de:'Linear',    en:'Linear',    fa:'خطی' },
+  { k:'segmental', de:'Segmental', en:'Segmental', fa:'سگمنتال' },
+]
+const BIRKALK_CATS = ['3','4A','4B','4C','5']
+const BIRKALK_COLORS = { '3':'#16a34a','4A':'#0891b2','4B':'#2563eb','4C':'#d97706','5':'#dc2626' }
+const BIRKALK_INTERP = {
+  '3':  { de:'< 2 % · Verlaufskontrolle 6 Mon.',   en:'< 2 % · Follow-up 6 mo',         fa:'< ۲٪ · پیگیری ۶ ماهه' },
+  '4A': { de:'2–10 % · Biopsie erwägen',            en:'2–10 % · Consider biopsy',        fa:'۲–۱۰٪ · بیوپسی بررسی شود' },
+  '4B': { de:'10–50 % · Biopsie empfohlen',         en:'10–50 % · Biopsy recommended',    fa:'۱۰–۵۰٪ · بیوپسی توصیه' },
+  '4C': { de:'50–95 % · Biopsie dringend',          en:'50–95 % · Biopsy strongly rec.',  fa:'۵۰–۹۵٪ · بیوپسی اکید' },
+  '5':  { de:'> 95 % · Biopsie obligat',            en:'> 95 % · Biopsy mandatory',       fa:'> ۹۵٪ · بیوپسی اجباری' },
+}
+const BIRKALK_MODS = [
+  { k:'masse',       up:true,  de:'↑ Masse / Architekturstörung', en:'↑ Mass / Arch. distortion',  fa:'↑ توده / اختلال معماری' },
+  { k:'alter',       up:true,  de:'↑ Alter / Anamnese',           en:'↑ Age / Personal history',   fa:'↑ سن / سابقه' },
+  { k:'groesse',     up:true,  de:'Herd ≥ 15 mm',                 en:'Cluster ≥ 15 mm',            fa:'اندازه ≥ ۱۵ mm' },
+  { k:'stabilitaet', up:false, de:'↓ Stabilität ≥ 2 J.',          en:'↓ Stability ≥ 2 yrs',       fa:'↓ پایداری ≥ ۲ سال' },
+]
+function BiRadsKalkCalc({ calc, lang }) {
+  const [morph, setMorph] = useState('')
+  const [dist,  setDist]  = useState('')
+  const [mods,  setMods]  = useState({masse:false,alter:false,groesse:false,stabilitaet:false})
+  const base = morph && dist ? BIRKALK_MATRIX[morph][dist] : null
+  const result = base ? (() => {
+    let idx = BIRKALK_CATS.indexOf(base)
+    if (mods.masse)       idx = Math.min(idx+1, BIRKALK_CATS.length-1)
+    if (mods.alter)       idx = Math.min(idx+1, BIRKALK_CATS.length-1)
+    if (mods.groesse)     idx = Math.min(idx+1, BIRKALK_CATS.length-1)
+    if (mods.stabilitaet) idx = Math.max(idx-1, 0)
+    return BIRKALK_CATS[idx]
+  })() : null
+  const color = result ? BIRKALK_COLORS[result] : '#db2777'
+  const interp = result ? (BIRKALK_INTERP[result][lang] || BIRKALK_INTERP[result].de) : null
+  const modified = result && base && result !== base
+  const lbl = (obj) => obj[lang] || obj.de
+  const toggleMod = (k) => setMods(p => ({...p,[k]:!p[k]}))
+  return (
+    <div style={{display:'flex',flexDirection:'column',gap:10}}>
+      {/* Selects */}
+      <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:8}}>
+        <label style={{display:'flex',flexDirection:'column',gap:4,fontSize:11,fontWeight:700,letterSpacing:'0.06em',textTransform:'uppercase',color:'var(--text-muted)'}}>
+          {lang==='fa'?'مورفولوژی':lang==='en'?'Morphology':'Morphologie'}
+          <select value={morph} onChange={e=>setMorph(e.target.value)} className={styles.rcInput} style={{padding:'7px 10px',height:'auto',fontSize:12.5,fontWeight:400,background:'var(--surface)',color:'var(--text)',border:'1.5px solid var(--border)',borderRadius:10,cursor:'pointer',textTransform:'none',letterSpacing:0}}>
+            <option value="">—</option>
+            {BIRKALK_MORPHS.map(m=><option key={m.k} value={m.k}>{lbl(m)}</option>)}
+          </select>
+        </label>
+        <label style={{display:'flex',flexDirection:'column',gap:4,fontSize:11,fontWeight:700,letterSpacing:'0.06em',textTransform:'uppercase',color:'var(--text-muted)'}}>
+          {lang==='fa'?'توزیع':lang==='en'?'Distribution':'Verteilung'}
+          <select value={dist} onChange={e=>setDist(e.target.value)} className={styles.rcInput} style={{padding:'7px 10px',height:'auto',fontSize:12.5,fontWeight:400,background:'var(--surface)',color:'var(--text)',border:'1.5px solid var(--border)',borderRadius:10,cursor:'pointer',textTransform:'none',letterSpacing:0}}>
+            <option value="">—</option>
+            {BIRKALK_DISTS.map(d=><option key={d.k} value={d.k}>{lbl(d)}</option>)}
+          </select>
+        </label>
+      </div>
+      {/* Result */}
+      <div style={{background: result ? color+'14' : 'var(--surface-soft)', border:`1.5px solid ${result ? color+'44' : 'var(--border)'}`, borderRadius:12, padding:'14px 16px', textAlign:'center', transition:'all 0.25s'}}>
+        {result ? (
+          <>
+            <div style={{fontFamily:'var(--font-display)',fontSize:'2rem',fontWeight:700,color,lineHeight:1}}>{result}</div>
+            <div style={{fontSize:12,color,fontWeight:600,marginTop:4,opacity:0.85}}>{interp}</div>
+            {modified && <div style={{fontSize:10.5,color:'var(--text-muted)',marginTop:4,fontStyle:'italic'}}>Basis: BI-RADS {base}</div>}
+          </>
+        ) : (
+          <span style={{color:'var(--text-muted)',fontSize:13}}>—</span>
+        )}
+      </div>
+      {/* Modifiers */}
+      <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:6}}>
+        {BIRKALK_MODS.map(m=>(
+          <button key={m.k} type="button" onClick={()=>toggleMod(m.k)}
+            style={{display:'flex',alignItems:'center',gap:6,padding:'7px 10px',border:`1.5px solid ${mods[m.k]?'#db2777':'var(--border)'}`,borderRadius:10,background:mods[m.k]?'#fdf2f8':'var(--surface)',cursor:'pointer',textAlign:'left',fontFamily:'var(--font-main)',transition:'all 0.15s'}}>
+            <span style={{width:14,height:14,borderRadius:4,border:`2px solid ${mods[m.k]?'#db2777':'var(--border)'}`,background:mods[m.k]?'#db2777':'transparent',flexShrink:0,display:'flex',alignItems:'center',justifyContent:'center'}}>
+              {mods[m.k] && <svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+            </span>
+            <span style={{fontSize:11,fontWeight:600,color:'var(--text)',flex:1,lineHeight:1.3}}>{lbl(m)}</span>
+            <span style={{fontSize:10,fontWeight:800,padding:'1px 5px',borderRadius:5,background:m.up?'#fee2e2':'#dcfce7',color:m.up?'#b91c1c':'#15803d'}}>{m.up?'+1':'−1'}</span>
+          </button>
+        ))}
+      </div>
+      {/* Ref */}
+      <div style={{fontSize:10,color:'var(--text-muted)',marginTop:2}}>Youk et al. Korean J Radiol 2019 · Rominger et al. RöFo 2012</div>
     </div>
   )
 }
