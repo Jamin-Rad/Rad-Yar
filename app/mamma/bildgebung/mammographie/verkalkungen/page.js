@@ -89,6 +89,15 @@ Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifi
       <article><span>SUTURE</span><div><h3>Nahtverkalkungen</h3><p>Lineare oder kurvilineare Verkalkungen entlang von Nahtmaterial nach Operationen.</p></div></article>
     </div>
     <article className={caseStyles.caseStudy}>
+      <header className={caseStyles.caseHeader}><div><small>LAYERING · SCHEMA + ORIGINAL</small><h3>Teacup- oder Meniskuszeichen</h3></div></header>
+      <div className={caseStyles.caseGallery}>
+        <figure><a href="/mamma/mammographie/verkalkungen/layering/layering-schematic.svg" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/layering/layering-schematic.svg" alt="Schematische Erklärung des Layering- beziehungsweise Teacup-Zeichens" width={1200} height={650}/></a><figcaption>Schema: CC versus ML/MLO</figcaption></figure>
+        <figure><a href="https://www.ncbi.nlm.nih.gov/core/lw/2.0/html/tileshop_pmc/tileshop_pmc_inline.html?title=Click%20on%20image%20to%20zoom&p=PMC3&id=13266138_jksr-87-437-g006.jpg" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/layering/layering-original.png" alt="Originalabbildung mit amorphen oder runden Verkalkungen in CC und Meniskus- beziehungsweise Teacup-Zeichen in ML" width={788} height={714}/></a><figcaption>Originalabbildung · A: CC · B: ML/MLO</figcaption></figure>
+      </div>
+      <p className={caseStyles.caseDescription}><strong>Prinzip:</strong> In der CC-Aufnahme erscheinen die Verkalkungen rundlich und unscharf. In der ML- oder MLO-Aufnahme lagern sie sich schwerkraftbedingt am Boden einer Zyste ab und bilden die typische sichelförmige Meniskus- beziehungsweise Teacup-Konfiguration. In der aktuellen BI-RADS-Terminologie wird dafür der beschreibende Begriff „Layering“ verwendet.</p>
+      <p className={caseStyles.caseCredit}>Originalabbildung: <a href="https://www.ncbi.nlm.nih.gov/core/lw/2.0/html/tileshop_pmc/tileshop_pmc_inline.html?title=Click%20on%20image%20to%20zoom&p=PMC3&id=13266138_jksr-87-437-g006.jpg" target="_blank" rel="noreferrer">J Korean Soc Radiol. 2025;87:437, Fig. 6</a>.</p>
+    </article>
+    <article className={caseStyles.caseStudy}>
       <header className={caseStyles.caseHeader}><div><small>RADIOPAEDIA-FALL</small><h3>Grobschollige Verkalkungen</h3></div></header>
       <div className={caseStyles.caseGallery}>
         <figure><a href="https://radiopaedia.org/cases/57400/studies/64347?lang=us#t=im&v1i=34751209&v1z=1&v2i=34751200&v2z=1&v3i=34751201&v3z=1&v4i=34751209&v4z=1" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-57400/l-mlo.png" alt="MLO-Mammographie mit grobscholliger Verkalkung" width={592} height={768}/></a><figcaption>Links MLO</figcaption></figure>

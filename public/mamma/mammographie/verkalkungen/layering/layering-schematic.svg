@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+  <title id="title">Layering: Teacup- oder Meniskuszeichen</title>
+  <desc id="desc">Schematische Darstellung von rundlichen Verkalkungen in der CC-Aufnahme und sichelförmiger Sedimentation in der seitlichen Aufnahme.</desc>
+  <rect width="1200" height="650" rx="28" fill="#071d3a"/>
+  <text x="60" y="72" fill="#e73368" font-family="Arial,sans-serif" font-size="25" font-weight="700" letter-spacing="3">LAYERING</text>
+  <text x="60" y="112" fill="#ffffff" font-family="Georgia,serif" font-size="31" font-weight="700">Milchkalzium / Teacup-Zeichen</text>
+  <line x1="600" y1="150" x2="600" y2="570" stroke="#334d6e" stroke-width="2"/>
+  <text x="300" y="180" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="25" font-weight="700">A · CC-Aufnahme</text>
+  <text x="900" y="180" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="25" font-weight="700">B · ML / MLO-Aufnahme</text>
+  <circle cx="300" cy="360" r="132" fill="#dbe7f1" fill-opacity=".12" stroke="#b6ccdf" stroke-width="5"/>
+  <circle cx="300" cy="360" r="105" fill="#ffffff" fill-opacity=".04" stroke="#91a9bf" stroke-width="2"/>
+  <g fill="#ffb347">
+    <circle cx="222" cy="293" r="8"/><circle cx="258" cy="270" r="7"/><circle cx="305" cy="265" r="8"/><circle cx="350" cy="285" r="7"/><circle cx="378" cy="322" r="8"/><circle cx="375" cy="370" r="7"/><circle cx="348" cy="414" r="8"/><circle cx="306" cy="430" r="7"/><circle cx="260" cy="420" r="8"/><circle cx="225" cy="385" r="7"/><circle cx="215" cy="340" r="7"/>
+  </g>
+  <text x="300" y="545" text-anchor="middle" fill="#dbe7f1" font-family="Arial,sans-serif" font-size="22">rundlich / unscharf („smudgy“)</text>
+  <path d="M768 425 Q900 505 1032 425" fill="#ffb347" fill-opacity=".9"/>
+  <path d="M768 425 Q900 505 1032 425" fill="none" stroke="#ffd18a" stroke-width="4"/>
+  <ellipse cx="900" cy="365" rx="145" ry="100" fill="#dbe7f1" fill-opacity=".12" stroke="#b6ccdf" stroke-width="5"/>
+  <path d="M765 365 Q900 430 1035 365" fill="none" stroke="#ffb347" stroke-width="14"/>
+  <path d="M790 347 Q900 405 1010 347" fill="none" stroke="#ffcf80" stroke-width="4" stroke-dasharray="8 10"/>
+  <text x="900" y="545" text-anchor="middle" fill="#dbe7f1" font-family="Arial,sans-serif" font-size="22">sichelförmig / Meniskus</text>
+  <text x="900" y="585" text-anchor="middle" fill="#ffb347" font-family="Arial,sans-serif" font-size="20" font-weight="700">Sedimentation durch Schwerkraft</text>
+</svg>
