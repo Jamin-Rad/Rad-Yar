@@ -887,7 +887,7 @@ const RECHNER_GROUPS = [
     id: 'mamma',
     name: { de: 'Mamma', en: 'Breast', fa: 'پستان' },
     color: '#db2777', iconId: 'mamma',
-    calcIds: ['birads-kalk'],
+    calcIds: ['birads-kalk', 'node-rads'],
   },
 ]
 
@@ -952,6 +952,7 @@ function RechnerCard({ calc, lang }) {
       {calc.type === 'recist'      && <RecistCalc      calc={calc} lang={lang} />}
       {calc.type === 'fleischner'  && <FleischnerCalc  calc={calc} lang={lang} />}
       {calc.type === 'birads-kalk' && <BiRadsKalkCalc  calc={calc} lang={lang} />}
+      {calc.type === 'node-rads'   && <NodeRadsCalc    calc={calc} lang={lang} />}
 
       {calc.hint && <p className={styles.rcHint}>{tx(calc.hint, lang)}</p>}
     </div>
@@ -1110,6 +1111,155 @@ function BiRadsKalkCalc({ calc, lang }) {
       </div>
       {/* Ref */}
       <div style={{fontSize:10,color:'var(--text-muted)',marginTop:2}}>Youk et al. Korean J Radiol 2019 · Rominger et al. RöFo 2012</div>
+    </div>
+  )
+}
+
+/* ── NodeRadsCalc ─────────────────────────────── */
+// Scoring per Elsholtz et al. Eur Radiol 2021
+// Size: normal (<10mm SAx) / enlarged / bulk (≥30mm)
+// Config: texture(0-3) + border(0-1) + shape(0-1) = 0-5
+// Final: normal+0→1, normal+1→2, normal+2-3→3, normal+4-5→4
+//        enlarged+0→2, enlarged+1-2→3, enlarged+3-4→4, enlarged+5→5
+//        bulk→5
+const NR_CATS = [
+  { v:1, de:'1 — Sehr niedrig',   en:'1 — Very low',    fa:'۱ — بسیار پایین',   color:'#16a34a', bg:'#dcfce7', risk:'< 5 %',    action:{ de:'Keine weitere Abklärung',              en:'No further workup',              fa:'بدون بررسی بیشتر' } },
+  { v:2, de:'2 — Niedrig',        en:'2 — Low',         fa:'۲ — پایین',          color:'#0891b2', bg:'#cffafe', risk:'5–15 %',   action:{ de:'Verlaufskontrolle erwägen',            en:'Consider follow-up',             fa:'پیگیری مد نظر' } },
+  { v:3, de:'3 — Äquivokal',      en:'3 — Equivocal',   fa:'۳ — مبهم',           color:'#ca8a04', bg:'#fef9c3', risk:'15–50 %',  action:{ de:'Zusatzdiagnostik / klinische Korrelation', en:'Additional workup / correlation', fa:'ارزیابی بیشتر' } },
+  { v:4, de:'4 — Hoch',           en:'4 — High',        fa:'۴ — بالا',           color:'#d97706', bg:'#fef3c7', risk:'50–85 %',  action:{ de:'Biopsie empfohlen',                   en:'Biopsy recommended',             fa:'بیوپسی توصیه' } },
+  { v:5, de:'5 — Sehr hoch',      en:'5 — Very high',   fa:'۵ — بسیار بالا',    color:'#dc2626', bg:'#fee2e2', risk:'> 85 %',   action:{ de:'Biopsie obligat',                     en:'Biopsy mandatory',               fa:'بیوپسی اجباری' } },
+]
+function nodeRadsScore(size, tex, border, shape) {
+  if (!size) return null
+  const cfg = tex + border + shape
+  if (size === 'bulk') return 5
+  if (size === 'normal') {
+    if (cfg === 0) return 1
+    if (cfg === 1) return 2
+    if (cfg <= 3) return 3
+    return 4
+  }
+  // enlarged
+  if (cfg === 0) return 2
+  if (cfg <= 2) return 3
+  if (cfg <= 4) return 4
+  return 5
+}
+function NodeRadsCalc({ calc, lang }) {
+  const [size,   setSize]   = useState('')
+  const [tex,    setTex]    = useState(null)
+  const [border, setBorder] = useState(null)
+  const [shape,  setShape]  = useState(null)
+  const ready = size && tex !== null && border !== null && shape !== null
+  const score = ready ? nodeRadsScore(size, tex, border, shape) : null
+  const cat   = score ? NR_CATS.find(c => c.v === score) : null
+  const cfg   = (tex ?? 0) + (border ?? 0) + (shape ?? 0)
+  const lbl   = (obj) => (obj && (obj[lang] || obj.de)) || ''
+
+  const SIZES = [
+    { k:'normal',   de:'Normal (Kurzachse < 10 mm)',    en:'Normal (SAx < 10 mm)',       fa:'طبیعی (محور کوتاه < ۱۰ mm)' },
+    { k:'enlarged', de:'Vergrößert (10–29 mm)',          en:'Enlarged (10–29 mm)',         fa:'بزرگ‌شده (۱۰–۲۹ mm)' },
+    { k:'bulk',     de:'Bulk (≥ 30 mm)',                 en:'Bulk (≥ 30 mm)',             fa:'توده (≥ ۳۰ mm)' },
+  ]
+  const TEX_OPTS = [
+    { v:0, de:'Homogen',              en:'Homogeneous',        fa:'همگن' },
+    { v:1, de:'Heterogen',            en:'Heterogeneous',      fa:'ناهمگن' },
+    { v:2, de:'Fokale Nekrose',       en:'Focal necrosis',     fa:'نکروز کانونی' },
+    { v:3, de:'Makroskop. Nekrose',   en:'Macroscopic necrosis', fa:'نکروز ماکروسکوپی' },
+  ]
+  const chipStyle = (selected, color='#7c3aed') => ({
+    padding:'5px 10px', borderRadius:8, border:`1.5px solid ${selected?color:'var(--border)'}`,
+    background: selected ? color+'18' : 'var(--surface)', cursor:'pointer',
+    fontSize:11.5, fontWeight: selected?700:500, color: selected?color:'var(--text)',
+    transition:'all 0.12s', fontFamily:'var(--font-main)',
+  })
+
+  return (
+    <div style={{display:'flex',flexDirection:'column',gap:10}}>
+      {/* Size */}
+      <div>
+        <div style={{fontSize:10.5,fontWeight:700,letterSpacing:'0.07em',textTransform:'uppercase',color:'var(--text-muted)',marginBottom:5}}>
+          {lang==='fa'?'اندازه':lang==='en'?'Size':'Größe (Kurzachse)'}
+        </div>
+        <div style={{display:'flex',flexDirection:'column',gap:4}}>
+          {SIZES.map(s=>(
+            <button key={s.k} type="button" onClick={()=>setSize(s.k)} style={chipStyle(size===s.k)}>
+              {lbl(s)}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Configuration — only show if not bulk */}
+      {size && size !== 'bulk' && (
+        <>
+          {/* Texture */}
+          <div>
+            <div style={{fontSize:10.5,fontWeight:700,letterSpacing:'0.07em',textTransform:'uppercase',color:'var(--text-muted)',marginBottom:5}}>
+              {lang==='fa'?'بافت':lang==='en'?'Texture':'Textur'}
+              <span style={{fontWeight:400,letterSpacing:0,textTransform:'none',marginLeft:4,opacity:0.7}}>(0–3)</span>
+            </div>
+            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:4}}>
+              {TEX_OPTS.map(o=>(
+                <button key={o.v} type="button" onClick={()=>setTex(o.v)} style={chipStyle(tex===o.v)}>
+                  <span style={{fontSize:10,fontWeight:700,marginRight:4,opacity:0.6}}>+{o.v}</span>{lbl(o)}
+                </button>
+              ))}
+            </div>
+          </div>
+          {/* Border */}
+          <div>
+            <div style={{fontSize:10.5,fontWeight:700,letterSpacing:'0.07em',textTransform:'uppercase',color:'var(--text-muted)',marginBottom:5}}>
+              {lang==='fa'?'حاشیه':lang==='en'?'Border':'Rand'}
+              <span style={{fontWeight:400,letterSpacing:0,textTransform:'none',marginLeft:4,opacity:0.7}}>(0–1)</span>
+            </div>
+            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:4}}>
+              {[{v:0,de:'Glatt',en:'Smooth',fa:'صاف'},{v:1,de:'Unregelmäßig',en:'Irregular',fa:'نامنظم'}].map(o=>(
+                <button key={o.v} type="button" onClick={()=>setBorder(o.v)} style={chipStyle(border===o.v)}>
+                  <span style={{fontSize:10,fontWeight:700,marginRight:4,opacity:0.6}}>+{o.v}</span>{lbl(o)}
+                </button>
+              ))}
+            </div>
+          </div>
+          {/* Shape */}
+          <div>
+            <div style={{fontSize:10.5,fontWeight:700,letterSpacing:'0.07em',textTransform:'uppercase',color:'var(--text-muted)',marginBottom:5}}>
+              {lang==='fa'?'شکل':lang==='en'?'Shape':'Form'}
+              <span style={{fontWeight:400,letterSpacing:0,textTransform:'none',marginLeft:4,opacity:0.7}}>(0–1)</span>
+            </div>
+            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:4}}>
+              {[{v:0,de:'Oval / Fetthilus',en:'Oval / fatty hilum',fa:'بیضی / هیلوس چربی'},{v:1,de:'Rund, kein Hilus',en:'Spherical, no hilum',fa:'کروی، بدون هیلوس'}].map(o=>(
+                <button key={o.v} type="button" onClick={()=>setShape(o.v)} style={chipStyle(shape===o.v)}>
+                  <span style={{fontSize:10,fontWeight:700,marginRight:4,opacity:0.6}}>+{o.v}</span>{lbl(o)}
+                </button>
+              ))}
+            </div>
+          </div>
+          {/* Config sum badge */}
+          {tex !== null && border !== null && shape !== null && (
+            <div style={{fontSize:11,color:'var(--text-muted)',textAlign:'right'}}>
+              {lang==='fa'?'مجموع کانفیگ':lang==='en'?'Config total':'Konfig.-Summe'}: <strong style={{color:'#7c3aed'}}>{cfg}/5</strong>
+            </div>
+          )}
+        </>
+      )}
+
+      {/* Result */}
+      <div style={{background: cat ? cat.color+'14' : 'var(--surface-soft)', border:`1.5px solid ${cat ? cat.color+'44' : 'var(--border)'}`, borderRadius:12, padding:'14px 16px', textAlign:'center', transition:'all 0.25s', minHeight:64, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
+        {cat ? (
+          <>
+            <div style={{fontFamily:'var(--font-display)',fontSize:'1.75rem',fontWeight:700,color:cat.color,lineHeight:1}}>{cat.v}</div>
+            <div style={{fontSize:11.5,color:cat.color,fontWeight:700,marginTop:3}}>{lbl(cat)}</div>
+            <div style={{fontSize:11,color:'var(--text-muted)',marginTop:3}}>
+              {lang==='fa'?'خطر':lang==='en'?'Risk':'Risiko'}: {cat.risk} · {lbl(cat.action)}
+            </div>
+          </>
+        ) : (
+          <span style={{color:'var(--text-muted)',fontSize:13}}>—</span>
+        )}
+      </div>
+      {/* Ref */}
+      <div style={{fontSize:10,color:'var(--text-muted)',marginTop:2}}>Elsholtz et al. · Eur Radiol · 2021</div>
     </div>
   )
 }
