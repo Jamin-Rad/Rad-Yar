@@ -1,5 +1,6 @@
 'use client'
 import {useEffect,useMemo,useState} from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import {useLanguage} from '@/providers/LanguageProvider'
 import {useLessonReadStatus} from '@/hooks/useLessonReadStatus'
@@ -8,6 +9,7 @@ import base from '@/app/abdomen/gi/divertikulitis/page.module.css'
 import shared from '../grundlagen/page.module.css'
 import basics from '../../mrt/basics/page.module.css'
 import styles from './page.module.css'
+import caseStyles from './case.module.css'
 import {ALGORITHM,BENIGN,COMBINATIONS,CONTEXT,COPY,DISTRIBUTION,GERMAN_SECTIONS,L,MORPH,SECTIONS,TAKE_HOME,pick} from './content'
 const ID='mammographie-mikrokalk',PATH='/mamma/bildgebung/mammographie/verkalkungen'
 const READ={de:['Als gelesen markieren','Als gelesen markiert','Bitte melde dich an, um deinen Lernfortschritt zu speichern.','Anmelden'],en:['Mark as read','Marked as read','Please sign in to save your learning progress.','Sign in'],fa:['علامت‌گذاری به‌عنوان خوانده‌شده','به‌عنوان خوانده‌شده علامت‌گذاری شد','برای ذخیره پیشرفت لطفاً وارد شوید.','ورود']}
@@ -46,6 +48,19 @@ function GermanContent(){return <>
 
 Mammographisch gelten sie als benigne.`}</Lines></p></article>
     </div>
+    <article className={caseStyles.caseStudy}>
+      <header className={caseStyles.caseHeader}>
+        <div><small>RADIOPAEDIA-FALL</small><h3>Hautverkalkungen</h3></div>
+        <a href="https://radiopaedia.org/cases/159211" target="_blank" rel="noreferrer">rID: 159211 ↗</a>
+      </header>
+      <div className={caseStyles.caseGallery}>
+        <figure><Image src="/mamma/mammographie/verkalkungen/case-159211/r-mlo.png" alt="MLO-Mammographie der rechten Brust mit Hautverkalkungen" width={340} height={630}/><figcaption>Rechts MLO</figcaption></figure>
+        <figure><Image src="/mamma/mammographie/verkalkungen/case-159211/r-cc-detail.png" alt="Vergrößerung gruppierter Hautverkalkungen der rechten Brust" width={335} height={578}/><figcaption>Detailaufnahme</figcaption></figure>
+        <figure><Image src="/mamma/mammographie/verkalkungen/case-159211/r-cc.png" alt="CC-Mammographie der rechten Brust mit posteromedialen Hautverkalkungen" width={392} height={630}/><figcaption>Rechts CC</figcaption></figure>
+      </div>
+      <p className={caseStyles.caseDescription}><strong>Morphologie und Lage:</strong> Mehrere rundliche, teils zentral aufgehellte Verkalkungen liegen dicht gruppiert und oberflächlich in der posteromedialen Haut nahe der Inframammärfalte.</p>
+      <p className={caseStyles.caseCredit}>Case courtesy of Ammar Ashraf, Radiopaedia.org, rID: 159211.</p>
+    </article>
     <div className={styles.rule}><strong>Wichtiger vaskulärer Hinweis</strong><p>Vaskuläre Verkalkungen sind ein relevanter Marker für ein erhöhtes Risiko kardiovaskulärer Erkrankungen. Daher sollte eine klinische kardiovaskuläre Risikoevaluation erfolgen.</p></div>
     <h3 className={styles.takeTitle}>Typisch benigne Verkalkungen im Drüsenparenchym</h3>
     <div className={styles.benignList}>
