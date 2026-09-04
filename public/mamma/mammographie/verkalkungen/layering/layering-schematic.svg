@@ -1,23 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
-  <title id="title">Layering: Teacup- oder Meniskuszeichen</title>
-  <desc id="desc">Schematische Darstellung von rundlichen Verkalkungen in der CC-Aufnahme und sichelförmiger Sedimentation in der seitlichen Aufnahme.</desc>
-  <rect width="1200" height="650" rx="28" fill="#071d3a"/>
-  <text x="60" y="72" fill="#e73368" font-family="Arial,sans-serif" font-size="25" font-weight="700" letter-spacing="3">LAYERING</text>
-  <text x="60" y="112" fill="#ffffff" font-family="Georgia,serif" font-size="31" font-weight="700">Milchkalzium / Teacup-Zeichen</text>
-  <line x1="600" y1="150" x2="600" y2="570" stroke="#334d6e" stroke-width="2"/>
-  <text x="300" y="180" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="25" font-weight="700">A · CC-Aufnahme</text>
-  <text x="900" y="180" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="25" font-weight="700">B · ML / MLO-Aufnahme</text>
-  <circle cx="300" cy="360" r="132" fill="#dbe7f1" fill-opacity=".12" stroke="#b6ccdf" stroke-width="5"/>
-  <circle cx="300" cy="360" r="105" fill="#ffffff" fill-opacity=".04" stroke="#91a9bf" stroke-width="2"/>
-  <g fill="#ffb347">
-    <circle cx="222" cy="293" r="8"/><circle cx="258" cy="270" r="7"/><circle cx="305" cy="265" r="8"/><circle cx="350" cy="285" r="7"/><circle cx="378" cy="322" r="8"/><circle cx="375" cy="370" r="7"/><circle cx="348" cy="414" r="8"/><circle cx="306" cy="430" r="7"/><circle cx="260" cy="420" r="8"/><circle cx="225" cy="385" r="7"/><circle cx="215" cy="340" r="7"/>
-  </g>
-  <text x="300" y="545" text-anchor="middle" fill="#dbe7f1" font-family="Arial,sans-serif" font-size="22">rundlich / unscharf („smudgy“)</text>
-  <path d="M768 425 Q900 505 1032 425" fill="#ffb347" fill-opacity=".9"/>
-  <path d="M768 425 Q900 505 1032 425" fill="none" stroke="#ffd18a" stroke-width="4"/>
-  <ellipse cx="900" cy="365" rx="145" ry="100" fill="#dbe7f1" fill-opacity=".12" stroke="#b6ccdf" stroke-width="5"/>
-  <path d="M765 365 Q900 430 1035 365" fill="none" stroke="#ffb347" stroke-width="14"/>
-  <path d="M790 347 Q900 405 1010 347" fill="none" stroke="#ffcf80" stroke-width="4" stroke-dasharray="8 10"/>
-  <text x="900" y="545" text-anchor="middle" fill="#dbe7f1" font-family="Arial,sans-serif" font-size="22">sichelförmig / Meniskus</text>
-  <text x="900" y="585" text-anchor="middle" fill="#ffb347" font-family="Arial,sans-serif" font-size="20" font-weight="700">Sedimentation durch Schwerkraft</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Layering: Teetassenmodell und Mammographie</title>
+  <desc id="desc">Eine Teetasse erklärt, warum Kalk in der CC-Aufnahme rundlich und in der ML- oder MLO-Aufnahme sichelförmig am Zystenboden erscheint.</desc>
+  <rect width="1280" height="720" rx="28" fill="#071d3a"/>
+  <text x="54" y="64" fill="#e73368" font-family="Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="3">LAYERING</text>
+  <text x="54" y="102" fill="#fff" font-family="Georgia,serif" font-size="31" font-weight="700">Teetassenmodell → Mammographie</text>
+  <line x1="640" y1="136" x2="640" y2="665" stroke="#334d6e" stroke-width="2"/>
+
+  <text x="320" y="160" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="23" font-weight="700">Modell: Teetasse</text>
+  <text x="160" y="205" text-anchor="middle" fill="#a7bdd3" font-family="Arial,sans-serif" font-size="18">Draufsicht</text>
+  <text x="480" y="205" text-anchor="middle" fill="#a7bdd3" font-family="Arial,sans-serif" font-size="18">Seitenansicht</text>
+  <circle cx="160" cy="350" r="108" fill="#c7d6e4" fill-opacity=".12" stroke="#b6ccdf" stroke-width="5"/>
+  <circle cx="160" cy="350" r="86" fill="#d99835" fill-opacity=".65" stroke="#f6c06b" stroke-width="3"/>
+  <g fill="#fff0b0"><circle cx="103" cy="293" r="7"/><circle cx="139" cy="270" r="7"/><circle cx="184" cy="273" r="7"/><circle cx="218" cy="304" r="7"/><circle cx="235" cy="347" r="7"/><circle cx="214" cy="397" r="7"/><circle cx="176" cy="425" r="7"/><circle cx="130" cy="420" r="7"/><circle cx="96" cy="382" r="7"/><circle cx="88" cy="337" r="7"/></g>
+  <text x="160" y="505" text-anchor="middle" fill="#dbe7f1" font-family="Arial,sans-serif" font-size="18">Kalk rundlich/„smudgy“</text>
+  <path d="M374 287 Q480 245 586 287 L566 505 Q480 550 394 505 Z" fill="#c7d6e4" fill-opacity=".12" stroke="#b6ccdf" stroke-width="5"/>
+  <path d="M394 430 Q480 480 566 430 L566 505 Q480 550 394 505 Z" fill="#d99835" fill-opacity=".65"/>
+  <path d="M394 430 Q480 480 566 430" fill="none" stroke="#fff0b0" stroke-width="12"/>
+  <path d="M374 287 Q480 245 586 287" fill="none" stroke="#f6c06b" stroke-width="3"/>
+  <text x="480" y="590" text-anchor="middle" fill="#dbe7f1" font-family="Arial,sans-serif" font-size="18">Kalk sinkt zum Boden ab</text>
+  <text x="480" y="620" text-anchor="middle" fill="#ffb347" font-family="Arial,sans-serif" font-size="18" font-weight="700">sichelförmige Schicht</text>
+
+  <text x="960" y="160" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="23" font-weight="700">Mammographische Erscheinung</text>
+  <rect x="700" y="205" width="520" height="190" rx="14" fill="#0e2b4c" stroke="#5a7695" stroke-width="2"/>
+  <text x="730" y="242" fill="#a7d9f2" font-family="Arial,sans-serif" font-size="19" font-weight="700">A · CC-Aufnahme (Draufsicht)</text>
+  <ellipse cx="960" cy="315" rx="135" ry="52" fill="#c7d6e4" fill-opacity=".12" stroke="#b6ccdf" stroke-width="3"/>
+  <g fill="#ffb347"><circle cx="850" cy="300" r="6"/><circle cx="890" cy="278" r="6"/><circle cx="940" cy="270" r="6"/><circle cx="992" cy="279" r="6"/><circle cx="1040" cy="304" r="6"/><circle cx="1060" cy="331" r="6"/><circle cx="1010" cy="350" r="6"/><circle cx="960" cy="358" r="6"/><circle cx="900" cy="348" r="6"/></g>
+  <text x="730" y="370" fill="#dbe7f1" font-family="Arial,sans-serif" font-size="17">rundlich, amorph oder unscharf</text>
+  <rect x="700" y="435" width="520" height="190" rx="14" fill="#0e2b4c" stroke="#5a7695" stroke-width="2"/>
+  <text x="730" y="472" fill="#a7d9f2" font-family="Arial,sans-serif" font-size="19" font-weight="700">B · ML/MLO-Aufnahme (Seitenansicht)</text>
+  <ellipse cx="960" cy="540" rx="135" ry="55" fill="#c7d6e4" fill-opacity=".12" stroke="#b6ccdf" stroke-width="3"/>
+  <path d="M835 566 Q960 620 1085 566" fill="none" stroke="#ffb347" stroke-width="14"/>
+  <path d="M860 552 Q960 594 1060 552" fill="none" stroke="#fff0b0" stroke-width="4" stroke-dasharray="8 9"/>
+  <text x="730" y="602" fill="#dbe7f1" font-family="Arial,sans-serif" font-size="17">am Boden der Zyste: Meniskus/Teacup</text>
 </svg>
