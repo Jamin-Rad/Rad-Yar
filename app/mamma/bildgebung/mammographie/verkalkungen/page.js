@@ -44,9 +44,7 @@ function GermanContent(){return <>
     <h3 className={`${styles.takeTitle} ${caseStyles.benignSectionTitle}`}>Typisch benigne Verkalkungen außerhalb des Drüsenparenchyms</h3>
     <div className={styles.techSplit}>
       <article><small>HAUT</small><h3>Hautverkalkungen</h3><p>Typischerweise rund oder oval und oberflächlich gelegen.</p></article>
-      <article><small>GEFÄSS</small><h3>Vaskuläre Verkalkungen</h3><p><Lines>{`Typischerweise dicht und linear entlang eines Gefäßverlaufs.
-
-Mammographisch gelten sie als benigne.`}</Lines></p></article>
+      <article><small>GEFÄSS</small><h3>Vaskuläre Verkalkungen</h3><p>Typischerweise dicht und linear entlang eines Gefäßverlaufs.</p></article>
     </div>
     <article className={caseStyles.caseStudy}>
       <header className={caseStyles.caseHeader}>
@@ -74,7 +72,7 @@ Mammographisch gelten sie als benigne.`}</Lines></p></article>
     <div className={styles.rule}><strong>Wichtiger vaskulärer Hinweis</strong><p>Vaskuläre Verkalkungen sind ein relevanter Marker für ein erhöhtes Risiko kardiovaskulärer Erkrankungen. Daher sollte eine klinische kardiovaskuläre Risikoevaluation erfolgen.</p></div>
     <h3 className={`${styles.takeTitle} ${caseStyles.benignSectionTitle}`}>Typisch benigne Verkalkungen im Drüsenparenchym</h3>
     <div className={`${styles.benignList} ${caseStyles.benignGrid}`}>
-      <article><span>COARSE</span><div><h3>Grobschollig (coarse)</h3><p><Lines>{`Große, grobe Verkalkungen, meist > 2 mm.
+      <article><span>COARSE</span><div><h3>Grobschollig (popcornartig)</h3><p><Lines>{`Große, grobe Verkalkungen, meist > 2 mm.
 
 Typisch bei:
 
@@ -87,7 +85,7 @@ dystrophen Veränderungen`}</Lines></p></div></article>
 Sie entsprechen meist Verkalkungen innerhalb eines Milchganges oder entlang der Gangwand.
 
 Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifications.`}</Lines></p></div></article>
-      <article><span>LAYERING</span><div><h3>Layering</h3><p>Sedimentierende Verkalkungen innerhalb von Mikro- oder Makrozysten, in der Seitenaufnahme typischerweise halbmond- oder sichelförmig.</p></div></article>
+      <article><span>LAYERING</span><div><h3>Layering (Teacup / Milchkalzium)</h3><p>Sedimentierende Verkalkungen innerhalb von Mikro- oder Makrozysten, in der Seitenaufnahme typischerweise halbmond- oder sichelförmig.</p></div></article>
       <article><span>SUTURE</span><div><h3>Nahtverkalkungen</h3><p>Lineare oder kurvilineare Verkalkungen entlang von Nahtmaterial nach Operationen.</p></div></article>
     </div>
     <article className={caseStyles.caseStudy}>
