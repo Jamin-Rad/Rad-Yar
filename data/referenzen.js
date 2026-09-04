@@ -3015,6 +3015,18 @@ export const RECHNER = [
       fa: 'اصلاح‌کننده‌ها (توده، سن/سابقه، اندازه ≥۱۵ میلی‌متر، پایداری) می‌توانند دسته‌بندی پایه را یک سطح تغییر دهند. BI-RADS و اقدام همچنان تصمیم جامع پزشکی هستند.',
     },
   },
+
+  // Mamma: Node-RADS
+  {
+    id: 'node-rads', type: 'node-rads', color: '#7c3aed',
+    name: { de: 'Node-RADS', en: 'Node-RADS', fa: 'Node-RADS' },
+    formula: 'Größe (Kurzachse) + Konfiguration (Textur + Rand + Form) → Kategorie 1–5',
+    hint: {
+      de: 'Gilt für CT/MRT mit KM. Größenschwellen variieren je nach anatomischer Region. Node-RADS und Management bleiben eine ärztliche Gesamtentscheidung. Quelle: Elsholtz et al., Eur Radiol 2021.',
+      en: 'Applies to contrast-enhanced CT/MRI. Size thresholds vary by anatomical region. Node-RADS and management remain an integrated clinical decision. Source: Elsholtz et al., Eur Radiol 2021.',
+      fa: 'برای CT/MRI با ماده حاجب. آستانه‌های اندازه بر اساس ناحیه آناتومیک متفاوت است. منبع: Elsholtz et al., Eur Radiol 2021.',
+    },
+  },
 ]
 
 export const REF_DATA = { anatomie: ANATOMIE, messwerte: MESSWERTE, klassifikationen: KLASSIFIKATIONEN_ERWEITERT, rechner: RECHNER }
