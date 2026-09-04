@@ -129,14 +129,14 @@ Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifi
   </Section>
 
   <Section {...GERMAN_SECTIONS[2]} title={GERMAN_SECTIONS[2].label.de}>
-    <p className={styles.lead}>Die Morphologie beschreibt die Form der einzelnen Kalkpartikel. Sie umfasst eher benigne und suspekte Erscheinungsbilder.</p>
-    <div className={styles.riskArrow}>benigne → suspekt</div>
+    <p className={styles.lead}>Die Morphologie beschreibt die Form der einzelnen Kalkpartikel.</p>
+    <div className={caseStyles.morphologyArrow}><span>benigne</span><b>suspekt</b></div>
     <div className={`${styles.morphRail} ${caseStyles.morphologyScale}`}>
-      <article className={caseStyles.morphBenign}><span>01 · BENIGN</span><h3>Rund</h3><p>Glatte, runde Verkalkungen. Diffuse oder bilaterale Verteilung spricht eher für einen benignen Befund.</p></article>
-      <article className={caseStyles.morphBenign}><span>02 · BENIGN</span><h3>Amorph</h3><p>Sehr kleine, unscharf definierte Verkalkungen ohne klar erkennbare Form. Die Verteilung ist besonders wichtig.</p></article>
-      <article className={caseStyles.morphIntermediate}><span>03 · INTERMEDIÄR</span><h3>Grob heterogen</h3><p>Irreguläre Verkalkungen, größer als amorphe, aber weniger typisch als grobschollige benigne Verkalkungen.</p></article>
-      <article className={caseStyles.morphIntermediate}><span>04 · INTERMEDIÄR</span><h3>Fein pleomorph</h3><p>Feine Verkalkungen unterschiedlicher Form und Größe. Die Pleomorphie ist ein relevantes Suspektkriterium.</p></article>
-      <article className={caseStyles.morphSuspicious}><span>05 · SUSPEKT</span><h3>Fein linear / verzweigt</h3><p>Sehr feine, irreguläre lineare oder verzweigte Verkalkungen mit der höchsten Suspektheit.</p></article>
+      <article className={caseStyles.morphBenign}><span>01</span><h3>Rund</h3><p>Glatte, runde Verkalkungen. Diffuse oder bilaterale Verteilung spricht eher für einen benignen Befund.</p></article>
+      <article className={caseStyles.morphBenign}><span>02</span><h3>Amorph</h3><p>Sehr kleine, unscharf definierte Verkalkungen ohne klar erkennbare Form. Die Verteilung ist besonders wichtig.</p></article>
+      <article className={caseStyles.morphIntermediate}><span>03</span><h3>Grob heterogen</h3><p>Irreguläre Verkalkungen, größer als amorphe, aber weniger typisch als grobschollige benigne Verkalkungen.</p></article>
+      <article className={caseStyles.morphIntermediate}><span>04</span><h3>Fein pleomorph</h3><p>Feine Verkalkungen unterschiedlicher Form und Größe. Die Pleomorphie ist ein relevantes Suspektkriterium.</p></article>
+      <article className={caseStyles.morphSuspicious}><span>05</span><h3>Fein linear / verzweigt</h3><p>Sehr feine, irreguläre lineare oder verzweigte Verkalkungen mit der höchsten Suspektheit.</p></article>
     </div>
     <article className={caseStyles.caseStudy}>
       <header className={caseStyles.caseHeader}><div><small>BEISPIELFALL</small><h3>Grob heterogene Verkalkungen</h3></div></header>

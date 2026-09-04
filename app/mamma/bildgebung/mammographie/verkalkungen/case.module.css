@@ -294,6 +294,28 @@
   border-top: 4px solid var(--calc);
 }
 
+.morphologyArrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 54px;
+  padding: 0 24px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #36c878 0%, #b8c93e 45%, #e5a62f 65%, #e73368 100%);
+  clip-path: polygon(0 0, 96% 0, 100% 50%, 96% 100%, 0 100%, 4% 50%);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 18px rgba(7, 29, 58, 0.18);
+}
+
+.morphologyArrow span,
+.morphologyArrow b {
+  color: #fff;
+}
+
 @media (max-width: 620px) {
   .benignGrid {
     grid-template-columns: 1fr;
