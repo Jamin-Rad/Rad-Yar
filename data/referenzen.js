@@ -3003,6 +3003,18 @@ export const RECHNER = [
       solidComp: { de: 'Solid-Anteil',     en: 'Solid component',  fa: 'جز جامد' },
     },
   },
+
+  // Mamma: BI-RADS Kalzifikation
+  {
+    id: 'birads-kalk', type: 'birads-kalk', color: '#db2777',
+    name: { de: 'BI-RADS · Kalzifikation', en: 'BI-RADS · Calcification', fa: 'BI-RADS · کلسیفیکاسیون' },
+    formula: 'Morphologie × Verteilungsmuster → direkte Kategorie',
+    hint: {
+      de: 'Modifikatoren (Masse, Alter/Anamnese, Größe ≥15 mm, Stabilität) können die Basiskategorie um eine Stufe anpassen. BI-RADS und Management bleiben eine ärztliche Gesamtentscheidung.',
+      en: 'Modifiers (mass, age/history, size ≥15 mm, stability) can shift the base category by one level. BI-RADS and management remain an integrated clinical decision.',
+      fa: 'اصلاح‌کننده‌ها (توده، سن/سابقه، اندازه ≥۱۵ میلی‌متر، پایداری) می‌توانند دسته‌بندی پایه را یک سطح تغییر دهند. BI-RADS و اقدام همچنان تصمیم جامع پزشکی هستند.',
+    },
+  },
 ]
 
 export const REF_DATA = { anatomie: ANATOMIE, messwerte: MESSWERTE, klassifikationen: KLASSIFIKATIONEN_ERWEITERT, rechner: RECHNER }
