@@ -136,6 +136,15 @@ Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifi
       <article><span>04</span><h3>Fein pleomorph</h3><p>Feine Verkalkungen unterschiedlicher Form und Größe. Die Pleomorphie ist ein relevantes Suspektkriterium.</p></article>
       <article><span>05 · EHER SUSPEKT</span><h3>Fein linear / verzweigt</h3><p>Sehr feine, irreguläre lineare oder verzweigte Verkalkungen mit der höchsten Suspektheit.</p></article>
     </div>
+    <article className={caseStyles.caseStudy}>
+      <header className={caseStyles.caseHeader}><div><small>BEISPIELFALL</small><h3>Grob heterogene Verkalkungen</h3></div></header>
+      <div className={caseStyles.caseGallery}>
+        <figure><a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-67107/ccd-1.png" alt="Vergrößerungsaufnahme mit gruppierten grob heterogenen Verkalkungen" width={461} height={643}/></a><figcaption>Vergrößerungsaufnahme 1</figcaption></figure>
+        <figure><a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-67107/ccd-2.png" alt="Zweite Vergrößerungsaufnahme mit gruppierten grob heterogenen Verkalkungen" width={461} height={643}/></a><figcaption>Vergrößerungsaufnahme 2</figcaption></figure>
+      </div>
+      <p className={caseStyles.caseDescription}><strong>Morphologie und Lage:</strong> Gruppierte, irreguläre und unterschiedlich große Verkalkungen, größer und dichter als amorphe Partikel, aber ohne typisch grobschollige Benignitätsmerkmale.</p>
+      <p className={caseStyles.caseCredit}>Bildbeispiel: <a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer">Radiopaedia.org, Fall 67107 (Vollbild)</a>.</p>
+    </article>
     <div className={styles.rule}><strong>Morphologisches Risikokontinuum</strong><p><Lines>{`rund → amorph → grob heterogen → fein pleomorph → fein linear/verzweigt
 
 Die Suspektheit nimmt dabei grundsätzlich von links nach rechts zu.`}</Lines></p></div>
@@ -143,7 +152,8 @@ Die Suspektheit nimmt dabei grundsätzlich von links nach rechts zu.`}</Lines></
 
   <Section {...GERMAN_SECTIONS[3]} title={GERMAN_SECTIONS[3].label.de}>
     <p className={styles.lead}>Neben der Morphologie muss immer beschrieben werden, wie sich die Verkalkungen innerhalb der Brust verteilen.</p>
-    <div className={styles.distribution}>
+    <div className={styles.riskArrow}>zunehmende duktale Orientierung →</div>
+    <div className={`${styles.distribution} ${caseStyles.distributionScale}`}>
       <article><span>01</span><strong>Diffus</strong><p>Weit über die Brust verteilt, häufig bilateral.<br/><br/>Bei entsprechender Morphologie meistens benign.</p></article>
       <article><span>02</span><strong>Regional</strong><p>Verkalkungen innerhalb eines größeren Areals ohne eindeutige Orientierung an einem Gangsystem.<br/><br/>Die Bedeutung hängt stark von der Morphologie ab.</p></article>
       <article><span>03</span><strong>Gruppiert</strong><p>Mehrere Verkalkungen konzentrieren sich innerhalb eines begrenzten Areals.<br/><br/>Eine gruppierte Verteilung allein bedeutet nicht Malignität:<br/><br/>Morphologie entscheidet über das tatsächliche Risiko.</p></article>
