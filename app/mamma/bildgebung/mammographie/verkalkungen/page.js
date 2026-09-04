@@ -21,7 +21,7 @@ function GermanContent(){return <>
   <Section {...GERMAN_SECTIONS[0]} title={GERMAN_SECTIONS[0].label.de}>
     <h3 className={`${styles.takeTitle} ${caseStyles.sectionTitleRule}`}>Pathologie</h3>
     <p className={styles.lead}>Mammographisch sichtbare Verkalkungen der Brust bestehen im Wesentlichen aus zwei unterschiedlichen Kalziumsalzen.</p>
-    <div className={`${styles.techSplit} ${caseStyles.benignGrid}`}>
+    <div className={`${styles.techSplit} ${caseStyles.outsideBenignGrid}`}>
       <article><small>01</small><h3>Kalziumoxalat</h3><p><Lines>{`• deutlich seltener
 • typischerweise mit benignen Pathologien assoziiert
 • beispielsweise in Sekreten apokrin differenzierten Epithels innerhalb benigner Zysten oder terminaler Duktuli`}</Lines></p></article>
@@ -90,9 +90,11 @@ Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifi
       <article><span>RIM</span><div><h3>Rim calcifications</h3><p>Dünne randständige Verkalkungen entlang einer rundlichen Struktur, typisch beispielsweise bei Fettnekrose, Ölzysten oder Zysten.</p></div></article>
     </div>
     <article className={`${caseStyles.caseStudy} ${caseStyles.exampleRim}`}>
-      <header className={caseStyles.caseHeader}><div><small>BEISPIELFALL</small><h3>Rim calcification</h3></div></header>
+      <header className={caseStyles.caseHeader}><div><small>RADIOPAEDIA-FALL</small><h3>Rim calcification</h3></div></header>
       <div className={caseStyles.caseGallery}>
         <figure><a href="https://radiopaedia.org/cases/52694/studies/58614?lang=us" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-52694/rim-rmlo.png" alt="Mammographie mit dünner randständiger Rim-Kalzifikation" width={512} height={768}/></a><figcaption>Rechts RMLO</figcaption></figure>
+        <figure><a href="https://radiopaedia.org/cases/52694/studies/58614?lang=us" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-52694/rim-rcc.png" alt="CC-Mammographie mit Rim-Kalzifikation" width={512} height={768}/></a><figcaption>Rechts RCC</figcaption></figure>
+        <figure><a href="https://radiopaedia.org/cases/52694/studies/58614?lang=us" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-52694/rim-detail.png" alt="Detailaufnahme der Rim-Kalzifikation" width={512} height={768}/></a><figcaption>Detailaufnahme</figcaption></figure>
       </div>
       <p className={caseStyles.caseDescription}><strong>Morphologie und Lage:</strong> Dünne, glatte, randständige Verkalkung entlang einer rundlichen Läsion – typisch für eine verkalkte Ölzyste beziehungsweise Fettnekrose.</p>
       <p className={caseStyles.caseCredit}>Bildbeispiel: <a href="https://radiopaedia.org/cases/52694/studies/58614?lang=us" target="_blank" rel="noreferrer">Radiopaedia.org, Fall 52694</a>.</p>
