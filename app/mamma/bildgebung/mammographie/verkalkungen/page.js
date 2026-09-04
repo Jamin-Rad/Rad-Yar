@@ -30,11 +30,11 @@ function GermanContent(){return <>
 • mit abnormaler epithelialer Zellproliferation und Nekrose assoziiert`}</Lines></p></article>
     </div>
     <h3 className={styles.takeTitle}>Systematische Beurteilung</h3>
-    <div className={styles.context}>
+    <div className={`${styles.context} ${caseStyles.systematicGrid}`}>
       <article><span>01</span><h3>Partikelgröße</h3><p>Wie groß sind die einzelnen Verkalkungen?<br/><br/>Makroverkalkungen beziehungsweise typisch grobschollige Verkalkungen sind in der Regel benign.<br/><br/>Die Größe allein beweist jedoch keine Benignität: Grob heterogene Verkalkungen gehören zu den suspekten Morphologien.</p></article>
       <article><span>02</span><h3>Morphologie</h3><p>Wie sehen die einzelnen Kalkpartikel aus?</p></article>
       <article><span>03</span><h3>Verteilungsmuster</h3><p>Wie sind die Kalkpartikel innerhalb der Brust räumlich angeordnet?</p></article>
-      <article><span>04</span><h3>Ausdehnung</h3><p>Wie groß ist das gesamte betroffene Kalkareal?<br/><br/>Bei gleicher Morphologie kann eine größere Ausdehnung mit einem höheren Malignitätsrisiko einhergehen.<br/><br/><small>PPV in der untersuchten Biopsiekohorte: &lt; 5 mm: 0 % · 5–10 mm: 13 % · 10–20 mm: 30,4 % · 20–50 mm: 47,8 % · &gt; 50 mm: 66,7 %.<br/><br/>Metaxa, Healy &amp; O’Keeffe, Br J Radiol. 2019;92:20190177.</small></p></article>
+      <article><span>04</span><h3>Ausdehnung</h3><p>Wie groß ist das gesamte betroffene Kalkareal?<br/><br/>Bei gleicher Morphologie kann eine größere Ausdehnung mit einem höheren Malignitätsrisiko einhergehen.</p><div className={caseStyles.extentChart} aria-label="Positiv prädiktiver Wert nach Ausdehnung"><div><span>&lt;5</span><i style={{height:'0%'}}><b>0 %</b></i></div><div><span>5–10</span><i style={{height:'20%'}}><b>13 %</b></i></div><div><span>10–20</span><i style={{height:'46%'}}><b>30,4 %</b></i></div><div><span>20–50</span><i style={{height:'72%'}}><b>47,8 %</b></i></div><div><span>&gt;50</span><i style={{height:'100%'}}><b>66,7 %</b></i></div></div><small>PPV in der untersuchten Biopsiekohorte · Ausdehnung (mm)<br/><br/>Metaxa, Healy &amp; O’Keeffe, Br J Radiol. 2019;92:20190177.</small></article>
     </div>
     <p className={styles.lead}>Auch Verlauf, klinischer Kontext und Begleitbefunde – insbesondere eine assoziierte Masse oder Architekturstörung – sind für die Gesamtbeurteilung relevant.</p>
     <div className={styles.rule}><strong>Grundprinzip</strong><p>Kalk ist ein bildgebender Phänotyp und allein keine Diagnose.</p></div>
