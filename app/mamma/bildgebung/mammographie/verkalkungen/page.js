@@ -56,7 +56,7 @@ function GermanContent(){return <>
         <figure><a href="https://radiopaedia.org/cases/159211/studies/130479?lang=us#t=im&v1i=60684407&v1z=1&v2i=60684408&v2z=1&v3i=60684410&v3z=1&v4i=60684413&v4z=1" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-159211/r-cc.png" alt="CC-Mammographie der rechten Brust mit posteromedialen Hautverkalkungen" width={392} height={630}/></a><figcaption>Rechts CC</figcaption></figure>
       </div>
       <p className={caseStyles.caseDescription}><strong>Morphologie und Lage:</strong> Mehrere rundliche, teils zentral aufgehellte Verkalkungen liegen dicht gruppiert und oberflächlich in der posteromedialen Haut nahe der Inframammärfalte.</p>
-      <p className={caseStyles.caseCredit}>Case courtesy of Ammar Ashraf, <a href="https://radiopaedia.org/cases/159211" target="_blank" rel="noreferrer">Radiopaedia.org, rID: 159211</a>.</p>
+      <p className={caseStyles.caseCredit}>Case courtesy of Ammar Ashraf, <a href="https://radiopaedia.org/cases/159211/studies/130479?lang=us#t=im&v1i=60684407&v1z=1&v2i=60684408&v2z=1&v3i=60684410&v3z=1&v4i=60684413&v4z=1" target="_blank" rel="noreferrer">Radiopaedia.org, rID: 159211 (Vollbild)</a>.</p>
     </article>
     <article className={caseStyles.caseStudy}>
       <header className={caseStyles.caseHeader}>
@@ -67,12 +67,12 @@ function GermanContent(){return <>
         <figure><a href="https://radiopaedia.org/cases/72331/studies/82850?lang=us#t=im&v1i=51746512&v1z=1&v2i=51746513&v2z=1&v3i=51746514&v3z=1&v4i=51746515&v4z=1" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-72331/r-mlo-2.png" alt="Zweite MLO-Aufnahme mit vaskulären Verkalkungen" width={443} height={539}/></a><figcaption>MLO-Aufnahme</figcaption></figure>
       </div>
       <p className={caseStyles.caseDescription}><strong>Morphologie und Lage:</strong> Feine, dicht aneinanderliegende lineare Verkalkungen zeichnen den Verlauf mehrerer Gefäße in der Brust ab.</p>
-      <p className={caseStyles.caseCredit}>Case courtesy of Ayla Al Kabbani, <a href="https://radiopaedia.org/cases/72331" target="_blank" rel="noreferrer">Radiopaedia.org, rID: 72331</a>.</p>
+      <p className={caseStyles.caseCredit}>Case courtesy of Ayla Al Kabbani, <a href="https://radiopaedia.org/cases/72331/studies/82850?lang=us#t=im&v1i=51746512&v1z=1&v2i=51746513&v2z=1&v3i=51746514&v3z=1&v4i=51746515&v4z=1" target="_blank" rel="noreferrer">Radiopaedia.org, rID: 72331 (Vollbild)</a>.</p>
     </article>
     <div className={styles.rule}><strong>Wichtiger vaskulärer Hinweis</strong><p>Vaskuläre Verkalkungen sind ein relevanter Marker für ein erhöhtes Risiko kardiovaskulärer Erkrankungen. Daher sollte eine klinische kardiovaskuläre Risikoevaluation erfolgen.</p></div>
     <h3 className={`${styles.takeTitle} ${caseStyles.benignSectionTitle}`}>Typisch benigne Verkalkungen im Drüsenparenchym</h3>
     <div className={`${styles.benignList} ${caseStyles.benignGrid}`}>
-      <article><span>COARSE</span><div><h3>Grobschollig (popcornartig)</h3><p><Lines>{`Große, grobe Verkalkungen, meist > 2 mm.
+      <article><span>COARSE (POPCORNARTIG)</span><div><h3>Grobschollig</h3><p><Lines>{`Große, grobe Verkalkungen, meist > 2 mm.
 
 Typisch bei:
 
@@ -85,7 +85,7 @@ dystrophen Veränderungen`}</Lines></p></div></article>
 Sie entsprechen meist Verkalkungen innerhalb eines Milchganges oder entlang der Gangwand.
 
 Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifications.`}</Lines></p></div></article>
-      <article><span>LAYERING</span><div><h3>Layering (Teacup / Milchkalzium)</h3><p>Sedimentierende Verkalkungen innerhalb von Mikro- oder Makrozysten, in der Seitenaufnahme typischerweise halbmond- oder sichelförmig.</p></div></article>
+      <article><span>LAYERING (TEACUP / MILCHKALZIUM)</span><div><h3>Layering</h3><p>Sedimentierende Verkalkungen innerhalb von Mikro- oder Makrozysten, in der Seitenaufnahme typischerweise halbmond- oder sichelförmig.</p></div></article>
       <article><span>SUTURE</span><div><h3>Nahtverkalkungen</h3><p>Lineare oder kurvilineare Verkalkungen entlang von Nahtmaterial nach Operationen.</p></div></article>
     </div>
     <article className={caseStyles.caseStudy}>
@@ -95,7 +95,7 @@ Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifi
         <figure><a href="https://radiopaedia.org/cases/57400/studies/64347?lang=us#t=im&v1i=34751209&v1z=1&v2i=34751200&v2z=1&v3i=34751201&v3z=1&v4i=34751209&v4z=1" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-57400/l-cc.png" alt="CC-Mammographie mit grobscholliger Verkalkung" width={532} height={716}/></a><figcaption>Links CC</figcaption></figure>
       </div>
       <p className={caseStyles.caseDescription}><strong>Morphologie und Lage:</strong> Grobe, unregelmäßig-lobulierte Verkalkung mit teils randständiger Aufhellung in einer umschriebenen Läsion der linken Brust.</p>
-      <p className={caseStyles.caseCredit}>Case courtesy of Subash Thapa, <a href="https://radiopaedia.org/cases/57400" target="_blank" rel="noreferrer">Radiopaedia.org, rID: 57400</a>.</p>
+      <p className={caseStyles.caseCredit}>Case courtesy of Subash Thapa, <a href="https://radiopaedia.org/cases/57400/studies/64347?lang=us#t=im&v1i=34751209&v1z=1&v2i=34751200&v2z=1&v3i=34751201&v3z=1&v4i=34751209&v4z=1" target="_blank" rel="noreferrer">Radiopaedia.org, rID: 57400 (Vollbild)</a>.</p>
     </article>
     <article className={caseStyles.caseStudy}>
       <header className={caseStyles.caseHeader}><div><small>RADIOPAEDIA-FALL</small><h3>Large rod-like Verkalkungen</h3></div></header>
