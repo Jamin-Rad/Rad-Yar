@@ -74,8 +74,8 @@ Mammographisch gelten sie als benigne.`}</Lines></p></article>
       <p className={caseStyles.caseCredit}>Case courtesy of Ayla Al Kabbani, Radiopaedia.org, rID: 72331.</p>
     </article>
     <div className={styles.rule}><strong>Wichtiger vaskulärer Hinweis</strong><p>Vaskuläre Verkalkungen sind ein relevanter Marker für ein erhöhtes Risiko kardiovaskulärer Erkrankungen. Daher sollte eine klinische kardiovaskuläre Risikoevaluation erfolgen.</p></div>
-    <h3 className={styles.takeTitle}>Typisch benigne Verkalkungen im Drüsenparenchym</h3>
-    <div className={styles.benignList}>
+    <h3 className={`${styles.takeTitle} ${caseStyles.benignSectionTitle}`}>Typisch benigne Verkalkungen im Drüsenparenchym</h3>
+    <div className={`${styles.benignList} ${caseStyles.benignGrid}`}>
       <article><span>COARSE</span><div><h3>Grobschollig (coarse)</h3><p><Lines>{`Große, grobe Verkalkungen, meist > 2 mm.
 
 Typisch bei:
