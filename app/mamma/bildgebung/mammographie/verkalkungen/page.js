@@ -21,7 +21,7 @@ function GermanContent(){return <>
   <Section {...GERMAN_SECTIONS[0]} title={GERMAN_SECTIONS[0].label.de}>
     <h3 className={`${styles.takeTitle} ${caseStyles.sectionTitleRule}`}>Pathologie</h3>
     <p className={styles.lead}>Mammographisch sichtbare Verkalkungen der Brust bestehen im Wesentlichen aus zwei unterschiedlichen Kalziumsalzen.</p>
-    <div className={styles.techSplit}>
+    <div className={`${styles.techSplit} ${caseStyles.benignGrid}`}>
       <article><small>01</small><h3>Kalziumoxalat</h3><p><Lines>{`• deutlich seltener
 • typischerweise mit benignen Pathologien assoziiert
 • beispielsweise in Sekreten apokrin differenzierten Epithels innerhalb benigner Zysten oder terminaler Duktuli`}</Lines></p></article>
@@ -45,7 +45,7 @@ function GermanContent(){return <>
     <div className={styles.techSplit}>
       <article><small>HAUT</small><h3>Hautverkalkungen</h3><p>Typischerweise rund oder oval und oberflächlich gelegen.</p></article>
       <article><small>GEFÄSS</small><h3>Vaskuläre Verkalkungen</h3><p>Typischerweise dicht und linear entlang eines Gefäßverlaufs.</p></article>
-      <article><small>NAHT</small><h3>Nahtverkalkungen</h3><p>Lineare oder kurvilineare Verkalkungen entlang von Nahtmaterial nach Operationen.</p></article>
+      <article><small>SUTURA</small><h3>Nahtverkalkungen</h3><p>Lineare oder kurvilineare Verkalkungen entlang von Nahtmaterial nach Operationen.</p></article>
     </div>
     <article className={caseStyles.caseStudy}>
       <header className={caseStyles.caseHeader}>
@@ -89,7 +89,7 @@ Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifi
       <article><span>LAYERING (TEACUP / MILCHKALZIUM)</span><div><h3>Layering</h3><p>Sedimentierende Verkalkungen innerhalb von Mikro- oder Makrozysten, in der Seitenaufnahme typischerweise halbmond- oder sichelförmig.</p></div></article>
       <article><span>RIM</span><div><h3>Rim calcifications</h3><p>Dünne randständige Verkalkungen entlang einer rundlichen Struktur, typisch beispielsweise bei Fettnekrose, Ölzysten oder Zysten.</p></div></article>
     </div>
-    <article className={caseStyles.caseStudy}>
+    <article className={`${caseStyles.caseStudy} ${caseStyles.exampleRim}`}>
       <header className={caseStyles.caseHeader}><div><small>BEISPIELFALL</small><h3>Rim calcification</h3></div></header>
       <div className={caseStyles.caseGallery}>
         <figure><a href="https://radiopaedia.org/cases/52694/studies/58614?lang=us" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-52694/rim-rmlo.png" alt="Mammographie mit dünner randständiger Rim-Kalzifikation" width={512} height={768}/></a><figcaption>Rechts RMLO</figcaption></figure>
@@ -97,7 +97,7 @@ Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifi
       <p className={caseStyles.caseDescription}><strong>Morphologie und Lage:</strong> Dünne, glatte, randständige Verkalkung entlang einer rundlichen Läsion – typisch für eine verkalkte Ölzyste beziehungsweise Fettnekrose.</p>
       <p className={caseStyles.caseCredit}>Bildbeispiel: <a href="https://radiopaedia.org/cases/52694/studies/58614?lang=us" target="_blank" rel="noreferrer">Radiopaedia.org, Fall 52694</a>.</p>
     </article>
-    <article className={caseStyles.caseStudy}>
+    <article className={`${caseStyles.caseStudy} ${caseStyles.exampleLayering}`}>
       <header className={caseStyles.caseHeader}><div><small>BEISPIELFALL</small><h3>Layering: Teacup- oder Meniskuszeichen</h3></div></header>
       <div className={caseStyles.caseGallery}>
         <figure><a href="/mamma/mammographie/verkalkungen/layering/layering-schematic.svg" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/layering/layering-schematic.svg" alt="Schematische Erklärung des Layering- beziehungsweise Teacup-Zeichens" width={1200} height={650}/></a><figcaption>Schema: CC versus ML/MLO</figcaption></figure>
@@ -106,7 +106,7 @@ Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifi
       <p className={caseStyles.caseDescription}><strong>Prinzip:</strong> In der CC-Aufnahme erscheinen die Verkalkungen rundlich und unscharf. In der ML- oder MLO-Aufnahme lagern sie sich schwerkraftbedingt am Boden einer Zyste ab und bilden die typische sichelförmige Meniskus- beziehungsweise Teacup-Konfiguration. In der aktuellen BI-RADS-Terminologie wird dafür der beschreibende Begriff „Layering“ verwendet.</p>
       <p className={caseStyles.caseCredit}>Originalabbildung: <a href="https://www.ncbi.nlm.nih.gov/core/lw/2.0/html/tileshop_pmc/tileshop_pmc_inline.html?title=Click%20on%20image%20to%20zoom&p=PMC3&id=13266138_jksr-87-437-g006.jpg" target="_blank" rel="noreferrer">J Korean Soc Radiol. 2025;87:437, Fig. 6</a>.</p>
     </article>
-    <article className={caseStyles.caseStudy}>
+    <article className={`${caseStyles.caseStudy} ${caseStyles.exampleCoarse}`}>
       <header className={caseStyles.caseHeader}><div><small>RADIOPAEDIA-FALL</small><h3>Grobschollige Verkalkungen</h3></div></header>
       <div className={caseStyles.caseGallery}>
         <figure><a href="https://radiopaedia.org/cases/57400/studies/64347?lang=us#t=im&v1i=34751209&v1z=1&v2i=34751200&v2z=1&v3i=34751201&v3z=1&v4i=34751209&v4z=1" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-57400/l-mlo.png" alt="MLO-Mammographie mit grobscholliger Verkalkung" width={592} height={768}/></a><figcaption>Links MLO</figcaption></figure>
@@ -115,7 +115,7 @@ Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifi
       <p className={caseStyles.caseDescription}><strong>Morphologie und Lage:</strong> Grobe, unregelmäßig-lobulierte Verkalkung mit teils randständiger Aufhellung in einer umschriebenen Läsion der linken Brust.</p>
       <p className={caseStyles.caseCredit}>Case courtesy of Subash Thapa, <a href="https://radiopaedia.org/cases/57400/studies/64347?lang=us#t=im&v1i=34751209&v1z=1&v2i=34751200&v2z=1&v3i=34751201&v3z=1&v4i=34751209&v4z=1" target="_blank" rel="noreferrer">Radiopaedia.org, rID: 57400 (Vollbild)</a>.</p>
     </article>
-    <article className={caseStyles.caseStudy}>
+    <article className={`${caseStyles.caseStudy} ${caseStyles.exampleRod}`}>
       <header className={caseStyles.caseHeader}><div><small>RADIOPAEDIA-FALL</small><h3>Large rod-like Verkalkungen</h3></div></header>
       <div className={caseStyles.caseGallery}>
         <figure><a href="https://radiopaedia.org/cases/86379/studies/102416?lang=us#t=im&v1i=54305500&v1z=1&v2i=54305501&v2z=1&v3i=54305502&v3z=1&v4i=54305503&v4z=1" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-86379/rod-1.png" alt="Mammographie mit großkalibrigen Large-rod-like-Verkalkungen" width={491} height={720}/></a><figcaption>Aufnahme 1</figcaption></figure>
@@ -128,13 +128,13 @@ Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifi
 
   <Section {...GERMAN_SECTIONS[2]} title={GERMAN_SECTIONS[2].label.de}>
     <p className={styles.lead}>Die Morphologie beschreibt die Form der einzelnen Kalkpartikel. Sie umfasst eher benigne und suspekte Erscheinungsbilder.</p>
-    <div className={styles.riskArrow}>steigende Suspektheit →</div>
+    <div className={styles.riskArrow}>benigne → suspekt</div>
     <div className={`${styles.morphRail} ${caseStyles.morphologyScale}`}>
-      <article><span>01 · EHER BENIGN</span><h3>Rund</h3><p>Glatte, runde Verkalkungen. Diffuse oder bilaterale Verteilung spricht eher für einen benignen Befund.</p></article>
-      <article><span>02</span><h3>Amorph</h3><p>Sehr kleine, unscharf definierte Verkalkungen ohne klar erkennbare Form. Die Verteilung ist besonders wichtig.</p></article>
-      <article><span>03</span><h3>Grob heterogen</h3><p>Irreguläre Verkalkungen, größer als amorphe, aber weniger typisch als grobschollige benigne Verkalkungen.</p></article>
-      <article><span>04</span><h3>Fein pleomorph</h3><p>Feine Verkalkungen unterschiedlicher Form und Größe. Die Pleomorphie ist ein relevantes Suspektkriterium.</p></article>
-      <article><span>05 · EHER SUSPEKT</span><h3>Fein linear / verzweigt</h3><p>Sehr feine, irreguläre lineare oder verzweigte Verkalkungen mit der höchsten Suspektheit.</p></article>
+      <article className={caseStyles.morphBenign}><span>01 · BENIGN</span><h3>Rund</h3><p>Glatte, runde Verkalkungen. Diffuse oder bilaterale Verteilung spricht eher für einen benignen Befund.</p></article>
+      <article className={caseStyles.morphBenign}><span>02 · BENIGN</span><h3>Amorph</h3><p>Sehr kleine, unscharf definierte Verkalkungen ohne klar erkennbare Form. Die Verteilung ist besonders wichtig.</p></article>
+      <article className={caseStyles.morphIntermediate}><span>03 · INTERMEDIÄR</span><h3>Grob heterogen</h3><p>Irreguläre Verkalkungen, größer als amorphe, aber weniger typisch als grobschollige benigne Verkalkungen.</p></article>
+      <article className={caseStyles.morphIntermediate}><span>04 · INTERMEDIÄR</span><h3>Fein pleomorph</h3><p>Feine Verkalkungen unterschiedlicher Form und Größe. Die Pleomorphie ist ein relevantes Suspektkriterium.</p></article>
+      <article className={caseStyles.morphSuspicious}><span>05 · SUSPEKT</span><h3>Fein linear / verzweigt</h3><p>Sehr feine, irreguläre lineare oder verzweigte Verkalkungen mit der höchsten Suspektheit.</p></article>
     </div>
     <article className={caseStyles.caseStudy}>
       <header className={caseStyles.caseHeader}><div><small>BEISPIELFALL</small><h3>Grob heterogene Verkalkungen</h3></div></header>
