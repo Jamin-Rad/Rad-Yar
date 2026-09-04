@@ -3004,6 +3004,18 @@ export const RECHNER = [
     },
   },
 
+  // Mamma: BI-RADS Masse (Mammographie)
+  {
+    id: 'birads-masse', type: 'birads-masse', color: '#db2777',
+    name: { de: 'BI-RADS · Masse', en: 'BI-RADS · Mass', fa: 'BI-RADS · توده' },
+    formula: 'Form × Rand → BI-RADS 2–5 · fetthaltig → immer BI-RADS 2',
+    hint: {
+      de: 'Fetthaltige Massen (Lipom, Hamartom, Galaktozele) sind immer BI-RADS 2. Kombinationen von Form und Rand bestimmen die Kategorie nach ACR BI-RADS® Atlas, 5. Auflage.',
+      en: 'Fat-containing masses (lipoma, hamartoma, galactocele) are always BI-RADS 2. Shape × Margin combinations determine category per ACR BI-RADS® Atlas, 5th Ed.',
+      fa: 'توده‌های حاوی چربی (لیپوم، هامارتوم، گالاکتوسل) همیشه BI-RADS 2 هستند. ترکیب شکل × حاشیه دسته‌بندی را بر اساس اطلس ACR BI-RADS® تعیین می‌کند.',
+    },
+  },
+
   // Mamma: BI-RADS Kalzifikation
   {
     id: 'birads-kalk', type: 'birads-kalk', color: '#db2777',
