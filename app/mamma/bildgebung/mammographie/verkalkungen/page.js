@@ -61,6 +61,18 @@ Mammographisch gelten sie als benigne.`}</Lines></p></article>
       <p className={caseStyles.caseDescription}><strong>Morphologie und Lage:</strong> Mehrere rundliche, teils zentral aufgehellte Verkalkungen liegen dicht gruppiert und oberflächlich in der posteromedialen Haut nahe der Inframammärfalte.</p>
       <p className={caseStyles.caseCredit}>Case courtesy of Ammar Ashraf, Radiopaedia.org, rID: 159211.</p>
     </article>
+    <article className={caseStyles.caseStudy}>
+      <header className={caseStyles.caseHeader}>
+        <div><small>RADIOPAEDIA-FALL</small><h3>Vaskuläre Verkalkungen</h3></div>
+        <a href="https://radiopaedia.org/cases/72331" target="_blank" rel="noreferrer">rID: 72331 ↗</a>
+      </header>
+      <div className={caseStyles.caseGallery}>
+        <figure><Image src="/mamma/mammographie/verkalkungen/case-72331/r-mlo-1.png" alt="MLO-Mammographie mit vaskulären Verkalkungen" width={443} height={539}/><figcaption>MLO-Aufnahme</figcaption></figure>
+        <figure><Image src="/mamma/mammographie/verkalkungen/case-72331/r-mlo-2.png" alt="Zweite MLO-Aufnahme mit vaskulären Verkalkungen" width={443} height={539}/><figcaption>MLO-Aufnahme</figcaption></figure>
+      </div>
+      <p className={caseStyles.caseDescription}><strong>Morphologie und Lage:</strong> Feine, dicht aneinanderliegende lineare Verkalkungen zeichnen den Verlauf mehrerer Gefäße in der Brust ab.</p>
+      <p className={caseStyles.caseCredit}>Case courtesy of Ayla Al Kabbani, Radiopaedia.org, rID: 72331.</p>
+    </article>
     <div className={styles.rule}><strong>Wichtiger vaskulärer Hinweis</strong><p>Vaskuläre Verkalkungen sind ein relevanter Marker für ein erhöhtes Risiko kardiovaskulärer Erkrankungen. Daher sollte eine klinische kardiovaskuläre Risikoevaluation erfolgen.</p></div>
     <h3 className={styles.takeTitle}>Typisch benigne Verkalkungen im Drüsenparenchym</h3>
     <div className={styles.benignList}>
