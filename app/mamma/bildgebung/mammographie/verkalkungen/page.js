@@ -41,7 +41,7 @@ function GermanContent(){return <>
   </Section>
 
   <Section {...GERMAN_SECTIONS[1]} title={GERMAN_SECTIONS[1].label.de}>
-    <h3 className={styles.takeTitle}>Typisch benigne Verkalkungen außerhalb des Drüsenparenchyms</h3>
+    <h3 className={`${styles.takeTitle} ${caseStyles.benignSectionTitle}`}>Typisch benigne Verkalkungen außerhalb des Drüsenparenchyms</h3>
     <div className={styles.techSplit}>
       <article><small>HAUT</small><h3>Hautverkalkungen</h3><p>Typischerweise rund oder oval und oberflächlich gelegen.</p></article>
       <article><small>GEFÄSS</small><h3>Vaskuläre Verkalkungen</h3><p><Lines>{`Typischerweise dicht und linear entlang eines Gefäßverlaufs.
@@ -98,6 +98,15 @@ Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifi
       </div>
       <p className={caseStyles.caseDescription}><strong>Morphologie und Lage:</strong> Grobe, unregelmäßig-lobulierte Verkalkung mit teils randständiger Aufhellung in einer umschriebenen Läsion der linken Brust.</p>
       <p className={caseStyles.caseCredit}>Case courtesy of Subash Thapa, <a href="https://radiopaedia.org/cases/57400" target="_blank" rel="noreferrer">Radiopaedia.org, rID: 57400</a>.</p>
+    </article>
+    <article className={caseStyles.caseStudy}>
+      <header className={caseStyles.caseHeader}><div><small>RADIOPAEDIA-FALL</small><h3>Large rod-like Verkalkungen</h3></div></header>
+      <div className={caseStyles.caseGallery}>
+        <figure><a href="https://radiopaedia.org/cases/86379/studies/102416?lang=us#t=im&v1i=54305500&v1z=1&v2i=54305501&v2z=1&v3i=54305502&v3z=1&v4i=54305503&v4z=1" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-86379/rod-1.png" alt="Mammographie mit großkalibrigen Large-rod-like-Verkalkungen" width={491} height={720}/></a><figcaption>Aufnahme 1</figcaption></figure>
+        <figure><a href="https://radiopaedia.org/cases/86379/studies/102416?lang=us#t=im&v1i=54305500&v1z=1&v2i=54305501&v2z=1&v3i=54305502&v3z=1&v4i=54305503&v4z=1" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-86379/rod-2.png" alt="Zweite Mammographieaufnahme mit Large-rod-like-Verkalkungen" width={491} height={720}/></a><figcaption>Aufnahme 2</figcaption></figure>
+      </div>
+      <p className={caseStyles.caseDescription}><strong>Morphologie und Lage:</strong> Grobe, längliche Verkalkungen mit glatten, gut definierten Konturen verlaufen innerhalb eines Milchganges.</p>
+      <p className={caseStyles.caseCredit}>Case courtesy of Edgar Lorente, <a href="https://radiopaedia.org/cases/86379/studies/102416?lang=us#t=im&v1i=54305500&v1z=1&v2i=54305501&v2z=1&v3i=54305502&v3z=1&v4i=54305503&v4z=1" target="_blank" rel="noreferrer">Radiopaedia.org, rID: 86379</a>.</p>
     </article>
   </Section>
 
