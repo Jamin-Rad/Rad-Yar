@@ -1,11 +1,12 @@
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { LessonInProgressGate } from '@/components/InProgressBanner'
 
 export default function MSKLayout({ children }) {
   return (
     <>
       <Navbar />
-      {children}
+      <LessonInProgressGate>{children}</LessonInProgressGate>
       <Footer />
     </>
   )

@@ -1,13 +1,16 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
+import { createContext, useContext, useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { PRIVACY_CHOICE_EVENT, readPrivacyChoice } from './LegalNotice'
+import { useLanguage } from '@/providers/LanguageProvider'
+import { isLessonInProgress } from '@/data/lessonStatus'
 import styles from './InProgressBanner.module.css'
 
 const NOTICE_VERSION = '2026-09-05'
 const NOTICE_PREFIX = 'radyar_in_progress_notice:'
+const LessonProgressContext = createContext(false)
 
 const COPY = {
   de: {
@@ -36,7 +39,9 @@ const COPY = {
   },
 }
 
-export default function InProgressBanner({ lang = 'de' }) {
+function InProgressNotice({ lang: requestedLang, belowNavbar = false }) {
+  const { lang: currentLang } = useLanguage()
+  const lang = requestedLang || currentLang || 'de'
   const c = COPY[lang] || COPY.de
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
@@ -67,7 +72,7 @@ export default function InProgressBanner({ lang = 'de' }) {
 
   return (
     <>
-      <div className={styles.banner} role="status">
+      <div className={`${styles.banner} ${belowNavbar ? styles.belowNavbar : ''}`} role="status">
         <span className={styles.icon}>🚧</span>
         <div className={styles.text}>
           <strong>{c.title}</strong>
@@ -86,5 +91,22 @@ export default function InProgressBanner({ lang = 'de' }) {
         </div>
       ) : null}
     </>
+  )
+}
+
+export default function InProgressBanner(props) {
+  const managedByLayout = useContext(LessonProgressContext)
+  return managedByLayout ? null : <InProgressNotice {...props} />
+}
+
+export function LessonInProgressGate({ children }) {
+  const pathname = usePathname()
+  const showNotice = isLessonInProgress(pathname)
+
+  return (
+    <LessonProgressContext.Provider value={true}>
+      {showNotice ? <InProgressNotice belowNavbar /> : null}
+      {children}
+    </LessonProgressContext.Provider>
   )
 }
