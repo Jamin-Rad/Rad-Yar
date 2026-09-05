@@ -4,9 +4,26 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { QRCodeSVG } from 'qrcode.react'
 import { useLanguage } from '@/providers/LanguageProvider'
+import { PRIVACY_CHOICE_EVENT, readPrivacyChoice } from '@/components/LegalNotice'
 import styles from './page.module.css'
 
 const NODE_RADS_URL = 'https://www.rad-yar.com/node-rads'
+const NODE_RADS_SHARE_URLS = {
+  whatsapp: `${NODE_RADS_URL}?ref=whatsapp`,
+  copy: `${NODE_RADS_URL}?ref=copy`,
+  qr: `${NODE_RADS_URL}?ref=qr`,
+}
+const REFERRAL_CHANNELS = new Set(Object.keys(NODE_RADS_SHARE_URLS))
+
+function trackNodeRadsEvent(event, channel) {
+  if (readPrivacyChoice()?.analytics !== true) return
+  fetch('/api/analytics/node-rads', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ event, channel }),
+    keepalive: true,
+  }).catch(() => {})
+}
 
 const REGION_GROUPS = [
   { id: 'general', threshold: 10, icon: 'body' },
@@ -242,14 +259,19 @@ function ResultStep({ score, sizeCategory, configScore, regionTitle, shortAxis, 
   }
   const copyLink = async () => {
     try {
-      await navigator.clipboard.writeText(NODE_RADS_URL)
+      await navigator.clipboard.writeText(NODE_RADS_SHARE_URLS.copy)
+      trackNodeRadsEvent('copy_link')
       setLinkCopied(true)
       window.setTimeout(() => setLinkCopied(false), 1800)
     } catch {
       setLinkCopied(false)
     }
   }
-  const whatsAppText = encodeURIComponent(`Node-RADS\n${NODE_RADS_URL}`)
+  const toggleShare = () => {
+    if (!shareOpen) trackNodeRadsEvent('recommend_open')
+    setShareOpen(value => !value)
+  }
+  const whatsAppText = encodeURIComponent(`Node-RADS\n${NODE_RADS_SHARE_URLS.whatsapp}`)
   return <div className={`${styles.stepContent} ${styles.resultStep}`} style={{ '--score-color': color }}>
     <header><h1>{ui.resultTitle}</h1><p>{ui.resultText}</p></header>
     <div className={styles.scoreReveal}><div className={styles.scoreOrbit}><span>NODE-RADS</span><strong>{score}</strong></div><h2><span>{level}</span><em>{ui.resultSignals[score - 1]}</em></h2></div>
@@ -263,7 +285,7 @@ function ResultStep({ score, sizeCategory, configScore, regionTitle, shortAxis, 
       <button type="button" onClick={copyReport}>{copied ? ui.copied : ui.copy}<span>{copied ? '✓' : '⧉'}</span></button>
     </div>
     <section className={`${styles.shareCard} ${shareOpen ? styles.shareCardOpen : ''}`}>
-      <button type="button" className={styles.shareToggle} onClick={() => setShareOpen(value => !value)} aria-expanded={shareOpen}>
+      <button type="button" className={styles.shareToggle} onClick={toggleShare} aria-expanded={shareOpen}>
         <span className={styles.shareIcon}><ShareIcon/></span>
         <span><strong>{ui.recommend}</strong><small>{ui.recommendHint}</small></span>
         <i>{shareOpen ? '−' : '+'}</i>
@@ -272,13 +294,13 @@ function ResultStep({ score, sizeCategory, configScore, regionTitle, shortAxis, 
         <header><strong>{ui.shareTitle}</strong><p>{ui.shareText}</p></header>
         <div className={styles.shareBody}>
           <div className={styles.qrFrame}>
-            <QRCodeSVG value={NODE_RADS_URL} size={196} level="H" bgColor="#f8f6ff" fgColor="#0a0611" marginSize={2} imageSettings={{ src: '/node-rads/app-icon.png', width: 42, height: 42, excavate: true }}/>
+            <QRCodeSVG value={NODE_RADS_SHARE_URLS.qr} size={196} level="H" bgColor="#f8f6ff" fgColor="#0a0611" marginSize={2} imageSettings={{ src: '/node-rads/app-icon.png', width: 42, height: 42, excavate: true }}/>
           </div>
           <div className={styles.shareDetails}>
             <span>{ui.scanLabel}</span>
             <strong>rad-yar.com/node-rads</strong>
             <div className={styles.shareActions}>
-              <a href={`https://wa.me/?text=${whatsAppText}`} target="_blank" rel="noreferrer"><WhatsAppIcon/>{ui.whatsapp}</a>
+              <a href={`https://wa.me/?text=${whatsAppText}`} target="_blank" rel="noreferrer" onClick={() => trackNodeRadsEvent('whatsapp_click')}><WhatsAppIcon/>{ui.whatsapp}</a>
               <button type="button" onClick={copyLink}><span>{linkCopied ? '✓' : '⧉'}</span>{linkCopied ? ui.linkCopied : ui.copyLink}</button>
             </div>
           </div>
@@ -324,6 +346,20 @@ export default function NodeRadsPage() {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' })
   }, [step])
+
+  useEffect(() => {
+    const recordReferral = () => {
+      const channel = new URLSearchParams(window.location.search).get('ref')
+      if (!REFERRAL_CHANNELS.has(channel) || readPrivacyChoice()?.analytics !== true) return
+      const sessionKey = `node_rads_referral_${channel}`
+      if (window.sessionStorage.getItem(sessionKey)) return
+      window.sessionStorage.setItem(sessionKey, '1')
+      trackNodeRadsEvent('referral_visit', channel)
+    }
+    recordReferral()
+    window.addEventListener(PRIVACY_CHOICE_EVENT, recordReferral)
+    return () => window.removeEventListener(PRIVACY_CHOICE_EVENT, recordReferral)
+  }, [])
 
   const special = SPECIAL_REGIONS.find(item => item.id === specialRegion)
   const threshold = region === 'specific' ? special?.threshold || 10 : 10

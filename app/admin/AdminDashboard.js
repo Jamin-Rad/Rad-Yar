@@ -63,6 +63,62 @@ function RegistrationChart({ users }) {
   )
 }
 
+function NodeRadsAnalytics({ days }) {
+  const [period, setPeriod] = useState(30)
+  const metrics = useMemo(() => {
+    const since = new Date()
+    since.setHours(0, 0, 0, 0)
+    since.setDate(since.getDate() - period + 1)
+    const visibleDays = days.filter(row => new Date(`${row.day}T00:00:00`) >= since)
+    const totals = visibleDays.reduce((sum, row) => ({
+      views: sum.views + Number(row.views || 0),
+      recommendOpens: sum.recommendOpens + Number(row.recommendOpens || 0),
+      whatsappClicks: sum.whatsappClicks + Number(row.whatsappClicks || 0),
+      copyLinks: sum.copyLinks + Number(row.copyLinks || 0),
+      referralWhatsapp: sum.referralWhatsapp + Number(row.referralWhatsapp || 0),
+      referralCopy: sum.referralCopy + Number(row.referralCopy || 0),
+      referralQr: sum.referralQr + Number(row.referralQr || 0),
+    }), { views: 0, recommendOpens: 0, whatsappClicks: 0, copyLinks: 0, referralWhatsapp: 0, referralCopy: 0, referralQr: 0 })
+    const recommendations = totals.whatsappClicks + totals.copyLinks
+    const referredVisits = totals.referralWhatsapp + totals.referralCopy + totals.referralQr
+    return {
+      ...totals,
+      recommendations,
+      referredVisits,
+      recommendationRate: totals.views ? (recommendations / totals.views * 100).toFixed(1) : '0,0',
+    }
+  }, [days, period])
+
+  return (
+    <section className={styles.nodeRadsAnalytics}>
+      <div className={styles.nodeRadsHeader}>
+        <div className={styles.nodeRadsIdentity}>
+          <span>N</span>
+          <div><h2>Node-RADS Analytics</h2><p>Anonyme, einwilligungsbasierte Weiterempfehlungen</p></div>
+        </div>
+        <div className={styles.periodPicker} aria-label="Auswertungszeitraum">
+          {[7, 30, 90].map(value => <button type="button" key={value} onClick={() => setPeriod(value)} className={period === value ? styles.periodActive : ''}>{value} Tage</button>)}
+        </div>
+      </div>
+      <div className={styles.nodeRadsMetrics}>
+        <div><strong>{metrics.views}</strong><span>Aufrufe</span></div>
+        <div><strong>{metrics.recommendOpens}</strong><span>Weiterempfehlen geöffnet</span></div>
+        <div><strong>{metrics.recommendations}</strong><span>Empfehlungsaktionen</span></div>
+        <div><strong>{metrics.referredVisits}</strong><span>Besuche durch Empfehlungen</span></div>
+        <div><strong>{metrics.recommendationRate.replace('.', ',')} %</strong><span>Empfehlungsrate</span></div>
+      </div>
+      <div className={styles.nodeRadsChannels}>
+        <div><span>WhatsApp angeklickt</span><strong>{metrics.whatsappClicks}</strong></div>
+        <div><span>Link kopiert</span><strong>{metrics.copyLinks}</strong></div>
+        <div><span>Besuche über WhatsApp</span><strong>{metrics.referralWhatsapp}</strong></div>
+        <div><span>Besuche über kopierte Links</span><strong>{metrics.referralCopy}</strong></div>
+        <div><span>QR-Code-Scans</span><strong>{metrics.referralQr}</strong></div>
+      </div>
+      <p className={styles.nodeRadsNote}>Eine Empfehlungsaktion bedeutet Klick auf WhatsApp oder erfolgreiches Kopieren des Links. Ob eine WhatsApp-Nachricht tatsächlich versendet wurde, kann der Browser nicht erkennen.</p>
+    </section>
+  )
+}
+
 export default function AdminDashboard() {
   const [users, setUsers] = useState([])
   const [totalCount, setTotalCount] = useState(0)
@@ -78,6 +134,7 @@ export default function AdminDashboard() {
     totals: { visits: 0, pageViews: 0, activeSeconds: 0, visitors: 0, activeToday: 0 },
     userStats: {},
     topPages: [],
+    nodeRads: [],
     periodDays: 90,
   })
   const [analyticsError, setAnalyticsError] = useState('')
@@ -257,6 +314,8 @@ export default function AdminDashboard() {
             <p className={styles.emptyAnalytics}>Noch keine Seitenaufrufe erfasst.</p>
           )}
         </div>
+
+        <NodeRadsAnalytics days={analytics.nodeRads || []} />
 
         {/* Registrierungs-Chart */}
         <RegistrationChart users={users} />
