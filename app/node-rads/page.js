@@ -39,9 +39,10 @@ const COPY = {
     sizeNormal: 'Normal groß', sizeEnlarged: 'Vergrößert', sizeBulk: 'Bulk', anyAxis: 'beliebige Achse',
     configTitle: 'Wie ist der Lymphknoten konfiguriert?', configText: 'Wählen Sie je ein Merkmal für Textur, Rand und Form.',
     texture: 'Textur', border: 'Rand', shape: 'Form', configScore: 'Konfigurationsscore',
-    textures: ['Homogen', 'Heterogen', 'Fokale Nekrose', 'Grobe oder neue Nekrose / entitätsspezifisch'],
+    textures: ['Homogen', 'Heterogen', 'Fokale Nekrose', 'Grobe oder neue Nekrose', 'Entitätsspezifischer Befund'],
+    entitySpecificInfo: 'Entitätsspezifische Befunde: zystische Textur bei Plattenepithelkarzinomen, Verkalkungen beim Schilddrüsenkarzinom oder muzinöse Textur bei muzinösen Adenokarzinomen.',
     borders: ['Glatt', 'Unregelmäßig oder unscharf'],
-    shapes: ['Fetthilus erhalten', 'Nierenförmig / oval ohne Fetthilus', 'Rund ohne Fetthilus'],
+    shapes: ['Jede Form bei erhaltenem Fetthilus', 'Nierenförmig / oval ohne Fetthilus', 'Rund ohne Fetthilus'],
     resultTitle: 'Ihre Node-RADS Einstufung', resultText: 'Größe und Konfiguration werden nach Node-RADS 1.0 zusammengeführt.',
     levels: ['Sehr geringe Wahrscheinlichkeit', 'Geringe Wahrscheinlichkeit', 'Unklar / äquivokal', 'Hohe Wahrscheinlichkeit', 'Sehr hohe Wahrscheinlichkeit'],
     sizeCategory: 'Größenkategorie', report: 'Strukturierter Befundtext', copy: 'Befundtext kopieren', copied: 'Kopiert',
@@ -63,9 +64,10 @@ const COPY = {
     sizeNormal: 'Normal size', sizeEnlarged: 'Enlarged', sizeBulk: 'Bulk', anyAxis: 'any axis',
     configTitle: 'What is the node configuration?', configText: 'Select one feature each for texture, border and shape.',
     texture: 'Texture', border: 'Border', shape: 'Shape', configScore: 'Configuration score',
-    textures: ['Homogeneous', 'Heterogeneous', 'Focal necrosis', 'Gross or new necrosis / entity-specific'],
+    textures: ['Homogeneous', 'Heterogeneous', 'Focal necrosis', 'Gross or new necrosis', 'Entity-specific finding'],
+    entitySpecificInfo: 'Entity-specific findings: cystic texture in squamous cell carcinoma, calcification in thyroid carcinoma, or mucinous texture in mucinous adenocarcinoma.',
     borders: ['Smooth', 'Irregular or ill-defined'],
-    shapes: ['Preserved fatty hilum', 'Kidney-bean / oval without fatty hilum', 'Spherical without fatty hilum'],
+    shapes: ['Any shape with preserved fatty hilum', 'Kidney-bean / oval without fatty hilum', 'Spherical without fatty hilum'],
     resultTitle: 'Your Node-RADS assessment', resultText: 'Size and configuration are combined according to Node-RADS 1.0.',
     levels: ['Very low likelihood', 'Low likelihood', 'Equivocal', 'High likelihood', 'Very high likelihood'],
     sizeCategory: 'Size category', report: 'Structured report text', copy: 'Copy report text', copied: 'Copied',
@@ -78,6 +80,7 @@ const COPY = {
 
 const SIZE_LABEL_KEY = { normal: 'sizeNormal', enlarged: 'sizeEnlarged', bulk: 'sizeBulk' }
 const RESULT_COLORS = ['#59c69a', '#63c7dd', '#e2bd5f', '#ed8a50', '#ef5f65']
+const TEXTURE_SCORES = [0, 1, 2, 3, 3]
 const MEASUREMENT_VALUES = Array.from({ length: 100 }, (_, index) => index + 1)
 
 function RegionIcon({ type }) {
@@ -152,10 +155,11 @@ function ScoreChoices({ title, items, scores, value, setValue }) {
 }
 
 function ConfigStep({ texture, setTexture, border, setBorder, shape, setShape, ui }) {
-  const sum = (texture ?? 0) + (border ?? 0) + (shape === 2 ? 1 : 0)
+  const sum = (TEXTURE_SCORES[texture] ?? 0) + (border ?? 0) + (shape === 2 ? 1 : 0)
   return <div className={styles.stepContent}>
     <header><h1>{ui.configTitle}</h1><p>{ui.configText}</p></header>
-    <ScoreChoices title={`1 · ${ui.texture}`} items={ui.textures} scores={[0,1,2,3]} value={texture} setValue={setTexture}/>
+    <ScoreChoices title={`1 · ${ui.texture}`} items={ui.textures} scores={TEXTURE_SCORES} value={texture} setValue={setTexture}/>
+    <div className={styles.entityNote}><span>i</span><p>{ui.entitySpecificInfo}</p></div>
     <div className={styles.configPair}>
       <ScoreChoices title={`2 · ${ui.border}`} items={ui.borders} scores={[0,1]} value={border} setValue={setBorder}/>
       <ScoreChoices title={`3 · ${ui.shape}`} items={ui.shapes} scores={[0,0,1]} value={shape} setValue={setShape}/>
@@ -230,7 +234,7 @@ export default function NodeRadsPage() {
   const invalidMeasurement = Number(shortAxis) > Number(longAxis) && Number(longAxis) > 0
   const sizeCategory = getSizeCategory(shortAxis, longAxis, threshold, growth)
   const configReady = texture !== null && border !== null && shape !== null
-  const configScore = (texture ?? 0) + (border ?? 0) + (shape === 2 ? 1 : 0)
+  const configScore = (TEXTURE_SCORES[texture] ?? 0) + (border ?? 0) + (shape === 2 ? 1 : 0)
   const score = sizeCategory ? getNodeRads(sizeCategory, configScore) : null
 
   const canContinue = step === 0 ? Boolean(region && (region !== 'specific' || specialRegion)) : step === 1 ? Boolean(sizeCategory && !invalidMeasurement) : step === 2 ? configReady : true
@@ -257,7 +261,6 @@ export default function NodeRadsPage() {
       </aside>
       <section className={styles.formPanel}>
         <Stepper step={step} setStep={(next) => { setError(''); setStep(next) }} ui={ui} completed={completed}/>
-        <div className={styles.mobileThreshold}><span>{ui.currentThreshold}</span><strong>{thresholdDisplay}</strong><small>{ui.shortAxis}</small></div>
         <div className={styles.stepViewport} key={step}>
           {step === 0 ? <RegionStep region={region} setRegion={setRegion} specialRegion={specialRegion} setSpecialRegion={setSpecialRegion} ui={ui} lang={activeLang}/> : null}
           {step === 1 ? <SizeStep shortAxis={shortAxis} setShortAxis={setShortAxis} longAxis={longAxis} setLongAxis={setLongAxis} growth={growth} setGrowth={setGrowth} sizeCategory={sizeCategory} threshold={threshold} ui={ui} invalid={invalidMeasurement}/> : null}
