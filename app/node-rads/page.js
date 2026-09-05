@@ -70,10 +70,10 @@ const COPY = {
     levels: ['Sehr geringe Wahrscheinlichkeit', 'Geringe Wahrscheinlichkeit', 'Unklar / äquivokal', 'Hohe Wahrscheinlichkeit', 'Sehr hohe Wahrscheinlichkeit'],
     resultSignals: ['LK−', 'eher LK−', 'LK±', 'LK+', 'LK+'],
     sizeCategory: 'Größenkategorie', finding: 'Befund', assessment: 'Beurteilung', copy: 'Befundtext kopieren', copied: 'Kopiert',
-    reportNormal: '{region}: Größenunauffälliger Lymphknoten mit einer Kurzachse von {short} mm.',
-    reportEnlarged: '{region}: Pathologisch vergrößerter Lymphknoten mit einer Kurzachse von {short} mm.',
-    reportGrowth: '{region}: Im Verlauf größenprogredienter Lymphknoten mit einer Zunahme der Kurzachse um mindestens 2 mm.',
-    reportBulk: '{region}: Bulky Lymphknotenmanifestation mit einer maximalen Langachse von {long} mm.',
+    reportNormal: 'Größenunauffälliger Lymphknoten mit einer Kurzachse von {short} mm.',
+    reportEnlarged: 'Pathologisch vergrößerter Lymphknoten mit einer Kurzachse von {short} mm.',
+    reportGrowth: 'Im Verlauf größenprogredienter Lymphknoten mit einer Zunahme der Kurzachse um mindestens 2 mm.',
+    reportBulk: 'Bulky Lymphknotenmanifestation mit einer maximalen Langachse von {long} mm.',
     reportMorphology: 'Morphologisch zeigt sich der Lymphknoten {texture}, {border} begrenzt und {shape}.',
     assessmentStatements: ['Ein maligner Lymphknotenbefall ist sehr unwahrscheinlich.', 'Ein maligner Lymphknotenbefall ist eher unwahrscheinlich.', 'Ein maligner Lymphknotenbefall bleibt unklar beziehungsweise äquivokal.', 'Es besteht eine hohe Wahrscheinlichkeit für einen malignen Lymphknotenbefall.', 'Es besteht eine sehr hohe Wahrscheinlichkeit für einen malignen Lymphknotenbefall.'],
     reportAssessment: 'Node-RADS {score} ({signal}). {statement} Die abschließende onkologische Einordnung erfolgt unter Berücksichtigung des Primärtumors, des nodalen Verteilungsmusters und der tumorspezifischen TNM-Kriterien.',
@@ -108,10 +108,10 @@ const COPY = {
     levels: ['Very low likelihood', 'Low likelihood', 'Equivocal', 'High likelihood', 'Very high likelihood'],
     resultSignals: ['LN−', 'likely LN−', 'LN±', 'LN+', 'LN+'],
     sizeCategory: 'Size category', finding: 'Findings', assessment: 'Assessment', copy: 'Copy report text', copied: 'Copied',
-    reportNormal: '{region}: Size-normal lymph node with a short-axis diameter of {short} mm.',
-    reportEnlarged: '{region}: Pathologically enlarged lymph node with a short-axis diameter of {short} mm.',
-    reportGrowth: '{region}: Interval progression of the lymph node with an increase in short-axis diameter of at least 2 mm.',
-    reportBulk: '{region}: Bulky nodal disease with a maximum long-axis diameter of {long} mm.',
+    reportNormal: 'Size-normal lymph node with a short-axis diameter of {short} mm.',
+    reportEnlarged: 'Pathologically enlarged lymph node with a short-axis diameter of {short} mm.',
+    reportGrowth: 'Interval progression of the lymph node with an increase in short-axis diameter of at least 2 mm.',
+    reportBulk: 'Bulky nodal disease with a maximum long-axis diameter of {long} mm.',
     reportMorphology: 'Morphologically, the lymph node is {texture}, {border} and {shape}.',
     assessmentStatements: ['Malignant lymph-node involvement is very unlikely.', 'Malignant lymph-node involvement is considered unlikely.', 'Malignant lymph-node involvement remains indeterminate or equivocal.', 'There is a high likelihood of malignant lymph-node involvement.', 'There is a very high likelihood of malignant lymph-node involvement.'],
     reportAssessment: 'Node-RADS {score} ({signal}). {statement} Final oncological interpretation should account for the primary tumour, nodal distribution pattern and tumour-specific TNM criteria.',
@@ -231,17 +231,17 @@ function ConfigStep({ texture, setTexture, border, setBorder, shape, setShape, u
   </div>
 }
 
-function ResultStep({ score, sizeCategory, configScore, regionTitle, shortAxis, longAxis, growth, texture, border, shape, ui, copied, setCopied }) {
+function ResultStep({ score, sizeCategory, configScore, shortAxis, longAxis, growth, texture, border, shape, ui, copied, setCopied }) {
   const [shareOpen, setShareOpen] = useState(false)
   const [linkCopied, setLinkCopied] = useState(false)
   const color = RESULT_COLORS[score - 1]
   const level = ui.levels[score - 1]
   const sizeLabel = ui[SIZE_LABEL_KEY[sizeCategory]]
   const sizeFinding = sizeCategory === 'bulk'
-    ? ui.reportBulk.replace('{region}', regionTitle).replace('{long}', longAxis)
+    ? ui.reportBulk.replace('{long}', longAxis)
     : growth
-      ? ui.reportGrowth.replace('{region}', regionTitle)
-      : ui[sizeCategory === 'enlarged' ? 'reportEnlarged' : 'reportNormal'].replace('{region}', regionTitle).replace('{short}', shortAxis)
+      ? ui.reportGrowth
+      : ui[sizeCategory === 'enlarged' ? 'reportEnlarged' : 'reportNormal'].replace('{short}', shortAxis)
   const morphologyFinding = sizeCategory !== 'bulk'
     ? ui.reportMorphology.replace('{texture}', ui.reportTextures[texture]).replace('{border}', ui.reportBorders[border]).replace('{shape}', ui.reportShapes[shape])
     : ''
@@ -406,7 +406,7 @@ export default function NodeRadsPage() {
           {step === 0 ? <RegionStep region={region} setRegion={setRegion} specialRegion={specialRegion} setSpecialRegion={setSpecialRegion} ui={ui} lang={activeLang}/> : null}
           {step === 1 ? <SizeStep shortAxis={shortAxis} setShortAxis={setShortAxis} longAxis={longAxis} setLongAxis={setLongAxis} growth={growth} setGrowth={setGrowth} sizeCategory={sizeCategory} threshold={threshold} ui={ui}/> : null}
           {step === 2 ? <ConfigStep texture={texture} setTexture={setTexture} border={border} setBorder={setBorder} shape={shape} setShape={setShape} ui={ui}/> : null}
-          {step === 3 && score ? <ResultStep score={score} sizeCategory={sizeCategory} configScore={configScore} regionTitle={regionTitle} shortAxis={shortAxis} longAxis={longAxis} growth={growth} texture={texture} border={border} shape={shape} ui={ui} copied={copied} setCopied={setCopied}/> : null}
+          {step === 3 && score ? <ResultStep score={score} sizeCategory={sizeCategory} configScore={configScore} shortAxis={shortAxis} longAxis={longAxis} growth={growth} texture={texture} border={border} shape={shape} ui={ui} copied={copied} setCopied={setCopied}/> : null}
         </div>
         {error ? <p className={styles.footerError} role="alert">{error}</p> : null}
         <footer className={styles.actionBar}>
