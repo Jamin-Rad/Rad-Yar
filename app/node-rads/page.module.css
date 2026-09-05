@@ -51,11 +51,8 @@
   box-shadow: 0 0 20px var(--violet);
 }
 
-.topActions, .radyar, .languages { display: flex; align-items: center; }
+.topActions, .languages { display: flex; align-items: center; }
 .topActions { gap: 24px; }
-.radyar { gap: 7px; color: var(--muted); text-decoration: none; font-size: 12px; transition: color .2s ease; }
-.radyar strong { color: var(--ink); font-size: 14px; }
-.radyar:hover { color: var(--cyan); }
 .languages { gap: 3px; padding: 3px; background: rgba(255,255,255,.045); border: 1px solid var(--line); border-radius: 4px; }
 .languages button { min-width: 39px; min-height: 32px; padding: 0 8px; border: 0; border-radius: 2px; color: #71869a; background: transparent; cursor: pointer; font-size: 10px; font-weight: 800; letter-spacing: .06em; transition: .2s ease; }
 .languages button:hover { color: var(--ink); }
@@ -273,6 +270,9 @@
 .disclaimer a { margin-inline-start: 15px; color: #8da5b8; text-decoration: none; white-space: nowrap; }
 .disclaimer a:hover { color: var(--cyan); }
 .developerCredit { margin-inline-start: 18px; color: #91a5b5; font-size: 9px; letter-spacing: .04em; white-space: nowrap; }
+.developerCredit a { margin: 0; color: #b8c6d0; }
+.developerCredit a:hover, .developerCredit a:hover strong { color: var(--cyan); }
+.developerCredit strong { color: #e0e8ed; font-size: inherit; }
 
 @keyframes stepIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 @keyframes reveal { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: none; } }
@@ -299,9 +299,6 @@
   .topbar { height: 61px; padding: 0 17px; }
   .brand { font-size: 11px; }
   .topActions { gap: 10px; }
-  .radyar span { display: none; }
-  .radyar { font-size: 10px; }
-  .radyar strong { font-size: 12px; }
   .languages { padding: 2px; }
   .languages button { min-width: 31px; min-height: 30px; padding: 0 5px; font-size: 9px; }
   .appShell { min-height: calc(100svh - 61px); display: block; }
@@ -358,7 +355,6 @@
 @media (max-width: 390px) {
   .brand::before { margin-inline-end: 7px; }
   .topActions { gap: 6px; }
-  .radyar strong { font-size: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -297,7 +297,7 @@ export default function NodeRadsPage() {
   return <main className={styles.page} dir="ltr" lang={activeLang}>
     <header className={styles.topbar}>
       <Link href="/node-rads" className={styles.brand}>{ui.brand}</Link>
-      <div className={styles.topActions}><Link href="/" className={styles.radyar}><span>{ui.by}</span><strong>RadYar</strong> ↗</Link><div className={styles.languages}>{['de','en'].map(code => <button type="button" key={code} onClick={() => setLang(code)} className={activeLang === code ? styles.langActive : ''} aria-pressed={activeLang === code}>{code.toUpperCase()}</button>)}</div></div>
+      <div className={styles.topActions}><div className={styles.languages}>{['de','en'].map(code => <button type="button" key={code} onClick={() => setLang(code)} className={activeLang === code ? styles.langActive : ''} aria-pressed={activeLang === code}>{code.toUpperCase()}</button>)}</div></div>
     </header>
     <div className={styles.appShell}>
       <aside className={styles.visualPanel}>
@@ -320,6 +320,6 @@ export default function NodeRadsPage() {
         </footer>
       </section>
     </div>
-    <footer className={styles.disclaimer}><span>i</span><p>{ui.disclaimer}</p><a href="https://doi.org/10.1007/s00330-020-07572-4" target="_blank" rel="noreferrer">{ui.source} ↗</a><small className={styles.developerCredit}>{ui.developerCredit}</small></footer>
+    <footer className={styles.disclaimer}><span>i</span><p>{ui.disclaimer}</p><a href="https://doi.org/10.1007/s00330-020-07572-4" target="_blank" rel="noreferrer">{ui.source} ↗</a><small className={styles.developerCredit}><Link href="/">{ui.by} <strong>RadYar</strong></Link> · {ui.developerCredit}</small></footer>
   </main>
 }
