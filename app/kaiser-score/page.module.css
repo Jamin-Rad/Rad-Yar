@@ -195,6 +195,7 @@
   .options strong { font-size: 12px; }
   .options small { font-size: 9px; }
   .actions { min-height: 73px; margin: 0; padding: 11px 16px max(11px, env(safe-area-inset-bottom)); position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; border-top: 1px solid var(--line); background: rgba(255,255,255,.95); backdrop-filter: blur(13px); }
+  .actionsComplete { min-height: 0; margin-top: 24px; padding: 18px 0 0; position: static; border-top: 1px solid var(--line); background: transparent; backdrop-filter: none; }
   .actions button { min-height: 49px; padding-inline: 15px; }
   .nextButton { min-width: 160px; }
   .sidePanel { min-height: 0; padding: 26px 19px 30px; border-top: 1px solid var(--line); }

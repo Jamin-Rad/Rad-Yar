@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
+import AdcAssessment from './AdcAssessment'
 import styles from './page.module.css'
 
 const COPY = {
@@ -216,7 +217,7 @@ export default function KaiserScorePage() {
         <PathRail history={history} current={current} ui={ui} onJump={jumpTo}/>
         <div className={styles.intro}><h2>{ui.hero}</h2><p>{ui.intro}</p></div>
         {current ? <Question question={current} selected={selected} setSelected={setSelected} ui={ui}/> : <section className={styles.complete}><span>✓</span><h1>KAISER {score}</h1><p>{ui.resultText[risk.key]}</p></section>}
-        <footer className={styles.actions}>
+        <footer className={`${styles.actions} ${score ? styles.actionsComplete : ''}`}>
           <button type="button" className={styles.backButton} onClick={goBack} disabled={!history.length}><ArrowIcon reverse/>{ui.back}</button>
           {current ? <button type="button" className={styles.nextButton} onClick={commitAnswer} disabled={!selected}>{ui.continue}<ArrowIcon/></button> : <button type="button" className={styles.nextButton} onClick={restart}>{ui.restart}<ArrowIcon/></button>}
         </footer>
@@ -226,6 +227,7 @@ export default function KaiserScorePage() {
         <ResultPanel score={score} risk={risk} history={history} ui={ui} copied={copied} onCopy={copyReport} linkCopied={linkCopied} onCopyLink={copyLink}/>
       </aside>
     </div>
+    {score ? <AdcAssessment key={`${score}-${activeLang}`} score={score} lang={activeLang}/> : null}
     <footer className={styles.disclaimer}><span>i</span><p>{ui.disclaimer}</p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5990997/" target="_blank" rel="noreferrer">{ui.source} ↗</a><small><Link href="/">{ui.by} <strong>RadYar</strong></Link> · {ui.developed}</small></footer>
   </main>
 }
