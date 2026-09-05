@@ -1,15 +1,17 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
+import { useTheme } from '@/providers/ThemeProvider'
 import AdcAssessment from './AdcAssessment'
 import styles from './page.module.css'
 
 const COPY = {
   de: {
-    brand: 'KAISER SCORE', atlas: 'Atlas', hero: 'Die Läsion lesen. Dem Pfad folgen.',
-    intro: 'Wenige MRT-Merkmale führen zu einer reproduzierbaren Einschätzung.',
+    brand: 'KAISER SCORE', atlas: 'Kaiser-Skala', hero: 'Anreichernder Herd im MRT',
+    intro: 'Gute Bildqualität?',
     progress: 'Diagnostischer Pfad', current: 'Aktuelle Frage', help: 'Hilfestellung anzeigen', hideHelp: 'Hilfestellung schließen',
     questions: {
       root: { title: 'Spikulierte Ausläufer?', text: 'Zeigt die Läsion mindestens einen spikulierten, wurzelartigen Ausläufer?', help: 'Schon eine einzelne Spikula zählt als positiver Root Sign – auch bei ansonsten umschriebener Läsion.' },
@@ -34,15 +36,16 @@ const COPY = {
     result: 'Ergebnis', corresponds: 'Entspricht', recommendation: 'Empfehlung', biopsy: 'Histologische Abklärung empfohlen', clinical: 'Klinisch-bildgebende Korrelation',
     resultText: { low: 'Kaiser 1–4 wird üblicherweise BI-RADS 2/3 zugeordnet.', intermediate: 'Kaiser 5–7 entspricht einer suspekten Läsion (BI-RADS 4).', high: 'Kaiser 8–11 entspricht einer hochsuspekten Läsion (BI-RADS 5).' },
     report: 'Befundtext', reportPreview: 'Vorschau', copy: 'Befundtext kopieren', copied: 'Kopiert', copyLink: 'Link kopieren', linkCopied: 'Link kopiert',
-    decision: 'Entscheidungsübersicht', back: 'Zurück', restart: 'Neu beginnen', continue: 'Antwort übernehmen',
+    decision: 'Entscheidungsübersicht', back: 'Zurück', restart: 'Neu beginnen', continue: 'Weiter',
     disclaimer: 'Entscheidungshilfe für anreichernde Läsionen in der kontrastmittelverstärkten Mamma-MRT · kein Ersatz für die ärztliche Gesamtbeurteilung.',
     source: 'Baltzer et al. · European Radiology · 2018', by: 'Ein Tool von', developed: 'Entwickelt von Dr. Zia',
     atlasInfo: 'Kaiser 1–4: BI-RADS 2/3 · Kaiser 5–7: BI-RADS 4 · Kaiser 8–11: BI-RADS 5',
     findingLead: 'In der Mamma-MRT zeigt die anreichernde Läsion', assessmentLead: 'Nach dem Kaiser-Entscheidungsbaum ergibt sich',
+    theme: 'Hell-/Dunkelmodus wechseln',
   },
   en: {
-    brand: 'KAISER SCORE', atlas: 'Atlas', hero: 'Read the lesion. Follow the path.',
-    intro: 'A few MRI features lead to a reproducible assessment.',
+    brand: 'KAISER SCORE', atlas: 'Kaiser scale', hero: 'Enhancing lesion on breast MRI',
+    intro: 'Good image quality?',
     progress: 'Diagnostic path', current: 'Current question', help: 'Show guidance', hideHelp: 'Hide guidance',
     questions: {
       root: { title: 'Spiculated extensions?', text: 'Does the lesion show at least one spiculated, root-like extension?', help: 'A single spicule is enough for a positive root sign, even if the remainder of the lesion is circumscribed.' },
@@ -67,11 +70,12 @@ const COPY = {
     result: 'Result', corresponds: 'Corresponds to', recommendation: 'Recommendation', biopsy: 'Histological verification recommended', clinical: 'Clinical and imaging correlation',
     resultText: { low: 'Kaiser 1–4 is generally assigned to BI-RADS 2/3.', intermediate: 'Kaiser 5–7 represents a suspicious lesion (BI-RADS 4).', high: 'Kaiser 8–11 represents a highly suspicious lesion (BI-RADS 5).' },
     report: 'Report text', reportPreview: 'Preview', copy: 'Copy report text', copied: 'Copied', copyLink: 'Copy link', linkCopied: 'Link copied',
-    decision: 'Decision summary', back: 'Back', restart: 'Start again', continue: 'Use answer',
+    decision: 'Decision summary', back: 'Back', restart: 'Start again', continue: 'Next',
     disclaimer: 'Decision aid for enhancing lesions on contrast-enhanced breast MRI · not a substitute for integrated physician assessment.',
     source: 'Baltzer et al. · European Radiology · 2018', by: 'A tool by', developed: 'Developed by Dr. Zia',
     atlasInfo: 'Kaiser 1–4: BI-RADS 2/3 · Kaiser 5–7: BI-RADS 4 · Kaiser 8–11: BI-RADS 5',
     findingLead: 'On breast MRI, the enhancing lesion demonstrates', assessmentLead: 'Following the Kaiser decision tree, the result is',
+    theme: 'Toggle light and dark theme',
   },
 }
 
@@ -104,6 +108,72 @@ function ArrowIcon({ reverse = false }) {
   return <svg viewBox="0 0 24 24" aria-hidden="true" className={reverse ? styles.reverse : ''}><path d="M4 12h16M14 6l6 6-6 6"/></svg>
 }
 
+function ThemeIcons() {
+  return <>
+    <svg className={styles.sunIcon} viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg>
+    <svg className={styles.moonIcon} viewBox="0 0 24 24" aria-hidden="true"><path d="M20.1 15.2A8.7 8.7 0 0 1 8.8 3.9 8.8 8.8 0 1 0 20.1 15.2Z"/></svg>
+  </>
+}
+
+function OptionSchematic({ question, option }) {
+  if (question === 'curve') {
+    const paths = {
+      persistent: 'M13 54 C27 51 30 35 43 31 S65 17 83 12',
+      plateau: 'M13 54 C27 49 29 26 44 22 S65 23 83 22',
+      washout: 'M13 54 C26 49 30 22 45 18 S65 29 83 39',
+    }
+    return <svg className={styles.schematic} viewBox="0 0 96 68" aria-hidden="true">
+      <path className={styles.schematicGuide} d="M10 8v50h78" />
+      <path className={styles.schematicMain} d={paths[option]} />
+      <circle className={styles.schematicNode} cx="13" cy="54" r="2.5" />
+      <circle className={styles.schematicNode} cx="83" cy={option === 'persistent' ? 12 : option === 'plateau' ? 22 : 39} r="2.5" />
+    </svg>
+  }
+
+  if (question === 'root') {
+    return <svg className={styles.schematic} viewBox="0 0 96 68" aria-hidden="true">
+      {option === 'yes' ? <>
+        <path className={styles.schematicSoft} d="M31 21 24 12M29 29 14 27M33 39 22 50M43 44 42 60M54 42 65 54M60 33 78 35M57 23 70 12" />
+        <path className={styles.schematicMain} d="M31 21c7-9 21-9 28 1 7 9 4 20-5 24-10 5-22 1-26-9-2-6-1-11 3-16Z" />
+        <circle className={styles.schematicFill} cx="44" cy="32" r="8" />
+      </> : <>
+        <ellipse className={styles.schematicSoft} cx="48" cy="34" rx="29" ry="21" />
+        <ellipse className={styles.schematicMain} cx="48" cy="34" rx="22" ry="16" />
+        <circle className={styles.schematicFill} cx="48" cy="34" r="8" />
+      </>}
+    </svg>
+  }
+
+  if (question === 'margin') {
+    return <svg className={styles.schematic} viewBox="0 0 96 68" aria-hidden="true">
+      <circle className={styles.schematicSoft} cx="48" cy="34" r="25" />
+      {option === 'circumscribed'
+        ? <ellipse className={styles.schematicMain} cx="48" cy="34" rx="21" ry="17" />
+        : <path className={styles.schematicMain} d="M27 30 34 22 41 23 47 16 54 23 63 21 66 30 72 36 64 43 61 51 51 49 43 53 36 47 27 45 29 37Z" />}
+    </svg>
+  }
+
+  if (question === 'enhancement') {
+    return <svg className={styles.schematic} viewBox="0 0 96 68" aria-hidden="true">
+      <circle className={styles.schematicSoft} cx="48" cy="34" r="25" />
+      {option === 'homogeneous' ? <>
+        <circle className={styles.schematicMain} cx="48" cy="34" r="19" />
+        <circle className={styles.schematicFill} cx="48" cy="34" r="13" />
+      </> : <>
+        <circle className={styles.schematicMain} cx="48" cy="34" r="20" />
+        <circle className={styles.schematicRing} cx="48" cy="34" r="14" />
+        <circle className={styles.schematicNode} cx="39" cy="29" r="3" /><circle className={styles.schematicNode} cx="54" cy="25" r="2.5" /><circle className={styles.schematicNode} cx="56" cy="40" r="3.5" /><circle className={styles.schematicNode} cx="42" cy="43" r="2" />
+      </>}
+    </svg>
+  }
+
+  return <svg className={styles.schematic} viewBox="0 0 96 68" aria-hidden="true">
+    {option === 'present' ? <><circle className={styles.schematicSoft} cx="48" cy="34" r="28" /><circle className={styles.schematicRing} cx="48" cy="34" r="22" /></> : null}
+    <circle className={styles.schematicMain} cx="48" cy="34" r="12" />
+    <circle className={styles.schematicFill} cx="48" cy="34" r="7" />
+  </svg>
+}
+
 function PathRail({ history, current, ui, onJump }) {
   const items = [...history, ...(current ? [{ key: current, value: null }] : [])]
   return <div className={styles.pathWrap}>
@@ -119,42 +189,38 @@ function PathRail({ history, current, ui, onJump }) {
 }
 
 function Question({ question, selected, setSelected, ui }) {
-  const [helpOpen, setHelpOpen] = useState(false)
   const content = ui.questions[question]
   return <section className={styles.question} key={question}>
     <header><span>{ui.current}</span><h1>{content.title}</h1><p>{content.text}</p></header>
-    <button className={styles.helpToggle} type="button" onClick={() => setHelpOpen(value => !value)} aria-expanded={helpOpen}>
-      <span>i</span>{helpOpen ? ui.hideHelp : ui.help}<i>{helpOpen ? '−' : '+'}</i>
-    </button>
-    {helpOpen ? <p className={styles.helpText}>{content.help}</p> : null}
     <div className={styles.options} data-count={OPTION_SETS[question].length}>
       {OPTION_SETS[question].map(key => <button type="button" key={key} className={selected === key ? styles.optionSelected : ''} onClick={() => setSelected(key)} aria-pressed={selected === key}>
-        <i>{selected === key ? '✓' : ''}</i><span><strong>{ui.options[key][0]}</strong><small>{ui.options[key][1]}</small></span>
+        <i>{selected === key ? '✓' : ''}</i>
+        <span className={styles.optionVisual}><OptionSchematic question={question} option={key}/></span>
+        <span className={styles.optionCopy}><strong>{ui.options[key][0]}</strong><small>{ui.options[key][1]}</small></span>
       </button>)}
     </div>
   </section>
 }
 
-function ScoreLadder({ score, ui }) {
-  return <section className={styles.atlas} id="score-atlas">
-    <header><h2>{ui.ladder}</h2><span title={ui.atlasInfo}>i</span></header>
-    <div className={styles.ladderBody}>
-      <ol className={styles.ladder}>{Array.from({ length: 11 }, (_, index) => 11 - index).map(value => <li key={value} className={score === value ? styles.scoreActive : ''} data-zone={value >= 8 ? 'high' : value >= 5 ? 'intermediate' : 'low'}><span>{value}</span>{score === value ? <strong>{ui.result}</strong> : null}</li>)}</ol>
-      <div className={styles.zones}>
-        <div className={styles.zoneHigh}><strong>{ui.high}</strong><span>8–11 · BI-RADS 5</span></div>
-        <div className={styles.zoneIntermediate}><strong>{ui.intermediate}</strong><span>5–7 · BI-RADS 4</span></div>
-        <div className={styles.zoneLow}><strong>{ui.low}</strong><span>1–4 · BI-RADS 2/3</span></div>
-      </div>
-    </div>
-  </section>
-}
-
 function ResultPanel({ score, risk, history, ui, copied, onCopy, linkCopied, onCopyLink }) {
-  if (!score) return <section className={styles.emptyResult}><span>01—11</span><h2>{ui.waiting}</h2><p>{ui.waitingText}</p></section>
-  return <section className={styles.resultPanel} data-risk={risk.key}>
-    <div className={styles.resultHeadline}><div><span>{ui.result}</span><strong>KAISER {score}</strong></div><div><span>{ui.corresponds}</span><strong>{risk.birads}</strong></div></div>
+  const scorePosition = `${((score - 1) / 10) * 100}%`
+  return <section className={styles.resultPanel} id="score-result" data-risk={risk.key}>
+    <div className={styles.resultHero}>
+      <div className={styles.resultSummary}>
+        <p><span>Kaiser Score</span><strong>{score}</strong></p>
+        <p><span>{ui.corresponds}</span><strong>{risk.birads}</strong></p>
+      </div>
+      <div className={styles.riskTrack} aria-label={`Kaiser Score ${score}`}>
+        <div className={styles.gradientArrow}>
+          <span className={styles.scoreMarker} style={{ '--score-position': scorePosition }}><small>KAISER</small><b>{score}</b></span>
+        </div>
+        <div className={styles.scaleNumbers} aria-hidden="true">
+          {Array.from({ length: 11 }, (_, index) => index + 1).map(value => <span key={value} className={value === score ? styles.scaleNumberActive : ''}>{value}</span>)}
+        </div>
+      </div>
+      <div className={styles.riskCaption}><strong>{ui[risk.key]}</strong><span>{ui.resultText[risk.key]}</span></div>
+    </div>
     <p className={styles.recommendation}>{score >= 5 ? ui.biopsy : ui.clinical}</p>
-    <p className={styles.resultExplanation}>{ui.resultText[risk.key]}</p>
     <h3>{ui.decision}</h3>
     <dl className={styles.decisionList}>{history.map((item, index) => <div key={`${item.key}-${index}`}><dt><i>✓</i>{ui.pathLabels[item.key]}</dt><dd>{ui.options[item.value][0]}</dd></div>)}</dl>
     <div className={styles.reportBox}><header><strong>{ui.report}</strong><span>{ui.reportPreview}</span></header><p>{buildReport(history, score, risk, ui)}</p><div><button type="button" onClick={onCopy}>{copied ? ui.copied : ui.copy}<span>{copied ? '✓' : '⧉'}</span></button><button type="button" onClick={onCopyLink}>{linkCopied ? ui.linkCopied : ui.copyLink}</button></div></div>
@@ -168,6 +234,7 @@ function buildReport(history, score, risk, ui) {
 
 export default function KaiserScorePage() {
   const { lang, setLang } = useLanguage()
+  const { toggleTheme } = useTheme()
   const activeLang = lang === 'en' ? 'en' : 'de'
   const ui = COPY[activeLang]
   const [answers, setAnswers] = useState({})
@@ -209,23 +276,25 @@ export default function KaiserScorePage() {
 
   return <main className={styles.page} lang={activeLang} dir="ltr">
     <header className={styles.topbar}>
-      <Link href="/kaiser-score" className={styles.brand}><span>K</span>{ui.brand}</Link>
-      <nav><a href="#score-atlas">{ui.atlas}</a><div className={styles.languages}>{['de','en'].map(code => <button type="button" key={code} onClick={() => setLang(code)} className={activeLang === code ? styles.langActive : ''} aria-pressed={activeLang === code}>{code.toUpperCase()}</button>)}</div></nav>
+      <Link href="/kaiser-score" className={styles.brand}>
+        <Image src="/kaiser-score/kaiser-score-icon-192.png" alt="" width={42} height={42} priority/>
+        <span>{ui.brand}</span>
+      </Link>
+      <nav>
+        <button type="button" className={styles.themeToggle} onClick={toggleTheme} aria-label={ui.theme}><ThemeIcons/></button>
+        <div className={styles.languages}>{['de','en'].map(code => <button type="button" key={code} onClick={() => setLang(code)} className={activeLang === code ? styles.langActive : ''} aria-pressed={activeLang === code}>{code.toUpperCase()}</button>)}</div>
+      </nav>
     </header>
     <div className={styles.shell}>
       <section className={styles.workspace}>
         <PathRail history={history} current={current} ui={ui} onJump={jumpTo}/>
         <div className={styles.intro}><h2>{ui.hero}</h2><p>{ui.intro}</p></div>
-        {current ? <Question question={current} selected={selected} setSelected={setSelected} ui={ui}/> : <section className={styles.complete}><span>✓</span><h1>KAISER {score}</h1><p>{ui.resultText[risk.key]}</p></section>}
+        {current ? <Question question={current} selected={selected} setSelected={setSelected} ui={ui}/> : <ResultPanel score={score} risk={risk} history={history} ui={ui} copied={copied} onCopy={copyReport} linkCopied={linkCopied} onCopyLink={copyLink}/>}
         <footer className={`${styles.actions} ${score ? styles.actionsComplete : ''}`}>
           <button type="button" className={styles.backButton} onClick={goBack} disabled={!history.length}><ArrowIcon reverse/>{ui.back}</button>
           {current ? <button type="button" className={styles.nextButton} onClick={commitAnswer} disabled={!selected}>{ui.continue}<ArrowIcon/></button> : <button type="button" className={styles.nextButton} onClick={restart}>{ui.restart}<ArrowIcon/></button>}
         </footer>
       </section>
-      <aside className={styles.sidePanel}>
-        <ScoreLadder score={score} ui={ui}/>
-        <ResultPanel score={score} risk={risk} history={history} ui={ui} copied={copied} onCopy={copyReport} linkCopied={linkCopied} onCopyLink={copyLink}/>
-      </aside>
     </div>
     {score ? <AdcAssessment key={`${score}-${activeLang}`} score={score} lang={activeLang}/> : null}
     <footer className={styles.disclaimer}><span>i</span><p>{ui.disclaimer}</p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5990997/" target="_blank" rel="noreferrer">{ui.source} ↗</a><small><Link href="/">{ui.by} <strong>RadYar</strong></Link> · {ui.developed}</small></footer>
