@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <circle cx="512" cy="512" r="428" fill="none" stroke="#A875FF" stroke-opacity=".22" stroke-width="16"/>
+  <text x="560" y="475" fill="#F6F2FF" font-family="Arial, Helvetica, sans-serif" font-size="124" font-weight="800" letter-spacing="-4">NODE-</text>
+  <text x="560" y="600" fill="#A875FF" font-family="Arial, Helvetica, sans-serif" font-size="124" font-weight="800" letter-spacing="-4">RADS</text>
+</svg>
