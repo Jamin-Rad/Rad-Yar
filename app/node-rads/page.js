@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { QRCodeSVG } from 'qrcode.react'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -319,6 +319,11 @@ export default function NodeRadsPage() {
   const [shape, setShape] = useState(null)
   const [error, setError] = useState('')
   const [copied, setCopied] = useState(false)
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' })
+  }, [step])
 
   const special = SPECIAL_REGIONS.find(item => item.id === specialRegion)
   const threshold = region === 'specific' ? special?.threshold || 10 : 10
