@@ -34,7 +34,7 @@ const COPY = {
       specific: { title: 'Besondere Region', desc: 'Inguinal oder Region mit 5-mm-Grenzwert' },
     },
     specialTitle: 'Welche besondere Region?', regionalThreshold: 'Grenzwert nach Auswahl', shortAxis: 'Kurzachse', currentThreshold: 'Aktueller Schwellenwert',
-    sizeTitle: 'Wie groß ist der Lymphknoten?', sizeText: 'Messen Sie die kurze Achse axial. Für Bulk zählt die längste Achse in jeder Ebene.',
+    sizeTitle: 'Wie groß ist der Lymphknoten?',
     shortValue: 'Kurze Achse', longestValue: 'Längste Achse', millimetres: 'Millimeter', growth: 'Zunahme ≥ 2 mm im Verlauf', growthHint: 'Gilt als vergrößert, auch unterhalb des regionalen Grenzwerts.',
     sizeNormal: 'Normal groß', sizeEnlarged: 'Vergrößert', sizeBulk: 'Bulk', anyAxis: 'beliebige Achse',
     configTitle: 'Wie ist der Lymphknoten konfiguriert?', configText: 'Wählen Sie je ein Merkmal für Textur, Rand und Form.',
@@ -45,18 +45,7 @@ const COPY = {
     shapes: ['Jede Form bei erhaltenem Fetthilus', 'Nierenförmig / oval ohne Fetthilus', 'Rund ohne Fetthilus'],
     resultTitle: 'Ihre Node-RADS Einstufung', resultText: 'Größe und Konfiguration werden nach Node-RADS 1.0 zusammengeführt.',
     levels: ['Sehr geringe Wahrscheinlichkeit', 'Geringe Wahrscheinlichkeit', 'Unklar / äquivokal', 'Hohe Wahrscheinlichkeit', 'Sehr hohe Wahrscheinlichkeit'],
-    interpretations: [
-      'Ein maligner Lymphknotenbefall ist anhand der erfassten Bildmerkmale sehr unwahrscheinlich.',
-      'Ein maligner Lymphknotenbefall ist anhand der erfassten Bildmerkmale eher unwahrscheinlich.',
-      'Die Bildmerkmale sind nicht eindeutig; ein maligner Lymphknotenbefall bleibt unklar.',
-      'Die erfassten Bildmerkmale sind hochgradig verdächtig auf einen malignen Lymphknotenbefall.',
-      'Die erfassten Bildmerkmale sind sehr hochgradig verdächtig auf einen malignen Lymphknotenbefall.',
-    ],
-    interpretation: 'Einordnung', whyResult: 'Warum dieses Ergebnis?',
-    bulkReason: 'Bulk (längste Achse ≥ 30 mm) führt in Node-RADS direkt zur Kategorie 5.',
-    combinedReason: 'Die Größenkategorie „{size}“ und der Konfigurationsscore {config}/5 ergeben gemeinsam Node-RADS {score}.',
-    clinicalContext: 'Klinischer Kontext',
-    clinicalContextText: 'Mit Primärtumor, Verteilungsmuster und tumorspezifischen TNM-Kriterien korrelieren. Das weitere Vorgehen interdisziplinär festlegen; eine histologische Sicherung erwägen, wenn sie das Management verändert. Diese Empfehlung ist nicht Bestandteil des Node-RADS-Scores.',
+    resultSignals: ['LK−', 'eher LK−', 'LK±', 'LK+', 'LK+'],
     sizeCategory: 'Größenkategorie', report: 'Strukturierter Befundtext', copy: 'Befundtext kopieren', copied: 'Kopiert',
     reportMeasurement: '{region}: Lymphknoten mit einer Größe von {short} × {long} mm (Kurz- × Langachse).',
     reportMorphology: 'Morphologie: Textur {texture}, Rand {border}, Form {shape}.',
@@ -65,7 +54,7 @@ const COPY = {
     next: 'Weiter', back: 'Zurück', restart: 'Neu beginnen', required: 'Bitte treffen Sie eine Auswahl.',
     info: 'Node-RADS ist für die Beurteilung von Lymphknoten in kontrastverstärkter CT oder MRT konzipiert.',
     disclaimer: 'Orientierungshilfe nach Node-RADS 1.0 · ersetzt nicht die ärztliche Gesamtbeurteilung oder tumorspezifische TNM-Kriterien.',
-    source: 'Elsholtz et al. · European Radiology · 2021',
+    source: 'Elsholtz et al. · European Radiology · 2021', developerCredit: 'Entwickelt von Dr. Zia',
   },
   en: {
     brand: 'NODE-RADS', by: 'A tool by', steps: ['Region', 'Size', 'Configuration', 'Result'],
@@ -75,7 +64,7 @@ const COPY = {
       specific: { title: 'Special region', desc: 'Inguinal or a region with a 5 mm threshold' },
     },
     specialTitle: 'Which special region?', regionalThreshold: 'Threshold after selection', shortAxis: 'short axis', currentThreshold: 'Current threshold',
-    sizeTitle: 'How large is the lymph node?', sizeText: 'Measure the short axis axially. Bulk is based on the longest axis in any plane.',
+    sizeTitle: 'How large is the lymph node?',
     shortValue: 'Short axis', longestValue: 'Longest axis', millimetres: 'Millimetres', growth: 'Interval increase ≥ 2 mm', growthHint: 'Counts as enlarged even below the regional threshold.',
     sizeNormal: 'Normal size', sizeEnlarged: 'Enlarged', sizeBulk: 'Bulk', anyAxis: 'any axis',
     configTitle: 'What is the node configuration?', configText: 'Select one feature each for texture, border and shape.',
@@ -86,18 +75,7 @@ const COPY = {
     shapes: ['Any shape with preserved fatty hilum', 'Kidney-bean / oval without fatty hilum', 'Spherical without fatty hilum'],
     resultTitle: 'Your Node-RADS assessment', resultText: 'Size and configuration are combined according to Node-RADS 1.0.',
     levels: ['Very low likelihood', 'Low likelihood', 'Equivocal', 'High likelihood', 'Very high likelihood'],
-    interpretations: [
-      'Malignant lymph-node involvement is very unlikely based on the recorded imaging features.',
-      'Malignant lymph-node involvement is unlikely based on the recorded imaging features.',
-      'The imaging features are indeterminate; malignant lymph-node involvement remains equivocal.',
-      'The recorded imaging features are highly suspicious for malignant lymph-node involvement.',
-      'The recorded imaging features are very highly suspicious for malignant lymph-node involvement.',
-    ],
-    interpretation: 'Interpretation', whyResult: 'Why this result?',
-    bulkReason: 'Bulk (longest axis ≥ 30 mm) leads directly to category 5 in Node-RADS.',
-    combinedReason: 'The “{size}” size category and configuration score {config}/5 together result in Node-RADS {score}.',
-    clinicalContext: 'Clinical context',
-    clinicalContextText: 'Correlate with the primary tumour, distribution pattern and tumour-specific TNM criteria. Determine further management in a multidisciplinary setting; consider histological confirmation when it would change management. This advice is not part of the Node-RADS score.',
+    resultSignals: ['LN−', 'likely LN−', 'LN±', 'LN+', 'LN+'],
     sizeCategory: 'Size category', report: 'Structured report text', copy: 'Copy report text', copied: 'Copied',
     reportMeasurement: '{region}: Lymph node measuring {short} × {long} mm (short × long axis).',
     reportMorphology: 'Morphology: {texture} texture, {border} border, {shape}.',
@@ -106,7 +84,7 @@ const COPY = {
     next: 'Continue', back: 'Back', restart: 'Start again', required: 'Please make a selection.',
     info: 'Node-RADS is designed for lymph-node assessment on contrast-enhanced CT or MRI.',
     disclaimer: 'Decision aid based on Node-RADS 1.0 · does not replace integrated physician assessment or tumour-specific TNM criteria.',
-    source: 'Elsholtz et al. · European Radiology · 2021',
+    source: 'Elsholtz et al. · European Radiology · 2021', developerCredit: 'Developed by Dr. Zia',
   },
 }
 
@@ -175,7 +153,7 @@ function MeasurementField({ label, value, onChange, ui }) {
 
 function SizeStep({ shortAxis, setShortAxis, longAxis, setLongAxis, growth, setGrowth, sizeCategory, threshold, ui }) {
   return <div className={styles.stepContent}>
-    <header><h1>{ui.sizeTitle}</h1><p>{ui.sizeText}</p></header>
+    <header><h1>{ui.sizeTitle}</h1></header>
     <div className={styles.measureGrid}>
       <MeasurementField label={ui.shortValue} value={shortAxis} onChange={setShortAxis} ui={ui}/>
       <MeasurementField label={ui.longestValue} value={longAxis} onChange={setLongAxis} ui={ui}/>
@@ -192,7 +170,7 @@ function SizeStep({ shortAxis, setShortAxis, longAxis, setLongAxis, growth, setG
 }
 
 function ScoreChoices({ title, items, scores, value, setValue }) {
-  return <fieldset className={styles.scoreGroup}><legend>{title}</legend><div>{items.map((label, index) => <button type="button" key={label} onClick={() => setValue(index)} className={value === index ? styles.scoreActive : ''} aria-pressed={value === index}><span>{scores[index] > 0 ? `+${scores[index]}` : '0'}</span><strong>{label}</strong><i>{value === index ? '✓' : ''}</i></button>)}</div></fieldset>
+  return <fieldset className={styles.scoreGroup}><legend>{title}</legend><div>{items.map((label, index) => <button type="button" key={label} onClick={() => setValue(index)} className={value === index ? styles.scoreActive : ''} aria-pressed={value === index}><i>{value === index ? '✓' : ''}</i><strong>{label}</strong><span>{scores[index] > 0 ? `+${scores[index]}` : '0'}</span></button>)}</div></fieldset>
 }
 
 function ConfigStep({ texture, setTexture, border, setBorder, shape, setShape, ui }) {
@@ -209,13 +187,10 @@ function ConfigStep({ texture, setTexture, border, setBorder, shape, setShape, u
   </div>
 }
 
-function ResultStep({ score, sizeCategory, configScore, regionLabel, regionTitle, shortAxis, longAxis, growth, texture, border, shape, ui, lang, copied, setCopied }) {
+function ResultStep({ score, sizeCategory, configScore, regionLabel, regionTitle, shortAxis, longAxis, growth, texture, border, shape, ui, copied, setCopied }) {
   const color = RESULT_COLORS[score - 1]
   const level = ui.levels[score - 1]
   const sizeLabel = ui[SIZE_LABEL_KEY[sizeCategory]]
-  const resultReason = sizeCategory === 'bulk'
-    ? ui.bulkReason
-    : ui.combinedReason.replace('{size}', sizeLabel).replace('{config}', configScore).replace('{score}', score)
   const reportParts = [
     ui.reportMeasurement.replace('{region}', regionTitle).replace('{short}', shortAxis).replace('{long}', longAxis),
     sizeCategory !== 'bulk'
@@ -236,12 +211,7 @@ function ResultStep({ score, sizeCategory, configScore, regionLabel, regionTitle
   }
   return <div className={`${styles.stepContent} ${styles.resultStep}`} style={{ '--score-color': color }}>
     <header><h1>{ui.resultTitle}</h1><p>{ui.resultText}</p></header>
-    <div className={styles.scoreReveal}><div className={styles.scoreOrbit}><span>NODE-RADS</span><strong>{score}</strong></div><h2>{level}</h2></div>
-    <div className={styles.resultExplanation}>
-      <div><span>{ui.interpretation}</span><p>{ui.interpretations[score - 1]}</p></div>
-      <div><span>{ui.whyResult}</span><p>{resultReason}</p></div>
-      <div className={styles.clinicalContext}><span>{ui.clinicalContext}</span><p>{ui.clinicalContextText}</p></div>
-    </div>
+    <div className={styles.scoreReveal}><div className={styles.scoreOrbit}><span>NODE-RADS</span><strong>{score}</strong></div><h2><span>{level}</span><em>{ui.resultSignals[score - 1]}</em></h2></div>
     <dl className={styles.resultFacts}>
       <div><dt>{ui.currentThreshold}</dt><dd>{regionLabel}</dd></div>
       <div><dt>{ui.sizeCategory}</dt><dd>{sizeLabel}</dd></div>
@@ -328,7 +298,7 @@ export default function NodeRadsPage() {
           {step === 0 ? <RegionStep region={region} setRegion={setRegion} specialRegion={specialRegion} setSpecialRegion={setSpecialRegion} ui={ui} lang={activeLang}/> : null}
           {step === 1 ? <SizeStep shortAxis={shortAxis} setShortAxis={setShortAxis} longAxis={longAxis} setLongAxis={setLongAxis} growth={growth} setGrowth={setGrowth} sizeCategory={sizeCategory} threshold={threshold} ui={ui}/> : null}
           {step === 2 ? <ConfigStep texture={texture} setTexture={setTexture} border={border} setBorder={setBorder} shape={shape} setShape={setShape} ui={ui}/> : null}
-          {step === 3 && score ? <ResultStep score={score} sizeCategory={sizeCategory} configScore={configScore} regionLabel={regionLabel} regionTitle={regionTitle} shortAxis={shortAxis} longAxis={longAxis} growth={growth} texture={texture} border={border} shape={shape} ui={ui} lang={activeLang} copied={copied} setCopied={setCopied}/> : null}
+          {step === 3 && score ? <ResultStep score={score} sizeCategory={sizeCategory} configScore={configScore} regionLabel={regionLabel} regionTitle={regionTitle} shortAxis={shortAxis} longAxis={longAxis} growth={growth} texture={texture} border={border} shape={shape} ui={ui} copied={copied} setCopied={setCopied}/> : null}
         </div>
         {error ? <p className={styles.footerError} role="alert">{error}</p> : null}
         <footer className={styles.actionBar}>
@@ -337,6 +307,6 @@ export default function NodeRadsPage() {
         </footer>
       </section>
     </div>
-    <footer className={styles.disclaimer}><span>i</span><p>{ui.disclaimer}</p><a href="https://doi.org/10.1007/s00330-020-07572-4" target="_blank" rel="noreferrer">{ui.source} ↗</a></footer>
+    <footer className={styles.disclaimer}><span>i</span><p>{ui.disclaimer}</p><a href="https://doi.org/10.1007/s00330-020-07572-4" target="_blank" rel="noreferrer">{ui.source} ↗</a><small className={styles.developerCredit}>{ui.developerCredit}</small></footer>
   </main>
 }
