@@ -245,15 +245,16 @@
 .scoreOrbit strong { color: var(--score-color); font-family: var(--font-fraunces), Georgia, serif; font-size: 70px; line-height: .95; font-weight: 400; }
 .scoreReveal h2 { margin: 0; display: inline-flex; align-items: center; gap: 9px; color: var(--score-color); font-size: 14px; font-weight: 700; }
 .scoreReveal h2 em { padding: 4px 8px; border: 1px solid color-mix(in srgb, var(--score-color) 55%, transparent); border-radius: 999px; background: color-mix(in srgb, var(--score-color) 9%, transparent); color: var(--score-color); font-size: 10px; font-style: normal; letter-spacing: .04em; }
-.resultFacts { margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); }
+.resultFacts { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); border: 1px solid var(--line); }
 .resultFacts > div { padding: 12px; border-inline-end: 1px solid var(--line); }
 .resultFacts > div:last-child { border-inline-end: 0; }
 .resultFacts dt { margin-bottom: 5px; color: #71879a; font-size: 8px; letter-spacing: .06em; text-transform: uppercase; }
 .resultFacts dd { margin: 0; color: #dce6ec; font-size: 10px; }
 .reportBox { margin-top: 12px; padding: 15px; border-inline-start: 2px solid var(--score-color); background: rgba(255,255,255,.022); text-align: start; }
-.reportBox > span { color: #71879a; font-size: 8px; text-transform: uppercase; letter-spacing: .09em; }
-.reportBox p { margin: 7px 0 11px; color: #b9c7d1; font-size: 10px; line-height: 1.55; }
-.reportBox button { min-height: 34px; padding: 0; border: 0; background: none; color: var(--score-color); cursor: pointer; font-size: 10px; font-weight: 700; }
+.reportBox > div + div { margin-top: 13px; padding-top: 13px; border-top: 1px solid var(--line); }
+.reportBox > div > strong { color: var(--score-color); font-size: 9px; text-transform: uppercase; letter-spacing: .09em; }
+.reportBox p { margin: 6px 0 0; color: #b9c7d1; font-size: 10px; line-height: 1.6; }
+.reportBox button { min-height: 34px; margin-top: 10px; padding: 0; border: 0; background: none; color: var(--score-color); cursor: pointer; font-size: 10px; font-weight: 700; }
 .reportBox button span { margin-inline-start: 7px; }
 
 .footerError { width: min(760px,100%); margin: 13px auto 0; }

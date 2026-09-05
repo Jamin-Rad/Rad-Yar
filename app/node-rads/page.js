@@ -40,17 +40,21 @@ const COPY = {
     configTitle: 'Wie ist der Lymphknoten konfiguriert?', configText: 'Wählen Sie je ein Merkmal für Textur, Rand und Form.',
     texture: 'Textur', border: 'Rand', shape: 'Form', configScore: 'Konfigurationsscore',
     textures: ['Homogen', 'Heterogen', 'Fokale Nekrose', 'Grobe oder neue Nekrose', 'Entitätsspezifischer Befund'],
+    reportTextures: ['homogen', 'heterogen', 'mit fokaler Nekrose', 'mit grober oder neu aufgetretener Nekrose', 'mit entitätsspezifischem Befund'],
     entitySpecificInfo: 'Entitätsspezifische Befunde: zystische Textur bei Plattenepithelkarzinomen, Verkalkungen beim Schilddrüsenkarzinom oder muzinöse Textur bei muzinösen Adenokarzinomen.',
     borders: ['Glatt', 'Unregelmäßig oder unscharf'],
     shapes: ['Jede Form bei erhaltenem Fetthilus', 'Nierenförmig / oval ohne Fetthilus', 'Rund ohne Fetthilus'],
+    reportBorders: ['glatt', 'unregelmäßig bzw. unscharf'],
+    reportShapes: ['bei erhaltenem Fetthilus', 'nierenförmig / oval ohne erhaltenen Fetthilus', 'rund ohne erhaltenen Fetthilus'],
     resultTitle: 'Ihre Node-RADS Einstufung', resultText: 'Größe und Konfiguration werden nach Node-RADS 1.0 zusammengeführt.',
     levels: ['Sehr geringe Wahrscheinlichkeit', 'Geringe Wahrscheinlichkeit', 'Unklar / äquivokal', 'Hohe Wahrscheinlichkeit', 'Sehr hohe Wahrscheinlichkeit'],
     resultSignals: ['LK−', 'eher LK−', 'LK±', 'LK+', 'LK+'],
-    sizeCategory: 'Größenkategorie', report: 'Strukturierter Befundtext', copy: 'Befundtext kopieren', copied: 'Kopiert',
-    reportMeasurement: '{region}: Lymphknoten mit einer Größe von {short} × {long} mm (Kurz- × Langachse).',
-    reportMorphology: 'Morphologie: Textur {texture}, Rand {border}, Form {shape}.',
-    reportGrowth: 'Im Verlauf Größenzunahme um mindestens 2 mm.',
-    reportAssessment: 'Beurteilung: Node-RADS {score} – {level} für einen malignen Lymphknotenbefall.',
+    sizeCategory: 'Größenkategorie', finding: 'Befund', assessment: 'Beurteilung', copy: 'Befundtext kopieren', copied: 'Kopiert',
+    reportShortAxis: '{region}: Lymphknoten mit einer Kurzachse von {short} mm.',
+    reportGrowth: '{region}: Im Verlauf größenprogredienter Lymphknoten mit einer Zunahme der Kurzachse um mindestens 2 mm.',
+    reportBulk: '{region}: Bulky Lymphknotenmanifestation mit einer maximalen Langachse von {long} mm.',
+    reportMorphology: 'Morphologisch {texture}, {border} begrenzt und {shape}.',
+    reportAssessment: 'Node-RADS {score} – {level} für einen malignen Lymphknotenbefall ({signal}). Einordnung in Zusammenschau mit dem Primärtumor, dem nodalen Verteilungsmuster und den tumorspezifischen TNM-Kriterien.',
     next: 'Weiter', back: 'Zurück', restart: 'Neu beginnen', required: 'Bitte treffen Sie eine Auswahl.',
     info: 'Node-RADS ist für die Beurteilung von Lymphknoten in kontrastverstärkter CT oder MRT konzipiert.',
     disclaimer: 'Orientierungshilfe nach Node-RADS 1.0 · ersetzt nicht die ärztliche Gesamtbeurteilung oder tumorspezifische TNM-Kriterien.',
@@ -70,17 +74,21 @@ const COPY = {
     configTitle: 'What is the node configuration?', configText: 'Select one feature each for texture, border and shape.',
     texture: 'Texture', border: 'Border', shape: 'Shape', configScore: 'Configuration score',
     textures: ['Homogeneous', 'Heterogeneous', 'Focal necrosis', 'Gross or new necrosis', 'Entity-specific finding'],
+    reportTextures: ['homogeneous', 'heterogeneous', 'with focal necrosis', 'with gross or newly developed necrosis', 'with an entity-specific finding'],
     entitySpecificInfo: 'Entity-specific findings: cystic texture in squamous cell carcinoma, calcification in thyroid carcinoma, or mucinous texture in mucinous adenocarcinoma.',
     borders: ['Smooth', 'Irregular or ill-defined'],
     shapes: ['Any shape with preserved fatty hilum', 'Kidney-bean / oval without fatty hilum', 'Spherical without fatty hilum'],
+    reportBorders: ['with a smooth margin', 'with an irregular or ill-defined margin'],
+    reportShapes: ['with preserved fatty hilum', 'kidney-bean / oval without preserved fatty hilum', 'spherical without preserved fatty hilum'],
     resultTitle: 'Your Node-RADS assessment', resultText: 'Size and configuration are combined according to Node-RADS 1.0.',
     levels: ['Very low likelihood', 'Low likelihood', 'Equivocal', 'High likelihood', 'Very high likelihood'],
     resultSignals: ['LN−', 'likely LN−', 'LN±', 'LN+', 'LN+'],
-    sizeCategory: 'Size category', report: 'Structured report text', copy: 'Copy report text', copied: 'Copied',
-    reportMeasurement: '{region}: Lymph node measuring {short} × {long} mm (short × long axis).',
-    reportMorphology: 'Morphology: {texture} texture, {border} border, {shape}.',
-    reportGrowth: 'Interval size increase of at least 2 mm.',
-    reportAssessment: 'Assessment: Node-RADS {score} – {level} of malignant lymph-node involvement.',
+    sizeCategory: 'Size category', finding: 'Findings', assessment: 'Assessment', copy: 'Copy report text', copied: 'Copied',
+    reportShortAxis: '{region}: Lymph node with a short-axis diameter of {short} mm.',
+    reportGrowth: '{region}: Interval progression of the lymph node with an increase in short-axis diameter of at least 2 mm.',
+    reportBulk: '{region}: Bulky nodal disease with a maximum long-axis diameter of {long} mm.',
+    reportMorphology: 'Morphologically {texture}, {border} and {shape}.',
+    reportAssessment: 'Node-RADS {score} – {level} of malignant lymph-node involvement ({signal}). Interpret in conjunction with the primary tumour, nodal distribution pattern and tumour-specific TNM criteria.',
     next: 'Continue', back: 'Back', restart: 'Start again', required: 'Please make a selection.',
     info: 'Node-RADS is designed for lymph-node assessment on contrast-enhanced CT or MRI.',
     disclaimer: 'Decision aid based on Node-RADS 1.0 · does not replace integrated physician assessment or tumour-specific TNM criteria.',
@@ -187,19 +195,21 @@ function ConfigStep({ texture, setTexture, border, setBorder, shape, setShape, u
   </div>
 }
 
-function ResultStep({ score, sizeCategory, configScore, regionLabel, regionTitle, shortAxis, longAxis, growth, texture, border, shape, ui, copied, setCopied }) {
+function ResultStep({ score, sizeCategory, configScore, regionTitle, shortAxis, longAxis, growth, texture, border, shape, ui, copied, setCopied }) {
   const color = RESULT_COLORS[score - 1]
   const level = ui.levels[score - 1]
   const sizeLabel = ui[SIZE_LABEL_KEY[sizeCategory]]
-  const reportParts = [
-    ui.reportMeasurement.replace('{region}', regionTitle).replace('{short}', shortAxis).replace('{long}', longAxis),
-    sizeCategory !== 'bulk'
-      ? ui.reportMorphology.replace('{texture}', ui.textures[texture].toLowerCase()).replace('{border}', ui.borders[border].toLowerCase()).replace('{shape}', ui.shapes[shape].toLowerCase())
-      : null,
-    growth ? ui.reportGrowth : null,
-    ui.reportAssessment.replace('{score}', score).replace('{level}', level.toLowerCase()),
-  ]
-  const reportText = reportParts.filter(Boolean).join(' ')
+  const sizeFinding = sizeCategory === 'bulk'
+    ? ui.reportBulk.replace('{region}', regionTitle).replace('{long}', longAxis)
+    : growth
+      ? ui.reportGrowth.replace('{region}', regionTitle)
+      : ui.reportShortAxis.replace('{region}', regionTitle).replace('{short}', shortAxis)
+  const morphologyFinding = sizeCategory !== 'bulk'
+    ? ui.reportMorphology.replace('{texture}', ui.reportTextures[texture]).replace('{border}', ui.reportBorders[border]).replace('{shape}', ui.reportShapes[shape])
+    : ''
+  const findingText = [sizeFinding, morphologyFinding].filter(Boolean).join(' ')
+  const assessmentText = ui.reportAssessment.replace('{score}', score).replace('{level}', level.toLowerCase()).replace('{signal}', ui.resultSignals[score - 1])
+  const reportText = `${ui.finding}: ${findingText}\n\n${ui.assessment}: ${assessmentText}`
   const copyReport = async () => {
     try {
       await navigator.clipboard.writeText(reportText)
@@ -213,11 +223,14 @@ function ResultStep({ score, sizeCategory, configScore, regionLabel, regionTitle
     <header><h1>{ui.resultTitle}</h1><p>{ui.resultText}</p></header>
     <div className={styles.scoreReveal}><div className={styles.scoreOrbit}><span>NODE-RADS</span><strong>{score}</strong></div><h2><span>{level}</span><em>{ui.resultSignals[score - 1]}</em></h2></div>
     <dl className={styles.resultFacts}>
-      <div><dt>{ui.currentThreshold}</dt><dd>{regionLabel}</dd></div>
       <div><dt>{ui.sizeCategory}</dt><dd>{sizeLabel}</dd></div>
       {sizeCategory !== 'bulk' ? <div><dt>{ui.configScore}</dt><dd>{configScore} / 5</dd></div> : null}
     </dl>
-    <div className={styles.reportBox}><span>{ui.report}</span><p>{reportText}</p><button type="button" onClick={copyReport}>{copied ? ui.copied : ui.copy}<span>{copied ? '✓' : '⧉'}</span></button></div>
+    <div className={styles.reportBox}>
+      <div><strong>{ui.finding}</strong><p>{findingText}</p></div>
+      <div><strong>{ui.assessment}</strong><p>{assessmentText}</p></div>
+      <button type="button" onClick={copyReport}>{copied ? ui.copied : ui.copy}<span>{copied ? '✓' : '⧉'}</span></button>
+    </div>
   </div>
 }
 
@@ -298,7 +311,7 @@ export default function NodeRadsPage() {
           {step === 0 ? <RegionStep region={region} setRegion={setRegion} specialRegion={specialRegion} setSpecialRegion={setSpecialRegion} ui={ui} lang={activeLang}/> : null}
           {step === 1 ? <SizeStep shortAxis={shortAxis} setShortAxis={setShortAxis} longAxis={longAxis} setLongAxis={setLongAxis} growth={growth} setGrowth={setGrowth} sizeCategory={sizeCategory} threshold={threshold} ui={ui}/> : null}
           {step === 2 ? <ConfigStep texture={texture} setTexture={setTexture} border={border} setBorder={setBorder} shape={shape} setShape={setShape} ui={ui}/> : null}
-          {step === 3 && score ? <ResultStep score={score} sizeCategory={sizeCategory} configScore={configScore} regionLabel={regionLabel} regionTitle={regionTitle} shortAxis={shortAxis} longAxis={longAxis} growth={growth} texture={texture} border={border} shape={shape} ui={ui} copied={copied} setCopied={setCopied}/> : null}
+          {step === 3 && score ? <ResultStep score={score} sizeCategory={sizeCategory} configScore={configScore} regionTitle={regionTitle} shortAxis={shortAxis} longAxis={longAxis} growth={growth} texture={texture} border={border} shape={shape} ui={ui} copied={copied} setCopied={setCopied}/> : null}
         </div>
         {error ? <p className={styles.footerError} role="alert">{error}</p> : null}
         <footer className={styles.actionBar}>
