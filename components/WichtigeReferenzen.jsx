@@ -38,40 +38,6 @@ const CLASSIFICATION_TOPIC_LOGOS = {
   onko: '/fach/technik.png',
 }
 
-const ANATOMY_TOPIC_LOGOS = {
-  neuro: '/fach/gehirn.png',
-  'thorax-herz': '/fach/thorax.png',
-  abdomen: '/fach/abdomen.png',
-  urogenital: '/fach/becken-m.png',
-}
-
-const ANATOMY_TOPIC_ORDER = [
-  {
-    id: 'neuro',
-    name: { de: 'Neuro', en: 'Neuro', fa: 'نورولوژی' },
-    color: '#7c3aed',
-    itemIds: ['hirngefaess-territorien'],
-  },
-  {
-    id: 'thorax-herz',
-    name: { de: 'Thorax & Herz', en: 'Thorax & Heart', fa: 'توراکس و قلب' },
-    color: '#0ea5e9',
-    itemIds: ['lungensegmente', 'bronchopulmonal-gefaesse', 'koronararterien-territorien'],
-  },
-  {
-    id: 'abdomen',
-    name: { de: 'Abdomen', en: 'Abdomen', fa: 'شکم' },
-    color: '#f59e0b',
-    itemIds: ['lebersegmente-couinaud', 'pankreas-gallenwege'],
-  },
-  {
-    id: 'urogenital',
-    name: { de: 'Urogenital', en: 'Urogenital', fa: 'اوروژنیتال' },
-    color: '#ef4444',
-    itemIds: ['beckenarterien'],
-  },
-]
-
 const CLASSIFICATION_SEARCH_ALIASES = {
   'ti-rads': ['tirads', 'schilddrüse', 'schilddruesenknoten', 'thyroid'],
   'bi-rads': ['birads', 'mammografie', 'mammography', 'brust', 'breast'],
@@ -122,30 +88,6 @@ const CLASSIFICATION_SEARCH_COPY = {
     results: 'نتایج',
     suggestion: 'منظورتان این بود',
     empty: 'طبقه‌بندی مرتبطی پیدا نشد.',
-    clear: 'پاک کردن جستجو',
-  },
-}
-
-const ANATOMY_SEARCH_COPY = {
-  de: {
-    placeholder: 'Anatomie oder Region suchen …',
-    results: 'Treffer',
-    suggestion: 'Meintest du',
-    empty: 'Keine passende Anatomie gefunden.',
-    clear: 'Suche löschen',
-  },
-  en: {
-    placeholder: 'Search anatomy or region …',
-    results: 'Results',
-    suggestion: 'Did you mean',
-    empty: 'No matching anatomy found.',
-    clear: 'Clear search',
-  },
-  fa: {
-    placeholder: 'جستجوی آناتومی یا ناحیه …',
-    results: 'نتایج',
-    suggestion: 'منظورتان این بود',
-    empty: 'آناتومی مرتبطی پیدا نشد.',
     clear: 'پاک کردن جستجو',
   },
 }
@@ -245,16 +187,6 @@ function buildClassificationTopics(sourceTopics) {
     byId.msk,
     byId.onko,
   ].filter(Boolean)
-}
-
-function buildAnatomyTopics(sourceItems, lang) {
-  const byId = Object.fromEntries(sourceItems.map(item => [item.id, item]))
-  return ANATOMY_TOPIC_ORDER
-    .map(topic => ({
-      ...topic,
-      items: sortByLocalizedName(topic.itemIds.map(id => byId[id]).filter(Boolean), lang),
-    }))
-    .filter(topic => topic.items.length)
 }
 
 function sortByLocalizedName(items, lang) {
@@ -404,7 +336,7 @@ function Modal({ title, subtitle, accent, copy, onClose, children, accentClass, 
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={`${styles.modal} ${wide ? styles.modalWide : ''}`}
-           onClick={e=>e.stopPropagation()} role="dialog" aria-modal="true">
+           onClick={e=>e.stopPropagation()} role="dialog" aria-modal="true" aria-label={title}>
         <header className={`${styles.modalHead} ${accentClass||''}`}>
           <h3 className={styles.modalTitle}>
             <span className={styles.modalTitleMain}>{title}</span>
@@ -425,152 +357,20 @@ function Modal({ title, subtitle, accent, copy, onClose, children, accentClass, 
 
 /* ── Befundrelevante Anatomie ─────────────────── */
 function AnatomieModal({ copy, lang, onClose }) {
-  const router = useRouter()
-  const topics = buildAnatomyTopics(REF_DATA.anatomie, lang)
-  const [topicId, setTopicId] = useState(topics[0].id)
-  const [showDetail, setShowDetail] = useState(false)
-  const [query, setQuery] = useState('')
-  const topic = topics.find(entry => entry.id === topicId) || topics[0]
-  const items = topics.flatMap(entry => entry.items.map(item => ({ ...item, topic: entry })))
-  const searchCopy = ANATOMY_SEARCH_COPY[lang] || ANATOMY_SEARCH_COPY.de
-  const searchResults = query.trim()
-    ? items.map(entry => {
-        const candidates = [
-          tx(entry.name, lang),
-          tx(entry.name, 'de'),
-          tx(entry.name, 'en'),
-          tx(entry.topic.name, lang),
-          ...(entry.rows || []).flatMap(row => row.map(cell => tx(cell, lang))),
-        ]
-        const scores = candidates
-          .map(candidate => classificationSearchScore(query, candidate))
-          .filter(score => score !== null)
-        if (!scores.length) return null
-        return { item: entry, score: Math.min(...scores) }
-      }).filter(Boolean)
-        .sort((a, b) => a.score - b.score || tx(a.item.name, lang).localeCompare(tx(b.item.name, lang)))
-        .slice(0, 8)
-    : []
-  const topResultNameScore = searchResults[0]
-    ? classificationSearchScore(query, tx(searchResults[0].item.name, lang))
-    : null
-  const suggestedResult = query.trim().length >= 3
-    && searchResults[0]
-    && topResultNameScore !== null
-    && normaliseSearch(query) !== normaliseSearch(tx(searchResults[0].item.name, lang))
-    ? searchResults[0]
-    : null
-  const go = id => {
-    onClose()
-    router.push(`/referenzen/anatomie/${id}${lang!=='de'?`?lang=${lang}`:''}`)
-  }
+  const constructionCopy = {
+    de: { title: 'Dieser Bereich ist noch im Aufbau', text: 'Die Inhalte der befundrelevanten Anatomie werden derzeit vollständig überarbeitet und anschließend neu veröffentlicht.' },
+    en: { title: 'This section is under construction', text: 'The relevant anatomy content is currently being completely revised and will be republished afterwards.' },
+    fa: { title: 'این بخش هنوز در حال ساخت است', text: 'محتوای آناتومی مرتبط با گزارش در حال بازطراحی کامل است و پس از آماده‌شدن دوباره منتشر می‌شود.' },
+  }[lang] || { title: 'Dieser Bereich ist noch im Aufbau', text: 'Die Inhalte werden derzeit überarbeitet.' }
 
   return (
-    <Modal title={copy.btnAnatomie} subtitle={showDetail?tx(topic.name, lang):null} accent={topic.color}
-      copy={copy} onClose={onClose} accentClass={styles.headPurple} wide showDisclaimer={false}>
-      <div className={`${styles.klassSearchWrap} ${styles.anatomySearchWrap}`}>
-        <div className={`${styles.klassSearchField} ${styles.anatomySearchField}`}>
-          <span className={`${styles.klassSearchIcon} ${styles.anatomySearchIcon}`} aria-hidden="true">⌕</span>
-          <input
-            type="search"
-            value={query}
-            onChange={event => setQuery(event.target.value)}
-            className={styles.klassSearchInput}
-            placeholder={searchCopy.placeholder}
-            aria-label={searchCopy.placeholder}
-          />
-          {query && (
-            <button type="button" className={`${styles.klassSearchClear} ${styles.anatomySearchClear}`} onClick={() => setQuery('')} aria-label={searchCopy.clear}>×</button>
-          )}
-        </div>
-        {suggestedResult && (
-          <p className={`${styles.klassSearchSuggestion} ${styles.anatomySearchSuggestion}`}>
-            {searchCopy.suggestion}:{' '}
-            <button type="button" onClick={() => setQuery(tx(suggestedResult.item.name, lang))}>
-              {tx(suggestedResult.item.name, lang)}
-            </button>
-            ?
-          </p>
-        )}
+    <Modal title={copy.btnAnatomie} copy={copy} onClose={onClose} accentClass={styles.headPurple} showDisclaimer={false}>
+      <div className={styles.constructionState}>
+        <span className={styles.constructionIcon} aria-hidden="true">🚧</span>
+        <h3>{constructionCopy.title}</h3>
+        <p>{constructionCopy.text}</p>
+        <button type="button" onClick={onClose}>{copy.close}</button>
       </div>
-
-      {query.trim() ? (
-        <div className={styles.klassSearchResults} style={REFERENCE_MODAL_FIXED_BODY}>
-          <div className={`${styles.klassSearchResultsHead} ${styles.anatomySearchResultsHead}`}>
-            <strong>{searchCopy.results}</strong>
-            <span>{searchResults.length}</span>
-          </div>
-          {searchResults.length ? (
-            <div className={styles.klassSearchGrid}>
-              {searchResults.map(({ item: resultItem }) => (
-                <button
-                  key={resultItem.id}
-                  type="button"
-                  className={styles.klassSearchResult}
-                  style={{ '--ref-color': resultItem.color }}
-                  onClick={() => go(resultItem.id)}
-                >
-                  <span className={`${styles.navIconWrap} ${styles.klassNavLogoWrap}`}>
-                    <Image src={ANATOMY_TOPIC_LOGOS[resultItem.topic.id] || '/fach/technik.png'} alt="" width={30} height={30} className={styles.klassNavLogo} />
-                  </span>
-                  <span className={styles.klassSearchResultText}>
-                    <strong>{tx(resultItem.name, lang)}</strong>
-                  </span>
-                  <span className={styles.klassSearchResultArrow}>→</span>
-                </button>
-              ))}
-            </div>
-          ) : (
-            <p className={styles.klassSearchEmpty}>{searchCopy.empty}</p>
-          )}
-        </div>
-      ) : (
-      <div className={`${styles.split} ${showDetail?styles.showDetail:''}`} style={REFERENCE_MODAL_FIXED_BODY}>
-        <nav className={styles.sidebar}>
-          {topics.map(entry => (
-            <button key={entry.id}
-              className={`${styles.navBtn} ${styles.klassNavBtn} ${entry.id===topicId?styles.navActivePurple:''}`}
-              style={{'--ref-color':entry.color}} onClick={()=>{
-                setTopicId(entry.id)
-                setShowDetail(true)
-              }}>
-              <span className={`${styles.navIconWrap} ${styles.klassNavLogoWrap}`}>
-                <Image src={ANATOMY_TOPIC_LOGOS[entry.id] || '/fach/technik.png'} alt="" width={30} height={30} className={styles.klassNavLogo} />
-              </span>
-              <span className={styles.klassNavText}>
-                <span className={styles.navLabel}>{tx(entry.name, lang)}</span>
-              </span>
-              <span className={styles.klassNavArrow}>›</span>
-            </button>
-          ))}
-        </nav>
-        <div className={styles.content} style={{'--ref-color':topic.color}}>
-          <button className={styles.mobileBack} onClick={()=>setShowDetail(false)}>← {copy.back}</button>
-          <div className={styles.klassTopicHead}>
-            <span className={`${styles.regionHeadingIcon} ${styles.klassTopicLogoWrap}`}>
-              <Image src={ANATOMY_TOPIC_LOGOS[topic.id] || '/fach/technik.png'} alt="" width={38} height={38} className={styles.klassTopicLogo} />
-            </span>
-            <div>
-              <span className={styles.klassTopicEyebrow}>{copy.btnAnatomie}</span>
-              <h2 style={{color:topic.color}}>{tx(topic.name,lang)}</h2>
-            </div>
-          </div>
-          <div className={styles.klassCardGrid}>
-            {topic.items.map(entry => (
-              <button
-                key={entry.id}
-                type="button"
-                className={styles.klassCard}
-                style={{'--ref-color': entry.color}}
-                onClick={() => go(entry.id)}
-              >
-                <span className={styles.klassCardName} style={{color: entry.color}}>{tx(entry.name, lang)}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-      )}
     </Modal>
   )
 }

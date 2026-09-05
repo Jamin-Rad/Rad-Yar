@@ -280,7 +280,8 @@ const CONTENT = {
   },
 }
 
-const sectionId = index => `section-${index + 1}`
+const SECTION_IDS = ['about', 'medical-notice', 'access', 'image-credits', 'sources', 'terms', 'copyright', 'privacy', 'imprint', 'updates']
+const sectionId = index => SECTION_IDS[index] || `section-${index + 1}`
 
 export default function UeberRadyarPage() {
   const { lang } = useLanguage()

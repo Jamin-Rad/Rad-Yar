@@ -18,3 +18,35 @@
 }
 :global(html[data-theme='dark']) .text strong { color: #fbbf24; }
 :global(html[data-theme='dark']) .text span   { color: #d97706; }
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9990;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(2, 6, 23, .58);
+  backdrop-filter: blur(7px);
+}
+.dialog {
+  width: min(520px, 100%);
+  padding: 28px;
+  border: 1px solid rgba(245, 158, 11, .3);
+  border-radius: 24px;
+  background: var(--surface, #fff);
+  box-shadow: 0 28px 80px rgba(2, 6, 23, .34);
+  text-align: start;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
+}
+.dialogIcon { display: block; margin-bottom: 10px; font-size: 30px; }
+.dialog h2 { margin: 0; color: var(--text-strong, #0f172a); font-family: var(--font-display, Georgia, serif); font-size: clamp(24px, 5vw, 32px); line-height: 1.2; }
+.dialog p { margin: 13px 0 11px; color: var(--text-soft, #475569); font-size: 14px; line-height: 1.75; }
+.legalLink { display: inline-flex; color: #b45309; font-size: 12px; font-weight: 800; text-underline-offset: 3px; }
+.dialog button { display: block; width: 100%; min-height: 46px; margin-top: 22px; border: 1px solid #d97706; border-radius: 14px; color: #fff; background: #d97706; font: 850 13px/1.2 var(--font-main, 'Manrope', system-ui, sans-serif); cursor: pointer; box-shadow: 0 9px 24px rgba(217, 119, 6, .22); }
+.dialog button:focus-visible, .legalLink:focus-visible { outline: 3px solid rgba(245, 158, 11, .35); outline-offset: 3px; }
+
+@media (max-width: 560px) {
+  .overlay { align-items: end; padding: 10px; }
+  .dialog { padding: 23px 19px 19px; border-radius: 21px; }
+}
