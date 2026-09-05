@@ -87,7 +87,7 @@
   animation: networkDrift 13s ease-in-out infinite alternate;
 }
 
-.pulseNode { position: absolute; top: 32%; left: 52%; width: 12px; height: 12px; z-index: 3; }
+.pulseNode { position: absolute; top: 20%; left: clamp(12%, calc(50% - 140px), 25%); width: 12px; height: 12px; z-index: 3; }
 .pulseNode span { position: absolute; inset: 0; border-radius: 50%; background: #c699ff; box-shadow: 0 0 18px 5px rgba(176,112,255,.65); }
 .pulseNode i, .pulseNode::after { content: ''; position: absolute; inset: -13px; border: 1px solid rgba(188,135,255,.72); border-radius: 50%; animation: nodePulse 2.8s ease-out infinite; }
 .pulseNode::after { animation-delay: 1.35s; }
