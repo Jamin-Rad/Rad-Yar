@@ -17,11 +17,18 @@ export const metadata = {
   },
   alternates: { canonical: '/node-rads' },
   openGraph: {
-    title: 'Node-RADS Rechner · RadYar',
-    description: 'Region wählen, Größe und Konfiguration erfassen und Node-RADS strukturiert bestimmen.',
+    title: 'Node-RADS',
+    description: 'Node-RADS',
     url: '/node-rads',
-    siteName: 'RadYar',
+    siteName: 'Node-RADS',
     type: 'website',
+    images: [{ url: '/node-rads/app-icon.png', width: 1024, height: 1024, alt: 'Node-RADS' }],
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Node-RADS',
+    description: 'Node-RADS',
+    images: ['/node-rads/app-icon.png'],
   },
 }
 

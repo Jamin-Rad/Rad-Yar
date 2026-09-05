@@ -249,7 +249,7 @@ function ResultStep({ score, sizeCategory, configScore, regionTitle, shortAxis, 
       setLinkCopied(false)
     }
   }
-  const whatsAppText = encodeURIComponent(`${ui.shareTitle}: ${NODE_RADS_URL}`)
+  const whatsAppText = encodeURIComponent(`Node-RADS\n${NODE_RADS_URL}`)
   return <div className={`${styles.stepContent} ${styles.resultStep}`} style={{ '--score-color': color }}>
     <header><h1>{ui.resultTitle}</h1><p>{ui.resultText}</p></header>
     <div className={styles.scoreReveal}><div className={styles.scoreOrbit}><span>NODE-RADS</span><strong>{score}</strong></div><h2><span>{level}</span><em>{ui.resultSignals[score - 1]}</em></h2></div>
