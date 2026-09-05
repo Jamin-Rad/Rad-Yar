@@ -58,7 +58,11 @@ const COPY = {
     clinicalContext: 'Klinischer Kontext',
     clinicalContextText: 'Mit Primärtumor, Verteilungsmuster und tumorspezifischen TNM-Kriterien korrelieren. Das weitere Vorgehen interdisziplinär festlegen; eine histologische Sicherung erwägen, wenn sie das Management verändert. Diese Empfehlung ist nicht Bestandteil des Node-RADS-Scores.',
     sizeCategory: 'Größenkategorie', report: 'Strukturierter Befundtext', copy: 'Befundtext kopieren', copied: 'Kopiert',
-    next: 'Weiter', back: 'Zurück', restart: 'Neu beginnen', required: 'Bitte treffen Sie eine Auswahl.', invalidMeasurement: 'Die längste Achse muss mindestens so groß wie die kurze Achse sein.',
+    reportMeasurement: '{region}: Lymphknoten mit einer Größe von {short} × {long} mm (Kurz- × Langachse).',
+    reportMorphology: 'Morphologie: Textur {texture}, Rand {border}, Form {shape}.',
+    reportGrowth: 'Im Verlauf Größenzunahme um mindestens 2 mm.',
+    reportAssessment: 'Beurteilung: Node-RADS {score} – {level} für einen malignen Lymphknotenbefall.',
+    next: 'Weiter', back: 'Zurück', restart: 'Neu beginnen', required: 'Bitte treffen Sie eine Auswahl.',
     info: 'Node-RADS ist für die Beurteilung von Lymphknoten in kontrastverstärkter CT oder MRT konzipiert.',
     disclaimer: 'Orientierungshilfe nach Node-RADS 1.0 · ersetzt nicht die ärztliche Gesamtbeurteilung oder tumorspezifische TNM-Kriterien.',
     source: 'Elsholtz et al. · European Radiology · 2021',
@@ -95,7 +99,11 @@ const COPY = {
     clinicalContext: 'Clinical context',
     clinicalContextText: 'Correlate with the primary tumour, distribution pattern and tumour-specific TNM criteria. Determine further management in a multidisciplinary setting; consider histological confirmation when it would change management. This advice is not part of the Node-RADS score.',
     sizeCategory: 'Size category', report: 'Structured report text', copy: 'Copy report text', copied: 'Copied',
-    next: 'Continue', back: 'Back', restart: 'Start again', required: 'Please make a selection.', invalidMeasurement: 'The longest axis must be at least as large as the short axis.',
+    reportMeasurement: '{region}: Lymph node measuring {short} × {long} mm (short × long axis).',
+    reportMorphology: 'Morphology: {texture} texture, {border} border, {shape}.',
+    reportGrowth: 'Interval size increase of at least 2 mm.',
+    reportAssessment: 'Assessment: Node-RADS {score} – {level} of malignant lymph-node involvement.',
+    next: 'Continue', back: 'Back', restart: 'Start again', required: 'Please make a selection.',
     info: 'Node-RADS is designed for lymph-node assessment on contrast-enhanced CT or MRI.',
     disclaimer: 'Decision aid based on Node-RADS 1.0 · does not replace integrated physician assessment or tumour-specific TNM criteria.',
     source: 'Elsholtz et al. · European Radiology · 2021',
@@ -165,14 +173,13 @@ function MeasurementField({ label, value, onChange, ui }) {
   </div>
 }
 
-function SizeStep({ shortAxis, setShortAxis, longAxis, setLongAxis, growth, setGrowth, sizeCategory, threshold, ui, invalid }) {
+function SizeStep({ shortAxis, setShortAxis, longAxis, setLongAxis, growth, setGrowth, sizeCategory, threshold, ui }) {
   return <div className={styles.stepContent}>
     <header><h1>{ui.sizeTitle}</h1><p>{ui.sizeText}</p></header>
     <div className={styles.measureGrid}>
       <MeasurementField label={ui.shortValue} value={shortAxis} onChange={setShortAxis} ui={ui}/>
       <MeasurementField label={ui.longestValue} value={longAxis} onChange={setLongAxis} ui={ui}/>
     </div>
-    {invalid ? <p className={styles.errorText}>{ui.invalidMeasurement}</p> : null}
     <button type="button" className={`${styles.growthToggle} ${growth ? styles.growthActive : ''}`} onClick={() => setGrowth(value => !value)} aria-pressed={growth}>
       <span>{growth ? '✓' : ''}</span><span><strong>{ui.growth}</strong><small>{ui.growthHint}</small></span>
     </button>
@@ -202,14 +209,22 @@ function ConfigStep({ texture, setTexture, border, setBorder, shape, setShape, u
   </div>
 }
 
-function ResultStep({ score, sizeCategory, configScore, regionLabel, shortAxis, longAxis, ui, lang, copied, setCopied }) {
+function ResultStep({ score, sizeCategory, configScore, regionLabel, regionTitle, shortAxis, longAxis, growth, texture, border, shape, ui, lang, copied, setCopied }) {
   const color = RESULT_COLORS[score - 1]
   const level = ui.levels[score - 1]
   const sizeLabel = ui[SIZE_LABEL_KEY[sizeCategory]]
   const resultReason = sizeCategory === 'bulk'
     ? ui.bulkReason
     : ui.combinedReason.replace('{size}', sizeLabel).replace('{config}', configScore).replace('{score}', score)
-  const reportText = `Node-RADS ${score} (${level}); ${regionLabel}; ${shortAxis} mm ${ui.shortAxis}; ${longAxis} mm ${ui.longestValue}; ${sizeLabel}${sizeCategory === 'bulk' ? '' : `; ${ui.configScore} ${configScore}/5`}.`
+  const reportParts = [
+    ui.reportMeasurement.replace('{region}', regionTitle).replace('{short}', shortAxis).replace('{long}', longAxis),
+    sizeCategory !== 'bulk'
+      ? ui.reportMorphology.replace('{texture}', ui.textures[texture].toLowerCase()).replace('{border}', ui.borders[border].toLowerCase()).replace('{shape}', ui.shapes[shape].toLowerCase())
+      : null,
+    growth ? ui.reportGrowth : null,
+    ui.reportAssessment.replace('{score}', score).replace('{level}', level.toLowerCase()),
+  ]
+  const reportText = reportParts.filter(Boolean).join(' ')
   const copyReport = async () => {
     try {
       await navigator.clipboard.writeText(reportText)
@@ -273,16 +288,22 @@ export default function NodeRadsPage() {
   const thresholdDisplay = region === 'specific' && !special ? '—' : `< ${threshold} mm`
   const regionTitle = region === 'specific' && special ? special[activeLang] : ui.regions[region].title
   const regionLabel = region === 'specific' && special ? `${special[activeLang]} · < ${special.threshold} mm` : `${ui.regions.general.title} · < 10 mm`
-  const invalidMeasurement = Number(shortAxis) > Number(longAxis) && Number(longAxis) > 0
-  const sizeCategory = getSizeCategory(shortAxis, longAxis, threshold, growth)
+  const axesAreReversed = Number(shortAxis) > Number(longAxis) && Number(longAxis) > 0
+  const measuredShortAxis = axesAreReversed ? longAxis : shortAxis
+  const measuredLongAxis = axesAreReversed ? shortAxis : longAxis
+  const sizeCategory = getSizeCategory(measuredShortAxis, measuredLongAxis, threshold, growth)
   const configReady = texture !== null && border !== null && shape !== null
   const configScore = (TEXTURE_SCORES[texture] ?? 0) + (border ?? 0) + (shape === 2 ? 1 : 0)
   const score = sizeCategory ? getNodeRads(sizeCategory, configScore) : null
 
-  const canContinue = step === 0 ? Boolean(region && (region !== 'specific' || specialRegion)) : step === 1 ? Boolean(sizeCategory && !invalidMeasurement) : step === 2 ? configReady : true
+  const canContinue = step === 0 ? Boolean(region && (region !== 'specific' || specialRegion)) : step === 1 ? Boolean(sizeCategory) : step === 2 ? configReady : true
   const goNext = () => {
-    if (!canContinue) { setError(step === 1 && invalidMeasurement ? ui.invalidMeasurement : ui.required); return }
+    if (!canContinue) { setError(ui.required); return }
     setError('')
+    if (step === 1 && axesAreReversed) {
+      setShortAxis(measuredShortAxis)
+      setLongAxis(measuredLongAxis)
+    }
     const next = step === 1 && sizeCategory === 'bulk' ? 3 : Math.min(step + 1, 3)
     setCompleted(value => Math.max(value, next))
     setStep(next)
@@ -305,9 +326,9 @@ export default function NodeRadsPage() {
         <Stepper step={step} setStep={(next) => { setError(''); setStep(next) }} ui={ui} completed={completed}/>
         <div className={styles.stepViewport} key={step}>
           {step === 0 ? <RegionStep region={region} setRegion={setRegion} specialRegion={specialRegion} setSpecialRegion={setSpecialRegion} ui={ui} lang={activeLang}/> : null}
-          {step === 1 ? <SizeStep shortAxis={shortAxis} setShortAxis={setShortAxis} longAxis={longAxis} setLongAxis={setLongAxis} growth={growth} setGrowth={setGrowth} sizeCategory={sizeCategory} threshold={threshold} ui={ui} invalid={invalidMeasurement}/> : null}
+          {step === 1 ? <SizeStep shortAxis={shortAxis} setShortAxis={setShortAxis} longAxis={longAxis} setLongAxis={setLongAxis} growth={growth} setGrowth={setGrowth} sizeCategory={sizeCategory} threshold={threshold} ui={ui}/> : null}
           {step === 2 ? <ConfigStep texture={texture} setTexture={setTexture} border={border} setBorder={setBorder} shape={shape} setShape={setShape} ui={ui}/> : null}
-          {step === 3 && score ? <ResultStep score={score} sizeCategory={sizeCategory} configScore={configScore} regionLabel={regionLabel} shortAxis={shortAxis} longAxis={longAxis} ui={ui} lang={activeLang} copied={copied} setCopied={setCopied}/> : null}
+          {step === 3 && score ? <ResultStep score={score} sizeCategory={sizeCategory} configScore={configScore} regionLabel={regionLabel} regionTitle={regionTitle} shortAxis={shortAxis} longAxis={longAxis} growth={growth} texture={texture} border={border} shape={shape} ui={ui} lang={activeLang} copied={copied} setCopied={setCopied}/> : null}
         </div>
         {error ? <p className={styles.footerError} role="alert">{error}</p> : null}
         <footer className={styles.actionBar}>
