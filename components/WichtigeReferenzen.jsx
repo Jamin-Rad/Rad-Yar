@@ -300,8 +300,6 @@ export default function WichtigeReferenzen({ mode = 'section' }) {
           <button className={`${styles.card} ${styles.cardPurple}`} onClick={() => setModal('anatomie')}>
             <HomeCardIcon type="anatomie" alt="" />
             <h3 className={`${styles.cardTitle} ${styles.colorPurple}`}>{copy.btnAnatomie}</h3>
-            <p className={styles.cardDesc}>{copy.btnAnatomieSub}</p>
-            <div className={styles.chips}>{(copy.chipsAnatomie||[]).slice(0,4).map(ch=><span key={ch} className={`${styles.chip} ${styles.chipPurple}`}>{ch}</span>)}</div>
           </button>
           <button className={`${styles.card} ${styles.cardOrange}`} onClick={() => setModal('klassifikationen')}>
             <HomeCardIcon type="klassifikationen" alt="" />
@@ -694,7 +692,7 @@ const RECHNER_GROUPS = [
 
 const MAMMA_TOOL_LINKS = [
   {
-    id: 'node-rads', href: '/node-rads', mark: 'N', color: '#7c3aed',
+    id: 'node-rads', href: '/node-rads', mark: 'N', icon: '/node-rads/node-rads-icon-192.png', color: '#7c3aed',
     name: { de: 'Node-RADS', en: 'Node-RADS', fa: 'Node-RADS' },
     text: { de: 'Lymphknoten in CT und MRT strukturiert einordnen.', en: 'Structured lymph-node assessment on CT and MRI.', fa: 'ارزیابی ساختاریافته غدد لنفاوی در CT و MRI.' },
   },
@@ -704,7 +702,7 @@ const MAMMA_TOOL_LINKS = [
     text: { de: 'Massen und Verkalkungen in der Mammographie bewerten.', en: 'Assess mammographic masses and calcifications.', fa: 'ارزیابی توده‌ها و کلسیفیکاسیون‌های ماموگرافی.' },
   },
   {
-    id: 'kaiser-score', href: '/kaiser-score', mark: 'K', color: '#0755d8',
+    id: 'kaiser-score', href: '/kaiser-score', mark: 'K', icon: '/kaiser-score/kaiser-score-icon-192.png', color: '#0891a3',
     name: { de: 'Kaiser Score', en: 'Kaiser Score', fa: 'Kaiser Score' },
     text: { de: 'Anreichernde Läsionen in der Mamma-MRT klassifizieren.', en: 'Classify enhancing lesions on breast MRI.', fa: 'طبقه‌بندی ضایعات enhancing در MRI پستان.' },
   },
@@ -758,7 +756,9 @@ function RechnerModal({ copy, lang, onClose }) {
             <div className={styles.mammaToolGrid}>
               {MAMMA_TOOL_LINKS.map(tool => (
                 <Link key={tool.id} href={tool.href} className={styles.mammaToolCard} style={{'--tool-color': tool.color}}>
-                  <span className={styles.mammaToolMark}>{tool.mark}</span>
+                  <span className={`${styles.mammaToolMark} ${tool.icon ? styles.mammaToolIconMark : ''}`}>
+                    {tool.icon ? <Image src={tool.icon} alt="" width={44} height={44} className={styles.mammaToolIcon}/> : tool.mark}
+                  </span>
                   <span className={styles.mammaToolCopy}>
                     <strong>{tx(tool.name, lang)}</strong>
                     <small>{tx(tool.text, lang)}</small>

@@ -1,0 +1,30 @@
+{
+  "name": "Kaiser Score",
+  "short_name": "Kaiser",
+  "description": "Breast MRI Kaiser Score decision pathway with complementary DWI/ADC assessment.",
+  "id": "/kaiser-score",
+  "start_url": "/kaiser-score",
+  "scope": "/kaiser-score",
+  "display": "standalone",
+  "background_color": "#07121d",
+  "theme_color": "#07121d",
+  "icons": [
+    {
+      "src": "/kaiser-score/kaiser-score-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/kaiser-score/kaiser-score-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/kaiser-score/kaiser-score-icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

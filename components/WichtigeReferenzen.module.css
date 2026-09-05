@@ -983,6 +983,17 @@
   font-size: 15px;
   font-weight: 900;
 }
+.mammaToolIconMark {
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  border-color: color-mix(in srgb, var(--tool-color) 42%, transparent);
+  background: #07111f;
+  box-shadow: 0 8px 20px -12px var(--tool-color);
+}
+.mammaToolIcon { width: 100%; height: 100%; object-fit: cover; display: block; }
 .mammaToolCopy { display: grid; gap: 7px; }
 .mammaToolCopy strong {
   color: var(--tool-color);
@@ -1235,6 +1246,7 @@
   .mammaToolGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
   .mammaToolCard { min-height: 108px; padding: 11px; gap: 9px; }
   .mammaToolMark { width: 31px; height: 31px; border-radius: 8px; font-size: 12px; }
+  .mammaToolIconMark { width: 38px; height: 38px; border-radius: 10px; }
   .mammaToolCopy strong { font-size: 13px; }
   .mammaToolCopy small { display: none; }
   .mammaToolArrow { inset-inline-end: 10px; top: 11px; font-size: 14px; }
@@ -1529,6 +1541,7 @@
   background: linear-gradient(145deg, color-mix(in srgb, var(--tool-color) 10%, #111b2d), #111b2d 65%);
 }
 :global(html[data-theme='dark']) .mammaToolMark { background: color-mix(in srgb, var(--tool-color) 14%, #111b2d); }
+:global(html[data-theme='dark']) .mammaToolIconMark { background: #07111f; }
 :global(html[data-theme='dark']) .mammaToolCopy small { color: #8fa1ba; }
 :global(html[data-theme='dark']) .rcFormula   { color: #4f6077; }
 :global(html[data-theme='dark']) .rcFieldLabel { color: #8fa1ba; }
