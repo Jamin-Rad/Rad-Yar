@@ -5,6 +5,7 @@ export const READY_LESSON_PATHS = [
 ]
 
 const readyLessonPaths = new Set(READY_LESSON_PATHS)
+const NON_LESSON_PATH_PREFIXES = ['/mamma/rechner']
 
 function normalizePathname(pathname) {
   if (!pathname || pathname === '/') return pathname || ''
@@ -12,5 +13,10 @@ function normalizePathname(pathname) {
 }
 
 export function isLessonInProgress(pathname) {
-  return !readyLessonPaths.has(normalizePathname(pathname))
+  const normalizedPathname = normalizePathname(pathname)
+  const isNonLesson = NON_LESSON_PATH_PREFIXES.some(prefix => (
+    normalizedPathname === prefix || normalizedPathname.startsWith(`${prefix}/`)
+  ))
+
+  return !isNonLesson && !readyLessonPaths.has(normalizedPathname)
 }
