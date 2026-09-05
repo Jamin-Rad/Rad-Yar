@@ -78,6 +78,7 @@ const COPY = {
 
 const SIZE_LABEL_KEY = { normal: 'sizeNormal', enlarged: 'sizeEnlarged', bulk: 'sizeBulk' }
 const RESULT_COLORS = ['#59c69a', '#63c7dd', '#e2bd5f', '#ed8a50', '#ef5f65']
+const MEASUREMENT_VALUES = Array.from({ length: 100 }, (_, index) => index + 1)
 
 function RegionIcon({ type }) {
   if (type === 'pelvis') return <svg viewBox="0 0 44 44" aria-hidden="true"><path d="M10 8c3 8 3 14 1 24M34 8c-3 8-3 14-1 24M11 24c6 1 9 5 11 12M33 24c-6 1-9 5-11 12"/><circle cx="15" cy="24" r="2"/><circle cx="29" cy="24" r="2"/></svg>
@@ -124,7 +125,7 @@ function RegionStep({ region, setRegion, specialRegion, setSpecialRegion, ui, la
 }
 
 function MeasurementField({ label, value, onChange, ui }) {
-  return <label className={styles.measureField}><span>{label}</span><div><input type="number" inputMode="decimal" min="0.1" max="200" step="0.1" value={value} onChange={event => onChange(event.target.value)} placeholder="0.0"/><small>mm</small></div><em>{ui.millimetres}</em></label>
+  return <label className={styles.measureField}><span>{label}</span><div><select value={value} onChange={event => onChange(event.target.value)} aria-label={label}><option value="" disabled>—</option>{MEASUREMENT_VALUES.map(number => <option key={number} value={number}>{number}</option>)}</select><small>mm</small></div><em>{ui.millimetres}</em></label>
 }
 
 function SizeStep({ shortAxis, setShortAxis, longAxis, setLongAxis, growth, setGrowth, sizeCategory, threshold, ui, invalid }) {
