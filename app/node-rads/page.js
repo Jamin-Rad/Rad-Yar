@@ -127,17 +127,17 @@ function RegionStep({ region, setRegion, specialRegion, setSpecialRegion, ui, la
 }
 
 function MeasurementField({ label, value, onChange, ui }) {
-  const numericValue = Number(value) || 1
-  const changeBy = delta => onChange(String(Math.min(100, Math.max(1, value ? numericValue + delta : 1))))
+  const numericValue = Number(value) || 2
+  const changeBy = delta => onChange(String(Math.min(35, Math.max(2, value ? numericValue + delta : 2))))
   return <div className={styles.measureField}>
     <div className={styles.measureHeading}><span>{label}</span><em>{ui.millimetres}</em></div>
     <div className={styles.pickerControl}>
-      <button type="button" onClick={() => changeBy(-1)} disabled={!value || numericValue <= 1} aria-label={`${label} − 1 mm`}>−</button>
+      <button type="button" onClick={() => changeBy(-1)} disabled={!value || numericValue <= 2} aria-label={`${label} − 1 mm`}>−</button>
       <strong>{value || '—'}<small>mm</small></strong>
-      <button type="button" onClick={() => changeBy(1)} disabled={numericValue >= 100} aria-label={`${label} + 1 mm`}>+</button>
+      <button type="button" onClick={() => changeBy(1)} disabled={numericValue >= 35} aria-label={`${label} + 1 mm`}>+</button>
     </div>
-    <input className={styles.sizeSlider} type="range" min="1" max="100" step="1" value={numericValue} onChange={event => onChange(event.target.value)} aria-label={label} style={{ '--picker-progress': `${(numericValue - 1) / 99 * 100}%` }}/>
-    <div className={styles.pickerScale}><span>1</span><span>50</span><span>100 mm</span></div>
+    <input className={styles.sizeSlider} type="range" min="2" max="35" step="1" value={numericValue} onChange={event => onChange(event.target.value)} aria-label={label} style={{ '--picker-progress': `${(numericValue - 2) / 33 * 100}%` }}/>
+    <div className={styles.pickerScale}><span>2</span><span>20</span><span>35 mm</span></div>
   </div>
 }
 
