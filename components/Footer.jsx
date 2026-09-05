@@ -34,12 +34,14 @@ function RadYarMark({ size = 26 }) {
 }
 
 export default function Footer() {
-  const { texts } = useLanguage()
+  const { lang, texts } = useLanguage()
+  const privacyLabel = lang === 'fa' ? 'تنظیمات حریم خصوصی' : lang === 'en' ? 'Privacy settings' : 'Datenschutzeinstellungen'
   return (
     <footer className={styles.footer}>
       <div className={styles.brandLeft}>
         <RadYarMark size={28} />
         <Link href="/ueber-radyar" className={styles.brandLink}>{texts.footerLegalLink}</Link>
+        <button type="button" className={styles.privacyButton} onClick={() => window.dispatchEvent(new CustomEvent('radyar:open-privacy-settings'))}>{privacyLabel}</button>
       </div>
       <div className={styles.copy}>{texts.footerCopy}</div>
     </footer>

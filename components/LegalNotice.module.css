@@ -1,0 +1,15 @@
+.overlay { position: fixed; inset: 0; z-index: 10000; display: grid; place-items: end center; padding: 24px; background: rgba(2,6,23,.58); backdrop-filter: blur(8px); }
+.dialog { width: min(720px,100%); padding: 28px; border: 1px solid rgba(148,163,184,.28); border-radius: 24px; background: var(--surface,#fff); color: var(--text,#172033); box-shadow: 0 28px 90px rgba(2,6,23,.35); }
+.icon { display: grid; width: 42px; height: 42px; place-items: center; margin-bottom: 16px; border-radius: 14px; color: #fff; background: linear-gradient(135deg,#142a44,#f97316); font-size: 13px; font-weight: 900; }
+.eyebrow { margin: 0 0 5px; color: #f97316; font-size: 11px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+.dialog h2 { margin: 0; color: var(--text-strong,#0f172a); font-family: var(--font-display); font-size: clamp(25px,5vw,35px); line-height: 1.15; }
+.text { margin: 13px 0 0; color: var(--text-soft,#475569); font-size: 14px; line-height: 1.75; }
+.links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 16px; }
+.links a { color: #ea580c; font-size: 12px; font-weight: 800; text-underline-offset: 3px; }
+.analytics { margin: 19px 0 0; padding: 13px 15px; border-radius: 14px; color: var(--text-soft,#475569); background: var(--surface-soft,#f8fafc); font-size: 12px; line-height: 1.65; }
+.actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+.actions button { min-height: 44px; padding: 10px 17px; border-radius: 13px; font: 800 12px/1.2 var(--font-main); cursor: pointer; }
+.secondary { border: 1px solid var(--border,#cbd5e1); color: var(--text,#1e293b); background: transparent; }
+.primary { border: 1px solid #ea580c; color: #fff; background: #ea580c; box-shadow: 0 8px 22px rgba(234,88,12,.22); }
+.actions button:focus-visible,.links a:focus-visible { outline: 3px solid rgba(249,115,22,.35); outline-offset: 3px; }
+@media (max-width:560px) { .overlay { padding: 10px; } .dialog { padding: 22px 18px 18px; border-radius: 21px; } .actions { flex-direction: column-reverse; } .actions button { width: 100%; } }

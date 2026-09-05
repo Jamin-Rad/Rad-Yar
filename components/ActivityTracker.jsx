@@ -1,12 +1,13 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useUser } from '@clerk/nextjs'
 import { usePathname } from 'next/navigation'
 import { addActiveSeconds, IDLE_MS, registerVisit } from '@/utils/activityStorage'
 import { getActivityCategory } from '@/utils/activityCategory'
 import { syncLocalProgressToServer } from '@/utils/syncProgressToServer'
 import { flushPendingProgress } from '@/utils/progressSync'
+import { PRIVACY_CHOICE_EVENT, readPrivacyChoice } from '@/components/LegalNotice'
 
 const VISITOR_KEY = 'radyar_visitor_id'
 const SESSION_KEY = 'radyar_analytics_session'
@@ -21,6 +22,7 @@ function getVisitorId() {
 }
 
 function sendActivity(payload) {
+  if (readPrivacyChoice()?.analytics !== true) return
   fetch('/api/analytics/track', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -32,9 +34,17 @@ function sendActivity(payload) {
 export default function ActivityTracker() {
   const { user, isLoaded } = useUser()
   const pathname = usePathname()
+  const [analyticsEnabled, setAnalyticsEnabled] = useState(false)
 
   useEffect(() => {
-    if (!isLoaded) return
+    const updateChoice = event => setAnalyticsEnabled(event.detail?.analytics === true)
+    setAnalyticsEnabled(readPrivacyChoice()?.analytics === true)
+    window.addEventListener(PRIVACY_CHOICE_EVENT, updateChoice)
+    return () => window.removeEventListener(PRIVACY_CHOICE_EVENT, updateChoice)
+  }, [])
+
+  useEffect(() => {
+    if (!isLoaded || !analyticsEnabled) return
     const userId = user?.id || null
     const activityCategory = getActivityCategory(pathname)
     const visitorId = getVisitorId()
@@ -115,7 +125,7 @@ export default function ActivityTracker() {
       window.removeEventListener('blur', flush)
       window.removeEventListener('pagehide', flush)
     }
-  }, [isLoaded, pathname, user?.id])
+  }, [analyticsEnabled, isLoaded, pathname, user?.id])
 
   return null
 }
