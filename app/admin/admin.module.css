@@ -380,6 +380,26 @@
   font-size: 13px;
 }
 
+.nodeRadsAnalytics { margin-bottom: 24px; padding: 24px; border: 1px solid #d9cdf5; border-radius: 20px; background: linear-gradient(145deg, #fbf9ff, #f5f8fc); box-shadow: 0 12px 34px rgba(70,45,120,.08); }
+.nodeRadsHeader { margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.nodeRadsIdentity { display: flex; align-items: center; gap: 12px; }
+.nodeRadsIdentity > span { width: 42px; height: 42px; flex: 0 0 42px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: radial-gradient(circle at 35% 30%, #b98aff, #3a1767 65%, #09040f); box-shadow: 0 8px 24px rgba(83,40,140,.24); font-size: 20px; font-weight: 900; }
+.nodeRadsIdentity h2 { margin: 0 0 3px; color: #20152f; font-size: 18px; font-weight: 900; }
+.nodeRadsIdentity p { margin: 0; color: #837590; font-size: 11px; }
+.periodPicker { padding: 3px; display: flex; gap: 3px; border: 1px solid #dfd6eb; border-radius: 10px; background: rgba(255,255,255,.75); }
+.periodPicker button { min-height: 31px; padding: 0 11px; border: 0; border-radius: 7px; color: #776985; background: transparent; cursor: pointer; font-size: 10px; font-weight: 800; }
+.periodPicker .periodActive { color: #fff; background: #6f3bb5; box-shadow: 0 5px 15px rgba(91,45,151,.22); }
+.nodeRadsMetrics { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 10px; }
+.nodeRadsMetrics > div { min-width: 0; padding: 17px 14px; border: 1px solid rgba(111,59,181,.1); border-radius: 14px; background: rgba(255,255,255,.78); display: grid; gap: 5px; }
+.nodeRadsMetrics strong { color: #3d1d68; font-size: 25px; line-height: 1; overflow-wrap: anywhere; }
+.nodeRadsMetrics span { color: #796b87; font-size: 10px; font-weight: 750; line-height: 1.35; }
+.nodeRadsChannels { margin-top: 12px; display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); border: 1px solid #e4dced; border-radius: 13px; overflow: hidden; background: rgba(255,255,255,.58); }
+.nodeRadsChannels > div { min-width: 0; padding: 12px; border-inline-end: 1px solid #e4dced; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.nodeRadsChannels > div:last-child { border-inline-end: 0; }
+.nodeRadsChannels span { color: #86788f; font-size: 9px; line-height: 1.35; }
+.nodeRadsChannels strong { color: #4d2b77; font-size: 14px; }
+.nodeRadsNote { margin: 13px 0 0; color: #92869c; font-size: 9px; line-height: 1.55; }
+
 .budgetHero {
   display: flex;
   align-items: flex-start;
@@ -1672,6 +1692,16 @@
   .analyticsGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .nodeRadsAnalytics { padding: 18px 14px; }
+  .nodeRadsHeader { align-items: flex-start; flex-direction: column; }
+  .periodPicker { width: 100%; }
+  .periodPicker button { flex: 1; }
+  .nodeRadsMetrics { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .nodeRadsMetrics > div:last-child { grid-column: 1 / -1; }
+  .nodeRadsChannels { grid-template-columns: 1fr; }
+  .nodeRadsChannels > div { border-inline-end: 0; border-bottom: 1px solid #e4dced; }
+  .nodeRadsChannels > div:last-child { border-bottom: 0; }
 
   .budgetHero {
     flex-direction: column;
@@ -4326,6 +4356,19 @@
 :global(html[data-theme='dark']) .pageRankTrack {
   background: var(--bg-soft);
 }
+
+:global(html[data-theme='dark']) .nodeRadsAnalytics { border-color: rgba(170,116,255,.28); background: linear-gradient(145deg, rgba(72,40,112,.28), rgba(12,22,34,.86)); }
+:global(html[data-theme='dark']) .nodeRadsIdentity h2,
+:global(html[data-theme='dark']) .nodeRadsMetrics strong,
+:global(html[data-theme='dark']) .nodeRadsChannels strong { color: #dfc9ff; }
+:global(html[data-theme='dark']) .nodeRadsIdentity p,
+:global(html[data-theme='dark']) .nodeRadsMetrics span,
+:global(html[data-theme='dark']) .nodeRadsChannels span,
+:global(html[data-theme='dark']) .nodeRadsNote { color: var(--text-muted); }
+:global(html[data-theme='dark']) .periodPicker,
+:global(html[data-theme='dark']) .nodeRadsMetrics > div,
+:global(html[data-theme='dark']) .nodeRadsChannels { border-color: var(--border); background: var(--bg-soft); }
+:global(html[data-theme='dark']) .nodeRadsChannels > div { border-color: var(--border); }
 
 /* Budget panels */
 :global(html[data-theme='dark']) .budgetPanel {
