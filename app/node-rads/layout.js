@@ -10,10 +10,10 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: '/node-rads/icon-192.png', sizes: '192x192', type: 'image/png' },
-      { url: '/node-rads/icon-512.png', sizes: '512x512', type: 'image/png' },
+      { url: '/node-rads/node-rads-icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/node-rads/node-rads-icon-512.png', sizes: '512x512', type: 'image/png' },
     ],
-    apple: [{ url: '/node-rads/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+    apple: [{ url: '/node-rads/node-rads-apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
   },
   alternates: { canonical: '/node-rads' },
   openGraph: {
