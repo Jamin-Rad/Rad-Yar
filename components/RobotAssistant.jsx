@@ -79,6 +79,7 @@ export default function RobotAssistant() {
     || pathname?.startsWith('/mobin')
     || pathname?.startsWith('/mamma-calculator')
     || pathname?.startsWith('/node-rads')
+    || pathname?.startsWith('/kaiser-score')
   )
 
   const [mounted, setMounted] = useState(false)

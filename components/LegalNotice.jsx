@@ -10,6 +10,19 @@ export const PRIVACY_CHOICE_KEY = 'radyar_privacy_choice_v1'
 export const PRIVACY_CHOICE_VERSION = '2026-09-05'
 export const PRIVACY_CHOICE_EVENT = 'radyar:privacy-choice'
 
+const AUTOMATIC_NOTICE_EXCLUDED_PREFIXES = [
+  '/mamma-calculator',
+  '/mamma/rechner',
+  '/node-rads',
+  '/kaiser-score',
+]
+
+function excludesAutomaticNotice(pathname) {
+  return AUTOMATIC_NOTICE_EXCLUDED_PREFIXES.some(prefix => (
+    pathname === prefix || pathname?.startsWith(`${prefix}/`)
+  ))
+}
+
 const COPY = {
   de: {
     eyebrow: 'Willkommen bei RadYar', title: 'Wichtige Hinweise vor dem Start',
@@ -54,7 +67,11 @@ export default function LegalNotice() {
   useEffect(() => {
     const showSettings = () => setOpen(true)
     window.addEventListener('radyar:open-privacy-settings', showSettings)
-    if (pathname !== '/ueber-radyar' && !readPrivacyChoice()) setOpen(true)
+    if (excludesAutomaticNotice(pathname)) {
+      setOpen(false)
+    } else if (pathname !== '/ueber-radyar' && !readPrivacyChoice()) {
+      setOpen(true)
+    }
     return () => window.removeEventListener('radyar:open-privacy-settings', showSettings)
   }, [pathname])
 
