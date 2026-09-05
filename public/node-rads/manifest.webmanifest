@@ -1,0 +1,30 @@
+{
+  "name": "Node-RADS",
+  "short_name": "Node-RADS",
+  "description": "Node-RADS 1.0 lymph-node assessment by region, size and configuration.",
+  "id": "/node-rads",
+  "start_url": "/node-rads",
+  "scope": "/node-rads",
+  "display": "standalone",
+  "background_color": "#030a11",
+  "theme_color": "#030a11",
+  "icons": [
+    {
+      "src": "/node-rads/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/node-rads/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/node-rads/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
