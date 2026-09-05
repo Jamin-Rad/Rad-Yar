@@ -81,7 +81,6 @@ const COPY = {
 const SIZE_LABEL_KEY = { normal: 'sizeNormal', enlarged: 'sizeEnlarged', bulk: 'sizeBulk' }
 const RESULT_COLORS = ['#59c69a', '#63c7dd', '#e2bd5f', '#ed8a50', '#ef5f65']
 const TEXTURE_SCORES = [0, 1, 2, 3, 3]
-const MEASUREMENT_VALUES = Array.from({ length: 100 }, (_, index) => index + 1)
 
 function RegionIcon({ type }) {
   if (type === 'pelvis') return <svg viewBox="0 0 44 44" aria-hidden="true"><path d="M10 8c3 8 3 14 1 24M34 8c-3 8-3 14-1 24M11 24c6 1 9 5 11 12M33 24c-6 1-9 5-11 12"/><circle cx="15" cy="24" r="2"/><circle cx="29" cy="24" r="2"/></svg>
@@ -128,7 +127,18 @@ function RegionStep({ region, setRegion, specialRegion, setSpecialRegion, ui, la
 }
 
 function MeasurementField({ label, value, onChange, ui }) {
-  return <label className={styles.measureField}><span>{label}</span><div><select value={value} onChange={event => onChange(event.target.value)} aria-label={label}><option value="" disabled>—</option>{MEASUREMENT_VALUES.map(number => <option key={number} value={number}>{number}</option>)}</select><small>mm</small></div><em>{ui.millimetres}</em></label>
+  const numericValue = Number(value) || 1
+  const changeBy = delta => onChange(String(Math.min(100, Math.max(1, value ? numericValue + delta : 1))))
+  return <div className={styles.measureField}>
+    <div className={styles.measureHeading}><span>{label}</span><em>{ui.millimetres}</em></div>
+    <div className={styles.pickerControl}>
+      <button type="button" onClick={() => changeBy(-1)} disabled={!value || numericValue <= 1} aria-label={`${label} − 1 mm`}>−</button>
+      <strong>{value || '—'}<small>mm</small></strong>
+      <button type="button" onClick={() => changeBy(1)} disabled={numericValue >= 100} aria-label={`${label} + 1 mm`}>+</button>
+    </div>
+    <input className={styles.sizeSlider} type="range" min="1" max="100" step="1" value={numericValue} onChange={event => onChange(event.target.value)} aria-label={label} style={{ '--picker-progress': `${(numericValue - 1) / 99 * 100}%` }}/>
+    <div className={styles.pickerScale}><span>1</span><span>50</span><span>100 mm</span></div>
+  </div>
 }
 
 function SizeStep({ shortAxis, setShortAxis, longAxis, setLongAxis, growth, setGrowth, sizeCategory, threshold, ui, invalid }) {
