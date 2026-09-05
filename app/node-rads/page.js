@@ -50,11 +50,13 @@ const COPY = {
     levels: ['Sehr geringe Wahrscheinlichkeit', 'Geringe Wahrscheinlichkeit', 'Unklar / äquivokal', 'Hohe Wahrscheinlichkeit', 'Sehr hohe Wahrscheinlichkeit'],
     resultSignals: ['LK−', 'eher LK−', 'LK±', 'LK+', 'LK+'],
     sizeCategory: 'Größenkategorie', finding: 'Befund', assessment: 'Beurteilung', copy: 'Befundtext kopieren', copied: 'Kopiert',
-    reportShortAxis: '{region}: Lymphknoten mit einer Kurzachse von {short} mm.',
+    reportNormal: '{region}: Größenunauffälliger Lymphknoten mit einer Kurzachse von {short} mm.',
+    reportEnlarged: '{region}: Pathologisch vergrößerter Lymphknoten mit einer Kurzachse von {short} mm.',
     reportGrowth: '{region}: Im Verlauf größenprogredienter Lymphknoten mit einer Zunahme der Kurzachse um mindestens 2 mm.',
     reportBulk: '{region}: Bulky Lymphknotenmanifestation mit einer maximalen Langachse von {long} mm.',
-    reportMorphology: 'Morphologisch {texture}, {border} begrenzt und {shape}.',
-    reportAssessment: 'Node-RADS {score} – {level} für einen malignen Lymphknotenbefall ({signal}). Einordnung in Zusammenschau mit dem Primärtumor, dem nodalen Verteilungsmuster und den tumorspezifischen TNM-Kriterien.',
+    reportMorphology: 'Morphologisch zeigt sich der Lymphknoten {texture}, {border} begrenzt und {shape}.',
+    assessmentStatements: ['Ein maligner Lymphknotenbefall ist sehr unwahrscheinlich.', 'Ein maligner Lymphknotenbefall ist eher unwahrscheinlich.', 'Ein maligner Lymphknotenbefall bleibt unklar beziehungsweise äquivokal.', 'Es besteht eine hohe Wahrscheinlichkeit für einen malignen Lymphknotenbefall.', 'Es besteht eine sehr hohe Wahrscheinlichkeit für einen malignen Lymphknotenbefall.'],
+    reportAssessment: 'Node-RADS {score} ({signal}). {statement} Die abschließende onkologische Einordnung erfolgt unter Berücksichtigung des Primärtumors, des nodalen Verteilungsmusters und der tumorspezifischen TNM-Kriterien.',
     next: 'Weiter', back: 'Zurück', restart: 'Neu beginnen', required: 'Bitte treffen Sie eine Auswahl.',
     info: 'Node-RADS ist für die Beurteilung von Lymphknoten in kontrastverstärkter CT oder MRT konzipiert.',
     disclaimer: 'Orientierungshilfe nach Node-RADS 1.0 · ersetzt nicht die ärztliche Gesamtbeurteilung oder tumorspezifische TNM-Kriterien.',
@@ -84,11 +86,13 @@ const COPY = {
     levels: ['Very low likelihood', 'Low likelihood', 'Equivocal', 'High likelihood', 'Very high likelihood'],
     resultSignals: ['LN−', 'likely LN−', 'LN±', 'LN+', 'LN+'],
     sizeCategory: 'Size category', finding: 'Findings', assessment: 'Assessment', copy: 'Copy report text', copied: 'Copied',
-    reportShortAxis: '{region}: Lymph node with a short-axis diameter of {short} mm.',
+    reportNormal: '{region}: Size-normal lymph node with a short-axis diameter of {short} mm.',
+    reportEnlarged: '{region}: Pathologically enlarged lymph node with a short-axis diameter of {short} mm.',
     reportGrowth: '{region}: Interval progression of the lymph node with an increase in short-axis diameter of at least 2 mm.',
     reportBulk: '{region}: Bulky nodal disease with a maximum long-axis diameter of {long} mm.',
-    reportMorphology: 'Morphologically {texture}, {border} and {shape}.',
-    reportAssessment: 'Node-RADS {score} – {level} of malignant lymph-node involvement ({signal}). Interpret in conjunction with the primary tumour, nodal distribution pattern and tumour-specific TNM criteria.',
+    reportMorphology: 'Morphologically, the lymph node is {texture}, {border} and {shape}.',
+    assessmentStatements: ['Malignant lymph-node involvement is very unlikely.', 'Malignant lymph-node involvement is considered unlikely.', 'Malignant lymph-node involvement remains indeterminate or equivocal.', 'There is a high likelihood of malignant lymph-node involvement.', 'There is a very high likelihood of malignant lymph-node involvement.'],
+    reportAssessment: 'Node-RADS {score} ({signal}). {statement} Final oncological interpretation should account for the primary tumour, nodal distribution pattern and tumour-specific TNM criteria.',
     next: 'Continue', back: 'Back', restart: 'Start again', required: 'Please make a selection.',
     info: 'Node-RADS is designed for lymph-node assessment on contrast-enhanced CT or MRI.',
     disclaimer: 'Decision aid based on Node-RADS 1.0 · does not replace integrated physician assessment or tumour-specific TNM criteria.',
@@ -203,12 +207,12 @@ function ResultStep({ score, sizeCategory, configScore, regionTitle, shortAxis, 
     ? ui.reportBulk.replace('{region}', regionTitle).replace('{long}', longAxis)
     : growth
       ? ui.reportGrowth.replace('{region}', regionTitle)
-      : ui.reportShortAxis.replace('{region}', regionTitle).replace('{short}', shortAxis)
+      : ui[sizeCategory === 'enlarged' ? 'reportEnlarged' : 'reportNormal'].replace('{region}', regionTitle).replace('{short}', shortAxis)
   const morphologyFinding = sizeCategory !== 'bulk'
     ? ui.reportMorphology.replace('{texture}', ui.reportTextures[texture]).replace('{border}', ui.reportBorders[border]).replace('{shape}', ui.reportShapes[shape])
     : ''
   const findingText = [sizeFinding, morphologyFinding].filter(Boolean).join(' ')
-  const assessmentText = ui.reportAssessment.replace('{score}', score).replace('{level}', level.toLowerCase()).replace('{signal}', ui.resultSignals[score - 1])
+  const assessmentText = ui.reportAssessment.replace('{score}', score).replace('{signal}', ui.resultSignals[score - 1]).replace('{statement}', ui.assessmentStatements[score - 1])
   const reportText = `${ui.finding}: ${findingText}\n\n${ui.assessment}: ${assessmentText}`
   const copyReport = async () => {
     try {
