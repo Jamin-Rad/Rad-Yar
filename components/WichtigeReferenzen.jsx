@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { REF_COPY, REF_DATA, tx } from '@/data/referenzen'
@@ -691,6 +692,24 @@ const RECHNER_GROUPS = [
   },
 ]
 
+const MAMMA_TOOL_LINKS = [
+  {
+    id: 'node-rads', href: '/node-rads', mark: 'N', color: '#7c3aed',
+    name: { de: 'Node-RADS', en: 'Node-RADS', fa: 'Node-RADS' },
+    text: { de: 'Lymphknoten in CT und MRT strukturiert einordnen.', en: 'Structured lymph-node assessment on CT and MRI.', fa: 'ارزیابی ساختاریافته غدد لنفاوی در CT و MRI.' },
+  },
+  {
+    id: 'bi-rads', href: '/mamma-calculator', mark: 'B', color: '#db2777',
+    name: { de: 'BI-RADS', en: 'BI-RADS', fa: 'BI-RADS' },
+    text: { de: 'Massen und Verkalkungen in der Mammographie bewerten.', en: 'Assess mammographic masses and calcifications.', fa: 'ارزیابی توده‌ها و کلسیفیکاسیون‌های ماموگرافی.' },
+  },
+  {
+    id: 'kaiser-score', href: '/kaiser-score', mark: 'K', color: '#0755d8',
+    name: { de: 'Kaiser Score', en: 'Kaiser Score', fa: 'Kaiser Score' },
+    text: { de: 'Anreichernde Läsionen in der Mamma-MRT klassifizieren.', en: 'Classify enhancing lesions on breast MRI.', fa: 'طبقه‌بندی ضایعات enhancing در MRI پستان.' },
+  },
+]
+
 /* ── Rechner-Modal ────────────────────────────── */
 function RechnerModal({ copy, lang, onClose }) {
   const [groupId, setGroupId] = useState(RECHNER_GROUPS[0].id)
@@ -735,17 +754,32 @@ function RechnerModal({ copy, lang, onClose }) {
             </span>
             <span style={{color: group.color}}>{tx(group.name, lang)}</span>
           </h2>
-          <div style={{display:'flex',flexDirection:'column',gap:10}}>
-            {calcs.map(calc => (
-              <RechnerCard
-                key={calc.id}
-                calc={calc}
-                lang={lang}
-                isOpen={openCalcId === calc.id}
-                onToggle={() => setOpenCalcId(prev => prev === calc.id ? null : calc.id)}
-              />
-            ))}
-          </div>
+          {group.id === 'mamma' ? (
+            <div className={styles.mammaToolGrid}>
+              {MAMMA_TOOL_LINKS.map(tool => (
+                <Link key={tool.id} href={tool.href} className={styles.mammaToolCard} style={{'--tool-color': tool.color}}>
+                  <span className={styles.mammaToolMark}>{tool.mark}</span>
+                  <span className={styles.mammaToolCopy}>
+                    <strong>{tx(tool.name, lang)}</strong>
+                    <small>{tx(tool.text, lang)}</small>
+                  </span>
+                  <span className={styles.mammaToolArrow} aria-hidden="true">↗</span>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div style={{display:'flex',flexDirection:'column',gap:10}}>
+              {calcs.map(calc => (
+                <RechnerCard
+                  key={calc.id}
+                  calc={calc}
+                  lang={lang}
+                  isOpen={openCalcId === calc.id}
+                  onToggle={() => setOpenCalcId(prev => prev === calc.id ? null : calc.id)}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </Modal>

@@ -932,6 +932,84 @@
   display: flex; flex-direction: column; gap: 12px;
 }
 
+.mammaToolGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.mammaToolCard {
+  aspect-ratio: 1;
+  min-width: 0;
+  padding: 16px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  border: 1.5px solid color-mix(in srgb, var(--tool-color) 28%, #e2e8f0);
+  border-radius: 16px;
+  color: #172033;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--tool-color) 5%, #fff), #fff 62%);
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.mammaToolCard::before {
+  content: '';
+  height: 3px;
+  position: absolute;
+  inset: 0 0 auto;
+  background: var(--tool-color);
+  transform: scaleX(.34);
+  transform-origin: left;
+  transition: transform .2s ease;
+}
+.mammaToolCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--tool-color);
+  box-shadow: 0 16px 34px -22px color-mix(in srgb, var(--tool-color) 72%, transparent);
+}
+.mammaToolCard:hover::before { transform: scaleX(1); }
+.mammaToolMark {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid color-mix(in srgb, var(--tool-color) 60%, transparent);
+  border-radius: 10px;
+  color: var(--tool-color);
+  background: color-mix(in srgb, var(--tool-color) 7%, #fff);
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
+  font-size: 15px;
+  font-weight: 900;
+}
+.mammaToolCopy { display: grid; gap: 7px; }
+.mammaToolCopy strong {
+  color: var(--tool-color);
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.08;
+}
+.mammaToolCopy small {
+  display: -webkit-box;
+  overflow: hidden;
+  color: #64748b;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
+  font-size: 10px;
+  font-weight: 650;
+  line-height: 1.45;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+.mammaToolArrow {
+  position: absolute;
+  inset-inline-end: 15px;
+  top: 16px;
+  color: color-mix(in srgb, var(--tool-color) 55%, #94a3b8);
+  font-size: 17px;
+}
+
 .rcHead { display: flex; flex-direction: column; gap: 3px; }
 .rcName {
   font-family: var(--font-display, 'Fraunces', 'Georgia', serif);
@@ -1154,6 +1232,12 @@
   }
   .navBtn { width: 100%; padding: 13px 12px; }
   .content { display: none; overflow: visible; padding: 20px 18px; }
+  .mammaToolGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .mammaToolCard { min-height: 108px; padding: 11px; gap: 9px; }
+  .mammaToolMark { width: 31px; height: 31px; border-radius: 8px; font-size: 12px; }
+  .mammaToolCopy strong { font-size: 13px; }
+  .mammaToolCopy small { display: none; }
+  .mammaToolArrow { inset-inline-end: 10px; top: 11px; font-size: 14px; }
 
   .split.showDetail .sidebar { display: none; }
   .split.showDetail .content { display: block; }
@@ -1439,6 +1523,13 @@
   background: var(--bg-card, #111b2d);
   border-color: color-mix(in srgb, var(--rc) 22%, rgba(148,163,184,0.15));
 }
+:global(html[data-theme='dark']) .mammaToolCard {
+  color: #e5edf8;
+  border-color: color-mix(in srgb, var(--tool-color) 35%, rgba(148,163,184,.16));
+  background: linear-gradient(145deg, color-mix(in srgb, var(--tool-color) 10%, #111b2d), #111b2d 65%);
+}
+:global(html[data-theme='dark']) .mammaToolMark { background: color-mix(in srgb, var(--tool-color) 14%, #111b2d); }
+:global(html[data-theme='dark']) .mammaToolCopy small { color: #8fa1ba; }
 :global(html[data-theme='dark']) .rcFormula   { color: #4f6077; }
 :global(html[data-theme='dark']) .rcFieldLabel { color: #8fa1ba; }
 :global(html[data-theme='dark']) .rcInputWrap {
