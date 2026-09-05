@@ -6,23 +6,23 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
 
 const REGION_GROUPS = [
-  { id: 'inguinal', threshold: 15, icon: 'pelvis' },
   { id: 'general', threshold: 10, icon: 'body' },
-  { id: 'specific', threshold: 5, icon: 'target' },
+  { id: 'specific', threshold: null, icon: 'target' },
 ]
 
 const SPECIAL_REGIONS = [
-  { id: 'facial', de: 'Fazial', en: 'Facial', fa: 'فاسیال' },
-  { id: 'parotid', de: 'Parotideal', en: 'Parotid', fa: 'پاروتید' },
-  { id: 'retroauricular', de: 'Retroaurikulär', en: 'Retroauricular', fa: 'رتروآریکولار' },
-  { id: 'occipital', de: 'Okzipital', en: 'Occipital', fa: 'اکسیپیتال' },
-  { id: 'retropharyngeal', de: 'Retropharyngeal', en: 'Retropharyngeal', fa: 'رتروفارنژیال' },
-  { id: 'anterior-jugular', de: 'Anterior-jugulär', en: 'Anterior jugular', fa: 'ژوگولار قدامی' },
-  { id: 'retrocrural', de: 'Retrokrural', en: 'Retrocrural', fa: 'رتروکرورال' },
-  { id: 'cardiophrenic', de: 'Kardiophrenisch', en: 'Cardiophrenic', fa: 'کاردیوفِرنیک' },
-  { id: 'mesenteric', de: 'Mesenterial', en: 'Mesenteric', fa: 'مزانتریک' },
-  { id: 'obturator', de: 'Obturatorisch', en: 'Obturator', fa: 'ابتوراتور' },
-  { id: 'mesorectal', de: 'Mesorektal', en: 'Mesorectal', fa: 'مزورکتال' },
+  { id: 'inguinal', threshold: 15, de: 'Inguinal', en: 'Inguinal' },
+  { id: 'facial', threshold: 5, de: 'Fazial', en: 'Facial' },
+  { id: 'parotid', threshold: 5, de: 'Parotideal', en: 'Parotid' },
+  { id: 'retroauricular', threshold: 5, de: 'Retroaurikulär', en: 'Retroauricular' },
+  { id: 'occipital', threshold: 5, de: 'Okzipital', en: 'Occipital' },
+  { id: 'retropharyngeal', threshold: 5, de: 'Retropharyngeal', en: 'Retropharyngeal' },
+  { id: 'anterior-jugular', threshold: 5, de: 'Anterior-jugulär', en: 'Anterior jugular' },
+  { id: 'retrocrural', threshold: 5, de: 'Retrokrural', en: 'Retrocrural' },
+  { id: 'cardiophrenic', threshold: 5, de: 'Kardiophrenisch', en: 'Cardiophrenic' },
+  { id: 'mesenteric', threshold: 5, de: 'Mesenterial', en: 'Mesenteric' },
+  { id: 'obturator', threshold: 5, de: 'Obturatorisch', en: 'Obturator' },
+  { id: 'mesorectal', threshold: 5, de: 'Mesorektal', en: 'Mesorectal' },
 ]
 
 const COPY = {
@@ -30,11 +30,10 @@ const COPY = {
     brand: 'NODE-RADS', by: 'Ein Tool von', steps: ['Region', 'Größe', 'Konfiguration', 'Ergebnis'],
     regionTitle: 'Wo liegt der Lymphknoten?', regionText: 'Wählen Sie die Region, um den korrekten Größenschwellenwert festzulegen.',
     regions: {
-      inguinal: { title: 'Inguinal', desc: 'Leistenlymphknoten' },
-      general: { title: 'Allgemein', desc: 'Alle übrigen Regionen' },
-      specific: { title: 'Spezielle Region', desc: 'Regionen mit niedrigerem Grenzwert' },
+      general: { title: 'Allgemein', desc: 'Für die meisten Lymphknotenregionen' },
+      specific: { title: 'Besondere Region', desc: 'Inguinal oder Region mit 5-mm-Grenzwert' },
     },
-    specialTitle: 'Spezielle Region auswählen', shortAxis: 'Kurzachse', currentThreshold: 'Aktueller Schwellenwert',
+    specialTitle: 'Welche besondere Region?', regionalThreshold: 'Grenzwert nach Auswahl', shortAxis: 'Kurzachse', currentThreshold: 'Aktueller Schwellenwert',
     sizeTitle: 'Wie groß ist der Lymphknoten?', sizeText: 'Messen Sie die kurze Achse axial. Für Bulk zählt die längste Achse in jeder Ebene.',
     shortValue: 'Kurze Achse', longestValue: 'Längste Achse', millimetres: 'Millimeter', growth: 'Zunahme ≥ 2 mm im Verlauf', growthHint: 'Gilt als vergrößert, auch unterhalb des regionalen Grenzwerts.',
     sizeNormal: 'Normal groß', sizeEnlarged: 'Vergrößert', sizeBulk: 'Bulk', anyAxis: 'beliebige Achse',
@@ -55,11 +54,10 @@ const COPY = {
     brand: 'NODE-RADS', by: 'A tool by', steps: ['Region', 'Size', 'Configuration', 'Result'],
     regionTitle: 'Where is the lymph node located?', regionText: 'Choose the region to apply the correct size threshold.',
     regions: {
-      inguinal: { title: 'Inguinal', desc: 'Groin lymph nodes' },
-      general: { title: 'General', desc: 'All other regions' },
-      specific: { title: 'Specific region', desc: 'Regions with a lower threshold' },
+      general: { title: 'General', desc: 'For most lymph-node regions' },
+      specific: { title: 'Special region', desc: 'Inguinal or a region with a 5 mm threshold' },
     },
-    specialTitle: 'Select the specific region', shortAxis: 'short axis', currentThreshold: 'Current threshold',
+    specialTitle: 'Which special region?', regionalThreshold: 'Threshold after selection', shortAxis: 'short axis', currentThreshold: 'Current threshold',
     sizeTitle: 'How large is the lymph node?', sizeText: 'Measure the short axis axially. Bulk is based on the longest axis in any plane.',
     shortValue: 'Short axis', longestValue: 'Longest axis', millimetres: 'Millimetres', growth: 'Interval increase ≥ 2 mm', growthHint: 'Counts as enlarged even below the regional threshold.',
     sizeNormal: 'Normal size', sizeEnlarged: 'Enlarged', sizeBulk: 'Bulk', anyAxis: 'any axis',
@@ -75,31 +73,6 @@ const COPY = {
     info: 'Node-RADS is designed for lymph-node assessment on contrast-enhanced CT or MRI.',
     disclaimer: 'Decision aid based on Node-RADS 1.0 · does not replace integrated physician assessment or tumour-specific TNM criteria.',
     source: 'Elsholtz et al. · European Radiology · 2021',
-  },
-  fa: {
-    brand: 'NODE-RADS', by: 'ابزاری از', steps: ['ناحیه', 'اندازه', 'پیکربندی', 'نتیجه'],
-    regionTitle: 'غده لنفاوی در کدام ناحیه قرار دارد؟', regionText: 'برای تعیین آستانه صحیح اندازه، ناحیه را انتخاب کنید.',
-    regions: {
-      inguinal: { title: 'اینگوینال', desc: 'غدد لنفاوی کشاله ران' },
-      general: { title: 'عمومی', desc: 'سایر نواحی بدن' },
-      specific: { title: 'ناحیه ویژه', desc: 'نواحی با آستانه پایین‌تر' },
-    },
-    specialTitle: 'ناحیه ویژه را انتخاب کنید', shortAxis: 'محور کوتاه', currentThreshold: 'آستانه فعلی',
-    sizeTitle: 'اندازه غده لنفاوی چقدر است؟', sizeText: 'محور کوتاه را در نمای اکسیال اندازه بگیرید. برای Bulk بلندترین محور در هر صفحه ملاک است.',
-    shortValue: 'محور کوتاه', longestValue: 'بلندترین محور', millimetres: 'میلی‌متر', growth: 'افزایش ≥ ۲ میلی‌متر در پیگیری', growthHint: 'حتی زیر آستانه منطقه‌ای، بزرگ‌شده محسوب می‌شود.',
-    sizeNormal: 'اندازه طبیعی', sizeEnlarged: 'بزرگ‌شده', sizeBulk: 'Bulk', anyAxis: 'هر محور',
-    configTitle: 'پیکربندی غده لنفاوی چگونه است؟', configText: 'برای بافت، حاشیه و شکل هر کدام یک گزینه انتخاب کنید.',
-    texture: 'بافت', border: 'حاشیه', shape: 'شکل', configScore: 'امتیاز پیکربندی',
-    textures: ['همگن', 'ناهمگن', 'نکروز کانونی', 'نکروز واضح یا جدید / یافته اختصاصی تومور'],
-    borders: ['صاف', 'نامنظم یا نامشخص'],
-    shapes: ['هیلوس چربی حفظ شده', 'کلیوی / بیضی بدون هیلوس چربی', 'گرد بدون هیلوس چربی'],
-    resultTitle: 'دسته‌بندی Node-RADS شما', resultText: 'اندازه و پیکربندی طبق Node-RADS 1.0 ترکیب می‌شوند.',
-    levels: ['احتمال بسیار کم', 'احتمال کم', 'نامشخص / مبهم', 'احتمال بالا', 'احتمال بسیار بالا'],
-    sizeCategory: 'دسته اندازه', report: 'متن ساختاریافته گزارش', copy: 'کپی متن گزارش', copied: 'کپی شد',
-    next: 'ادامه', back: 'بازگشت', restart: 'شروع دوباره', required: 'لطفاً یک گزینه انتخاب کنید.', invalidMeasurement: 'بلندترین محور باید حداقل برابر محور کوتاه باشد.',
-    info: 'Node-RADS برای ارزیابی غدد لنفاوی در CT یا MRI با تزریق طراحی شده است.',
-    disclaimer: 'ابزار راهنما بر اساس Node-RADS 1.0 · جایگزین ارزیابی جامع پزشک یا معیارهای اختصاصی TNM نیست.',
-    source: 'Elsholtz و همکاران · European Radiology · 2021',
   },
 }
 
@@ -139,12 +112,12 @@ function RegionStep({ region, setRegion, specialRegion, setSpecialRegion, ui, la
     <header><h1>{ui.regionTitle}</h1><p>{ui.regionText}</p></header>
     <div className={styles.regionList}>
       {REGION_GROUPS.map(item => <Choice key={item.id} selected={region === item.id} icon={item.icon} onClick={() => { setRegion(item.id); if (item.id !== 'specific') setSpecialRegion('') }} detail={ui.regions[item.id].desc}>
-        <strong>{ui.regions[item.id].title}</strong><em>normal &lt; {item.threshold} mm</em>
+        <strong>{ui.regions[item.id].title}</strong><em>{item.threshold ? <>normal &lt; {item.threshold} mm</> : ui.regionalThreshold}</em>
       </Choice>)}
     </div>
     {region === 'specific' ? <div className={styles.specialRegions}>
       <h2>{ui.specialTitle}</h2>
-      <div>{SPECIAL_REGIONS.map(item => <button type="button" key={item.id} className={specialRegion === item.id ? styles.specialActive : ''} onClick={() => setSpecialRegion(item.id)} aria-pressed={specialRegion === item.id}>{item[lang] || item.de}</button>)}</div>
+      <div>{SPECIAL_REGIONS.map(item => <button type="button" key={item.id} className={specialRegion === item.id ? styles.specialActive : ''} onClick={() => setSpecialRegion(item.id)} aria-pressed={specialRegion === item.id}><strong>{item[lang] || item.de}</strong><span>normal &lt; {item.threshold} mm</span></button>)}</div>
     </div> : null}
     <div className={styles.infoNote}><span>i</span><p>{ui.info}</p></div>
   </div>
@@ -233,11 +206,11 @@ function getNodeRads(sizeCategory, configScore) {
 
 export default function NodeRadsPage() {
   const { lang, setLang } = useLanguage()
-  const ui = COPY[lang] || COPY.de
-  const rtl = lang === 'fa'
+  const activeLang = lang === 'en' ? 'en' : 'de'
+  const ui = COPY[activeLang]
   const [step, setStep] = useState(0)
   const [completed, setCompleted] = useState(0)
-  const [region, setRegion] = useState('')
+  const [region, setRegion] = useState('general')
   const [specialRegion, setSpecialRegion] = useState('')
   const [shortAxis, setShortAxis] = useState('')
   const [longAxis, setLongAxis] = useState('')
@@ -248,10 +221,11 @@ export default function NodeRadsPage() {
   const [error, setError] = useState('')
   const [copied, setCopied] = useState(false)
 
-  const selectedGroup = REGION_GROUPS.find(item => item.id === region)
-  const threshold = selectedGroup?.threshold || 10
   const special = SPECIAL_REGIONS.find(item => item.id === specialRegion)
-  const regionLabel = region === 'specific' && special ? `${special[lang] || special.de} · < 5 mm` : region ? `${ui.regions[region].title} · < ${threshold} mm` : `— · < ${threshold} mm`
+  const threshold = region === 'specific' ? special?.threshold || 10 : 10
+  const thresholdDisplay = region === 'specific' && !special ? '—' : `< ${threshold} mm`
+  const regionTitle = region === 'specific' && special ? special[activeLang] : ui.regions[region].title
+  const regionLabel = region === 'specific' && special ? `${special[activeLang]} · < ${special.threshold} mm` : `${ui.regions.general.title} · < 10 mm`
   const invalidMeasurement = Number(shortAxis) > Number(longAxis) && Number(longAxis) > 0
   const sizeCategory = getSizeCategory(shortAxis, longAxis, threshold, growth)
   const configReady = texture !== null && border !== null && shape !== null
@@ -267,27 +241,27 @@ export default function NodeRadsPage() {
     setStep(next)
   }
   const goBack = () => { setError(''); setStep(value => value === 3 && sizeCategory === 'bulk' ? 1 : Math.max(value - 1, 0)) }
-  const restart = () => { setStep(0); setCompleted(0); setRegion(''); setSpecialRegion(''); setShortAxis(''); setLongAxis(''); setGrowth(false); setTexture(null); setBorder(null); setShape(null); setError('') }
+  const restart = () => { setStep(0); setCompleted(0); setRegion('general'); setSpecialRegion(''); setShortAxis(''); setLongAxis(''); setGrowth(false); setTexture(null); setBorder(null); setShape(null); setError('') }
 
-  return <main className={styles.page} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
+  return <main className={styles.page} dir="ltr" lang={activeLang}>
     <header className={styles.topbar}>
       <Link href="/node-rads" className={styles.brand}>{ui.brand}</Link>
-      <div className={styles.topActions}><Link href="/" className={styles.radyar}><span>{ui.by}</span><strong>RadYar</strong> ↗</Link><div className={styles.languages}>{['de','en','fa'].map(code => <button type="button" key={code} onClick={() => setLang(code)} className={lang === code ? styles.langActive : ''} aria-pressed={lang === code}>{code.toUpperCase()}</button>)}</div></div>
+      <div className={styles.topActions}><Link href="/" className={styles.radyar}><span>{ui.by}</span><strong>RadYar</strong> ↗</Link><div className={styles.languages}>{['de','en'].map(code => <button type="button" key={code} onClick={() => setLang(code)} className={activeLang === code ? styles.langActive : ''} aria-pressed={activeLang === code}>{code.toUpperCase()}</button>)}</div></div>
     </header>
     <div className={styles.appShell}>
       <aside className={styles.visualPanel}>
         <div className={styles.networkImage}/><div className={styles.pulseNode}><span/><i/></div>
-        <div className={styles.thresholdCard}><small>{ui.currentThreshold}</small><strong>&lt; {threshold} mm</strong><span>{ui.shortAxis}</span><h2>{region ? ui.regions[region].title : 'Node-RADS 1.0'}</h2><p>{regionLabel}</p></div>
-        <div className={styles.visualLegend}><span><i/>{region ? ui.regions[region].title : ui.steps[0]}</span><span><i/>{ui.source}</span></div>
+        <div className={styles.thresholdCard}><small>{ui.currentThreshold}</small><strong>{thresholdDisplay}</strong><span>{ui.shortAxis}</span><h2>{regionTitle}</h2><p>{regionLabel}</p></div>
+        <div className={styles.visualLegend}><span><i/>{regionTitle}</span><span><i/>{ui.source}</span></div>
       </aside>
       <section className={styles.formPanel}>
         <Stepper step={step} setStep={(next) => { setError(''); setStep(next) }} ui={ui} completed={completed}/>
-        <div className={styles.mobileThreshold}><span>{ui.currentThreshold}</span><strong>&lt; {threshold} mm</strong><small>{ui.shortAxis}</small></div>
+        <div className={styles.mobileThreshold}><span>{ui.currentThreshold}</span><strong>{thresholdDisplay}</strong><small>{ui.shortAxis}</small></div>
         <div className={styles.stepViewport} key={step}>
-          {step === 0 ? <RegionStep region={region} setRegion={setRegion} specialRegion={specialRegion} setSpecialRegion={setSpecialRegion} ui={ui} lang={lang}/> : null}
+          {step === 0 ? <RegionStep region={region} setRegion={setRegion} specialRegion={specialRegion} setSpecialRegion={setSpecialRegion} ui={ui} lang={activeLang}/> : null}
           {step === 1 ? <SizeStep shortAxis={shortAxis} setShortAxis={setShortAxis} longAxis={longAxis} setLongAxis={setLongAxis} growth={growth} setGrowth={setGrowth} sizeCategory={sizeCategory} threshold={threshold} ui={ui} invalid={invalidMeasurement}/> : null}
           {step === 2 ? <ConfigStep texture={texture} setTexture={setTexture} border={border} setBorder={setBorder} shape={shape} setShape={setShape} ui={ui}/> : null}
-          {step === 3 && score ? <ResultStep score={score} sizeCategory={sizeCategory} configScore={configScore} regionLabel={regionLabel} shortAxis={shortAxis} longAxis={longAxis} ui={ui} lang={lang} copied={copied} setCopied={setCopied}/> : null}
+          {step === 3 && score ? <ResultStep score={score} sizeCategory={sizeCategory} configScore={configScore} regionLabel={regionLabel} shortAxis={shortAxis} longAxis={longAxis} ui={ui} lang={activeLang} copied={copied} setCopied={setCopied}/> : null}
         </div>
         {error ? <p className={styles.footerError} role="alert">{error}</p> : null}
         <footer className={styles.actionBar}>
