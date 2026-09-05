@@ -254,6 +254,32 @@
 .reportBox button { min-height: 34px; margin-top: 10px; padding: 0; border: 0; background: none; color: var(--score-color); cursor: pointer; font-size: 10px; font-weight: 700; }
 .reportBox button span { margin-inline-start: 7px; }
 
+.shareCard { margin-top: 12px; border: 1px solid rgba(170,116,255,.3); background: linear-gradient(135deg, rgba(170,116,255,.09), rgba(103,210,245,.025)); text-align: start; overflow: hidden; transition: border-color .25s ease, box-shadow .25s ease; }
+.shareCardOpen { border-color: rgba(170,116,255,.62); box-shadow: 0 18px 55px rgba(0,0,0,.24), inset 0 0 32px rgba(170,116,255,.035); }
+.shareToggle { width: 100%; min-height: 68px; padding: 12px 15px; border: 0; background: transparent; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; text-align: start; cursor: pointer; }
+.shareToggle > span:nth-child(2) { display: grid; gap: 3px; }
+.shareToggle strong { color: #efe7ff; font-size: 12px; }
+.shareToggle small { color: #8498a9; font-size: 9px; line-height: 1.4; }
+.shareToggle > i { width: 24px; height: 24px; display: grid; place-items: center; border: 1px solid rgba(170,116,255,.42); border-radius: 50%; color: var(--violet); font-size: 15px; font-style: normal; font-weight: 300; }
+.shareIcon { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid rgba(170,116,255,.42); border-radius: 50%; color: #c99dff; background: rgba(170,116,255,.1); box-shadow: 0 0 24px rgba(170,116,255,.12); }
+.shareIcon svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+.sharePanel { padding: 3px 15px 17px; border-top: 1px solid rgba(170,116,255,.14); animation: reveal .35s ease both; }
+.sharePanel > header { padding: 14px 0 12px; }
+.sharePanel > header strong { color: #d7c1f8; font-family: var(--font-fraunces), Georgia, serif; font-size: 20px; font-weight: 400; }
+.sharePanel > header p { margin: 4px 0 0; color: #8195a7; font-size: 9px; }
+.shareBody { display: grid; grid-template-columns: 218px minmax(0,1fr); gap: 20px; align-items: center; }
+.qrFrame { width: 218px; height: 218px; padding: 11px; display: grid; place-items: center; border-radius: 7px; background: #f8f6ff; box-shadow: 0 14px 38px rgba(0,0,0,.34), 0 0 0 1px rgba(255,255,255,.18); }
+.qrFrame svg { display: block; width: 196px; height: 196px; }
+.shareDetails { min-width: 0; display: grid; gap: 6px; }
+.shareDetails > span { color: #8296a8; font-size: 9px; }
+.shareDetails > strong { color: #f2edfa; font-size: 13px; line-height: 1.35; overflow-wrap: anywhere; }
+.shareActions { margin-top: 8px; display: grid; gap: 7px; }
+.shareActions a, .shareActions button { width: 100%; min-height: 42px; padding: 0 12px; border: 1px solid var(--line-strong); border-radius: 2px; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; cursor: pointer; font-size: 9px; font-weight: 700; }
+.shareActions a { border-color: rgba(73,208,119,.4); color: #8ce7aa; background: rgba(73,208,119,.075); }
+.shareActions button { color: #c9b0f4; background: rgba(170,116,255,.07); }
+.shareActions svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.35; }
+.shareActions button span { font-size: 12px; }
+
 .footerError { width: min(760px,100%); margin: 13px auto 0; }
 .actionBar { width: min(760px,100%); margin: 26px auto 0; padding-top: 18px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; }
 .actionBar button { min-height: 46px; border-radius: 2px; display: inline-flex; align-items: center; justify-content: center; gap: 13px; cursor: pointer; font-size: 11px; font-weight: 700; }
@@ -342,6 +368,11 @@
   .resultFacts { grid-template-columns: 1fr; text-align: start; }
   .resultFacts > div { padding: 9px 12px; border-inline-end: 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 10px; }
   .resultFacts > div:last-child { border-bottom: 0; }
+  .shareToggle { min-height: 64px; padding-inline: 12px; }
+  .shareBody { grid-template-columns: 1fr; justify-items: center; gap: 14px; }
+  .qrFrame { width: 218px; }
+  .shareDetails { width: 100%; text-align: center; }
+  .shareActions { grid-template-columns: 1fr 1fr; }
   .actionBar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; margin: 0; width: 100%; min-height: 72px; padding: 11px 17px max(11px, env(safe-area-inset-bottom)); background: rgba(3,10,17,.92); backdrop-filter: blur(15px); box-shadow: 0 -1px 0 var(--line); }
   .actionBar button { min-height: 48px; }
   .nextButton { min-width: 144px; }
@@ -355,6 +386,7 @@
 @media (max-width: 390px) {
   .brand::before { margin-inline-end: 7px; }
   .topActions { gap: 6px; }
+  .shareActions { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {

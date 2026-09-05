@@ -2,8 +2,11 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { QRCodeSVG } from 'qrcode.react'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
+
+const NODE_RADS_URL = 'https://www.rad-yar.com/node-rads'
 
 const REGION_GROUPS = [
   { id: 'general', threshold: 10, icon: 'body' },
@@ -61,6 +64,8 @@ const COPY = {
     info: 'Node-RADS ist für die Beurteilung von Lymphknoten in kontrastverstärkter CT oder MRT konzipiert.',
     disclaimer: 'Orientierungshilfe nach Node-RADS 1.0 · ersetzt nicht die ärztliche Gesamtbeurteilung oder tumorspezifische TNM-Kriterien.',
     source: 'Elsholtz et al. · European Radiology · 2021', developerCredit: 'Entwickelt von Dr. Zia',
+    recommend: 'Weiterempfehlen', recommendHint: 'Node-RADS mit Kolleginnen und Kollegen teilen', shareTitle: 'Node-RADS weitergeben',
+    shareText: 'QR-Code scannen oder den direkten Link versenden.', scanLabel: 'Direkt zum Node-RADS Rechner', whatsapp: 'Über WhatsApp teilen', copyLink: 'Link kopieren', linkCopied: 'Link kopiert',
   },
   en: {
     brand: 'NODE-RADS', by: 'A tool by', steps: ['Region', 'Size', 'Configuration', 'Result'],
@@ -97,6 +102,8 @@ const COPY = {
     info: 'Node-RADS is designed for lymph-node assessment on contrast-enhanced CT or MRI.',
     disclaimer: 'Decision aid based on Node-RADS 1.0 · does not replace integrated physician assessment or tumour-specific TNM criteria.',
     source: 'Elsholtz et al. · European Radiology · 2021', developerCredit: 'Developed by Dr. Zia',
+    recommend: 'Recommend', recommendHint: 'Share Node-RADS with colleagues', shareTitle: 'Share Node-RADS',
+    shareText: 'Scan the QR code or send the direct link.', scanLabel: 'Open the Node-RADS calculator', whatsapp: 'Share via WhatsApp', copyLink: 'Copy link', linkCopied: 'Link copied',
   },
 }
 
@@ -112,6 +119,14 @@ function RegionIcon({ type }) {
 
 function ArrowIcon({ back = false }) {
   return <svg viewBox="0 0 20 20" aria-hidden="true" className={back ? styles.arrowBack : ''}><path d="M3 10h13M11 5l5 5-5 5"/></svg>
+}
+
+function ShareIcon() {
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.6-4.5M8.2 13.2l7.6 4.5"/></svg>
+}
+
+function WhatsAppIcon() {
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.7a8 8 0 0 1-11.8 7l-4.2 1.1 1.1-4.1A8 8 0 1 1 20 11.7Z"/><path d="M9 8.2c.2-.4.5-.4.8-.4.2 0 .4 0 .6.5l.8 1.8c.1.3 0 .5-.2.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.9 2.7.2.1.4.1.6-.1l.8-1c.2-.2.4-.3.7-.2l1.8.9c.3.1.5.3.5.5 0 .3-.2 1.4-1 2-.7.6-1.6.8-2.6.5-1-.2-2.4-.8-4.1-2.3-1.4-1.2-2.4-2.8-2.7-3.8-.3-1-.1-2.1.5-2.8.3-.3.7-.3 1.2-.3Z"/></svg>
 }
 
 function Stepper({ step, setStep, ui, completed }) {
@@ -200,6 +215,8 @@ function ConfigStep({ texture, setTexture, border, setBorder, shape, setShape, u
 }
 
 function ResultStep({ score, sizeCategory, configScore, regionTitle, shortAxis, longAxis, growth, texture, border, shape, ui, copied, setCopied }) {
+  const [shareOpen, setShareOpen] = useState(false)
+  const [linkCopied, setLinkCopied] = useState(false)
   const color = RESULT_COLORS[score - 1]
   const level = ui.levels[score - 1]
   const sizeLabel = ui[SIZE_LABEL_KEY[sizeCategory]]
@@ -223,6 +240,16 @@ function ResultStep({ score, sizeCategory, configScore, regionTitle, shortAxis, 
       setCopied(false)
     }
   }
+  const copyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(NODE_RADS_URL)
+      setLinkCopied(true)
+      window.setTimeout(() => setLinkCopied(false), 1800)
+    } catch {
+      setLinkCopied(false)
+    }
+  }
+  const whatsAppText = encodeURIComponent(`${ui.shareTitle}: ${NODE_RADS_URL}`)
   return <div className={`${styles.stepContent} ${styles.resultStep}`} style={{ '--score-color': color }}>
     <header><h1>{ui.resultTitle}</h1><p>{ui.resultText}</p></header>
     <div className={styles.scoreReveal}><div className={styles.scoreOrbit}><span>NODE-RADS</span><strong>{score}</strong></div><h2><span>{level}</span><em>{ui.resultSignals[score - 1]}</em></h2></div>
@@ -235,6 +262,29 @@ function ResultStep({ score, sizeCategory, configScore, regionTitle, shortAxis, 
       <div><strong>{ui.assessment}</strong><p>{assessmentText}</p></div>
       <button type="button" onClick={copyReport}>{copied ? ui.copied : ui.copy}<span>{copied ? '✓' : '⧉'}</span></button>
     </div>
+    <section className={`${styles.shareCard} ${shareOpen ? styles.shareCardOpen : ''}`}>
+      <button type="button" className={styles.shareToggle} onClick={() => setShareOpen(value => !value)} aria-expanded={shareOpen}>
+        <span className={styles.shareIcon}><ShareIcon/></span>
+        <span><strong>{ui.recommend}</strong><small>{ui.recommendHint}</small></span>
+        <i>{shareOpen ? '−' : '+'}</i>
+      </button>
+      {shareOpen ? <div className={styles.sharePanel}>
+        <header><strong>{ui.shareTitle}</strong><p>{ui.shareText}</p></header>
+        <div className={styles.shareBody}>
+          <div className={styles.qrFrame}>
+            <QRCodeSVG value={NODE_RADS_URL} size={196} level="H" bgColor="#f8f6ff" fgColor="#0a0611" marginSize={2} imageSettings={{ src: '/node-rads/app-icon.png', width: 42, height: 42, excavate: true }}/>
+          </div>
+          <div className={styles.shareDetails}>
+            <span>{ui.scanLabel}</span>
+            <strong>rad-yar.com/node-rads</strong>
+            <div className={styles.shareActions}>
+              <a href={`https://wa.me/?text=${whatsAppText}`} target="_blank" rel="noreferrer"><WhatsAppIcon/>{ui.whatsapp}</a>
+              <button type="button" onClick={copyLink}><span>{linkCopied ? '✓' : '⧉'}</span>{linkCopied ? ui.linkCopied : ui.copyLink}</button>
+            </div>
+          </div>
+        </div>
+      </div> : null}
+    </section>
   </div>
 }
 
