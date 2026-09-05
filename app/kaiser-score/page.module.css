@@ -19,8 +19,9 @@
   overflow-x: clip;
   color: var(--ink);
   background:
-    radial-gradient(circle at 8% 4%, rgba(22,184,197,.09), transparent 26rem),
-    radial-gradient(circle at 92% 28%, rgba(239,92,85,.055), transparent 25rem),
+    linear-gradient(180deg, rgba(244,248,249,.58) 0%, rgba(239,247,248,.74) 58%, rgba(244,248,249,.88) 100%),
+    radial-gradient(circle at 8% 4%, rgba(22,184,197,.13), transparent 26rem),
+    radial-gradient(circle at 92% 28%, rgba(239,92,85,.09), transparent 25rem),
     var(--page-bg);
   font-family: var(--font-manrope), system-ui, sans-serif;
   transition: color .25s ease, background-color .25s ease;
@@ -43,8 +44,9 @@
   --coral-pale: rgba(255,113,104,.12);
   --shadow: 0 28px 90px rgba(0,0,0,.36);
   background:
-    radial-gradient(circle at 9% 0%, rgba(32,190,201,.10), transparent 28rem),
-    radial-gradient(circle at 92% 25%, rgba(239,92,85,.07), transparent 27rem),
+    linear-gradient(180deg, rgba(6,17,27,.48) 0%, rgba(6,17,27,.72) 58%, rgba(6,17,27,.9) 100%),
+    radial-gradient(circle at 9% 0%, rgba(32,190,201,.14), transparent 28rem),
+    radial-gradient(circle at 92% 25%, rgba(239,92,85,.11), transparent 27rem),
     var(--page-bg);
 }
 .page *, .page *::before, .page *::after { box-sizing: border-box; }
@@ -83,12 +85,17 @@
   min-height: 800px;
   margin: 24px auto 28px;
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 1px solid color-mix(in srgb, var(--line-strong) 68%, rgba(255,255,255,.42));
   border-radius: 28px;
-  background: var(--surface);
-  box-shadow: var(--shadow);
+  background: color-mix(in srgb, var(--surface) 62%, transparent);
+  box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,.34);
+  backdrop-filter: blur(22px) saturate(1.2);
+  -webkit-backdrop-filter: blur(22px) saturate(1.2);
 }
-.workspace { min-width: 0; min-height: 800px; padding: 44px clamp(30px, 5vw, 76px) 34px; display: flex; flex-direction: column; }
+.workspace { min-width: 0; min-height: 800px; padding: 44px clamp(30px, 5vw, 76px) 34px; position: relative; isolation: isolate; display: flex; flex-direction: column; overflow: hidden; background: linear-gradient(145deg, color-mix(in srgb, var(--surface) 10%, transparent), transparent 48%); }
+.workspace::before { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: url('/kaiser-score/breast-mri-glass-background.jpg') center 18% / cover no-repeat; opacity: .13; filter: saturate(.82) contrast(1.06); -webkit-mask-image: radial-gradient(ellipse 88% 82% at 50% 34%, #000 18%, rgba(0,0,0,.78) 58%, transparent 100%); mask-image: radial-gradient(ellipse 88% 82% at 50% 34%, #000 18%, rgba(0,0,0,.78) 58%, transparent 100%); }
+:global(html[data-theme='dark']) .workspace::before { opacity: .3; filter: saturate(1.05) contrast(1.12); }
+.workspace > * { position: relative; z-index: 1; }
 
 .intro { margin: 0 0 34px; padding-bottom: 28px; border-bottom: 1px solid var(--line); }
 .intro h2 { margin: 0; max-width: 920px; font-family: var(--font-fraunces), Georgia, serif; font-size: clamp(34px, 3vw, 47px); font-weight: 700; line-height: 1.08; letter-spacing: -.035em; }
@@ -97,7 +104,7 @@
 .question > header p { max-width: 700px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
 .options { margin-top: 20px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
 .options[data-count='3'] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.options button { min-width: 0; min-height: 176px; padding: 17px 19px 18px; position: relative; border: 1px solid var(--line); border-radius: 18px; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 11px; color: var(--ink); background: var(--surface-soft); text-align: start; cursor: pointer; overflow: hidden; transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease; }
+.options button { min-width: 0; min-height: 176px; padding: 17px 19px 18px; position: relative; border: 1px solid var(--line); border-radius: 18px; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 11px; color: var(--ink); background: color-mix(in srgb, var(--surface-soft) 78%, transparent); text-align: start; cursor: pointer; overflow: hidden; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease; }
 .options button::after { content: ''; width: 100px; height: 100px; position: absolute; right: -45px; bottom: -55px; border: 1px solid color-mix(in srgb, var(--teal) 25%, transparent); border-radius: 50%; box-shadow: 0 0 0 13px color-mix(in srgb, var(--teal) 6%, transparent), 0 0 0 28px color-mix(in srgb, var(--teal) 4%, transparent); }
 .options button:hover { transform: translateY(-3px); border-color: var(--teal); box-shadow: 0 14px 28px rgba(15,105,116,.10); }
 .options button > i { width: 27px; height: 27px; position: absolute; z-index: 3; top: 14px; right: 14px; display: grid; place-items: center; border: 1px solid var(--line-strong); border-radius: 50%; color: #fff; background: var(--surface-soft); font-size: 9px; font-style: normal; }
@@ -137,7 +144,7 @@
 .resultPanel { --risk-color: #20a76f; flex: 1; animation: reveal .4s ease both; }
 .resultPanel[data-risk='intermediate'] { --risk-color: #e4a62e; }
 .resultPanel[data-risk='high'] { --risk-color: var(--coral); }
-.resultHero { padding: clamp(30px, 5vw, 54px); overflow: hidden; border: 1px solid var(--line); border-radius: 24px; background: color-mix(in srgb, var(--surface-soft) 91%, transparent); box-shadow: 0 18px 42px rgba(17,69,77,.08); }
+.resultHero { padding: clamp(30px, 5vw, 54px); overflow: hidden; border: 1px solid var(--line); border-radius: 24px; background: color-mix(in srgb, var(--surface-soft) 76%, transparent); box-shadow: 0 18px 42px rgba(17,69,77,.08), inset 0 1px 0 rgba(255,255,255,.16); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
 .riskTrack { margin: 22px 8px 34px; position: relative; }
 .gradientArrow { height: 46px; position: relative; border-radius: 999px 0 0 999px; background: linear-gradient(90deg, #20b875 0%, #aeca43 32%, #efc33c 50%, #f28b31 73%, #ee514d 100%); clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 50%, calc(100% - 30px) 100%, 0 100%); box-shadow: 0 12px 30px rgba(34,132,104,.2); }
 .scoreMarker { min-width: 78px; height: 66px; padding: 0 14px; position: absolute; left: clamp(44px, var(--score-position), calc(100% - 62px)); top: 50%; z-index: 2; display: flex; align-items: center; justify-content: center; gap: 6px; border: 4px solid var(--surface-raised); border-radius: 18px; color: #fff; background: var(--risk-color); box-shadow: 0 9px 24px color-mix(in srgb, var(--risk-color) 36%, transparent); transform: translate(-50%, -50%); }
@@ -156,7 +163,7 @@
 .resultClassification strong { color: var(--risk-color); font-family: var(--font-fraunces), Georgia, serif; font-size: clamp(48px, 6vw, 78px); line-height: .95; letter-spacing: -.045em; }
 .resultClassification p { max-width: 610px; margin: 2px 0 0; color: var(--muted); font-size: 10px; line-height: 1.55; }
 .recommendation { margin: 14px 0 22px; padding: 12px 15px; border: 1px solid color-mix(in srgb, var(--risk-color) 34%, var(--line)); border-radius: 14px; color: var(--risk-color); background: color-mix(in srgb, var(--risk-color) 7%, var(--surface)); text-align: center; font-size: 10px; font-weight: 850; }
-.reportBox { margin-top: 16px; padding: 20px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface-soft); }
+.reportBox { margin-top: 16px; padding: 20px; border: 1px solid var(--line); border-radius: 16px; background: color-mix(in srgb, var(--surface-soft) 86%, transparent); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
 .reportBox header { display: flex; justify-content: space-between; gap: 10px; }
 .reportBox header strong { font-family: var(--font-fraunces), Georgia, serif; font-size: 18px; }
 .reportSection { margin-top: 16px; }
@@ -165,7 +172,7 @@
 .reportSection p { margin: 6px 0 14px; color: var(--muted); font-size: 10px; line-height: 1.65; }
 .reportBox button { min-height: 38px; padding: 0 14px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--surface); color: var(--teal); cursor: pointer; font-size: 9px; font-weight: 800; }
 .reportBox button > span { margin-left: 6px; }
-.qualityNotice { flex: 1; padding: clamp(34px, 7vw, 74px) 24px; display: grid; justify-items: center; align-content: center; gap: 14px; border: 1px solid var(--line); border-radius: 22px; background: var(--surface-soft); text-align: center; animation: reveal .35s ease both; }
+.qualityNotice { flex: 1; padding: clamp(34px, 7vw, 74px) 24px; display: grid; justify-items: center; align-content: center; gap: 14px; border: 1px solid var(--line); border-radius: 22px; background: color-mix(in srgb, var(--surface-soft) 84%, transparent); text-align: center; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); animation: reveal .35s ease both; }
 .qualityNotice > span { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--coral); border-radius: 50%; color: var(--coral); font-family: var(--font-fraunces), Georgia, serif; font-size: 26px; font-weight: 700; }
 .qualityNotice h1 { max-width: 650px; margin: 4px 0 0; font-family: var(--font-fraunces), Georgia, serif; font-size: clamp(28px, 4vw, 42px); line-height: 1.08; letter-spacing: -.03em; }
 .qualityNotice p { max-width: 630px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
@@ -197,6 +204,8 @@
   .languages button { min-width: 34px; min-height: 31px; }
   .shell { width: calc(100% - 20px); margin: 10px auto 18px; display: flex; flex-direction: column; border-radius: 20px; }
   .workspace { min-height: calc(100svh - 84px); padding: 25px 18px 94px; border-inline-end: 0; }
+  .workspace::before { background-position: 62% 8%; background-size: auto 720px; opacity: .1; }
+  :global(html[data-theme='dark']) .workspace::before { opacity: .24; }
   .intro { margin: 0 0 25px; padding-bottom: 21px; }
   .intro h2 { font-size: clamp(29px, 8vw, 38px); }
   .question > header h1 { font-size: 29px; }
