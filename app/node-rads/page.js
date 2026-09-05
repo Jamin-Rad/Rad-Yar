@@ -45,6 +45,18 @@ const COPY = {
     shapes: ['Jede Form bei erhaltenem Fetthilus', 'Nierenförmig / oval ohne Fetthilus', 'Rund ohne Fetthilus'],
     resultTitle: 'Ihre Node-RADS Einstufung', resultText: 'Größe und Konfiguration werden nach Node-RADS 1.0 zusammengeführt.',
     levels: ['Sehr geringe Wahrscheinlichkeit', 'Geringe Wahrscheinlichkeit', 'Unklar / äquivokal', 'Hohe Wahrscheinlichkeit', 'Sehr hohe Wahrscheinlichkeit'],
+    interpretations: [
+      'Ein maligner Lymphknotenbefall ist anhand der erfassten Bildmerkmale sehr unwahrscheinlich.',
+      'Ein maligner Lymphknotenbefall ist anhand der erfassten Bildmerkmale eher unwahrscheinlich.',
+      'Die Bildmerkmale sind nicht eindeutig; ein maligner Lymphknotenbefall bleibt unklar.',
+      'Die erfassten Bildmerkmale sind hochgradig verdächtig auf einen malignen Lymphknotenbefall.',
+      'Die erfassten Bildmerkmale sind sehr hochgradig verdächtig auf einen malignen Lymphknotenbefall.',
+    ],
+    interpretation: 'Einordnung', whyResult: 'Warum dieses Ergebnis?',
+    bulkReason: 'Bulk (längste Achse ≥ 30 mm) führt in Node-RADS direkt zur Kategorie 5.',
+    combinedReason: 'Die Größenkategorie „{size}“ und der Konfigurationsscore {config}/5 ergeben gemeinsam Node-RADS {score}.',
+    clinicalContext: 'Klinischer Kontext',
+    clinicalContextText: 'Mit Primärtumor, Verteilungsmuster und tumorspezifischen TNM-Kriterien korrelieren. Das weitere Vorgehen interdisziplinär festlegen; eine histologische Sicherung erwägen, wenn sie das Management verändert. Diese Empfehlung ist nicht Bestandteil des Node-RADS-Scores.',
     sizeCategory: 'Größenkategorie', report: 'Strukturierter Befundtext', copy: 'Befundtext kopieren', copied: 'Kopiert',
     next: 'Weiter', back: 'Zurück', restart: 'Neu beginnen', required: 'Bitte treffen Sie eine Auswahl.', invalidMeasurement: 'Die längste Achse muss mindestens so groß wie die kurze Achse sein.',
     info: 'Node-RADS ist für die Beurteilung von Lymphknoten in kontrastverstärkter CT oder MRT konzipiert.',
@@ -70,6 +82,18 @@ const COPY = {
     shapes: ['Any shape with preserved fatty hilum', 'Kidney-bean / oval without fatty hilum', 'Spherical without fatty hilum'],
     resultTitle: 'Your Node-RADS assessment', resultText: 'Size and configuration are combined according to Node-RADS 1.0.',
     levels: ['Very low likelihood', 'Low likelihood', 'Equivocal', 'High likelihood', 'Very high likelihood'],
+    interpretations: [
+      'Malignant lymph-node involvement is very unlikely based on the recorded imaging features.',
+      'Malignant lymph-node involvement is unlikely based on the recorded imaging features.',
+      'The imaging features are indeterminate; malignant lymph-node involvement remains equivocal.',
+      'The recorded imaging features are highly suspicious for malignant lymph-node involvement.',
+      'The recorded imaging features are very highly suspicious for malignant lymph-node involvement.',
+    ],
+    interpretation: 'Interpretation', whyResult: 'Why this result?',
+    bulkReason: 'Bulk (longest axis ≥ 30 mm) leads directly to category 5 in Node-RADS.',
+    combinedReason: 'The “{size}” size category and configuration score {config}/5 together result in Node-RADS {score}.',
+    clinicalContext: 'Clinical context',
+    clinicalContextText: 'Correlate with the primary tumour, distribution pattern and tumour-specific TNM criteria. Determine further management in a multidisciplinary setting; consider histological confirmation when it would change management. This advice is not part of the Node-RADS score.',
     sizeCategory: 'Size category', report: 'Structured report text', copy: 'Copy report text', copied: 'Copied',
     next: 'Continue', back: 'Back', restart: 'Start again', required: 'Please make a selection.', invalidMeasurement: 'The longest axis must be at least as large as the short axis.',
     info: 'Node-RADS is designed for lymph-node assessment on contrast-enhanced CT or MRI.',
@@ -182,6 +206,9 @@ function ResultStep({ score, sizeCategory, configScore, regionLabel, shortAxis, 
   const color = RESULT_COLORS[score - 1]
   const level = ui.levels[score - 1]
   const sizeLabel = ui[SIZE_LABEL_KEY[sizeCategory]]
+  const resultReason = sizeCategory === 'bulk'
+    ? ui.bulkReason
+    : ui.combinedReason.replace('{size}', sizeLabel).replace('{config}', configScore).replace('{score}', score)
   const reportText = `Node-RADS ${score} (${level}); ${regionLabel}; ${shortAxis} mm ${ui.shortAxis}; ${longAxis} mm ${ui.longestValue}; ${sizeLabel}${sizeCategory === 'bulk' ? '' : `; ${ui.configScore} ${configScore}/5`}.`
   const copyReport = async () => {
     try {
@@ -195,6 +222,11 @@ function ResultStep({ score, sizeCategory, configScore, regionLabel, shortAxis, 
   return <div className={`${styles.stepContent} ${styles.resultStep}`} style={{ '--score-color': color }}>
     <header><h1>{ui.resultTitle}</h1><p>{ui.resultText}</p></header>
     <div className={styles.scoreReveal}><div className={styles.scoreOrbit}><span>NODE-RADS</span><strong>{score}</strong></div><h2>{level}</h2></div>
+    <div className={styles.resultExplanation}>
+      <div><span>{ui.interpretation}</span><p>{ui.interpretations[score - 1]}</p></div>
+      <div><span>{ui.whyResult}</span><p>{resultReason}</p></div>
+      <div className={styles.clinicalContext}><span>{ui.clinicalContext}</span><p>{ui.clinicalContextText}</p></div>
+    </div>
     <dl className={styles.resultFacts}>
       <div><dt>{ui.currentThreshold}</dt><dd>{regionLabel}</dd></div>
       <div><dt>{ui.sizeCategory}</dt><dd>{sizeLabel}</dd></div>
