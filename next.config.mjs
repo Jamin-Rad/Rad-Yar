@@ -1,5 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async redirects() {
+    return [
+      { source: '/mamma-rechner', destination: '/mamma-calculator', permanent: true },
+      { source: '/Mamma-rechner', destination: '/mamma-calculator', permanent: true },
+      { source: '/Mamma-calculator', destination: '/mamma-calculator', permanent: true },
+    ];
+  },
   images: {
     unoptimized: false,
     remotePatterns: [
