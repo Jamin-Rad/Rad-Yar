@@ -114,6 +114,8 @@
 .visualLegend span:last-child i { background: var(--cyan); }
 
 .formPanel {
+  position: relative;
+  isolation: isolate;
   min-width: 0;
   min-height: 780px;
   display: grid;
@@ -142,7 +144,7 @@
 .stepContent > header h1 { max-width: 680px; margin: 0 0 10px; font-family: var(--font-fraunces), Georgia, serif; font-size: clamp(31px, 4vw, 48px); line-height: 1.08; font-weight: 400; letter-spacing: -.03em; }
 .stepContent > header p { max-width: 640px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
 
-.regionList { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.regionList { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .choice { min-height: 142px; padding: 18px; border: 1px solid var(--line); border-radius: 3px; background: rgba(255,255,255,.018); display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto 1fr; gap: 12px; text-align: start; cursor: pointer; transition: transform .22s ease, border-color .22s ease, background .22s ease; }
 .choice:hover { transform: translateY(-3px); border-color: var(--line-strong); background: rgba(255,255,255,.035); }
 .choiceSelected { border-color: var(--violet); background: linear-gradient(145deg, rgba(170,116,255,.14), rgba(103,210,245,.035)); box-shadow: inset 0 0 0 1px rgba(170,116,255,.12), 0 12px 40px rgba(0,0,0,.2); }
@@ -158,8 +160,11 @@
 
 .specialRegions { margin-top: 17px; padding: 18px; border: 1px solid var(--line); background: rgba(2,8,14,.44); animation: reveal .3s ease both; }
 .specialRegions h2 { margin: 0 0 13px; color: #aab9c6; font-size: 11px; text-transform: uppercase; letter-spacing: .1em; }
-.specialRegions > div { display: flex; flex-wrap: wrap; gap: 6px; }
-.specialRegions button { min-height: 36px; padding: 7px 11px; border: 1px solid var(--line); border-radius: 2px; background: rgba(255,255,255,.02); color: #90a3b5; cursor: pointer; font-size: 10px; transition: .2s ease; }
+.specialRegions > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.specialRegions button { min-height: 44px; padding: 7px 11px; border: 1px solid var(--line); border-radius: 2px; background: rgba(255,255,255,.02); color: #90a3b5; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 8px; text-align: start; font-size: 10px; transition: .2s ease; }
+.specialRegions button:first-child { grid-column: 1 / -1; min-height: 50px; border-color: rgba(170,116,255,.42); background: rgba(170,116,255,.065); }
+.specialRegions button strong { color: #dce6ec; font-size: 10px; }
+.specialRegions button span { color: var(--cyan); font-size: 8px; white-space: nowrap; }
 .specialRegions button:hover { border-color: var(--line-strong); color: var(--ink); }
 .specialRegions .specialActive { border-color: var(--cyan); background: rgba(103,210,245,.12); color: #dff8ff; }
 .infoNote { margin-top: 18px; padding: 12px 15px; display: flex; gap: 10px; align-items: flex-start; border-inline-start: 2px solid rgba(103,210,245,.48); background: rgba(103,210,245,.04); color: #7790a4; }
@@ -258,13 +263,10 @@
 .disclaimer a { margin-inline-start: 15px; color: #8da5b8; text-decoration: none; white-space: nowrap; }
 .disclaimer a:hover { color: var(--cyan); }
 
-[dir='rtl'] .choice, [dir='rtl'] .growthToggle, [dir='rtl'] .scoreGroup button, [dir='rtl'] .reportBox { text-align: right; }
-[dir='rtl'] .nextButton svg { transform: rotate(180deg); }
-[dir='rtl'] .backButton .arrowBack { transform: none; }
-
 @keyframes stepIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 @keyframes reveal { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: none; } }
 @keyframes networkDrift { from { transform: scale(1.02) translate3d(-.5%,0,0); } to { transform: scale(1.07) translate3d(1%,-.5%,0); } }
+@keyframes mobileNetworkDrift { from { background-position: 48% 0; } to { background-position: 53% -14px; } }
 @keyframes nodePulse { 0% { transform: scale(.5); opacity: 0; } 22% { opacity: .85; } 100% { transform: scale(2.2); opacity: 0; } }
 @keyframes scoreReveal { from { opacity: 0; transform: scale(.66) rotate(-8deg); } to { opacity: 1; transform: none; } }
 @keyframes orbit { to { transform: rotate(360deg); } }
@@ -293,7 +295,8 @@
   .languages button { min-width: 31px; min-height: 30px; padding: 0 5px; font-size: 9px; }
   .appShell { min-height: calc(100svh - 61px); display: block; }
   .visualPanel { display: none; }
-  .formPanel { min-height: calc(100svh - 61px); padding: 21px 17px 0; display: flex; flex-direction: column; }
+  .formPanel { min-height: calc(100svh - 61px); padding: 21px 17px 92px; display: flex; flex-direction: column; }
+  .formPanel::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: url('/node-rads/lymphatic-network.png') 50% 0 / auto 760px no-repeat; opacity: .18; filter: saturate(.85) contrast(1.08); -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.38) 55%, transparent 88%); mask-image: linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.38) 55%, transparent 88%); animation: mobileNetworkDrift 14s ease-in-out infinite alternate; }
   .stepper { margin-bottom: 17px; }
   .stepper button { gap: 6px; }
   .stepper button span { width: 26px; height: 26px; }
@@ -315,7 +318,8 @@
   .choiceText small, .choiceText em { font-size: 8px; }
   .choiceState { width: 20px; height: 20px; }
   .specialRegions { margin-top: 10px; padding: 13px; }
-  .specialRegions > div { max-height: 142px; overflow-y: auto; }
+  .specialRegions > div { grid-template-columns: repeat(2, minmax(0, 1fr)); max-height: 238px; overflow-y: auto; }
+  .specialRegions button:first-child { grid-column: 1 / -1; }
   .specialRegions button { min-height: 34px; font-size: 9px; }
   .infoNote { margin-top: 11px; }
   .measureGrid { gap: 8px; }
@@ -335,11 +339,11 @@
   .resultFacts { grid-template-columns: 1fr; text-align: start; }
   .resultFacts > div { padding: 9px 12px; border-inline-end: 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 10px; }
   .resultFacts > div:last-child { border-bottom: 0; }
-  .actionBar { position: sticky; bottom: 0; z-index: 10; margin: 18px -17px 0; width: calc(100% + 34px); min-height: 72px; padding: 11px 17px max(11px, env(safe-area-inset-bottom)); background: rgba(3,10,17,.92); backdrop-filter: blur(15px); }
+  .actionBar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; margin: 0; width: 100%; min-height: 72px; padding: 11px 17px max(11px, env(safe-area-inset-bottom)); background: rgba(3,10,17,.92); backdrop-filter: blur(15px); box-shadow: 0 -1px 0 var(--line); }
   .actionBar button { min-height: 48px; }
   .nextButton { min-width: 144px; }
   .footerError { margin-bottom: -7px; }
-  .disclaimer { min-height: 0; padding: 13px 18px; align-items: flex-start; justify-content: flex-start; flex-wrap: wrap; }
+  .disclaimer { min-height: 0; padding: 13px 18px 92px; align-items: flex-start; justify-content: flex-start; flex-wrap: wrap; }
   .disclaimer p { width: calc(100% - 30px); line-height: 1.5; }
   .disclaimer a { margin-inline-start: 28px; }
 }
