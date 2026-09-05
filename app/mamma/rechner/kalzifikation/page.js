@@ -104,6 +104,9 @@ export default function BiRadsKalzifikationPage() {
       sub: 'Direkte Kategorisierung mammographischer Verkalkungen nach Morphologie und Verteilungsmuster gemäß ACR BI-RADS® 5. Auflage.',
       breadMamma: 'Mamma',
       breadRechner: 'Rechner',
+      promoTitle: 'Neue Kongressansicht',
+      promoText: 'Den Mamma Calculator fokussiert und im Vollbild öffnen.',
+      promoCta: 'Mamma Calculator öffnen',
       sectionCalc: 'Kalzifikation bewerten',
       labelMorph: 'Morphologie',
       labelDist: 'Verteilungsmuster',
@@ -137,6 +140,9 @@ export default function BiRadsKalzifikationPage() {
       sub: 'Direct categorization of mammographic calcifications by morphology and distribution per ACR BI-RADS® 5th Edition.',
       breadMamma: 'Breast',
       breadRechner: 'Calculators',
+      promoTitle: 'New congress view',
+      promoText: 'Open the focused, full-screen Mamma Calculator.',
+      promoCta: 'Open Mamma Calculator',
       sectionCalc: 'Assess Calcification',
       labelMorph: 'Morphology',
       labelDist: 'Distribution',
@@ -170,6 +176,9 @@ export default function BiRadsKalzifikationPage() {
       sub: 'دسته‌بندی مستقیم کلسیفیکاسیون‌های ماموگرافی بر اساس مورفولوژی و الگوی توزیع، طبق ویرایش پنجم ACR BI-RADS®.',
       breadMamma: 'پستان',
       breadRechner: 'ماشین‌حساب',
+      promoTitle: 'نمای جدید کنگره',
+      promoText: 'ماشین‌حساب پستان را به‌صورت متمرکز و تمام‌صفحه باز کنید.',
+      promoCta: 'باز کردن Mamma Calculator',
       sectionCalc: 'ارزیابی کلسیفیکاسیون',
       labelMorph: 'مورفولوژی',
       labelDist: 'الگوی توزیع',
@@ -205,6 +214,19 @@ export default function BiRadsKalzifikationPage() {
     <main className={styles.page}>
       <InProgressBanner lang={lang} />
       <div className={styles.inner}>
+
+        <aside className={styles.standalonePromo}>
+          <div>
+            <span>{ui.promoTitle}</span>
+            <strong>{ui.promoText}</strong>
+          </div>
+          <Link href="/mamma-calculator" className={styles.standalonePromoLink}>
+            {ui.promoCta}
+            <svg viewBox="0 0 18 18" aria-hidden="true">
+              <path d="M4 14 14 4M6 4h8v8" />
+            </svg>
+          </Link>
+        </aside>
 
         {/* Breadcrumb */}
         <nav className={styles.breadcrumb} aria-label="breadcrumb">

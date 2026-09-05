@@ -15,6 +15,101 @@
   gap: 18px;
 }
 
+.standalonePromo {
+  position: relative;
+  overflow: hidden;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  color: #f8fafc;
+  background: #07111b;
+  border: 1px solid rgba(249, 115, 22, .48);
+  border-radius: var(--radius-md);
+  box-shadow: 0 16px 38px rgba(7, 17, 27, .14);
+}
+
+.standalonePromo::after {
+  content: '';
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  right: -75px;
+  top: -105px;
+  border: 1px solid rgba(249, 115, 22, .25);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.standalonePromo > div {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 4px;
+}
+
+.standalonePromo span {
+  color: #fb923c;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.standalonePromo strong {
+  color: #f8fafc;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.standalonePromoLink {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 13px;
+  color: #07111b;
+  background: #f97316;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform .18s ease, background .18s ease;
+}
+
+.standalonePromoLink svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.standalonePromoLink:hover {
+  background: #fb923c;
+  transform: translateY(-1px);
+}
+
+.standalonePromoLink:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+@media (max-width: 560px) {
+  .standalonePromo {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .standalonePromoLink { justify-content: space-between; }
+}
+
 /* ── Breadcrumb ── */
 .breadcrumb {
   display: flex;

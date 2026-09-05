@@ -77,6 +77,7 @@ export default function RobotAssistant() {
     pathname?.startsWith('/admin/budget')
     || pathname?.startsWith('/andarun')
     || pathname?.startsWith('/mobin')
+    || pathname?.startsWith('/mamma-calculator')
   )
 
   const [mounted, setMounted] = useState(false)
