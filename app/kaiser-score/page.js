@@ -1,12 +1,12 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { QRCodeSVG } from 'qrcode.react'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useTheme } from '@/providers/ThemeProvider'
-import { Birads4AdcGate } from './AdcAssessment'
+import { Birads4AdcGate, DiagnosisAtlas } from './AdcAssessment'
 import styles from './page.module.css'
 
 const KAISER_SCORE_URL = 'https://www.rad-yar.com/kaiser-score'
@@ -43,10 +43,10 @@ const COPY = {
     source: 'Baltzer et al. · European Radiology · 2018', by: 'Ein Tool von', developed: 'Entwickelt von Dr. Zia',
     atlasInfo: 'Kaiser 1–4: BI-RADS 2/3 · Kaiser 5–7: BI-RADS 4 · Kaiser 8–11: BI-RADS 5',
     findingLead: 'In der Mamma-MRT zeigt die anreichernde Läsion', assessmentLead: 'Nach dem Kaiser-Entscheidungsbaum ergibt sich',
-    adcMeasured: 'Ergänzender ADC-Wert', adcGuide: 'phänotypbezogener Orientierungswert',
-    adcAbove: 'Der ADC-Wert liegt oberhalb der phänotypbezogenen Orientierung und stützt eine benigne Einordnung. Ein mögliches Downgrading setzt eine integrierte radiologische Plausibilitätsprüfung voraus.',
-    adcBelow: 'Der ADC-Wert liegt nicht oberhalb der phänotypbezogenen Orientierung. Malignität wird dadurch nicht ausgeschlossen; die histologische Abklärung bleibt empfohlen.',
-    adcReview: 'ADC-gestützte Reevaluation vor Histologie möglich',
+    adcMeasured: 'Der ergänzend bestimmte ADC-Wert beträgt',
+    adcAbove: 'Der ADC-Wert liegt oberhalb des phänotypbezogenen Orientierungswertes und stützt eine benigne Einordnung. Auf Grundlage der ADC-Zusatzbewertung wird keine Biopsie empfohlen.',
+    adcBelow: 'Der ADC-Wert liegt nicht oberhalb des phänotypbezogenen Orientierungswertes. Malignität wird dadurch nicht ausgeschlossen; eine Biopsie wird empfohlen.',
+    adcNoBiopsy: 'ADC-gestützt: Keine Biopsie empfohlen', adcBiopsy: 'ADC-gestützt: Biopsie empfohlen',
     recommend: 'Weiterempfehlen', recommendHint: 'Kaiser Score mit Kolleginnen und Kollegen teilen', shareTitle: 'Kaiser Score weitergeben',
     shareText: 'QR-Code scannen oder den direkten Link versenden.', scanLabel: 'Direkt zum Kaiser-Score-Rechner', whatsapp: 'Über WhatsApp teilen', copyLink: 'Link kopieren', linkCopied: 'Link kopiert',
     theme: 'Hell-/Dunkelmodus wechseln',
@@ -82,10 +82,10 @@ const COPY = {
     source: 'Baltzer et al. · European Radiology · 2018', by: 'A tool by', developed: 'Developed by Dr. Zia',
     atlasInfo: 'Kaiser 1–4: BI-RADS 2/3 · Kaiser 5–7: BI-RADS 4 · Kaiser 8–11: BI-RADS 5',
     findingLead: 'On breast MRI, the enhancing lesion demonstrates', assessmentLead: 'Following the Kaiser decision tree, the result is',
-    adcMeasured: 'Complementary ADC value', adcGuide: 'phenotype-specific guide value',
-    adcAbove: 'The ADC value is above the phenotype-specific guide and supports benignity. Any potential downgrade requires an integrated radiological plausibility check.',
-    adcBelow: 'The ADC value is not above the phenotype-specific guide. Malignancy is not excluded; histological verification remains recommended.',
-    adcReview: 'ADC-supported review before histology may be considered',
+    adcMeasured: 'The additionally measured ADC value is',
+    adcAbove: 'The ADC value is above the phenotype-specific guide and supports benignity. Based on the supplementary ADC assessment, biopsy is not recommended.',
+    adcBelow: 'The ADC value is not above the phenotype-specific guide. Malignancy is not excluded; biopsy is recommended.',
+    adcNoBiopsy: 'ADC-supported: Biopsy not recommended', adcBiopsy: 'ADC-supported: Biopsy recommended',
     recommend: 'Recommend', recommendHint: 'Share the Kaiser Score with colleagues', shareTitle: 'Share the Kaiser Score',
     shareText: 'Scan the QR code or send the direct link.', scanLabel: 'Open the Kaiser Score calculator', whatsapp: 'Share via WhatsApp', copyLink: 'Copy link', linkCopied: 'Link copied',
     theme: 'Toggle light and dark theme',
@@ -217,7 +217,9 @@ function ResultPanel({ score, risk, history, ui, copied, onCopy, adcRefinement, 
   const [linkCopied, setLinkCopied] = useState(false)
   const scorePosition = `${((score - 1) / 10) * 100}%`
   const report = buildReport(history, score, risk, ui, adcRefinement, lang)
-  const recommendation = adcRefinement?.aboveThreshold ? ui.adcReview : score >= 5 ? ui.biopsy : ui.clinical
+  const recommendation = adcRefinement
+    ? adcRefinement.aboveThreshold ? ui.adcNoBiopsy : ui.adcBiopsy
+    : score >= 5 ? ui.biopsy : ui.clinical
   const whatsAppText = encodeURIComponent(`Kaiser Score · RadYar\n${KAISER_SCORE_URL}`)
   const copyLink = async () => {
     try {
@@ -241,11 +243,8 @@ function ResultPanel({ score, risk, history, ui, copied, onCopy, adcRefinement, 
       </div>
       <div className={styles.resultClassification}><span>{ui.corresponds}</span><strong>{risk.birads}</strong><p className={styles.recommendation}>{recommendation}</p></div>
     </div>
-    {adcRefinement ? <aside className={styles.adcResultNote} data-supports={adcRefinement.aboveThreshold}>
-      <div><span>DWI / ADC</span><strong>{adcRefinement.adc.toLocaleString(lang === 'en' ? 'en-US' : 'de-DE')} × 10⁻³ mm²/s</strong><small>{ui.adcGuide}: &gt; {adcRefinement.threshold.toLocaleString(lang === 'en' ? 'en-US' : 'de-DE', { minimumFractionDigits: 1 })}</small></div>
-      <p>{adcRefinement.aboveThreshold ? ui.adcAbove : ui.adcBelow}</p>
-    </aside> : null}
     <div className={styles.reportBox}><header><strong>{ui.report}</strong></header><div className={styles.reportSection}><span>{ui.finding}</span><p>{report.finding}</p></div><div className={styles.reportSection}><span>{ui.assessment}</span><p>{report.assessment}</p></div><button type="button" onClick={onCopy}>{copied ? ui.copied : ui.copy}<span>{copied ? '✓' : '⧉'}</span></button></div>
+    {adcRefinement ? <DiagnosisAtlas lang={lang} compact/> : null}
     <section className={`${styles.shareCard} ${shareOpen ? styles.shareCardOpen : ''}`}>
       <button type="button" className={styles.shareToggle} onClick={() => setShareOpen(value => !value)} aria-expanded={shareOpen}>
         <span className={styles.shareIcon}><ShareIcon/></span>
@@ -265,12 +264,12 @@ function ResultPanel({ score, risk, history, ui, copied, onCopy, adcRefinement, 
 
 function buildReport(history, score, risk, ui, adcRefinement, lang = 'de') {
   const features = history.filter(item => item.key !== 'quality').map(item => ui.reportOptions[item.value]).join(', ')
-  const adcText = adcRefinement
-    ? ` ${ui.adcMeasured}: ${adcRefinement.adc.toLocaleString(lang === 'en' ? 'en-US' : 'de-DE')} × 10⁻³ mm²/s (${ui.adcGuide} > ${adcRefinement.threshold.toLocaleString(lang === 'en' ? 'en-US' : 'de-DE', { minimumFractionDigits: 1 })}). ${adcRefinement.aboveThreshold ? ui.adcAbove : ui.adcBelow}`
+  const adcFinding = adcRefinement
+    ? ` ${ui.adcMeasured} ${adcRefinement.adc.toLocaleString(lang === 'en' ? 'en-US' : 'de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} × 10⁻³ mm²/s.`
     : ''
   return {
-    finding: `${ui.findingLead} ${features}.`,
-    assessment: `${ui.assessmentLead} Kaiser Score ${score}, entsprechend ${risk.birads}. ${adcRefinement?.aboveThreshold ? ui.adcReview : score >= 5 ? ui.biopsy : ui.clinical}.${adcText}`,
+    finding: `${ui.findingLead} ${features}.${adcFinding}`,
+    assessment: `${ui.assessmentLead} Kaiser Score ${score}, entsprechend ${risk.birads}. ${adcRefinement ? adcRefinement.aboveThreshold ? ui.adcAbove : ui.adcBelow : score >= 5 ? ui.biopsy : ui.clinical}`,
   }
 }
 
@@ -294,6 +293,11 @@ export default function KaiserScorePage() {
   const qualityIssue = Boolean(resolution.qualityIssue)
   const risk = riskFor(score)
   const needsAdcGate = Boolean(score && risk?.key === 'intermediate' && !adcRefinement)
+
+  useEffect(() => {
+    if (!adcRefinement) return
+    document.getElementById('score-result')?.scrollIntoView({ block: 'start' })
+  }, [adcRefinement])
 
   const commitAnswer = () => {
     if (!current || !selected) return
