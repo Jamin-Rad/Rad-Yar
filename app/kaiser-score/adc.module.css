@@ -30,15 +30,12 @@
 .gateSegmented { min-height: 46px; padding: 3px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; border: 1px solid var(--line-strong); border-radius: 12px; background: color-mix(in srgb, var(--surface-soft) 78%, transparent); }
 .gateSegmented button { min-height: 40px; padding: 7px 10px; border: 0; border-radius: 8px; color: var(--muted); background: transparent; cursor: pointer; font: 700 9px/1.3 inherit; }
 .gateSegmented button[aria-pressed='true'] { color: var(--teal); background: color-mix(in srgb, var(--teal) 11%, var(--surface-raised)); box-shadow: inset 0 0 0 1px var(--teal); }
-.gateValueRow { display: grid; grid-template-columns: minmax(0, 1fr) minmax(170px, .48fr); gap: 12px; }
-.gateValueRow label > span, .gateValueRow aside span, .adcPicker > span { display: block; margin-bottom: 6px; color: var(--muted); font-size: 8px; }
+.gateValueRow { display: grid; grid-template-columns: minmax(0, 1fr); }
+.gateValueRow label > span, .adcPicker > span { display: block; margin-bottom: 6px; color: var(--muted); font-size: 8px; }
 .gateValueRow label > div { min-height: 55px; display: grid; grid-template-columns: minmax(70px, 1fr) auto; align-items: center; border: 1px solid var(--line-strong); border-radius: 13px; background: color-mix(in srgb, var(--surface-soft) 78%, transparent); }
 .gateValueRow label > div:focus-within { border-color: var(--teal); box-shadow: 0 0 0 3px color-mix(in srgb, var(--teal) 12%, transparent); }
 .gateValueRow input { width: 100%; min-width: 0; height: 53px; padding: 0 15px; border: 0; outline: 0; color: var(--teal); background: transparent; font: 750 22px var(--font-manrope), system-ui, sans-serif; }
 .gateValueRow label b { padding: 0 13px; color: var(--muted); font-size: 8px; white-space: nowrap; }
-.gateValueRow aside { min-height: 55px; padding: 9px 14px; display: flex; flex-direction: column; justify-content: center; border-inline-start: 2px solid var(--teal); background: color-mix(in srgb, var(--teal) 7%, transparent); }
-.gateValueRow aside span { margin-bottom: 2px; }
-.gateValueRow aside strong { color: var(--teal); font-size: 18px; }
 .adcPicker { min-width: 0; padding: 13px 15px 12px; border: 1px solid var(--line-strong); border-radius: 16px; background: color-mix(in srgb, var(--surface-soft) 76%, transparent); box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 24%, transparent); }
 .adcStepper { display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; gap: 10px; }
 .adcStepper > button { width: 44px; height: 44px; border: 1px solid color-mix(in srgb, var(--teal) 44%, var(--line)); border-radius: 50%; color: var(--teal); background: color-mix(in srgb, var(--teal) 8%, var(--surface)); cursor: pointer; font-size: 24px; font-weight: 400; line-height: 1; }
@@ -227,8 +224,6 @@
   .phenotypeOptions button { min-height: 76px; padding: 11px; flex-direction: column; align-items: flex-start; gap: 8px; }
   .phenotypeOptions strong { font-size: 10px; }
   .gateSegmented { grid-template-columns: 1fr; }
-  .gateValueRow { grid-template-columns: 1fr; }
-  .gateValueRow aside { min-height: 48px; }
   .gateActions { min-height: 74px; padding: 11px 16px max(11px, env(safe-area-inset-bottom)); position: fixed; left: 0; right: 0; bottom: 0; z-index: 120; border-top: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); box-shadow: 0 -10px 30px color-mix(in srgb, var(--page-bg) 38%, transparent); }
   .gateActions button { padding-inline: 14px; }
   .gateBack { margin-inline-start: 43px; }
