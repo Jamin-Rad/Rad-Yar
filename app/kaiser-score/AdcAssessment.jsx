@@ -94,14 +94,14 @@ const ATLAS_COPY = {
   de: {
     eyebrow: 'ADC verstehen', title: 'Wichtige DD nach ADC-Werten',
     intro: 'Schematische Überlappung typischer und atypischer Befunde', axis: 'ADC',
-    mucinous: 'Muzinöses Karzinom', invasive: 'Invasives Karzinom', dcis: 'DCIS', papilloma: 'Papillom', benign: 'Benigne Läsionen', scar: 'Narbe / Fibrose', abscess: 'Abszess / Eiter',
+    mucinous: 'CAVE: Muzinöses CA!', invasive: 'Invasives CA', dcis: 'DCIS', papilloma: 'Papillom', benign: 'Benigne', scar: 'Narbe / Fibrose', abscess: 'Pus',
     caption: 'Die Bereiche überlappen. ADC-Werte sind Orientierungswerte und ersetzen weder Morphologie und Kinetik noch Histologie.',
     source: 'Evidenz zum ADC-gestützten Downgrading',
   },
   en: {
     eyebrow: 'Understand ADC', title: 'Key DDx by ADC values',
     intro: 'Schematic overlap of typical and atypical findings', axis: 'ADC',
-    mucinous: 'Mucinous carcinoma', invasive: 'Invasive carcinoma', dcis: 'DCIS', papilloma: 'Papilloma', benign: 'Benign lesions', scar: 'Scar / fibrosis', abscess: 'Abscess / pus',
+    mucinous: 'CAVE: mucinous CA!', invasive: 'Invasive CA', dcis: 'DCIS', papilloma: 'Papilloma', benign: 'Benign', scar: 'Scar / fibrosis', abscess: 'Pus',
     caption: 'The ranges overlap. ADC values are guides and do not replace morphology, kinetics, or histology.',
     source: 'Evidence on ADC-supported downgrading',
   },
