@@ -6,12 +6,12 @@ const STORAGE_KEY = 'radyar-theme'
 const SUPPORTED  = ['light', 'dark']
 
 const ThemeContext = createContext({
-  theme: 'light',
+  theme: 'dark',
   setTheme: () => {},
   toggleTheme: () => {},
 })
 
-const normalize = (v) => SUPPORTED.includes(v) ? v : 'light'
+const normalize = (v) => SUPPORTED.includes(v) ? v : 'dark'
 
 function applyTheme(theme) {
   if (typeof document === 'undefined') return
@@ -21,12 +21,11 @@ function applyTheme(theme) {
 }
 
 export function ThemeProvider({ children }) {
-  const [theme, setThemeState] = useState('light')
+  const [theme, setThemeState] = useState('dark')
 
   useEffect(() => {
     const stored = window.localStorage.getItem(STORAGE_KEY)
-    const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-    const resolved = normalize(stored || system)
+    const resolved = normalize(stored || 'dark')
     setThemeState(resolved)
     applyTheme(resolved)
   }, [])
