@@ -17,12 +17,12 @@ export const dynamic = 'force-dynamic'
 export default async function AndarunFinanzPage({ searchParams }) {
   if (!(await hasAndarunSession())) redirect('/andarun/login')
   const params = await searchParams
-  const initialView = params?.bereich === 'urlaub' ? 'iranurlaub' : 'monat'
+  if (params?.bereich === 'urlaub') redirect('/andarun/urlaub')
 
   return (
     <>
       <AndarunNav />
-      <BudgetPage initialView={initialView} />
+      <BudgetPage initialView="monat" />
     </>
   )
 }

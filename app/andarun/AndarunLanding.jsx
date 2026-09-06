@@ -18,7 +18,7 @@ const spaces = [
 
 const financeSpaces = [
   { title: 'Monatliche Ausgaben', description: 'Einnahmen, Fixkosten und Budgets im Blick.', href: '/andarun/finanz', icon: 'monthly' },
-  { title: 'Urlaub', description: 'Reisekosten und Urlaubsbudget verwalten.', href: '/andarun/finanz?bereich=urlaub', icon: 'holiday' },
+  { title: 'Urlaub', description: 'Reisen, Kosten und Erinnerungen verwalten.', href: '/andarun/urlaub', icon: 'holiday' },
   { title: 'Familie Zia', description: 'Gemeinsam planen und den Überblick behalten.', href: '/andarun/finanz?bereich=familie', icon: 'family' },
   { title: 'DigitDA Unternehmen', description: 'Umsatz, Kosten und Gewinn des Unternehmens.', href: '/digitda', icon: 'company' },
 ]
