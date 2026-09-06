@@ -1,11 +1,9 @@
 .module {
   width: min(1480px, calc(100% - 32px));
-  margin: 0 auto 28px;
+  margin: 26px auto 52px;
   overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 28px;
-  background: var(--surface);
-  box-shadow: var(--shadow);
+  border-block: 1px solid var(--line);
+  background: transparent;
   animation: adcReveal .45s ease both;
 }
 .module *, .module *::before, .module *::after { box-sizing: border-box; }
@@ -74,7 +72,7 @@
   .form { border-inline-end: 0; border-bottom: 1px solid var(--line); }
 }
 @media (max-width: 620px) {
-  .module { width: calc(100% - 20px); border-radius: 20px; }
+  .module { width: 100%; margin-bottom: 0; }
   .moduleHeader { padding: 27px 18px 22px; flex-direction: column; gap: 16px; }
   .moduleHeader h2 { font-size: 32px; }
   .moduleHeader > span { white-space: normal; }
