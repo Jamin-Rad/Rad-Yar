@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -24,27 +23,24 @@ function excludesAutomaticNotice(pathname) {
 const COPY = {
   de: {
     eyebrow: 'Willkommen bei RadYar',
-    title: 'Wichtige Hinweise vor dem Start',
-    text: 'RadYar dient ausschließlich der medizinischen Aus-, Fort- und Weiterbildung. Die Inhalte ersetzen keine individuelle Beratung und dürfen nicht als alleinige Grundlage diagnostischer oder therapeutischer Entscheidungen verwendet werden.',
-    privacy: 'Datenschutz', terms: 'Nutzungsbedingungen', medical: 'Medizinischer Hinweis', imprint: 'Impressum',
-    analytics: 'Mit deiner Erlaubnis erfassen wir Seitenaufrufe und Nutzungsdauer, um RadYar zu verbessern. Ohne Erlaubnis bleibt diese Analyse ausgeschaltet.',
-    necessary: 'Nur notwendige Funktionen', allow: 'Analyse erlauben', settings: 'Datenschutzeinstellungen',
+    title: 'Kurz vor dem Start',
+    text: 'RadYar ist ein medizinisches Lernangebot und ersetzt keine ärztliche Beurteilung.',
+    analytics: 'Mit deiner Zustimmung erfassen wir anonym Seitenaufrufe und Nutzungsdauer, um RadYar zu verbessern. Deine Eingaben und Berechnungsergebnisse bleiben privat und werden nicht gespeichert.',
+    necessary: 'Nur notwendige', allow: 'Zustimmen', settings: 'Datenschutzeinstellungen',
   },
   en: {
     eyebrow: 'Welcome to RadYar',
-    title: 'Important information before you start',
-    text: 'RadYar is intended solely for medical education and professional development. Its content is not individual medical advice and must not be used as the sole basis for diagnostic or therapeutic decisions.',
-    privacy: 'Privacy', terms: 'Terms of use', medical: 'Medical notice', imprint: 'Legal notice',
-    analytics: 'With your permission, we record page views and usage time to improve RadYar. This analytics function stays off without permission.',
-    necessary: 'Necessary functions only', allow: 'Allow analytics', settings: 'Privacy settings',
+    title: 'Before you start',
+    text: 'RadYar is a medical learning resource and does not replace professional medical assessment.',
+    analytics: 'With your consent, we anonymously record page views and usage time to improve RadYar. Your inputs and calculation results remain private and are not stored.',
+    necessary: 'Necessary only', allow: 'Agree', settings: 'Privacy settings',
   },
   fa: {
     eyebrow: 'به رادیار خوش آمدید',
-    title: 'نکات مهم پیش از شروع',
-    text: 'رادیار فقط برای آموزش و توسعه حرفه‌ای پزشکی است. مطالب آن جایگزین مشاوره فردی نیست و نباید تنها مبنای تصمیم‌های تشخیصی یا درمانی قرار گیرد.',
-    privacy: 'حریم خصوصی', terms: 'شرایط استفاده', medical: 'راهنمای پزشکی', imprint: 'اطلاعات مسئول سایت',
-    analytics: 'با اجازه شما، بازدید صفحات و مدت استفاده برای بهبود رادیار ثبت می‌شود. بدون اجازه، این تحلیل غیرفعال می‌ماند.',
-    necessary: 'فقط امکانات ضروری', allow: 'اجازه تحلیل', settings: 'تنظیمات حریم خصوصی',
+    title: 'پیش از شروع',
+    text: 'رادیار یک ابزار آموزش پزشکی است و جایگزین ارزیابی پزشک نمی‌شود.',
+    analytics: 'با موافقت شما، بازدید صفحات و مدت استفاده به‌صورت ناشناس برای بهبود رادیار ثبت می‌شود. ورودی‌ها و نتایج محاسبات شما خصوصی می‌مانند و ذخیره نمی‌شوند.',
+    necessary: 'فقط ضروری', allow: 'موافقم', settings: 'تنظیمات حریم خصوصی',
   },
 }
 
@@ -104,12 +100,6 @@ export default function LegalNotice() {
         <p className={styles.eyebrow}>{copy.eyebrow}</p>
         <h2 id="legal-notice-title">{copy.title}</h2>
         <p className={styles.text}>{copy.text}</p>
-        <nav className={styles.links} aria-label={copy.title}>
-          <Link href="/ueber-radyar#medical-notice" onClick={() => setOpen(false)}>{copy.medical}</Link>
-          <Link href="/ueber-radyar#terms" onClick={() => setOpen(false)}>{copy.terms}</Link>
-          <Link href="/ueber-radyar#privacy" onClick={() => setOpen(false)}>{copy.privacy}</Link>
-          <Link href="/ueber-radyar#imprint" onClick={() => setOpen(false)}>{copy.imprint}</Link>
-        </nav>
         <p className={styles.analytics}>{copy.analytics}</p>
         <div className={styles.actions}>
           <button ref={primaryButtonRef} type="button" className={styles.secondary} onClick={() => saveChoice(false)}>{copy.necessary}</button>
