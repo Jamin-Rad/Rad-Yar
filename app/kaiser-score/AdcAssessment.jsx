@@ -143,16 +143,18 @@ export function Birads4AdcGate({ lang, onComplete, onBack }) {
   const ui = GATE_COPY[lang] || GATE_COPY.de
   const [lesionType, setLesionType] = useState('')
   const [t2, setT2] = useState('')
-  const [adc, setAdc] = useState('')
+  const [adc, setAdc] = useState(null)
   const threshold = thresholdFor(lesionType, t2)
   const parsedAdc = adcNumber(adc)
   const ready = Boolean(threshold && Number.isFinite(parsedAdc) && parsedAdc > 0)
   const locale = lang === 'en' ? 'en-US' : 'de-DE'
+  const adcDisplay = adc === null ? '—' : adc.toLocaleString(locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+  const selectAdc = value => setAdc(Math.round(Math.min(2.4, Math.max(.4, value)) * 100) / 100)
 
   const chooseLesion = value => {
     setLesionType(value)
     setT2(value === 'nme' ? 'not-applicable' : '')
-    setAdc('')
+    setAdc(null)
   }
 
   const submit = event => {
@@ -162,7 +164,7 @@ export function Birads4AdcGate({ lang, onComplete, onBack }) {
       adc: parsedAdc,
       threshold,
       aboveThreshold: parsedAdc > threshold,
-      values: { quality: 'yes', lesionType, t2, restricted: 'unclear', adc: String(adc) },
+      values: { quality: 'yes', lesionType, t2, restricted: 'unclear', adc: String(parsedAdc) },
     })
   }
 
@@ -184,19 +186,30 @@ export function Birads4AdcGate({ lang, onComplete, onBack }) {
       {lesionType === 'mass' ? <fieldset className={styles.gateStep}>
         <legend><i>2</i>{ui.t2}</legend>
         <div className={styles.gateSegmented}>
-          {[['yes', ui.t2Yes], ['no', ui.t2No], ['unclear', ui.unclear]].map(([value, label]) => <button key={value} type="button" aria-pressed={t2 === value} onClick={() => { setT2(value); setAdc('') }}>{label}</button>)}
+          {[['yes', ui.t2Yes], ['no', ui.t2No], ['unclear', ui.unclear]].map(([value, label]) => <button key={value} type="button" aria-pressed={t2 === value} onClick={() => { setT2(value); setAdc(null) }}>{label}</button>)}
         </div>
       </fieldset> : null}
 
       {threshold ? <fieldset className={styles.gateStep}>
         <legend><i>{lesionType === 'mass' ? 3 : 2}</i>{ui.adc}</legend>
         <div className={styles.gateValueRow}>
-          <label><span>{ui.adcHelp}</span><div><input value={adc} onChange={event => setAdc(event.target.value)} inputMode="decimal" autoComplete="off" placeholder="1,24" aria-label={ui.adc}/><b>× 10⁻³ mm²/s</b></div></label>
+          <div className={styles.adcPicker}>
+            <span>{ui.adcHelp}</span>
+            <div className={styles.adcStepper}>
+              <button type="button" onClick={() => selectAdc((adc ?? 1.2) - .05)} aria-label={`${ui.adc} − 0,05`} disabled={adc !== null && adc <= .4}>−</button>
+              <output aria-live="polite"><strong>{adcDisplay}</strong><small>× 10⁻³ mm²/s</small></output>
+              <button type="button" onClick={() => selectAdc((adc ?? 1.15) + .05)} aria-label={`${ui.adc} + 0,05`} disabled={adc !== null && adc >= 2.4}>+</button>
+            </div>
+            <input className={styles.adcSlider} type="range" min="0.4" max="2.4" step="0.05" value={adc ?? 1.2} onChange={event => selectAdc(Number(event.target.value))} aria-label={ui.adc} style={{ '--adc-progress': `${(((adc ?? 1.2) - .4) / 2) * 100}%` }}/>
+            <div className={styles.adcScale}><span>0,4</span><span>1,0</span><span>1,5</span><span>2,4</span></div>
+            <div className={styles.adcPresets}>{[.8, 1, 1.2, 1.5, 1.8].map(value => <button type="button" key={value} onClick={() => selectAdc(value)} aria-pressed={adc === value}>{value.toLocaleString(locale, { minimumFractionDigits: 1 })}</button>)}</div>
+          </div>
           <aside><span>{ui.orientation}</span><strong>&gt; {threshold.toLocaleString(locale, { minimumFractionDigits: 1 })}</strong></aside>
         </div>
       </fieldset> : null}
 
       <p className={styles.gateCaution}><i>!</i>{ui.caution}</p>
+      {threshold ? <DiagnosisAtlas lang={lang} compact/> : null}
       <div className={styles.gateActions}>
         <button type="button" onClick={onBack} className={styles.gateBack}>← {ui.back}</button>
         <button type="submit" disabled={!ready} className={styles.gateSubmit}>{ui.show}<span>→</span></button>
@@ -205,13 +218,13 @@ export function Birads4AdcGate({ lang, onComplete, onBack }) {
   </section>
 }
 
-function DiagnosisAtlas({ lang }) {
+export function DiagnosisAtlas({ lang, compact = false }) {
   const ui = ATLAS_COPY[lang] || ATLAS_COPY.de
   const items = [
     ['mucinous', ui.mucinous, 'malignant'], ['invasive', ui.invasive, 'malignant'], ['dcis', ui.dcis, 'mixed'],
     ['papilloma', ui.papilloma, 'mixed'], ['benign', ui.benign, 'benign'], ['scar', ui.scar, 'benign'], ['abscess', ui.abscess, 'benign'],
   ]
-  return <figure className={styles.diagnosisAtlas} aria-labelledby="adc-atlas-title">
+  return <figure className={`${styles.diagnosisAtlas} ${compact ? styles.diagnosisAtlasCompact : ''}`} aria-labelledby="adc-atlas-title">
     <figcaption>
       <span>{ui.eyebrow}</span>
       <h3 id="adc-atlas-title">{ui.title}</h3>
