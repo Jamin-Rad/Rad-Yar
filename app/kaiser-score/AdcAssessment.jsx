@@ -69,8 +69,57 @@ const OPTIONS = {
   cystic: ['present', 'absent'], ductal: ['present', 'absent'], t1Ducts: ['present', 'absent'], rim: ['present', 'absent'],
 }
 
+const GATE_COPY = {
+  de: {
+    eyebrow: 'DWI / ADC ergänzen', title: 'ADC zur Einordnung ergänzen',
+    intro: 'Die Kaiser-Berechnung liegt im intermediären Bereich. Ergänzen Sie vor der Ergebnisanzeige den phänotypbezogenen ADC-Wert.',
+    lesion: 'Läsionstyp?', mass: 'Masse / fokaler Herd', nme: 'Non-mass Enhancement',
+    t2: 'T2-Phänotyp?', t2Yes: 'Fibroadenomähnlich', t2No: 'Nicht fibroadenomähnlich', unclear: 'Unklar',
+    adc: 'ADC-Wert', adcHelp: 'Messwert als Dezimalzahl', orientation: 'Orientierungswert für diese Konstellation',
+    show: 'Ergebnis anzeigen', back: 'Zurück',
+    caution: 'ADC ergänzt die Einordnung, ersetzt aber weder Morphologie und Kinetik noch die integrierte radiologische Beurteilung.',
+  },
+  en: {
+    eyebrow: 'Add DWI / ADC', title: 'Add ADC for further classification',
+    intro: 'The Kaiser calculation is in the intermediate range. Add the phenotype-specific ADC value before revealing the result.',
+    lesion: 'Lesion type?', mass: 'Mass / focal lesion', nme: 'Non-mass enhancement',
+    t2: 'T2 phenotype?', t2Yes: 'Fibroadenoma-like', t2No: 'Not fibroadenoma-like', unclear: 'Unclear',
+    adc: 'ADC value', adcHelp: 'Enter the measured decimal value', orientation: 'Guide value for this constellation',
+    show: 'Show result', back: 'Back',
+    caution: 'ADC complements classification, but does not replace morphology, kinetics, or integrated radiological assessment.',
+  },
+}
+
+const ATLAS_COPY = {
+  de: {
+    eyebrow: 'ADC verstehen', title: 'Warum ADC nie allein entscheidet',
+    intro: 'Schematische Überlappung typischer und atypischer Befunde', axis: 'ADC',
+    mucinous: 'Muzinöses Karzinom', invasive: 'Invasives Karzinom', dcis: 'DCIS', papilloma: 'Papillom', benign: 'Benigne Läsionen', scar: 'Narbe / Fibrose', abscess: 'Abszess / Eiter',
+    caption: 'Die Bereiche überlappen. ADC-Werte sind Orientierungswerte und ersetzen weder Morphologie und Kinetik noch Histologie.',
+    source: 'Evidenz zum ADC-gestützten Downgrading',
+  },
+  en: {
+    eyebrow: 'Understand ADC', title: 'Why ADC never decides alone',
+    intro: 'Schematic overlap of typical and atypical findings', axis: 'ADC',
+    mucinous: 'Mucinous carcinoma', invasive: 'Invasive carcinoma', dcis: 'DCIS', papilloma: 'Papilloma', benign: 'Benign lesions', scar: 'Scar / fibrosis', abscess: 'Abscess / pus',
+    caption: 'The ranges overlap. ADC values are guides and do not replace morphology, kinetics, or histology.',
+    source: 'Evidence on ADC-supported downgrading',
+  },
+}
+
+function adcNumber(value) {
+  return Number.parseFloat(String(value).replace(',', '.'))
+}
+
+function thresholdFor(lesionType, t2) {
+  if (lesionType === 'nme') return 1.5
+  if (lesionType === 'mass' && t2 === 'yes') return 1
+  if (lesionType === 'mass' && t2) return 1.2
+  return null
+}
+
 function getResult(values) {
-  const adc = Number.parseFloat(String(values.adc).replace(',', '.'))
+  const adc = adcNumber(values.adc)
   const needsT2 = values.lesionType === 'mass' && !values.t2
   if (!values.quality || !values.lesionType || !values.restricted || !Number.isFinite(adc) || adc <= 0 || needsT2) return { state: 'incomplete', adc: Number.isFinite(adc) && adc > 0 ? adc : null, threshold: null }
   if (values.quality !== 'yes') return { state: 'unreliable', adc, threshold: null }
@@ -88,6 +137,95 @@ function getResult(values) {
   if (adc > 1.5) return { state: 'benign', adc, threshold: 1.5 }
   const suspicious = values.restricted === 'yes' && ['washout', 'irregular', 'present'].some(value => value === values.curve || value === values.morphology || value === values.rim || value === values.ductal)
   return { state: suspicious ? 'malignant' : 'indeterminate', adc, threshold: 1.5 }
+}
+
+export function Birads4AdcGate({ lang, onComplete, onBack }) {
+  const ui = GATE_COPY[lang] || GATE_COPY.de
+  const [lesionType, setLesionType] = useState('')
+  const [t2, setT2] = useState('')
+  const [adc, setAdc] = useState('')
+  const threshold = thresholdFor(lesionType, t2)
+  const parsedAdc = adcNumber(adc)
+  const ready = Boolean(threshold && Number.isFinite(parsedAdc) && parsedAdc > 0)
+  const locale = lang === 'en' ? 'en-US' : 'de-DE'
+
+  const chooseLesion = value => {
+    setLesionType(value)
+    setT2(value === 'nme' ? 'not-applicable' : '')
+    setAdc('')
+  }
+
+  const submit = event => {
+    event.preventDefault()
+    if (!ready) return
+    onComplete({
+      adc: parsedAdc,
+      threshold,
+      aboveThreshold: parsedAdc > threshold,
+      values: { quality: 'yes', lesionType, t2, restricted: 'unclear', adc: String(adc) },
+    })
+  }
+
+  return <section className={styles.gate} aria-labelledby="adc-gate-title">
+    <header className={styles.gateHeader}>
+      <span><i>A</i>{ui.eyebrow}</span>
+      <h1 id="adc-gate-title">{ui.title}</h1>
+      <p>{ui.intro}</p>
+    </header>
+    <form className={styles.gateForm} onSubmit={submit}>
+      <fieldset className={styles.gateStep}>
+        <legend><i>1</i>{ui.lesion}</legend>
+        <div className={styles.phenotypeOptions}>
+          <button type="button" aria-pressed={lesionType === 'mass'} onClick={() => chooseLesion('mass')}><span className={styles.massGlyph}/><strong>{ui.mass}</strong></button>
+          <button type="button" aria-pressed={lesionType === 'nme'} onClick={() => chooseLesion('nme')}><span className={styles.nmeGlyph}/><strong>{ui.nme}</strong></button>
+        </div>
+      </fieldset>
+
+      {lesionType === 'mass' ? <fieldset className={styles.gateStep}>
+        <legend><i>2</i>{ui.t2}</legend>
+        <div className={styles.gateSegmented}>
+          {[['yes', ui.t2Yes], ['no', ui.t2No], ['unclear', ui.unclear]].map(([value, label]) => <button key={value} type="button" aria-pressed={t2 === value} onClick={() => { setT2(value); setAdc('') }}>{label}</button>)}
+        </div>
+      </fieldset> : null}
+
+      {threshold ? <fieldset className={styles.gateStep}>
+        <legend><i>{lesionType === 'mass' ? 3 : 2}</i>{ui.adc}</legend>
+        <div className={styles.gateValueRow}>
+          <label><span>{ui.adcHelp}</span><div><input value={adc} onChange={event => setAdc(event.target.value)} inputMode="decimal" autoComplete="off" placeholder="1,24" aria-label={ui.adc}/><b>× 10⁻³ mm²/s</b></div></label>
+          <aside><span>{ui.orientation}</span><strong>&gt; {threshold.toLocaleString(locale, { minimumFractionDigits: 1 })}</strong></aside>
+        </div>
+      </fieldset> : null}
+
+      <p className={styles.gateCaution}><i>!</i>{ui.caution}</p>
+      <div className={styles.gateActions}>
+        <button type="button" onClick={onBack} className={styles.gateBack}>← {ui.back}</button>
+        <button type="submit" disabled={!ready} className={styles.gateSubmit}>{ui.show}<span>→</span></button>
+      </div>
+    </form>
+  </section>
+}
+
+function DiagnosisAtlas({ lang }) {
+  const ui = ATLAS_COPY[lang] || ATLAS_COPY.de
+  const items = [
+    ['mucinous', ui.mucinous, 'malignant'], ['invasive', ui.invasive, 'malignant'], ['dcis', ui.dcis, 'mixed'],
+    ['papilloma', ui.papilloma, 'mixed'], ['benign', ui.benign, 'benign'], ['scar', ui.scar, 'benign'], ['abscess', ui.abscess, 'benign'],
+  ]
+  return <figure className={styles.diagnosisAtlas} aria-labelledby="adc-atlas-title">
+    <figcaption>
+      <span>{ui.eyebrow}</span>
+      <h3 id="adc-atlas-title">{ui.title}</h3>
+      <p>{ui.intro}</p>
+    </figcaption>
+    <div className={styles.atlasPlot} role="img" aria-label={`${ui.title}: ${ui.caption}`}>
+      <div className={styles.atlasAxis}><strong>{ui.axis}</strong><small>× 10⁻³ mm²/s</small><i>↑</i></div>
+      <span className={styles.atlasLine} data-value="1.5"><b>1,5</b></span>
+      <span className={styles.atlasLine} data-value="1.0"><b>1,0</b></span>
+      <span className={styles.atlasZero}>0</span>
+      {items.map(([key, label, tone]) => <span key={key} className={styles.atlasItem} data-item={key} data-tone={tone}>{label}</span>)}
+    </div>
+    <div className={styles.atlasFooter}><p>{ui.caption}</p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8406278/" target="_blank" rel="noreferrer">{ui.source} ↗</a></div>
+  </figure>
 }
 
 function Segmented({ name, value, options, onChange, ui }) {
@@ -125,9 +263,9 @@ function AdcRuler({ result, ui, lang }) {
   </div>
 }
 
-export default function AdcAssessment({ score, lang }) {
+export default function AdcAssessment({ score, lang, initialValues }) {
   const ui = COPY[lang] || COPY.de
-  const [values, setValues] = useState(INITIAL)
+  const [values, setValues] = useState(() => ({ ...INITIAL, ...(initialValues || {}) }))
   const [showAll, setShowAll] = useState(false)
   const result = useMemo(() => getResult(values), [values])
   const setValue = (name, value) => setValues(current => ({ ...current, [name]: current[name] === value ? '' : value, ...(name === 'lesionType' ? { t2: '', ductal: '', t1Ducts: '', rim: '' } : {}) }))
@@ -213,6 +351,8 @@ export default function AdcAssessment({ score, lang }) {
       <button type="button" className={styles.moreButton} onClick={() => setShowAll(value => !value)} aria-expanded={showAll}>{ui.allNotes}<span>{showAll ? '−' : '+'}</span></button>
       {showAll ? <div className={styles.extraNotes}>{extraTopics.map(key => <article key={key}><strong>{ui.topics[key][0]}</strong><p>{ui.topics[key][1]}</p></article>)}</div> : null}
     </section>
+
+    <DiagnosisAtlas lang={lang}/>
 
     <aside className={styles.caution}><i>!</i><p>{ui.caution}</p></aside>
   </section>
