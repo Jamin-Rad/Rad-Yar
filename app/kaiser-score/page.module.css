@@ -99,6 +99,7 @@
 .intro h2 { margin: 0; max-width: 820px; color: var(--ink); font-family: var(--font-manrope), system-ui, sans-serif; font-size: clamp(27px, 2.35vw, 35px); font-weight: 760; line-height: 1.22; letter-spacing: -.035em; }
 .intro h2 span { display: block; white-space: nowrap; }
 .intro h2 span:last-child { color: var(--teal-dark); }
+.intro h2 em { color: var(--coral); font-style: normal; }
 .question { flex: 1; animation: questionIn .35s ease both; }
 .question > header h1 { margin: 0 0 9px; max-width: 690px; font-family: var(--font-fraunces), Georgia, serif; font-size: clamp(28px, 2.3vw, 35px); line-height: 1.1; letter-spacing: -.03em; }
 .question > header p { max-width: 650px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }

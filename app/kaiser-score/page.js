@@ -13,9 +13,9 @@ const KAISER_SCORE_URL = 'https://www.rad-yar.com/kaiser-score'
 
 const COPY = {
   de: {
-    brand: 'KAISER SCORE', hero: ['Beurteilung eines anreichernden Herdes', 'in der Mamma‑MRT nach dem Kaiser‑Score'],
+    brand: 'KAISER SCORE', hero: ['Beurteilung eines anreichernden Herdes', 'in der Mamma‑MRT nach dem Kaiser‑Score'], heroScore: 'Kaiser‑Score',
     questions: {
-      quality: { title: 'Anreichernder Herd im MRT gefunden?', text: 'Sind Morphologie und Kontrastmittelkinetik zuverlässig beurteilbar?' },
+      quality: { title: 'Anreichernder Herd im MRT?', text: 'Sind Morphologie und Kontrastmittelkinetik zuverlässig beurteilbar?' },
       root: { title: 'Spikulierte Ausläufer?', text: 'Zeigt die Läsion mindestens einen spikulierten, wurzelartigen Ausläufer?', help: 'Schon eine einzelne Spikula zählt als positiver Root Sign – auch bei ansonsten umschriebener Läsion.' },
       curve: { title: 'Kurventyp?', text: 'Wie verhält sich das Signal zwischen frühem bzw. maximalem und spätem Zeitpunkt?', help: 'Die frühe Phase am Peak beurteilen. Persistierend: weiterer Anstieg. Plateau: stabil. Wash-out: Signalabfall.' },
       margin: { title: 'Rand', text: 'Wie ist der Läsionsrand im kontrastmittelverstärkten Bild abgrenzbar?', help: 'Das verdächtigste Randmerkmal verwenden. Diese Abfrage gilt auch für Non-mass Enhancement.' },
@@ -52,9 +52,9 @@ const COPY = {
     theme: 'Hell-/Dunkelmodus wechseln',
   },
   en: {
-    brand: 'KAISER SCORE', hero: ['Assessment of an enhancing lesion', 'on breast MRI using the Kaiser Score'],
+    brand: 'KAISER SCORE', hero: ['Assessment of an enhancing lesion', 'on breast MRI using the Kaiser Score'], heroScore: 'Kaiser Score',
     questions: {
-      quality: { title: 'Enhancing lesion found on MRI?', text: 'Can morphology and enhancement kinetics be assessed reliably?' },
+      quality: { title: 'Enhancing lesion on MRI?', text: 'Can morphology and enhancement kinetics be assessed reliably?' },
       root: { title: 'Spiculated extensions?', text: 'Does the lesion show at least one spiculated, root-like extension?', help: 'A single spicule is enough for a positive root sign, even if the remainder of the lesion is circumscribed.' },
       curve: { title: 'Curve type?', text: 'How does the signal change between the early or peak and delayed phase?', help: 'Assess the early phase at peak enhancement. Persistent: continued increase. Plateau: stable. Wash-out: signal decrease.' },
       margin: { title: 'Margin', text: 'How is the lesion margin defined on contrast-enhanced images?', help: 'Use the most suspicious margin feature. Margin assessment also applies to non-mass enhancement.' },
@@ -341,7 +341,7 @@ export default function KaiserScorePage() {
     </header>
     <div className={styles.shell}>
       <section className={styles.workspace}>
-        <div className={styles.intro}><h2>{ui.hero.map(line => <span key={line}>{line}</span>)}</h2></div>
+        <div className={styles.intro}><h2>{ui.hero.map((line, index) => <span key={line}>{index === 1 ? <>{line.replace(ui.heroScore, '')}<em>{ui.heroScore}</em></> : line}</span>)}</h2></div>
         {current ? <Question question={current} selected={selected} setSelected={setSelected} ui={ui}/> : needsAdcGate ? <Birads4AdcGate lang={activeLang} onComplete={completeAdc} onBack={goBackKaiser}/> : score ? <ResultPanel score={score} risk={risk} history={history} ui={ui} copied={copied} onCopy={copyReport} adcRefinement={adcRefinement} lang={activeLang}/> : <QualityNotice ui={ui}/>}
         {!needsAdcGate ? <footer className={`${styles.actions} ${score || qualityIssue ? styles.actionsComplete : ''}`}>
           <button type="button" className={styles.backButton} onClick={goBack} disabled={!history.length}><ArrowIcon reverse/>{ui.back}</button>
