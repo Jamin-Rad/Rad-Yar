@@ -198,6 +198,21 @@
   .options strong { font-size: 16px; }
 }
 @media (max-width: 800px) {
+  .page { position: relative; isolation: isolate; }
+  .page::before {
+    content: '';
+    position: fixed;
+    inset: 64px 0 0;
+    z-index: 0;
+    pointer-events: none;
+    background: url('/kaiser-score/breast-mri-glass-background.jpg') 62% center / auto 100% no-repeat;
+    filter: saturate(.72) contrast(1.04);
+    opacity: .16;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 8%, #000 90%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0, #000 8%, #000 90%, transparent 100%);
+  }
+  :global(html[data-theme='dark']) .page::before { opacity: .34; filter: saturate(1.02) contrast(1.12); }
+  .page > :not(.topbar) { position: relative; z-index: 1; }
   .topbar { height: 64px; padding: 0 15px; }
   .brand { gap: 9px; }
   .brand img { width: 36px; height: 36px; border-radius: 9px; }
@@ -207,10 +222,8 @@
   .languages button { min-width: 34px; min-height: 31px; }
   .shell { width: 100%; min-height: calc(100svh - 64px); margin: 0; display: block; position: relative; }
   .workspace { min-height: calc(100svh - 64px); padding: 105px 20px 100px; position: relative; z-index: 2; }
-  .visualStage { min-height: 260px; position: absolute; inset: 0 0 auto 0; z-index: 1; overflow: hidden; }
+  .visualStage { display: none; }
   .visualStage::before { display: none; }
-  .anatomyVisual { inset: -34px -110px 0 22%; background-position: 55% 35%; background-size: cover; opacity: .68; -webkit-mask-image: linear-gradient(180deg, #000 0, #000 42%, rgba(0,0,0,.78) 67%, transparent 100%); mask-image: linear-gradient(180deg, #000 0, #000 42%, rgba(0,0,0,.78) 67%, transparent 100%); }
-  :global(html[data-theme='dark']) .anatomyVisual { opacity: .78; }
   .intro { margin: 0 0 22px; }
   .intro::after { width: 46px; margin-top: 12px; }
   .intro h2 { max-width: 530px; font-size: clamp(16px, 4.35vw, 18px); line-height: 1.35; letter-spacing: -.025em; text-shadow: 0 2px 18px var(--page-bg); }
