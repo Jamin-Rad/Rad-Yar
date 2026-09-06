@@ -10,11 +10,11 @@ import styles from './page.module.css'
 
 const COPY = {
   de: {
-    brand: 'KAISER SCORE', hero: 'Beurteilung eines anreichernden Herdes in der Mamma-MRT nach dem Kaiser-Score',
+    brand: 'KAISER SCORE', hero: ['Beurteilung eines anreichernden Herdes', 'in der Mamma‑MRT nach dem Kaiser‑Score'],
     questions: {
-      quality: { title: 'Anreichernder Herd im MRT bei guter Bildqualität?', text: 'Sind Morphologie und Kontrastmittelkinetik zuverlässig beurteilbar?' },
+      quality: { title: 'Anreichernder Herd im MRT gefunden?', text: 'Sind Morphologie und Kontrastmittelkinetik zuverlässig beurteilbar?' },
       root: { title: 'Spikulierte Ausläufer?', text: 'Zeigt die Läsion mindestens einen spikulierten, wurzelartigen Ausläufer?', help: 'Schon eine einzelne Spikula zählt als positiver Root Sign – auch bei ansonsten umschriebener Läsion.' },
-      curve: { title: 'Kurventyp', text: 'Wie verhält sich das Signal zwischen frühem bzw. maximalem und spätem Zeitpunkt?', help: 'Die frühe Phase am Peak beurteilen. Persistierend: weiterer Anstieg. Plateau: stabil. Wash-out: Signalabfall.' },
+      curve: { title: 'Kurventyp?', text: 'Wie verhält sich das Signal zwischen frühem bzw. maximalem und spätem Zeitpunkt?', help: 'Die frühe Phase am Peak beurteilen. Persistierend: weiterer Anstieg. Plateau: stabil. Wash-out: Signalabfall.' },
       margin: { title: 'Rand', text: 'Wie ist der Läsionsrand im kontrastmittelverstärkten Bild abgrenzbar?', help: 'Das verdächtigste Randmerkmal verwenden. Diese Abfrage gilt auch für Non-mass Enhancement.' },
       enhancement: { title: 'Internes Enhancement', text: 'Welches interne Kontrastmittelmuster überwiegt?', help: 'Heterogen umfasst auch Rim Enhancement und Clustered-ring Enhancement.' },
       edema: { title: 'Perifokales Ödem', text: 'Liegt ein suspektes T2-hyperintenses Ödem vor?', help: 'Positiv sind perifokales oder diffuses ipsilaterales Ödem. Diffuses bilaterales Ödem gilt hier als negativ.' },
@@ -33,7 +33,6 @@ const COPY = {
     pathLabels: { quality: 'Bildqualität', root: 'Root Sign', curve: 'Kurve', margin: 'Rand', enhancement: 'Enhancement', edema: 'Ödem' },
     ladder: 'Wahrscheinlichkeits-Skala', low: 'Niedrige Wahrscheinlichkeit', intermediate: 'Intermediäre Wahrscheinlichkeit', high: 'Hohe Wahrscheinlichkeit',
     result: 'Ergebnis', corresponds: 'Entspricht', recommendation: 'Empfehlung', biopsy: 'Histologische Abklärung empfohlen', clinical: 'Klinisch-bildgebende Korrelation',
-    resultText: { low: 'Kaiser 1–4 wird üblicherweise BI-RADS 2/3 zugeordnet.', intermediate: 'Kaiser 5–7 entspricht einer suspekten Läsion (BI-RADS 4).', high: 'Kaiser 8–11 entspricht einer hochsuspekten Läsion (BI-RADS 5).' },
     report: 'Befundtext', finding: 'Befund', assessment: 'Beurteilung', copy: 'Befundtext kopieren', copied: 'Kopiert',
     back: 'Zurück', restart: 'Neu beginnen', continue: 'Weiter',
     qualityStop: 'Keine verlässliche Kaiser-Score-Berechnung möglich', qualityStopText: 'Der Kaiser-Score setzt eine diagnostisch ausreichende Bildqualität sowie zuverlässig beurteilbare Morphologie und Kontrastmittelkinetik voraus.',
@@ -44,11 +43,11 @@ const COPY = {
     theme: 'Hell-/Dunkelmodus wechseln',
   },
   en: {
-    brand: 'KAISER SCORE', hero: 'Assessment of an enhancing lesion on breast MRI using the Kaiser Score',
+    brand: 'KAISER SCORE', hero: ['Assessment of an enhancing lesion', 'on breast MRI using the Kaiser Score'],
     questions: {
-      quality: { title: 'Enhancing lesion on MRI with good image quality?', text: 'Can morphology and enhancement kinetics be assessed reliably?' },
+      quality: { title: 'Enhancing lesion found on MRI?', text: 'Can morphology and enhancement kinetics be assessed reliably?' },
       root: { title: 'Spiculated extensions?', text: 'Does the lesion show at least one spiculated, root-like extension?', help: 'A single spicule is enough for a positive root sign, even if the remainder of the lesion is circumscribed.' },
-      curve: { title: 'Curve type', text: 'How does the signal change between the early or peak and delayed phase?', help: 'Assess the early phase at peak enhancement. Persistent: continued increase. Plateau: stable. Wash-out: signal decrease.' },
+      curve: { title: 'Curve type?', text: 'How does the signal change between the early or peak and delayed phase?', help: 'Assess the early phase at peak enhancement. Persistent: continued increase. Plateau: stable. Wash-out: signal decrease.' },
       margin: { title: 'Margin', text: 'How is the lesion margin defined on contrast-enhanced images?', help: 'Use the most suspicious margin feature. Margin assessment also applies to non-mass enhancement.' },
       enhancement: { title: 'Internal enhancement', text: 'Which internal enhancement pattern predominates?', help: 'Heterogeneous includes rim enhancement and clustered-ring enhancement.' },
       edema: { title: 'Perifocal edema', text: 'Is suspicious T2-hyperintense edema present?', help: 'Perifocal or diffuse ipsilateral edema is positive. Diffuse bilateral edema is considered negative here.' },
@@ -67,7 +66,6 @@ const COPY = {
     pathLabels: { quality: 'Image quality', root: 'Root sign', curve: 'Curve', margin: 'Margin', enhancement: 'Enhancement', edema: 'Edema' },
     ladder: 'Probability scale', low: 'Low likelihood', intermediate: 'Intermediate likelihood', high: 'High likelihood',
     result: 'Result', corresponds: 'Corresponds to', recommendation: 'Recommendation', biopsy: 'Histological verification recommended', clinical: 'Clinical and imaging correlation',
-    resultText: { low: 'Kaiser 1–4 is generally assigned to BI-RADS 2/3.', intermediate: 'Kaiser 5–7 represents a suspicious lesion (BI-RADS 4).', high: 'Kaiser 8–11 represents a highly suspicious lesion (BI-RADS 5).' },
     report: 'Report text', finding: 'Findings', assessment: 'Assessment', copy: 'Copy report text', copied: 'Copied',
     back: 'Back', restart: 'Start again', continue: 'Next',
     qualityStop: 'A reliable Kaiser Score cannot be calculated', qualityStopText: 'The Kaiser Score requires diagnostic image quality with reliably assessable morphology and enhancement kinetics.',
@@ -205,9 +203,8 @@ function ResultPanel({ score, risk, history, ui, copied, onCopy }) {
         </div>
         <div className={styles.probabilityLegend} aria-hidden="true"><span>{ui.low}</span><span>{ui.intermediate}</span><span>{ui.high}</span></div>
       </div>
-      <div className={styles.resultClassification}><span>{ui.corresponds}</span><strong>{risk.birads}</strong><p>{ui.resultText[risk.key]}</p></div>
+      <div className={styles.resultClassification}><span>{ui.corresponds}</span><strong>{risk.birads}</strong><p className={styles.recommendation}>{score >= 5 ? ui.biopsy : ui.clinical}</p></div>
     </div>
-    <p className={styles.recommendation}>{score >= 5 ? ui.biopsy : ui.clinical}</p>
     <div className={styles.reportBox}><header><strong>{ui.report}</strong></header><div className={styles.reportSection}><span>{ui.finding}</span><p>{report.finding}</p></div><div className={styles.reportSection}><span>{ui.assessment}</span><p>{report.assessment}</p></div><button type="button" onClick={onCopy}>{copied ? ui.copied : ui.copy}<span>{copied ? '✓' : '⧉'}</span></button></div>
   </section>
 }
@@ -271,7 +268,7 @@ export default function KaiserScorePage() {
     </header>
     <div className={styles.shell}>
       <section className={styles.workspace}>
-        <div className={styles.intro}><h2>{ui.hero}</h2></div>
+        <div className={styles.intro}><h2>{ui.hero.map(line => <span key={line}>{line}</span>)}</h2></div>
         {current ? <Question question={current} selected={selected} setSelected={setSelected} ui={ui}/> : score ? <ResultPanel score={score} risk={risk} history={history} ui={ui} copied={copied} onCopy={copyReport}/> : <QualityNotice ui={ui}/>}
         <footer className={`${styles.actions} ${score || qualityIssue ? styles.actionsComplete : ''}`}>
           <button type="button" className={styles.backButton} onClick={goBack} disabled={!history.length}><ArrowIcon reverse/>{ui.back}</button>
