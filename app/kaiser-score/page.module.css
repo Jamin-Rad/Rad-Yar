@@ -146,13 +146,6 @@
 .resultPanel[data-risk='intermediate'] { --risk-color: #e4a62e; }
 .resultPanel[data-risk='high'] { --risk-color: var(--coral); }
 .resultHero { padding: clamp(28px, 4vw, 45px) 0; overflow: visible; border-block: 1px solid var(--line); background: transparent; }
-.adcResultNote { margin: 18px 0 0; padding: 16px 18px; display: grid; grid-template-columns: minmax(170px, .42fr) 1fr; align-items: center; gap: 22px; border-inline-start: 3px solid #d69c28; background: color-mix(in srgb, #d69c28 7%, transparent); }
-.adcResultNote[data-supports='true'] { border-inline-start-color: #20a76f; background: color-mix(in srgb, #20a76f 7%, transparent); }
-.adcResultNote > div { display: flex; flex-direction: column; }
-.adcResultNote span { color: var(--muted); font-size: 7px; font-weight: 800; letter-spacing: .1em; }
-.adcResultNote strong { margin-top: 3px; color: var(--ink); font-size: 14px; }
-.adcResultNote small { margin-top: 3px; color: var(--muted); font-size: 7px; }
-.adcResultNote p { margin: 0; color: var(--muted); font-size: 9px; line-height: 1.55; }
 .riskTrack { margin: 22px 8px 34px; position: relative; }
 .gradientArrow { height: 46px; position: relative; border-radius: 999px 0 0 999px; background: linear-gradient(90deg, #20b875 0%, #aeca43 32%, #efc33c 50%, #f28b31 73%, #ee514d 100%); clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 50%, calc(100% - 30px) 100%, 0 100%); box-shadow: 0 12px 30px rgba(34,132,104,.2); }
 .scoreMarker { min-width: 78px; height: 66px; padding: 0 14px; position: absolute; left: clamp(44px, var(--score-position), calc(100% - 62px)); top: 50%; z-index: 2; display: flex; align-items: center; justify-content: center; gap: 6px; border: 4px solid var(--surface-raised); border-radius: 18px; color: #fff; background: var(--risk-color); box-shadow: 0 9px 24px color-mix(in srgb, var(--risk-color) 36%, transparent); transform: translate(-50%, -50%); }
@@ -278,7 +271,6 @@
   .actions button { min-height: 50px; padding-inline: 15px; border-radius: 12px; }
   .nextButton { min-width: 158px; }
   .resultHero { padding: 22px 17px; border-radius: 18px; }
-  .adcResultNote { grid-template-columns: 1fr; gap: 10px; }
   .shareBody { grid-template-columns: 1fr; justify-items: center; }
   .shareDetails { width: 100%; text-align: center; }
   .shareActions { grid-template-columns: 1fr 1fr; }
