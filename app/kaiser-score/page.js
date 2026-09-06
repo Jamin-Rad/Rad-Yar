@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useTheme } from '@/providers/ThemeProvider'
-import AdcAssessment from './AdcAssessment'
+import AdcAssessment, { Birads4AdcGate } from './AdcAssessment'
 import styles from './page.module.css'
 
 const COPY = {
@@ -40,6 +40,10 @@ const COPY = {
     source: 'Baltzer et al. · European Radiology · 2018', by: 'Ein Tool von', developed: 'Entwickelt von Dr. Zia',
     atlasInfo: 'Kaiser 1–4: BI-RADS 2/3 · Kaiser 5–7: BI-RADS 4 · Kaiser 8–11: BI-RADS 5',
     findingLead: 'In der Mamma-MRT zeigt die anreichernde Läsion', assessmentLead: 'Nach dem Kaiser-Entscheidungsbaum ergibt sich',
+    adcMeasured: 'Ergänzender ADC-Wert', adcGuide: 'phänotypbezogener Orientierungswert',
+    adcAbove: 'Der ADC-Wert liegt oberhalb der phänotypbezogenen Orientierung und stützt eine benigne Einordnung. Ein mögliches Downgrading setzt eine integrierte radiologische Plausibilitätsprüfung voraus.',
+    adcBelow: 'Der ADC-Wert liegt nicht oberhalb der phänotypbezogenen Orientierung. Malignität wird dadurch nicht ausgeschlossen; die histologische Abklärung bleibt empfohlen.',
+    adcReview: 'ADC-gestützte Reevaluation vor Histologie möglich',
     theme: 'Hell-/Dunkelmodus wechseln',
   },
   en: {
@@ -73,6 +77,10 @@ const COPY = {
     source: 'Baltzer et al. · European Radiology · 2018', by: 'A tool by', developed: 'Developed by Dr. Zia',
     atlasInfo: 'Kaiser 1–4: BI-RADS 2/3 · Kaiser 5–7: BI-RADS 4 · Kaiser 8–11: BI-RADS 5',
     findingLead: 'On breast MRI, the enhancing lesion demonstrates', assessmentLead: 'Following the Kaiser decision tree, the result is',
+    adcMeasured: 'Complementary ADC value', adcGuide: 'phenotype-specific guide value',
+    adcAbove: 'The ADC value is above the phenotype-specific guide and supports benignity. Any potential downgrade requires an integrated radiological plausibility check.',
+    adcBelow: 'The ADC value is not above the phenotype-specific guide. Malignancy is not excluded; histological verification remains recommended.',
+    adcReview: 'ADC-supported review before histology may be considered',
     theme: 'Toggle light and dark theme',
   },
 }
@@ -189,9 +197,10 @@ function Question({ question, selected, setSelected, ui }) {
   </section>
 }
 
-function ResultPanel({ score, risk, history, ui, copied, onCopy }) {
+function ResultPanel({ score, risk, history, ui, copied, onCopy, adcRefinement, lang }) {
   const scorePosition = `${((score - 1) / 10) * 100}%`
-  const report = buildReport(history, score, risk, ui)
+  const report = buildReport(history, score, risk, ui, adcRefinement, lang)
+  const recommendation = adcRefinement?.aboveThreshold ? ui.adcReview : score >= 5 ? ui.biopsy : ui.clinical
   return <section className={styles.resultPanel} id="score-result" data-risk={risk.key}>
     <div className={styles.resultHero}>
       <div className={styles.riskTrack} aria-label={`Kaiser Score ${score}`}>
@@ -203,17 +212,24 @@ function ResultPanel({ score, risk, history, ui, copied, onCopy }) {
         </div>
         <div className={styles.probabilityLegend} aria-hidden="true"><span>{ui.low}</span><span>{ui.intermediate}</span><span>{ui.high}</span></div>
       </div>
-      <div className={styles.resultClassification}><span>{ui.corresponds}</span><strong>{risk.birads}</strong><p className={styles.recommendation}>{score >= 5 ? ui.biopsy : ui.clinical}</p></div>
+      <div className={styles.resultClassification}><span>{ui.corresponds}</span><strong>{risk.birads}</strong><p className={styles.recommendation}>{recommendation}</p></div>
     </div>
+    {adcRefinement ? <aside className={styles.adcResultNote} data-supports={adcRefinement.aboveThreshold}>
+      <div><span>DWI / ADC</span><strong>{adcRefinement.adc.toLocaleString(lang === 'en' ? 'en-US' : 'de-DE')} × 10⁻³ mm²/s</strong><small>{ui.adcGuide}: &gt; {adcRefinement.threshold.toLocaleString(lang === 'en' ? 'en-US' : 'de-DE', { minimumFractionDigits: 1 })}</small></div>
+      <p>{adcRefinement.aboveThreshold ? ui.adcAbove : ui.adcBelow}</p>
+    </aside> : null}
     <div className={styles.reportBox}><header><strong>{ui.report}</strong></header><div className={styles.reportSection}><span>{ui.finding}</span><p>{report.finding}</p></div><div className={styles.reportSection}><span>{ui.assessment}</span><p>{report.assessment}</p></div><button type="button" onClick={onCopy}>{copied ? ui.copied : ui.copy}<span>{copied ? '✓' : '⧉'}</span></button></div>
   </section>
 }
 
-function buildReport(history, score, risk, ui) {
+function buildReport(history, score, risk, ui, adcRefinement, lang = 'de') {
   const features = history.filter(item => item.key !== 'quality').map(item => ui.reportOptions[item.value]).join(', ')
+  const adcText = adcRefinement
+    ? ` ${ui.adcMeasured}: ${adcRefinement.adc.toLocaleString(lang === 'en' ? 'en-US' : 'de-DE')} × 10⁻³ mm²/s (${ui.adcGuide} > ${adcRefinement.threshold.toLocaleString(lang === 'en' ? 'en-US' : 'de-DE', { minimumFractionDigits: 1 })}). ${adcRefinement.aboveThreshold ? ui.adcAbove : ui.adcBelow}`
+    : ''
   return {
     finding: `${ui.findingLead} ${features}.`,
-    assessment: `${ui.assessmentLead} Kaiser Score ${score}, entsprechend ${risk.birads}. ${score >= 5 ? ui.biopsy : ui.clinical}.`,
+    assessment: `${ui.assessmentLead} Kaiser Score ${score}, entsprechend ${risk.birads}. ${adcRefinement?.aboveThreshold ? ui.adcReview : score >= 5 ? ui.biopsy : ui.clinical}.${adcText}`,
   }
 }
 
@@ -230,28 +246,44 @@ export default function KaiserScorePage() {
   const [history, setHistory] = useState([])
   const [selected, setSelected] = useState(null)
   const [copied, setCopied] = useState(false)
+  const [adcRefinement, setAdcRefinement] = useState(null)
   const resolution = useMemo(() => resolvePath(answers), [answers])
   const score = resolution.score || null
   const current = resolution.question || null
   const qualityIssue = Boolean(resolution.qualityIssue)
   const risk = riskFor(score)
+  const needsAdcGate = Boolean(score && risk?.key === 'intermediate' && !adcRefinement)
 
   const commitAnswer = () => {
     if (!current || !selected) return
     setAnswers(value => ({ ...value, [current]: selected }))
     setHistory(value => [...value, { key: current, value: selected }])
     setSelected(null)
+    setAdcRefinement(null)
   }
-  const goBack = () => {
+  const goBackKaiser = () => {
     if (!history.length) return
     const previous = history[history.length - 1]
     setAnswers(value => { const next = { ...value }; delete next[previous.key]; return next })
     setHistory(value => value.slice(0, -1))
     setSelected(previous.value)
+    setAdcRefinement(null)
   }
-  const restart = () => { setAnswers({}); setHistory([]); setSelected(null); setCopied(false) }
+  const goBack = () => {
+    if (adcRefinement) { setAdcRefinement(null); setCopied(false); return }
+    goBackKaiser()
+  }
+  const restart = () => { setAnswers({}); setHistory([]); setSelected(null); setCopied(false); setAdcRefinement(null) }
+  const completeAdc = data => setAdcRefinement({
+    ...data,
+    values: {
+      ...data.values,
+      curve: answers.curve || '',
+      morphology: answers.margin === 'irregular' ? 'irregular' : answers.margin === 'circumscribed' ? 'regular' : '',
+    },
+  })
   const copyReport = async () => {
-    const report = buildReport(history, score, risk, ui)
+    const report = buildReport(history, score, risk, ui, adcRefinement, activeLang)
     try { await navigator.clipboard.writeText(`${ui.finding}:\n${report.finding}\n\n${ui.assessment}:\n${report.assessment}`); setCopied(true); window.setTimeout(() => setCopied(false), 1800) } catch { setCopied(false) }
   }
 
@@ -269,17 +301,17 @@ export default function KaiserScorePage() {
     <div className={styles.shell}>
       <section className={styles.workspace}>
         <div className={styles.intro}><h2>{ui.hero.map(line => <span key={line}>{line}</span>)}</h2></div>
-        {current ? <Question question={current} selected={selected} setSelected={setSelected} ui={ui}/> : score ? <ResultPanel score={score} risk={risk} history={history} ui={ui} copied={copied} onCopy={copyReport}/> : <QualityNotice ui={ui}/>}
-        <footer className={`${styles.actions} ${score || qualityIssue ? styles.actionsComplete : ''}`}>
+        {current ? <Question question={current} selected={selected} setSelected={setSelected} ui={ui}/> : needsAdcGate ? <Birads4AdcGate lang={activeLang} onComplete={completeAdc} onBack={goBackKaiser}/> : score ? <ResultPanel score={score} risk={risk} history={history} ui={ui} copied={copied} onCopy={copyReport} adcRefinement={adcRefinement} lang={activeLang}/> : <QualityNotice ui={ui}/>}
+        {!needsAdcGate ? <footer className={`${styles.actions} ${score || qualityIssue ? styles.actionsComplete : ''}`}>
           <button type="button" className={styles.backButton} onClick={goBack} disabled={!history.length}><ArrowIcon reverse/>{ui.back}</button>
           {current ? <button type="button" className={styles.nextButton} onClick={commitAnswer} disabled={!selected}>{ui.continue}<ArrowIcon/></button> : <button type="button" className={styles.nextButton} onClick={restart}>{ui.restart}<ArrowIcon/></button>}
-        </footer>
+        </footer> : null}
       </section>
       <aside className={styles.visualStage} aria-hidden="true">
         <div className={styles.anatomyVisual}/>
       </aside>
     </div>
-    {score ? <AdcAssessment key={`${score}-${activeLang}`} score={score} lang={activeLang}/> : null}
+    {score && !needsAdcGate ? <AdcAssessment key={`${score}-${activeLang}`} score={score} lang={activeLang} initialValues={adcRefinement?.values}/> : null}
     <footer className={styles.disclaimer}><span>i</span><p>{ui.disclaimer}</p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5990997/" target="_blank" rel="noreferrer">{ui.source} ↗</a><small><Link href="/">{ui.by} <strong>RadYar</strong></Link> · {ui.developed}</small></footer>
   </main>
 }
