@@ -2,6 +2,7 @@ export const metadata = {
   title: 'Kaiser Score Rechner | RadYar',
   description: 'Interaktiver Kaiser Score für kontrastmittelverstärkte Mamma-MRT – strukturierte Einordnung von Läsionen anhand morphologischer und kinetischer Kriterien.',
   applicationName: 'Kaiser Score',
+  robots: { index: true, follow: true },
   manifest: '/kaiser-score/manifest.webmanifest',
   appleWebApp: {
     capable: true,
