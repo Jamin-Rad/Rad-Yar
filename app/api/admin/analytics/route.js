@@ -74,6 +74,7 @@ export async function GET() {
   }
 
   const pageMap = new Map()
+  const toolRows = { nodeRads: [], kaiser: [] }
   const nodeRadsDays = new Map()
   const nodeRadsDay = day => {
     if (!nodeRadsDays.has(day)) nodeRadsDays.set(day, {
@@ -88,7 +89,11 @@ export async function GET() {
     entry.activeSeconds += Number(row.active_seconds || 0)
     entry.visitors.add(row.visitor_id)
     pageMap.set(row.path, entry)
-    if (row.path === '/node-rads') nodeRadsDay(row.day).views += Number(row.views || 0)
+    if (row.path === '/node-rads') {
+      nodeRadsDay(row.day).views += Number(row.views || 0)
+      toolRows.nodeRads.push(row)
+    }
+    if (row.path === '/kaiser-score') toolRows.kaiser.push(row)
   }
 
   const nodeRadsEventFields = {
@@ -115,6 +120,20 @@ export async function GET() {
     .slice(0, 20)
 
   const nodeRads = [...nodeRadsDays.values()].sort((a, b) => a.day.localeCompare(b.day))
+  const toolUsage = Object.fromEntries(Object.entries(toolRows).map(([tool, rows]) => [tool,
+    Object.fromEntries([7, 30, 90].map(period => {
+      const periodStart = new Date(Date.now() - (period - 1) * DAY_MS).toISOString().slice(0, 10)
+      const visitors = new Set()
+      const summary = rows.reduce((result, row) => {
+        if (row.day < periodStart) return result
+        result.views += Number(row.views || 0)
+        result.activeSeconds += Number(row.active_seconds || 0)
+        if (row.visitor_id) visitors.add(row.visitor_id)
+        return result
+      }, { views: 0, activeSeconds: 0 })
+      return [period, { ...summary, visitors: visitors.size }]
+    }))
+  ]))
 
-  return NextResponse.json({ totals, userStats, topPages, nodeRads, periodDays: 90 })
+  return NextResponse.json({ totals, userStats, topPages, nodeRads, toolUsage, periodDays: 90 })
 }

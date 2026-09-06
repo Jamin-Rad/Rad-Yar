@@ -63,7 +63,9 @@ function RegistrationChart({ users }) {
   )
 }
 
-function NodeRadsAnalytics({ days }) {
+const EMPTY_TOOL_USAGE = { views: 0, visitors: 0, activeSeconds: 0 }
+
+function NodeRadsAnalytics({ days, usage }) {
   const [period, setPeriod] = useState(30)
   const metrics = useMemo(() => {
     const since = new Date()
@@ -71,23 +73,24 @@ function NodeRadsAnalytics({ days }) {
     since.setDate(since.getDate() - period + 1)
     const visibleDays = days.filter(row => new Date(`${row.day}T00:00:00`) >= since)
     const totals = visibleDays.reduce((sum, row) => ({
-      views: sum.views + Number(row.views || 0),
       recommendOpens: sum.recommendOpens + Number(row.recommendOpens || 0),
       whatsappClicks: sum.whatsappClicks + Number(row.whatsappClicks || 0),
       copyLinks: sum.copyLinks + Number(row.copyLinks || 0),
       referralWhatsapp: sum.referralWhatsapp + Number(row.referralWhatsapp || 0),
       referralCopy: sum.referralCopy + Number(row.referralCopy || 0),
       referralQr: sum.referralQr + Number(row.referralQr || 0),
-    }), { views: 0, recommendOpens: 0, whatsappClicks: 0, copyLinks: 0, referralWhatsapp: 0, referralCopy: 0, referralQr: 0 })
+    }), { recommendOpens: 0, whatsappClicks: 0, copyLinks: 0, referralWhatsapp: 0, referralCopy: 0, referralQr: 0 })
     const recommendations = totals.whatsappClicks + totals.copyLinks
     const referredVisits = totals.referralWhatsapp + totals.referralCopy + totals.referralQr
+    const periodUsage = usage?.[period] || EMPTY_TOOL_USAGE
     return {
       ...totals,
+      ...periodUsage,
       recommendations,
       referredVisits,
-      recommendationRate: totals.views ? (recommendations / totals.views * 100).toFixed(1) : '0,0',
+      recommendationRate: periodUsage.views ? (recommendations / periodUsage.views * 100).toFixed(1) : '0,0',
     }
-  }, [days, period])
+  }, [days, period, usage])
 
   return (
     <section className={styles.nodeRadsAnalytics}>
@@ -101,7 +104,9 @@ function NodeRadsAnalytics({ days }) {
         </div>
       </div>
       <div className={styles.nodeRadsMetrics}>
-        <div><strong>{metrics.views}</strong><span>Aufrufe</span></div>
+        <div><strong>{metrics.views}</strong><span>Nutzungen</span></div>
+        <div><strong>ca. {metrics.visitors}</strong><span>Nutzer</span></div>
+        <div><strong>{formatDuration(metrics.activeSeconds)}</strong><span>Aktive Nutzungszeit</span></div>
         <div><strong>{metrics.recommendOpens}</strong><span>Weiterempfehlen geöffnet</span></div>
         <div><strong>{metrics.recommendations}</strong><span>Empfehlungsaktionen</span></div>
         <div><strong>{metrics.referredVisits}</strong><span>Besuche durch Empfehlungen</span></div>
@@ -114,7 +119,32 @@ function NodeRadsAnalytics({ days }) {
         <div><span>Besuche über kopierte Links</span><strong>{metrics.referralCopy}</strong></div>
         <div><span>QR-Code-Scans</span><strong>{metrics.referralQr}</strong></div>
       </div>
-      <p className={styles.nodeRadsNote}>Eine Empfehlungsaktion bedeutet Klick auf WhatsApp oder erfolgreiches Kopieren des Links. Ob eine WhatsApp-Nachricht tatsächlich versendet wurde, kann der Browser nicht erkennen.</p>
+      <p className={styles.nodeRadsNote}>Nutzungen entsprechen Seitenaufrufen; „ca. Nutzer“ basiert auf eindeutigen anonymen Browser-IDs. Erfasst werden nur Besuche mit Analytics-Einwilligung. Eine Empfehlungsaktion bedeutet Klick auf WhatsApp oder erfolgreiches Kopieren des Links.</p>
+    </section>
+  )
+}
+
+function KaiserAnalytics({ usage }) {
+  const [period, setPeriod] = useState(30)
+  const metrics = usage?.[period] || EMPTY_TOOL_USAGE
+
+  return (
+    <section className={styles.kaiserAnalytics}>
+      <div className={styles.nodeRadsHeader}>
+        <div className={styles.kaiserIdentity}>
+          <span>K</span>
+          <div><h2>Kaiser Score Analytics</h2><p>Anonyme, einwilligungsbasierte Rechnernutzung</p></div>
+        </div>
+        <div className={`${styles.periodPicker} ${styles.kaiserPeriodPicker}`} aria-label="Auswertungszeitraum Kaiser Score">
+          {[7, 30, 90].map(value => <button type="button" key={value} onClick={() => setPeriod(value)} className={period === value ? styles.periodActive : ''}>{value} Tage</button>)}
+        </div>
+      </div>
+      <div className={`${styles.nodeRadsMetrics} ${styles.kaiserMetrics}`}>
+        <div><strong>{metrics.views}</strong><span>Nutzungen</span></div>
+        <div><strong>ca. {metrics.visitors}</strong><span>Nutzer</span></div>
+        <div><strong>{formatDuration(metrics.activeSeconds)}</strong><span>Aktive Nutzungszeit</span></div>
+      </div>
+      <p className={styles.kaiserNote}>Nutzungen entsprechen Seitenaufrufen; „ca. Nutzer“ basiert auf eindeutigen anonymen Browser-IDs. Erfasst werden nur Besuche mit Analytics-Einwilligung.</p>
     </section>
   )
 }
@@ -135,6 +165,7 @@ export default function AdminDashboard() {
     userStats: {},
     topPages: [],
     nodeRads: [],
+    toolUsage: { nodeRads: {}, kaiser: {} },
     periodDays: 90,
   })
   const [analyticsError, setAnalyticsError] = useState('')
@@ -315,7 +346,8 @@ export default function AdminDashboard() {
           )}
         </div>
 
-        <NodeRadsAnalytics days={analytics.nodeRads || []} />
+        <NodeRadsAnalytics days={analytics.nodeRads || []} usage={analytics.toolUsage?.nodeRads} />
+        <KaiserAnalytics usage={analytics.toolUsage?.kaiser} />
 
         {/* Registrierungs-Chart */}
         <RegistrationChart users={users} />

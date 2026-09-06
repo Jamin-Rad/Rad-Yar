@@ -389,7 +389,7 @@
 .periodPicker { padding: 3px; display: flex; gap: 3px; border: 1px solid #dfd6eb; border-radius: 10px; background: rgba(255,255,255,.75); }
 .periodPicker button { min-height: 31px; padding: 0 11px; border: 0; border-radius: 7px; color: #776985; background: transparent; cursor: pointer; font-size: 10px; font-weight: 800; }
 .periodPicker .periodActive { color: #fff; background: #6f3bb5; box-shadow: 0 5px 15px rgba(91,45,151,.22); }
-.nodeRadsMetrics { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 10px; }
+.nodeRadsMetrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 10px; }
 .nodeRadsMetrics > div { min-width: 0; padding: 17px 14px; border: 1px solid rgba(111,59,181,.1); border-radius: 14px; background: rgba(255,255,255,.78); display: grid; gap: 5px; }
 .nodeRadsMetrics strong { color: #3d1d68; font-size: 25px; line-height: 1; overflow-wrap: anywhere; }
 .nodeRadsMetrics span { color: #796b87; font-size: 10px; font-weight: 750; line-height: 1.35; }
@@ -399,6 +399,16 @@
 .nodeRadsChannels span { color: #86788f; font-size: 9px; line-height: 1.35; }
 .nodeRadsChannels strong { color: #4d2b77; font-size: 14px; }
 .nodeRadsNote { margin: 13px 0 0; color: #92869c; font-size: 9px; line-height: 1.55; }
+.kaiserAnalytics { margin-bottom: 24px; padding: 24px; border: 1px solid #b9e1e5; border-radius: 20px; background: linear-gradient(145deg, #f5feff, #f5f8fc); box-shadow: 0 12px 34px rgba(5,126,140,.08); }
+.kaiserIdentity { display: flex; align-items: center; gap: 12px; }
+.kaiserIdentity > span { width: 42px; height: 42px; flex: 0 0 42px; display: grid; place-items: center; border-radius: 13px; color: #fff; background: radial-gradient(circle at 35% 30%, #59d6de, #057e8c 65%, #06363e); box-shadow: 0 8px 24px rgba(5,126,140,.24); font-size: 20px; font-weight: 900; }
+.kaiserIdentity h2 { margin: 0 0 3px; color: #073e47; font-size: 18px; font-weight: 900; }
+.kaiserIdentity p { margin: 0; color: #64858a; font-size: 11px; }
+.kaiserPeriodPicker.periodPicker .periodActive { background: #057e8c; box-shadow: 0 5px 15px rgba(5,126,140,.22); }
+.kaiserMetrics strong { color: #057180; }
+.kaiserMetrics span { color: #64858a; }
+.kaiserMetrics > div { border-color: rgba(5,126,140,.12); }
+.kaiserNote { margin: 13px 0 0; color: #759095; font-size: 9px; line-height: 1.55; }
 
 .budgetHero {
   display: flex;
@@ -1694,11 +1704,11 @@
   }
 
   .nodeRadsAnalytics { padding: 18px 14px; }
+  .kaiserAnalytics { padding: 18px 14px; }
   .nodeRadsHeader { align-items: flex-start; flex-direction: column; }
   .periodPicker { width: 100%; }
   .periodPicker button { flex: 1; }
   .nodeRadsMetrics { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .nodeRadsMetrics > div:last-child { grid-column: 1 / -1; }
   .nodeRadsChannels { grid-template-columns: 1fr; }
   .nodeRadsChannels > div { border-inline-end: 0; border-bottom: 1px solid #e4dced; }
   .nodeRadsChannels > div:last-child { border-bottom: 0; }
@@ -4369,6 +4379,13 @@
 :global(html[data-theme='dark']) .nodeRadsMetrics > div,
 :global(html[data-theme='dark']) .nodeRadsChannels { border-color: var(--border); background: var(--bg-soft); }
 :global(html[data-theme='dark']) .nodeRadsChannels > div { border-color: var(--border); }
+:global(html[data-theme='dark']) .kaiserAnalytics { border-color: rgba(89,214,222,.26); background: linear-gradient(145deg, rgba(5,126,140,.2), rgba(12,22,34,.86)); }
+:global(html[data-theme='dark']) .kaiserIdentity h2,
+:global(html[data-theme='dark']) .kaiserMetrics strong { color: #92edf1; }
+:global(html[data-theme='dark']) .kaiserIdentity p,
+:global(html[data-theme='dark']) .kaiserMetrics span,
+:global(html[data-theme='dark']) .kaiserNote { color: var(--text-muted); }
+:global(html[data-theme='dark']) .kaiserMetrics > div { border-color: var(--border); background: var(--bg-soft); }
 
 /* Budget panels */
 :global(html[data-theme='dark']) .budgetPanel {
