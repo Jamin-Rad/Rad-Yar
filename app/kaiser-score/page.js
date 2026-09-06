@@ -278,6 +278,9 @@ export default function KaiserScorePage() {
           {current ? <button type="button" className={styles.nextButton} onClick={commitAnswer} disabled={!selected}>{ui.continue}<ArrowIcon/></button> : <button type="button" className={styles.nextButton} onClick={restart}>{ui.restart}<ArrowIcon/></button>}
         </footer>
       </section>
+      <aside className={styles.visualStage} aria-hidden="true">
+        <div className={styles.anatomyVisual}/>
+      </aside>
     </div>
     {score ? <AdcAssessment key={`${score}-${activeLang}`} score={score} lang={activeLang}/> : null}
     <footer className={styles.disclaimer}><span>i</span><p>{ui.disclaimer}</p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5990997/" target="_blank" rel="noreferrer">{ui.source} ↗</a><small><Link href="/">{ui.by} <strong>RadYar</strong></Link> · {ui.developed}</small></footer>
