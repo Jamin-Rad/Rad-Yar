@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { QRCodeSVG } from 'qrcode.react'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useTheme } from '@/providers/ThemeProvider'
-import AdcAssessment, { Birads4AdcGate } from './AdcAssessment'
+import { Birads4AdcGate } from './AdcAssessment'
 import styles from './page.module.css'
 
 const KAISER_SCORE_URL = 'https://www.rad-yar.com/kaiser-score'
@@ -352,7 +352,6 @@ export default function KaiserScorePage() {
         <div className={styles.anatomyVisual}/>
       </aside>
     </div>
-    {score && !needsAdcGate ? <AdcAssessment key={`${score}-${activeLang}`} score={score} lang={activeLang} initialValues={adcRefinement?.values}/> : null}
     <footer className={styles.disclaimer}><span>i</span><p>{ui.disclaimer}</p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5990997/" target="_blank" rel="noreferrer">{ui.source} ↗</a><small><Link href="/">{ui.by} <strong>RadYar</strong></Link> · {ui.developed}</small></footer>
   </main>
 }
