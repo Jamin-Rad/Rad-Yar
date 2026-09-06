@@ -92,14 +92,14 @@ const GATE_COPY = {
 
 const ATLAS_COPY = {
   de: {
-    eyebrow: 'ADC verstehen', title: 'Warum ADC nie allein entscheidet',
+    eyebrow: 'ADC verstehen', title: 'Differenzialdiagnose nach ADC-Werten',
     intro: 'Schematische Überlappung typischer und atypischer Befunde', axis: 'ADC',
     mucinous: 'Muzinöses Karzinom', invasive: 'Invasives Karzinom', dcis: 'DCIS', papilloma: 'Papillom', benign: 'Benigne Läsionen', scar: 'Narbe / Fibrose', abscess: 'Abszess / Eiter',
     caption: 'Die Bereiche überlappen. ADC-Werte sind Orientierungswerte und ersetzen weder Morphologie und Kinetik noch Histologie.',
     source: 'Evidenz zum ADC-gestützten Downgrading',
   },
   en: {
-    eyebrow: 'Understand ADC', title: 'Why ADC never decides alone',
+    eyebrow: 'Understand ADC', title: 'Differential diagnosis by ADC values',
     intro: 'Schematic overlap of typical and atypical findings', axis: 'ADC',
     mucinous: 'Mucinous carcinoma', invasive: 'Invasive carcinoma', dcis: 'DCIS', papilloma: 'Papilloma', benign: 'Benign lesions', scar: 'Scar / fibrosis', abscess: 'Abscess / pus',
     caption: 'The ranges overlap. ADC values are guides and do not replace morphology, kinetics, or histology.',
