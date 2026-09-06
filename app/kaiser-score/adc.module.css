@@ -7,7 +7,7 @@
 }
 .module *, .module *::before, .module *::after { box-sizing: border-box; }
 
-.gate { flex: 1; display: flex; flex-direction: column; animation: adcReveal .4s ease both; }
+.gate { flex: 1; display: flex; flex-direction: column; animation: gateReveal .4s ease both; }
 .gate *, .gate *::before, .gate *::after { box-sizing: border-box; }
 .gateHeader { padding-bottom: 20px; border-bottom: 1px solid var(--line); }
 .gateHeader > span { display: flex; align-items: center; gap: 9px; color: var(--teal); font-size: 9px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
@@ -185,6 +185,7 @@
 .caution i { width: 23px; height: 23px; flex: 0 0 auto; display: grid; place-items: center; border: 1px solid currentColor; font-style: normal; font-size: 9px; }
 .caution p { margin: 0; font-size: 8px; line-height: 1.55; }
 @keyframes adcReveal { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes gateReveal { from { opacity: 0; } to { opacity: 1; } }
 @media (max-width: 940px) {
   .assessmentGrid { grid-template-columns: 1fr; }
   .workflow { border-inline-end: 0; border-bottom: 1px solid var(--line); }
@@ -194,6 +195,7 @@
   .atlasFooter { grid-column: 1; }
 }
 @media (max-width: 620px) {
+  .gate { padding-bottom: 78px; }
   .gateHeader { padding-bottom: 17px; }
   .gateHeader h1 { font-size: 27px; }
   .gateForm { gap: 17px; }
@@ -203,8 +205,9 @@
   .gateSegmented { grid-template-columns: 1fr; }
   .gateValueRow { grid-template-columns: 1fr; }
   .gateValueRow aside { min-height: 48px; }
-  .gateActions { padding-bottom: 12px; }
+  .gateActions { min-height: 74px; padding: 11px 16px max(11px, env(safe-area-inset-bottom)); position: fixed; left: 0; right: 0; bottom: 0; z-index: 120; border-top: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); box-shadow: 0 -10px 30px color-mix(in srgb, var(--page-bg) 38%, transparent); }
   .gateActions button { padding-inline: 14px; }
+  .gateBack { margin-inline-start: 43px; }
   .gateSubmit { min-width: 178px; }
   .module { width: 100%; margin: 24px 0 0; }
   .moduleHeader { padding: 25px 18px 19px; flex-direction: column; gap: 13px; }

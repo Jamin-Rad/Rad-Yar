@@ -3,10 +3,13 @@
 import { useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { QRCodeSVG } from 'qrcode.react'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useTheme } from '@/providers/ThemeProvider'
 import AdcAssessment, { Birads4AdcGate } from './AdcAssessment'
 import styles from './page.module.css'
+
+const KAISER_SCORE_URL = 'https://www.rad-yar.com/kaiser-score'
 
 const COPY = {
   de: {
@@ -44,6 +47,8 @@ const COPY = {
     adcAbove: 'Der ADC-Wert liegt oberhalb der phänotypbezogenen Orientierung und stützt eine benigne Einordnung. Ein mögliches Downgrading setzt eine integrierte radiologische Plausibilitätsprüfung voraus.',
     adcBelow: 'Der ADC-Wert liegt nicht oberhalb der phänotypbezogenen Orientierung. Malignität wird dadurch nicht ausgeschlossen; die histologische Abklärung bleibt empfohlen.',
     adcReview: 'ADC-gestützte Reevaluation vor Histologie möglich',
+    recommend: 'Weiterempfehlen', recommendHint: 'Kaiser Score mit Kolleginnen und Kollegen teilen', shareTitle: 'Kaiser Score weitergeben',
+    shareText: 'QR-Code scannen oder den direkten Link versenden.', scanLabel: 'Direkt zum Kaiser-Score-Rechner', whatsapp: 'Über WhatsApp teilen', copyLink: 'Link kopieren', linkCopied: 'Link kopiert',
     theme: 'Hell-/Dunkelmodus wechseln',
   },
   en: {
@@ -81,6 +86,8 @@ const COPY = {
     adcAbove: 'The ADC value is above the phenotype-specific guide and supports benignity. Any potential downgrade requires an integrated radiological plausibility check.',
     adcBelow: 'The ADC value is not above the phenotype-specific guide. Malignancy is not excluded; histological verification remains recommended.',
     adcReview: 'ADC-supported review before histology may be considered',
+    recommend: 'Recommend', recommendHint: 'Share the Kaiser Score with colleagues', shareTitle: 'Share the Kaiser Score',
+    shareText: 'Scan the QR code or send the direct link.', scanLabel: 'Open the Kaiser Score calculator', whatsapp: 'Share via WhatsApp', copyLink: 'Copy link', linkCopied: 'Link copied',
     theme: 'Toggle light and dark theme',
   },
 }
@@ -122,6 +129,14 @@ function ThemeIcons() {
     <svg className={styles.sunIcon} viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg>
     <svg className={styles.moonIcon} viewBox="0 0 24 24" aria-hidden="true"><path d="M20.1 15.2A8.7 8.7 0 0 1 8.8 3.9 8.8 8.8 0 1 0 20.1 15.2Z"/></svg>
   </>
+}
+
+function ShareIcon() {
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.6-4.5M8.2 13.2l7.6 4.5"/></svg>
+}
+
+function WhatsAppIcon() {
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.7a8 8 0 0 1-11.8 7l-4.2 1.1 1.1-4.1A8 8 0 1 1 20 11.7Z"/><path d="M9 8.2c.2-.4.5-.4.8-.4.2 0 .4 0 .6.5l.8 1.8c.1.3 0 .5-.2.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.9 2.7.2.1.4.1.6-.1l.8-1c.2-.2.4-.3.7-.2l1.8.9c.3.1.5.3.5.5 0 .3-.2 1.4-1 2-.7.6-1.6.8-2.6.5-1-.2-2.4-.8-4.1-2.3-1.4-1.2-2.4-2.8-2.7-3.8-.3-1-.1-2.1.5-2.8.3-.3.7-.3 1.2-.3Z"/></svg>
 }
 
 function OptionSchematic({ question, option }) {
@@ -198,9 +213,21 @@ function Question({ question, selected, setSelected, ui }) {
 }
 
 function ResultPanel({ score, risk, history, ui, copied, onCopy, adcRefinement, lang }) {
+  const [shareOpen, setShareOpen] = useState(false)
+  const [linkCopied, setLinkCopied] = useState(false)
   const scorePosition = `${((score - 1) / 10) * 100}%`
   const report = buildReport(history, score, risk, ui, adcRefinement, lang)
   const recommendation = adcRefinement?.aboveThreshold ? ui.adcReview : score >= 5 ? ui.biopsy : ui.clinical
+  const whatsAppText = encodeURIComponent(`Kaiser Score · RadYar\n${KAISER_SCORE_URL}`)
+  const copyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(KAISER_SCORE_URL)
+      setLinkCopied(true)
+      window.setTimeout(() => setLinkCopied(false), 1800)
+    } catch {
+      setLinkCopied(false)
+    }
+  }
   return <section className={styles.resultPanel} id="score-result" data-risk={risk.key}>
     <div className={styles.resultHero}>
       <div className={styles.riskTrack} aria-label={`Kaiser Score ${score}`}>
@@ -219,6 +246,20 @@ function ResultPanel({ score, risk, history, ui, copied, onCopy, adcRefinement, 
       <p>{adcRefinement.aboveThreshold ? ui.adcAbove : ui.adcBelow}</p>
     </aside> : null}
     <div className={styles.reportBox}><header><strong>{ui.report}</strong></header><div className={styles.reportSection}><span>{ui.finding}</span><p>{report.finding}</p></div><div className={styles.reportSection}><span>{ui.assessment}</span><p>{report.assessment}</p></div><button type="button" onClick={onCopy}>{copied ? ui.copied : ui.copy}<span>{copied ? '✓' : '⧉'}</span></button></div>
+    <section className={`${styles.shareCard} ${shareOpen ? styles.shareCardOpen : ''}`}>
+      <button type="button" className={styles.shareToggle} onClick={() => setShareOpen(value => !value)} aria-expanded={shareOpen}>
+        <span className={styles.shareIcon}><ShareIcon/></span>
+        <span><strong>{ui.recommend}</strong><small>{ui.recommendHint}</small></span>
+        <i>{shareOpen ? '−' : '+'}</i>
+      </button>
+      {shareOpen ? <div className={styles.sharePanel}>
+        <header><strong>{ui.shareTitle}</strong><p>{ui.shareText}</p></header>
+        <div className={styles.shareBody}>
+          <div className={styles.qrFrame}><QRCodeSVG value={KAISER_SCORE_URL} size={184} level="H" bgColor="#f5ffff" fgColor="#062a32" marginSize={2} imageSettings={{ src: '/kaiser-score/kaiser-score-icon-192.png', width: 42, height: 42, excavate: true }}/></div>
+          <div className={styles.shareDetails}><span>{ui.scanLabel}</span><strong>rad-yar.com/kaiser-score</strong><div className={styles.shareActions}><a href={`https://wa.me/?text=${whatsAppText}`} target="_blank" rel="noreferrer"><WhatsAppIcon/>{ui.whatsapp}</a><button type="button" onClick={copyLink}><span>{linkCopied ? '✓' : '⧉'}</span>{linkCopied ? ui.linkCopied : ui.copyLink}</button></div></div>
+        </div>
+      </div> : null}
+    </section>
   </section>
 }
 

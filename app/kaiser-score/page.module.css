@@ -181,6 +181,31 @@
 .reportSection p { margin: 6px 0 14px; color: var(--muted); font-size: 10px; line-height: 1.65; }
 .reportBox button { min-height: 38px; padding: 0 14px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--surface); color: var(--teal); cursor: pointer; font-size: 9px; font-weight: 800; }
 .reportBox button > span { margin-left: 6px; }
+.shareCard { margin-top: 13px; border: 1px solid color-mix(in srgb, var(--teal) 34%, var(--line)); border-radius: 16px; background: color-mix(in srgb, var(--teal) 5%, var(--surface-soft)); overflow: hidden; transition: border-color .2s ease, box-shadow .2s ease; }
+.shareCardOpen { border-color: color-mix(in srgb, var(--teal) 72%, var(--line)); box-shadow: 0 18px 48px color-mix(in srgb, var(--teal) 12%, transparent); }
+.shareToggle { width: 100%; min-height: 70px; padding: 12px 16px; border: 0; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; color: var(--ink); background: transparent; text-align: start; cursor: pointer; }
+.shareToggle > span:nth-child(2) { display: grid; gap: 3px; }
+.shareToggle strong { color: var(--ink); font-size: 12px; }
+.shareToggle small { color: var(--muted); font-size: 9px; line-height: 1.4; }
+.shareToggle > i { width: 26px; height: 26px; display: grid; place-items: center; border: 1px solid color-mix(in srgb, var(--teal) 46%, var(--line)); border-radius: 50%; color: var(--teal); font-size: 15px; font-style: normal; font-weight: 400; }
+.shareIcon { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid color-mix(in srgb, var(--teal) 45%, var(--line)); border-radius: 50%; color: var(--teal); background: color-mix(in srgb, var(--teal) 10%, var(--surface)); }
+.shareIcon svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+.sharePanel { padding: 4px 16px 18px; border-top: 1px solid color-mix(in srgb, var(--teal) 20%, var(--line)); animation: reveal .3s ease both; }
+.sharePanel > header { padding: 15px 0 13px; }
+.sharePanel > header strong { color: var(--teal-dark); font-family: var(--font-fraunces), Georgia, serif; font-size: 20px; }
+.sharePanel > header p { margin: 4px 0 0; color: var(--muted); font-size: 9px; }
+.shareBody { display: grid; grid-template-columns: 206px minmax(0, 1fr); gap: 22px; align-items: center; }
+.qrFrame { width: 206px; height: 206px; padding: 11px; display: grid; place-items: center; border-radius: 12px; background: #f5ffff; box-shadow: 0 12px 30px rgba(7,78,89,.16); }
+.qrFrame svg { display: block; width: 184px; height: 184px; }
+.shareDetails { min-width: 0; display: grid; gap: 6px; }
+.shareDetails > span { color: var(--muted); font-size: 9px; }
+.shareDetails > strong { color: var(--ink); font-size: 13px; overflow-wrap: anywhere; }
+.shareActions { margin-top: 9px; display: grid; gap: 8px; }
+.shareActions a, .shareActions button { width: 100%; min-height: 43px; padding: 0 12px; border: 1px solid var(--line-strong); border-radius: 11px; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; font-size: 9px; font-weight: 800; text-decoration: none; }
+.shareActions a { border-color: color-mix(in srgb, #1fba67 48%, var(--line)); color: #168b4d; background: color-mix(in srgb, #1fba67 9%, var(--surface)); }
+.shareActions button { margin: 0; color: var(--teal); background: var(--surface); }
+.shareActions svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.4; }
+.shareActions button span { margin: 0; font-size: 12px; }
 .qualityNotice { flex: 1; padding: clamp(34px, 7vw, 74px) 0; display: grid; justify-items: start; align-content: center; gap: 14px; text-align: start; animation: reveal .35s ease both; }
 .qualityNotice > span { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--coral); border-radius: 50%; color: var(--coral); font-family: var(--font-fraunces), Georgia, serif; font-size: 26px; font-weight: 700; }
 .qualityNotice h1 { max-width: 650px; margin: 4px 0 0; font-family: var(--font-fraunces), Georgia, serif; font-size: clamp(28px, 4vw, 42px); line-height: 1.08; letter-spacing: -.03em; }
@@ -227,7 +252,7 @@
   .topbar nav { gap: 8px; }
   .themeToggle { width: 38px; height: 38px; border-radius: 12px; }
   .languages button { min-width: 34px; min-height: 31px; }
-  .shell { width: 100%; min-height: calc(100svh - 64px); margin: 0; display: block; position: relative; }
+  .shell { width: 100%; min-height: calc(100svh - 64px); margin: 0; display: block; position: relative; z-index: 5 !important; }
   .workspace { min-height: calc(100svh - 64px); padding: 105px 20px 100px; position: relative; z-index: 2; }
   .visualStage { display: none; }
   .visualStage::before { display: none; }
@@ -247,12 +272,15 @@
   .optionVisual { width: 72px; height: 58px; }
   .options strong { font-size: 15px; }
   .options small { font-size: 9px; }
-  .actions { min-height: 74px; margin: 0; padding: 11px 16px max(11px, env(safe-area-inset-bottom)); position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; border-top: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter: blur(15px); }
-  .actionsComplete { min-height: 0; margin-top: 24px; padding: 18px 0 0; position: static; border-top: 1px solid var(--line); background: transparent; backdrop-filter: none; }
+  .actions { min-height: 74px; margin: 0; padding: 11px 16px max(11px, env(safe-area-inset-bottom)); position: fixed; left: 0; right: 0; bottom: 0; z-index: 120; border-top: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); box-shadow: 0 -10px 30px color-mix(in srgb, var(--page-bg) 38%, transparent); }
+  .actionsComplete { margin: 0; padding: 11px 16px max(11px, env(safe-area-inset-bottom)); position: fixed; background: color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); }
   .actions button { min-height: 50px; padding-inline: 15px; border-radius: 12px; }
   .nextButton { min-width: 158px; }
   .resultHero { padding: 22px 17px; border-radius: 18px; }
   .adcResultNote { grid-template-columns: 1fr; gap: 10px; }
+  .shareBody { grid-template-columns: 1fr; justify-items: center; }
+  .shareDetails { width: 100%; text-align: center; }
+  .shareActions { grid-template-columns: 1fr 1fr; }
   .riskTrack { margin: 17px 0 28px; }
   .gradientArrow { height: 38px; }
   .scoreMarker { min-width: 64px; height: 56px; left: clamp(37px, var(--score-position), calc(100% - 52px)); padding-inline: 10px; border-radius: 15px; }
@@ -268,9 +296,10 @@
 }
 @media (max-width: 390px) {
   .brand > span { font-size: 11px; }
-  .backButton { font-size: 0 !important; }
+  .backButton { margin-inline-start: 44px; font-size: 0 !important; }
   .backButton svg { width: 23px; height: 23px; }
   .nextButton { min-width: 148px; }
+  .shareActions { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
   .page *, .page *::before, .page *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
