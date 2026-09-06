@@ -56,7 +56,7 @@ export default function RootLayout({ children }) {
       signInFallbackRedirectUrl="/"
       signUpFallbackRedirectUrl="/"
     >
-      <html lang="de" data-theme="light" data-scroll-behavior="smooth" suppressHydrationWarning>
+      <html lang="de" data-theme="dark" data-scroll-behavior="smooth" suppressHydrationWarning>
         <head>
           <link
             href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
@@ -64,8 +64,8 @@ export default function RootLayout({ children }) {
           />
           {/*
             Blocking Script: läuft synchron VOR dem ersten Paint.
-            - Liest gespeichertes Theme aus localStorage
-            - Fällt auf prefers-color-scheme zurück → kein FOUC mehr
+            - Liest ein gespeichertes Theme aus localStorage
+            - Verwendet ohne gespeicherte Auswahl standardmäßig Dark
           */}
           <script
             dangerouslySetInnerHTML={{
@@ -73,13 +73,11 @@ export default function RootLayout({ children }) {
                 (function () {
                   try {
                     var stored = localStorage.getItem('radyar-theme');
-                    var system = window.matchMedia('(prefers-color-scheme: dark)').matches
-                      ? 'dark' : 'light';
-                    var theme = (stored === 'dark' || stored === 'light') ? stored : system;
+                    var theme = (stored === 'dark' || stored === 'light') ? stored : 'dark';
                     document.documentElement.dataset.theme = theme;
                     document.documentElement.style.colorScheme = theme;
                   } catch (e) {
-                    document.documentElement.dataset.theme = 'light';
+                    document.documentElement.dataset.theme = 'dark';
                   }
                 })();
               `,
