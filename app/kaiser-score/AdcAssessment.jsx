@@ -75,7 +75,7 @@ const GATE_COPY = {
     intro: 'Die Kaiser-Berechnung liegt im intermediären Bereich. Ergänzen Sie vor der Ergebnisanzeige den phänotypbezogenen ADC-Wert.',
     lesion: 'Läsionstyp?', mass: 'Masse / fokaler Herd', nme: 'Non-mass Enhancement',
     t2: 'T2-Phänotyp?', t2Yes: 'Fibroadenomähnlich', t2No: 'Nicht fibroadenomähnlich', unclear: 'Unklar',
-    adc: 'ADC-Wert', adcHelp: 'Messwert als Dezimalzahl', orientation: 'Orientierungswert für diese Konstellation',
+    adc: 'ADC-Wert', adcHelp: 'Messwert auswählen',
     show: 'Ergebnis anzeigen', back: 'Zurück',
     caution: 'ADC ergänzt die Einordnung, ersetzt aber weder Morphologie und Kinetik noch die integrierte radiologische Beurteilung.',
   },
@@ -84,7 +84,7 @@ const GATE_COPY = {
     intro: 'The Kaiser calculation is in the intermediate range. Add the phenotype-specific ADC value before revealing the result.',
     lesion: 'Lesion type?', mass: 'Mass / focal lesion', nme: 'Non-mass enhancement',
     t2: 'T2 phenotype?', t2Yes: 'Fibroadenoma-like', t2No: 'Not fibroadenoma-like', unclear: 'Unclear',
-    adc: 'ADC value', adcHelp: 'Enter the measured decimal value', orientation: 'Guide value for this constellation',
+    adc: 'ADC value', adcHelp: 'Select the measured value',
     show: 'Show result', back: 'Back',
     caution: 'ADC complements classification, but does not replace morphology, kinetics, or integrated radiological assessment.',
   },
@@ -206,7 +206,6 @@ export function Birads4AdcGate({ lang, onComplete, onBack }) {
             <div className={styles.adcScale}><span>0,4</span><span>1,0</span><span>1,5</span><span>2,4</span></div>
             <div className={styles.adcPresets}>{[.8, 1, 1.2, 1.5, 1.8].map(value => <button type="button" key={value} onClick={() => selectAdc(value)} aria-pressed={adc === value}>{value.toLocaleString(locale, { minimumFractionDigits: 1 })}</button>)}</div>
           </div>
-          <aside><span>{ui.orientation}</span><strong>&gt; {threshold.toLocaleString(locale, { minimumFractionDigits: 1 })}</strong></aside>
         </div>
       </fieldset> : null}
 
