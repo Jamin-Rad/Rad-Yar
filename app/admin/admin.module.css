@@ -3503,6 +3503,7 @@
 .iranTripHero .iranTripEyebrow { color: #86efac; }
 .iranTripHero h2 { margin: 7px 0 8px; color: #fff; font-size: clamp(30px, 4vw, 48px); line-height: .98; }
 .iranTripHero p { margin: 0; color: #a7b2c5; font-size: 13px; font-weight: 650; }
+.iranTripHero .iranTripDates { margin-top: 9px; color: #dbe5f3; font-size: 11px; letter-spacing: .02em; }
 .iranTripHeroStats { display: grid; width: min(100%, 610px); justify-items: stretch; gap: 10px; }
 .iranTripSummaryRow { display: grid; grid-template-columns: minmax(210px, 1.2fr) repeat(2, minmax(155px, 1fr)); align-items: stretch; gap: 10px; }
 .iranTripTotal,

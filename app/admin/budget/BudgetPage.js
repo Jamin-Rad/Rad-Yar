@@ -1647,7 +1647,10 @@ ${manualEntries.length ? `
               <SidebarItem icon={<IconCalendar />} label="Monatsübersicht" active={view === 'monat'} onClick={() => setView('monat')} />
               <SidebarItem icon={<IconChart />} label="Jahresübersicht" active={view === 'jahr'} onClick={() => setView('jahr')} />
               <SidebarItem icon={<IconTrend />} label="Verlauf" active={view === 'verlauf'} onClick={() => setView('verlauf')} />
-              <SidebarItem icon={<IconPlane />} label="Sonderurlaub Iran" active={view === 'iranurlaub'} onClick={() => setView('iranurlaub')} />
+              <Link className={styles.sidebarItem} href="/andarun/urlaub">
+                <span className={styles.sidebarIcon}><IconPlane /></span>
+                <span className={styles.sidebarLabel}>Urlaub</span>
+              </Link>
               <div className={styles.sidebarDivider} />
               <SidebarItem icon={<IconSettings />} label="Einstellung" active={view === 'einstellung'} onClick={() => navEinstellung(subView)} />
               {view === 'einstellung' && (
@@ -1747,6 +1750,7 @@ ${manualEntries.length ? `
                   <div>
                     <span className={styles.iranTripEyebrow}>Reisekasse</span>
                     <h2>Sonderurlaub Iran</h2>
+                    <p className={styles.iranTripDates}>31.07.2026 – 23.08.2026 · 24 Tage</p>
                     <p>Ausgaben direkt in Toman erfassen und jederzeit in Euro ansehen.</p>
                   </div>
                   <div className={styles.iranTripHeroStats}>
