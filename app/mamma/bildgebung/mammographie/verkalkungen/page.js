@@ -26,8 +26,11 @@ function GermanContent(){return <>
       <article><span>03</span><h3>Verteilungsmuster</h3><p>Wie sind die Kalkpartikel innerhalb der Brust räumlich angeordnet?</p></article>
       <article><span>04</span><h3>Ausdehnung</h3><p>Wie groß ist das gesamte betroffene Kalkareal?</p></article>
     </div>
+    <p className={styles.lead}>Auch Verlauf, klinischer Kontext und Begleitbefunde – insbesondere eine assoziierte Masse oder Architekturstörung – sind für die Gesamtbeurteilung relevant.</p>
+    <div className={styles.rule}><strong>Grundprinzip</strong><p>Kalk ist ein bildgebender Phänotyp und allein keine Diagnose.</p></div>
+  </Section>
 
-    <h3 className={`${styles.takeTitle} ${caseStyles.sectionTitleRule}`}>Größe</h3>
+  <Section {...GERMAN_SECTIONS[1]} title={GERMAN_SECTIONS[1].label.de}>
     <p className={styles.lead}>Makroverkalkungen beziehungsweise typisch grobschollige Verkalkungen sind in der Regel benign.<br/><br/>Die Größe allein beweist jedoch keine Benignität: Grob heterogene Verkalkungen gehören zu den suspekten Morphologien.</p>
     <article className={caseStyles.caseStudy}>
       <header className={caseStyles.caseHeader}><div><small>RADIOPAEDIA-FALL</small><h3>Grob heterogene Verkalkungen</h3></div></header>
@@ -38,17 +41,10 @@ function GermanContent(){return <>
       <p className={caseStyles.caseDescription}><strong>Morphologie und Lage:</strong> Gruppierte, irreguläre und unterschiedlich große Verkalkungen, größer und dichter als amorphe Partikel, aber ohne typisch grobschollige Benignitätsmerkmale.</p>
       <p className={caseStyles.caseCredit}>Bildbeispiel: <a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer">Radiopaedia.org, Fall 67107 (Vollbild)</a>.</p>
     </article>
-
-    <h3 className={`${styles.takeTitle} ${caseStyles.sectionTitleRule}`}>Ausdehnung</h3>
-    <p className={styles.lead}>Bei gleicher Morphologie kann eine größere Ausdehnung mit einem höheren Malignitätsrisiko einhergehen.</p>
-    <div className={caseStyles.extentChart} aria-label="Positiv prädiktiver Wert nach Ausdehnung"><div><span>&lt;5</span><i style={{height:'0%'}}><b>0 %</b></i></div><div><span>5–10</span><i style={{height:'20%'}}><b>13 %</b></i></div><div><span>10–20</span><i style={{height:'46%'}}><b>30,4 %</b></i></div><div><span>20–50</span><i style={{height:'72%'}}><b>47,8 %</b></i></div><div><span>&gt;50</span><i style={{height:'100%'}}><b>66,7 %</b></i></div></div>
-    <small className={caseStyles.biradsCaption}>PPV in der untersuchten Biopsiekohorte · Ausdehnung (mm)<br/><br/>Metaxa, Healy &amp; O’Keeffe, Br J Radiol. 2019;92:20190177.</small>
-
-    <p className={styles.lead}>Auch Verlauf, klinischer Kontext und Begleitbefunde – insbesondere eine assoziierte Masse oder Architekturstörung – sind für die Gesamtbeurteilung relevant.</p>
-    <div className={styles.rule}><strong>Grundprinzip</strong><p>Kalk ist ein bildgebender Phänotyp und allein keine Diagnose.</p></div>
+    <div className={styles.rule}><strong>Merke</strong><p>Größe allein beweist keine Benignität – Morphologie und Verteilung entscheiden über das tatsächliche Risiko.</p></div>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[1]} title={GERMAN_SECTIONS[1].label.de}>
+  <Section {...GERMAN_SECTIONS[2]} title={GERMAN_SECTIONS[2].label.de}>
     <p className={styles.lead}>Die Morphologie beschreibt die Form der einzelnen Kalkpartikel.</p>
     <div className={caseStyles.morphologyArrow}><span>benigne</span><b>suspekt</b></div>
     <div className={`${styles.morphRail} ${caseStyles.morphologyScale}`}>
@@ -72,7 +68,7 @@ function GermanContent(){return <>
 Die Suspektheit nimmt dabei grundsätzlich von links nach rechts zu.`}</Lines></p></div>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[2]} title={GERMAN_SECTIONS[2].label.de}>
+  <Section {...GERMAN_SECTIONS[3]} title={GERMAN_SECTIONS[3].label.de}>
     <p className={styles.lead}>Neben der Morphologie muss immer beschrieben werden, wie sich die Verkalkungen innerhalb der Brust verteilen.</p>
     <div className={styles.riskArrow}>zunehmende duktale Orientierung →</div>
     <div className={`${styles.distribution} ${caseStyles.distributionScale}`}>
@@ -85,7 +81,7 @@ Die Suspektheit nimmt dabei grundsätzlich von links nach rechts zu.`}</Lines></
     <div className={styles.rule}><strong>Merke</strong><p>Lineare und segmentale Verteilungsmuster sind besonders relevant, da sie auf eine duktale Ausbreitung hinweisen können.</p></div>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[3]} title={GERMAN_SECTIONS[3].label.de}>
+  <Section {...GERMAN_SECTIONS[4]} title={GERMAN_SECTIONS[4].label.de}>
     <p className={styles.lead}>Dies ist der zentrale Schritt der Kalkdiagnostik.</p>
     <p className={styles.lead}>Die Morphologie bestimmt das Ausgangsrisiko, die Verteilung modifiziert dieses Risiko.</p>
     <h3 className={styles.takeTitle}>Beispiele:</h3>
@@ -121,7 +117,7 @@ Die Suspektheit nimmt dabei grundsätzlich von links nach rechts zu.`}</Lines></
     </div>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[4]} title={GERMAN_SECTIONS[4].label.de}>
+  <Section {...GERMAN_SECTIONS[5]} title={GERMAN_SECTIONS[5].label.de}>
     <p className={styles.lead}>Nach Morphologie und Verteilung müssen drei weitere Fragen beantwortet werden.</p>
     <div className={styles.context}>
       <article><span>01</span><h3>Sind die Verkalkungen neu oder zunehmend?</h3><p>Neue oder zunehmende Verkalkungen sind verdächtiger als langfristig stabile Befunde.<br/><br/>Deshalb sollten Voraufnahmen konsequent verglichen werden.</p></article>
@@ -136,7 +132,14 @@ Haut- oder Mamillenveränderung?`}</Lines></p></article>
     <div className={styles.caution}>Eine assoziierte Masse oder Architekturstörung kann insbesondere auf eine invasive Komponente hinweisen.</div>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[5]} title={GERMAN_SECTIONS[5].label.de}>
+  <Section {...GERMAN_SECTIONS[6]} title={GERMAN_SECTIONS[6].label.de}>
+    <p className={styles.lead}>Bei gleicher Morphologie kann eine größere Ausdehnung mit einem höheren Malignitätsrisiko einhergehen.</p>
+    <div className={caseStyles.extentChart} aria-label="Positiv prädiktiver Wert nach Ausdehnung"><div><span>&lt;5</span><i style={{height:'0%'}}><b>0 %</b></i></div><div><span>5–10</span><i style={{height:'20%'}}><b>13 %</b></i></div><div><span>10–20</span><i style={{height:'46%'}}><b>30,4 %</b></i></div><div><span>20–50</span><i style={{height:'72%'}}><b>47,8 %</b></i></div><div><span>&gt;50</span><i style={{height:'100%'}}><b>66,7 %</b></i></div></div>
+    <small className={caseStyles.biradsCaption}>PPV in der untersuchten Biopsiekohorte · Ausdehnung (mm)<br/><br/>Metaxa, Healy &amp; O’Keeffe, Br J Radiol. 2019;92:20190177.</small>
+    <div className={styles.rule}><strong>Merke</strong><p>Die Ausdehnung ist unabhängig von der Morphologie ein eigenständiger Risikofaktor und relevant für die Beurteilung einer möglichen DCIS-Ausdehnung sowie die Therapieplanung.</p></div>
+  </Section>
+
+  <Section {...GERMAN_SECTIONS[7]} title={GERMAN_SECTIONS[7].label.de}>
     <h3 className={`${styles.takeTitle} ${caseStyles.benignSectionTitle}`}>Typisch benigne Verkalkungen außerhalb des Drüsenparenchyms</h3>
     <div className={styles.techSplit}>
       <article><small>HAUT</small><h3>Hautverkalkungen</h3><p>Typischerweise rund oder oval und oberflächlich gelegen.</p></article>
@@ -224,7 +227,7 @@ Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifi
     </article>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[6]} title={GERMAN_SECTIONS[6].label.de}>
+  <Section {...GERMAN_SECTIONS[8]} title={GERMAN_SECTIONS[8].label.de}>
     <div className={styles.modalityRows}>
       <article><strong>DCIS</strong><p>Suspekte Mikroverkalkungen sind häufig mit einem duktalen Carcinoma in situ (DCIS) assoziiert.</p></article>
       <article><strong>Maligner Kalk</strong><p>Maligner Kalk bedeutet jedoch nicht automatisch reines DCIS. Es kann ebenfalls ein invasives Karzinom mit begleitender intraduktaler Komponente vorliegen.</p></article>
@@ -232,7 +235,7 @@ Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifi
     </div>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[7]} title={GERMAN_SECTIONS[7].label.de}>
+  <Section {...GERMAN_SECTIONS[9]} title={GERMAN_SECTIONS[9].label.de}>
     <p className={styles.lead}>Die Mammographie bleibt die wichtigste Methode zur Detektion und Charakterisierung von Mikroverkalkungen.</p>
     <div className={styles.techSplit}>
       <article><small>US</small><h3>Makroverkalkungen</h3><p><Lines>{`Sie können im Ultraschall echogen erscheinen und einen dorsalen Schallschatten verursachen, beispielsweise bei:
@@ -251,7 +254,7 @@ liegen.`}</Lines></p></article>
     <div className={styles.rule}><strong>Biopsieplanung</strong><p>Ein sonographisches Korrelat kann insbesondere für die weitere Biopsieplanung hilfreich sein.</p></div>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[8]} title={GERMAN_SECTIONS[8].label.de}>
+  <Section {...GERMAN_SECTIONS[10]} title={GERMAN_SECTIONS[10].label.de}>
     <p className={styles.lead}>Die MRT kann die Risikoeinschätzung ergänzen, ersetzt aber nicht die Histologie.</p>
     <div className={styles.techSplit}>
       <article><small>MRT</small><h3>Sie kann:</h3><p><Lines>{`eine invasive Komponente erkennen,
@@ -264,7 +267,7 @@ eine klare Biopsieindikation bei suspektem Mikrokalk nicht automatisch aufheben.
     <div className={styles.caution}>Ein negatives MRT macht einen suspekten mammographischen Kalkbefund nicht automatisch benign.</div>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[9]} title={GERMAN_SECTIONS[9].label.de}>
+  <Section {...GERMAN_SECTIONS[11]} title={GERMAN_SECTIONS[11].label.de}>
     <ol className={styles.algorithm}>
       <li><span>1</span><strong>Kalk erkennen</strong></li>
       <li><span>2</span><strong><Lines>{`Darstellung ausreichend?
