@@ -21,11 +21,29 @@ function GermanContent(){return <>
   <Section {...GERMAN_SECTIONS[0]} title={GERMAN_SECTIONS[0].label.de}>
     <h3 className={`${styles.takeTitle} ${caseStyles.sectionTitleRule}`}>Systematische Beurteilung</h3>
     <div className={`${styles.context} ${caseStyles.systematicGrid}`}>
-      <article><span>01</span><h3>Partikelgröße</h3><p>Wie groß sind die einzelnen Verkalkungen?<br/><br/>Makroverkalkungen beziehungsweise typisch grobschollige Verkalkungen sind in der Regel benign.<br/><br/>Die Größe allein beweist jedoch keine Benignität: Grob heterogene Verkalkungen gehören zu den suspekten Morphologien.</p></article>
-      <article><span>02</span><h3>Morphologie</h3><p>Wie sehen die einzelnen Kalkpartikel aus?<br/><br/>Von eher benignen bis zu hoch suspekten Formen.</p></article>
-      <article><span>03</span><h3>Verteilungsmuster</h3><p>Wie sind die Kalkpartikel innerhalb der Brust räumlich angeordnet?<br/><br/>Diffus oft benign; linear oder segmental bei suspekter Morphologie risikoreicher.</p></article>
-      <article><span>04</span><h3>Ausdehnung</h3><p>Wie groß ist das gesamte betroffene Kalkareal?<br/><br/>Bei gleicher Morphologie kann eine größere Ausdehnung mit einem höheren Malignitätsrisiko einhergehen.</p><div className={caseStyles.extentChart} aria-label="Positiv prädiktiver Wert nach Ausdehnung"><div><span>&lt;5</span><i style={{height:'0%'}}><b>0 %</b></i></div><div><span>5–10</span><i style={{height:'20%'}}><b>13 %</b></i></div><div><span>10–20</span><i style={{height:'46%'}}><b>30,4 %</b></i></div><div><span>20–50</span><i style={{height:'72%'}}><b>47,8 %</b></i></div><div><span>&gt;50</span><i style={{height:'100%'}}><b>66,7 %</b></i></div></div><small>PPV in der untersuchten Biopsiekohorte · Ausdehnung (mm)<br/><br/>Metaxa, Healy &amp; O’Keeffe, Br J Radiol. 2019;92:20190177.</small></article>
+      <article><span>01</span><h3>Partikelgröße</h3><p>Wie groß sind die einzelnen Verkalkungen?</p></article>
+      <article><span>02</span><h3>Morphologie</h3><p>Wie sehen die einzelnen Kalkpartikel aus?</p></article>
+      <article><span>03</span><h3>Verteilungsmuster</h3><p>Wie sind die Kalkpartikel innerhalb der Brust räumlich angeordnet?</p></article>
+      <article><span>04</span><h3>Ausdehnung</h3><p>Wie groß ist das gesamte betroffene Kalkareal?</p></article>
     </div>
+
+    <h3 className={`${styles.takeTitle} ${caseStyles.sectionTitleRule}`}>Größe</h3>
+    <p className={styles.lead}>Makroverkalkungen beziehungsweise typisch grobschollige Verkalkungen sind in der Regel benign.<br/><br/>Die Größe allein beweist jedoch keine Benignität: Grob heterogene Verkalkungen gehören zu den suspekten Morphologien.</p>
+    <article className={caseStyles.caseStudy}>
+      <header className={caseStyles.caseHeader}><div><small>RADIOPAEDIA-FALL</small><h3>Grob heterogene Verkalkungen</h3></div></header>
+      <div className={caseStyles.caseGallery}>
+        <figure><a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-67107/ccd-1.png" alt="Vergrößerungsaufnahme der rechten Brust mit grob heterogenen Verkalkungen" width={461} height={645}/></a><figcaption>Vergrößerungsaufnahme</figcaption></figure>
+        <figure><a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-67107/ccd-2.png" alt="Detailaufnahme grob heterogener Verkalkungen" width={594} height={506}/></a><figcaption>Detailaufnahme</figcaption></figure>
+      </div>
+      <p className={caseStyles.caseDescription}><strong>Morphologie und Lage:</strong> Gruppierte, irreguläre und unterschiedlich große Verkalkungen, größer und dichter als amorphe Partikel, aber ohne typisch grobschollige Benignitätsmerkmale.</p>
+      <p className={caseStyles.caseCredit}>Bildbeispiel: <a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer">Radiopaedia.org, Fall 67107 (Vollbild)</a>.</p>
+    </article>
+
+    <h3 className={`${styles.takeTitle} ${caseStyles.sectionTitleRule}`}>Ausdehnung</h3>
+    <p className={styles.lead}>Bei gleicher Morphologie kann eine größere Ausdehnung mit einem höheren Malignitätsrisiko einhergehen.</p>
+    <div className={caseStyles.extentChart} aria-label="Positiv prädiktiver Wert nach Ausdehnung"><div><span>&lt;5</span><i style={{height:'0%'}}><b>0 %</b></i></div><div><span>5–10</span><i style={{height:'20%'}}><b>13 %</b></i></div><div><span>10–20</span><i style={{height:'46%'}}><b>30,4 %</b></i></div><div><span>20–50</span><i style={{height:'72%'}}><b>47,8 %</b></i></div><div><span>&gt;50</span><i style={{height:'100%'}}><b>66,7 %</b></i></div></div>
+    <small className={caseStyles.biradsCaption}>PPV in der untersuchten Biopsiekohorte · Ausdehnung (mm)<br/><br/>Metaxa, Healy &amp; O’Keeffe, Br J Radiol. 2019;92:20190177.</small>
+
     <p className={styles.lead}>Auch Verlauf, klinischer Kontext und Begleitbefunde – insbesondere eine assoziierte Masse oder Architekturstörung – sind für die Gesamtbeurteilung relevant.</p>
     <div className={styles.rule}><strong>Grundprinzip</strong><p>Kalk ist ein bildgebender Phänotyp und allein keine Diagnose.</p></div>
   </Section>

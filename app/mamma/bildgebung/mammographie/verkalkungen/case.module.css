@@ -98,15 +98,30 @@
 }
 
 .systematicGrid {
-  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  grid-template-columns: 1fr !important;
 }
 
-.systematicGrid article:nth-child(-n + 2) {
+.systematicGrid article {
+  display: grid;
+  grid-template-columns: 40px 200px 1fr;
+  align-items: center;
+  gap: 16px;
+  min-height: 0 !important;
+  padding: 18px 22px !important;
+  border-inline-end: 0 !important;
   border-bottom: 1px solid rgba(148, 163, 184, 0.2);
 }
 
-.systematicGrid article:nth-child(even) {
-  border-inline-end: 0;
+.systematicGrid article:last-child {
+  border-bottom: 0;
+}
+
+.systematicGrid h3 {
+  margin: 0 !important;
+}
+
+.systematicGrid p {
+  margin: 0 !important;
 }
 
 .extentChart {
@@ -372,6 +387,7 @@
 .biradsMatrix .cat5 { background: var(--calc); }
 
 .biradsCaption {
+  display: block;
   margin: 10px 0 0;
   color: var(--text-muted);
   font-size: 0.72rem;
@@ -424,6 +440,11 @@
 
   .distributionScale article:last-child {
     border-bottom: 0;
+  }
+
+  .systematicGrid article {
+    grid-template-columns: 1fr;
+    gap: 4px;
   }
 }
 
