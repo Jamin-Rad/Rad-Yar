@@ -41,10 +41,10 @@ function GermanContent(){return <>
       <article className={caseStyles.morphSuspicious}><span>05</span><h3>Fein linear / verzweigt</h3><p>Sehr feine, irreguläre lineare oder verzweigte Verkalkungen mit der höchsten Suspektheit.</p></article>
     </div>
     <article className={caseStyles.caseStudy}>
-      <header className={caseStyles.caseHeader}><div><small>BEISPIELFALL</small><h3>Grob heterogene Verkalkungen</h3></div></header>
+      <header className={caseStyles.caseHeader}><div><small>RADIOPAEDIA-FALL</small><h3>Grob heterogene Verkalkungen</h3></div></header>
       <div className={caseStyles.caseGallery}>
-        <figure><a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-67107/ccd-1.png" alt="Vergrößerungsaufnahme mit gruppierten grob heterogenen Verkalkungen" width={461} height={643}/></a><figcaption>Vergrößerungsaufnahme 1</figcaption></figure>
-        <figure><a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-67107/ccd-2.png" alt="Zweite Vergrößerungsaufnahme mit gruppierten grob heterogenen Verkalkungen" width={461} height={643}/></a><figcaption>Vergrößerungsaufnahme 2</figcaption></figure>
+        <figure><a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-67107/ccd-1.png" alt="Mammographieaufnahme mit grob heterogenen Verkalkungen" width={491} height={720}/></a><figcaption>Mammographieaufnahme 1</figcaption></figure>
+        <figure><a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-67107/ccd-2.png" alt="Zweite Mammographieaufnahme mit grob heterogenen Verkalkungen" width={491} height={720}/></a><figcaption>Mammographieaufnahme 2</figcaption></figure>
       </div>
       <p className={caseStyles.caseDescription}><strong>Morphologie und Lage:</strong> Gruppierte, irreguläre und unterschiedlich große Verkalkungen, größer und dichter als amorphe Partikel, aber ohne typisch grobschollige Benignitätsmerkmale.</p>
       <p className={caseStyles.caseCredit}>Bildbeispiel: <a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer">Radiopaedia.org, Fall 67107 (Vollbild)</a>.</p>
@@ -78,6 +78,29 @@ Die Suspektheit nimmt dabei grundsätzlich von links nach rechts zu.`}</Lines></
       <article className={styles.high}><strong>fein linear/verzweigt</strong><span>+</span><strong>linear oder segmental</strong><span>→</span><b>hochgradig malignitätsverdächtig</b></article>
     </div>
     <div className={styles.rule}><strong>Merke</strong><p>Nicht Morphologie oder Verteilung allein, sondern ihre Kombination bestimmt die klinische Risikoklasse.</p></div>
+    <h3 className={styles.takeTitle}>Morphologie × Verteilung: direkte Modellkategorie</h3>
+    <div className={caseStyles.biradsMatrix}>
+      <table>
+        <thead>
+          <tr><th>Morphologie ↓</th><th>diffus</th><th>regional</th><th>gruppiert</th><th>linear</th><th>segmental</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>rund</th><td className={caseStyles.cat3}>3</td><td className={caseStyles.cat3}>3</td><td className={caseStyles.cat3}>3</td><td className={caseStyles.cat3}>3</td><td className={caseStyles.cat4b}>4B</td></tr>
+          <tr><th>amorph</th><td className={caseStyles.cat3}>3</td><td className={caseStyles.cat3}>3</td><td className={caseStyles.cat4b}>4B</td><td className={caseStyles.cat4b}>4B</td><td className={caseStyles.cat4b}>4B</td></tr>
+          <tr><th>grob heterogen</th><td className={caseStyles.cat3}>3</td><td className={caseStyles.cat3}>3</td><td className={caseStyles.cat4a}>4A</td><td className={caseStyles.cat4b}>4B</td><td className={caseStyles.cat4b}>4B</td></tr>
+          <tr><th>fein pleomorph</th><td className={caseStyles.cat4b}>4B</td><td className={caseStyles.cat4b}>4B</td><td className={caseStyles.cat4c}>4C</td><td className={caseStyles.cat4c}>4C</td><td className={caseStyles.cat4c}>4C</td></tr>
+          <tr><th>fein linear / verzweigt</th><td className={caseStyles.cat4c}>4C</td><td className={caseStyles.cat4b}>4B</td><td className={caseStyles.cat4c}>4C</td><td className={caseStyles.cat5}>5</td><td className={caseStyles.cat5}>5</td></tr>
+        </tbody>
+      </table>
+      <p className={caseStyles.biradsCaption}>Vereinfachtes Modell zur Orientierung – ersetzt nicht die individuelle BI-RADS-Gesamtbeurteilung. Nach Youk et al., Korean J Radiol.</p>
+      <div className={caseStyles.biradsModifiers}>
+        <span>↑ neu / zunehmend</span>
+        <span>↑ Ausdehnung &gt;15 mm</span>
+        <span>↑ Masse / Architekturstörung</span>
+        <span>↑ Alter / persönliche Anamnese</span>
+        <span>↓ Stabilität*</span>
+      </div>
+    </div>
   </Section>
 
   <Section {...GERMAN_SECTIONS[4]} title={GERMAN_SECTIONS[4].label.de}>

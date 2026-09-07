@@ -316,6 +316,93 @@
   color: #fff;
 }
 
+.biradsMatrix {
+  margin: 6px 0 0;
+  overflow-x: auto;
+}
+
+.biradsMatrix table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: separate;
+  border-spacing: 3px;
+}
+
+.biradsMatrix th,
+.biradsMatrix td {
+  padding: 14px 10px;
+  border-radius: 7px;
+  font-weight: 800;
+  font-size: 0.86rem;
+  text-align: center;
+}
+
+.biradsMatrix thead th {
+  background: var(--navy);
+  color: #fff;
+  font-size: 0.68rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.biradsMatrix thead th:first-child {
+  background: transparent;
+  color: var(--text-muted);
+  text-align: left;
+}
+
+.biradsMatrix tbody th {
+  padding-left: 16px;
+  background: var(--bg-card);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  color: var(--text-strong);
+  font: 800 0.92rem Georgia, serif;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.biradsMatrix td {
+  color: #fff;
+}
+
+.biradsMatrix .cat3 { background: #15936f; }
+.biradsMatrix .cat4a { background: #2ea3c9; }
+.biradsMatrix .cat4b { background: #2563eb; }
+.biradsMatrix .cat4c { background: #dc8b1f; }
+.biradsMatrix .cat5 { background: var(--calc); }
+
+.biradsCaption {
+  margin: 10px 0 0;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.biradsModifiers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0 0;
+}
+
+.biradsModifiers span {
+  padding: 8px 14px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 999px;
+  background: var(--bg-card);
+  color: var(--text-strong);
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+@media (max-width: 620px) {
+  .biradsMatrix th,
+  .biradsMatrix td {
+    padding: 11px 8px;
+    font-size: 0.78rem;
+  }
+}
+
 @media (max-width: 620px) {
   .benignGrid {
     grid-template-columns: 1fr;
