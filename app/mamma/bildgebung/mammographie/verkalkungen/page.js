@@ -19,16 +19,6 @@ function RiskLab({lang}){const tx=v=>pick(v,lang);const[morph,setMorph]=useState
 function Lines({children}){return <span style={{whiteSpace:'pre-line'}}>{children}</span>}
 function GermanContent(){return <>
   <Section {...GERMAN_SECTIONS[0]} title={GERMAN_SECTIONS[0].label.de}>
-    <h3 className={`${styles.takeTitle} ${caseStyles.sectionTitleRule}`}>Pathologie</h3>
-    <p className={styles.lead}>Mammographisch sichtbare Verkalkungen der Brust bestehen im Wesentlichen aus zwei unterschiedlichen Kalziumsalzen.</p>
-    <div className={`${styles.techSplit} ${caseStyles.outsideBenignGrid}`}>
-      <article><small>01</small><h3>Kalziumoxalat</h3><p><Lines>{`• deutlich seltener
-• typischerweise mit benignen Pathologien assoziiert
-• beispielsweise in Sekreten apokrin differenzierten Epithels innerhalb benigner Zysten oder terminaler Duktuli`}</Lines></p></article>
-      <article><small>02</small><h3>Kalziumphosphat</h3><p><Lines>{`• häufigste Form mammographisch relevanter Verkalkungen
-• kann bei benignen, atypischen und malignen Veränderungen auftreten
-• mit abnormaler epithelialer Zellproliferation und Nekrose assoziiert`}</Lines></p></article>
-    </div>
     <h3 className={`${styles.takeTitle} ${caseStyles.sectionTitleRule}`}>Systematische Beurteilung</h3>
     <div className={`${styles.context} ${caseStyles.systematicGrid}`}>
       <article><span>01</span><h3>Partikelgröße</h3><p>Wie groß sind die einzelnen Verkalkungen?<br/><br/>Makroverkalkungen beziehungsweise typisch grobschollige Verkalkungen sind in der Regel benign.<br/><br/>Die Größe allein beweist jedoch keine Benignität: Grob heterogene Verkalkungen gehören zu den suspekten Morphologien.</p></article>
@@ -41,6 +31,71 @@ function GermanContent(){return <>
   </Section>
 
   <Section {...GERMAN_SECTIONS[1]} title={GERMAN_SECTIONS[1].label.de}>
+    <p className={styles.lead}>Die Morphologie beschreibt die Form der einzelnen Kalkpartikel.</p>
+    <div className={caseStyles.morphologyArrow}><span>benigne</span><b>suspekt</b></div>
+    <div className={`${styles.morphRail} ${caseStyles.morphologyScale}`}>
+      <article className={caseStyles.morphBenign}><span>01</span><h3>Rund</h3><p>Glatte, runde Verkalkungen. Diffuse oder bilaterale Verteilung spricht eher für einen benignen Befund.</p></article>
+      <article className={caseStyles.morphBenign}><span>02</span><h3>Amorph</h3><p>Sehr kleine, unscharf definierte Verkalkungen ohne klar erkennbare Form. Die Verteilung ist besonders wichtig.</p></article>
+      <article className={caseStyles.morphIntermediate}><span>03</span><h3>Grob heterogen</h3><p>Irreguläre Verkalkungen, größer als amorphe, aber weniger typisch als grobschollige benigne Verkalkungen.</p></article>
+      <article className={caseStyles.morphIntermediate}><span>04</span><h3>Fein pleomorph</h3><p>Feine Verkalkungen unterschiedlicher Form und Größe. Die Pleomorphie ist ein relevantes Suspektkriterium.</p></article>
+      <article className={caseStyles.morphSuspicious}><span>05</span><h3>Fein linear / verzweigt</h3><p>Sehr feine, irreguläre lineare oder verzweigte Verkalkungen mit der höchsten Suspektheit.</p></article>
+    </div>
+    <article className={caseStyles.caseStudy}>
+      <header className={caseStyles.caseHeader}><div><small>BEISPIELFALL</small><h3>Grob heterogene Verkalkungen</h3></div></header>
+      <div className={caseStyles.caseGallery}>
+        <figure><a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-67107/ccd-1.png" alt="Vergrößerungsaufnahme mit gruppierten grob heterogenen Verkalkungen" width={461} height={643}/></a><figcaption>Vergrößerungsaufnahme 1</figcaption></figure>
+        <figure><a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-67107/ccd-2.png" alt="Zweite Vergrößerungsaufnahme mit gruppierten grob heterogenen Verkalkungen" width={461} height={643}/></a><figcaption>Vergrößerungsaufnahme 2</figcaption></figure>
+      </div>
+      <p className={caseStyles.caseDescription}><strong>Morphologie und Lage:</strong> Gruppierte, irreguläre und unterschiedlich große Verkalkungen, größer und dichter als amorphe Partikel, aber ohne typisch grobschollige Benignitätsmerkmale.</p>
+      <p className={caseStyles.caseCredit}>Bildbeispiel: <a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer">Radiopaedia.org, Fall 67107 (Vollbild)</a>.</p>
+    </article>
+    <div className={styles.rule}><strong>Morphologisches Risikokontinuum</strong><p><Lines>{`rund → amorph → grob heterogen → fein pleomorph → fein linear/verzweigt
+
+Die Suspektheit nimmt dabei grundsätzlich von links nach rechts zu.`}</Lines></p></div>
+  </Section>
+
+  <Section {...GERMAN_SECTIONS[2]} title={GERMAN_SECTIONS[2].label.de}>
+    <p className={styles.lead}>Neben der Morphologie muss immer beschrieben werden, wie sich die Verkalkungen innerhalb der Brust verteilen.</p>
+    <div className={styles.riskArrow}>zunehmende duktale Orientierung →</div>
+    <div className={`${styles.distribution} ${caseStyles.distributionScale}`}>
+      <article><span>01</span><strong>Diffus</strong><p>Weit über die Brust verteilt, häufig bilateral.<br/><br/>Bei entsprechender Morphologie meistens benign.</p></article>
+      <article><span>02</span><strong>Regional</strong><p>Verkalkungen innerhalb eines größeren Areals ohne eindeutige Orientierung an einem Gangsystem.<br/><br/>Die Bedeutung hängt stark von der Morphologie ab.</p></article>
+      <article><span>03</span><strong>Gruppiert</strong><p>Mehrere Verkalkungen konzentrieren sich innerhalb eines begrenzten Areals.<br/><br/>Eine gruppierte Verteilung allein bedeutet nicht Malignität:<br/><br/>Morphologie entscheidet über das tatsächliche Risiko.</p></article>
+      <article><span>04</span><strong>Linear</strong><p>Verkalkungen liegen entlang einer Linie.<br/><br/>Dies kann eine Ablagerung innerhalb eines Milchganges widerspiegeln und erhöht insbesondere bei suspekter Morphologie den Verdacht.</p></article>
+      <article><span>05</span><strong>Segmental</strong><p>Die Verkalkungen folgen einem Gangsystem und seinen Verzweigungen.<br/><br/>Typisch ist ein keil- oder dreieckförmiges Verteilungsmuster mit Orientierung zur Mamille.</p></article>
+    </div>
+    <div className={styles.rule}><strong>Merke</strong><p>Lineare und segmentale Verteilungsmuster sind besonders relevant, da sie auf eine duktale Ausbreitung hinweisen können.</p></div>
+  </Section>
+
+  <Section {...GERMAN_SECTIONS[3]} title={GERMAN_SECTIONS[3].label.de}>
+    <p className={styles.lead}>Dies ist der zentrale Schritt der Kalkdiagnostik.</p>
+    <p className={styles.lead}>Die Morphologie bestimmt das Ausgangsrisiko, die Verteilung modifiziert dieses Risiko.</p>
+    <h3 className={styles.takeTitle}>Beispiele:</h3>
+    <div className={styles.comboRows}>
+      <article className={styles.low}><strong>amorph</strong><span>+</span><strong>diffus/bilateral</strong><span>→</span><b>eher niedriges Risiko</b></article>
+      <article className={styles.mid}><strong>amorph</strong><span>+</span><strong>gruppiert/segmental</strong><span>→</span><b>höhere Suspektheit</b></article>
+      <article className={styles.high}><strong>fein pleomorph</strong><span>+</span><strong>gruppiert</strong><span>→</span><b>deutlich suspekt</b></article>
+      <article className={styles.high}><strong>fein linear/verzweigt</strong><span>+</span><strong>linear oder segmental</strong><span>→</span><b>hochgradig malignitätsverdächtig</b></article>
+    </div>
+    <div className={styles.rule}><strong>Merke</strong><p>Nicht Morphologie oder Verteilung allein, sondern ihre Kombination bestimmt die klinische Risikoklasse.</p></div>
+  </Section>
+
+  <Section {...GERMAN_SECTIONS[4]} title={GERMAN_SECTIONS[4].label.de}>
+    <p className={styles.lead}>Nach Morphologie und Verteilung müssen drei weitere Fragen beantwortet werden.</p>
+    <div className={styles.context}>
+      <article><span>01</span><h3>Sind die Verkalkungen neu oder zunehmend?</h3><p>Neue oder zunehmende Verkalkungen sind verdächtiger als langfristig stabile Befunde.<br/><br/>Deshalb sollten Voraufnahmen konsequent verglichen werden.</p></article>
+      <article><span>02</span><h3>Wie groß ist die Ausdehnung?</h3><p>Die Gesamtausdehnung des Kalkareals sollte angegeben werden.<br/><br/>Ein wenige Millimeter großes Cluster und ein mehrere Zentimeter ausgedehnter Befund gleicher Morphologie sind nicht gleichwertig.<br/><br/>Die Ausdehnung ist außerdem relevant für die Beurteilung einer möglichen DCIS-Ausdehnung und für die Therapieplanung.</p></article>
+      <article><span>03</span><h3>Gibt es einen Begleitbefund?</h3><p><Lines>{`Immer das umgebende Brustgewebe beurteilen:
+
+Masse?
+Architekturstörung?
+Asymmetrie?
+Haut- oder Mamillenveränderung?`}</Lines></p></article>
+    </div>
+    <div className={styles.caution}>Eine assoziierte Masse oder Architekturstörung kann insbesondere auf eine invasive Komponente hinweisen.</div>
+  </Section>
+
+  <Section {...GERMAN_SECTIONS[5]} title={GERMAN_SECTIONS[5].label.de}>
     <h3 className={`${styles.takeTitle} ${caseStyles.benignSectionTitle}`}>Typisch benigne Verkalkungen außerhalb des Drüsenparenchyms</h3>
     <div className={styles.techSplit}>
       <article><small>HAUT</small><h3>Hautverkalkungen</h3><p>Typischerweise rund oder oval und oberflächlich gelegen.</p></article>
@@ -126,71 +181,6 @@ Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifi
       <p className={caseStyles.caseDescription}><strong>Morphologie und Lage:</strong> Grobe, längliche Verkalkungen mit glatten, gut definierten Konturen verlaufen innerhalb eines Milchganges.</p>
       <p className={caseStyles.caseCredit}>Case courtesy of Edgar Lorente, <a href="https://radiopaedia.org/cases/86379/studies/102416?lang=us#t=im&v1i=54305500&v1z=1&v2i=54305501&v2z=1&v3i=54305502&v3z=1&v4i=54305503&v4z=1" target="_blank" rel="noreferrer">Radiopaedia.org, rID: 86379</a>.</p>
     </article>
-  </Section>
-
-  <Section {...GERMAN_SECTIONS[2]} title={GERMAN_SECTIONS[2].label.de}>
-    <p className={styles.lead}>Die Morphologie beschreibt die Form der einzelnen Kalkpartikel.</p>
-    <div className={caseStyles.morphologyArrow}><span>benigne</span><b>suspekt</b></div>
-    <div className={`${styles.morphRail} ${caseStyles.morphologyScale}`}>
-      <article className={caseStyles.morphBenign}><span>01</span><h3>Rund</h3><p>Glatte, runde Verkalkungen. Diffuse oder bilaterale Verteilung spricht eher für einen benignen Befund.</p></article>
-      <article className={caseStyles.morphBenign}><span>02</span><h3>Amorph</h3><p>Sehr kleine, unscharf definierte Verkalkungen ohne klar erkennbare Form. Die Verteilung ist besonders wichtig.</p></article>
-      <article className={caseStyles.morphIntermediate}><span>03</span><h3>Grob heterogen</h3><p>Irreguläre Verkalkungen, größer als amorphe, aber weniger typisch als grobschollige benigne Verkalkungen.</p></article>
-      <article className={caseStyles.morphIntermediate}><span>04</span><h3>Fein pleomorph</h3><p>Feine Verkalkungen unterschiedlicher Form und Größe. Die Pleomorphie ist ein relevantes Suspektkriterium.</p></article>
-      <article className={caseStyles.morphSuspicious}><span>05</span><h3>Fein linear / verzweigt</h3><p>Sehr feine, irreguläre lineare oder verzweigte Verkalkungen mit der höchsten Suspektheit.</p></article>
-    </div>
-    <article className={caseStyles.caseStudy}>
-      <header className={caseStyles.caseHeader}><div><small>BEISPIELFALL</small><h3>Grob heterogene Verkalkungen</h3></div></header>
-      <div className={caseStyles.caseGallery}>
-        <figure><a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-67107/ccd-1.png" alt="Vergrößerungsaufnahme mit gruppierten grob heterogenen Verkalkungen" width={461} height={643}/></a><figcaption>Vergrößerungsaufnahme 1</figcaption></figure>
-        <figure><a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-67107/ccd-2.png" alt="Zweite Vergrößerungsaufnahme mit gruppierten grob heterogenen Verkalkungen" width={461} height={643}/></a><figcaption>Vergrößerungsaufnahme 2</figcaption></figure>
-      </div>
-      <p className={caseStyles.caseDescription}><strong>Morphologie und Lage:</strong> Gruppierte, irreguläre und unterschiedlich große Verkalkungen, größer und dichter als amorphe Partikel, aber ohne typisch grobschollige Benignitätsmerkmale.</p>
-      <p className={caseStyles.caseCredit}>Bildbeispiel: <a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer">Radiopaedia.org, Fall 67107 (Vollbild)</a>.</p>
-    </article>
-    <div className={styles.rule}><strong>Morphologisches Risikokontinuum</strong><p><Lines>{`rund → amorph → grob heterogen → fein pleomorph → fein linear/verzweigt
-
-Die Suspektheit nimmt dabei grundsätzlich von links nach rechts zu.`}</Lines></p></div>
-  </Section>
-
-  <Section {...GERMAN_SECTIONS[3]} title={GERMAN_SECTIONS[3].label.de}>
-    <p className={styles.lead}>Neben der Morphologie muss immer beschrieben werden, wie sich die Verkalkungen innerhalb der Brust verteilen.</p>
-    <div className={styles.riskArrow}>zunehmende duktale Orientierung →</div>
-    <div className={`${styles.distribution} ${caseStyles.distributionScale}`}>
-      <article><span>01</span><strong>Diffus</strong><p>Weit über die Brust verteilt, häufig bilateral.<br/><br/>Bei entsprechender Morphologie meistens benign.</p></article>
-      <article><span>02</span><strong>Regional</strong><p>Verkalkungen innerhalb eines größeren Areals ohne eindeutige Orientierung an einem Gangsystem.<br/><br/>Die Bedeutung hängt stark von der Morphologie ab.</p></article>
-      <article><span>03</span><strong>Gruppiert</strong><p>Mehrere Verkalkungen konzentrieren sich innerhalb eines begrenzten Areals.<br/><br/>Eine gruppierte Verteilung allein bedeutet nicht Malignität:<br/><br/>Morphologie entscheidet über das tatsächliche Risiko.</p></article>
-      <article><span>04</span><strong>Linear</strong><p>Verkalkungen liegen entlang einer Linie.<br/><br/>Dies kann eine Ablagerung innerhalb eines Milchganges widerspiegeln und erhöht insbesondere bei suspekter Morphologie den Verdacht.</p></article>
-      <article><span>05</span><strong>Segmental</strong><p>Die Verkalkungen folgen einem Gangsystem und seinen Verzweigungen.<br/><br/>Typisch ist ein keil- oder dreieckförmiges Verteilungsmuster mit Orientierung zur Mamille.</p></article>
-    </div>
-    <div className={styles.rule}><strong>Merke</strong><p>Lineare und segmentale Verteilungsmuster sind besonders relevant, da sie auf eine duktale Ausbreitung hinweisen können.</p></div>
-  </Section>
-
-  <Section {...GERMAN_SECTIONS[4]} title={GERMAN_SECTIONS[4].label.de}>
-    <p className={styles.lead}>Dies ist der zentrale Schritt der Kalkdiagnostik.</p>
-    <p className={styles.lead}>Die Morphologie bestimmt das Ausgangsrisiko, die Verteilung modifiziert dieses Risiko.</p>
-    <h3 className={styles.takeTitle}>Beispiele:</h3>
-    <div className={styles.comboRows}>
-      <article className={styles.low}><strong>amorph</strong><span>+</span><strong>diffus/bilateral</strong><span>→</span><b>eher niedriges Risiko</b></article>
-      <article className={styles.mid}><strong>amorph</strong><span>+</span><strong>gruppiert/segmental</strong><span>→</span><b>höhere Suspektheit</b></article>
-      <article className={styles.high}><strong>fein pleomorph</strong><span>+</span><strong>gruppiert</strong><span>→</span><b>deutlich suspekt</b></article>
-      <article className={styles.high}><strong>fein linear/verzweigt</strong><span>+</span><strong>linear oder segmental</strong><span>→</span><b>hochgradig malignitätsverdächtig</b></article>
-    </div>
-    <div className={styles.rule}><strong>Merke</strong><p>Nicht Morphologie oder Verteilung allein, sondern ihre Kombination bestimmt die klinische Risikoklasse.</p></div>
-  </Section>
-
-  <Section {...GERMAN_SECTIONS[5]} title={GERMAN_SECTIONS[5].label.de}>
-    <p className={styles.lead}>Nach Morphologie und Verteilung müssen drei weitere Fragen beantwortet werden.</p>
-    <div className={styles.context}>
-      <article><span>01</span><h3>Sind die Verkalkungen neu oder zunehmend?</h3><p>Neue oder zunehmende Verkalkungen sind verdächtiger als langfristig stabile Befunde.<br/><br/>Deshalb sollten Voraufnahmen konsequent verglichen werden.</p></article>
-      <article><span>02</span><h3>Wie groß ist die Ausdehnung?</h3><p>Die Gesamtausdehnung des Kalkareals sollte angegeben werden.<br/><br/>Ein wenige Millimeter großes Cluster und ein mehrere Zentimeter ausgedehnter Befund gleicher Morphologie sind nicht gleichwertig.<br/><br/>Die Ausdehnung ist außerdem relevant für die Beurteilung einer möglichen DCIS-Ausdehnung und für die Therapieplanung.</p></article>
-      <article><span>03</span><h3>Gibt es einen Begleitbefund?</h3><p><Lines>{`Immer das umgebende Brustgewebe beurteilen:
-
-Masse?
-Architekturstörung?
-Asymmetrie?
-Haut- oder Mamillenveränderung?`}</Lines></p></article>
-    </div>
-    <div className={styles.caution}>Eine assoziierte Masse oder Architekturstörung kann insbesondere auf eine invasive Komponente hinweisen.</div>
   </Section>
 
   <Section {...GERMAN_SECTIONS[6]} title={GERMAN_SECTIONS[6].label.de}>
