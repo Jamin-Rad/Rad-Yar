@@ -225,6 +225,19 @@
   font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
 }
 
+/* The quick-anatomy modal intentionally keeps only its navigation menu. */
+.anatomyMenuOnly {
+  flex: 1;
+  min-height: min(420px, calc(88vh - 128px));
+  overflow-y: auto;
+  background: #fafbfc;
+}
+.anatomyMenuOnly .sidebar {
+  width: min(100%, 360px);
+  min-height: 100%;
+  border-inline-end: 1px solid #eef2f7;
+}
+
 .content {
   padding: 24px 28px; overflow-y: auto; min-width: 0;
   font-family: var(--font-main, 'Manrope', system-ui, sans-serif);

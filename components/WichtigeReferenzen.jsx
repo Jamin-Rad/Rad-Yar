@@ -426,113 +426,21 @@ function Modal({ title, subtitle, accent, copy, onClose, children, accentClass, 
 function AnatomieModal({ copy, lang, onClose }) {
   const router = useRouter()
   const topics = buildAnatomyTopics(REF_DATA.anatomie, lang)
-  const [topicId, setTopicId] = useState(topics[0].id)
-  const [showDetail, setShowDetail] = useState(false)
-  const [query, setQuery] = useState('')
-  const topic = topics.find(entry => entry.id === topicId) || topics[0]
-  const items = topics.flatMap(entry => entry.items.map(item => ({ ...item, topic: entry })))
-  const searchCopy = ANATOMY_SEARCH_COPY[lang] || ANATOMY_SEARCH_COPY.de
-  const searchResults = query.trim()
-    ? items.map(entry => {
-        const candidates = [
-          tx(entry.name, lang),
-          tx(entry.name, 'de'),
-          tx(entry.name, 'en'),
-          tx(entry.topic.name, lang),
-          ...(entry.rows || []).flatMap(row => row.map(cell => tx(cell, lang))),
-        ]
-        const scores = candidates
-          .map(candidate => classificationSearchScore(query, candidate))
-          .filter(score => score !== null)
-        if (!scores.length) return null
-        return { item: entry, score: Math.min(...scores) }
-      }).filter(Boolean)
-        .sort((a, b) => a.score - b.score || tx(a.item.name, lang).localeCompare(tx(b.item.name, lang)))
-        .slice(0, 8)
-    : []
-  const topResultNameScore = searchResults[0]
-    ? classificationSearchScore(query, tx(searchResults[0].item.name, lang))
-    : null
-  const suggestedResult = query.trim().length >= 3
-    && searchResults[0]
-    && topResultNameScore !== null
-    && normaliseSearch(query) !== normaliseSearch(tx(searchResults[0].item.name, lang))
-    ? searchResults[0]
-    : null
   const go = id => {
     onClose()
-    router.push(`/referenzen/anatomie/${id}${lang!=='de'?`?lang=${lang}`:''}`)
+    router.push(`/referenzen/anatomie/${id}${lang !== 'de' ? `?lang=${lang}` : ''}`)
   }
 
   return (
-    <Modal title={copy.btnAnatomie} subtitle={showDetail?tx(topic.name, lang):null} accent={topic.color}
-      copy={copy} onClose={onClose} accentClass={styles.headPurple} wide showDisclaimer={false}>
-      <div className={`${styles.klassSearchWrap} ${styles.anatomySearchWrap}`}>
-        <div className={`${styles.klassSearchField} ${styles.anatomySearchField}`}>
-          <span className={`${styles.klassSearchIcon} ${styles.anatomySearchIcon}`} aria-hidden="true">⌕</span>
-          <input
-            type="search"
-            value={query}
-            onChange={event => setQuery(event.target.value)}
-            className={styles.klassSearchInput}
-            placeholder={searchCopy.placeholder}
-            aria-label={searchCopy.placeholder}
-          />
-          {query && (
-            <button type="button" className={`${styles.klassSearchClear} ${styles.anatomySearchClear}`} onClick={() => setQuery('')} aria-label={searchCopy.clear}>×</button>
-          )}
-        </div>
-        {suggestedResult && (
-          <p className={`${styles.klassSearchSuggestion} ${styles.anatomySearchSuggestion}`}>
-            {searchCopy.suggestion}:{' '}
-            <button type="button" onClick={() => setQuery(tx(suggestedResult.item.name, lang))}>
-              {tx(suggestedResult.item.name, lang)}
-            </button>
-            ?
-          </p>
-        )}
-      </div>
-
-      {query.trim() ? (
-        <div className={styles.klassSearchResults} style={REFERENCE_MODAL_FIXED_BODY}>
-          <div className={`${styles.klassSearchResultsHead} ${styles.anatomySearchResultsHead}`}>
-            <strong>{searchCopy.results}</strong>
-            <span>{searchResults.length}</span>
-          </div>
-          {searchResults.length ? (
-            <div className={styles.klassSearchGrid}>
-              {searchResults.map(({ item: resultItem }) => (
-                <button
-                  key={resultItem.id}
-                  type="button"
-                  className={styles.klassSearchResult}
-                  style={{ '--ref-color': resultItem.color }}
-                  onClick={() => go(resultItem.id)}
-                >
-                  <span className={`${styles.navIconWrap} ${styles.klassNavLogoWrap}`}>
-                    <Image src={ANATOMY_TOPIC_LOGOS[resultItem.topic.id] || '/fach/technik.png'} alt="" width={30} height={30} className={styles.klassNavLogo} />
-                  </span>
-                  <span className={styles.klassSearchResultText}>
-                    <strong>{tx(resultItem.name, lang)}</strong>
-                  </span>
-                  <span className={styles.klassSearchResultArrow}>→</span>
-                </button>
-              ))}
-            </div>
-          ) : (
-            <p className={styles.klassSearchEmpty}>{searchCopy.empty}</p>
-          )}
-        </div>
-      ) : (
-      <div className={`${styles.split} ${showDetail?styles.showDetail:''}`} style={REFERENCE_MODAL_FIXED_BODY}>
-        <nav className={styles.sidebar}>
+    <Modal title={copy.btnAnatomie} copy={copy} onClose={onClose}
+      accentClass={styles.headPurple} wide showDisclaimer={false}>
+      <div className={styles.anatomyMenuOnly}>
+        <nav className={styles.sidebar} aria-label={copy.btnAnatomie}>
           {topics.map(entry => (
             <button key={entry.id}
-              className={`${styles.navBtn} ${styles.klassNavBtn} ${entry.id===topicId?styles.navActivePurple:''}`}
-              style={{'--ref-color':entry.color}} onClick={()=>{
-                setTopicId(entry.id)
-                setShowDetail(true)
-              }}>
+              className={`${styles.navBtn} ${styles.klassNavBtn}`}
+              style={{ '--ref-color': entry.color }}
+              onClick={() => entry.items[0] && go(entry.items[0].id)}>
               <span className={`${styles.navIconWrap} ${styles.klassNavLogoWrap}`}>
                 <Image src={ANATOMY_TOPIC_LOGOS[entry.id] || '/fach/technik.png'} alt="" width={30} height={30} className={styles.klassNavLogo} />
               </span>
@@ -543,33 +451,7 @@ function AnatomieModal({ copy, lang, onClose }) {
             </button>
           ))}
         </nav>
-        <div className={styles.content} style={{'--ref-color':topic.color}}>
-          <button className={styles.mobileBack} onClick={()=>setShowDetail(false)}>← {copy.back}</button>
-          <div className={styles.klassTopicHead}>
-            <span className={`${styles.regionHeadingIcon} ${styles.klassTopicLogoWrap}`}>
-              <Image src={ANATOMY_TOPIC_LOGOS[topic.id] || '/fach/technik.png'} alt="" width={38} height={38} className={styles.klassTopicLogo} />
-            </span>
-            <div>
-              <span className={styles.klassTopicEyebrow}>{copy.btnAnatomie}</span>
-              <h2 style={{color:topic.color}}>{tx(topic.name,lang)}</h2>
-            </div>
-          </div>
-          <div className={styles.klassCardGrid}>
-            {topic.items.map(entry => (
-              <button
-                key={entry.id}
-                type="button"
-                className={styles.klassCard}
-                style={{'--ref-color': entry.color}}
-                onClick={() => go(entry.id)}
-              >
-                <span className={styles.klassCardName} style={{color: entry.color}}>{tx(entry.name, lang)}</span>
-              </button>
-            ))}
-          </div>
-        </div>
       </div>
-      )}
     </Modal>
   )
 }
