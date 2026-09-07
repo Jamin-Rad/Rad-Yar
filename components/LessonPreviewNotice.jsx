@@ -108,13 +108,15 @@ export default function LessonPreviewNotice() {
 
   return (
     <>
-      <aside className={styles.banner} role="status" dir={lang === 'fa' ? 'rtl' : 'ltr'} data-lesson-preview-banner>
-        <span className={styles.bannerIcon} aria-hidden="true">🚧</span>
-        <div>
-          <strong>{copy.bannerTitle}</strong>
-          <span>{copy.bannerText}</span>
-        </div>
-      </aside>
+      <div className={styles.bannerSlot}>
+        <aside className={styles.banner} role="status" dir={lang === 'fa' ? 'rtl' : 'ltr'} data-lesson-preview-banner>
+          <span className={styles.bannerIcon} aria-hidden="true">🚧</span>
+          <div>
+            <strong>{copy.bannerTitle}</strong>
+            <span>{copy.bannerText}</span>
+          </div>
+        </aside>
+      </div>
 
       {modalOpen ? (
         <div className={styles.backdrop} role="presentation" onMouseDown={() => setModalOpen(false)}>
