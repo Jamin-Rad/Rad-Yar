@@ -32,16 +32,6 @@ function GermanContent(){return <>
 
   <Section {...GERMAN_SECTIONS[1]} title={GERMAN_SECTIONS[1].label.de}>
     <p className={styles.lead}>Makroverkalkungen beziehungsweise typisch grobschollige Verkalkungen sind in der Regel benign.</p>
-    <div className={caseStyles.warningRule}><strong>Achtung!</strong><p>Die Größe allein beweist jedoch keine Benignität: Grob heterogene Verkalkungen gehören zu den suspekten Morphologien.</p></div>
-    <article className={caseStyles.caseStudy}>
-      <header className={caseStyles.caseHeader}><div><small>RADIOPAEDIA-FALL</small><h3>Grob heterogene Verkalkungen</h3></div></header>
-      <div className={caseStyles.caseGallery}>
-        <figure><a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-67107/ccd-1.png" alt="Vergrößerungsaufnahme der rechten Brust mit grob heterogenen Verkalkungen" width={461} height={645}/></a><figcaption>Vergrößerungsaufnahme</figcaption></figure>
-        <figure><a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer"><Image src="/mamma/mammographie/verkalkungen/case-67107/ccd-2.png" alt="Detailaufnahme grob heterogener Verkalkungen" width={594} height={506}/></a><figcaption>Detailaufnahme</figcaption></figure>
-      </div>
-      <p className={caseStyles.caseDescription}><strong>Morphologie und Lage:</strong> Gruppierte, irreguläre und unterschiedlich große Verkalkungen, größer und dichter als amorphe Partikel, aber ohne typisch grobschollige Benignitätsmerkmale.</p>
-      <p className={caseStyles.caseCredit}>Bildbeispiel: <a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer">Radiopaedia.org, Fall 67107 (Vollbild)</a>.</p>
-    </article>
     <div className={styles.rule}><strong>Merke</strong><p>Größe allein beweist keine Benignität – Morphologie und Verteilung entscheiden über das tatsächliche Risiko.</p></div>
   </Section>
 
