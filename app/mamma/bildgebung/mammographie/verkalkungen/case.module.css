@@ -6,6 +6,38 @@
   background: linear-gradient(145deg, rgba(231, 51, 104, 0.07), rgba(15, 23, 42, 0.03));
 }
 
+.warningRule {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: center;
+  margin: 4px 0;
+  padding: 19px 22px;
+  border-left: 5px solid #e09a2d;
+  border-radius: 4px;
+  background: rgba(224, 154, 45, 0.08);
+}
+
+.warningRule strong {
+  color: #a7600c;
+  font-size: 0.75rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.warningRule p {
+  margin: 0;
+  color: #a7600c;
+  font-weight: 750;
+  line-height: 1.55;
+}
+
+@media (max-width: 620px) {
+  .warningRule {
+    grid-template-columns: 1fr;
+  }
+}
+
 .exampleCoarse { order: 1; }
 .exampleRod { order: 2; }
 .exampleLayering { order: 3; }
@@ -124,50 +156,118 @@
   margin: 0 !important;
 }
 
-.extentChart {
-  display: flex;
-  align-items: flex-end;
-  gap: 8px;
-  height: 126px;
-  margin: 20px 0 14px;
-  padding: 18px 8px 0;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+.extentChartCard {
+  margin: 6px 0 0;
+  padding: 22px 24px 18px;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 14px;
+  background: var(--bg-card);
 }
 
-.extentChart > div {
+.extentChartTitle {
+  margin: 0 0 18px;
+  color: var(--text-strong);
+  font: 800 0.94rem Georgia, serif;
+}
+
+.extentChart {
+  display: flex;
+  gap: 14px;
+  height: 220px;
+}
+
+.extentAxis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 26px;
+  color: var(--text-muted);
+  font-size: 0.66rem;
+  font-weight: 800;
+  text-align: right;
+}
+
+.extentBars {
+  position: relative;
+  display: flex;
+  flex: 1;
+  gap: 16px;
+  padding-left: 14px;
+  border-left: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.extentBars::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 26px 14px;
+  background-image: repeating-linear-gradient(
+    to top,
+    rgba(148, 163, 184, 0.22) 0,
+    rgba(148, 163, 184, 0.22) 1px,
+    transparent 1px,
+    transparent 25%
+  );
+  pointer-events: none;
+}
+
+.extentBars > div {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex: 1;
   height: 100%;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
+  padding-bottom: 26px;
 }
 
-.extentChart i {
+.extentBars i {
   display: block;
   width: 100%;
-  min-height: 2px;
-  border-radius: 4px 4px 0 0;
-  background: linear-gradient(180deg, var(--calc), rgba(231, 51, 104, 0.46));
-  position: relative;
+  min-height: 3px;
+  border-radius: 6px 6px 0 0;
+  background: linear-gradient(180deg, var(--calc), rgba(231, 51, 104, 0.4));
 }
 
-.extentChart b {
-  position: absolute;
-  bottom: calc(100% + 4px);
-  left: 50%;
-  transform: translateX(-50%);
+.extentBars b {
   color: var(--calc);
-  font-size: 0.64rem;
+  font-size: 0.8rem;
+  font-weight: 900;
   white-space: nowrap;
 }
 
-.extentChart span {
-  order: 2;
+.extentBars small {
+  position: absolute;
+  bottom: 0;
   color: var(--text-muted);
-  font-size: 0.62rem;
+  font-size: 0.68rem;
+  font-weight: 700;
   white-space: nowrap;
+}
+
+@media (max-width: 620px) {
+  .extentChartCard {
+    padding: 18px 14px 14px;
+  }
+
+  .extentAxis {
+    font-size: 0.6rem;
+  }
+
+  .extentBars {
+    gap: 8px;
+    padding-left: 8px;
+  }
+
+  .extentBars b {
+    font-size: 0.68rem;
+  }
+
+  .extentBars small {
+    font-size: 0.58rem;
+  }
 }
 
 .benignSectionTitle {

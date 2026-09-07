@@ -31,7 +31,8 @@ function GermanContent(){return <>
   </Section>
 
   <Section {...GERMAN_SECTIONS[1]} title={GERMAN_SECTIONS[1].label.de}>
-    <p className={styles.lead}>Makroverkalkungen beziehungsweise typisch grobschollige Verkalkungen sind in der Regel benign.<br/><br/>Die Größe allein beweist jedoch keine Benignität: Grob heterogene Verkalkungen gehören zu den suspekten Morphologien.</p>
+    <p className={styles.lead}>Makroverkalkungen beziehungsweise typisch grobschollige Verkalkungen sind in der Regel benign.</p>
+    <div className={caseStyles.warningRule}><strong>Achtung!</strong><p>Die Größe allein beweist jedoch keine Benignität: Grob heterogene Verkalkungen gehören zu den suspekten Morphologien.</p></div>
     <article className={caseStyles.caseStudy}>
       <header className={caseStyles.caseHeader}><div><small>RADIOPAEDIA-FALL</small><h3>Grob heterogene Verkalkungen</h3></div></header>
       <div className={caseStyles.caseGallery}>
@@ -134,8 +135,20 @@ Haut- oder Mamillenveränderung?`}</Lines></p></article>
 
   <Section {...GERMAN_SECTIONS[6]} title={GERMAN_SECTIONS[6].label.de}>
     <p className={styles.lead}>Bei gleicher Morphologie kann eine größere Ausdehnung mit einem höheren Malignitätsrisiko einhergehen.</p>
-    <div className={caseStyles.extentChart} aria-label="Positiv prädiktiver Wert nach Ausdehnung"><div><span>&lt;5</span><i style={{height:'0%'}}><b>0 %</b></i></div><div><span>5–10</span><i style={{height:'20%'}}><b>13 %</b></i></div><div><span>10–20</span><i style={{height:'46%'}}><b>30,4 %</b></i></div><div><span>20–50</span><i style={{height:'72%'}}><b>47,8 %</b></i></div><div><span>&gt;50</span><i style={{height:'100%'}}><b>66,7 %</b></i></div></div>
-    <small className={caseStyles.biradsCaption}>PPV in der untersuchten Biopsiekohorte · Ausdehnung (mm)<br/><br/>Metaxa, Healy &amp; O’Keeffe, Br J Radiol. 2019;92:20190177.</small>
+    <div className={caseStyles.extentChartCard}>
+      <p className={caseStyles.extentChartTitle}>Positiv prädiktiver Wert nach Ausdehnung</p>
+      <div className={caseStyles.extentChart} role="img" aria-label="Balkendiagramm: Positiv prädiktiver Wert steigt von 0 % bei unter 5 mm Ausdehnung auf 66,7 % bei über 50 mm Ausdehnung">
+        <div className={caseStyles.extentAxis}><span>80 %</span><span>60 %</span><span>40 %</span><span>20 %</span><span>0 %</span></div>
+        <div className={caseStyles.extentBars}>
+          <div><b>0 %</b><i style={{height:'0%'}}></i><small>&lt;5 mm</small></div>
+          <div><b>13 %</b><i style={{height:'16%'}}></i><small>5–10 mm</small></div>
+          <div><b>30,4 %</b><i style={{height:'38%'}}></i><small>10–20 mm</small></div>
+          <div><b>47,8 %</b><i style={{height:'60%'}}></i><small>20–50 mm</small></div>
+          <div><b>66,7 %</b><i style={{height:'83%'}}></i><small>&gt;50 mm</small></div>
+        </div>
+      </div>
+      <small className={caseStyles.biradsCaption}>PPV in der untersuchten Biopsiekohorte, nach Gesamtausdehnung der Verkalkungen (mm).<br/><br/>Metaxa, Healy &amp; O’Keeffe, Br J Radiol. 2019;92:20190177.</small>
+    </div>
     <div className={styles.rule}><strong>Merke</strong><p>Die Ausdehnung ist unabhängig von der Morphologie ein eigenständiger Risikofaktor und relevant für die Beurteilung einer möglichen DCIS-Ausdehnung sowie die Therapieplanung.</p></div>
   </Section>
 
