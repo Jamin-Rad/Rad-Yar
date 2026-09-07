@@ -7,6 +7,7 @@ import RobotAssistant from '@/components/RobotAssistant'
 import ActivityTracker from '@/components/ActivityTracker'
 import AdminCopyMode from '@/components/AdminCopyMode'
 import LegalNotice from '@/components/LegalNotice'
+import LessonPreviewNotice from '@/components/LessonPreviewNotice'
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -89,6 +90,7 @@ export default function RootLayout({ children }) {
             <LanguageProvider>
               <ActivityTracker />
               <AdminCopyMode />
+              <LessonPreviewNotice />
               {children}
               <RobotAssistant />
               <LegalNotice />

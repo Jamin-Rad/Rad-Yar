@@ -1,3 +1,7 @@
+'use client'
+
+import { usePathname } from 'next/navigation'
+import { isPreviewLessonPath } from './LessonPreviewNotice'
 import styles from './InProgressBanner.module.css'
 
 const COPY = {
@@ -16,6 +20,9 @@ const COPY = {
 }
 
 export default function InProgressBanner({ lang = 'de' }) {
+  const pathname = usePathname()
+  if (isPreviewLessonPath(pathname)) return null
+
   const c = COPY[lang] || COPY.de
   return (
     <div className={styles.banner}>

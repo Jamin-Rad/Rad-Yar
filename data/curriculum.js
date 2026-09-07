@@ -623,15 +623,7 @@ export const CURRICULUM = [
           {
             id: 'mamma-mrt', title: { de: 'MRT der Mamma', en: 'Breast MRI', fa: 'MRI پستان' }, tags: ['MRT'], diff: 2,
             sub: [
-              {
-                id: 'mamma-mrt-basics',
-                title: { de: 'Basics', en: 'Basics', fa: 'مبانی' },
-                link: '/mamma/bildgebung/mrt/basics',
-                mcqLink: '/ueben/quiz?fach=mamma&n=10&themen=mamma-mrt-basics',
-                flashcardLink: '/flashcards/mamma-mrt-basics',
-                ready: true,
-                updatedAt: '2026-09-07',
-              },
+              { id: 'mamma-mrt-basics', title: { de: 'Basics', en: 'Basics', fa: 'مبانی' }, link: '/mamma/bildgebung/mrt/basics' },
               { id: 'mamma-mrt-laesionscharakterisierung', title: { de: 'Läsionscharakterisierung', en: 'Lesion Characterisation', fa: 'ارزیابی و توصیف ضایعه' }, link: '/mamma/bildgebung/mrt/laesionscharakterisierung' },
               { id: 'mamma-mrt-besondere-mammakarzinome', title: { de: 'Besondere Mammakarzinome', en: 'Special Breast Carcinomas', fa: 'کارسینوم‌های ویژه پستان' }, link: '/mamma/bildgebung/mrt/besondere-mammakarzinome' },
             ],
