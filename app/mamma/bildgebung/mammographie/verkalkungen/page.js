@@ -39,7 +39,7 @@ function GermanContent(){return <>
   </Section>
 
   <Section {...GERMAN_SECTIONS[1]} title={GERMAN_SECTIONS[1].label.de}>
-    <p className={styles.lead}>Makroverkalkungen beziehungsweise typisch grobschollige Verkalkungen sind in der Regel benign.</p>
+    <p className={styles.lead}>Makroverkalkungen (&gt; 2 mm) beziehungsweise typisch grobschollige Verkalkungen (irregulär geformt, jedoch mit glatter Begrenzung) sind in der Regel benign.</p>
     <div className={styles.rule}><strong>Merke</strong><p>Größe allein beweist keine Benignität – Morphologie und Verteilung entscheiden über das tatsächliche Risiko.</p></div>
   </Section>
 
@@ -62,9 +62,6 @@ function GermanContent(){return <>
       <p className={caseStyles.caseDescription}><strong>Morphologie und Lage:</strong> Gruppierte, irreguläre und unterschiedlich große Verkalkungen, größer und dichter als amorphe Partikel, aber ohne typisch grobschollige Benignitätsmerkmale.</p>
       <p className={caseStyles.caseCredit}>Bildbeispiel: <a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer">Radiopaedia.org, Fall 67107 (Vollbild)</a>.</p>
     </article>
-    <div className={styles.rule}><strong>Morphologisches Risikokontinuum</strong><p><Lines>{`rund → amorph → grob heterogen → fein pleomorph → fein linear/verzweigt
-
-Die Suspektheit nimmt dabei grundsätzlich von links nach rechts zu.`}</Lines></p></div>
     <div className={styles.rule}><strong>Merke</strong><p>Fein lineare/verzweigte Verkalkungen sind sehr suspekt und häufig mit einem DCIS assoziiert.</p></div>
   </Section>
 
