@@ -400,6 +400,9 @@
   display: grid;
   overflow: hidden;
   width: 100%;
+  aspect-ratio: 304 / 895;
+  flex: 0 0 auto;
+  margin-top: 16px;
   place-items: center;
   border: 1px solid rgba(148, 163, 184, 0.3);
   border-radius: 10px;
@@ -409,7 +412,8 @@
 .morphologyIllustration img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: contain;
 }
 
 .morphologyScale small {
@@ -417,6 +421,7 @@
 }
 
 .morphologyScale p {
+  flex: 1 1 auto;
   margin-top: 14px;
 }
 
