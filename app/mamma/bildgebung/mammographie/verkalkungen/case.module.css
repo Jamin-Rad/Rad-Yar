@@ -377,6 +377,49 @@
   border-top: 4px solid var(--calc);
 }
 
+.morphologyScale {
+  grid-template-columns: repeat(5, minmax(190px, 1fr)) !important;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+}
+
+.morphologyScale article {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  padding: 16px 14px 18px;
+  scroll-snap-align: start;
+}
+
+.morphologyScale h3 {
+  margin: 18px 0 12px;
+}
+
+.morphologyIllustration {
+  display: grid;
+  overflow: hidden;
+  width: 100%;
+  place-items: center;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 10px;
+  background: #03060a;
+}
+
+.morphologyIllustration img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.morphologyScale small {
+  margin-top: 14px;
+}
+
+.morphologyScale p {
+  margin-top: 14px;
+}
+
 .morphologyArrow {
   display: flex;
   justify-content: space-between;
@@ -488,6 +531,10 @@
 }
 
 @media (max-width: 620px) {
+  .morphologyScale {
+    grid-template-columns: repeat(5, 82%) !important;
+  }
+
   .benignGrid {
     grid-template-columns: 1fr;
   }
