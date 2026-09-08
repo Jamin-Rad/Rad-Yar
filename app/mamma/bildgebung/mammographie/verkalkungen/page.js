@@ -211,7 +211,7 @@ function GermanContent(){return <>
 
 Sie entsprechen meist Verkalkungen innerhalb eines Milchganges oder entlang der Gangwand.
 
-Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifications.`}</Lines></p></div></article>
+`}</Lines>Nicht verwechseln mit den deutlich feineren und irregulären <i style={{textDecoration:'underline'}}>fine linear calcifications</i>.</p></div></article>
       <article><span>LAYERING (TEACUP / MILCHKALZIUM)</span><div><h3>Layering</h3><p>Sedimentierende Verkalkungen innerhalb von Mikro- oder Makrozysten, in der Seitenaufnahme typischerweise halbmond- oder sichelförmig.</p></div></article>
       <article><span>RIM</span><div><h3>Rim calcifications</h3><p className={caseStyles.bulletLead}>Dünne randständige Verkalkungen entlang einer rundlichen Struktur, typisch beispielsweise bei:</p><ul className={caseStyles.bulletList}><li>Fettnekrose</li><li>Ölzysten</li><li>Zysten</li></ul></div></article>
     </div>
@@ -255,14 +255,6 @@ Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifi
   </Section>
 
   <Section {...GERMAN_SECTIONS[7]} title={GERMAN_SECTIONS[7].label.de}>
-    <div className={styles.modalityRows}>
-      <article><strong>DCIS</strong><p>Suspekte Mikroverkalkungen sind häufig mit einem duktalen Carcinoma in situ (DCIS) assoziiert.</p></article>
-      <article><strong>Maligner Kalk</strong><p>Maligner Kalk bedeutet jedoch nicht automatisch reines DCIS. Es kann ebenfalls ein invasives Karzinom mit begleitender intraduktaler Komponente vorliegen.</p></article>
-      <article><strong>Deshalb:</strong><p>Suspekter Mikrokalk spricht häufig für einen duktalen Prozess – nicht automatisch für eine bestimmte Histologie.</p></article>
-    </div>
-  </Section>
-
-  <Section {...GERMAN_SECTIONS[8]} title={GERMAN_SECTIONS[8].label.de}>
     <p className={styles.lead}>Die Mammographie bleibt die wichtigste Methode zur Detektion und Charakterisierung von Mikroverkalkungen.</p>
     <div className={styles.techSplit}>
       <article><small>US</small><h3>Makroverkalkungen</h3><p><Lines>{`Sie können im Ultraschall echogen erscheinen und einen dorsalen Schallschatten verursachen, beispielsweise bei:
@@ -281,7 +273,7 @@ liegen.`}</Lines></p></article>
     <div className={styles.rule}><strong>Biopsieplanung</strong><p>Ein sonographisches Korrelat kann insbesondere für die weitere Biopsieplanung hilfreich sein.</p></div>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[9]} title={GERMAN_SECTIONS[9].label.de}>
+  <Section {...GERMAN_SECTIONS[8]} title={GERMAN_SECTIONS[8].label.de}>
     <p className={styles.lead}>Die MRT kann die Risikoeinschätzung ergänzen, ersetzt aber nicht die Histologie.</p>
     <div className={styles.techSplit}>
       <article><small>MRT</small><h3>Sie kann:</h3><p><Lines>{`eine invasive Komponente erkennen,
@@ -294,7 +286,7 @@ eine klare Biopsieindikation bei suspektem Mikrokalk nicht automatisch aufheben.
     <div className={styles.caution}>Ein negatives MRT macht einen suspekten mammographischen Kalkbefund nicht automatisch benign.</div>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[10]} title={GERMAN_SECTIONS[10].label.de}>
+  <Section {...GERMAN_SECTIONS[9]} title={GERMAN_SECTIONS[9].label.de}>
     <h3 className={styles.takeTitle}>Take Home</h3>
     <ol className={styles.takeHome}>
       <li><span>01</span><strong>Kalk ist keine Diagnose – Morphologie und Verteilung bestimmen das Ausgangsrisiko.</strong></li>
