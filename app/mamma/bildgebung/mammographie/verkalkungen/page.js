@@ -296,25 +296,24 @@ function LessonContent({lang}){const t=value=>translateLesson(value,lang);return
       </article>
     </div>
     <div className={styles.rule}><strong>{t("Merke")}</strong><p>{t("Ein unauffälliger Ultraschall oder eine negative MRT hebt eine mammographisch begründete Biopsieindikation nicht automatisch auf.")}</p></div>
-    <div className={caseStyles.mriManagement}>
+    <div className={`${caseStyles.mriManagement} ${caseStyles.mriOverview}`}>
       <header><small>{t("Mammographische Kategorie bleibt maßgeblich")}</small><h3>{t("Negative MRT bei mammographischen Kalzifikationen: Was bedeutet das für die Biopsie?")}</h3></header>
       <div className={caseStyles.mriTableScroll}><table><caption>{t("Management bei negativer kontrastverstärkter MRT")}</caption><thead><tr><th scope="col">{t("BI-RADS")}</th><th scope="col">{t("Malignitätsrisiko vor MRT")}</th><th scope="col">{t("Einordnung")}</th></tr></thead><tbody>
-        {['4A','4B','4C','5'].map(category=><tr key={category}><th scope="row"><span className={caseStyles[CALC_CLASS[category]]}>{category}</span></th><td>{t(CALC_META[category].risk)}</td><td>{category==='4A'?t("Keine Biopsie; Kontrolle mittels Mammographie in 12 Monaten."):category==='4B'?t("Individuelle Entscheidung, aber eher biopsiezurückhaltend."):t("Biopsie auch bei negativer MRT erforderlich.")}</td></tr>)}
+        {['4A','4B','4C','5'].map(category=><tr key={category}><th scope="row"><span className={caseStyles[CALC_CLASS[category]]}>{category}</span></th><td data-label={t("Malignitätsrisiko vor MRT")}>{t(CALC_META[category].risk)}</td><td>{category==='4A'?t("Keine Biopsie; Kontrolle mittels Mammographie in 12 Monaten."):category==='4B'?t("Individuelle Entscheidung, aber eher biopsiezurückhaltend."):t("Biopsie auch bei negativer MRT erforderlich.")}</td></tr>)}
       </tbody></table></div>
       <p className={caseStyles.biradsCaption}>{t("Quellen:")}{" "}<a href="https://www.acr.org/-/media/ACR/Files/RADS/BI-RADS/Mammography-Reporting.pdf" target="_blank" rel="noreferrer">{t("ACR: Kategorien und Management")}</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/" target="_blank" rel="noreferrer">{t("Fueger et al., The Breast 2021 – Metaanalyse zur ergänzenden MRT")}</a>.</p>
     </div>
   </Section>
 
   <Section {...GERMAN_SECTIONS[8]} title={t(GERMAN_SECTIONS[8].label.de)}>
-    <h3 className={styles.takeTitle}>{t("Take Home")}</h3>
-    <ol className={styles.takeHome}>
-      <li><span>01</span><strong>{t("Vier Merkmale systematisch beurteilen: Partikelgröße, Morphologie, Verteilung und Gesamtausdehnung. Die Größe allein beweist weder Benignität noch Malignität.")}</strong></li>
-      <li><span>02</span><strong>{t("2D-Vergrößerungsaufnahmen zeigen die Kalkdetails; DBT ergänzt den räumlichen Kontext. Typisch benigne Formen wie Popcorn-, Rim-, sekretorische und Layering-Verkalkungen sicher erkennen.")}</strong></li>
-      <li><span>03</span><strong>{t("Morphologie und Verteilung gemeinsam bewerten: Fein pleomorpher oder fein linearer/verzweigter Kalk in linearer oder segmentaler Anordnung ist besonders suspekt.")}</strong></li>
-      <li><span>04</span><strong>{t("Auch langfristige Stabilität schließt DCIS bei suspekter Morphologie nicht aus.")}</strong></li>
-      <li><span>05</span><strong>{t("Suspekter Mikrokalk kann DCIS oder ein invasives Karzinom mit intraduktaler Komponente begleiten. Das Bild beweist keine bestimmte Histologie.")}</strong></li>
-      <li><span>06</span><strong>{t("Ultraschall hilft bei Korrelatsuche und Biopsieplanung; MRT ergänzt Gewebe- und Ausdehnungsbeurteilung. Eine negative MRT schließt DCIS nicht vollständig aus.")}</strong></li>
-      <li><span>07</span><strong>{t("Bei ausgewählten niedrig suspekten Fällen kann ein MRT-gestützter Biopsieverzicht individuell erwogen werden – er ist kein automatischer Schritt des Rechners.")}</strong></li>
+    <ol className={caseStyles.takeHomeScan}>
+      <li><span className={caseStyles.takeHomeNumber}>01</span><div><h3>{pick(L("Systematisch beurteilen","Assess systematically","ارزیابی سیستماتیک"),lang)}</h3><p>{t("Vier Merkmale systematisch beurteilen: Partikelgröße, Morphologie, Verteilung und Gesamtausdehnung. Die Größe allein beweist weder Benignität noch Malignität.")}</p></div></li>
+      <li><span className={caseStyles.takeHomeNumber}>02</span><div><h3>{pick(L("Kalkdetails erkennen","Identify calcification details","تشخیص جزئیات کلسیفیکاسیون"),lang)}</h3><p>{t("2D-Vergrößerungsaufnahmen zeigen die Kalkdetails; DBT ergänzt den räumlichen Kontext. Typisch benigne Formen wie Popcorn-, Rim-, sekretorische und Layering-Verkalkungen sicher erkennen.")}</p></div></li>
+      <li><span className={caseStyles.takeHomeNumber}>03</span><div><h3>{pick(L("Morphologie × Verteilung","Morphology × distribution","مورفولوژی × توزیع"),lang)}</h3><p>{t("Morphologie und Verteilung gemeinsam bewerten: Fein pleomorpher oder fein linearer/verzweigter Kalk in linearer oder segmentaler Anordnung ist besonders suspekt.")}</p></div></li>
+      <li><span className={caseStyles.takeHomeNumber}>04</span><div><h3>{pick(L("Stabilität","Stability","پایداری"),lang)}</h3><p>{t("Auch langfristige Stabilität schließt DCIS bei suspekter Morphologie nicht aus.")}</p></div></li>
+      <li><span className={caseStyles.takeHomeNumber}>05</span><div><h3>{pick(L("Duktaler Prozess","Ductal process","فرایند مجرایی"),lang)}</h3><p>{t("Suspekter Mikrokalk kann DCIS oder ein invasives Karzinom mit intraduktaler Komponente begleiten. Das Bild beweist keine bestimmte Histologie.")}</p></div></li>
+      <li><span className={caseStyles.takeHomeNumber}>06</span><div><h3>{pick(L("Ultraschall & MRT","Ultrasound & MRI","سونوگرافی و MRI"),lang)}</h3><p>{t("Ultraschall hilft bei Korrelatsuche und Biopsieplanung; MRT ergänzt Gewebe- und Ausdehnungsbeurteilung. Eine negative MRT schließt DCIS nicht vollständig aus.")}</p></div></li>
+      <li><span className={caseStyles.takeHomeNumber}>07</span><div><h3>{pick(L("Individuelle Entscheidung","Individual decision","تصمیم‌گیری فردی"),lang)}</h3><p>{t("Bei ausgewählten niedrig suspekten Fällen kann ein MRT-gestützter Biopsieverzicht individuell erwogen werden – er ist kein automatischer Schritt des Rechners.")}</p></div></li>
     </ol>
   </Section>
 </>}
