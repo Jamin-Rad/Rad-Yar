@@ -43,9 +43,9 @@ const CALC_META={
   '5':{risk:'> 95 %',label:'hochgradig malignomverdächtig',action:'Histologische Sicherung erforderlich'},
 }
 const CALC_FACTORS=[
-  {key:'progression',group:'Verlauf',title:'Voraufnahmen vergleichen',text:'Neuauftreten, Zunahme oder Stabilität der Verkalkungen dokumentieren.'},
-  {key:'extent',group:'Ausdehnung',title:'Kalkareal vollständig messen',text:'Die größte Gesamtausdehnung in zwei Ebenen angeben.'},
-  {key:'associated',group:'Begleitbefunde',title:'Zusätzliche Zeichen erfassen',text:'Masse, Architekturstörung, Asymmetrie sowie Haut- oder Mamillenveränderungen mitbeurteilen.'},
+  {key:'progression',group:'Verlauf',title:'Auf Veränderungen achten',text:'Im Vergleich mit Voraufnahmen auf Neuauftreten, Zunahme oder Stabilität achten.'},
+  {key:'extent',group:'Ausdehnung',title:'Gesamtausdehnung mitbeurteilen',text:'Die Ausdehnung des Kalkareals in zwei Ebenen berücksichtigen.'},
+  {key:'associated',group:'Begleitbefunde',title:'Begleitzeichen beachten',text:'Masse, Architekturstörung, Asymmetrie sowie Haut- oder Mamillenveränderungen mitbeurteilen.'},
 ]
 function Section({id,number,title,children}){const mobile=useMobileLearningLayout();const[open,setOpen]=useState(true);useEffect(()=>setOpen(!mobile),[mobile,id]);return <section id={id} className={`${base.section} ${basics.section} ${styles.section}`}><button type="button" className={`${base.sectionHeader} ${basics.sectionHeader}`} onClick={()=>setOpen(v=>!v)} aria-expanded={open}><span className={basics.sectionHeading}><small>{number}</small><h2>{title}</h2></span><span className={basics.sectionToggle}>{open?'−':'+'}</span></button>{open&&<div className={`${base.sectionBody} ${basics.sectionBody} ${styles.sectionBody}`}>{children}</div>}</section>}
 function ReadButton({lang,isRead,toggle,authError}){const t=READ[lang]||READ.de;return <div className={base.readControl}><button type="button" className={`${base.readButton} ${basics.readButton} ${isRead?`${base.readButtonActive} ${basics.readButtonActive}`:''}`} onClick={toggle}><span className={`${base.readCheck} ${basics.readCheck}`}>{isRead?'✓':''}</span><span>{isRead?t[1]:t[0]}</span></button>{authError&&<div className={base.readError}><span>{t[2]}</span><Link href="/sign-in">{t[3]}</Link></div>}</div>}
@@ -60,7 +60,7 @@ function KalkAssessment(){
   const selectCell=(nextMorph,nextDist)=>{setMorph(nextMorph);setDist(nextDist)}
   return <div className={caseStyles.assessment}>
     <div className={caseStyles.assessmentIntro}>
-      <div><small>Interaktives Orientierungsmodell</small><h3>BI-RADS<span>(bei Kalzifikationen nach Morphologie und Verteilung)</span></h3></div>
+      <div><small>Interaktives Orientierungsmodell</small><h3>BI-RADS<span>(Kalzifikationen: Morphologie × Verteilung)</span></h3></div>
     </div>
     <div className={caseStyles.assessmentCalculator}>
       <div className={caseStyles.assessmentInputs}>
@@ -83,7 +83,6 @@ function KalkAssessment(){
     <div className={caseStyles.contextPanel}>
       <div className={caseStyles.contextPanelHead}><h4>Verlauf, Ausdehnung &amp; Begleitbefunde</h4></div>
       <div className={caseStyles.contextFactorGrid}>{CALC_FACTORS.map((factor,index)=><article key={factor.key} className={caseStyles.contextFactor}><span className={caseStyles.factorIndex}>{String(index+1).padStart(2,'0')}</span><small>{factor.group}</small><strong>{factor.title}</strong><p>{factor.text}</p></article>)}</div>
-      <p className={caseStyles.modelCaveat}>Die Matrix zeigt ausschließlich die Kombination aus Morphologie und Verteilung. Diese Zusatzinformationen fließen separat in die ärztliche Gesamtbeurteilung ein.</p>
     </div>
   </div>
 }
