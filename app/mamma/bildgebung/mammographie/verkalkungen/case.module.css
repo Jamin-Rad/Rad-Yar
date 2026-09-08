@@ -462,33 +462,205 @@
   color: #fff;
 }
 
+.assessment {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+  border: 1px solid rgba(231, 51, 104, 0.24);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 100% 0, rgba(231, 51, 104, 0.1), transparent 28rem),
+    var(--bg-card);
+  box-shadow: 0 18px 50px rgba(7, 29, 58, 0.08);
+}
+
+.assessmentIntro {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.assessmentIntro small,
+.matrixHeading small,
+.contextPanelHead small {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--calc);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.assessmentIntro h3 {
+  margin: 0;
+  color: var(--text-strong);
+  font: 800 clamp(1.25rem, 3vw, 1.65rem)/1.2 Georgia, serif;
+}
+
+.assessmentIntro p {
+  max-width: 580px;
+  margin: 8px 0 0;
+  color: var(--text);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.assessmentIntro > span {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  border: 1px solid rgba(231, 51, 104, 0.28);
+  border-radius: 8px;
+  color: var(--calc);
+  background: rgba(231, 51, 104, 0.06);
+  font-size: 0.66rem;
+  font-weight: 850;
+}
+
+.assessmentCalculator {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(210px, 0.65fr);
+  gap: 14px;
+}
+
+.assessmentInputs {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: end;
+  gap: 12px;
+  padding: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 14px;
+  background: var(--surface-soft);
+}
+
+.assessmentInputs label { display: grid; gap: 8px; }
+.assessmentInputs label > span {
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.assessmentInputs select {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 34px 12px 12px;
+  border: 1.5px solid rgba(148, 163, 184, 0.45);
+  border-radius: 10px;
+  color: var(--text-strong);
+  background: var(--bg-card);
+  font: 750 0.86rem var(--font-main);
+}
+
+.assessmentInputs select:focus-visible {
+  border-color: var(--calc);
+  outline: 3px solid rgba(231, 51, 104, 0.15);
+}
+
+.assessmentOperator {
+  padding-bottom: 10px;
+  color: var(--calc);
+  font: 800 1.3rem Georgia, serif;
+}
+
+.assessmentResult {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 132px;
+  padding: 18px 20px;
+  border-radius: 14px;
+  color: #fff;
+  box-shadow: 0 14px 30px rgba(7, 29, 58, 0.15);
+}
+
+.assessmentResult::after {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  top: -68px;
+  right: -50px;
+  border: 18px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.assessmentResult > span {
+  font-size: 0.64rem;
+  font-weight: 900;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  opacity: 0.82;
+}
+
+.assessmentResult strong { margin-top: 5px; font: 800 1.62rem/1 Georgia, serif; }
+.assessmentResult b { margin-top: 6px; font-size: 0.8rem; }
+.assessmentResult small { margin-top: 5px; font-size: 0.67rem; line-height: 1.35; opacity: 0.88; }
+.assessmentResult em { margin-top: 8px; font-size: 0.65rem; font-style: normal; opacity: 0.82; }
+
+.matrixHeading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 4px;
+}
+
+.matrixHeading strong { color: var(--text-strong); font-size: 0.84rem; }
+.matrixLegend { display: flex; gap: 5px; }
+.matrixLegend span {
+  display: grid;
+  min-width: 31px;
+  height: 25px;
+  padding: 0 6px;
+  place-items: center;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.66rem;
+  font-weight: 900;
+}
+.matrixLegend .cat3 { background: #15936f; }
+.matrixLegend .cat4a { background: #2ea3c9; }
+.matrixLegend .cat4b { background: #2563eb; }
+.matrixLegend .cat4c { background: #dc8b1f; }
+.matrixLegend .cat5 { background: var(--calc); }
+
 .biradsMatrix {
-  margin: 6px 0 0;
+  margin: -8px 0 0;
   overflow-x: auto;
+  padding: 8px 3px 5px;
+  scrollbar-width: thin;
 }
 
 .biradsMatrix table {
   width: 100%;
   min-width: 640px;
   border-collapse: separate;
-  border-spacing: 3px;
+  border-spacing: 5px;
 }
 
 .biradsMatrix th,
 .biradsMatrix td {
-  padding: 14px 10px;
-  border-radius: 7px;
+  padding: 0;
+  border-radius: 9px;
   font-weight: 800;
   font-size: 0.86rem;
   text-align: center;
 }
 
 .biradsMatrix thead th {
-  background: var(--navy);
-  color: #fff;
+  padding: 10px 8px;
+  background: rgba(7, 29, 58, 0.92);
+  color: rgba(255, 255, 255, 0.88);
   font-size: 0.68rem;
   letter-spacing: 0.07em;
   text-transform: uppercase;
+  transition: box-shadow 0.16s, transform 0.16s;
 }
 
 .biradsMatrix thead th:first-child {
@@ -498,17 +670,52 @@
 }
 
 .biradsMatrix tbody th {
-  padding-left: 16px;
+  padding: 12px 14px;
   background: var(--bg-card);
   border: 1px solid rgba(148, 163, 184, 0.28);
   color: var(--text-strong);
   font: 800 0.92rem Georgia, serif;
   text-align: left;
   white-space: nowrap;
+  transition: border-color 0.16s, background 0.16s;
 }
 
 .biradsMatrix td {
   color: #fff;
+  transition: transform 0.16s, box-shadow 0.16s, filter 0.16s;
+}
+
+.biradsMatrix td button {
+  width: 100%;
+  min-height: 46px;
+  padding: 11px 8px;
+  border: 0;
+  border-radius: inherit;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+  font: 900 0.88rem var(--font-main);
+}
+
+.biradsMatrix td:hover { filter: brightness(1.08); transform: translateY(-2px); }
+.biradsMatrix td button:focus-visible { outline: 3px solid var(--text-strong); outline-offset: 2px; }
+.biradsMatrix .axisActive {
+  border-color: var(--calc);
+  background: rgba(231, 51, 104, 0.1);
+  color: var(--calc);
+  box-shadow: inset 0 0 0 1px rgba(231, 51, 104, 0.22);
+}
+
+.biradsMatrix thead .axisActive {
+  background: var(--calc);
+  color: #fff;
+}
+
+.biradsMatrix .cellActive {
+  z-index: 1;
+  position: relative;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 0 0 3px var(--bg-card), 0 0 0 6px var(--text-strong), 0 10px 24px rgba(7, 29, 58, 0.28);
 }
 
 .biradsMatrix .cat3 { background: #15936f; }
@@ -516,6 +723,73 @@
 .biradsMatrix .cat4b { background: #2563eb; }
 .biradsMatrix .cat4c { background: #dc8b1f; }
 .biradsMatrix .cat5 { background: var(--calc); }
+
+.assessmentResult.cat3 { background: linear-gradient(135deg, #11795c, #15936f); }
+.assessmentResult.cat4a { background: linear-gradient(135deg, #197b9a, #2ea3c9); }
+.assessmentResult.cat4b { background: linear-gradient(135deg, #1e40af, #2563eb); }
+.assessmentResult.cat4c { background: linear-gradient(135deg, #b5650a, #dc8b1f); }
+.assessmentResult.cat5 { background: linear-gradient(135deg, #b91c4b, var(--calc)); }
+
+.contextPanel {
+  display: grid;
+  gap: 14px;
+  padding: 20px;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 15px;
+  background: var(--surface-soft);
+}
+
+.contextPanelHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.contextPanelHead h4 { margin: 0; color: var(--text-strong); font: 800 1.05rem Georgia, serif; }
+.contextPanelHead p { max-width: 390px; margin: 0; color: var(--text-muted); font-size: 0.75rem; line-height: 1.5; }
+.contextFactorGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+.contextFactor:last-child { grid-column: 1 / -1; }
+
+.contextFactor {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: start;
+  min-height: 92px;
+  padding: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 11px;
+  color: var(--text);
+  background: var(--bg-card);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.16s, background 0.16s, transform 0.16s;
+}
+
+.contextFactor:hover { border-color: rgba(231, 51, 104, 0.62); transform: translateY(-1px); }
+.contextFactor:focus-visible { outline: 3px solid rgba(231, 51, 104, 0.2); outline-offset: 2px; }
+.contextFactorActive { border-color: var(--calc); background: rgba(231, 51, 104, 0.07); box-shadow: inset 0 0 0 1px rgba(231, 51, 104, 0.14); }
+.factorIcon { display: grid; width: 30px; height: 30px; place-items: center; border-radius: 9px; color: var(--calc); background: rgba(231, 51, 104, 0.09); }
+.factorIcon svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.contextFactor > span:nth-child(2) { display: grid; gap: 3px; }
+.contextFactor small { color: var(--calc); font-size: 0.59rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
+.contextFactor strong { color: var(--text-strong); font-size: 0.77rem; line-height: 1.3; }
+.contextFactor em { color: var(--text-muted); font-size: 0.67rem; font-style: normal; line-height: 1.4; }
+.contextFactor > b { padding: 3px 6px; border-radius: 6px; color: var(--calc); background: rgba(231, 51, 104, 0.09); font-size: 0.65rem; }
+.contextFactor:last-child .factorIcon,
+.contextFactor:last-child > b { color: #11795c; background: rgba(21, 147, 111, 0.1); }
+
+.modelCaveat {
+  margin: 0;
+  padding-top: 12px;
+  border-top: 1px solid rgba(148, 163, 184, 0.24);
+  color: var(--text-muted);
+  font-size: 0.69rem;
+  line-height: 1.55;
+}
+
+.modelCaveat strong { color: var(--text-strong); }
 
 .biradsCaption {
   display: block;
@@ -542,12 +816,28 @@
   font-weight: 800;
 }
 
+@media (max-width: 760px) {
+  .assessment { padding: 18px; }
+  .assessmentIntro,
+  .contextPanelHead { flex-direction: column; gap: 10px; }
+  .assessmentIntro > span { align-self: flex-start; }
+  .assessmentCalculator { grid-template-columns: 1fr; }
+  .assessmentResult { min-height: 120px; }
+  .matrixHeading { align-items: flex-start; flex-direction: column; }
+  .contextFactorGrid { grid-template-columns: 1fr; }
+  .contextFactor:last-child { grid-column: auto; }
+}
+
 @media (max-width: 620px) {
+  .assessment { margin-inline: -10px; padding: 16px 12px; border-radius: 16px; }
+  .assessmentInputs { grid-template-columns: 1fr; }
+  .assessmentOperator { justify-self: center; padding: 0; transform: rotate(90deg); }
   .biradsMatrix th,
   .biradsMatrix td {
-    padding: 11px 8px;
     font-size: 0.78rem;
   }
+  .biradsMatrix tbody th { padding: 11px 9px; }
+  .biradsMatrix td button { min-height: 42px; padding: 9px 7px; }
 }
 
 @media (max-width: 620px) {

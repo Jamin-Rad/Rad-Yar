@@ -27,11 +27,76 @@ const DISTRIBUTION_IMAGES={
   linear:{src:'/mamma/mammographie/verkalkungen/distribution/linear.png',width:307,height:1024,alt:L('Lineare Verteilung von Verkalkungen mit Vergrößerung','Linear distribution of calcifications with magnified view','توزیع خطی کلسیفیکاسیون‌ها همراه با نمای بزرگ‌نمایی‌شده')},
   segmental:{src:'/mamma/mammographie/verkalkungen/distribution/segmental.png',width:307,height:1024,alt:L('Segmentale Verteilung von Verkalkungen mit Vergrößerung','Segmental distribution of calcifications with magnified view','توزیع سگمنتال کلسیفیکاسیون‌ها همراه با نمای بزرگ‌نمایی‌شده')},
 }
+const CALC_MATRIX={
+  round:{diffuse:'3',regional:'3',grouped:'3',linear:'3',segmental:'4B'},
+  amorph:{diffuse:'3',regional:'3',grouped:'4B',linear:'4B',segmental:'4B'},
+  coarse:{diffuse:'3',regional:'3',grouped:'4A',linear:'4B',segmental:'4B'},
+  pleomorphic:{diffuse:'4B',regional:'4B',grouped:'4C',linear:'4C',segmental:'4C'},
+  linear:{diffuse:'4C',regional:'4B',grouped:'4C',linear:'5',segmental:'5'},
+}
+const CALC_ORDER=['3','4A','4B','4C','5']
+const CALC_CLASS={'3':'cat3','4A':'cat4a','4B':'cat4b','4C':'cat4c','5':'cat5'}
+const CALC_META={
+  '3':{risk:'< 2 %',label:'wahrscheinlich benigne',action:'Kurzzeit-Verlaufskontrolle'},
+  '4A':{risk:'2–10 %',label:'gering suspekt',action:'Biopsie erwägen'},
+  '4B':{risk:'10–50 %',label:'mäßig suspekt',action:'Biopsie empfohlen'},
+  '4C':{risk:'50–95 %',label:'stark suspekt',action:'Biopsie dringend empfohlen'},
+  '5':{risk:'> 95 %',label:'hochgradig malignomverdächtig',action:'Histologische Sicherung erforderlich'},
+}
+const CALC_FACTORS=[
+  {key:'progression',direction:1,group:'Verlauf',title:'Neu oder zunehmend',text:'Im Vergleich zur Voraufnahme neu aufgetreten oder progredient.'},
+  {key:'extent',direction:1,group:'Ausdehnung',title:'Mehr als 15 mm',text:'Größere Gesamtausdehnung der Kalzifikationsgruppe.'},
+  {key:'associated',direction:1,group:'Begleitbefund',title:'Masse oder Architekturstörung',text:'Assoziierter Befund mit möglicher invasiver Komponente.'},
+  {key:'history',direction:1,group:'Risikokontext',title:'Alter oder persönliche Anamnese',text:'Erhöhtes individuelles Ausgangsrisiko.'},
+  {key:'stable',direction:-1,group:'Verlauf',title:'Mindestens 2 Jahre stabil',text:'Keine relevante Progredienz in echten Voraufnahmen.'},
+]
 function Section({id,number,title,children}){const mobile=useMobileLearningLayout();const[open,setOpen]=useState(true);useEffect(()=>setOpen(!mobile),[mobile,id]);return <section id={id} className={`${base.section} ${basics.section} ${styles.section}`}><button type="button" className={`${base.sectionHeader} ${basics.sectionHeader}`} onClick={()=>setOpen(v=>!v)} aria-expanded={open}><span className={basics.sectionHeading}><small>{number}</small><h2>{title}</h2></span><span className={basics.sectionToggle}>{open?'−':'+'}</span></button>{open&&<div className={`${base.sectionBody} ${basics.sectionBody} ${styles.sectionBody}`}>{children}</div>}</section>}
 function ReadButton({lang,isRead,toggle,authError}){const t=READ[lang]||READ.de;return <div className={base.readControl}><button type="button" className={`${base.readButton} ${basics.readButton} ${isRead?`${base.readButtonActive} ${basics.readButtonActive}`:''}`} onClick={toggle}><span className={`${base.readCheck} ${basics.readCheck}`}>{isRead?'✓':''}</span><span>{isRead?t[1]:t[0]}</span></button>{authError&&<div className={base.readError}><span>{t[2]}</span><Link href="/sign-in">{t[3]}</Link></div>}</div>}
 function MorphologyImage({type,lang='de'}){const image=MORPHOLOGY_IMAGES[type];return <a className={caseStyles.morphologyIllustration} href={image.src} target="_blank" rel="noreferrer" aria-label={pick(image.alt,lang)}><Image src={image.src} alt={pick(image.alt,lang)} width={image.width} height={image.height}/></a>}
 function DistributionImage({type,lang='de'}){const image=DISTRIBUTION_IMAGES[type];return <a className={caseStyles.distributionIllustration} href={image.src} target="_blank" rel="noreferrer" aria-label={pick(image.alt,lang)}><Image src={image.src} alt={pick(image.alt,lang)} width={image.width} height={image.height}/></a>}
 function RiskLab({lang}){const tx=v=>pick(v,lang);const[morph,setMorph]=useState('amorph');const[dist,setDist]=useState('grouped');const mi=MORPH.findIndex(x=>x.key===morph),di=DISTRIBUTION.findIndex(x=>x.key===dist);const score=mi+(di>=3?2:di===2?1:0);const result=score>=5?L('hoch suspekt','highly suspicious','بسیار مشکوک'):score>=3?L('suspekt','suspicious','مشکوک'):L('eher niedrige Suspektheit','lower suspicion','شک کمتر');return <div className={styles.riskLab}><header><small>{tx(L('Interaktiv kombinieren','Combine interactively','ترکیب تعاملی'))}</small><strong>{tx(result)}</strong></header><div><label>{tx(L('Morphologie','Morphology','مورفولوژی'))}<select value={morph} onChange={e=>setMorph(e.target.value)}>{MORPH.map(x=><option key={x.key} value={x.key}>{tx(x.title)}</option>)}</select></label><span>×</span><label>{tx(L('Verteilung','Distribution','توزیع'))}<select value={dist} onChange={e=>setDist(e.target.value)}>{DISTRIBUTION.map(x=><option key={x.key} value={x.key}>{tx(x.title)}</option>)}</select></label></div><p>{tx(L('Die Kombination strukturiert die Risikoeinschätzung; BI-RADS und Management bleiben eine ärztliche Gesamtentscheidung.','The combination structures risk assessment; BI-RADS and management remain an integrated clinical decision.','این ترکیب ارزیابی خطر را ساختار می‌دهد؛ BI-RADS و اقدام همچنان تصمیم جامع پزشکی هستند.'))}</p></div>}
+function CalcIcon({type}){return type==='up'?<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V4m0 0L5.5 8.5M10 4l4.5 4.5"/></svg>:<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12m0 0 4.5-4.5M10 16l-4.5-4.5"/></svg>}
+function KalkAssessment(){
+  const[morph,setMorph]=useState('amorph')
+  const[dist,setDist]=useState('grouped')
+  const[factors,setFactors]=useState({})
+  const baseCategory=CALC_MATRIX[morph][dist]
+  const adjustment=CALC_FACTORS.reduce((sum,factor)=>sum+(factors[factor.key]?factor.direction:0),0)
+  const resultCategory=CALC_ORDER[Math.max(0,Math.min(CALC_ORDER.length-1,CALC_ORDER.indexOf(baseCategory)+adjustment))]
+  const result=CALC_META[resultCategory]
+  const selectCell=(nextMorph,nextDist)=>{setMorph(nextMorph);setDist(nextDist)}
+  const toggleFactor=key=>setFactors(current=>({...current,[key]:!current[key]}))
+  return <div className={caseStyles.assessment}>
+    <div className={caseStyles.assessmentIntro}>
+      <div><small>Interaktives Orientierungsmodell</small><h3>Morphologie und Verteilung gemeinsam bewerten</h3><p>Zwei Merkmale auswählen – die zugehörige Modellkategorie wird sofort in der Matrix markiert.</p></div>
+      <span>Vereinfachtes Lehrmodell</span>
+    </div>
+    <div className={caseStyles.assessmentCalculator}>
+      <div className={caseStyles.assessmentInputs}>
+        <label><span>1 · Morphologie</span><select value={morph} onChange={event=>setMorph(event.target.value)}>{MORPH.map(item=><option key={item.key} value={item.key}>{item.title.de}</option>)}</select></label>
+        <span className={caseStyles.assessmentOperator}>×</span>
+        <label><span>2 · Verteilung</span><select value={dist} onChange={event=>setDist(event.target.value)}>{DISTRIBUTION.map(item=><option key={item.key} value={item.key}>{item.title.de}</option>)}</select></label>
+      </div>
+      <div className={`${caseStyles.assessmentResult} ${caseStyles[CALC_CLASS[resultCategory]]}`} aria-live="polite">
+        <span>Modellergebnis</span><strong>BI-RADS {resultCategory}</strong><b>{result.label}</b><small>Malignitätsrisiko {result.risk} · {result.action}</small>
+        {resultCategory!==baseCategory&&<em>Basiskategorie {baseCategory} · Kontextanpassung {adjustment>0?`+${adjustment}`:adjustment}</em>}
+      </div>
+    </div>
+    <div className={caseStyles.matrixHeading}><div><small>Kategorien im Überblick</small><strong>Zelle anklicken, um die Kombination zu übernehmen</strong></div><div className={caseStyles.matrixLegend}><span className={caseStyles.cat3}>3</span><span className={caseStyles.cat4a}>4A</span><span className={caseStyles.cat4b}>4B</span><span className={caseStyles.cat4c}>4C</span><span className={caseStyles.cat5}>5</span></div></div>
+    <div className={caseStyles.biradsMatrix}>
+      <table>
+        <thead><tr><th>Morphologie ↓</th>{DISTRIBUTION.map(item=><th key={item.key} className={dist===item.key?caseStyles.axisActive:''}>{item.title.de}</th>)}</tr></thead>
+        <tbody>{MORPH.map(item=><tr key={item.key}><th className={morph===item.key?caseStyles.axisActive:''}>{item.title.de}</th>{DISTRIBUTION.map(distribution=>{const value=CALC_MATRIX[item.key][distribution.key];const active=item.key===morph&&distribution.key===dist;return <td key={distribution.key} className={`${caseStyles[CALC_CLASS[value]]} ${active?caseStyles.cellActive:''}`}><button type="button" onClick={()=>selectCell(item.key,distribution.key)} aria-label={`${item.title.de}, ${distribution.title.de}: BI-RADS ${value}`} aria-pressed={active}>{value}</button></td>})}</tr>)}</tbody>
+      </table>
+    </div>
+    <div className={caseStyles.contextPanel}>
+      <div className={caseStyles.contextPanelHead}><div><small>Schritt 3</small><h4>Verlauf, Ausdehnung &amp; Begleitbefunde</h4></div><p>Relevante Zusatzbefunde auswählen. Sie verändern das Ergebnis in diesem vereinfachten Modell schrittweise.</p></div>
+      <div className={caseStyles.contextFactorGrid}>{CALC_FACTORS.map(factor=>{const active=Boolean(factors[factor.key]);return <button key={factor.key} type="button" className={`${caseStyles.contextFactor} ${active?caseStyles.contextFactorActive:''}`} onClick={()=>toggleFactor(factor.key)} aria-pressed={active}><span className={caseStyles.factorIcon}><CalcIcon type={factor.direction>0?'up':'down'}/></span><span><small>{factor.group}</small><strong>{factor.title}</strong><em>{factor.text}</em></span><b>{factor.direction>0?'+1':'−1'}</b></button>})}</div>
+      <p className={caseStyles.modelCaveat}><strong>Wichtig:</strong> Die schrittweise Kontextanpassung ist keine offizielle ACR-Entscheidungsregel. Das Tool visualisiert ein vereinfachtes Lehrmodell; BI-RADS-Kategorie und Management ergeben sich aus der vollständigen ärztlichen Gesamtbeurteilung.</p>
+    </div>
+    <p className={caseStyles.biradsCaption}>Orientierungsmodell nach Youk et al., Korean J Radiol., und ACR BI-RADS® Atlas, 5. Auflage.</p>
+  </div>
+}
 function Lines({children}){return <span style={{whiteSpace:'pre-line'}}>{children}</span>}
 function GermanContent(){return <>
   <Section {...GERMAN_SECTIONS[0]} title={GERMAN_SECTIONS[0].label.de}>
@@ -116,29 +181,7 @@ function GermanContent(){return <>
 
   <Section {...GERMAN_SECTIONS[5]} title={GERMAN_SECTIONS[5].label.de}>
     <p className={styles.lead}>Nicht Morphologie oder Verteilung allein, sondern ihre Kombination bestimmt die klinische Risikoklasse. Dies ist der zentrale Schritt der Kalkdiagnostik.</p>
-    <h3 className={styles.takeTitle}>Morphologie × Verteilung: direkte Modellkategorie</h3>
-    <div className={caseStyles.biradsMatrix}>
-      <table>
-        <thead>
-          <tr><th>Morphologie ↓</th><th>diffus</th><th>regional</th><th>gruppiert</th><th>linear</th><th>segmental</th></tr>
-        </thead>
-        <tbody>
-          <tr><th>rund</th><td className={caseStyles.cat3}>3</td><td className={caseStyles.cat3}>3</td><td className={caseStyles.cat3}>3</td><td className={caseStyles.cat3}>3</td><td className={caseStyles.cat4b}>4B</td></tr>
-          <tr><th>amorph</th><td className={caseStyles.cat3}>3</td><td className={caseStyles.cat3}>3</td><td className={caseStyles.cat4b}>4B</td><td className={caseStyles.cat4b}>4B</td><td className={caseStyles.cat4b}>4B</td></tr>
-          <tr><th>grob heterogen</th><td className={caseStyles.cat3}>3</td><td className={caseStyles.cat3}>3</td><td className={caseStyles.cat4a}>4A</td><td className={caseStyles.cat4b}>4B</td><td className={caseStyles.cat4b}>4B</td></tr>
-          <tr><th>fein pleomorph</th><td className={caseStyles.cat4b}>4B</td><td className={caseStyles.cat4b}>4B</td><td className={caseStyles.cat4c}>4C</td><td className={caseStyles.cat4c}>4C</td><td className={caseStyles.cat4c}>4C</td></tr>
-          <tr><th>fein linear / verzweigt</th><td className={caseStyles.cat4c}>4C</td><td className={caseStyles.cat4b}>4B</td><td className={caseStyles.cat4c}>4C</td><td className={caseStyles.cat5}>5</td><td className={caseStyles.cat5}>5</td></tr>
-        </tbody>
-      </table>
-      <p className={caseStyles.biradsCaption}>Vereinfachtes Modell zur Orientierung – ersetzt nicht die individuelle BI-RADS-Gesamtbeurteilung. Nach Youk et al., Korean J Radiol.</p>
-      <div className={caseStyles.biradsModifiers}>
-        <span>↑ neu / zunehmend</span>
-        <span>↑ Ausdehnung &gt;15 mm</span>
-        <span>↑ Masse / Architekturstörung</span>
-        <span>↑ Alter / persönliche Anamnese</span>
-        <span>↓ Stabilität*</span>
-      </div>
-    </div>
+    <KalkAssessment/>
   </Section>
 
   <Section {...GERMAN_SECTIONS[6]} title={GERMAN_SECTIONS[6].label.de}>
