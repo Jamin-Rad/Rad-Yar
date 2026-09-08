@@ -255,38 +255,30 @@ Sie entsprechen meist Verkalkungen innerhalb eines Milchganges oder entlang der 
   </Section>
 
   <Section {...GERMAN_SECTIONS[7]} title={GERMAN_SECTIONS[7].label.de}>
-    <p className={styles.lead}>Die Mammographie bleibt die wichtigste Methode zur Detektion und Charakterisierung von Mikroverkalkungen.</p>
-    <div className={styles.techSplit}>
-      <article><small>US</small><h3>Makroverkalkungen</h3><p><Lines>{`Sie können im Ultraschall echogen erscheinen und einen dorsalen Schallschatten verursachen, beispielsweise bei:
-
-Fibroadenomen
-Ölzysten
-Fettnekrose`}</Lines></p></article>
-      <article><small>US</small><h3>Mikroverkalkungen</h3><p><Lines>{`Sie können als kleine echogene Foci sichtbar werden, insbesondere wenn sie:
-
-innerhalb einer Masse,
-innerhalb einer Non-Mass-Läsion oder
-intraduktal
-
-liegen.`}</Lines></p></article>
+    <p className={styles.lead}>Die Mammographie beurteilt den Kalk. Ultraschall und MRT ergänzen die Beurteilung des umgebenden Gewebes und helfen bei der weiteren Abklärung.</p>
+    <div className={caseStyles.modalityComparison}>
+      <article>
+        <header><h3>Ultraschall</h3><p>Korrelat &amp; Biopsieplanung</p></header>
+        <dl>
+          <div><dt>Sichtbarkeit</dt><dd>Grober Kalk erscheint echogen, teils mit Schallschatten. Mikrokalk kann als feine echogene Foci sichtbar sein – besonders in einer Masse, einer Non-Mass-Läsion oder einem Gang.</dd></div>
+          <div><dt>Zusatznutzen</dt><dd>Assoziierte Gewebeveränderungen gezielt mitbeurteilen. Ein eindeutig zugeordnetes Korrelat kann eine ultraschallgesteuerte Biopsie ermöglichen.</dd></div>
+          <div><dt>Grenze</dt><dd>Fehlende sonographische Sichtbarkeit schließt einen suspekten Kalkbefund nicht aus.</dd></div>
+        </dl>
+      </article>
+      <article id="mrt">
+        <header><h3>MRT</h3><p>Enhancement &amp; Ausdehnung</p></header>
+        <dl>
+          <div><dt>Sichtbarkeit</dt><dd>Die kontrastverstärkte MRT zeigt die Kontrastmittelaufnahme des Gewebes; die Kalkpartikel selbst werden nicht zuverlässig dargestellt.</dd></div>
+          <div><dt>Zusatznutzen</dt><dd>Bei entsprechender Fragestellung die Läsionsausdehnung, zusätzliche Herde und Hinweise auf eine invasive Komponente beurteilen.</dd></div>
+          <div><dt>Grenze</dt><dd>Eine unauffällige MRT schließt ein DCIS nicht sicher aus und beweist keine Benignität.</dd></div>
+        </dl>
+      </article>
     </div>
-    <div className={styles.rule}><strong>Biopsieplanung</strong><p>Ein sonographisches Korrelat kann insbesondere für die weitere Biopsieplanung hilfreich sein.</p></div>
+    <div className={styles.rule}><strong>Merke</strong><p>Ein unauffälliger Ultraschall oder eine negative MRT hebt eine mammographisch begründete Biopsieindikation nicht automatisch auf.</p></div>
+    <p className={caseStyles.caseCredit}>Weiterlesen: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9214693/" target="_blank" rel="noreferrer">Konsensus zur bildgebenden Brustdiagnostik</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/" target="_blank" rel="noreferrer">MRT bei suspekten Mikroverkalkungen: Metaanalyse</a>.</p>
   </Section>
 
   <Section {...GERMAN_SECTIONS[8]} title={GERMAN_SECTIONS[8].label.de}>
-    <p className={styles.lead}>Die MRT kann die Risikoeinschätzung ergänzen, ersetzt aber nicht die Histologie.</p>
-    <div className={styles.techSplit}>
-      <article><small>MRT</small><h3>Sie kann:</h3><p><Lines>{`eine invasive Komponente erkennen,
-die Ausdehnung besser darstellen,
-zusätzliche Läsionen zeigen,
-ausgewählte niedrig suspekte Befunde weiter stratifizieren.`}</Lines></p></article>
-      <article><small>MRT</small><h3>Ein negatives MRT kann dagegen:</h3><p><Lines>{`ein DCIS nicht sicher ausschließen,
-eine klare Biopsieindikation bei suspektem Mikrokalk nicht automatisch aufheben.`}</Lines></p></article>
-    </div>
-    <div className={styles.caution}>Ein negatives MRT macht einen suspekten mammographischen Kalkbefund nicht automatisch benign.</div>
-  </Section>
-
-  <Section {...GERMAN_SECTIONS[9]} title={GERMAN_SECTIONS[9].label.de}>
     <h3 className={styles.takeTitle}>Take Home</h3>
     <ol className={styles.takeHome}>
       <li><span>01</span><strong>Kalk ist keine Diagnose – Morphologie und Verteilung bestimmen das Ausgangsrisiko.</strong></li>

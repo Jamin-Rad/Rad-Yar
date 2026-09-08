@@ -477,6 +477,27 @@
   color: #fff;
 }
 
+.modalityComparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.modalityComparison article {
+  min-width: 0;
+  border-top: 3px solid var(--calc);
+  padding-top: 18px;
+}
+.modalityComparison article + article { border-top-color: #329aaa; }
+.modalityComparison header h3 { margin: 0; color: var(--text-strong); font: 800 1.4rem/1.2 Georgia, serif; }
+.modalityComparison header p { margin: 7px 0 18px; color: var(--text-muted); font-size: 0.85rem; }
+.modalityComparison dl { margin: 0; }
+.modalityComparison dl > div { padding: 16px 0; border-top: 1px solid rgba(148, 163, 184, 0.25); }
+.modalityComparison dt { margin-bottom: 7px; color: var(--text-strong); font-size: 0.82rem; font-weight: 800; }
+.modalityComparison dd { margin: 0; color: var(--text-muted); font-size: 0.88rem; line-height: 1.65; }
+@media (max-width: 760px) {
+  .modalityComparison { grid-template-columns: 1fr; gap: 26px; }
+}
+
 .assessment {
   display: grid;
   gap: 20px;
