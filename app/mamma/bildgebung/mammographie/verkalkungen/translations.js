@@ -862,9 +862,9 @@ export const LESSON_TRANSLATIONS = {
     "en": "BI-RADS 4/5 generally requires tissue diagnosis. MRI-supported biopsy avoidance in selected low-suspicion cases is an individual strategy, not an automatic calculator step.",
     "fa": "BI-RADS 4/5 اصولاً نیازمند تشخیص بافتی است. صرف‌نظر از بیوپسی با اتکا به MRI در موارد منتخب با شک پایین، یک راهبرد فردی است، نه مرحله خودکار محاسبه‌گر."
   },
-  "Bei ausgewählten niedrig suspekten Fällen kann ein MRT-gestützter Biopsieverzicht individuell erwogen werden – er ist kein automatischer Schritt des Rechners.": {
-    "en": "In selected low-suspicion cases, MRI-supported biopsy avoidance may be considered individually—it is not an automatic calculator step.",
-    "fa": "در موارد منتخب با شک پایین، می‌توان صرف‌نظر از بیوپسی با اتکا به MRI را به‌صورت فردی در نظر گرفت؛ این یک مرحله خودکار محاسبه‌گر نیست."
+  "Bei ausgewählten niedrig suspekten Fällen kann ein MRT-gestützter Biopsieverzicht individuell erwogen werden.": {
+    "en": "In selected low-suspicion cases, MRI-supported biopsy avoidance may be considered individually.",
+    "fa": "در موارد منتخب با شک پایین، می‌توان صرف‌نظر از بیوپسی با اتکا به MRI را به‌صورت فردی در نظر گرفت."
   },
   "×": {
     "en": "×",

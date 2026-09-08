@@ -313,7 +313,7 @@ function LessonContent({lang}){const t=value=>translateLesson(value,lang);return
       <li><span className={caseStyles.takeHomeNumber}>04</span><div><h3>{pick(L("Stabilität","Stability","پایداری"),lang)}</h3><p>{t("Auch langfristige Stabilität schließt DCIS bei suspekter Morphologie nicht aus.")}</p></div></li>
       <li><span className={caseStyles.takeHomeNumber}>05</span><div><h3>{pick(L("Duktaler Prozess","Ductal process","فرایند مجرایی"),lang)}</h3><p>{t("Suspekter Mikrokalk kann DCIS oder ein invasives Karzinom mit intraduktaler Komponente begleiten. Das Bild beweist keine bestimmte Histologie.")}</p></div></li>
       <li><span className={caseStyles.takeHomeNumber}>06</span><div><h3>{pick(L("Ultraschall & MRT","Ultrasound & MRI","سونوگرافی و MRI"),lang)}</h3><p>{t("Ultraschall hilft bei Korrelatsuche und Biopsieplanung; MRT ergänzt Gewebe- und Ausdehnungsbeurteilung. Eine negative MRT schließt DCIS nicht vollständig aus.")}</p></div></li>
-      <li><span className={caseStyles.takeHomeNumber}>07</span><div><h3>{pick(L("Individuelle Entscheidung","Individual decision","تصمیم‌گیری فردی"),lang)}</h3><p>{t("Bei ausgewählten niedrig suspekten Fällen kann ein MRT-gestützter Biopsieverzicht individuell erwogen werden – er ist kein automatischer Schritt des Rechners.")}</p></div></li>
+      <li><span className={caseStyles.takeHomeNumber}>07</span><div><h3>{pick(L("Individuelle Entscheidung","Individual decision","تصمیم‌گیری فردی"),lang)}</h3><p>{t("Bei ausgewählten niedrig suspekten Fällen kann ein MRT-gestützter Biopsieverzicht individuell erwogen werden.")}</p></div></li>
     </ol>
   </Section>
 </>}
