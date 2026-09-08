@@ -186,10 +186,10 @@ function GermanContent(){return <>
 
   <Section {...GERMAN_SECTIONS[6]} title={GERMAN_SECTIONS[6].label.de}>
     <h3 className={`${styles.takeTitle} ${caseStyles.benignSectionTitle}`}>Typisch benigne Verkalkungen außerhalb des Drüsenparenchyms</h3>
-    <div className={styles.techSplit}>
-      <article><small>HAUT</small><h3>Hautverkalkungen</h3><p>Typischerweise rund oder oval und oberflächlich gelegen.</p></article>
-      <article><small>GEFÄSS</small><h3>Vaskuläre Verkalkungen</h3><p>Typischerweise dicht und linear entlang eines Gefäßverlaufs.</p></article>
-      <article><small>SUTURA</small><h3>Nahtverkalkungen</h3><p>Lineare oder kurvilineare Verkalkungen entlang von Nahtmaterial nach Operationen.</p></article>
+    <div className={`${styles.benignList} ${caseStyles.benignGrid}`}>
+      <article><span>HAUT</span><div><h3>Hautverkalkungen</h3><p>Typischerweise rund oder oval und oberflächlich gelegen.</p></div></article>
+      <article><span>GEFÄSS</span><div><h3>Vaskuläre Verkalkungen</h3><p>Typischerweise dicht und linear entlang eines Gefäßverlaufs.</p></div></article>
+      <article><span>SUTURA</span><div><h3>Nahtverkalkungen</h3><p>Lineare oder kurvilineare Verkalkungen entlang von Nahtmaterial nach Operationen.</p></div></article>
     </div>
     <article className={caseStyles.caseStudy}>
       <header className={caseStyles.caseHeader}>
