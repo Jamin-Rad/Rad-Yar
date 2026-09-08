@@ -377,6 +377,12 @@
   border-top: 4px solid var(--calc);
 }
 
+.distributionRiskScale article:nth-child(4),
+.distributionRiskScale article:nth-child(5) {
+  background: linear-gradient(160deg, rgba(231, 51, 104, 0.14), var(--bg-card));
+  border-top: 4px solid var(--calc);
+}
+
 .morphologyScale {
   grid-template-columns: repeat(5, minmax(190px, 1fr)) !important;
   overflow-x: auto;
