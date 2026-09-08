@@ -96,6 +96,25 @@ function GermanContent(){return <>
   </Section>
 
   <Section {...GERMAN_SECTIONS[4]} title={GERMAN_SECTIONS[4].label.de}>
+    <p className={styles.lead}>Bei gleicher Morphologie kann eine größere Ausdehnung mit einem höheren Malignitätsrisiko einhergehen.</p>
+    <div className={caseStyles.extentChartCard}>
+      <p className={caseStyles.extentChartTitle}>Positiv prädiktiver Wert nach Ausdehnung</p>
+      <div className={caseStyles.extentChart} role="img" aria-label="Balkendiagramm: Positiv prädiktiver Wert steigt von 0 % bei unter 5 mm Ausdehnung auf 66,7 % bei über 50 mm Ausdehnung">
+        <div className={caseStyles.extentAxis}><span>80 %</span><span>60 %</span><span>40 %</span><span>20 %</span><span>0 %</span></div>
+        <div className={caseStyles.extentBars}>
+          <div><b>0 %</b><i style={{height:'0%'}}></i><small>&lt;5 mm</small></div>
+          <div><b>13 %</b><i style={{height:'16%'}}></i><small>5–10 mm</small></div>
+          <div><b>30,4 %</b><i style={{height:'38%'}}></i><small>10–20 mm</small></div>
+          <div><b>47,8 %</b><i style={{height:'60%'}}></i><small>20–50 mm</small></div>
+          <div><b>66,7 %</b><i style={{height:'83%'}}></i><small>&gt;50 mm</small></div>
+        </div>
+      </div>
+      <small className={caseStyles.biradsCaption}>PPV in der untersuchten Biopsiekohorte, nach Gesamtausdehnung der Verkalkungen (mm).<br/><br/>Metaxa, Healy &amp; O’Keeffe, Br J Radiol. 2019;92:20190177.</small>
+    </div>
+    <div className={styles.rule}><strong>Merke</strong><p>Die Ausdehnung ist unabhängig von der Morphologie ein eigenständiger Risikofaktor und relevant für die Beurteilung einer möglichen DCIS-Ausdehnung sowie die Therapieplanung.</p></div>
+  </Section>
+
+  <Section {...GERMAN_SECTIONS[5]} title={GERMAN_SECTIONS[5].label.de}>
     <p className={styles.lead}>Dies ist der zentrale Schritt der Kalkdiagnostik.</p>
     <p className={styles.lead}>Die Morphologie bestimmt das Ausgangsrisiko, die Verteilung modifiziert dieses Risiko.</p>
     <h3 className={styles.takeTitle}>Beispiele:</h3>
@@ -131,41 +150,7 @@ function GermanContent(){return <>
     </div>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[5]} title={GERMAN_SECTIONS[5].label.de}>
-    <p className={styles.lead}>Nach Morphologie und Verteilung müssen drei weitere Fragen beantwortet werden.</p>
-    <div className={styles.context}>
-      <article><span>01</span><h3>Sind die Verkalkungen neu oder zunehmend?</h3><p>Neue oder zunehmende Verkalkungen sind verdächtiger als langfristig stabile Befunde.<br/><br/>Deshalb sollten Voraufnahmen konsequent verglichen werden.</p></article>
-      <article><span>02</span><h3>Wie groß ist die Ausdehnung?</h3><p>Die Gesamtausdehnung des Kalkareals sollte angegeben werden.<br/><br/>Ein wenige Millimeter großes Cluster und ein mehrere Zentimeter ausgedehnter Befund gleicher Morphologie sind nicht gleichwertig.<br/><br/>Die Ausdehnung ist außerdem relevant für die Beurteilung einer möglichen DCIS-Ausdehnung und für die Therapieplanung.</p></article>
-      <article><span>03</span><h3>Gibt es einen Begleitbefund?</h3><p><Lines>{`Immer das umgebende Brustgewebe beurteilen:
-
-Masse?
-Architekturstörung?
-Asymmetrie?
-Haut- oder Mamillenveränderung?`}</Lines></p></article>
-    </div>
-    <div className={styles.caution}>Eine assoziierte Masse oder Architekturstörung kann insbesondere auf eine invasive Komponente hinweisen.</div>
-  </Section>
-
   <Section {...GERMAN_SECTIONS[6]} title={GERMAN_SECTIONS[6].label.de}>
-    <p className={styles.lead}>Bei gleicher Morphologie kann eine größere Ausdehnung mit einem höheren Malignitätsrisiko einhergehen.</p>
-    <div className={caseStyles.extentChartCard}>
-      <p className={caseStyles.extentChartTitle}>Positiv prädiktiver Wert nach Ausdehnung</p>
-      <div className={caseStyles.extentChart} role="img" aria-label="Balkendiagramm: Positiv prädiktiver Wert steigt von 0 % bei unter 5 mm Ausdehnung auf 66,7 % bei über 50 mm Ausdehnung">
-        <div className={caseStyles.extentAxis}><span>80 %</span><span>60 %</span><span>40 %</span><span>20 %</span><span>0 %</span></div>
-        <div className={caseStyles.extentBars}>
-          <div><b>0 %</b><i style={{height:'0%'}}></i><small>&lt;5 mm</small></div>
-          <div><b>13 %</b><i style={{height:'16%'}}></i><small>5–10 mm</small></div>
-          <div><b>30,4 %</b><i style={{height:'38%'}}></i><small>10–20 mm</small></div>
-          <div><b>47,8 %</b><i style={{height:'60%'}}></i><small>20–50 mm</small></div>
-          <div><b>66,7 %</b><i style={{height:'83%'}}></i><small>&gt;50 mm</small></div>
-        </div>
-      </div>
-      <small className={caseStyles.biradsCaption}>PPV in der untersuchten Biopsiekohorte, nach Gesamtausdehnung der Verkalkungen (mm).<br/><br/>Metaxa, Healy &amp; O’Keeffe, Br J Radiol. 2019;92:20190177.</small>
-    </div>
-    <div className={styles.rule}><strong>Merke</strong><p>Die Ausdehnung ist unabhängig von der Morphologie ein eigenständiger Risikofaktor und relevant für die Beurteilung einer möglichen DCIS-Ausdehnung sowie die Therapieplanung.</p></div>
-  </Section>
-
-  <Section {...GERMAN_SECTIONS[7]} title={GERMAN_SECTIONS[7].label.de}>
     <h3 className={`${styles.takeTitle} ${caseStyles.benignSectionTitle}`}>Typisch benigne Verkalkungen außerhalb des Drüsenparenchyms</h3>
     <div className={styles.techSplit}>
       <article><small>HAUT</small><h3>Hautverkalkungen</h3><p>Typischerweise rund oder oval und oberflächlich gelegen.</p></article>
@@ -253,7 +238,7 @@ Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifi
     </article>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[8]} title={GERMAN_SECTIONS[8].label.de}>
+  <Section {...GERMAN_SECTIONS[7]} title={GERMAN_SECTIONS[7].label.de}>
     <div className={styles.modalityRows}>
       <article><strong>DCIS</strong><p>Suspekte Mikroverkalkungen sind häufig mit einem duktalen Carcinoma in situ (DCIS) assoziiert.</p></article>
       <article><strong>Maligner Kalk</strong><p>Maligner Kalk bedeutet jedoch nicht automatisch reines DCIS. Es kann ebenfalls ein invasives Karzinom mit begleitender intraduktaler Komponente vorliegen.</p></article>
@@ -261,7 +246,7 @@ Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifi
     </div>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[9]} title={GERMAN_SECTIONS[9].label.de}>
+  <Section {...GERMAN_SECTIONS[8]} title={GERMAN_SECTIONS[8].label.de}>
     <p className={styles.lead}>Die Mammographie bleibt die wichtigste Methode zur Detektion und Charakterisierung von Mikroverkalkungen.</p>
     <div className={styles.techSplit}>
       <article><small>US</small><h3>Makroverkalkungen</h3><p><Lines>{`Sie können im Ultraschall echogen erscheinen und einen dorsalen Schallschatten verursachen, beispielsweise bei:
@@ -280,7 +265,7 @@ liegen.`}</Lines></p></article>
     <div className={styles.rule}><strong>Biopsieplanung</strong><p>Ein sonographisches Korrelat kann insbesondere für die weitere Biopsieplanung hilfreich sein.</p></div>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[10]} title={GERMAN_SECTIONS[10].label.de}>
+  <Section {...GERMAN_SECTIONS[9]} title={GERMAN_SECTIONS[9].label.de}>
     <p className={styles.lead}>Die MRT kann die Risikoeinschätzung ergänzen, ersetzt aber nicht die Histologie.</p>
     <div className={styles.techSplit}>
       <article><small>MRT</small><h3>Sie kann:</h3><p><Lines>{`eine invasive Komponente erkennen,
@@ -293,7 +278,7 @@ eine klare Biopsieindikation bei suspektem Mikrokalk nicht automatisch aufheben.
     <div className={styles.caution}>Ein negatives MRT macht einen suspekten mammographischen Kalkbefund nicht automatisch benign.</div>
   </Section>
 
-  <Section {...GERMAN_SECTIONS[11]} title={GERMAN_SECTIONS[11].label.de}>
+  <Section {...GERMAN_SECTIONS[10]} title={GERMAN_SECTIONS[10].label.de}>
     <ol className={styles.algorithm}>
       <li><span>1</span><strong>Kalk erkennen</strong></li>
       <li><span>2</span><strong><Lines>{`Darstellung ausreichend?
