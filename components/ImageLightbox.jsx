@@ -9,18 +9,25 @@ const MIN_SIZE = 56
 
 function isExcluded(img) {
   if (img.closest('[data-no-zoom]')) return true
+  if (img.closest('[data-lightbox-image]')) return true
   if (img.closest('nav, header, footer')) return true
   if (img.getAttribute('aria-hidden') === 'true') return true
   if (img.getAttribute('role') === 'presentation') return true
   if (img.closest('[class*="logo" i], [class*="icon" i], [class*="avatar" i]')) return true
-  const link = img.closest('a[href]')
-  if (link) {
-    const href = link.getAttribute('href')
-    if (href && href !== '#' && !href.startsWith('javascript:')) return true
-  }
   const rect = img.getBoundingClientRect()
   if (rect.width < MIN_SIZE || rect.height < MIN_SIZE) return true
   return false
+}
+
+function getOriginalSource(img) {
+  const source = img.currentSrc || img.src
+  try {
+    const url = new URL(source, window.location.href)
+    if (url.pathname === '/_next/image' && url.searchParams.has('url')) return decodeURIComponent(url.searchParams.get('url'))
+  } catch {
+    // Keep the browser-provided source when the URL cannot be parsed.
+  }
+  return source
 }
 
 function clamp(value, min, max) {
@@ -47,7 +54,7 @@ export default function ImageLightbox() {
 
       setScale(1)
       setPos({ x: 0, y: 0 })
-      setImage({ src: img.currentSrc || img.src, alt: img.alt || '' })
+      setImage({ src: getOriginalSource(img), alt: img.alt || '' })
     }
 
     document.addEventListener('click', handleClick, true)
@@ -176,6 +183,7 @@ export default function ImageLightbox() {
         <img
           src={image.src}
           alt={image.alt}
+          data-lightbox-image="true"
           draggable={false}
           className={styles.image}
           style={{
