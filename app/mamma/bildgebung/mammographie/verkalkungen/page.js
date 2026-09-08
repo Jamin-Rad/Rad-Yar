@@ -279,22 +279,6 @@ eine klare Biopsieindikation bei suspektem Mikrokalk nicht automatisch aufheben.
   </Section>
 
   <Section {...GERMAN_SECTIONS[10]} title={GERMAN_SECTIONS[10].label.de}>
-    <ol className={styles.algorithm}>
-      <li><span>1</span><strong>Kalk erkennen</strong></li>
-      <li><span>2</span><strong><Lines>{`Darstellung ausreichend?
-
-Falls notwendig: Vergrößerungsaufnahmen`}</Lines></strong></li>
-      <li><span>3</span><strong><Lines>{`Morphologie bestimmen
-
-rund → amorph → grob heterogen → fein pleomorph → fein linear/verzweigt`}</Lines></strong></li>
-      <li><span>4</span><strong><Lines>{`Verteilung bestimmen
-
-diffus → regional → gruppiert → linear → segmental`}</Lines></strong></li>
-      <li><span>5</span><strong><Lines>{`Zusatzkriterien prüfen
-
-Verlauf + Ausdehnung + Begleitbefunde + klinischer Kontext`}</Lines></strong></li>
-      <li><span>6</span><strong>BI-RADS und Konsequenz</strong></li>
-    </ol>
     <h3 className={styles.takeTitle}>Take Home</h3>
     <ol className={styles.takeHome}>
       <li><span>01</span><strong>Kalk ist keine Diagnose – Morphologie und Verteilung bestimmen das Ausgangsrisiko.</strong></li>
