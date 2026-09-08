@@ -477,6 +477,38 @@
   color: #fff;
 }
 
+.techniqueNote { padding: 16px 18px; border-left: 3px solid #329aaa; background: rgba(50, 154, 170, 0.05); color: var(--text-muted); font-size: 0.88rem; line-height: 1.65; }
+.clinicalNotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 24px; }
+.clinicalNotes article { padding: 20px; border: 1px solid rgba(148, 163, 184, 0.28); border-radius: 14px; background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(50,154,170,0.04)); }
+.clinicalNotes h3 { margin: 0 0 12px; font-size: 1rem; color: var(--text-strong); }
+.clinicalNotes p { margin: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
+.multiParagraph { grid-template-columns: 1fr; gap: 12px; }
+.warningSigns { margin-top: 24px; padding: 20px; border-left: 3px solid var(--calc); background: rgba(239, 45, 104, 0.045); border-radius: 0 12px 12px 0; }
+.warningSigns strong { color: var(--text-strong); }
+.warningSigns p { margin: 10px 0; color: var(--text-muted); line-height: 1.65; }
+.warningSigns small { color: var(--text-muted); }
+.resultMri { margin: 12px 0 0; padding-top: 12px; border-top: 1px solid currentColor; font-size: 0.8rem; line-height: 1.5; }
+.mriManagement { min-width: 0; width: 100%; margin-top: 26px; border-top: 3px solid #329aaa; padding-top: 22px; }
+.mriManagement header small { color: var(--text-muted); font-size: 0.75rem; }
+.mriManagement h3 { margin: 8px 0 20px; color: var(--text-strong); font: 800 1.3rem/1.3 Georgia, serif; }
+.mriManagement > p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.7; }
+.mriTableScroll { min-width: 0; max-width: 100%; overflow-x: auto; border: 1px solid rgba(148,163,184,0.3); border-radius: 14px; }
+.mriTableScroll table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem; line-height: 1.6; }
+.mriTableScroll caption { text-align: left; padding: 12px 16px; color: var(--text-muted); font-size: 0.75rem; }
+.mriTableScroll th, .mriTableScroll td { padding: 14px 16px; border-top: 1px solid rgba(148,163,184,0.25); vertical-align: top; }
+.mriTableScroll thead { background: rgba(50,154,170,0.06); color: var(--text-strong); }
+.mriTableScroll tbody { color: var(--text-muted); }
+.mriTableScroll tbody th span { display: inline-grid; place-items: center; width: 42px; height: 42px; border-radius: 10px; font-weight: 800; }
+.mriTableScroll .cat4a { background: #187c99; color: #fff; }
+.mriTableScroll .cat4b { background: #2446b1; color: #fff; }
+.mriTableScroll .cat4c { background: #a96a15; color: #fff; }
+.mriTableScroll .cat5 { background: #b21f53; color: #fff; }
+.mriTableScroll th:first-child { white-space: nowrap; }
+@media (max-width: 760px) {
+  .clinicalNotes { grid-template-columns: 1fr; }
+  .mriTableScroll table { min-width: 520px; }
+}
+
 .modalityComparison {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -536,7 +568,7 @@
   display: block;
   margin-top: 5px;
   color: var(--text-muted);
-  font: 650 0.6rem/1.3 var(--font-main);
+  font: 650 0.7rem/1.3 var(--font-main, Arial, sans-serif);
   letter-spacing: 0.01em;
   white-space: nowrap;
 }
@@ -757,7 +789,7 @@
 }
 
 .contextPanelHead h4 { margin: 0; color: var(--text-strong); font: 800 1.2rem/1.25 Georgia, serif; white-space: nowrap; }
-.contextFactorGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.contextFactorGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 
 .contextFactor {
   display: grid;

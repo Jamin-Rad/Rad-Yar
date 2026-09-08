@@ -36,16 +36,17 @@ const CALC_MATRIX={
 }
 const CALC_CLASS={'3':'cat3','4A':'cat4a','4B':'cat4b','4C':'cat4c','5':'cat5'}
 const CALC_META={
-  '3':{risk:'< 2 %',label:'wahrscheinlich benigne',action:'Kurzzeit-Verlaufskontrolle'},
-  '4A':{risk:'2–10 %',label:'gering suspekt',action:'Biopsie erwägen'},
-  '4B':{risk:'10–50 %',label:'mäßig suspekt',action:'Biopsie empfohlen'},
-  '4C':{risk:'50–95 %',label:'stark suspekt',action:'Biopsie dringend empfohlen'},
-  '5':{risk:'> 95 %',label:'hochgradig malignomverdächtig',action:'Histologische Sicherung erforderlich'},
+  '3':{risk:'> 0 bis ≤ 2 %',label:'wahrscheinlich benigne',action:'Bei bestätigter Kategorie: Kontrolle nach 6 Monaten',mri:'Eine MRT ist für die reguläre BI-RADS-3-Verlaufskontrolle nicht erforderlich.'},
+  '4A':{risk:'> 2 bis ≤ 10 %',label:'gering suspekt',action:'Biopsie empfohlen',mri:'Negative MRT: kein automatischer Biopsieverzicht. Eine abweichende Strategie erfordert eine begründete Einzelfallentscheidung.'},
+  '4B':{risk:'> 10 bis ≤ 50 %',label:'mäßig suspekt',action:'Biopsie empfohlen',mri:'Negative MRT: Die Biopsieindikation bleibt in der Regel bestehen; keine pauschale Herabstufung.'},
+  '4C':{risk:'> 50 bis < 95 %',label:'stark suspekt',action:'Biopsie empfohlen',mri:'Negative MRT: histologische Abklärung weiterhin erforderlich.'},
+  '5':{risk:'≥ 95 %',label:'hochgradig malignomverdächtig',action:'Histologische Sicherung erforderlich',mri:'Negative MRT: Biopsie erforderlich; der hochsuspekte Mammographiebefund bleibt maßgeblich.'},
 }
 const CALC_FACTORS=[
-  {key:'progression',group:'Verlauf',title:'Auf Veränderungen achten',text:'Im Vergleich mit Voraufnahmen auf Neuauftreten, Zunahme oder Stabilität achten.'},
-  {key:'extent',group:'Ausdehnung',title:'Gesamtausdehnung mitbeurteilen',text:'Die Ausdehnung des Kalkareals in zwei Ebenen berücksichtigen.'},
-  {key:'associated',group:'Begleitbefunde',title:'Begleitzeichen beachten',text:'Masse, Architekturstörung, Asymmetrie sowie Haut- oder Mamillenveränderungen mitbeurteilen.'},
+  {key:'progression',group:'Verlauf',title:'Neu, zunehmend oder stabil?',text:'Neuauftreten und Progression erhöhen den Verdacht. Stabilität kann entlasten, schließt bei suspekter Morphologie aber Malignität nicht aus.'},
+  {key:'extent',group:'Ausdehnung',title:'Das gesamte Kalkareal beachten',text:'Eine größere Ausdehnung kann das Risiko erhöhen. Mehr als 15 mm sind jedoch kein allgemeiner BI-RADS-Grenzwert für eine Hochstufung.'},
+  {key:'associated',group:'Begleitbefunde',title:'Masse oder Architekturstörung?',text:'Assoziierte Gewebeveränderungen können den Verdacht verstärken. Auch Asymmetrie sowie Haut- und Mamillenveränderungen mitbeurteilen.'},
+  {key:'history',group:'Risikokontext',title:'Alter und Anamnese einbeziehen',text:'Höheres Alter und eine persönliche Brustkrebsanamnese können das Ausgangsrisiko erhöhen. Entscheidend bleibt der Gesamtbefund.'},
 ]
 function Section({id,number,title,children}){const mobile=useMobileLearningLayout();const[open,setOpen]=useState(true);useEffect(()=>setOpen(!mobile),[mobile,id]);return <section id={id} className={`${base.section} ${basics.section} ${styles.section}`}><button type="button" className={`${base.sectionHeader} ${basics.sectionHeader}`} onClick={()=>setOpen(v=>!v)} aria-expanded={open}><span className={basics.sectionHeading}><small>{number}</small><h2>{title}</h2></span><span className={basics.sectionToggle}>{open?'−':'+'}</span></button>{open&&<div className={`${base.sectionBody} ${basics.sectionBody} ${styles.sectionBody}`}>{children}</div>}</section>}
 function ReadButton({lang,isRead,toggle,authError}){const t=READ[lang]||READ.de;return <div className={base.readControl}><button type="button" className={`${base.readButton} ${basics.readButton} ${isRead?`${base.readButtonActive} ${basics.readButtonActive}`:''}`} onClick={toggle}><span className={`${base.readCheck} ${basics.readCheck}`}>{isRead?'✓':''}</span><span>{isRead?t[1]:t[0]}</span></button>{authError&&<div className={base.readError}><span>{t[2]}</span><Link href="/sign-in">{t[3]}</Link></div>}</div>}
@@ -69,7 +70,7 @@ function KalkAssessment(){
         <label><span>2 · Verteilung</span><select value={dist} onChange={event=>setDist(event.target.value)}>{DISTRIBUTION.map(item=><option key={item.key} value={item.key}>{item.title.de}</option>)}</select></label>
       </div>
       <div className={`${caseStyles.assessmentResult} ${caseStyles[CALC_CLASS[resultCategory]]}`} aria-live="polite">
-        <span>Modellergebnis</span><strong>BI-RADS {resultCategory}</strong><b>{result.label}</b><small>Malignitätsrisiko {result.risk} · {result.action}</small>
+        <span>Modellergebnis</span><strong>BI-RADS {resultCategory}</strong><b>{result.label}</b><small>Risikorahmen der Kategorie: {result.risk}</small><small>{resultCategory==='3'&&!(morph==='round'&&dist==='grouped')?'Klinische Kategorie gesondert prüfen: Dieses Modellergebnis begründet keine Verlaufskontrolle.':result.action}</small><p className={caseStyles.resultMri}>{result.mri}</p>
       </div>
     </div>
     <div className={caseStyles.matrixHeading}><small>Kategorien im Überblick</small></div>
@@ -79,10 +80,11 @@ function KalkAssessment(){
         <tbody>{MORPH.map(item=><tr key={item.key}><th className={morph===item.key?caseStyles.axisActive:''}>{item.title.de}</th>{DISTRIBUTION.map(distribution=>{const value=CALC_MATRIX[item.key][distribution.key];const active=item.key===morph&&distribution.key===dist;return <td key={distribution.key} className={`${caseStyles[CALC_CLASS[value]]} ${active?caseStyles.cellActive:''}`}><button type="button" onClick={()=>selectCell(item.key,distribution.key)} aria-label={`${item.title.de}, ${distribution.title.de}: BI-RADS ${value}`} aria-pressed={active}>{value}</button></td>})}</tr>)}</tbody>
       </table>
     </div>
-    <p className={caseStyles.biradsCaption}>Matrix: vereinfachte Orientierung nach dem Scoring-Modell von Youk et al., Korean J Radiol. · Terminologie: ACR BI-RADS® Atlas, 5. Auflage.</p>
+    <p className={caseStyles.biradsCaption}>Matrix: vereinfachte Orientierung nach dem Scoring-Modell von Youk et al., Korean J Radiol. · Terminologie: ACR BI-RADS® Atlas, 5. Auflage. Das Studienmodell ersetzt keine klinische BI-RADS-Zuordnung; die Risikospannen sind keine individuelle Risikoberechnung.</p>
     <div className={caseStyles.contextPanel}>
-      <div className={caseStyles.contextPanelHead}><h4>Verlauf, Ausdehnung &amp; Begleitbefunde</h4></div>
+      <div className={caseStyles.contextPanelHead}><h4>Modifikatoren</h4></div>
       <div className={caseStyles.contextFactorGrid}>{CALC_FACTORS.map((factor,index)=><article key={factor.key} className={caseStyles.contextFactor}><span className={caseStyles.factorIndex}>{String(index+1).padStart(2,'0')}</span><small>{factor.group}</small><strong>{factor.title}</strong><p>{factor.text}</p></article>)}</div>
+      <p className={caseStyles.biradsCaption}>Zusätzlich mitbeurteilen – keine festen Plus-/Minus-Stufen und kein additiver BI-RADS-Score.</p>
     </div>
   </div>
 }
@@ -98,10 +100,12 @@ function GermanContent(){return <>
     </div>
     <p className={styles.lead}>Auch Verlauf, klinischer Kontext und Begleitbefunde – insbesondere eine assoziierte Masse oder Architekturstörung – sind für die Gesamtbeurteilung relevant.</p>
     <div className={styles.rule}><strong>Grundprinzip</strong><p>Kalk ist ein bildgebender Phänotyp und allein keine Diagnose.</p></div>
+    <p className={caseStyles.techniqueNote}><strong>Technik</strong> · Mammographie (MG) mit gezielten 2D-Vergrößerungsaufnahmen für die Kalkdetails. Digitale Brusttomosynthese (DBT) ergänzt Lokalisation und Gewebekontext, ersetzt die Vergrößerungsaufnahmen bei der Kalkabklärung aber nicht.</p>
   </Section>
 
   <Section {...GERMAN_SECTIONS[1]} title={GERMAN_SECTIONS[1].label.de}>
     <p className={styles.lead}>Makroverkalkungen (&gt; 2 mm) beziehungsweise typisch grobschollige Verkalkungen (irregulär geformt, jedoch mit glatter Begrenzung) sind in der Regel benign.</p>
+    <p className={styles.lead}>Malignitätsassoziierte Mikroverkalkungen sind häufig kleiner als 0,5 mm, insbesondere fein pleomorphe und fein lineare Formen. Kleine Partikel kommen jedoch auch bei benignen Befunden vor: Die Größe allein trennt nicht sicher zwischen benign und malign.</p>
     <article className={caseStyles.caseStudy}>
       <header className={caseStyles.caseHeader}><div><small>RADIOPAEDIA-FALL</small><h3>Grobschollige Verkalkungen</h3></div></header>
       <div className={caseStyles.caseGallery}>
@@ -119,8 +123,8 @@ function GermanContent(){return <>
     <div className={caseStyles.morphologyArrow}><span>benigne</span><b>suspekt</b></div>
     <div className={`${styles.morphRail} ${caseStyles.morphologyScale}`}>
       <article className={caseStyles.morphBenign}><span>01</span><h3>Rund</h3><p>Glatte, runde Verkalkungen.</p><MorphologyImage type="round"/></article>
-      <article className={caseStyles.morphBenign}><span>02</span><h3>Amorph</h3><p>Sehr kleine, unscharf definierte Verkalkungen ohne klar erkennbare Form.</p><MorphologyImage type="amorph"/></article>
-      <article className={caseStyles.morphIntermediate}><span>03</span><h3>Grob heterogen</h3><p>Irreguläre Verkalkungen, größer als amorphe, aber weniger typisch als grobschollige benigne Verkalkungen.</p><MorphologyImage type="coarse"/></article>
+      <article className={caseStyles.morphIntermediate}><span>02</span><h3>Amorph</h3><p>Sehr kleine, unscharfe Partikel ohne erkennbare Form. Die Verteilung ist für das Management besonders wichtig.</p><MorphologyImage type="amorph"/></article>
+      <article className={caseStyles.morphIntermediate}><span>03</span><h3>Grob heterogen</h3><p>Irregulär geformt, meist 0,5–1 mm: größer als amorphe, aber kleiner als typisch grobe benigne Verkalkungen.</p><MorphologyImage type="coarse"/></article>
       <article className={caseStyles.morphIntermediate}><span>04</span><h3>Fein pleomorph</h3><p>Feine Verkalkungen unterschiedlicher Form und Größe.</p><MorphologyImage type="pleomorphic"/></article>
       <article className={caseStyles.morphSuspicious}><span>05</span><h3>Fein linear / verzweigt</h3><p>Sehr feine, irreguläre lineare oder verzweigte Verkalkungen.</p><MorphologyImage type="linear"/></article>
     </div>
@@ -133,7 +137,12 @@ function GermanContent(){return <>
       <p className={caseStyles.caseDescription}><strong>Morphologie und Lage:</strong> Gruppierte, irreguläre und unterschiedlich große Verkalkungen, größer und dichter als amorphe Partikel, aber ohne typisch grobschollige Benignitätsmerkmale.</p>
       <p className={caseStyles.caseCredit}>Bildbeispiel: <a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer">Radiopaedia.org, Fall 67107 (Vollbild)</a>.</p>
     </article>
-    <div className={styles.rule}><strong>Merke</strong><p>Fein lineare/verzweigte Verkalkungen sind sehr suspekt und häufig mit einem DCIS assoziiert.</p></div>
+    <div className={`${styles.rule} ${caseStyles.multiParagraph}`}><strong>Merke</strong><p>Fein lineare/verzweigte Verkalkungen sind hochsuspekt und häufig mit DCIS assoziiert.</p><p>Eine einzelne Gruppe runder/punktförmiger Verkalkungen ohne Voraufnahmen kann nach vollständiger diagnostischer Abklärung und ohne suspekte Zusatzmerkmale als BI-RADS 3 eingestuft werden; erste Kontrolle nach 6 Monaten. Das gilt nicht pauschal für amorphe Verkalkungen.</p></div>
+    <div className={caseStyles.clinicalNotes}>
+      <article><h3>Amorph: Verteilung beachten</h3><p>Ein bilaterales, diffuses oder regionales Muster kann einen benignen Prozess unterstützen. Es begründet allein aber weder BI-RADS 2 noch 3. Gruppierte, lineare oder segmentale amorphe Verkalkungen sind suspekt und in der Regel biopsiepflichtig; die Unterkategorie richtet sich nach dem Gesamtbefund.</p></article>
+      <article><h3>Grob heterogen: Differenzialdiagnosen</h3><p>Benigne Ursachen sind etwa involutierende Fibroadenome, Fibrose oder Fettnekrose. Auch ein Papillom ist möglich, aber kein Argument für eine reine Verlaufskontrolle. Bilateral diffuse Verkalkungen können benign sein; eine isolierte suspekte Gruppe erfordert Abklärung.</p></article>
+    </div>
+    <p className={caseStyles.biradsCaption}>Einordnung: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5787219/" target="_blank" rel="noreferrer">BI-RADS 3: Current and Future Use</a> · <a href="https://academic.oup.com/book/24629/chapter-abstract/187973934" target="_blank" rel="noreferrer">Coarse Heterogeneous Calcifications, Breast Imaging</a>.</p>
   </Section>
 
   <Section {...GERMAN_SECTIONS[3]} title={GERMAN_SECTIONS[3].label.de}>
@@ -141,12 +150,13 @@ function GermanContent(){return <>
     <div className={caseStyles.morphologyArrow}><span>benigne</span><b>suspekt</b></div>
     <div className={`${styles.morphRail} ${caseStyles.morphologyScale} ${caseStyles.distributionRiskScale}`}>
       <article><span>01</span><h3>Diffus</h3><p>Weit über die Brust verteilt, häufig bilateral.</p><DistributionImage type="diffuse"/></article>
-      <article><span>02</span><h3>Regional</h3><p>Verkalkungen innerhalb eines größeren Areals ohne eindeutige Orientierung an einem Gangsystem.</p><DistributionImage type="regional"/></article>
-      <article><span>03</span><h3>Gruppiert</h3><p>Mehrere Verkalkungen konzentrieren sich innerhalb eines begrenzten Areals.</p><DistributionImage type="grouped"/></article>
+      <article><span>02</span><h3>Regional</h3><p>Locker verstreut in einem Areal &gt; 2 cm, ohne erkennbare Orientierung an einem Gangsystem.</p><DistributionImage type="regional"/></article>
+      <article><span>03</span><h3>Gruppiert</h3><p>Mindestens fünf Partikel innerhalb von 1 cm oder eine größere Zahl innerhalb von 2 cm.</p><DistributionImage type="grouped"/></article>
       <article><span>04</span><h3>Linear</h3><p>Verkalkungen liegen entlang einer Linie.</p><DistributionImage type="linear"/></article>
-      <article><span>05</span><h3>Segmental</h3><p>Die Verkalkungen folgen einem Gangsystem und seinen Verzweigungen.</p><DistributionImage type="segmental"/></article>
+      <article><span>05</span><h3>Segmental</h3><p>Dreieckig beziehungsweise keilförmig, mit der Spitze zur Mamille; einem Gangsystem und seinen Verzweigungen folgend.</p><DistributionImage type="segmental"/></article>
     </div>
     <div className={styles.rule}><strong>Merke</strong><p>Linear oder segmental verteilte suspekte Mikroverkalkungen sprechen für einen duktalen Prozess und sind häufig mit DCIS assoziiert. Sie beweisen jedoch kein reines DCIS: Auch ein invasives Karzinom mit intraduktaler Komponente ist möglich.</p></div>
+    <p className={caseStyles.techniqueNote}><strong>Linear ≠ automatisch maligne:</strong> Grobe, glatte, stäbchenförmige sekretorische Verkalkungen können bei Duktektasie beziehungsweise Plasmazellmastitis auftreten. Feine, irreguläre lineare/verzweigte Formen sind dagegen verdächtig auf einen malignen duktalen Prozess, etwa DCIS.</p>
   </Section>
 
   <Section {...GERMAN_SECTIONS[4]} title={GERMAN_SECTIONS[4].label.de}>
@@ -171,6 +181,9 @@ function GermanContent(){return <>
   <Section {...GERMAN_SECTIONS[5]} title={GERMAN_SECTIONS[5].label.de}>
     <p className={styles.lead}>Nicht Morphologie oder Verteilung allein, sondern ihre Kombination bestimmt die klinische Risikoklasse. Dies ist der zentrale Schritt der Kalkdiagnostik.</p>
     <KalkAssessment/>
+    <div className={caseStyles.warningSigns}><strong>Warnzeichen auf einen Blick</strong><p>Fein pleomorpher oder fein linearer/verzweigter Kalk · lineare/segmentale Verteilung suspekter Partikel · deutliche Form- und Größenheterogenität · große Ausdehnung · assoziierte Masse oder Architekturstörung.</p><small>Eine diffuse Verteilung allein ist kein Warnzeichen.</small></div>
+    <div className={`${styles.rule} ${caseStyles.multiParagraph}`}><strong>Stabilität ≠ sicher benign</strong><p>DCIS kann langsam wachsen und über Jahre bildmorphologisch unverändert bleiben. Stabilität entkräftet eine suspekte Morphologie daher nicht.</p><p>Historische, kleine Kohorten mit zunächst übersehenem und unbehandeltem DCIS berichteten etwa 14–53 % invasive Progression über zehn oder mehr Jahre. Diese Spannweite ist kein individuelles Zehnjahresrisiko und lässt sich nicht pauschal auf heute diagnostiziertes DCIS übertragen.</p></div>
+    <p className={caseStyles.biradsCaption}>Zum natürlichen Verlauf: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4484537/" target="_blank" rel="noreferrer">Ductal Carcinoma In Situ of the Breast</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9135892/" target="_blank" rel="noreferrer">Disease Progression: Grenzen der historischen Kohorten</a>.</p>
   </Section>
 
   <Section {...GERMAN_SECTIONS[6]} title={GERMAN_SECTIONS[6].label.de}>
@@ -260,7 +273,7 @@ Sie entsprechen meist Verkalkungen innerhalb eines Milchganges oder entlang der 
       <article>
         <header><h3>Ultraschall</h3><p>Korrelat &amp; Biopsieplanung</p></header>
         <dl>
-          <div><dt>Sichtbarkeit</dt><dd>Grober Kalk erscheint echogen, teils mit Schallschatten. Mikrokalk kann als feine echogene Foci sichtbar sein – besonders in einer Masse, einer Non-Mass-Läsion oder einem Gang.</dd></div>
+          <div><dt>Sichtbarkeit</dt><dd>Makroverkalkungen erscheinen echogen, häufig mit dorsalem Schallschatten – etwa in Fibroadenomen, verkalkten Ölzysten oder bei Fettnekrose. Mikrokalk kann als feine echogene Foci sichtbar sein, besonders innerhalb einer Gewebeveränderung oder eines Ganges.</dd></div>
           <div><dt>Zusatznutzen</dt><dd>Assoziierte Gewebeveränderungen gezielt mitbeurteilen. Ein eindeutig zugeordnetes Korrelat kann eine ultraschallgesteuerte Biopsie ermöglichen.</dd></div>
           <div><dt>Grenze</dt><dd>Fehlende sonographische Sichtbarkeit schließt einen suspekten Kalkbefund nicht aus.</dd></div>
         </dl>
@@ -275,6 +288,15 @@ Sie entsprechen meist Verkalkungen innerhalb eines Milchganges oder entlang der 
       </article>
     </div>
     <div className={styles.rule}><strong>Merke</strong><p>Ein unauffälliger Ultraschall oder eine negative MRT hebt eine mammographisch begründete Biopsieindikation nicht automatisch auf.</p></div>
+    <div className={caseStyles.mriManagement}>
+      <header><small>Mammographische Kategorie bleibt maßgeblich</small><h3>Negative MRT – was bedeutet das für die Biopsie?</h3></header>
+      <div className={caseStyles.mriTableScroll}><table><caption>Management bei negativer kontrastverstärkter MRT</caption><thead><tr><th scope="col">BI-RADS</th><th scope="col">Malignitätsrisiko vor MRT</th><th scope="col">Einordnung</th></tr></thead><tbody>
+        {['4A','4B','4C','5'].map(category=><tr key={category}><th scope="row"><span className={caseStyles[CALC_CLASS[category]]}>{category}</span></th><td>{CALC_META[category].risk}</td><td>{category==='4A'?'Biopsie bleibt der Standard. Eine Kontrolle statt Biopsie ist keine automatische Folge einer negativen MRT.':category==='4B'?'In der Regel Biopsie. Die breite Risikospanne erlaubt keine pauschale Herabstufung durch eine negative MRT.':'Biopsie auch bei negativer MRT erforderlich.'}</td></tr>)}
+      </tbody></table></div>
+      <p><strong>Studienansatz, keine allgemeine Freigabe:</strong> Eine Metaanalyse zu reinen Mikroverkalkungen fand bei niedrigem Ausgangsrisiko eine mögliche Risikosenkung durch negative MRT. Der rechnerische Grenzwert lag bei 22 % vor MRT für höchstens 2 % danach. Das ist keine validierte individuelle Entscheidungsregel.</p>
+      <p>Eine abweichende Überwachungsstrategie gehört in eine spezialisierte, gemeinsam besprochene Einzelfallentscheidung mit festem Kontrollplan, typischerweise zunächst nach 6 Monaten. Bei fortbestehender suspekter Einstufung bleibt die histologische Abklärung angezeigt. <strong>Eine negative MRT schließt DCIS nicht vollständig aus.</strong></p>
+      <p className={caseStyles.biradsCaption}>Quellen: <a href="https://www.acr.org/-/media/ACR/Files/RADS/BI-RADS/Mammography-Reporting.pdf" target="_blank" rel="noreferrer">ACR: Kategorien und Management</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7907894/" target="_blank" rel="noreferrer">Fueger et al., The Breast 2021 – Metaanalyse zur ergänzenden MRT</a>.</p>
+    </div>
   </Section>
 
   <Section {...GERMAN_SECTIONS[8]} title={GERMAN_SECTIONS[8].label.de}>
