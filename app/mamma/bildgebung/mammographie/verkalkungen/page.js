@@ -75,8 +75,9 @@ function KalkAssessment({lang}){
   const resultCategory=CALC_MATRIX[morph][dist]
   const result=CALC_META[resultCategory]
   const selectCell=(nextMorph,nextDist)=>{setMorph(nextMorph);setDist(nextDist)}
-  return <div className={caseStyles.assessment}>
+  return <div className={`${caseStyles.assessment} ${caseStyles.refinedAssessment}`}>
     <div className={caseStyles.assessmentIntro}>
+      <span className={caseStyles.assessmentIcon}><SectionIcon id="kombination"/></span>
       <div><small>{t("Interaktives Orientierungsmodell")}</small><h3>{t("BI-RADS")}<span>{t("(Kalzifikationen: Morphologie × Verteilung)")}</span></h3></div>
     </div>
     <div className={caseStyles.assessmentCalculator}>
@@ -93,7 +94,7 @@ function KalkAssessment({lang}){
     <div className={caseStyles.biradsMatrix}>
       <table>
         <thead><tr><th>{t("Morphologie ↓")}</th>{DISTRIBUTION.map(item=><th key={item.key} className={dist===item.key?caseStyles.axisActive:''}>{pick(item.title,lang)}</th>)}</tr></thead>
-        <tbody>{MORPH.map(item=><tr key={item.key}><th className={morph===item.key?caseStyles.axisActive:''}>{pick(item.title,lang)}</th>{DISTRIBUTION.map(distribution=>{const value=CALC_MATRIX[item.key][distribution.key];const active=item.key===morph&&distribution.key===dist;return <td key={distribution.key} className={`${caseStyles[CALC_CLASS[value]]} ${active?caseStyles.cellActive:''}`}><button type="button" onClick={()=>selectCell(item.key,distribution.key)} aria-label={`${pick(item.title,lang)}, ${pick(distribution.title,lang)}: BI-RADS ${value}`} aria-pressed={active}>{value}</button></td>})}</tr>)}</tbody>
+        <tbody>{MORPH.map(item=><tr key={item.key}><th scope="row" className={morph===item.key?caseStyles.axisActive:''}>{pick(item.title,lang)}</th>{DISTRIBUTION.map(distribution=>{const value=CALC_MATRIX[item.key][distribution.key];const active=item.key===morph&&distribution.key===dist;return <td key={distribution.key} className={`${caseStyles[CALC_CLASS[value]]} ${active?caseStyles.cellActive:''}`}><button type="button" onClick={()=>selectCell(item.key,distribution.key)} aria-label={`${pick(item.title,lang)}, ${pick(distribution.title,lang)}: BI-RADS ${value}`} aria-pressed={active}><span className={caseStyles.matrixValue}>{value}</span></button></td>})}</tr>)}</tbody>
       </table>
     </div>
     <p className={caseStyles.biradsCaption}>{t("Matrix: vereinfachte Orientierung nach dem Scoring-Modell von Youk et al., Korean J Radiol. · Terminologie: ACR BI-RADS® Atlas, 5. Auflage. Das Studienmodell ersetzt keine klinische BI-RADS-Zuordnung; die Risikospannen sind keine individuelle Risikoberechnung.")}</p>
@@ -101,7 +102,6 @@ function KalkAssessment({lang}){
       <div className={caseStyles.contextPanelHead}><h4>{t("Modifikatoren")}</h4></div>
       <div className={caseStyles.contextFactorGrid}>{CALC_FACTORS.map((factor,index)=><article key={factor.key} className={caseStyles.contextFactor}><span className={caseStyles.factorIndex}>{String(index+1).padStart(2,'0')}</span><small>{t(factor.group)}</small><strong>{t(factor.title)}</strong><p style={{whiteSpace:'pre-line'}}>{t(factor.text)}</p></article>)}</div>
       <p className={caseStyles.biradsCaption}>{t("Zusätzlich mitbeurteilen – keine festen Plus-/Minus-Stufen und kein additiver BI-RADS-Score.")}</p>
-      <div className={caseStyles.negativeMriNote} aria-live="polite"><SectionIcon id="ultraschall"/><div><h4>{t("Negative MRT · BI-RADS")}{" "}{resultCategory}</h4><p>{t(result.mri)}</p></div></div>
     </div>
   </div>
 }

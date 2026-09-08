@@ -806,6 +806,58 @@
 .assessmentResult.cat4c { background: linear-gradient(135deg, #b5650a, #dc8b1f); }
 .assessmentResult.cat5 { background: linear-gradient(135deg, #b91c4b, var(--calc)); }
 
+/* Shared refinement for the three-language BI-RADS calculator. */
+.refinedAssessment { gap: 24px; padding: 28px; border-color: rgba(148,163,184,0.26); background: linear-gradient(135deg,rgba(148,163,184,0.045),transparent 55%),var(--bg-card); box-shadow: 0 12px 36px rgba(7,29,58,0.06); }
+.refinedAssessment .assessmentIntro { display: flex; align-items: center; gap: 16px; padding-bottom: 20px; border-bottom: 1px solid rgba(148,163,184,0.22); }
+.assessmentIcon { display: grid; place-items: center; width: 52px; height: 52px; flex: 0 0 52px; border: 1px solid rgba(231,51,104,0.22); border-radius: 15px; background: rgba(231,51,104,0.07); color: var(--calc); }
+.assessmentIcon svg { width: 27px; height: 27px; }
+.refinedAssessment .assessmentIntro small { font: 700 0.72rem/1.4 var(--font-main,Arial,sans-serif); letter-spacing: 0.03em; text-transform: none; color: var(--text-muted); }
+.refinedAssessment .assessmentIntro h3 { color: var(--text-strong); font-size: 1.7rem; }
+.refinedAssessment .assessmentIntro h3 span { font-size: 0.72rem; font-weight: 500; margin-top: 7px; }
+.refinedAssessment .assessmentCalculator { grid-template-columns: minmax(0,1fr) minmax(230px,0.85fr); align-items: stretch; gap: 20px; }
+.refinedAssessment .assessmentInputs { grid-template-columns: 1fr; gap: 16px; padding: 4px 0; border: 0; border-radius: 0; background: transparent; }
+.refinedAssessment .assessmentInputs label { gap: 8px; min-width: 0; }
+.refinedAssessment .assessmentInputs label > span { font: 700 0.76rem/1.4 var(--font-main,Arial,sans-serif); letter-spacing: 0; text-transform: none; color: var(--text-strong); }
+.refinedAssessment .assessmentInputs select { min-height: 48px; padding: 12px; border-width: 1px; background: var(--bg-card); font: 600 0.88rem/1.4 var(--font-main,Arial,sans-serif); }
+.refinedAssessment .assessmentOperator { display: none; }
+.refinedAssessment .assessmentResult { min-height: 176px; padding: 24px; border: 1px solid rgba(255,255,255,0.14); box-shadow: none; border-radius: 16px; font-family: var(--font-main,Arial,sans-serif); }
+.refinedAssessment .assessmentResult::after { display: none; }
+.refinedAssessment .assessmentResult strong { margin-top: 10px; font: 800 2rem/1.15 var(--font-main,Arial,sans-serif); font-variant-numeric: tabular-nums; }
+.refinedAssessment .assessmentResult b { margin-top: 8px; font-size: 0.9rem; }
+.refinedAssessment .assessmentResult small { font-size: 0.76rem; line-height: 1.5; opacity: 1; }
+.refinedAssessment .matrixHeading small { font: 700 0.78rem/1.4 var(--font-main,Arial,sans-serif); letter-spacing: 0; text-transform: none; color: var(--text-muted); }
+.refinedAssessment .biradsMatrix { margin-top: -14px; padding: 0 0 6px; border: 1px solid rgba(148,163,184,0.22); border-radius: 14px; background: rgba(148,163,184,0.025); }
+.refinedAssessment .biradsMatrix table { min-width: 630px; border-spacing: 0; }
+.refinedAssessment .biradsMatrix th:first-child { width: 190px; }
+.refinedAssessment .biradsMatrix th, .refinedAssessment .biradsMatrix td { border: 0; border-radius: 0; border-bottom: 1px solid rgba(148,163,184,0.17); }
+.refinedAssessment .biradsMatrix tr:last-child th, .refinedAssessment .biradsMatrix tr:last-child td { border-bottom: 0; }
+.refinedAssessment .biradsMatrix thead th { padding: 18px 8px; background: rgba(148,163,184,0.07); color: var(--text-muted); font: 700 0.72rem/1.4 var(--font-main,Arial,sans-serif); text-transform: none; letter-spacing: 0; backdrop-filter: none; }
+.refinedAssessment .biradsMatrix tbody th { padding: 16px; white-space: normal; background: var(--bg-card); font: 650 0.82rem/1.45 var(--font-main,Arial,sans-serif); }
+.refinedAssessment .biradsMatrix td { background: transparent; backdrop-filter: none; }
+.refinedAssessment .biradsMatrix td button { display: grid; place-items: center; width: 100%; height: 66px; min-width: 44px; font-family: var(--font-main,Arial,sans-serif); }
+.matrixValue { display: inline-grid; place-items: center; width: 48px; height: 40px; border-radius: 10px; color: #fff; font: 750 0.9rem/1 var(--font-main,Arial,sans-serif); font-variant-numeric: tabular-nums; box-shadow: inset 0 1px 0 rgba(255,255,255,0.16); }
+.cat3 .matrixValue { background: #168165; }
+.cat4a .matrixValue { background: #197b9a; }
+.cat4b .matrixValue { background: #3159bc; }
+.cat4c .matrixValue { background: #aa6916; }
+.cat5 .matrixValue { background: #ba2857; }
+.refinedAssessment .biradsMatrix td:hover { transform: none; filter: none; background: rgba(148,163,184,0.1); }
+.refinedAssessment .biradsMatrix .cellActive { transform: none; background: rgba(231,51,104,0.1); box-shadow: inset 0 0 0 2px var(--calc); border-radius: 10px; }
+.refinedAssessment .biradsMatrix .axisActive { color: var(--calc); background: rgba(231,51,104,0.065); box-shadow: none; }
+.refinedAssessment .biradsMatrix button:focus-visible { outline: 3px solid var(--text-strong); outline-offset: -4px; border-radius: 10px; }
+.refinedAssessment > .biradsCaption { margin-top: -12px; font: 400 0.71rem/1.7 var(--font-main,Arial,sans-serif); }
+@media (max-width: 760px) {
+  .refinedAssessment { padding: 20px 16px; gap: 22px; }
+  .refinedAssessment .assessmentCalculator { grid-template-columns: 1fr; gap: 18px; }
+  .refinedAssessment .assessmentResult { min-height: 160px; padding: 20px; }
+  .refinedAssessment .assessmentIntro { gap: 12px; }
+  .assessmentIcon { width: 44px; height: 44px; flex-basis: 44px; }
+  .refinedAssessment .assessmentIntro h3 span { white-space: normal; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .refinedAssessment .biradsMatrix td, .refinedAssessment .biradsMatrix th { transition: none; }
+}
+
 .contextPanel {
   display: grid;
   gap: 18px;
