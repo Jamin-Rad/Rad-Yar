@@ -499,6 +499,19 @@
   font: 800 clamp(1.25rem, 3vw, 1.65rem)/1.2 Georgia, serif;
 }
 
+.assessmentIntro h3 b {
+  color: var(--calc);
+  font-weight: 800;
+}
+
+.assessmentIntro h3 span {
+  display: block;
+  margin-top: 5px;
+  color: var(--text-muted);
+  font: 650 0.68rem/1.35 var(--font-main);
+  letter-spacing: 0.01em;
+}
+
 .assessmentIntro p {
   max-width: 580px;
   margin: 8px 0 0;
@@ -605,31 +618,14 @@
 
 .matrixHeading {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   gap: 16px;
   padding-top: 4px;
 }
 
+.matrixHeading small { margin: 0; }
 .matrixHeading strong { color: var(--text-strong); font-size: 0.84rem; }
-.matrixLegend { display: flex; gap: 5px; }
-.matrixLegend span {
-  display: grid;
-  min-width: 31px;
-  height: 25px;
-  padding: 0 6px;
-  place-items: center;
-  border-radius: 6px;
-  color: #fff;
-  font-size: 0.66rem;
-  font-weight: 900;
-}
-.matrixLegend .cat3 { background: #15936f; }
-.matrixLegend .cat4a { background: #2ea3c9; }
-.matrixLegend .cat4b { background: #2563eb; }
-.matrixLegend .cat4c { background: #dc8b1f; }
-.matrixLegend .cat5 { background: var(--calc); }
-
 .biradsMatrix {
   margin: -8px 0 0;
   overflow-x: auto;
@@ -640,9 +636,12 @@
 .biradsMatrix table {
   width: 100%;
   min-width: 640px;
+  table-layout: fixed;
   border-collapse: separate;
-  border-spacing: 5px;
+  border-spacing: 7px;
 }
+
+.biradsMatrix th:first-child { width: 208px; }
 
 .biradsMatrix th,
 .biradsMatrix td {
@@ -655,7 +654,9 @@
 
 .biradsMatrix thead th {
   padding: 10px 8px;
-  background: rgba(7, 29, 58, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(145deg, rgba(25, 46, 77, 0.88), rgba(7, 29, 58, 0.68));
+  backdrop-filter: blur(12px);
   color: rgba(255, 255, 255, 0.88);
   font-size: 0.68rem;
   letter-spacing: 0.07em;
@@ -682,13 +683,15 @@
 
 .biradsMatrix td {
   color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
   transition: transform 0.16s, box-shadow 0.16s, filter 0.16s;
 }
 
 .biradsMatrix td button {
   width: 100%;
-  min-height: 46px;
-  padding: 11px 8px;
+  height: 48px;
+  padding: 0;
   border: 0;
   border-radius: inherit;
   color: inherit;
@@ -718,11 +721,11 @@
   box-shadow: 0 0 0 3px var(--bg-card), 0 0 0 6px var(--text-strong), 0 10px 24px rgba(7, 29, 58, 0.28);
 }
 
-.biradsMatrix .cat3 { background: #15936f; }
-.biradsMatrix .cat4a { background: #2ea3c9; }
-.biradsMatrix .cat4b { background: #2563eb; }
-.biradsMatrix .cat4c { background: #dc8b1f; }
-.biradsMatrix .cat5 { background: var(--calc); }
+.biradsMatrix .cat3 { background: linear-gradient(145deg, rgba(21, 147, 111, 0.92), rgba(17, 121, 92, 0.78)); }
+.biradsMatrix .cat4a { background: linear-gradient(145deg, rgba(46, 163, 201, 0.92), rgba(25, 123, 154, 0.78)); }
+.biradsMatrix .cat4b { background: linear-gradient(145deg, rgba(37, 99, 235, 0.92), rgba(30, 64, 175, 0.78)); }
+.biradsMatrix .cat4c { background: linear-gradient(145deg, rgba(220, 139, 31, 0.94), rgba(181, 101, 10, 0.8)); }
+.biradsMatrix .cat5 { background: linear-gradient(145deg, rgba(231, 51, 104, 0.96), rgba(185, 28, 75, 0.82)); }
 
 .assessmentResult.cat3 { background: linear-gradient(135deg, #11795c, #15936f); }
 .assessmentResult.cat4a { background: linear-gradient(135deg, #197b9a, #2ea3c9); }
@@ -741,19 +744,17 @@
 
 .contextPanelHead {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 24px;
+  align-items: center;
+  min-height: 28px;
 }
 
-.contextPanelHead h4 { margin: 0; color: var(--text-strong); font: 800 1.05rem Georgia, serif; }
+.contextPanelHead h4 { margin: 0; color: var(--text-strong); font: 800 1.05rem/1.25 Georgia, serif; white-space: nowrap; }
 .contextPanelHead p { max-width: 390px; margin: 0; color: var(--text-muted); font-size: 0.75rem; line-height: 1.5; }
 .contextFactorGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
-.contextFactor:last-child { grid-column: 1 / -1; }
 
 .contextFactor {
   display: grid;
-  grid-template-columns: 32px minmax(0, 1fr) auto;
+  grid-template-columns: 32px minmax(0, 1fr);
   gap: 10px;
   align-items: start;
   min-height: 92px;
@@ -761,24 +762,15 @@
   border: 1px solid rgba(148, 163, 184, 0.35);
   border-radius: 11px;
   color: var(--text);
-  background: var(--bg-card);
-  cursor: pointer;
-  text-align: left;
-  transition: border-color 0.16s, background 0.16s, transform 0.16s;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--bg-card) 88%, white 12%), color-mix(in srgb, var(--bg-card) 96%, transparent));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
-.contextFactor:hover { border-color: rgba(231, 51, 104, 0.62); transform: translateY(-1px); }
-.contextFactor:focus-visible { outline: 3px solid rgba(231, 51, 104, 0.2); outline-offset: 2px; }
-.contextFactorActive { border-color: var(--calc); background: rgba(231, 51, 104, 0.07); box-shadow: inset 0 0 0 1px rgba(231, 51, 104, 0.14); }
-.factorIcon { display: grid; width: 30px; height: 30px; place-items: center; border-radius: 9px; color: var(--calc); background: rgba(231, 51, 104, 0.09); }
-.factorIcon svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.factorIndex { display: grid; width: 30px; height: 30px; place-items: center; border-radius: 9px; color: var(--calc); background: rgba(231, 51, 104, 0.09); font-size: 0.66rem; font-weight: 900; }
 .contextFactor > span:nth-child(2) { display: grid; gap: 3px; }
 .contextFactor small { color: var(--calc); font-size: 0.59rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
 .contextFactor strong { color: var(--text-strong); font-size: 0.77rem; line-height: 1.3; }
 .contextFactor em { color: var(--text-muted); font-size: 0.67rem; font-style: normal; line-height: 1.4; }
-.contextFactor > b { padding: 3px 6px; border-radius: 6px; color: var(--calc); background: rgba(231, 51, 104, 0.09); font-size: 0.65rem; }
-.contextFactor:last-child .factorIcon,
-.contextFactor:last-child > b { color: #11795c; background: rgba(21, 147, 111, 0.1); }
 
 .modelCaveat {
   margin: 0;
@@ -819,13 +811,11 @@
 @media (max-width: 760px) {
   .assessment { padding: 18px; }
   .assessmentIntro,
-  .contextPanelHead { flex-direction: column; gap: 10px; }
   .assessmentIntro > span { align-self: flex-start; }
   .assessmentCalculator { grid-template-columns: 1fr; }
   .assessmentResult { min-height: 120px; }
   .matrixHeading { align-items: flex-start; flex-direction: column; }
   .contextFactorGrid { grid-template-columns: 1fr; }
-  .contextFactor:last-child { grid-column: auto; }
 }
 
 @media (max-width: 620px) {
@@ -837,7 +827,8 @@
     font-size: 0.78rem;
   }
   .biradsMatrix tbody th { padding: 11px 9px; }
-  .biradsMatrix td button { min-height: 42px; padding: 9px 7px; }
+  .biradsMatrix td button { height: 44px; }
+  .contextPanelHead h4 { font-size: 0.96rem; }
 }
 
 @media (max-width: 620px) {

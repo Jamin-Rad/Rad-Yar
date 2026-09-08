@@ -34,7 +34,6 @@ const CALC_MATRIX={
   pleomorphic:{diffuse:'4B',regional:'4B',grouped:'4C',linear:'4C',segmental:'4C'},
   linear:{diffuse:'4C',regional:'4B',grouped:'4C',linear:'5',segmental:'5'},
 }
-const CALC_ORDER=['3','4A','4B','4C','5']
 const CALC_CLASS={'3':'cat3','4A':'cat4a','4B':'cat4b','4C':'cat4c','5':'cat5'}
 const CALC_META={
   '3':{risk:'< 2 %',label:'wahrscheinlich benigne',action:'Kurzzeit-Verlaufskontrolle'},
@@ -44,31 +43,25 @@ const CALC_META={
   '5':{risk:'> 95 %',label:'hochgradig malignomverdächtig',action:'Histologische Sicherung erforderlich'},
 }
 const CALC_FACTORS=[
-  {key:'progression',direction:1,group:'Verlauf',title:'Neu oder zunehmend',text:'Im Vergleich zur Voraufnahme neu aufgetreten oder progredient.'},
-  {key:'extent',direction:1,group:'Ausdehnung',title:'Mehr als 15 mm',text:'Größere Gesamtausdehnung der Kalzifikationsgruppe.'},
-  {key:'associated',direction:1,group:'Begleitbefund',title:'Masse oder Architekturstörung',text:'Assoziierter Befund mit möglicher invasiver Komponente.'},
-  {key:'history',direction:1,group:'Risikokontext',title:'Alter oder persönliche Anamnese',text:'Erhöhtes individuelles Ausgangsrisiko.'},
-  {key:'stable',direction:-1,group:'Verlauf',title:'Mindestens 2 Jahre stabil',text:'Keine relevante Progredienz in echten Voraufnahmen.'},
+  {key:'progression',group:'Verlauf',title:'Neu, zunehmend oder stabil?',text:'Echte Voraufnahmen vergleichen und jede relevante Veränderung dokumentieren.'},
+  {key:'extent',group:'Ausdehnung',title:'Gesamtausdehnung messen',text:'Das gesamte Kalkareal in Millimetern oder Zentimetern angeben.'},
+  {key:'associated',group:'Begleitbefunde',title:'Gezielt mitbeurteilen',text:'Masse, Architekturstörung, Asymmetrie sowie Haut- oder Mamillenveränderung suchen.'},
+  {key:'history',group:'Risikokontext',title:'Klinik einbeziehen',text:'Alter, persönliche Anamnese und Indikation in die Gesamtbeurteilung integrieren.'},
 ]
 function Section({id,number,title,children}){const mobile=useMobileLearningLayout();const[open,setOpen]=useState(true);useEffect(()=>setOpen(!mobile),[mobile,id]);return <section id={id} className={`${base.section} ${basics.section} ${styles.section}`}><button type="button" className={`${base.sectionHeader} ${basics.sectionHeader}`} onClick={()=>setOpen(v=>!v)} aria-expanded={open}><span className={basics.sectionHeading}><small>{number}</small><h2>{title}</h2></span><span className={basics.sectionToggle}>{open?'−':'+'}</span></button>{open&&<div className={`${base.sectionBody} ${basics.sectionBody} ${styles.sectionBody}`}>{children}</div>}</section>}
 function ReadButton({lang,isRead,toggle,authError}){const t=READ[lang]||READ.de;return <div className={base.readControl}><button type="button" className={`${base.readButton} ${basics.readButton} ${isRead?`${base.readButtonActive} ${basics.readButtonActive}`:''}`} onClick={toggle}><span className={`${base.readCheck} ${basics.readCheck}`}>{isRead?'✓':''}</span><span>{isRead?t[1]:t[0]}</span></button>{authError&&<div className={base.readError}><span>{t[2]}</span><Link href="/sign-in">{t[3]}</Link></div>}</div>}
 function MorphologyImage({type,lang='de'}){const image=MORPHOLOGY_IMAGES[type];return <a className={caseStyles.morphologyIllustration} href={image.src} target="_blank" rel="noreferrer" aria-label={pick(image.alt,lang)}><Image src={image.src} alt={pick(image.alt,lang)} width={image.width} height={image.height}/></a>}
 function DistributionImage({type,lang='de'}){const image=DISTRIBUTION_IMAGES[type];return <a className={caseStyles.distributionIllustration} href={image.src} target="_blank" rel="noreferrer" aria-label={pick(image.alt,lang)}><Image src={image.src} alt={pick(image.alt,lang)} width={image.width} height={image.height}/></a>}
 function RiskLab({lang}){const tx=v=>pick(v,lang);const[morph,setMorph]=useState('amorph');const[dist,setDist]=useState('grouped');const mi=MORPH.findIndex(x=>x.key===morph),di=DISTRIBUTION.findIndex(x=>x.key===dist);const score=mi+(di>=3?2:di===2?1:0);const result=score>=5?L('hoch suspekt','highly suspicious','بسیار مشکوک'):score>=3?L('suspekt','suspicious','مشکوک'):L('eher niedrige Suspektheit','lower suspicion','شک کمتر');return <div className={styles.riskLab}><header><small>{tx(L('Interaktiv kombinieren','Combine interactively','ترکیب تعاملی'))}</small><strong>{tx(result)}</strong></header><div><label>{tx(L('Morphologie','Morphology','مورفولوژی'))}<select value={morph} onChange={e=>setMorph(e.target.value)}>{MORPH.map(x=><option key={x.key} value={x.key}>{tx(x.title)}</option>)}</select></label><span>×</span><label>{tx(L('Verteilung','Distribution','توزیع'))}<select value={dist} onChange={e=>setDist(e.target.value)}>{DISTRIBUTION.map(x=><option key={x.key} value={x.key}>{tx(x.title)}</option>)}</select></label></div><p>{tx(L('Die Kombination strukturiert die Risikoeinschätzung; BI-RADS und Management bleiben eine ärztliche Gesamtentscheidung.','The combination structures risk assessment; BI-RADS and management remain an integrated clinical decision.','این ترکیب ارزیابی خطر را ساختار می‌دهد؛ BI-RADS و اقدام همچنان تصمیم جامع پزشکی هستند.'))}</p></div>}
-function CalcIcon({type}){return type==='up'?<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V4m0 0L5.5 8.5M10 4l4.5 4.5"/></svg>:<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12m0 0 4.5-4.5M10 16l-4.5-4.5"/></svg>}
 function KalkAssessment(){
   const[morph,setMorph]=useState('amorph')
   const[dist,setDist]=useState('grouped')
-  const[factors,setFactors]=useState({})
-  const baseCategory=CALC_MATRIX[morph][dist]
-  const adjustment=CALC_FACTORS.reduce((sum,factor)=>sum+(factors[factor.key]?factor.direction:0),0)
-  const resultCategory=CALC_ORDER[Math.max(0,Math.min(CALC_ORDER.length-1,CALC_ORDER.indexOf(baseCategory)+adjustment))]
+  const resultCategory=CALC_MATRIX[morph][dist]
   const result=CALC_META[resultCategory]
   const selectCell=(nextMorph,nextDist)=>{setMorph(nextMorph);setDist(nextDist)}
-  const toggleFactor=key=>setFactors(current=>({...current,[key]:!current[key]}))
   return <div className={caseStyles.assessment}>
     <div className={caseStyles.assessmentIntro}>
-      <div><small>Interaktives Orientierungsmodell</small><h3>Morphologie und Verteilung gemeinsam bewerten</h3><p>Zwei Merkmale auswählen – die zugehörige Modellkategorie wird sofort in der Matrix markiert.</p></div>
+      <div><small>Interaktives Orientierungsmodell</small><h3>Morphologie und Verteilung gemeinsam bewerten <b>→ BI-RADS</b><span>(bei Kalzifikationen nach Morphologie und Verteilung)</span></h3></div>
       <span>Vereinfachtes Lehrmodell</span>
     </div>
     <div className={caseStyles.assessmentCalculator}>
@@ -79,10 +72,9 @@ function KalkAssessment(){
       </div>
       <div className={`${caseStyles.assessmentResult} ${caseStyles[CALC_CLASS[resultCategory]]}`} aria-live="polite">
         <span>Modellergebnis</span><strong>BI-RADS {resultCategory}</strong><b>{result.label}</b><small>Malignitätsrisiko {result.risk} · {result.action}</small>
-        {resultCategory!==baseCategory&&<em>Basiskategorie {baseCategory} · Kontextanpassung {adjustment>0?`+${adjustment}`:adjustment}</em>}
       </div>
     </div>
-    <div className={caseStyles.matrixHeading}><div><small>Kategorien im Überblick</small><strong>Zelle anklicken, um die Kombination zu übernehmen</strong></div><div className={caseStyles.matrixLegend}><span className={caseStyles.cat3}>3</span><span className={caseStyles.cat4a}>4A</span><span className={caseStyles.cat4b}>4B</span><span className={caseStyles.cat4c}>4C</span><span className={caseStyles.cat5}>5</span></div></div>
+    <div className={caseStyles.matrixHeading}><small>Kategorien im Überblick</small></div>
     <div className={caseStyles.biradsMatrix}>
       <table>
         <thead><tr><th>Morphologie ↓</th>{DISTRIBUTION.map(item=><th key={item.key} className={dist===item.key?caseStyles.axisActive:''}>{item.title.de}</th>)}</tr></thead>
@@ -90,11 +82,11 @@ function KalkAssessment(){
       </table>
     </div>
     <div className={caseStyles.contextPanel}>
-      <div className={caseStyles.contextPanelHead}><div><small>Schritt 3</small><h4>Verlauf, Ausdehnung &amp; Begleitbefunde</h4></div><p>Relevante Zusatzbefunde auswählen. Sie verändern das Ergebnis in diesem vereinfachten Modell schrittweise.</p></div>
-      <div className={caseStyles.contextFactorGrid}>{CALC_FACTORS.map(factor=>{const active=Boolean(factors[factor.key]);return <button key={factor.key} type="button" className={`${caseStyles.contextFactor} ${active?caseStyles.contextFactorActive:''}`} onClick={()=>toggleFactor(factor.key)} aria-pressed={active}><span className={caseStyles.factorIcon}><CalcIcon type={factor.direction>0?'up':'down'}/></span><span><small>{factor.group}</small><strong>{factor.title}</strong><em>{factor.text}</em></span><b>{factor.direction>0?'+1':'−1'}</b></button>})}</div>
-      <p className={caseStyles.modelCaveat}><strong>Wichtig:</strong> Die schrittweise Kontextanpassung ist keine offizielle ACR-Entscheidungsregel. Das Tool visualisiert ein vereinfachtes Lehrmodell; BI-RADS-Kategorie und Management ergeben sich aus der vollständigen ärztlichen Gesamtbeurteilung.</p>
+      <div className={caseStyles.contextPanelHead}><h4>Verlauf, Ausdehnung &amp; Begleitbefunde</h4></div>
+      <div className={caseStyles.contextFactorGrid}>{CALC_FACTORS.map((factor,index)=><article key={factor.key} className={caseStyles.contextFactor}><span className={caseStyles.factorIndex}>{String(index+1).padStart(2,'0')}</span><span><small>{factor.group}</small><strong>{factor.title}</strong><em>{factor.text}</em></span></article>)}</div>
+      <p className={caseStyles.modelCaveat}><strong>Wichtig:</strong> Der Rechner bildet ausschließlich die Kombination aus Morphologie und Verteilung ab. Die endgültige BI-RADS-Kategorie und das Management ergeben sich aus der vollständigen ärztlichen Gesamtbeurteilung.</p>
     </div>
-    <p className={caseStyles.biradsCaption}>Orientierungsmodell nach Youk et al., Korean J Radiol., und ACR BI-RADS® Atlas, 5. Auflage.</p>
+    <p className={caseStyles.biradsCaption}>Matrix: vereinfachte Orientierung nach dem Scoring-Modell von Youk et al., Korean J Radiol. · Terminologie: ACR BI-RADS® Atlas, 5. Auflage.</p>
   </div>
 }
 function Lines({children}){return <span style={{whiteSpace:'pre-line'}}>{children}</span>}
