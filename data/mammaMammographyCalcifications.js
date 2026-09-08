@@ -1,3 +1,4 @@
+import { CALCIFICATION_REVIEW_QUESTIONS, CALCIFICATION_REVIEW_CARDS } from './mammaCalcificationReview'
 const L = (de, en, fa) => ({ de, en, fa })
 
 const QUESTIONS = [
@@ -14,7 +15,7 @@ const QUESTIONS = [
     question: L('Welchen Hauptzweck haben Magnifikationsaufnahmen bei neu entdeckten Verkalkungen?', 'What is the main purpose of magnification views for newly detected calcifications?', 'هدف اصلی نماهای بزرگ‌نمایی در کلسیفیکاسیون تازه چیست؟'),
     options: [L('Messung der Brustdichte', 'Measurement of breast density', 'اندازه‌گیری دانسیته پستان'), L('Nachweis von Kontrastmittelaufnahme', 'Detection of contrast enhancement', 'تشخیص جذب ماده حاجب'), L('Schärfere Beurteilung von Partikelform, Zahl und räumlicher Anordnung', 'Sharper assessment of particle shape, number and spatial arrangement', 'ارزیابی دقیق‌تر شکل، تعداد و آرایش فضایی ذرات'), L('Sicherer Ausschluss eines DCIS', 'Definitive exclusion of DCIS', 'رد قطعی DCIS')],
     correct: 'C',
-    explanation: L('Magnifikation reduziert geometrische Unschärfe und erleichtert die genaue morphologische und distributive Analyse.', 'Magnification reduces geometric blur and improves detailed analysis of morphology and distribution.', 'بزرگ‌نمایی تاری هندسی را کم کرده و تحلیل دقیق مورفولوژی و توزیع را بهتر می‌کند.'),
+    explanation: L('Vergrößerungsaufnahmen erleichtern die Detailanalyse von Morphologie und Verteilung. Ein kleiner Brennfleck begrenzt dabei die geometrische Unschärfe; die Vergrößerung allein reduziert sie nicht.', 'Magnification views improve detailed assessment of morphology and distribution. A small focal spot limits geometric blur; magnification alone does not reduce it.', 'نماهای بزرگ‌نمایی ارزیابی دقیق مورفولوژی و توزیع را بهتر می‌کنند. کانون کوچک، تاری هندسی را محدود می‌کند؛ بزرگ‌نمایی به‌تنهایی آن را کاهش نمی‌دهد.'),
     wrong: { A: L('Die Breast Composition wird auf Standardaufnahmen beurteilt und ist nicht das Ziel der Vergrößerung.', 'Breast composition is assessed on standard views and is not the purpose of magnification.', 'ترکیب بافت پستان در نماهای استاندارد ارزیابی می‌شود و هدف بزرگ‌نمایی نیست.'), B: L('Kontrastmittelaufnahme wird mit CEM oder MRT beurteilt; Magnifikationsaufnahmen sind konventionelle Röntgenaufnahmen.', 'Enhancement is assessed with CEM or MRI; magnification views are conventional radiographs.', 'جذب ماده حاجب با CEM یا MRI سنجیده می‌شود؛ نمای بزرگ‌نمایی رادیوگرافی معمولی است.'), D: L('Magnifikation charakterisiert den Befund, kann ein DCIS aber weder allein beweisen noch sicher ausschließen.', 'Magnification characterises the finding but cannot by itself prove or exclude DCIS.', 'بزرگ‌نمایی یافته را مشخص می‌کند، اما به‌تنهایی DCIS را اثبات یا رد نمی‌کند.') },
   },
   {
@@ -60,19 +61,64 @@ const QUESTIONS = [
   {
     id: 'highest-suspicion',
     question: L('Welcher Befund trägt die höchste morphologische Suspektheit?', 'Which finding has the highest morphologic suspicion?', 'کدام یافته بیشترین شک مورفولوژیک را دارد؟'),
-    options: [L('Fine-linear branching Verkalkungen mit segmentaler Verteilung', 'Fine linear branching calcifications with segmental distribution', 'کلسیفیکاسیون خطی ظریف شاخه‌دار با توزیع سگمنتال'), L('Punktförmige Verkalkungen mit diffuser Verteilung', 'Punctate calcifications with diffuse distribution', 'کلسیفیکاسیون نقطه‌ای با توزیع منتشر'), L('Grobe heterogene Verkalkungen in einem langjährig stabilen Fibroadenom', 'Coarse heterogeneous calcifications in a long-stable fibroadenoma', 'کلسیفیکاسیون درشت ناهمگون در فیبروآدنوم دیرپا و پایدار'), L('Gefäßwandverkalkungen', 'Vascular wall calcifications', 'کلسیفیکاسیون دیواره عروق')],
+    options: [L('Fine-linear branching Verkalkungen mit segmentaler Verteilung', 'Fine linear branching calcifications with segmental distribution', 'کلسیفیکاسیون خطی ظریف شاخه‌دار با توزیع سگمنتال'), L('Punktförmige Verkalkungen mit diffuser Verteilung', 'Punctate calcifications with diffuse distribution', 'کلسیفیکاسیون نقطه‌ای با توزیع منتشر'), L('Typisch popcornartige Verkalkungen in einem involutierenden Fibroadenom', 'Typical popcorn calcifications in an involuting fibroadenoma', 'کلسیفیکاسیون تیپیک پاپ‌کورنی در فیبروآدنوم در حال پسرفت'), L('Gefäßwandverkalkungen', 'Vascular wall calcifications', 'کلسیفیکاسیون دیواره عروق')],
     correct: 'A',
     explanation: L('Dünne irreguläre, verzweigte Gangausgüsse mit segmentaler Anordnung bilden das stärkste duktale Verdachtsmuster.', 'Thin irregular branching ductal casts in a segmental arrangement form the strongest suspicious ductal pattern.', 'قالب‌های داکتال نازک نامنظم شاخه‌دار با آرایش سگمنتال قوی‌ترین الگوی مشکوک داکتال را می‌سازند.'),
     wrong: { B: L('Punktförmige, diffus verteilte Partikel besitzen keine fokale duktale Architektur und sind deutlich weniger suspekt.', 'Punctate diffusely distributed particles lack focal ductal architecture and are far less suspicious.', 'ذرات نقطه‌ای منتشر معماری داکتال موضعی ندارند و بسیار کمتر مشکوک‌اند.'), C: L('Langzeitstabilität und die Entwicklung grober Verkalkungen in einem Fibroadenom sprechen für Involution, nicht für den höchsten Verdachtsgrad.', 'Long-term stability and coarse calcification in a fibroadenoma favour involution, not the highest degree of suspicion.', 'پایداری طولانی و کلسیفیکاسیون درشت در فیبروآدنوم به نفع پسرفت است، نه بیشترین درجه شک.'), D: L('Parallele Verkalkungen entlang von Gefäßwänden sind ein typisch benignes Muster.', 'Parallel calcifications along vessel walls are a typically benign pattern.', 'کلسیفیکاسیون‌های موازی در امتداد دیواره عروق الگوی تیپیک خوش‌خیم هستند.') },
   },
   {
-    id: 'evolution-context',
-    question: L('Welche Zusatzinformation verändert die Bewertung einer Verkalkungsgruppe am stärksten?', 'Which additional information most strongly changes assessment of a calcification group?', 'کدام اطلاعات تکمیلی بیشترین تأثیر را بر ارزیابی یک گروه کلسیفیکاسیون دارد؟'),
-    options: [L('Die Untersuchungsuhrzeit', 'Time of day of the examination', 'زمان انجام بررسی'), L('Neuauftreten oder morphologische Zunahme gegenüber Voraufnahmen', 'New development or morphologic progression compared with prior studies', 'ایجاد تازه یا پیشرفت مورفولوژیک نسبت به تصاویر قبلی'), L('Die Seite der dominanten Hand', 'The dominant hand side', 'سمت دست غالب'), L('Die Monitorgröße', 'Monitor size', 'اندازه مانیتور')],
-    correct: 'B',
-    explanation: L('Echte Veränderung über die Zeit ist ein biologisches Signal und kann einen zuvor wenig auffälligen Befund abklärungsbedürftig machen.', 'True change over time is a biological signal and may make a previously inconspicuous finding require work-up.', 'تغییر واقعی در طول زمان یک نشانه زیستی است و می‌تواند یافته قبلاً کم‌اهمیت را نیازمند بررسی کند.'),
-    wrong: { A: L('Die Tageszeit verändert weder Morphologie noch biologische Entwicklung einer Verkalkungsgruppe.', 'Time of day changes neither morphology nor biological evolution of a calcification group.', 'زمان روز مورفولوژی یا روند زیستی گروه کلسیفیکاسیون را تغییر نمی‌دهد.'), C: L('Händigkeit besitzt keinen etablierten Bezug zur Malignitätswahrscheinlichkeit mammographischer Verkalkungen.', 'Hand dominance has no established relation to malignancy risk of mammographic calcifications.', 'غلبه دست ارتباط تثبیت‌شده‌ای با خطر بدخیمی کلسیفیکاسیون ماموگرافیک ندارد.'), D: L('Eine geeignete diagnostische Anzeige ist technisch wichtig, ersetzt aber nicht die biologische Verlaufsinformation aus Voraufnahmen.', 'An appropriate diagnostic display matters technically but does not replace biological evolution shown by prior studies.', 'نمایشگر تشخیصی مناسب از نظر فنی مهم است، اما جایگزین اطلاعات زیستی روند در تصاویر قبلی نمی‌شود.') },
+  "id": "evolution-context",
+  "question": {
+    "de": "Welche Veränderung einer Verkalkungsgruppe verstärkt den Malignitätsverdacht?",
+    "en": "Which change in a calcification group increases suspicion of malignancy?",
+    "fa": "کدام تغییر در گروه کلسیفیکاسیون، شک به بدخیمی را افزایش می‌دهد؟"
   },
+  "options": [
+    {
+      "de": "Entwicklung einer eindeutig groben Popcornmorphologie in einem Fibroadenom",
+      "en": "Development of unequivocally coarse popcorn morphology in a fibroadenoma",
+      "fa": "ایجاد مورفولوژی واضح درشت پاپ‌کورنی در فیبروآدنوم"
+    },
+    {
+      "de": "Neuauftreten oder Zunahme pleomorpher Partikel gegenüber Voraufnahmen",
+      "en": "New development or increasing pleomorphic particles compared with prior images",
+      "fa": "ایجاد تازه یا افزایش ذرات پلئومورفیک نسبت به تصاویر قبلی"
+    },
+    {
+      "de": "Nachweis typischen Layerings in der echten seitlichen Aufnahme",
+      "en": "Demonstration of typical layering on the true lateral view",
+      "fa": "مشاهده لایه‌لایه‌شدن تیپیک در نمای لترال واقعی"
+    },
+    {
+      "de": "Unveränderte parallele Verkalkungen entlang einer Gefäßwand",
+      "en": "Unchanged parallel calcifications along a vessel wall",
+      "fa": "کلسیفیکاسیون‌های موازی بدون تغییر در امتداد دیواره رگ"
+    }
+  ],
+  "correct": "B",
+  "explanation": {
+    "de": "Neuauftreten und morphologische Progression können den Verdacht erhöhen. Die konkrete Veränderung muss mit Morphologie und Verteilung zusammen bewertet werden.",
+    "en": "New development and morphologic progression may increase suspicion. Assess the specific change together with morphology and distribution.",
+    "fa": "ایجاد تازه و پیشرفت مورفولوژیک ممکن است شک را افزایش دهند. تغییر مشخص را همراه مورفولوژی و توزیع ارزیابی کنید."
+  },
+  "wrong": {
+    "A": {
+      "de": "Eine typisch popcornartige Reifung spricht eher für benigne Involution.",
+      "en": "Typical popcorn maturation favours benign involution.",
+      "fa": "تکامل تیپیک پاپ‌کورنی بیشتر به نفع پسرفت خوش‌خیم است."
+    },
+    "C": {
+      "de": "Typisches lageabhängiges Layering spricht für zystisches Kalziumsediment.",
+      "en": "Typical position-dependent layering supports cystic calcium sediment.",
+      "fa": "لایه‌لایه‌شدن تیپیک وابسته به وضعیت، به نفع رسوب کلسیم کیستی است."
+    },
+    "D": {
+      "de": "Ein unverändertes typisches Gefäßwandmuster ist kein neues suspektes duktales Muster.",
+      "en": "An unchanged typical vascular wall pattern is not a new suspicious ductal pattern.",
+      "fa": "الگوی تیپیک بدون تغییر دیواره عروق، الگوی داکتال مشکوک تازه نیست."
+    }
+  }
+},
   {
     id: 'no-correlate',
     question: L('Neue segmentale fine pleomorphe Verkalkungen haben weder Ultraschallkorrelat noch MRT-Enhancement. Was folgt?', 'New segmental fine pleomorphic calcifications have neither an ultrasound correlate nor MRI enhancement. What follows?', 'کلسیفیکاسیون پلئومورفیک ظریف سگمنتال تازه نه همبستگی سونوگرافی دارد و نه Enhancement در MRI. نتیجه چیست؟'),
@@ -83,7 +129,7 @@ const QUESTIONS = [
   },
 ]
 
-export const MAMMOGRAPHY_CALCIFICATIONS_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(lang => [lang, QUESTIONS.map(item => ({
+export const MAMMOGRAPHY_CALCIFICATIONS_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(lang => [lang, [...QUESTIONS, ...CALCIFICATION_REVIEW_QUESTIONS].map(item => ({
   id: `mammographie-mikrokalk-${lang}-${item.id}`,
   tags: ['mammographie-mikrokalk', 'mamma', 'mammographie', 'verkalkungen', 'bi-rads'],
   fach: 'mamma',
@@ -95,7 +141,7 @@ export const MAMMOGRAPHY_CALCIFICATIONS_QUESTIONS = Object.fromEntries(['de', 'e
 }))]))
 
 const CARDS = [
-  ['Grundprinzip', 'Welche vier Ebenen bestimmen die Bewertung mammographischer Verkalkungen?', 'Morphologie, Verteilung, Verlauf und Kontext.', 'Keines dieser Merkmale sollte isoliert als Diagnose gelesen werden.', 'Core principle', 'Which four levels determine assessment of mammographic calcifications?', 'Morphology, distribution, evolution and context.', 'None of these features should be read as a diagnosis in isolation.', 'اصل پایه', 'کدام چهار سطح ارزیابی کلسیفیکاسیون ماموگرافیک را تعیین می‌کنند؟', 'مورفولوژی، توزیع، روند و زمینه.', 'هیچ‌یک از این ویژگی‌ها نباید به‌تنهایی به‌عنوان تشخیص خوانده شود.'],
+  ['Grundprinzip', 'Welche vier Merkmale werden zunächst systematisch beurteilt?', 'Partikelgröße, Morphologie, Verteilung und Gesamtausdehnung.', 'Verlauf, Begleitbefunde und Risikokontext ergänzen die Gesamtbeurteilung; kein Merkmal allein ist eine Diagnose.', 'Core principle', 'Which four features are initially assessed systematically?', 'Particle size, morphology, distribution and total extent.', 'Evolution, associated findings and risk context complete the assessment; no single feature is a diagnosis.', 'اصل پایه', 'کدام چهار ویژگی ابتدا به‌صورت نظام‌مند ارزیابی می‌شوند؟', 'اندازه ذرات، مورفولوژی، توزیع و وسعت کل.', 'روند، یافته‌های همراه و زمینه خطر ارزیابی را تکمیل می‌کنند؛ هیچ ویژگی منفردی تشخیص نیست.'],
   ['Technik', 'Wozu dienen Magnifikationsaufnahmen?', 'Zur präziseren Beurteilung von Form, Zahl und räumlicher Anordnung feiner Partikel.', 'Sie charakterisieren Kalk, ersetzen aber weder Vergleich noch Assessment.', 'Technique', 'What are magnification views used for?', 'More precise assessment of the shape, number and spatial arrangement of fine particles.', 'They characterise calcium but replace neither comparison nor assessment.', 'تکنیک', 'نمای بزرگ‌نمایی چه کاربردی دارد؟', 'ارزیابی دقیق‌تر شکل، تعداد و آرایش فضایی ذرات ظریف.', 'این نما کلسیفیکاسیون را مشخص می‌کند، اما جایگزین مقایسه و ارزیابی نیست.'],
   ['Benigne Form', 'Wofür steht eine popcornartige Verkalkung?', 'Typischerweise für ein involutierendes Fibroadenom.', 'Das grobe, zusammenfließende Muster ist ein klassischer benigner Deskriptor.', 'Benign form', 'What does popcorn calcification typically indicate?', 'An involuting fibroadenoma.', 'The coarse confluent pattern is a classic benign descriptor.', 'فرم خوش‌خیم', 'کلسیفیکاسیون پاپ‌کورنی معمولاً نشانه چیست؟', 'فیبروآدنوم در حال پسرفت.', 'الگوی درشت و به‌هم‌پیوسته یک دسکریپتور کلاسیک خوش‌خیم است.'],
   ['Benigne Form', 'Was ist eine Rim Calcification?', 'Eine dünne randständige Verkalkung, häufig um eine Ölzyste nach Fettnekrose.', 'Der fetthaltige Inhalt und der glatte Ring stützen die benigne Einordnung.', 'Benign form', 'What is a rim calcification?', 'A thin peripheral calcification, often around an oil cyst after fat necrosis.', 'Fat-containing centre and a smooth rim support benignity.', 'فرم خوش‌خیم', 'کلسیفیکاسیون حلقوی چیست؟', 'کلسیفیکاسیون نازک محیطی، اغلب پیرامون کیست روغنی پس از نکروز چربی.', 'مرکز حاوی چربی و حلقه صاف به نفع خوش‌خیمی است.'],
@@ -106,17 +152,17 @@ const CARDS = [
   ['Kombination', 'Welche Kombination ist besonders hochsuspekt?', 'Fine-linear branching Morphologie mit segmentaler Verteilung.', 'Partikelform und räumliche Architektur sprechen gemeinsam für irreguläre Gangausgüsse.', 'Combination', 'Which combination is particularly highly suspicious?', 'Fine linear branching morphology with segmental distribution.', 'Particle form and spatial architecture together suggest irregular ductal casts.', 'ترکیب', 'کدام ترکیب بسیار مشکوک است؟', 'مورفولوژی خطی ظریف شاخه‌دار با توزیع سگمنتال.', 'شکل ذرات و معماری فضایی با هم به نفع قالب‌های نامنظم داکتال‌اند.'],
   ['Verlauf', 'Welche Verlaufsänderungen sind relevant?', 'Neuauftreten, Zunahme der Zahl, Ausdehnung oder morphologischen Heterogenität.', 'Echte Veränderung über die Zeit ist ein biologisches Signal.', 'Evolution', 'Which interval changes matter?', 'New development, increasing number, extent or morphologic heterogeneity.', 'True change over time is a biological signal.', 'روند', 'کدام تغییرات زمانی اهمیت دارند؟', 'ایجاد تازه، افزایش تعداد، وسعت یا ناهمگونی مورفولوژیک.', 'تغییر واقعی در زمان یک نشانه زیستی است.'],
   ['DCIS', 'Welche Rolle spielen Verkalkungen beim DCIS?', 'Sie können die einzige mammographische Manifestation sein und die duktale Ausdehnung sichtbar machen.', 'Nicht jedes DCIS verkalkt, und nicht jede Verkalkung ist DCIS.', 'DCIS', 'What is the role of calcifications in DCIS?', 'They may be the only mammographic manifestation and may depict ductal extent.', 'Not every DCIS calcifies, and not every calcification is DCIS.', 'DCIS', 'نقش کلسیفیکاسیون در DCIS چیست؟', 'می‌تواند تنها تظاهر ماموگرافیک باشد و وسعت داکتال را نشان دهد.', 'هر DCIS کلسیفیه نمی‌شود و هر کلسیفیکاسیون DCIS نیست.'],
-  ['Modalitäten', 'Entwarnt ein fehlendes Ultraschallkorrelat oder MRT-Enhancement?', 'Nein. Eine suspekte Mammographiemorphologie bleibt maßgeblich.', 'Negative Zusatzmodalitäten ändern eher den Biopsiezugang als die kalkbasierte Risikobewertung.', 'Modalities', 'Does absent ultrasound correlation or MRI enhancement reassure?', 'No. Suspicious mammographic morphology remains decisive.', 'Negative adjunct modalities affect the biopsy route more than the calcium-based risk assessment.', 'مدالیته‌ها', 'آیا نبود همبستگی سونوگرافی یا Enhancement در MRI اطمینان‌بخش است؟', 'خیر. مورفولوژی مشکوک ماموگرافی همچنان تعیین‌کننده است.', 'مدالیته کمکی منفی بیشتر مسیر بیوپسی را تغییر می‌دهد تا ارزیابی خطر بر پایه کلسیفیکاسیون را.'],
+  ['Modalitäten', 'Entwarnt ein fehlendes Ultraschallkorrelat oder MRT-Enhancement?', 'Nein. Eine suspekte Mammographiemorphologie bleibt maßgeblich.', 'Ein Ultraschallkorrelat hilft beim Biopsiezugang. Eine negative MRT kann das Risiko beeinflussen, hebt eine suspekte Mammographiemorphologie aber nicht automatisch auf.', 'Modalities', 'Does absent ultrasound correlation or MRI enhancement reassure?', 'No. Suspicious mammographic morphology remains decisive.', 'An ultrasound correlate helps choose the biopsy route. Negative MRI may influence risk but does not automatically negate suspicious mammographic morphology.', 'مدالیته‌ها', 'آیا نبود همبستگی سونوگرافی یا Enhancement در MRI اطمینان‌بخش است؟', 'خیر. مورفولوژی مشکوک ماموگرافی همچنان تعیین‌کننده است.', 'تطابق سونوگرافیک به انتخاب مسیر بیوپسی کمک می‌کند. MRI منفی ممکن است بر خطر اثر بگذارد، اما مورفولوژی مشکوک ماموگرافی را خودکار منتفی نمی‌کند.'],
 ]
 
-export const MAMMOGRAPHY_CALCIFICATIONS_FLASHCARDS = CARDS.map((item, index) => ({
+export const MAMMOGRAPHY_CALCIFICATIONS_FLASHCARDS = [...CARDS.map((item, index) => ({
   id: `mammographie-mikrokalk-${String(index + 1).padStart(2, '0')}`,
   topicId: 'mammographie-mikrokalk',
   category: L(item[0], item[4], item[8]),
   front: L(item[1], item[5], item[9]),
   answer: L(item[2], item[6], item[10]),
   explanation: L(item[3], item[7], item[11]),
-}))
+})), ...CALCIFICATION_REVIEW_CARDS]
 
 export const MAMMOGRAPHY_CALCIFICATIONS_FLASHCARD_TOPIC = {
   id: 'mammographie-mikrokalk',

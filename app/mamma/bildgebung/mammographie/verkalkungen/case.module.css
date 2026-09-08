@@ -484,6 +484,11 @@
 .clinicalNotes p { margin: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
 .multiParagraph { grid-template-columns: 1fr; gap: 12px; }
 .sidebarIcon { display: inline-grid; place-items: center; flex: 0 0 28px; width: 28px; height: 28px; color: var(--calc); border-radius: 8px; background: rgba(231,51,104,0.08); }
+:global([dir="rtl"]) .biradsMatrix, :global([dir="rtl"]) .extentChart { direction: ltr; }
+:global([dir="rtl"]) .mriTableScroll table { text-align: right; }
+:global([dir="rtl"]) .rememberList { padding-left: 0; padding-right: 20px; }
+:global([dir="rtl"]) .techniqueGrid article + article { border-left: 0; border-right: 1px solid rgba(148,163,184,0.28); }
+:global([dir="rtl"]) .assessmentIntro h3 span { white-space: normal; }
 .emphasizedLead { font-style: oblique; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
 .techniqueGrid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); margin-top: 24px; border: 1px solid rgba(148,163,184,0.28); border-radius: 14px; overflow: hidden; }
 .techniqueGrid article { padding: 24px; }
