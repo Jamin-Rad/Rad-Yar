@@ -215,7 +215,7 @@ export default function MammaMrtBasicsPage() {
                 <div className={styles.categoryList}>
                   {FGT_CATEGORIES.map((category) => (
                     <div key={category.key} className={styles.categoryItem}>
-                      <span>{category.key}</span><div><h4>{category.title}</h4><p>{tx(category.text)}</p></div>
+                      <span>{category.key}</span><div><h4>{tx(category.title)}</h4><p>{tx(category.text)}</p></div>
                     </div>
                   ))}
                 </div>
