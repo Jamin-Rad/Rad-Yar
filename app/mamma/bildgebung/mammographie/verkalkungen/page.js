@@ -115,16 +115,7 @@ function GermanContent(){return <>
   </Section>
 
   <Section {...GERMAN_SECTIONS[5]} title={GERMAN_SECTIONS[5].label.de}>
-    <p className={styles.lead}>Dies ist der zentrale Schritt der Kalkdiagnostik.</p>
-    <p className={styles.lead}>Die Morphologie bestimmt das Ausgangsrisiko, die Verteilung modifiziert dieses Risiko.</p>
-    <h3 className={styles.takeTitle}>Beispiele:</h3>
-    <div className={styles.comboRows}>
-      <article className={styles.low}><strong>amorph</strong><span>+</span><strong>diffus/bilateral</strong><span>→</span><b>eher niedriges Risiko</b></article>
-      <article className={styles.mid}><strong>amorph</strong><span>+</span><strong>gruppiert/segmental</strong><span>→</span><b>höhere Suspektheit</b></article>
-      <article className={styles.high}><strong>fein pleomorph</strong><span>+</span><strong>gruppiert</strong><span>→</span><b>deutlich suspekt</b></article>
-      <article className={styles.high}><strong>fein linear/verzweigt</strong><span>+</span><strong>linear oder segmental</strong><span>→</span><b>hochgradig malignitätsverdächtig</b></article>
-    </div>
-    <div className={styles.rule}><strong>Merke</strong><p>Nicht Morphologie oder Verteilung allein, sondern ihre Kombination bestimmt die klinische Risikoklasse.</p></div>
+    <p className={styles.lead}>Nicht Morphologie oder Verteilung allein, sondern ihre Kombination bestimmt die klinische Risikoklasse. Dies ist der zentrale Schritt der Kalkdiagnostik.</p>
     <h3 className={styles.takeTitle}>Morphologie × Verteilung: direkte Modellkategorie</h3>
     <div className={caseStyles.biradsMatrix}>
       <table>
