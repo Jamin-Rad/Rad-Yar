@@ -490,10 +490,7 @@
 }
 
 .assessmentIntro {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 24px;
+  display: block;
 }
 
 .assessmentIntro small,
@@ -510,13 +507,8 @@
 
 .assessmentIntro h3 {
   margin: 0;
-  color: var(--text-strong);
-  font: 800 clamp(1.25rem, 3vw, 1.65rem)/1.2 Georgia, serif;
-}
-
-.assessmentIntro h3 b {
   color: var(--calc);
-  font-weight: 800;
+  font: 800 clamp(1.25rem, 3vw, 1.65rem)/1.2 Georgia, serif;
 }
 
 .assessmentIntro h3 span {
@@ -525,25 +517,6 @@
   color: var(--text-muted);
   font: 650 0.68rem/1.35 var(--font-main);
   letter-spacing: 0.01em;
-}
-
-.assessmentIntro p {
-  max-width: 580px;
-  margin: 8px 0 0;
-  color: var(--text);
-  font-size: 0.9rem;
-  line-height: 1.55;
-}
-
-.assessmentIntro > span {
-  flex: 0 0 auto;
-  padding: 7px 10px;
-  border: 1px solid rgba(231, 51, 104, 0.28);
-  border-radius: 8px;
-  color: var(--calc);
-  background: rgba(231, 51, 104, 0.06);
-  font-size: 0.66rem;
-  font-weight: 850;
 }
 
 .assessmentCalculator {
@@ -750,11 +723,9 @@
 
 .contextPanel {
   display: grid;
-  gap: 14px;
-  padding: 20px;
-  border: 1px solid rgba(148, 163, 184, 0.28);
-  border-radius: 15px;
-  background: var(--surface-soft);
+  gap: 18px;
+  padding: 26px 2px 0;
+  border-top: 2px solid var(--calc);
 }
 
 .contextPanelHead {
@@ -763,46 +734,48 @@
   min-height: 28px;
 }
 
-.contextPanelHead h4 { margin: 0; color: var(--text-strong); font: 800 1.05rem/1.25 Georgia, serif; white-space: nowrap; }
-.contextPanelHead p { max-width: 390px; margin: 0; color: var(--text-muted); font-size: 0.75rem; line-height: 1.5; }
-.contextFactorGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+.contextPanelHead h4 { margin: 0; color: var(--text-strong); font: 800 1.2rem/1.25 Georgia, serif; white-space: nowrap; }
+.contextFactorGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
 
 .contextFactor {
   display: grid;
-  grid-template-columns: 32px minmax(0, 1fr);
-  gap: 10px;
-  align-items: start;
-  min-height: 92px;
-  padding: 12px;
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  border-radius: 11px;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-areas:
+    'index label'
+    'title title'
+    'text text';
+  align-content: start;
+  column-gap: 9px;
+  row-gap: 8px;
+  min-height: 148px;
+  padding: 17px 18px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-top: 3px solid rgba(231, 51, 104, 0.76);
+  border-radius: 12px;
   color: var(--text);
-  background: linear-gradient(145deg, color-mix(in srgb, var(--bg-card) 88%, white 12%), color-mix(in srgb, var(--bg-card) 96%, transparent));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--bg-card) 91%, white 9%), color-mix(in srgb, var(--surface-soft) 82%, transparent));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 9px 24px rgba(7, 29, 58, 0.055);
 }
 
-.factorIndex { display: grid; width: 30px; height: 30px; place-items: center; border-radius: 9px; color: var(--calc); background: rgba(231, 51, 104, 0.09); font-size: 0.66rem; font-weight: 900; }
-.contextFactor > span:nth-child(2) { display: grid; gap: 3px; }
-.contextFactor small { color: var(--calc); font-size: 0.59rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
-.contextFactor strong { color: var(--text-strong); font-size: 0.77rem; line-height: 1.3; }
-.contextFactor em { color: var(--text-muted); font-size: 0.67rem; font-style: normal; line-height: 1.4; }
+.factorIndex { grid-area: index; display: grid; width: 25px; height: 25px; place-items: center; border-radius: 7px; color: #fff; background: var(--calc); font-size: 0.61rem; font-weight: 900; }
+.contextFactor small { grid-area: label; align-self: center; color: var(--calc); font-size: 0.62rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; }
+.contextFactor strong { grid-area: title; color: var(--text-strong); font: 800 0.88rem/1.3 Georgia, serif; }
+.contextFactor p { grid-area: text; margin: 0; color: var(--text-muted); font-size: 0.7rem; line-height: 1.5; }
 
 .modelCaveat {
   margin: 0;
-  padding-top: 12px;
-  border-top: 1px solid rgba(148, 163, 184, 0.24);
+  padding-left: 12px;
+  border-left: 2px solid rgba(231, 51, 104, 0.56);
   color: var(--text-muted);
   font-size: 0.69rem;
   line-height: 1.55;
 }
 
-.modelCaveat strong { color: var(--text-strong); }
-
 .biradsCaption {
   display: block;
-  margin: 10px 0 0;
+  margin: -6px 2px 0;
   color: var(--text-muted);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   line-height: 1.5;
 }
 
@@ -825,8 +798,6 @@
 
 @media (max-width: 760px) {
   .assessment { padding: 18px; }
-  .assessmentIntro,
-  .assessmentIntro > span { align-self: flex-start; }
   .assessmentCalculator { grid-template-columns: 1fr; }
   .assessmentResult { min-height: 120px; }
   .matrixHeading { align-items: flex-start; flex-direction: column; }
