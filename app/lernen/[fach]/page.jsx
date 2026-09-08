@@ -12,9 +12,9 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
 
 const T = {
-  de: { back:'← Körperregionen', search:'Thema suchen…', readNow:'Artikel öffnen', noResult:'Kein Treffer für', themen:'Themen', available:'Verfügbar', unread:'Noch nicht gelernt', read:'Gelernt', all:'Alle', mcq:'MCQ', flash:'Flashcards', fall:'Fallbeispiele', building:'Geplant', emptyAvailable:'In diesem Fachgebiet ist noch kein Thema freigeschaltet.', emptyUnread:'Alle verfügbaren Lektionen in diesem Fachgebiet sind bereits gelernt.', emptyRead:'Du hast in diesem Fachgebiet noch nichts als gelesen markiert.', emptyAllFach:'Dieses Fachgebiet ist noch im Aufbau – schau bald wieder vorbei.', showAll:'Alle Themen anzeigen', lessonsTitle:'Hauptthemen', lessonsLead:'Thema wählen und Lektionen öffnen', close:'Schließen', backToModalities:'Zurück zu den Verfahren', chooseModality:'Verfahren auswählen', subtopics:'Unterthemen' },
-  en: { back:'← Body regions', search:'Search topic…', readNow:'Open article', noResult:'No results for', themen:'Topics', available:'Available', unread:'Not learned yet', read:'Learned', all:'All', mcq:'MCQ', flash:'Flashcards', fall:'Cases', building:'Planned', emptyAvailable:'No topics are unlocked in this specialty yet.', emptyUnread:'All available lessons in this specialty have already been learned.', emptyRead:"You haven't marked anything as read in this specialty yet.", emptyAllFach:'This specialty is still being built – check back soon.', showAll:'Show all topics', lessonsTitle:'Main topics', lessonsLead:'Choose a topic and open its lessons', close:'Close', backToModalities:'Back to modalities', chooseModality:'Choose a modality', subtopics:'Subtopics' },
-  fa: { back:'ناحیه‌های بدن →', search:'جستجوی موضوع…', readNow:'مطالعه کنید', noResult:'نتیجه‌ای برای', themen:'موضوع', available:'موجود', unread:'هنوز یاد نگرفته‌ام', read:'یاد گرفته‌ام', all:'همه', mcq:'MCQ', flash:'فلش‌کارت', fall:'کیس', building:'برنامه‌ریزی‌شده', emptyAvailable:'هنوز موضوعی در این تخصص فعال نشده.', emptyUnread:'همه درس‌های موجود در این تخصص مطالعه شده‌اند.', emptyRead:'هنوز چیزی را در این تخصص خوانده‌شده علامت نزده‌ای.', emptyAllFach:'این تخصص هنوز در حال آماده‌سازی است – بزودی برمی‌گردیم.', showAll:'نمایش همه موضوعات', lessonsTitle:'موضوعات اصلی', lessonsLead:'موضوع را انتخاب کنید و درس‌ها را ببینید', close:'بستن', backToModalities:'بازگشت به روش‌ها', chooseModality:'انتخاب روش تصویربرداری', subtopics:'زیرعنوان' },
+  de: { back:'← Körperregionen', search:'Thema suchen…', readNow:'Artikel öffnen', noResult:'Kein Treffer für', themen:'Themen', available:'Verfügbar', unread:'Noch nicht gelernt', read:'Gelernt', all:'Alle', mcq:'MCQ', flash:'Flashcards', fall:'Fallbeispiele', building:'Geplant', emptyAvailable:'In diesem Fachgebiet ist noch kein Thema freigeschaltet.', emptyUnread:'Alle verfügbaren Lektionen in diesem Fachgebiet sind bereits gelernt.', emptyRead:'Du hast in diesem Fachgebiet noch nichts als gelesen markiert.', emptyAllFach:'Dieses Fachgebiet ist noch im Aufbau – schau bald wieder vorbei.', showAll:'Alle Themen anzeigen', lessonsTitle:'Hauptthemen', lessonsLead:'Thema wählen und Lektionen öffnen', close:'Schließen', chooseModality:'Verfahren auswählen', subtopics:'Unterthemen' },
+  en: { back:'← Body regions', search:'Search topic…', readNow:'Open article', noResult:'No results for', themen:'Topics', available:'Available', unread:'Not learned yet', read:'Learned', all:'All', mcq:'MCQ', flash:'Flashcards', fall:'Cases', building:'Planned', emptyAvailable:'No topics are unlocked in this specialty yet.', emptyUnread:'All available lessons in this specialty have already been learned.', emptyRead:"You haven't marked anything as read in this specialty yet.", emptyAllFach:'This specialty is still being built – check back soon.', showAll:'Show all topics', lessonsTitle:'Main topics', lessonsLead:'Choose a topic and open its lessons', close:'Close', chooseModality:'Choose a modality', subtopics:'Subtopics' },
+  fa: { back:'ناحیه‌های بدن →', search:'جستجوی موضوع…', readNow:'مطالعه کنید', noResult:'نتیجه‌ای برای', themen:'موضوع', available:'موجود', unread:'هنوز یاد نگرفته‌ام', read:'یاد گرفته‌ام', all:'همه', mcq:'MCQ', flash:'فلش‌کارت', fall:'کیس', building:'برنامه‌ریزی‌شده', emptyAvailable:'هنوز موضوعی در این تخصص فعال نشده.', emptyUnread:'همه درس‌های موجود در این تخصص مطالعه شده‌اند.', emptyRead:'هنوز چیزی را در این تخصص خوانده‌شده علامت نزده‌ای.', emptyAllFach:'این تخصص هنوز در حال آماده‌سازی است – بزودی برمی‌گردیم.', showAll:'نمایش همه موضوعات', lessonsTitle:'موضوعات اصلی', lessonsLead:'موضوع را انتخاب کنید و درس‌ها را ببینید', close:'بستن', chooseModality:'انتخاب روش تصویربرداری', subtopics:'زیرعنوان' },
 }
 
 // Gruppiert Themen anhand thema.group (Reihenfolge wie in den Daten):
@@ -386,11 +386,6 @@ export default function LernenFachPage() {
                 <h3 id="topic-modal-title">{selectedTopic ? getThemaTitle(selectedTopic, lang) : withoutLeadingNumber(getKapitelTitle(selectedEntry.kapitel, lang))}</h3>
                 <p>{selectedTopic ? `${selectedTopic.sub?.length || 0} ${t.subtopics}` : `${selectedEntry.themen.length} ${t.themen}`}</p>
               </div>
-              {selectedTopic && (
-                <button className={styles.topicModalBack} onClick={() => setSelectedThema(null)}>
-                  <span aria-hidden="true">←</span> {t.backToModalities}
-                </button>
-              )}
               <button className={styles.topicModalClose} onClick={() => {
                 setSelectedThema(null)
                 setSelectedKapitel(null)
@@ -407,6 +402,7 @@ export default function LernenFachPage() {
                       <>
                         <span className={styles.subtopicPopupNumber}>{String(index + 1).padStart(2, '0')}</span>
                         <span className={styles.topicRowTitle}>{getThemaTitle(subtopic, lang)}</span>
+                        {isRead(subtopic, readArticles) && <span className={styles.readBadge}>✓ {t.read}</span>}
                         <span className={`${styles.topicRowStatus} ${subtopic.link ? styles.topicRowStatusReady : ''}`}>
                           {subtopic.link ? t.available : t.building}
                         </span>
