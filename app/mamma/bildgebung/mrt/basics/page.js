@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import LessonKeyPoints from '@/components/LessonKeyPoints'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
@@ -124,11 +125,11 @@ export default function MammaMrtBasicsPage() {
               <Link className={`${base.actionBtn} ${styles.actionBtn}`} href={withLang(`/flashcards/mamma-mrt-basics?from=${encodeURIComponent(withLang(lessonPath))}`)}>🧠 {tx('Flashcards')}</Link>
             </div>
           </div>
-          <div className={base.heroStats}>
-            <div className={`${base.heroStat} ${styles.heroStat}`}><strong>T1 post KM</strong><span>{tx('Kernsequenz')}</span><small>{tx('Enhancement beurteilen.')}</small></div>
-            <div className={`${base.heroStat} ${styles.heroStat}`}><strong>ADC ↓ ≠ Krebs</strong><span>{tx('Nur Zusatzbaustein')}</span><small>{tx('Nie isoliert bewerten.')}</small></div>
-            <div className={`${base.heroStat} ${styles.heroStat}`}><strong>MIP</strong><span>{tx('Suchen, nicht entscheiden')}</span><small>{tx('Schneller Überblick.')}</small></div>
-          </div>
+          <LessonKeyPoints points={[
+            [tx('BPE oder echter Befund?'), tx('Normales Parenchym von Läsionen unterscheiden.')],
+            ['Mass · NME', tx('Zuerst den Enhancement-Typ einordnen.')],
+            [tx('Gemeinsam beurteilen'), tx('Morphologie, Diffusion und Kinetik.')],
+          ]} />
         </div>
       </header>
 

@@ -52,6 +52,10 @@ export const BPE_CATEGORIES = [
 ]
 
 const EN = {
+  'Normales Parenchym von Läsionen unterscheiden.': 'Distinguish normal parenchyma from lesions.',
+  'Zuerst den Enhancement-Typ einordnen.': 'First classify the enhancement type.',
+  'Gemeinsam beurteilen': 'Assess together',
+  'Morphologie, Diffusion und Kinetik.': 'Morphology, diffusion and kinetics.',
   'Kernsequenz':'Core sequence','Enhancement beurteilen.':'Assess enhancement.','Nur Zusatzbaustein':'Adjunct only','Nie isoliert bewerten.':'Never assess in isolation.','Suchen, nicht entscheiden':'Search, not decide','Schneller Überblick.':'Rapid overview.',
   'Enhancement-Typen in voller Größe öffnen':'Open enhancement types full size','MRT-Beispiele für Mass und Non-Mass Enhancement':'MRI examples of mass and non-mass enhancement','Auch bei auffälligem Enhancement':'Even with abnormal enhancement','Diese Frage lässt sich nicht sofort beantworten.':'This question cannot be answered immediately.','Zuerst klären':'First clarify','Dann einordnen':'Then classify','Erst danach beurteilen':'Only then assess',
   'Indikationen':'Indications','Sequenzen':'Sequences','Systematisch lesen':'Systematic reading','Enhancement-Typen':'Enhancement types','Das wichtigste Prinzip':'The key principle','Take-Home Message':'Take-home message',
@@ -97,6 +101,10 @@ const FA = {
 }
 
 const FA_REFINED = {
+  'Normales Parenchym von Läsionen unterscheiden.': 'پارانشیم طبیعی را از ضایعه تفکیک کنید.',
+  'Zuerst den Enhancement-Typ einordnen.': 'ابتدا نوع جذب کنتراست را مشخص کنید.',
+  'Gemeinsam beurteilen': 'ارزیابی هم‌زمان',
+  'Morphologie, Diffusion und Kinetik.': 'مورفولوژی، دیفیوژن و کینتیک.',
   'Kernsequenz': 'Sequence اصلی',
   'Enhancement beurteilen.': 'برای ارزیابی Enhancement.',
   'Nur Zusatzbaustein': 'فقط یک یافته تکمیلی',
