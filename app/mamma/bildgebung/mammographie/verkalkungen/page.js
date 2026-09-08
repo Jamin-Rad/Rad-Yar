@@ -43,10 +43,9 @@ const CALC_META={
   '5':{risk:'> 95 %',label:'hochgradig malignomverdächtig',action:'Histologische Sicherung erforderlich'},
 }
 const CALC_FACTORS=[
-  {key:'progression',group:'Verlauf',title:'Neu, zunehmend oder stabil?',text:'Echte Voraufnahmen vergleichen und jede relevante Veränderung dokumentieren.'},
-  {key:'extent',group:'Ausdehnung',title:'Gesamtausdehnung messen',text:'Das gesamte Kalkareal in Millimetern oder Zentimetern angeben.'},
-  {key:'associated',group:'Begleitbefunde',title:'Gezielt mitbeurteilen',text:'Masse, Architekturstörung, Asymmetrie sowie Haut- oder Mamillenveränderung suchen.'},
-  {key:'history',group:'Risikokontext',title:'Klinik einbeziehen',text:'Alter, persönliche Anamnese und Indikation in die Gesamtbeurteilung integrieren.'},
+  {key:'progression',group:'Verlauf',title:'Voraufnahmen vergleichen',text:'Neuauftreten, Zunahme oder Stabilität der Verkalkungen dokumentieren.'},
+  {key:'extent',group:'Ausdehnung',title:'Kalkareal vollständig messen',text:'Die größte Gesamtausdehnung in zwei Ebenen angeben.'},
+  {key:'associated',group:'Begleitbefunde',title:'Zusätzliche Zeichen erfassen',text:'Masse, Architekturstörung, Asymmetrie sowie Haut- oder Mamillenveränderungen mitbeurteilen.'},
 ]
 function Section({id,number,title,children}){const mobile=useMobileLearningLayout();const[open,setOpen]=useState(true);useEffect(()=>setOpen(!mobile),[mobile,id]);return <section id={id} className={`${base.section} ${basics.section} ${styles.section}`}><button type="button" className={`${base.sectionHeader} ${basics.sectionHeader}`} onClick={()=>setOpen(v=>!v)} aria-expanded={open}><span className={basics.sectionHeading}><small>{number}</small><h2>{title}</h2></span><span className={basics.sectionToggle}>{open?'−':'+'}</span></button>{open&&<div className={`${base.sectionBody} ${basics.sectionBody} ${styles.sectionBody}`}>{children}</div>}</section>}
 function ReadButton({lang,isRead,toggle,authError}){const t=READ[lang]||READ.de;return <div className={base.readControl}><button type="button" className={`${base.readButton} ${basics.readButton} ${isRead?`${base.readButtonActive} ${basics.readButtonActive}`:''}`} onClick={toggle}><span className={`${base.readCheck} ${basics.readCheck}`}>{isRead?'✓':''}</span><span>{isRead?t[1]:t[0]}</span></button>{authError&&<div className={base.readError}><span>{t[2]}</span><Link href="/sign-in">{t[3]}</Link></div>}</div>}
@@ -61,8 +60,7 @@ function KalkAssessment(){
   const selectCell=(nextMorph,nextDist)=>{setMorph(nextMorph);setDist(nextDist)}
   return <div className={caseStyles.assessment}>
     <div className={caseStyles.assessmentIntro}>
-      <div><small>Interaktives Orientierungsmodell</small><h3>Morphologie und Verteilung gemeinsam bewerten <b>→ BI-RADS</b><span>(bei Kalzifikationen nach Morphologie und Verteilung)</span></h3></div>
-      <span>Vereinfachtes Lehrmodell</span>
+      <div><small>Interaktives Orientierungsmodell</small><h3>BI-RADS<span>(bei Kalzifikationen nach Morphologie und Verteilung)</span></h3></div>
     </div>
     <div className={caseStyles.assessmentCalculator}>
       <div className={caseStyles.assessmentInputs}>
@@ -81,12 +79,12 @@ function KalkAssessment(){
         <tbody>{MORPH.map(item=><tr key={item.key}><th className={morph===item.key?caseStyles.axisActive:''}>{item.title.de}</th>{DISTRIBUTION.map(distribution=>{const value=CALC_MATRIX[item.key][distribution.key];const active=item.key===morph&&distribution.key===dist;return <td key={distribution.key} className={`${caseStyles[CALC_CLASS[value]]} ${active?caseStyles.cellActive:''}`}><button type="button" onClick={()=>selectCell(item.key,distribution.key)} aria-label={`${item.title.de}, ${distribution.title.de}: BI-RADS ${value}`} aria-pressed={active}>{value}</button></td>})}</tr>)}</tbody>
       </table>
     </div>
+    <p className={caseStyles.biradsCaption}>Matrix: vereinfachte Orientierung nach dem Scoring-Modell von Youk et al., Korean J Radiol. · Terminologie: ACR BI-RADS® Atlas, 5. Auflage.</p>
     <div className={caseStyles.contextPanel}>
       <div className={caseStyles.contextPanelHead}><h4>Verlauf, Ausdehnung &amp; Begleitbefunde</h4></div>
-      <div className={caseStyles.contextFactorGrid}>{CALC_FACTORS.map((factor,index)=><article key={factor.key} className={caseStyles.contextFactor}><span className={caseStyles.factorIndex}>{String(index+1).padStart(2,'0')}</span><span><small>{factor.group}</small><strong>{factor.title}</strong><em>{factor.text}</em></span></article>)}</div>
-      <p className={caseStyles.modelCaveat}><strong>Wichtig:</strong> Der Rechner bildet ausschließlich die Kombination aus Morphologie und Verteilung ab. Die endgültige BI-RADS-Kategorie und das Management ergeben sich aus der vollständigen ärztlichen Gesamtbeurteilung.</p>
+      <div className={caseStyles.contextFactorGrid}>{CALC_FACTORS.map((factor,index)=><article key={factor.key} className={caseStyles.contextFactor}><span className={caseStyles.factorIndex}>{String(index+1).padStart(2,'0')}</span><small>{factor.group}</small><strong>{factor.title}</strong><p>{factor.text}</p></article>)}</div>
+      <p className={caseStyles.modelCaveat}>Die Matrix zeigt ausschließlich die Kombination aus Morphologie und Verteilung. Diese Zusatzinformationen fließen separat in die ärztliche Gesamtbeurteilung ein.</p>
     </div>
-    <p className={caseStyles.biradsCaption}>Matrix: vereinfachte Orientierung nach dem Scoring-Modell von Youk et al., Korean J Radiol. · Terminologie: ACR BI-RADS® Atlas, 5. Auflage.</p>
   </div>
 }
 function Lines({children}){return <span style={{whiteSpace:'pre-line'}}>{children}</span>}
@@ -209,21 +207,14 @@ function GermanContent(){return <>
     <div className={styles.rule}><strong>Wichtiger vaskulärer Hinweis</strong><p>Vaskuläre Verkalkungen sind ein relevanter Marker für ein erhöhtes Risiko kardiovaskulärer Erkrankungen. Daher sollte eine klinische kardiovaskuläre Risikoevaluation erfolgen.</p></div>
     <h3 className={`${styles.takeTitle} ${caseStyles.benignSectionTitle}`}>Typisch benigne Verkalkungen im Drüsenparenchym</h3>
     <div className={`${styles.benignList} ${caseStyles.benignGrid}`}>
-      <article><span>COARSE (POPCORNARTIG)</span><div><h3>Grobschollig</h3><p><Lines>{`Große, grobe Verkalkungen, meist > 2 mm.
-
-Typisch bei:
-
-involutiertem Fibroadenom
-Fettnekrose
-Narben
-dystrophen Veränderungen`}</Lines></p></div></article>
+      <article><span>COARSE (POPCORNARTIG)</span><div><h3>Grobschollig</h3><p>Große, grobe Verkalkungen, meist &gt; 2 mm.</p><p className={caseStyles.bulletLead}>Typisch bei:</p><ul className={caseStyles.bulletList}><li>involutiertem Fibroadenom</li><li>Fettnekrose</li><li>Narben</li><li>dystrophen Veränderungen</li></ul></div></article>
       <article><span>LARGE ROD-LIKE</span><div><h3>Large rod-like</h3><p><Lines>{`Grobe, längliche Verkalkungen mit glatten und gut definierten Konturen.
 
 Sie entsprechen meist Verkalkungen innerhalb eines Milchganges oder entlang der Gangwand.
 
 Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifications.`}</Lines></p></div></article>
       <article><span>LAYERING (TEACUP / MILCHKALZIUM)</span><div><h3>Layering</h3><p>Sedimentierende Verkalkungen innerhalb von Mikro- oder Makrozysten, in der Seitenaufnahme typischerweise halbmond- oder sichelförmig.</p></div></article>
-      <article><span>RIM</span><div><h3>Rim calcifications</h3><p>Dünne randständige Verkalkungen entlang einer rundlichen Struktur, typisch beispielsweise bei Fettnekrose, Ölzysten oder Zysten.</p></div></article>
+      <article><span>RIM</span><div><h3>Rim calcifications</h3><p className={caseStyles.bulletLead}>Dünne randständige Verkalkungen entlang einer rundlichen Struktur, typisch beispielsweise bei:</p><ul className={caseStyles.bulletList}><li>Fettnekrose</li><li>Ölzysten</li><li>Zysten</li></ul></div></article>
     </div>
     <article className={`${caseStyles.caseStudy} ${caseStyles.exampleRim}`}>
       <header className={caseStyles.caseHeader}><div><small>RADIOPAEDIA-FALL</small><h3>Rim calcification</h3></div></header>
