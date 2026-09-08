@@ -117,7 +117,7 @@ function StrokeClassification({ lesson, lang, localizeValue }) {
 function Section({ id, title, lead, children }) {
   const isMobile = useMobileLearningLayout()
   const [open, setOpen] = useState(true)
-  useEffect(() => setOpen(!isMobile), [isMobile, id])
+  useEffect(() => setOpen(false), [id])
   return (
     <section id={id} className={styles.section}>
       <button className={styles.sectionHeader} type="button" onClick={() => setOpen(value => !value)} aria-expanded={open}>

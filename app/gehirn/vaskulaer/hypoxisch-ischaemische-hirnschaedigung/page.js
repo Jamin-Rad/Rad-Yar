@@ -87,7 +87,7 @@ function Section({ id, title, lead, titleClassName = '', children }) {
   const isMobile = useMobileLearningLayout()
   const [open, setOpen] = useState(true)
 
-  useEffect(() => setOpen(!isMobile), [isMobile, id])
+  useEffect(() => setOpen(false), [id])
 
   return (
     <section id={id} className={shared.section}>

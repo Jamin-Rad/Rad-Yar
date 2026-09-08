@@ -34,7 +34,7 @@ function Section({ id, eyebrow, title, children }) {
   const isMobile = useMobileLearningLayout()
   const [open, setOpen] = useState(true)
 
-  useEffect(() => setOpen(!isMobile), [isMobile, id])
+  useEffect(() => setOpen(false), [id])
 
   return <section id={id} className={`${base.section} ${basics.section} ${styles.section}`}>
     <button className={`${base.sectionHeader} ${basics.sectionHeader}`} type="button" onClick={() => setOpen(value => !value)} aria-expanded={open}>

@@ -25,7 +25,7 @@ function ReadButton({ isRead, onClick, authError, lang }) {
 function Section({ id, eyebrow, title, children }) {
   const isMobile = useMobileLearningLayout()
   const [open, setOpen] = useState(true)
-  useEffect(() => setOpen(!isMobile), [isMobile, id])
+  useEffect(() => setOpen(false), [id])
   return <section id={id} className={`${base.section} ${basics.section} ${styles.section}`}><button className={`${base.sectionHeader} ${basics.sectionHeader}`} type="button" onClick={() => setOpen(value => !value)} aria-expanded={open}><span className={basics.sectionHeading}><small>{eyebrow}</small><h2>{title}</h2></span><span className={basics.sectionToggle}>{open ? '−' : '+'}</span></button>{open && <div className={`${base.sectionBody} ${basics.sectionBody} ${styles.sectionBody}`}>{children}</div>}</section>
 }
 

@@ -384,7 +384,7 @@ function Section({ id, title, lead, children }) {
   const isMobile = useMobileLearningLayout()
   const [open, setOpen] = useState(true)
 
-  useEffect(() => setOpen(!isMobile), [isMobile, id])
+  useEffect(() => setOpen(false), [id])
 
   return (
     <section id={id} className={styles.section}>

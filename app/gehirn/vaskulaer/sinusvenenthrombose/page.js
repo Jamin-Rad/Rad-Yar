@@ -20,7 +20,7 @@ const UI = {
 function Section({ id, title, lead, children }) {
   const mobile = useMobileLearningLayout()
   const [open, setOpen] = useState(true)
-  useEffect(() => setOpen(!mobile), [mobile, id])
+  useEffect(() => setOpen(false), [id])
   return <section id={id} className={styles.section}><button type="button" className={styles.sectionHeader} onClick={() => setOpen(v => !v)} aria-expanded={open}><h2>{title}</h2><span>{open ? '−' : '+'}</span></button>{open && <div className={styles.sectionBody}>{lead && <p className={styles.lead}>{lead}</p>}{children}</div>}</section>
 }
 function Table({ headers, rows }) {

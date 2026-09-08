@@ -115,7 +115,7 @@ function LessonSection({ section, lang, ui, withLang, onOpen }) {
   const isMobile = useMobileLearningLayout()
   const [open, setOpen] = useState(true)
 
-  useEffect(() => setOpen(!isMobile), [isMobile, section.id])
+  useEffect(() => setOpen(false), [section.id])
 
   return (
     <section id={section.id} className={styles.section}>

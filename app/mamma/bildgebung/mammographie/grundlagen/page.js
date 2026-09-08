@@ -26,7 +26,7 @@ function ReadButton({ isRead, onClick, authError, lang }) {
 function Section({ id, number, title, children }) {
   const mobile = useMobileLearningLayout()
   const [open, setOpen] = useState(true)
-  useEffect(() => setOpen(!mobile), [mobile, id])
+  useEffect(() => setOpen(false), [id])
   return <section id={id} className={`${base.section} ${shared.section} ${styles.section}`}><button className={`${base.sectionHeader} ${shared.sectionHeader}`} type="button" onClick={() => setOpen(value => !value)} aria-expanded={open}><span className={shared.sectionHeading}><small>{number}</small><h2>{title}</h2></span><span className={shared.sectionToggle}>{open ? '−' : '+'}</span></button>{open && <div className={`${base.sectionBody} ${shared.sectionBody} ${styles.sectionBody}`}>{children}</div>}</section>
 }
 

@@ -73,7 +73,7 @@ function Callout({ type = 'note', label, children }) {
 function Section({ id, title, lead, titleClassName = '', children }) {
   const isMobile = useMobileLearningLayout()
   const [open, setOpen] = useState(true)
-  useEffect(() => setOpen(!isMobile), [isMobile, id])
+  useEffect(() => setOpen(false), [id])
   return (
     <section id={id} className={shared.section}>
       <button className={shared.sectionHeader} type="button" onClick={() => setOpen(value => !value)} aria-expanded={open}>

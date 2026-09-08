@@ -34,7 +34,7 @@ function ReadButton({ isRead, onClick, authError }) {
 function Section({ id, title, eyebrow, children }) {
   const isMobile = useMobileLearningLayout()
   const [open, setOpen] = useState(true)
-  useEffect(() => setOpen(!isMobile), [isMobile, id])
+  useEffect(() => setOpen(false), [id])
   return (
     <section id={id} className={`${base.section} ${styles.section}`}>
       <button className={`${base.sectionHeader} ${styles.sectionHeader}`} type="button" onClick={() => setOpen(value => !value)} aria-expanded={open}>
