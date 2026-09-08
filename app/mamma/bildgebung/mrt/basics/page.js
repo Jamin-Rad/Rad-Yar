@@ -50,6 +50,26 @@ function Callout({ cave = false, label, children }) {
   return <div className={`${base.callout} ${styles.callout} ${cave ? styles.cave : ''}`}><strong>{label}</strong><p>{children}</p></div>
 }
 
+function ZoomFigure({ figureClassName, src, width, height, alt, sizes, loading, caption, zoomLabel, ariaLabel }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <figure className={figureClassName}>
+      <button type="button" className={styles.zoomTrigger} onClick={() => setOpen(true)} aria-label={ariaLabel || zoomLabel}>
+        <Image src={src} alt={alt} width={width} height={height} sizes={sizes} loading={loading} />
+      </button>
+      <figcaption>{caption}<span>{zoomLabel}</span></figcaption>
+      {open && (
+        <div className={base.strokeImageModal} role="dialog" aria-modal="true" onClick={() => setOpen(false)}>
+          <div className={base.strokeImageModalContent} onClick={event => event.stopPropagation()}>
+            <button type="button" className={base.strokeImageModalClose} onClick={() => setOpen(false)} aria-label={zoomLabel}>×</button>
+            <img src={src} alt={alt} />
+          </div>
+        </div>
+      )}
+    </figure>
+  )
+}
+
 export default function MammaMrtBasicsPage() {
   const { lang } = useLanguage()
   const tx = value => translate(lang, value)
@@ -121,7 +141,6 @@ export default function MammaMrtBasicsPage() {
           </Section>
 
           <Section id="sequenzen" eyebrow={tx('02 · Protokoll')} title={tx('Welche Sequenzen brauchen wir?')}>
-            <p className={styles.lead}>{tx('Ein typisches Mamma-MRT-Protokoll besteht aus mehreren Sequenzen. Jede beantwortet eine andere Frage.')}</p>
             <div className={styles.sequenceGrid}>{SEQUENCES.map(sequence => (
               <article className={`${styles.sequenceCard} ${styles[sequence.accent]}`} key={sequence.key}>
                 <div className={styles.sequenceTop}><strong>{sequence.key}</strong><span>{tx(sequence.role)}</span></div>
@@ -157,6 +176,19 @@ export default function MammaMrtBasicsPage() {
                       {step.categories.map((category) => <li key={category.title}><strong>{category.title}</strong><span>{tx(category.text)}</span></li>)}
                     </ul>
                   )}
+                  {step.showEnhancementImage && (
+                    <ZoomFigure
+                      figureClassName={`${styles.enhancementMedia} ${styles.workflowMedia}`}
+                      src="/mamma/mrt/enhancement-types.png"
+                      width={1536}
+                      height={1024}
+                      alt={tx('MRT-Beispiele für Mass und Non-Mass Enhancement')}
+                      sizes="(max-width: 900px) calc(100vw - 48px), 860px"
+                      caption={<strong>Mass · Non-Mass Enhancement</strong>}
+                      zoomLabel={tx('Zum Vergrößern Bild öffnen')}
+                      ariaLabel={tx('Enhancement-Typen in voller Größe öffnen')}
+                    />
+                  )}
                 </div>
               </li>
             ))}</ol>
@@ -167,12 +199,18 @@ export default function MammaMrtBasicsPage() {
               <article className={styles.fgtCard}>
                 <div className={styles.compareHeading}><span className={styles.term}>FGT</span><div><small>{tx('Fibroglanduläres Gewebe')}</small><h3>Fibroglandular Tissue</h3></div></div>
                 <p className={styles.definition}>{tx('FGT beschreibt die')} <strong>{tx('Menge des fibroglandulären Brustgewebes')}</strong> {tx('– unabhängig davon, wie stark dieses nach Kontrastmittelgabe anreichert.')}</p>
-                <figure className={styles.teachingMedia}>
-                  <a href="/mamma/mrt/fgt-categories-abcd.png" target="_blank" rel="noreferrer" aria-label={tx('FGT-Kategorien in voller Größe öffnen')}>
-                    <Image src="/mamma/mrt/fgt-categories-abcd.png" alt={tx('Vier MRT-Beispiele der FGT-Kategorien von fast vollständig fettig bis extrem fibroglandulär')} width={2170} height={725} sizes="(max-width: 900px) calc(100vw - 64px), 820px" loading="eager" />
-                  </a>
-                  <figcaption><strong>{tx('FGT a–d im MRT')}</strong><span>{tx('Zum Vergrößern Bild öffnen')}</span></figcaption>
-                </figure>
+                <ZoomFigure
+                  figureClassName={styles.teachingMedia}
+                  src="/mamma/mrt/fgt-categories-abcd.png"
+                  width={2170}
+                  height={725}
+                  alt={tx('Vier MRT-Beispiele der FGT-Kategorien von fast vollständig fettig bis extrem fibroglandulär')}
+                  sizes="(max-width: 900px) calc(100vw - 64px), 820px"
+                  loading="eager"
+                  caption={<strong>{tx('FGT a–d im MRT')}</strong>}
+                  zoomLabel={tx('Zum Vergrößern Bild öffnen')}
+                  ariaLabel={tx('FGT-Kategorien in voller Größe öffnen')}
+                />
                 <p className={styles.categoryIntro}>{tx('Nach BI-RADS wird das FGT qualitativ in vier Kategorien eingeteilt:')}</p>
                 <div className={styles.categoryList}>
                   {FGT_CATEGORIES.map((category) => (
@@ -190,12 +228,18 @@ export default function MammaMrtBasicsPage() {
               <article className={styles.bpeCard}>
                 <div className={styles.compareHeading}><span className={`${styles.term} ${styles.termBpe}`}>BPE</span><div><small>{tx('Normales Parenchym')}</small><h3>Background Parenchymal Enhancement</h3></div></div>
                 <p className={styles.definition}>{tx('BPE beschreibt, wie stark das')} <strong>{tx('normale fibroglanduläre Brustgewebe nach Kontrastmittelgabe anreichert')}</strong>.</p>
-                <figure className={styles.teachingMedia}>
-                  <a href="/mamma/mrt/bpe-categories.png" target="_blank" rel="noreferrer" aria-label={tx('BPE-Kategorien in voller Größe öffnen')}>
-                    <Image src="/mamma/mrt/bpe-categories.png" alt={tx('Vier MRT-Beispiele der BPE-Kategorien minimal, mild, moderate und marked')} width={1811} height={868} sizes="(max-width: 900px) calc(100vw - 64px), 820px" loading="eager" />
-                  </a>
-                  <figcaption><strong>{tx('BPE minimal–marked im MRT')}</strong><span>{tx('Zum Vergrößern Bild öffnen')}</span></figcaption>
-                </figure>
+                <ZoomFigure
+                  figureClassName={styles.teachingMedia}
+                  src="/mamma/mrt/bpe-categories.png"
+                  width={1811}
+                  height={868}
+                  alt={tx('Vier MRT-Beispiele der BPE-Kategorien minimal, mild, moderate und marked')}
+                  sizes="(max-width: 900px) calc(100vw - 64px), 820px"
+                  loading="eager"
+                  caption={<strong>{tx('BPE minimal–marked im MRT')}</strong>}
+                  zoomLabel={tx('Zum Vergrößern Bild öffnen')}
+                  ariaLabel={tx('BPE-Kategorien in voller Größe öffnen')}
+                />
                 <p className={styles.categoryIntro}>{tx('BI-RADS unterscheidet vier Kategorien:')}</p>
                 <div className={styles.categoryList}>
                   {BPE_CATEGORIES.map((category) => (
@@ -232,16 +276,7 @@ export default function MammaMrtBasicsPage() {
             </aside>
           </Section>
 
-          <Section id="enhancement" eyebrow={tx('05 · BI-RADS-Logik')} title={tx('Die drei wichtigsten Enhancement-Typen')}>
-            <figure className={styles.enhancementMedia}>
-              <a href="/mamma/mrt/enhancement-types.png" target="_blank" rel="noreferrer" aria-label={tx('Enhancement-Typen in voller Größe öffnen')}>
-                <Image src="/mamma/mrt/enhancement-types.png" alt={tx('MRT-Beispiele für Focus, Mass und Non-Mass Enhancement')} width={1536} height={1024} sizes="(max-width: 900px) calc(100vw - 48px), 860px" />
-              </a>
-              <figcaption><strong>Focus · Mass · Non-Mass Enhancement</strong><span>{tx('Zum Vergrößern Bild öffnen')}</span></figcaption>
-            </figure>
-          </Section>
-
-          <Section id="prinzip" eyebrow={tx('06 · Take home')} title={tx('Take-Home Message')}>
+          <Section id="prinzip" eyebrow={tx('05 · Take home')} title={tx('Take-Home Message')}>
             <div className={styles.takeHomeAlgorithm}>
               <div className={styles.takeHomeQuestion}>
                 <span>{tx('Auch bei auffälligem Enhancement')}</span>
@@ -250,7 +285,7 @@ export default function MammaMrtBasicsPage() {
               </div>
               <ol className={styles.diagnosticPath}>
                 <li><span>01</span><div><small>{tx('Zuerst klären')}</small><strong>{tx('BPE oder echter Befund?')}</strong></div></li>
-                <li><span>02</span><div><small>{tx('Dann einordnen')}</small><strong>Focus · Mass · Non-Mass Enhancement</strong></div></li>
+                <li><span>02</span><div><small>{tx('Dann einordnen')}</small><strong>Mass · Non-Mass Enhancement</strong></div></li>
                 <li><span>03</span><div><small>{tx('Erst danach beurteilen')}</small><strong>{tx('Morphologie · T2 · DWI · Kinetik · Begleitbefunde')}</strong></div></li>
               </ol>
             </div>
