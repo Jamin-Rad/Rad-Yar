@@ -16,19 +16,11 @@ export const COPY = {
 
 export const SECTIONS = [
   { id: 'start', icon: '01', label: L('Enhancement-Typen', 'Enhancement types', 'انواع Enhancement') },
-  { id: 'focus', icon: '02', label: L('Focus', 'Focus', 'Focus') },
-  { id: 'mass', icon: '03', label: L('Mass', 'Mass', 'Mass') },
-  { id: 'nme', icon: '04', label: L('Non-Mass Enhancement', 'Non-mass enhancement', 'Non-Mass Enhancement') },
-  { id: 'kinetik', icon: '05', label: L('Kinetik', 'Kinetics', 'کینتیک') },
-  { id: 't2-diffusion', icon: '06', label: L('T2 & Diffusion', 'T2 & diffusion', 'T2 و دیفیوژن') },
-  { id: 'algorithmus', icon: '07', label: L('Gesamtbewertung', 'Overall assessment', 'ارزیابی نهایی') },
-]
-
-export const FOCUS_POINTS = [
-  L('neu oder bereits bekannt?', 'new or previously known?', 'جدید است یا در بررسی‌های قبلی وجود داشته؟'),
-  L('stabil oder größer geworden?', 'stable or increased in size?', 'ثابت مانده یا بزرگ‌تر شده؟'),
-  L('einzeln oder mehrere ähnliche Foci?', 'solitary or one of several similar foci?', 'منفرد است یا چند Focus مشابه وجود دارد؟'),
-  L('unterscheidet er sich deutlich vom normalen BPE?', 'is it clearly distinct from normal BPE?', 'آیا به‌وضوح از BPE طبیعی قابل تفکیک است؟'),
+  { id: 'mass', icon: '02', label: L('Mass', 'Mass', 'Mass') },
+  { id: 'nme', icon: '03', label: L('Non-Mass Enhancement', 'Non-mass enhancement', 'Non-Mass Enhancement') },
+  { id: 'kinetik', icon: '04', label: L('Kinetik', 'Kinetics', 'کینتیک') },
+  { id: 't2-diffusion', icon: '05', label: L('T2 & Diffusion', 'T2 & diffusion', 'T2 و دیفیوژن') },
+  { id: 'algorithmus', icon: '06', label: L('Gesamtbewertung', 'Overall assessment', 'ارزیابی نهایی') },
 ]
 
 export const MASS_SHAPES = [
@@ -53,7 +45,7 @@ export const MASS_ENHANCEMENT = [
 export const NME_DISTRIBUTION = [
   { term: L('Fokal', 'Focal', 'کانونی'), text: L('Die Anreicherung ist auf ein kleines, umschriebenes Areal begrenzt.', 'The enhancement is confined to a small, defined area.', 'Enhancement به یک ناحیه کوچک و مشخص محدود است.') },
   { term: L('Linear', 'Linear', 'خطی'), text: L('Linienförmige Anreicherung, häufig entlang eines einzelnen Milchganges.', 'Linear enhancement, often following a single duct.', 'Enhancement خطی که اغلب در امتداد یک مجرای منفرد قرار دارد.') },
-  { term: L('Segmental', 'Segmental', 'سگمنتال'), text: L('Die Anreicherung ist keil- oder dreieckförmig zur Mamille ausgerichtet und entspricht häufig einem Gangsystem.', 'The enhancement is wedge- or triangular-shaped toward the nipple and often follows a ductal system.', 'Enhancement به‌شکل گوه‌ای یا مثلثی به‌سمت نوک پستان امتداد دارد و اغلب با یک سیستم مجرایی مطابقت دارد.'), sub: L('Eine segmentale Verteilung ist suspekter.', 'A segmental distribution is more suspicious.', 'توزیع سگمنتال مشکوک‌تر است.') },
+  { term: L('Segmental', 'Segmental', 'سگمنتال'), text: L('Die Anreicherung ist keil- oder dreieckförmig zur Mamille ausgerichtet und entspricht häufig einem Gangsystem.', 'The enhancement is wedge- or triangular-shaped toward the nipple and often follows a ductal system.', 'Enhancement به‌شکل گوه‌ای یا مثلثی به‌سمت نوک پستان امتداد دارد و اغلب با یک سیستم مجرایی مطابقت دارد.') },
   { term: L('Regional', 'Regional', 'ناحیه‌ای'), text: L('Größeres zusammenhängendes Areal, das keinem einzelnen Gangsystem eindeutig zugeordnet werden kann.', 'A larger contiguous area that does not clearly correspond to a single ductal system.', 'یک ناحیه پیوسته بزرگ‌تر که به‌طور مشخص به یک سیستم مجرایی منفرد محدود نیست.') },
   { term: L('Mehrere Regionen', 'Multiple Regions', 'چند ناحیه'), text: L('Mindestens zwei voneinander getrennte größere Anreicherungsareale.', 'At least two separate larger areas of enhancement.', 'دست‌کم دو ناحیه بزرگ و جدا از Enhancement.') },
   { term: L('Diffus', 'Diffuse', 'منتشر'), text: L('Weitläufige Anreicherung über große Teile der Brust.', 'Widespread enhancement involving large parts of the breast.', 'Enhancement گسترده که بخش بزرگی از پستان را درگیر می‌کند.') },
@@ -62,8 +54,8 @@ export const NME_DISTRIBUTION = [
 export const NME_PATTERNS = [
   { term: L('Homogen', 'Homogeneous', 'همگن'), text: L('Gleichmäßige, zusammenfließende Anreicherung innerhalb des NME.', 'Uniform, confluent enhancement within the NME.', 'Enhancement یکنواخت و به‌هم‌پیوسته در محدوده NME.') },
   { term: L('Heterogen', 'Heterogeneous', 'ناهمگن'), text: L('Ungleichmäßige, unterschiedlich starke Anreicherung innerhalb des NME.', 'Non-uniform enhancement of varying intensity within the NME.', 'Enhancement ناهمگون با شدت‌های متفاوت در محدوده NME.') },
-  { term: L('Klumpig', 'Clumped', 'توده‌ای و خوشه‌ای'), text: L('Kleine Anreicherungsareale unterschiedlicher Form und Größe liegen dicht gruppiert beieinander.', 'Small areas of enhancement of varying shape and size are tightly grouped together.', 'نواحی کوچک Enhancement با شکل و اندازه متفاوت، به‌صورت فشرده کنار هم قرار گرفته‌اند.'), sub: L('Dies ist ein suspektes Muster.', 'This is a suspicious pattern.', 'این یک الگوی مشکوک محسوب می‌شود.') },
-  { term: L('Gruppiert ringförmig', 'Clustered Ring', 'حلقه‌های خوشه‌ای'), text: L('Mehrere dünne, ringförmige Anreicherungen liegen um Gangstrukturen gruppiert.', 'Multiple thin ring-like enhancements are grouped around ductal structures.', 'چندین Enhancement حلقوی ظریف در اطراف ساختارهای مجرایی به‌صورت گروهی دیده می‌شوند.'), sub: L('Dies ist ein besonders suspektes Muster.', 'This is a particularly suspicious pattern.', 'این یک الگوی به‌ویژه مشکوک محسوب می‌شود.') },
+  { term: L('Klumpig', 'Clumped', 'توده‌ای و خوشه‌ای'), text: L('Kleine Anreicherungsareale unterschiedlicher Form und Größe liegen dicht gruppiert beieinander.', 'Small areas of enhancement of varying shape and size are tightly grouped together.', 'نواحی کوچک Enhancement با شکل و اندازه متفاوت، به‌صورت فشرده کنار هم قرار گرفته‌اند.') },
+  { term: L('Gruppiert ringförmig', 'Clustered Ring', 'حلقه‌های خوشه‌ای'), text: L('Mehrere dünne, ringförmige Anreicherungen liegen um Gangstrukturen gruppiert.', 'Multiple thin ring-like enhancements are grouped around ductal structures.', 'چندین Enhancement حلقوی ظریف در اطراف ساختارهای مجرایی به‌صورت گروهی دیده می‌شوند.') },
 ]
 
 export const KINETIC_PHASES = [
@@ -78,7 +70,7 @@ export const CURVES = [
 ]
 
 export const SUMMARY_STEPS = [
-  L('Focus, Mass oder NME?', 'Focus, mass or NME?', 'Focus، Mass یا NME؟'),
+  L('Mass oder NME?', 'Mass or NME?', 'Mass یا NME؟'),
   L('Mass: Form → Rand → internes Anreicherungsmuster', 'Mass: shape → margin → internal enhancement', 'Mass: شکل ← حاشیه ← الگوی Enhancement داخلی'),
   L('NME: Verteilung → internes Anreicherungsmuster', 'NME: distribution → internal enhancement pattern', 'NME: توزیع ← الگوی Enhancement داخلی'),
   L('Danach: T2 → DWI/ADC → Kinetik → Voraufnahmen', 'Then: T2 → DWI/ADC → kinetics → prior studies', 'سپس: T2 ← DWI/ADC ← کینتیک ← بررسی‌های قبلی'),

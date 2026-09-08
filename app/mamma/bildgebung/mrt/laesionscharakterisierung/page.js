@@ -9,7 +9,7 @@ import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import base from '@/app/abdomen/gi/divertikulitis/page.module.css'
 import basics from '../basics/page.module.css'
 import styles from './page.module.css'
-import { COPY, CURVES, FOCUS_POINTS, MASS_ENHANCEMENT, MASS_MARGINS, MASS_SHAPES, NME_DISTRIBUTION, NME_PATTERNS, SECTIONS, SUMMARY_STEPS, pick } from './content'
+import { COPY, CURVES, MASS_ENHANCEMENT, MASS_MARGINS, MASS_SHAPES, NME_DISTRIBUTION, NME_PATTERNS, SECTIONS, SUMMARY_STEPS, pick } from './content'
 
 const READ_COPY = {
   de: { mark: 'Als gelesen markieren', read: 'Als gelesen markiert', error: 'Bitte melde dich an, um deinen Lernfortschritt zu speichern.', signIn: 'Anmelden' },
@@ -73,21 +73,15 @@ export default function LesionscharakterisierungPage() {
       <aside className={`${base.sidebar} ${basics.sidebar}`}><div className={base.sideTitle}>{tx(COPY.contents)}</div>{SECTIONS.map(section => <button key={section.id} type="button" className={`${base.sideItem} ${basics.sideItem} ${activeId === section.id ? `${base.sideItemActive} ${basics.sideItemActive}` : ''}`} onClick={() => document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}><span className={basics.sideNumber}>{section.icon}</span><strong>{tx(section.label)}</strong></button>)}</aside>
       <div className={base.main}>
         <Section id="start" eyebrow={tx({ de: '01 · Enhancement-Typen', en: '01 · Enhancement types', fa: '۰۱ · انواع Enhancement' })} title={tx(SECTIONS[0].label)}>
-          <h3 className={styles.openingTitle}>{tx({ de: 'Die drei wichtigsten Enhancement-Typen', en: 'The three key enhancement types', fa: 'سه نوع اصلی Enhancement' })}</h3>
           <figure className={`${basics.enhancementMedia} ${styles.enhancementOverview}`}>
             <a href="/mamma/mrt/enhancement-types.png" target="_blank" rel="noreferrer" aria-label={tx({ de: 'Enhancement-Typen in voller Größe öffnen', en: 'Open enhancement types full size', fa: 'نمایش تصویر انواع Enhancement در اندازه کامل' })}>
-              <Image src="/mamma/mrt/enhancement-types.png" alt={tx({ de: 'MRT-Beispiele für Focus, Mass und Non-Mass Enhancement', en: 'MRI examples of focus, mass and non-mass enhancement', fa: 'نمونه‌های MRI از Focus، Mass و Non-Mass Enhancement' })} width={1536} height={1024} sizes="(max-width: 900px) calc(100vw - 48px), 860px" />
+              <Image src="/mamma/mrt/enhancement-types.png" alt={tx({ de: 'MRT-Beispiele für Mass und Non-Mass Enhancement', en: 'MRI examples of mass and non-mass enhancement', fa: 'نمونه‌های MRI از Mass و Non-Mass Enhancement' })} width={1536} height={1024} sizes="(max-width: 900px) calc(100vw - 48px), 860px" />
             </a>
-            <figcaption><strong>Focus · Mass · Non-Mass Enhancement</strong><span>{tx(COPY.zoom)}</span></figcaption>
+            <figcaption><strong>Mass · Non-Mass Enhancement</strong><span>{tx(COPY.zoom)}</span></figcaption>
           </figure>
         </Section>
 
-        <Section id="focus" eyebrow={tx({ de: '02 · Focus', en: '02 · Focus', fa: '۰۲ · Focus' })} title={tx(SECTIONS[1].label)}>
-          <div className={styles.focusBox}><div className={styles.focusIntro}><span>&lt; 5 mm</span><h3>Focus</h3><p>{tx({ de: 'Ein sehr kleines Enhancement, das zu klein ist, um Form und Rand zuverlässig zu beurteilen.', en: 'A very small enhancement that is too small for reliable assessment of shape and margin.', fa: 'یک Enhancement بسیار کوچک که برای ارزیابی قابل اعتماد Shape و Margin بیش از حد کوچک است.' })}</p></div><ul>{FOCUS_POINTS.map(point => <li key={tx(point)}>{tx(point)}</li>)}</ul></div>
-          <div className={styles.note}><strong>{tx({ de: 'Merke', en: 'Remember', fa: 'نکته' })}</strong><p>{tx({ de: 'Ein Focus ist nicht automatisch benign. Ein neu aufgetretener oder größer werdender Focus verdient mehr Aufmerksamkeit. Die Kinetik ist wegen möglicher Partialvolumeneffekte weniger zuverlässig.', en: 'A focus is not automatically benign. A new or enlarging focus deserves greater attention. Kinetics are less reliable because of possible partial-volume effects.', fa: 'Focus الزاماً خوش‌خیم نیست. Focus جدید یا در حال بزرگ‌شدن نیازمند توجه بیشتری است. به‌دلیل احتمال اثر Partial volume، کینتیک در این ضایعات کوچک قابلیت اعتماد کمتری دارد.' })}</p></div>
-        </Section>
-
-        <Section id="mass" eyebrow="03 · Mass" title={tx(SECTIONS[2].label)}>
+        <Section id="mass" eyebrow="02 · Mass" title={tx(SECTIONS[1].label)}>
           <p className={styles.lead}>{tx({ de: 'Eine Mass ist eine dreidimensionale, raumfordernde Läsion. Bei jeder Mass beurteilen wir:', en: 'A mass is a three-dimensional space-occupying lesion. For every mass, assess:', fa: 'Mass یک ضایعه سه‌بعدی و فضاگیر است. در هر Mass موارد زیر ارزیابی می‌شوند:' })}</p><div className={styles.formula}>{tx({ de: 'Form', en: 'Shape', fa: 'Shape' })} <i>→</i> {tx({ de: 'Rand', en: 'Margin', fa: 'Margin' })} <i>→</i> {tx({ de: 'Internes Anreicherungsmuster', en: 'Internal Enhancement', fa: 'الگوی Enhancement داخلی' })}</div>
           <TeachingImage className="referenceMedia" src="/mamma/mrt/lesion-characterization/mass-shape-margin-reference.png" width={1226} height={1283} caption={{ de: 'Mass: Form und Rand – Referenzübersicht', en: 'Mass: Shape and Margin – reference overview', fa: 'Mass: شکل و حاشیه – نمای مرجع' }} alt={{ de: 'Referenzübersicht der Mass-Formen rund, oval und irregulär sowie der Ränder zirkumskript, irregulär und spikuliert', en: 'Reference overview of round, oval and irregular mass shapes and circumscribed, irregular and spiculated margins', fa: 'نمای مرجع شکل‌های گرد، بیضی و نامنظم Mass و حاشیه‌های Circumscribed، Irregular و Spiculated' }} />
           <h3 className={styles.subheading}>{tx({ de: 'Form', en: 'Shape', fa: 'Shape' })}</h3><DescriptorGrid items={MASS_SHAPES} />
@@ -99,7 +93,7 @@ export default function LesionscharakterisierungPage() {
           <div className={styles.suspiciousCombo}><span>{tx({ de: 'Besonders aufmerksam bei', en: 'Pay particular attention to', fa: 'ترکیب بسیار مهم و مشکوک' })}</span><strong>{tx({ de: 'irreguläre Form + irregulärer oder spikulierter Rand + heterogene oder randständige Anreicherung', en: 'irregular shape + irregular/spiculated margin + heterogeneous or rim enhancement', fa: 'شکل نامنظم + حاشیه نامنظم یا اسپیکوله + Enhancement ناهمگن یا حاشیه‌ای' })}</strong></div>
         </Section>
 
-        <Section id="nme" eyebrow="04 · NME" title={tx(SECTIONS[3].label)}>
+        <Section id="nme" eyebrow="03 · NME" title={tx(SECTIONS[2].label)}>
           <p className={styles.lead}>{tx({ de: 'Beim NME zeigt sich eine pathologische Kontrastmittelanreicherung, ohne dass eine klar abgrenzbare dreidimensionale Mass entsteht. Deshalb beurteilen wir Verteilung und internes Anreicherungsmuster getrennt:', en: 'NME is pathological enhancement without a clearly defined three-dimensional mass and is therefore described differently:', fa: 'در NME یک Enhancement پاتولوژیک وجود دارد، اما Mass سه‌بعدی مشخصی تشکیل نمی‌شود؛ بنابراین روش توصیف آن متفاوت است:' })}</p><div className={styles.formula}>{tx({ de: 'Verteilung', en: 'Distribution', fa: 'توزیع' })} <i>→</i> {tx({ de: 'Internes Anreicherungsmuster', en: 'Internal Enhancement Pattern', fa: 'الگوی Enhancement داخلی' })}</div>
           <TeachingImage src="/mamma/mrt/lesion-nme-distribution-pattern-en.png" width={518} height={536} caption={{ de: 'NME: Verteilung und internes Anreicherungsmuster', en: 'NME: Distribution and Internal Enhancement Pattern', fa: 'NME: توزیع و الگوی Enhancement داخلی' }} alt={{ de: 'MRT-Beispiele für verschiedene Verteilungen und interne Anreicherungsmuster eines NME', en: 'MRI examples of NME distribution and internal enhancement patterns', fa: 'نمونه‌های MRI از انواع توزیع و الگوهای Enhancement داخلی در NME' }} />
           <h3 className={styles.subheading}>{tx({ de: 'Verteilung', en: 'Distribution', fa: 'توزیع' })}</h3><DescriptorGrid items={NME_DISTRIBUTION} className={styles.threeGrid} />
@@ -108,14 +102,14 @@ export default function LesionscharakterisierungPage() {
           <div className={styles.suspiciousCombo}><span>{tx({ de: 'An DCIS / malignen duktalen Prozess denken', en: 'Consider DCIS / a malignant ductal process', fa: 'به DCIS یا فرایند بدخیم مجرایی فکر کنید' })}</span><strong>{tx({ de: 'segmentale Verteilung + klumpiges oder gruppiert-ringförmiges Anreicherungsmuster', en: 'segmental distribution + clumped or clustered-ring enhancement', fa: 'توزیع سگمنتال + الگوی Enhancement توده‌ای یا حلقه‌ای خوشه‌ای' })}</strong></div>
         </Section>
 
-        <Section id="kinetik" eyebrow={tx({ de: '05 · Zeit-Signal-Kurven', en: '05 · Time-signal curves', fa: '۰۵ · منحنی‌های زمان–سیگنال' })} title={tx(SECTIONS[4].label)}>
+        <Section id="kinetik" eyebrow={tx({ de: '04 · Zeit-Signal-Kurven', en: '04 · Time-signal curves', fa: '۰۴ · منحنی‌های زمان–سیگنال' })} title={tx(SECTIONS[3].label)}>
           <p className={styles.lead}>{tx({ de: 'Morphologie zeigt, wie eine Läsion aussieht. Die Kinetik zeigt, wie sie im zeitlichen Verlauf Kontrastmittel aufnimmt.', en: 'Morphology shows what a lesion looks like. Kinetics show how it takes up contrast over time.', fa: 'مورفولوژی ظاهر ضایعه را نشان می‌دهد؛ کینتیک نحوه Enhancement ضایعه در طول زمان را بررسی می‌کند.' })}</p>
           <TeachingImage src="/mamma/mrt/lesion-kinetics-en.png" width={512} height={492} caption={{ de: 'Kinetik: Zeit-Signal-Kurven', en: 'Kinetics: Time-Signal Curves', fa: 'کینتیک: منحنی‌های زمان–سیگنال' }} alt={{ de: 'Kurvenbeispiele für persistentes Enhancement, Plateau und Washout', en: 'Curve examples of persistent enhancement, plateau and washout', fa: 'نمونه منحنی‌های Persistent، Plateau و Washout' }} />
           <div className={styles.curveGrid}>{CURVES.map(curve => <article className={styles[curve.tone]} key={curve.type}><span>Type {curve.type}</span><strong>{curve.symbol}</strong><h3>{curve.name}</h3>{curve.tag && <em className={styles.curveTag}>{tx(curve.tag)}</em>}<p>{tx(curve.text)}</p></article>)}</div>
           <div className={`${styles.note} ${styles.warning}`}><strong>{tx({ de: 'Cave', en: 'Caution', fa: 'توجه' })}</strong><p>{tx({ de: 'Persistent bedeutet nicht automatisch benign und Washout nicht automatisch malign. Morphologie und Kinetik müssen gemeinsam interpretiert werden. Gerade bei NME und DCIS kann eine verdächtige Morphologie ohne klassische Washout-Kurve vorliegen.', en: 'Persistent enhancement is not automatically benign, and washout is not automatically malignant. Morphology and kinetics must be interpreted together. NME and DCIS may show suspicious morphology without a classic washout curve.', fa: 'الگوی Persistent الزاماً خوش‌خیم و Washout الزاماً بدخیم نیست. مورفولوژی و کینتیک باید هم‌زمان تفسیر شوند. به‌ویژه در NME و DCIS ممکن است مورفولوژی مشکوک بدون منحنی کلاسیک Washout وجود داشته باشد.' })}</p></div>
         </Section>
 
-        <Section id="t2-diffusion" eyebrow={tx({ de: '06 · Zusatzkriterien', en: '06 · Additional criteria', fa: '۰۶ · معیارهای تکمیلی' })} title={tx(SECTIONS[5].label)}>
+        <Section id="t2-diffusion" eyebrow={tx({ de: '05 · Zusatzkriterien', en: '05 · Additional criteria', fa: '۰۵ · معیارهای تکمیلی' })} title={tx(SECTIONS[4].label)}>
           <div className={styles.t2Grid}>
             <article className={styles.t2Article}>
               <span className={styles.t2Tag}>T2</span>
@@ -140,7 +134,7 @@ export default function LesionscharakterisierungPage() {
           </div>
         </Section>
 
-        <Section id="algorithmus" eyebrow="07 · Take-Home Message" title={tx(SECTIONS[6].label)}>
+        <Section id="algorithmus" eyebrow="06 · Take-Home Message" title={tx(SECTIONS[5].label)}>
           <ol className={styles.algorithm}>{SUMMARY_STEPS.map((step, index) => <li key={tx(step)}><span>{String(index + 1).padStart(2, '0')}</span><strong>{tx(step)}</strong></li>)}</ol>
           <div className={styles.exampleCompare}><article><span>{tx({ de: 'Eher benign', en: 'More likely benign', fa: 'بیشتر به نفع خوش‌خیمی' })}</span><strong>Oval + circumscribed + homogeneous + T2-hyperintens + persistent</strong></article><i>vs.</i><article><span>{tx({ de: 'Deutlich suspekter', en: 'Considerably more suspicious', fa: 'به‌مراتب مشکوک‌تر' })}</span><strong>Irregular + spiculated + heterogeneous/rim enhancement + Diffusionsrestriktion + washout</strong></article></div>
           <div className={styles.takeHome}>
