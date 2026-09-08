@@ -146,7 +146,7 @@ function GermanContent(){return <>
       <article><span>04</span><h3>Linear</h3><p>Verkalkungen liegen entlang einer Linie.</p><DistributionImage type="linear"/></article>
       <article><span>05</span><h3>Segmental</h3><p>Die Verkalkungen folgen einem Gangsystem und seinen Verzweigungen.</p><DistributionImage type="segmental"/></article>
     </div>
-    <div className={styles.rule}><strong>Merke</strong><p>Lineare und segmentale Verteilungsmuster sind besonders relevant, da sie auf eine duktale Ausbreitung hinweisen können.</p></div>
+    <div className={styles.rule}><strong>Merke</strong><p>Linear oder segmental verteilte suspekte Mikroverkalkungen sprechen für einen duktalen Prozess und sind häufig mit DCIS assoziiert. Sie beweisen jedoch kein reines DCIS: Auch ein invasives Karzinom mit intraduktaler Komponente ist möglich.</p></div>
   </Section>
 
   <Section {...GERMAN_SECTIONS[4]} title={GERMAN_SECTIONS[4].label.de}>
