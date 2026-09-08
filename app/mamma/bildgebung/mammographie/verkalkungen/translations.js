@@ -846,6 +846,10 @@ export const LESSON_TRANSLATIONS = {
     "en": "Evolution, extent, associated findings and risk context are modifiers, not arithmetic points. Even long-term stability does not exclude DCIS when morphology is suspicious.",
     "fa": "روند، وسعت، یافته‌های همراه و زمینه خطر، عوامل تعدیل‌کننده‌اند نه امتیازهای محاسباتی. حتی پایداری طولانی‌مدت در حضور مورفولوژی مشکوک، DCIS را رد نمی‌کند."
   },
+  "Auch langfristige Stabilität schließt DCIS bei suspekter Morphologie nicht aus.": {
+    "en": "Even long-term stability does not exclude DCIS when morphology is suspicious.",
+    "fa": "حتی پایداری طولانی‌مدت در صورت وجود مورفولوژی مشکوک، DCIS را رد نمی‌کند."
+  },
   "Suspekter Mikrokalk kann DCIS oder ein invasives Karzinom mit intraduktaler Komponente begleiten. Das Bild beweist keine bestimmte Histologie.": {
     "en": "Suspicious microcalcifications may accompany DCIS or an invasive carcinoma with an intraductal component. Imaging does not prove a particular histology.",
     "fa": "میکروکلسیفیکاسیون مشکوک می‌تواند همراه DCIS یا کارسینوم مهاجم با جزء داخل‌مجرایی باشد. تصویر، بافت‌شناسی مشخصی را اثبات نمی‌کند."
@@ -857,6 +861,10 @@ export const LESSON_TRANSLATIONS = {
   "BI-RADS 4/5 erfordert grundsätzlich histologische Abklärung. Ein MRT-gestützter Biopsieverzicht bei ausgewählten niedrig suspekten Fällen ist eine individuelle Strategie, kein automatischer Schritt des Rechners.": {
     "en": "BI-RADS 4/5 generally requires tissue diagnosis. MRI-supported biopsy avoidance in selected low-suspicion cases is an individual strategy, not an automatic calculator step.",
     "fa": "BI-RADS 4/5 اصولاً نیازمند تشخیص بافتی است. صرف‌نظر از بیوپسی با اتکا به MRI در موارد منتخب با شک پایین، یک راهبرد فردی است، نه مرحله خودکار محاسبه‌گر."
+  },
+  "Bei ausgewählten niedrig suspekten Fällen kann ein MRT-gestützter Biopsieverzicht individuell erwogen werden – er ist kein automatischer Schritt des Rechners.": {
+    "en": "In selected low-suspicion cases, MRI-supported biopsy avoidance may be considered individually—it is not an automatic calculator step.",
+    "fa": "در موارد منتخب با شک پایین، می‌توان صرف‌نظر از بیوپسی با اتکا به MRI را به‌صورت فردی در نظر گرفت؛ این یک مرحله خودکار محاسبه‌گر نیست."
   },
   "×": {
     "en": "×",

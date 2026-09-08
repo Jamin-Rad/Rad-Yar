@@ -313,11 +313,10 @@ function LessonContent({lang}){const t=value=>translateLesson(value,lang);return
       <li><span>01</span><strong>{t("Vier Merkmale systematisch beurteilen: Partikelgröße, Morphologie, Verteilung und Gesamtausdehnung. Die Größe allein beweist weder Benignität noch Malignität.")}</strong></li>
       <li><span>02</span><strong>{t("2D-Vergrößerungsaufnahmen zeigen die Kalkdetails; DBT ergänzt den räumlichen Kontext. Typisch benigne Formen wie Popcorn-, Rim-, sekretorische und Layering-Verkalkungen sicher erkennen.")}</strong></li>
       <li><span>03</span><strong>{t("Morphologie und Verteilung gemeinsam bewerten: Fein pleomorpher oder fein linearer/verzweigter Kalk in linearer oder segmentaler Anordnung ist besonders suspekt.")}</strong></li>
-      <li><span>04</span><strong>{t("Eine einzelne Gruppe runder/punktförmiger Partikel kann nach vollständiger Abklärung BI-RADS 3 entsprechen; fehlende Voraufnahmen allein rechtfertigen diese Kategorie nicht. Erste Kontrolle nach 6 Monaten.")}</strong></li>
-      <li><span>05</span><strong>{t("Verlauf, Ausdehnung, Begleitbefunde und Risikokontext sind Modifikatoren, keine Rechenpunkte. Auch langfristige Stabilität schließt DCIS bei suspekter Morphologie nicht aus.")}</strong></li>
-      <li><span>06</span><strong>{t("Suspekter Mikrokalk kann DCIS oder ein invasives Karzinom mit intraduktaler Komponente begleiten. Das Bild beweist keine bestimmte Histologie.")}</strong></li>
-      <li><span>07</span><strong>{t("Ultraschall hilft bei Korrelatsuche und Biopsieplanung; MRT ergänzt Gewebe- und Ausdehnungsbeurteilung. Eine negative MRT schließt DCIS nicht vollständig aus.")}</strong></li>
-      <li><span>08</span><strong>{t("BI-RADS 4/5 erfordert grundsätzlich histologische Abklärung. Ein MRT-gestützter Biopsieverzicht bei ausgewählten niedrig suspekten Fällen ist eine individuelle Strategie, kein automatischer Schritt des Rechners.")}</strong></li>
+      <li><span>04</span><strong>{t("Auch langfristige Stabilität schließt DCIS bei suspekter Morphologie nicht aus.")}</strong></li>
+      <li><span>05</span><strong>{t("Suspekter Mikrokalk kann DCIS oder ein invasives Karzinom mit intraduktaler Komponente begleiten. Das Bild beweist keine bestimmte Histologie.")}</strong></li>
+      <li><span>06</span><strong>{t("Ultraschall hilft bei Korrelatsuche und Biopsieplanung; MRT ergänzt Gewebe- und Ausdehnungsbeurteilung. Eine negative MRT schließt DCIS nicht vollständig aus.")}</strong></li>
+      <li><span>07</span><strong>{t("Bei ausgewählten niedrig suspekten Fällen kann ein MRT-gestützter Biopsieverzicht individuell erwogen werden – er ist kein automatischer Schritt des Rechners.")}</strong></li>
     </ol>
   </Section>
 </>}
