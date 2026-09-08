@@ -483,10 +483,36 @@
 .clinicalNotes h3 { margin: 0 0 12px; font-size: 1rem; color: var(--text-strong); }
 .clinicalNotes p { margin: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
 .multiParagraph { grid-template-columns: 1fr; gap: 12px; }
-.warningSigns { margin-top: 24px; padding: 20px; border-left: 3px solid var(--calc); background: rgba(239, 45, 104, 0.045); border-radius: 0 12px 12px 0; }
-.warningSigns strong { color: var(--text-strong); }
-.warningSigns p { margin: 10px 0; color: var(--text-muted); line-height: 1.65; }
-.warningSigns small { color: var(--text-muted); }
+.sidebarIcon { display: inline-grid; place-items: center; flex: 0 0 28px; width: 28px; height: 28px; color: var(--calc); border-radius: 8px; background: rgba(231,51,104,0.08); }
+.emphasizedLead { font-style: oblique; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.techniqueGrid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); margin-top: 24px; border: 1px solid rgba(148,163,184,0.28); border-radius: 14px; overflow: hidden; }
+.techniqueGrid article { padding: 24px; }
+.techniqueGrid article + article { border-left: 1px solid rgba(148,163,184,0.28); }
+.techniqueGrid svg { color: var(--calc); width: 24px; height: 24px; }
+.techniqueGrid h4 { margin: 18px 0 12px; color: var(--text-strong); font: 800 1.08rem Georgia,serif; }
+.techniqueGrid p { margin: 0; color: var(--text-muted); line-height: 1.7; }
+.rememberList { margin: 0; padding-left: 20px; color: var(--text-strong); line-height: 1.65; }
+.rememberList li + li { margin-top: 14px; }
+.rememberList li::marker { color: var(--calc); }
+.negativeMriNote { display: flex; align-items: flex-start; gap: 14px; padding: 20px; border: 1px solid rgba(50,154,170,0.3); border-radius: 12px; background: rgba(50,154,170,0.07); }
+.negativeMriNote > svg { flex: 0 0 22px; color: #329aaa; }
+.negativeMriNote h4 { margin: 0 0 8px; color: var(--text-strong); font-size: 0.95rem; }
+.negativeMriNote p { margin: 0; color: var(--text-muted); font-size: 0.88rem; line-height: 1.65; }
+.warningSigns { padding: 24px; border: 1px solid rgba(231,51,104,0.25); background: linear-gradient(135deg,rgba(231,51,104,0.075),rgba(231,51,104,0.015)); border-radius: 18px; }
+.warningSigns header { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+.warningSigns header > svg { width: 28px; height: 28px; color: var(--calc); flex-shrink: 0; }
+.warningSigns h3 { margin: 5px 0 0; color: var(--text-strong); font: 800 1.25rem/1.3 Georgia,serif; }
+.warningSigns small { color: var(--calc); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.warningSigns ul { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+.warningSigns li { display: flex; align-items: flex-start; gap: 12px; padding: 18px; border-radius: 12px; background: var(--bg-card); border: 1px solid rgba(148,163,184,0.2); }
+.warningSigns li > svg { flex: 0 0 18px; color: var(--calc); margin-top: 2px; }
+.warningSigns b { color: var(--text-strong); font-size: 0.92rem; }
+.warningSigns p { margin: 8px 0 0; color: var(--text-muted); font-size: 0.86rem; line-height: 1.6; }
+@media (max-width: 760px) {
+  .techniqueGrid, .warningSigns ul { grid-template-columns: 1fr; }
+  .techniqueGrid article + article { border-left: 0; border-top: 1px solid rgba(148,163,184,0.28); }
+  .warningSigns { padding: 18px; }
+}
 .resultMri { margin: 12px 0 0; padding-top: 12px; border-top: 1px solid currentColor; font-size: 0.8rem; line-height: 1.5; }
 .mriManagement { min-width: 0; width: 100%; margin-top: 26px; border-top: 3px solid #329aaa; padding-top: 22px; }
 .mriManagement header small { color: var(--text-muted); font-size: 0.75rem; }
