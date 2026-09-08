@@ -211,7 +211,7 @@ function GermanContent(){return <>
 
 Sie entsprechen meist Verkalkungen innerhalb eines Milchganges oder entlang der Gangwand.
 
-`}</Lines>Nicht verwechseln mit den deutlich feineren und irregulären <i style={{textDecoration:'underline'}}>fine linear calcifications</i>.</p></div></article>
+`}</Lines><i style={{textDecoration:'underline'}}>Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifications.</i></p></div></article>
       <article><span>LAYERING (TEACUP / MILCHKALZIUM)</span><div><h3>Layering</h3><p>Sedimentierende Verkalkungen innerhalb von Mikro- oder Makrozysten, in der Seitenaufnahme typischerweise halbmond- oder sichelförmig.</p></div></article>
       <article><span>RIM</span><div><h3>Rim calcifications</h3><p className={caseStyles.bulletLead}>Dünne randständige Verkalkungen entlang einer rundlichen Struktur, typisch beispielsweise bei:</p><ul className={caseStyles.bulletList}><li>Fettnekrose</li><li>Ölzysten</li><li>Zysten</li></ul></div></article>
     </div>
