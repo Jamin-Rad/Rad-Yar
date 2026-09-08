@@ -477,6 +477,12 @@
   color: #fff;
 }
 
+/* Persian/RTL: benign on the right, suspicious on the left. */
+:global([dir="rtl"]) .morphologyArrow {
+  background: linear-gradient(270deg, #36c878 0%, #b8c93e 45%, #e5a62f 65%, #e73368 100%);
+  clip-path: polygon(4% 0, 100% 0, 100% 100%, 4% 100%, 0 50%);
+}
+
 .techniqueNote { padding: 16px 18px; border-left: 3px solid #329aaa; background: rgba(50, 154, 170, 0.05); color: var(--text-muted); font-size: 0.88rem; line-height: 1.65; }
 .clinicalNotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 24px; }
 .clinicalNotes article { padding: 20px; border: 1px solid rgba(148, 163, 184, 0.28); border-radius: 14px; background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(50,154,170,0.04)); }
