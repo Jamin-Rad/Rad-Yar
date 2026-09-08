@@ -1,9 +1,9 @@
 export const SECTIONS = [
-  { id: 'indikationen', label: 'Indikationen', icon: '01' },
-  { id: 'sequenzen', label: 'Sequenzen', icon: '02' },
-  { id: 'systematik', label: 'Systematisch lesen', icon: '03' },
-  { id: 'fgt-bpe', label: 'FGT & BPE', icon: '04' },
-  { id: 'prinzip', label: 'Take-Home Message', icon: '05' },
+  { id: 'indikationen', label: 'Indikationen', icon: 'target' },
+  { id: 'sequenzen', label: 'Sequenzen', icon: 'layers' },
+  { id: 'systematik', label: 'Systematisch lesen', icon: 'workflow' },
+  { id: 'fgt-bpe', label: 'FGT & BPE', icon: 'compare' },
+  { id: 'prinzip', label: 'Take-Home Message', icon: 'check' },
 ]
 
 export const INDICATIONS = [

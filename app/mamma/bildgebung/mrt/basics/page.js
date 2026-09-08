@@ -16,6 +16,18 @@ const READ_COPY = {
   fa: { mark: 'علامت‌گذاری به‌عنوان خوانده‌شده', read: 'به‌عنوان خوانده‌شده علامت‌گذاری شد', error: 'برای ذخیره پیشرفت یادگیری لطفاً وارد شوید.', signIn: 'ورود' },
 }
 
+const SECTION_ICON_PATHS = {
+  target: <><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M22 12h-3M12 22v-3M2 12h3"/></>,
+  layers: <><path d="m12 3 8 4-8 4-8-4 8-4Z"/><path d="m4 12 8 4 8-4M4 17l8 4 8-4"/></>,
+  workflow: <><path d="M4 5h7M4 12h11M4 19h15"/><circle cx="16" cy="5" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="22" cy="19" r="2"/></>,
+  compare: <><path d="M4 7h16M7 4v6M17 4v6M4 17h16M10 14v6M14 14v6"/></>,
+  check: <><path d="M12 3 20 7v5c0 5-3.4 8-8 9-4.6-1-8-4-8-9V7l8-4Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></>,
+}
+
+function SectionIcon({ name }) {
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{SECTION_ICON_PATHS[name]}</svg>
+}
+
 
 function ReadButton({ isRead, onClick, authError }) {
   const { lang } = useLanguage()
@@ -31,14 +43,14 @@ function ReadButton({ isRead, onClick, authError }) {
   )
 }
 
-function Section({ id, title, eyebrow, children }) {
-  const isMobile = useMobileLearningLayout()
+function Section({ id, title, children }) {
+  useMobileLearningLayout()
   const [open, setOpen] = useState(true)
   useEffect(() => setOpen(false), [id])
   return (
     <section id={id} className={`${base.section} ${styles.section}`}>
       <button className={`${base.sectionHeader} ${styles.sectionHeader}`} type="button" onClick={() => setOpen(value => !value)} aria-expanded={open}>
-        <span className={styles.sectionHeading}><small>{eyebrow}</small><h2>{title}</h2></span>
+        <span className={styles.sectionHeading}><span className={styles.sectionIcon}><SectionIcon name={SECTIONS.find(section => section.id === id)?.icon} /></span><h2>{title}</h2></span>
         <span className={styles.sectionToggle}>{open ? '−' : '+'}</span>
       </button>
       {open && <div className={`${base.sectionBody} ${styles.sectionBody}`}>{children}</div>}
@@ -127,20 +139,20 @@ export default function MammaMrtBasicsPage() {
           <div className={base.sideTitle}>{tx('Inhaltsverzeichnis')}</div>
           {SECTIONS.map(section => (
             <button key={section.id} type="button" className={`${base.sideItem} ${styles.sideItem} ${activeId === section.id ? `${base.sideItemActive} ${styles.sideItemActive}` : ''}`} onClick={() => document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
-              <span className={styles.sideNumber}>{section.icon}</span><strong>{tx(section.label)}</strong>
+              <span className={styles.sideNumber}><SectionIcon name={section.icon} /></span><strong>{tx(section.label)}</strong>
             </button>
           ))}
         </aside>
 
         <div className={base.main}>
-          <Section id="indikationen" eyebrow={tx('01 · Wann einsetzen?')} title={tx('Indikationen')}>
+          <Section id="indikationen" title={tx('Indikationen')}>
             <p className={styles.lead}>{tx('Die Mamma-MRT ist die')} <strong>{tx('sensitivste bildgebende Methode')}</strong> {tx('zum Nachweis eines Mammakarzinoms. Ihre hohe Sensitivität beruht vor allem auf der Darstellung der')} <strong>{tx('Tumorvaskularisation und Kontrastmittelaufnahme')}</strong>. {tx('Gleichzeitig ist die Spezifität begrenzt: Auch zahlreiche benigne Veränderungen können Kontrastmittel aufnehmen.')}</p>
             <div className={styles.indicationGrid}>{INDICATIONS.map(item => <article className={styles.indicationCard} key={item.title}><span>{tx(item.tag)}</span><h3>{tx(item.title)}</h3><p>{tx(item.text)}</p></article>)}</div>
             <div className={styles.problemBox}><div><span>{tx('Problem Solving · Beispiele')}</span><h3>{tx('Wenn die konventionelle Diagnostik unklar bleibt')}</h3></div><ul><li>{tx('nicht sicher erklärbare Asymmetrie')}</li><li>{tx('unklare Architekturstörung')}</li><li>{tx('diskrepante Befunde zwischen Mammographie und Sonographie')}</li><li>{tx('schwer beurteilbare postoperative Veränderungen')}</li></ul></div>
             <Callout cave label={tx('Wichtig')}>{tx('Die MRT sollte nicht dazu verwendet werden, eine indizierte Biopsie eines suspekten Befundes zu vermeiden. Ein klar suspekter und bioptisch zugänglicher Befund sollte in der Regel histologisch abgeklärt werden.')}</Callout>
           </Section>
 
-          <Section id="sequenzen" eyebrow={tx('02 · Protokoll')} title={tx('Welche Sequenzen brauchen wir?')}>
+          <Section id="sequenzen" title={tx('Welche Sequenzen brauchen wir?')}>
             <div className={styles.sequenceGrid}>{SEQUENCES.map(sequence => (
               <article className={`${styles.sequenceCard} ${styles[sequence.accent]}`} key={sequence.key}>
                 <div className={styles.sequenceTop}><strong>{sequence.key}</strong><span>{tx(sequence.role)}</span></div>
@@ -162,7 +174,7 @@ export default function MammaMrtBasicsPage() {
             </div>
           </Section>
 
-          <Section id="systematik" eyebrow={tx('03 · Workflow')} title={tx('Wie liest man eine Mamma-MRT systematisch?')}>
+          <Section id="systematik" title={tx('Wie liest man eine Mamma-MRT systematisch?')}>
             <p className={styles.lead}>{tx('Ein fester Ablauf hilft, nichts zu übersehen.')}</p>
             <ol className={styles.workflow}>{WORKFLOW.map((step, index) => (
               <li key={step.title}>
@@ -194,7 +206,7 @@ export default function MammaMrtBasicsPage() {
             ))}</ol>
           </Section>
 
-          <Section id="fgt-bpe" eyebrow={tx('04 · Nicht verwechseln')} title={tx('FGT und BPE')}>
+          <Section id="fgt-bpe" title={tx('FGT und BPE')}>
             <div className={styles.compareGrid}>
               <article className={styles.fgtCard}>
                 <div className={styles.compareHeading}><span className={styles.term}>FGT</span><div><small>{tx('Fibroglanduläres Gewebe')}</small><h3>Fibroglandular Tissue</h3></div></div>
@@ -276,7 +288,7 @@ export default function MammaMrtBasicsPage() {
             </aside>
           </Section>
 
-          <Section id="prinzip" eyebrow={tx('05 · Take home')} title={tx('Take-Home Message')}>
+          <Section id="prinzip" title={tx('Take-Home Message')}>
             <div className={styles.takeHomeAlgorithm}>
               <div className={styles.takeHomeQuestion}>
                 <span>{tx('Auch bei auffälligem Enhancement')}</span>
