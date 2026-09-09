@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react'
 import styles from './adc.module.css'
 
 const INITIAL = {
-  quality: '', lesionType: '', t2: '', restricted: '', adc: '', note: '',
+  quality: '', lesionType: '', restricted: '', adc: '', note: '',
   curve: '', morphology: '', cystic: '', ductal: '', t1Ducts: '', rim: '',
 }
 
@@ -12,15 +12,14 @@ const COPY = {
   de: {
     title: 'DWI / ADC – ergänzende Einordnung', unchangedTop: 'ändert den Kaiser Score nicht',
     intro: 'Kurze Plausibilitätsprüfung nach der Kaiser-Berechnung. Die Einordnung ist komplementär und verwendet keinen universellen ADC-Grenzwert.',
-    steps: [['Läsion', 'Typ & T2-Phänotyp'], ['Diffusion', 'DWI & ADC'], ['Kontext', 'gezielt ergänzen']],
+    steps: [['Läsion', 'Typ festlegen'], ['Diffusion', 'DWI & ADC'], ['Kontext', 'gezielt ergänzen']],
     quality: 'Bildqualität', qualityHint: 'DWI und ADC diagnostisch verwertbar?',
     lesionHeading: 'Läsion einordnen', lesionType: 'Läsionstyp', mass: 'Masse / fokaler Herd', nme: 'Non-mass Enhancement (NME)',
-    t2: 'T2-Phänotyp', t2Question: 'Fibroadenomähnliches T2-Korrelat?',
     diffusionHeading: 'Diffusion beurteilen', restricted: 'Diffusionsrestriktion', adc: 'ADC-Wert', adcHelp: 'Dezimalwert, z. B. 1,24',
     context: 'Kontext gezielt ergänzen', contextHint: 'Optional – nur relevante Merkmale',
     curve: 'Kurve', morphology: 'Morphologie', cystic: 'Zystisches Korrelat', ductal: 'Duktale / verzweigte Verteilung', t1Ducts: 'T1-hyperintense Gänge', rim: 'Peripheres / Rim Enhancement',
     note: 'Kurze DWI/ADC-Notiz', notePlaceholder: 'Sequenzqualität, ROI-Lage oder weitere Beobachtungen …',
-    yes: 'Ja', no: 'Nein', unclear: 'Unklar', t2Yes: 'Fibroadenomähnlich', t2No: 'Nicht fibroadenomähnlich', washout: 'Wash-out', plateau: 'Plateau', persistent: 'Persistierend', regular: 'Regelmäßig', irregular: 'Irregulär', present: 'Vorhanden', absent: 'Nicht vorhanden',
+    yes: 'Ja', no: 'Nein', unclear: 'Unklar', washout: 'Wash-out', plateau: 'Plateau', persistent: 'Persistierend', regular: 'Regelmäßig', irregular: 'Irregulär', present: 'Vorhanden', absent: 'Nicht vorhanden',
     live: 'Live-Einordnung', complementary: 'komplementär', next: 'Als Nächstes',
     assessment: { benign: 'Unterstützt Benignität', indeterminate: 'Unbestimmt', malignant: 'Unterstützt Malignitätsverdacht', incomplete: 'Kernangaben ergänzen', unreliable: 'Technisch nicht belastbar' },
     summaries: {
@@ -30,15 +29,15 @@ const COPY = {
       indeterminate: 'Die Diffusionsbefunde sind nicht eindeutig und müssen integriert beurteilt werden.',
       malignant: 'Die Diffusionsbefunde stützen den Malignitätsverdacht. Ein niedriger ADC allein beweist kein Karzinom.',
     },
-    missing: { quality: 'Bildqualität beurteilen', lesionType: 'Läsionstyp auswählen', t2: 'T2-Phänotyp angeben', restricted: 'Diffusionsrestriktion angeben', adc: 'ADC-Wert eingeben' },
-    evidence: 'Evidenz auf einen Blick', phenotype: 'T2-Phänotyp', value: 'ADC-Wert', orientation: 'Phänotypbezogene Orientierung', kaiser: 'Kaiser Score', unchanged: 'unverändert', notApplicable: 'Nicht anwendbar', noUniversal: 'nach Phänotyp', approximately: 'ca.',
+    missing: { quality: 'Bildqualität beurteilen', lesionType: 'Läsionstyp auswählen', restricted: 'Diffusionsrestriktion angeben', adc: 'ADC-Wert eingeben' },
+    evidence: 'Evidenz auf einen Blick', value: 'ADC-Wert', orientation: 'Läsionstypbezogene Orientierung', kaiser: 'Kaiser Score', unchanged: 'unverändert', approximately: 'ca.',
     low: 'niedrig', high: 'oberhalb der Orientierung', restrictionYes: 'nachgewiesen', restrictionNo: 'nicht nachgewiesen', restrictionUnclear: 'unklar',
     ruler: 'ADC-Orientierung', rulerLow: 'niedriger ADC', rulerHigh: 'höherer ADC', current: 'Messwert',
     important: 'Was jetzt wichtig ist', importantHint: 'auf diesen Läsionstyp fokussiert', allNotes: 'Weitere Fallstricke und Hinweise',
     topics: {
       technical: ['Technische Validität zuerst', 'ROI vollständig in der Läsion platzieren, Nekrose und Partialvolumen vermeiden. DWI-Signal immer mit der ADC-Karte abgleichen.'],
-      massT2: ['T2-Phänotyp richtig einordnen', 'Bei einer Masse ist das fibroadenomähnliche T2-Korrelat der erste Filter. Ohne dieses Korrelat bleibt die Läsion grundsätzlich suspekt.'],
-      physiology: ['Physiologie entscheidet mit', 'Fibroadenomähnlich plus persistierende Kinetik und höherer ADC stützt Benignität; Wash-out oder niedriger ADC stützt Malignitätsverdacht.'],
+      mass: ['Massen integriert beurteilen', 'ADC-Wert, Morphologie und Kinetik gemeinsam bewerten. Ein höherer ADC kann Benignität stützen; Wash-out oder ein niedriger ADC stützt den Malignitätsverdacht.'],
+      physiology: ['Physiologie entscheidet mit', 'Persistierende Kinetik und höherer ADC stützen Benignität; Wash-out oder niedriger ADC stützt den Malignitätsverdacht.'],
       nme: ['NME strukturiert beurteilen', 'Bei NME proliferative/strukturierte Muster von reaktiven Veränderungen trennen; ein klar hoher ADC kann Benignität deutlich stützen.'],
       ductal: ['Duktale Verteilung korrelieren', 'Bei duktaler oder verzweigter NME an DCIS, Papillom und periduktale Mastitis denken und bei Verkalkungsverdacht mammographisch korrelieren.'],
       limits: ['ADC-Ausnahmen im Blick behalten', 'Narbe, Fibrose, Entzündung und Abszess können niedrige ADC-Werte zeigen; muzinöses Karzinom oder DCIS können vom erwarteten Muster abweichen.'],
@@ -49,22 +48,22 @@ const COPY = {
   en: {
     title: 'DWI / ADC – complementary interpretation', unchangedTop: 'does not change the Kaiser Score',
     intro: 'A focused plausibility check after Kaiser calculation. This interpretation is complementary and uses no universal ADC cutoff.',
-    steps: [['Lesion', 'type & T2 phenotype'], ['Diffusion', 'DWI & ADC'], ['Context', 'add selectively']],
-    quality: 'Image quality', qualityHint: 'Are DWI and ADC diagnostically adequate?', lesionHeading: 'Classify the lesion', lesionType: 'Lesion type', mass: 'Mass / focal lesion', nme: 'Non-mass enhancement (NME)', t2: 'T2 phenotype', t2Question: 'Fibroadenoma-like T2 correlate?', diffusionHeading: 'Assess diffusion', restricted: 'Restricted diffusion', adc: 'ADC value', adcHelp: 'Decimal value, e.g. 1.24',
+    steps: [['Lesion', 'select type'], ['Diffusion', 'DWI & ADC'], ['Context', 'add selectively']],
+    quality: 'Image quality', qualityHint: 'Are DWI and ADC diagnostically adequate?', lesionHeading: 'Classify the lesion', lesionType: 'Lesion type', mass: 'Mass / focal lesion', nme: 'Non-mass enhancement (NME)', diffusionHeading: 'Assess diffusion', restricted: 'Restricted diffusion', adc: 'ADC value', adcHelp: 'Decimal value, e.g. 1.24',
     context: 'Add targeted context', contextHint: 'Optional – relevant features only', curve: 'Curve', morphology: 'Morphology', cystic: 'Cystic correlate', ductal: 'Ductal / branching distribution', t1Ducts: 'T1-hyperintense ducts', rim: 'Peripheral / rim enhancement', note: 'Short DWI/ADC note', notePlaceholder: 'Sequence quality, ROI position, or other observations …',
-    yes: 'Yes', no: 'No', unclear: 'Unclear', t2Yes: 'Fibroadenoma-like', t2No: 'Not fibroadenoma-like', washout: 'Wash-out', plateau: 'Plateau', persistent: 'Persistent', regular: 'Regular', irregular: 'Irregular', present: 'Present', absent: 'Absent',
+    yes: 'Yes', no: 'No', unclear: 'Unclear', washout: 'Wash-out', plateau: 'Plateau', persistent: 'Persistent', regular: 'Regular', irregular: 'Irregular', present: 'Present', absent: 'Absent',
     live: 'Live interpretation', complementary: 'complementary', next: 'Next', assessment: { benign: 'Supports benignity', indeterminate: 'Indeterminate', malignant: 'Supports suspicion of malignancy', incomplete: 'Complete core inputs', unreliable: 'Technically unreliable' },
     summaries: { incomplete: 'The interpretation appears automatically when the core inputs are complete.', unreliable: 'DWI/ADC cannot be interpreted reliably when image quality is non-diagnostic or unclear.', benign: 'Diffusion findings support benignity—always check plausibility against morphology and kinetics.', indeterminate: 'Diffusion findings are not definitive and require integrated assessment.', malignant: 'Diffusion findings support suspicion of malignancy. Low ADC alone does not prove carcinoma.' },
-    missing: { quality: 'Assess image quality', lesionType: 'Select lesion type', t2: 'Enter T2 phenotype', restricted: 'Enter diffusion restriction', adc: 'Enter ADC value' },
-    evidence: 'Evidence at a glance', phenotype: 'T2 phenotype', value: 'ADC value', orientation: 'Phenotype-specific guide', kaiser: 'Kaiser Score', unchanged: 'unchanged', notApplicable: 'Not applicable', noUniversal: 'by phenotype', approximately: 'approx.', low: 'low', high: 'above guide', restrictionYes: 'present', restrictionNo: 'absent', restrictionUnclear: 'unclear', ruler: 'ADC guide', rulerLow: 'lower ADC', rulerHigh: 'higher ADC', current: 'Measured',
+    missing: { quality: 'Assess image quality', lesionType: 'Select lesion type', restricted: 'Enter diffusion restriction', adc: 'Enter ADC value' },
+    evidence: 'Evidence at a glance', value: 'ADC value', orientation: 'Lesion-type-specific guide', kaiser: 'Kaiser Score', unchanged: 'unchanged', approximately: 'approx.', low: 'low', high: 'above guide', restrictionYes: 'present', restrictionNo: 'absent', restrictionUnclear: 'unclear', ruler: 'ADC guide', rulerLow: 'lower ADC', rulerHigh: 'higher ADC', current: 'Measured',
     important: 'What matters now', importantHint: 'focused on this lesion type', allNotes: 'More pitfalls and guidance',
-    topics: { technical: ['Technical validity first', 'Place the ROI fully within the lesion, avoid necrosis and partial volume, and always correlate DWI signal with the ADC map.'], massT2: ['Classify the T2 phenotype correctly', 'For a mass, a fibroadenoma-like T2 correlate is the first filter. Without it, the lesion generally remains suspicious.'], physiology: ['Physiology adds context', 'Fibroadenoma-like plus persistent kinetics and higher ADC supports benignity; wash-out or lower ADC supports malignancy suspicion.'], nme: ['Assess NME structurally', 'For NME, distinguish proliferative/structured patterns from reactive change; clearly high ADC can strongly support benignity.'], ductal: ['Correlate ductal distribution', 'For ductal or branching NME consider DCIS, papilloma and periductal mastitis, with mammographic correlation when calcification is suspected.'], limits: ['Keep ADC exceptions in mind', 'Scar, fibrosis, inflammation and abscess can show low ADC; mucinous carcinoma or DCIS may deviate from expected patterns.'], integration: ['Single criteria are not enough', 'Integrate age, morphology, kinetics, ADC, ultrasound/mammography and clinical context. One benign feature does not prove benignity.'] },
+    topics: { technical: ['Technical validity first', 'Place the ROI fully within the lesion, avoid necrosis and partial volume, and always correlate DWI signal with the ADC map.'], mass: ['Assess masses in an integrated manner', 'Assess ADC, morphology, and kinetics together. A higher ADC can support benignity; wash-out or a lower ADC supports suspicion of malignancy.'], physiology: ['Physiology adds context', 'Persistent kinetics and higher ADC support benignity; wash-out or lower ADC supports suspicion of malignancy.'], nme: ['Assess NME structurally', 'For NME, distinguish proliferative/structured patterns from reactive change; clearly high ADC can strongly support benignity.'], ductal: ['Correlate ductal distribution', 'For ductal or branching NME consider DCIS, papilloma and periductal mastitis, with mammographic correlation when calcification is suspected.'], limits: ['Keep ADC exceptions in mind', 'Scar, fibrosis, inflammation and abscess can show low ADC; mucinous carcinoma or DCIS may deviate from expected patterns.'], integration: ['Single criteria are not enough', 'Integrate age, morphology, kinetics, ADC, ultrasound/mammography and clinical context. One benign feature does not prove benignity.'] },
     caution: 'Complementary tool – does not replace integrated radiological assessment. The final BI-RADS category remains a medical decision.',
   },
 }
 
 const OPTIONS = {
-  quality: ['yes', 'no', 'unclear'], lesionType: ['mass', 'nme'], t2: ['yes', 'no', 'unclear'],
+  quality: ['yes', 'no', 'unclear'], lesionType: ['mass', 'nme'],
   restricted: ['yes', 'no', 'unclear'], curve: ['washout', 'plateau', 'persistent'], morphology: ['regular', 'irregular'],
   cystic: ['present', 'absent'], ductal: ['present', 'absent'], t1Ducts: ['present', 'absent'], rim: ['present', 'absent'],
 }
@@ -72,18 +71,16 @@ const OPTIONS = {
 const GATE_COPY = {
   de: {
     eyebrow: 'DWI / ADC ergänzen', title: 'ADC zur Einordnung ergänzen',
-    intro: 'Die Kaiser-Berechnung liegt im intermediären Bereich. Ergänzen Sie vor der Ergebnisanzeige den phänotypbezogenen ADC-Wert.',
+    intro: 'Die Kaiser-Berechnung liegt im intermediären Bereich. Ergänzen Sie vor der Ergebnisanzeige den läsionstypbezogenen ADC-Wert.',
     lesion: 'Läsionstyp?', mass: 'Masse / fokaler Herd', nme: 'Non-mass Enhancement',
-    t2: 'T2-Phänotyp?', t2Yes: 'Fibroadenomähnlich', t2No: 'Nicht fibroadenomähnlich', unclear: 'Unklar',
     adc: 'ADC-Wert', adcHelp: 'Messwert auswählen',
     show: 'Ergebnis anzeigen', back: 'Zurück',
     caution: 'ADC ergänzt die Einordnung, ersetzt aber weder Morphologie und Kinetik noch die integrierte radiologische Beurteilung.',
   },
   en: {
     eyebrow: 'Add DWI / ADC', title: 'Add ADC for further classification',
-    intro: 'The Kaiser calculation is in the intermediate range. Add the phenotype-specific ADC value before revealing the result.',
+    intro: 'The Kaiser calculation is in the intermediate range. Add the lesion-type-specific ADC value before revealing the result.',
     lesion: 'Lesion type?', mass: 'Mass / focal lesion', nme: 'Non-mass enhancement',
-    t2: 'T2 phenotype?', t2Yes: 'Fibroadenoma-like', t2No: 'Not fibroadenoma-like', unclear: 'Unclear',
     adc: 'ADC value', adcHelp: 'Select the measured value',
     show: 'Show result', back: 'Back',
     caution: 'ADC complements classification, but does not replace morphology, kinetics, or integrated radiological assessment.',
@@ -111,29 +108,21 @@ function adcNumber(value) {
   return Number.parseFloat(String(value).replace(',', '.'))
 }
 
-function thresholdFor(lesionType, t2) {
+function thresholdFor(lesionType) {
   if (lesionType === 'nme') return 1.5
-  if (lesionType === 'mass' && t2 === 'yes') return 1
-  if (lesionType === 'mass' && t2) return 1.2
+  if (lesionType === 'mass') return 1.2
   return null
 }
 
 function getResult(values) {
   const adc = adcNumber(values.adc)
-  const needsT2 = values.lesionType === 'mass' && !values.t2
-  if (!values.quality || !values.lesionType || !values.restricted || !Number.isFinite(adc) || adc <= 0 || needsT2) return { state: 'incomplete', adc: Number.isFinite(adc) && adc > 0 ? adc : null, threshold: null }
+  if (!values.quality || !values.lesionType || !values.restricted || !Number.isFinite(adc) || adc <= 0) return { state: 'incomplete', adc: Number.isFinite(adc) && adc > 0 ? adc : null, threshold: null }
   if (values.quality !== 'yes') return { state: 'unreliable', adc, threshold: null }
-  if (values.lesionType === 'mass' && values.t2 === 'yes') {
-    if (adc <= 1 || values.curve === 'washout') return { state: 'malignant', adc, threshold: 1 }
-    if (values.curve && adc > 1) return { state: 'benign', adc, threshold: 1 }
-    return { state: 'indeterminate', adc, threshold: 1 }
-  }
-  if (values.lesionType === 'mass' && values.t2 === 'no') {
+  if (values.lesionType === 'mass') {
     if (adc <= 1.2 || values.curve === 'washout') return { state: 'malignant', adc, threshold: 1.2 }
     if (values.morphology === 'regular' && values.curve !== 'washout') return { state: 'benign', adc, threshold: 1.2 }
     return { state: 'indeterminate', adc, threshold: 1.2 }
   }
-  if (values.lesionType === 'mass') return { state: 'indeterminate', adc, threshold: null }
   if (adc > 1.5) return { state: 'benign', adc, threshold: 1.5 }
   const suspicious = values.restricted === 'yes' && ['washout', 'irregular', 'present'].some(value => value === values.curve || value === values.morphology || value === values.rim || value === values.ductal)
   return { state: suspicious ? 'malignant' : 'indeterminate', adc, threshold: 1.5 }
@@ -142,9 +131,8 @@ function getResult(values) {
 export function Birads4AdcGate({ lang, onComplete, onBack }) {
   const ui = GATE_COPY[lang] || GATE_COPY.de
   const [lesionType, setLesionType] = useState('')
-  const [t2, setT2] = useState('')
   const [adc, setAdc] = useState(null)
-  const threshold = thresholdFor(lesionType, t2)
+  const threshold = thresholdFor(lesionType)
   const parsedAdc = adcNumber(adc)
   const ready = Boolean(threshold && Number.isFinite(parsedAdc) && parsedAdc > 0)
   const locale = lang === 'en' ? 'en-US' : 'de-DE'
@@ -153,20 +141,17 @@ export function Birads4AdcGate({ lang, onComplete, onBack }) {
 
   const chooseLesion = value => {
     setLesionType(value)
-    setT2(value === 'nme' ? 'not-applicable' : '')
     setAdc(null)
   }
 
   const submit = event => {
     event.preventDefault()
     if (!ready) return
-    const nonFibroadenoma = lesionType === 'mass' && t2 !== 'yes'
     onComplete({
       adc: parsedAdc,
       threshold,
-      aboveThreshold: !nonFibroadenoma && parsedAdc > threshold,
-      nonFibroadenoma,
-      values: { quality: 'yes', lesionType, t2, restricted: 'unclear', adc: String(parsedAdc) },
+      aboveThreshold: parsedAdc > threshold,
+      values: { quality: 'yes', lesionType, restricted: 'unclear', adc: String(parsedAdc) },
     })
   }
 
@@ -179,21 +164,14 @@ export function Birads4AdcGate({ lang, onComplete, onBack }) {
     <form className={styles.gateForm} onSubmit={submit}>
       <fieldset className={styles.gateStep}>
         <legend><i>1</i>{ui.lesion}</legend>
-        <div className={styles.phenotypeOptions}>
+        <div className={styles.lesionOptions}>
           <button type="button" aria-pressed={lesionType === 'mass'} onClick={() => chooseLesion('mass')}><span className={styles.massGlyph}/><strong>{ui.mass}</strong></button>
           <button type="button" aria-pressed={lesionType === 'nme'} onClick={() => chooseLesion('nme')}><span className={styles.nmeGlyph}/><strong>{ui.nme}</strong></button>
         </div>
       </fieldset>
 
-      {lesionType === 'mass' ? <fieldset className={styles.gateStep}>
-        <legend><i>2</i>{ui.t2}</legend>
-        <div className={styles.gateSegmented}>
-          {[['yes', ui.t2Yes], ['no', ui.t2No], ['unclear', ui.unclear]].map(([value, label]) => <button key={value} type="button" aria-pressed={t2 === value} onClick={() => { setT2(value); setAdc(null) }}>{label}</button>)}
-        </div>
-      </fieldset> : null}
-
       {threshold ? <fieldset className={styles.gateStep}>
-        <legend><i>{lesionType === 'mass' ? 3 : 2}</i>{ui.adc}</legend>
+        <legend><i>2</i>{ui.adc}</legend>
         <div className={styles.gateValueRow}>
           <div className={styles.adcPicker}>
             <span>{ui.adcHelp}</span>
@@ -243,10 +221,7 @@ export function DiagnosisAtlas({ lang, compact = false }) {
 
 function Segmented({ name, value, options, onChange, ui }) {
   return <div className={styles.segmented} data-count={options.length}>
-    {options.map(option => {
-      const label = name === 't2' ? (option === 'yes' ? ui.t2Yes : option === 'no' ? ui.t2No : ui.unclear) : ui[option]
-      return <button type="button" key={option} className={value === option ? styles.selected : ''} onClick={() => onChange(name, option)} aria-pressed={value === option}>{label}</button>
-    })}
+    {options.map(option => <button type="button" key={option} className={value === option ? styles.selected : ''} onClick={() => onChange(name, option)} aria-pressed={value === option}>{ui[option]}</button>)}
   </div>
 }
 
@@ -281,14 +256,14 @@ export default function AdcAssessment({ score, lang, initialValues }) {
   const [values, setValues] = useState(() => ({ ...INITIAL, ...(initialValues || {}) }))
   const [showAll, setShowAll] = useState(false)
   const result = useMemo(() => getResult(values), [values])
-  const setValue = (name, value) => setValues(current => ({ ...current, [name]: current[name] === value ? '' : value, ...(name === 'lesionType' ? { t2: '', ductal: '', t1Ducts: '', rim: '' } : {}) }))
+  const setValue = (name, value) => setValues(current => ({ ...current, [name]: current[name] === value ? '' : value, ...(name === 'lesionType' ? { ductal: '', t1Ducts: '', rim: '' } : {}) }))
   const adcValid = Number.isFinite(Number.parseFloat(String(values.adc).replace(',', '.'))) && Number.parseFloat(String(values.adc).replace(',', '.')) > 0
-  const missingKey = !values.quality ? 'quality' : !values.lesionType ? 'lesionType' : values.lesionType === 'mass' && !values.t2 ? 't2' : !values.restricted ? 'restricted' : !adcValid ? 'adc' : null
+  const missingKey = !values.quality ? 'quality' : !values.lesionType ? 'lesionType' : !values.restricted ? 'restricted' : !adcValid ? 'adc' : null
   const coreComplete = !missingKey
-  const activeStep = !values.lesionType || (values.lesionType === 'mass' && !values.t2) ? 1 : !values.restricted || !adcValid ? 2 : 3
-  const phenotype = values.lesionType === 'nme' ? ui.notApplicable : values.t2 === 'yes' ? ui.t2Yes : values.t2 === 'no' ? ui.t2No : values.t2 === 'unclear' ? ui.unclear : '—'
+  const activeStep = !values.lesionType ? 1 : !values.restricted || !adcValid ? 2 : 3
+  const lesion = values.lesionType ? ui[values.lesionType] : '—'
   const restriction = values.restricted ? ui[`restriction${values.restricted[0].toUpperCase()}${values.restricted.slice(1)}`] : '—'
-  const primaryTopics = values.lesionType === 'nme' ? ['nme', 'ductal', 'limits'] : ['massT2', 'physiology', 'limits']
+  const primaryTopics = values.lesionType === 'nme' ? ['nme', 'ductal', 'limits'] : ['mass', 'physiology', 'limits']
   const extraTopics = ['technical', 'integration']
 
   return <section className={styles.module} aria-labelledby="adc-title">
@@ -306,11 +281,10 @@ export default function AdcAssessment({ score, lang, initialValues }) {
           <Segmented name="quality" value={values.quality} options={OPTIONS.quality} onChange={setValue} ui={ui}/>
         </div>
 
-        <section className={styles.workflowSection} data-complete={Boolean(values.lesionType && (values.lesionType !== 'mass' || values.t2))}>
+        <section className={styles.workflowSection} data-complete={Boolean(values.lesionType)}>
           <header><i>01</i><h3>{ui.lesionHeading}</h3></header>
           <div className={styles.fields}>
             <Field label={ui.lesionType} wide><Segmented name="lesionType" value={values.lesionType} options={OPTIONS.lesionType} onChange={setValue} ui={ui}/></Field>
-            {values.lesionType === 'mass' ? <Field label={ui.t2} hint={ui.t2Question} wide><Segmented name="t2" value={values.t2} options={OPTIONS.t2} onChange={setValue} ui={ui}/></Field> : null}
           </div>
         </section>
 
@@ -348,10 +322,10 @@ export default function AdcAssessment({ score, lang, initialValues }) {
         <div className={styles.evidence}>
           <h4>{ui.evidence}</h4>
           <dl>
-            <div><dt>{ui.phenotype}</dt><dd>{phenotype}</dd></div>
+            <div><dt>{ui.lesionType}</dt><dd>{lesion}</dd></div>
             <div><dt>{ui.restricted}</dt><dd>{restriction}</dd></div>
             <div><dt>{ui.value}</dt><dd>{result.adc ? `${result.adc.toLocaleString(lang === 'de' ? 'de-DE' : 'en-US')} ×10⁻³` : '—'}</dd></div>
-            <div><dt>{ui.orientation}</dt><dd>{result.threshold ? `> ${result.threshold.toLocaleString(lang === 'de' ? 'de-DE' : 'en-US', { minimumFractionDigits: 1 })} ×10⁻³` : ui.noUniversal}</dd></div>
+            <div><dt>{ui.orientation}</dt><dd>{result.threshold ? `> ${result.threshold.toLocaleString(lang === 'de' ? 'de-DE' : 'en-US', { minimumFractionDigits: 1 })} ×10⁻³` : '—'}</dd></div>
           </dl>
         </div>
         <div className={styles.kaiserLock}><span>{ui.kaiser}</span><strong>{score}</strong><i>{ui.unchanged} · ⌁</i></div>

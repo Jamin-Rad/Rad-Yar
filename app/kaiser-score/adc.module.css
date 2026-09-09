@@ -18,18 +18,15 @@
 .gateStep { min-width: 0; margin: 0; padding: 0; border: 0; }
 .gateStep legend { width: 100%; margin-bottom: 10px; display: flex; align-items: center; gap: 9px; color: var(--ink); font-size: 11px; font-weight: 800; }
 .gateStep legend i { width: 23px; height: 23px; display: grid; place-items: center; border: 1px solid color-mix(in srgb, var(--teal) 65%, var(--line)); border-radius: 50%; color: var(--teal); font-style: normal; font-size: 8px; }
-.phenotypeOptions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-.phenotypeOptions button { min-height: 72px; padding: 13px 16px; display: flex; align-items: center; gap: 14px; border: 1px solid var(--line-strong); border-radius: 14px; color: var(--ink); background: color-mix(in srgb, var(--surface-soft) 68%, transparent); cursor: pointer; font-family: inherit; text-align: left; transition: border-color .16s ease, background .16s ease, transform .16s ease; }
-.phenotypeOptions button:hover { border-color: var(--teal); transform: translateY(-1px); }
-.phenotypeOptions button[aria-pressed='true'] { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 10%, var(--surface-raised)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--teal) 44%, transparent); }
-.phenotypeOptions strong { font-size: 12px; line-height: 1.35; }
+.lesionOptions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.lesionOptions button { min-height: 72px; padding: 13px 16px; display: flex; align-items: center; gap: 14px; border: 1px solid var(--line-strong); border-radius: 14px; color: var(--ink); background: color-mix(in srgb, var(--surface-soft) 68%, transparent); cursor: pointer; font-family: inherit; text-align: left; transition: border-color .16s ease, background .16s ease, transform .16s ease; }
+.lesionOptions button:hover { border-color: var(--teal); transform: translateY(-1px); }
+.lesionOptions button[aria-pressed='true'] { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 10%, var(--surface-raised)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--teal) 44%, transparent); }
+.lesionOptions strong { font-size: 12px; line-height: 1.35; }
 .massGlyph, .nmeGlyph { width: 37px; height: 37px; flex: 0 0 auto; position: relative; border: 1px solid var(--teal); border-radius: 50%; }
 .massGlyph::after { content: ''; width: 15px; height: 15px; position: absolute; inset: 0; margin: auto; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 5px color-mix(in srgb, var(--teal) 15%, transparent); }
 .nmeGlyph { border-color: transparent; }
 .nmeGlyph::before { content: ''; width: 5px; height: 5px; position: absolute; top: 4px; left: 15px; border-radius: 50%; background: var(--teal); box-shadow: -10px 7px 0 color-mix(in srgb, var(--teal) 75%, transparent), 10px 6px 0 var(--teal), -5px 16px 0 var(--teal), 8px 18px 0 color-mix(in srgb, var(--teal) 72%, transparent), -13px 24px 0 color-mix(in srgb, var(--teal) 52%, transparent), 13px 27px 0 var(--teal); }
-.gateSegmented { min-height: 46px; padding: 3px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; border: 1px solid var(--line-strong); border-radius: 12px; background: color-mix(in srgb, var(--surface-soft) 78%, transparent); }
-.gateSegmented button { min-height: 40px; padding: 7px 10px; border: 0; border-radius: 8px; color: var(--muted); background: transparent; cursor: pointer; font: 700 9px/1.3 inherit; }
-.gateSegmented button[aria-pressed='true'] { color: var(--teal); background: color-mix(in srgb, var(--teal) 11%, var(--surface-raised)); box-shadow: inset 0 0 0 1px var(--teal); }
 .gateValueRow { display: grid; grid-template-columns: minmax(0, 1fr); }
 .gateValueRow label > span, .adcPicker > span { display: block; margin-bottom: 6px; color: var(--muted); font-size: 8px; }
 .gateValueRow label > div { min-height: 55px; display: grid; grid-template-columns: minmax(70px, 1fr) auto; align-items: center; border: 1px solid var(--line-strong); border-radius: 13px; background: color-mix(in srgb, var(--surface-soft) 78%, transparent); }
@@ -220,10 +217,9 @@
   .gateHeader { padding-bottom: 17px; }
   .gateHeader h1 { font-size: 27px; }
   .gateForm { gap: 17px; }
-  .phenotypeOptions { gap: 8px; }
-  .phenotypeOptions button { min-height: 76px; padding: 11px; flex-direction: column; align-items: flex-start; gap: 8px; }
-  .phenotypeOptions strong { font-size: 10px; }
-  .gateSegmented { grid-template-columns: 1fr; }
+  .lesionOptions { gap: 8px; }
+  .lesionOptions button { min-height: 76px; padding: 11px; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .lesionOptions strong { font-size: 10px; }
   .gateActions { min-height: 74px; padding: 11px 16px max(11px, env(safe-area-inset-bottom)); position: fixed; left: 0; right: 0; bottom: 0; z-index: 120; border-top: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); box-shadow: 0 -10px 30px color-mix(in srgb, var(--page-bg) 38%, transparent); }
   .gateActions button { padding-inline: 14px; }
   .gateBack { margin-inline-start: 43px; }

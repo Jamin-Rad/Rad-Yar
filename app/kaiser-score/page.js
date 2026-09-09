@@ -44,9 +44,8 @@ const COPY = {
     atlasInfo: 'Kaiser 1–4: BI-RADS 2/3 · Kaiser 5–7: BI-RADS 4 · Kaiser 8–11: BI-RADS 5',
     findingLead: 'In der Mamma-MRT zeigt die anreichernde Läsion', assessmentLead: 'Nach dem Kaiser-Entscheidungsbaum ergibt sich',
     adcMeasured: 'Der ergänzend bestimmte ADC-Wert beträgt',
-    adcAbove: 'Der ADC-Wert liegt oberhalb des phänotypbezogenen Orientierungswertes und stützt eine benigne Einordnung. Auf Grundlage der ADC-Zusatzbewertung wird keine Biopsie empfohlen.',
-    adcBelow: 'Der ADC-Wert liegt nicht oberhalb des phänotypbezogenen Orientierungswertes. Malignität wird dadurch nicht ausgeschlossen; eine Biopsie wird empfohlen.',
-    adcNonFibroadenoma: 'Da die Masse nicht sicher fibroadenomtypisch ist, wird unabhängig vom ADC-Wert eine Biopsie zum Ausschluss eines Karzinoms empfohlen.',
+    adcAbove: 'Der ADC-Wert liegt oberhalb des läsionstypbezogenen Orientierungswertes und stützt eine benigne Einordnung. Auf Grundlage der ADC-Zusatzbewertung wird keine Biopsie empfohlen.',
+    adcBelow: 'Der ADC-Wert liegt nicht oberhalb des läsionstypbezogenen Orientierungswertes. Malignität wird dadurch nicht ausgeschlossen; eine Biopsie wird empfohlen.',
     adcNoBiopsy: 'ADC-gestützt: Keine Biopsie empfohlen', adcBiopsy: 'ADC-gestützt: Biopsie empfohlen',
     recommend: 'Weiterempfehlen', recommendHint: 'Kaiser Score mit Kolleginnen und Kollegen teilen', shareTitle: 'Kaiser Score weitergeben',
     shareText: 'QR-Code scannen oder den direkten Link versenden.', scanLabel: 'Direkt zum Kaiser-Score-Rechner', whatsapp: 'Über WhatsApp teilen', copyLink: 'Link kopieren', linkCopied: 'Link kopiert',
@@ -84,9 +83,8 @@ const COPY = {
     atlasInfo: 'Kaiser 1–4: BI-RADS 2/3 · Kaiser 5–7: BI-RADS 4 · Kaiser 8–11: BI-RADS 5',
     findingLead: 'On breast MRI, the enhancing lesion demonstrates', assessmentLead: 'Following the Kaiser decision tree, the result is',
     adcMeasured: 'The additionally measured ADC value is',
-    adcAbove: 'The ADC value is above the phenotype-specific guide and supports benignity. Based on the supplementary ADC assessment, biopsy is not recommended.',
-    adcBelow: 'The ADC value is not above the phenotype-specific guide. Malignancy is not excluded; biopsy is recommended.',
-    adcNonFibroadenoma: 'Because the mass is not confidently fibroadenoma-like, biopsy is recommended regardless of the ADC value to exclude carcinoma.',
+    adcAbove: 'The ADC value is above the lesion-type-specific guide and supports benignity. Based on the supplementary ADC assessment, biopsy is not recommended.',
+    adcBelow: 'The ADC value is not above the lesion-type-specific guide. Malignancy is not excluded; biopsy is recommended.',
     adcNoBiopsy: 'ADC-supported: Biopsy not recommended', adcBiopsy: 'ADC-supported: Biopsy recommended',
     recommend: 'Recommend', recommendHint: 'Share the Kaiser Score with colleagues', shareTitle: 'Share the Kaiser Score',
     shareText: 'Scan the QR code or send the direct link.', scanLabel: 'Open the Kaiser Score calculator', whatsapp: 'Share via WhatsApp', copyLink: 'Copy link', linkCopied: 'Link copied',
@@ -271,7 +269,7 @@ function buildReport(history, score, risk, ui, adcRefinement, lang = 'de') {
     : ''
   return {
     finding: `${ui.findingLead} ${features}.${adcFinding}`,
-    assessment: `${ui.assessmentLead} Kaiser Score ${score}, entsprechend ${risk.birads}. ${adcRefinement ? adcRefinement.nonFibroadenoma ? ui.adcNonFibroadenoma : adcRefinement.aboveThreshold ? ui.adcAbove : ui.adcBelow : score >= 5 ? ui.biopsy : ui.clinical}`,
+    assessment: `${ui.assessmentLead} Kaiser Score ${score}, entsprechend ${risk.birads}. ${adcRefinement ? adcRefinement.aboveThreshold ? ui.adcAbove : ui.adcBelow : score >= 5 ? ui.biopsy : ui.clinical}`,
   }
 }
 
