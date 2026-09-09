@@ -20,15 +20,17 @@ export async function GET() {
   const [
     { data: daily, error: dailyError },
     { data: pages, error: pagesError },
+    { data: toolPages, error: toolPagesError },
     { data: nodeRadsEvents, error: nodeRadsError },
   ] = await Promise.all([
     supabaseAdmin.from('analytics_daily').select('*').gte('day', since).limit(20000),
     supabaseAdmin.from('analytics_pages').select('*').gte('day', since).not('path', 'like', '/node-rads/event/%').limit(30000),
+    supabaseAdmin.from('analytics_pages').select('*').gte('day', since).in('path', ['/node-rads', '/kaiser-score']).limit(30000),
     supabaseAdmin.from('analytics_pages').select('day,path,views').gte('day', since).like('path', '/node-rads/event/%').limit(30000),
   ])
 
-  if (dailyError || pagesError || nodeRadsError) {
-    const message = dailyError?.message || pagesError?.message || nodeRadsError?.message || 'Analytics nicht verfügbar'
+  if (dailyError || pagesError || toolPagesError || nodeRadsError) {
+    const message = dailyError?.message || pagesError?.message || toolPagesError?.message || nodeRadsError?.message || 'Analytics nicht verfügbar'
     console.error('Admin-Analytics-Fehler:', message)
     return NextResponse.json(
       { error: 'Die Analytics-Datenbank ist noch nicht eingerichtet.' },
@@ -74,7 +76,6 @@ export async function GET() {
   }
 
   const pageMap = new Map()
-  const toolRows = { nodeRads: [], kaiser: [] }
   const nodeRadsDays = new Map()
   const nodeRadsDay = day => {
     if (!nodeRadsDays.has(day)) nodeRadsDays.set(day, {
@@ -89,12 +90,13 @@ export async function GET() {
     entry.activeSeconds += Number(row.active_seconds || 0)
     entry.visitors.add(row.visitor_id)
     pageMap.set(row.path, entry)
-    if (row.path === '/node-rads') {
-      nodeRadsDay(row.day).views += Number(row.views || 0)
-      toolRows.nodeRads.push(row)
-    }
-    if (row.path === '/kaiser-score') toolRows.kaiser.push(row)
   }
+
+  const toolRows = {
+    nodeRads: (toolPages || []).filter(row => row.path === '/node-rads'),
+    kaiser: (toolPages || []).filter(row => row.path === '/kaiser-score'),
+  }
+  for (const row of toolRows.nodeRads) nodeRadsDay(row.day).views += Number(row.views || 0)
 
   const nodeRadsEventFields = {
     '/node-rads/event/recommend-open': 'recommendOpens',

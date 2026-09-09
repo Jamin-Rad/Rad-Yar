@@ -21,7 +21,6 @@ export async function GET() {
   return NextResponse.json({
     supabaseUrl: !!url,
     serviceRoleKey: !!key,
-    serviceRoleKeyPrefix: key?.slice(0, 15) + '...',
     anonKey: !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
     dbConnected: dbTest !== null,
     dbRowCount: dbTest,

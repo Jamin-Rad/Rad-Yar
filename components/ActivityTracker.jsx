@@ -28,7 +28,11 @@ function sendActivity(payload) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
     keepalive: true,
-  }).catch(() => {})
+  })
+    .then(response => {
+      if (!response.ok) console.warn(`Analytics-Anfrage fehlgeschlagen (${response.status})`)
+    })
+    .catch(error => console.warn('Analytics-Anfrage fehlgeschlagen:', error?.message))
 }
 
 export default function ActivityTracker() {
