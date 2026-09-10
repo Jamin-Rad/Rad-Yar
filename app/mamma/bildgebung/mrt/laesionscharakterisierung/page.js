@@ -1,11 +1,10 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
-import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import base from '@/app/abdomen/gi/divertikulitis/page.module.css'
 import basics from '../basics/page.module.css'
 import styles from './page.module.css'
@@ -22,11 +21,12 @@ function ReadButton({ isRead, onClick, authError, lang }) {
   return <div className={base.readControl}><button type="button" className={`${base.readButton} ${basics.readButton} ${isRead ? `${base.readButtonActive} ${basics.readButtonActive}` : ''}`} onClick={onClick}><span className={`${base.readCheck} ${basics.readCheck}`} aria-hidden="true">{isRead ? '✓' : ''}</span><span>{isRead ? copy.read : copy.mark}</span></button>{authError && <div className={base.readError} role="alert"><span>{copy.error}</span><Link href="/sign-in">{copy.signIn}</Link></div>}</div>
 }
 
-function Section({ id, eyebrow, title, children }) {
-  const isMobile = useMobileLearningLayout()
-  const [open, setOpen] = useState(true)
-  useEffect(() => setOpen(false), [id])
-  return <section id={id} className={`${base.section} ${basics.section} ${styles.section}`}><button className={`${base.sectionHeader} ${basics.sectionHeader}`} type="button" onClick={() => setOpen(value => !value)} aria-expanded={open}><span className={basics.sectionHeading}><small>{eyebrow}</small><h2>{title}</h2></span><span className={basics.sectionToggle}>{open ? '−' : '+'}</span></button>{open && <div className={`${base.sectionBody} ${basics.sectionBody} ${styles.sectionBody}`}>{children}</div>}</section>
+function Section({ id, icon, title, open, onToggle, children }) {
+  return <section id={id} className={`${base.section} ${basics.section} ${styles.section}`}><button className={`${base.sectionHeader} ${basics.sectionHeader}`} type="button" onClick={() => onToggle(id)} aria-expanded={open}><span className={basics.sectionHeading}><h2><span className={styles.sectionIcon} aria-hidden="true">{icon}</span>{title}</h2></span><span className={basics.sectionToggle}>{open ? '−' : '+'}</span></button>{open && <div className={`${base.sectionBody} ${basics.sectionBody} ${styles.sectionBody}`}>{children}</div>}</section>
+}
+
+function scrollSectionToTop(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'auto', block: 'start' })
 }
 
 function DescriptorGrid({ items, className = '' }) {
@@ -53,6 +53,8 @@ export default function LesionscharakterisierungPage() {
   const { lang } = useLanguage()
   const tx = value => pick(value, lang)
   const [activeId, setActiveId] = useState(SECTIONS[0].id)
+  const [openId, setOpenId] = useState(SECTIONS[0].id)
+  const shouldScrollToOpenSection = useRef(false)
   const { isRead, toggleRead, authError } = useLessonReadStatus('mamma-mrt-laesionscharakterisierung')
   const lessonPath = '/mamma/bildgebung/mrt/laesionscharakterisierung'
   const withLang = href => lang === 'de' ? href : `${href}${href.includes('?') ? '&' : '?'}lang=${lang}`
@@ -69,6 +71,30 @@ export default function LesionscharakterisierungPage() {
     return () => observers.forEach(observer => observer?.disconnect())
   }, [sectionIds])
 
+  useEffect(() => {
+    if (!openId || !shouldScrollToOpenSection.current) return
+    shouldScrollToOpenSection.current = false
+    scrollSectionToTop(openId)
+  }, [openId])
+
+  const selectSection = id => {
+    setActiveId(id)
+    if (openId === id) {
+      scrollSectionToTop(id)
+      return
+    }
+    shouldScrollToOpenSection.current = true
+    setOpenId(id)
+  }
+
+  const toggleSection = id => {
+    if (openId === id) {
+      setOpenId(null)
+      return
+    }
+    selectSection(id)
+  }
+
   return <main className={`${base.page} ${basics.page} ${styles.page} ${lang === 'fa' ? styles.rtl : ''}`} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
     <header className={base.header}>
       <nav className={`${base.breadcrumb} ${basics.breadcrumb}`} aria-label={tx(COPY.contents)}><Link href={withLang('/')}>RadYar</Link><span>›</span><Link href={withLang('/lernen/mamma')}>{tx(COPY.mamma)}</Link><span>›</span><Link href={withLang('/lernen/mamma')}>{tx(COPY.imaging)}</Link><span>›</span><span>{tx(COPY.breastMri)}</span><span>›</span><strong>{tx(COPY.title)}</strong></nav>
@@ -80,9 +106,9 @@ export default function LesionscharakterisierungPage() {
 
     <div className={base.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} lang={lang} /></div>
     <div className={base.layout}>
-      <aside className={`${base.sidebar} ${basics.sidebar}`}><div className={base.sideTitle}>{tx(COPY.contents)}</div>{SECTIONS.map(section => <button key={section.id} type="button" className={`${base.sideItem} ${basics.sideItem} ${activeId === section.id ? `${base.sideItemActive} ${basics.sideItemActive}` : ''}`} onClick={() => document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}><span className={basics.sideNumber}>{section.icon}</span><strong>{tx(section.label)}</strong></button>)}</aside>
+      <aside className={`${base.sidebar} ${basics.sidebar}`}><div className={base.sideTitle}>{tx(COPY.contents)}</div>{SECTIONS.map(section => <button key={section.id} type="button" className={`${base.sideItem} ${basics.sideItem} ${activeId === section.id ? `${base.sideItemActive} ${basics.sideItemActive}` : ''}`} onClick={() => selectSection(section.id)}><span className={basics.sideNumber}>{section.icon}</span><strong>{tx(section.label)}</strong></button>)}</aside>
       <div className={base.main}>
-        <Section id="start" eyebrow={tx({ de: '✦ Enhancement-Typen', en: '✦ Enhancement types', fa: '✦ انواع Enhancement' })} title={tx(SECTIONS[0].label)}>
+        <Section id="start" icon={SECTIONS[0].icon} title={tx(SECTIONS[0].label)} open={openId === 'start'} onToggle={toggleSection}>
           <figure className={`${basics.enhancementMedia} ${styles.enhancementOverview}`}>
             <a href="/mamma/mrt/enhancement-types.png" target="_blank" rel="noreferrer" aria-label={tx({ de: 'Enhancement-Typen in voller Größe öffnen', en: 'Open enhancement types full size', fa: 'نمایش تصویر انواع Enhancement در اندازه کامل' })}>
               <Image src="/mamma/mrt/enhancement-types.png" alt={tx({ de: 'MRT-Beispiele für Mass und Non-Mass Enhancement', en: 'MRI examples of mass and non-mass enhancement', fa: 'نمونه‌های MRI از Mass و Non-Mass Enhancement' })} width={1536} height={1024} sizes="(max-width: 900px) calc(100vw - 48px), 860px" />
@@ -92,7 +118,7 @@ export default function LesionscharakterisierungPage() {
           <p className={styles.classificationPrompt}><strong>{tx({ de: 'Zuerst richtig klassifizieren', en: 'Classify correctly first', fa: 'ابتدا طبقه‌بندی صحیح' })}</strong></p>
         </Section>
 
-        <Section id="mass" eyebrow="● Mass" title={tx(SECTIONS[1].label)}>
+        <Section id="mass" icon={SECTIONS[1].icon} title={tx(SECTIONS[1].label)} open={openId === 'mass'} onToggle={toggleSection}>
           <div className={styles.definitionCard}><h3>{tx({ de: 'Dreidimensionale Läsion mit konvexer Außenkontur', en: 'A three-dimensional lesion with a convex outer contour', fa: 'ضایعه سه‌بعدی با کانتور خارجی محدب' })}</h3><p>{tx({ de: 'Eine Mass verdrängt oder ersetzt Gewebe und lässt sich räumlich als eigenes Volumen abgrenzen. Kannst du keinen konvexen Rand und keine echte Raumforderung definieren, darfst du nicht künstlich Form und Rand vergeben – dann ist NME wahrscheinlicher.', en: 'A mass displaces or replaces tissue and can be outlined as a distinct volume. If no convex margin and no true space-occupying lesion can be defined, do not invent shape and margin; NME is more likely.', fa: 'Mass بافت را جابه‌جا یا جایگزین می‌کند و به‌صورت حجمی مستقل قابل ترسیم است. اگر حاشیه محدب و ضایعه فضاگیر واقعی تعریف نمی‌شود، Shape و Margin را به‌زور تعیین نکنید؛ احتمال NME بیشتر است.' })}</p></div>
           <div className={styles.formula}>{tx({ de: 'Form', en: 'Shape', fa: 'Shape' })} <i>→</i> {tx({ de: 'Rand', en: 'Margin', fa: 'Margin' })} <i>→</i> {tx({ de: 'Internes Anreicherungsmuster', en: 'Internal Enhancement', fa: 'الگوی Enhancement داخلی' })}</div>
           <ReasoningPath items={MASS_WORKFLOW} />
@@ -110,7 +136,7 @@ export default function LesionscharakterisierungPage() {
           <ReportExample label={{ de: 'So klingt ein klarer Befund', en: 'A clear report sounds like this', fa: 'نمونه گزارش واضح' }} text={{ de: 'Rechts bei 10 Uhr zeigt sich eine 13 × 10 × 9 mm große, irregulär geformte Mass mit spikuliertem Rand und heterogenem internem Enhancement. Sie ist T2-hypointens, zeigt eine Diffusionsrestriktion und eine Washout-Kinetik und ist neu gegenüber der Voruntersuchung.', en: 'At 10 o’clock in the right breast, there is a 13 × 10 × 9 mm irregular mass with a spiculated margin and heterogeneous internal enhancement. It is T2 hypointense, demonstrates restricted diffusion and washout kinetics, and is new compared with the prior examination.', fa: 'در ساعت ۱۰ پستان راست، Mass نامنظم به ابعاد ۱۳ × ۱۰ × ۹ میلی‌متر با حاشیه اسپیکوله و Enhancement داخلی ناهمگن دیده می‌شود. ضایعه در T2 کم‌سیگنال است، محدودیت دیفیوژن و کینتیک Washout دارد و نسبت به بررسی قبلی جدید است.' }} checklist={[{ de: 'Seite · Uhrzeit · Abstand zur Mamille', en: 'Side · clock position · distance from nipple', fa: 'سمت · موقعیت ساعت · فاصله از نوک پستان' }, { de: 'Größe in drei Ebenen', en: 'Size in three dimensions', fa: 'اندازه در سه بعد' }, { de: 'Form · Rand · internes Enhancement', en: 'Shape · margin · internal enhancement', fa: 'Shape · Margin · Enhancement داخلی' }, { de: 'T2 · DWI/ADC · Kinetik · Vorvergleich', en: 'T2 · DWI/ADC · kinetics · comparison', fa: 'T2 · DWI/ADC · کینتیک · مقایسه قبلی' }]} />
         </Section>
 
-        <Section id="nme" eyebrow="◌ NME" title={tx(SECTIONS[2].label)}>
+        <Section id="nme" icon={SECTIONS[2].icon} title={tx(SECTIONS[2].label)} open={openId === 'nme'} onToggle={toggleSection}>
           <div className={`${styles.definitionCard} ${styles.definitionCardNme}`}><span>{tx({ de: 'Der entscheidende Unterschied', en: 'The key distinction', fa: 'تفاوت کلیدی' })}</span><h3>{tx({ de: 'NME = Anreicherung ohne abgrenzbare dreidimensionale Mass', en: 'NME = enhancement without a discrete three-dimensional mass', fa: 'NME = Enhancement بدون Mass سه‌بعدی مشخص' })}</h3><p>{tx({ de: 'Normales Drüsengewebe oder Fett bleibt zwischen den anreichernden Anteilen sichtbar; eine konvexe Außenkontur fehlt. „Non-Mass“ bedeutet nicht „kein Tumor“: Besonders DCIS kann sich als NME ausbreiten.', en: 'Normal glandular tissue or fat remains visible between enhancing components and there is no convex outer contour. “Non-mass” does not mean “no tumour”: DCIS in particular may spread as NME.', fa: 'بافت غده‌ای طبیعی یا چربی میان اجزای دارای Enhancement باقی می‌ماند و کانتور خارجی محدب وجود ندارد. «Non-Mass» به معنی «بدون تومور» نیست؛ به‌ویژه DCIS می‌تواند به‌شکل NME گسترش یابد.' })}</p></div>
           <p className={styles.lead}>{tx({ de: 'Bei NME ersetzt die Verteilung die Form- und Randbeschreibung. Zwei getrennte Fragen verhindern typische Verwechslungen:', en: 'For NME, distribution replaces shape and margin. Two separate questions prevent common mix-ups:', fa: 'در NME، Distribution جایگزین توصیف Shape و Margin می‌شود. دو پرسش جدا از اشتباهات رایج جلوگیری می‌کند:' })}</p><div className={styles.formula}>{tx({ de: 'Wo und wie weit?', en: 'Where and how far?', fa: 'کجا و تا چه وسعت؟' })} <i>→</i> {tx({ de: 'Welches innere Muster?', en: 'Which internal pattern?', fa: 'کدام الگوی داخلی؟' })}</div>
           <ReasoningPath items={NME_WORKFLOW} />
@@ -125,14 +151,14 @@ export default function LesionscharakterisierungPage() {
           <ReportExample label={{ de: 'So klingt ein klarer Befund', en: 'A clear report sounds like this', fa: 'نمونه گزارش واضح' }} text={{ de: 'Links zentral besteht über 42 × 28 × 18 mm ein segmental verteiltes NME mit klumpigem bis gruppiert-ringförmigem internem Enhancement, neu gegenüber der Voruntersuchung.', en: 'In the central left breast, there is 42 × 28 × 18 mm segmental NME with clumped to clustered-ring internal enhancement, new from the prior examination.', fa: 'در بخش مرکزی پستان چپ، NME سگمنتال به ابعاد ۴۲ × ۲۸ × ۱۸ میلی‌متر با Enhancement داخلی Clumped تا Clustered ring دیده می‌شود که نسبت به بررسی قبلی جدید است.' }} checklist={[{ de: 'Seite · Lokalisation · Ausdehnung', en: 'Side · location · full extent', fa: 'سمت · محل · وسعت کامل' }, { de: 'Verteilung zuerst', en: 'Distribution first', fa: 'ابتدا Distribution' }, { de: 'Dann internes Muster', en: 'Then internal pattern', fa: 'سپس الگوی داخلی' }, { de: 'Asymmetrie · BPE · Vorvergleich · Begleitbefunde', en: 'Asymmetry · BPE · priors · associated findings', fa: 'عدم تقارن · BPE · مقایسه قبلی · یافته‌های همراه' }]} />
         </Section>
 
-        <Section id="kinetik" eyebrow={tx({ de: '↗ Zeit-Signal-Kurven', en: '↗ Time-signal curves', fa: '↗ منحنی‌های زمان–سیگنال' })} title={tx(SECTIONS[3].label)}>
+        <Section id="kinetik" icon={SECTIONS[3].icon} title={tx(SECTIONS[3].label)} open={openId === 'kinetik'} onToggle={toggleSection}>
           <p className={styles.lead}>{tx({ de: 'Morphologie zeigt, wie eine Läsion aussieht. Die Kinetik zeigt, wie sie im zeitlichen Verlauf Kontrastmittel aufnimmt.', en: 'Morphology shows what a lesion looks like. Kinetics show how it takes up contrast over time.', fa: 'مورفولوژی ظاهر ضایعه را نشان می‌دهد؛ کینتیک نحوه Enhancement ضایعه در طول زمان را بررسی می‌کند.' })}</p>
           <TeachingImage src="/mamma/mrt/lesion-kinetics-en.png" width={512} height={492} caption={{ de: 'Kinetik: Zeit-Signal-Kurven', en: 'Kinetics: Time-Signal Curves', fa: 'کینتیک: منحنی‌های زمان–سیگنال' }} alt={{ de: 'Kurvenbeispiele für persistentes Enhancement, Plateau und Washout', en: 'Curve examples of persistent enhancement, plateau and washout', fa: 'نمونه منحنی‌های Persistent، Plateau و Washout' }} />
           <div className={styles.curveGrid}>{CURVES.map(curve => <article className={styles[curve.tone]} key={curve.type}><span>Type {curve.type}</span><strong>{curve.symbol}</strong><h3>{curve.name}</h3>{curve.tag && <em className={styles.curveTag}>{tx(curve.tag)}</em>}<p>{tx(curve.text)}</p></article>)}</div>
           <div className={`${styles.note} ${styles.warning}`}><strong>{tx({ de: 'Cave', en: 'Caution', fa: 'توجه' })}</strong><p>{tx({ de: 'Persistent bedeutet nicht automatisch benign und Washout nicht automatisch malign. Morphologie und Kinetik müssen gemeinsam interpretiert werden. Gerade bei NME und DCIS kann eine verdächtige Morphologie ohne klassische Washout-Kurve vorliegen.', en: 'Persistent enhancement is not automatically benign, and washout is not automatically malignant. Morphology and kinetics must be interpreted together. NME and DCIS may show suspicious morphology without a classic washout curve.', fa: 'الگوی Persistent الزاماً خوش‌خیم و Washout الزاماً بدخیم نیست. مورفولوژی و کینتیک باید هم‌زمان تفسیر شوند. به‌ویژه در NME و DCIS ممکن است مورفولوژی مشکوک بدون منحنی کلاسیک Washout وجود داشته باشد.' })}</p></div>
         </Section>
 
-        <Section id="t2-diffusion" eyebrow={tx({ de: '≈ Zusatzkriterien', en: '≈ Additional criteria', fa: '≈ معیارهای تکمیلی' })} title={tx(SECTIONS[4].label)}>
+        <Section id="t2-diffusion" icon={SECTIONS[4].icon} title={tx(SECTIONS[4].label)} open={openId === 't2-diffusion'} onToggle={toggleSection}>
           <div className={styles.t2Grid}>
             <article className={styles.t2Article}>
               <span className={styles.t2Tag}>T2</span>
@@ -157,7 +183,7 @@ export default function LesionscharakterisierungPage() {
           </div>
         </Section>
 
-        <Section id="algorithmus" eyebrow="✓ Take-Home Message" title={tx(SECTIONS[5].label)}>
+        <Section id="algorithmus" icon={SECTIONS[5].icon} title={tx(SECTIONS[5].label)} open={openId === 'algorithmus'} onToggle={toggleSection}>
           <ol className={styles.algorithm}>{SUMMARY_STEPS.map((step, index) => <li key={tx(step)}><span>{String(index + 1).padStart(2, '0')}</span><strong>{tx(step)}</strong></li>)}</ol>
           <div className={styles.exampleCompare}><article><span>{tx({ de: 'Eher benign', en: 'More likely benign', fa: 'بیشتر به نفع خوش‌خیمی' })}</span><strong>Oval + circumscribed + homogeneous + T2-hyperintens + persistent</strong></article><i>vs.</i><article><span>{tx({ de: 'Deutlich suspekter', en: 'Considerably more suspicious', fa: 'به‌مراتب مشکوک‌تر' })}</span><strong>Irregular + spiculated + heterogeneous/rim enhancement + Diffusionsrestriktion + washout</strong></article></div>
           <div className={styles.takeHome}>

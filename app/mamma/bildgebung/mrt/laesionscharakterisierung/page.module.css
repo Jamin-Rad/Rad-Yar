@@ -3,7 +3,8 @@
 .heroStats > div:first-child { background: linear-gradient(145deg, #7c2d55, #be185d); }
 .heroStats > div:nth-child(2) { background: linear-gradient(145deg, #1e3a8a, #2563eb); }
 .heroStats > div:nth-child(3) { background: linear-gradient(145deg, #fff8e7, #fff); color: #44290b; border-color: #f3d69b; }
-.section { scroll-margin-top: 88px; }
+.section { scroll-margin-top: 138px; }
+.sectionIcon { display: inline-block; min-width: 1.45em; margin-inline-end: .28em; color: #db2777; text-align: center; }
 .sectionBody { display: grid; gap: 26px; }
 .lead { margin: 0; color: var(--text); font-size: 1.08rem; line-height: 1.82; }
 .definitionCard { position: relative; overflow: hidden; padding: 26px 28px; border: 1px solid rgba(190,24,93,.24); border-left: 5px solid #be185d; border-radius: 10px; background: linear-gradient(135deg,rgba(190,24,93,.09),rgba(37,99,235,.035)),var(--bg-card); box-shadow: 0 16px 38px rgba(15,23,42,.08); }
