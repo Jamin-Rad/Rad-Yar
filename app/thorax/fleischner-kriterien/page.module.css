@@ -52,3 +52,19 @@
 @media (max-width: 900px) { .layout { grid-template-columns: 1fr; gap: 22px; } .sidebar { position: static; } .sidebar nav { display: flex; flex-wrap: wrap; gap: 6px 15px; } .sidebar h2 { flex-basis: 100%; margin-bottom: 2px; } .sidebar a { padding: 6px 0; } .hero { gap: 24px; padding: 28px; grid-template-columns: minmax(0, 1fr) 180px; } }
 @media (max-width: 600px) { .page { padding: 84px 12px 35px; } .hero { padding: 24px 20px; grid-template-columns: 1fr; gap: 20px; } .hero .subtitle { font-size: 18px; } .thresholds { grid-template-columns: repeat(3, 1fr); gap: 10px; border-inline-start: 0; border-top: 1px solid var(--border); padding: 18px 0 0; } .thresholds strong { font-size: 27px; } .thresholds strong span { font-size: 12px; } .thresholds small { font-size: 11px; } .section { padding: 20px 15px; } .section h2 { font-size: 21px; } .cards { grid-template-columns: 1fr; } .diagram { height: 110px; } }
 @media print { .sidebar, .breadcrumb, .primary, .case button { display: none; } .page { padding: 0; } .layout { display: block; } .hero { padding: 20px; } .section { break-inside: avoid; } .tableScroll { overflow: visible; } .tableScroll table { min-width: 0; } }
+
+.hero { grid-template-columns: minmax(0,1fr) 300px; gap: 20px; padding: 0; border: 0; background: transparent; }
+.heroText { padding: 34px; border: 1px solid var(--border); border-radius: 24px; background: linear-gradient(135deg,var(--bg-card),var(--surface-soft)); }
+.badge { display: inline-flex; padding: 8px 14px; border-radius: 999px; background: #087b93; color: white; font-size: 12px; font-weight: 800; }
+.hero h1 { margin: 18px 0 24px; }
+.learningActions { display: flex; flex-wrap: wrap; gap: 10px; }
+.learningActions a { display: inline-flex; align-items: center; min-height: 44px; padding: 11px 17px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text); font-size: 14px; font-weight: 750; text-decoration: none; }
+.learningActions a:hover { border-color: #0891b2; }
+.readControl { margin: 20px 0; }
+.readControl p { font-size: 13px; }
+.sidebar .activeLink { color: #0891b2; font-weight: 800; border-inline-start: 3px solid #0891b2; padding-inline-start: 10px; background: rgba(8,145,178,.06); }
+.sourceFooter { padding: 8px 0 18px; font-size: 11px; line-height: 1.8; color: var(--text-muted); }
+.sourceFooter a { color: inherit; }
+:global(html[data-theme='dark']) .badge { color: white; }
+@media(max-width:900px) { .hero { grid-template-columns: minmax(0,1fr) 260px; } }
+@media(max-width:600px) { .hero { grid-template-columns: 1fr; padding: 0; } .heroText { padding: 24px 20px; } }

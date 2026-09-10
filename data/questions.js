@@ -1,3 +1,4 @@
+import { FLEISCHNER_QUESTIONS } from './fleischnerLearning'
 // ── RADYAR QUESTION BANK ────────────────────────────────────────────────────
 
 import { CONTRAST_QUESTIONS, CONTRAST_TOPICS } from './contrastMedia'
@@ -586,6 +587,7 @@ export const QUESTION_BANK = {
     ...MAMMA_MRT_SPECIAL_CARCINOMA_QUESTIONS.de,
     ...MAMMOGRAPHY_BASICS_QUESTIONS.de,
     ...MAMMOGRAPHY_CALCIFICATIONS_QUESTIONS.de,
+    ...FLEISCHNER_QUESTIONS.de,
     {
       "id": "meniskus-de-01",
       "tags": [
@@ -1917,6 +1919,7 @@ export const QUESTION_BANK = {
     ...MAMMA_MRT_SPECIAL_CARCINOMA_QUESTIONS.en,
     ...MAMMOGRAPHY_BASICS_QUESTIONS.en,
     ...MAMMOGRAPHY_CALCIFICATIONS_QUESTIONS.en,
+    ...FLEISCHNER_QUESTIONS.en,
     ...CONTRAST_QUESTIONS.en,
     ...DIVERTICULITIS_QUESTIONS.en,
     ...PANCREATITIS_QUESTIONS.en,
@@ -3279,6 +3282,7 @@ export const QUESTION_BANK = {
     ...MAMMA_MRT_SPECIAL_CARCINOMA_QUESTIONS.fa,
     ...MAMMOGRAPHY_BASICS_QUESTIONS.fa,
     ...MAMMOGRAPHY_CALCIFICATIONS_QUESTIONS.fa,
+    ...FLEISCHNER_QUESTIONS.fa,
     ...CONTRAST_QUESTIONS.fa,
     ...DIVERTICULITIS_QUESTIONS.fa,
     ...PANCREATITIS_QUESTIONS.fa,
@@ -4638,6 +4642,7 @@ export const QUESTION_BANK = {
 }
 
 export const MCQ_TOPIC_GROUPS = [
+  { fachId: 'thorax', kapitelId: 'thorax-tumoren', title: { de: 'Lungentumoren', en: 'Lung tumours', fa: 'تومورهای ریه' }, topics: [{ id: 'fleischner-kriterien', title: { de: 'Fleischner-Kriterien', en: 'Fleischner criteria', fa: 'معیارهای Fleischner' } }] },
   {
     fachId: 'mamma',
     kapitelId: 'mamma-bildgebung',

@@ -45,3 +45,51 @@
 .riskIntro { margin: -5px 0 10px; }
 .riskIntro strong { color: #bdd1c9; font-size: 10px; }
 .riskIntro p { margin: 3px 0 0; color: #6f8c80; font-size: 8px; line-height: 1.5; }
+
+/* Eligibility opens directly; the four criteria form a two-by-two overview. */
+.stepper { grid-template-columns: repeat(auto-fit,minmax(0,1fr)); }
+.scopeGrid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+.scopeGrid button { min-height: 150px; padding: 22px 18px; display: flex; align-items: flex-start; gap: 14px; border: 1px solid var(--line-strong); background: rgba(255,255,255,.02); color: #dceee5; text-align: start; cursor: pointer; }
+.scopeGrid button > span { flex: 0 0 28px; height: 28px; display: grid; place-items: center; border: 1px solid #779589; border-radius: 50%; }
+.scopeGrid .checked { border-color: rgba(104,224,178,.45); background: rgba(104,224,178,.055); }
+.scopeGrid .checked > span { background: var(--mint); color: #06100f; border-color: var(--mint); }
+.scopeGrid strong { display: block; font-size: 17px; line-height: 1.4; }
+.scopeGrid p { margin: 9px 0 0; color: #adc4b9; font-size: 13px; line-height: 1.65; }
+.actions.scopeActions { justify-content: center; position: static; }
+.scopeActions > span { display: none; }
+.scopeActions .next { min-width: 220px; min-height: 52px; font-size: 15px; }
+.riskStep > header p { font-size: 14px; }
+.riskAssessment { padding: 20px; }
+.riskQuestions { gap: 12px; }
+.riskQuestion { min-height: 88px; padding: 16px; gap: 18px; }
+.riskQuestion > strong { font-size: 15px; line-height: 1.6; color: #d8e9e0; }
+.riskQuestion > div { grid-template-columns: repeat(2,65px); gap: 8px; }
+.riskQuestion button { min-height: 46px; font-size: 13px; color: #b3ccbf; }
+.noHighRisk { width: 100%; margin-bottom: 18px; padding: 18px; display: flex; align-items: center; gap: 16px; text-align: start; border: 1px solid rgba(104,224,178,.45); background: rgba(104,224,178,.045); color: #e5f4ec; cursor: pointer; }
+.noHighRisk[aria-pressed='true'] { border-color: var(--mint); background: rgba(104,224,178,.14); }
+.noHighRisk > span { flex: 0 0 34px; height: 34px; border: 1px solid var(--mint); border-radius: 50%; display: grid; place-items: center; color: var(--mint); font-size: 20px; }
+.noHighRisk strong { font-size: 17px; }
+.noHighRisk p { margin: 6px 0 0; font-size: 12px; line-height: 1.65; color: #a5c1b3; }
+.riskPending { font-size: 13px; }
+.riskOutcome small { font-size: 10px; }
+.riskOutcome strong { font-size: 25px; }
+.riskOutcome p { font-size: 12px; }
+.report { align-items: start; padding: 22px; }
+.report h3 { margin: 0 0 10px; font-size: 17px; color: #dbeee4; }
+.report h4 { margin: 10px 0 6px; font-size: 14px; color: var(--mint-soft); }
+.report p { font-size: 13px; line-height: 1.75; }
+.report button { min-height: 44px; font-size: 11px; }
+.page button:focus-visible { outline: 2px solid var(--mint); outline-offset: 4px; }
+@media (max-width: 620px) {
+  .scopeGrid { gap: 10px; }
+  .scopeGrid button { flex-direction: column; min-height: 190px; padding: 14px; gap: 10px; }
+  .scopeGrid strong { font-size: 15px; }
+  .scopeGrid p { font-size: 12px; }
+  .riskAssessment { padding: 12px; }
+  .riskQuestion > div { grid-template-columns: repeat(2,1fr); }
+  .riskQuestion > strong { font-size: 15px; }
+  .scopeActions { background: transparent; backdrop-filter: none; }
+}
+.workspace:has(.scopeGrid) .viewport { flex: 0; }
+.scopeGrid button > span { width: 28px; }
+.riskStep { font-family: var(--font-manrope, system-ui), sans-serif; }

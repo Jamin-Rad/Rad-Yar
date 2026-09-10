@@ -501,7 +501,7 @@ export const CURRICULUM = [
         themen: [
           { id: 'nsclc', title: { de: 'NSCLC', en: 'NSCLC', fa: 'NSCLC (سرطان ریه غیر سلول کوچک)' }, group: ['Lungenkarzinom'], tags: ['CT'], diff: 3 },
           { id: 'sclc', title: { de: 'SCLC', en: 'SCLC', fa: 'SCLC (سرطان ریه سلول کوچک)' }, group: ['Lungenkarzinom'], tags: ['CT'], diff: 3 },
-          { id: 'fleischner-kriterien', title: { de: 'Fleischner-Kriterien', en: 'Fleischner Criteria', fa: 'معیارهای Fleischner' }, group: ['Solitärer Lungenrundherd'], tags: ['CT'], diff: 2, link: '/thorax/fleischner-kriterien' },
+          { id: 'fleischner-kriterien', title: { de: 'Fleischner-Kriterien', en: 'Fleischner Criteria', fa: 'معیارهای Fleischner' }, group: ['Solitärer Lungenrundherd'], tags: ['CT'], diff: 2, link: '/thorax/fleischner-kriterien', flashcardLink: '/flashcards/fleischner-kriterien' },
           { id: 'lung-rads', title: { de: 'Lung-RADS', en: 'Lung-RADS', fa: 'سیستم Lung-RADS' }, group: ['Solitärer Lungenrundherd'], tags: ['CT'], diff: 2 },
           { id: 'karzinoid-lunge', title: { de: 'Karzinoide / Neuroendokrine Tumoren', en: 'Carcinoid / Neuroendocrine Tumours', fa: 'کارسینوئید / تومورهای نورواندوکرین' }, tags: ['CT'], diff: 3 },
           { id: 'hamartom-lunge', title: { de: 'Hamartom', en: 'Hamartoma', fa: 'هامارتوم ریه' }, tags: ['CT'], diff: 2 },
