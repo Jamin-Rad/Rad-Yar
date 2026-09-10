@@ -654,9 +654,9 @@ const RECHNER_GROUPS = [
   },
   {
     id: 'herz-thorax',
-    name: { de: 'Thorax', en: 'Thorax', fa: 'توراکس' },
-    color: '#be185d', iconId: 'herz',
-    calcIds: ['lv-biplan-volumen', 'ktq', 'fleischner'],
+    name: { de: 'Lunge & Thorax', en: 'Lung & Thorax', fa: 'ریه و توراکس' },
+    color: '#18a77a', iconId: 'herz',
+    calcIds: ['lv-biplan-volumen', 'ktq'],
   },
   {
     id: 'mamma',
@@ -687,6 +687,14 @@ const RECHNER_GROUPS = [
     name: { de: 'Wirbelsäule', en: 'Spine', fa: 'ستون فقرات' },
     color: '#f97316', iconId: 'wirbelsaeule',
     calcIds: ['meyerding'],
+  },
+]
+
+const LUNG_TOOL_LINKS = [
+  {
+    id: 'fleischner', href: '/fleischner', mark: 'F', icon: '/fleischner/fleischner-icon-192.png', color: '#18a77a',
+    name: { de: 'Fleischner Rechner', en: 'Fleischner Calculator', fa: 'محاسبه‌گر Fleischner' },
+    text: { de: 'Inzidentelle solide und subsolide Lungenrundherde vollständig einordnen.', en: 'Assess incidental solid and subsolid pulmonary nodules.', fa: 'ارزیابی ندول‌های ریوی جامد و نیمه‌جامد اتفاقی.' },
   },
 ]
 
@@ -769,6 +777,18 @@ function RechnerModal({ copy, lang, onClose }) {
             </div>
           ) : (
             <div style={{display:'flex',flexDirection:'column',gap:10}}>
+              {group.id === 'herz-thorax' ? <div className={styles.mammaToolGrid}>{LUNG_TOOL_LINKS.map(tool => (
+                <Link key={tool.id} href={tool.href} className={styles.mammaToolCard} style={{'--tool-color': tool.color}}>
+                  <span className={`${styles.mammaToolMark} ${styles.mammaToolIconMark}`}>
+                    <Image src={tool.icon} alt="" width={44} height={44} className={styles.mammaToolIcon}/>
+                  </span>
+                  <span className={styles.mammaToolCopy}>
+                    <strong>{tx(tool.name, lang)}</strong>
+                    <small>{tx(tool.text, lang)}</small>
+                  </span>
+                  <span className={styles.mammaToolArrow} aria-hidden="true">↗</span>
+                </Link>
+              ))}</div> : null}
               {calcs.map(calc => (
                 <RechnerCard
                   key={calc.id}
@@ -828,7 +848,6 @@ function RechnerCard({ calc, lang, isOpen, onToggle }) {
           {calc.type === 'multi'        && <MultiCalc       calc={calc} lang={lang} />}
           {calc.type === 'conversion'   && <ConversionCalc  calc={calc} lang={lang} />}
           {calc.type === 'recist'       && <RecistCalc      calc={calc} lang={lang} />}
-          {calc.type === 'fleischner'   && <FleischnerCalc  calc={calc} lang={lang} />}
           {calc.type === 'birads-kalk'  && <BiRadsKalkCalc  calc={calc} lang={lang} />}
           {calc.type === 'birads-masse' && <BiRadsMasseCalc calc={calc} lang={lang} />}
           {calc.type === 'node-rads'    && <NodeRadsCalc    calc={calc} lang={lang} />}
@@ -1380,89 +1399,6 @@ function RecistCalc({ calc, lang }) {
             </span>
           </>
         ) : <span className={styles.rcResultPlaceholder}>—</span>}
-      </div>
-    </>
-  )
-}
-
-/* ── FleischnerCalc ───────────────────────────── */
-function getFleischnerRec(type, size, risk, solidComp) {
-  if (!size || isNaN(size) || size <= 0) return null
-  if (type === 'solid') {
-    if (size < 6) return risk === 'high'
-      ? { color:'#ca8a04', text:{ de:'Optional: CT nach 12 Monaten.', en:'Optional: CT at 12 months.', fa:'اختیاری: CT پس از ۱۲ ماه.' } }
-      : { color:'#16a34a', text:{ de:'Kein Routine-Follow-up empfohlen.', en:'No routine follow-up recommended.', fa:'پیگیری روتین توصیه نمی‌شود.' } }
-    if (size <= 8) return risk === 'high'
-      ? { color:'#ca8a04', text:{ de:'CT nach 6–12 Mon., danach 18–24 Mon.', en:'CT at 6–12 m, then 18–24 m.', fa:'CT پس از ۶–۱۲ ماه، سپس ۱۸–۲۴ ماه.' } }
-      : { color:'#ca8a04', text:{ de:'CT nach 6–12 Mon.; bei stabilem Befund erneut 18–24 Mon.', en:'CT at 6–12 m; if stable, again at 18–24 m.', fa:'CT پس از ۶–۱۲ ماه؛ در صورت ثبات، مجدداً ۱۸–۲۴ ماه.' } }
-    return { color:'#dc2626', text:{ de:'CT nach 3 Mon. oder PET/CT; Biopsie erwägen.', en:'CT at 3 m or PET/CT; consider tissue sampling.', fa:'CT پس از ۳ ماه یا PET/CT؛ نمونه‌برداری در نظر بگیرید.' } }
-  }
-  if (type === 'ggo') {
-    if (size < 6) return { color:'#16a34a', text:{ de:'Kein Routine-Follow-up (GGO < 6 mm).', en:'No routine follow-up (GGO < 6 mm).', fa:'پیگیری روتین لازم نیست (GGO < ۶ mm).' } }
-    return { color:'#ca8a04', text:{ de:'CT nach 6–12 Mon. (Persistenz?); danach alle 2 J. × 5 J.', en:'CT at 6–12 m (persistence?); then every 2 y × 5 y.', fa:'CT پس از ۶–۱۲ ماه؛ سپس هر ۲ سال × ۵ سال.' } }
-  }
-  // partsolid
-  if (size < 6) return { color:'#16a34a', text:{ de:'Kein Follow-up (Part-solid < 6 mm).', en:'No follow-up (part-solid < 6 mm).', fa:'پیگیری لازم نیست (نیمه‌جامد < ۶ mm).' } }
-  if (!solidComp || isNaN(solidComp)) return { color:'#ca8a04', text:{ de:'CT nach 3–6 Mon. — bitte Solid-Anteil eingeben.', en:'CT at 3–6 m — please enter solid component size.', fa:'CT پس از ۳–۶ ماه — لطفاً اندازه جز جامد را وارد کنید.' } }
-  if (solidComp < 6) return { color:'#ca8a04', text:{ de:'CT nach 3–6 Mon.; wenn stabil & Solid < 6 mm → jährl. CT × 5 J.', en:'CT at 3–6 m; if stable & solid < 6 mm → annual CT × 5 y.', fa:'CT پس از ۳–۶ ماه؛ اگر پایدار و جز جامد < ۶ mm → CT سالانه × ۵ سال.' } }
-  return { color:'#ea580c', text:{ de:'CT nach 3–6 Mon.; Solid-Anteil ≥ 6 mm → CT/PET-CT/Biopsie.', en:'CT at 3–6 m; solid ≥ 6 mm → CT/PET-CT/biopsy.', fa:'CT پس از ۳–۶ ماه؛ جز جامد ≥ ۶ mm → CT/PET-CT/بیوپسی.' } }
-}
-
-function FleischnerCalc({ calc, lang }) {
-  const [type, setType]       = useState('solid')
-  const [size, setSize]       = useState('')
-  const [risk, setRisk]       = useState('low')
-  const [solidComp, setSolidComp] = useState('')
-  const sizeNum = parseFloat(size)
-  const solidNum = parseFloat(solidComp)
-  const rec = getFleischnerRec(type, sizeNum, risk, solidNum)
-  const showSolidComp = type === 'partsolid' && sizeNum >= 6
-
-  return (
-    <>
-      <div className={styles.rcFields}>
-        {/* Typ-Select */}
-        <label className={styles.rcField}>
-          <span className={styles.rcFieldLabel}>{tx(calc.lbl.nodeType, lang)}</span>
-          <select className={styles.rcSelect} value={type} onChange={e=>setType(e.target.value)}>
-            {calc.opts.type.map(o=>(
-              <option key={o.v} value={o.v}>{tx(o.label, lang)}</option>
-            ))}
-          </select>
-        </label>
-
-        {/* Größe */}
-        <FieldRow id="size" label={tx(calc.lbl.size, lang)} val={size}
-          onChange={(_,v)=>setSize(v)} unit="mm" step={1} min={0} max={50} />
-
-        {/* Risiko (nur Solid) */}
-        {type === 'solid' && (
-          <label className={styles.rcField}>
-            <span className={styles.rcFieldLabel}>{tx(calc.lbl.risk, lang)}</span>
-            <select className={styles.rcSelect} value={risk} onChange={e=>setRisk(e.target.value)}>
-              {calc.opts.risk.map(o=>(
-                <option key={o.v} value={o.v}>{tx(o.label, lang)}</option>
-              ))}
-            </select>
-          </label>
-        )}
-
-        {/* Solid-Anteil (nur Part-solid ≥ 6mm) */}
-        {showSolidComp && (
-          <FieldRow id="solidComp" label={tx(calc.lbl.solidComp, lang)} val={solidComp}
-            onChange={(_,v)=>setSolidComp(v)} unit="mm" step={1} min={0} max={50} />
-        )}
-      </div>
-
-      <div className={styles.rcResult} style={{
-        background: rec ? rec.color+'14' : '#f8fafc',
-        borderColor: rec ? rec.color+'44' : '#eef2f7',
-      }}>
-        {rec ? (
-          <span className={styles.rcFleischnerRec} style={{color: rec.color}}>
-            {tx(rec.text, lang)}
-          </span>
-        ) : <span className={styles.rcResultPlaceholder}>Eingabe …</span>}
       </div>
     </>
   )

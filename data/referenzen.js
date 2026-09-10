@@ -2819,31 +2819,6 @@ export const RECHNER = [
     ],
   },
 
-  // 9. Fleischner-Assistent
-  {
-    id: 'fleischner', type: 'fleischner', color: '#0891b2',
-    name: { de: 'Fleischner – Lungenrundherde', en: 'Fleischner – Pulmonary Nodule', fa: 'Fleischner – ندول ریوی' },
-    formula: 'Fleischner Society Guidelines 2017',
-    hint: { de: 'Schnell-Assistent für inzidentelle Rundherde bei Erwachsenen ≥ 35 J.; nicht für Screening, Immunsuppression oder bekannte aktive Tumorerkrankung.', en: 'Quick assistant for incidental nodules in adults ≥ 35 y; not for screening, immunosuppression or known active cancer.', fa: 'دستیار سریع برای ندول‌های تصادفی در بزرگسالان ≥ ۳۵ سال؛ نه برای غربالگری، سرکوب ایمنی یا سرطان فعال شناخته‌شده.' },
-    opts: {
-      type: [
-        { v: 'solid',     label: { de: 'Solid',          en: 'Solid',         fa: 'جامد' } },
-        { v: 'ggo',       label: { de: 'Milchglas (GGO)',en: 'Ground-glass',  fa: 'میلکی‌گلس (GGO)' } },
-        { v: 'partsolid', label: { de: 'Part-solid',     en: 'Part-solid',    fa: 'نیمه‌جامد' } },
-      ],
-      risk: [
-        { v: 'low',  label: { de: 'Niedrig',en: 'Low',  fa: 'پایین' } },
-        { v: 'high', label: { de: 'Hoch',   en: 'High', fa: 'بالا' } },
-      ],
-    },
-    lbl: {
-      nodeType:  { de: 'Herd-Typ',         en: 'Nodule type',      fa: 'نوع ندول' },
-      size:      { de: 'Mittl. Größe',     en: 'Mean size',        fa: 'اندازه میانگین' },
-      risk:      { de: 'Klinisches Risiko',en: 'Clinical risk',    fa: 'خطر بالینی' },
-      solidComp: { de: 'Solid-Anteil',     en: 'Solid component',  fa: 'جز جامد' },
-    },
-  },
-
   // Mamma: BI-RADS Masse (Mammographie)
   {
     id: 'birads-masse', type: 'birads-masse', color: '#db2777',

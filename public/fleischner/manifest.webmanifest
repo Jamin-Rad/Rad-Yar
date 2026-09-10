@@ -1,0 +1,16 @@
+{
+  "name": "Fleischner Rechner",
+  "short_name": "Fleischner",
+  "description": "Follow-up-Empfehlungen für inzidentelle Lungenrundherde nach Fleischner 2017.",
+  "id": "/fleischner",
+  "start_url": "/fleischner",
+  "scope": "/fleischner",
+  "display": "standalone",
+  "background_color": "#06100f",
+  "theme_color": "#06100f",
+  "icons": [
+    { "src": "/fleischner/fleischner-icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/fleischner/fleischner-icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/fleischner/fleischner-icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -4,7 +4,7 @@ export default function robots() {
   return {
     rules: {
       userAgent: '*',
-      allow: ['/', '/kaiser-score', '/kaiser-score/'],
+      allow: ['/', '/kaiser-score', '/kaiser-score/', '/node-rads', '/node-rads/', '/fleischner', '/fleischner/'],
     },
     host: siteUrl,
   }
