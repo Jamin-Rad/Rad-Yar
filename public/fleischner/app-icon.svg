@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <radialGradient id="bg" cx="65%" cy="37%" r="72%"><stop stop-color="#173f35"/><stop offset=".55" stop-color="#071613"/><stop offset="1" stop-color="#020807"/></radialGradient>
+    <radialGradient id="n" cx="36%" cy="30%"><stop stop-color="#eafff6"/><stop offset=".5" stop-color="#7eebbf"/><stop offset="1" stop-color="#268b67"/></radialGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="16" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1024" height="1024" rx="220" fill="url(#bg)"/>
+  <circle cx="512" cy="470" r="356" fill="none" stroke="#5bd4a6" stroke-opacity=".13" stroke-width="3"/>
+  <circle cx="512" cy="470" r="294" fill="none" stroke="#5bd4a6" stroke-opacity=".09" stroke-width="3"/>
+  <g fill="#65ddb0" fill-opacity=".06" stroke="#89e8c3" stroke-width="13" stroke-linejoin="round">
+    <path d="M474 268c-84 0-199 72-248 207-61 172-29 315 75 333 86 16 164-57 164-164V292c0-17 3-24 9-24Z"/>
+    <path d="M550 268c84 0 199 72 248 207 61 172 29 315-75 333-86 16-164-57-164-164V292c0-17-3-24-9-24Z"/>
+  </g>
+  <g fill="none" stroke="#89e8c3" stroke-width="25" stroke-linecap="round"><path d="M512 104v279"/><path d="m512 240-108 74"/><path d="m512 240 112 74"/></g>
+  <circle cx="682" cy="525" r="54" fill="url(#n)" stroke="#d8fff0" stroke-width="9" filter="url(#glow)"/>
+  <text x="512" y="926" fill="#dffff2" font-family="Arial,Helvetica,sans-serif" font-size="74" font-weight="700" letter-spacing="13" text-anchor="middle">FLEISCHNER</text>
+</svg>
