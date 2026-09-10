@@ -13,6 +13,7 @@ const COPY = {
   de: {
     brand: 'FLEISCHNER', steps: ['Anwendbarkeit', 'Rundherd', 'Messung', 'Empfehlung'],
     intro: 'Management inzidenteller Lungenrundherde nach den Empfehlungen der Fleischner Society 2017.',
+    startEyebrow: 'Sicher starten', startTitle: 'Darf Fleischner angewendet werden?', startText: 'Prüfen Sie zuerst die vier Voraussetzungen. Erst wenn die Leitlinie passt, beginnt die Rundherd-Einordnung.', startButton: 'Anwendbarkeit prüfen',
     scopeTitle: 'Ist die Leitlinie anwendbar?', scopeText: 'Die Fleischner-Empfehlungen gelten nur für inzidentell entdeckte Rundherde bei Erwachsenen.',
     age: 'Patientin oder Patient ist mindestens 35 Jahre alt', incidental: 'Inzidenteller Befund außerhalb eines Lungenkrebs-Screenings',
     immune: 'Keine Immunsuppression', cancer: 'Keine bekannte aktive Primärtumorerkrankung',
@@ -20,13 +21,14 @@ const COPY = {
     noduleTitle: 'Wie ist der relevante Rundherd beschaffen?', noduleText: 'Bei multiplen Herden wird der suspekteste – nicht zwingend der größte – Herd vermessen.',
     density: 'Dichte', count: 'Anzahl', solid: 'Solide', ggo: 'Reines Milchglas', partSolid: 'Part-solid', single: 'Solitär', multiple: 'Multipel',
     solidHint: 'Vollständig weichgewebsdicht', ggoHint: 'Gefäße bleiben durchscheinend', partHint: 'Milchglas mit solider Komponente',
-    measurementTitle: 'Wie groß ist der Rundherd?', measurementText: 'Lange und kurze Achse in derselben Ebene messen. Der Rechner bildet den Mittelwert und rundet auf den nächsten Millimeter.',
+    measurementTitle: 'Wie groß ist der Rundherd?', measurementText: 'Zuerst die kurze, dann die lange Achse in derselben Ebene messen. Die lange Achse startet automatisch mit demselben Wert und bleibt nach ihrer ersten eigenen Änderung unabhängig.',
     longAxis: 'Lange Achse', shortAxis: 'Kurze Achse', solidPart: 'Solide Komponente', millimetres: 'Millimeter',
     calculatedMean: 'Leitliniengröße', formula: '(lange + kurze Achse) ÷ 2, gerundet', suspiciousLead: 'Suspektester Herd',
-    riskTitle: 'Wie ist das Gesamtrisiko?', riskText: 'Das Risikoprofil beeinflusst die Empfehlung für solide Rundherde. Morphologie und Lokalisation gehören in die Gesamtabwägung.',
-    riskPrompt: 'Bitte wählen Sie das Risikoprofil, damit die passende Empfehlung angezeigt wird.',
-    low: 'Niedrigeres Risiko', high: 'Höheres Risiko', lowHint: 'z. B. jung, geringe/keine Rauchexposition, glatter Rand, kein Oberlappenfokus',
-    highHint: 'z. B. höheres Alter, starke Rauchexposition, Spikulation, Oberlappenlage, Emphysem/Fibrose',
+    riskTitle: 'Welche Risikomerkmale liegen vor?', riskText: 'Bitte jedes Merkmal beantworten. Daraus entsteht eine qualitative Gesamteinschätzung – kein validierter Risikoscore.',
+    riskQuestions: { smoking: 'Aktuelle oder frühere ausgeprägte Rauchexposition', morphology: 'Irregulärer oder spikulierter Rand', upperLobe: 'Lage im Oberlappen', age: 'Höheres Lebensalter', lungDisease: 'Emphysem oder Lungenfibrose', background: 'Lungenkrebs in der Familie oder relevante Karzinogenexposition' },
+    yes: 'Ja', no: 'Nein', riskPending: 'Bitte alle Risikofragen beantworten.', riskAssessment: 'Qualitative Risikoeinschätzung',
+    low: 'Niedrigeres Risiko', high: 'Höheres Risiko', lowHint: 'Keine dominanten beziehungsweise keine Kombination mehrerer erhöhender Merkmale.',
+    highHint: 'Ausgeprägte Rauchexposition, suspekter Rand oder mindestens zwei weitere erhöhende Merkmale.', riskMethod: 'Orientierende Einordnung nach Fleischner-Risikofaktoren; kein validierter Score.',
     resultTitle: 'Fleischner-Empfehlung', resultText: 'Die Eingaben wurden nach den 2017er-Empfehlungen zusammengeführt.',
     notApplicable: 'Fleischner nicht anwendbar', notApplicableText: 'Für diese Konstellation soll keine standardisierte Fleischner-Follow-up-Empfehlung ausgegeben werden. Vorgehen anhand der klinischen Situation, Grunderkrankung und ggf. multidisziplinär festlegen.',
     primaryRec: 'Empfohlenes Vorgehen', context: 'Einordnung', report: 'Befundbaustein', copy: 'Text kopieren', copied: 'Kopiert',
@@ -41,19 +43,21 @@ const COPY = {
   en: {
     brand: 'FLEISCHNER', steps: ['Eligibility', 'Nodule', 'Measurement', 'Recommendation'],
     intro: 'Management of incidental pulmonary nodules according to the 2017 Fleischner Society recommendations.',
+    startEyebrow: 'Start safely', startTitle: 'Can the Fleischner guideline be applied?', startText: 'Check the four eligibility criteria first. Nodule classification begins only when the guideline applies.', startButton: 'Check eligibility',
     scopeTitle: 'Do the guidelines apply?', scopeText: 'Fleischner recommendations apply only to incidentally detected nodules in adults.',
     age: 'Patient is at least 35 years old', incidental: 'Incidental finding outside lung cancer screening', immune: 'No immunosuppression', cancer: 'No known active primary cancer',
     scopeInfo: 'All four criteria must be met. Excluded scenarios require individual clinical and oncological management.',
     noduleTitle: 'What is the relevant nodule type?', noduleText: 'With multiple nodules, measure the most suspicious nodule, which is not necessarily the largest.',
     density: 'Attenuation', count: 'Number', solid: 'Solid', ggo: 'Pure ground-glass', partSolid: 'Part-solid', single: 'Single', multiple: 'Multiple',
     solidHint: 'Completely soft-tissue attenuation', ggoHint: 'Underlying vessels remain visible', partHint: 'Ground-glass with a solid component',
-    measurementTitle: 'How large is the nodule?', measurementText: 'Measure long and short axes in the same plane. The calculator averages both and rounds to the nearest millimetre.',
+    measurementTitle: 'How large is the nodule?', measurementText: 'Measure the short axis first, then the long axis in the same plane. The long axis starts at the same value and remains independent after its first separate adjustment.',
     longAxis: 'Long axis', shortAxis: 'Short axis', solidPart: 'Solid component', millimetres: 'Millimetres',
     calculatedMean: 'Guideline size', formula: '(long + short axis) ÷ 2, rounded', suspiciousLead: 'Most suspicious nodule',
-    riskTitle: 'What is the overall risk?', riskText: 'Risk changes recommendations for solid nodules. Morphology and location remain part of the overall assessment.',
-    riskPrompt: 'Please select the risk profile to display the appropriate recommendation.',
-    low: 'Lower risk', high: 'Higher risk', lowHint: 'e.g. younger age, little/no smoking, smooth margin, non-upper-lobe location',
-    highHint: 'e.g. older age, heavy smoking, spiculation, upper-lobe location, emphysema/fibrosis',
+    riskTitle: 'Which risk features are present?', riskText: 'Please answer every item. The result is a qualitative overall assessment, not a validated risk score.',
+    riskQuestions: { smoking: 'Current or previous heavy smoking exposure', morphology: 'Irregular or spiculated margin', upperLobe: 'Upper-lobe location', age: 'Older age', lungDisease: 'Emphysema or pulmonary fibrosis', background: 'Family history of lung cancer or relevant carcinogen exposure' },
+    yes: 'Yes', no: 'No', riskPending: 'Please answer all risk questions.', riskAssessment: 'Qualitative risk assessment',
+    low: 'Lower risk', high: 'Higher risk', lowHint: 'No dominant feature and no combination of multiple risk-increasing features.',
+    highHint: 'Heavy smoking, a suspicious margin, or at least two other risk-increasing features.', riskMethod: 'Qualitative classification using Fleischner risk factors; not a validated score.',
     resultTitle: 'Fleischner recommendation', resultText: 'The entries were combined according to the 2017 recommendations.',
     notApplicable: 'Fleischner not applicable', notApplicableText: 'No standard Fleischner follow-up should be generated for this scenario. Determine management from the clinical context, underlying disease and, where appropriate, multidisciplinary review.',
     primaryRec: 'Recommended management', context: 'Interpretation', report: 'Report text', copy: 'Copy text', copied: 'Copied',
@@ -127,6 +131,10 @@ function SelectCard({ active, onClick, icon, title, text }) {
   return <button type="button" className={`${styles.selectCard} ${active ? styles.selected : ''}`} onClick={onClick} aria-pressed={active}>{icon}<span><strong>{title}</strong>{text ? <small>{text}</small> : null}</span><i>{active ? '✓' : ''}</i></button>
 }
 
+function RiskQuestion({ label, value, yes, no, onChange }) {
+  return <div className={styles.riskQuestion}><strong>{label}</strong><div><button type="button" className={value === false ? styles.riskAnswerActive : ''} onClick={() => onChange(false)} aria-pressed={value === false}>{no}</button><button type="button" className={value === true ? styles.riskAnswerActive : ''} onClick={() => onChange(true)} aria-pressed={value === true}>{yes}</button></div></div>
+}
+
 function Measurement({ label, value, onChange, min = 1, max = 30 }) {
   const number = Math.max(min, Number(value) || min)
   const progress = max === min ? 100 : (number - min) / (max - min) * 100
@@ -137,6 +145,7 @@ export default function FleischnerPage() {
   const { lang, setLang } = useLanguage()
   const activeLang = lang === 'en' ? 'en' : 'de'
   const ui = COPY[activeLang]
+  const [started, setStarted] = useState(false)
   const [step, setStep] = useState(0)
   const [completed, setCompleted] = useState(0)
   const [eligibility, setEligibility] = useState({ age: true, incidental: true, immune: true, cancer: true })
@@ -145,7 +154,8 @@ export default function FleischnerPage() {
   const [longAxis, setLongAxis] = useState('')
   const [shortAxis, setShortAxis] = useState('')
   const [solidComponent, setSolidComponent] = useState('')
-  const [risk, setRisk] = useState('')
+  const [riskAnswers, setRiskAnswers] = useState({ smoking: null, morphology: null, upperLobe: null, age: null, lungDisease: null, background: null })
+  const [longAxisManuallyAdjusted, setLongAxisManuallyAdjusted] = useState(false)
   const [error, setError] = useState('')
   const [copied, setCopied] = useState(false)
   const [shareOpen, setShareOpen] = useState(false)
@@ -154,19 +164,27 @@ export default function FleischnerPage() {
   const meanSize = roundGuidelineSize(longAxis, shortAxis)
   const needsSolidComponent = density === 'partSolid' && count === 'single' && meanSize >= 6
   const solidSize = Number(solidComponent)
-  const riskSelected = density !== 'solid' || Boolean(risk)
-  const result = useMemo(() => recommendation({ applicable, density, count, size: meanSize, risk: risk || 'low', solidComponent: solidSize, lang: activeLang }), [applicable, density, count, meanSize, risk, solidSize, activeLang])
-  const reportText = applicable ? `${activeLang === 'de' ? 'Inzidenteller' : 'Incidental'} ${count === 'single' ? (activeLang === 'de' ? 'solitärer' : 'single') : (activeLang === 'de' ? 'multipler' : 'multiple')} ${density === 'solid' ? (activeLang === 'de' ? 'solider Lungenrundherd' : 'solid pulmonary nodule') : density === 'ggo' ? (activeLang === 'de' ? 'reiner Milchglasrundherd' : 'pure ground-glass nodule') : (activeLang === 'de' ? 'part-solider Lungenrundherd' : 'part-solid pulmonary nodule')} ${activeLang === 'de' ? 'mit einer mittleren Größe von' : 'with a mean diameter of'} ${meanSize} mm${needsSolidComponent && solidSize > 0 ? ` (${activeLang === 'de' ? 'solide Komponente' : 'solid component'} ${solidSize} mm)` : ''}. ${result.title}. ${result.text}` : result.text
+  const riskEntries = Object.entries(riskAnswers)
+  const riskComplete = riskEntries.every(([, value]) => value !== null)
+  const positiveRiskKeys = riskEntries.filter(([, value]) => value === true).map(([key]) => key)
+  const modifierCount = positiveRiskKeys.filter(key => key !== 'smoking' && key !== 'morphology').length
+  const risk = positiveRiskKeys.includes('smoking') || positiveRiskKeys.includes('morphology') || modifierCount >= 2 ? 'high' : 'low'
+  const needsRiskAssessment = applicable && density === 'solid'
+  const resultReady = !needsRiskAssessment || riskComplete
+  const result = useMemo(() => recommendation({ applicable, density, count, size: meanSize, risk, solidComponent: solidSize, lang: activeLang }), [applicable, density, count, meanSize, risk, solidSize, activeLang])
+  const riskReport = needsRiskAssessment && riskComplete ? activeLang === 'de' ? ` Qualitative Risikoeinschätzung: ${risk === 'high' ? 'höheres' : 'niedrigeres'} Risiko${positiveRiskKeys.length ? ` (vorliegend: ${positiveRiskKeys.map(key => ui.riskQuestions[key]).join(', ')})` : ' (keine abgefragten erhöhenden Merkmale)'}.` : ` Qualitative risk assessment: ${risk === 'high' ? 'higher' : 'lower'} risk${positiveRiskKeys.length ? ` (present: ${positiveRiskKeys.map(key => ui.riskQuestions[key]).join(', ')})` : ' (none of the assessed risk-increasing features)'}.` : ''
+  const reportText = applicable ? `${activeLang === 'de' ? 'Inzidenteller' : 'Incidental'} ${count === 'single' ? (activeLang === 'de' ? 'solitärer' : 'single') : (activeLang === 'de' ? 'multipler' : 'multiple')} ${density === 'solid' ? (activeLang === 'de' ? 'solider Lungenrundherd' : 'solid pulmonary nodule') : density === 'ggo' ? (activeLang === 'de' ? 'reiner Milchglasrundherd' : 'pure ground-glass nodule') : (activeLang === 'de' ? 'part-solider Lungenrundherd' : 'part-solid pulmonary nodule')} ${activeLang === 'de' ? 'mit einer mittleren Größe von' : 'with a mean diameter of'} ${meanSize} mm${needsSolidComponent && solidSize > 0 ? ` (${activeLang === 'de' ? 'solide Komponente' : 'solid component'} ${solidSize} mm)` : ''}.${riskReport} ${result.title}. ${result.text}` : result.text
 
   const axesValid = Number(longAxis) >= Number(shortAxis)
   const solidComponentValid = !needsSolidComponent || (solidSize > 0 && solidSize <= meanSize)
   const canContinue = step === 0 ? true : step === 1 ? Boolean(density && count) : step === 2 ? Boolean(meanSize && axesValid && solidComponentValid) : true
   const next = () => { if (!canContinue) { setError(step === 2 && meanSize && !axesValid ? ui.axisError : step === 2 && meanSize && !solidComponentValid ? ui.solidError : ui.required); return }; setError(''); const target = applicable ? Math.min(step + 1, 3) : 3; setCompleted(value => Math.max(value, target)); setStep(target) }
   const back = () => { setError(''); setStep(value => !applicable && value === 3 ? 0 : Math.max(0, value - 1)) }
-  const restart = () => { setStep(0); setCompleted(0); setEligibility({ age: true, incidental: true, immune: true, cancer: true }); setDensity('solid'); setCount('single'); setLongAxis(''); setShortAxis(''); setSolidComponent(''); setRisk(''); setError(''); setCopied(false); setShareOpen(false); setLinkCopied(false) }
+  const restart = () => { setStarted(false); setStep(0); setCompleted(0); setEligibility({ age: true, incidental: true, immune: true, cancer: true }); setDensity('solid'); setCount('single'); setLongAxis(''); setShortAxis(''); setLongAxisManuallyAdjusted(false); setSolidComponent(''); setRiskAnswers({ smoking: null, morphology: null, upperLobe: null, age: null, lungDisease: null, background: null }); setError(''); setCopied(false); setShareOpen(false); setLinkCopied(false) }
   const copyReport = async () => { try { await navigator.clipboard.writeText(reportText); setCopied(true); window.setTimeout(() => setCopied(false), 1800) } catch {} }
-  const changeShortAxis = value => { setShortAxis(value); setLongAxis(value) }
-  const changeLongAxis = value => setLongAxis(String(Math.max(Number(shortAxis) || 1, Number(value) || 1)))
+  const changeShortAxis = value => { setShortAxis(value); if (!longAxisManuallyAdjusted) setLongAxis(value) }
+  const changeLongAxis = value => { setLongAxis(String(Math.max(Number(shortAxis) || 1, Number(value) || 1))); setLongAxisManuallyAdjusted(true) }
+  const changeRiskAnswer = (key, value) => setRiskAnswers(answers => ({ ...answers, [key]: value }))
   const copyLink = async () => { try { await navigator.clipboard.writeText(FLEISCHNER_URL); setLinkCopied(true); window.setTimeout(() => setLinkCopied(false), 1800) } catch {} }
   const whatsAppText = encodeURIComponent(`Fleischner-Rechner\n${FLEISCHNER_URL}`)
 
@@ -175,15 +193,16 @@ export default function FleischnerPage() {
     <div className={styles.shell}>
       <aside className={styles.visual}><div className={styles.orbit}/><LungMark density={density} count={count}/><div className={styles.visualCopy}><span>2017 · FLEISCHNER SOCIETY</span><h1>{ui.intro}</h1><p>{meanSize ? `${ui.calculatedMean}: ${meanSize} mm` : ui.formula}</p></div><div className={styles.measureScale}><span/><i/><b style={{ '--position': `${meanSize ? Math.min(meanSize / 12 * 100, 100) : 0}%` }}/><footer>{ui.sizeBand.map(label => <small key={label}>{label}</small>)}</footer></div></aside>
       <section className={styles.workspace}>
-        <Stepper step={step} completed={completed} labels={ui.steps} onStep={(target) => { setError(''); setStep(target) }}/>
+        {started ? <Stepper step={step} completed={completed} labels={ui.steps} onStep={(target) => { setError(''); setStep(target) }}/> : null}
         <div className={styles.viewport} key={step}>
-          {step === 0 ? <div className={styles.step}><header><h2>{ui.scopeTitle}</h2><p>{ui.scopeText}</p></header><div className={styles.checkList}>{Object.keys(eligibility).map(key => <button type="button" key={key} className={eligibility[key] ? styles.checked : ''} onClick={() => setEligibility(values => ({ ...values, [key]: !values[key] }))} aria-pressed={eligibility[key]}><span>{eligibility[key] ? '✓' : '×'}</span><strong>{ui[key]}</strong></button>)}</div><div className={`${styles.note} ${!applicable ? styles.warning : ''}`}><i>i</i><p>{ui.scopeInfo}</p></div></div> : null}
+          {!started ? <div className={`${styles.step} ${styles.startStep}`}><span>{ui.startEyebrow}</span><h2>{ui.startTitle}</h2><p>{ui.startText}</p><button type="button" className={styles.startButton} onClick={() => setStarted(true)}><span><LungMark compact/></span><strong>{ui.startButton}</strong><i>→</i></button></div> : null}
+          {started && step === 0 ? <div className={styles.step}><header><h2>{ui.scopeTitle}</h2><p>{ui.scopeText}</p></header><div className={styles.checkList}>{Object.keys(eligibility).map(key => <button type="button" key={key} className={eligibility[key] ? styles.checked : ''} onClick={() => setEligibility(values => ({ ...values, [key]: !values[key] }))} aria-pressed={eligibility[key]}><span>{eligibility[key] ? '✓' : '×'}</span><strong>{ui[key]}</strong></button>)}</div><div className={`${styles.note} ${!applicable ? styles.warning : ''}`}><i>i</i><p>{ui.scopeInfo}</p></div></div> : null}
           {step === 1 ? <div className={styles.step}><header><h2>{ui.noduleTitle}</h2><p>{ui.noduleText}</p></header><fieldset><legend>1 · {ui.density}</legend><div className={styles.densityGrid}><SelectCard active={density === 'solid'} onClick={() => setDensity('solid')} icon={<span className={`${styles.noduleIcon} ${styles.iconSolid}`}/>} title={ui.solid} text={ui.solidHint}/><SelectCard active={density === 'ggo'} onClick={() => setDensity('ggo')} icon={<span className={`${styles.noduleIcon} ${styles.iconGgo}`}/>} title={ui.ggo} text={ui.ggoHint}/><SelectCard active={density === 'partSolid'} onClick={() => setDensity('partSolid')} icon={<span className={`${styles.noduleIcon} ${styles.iconPart}`}><i/></span>} title={ui.partSolid} text={ui.partHint}/></div></fieldset><fieldset><legend>2 · {ui.count}</legend><div className={styles.countGrid}><SelectCard active={count === 'single'} onClick={() => setCount('single')} icon={<span className={styles.countIcon}>●</span>} title={ui.single}/><SelectCard active={count === 'multiple'} onClick={() => setCount('multiple')} icon={<span className={styles.countIcon}>● <i>●</i> ●</span>} title={ui.multiple}/></div></fieldset></div> : null}
           {step === 2 ? <div className={styles.step}><header><h2>{ui.measurementTitle}</h2><p>{ui.measurementText}</p></header>{count === 'multiple' ? <div className={styles.leadNote}><span>◎</span><p><strong>{ui.suspiciousLead}</strong>{ui.noduleText}</p></div> : null}<div className={styles.measureGrid}><Measurement label={ui.shortAxis} value={shortAxis} onChange={changeShortAxis}/><Measurement label={ui.longAxis} value={longAxis} onChange={changeLongAxis} min={Number(shortAxis) || 1}/>{needsSolidComponent ? <Measurement label={ui.solidPart} value={solidComponent} onChange={setSolidComponent} max={Math.max(meanSize, 6)}/> : null}</div><div className={styles.meanResult}><span>{ui.calculatedMean}<small>{ui.formula}</small></span><strong>{meanSize ?? '—'}<small>mm</small></strong></div></div> : null}
-          {step === 3 ? <div className={`${styles.step} ${styles.resultStep}`}><header><h2>{applicable ? ui.resultTitle : ui.notApplicable}</h2><p>{applicable ? ui.resultText : ui.notApplicableText}</p></header>{applicable && density === 'solid' ? <section className={`${styles.riskChooser} ${!risk ? styles.riskChooserPending : ''}`}><div className={styles.riskIntro}><strong>{ui.riskTitle}</strong><p>{risk ? ui.riskText : ui.riskPrompt}</p></div><div className={styles.riskGrid}><SelectCard active={risk === 'low'} onClick={() => setRisk('low')} icon={<span className={styles.riskIcon}>↓</span>} title={ui.low} text={ui.lowHint}/><div className={styles.highRiskCard}><SelectCard active={risk === 'high'} onClick={() => setRisk('high')} icon={<span className={styles.riskIcon}>↑</span>} title={ui.high} text={ui.highHint}/></div></div></section> : null}{riskSelected ? <><article className={styles.recommendation} data-tone={result.tone}><header><span>{result.tone === 'quiet' ? '✓' : result.tone === 'stop' ? '!' : result.tone === 'action' ? '◆' : '◷'}</span><div><small>{ui.primaryRec}</small><h3>{result.title}</h3></div></header><p>{result.text}</p><footer><small>{ui.context}</small><strong>{result.context}</strong></footer></article><div className={styles.report}><div><small>{ui.report}</small><p>{reportText}</p></div><button type="button" onClick={copyReport}>{copied ? '✓' : '⧉'} {copied ? ui.copied : ui.copy}</button></div></> : null}<section className={`${styles.shareCard} ${shareOpen ? styles.shareCardOpen : ''}`}><button type="button" className={styles.shareToggle} onClick={() => setShareOpen(value => !value)} aria-expanded={shareOpen}><span className={styles.shareIcon}><ShareIcon/></span><span><strong>{ui.recommend}</strong><small>{ui.recommendHint}</small></span><i>{shareOpen ? '−' : '+'}</i></button>{shareOpen ? <div className={styles.sharePanel}><header><strong>{ui.shareTitle}</strong><p>{ui.shareText}</p></header><div className={styles.shareBody}><div className={styles.qrFrame}><QRCodeSVG value={FLEISCHNER_URL} size={184} level="H" bgColor="#effff8" fgColor="#06100f" marginSize={2} imageSettings={{ src: '/fleischner/fleischner-icon-192.png', width: 42, height: 42, excavate: true }}/></div><div className={styles.shareDetails}><span>{ui.scanLabel}</span><strong>rad-yar.com/fleischner</strong><div className={styles.shareActions}><a href={`https://wa.me/?text=${whatsAppText}`} target="_blank" rel="noreferrer"><WhatsAppIcon/>{ui.whatsapp}</a><button type="button" onClick={copyLink}><span>{linkCopied ? '✓' : '⧉'}</span>{linkCopied ? ui.linkCopied : ui.copyLink}</button></div></div></div></div> : null}</section></div> : null}
+          {step === 3 ? <div className={`${styles.step} ${styles.resultStep}`}><header><h2>{applicable ? ui.resultTitle : ui.notApplicable}</h2><p>{applicable ? ui.resultText : ui.notApplicableText}</p></header>{needsRiskAssessment ? <section className={styles.riskAssessment}><div className={styles.riskIntro}><strong>{ui.riskTitle}</strong><p>{ui.riskText}</p></div><div className={styles.riskQuestions}>{Object.keys(riskAnswers).map(key => <RiskQuestion key={key} label={ui.riskQuestions[key]} value={riskAnswers[key]} yes={ui.yes} no={ui.no} onChange={value => changeRiskAnswer(key, value)}/>)}</div>{riskComplete ? <div className={styles.riskOutcome} data-risk={risk}><span>{risk === 'high' ? '↑' : '↓'}</span><div><small>{ui.riskAssessment}</small><strong>{risk === 'high' ? ui.high : ui.low}</strong><p>{risk === 'high' ? ui.highHint : ui.lowHint} {ui.riskMethod}</p></div></div> : <p className={styles.riskPending}>{ui.riskPending}</p>}</section> : null}{resultReady ? <><article className={styles.recommendation} data-tone={result.tone}><header><span>{result.tone === 'quiet' ? '✓' : result.tone === 'stop' ? '!' : result.tone === 'action' ? '◆' : '◷'}</span><div><small>{ui.primaryRec}</small><h3>{result.title}</h3></div></header><p>{result.text}</p><footer><small>{ui.context}</small><strong>{result.context}</strong></footer></article><div className={styles.report}><div><small>{ui.report}</small><p>{reportText}</p></div><button type="button" onClick={copyReport}>{copied ? '✓' : '⧉'} {copied ? ui.copied : ui.copy}</button></div></> : null}<section className={`${styles.shareCard} ${shareOpen ? styles.shareCardOpen : ''}`}><button type="button" className={styles.shareToggle} onClick={() => setShareOpen(value => !value)} aria-expanded={shareOpen}><span className={styles.shareIcon}><ShareIcon/></span><span><strong>{ui.recommend}</strong><small>{ui.recommendHint}</small></span><i>{shareOpen ? '−' : '+'}</i></button>{shareOpen ? <div className={styles.sharePanel}><header><strong>{ui.shareTitle}</strong><p>{ui.shareText}</p></header><div className={styles.shareBody}><div className={styles.qrFrame}><QRCodeSVG value={FLEISCHNER_URL} size={184} level="H" bgColor="#effff8" fgColor="#06100f" marginSize={2} imageSettings={{ src: '/fleischner/fleischner-icon-192.png', width: 42, height: 42, excavate: true }}/></div><div className={styles.shareDetails}><span>{ui.scanLabel}</span><strong>rad-yar.com/fleischner</strong><div className={styles.shareActions}><a href={`https://wa.me/?text=${whatsAppText}`} target="_blank" rel="noreferrer"><WhatsAppIcon/>{ui.whatsapp}</a><button type="button" onClick={copyLink}><span>{linkCopied ? '✓' : '⧉'}</span>{linkCopied ? ui.linkCopied : ui.copyLink}</button></div></div></div></div> : null}</section></div> : null}
         </div>
         {error ? <p className={styles.error} role="alert">{error}</p> : null}
-        <footer className={styles.actions}>{step > 0 ? <button type="button" className={styles.back} onClick={back}>← {ui.back}</button> : <span/>}{step < 3 ? <button type="button" className={styles.next} onClick={next} aria-disabled={!canContinue}>{ui.next} →</button> : <button type="button" className={styles.next} onClick={restart}>{ui.restart} ↻</button>}</footer>
+        {started ? <footer className={styles.actions}>{step > 0 ? <button type="button" className={styles.back} onClick={back}>← {ui.back}</button> : <span/>}{step < 3 ? <button type="button" className={styles.next} onClick={next} aria-disabled={!canContinue}>{ui.next} →</button> : <button type="button" className={styles.next} onClick={restart}>{ui.restart} ↻</button>}</footer> : null}
       </section>
     </div>
     <footer className={styles.disclaimer}><span>i</span><p>{ui.disclaimer}</p><a href={SOURCE_URL} target="_blank" rel="noreferrer">{ui.source} ↗</a><small><Link href="/">{ui.by} <strong>RadYar</strong></Link> · {ui.developed}</small></footer>
