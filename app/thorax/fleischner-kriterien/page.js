@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import LessonKeyPoints from '@/components/LessonKeyPoints'
+import { LessonIcon, LungIllustration, MeasurementIllustration } from './Illustrations'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { copy, sections, cases, takehome } from './content'
@@ -19,7 +19,7 @@ function LearningCase({ item, index, c }) {
   const [open, setOpen] = useState(false)
   const answerId = `answer-${index}`
   return <article className={styles.case}>
-    <span className={styles.caseNumber}>{String(index + 1).padStart(2, '0')}</span>
+    <span className={styles.caseNumber}><LessonIcon id="cases"/></span>
     <h3>{c(item[0])}</h3><p>{c(item[1])}</p>
     <button type="button" aria-expanded={open} aria-controls={answerId} onClick={() => setOpen(value => !value)}>{c(open ? copy.hide : copy.solution)}</button>
     <div id={answerId} hidden={!open} className={styles.answer}>{c(item[2])}</div>
@@ -35,6 +35,14 @@ function DensityDiagram({ type }) {
   </svg>
 }
 
+function LessonSection({ id, title, active, onSelect, children }) {
+  const open = active === id
+  return <section id={id} className={styles.section} data-open={open} aria-labelledby={id + '-title'}>
+    <h2 id={id + '-title'}><button type="button" className={styles.sectionToggle} aria-expanded={open} aria-controls={id + '-body'} onClick={() => onSelect(open ? null : id)}><span className={styles.sectionSymbol}><LessonIcon id={id}/></span><span>{title}</span><span className={styles.chevron} aria-hidden="true">{open ? '−' : '+'}</span></button></h2>
+    <div id={id + '-body'} hidden={!open} className={styles.sectionBody}>{children}</div>
+  </section>
+}
+
 export default function FleischnerPage() {
   const { lang } = useLanguage()
   const c = value => typeof value === 'string' ? value : value[lang] || value.de
@@ -43,19 +51,28 @@ export default function FleischnerPage() {
   const nav = [...sections, ...['cases', 'summary'].map(id => ({ id, title: labels[id] }))]
 
   const [active, setActive] = useState('geltung')
+  const title = value => c(value).replace(/^\S+ · /, '')
+  const selectSection = id => {
+    setActive(id)
+    if (id) window.history.replaceState(null, '', '#' + id)
+  }
   useEffect(() => {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => { if (entry.isIntersecting) setActive(entry.target.id) })
-    }, { rootMargin: '-18% 0px -65% 0px', threshold: 0 })
-    ;[...sections.map(section => section.id), 'cases', 'summary'].forEach(id => {
-      const element = document.getElementById(id)
-      if (element) observer.observe(element)
-    })
-    return () => observer.disconnect()
+    const syncHash = () => {
+      const id = window.location.hash.slice(1)
+      if ([...sections.map(section => section.id), 'cases', 'summary'].includes(id)) setActive(id)
+    }
+    syncHash()
+    window.addEventListener('hashchange', syncHash)
+    return () => window.removeEventListener('hashchange', syncHash)
   }, [])
+  useEffect(() => {
+    if (!active || window.location.hash !== '#' + active) return
+    const frame = requestAnimationFrame(() => document.getElementById(active)?.scrollIntoView({ block: 'start' }))
+    return () => cancelAnimationFrame(frame)
+  }, [active])
   const lessonPath = '/thorax/fleischner-kriterien'
   const from = encodeURIComponent(withLang(lessonPath))
-  const readControl = <div className={styles.readControl}><button className={styles.primary} type="button" aria-pressed={isRead} onClick={toggleRead}>{isRead ? '✓ ' : ''}{c(isRead ? copy.done : copy.read)}</button>{authError && <p role="alert">{c(copy.auth)} <Link href={withLang('/sign-in')}>{c(copy.login)}</Link></p>}</div>
+  const readControl = <div className={styles.readControl}><button className={styles.primary} type="button" aria-pressed={isRead} onClick={toggleRead}>{isRead ? '✓ ' : '○ '}{c(isRead ? copy.done : copy.read)}</button>{authError && <p role="alert">{c(copy.auth)} <Link href={withLang('/sign-in')}>{c(copy.login)}</Link></p>}</div>
 
   return <main className={styles.page} lang={lang} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
     <div className={styles.container}>
@@ -64,20 +81,21 @@ export default function FleischnerPage() {
         <div className={styles.heroText}><span className={styles.badge}>Dr. Zia</span><h1>{c(copy.title)}</h1><div className={styles.learningActions}>
           <Link href={withLang(`/ueben/quiz?fach=thorax&n=10&themen=fleischner-kriterien&from=${from}`)}>🎯 MCQ</Link>
           <Link href={withLang(`/flashcards/fleischner-kriterien?from=${from}`)}>🧠 {c({ de: 'Flashcards', en: 'Flashcards', fa: 'فلش‌کارت' })}</Link>
-        </div></div>
-        <LessonKeyPoints points={[
-          [c({ de: 'Geltungsbereich prüfen', en: 'Check eligibility', fa: 'بررسی قابلیت کاربرد' }), c({ de: 'Inzidentelle Rundherde ab 35 Jahren.', en: 'Incidental nodules from age 35.', fa: 'ندول‌های اتفاقی از ۳۵ سالگی.' })],
-          [c({ de: 'Solide oder subsolide?', en: 'Solid or subsolid?', fa: 'جامد یا نیمه‌جامد؟' }), c({ de: 'Dichte, Anzahl und Größe einordnen.', en: 'Assess attenuation, number and size.', fa: 'دانسیته، تعداد و اندازه را ارزیابی کنید.' })],
-          [c({ de: 'Verlauf gezielt planen', en: 'Plan follow-up', fa: 'برنامه‌ریزی پیگیری' }), c({ de: 'Risiko und solide Komponente beachten.', en: 'Consider risk and the solid component.', fa: 'خطر و جزء جامد را در نظر بگیرید.' })],
-        ]} />
+          <Link className={styles.calculatorLink} href={withLang('/fleischner')}>⌘ {c({ de: 'Fleischner-Rechner', en: 'Fleischner calculator', fa: 'محاسبه‌گر Fleischner' })}</Link>
+        </div><LungIllustration c={c}/></div>
+        <aside className={styles.pitfalls} aria-label="Pitfalls"><span className={styles.pitfallLabel}>⚠ {c({ de: 'Typische Fallstricke', en: 'Common pitfalls', fa: 'دام‌های رایج' })}</span>{[
+          [c({ de: 'Screening ≠ Zufallsbefund', en: 'Screening ≠ incidental finding', fa: 'غربالگری ≠ یافته اتفاقی' }), c({ de: 'Im Screening gilt das jeweilige Screening-Protokoll, nicht Fleischner.', en: 'Use the screening protocol for screening findings, not Fleischner.', fa: 'برای یافته غربالگری از پروتکل مربوط استفاده کنید، نه Fleischner.' })],
+          [c({ de: 'Der größte ist nicht immer der suspekteste', en: 'Largest does not mean most suspicious', fa: 'بزرگ‌ترین همیشه مشکوک‌ترین نیست' }), c({ de: 'Bei mehreren Herden führt der morphologisch suspekteste Befund.', en: 'With multiple nodules, the most suspicious morphology guides management.', fa: 'در ندول‌های متعدد، مشکوک‌ترین مورفولوژی تعیین‌کننده است.' })],
+          [c({ de: 'Soliden Anteil nicht übersehen', en: 'Do not overlook the solid component', fa: 'جزء جامد را نادیده نگیرید' }), c({ de: 'Ein persistierender solider Anteil ≥6 mm ist hochgradig suspekt.', en: 'A persistent solid component ≥6 mm is highly suspicious.', fa: 'جزء جامد ماندگار ≥۶ میلی‌متر بسیار مشکوک است.' })],
+        ].map(([heading, text]) => <div key={heading}><h3>{heading}</h3><p>{text}</p></div>)}</aside>
       </header>
       {readControl}
       <div className={styles.layout}>
-        <aside className={styles.sidebar}><nav aria-label={c(copy.toc)}><h2>{c(copy.toc)}</h2>{nav.map(item => <a key={item.id} href={`#${item.id}`} className={active === item.id ? styles.activeLink : undefined} aria-current={active === item.id ? 'location' : undefined}>{c(item.title)}</a>)}</nav></aside>
+        <aside className={styles.sidebar}><nav aria-label={c(copy.toc)}><h2>{c(copy.toc)}</h2>{nav.map(item => <a key={item.id} href={`#${item.id}`} className={active === item.id ? styles.activeLink : undefined} aria-current={active === item.id ? 'location' : undefined} onClick={event => { event.preventDefault(); selectSection(item.id) }}><LessonIcon id={item.id}/><span>{title(item.title)}</span></a>)}</nav></aside>
         <div className={styles.article}>
-          {sections.map(section => <section key={section.id} id={section.id} className={styles.section} aria-labelledby={`${section.id}-title`}>
-            <h2 id={`${section.id}-title`}>{c(section.title)}</h2>
+          {sections.map(section => <LessonSection key={section.id} id={section.id} title={title(section.title)} active={active} onSelect={selectSection}>
             {section.lead && <p>{c(section.lead)}</p>}
+            {section.id === 'messen' && <MeasurementIllustration c={c}/>}
             {section.cards && <div className={styles.cards}>{section.cards.map((card, index) => <article key={index} className={styles.card}>
               {section.id === 'einordnen' && <DensityDiagram type={index} />}
               <h3>{c(card[0])}</h3><p>{c(card[1])}</p>
@@ -90,11 +108,11 @@ export default function FleischnerPage() {
             </table></div>}
             {section.note && <div className={styles.note}><strong>{c(copy.note)}</strong><p>{c(section.note)}</p></div>}
             {section.warning && <div className={styles.warning}><strong>{c({ de: 'Solide Komponente beachten', en: 'Check the solid component', fa: 'به جزء جامد توجه کنید' })}</strong><p>{c(section.warning)}</p></div>}
-          </section>)}
-          <section id="cases" className={styles.section}><h2>{c(labels.cases)}</h2><p>{c(copy.casesIntro)}</p><div className={styles.cases}>{cases.map((item, index) => <LearningCase key={index} item={item} index={index} c={c} />)}</div></section>
-          <section id="summary" className={styles.section}><h2>{c(labels.summary)}</h2><ol className={styles.takehome}>{takehome.map((item, index) => <li key={index}>{c(item)}</li>)}</ol>
-            {readControl}
-          </section>
+          </LessonSection>)}
+          <LessonSection id="cases" title={title(labels.cases)} active={active} onSelect={selectSection}><p>{c(copy.casesIntro)}</p><div className={styles.cases}>{cases.map((item, index) => <LearningCase key={index} item={item} index={index} c={c} />)}</div></LessonSection>
+          <LessonSection id="summary" title={title(labels.summary)} active={active} onSelect={selectSection}><ul className={styles.takehome}>{takehome.map((item, index) => <li key={index}>{c(item)}</li>)}</ul>
+          </LessonSection>
+          {readControl}
           <footer className={styles.sourceFooter}><span>{c(labels.sources)}: </span><a href="https://doi.org/10.1148/radiol.2017161659" target="_blank" rel="noreferrer">MacMahon et al. · Fleischner 2017</a><span> · </span><a href="https://doi.org/10.1148/radiol.2017162894" target="_blank" rel="noreferrer">Bankier et al. · Radiology 2017</a></footer>
         </div>
       </div>

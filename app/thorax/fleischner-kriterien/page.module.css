@@ -68,3 +68,38 @@
 :global(html[data-theme='dark']) .badge { color: white; }
 @media(max-width:900px) { .hero { grid-template-columns: minmax(0,1fr) 260px; } }
 @media(max-width:600px) { .hero { grid-template-columns: 1fr; padding: 0; } .heroText { padding: 24px 20px; } }
+
+/* Focused lesson navigation and original teaching illustrations. */
+.hero { grid-template-columns: minmax(0,1fr) 310px; align-items: stretch; }
+.heroText { padding: 30px; overflow: hidden; background: radial-gradient(ellipse at 85% 90%,rgba(8,145,178,.11),transparent 70%),var(--bg-card); }
+.hero h1 { font-size: clamp(32px,4vw,54px); }
+.lungFigure { margin: 24px 0 0; color: var(--text-soft); }
+.lungFigure svg { display: block; width: 100%; max-height: 250px; }
+.lungFigure figcaption,.measureFigure figcaption { margin-top: 12px; font-size: 11px; color: var(--text-muted); line-height: 1.65; }
+.measureFigure { margin: 0 0 22px; }
+.measureFigure svg { display: block; width: 100%; height: auto; border-radius: 16px; }
+.learningActions .calculatorLink { background: rgba(8,145,178,.12); border-color: rgba(8,145,178,.4); }
+.pitfalls { display: flex; flex-direction: column; gap: 12px; }
+.pitfallLabel { font-size: 12px; font-weight: 800; color: #b77924; padding: 3px 4px; text-transform: uppercase; letter-spacing: .04em; }
+.pitfalls > div { flex: 1; padding: 20px; border: 1px solid var(--border); border-inline-start: 3px solid #d59740; border-radius: 14px; background: var(--bg-card); }
+.pitfalls h3 { margin: 0 0 9px; font-size: 15px; line-height: 1.5; color: var(--text-strong); }
+.pitfalls p { margin: 0; font-size: 13px; color: var(--text-soft); line-height: 1.8; }
+.lessonIcon { width: 23px; height: 23px; flex: 0 0 23px; }
+.sidebar a { display: flex; align-items: center; gap: 11px; border-radius: 8px; padding: 12px 8px; }
+.sidebar .activeLink { padding-inline-start: 8px; }
+.section { padding: 0; overflow: hidden; scroll-margin-top: 85px; }
+.section h2 { margin: 0; }
+.sectionToggle { width: 100%; padding: 20px; display: flex; align-items: center; gap: 14px; background: transparent; border: 0; color: var(--text-strong); font: inherit; text-align: start; cursor: pointer; }
+.sectionSymbol { display: grid; place-items: center; flex: 0 0 42px; height: 42px; border-radius: 12px; background: rgba(8,145,178,.09); color: #0891b2; }
+.sectionToggle > span:nth-child(2) { flex: 1; font-size: 21px; line-height: 1.4; }
+.chevron { font-size: 23px; color: var(--text-muted); font-weight: 400; }
+.section[data-open='true'] { border-color: rgba(8,145,178,.45); box-shadow: 0 6px 24px rgba(8,145,178,.04); }
+.sectionBody { padding: 4px 22px 24px; }
+.sectionBody[hidden] { display: none; }
+.takehome { list-style: '✓  '; }
+.diagram { height: 145px; }
+.readControl .primary[aria-pressed='true'] { background: #167449; }
+:global(html[data-theme='dark']) .pitfallLabel { color: #ebbb70; }
+@media(max-width:900px) { .hero { grid-template-columns: minmax(0,1fr) 260px; } .sidebar nav { gap: 8px; } .sidebar a { border: 1px solid var(--border); font-size: 12px; } }
+@media(max-width:600px) { .hero { grid-template-columns: 1fr; } .heroText { padding: 23px 18px; } .pitfalls { gap: 9px; } .pitfalls > div { padding: 16px; } .sectionToggle { padding: 15px 12px; gap: 10px; } .sectionToggle > span:nth-child(2) { font-size: 18px; } .sectionBody { padding: 0 12px 18px; } .sectionSymbol { flex-basis: 35px; height: 35px; } }
+@media print { .sectionBody[hidden] { display: block; } .chevron { display: none; } }
