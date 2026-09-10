@@ -3,7 +3,7 @@
   --line-strong: rgba(170, 224, 205, .25); --mint: #68e0b2; --mint-soft: #a4f0d2;
   min-height: 100svh; background: var(--bg); color: #eff8f4; font-family: var(--font-manrope), sans-serif;
 }
-.topbar { height: 70px; padding: 0 clamp(20px,4vw,62px); border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; background: rgba(5,15,14,.9); backdrop-filter: blur(16px); }
+.topbar { position: fixed; z-index: 100; inset: 0 0 auto; height: 70px; padding: 0 clamp(20px,4vw,62px); border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; background: rgba(5,15,14,.94); backdrop-filter: blur(16px); }
 .brand { display: inline-flex; align-items: center; gap: 10px; color: #f1faf6; text-decoration: none; font-size: 12px; font-weight: 800; letter-spacing: .18em; }
 .brand > span { width: 31px; height: 31px; display: grid; place-items: center; border: 1px solid rgba(104,224,178,.38); border-radius: 9px; background: rgba(104,224,178,.08); }
 .lungCompact { width: 23px; height: 23px; fill: none; stroke: var(--mint); stroke-width: 8; }
@@ -12,7 +12,7 @@
 .topbar nav > div { padding: 3px; border: 1px solid var(--line); display: flex; background: #071311; }
 .topbar nav button { min-width: 34px; height: 29px; padding: 0 8px; border: 0; background: transparent; color: #708b80; font: 700 9px/1 var(--font-manrope),sans-serif; cursor: pointer; }
 .topbar nav .langActive { background: rgba(104,224,178,.14); color: var(--mint-soft); }
-.shell { min-height: calc(100svh - 70px); display: grid; grid-template-columns: minmax(310px,39%) 1fr; }
+.shell { min-height: 100svh; padding-top: 70px; display: grid; grid-template-columns: minmax(310px,39%) 1fr; }
 .visual { position: relative; min-height: 690px; padding: 58px clamp(34px,5vw,76px); border-inline-end: 1px solid var(--line); display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; background: radial-gradient(circle at 68% 38%, rgba(62,193,148,.16), transparent 24rem), radial-gradient(circle at 20% 88%, rgba(32,103,81,.18), transparent 22rem), #071210; }
 .visual::before { content: ''; position: absolute; inset: 0; opacity: .18; background-image: linear-gradient(rgba(120,210,177,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(120,210,177,.07) 1px, transparent 1px); background-size: 44px 44px; mask-image: radial-gradient(circle at center,#000,transparent 75%); }
 .orbit { position: absolute; width: min(34vw,430px); aspect-ratio: 1; border: 1px solid rgba(104,224,178,.15); border-radius: 50%; box-shadow: 0 0 0 38px rgba(104,224,178,.025), 0 0 0 84px rgba(104,224,178,.018); }
@@ -93,3 +93,26 @@
 .workspace:has(.scopeGrid) .viewport { flex: 0; }
 .scopeGrid button > span { width: 28px; }
 .riskStep { font-family: var(--font-manrope, system-ui), sans-serif; }
+
+/* Clear risk choices and an editorial recommendation without a card frame. */
+.riskQuestion > div { grid-template-columns: repeat(2,92px); gap: 10px; }
+.riskQuestion button { min-height: 50px; border-width: 2px; border-radius: 8px; font-size: 14px; transition: border-color .18s ease, background .18s ease, color .18s ease, transform .18s ease; }
+.riskQuestion button:hover { border-color: rgba(164,240,210,.62); transform: translateY(-1px); }
+.riskQuestion .riskNoActive { border-color: var(--mint); background: var(--mint); color: #06100f; box-shadow: 0 0 0 3px rgba(104,224,178,.12); }
+.riskQuestion .riskYesActive { border-color: #f09a78; background: #d96f4e; color: #fff; box-shadow: 0 0 0 3px rgba(232,121,85,.14); }
+.noHighRisk { border-width: 2px; border-radius: 10px; }
+.noHighRisk[aria-pressed='true'] { background: rgba(104,224,178,.2); box-shadow: 0 0 0 3px rgba(104,224,178,.1); }
+.recommendation { --tone: #e1bc6b; padding: 34px 10px 30px; border: 0; background: transparent; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.recommendation[data-tone='quiet'] { --tone: #69dcb0; }
+.recommendation[data-tone='action'],.recommendation[data-tone='stop'] { --tone: #ed805d; }
+.recommendationIcon { width: 50px; height: 50px; margin-bottom: 16px; display: grid; place-items: center; border: 1px solid color-mix(in srgb,var(--tone) 58%,transparent); border-radius: 50%; color: var(--tone); font-size: 22px; box-shadow: 0 0 28px color-mix(in srgb,var(--tone) 15%,transparent); }
+.recommendation > small { color: #789489; font-size: 9px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+.recommendation h3 { margin: 10px 0 13px; color: var(--tone); font-family: var(--font-fraunces),serif; font-size: clamp(42px,5vw,68px); font-weight: 400; line-height: 1.05; }
+.recommendation > p { max-width: 650px; margin: 0; padding: 0; color: #b7cbc3; font-size: 14px; line-height: 1.75; }
+.report { margin-top: 0; }
+@media (max-width: 620px) {
+  .shell { padding-top: 61px; }
+  .riskQuestion > div { grid-template-columns: repeat(2,1fr); }
+  .recommendation { padding: 24px 0; }
+  .recommendation h3 { font-size: clamp(38px,12vw,54px); }
+}
