@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { LessonIcon, LungIllustration, MeasurementIllustration } from './Illustrations'
+import { LessonIcon, MeasurementIllustration } from './Illustrations'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { copy, sections, cases, takehome } from './content'
@@ -82,8 +82,8 @@ export default function FleischnerPage() {
           <Link href={withLang(`/ueben/quiz?fach=thorax&n=10&themen=fleischner-kriterien&from=${from}`)}>🎯 MCQ</Link>
           <Link href={withLang(`/flashcards/fleischner-kriterien?from=${from}`)}>🧠 {c({ de: 'Flashcards', en: 'Flashcards', fa: 'فلش‌کارت' })}</Link>
           <Link className={styles.calculatorLink} href={withLang('/fleischner')}>⌘ {c({ de: 'Fleischner-Rechner', en: 'Fleischner calculator', fa: 'محاسبه‌گر Fleischner' })}</Link>
-        </div><LungIllustration c={c}/></div>
-        <aside className={styles.pitfalls} aria-label="Pitfalls"><span className={styles.pitfallLabel}>⚠ {c({ de: 'Typische Fallstricke', en: 'Common pitfalls', fa: 'دام‌های رایج' })}</span>{[
+        </div></div>
+        <aside className={styles.pitfalls} aria-label="Pitfalls">{[
           [c({ de: 'Screening ≠ Zufallsbefund', en: 'Screening ≠ incidental finding', fa: 'غربالگری ≠ یافته اتفاقی' }), c({ de: 'Im Screening gilt das jeweilige Screening-Protokoll, nicht Fleischner.', en: 'Use the screening protocol for screening findings, not Fleischner.', fa: 'برای یافته غربالگری از پروتکل مربوط استفاده کنید، نه Fleischner.' })],
           [c({ de: 'Der größte ist nicht immer der suspekteste', en: 'Largest does not mean most suspicious', fa: 'بزرگ‌ترین همیشه مشکوک‌ترین نیست' }), c({ de: 'Bei mehreren Herden führt der morphologisch suspekteste Befund.', en: 'With multiple nodules, the most suspicious morphology guides management.', fa: 'در ندول‌های متعدد، مشکوک‌ترین مورفولوژی تعیین‌کننده است.' })],
           [c({ de: 'Soliden Anteil nicht übersehen', en: 'Do not overlook the solid component', fa: 'جزء جامد را نادیده نگیرید' }), c({ de: 'Ein persistierender solider Anteil ≥6 mm ist hochgradig suspekt.', en: 'A persistent solid component ≥6 mm is highly suspicious.', fa: 'جزء جامد ماندگار ≥۶ میلی‌متر بسیار مشکوک است.' })],
@@ -112,10 +112,10 @@ export default function FleischnerPage() {
           <LessonSection id="cases" title={title(labels.cases)} active={active} onSelect={selectSection}><p>{c(copy.casesIntro)}</p><div className={styles.cases}>{cases.map((item, index) => <LearningCase key={index} item={item} index={index} c={c} />)}</div></LessonSection>
           <LessonSection id="summary" title={title(labels.summary)} active={active} onSelect={selectSection}><ul className={styles.takehome}>{takehome.map((item, index) => <li key={index}>{c(item)}</li>)}</ul>
           </LessonSection>
-          {readControl}
-          <footer className={styles.sourceFooter}><span>{c(labels.sources)}: </span><a href="https://doi.org/10.1148/radiol.2017161659" target="_blank" rel="noreferrer">MacMahon et al. · Fleischner 2017</a><span> · </span><a href="https://doi.org/10.1148/radiol.2017162894" target="_blank" rel="noreferrer">Bankier et al. · Radiology 2017</a></footer>
         </div>
       </div>
+      {readControl}
+      <footer className={styles.sourceFooter}><span>{c(labels.sources)}: </span><a href="https://doi.org/10.1148/radiol.2017161659" target="_blank" rel="noreferrer">MacMahon et al. · Fleischner 2017</a><span> · </span><a href="https://doi.org/10.1148/radiol.2017162894" target="_blank" rel="noreferrer">Bankier et al. · Radiology 2017</a></footer>
     </div>
   </main>
 }

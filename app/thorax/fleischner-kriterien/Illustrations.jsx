@@ -16,23 +16,6 @@ export function LessonIcon({ id }) {
   return <svg className={styles.lessonIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={paths[id] || paths.einordnen}/></svg>
 }
 
-export function LungIllustration({ c }) {
-  return <figure className={styles.lungFigure}>
-    <svg viewBox="0 0 620 250" role="img" aria-label={c(L('Schematische Lunge mit Einzelherd und multiplen Rundherden', 'Schematic lungs with a single nodule and multiple nodules', 'شماتیک ریه با ندول منفرد و ندول‌های متعدد'))}>
-      <defs><linearGradient id="fleischner-lung-fill" x2="1" y2="1"><stop stopColor="#38bdf8" stopOpacity=".2"/><stop offset="1" stopColor="#0891b2" stopOpacity=".04"/></linearGradient></defs>
-      {[0, 310].map((offset, index) => <g key={offset} transform={`translate(${offset},0)`}>
-        <path d="M150 28v62m0-20-29 27m29-27 29 27" fill="none" stroke="#77b7cc" strokeWidth="6" strokeLinecap="round"/>
-        <path d="M135 65C98 64 66 116 70 170c3 45 61 24 65 3z M165 65c37-1 69 51 65 105-3 45-61 24-65 3z" fill="url(#fleischner-lung-fill)" stroke="#48b4d1" strokeWidth="2"/>
-        <path d="m126 96-27 42m18-24 7 39m-16-30-22 6m87-33 27 42m-18-24-7 39m16-30 22 6" fill="none" stroke="#4d8292" strokeWidth="2"/>
-        <circle cx="195" cy="117" r="10" fill="#e0f7ff" stroke="#38bdf8" strokeWidth="3"/>
-        {index === 1 && <><circle cx="101" cy="164" r="7" fill="#bdefff"/><circle cx="188" cy="177" r="5" fill="#bdefff"/><circle cx="110" cy="103" r="5" fill="#bdefff"/></>}
-        <text x="150" y="233" textAnchor="middle" fill="currentColor" fontSize="16" fontFamily="sans-serif">{c(index === 0 ? L('Einzelherd', 'Single nodule', 'ندول منفرد') : L('Multiple Herde', 'Multiple nodules', 'ندول‌های متعدد'))}</text>
-      </g>)}
-    </svg>
-    <figcaption>{c(L('Anzahl erkennen · bei mehreren Herden den suspektesten beurteilen. Eigene schematische Illustration.', 'Identify the number · with multiple nodules assess the most suspicious one. Original schematic illustration.', 'تعداد را مشخص کنید؛ در ندول‌های متعدد، مشکوک‌ترین را ارزیابی کنید. تصویر شماتیک اختصاصی.'))}</figcaption>
-  </figure>
-}
-
 export function MeasurementIllustration({ c }) {
   return <figure className={styles.measureFigure}>
     <svg viewBox="0 0 760 280" role="img" aria-label={c(L('Messschema: 8 mal 6 Millimeter ergeben 7 Millimeter mittleren Durchmesser; soliden Anteil separat messen', 'Measurement diagram: 8 by 6 millimeters gives a mean diameter of 7 millimeters; measure the solid component separately', 'شماتیک اندازه‌گیری: ۸ در ۶ میلی‌متر، قطر میانگین ۷ میلی‌متر؛ جزء جامد جداگانه اندازه‌گیری شود'))}>
