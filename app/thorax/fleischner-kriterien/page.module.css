@@ -1,0 +1,54 @@
+.page { background: var(--bg); color: var(--text); min-height: 100vh; padding: 92px 24px 60px; font-family: var(--font-main, var(--font-manrope, system-ui)), sans-serif; }
+.container { max-width: 1240px; margin: auto; }
+.breadcrumb { display: flex; flex-wrap: wrap; gap: 10px; font-size: 13px; margin-bottom: 22px; color: var(--text-muted); }
+.page a { color: #087d98; text-underline-offset: 4px; }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) 235px; gap: 40px; padding: 42px; border: 1px solid var(--border); border-radius: 28px; background: linear-gradient(120deg, var(--bg-card), var(--surface-soft)); border-top: 4px solid #0891b2; }
+.badge { color: #087d98; font-size: 12px; font-weight: 800; letter-spacing: .06em; }
+.hero h1 { font-family: var(--font-display); font-size: clamp(32px, 4.6vw, 60px); line-height: 1.1; letter-spacing: -.035em; margin: 18px 0; overflow-wrap: anywhere; color: var(--text-strong); }
+.hero p { line-height: 1.75; max-width: 660px; }
+.hero .subtitle { font-size: 21px; font-weight: 650; }
+.primary { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 11px 19px; border: 0; border-radius: 10px; background: #087b93; color: white !important; font: inherit; font-weight: 700; text-decoration: none; cursor: pointer; }
+.thresholds { display: grid; align-content: center; gap: 20px; border-inline-start: 1px solid var(--border); padding-inline-start: 28px; }
+.thresholds strong { display: block; color: #087d98; font-size: 37px; line-height: 1.2; }
+.thresholds strong span { font-size: 16px; font-weight: 600; }
+.thresholds small { display: block; margin-top: 5px; color: var(--text-soft); line-height: 1.5; }
+.layout { display: grid; grid-template-columns: 225px minmax(0, 1fr); gap: 34px; margin-top: 36px; align-items: start; }
+.sidebar { position: sticky; top: 150px; }
+.sidebar h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; margin: 0 0 15px; color: var(--text-muted); }
+.sidebar a { display: block; padding: 10px 0; font-size: 13px; text-decoration: none; line-height: 1.6; border-bottom: 1px solid var(--border); color: var(--text-soft); }
+.sidebar a:hover { color: #0891b2; }
+.article { min-width: 0; }
+.section { scroll-margin-top: 155px; margin-bottom: 24px; padding: 26px; border: 1px solid var(--border); border-radius: 18px; background: var(--bg-card); }
+.section h2 { margin: 0 0 20px; font-size: 23px; line-height: 1.4; color: var(--text-strong); }
+.section p { line-height: 1.8; margin: 12px 0; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.card { padding: 18px; border: 1px solid var(--border); background: var(--surface-soft); border-radius: 12px; min-width: 0; }
+.card h3 { font-size: 16px; margin: 0 0 8px; line-height: 1.45; }
+.card p { font-size: 14px; margin: 0; }
+.diagram { width: 100%; height: 105px; margin-bottom: 16px; }
+.caption { font-size: 12px; color: var(--text-muted); }
+.note, .warning { border-inline-start: 3px solid #0891b2; padding: 16px 18px; margin-top: 20px; border-radius: 0 9px 9px 0; background: rgba(8,145,178,.07); font-size: 14px; }
+.note p, .warning p { margin: 7px 0 0; }
+.warning { border-color: #d97706; background: rgba(217,119,6,.09); }
+.tableScroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; }
+.tableScroll table { width: 100%; min-width: 630px; border-collapse: collapse; font-size: 13px; line-height: 1.65; text-align: start; }
+.tableScroll caption { padding: 12px 16px; text-align: start; font-weight: 700; background: var(--surface-soft); }
+.tableScroll th, .tableScroll td { padding: 14px; text-align: start; vertical-align: top; border-bottom: 1px solid var(--border); }
+.tableScroll thead { background: rgba(8,145,178,.09); }
+.tableScroll tbody th { min-width: 94px; }
+.tableScroll tr:last-child td, .tableScroll tr:last-child th { border-bottom: 0; }
+.cases { display: grid; gap: 14px; }
+.case { border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+.caseNumber { color: #087d98; font-size: 12px; font-weight: 800; }
+.case h3 { font-size: 17px; line-height: 1.5; margin: 7px 0; }
+.case button { font: inherit; font-size: 14px; font-weight: 700; border: 1px solid #087d98; color: #087d98; background: transparent; padding: 10px 15px; border-radius: 8px; min-height: 44px; cursor: pointer; }
+.answer { margin-top: 16px; padding: 16px; line-height: 1.8; background: rgba(8,145,178,.08); border-radius: 8px; }
+.takehome { padding-inline-start: 23px; line-height: 1.8; }
+.takehome li { padding: 7px 0; }
+.sources { padding-inline-start: 23px; font-size: 13px; line-height: 1.85; overflow-wrap: anywhere; }
+.sources li { margin-bottom: 14px; }
+.page :is(a, button, [tabindex]):focus-visible { outline: 3px solid #0891b2; outline-offset: 4px; }
+:global(html[data-theme='dark']) .page a, :global(html[data-theme='dark']) .badge, :global(html[data-theme='dark']) .thresholds strong, :global(html[data-theme='dark']) .caseNumber, :global(html[data-theme='dark']) .case button { color: #67d5ed; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; gap: 22px; } .sidebar { position: static; } .sidebar nav { display: flex; flex-wrap: wrap; gap: 6px 15px; } .sidebar h2 { flex-basis: 100%; margin-bottom: 2px; } .sidebar a { padding: 6px 0; } .hero { gap: 24px; padding: 28px; grid-template-columns: minmax(0, 1fr) 180px; } }
+@media (max-width: 600px) { .page { padding: 84px 12px 35px; } .hero { padding: 24px 20px; grid-template-columns: 1fr; gap: 20px; } .hero .subtitle { font-size: 18px; } .thresholds { grid-template-columns: repeat(3, 1fr); gap: 10px; border-inline-start: 0; border-top: 1px solid var(--border); padding: 18px 0 0; } .thresholds strong { font-size: 27px; } .thresholds strong span { font-size: 12px; } .thresholds small { font-size: 11px; } .section { padding: 20px 15px; } .section h2 { font-size: 21px; } .cards { grid-template-columns: 1fr; } .diagram { height: 110px; } }
+@media print { .sidebar, .breadcrumb, .primary, .case button { display: none; } .page { padding: 0; } .layout { display: block; } .hero { padding: 20px; } .section { break-inside: avoid; } .tableScroll { overflow: visible; } .tableScroll table { min-width: 0; } }
