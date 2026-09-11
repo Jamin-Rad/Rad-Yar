@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './LegalNotice.module.css'
 
 export const PRIVACY_CHOICE_KEY = 'radyar_privacy_choice_v1'
@@ -55,11 +54,10 @@ export function readPrivacyChoice() {
 }
 
 export default function LegalNotice() {
-  const { lang } = useLanguage()
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const primaryButtonRef = useRef(null)
-  const copy = COPY[lang] || COPY.de
+  const copy = COPY.en
 
   useEffect(() => {
     const showSettings = () => setOpen(true)
@@ -95,7 +93,7 @@ export default function LegalNotice() {
 
   return (
     <div className={styles.overlay} role="presentation">
-      <section className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby="legal-notice-title" dir={lang === 'fa' ? 'rtl' : 'ltr'}>
+      <section className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby="legal-notice-title" dir="ltr" lang="en">
         <div className={styles.icon} aria-hidden="true">RY</div>
         <p className={styles.eyebrow}>{copy.eyebrow}</p>
         <h2 id="legal-notice-title">{copy.title}</h2>
