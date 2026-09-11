@@ -4,7 +4,7 @@
 .heroStats > div:nth-child(2) { background: linear-gradient(145deg, #1e3a8a, #2563eb); }
 .heroStats > div:nth-child(3) { background: linear-gradient(145deg, #fff8e7, #fff); color: #44290b; border-color: #f3d69b; }
 .section { scroll-margin-top: 138px; }
-.sectionIcon { display: inline-block; min-width: 1.45em; margin-inline-end: .28em; color: #db2777; text-align: center; }
+.sectionIcon { color: #be185d; }
 .sectionBody { display: grid; gap: 26px; }
 .lead { margin: 0; color: var(--text); font-size: 1.08rem; line-height: 1.82; }
 .definitionCard { position: relative; overflow: hidden; padding: 26px 28px; border: 1px solid rgba(190,24,93,.24); border-left: 5px solid #be185d; border-radius: 10px; background: linear-gradient(135deg,rgba(190,24,93,.09),rgba(37,99,235,.035)),var(--bg-card); box-shadow: 0 16px 38px rgba(15,23,42,.08); }
@@ -74,22 +74,26 @@
 .phaseGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; }
 .phaseGrid article { padding: 22px; border: 1px solid rgba(148, 163, 184, .28); background: var(--bg-card); }
 .phaseGrid span { color: #2563eb; font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 850; }
-.phaseGrid h3 { margin: 8px 0 16px; font: 750 1rem/1.5 Georgia, serif; }
+.phaseGrid h3 { margin: 8px 0 6px; font: 850 1.1rem/1.4 Georgia, serif; }
+.phaseGrid p { margin: 0 0 16px; color: var(--text); font-size: .94rem; line-height: 1.62; }
 .phaseGrid div { display: flex; flex-wrap: wrap; gap: 8px; }
 .phaseGrid div strong { padding: 6px 10px; background: rgba(37, 99, 235, .08); color: #1d4ed8; border-radius: 4px; font-size: .85rem; }
-.curveGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid rgba(148, 163, 184, .32); }
-.curveGrid article { min-height: 215px; padding: 22px; border-right: 1px solid rgba(148, 163, 184, .28); background: var(--bg-card); }
-.curveGrid article:last-child { border-right: 0; }
-.curveGrid span { color: var(--text-muted); font-weight: 800; }
-.curveGrid article > strong { display: block; margin: 12px 0 2px; font-size: 2.6rem; }
-.curveGrid h3 { margin: 0 0 6px; }
-.curveGrid p { margin: 0; line-height: 1.55; }
-.curveTag { display: block; margin-bottom: 10px; font-style: normal; font-size: .82rem; font-weight: 850; text-transform: uppercase; letter-spacing: .08em; }
-.green > strong, .green h3 { color: #65a30d; }
-.green .curveTag { color: #65a30d; }
-.amber > strong, .amber h3 { color: #d97706; }
-.red > strong, .red h3 { color: #dc2626; }
-.red .curveTag { color: #dc2626; }
+.kineticGallery { display: grid; gap: 24px; }
+.kineticCard { overflow: hidden; border: 1px solid rgba(148, 163, 184, .3); border-top: 4px solid #65a30d; border-radius: 10px; background: var(--bg-card); box-shadow: 0 16px 38px rgba(15, 23, 42, .08); }
+.kineticCard.amber { border-top-color: #f59e0b; }
+.kineticCard.red { border-top-color: #ef4444; }
+.kineticMedia { width: 100%; max-width: none; border: 0; border-radius: 0; box-shadow: none; }
+.kineticMedia figcaption { padding-inline: 22px; }
+.curveExplanation { display: grid; grid-template-columns: auto auto 1fr; gap: 8px 16px; align-items: center; padding: 20px 22px 22px; border-top: 1px solid rgba(148, 163, 184, .24); }
+.curveHeading { display: flex; align-items: baseline; gap: 12px; grid-column: 1 / -1; }
+.curveHeading span { color: var(--text-muted); font-size: .76rem; font-weight: 900; letter-spacing: .09em; text-transform: uppercase; }
+.curveHeading strong { font-size: 1.65rem; line-height: 1; }
+.curveHeading h3 { margin: 0; font: 900 1.28rem/1.25 Georgia, serif; }
+.curveExplanation p { grid-column: 2 / -1; margin: 0; color: var(--text); font-size: 1rem; line-height: 1.68; }
+.curveTag { align-self: start; margin-top: 3px; font-style: normal; font-size: .75rem; font-weight: 900; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+.green .curveHeading strong, .green .curveHeading h3, .green .curveTag { color: #65a30d; }
+.amber .curveHeading strong, .amber .curveHeading h3, .amber .curveTag { color: #d97706; }
+.red .curveHeading strong, .red .curveHeading h3, .red .curveTag { color: #dc2626; }
 .t2Grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .t2Article { display: flex; flex-direction: column; border: 1px solid rgba(148,163,184,.28); border-top: 4px solid #7c3aed; border-radius: 9px; background: var(--bg-card); overflow: hidden; box-shadow: 0 10px 25px rgba(15,23,42,.06); }
 .t2ArticleDwi { border-top-color: #2563eb; }
@@ -143,13 +147,17 @@
   .heroText { min-height: auto; }
   .topicMedia { border-radius: 4px; }
   .topicMedia figcaption { display: grid; }
-  .descriptorGrid, .fourGrid, .threeGrid, .curveGrid, .reasoningPath { grid-template-columns: 1fr; }
+  .descriptorGrid, .fourGrid, .threeGrid, .reasoningPath { grid-template-columns: 1fr; }
   .definitionCard { padding: 21px 19px; }
   .definitionCard::after { font-size: 3.2rem; right: 12px; }
   .definitionCard h3 { font-size: 1.2rem; }
   .definitionCard p { font-size: .94rem; }
   .reasoningPath article,.reasoningPath article:last-child { grid-column: auto; min-height: 0; }
-  .curveGrid article { min-height: 0; border-right: 0; border-bottom: 1px solid rgba(148, 163, 184, .28); }
+  .phaseGrid { grid-template-columns: 1fr; }
+  .curveExplanation { grid-template-columns: 1fr; gap: 10px; padding: 17px; }
+  .curveHeading { grid-column: auto; flex-wrap: wrap; }
+  .curveExplanation p { grid-column: auto; }
+  .curveTag { white-space: normal; }
   .formula { width: 100%; justify-content: center; gap: 9px; padding-inline: 8px; font-size: .9rem; }
   .note { grid-template-columns: 1fr; }
   .exampleCompare { grid-template-columns: 1fr; }

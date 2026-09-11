@@ -8,7 +8,7 @@ import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import base from '@/app/abdomen/gi/divertikulitis/page.module.css'
 import basics from '../basics/page.module.css'
 import styles from './page.module.css'
-import { COPY, CURVES, MASS_ENHANCEMENT, MASS_MARGINS, MASS_SHAPES, MASS_WORKFLOW, NME_DISTRIBUTION, NME_PATTERNS, NME_WORKFLOW, SECTIONS, SUMMARY_STEPS, pick } from './content'
+import { COPY, CURVES, KINETIC_PHASES, MASS_ENHANCEMENT, MASS_MARGINS, MASS_SHAPES, MASS_WORKFLOW, NME_DISTRIBUTION, NME_PATTERNS, NME_WORKFLOW, SECTIONS, SUMMARY_STEPS, pick } from './content'
 
 const READ_COPY = {
   de: { mark: 'Als gelesen markieren', read: 'Als gelesen markiert', error: 'Bitte melde dich an, um deinen Lernfortschritt zu speichern.', signIn: 'Anmelden' },
@@ -22,7 +22,20 @@ function ReadButton({ isRead, onClick, authError, lang }) {
 }
 
 function Section({ id, icon, title, open, onToggle, children }) {
-  return <section id={id} className={`${base.section} ${basics.section} ${styles.section}`}><button className={`${base.sectionHeader} ${basics.sectionHeader}`} type="button" onClick={() => onToggle(id)} aria-expanded={open}><span className={basics.sectionHeading}><h2><span className={styles.sectionIcon} aria-hidden="true">{icon}</span>{title}</h2></span><span className={basics.sectionToggle}>{open ? '−' : '+'}</span></button>{open && <div className={`${base.sectionBody} ${basics.sectionBody} ${styles.sectionBody}`}>{children}</div>}</section>
+  return <section id={id} className={`${base.section} ${basics.section} ${styles.section}`}><button className={`${base.sectionHeader} ${basics.sectionHeader}`} type="button" onClick={() => onToggle(id)} aria-expanded={open}><span className={basics.sectionHeading}><span className={`${basics.sectionIcon} ${styles.sectionIcon}`}><SectionIcon name={icon} /></span><h2>{title}</h2></span><span className={basics.sectionToggle}>{open ? '−' : '+'}</span></button>{open && <div className={`${base.sectionBody} ${basics.sectionBody} ${styles.sectionBody}`}>{children}</div>}</section>
+}
+
+const SECTION_ICON_PATHS = {
+  enhancement: <><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><path d="m5.6 5.6 2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></>,
+  mass: <><path d="M7.1 5.6c2.7-2 7.2-1.5 9.5.5 2.5 2.2 3.6 6.1 1.7 9-1.8 2.8-5.8 4.6-9.1 3.5-3.2-1-5.1-4.1-4.5-7.2.4-2.3.9-4.2 2.4-5.8Z"/><path d="M9 9.2c1.4-1.1 3.7-1.1 5.2.1 1.4 1.1 1.8 3.2.8 4.6-1 1.5-3.2 2.1-4.8 1.3-2.2-1-2.8-4.4-1.2-6Z"/></>,
+  nme: <><path d="M4.5 15.8c1.5-1.4 2.4-3.2 3.8-4.5 1.8-1.7 3.8-1.6 5.3-3.2 1.2-1.3 2.5-2.3 5.9-2.7"/><circle cx="7" cy="16.5" r="1.5"/><circle cx="10.3" cy="12.5" r="1.25"/><circle cx="14" cy="9.3" r="1.35"/><circle cx="18.4" cy="6" r="1.25"/><circle cx="14.8" cy="15.8" r="1.15"/><circle cx="19" cy="13.2" r="1.35"/></>,
+  kinetics: <><path d="M4 19V5M4 19h16"/><path d="M6.5 16.5c2.1-1.1 3.2-4.7 5.2-6.1 2.2-1.5 4.1-.1 6.8-4.1"/><path d="m15.8 6.3 2.9-.2-.2 2.9"/></>,
+  diffusion: <><path d="M3.5 8c2.1-2.4 4.2-2.4 6.3 0s4.2 2.4 6.3 0 3.2-2.2 4.4-1.2"/><path d="M3.5 16c2.1-2.4 4.2-2.4 6.3 0s4.2 2.4 6.3 0 3.2-2.2 4.4-1.2"/><path d="M5.5 12h13"/></>,
+  assessment: <><path d="M8 4.5h8M9 3h6v3H9z"/><path d="M7 5H5.5A1.5 1.5 0 0 0 4 6.5v13A1.5 1.5 0 0 0 5.5 21h13a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 18.5 5H17"/><path d="m8.2 14 2.2 2.2 5.4-5.4"/></>,
+}
+
+function SectionIcon({ name }) {
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">{SECTION_ICON_PATHS[name]}</svg>
 }
 
 function scrollSectionToTop(id) {
@@ -106,7 +119,7 @@ export default function LesionscharakterisierungPage() {
 
     <div className={base.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} lang={lang} /></div>
     <div className={base.layout}>
-      <aside className={`${base.sidebar} ${basics.sidebar}`}><div className={base.sideTitle}>{tx(COPY.contents)}</div>{SECTIONS.map(section => <button key={section.id} type="button" className={`${base.sideItem} ${basics.sideItem} ${activeId === section.id ? `${base.sideItemActive} ${basics.sideItemActive}` : ''}`} onClick={() => selectSection(section.id)}><span className={basics.sideNumber}>{section.icon}</span><strong>{tx(section.label)}</strong></button>)}</aside>
+      <aside className={`${base.sidebar} ${basics.sidebar}`}><div className={base.sideTitle}>{tx(COPY.contents)}</div>{SECTIONS.map(section => <button key={section.id} type="button" className={`${base.sideItem} ${basics.sideItem} ${activeId === section.id ? `${base.sideItemActive} ${basics.sideItemActive}` : ''}`} onClick={() => selectSection(section.id)}><span className={basics.sideNumber}><SectionIcon name={section.icon} /></span><strong>{tx(section.label)}</strong></button>)}</aside>
       <div className={base.main}>
         <Section id="start" icon={SECTIONS[0].icon} title={tx(SECTIONS[0].label)} open={openId === 'start'} onToggle={toggleSection}>
           <figure className={`${basics.enhancementMedia} ${styles.enhancementOverview}`}>
@@ -152,10 +165,13 @@ export default function LesionscharakterisierungPage() {
         </Section>
 
         <Section id="kinetik" icon={SECTIONS[3].icon} title={tx(SECTIONS[3].label)} open={openId === 'kinetik'} onToggle={toggleSection}>
-          <p className={styles.lead}>{tx({ de: 'Morphologie zeigt, wie eine Läsion aussieht. Die Kinetik zeigt, wie sie im zeitlichen Verlauf Kontrastmittel aufnimmt.', en: 'Morphology shows what a lesion looks like. Kinetics show how it takes up contrast over time.', fa: 'مورفولوژی ظاهر ضایعه را نشان می‌دهد؛ کینتیک نحوه Enhancement ضایعه در طول زمان را بررسی می‌کند.' })}</p>
-          <TeachingImage src="/mamma/mrt/lesion-kinetics-en.png" width={512} height={492} caption={{ de: 'Kinetik: Zeit-Signal-Kurven', en: 'Kinetics: Time-Signal Curves', fa: 'کینتیک: منحنی‌های زمان–سیگنال' }} alt={{ de: 'Kurvenbeispiele für persistentes Enhancement, Plateau und Washout', en: 'Curve examples of persistent enhancement, plateau and washout', fa: 'نمونه منحنی‌های Persistent، Plateau و Washout' }} />
-          <div className={styles.curveGrid}>{CURVES.map(curve => <article className={styles[curve.tone]} key={curve.type}><span>Type {curve.type}</span><strong>{curve.symbol}</strong><h3>{curve.name}</h3>{curve.tag && <em className={styles.curveTag}>{tx(curve.tag)}</em>}<p>{tx(curve.text)}</p></article>)}</div>
-          <div className={`${styles.note} ${styles.warning}`}><strong>{tx({ de: 'Cave', en: 'Caution', fa: 'توجه' })}</strong><p>{tx({ de: 'Persistent bedeutet nicht automatisch benign und Washout nicht automatisch malign. Morphologie und Kinetik müssen gemeinsam interpretiert werden. Gerade bei NME und DCIS kann eine verdächtige Morphologie ohne klassische Washout-Kurve vorliegen.', en: 'Persistent enhancement is not automatically benign, and washout is not automatically malignant. Morphology and kinetics must be interpreted together. NME and DCIS may show suspicious morphology without a classic washout curve.', fa: 'الگوی Persistent الزاماً خوش‌خیم و Washout الزاماً بدخیم نیست. مورفولوژی و کینتیک باید هم‌زمان تفسیر شوند. به‌ویژه در NME و DCIS ممکن است مورفولوژی مشکوک بدون منحنی کلاسیک Washout وجود داشته باشد.' })}</p></div>
+          <p className={styles.lead}>{tx({ de: 'Die DCE-Kinetik beschreibt nicht nur die Kurvenform: Zuerst wird die Geschwindigkeit des initialen Enhancements, danach der Verlauf in der späten Phase beurteilt. Gemessen wird im am schnellsten anreichernden beziehungsweise kinetisch suspektesten Läsionsanteil.', en: 'DCE kinetics describe more than the curve shape: first assess the speed of initial enhancement, then the delayed-phase course. Sampling should target the fastest-enhancing or kinetically most suspicious part of the lesion.', fa: 'کینتیک DCE فقط شکل منحنی را توصیف نمی‌کند؛ ابتدا سرعت Enhancement اولیه و سپس روند فاز تأخیری ارزیابی می‌شود. اندازه‌گیری باید در سریع‌ترین بخش دارای Enhancement یا مشکوک‌ترین بخش ضایعه از نظر کینتیک انجام شود.' })}</p>
+          <div className={styles.phaseGrid}>{KINETIC_PHASES.map(phase => <article key={pick(phase.title, 'de')}><span>{tx({ de: 'Schritt', en: 'Step', fa: 'مرحله' })}</span><h3>{tx(phase.title)}</h3><p>{tx(phase.text)}</p><div>{phase.items.map(item => <strong key={pick(item, 'de')}>{tx(item)}</strong>)}</div></article>)}</div>
+          <div className={styles.kineticGallery}>{CURVES.map(curve => <article className={`${styles.kineticCard} ${styles[curve.tone]}`} key={curve.type}>
+            <TeachingImage className="kineticMedia" src={curve.image} width={1536} height={1024} caption={{ de: `Typ ${curve.type} · ${curve.name}`, en: `Type ${curve.type} · ${curve.name}`, fa: `Type ${curve.type} · ${curve.name}` }} alt={curve.alt} />
+            <div className={styles.curveExplanation}><div className={styles.curveHeading}><span>{tx({ de: `Typ ${curve.type}`, en: `Type ${curve.type}`, fa: `Type ${curve.type}` })}</span><strong aria-hidden="true">{curve.symbol}</strong><h3>{curve.name}</h3></div><em className={styles.curveTag}>{tx(curve.tag)}</em><p>{tx(curve.text)}</p></div>
+          </article>)}</div>
+          <div className={`${styles.note} ${styles.warning}`}><strong>{tx({ de: 'Entscheidende Einordnung', en: 'Key interpretation point', fa: 'نکته کلیدی در تفسیر' })}</strong><p>{tx({ de: 'Kinetik verändert die Wahrscheinlichkeit, stellt aber keine Diagnose. Morphologie, Verteilung, T2-Signal, Diffusion, Voraufnahmen und klinischer Kontext haben Vorrang in der Gesamtbewertung. Besonders bei NME und DCIS kann eine suspekte Morphologie ohne klassische Washout-Kurve vorliegen.', en: 'Kinetics modify probability but do not establish a diagnosis. Morphology, distribution, T2 signal, diffusion, prior examinations and clinical context take precedence in the overall assessment. Suspicious NME and DCIS may lack a classic washout curve.', fa: 'کینتیک احتمال را تغییر می‌دهد، اما به‌تنهایی تشخیص قطعی ایجاد نمی‌کند. در ارزیابی نهایی، مورفولوژی، توزیع، سیگنال T2، دیفیوژن، مطالعات قبلی و زمینه بالینی اهمیت بیشتری دارند. NME مشکوک و DCIS ممکن است بدون منحنی کلاسیک Washout دیده شوند.' })}</p></div>
         </Section>
 
         <Section id="t2-diffusion" icon={SECTIONS[4].icon} title={tx(SECTIONS[4].label)} open={openId === 't2-diffusion'} onToggle={toggleSection}>

@@ -15,12 +15,12 @@ export const COPY = {
 }
 
 export const SECTIONS = [
-  { id: 'start', icon: '✦', label: L('Enhancement-Typen', 'Enhancement types', 'انواع Enhancement') },
-  { id: 'mass', icon: '●', label: L('Mass', 'Mass', 'Mass') },
-  { id: 'nme', icon: '◌', label: L('Non-Mass Enhancement', 'Non-mass enhancement', 'Non-Mass Enhancement') },
-  { id: 'kinetik', icon: '↗', label: L('Kinetik', 'Kinetics', 'کینتیک') },
-  { id: 't2-diffusion', icon: '≈', label: L('T2 & Diffusion', 'T2 & diffusion', 'T2 و دیفیوژن') },
-  { id: 'algorithmus', icon: '✓', label: L('Gesamtbewertung', 'Overall assessment', 'ارزیابی نهایی') },
+  { id: 'start', icon: 'enhancement', label: L('Enhancement-Typen', 'Enhancement types', 'انواع Enhancement') },
+  { id: 'mass', icon: 'mass', label: L('Mass', 'Mass', 'Mass') },
+  { id: 'nme', icon: 'nme', label: L('Non-Mass Enhancement', 'Non-mass enhancement', 'Non-Mass Enhancement') },
+  { id: 'kinetik', icon: 'kinetics', label: L('Kinetik', 'Kinetics', 'کینتیک') },
+  { id: 't2-diffusion', icon: 'diffusion', label: L('T2 & Diffusion', 'T2 & diffusion', 'T2 و دیفیوژن') },
+  { id: 'algorithmus', icon: 'assessment', label: L('Gesamtbewertung', 'Overall assessment', 'ارزیابی نهایی') },
 ]
 
 export const MASS_SHAPES = [
@@ -71,14 +71,29 @@ export const NME_WORKFLOW = [
 ]
 
 export const KINETIC_PHASES = [
-  { title: L('Initiale Phase', 'Initial phase', 'فاز اولیه'), text: L('Wie schnell steigt das Enhancement nach Kontrastmittelgabe an?', 'How quickly does enhancement rise after contrast administration?', 'Enhancement پس از تزریق ماده حاجب با چه سرعتی افزایش می‌یابد؟'), items: ['slow', 'medium', 'rapid'] },
-  { title: L('Späte Phase', 'Delayed phase', 'فاز تأخیری'), text: L('Wie verhält sich das Signal nach dem initialen Anstieg?', 'How does the signal behave after the initial rise?', 'سیگنال پس از افزایش اولیه چه تغییری می‌کند؟'), items: ['persistent', 'plateau', 'washout'] },
+  { title: L('Initiale Phase', 'Initial phase', 'فاز اولیه'), text: L('Beurteilt wird die Geschwindigkeit des Signalanstiegs in den ersten etwa zwei Minuten beziehungsweise bis zum Kurvenknick.', 'Assess the speed of signal increase during approximately the first two minutes or until the curve changes direction.', 'سرعت افزایش سیگنال در حدود دو دقیقه نخست یا تا زمان تغییر جهت منحنی ارزیابی می‌شود.'), items: [L('langsam', 'slow', 'آهسته'), L('mittel', 'medium', 'متوسط'), L('schnell', 'fast', 'سریع')] },
+  { title: L('Späte Phase', 'Delayed phase', 'فاز تأخیری'), text: L('Danach zählt der weitere Verlauf: weiterer Anstieg, Plateau oder Abfall des Signals.', 'The subsequent course is then classified as continued rise, plateau or signal decrease.', 'سپس ادامه روند به‌صورت افزایش مداوم، پلاتو یا کاهش سیگنال طبقه‌بندی می‌شود.'), items: [L('persistent', 'persistent', 'Persistent'), L('Plateau', 'plateau', 'Plateau'), L('Washout', 'washout', 'Washout')] },
 ]
 
 export const CURVES = [
-  { type: 'I', name: 'Persistent', symbol: '↗', tag: L('eher benign', 'more likely benign', 'بیشتر خوش‌خیم'), text: L('Das Enhancement nimmt weiter zu – eher benign.', 'Enhancement continues to increase – more often benign.', 'Enhancement همچنان افزایش می‌یابد؛ بیشتر به نفع خوش‌خیمی است.'), tone: 'green' },
-  { type: 'II', name: 'Plateau', symbol: '↗ →', text: L('Nach dem Anstieg bleibt das Signal ungefähr konstant – intermediär/suspekt.', 'After the rise, the signal remains approximately constant – intermediate/suspicious.', 'پس از افزایش اولیه، سیگنال تقریباً ثابت می‌ماند؛ بینابینی/مشکوک.'), tone: 'amber' },
-  { type: 'III', name: 'Washout', symbol: '↗ ↘', tag: L('malignomsuspekt', 'suspicious for malignancy', 'مشکوک به بدخیمی'), text: L('Nach starker Aufnahme nimmt das Signal wieder ab – stärker malignitätsverdächtig.', 'After strong uptake, the signal decreases – more suspicious for malignancy.', 'پس از Enhancement شدید، سیگنال کاهش می‌یابد؛ بیشتر به نفع بدخیمی است.'), tone: 'red' },
+  {
+    type: 'I', name: 'Persistent', symbol: '↗', tone: 'green', image: '/mamma/mrt/lesion-characterization/kinetic-type-1.png',
+    tag: L('eher beruhigend', 'more reassuring', 'بیشتر اطمینان‌بخش'),
+    alt: L('Mamma-MRT einer Läsion vor Kontrastmittelgabe sowie in der frühen und späten Postkontrastphase mit kontinuierlich ansteigender Typ-I-Kurve', 'Breast MRI of a lesion before contrast and in the early and late post-contrast phases with a continuously rising type I curve', 'MRI پستان از ضایعه پیش از تزریق و در فازهای زودرس و دیررس پس از تزریق با منحنی نوع یکِ پیوسته صعودی'),
+    text: L('Das Signal steigt auch in der späten Phase weiter an. Dieses Muster kommt häufiger bei benignen Läsionen vor, schließt Malignität aber nicht aus.', 'Signal intensity continues to rise in the delayed phase. This pattern is more common in benign lesions but does not exclude malignancy.', 'شدت سیگنال در فاز تأخیری همچنان افزایش می‌یابد. این الگو در ضایعات خوش‌خیم شایع‌تر است، اما بدخیمی را رد نمی‌کند.'),
+  },
+  {
+    type: 'II', name: 'Plateau', symbol: '↗ →', tone: 'amber', image: '/mamma/mrt/lesion-characterization/kinetic-type-2.png',
+    tag: L('intermediär', 'intermediate', 'بینابینی'),
+    alt: L('Mamma-MRT einer Läsion vor Kontrastmittelgabe sowie in der frühen und späten Postkontrastphase mit raschem initialem Anstieg und Typ-II-Plateaukurve', 'Breast MRI of a lesion before contrast and in the early and late post-contrast phases with a rapid initial rise and type II plateau curve', 'MRI پستان از ضایعه پیش از تزریق و در فازهای زودرس و دیررس پس از تزریق با افزایش سریع اولیه و منحنی پلاتوی نوع دو'),
+    text: L('Nach meist raschem initialem Enhancement bleibt das Signal in der späten Phase annähernd konstant. Ein Plateau ist suspekter als ein persistenter Verlauf, findet sich jedoch bei benignen und malignen Läsionen.', 'After usually rapid initial enhancement, signal intensity remains approximately constant in the delayed phase. A plateau is more suspicious than a persistent curve but occurs in both benign and malignant lesions.', 'پس از Enhancement اولیه که اغلب سریع است، شدت سیگنال در فاز تأخیری تقریباً ثابت می‌ماند. پلاتو از منحنی Persistent مشکوک‌تر است، اما در ضایعات خوش‌خیم و بدخیم دیده می‌شود.'),
+  },
+  {
+    type: 'III', name: 'Washout', symbol: '↗ ↘', tone: 'red', image: '/mamma/mrt/lesion-characterization/kinetic-type-3.png',
+    tag: L('am stärksten suspekt', 'most suspicious', 'بیشترین میزان شک'),
+    alt: L('Mamma-MRT einer Läsion vor Kontrastmittelgabe sowie in der frühen und späten Postkontrastphase mit raschem initialem Anstieg und Typ-III-Washoutkurve', 'Breast MRI of a lesion before contrast and in the early and late post-contrast phases with a rapid initial rise and type III washout curve', 'MRI پستان از ضایعه پیش از تزریق و در فازهای زودرس و دیررس پس از تزریق با افزایش سریع اولیه و منحنی Washout نوع سه'),
+    text: L('Nach raschem initialem Enhancement fällt das Signal in der späten Phase wieder ab. Washout ist das suspekteste kinetische Muster, bleibt aber unspezifisch und kann auch bei benignen Läsionen auftreten.', 'After rapid initial enhancement, signal intensity decreases again in the delayed phase. Washout is the most suspicious kinetic pattern but remains nonspecific and may also occur in benign lesions.', 'پس از Enhancement سریع اولیه، شدت سیگنال در فاز تأخیری دوباره کاهش می‌یابد. Washout مشکوک‌ترین الگوی کینتیکی است، اما اختصاصی نیست و در ضایعات خوش‌خیم نیز ممکن است دیده شود.'),
+  },
 ]
 
 export const SUMMARY_STEPS = [
