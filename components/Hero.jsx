@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image'
+import RadYarIcon from './RadYarIcon'
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -391,36 +392,7 @@ function GalaxyAtom() {
 
 // ── HEX LOGO ──────────────────────────────────────────────────────────────
 function HexLogo() {
-  return (
-    <svg width="52" height="52" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-      <circle cx="24" cy="24" r="22" fill="url(#radyarHeroLogoBg)" />
-      <path d="M13.8 8.6A20.2 20.2 0 0 1 39 13.3" stroke="url(#radyarHeroLogoArc)" strokeWidth="2.7" strokeLinecap="round" />
-      <path d="M39.8 13.9A20.1 20.1 0 0 1 40.2 33.6" stroke="#f97316" strokeWidth="2.7" strokeLinecap="round" />
-      <path d="M34.8 41.4A20.2 20.2 0 0 1 8.2 14.7" stroke="rgba(255,255,255,.82)" strokeWidth="2.2" strokeLinecap="round" />
-      <circle cx="39.8" cy="14" r="3.2" fill="#ff8a1d" />
-      <circle cx="39.8" cy="14" r="6.4" fill="url(#radyarHeroLogoGlow)" />
-      <text x="17.1" y="31.8" fill="#ffffff" fontSize="24" fontWeight="900"
-        fontFamily="Inter, Manrope, system-ui, sans-serif" letterSpacing="-.9">R</text>
-      <text x="27.1" y="32.2" fill="#f97316" fontSize="23" fontWeight="900"
-        fontFamily="Inter, Manrope, system-ui, sans-serif" letterSpacing="-.8">Y</text>
-      <defs>
-        <radialGradient id="radyarHeroLogoBg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(16 12) rotate(50) scale(38)">
-          <stop stopColor="#102a44"/>
-          <stop offset="0.62" stopColor="#071a2f"/>
-          <stop offset="1" stopColor="#020617"/>
-        </radialGradient>
-        <linearGradient id="radyarHeroLogoArc" x1="11" y1="8" x2="42" y2="15" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#ffffff"/>
-          <stop offset="1" stopColor="#f97316"/>
-        </linearGradient>
-        <radialGradient id="radyarHeroLogoGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(39.8 14) scale(8)">
-          <stop stopColor="#ffedd5" stopOpacity=".95"/>
-          <stop offset=".45" stopColor="#f97316" stopOpacity=".45"/>
-          <stop offset="1" stopColor="#f97316" stopOpacity="0"/>
-        </radialGradient>
-      </defs>
-    </svg>
-  )
+  return <RadYarIcon size={52} />
 }
 
 

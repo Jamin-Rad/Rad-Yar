@@ -9,8 +9,8 @@
   "background_color": "#020617",
   "theme_color": "#020617",
   "icons": [
-    { "src": "/radyar/radyar-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "/radyar/radyar-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "/radyar/radyar-icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    { "src": "/radyar/radyar-galaxy-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/radyar/radyar-galaxy-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/radyar/radyar-galaxy-icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ]
 }

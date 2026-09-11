@@ -55,9 +55,12 @@ export const metadata = {
   },
   // Nested calculator layouts override these defaults with their own identity.
   icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
-    apple: [{ url: '/radyar/radyar-apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+    icon: [
+      { url: '/radyar/radyar-galaxy-icon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/radyar/radyar-galaxy-icon-192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    shortcut: '/radyar/radyar-galaxy-icon-32.png',
+    apple: [{ url: '/radyar/radyar-galaxy-icon-180.png', sizes: '180x180', type: 'image/png' }],
   },
 }
 
