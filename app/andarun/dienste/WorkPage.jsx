@@ -36,6 +36,7 @@ const SHIFT_TYPES = [
   { id: 'N', label: 'Nachtdienst', short: 'Nacht' },
   { id: 'U', label: 'Urlaub', short: 'Urlaub' },
   { id: 'K', label: 'Krank', short: 'Krank' },
+  { id: 'F', label: 'Fortbildung', short: 'Fortbildung' },
 ]
 
 function todayValue() {
@@ -104,7 +105,13 @@ function isNightShift(shift) {
 }
 
 function isAbsenceShift(shift) {
-  return shift?.model === 'U' || shift?.model === 'K'
+  return shift?.model === 'U' || shift?.model === 'K' || shift?.model === 'F'
+}
+
+function absenceLabel(model) {
+  if (model === 'K') return 'Krank'
+  if (model === 'F') return 'Fortbildung'
+  return 'Urlaub'
 }
 
 function calendarDutyLabel(shift) {
@@ -126,6 +133,7 @@ function resolveDuty(dateValueText, type) {
   }
   if (type === 'U') return { duty: 'Urlaub', plannedStart: '', plannedEnd: '' }
   if (type === 'K') return { duty: 'Krank', plannedStart: '', plannedEnd: '' }
+  if (type === 'F') return { duty: 'Fortbildung', plannedStart: '', plannedEnd: '' }
   return { duty: '', plannedStart: '', plannedEnd: '' }
 }
 
@@ -409,14 +417,14 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
       ...resolved,
       actualStart: resolved.plannedStart,
       actualEnd: resolved.plannedEnd,
-      assignment: model === 'U' || model === 'K' ? '' : prev.assignment,
+      assignment: isAbsenceShift({ model }) ? '' : prev.assignment,
     }))
   }
 
   async function saveShift(event) {
     event.preventDefault()
     try {
-      const isAbsence = shiftForm.model === 'U' || shiftForm.model === 'K'
+      const isAbsence = isAbsenceShift(shiftForm)
       const payload = isAbsence
         ? {
             type: 'shiftRange',
@@ -863,10 +871,16 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
                     <span className={styles.absenceBadges}>
                       {absences.map(absence => (
                         <b
-                          className={absence.model === 'K' ? styles.absenceSick : styles.absenceVacation}
+                          className={
+                            absence.model === 'K'
+                              ? styles.absenceSick
+                              : absence.model === 'F'
+                                ? styles.absenceTraining
+                                : styles.absenceVacation
+                          }
                           key={absence.id}
                         >
-                          {absence.model === 'K' ? 'Krank' : 'Urlaub'}
+                          {absenceLabel(absence.model)}
                         </b>
                       ))}
                     </span>
@@ -901,7 +915,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
             <span>{timeRange(shiftForm.plannedStart, shiftForm.plannedEnd)}</span>
           </div>
 
-          {(shiftForm.model === 'U' || shiftForm.model === 'K') && (
+          {isAbsenceShift(shiftForm) && (
             <div className={styles.formGrid}>
               <label>Ab
                 <input
@@ -922,7 +936,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
             </div>
           )}
 
-          {shiftForm.model !== 'U' && shiftForm.model !== 'K' && (
+          {!isAbsenceShift(shiftForm) && (
             <>
               <div className={styles.formGrid}>
                 <label>Von
@@ -954,7 +968,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
               <span>Zusätzlich gespeichert</span>
               {(absencesByDate.get(selectedDate) || []).map(absence => (
                 <button type="button" key={absence.id} onClick={() => deleteShift(absence.id)}>
-                  {absence.model === 'K' ? 'Krank' : 'Urlaub'} ×
+                  {absenceLabel(absence.model)} ×
                 </button>
               ))}
             </div>

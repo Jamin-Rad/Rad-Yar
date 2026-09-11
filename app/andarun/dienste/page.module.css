@@ -339,6 +339,11 @@
   color: #fecdd3;
 }
 
+.absenceTraining {
+  background: rgba(96, 165, 250, .24);
+  color: #bfdbfe;
+}
+
 .savedAbsences {
   display: flex;
   align-items: center;
