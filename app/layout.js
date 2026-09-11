@@ -33,6 +33,12 @@ export const metadata = {
   title: 'RadYar | Learn Radiology',
   description: 'Structured knowledge, clinical cases, and exam preparation for radiologists.',
   applicationName: 'RadYar',
+  manifest: '/manifest.webmanifest',
+  appleWebApp: {
+    capable: true,
+    title: 'RadYar',
+    statusBarStyle: 'default',
+  },
   alternates: { canonical: '/' },
   openGraph: {
     title: 'RadYar | Learn Radiology',
@@ -47,7 +53,12 @@ export const metadata = {
     title: 'RadYar | Learn Radiology',
     description: 'Structured knowledge, clinical cases, and exam preparation for radiologists.',
   },
-  icons: { icon: '/favicon.svg', shortcut: '/favicon.svg' },
+  // Nested calculator layouts override these defaults with their own identity.
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: [{ url: '/radyar/radyar-apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+  },
 }
 
 export default function RootLayout({ children }) {
