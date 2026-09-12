@@ -118,7 +118,7 @@ const FACH_NAMES = {
         Muskuloskelettales:'اسکلتی-عضلانی', Technik:'تکنیک و فیزیک' },
 }
 
-// Curved hotspots traced in the original 941 × 1672 image coordinate system.
+// Hotspots traced in the displayed 842 × 1672 image coordinate system.
 // Broad extremity paths come first; smaller anatomical regions sit above them.
 const ZONES = [
   {
@@ -143,20 +143,19 @@ const ZONES = [
   },
   {
     id: 'Thorax',
-    transform: 'translate(-5 0)',
-    d: 'M292 324 C325 315 350 304 374 292 C387 300 402 304 421 304 C440 304 456 300 470 292 C493 305 518 315 550 324 C568 337 577 360 579 390 C581 430 575 474 566 515 C558 553 546 583 528 607 C500 622 465 630 421 630 C377 630 342 622 314 607 C296 583 284 553 276 515 C267 474 261 430 263 390 C265 360 274 337 292 324 Z',
+    transform: 'translate(8 0)',
+    d: 'M270 337 C310 327 350 324 375 330 C388 340 392 360 400 374 C408 360 412 340 425 330 C450 324 490 327 530 337 C540 382 540 442 530 488 C525 514 520 536 516 552 C480 558 449 536 426 524 C410 516 390 516 374 524 C351 536 320 558 284 552 C280 536 275 514 270 488 C260 442 260 382 270 337 Z',
   },
   {
     id: 'Abdomen',
-    transform: 'translate(-5 0)',
-    // Follow the subcostal margin, draw the flanks inward at the waist and
-    // widen the lower abdomen again before it meets the unchanged pelvis.
-    d: 'M302 552 C335 564 374 570 421 570 C468 570 507 564 540 552 C545 578 547 603 543 628 C540 652 534 674 531 696 C529 718 533 743 542 774 C511 790 471 799 421 799 C371 799 331 790 300 774 C309 743 313 718 311 696 C308 674 302 652 299 628 C295 603 297 578 302 552 Z',
+    transform: 'translate(8 0)',
+    // Share the diaphragm and pelvic brim with adjacent regions: no overlap.
+    d: 'M284 552 C320 558 351 536 374 524 C390 516 410 516 426 524 C449 536 480 558 516 552 C509 590 508 621 515 650 C518 674 527 700 534 726 C503 708 478 723 455 752 C437 770 419 779 400 780 C381 779 363 770 345 752 C322 723 297 708 266 726 C273 700 282 674 285 650 C292 621 291 590 284 552 Z',
   },
   {
     id: 'Becken',
-    transform: 'translate(-5 0)',
-    d: 'M278 711 C310 703 345 708 373 726 C390 737 405 744 421 744 C437 744 452 737 469 726 C497 708 532 703 564 711 C576 746 580 783 575 820 C570 857 554 889 529 913 C500 939 462 950 421 950 C380 950 342 939 313 913 C288 889 272 857 267 820 C262 783 266 746 278 711 Z',
+    transform: 'translate(8 0)',
+    d: 'M266 726 C297 708 322 723 345 752 C363 770 381 779 400 780 C419 779 437 770 455 752 C478 723 503 708 534 726 C546 760 550 795 542 827 C533 863 517 886 492 908 C468 930 435 940 400 940 C365 940 332 930 308 908 C283 886 267 863 258 827 C250 795 254 760 266 726 Z',
   },
   {
     id: 'Neuroradiologie',
@@ -166,17 +165,18 @@ const ZONES = [
   {
     id: 'Brust',
     transform: 'translate(8 0)',
-    d: 'M305 430 C324 420 347 421 364 432 C376 441 381 457 380 477 C379 501 370 522 355 533 C339 543 318 542 303 532 C291 522 286 505 287 485 C288 460 294 440 305 430 Z',
+    d: 'M302 444 C317 431 342 436 359 451 C376 467 381 491 370 514 C358 537 335 550 311 548 C291 547 277 534 274 514 C271 491 280 462 302 444 Z',
   },
   {
     id: 'Brust',
     transform: 'translate(8 0)',
-    d: 'M537 430 C518 420 495 421 478 432 C466 441 461 457 462 477 C463 501 472 522 487 533 C503 543 524 542 539 532 C551 522 556 505 555 485 C554 460 548 440 537 430 Z',
+    d: 'M498 444 C483 431 458 436 441 451 C424 467 419 491 430 514 C442 537 465 550 489 548 C509 547 523 534 526 514 C529 491 520 462 498 444 Z',
   },
   {
     id: 'Wirbelsaeule',
-    transform: 'translate(-5 0)',
-    d: 'M409 235 C402 276 404 321 408 365 C411 406 405 446 407 486 C409 528 417 567 411 609 C406 650 397 687 401 728 C403 754 409 779 421 803 C433 779 439 754 441 728 C445 687 436 650 431 609 C425 567 433 528 435 486 C437 446 431 406 434 365 C438 321 440 276 433 235 C426 240 416 240 409 235 Z',
+    transform: 'translate(8 0)',
+    // Stop at the exposed spine; abdominal organs cover the lower vertebrae.
+    d: 'M390 308 C387 350 390 388 390 425 C388 462 390 501 391 535 C391 552 387 568 388 582 L412 582 C413 568 409 552 409 535 C410 501 412 462 410 425 C410 388 413 350 410 308 Z',
   },
   {
     id: 'Hals',
@@ -530,15 +530,14 @@ export default function Hero() {
 
         <div className={styles.centerStage}>
           <div className={styles.bodyWrap}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/body-anatomy-clean.png" alt="Anatomy" className={styles.bodyImg} draggable={false}/>
 
             <div className={styles.bodyColorWash}
               style={{background:hovFach
                 ?`radial-gradient(ellipse 60% 70% at 50% 38%, ${hovFach.color}1a 0%, transparent 70%)`
                 :'none'}}/>
 
-            <svg className={styles.zoneSvg} viewBox="0 0 842 1672" preserveAspectRatio="none" aria-label={hintLabel}>
+            <svg className={styles.zoneSvg} viewBox="0 0 842 1672" preserveAspectRatio="xMidYMin meet" aria-label={hintLabel}>
+              <image href="/body-anatomy-clean.png" width="842" height="1672" className={styles.bodyImg} pointerEvents="none" />
               <g transform="translate(-8 0)">
                 {ZONES.map((zone,i)=>{
                   const isHov = hovered===zone.id
@@ -553,10 +552,10 @@ export default function Hero() {
                     fillRule: 'evenodd',
                     transform: zone.transform,
                     style: { cursor:'pointer', transition:'fill 0.2s,stroke 0.2s' },
-                    onMouseEnter: () => setHovered(zone.id),
-                    onMouseLeave: () => setHovered(null),
+                    onPointerEnter: (event) => { if (event.pointerType === 'mouse') setHovered(zone.id) },
+                    onPointerLeave: (event) => { if (event.pointerType === 'mouse') setHovered(null) },
                     onClick: () => handleZoneClick(zone.id),
-                    pointerEvents: 'all',
+                    pointerEvents: 'fill',
                   }
 
                   return <path key={i} {...commonProps} d={zone.d} />
