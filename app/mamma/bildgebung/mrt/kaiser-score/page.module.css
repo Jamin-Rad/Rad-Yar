@@ -9,8 +9,10 @@
 .heroStats > div:nth-child(3) { color: #452207; border-color: rgba(183,121,31,.28); background: linear-gradient(145deg,#fff9e8,#fff); }
 .section { scroll-margin-top: 138px; }
 .sectionBody { display: grid; gap: 26px; }
-.sectionNumber { display: grid; place-items: center; color: var(--kaiser); font: 900 .72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .05em; }
-.sideNumber { color: var(--kaiser); font: 900 .66rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.sectionIcon { display: grid; place-items: center; color: var(--kaiser); }
+.sideIcon { display: grid; place-items: center; color: var(--kaiser); }
+.sectionGlyph { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.sectionIcon .sectionGlyph { width: 24px; height: 24px; }
 .lead { margin: 0; color: var(--text); font-size: 1.06rem; line-height: 1.82; }
 .orientationGrid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; }
 .orientationGrid article { min-height: 180px; padding: 22px; border: 1px solid rgba(148,163,184,.28); border-top: 4px solid var(--kaiser); background: var(--bg-card); }
@@ -151,6 +153,8 @@
 .takeHome > span { color: #f9a8d4; font-size: .7rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
 .takeHome h3 { margin: 8px 0; color: #fff; font: 900 1.35rem/1.3 Georgia,serif; }
 .takeHome p { margin: 0; color: #d4e2ef; line-height: 1.62; }
+.takeHomeSteps { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1px; margin-top: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,.14); }
+.takeHomeSteps strong { padding: 12px 14px; color: #fff; background: rgba(255,255,255,.055); font-size: .82rem; text-align: center; }
 .sources { display: grid; gap: 8px; }
 .sources h3 { margin: 0 0 5px; color: var(--text-strong); font: 850 1.05rem/1.3 Georgia,serif; }
 .sources a { display: flex; gap: 10px; align-items: center; padding: 10px 0; color: var(--text); border-bottom: 1px solid rgba(148,163,184,.24); text-decoration: none; font-size: .88rem; }
@@ -206,4 +210,5 @@
   .threshold { grid-template-columns: 42px 1fr 42px; gap: 10px; padding: 15px 0; }
   .threshold > span { width: 42px; height: 42px; }
   .caseGrid dl { grid-template-columns: 1fr 1fr; }
+  .takeHomeSteps { grid-template-columns: 1fr; }
 }

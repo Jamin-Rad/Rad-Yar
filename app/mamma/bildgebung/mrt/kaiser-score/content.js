@@ -12,18 +12,19 @@ export const COPY = {
   imaging: { de: 'Bildgebung', en: 'Imaging', fa: 'تصویربرداری' },
   breastMri: { de: 'Mamma-MRT', en: 'Breast MRI', fa: 'MRI پستان' },
   calculator: { de: 'Klinischen Rechner öffnen', en: 'Open clinical calculator', fa: 'باز کردن محاسبه‌گر بالینی' },
+  flashcards: { de: 'Flashcards', en: 'Flashcards', fa: 'فلش‌کارت‌ها' },
   sourceNote: { de: 'Evidenzbasierte Entscheidungshilfe', en: 'Evidence-based decision aid', fa: 'ابزار تصمیم‌یار مبتنی بر شواهد' },
   synthetic: { de: 'Synthetische Lehrdarstellung – keine Patientendaten', en: 'Synthetic teaching image — no patient data', fa: 'تصویر آموزشی مصنوعی — بدون اطلاعات بیمار' },
   zoom: { de: 'Vergrößern', en: 'Enlarge', fa: 'بزرگ‌نمایی' },
 }
 
 export const SECTIONS = [
-  { id: 'orientierung', label: { de: 'Was der Score leistet', en: 'What the score does', fa: 'کاربرد امتیاز' } },
-  { id: 'merkmale', label: { de: 'Die fünf Merkmale', en: 'The five features', fa: 'پنج ویژگی' } },
-  { id: 'trainer', label: { de: 'Interaktiver Entscheidungsweg', en: 'Interactive decision path', fa: 'مسیر تصمیم تعاملی' } },
-  { id: 'interpretation', label: { de: 'Score & BI-RADS', en: 'Score & BI-RADS', fa: 'امتیاز و BI-RADS' } },
-  { id: 'faelle', label: { de: 'Lernfälle', en: 'Learning cases', fa: 'کیس‌های آموزشی' } },
-  { id: 'fallstricke', label: { de: 'Fallstricke & Merksätze', en: 'Pitfalls & takeaways', fa: 'دام‌ها و نکات کلیدی' } },
+  { id: 'orientierung', icon: 'compass', label: { de: 'Was der Score leistet', en: 'What the score does', fa: 'کاربرد امتیاز' } },
+  { id: 'merkmale', icon: 'features', label: { de: 'Die fünf Merkmale', en: 'The five features', fa: 'پنج ویژگی' } },
+  { id: 'trainer', icon: 'path', label: { de: 'Interaktiver Entscheidungsweg', en: 'Interactive decision path', fa: 'مسیر تصمیم تعاملی' } },
+  { id: 'interpretation', icon: 'gauge', label: { de: 'Score & BI-RADS', en: 'Score & BI-RADS', fa: 'امتیاز و BI-RADS' } },
+  { id: 'faelle', icon: 'cases', label: { de: 'Lernfälle', en: 'Learning cases', fa: 'کیس‌های آموزشی' } },
+  { id: 'fallstricke', icon: 'shield', label: { de: 'Fallstricke & Merksätze', en: 'Pitfalls & takeaways', fa: 'دام‌ها و نکات کلیدی' } },
 ]
 
 export const FEATURES = [

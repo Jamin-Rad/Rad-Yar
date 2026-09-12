@@ -31,6 +31,7 @@ import { SPINE_TRAUMA_QUESTIONS } from './spineTrauma'
 import { KNIE_LIGAMENTE_QUESTIONS } from './knieligamente'
 import { MAMMA_MRT_QUESTIONS } from './mammaMrtBasics'
 import { MAMMA_MRT_LESION_QUESTIONS } from './mammaMrtLesions'
+import { MAMMA_KAISER_QUESTIONS } from './mammaKaiserScore'
 import { MAMMA_MRT_SPECIAL_CARCINOMA_QUESTIONS } from './mammaMrtSpecialCarcinomas'
 import { MAMMOGRAPHY_BASICS_QUESTIONS } from './mammaMammographyBasics'
 import { MAMMOGRAPHY_CALCIFICATIONS_QUESTIONS } from './mammaMammographyCalcifications'
@@ -584,6 +585,7 @@ export const QUESTION_BANK = {
     ...HRCT_QUESTIONS.de,
     ...MAMMA_MRT_QUESTIONS.de,
     ...MAMMA_MRT_LESION_QUESTIONS.de,
+    ...MAMMA_KAISER_QUESTIONS.de,
     ...MAMMA_MRT_SPECIAL_CARCINOMA_QUESTIONS.de,
     ...MAMMOGRAPHY_BASICS_QUESTIONS.de,
     ...MAMMOGRAPHY_CALCIFICATIONS_QUESTIONS.de,
@@ -1916,6 +1918,7 @@ export const QUESTION_BANK = {
   "en": [
     ...MAMMA_MRT_QUESTIONS.en,
     ...MAMMA_MRT_LESION_QUESTIONS.en,
+    ...MAMMA_KAISER_QUESTIONS.en,
     ...MAMMA_MRT_SPECIAL_CARCINOMA_QUESTIONS.en,
     ...MAMMOGRAPHY_BASICS_QUESTIONS.en,
     ...MAMMOGRAPHY_CALCIFICATIONS_QUESTIONS.en,
@@ -3279,6 +3282,7 @@ export const QUESTION_BANK = {
   "fa": [
     ...MAMMA_MRT_QUESTIONS.fa,
     ...MAMMA_MRT_LESION_QUESTIONS.fa,
+    ...MAMMA_KAISER_QUESTIONS.fa,
     ...MAMMA_MRT_SPECIAL_CARCINOMA_QUESTIONS.fa,
     ...MAMMOGRAPHY_BASICS_QUESTIONS.fa,
     ...MAMMOGRAPHY_CALCIFICATIONS_QUESTIONS.fa,
@@ -4650,6 +4654,7 @@ export const MCQ_TOPIC_GROUPS = [
     topics: [
       { id: 'mamma-mrt-basics', title: { de: 'Mamma-MRT: Basics', en: 'Breast MRI: Basics', fa: 'MRI پستان: مبانی' } },
       { id: 'mamma-mrt-laesionscharakterisierung', title: { de: 'Mamma-MRT: Läsionscharakterisierung', en: 'Breast MRI: Lesion Characterisation', fa: 'MRI پستان: ارزیابی ضایعه' } },
+      { id: 'mamma-mrt-kaiser-score', title: { de: 'Mamma-MRT: Kaiser Score', en: 'Breast MRI: Kaiser Score', fa: 'MRI پستان: Kaiser Score' } },
       { id: 'mammographie-grundlagen', title: { de: 'Mammographie: Grundlagen der Befundung', en: 'Mammography: Reporting Fundamentals', fa: 'ماموگرافی: مبانی گزارش‌نویسی' } },
       { id: 'mammographie-mikrokalk', title: { de: 'Mammographie: Verkalkungen', en: 'Mammography: Calcifications', fa: 'ماموگرافی: کلسیفیکاسیون‌ها' } },
     ],
