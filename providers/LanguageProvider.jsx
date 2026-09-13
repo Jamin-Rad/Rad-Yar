@@ -4,6 +4,7 @@ import { translations } from '@/data/translations'
 
 const SUPPORTED_LANGS = ['de', 'en', 'fa']
 const STORAGE_KEY = 'radyar-language'
+const CALCULATOR_PATHS = ['/fleischner', '/kaiser-score', '/node-rads', '/mamma-calculator']
 
 const LanguageContext = createContext({
   lang: 'de',
@@ -17,6 +18,18 @@ function normalizeLang(value) {
   return SUPPORTED_LANGS.includes(short) ? short : null
 }
 
+function isCalculatorPath(pathname) {
+  return CALCULATOR_PATHS.some(path => pathname === path || pathname.startsWith(`${path}/`))
+    || pathname === '/rechner'
+    || pathname.includes('/rechner/')
+}
+
+export function getCalculatorDefaultLang(location = window.location, storage = window.localStorage) {
+  const urlLang = normalizeLang(new URLSearchParams(location.search).get('lang'))
+  const savedLang = normalizeLang(storage.getItem(STORAGE_KEY))
+  return urlLang || savedLang || 'en'
+}
+
 function getInitialBrowserLang() {
   if (typeof window === 'undefined') return 'de'
 
@@ -26,7 +39,7 @@ function getInitialBrowserLang() {
   const savedLang = normalizeLang(window.localStorage.getItem(STORAGE_KEY))
   if (savedLang) return savedLang
 
-  return 'de'
+  return isCalculatorPath(window.location.pathname) ? 'en' : 'de'
 }
 
 export function LanguageProvider({ children }) {

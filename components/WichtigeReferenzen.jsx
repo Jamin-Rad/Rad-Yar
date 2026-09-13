@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useLanguage } from '@/providers/LanguageProvider'
+import { getCalculatorDefaultLang, useLanguage } from '@/providers/LanguageProvider'
 import { REF_COPY, REF_DATA, tx } from '@/data/referenzen'
 import styles from './WichtigeReferenzen.module.css'
 
@@ -318,6 +318,10 @@ export default function WichtigeReferenzen({ mode = 'section' }) {
   const { lang } = useLanguage()
   const copy = REF_COPY[lang] || REF_COPY.de
   const [modal, setModal] = useState(null)
+  const calculatorLang = modal === 'rechner' && typeof window !== 'undefined'
+    ? getCalculatorDefaultLang()
+    : lang
+  const calculatorCopy = REF_COPY[calculatorLang] || REF_COPY.en
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -350,7 +354,7 @@ export default function WichtigeReferenzen({ mode = 'section' }) {
         {modal==='anatomie'        && <AnatomieModal        copy={copy} lang={lang} onClose={()=>setModal(null)} />}
         {modal==='messwerte'       && <MesswerteModal       copy={copy} lang={lang} onClose={()=>setModal(null)} />}
         {modal==='klassifikationen'&& <KlassifikationenModal copy={copy} lang={lang} onClose={()=>setModal(null)} />}
-        {modal==='rechner'         && <RechnerModal          copy={copy} lang={lang} onClose={()=>setModal(null)} />}
+        {modal==='rechner'         && <RechnerModal          copy={calculatorCopy} lang={calculatorLang} onClose={()=>setModal(null)} />}
       </>
     )
   }
@@ -393,7 +397,7 @@ export default function WichtigeReferenzen({ mode = 'section' }) {
       {modal==='anatomie'        && <AnatomieModal        copy={copy} lang={lang} onClose={()=>setModal(null)} />}
       {modal==='messwerte'       && <MesswerteModal       copy={copy} lang={lang} onClose={()=>setModal(null)} />}
       {modal==='klassifikationen'&& <KlassifikationenModal copy={copy} lang={lang} onClose={()=>setModal(null)} />}
-      {modal==='rechner'         && <RechnerModal          copy={copy} lang={lang} onClose={()=>setModal(null)} />}
+      {modal==='rechner'         && <RechnerModal          copy={calculatorCopy} lang={calculatorLang} onClose={()=>setModal(null)} />}
     </section>
   )
 }

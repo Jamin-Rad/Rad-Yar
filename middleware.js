@@ -25,7 +25,7 @@ export const config = {
   matcher: [
     // Public standalone calculators bypass Clerk middleware entirely.
     // Also skip Next.js internals and all static files.
-    '/((?!(?:kaiser-score|fleischner)(?:/|$)|_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    '/((?!(?:kaiser-score|fleischner|node-rads|mamma-calculator|mamma/rechner)(?:/|$)|_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
     '/(api|trpc)(.*)',
   ],
 }
