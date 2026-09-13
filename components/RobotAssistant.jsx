@@ -74,7 +74,7 @@ export default function RobotAssistant() {
   const t = T[lang] || T.de
   const isRTL = lang === 'fa'
   const hiddenRoute = (
-    pathname?.startsWith('/admin/budget')
+    pathname?.startsWith('/admin')
     || pathname?.startsWith('/andarun')
     || pathname?.startsWith('/mobin')
     || pathname?.startsWith('/node-rads')

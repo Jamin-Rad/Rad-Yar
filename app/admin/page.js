@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { ADMIN_COOKIE, safeEqual } from '@/lib/adminAuth'
-import AdminDashboard from './AdminDashboard'
+import AdminDashboard from './AdminDashboardV2'
 
 export default async function AdminPage() {
   const cookieStore = await cookies()

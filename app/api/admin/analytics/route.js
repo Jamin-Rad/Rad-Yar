@@ -4,6 +4,7 @@ import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 
 const DAY_MS = 24 * 60 * 60 * 1000
 const PAGE_SIZE = 1000
+const LESSON_PREFIXES = ['/abdomen/', '/gehirn/', '/lunge/', '/mamma/', '/msk/', '/thorax/', '/wirbelsaeule/', '/technik/', '/referenzen/']
 
 async function fetchAll(makeQuery, maxRows) {
   const rows = []
@@ -91,7 +92,7 @@ export async function GET() {
   }
 
   const pageMap = new Map()
-  const toolRows = { nodeRads: [], kaiser: [] }
+  const toolRows = { nodeRads: [], kaiser: [], fleischner: [] }
   const nodeRadsDays = new Map()
   const nodeRadsDay = day => {
     if (!nodeRadsDays.has(day)) nodeRadsDays.set(day, {
@@ -111,6 +112,7 @@ export async function GET() {
       toolRows.nodeRads.push(row)
     }
     if (row.path === '/kaiser-score') toolRows.kaiser.push(row)
+    if (row.path === '/fleischner') toolRows.fleischner.push(row)
   }
 
   const nodeRadsEventFields = {
@@ -136,8 +138,64 @@ export async function GET() {
     .sort((a, b) => b.views - a.views)
     .slice(0, 20)
 
+  const lessonPages = [...pageMap.values()]
+    .filter(entry => LESSON_PREFIXES.some(prefix => entry.path.startsWith(prefix)))
+    .map(entry => ({
+      path: entry.path,
+      views: entry.views,
+      activeSeconds: entry.activeSeconds,
+      visitors: entry.visitors.size,
+      averageSeconds: entry.views ? Math.round(entry.activeSeconds / entry.views) : 0,
+    }))
+    .sort((a, b) => b.views - a.views)
+
+  const lessonUsage = Object.fromEntries([7, 30, 90].map(period => {
+    const periodStart = new Date(Date.now() - (period - 1) * DAY_MS).toISOString().slice(0, 10)
+    const lessonMap = new Map()
+    for (const row of pages || []) {
+      if (row.day < periodStart || !LESSON_PREFIXES.some(prefix => row.path.startsWith(prefix))) continue
+      const entry = lessonMap.get(row.path) || { path: row.path, views: 0, activeSeconds: 0, visitors: new Set() }
+      entry.views += Number(row.views || 0)
+      entry.activeSeconds += Number(row.active_seconds || 0)
+      entry.visitors.add(row.visitor_id)
+      lessonMap.set(row.path, entry)
+    }
+    const ranked = [...lessonMap.values()].map(entry => ({
+      path: entry.path,
+      views: entry.views,
+      visitors: entry.visitors.size,
+      activeSeconds: entry.activeSeconds,
+      averageSeconds: entry.views ? Math.round(entry.activeSeconds / entry.views) : 0,
+    })).sort((a, b) => b.views - a.views)
+    return [period, ranked]
+  }))
+
+  const lessonTotals = Object.fromEntries([7, 30, 90].map(period => {
+    const periodStart = new Date(Date.now() - (period - 1) * DAY_MS).toISOString().slice(0, 10)
+    const readers = new Set()
+    let views = 0
+    let activeSeconds = 0
+    for (const row of pages || []) {
+      if (row.day < periodStart || !LESSON_PREFIXES.some(prefix => row.path.startsWith(prefix))) continue
+      views += Number(row.views || 0)
+      activeSeconds += Number(row.active_seconds || 0)
+      if (row.visitor_id) readers.add(row.visitor_id)
+    }
+    return [period, { views, visitors: readers.size, activeSeconds }]
+  }))
+
+  const trendMap = new Map()
+  for (const row of daily || []) {
+    const entry = trendMap.get(row.day) || { day: row.day, visits: 0, pageViews: 0, visitors: 0 }
+    entry.visits += Number(row.visits || 0)
+    entry.pageViews += Number(row.page_views || 0)
+    entry.visitors += 1
+    trendMap.set(row.day, entry)
+  }
+  const dailyTrend = [...trendMap.values()].sort((a, b) => a.day.localeCompare(b.day))
+
   const nodeRads = [...nodeRadsDays.values()].sort((a, b) => a.day.localeCompare(b.day))
-  const databaseTool = { nodeRads: 'node-rads', kaiser: 'kaiser-score' }
+  const databaseTool = { nodeRads: 'node-rads', kaiser: 'kaiser-score', fleischner: 'fleischner' }
   const normalizedFallbackEvents = (fallbackEvents || []).flatMap(row => {
     const [, prefix, tool, event, source, countryCode, sessionId] = row.path.split('/')
     return prefix === 'calculator-event' ? [{
@@ -195,5 +253,36 @@ export async function GET() {
     }))
   ]))
 
-  return NextResponse.json({ totals, userStats, topPages, nodeRads, toolUsage, periodDays: 90 })
+  const calculatorTotals = Object.fromEntries([7, 30, 90].map(period => {
+    const periodStart = new Date(Date.now() - (period - 1) * DAY_MS).toISOString().slice(0, 10)
+    const visitors = new Set()
+    let views = 0
+    let starts = 0
+    let completions = 0
+    for (const [tool, rows] of Object.entries(toolRows)) {
+      const events = allCalculatorEvents.filter(row => row.tool === databaseTool[tool] && row.occurred_at.slice(0, 10) >= periodStart)
+      const viewEvents = events.filter(row => row.event === 'view')
+      if (viewEvents.length) {
+        views += viewEvents.length
+        for (const row of viewEvents) if (row.visitor_id) visitors.add(row.visitor_id)
+      } else {
+        for (const row of rows) {
+          if (row.day < periodStart) continue
+          views += Number(row.views || 0)
+          if (row.visitor_id) visitors.add(row.visitor_id)
+        }
+      }
+      starts += events.filter(row => row.event === 'start').length
+      completions += events.filter(row => row.event === 'complete').length
+    }
+    return [period, {
+      views,
+      visitors: visitors.size,
+      starts,
+      completions,
+      completionRate: starts ? Math.round(completions / starts * 100) : 0,
+    }]
+  }))
+
+  return NextResponse.json({ totals, userStats, topPages, lessonPages, lessonUsage, lessonTotals, dailyTrend, nodeRads, toolUsage, calculatorTotals, periodDays: 90 })
 }

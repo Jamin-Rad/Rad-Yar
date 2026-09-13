@@ -5,7 +5,7 @@ import { getSignedInUserIdentity } from '@/lib/userIdentity'
 
 const ID_PATTERN = /^[a-zA-Z0-9_-]{12,80}$/
 const SOURCE_PATTERN = /^[a-z0-9.-]{1,80}$/
-const TOOLS = new Set(['node-rads', 'kaiser-score'])
+const TOOLS = new Set(['node-rads', 'kaiser-score', 'fleischner'])
 const EVENTS = new Set(['view', 'start', 'complete', 'restart', 'recommend_open', 'whatsapp_click', 'copy_link'])
 
 function countryFrom(request) {
@@ -35,7 +35,7 @@ export async function POST(request) {
     if (error) {
       // Deployments can receive traffic before the migration has been applied.
       // Keep analytics working against the existing protected table meanwhile.
-      if (error.code === '42P01' || error.code === 'PGRST205') {
+      if (error.code === '42P01' || error.code === 'PGRST205' || error.code === '23514') {
         const country = countryFrom(request) || 'unknown'
         const nonce = crypto.randomUUID().replaceAll('-', '').slice(0, 12)
         const path = `/calculator-event/${payload.tool}/${payload.event}/${source}/${country}/${payload.sessionId}/${nonce}`
