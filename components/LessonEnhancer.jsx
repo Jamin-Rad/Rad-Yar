@@ -195,15 +195,28 @@ export default function LessonEnhancer() {
     })
     const sidebar = findSidebar(main, foundSections.length)
     const entries = sidebar?.entries || []
+    let progressHost = sidebar?.aside.querySelector('[data-lesson-desktop-progress-host]') || null
+    if (sidebar?.aside && !progressHost) {
+      progressHost = document.createElement('div')
+      progressHost.dataset.lessonDesktopProgressHost = 'true'
+      progressHost.dataset.lessonProgressUi = 'true'
+      progressHost.className = styles.desktopProgressHost
+      const firstEntry = entries[0]
+      if (firstEntry) sidebar.aside.insertBefore(progressHost, firstEntry)
+      else sidebar.aside.appendChild(progressHost)
+    }
 
     document.querySelectorAll('[data-lesson-section-icon]').forEach(icon => icon.remove())
+    document.querySelectorAll('[data-lesson-target-id]').forEach(entry => delete entry.dataset.lessonTargetId)
     document.querySelectorAll('[data-lesson-number-marker]').forEach(marker => {
       marker.classList.remove(styles.hiddenNumber)
       delete marker.dataset.lessonNumberMarker
     })
 
     const found = foundSections.map((item, index) => {
-      const icon = sourceIcon(entries[index])
+      const entry = entries[index]
+      if (entry) entry.dataset.lessonTargetId = item.id
+      const icon = sourceIcon(entry)
       const numericMarker = Array.from(item.heading.parentElement?.children || [])
         .find(element => element !== item.heading && element.matches('small') && isNumberMarker(element))
       if (numericMarker) {
@@ -230,7 +243,7 @@ export default function LessonEnhancer() {
       return before === after ? current : found
     })
     setActiveId(current => found.some(item => item.id === current) ? current : (found[0]?.id || ''))
-    setSidebarTarget(sidebar?.aside || null)
+    setSidebarTarget(progressHost)
     setNavbarTarget(document.querySelector('[data-radyar-navbar]'))
     setRecallSets(current => {
       const before = current.map(item => `${item.id}:${item.cards.map(card => `${card.prompt}:${card.answer}`).join('|')}`).join('||')
@@ -249,10 +262,12 @@ export default function LessonEnhancer() {
       window.clearTimeout(secondTimer)
       window.removeEventListener('load', discover)
       document.querySelectorAll('[data-lesson-section-icon]').forEach(icon => icon.remove())
+      document.querySelectorAll('[data-lesson-target-id]').forEach(entry => delete entry.dataset.lessonTargetId)
       document.querySelectorAll('[data-lesson-number-marker]').forEach(marker => {
         marker.classList.remove(styles.hiddenNumber)
         delete marker.dataset.lessonNumberMarker
       })
+      document.querySelectorAll('[data-lesson-desktop-progress-host]').forEach(host => host.remove())
     }
   }, [discover, enabled, lang, pathname])
 
@@ -305,6 +320,11 @@ export default function LessonEnhancer() {
   useEffect(() => {
     if (!enabled) return undefined
     const handleClick = event => {
+      const menuEntry = event.target.closest?.('[data-lesson-target-id]')
+      if (event.isTrusted && menuEntry) {
+        markRead(menuEntry.dataset.lessonTargetId)
+        return
+      }
       const toggle = event.target.closest?.('main section[id] > button[aria-expanded]')
       if (!toggle) return
       if (event.isTrusted && toggle.getAttribute('aria-expanded') === 'false') markRead(toggle.parentElement?.id)
@@ -332,15 +352,21 @@ export default function LessonEnhancer() {
     const element = document.getElementById(id)
     const toggle = element?.querySelector(':scope > button[aria-expanded]')
     if (toggle?.getAttribute('aria-expanded') === 'false') toggle.click()
+    markRead(id)
     window.setTimeout(() => element?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 30)
     setPanelOpen(false)
   }
 
   const navProgress = <div className={styles.navProgress} data-lesson-progress-ui aria-hidden="true"><span style={{ width: `${progress}%` }} /></div>
-  const desktopProgress = <div className={styles.desktopProgress} data-lesson-progress-ui aria-label={`${copy.progress}: ${progress}%`}>
-    <div><span>{copy.progress}</span><strong>{progress}%</strong></div>
-    <div className={styles.desktopTrack} aria-hidden="true"><span style={{ width: `${progress}%` }} /></div>
-    <small>{validReadCount} / {sections.length} {copy.read}</small>
+  const desktopProgress = <div className={styles.desktopProgress} data-lesson-progress-ui role="progressbar" aria-label={copy.progress} aria-valuemin="0" aria-valuemax="100" aria-valuenow={progress}>
+    <div className={styles.desktopProgressMeta}>
+      <span>{copy.progress}</span>
+      <strong>{progress}%</strong>
+    </div>
+    <div className={styles.desktopSegments} style={{ '--segment-count': sections.length }} aria-hidden="true">
+      {sections.map(section => <span key={section.id} className={`${readIds.has(section.id) ? styles.desktopSegmentDone : ''} ${section.id === activeId ? styles.desktopSegmentActive : ''}`} />)}
+    </div>
+    <small className={styles.desktopProgressCaption}>{validReadCount} / {sections.length} {copy.read}</small>
   </div>
 
   return <div className={styles.root} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
