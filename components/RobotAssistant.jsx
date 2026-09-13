@@ -77,7 +77,6 @@ export default function RobotAssistant() {
     pathname?.startsWith('/admin/budget')
     || pathname?.startsWith('/andarun')
     || pathname?.startsWith('/mobin')
-    || pathname?.startsWith('/mamma-calculator')
     || pathname?.startsWith('/node-rads')
     || pathname?.startsWith('/kaiser-score')
     || pathname?.startsWith('/fleischner')

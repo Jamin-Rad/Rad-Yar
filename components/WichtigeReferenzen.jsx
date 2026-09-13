@@ -791,11 +791,6 @@ const MAMMA_TOOL_LINKS = [
     text: { de: 'Lymphknoten in CT und MRT strukturiert einordnen.', en: 'Structured lymph-node assessment on CT and MRI.', fa: 'ارزیابی ساختاریافته غدد لنفاوی در CT و MRI.' },
   },
   {
-    id: 'bi-rads', href: '/mamma-calculator', mark: 'B', color: '#db2777',
-    name: { de: 'BI-RADS', en: 'BI-RADS', fa: 'BI-RADS' },
-    text: { de: 'Massen und Verkalkungen in der Mammographie bewerten.', en: 'Assess mammographic masses and calcifications.', fa: 'ارزیابی توده‌ها و کلسیفیکاسیون‌های ماموگرافی.' },
-  },
-  {
     id: 'kaiser-score', href: '/kaiser-score', mark: 'K', icon: '/kaiser-score/kaiser-score-icon-192.png', color: '#0891a3',
     name: { de: 'Kaiser Score', en: 'Kaiser Score', fa: 'Kaiser Score' },
     text: { de: 'Anreichernde Läsionen in der Mamma-MRT klassifizieren.', en: 'Classify enhancing lesions on breast MRI.', fa: 'طبقه‌بندی ضایعات enhancing در MRI پستان.' },

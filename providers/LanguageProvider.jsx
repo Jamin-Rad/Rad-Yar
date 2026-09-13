@@ -4,7 +4,7 @@ import { translations } from '@/data/translations'
 
 const SUPPORTED_LANGS = ['de', 'en', 'fa']
 const STORAGE_KEY = 'radyar-language'
-const CALCULATOR_PATHS = ['/fleischner', '/kaiser-score', '/node-rads', '/mamma-calculator']
+const CALCULATOR_PATHS = ['/fleischner', '/kaiser-score', '/node-rads']
 
 const LanguageContext = createContext({
   lang: 'de',
