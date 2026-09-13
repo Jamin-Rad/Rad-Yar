@@ -9,9 +9,11 @@ function installLearningAccordion() {
   let preferredId = null
   let initialized = false
   let scheduled = false
+  const mobileQuery = window.matchMedia('(max-width: 760px)')
   const sectionHeaders = () => [...document.querySelectorAll('main section[id] > button[aria-expanded]')]
   const reconcile = () => {
     scheduled = false
+    if (!mobileQuery.matches) return
     const headers = sectionHeaders()
     if (!headers.length) return
     if (!initialized) {
@@ -49,6 +51,7 @@ function installLearningAccordion() {
   }, true)
 
   new MutationObserver(schedule).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['aria-expanded'] })
+  mobileQuery.addEventListener?.('change', schedule)
   schedule()
 }
 
