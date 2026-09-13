@@ -3,8 +3,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
@@ -144,7 +142,6 @@ export default function SubduralhaematomPage() {
   ]
 
   return <>
-    <Navbar />
     <InProgressBanner lang={lang} />
     <main className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
       <header className={styles.header}>
@@ -212,6 +209,5 @@ export default function SubduralhaematomPage() {
         </div>
       </div>}
     </main>
-    <Footer />
   </>
 }

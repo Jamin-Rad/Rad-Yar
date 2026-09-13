@@ -8,8 +8,6 @@ import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import { STROKE_LEARNING_CASES, STROKE_LESSON } from '@/data/stroke'
 import InProgressBanner from '@/components/InProgressBanner'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
 import styles from '../../../abdomen/gi/divertikulitis/page.module.css'
 
 const IMAGE_UI = {
@@ -188,7 +186,6 @@ export default function IschaemischerSchlaganfallPage() {
 
   return (
     <>
-      <Navbar />
       <main className={`${styles.page} ${styles.strokePage}`} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
         <InProgressBanner lang={lang} />
       <header className={styles.header}>
@@ -291,7 +288,6 @@ export default function IschaemischerSchlaganfallPage() {
         </div>
       </div>
       </main>
-      <Footer />
       {previewImage && (
         <div className={styles.strokeImageModal} role="dialog" aria-modal="true" aria-label={imageUi.zoom} onClick={() => setPreviewImage(null)}>
           <div className={styles.strokeImageModalContent} onClick={event => event.stopPropagation()}>

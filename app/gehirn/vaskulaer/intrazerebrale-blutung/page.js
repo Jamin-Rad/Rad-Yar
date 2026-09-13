@@ -8,8 +8,6 @@ import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import { ICB_LEARNING_CASES, ICB_LESSON } from '@/data/icb'
 import InProgressBanner from '@/components/InProgressBanner'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
 import styles from '../../../abdomen/gi/divertikulitis/page.module.css'
 
 const IMAGE_UI = {
@@ -152,7 +150,6 @@ export default function IntrazerebraleBluturngPage() {
 
   return (
     <>
-      <Navbar />
       <main className={`${styles.page} ${styles.strokePage}`} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
         <InProgressBanner lang={lang} />
         <header className={styles.header}>
@@ -302,7 +299,6 @@ export default function IntrazerebraleBluturngPage() {
           </div>
         </div>
       </main>
-      <Footer />
 
       {previewImage && (
         <div className={styles.strokeImageModal} role="dialog" aria-modal="true" aria-label={imageUi.zoom} onClick={() => setPreviewImage(null)}>

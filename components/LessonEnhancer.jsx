@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { usePathname } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './LessonEnhancer.module.css'
@@ -11,33 +12,9 @@ const LESSON_PREFIXES = [
 ]
 
 const COPY = {
-  de: { tools: 'Lernwerkzeuge', sections: 'Abschnitte', focus: 'Fokusmodus', expand: 'Alle öffnen', collapse: 'Alle schließen', progress: 'Lesefortschritt', close: 'Schließen' },
-  en: { tools: 'Learning tools', sections: 'Sections', focus: 'Focus mode', expand: 'Expand all', collapse: 'Collapse all', progress: 'Reading progress', close: 'Close' },
-  fa: { tools: 'ابزارهای یادگیری', sections: 'بخش‌ها', focus: 'حالت تمرکز', expand: 'باز کردن همه', collapse: 'بستن همه', progress: 'پیشرفت مطالعه', close: 'بستن' },
-}
-
-const ICON_RULES = [
-  [/take.?home|summary|zusammen|merke|fazit|checklist|lernziel|key/, '💡'],
-  [/anatom|grundlag|basis|definition|orient|intro|ueberblick|überblick/, '📚'],
-  [/composition|dichte|density|gewebe|tissue/, '🧬'],
-  [/verkalk|calcification|kalk/, '✦'],
-  [/mass|läsion|laesion|lesion|tumou?r|knoten|nodule/, '◉'],
-  [/asymmetr|distortion/, '◐'],
-  [/mrt|mri|ct|sono|ultraschall|roentgen|röntgen|bildgebung|imaging|sequenz|protokoll/, '🩻'],
-  [/patho|histolog|mikro|etiolog|ursache|mechanism/, '🔬'],
-  [/klinik|symptom|befund|zeichen|diagnos|assessment/, '🩺'],
-  [/differen|vergleich|mimic|fallstrick|pitfall/, '⚖️'],
-  [/therap|management|behandlung|intervention|follow|verlauf/, '🛡️'],
-  [/klass|grading|staging|score|kriter|algorithm|system/, '🧭'],
-  [/komplik|cave|risiko|warning|notfall/, '⚠️'],
-  [/fall|case|beispiel|quiz|trainer|praxis/, '🧩'],
-  [/gef[aä]ss|vaskul|arter|ven|blut/, '🩸'],
-  [/video|film/, '▶️'],
-]
-
-function iconFor(id = '', title = '') {
-  const value = `${id} ${title}`.toLocaleLowerCase('de-DE')
-  return ICON_RULES.find(([pattern]) => pattern.test(value))?.[1] || '◆'
+  de: { sections: 'Abschnitte', progress: 'Lektionsfortschritt', read: 'gelesen', close: 'Schließen' },
+  en: { sections: 'Sections', progress: 'Lesson progress', read: 'read', close: 'Close' },
+  fa: { sections: 'بخش‌ها', progress: 'پیشرفت درس', read: 'خوانده‌شده', close: 'بستن' },
 }
 
 function isLessonPath(pathname) {
@@ -49,17 +26,64 @@ function findHeading(section) {
   return section.querySelector(':scope > button h2, :scope > header h2, :scope > div:first-child h2, :scope > h2')
 }
 
+function isNumberMarker(element) {
+  return /^(?:0?[1-9]|[1-9][0-9])(?:\s*[·.)].*)?$/.test(element?.textContent?.trim() || '')
+}
+
+function menuEntries(aside) {
+  return Array.from(aside.querySelectorAll('button, a[href^="#"]'))
+    .filter(entry => !entry.closest('[data-lesson-progress-ui]'))
+}
+
+function findSidebar(main, sectionCount) {
+  const candidates = Array.from(main.querySelectorAll('aside'))
+    .map(aside => ({ aside, entries: menuEntries(aside) }))
+    .filter(candidate => candidate.entries.length >= Math.min(2, sectionCount))
+  if (!candidates.length) return null
+  candidates.sort((a, b) => {
+    const aVisible = a.aside.getClientRects().length ? 1 : 0
+    const bVisible = b.aside.getClientRects().length ? 1 : 0
+    if (aVisible !== bVisible) return bVisible - aVisible
+    return Math.abs(a.entries.length - sectionCount) - Math.abs(b.entries.length - sectionCount)
+  })
+  return candidates[0]
+}
+
+function sourceIcon(entry) {
+  if (!entry) return null
+  const first = entry.querySelector(':scope > span:first-child, :scope > svg:first-child')
+  if (!first || (first.tagName !== 'SVG' && isNumberMarker(first))) return null
+  return first
+}
+
+function headerAlreadyHasIcon(heading) {
+  const siblings = Array.from(heading.parentElement?.children || [])
+  const headingIndex = siblings.indexOf(heading)
+  return siblings.slice(0, headingIndex).some(element => {
+    if (element.matches('[data-lesson-section-icon], small') || isNumberMarker(element)) return false
+    return Boolean(element.matches('svg') || element.querySelector('svg') || (element.textContent?.trim() || '').length <= 4)
+  })
+}
+
+function IconMarkup({ html }) {
+  if (!html) return <span className={styles.iconPlaceholder} aria-hidden="true" />
+  return <span className={styles.menuIcon} aria-hidden="true" dangerouslySetInnerHTML={{ __html: html }} />
+}
+
 export default function LessonEnhancer() {
   const pathname = usePathname()
   const { lang } = useLanguage()
   const copy = COPY[lang] || COPY.de
   const enabled = isLessonPath(pathname)
+  const storageKey = `radyar-lesson-sections:${pathname}`
   const [sections, setSections] = useState([])
   const [activeId, setActiveId] = useState('')
-  const [progress, setProgress] = useState(0)
+  const [readIds, setReadIds] = useState(() => new Set())
+  const [loadedKey, setLoadedKey] = useState('')
   const [panelOpen, setPanelOpen] = useState(false)
-  const [focus, setFocus] = useState(false)
   const [mobile, setMobile] = useState(false)
+  const [sidebarTarget, setSidebarTarget] = useState(null)
+  const [navbarTarget, setNavbarTarget] = useState(null)
 
   useEffect(() => {
     const query = window.matchMedia('(max-width: 760px)')
@@ -69,102 +93,140 @@ export default function LessonEnhancer() {
     return () => query.removeEventListener?.('change', update)
   }, [])
 
-  const decorate = useCallback(() => {
-    if (!enabled) return []
-    const found = Array.from(document.querySelectorAll('main section[id]')).flatMap(section => {
+  useEffect(() => {
+    if (!enabled) return
+    try {
+      const saved = JSON.parse(window.localStorage.getItem(storageKey) || '[]')
+      setReadIds(new Set(Array.isArray(saved) ? saved : []))
+    } catch {
+      setReadIds(new Set())
+    }
+    setLoadedKey(storageKey)
+  }, [enabled, storageKey])
+
+  useEffect(() => {
+    if (!enabled || loadedKey !== storageKey) return
+    window.localStorage.setItem(storageKey, JSON.stringify(Array.from(readIds)))
+  }, [enabled, loadedKey, readIds, storageKey])
+
+  const discover = useCallback(() => {
+    if (!enabled) return
+    const main = document.querySelector('main')
+    if (!main) return
+    const foundSections = Array.from(main.querySelectorAll('section[id]')).flatMap(section => {
       const heading = findHeading(section)
-      if (!heading) return []
-      const title = heading.textContent?.trim() || section.id
-      const icon = iconFor(section.id, title)
-      section.classList.add(styles.enhancedSection)
+      return heading ? [{ heading, id: section.id, title: heading.textContent?.trim() || section.id }] : []
+    })
+    const sidebar = findSidebar(main, foundSections.length)
+    const entries = sidebar?.entries || []
 
-      const markers = section.querySelectorAll('small, span')
-      let hasHeadingMarker = false
-      markers.forEach(marker => {
-        const value = marker.textContent?.trim() || ''
-        const numeric = /^(?:0?[1-9]|1[0-9])(?:\s*[·.)]\s*.*)?$/.test(value)
-        const structural = marker.nextElementSibling?.matches('h2, h3')
-          || /takeHomeItem|cardNumber|eyebrow|dimensionRail|findingRail/.test(marker.parentElement?.className || marker.className || '')
-        if (numeric && structural) {
-          if (marker.nextElementSibling?.matches('h2')) hasHeadingMarker = true
-          const itemTitle = marker.parentElement?.querySelector('h3, strong')?.textContent || title
-          marker.classList.add(styles.iconMarker)
-          marker.dataset.lessonIcon = iconFor(section.id, itemTitle)
-          marker.setAttribute('aria-hidden', 'true')
-        }
-      })
-      if (hasHeadingMarker) {
-        heading.classList.remove(styles.enhancedHeading)
-        delete heading.dataset.lessonIcon
-      } else {
-        heading.classList.add(styles.enhancedHeading)
-        heading.dataset.lessonIcon = icon
+    document.querySelectorAll('[data-lesson-section-icon]').forEach(icon => icon.remove())
+    document.querySelectorAll('[data-lesson-number-marker]').forEach(marker => {
+      marker.classList.remove(styles.hiddenNumber)
+      delete marker.dataset.lessonNumberMarker
+    })
+
+    const found = foundSections.map((item, index) => {
+      const icon = sourceIcon(entries[index])
+      const numericMarker = Array.from(item.heading.parentElement?.children || [])
+        .find(element => element !== item.heading && element.matches('small') && isNumberMarker(element))
+      if (numericMarker) {
+        numericMarker.dataset.lessonNumberMarker = 'true'
+        numericMarker.classList.add(styles.hiddenNumber)
       }
-      return [{ id: section.id, title, icon }]
+      if (icon && !headerAlreadyHasIcon(item.heading)) {
+        const clone = icon.cloneNode(true)
+        clone.dataset.lessonSectionIcon = 'true'
+        clone.classList.add(styles.headerIcon)
+        clone.setAttribute('aria-hidden', 'true')
+        item.heading.parentElement?.insertBefore(clone, item.heading)
+      }
+      return { id: item.id, title: item.title, iconHtml: icon?.outerHTML || '' }
     })
 
-    document.querySelectorAll('main aside button span:first-child').forEach((marker, index) => {
-      if (!/^0?[1-9]$/.test(marker.textContent?.trim() || '')) return
-      const title = marker.parentElement?.querySelector('strong')?.textContent || found[index]?.title || ''
-      marker.classList.add(styles.iconMarker)
-      marker.dataset.lessonIcon = found[index]?.icon || iconFor('', title)
-      marker.setAttribute('aria-hidden', 'true')
+    setSections(current => {
+      const before = current.map(item => `${item.id}:${item.title}:${item.iconHtml}`).join('|')
+      const after = found.map(item => `${item.id}:${item.title}:${item.iconHtml}`).join('|')
+      return before === after ? current : found
     })
-    return found
-  }, [enabled, lang])
+    setActiveId(current => found.some(item => item.id === current) ? current : (found[0]?.id || ''))
+    setSidebarTarget(sidebar?.aside || null)
+    setNavbarTarget(document.querySelector('[data-radyar-navbar]'))
+  }, [enabled])
 
   useEffect(() => {
     if (!enabled) return undefined
-    let frame = 0
-    const sync = () => {
-      window.cancelAnimationFrame(frame)
-      frame = window.requestAnimationFrame(() => {
-        const found = decorate()
-        const signature = found.map(item => `${item.id}:${item.title}`).join('|')
-        setSections(current => current.map(item => `${item.id}:${item.title}`).join('|') === signature ? current : found)
-        setActiveId(current => current || found[0]?.id || '')
+    const firstTimer = window.setTimeout(discover, 0)
+    const secondTimer = window.setTimeout(discover, 350)
+    window.addEventListener('load', discover)
+    return () => {
+      window.clearTimeout(firstTimer)
+      window.clearTimeout(secondTimer)
+      window.removeEventListener('load', discover)
+      document.querySelectorAll('[data-lesson-section-icon]').forEach(icon => icon.remove())
+      document.querySelectorAll('[data-lesson-number-marker]').forEach(marker => {
+        marker.classList.remove(styles.hiddenNumber)
+        delete marker.dataset.lessonNumberMarker
       })
     }
-    sync()
-    const observer = new MutationObserver(sync)
-    observer.observe(document.body, { childList: true, characterData: true, subtree: true })
-    return () => { window.cancelAnimationFrame(frame); observer.disconnect() }
-  }, [decorate, enabled, pathname])
+  }, [discover, enabled, lang, pathname])
+
+  const markRead = useCallback(id => {
+    if (!id) return
+    setReadIds(current => {
+      if (current.has(id)) return current
+      const next = new Set(current)
+      next.add(id)
+      return next
+    })
+  }, [])
 
   useEffect(() => {
     if (!enabled || !sections.length) return undefined
     const update = () => {
-      const main = document.querySelector('main')
-      if (!main) return
-      const start = main.getBoundingClientRect().top + window.scrollY
-      const length = Math.max(1, main.scrollHeight - window.innerHeight)
-      setProgress(Math.max(0, Math.min(100, Math.round((window.scrollY - start + 120) / length * 100))))
-      let current = sections[0].id
-      for (const item of sections) {
+      const pivot = window.innerHeight * .38
+      let current = sections[0]?.id || ''
+      let nearest = Number.POSITIVE_INFINITY
+      sections.forEach(item => {
         const element = document.getElementById(item.id)
-        if (element && element.getBoundingClientRect().top <= window.innerHeight * .42) current = item.id
-      }
+        if (!element) return
+        const rect = element.getBoundingClientRect()
+        const distance = Math.abs(rect.top - pivot)
+        if (distance < nearest && rect.bottom > 80) {
+          nearest = distance
+          current = item.id
+        }
+      })
       setActiveId(current)
     }
     update()
     window.addEventListener('scroll', update, { passive: true })
     window.addEventListener('resize', update)
-    return () => { window.removeEventListener('scroll', update); window.removeEventListener('resize', update) }
+    return () => {
+      window.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+    }
   }, [enabled, sections])
 
   useEffect(() => {
-    if (!enabled) return undefined
-    document.documentElement.dataset.lessonFocus = focus ? 'true' : 'false'
-    return () => { delete document.documentElement.dataset.lessonFocus }
-  }, [enabled, focus])
+    if (!enabled || !activeId || readIds.has(activeId)) return undefined
+    const section = document.getElementById(activeId)
+    const toggle = section?.querySelector(':scope > button[aria-expanded]')
+    if (toggle && toggle.getAttribute('aria-expanded') !== 'true') return undefined
+    const timer = window.setTimeout(() => markRead(activeId), 2500)
+    return () => window.clearTimeout(timer)
+  }, [activeId, enabled, markRead, readIds])
 
   useEffect(() => {
-    if (!enabled) return
-    document.querySelectorAll(`main section.${styles.enhancedSection}`).forEach(section => {
-      if (section.id === activeId) section.dataset.lessonCurrent = 'true'
-      else delete section.dataset.lessonCurrent
-    })
-  }, [activeId, enabled, sections])
+    if (!enabled) return undefined
+    const handleClick = event => {
+      if (!event.isTrusted) return
+      const toggle = event.target.closest?.('main section[id] > button[aria-expanded]')
+      if (toggle?.getAttribute('aria-expanded') === 'false') markRead(toggle.parentElement?.id)
+    }
+    document.addEventListener('click', handleClick, true)
+    return () => document.removeEventListener('click', handleClick, true)
+  }, [enabled, markRead])
 
   useEffect(() => {
     if (!panelOpen) return undefined
@@ -173,40 +235,40 @@ export default function LessonEnhancer() {
     return () => window.removeEventListener('keydown', close)
   }, [panelOpen])
 
+  const validReadCount = useMemo(() => sections.filter(section => readIds.has(section.id)).length, [readIds, sections])
+  const progress = sections.length ? Math.round(validReadCount / sections.length * 100) : 0
   const active = useMemo(() => sections.find(section => section.id === activeId), [activeId, sections])
+
   if (!enabled || sections.length < 2) return null
 
   const scrollTo = id => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const element = document.getElementById(id)
+    const toggle = element?.querySelector(':scope > button[aria-expanded]')
+    if (toggle?.getAttribute('aria-expanded') === 'false') toggle.click()
+    window.setTimeout(() => element?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 30)
     setPanelOpen(false)
   }
-  const setExpanded = open => {
-    let attempts = 0
-    const updateNext = () => {
-      const buttons = Array.from(document.querySelectorAll(`main section.${styles.enhancedSection} > button[aria-expanded]`))
-      const next = buttons.find(button => (button.getAttribute('aria-expanded') === 'true') !== open)
-      if (!next || attempts >= sections.length + 2) return
-      attempts += 1
-      next.click()
-      window.setTimeout(updateNext, 35)
-    }
-    updateNext()
-  }
+
+  const navProgress = <div className={styles.navProgress} data-lesson-progress-ui aria-hidden="true"><span style={{ width: `${progress}%` }} /></div>
+  const desktopProgress = <div className={styles.desktopProgress} data-lesson-progress-ui aria-label={`${copy.progress}: ${progress}%`}>
+    <div><span>{copy.progress}</span><strong>{progress}%</strong></div>
+    <div className={styles.desktopTrack} aria-hidden="true"><span style={{ width: `${progress}%` }} /></div>
+    <small>{validReadCount} / {sections.length} {copy.read}</small>
+  </div>
 
   return <div className={styles.root} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
-    <div className={styles.progressTrack} aria-hidden="true"><span style={{ width: `${progress}%` }}/></div>
-    {panelOpen && <div className={styles.panel} role="dialog" aria-label={copy.sections}>
-      <header><div><small>{copy.tools}</small><strong>{copy.sections}</strong></div><button type="button" onClick={() => setPanelOpen(false)} aria-label={copy.close}>×</button></header>
-      <nav>{sections.map(section => <button type="button" key={section.id} className={section.id === activeId ? styles.current : ''} onClick={() => scrollTo(section.id)}><span>{section.icon}</span><strong>{section.title}</strong></button>)}</nav>
-      {!mobile && <footer><button type="button" onClick={() => setExpanded(true)}>＋ {copy.expand}</button><button type="button" onClick={() => setExpanded(false)}>− {copy.collapse}</button></footer>}
+    {navbarTarget ? createPortal(navProgress, navbarTarget) : null}
+    {!mobile && sidebarTarget ? createPortal(desktopProgress, sidebarTarget) : null}
+    {mobile && panelOpen && <div className={styles.panel} role="dialog" aria-label={copy.sections} data-lesson-progress-ui>
+      <header><div><small>{copy.progress}</small><strong>{validReadCount} / {sections.length} · {progress}%</strong></div><button type="button" onClick={() => setPanelOpen(false)} aria-label={copy.close}>×</button></header>
+      <nav>{sections.map(section => <button type="button" key={section.id} className={section.id === activeId ? styles.current : ''} onClick={() => scrollTo(section.id)}><IconMarkup html={section.iconHtml} /><strong>{section.title}</strong><i aria-hidden="true">{readIds.has(section.id) ? '✓' : ''}</i></button>)}</nav>
     </div>}
-    <div className={styles.toolbar} aria-label={copy.tools}>
-      <button type="button" className={styles.progressButton} onClick={() => setPanelOpen(value => !value)} aria-expanded={panelOpen} aria-label={`${copy.progress}: ${progress}%. ${copy.sections}`} title={copy.sections}>
+    {mobile && <div className={styles.toolbar} aria-label={copy.progress} data-lesson-progress-ui>
+      <button type="button" className={styles.progressButton} onClick={() => setPanelOpen(value => !value)} aria-expanded={panelOpen} aria-label={`${copy.progress}: ${progress}%. ${copy.sections}`}>
         <span style={{ '--progress': `${progress * 3.6}deg` }}><b>{progress}</b><small>%</small></span>
-        <i>{active?.icon}</i><strong>{active?.title}</strong>
+        <IconMarkup html={active?.iconHtml} /><strong>{active?.title}</strong>
       </button>
-      <button type="button" className={focus ? styles.focusActive : ''} aria-label={copy.focus} aria-pressed={focus} onClick={() => setFocus(value => !value)} title={copy.focus}>◉</button>
-    </div>
+    </div>}
     <span className={styles.srOnly} aria-live="polite">{copy.progress}: {progress}%</span>
   </div>
 }

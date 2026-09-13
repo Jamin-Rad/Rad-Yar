@@ -18,16 +18,32 @@ const READ_COPY = {
   fa: { mark: 'علامت‌گذاری به‌عنوان خوانده‌شده', read: 'به‌عنوان خوانده‌شده علامت‌گذاری شد', error: 'برای ذخیره پیشرفت لطفاً وارد شوید.', signIn: 'ورود' },
 }
 
+const SECTION_ICON_PATHS = {
+  systematik: 'M5 5h14v14H5z M8 9h8 M8 12h8 M8 15h5',
+  composition: 'M8 5c-3 2-4 5-2 8s4 5 6 6c2-1 4-3 6-6s1-6-2-8 M9 10h.01 M15 10h.01 M12 14h.01',
+  mass: 'M12 3l2.4 3.5 4.1-.4-.4 4.1 3.5 2.4-3.5 2.4.4 4.1-4.1-.4L12 21l-2.4-3.5-4.1.4.4-4.1L2.4 11.4l3.5-2.4-.4-4.1 4.1.4z',
+  kalk: 'M12 3v4 M12 17v4 M3 12h4 M17 12h4 M5.6 5.6l2.8 2.8 M15.6 15.6l2.8 2.8 M18.4 5.6l-2.8 2.8 M8.4 15.6l-2.8 2.8',
+  asymmetrie: 'M12 4v16 M12 8c-2-3-6-3-7 1-1 5 3 8 7 8 M12 8c2-3 6-3 7 1 1 5-3 8-7 8',
+  problemloeser: 'M4 7l8-4 8 4-8 4z M4 12l8 4 8-4 M4 17l8 4 8-4',
+  assessment: 'M7 4h10v3H7z M5 6h14v15H5z M8 12l2 2 5-5 M8 17h8',
+  algorithmus: 'M6 4h5v5H6z M13 15h5v5h-5z M8.5 9v3h7v3 M15.5 9v3',
+  action: 'M4 5h7a3 3 0 0 1 3 3v11H7a3 3 0 0 0-3 2z M20 5h-5a3 3 0 0 0-3 3 M16 12l2 2 3-4',
+}
+
+function SectionIcon({ id }) {
+  return <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d={SECTION_ICON_PATHS[id]} /></svg>
+}
+
 function ReadButton({ isRead, onClick, authError, lang }) {
   const copy = READ_COPY[lang] || READ_COPY.de
   return <div className={base.readControl}><button type="button" className={`${base.readButton} ${shared.readButton} ${isRead ? `${base.readButtonActive} ${shared.readButtonActive}` : ''}`} onClick={onClick}><span className={`${base.readCheck} ${shared.readCheck}`}>{isRead ? '✓' : ''}</span><span>{isRead ? copy.read : copy.mark}</span></button>{authError && <div className={base.readError} role="alert"><span>{copy.error}</span><Link href="/sign-in">{copy.signIn}</Link></div>}</div>
 }
 
-function Section({ id, number, title, children }) {
+function Section({ id, title, children }) {
   const mobile = useMobileLearningLayout()
   const [open, setOpen] = useState(true)
   useEffect(() => setOpen(false), [id])
-  return <section id={id} className={`${base.section} ${shared.section} ${styles.section}`}><button className={`${base.sectionHeader} ${shared.sectionHeader}`} type="button" onClick={() => setOpen(value => !value)} aria-expanded={open}><span className={shared.sectionHeading}><small>{number}</small><h2>{title}</h2></span><span className={shared.sectionToggle}>{open ? '−' : '+'}</span></button>{open && <div className={`${base.sectionBody} ${shared.sectionBody} ${styles.sectionBody}`}>{children}</div>}</section>
+  return <section id={id} className={`${base.section} ${shared.section} ${styles.section}`}><button className={`${base.sectionHeader} ${shared.sectionHeader}`} type="button" onClick={() => setOpen(value => !value)} aria-expanded={open}><span className={shared.sectionHeading}><span className={shared.sectionIcon}><SectionIcon id={id} /></span><h2>{title}</h2></span><span className={shared.sectionToggle}>{open ? '−' : '+'}</span></button>{open && <div className={`${base.sectionBody} ${shared.sectionBody} ${styles.sectionBody}`}>{children}</div>}</section>
 }
 
 function ActionCase({ lang }) {
@@ -66,7 +82,7 @@ export default function MammographieGrundlagenPage() {
         <div className={`${base.heroStats} ${styles.heroStats}`}><div className={`${base.heroStat} ${shared.heroStat}`}><strong>Mass</strong><span>Shape · Margin</span><small>Density</small></div><div className={`${base.heroStat} ${shared.heroStat}`}><strong>{tx(L('Kalk', 'Calcifications', 'کلسیم'))}</strong><span>Morphology</span><small>Distribution</small></div><div className={`${base.heroStat} ${shared.heroStat}`}><strong>Assessment</strong><span>BI-RADS</span><small>Management</small></div></div>
       </div></header>
     <div className={base.readBar}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} lang={lang} /></div>
-    <div className={base.layout}><aside className={`${base.sidebar} ${shared.sidebar}`}><div className={base.sideTitle}>{tx(COPY.contents)}</div>{SECTIONS.map(item => <button key={item.id} type="button" className={`${base.sideItem} ${shared.sideItem} ${activeId === item.id ? `${base.sideItemActive} ${shared.sideItemActive}` : ''}`} onClick={() => document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}><span className={shared.sideNumber}>{item.number}</span><strong>{tx(item.label)}</strong></button>)}</aside>
+    <div className={base.layout}><aside className={`${base.sidebar} ${shared.sidebar}`}><div className={base.sideTitle}>{tx(COPY.contents)}</div>{SECTIONS.map(item => <button key={item.id} type="button" className={`${base.sideItem} ${shared.sideItem} ${activeId === item.id ? `${base.sideItemActive} ${shared.sideItemActive}` : ''}`} onClick={() => document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}><span className={shared.sideNumber}><SectionIcon id={item.id} /></span><strong>{tx(item.label)}</strong></button>)}</aside>
       <div className={base.main}>
         <Section {...SECTIONS[0]} title={tx(SECTIONS[0].label)}><p className={styles.lead}>{tx(L('Eine Mammographie beginnt nicht mit der Frage „Karzinom oder nicht?“. Zuerst wird der sichtbare Befund objektiv beschrieben; erst danach folgen Assessment und Management.', 'Mammography does not begin with “cancer or not?”. First describe the visible finding objectively; assessment and management follow.', 'ماموگرافی با سؤال «سرطان هست یا نه؟» آغاز نمی‌شود. ابتدا یافته قابل مشاهده به‌طور عینی توصیف و سپس ارزیابی و اقدام تعیین می‌شود.'))}</p><div className={styles.findingRail}>{FINDINGS.map((item, index) => <article key={item.key}><span>{String(index + 1).padStart(2, '0')}</span><h3>{tx(item.title)}</h3><p>{tx(item.text)}</p></article>)}</div><div className={styles.rule}><strong>{tx(L('Leitprinzip', 'Guiding principle', 'اصل راهنما'))}</strong><p>{tx(L('Ein BI-RADS-Descriptor ist noch keine Diagnose.', 'A BI-RADS descriptor is not yet a diagnosis.', 'دسکریپتور BI-RADS هنوز تشخیص نیست.'))}</p></div></Section>
         <Section {...SECTIONS[1]} title={tx(SECTIONS[1].label)}><p className={styles.lead}>{tx(L('Die Kategorie beschreibt nicht nur den Drüsengewebsanteil, sondern klinisch vor allem den Masking-Effekt.', 'The category describes not only the amount of fibroglandular tissue but, clinically, its masking effect.', 'این دسته نه‌تنها میزان بافت فیبروگلاندولار، بلکه اثر پنهان‌کنندگی آن را توصیف می‌کند.'))}</p><div className={styles.composition}>{COMPOSITION.map(item => <article key={item.code}><strong>{item.code}</strong><div><h3>{tx(item.text)}</h3><p>{item.official}</p></div></article>)}</div><div className={styles.questionLine}>{tx(L('Kann das vorhandene Drüsengewebe eine relevante Läsion verdecken?', 'Could the existing fibroglandular tissue obscure a relevant lesion?', 'آیا بافت غده‌ای موجود می‌تواند ضایعه مهمی را پنهان کند؟'))}</div></Section>

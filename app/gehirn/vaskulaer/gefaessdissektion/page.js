@@ -3,8 +3,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
 import InProgressBanner from '@/components/InProgressBanner'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
@@ -124,7 +122,6 @@ export default function GefaessdissektionPage() {
   ]
 
   return <>
-    <Navbar />
     <main className={`${styles.page} ${styles.strokePage}`} dir={rtl ? 'rtl' : 'ltr'} lang={lang}>
       <InProgressBanner lang={lang} />
       <header className={styles.header}>
@@ -153,6 +150,5 @@ export default function GefaessdissektionPage() {
       </div>
       {preview && <div className={styles.strokeImageModal} role="dialog" aria-modal="true" aria-label={copy.zoom} onClick={() => setPreview(null)}><div className={styles.strokeImageModalContent} onClick={event => event.stopPropagation()} onWheel={event => { if (!preview.frames?.length) return; event.preventDefault(); movePreview(event.deltaY > 0 ? 1 : -1) }}><button type="button" className={styles.strokeImageModalClose} onClick={() => setPreview(null)} aria-label={copy.close}>×</button><img src={preview.src} alt={preview.alt} />{preview.frames?.length > 1 && <><div style={{ width: 'min(720px,92%)', display: 'grid', gridTemplateColumns: '42px minmax(0,1fr) 42px', gap: 12, alignItems: 'center', marginTop: 12 }}><button type="button" onClick={() => movePreview(-1)} disabled={preview.index === 0}>‹</button><input type="range" min="0" max={preview.frames.length - 1} value={preview.index} onChange={event => { const index = Number(event.target.value); setPreview(value => ({ ...value, index, src: value.frames[index] })) }} style={{ width: '100%', accentColor: '#8b5cf6' }} /><button type="button" onClick={() => movePreview(1)} disabled={preview.index === preview.frames.length - 1}>›</button></div><small style={{ color: '#cbd5e1', marginTop: 7 }}>{copy.image(preview.index + 1, preview.frames.length)} · {copy.scroll}</small></>}</div></div>}
     </main>
-    <Footer />
   </>
 }

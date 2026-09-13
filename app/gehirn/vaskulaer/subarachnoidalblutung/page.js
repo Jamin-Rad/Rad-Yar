@@ -6,8 +6,6 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
 import { SAB_LESSON } from '@/data/sab'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
 import InProgressBanner from '@/components/InProgressBanner'
 import styles from '../../../abdomen/gi/divertikulitis/page.module.css'
 
@@ -136,7 +134,6 @@ export default function SubarachnoidalblutungPage() {
 
   return (
     <>
-      <Navbar />
       <InProgressBanner lang={lang} />
       <main className={`${styles.page} ${styles.strokePage}`} dir={isRTL ? 'rtl' : 'ltr'} lang={lang}>
         <header className={styles.header}>
@@ -259,7 +256,6 @@ export default function SubarachnoidalblutungPage() {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   )
 }
