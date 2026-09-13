@@ -12,9 +12,9 @@ const LESSON_PREFIXES = [
 ]
 
 const COPY = {
-  de: { sections: 'Abschnitte', progress: 'Lektionsfortschritt', read: 'gelesen', close: 'Schließen' },
-  en: { sections: 'Sections', progress: 'Lesson progress', read: 'read', close: 'Close' },
-  fa: { sections: 'بخش‌ها', progress: 'پیشرفت درس', read: 'خوانده‌شده', close: 'بستن' },
+  de: { sections: 'Abschnitte', progress: 'Lektionsfortschritt', read: 'gelesen', close: 'Schließen', recall: 'Kurztest', concepts: 'Begriffe', think: 'Erst selbst beantworten', reveal: 'Antwort anzeigen', next: 'Nächste Frage', restart: 'Neu starten', done: 'Test abgeschlossen' },
+  en: { sections: 'Sections', progress: 'Lesson progress', read: 'read', close: 'Close', recall: 'Quick check', concepts: 'concepts', think: 'Answer from memory first', reveal: 'Show answer', next: 'Next question', restart: 'Restart', done: 'Check completed' },
+  fa: { sections: 'بخش‌ها', progress: 'پیشرفت درس', read: 'خوانده‌شده', close: 'بستن', recall: 'مرور فعال', concepts: 'مفهوم', think: 'ابتدا از حافظه پاسخ بدهید', reveal: 'نمایش پاسخ', next: 'پرسش بعدی', restart: 'شروع دوباره', done: 'مرور کامل شد' },
 }
 
 function isLessonPath(pathname) {
@@ -70,6 +70,81 @@ function IconMarkup({ html }) {
   return <span className={styles.menuIcon} aria-hidden="true" dangerouslySetInnerHTML={{ __html: html }} />
 }
 
+function cleanText(value) {
+  return (value || '').replace(/\s+/g, ' ').trim()
+}
+
+function extractRecall(section) {
+  const target = section.querySelector(':scope > button[aria-expanded] + div, :scope > div:last-child')
+  if (!target || target.closest('[data-lesson-recall]')) return null
+  const cards = []
+  const seen = new Set()
+  const add = (prompt, answer) => {
+    const question = cleanText(prompt)
+    const response = cleanText(answer)
+    const key = `${question}|${response}`
+    if (question.length < 2 || question.length > 150 || response.length < 18 || response.length > 900 || seen.has(key)) return
+    seen.add(key)
+    cards.push({ prompt: question, answer: response })
+  }
+
+  target.querySelectorAll('article, li, div').forEach(item => {
+    if (item.closest('section[id]') !== section || item.closest('[data-lesson-recall]')) return
+    if (item.querySelector('button, input, select, textarea')) return
+    const prompt = item.querySelector(':scope > h3, :scope > h4, :scope > strong, :scope > b')
+    const answer = item.querySelector(':scope > p')
+    if (prompt && answer) add(prompt.textContent, answer.textContent)
+  })
+
+  if (cards.length < 2) {
+    target.querySelectorAll('tbody tr').forEach(row => {
+      if (row.closest('section[id]') !== section || row.querySelector('button, input, select, textarea')) return
+      const cells = Array.from(row.querySelectorAll(':scope > th, :scope > td'))
+      if (cells.length >= 2) add(cells[0].textContent, cells.slice(1).map(cell => cell.textContent).join(' · '))
+    })
+  }
+
+  return cards.length >= 2 ? { target, cards: cards.slice(0, 12) } : null
+}
+
+function RecallIcon() {
+  return <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M8 5a3 3 0 0 0-3 3v1a3 3 0 0 0 1 5v1a3 3 0 0 0 3 3c1.3 0 2.4-.8 3-1.8.6 1 1.7 1.8 3 1.8a3 3 0 0 0 3-3v-1a3 3 0 0 0 1-5V8a3 3 0 0 0-3-3c-1.3 0-2.4.8-3 1.8C10.4 5.8 9.3 5 8 5Z M12 7v9 M7 10h2 M15 13h2" /></svg>
+}
+
+function RecallExercise({ cards, copy, sectionTitle }) {
+  const [open, setOpen] = useState(false)
+  const [index, setIndex] = useState(0)
+  const [revealed, setRevealed] = useState(false)
+  const complete = index === cards.length - 1 && revealed
+  const advance = () => {
+    if (complete) {
+      setIndex(0)
+      setRevealed(false)
+      return
+    }
+    setIndex(value => Math.min(cards.length - 1, value + 1))
+    setRevealed(false)
+  }
+  const current = cards[index]
+
+  return <div className={`${styles.recall} ${open ? styles.recallOpen : ''}`} data-lesson-recall data-lesson-progress-ui>
+    <button type="button" className={styles.recallLaunch} onClick={() => setOpen(value => !value)} aria-expanded={open}>
+      <span><RecallIcon /></span><strong>{copy.recall}</strong><small>{cards.length} {copy.concepts}</small><i aria-hidden="true">{open ? '−' : '+'}</i>
+    </button>
+    {open && <div className={styles.recallBody}>
+      <div className={styles.recallMeta}><span>{sectionTitle}</span><strong>{index + 1} / {cards.length}</strong></div>
+      <div className={styles.recallSteps} aria-hidden="true">{cards.map((_, step) => <i key={step} className={step <= index ? styles.recallStepActive : ''} />)}</div>
+      <small className={styles.recallHint}>{copy.think}</small>
+      <h3>{current.prompt}</h3>
+      {!revealed ? <button type="button" className={styles.revealButton} onClick={() => setRevealed(true)}>{copy.reveal}</button> : <>
+        <div className={styles.recallAnswer}><RecallIcon /><p>{current.answer}</p></div>
+        <button type="button" className={styles.nextButton} onClick={advance}>{complete ? copy.restart : copy.next}<span aria-hidden="true">→</span></button>
+        {complete && <small className={styles.recallDone}>{copy.done}</small>}
+      </>}
+    </div>}
+  </div>
+}
+
 export default function LessonEnhancer() {
   const pathname = usePathname()
   const { lang } = useLanguage()
@@ -84,6 +159,7 @@ export default function LessonEnhancer() {
   const [mobile, setMobile] = useState(false)
   const [sidebarTarget, setSidebarTarget] = useState(null)
   const [navbarTarget, setNavbarTarget] = useState(null)
+  const [recallSets, setRecallSets] = useState([])
 
   useEffect(() => {
     const query = window.matchMedia('(max-width: 760px)')
@@ -143,6 +219,10 @@ export default function LessonEnhancer() {
       }
       return { id: item.id, title: item.title, iconHtml: icon?.outerHTML || '' }
     })
+    const recalls = foundSections.flatMap((item, index) => {
+      const recall = extractRecall(document.getElementById(item.id))
+      return recall ? [{ id: item.id, title: found[index].title, ...recall }] : []
+    })
 
     setSections(current => {
       const before = current.map(item => `${item.id}:${item.title}:${item.iconHtml}`).join('|')
@@ -152,6 +232,11 @@ export default function LessonEnhancer() {
     setActiveId(current => found.some(item => item.id === current) ? current : (found[0]?.id || ''))
     setSidebarTarget(sidebar?.aside || null)
     setNavbarTarget(document.querySelector('[data-radyar-navbar]'))
+    setRecallSets(current => {
+      const before = current.map(item => `${item.id}:${item.cards.map(card => `${card.prompt}:${card.answer}`).join('|')}`).join('||')
+      const after = recalls.map(item => `${item.id}:${item.cards.map(card => `${card.prompt}:${card.answer}`).join('|')}`).join('||')
+      return before === after ? current : recalls
+    })
   }, [enabled])
 
   useEffect(() => {
@@ -220,13 +305,15 @@ export default function LessonEnhancer() {
   useEffect(() => {
     if (!enabled) return undefined
     const handleClick = event => {
-      if (!event.isTrusted) return
       const toggle = event.target.closest?.('main section[id] > button[aria-expanded]')
-      if (toggle?.getAttribute('aria-expanded') === 'false') markRead(toggle.parentElement?.id)
+      if (!toggle) return
+      if (event.isTrusted && toggle.getAttribute('aria-expanded') === 'false') markRead(toggle.parentElement?.id)
+      window.setTimeout(discover, 120)
+      window.setTimeout(discover, 420)
     }
     document.addEventListener('click', handleClick, true)
     return () => document.removeEventListener('click', handleClick, true)
-  }, [enabled, markRead])
+  }, [discover, enabled, markRead])
 
   useEffect(() => {
     if (!panelOpen) return undefined
@@ -259,6 +346,7 @@ export default function LessonEnhancer() {
   return <div className={styles.root} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
     {navbarTarget ? createPortal(navProgress, navbarTarget) : null}
     {!mobile && sidebarTarget ? createPortal(desktopProgress, sidebarTarget) : null}
+    {recallSets.map(recall => createPortal(<RecallExercise key={recall.id} cards={recall.cards} copy={copy} sectionTitle={recall.title} />, recall.target))}
     {mobile && panelOpen && <div className={styles.panel} role="dialog" aria-label={copy.sections} data-lesson-progress-ui>
       <header><div><small>{copy.progress}</small><strong>{validReadCount} / {sections.length} · {progress}%</strong></div><button type="button" onClick={() => setPanelOpen(false)} aria-label={copy.close}>×</button></header>
       <nav>{sections.map(section => <button type="button" key={section.id} className={section.id === activeId ? styles.current : ''} onClick={() => scrollTo(section.id)}><IconMarkup html={section.iconHtml} /><strong>{section.title}</strong><i aria-hidden="true">{readIds.has(section.id) ? '✓' : ''}</i></button>)}</nav>
