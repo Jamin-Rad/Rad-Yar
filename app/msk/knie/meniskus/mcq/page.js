@@ -2148,7 +2148,7 @@ const CONTENT = {
     therapy: {
       title: 'اصول درمان: Save the Meniscus',
       titlePrefix: 'اصول درمان',
-      saveText: 'Save the Meniscus',
+      saveText: 'حفظ منیسک',
       lead: 'تصمیم درمانی به علائم، شکل پارگی، محل پارگی و خون‌رسانی بستگی دارد. هدف، حفظ حداکثری بافت منیسک است.',
       tableHeaders: ['وضعیت', 'اصل درمانی'],
       tableRows: [

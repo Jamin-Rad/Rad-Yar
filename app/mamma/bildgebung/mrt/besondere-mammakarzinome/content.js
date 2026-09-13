@@ -55,13 +55,13 @@ export const TUMOURS = {
       'کارسینومی با رشد نفوذی و سلول‌های جدا از هم که معمولاً با از دست رفتن بیان E-cadherin همراه است و می‌تواند بدون تشکیل زودهنگام یک توده فشرده در استروما گسترش یابد.'
     ),
     pattern: [
-      L('Irreguläre oder spikulierte Mass, Non-Mass Enhancement oder Architekturstörung', 'Irregular or spiculated mass, non-mass enhancement or architectural distortion', 'Mass نامنظم یا اسپیکوله، Non-Mass Enhancement یا دیستورشن معماری'),
-      L('Häufig heterogenes, teils nur diskretes oder verzögertes Enhancement', 'Often heterogeneous, sometimes subtle or delayed enhancement', 'Enhancement اغلب ناهمگن و گاهی خفیف یا تأخیری'),
+      L('Irreguläre oder spikulierte Mass, Non-Mass Enhancement oder Architekturstörung', 'Irregular or spiculated mass, non-mass enhancement or architectural distortion', 'توده نامنظم یا اسپیکوله، افزایش سیگنال غیرتوده‌ای (NME) یا دیستورشن معماری'),
+      L('Häufig heterogenes, teils nur diskretes oder verzögertes Enhancement', 'Often heterogeneous, sometimes subtle or delayed enhancement', 'افزایش سیگنال پس از تزریق اغلب ناهمگن و گاهی خفیف یا تأخیری'),
       L('Erhöhte Neigung zu multifokalem, multizentrischem oder bilateralem Befall', 'Greater tendency toward multifocal, multicentric or bilateral disease', 'تمایل بیشتر به درگیری چندکانونی، چندمرکزی یا دوطرفه'),
     ],
     pitfalls: [
       L('Größe und Ausdehnung können in Mammographie und Sonographie unterschätzt werden.', 'Size and extent may be underestimated on mammography and ultrasound.', 'اندازه و وسعت ضایعه ممکن است در ماموگرافی و سونوگرافی کمتر از واقع برآورد شود.'),
-      L('Fehlende ausgeprägte KM-Aufnahme schließt ILC nicht aus.', 'Lack of avid enhancement does not exclude ILC.', 'نبود Enhancement شدید، ILC را رد نمی‌کند.'),
+      L('Fehlende ausgeprägte KM-Aufnahme schließt ILC nicht aus.', 'Lack of avid enhancement does not exclude ILC.', 'نبود افزایش سیگنال پس از تزریق شدید، ILC را رد نمی‌کند.'),
       L('Zusatzherde vor Therapieänderung gezielt korrelieren und histologisch sichern.', 'Correlate and sample additional lesions before changing treatment.', 'پیش از تغییر درمان، کانون‌های اضافی باید هدفمند تطبیق داده و از نظر بافت‌شناسی تأیید شوند.'),
     ],
     remember: L('Bei ILC beantwortet die MRT vor allem die Frage nach der tatsächlichen Ausdehnung.', 'In ILC, MRI is particularly valuable for defining true disease extent.', 'در ILC ارزش اصلی MRI تعیین وسعت واقعی بیماری است.'),
@@ -78,7 +78,7 @@ export const TUMOURS = {
     pattern: [
       L('Häufig rund, oval oder lobuliert und relativ scharf begrenzt', 'Often round, oval or lobulated and relatively circumscribed', 'اغلب گرد، بیضی یا لوبوله با حاشیه نسبتاً واضح'),
       L('Typischerweise deutlich T2-hyperintens durch hohen Muzingehalt', 'Typically markedly T2 hyperintense because of abundant mucin', 'به‌طور تیپیک به‌علت موسین فراوان در T2 بسیار پرسیگنال'),
-      L('Oft persistentes oder allmähliches Enhancement; zellreichere Anteile können kräftiger und heterogener anreichern', 'Often persistent or gradual enhancement; more cellular components may enhance more avidly and heterogeneously', 'اغلب Enhancement تدریجی یا Persistent؛ بخش‌های پرسلول‌تر ممکن است شدیدتر و ناهمگن‌تر Enhancement نشان دهند'),
+      L('Oft persistentes oder allmähliches Enhancement; zellreichere Anteile können kräftiger und heterogener anreichern', 'Often persistent or gradual enhancement; more cellular components may enhance more avidly and heterogeneously', 'اغلب افزایش سیگنال پس از تزریق تدریجی یا پایدار؛ بخش‌های پرسلول‌تر ممکن است شدیدتر و ناهمگن‌تر افزایش سیگنال پس از تزریق نشان دهند'),
     ],
     pitfalls: [
       L('Kann wegen T2-Hyperintensität und glatter Kontur wie ein Fibroadenom wirken.', 'It may mimic a fibroadenoma because of T2 hyperintensity and smooth contours.', 'به‌دلیل پرسیگنالی T2 و کانتور صاف می‌تواند شبیه فیبروآدنوم باشد.'),
@@ -97,9 +97,9 @@ export const TUMOURS = {
       'فنوتیپ مولکولی یا ایمونوهیستوشیمیایی بدون بیان ER و PR و بدون بیش‌بیانی HER2؛ نه یک نوع بافت‌شناختی مستقل.'
     ),
     pattern: [
-      L('Häufig runde oder ovale Mass mit relativ scharfem Rand trotz aggressiver Biologie', 'Often a round or oval mass with a relatively circumscribed margin despite aggressive biology', 'اغلب Mass گرد یا بیضی با حاشیه نسبتاً واضح، با وجود زیست‌شناسی تهاجمی'),
-      L('Thick Rim Enhancement, zentrale Nekrose und intratumorale T2-Hyperintensität', 'Thick rim enhancement, central necrosis and intratumoral T2 hyperintensity', 'Thick Rim Enhancement، نکروز مرکزی و پرسیگنالی داخل‌توموری در T2'),
-      L('Peritumorales Ödem und häufig rasche initiale KM-Aufnahme', 'Peritumoral oedema and often rapid initial enhancement', 'ادم پری‌تومورال و اغلب Enhancement سریع در فاز اولیه'),
+      L('Häufig runde oder ovale Mass mit relativ scharfem Rand trotz aggressiver Biologie', 'Often a round or oval mass with a relatively circumscribed margin despite aggressive biology', 'اغلب توده گرد یا بیضی با حاشیه نسبتاً واضح، با وجود زیست‌شناسی تهاجمی'),
+      L('Thick Rim Enhancement, zentrale Nekrose und intratumorale T2-Hyperintensität', 'Thick rim enhancement, central necrosis and intratumoral T2 hyperintensity', 'افزایش سیگنال حلقوی ضخیم، نکروز مرکزی و پرسیگنالی داخل‌توموری در T2'),
+      L('Peritumorales Ödem und häufig rasche initiale KM-Aufnahme', 'Peritumoral oedema and often rapid initial enhancement', 'ادم پری‌تومورال و اغلب افزایش سیگنال پس از تزریق سریع در فاز اولیه'),
     ],
     pitfalls: [
       L('Die glatte Kontur kann fälschlich benign wirken.', 'The smooth contour may falsely appear benign.', 'کانتور صاف ممکن است به‌اشتباه خوش‌خیم به نظر برسد.'),
@@ -115,16 +115,16 @@ export const TUMOURS = {
     definition: L(
       'Klinisch definierte, aggressive Erkrankung mit rasch aufgetretenem Erythem und Ödem beziehungsweise Peau d’orange. Eine diskrete oder fehlende Mass schließt sie nicht aus.',
       'A clinically defined aggressive disease with rapid-onset erythema and oedema or peau d’orange. A subtle or absent mass does not exclude it.',
-      'بیماری تهاجمی با تعریف بالینی شامل شروع سریع اریتم و ادم یا نمای پوست پرتقالی؛ وجود Mass واضح برای تشخیص الزامی نیست.'
+      'بیماری تهاجمی با تعریف بالینی شامل شروع سریع اریتم و ادم یا نمای پوست پرتقالی؛ وجود توده واضح برای تشخیص الزامی نیست.'
     ),
     pattern: [
-      L('Diffuse Hautverdickung und Haut-Enhancement', 'Diffuse skin thickening and skin enhancement', 'ضخیم‌شدگی منتشر پوست و Enhancement پوستی'),
+      L('Diffuse Hautverdickung und Haut-Enhancement', 'Diffuse skin thickening and skin enhancement', 'ضخیم‌شدگی منتشر پوست و افزایش سیگنال پس از تزریق پوستی'),
       L('T2-hyperintenses Ödem, verdickte Trabekel und häufig heterogenes diffuses NME', 'T2-hyperintense oedema, thickened trabeculae and often heterogeneous diffuse NME', 'ادم پرسیگنال در T2، ضخیم‌شدگی ترابکول‌ها و اغلب NME منتشر و ناهمگن'),
-      L('Mass, Multifokalität und suspekte axilläre oder interne mammäre Lymphknoten möglich', 'A mass, multifocal disease and suspicious axillary or internal mammary nodes may be present', 'امکان وجود Mass، بیماری چندکانونی و غدد لنفاوی آگزیلاری یا ماماری داخلی مشکوک'),
+      L('Mass, Multifokalität und suspekte axilläre oder interne mammäre Lymphknoten möglich', 'A mass, multifocal disease and suspicious axillary or internal mammary nodes may be present', 'امکان وجود توده، بیماری چندکانونی و غدد لنفاوی آگزیلاری یا ماماری داخلی مشکوک'),
     ],
     pitfalls: [
       L('Mastitis und Abszess können ein ähnliches Bild erzeugen.', 'Mastitis and abscess may look similar.', 'ماستیت و آبسه می‌توانند نمای مشابهی ایجاد کنند.'),
-      L('Fehlende fokale Mass darf die Abklärung nicht verzögern.', 'Absence of a focal mass must not delay evaluation.', 'نبود Mass کانونی نباید باعث تأخیر در بررسی شود.'),
+      L('Fehlende fokale Mass darf die Abklärung nicht verzögern.', 'Absence of a focal mass must not delay evaluation.', 'نبود توده کانونی نباید باعث تأخیر در بررسی شود.'),
       L('Die Diagnose entsteht aus Klinik, Bildgebung und Gewebe – nicht aus der MRT allein.', 'Diagnosis integrates clinical findings, imaging and tissue sampling, not MRI alone.', 'تشخیص حاصل ترکیب یافته‌های بالینی، تصویربرداری و نمونه‌برداری است، نه MRI به‌تنهایی.'),
     ],
     remember: L('Bei rascher entzündlicher Klinik ist IBC ein onkologischer Notfall bis zum Beweis des Gegenteils.', 'With rapidly developing inflammatory signs, treat IBC as an oncologic emergency until excluded.', 'در علائم التهابی با شروع سریع، تا زمان رد شدن باید IBC را یک اورژانس انکولوژیک دانست.'),
@@ -139,8 +139,8 @@ export const TUMOURS = {
       'گسترش داخل‌اپیدرمی سلول‌های بدخیم در مجموعه نوک پستان–آرئول که اغلب با DCIS یا کارسینوم مهاجم زمینه‌ای همراه است.'
     ),
     pattern: [
-      L('Asymmetrische Verdickung und pathologisches Enhancement der Mamille oder Areola', 'Asymmetric thickening and abnormal enhancement of the nipple or areola', 'ضخیم‌شدگی نامتقارن و Enhancement غیرطبیعی نوک پستان یا آرئول'),
-      L('Subareoläre Mass oder lineares/segmentales NME als Zeichen einer zugrunde liegenden Tumorkomponente', 'A subareolar mass or linear/segmental NME indicating an underlying tumour component', 'Mass ساب‌آرئولار یا NME خطی/سگمنتال به‌عنوان نشانه جزء توموری زمینه‌ای'),
+      L('Asymmetrische Verdickung und pathologisches Enhancement der Mamille oder Areola', 'Asymmetric thickening and abnormal enhancement of the nipple or areola', 'ضخیم‌شدگی نامتقارن و افزایش سیگنال پس از تزریق غیرطبیعی نوک پستان یا آرئول'),
+      L('Subareoläre Mass oder lineares/segmentales NME als Zeichen einer zugrunde liegenden Tumorkomponente', 'A subareolar mass or linear/segmental NME indicating an underlying tumour component', 'توده ساب‌آرئولار یا NME خطی/سگمنتال به‌عنوان نشانه جزء توموری زمینه‌ای'),
       L('Mamillenretraktion oder duktale Veränderungen können hinzukommen', 'Nipple retraction or ductal changes may coexist', 'ممکن است رتراکسیون نوک پستان یا تغییرات مجرایی همراه باشد'),
     ],
     pitfalls: [
@@ -160,9 +160,9 @@ export const TUMOURS = {
       'گروهی نادر و ناهمگون از کارسینوم‌های مهاجم با تمایز سنگفرشی و/یا مزانشیمی که اغلب فنوتیپ سه‌گانه منفی دارند.'
     ),
     pattern: [
-      L('Oft große, rasch wachsende Mass mit runder, ovaler oder irregulärer Form', 'Often a large rapidly growing mass with round, oval or irregular shape', 'اغلب Mass بزرگ و سریع‌الرشد با شکل گرد، بیضی یا نامنظم'),
+      L('Oft große, rasch wachsende Mass mit runder, ovaler oder irregulärer Form', 'Often a large rapidly growing mass with round, oval or irregular shape', 'اغلب توده بزرگ و سریع‌الرشد با شکل گرد، بیضی یا نامنظم'),
       L('Heterogen hohes T2-Signal durch Nekrose, Zysten, Blutung oder Matrix', 'Heterogeneously high T2 signal from necrosis, cystic change, haemorrhage or matrix', 'سیگنال ناهمگن و بالا در T2 به‌علت نکروز، تغییرات کیستیک، خونریزی یا ماتریکس'),
-      L('Häufig Thick Rim Enhancement und große nicht anreichernde Anteile', 'Often thick rim enhancement and large non-enhancing components', 'اغلب Thick Rim Enhancement و بخش‌های وسیع بدون Enhancement'),
+      L('Häufig Thick Rim Enhancement und große nicht anreichernde Anteile', 'Often thick rim enhancement and large non-enhancing components', 'اغلب افزایش سیگنال حلقوی ضخیم و بخش‌های وسیع بدون افزایش سیگنال پس از تزریق'),
     ],
     pitfalls: [
       L('Kann einen Abszess, ein Hämatom, einen Phyllodestumor oder ein Sarkom imitieren.', 'It may mimic an abscess, haematoma, phyllodes tumour or sarcoma.', 'می‌تواند آبسه، هماتوم، تومور فیلودس یا سارکوم را تقلید کند.'),
@@ -174,18 +174,18 @@ export const TUMOURS = {
 }
 
 export const COMPARISON_ROWS = [
-  { tumour: TUMOURS.ilc.title, pattern: L('Spikulierte Mass oder infiltratives NME', 'Spiculated mass or infiltrative NME', 'Mass اسپیکوله یا NME نفوذی'), pitfall: L('Ausdehnung unterschätzt', 'Extent underestimated', 'برآورد کمتر از واقع وسعت'), key: L('Multifokalität aktiv suchen', 'Actively search for multifocality', 'جست‌وجوی فعال چندکانونی بودن') },
+  { tumour: TUMOURS.ilc.title, pattern: L('Spikulierte Mass oder infiltratives NME', 'Spiculated mass or infiltrative NME', 'توده اسپیکوله یا NME نفوذی'), pitfall: L('Ausdehnung unterschätzt', 'Extent underestimated', 'برآورد کمتر از واقع وسعت'), key: L('Multifokalität aktiv suchen', 'Actively search for multifocality', 'جست‌وجوی فعال چندکانونی بودن') },
   { tumour: TUMOURS.muzinoes.title, pattern: L('T2-hell, oft glatt begrenzt', 'T2 bright, often circumscribed', 'پرسیگنال T2، اغلب با حاشیه واضح'), pitfall: L('Fibroadenom-Mimik', 'Fibroadenoma mimic', 'تقلید فیبروآدنوم'), key: L('T2 ist kein Benignitätsbeweis', 'T2 is not proof of benignity', 'T2 دلیل قطعی خوش‌خیمی نیست') },
-  { tumour: TUMOURS.tnbc.title, pattern: L('Rund/oval, Thick Rim, Nekrose', 'Round/oval, thick rim, necrosis', 'گرد/بیضی، Thick Rim، نکروز'), pitfall: L('Benigne wirkender Rand', 'Benign-appearing margin', 'حاشیه ظاهراً خوش‌خیم'), key: L('Biologie schlägt Form', 'Biology can trump shape', 'زیست‌شناسی بر شکل غلبه می‌کند') },
+  { tumour: TUMOURS.tnbc.title, pattern: L('Rund/oval, Thick Rim, Nekrose', 'Round/oval, thick rim, necrosis', 'گرد/بیضی، Thick حلقوی، نکروز'), pitfall: L('Benigne wirkender Rand', 'Benign-appearing margin', 'حاشیه ظاهراً خوش‌خیم'), key: L('Biologie schlägt Form', 'Biology can trump shape', 'زیست‌شناسی بر شکل غلبه می‌کند') },
   { tumour: TUMOURS.inflammatorisch.title, pattern: L('Haut + Ödem + diffuses NME', 'Skin + oedema + diffuse NME', 'پوست + ادم + NME منتشر'), pitfall: L('Mastitis-Mimik', 'Mastitis mimic', 'تقلید ماستیت'), key: L('Klinische Diagnose, rasch handeln', 'Clinical diagnosis; act rapidly', 'تشخیص بالینی؛ اقدام سریع') },
-  { tumour: TUMOURS.paget.title, pattern: L('Mamillen-Enhancement ± subareoläre Läsion', 'Nipple enhancement ± subareolar lesion', 'Enhancement نوک پستان ± ضایعه ساب‌آرئولار'), pitfall: L('Ekzem-Mimik', 'Eczema mimic', 'تقلید اگزما'), key: L('Biopsie trotz negativer Bildgebung', 'Biopsy despite negative imaging', 'بیوپسی با وجود تصویربرداری منفی') },
+  { tumour: TUMOURS.paget.title, pattern: L('Mamillen-Enhancement ± subareoläre Läsion', 'Nipple enhancement ± subareolar lesion', 'افزایش سیگنال پس از تزریق نوک پستان ± ضایعه ساب‌آرئولار'), pitfall: L('Ekzem-Mimik', 'Eczema mimic', 'تقلید اگزما'), key: L('Biopsie trotz negativer Bildgebung', 'Biopsy despite negative imaging', 'بیوپسی با وجود تصویربرداری منفی') },
   { tumour: TUMOURS.metaplastisch.title, pattern: L('Groß, T2-heterogen, nekrotisch', 'Large, T2 heterogeneous, necrotic', 'بزرگ، T2 ناهمگن، نکروتیک'), pitfall: L('Abszess/Sarkom-Mimik', 'Abscess/sarcoma mimic', 'تقلید آبسه/سارکوم'), key: L('Diskordanz nicht akzeptieren', 'Do not accept discordance', 'عدم تطابق را نپذیرید') },
 ]
 
 export const REPORT_STEPS = [
   {
     label: L('Einordnen', 'Classify', 'طبقه‌بندی'),
-    text: L('Mass, NME, Haut-/Mamillenbefall oder Kombination?', 'Mass, NME, skin/nipple involvement or a combination?', 'Mass، NME، درگیری پوست/نوک پستان یا ترکیبی از آن‌ها؟'),
+    text: L('Mass, NME, Haut-/Mamillenbefall oder Kombination?', 'Mass, NME, skin/nipple involvement or a combination?', 'توده، NME، درگیری پوست/نوک پستان یا ترکیبی از آن‌ها؟'),
   },
   {
     label: L('Ausdehnung', 'Map extent', 'تعیین وسعت'),

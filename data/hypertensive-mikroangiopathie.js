@@ -29,7 +29,7 @@ export const HMA_LESSON = {
       text: L('Putamen · Thalamus · Pons · Kleinhirn · Capsula interna', 'Putamen · Thalamus · Pons · Cerebellum · Internal capsule', 'پوتامن · تالاموس · پونز · مخچه · کپسول داخلی'),
     },
     {
-      value: L('Spot-Sign', 'Spot Sign', 'Spot Sign'),
+      value: L('Spot-Sign', 'Spot Sign', 'علامت اسپات (Spot sign)'),
       label: L('CTA-Marker', 'CTA marker', 'نشانه CTA'),
       text: L('aktive Nachblutung, Hämatomexpansion', 'active re-bleeding, haematoma expansion', 'خونریزی فعال، گسترش هماتوم'),
     },
@@ -151,7 +151,7 @@ export const HMA_LESSON = {
       [L('Konsequenz', 'Consequence', 'عواقب'), L('Hohes Risiko der Hämatomexpansion', 'High risk of haematoma expansion', 'خطر بالای گسترش هماتوم')],
       [L('Prognose', 'Prognosis', 'پیش‌آگهی'), L('Erhöhte 90-Tage-Mortalität', 'Increased 90-day mortality', 'افزایش مرگ‌ومیر ۹۰ روزه')],
     ],
-    spotTitle: L('Spot-Sign (CTA)', 'Spot Sign (CTA)', 'Spot Sign (CTA)'),
+    spotTitle: L('Spot-Sign (CTA)', 'Spot Sign (CTA)', 'علامت اسپات در CTA'),
     locTitle: L('Typische Lokalisationen der hypertensiven ICB', 'Typical locations of hypertensive ICH', 'محل‌های معمول ICH فشار خون بالا'),
     morphTitle: L('CCT-Morphologie der akuten ICB', 'CCT morphology of acute ICH', 'مورفولوژی CCT در ICH حاد'),
     key: L(
@@ -182,7 +182,7 @@ export const HMA_LESSON = {
       [L('DWI / ADC', 'DWI / ADC', 'DWI / ADC'), L('Restriktionsmuster (<15 mm, tief)', 'Restriction pattern (<15 mm, deep)', 'الگوی محدودیت (<15 میلی‌متر، عمقی)'), L('Akuter lakunärer Infarkt (Perforator)', 'Acute lacunar infarct (perforator)', 'انفارکت لاکونار حاد (پرفوراتور)')],
       [L('GRE / SWI', 'GRE / SWI', 'GRE / SWI'), L('Punktförmige Hypointensitäten (Blütenmuster)', 'Punctate hypointensities (blooming artefact)', 'هایپوانتنسیتی‌های نقطه‌ای (الگوی شکوفه)'), L('Zerebrale Mikroblutungen (CMBs): tief = Hypertonie, kortikal = CAA', 'CMBs: deep = hypertension, cortical = CAA', 'CMBs: عمقی = فشار خون، کورتیکال = CAA')],
       [L('T1', 'T1', 'T1'), L('Hypointense Höhlen im Marklager / Basalganglien', 'Hypointense cavities in white matter / basal ganglia', 'حفره‌های هایپوانتنس در ماده سفید / بازال گانگلیا'), L('Chronische Lakunen (>3 Monate alt)', 'Chronic lacunes (>3 months old)', 'لاکون‌های مزمن (>3 ماه)')],
-      [L('T1 Gd', 'T1 Gd', 'T1 Gd'), L('Keine Enhancement (außer im akuten Infarkt)', 'No enhancement (except in acute infarct)', 'بدون انهانسمنت (جز در انفارکت حاد)'), L('Hilft bei Differenzierung Metastase vs. ICB', 'Helps differentiate metastasis from ICH', 'کمک به تمایز متاستاز از ICH')],
+      [L('T1 Gd', 'T1 Gd', 'T1 Gd'), L('Keine Enhancement (außer im akuten Infarkt)', 'No enhancement (except in acute infarct)', "بدون تقویت پس از تزریق (جز در انفارکت حاد)"), L('Hilft bei Differenzierung Metastase vs. ICB', 'Helps differentiate metastasis from ICH', 'کمک به تمایز متاستاز از ICH')],
     ],
     fazekasHeaders: [
       L('Fazekas-Grad', 'Fazekas Grade', 'درجه Fazekas'),
@@ -257,14 +257,14 @@ export const HMA_LESSON = {
     ddRows: [
       [L('Hypertensive ICB', 'Hypertensive ICH', 'ICH فشار خون بالا'), L('Tief: Putamen, Thalamus, Pons, Kleinhirn', 'Deep: putamen, thalamus, pons, cerebellum', 'عمقی: پوتامن، تالاموس، پونز، مخچه'), L('Irregulär, tiefe CMBs in SWI, Hypertonie-Anamnese', 'Irregular, deep CMBs on SWI, hypertension history', 'نامنظم، CMBs عمقی در SWI، سابقه فشار خون')],
       [L('Zerebrale Amyloidangiopathie (CAA)', 'Cerebral amyloid angiopathy (CAA)', 'آنژیوپاتی آمیلوئید مغزی (CAA)'), L('Lobär (kortikal-subkortikal)', 'Lobar (cortical-subcortical)', 'لوبار (کورتیکال-ساب‌کورتیکال)'), L('Älterer Patient, kortikale CMBs in SWI, Boston-Kriterien', 'Older patient, cortical CMBs on SWI, Boston criteria', 'بیمار مسن‌تر، CMBs کورتیکال در SWI، معیارهای Boston')],
-      [L('Hirnmetastase', 'Brain metastasis', 'متاستاز مغزی'), L('Peripher, kortikal-subkortikal, oft multiple', 'Peripheral, cortical-subcortical, often multiple', 'محیطی، کورتیکال-ساب‌کورتیکال، اغلب متعدد'), L('Rund, ausgeprägtes perifokales Ödem, KM-Enhancement, Tumoranamnese', 'Round, prominent perilesional oedema, contrast enhancement, tumour history', 'گرد، ادم پریفوکال شدید، انهانسمنت کنتراستی، سابقه تومور')],
+      [L('Hirnmetastase', 'Brain metastasis', 'متاستاز مغزی'), L('Peripher, kortikal-subkortikal, oft multiple', 'Peripheral, cortical-subcortical, often multiple', 'محیطی، کورتیکال-ساب‌کورتیکال، اغلب متعدد'), L('Rund, ausgeprägtes perifokales Ödem, KM-Enhancement, Tumoranamnese', 'Round, prominent perilesional oedema, contrast enhancement, tumour history', "گرد، ادم پریفوکال شدید، تقویت پس از تزریق، سابقه تومور")],
       [L('Kavernom', 'Cavernoma', 'کاورنوم'), L('Überall, oft im Hirnstamm', 'Anywhere, often brainstem', 'همه‌جا، اغلب ساقه مغز'), L('„Popcorn"-Muster T2, SWI-Hypointensität, kein Ödem, MRT-typisch', '"Popcorn" pattern T2, SWI hypointensity, no oedema, typical MRI', 'الگوی «پاپ‌کورن» T2، هایپوانتنسیتی SWI، بدون ادم، تیپیک MRI')],
       [L('AVM-Blutung', 'AVM haemorrhage', 'خونریزی AVM'), L('Variabel, oft lobär', 'Variable, often lobar', 'متغیر، اغلب لوبار'), L('Junger Patient, serpentiginöse Gefäßstrukturen im MRA/CTA, kein Hypertoniehintergrund', 'Young patient, serpiginous vascular structures on MRA/CTA, no hypertension background', 'بیمار جوان، ساختارهای عروقی مارپیچی در MRA/CTA، بدون سابقه فشار خون')],
     ],
     key: L(
       'Merkhilfe: Hypertensive ICB = tief + irregulär. CAA = lobär + kortikal. Metastase = rund + viel Ödem + Enhancement.',
       'Mnemonic: hypertensive ICH = deep + irregular. CAA = lobar + cortical. Metastasis = round + lots of oedema + enhancement.',
-      'جمله‌یادآور: ICH فشار خون = عمقی + نامنظم. CAA = لوبار + کورتیکال. متاستاز = گرد + ادم زیاد + انهانسمنت.'
+      "جمله‌یادآور: ICH فشار خون = عمقی + نامنظم. CAA = لوبار + کورتیکال. متاستاز = گرد + ادم زیاد + تقویت پس از تزریق."
     ),
   },
 
@@ -328,8 +328,8 @@ export const HMA_LESSON = {
         text: L('Putamen (50 %) > Thalamus > Kleinhirn > Pons. Irregulär, wenig Ödem. Rund + peripher + viel Ödem → eher Metastase oder CAA.', 'Putamen (50%) > thalamus > cerebellum > pons. Irregular, little oedema. Round + peripheral + lots of oedema → more likely metastasis or CAA.', 'پوتامن (50٪) > تالاموس > مخچه > پونز. نامنظم، ادم کم. گرد + محیطی + ادم زیاد → بیشتر متاستاز یا CAA.'),
       },
       {
-        title: L('Spot-Sign im CTA', 'Spot sign on CTA', 'Spot Sign در CTA'),
-        text: L('Kontrastmittelanreicherung innerhalb der Blutung = aktive Nachblutung. Prädiktiv für Hämatomexpansion und erhöhte Mortalität.', 'Contrast enhancement within the bleed = active re-bleeding. Predictive of haematoma expansion and increased mortality.', 'انهانسمنت کنتراستی داخل خونریزی = خونریزی فعال مجدد. پیش‌بینی‌کننده گسترش هماتوم و مرگ‌ومیر بالاتر.'),
+        title: L('Spot-Sign im CTA', 'Spot sign on CTA', 'علامت اسپات (Spot sign) در CTA'),
+        text: L('Kontrastmittelanreicherung innerhalb der Blutung = aktive Nachblutung. Prädiktiv für Hämatomexpansion und erhöhte Mortalität.', 'Contrast enhancement within the bleed = active re-bleeding. Predictive of haematoma expansion and increased mortality.', "تقویت پس از تزریق داخل خونریزی = خونریزی فعال مجدد. پیش‌بینی‌کننده گسترش هماتوم و مرگ‌ومیر بالاتر."),
       },
       {
         title: L('MRT-Trias der Mikroangiopathie', 'MRI triad of microangiopathy', 'تریاد MRI میکروآنژیوپاتی'),
@@ -364,7 +364,7 @@ const HMA_QUESTION_SEEDS = [
   Q('hma-02',
     L('Was bedeutet ein Spot-Sign im CTA?',
       'What does a spot sign on CTA indicate?',
-      'Spot Sign در CTA چه معنایی دارد؟'),
+      'علامت اسپات (Spot sign) در CTA چه معنایی دارد؟'),
     [
       L('Aktive Nachblutung mit Risiko der Hämatomexpansion', 'Active re-bleeding with risk of haematoma expansion', 'خونریزی فعال مجدد با خطر گسترش هماتوم'),
       L('Zerebrale Mikroblutungen', 'Cerebral microbleeds', 'خونریزی‌های میکرو مغزی'),
@@ -373,7 +373,7 @@ const HMA_QUESTION_SEEDS = [
     ], 0,
     L('Das Spot-Sign bezeichnet eine punktförmige Kontrastmittelanreicherung innerhalb der ICB im CTA. Es ist ein direkter Hinweis auf eine aktive Nachblutung und prädiktiv für Hämatomexpansion sowie erhöhte Mortalität.',
       'The spot sign refers to focal contrast enhancement within the ICH on CTA. It is a direct indicator of active re-bleeding and is predictive of haematoma expansion and increased mortality.',
-      'Spot Sign به تجمع کنتراست نقطه‌ای داخل ICH در CTA اشاره دارد. این نشانه مستقیماً نشان‌دهنده خونریزی فعال مجدد است و پیش‌بینی‌کننده گسترش هماتوم و افزایش مرگ‌ومیر است.')
+      'علامت اسپات (Spot sign) به تجمع کنتراست نقطه‌ای داخل ICH در CTA اشاره دارد. این نشانه مستقیماً نشان‌دهنده خونریزی فعال مجدد است و پیش‌بینی‌کننده گسترش هماتوم و افزایش مرگ‌ومیر است.')
   ),
 
   Q('hma-03',
@@ -463,7 +463,7 @@ const HMA_QUESTION_SEEDS = [
     ], 0,
     L('Metastasen-typische CCT-Zeichen: rund, peripher, ausgeprägtes perifokales Ödem, oft multipel. KM-Enhancement. Hypertensive ICB ist irregulär, tief, mit relativ wenigem Ödem. Das Ödem-Ausmaß ist ein wichtiges Differenzierungskriterium.',
       'Metastasis-typical CCT signs: round, peripheral, prominent perilesional oedema, often multiple. Contrast enhancement. Hypertensive ICH is irregular, deep, with relatively little oedema. The extent of oedema is an important differentiating criterion.',
-      'نشانه‌های تیپیک CCT متاستاز: گرد، محیطی، ادم پریفوکال شدید، اغلب متعدد. انهانسمنت کنتراستی. ICH فشار خون نامنظم، عمقی، با ادم نسبتاً کم است. میزان ادم یک معیار مهم تمایز است.')
+      "نشانه‌های تیپیک CCT متاستاز: گرد، محیطی، ادم پریفوکال شدید، اغلب متعدد. تقویت پس از تزریق. ICH فشار خون نامنظم، عمقی، با ادم نسبتاً کم است. میزان ادم یک معیار مهم تمایز است.")
   ),
 
   Q('hma-09',
@@ -565,9 +565,9 @@ const HMA_FLASH_SEEDS = [
   ),
 
   F('spotsign', L('CTA', 'CTA', 'CTA'),
-    L('Was ist das Spot-Sign und welche klinische Bedeutung hat es?', 'What is the spot sign and what is its clinical significance?', 'Spot Sign چیست و اهمیت بالینی آن چیست؟'),
+    L('Was ist das Spot-Sign und welche klinische Bedeutung hat es?', 'What is the spot sign and what is its clinical significance?', 'علامت اسپات (Spot sign) چیست و اهمیت بالینی آن چیست؟'),
     L('Punktförmige KM-Anreicherung innerhalb der ICB im CTA\n= aktive Nachblutung aus kleinem Gefäß\n→ Risiko der Hämatomexpansion ↑↑\n→ erhöhte 90-Tage-Mortalität', 'Focal contrast enhancement within the ICH on CTA\n= active re-bleeding from small vessel\n→ haematoma expansion risk ↑↑\n→ increased 90-day mortality', 'تجمع کنتراست نقطه‌ای داخل ICH در CTA\n= خونریزی فعال مجدد از عروق کوچک\n→ خطر گسترش هماتوم ↑↑\n→ افزایش مرگ‌ومیر ۹۰ روزه'),
-    L('Spot-Sign = aktive Nachblutung = Hämatomexpansion', 'Spot sign = active re-bleeding = haematoma expansion', 'Spot Sign = خونریزی فعال = گسترش هماتوم')
+    L('Spot-Sign = aktive Nachblutung = Hämatomexpansion', 'Spot sign = active re-bleeding = haematoma expansion', 'علامت اسپات (Spot sign) = خونریزی فعال = گسترش هماتوم')
   ),
 
   F('fazekas', L('MRT', 'MRI', 'MRI'),
@@ -602,7 +602,7 @@ const HMA_FLASH_SEEDS = [
 
   F('dd-icb', L('Differenzialdiagnose', 'Differential', 'تشخیص افتراقی'),
     L('DD der ICB: hypertensiv vs. CAA vs. Metastase vs. Kavernom — Schlüsselmerkmale', 'DDx of ICH: hypertensive vs. CAA vs. metastasis vs. cavernoma — key features', 'تشخیص افتراقی ICH: فشار خون در مقابل CAA در مقابل متاستاز در مقابل کاورنوم — ویژگی‌های کلیدی'),
-    L('Hypertensiv: tief, irregulär, CMBs tief (SWI)\nCAA: lobär, kortikal, CMBs kortikal, alt\nMetastase: rund, peripher, Ödem ↑↑, Enhancement, multipel\nKavernom: Popcorn-T2, SWI-Halo, kein Ödem, jung', 'Hypertensive: deep, irregular, CMBs deep (SWI)\nCAA: lobar, cortical, CMBs cortical, elderly\nMetastasis: round, peripheral, oedema ↑↑, enhancement, multiple\nCavernoma: popcorn T2, SWI halo, no oedema, young', 'فشار خون: عمقی، نامنظم، CMBs عمقی (SWI)\nCAA: لوبار، کورتیکال، CMBs کورتیکال، مسن\nمتاستاز: گرد، محیطی، ادم ↑↑، انهانسمنت، متعدد\nکاورنوم: پاپ‌کورن T2، هاله SWI، بدون ادم، جوان'),
+    L('Hypertensiv: tief, irregulär, CMBs tief (SWI)\nCAA: lobär, kortikal, CMBs kortikal, alt\nMetastase: rund, peripher, Ödem ↑↑, Enhancement, multipel\nKavernom: Popcorn-T2, SWI-Halo, kein Ödem, jung', 'Hypertensive: deep, irregular, CMBs deep (SWI)\nCAA: lobar, cortical, CMBs cortical, elderly\nMetastasis: round, peripheral, oedema ↑↑, enhancement, multiple\nCavernoma: popcorn T2, SWI halo, no oedema, young', "فشار خون: عمقی، نامنظم، CMBs عمقی (SWI)\nCAA: لوبار، کورتیکال، CMBs کورتیکال، مسن\nمتاستاز: گرد، محیطی، ادم ↑↑، تقویت پس از تزریق، متعدد\nکاورنوم: پاپ‌کورن T2، هاله SWI، بدون ادم، جوان"),
     L('Tief=Hypertonus | Lobär=CAA | Rund+Ödem=Meta | Popcorn=Kavernom', 'Deep=hypertension | Lobar=CAA | Round+oedema=meta | Popcorn=cavernoma', 'عمقی=فشار خون | لوبار=CAA | گرد+ادم=متا | پاپ‌کورن=کاورنوم')
   ),
 

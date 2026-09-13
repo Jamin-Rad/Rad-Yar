@@ -208,7 +208,7 @@ export const AVM_LESSON = {
     lead: L(
       'MRT zeigt Flow voids und Hämosiderin, MRA stellt die Gefäßarchitektur dar — aber nur die DSA ist der Goldstandard.',
       'MRI shows flow voids and haemosiderin, MRA depicts the vascular architecture — but only DSA is the gold standard.',
-      'MRI Flow voids و هموسیدرین را نشان می‌دهد، MRA معماری عروقی را نمایش می‌دهد — اما فقط DSA استاندارد طلایی است.'
+      'MRI فقدان سیگنال جریان (flow void) و هموسیدرین را نشان می‌دهد، MRA معماری عروقی را نمایش می‌دهد — اما فقط DSA استاندارد طلایی است.'
     ),
     headers: [
       L('Sequenz', 'Sequence', 'سکانس'),
@@ -218,8 +218,8 @@ export const AVM_LESSON = {
     rows: [
       [
         L('T1 / T2 nativ', 'T1 / T2 native', 'T1 / T2 نیتیو'),
-        L('Flow voids = Signalauslöschung in schnell durchflossenen Gefäßen; ggf. T2-Hyperintensität (Gliose) im umgebenden Parenchym', 'Flow voids = signal void in fast-flowing vessels; possible T2 hyperintensity (gliosis) in surrounding parenchyma', 'Flow voids = از بین رفتن سیگنال در عروق با جریان سریع؛ احتمال هایپراینتنسیتی T2 (گلیوز) در پارانشیم اطراف'),
-        L('Flow voids = Hochfluss = AVM-typisch', 'Flow voids = high flow = AVM-typical', 'Flow voids = جریان بالا = تیپیک AVM'),
+        L('Flow voids = Signalauslöschung in schnell durchflossenen Gefäßen; ggf. T2-Hyperintensität (Gliose) im umgebenden Parenchym', 'Flow voids = signal void in fast-flowing vessels; possible T2 hyperintensity (gliosis) in surrounding parenchyma', 'فقدان سیگنال جریان (flow void) = از بین رفتن سیگنال در عروق با جریان سریع؛ احتمال هایپراینتنسیتی T2 (گلیوز) در پارانشیم اطراف'),
+        L('Flow voids = Hochfluss = AVM-typisch', 'Flow voids = high flow = AVM-typical', 'فقدان سیگنال جریان (flow void) = جریان بالا = تیپیک AVM'),
       ],
       [
         L('T1 + KM', 'T1 + contrast', 'T1 + کنتراست'),
@@ -228,7 +228,7 @@ export const AVM_LESSON = {
       ],
       [
         'SWI / T2*',
-        L('Hämosiderin­saum bei stattgehabter Blutung; Blooming-Artefakt', 'Haemosiderin rim after prior bleed; blooming artefact', 'حاشیه هموسیدرین بعد از خونریزی قبلی؛ آرتفکت Blooming'),
+        L('Hämosiderin­saum bei stattgehabter Blutung; Blooming-Artefakt', 'Haemosiderin rim after prior bleed; blooming artefact', "حاشیه هموسیدرین بعد از خونریزی قبلی؛ آرتفکت آرتیفکت شکوفه‌ای (blooming)"),
         L('Zeigt vergangene Mikroblutungen; schließt Kavernom-Hybride aus', 'Shows prior microbleeds; helps exclude cavernoma hybrids', 'میکروخونریزی‌های قبلی را نشان می‌دهد؛ هیبریدهای کاورنوم را رد می‌کند'),
       ],
       [
@@ -245,7 +245,7 @@ export const AVM_LESSON = {
     key: L(
       'Flow voids in T1/T2 = AVM-Verdacht. DSA obligat für Therapieplanung. Frühe Venenfüllung in arterieller Phase = AVM-Beweis.',
       'Flow voids on T1/T2 = suspect AVM. DSA mandatory for treatment planning. Early venous filling in arterial phase = AVM proof.',
-      'Flow voids در T1/T2 = شک به AVM. DSA برای برنامه‌ریزی درمان اجباری. پُرشدگی زودرس وریدی در فاز شریانی = اثبات AVM.'
+      'فقدان سیگنال جریان (flow void) در T1/T2 = شک به AVM. DSA برای برنامه‌ریزی درمان اجباری. پُرشدگی زودرس وریدی در فاز شریانی = اثبات AVM.'
     ),
   },
 
@@ -254,27 +254,27 @@ export const AVM_LESSON = {
     lead: L(
       'Junger Patient mit erstmaliger Krampfanfall. MRT zeigt typische Flow voids mit starker Kontrastanreicherung.',
       'Young patient presenting with a first seizure. MRI shows typical flow voids with marked contrast enhancement.',
-      'بیمار جوان با اولین تشنج. MRI Flow voids تیپیک با افزایش کنتراست قوی نشان می‌دهد.'
+      'بیمار جوان با اولین تشنج. MRI فقدان سیگنال جریان (flow void) تیپیک با افزایش کنتراست قوی نشان می‌دهد.'
     ),
     caseLabel: L('AVM – Gehirn', 'AVM – Brain', 'AVM – مغز'),
     caseTitle: L('Arteriovenöse Malformation', 'Arteriovenous Malformation', 'مالفورماسیون شریانی-وریدی'),
     caseMeta: L(
       'Junger Erwachsener. Supratentorielle AVM mit typischen Flow voids und deutlichem Nidus in der MRA.',
       'Young adult. Supratentorial AVM with typical flow voids and clear nidus on MRA.',
-      'بزرگسال جوان. AVM سوپراتنتوریال با Flow voids تیپیک و نیدوس واضح در MRA.'
+      'بزرگسال جوان. AVM سوپراتنتوریال با فقدان سیگنال جریان (flow void) تیپیک و نیدوس واضح در MRA.'
     ),
     images: [
       {
         src: '/avm/case-74111/t1-nativ.jpeg',
         label: 'T1 nativ',
-        alt: L('T1-MRT: Flow voids des AVM-Nidus', 'T1 MRI: AVM nidus flow voids', 'T1 MRI: Flow voids نیدوس AVM'),
-        caption: L('T1 nativ: zentrale Flow voids als Ausdruck des schnellen Blutflusses im Nidus', 'T1 native: central flow voids reflecting rapid blood flow in the nidus', 'T1 نیتیو: Flow voids مرکزی منعکس‌کننده جریان خون سریع در نیدوس'),
+        alt: L('T1-MRT: Flow voids des AVM-Nidus', 'T1 MRI: AVM nidus flow voids', 'T1 MRI: فقدان سیگنال جریان (flow void) نیدوس AVM'),
+        caption: L('T1 nativ: zentrale Flow voids als Ausdruck des schnellen Blutflusses im Nidus', 'T1 native: central flow voids reflecting rapid blood flow in the nidus', 'T1 نیتیو: فقدان سیگنال جریان (flow void) مرکزی منعکس‌کننده جریان خون سریع در نیدوس'),
       },
       {
         src: '/avm/case-74111/t2.jpeg',
         label: 'T2',
-        alt: L('T2-MRT: Geschlängelte Flow voids der AVM', 'T2 MRI: Serpentine AVM flow voids', 'T2 MRI: Flow voids مارپیچ AVM'),
-        caption: L('T2: serpentine Flow voids im Bereich des Nidus — klassisches Zeichen eines arteriovenösen Hochflusses', 'T2: serpentine flow voids in the nidus region — classic sign of arteriovenous high flow', 'T2: Flow voids مارپیچ در ناحیه نیدوس — علامت کلاسیک جریان شریانی-وریدی بالا'),
+        alt: L('T2-MRT: Geschlängelte Flow voids der AVM', 'T2 MRI: Serpentine AVM flow voids', 'T2 MRI: فقدان سیگنال جریان (flow void) مارپیچ AVM'),
+        caption: L('T2: serpentine Flow voids im Bereich des Nidus — klassisches Zeichen eines arteriovenösen Hochflusses', 'T2: serpentine flow voids in the nidus region — classic sign of arteriovenous high flow', 'T2: فقدان سیگنال جریان (flow void) مارپیچ در ناحیه نیدوس — علامت کلاسیک جریان شریانی-وریدی بالا'),
       },
       {
         src: '/avm/case-74111/mra.jpeg',
@@ -285,8 +285,8 @@ export const AVM_LESSON = {
     ],
     findingsTitle: L('Radiologische Befunde', 'Radiological findings', 'یافته‌های رادیولوژیک'),
     findings: [
-      L('T1 nativ: zentrale hypointense Flow voids im Bereich des Nidus (Signalauslöschung durch Hochfluss)', 'T1 native: central hypointense flow voids in the nidus region (signal loss due to high flow)', 'T1 نیتیو: Flow voids هیپواینتنس مرکزی در ناحیه نیدوس (از بین رفتن سیگنال به دلیل جریان بالا)'),
-      L('T2: serpentine Hypointensitäten (Flow voids) ohne umgebende Gliose — reines Hochflussmuster', 'T2: serpentine hypointensities (flow voids) without surrounding gliosis — pure high-flow pattern', 'T2: هیپواینتنسیتی‌های مارپیچ (Flow voids) بدون گلیوز اطراف — الگوی خالص جریان بالا'),
+      L('T1 nativ: zentrale hypointense Flow voids im Bereich des Nidus (Signalauslöschung durch Hochfluss)', 'T1 native: central hypointense flow voids in the nidus region (signal loss due to high flow)', 'T1 نیتیو: فقدان سیگنال جریان (flow void) هیپواینتنس مرکزی در ناحیه نیدوس (از بین رفتن سیگنال به دلیل جریان بالا)'),
+      L('T2: serpentine Hypointensitäten (Flow voids) ohne umgebende Gliose — reines Hochflussmuster', 'T2: serpentine hypointensities (flow voids) without surrounding gliosis — pure high-flow pattern', 'T2: هیپواینتنسیتی‌های مارپیچ (فقدان سیگنال جریان (flow void)) بدون گلیوز اطراف — الگوی خالص جریان بالا'),
       L('MRA C+: gut abgrenzbarer Nidus mit früher arterieller Kontrastierung; erweiterte drainierte Venen erkennbar', 'MRA C+: well-defined nidus with early arterial enhancement; dilated draining veins visible', 'MRA C+: نیدوس با حدود مشخص با افزایش زودرس شریانی؛ وریدهای تخلیه‌کننده گشاد قابل تشخیص'),
       L('Spetzler-Martin Einschätzung: kleiner Nidus (<3 cm, 1 Punkt), nicht-eloquente Lokalisation (0 Punkte), oberflächliche Drainage (0 Punkte) → Grad I', 'Spetzler-Martin assessment: small nidus (<3 cm, 1 point), non-eloquent location (0 points), superficial drainage (0 points) → Grade I', 'ارزیابی Spetzler-Martin: نیدوس کوچک (<۳ سانتی‌متر، ۱ امتیاز)، محل غیرگویا (۰ امتیاز)، درناژ سطحی (۰ امتیاز) → درجه I'),
     ],
@@ -306,7 +306,7 @@ export const AVM_LESSON = {
     lead: L(
       'Flow voids allein sind nicht spezifisch — andere Hochflussläsionen müssen ausgeschlossen werden.',
       'Flow voids alone are not specific — other high-flow lesions must be excluded.',
-      'Flow voids به‌تنهایی اختصاصی نیستند — سایر ضایعات پرجریان باید رد شوند.'
+      'فقدان سیگنال جریان (flow void) به‌تنهایی اختصاصی نیستند — سایر ضایعات پرجریان باید رد شوند.'
     ),
     headers: [L('Diagnose', 'Diagnosis', 'تشخیص'), L('Abgrenzung zur AVM', 'Distinction from AVM', 'افتراق از AVM')],
     rows: [
@@ -357,7 +357,7 @@ export const AVM_LESSON = {
       },
       {
         icon: '☢️',
-        title: L('Stereotaktische Radiochirurgie (Gamma Knife)', 'Stereotactic radiosurgery (Gamma Knife)', 'رادیوجراحی استریوتاکتیک (Gamma Knife)'),
+        title: L('Stereotaktische Radiochirurgie (Gamma Knife)', 'Stereotactic radiosurgery (Gamma Knife)', "رادیوجراحی استریوتاکتیک (گامانایف (Gamma Knife))"),
         text: L(
           'Für kleine (<3 cm), tief gelegene AVMs (SM III–IV). Wirkung über 2–3 Jahre. 80 % Obliterationsrate bei kleinen AVMs. In der Zwischenzeit bleibt Blutungsrisiko bestehen!',
           'For small (<3 cm), deep AVMs (SM III–IV). Effect over 2–3 years. 80% obliteration rate for small AVMs. Haemorrhage risk persists during this period!',
@@ -368,7 +368,7 @@ export const AVM_LESSON = {
     cave: L(
       'Spetzler-Martin IV–V: OP-Risiko überwiegt oft den Nutzen → meist konservatives Vorgehen oder Gamma Knife. Bei akuter Blutung: zunächst Hämatom-Evakuation, AVM-Therapie elektiv.',
       'Spetzler-Martin IV–V: surgical risk often outweighs benefit → usually conservative or Gamma Knife. With acute haemorrhage: first evacuate haematoma, then elective AVM treatment.',
-      'Spetzler-Martin IV–V: خطر جراحی اغلب از مزیت پیشی می‌گیرد → معمولاً محافظه‌کارانه یا Gamma Knife. در خونریزی حاد: ابتدا تخلیه هماتوم، سپس درمان AVM به‌صورت انتخابی.'
+      "Spetzler-Martin IV–V: خطر جراحی اغلب از مزیت پیشی می‌گیرد → معمولاً محافظه‌کارانه یا گامانایف (Gamma Knife). در خونریزی حاد: ابتدا تخلیه هماتوم، سپس درمان AVM به‌صورت انتخابی."
     ),
   },
 
@@ -381,7 +381,7 @@ export const AVM_LESSON = {
         text: L(
           'Der Nidus ist das Unterscheidungsmerkmal der AVM von der dAVF (kein Nidus). Flow voids in T1/T2 = Verdacht. DSA = Goldstandard zur Bestätigung.',
           'The nidus distinguishes AVM from dAVF (no nidus). Flow voids on T1/T2 = suspect AVM. DSA = gold standard for confirmation.',
-          'نیدوس عامل افتراق AVM از dAVF است (بدون نیدوس). Flow voids در T1/T2 = شک به AVM. DSA = استاندارد طلایی برای تأیید.'
+          'نیدوس عامل افتراق AVM از dAVF است (بدون نیدوس). فقدان سیگنال جریان (flow void) در T1/T2 = شک به AVM. DSA = استاندارد طلایی برای تأیید.'
         ),
       },
       {
@@ -482,14 +482,14 @@ const TQ = [
       'Which MRI finding is most typical of an AVM?',
       'کدام یافته MRI برای AVM تیپیک‌ترین است؟'),
     [
-      L('Flow voids in T1/T2 durch schnellen Blutfluss', 'Flow voids on T1/T2 due to rapid blood flow', 'Flow voids در T1/T2 به دلیل جریان خون سریع'),
+      L('Flow voids in T1/T2 durch schnellen Blutfluss', 'Flow voids on T1/T2 due to rapid blood flow', 'فقدان سیگنال جریان (flow void) در T1/T2 به دلیل جریان خون سریع'),
       L('Brush-like Enhancement in T1 C+', 'Brush-like enhancement on T1 C+', 'افزایش برس‌مانند در T1 C+'),
       L('Popcorn-Kern in T2', 'Popcorn core on T2', 'هسته پاپ‌کورنی در T2'),
       L('Periläsionäres Ödem in FLAIR', 'Perilesional oedema on FLAIR', 'ادم اطراف ضایعه در FLAIR'),
     ], 0,
     L('Flow voids entstehen durch Signalauslöschung bei schnell fließendem Blut. Sie sind das typische T1/T2-Zeichen einer AVM.',
       'Flow voids arise from signal loss with rapidly flowing blood. They are the typical T1/T2 sign of AVM.',
-      'Flow voids از از بین رفتن سیگنال با خون با جریان سریع ایجاد می‌شوند. آن‌ها علامت تیپیک T1/T2 AVM هستند.')),
+      'فقدان سیگنال جریان (flow void) از از بین رفتن سیگنال با خون با جریان سریع ایجاد می‌شوند. آن‌ها علامت تیپیک T1/T2 AVM هستند.')),
 
   Q('07',
     L('Was ist der Goldstandard zur Diagnostik und Therapieplanung einer AVM?',
@@ -538,14 +538,14 @@ const TQ = [
       'Which treatment is suitable for small, deep AVMs (SM III–IV) in young patients?',
       'کدام درمان برای AVM‌های کوچک عمقی (SM III–IV) در بیماران جوان مناسب است؟'),
     [
-      L('Stereotaktische Radiochirurgie (Gamma Knife)', 'Stereotactic radiosurgery (Gamma Knife)', 'رادیوجراحی استریوتاکتیک (Gamma Knife)'),
+      L('Stereotaktische Radiochirurgie (Gamma Knife)', 'Stereotactic radiosurgery (Gamma Knife)', "رادیوجراحی استریوتاکتیک (گامانایف (Gamma Knife))"),
       L('Notfallmäßige Kraniotomie', 'Emergency craniotomy', 'کرانیوتومی اورژانسی'),
       L('Alleinige Embolisation', 'Embolisation alone', 'آمبولیزاسیون به‌تنهایی'),
       L('Kortikosteroide', 'Corticosteroids', 'کورتیکواستروئیدها'),
     ], 0,
     L('Gamma Knife erreicht bei kleinen AVMs (<3 cm) eine Obliterationsrate von ~80 % über 2–3 Jahre. In der Zwischenzeit besteht weiterhin Blutungsrisiko.',
       'Gamma Knife achieves ~80% obliteration of small AVMs (<3 cm) over 2–3 years. Haemorrhage risk persists during this interval.',
-      'Gamma Knife برای AVM‌های کوچک (<۳ سانتی‌متر) نرخ انسداد ~۸۰٪ طی ۲–۳ سال دارد. خطر خونریزی در این فاصله همچنان وجود دارد.')),
+      "گامانایف (Gamma Knife) برای AVM‌های کوچک (<۳ سانتی‌متر) نرخ انسداد ~۸۰٪ طی ۲–۳ سال دارد. خطر خونریزی در این فاصله همچنان وجود دارد.")),
 
   Q('11',
     L('Wie unterscheidet sich die AVM bildgebend von der dAVF?',
@@ -617,7 +617,7 @@ const TF = [
   F('spetzler-therapie', L('Klassifikation', 'Classification', 'طبقه‌بندی'),
     L('Spetzler-Martin I–II vs. IV–V: Therapiestrategie?', 'Spetzler-Martin I–II vs. IV–V: treatment strategy?', 'Spetzler-Martin I–II در مقابل IV–V: استراتژی درمان؟'),
     L('I–II: OP. IV–V: konservativ/Radiochirurgie.', 'I–II: surgery. IV–V: conservative/radiosurgery.', 'I–II: جراحی. IV–V: محافظه‌کارانه/رادیوجراحی.'),
-    L('SM I–II: kleines/nicht-eloquentes Nidus, geringe Drainagetiefe → günstiges OP-Risiko. SM IV–V: OP-Risiko zu hoch → Gamma Knife oder beobachten. SM III: individuell abwägen.', 'SM I–II: small/non-eloquent nidus, superficial drainage → favourable surgical risk. SM IV–V: surgical risk too high → Gamma Knife or observe. SM III: individual assessment.', 'SM I–II: نیدوس کوچک/غیرگویا، درناژ سطحی → خطر جراحی مطلوب. SM IV–V: خطر جراحی بیش از حد → Gamma Knife یا مشاهده. SM III: ارزیابی فردی.')),
+    L('SM I–II: kleines/nicht-eloquentes Nidus, geringe Drainagetiefe → günstiges OP-Risiko. SM IV–V: OP-Risiko zu hoch → Gamma Knife oder beobachten. SM III: individuell abwägen.', 'SM I–II: small/non-eloquent nidus, superficial drainage → favourable surgical risk. SM IV–V: surgical risk too high → Gamma Knife or observe. SM III: individual assessment.', "SM I–II: نیدوس کوچک/غیرگویا، درناژ سطحی → خطر جراحی مطلوب. SM IV–V: خطر جراحی بیش از حد → گامانایف (Gamma Knife) یا مشاهده. SM III: ارزیابی فردی.")),
 
   F('eloquenz', L('Klassifikation', 'Classification', 'طبقه‌بندی'),
     L('Welche Areale gelten als eloquent?', 'Which areas are considered eloquent?', 'کدام نواحی گویا محسوب می‌شوند؟'),
@@ -626,8 +626,8 @@ const TF = [
 
   F('flow-voids', L('Bildgebung', 'Imaging', 'تصویربرداری'),
     L('Welches MRT-Zeichen ist typisch für eine AVM?', 'Which MRI sign is typical of an AVM?', 'کدام علامت MRI برای AVM تیپیک است؟'),
-    L('Flow voids (Signalauslöschung) in T1 und T2.', 'Flow voids (signal voids) on T1 and T2.', 'Flow voids (از بین رفتن سیگنال) در T1 و T2.'),
-    L('Flow voids entstehen, wenn schnell fließendes Blut zwischen Akquisitionspulsen das Messvolumen verlässt → kein Signal. In T2 als schlängelnde hypointense Strukturen sichtbar.', 'Flow voids arise when fast-flowing blood leaves the acquisition volume between pulses → no signal. Visible on T2 as serpentine hypointense structures.', 'Flow voids ایجاد می‌شوند وقتی خون با جریان سریع بین پالس‌های اکتساب حجم اندازه‌گیری را ترک می‌کند → بدون سیگنال. در T2 به‌صورت ساختارهای هیپواینتنس مارپیچ دیده می‌شوند.')),
+    L('Flow voids (Signalauslöschung) in T1 und T2.', 'Flow voids (signal voids) on T1 and T2.', 'فقدان سیگنال جریان (flow void) (از بین رفتن سیگنال) در T1 و T2.'),
+    L('Flow voids entstehen, wenn schnell fließendes Blut zwischen Akquisitionspulsen das Messvolumen verlässt → kein Signal. In T2 als schlängelnde hypointense Strukturen sichtbar.', 'Flow voids arise when fast-flowing blood leaves the acquisition volume between pulses → no signal. Visible on T2 as serpentine hypointense structures.', 'فقدان سیگنال جریان (flow void) ایجاد می‌شوند وقتی خون با جریان سریع بین پالس‌های اکتساب حجم اندازه‌گیری را ترک می‌کند → بدون سیگنال. در T2 به‌صورت ساختارهای هیپواینتنس مارپیچ دیده می‌شوند.')),
 
   F('dsa', L('Bildgebung', 'Imaging', 'تصویربرداری'),
     L('Welcher DSA-Befund ist pathognomonisch für eine AVM?', 'Which DSA finding is pathognomonic for AVM?', 'کدام یافته DSA برای AVM پاتوگنومونیک است؟'),
@@ -637,10 +637,10 @@ const TF = [
   F('therapie-wahl', L('Management', 'Management', 'مدیریت'),
     L('Erste Wahl bei Spetzler-Martin I–II?', 'First choice for Spetzler-Martin I–II?', 'انتخاب اول برای Spetzler-Martin I–II؟'),
     L('Mikrochirurgische Resektion.', 'Microsurgical resection.', 'رزکسیون میکروجراحی.'),
-    L('SM I–II: geringes OP-Risiko → kurative Resektion. Oft präoperative Embolisation der Feeder zur Flussreduktion. SM IV–V: Gamma Knife oder konservativ.', 'SM I–II: low surgical risk → curative resection. Often pre-operative feeder embolisation for flow reduction. SM IV–V: Gamma Knife or conservative.', 'SM I–II: خطر پایین جراحی → رزکسیون درمان‌کننده. اغلب آمبولیزاسیون قبل از عمل تغذیه‌کنندگان برای کاهش جریان. SM IV–V: Gamma Knife یا محافظه‌کارانه.')),
+    L('SM I–II: geringes OP-Risiko → kurative Resektion. Oft präoperative Embolisation der Feeder zur Flussreduktion. SM IV–V: Gamma Knife oder konservativ.', 'SM I–II: low surgical risk → curative resection. Often pre-operative feeder embolisation for flow reduction. SM IV–V: Gamma Knife or conservative.', "SM I–II: خطر پایین جراحی → رزکسیون درمان‌کننده. اغلب آمبولیزاسیون قبل از عمل تغذیه‌کنندگان برای کاهش جریان. SM IV–V: گامانایف (Gamma Knife) یا محافظه‌کارانه.")),
 
   F('gamma-knife', L('Management', 'Management', 'مدیریت'),
-    L('Für welche AVM ist Gamma Knife geeignet?', 'For which AVM is Gamma Knife suitable?', 'Gamma Knife برای کدام AVM مناسب است؟'),
+    L('Für welche AVM ist Gamma Knife geeignet?', 'For which AVM is Gamma Knife suitable?', "گامانایف (Gamma Knife) برای کدام AVM مناسب است؟"),
     L('Kleine (<3 cm), tief gelegene AVMs (SM III–IV).', 'Small (<3 cm), deep AVMs (SM III–IV).', 'AVM‌های کوچک (<۳ سانتی‌متر) عمقی (SM III–IV).'),
     L('Obliterationsrate ~80 % bei kleinen AVMs nach 2–3 Jahren. In dieser Zeit besteht weiterhin Blutungsrisiko. Nicht geeignet für große AVMs >3 cm.', 'Obliteration rate ~80% for small AVMs after 2–3 years. Haemorrhage risk persists during this period. Not suitable for large AVMs >3 cm.', 'نرخ انسداد ~۸۰٪ برای AVM‌های کوچک بعد از ۲–۳ سال. خطر خونریزی در این مدت همچنان وجود دارد. برای AVM‌های بزرگ >۳ سانتی‌متر مناسب نیست.')),
 
@@ -651,8 +651,8 @@ const TF = [
 
   F('kavernom-unterschied', L('Differenzial', 'Differential', 'افتراقی'),
     L('Wie unterscheidet sich AVM von Kavernom in der MRT?', 'How does AVM differ from cavernoma on MRI?', 'AVM در MRI چگونه از کاورنوم متمایز می‌شود؟'),
-    L('AVM: Flow voids (Hochfluss). Kavernom: Popcorn-Kern (Low-flow).', 'AVM: flow voids (high flow). Cavernoma: popcorn core (low flow).', 'AVM: Flow voids (جریان بالا). کاورنوم: هسته پاپ‌کورنی (کم‌جریان).'),
-    L('AVM: Flow voids in T1/T2, Enhancement, angiographisch sichtbar (Nidus in DSA). Kavernom: gemischtsignaliger Popcorn-Kern + kompletter Hämosiderinsaum, angiographisch okkult (keine Feeder sichtbar).', 'AVM: flow voids on T1/T2, enhancement, visible angiographically (nidus on DSA). Cavernoma: mixed-signal popcorn core + complete haemosiderin rim, angiographically occult.', 'AVM: Flow voids در T1/T2، افزایش کنتراست، در آنژیوگرافی قابل مشاهده (نیدوس در DSA). کاورنوم: هسته با سیگنال مختلط + حاشیه کامل هموسیدرین، در آنژیوگرافی نهان.')),
+    L('AVM: Flow voids (Hochfluss). Kavernom: Popcorn-Kern (Low-flow).', 'AVM: flow voids (high flow). Cavernoma: popcorn core (low flow).', 'AVM: فقدان سیگنال جریان (flow void) (جریان بالا). کاورنوم: هسته پاپ‌کورنی (کم‌جریان).'),
+    L('AVM: Flow voids in T1/T2, Enhancement, angiographisch sichtbar (Nidus in DSA). Kavernom: gemischtsignaliger Popcorn-Kern + kompletter Hämosiderinsaum, angiographisch okkult (keine Feeder sichtbar).', 'AVM: flow voids on T1/T2, enhancement, visible angiographically (nidus on DSA). Cavernoma: mixed-signal popcorn core + complete haemosiderin rim, angiographically occult.', 'AVM: فقدان سیگنال جریان (flow void) در T1/T2، افزایش کنتراست، در آنژیوگرافی قابل مشاهده (نیدوس در DSA). کاورنوم: هسته با سیگنال مختلط + حاشیه کامل هموسیدرین، در آنژیوگرافی نهان.')),
 
   F('embolisation', L('Management', 'Management', 'مدیریت'),
     L('Welche Rolle spielt die Embolisation bei AVM?', 'What role does embolisation play in AVM?', 'آمبولیزاسیون چه نقشی در AVM دارد؟'),
@@ -661,8 +661,8 @@ const TF = [
 
   F('swi', L('Bildgebung', 'Imaging', 'تصویربرداری'),
     L('Was zeigt SWI/T2* bei AVM?', 'What does SWI/T2* show in AVM?', 'SWI/T2* در AVM چه نشان می‌دهد؟'),
-    L('Hämosiderin nach stattgehabter Blutung (Blooming).', 'Haemosiderin after prior haemorrhage (blooming).', 'هموسیدرین بعد از خونریزی قبلی (Blooming).'),
-    L('SWI ist sensitiv für alte Blutungsresiduen → Hämosiderin als Blooming-Artefakt. Zeigt stattgehabte Mikroblutungen an. Hilft auch bei Frage nach Hybridläsionen (AVM + Kavernom).', 'SWI is sensitive to old haemorrhage residua → haemosiderin as a blooming artefact. Reveals prior microbleeds. Also helpful when hybrid lesions (AVM + cavernoma) are suspected.', 'SWI برای بقایای خونریزی قدیمی حساس است → هموسیدرین به‌عنوان آرتفکت Blooming. میکروخونریزی‌های قبلی را نشان می‌دهد. همچنین در مورد ضایعات هیبریدی (AVM + کاورنوم) کمک می‌کند.')),
+    L('Hämosiderin nach stattgehabter Blutung (Blooming).', 'Haemosiderin after prior haemorrhage (blooming).', "هموسیدرین بعد از خونریزی قبلی (آرتیفکت شکوفه‌ای (blooming))."),
+    L('SWI ist sensitiv für alte Blutungsresiduen → Hämosiderin als Blooming-Artefakt. Zeigt stattgehabte Mikroblutungen an. Hilft auch bei Frage nach Hybridläsionen (AVM + Kavernom).', 'SWI is sensitive to old haemorrhage residua → haemosiderin as a blooming artefact. Reveals prior microbleeds. Also helpful when hybrid lesions (AVM + cavernoma) are suspected.', "SWI برای بقایای خونریزی قدیمی حساس است → هموسیدرین به‌عنوان آرتفکت آرتیفکت شکوفه‌ای (blooming). میکروخونریزی‌های قبلی را نشان می‌دهد. همچنین در مورد ضایعات هیبریدی (AVM + کاورنوم) کمک می‌کند.")),
 ]
 
 export const AVM_FLASHCARDS = TF.map((item, index) => ({
@@ -683,5 +683,5 @@ export const AVM_FLASHCARD_TOPIC = {
   color: '#7c3aed',
   href: '/flashcards/avm-zns',
   title: L('Arteriovenöse Malformation (AVM)', 'Arteriovenous Malformation (AVM)', 'مالفورماسیون شریانی-وریدی (AVM)'),
-  subtitle: L('Spetzler-Martin · Nidus · Flow voids · DSA · Therapiestrategie', 'Spetzler-Martin · nidus · flow voids · DSA · treatment strategy', 'Spetzler-Martin · نیدوس · Flow voids · DSA · استراتژی درمان'),
+  subtitle: L('Spetzler-Martin · Nidus · Flow voids · DSA · Therapiestrategie', 'Spetzler-Martin · nidus · flow voids · DSA · treatment strategy', 'Spetzler-Martin · نیدوس · فقدان سیگنال جریان (flow void) · DSA · استراتژی درمان'),
 }

@@ -239,13 +239,13 @@ export const CAA_LESSON = {
       L('Charakteristikum (CAVE: Unterschied zu HMA)', 'Characteristic (CAVE: difference from HMA)', 'ویژگی (توجه: تفاوت با HMA)'),
     ],
     wmRows: [
-      [L('Schwere PVS im Centrum semiovale', 'Severe PVS in centrum semiovale', 'PVS شدید در Centrum semiovale'), L('> 20 PVS in einem Hemisphären-Schnitt', '> 20 PVS in one hemispheric slice', '> ۲۰ PVS در یک برش نیمکره'), L('Massiv erweiterte PVS in CSO-Lokalisation — NICHT basalganglionär wie bei hypertensiver Mikroangiopathie', 'Massively enlarged PVS in CSO location — NOT in basal ganglia as in hypertensive microangiopathy', 'PVS بسیار بزرگ شده در محل CSO — نه در بازال گانگلیا مانند میکروآنژیوپاتی فشار خون بالا')],
+      [L('Schwere PVS im Centrum semiovale', 'Severe PVS in centrum semiovale', 'PVS شدید در مرکز نیمه‌بیضی (centrum semiovale)'), L('> 20 PVS in einem Hemisphären-Schnitt', '> 20 PVS in one hemispheric slice', '> ۲۰ PVS در یک برش نیمکره'), L('Massiv erweiterte PVS in CSO-Lokalisation — NICHT basalganglionär wie bei hypertensiver Mikroangiopathie', 'Massively enlarged PVS in CSO location — NOT in basal ganglia as in hypertensive microangiopathy', 'PVS بسیار بزرگ شده در محل CSO — نه در بازال گانگلیا مانند میکروآنژیوپاتی فشار خون بالا')],
       [L('Multispot-WMH-Muster', 'Multispot WMH pattern', 'الگوی WMH چندنقطه‌ای'), L('> 10 subkortikale FLAIR-Dots beidseits', '> 10 subcortical FLAIR dots bilaterally', '> ۱۰ نقطه FLAIR ساب‌کورتیکال در هر دو طرف'), L('Kleine, punktförmige, bilateral verteilte FLAIR-Signalanhebungen — charakteristisches Fleckmuster, nicht konfluierend wie bei klassischer Mikroangiopathie', 'Small, punctate, bilaterally distributed FLAIR hyperintensities — characteristic spotted pattern, not confluent as in classical microangiopathy', 'هایپرانتنسیتی‌های FLAIR کوچک، نقطه‌ای، با توزیع دوطرفه — الگوی لکه‌ای مشخص، نه کانفلوئنت مانند میکروآنژیوپاتی کلاسیک')],
     ],
     key: L(
       'PVS bei CAA: im Centrum semiovale (CSO) — bei HMA in den Basalganglien. Multispot-WMH: punktförmige Flecken (CAA) ≠ konfluierende WMH (HMA/Fazekas).',
       'PVS in CAA: in the centrum semiovale (CSO) — in HMA in the basal ganglia. Multispot WMH: punctate spots (CAA) ≠ confluent WMH (HMA/Fazekas).',
-      'PVS در CAA: در Centrum semiovale (CSO) — در HMA در بازال گانگلیا. WMH چندنقطه‌ای: نقاط نقطه‌ای (CAA) ≠ WMH کانفلوئنت (HMA/Fazekas).'
+      'در CAA، فضاهای اطراف عروقی (PVS) عمدتاً در مرکز نیمه‌بیضی (CSO) دیده می‌شوند؛ در میکروآنژیوپاتی پرفشاری خون، عقده‌های قاعده‌ای محل تیپیک‌تری هستند. الگوی چندنقطه‌ای WMH بیشتر به نفع CAA است و با WMH به‌هم‌پیوسته در میکروآنژیوپاتی پرفشاری خون تفاوت دارد.'
     ),
   },
 
@@ -267,8 +267,8 @@ export const CAA_LESSON = {
       [L('CAA', 'CAA', 'CAA'), L('Lobär (kortikal-subkortikal)', 'Lobar (cortical-subcortical)', 'لوبار (کورتیکال-ساب‌کورتیکال)'), L('Kortikal/subkortikal', 'Cortical/subcortical', 'کورتیکال/ساب‌کورتیکال'), L('Älterer Patient, Boston-Kriterien, TFNE, Alzheimer-Komorbidität', 'Elderly patient, Boston criteria, TFNE, Alzheimer comorbidity', 'بیمار مسن‌تر، معیارهای Boston، TFNE، همراهی آلزهایمر')],
       [L('Hypertensive Mikroangiopathie', 'Hypertensive microangiopathy', 'میکروآنژیوپاتی فشار خون بالا'), L('Tief: Putamen, Thalamus, Pons, Kleinhirn', 'Deep: putamen, thalamus, pons, cerebellum', 'عمقی: پوتامن، تالاموس، پونز، مخچه'), L('Tief (Basalganglien, Thalamus)', 'Deep (basal ganglia, thalamus)', 'عمقی (بازال گانگلیا، تالاموس)'), L('Bekannte Hypertonie, PVS in Basalganglien, konfluierende WMH (Fazekas)', 'Known hypertension, PVS in basal ganglia, confluent WMH (Fazekas)', 'فشار خون شناخته‌شده، PVS در بازال گانگلیا، WMH کانفلوئنت (Fazekas)')],
       [L('AVM-Blutung', 'AVM haemorrhage', 'خونریزی AVM'), L('Variabel, oft lobär', 'Variable, often lobar', 'متغیر، اغلب لوبار'), L('Fehlt / unspezifisch', 'Absent / non-specific', 'غایب / غیراختصاصی'), L('Junger Patient, serpentiginöse Gefäße im MRA/CTA', 'Young patient, serpiginous vessels on MRA/CTA', 'بیمار جوان، عروق مارپیچی در MRA/CTA')],
-      [L('Kavernom', 'Cavernoma', 'کاورنوم'), L('Überall, oft Hirnstamm', 'Anywhere, often brainstem', 'همه‌جا، اغلب ساقه مغز'), L('„Popcorn"-Muster, SWI-Halo', '"Popcorn" pattern, SWI halo', 'الگوی «پاپ‌کورن»، هاله SWI'), L('Kein Ödem, kein Enhancement, oft jung, familiär', 'No oedema, no enhancement, often young, familial', 'بدون ادم، بدون انهانسمنت، اغلب جوان، ارثی')],
-      [L('Hirnmetastase', 'Brain metastasis', 'متاستاز مغزی'), L('Peripher, kortikal-subkortikal, multipel', 'Peripheral, cortical-subcortical, multiple', 'محیطی، کورتیکال-ساب‌کورتیکال، متعدد'), L('Fehlt / unspezifisch', 'Absent / non-specific', 'غایب / غیراختصاصی'), L('Rund, ausgeprägtes Ödem, KM-Enhancement, Tumoranamnese', 'Round, prominent oedema, contrast enhancement, tumour history', 'گرد، ادم شدید، انهانسمنت کنتراستی، سابقه تومور')],
+      [L('Kavernom', 'Cavernoma', 'کاورنوم'), L('Überall, oft Hirnstamm', 'Anywhere, often brainstem', 'همه‌جا، اغلب ساقه مغز'), L('„Popcorn"-Muster, SWI-Halo', '"Popcorn" pattern, SWI halo', 'الگوی «پاپ‌کورن»، هاله SWI'), L('Kein Ödem, kein Enhancement, oft jung, familiär', 'No oedema, no enhancement, often young, familial', "بدون ادم، بدون تقویت پس از تزریق، اغلب جوان، ارثی")],
+      [L('Hirnmetastase', 'Brain metastasis', 'متاستاز مغزی'), L('Peripher, kortikal-subkortikal, multipel', 'Peripheral, cortical-subcortical, multiple', 'محیطی، کورتیکال-ساب‌کورتیکال، متعدد'), L('Fehlt / unspezifisch', 'Absent / non-specific', 'غایب / غیراختصاصی'), L('Rund, ausgeprägtes Ödem, KM-Enhancement, Tumoranamnese', 'Round, prominent oedema, contrast enhancement, tumour history', "گرد، ادم شدید، تقویت پس از تزریق، سابقه تومور")],
     ],
     key: L(
       'Schlüssel-DD: CAA (lobär, kortikal-CMBs, alt) vs. Hypertonie (tief, tiefe CMBs, Hypertonieanamnese). Bei beiden kann klinisch Demenz auftreten — CAA eher mit Alzheimer assoziiert.',
@@ -300,7 +300,7 @@ export const CAA_LESSON = {
       },
       {
         title: L('WM-Marker: CSO-PVS + Multispot', 'WM markers: CSO-PVS + multispot', 'نشانگرهای WM: CSO-PVS + چندنقطه‌ای'),
-        text: L('Schwere PVS (>20) im Centrum semiovale (nicht Basalganglien!) + Multispot-WMH (>10 subkortikale FLAIR-Dots, punktförmig ≠ konfluierend). Beide unterscheiden CAA von HMA.', 'Severe PVS (>20) in the centrum semiovale (not basal ganglia!) + multispot WMH (>10 subcortical FLAIR dots, punctate ≠ confluent). Both distinguish CAA from HMA.', 'PVS شدید (>۲۰) در Centrum semiovale (نه بازال گانگلیا!) + WMH چندنقطه‌ای (>۱۰ نقطه FLAIR ساب‌کورتیکال، نقطه‌ای ≠ کانفلوئنت). هر دو CAA را از HMA تمایز می‌دهند.'),
+        text: L('Schwere PVS (>20) im Centrum semiovale (nicht Basalganglien!) + Multispot-WMH (>10 subkortikale FLAIR-Dots, punktförmig ≠ konfluierend). Beide unterscheiden CAA von HMA.', 'Severe PVS (>20) in the centrum semiovale (not basal ganglia!) + multispot WMH (>10 subcortical FLAIR dots, punctate ≠ confluent). Both distinguish CAA from HMA.', 'PVS شدید (>۲۰) در مرکز نیمه‌بیضی (centrum semiovale) (نه بازال گانگلیا!) + WMH چندنقطه‌ای (>۱۰ نقطه FLAIR ساب‌کورتیکال، نقطه‌ای ≠ کانفلوئنت). هر دو CAA را از HMA تمایز می‌دهند.'),
       },
       {
         title: L('Komorbidität: Alzheimer 85 %', 'Comorbidity: Alzheimer 85%', 'همراهی: آلزهایمر ۸۵٪'),
@@ -378,14 +378,14 @@ const CAA_QUESTION_SEEDS = [
       'Where are the enlarged perivascular spaces (PVS) as a White Matter marker in CAA — and where in hypertensive microangiopathy?',
       'فضاهای پریواسکولار بزرگ‌شده (PVS) به عنوان نشانگر ماده سفید در CAA کجا هستند — و در میکروآنژیوپاتی فشار خون کجا؟'),
     [
-      L('CAA: Centrum semiovale (CSO) — HMA: Basalganglien', 'CAA: centrum semiovale (CSO) — HMA: basal ganglia', 'CAA: Centrum semiovale (CSO) — HMA: بازال گانگلیا'),
-      L('CAA: Basalganglien — HMA: Centrum semiovale', 'CAA: basal ganglia — HMA: centrum semiovale', 'CAA: بازال گانگلیا — HMA: Centrum semiovale'),
+      L('CAA: Centrum semiovale (CSO) — HMA: Basalganglien', 'CAA: centrum semiovale (CSO) — HMA: basal ganglia', 'CAA: مرکز نیمه‌بیضی (CSO)؛ میکروآنژیوپاتی پرفشاری خون: عقده‌های قاعده‌ای'),
+      L('CAA: Basalganglien — HMA: Centrum semiovale', 'CAA: basal ganglia — HMA: centrum semiovale', 'CAA: عقده‌های قاعده‌ای؛ میکروآنژیوپاتی پرفشاری خون: مرکز نیمه‌بیضی'),
       L('Beide in den Basalganglien', 'Both in the basal ganglia', 'هر دو در بازال گانگلیا'),
-      L('Beide im Centrum semiovale', 'Both in the centrum semiovale', 'هر دو در Centrum semiovale'),
+      L('Beide im Centrum semiovale', 'Both in the centrum semiovale', 'هر دو در مرکز نیمه‌بیضی (centrum semiovale)'),
     ], 0,
     L('Schwere PVS im Centrum semiovale (CSO, >20 pro Hemisphärenschnitt) sind White-Matter-Marker der CAA. Bei hypertensiver Mikroangiopathie entstehen erweiterte PVS dagegen bevorzugt in den Basalganglien. Diese Unterscheidung ist klinisch wichtig!',
       'Severe PVS in the centrum semiovale (CSO, >20 per hemispheric slice) are a White Matter marker of CAA. In hypertensive microangiopathy, enlarged PVS occur preferentially in the basal ganglia. This distinction is clinically important!',
-      'PVS شدید در Centrum semiovale (CSO، >۲۰ در هر برش نیمکره) نشانگر ماده سفید CAA هستند. در میکروآنژیوپاتی فشار خون بالا، PVS بزرگ‌شده ترجیحاً در بازال گانگلیا رخ می‌دهند. این تمایز از نظر بالینی مهم است!')
+      'PVS شدید در مرکز نیمه‌بیضی (CSO؛ بیش از ۲۰ مورد در یک نیمکره در یک برش) از نشانگرهای ماده سفید CAA است. در میکروآنژیوپاتی پرفشاری خون، PVS بزرگ‌شده بیشتر در عقده‌های قاعده‌ای دیده می‌شود؛ این افتراق از نظر بالینی مهم است.')
   ),
 
   Q('caa-06',
@@ -486,7 +486,7 @@ const CAA_FLASH_SEEDS = [
   F('boston-probable', L('Boston-Kriterien v2.0', 'Boston Criteria v2.0', 'معیارهای Boston v2.0'),
     L('Wann gilt eine CAA als »Probable«?', 'When is CAA classified as "Probable"?', 'CAA چه زمانی «محتمل» طبقه‌بندی می‌شود؟'),
     L('Option A: ≥ 2 lobäre hämorrhagische Läsionen (beliebige Kombination)\nOption B: 1 lobäre Läsion + 1 White-Matter-Marker', 'Option A: ≥ 2 lobar haemorrhagic lesions (any combination)\nOption B: 1 lobar lesion + 1 White Matter marker', 'گزینه A: ≥ ۲ ضایعه هموراژیک لوبار (هر ترکیبی)\nگزینه B: ۱ ضایعه لوبار + ۱ نشانگر ماده سفید'),
-    L('Lobäre hämorrhagische Läsionen: lobäre ICH, lobäre CMBs, cSS-Herde, cSAH-Herde. WM-Marker: CSO-PVS > 20 oder Multispot-WMH > 10. Voraussetzungen müssen immer erfüllt sein.', 'Lobar haemorrhagic lesions: lobar ICH, lobar CMBs, cSS lesions, cSAH lesions. WM markers: CSO-PVS > 20 or multispot WMH > 10. Prerequisites must always be met.', 'ضایعات هموراژیک لوبار: ICH لوبار، CMBs لوبار، ضایعات cSS، ضایعات cSAH. نشانگرهای WM: CSO-PVS > ۲۰ یا WMH Multispot > ۱۰. پیش‌نیازها باید همیشه برآورده شوند.')
+    L('Lobäre hämorrhagische Läsionen: lobäre ICH, lobäre CMBs, cSS-Herde, cSAH-Herde. WM-Marker: CSO-PVS > 20 oder Multispot-WMH > 10. Voraussetzungen müssen immer erfüllt sein.', 'Lobar haemorrhagic lesions: lobar ICH, lobar CMBs, cSS lesions, cSAH lesions. WM markers: CSO-PVS > 20 or multispot WMH > 10. Prerequisites must always be met.', 'ضایعات هموراژیک لوبار: ICH لوبار، CMBs لوبار، ضایعات cSS، ضایعات cSAH. نشانگرهای WM: CSO-PVS > ۲۰ یا الگوی چندنقطه‌ای WMH > ۱۰. پیش‌نیازها باید همیشه برآورده شوند.')
   ),
 
   F('boston-possible', L('Boston-Kriterien v2.0', 'Boston Criteria v2.0', 'معیارهای Boston v2.0'),
@@ -503,12 +503,12 @@ const CAA_FLASH_SEEDS = [
 
   F('pvs-cso', L('WM-Marker', 'WM Marker', 'نشانگر WM'),
     L('PVS als WM-Marker: Wo und wie viele?', 'PVS as WM marker: where and how many?', 'PVS به عنوان نشانگر WM: کجا و چند تا؟'),
-    L('Schwere PVS im Centrum semiovale (CSO): > 20 in einem Hemisphären-Schnitt.', 'Severe PVS in the centrum semiovale (CSO): > 20 in one hemispheric slice.', 'PVS شدید در Centrum semiovale (CSO): > ۲۰ در یک برش نیمکره.'),
+    L('Schwere PVS im Centrum semiovale (CSO): > 20 in einem Hemisphären-Schnitt.', 'Severe PVS in the centrum semiovale (CSO): > 20 in one hemispheric slice.', 'PVS شدید در مرکز نیمه‌بیضی (CSO): بیش از ۲۰ مورد در یک نیمکره در یک برش.'),
     L('Wichtig: CSO-Lokalisation (nicht Basalganglien!). Bei HMA sind die erweiterten PVS in den Basalganglien — das ist der entscheidende Unterschied. PVS im CSO entstehen durch Aβ-Ablagerung entlang kortikaler Perforantes.', 'Important: CSO location (not basal ganglia!). In HMA, enlarged PVS are in the basal ganglia — that is the key difference. PVS in CSO arise from Aβ deposition along cortical perforators.', 'مهم: محل CSO (نه بازال گانگلیا!). در HMA، PVS بزرگ‌شده در بازال گانگلیا هستند — این تفاوت کلیدی است.')
   ),
 
   F('multispot', L('WM-Marker', 'WM Marker', 'نشانگر WM'),
-    L('Multispot-WMH: Definition und Abgrenzung von HMA?', 'Multispot WMH: definition and distinction from HMA?', 'WMH Multispot: تعریف و افتراق از HMA؟'),
+    L('Multispot-WMH: Definition und Abgrenzung von HMA?', 'Multispot WMH: definition and distinction from HMA?', 'الگوی چندنقطه‌ای WMH: تعریف و افتراق از HMA؟'),
     L('> 10 kleine, punktförmige, bilateral verteilte FLAIR-Signalanhebungen im subkortikalen Marklager — nicht konfluierend.', '> 10 small, punctate, bilaterally distributed FLAIR hyperintensities in subcortical white matter — not confluent.', '> ۱۰ هایپرانتنسیتی FLAIR کوچک، نقطه‌ای، با توزیع دوطرفه در ماده سفید ساب‌کورتیکال — غیرکانفلوئنت.'),
     L('Bei HMA: konfluierende periventrikuläre WMH (Fazekas-Skala). Bei CAA: charakteristisches Fleckmuster — viele kleine Punkte, nicht zu einer großen Fläche verschmelzend. Dieser Unterschied ist auf MRT gut erkennbar.', 'In HMA: confluent periventricular WMH (Fazekas scale). In CAA: characteristic spotted pattern — many small dots, not merging into large areas. This difference is clearly recognisable on MRI.', 'در HMA: WMH پریونتریکولار کانفلوئنت (مقیاس Fazekas). در CAA: الگوی لکه‌ای مشخص — نقاط کوچک زیاد، که در مناطق بزرگ ادغام نمی‌شوند.')
   ),

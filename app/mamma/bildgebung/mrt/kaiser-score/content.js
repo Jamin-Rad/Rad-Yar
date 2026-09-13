@@ -1,7 +1,7 @@
 export const pick = (value, lang) => typeof value === 'string' ? value : value?.[lang] || value?.de || ''
 
 export const COPY = {
-  title: { de: 'Kaiser Score', en: 'Kaiser Score', fa: 'Kaiser Score' },
+  title: { de: 'Kaiser Score', en: 'Kaiser Score', fa: 'امتیاز کایزر' },
   subtitle: {
     de: 'Der Entscheidungsbaum, der Morphologie und Kinetik in drei Schritten zu einer nachvollziehbaren MRT-Einschätzung verbindet.',
     en: 'A decision tree that combines morphology and kinetics into a traceable MRI assessment in three steps.',
@@ -30,19 +30,19 @@ export const SECTIONS = [
 export const FEATURES = [
   {
     id: 'root', number: '01', accent: 'berry',
-    title: { de: 'Root Sign', en: 'Root sign', fa: 'Root sign' },
+    title: { de: 'Root Sign', en: 'Root sign', fa: 'علامت ریشه‌ای (Root sign)' },
     short: { de: 'Mindestens eine sichere Spikula?', en: 'At least one definite spicule?', fa: 'حداقل یک اسپیکول قطعی وجود دارد؟' },
     text: {
       de: 'Eine einzelne eindeutige, wurzelartige Ausziehung genügt. Sie wird als eigene erste Verzweigung geprüft – auch wenn der übrige Rand umschrieben wirkt.',
       en: 'One definite root-like extension is enough. It is assessed at the first branch even when the remainder of the margin appears circumscribed.',
-      fa: 'وجود یک زائدهٔ ریشه‌مانند و قطعی کافی است. این ویژگی در نخستین شاخه بررسی می‌شود، حتی اگر بقیهٔ حاشیه Circumscribed به نظر برسد.',
+      fa: 'وجود یک زائدهٔ ریشه‌مانند و قطعی کافی است. این ویژگی در نخستین شاخه بررسی می‌شود، حتی اگر بقیهٔ حاشیه مشخص به نظر برسد.',
     },
     tip: { de: 'Im Zweifel nicht positiv werten: Artefakte sind keine Spikula.', en: 'If uncertain, do not call it positive: artefact is not a spicule.', fa: 'در صورت تردید، آن را مثبت حساب نکنید؛ آرتیفکت اسپیکول نیست.' },
   },
   {
     id: 'curve', number: '02', accent: 'teal',
     title: { de: 'Kurventyp', en: 'Curve type', fa: 'نوع منحنی' },
-    short: { de: 'Persistierend, Plateau oder Wash-out?', en: 'Persistent, plateau or wash-out?', fa: 'Persistent، Plateau یا Wash-out؟' },
+    short: { de: 'Persistierend, Plateau oder Wash-out?', en: 'Persistent, plateau or wash-out?', fa: 'پایدار، پلاتو یا شست‌وشوی سریع؟' },
     text: {
       de: 'Entscheidend ist die Veränderung zwischen frühem beziehungsweise maximalem und spätem Enhancement. Der suspekteste sicher erkennbare Kurvenanteil zählt.',
       en: 'The change between early or peak and delayed enhancement is decisive. Use the most suspicious curve component that is definitely present.',
@@ -53,33 +53,33 @@ export const FEATURES = [
   {
     id: 'margin', number: '03', accent: 'green',
     title: { de: 'Rand', en: 'Margin', fa: 'حاشیه' },
-    short: { de: 'Umschrieben oder nicht umschrieben?', en: 'Circumscribed or non-circumscribed?', fa: 'Circumscribed یا Non-circumscribed؟' },
+    short: { de: 'Umschrieben oder nicht umschrieben?', en: 'Circumscribed or non-circumscribed?', fa: 'با حاشیه مشخص یا نامشخص؟' },
     text: {
       de: 'Wenn kein Root Sign vorliegt, wird der Rand als umschrieben oder irregulär/nicht umschrieben dichotomisiert. Das Prinzip gilt auch für NME.',
       en: 'When the root sign is absent, the margin is dichotomised as circumscribed or irregular/non-circumscribed. The principle also applies to NME.',
-      fa: 'وقتی Root sign وجود ندارد، حاشیه به دو گروه Circumscribed یا Irregular/Non-circumscribed تقسیم می‌شود. این اصل برای NME نیز کاربرد دارد.',
+      fa: 'وقتی علامت ریشه‌ای (Root sign) وجود ندارد، حاشیه به دو گروه با حاشیه مشخص یا نامنظم/نامشخص تقسیم می‌شود. این اصل برای NME نیز کاربرد دارد.',
     },
     tip: { de: 'Immer das suspekteste eindeutig vorhandene Randmerkmal wählen.', en: 'Always choose the most suspicious definite margin feature.', fa: 'همیشه مشکوک‌ترین ویژگی قطعی حاشیه را انتخاب کنید.' },
   },
   {
     id: 'enhancement', number: '04', accent: 'gold',
-    title: { de: 'Internes Enhancement', en: 'Internal enhancement', fa: 'Enhancement داخلی' },
-    short: { de: 'Homogen oder suspekt heterogen?', en: 'Homogeneous or suspiciously heterogeneous?', fa: 'Homogeneous یا Heterogeneous مشکوک؟' },
+    title: { de: 'Internes Enhancement', en: 'Internal enhancement', fa: 'افزایش سیگنال پس از تزریق داخلی' },
+    short: { de: 'Homogen oder suspekt heterogen?', en: 'Homogeneous or suspiciously heterogeneous?', fa: 'همگن یا ناهمگن مشکوک؟' },
     text: {
       de: 'Homogenes Enhancement ist die nicht suspekte Kategorie. Heterogen, kräftig randständig und clustered-ring werden für den Baum als suspekt zusammengefasst.',
       en: 'Homogeneous enhancement is the non-suspicious category. Heterogeneous, marked rim and clustered-ring enhancement are grouped as suspicious.',
-      fa: 'Enhancement همگن در گروه غیرمشکوک است. الگوهای Heterogeneous، Rim واضح و Clustered-ring در درخت به‌عنوان مشکوک گروه‌بندی می‌شوند.',
+      fa: 'افزایش سیگنال پس از تزریق همگن در گروه غیرمشکوک است. الگوهای ناهمگن، حلقوی واضح و حلقه‌های خوشه‌ای در درخت به‌عنوان مشکوک گروه‌بندی می‌شوند.',
     },
-    tip: { de: 'Dünner, glatter Rim kann entzündlich sein – Kontext prüfen.', en: 'A thin smooth rim may be inflammatory — check the context.', fa: 'Rim نازک و صاف ممکن است التهابی باشد؛ زمینه را بررسی کنید.' },
+    tip: { de: 'Dünner, glatter Rim kann entzündlich sein – Kontext prüfen.', en: 'A thin smooth rim may be inflammatory — check the context.', fa: "تقویت حلقوی نازک و صاف ممکن است التهابی باشد؛ زمینه را بررسی کنید." },
   },
   {
     id: 'edema', number: '05', accent: 'cyan',
-    title: { de: 'Perifokales Ödem', en: 'Perifocal oedema', fa: 'ادم Perifocal' },
+    title: { de: 'Perifokales Ödem', en: 'Perifocal oedema', fa: 'ادم پریفوکال' },
     short: { de: 'Suspektes T2/STIR-Signal vorhanden?', en: 'Suspicious T2/STIR signal present?', fa: 'سیگنال مشکوک در T2/STIR وجود دارد؟' },
     text: {
       de: 'Perifokales oder diffuses ipsilaterales Ödem gilt als positiv. Diffuses bilaterales Ödem wird im Kaiser-Baum nicht als suspektes Ödem gewertet.',
       en: 'Perifocal or diffuse ipsilateral oedema is positive. Diffuse bilateral oedema is not counted as suspicious oedema in the Kaiser tree.',
-      fa: 'ادم Perifocal یا منتشر یک‌طرفه مثبت است. ادم منتشر دوطرفه در درخت Kaiser به‌عنوان ادم مشکوک محسوب نمی‌شود.',
+      fa: 'ادم پریفوکال یا منتشر یک‌طرفه مثبت است. ادم منتشر دوطرفه در درخت Kaiser به‌عنوان ادم مشکوک محسوب نمی‌شود.',
     },
     tip: { de: 'T2/STIR und klinischen Kontext gemeinsam beurteilen.', en: 'Interpret T2/STIR together with the clinical context.', fa: 'T2/STIR را همراه با زمینه بالینی تفسیر کنید.' },
   },
@@ -137,23 +137,23 @@ export const UI = {
     presets: 'Guided examples', load: 'Load path',
   },
   fa: {
-    trainerEyebrow: 'سه تصمیم · یک مسیر قابل‌پیگیری', trainerTitle: 'خودتان امتیاز را بسازید', trainerIntro: 'از Root sign شروع کنید. درخت فقط ویژگی‌ای را نشان می‌دهد که در مسیر شما واقعاً لازم است.',
+    trainerEyebrow: 'سه تصمیم · یک مسیر قابل‌پیگیری', trainerTitle: 'خودتان امتیاز را بسازید', trainerIntro: 'از علامت ریشه‌ای (Root sign) شروع کنید. درخت فقط ویژگی‌ای را نشان می‌دهد که در مسیر شما واقعاً لازم است.',
     reset: 'شروع دوباره', back: 'یک گام عقب', choose: 'یک پاسخ انتخاب کنید', step: 'گام', of: 'از ۳', path: 'مسیر شما', result: 'نتیجه', openCalculator: 'بررسی با محاسبه‌گر بالینی',
     questions: {
-      root: ['آیا Root sign وجود دارد؟', 'وجود یک اسپیکول قطعی کافی است.'],
+      root: ['آیا علامت ریشه‌ای (Root sign) وجود دارد؟', 'وجود یک اسپیکول قطعی کافی است.'],
       curve: ['نوع منحنی چیست؟', 'مشکوک‌ترین بخش قطعی منحنی را ارزیابی کنید.'],
-      margin: ['حاشیه چگونه است؟', 'این پرسش فقط در نبود Root sign ظاهر می‌شود.'],
-      enhancement: ['Enhancement داخلی چگونه است؟', 'این پرسش مسیر Wash-out بدون Root sign را تعیین می‌کند.'],
-      edema: ['آیا ادم Perifocal وجود دارد؟', 'این پرسش مسیر Plateau/Wash-out همراه Root sign را تفکیک می‌کند.'],
+      margin: ['حاشیه چگونه است؟', 'این پرسش فقط در نبود علامت ریشه‌ای (Root sign) ظاهر می‌شود.'],
+      enhancement: ['افزایش سیگنال پس از تزریق داخلی چگونه است؟', 'این پرسش مسیر شست‌وشوی سریع بدون علامت ریشه‌ای (Root sign) را تعیین می‌کند.'],
+      edema: ['آیا ادم پریفوکال وجود دارد؟', 'این پرسش مسیر پلاتو/شست‌وشوی سریع همراه علامت ریشه‌ای (Root sign) را تفکیک می‌کند.'],
     },
     options: {
       no: ['خیر', 'اسپیکول قطعی ندارد'], yes: ['بله', 'حداقل یک اسپیکول قطعی'],
-      persistent: ['Persistent', 'سیگنال همچنان افزایش می‌یابد'], plateau: ['Plateau', 'سیگنال تقریباً ثابت می‌ماند'], washout: ['Wash-out', 'سیگنال در فاز تأخیری کاهش می‌یابد'],
-      circumscribed: ['Circumscribed', 'حاشیه واضح'], irregular: ['Irregular', 'حاشیه غیرمحدود'],
-      homogeneous: ['Homogeneous', 'جذب یکنواخت'], heterogeneous: ['Heterogeneous / Rim', 'شامل Clustered-ring'],
-      absent: ['وجود ندارد', 'ادم مشکوک دیده نمی‌شود'], present: ['وجود دارد', 'Perifocal یا منتشر یک‌طرفه'],
+      persistent: ['پایدار', 'سیگنال همچنان افزایش می‌یابد'], plateau: ['پلاتو', 'سیگنال تقریباً ثابت می‌ماند'], washout: ['واش‌اوت', 'سیگنال در فاز تأخیری کاهش می‌یابد'],
+      circumscribed: ['با حاشیه مشخص', 'حاشیه واضح'], irregular: ['نامنظم', 'حاشیه نامشخص'],
+      homogeneous: ['همگن', 'جذب یکنواخت'], heterogeneous: ['ناهمگن / حلقوی', 'شامل حلقه‌های خوشه‌ای'],
+      absent: ['وجود ندارد', 'ادم مشکوک دیده نمی‌شود'], present: ['وجود دارد', 'پریفوکال یا منتشر یک‌طرفه'],
     },
-    labels: { root: 'Root sign', curve: 'منحنی', margin: 'حاشیه', enhancement: 'Enhancement', edema: 'ادم' },
+    labels: { root: 'علامت ریشه‌ای (Root sign)', curve: 'منحنی', margin: 'حاشیه', enhancement: 'تقویت پس از تزریق', edema: 'ادم' },
     risks: {
       low: ['محدوده کم‌خطر', 'BI-RADS 2/3', 'در مدل Kaiser پایین‌تر از آستانه بیوپسی است؛ با این حال زمینه بالینی و تصاویر قبلی باید لحاظ شوند.'],
       intermediate: ['محدوده میانی', 'BI-RADS 4', 'در مدل Kaiser از امتیاز ۵ به بالا بررسی بافت‌شناسی توصیه می‌شود.'],
@@ -166,22 +166,22 @@ export const UI = {
 export const PRESETS = [
   {
     id: 'fibro', score: 1, answers: { root: 'no', curve: 'persistent', margin: 'circumscribed' },
-    title: { de: 'Umschriebene persistierende Mass', en: 'Circumscribed persistent mass', fa: 'Mass با حاشیه واضح و منحنی Persistent' },
+    title: { de: 'Umschriebene persistierende Mass', en: 'Circumscribed persistent mass', fa: 'توده با حاشیه واضح و منحنی پایدار' },
     note: { de: 'Typischer niedrig-riskanter Pfad; zum Beispiel bei passender Morphologie eines Fibroadenoms.', en: 'A typical low-risk path, for example with fibroadenoma-like morphology.', fa: 'یک مسیر تیپیک کم‌خطر؛ برای مثال در مورفولوژی سازگار با فیبروآدنوم.' },
   },
   {
     id: 'plateau', score: 5, answers: { root: 'no', curve: 'plateau', margin: 'irregular' },
-    title: { de: 'Irregulärer Plateau-Befund', en: 'Irregular plateau lesion', fa: 'ضایعه Irregular با منحنی Plateau' },
+    title: { de: 'Irregulärer Plateau-Befund', en: 'Irregular plateau lesion', fa: 'ضایعه نامنظم با منحنی پلاتو' },
     note: { de: 'Die Morphologie hebt den Befund genau über die Biopsieschwelle.', en: 'Morphology moves the lesion just above the biopsy threshold.', fa: 'مورفولوژی ضایعه را درست از آستانه بیوپسی عبور می‌دهد.' },
   },
   {
     id: 'rim', score: 8, answers: { root: 'no', curve: 'washout', enhancement: 'heterogeneous' },
-    title: { de: 'Wash-out mit suspektem Enhancement', en: 'Wash-out with suspicious enhancement', fa: 'Wash-out با Enhancement مشکوک' },
-    note: { de: 'Heterogenes, Rim- oder clustered-ring Enhancement führt in den hohen Bereich.', en: 'Heterogeneous, rim or clustered-ring enhancement leads to the high range.', fa: 'Enhancement از نوع Heterogeneous، Rim یا Clustered-ring مسیر را به محدوده پرخطر می‌برد.' },
+    title: { de: 'Wash-out mit suspektem Enhancement', en: 'Wash-out with suspicious enhancement', fa: 'شست‌وشوی سریع با افزایش سیگنال پس از تزریق مشکوک' },
+    note: { de: 'Heterogenes, Rim- oder clustered-ring Enhancement führt in den hohen Bereich.', en: 'Heterogeneous, rim or clustered-ring enhancement leads to the high range.', fa: 'افزایش سیگنال پس از تزریق از نوع ناهمگن، حلقوی یا حلقه‌های خوشه‌ای مسیر را به محدوده پرخطر می‌برد.' },
   },
   {
     id: 'rooted', score: 11, answers: { root: 'yes', curve: 'washout', edema: 'present' },
-    title: { de: 'Root Sign, Wash-out und Ödem', en: 'Root sign, wash-out and oedema', fa: 'Root sign همراه Wash-out و ادم' },
+    title: { de: 'Root Sign, Wash-out und Ödem', en: 'Root sign, wash-out and oedema', fa: 'علامت ریشه‌ای (Root sign) همراه شست‌وشوی سریع و ادم' },
     note: { de: 'Kombination maximal suspekter sicherer Merkmale.', en: 'Combination of maximally suspicious definite features.', fa: 'ترکیب ویژگی‌های قطعی با بیشترین درجه شک.' },
   },
 ]

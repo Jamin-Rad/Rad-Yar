@@ -544,7 +544,7 @@ export const MESSWERTE = [
         entries: [
           { s: { de: 'Pfortader', en: 'Portal vein', fa: 'ورید پورت' }, v: '≤ 13 mm', h: { de: 'Portale Hypertension ab > 13 mm; atemvariabel', en: 'Portal hypertension > 13 mm; respiratory variation', fa: 'هایپرتانسیون پورت > ۱۳ میلی‌متر؛ تغییر تنفسی' } },
           { s: { de: 'V. cava inferior (Querdurchmesser)', en: 'Inferior vena cava (transverse)', fa: 'ورید اجوف تحتانی' }, v: '≤ 2,5 cm', h: { de: 'Atemvariabel; Kollaps bei Hypovolämie', en: 'Respiratory variation; collapse in hypovolaemia', fa: 'تغییر تنفسی؛ کلاپس در هیپوولمی' } },
-          { s: { de: 'Appendix', en: 'Appendix', fa: 'آپاندیس' }, v: '≤ 6 mm', h: { de: 'Appendizitis: > 6 mm + Wandverdickung + KM-Enhancement', en: 'Appendicitis: > 6 mm + wall thickening + contrast enhancement', fa: 'آپاندیسیت: > ۶ + ضخامت دیواره + انهانسمنت' } },
+          { s: { de: 'Appendix', en: 'Appendix', fa: 'آپاندیس' }, v: '≤ 6 mm', h: { de: 'Appendizitis: > 6 mm + Wandverdickung + KM-Enhancement', en: 'Appendicitis: > 6 mm + wall thickening + contrast enhancement', fa: "آپاندیسیت: > ۶ + ضخامت دیواره + تقویت پس از تزریق" } },
         ],
       },
     ],
@@ -1683,7 +1683,7 @@ export const KLASSIFIKATIONEN = [
             text: {
               de: 'Optimaler MRT-Zeitpunkt: 7.–14. Zyklustag (frühe bis mittlere Follikelphase) bei prämenopausalen Frauen → niedrigstes BPE, höchste Spezifität.\n\nFGT-Grad d + BPE marked: erhöhte Falsch-Positiv-Rate. Subtraktionsbilder und kinetische Kurvenanalyse (Wash-in, Plateau, Wash-out) sind entscheidend für die Differenzierung gutartig vs. malignes Enhancement.',
               en: 'Optimal MRI timing: cycle days 7–14 (early to mid-follicular phase) in premenopausal women → lowest BPE, highest specificity.\n\nFGT grade d + BPE marked: increased false-positive rate. Subtraction images and kinetic curve analysis (wash-in, plateau, wash-out) are decisive for differentiating benign from malignant enhancement.',
-              fa: 'زمان بهینه MRI: روزهای ۷–۱۴ سیکل (اوایل تا میانه فاز فولیکولار) در زنان پیش‌یائسه → کمترین BPE، بیشترین اختصاصیت.\n\nFGT درجه d + BPE شدید: نرخ مثبت کاذب بالاتر. تصاویر تفریقی و تحلیل منحنی سینتیک (wash-in، plateau، wash-out) برای تمایز تقویت خوش‌خیم از بدخیم تعیین‌کننده هستند.',
+              fa: "زمان بهینه MRI: روزهای ۷–۱۴ سیکل (اوایل تا میانه فاز فولیکولار) در زنان پیش‌یائسه → کمترین BPE، بیشترین اختصاصیت.\n\nFGT درجه d + BPE شدید: نرخ مثبت کاذب بالاتر. تصاویر تفریقی و تحلیل منحنی سینتیک (wash-in، plateau، واش‌اوت) برای تمایز تقویت خوش‌خیم از بدخیم تعیین‌کننده هستند.",
             },
           },
         ],
@@ -2501,15 +2501,15 @@ const CLASSIFICATION_FA_ENHANCEMENTS = {
   'li-rads': {
     erklaerung: { fa: 'LI-RADS تشخیص ضایعات کبدی در CT/MRI بیماران پرخطر برای HCC را استاندارد می‌کند و معیارهای اصلی، فرعی و زبان مدیریتی را یکپارچه می‌کند.' },
     radiologie: [
-      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'enhancement شریانی غیرحاشیه‌ای، washout، کپسول، رشد آستانه‌ای و اندازه ضایعه را بررسی کنید.' } },
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: "تقویت پس از تزریق شریانی غیرحاشیه‌ای، واش‌اوت، کپسول، رشد آستانه‌ای و اندازه ضایعه را بررسی کنید." } },
       { stage: { fa: 'روش گزارش' }, text: { fa: 'فقط در جمعیت پرخطر مناسب استفاده شود؛ tumor-in-vein و نشانه‌های بدخیمی غیر HCC جداگانه مشخص شوند.' } },
     ],
   },
   bosniak: {
-    erklaerung: { fa: 'Bosniak ضایعات کیستیک کلیه را بر اساس خطر بدخیمی طبقه‌بندی می‌کند. سپتا، ضخامت دیواره، کلسیفیکاسیون، enhancement و جزء جامد تعیین‌کننده‌اند.' },
+    erklaerung: { fa: 'Bosniak ضایعات کیستیک کلیه را بر اساس خطر بدخیمی طبقه‌بندی می‌کند. سپتا، ضخامت دیواره، کلسیفیکاسیون، تقویت پس از تزریق و جزء جامد تعیین‌کننده‌اند.' },
     radiologie: [
-      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'enhancement واقعی را از محتوای خون/پروتئین هایپردنس جدا کنید؛ در موارد مبهم MRI یا subtraction کمک‌کننده است.' } },
-      { stage: { fa: 'نکته گزارش' }, text: { fa: 'دسته، اندازه بیشینه و علت دسته‌بندی را ذکر کنید؛ مثال: «Bosniak IIF به علت چند سپتای نازک با enhancement».' } },
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'تقویت پس از تزریق واقعی را از محتوای خون/پروتئین هایپردنس جدا کنید؛ در موارد مبهم MRI یا subtraction کمک‌کننده است.' } },
+      { stage: { fa: 'نکته گزارش' }, text: { fa: 'دسته، اندازه بیشینه و علت دسته‌بندی را ذکر کنید؛ مثال: «Bosniak IIF به علت چند سپتای نازک با تقویت پس از تزریق».' } },
     ],
   },
   balthazar: {
@@ -2536,8 +2536,8 @@ const CLASSIFICATION_FA_ENHANCEMENTS = {
   'aast-ois': {
     erklaerung: { fa: 'AAST-OIS آسیب‌های تروماتیک ارگان را بر اساس مورفولوژی CT و درگیری عروقی/ناف ارگان درجه‌بندی می‌کند و زبان مشترک بین رادیولوژی، جراحی و مداخله می‌سازد.' },
     radiologie: [
-      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'عمق پارگی، هماتوم، devascularization، خونریزی فعال، pseudoaneurysm، AV fistula و آسیب ناف ارگان را بررسی کنید.' } },
-      { stage: { fa: 'نکته گزارش' }, text: { fa: 'ارگان، درجه، extravasation فعال کنتراست و آسیب‌های همراه مهم را جداگانه ذکر کنید.' } },
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'عمق پارگی، هماتوم، قطع خون‌رسانی، خونریزی فعال، شبه‌آنوریسم، فیستول شریانی‌وریدی و آسیب ناف ارگان را بررسی کنید.' } },
+      { stage: { fa: 'نکته گزارش' }, text: { fa: 'ارگان، درجه، نشت ماده حاجب فعال کنتراست و آسیب‌های همراه مهم را جداگانه ذکر کنید.' } },
     ],
   },
   'bi-rads': {
@@ -2548,9 +2548,9 @@ const CLASSIFICATION_FA_ENHANCEMENTS = {
     ],
   },
   'mamma-mrt-dichte': {
-    erklaerung: { fa: 'دانسیته بافت غده‌ای و Background Parenchymal Enhancement میزان قابلیت ارزیابی و enhancement هورمونی در MRI پستان را توصیف می‌کنند؛ این‌ها دسته ضایعه نیستند.' },
+    erklaerung: { fa: "دانسیته بافت غده‌ای و تقویت زمینه‌ای پارانشیم (BPE) میزان قابلیت ارزیابی و تقویت پس از تزریق هورمونی در MRI پستان را توصیف می‌کنند؛ این‌ها دسته ضایعه نیستند." },
     radiologie: [
-      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'مقدار fibroglandular tissue و BPE را جداگانه ارزیابی کنید؛ BPE را از نظر تقارن و الگوی focal/diffuse توصیف کنید.' } },
+      { stage: { fa: 'چه چیزی را ببینیم؟' }, text: { fa: 'مقدار بافت فیبروگلاندولار و BPE را جداگانه ارزیابی کنید؛ BPE را از نظر تقارن و الگوی کانونی/منتشر توصیف کنید.' } },
       { stage: { fa: 'نکته گزارش' }, text: { fa: 'BPE شدید می‌تواند ضایعات کوچک را پنهان کند؛ سیکل قاعدگی، هورمون‌درمانی و تصاویر قبلی را در نظر بگیرید.' } },
     ],
   },

@@ -259,7 +259,7 @@ export const DAVF_LESSON = {
       ],
       [
         L('Venöse Stauungsenzephalopathie (andere Ursachen)', 'Venous congestive encephalopathy (other causes)', 'آنسفالوپاتی احتقانی وریدی (علل دیگر)'),
-        L('Diffuse T2-Hyperintensität ohne erkennbare Fistel; Ausschluss durch DSA', 'Diffuse T2 hyperintensity without identifiable fistula; exclude with DSA', 'هایپراینتنسیتی T2 弥漫ohne شناسایی فیستول؛ رد با DSA'),
+        L('Diffuse T2-Hyperintensität ohne erkennbare Fistel; Ausschluss durch DSA', 'Diffuse T2 hyperintensity without identifiable fistula; exclude with DSA', 'هایپراینتنسیتی منتشر T2 بدون شناسایی فیستول؛ رد قطعی با DSA'),
       ],
     ],
   },
@@ -512,7 +512,7 @@ const TQ = [
     ], 0,
     L('CVD → venöse Hypertension → diffuse T2-Hyperintensität (venöse Stauungsenzephalopathie) = Zeichen des hohen Blutungsrisikos.',
       'CVD → venous hypertension → diffuse T2 hyperintensity (venous congestive encephalopathy) = sign of high haemorrhage risk.',
-      'CVD → فشار خون وریدی → هایپراینتنسیتی T2 弥漫 (آنسفالوپاتی احتقانی وریدی) = علامت خطر بالای خونریزی.')),
+      'CVD → پرفشاری وریدی → هایپراینتنسیتی منتشر T2 (آنسفالوپاتی احتقانی وریدی) = نشانه خطر بالای خونریزی.')),
 ]
 
 export const DAVF_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(lang => [lang, TQ.map(seed => ({
@@ -570,7 +570,7 @@ const TF = [
 
   F('mrt-befunde', L('Bildgebung', 'Imaging', 'تصویربرداری'),
     L('Welcher T2-Befund deutet auf eine venöse Stauungsenzephalopathie bei dAVF?', 'Which T2 finding suggests venous congestive encephalopathy in dAVF?', 'کدام یافته T2 به آنسفالوپاتی احتقانی وریدی در dAVF اشاره دارد؟'),
-    L('Diffuse T2-Hyperintensität im Marklager.', 'Diffuse T2 hyperintensity in the white matter.', 'هایپراینتنسیتی T2 弥漫 در ماده سفید.'),
+    L('Diffuse T2-Hyperintensität im Marklager.', 'Diffuse T2 hyperintensity in the white matter.', 'هایپراینتنسیتی منتشر T2 در ماده سفید.'),
     L('Bei kortikaler venöser Drainage steigt der venöse Druck → venöse Hypertension im Parenchym → T2-Hyperintensität (vasogenes Ödem) + neurologische Defizite. Zeigt Notfallbedarf an!', 'With cortical venous drainage, venous pressure rises → parenchymal venous hypertension → T2 hyperintensity (vasogenic oedema) + neurological deficits. Signals an emergency!', 'با درناژ وریدی کورتیکال، فشار وریدی افزایش می‌یابد → فشار خون وریدی پارانشیمی → هایپراینتنسیتی T2 (ادم واژوژنیک) + کسری‌های عصبی. نشانه اورژانس!')),
 
   F('pseudophlebitisch', L('Bildgebung', 'Imaging', 'تصویربرداری'),

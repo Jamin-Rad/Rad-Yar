@@ -176,7 +176,7 @@ export default function MoyaMoyaPage() {
       url: 'https://radiopaedia.org/cases/202226',
       credit: 'Radiopaedia.org · rID-202226 · CC BY-NC-SA 3.0',
       label: 'CT · MRI',
-      meta: c({ de: 'CT nativ (Basalganglienniveau) · MRI T2 (Flow Voids) · FLAIR (Ivy Sign) · DWI (Ischämie) · MRA (Gefäßstenose supraklinoidale ICA).', en: 'CT non-contrast (basal ganglia level) · MRI T2 (flow voids) · FLAIR (ivy sign) · DWI (ischaemia) · MRA (supraclinoid ICA stenosis).', fa: 'CT بدون کنتراست (سطح بازال گانگلیا) · MRI T2 (Flow Voids) · FLAIR (Ivy Sign) · DWI (ایسکمی) · MRA (تنگی ICA سوپراکلینوئید).' }),
+      meta: c({ de: 'CT nativ (Basalganglienniveau) · MRI T2 (Flow Voids) · FLAIR (Ivy Sign) · DWI (Ischämie) · MRA (Gefäßstenose supraklinoidale ICA).', en: 'CT non-contrast (basal ganglia level) · MRI T2 (flow voids) · FLAIR (ivy sign) · DWI (ischaemia) · MRA (supraclinoid ICA stenosis).', fa: 'CT بدون کنتراست (سطح بازال گانگلیا) · MRI T2 (فقدان سیگنال جریان (flow void)) · FLAIR (Ivy Sign) · DWI (ایسکمی) · MRA (تنگی ICA سوپراکلینوئید).' }),
     },
     {
       frames: CASE2_FRAMES,
@@ -184,7 +184,7 @@ export default function MoyaMoyaPage() {
       url: 'https://radiopaedia.org/cases/87811',
       credit: 'Radiopaedia.org · rID-87811 · CC BY-NC-SA 3.0',
       label: 'MRI · TOF-MRA',
-      meta: c({ de: 'MRI T2 (Flow Voids in Basalganglien) · FLAIR (Marklagerläsionen) · DWI (akute Ischämie) · TOF-MRA 3D-Rekonstruktion und MIP: „Puff of smoke"-Zeichen, fehlende MCA/ACA-Signale.', en: 'MRI T2 (flow voids in basal ganglia) · FLAIR (white matter lesions) · DWI (acute ischaemia) · TOF-MRA 3D reconstruction and MIP: "puff of smoke" sign, absent MCA/ACA signals.', fa: 'MRI T2 (Flow Voids در بازال گانگلیا) · FLAIR (ضایعات ماده سفید) · DWI (ایسکمی حاد) · TOF-MRA سه‌بعدی و MIP: نشانه «پف دود»، غیاب سیگنال MCA/ACA.' }),
+      meta: c({ de: 'MRI T2 (Flow Voids in Basalganglien) · FLAIR (Marklagerläsionen) · DWI (akute Ischämie) · TOF-MRA 3D-Rekonstruktion und MIP: „Puff of smoke"-Zeichen, fehlende MCA/ACA-Signale.', en: 'MRI T2 (flow voids in basal ganglia) · FLAIR (white matter lesions) · DWI (acute ischaemia) · TOF-MRA 3D reconstruction and MIP: "puff of smoke" sign, absent MCA/ACA signals.', fa: 'MRI T2 (فقدان سیگنال جریان (flow void) در بازال گانگلیا) · FLAIR (ضایعات ماده سفید) · DWI (ایسکمی حاد) · TOF-MRA سه‌بعدی و MIP: نشانه «پف دود»، غیاب سیگنال MCA/ACA.' }),
     },
   ]
 
@@ -276,7 +276,7 @@ export default function MoyaMoyaPage() {
             <Cards items={MOYAMOYA_LESSON.bildgebung.ctItems} lang={lang} />
             <h3 style={{ marginTop: 22, marginBottom: 10, fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>MRT / MRI</h3>
             <Table headers={MOYAMOYA_LESSON.bildgebung.mriHeaders.map(c)} rows={rows(MOYAMOYA_LESSON.bildgebung.mriRows)} />
-            <Callout label={c({ de: 'Ivy Sign', en: 'Ivy sign', fa: 'Ivy Sign' })}>{c(MOYAMOYA_LESSON.bildgebung.ivyKey)}</Callout>
+            <Callout label={c({ de: 'Ivy Sign', en: 'Ivy sign', fa: 'علامت پیچک (Ivy sign)' })}>{c(MOYAMOYA_LESSON.bildgebung.ivyKey)}</Callout>
           </Section>
 
           {/* 5 – MRA, CTA & DSA */}

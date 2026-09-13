@@ -836,7 +836,7 @@ export const SAB_FLASHCARDS = [
     front: L(
       'Was ist der „Sentinel Headache" und welche Gefahr birgt er?',
       'What is the "sentinel headache" and what danger does it carry?',
-      '«Sentinel Headache» چیست و چه خطری دارد؟'
+      '«سردرد هشداردهنده (sentinel headache)» چیست و چه خطری دارد؟'
     ),
     back: L(
       'Warnkopfschmerz Tage–Wochen vor der SAB, bei ~50 % der Patienten – oft verkannt.',
@@ -851,7 +851,7 @@ export const SAB_FLASHCARDS = [
     diagram: L(
       'Aneurysmaexpansion → Sentinel Headache → verkannt → große SAB',
       'Aneurysm expansion → Sentinel Headache → missed → major SAH',
-      'گسترش آنوریسم → Sentinel Headache → نادیده گرفته → SAB بزرگ'
+      'گسترش آنوریسم → سردرد هشداردهنده (sentinel headache) → نادیده گرفته → SAB بزرگ'
     ),
     topicId: 'subarachnoidalblutung',
     tags: ['klinik'],

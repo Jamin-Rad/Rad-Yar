@@ -238,7 +238,7 @@ export const FLASHCARD_TOPICS = [
     "subtitle": {
       "de": "Shunt-Typen · Doppler · Early venous filling · THAD/THID · HHT",
       "en": "Shunt types · Doppler · early venous filling · THAD/THID · HHT",
-      "fa": "انواع شانت · داپلر · Early venous filling · THAD/THID · HHT"
+      "fa": "انواع شانت · داپلر · پرشدگی زودرس وریدی · THAD/THID · HHT"
     }
   },
   {
@@ -257,7 +257,7 @@ export const FLASHCARD_TOPICS = [
     "subtitle": {
       "de": "Risikokontext · APHE · Wash-out · LI-RADS · Gefäßinvasion",
       "en": "Risk context · APHE · wash-out · LI-RADS · vascular invasion",
-      "fa": "زمینه خطر · APHE · wash-out · LI-RADS · تهاجم عروقی"
+      "fa": "زمینه خطر · APHE · واش‌اوت · LI-RADS · تهاجم عروقی"
     }
   },
   {
@@ -438,9 +438,9 @@ const PANCREATITIS_FLASHCARD_CONTENT = [
     id: 'atlanta-morphology',
     category: { de: 'Atlanta', en: 'Atlanta', fa: 'آتلانتا' },
     front: { de: 'Wie unterscheidet Atlanta ödematöse und nekrotisierende Pankreatitis?', en: 'How does Atlanta distinguish oedematous from necrotising pancreatitis?', fa: 'آتلانتا چگونه پانکراتیت ادماتوی را از نکروزان جدا می‌کند؟' },
-    answer: { de: 'Ödematös: Schwellung mit homogener KM-Aufnahme. Nekrotisierend: fehlendes Enhancement in Parenchym und/oder Fettgewebe.', en: 'Oedematous: swelling with homogeneous enhancement. Necrotising: absent enhancement in parenchyma and/or fat.', fa: 'ادماتوی: تورم با enhancement همگن. نکروزان: عدم enhancement در پارانشیم و/یا چربی.' },
+    answer: { de: 'Ödematös: Schwellung mit homogener KM-Aufnahme. Nekrotisierend: fehlendes Enhancement in Parenchym und/oder Fettgewebe.', en: 'Oedematous: swelling with homogeneous enhancement. Necrotising: absent enhancement in parenchyma and/or fat.', fa: 'ادماتوی: تورم با تقویت همگن پس از تزریق. نکروزان: فقدان تقویت در پارانشیم و/یا چربی.' },
     explanation: { de: 'Nekrose kann pankreatisch, peripankreatisch oder kombiniert auftreten.', en: 'Necrosis may be pancreatic, peripancreatic or combined.', fa: 'نکروز می‌تواند پانکراسی، اطراف پانکراس یا ترکیبی باشد.' },
-    diagram: { de: 'homogenes Enhancement → ödematös\nEnhancement-Ausfall → nekrotisierend', en: 'homogeneous enhancement → oedematous\nnon-enhancement → necrotising', fa: 'enhancement همگن → ادماتوی\nعدم enhancement → نکروزان' },
+    diagram: { de: 'homogenes Enhancement → ödematös\nEnhancement-Ausfall → nekrotisierend', en: 'homogeneous enhancement → oedematous\nnon-enhancement → necrotising', fa: 'تقویت همگن → ادماتوی\nفقدان تقویت → نکروزان' },
   },
   {
     id: 'collections',
@@ -555,9 +555,9 @@ const MIDLINE_CAVA_FLASHCARD_CONTENT = [
     id: 'signal',
     category: { de: 'Bildgebung', en: 'Imaging', fa: 'تصویربرداری' },
     front: { de: 'Welches Signalverhalten zeigen typische Mittellinien-Cava?', en: 'What signal characteristics do typical midline cava show?', fa: 'فضاهای تیپیک خط وسط چه الگوی سیگنالی دارند؟' },
-    answer: { de: 'Liquoräquivalent, ohne soliden Anteil und ohne Enhancement.', en: 'They follow CSF, without a solid component or enhancement.', fa: 'مشابه CSF، بدون جزء جامد و بدون enhancement.' },
-    explanation: { de: 'Signalabweichung, Wandverdickung, noduläre Anteile oder Enhancement sind atypisch und verlangen eine andere Differenzialdiagnose.', en: 'Signal mismatch, wall thickening, nodules or enhancement are atypical and require another differential diagnosis.', fa: 'اختلاف با سیگنال CSF، ضخیم‌شدن دیواره، ندول یا enhancement آتیپیک است و تشخیص دیگری را مطرح می‌کند.' },
-    diagram: { de: 'CSF-Signal + glatte Wand + kein Enhancement → typisches Cavum', en: 'CSF signal + smooth wall + no enhancement → typical cavum', fa: 'سیگنال CSF + دیواره صاف + بدون enhancement → کاووم تیپیک' },
+    answer: { de: 'Liquoräquivalent, ohne soliden Anteil und ohne Enhancement.', en: 'They follow CSF, without a solid component or enhancement.', fa: 'مشابه CSF، بدون جزء جامد و بدون تقویت پس از تزریق.' },
+    explanation: { de: 'Signalabweichung, Wandverdickung, noduläre Anteile oder Enhancement sind atypisch und verlangen eine andere Differenzialdiagnose.', en: 'Signal mismatch, wall thickening, nodules or enhancement are atypical and require another differential diagnosis.', fa: 'اختلاف با سیگنال CSF، ضخیم‌شدن دیواره، ندول یا تقویت پس از تزریق آتیپیک است و تشخیص دیگری را مطرح می‌کند.' },
+    diagram: { de: 'CSF-Signal + glatte Wand + kein Enhancement → typisches Cavum', en: 'CSF signal + smooth wall + no enhancement → typical cavum', fa: 'سیگنال CSF + دیواره صاف + بدون تقویت پس از تزریق → کاووم تیپیک' },
   },
   {
     id: 'clinical-relevance',
@@ -683,7 +683,7 @@ const CSF_SYSTEM_FLASHCARDS = [
     category: { de: 'Befundung', en: 'Reporting', fa: 'گزارش' },
     front: { de: 'Welche Kernpunkte gehören in einen Hydrozephalus-Befund?', en: 'What core elements belong in a hydrocephalus report?', fa: 'چه نکات اصلی باید در گزارش هیدروسفالی ذکر شوند؟' },
     answer: { de: 'Ausmaß, Dilatationsmuster, Druckzeichen, Obstruktionshöhe, Ursache und Einordnung.', en: 'Extent, dilatation pattern, pressure signs, obstruction level, cause and conclusion.', fa: 'شدت، الگوی اتساع، نشانه‌های فشار، محل انسداد، علت و جمع‌بندی.' },
-    explanation: { de: 'Die Formulierung soll eine klinische beziehungsweise neurochirurgische Handlung ermöglichen und nicht bei „weite Ventrikel“ enden.', en: 'The report should guide clinical or neurosurgical action rather than stop at “dilated ventricles”.', fa: 'گزارش باید تصمیم‌گیری بالینی یا نوروسرجری را هدایت کند و به عبارت «بطن‌های گشاد» محدود نشود.' },
+    explanation: { de: 'Die Formulierung soll eine klinische beziehungsweise neurochirurgische Handlung ermöglichen und nicht bei „weite Ventrikel“ enden.', en: 'The report should guide clinical or neurosurgical action rather than stop at “dilated ventricles”.', fa: "گزارش باید تصمیم‌گیری بالینی یا جراحی مغز و اعصاب را هدایت کند و به عبارت «بطن‌های گشاد» محدود نشود." },
     diagram: { de: 'Wie weit? → welches Muster? → Druck? → wo blockiert? → warum?', en: 'How large? → what pattern? → pressure? → where blocked? → why?', fa: 'چقدر؟ → چه الگو؟ → فشار؟ → محل انسداد؟ → علت؟' },
   },
 ]
@@ -845,7 +845,7 @@ export const FLASHCARDS = [
     "front": {
       "de": "Warum ist die Two-slice-touch-Regel wichtig?",
       "en": "Why is the two-slice-touch rule important?",
-      "fa": "چرا قانون Two-slice-touch مهم است؟"
+      "fa": "چرا قانون تماس در دو برش (تماس در دو برش (Two-slice-touch)) مهم است؟"
     },
     "answer": {
       "de": "Sie erhöht die Spezifität.",
@@ -1071,7 +1071,7 @@ export const FLASHCARDS = [
     "answer": {
       "de": "Save the Meniscus.",
       "en": "Save the meniscus.",
-      "fa": "Save the Meniscus."
+      "fa": "منیسک را حفظ کنید."
     },
     "explanation": {
       "de": "Meniskusgewebe ist wichtig für Lastverteilung und Knorpelschutz. Eine großzügige Meniskektomie erhöht langfristig das Arthroserisiko. Deshalb gilt: so viel erhalten wie möglich, so wenig resezieren wie nötig.",
@@ -1095,12 +1095,12 @@ export const FLASHCARDS = [
     "answer": {
       "de": "Korbhenkelriss.",
       "en": "Bucket-handle tear.",
-      "fa": "پارگی Bucket-handle."
+      "fa": "پارگی دسته‌سطلی (bucket-handle)."
     },
     "explanation": {
       "de": "Beim Korbhenkelriss ist ein länglicher Meniskusanteil in den Interkondylarraum disloziert. Dieses Fragment kann parallel zum hinteren Kreuzband liegen und dadurch wie ein zweites PCL wirken.",
       "en": "In a bucket-handle tear, an elongated meniscal fragment is displaced into the intercondylar notch. This fragment may lie parallel to the posterior cruciate ligament and mimic a second PCL.",
-      "fa": "در پارگی Bucket-handle، یک قطعه بلند از منیسک به داخل ناچ بین‌کندیلی جابه‌جا می‌شود. این قطعه ممکن است موازی PCL قرار گیرد و شبیه PCL دوم دیده شود.\n---"
+      "fa": "در پارگی دسته‌سطلی (bucket-handle)، یک قطعه بلند از منیسک به داخل ناچ بین‌کندیلی جابه‌جا می‌شود. این قطعه ممکن است موازی PCL قرار گیرد و شبیه PCL دوم دیده شود.\n---"
     }
   },
   {
@@ -1114,7 +1114,7 @@ export const FLASHCARDS = [
     "front": {
       "de": "Was bedeutet ein fehlendes Bow-tie-Sign?",
       "en": "What does an absent bow-tie sign suggest?",
-      "fa": "نبود علامت Bow-tie به نفع چیست؟"
+      "fa": "نبود علامت پاپیونی (پاپیونی (Bow-tie)) به نفع چیست؟"
     },
     "answer": {
       "de": "Hinweis auf dislozierten Meniskusriss.",
@@ -1124,7 +1124,7 @@ export const FLASHCARDS = [
     "explanation": {
       "de": "Normalerweise sieht man den Meniskuskorpus sagittal auf mehreren zentralen Schichten als Bow-tie-Konfiguration. Wenn diese fehlt, kann ein Meniskusfragment disloziert sein, besonders bei einem Korbhenkelriss.",
       "en": "Normally, the meniscal body is seen on sagittal images as a bow-tie configuration on central slices. If this is absent, a meniscal fragment may be displaced, especially in a bucket-handle tear.",
-      "fa": "به طور طبیعی تنه منیسک در تصاویر ساژیتال به شکل Bow-tie دیده می‌شود. اگر این علامت وجود نداشته باشد، ممکن است قطعه‌ای از منیسک جابه‌جا شده باشد، به‌خصوص در پارگی Bucket-handle.\n---"
+      "fa": "به طور طبیعی تنه منیسک در تصاویر ساژیتال به شکل پاپیونی (پاپیونی (Bow-tie)) دیده می‌شود. اگر این علامت وجود نداشته باشد، ممکن است قطعه‌ای از منیسک جابه‌جا شده باشد، به‌خصوص در پارگی دسته‌سطلی (bucket-handle).\n---"
     }
   },
   {
@@ -1138,22 +1138,22 @@ export const FLASHCARDS = [
     "front": {
       "de": "Discoider Meniskus vs. Korbhenkelriss: Wie unterscheidet sich das Bow-tie-Konzept?",
       "en": "Discoid meniscus vs. bucket-handle tear: how does the bow-tie concept differ?",
-      "fa": "منیسک دیسکوئید و پارگی Bucket-handle از نظر Bow-tie چه تفاوتی دارند؟"
+      "fa": "منیسک دیسکوئید و پارگی دسته‌سطلی (bucket-handle) از نظر پاپیونی (پاپیونی (Bow-tie)) چه تفاوتی دارند؟"
     },
     "answer": {
       "de": "Discoid: zu viele. Korbhenkel: zu wenige.",
       "en": "Discoid: too many. Bucket-handle: too few.",
-      "fa": "دیسکوئید: تعداد زیاد. Bucket-handle: تعداد کم."
+      "fa": "دیسکوئید: تعداد زیاد. دسته‌سطلی (bucket-handle): تعداد کم."
     },
     "explanation": {
       "de": "Beim discoiden Meniskus bleibt der Meniskuskorpus sagittal auf ungewöhnlich vielen Schichten sichtbar. Beim Korbhenkelriss fehlt die normale Bow-tie-Konfiguration, weil ein Fragment verlagert ist.",
       "en": "In a discoid meniscus, the meniscal body remains visible on unusually many sagittal slices. In a bucket-handle tear, the normal bow-tie configuration is absent because a fragment is displaced.",
-      "fa": "در منیسک دیسکوئید، تنه منیسک در تعداد غیرطبیعی زیادی از برش‌های ساژیتال دیده می‌شود. در پارگی Bucket-handle، شکل طبیعی Bow-tie به علت جابه‌جایی قطعه از بین می‌رود."
+      "fa": "در منیسک دیسکوئید، تنه منیسک در تعداد غیرطبیعی زیادی از برش‌های ساژیتال دیده می‌شود. در پارگی دسته‌سطلی (bucket-handle)، شکل طبیعی پاپیونی (پاپیونی (Bow-tie)) به علت جابه‌جایی قطعه از بین می‌رود."
     },
     "diagram": {
       "de": "Discoid = persistent bow-tie auf ≥3 Schichten\nBucket-handle = absent bow-tie",
       "en": "Discoid = persistent bow-tie on ≥3 slices\nBucket-handle = absent bow-tie",
-      "fa": "دیسکوئید = Bow-tie پایدار در ≥۳ برش\nBucket-handle = Bow-tie غایب"
+      "fa": "دیسکوئید = پاپیونی (پاپیونی (Bow-tie)) پایدار در ≥۳ برش\nدسته‌سطلی (bucket-handle) = پاپیونی (پاپیونی (Bow-tie)) غایب"
     }
   },
   {
@@ -1196,7 +1196,7 @@ export const FLASHCARDS = [
     "answer": {
       "de": "Snapping knee.",
       "en": "Snapping knee.",
-      "fa": "Snapping knee."
+      "fa": "زانوی صدادار (Snapping knee)."
     },
     "explanation": {
       "de": "Ein schnappendes oder klickendes Knie bei Kindern sollte an einen discoiden lateralen Meniskus denken lassen. Der verbreiterte Meniskus kann mechanisch stören und später leichter degenerieren oder reißen.",
@@ -1475,12 +1475,12 @@ export const FLASHCARDS = [
     "front": {
       "de": "Welches CT-Enhancement ist typisch für ein Leberhämangiom?",
       "en": "Which CT enhancement pattern is typical for liver haemangioma?",
-      "fa": "کدام الگوی enhancement در CT برای همانژیوم کبدی تیپیک است؟"
+      "fa": "کدام الگوی تقویت پس از تزریق در CT برای همانژیوم کبدی تیپیک است؟"
     },
     "answer": {
       "de": "Peripher nodulär mit zentripetaler Auffüllung.",
       "en": "Peripheral nodular enhancement with centripetal fill-in.",
-      "fa": "enhancement ندولار محیطی با پرشدگی مرکزگرا."
+      "fa": "تقویت پس از تزریق ندولار محیطی با پرشدگی مرکزگرا."
     },
     "explanation": {
       "de": "Früharteriell beginnt die Kontrastmittelaufnahme diskontinuierlich am Rand. In portalvenösen und späteren Phasen füllt sich die Läsion langsam von außen nach innen auf.",
@@ -1504,7 +1504,7 @@ export const FLASHCARDS = [
     "front": {
       "de": "Was bedeutet das Irisblendenphänomen beim Leberhämangiom?",
       "en": "What does the iris diaphragm phenomenon mean in liver haemangioma?",
-      "fa": "پدیده Iris diaphragm در همانژیوم کبدی یعنی چه؟"
+      "fa": "پدیده پدیده دیافراگم عنبیه در همانژیوم کبدی یعنی چه؟"
     },
     "answer": {
       "de": "Zentripetale KM-Auffüllung.",
@@ -1514,7 +1514,7 @@ export const FLASHCARDS = [
     "explanation": {
       "de": "Die Läsion füllt sich dynamisch von der Peripherie zum Zentrum. Dieses Verhalten ist viel typischer für Hämangiom als für malignes Ringenhancement.",
       "en": "The lesion fills dynamically from the periphery to the centre. This behaviour is far more typical of haemangioma than malignant rim enhancement.",
-      "fa": "ضایعه به صورت دینامیک از محیط به سمت مرکز پر می‌شود. این رفتار برای همانژیوم بسیار تیپیک‌تر از rim enhancement بدخیم است."
+      "fa": "ضایعه به صورت دینامیک از محیط به سمت مرکز پر می‌شود. این رفتار برای همانژیوم بسیار تیپیک‌تر از تقویت حلقوی بدخیم است."
     },
     "diagram": {
       "de": "Peripherie → Zentrum\nIrisblende schließt von außen nach innen",
@@ -1538,7 +1538,7 @@ export const FLASHCARDS = [
     "answer": {
       "de": "Light-bulb sign.",
       "en": "Light-bulb sign.",
-      "fa": "علامت Light-bulb."
+      "fa": "علامت علامت لامپ روشن."
     },
     "explanation": {
       "de": "Typische Hämangiome sind in T2 sehr hell, teils sogar heller als Galle. Größere Hämangiome können durch Fibrose, Verkalkungen oder Thromben inhomogener wirken.",
@@ -1548,7 +1548,7 @@ export const FLASHCARDS = [
     "diagram": {
       "de": "T2 sehr hell → Light-bulb sign → Hämangiom typisch",
       "en": "Very bright T2 → light-bulb sign → typical haemangioma",
-      "fa": "T2 بسیار روشن → علامت Light-bulb → همانژیوم تیپیک"
+      "fa": "T2 بسیار روشن → علامت علامت لامپ روشن → همانژیوم تیپیک"
     }
   },
   {
@@ -1567,7 +1567,7 @@ export const FLASHCARDS = [
     "answer": {
       "de": "Wegen T2-shine-through.",
       "en": "Because of T2 shine-through.",
-      "fa": "به علت T2 shine-through."
+      "fa": "به علت اثر عبور سیگنال T2 (shine-through)."
     },
     "explanation": {
       "de": "Hämangiome können auf hohen b-Werten hell sein. Entscheidend ist die ADC-Karte: hohe ADC-Werte sprechen gegen echte Diffusionsrestriktion und helfen in der DD zu Metastasen.",
@@ -1577,7 +1577,7 @@ export const FLASHCARDS = [
     "diagram": {
       "de": "DWI hell + ADC hoch = T2-shine-through\nDWI hell + ADC niedrig = echte Restriktion",
       "en": "Bright DWI + high ADC = T2 shine-through\nBright DWI + low ADC = true restriction",
-      "fa": "DWI روشن + ADC بالا = T2 shine-through\nDWI روشن + ADC پایین = محدودیت واقعی"
+      "fa": "DWI روشن + ADC بالا = اثر عبور سیگنال T2 (shine-through)\nDWI روشن + ADC پایین = محدودیت واقعی انتشار"
     }
   },
   {
@@ -1601,12 +1601,12 @@ export const FLASHCARDS = [
     "explanation": {
       "de": "Arteriell beginnt die Aufnahme fleckig und diskontinuierlich am Rand. Portalvenös und spät zieht sie langsam in die Mitte, bis die Läsion zunehmend homogen kontrastiert.",
       "en": "Arterially, enhancement begins patchy and discontinuously at the rim. In portal venous and delayed phases it slowly moves to the centre until the lesion enhances more homogeneously.",
-      "fa": "در فاز شریانی، enhancement به صورت لکه‌ای و ناپیوسته از حاشیه شروع می‌شود. در فاز پورتال و تأخیری آهسته به مرکز می‌رود تا ضایعه به‌تدریج هموژن‌تر enhancement پیدا کند."
+      "fa": "در فاز شریانی، تقویت پس از تزریق به صورت لکه‌ای و ناپیوسته از حاشیه شروع می‌شود. در فاز پورتال و تأخیری آهسته به مرکز می‌رود تا ضایعه به‌تدریج هموژن‌تر تقویت پس از تزریق پیدا کند."
     },
     "diagram": {
       "de": "Randnoduli → zentripetal → homogenere Kontrastierung",
       "en": "Rim nodules → centripetal → more homogeneous enhancement",
-      "fa": "ندول محیطی → مرکزگرا → enhancement هموژن‌تر"
+      "fa": "ندول محیطی → مرکزگرا → تقویت همگن‌تر"
     }
   },
   {
@@ -1688,7 +1688,7 @@ export const FLASHCARDS = [
     "explanation": {
       "de": "Das klassische Light-bulb-Zeichen kann beim atypischen oder sklerosierten Hämangiom abgeschwächt sein. Zentrale hypointense Areale können fibrotischen Anteilen entsprechen.",
       "en": "The classic light-bulb sign may be reduced in atypical or sclerosed haemangioma. Central hypointense areas can correspond to fibrotic components.",
-      "fa": "علامت کلاسیک Light-bulb در همانژیوم آتیپیک یا اسکلروزه ممکن است ضعیف‌تر باشد. نواحی مرکزی هیپواینتنس می‌توانند مربوط به بخش‌های فیبروتیک باشند."
+      "fa": "علامت کلاسیک علامت لامپ روشن در همانژیوم آتیپیک یا اسکلروزه ممکن است ضعیف‌تر باشد. نواحی مرکزی هیپواینتنس می‌توانند مربوط به بخش‌های فیبروتیک باشند."
     },
     "diagram": {
       "de": "typisch: T2 strahlend hell\natypisch: T2 weniger hell/inhomogen",
@@ -1707,22 +1707,22 @@ export const FLASHCARDS = [
     "front": {
       "de": "Welche KM-Aufnahme kann bei atypischem Hämangiom statt des klassischen Musters auftreten?",
       "en": "Which enhancement pattern can occur in atypical haemangioma instead of the classic pattern?",
-      "fa": "در همانژیوم آتیپیک به جای الگوی کلاسیک چه enhancement ممکن است دیده شود؟"
+      "fa": "در همانژیوم آتیپیک به جای الگوی کلاسیک چه تقویت پس از تزریق ممکن است دیده شود؟"
     },
     "answer": {
       "de": "Früharteriell homogen stark.",
       "en": "Strong homogeneous arterial enhancement.",
-      "fa": "enhancement هموژن و قوی شریانی."
+      "fa": "تقویت همگن و قوی شریانی."
     },
     "explanation": {
       "de": "Atypische Hämangiome zeigen nicht immer periphere noduläre Aufnahme. Sie können früharteriell homogen stark kontrastieren und in späteren Phasen hyperintens bleiben.",
       "en": "Atypical haemangiomas do not always show peripheral nodular enhancement. They may enhance strongly and homogeneously in the arterial phase and remain hyperintense later.",
-      "fa": "همانژیوم‌های آتیپیک همیشه enhancement ندولار محیطی ندارند. ممکن است در فاز شریانی به صورت هموژن و قوی enhancement داشته باشند و در فازهای بعدی هم هایپراینتنس بمانند."
+      "fa": "همانژیوم‌های آتیپیک همیشه تقویت پس از تزریق ندولار محیطی ندارند. ممکن است در فاز شریانی به صورت هموژن و قوی تقویت پس از تزریق داشته باشند و در فازهای بعدی هم هایپراینتنس بمانند."
     },
     "diagram": {
       "de": "typisch: Randnoduli + Fill-in\natypisch: homogen stark arteriell",
       "en": "typical: rim nodules + fill-in\natypical: strong homogeneous arterial enhancement",
-      "fa": "تیپیک: ندول محیطی + پرشدگی\nآتیپیک: enhancement شریانی هموژن قوی"
+      "fa": "تیپیک: ندول محیطی + پرشدگی\nآتیپیک: تقویت شریانی هموژن قوی"
     }
   },
   {
@@ -1751,7 +1751,7 @@ export const FLASHCARDS = [
     "diagram": {
       "de": "Hämangiom: ADC hoch + zentripetales Fill-in\nMetastase: ADC niedrig + kein Fill-in",
       "en": "Haemangioma: high ADC + centripetal fill-in\nMetastasis: low ADC + no fill-in",
-      "fa": "همانژیوم: ADC بالا + پرشدگی مرکزگرا\nمتاستاز: ADC پایین + بدون fill-in"
+      "fa": "همانژیوم: ADC بالا + پرشدگی مرکزگرا\nمتاستاز: ADC پایین + بدون پرشدگی تدریجی"
     }
   },
   {
@@ -1886,12 +1886,12 @@ export const FLASHCARDS = [
     "answer": {
       "de": "Kräftige, homogene Kontrastmittelaufnahme.",
       "en": "Strong, homogeneous enhancement.",
-      "fa": "enhancement قوی و هموژن."
+      "fa": "تقویت پس از تزریق قوی و هموژن."
     },
     "explanation": {
       "de": "Im Gegensatz zum Hämangiom zeigt die FNH eine rasche, homogene arterielle Anreicherung, ohne periphere noduläre Aufnahme oder zentripetale Auffüllung.",
       "en": "Unlike haemangioma, FNH shows rapid, homogeneous arterial enhancement without peripheral nodular enhancement or centripetal fill-in.",
-      "fa": "برخلاف همانژیوم، FNH enhancement شریانی سریع و هموژن دارد، بدون enhancement ندولار محیطی یا پرشدگی مرکزگرا."
+      "fa": "برخلاف همانژیوم، FNH تقویت شریانی سریع و هموژن دارد، بدون تقویت پس از تزریق ندولار محیطی یا پرشدگی مرکزگرا."
     },
     "diagram": {
       "de": "Früharteriell: homogen kräftig → kein peripher-nodulär",
@@ -1915,17 +1915,17 @@ export const FLASHCARDS = [
     "answer": {
       "de": "Sie gleicht sich dem Leberparenchym an, kein Wash-out.",
       "en": "It equalises with the liver parenchyma, no wash-out.",
-      "fa": "با پارانشیم کبد تطابق می‌یابد، بدون wash-out."
+      "fa": "با پارانشیم کبد تطابق می‌یابد، بدون واش‌اوت."
     },
     "explanation": {
       "de": "Fehlendes Wash-out trotz starker arterieller Anreicherung ist ein wichtiges Argument gegen eine maligne Läsion wie das HCC.",
       "en": "Absence of wash-out despite strong arterial enhancement is an important argument against a malignant lesion such as HCC.",
-      "fa": "نبود wash-out به‌رغم enhancement شریانی قوی، استدلال مهمی علیه ضایعه بدخیم مانند HCC است."
+      "fa": "نبود واش‌اوت به‌رغم تقویت شریانی قوی، استدلال مهمی علیه ضایعه بدخیم مانند HCC است."
     },
     "diagram": {
       "de": "Arteriell hell → portal/spät isodens → kein Wash-out",
       "en": "Bright arterial → isodense portal/delayed → no wash-out",
-      "fa": "روشن شریانی → ایزودنس پورتال/تأخیری → بدون wash-out"
+      "fa": "روشن شریانی → ایزودنس پورتال/تأخیری → بدون واش‌اوت"
     }
   },
   {
@@ -1973,7 +1973,7 @@ export const FLASHCARDS = [
     "answer": {
       "de": "Hyperintens in T2, hypointens in T1, mit verzögerter KM-Aufnahme.",
       "en": "Hyperintense on T2, hypointense on T1, with delayed enhancement.",
-      "fa": "هایپراینتنس در T2، هیپواینتنس در T1، با enhancement تأخیری."
+      "fa": "هایپراینتنس در T2، هیپواینتنس در T1، با تقویت تأخیری."
     },
     "explanation": {
       "de": "Die zentrale Narbe besteht aus fibrösem Gewebe mit Gefäßen und Gallengängen und ist charakteristisch für ca. 70% der FNH-Fälle.",
@@ -1983,7 +1983,7 @@ export const FLASHCARDS = [
     "diagram": {
       "de": "Narbe: T2 hyper, T1 hypo, KM-Aufnahme spät (~70%)",
       "en": "Scar: T2 hyper, T1 hypo, delayed enhancement (~70%)",
-      "fa": "اسکار: T2 هایپر، T1 هیپو، enhancement تأخیری (~۷۰٪)"
+      "fa": "اسکار: T2 هایپر، T1 هیپو، تقویت تأخیری (~۷۰٪)"
     }
   },
   {
@@ -2060,17 +2060,17 @@ export const FLASHCARDS = [
     "answer": {
       "de": "Fehlendes Wash-out trotz kräftiger arterieller Anreicherung.",
       "en": "Absence of wash-out despite strong arterial enhancement.",
-      "fa": "نبود wash-out به‌رغم enhancement شریانی قوی."
+      "fa": "نبود واش‌اوت به‌رغم تقویت شریانی قوی."
     },
     "explanation": {
       "de": "Das HCC zeigt typischerweise ein Wash-out in der portalvenösen/Spätphase – die FNH nicht. Dieses Verhalten ist ein zentrales Unterscheidungsmerkmal.",
       "en": "HCC typically shows wash-out in the portal venous/delayed phase – FNH does not. This behaviour is a key distinguishing feature.",
-      "fa": "HCC معمولاً در فاز پورتال/تأخیری wash-out دارد - FNH ندارد. این رفتار یک ویژگی افتراقی کلیدی است."
+      "fa": "HCC معمولاً در فاز پورتال/تأخیری واش‌اوت دارد - FNH ندارد. این رفتار یک ویژگی افتراقی کلیدی است."
     },
     "diagram": {
       "de": "Hell arteriell + kein Wash-out → FNH statt HCC",
       "en": "Bright arterial + no wash-out → FNH rather than HCC",
-      "fa": "روشن شریانی + بدون wash-out → FNH نه HCC"
+      "fa": "روشن شریانی + بدون واش‌اوت → FNH نه HCC"
     }
   },
   {
@@ -2094,7 +2094,7 @@ export const FLASHCARDS = [
     "explanation": {
       "de": "Bei klassischem Muster (homogene arterielle Anreicherung, kein Wash-out, ggf. zentrale Narbe) kann die Diagnose sicher gestellt werden. Bei atypischen Zeichen sollte verglichen und ggf. eine Verlaufskontrolle empfohlen werden.",
       "en": "With a classic pattern (homogeneous arterial enhancement, no wash-out, possible central scar), the diagnosis can be made confidently. With atypical features, compare with priors and consider follow-up.",
-      "fa": "با الگوی کلاسیک (enhancement شریانی هموژن، بدون wash-out، احتمال اسکار مرکزی)، تشخیص با اطمینان قابل ارائه است. در ویژگی‌های آتیپیک، مقایسه با قبل و پیگیری توصیه می‌شود."
+      "fa": "با الگوی کلاسیک (تقویت شریانی هموژن، بدون واش‌اوت، احتمال اسکار مرکزی)، تشخیص با اطمینان قابل ارائه است. در ویژگی‌های آتیپیک، مقایسه با قبل و پیگیری توصیه می‌شود."
     },
     "diagram": {
       "de": "klassisches Muster → benigne, keine weitere Diagnostik\natypisch → Vergleich + Verlauf",
@@ -2258,7 +2258,7 @@ export const FLASHCARDS = [
     "front": {
       "de": "Was ist das Early venous filling sign?",
       "en": "What is the early venous filling sign?",
-      "fa": "Early venous filling sign چیست؟"
+      "fa": "علامت پرشدگی زودرس وریدی چیست؟"
     },
     "answer": {
       "de": "Die vorzeitige Kontrastierung der drainierenden Vene bereits in der frühen arteriellen Phase.",
@@ -2321,7 +2321,7 @@ export const FLASHCARDS = [
     "answer": {
       "de": "Als serpiginöse, signalfreie Strukturen (Flow voids).",
       "en": "As serpiginous, signal-void structures (flow voids).",
-      "fa": "به‌صورت ساختارهای سرپیژینوس بدون سیگنال (Flow voids)."
+      "fa": "به‌صورت ساختارهای سرپیژینوس بدون سیگنال (فقدان سیگنال جریان (flow void))."
     },
     "explanation": {
       "de": "Schnell fließendes Blut erzeugt in beiden Sequenzen eine Signalauslöschung – ein direkter Hinweis auf dilatierte, hochflussige Gefäße.",
@@ -2331,7 +2331,7 @@ export const FLASHCARDS = [
     "diagram": {
       "de": "schneller Fluss → Signalauslöschung → Flow void",
       "en": "rapid flow → signal loss → flow void",
-      "fa": "جریان سریع ← از بین رفتن سیگنال ← Flow void"
+      "fa": "جریان سریع ← از بین رفتن سیگنال ← فقدان سیگنال جریان (flow void)"
     }
   },
   {
@@ -2350,7 +2350,7 @@ export const FLASHCARDS = [
     "answer": {
       "de": "Flow voids + Early venous filling sign + ggf. THAD/THID.",
       "en": "Flow voids + early venous filling sign + possible THAD/THID.",
-      "fa": "Flow voids + Early venous filling sign + احتمال THAD/THID."
+      "fa": "فقدان سیگنال جریان (flow void) + علامت پرشدگی زودرس وریدی + احتمال THAD/THID."
     },
     "explanation": {
       "de": "Diese Kombination ergibt zusammen das typische MRT-Muster und erlaubt die Abgrenzung von hypervaskulären Tumoren.",
@@ -2360,7 +2360,7 @@ export const FLASHCARDS = [
     "diagram": {
       "de": "Flow voids + Early venous filling (+ THAD/THID) = AVM-Muster",
       "en": "flow voids + early venous filling (+ THAD/THID) = AVM pattern",
-      "fa": "Flow voids + Early venous filling (+ THAD/THID) = الگوی AVM"
+      "fa": "فقدان سیگنال جریان (flow void) + پرشدگی زودرس وریدی (+ THAD/THID) = الگوی AVM"
     }
   },
   {
@@ -2432,12 +2432,12 @@ export const FLASHCARDS = [
     "front": {
       "de": "Was sollte im Befund stehen, wenn eine AVM mit Early venous filling sign nachgewiesen wird?",
       "en": "What should be reported when an AVM with an early venous filling sign is found?",
-      "fa": "هنگام یافتن AVM با Early venous filling sign، چه چیزی باید در گزارش ذکر شود؟"
+      "fa": "هنگام یافتن AVM با علامت پرشدگی زودرس وریدی، چه چیزی باید در گزارش ذکر شود؟"
     },
     "answer": {
       "de": "Beschreibung des Shunt-Typs, des Early venous filling signs, ggf. THAD/THID, und ein Hinweis auf eine mögliche HHT bei multiplen/diffusen Shunts.",
       "en": "Description of the shunt type, the early venous filling sign, possible THAD/THID, and a note about possible HHT if shunts are multiple/diffuse.",
-      "fa": "توصیف نوع شانت، Early venous filling sign، احتمال THAD/THID و در صورت شانت‌های متعدد/منتشر، اشاره به احتمال HHT."
+      "fa": "توصیف نوع شانت، علامت پرشدگی زودرس وریدی، احتمال THAD/THID و در صورت شانت‌های متعدد/منتشر، اشاره به احتمال HHT."
     },
     "explanation": {
       "de": "Bei multiplen, diffus verteilten Shunts mit dilatierter A. hepatica sollte eine HHT erwogen und ggf. interdisziplinär (Kardiologie/Hepatologie) abgeklärt werden.",
@@ -2447,7 +2447,7 @@ export const FLASHCARDS = [
     "diagram": {
       "de": "Shunt-Typ + Early venous filling (+ THAD/THID) + ggf. HHT-Hinweis",
       "en": "shunt type + early venous filling (+ THAD/THID) + possible HHT note",
-      "fa": "نوع شانت + Early venous filling (+ THAD/THID) + احتمال HHT"
+      "fa": "نوع شانت + پرشدگی زودرس وریدی (+ THAD/THID) + احتمال HHT"
     }
   },
   {
@@ -2463,25 +2463,25 @@ export const FLASHCARDS = [
     "id": "hcc-02-aphe",
     "topicId": "hcc",
     "category": { "de": "Dynamik", "en": "Dynamic imaging", "fa": "تصویربرداری دینامیک" },
-    "front": { "de": "Was bedeutet non-rim APHE?", "en": "What does non-rim APHE mean?", "fa": "non-rim APHE به چه معناست؟" },
-    "answer": { "de": "Nicht randförmige arterielle Hyperenhancement der Läsion gegenüber der Leber.", "en": "Non-rim arterial phase hyperenhancement relative to the liver.", "fa": "هایپرانهانسمنت شریانی غیرحلقوی ضایعه نسبت به کبد." },
+    "front": { "de": "Was bedeutet non-rim APHE?", "en": "What does non-rim APHE mean?", "fa": "افزایش سیگنال شریانی غیرحلقوی (APHE) به چه معناست؟" },
+    "answer": { "de": "Nicht randförmige arterielle Hyperenhancement der Läsion gegenüber der Leber.", "en": "Non-rim arterial phase hyperenhancement relative to the liver.", "fa": "تقویت شریانی غیرحلقوی (APHE) ضایعه نسبت به کبد." },
     "explanation": { "de": "Durch zunehmende arterielle Neoangiogenese wird das HCC in der spätarteriellen Phase relativ heller als das umgebende Parenchym.", "en": "Increasing arterial neoangiogenesis makes HCC relatively brighter than surrounding liver in the late arterial phase.", "fa": "با افزایش نئوآنژیوژنز شریانی، HCC در فاز شریانی دیررس نسبت به کبد روشن‌تر می‌شود." }
   },
   {
     "id": "hcc-03-washout",
     "topicId": "hcc",
     "category": { "de": "Dynamik", "en": "Dynamic imaging", "fa": "تصویربرداری دینامیک" },
-    "front": { "de": "Warum ist Wash-out beim HCC ein relativer Befund?", "en": "Why is wash-out in HCC a relative finding?", "fa": "چرا wash-out در HCC یک یافته نسبی است؟" },
-    "answer": { "de": "Die Läsion wird gegenüber dem zunehmend anreichernden Leberparenchym relativ dunkler.", "en": "The lesion becomes relatively darker than the progressively enhancing liver.", "fa": "ضایعه نسبت به پارانشیم کبد که بیشتر enhancement می‌یابد، تیره‌تر می‌شود." },
-    "explanation": { "de": "Es muss kein absoluter Kontrastmittelverlust vorliegen. Entscheidend ist die relative Hypoenhancement in portalvenöser oder später Phase.", "en": "Absolute contrast loss is not required; relative hypoenhancement in the portal venous or delayed phase is key.", "fa": "خروج مطلق کنتراست لازم نیست؛ هیپوenhancement نسبی در فاز پورتال یا تأخیری مهم است." }
+    "front": { "de": "Warum ist Wash-out beim HCC ein relativer Befund?", "en": "Why is wash-out in HCC a relative finding?", "fa": "چرا واش‌اوت در HCC یک یافته نسبی است؟" },
+    "answer": { "de": "Die Läsion wird gegenüber dem zunehmend anreichernden Leberparenchym relativ dunkler.", "en": "The lesion becomes relatively darker than the progressively enhancing liver.", "fa": "ضایعه نسبت به پارانشیم کبد که بیشتر تقویت پس از تزریق می‌یابد، تیره‌تر می‌شود." },
+    "explanation": { "de": "Es muss kein absoluter Kontrastmittelverlust vorliegen. Entscheidend ist die relative Hypoenhancement in portalvenöser oder später Phase.", "en": "Absolute contrast loss is not required; relative hypoenhancement in the portal venous or delayed phase is key.", "fa": "خروج مطلق کنتراست لازم نیست؛ تقویت کمتر نسبی در فاز پورتال یا تأخیری مهم است." }
   },
   {
     "id": "hcc-04-capsule",
     "topicId": "hcc",
     "category": { "de": "Dynamik", "en": "Dynamic imaging", "fa": "تصویربرداری دینامیک" },
-    "front": { "de": "Was ist die Kapselappearance eines HCC?", "en": "What is HCC capsule appearance?", "fa": "capsule appearance در HCC چیست؟" },
-    "answer": { "de": "Ein glatter, peripher anreichernder Rand in portalvenöser oder später Phase.", "en": "A smooth peripheral enhancing rim in the portal venous or delayed phase.", "fa": "حاشیه صاف محیطی با enhancement در فاز پورتال یا تأخیری." },
-    "explanation": { "de": "Die Kapselappearance unterstützt die Einordnung als maligne hepatozelluläre Läsion, ist aber allein nicht beweisend.", "en": "Capsule appearance supports a malignant hepatocellular lesion but is not diagnostic by itself.", "fa": "capsule appearance به نفع ضایعه بدخیم هپاتوسلولار است، اما به‌تنهایی قطعی نیست." }
+    "front": { "de": "Was ist die Kapselappearance eines HCC?", "en": "What is HCC capsule appearance?", "fa": "نمای کپسول در HCC چیست؟" },
+    "answer": { "de": "Ein glatter, peripher anreichernder Rand in portalvenöser oder später Phase.", "en": "A smooth peripheral enhancing rim in the portal venous or delayed phase.", "fa": "حاشیه صاف محیطی با تقویت پس از تزریق در فاز پورتال یا تأخیری." },
+    "explanation": { "de": "Die Kapselappearance unterstützt die Einordnung als maligne hepatozelluläre Läsion, ist aber allein nicht beweisend.", "en": "Capsule appearance supports a malignant hepatocellular lesion but is not diagnostic by itself.", "fa": "نمای کپسول به نفع ضایعه بدخیم هپاتوسلولار است، اما به‌تنهایی قطعی نیست." }
   },
   {
     "id": "hcc-05-hbp",
@@ -2503,8 +2503,8 @@ export const FLASHCARDS = [
     "id": "hcc-07-tumour-vein",
     "topicId": "hcc",
     "category": { "de": "Staging", "en": "Staging", "fa": "مرحله‌بندی" },
-    "front": { "de": "Welcher Befund spricht für Tumor in vein?", "en": "Which finding suggests tumour in vein?", "fa": "کدام یافته به نفع tumour in vein است؟" },
-    "answer": { "de": "Anreicherndes Weichteilgewebe innerhalb einer Vene mit tumortypischem Enhancement.", "en": "Enhancing soft tissue within a vein showing tumour-like enhancement.", "fa": "بافت نرم enhancing داخل ورید با الگوی enhancement مشابه تومور." },
+    "front": { "de": "Welcher Befund spricht für Tumor in vein?", "en": "Which finding suggests tumour in vein?", "fa": "کدام یافته به نفع تومور داخل ورید است؟" },
+    "answer": { "de": "Anreicherndes Weichteilgewebe innerhalb einer Vene mit tumortypischem Enhancement.", "en": "Enhancing soft tissue within a vein showing tumour-like enhancement.", "fa": "بافت نرم دارای تقویت پس از تزریق داخل ورید با الگوی تقویت پس از تزریق مشابه تومور." },
     "explanation": { "de": "Makrovaskuläre Invasion ist prognostisch und therapeutisch entscheidend und muss von blandem Thrombus unterschieden werden.", "en": "Macrovascular invasion is crucial for prognosis and treatment and must be distinguished from bland thrombus.", "fa": "تهاجم ماکروواسکولار برای پیش‌آگهی و درمان مهم است و باید از ترومبوس ساده افتراق داده شود." }
   },
   {
@@ -2512,23 +2512,23 @@ export const FLASHCARDS = [
     "topicId": "hcc",
     "category": { "de": "Atypische Form", "en": "Atypical form", "fa": "فرم آتیپیک" },
     "front": { "de": "Wie wächst ein infiltratives HCC?", "en": "How does infiltrative HCC grow?", "fa": "HCC انفیلتراتیو چگونه رشد می‌کند؟" },
-    "answer": { "de": "Unscharf und permeativ über mehrere Segmente oder einen ganzen Leberlappen.", "en": "Ill-defined and permeative across multiple segments or an entire lobe.", "fa": "نامشخص و permeative در چند سگمان یا یک لوب کامل." },
-    "explanation": { "de": "Das klassische APHE/Wash-out-Muster kann nur fokal vorhanden sein. Satellitenherde und Gefäßinvasion sind wichtige Hinweise.", "en": "The classic APHE/wash-out pattern may be only focal. Satellite lesions and vascular invasion are important clues.", "fa": "الگوی کلاسیک APHE/wash-out ممکن است فقط فوکال باشد؛ ضایعات ماهواره‌ای و تهاجم عروقی سرنخ‌های مهم هستند." }
+    "answer": { "de": "Unscharf und permeativ über mehrere Segmente oder einen ganzen Leberlappen.", "en": "Ill-defined and permeative across multiple segments or an entire lobe.", "fa": "نامشخص و نفوذی در چند سگمان یا یک لوب کامل." },
+    "explanation": { "de": "Das klassische APHE/Wash-out-Muster kann nur fokal vorhanden sein. Satellitenherde und Gefäßinvasion sind wichtige Hinweise.", "en": "The classic APHE/wash-out pattern may be only focal. Satellite lesions and vascular invasion are important clues.", "fa": "الگوی کلاسیک APHE/واش‌اوت ممکن است فقط فوکال باشد؛ ضایعات ماهواره‌ای و تهاجم عروقی سرنخ‌های مهم هستند." }
   },
   {
     "id": "hcc-09-dd-fnh",
     "topicId": "hcc",
     "category": { "de": "Differenzialdiagnose", "en": "Differential diagnosis", "fa": "تشخیص افتراقی" },
     "front": { "de": "Welches Verhalten spricht eher für HCC als für FNH?", "en": "Which behaviour favours HCC over FNH?", "fa": "کدام رفتار بیشتر به نفع HCC نسبت به FNH است؟" },
-    "answer": { "de": "Portalvenöses/spätes Wash-out und Kapselappearance.", "en": "Portal venous/delayed wash-out and capsule appearance.", "fa": "wash-out پورتال/تأخیری و capsule appearance." },
-    "explanation": { "de": "Die typische FNH zeigt kräftiges homogenes APHE, aber kein Wash-out und häufig eine T2-helle zentrale Narbe.", "en": "Typical FNH shows strong homogeneous APHE but no wash-out and often a T2-bright central scar.", "fa": "FNH تیپیک APHE قوی و هموژن دارد ولی wash-out ندارد و اغلب اسکار مرکزی روشن در T2 دارد." }
+    "answer": { "de": "Portalvenöses/spätes Wash-out und Kapselappearance.", "en": "Portal venous/delayed wash-out and capsule appearance.", "fa": "واش‌اوت پورتال/تأخیری و نمای کپسول." },
+    "explanation": { "de": "Die typische FNH zeigt kräftiges homogenes APHE, aber kein Wash-out und häufig eine T2-helle zentrale Narbe.", "en": "Typical FNH shows strong homogeneous APHE but no wash-out and often a T2-bright central scar.", "fa": "FNH تیپیک APHE قوی و هموژن دارد ولی واش‌اوت ندارد و اغلب اسکار مرکزی روشن در T2 دارد." }
   },
   {
     "id": "hcc-10-reporting",
     "topicId": "hcc",
     "category": { "de": "Befundung", "en": "Reporting", "fa": "گزارش‌نویسی" },
     "front": { "de": "Welche Angaben gehören zwingend in einen HCC-Befund?", "en": "Which details are essential in an HCC report?", "fa": "چه اطلاعاتی باید حتماً در گزارش HCC ذکر شوند؟" },
-    "answer": { "de": "Zahl, Größe, Segment, Enhancement, Satelliten, Gefäßinvasion und extrahepatische Ausbreitung.", "en": "Number, size, segment, enhancement, satellites, vascular invasion and extrahepatic spread.", "fa": "تعداد، اندازه، سگمان، enhancement، ضایعات ماهواره‌ای، تهاجم عروقی و گسترش خارج کبدی." },
+    "answer": { "de": "Zahl, Größe, Segment, Enhancement, Satelliten, Gefäßinvasion und extrahepatische Ausbreitung.", "en": "Number, size, segment, enhancement, satellites, vascular invasion and extrahepatic spread.", "fa": "تعداد، اندازه، سگمان، تقویت پس از تزریق، ضایعات ماهواره‌ای، تهاجم عروقی و گسترش خارج کبدی." },
     "explanation": { "de": "Diese Merkmale bestimmen Staging, Resektabilität, Transplantationsoptionen und lokoregionäre oder systemische Therapie.", "en": "These features determine staging, resectability, transplant options and locoregional or systemic therapy.", "fa": "این ویژگی‌ها مرحله، قابلیت رزکسیون، امکان پیوند و درمان موضعی یا سیستمیک را تعیین می‌کنند." }
   },
   {
@@ -2546,17 +2546,17 @@ export const FLASHCARDS = [
     "answer": {
       "de": "Nicht-verkäsende Granulome.",
       "en": "Non-caseating granulomas.",
-      "fa": "گرانولوم‌های non-caseating."
+      "fa": "گرانولوم‌های غیرپنیری."
     },
     "explanation": {
       "de": "Sarkoidose ist eine systemische granulomatöse Erkrankung unbekannter Ursache. Das Wort „nicht-verkäsende“ hilft besonders bei der Abgrenzung zur Tuberkulose.",
       "en": "Sarcoidosis is a systemic granulomatous disease of unknown cause. “Non-caseating” is especially useful for distinguishing it from tuberculosis.",
-      "fa": "سارکوئیدوز یک بیماری سیستمیک گرانولوماتوز با علت ناشناخته است. عبارت non-caseating به افتراق از سل کمک می‌کند."
+      "fa": "سارکوئیدوز یک بیماری سیستمیک گرانولوماتوز با علت ناشناخته است. عبارت غیرپنیری به افتراق از سل کمک می‌کند."
     },
     "diagram": {
       "de": "Sarkoidose → nicht-verkäsend\nTuberkulose → oft verkäsend",
       "en": "Sarcoidosis → non-caseating\nTuberculosis → often caseating",
-      "fa": "سارکوئیدوز → non-caseating\nسل → اغلب caseating"
+      "fa": "سارکوئیدوز → غیرپنیری\nسل → اغلب پنیری"
     },
     "topicId": "sarkoidose"
   },
@@ -2913,7 +2913,7 @@ export const FLASHCARDS = [
     "explanation": {
       "de": "Late Gadolinium Enhancement kann kardiale Beteiligung zeigen. Klinisch ist das wichtig, weil kardiale Sarkoidose mit Rhythmusstörungen assoziiert ist.",
       "en": "Late gadolinium enhancement can show cardiac involvement. This is clinically important because cardiac sarcoidosis is associated with arrhythmias.",
-      "fa": "Late Gadolinium Enhancement می‌تواند درگیری قلب را نشان دهد. از نظر بالینی مهم است چون سارکوئیدوز قلبی با آریتمی همراه است."
+      "fa": "تقویت دیررس گادولینیوم (LGE) می‌تواند درگیری قلب را نشان دهد. از نظر بالینی مهم است چون سارکوئیدوز قلبی با آریتمی همراه است."
     },
     "topicId": "sarkoidose"
   },
@@ -3136,17 +3136,17 @@ export const FLASHCARDS = [
     "answer": {
       "de": "Partial Articular Surface Tendon Avulsion – gelenkseitige Partialruptur im Footprint.",
       "en": "Partial Articular Surface Tendon Avulsion – an articular-sided partial tear at the footprint.",
-      "fa": "Partial Articular Surface Tendon Avulsion – پارگی جزئی سمت مفصلی در Footprint."
+      "fa": "پارگی جزئی سطح مفصلی تاندون (PASTA) – پارگی جزئی سمت مفصلی در محل اتصال تاندون (footprint)."
     },
     "explanation": {
       "de": "Die PASTA-Läsion betrifft die tiefen (gelenkseitigen) Fasern am Footprint des Supraspinatus, oft assoziiert mit Impingement.",
       "en": "PASTA lesions affect the deep (articular-sided) fibres at the supraspinatus footprint, often associated with impingement.",
-      "fa": "ضایعه PASTA فیبرهای عمقی (سمت مفصلی) را در Footprint سوپراسپیناتوس درگیر می‌کند و اغلب با ایمپینجمنت همراه است."
+      "fa": "ضایعه PASTA فیبرهای عمقی (سمت مفصلی) را در محل اتصال تاندون (footprint) سوپراسپیناتوس درگیر می‌کند و اغلب با ایمپینجمنت همراه است."
     },
     "diagram": {
       "de": "Footprint (gelenkseitig, tiefe Fasern) → PASTA-Läsion → oft + Impingement",
       "en": "Footprint (articular side, deep fibres) → PASTA lesion → often + impingement",
-      "fa": "Footprint (سمت مفصلی، فیبرهای عمقی) → ضایعه PASTA → اغلب + ایمپینجمنت"
+      "fa": "محل اتصال تاندون (footprint) (سمت مفصلی، فیبرهای عمقی) → ضایعه PASTA → اغلب + ایمپینجمنت"
     }
   },
   {
@@ -3189,12 +3189,12 @@ export const FLASHCARDS = [
     "front": {
       "de": "Ab welchem Footprint-Befall wird bei einer PASTA-Läsion meist eine OP erwogen?",
       "en": "From what footprint involvement is surgery usually considered in a PASTA lesion?",
-      "fa": "از چه میزان درگیری Footprint در ضایعه PASTA معمولاً جراحی در نظر گرفته می‌شود؟"
+      "fa": "از چه میزان درگیری محل اتصال تاندون (footprint) در ضایعه PASTA معمولاً جراحی در نظر گرفته می‌شود؟"
     },
     "answer": {
       "de": ">50% der Footprint-Breite.",
       "en": ">50% of footprint width.",
-      "fa": "بیش از ۵۰٪ عرض Footprint."
+      "fa": "بیش از ۵۰٪ عرض محل اتصال تاندون (footprint)."
     },
     "explanation": {
       "de": "Bei <50% Footprint-Befall wird meist konservativ behandelt oder débridiert, bei >50% wird häufig eine operative Refixation diskutiert.",
@@ -3204,7 +3204,7 @@ export const FLASHCARDS = [
     "diagram": {
       "de": "Footprint-Befall <50% → konservativ/Débridement\nFootprint-Befall >50% → OP-Diskussion",
       "en": "Footprint involvement <50% → conservative/debridement\nFootprint involvement >50% → surgery discussion",
-      "fa": "درگیری Footprint <۵۰٪ → محافظه‌کارانه/دبریدمان\nدرگیری Footprint >۵۰٪ → بحث جراحی"
+      "fa": "درگیری محل اتصال تاندون (footprint) <۵۰٪ → محافظه‌کارانه/دبریدمان\nدرگیری محل اتصال تاندون (footprint) >۵۰٪ → بحث جراحی"
     }
   },
   {
@@ -3247,22 +3247,22 @@ export const FLASHCARDS = [
     "front": {
       "de": "Was beschreibt die Patte-Klassifikation und was bedeutet 'Tangent sign'?",
       "en": "What does the Patte classification describe, and what is the 'tangent sign'?",
-      "fa": "طبقه‌بندی Patte چه چیزی را توصیف می‌کند و 'Tangent sign' چیست؟"
+      "fa": "طبقه‌بندی Patte چه چیزی را توصیف می‌کند و 'علامت تانژانت' چیست؟"
     },
     "answer": {
       "de": "Patte: Grad der Sehnenretraktion (1–3). Tangent sign positiv = Humeruskopf überschreitet die Linie Akromion–Korakoid → ausgedehnte Ruptur.",
       "en": "Patte: degree of tendon retraction (1–3). Positive tangent sign = humeral head crosses the acromion–coracoid line → extensive tear.",
-      "fa": "Patte: درجه رتراکشن تاندون (۱ تا ۳). Tangent sign مثبت = سر هومروس از خط آکرومیون-کوراکوئید عبور می‌کند → پارگی وسیع."
+      "fa": "Patte: درجه رتراکشن تاندون (۱ تا ۳). علامت تانژانت مثبت = سر هومروس از خط آکرومیون-کوراکوئید عبور می‌کند → پارگی وسیع."
     },
     "explanation": {
       "de": "Patte Grad 1 = Stumpf nahe Footprint, Grad 3 = Retraktion bis Glenoidniveau. Beides sind wichtige Parameter für die OP-Planung (Reparierbarkeit).",
       "en": "Patte grade 1 = stump near footprint, grade 3 = retraction to glenoid level. Both are key parameters for surgical planning (reparability).",
-      "fa": "Patte درجه ۱ = انتهای تاندون نزدیک Footprint، درجه ۳ = رتراکشن تا سطح گلنوئید. هر دو از پارامترهای مهم برنامه‌ریزی جراحی (قابلیت ترمیم) هستند."
+      "fa": "Patte درجه ۱ = انتهای تاندون نزدیک محل اتصال تاندون (footprint)، درجه ۳ = رتراکشن تا سطح گلنوئید. هر دو از پارامترهای مهم برنامه‌ریزی جراحی (قابلیت ترمیم) هستند."
     },
     "diagram": {
       "de": "Patte 1 (nahe Footprint) → 2 → 3 (Glenoidniveau)\nTangent sign + → Humeruskopf > Linie Akromion-Korakoid",
       "en": "Patte 1 (near footprint) → 2 → 3 (glenoid level)\nTangent sign + → humeral head > acromion-coracoid line",
-      "fa": "Patte ۱ (نزدیک Footprint) → ۲ → ۳ (سطح گلنوئید)\nTangent sign + → سر هومروس > خط آکرومیون-کوراکوئید"
+      "fa": "Patte ۱ (نزدیک محل اتصال تاندون (footprint)) → ۲ → ۳ (سطح گلنوئید)\nعلامت تانژانت + → سر هومروس > خط آکرومیون-کوراکوئید"
     }
   },
   {

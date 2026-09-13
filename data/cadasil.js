@@ -283,7 +283,7 @@ const CADASIL_QUESTION_SEEDS = [
   Q('06', L('Welche Läsion ist bei einem akuten CADASIL-bedingten lakunären Infarkt am hilfreichsten?', 'Which sequence is most useful for an acute CADASIL-related lacunar infarct?', 'کدام سکانس برای انفارکت لاکونار حاد مرتبط با CADASIL مفیدتر است؟'), [
     L('DWI mit korrespondierend erniedrigtem ADC', 'DWI with corresponding low ADC', 'DWI با ADC کاهش‌یافته متناظر'),
     L('FLAIR ohne DWI-Korrelat', 'FLAIR without a DWI correlate', 'FLAIR بدون همبستگی DWI'),
-    L('SWI mit Blooming ohne DWI-Signal', 'SWI blooming without DWI signal', 'Blooming در SWI بدون سیگنال DWI'),
+    L('SWI mit Blooming ohne DWI-Signal', 'SWI blooming without DWI signal', "آرتیفکت شکوفه‌ای در SWI بدون سیگنال DWI"),
     L('T1 nach Kontrastmittel mit homogener Aufnahme', 'Post-contrast T1 with homogeneous enhancement', 'T1 پس از کنتراست با جذب همگن'),
   ], 0, L('Akute lakunäre Ischämien zeigen Diffusionsrestriktion mit DWI-Hyperintensität und ADC-Abfall.', 'Acute lacunar ischaemia shows restricted diffusion with DWI hyperintensity and low ADC.', 'ایسکمی لاکونار حاد با محدودیت انتشار، DWI بالا و ADC پایین دیده می‌شود.')),
   Q('07', L('Welche Differenzialdiagnose passt bei Alopezie, früher Spondylose und diffuser Mikroangiopathie am besten?', 'Which differential best fits alopecia, early spondylosis and diffuse small-vessel disease?', 'کدام تشخیص افتراقی با آلوپسی، اسپوندیلوز زودرس و بیماری منتشر عروق کوچک سازگارتر است؟'), [

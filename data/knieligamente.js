@@ -66,7 +66,7 @@ const CONTENT = [
     {
       de: 'Wofür ist das Arcuate Sign eine Red Flag?',
       en: 'What is the arcuate sign a red flag for?',
-      fa: 'Arcuate sign هشدار مهم برای چیست؟',
+      fa: "علامت آرکوات (Arcuate sign) هشدار مهم برای چیست؟",
     },
     [
       { de: 'Schwere Verletzung des posterolateralen Eckpunkts', en: 'Severe posterolateral corner injury', fa: 'آسیب شدید گوشه خلفی-لترال زانو' },
@@ -78,7 +78,7 @@ const CONTENT = [
     {
       de: 'Das Arcuate Sign ist eine Avulsionsfraktur am Apex des Fibulaköpfchens und spricht pathognomonisch für eine relevante PLC-Verletzung.',
       en: 'The arcuate sign is an avulsion fracture at the fibular head apex and is highly characteristic of a significant PLC injury.',
-      fa: 'Arcuate sign یک شکستگی کندگی در رأس سر فیبولاست و به نفع آسیب مهم کمپلکس PLC است.',
+      fa: "علامت آرکوات (Arcuate sign) یک شکستگی کندگی در رأس سر فیبولاست و به نفع آسیب مهم کمپلکس PLC است.",
     },
   ),
   q(
@@ -190,7 +190,7 @@ export const KNIE_LIGAMENTE_FLASHCARDS = [
     front: {
       de: 'Was bedeutet das Arcuate Sign?',
       en: 'What does the arcuate sign mean?',
-      fa: 'Arcuate sign به چه معناست؟',
+      fa: "علامت آرکوات (Arcuate sign) به چه معناست؟",
     },
     answer: {
       de: 'Avulsion am Fibulaköpfchen und Red Flag für PLC-Verletzung.',

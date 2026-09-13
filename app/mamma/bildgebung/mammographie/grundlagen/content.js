@@ -85,14 +85,14 @@ export const CASE_STEPS = [
   {
     question: L('Was beurteilen Sie zuerst?', 'What do you assess first?', 'ابتدا چه چیزی را ارزیابی می‌کنید؟'),
     context: L('58-jährige Patientin, Screening. Neue Mikroverkalkungen im oberen äußeren Quadranten.', '58-year-old screening patient. New calcifications in the upper outer quadrant.', 'بیمار ۵۸ ساله در غربالگری؛ کلسیفیکاسیون‌های جدید در ربع فوقانی خارجی.'),
-    options: [L('Enhancement', 'Enhancement', 'Enhancement'), L('Morphology', 'Morphology', 'مورفولوژی'), L('BI-RADS-Kategorie', 'BI-RADS category', 'دسته BI-RADS'), L('Histologie', 'Histology', 'بافت‌شناسی')], correct: 1,
+    options: [L('Enhancement', 'Enhancement', 'تقویت پس از تزریق'), L('Morphology', 'Morphology', 'مورفولوژی'), L('BI-RADS-Kategorie', 'BI-RADS category', 'دسته BI-RADS'), L('Histologie', 'Histology', 'بافت‌شناسی')], correct: 1,
     feedback: L('Richtig: Der Befund wird zuerst morphologisch beschrieben. Die Kategorie folgt erst danach.', 'Correct: describe the morphology first. The assessment category comes later.', 'درست است: ابتدا مورفولوژی یافته توصیف می‌شود و سپس دسته ارزیابی تعیین می‌گردد.'),
     wrong: L('Noch nicht. Beginnen Sie mit dem sichtbaren Descriptor – der Morphologie.', 'Not yet. Start with the visible descriptor: morphology.', 'هنوز نه. با دسکریپتور قابل مشاهده، یعنی مورفولوژی، شروع کنید.'),
   },
   {
     question: L('Was fehlt für die vollständige Beschreibung?', 'What is missing for a complete description?', 'برای توصیف کامل چه چیزی کم است؟'),
     context: L('Magnifikationsaufnahme: fine pleomorphic calcifications.', 'Magnification view: fine pleomorphic calcifications.', 'نمای بزرگنمایی: کلسیفیکاسیون‌های ظریف پلئومورفیک.'),
-    options: [L('Breast Composition', 'Breast composition', 'ترکیب پستان'), L('Distribution', 'Distribution', 'توزیع'), L('Mass Density', 'Mass density', 'دانسیته توده'), L('Enhancement-Kinetik', 'Enhancement kinetics', 'کینتیک Enhancement')], correct: 1,
+    options: [L('Breast Composition', 'Breast composition', 'ترکیب پستان'), L('Distribution', 'Distribution', 'توزیع'), L('Mass Density', 'Mass density', 'دانسیته توده'), L('Enhancement-Kinetik', 'Enhancement kinetics', 'کینتیک تقویت پس از تزریق')], correct: 1,
     feedback: L('Richtig: Morphologie und Distribution bilden gemeinsam die vollständige Kalkbeschreibung.', 'Correct: morphology and distribution together complete the calcification description.', 'درست است: مورفولوژی و توزیع با هم توصیف کامل کلسیفیکاسیون را می‌سازند.'),
     wrong: L('Der zweite obligatorische Kalk-Descriptor ist die Verteilung.', 'The second mandatory calcification descriptor is distribution.', 'دومین دسکریپتور ضروری کلسیفیکاسیون، توزیع است.'),
   },
@@ -110,5 +110,5 @@ export const TAKE_HOME = [
   L('Mass = Shape + Margin + Density.', 'Mass = shape + margin + density.', 'توده = شکل + حاشیه + دانسیته.'),
   L('Calcifications = Morphology + Distribution.', 'Calcifications = morphology + distribution.', 'کلسیفیکاسیون = مورفولوژی + توزیع.'),
   L('Obscured bedeutet nicht beurteilbar; indistinct bedeutet tatsächlich unscharf.', 'Obscured means not assessable; indistinct means truly ill-defined.', 'Obscured یعنی قابل ارزیابی نیست؛ indistinct یعنی واقعاً نامشخص است.'),
-  L('No enhancement does not downgrade suspicious calcifications.', 'No enhancement does not downgrade suspicious calcifications.', 'نبود Enhancement باعث کاهش درجه کلسیفیکاسیون مشکوک نمی‌شود.'),
+  L('No enhancement does not downgrade suspicious calcifications.', 'No enhancement does not downgrade suspicious calcifications.', 'نبود تقویت پس از تزریق باعث کاهش درجه کلسیفیکاسیون مشکوک نمی‌شود.'),
 ]

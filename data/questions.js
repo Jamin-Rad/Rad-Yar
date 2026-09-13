@@ -312,7 +312,7 @@ const PANCREATITIS_QUESTION_CONTENT = [
     explanation: {
       de: 'Nekrosen können in sehr früher Bildgebung unterschätzt werden. Nach 48–72 Stunden ist fehlendes Enhancement besser beurteilbar.',
       en: 'Necrosis may be underestimated very early. After 48–72 hours absent enhancement is more reliably assessed.',
-      fa: 'نکروز در تصویربرداری خیلی زود ممکن است کمتر دیده شود. پس از ۴۸–۷۲ ساعت عدم enhancement قابل اعتمادتر است.',
+      fa: 'نکروز در تصویربرداری خیلی زود ممکن است کمتر دیده شود. پس از ۴۸–۷۲ ساعت فقدان تقویت قابل اعتمادتر است.',
     },
   },
   {
@@ -323,8 +323,8 @@ const PANCREATITIS_QUESTION_CONTENT = [
       fa: 'کدام الگوی تصویربرداری با پانکراتیت ادماتوی بینابینی سازگار است؟',
     },
     options: [
-      { id: 'A', text: { de: 'Diffuse Schwellung mit homogener Kontrastmittelaufnahme', en: 'Diffuse swelling with homogeneous enhancement', fa: 'تورم منتشر با enhancement همگن' } },
-      { id: 'B', text: { de: 'Kompletter Enhancement-Ausfall des gesamten Pankreas', en: 'Complete lack of enhancement of the entire pancreas', fa: 'عدم enhancement کامل تمام پانکراس' } },
+      { id: 'A', text: { de: 'Diffuse Schwellung mit homogener Kontrastmittelaufnahme', en: 'Diffuse swelling with homogeneous enhancement', fa: 'تورم منتشر با تقویت همگن پس از تزریق' } },
+      { id: 'B', text: { de: 'Kompletter Enhancement-Ausfall des gesamten Pankreas', en: 'Complete lack of enhancement of the entire pancreas', fa: 'فقدان تقویت کامل تمام پانکراس' } },
       { id: 'C', text: { de: 'Solide hypervaskuläre Raumforderung im Pankreaskopf', en: 'Solid hypervascular mass in the pancreatic head', fa: 'توده جامد هایپرووسکولار در سر پانکراس' } },
       { id: 'D', text: { de: 'Ausschließlich intraduktale Verkalkungen ohne Ödem', en: 'Only intraductal calcifications without oedema', fa: 'فقط کلسیفیکاسیون داخل مجرا بدون ادم' } },
     ],
@@ -332,7 +332,7 @@ const PANCREATITIS_QUESTION_CONTENT = [
     explanation: {
       de: 'Die ödematöse Form zeigt Schwellung, homogene Anreicherung und peripankreatisches Fett-Stranding, aber keine Nekrose.',
       en: 'The oedematous form shows swelling, homogeneous enhancement and peripancreatic fat stranding, without necrosis.',
-      fa: 'نوع ادماتوی با تورم، enhancement همگن و stranding چربی اطراف پانکراس دیده می‌شود، بدون نکروز.',
+      fa: 'نوع ادماتوی با تورم، تقویت پس از تزریق همگن و stranding چربی اطراف پانکراس دیده می‌شود، بدون نکروز.',
     },
   },
   {
@@ -360,7 +360,7 @@ const PANCREATITIS_QUESTION_CONTENT = [
     question: {
       de: 'Was beschreibt Walled-Off Necrosis (WON)?',
       en: 'What does walled-off necrosis (WON) describe?',
-      fa: 'Walled-off necrosis یا WON چه چیزی را توصیف می‌کند؟',
+      fa: 'نکروز محصور (WON) چه چیزی را توصیف می‌کند؟',
     },
     options: [
       { id: 'A', text: { de: 'Organisierte Kapsel um Nekroseareal nach meist >4 Wochen', en: 'An organised capsule around necrotic material, usually after >4 weeks', fa: 'کپسول سازمان‌یافته اطراف نکروز، معمولاً پس از بیش از ۴ هفته' } },
@@ -404,7 +404,7 @@ const PANCREATITIS_QUESTION_CONTENT = [
     },
     options: [
       { id: 'A', text: { de: 'Rundliche, scharf begrenzte arterielle Struktur in oder nahe einer Kollektion', en: 'Round sharply marginated arterial structure in or near a collection', fa: 'ساختار گرد و واضح شریانی داخل یا نزدیک تجمع' } },
-      { id: 'B', text: { de: 'Rein zystische Läsion ohne Enhancement', en: 'Purely cystic lesion without enhancement', fa: 'ضایعه کاملاً کیستیک بدون enhancement' } },
+      { id: 'B', text: { de: 'Rein zystische Läsion ohne Enhancement', en: 'Purely cystic lesion without enhancement', fa: 'ضایعه کاملاً کیستیک بدون تقویت پس از تزریق' } },
       { id: 'C', text: { de: 'Symmetrische Nierenkelchdilatation', en: 'Symmetric renal calyceal dilatation', fa: 'اتساع متقارن کالیس‌های کلیه' } },
       { id: 'D', text: { de: 'Luft in der Harnblase nach Katheter', en: 'Gas in the bladder after catheterisation', fa: 'گاز مثانه پس از کاتترگذاری' } },
     ],
@@ -424,7 +424,7 @@ const PANCREATITIS_QUESTION_CONTENT = [
     },
     options: [
       { id: 'A', text: { de: 'Gas im Nekroseareal', en: 'Gas within the necrotic area', fa: 'گاز داخل ناحیه نکروز' } },
-      { id: 'B', text: { de: 'Homogenes Enhancement des Pankreas', en: 'Homogeneous pancreatic enhancement', fa: 'enhancement همگن پانکراس' } },
+      { id: 'B', text: { de: 'Homogenes Enhancement des Pankreas', en: 'Homogeneous pancreatic enhancement', fa: 'تقویت پس از تزریق همگن پانکراس' } },
       { id: 'C', text: { de: 'Ein einzelner Nierenstein', en: 'A single renal stone', fa: 'یک سنگ کلیه منفرد' } },
       { id: 'D', text: { de: 'Normale Lebergröße', en: 'Normal liver size', fa: 'اندازه طبیعی کبد' } },
     ],
@@ -3354,7 +3354,7 @@ export const QUESTION_BANK = {
         "knie"
       ],
       "fach": "msk",
-      "question": "طبق قانون شناخته‌شده‌ی \"Two-slice-touch\" (تماس در دو تصویر)، چه معیاری باید وجود داشته باشد تا تشخیص پارگی منیسک در MRI با دقت و ویژگی بالا تایید شود؟",
+      "question": "طبق قانون شناخته‌شده‌ی \"تماس در دو برش (تماس در دو برش (Two-slice-touch))\" (تماس در دو تصویر)، چه معیاری باید وجود داشته باشد تا تشخیص پارگی منیسک در MRI با دقت و ویژگی بالا تایید شود؟",
       "options": [
         {
           "id": "A",
@@ -3374,7 +3374,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "B",
-      "explanation": "الف غلط است: یک پارگی نیازی ندارد که کل ارتفاع منیسک را طی کند. اگر سیگنال پاتولوژیک فقط به سطح مفصلی بالایی (سوپریور) یا فقط به سطح پایینی (اینفریور) رسیده باشد، برای تشخیص کفایت می‌کند.\n\nب صحیح است: این قانون تصریح می‌کند که سیگنال افزایش‌یافته‌ی داخل منیسک باید حداقل در دو برش مجاور و پشت‌سرهم با سطح مفصل تماس داشته باشد. این معیار خطر اشتباه گرفتن نویزهای تکنیکی دستگاه یا پدیده حجم متوسط (Volume Averaging) در یک تک‌برش را با پارگی واقعی از بین می‌برد.\n\nج غلط است: اگرچه بررسی پارگی در سکانس‌ها و صفحات مختلف (ساجیتال/کورونال) ایده‌آل است، اما قانون خاص \"Two-slice-touch\" صرفاً بر تداوم ضایعه در برش‌های متوالی یک سکانس واحد تاکید دارد.\n\nد غلط است: این قانون مستقل از اندازه‌گیری‌های مطلق به میلی‌متر است و فقط بر اساس تعداد برش‌های درگیر تعریف می‌شود، حتی اگر ضخامت استاندارد برش‌ها در پروتکل معمولاً ۳ میلی‌متر باشد."
+      "explanation": "الف غلط است: یک پارگی نیازی ندارد که کل ارتفاع منیسک را طی کند. اگر سیگنال پاتولوژیک فقط به سطح مفصلی بالایی (سوپریور) یا فقط به سطح پایینی (اینفریور) رسیده باشد، برای تشخیص کفایت می‌کند.\n\nب صحیح است: این قانون تصریح می‌کند که سیگنال افزایش‌یافته‌ی داخل منیسک باید حداقل در دو برش مجاور و پشت‌سرهم با سطح مفصل تماس داشته باشد. این معیار خطر اشتباه گرفتن نویزهای تکنیکی دستگاه یا پدیده حجم متوسط (Volume Averaging) در یک تک‌برش را با پارگی واقعی از بین می‌برد.\n\nج غلط است: اگرچه بررسی پارگی در سکانس‌ها و صفحات مختلف (ساجیتال/کورونال) ایده‌آل است، اما قانون خاص \"تماس در دو برش (تماس در دو برش (Two-slice-touch))\" صرفاً بر تداوم ضایعه در برش‌های متوالی یک سکانس واحد تاکید دارد.\n\nد غلط است: این قانون مستقل از اندازه‌گیری‌های مطلق به میلی‌متر است و فقط بر اساس تعداد برش‌های درگیر تعریف می‌شود، حتی اگر ضخامت استاندارد برش‌ها در پروتکل معمولاً ۳ میلی‌متر باشد."
     },
     {
       "id": "meniskus-fa-03",
@@ -3564,15 +3564,15 @@ export const QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "enhancement ندولار محیطی و ناپیوسته با پرشدگی مرکزگرا"
+          "text": "تقویت پس از تزریق ندولار محیطی و ناپیوسته با پرشدگی مرکزگرا"
         },
         {
           "id": "B",
-          "text": "wash-in شریانی با wash-out پورتال و کپسول"
+          "text": "wash-in شریانی با واش‌اوت پورتال و کپسول"
         },
         {
           "id": "C",
-          "text": "ضایعه نازک‌دیواره بدون enhancement"
+          "text": "ضایعه نازک‌دیواره بدون تقویت پس از تزریق"
         },
         {
           "id": "D",
@@ -3580,7 +3580,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "A",
-      "explanation": "الگوی کلاسیک همانژیوم، enhancement ندولار و ناپیوسته محیطی است که در فازهای بعدی به صورت مرکزگرا پر می‌شود."
+      "explanation": "الگوی کلاسیک همانژیوم، تقویت پس از تزریق ندولار و ناپیوسته محیطی است که در فازهای بعدی به صورت مرکزگرا پر می‌شود."
     },
     {
       "id": "haemangiom-fa-04",
@@ -3590,7 +3590,7 @@ export const QUESTION_BANK = {
         "abdomen"
       ],
       "fach": "abdomen",
-      "question": "پدیده Iris diaphragm در همانژیوم کبدی چه چیزی را توصیف می‌کند؟",
+      "question": "پدیده پدیده دیافراگم عنبیه در همانژیوم کبدی چه چیزی را توصیف می‌کند؟",
       "options": [
         {
           "id": "A",
@@ -3598,7 +3598,7 @@ export const QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "wash-out مرکزی در فاز تأخیری"
+          "text": "واش‌اوت مرکزی در فاز تأخیری"
         },
         {
           "id": "C",
@@ -3610,7 +3610,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "A",
-      "explanation": "پدیده Iris diaphragm یعنی پرشدگی مرکزگرا با ماده حاجب از حاشیه به سمت مرکز."
+      "explanation": "پدیده پدیده دیافراگم عنبیه یعنی پرشدگی مرکزگرا با ماده حاجب از حاشیه به سمت مرکز."
     },
     {
       "id": "haemangiom-fa-05",
@@ -3624,7 +3624,7 @@ export const QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "سیگنال T2 بسیار بالا به صورت Light-bulb sign"
+          "text": "سیگنال بسیار بالا در T2 به‌صورت علامت لامپ روشن (Light-bulb sign)"
         },
         {
           "id": "B",
@@ -3636,11 +3636,11 @@ export const QUESTION_BANK = {
         },
         {
           "id": "D",
-          "text": "فقط محدودیت انتشار مرکزی بدون enhancement"
+          "text": "فقط محدودیت انتشار مرکزی بدون تقویت پس از تزریق"
         }
       ],
       "correct": "A",
-      "explanation": "همانژیوم کلاسیک در T2 بسیار روشن است و گاهی حتی از صفرا روشن‌تر دیده می‌شود. این Light-bulb sign یک سرنخ مهم تشخیصی است."
+      "explanation": "همانژیوم کلاسیک در T2 بسیار روشن است و گاهی حتی از صفرا روشن‌تر دیده می‌شود. علامت لامپ روشن (Light-bulb sign) یک سرنخ مهم تشخیصی است."
     },
     {
       "id": "haemangiom-fa-06",
@@ -3654,7 +3654,7 @@ export const QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "DWI روشن، ADC بالا: T2 shine-through"
+          "text": "DWI روشن و ADC بالا: اثر عبور سیگنال T2 (shine-through)"
         },
         {
           "id": "B",
@@ -3670,7 +3670,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "A",
-      "explanation": "همانژیوم ممکن است در b-value بالا روشن باشد. اما ADC بالا نشان‌دهنده T2 shine-through است و محدودیت انتشار واقعی نیست."
+      "explanation": "همانژیوم ممکن است در مقادیر بالای b پرسیگنال باشد؛ اما ADC بالا نشان‌دهنده اثر عبور سیگنال T2 (shine-through) است، نه محدودیت واقعی انتشار."
     },
     {
       "id": "haemangiom-fa-07",
@@ -3688,11 +3688,11 @@ export const QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "همیشه کاملاً هیپودنس و بدون enhancement می‌ماند"
+          "text": "همیشه کاملاً هیپودنس و بدون تقویت پس از تزریق می‌ماند"
         },
         {
           "id": "C",
-          "text": "wash-out زودرس با pseudocapsule"
+          "text": "واش‌اوت زودرس با پسودوکپسول"
         },
         {
           "id": "D",
@@ -3744,15 +3744,15 @@ export const QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "نبود enhancement ندولار محیطی کلاسیک، گاهی enhancement هموژن و قوی شریانی"
+          "text": "نبود تقویت پس از تزریق ندولار محیطی کلاسیک، گاهی تقویت همگن و قوی شریانی"
         },
         {
           "id": "B",
-          "text": "همیشه T2 کاملاً Light-bulb و پرشدگی مرکزگرای کلاسیک کامل"
+          "text": "همیشه T2 کاملاً علامت لامپ روشن و پرشدگی مرکزگرای کلاسیک کامل"
         },
         {
           "id": "C",
-          "text": "هیچ‌وقت enhancement ندارد"
+          "text": "هیچ‌وقت تقویت پس از تزریق ندارد"
         },
         {
           "id": "D",
@@ -3760,7 +3760,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "A",
-      "explanation": "همانژیوم آتیپیک ممکن است enhancement ندولار محیطی و پرشدگی مرکزگرای کلاسیک را نداشته باشد و به جای آن enhancement هموژن و قوی شریانی نشان دهد."
+      "explanation": "همانژیوم آتیپیک ممکن است تقویت پس از تزریق ندولار محیطی و پرشدگی مرکزگرای کلاسیک را نداشته باشد و به جای آن تقویت همگن و قوی شریانی نشان دهد."
     },
     {
       "id": "haemangiom-fa-10",
@@ -3778,7 +3778,7 @@ export const QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "ADC پایین و wash-out سریع"
+          "text": "ADC پایین و واش‌اوت سریع"
         },
         {
           "id": "C",
@@ -3840,13 +3840,13 @@ export const QUESTION_BANK = {
       "fach": "abdomen",
       "question": "رفتار FNH تیپیک در فاز شریانی زودرس CT چگونه است؟",
       "options": [
-        { "id": "A", "text": "enhancement ندولار محیطی و ناپیوسته" },
-        { "id": "B", "text": "enhancement قوی و هموژن" },
-        { "id": "C", "text": "بدون enhancement در هیچ فازی" },
-        { "id": "D", "text": "enhancement حلقوی با نکروز مرکزی" }
+        { "id": "A", "text": "تقویت پس از تزریق ندولار محیطی و ناپیوسته" },
+        { "id": "B", "text": "تقویت پس از تزریق قوی و هموژن" },
+        { "id": "C", "text": "بدون تقویت پس از تزریق در هیچ فازی" },
+        { "id": "D", "text": "تقویت پس از تزریق حلقوی با نکروز مرکزی" }
       ],
       "correct": "B",
-      "explanation": "برخلاف همانژیوم، FNH در فاز شریانی زودرس enhancement قوی و هموژن دارد، بدون enhancement ندولار محیطی."
+      "explanation": "برخلاف همانژیوم، FNH در فاز شریانی زودرس تقویت پس از تزریق قوی و هموژن دارد، بدون تقویت پس از تزریق ندولار محیطی."
     },
     {
       "id": "fnh-fa-05",
@@ -3854,13 +3854,13 @@ export const QUESTION_BANK = {
       "fach": "abdomen",
       "question": "ویژگی تیپیک FNH در فاز پورتال و تأخیری چیست؟",
       "options": [
-        { "id": "A", "text": "wash-out واضح با هیپودنسیته نسبت به کبد" },
-        { "id": "B", "text": "بدون wash-out، با تطابق سریع با پارانشیم کبد" },
+        { "id": "A", "text": "واش‌اوت واضح با هیپودنسیته نسبت به کبد" },
+        { "id": "B", "text": "بدون واش‌اوت، با تطابق سریع با پارانشیم کبد" },
         { "id": "C", "text": "افزایش تدریجی اندازه ضایعه" },
         { "id": "D", "text": "ظهور ندول‌های محیطی جدید" }
       ],
       "correct": "B",
-      "explanation": "FNH هیچ wash-out نشان نمی‌دهد و در فاز پورتال و تأخیری به‌سرعت با پارانشیم کبد تطابق می‌یابد - یک ویژگی افتراقی مهم از ضایعات بدخیم."
+      "explanation": "FNH هیچ واش‌اوت نشان نمی‌دهد و در فاز پورتال و تأخیری به‌سرعت با پارانشیم کبد تطابق می‌یابد - یک ویژگی افتراقی مهم از ضایعات بدخیم."
     },
     {
       "id": "fnh-fa-06",
@@ -3882,13 +3882,13 @@ export const QUESTION_BANK = {
       "fach": "abdomen",
       "question": "اسکار مرکزی FNH در MRI چگونه رفتار می‌کند؟",
       "options": [
-        { "id": "A", "text": "هایپراینتنس در T2، هیپواینتنس در T1، با enhancement تأخیری" },
-        { "id": "B", "text": "هیپواینتنس در T2 و T1 بدون هیچ enhancement" },
+        { "id": "A", "text": "هایپراینتنس در T2، هیپواینتنس در T1، با تقویت تأخیری" },
+        { "id": "B", "text": "هیپواینتنس در T2 و T1 بدون هیچ تقویت پس از تزریق" },
         { "id": "C", "text": "هایپراینتنس در T1 و ایزواینتنس در T2" },
         { "id": "D", "text": "فقط در CT قابل مشاهده است، هرگز در MRI" }
       ],
       "correct": "A",
-      "explanation": "اسکار مرکزی در T2 هایپراینتنس، در T1 هیپواینتنس است و enhancement تأخیری دارد - تیپیک در حدود ۷۰٪ موارد."
+      "explanation": "اسکار مرکزی در T2 هایپراینتنس، در T1 هیپواینتنس است و تقویت تأخیری دارد - تیپیک در حدود ۷۰٪ موارد."
     },
     {
       "id": "fnh-fa-08",
@@ -3896,13 +3896,13 @@ export const QUESTION_BANK = {
       "fach": "abdomen",
       "question": "کدام ویژگی بیشترین کمک به افتراق FNH از HCC می‌کند؟",
       "options": [
-        { "id": "A", "text": "نبود wash-out به‌رغم enhancement شریانی قوی" },
+        { "id": "A", "text": "نبود واش‌اوت به‌رغم تقویت شریانی قوی" },
         { "id": "B", "text": "وجود کپسول واقعی تومور" },
         { "id": "C", "text": "افزایش آلفافتوپروتئین" },
         { "id": "D", "text": "وقوع چندکانونی" }
       ],
       "correct": "A",
-      "explanation": "HCC معمولاً در فاز پورتال/تأخیری wash-out دارد، در حالی که FNH به‌رغم enhancement شریانی قوی، wash-out ندارد."
+      "explanation": "HCC معمولاً در فاز پورتال/تأخیری واش‌اوت دارد، در حالی که FNH به‌رغم تقویت شریانی قوی، واش‌اوت ندارد."
     },
     {
       "id": "fnh-fa-09",
@@ -3911,12 +3911,12 @@ export const QUESTION_BANK = {
       "question": "کدام ویژگی‌ها می‌توانند در FNH آتیپیک دیده شوند؟",
       "options": [
         { "id": "A", "text": "نبود اسکار مرکزی، ظاهر هتروژن، پسودوکپسول یا چربی داخل ضایعه" },
-        { "id": "B", "text": "فقط حاشیه کلسیفیه بدون هیچ enhancement" },
+        { "id": "B", "text": "فقط حاشیه کلسیفیه بدون هیچ تقویت پس از تزریق" },
         { "id": "C", "text": "تبدیل کامل کیستیک" },
         { "id": "D", "text": "درگیری منتشر کل کبد" }
       ],
       "correct": "A",
-      "explanation": "FNH آتیپیک (~۲۰٪) ممکن است بدون اسکار مرکزی باشد یا ظاهر هتروژن، پسودوکپسول، عدم enhancement اسکار یا چربی داخل ضایعه نشان دهد، که افتراق از سایر تومورهای کبدی را دشوار می‌کند."
+      "explanation": "FNH آتیپیک (~۲۰٪) ممکن است بدون اسکار مرکزی باشد یا ظاهر هتروژن، پسودوکپسول، فقدان تقویت اسکار یا چربی داخل ضایعه نشان دهد، که افتراق از سایر تومورهای کبدی را دشوار می‌کند."
     },
     {
       "id": "fnh-fa-10",
@@ -4028,7 +4028,7 @@ export const QUESTION_BANK = {
         { "id": "D", "text": "کلسیفیکاسیون در مرکز ضایعه" }
       ],
       "correct": "B",
-      "explanation": "\"Early venous filling sign\" - اپاسیفیکاسیون زودرس ورید تخلیه‌کننده در فاز شریانی - یافته کلیدی AVM کبدی در CT و MRI است."
+      "explanation": "\"علامت پرشدگی زودرس وریدی\" - اپاسیفیکاسیون زودرس ورید تخلیه‌کننده در فاز شریانی - یافته کلیدی AVM کبدی در CT و MRI است."
     },
     {
       "id": "avm-fa-08",
@@ -4051,12 +4051,12 @@ export const QUESTION_BANK = {
       "question": "مالفورماسیون‌های شریانی-وریدی معمولاً در سکانس‌های T1 و T2 وزن‌دار MRI چگونه دیده می‌شوند؟",
       "options": [
         { "id": "A", "text": "هیپراینتنس همگن با تجمع آرام و سانتریپتال کنتراست مانند هماانژیوم" },
-        { "id": "B", "text": "به‌صورت ساختارهای سرپیژینوس بدون سیگنال (Flow voids) به دلیل جریان سریع" },
+        { "id": "B", "text": "به‌صورت ساختارهای سرپیژینوس بدون سیگنال (فقدان سیگنال جریان (flow void)) به دلیل جریان سریع" },
         { "id": "C", "text": "به‌صورت سیگنال معادل چربی در تمام سکانس‌ها" },
         { "id": "D", "text": "به‌صورت توده کیستیک با مرز مشخص و سطح مایع" }
       ],
       "correct": "B",
-      "explanation": "جریان سریع خون در عروق متسع باعث ایجاد Flow voids - ساختارهای سرپیژینوس بدون سیگنال - در سکانس‌های T1 و T2 می‌شود."
+      "explanation": "جریان سریع خون در عروق متسع باعث ایجاد فقدان سیگنال جریان (flow void) - ساختارهای سرپیژینوس بدون سیگنال - در سکانس‌های T1 و T2 می‌شود."
     },
     {
       "id": "avm-fa-10",
@@ -4080,21 +4080,21 @@ export const QUESTION_BANK = {
     },
     {
       "id": "hcc-fa-02", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
-      "question": "کدام الگوی enhancement برای HCC کلاسیک است؟",
-      "options": [{"id":"A","text":"non-rim APHE همراه non-peripheral wash-out"},{"id":"B","text":"enhancement ندولار محیطی با پرشدگی مرکزگرا"},{"id":"C","text":"عدم enhancement در همه فازها"},{"id":"D","text":"فقط enhancement تأخیری اسکار بدون APHE"}],
-      "correct": "A", "explanation": "هایپرانهانسمنت شریانی غیرحلقوی و سپس wash-out غیرمحیطی، الگوی دینامیک کلاسیک HCC در بیمار پرخطر است."
+      "question": "کدام الگوی تقویت پس از تزریق برای HCC کلاسیک است؟",
+      "options": [{"id":"A","text":"افزایش سیگنال شریانی غیرحلقوی (APHE) همراه واش‌اوت غیرمحیطی"},{"id":"B","text":"تقویت پس از تزریق ندولار محیطی با پرشدگی مرکزگرا"},{"id":"C","text":"فقدان تقویت در همه فازها"},{"id":"D","text":"فقط تقویت تأخیری اسکار بدون APHE"}],
+      "correct": "A", "explanation": "تقویت شریانی غیرحلقوی (APHE) و سپس واش‌اوت غیرمحیطی، الگوی دینامیک کلاسیک HCC در بیمار پرخطر است."
     },
     {
       "id": "hcc-fa-03", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
-      "question": "wash-out در یک ضایعه کبدی به چه معناست؟",
-      "options": [{"id":"A","text":"ضایعه در فازهای دیرتر نسبت به کبد هیپوenhancing می‌شود"},{"id":"B","text":"ضایعه کاملاً ناپدید می‌شود"},{"id":"C","text":"همیشه خونریزی فعال وجود دارد"},{"id":"D","text":"فقط سیگنال T2 افزایش می‌یابد"}],
-      "correct": "A", "explanation": "Wash-out یک یافته نسبی است: ضایعه در فاز پورتال یا تأخیری نسبت به کبدی که بیشتر enhancement می‌یابد، تیره‌تر می‌شود."
+      "question": "واش‌اوت در یک ضایعه کبدی به چه معناست؟",
+      "options": [{"id":"A","text":"ضایعه در فازهای دیرتر نسبت به کبد هیپودارای تقویت پس از تزریق می‌شود"},{"id":"B","text":"ضایعه کاملاً ناپدید می‌شود"},{"id":"C","text":"همیشه خونریزی فعال وجود دارد"},{"id":"D","text":"فقط سیگنال T2 افزایش می‌یابد"}],
+      "correct": "A", "explanation": "واش‌اوت یک یافته نسبی است: ضایعه در فاز پورتال یا تأخیری نسبت به کبدی که بیشتر تقویت پس از تزریق می‌یابد، تیره‌تر می‌شود."
     },
     {
       "id": "hcc-fa-04", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
-      "question": "کدام یافته capsule appearance را توصیف می‌کند؟",
-      "options": [{"id":"A","text":"حاشیه صاف محیطی با enhancement در فازهای دیرتر"},{"id":"B","text":"اسکار مرکزی روشن در T2 با enhancement تأخیری"},{"id":"C","text":"کلسیفیکاسیون کامل ضایعه"},{"id":"D","text":"اختلال پرفیوژن گوه‌ای بدون توده"}],
-      "correct": "A", "explanation": "مرز صاف محیطی با enhancement در فاز پورتال یا تأخیری نمایانگر capsule appearance و به نفع HCC است."
+      "question": "کدام یافته نمای کپسول را توصیف می‌کند؟",
+      "options": [{"id":"A","text":"حاشیه صاف محیطی با تقویت پس از تزریق در فازهای دیرتر"},{"id":"B","text":"اسکار مرکزی روشن در T2 با تقویت تأخیری"},{"id":"C","text":"کلسیفیکاسیون کامل ضایعه"},{"id":"D","text":"اختلال پرفیوژن گوه‌ای بدون توده"}],
+      "correct": "A", "explanation": "مرز صاف محیطی با تقویت پس از تزریق در فاز پورتال یا تأخیری نمایانگر نمای کپسول و به نفع HCC است."
     },
     {
       "id": "hcc-fa-05", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
@@ -4105,26 +4105,26 @@ export const QUESTION_BANK = {
     {
       "id": "hcc-fa-06", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
       "question": "کدام الگوی DWI/ADC می‌تواند تشخیص HCC را تقویت کند؟",
-      "options": [{"id":"A","text":"محدودیت انتشار همراه ADC پایین"},{"id":"B","text":"ADC بسیار بالا بدون سیگنال DWI"},{"id":"C","text":"فقط T2 shine-through بدون محدودیت"},{"id":"D","text":"عدم مشاهده کامل در DWI"}],
+      "options": [{"id":"A","text":"محدودیت انتشار همراه ADC پایین"},{"id":"B","text":"ADC بسیار بالا بدون سیگنال DWI"},{"id":"C","text":"فقط اثر عبور سیگنال T2 (shine-through)، بدون محدودیت واقعی"},{"id":"D","text":"عدم مشاهده کامل در DWI"}],
       "correct": "A", "explanation": "سلولاریته بالا می‌تواند محدودیت انتشار واقعی با سیگنال DWI بالا و ADC پایین ایجاد کند؛ این یافته حمایتی اما غیراختصاصی است."
     },
     {
       "id": "hcc-fa-07", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
-      "question": "کدام یافته بیشتر به نفع tumour in vein است؟",
-      "options": [{"id":"A","text":"بافت نرم enhancing داخل ورید با الگوی مشابه تومور"},{"id":"B","text":"ترومبوس همگن بدون enhancement و جدا از تومور"},{"id":"C","text":"فقط ادم پری‌پورتال"},{"id":"D","text":"کیست ساده کنار ورید پورت"}],
-      "correct": "A", "explanation": "بافت نرم enhancing داخل ورید نشان‌دهنده تهاجم ماکروواسکولار تومور است و باید از ترومبوس ساده افتراق داده شود."
+      "question": "کدام یافته بیشتر به نفع تومور داخل ورید است؟",
+      "options": [{"id":"A","text":"بافت نرم دارای تقویت پس از تزریق داخل ورید با الگوی مشابه تومور"},{"id":"B","text":"ترومبوس همگن بدون تقویت پس از تزریق و جدا از تومور"},{"id":"C","text":"فقط ادم پری‌پورتال"},{"id":"D","text":"کیست ساده کنار ورید پورت"}],
+      "correct": "A", "explanation": "بافت نرم دارای تقویت پس از تزریق داخل ورید نشان‌دهنده تهاجم ماکروواسکولار تومور است و باید از ترومبوس ساده افتراق داده شود."
     },
     {
       "id": "hcc-fa-08", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
       "question": "کدام جمله درباره HCC انفیلتراتیو صحیح است؟",
-      "options": [{"id":"A","text":"می‌تواند permeative رشد کند و APHE/wash-out کلاسیک را فقط فوکال نشان دهد"},{"id":"B","text":"همیشه یک ضایعه منفرد با مرز واضح است"},{"id":"C","text":"تهاجم عروقی تقریباً هرگز رخ نمی‌دهد"},{"id":"D","text":"ضایعات ماهواره‌ای تشخیص را رد می‌کنند"}],
-      "correct": "A", "explanation": "HCC انفیلتراتیو به‌صورت نامشخص چند سگمان را درگیر می‌کند؛ enhancement کلاسیک ممکن است هتروژن یا فقط فوکال باشد و تهاجم عروقی شایع است."
+      "options": [{"id":"A","text":"می‌تواند نفوذی رشد کند و APHE/واش‌اوت کلاسیک را فقط فوکال نشان دهد"},{"id":"B","text":"همیشه یک ضایعه منفرد با مرز واضح است"},{"id":"C","text":"تهاجم عروقی تقریباً هرگز رخ نمی‌دهد"},{"id":"D","text":"ضایعات ماهواره‌ای تشخیص را رد می‌کنند"}],
+      "correct": "A", "explanation": "HCC انفیلتراتیو به‌صورت نامشخص چند سگمان را درگیر می‌کند؛ تقویت پس از تزریق کلاسیک ممکن است هتروژن یا فقط فوکال باشد و تهاجم عروقی شایع است."
     },
     {
       "id": "hcc-fa-09", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
       "question": "کدام ویژگی بیشتر به نفع HCC نسبت به FNH تیپیک است؟",
-      "options": [{"id":"A","text":"wash-out پورتال یا تأخیری"},{"id":"B","text":"APHE هموژن بدون wash-out"},{"id":"C","text":"اسکار مرکزی روشن در T2 با enhancement تأخیری"},{"id":"D","text":"الگوی spoke-wheel در داپلر"}],
-      "correct": "A", "explanation": "FNH تیپیک APHE دارد اما wash-out ندارد. Wash-out پورتال یا تأخیری در زمینه خطر مناسب ویژگی مهم HCC است."
+      "options": [{"id":"A","text":"واش‌اوت پورتال یا تأخیری"},{"id":"B","text":"APHE هموژن بدون واش‌اوت"},{"id":"C","text":"اسکار مرکزی روشن در T2 با تقویت تأخیری"},{"id":"D","text":"الگوی spoke-wheel در داپلر"}],
+      "correct": "A", "explanation": "FNH تیپیک APHE دارد اما واش‌اوت ندارد. واش‌اوت پورتال یا تأخیری در زمینه خطر مناسب ویژگی مهم HCC است."
     },
     {
       "id": "hcc-fa-10", "tags": ["hcc", "leber", "abdomen"], "fach": "abdomen",
@@ -4144,11 +4144,11 @@ export const QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "گرانولوم‌های caseating"
+          "text": "گرانولوم‌های پنیری"
         },
         {
           "id": "B",
-          "text": "گرانولوم‌های non-caseating"
+          "text": "گرانولوم‌های غیرپنیری"
         },
         {
           "id": "C",
@@ -4160,7 +4160,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "B",
-      "explanation": "سارکوئیدوز یک بیماری سیستمیک گرانولوماتوز با علت ناشناخته است. گرانولوم‌های non-caseating برای آن تیپیک هستند."
+      "explanation": "سارکوئیدوز یک بیماری سیستمیک گرانولوماتوز با علت ناشناخته است. گرانولوم‌های غیرپنیری برای آن تیپیک هستند."
     },
     {
       "id": "sarkoidose-fa-02",
@@ -4182,7 +4182,7 @@ export const QUESTION_BANK = {
         },
         {
           "id": "C",
-          "text": "فقط Honeycombing بازال ساب‌پلورال"
+          "text": "فقط نمای لانه‌زنبوری (نمای لانه‌زنبوری (Honeycombing)) بازال ساب‌پلورال"
         },
         {
           "id": "D",
@@ -4350,19 +4350,19 @@ export const QUESTION_BANK = {
         "lung"
       ],
       "fach": "thorax",
-      "question": "کدام DD معمولاً ضخیم‌شدن سپتای ندولار نامنظم و اغلب یک‌طرفه یا نامتقارن ایجاد می‌کند؟",
+      "question": "کدام تشخیص افتراقی معمولاً ضخیم‌شدن ندولار و نامنظم سپتا را به‌صورت یک‌طرفه یا نامتقارن ایجاد می‌کند؟",
       "options": [
         {
           "id": "A",
-          "text": "Lymphangiosis carcinomatosa"
+          "text": "لنفانژیوز کارسینوماتوز"
         },
         {
           "id": "B",
-          "text": "Morbus Jüngling"
+          "text": "بیماری یونگلینگ (Morbus Jüngling)"
         },
         {
           "id": "C",
-          "text": "سندرم Heerfordt"
+          "text": "سندرم هیرفوردت"
         },
         {
           "id": "D",
@@ -4414,7 +4414,7 @@ export const QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "MRI با Late Gadolinium Enhancement"
+          "text": "MRI با تقویت دیررس گادولینیوم (LGE)"
         },
         {
           "id": "B",
@@ -4430,7 +4430,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "A",
-      "explanation": "سارکوئیدوز قلبی معمولاً با MRI و Late Gadolinium Enhancement ارزیابی می‌شود. از نظر بالینی افزایش خطر آریتمی مهم است."
+      "explanation": "سارکوئیدوز قلبی معمولاً با MRI و تقویت دیررس گادولینیوم (LGE) ارزیابی می‌شود. از نظر بالینی افزایش خطر آریتمی مهم است."
     },
     {
       "id": "rotatorenmanschette-fa-01",
@@ -4523,12 +4523,12 @@ export const QUESTION_BANK = {
       "question": "ضایعه PASTA به چه معناست؟",
       "options": [
         { "id": "A", "text": "یک پارگی کامل با رتراکشن درجه ۳ بر اساس طبقه‌بندی Patte" },
-        { "id": "B", "text": "یک پارگی جزئی سمت مفصلی در Footprint (Partial Articular Surface Tendon Avulsion)" },
+        { "id": "B", "text": "پارگی جزئی سطح مفصلی تاندون در محل اتصال آن (PASTA)" },
         { "id": "C", "text": "یک بورسیت ساب‌آکرومیال ایزوله بدون درگیری تاندون" },
         { "id": "D", "text": "تاندینوپاتی سر بلند بایسپس" }
       ],
       "correct": "B",
-      "explanation": "PASTA مخفف Partial Articular Surface Tendon Avulsion است - یک پارگی جزئی سمت مفصلی فیبرهای عمقی در Footprint که اغلب با ایمپینجمنت همراه است."
+      "explanation": "PASTA مخفف Partial Articular Surface Tendon Avulsion است؛ یعنی پارگی جزئی فیبرهای عمقی تاندون از سمت مفصلی در محل اتصال تاندون (footprint) که اغلب با ایمپینجمنت همراه است."
     },
     {
       "id": "rotatorenmanschette-fa-08",
@@ -4548,15 +4548,15 @@ export const QUESTION_BANK = {
       "id": "rotatorenmanschette-fa-09",
       "tags": ["rotatorenmanschette", "schulter"],
       "fach": "msk",
-      "question": "از چه میزان درگیری Footprint، ترمیم جراحی برای ضایعه PASTA معمولاً در نظر گرفته می‌شود؟",
+      "question": "از چه میزان درگیری محل اتصال تاندون (footprint)، ترمیم جراحی برای ضایعه PASTA معمولاً در نظر گرفته می‌شود؟",
       "options": [
-        { "id": "A", "text": "درگیری Footprint بیش از ۵۰٪" },
-        { "id": "B", "text": "درگیری Footprint بیش از ۱۰٪" },
-        { "id": "C", "text": "فقط در درگیری ۱۰۰٪ Footprint" },
-        { "id": "D", "text": "میزان درگیری Footprint در تصمیم درمانی اهمیتی ندارد" }
+        { "id": "A", "text": "درگیری محل اتصال تاندون (footprint) بیش از ۵۰٪" },
+        { "id": "B", "text": "درگیری محل اتصال تاندون (footprint) بیش از ۱۰٪" },
+        { "id": "C", "text": "فقط در درگیری ۱۰۰٪ محل اتصال تاندون (footprint)" },
+        { "id": "D", "text": "میزان درگیری محل اتصال تاندون (footprint) در تصمیم درمانی اهمیتی ندارد" }
       ],
       "correct": "A",
-      "explanation": "در ضایعه PASTA، درگیری Footprint بیش از ۵۰٪ اغلب منجر به در نظر گرفتن ترمیم جراحی می‌شود، در حالی که کمتر از ۵۰٪ معمولاً با درمان محافظه‌کارانه یا دبریدمان مدیریت می‌شود."
+      "explanation": "در ضایعه PASTA، درگیری محل اتصال تاندون (footprint) بیش از ۵۰٪ اغلب منجر به در نظر گرفتن ترمیم جراحی می‌شود، در حالی که کمتر از ۵۰٪ معمولاً با درمان محافظه‌کارانه یا دبریدمان مدیریت می‌شود."
     },
     {
       "id": "rotatorenmanschette-fa-10",
@@ -4584,13 +4584,13 @@ export const QUESTION_BANK = {
         { "id": "D", "text": "درجه بورسیت ساب‌آکرومیال" }
       ],
       "correct": "B",
-      "explanation": "طبقه‌بندی Patte رتراکشن انتهای تاندون را از درجه ۱ (نزدیک Footprint) تا درجه ۳ (در سطح گلنوئید) درجه‌بندی می‌کند و برای برنامه‌ریزی جراحی تعیین‌کننده است."
+      "explanation": "طبقه‌بندی Patte رتراکشن انتهای تاندون را از درجه ۱ (نزدیک محل اتصال تاندون (footprint)) تا درجه ۳ (در سطح گلنوئید) درجه‌بندی می‌کند و برای برنامه‌ریزی جراحی تعیین‌کننده است."
     },
     {
       "id": "rotatorenmanschette-fa-12",
       "tags": ["rotatorenmanschette", "schulter"],
       "fach": "msk",
-      "question": "Tangent sign مثبت در MRI شانه به چه معناست؟",
+      "question": "علامت تانژانت مثبت در MRI شانه به چه معناست؟",
       "options": [
         { "id": "A", "text": "سر هومروس از خط فرضی بین آکرومیون و کوراکوئید عبور می‌کند - نشانه پارگی وسیع" },
         { "id": "B", "text": "تاندون سوپراسپیناتوس ساختار طبیعی دارد" },
@@ -4598,7 +4598,7 @@ export const QUESTION_BANK = {
         { "id": "D", "text": "بورس ساب‌آکرومیال ضخیم شده اما تاندون سالم است" }
       ],
       "correct": "A",
-      "explanation": "در Tangent sign، سر هومروس از خط فرضی بین آکرومیون و کوراکوئید عبور می‌کند - این نشانه یک پارگی وسیع روتاتور کاف است."
+      "explanation": "در علامت تانژانت، سر هومروس از خط فرضی بین آکرومیون و کوراکوئید عبور می‌کند - این نشانه یک پارگی وسیع روتاتور کاف است."
     },
     {
       "id": "rotatorenmanschette-fa-13",
@@ -4654,7 +4654,7 @@ export const MCQ_TOPIC_GROUPS = [
     topics: [
       { id: 'mamma-mrt-basics', title: { de: 'Mamma-MRT: Basics', en: 'Breast MRI: Basics', fa: 'MRI پستان: مبانی' } },
       { id: 'mamma-mrt-laesionscharakterisierung', title: { de: 'Mamma-MRT: Läsionscharakterisierung', en: 'Breast MRI: Lesion Characterisation', fa: 'MRI پستان: ارزیابی ضایعه' } },
-      { id: 'mamma-mrt-kaiser-score', title: { de: 'Mamma-MRT: Kaiser Score', en: 'Breast MRI: Kaiser Score', fa: 'MRI پستان: Kaiser Score' } },
+      { id: 'mamma-mrt-kaiser-score', title: { de: 'Mamma-MRT: Kaiser Score', en: 'Breast MRI: Kaiser Score', fa: "MRI پستان: امتیاز کایزر" } },
       { id: 'mammographie-grundlagen', title: { de: 'Mammographie: Grundlagen der Befundung', en: 'Mammography: Reporting Fundamentals', fa: 'ماموگرافی: مبانی گزارش‌نویسی' } },
       { id: 'mammographie-mikrokalk', title: { de: 'Mammographie: Verkalkungen', en: 'Mammography: Calcifications', fa: 'ماموگرافی: کلسیفیکاسیون‌ها' } },
     ],

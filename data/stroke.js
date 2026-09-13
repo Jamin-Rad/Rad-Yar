@@ -243,7 +243,7 @@ export const STROKE_LESSON = {
       { title: '< 6 h', text: L('CT kann unauffällig sein; Gefäß- und Parenchymfrühzeichen aktiv suchen.', 'CT may be normal; actively search for vascular and parenchymal early signs.', 'CT ممکن است طبیعی باشد؛ علائم زودرس عروقی و پارانشیمی فعالانه جستجو شوند.') },
       { title: '12–24 h', text: L('Territoriale Hypodensität und Schwellung werden deutlicher.', 'Territorial low attenuation and swelling become more conspicuous.', 'هیپودنسیتی قلمرویی و تورم واضح‌تر می‌شوند.') },
       { title: 'Tag 1–5', text: L('Ödem und Raumforderung maximal; Herniationsgefahr und hämorrhagische Transformation.', 'Oedema and mass effect peak; risk of herniation and haemorrhagic transformation.', 'ادم و اثر فضاگیر به اوج می‌رسند؛ خطر هرنیاسیون و تبدیل هموراژیک.') },
-      { title: 'Woche 2–3', text: L('Fogging-Effekt kann den Infarkt vorübergehend isodens erscheinen lassen.', 'Fogging may make the infarct temporarily isodense.', 'اثر Fogging ممکن است انفارکت را موقتاً ایزودنس نشان دهد.') },
+      { title: 'Woche 2–3', text: L('Fogging-Effekt kann den Infarkt vorübergehend isodens erscheinen lassen.', 'Fogging may make the infarct temporarily isodense.', "اثر پدیده محوشدگی (Fogging) ممکن است انفارکت را موقتاً ایزودنس نشان دهد.") },
       { title: 'Ab Woche 6', text: L('Enzephalomalazie mit liquordichtem Defekt und Ex-vacuo-Erweiterung.', 'Encephalomalacia with CSF-density tissue loss and ex-vacuo dilatation.', 'انسفالومالاسی با نقص هم‌دانسیته CSF و اتساع ex-vacuo.') },
     ],
   },
@@ -260,11 +260,11 @@ export const STROKE_LESSON = {
     ],
     mismatchTitle: L('DWI-FLAIR-Mismatch', 'DWI-FLAIR mismatch', 'عدم تطابق DWI-FLAIR'),
     mismatchText: L('Die Ischämie ist in der DWI sichtbar, aber in der FLAIR noch nicht. Der Schlaganfall ist wahrscheinlich jünger als 4,5 Stunden.', 'The ischaemia is visible on DWI but not yet on FLAIR. The stroke is probably less than 4.5 hours old.', 'ایسکمی در DWI دیده می‌شود اما هنوز در FLAIR دیده نمی‌شود؛ سکته احتمالاً کمتر از ۴٫۵ ساعت قدمت دارد.'),
-    cave: L('DWI-Hyperintensität allein beweist keine fortbestehende Restriktion: ADC prüfen, da ab etwa Tag 10 T2-shine-through auftreten kann.', 'DWI hyperintensity alone does not prove ongoing restriction: check ADC because T2 shine-through may occur from about day 10.', 'هایپراینتنس DWI به‌تنهایی محدودیت فعال را ثابت نمی‌کند؛ ADC بررسی شود زیرا از حدود روز ۱۰ T2 shine-through ممکن است رخ دهد.'),
+    cave: L('DWI-Hyperintensität allein beweist keine fortbestehende Restriktion: ADC prüfen, da ab etwa Tag 10 T2-shine-through auftreten kann.', 'DWI hyperintensity alone does not prove ongoing restriction: check ADC because T2 shine-through may occur from about day 10.', "هایپراینتنس DWI به‌تنهایی محدودیت فعال را ثابت نمی‌کند؛ ADC بررسی شود زیرا از حدود روز ۱۰ اثر عبور سیگنال T2 (shine-through) ممکن است رخ دهد."),
   },
   mriTimeline: {
     title: L('MRT-Signalverlauf', 'MRI signal evolution', 'سیر سیگنال MRI'),
-    lead: L('DWI reagiert zuerst; ADC pseudonormalisiert später, während T2/FLAIR und Enhancement länger persistieren.', 'DWI changes first; ADC later pseudonormalises while T2/FLAIR abnormality and enhancement persist longer.', 'DWI زودتر تغییر می‌کند؛ ADC بعداً شبه‌طبیعی می‌شود و تغییرات T2/FLAIR و enhancement طولانی‌تر باقی می‌مانند.'),
+    lead: L('DWI reagiert zuerst; ADC pseudonormalisiert später, während T2/FLAIR und Enhancement länger persistieren.', 'DWI changes first; ADC later pseudonormalises while T2/FLAIR abnormality and enhancement persist longer.', 'DWI زودتر تغییر می‌کند؛ ADC بعداً شبه‌طبیعی می‌شود و تغییرات T2/FLAIR و تقویت پس از تزریق طولانی‌تر باقی می‌مانند.'),
     imageAlt: L('MRT-Signalveränderungen beim ischämischen Schlaganfall im Zeitverlauf', 'Temporal MRI signal changes in ischaemic stroke', 'تغییرات زمانی سیگنال MRI در سکته ایسکمیک'),
   },
   pitfalls: {
@@ -272,10 +272,10 @@ export const STROKE_LESSON = {
     lead: L('Subakute Veränderungen können Blutung oder Tumor imitieren und verlangen die gemeinsame Bewertung aller Sequenzen und des zeitlichen Verlaufs.', 'Subacute changes may mimic haemorrhage or tumour and require combined assessment of all sequences and the timeline.', 'تغییرات تحت‌حاد ممکن است خونریزی یا تومور را تقلید کنند و نیازمند ارزیابی همزمان سکانس‌ها و سیر زمانی هستند.'),
     items: [
       { title: L('Hämorrhagische Transformation', 'Haemorrhagic transformation', 'تبدیل هموراژیک'), text: L('Kann sekundär als Einblutung eines Infarkts auftreten; in der nativen CT zeigt sie sich als hyperdense Fläche.', 'May occur secondarily as haemorrhage into an infarct and appears hyperdense on non-contrast CT.', 'ممکن است به‌صورت ثانویه به شکل خونریزی در انفارکت رخ دهد و در CT بدون کنتراست هایپردنس دیده شود.') },
-      { title: L('Fogging-Effekt', 'Fogging effect', 'اثر Fogging'), text: L('Vorübergehende Normalisierung der CT-Dichte beziehungsweise Abschwächung des T2-Signals in der subakuten Phase.', 'Temporary normalisation of CT density or attenuation of T2 abnormality in the subacute phase.', 'طبیعی‌شدن موقت دانسیته CT یا کاهش تغییرات T2 در فاز تحت‌حاد.') },
-      { title: L('Luxusperfusion', 'Luxury perfusion', 'پرفیوژن لوکس'), text: L('Hyperämie nach Reperfusion bei gestörter Autoregulation; Enhancement und erhöhtes CBF sind nicht automatisch Tumor.', 'Post-reperfusion hyperaemia from impaired autoregulation; enhancement and raised CBF do not automatically indicate tumour.', 'هایپرمی پس از بازپرفیوژن به‌دلیل اختلال اتورگولاسیون؛ enhancement و CBF بالا الزاماً تومور نیستند.') },
+      { title: L('Fogging-Effekt', 'Fogging effect', "اثر پدیده محوشدگی (Fogging)"), text: L('Vorübergehende Normalisierung der CT-Dichte beziehungsweise Abschwächung des T2-Signals in der subakuten Phase.', 'Temporary normalisation of CT density or attenuation of T2 abnormality in the subacute phase.', 'طبیعی‌شدن موقت دانسیته CT یا کاهش تغییرات T2 در فاز تحت‌حاد.') },
+      { title: L('Luxusperfusion', 'Luxury perfusion', 'پرفیوژن لوکس'), text: L('Hyperämie nach Reperfusion bei gestörter Autoregulation; Enhancement und erhöhtes CBF sind nicht automatisch Tumor.', 'Post-reperfusion hyperaemia from impaired autoregulation; enhancement and raised CBF do not automatically indicate tumour.', 'هایپرمی پس از بازپرفیوژن به‌دلیل اختلال اتورگولاسیون؛ تقویت پس از تزریق و CBF بالا الزاماً تومور نیستند.') },
     ],
-    cave: L('Kontrastmittelaufnahme und Fogging können einen Tumor imitieren. Verlauf, Klinik und DWI helfen bei der Einordnung.', 'Enhancement and fogging can mimic a tumour. Evolution, clinical findings and DWI help with interpretation.', 'جذب ماده حاجب و Fogging می‌توانند تومور را تقلید کنند؛ سیر، یافته‌های بالینی و DWI به تفسیر کمک می‌کنند.'),
+    cave: L('Kontrastmittelaufnahme und Fogging können einen Tumor imitieren. Verlauf, Klinik und DWI helfen bei der Einordnung.', 'Enhancement and fogging can mimic a tumour. Evolution, clinical findings and DWI help with interpretation.', "جذب ماده حاجب و پدیده محوشدگی (Fogging) می‌توانند تومور را تقلید کنند؛ سیر، یافته‌های بالینی و DWI به تفسیر کمک می‌کنند."),
   },
   treatment: {
     title: L('Therapiekonzepte', 'Treatment concepts', 'مفاهیم درمانی'),
@@ -306,7 +306,7 @@ export const STROKE_LESSON = {
       { title: L('NCCT kann früh normal sein', 'Early NCCT may be normal', 'NCCT اولیه ممکن است طبیعی باشد'), text: L('Klinik und Gefäßbildgebung bleiben entscheidend.', 'Clinical findings and vascular imaging remain decisive.', 'علائم بالینی و تصویربرداری عروقی تعیین‌کننده می‌مانند.') },
       { title: L('CTA lokalisiert die LVO', 'CTA localises LVO', 'CTA محل LVO را مشخص می‌کند'), text: L('Verschlusshöhe, Tandemläsion und Kollateralen beeinflussen die Therapie.', 'Occlusion level, tandem lesions and collaterals affect treatment.', 'سطح انسداد، ضایعه تاندوم و کولترال‌ها بر درمان اثر دارند.') },
       { title: L('DWI immer mit ADC', 'Always pair DWI with ADC', 'DWI همیشه همراه ADC'), text: L('Nur DWI hoch plus ADC niedrig beweist echte akute Restriktion.', 'Only high DWI with low ADC confirms true acute restriction.', 'فقط DWI بالا همراه ADC پایین محدودیت واقعی حاد را تأیید می‌کند.') },
-      { title: L('Zeitverlauf verhindert Fehler', 'Timeline prevents errors', 'سیر زمانی از خطا جلوگیری می‌کند'), text: L('Fogging, Enhancement und Shine-through sind ohne zeitlichen Kontext irreführend.', 'Fogging, enhancement and shine-through are misleading without temporal context.', 'Fogging، enhancement و shine-through بدون زمینه زمانی گمراه‌کننده‌اند.') },
+      { title: L('Zeitverlauf verhindert Fehler', 'Timeline prevents errors', 'سیر زمانی از خطا جلوگیری می‌کند'), text: L('Fogging, Enhancement und Shine-through sind ohne zeitlichen Kontext irreführend.', 'Fogging, enhancement and shine-through are misleading without temporal context.', "پدیده محوشدگی (Fogging)، تقویت پس از تزریق و اثر عبور سیگنال T2 (shine-through) بدون زمینه زمانی گمراه‌کننده‌اند.") },
       { title: L('Therapie nicht unnötig verzögern', 'Do not delay treatment unnecessarily', 'درمان را بی‌دلیل به تأخیر نیندازید'), text: L('Zusatzbildgebung gezielt einsetzen und Reperfusionskandidaten rasch erkennen.', 'Use additional imaging selectively and identify reperfusion candidates rapidly.', 'تصویربرداری تکمیلی هدفمند و شناسایی سریع کاندیدهای بازپرفیوژن.') },
     ],
   },
@@ -442,14 +442,14 @@ const QUESTION_SEEDS = [
   },
   {
     id: 'swi',
-    question: L('Welche Sequenz ist besonders wichtig zum Nachweis von Einblutung und Suszeptibilitätszeichen?', 'Which sequence is particularly important for haemorrhage and susceptibility signs?', 'کدام سکانس برای خونریزی و علائم susceptibility مهم است؟'),
+    question: L('Welche Sequenz ist besonders wichtig zum Nachweis von Einblutung und Suszeptibilitätszeichen?', 'Which sequence is particularly important for haemorrhage and susceptibility signs?', 'کدام سکانس برای خونریزی و علائم افت سیگنال حساسیت مغناطیسی مهم است؟'),
     options: [L('T1 ohne KM', 'Unenhanced T1', 'T1 بدون کنتراست'), L('T2*/SWI', 'T2*/SWI', 'T2*/SWI'), L('TOF allein', 'TOF alone', 'فقط TOF'), L('MRCP', 'MRCP', 'MRCP')],
     correct: 'B',
-    explanation: L('T2*-gewichtete und suszeptibilitätsgewichtete Sequenzen reagieren empfindlich auf Blutabbauprodukte und thrombotisches Suszeptibilitätssignal.', 'T2*-weighted and susceptibility-weighted sequences are sensitive to blood products and thrombus susceptibility.', 'T2* و SWI به محصولات خون و susceptibility ترومبوس حساس‌اند.'),
+    explanation: L('T2*-gewichtete und suszeptibilitätsgewichtete Sequenzen reagieren empfindlich auf Blutabbauprodukte und thrombotisches Suszeptibilitätssignal.', 'T2*-weighted and susceptibility-weighted sequences are sensitive to blood products and thrombus susceptibility.', 'T2* و SWI به محصولات خون و افت سیگنال حساسیت مغناطیسی ترومبوس حساس‌اند.'),
   },
   {
     id: 'fogging',
-    question: L('Was ist der Fogging-Effekt?', 'What is the fogging effect?', 'اثر Fogging چیست؟'),
+    question: L('Was ist der Fogging-Effekt?', 'What is the fogging effect?', "اثر پدیده محوشدگی (Fogging) چیست؟"),
     options: [
       L('Vorübergehende scheinbare Normalisierung eines subakuten Infarkts', 'Temporary apparent normalisation of a subacute infarct', 'طبیعی به نظر رسیدن موقت انفارکت تحت‌حاد'),
       L('Dauerhafte Verkalkung des Infarkts', 'Permanent infarct calcification', 'کلسیفیکاسیون دائمی انفارکت'),
@@ -461,7 +461,7 @@ const QUESTION_SEEDS = [
   },
   {
     id: 'shine-through',
-    question: L('Woran erkennt man T2-shine-through statt echter Restriktion?', 'How is T2 shine-through distinguished from true restriction?', 'چگونه T2 shine-through از محدودیت واقعی افتراق داده می‌شود؟'),
+    question: L('Woran erkennt man T2-shine-through statt echter Restriktion?', 'How is T2 shine-through distinguished from true restriction?', "چگونه اثر عبور سیگنال T2 (shine-through) از محدودیت واقعی افتراق داده می‌شود؟"),
     options: [
       L('DWI hell und ADC ebenfalls normal/erhöht', 'High DWI with normal or high ADC', 'DWI بالا با ADC طبیعی یا بالا'),
       L('DWI hell und ADC deutlich niedrig', 'High DWI with markedly low ADC', 'DWI بالا با ADC به‌شدت پایین'),
@@ -469,7 +469,7 @@ const QUESTION_SEEDS = [
       L('Nur durch CTA', 'Only by CTA', 'فقط با CTA'),
     ],
     correct: 'A',
-    explanation: L('Beim Shine-through bleibt DWI wegen des T2-Anteils hell, während ADC nicht mehr erniedrigt ist.', 'With shine-through DWI remains bright because of T2 contribution while ADC is no longer reduced.', 'در Shine-through، DWI به علت مؤلفه T2 روشن می‌ماند ولی ADC دیگر کاهش ندارد.'),
+    explanation: L('Beim Shine-through bleibt DWI wegen des T2-Anteils hell, während ADC nicht mehr erniedrigt ist.', 'With shine-through DWI remains bright because of T2 contribution while ADC is no longer reduced.', "در اثر عبور سیگنال T2 (shine-through)، DWI به علت مؤلفه T2 روشن می‌ماند ولی ADC دیگر کاهش ندارد."),
   },
   {
     id: 'oedema-peak',
@@ -483,7 +483,7 @@ const QUESTION_SEEDS = [
     question: L('Welche Methode erkennt kleine hämorrhagische Transformationen besonders sensitiv?', 'Which method is particularly sensitive for small haemorrhagic transformation?', 'کدام روش برای تبدیل هموراژیک کوچک حساس‌تر است؟'),
     options: [L('T2*/SWI', 'T2*/SWI', 'T2*/SWI'), L('Nur FLAIR', 'FLAIR only', 'فقط FLAIR'), L('Ultraschall', 'Ultrasound', 'سونوگرافی'), L('Röntgen Schädel', 'Skull radiograph', 'رادیوگرافی جمجمه')],
     correct: 'A',
-    explanation: L('Suszeptibilitätssequenzen zeigen auch kleine Blutprodukte als Signalverlust.', 'Susceptibility sequences demonstrate even small blood products as signal loss.', 'سکانس‌های susceptibility حتی محصولات خون کوچک را به‌صورت افت سیگنال نشان می‌دهند.'),
+    explanation: L('Suszeptibilitätssequenzen zeigen auch kleine Blutprodukte als Signalverlust.', 'Susceptibility sequences demonstrate even small blood products as signal loss.', 'سکانس‌های افت سیگنال حساسیت مغناطیسی حتی محصولات خون کوچک را به‌صورت افت سیگنال نشان می‌دهند.'),
   },
   {
     id: 'thrombolysis',
@@ -580,8 +580,8 @@ const FLASHCARD_SEEDS = [
     category: L('MRT', 'MRI', 'MRI'),
     front: L('Welche Kombination bestätigt echte akute Diffusionsrestriktion?', 'Which combination confirms true acute diffusion restriction?', 'کدام ترکیب محدودیت واقعی انتشار حاد را تأیید می‌کند؟'),
     answer: L('DWI hoch und ADC niedrig.', 'High DWI and low ADC.', 'DWI بالا و ADC پایین.'),
-    explanation: L('Akutes zytotoxisches Ödem schränkt die Wasserbewegung ein. DWI allein genügt nicht, weil auch T2-shine-through hell erscheinen kann; erst der erniedrigte ADC bestätigt die Restriktion.', 'Acute cytotoxic oedema restricts water motion. DWI alone is insufficient because T2 shine-through can also appear bright; low ADC confirms true restriction.', 'ادم سیتوتوکسیک حاد حرکت آب را محدود می‌کند. DWI به‌تنهایی کافی نیست، زیرا T2 shine-through نیز روشن است؛ ADC پایین محدودیت واقعی را تأیید می‌کند.'),
-    diagram: L('DWI ↑ + ADC ↓ → echte Restriktion\nDWI ↑ + ADC ↔/↑ → Shine-through', 'DWI ↑ + ADC ↓ → true restriction\nDWI ↑ + ADC ↔/↑ → shine-through', 'DWI ↑ + ADC ↓ → محدودیت واقعی\nDWI ↑ + ADC ↔/↑ → Shine-through'),
+    explanation: L('Akutes zytotoxisches Ödem schränkt die Wasserbewegung ein. DWI allein genügt nicht, weil auch T2-shine-through hell erscheinen kann; erst der erniedrigte ADC bestätigt die Restriktion.', 'Acute cytotoxic oedema restricts water motion. DWI alone is insufficient because T2 shine-through can also appear bright; low ADC confirms true restriction.', "ادم سیتوتوکسیک حاد حرکت آب را محدود می‌کند. DWI به‌تنهایی کافی نیست، زیرا اثر عبور سیگنال T2 (shine-through) نیز روشن است؛ ADC پایین محدودیت واقعی را تأیید می‌کند."),
+    diagram: L('DWI ↑ + ADC ↓ → echte Restriktion\nDWI ↑ + ADC ↔/↑ → Shine-through', 'DWI ↑ + ADC ↓ → true restriction\nDWI ↑ + ADC ↔/↑ → shine-through', "DWI ↑ + ADC ↓ → محدودیت واقعی\nDWI ↑ + ADC ↔/↑ → اثر عبور سیگنال T2 (shine-through)"),
   },
   {
     category: L('MRT', 'MRI', 'MRI'),
@@ -593,8 +593,8 @@ const FLASHCARD_SEEDS = [
   {
     category: L('MRT', 'MRI', 'MRI'),
     front: L('Wozu dienen T2*/SWI im Schlaganfallprotokoll?', 'Why are T2*/SWI included in a stroke protocol?', 'کاربرد T2*/SWI در پروتکل سکته چیست؟'),
-    answer: L('Zum Nachweis von Blutung und Suszeptibilitätszeichen.', 'To detect haemorrhage and susceptibility signs.', 'برای تشخیص خونریزی و علائم susceptibility.'),
-    explanation: L('Blutprodukte, Mikroblutungen und ein thrombotisches Suszeptibilitätszeichen führen zu Signalverlust. Die Sequenzen helfen damit beim Blutungsausschluss und bei der Erkennung hämorrhagischer Transformationen.', 'Blood products, microbleeds and thrombus susceptibility cause signal loss. These sequences help exclude haemorrhage and detect haemorrhagic transformation.', 'محصولات خون، میکروبلید و susceptibility ترومبوس باعث افت سیگنال می‌شوند. این سکانس‌ها به رد خونریزی و تشخیص تبدیل هموراژیک کمک می‌کنند.'),
+    answer: L('Zum Nachweis von Blutung und Suszeptibilitätszeichen.', 'To detect haemorrhage and susceptibility signs.', 'برای تشخیص خونریزی و علائم افت سیگنال حساسیت مغناطیسی.'),
+    explanation: L('Blutprodukte, Mikroblutungen und ein thrombotisches Suszeptibilitätszeichen führen zu Signalverlust. Die Sequenzen helfen damit beim Blutungsausschluss und bei der Erkennung hämorrhagischer Transformationen.', 'Blood products, microbleeds and thrombus susceptibility cause signal loss. These sequences help exclude haemorrhage and detect haemorrhagic transformation.', 'محصولات خون، میکروبلید و افت سیگنال حساسیت مغناطیسی ترومبوس باعث افت سیگنال می‌شوند. این سکانس‌ها به رد خونریزی و تشخیص تبدیل هموراژیک کمک می‌کنند.'),
   },
   {
     category: L('Zeitverlauf', 'Timeline', 'سیر زمانی'),
@@ -604,22 +604,22 @@ const FLASHCARD_SEEDS = [
   },
   {
     category: L('Zeitverlauf', 'Timeline', 'سیر زمانی'),
-    front: L('Was ist der Fogging-Effekt?', 'What is the fogging effect?', 'اثر Fogging چیست؟'),
+    front: L('Was ist der Fogging-Effekt?', 'What is the fogging effect?', "اثر پدیده محوشدگی (Fogging) چیست؟"),
     answer: L('Vorübergehende scheinbare Normalisierung eines subakuten Infarkts.', 'Temporary apparent normalisation of a subacute infarct.', 'طبیعی به نظر رسیدن موقت انفارکت تحت‌حاد.'),
     explanation: L('Meist in der zweiten bis dritten Woche wird der Infarkt in der CT vorübergehend isodens und kann übersehen werden. Voraufnahmen, Klinik und gegebenenfalls MRT verhindern die Fehlinterpretation.', 'Usually during weeks 2–3, the infarct may become temporarily isodense on CT and be overlooked. Prior imaging, clinical context and MRI help prevent misinterpretation.', 'معمولاً در هفته دوم تا سوم انفارکت در CT موقتاً ایزودنس می‌شود و ممکن است دیده نشود. تصاویر قبلی، زمینه بالینی و MRI از تفسیر اشتباه جلوگیری می‌کنند.'),
     diagram: L('akut → hypodens\nWoche 2–3 → scheinbar isodens\nchronisch → Enzephalomalazie', 'acute → hypoattenuating\nweeks 2–3 → apparently isodense\nchronic → encephalomalacia', 'حاد → هیپودنس\nهفته ۲–۳ → ظاهراً ایزودنس\nمزمن → انسفالومالاسی'),
   },
   {
     category: L('Zeitverlauf', 'Timeline', 'سیر زمانی'),
-    front: L('Wie unterscheidet man T2-shine-through von echter Restriktion?', 'How is T2 shine-through distinguished from true restriction?', 'چگونه T2 shine-through از محدودیت واقعی افتراق داده می‌شود؟'),
-    answer: L('ADC prüfen: beim Shine-through ist er normal oder erhöht.', 'Check ADC: it is normal or high in shine-through.', 'ADC را بررسی کنید: در Shine-through طبیعی یا بالا است.'),
-    explanation: L('DWI kann durch seinen T2-Anteil noch lange hyperintens bleiben, obwohl keine aktive Restriktion mehr besteht. Ein niedriger ADC spricht für echte Restriktion, ein pseudonormaler oder hoher ADC für Shine-through.', 'DWI may remain bright because of its T2 component even after restriction has resolved. Low ADC indicates true restriction; pseudonormal or high ADC indicates shine-through.', 'DWI به علت مؤلفه T2 ممکن است پس از رفع محدودیت نیز روشن بماند. ADC پایین نشان‌دهنده محدودیت واقعی و ADC شبه‌طبیعی یا بالا نشان‌دهنده Shine-through است.'),
-    diagram: L('echte Restriktion → DWI ↑ / ADC ↓\nShine-through → DWI ↑ / ADC ↔ oder ↑', 'true restriction → DWI ↑ / ADC ↓\nshine-through → DWI ↑ / ADC ↔ or ↑', 'محدودیت واقعی → DWI ↑ / ADC ↓\nShine-through → DWI ↑ / ADC ↔ یا ↑'),
+    front: L('Wie unterscheidet man T2-shine-through von echter Restriktion?', 'How is T2 shine-through distinguished from true restriction?', "چگونه اثر عبور سیگنال T2 (shine-through) از محدودیت واقعی افتراق داده می‌شود؟"),
+    answer: L('ADC prüfen: beim Shine-through ist er normal oder erhöht.', 'Check ADC: it is normal or high in shine-through.', "ADC را بررسی کنید: در اثر عبور سیگنال T2 (shine-through) طبیعی یا بالا است."),
+    explanation: L('DWI kann durch seinen T2-Anteil noch lange hyperintens bleiben, obwohl keine aktive Restriktion mehr besteht. Ein niedriger ADC spricht für echte Restriktion, ein pseudonormaler oder hoher ADC für Shine-through.', 'DWI may remain bright because of its T2 component even after restriction has resolved. Low ADC indicates true restriction; pseudonormal or high ADC indicates shine-through.', "DWI به علت مؤلفه T2 ممکن است پس از رفع محدودیت نیز روشن بماند. ADC پایین نشان‌دهنده محدودیت واقعی و ADC شبه‌طبیعی یا بالا نشان‌دهنده اثر عبور سیگنال T2 (shine-through) است."),
+    diagram: L('echte Restriktion → DWI ↑ / ADC ↓\nShine-through → DWI ↑ / ADC ↔ oder ↑', 'true restriction → DWI ↑ / ADC ↓\nshine-through → DWI ↑ / ADC ↔ or ↑', "محدودیت واقعی → DWI ↑ / ADC ↓\nاثر عبور سیگنال T2 (shine-through) → DWI ↑ / ADC ↔ یا ↑"),
   },
   {
     category: L('Komplikationen', 'Complications', 'عوارض'),
     front: L('Wie zeigt sich eine hämorrhagische Transformation?', 'How does haemorrhagic transformation appear?', 'تبدیل هموراژیک چگونه دیده می‌شود؟'),
-    answer: L('Hyperdens in der NCCT, suszeptibel in T2*/SWI.', 'Hyperdense on NCCT and susceptible on T2*/SWI.', 'در NCCT هایپردنس و در T2*/SWI دارای susceptibility.'),
+    answer: L('Hyperdens in der NCCT, suszeptibel in T2*/SWI.', 'Hyperdense on NCCT and susceptible on T2*/SWI.', 'در NCCT هایپردنس و در T2*/SWI دارای افت سیگنال حساسیت مغناطیسی.'),
     explanation: L('Das Spektrum reicht von petechialen Einblutungen bis zum raumfordernden Parenchymhämatom. T2*/SWI ist besonders empfindlich für kleine Blutprodukte; die klinische Relevanz hängt von Typ und Raumforderung ab.', 'The spectrum ranges from petechial haemorrhage to space-occupying parenchymal haematoma. T2*/SWI is particularly sensitive to small blood products; clinical significance depends on type and mass effect.', 'طیف از خونریزی پتشیال تا هماتوم پارانشیمی فضاگیر است. T2*/SWI برای محصولات خون کوچک حساس است و اهمیت بالینی به نوع و اثر فضاگیر بستگی دارد.'),
   },
   {
