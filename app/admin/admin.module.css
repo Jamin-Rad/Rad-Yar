@@ -409,6 +409,15 @@
 .kaiserMetrics span { color: #64858a; }
 .kaiserMetrics > div { border-color: rgba(5,126,140,.12); }
 .kaiserNote { margin: 13px 0 0; color: #759095; font-size: 9px; line-height: 1.55; }
+.breakdownGrid { margin-top: 14px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.analyticsBreakdown { padding: 16px; border: 1px solid rgba(111,59,181,.12); border-radius: 14px; background: rgba(255,255,255,.66); }
+.analyticsBreakdown h3 { margin: 0 0 12px; color: #392452; font-size: 12px; }
+.analyticsBreakdown > p { margin: 0; color: #8c8195; font-size: 10px; }
+.breakdownRow { display: grid; grid-template-columns: minmax(105px, 1fr) minmax(70px, 2px) 28px; align-items: center; gap: 9px; margin-top: 8px; }
+.breakdownRow > span { overflow: hidden; color: #6f6279; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.breakdownRow > i { height: 6px; overflow: hidden; border-radius: 999px; background: #ebe5f1; }
+.breakdownRow > i > b { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #7440b6, #b98aff); }
+.breakdownRow > strong { color: #442665; font-size: 11px; text-align: end; }
 
 .budgetHero {
   display: flex;
@@ -1712,6 +1721,7 @@
   .nodeRadsChannels { grid-template-columns: 1fr; }
   .nodeRadsChannels > div { border-inline-end: 0; border-bottom: 1px solid #e4dced; }
   .nodeRadsChannels > div:last-child { border-bottom: 0; }
+  .breakdownGrid { grid-template-columns: 1fr; }
 
   .budgetHero {
     flex-direction: column;
@@ -4387,6 +4397,12 @@
 :global(html[data-theme='dark']) .kaiserMetrics span,
 :global(html[data-theme='dark']) .kaiserNote { color: var(--text-muted); }
 :global(html[data-theme='dark']) .kaiserMetrics > div { border-color: var(--border); background: var(--bg-soft); }
+:global(html[data-theme='dark']) .analyticsBreakdown { border-color: var(--border); background: var(--bg-soft); }
+:global(html[data-theme='dark']) .analyticsBreakdown h3,
+:global(html[data-theme='dark']) .breakdownRow > strong { color: var(--text); }
+:global(html[data-theme='dark']) .analyticsBreakdown > p,
+:global(html[data-theme='dark']) .breakdownRow > span { color: var(--text-muted); }
+:global(html[data-theme='dark']) .breakdownRow > i { background: rgba(255,255,255,.09); }
 
 /* Budget panels */
 :global(html[data-theme='dark']) .budgetPanel {

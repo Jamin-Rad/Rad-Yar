@@ -63,88 +63,70 @@ function RegistrationChart({ users }) {
   )
 }
 
-const EMPTY_TOOL_USAGE = { views: 0, visitors: 0, activeSeconds: 0 }
+const EMPTY_TOOL_USAGE = { views: 0, visitors: 0, sessions: 0, starts: 0, completions: 0, repeatUses: 0, completionRate: 0, usesPerVisitor: 0, restarts: 0, recommendOpens: 0, whatsappClicks: 0, copyLinks: 0, activeSeconds: 0, sources: [], countries: [] }
 
-function NodeRadsAnalytics({ days, usage }) {
-  const [period, setPeriod] = useState(30)
-  const metrics = useMemo(() => {
-    const since = new Date()
-    since.setHours(0, 0, 0, 0)
-    since.setDate(since.getDate() - period + 1)
-    const visibleDays = days.filter(row => new Date(`${row.day}T00:00:00`) >= since)
-    const totals = visibleDays.reduce((sum, row) => ({
-      recommendOpens: sum.recommendOpens + Number(row.recommendOpens || 0),
-      whatsappClicks: sum.whatsappClicks + Number(row.whatsappClicks || 0),
-      copyLinks: sum.copyLinks + Number(row.copyLinks || 0),
-      referralWhatsapp: sum.referralWhatsapp + Number(row.referralWhatsapp || 0),
-      referralCopy: sum.referralCopy + Number(row.referralCopy || 0),
-      referralQr: sum.referralQr + Number(row.referralQr || 0),
-    }), { recommendOpens: 0, whatsappClicks: 0, copyLinks: 0, referralWhatsapp: 0, referralCopy: 0, referralQr: 0 })
-    const recommendations = totals.whatsappClicks + totals.copyLinks
-    const referredVisits = totals.referralWhatsapp + totals.referralCopy + totals.referralQr
-    const periodUsage = usage?.[period] || EMPTY_TOOL_USAGE
-    return {
-      ...totals,
-      ...periodUsage,
-      recommendations,
-      referredVisits,
-      recommendationRate: periodUsage.views ? (recommendations / periodUsage.views * 100).toFixed(1) : '0,0',
-    }
-  }, [days, period, usage])
-
-  return (
-    <section className={styles.nodeRadsAnalytics}>
-      <div className={styles.nodeRadsHeader}>
-        <div className={styles.nodeRadsIdentity}>
-          <span>N</span>
-          <div><h2>Node-RADS Analytics</h2><p>Anonyme, einwilligungsbasierte Weiterempfehlungen</p></div>
-        </div>
-        <div className={styles.periodPicker} aria-label="Auswertungszeitraum">
-          {[7, 30, 90].map(value => <button type="button" key={value} onClick={() => setPeriod(value)} className={period === value ? styles.periodActive : ''}>{value} Tage</button>)}
-        </div>
-      </div>
-      <div className={styles.nodeRadsMetrics}>
-        <div><strong>{metrics.views}</strong><span>Nutzungen</span></div>
-        <div><strong>ca. {metrics.visitors}</strong><span>Nutzer</span></div>
-        <div><strong>{formatDuration(metrics.activeSeconds)}</strong><span>Aktive Nutzungszeit</span></div>
-        <div><strong>{metrics.recommendOpens}</strong><span>Weiterempfehlen geöffnet</span></div>
-        <div><strong>{metrics.recommendations}</strong><span>Empfehlungsaktionen</span></div>
-        <div><strong>{metrics.referredVisits}</strong><span>Besuche durch Empfehlungen</span></div>
-        <div><strong>{metrics.recommendationRate.replace('.', ',')} %</strong><span>Empfehlungsrate</span></div>
-      </div>
-      <div className={styles.nodeRadsChannels}>
-        <div><span>WhatsApp angeklickt</span><strong>{metrics.whatsappClicks}</strong></div>
-        <div><span>Link kopiert</span><strong>{metrics.copyLinks}</strong></div>
-        <div><span>Besuche über WhatsApp</span><strong>{metrics.referralWhatsapp}</strong></div>
-        <div><span>Besuche über kopierte Links</span><strong>{metrics.referralCopy}</strong></div>
-        <div><span>QR-Code-Scans</span><strong>{metrics.referralQr}</strong></div>
-      </div>
-      <p className={styles.nodeRadsNote}>Nutzungen entsprechen Seitenaufrufen; „ca. Nutzer“ basiert auf eindeutigen anonymen Browser-IDs. Erfasst werden nur Besuche mit Analytics-Einwilligung. Eine Empfehlungsaktion bedeutet Klick auf WhatsApp oder erfolgreiches Kopieren des Links.</p>
-    </section>
-  )
+function sourceLabel(value) {
+  if (value === 'direct') return 'Direkt / unbekannt'
+  if (value === 'internal') return 'Innerhalb RadYar'
+  if (value === 'whatsapp') return 'WhatsApp'
+  if (value === 'copy') return 'Kopierter Link'
+  if (value === 'qr') return 'QR-Code'
+  return value
 }
 
-function KaiserAnalytics({ usage }) {
+function countryLabel(value) {
+  if (!value || value === 'unknown') return 'Unbekannt'
+  try { return new Intl.DisplayNames(['de'], { type: 'region' }).of(value) || value } catch { return value }
+}
+
+function Breakdown({ title, rows, label }) {
+  const total = rows.reduce((sum, row) => sum + row.count, 0) || 1
+  return <div className={styles.analyticsBreakdown}>
+    <h3>{title}</h3>
+    {rows.length ? rows.map(row => <div key={row.key} className={styles.breakdownRow}>
+      <span>{label(row.key)}</span><i><b style={{ width: `${row.count / total * 100}%` }}/></i><strong>{row.count}</strong>
+    </div>) : <p>Noch keine Daten</p>}
+  </div>
+}
+
+function CalculatorAnalytics({ kind, title, usage }) {
   const [period, setPeriod] = useState(30)
   const metrics = usage?.[period] || EMPTY_TOOL_USAGE
+  const isKaiser = kind === 'kaiser'
 
   return (
-    <section className={styles.kaiserAnalytics}>
+    <section className={isKaiser ? styles.kaiserAnalytics : styles.nodeRadsAnalytics}>
       <div className={styles.nodeRadsHeader}>
-        <div className={styles.kaiserIdentity}>
-          <span>K</span>
-          <div><h2>Kaiser Score Analytics</h2><p>Anonyme, einwilligungsbasierte Rechnernutzung</p></div>
+        <div className={isKaiser ? styles.kaiserIdentity : styles.nodeRadsIdentity}>
+          <span>{isKaiser ? 'K' : 'N'}</span>
+          <div><h2>{title} Analytics</h2><p>Rechnernutzung, Herkunft und Länder</p></div>
         </div>
-        <div className={`${styles.periodPicker} ${styles.kaiserPeriodPicker}`} aria-label="Auswertungszeitraum Kaiser Score">
+        <div className={`${styles.periodPicker} ${isKaiser ? styles.kaiserPeriodPicker : ''}`} aria-label={`Auswertungszeitraum ${title}`}>
           {[7, 30, 90].map(value => <button type="button" key={value} onClick={() => setPeriod(value)} className={period === value ? styles.periodActive : ''}>{value} Tage</button>)}
         </div>
       </div>
-      <div className={`${styles.nodeRadsMetrics} ${styles.kaiserMetrics}`}>
-        <div><strong>{metrics.views}</strong><span>Nutzungen</span></div>
-        <div><strong>ca. {metrics.visitors}</strong><span>Nutzer</span></div>
+      <div className={`${styles.nodeRadsMetrics} ${isKaiser ? styles.kaiserMetrics : ''}`}>
+        <div><strong>{metrics.completions}</strong><span>Abgeschlossene Berechnungen</span></div>
+        <div><strong>{metrics.visitors}</strong><span>Eindeutige Besucher</span></div>
+        <div><strong>{metrics.views}</strong><span>Seitenaufrufe</span></div>
+        <div><strong>{metrics.starts}</strong><span>Begonnene Berechnungen</span></div>
+        <div><strong>{metrics.repeatUses}</strong><span>Wiederholte Nutzungen</span></div>
+        <div><strong>{metrics.usesPerVisitor.toLocaleString('de-DE')}</strong><span>Berechnungen pro Besucher</span></div>
+        <div><strong>{metrics.completionRate} %</strong><span>Abschlussquote</span></div>
         <div><strong>{formatDuration(metrics.activeSeconds)}</strong><span>Aktive Nutzungszeit</span></div>
       </div>
-      <p className={styles.kaiserNote}>Nutzungen entsprechen Seitenaufrufen; „ca. Nutzer“ basiert auf eindeutigen anonymen Browser-IDs. Erfasst werden nur Besuche mit Analytics-Einwilligung.</p>
+      <div className={styles.nodeRadsChannels}>
+        <div><span>Sessions</span><strong>{metrics.sessions}</strong></div>
+        <div><span>Neustarts</span><strong>{metrics.restarts}</strong></div>
+        <div><span>Teilen geöffnet</span><strong>{metrics.recommendOpens}</strong></div>
+        <div><span>WhatsApp</span><strong>{metrics.whatsappClicks}</strong></div>
+        <div><span>Link kopiert</span><strong>{metrics.copyLinks}</strong></div>
+      </div>
+      <div className={styles.breakdownGrid}>
+        <Breakdown title="Woher kamen die Besucher?" rows={metrics.sources || []} label={sourceLabel}/>
+        <Breakdown title="Aus welchen Ländern?" rows={metrics.countries || []} label={countryLabel}/>
+      </div>
+      <p className={isKaiser ? styles.kaiserNote : styles.nodeRadsNote}>Anonyme Browser- und Session-IDs werden nur nach Analytics-Einwilligung erfasst. Länder basieren auf dem vom Hosting-Anbieter bereitgestellten ISO-Ländercode; IP-Adressen und vollständige Referrer-URLs werden nicht gespeichert.</p>
     </section>
   )
 }
@@ -346,8 +328,8 @@ export default function AdminDashboard() {
           )}
         </div>
 
-        <NodeRadsAnalytics days={analytics.nodeRads || []} usage={analytics.toolUsage?.nodeRads} />
-        <KaiserAnalytics usage={analytics.toolUsage?.kaiser} />
+        <CalculatorAnalytics kind="node" title="Node-RADS" usage={analytics.toolUsage?.nodeRads} />
+        <CalculatorAnalytics kind="kaiser" title="Kaiser Score" usage={analytics.toolUsage?.kaiser} />
 
         {/* Registrierungs-Chart */}
         <RegistrationChart users={users} />

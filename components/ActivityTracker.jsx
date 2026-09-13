@@ -8,18 +8,7 @@ import { getActivityCategory } from '@/utils/activityCategory'
 import { syncLocalProgressToServer } from '@/utils/syncProgressToServer'
 import { flushPendingProgress } from '@/utils/progressSync'
 import { PRIVACY_CHOICE_EVENT, readPrivacyChoice } from '@/components/LegalNotice'
-
-const VISITOR_KEY = 'radyar_visitor_id'
-const SESSION_KEY = 'radyar_analytics_session'
-
-function getVisitorId() {
-  let visitorId = localStorage.getItem(VISITOR_KEY)
-  if (!visitorId) {
-    visitorId = `rv_${crypto.randomUUID().replaceAll('-', '')}`
-    localStorage.setItem(VISITOR_KEY, visitorId)
-  }
-  return visitorId
-}
+import { getAnalyticsSessionId, getAnalyticsVisitorId } from '@/utils/calculatorAnalytics'
 
 function sendActivity(payload) {
   if (readPrivacyChoice()?.analytics !== true) return
@@ -47,9 +36,9 @@ export default function ActivityTracker() {
     if (!isLoaded || !analyticsEnabled) return
     const userId = user?.id || null
     const activityCategory = getActivityCategory(pathname)
-    const visitorId = getVisitorId()
-    const isNewSession = !sessionStorage.getItem(SESSION_KEY)
-    if (isNewSession) sessionStorage.setItem(SESSION_KEY, '1')
+    const visitorId = getAnalyticsVisitorId()
+    const isNewSession = !sessionStorage.getItem('radyar_analytics_session')
+    getAnalyticsSessionId()
     if (userId) {
       registerVisit(userId)
       flushPendingProgress().finally(() => {

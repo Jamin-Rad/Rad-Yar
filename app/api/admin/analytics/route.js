@@ -3,6 +3,18 @@ import { requireAdmin } from '@/lib/adminAuth'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 
 const DAY_MS = 24 * 60 * 60 * 1000
+const PAGE_SIZE = 1000
+
+async function fetchAll(makeQuery, maxRows) {
+  const rows = []
+  for (let from = 0; from < maxRows; from += PAGE_SIZE) {
+    const { data, error } = await makeQuery().range(from, Math.min(from + PAGE_SIZE - 1, maxRows - 1))
+    if (error) return { data: rows, error }
+    rows.push(...(data || []))
+    if (!data || data.length < PAGE_SIZE) break
+  }
+  return { data: rows, error: null }
+}
 
 export async function GET() {
   const admin = await requireAdmin()
@@ -21,14 +33,19 @@ export async function GET() {
     { data: daily, error: dailyError },
     { data: pages, error: pagesError },
     { data: nodeRadsEvents, error: nodeRadsError },
+    { data: calculatorEvents, error: calculatorError },
+    { data: fallbackEvents, error: fallbackError },
   ] = await Promise.all([
-    supabaseAdmin.from('analytics_daily').select('*').gte('day', since).limit(20000),
-    supabaseAdmin.from('analytics_pages').select('*').gte('day', since).not('path', 'like', '/node-rads/event/%').limit(30000),
-    supabaseAdmin.from('analytics_pages').select('day,path,views').gte('day', since).like('path', '/node-rads/event/%').limit(30000),
+    fetchAll(() => supabaseAdmin.from('analytics_daily').select('*').gte('day', since).order('day'), 20000),
+    fetchAll(() => supabaseAdmin.from('analytics_pages').select('*').gte('day', since).not('path', 'like', '/node-rads/event/%').not('path', 'like', '/calculator-event/%').order('day'), 30000),
+    fetchAll(() => supabaseAdmin.from('analytics_pages').select('day,path,views').gte('day', since).like('path', '/node-rads/event/%').order('day'), 30000),
+    fetchAll(() => supabaseAdmin.from('analytics_calculator_events').select('visitor_id,session_id,tool,event,source,country_code,occurred_at').gte('occurred_at', `${since}T00:00:00.000Z`).order('occurred_at'), 50000),
+    fetchAll(() => supabaseAdmin.from('analytics_pages').select('visitor_id,path,day').gte('day', since).like('path', '/calculator-event/%').order('day'), 50000),
   ])
 
-  if (dailyError || pagesError || nodeRadsError) {
-    const message = dailyError?.message || pagesError?.message || nodeRadsError?.message || 'Analytics nicht verfügbar'
+  const calculatorTableMissing = calculatorError?.code === '42P01' || calculatorError?.code === 'PGRST205'
+  if (dailyError || pagesError || nodeRadsError || fallbackError || (calculatorError && !calculatorTableMissing)) {
+    const message = dailyError?.message || pagesError?.message || nodeRadsError?.message || fallbackError?.message || calculatorError?.message || 'Analytics nicht verfügbar'
     console.error('Admin-Analytics-Fehler:', message)
     return NextResponse.json(
       { error: 'Die Analytics-Datenbank ist noch nicht eingerichtet.' },
@@ -120,18 +137,61 @@ export async function GET() {
     .slice(0, 20)
 
   const nodeRads = [...nodeRadsDays.values()].sort((a, b) => a.day.localeCompare(b.day))
+  const databaseTool = { nodeRads: 'node-rads', kaiser: 'kaiser-score' }
+  const normalizedFallbackEvents = (fallbackEvents || []).flatMap(row => {
+    const [, prefix, tool, event, source, countryCode, sessionId] = row.path.split('/')
+    return prefix === 'calculator-event' ? [{
+      visitor_id: row.visitor_id, session_id: sessionId, tool, event, source,
+      country_code: countryCode === 'unknown' ? null : countryCode,
+      occurred_at: `${row.day}T12:00:00.000Z`,
+    }] : []
+  })
+  const allCalculatorEvents = [...(calculatorEvents || []), ...normalizedFallbackEvents]
   const toolUsage = Object.fromEntries(Object.entries(toolRows).map(([tool, rows]) => [tool,
     Object.fromEntries([7, 30, 90].map(period => {
       const periodStart = new Date(Date.now() - (period - 1) * DAY_MS).toISOString().slice(0, 10)
-      const visitors = new Set()
-      const summary = rows.reduce((result, row) => {
+      const legacyVisitors = new Set()
+      const legacy = rows.reduce((result, row) => {
         if (row.day < periodStart) return result
         result.views += Number(row.views || 0)
         result.activeSeconds += Number(row.active_seconds || 0)
-        if (row.visitor_id) visitors.add(row.visitor_id)
+        if (row.visitor_id) legacyVisitors.add(row.visitor_id)
         return result
       }, { views: 0, activeSeconds: 0 })
-      return [period, { ...summary, visitors: visitors.size }]
+      const events = allCalculatorEvents.filter(row => row.tool === databaseTool[tool] && row.occurred_at.slice(0, 10) >= periodStart)
+      const views = events.filter(row => row.event === 'view')
+      const completed = events.filter(row => row.event === 'complete')
+      const countBy = (items, field, fallback) => {
+        const counts = new Map()
+        for (const item of items) {
+          const key = item[field] || fallback
+          counts.set(key, (counts.get(key) || 0) + 1)
+        }
+        return [...counts.entries()].map(([key, count]) => ({ key, count })).sort((a, b) => b.count - a.count).slice(0, 10)
+      }
+      const eventVisitors = new Set(views.map(row => row.visitor_id))
+      const completedVisitors = new Set(completed.map(row => row.visitor_id))
+      const sessions = new Set(views.map(row => row.session_id))
+      const eventCount = event => events.filter(row => row.event === event).length
+      const pageViews = views.length || legacy.views
+      const visitors = eventVisitors.size || legacyVisitors.size
+      return [period, {
+        views: pageViews,
+        visitors,
+        sessions: sessions.size,
+        starts: eventCount('start'),
+        completions: completed.length,
+        repeatUses: Math.max(0, completed.length - completedVisitors.size),
+        completionRate: eventCount('start') ? Math.round(completed.length / eventCount('start') * 100) : 0,
+        usesPerVisitor: visitors ? Number((completed.length / visitors).toFixed(1)) : 0,
+        restarts: eventCount('restart'),
+        recommendOpens: eventCount('recommend_open'),
+        whatsappClicks: eventCount('whatsapp_click'),
+        copyLinks: eventCount('copy_link'),
+        activeSeconds: legacy.activeSeconds,
+        sources: countBy(views, 'source', 'direct'),
+        countries: countBy(views, 'country_code', 'unknown'),
+      }]
     }))
   ]))
 

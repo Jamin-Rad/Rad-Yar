@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { QRCodeSVG } from 'qrcode.react'
 import { useLanguage } from '@/providers/LanguageProvider'
-import { PRIVACY_CHOICE_EVENT, readPrivacyChoice } from '@/components/LegalNotice'
+import { useCalculatorAnalytics } from '@/hooks/useCalculatorAnalytics'
 import styles from './page.module.css'
 
 const NODE_RADS_URL = 'https://www.rad-yar.com/node-rads'
@@ -13,18 +13,6 @@ const NODE_RADS_SHARE_URLS = {
   copy: `${NODE_RADS_URL}?ref=copy`,
   qr: `${NODE_RADS_URL}?ref=qr`,
 }
-const REFERRAL_CHANNELS = new Set(Object.keys(NODE_RADS_SHARE_URLS))
-
-function trackNodeRadsEvent(event, channel) {
-  if (readPrivacyChoice()?.analytics !== true) return
-  fetch('/api/analytics/node-rads', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ event, channel }),
-    keepalive: true,
-  }).catch(() => {})
-}
-
 const REGION_GROUPS = [
   { id: 'general', threshold: 10, icon: 'body' },
   { id: 'specific', threshold: null, icon: 'target' },
@@ -231,7 +219,7 @@ function ConfigStep({ texture, setTexture, border, setBorder, shape, setShape, u
   </div>
 }
 
-function ResultStep({ score, sizeCategory, configScore, shortAxis, longAxis, growth, texture, border, shape, ui, copied, setCopied }) {
+function ResultStep({ score, sizeCategory, configScore, shortAxis, longAxis, growth, texture, border, shape, ui, copied, setCopied, track }) {
   const [shareOpen, setShareOpen] = useState(false)
   const [linkCopied, setLinkCopied] = useState(false)
   const color = RESULT_COLORS[score - 1]
@@ -260,7 +248,7 @@ function ResultStep({ score, sizeCategory, configScore, shortAxis, longAxis, gro
   const copyLink = async () => {
     try {
       await navigator.clipboard.writeText(NODE_RADS_SHARE_URLS.copy)
-      trackNodeRadsEvent('copy_link')
+      track('copy_link')
       setLinkCopied(true)
       window.setTimeout(() => setLinkCopied(false), 1800)
     } catch {
@@ -268,7 +256,7 @@ function ResultStep({ score, sizeCategory, configScore, shortAxis, longAxis, gro
     }
   }
   const toggleShare = () => {
-    if (!shareOpen) trackNodeRadsEvent('recommend_open')
+    if (!shareOpen) track('recommend_open')
     setShareOpen(value => !value)
   }
   const whatsAppText = encodeURIComponent(`Node-RADS\n${NODE_RADS_SHARE_URLS.whatsapp}`)
@@ -300,7 +288,7 @@ function ResultStep({ score, sizeCategory, configScore, shortAxis, longAxis, gro
             <span>{ui.scanLabel}</span>
             <strong>rad-yar.com/node-rads</strong>
             <div className={styles.shareActions}>
-              <a href={`https://wa.me/?text=${whatsAppText}`} target="_blank" rel="noreferrer" onClick={() => trackNodeRadsEvent('whatsapp_click')}><WhatsAppIcon/>{ui.whatsapp}</a>
+              <a href={`https://wa.me/?text=${whatsAppText}`} target="_blank" rel="noreferrer" onClick={() => track('whatsapp_click')}><WhatsAppIcon/>{ui.whatsapp}</a>
               <button type="button" onClick={copyLink}><span>{linkCopied ? '✓' : '⧉'}</span>{linkCopied ? ui.linkCopied : ui.copyLink}</button>
             </div>
           </div>
@@ -341,25 +329,12 @@ export default function NodeRadsPage() {
   const [shape, setShape] = useState(null)
   const [error, setError] = useState('')
   const [copied, setCopied] = useState(false)
+  const analytics = useCalculatorAnalytics('node-rads')
 
   useEffect(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' })
   }, [step])
-
-  useEffect(() => {
-    const recordReferral = () => {
-      const channel = new URLSearchParams(window.location.search).get('ref')
-      if (!REFERRAL_CHANNELS.has(channel) || readPrivacyChoice()?.analytics !== true) return
-      const sessionKey = `node_rads_referral_${channel}`
-      if (window.sessionStorage.getItem(sessionKey)) return
-      window.sessionStorage.setItem(sessionKey, '1')
-      trackNodeRadsEvent('referral_visit', channel)
-    }
-    recordReferral()
-    window.addEventListener(PRIVACY_CHOICE_EVENT, recordReferral)
-    return () => window.removeEventListener(PRIVACY_CHOICE_EVENT, recordReferral)
-  }, [])
 
   const special = SPECIAL_REGIONS.find(item => item.id === specialRegion)
   const threshold = region === 'specific' ? special?.threshold || 10 : 10
@@ -377,6 +352,7 @@ export default function NodeRadsPage() {
   const canContinue = step === 0 ? Boolean(region && (region !== 'specific' || specialRegion)) : step === 1 ? Boolean(sizeCategory) : step === 2 ? configReady : true
   const goNext = () => {
     if (!canContinue) { setError(ui.required); return }
+    analytics.start()
     setError('')
     if (step === 1 && axesAreReversed) {
       setShortAxis(measuredShortAxis)
@@ -385,9 +361,10 @@ export default function NodeRadsPage() {
     const next = step === 1 && sizeCategory === 'bulk' ? 3 : Math.min(step + 1, 3)
     setCompleted(value => Math.max(value, next))
     setStep(next)
+    if (next === 3) analytics.complete()
   }
   const goBack = () => { setError(''); setStep(value => value === 3 && sizeCategory === 'bulk' ? 1 : Math.max(value - 1, 0)) }
-  const restart = () => { setStep(0); setCompleted(0); setRegion('general'); setSpecialRegion(''); setShortAxis(''); setLongAxis(''); setGrowth(false); setTexture(null); setBorder(null); setShape(null); setError('') }
+  const restart = () => { analytics.restart(); setStep(0); setCompleted(0); setRegion('general'); setSpecialRegion(''); setShortAxis(''); setLongAxis(''); setGrowth(false); setTexture(null); setBorder(null); setShape(null); setError('') }
 
   return <main className={styles.page} dir="ltr" lang={activeLang}>
     <header className={styles.topbar}>
@@ -406,7 +383,7 @@ export default function NodeRadsPage() {
           {step === 0 ? <RegionStep region={region} setRegion={setRegion} specialRegion={specialRegion} setSpecialRegion={setSpecialRegion} ui={ui} lang={activeLang}/> : null}
           {step === 1 ? <SizeStep shortAxis={shortAxis} setShortAxis={setShortAxis} longAxis={longAxis} setLongAxis={setLongAxis} growth={growth} setGrowth={setGrowth} sizeCategory={sizeCategory} threshold={threshold} ui={ui}/> : null}
           {step === 2 ? <ConfigStep texture={texture} setTexture={setTexture} border={border} setBorder={setBorder} shape={shape} setShape={setShape} ui={ui}/> : null}
-          {step === 3 && score ? <ResultStep score={score} sizeCategory={sizeCategory} configScore={configScore} shortAxis={shortAxis} longAxis={longAxis} growth={growth} texture={texture} border={border} shape={shape} ui={ui} copied={copied} setCopied={setCopied}/> : null}
+          {step === 3 && score ? <ResultStep score={score} sizeCategory={sizeCategory} configScore={configScore} shortAxis={shortAxis} longAxis={longAxis} growth={growth} texture={texture} border={border} shape={shape} ui={ui} copied={copied} setCopied={setCopied} track={analytics.track}/> : null}
         </div>
         {error ? <p className={styles.footerError} role="alert">{error}</p> : null}
         <footer className={styles.actionBar}>

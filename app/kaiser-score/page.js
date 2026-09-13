@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { QRCodeSVG } from 'qrcode.react'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useTheme } from '@/providers/ThemeProvider'
+import { useCalculatorAnalytics } from '@/hooks/useCalculatorAnalytics'
 import { Birads4AdcGate, DiagnosisAtlas } from './AdcAssessment'
 import styles from './page.module.css'
 
@@ -212,7 +213,7 @@ function Question({ question, selected, setSelected, ui }) {
   </section>
 }
 
-function ResultPanel({ score, risk, history, ui, copied, onCopy, adcRefinement, lang }) {
+function ResultPanel({ score, risk, history, ui, copied, onCopy, adcRefinement, lang, track }) {
   const [shareOpen, setShareOpen] = useState(false)
   const [linkCopied, setLinkCopied] = useState(false)
   const scorePosition = `${((score - 1) / 10) * 100}%`
@@ -224,6 +225,7 @@ function ResultPanel({ score, risk, history, ui, copied, onCopy, adcRefinement, 
   const copyLink = async () => {
     try {
       await navigator.clipboard.writeText(KAISER_SCORE_URL)
+      track('copy_link')
       setLinkCopied(true)
       window.setTimeout(() => setLinkCopied(false), 1800)
     } catch {
@@ -246,7 +248,7 @@ function ResultPanel({ score, risk, history, ui, copied, onCopy, adcRefinement, 
     <div className={styles.reportBox}><header><strong>{ui.report}</strong></header><div className={styles.reportSection}><span>{ui.finding}</span><p>{report.finding}</p></div><div className={styles.reportSection}><span>{ui.assessment}</span><p>{report.assessment}</p></div><button type="button" onClick={onCopy}>{copied ? ui.copied : ui.copy}<span>{copied ? '✓' : '⧉'}</span></button></div>
     {adcRefinement ? <DiagnosisAtlas lang={lang} compact/> : null}
     <section className={`${styles.shareCard} ${shareOpen ? styles.shareCardOpen : ''}`}>
-      <button type="button" className={styles.shareToggle} onClick={() => setShareOpen(value => !value)} aria-expanded={shareOpen}>
+      <button type="button" className={styles.shareToggle} onClick={() => { if (!shareOpen) track('recommend_open'); setShareOpen(value => !value) }} aria-expanded={shareOpen}>
         <span className={styles.shareIcon}><ShareIcon/></span>
         <span><strong>{ui.recommend}</strong><small>{ui.recommendHint}</small></span>
         <i>{shareOpen ? '−' : '+'}</i>
@@ -255,7 +257,7 @@ function ResultPanel({ score, risk, history, ui, copied, onCopy, adcRefinement, 
         <header><strong>{ui.shareTitle}</strong><p>{ui.shareText}</p></header>
         <div className={styles.shareBody}>
           <div className={styles.qrFrame}><QRCodeSVG value={KAISER_SCORE_URL} size={184} level="H" bgColor="#f5ffff" fgColor="#062a32" marginSize={2} imageSettings={{ src: '/kaiser-score/kaiser-score-icon-192.png', width: 42, height: 42, excavate: true }}/></div>
-          <div className={styles.shareDetails}><span>{ui.scanLabel}</span><strong>rad-yar.com/kaiser-score</strong><div className={styles.shareActions}><a href={`https://wa.me/?text=${whatsAppText}`} target="_blank" rel="noreferrer"><WhatsAppIcon/>{ui.whatsapp}</a><button type="button" onClick={copyLink}><span>{linkCopied ? '✓' : '⧉'}</span>{linkCopied ? ui.linkCopied : ui.copyLink}</button></div></div>
+          <div className={styles.shareDetails}><span>{ui.scanLabel}</span><strong>rad-yar.com/kaiser-score</strong><div className={styles.shareActions}><a href={`https://wa.me/?text=${whatsAppText}`} target="_blank" rel="noreferrer" onClick={() => track('whatsapp_click')}><WhatsAppIcon/>{ui.whatsapp}</a><button type="button" onClick={copyLink}><span>{linkCopied ? '✓' : '⧉'}</span>{linkCopied ? ui.linkCopied : ui.copyLink}</button></div></div>
         </div>
       </div> : null}
     </section>
@@ -287,6 +289,7 @@ export default function KaiserScorePage() {
   const [selected, setSelected] = useState(null)
   const [copied, setCopied] = useState(false)
   const [adcRefinement, setAdcRefinement] = useState(null)
+  const analytics = useCalculatorAnalytics('kaiser-score')
   const resolution = useMemo(() => resolvePath(answers), [answers])
   const score = resolution.score || null
   const current = resolution.question || null
@@ -299,8 +302,13 @@ export default function KaiserScorePage() {
     document.getElementById('score-result')?.scrollIntoView({ block: 'start' })
   }, [adcRefinement])
 
+  useEffect(() => {
+    if ((score && !needsAdcGate) || qualityIssue) analytics.complete()
+  }, [analytics.complete, needsAdcGate, qualityIssue, score])
+
   const commitAnswer = () => {
     if (!current || !selected) return
+    analytics.start()
     setAnswers(value => ({ ...value, [current]: selected }))
     setHistory(value => [...value, { key: current, value: selected }])
     setSelected(null)
@@ -318,7 +326,7 @@ export default function KaiserScorePage() {
     if (adcRefinement) { setAdcRefinement(null); setCopied(false); return }
     goBackKaiser()
   }
-  const restart = () => { setAnswers({}); setHistory([]); setSelected(null); setCopied(false); setAdcRefinement(null) }
+  const restart = () => { analytics.restart(); setAnswers({}); setHistory([]); setSelected(null); setCopied(false); setAdcRefinement(null) }
   const completeAdc = data => setAdcRefinement({
     ...data,
     values: {
@@ -346,7 +354,7 @@ export default function KaiserScorePage() {
     <div className={styles.shell}>
       <section className={styles.workspace}>
         <div className={styles.intro}><h2>{ui.hero.map((line, index) => <span key={line}>{index === 1 ? <>{line.replace(ui.heroScore, '')}<em>{ui.heroScore}</em></> : line}</span>)}</h2></div>
-        {current ? <Question question={current} selected={selected} setSelected={setSelected} ui={ui}/> : needsAdcGate ? <Birads4AdcGate lang={activeLang} onComplete={completeAdc} onBack={goBackKaiser}/> : score ? <ResultPanel score={score} risk={risk} history={history} ui={ui} copied={copied} onCopy={copyReport} adcRefinement={adcRefinement} lang={activeLang}/> : <QualityNotice ui={ui}/>}
+        {current ? <Question question={current} selected={selected} setSelected={setSelected} ui={ui}/> : needsAdcGate ? <Birads4AdcGate lang={activeLang} onComplete={completeAdc} onBack={goBackKaiser}/> : score ? <ResultPanel score={score} risk={risk} history={history} ui={ui} copied={copied} onCopy={copyReport} adcRefinement={adcRefinement} lang={activeLang} track={analytics.track}/> : <QualityNotice ui={ui}/>}
         {!needsAdcGate ? <footer className={`${styles.actions} ${score || qualityIssue ? styles.actionsComplete : ''}`}>
           <button type="button" className={styles.backButton} onClick={goBack} disabled={!history.length}><ArrowIcon reverse/>{ui.back}</button>
           {current ? <button type="button" className={styles.nextButton} onClick={commitAnswer} disabled={!selected}>{ui.continue}<ArrowIcon/></button> : <button type="button" className={styles.nextButton} onClick={restart}>{ui.restart}<ArrowIcon/></button>}

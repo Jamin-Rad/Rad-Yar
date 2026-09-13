@@ -15,6 +15,31 @@ function boundedInt(value, max) {
   return Math.max(0, Math.min(number, max))
 }
 
+async function recordWithoutRpc({ visitorId, userId, path, visits, pageViews, activeSeconds }) {
+  const day = new Date().toISOString().slice(0, 10)
+  const [{ data: daily }, { data: page }] = await Promise.all([
+    supabaseAdmin.from('analytics_daily').select('visits,page_views,active_seconds').eq('visitor_id', visitorId).eq('day', day).maybeSingle(),
+    supabaseAdmin.from('analytics_pages').select('views,active_seconds').eq('visitor_id', visitorId).eq('path', path).eq('day', day).maybeSingle(),
+  ])
+  const now = new Date().toISOString()
+  const [{ error: dailyError }, { error: pageError }] = await Promise.all([
+    supabaseAdmin.from('analytics_daily').upsert({
+      visitor_id: visitorId, user_id: userId, day,
+      visits: Number(daily?.visits || 0) + visits,
+      page_views: Number(daily?.page_views || 0) + pageViews,
+      active_seconds: Number(daily?.active_seconds || 0) + activeSeconds,
+      last_seen_at: now,
+    }),
+    supabaseAdmin.from('analytics_pages').upsert({
+      visitor_id: visitorId, user_id: userId, path, day,
+      views: Number(page?.views || 0) + pageViews,
+      active_seconds: Number(page?.active_seconds || 0) + activeSeconds,
+      last_seen_at: now,
+    }),
+  ])
+  return dailyError || pageError
+}
+
 export async function POST(request) {
   try {
     if (!isSupabaseAdminConfigured || !supabaseAdmin) {
@@ -28,14 +53,21 @@ export async function POST(request) {
     }
 
     const identity = await getSignedInUserIdentity()
-    const { error } = await supabaseAdmin.rpc('record_site_activity', {
+    const path = cleanPath(payload.path)
+    const visits = boundedInt(payload.visits, 1)
+    const pageViews = boundedInt(payload.pageViews, 1)
+    const activeSeconds = boundedInt(payload.activeSeconds, 60)
+    let { error } = await supabaseAdmin.rpc('record_site_activity', {
       p_visitor_id: visitorId,
       p_user_id: identity?.ownerId || null,
-      p_path: cleanPath(payload.path),
-      p_visits: boundedInt(payload.visits, 1),
-      p_page_views: boundedInt(payload.pageViews, 1),
-      p_active_seconds: boundedInt(payload.activeSeconds, 60),
+      p_path: path,
+      p_visits: visits,
+      p_page_views: pageViews,
+      p_active_seconds: activeSeconds,
     })
+    if (error?.code === '42501') {
+      error = await recordWithoutRpc({ visitorId, userId: identity?.ownerId || null, path, visits, pageViews, activeSeconds })
+    }
 
     if (error) {
       console.error('Analytics konnte nicht gespeichert werden:', error.message)
