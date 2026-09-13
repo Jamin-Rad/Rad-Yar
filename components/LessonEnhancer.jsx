@@ -12,9 +12,9 @@ const LESSON_PREFIXES = [
 ]
 
 const COPY = {
-  de: { sections: 'Abschnitte', progress: 'Lektionsfortschritt', read: 'gelesen', close: 'Schließen', recall: 'Kurztest', concepts: 'Begriffe', think: 'Erst selbst beantworten', reveal: 'Antwort anzeigen', next: 'Nächste Frage', restart: 'Neu starten', done: 'Test abgeschlossen' },
-  en: { sections: 'Sections', progress: 'Lesson progress', read: 'read', close: 'Close', recall: 'Quick check', concepts: 'concepts', think: 'Answer from memory first', reveal: 'Show answer', next: 'Next question', restart: 'Restart', done: 'Check completed' },
-  fa: { sections: 'بخش‌ها', progress: 'پیشرفت درس', read: 'خوانده‌شده', close: 'بستن', recall: 'مرور فعال', concepts: 'مفهوم', think: 'ابتدا از حافظه پاسخ بدهید', reveal: 'نمایش پاسخ', next: 'پرسش بعدی', restart: 'شروع دوباره', done: 'مرور کامل شد' },
+  de: { sections: 'Abschnitte', progress: 'Lektionsfortschritt', read: 'gelesen', close: 'Schließen', explore: 'Strukturierte Übersicht', exploreHint: 'Wähle einen Punkt, um die Erklärung fokussiert zu sehen.' },
+  en: { sections: 'Sections', progress: 'Lesson progress', read: 'read', close: 'Close', explore: 'Structured overview', exploreHint: 'Choose an item to focus on its explanation.' },
+  fa: { sections: 'بخش‌ها', progress: 'پیشرفت درس', read: 'خوانده‌شده', close: 'بستن', explore: 'مرور ساختاریافته', exploreHint: 'یک مورد را انتخاب کنید تا توضیح آن را متمرکز ببینید.' },
 }
 
 function isLessonPath(pathname) {
@@ -74,74 +74,77 @@ function cleanText(value) {
   return (value || '').replace(/\s+/g, ' ').trim()
 }
 
-function extractRecall(section) {
+function extractExplorer(section) {
   const target = section.querySelector(':scope > button[aria-expanded] + div, :scope > div:last-child')
-  if (!target || target.closest('[data-lesson-recall]')) return null
-  const cards = []
-  const seen = new Set()
-  const add = (prompt, answer) => {
+  if (!target) return null
+  const cardItems = []
+  const tableItems = []
+  const cardSeen = new Set()
+  const tableSeen = new Set()
+  const add = (collection, seen, prompt, answer) => {
     const question = cleanText(prompt)
     const response = cleanText(answer)
     const key = `${question}|${response}`
-    if (question.length < 2 || question.length > 150 || response.length < 18 || response.length > 900 || seen.has(key)) return
+    if (question.length < 2 || question.length > 110 || response.length < 18 || response.length > 700 || seen.has(key)) return
     seen.add(key)
-    cards.push({ prompt: question, answer: response })
+    collection.push({ prompt: question, answer: response })
   }
 
   target.querySelectorAll('article, li, div').forEach(item => {
-    if (item.closest('section[id]') !== section || item.closest('[data-lesson-recall]')) return
+    if (item.closest('section[id]') !== section || item.closest('[data-lesson-concept-explorer]')) return
     if (item.querySelector('button, input, select, textarea')) return
     const prompt = item.querySelector(':scope > h3, :scope > h4, :scope > strong, :scope > b')
     const answer = item.querySelector(':scope > p')
-    if (prompt && answer) add(prompt.textContent, answer.textContent)
+    if (prompt && answer) add(cardItems, cardSeen, prompt.textContent, answer.textContent)
   })
 
-  if (cards.length < 2) {
-    target.querySelectorAll('tbody tr').forEach(row => {
-      if (row.closest('section[id]') !== section || row.querySelector('button, input, select, textarea')) return
+  target.querySelectorAll('table').forEach(table => {
+    if (table.closest('section[id]') !== section || table.closest('[data-lesson-concept-explorer]')) return
+    const headers = Array.from(table.querySelectorAll('thead th')).map(cell => cleanText(cell.textContent))
+    table.querySelectorAll('tbody tr').forEach(row => {
       const cells = Array.from(row.querySelectorAll(':scope > th, :scope > td'))
-      if (cells.length >= 2) add(cells[0].textContent, cells.slice(1).map(cell => cell.textContent).join(' · '))
+      if (cells.length < 2 || row.querySelector('button, input, select, textarea')) return
+      const answer = cells.slice(1).map((cell, index) => {
+        const value = cleanText(cell.textContent)
+        return headers[index + 1] ? `${headers[index + 1]}: ${value}` : value
+      }).join(' · ')
+      add(tableItems, tableSeen, cells[0].textContent, answer)
     })
-  }
+  })
 
-  return cards.length >= 2 ? { target, cards: cards.slice(0, 12) } : null
+  const options = [
+    tableItems.length >= 3 ? { items: tableItems.slice(0, 8), score: Math.min(tableItems.length, 8) * 10 + 8 } : null,
+    cardItems.length >= 3 ? { items: cardItems.slice(0, 8), score: Math.min(cardItems.length, 8) * 10 } : null,
+  ].filter(Boolean)
+  if (!options.length) return null
+  const best = options.reduce((current, option) => option.score > current.score ? option : current)
+  return { target, ...best }
 }
 
-function RecallIcon() {
-  return <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M8 5a3 3 0 0 0-3 3v1a3 3 0 0 0 1 5v1a3 3 0 0 0 3 3c1.3 0 2.4-.8 3-1.8.6 1 1.7 1.8 3 1.8a3 3 0 0 0 3-3v-1a3 3 0 0 0 1-5V8a3 3 0 0 0-3-3c-1.3 0-2.4.8-3 1.8C10.4 5.8 9.3 5 8 5Z M12 7v9 M7 10h2 M15 13h2" /></svg>
+function ExplorerIcon() {
+  return <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.25" /><circle cx="18" cy="7" r="2.25" /><circle cx="11" cy="18" r="2.25" /><path d="m8 7 7.8-.1M7.2 8l2.7 7.8M16.5 9l-4 7" /></svg>
 }
 
-function RecallExercise({ cards, copy, sectionTitle }) {
-  const [open, setOpen] = useState(false)
-  const [index, setIndex] = useState(0)
-  const [revealed, setRevealed] = useState(false)
-  const complete = index === cards.length - 1 && revealed
-  const advance = () => {
-    if (complete) {
-      setIndex(0)
-      setRevealed(false)
-      return
-    }
-    setIndex(value => Math.min(cards.length - 1, value + 1))
-    setRevealed(false)
-  }
-  const current = cards[index]
+function ConceptExplorer({ items, copy, sectionTitle }) {
+  const [selected, setSelected] = useState(0)
+  const safeIndex = Math.min(selected, items.length - 1)
+  const current = items[safeIndex]
 
-  return <div className={`${styles.recall} ${open ? styles.recallOpen : ''}`} data-lesson-recall data-lesson-progress-ui>
-    <button type="button" className={styles.recallLaunch} onClick={() => setOpen(value => !value)} aria-expanded={open}>
-      <span><RecallIcon /></span><strong>{copy.recall}</strong><small>{cards.length} {copy.concepts}</small><i aria-hidden="true">{open ? '−' : '+'}</i>
-    </button>
-    {open && <div className={styles.recallBody}>
-      <div className={styles.recallMeta}><span>{sectionTitle}</span><strong>{index + 1} / {cards.length}</strong></div>
-      <div className={styles.recallSteps} aria-hidden="true">{cards.map((_, step) => <i key={step} className={step <= index ? styles.recallStepActive : ''} />)}</div>
-      <small className={styles.recallHint}>{copy.think}</small>
-      <h3>{current.prompt}</h3>
-      {!revealed ? <button type="button" className={styles.revealButton} onClick={() => setRevealed(true)}>{copy.reveal}</button> : <>
-        <div className={styles.recallAnswer}><RecallIcon /><p>{current.answer}</p></div>
-        <button type="button" className={styles.nextButton} onClick={advance}>{complete ? copy.restart : copy.next}<span aria-hidden="true">→</span></button>
-        {complete && <small className={styles.recallDone}>{copy.done}</small>}
-      </>}
-    </div>}
+  return <div className={styles.conceptExplorer} data-lesson-concept-explorer data-lesson-progress-ui>
+    <header className={styles.explorerHeader}>
+      <span><ExplorerIcon /></span>
+      <div><strong>{copy.explore}</strong><small>{copy.exploreHint}</small></div>
+    </header>
+    <div className={styles.explorerLayout}>
+      <div className={styles.explorerTabs} role="tablist" aria-label={`${copy.explore}: ${sectionTitle}`}>
+        {items.map((item, index) => <button type="button" role="tab" aria-selected={index === safeIndex} key={`${item.prompt}-${index}`} className={index === safeIndex ? styles.explorerTabActive : ''} onClick={() => setSelected(index)}><span>{item.prompt}</span><i aria-hidden="true">›</i></button>)}
+      </div>
+      <article className={styles.explorerDetail} role="tabpanel">
+        <small>{safeIndex + 1} / {items.length}</small>
+        <h3>{current.prompt}</h3>
+        <p>{current.answer}</p>
+      </article>
+    </div>
   </div>
 }
 
@@ -159,7 +162,7 @@ export default function LessonEnhancer() {
   const [mobile, setMobile] = useState(false)
   const [sidebarTarget, setSidebarTarget] = useState(null)
   const [navbarTarget, setNavbarTarget] = useState(null)
-  const [recallSets, setRecallSets] = useState([])
+  const [explorer, setExplorer] = useState(null)
 
   useEffect(() => {
     const query = window.matchMedia('(max-width: 760px)')
@@ -232,10 +235,11 @@ export default function LessonEnhancer() {
       }
       return { id: item.id, title: item.title, iconHtml: icon?.outerHTML || '' }
     })
-    const recalls = foundSections.flatMap((item, index) => {
-      const recall = extractRecall(document.getElementById(item.id))
-      return recall ? [{ id: item.id, title: found[index].title, ...recall }] : []
+    const explorerCandidates = foundSections.flatMap((item, index) => {
+      const candidate = extractExplorer(document.getElementById(item.id))
+      return candidate ? [{ id: item.id, title: found[index].title, ...candidate }] : []
     })
+    const bestExplorer = explorerCandidates.reduce((best, candidate) => !best || candidate.score > best.score ? candidate : best, null)
 
     setSections(current => {
       const before = current.map(item => `${item.id}:${item.title}:${item.iconHtml}`).join('|')
@@ -245,10 +249,10 @@ export default function LessonEnhancer() {
     setActiveId(current => found.some(item => item.id === current) ? current : (found[0]?.id || ''))
     setSidebarTarget(progressHost)
     setNavbarTarget(document.querySelector('[data-radyar-navbar]'))
-    setRecallSets(current => {
-      const before = current.map(item => `${item.id}:${item.cards.map(card => `${card.prompt}:${card.answer}`).join('|')}`).join('||')
-      const after = recalls.map(item => `${item.id}:${item.cards.map(card => `${card.prompt}:${card.answer}`).join('|')}`).join('||')
-      return before === after ? current : recalls
+    setExplorer(current => {
+      const before = current ? `${current.id}:${current.items.map(item => `${item.prompt}:${item.answer}`).join('|')}` : ''
+      const after = bestExplorer ? `${bestExplorer.id}:${bestExplorer.items.map(item => `${item.prompt}:${item.answer}`).join('|')}` : ''
+      return before === after ? current : bestExplorer
     })
   }, [enabled])
 
@@ -372,7 +376,7 @@ export default function LessonEnhancer() {
   return <div className={styles.root} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
     {navbarTarget ? createPortal(navProgress, navbarTarget) : null}
     {!mobile && sidebarTarget ? createPortal(desktopProgress, sidebarTarget) : null}
-    {recallSets.map(recall => createPortal(<RecallExercise key={recall.id} cards={recall.cards} copy={copy} sectionTitle={recall.title} />, recall.target))}
+    {explorer ? createPortal(<ConceptExplorer key={explorer.id} items={explorer.items} copy={copy} sectionTitle={explorer.title} />, explorer.target) : null}
     {mobile && panelOpen && <div className={styles.panel} role="dialog" aria-label={copy.sections} data-lesson-progress-ui>
       <header><div><small>{copy.progress}</small><strong>{validReadCount} / {sections.length} · {progress}%</strong></div><button type="button" onClick={() => setPanelOpen(false)} aria-label={copy.close}>×</button></header>
       <nav>{sections.map(section => <button type="button" key={section.id} className={section.id === activeId ? styles.current : ''} onClick={() => scrollTo(section.id)}><IconMarkup html={section.iconHtml} /><strong>{section.title}</strong><i aria-hidden="true">{readIds.has(section.id) ? '✓' : ''}</i></button>)}</nav>
