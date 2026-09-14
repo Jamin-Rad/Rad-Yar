@@ -166,9 +166,9 @@ const DIVERTICULITIS_QUESTION_CONTENT = [
     },
     options: [
       { id: 'A', text: { de: 'Gas in der Harnblase ohne vorausgegangene Instrumentierung', en: 'Gas in the urinary bladder without prior instrumentation', fa: 'گاز داخل مثانه بدون ابزارگذاری قبلی' } },
-      { id: 'B', text: { de: 'Isolierte Milzvergrößerung', en: 'Isolated splenomegaly', fa: 'اسپلنومگالی منفرد' } },
-      { id: 'C', text: { de: 'Gallenblasenstein', en: 'Gallstone', fa: 'سنگ کیسه صفرا' } },
-      { id: 'D', text: { de: 'Basaler Pleuraerguss', en: 'Basal pleural effusion', fa: 'افیوژن پلورال قاعده‌ای' } },
+      { id: 'B', text: { de: 'Intravesikales Gas unmittelbar nach Katheterisierung', en: 'Intravesical gas immediately after catheterisation', fa: 'گاز داخل مثانه بلافاصله پس از کاتتریزاسیون' } },
+      { id: 'C', text: { de: 'Reaktive Harnblasenwandverdickung ohne Gas oder sichtbaren Fistelgang', en: 'Reactive bladder-wall thickening without gas or a visible tract', fa: 'ضخیم‌شدن واکنشی دیواره مثانه بدون گاز یا مسیر قابل مشاهده فیستول' } },
+      { id: 'D', text: { de: 'Gas ausschließlich in der Harnblasenwand bei emphysematöser Zystitis', en: 'Gas confined to the bladder wall in emphysematous cystitis', fa: 'گاز محدود به دیواره مثانه در سیستیت آمفیزماتوز' } },
     ],
     correct: 'A',
     explanation: {
@@ -226,9 +226,9 @@ const DIVERTICULITIS_QUESTION_CONTENT = [
     },
     options: [
       { id: 'A', text: { de: 'Abszessgröße in drei Dimensionen und Lokalisation', en: 'Abscess size in three dimensions and location', fa: 'اندازه آبسه در سه بعد و محل آن' } },
-      { id: 'B', text: { de: 'Nur die Milzlänge', en: 'Splenic length only', fa: 'فقط طول طحال' } },
-      { id: 'C', text: { de: 'Ausschließlich die Dosislänge', en: 'Dose-length product only', fa: 'فقط محصول طول دوز' } },
-      { id: 'D', text: { de: 'Nur die Anzahl aller Kolondivertikel', en: 'Only the total number of colonic diverticula', fa: 'فقط تعداد کل دیورتیکول‌های کولون' } },
+      { id: 'B', text: { de: 'Nur der größte axiale Abszessdurchmesser ohne Lokalisation', en: 'Only the largest axial abscess diameter without location', fa: 'فقط بزرگ‌ترین قطر محوری آبسه بدون ذکر محل' } },
+      { id: 'C', text: { de: 'Nur die Diagnose „komplizierte Divertikulitis“ ohne Beschreibung der Kollektion', en: 'Only the diagnosis “complicated diverticulitis” without describing the collection', fa: 'فقط تشخیص «دیورتیکولیت عارضه‌دار» بدون توصیف تجمع' } },
+      { id: 'D', text: { de: 'Nur die Anzahl der Divertikel und die Länge der Wandverdickung', en: 'Only the number of diverticula and length of wall thickening', fa: 'فقط تعداد دیورتیکول‌ها و طول ضخیم‌شدن دیواره' } },
     ],
     correct: 'A',
     explanation: {
@@ -405,8 +405,8 @@ const PANCREATITIS_QUESTION_CONTENT = [
     options: [
       { id: 'A', text: { de: 'Rundliche, scharf begrenzte arterielle Struktur in oder nahe einer Kollektion', en: 'Round sharply marginated arterial structure in or near a collection', fa: 'ساختار گرد و واضح شریانی داخل یا نزدیک تجمع' } },
       { id: 'B', text: { de: 'Rein zystische Läsion ohne Enhancement', en: 'Purely cystic lesion without enhancement', fa: 'ضایعه کاملاً کیستیک بدون تقویت پس از تزریق' } },
-      { id: 'C', text: { de: 'Symmetrische Nierenkelchdilatation', en: 'Symmetric renal calyceal dilatation', fa: 'اتساع متقارن کالیس‌های کلیه' } },
-      { id: 'D', text: { de: 'Luft in der Harnblase nach Katheter', en: 'Gas in the bladder after catheterisation', fa: 'گاز مثانه پس از کاتترگذاری' } },
+      { id: 'C', text: { de: 'Nicht kontrastierende Nekroseanteile im Pankreasparenchym', en: 'Non-enhancing necrotic pancreatic parenchyma', fa: 'بخش‌های نکروتیک بدون افزایش کنتراست در پارانشیم پانکراس' } },
+      { id: 'D', text: { de: 'Thrombose der V. lienalis ohne fokale arterielle Kontrastierung', en: 'Splenic vein thrombosis without focal arterial enhancement', fa: 'ترومبوز ورید طحالی بدون افزایش کنتراست شریانی کانونی' } },
     ],
     correct: 'A',
     explanation: {
@@ -418,21 +418,21 @@ const PANCREATITIS_QUESTION_CONTENT = [
   {
     id: 'infected-necrosis',
     question: {
-      de: 'Welcher CT-Befund ist praktisch pathognomonisch für infizierte Nekrose?',
-      en: 'Which CT finding is virtually pathognomonic for infected necrosis?',
-      fa: 'کدام یافته CT تقریباً پاتوگنومونیک نکروز عفونی است؟',
+      de: 'Welcher CT-Befund spricht bei nekrotisierender Pankreatitis am stärksten für eine infizierte Nekrose?',
+      en: 'Which CT finding most strongly suggests infected necrosis in necrotising pancreatitis?',
+      fa: 'در پانکراتیت نکروزان، کدام یافته CT بیش از همه به نفع نکروز عفونی است؟',
     },
     options: [
-      { id: 'A', text: { de: 'Gas im Nekroseareal', en: 'Gas within the necrotic area', fa: 'گاز داخل ناحیه نکروز' } },
-      { id: 'B', text: { de: 'Homogenes Enhancement des Pankreas', en: 'Homogeneous pancreatic enhancement', fa: 'تقویت پس از تزریق همگن پانکراس' } },
-      { id: 'C', text: { de: 'Ein einzelner Nierenstein', en: 'A single renal stone', fa: 'یک سنگ کلیه منفرد' } },
-      { id: 'D', text: { de: 'Normale Lebergröße', en: 'Normal liver size', fa: 'اندازه طبیعی کبد' } },
+      { id: 'A', text: { de: 'Gasblasen im Nekroseareal ohne vorausgegangene Intervention oder enterische Fistel', en: 'Gas bubbles within necrosis without prior intervention or an enteric fistula', fa: 'حباب‌های گاز داخل نکروز بدون مداخله قبلی یا فیستول گوارشی' } },
+      { id: 'B', text: { de: 'Eine neu entstandene, vollständig flüssige Pseudozyste', en: 'A newly developed, completely fluid pseudocyst', fa: 'پسودوسیست جدید با محتوای کاملاً مایع' } },
+      { id: 'C', text: { de: 'Diffuse peripankreatische Fettgewebsimbibierung ohne Nekrose', en: 'Diffuse peripancreatic fat stranding without necrosis', fa: 'استرندینگ منتشر چربی اطراف پانکراس بدون نکروز' } },
+      { id: 'D', text: { de: 'Homogene Kontrastierung des gesamten Pankreas', en: 'Homogeneous enhancement of the entire pancreas', fa: 'افزایش کنتراست همگن کل پانکراس' } },
     ],
     correct: 'A',
     explanation: {
-      de: 'Gas in Nekrosegewebe ist ein hochspezifisches Zeichen einer Infektion.',
-      en: 'Gas within necrotic tissue is a highly specific sign of infection.',
-      fa: 'گاز داخل بافت نکروتیک نشانه بسیار اختصاصی عفونت است.',
+      de: 'Gas in einer Nekrose ist ohne vorausgegangene Intervention oder enterische Fistel hochspezifisch für eine Infektion. Nach Drainage, Operation oder bei Fistel muss Gas anders bewertet werden.',
+      en: 'Gas within necrosis is highly specific for infection when there has been no prior intervention or enteric fistula. Gas after drainage, surgery or fistulisation requires a different interpretation.',
+      fa: 'گاز داخل نکروز، در نبود مداخله قبلی یا فیستول گوارشی، برای عفونت بسیار اختصاصی است. پس از درناژ، جراحی یا ایجاد فیستول باید گاز را متفاوت تفسیر کرد.',
     },
   },
   {
@@ -1226,11 +1226,11 @@ export const QUESTION_BANK = {
       "options": [
         { "id": "A", "text": "Arterioportal (A. hepatica – Pfortaderast)" },
         { "id": "B", "text": "Portosystemisch (Pfortader – Lebervene)" },
-        { "id": "C", "text": "Ausschließlich arteriovenös (A. hepatica – Lebervene)" },
+        { "id": "C", "text": "Arteriovenös (A. hepatica – Lebervene)" },
         { "id": "D", "text": "Venovenös zwischen zwei Lebervenen" }
       ],
-      "correct": "A",
-      "explanation": "Arterioportale Shunts – eine Verbindung zwischen A. hepatica und einem Pfortaderast – sind der häufigste Typ hepatischer AV-Malformationen."
+      "correct": "C",
+      "explanation": "Bei hepatischer Gefäßbeteiligung der HHT sind arteriovenöse Shunts von der A. hepatica zu Lebervenen der häufigste Typ; arterioportale und portovenöse Shunts kommen ebenfalls vor."
     },
     {
       "id": "avm-de-03",
@@ -1630,15 +1630,15 @@ export const QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "Morbus Jüngling"
+          "text": "Kardiales Lungenödem mit glatten, beidseitigen Septenlinien"
         },
         {
           "id": "C",
-          "text": "Heerfordt-Syndrom"
+          "text": "Sarkoidose mit symmetrischen perilymphatischen Noduli"
         },
         {
           "id": "D",
-          "text": "Discoider Meniskus"
+          "text": "UIP-Muster mit subpleuraler Retikulation und Honigwaben"
         }
       ],
       "correct": "A",
@@ -1682,7 +1682,7 @@ export const QUESTION_BANK = {
         "lunge"
       ],
       "fach": "thorax",
-      "question": "Welche Modalität ist besonders wichtig zum Nachweis einer kardialen Sarkoidose?",
+      "question": "Welche Modalität ist besonders geeignet, Myokardnarben bzw. Fibrose bei kardialer Sarkoidose darzustellen?",
       "options": [
         {
           "id": "A",
@@ -1690,19 +1690,19 @@ export const QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "Konventionelle Knieaufnahme"
+          "text": "FDG-PET zur Darstellung aktiver Entzündung, jedoch ohne direkte Narbencharakterisierung"
         },
         {
           "id": "C",
-          "text": "Sonographie der Gallenblase"
+          "text": "Echokardiographie zur Funktionsbeurteilung, jedoch mit begrenzter Gewebecharakterisierung"
         },
         {
           "id": "D",
-          "text": "Native Schädel-CT"
+          "text": "Koronar-CT-Angiographie zur Beurteilung der Koronararterien"
         }
       ],
       "correct": "A",
-      "explanation": "Kardiale Sarkoidose wird häufig mittels MRT und Late Gadolinium Enhancement beurteilt. Klinisch wichtig ist das erhöhte Risiko für Rhythmusstörungen."
+      "explanation": "Die kardiale MRT mit Late Gadolinium Enhancement zeigt nichtischämische Myokardnarben und Fibrose. FDG-PET ergänzt die MRT besonders zur Beurteilung aktiver Entzündung; beide Verfahren beantworten unterschiedliche klinische Fragen."
     },
     {
       "id": "rotatorenmanschette-de-01",
@@ -1864,13 +1864,13 @@ export const QUESTION_BANK = {
       "fach": "msk",
       "question": "Was bedeutet ein positives Tangentenzeichen in der Schulter-MRT?",
       "options": [
-        { "id": "A", "text": "Der Humeruskopf überschreitet die Tangente zwischen Akromion und Korakoid - Hinweis auf eine massive Ruptur" },
-        { "id": "B", "text": "Die Supraspinatussehne ist normal konfiguriert" },
-        { "id": "C", "text": "Es liegt eine isolierte Tendinopathie der langen Bizepssehne vor" },
-        { "id": "D", "text": "Die Bursa subacromialis ist verdickt, aber die Sehne ist intakt" }
+        { "id": "A", "text": "Der Supraspinatus-Muskelbauch reicht auf der sagittal-obliquen Y-Aufnahme nicht über die Linie zwischen Korakoid und Spina scapulae hinaus" },
+        { "id": "B", "text": "Der Humeruskopf steht über der Tangente zwischen Akromion und Korakoid" },
+        { "id": "C", "text": "Die lange Bizepssehne liegt medial außerhalb des Sulcus" },
+        { "id": "D", "text": "Der Akromiohumeralabstand ist bei erhaltener Muskelmasse vergrößert" }
       ],
       "correct": "A",
-      "explanation": "Beim Tangentenzeichen überschreitet der Humeruskopf die Tangente zwischen Akromion und Korakoid - dies ist ein Hinweis auf eine massive Rotatorenmanschettenruptur."
+      "explanation": "Das Tangentenzeichen wird auf der sagittal-obliquen Y-Aufnahme beurteilt: Eine Linie verbindet den Oberrand des Korakoids mit dem Oberrand der Spina scapulae. Bleibt der Supraspinatus-Muskelbauch unter dieser Linie, ist das Zeichen positiv und spricht für relevante Supraspinatusatrophie."
     },
     {
       "id": "rotatorenmanschette-de-13",
@@ -2590,11 +2590,11 @@ export const QUESTION_BANK = {
       "options": [
         { "id": "A", "text": "Arterioportal (hepatic artery to portal vein branch)" },
         { "id": "B", "text": "Portosystemic (portal vein to hepatic vein)" },
-        { "id": "C", "text": "Purely arteriovenous (hepatic artery to hepatic vein) only" },
+        { "id": "C", "text": "Arteriovenous (hepatic artery to hepatic vein)" },
         { "id": "D", "text": "Venovenous between two hepatic veins" }
       ],
-      "correct": "A",
-      "explanation": "Arterioportal shunts - a connection between the hepatic artery and a portal vein branch - are the most common type of hepatic AV malformation."
+      "correct": "C",
+      "explanation": "In hepatic vascular involvement from HHT, arteriovenous shunts from the hepatic artery to hepatic veins are the most common type; arterioportal and portovenous shunts also occur."
     },
     {
       "id": "avm-en-03",
@@ -2994,15 +2994,15 @@ export const QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "Morbus Jüngling"
+          "text": "Cardiogenic pulmonary oedema with smooth bilateral septal lines"
         },
         {
           "id": "C",
-          "text": "Heerfordt syndrome"
+          "text": "Sarcoidosis with symmetric perilymphatic nodules"
         },
         {
           "id": "D",
-          "text": "Discoid meniscus"
+          "text": "A UIP pattern with subpleural reticulation and honeycombing"
         }
       ],
       "correct": "A",
@@ -3046,7 +3046,7 @@ export const QUESTION_BANK = {
         "lung"
       ],
       "fach": "thorax",
-      "question": "Which modality is especially important for detecting cardiac sarcoidosis?",
+      "question": "Which modality is especially suited to demonstrating myocardial scar or fibrosis in cardiac sarcoidosis?",
       "options": [
         {
           "id": "A",
@@ -3054,19 +3054,19 @@ export const QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "Conventional knee radiograph"
+          "text": "FDG-PET for active inflammation, without direct scar characterisation"
         },
         {
           "id": "C",
-          "text": "Gallbladder ultrasound"
+          "text": "Echocardiography for functional assessment, with limited tissue characterisation"
         },
         {
           "id": "D",
-          "text": "Non-contrast head CT"
+          "text": "Coronary CT angiography for assessment of the coronary arteries"
         }
       ],
       "correct": "A",
-      "explanation": "Cardiac sarcoidosis is commonly assessed with MRI and late gadolinium enhancement. Clinically, the increased risk of arrhythmias is important."
+      "explanation": "Cardiac MRI with late gadolinium enhancement depicts non-ischaemic myocardial scar and fibrosis. FDG-PET complements MRI by assessing active inflammation; the two tests answer different clinical questions."
     },
     {
       "id": "rotatorenmanschette-en-01",
@@ -3228,13 +3228,13 @@ export const QUESTION_BANK = {
       "fach": "msk",
       "question": "What does a positive tangent sign indicate on shoulder MRI?",
       "options": [
-        { "id": "A", "text": "The humeral head crosses the tangent line between the acromion and coracoid - a sign of a massive tear" },
-        { "id": "B", "text": "The supraspinatus tendon is normally configured" },
-        { "id": "C", "text": "There is isolated tendinopathy of the long head of biceps" },
-        { "id": "D", "text": "The subacromial bursa is thickened but the tendon is intact" }
+        { "id": "A", "text": "The supraspinatus muscle belly fails to cross above the line joining the superior coracoid and scapular spine on the sagittal-oblique Y view" },
+        { "id": "B", "text": "The humeral head crosses a tangent between the acromion and coracoid" },
+        { "id": "C", "text": "The long head of biceps lies medially outside the groove" },
+        { "id": "D", "text": "The acromiohumeral interval is widened despite preserved muscle bulk" }
       ],
       "correct": "A",
-      "explanation": "In the tangent sign, the humeral head crosses the tangent line between the acromion and coracoid - this indicates a massive rotator cuff tear."
+      "explanation": "The tangent sign is assessed on the sagittal-oblique Y view. A line joins the superior margins of the coracoid and scapular spine; failure of the supraspinatus muscle belly to cross above that line is a positive sign of relevant supraspinatus atrophy."
     },
     {
       "id": "rotatorenmanschette-en-13",
@@ -3954,11 +3954,11 @@ export const QUESTION_BANK = {
       "options": [
         { "id": "A", "text": "آرتریوپورتال (شریان کبدی به شاخه ورید پورت)" },
         { "id": "B", "text": "پورتوسیستمیک (ورید پورت به ورید کبدی)" },
-        { "id": "C", "text": "صرفاً آرتریوونوس (شریان کبدی به ورید کبدی)" },
+        { "id": "C", "text": "آرتریوونوس (شریان کبدی به ورید کبدی)" },
         { "id": "D", "text": "ونو-ونوس بین دو ورید کبدی" }
       ],
-      "correct": "A",
-      "explanation": "شانت‌های آرتریوپورتال - ارتباط بین شریان کبدی و یک شاخه ورید پورت - شایع‌ترین نوع مالفورماسیون شریانی-وریدی کبد هستند."
+      "correct": "C",
+      "explanation": "در درگیری عروقی کبد در HHT، شانت آرتریوونوس از شریان کبدی به وریدهای کبدی شایع‌ترین نوع است؛ شانت‌های آرتریوپورتال و پورتوونوس نیز دیده می‌شوند."
     },
     {
       "id": "avm-fa-03",
@@ -4358,15 +4358,15 @@ export const QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "بیماری یونگلینگ (Morbus Jüngling)"
+          "text": "ادم قلبی ریه با خطوط سپتای صاف و دوطرفه"
         },
         {
           "id": "C",
-          "text": "سندرم هیرفوردت"
+          "text": "سارکوئیدوز با ندول‌های پری‌لنفاتیک متقارن"
         },
         {
           "id": "D",
-          "text": "منیسک دیسکوئید"
+          "text": "الگوی UIP با رتیکولاسیون ساب‌پلورال و هانی‌کامینگ"
         }
       ],
       "correct": "A",
@@ -4410,7 +4410,7 @@ export const QUESTION_BANK = {
         "lung"
       ],
       "fach": "thorax",
-      "question": "کدام روش برای تشخیص سارکوئیدوز قلبی اهمیت ویژه دارد؟",
+      "question": "کدام روش برای نمایش اسکار یا فیبروز میوکارد در سارکوئیدوز قلبی مناسب‌تر است؟",
       "options": [
         {
           "id": "A",
@@ -4418,19 +4418,19 @@ export const QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "رادیوگرافی ساده زانو"
+          "text": "FDG-PET برای نمایش التهاب فعال، بدون مشخص‌کردن مستقیم اسکار"
         },
         {
           "id": "C",
-          "text": "سونوگرافی کیسه صفرا"
+          "text": "اکوکاردیوگرافی برای ارزیابی عملکرد، با توان محدود در مشخصه‌سازی بافت"
         },
         {
           "id": "D",
-          "text": "CT سر بدون کنتراست"
+          "text": "CT آنژیوگرافی کرونر برای ارزیابی شریان‌های کرونر"
         }
       ],
       "correct": "A",
-      "explanation": "سارکوئیدوز قلبی معمولاً با MRI و تقویت دیررس گادولینیوم (LGE) ارزیابی می‌شود. از نظر بالینی افزایش خطر آریتمی مهم است."
+      "explanation": "MRI قلب با LGE اسکار و فیبروز غیرایسکمیک میوکارد را نشان می‌دهد. FDG-PET برای ارزیابی التهاب فعال مکمل MRI است؛ این دو روش به پرسش‌های بالینی متفاوت پاسخ می‌دهند."
     },
     {
       "id": "rotatorenmanschette-fa-01",
@@ -4592,13 +4592,13 @@ export const QUESTION_BANK = {
       "fach": "msk",
       "question": "علامت تانژانت مثبت در MRI شانه به چه معناست؟",
       "options": [
-        { "id": "A", "text": "سر هومروس از خط فرضی بین آکرومیون و کوراکوئید عبور می‌کند - نشانه پارگی وسیع" },
-        { "id": "B", "text": "تاندون سوپراسپیناتوس ساختار طبیعی دارد" },
-        { "id": "C", "text": "تاندینوپاتی ایزوله سر بلند بایسپس وجود دارد" },
-        { "id": "D", "text": "بورس ساب‌آکرومیال ضخیم شده اما تاندون سالم است" }
+        { "id": "A", "text": "در نمای Y ساژیتال مایل، شکم عضله سوپراسپیناتوس از خط بین لبه فوقانی کوراکوئید و اسپاین اسکاپولا بالاتر نمی‌رود" },
+        { "id": "B", "text": "سر هومروس از خط بین آکرومیون و کوراکوئید عبور می‌کند" },
+        { "id": "C", "text": "تاندون سر بلند بایسپس در سمت مدیال خارج از شیار قرار دارد" },
+        { "id": "D", "text": "با وجود حفظ حجم عضله، فاصله آکرومیو‌هومرال افزایش یافته است" }
       ],
       "correct": "A",
-      "explanation": "در علامت تانژانت، سر هومروس از خط فرضی بین آکرومیون و کوراکوئید عبور می‌کند - این نشانه یک پارگی وسیع روتاتور کاف است."
+      "explanation": "علامت تانژانت در نمای Y ساژیتال مایل سنجیده می‌شود. خطی بین لبه فوقانی کوراکوئید و اسپاین اسکاپولا رسم می‌شود؛ اگر شکم عضله سوپراسپیناتوس از این خط بالاتر نرود، علامت مثبت است و به نفع آتروفی قابل‌توجه سوپراسپیناتوس است."
     },
     {
       "id": "rotatorenmanschette-fa-13",

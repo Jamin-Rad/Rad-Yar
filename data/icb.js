@@ -846,9 +846,9 @@ export const ICB_PRUEFUNG_CASES = [
     plane: 'CT · axial · nativ',
     title: L('Hyperdenses Hämatom im Kleinhirn mit Ödemsaum', 'Hyperattenuating cerebellar haematoma with oedema rim', 'هماتوم هایپردنس مخچه با حلقه ادم'),
     vignette: L(
-      '71-jähriger Patient unter Phenprocoumon-Therapie (INR 3,8). Plötzliche rechtsseitige Hemiparese und Sprachstörung. GCS 12. Was ist die bildgebende Diagnose und was zeigt das beschriebene Zeichen an?',
-      'A 71-year-old man on phenprocoumon (INR 3.8) presents with sudden right hemiparesis and dysphasia. GCS 12. What is the imaging diagnosis and what does the described sign indicate?',
-      'مرد ۷۱ ساله تحت درمان فنپروکومون (INR ۳.۸). همی‌پارزی راست ناگهانی و اختلال گفتار. GCS ۱۲. تشخیص تصویربرداری و معنی علامت توصیف‌شده چیست؟'
+      '71-jähriger Patient unter Phenprocoumon-Therapie (INR 3,8) mit plötzlich einsetzendem Schwindel, Erbrechen und schwerer Stand- und Gangataxie. GCS 12. Was ist die bildgebende Diagnose und was zeigt das beschriebene Zeichen an?',
+      'A 71-year-old man on phenprocoumon (INR 3.8) presents with sudden vertigo, vomiting and severe truncal and gait ataxia. GCS 12. What is the imaging diagnosis and what does the described sign indicate?',
+      'مرد ۷۱ ساله تحت درمان فنپروکومون (INR ۳.۸) با سرگیجه ناگهانی، استفراغ و آتاکسی شدید تنه و راه‌رفتن مراجعه می‌کند. GCS برابر ۱۲ است. تشخیص تصویربرداری و معنی علامت توصیف‌شده چیست؟'
     ),
     question: L(
       'Welche Befundung und Interpretation passen am besten zu diesem CT-Bild?',
@@ -856,16 +856,16 @@ export const ICB_PRUEFUNG_CASES = [
       'کدام گزارش و تفسیر با این تصویر CT بهترین تطابق را دارد؟'
     ),
     options: [
-      { id: 'A', text: L('ICB mit Swirl Sign · aktive Blutung · hohes Expansionsrisiko', 'ICB with Swirl Sign · active bleeding · high expansion risk', 'ICB با علامت چرخش (Swirl sign) · خونریزی فعال · خطر بالای گسترش') },
+      { id: 'A', text: L('ICB mit Swirl Sign · möglicher Anteil unkoagulierten Blutes · erhöhtes Expansionsrisiko', 'ICB with swirl sign · possible unclotted blood component · increased expansion risk', 'ICB با علامت چرخش؛ احتمال وجود خون منعقدنشده و افزایش خطر گسترش') },
       { id: 'B', text: L('Ischämischer Infarkt mit perifokaler Hypodensität', 'Ischaemic infarct with perilesional hypodensity', 'انفارکت ایسکمیک با هیپودنسیتی اطراف') },
       { id: 'C', text: L('Abszess mit zentraler Nekrose · kein Hinweis auf Blutung', 'Abscess with central necrosis · no sign of haemorrhage', 'آبسه با نکروز مرکزی · بدون نشانه خونریزی') },
       { id: 'D', text: L('Subdurale Blutung über dem Parenchym', 'Subdural haematoma over the parenchyma', 'هماتوم ساب‌دورال روی پارانشیم') },
     ],
     correct: 'A',
     explanation: L(
-      'Das hyperdense Hämatom mit eingestreuten hypodensen Arealen ist klassisch für das Swirl Sign. Es zeigt aktive, unkoagulierte Blutung an und gilt als unabhängiger Prädiktor für Hämatomexpansion. Bei OAK-Einnahme (INR 3,8) besteht ein hohes Blutungsrisiko und eine rasche Antagonisierung ist indiziert.',
-      'A hyperattenuating haematoma with interspersed hypodense areas is classic for the Swirl Sign. It indicates active, unclotted bleeding and is an independent predictor of haematoma expansion. With anticoagulation (INR 3.8), rapid reversal is indicated.',
-      'هماتوم هایپردنس با مناطق هیپودنس پراکنده کلاسیک برای علامت چرخش (Swirl sign) است. نشانگر خونریزی فعال و پیش‌بینی‌کننده مستقل گسترش هماتوم است. با مصرف ضدانعقاد (INR ۳.۸)، معکوس‌سازی سریع ضروری است.'
+      'Das hyperdense Hämatom mit eingestreuten hypodensen Arealen entspricht dem Swirl Sign. Die weniger dichten Anteile können unkoaguliertes Blut darstellen und sind mit einem erhöhten Risiko der Hämatomexpansion assoziiert; das Zeichen beweist eine aktuell aktive Blutung jedoch nicht allein. Bei OAK-Einnahme (INR 3,8) ist eine rasche Antagonisierung indiziert.',
+      'A hyperattenuating haematoma with interspersed hypodense areas represents the swirl sign. The lower-density components may reflect unclotted blood and are associated with increased haematoma expansion risk, but the sign alone does not prove active bleeding at that moment. With anticoagulation (INR 3.8), rapid reversal is indicated.',
+      'هماتوم هایپردنس با نواحی هیپودنس پراکنده با علامت چرخش سازگار است. بخش‌های کم‌دانسیته ممکن است خون منعقدنشده باشند و با افزایش خطر گسترش هماتوم ارتباط دارند، اما این علامت به‌تنهایی خونریزی فعال در همان لحظه را اثبات نمی‌کند. با مصرف ضدانعقاد و INR برابر ۳.۸، معکوس‌سازی سریع اندیکاسیون دارد.'
     ),
     source: 'https://radiopaedia.org/articles/intracerebral-haemorrhage?lang=us',
     credit: 'Bildmaterial aus dem Lehrmaterial · Radiopaedia CC BY-NC-SA 3.0',

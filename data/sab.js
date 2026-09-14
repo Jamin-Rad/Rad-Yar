@@ -44,7 +44,7 @@ export const SAB_LESSON = {
       ),
     },
     {
-      value: '~28 %',
+      value: '~40 %',
       label: L('Vasospasmus Gr. 4', 'Vasospasm Gr. 4', 'وازواسپاسم درجه ۴'),
       text: L(
         'Fisher Grad 4 (dickes Blut + IVH) trägt das höchste Vasospasmusprisiko.',
@@ -181,7 +181,7 @@ export const SAB_LESSON = {
       [
         L('0 – 6 Stunden', '0 – 6 hours', '۰ – ۶ ساعت'),
         '~98–100 %',
-        L('CT nativ ausreichend – Goldstandard', 'NCCT alone sufficient — gold standard', 'CT بدون کنتراست کافی است — استاندارد طلایی'),
+        L('Bei normalem Neurostatus und hochwertigem CT zum Ausschluss meist ausreichend', 'Usually sufficient to exclude SAH with a normal neurological examination and high-quality CT', 'در معاینه عصبی طبیعی و CT باکیفیت، معمولاً برای رد SAB کافی است'),
       ],
       [
         L('6 – 24 Stunden', '6 – 24 hours', '۶ – ۲۴ ساعت'),
@@ -238,9 +238,9 @@ export const SAB_LESSON = {
       },
     ],
     key: L(
-      'CT negativ ≠ SAB ausgeschlossen! Bei starkem klinischen Verdacht und CT >6 h nach Beginn: Lumbalpunktion (Xanthochromie nach ≥2 h) oder MRT FLAIR.',
-      'CT negative ≠ SAH excluded! With strong clinical suspicion and CT >6 h from onset: lumbar puncture (xanthochromia after ≥2 h) or MRI FLAIR.',
-      'CT منفی = SAB رد نشده! با مظنون بالینی شدید و CT >۶ ساعت از شروع: پونکسیون لومبار (زانتوکرومی بعد از ≥۲ ساعت) یا MRI FLAIR.'
+      'Ein negatives CT schließt eine SAB nicht unter allen Bedingungen aus. Bei Präsentation nach >6 h oder neuem neurologischem Defizit und negativem CT ist eine Lumbalpunktion mit Liquoranalyse erforderlich; lokale Präanalytik beachten.',
+      'A negative CT does not exclude SAH in every setting. If presentation is more than 6 hours after onset or there is a new neurological deficit and CT is negative, lumbar puncture with CSF analysis is required; follow local laboratory protocols.',
+      'CT منفی در همه شرایط SAB را رد نمی‌کند. اگر مراجعه بیش از ۶ ساعت پس از شروع علائم باشد یا نقص عصبی جدید وجود داشته باشد و CT منفی باشد، پونکسیون لومبار و بررسی CSF لازم است؛ پروتکل آزمایشگاه محلی باید رعایت شود.'
     ),
   },
 
@@ -271,28 +271,28 @@ export const SAB_LESSON = {
         '1',
         L('Dünn (<1 mm)', 'Thin (<1 mm)', 'نازک (<۱ mm)'),
         L('Nein', 'No', 'خیر'),
-        '~6 %',
+        '~24 %',
         L('Dünne Blutschicht in Zisternen, kein Ventrikelblut', 'Thin blood layer in cisterns, no ventricular blood', 'لایه نازک خون در سیسترن‌ها، بدون خون در بطن‌ها'),
       ],
       [
         '2',
         L('Dünn (<1 mm)', 'Thin (<1 mm)', 'نازک (<۱ mm)'),
         L('Ja ✓', 'Yes ✓', 'بله ✓'),
-        '~14 %',
+        '~33 %',
         L('Dünne Blutschicht + Blut in ≥1 Seitenventrikel', 'Thin blood + blood in ≥1 lateral ventricle', 'لایه نازک خون + خون در ≥۱ بطن جانبی'),
       ],
       [
         '3',
         L('Dick (≥1 mm)', 'Thick (≥1 mm)', 'ضخیم (≥۱ mm)'),
         L('Nein', 'No', 'خیر'),
-        '~12 %',
+        '~33 %',
         L('Dicke Blutansammlung / Zisternenverfüllung, kein IVH', 'Thick blood collection / cistern filling, no IVH', 'تجمع خون ضخیم / پر شدن سیسترن، بدون IVH'),
       ],
       [
         '4',
         L('Dick (≥1 mm)', 'Thick (≥1 mm)', 'ضخیم (≥۱ mm)'),
         L('Ja ✓', 'Yes ✓', 'بله ✓'),
-        '~28 %',
+        '~40 %',
         L('Dicke Blutansammlung + Blut in ≥1 Seitenventrikel', 'Thick blood + blood in ≥1 lateral ventricle', 'تجمع خون ضخیم + خون در ≥۱ بطن جانبی'),
       ],
     ],
@@ -327,14 +327,14 @@ export const SAB_LESSON = {
       },
     ],
     cave: L(
-      'Grad 2 (dünn + IVH, ~14 %) hat paradoxerweise ein HÖHERES Vasospasmusprisiko als Grad 3 (dick + kein IVH, ~12 %). Das Vorhandensein einer IVH ist ein starker unabhängiger Risikofaktor!',
-      'Grade 2 (thin + IVH, ~14 %) has paradoxically HIGHER vasospasm risk than Grade 3 (thick + no IVH, ~12 %). IVH is a strong independent risk factor for vasospasm!',
-      'درجه ۲ (نازک + IVH، ~۱۴٪) به طرز پارادوکسیکال خطر وازواسپاسم بالاتری از درجه ۳ (ضخیم + بدون IVH، ~۱۲٪) دارد. IVH عامل خطر مستقل و قوی است!'
+      'Grad 2 (dünn + IVH) und Grad 3 (dick ohne IVH) zeigten in der ursprünglichen Validierung ein ähnlich hohes Risiko für symptomatischen Vasospasmus (je ~33 %). Grad 4 trägt mit ~40 % das höchste Risiko.',
+      'Grade 2 (thin SAH with IVH) and Grade 3 (thick SAH without IVH) had a similarly elevated risk of symptomatic vasospasm in the original validation (about 33% each). Grade 4 carries the highest risk at about 40%.',
+      'در اعتبارسنجی اولیه، درجه ۲ (خون نازک همراه IVH) و درجه ۳ (خون ضخیم بدون IVH) خطر تقریباً مشابهی برای وازواسپاسم علامت‌دار داشتند (هر کدام حدود ۳۳٪). درجه ۴ با حدود ۴۰٪ بیشترین خطر را دارد.'
     ),
     key: L(
-      'Zwei Schlüsselparameter: (1) Blutdicke < 1 mm (dünn) vs. ≥ 1 mm (dick) und (2) IVH vorhanden oder nicht. Grad 4 = dick + IVH = höchstes Risiko (~28 %).',
-      'Two key parameters: (1) blood thickness <1 mm (thin) vs. ≥1 mm (thick) and (2) IVH present or absent. Grade 4 = thick + IVH = highest risk (~28 %).',
-      'دو پارامتر کلیدی: (۱) ضخامت خون <۱ mm (نازک) در مقابل ≥۱ mm (ضخیم) و (۲) حضور یا عدم IVH. درجه ۴ = ضخیم + IVH = بیشترین خطر (~۲۸٪).'
+      'Zwei Schlüsselparameter: (1) Blutdicke < 1 mm (dünn) vs. ≥ 1 mm (dick) und (2) IVH vorhanden oder nicht. Grad 4 = dick + IVH = höchstes Risiko (~40 % in der ursprünglichen Validierung).',
+      'Two key parameters: (1) blood thickness <1 mm (thin) vs. ≥1 mm (thick) and (2) IVH present or absent. Grade 4 = thick + IVH = highest risk (about 40% in the original validation).',
+      'دو پارامتر کلیدی: (۱) ضخامت خون <۱ mm (نازک) در مقابل ≥۱ mm (ضخیم) و (۲) وجود یا عدم IVH. درجه ۴ = خون ضخیم + IVH و در اعتبارسنجی اولیه بیشترین خطر را داشت (حدود ۴۰٪).'
     ),
   },
 
@@ -477,9 +477,9 @@ export const SAB_LESSON = {
       {
         title: L('Fisher-Grad bestimmen', 'Determine Fisher grade', 'درجه فیشر را تعیین کنید'),
         text: L(
-          'Blutdicke (<1 mm vs. ≥1 mm) + IVH (ja/nein) → Grad 0–4. Grad 4 = dick + IVH = höchstes Vasospasmusprisiko (~28 %).',
-          'Blood thickness (<1 mm vs. ≥1 mm) + IVH (yes/no) → grade 0–4. Grade 4 = thick + IVH = highest vasospasm risk (~28 %).',
-          'ضخامت خون (<۱ mm در مقابل ≥۱ mm) + IVH (بله/خیر) → درجه ۰-۴. درجه ۴ = ضخیم + IVH = بیشترین خطر وازواسپاسم (~۲۸٪).'
+          'Blutdicke (<1 mm vs. ≥1 mm) + IVH (ja/nein) → Grad 0–4. Grad 4 = dick + IVH = höchstes Vasospasmusrisiko (~40 % in der ursprünglichen Validierung).',
+          'Blood thickness (<1 mm vs. ≥1 mm) + IVH (yes/no) → grade 0–4. Grade 4 = thick + IVH = highest vasospasm risk (about 40% in the original validation).',
+          'ضخامت خون (<۱ mm در مقابل ≥۱ mm) + IVH (بله/خیر) → درجه ۰ تا ۴. درجه ۴ = خون ضخیم + IVH و در اعتبارسنجی اولیه بیشترین خطر را داشت (حدود ۴۰٪).'
         ),
       },
       {
@@ -508,21 +508,21 @@ const SAB_QUESTION_CONTENT = [
   {
     id: 'sab-q1',
     question: L(
-      'Ein 48-jähriger Patient klagt über plötzlich einsetzenden, schwersten Kopfschmerz. Die initiale CT (45 Minuten nach Beginn) ist negativ. Was ist der nächste richtige Schritt?',
-      'A 48-year-old patient reports a sudden-onset, worst-ever headache. The initial CT (45 minutes after onset) is negative. What is the correct next step?',
-      'بیمار ۴۸ ساله از سردرد ناگهانی و شدیدترین سردرد عمرش شکایت دارد. CT اولیه (۴۵ دقیقه پس از شروع) منفی است. قدم بعدی چیست؟'
+      'Ein 48-jähriger Patient mit normalem Neurostatus klagt über plötzlich einsetzenden Vernichtungskopfschmerz. Ein modernes, qualitativ hochwertiges Nativ-CT wird 45 Minuten nach Beginn fachkundig als negativ beurteilt. Welche Aussage ist richtig?',
+      'A 48-year-old patient with a normal neurological examination reports a thunderclap headache. A modern high-quality non-contrast CT performed 45 minutes after onset is expertly interpreted as negative. Which statement is correct?',
+      'بیمار ۴۸ ساله با معاینه عصبی طبیعی دچار سردرد ناگهانی و بسیار شدید شده است. CT بدون کنتراست مدرن و باکیفیت ۴۵ دقیقه پس از شروع، توسط فرد مجرب منفی گزارش می‌شود. کدام عبارت درست است؟'
     ),
     options: [
-      L('Patient entlassen – CT negativ schließt SAB aus', 'Discharge the patient — negative CT excludes SAH', 'ترخیص بیمار — CT منفی SAB را رد می‌کند'),
-      L('Lumbalpunktion nach ≥2 h zum Xanthochromie-Nachweis', 'Lumbar puncture after ≥2 h to detect xanthochromia', 'پونکسیون لومبار بعد از ≥۲ ساعت برای تشخیص زانتوکرومی'),
-      L('MRT FLAIR sofort – sensitiver als CT', 'Immediate MRI FLAIR — more sensitive than CT', 'MRI FLAIR فوری — حساس‌تر از CT'),
-      L('CT-Angiographie zur Aneurysmasuche', 'CT angiography to look for an aneurysm', 'CT آنژیوگرافی برای جستجوی آنوریسم'),
+      L('Unter diesen Bedingungen kann das CT zum Ausschluss einer SAB ausreichen; Bildqualität und klinischer Kontext müssen stimmen', 'Under these conditions CT can be sufficient to exclude SAH, provided image quality and clinical context are appropriate', 'در این شرایط CT می‌تواند برای رد SAB کافی باشد، به شرط مناسب بودن کیفیت تصویر و زمینه بالینی'),
+      L('Unabhängig von Zeitpunkt und CT-Qualität ist immer eine Lumbalpunktion vorgeschrieben', 'Lumbar puncture is mandatory regardless of timing and CT quality', 'صرف‌نظر از زمان و کیفیت CT، پونکسیون لومبار همیشه الزامی است'),
+      L('Eine negative CTA würde jede Form der SAB sicher ausschließen', 'A negative CTA would reliably exclude every form of SAH', 'CTA منفی همه انواع SAB را با قطعیت رد می‌کند'),
+      L('Der Patient kann ohne Prüfung von Bildqualität oder klinischem Risiko entlassen werden', 'The patient can be discharged without checking image quality or clinical risk', 'بیمار را می‌توان بدون بررسی کیفیت تصویر یا خطر بالینی ترخیص کرد'),
     ],
-    correct: 'B',
+    correct: 'A',
     explanation: L(
-      'Innerhalb von 6 h ist die CT nahezu 100 % sensitiv, kann aber in seltenen Fällen negativ sein. Der nächste Schritt ist die Lumbalpunktion nach ≥2 h, um Xanthochromie (Hämolyse-Bilirubin) nachzuweisen. Die LP sollte nicht sofort erfolgen, da Xanthochromie Zeit braucht. CTA wäre sinnvoll bei positivem SAB-Nachweis, aber noch nicht jetzt.',
-      'Within 6 h CT is nearly 100 % sensitive but can rarely be negative. The next step is lumbar puncture after ≥2 h to detect xanthochromia (from haemolysed bilirubin). LP should not be done immediately as xanthochromia needs time to develop. CTA would be appropriate after SAH is confirmed, not yet.',
-      'در ۶ ساعت اول CT تقریباً ۱۰۰٪ حساس است اما به ندرت ممکن است منفی باشد. قدم بعدی پونکسیون لومبار بعد از ≥۲ ساعت برای تشخیص زانتوکرومی است. LP نباید فوری انجام شود چون زانتوکرومی به زمان نیاز دارد. CTA پس از تأیید SAB مناسب است، نه در این مرحله.'
+      'Nach der AHA/ASA-Leitlinie kann bei Beginn vor weniger als 6 Stunden, normalem Neurostatus und hochwertigem, fachkundig beurteiltem Nativ-CT der CT-Befund zum Ausschluss einer SAB ausreichen. Bei unzureichender Qualität, neuem Defizit, späterer Vorstellung oder anhaltend hohem Verdacht ist die weitere Abklärung mit Liquoranalyse beziehungsweise nach lokalem Algorithmus erforderlich.',
+      'According to the AHA/ASA guideline, a high-quality, expertly interpreted non-contrast CT can be sufficient to exclude SAH when performed within 6 hours in a patient with a normal neurological examination. Inadequate image quality, a new deficit, later presentation, or persistent high suspicion requires further evaluation with CSF analysis or the local diagnostic pathway.',
+      'طبق راهنمای AHA/ASA، در بیماری با معاینه عصبی طبیعی، CT بدون کنتراست باکیفیت و تفسیرشده توسط فرد مجرب که در ۶ ساعت اول انجام شده باشد، می‌تواند برای رد SAB کافی باشد. کیفیت ناکافی، نقص عصبی جدید، مراجعه دیرتر یا شک بالینی پایدار نیازمند بررسی بیشتر با آنالیز CSF یا الگوریتم تشخیصی محلی است.'
     ),
   },
   {
@@ -540,9 +540,9 @@ const SAB_QUESTION_CONTENT = [
     ],
     correct: 'D',
     explanation: L(
-      'Grad 4 der Modifizierten Fisher-Skala erfordert: (1) dickes Blut ≥1 mm in den Zisternen UND (2) IVH (Blut in mindestens einem Seitenventrikel). Dieser Grad hat das höchste Vasospasmusprisiko (~28 %).',
-      'Modified Fisher Grade 4 requires: (1) thick blood ≥1 mm in the cisterns AND (2) IVH (blood in at least one lateral ventricle). This grade carries the highest vasospasm risk (~28 %).',
-      'درجه ۴ فیشر اصلاح‌شده نیاز دارد: (۱) خون ضخیم ≥۱ mm در سیسترن‌ها و (۲) IVH (خون در حداقل یک بطن جانبی). این درجه بیشترین خطر وازواسپاسم (~۲۸٪) را دارد.'
+      'Grad 4 der Modifizierten Fisher-Skala erfordert: (1) dickes Blut ≥1 mm in den Zisternen UND (2) IVH (Blut in mindestens einem Seitenventrikel). In der ursprünglichen Validierung hatte dieser Grad das höchste Risiko für symptomatischen Vasospasmus (~40 %).',
+      'Modified Fisher Grade 4 requires: (1) thick blood ≥1 mm in the cisterns AND (2) IVH (blood in at least one lateral ventricle). In the original validation this grade had the highest risk of symptomatic vasospasm (about 40%).',
+      'درجه ۴ فیشر اصلاح‌شده نیاز دارد: (۱) خون ضخیم ≥۱ mm در سیسترن‌ها و (۲) IVH در حداقل یک بطن جانبی. در اعتبارسنجی اولیه این درجه بیشترین خطر وازواسپاسم علامت‌دار را داشت (حدود ۴۰٪).'
     ),
   },
   {
@@ -553,16 +553,16 @@ const SAB_QUESTION_CONTENT = [
       'بیماران با درجه ۲ فیشر اصلاح‌شده (خون نازک + IVH) در مقایسه با درجه ۳ (خون ضخیم، بدون IVH) چه خطر وازواسپاسمی دارند؟'
     ),
     options: [
-      L('Grad 2 hat niedrigeres Risiko (~6 %) als Grad 3 (~12 %)', 'Grade 2 has lower risk (~6 %) than Grade 3 (~12 %)', 'درجه ۲ خطر کمتری (~۶٪) نسبت به درجه ۳ (~۱۲٪) دارد'),
-      L('Beide Grade haben identisches Risiko (~12 %)', 'Both grades have identical risk (~12 %)', 'هر دو درجه خطر یکسانی (~۱۲٪) دارند'),
-      L('Grad 2 hat HÖHERES Risiko (~14 %) als Grad 3 (~12 %)', 'Grade 2 has HIGHER risk (~14 %) than Grade 3 (~12 %)', 'درجه ۲ خطر بالاتری (~۱۴٪) نسبت به درجه ۳ (~۱۲٪) دارد'),
-      L('Grad 3 hat immer höheres Risiko als Grad 2', 'Grade 3 always has higher risk than Grade 2', 'درجه ۳ همیشه خطر بالاتری از درجه ۲ دارد'),
+      L('Grad 2 hat deutlich niedrigeres Risiko als Grad 3', 'Grade 2 has a markedly lower risk than Grade 3', 'درجه ۲ خطر بسیار کمتری از درجه ۳ دارد'),
+      L('Beide haben ein ähnlich erhöhtes Risiko von jeweils etwa 33 %', 'Both have a similarly elevated risk of about 33% each', 'هر دو خطر افزایش‌یافته و تقریباً مشابهی، حدود ۳۳٪، دارند'),
+      L('Grad 2 hat etwa doppelt so hohes Risiko wie Grad 3', 'Grade 2 has about twice the risk of Grade 3', 'درجه ۲ تقریباً دو برابر درجه ۳ خطر دارد'),
+      L('Grad 3 hat unabhängig von IVH immer das höchste Risiko aller Grade', 'Grade 3 always has the highest risk of all grades regardless of IVH', 'درجه ۳ صرف‌نظر از IVH همیشه بیشترین خطر را در میان همه درجات دارد'),
     ],
-    correct: 'C',
+    correct: 'B',
     explanation: L(
-      'Paradoxerweise hat Grad 2 (dünn + IVH, ~14 %) ein höheres Vasospasmusprisiko als Grad 3 (dick, kein IVH, ~12 %). Das liegt daran, dass die IVH ein starker unabhängiger Risikofaktor für Vasospasmus ist – unabhängig von der Blutmenge in den Zisternen.',
-      'Paradoxically, Grade 2 (thin + IVH, ~14 %) has higher vasospasm risk than Grade 3 (thick, no IVH, ~12 %). This is because IVH is a strong independent risk factor for vasospasm, independent of blood volume in the cisterns.',
-      'به طرز پارادوکسیکال، درجه ۲ (نازک + IVH، ~۱۴٪) خطر وازواسپاسم بالاتری از درجه ۳ (ضخیم، بدون IVH، ~۱۲٪) دارد. این به این دلیل است که IVH عامل خطر مستقل قوی برای وازواسپاسم است.'
+      'In der ursprünglichen Validierung der Modifizierten Fisher-Skala entwickelten bei Grad 2 und Grad 3 jeweils etwa 33 % einen symptomatischen Vasospasmus. Die Skala bewertet deshalb Blutdicke und IVH gemeinsam; Grad 4 hatte mit etwa 40 % das höchste Risiko.',
+      'In the original validation of the Modified Fisher Scale, about 33% of patients in both Grade 2 and Grade 3 developed symptomatic vasospasm. The scale therefore considers cisternal blood thickness together with IVH; Grade 4 had the highest risk at about 40%.',
+      'در اعتبارسنجی اولیه مقیاس فیشر اصلاح‌شده، حدود ۳۳٪ بیماران در هر دو درجه ۲ و ۳ دچار وازواسپاسم علامت‌دار شدند. بنابراین این مقیاس ضخامت خون سیسترنی و IVH را با هم در نظر می‌گیرد؛ درجه ۴ با حدود ۴۰٪ بیشترین خطر را داشت.'
     ),
   },
   {
@@ -674,9 +674,9 @@ export const SAB_FLASHCARDS = [
       '۱. ضخامت خون (نازک < ۱mm / ضخیم ≥ ۱mm)  ۲. IVH (بله / خیر)'
     ),
     explanation: L(
-      'Aus diesen zwei Parametern ergibt sich Grad 0–4. Grad 0 = kein SAB (~0 %), Grad 1 = dünn, kein IVH (~6 %), Grad 2 = dünn + IVH (~14 %), Grad 3 = dick, kein IVH (~12 %), Grad 4 = dick + IVH (~28 %).',
-      'These two parameters determine grade 0–4. Grade 0 = no SAH (~0 %), Grade 1 = thin, no IVH (~6 %), Grade 2 = thin + IVH (~14 %), Grade 3 = thick, no IVH (~12 %), Grade 4 = thick + IVH (~28 %).',
-      'از این دو پارامتر درجه ۰-۴ تعیین می‌شود. درجه ۰ = بدون SAB (~۰٪)، درجه ۱ = نازک، بدون IVH (~۶٪)، درجه ۲ = نازک + IVH (~۱۴٪)، درجه ۳ = ضخیم، بدون IVH (~۱۲٪)، درجه ۴ = ضخیم + IVH (~۲۸٪).'
+      'Aus diesen zwei Parametern ergibt sich Grad 0–4. In der ursprünglichen Validierung lag das Risiko eines symptomatischen Vasospasmus bei Grad 0 bei ~0 %, Grad 1 bei ~24 %, Grad 2 und 3 bei je ~33 % und Grad 4 bei ~40 %.',
+      'These two parameters determine grades 0–4. In the original validation, symptomatic vasospasm risk was about 0% for Grade 0, 24% for Grade 1, 33% each for Grades 2 and 3, and 40% for Grade 4.',
+      'این دو پارامتر درجات ۰ تا ۴ را تعیین می‌کنند. در اعتبارسنجی اولیه، خطر وازواسپاسم علامت‌دار در درجه ۰ حدود ۰٪، درجه ۱ حدود ۲۴٪، درجات ۲ و ۳ هر کدام حدود ۳۳٪ و درجه ۴ حدود ۴۰٪ بود.'
     ),
     diagram: L(
       'Blutdicke messen → dünn / dick → IVH? ja/nein → Grad 0–4',
@@ -694,19 +694,19 @@ export const SAB_FLASHCARDS = [
       'کدام درجه فیشر اصلاح‌شده بیشترین خطر وازواسپاسم را دارد؟'
     ),
     back: L(
-      'Grad 4 (dick + IVH) → ~28 %',
-      'Grade 4 (thick + IVH) → ~28 %',
-      'درجه ۴ (ضخیم + IVH) → ~۲۸٪'
+      'Grad 4 (dick + IVH) → ~40 % in der ursprünglichen Validierung',
+      'Grade 4 (thick + IVH) → about 40% in the original validation',
+      'درجه ۴ (خون ضخیم + IVH) → حدود ۴۰٪ در اعتبارسنجی اولیه'
     ),
     explanation: L(
-      'Grad 4 kombiniert beide Risikofaktoren: dickes Blut (≥1 mm) UND IVH. Das ergibt das höchste Vasospasmusrisiko. Zum Vergleich: Grad 0 ~0 %, Grad 1 ~6 %, Grad 2 ~14 %, Grad 3 ~12 %.',
-      'Grade 4 combines both risk factors: thick blood (≥1 mm) AND IVH — giving the highest vasospasm risk. Comparison: Grade 0 ~0 %, Grade 1 ~6 %, Grade 2 ~14 %, Grade 3 ~12 %.',
-      'درجه ۴ هر دو عامل خطر را دارد: خون ضخیم (≥۱ mm) و IVH — بیشترین خطر وازواسپاسم. مقایسه: درجه ۰ ~۰٪، درجه ۱ ~۶٪، درجه ۲ ~۱۴٪، درجه ۳ ~۱۲٪.'
+      'Grad 4 kombiniert dickes Zisternenblut und IVH und hatte in der ursprünglichen Validierung das höchste Risiko. Die beobachteten Raten waren: Grad 0 ~0 %, Grad 1 ~24 %, Grad 2 ~33 %, Grad 3 ~33 %, Grad 4 ~40 %.',
+      'Grade 4 combines thick cisternal blood and IVH and had the highest risk in the original validation. Observed rates were: Grade 0 about 0%, Grade 1 24%, Grade 2 33%, Grade 3 33%, and Grade 4 40%.',
+      'درجه ۴ ترکیب خون ضخیم سیسترنی و IVH است و در اعتبارسنجی اولیه بیشترین خطر را داشت. میزان‌های مشاهده‌شده: درجه ۰ حدود ۰٪، درجه ۱ حدود ۲۴٪، درجه ۲ حدود ۳۳٪، درجه ۳ حدود ۳۳٪ و درجه ۴ حدود ۴۰٪.'
     ),
     diagram: L(
-      'Gr.0: ~0% → Gr.1: ~6% → Gr.2: ~14% → Gr.3: ~12% → Gr.4: ~28%',
-      'Gr.0: ~0% → Gr.1: ~6% → Gr.2: ~14% → Gr.3: ~12% → Gr.4: ~28%',
-      'Gr.0: ~۰٪ → Gr.1: ~۶٪ → Gr.2: ~۱۴٪ → Gr.3: ~۱۲٪ → Gr.4: ~۲۸٪'
+      'Gr.0: ~0% → Gr.1: ~24% → Gr.2: ~33% → Gr.3: ~33% → Gr.4: ~40%',
+      'Gr.0: ~0% → Gr.1: ~24% → Gr.2: ~33% → Gr.3: ~33% → Gr.4: ~40%',
+      'Gr.0: ~۰٪ → Gr.1: ~۲۴٪ → Gr.2: ~۳۳٪ → Gr.3: ~۳۳٪ → Gr.4: ~۴۰٪'
     ),
     topicId: 'subarachnoidalblutung',
     tags: ['fisher-skala', 'vasospasmus'],
@@ -714,24 +714,24 @@ export const SAB_FLASHCARDS = [
   {
     id: 'sab-fc-3',
     front: L(
-      'Warum hat Fisher Grad 2 (~14 %) ein HÖHERES Vasospasmusrisiko als Grad 3 (~12 %)?',
-      'Why does Fisher Grade 2 (~14 %) have HIGHER vasospasm risk than Grade 3 (~12 %)?',
-      'چرا درجه ۲ فیشر (~۱۴٪) خطر وازواسپاسم بالاتری از درجه ۳ (~۱۲٪) دارد؟'
+      'Wie unterscheiden sich Fisher Grad 2 und Grad 3 beim Risiko eines symptomatischen Vasospasmus?',
+      'How do Fisher Grades 2 and 3 compare in symptomatic vasospasm risk?',
+      'خطر وازواسپاسم علامت‌دار در درجات ۲ و ۳ فیشر چگونه با هم مقایسه می‌شود؟'
     ),
     back: L(
-      'IVH ist ein unabhängiger Risikofaktor – schwerer als Blutdicke allein.',
-      'IVH is an independent risk factor — weighs heavier than blood thickness alone.',
-      'IVH عامل خطر مستقل است — مهم‌تر از ضخامت خون به تنهایی.'
+      'In der ursprünglichen Validierung war das Risiko ähnlich hoch: jeweils ~33 %.',
+      'In the original validation, risk was similarly elevated at about 33% for each.',
+      'در اعتبارسنجی اولیه، خطر در هر دو تقریباً مشابه و حدود ۳۳٪ بود.'
     ),
     explanation: L(
-      'Grad 2 = dünn + IVH. Grad 3 = dick, KEIN IVH. Die IVH erhöht das Vasospasmusrisiko unabhängig von der Blutmenge. Daher schlägt Grad 2 (~14 %) trotz weniger Blut den Grad 3 (~12 %) – ein paradoxes, aber gut belegtes Phänomen.',
-      'Grade 2 = thin + IVH. Grade 3 = thick, NO IVH. IVH raises vasospasm risk independently of blood volume. Hence Grade 2 (~14 %) beats Grade 3 (~12 %) despite less blood — a paradoxical but well-documented finding.',
-      'درجه ۲ = نازک + IVH. درجه ۳ = ضخیم، بدون IVH. IVH خطر وازواسپاسم را مستقل از حجم خون افزایش می‌دهد. بنابراین درجه ۲ (~۱۴٪) با خون کمتر از درجه ۳ (~۱۲٪) پیشی می‌گیرد.'
+      'Grad 2 kombiniert dünnes Zisternenblut mit IVH, Grad 3 dickes Zisternenblut ohne IVH. Beide Gruppen zeigten in der ursprünglichen Studie eine Rate von etwa 33 %; erst Grad 4 war mit etwa 40 % höher.',
+      'Grade 2 combines thin cisternal blood with IVH, whereas Grade 3 has thick cisternal blood without IVH. Both groups had a rate of about 33% in the original study; Grade 4 was higher at about 40%.',
+      'درجه ۲ شامل خون نازک سیسترنی همراه IVH و درجه ۳ شامل خون ضخیم سیسترنی بدون IVH است. در مطالعه اولیه میزان هر دو حدود ۳۳٪ بود و درجه ۴ با حدود ۴۰٪ بالاتر بود.'
     ),
     diagram: L(
-      'Grad 2: dünn + IVH → ~14%\nGrad 3: dick + kein IVH → ~12%',
-      'Grade 2: thin + IVH → ~14%\nGrade 3: thick + no IVH → ~12%',
-      'درجه ۲: نازک + IVH → ~۱۴٪\nدرجه ۳: ضخیم + بدون IVH → ~۱۲٪'
+      'Grad 2: dünn + IVH → ~33%\nGrad 3: dick + kein IVH → ~33%',
+      'Grade 2: thin + IVH → ~33%\nGrade 3: thick + no IVH → ~33%',
+      'درجه ۲: خون نازک + IVH → ~۳۳٪\nدرجه ۳: خون ضخیم + بدون IVH → ~۳۳٪'
     ),
     topicId: 'subarachnoidalblutung',
     tags: ['fisher-skala', 'vasospasmus'],
@@ -744,14 +744,14 @@ export const SAB_FLASHCARDS = [
       'حساسیت CT در SAB در ۶ ساعت اول چقدر است و در صورت منفی بودن چه کنیم؟'
     ),
     back: L(
-      '0–6 h: ~100 %. CT negativ + V.a. SAB → LP nach ≥ 2 h (Xanthochromie).',
-      '0–6 h: ~100 %. CT negative + SAH suspicion → LP after ≥ 2 h (xanthochromia).',
-      '۰-۶ ساعت: ~۱۰۰٪. CT منفی + مظنون به SAB → LP بعد از ≥۲ ساعت (زانتوکرومی).'
+      'Innerhalb 6 h kann ein hochwertiges, fachkundig beurteiltes CT bei normalem Neurostatus zum Ausschluss ausreichen; nach >6 h oder bei neuem Defizit ist bei negativem CT eine Liquoranalyse erforderlich.',
+      'Within 6 hours, a high-quality expertly interpreted CT may be sufficient to exclude SAH when the neurological examination is normal; after 6 hours or with a new deficit, negative CT requires CSF analysis.',
+      'در ۶ ساعت اول، CT باکیفیت و تفسیرشده توسط فرد مجرب در بیمار با معاینه عصبی طبیعی می‌تواند برای رد SAB کافی باشد؛ پس از ۶ ساعت یا در نقص عصبی جدید، CT منفی نیازمند بررسی CSF است.'
     ),
     explanation: L(
-      'Die CT-Sensitivität sinkt: ~85 % nach 24 h, ~50 % nach 5 Tagen. Xanthochromie (gelb-orange Verfärbung des Liquors durch Hämolyseprodukte) ist nach ≥2 h beweisend für SAB. Alternativ: MRT FLAIR.',
-      'CT sensitivity drops: ~85 % at 24 h, ~50 % after 5 days. Xanthochromia (yellow-orange CSF discolouration from haemolysis products) is diagnostic after ≥2 h. Alternative: MRI FLAIR.',
-      'حساسیت CT کاهش می‌یابد: ~۸۵٪ بعد از ۲۴ ساعت، ~۵۰٪ بعد از ۵ روز. زانتوکرومی (رنگ زرد-نارنجی CSF از محصولات همولیز) بعد از ≥۲ ساعت تشخیصی است. جایگزین: MRI FLAIR.'
+      'Die Aussagekraft des CT nimmt mit der Zeit ab. Bei später Vorstellung oder unzureichender CT-Qualität umfasst die weitere Abklärung eine Lumbalpunktion mit Erythrozyten- und Xanthochromieanalyse nach lokalem Laborprotokoll; ein starres Zwei-Stunden-Fenster ist nicht allgemein gültig.',
+      'CT sensitivity decreases over time. With later presentation or inadequate CT quality, further evaluation includes lumbar puncture with red-cell and xanthochromia analysis according to the local laboratory protocol; a rigid two-hour rule is not generally valid.',
+      'حساسیت CT با گذشت زمان کاهش می‌یابد. در مراجعه دیرهنگام یا کیفیت ناکافی CT، بررسی بیشتر شامل پونکسیون لومبار و ارزیابی گلبول قرمز و زانتوکرومی طبق پروتکل آزمایشگاه محلی است؛ قانون ثابت دو ساعته اعتبار عمومی ندارد.'
     ),
     diagram: L(
       '0–6 h: ~100% → 24 h: ~85% → 5 Tage: ~50%',

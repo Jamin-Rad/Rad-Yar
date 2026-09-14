@@ -160,9 +160,9 @@ export const CAA_LESSON = {
       },
     ],
     key: L(
-      'Merke: cSAH verursacht TIA-ähnliche wandernde Päresthesien (TFNE) — kein echter Embolus, sondern kortikale Blutreizung. Dieses Muster ist praktisch pathognomonisch für CAA.',
-      'Remember: cSAH causes TIA-like spreading paraesthesias (TFNE) — not a true embolus, but cortical blood irritation. This pattern is practically pathognomonic for CAA.',
-      'به یاد بسپار: cSAH پارستزی‌های گسترش‌یابنده شبیه TIA (TFNE) ایجاد می‌کند — نه آمبول واقعی، بلکه تحریک کورتیکال خون. این الگو تقریباً پاتوگنومونیک CAA است.'
+      'Merke: cSAH kann TIA-ähnliche wandernde Päresthesien (TFNE) verursachen — durch kortikale Blutreizung statt eines arteriellen Embolus. Bei älteren Patienten ist dieses Muster ein wichtiger Hinweis auf CAA.',
+      'Remember: cSAH can cause TIA-like spreading paraesthesias (TFNE) through cortical irritation by blood rather than an arterial embolus. In older patients this pattern is an important clue to CAA.',
+      'به یاد بسپار: cSAH می‌تواند به‌علت تحریک قشر توسط خون، پارستزی‌های گسترش‌یابنده شبیه TIA ایجاد کند، نه به‌علت آمبول شریانی. در سالمندان این الگو سرنخ مهمی برای CAA است.'
     ),
   },
 
@@ -329,14 +329,14 @@ const CAA_QUESTION_SEEDS = [
   ),
 
   Q('caa-02',
-    L('Was sind die Bedingungen für eine Probable CAA nach den Boston-Kriterien v2.0?',
-      'What are the conditions for Probable CAA according to the Boston Criteria v2.0?',
-      'شرایط برای CAA محتمل بر اساس معیارهای Boston v2.0 چیست؟'),
+    L('Welche MRT-Konstellation erfüllt bei einem ≥50-jährigen Patienten mit passender Klinik, ohne tiefe Blutung und ohne alternative Ursache die Boston-v2.0-Kriterien für eine Probable CAA?',
+      'Which MRI pattern meets the Boston v2.0 criteria for probable CAA in a patient aged ≥50 years with a compatible presentation, no deep haemorrhage and no alternative cause?',
+      'در بیمار ≥۵۰ سال با تظاهر بالینی سازگار، بدون خونریزی عمقی و بدون علت جایگزین، کدام الگوی MRI معیارهای Boston v2.0 برای CAA محتمل را برآورده می‌کند؟'),
     [
-      L('≥ 2 lobäre hämorrhagische Läsionen ODER 1 lobäre Läsion + 1 WM-Marker', '≥ 2 lobar haemorrhagic lesions OR 1 lobar lesion + 1 WM marker', '≥ ۲ ضایعه هموراژیک لوبار یا ۱ ضایعه لوبار + ۱ نشانگر WM'),
-      L('≥ 1 lobäre Läsion ohne weitere Bedingungen', '≥ 1 lobar lesion without further conditions', '≥ ۱ ضایعه لوبار بدون شرایط بیشتر'),
-      L('Histologischer Nachweis von β-Amyloid in der Gefäßwand', 'Histological evidence of β-amyloid in the vessel wall', 'شواهد هیستولوژیک β-آمیلوئید در دیواره عروقی'),
-      L('Nur tiefe CMBs im SWI', 'Only deep CMBs on SWI', 'فقط CMBs عمقی در SWI'),
+      L('≥2 strikt lobäre hämorrhagische Läsionen ODER 1 strikt lobäre Läsion + 1 White-Matter-Marker', '≥2 strictly lobar haemorrhagic lesions OR 1 strictly lobar lesion plus 1 white-matter marker', '≥۲ ضایعه هموراژیک کاملاً لوبار یا ۱ ضایعه کاملاً لوبار همراه با ۱ نشانگر ماده سفید'),
+      L('Eine einzelne strikt lobäre Mikroblutung ohne weiteren Marker', 'A single strictly lobar microbleed without another marker', 'یک میکروخونریزی کاملاً لوبار بدون نشانگر دیگر'),
+      L('Eine tiefe Blutung im Thalamus plus schwere Basalganglien-PVS', 'A deep thalamic haemorrhage plus severe basal-ganglia PVS', 'خونریزی عمقی تالاموس همراه با PVS شدید در عقده‌های قاعده‌ای'),
+      L('Konfluierende periventrikuläre WMH ohne lobäre Blutungsmarker', 'Confluent periventricular WMH without lobar haemorrhagic markers', 'WMH پری‌ونتریکولار کانفلوئنت بدون نشانگر خونریزی لوبار'),
     ], 0,
     L('Boston v2.0 Probable CAA: Option A = ≥2 lobäre hämorrhagische Läsionen (beliebige Kombination); Option B = 1 lobäre Läsion + 1 White-Matter-Marker. Voraussetzungen: ≥50 Jahre, passende Klinik, keine alternative Ursache, keine tiefen Blutungen.',
       'Boston v2.0 Probable CAA: Option A = ≥2 lobar haemorrhagic lesions (any combination); Option B = 1 lobar lesion + 1 White Matter marker. Requirements: ≥50 years, compatible clinical features, no alternative cause, no deep haemorrhages.',
@@ -389,18 +389,18 @@ const CAA_QUESTION_SEEDS = [
   ),
 
   Q('caa-06',
-    L('Welche Erkrankung ist in ca. 85 % der Fälle mit CAA assoziiert?',
-      'Which disease is associated with CAA in approximately 85% of cases?',
-      'کدام بیماری در حدود ۸۵٪ موارد با CAA مرتبط است؟'),
+    L('Welche Aussage beschreibt die Beziehung zwischen CAA und Alzheimer-Krankheit korrekt?',
+      'Which statement correctly describes the relationship between CAA and Alzheimer disease?',
+      'کدام عبارت رابطه میان CAA و بیماری آلزهایمر را درست توصیف می‌کند؟'),
     [
-      L('Morbus Alzheimer', "Alzheimer's disease", 'بیماری آلزهایمر'),
-      L('Diabetes mellitus Typ 2', 'Type 2 diabetes mellitus', 'دیابت ملیتوس نوع ۲'),
-      L('Parkinson-Erkrankung', "Parkinson's disease", 'بیماری پارکینسون'),
-      L('Multiple Sklerose', 'Multiple sclerosis', 'مولتیپل اسکلروزیس'),
+      L('CAA findet sich häufig bei Alzheimer, da beide Aβ-Pathologie teilen; der Nachweis der einen Erkrankung beweist die andere jedoch nicht', 'CAA is common in Alzheimer disease because both share Aβ pathology, but either diagnosis does not by itself prove the other', 'CAA در بیماری آلزهایمر شایع است زیرا هر دو پاتولوژی Aβ دارند، اما تشخیص یکی به‌تنهایی دیگری را اثبات نمی‌کند'),
+      L('CAA ist bei Alzheimer praktisch ausgeschlossen', 'CAA is virtually excluded in Alzheimer disease', 'CAA در بیماری آلزهایمر عملاً منتفی است'),
+      L('Jede CAA bedeutet definitionsgemäß eine klinische Alzheimer-Demenz', 'Every case of CAA means clinical Alzheimer dementia by definition', 'هر CAA طبق تعریف به معنای دمانس بالینی آلزهایمر است'),
+      L('Die gemeinsame Pathologie besteht vor allem aus α-Synuclein', 'Their shared pathology primarily consists of α-synuclein', 'پاتولوژی مشترک آن‌ها عمدتاً از آلفا‌سینوکلئین تشکیل شده است'),
     ], 0,
-    L('β-Amyloid ist das Schlüsselprotein beider Erkrankungen: Bei Alzheimer als parenchymale Plaques, bei CAA in der Gefäßwand. ~85 % aller Alzheimer-Fälle haben histologisch nachweisbare CAA. Klinisch wichtig: kognitiver Abbau bei lobärer Blutung → CAA + Alzheimer als gemeinsame Pathologie erwägen.',
-      'β-amyloid is the key protein in both diseases: in Alzheimer as parenchymal plaques, in CAA in the vessel wall. ~85% of all Alzheimer cases have histologically detectable CAA. Clinically important: cognitive decline with lobar haemorrhage → consider CAA + Alzheimer as shared pathology.',
-      'β-آمیلوئید پروتئین کلیدی هر دو بیماری است: در آلزهایمر به صورت پلاک‌های پارانشیمی، در CAA در دیواره عروقی. ~۸۵٪ تمام موارد آلزهایمر CAA قابل تشخیص هیستولوژیک دارند. مهم بالینی: کاهش شناختی با خونریزی لوبار → CAA + آلزهایمر را به عنوان پاتولوژی مشترک در نظر بگیرید.')
+    L('β-Amyloid ist das Schlüsselprotein beider Erkrankungen: bei Alzheimer vor allem in parenchymalen Plaques, bei CAA in kortikalen und leptomeningealen Gefäßwänden. Die histologische Überlappung ist häufig, aber die Prozentangabe bezieht sich auf den Anteil der Alzheimer-Fälle mit CAA und darf nicht umgekehrt gelesen werden.',
+      'β-amyloid is central to both disorders: mainly in parenchymal plaques in Alzheimer disease and in cortical and leptomeningeal vessel walls in CAA. Histological overlap is common, but reported percentages refer to the proportion of Alzheimer cases with CAA and must not be read in reverse.',
+      'β-آمیلوئید پروتئین اصلی هر دو بیماری است: در آلزهایمر عمدتاً در پلاک‌های پارانشیمی و در CAA در دیواره عروق کورتیکال و لپتومننژیال. همپوشانی بافت‌شناختی شایع است، اما درصدهای گزارش‌شده سهم موارد آلزهایمر همراه CAA را بیان می‌کنند و نباید برعکس تفسیر شوند.')
   ),
 
   Q('caa-07',
@@ -474,7 +474,7 @@ const CAA_FLASH_SEEDS = [
   F('tfne', L('Klinik', 'Clinical', 'کلینیک'),
     L('Was sind TFNE und wodurch entstehen sie bei CAA?', 'What are TFNE and how do they arise in CAA?', 'TFNE چیست و چگونه در CAA ایجاد می‌شود؟'),
     L('Transiente fokale neurologische Episoden durch akute cSAH. Typisch: sich ausbreitende (marchende) Päresthesien über Sekunden bis Minuten.', 'Transient focal neurological episodes from acute cSAH. Typical: spreading (marching) paraesthesias over seconds to minutes.', 'اپیزودهای عصبی کانونی گذرا ناشی از cSAH حاد. معمول: پارستزی‌های گسترش‌یابنده در طی ثانیه تا دقیقه.'),
-    L('DD zur klassischen TIA (Embolie): TFNE breitet sich marschierend aus — TIA ist sofort maximal. TFNE sind praktisch pathognomonisch für CAA und ein Boston-anerkanntes Klinik-Kriterium.', 'DDx classic TIA (embolism): TFNE spreads — TIA is maximal immediately. TFNE are practically pathognomonic for CAA and a Boston-recognised clinical criterion.', 'تشخیص افتراقی با TIA کلاسیک (آمبولی): TFNE گسترش می‌یابد — TIA بلافاصله حداکثر است. TFNE تقریباً پاتوگنومونیک CAA هستند.')
+    L('DD zur klassischen TIA (Embolie): TFNE breitet sich oft marschierend aus, während ein embolisches Defizit meist sofort maximal ist. Bei passendem Alter und lobären Bildgebungsmarkern sind TFNE ein wichtiger klinischer Hinweis auf CAA.', 'DDx from classic embolic TIA: TFNE often spreads or marches, whereas an embolic deficit is usually maximal at onset. With compatible age and lobar imaging markers, TFNE is an important clinical clue to CAA.', 'افتراق از TIA آمبولیک کلاسیک: TFNE اغلب به‌صورت تدریجی و مارشینگ گسترش می‌یابد، در حالی که نقص آمبولیک معمولاً از ابتدا حداکثر است. همراه با سن مناسب و نشانگرهای تصویربرداری لوبار، TFNE سرنخ بالینی مهمی برای CAA است.')
   ),
 
   F('klinik-chronisch', L('Klinik', 'Clinical', 'کلینیک'),

@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "audit:fa": "node scripts/audit-fa-translations.mjs",
+    "audit:mcq": "tsx scripts/audit-mcq-bank.mjs",
     "start": "next start",
     "android:sync": "cap sync android",
     "android:apk": "cd android && ./gradlew assembleDebug"

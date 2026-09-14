@@ -191,7 +191,7 @@ export const RADIUSKOPF_LESSON = {
         L('II', 'II', 'II'),
         L('Dislozierte marginale Fraktur (Keilfraktur)', 'Displaced marginal fracture (wedge)', 'شکستگی حاشیه‌ای جابجا شده (گوه‌ای)'),
         L('Gelenkstufe > 2 mm ODER > 30 % der Gelenkfläche; Keilfragment; intra- oder extraartikulär', 'Joint step > 2 mm OR > 30 % of articular surface; wedge fragment; intra- or extra-articular', 'پله مفصلی > ۲ میلی‌متر یا > ۳۰٪ سطح مفصلی؛ قطعه گوه‌ای؛ داخل یا خارج مفصل'),
-        L('Oft ORIF (Schraubenosteosynthese); selten konservativ wenn stabil', 'Often ORIF (screw fixation); rarely conservative if stable', 'اغلب ORIF (پیچ)؛ به ندرت محافظه‌کارانه اگر پایدار باشد'),
+        L('Ohne mechanischen Block oft konservativ mit früher Mobilisation; ORIF bei mechanischem Block, Instabilität oder relevanter Inkongruenz', 'Often non-operative with early mobilisation if there is no mechanical block; ORIF for mechanical block, instability or relevant incongruity', 'در نبود بلوک مکانیکی اغلب درمان غیرجراحی با تحرک زودهنگام؛ ORIF در بلوک مکانیکی، ناپایداری یا ناهمخوانی مهم مفصل'),
       ],
       [
         L('III', 'III', 'III'),
@@ -207,9 +207,9 @@ export const RADIUSKOPF_LESSON = {
       ],
     ],
     key: L(
-      'Entscheidungsgrenze Mason I vs. II: Gelenkstufe 2 mm und Gelenkflächenbeteiligung 30 %. Bei unklarem Befund: CT. Mason III immer operativ (Prothese), niemals isolierte Resektion bei Instabilität.',
-      'Decision threshold Mason I vs. II: joint step 2 mm and articular surface involvement 30 %. If unclear: CT. Mason III always surgical (arthroplasty), never isolated resection if instability present.',
-      'آستانه تصمیم ماسون I در مقابل II: پله مفصلی ۲ میلی‌متر و درگیری سطح مفصلی ۳۰٪. در صورت ابهام: CT. ماسون III همیشه جراحی (پروتز)، هرگز رزکسیون مجزا در صورت وجود ناپایداری.'
+      'Die Mason-Klassifikation beschreibt Morphologie, entscheidet aber nicht allein über die Therapie. Entscheidend sind mechanischer Bewegungsblock, Gelenkstabilität, Rekonstruierbarkeit und Begleitverletzungen. Bei unklarem Befund hilft CT.',
+      'The Mason classification describes morphology but does not determine treatment by itself. Mechanical block, joint stability, reconstructibility and associated injuries guide management. CT helps when findings are unclear.',
+      'طبقه‌بندی ماسون مورفولوژی را توصیف می‌کند، اما به‌تنهایی درمان را تعیین نمی‌کند. بلوک مکانیکی حرکت، پایداری مفصل، امکان بازسازی و آسیب‌های همراه تعیین‌کننده‌اند. در یافته‌های نامشخص CT کمک‌کننده است.'
     ),
   },
 
@@ -479,17 +479,17 @@ export const RADIUSKOPF_QUESTIONS = Object.fromEntries(['de', 'en', 'fa'].map(la
   ),
 
   Q(`rk-mason-therapie-2-${lang}`,
-    L('Ein 35-jähriger Patient hat nach FOOSH-Trauma eine Mason-II-Fraktur (Gelenkstufe 3 mm, 40 % Gelenkfläche). Welche Therapie ist indiziert?',
-      'A 35-year-old patient has a Mason II fracture after FOOSH trauma (joint step 3 mm, 40 % articular surface). What treatment is indicated?',
-      'یک بیمار ۳۵ ساله پس از تروما FOOSH یک شکستگی ماسون II دارد (پله مفصلی ۳ میلی‌متر، ۴۰٪ سطح مفصلی). کدام درمان اندیکاسیون دارد؟')[lang],
+    L('Ein 35-jähriger Patient hat nach FOOSH-Trauma eine rekonstruierbare Mason-II-Fraktur. Nach Analgesie und Gelenkaspiration bleibt ein eindeutiger mechanischer Block der Pro- und Supination bestehen. Welche Therapie ist am ehesten indiziert?',
+      'A 35-year-old patient has a reconstructible Mason II fracture after FOOSH trauma. After analgesia and joint aspiration, a clear mechanical block to pronation and supination persists. Which treatment is most appropriate?',
+      'بیمار ۳۵ ساله پس از تروما FOOSH دچار شکستگی قابل بازسازی ماسون II شده است. پس از بی‌دردی و آسپیراسیون مفصل، بلوک مکانیکی واضح پروناسیون و سوپیناسیون باقی می‌ماند. مناسب‌ترین درمان چیست؟')[lang],
     [
-      L('Konservativ mit Schlinge für 6 Wochen', 'Conservative with sling for 6 weeks', 'محافظه‌کارانه با اسلینگ برای ۶ هفته')[lang],
+      L('Frühfunktionelle konservative Therapie; der mechanische Block ist ohne Bedeutung', 'Early non-operative mobilisation; the mechanical block is irrelevant', 'درمان غیرجراحی با تحرک زودهنگام؛ بلوک مکانیکی اهمیتی ندارد')[lang],
       L('ORIF (offene Reposition und interne Fixation) mit Schrauben', 'ORIF (open reduction and internal fixation) with screws', 'ORIF (کاهش باز و تثبیت داخلی) با پیچ')[lang],
-      L('Radiusköpfchenprothese', 'Radial head arthroplasty', 'پروتز سر رادیوس')[lang],
-      L('Primäre Radiusköpfchenresektion', 'Primary radial head resection', 'رزکسیون اولیه سر رادیوس')[lang],
+      L('Radiusköpfchenprothese trotz gut rekonstruierbarer Fraktur', 'Radial head arthroplasty despite a readily reconstructible fracture', 'پروتز سر رادیوس با وجود قابل بازسازی بودن شکستگی')[lang],
+      L('Sechswöchige Ruhigstellung ohne Repositionsversuch', 'Six weeks of immobilisation without attempting reduction', 'بی‌حرکتی شش‌هفته‌ای بدون تلاش برای جااندازی')[lang],
     ],
     1,
-    L('Mason II mit Gelenkstufe > 2 mm und > 30 % Gelenkfläche → ORIF indiziert. Ziel: anatomische Rekonstruktion mit Herbert-Schrauben oder Mini-Platten. Bei isolierter Mason-II-Fraktur ohne Instabilität und guter Knochenqualität: ORIF bevorzugt.', 'Mason II with joint step > 2 mm and > 30 % articular surface → ORIF indicated. Goal: anatomical reconstruction with Herbert screws or mini-plates. In isolated Mason II without instability and good bone quality: ORIF preferred.', 'ماسون II با پله مفصلی > ۲ میلی‌متر و > ۳۰٪ سطح مفصلی → ORIF اندیکاسیون دارد. هدف: بازسازی آناتومیک با پیچ‌های هربرت یا صفحات کوچک. در ماسون II مجزا بدون ناپایداری و کیفیت استخوان خوب: ORIF ترجیح داده می‌شود.')[lang]
+    L('Ein persistierender mechanischer Rotationsblock ist bei einer rekonstruierbaren Mason-II-Fraktur eine klare Operationsindikation; ORIF stellt die Gelenkfläche wieder her. Eine isolierte stabile Mason-II-Fraktur ohne Block kann dagegen häufig frühfunktionell konservativ behandelt werden. Stufenhöhe oder Fragmentgröße allein erzwingen keine Operation.', 'A persistent mechanical block to rotation is a clear operative indication in a reconstructible Mason II fracture; ORIF restores the articular surface. An isolated stable Mason II fracture without a block can often be managed non-operatively with early mobilisation. Step height or fragment size alone does not mandate surgery.', 'بلوک مکانیکی پایدار در چرخش ساعد، در شکستگی قابل بازسازی ماسون II اندیکاسیون روشن جراحی است و ORIF سطح مفصلی را بازسازی می‌کند. شکستگی ماسون II مجزا و پایدار بدون بلوک را اغلب می‌توان با تحرک زودهنگام به‌صورت غیرجراحی درمان کرد. ارتفاع پله یا اندازه قطعه به‌تنهایی جراحی را الزامی نمی‌کند.')[lang]
   ),
 
   Q(`rk-komplikation-1-${lang}`,

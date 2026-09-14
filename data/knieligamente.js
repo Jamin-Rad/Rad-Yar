@@ -76,7 +76,7 @@ const CONTENT = [
     ],
     'A',
     {
-      de: 'Das Arcuate Sign ist eine Avulsionsfraktur am Apex des Fibulaköpfchens und spricht pathognomonisch für eine relevante PLC-Verletzung.',
+      de: 'Das Arcuate Sign ist eine Avulsionsfraktur am Apex des Fibulaköpfchens und spricht stark für eine relevante PLC-Verletzung.',
       en: 'The arcuate sign is an avulsion fracture at the fibular head apex and is highly characteristic of a significant PLC injury.',
       fa: "علامت آرکوات (Arcuate sign) یک شکستگی کندگی در رأس سر فیبولاست و به نفع آسیب مهم کمپلکس PLC است.",
     },
