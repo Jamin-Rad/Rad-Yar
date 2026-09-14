@@ -1,0 +1,12 @@
+{
+  "name": "KHK Vortestwahrscheinlichkeit",
+  "short_name": "KHK VTW",
+  "description": "DISCHARGE-Rechner nach NVL Chronische KHK 2024.",
+  "id": "/khk-vortestwahrscheinlichkeit",
+  "start_url": "/khk-vortestwahrscheinlichkeit",
+  "scope": "/khk-vortestwahrscheinlichkeit",
+  "display": "standalone",
+  "background_color": "#09080c",
+  "theme_color": "#190b12",
+  "icons": [{ "src": "/khk-vortestwahrscheinlichkeit/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

@@ -23,9 +23,9 @@ export default clerkMiddleware(async (auth, request) => {
 
 export const config = {
   matcher: [
-    // Kaiser Score is fully public and bypasses Clerk middleware entirely.
+    // Öffentliche Standalone-Rechner umgehen Clerk vollständig.
     // Also skip Next.js internals and all static files.
-    '/((?!kaiser-score(?:/|$)|_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    '/((?!(?:kaiser-score|khk-vortestwahrscheinlichkeit)(?:/|$)|_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
     '/(api|trpc)(.*)',
   ],
 }

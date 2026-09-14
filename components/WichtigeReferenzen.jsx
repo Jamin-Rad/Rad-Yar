@@ -654,7 +654,7 @@ const RECHNER_GROUPS = [
   },
   {
     id: 'herz-thorax',
-    name: { de: 'Lunge & Thorax', en: 'Lung & Thorax', fa: 'ریه و توراکس' },
+    name: { de: 'Herz, Lunge & Thorax', en: 'Heart, Lung & Thorax', fa: 'قلب، ریه و توراکس' },
     color: '#18a77a', iconId: 'herz',
     calcIds: ['lv-biplan-volumen', 'ktq'],
   },
@@ -691,6 +691,11 @@ const RECHNER_GROUPS = [
 ]
 
 const LUNG_TOOL_LINKS = [
+  {
+    id: 'khk-vortestwahrscheinlichkeit', href: '/khk-vortestwahrscheinlichkeit', mark: '♥', icon: '/khk-vortestwahrscheinlichkeit/icon.svg', color: '#e8586a',
+    name: { de: 'KHK Vortestwahrscheinlichkeit', en: 'CAD Pre-test Probability', fa: 'احتمال پیش‌آزمون بیماری عروق کرونر' },
+    text: { de: 'Stabile Brustschmerzen nach DISCHARGE / NVL 2024 einordnen.', en: 'Assess stable chest pain using DISCHARGE / German NVL 2024.', fa: 'ارزیابی درد پایدار قفسه سینه بر اساس DISCHARGE و راهنمای NVL 2024.' },
+  },
   {
     id: 'fleischner', href: '/fleischner', mark: 'F', icon: '/fleischner/fleischner-icon-192.png', color: '#18a77a',
     name: { de: 'Fleischner Rechner', en: 'Fleischner Calculator', fa: 'محاسبه‌گر Fleischner' },
