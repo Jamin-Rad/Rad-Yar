@@ -80,6 +80,7 @@ export default function RobotAssistant() {
     || pathname?.startsWith('/node-rads')
     || pathname?.startsWith('/kaiser-score')
     || pathname?.startsWith('/fleischner')
+    || pathname?.startsWith('/khk-vortestwahrscheinlichkeit')
   )
 
   const [mounted, setMounted] = useState(false)
