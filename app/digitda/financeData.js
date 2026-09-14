@@ -9,6 +9,10 @@ export const SHAREHOLDERS = [
 export const INITIAL_FINANCE_STATE = {
   foundedAt: '2024-01-01',
   tomanPerEuro: 105000,
+  prisonerAid: {
+    tomanPerEuro: 270000,
+    payments: [],
+  },
   services: [
     { id: 'crown', name: 'طراحی Crown', unit: 'پروژه', price: 1200 },
     { id: 'full-arc', name: 'طراحی Full Arc', unit: 'پروژه', price: 2200 },
@@ -81,7 +85,12 @@ export function normalizeFinanceState(value) {
       rateSource: entry.rateSource || 'migration',
     }
   }) : INITIAL_FINANCE_STATE.entries
-  return { ...INITIAL_FINANCE_STATE, ...input, tomanPerEuro: fallbackRate, services, entries }
+  const prisonerAidInput = input.prisonerAid && typeof input.prisonerAid === 'object' ? input.prisonerAid : {}
+  const prisonerAid = {
+    tomanPerEuro: Math.max(1, Number(prisonerAidInput.tomanPerEuro || INITIAL_FINANCE_STATE.prisonerAid.tomanPerEuro)),
+    payments: Array.isArray(prisonerAidInput.payments) ? prisonerAidInput.payments : [],
+  }
+  return { ...INITIAL_FINANCE_STATE, ...input, tomanPerEuro: fallbackRate, services, entries, prisonerAid }
 }
 
 export function makeFinanceId() {
