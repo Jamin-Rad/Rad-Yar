@@ -32,7 +32,7 @@ function DonationsTable({ donations, state }) {
         <td>{row.date || '—'}</td><td>{formatEuro(row.euroAmount)}</td>
         <td>{formatToman(donationToman(row))}</td><td>{formatToman(row.rateAtRecord)}</td>
         <td>{statusLabels[row.status]}</td>
-        <td>{row.channel === 'direct' ? 'مستقیم به ستاد دیه' : recipient?.name || 'گیرنده نامشخص'}</td>
+        <td>{row.channel === 'direct' ? 'مستقیم به ستاد دیه' : recipient?.name || '—'}</td>
       </tr>
     })}
   </ReportTable>
@@ -72,18 +72,12 @@ export default function PrisonerAidPrintPage({ type, id, autoPrint }) {
   }, [])
 
   const rows = useMemo(() => state?.prisoners.map(row => ({ ...row, totals: totalsFor(row.id, state.donations) })) || [], [state])
-  const recipients = useMemo(() => {
-    if (!state) return []
-    const known = [...state.recipients]
-    if (recipientLedger('', state.donations, state.prisoners).donations.length)
-      known.push({ id: '', name: 'گیرنده نامشخص' })
-    return known
-  }, [state])
+  const recipients = useMemo(() => state ? [...state.recipients] : [], [state])
   const donations = useMemo(() => state ? [...state.donations].sort((a, b) =>
     (a.donor && !b.donor ? -1 : !a.donor && b.donor ? 1 : collator.compare(a.donor, b.donor)) || b.date.localeCompare(a.date)
   ) : [], [state])
   const prisoner = type === 'prisoner' ? rows.find(row => row.id === id) : null
-  const recipient = type === 'recipient' ? recipients.find(row => row.id === (id === '__unassigned__' ? '' : id)) : null
+  const recipient = type === 'recipient' ? recipients.find(row => row.id === id) : null
   const canPrint = state && (type !== 'prisoner' || prisoner) && (type !== 'recipient' || recipient)
   useEffect(() => {
     if (!autoPrint || !canPrint) return
@@ -111,7 +105,7 @@ export default function PrisonerAidPrintPage({ type, id, autoPrint }) {
           {(type === 'prisoner' ? [prisoner] : rows).map(row => {
             const counted = registeredToman(row.totals)
             const excess = counted - row.neededToman
-            return <tr key={row.id}><td>{row.number}</td><td>{row.name}</td><td>{formatToman(row.neededToman)}</td><td>{formatEuro(row.totals.recordedEuro + row.totals.confirmedEuro)}<br />{formatToman(counted)}</td><td>{formatEuro(row.totals.confirmedEuro)}<br />{formatToman(row.totals.confirmedToman)}</td><td>{formatToman(Math.max(0, row.neededToman - counted))}</td><td>{excess > 0 ? `بیش از نیاز: ${formatToman(excess)}` : counted >= row.neededToman ? 'تکمیل' : 'در حال جمع‌آوری'}</td></tr>
+            return <tr key={row.id} className={counted >= row.neededToman ? styles.completeRow : ''}><td>{row.number}</td><td>{row.name}</td><td>{formatToman(row.neededToman)}</td><td>{formatEuro(row.totals.recordedEuro + row.totals.confirmedEuro)}<br />{formatToman(counted)}</td><td>{formatEuro(row.totals.confirmedEuro)}<br />{formatToman(row.totals.confirmedToman)}</td><td>{formatToman(Math.max(0, row.neededToman - counted))}</td><td>{excess > 0 ? `بیش از نیاز: ${formatToman(excess)}` : counted >= row.neededToman ? 'تکمیل' : 'در حال جمع‌آوری'}</td></tr>
           })}
         </ReportTable>
         {type === 'prisoner' && prisoner.note ? <p>توضیح: {prisoner.note}</p> : null}

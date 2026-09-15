@@ -57,7 +57,8 @@
 .subheading { margin: 22px 0 12px; font-size: 15px; }
 .inlineEditor { border-top: 1px solid #e2eaf3; margin-top: 18px; padding-top: 18px; }
 .inlineEditor h3 { margin: 0 0 16px; font-size: 17px; }
-.overRow { background: #fff7ed; }
+.completeRow { background: #e8f8ed; }
+.completeRow:hover { background: #dbf2e3; }
 .warning, .complete, .pending, .promise { display: inline-block; white-space: nowrap; border-radius: 999px; padding: 7px 10px; font-size: 11px; font-weight: 700; }
 .warning { background: #ffe0c2; color: #8a4105; }
 .complete { background: #ddf7e8; color: #17633d; }

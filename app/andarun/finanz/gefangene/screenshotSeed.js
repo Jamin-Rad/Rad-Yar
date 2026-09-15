@@ -3,9 +3,34 @@ import { PRISONERS, neededToman } from './prisonerData'
 
 const HISTORICAL_DATE = '2026-09-14'
 const PREVIOUS_DEFAULT_RATE = 260000
+const FATEMEH_ID = 'screenshot-recipient-fatemeh'
+const MOBIN_ID = 'screenshot-recipient-mobin'
+const DIRECT_TOMAN_IDS = new Set(['screenshot-toman-8', 'screenshot-toman-11', 'screenshot-toman-12'])
+const recipientLabels = new Map([
+  ['screenshot-recipient-torang', 'ترنج'],
+  [FATEMEH_ID, 'فاطمه'],
+  ['screenshot-recipient-mahmood', 'محمود'],
+])
+
+function migrateRecipientCorrections(state) {
+  return normalizeState({
+    ...state,
+    recipients: state.recipients
+      .filter(row => row.id !== MOBIN_ID)
+      .map(row => ({ ...row, name: recipientLabels.get(row.id) || row.name })),
+    donations: state.donations.map(row => {
+      if (DIRECT_TOMAN_IDS.has(row.id)) return {
+        ...row, channel: 'direct', recipientId: '',
+        note: 'مسیر کمک: واریز مستقیم به حساب ستاد دیه.',
+      }
+      return row.recipientId === MOBIN_ID ? { ...row, recipientId: FATEMEH_ID } : row
+    }),
+    seedVersion: 8,
+  })
+}
 
 function migrateDefaultRate(state) {
-  return normalizeState({
+  return migrateRecipientCorrections(normalizeState({
     ...state,
     tomanPerEuro: DEFAULT_RATE,
     donations: state.donations.map(row => row.rateAtRecord === PREVIOUS_DEFAULT_RATE ? {
@@ -15,7 +40,7 @@ function migrateDefaultRate(state) {
         ? row.tomanAmount / DEFAULT_RATE : row.euroAmount,
     } : row),
     seedVersion: 7,
-  })
+  }))
 }
 
 function dateExistingDonations(state) {
@@ -46,18 +71,20 @@ const euroRows = [
   [20, 'مهدیه ترکی', 50], [20, 'کمی', 30], [20, 'سیمین مرعشی', 20],
 ]
 
-const recipientNames = ['Torang', 'Fatemeh', 'Mahmood', 'Mobin']
+const recipientNames = [
+  ['torang', 'ترنج'], ['fatemeh', 'فاطمه'], ['mahmood', 'محمود'],
+]
 
 function recipientFor(number, donor) {
   if ([2, 3, 4, 13].includes(number)) return 'Torang'
   if (number === 15) return 'Mahmood'
   if (number === 20 && ['زهرا فیاض', 'لیلا'].includes(donor)) return 'Fatemeh'
-  if (number === 20 && ['مرتضی', 'ثریا'].includes(donor)) return 'Mobin'
+  if (number === 20 && ['مرتضی', 'ثریا'].includes(donor)) return 'Fatemeh'
   return 'Mahmood'
 }
 
-export const SCREENSHOT_RECIPIENTS = recipientNames.map(name => ({
-  id: `screenshot-recipient-${name.toLowerCase()}`,
+export const SCREENSHOT_RECIPIENTS = recipientNames.map(([slug, name]) => ({
+  id: `screenshot-recipient-${slug}`,
   name, account: '', note: 'نام ستون واریز در تصویر پیوست؛ شمارهٔ حساب ثبت نشده است.',
 }))
 
@@ -88,21 +115,23 @@ export const SCREENSHOT_DONATIONS = [
     note: 'در تصویر «مستقیم» و ۱۰٬۰۰۰٬۰۰۰ تومان آمده؛ تأیید واریز ثبت نشده است.',
   },
   ...[
-    [8, '', 26800000, 'فیش واریزی ناموجود؛ مسیر و تأیید واریز نیازمند بررسی است.'],
-    [11, 'مهسا', 50000000, 'مبلغ در ستون توضیحات تصویر آمده؛ مسیر و تأیید واریز نیازمند بررسی است.'],
-    [12, 'صبا نوروزی', 47300000, 'مبلغ در ستون توضیحات تصویر آمده؛ مسیر و تأیید واریز نیازمند بررسی است.'],
-  ].map(([number, donor, tomanAmount, note]) => ({
+    [8, '', 26800000],
+    [11, 'مهسا', 50000000],
+    [12, 'صبا نوروزی', 47300000],
+  ].map(([number, donor, tomanAmount]) => ({
     id: `screenshot-toman-${number}`,
     prisonerId: `screenshot-prisoner-${number}`, donor,
     euroAmount: tomanAmount / DEFAULT_RATE, rateAtRecord: DEFAULT_RATE,
     tomanAmount, originalCurrency: 'toman',
-    status: 'recorded', channel: 'recipient', recipientId: '', date: HISTORICAL_DATE, note,
+    status: 'recorded', channel: 'direct', recipientId: '', date: HISTORICAL_DATE,
+    note: 'مسیر کمک: واریز مستقیم به حساب ستاد دیه.',
   })),
 ]
 
 export function mergeScreenshotSeed(input) {
   const state = normalizeState(input)
-  if (state.seedVersion >= 7) return state
+  if (state.seedVersion >= 8) return state
+  if (state.seedVersion === 7) return migrateRecipientCorrections(state)
   if (state.seedVersion === 6) return migrateDefaultRate(state)
   if (state.seedVersion === 5) return dateExistingDonations(state)
   if (state.seedVersion === 4) {
@@ -131,7 +160,7 @@ export function mergeScreenshotSeed(input) {
   const recipients = [...state.recipients]
   const recipientNameToId = new Map(recipients.map(row => [row.name.toLowerCase(), row.id]))
   for (const row of SCREENSHOT_RECIPIENTS) {
-    if (recipientNameToId.has(row.name.toLowerCase())) continue
+    if (recipients.some(item => item.id === row.id) || recipientNameToId.has(row.name.toLowerCase())) continue
     recipients.push(row)
     recipientNameToId.set(row.name.toLowerCase(), row.id)
   }
