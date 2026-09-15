@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
+import { formatWorkHours, summarizeTimerModalities } from './findingTimerSummary'
 import styles from './page.module.css'
 
 const NAME = 'Hamed Zia'
@@ -511,14 +512,8 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
     () => findingTimers.filter(timer => timer.date === activeTimerDate),
     [findingTimers, activeTimerDate],
   )
-  const timerStats = useMemo(() => MODALITIES.map(modality => {
-    const items = todayTimers.filter(timer => timer.modality === modality)
-    const count = items.reduce((sum, timer) => sum + (Number(timer.count) || 1), 0)
-    const avg = count
-      ? Math.round(items.reduce((sum, timer) => sum + Number(timer.durationMs || 0), 0) / count)
-      : 0
-    return { modality, count, avg }
-  }), [todayTimers])
+  const timerStats = useMemo(() => summarizeTimerModalities(todayTimers, MODALITIES), [todayTimers])
+  const todayWorkMs = timerStats.reduce((sum, stat) => sum + stat.totalMs, 0)
   const timerHistoryDays = useMemo(() => {
     const grouped = new Map()
     findingTimers.forEach(timer => {
@@ -819,7 +814,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
   }
 
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page} ${showFindings && !showShifts ? styles.findingsPage : ''}`}>
       <header className={styles.header}>
         {showHomeLink ? <Link href="/andarun" className={styles.back}>← Andarun</Link> : <span />}
         <div>
@@ -1027,20 +1022,23 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
               </div>
               <div className={styles.timerIconButtons}>
                 <button type="button" onClick={startFindingTimer} disabled={timerRunning} aria-label="Timer starten">
-                  <span className={styles.iconPlay} />
+                  <span className={styles.iconPlay} aria-hidden="true" /><span>Start</span>
                 </button>
                 <button type="button" onClick={pauseFindingTimer} disabled={!timerRunning} aria-label="Timer halten">
-                  <span className={styles.iconPause} />
+                  <span className={styles.iconPause} aria-hidden="true" /><span>Pause</span>
                 </button>
-                <button type="button" onClick={finishFindingTimer} disabled={!timerDisplayMs} aria-label="Timer beenden und speichern">
-                  <span className={styles.iconStop} />
+                <button type="button" onClick={resetFindingTimer} disabled={!timerDisplayMs} aria-label="Timer zurücksetzen">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5" /></svg><span>Reset</span>
+                </button>
+                <button type="button" onClick={finishFindingTimer} disabled={!timerDisplayMs} aria-label="Befundzeit speichern">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 4h13l3 3v13H4zM8 4v6h8V4M8 20v-7h8v7" /></svg><span>Speichern</span>
                 </button>
               </div>
             </div>
 
             <div className={styles.timerStatsCard}>
               <button className={styles.timerStatsHeader} type="button" onClick={() => setTimerHistoryOpen(true)}>
-                <span className={styles.kicker}>Diensttag {shortDateLabel(activeTimerDate)}</span>
+                <span className={styles.timerStatsDate}><span className={styles.kicker}>Diensttag {shortDateLabel(activeTimerDate)}</span><strong>Arbeitszeit: {formatWorkHours(todayWorkMs)}</strong></span>
                 <em>Befundzeiten ansehen</em>
               </button>
               <div className={styles.timerStatsGrid}>
@@ -1048,7 +1046,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
                   <button type="button" key={stat.modality} onClick={() => setTimerDayModal(stat.modality)}>
                     <strong>{stat.modality}</strong>
                     <span>{stat.count} Befund{stat.count === 1 ? '' : 'e'}</span>
-                    <em>{stat.avg ? formatTimerDuration(stat.avg) : '--:--'} Ø</em>
+                    <span className={styles.timerStatTimes}><em>Ø {stat.avg ? formatTimerDuration(stat.avg) : '--:--'}</em><small>Gesamt {formatTimerDuration(stat.totalMs)}</small></span>
                   </button>
                 ))}
               </div>
