@@ -89,10 +89,10 @@ export default function PrisonerAidPage({ mode = 'report', initialRecipientId = 
     ...prisoner, totals: totalsFor(prisoner.id, state.donations),
   })), [state.prisoners, state.donations])
   const displayedRows = useMemo(() => {
-    if (mode !== 'report' || prisonerSort === 'number') return rows
-    const direction = prisonerSort === 'needed-desc' ? -1 : 1
-    return [...rows].sort((a, b) => direction * (a.neededToman - b.neededToman) || Number(a.number) - Number(b.number))
-  }, [mode, prisonerSort, rows])
+    return [...rows].sort((a, b) => prisonerSort === 'remaining'
+      ? Math.max(0, a.neededToman - registeredToman(a.totals)) - Math.max(0, b.neededToman - registeredToman(b.totals)) || Number(a.number) - Number(b.number)
+      : Number(a.number) - Number(b.number))
+  }, [prisonerSort, rows])
   const summary = useMemo(() => rows.reduce((result, row) => {
     result.needed += row.neededToman
     result.confirmed += row.totals.confirmedToman
@@ -271,8 +271,8 @@ export default function PrisonerAidPage({ mode = 'report', initialRecipientId = 
       </section>
 
       <section className={styles.panel} aria-labelledby="prisoners-title">
-        <div className={styles.sectionTitle}><div><span>فهرست اصلی</span><h2 id="prisoners-title">زندانیان</h2></div><div className={styles.prisonerTools}>{mode === 'report' ? <label>ترتیب بر اساس<select value={prisonerSort} onChange={event => setPrisonerSort(event.target.value)}><option value="number">شمارهٔ زندانی</option><option value="needed-desc">مبلغ مورد نیاز: بیشترین اول</option><option value="needed-asc">مبلغ مورد نیاز: کمترین اول</option></select></label> : null}<small>{rows.length} نفر</small></div></div>
-        <div className={styles.tableWrap}><table><thead><tr><th>شمارهٔ زندانی</th><th>نام</th><th>مبلغ مورد نیاز</th><th>کمک ثبت‌شده</th><th>واریز تأییدشده</th><th>ماندهٔ نیاز</th><th>وضعیت</th><th /></tr></thead><tbody>
+        <div className={styles.sectionTitle}><div><span>فهرست اصلی</span><h2 id="prisoners-title">زندانیان</h2></div><small>{rows.length} نفر</small></div>
+        <div className={styles.tableWrap}><table><thead><tr><th aria-sort={prisonerSort === 'number' ? 'ascending' : 'none'}><button type="button" className={styles.sortHeader} onClick={() => setPrisonerSort('number')}>شمارهٔ زندانی{prisonerSort === 'number' ? <span aria-hidden="true">↑</span> : null}</button></th><th>نام</th><th>مبلغ مورد نیاز</th><th>کمک ثبت‌شده</th><th>واریز تأییدشده</th><th aria-sort={prisonerSort === 'remaining' ? 'ascending' : 'none'}><button type="button" className={styles.sortHeader} onClick={() => setPrisonerSort('remaining')}>ماندهٔ نیاز{prisonerSort === 'remaining' ? <span aria-hidden="true">↑</span> : null}</button></th><th>وضعیت</th><th /></tr></thead><tbody>
           {displayedRows.map(row => {
             const counted = registeredToman(row.totals)
             const excess = counted - row.neededToman
@@ -313,8 +313,8 @@ export default function PrisonerAidPage({ mode = 'report', initialRecipientId = 
             return <Fragment key={recipient.id}>
               <tr><td><button type="button" className={styles.prisonerLink} aria-expanded={isOpen} onClick={() => toggleRecipient(recipient.id)}>{recipient.name}</button>{recipient.account ? <small>{recipient.account}</small> : null}</td>
                 <td><strong>{formatEuro(ledger.confirmedEuro)}</strong></td>
-                <td><strong>{formatEuro(ledger.pendingEuro)}</strong><small>کل ثبت‌شده: {formatEuro(ledger.euro)}</small>{ledger.promisedEuro ? <small>قول کمک: {formatEuro(ledger.promisedEuro)}</small> : null}</td>
-                <td>{formatToman(ledger.toman)}</td><td><strong>{formatToman(ledger.owedToman)}</strong></td>
+                <td><strong>{formatEuro(ledger.pendingEuro)}</strong><small>شامل قول کمک: {formatEuro(ledger.promisedEuro)}</small><small>کل ثبت‌شده: {formatEuro(ledger.euro)}</small></td>
+                <td>{formatToman(ledger.toman)}</td><td><strong>{formatToman(ledger.owedToman)}</strong>{ledger.promisedEuro ? <small>شامل قول کمک</small> : null}</td>
                 <td>{ledger.cases.length} نفر</td>{mode === 'edit' ? <td><button type="button" className={styles.textButton} disabled={!onlineReady} onClick={() => editRecipient(recipient)}>ویرایش نام و حساب</button></td> : null}
               </tr>
               {isOpen ? <tr className={styles.detailRow}><td colSpan={mode === 'edit' ? 7 : 6}><div className={styles.prisonerDetail}>

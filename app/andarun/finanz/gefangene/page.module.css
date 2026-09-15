@@ -56,6 +56,10 @@
 .tableWrap { width: 100%; overflow-x: auto; }
 .tableWrap table { width: 100%; border-collapse: collapse; min-width: 900px; text-align: right; }
 .tableWrap th { color: #536e8c; font-size: 12px; background: #e6f1fbc9; border-top: 1px solid #fff; border-bottom: 1px solid #ffffffd6; padding: 14px 12px; white-space: nowrap; }
+.sortHeader { display: inline-flex; align-items: center; gap: 6px; border: 0; padding: 0; background: transparent; color: inherit; font: inherit; font-weight: 800; cursor: pointer; }
+.sortHeader:hover { color: #174b89; }
+.sortHeader:focus-visible { outline: 2px solid #2c69a9; outline-offset: 4px; border-radius: 2px; }
+.sortHeader span { color: #174b89; font-size: 16px; }
 .tableWrap td { border-bottom: 1px solid #cbddea80; padding: 16px 12px; vertical-align: top; font-size: 13px; color: #10213a !important; }
 .tableWrap tbody tr:not(.detailRow):not(.completeRow):hover { background: #ffffff99; }
 .tableWrap tbody tr:last-child td { border-bottom: 0; }

@@ -89,26 +89,24 @@ export function recipientLedger(recipientId, donations, prisoners) {
   for (const donation of donations) {
     if (donation.channel !== 'recipient' || donation.recipientId !== recipientId) continue
     result.donations.push(donation)
-    if (donation.status === 'promised') {
-      result.promisedEuro += donation.euroAmount
-      continue
-    }
+    const promised = donation.status === 'promised'
     const toman = donationToman(donation)
     const owed = donation.settledToSetad ? 0 : toman
-    result.euro += donation.euroAmount
+    if (promised) result.promisedEuro += donation.euroAmount
+    else result.euro += donation.euroAmount
     if (donation.status === 'confirmed') result.confirmedEuro += donation.euroAmount
     else result.pendingEuro += donation.euroAmount
-    result.toman += toman
+    if (!promised) result.toman += toman
     result.owedToman += owed
     const prisoner = prisonerById.get(donation.prisonerId)
     const previous = cases.get(donation.prisonerId) || {
       prisonerId: donation.prisonerId, number: prisoner?.number || '—', name: prisoner?.name || '—',
       euro: 0, confirmedEuro: 0, pendingEuro: 0, toman: 0, owedToman: 0,
     }
-    previous.euro += donation.euroAmount
+    if (!promised) previous.euro += donation.euroAmount
     if (donation.status === 'confirmed') previous.confirmedEuro += donation.euroAmount
     else previous.pendingEuro += donation.euroAmount
-    previous.toman += toman
+    if (!promised) previous.toman += toman
     previous.owedToman += owed
     cases.set(donation.prisonerId, previous)
   }
