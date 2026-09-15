@@ -107,7 +107,7 @@ export default function DigitDADashboard() {
   return <main className={styles.page} dir="rtl">
     <header className={styles.topbar}>
       <Link className={styles.logo} href="/digitda" lang="en" dir="ltr">Digit<span>DA</span></Link>
-      <nav aria-label="بخش‌های DigitDA"><a className={styles.navActive} href="#overview">داشبورد</a><a href="#income">درآمدها</a><a href="#expenses">هزینه‌ها</a><a href="#transactions">تراکنش‌ها</a><Link href="/digitda/prisoners">کمک به زندانیان</Link></nav>
+      <nav aria-label="بخش‌های DigitDA"><a className={styles.navActive} href="#overview">داشبورد</a><a href="#income">درآمدها</a><a href="#expenses">هزینه‌ها</a><a href="#transactions">تراکنش‌ها</a></nav>
       <div className={styles.headerActions}><span className={styles.saveStatus}><i />{saveStatus}</span><button type="button" onClick={exportCsv}><Icon name="download"/> خروجی</button><form action="/api/digitda/logout" method="post"><button type="submit">خروج</button></form></div>
     </header>
 

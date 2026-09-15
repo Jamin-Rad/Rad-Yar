@@ -1,14 +1,8 @@
 import { DEFAULT_RATE, normalizeState } from './aidData'
+import { PRISONERS, neededToman } from './prisonerData'
 
 // Amounts and donors transcribed from the user's 15 Sep 2026 screenshot.
 // Rows with unclear payment evidence remain pending review.
-const needs = [
-  78000000, 62000000, 54000000, 98000000, 150000000,
-  35000000, 34000000, 26800000, 36000000, 20000000,
-  50000000, 47300000, 80000000, 74000000, 65000000,
-  55000000, 54000000, 70000000, 114000000, 75000000,
-]
-
 const prisonerNotes = {
   7: 'فیش واریزی ناموجود؛ وضعیت پرداخت نیازمند بررسی است.',
   8: 'فیش واریزی ناموجود؛ مبلغ ۲۶٬۸۰۰٬۰۰۰ تومان در توضیحات تصویر آمده و وضعیت پرداخت نیازمند بررسی است.',
@@ -43,13 +37,13 @@ export const SCREENSHOT_RECIPIENTS = recipientNames.map(name => ({
   name, account: '', note: 'نام ستون واریز در تصویر پیوست؛ شمارهٔ حساب ثبت نشده است.',
 }))
 
-export const SCREENSHOT_PRISONERS = needs.map((neededToman, index) => {
-  const number = String(index + 1)
+export const SCREENSHOT_PRISONERS = PRISONERS.map(prisoner => {
+  const number = String(prisoner.id)
   return {
     id: `screenshot-prisoner-${number}`, number,
-    name: '',
-    neededToman,
-    note: prisonerNotes[index + 1] || '',
+    name: prisoner.name,
+    neededToman: neededToman(prisoner),
+    note: prisonerNotes[prisoner.id] || '',
   }
 })
 
@@ -84,7 +78,15 @@ export const SCREENSHOT_DONATIONS = [
 
 export function mergeScreenshotSeed(input) {
   const state = normalizeState(input)
-  if (state.seedVersion >= 4) return state
+  if (state.seedVersion >= 5) return state
+  if (state.seedVersion === 4) {
+    const prisoners = state.prisoners.map(row => {
+      const original = SCREENSHOT_PRISONERS.find(item => item.number === row.number && item.neededToman === row.neededToman)
+      return original && (!row.name || row.name === `زندانی شماره ${row.number}`)
+        ? { ...row, name: original.name } : row
+    })
+    return normalizeState({ ...state, prisoners, seedVersion: 5 })
+  }
   const prisoners = [...state.prisoners]
   const numberToId = new Map(prisoners.map(row => [row.number, row.id]))
   for (const row of SCREENSHOT_PRISONERS) {
@@ -94,9 +96,9 @@ export function mergeScreenshotSeed(input) {
   }
   for (let index = 0; index < prisoners.length; index++) {
     const row = prisoners[index]
-    if (row.id === `screenshot-prisoner-${row.number}` && row.name === `زندانی شماره ${row.number}`) {
-      prisoners[index] = { ...row, name: '' }
-    }
+    const original = SCREENSHOT_PRISONERS.find(item => item.number === row.number && item.neededToman === row.neededToman)
+    if (original && (!row.name || row.name === `زندانی شماره ${row.number}`))
+      prisoners[index] = { ...row, name: original.name }
   }
 
   const donations = [...state.donations]
@@ -132,5 +134,5 @@ export function mergeScreenshotSeed(input) {
         recipientId: recipientName ? recipientNameToId.get(recipientName) || row.recipientId : '' })
     }
   }
-  return normalizeState({ ...state, prisoners, recipients, donations, seedVersion: 4 })
+  return normalizeState({ ...state, prisoners, recipients, donations, seedVersion: 5 })
 }
