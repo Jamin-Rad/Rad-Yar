@@ -55,10 +55,10 @@ function RecipientDetail({ recipient, state }) {
   const ledger = recipientLedger(recipient.id, state.donations, state.prisoners)
   return <section className={styles.reportSection}>
     <h2>{recipient.name}</h2>
-    <div className={styles.summaryLine}><span>یوروی ثبت‌شده: <strong>{formatEuro(ledger.euro)}</strong></span><span>معادل تومان: <strong>{formatToman(ledger.toman)}</strong></span><span>ماندهٔ واریز به ستاد دیه: <strong>{formatToman(ledger.owedToman)}</strong></span></div>
+    <div className={styles.summaryLine}><span>یوروی دریافت‌شده: <strong>{formatEuro(ledger.confirmedEuro)}</strong></span><span>در انتظار دریافت: <strong>{formatEuro(ledger.pendingEuro)}</strong></span><span>کل ثبت‌شده: <strong>{formatEuro(ledger.euro)}</strong></span>{ledger.promisedEuro ? <span>قول کمک: <strong>{formatEuro(ledger.promisedEuro)}</strong></span> : null}<span>معادل تومان: <strong>{formatToman(ledger.toman)}</strong></span><span>ماندهٔ واریز به ستاد دیه: <strong>{formatToman(ledger.owedToman)}</strong></span></div>
     <h3>برای هر زندانی</h3>
-    <ReportTable headers={['شماره و نام زندانی', 'یوروی ثبت‌شده', 'معادل تومان', 'ماندهٔ واریز به ستاد دیه']}>
-      {ledger.cases.map(item => <tr key={item.prisonerId}><td>{item.number} · {item.name}</td><td>{formatEuro(item.euro)}</td><td>{formatToman(item.toman)}</td><td>{formatToman(item.owedToman)}</td></tr>)}
+    <ReportTable headers={['شماره و نام زندانی', 'یوروی دریافت‌شده', 'یوروی در انتظار دریافت', 'معادل تومان', 'ماندهٔ واریز به ستاد دیه']}>
+      {ledger.cases.map(item => <tr key={item.prisonerId}><td>{item.number} · {item.name}</td><td>{formatEuro(item.confirmedEuro)}</td><td>{formatEuro(item.pendingEuro)}</td><td>{formatToman(item.toman)}</td><td>{formatToman(item.owedToman)}</td></tr>)}
     </ReportTable>
     {!ledger.cases.length ? <p>هنوز کمکی برای این گیرنده ثبت نشده است.</p> : null}
     <h3>کمک‌ها و نرخ هر ورودی</h3>
@@ -126,10 +126,10 @@ export default function PrisonerAidPrintPage({ type, id, autoPrint }) {
       </section> : null}
       {type === 'prisoner' ? <section className={styles.reportSection}><h2>کمک‌های این زندانی</h2><DonationsTable donations={donations.filter(row => row.prisonerId === id)} state={state} /></section> : null}
       {['overview', 'recipients', 'recipient'].includes(type) ? <>
-        <section className={styles.reportSection}><h2>گیرنده‌ها و ماندهٔ واریز به ستاد دیه</h2><ReportTable headers={['گیرنده', 'یوروی ثبت‌شده', 'معادل تومان', 'باید به ستاد دیه واریز کند', 'تعداد زندانی']}>
+        <section className={styles.reportSection}><h2>گیرنده‌ها و ماندهٔ واریز به ستاد دیه</h2><ReportTable headers={['گیرنده', 'یوروی دریافت‌شده', 'یوروی در انتظار دریافت', 'معادل تومان', 'باید به ستاد دیه واریز کند', 'تعداد زندانی']}>
           {(type === 'recipient' ? [recipient] : recipients).map(row => {
             const ledger = recipientLedger(row.id, state.donations, state.prisoners)
-            return <tr key={row.id || 'unassigned'}><td>{row.name}</td><td>{formatEuro(ledger.euro)}</td><td>{formatToman(ledger.toman)}</td><td>{formatToman(ledger.owedToman)}</td><td>{ledger.cases.length}</td></tr>
+            return <tr key={row.id || 'unassigned'}><td>{row.name}</td><td>{formatEuro(ledger.confirmedEuro)}</td><td>{formatEuro(ledger.pendingEuro)}{ledger.promisedEuro ? <><br />قول کمک: {formatEuro(ledger.promisedEuro)}</> : null}</td><td>{formatToman(ledger.toman)}</td><td>{formatToman(ledger.owedToman)}</td><td>{ledger.cases.length}</td></tr>
           })}
         </ReportTable></section>
         {(type === 'recipient' ? [recipient] : recipients).map(row => <RecipientDetail key={row.id || 'unassigned'} recipient={row} state={state} />)}

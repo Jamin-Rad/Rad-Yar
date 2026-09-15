@@ -85,23 +85,29 @@ export function donationToman(donation) {
 export function recipientLedger(recipientId, donations, prisoners) {
   const cases = new Map()
   const prisonerById = new Map(prisoners.map(row => [row.id, row]))
-  const result = { euro: 0, confirmedEuro: 0, toman: 0, owedToman: 0, donations: [], cases: [] }
+  const result = { euro: 0, confirmedEuro: 0, pendingEuro: 0, promisedEuro: 0, toman: 0, owedToman: 0, donations: [], cases: [] }
   for (const donation of donations) {
     if (donation.channel !== 'recipient' || donation.recipientId !== recipientId) continue
     result.donations.push(donation)
-    if (donation.status === 'promised') continue
+    if (donation.status === 'promised') {
+      result.promisedEuro += donation.euroAmount
+      continue
+    }
     const toman = donationToman(donation)
     const owed = donation.settledToSetad ? 0 : toman
     result.euro += donation.euroAmount
-    result.confirmedEuro += donation.status === 'confirmed' ? donation.euroAmount : 0
+    if (donation.status === 'confirmed') result.confirmedEuro += donation.euroAmount
+    else result.pendingEuro += donation.euroAmount
     result.toman += toman
     result.owedToman += owed
     const prisoner = prisonerById.get(donation.prisonerId)
     const previous = cases.get(donation.prisonerId) || {
       prisonerId: donation.prisonerId, number: prisoner?.number || '—', name: prisoner?.name || '—',
-      euro: 0, toman: 0, owedToman: 0,
+      euro: 0, confirmedEuro: 0, pendingEuro: 0, toman: 0, owedToman: 0,
     }
     previous.euro += donation.euroAmount
+    if (donation.status === 'confirmed') previous.confirmedEuro += donation.euroAmount
+    else previous.pendingEuro += donation.euroAmount
     previous.toman += toman
     previous.owedToman += owed
     cases.set(donation.prisonerId, previous)

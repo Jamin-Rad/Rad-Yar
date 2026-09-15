@@ -295,20 +295,21 @@ export default function PrisonerAidPage({ mode = 'report', initialRecipientId = 
 
       <section className={styles.panel} aria-labelledby="recipients-title">
         <div className={styles.sectionTitle}><div><span>مبالغ دریافتی و واریز به ستاد دیه</span><h2 id="recipients-title">گزارش گیرنده‌ها</h2></div><small>{recipientRows.length} گیرنده</small></div>
-        <div className={styles.tableWrap}><table><thead><tr><th>گیرنده</th><th>یوروی ثبت‌شده</th><th>معادل کل، تومان</th><th>باید به ستاد دیه واریز کند</th><th>برای چند زندانی</th>{mode === 'edit' ? <th /> : null}</tr></thead><tbody>
+        <div className={styles.tableWrap}><table><thead><tr><th>گیرنده</th><th>یوروی دریافت‌شده</th><th>یوروی در انتظار دریافت</th><th>معادل کلِ ثبت‌شده، تومان</th><th>باید به ستاد دیه واریز کند</th><th>برای چند زندانی</th>{mode === 'edit' ? <th /> : null}</tr></thead><tbody>
           {recipientRows.map(recipient => {
             const isOpen = selectedRecipient === recipient.id
             const ledger = recipient.ledger
             return <Fragment key={recipient.id}>
               <tr><td><button type="button" className={styles.prisonerLink} aria-expanded={isOpen} onClick={() => toggleRecipient(recipient.id)}>{recipient.name}</button>{recipient.account ? <small>{recipient.account}</small> : null}</td>
-                <td><strong>{formatEuro(ledger.euro)}</strong><small>تأییدشده: {formatEuro(ledger.confirmedEuro)}</small></td>
+                <td><strong>{formatEuro(ledger.confirmedEuro)}</strong></td>
+                <td><strong>{formatEuro(ledger.pendingEuro)}</strong><small>کل ثبت‌شده: {formatEuro(ledger.euro)}</small>{ledger.promisedEuro ? <small>قول کمک: {formatEuro(ledger.promisedEuro)}</small> : null}</td>
                 <td>{formatToman(ledger.toman)}</td><td><strong>{formatToman(ledger.owedToman)}</strong></td>
                 <td>{ledger.cases.length} نفر</td>{mode === 'edit' ? <td><button type="button" className={styles.textButton} disabled={!onlineReady} onClick={() => editRecipient(recipient)}>ویرایش نام و حساب</button></td> : null}
               </tr>
-              {isOpen ? <tr className={styles.detailRow}><td colSpan={mode === 'edit' ? 6 : 5}><div className={styles.prisonerDetail}>
-                <div className={styles.detailHeading}><div><strong>جزئیات گیرنده: {recipient.name}</strong><span>{formatEuro(ledger.euro)} ثبت‌شده · {formatToman(ledger.owedToman)} ماندهٔ واریز به ستاد دیه</span></div><button type="button" className={styles.textButton} onClick={() => toggleRecipient(recipient.id)}>بستن</button></div>
+              {isOpen ? <tr className={styles.detailRow}><td colSpan={mode === 'edit' ? 7 : 6}><div className={styles.prisonerDetail}>
+                <div className={styles.detailHeading}><div><strong>جزئیات گیرنده: {recipient.name}</strong><span>{formatEuro(ledger.confirmedEuro)} دریافت‌شده · {formatEuro(ledger.pendingEuro)} در انتظار دریافت · {formatToman(ledger.owedToman)} ماندهٔ واریز به ستاد دیه</span>{ledger.promisedEuro ? <span>قول کمکِ ثبت‌نشده: {formatEuro(ledger.promisedEuro)}</span> : null}</div><button type="button" className={styles.textButton} onClick={() => toggleRecipient(recipient.id)}>بستن</button></div>
                 <h3 className={styles.subheading}>مبلغ مورد واریز برای هر زندانی</h3>
-                {ledger.cases.length ? <div className={styles.tableWrap}><table><thead><tr><th>شماره و نام زندانی</th><th>یوروی ثبت‌شده</th><th>معادل تومان</th><th>ماندهٔ واریز به ستاد دیه</th></tr></thead><tbody>{ledger.cases.map(item => <tr key={item.prisonerId}><td><strong>شماره {item.number} · {item.name}</strong></td><td>{formatEuro(item.euro)}</td><td>{formatToman(item.toman)}</td><td><strong>{formatToman(item.owedToman)}</strong></td></tr>)}</tbody></table></div> : <p className={styles.empty}>هنوز کمک ثبت‌شده‌ای برای این گیرنده وجود ندارد.</p>}
+                {ledger.cases.length ? <div className={styles.tableWrap}><table><thead><tr><th>شماره و نام زندانی</th><th>یوروی دریافت‌شده</th><th>یوروی در انتظار دریافت</th><th>معادل تومان</th><th>ماندهٔ واریز به ستاد دیه</th></tr></thead><tbody>{ledger.cases.map(item => <tr key={item.prisonerId}><td><strong>شماره {item.number} · {item.name}</strong></td><td>{formatEuro(item.confirmedEuro)}</td><td>{formatEuro(item.pendingEuro)}</td><td>{formatToman(item.toman)}</td><td><strong>{formatToman(item.owedToman)}</strong></td></tr>)}</tbody></table></div> : <p className={styles.empty}>هنوز کمک ثبت‌شده‌ای برای این گیرنده وجود ندارد.</p>}
                 <h3 className={styles.subheading}>ورودی‌های این گیرنده و نرخ تبدیل هر کمک</h3>
                 {ledger.donations.length ? <div className={styles.tableWrap}><table><thead><tr><th>کمک‌کننده</th><th>زندانی</th><th>یورو</th><th>نرخ هر یورو</th><th>معادل تومان</th><th>وضعیت</th><th>واریز به ستاد دیه</th>{mode === 'edit' ? <th /> : null}</tr></thead><tbody>{ledger.donations.map(donation => {
                   const prisoner = state.prisoners.find(item => item.id === donation.prisonerId)
