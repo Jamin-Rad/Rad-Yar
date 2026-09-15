@@ -1,10 +1,13 @@
-.page { min-height: 100vh; background: radial-gradient(circle at 12% 3%, #bfdaf1 0, transparent 33%), radial-gradient(circle at 88% 18%, #d1e4fa 0, transparent 35%), radial-gradient(circle at 45% 74%, #d7eff0 0, transparent 42%), linear-gradient(145deg, #eaf4ff, #dceaf7 55%, #e9f4f8); color: #10213a; font-family: system-ui, sans-serif; }
-.shell { width: min(1500px, calc(100% - 48px)); margin: auto; padding: 40px 0 90px; }
-.header { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; margin-bottom: 24px; }
-.header h1 { font-size: clamp(32px, 4vw, 56px); line-height: 1.2; margin: 8px 0 12px; letter-spacing: -.04em; }
+.page { position: relative; isolation: isolate; min-height: 100vh; background: linear-gradient(180deg, #e3f1ff, #dbeaf8 48%, #e8f4f8); color: #10213a; font-family: system-ui, sans-serif; }
+.page::before { content: ''; position: absolute; z-index: 0; inset: 0 0 auto; height: 1100px; background: url('/prisoner-aid-sky.webp') center top / cover no-repeat; -webkit-mask-image: linear-gradient(#000 0%, #000 72%, transparent 100%); mask-image: linear-gradient(#000 0%, #000 72%, transparent 100%); pointer-events: none; }
+.shell { position: relative; z-index: 1; width: min(1500px, calc(100% - 48px)); margin: auto; padding: 30px 0 90px; }
+.header { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr); align-items: start; gap: 24px; min-height: 126px; margin-bottom: 10px; }
+.headerTitle { text-align: center; }
+.header h1 { font-size: clamp(38px, 4.3vw, 64px); font-weight: 850; line-height: 1.35; margin: 0 0 3px; color: #132949; text-shadow: 0 1px 0 #ffffffa6; }
 .header p { margin: 0; color: #637087; }
-.eyebrow { color: #4766a6 !important; font-size: 12px; letter-spacing: .1em; font-weight: 700; }
-.headerSide { display: grid; justify-items: flex-end; gap: 12px; color: #708098; font-size: 13px; }
+.headerTitle p { color: #486584; font-size: 14px; font-weight: 550; }
+.eyebrow { justify-self: start; color: #274f7d !important; font-size: 12px; letter-spacing: .1em; font-weight: 700; }
+.headerSide { display: grid; justify-items: flex-end; gap: 12px; color: #526d8d; font-size: 13px; }
 .headerSide a { color: #17427f; text-decoration: none; font-weight: 700; }
 .modeTabs { display: flex; gap: 6px; width: fit-content; max-width: 100%; padding: 6px; margin: 0 0 24px; border: 1px solid #ffffffda; border-radius: 19px; background: #ffffff6b; box-shadow: 0 12px 30px #284e7b16, inset 0 1px #fff; backdrop-filter: blur(20px) saturate(140%); -webkit-backdrop-filter: blur(20px) saturate(140%); }
 .modeTabs a { display: inline-flex; justify-content: center; align-items: center; gap: 11px; min-width: 150px; padding: 13px 25px; border: 1px solid #ffffffa8; border-radius: 14px; background: #ffffff73; box-shadow: inset 0 1px #fff, 0 3px 10px #1e457b0c; color: #31506f; text-decoration: none; text-align: center; font-size: 15px; font-weight: 800; transition: background .2s, box-shadow .2s, transform .2s; }
@@ -95,7 +98,7 @@
 .equivalent { grid-column: 1 / -1; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; border: 1px solid #fff; border-radius: 13px; background: #e7f2fbc4; padding: 13px; }
 .equivalent span { color: #58728e; font-size: 12px; }
 .equivalent strong { font-size: 14px; }
-.loginPage { min-height: 100vh; display: grid; place-items: center; padding: 24px; background: radial-gradient(circle at 15% 8%, #bfdaf1 0, transparent 37%), radial-gradient(circle at 85% 80%, #d7eff0 0, transparent 42%), linear-gradient(145deg, #eaf4ff, #dceaf7); color: #10213a; }
+.loginPage { min-height: 100vh; display: grid; place-items: center; padding: 24px; background: linear-gradient(180deg, #eaf4ff40, #dceaf7d9), url('/prisoner-aid-sky.webp') center center / cover no-repeat; color: #10213a; }
 .loginPanel { width: min(440px, 100%); display: grid; gap: 18px; background: #ffffffc4; border: 1px solid #fffffff2; border-radius: 22px; padding: 32px; box-shadow: 0 16px 40px #294d7726, inset 0 1px #fff; backdrop-filter: blur(22px) saturate(130%); -webkit-backdrop-filter: blur(22px) saturate(130%); }
 .loginPanel > span { font-size: 12px; color: #4766a6; font-weight: 800; }
 .loginPanel h1 { margin: 0; font-size: 30px; }
@@ -107,5 +110,5 @@
 .loginPanel button:disabled { opacity: .55; cursor: not-allowed; }
 .loginPanel a { color: #31506f; text-decoration: none; font-size: 13px; }
 @media (max-width: 1050px) { .metrics { grid-template-columns: repeat(2, 1fr); } .formsGrid { grid-template-columns: 1fr; } }
-@media (max-width: 620px) { .shell { width: calc(100% - 24px); padding-top: 25px; } .header { display: block; } .headerSide { justify-items: start; margin-top: 15px; } .modeTabs { width: 100%; } .modeTabs a { min-width: 0; width: 50%; padding-inline: 12px; } .metrics { grid-template-columns: 1fr 1fr; gap: 8px; } .pdfForm, .pdfForm label, .pdfForm select, .pdfForm button { width: 100%; max-width: none; } .sectionTitle { align-items: start; flex-wrap: wrap; } .prisonerTools { width: 100%; justify-content: space-between; } .prisonerTools select { min-width: 0; max-width: calc(100vw - 72px); } .panel { padding: 15px; } .form { grid-template-columns: 1fr; } .formActions, .equivalent, .error { grid-column: auto; } }
+@media (max-width: 620px) { .shell { width: calc(100% - 24px); padding-top: 20px; } .page::before { height: 900px; background-position: center top; } .header { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; min-height: 0; margin-bottom: 22px; } .headerTitle { grid-column: 1 / -1; grid-row: 2; padding-top: 22px; } .header h1 { font-size: clamp(34px, 8vw, 46px); } .headerTitle p { font-size: 12px; } .headerSide { grid-column: 2; grid-row: 1; justify-items: flex-end; } .modeTabs { width: 100%; } .modeTabs a { min-width: 0; width: 50%; padding-inline: 12px; } .metrics { grid-template-columns: 1fr 1fr; gap: 8px; } .pdfForm, .pdfForm label, .pdfForm select, .pdfForm button { width: 100%; max-width: none; } .sectionTitle { align-items: start; flex-wrap: wrap; } .prisonerTools { width: 100%; justify-content: space-between; } .prisonerTools select { min-width: 0; max-width: calc(100vw - 72px); } .panel { padding: 15px; } .form { grid-template-columns: 1fr; } .formActions, .equivalent, .error { grid-column: auto; } }
 @media (prefers-reduced-motion: reduce) { .modeTabs a { transition: none; } }

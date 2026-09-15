@@ -224,7 +224,8 @@ export default function PrisonerAidPage({ mode = 'report', initialRecipientId = 
   return <main className={styles.page} dir="rtl">
     <div className={styles.shell}>
       <header className={styles.header}>
-        <div><p className={styles.eyebrow}>Andarun / Finanzen</p><h1>کمک به زندانیان</h1><p>ثبت نیازها، کمک‌ها و وضعیت واریز هر زندانی</p></div>
+        <p className={styles.eyebrow}>Andarun / Finanzen</p>
+        <div className={styles.headerTitle}><h1>کمک به زندانیان</h1><p>ثبت نیازها، کمک‌ها و وضعیت واریز هر زندانی</p></div>
         <div className={styles.headerSide}><span>{saveStatus}</span></div>
       </header>
       <nav className={styles.modeTabs} aria-label="نمای صفحهٔ کمک به زندانیان">
