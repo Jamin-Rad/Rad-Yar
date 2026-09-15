@@ -15,6 +15,15 @@ const statusLabels = { promised: 'قول کمک', recorded: 'کمک ثبت‌ش�
 const donorCollator = new Intl.Collator('fa', { sensitivity: 'base' })
 const registeredToman = totals => totals.recordedToman + totals.confirmedToman
 
+function MetricIcon({ kind }) {
+  return <span className={`${styles.metricIcon} ${styles[`metricIcon${kind}`]}`} aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    {kind === 'Needed' ? <><circle cx="12" cy="12" r="8" /><path d="M12 4v8h8" /></> : null}
+    {kind === 'Registered' ? <><path d="M4 13.5V19h16v-5.5M8 14l3.1 2.2a2 2 0 0 0 2.3 0L17 13" /><path d="M12 12.5s-4.7-2.8-4.7-5.5a2.3 2.3 0 0 1 4.7-.5 2.3 2.3 0 0 1 4.7.5c0 2.7-4.7 5.5-4.7 5.5Z" /></> : null}
+    {kind === 'Confirmed' ? <><rect x="4" y="7" width="16" height="13" rx="3" /><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2m-5 6 2 2 3-4" /></> : null}
+    {kind === 'Complete' ? <><circle cx="9" cy="8" r="3" /><path d="M3.5 19v-2a5.5 5.5 0 0 1 11 0v2M17 5a3 3 0 0 1 0 6m1.5 2.5a4.5 4.5 0 0 1 2 3.5V19" /></> : null}
+  </svg></span>
+}
+
 export default function PrisonerAidPage({ mode = 'report', initialRecipientId = '', initialPrisonerId = '' }) {
   const [state, setState] = useState(EMPTY_STATE)
   const [loaded, setLoaded] = useState(false)
@@ -228,36 +237,37 @@ export default function PrisonerAidPage({ mode = 'report', initialRecipientId = 
         <div className={styles.headerTitle}><h1>کمک به زندانیان</h1><p>ثبت نیازها، کمک‌ها و وضعیت واریز هر زندانی</p></div>
         <div className={styles.headerSide}><span>{saveStatus}</span></div>
       </header>
-      <nav className={styles.modeTabs} aria-label="نمای صفحهٔ کمک به زندانیان">
-        <Link href="/andarun/finanz/gefangene" className={mode === 'report' ? styles.activeTab : ''} aria-current={mode === 'report' ? 'page' : undefined}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 19V5m0 14h16M8 15v-3m5 3V8m5 7V5" /></svg><span>گزارش</span></Link>
-        <Link href="/andarun/finanz/gefangene/edit" className={mode === 'edit' ? styles.activeTab : ''} aria-current={mode === 'edit' ? 'page' : undefined}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M15.5 5.5 18.5 8.5M4 20l4.2-.9L19 8.3a2.1 2.1 0 0 0-3-3L5.2 16.1 4 20Z" /></svg><span>ویرایش</span></Link>
-      </nav>
+      <div className={styles.actionRow}>
+        <nav className={styles.modeTabs} aria-label="نمای صفحهٔ کمک به زندانیان">
+          <Link href="/andarun/finanz/gefangene" className={mode === 'report' ? styles.activeTab : ''} aria-current={mode === 'report' ? 'page' : undefined}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 19V5m0 14h16M8 15v-3m5 3V8m5 7V5" /></svg><span>گزارش</span></Link>
+          <Link href="/andarun/finanz/gefangene/edit" className={mode === 'edit' ? styles.activeTab : ''} aria-current={mode === 'edit' ? 'page' : undefined}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M15.5 5.5 18.5 8.5M4 20l4.2-.9L19 8.3a2.1 2.1 0 0 0-3-3L5.2 16.1 4 20Z" /></svg><span>ویرایش</span></Link>
+        </nav>
+        {mode === 'report' ? <section className={styles.pdfPanel} aria-labelledby="pdf-title">
+          <h2 className={styles.srOnly} id="pdf-title">گرفتن PDF</h2>
+          <form action="/andarun/finanz/gefangene/print" method="get" target="_blank" className={styles.pdfForm}>
+            <input type="hidden" name="auto" value="1" />
+            <label>نوع گزارش<select name="type" value={pdfReportType} onChange={event => { setPdfReportType(event.target.value); setPdfTargetId('') }}>
+              <option value="overview">گزارش کامل</option><option value="prisoners">همهٔ زندانیان و ماندهٔ نیاز</option>
+              <option value="recipients">همهٔ گیرنده‌ها و واریز به ستاد دیه</option><option value="donors">جمع کمک هر فرد</option><option value="donations">تاریخچهٔ کمک‌ها بر اساس کمک‌کننده</option>
+              <option value="prisoner">یک زندانی و کمک‌هایش</option><option value="recipient">یک گیرنده و جزئیاتش</option>
+            </select></label>
+            {pdfReportType === 'prisoner' ? <label>زندانی<select name="id" required value={pdfTargetId} onChange={event => setPdfTargetId(event.target.value)}><option value="">انتخاب کنید</option>{state.prisoners.map(row => <option key={row.id} value={row.id}>{row.number} · {row.name}</option>)}</select></label> : null}
+            {pdfReportType === 'recipient' ? <label>گیرنده<select name="id" required value={pdfTargetId} onChange={event => setPdfTargetId(event.target.value)}><option value="">انتخاب کنید</option>{recipientRows.map(row => <option key={row.id} value={row.id}>{row.name}</option>)}</select></label> : null}
+            <button type="submit" disabled={!onlineReady}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm7 0v5h5M8 15h8m-8 3h5" /></svg><span>گرفتن PDF</span></button>
+          </form>
+        </section> : null}
+      </div>
       {!onlineReady && loaded ? <p className={styles.storageAlert} role="alert">اتصال ذخیرهٔ آنلاین برقرار نیست. ویرایش تا برقراری اتصال غیرفعال است.</p> : null}
 
       {mode === 'edit' ? <section className={styles.panel} id="donation-form"><div className={styles.sectionTitle}><div><span>دفتر کمک‌ها</span><h2>ثبت کمک</h2></div></div>
         {editingDonation ? <p className={styles.empty}>فرم ویرایش کمک در جزئیات زندانی یا گیرنده باز است.</p> : <form className={styles.form} onSubmit={saveDonation}>{donationFormFields()}</form>}
       </section> : null}
 
-      {mode === 'report' ? <section className={styles.pdfPanel} aria-labelledby="pdf-title">
-        <div><span>خروجی گزارش</span><h2 id="pdf-title">گرفتن PDF</h2><p>نوع گزارش را انتخاب کنید؛ در پنجرهٔ چاپ، «Save as PDF» را بزنید.</p></div>
-        <form action="/andarun/finanz/gefangene/print" method="get" target="_blank" className={styles.pdfForm}>
-          <input type="hidden" name="auto" value="1" />
-          <label>نوع گزارش<select name="type" value={pdfReportType} onChange={event => { setPdfReportType(event.target.value); setPdfTargetId('') }}>
-            <option value="overview">گزارش کامل</option><option value="prisoners">همهٔ زندانیان و ماندهٔ نیاز</option>
-            <option value="recipients">همهٔ گیرنده‌ها و واریز به ستاد دیه</option><option value="donors">جمع کمک هر فرد</option><option value="donations">تاریخچهٔ کمک‌ها بر اساس کمک‌کننده</option>
-            <option value="prisoner">یک زندانی و کمک‌هایش</option><option value="recipient">یک گیرنده و جزئیاتش</option>
-          </select></label>
-          {pdfReportType === 'prisoner' ? <label>زندانی<select name="id" required value={pdfTargetId} onChange={event => setPdfTargetId(event.target.value)}><option value="">انتخاب کنید</option>{state.prisoners.map(row => <option key={row.id} value={row.id}>{row.number} · {row.name}</option>)}</select></label> : null}
-          {pdfReportType === 'recipient' ? <label>گیرنده<select name="id" required value={pdfTargetId} onChange={event => setPdfTargetId(event.target.value)}><option value="">انتخاب کنید</option>{recipientRows.map(row => <option key={row.id} value={row.id}>{row.name}</option>)}</select></label> : null}
-          <button type="submit" disabled={!onlineReady}>باز کردن گزارش PDF</button>
-        </form>
-      </section> : null}
-
       <section className={styles.metrics} aria-label="خلاصه کمک‌ها">
-        <div><span>مبلغ مورد نیاز</span><strong>{formatToman(summary.needed)}</strong></div>
-        <div><span>کمک ثبت‌شده</span><strong>{formatToman(summary.registered)}</strong></div>
-        <div><span>واریز تأییدشده</span><strong>{formatToman(summary.confirmed)}</strong></div>
-        <div><span>زندانی تکمیل‌شده</span><strong>{new Intl.NumberFormat('fa-IR').format(summary.complete)}</strong></div>
+        <div><MetricIcon kind="Needed" /><div className={styles.metricText}><span>مبلغ مورد نیاز</span><strong>{formatToman(summary.needed)}</strong></div></div>
+        <div><MetricIcon kind="Registered" /><div className={styles.metricText}><span>کمک ثبت‌شده</span><strong>{formatToman(summary.registered)}</strong></div></div>
+        <div><MetricIcon kind="Confirmed" /><div className={styles.metricText}><span>واریز تأییدشده</span><strong>{formatToman(summary.confirmed)}</strong></div></div>
+        <div><MetricIcon kind="Complete" /><div className={styles.metricText}><span>زندانی تکمیل‌شده</span><strong>{new Intl.NumberFormat('fa-IR').format(summary.complete)}</strong></div></div>
       </section>
 
       <section className={styles.panel} aria-labelledby="prisoners-title">
