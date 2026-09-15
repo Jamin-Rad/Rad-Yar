@@ -313,7 +313,7 @@ export default function PrisonerAidPage({ mode = 'report', initialRecipientId = 
             return <Fragment key={recipient.id}>
               <tr><td><button type="button" className={styles.prisonerLink} aria-expanded={isOpen} onClick={() => toggleRecipient(recipient.id)}>{recipient.name}</button>{recipient.account ? <small>{recipient.account}</small> : null}</td>
                 <td><strong>{formatEuro(ledger.confirmedEuro)}</strong></td>
-                <td><strong>{formatEuro(ledger.pendingEuro)}</strong><small>شامل قول کمک: {formatEuro(ledger.promisedEuro)}</small><small>کل ثبت‌شده: {formatEuro(ledger.euro)}</small></td>
+                <td><strong>{formatEuro(ledger.pendingEuro)}</strong>{ledger.promisedEuro ? <small>شامل قول کمک: {formatEuro(ledger.promisedEuro)}</small> : null}<small>کل ثبت‌شده: {formatEuro(ledger.euro)}</small></td>
                 <td>{formatToman(ledger.toman)}</td><td><strong>{formatToman(ledger.owedToman)}</strong>{ledger.promisedEuro ? <small>شامل قول کمک</small> : null}</td>
                 <td>{ledger.cases.length} نفر</td>{mode === 'edit' ? <td><button type="button" className={styles.textButton} disabled={!onlineReady} onClick={() => editRecipient(recipient)}>ویرایش نام و حساب</button></td> : null}
               </tr>

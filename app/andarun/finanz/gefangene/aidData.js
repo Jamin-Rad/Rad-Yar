@@ -79,7 +79,7 @@ export function totalsFor(prisonerId, donations) {
 
 export function donationToman(donation) {
   return donation.originalCurrency === 'toman' && donation.tomanAmount > 0
-    ? donation.tomanAmount : donation.euroAmount * donation.rateAtRecord
+    ? donation.tomanAmount : Math.round(donation.euroAmount * donation.rateAtRecord)
 }
 
 export function recipientLedger(recipientId, donations, prisoners) {
