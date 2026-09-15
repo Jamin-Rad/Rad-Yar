@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Fragment, useEffect, useMemo, useState } from 'react'
-import { DEFAULT_RATE, EMPTY_STATE, STORAGE_KEY, donationToman, formatEuro, formatToman, normalizeState, recipientLedger, totalsFor } from './aidData'
+import { DEFAULT_RATE, EMPTY_STATE, STORAGE_KEY, donationToman, donorSummary, formatEuro, formatToman, normalizeState, parseLocalizedNumber, recipientLedger, totalsFor, westernDigits } from './aidData'
 import { mergeScreenshotSeed } from './screenshotSeed'
 import styles from './page.module.css'
 
@@ -94,14 +94,18 @@ export default function PrisonerAidPage({ mode = 'report', initialRecipientId = 
     return state.recipients.map(row => ({ ...row,
       ledger: recipientLedger(row.id, state.donations, state.prisoners) }))
   }, [state.recipients, state.donations, state.prisoners])
+  const donorRows = useMemo(() => donorSummary(state.donations), [state.donations])
 
   function savePrisoner(event) {
     event.preventDefault()
     if (!onlineReady) return
-    const number = prisonerForm.number.trim()
+    const number = westernDigits(prisonerForm.number.trim())
     const name = prisonerForm.name.trim()
-    const neededToman = Number(prisonerForm.neededToman)
-    if (!number || !Number.isFinite(neededToman) || neededToman <= 0) return
+    const neededToman = parseLocalizedNumber(prisonerForm.neededToman)
+    if (!number || !Number.isInteger(neededToman) || neededToman <= 0) {
+      setError('شمارهٔ زندانی و مبلغ صحیحِ مورد نیاز را وارد کنید.')
+      return
+    }
     if (state.prisoners.some(row => row.number === number && row.id !== editingPrisoner)) {
       setError('شمارهٔ زندانی تکراری است.')
       return
@@ -123,10 +127,13 @@ export default function PrisonerAidPage({ mode = 'report', initialRecipientId = 
   function saveDonation(event) {
     event.preventDefault()
     if (!onlineReady) return
-    const amount = Number(donationForm.amount)
-    const rateAtRecord = Number(donationForm.rateAtRecord)
-    if (!state.prisoners.some(row => row.id === donationForm.prisonerId) || !Number.isFinite(amount) || amount <= 0) return
-    if (!Number.isFinite(rateAtRecord) || rateAtRecord <= 0) {
+    const amount = parseLocalizedNumber(donationForm.amount)
+    const rateAtRecord = parseLocalizedNumber(donationForm.rateAtRecord)
+    if (!state.prisoners.some(row => row.id === donationForm.prisonerId) || !Number.isFinite(amount) || amount <= 0 || donationForm.originalCurrency === 'toman' && !Number.isInteger(amount)) {
+      setDonationError('زندانی و مبلغ صحیحِ کمک را وارد کنید.')
+      return
+    }
+    if (!Number.isInteger(rateAtRecord) || rateAtRecord <= 0) {
       setDonationError('نرخ تبدیل این کمک را وارد کنید.')
       return
     }
@@ -188,20 +195,21 @@ export default function PrisonerAidPage({ mode = 'report', initialRecipientId = 
   }
 
   function donationFormFields() {
-    const editingRate = Number(donationForm.rateAtRecord) || 0
+    const editingRate = parseLocalizedNumber(donationForm.rateAtRecord) || 0
+    const editingAmount = parseLocalizedNumber(donationForm.amount) || 0
     return <>
       <label>زندانی<select required value={donationForm.prisonerId} onChange={event => setDonationForm(current => ({ ...current, prisonerId: event.target.value }))}><option value="">انتخاب کنید</option>{state.prisoners.map(row => <option value={row.id} key={row.id}>{row.number}{row.name ? ` · ${row.name}` : ''}</option>)}</select></label>
       <label>نام کمک‌کننده<input value={donationForm.donor} onChange={event => setDonationForm(current => ({ ...current, donor: event.target.value }))} /></label>
       <label>ارز مبلغ اصلی<select value={donationForm.originalCurrency} onChange={event => setDonationForm(current => ({ ...current, originalCurrency: event.target.value, amount: '' }))}><option value="eur">یورو</option><option value="toman">تومان</option></select></label>
-      <label>مبلغ کمک، {donationForm.originalCurrency === 'toman' ? 'تومان' : 'یورو'}<input required type="number" min={donationForm.originalCurrency === 'toman' ? '1' : '0.01'} step={donationForm.originalCurrency === 'toman' ? '1' : '0.01'} value={donationForm.amount} onChange={event => setDonationForm(current => ({ ...current, amount: event.target.value }))} /></label>
-      <label>نرخ تبدیل همین کمک، تومان برای هر یورو<input required type="number" min="1" step="1" value={donationForm.rateAtRecord} onChange={event => setDonationForm(current => ({ ...current, rateAtRecord: event.target.value }))} /></label>
+      <label>مبلغ کمک، {donationForm.originalCurrency === 'toman' ? 'تومان' : 'یورو'}<input required type="text" inputMode={donationForm.originalCurrency === 'toman' ? 'numeric' : 'decimal'} value={donationForm.amount} onChange={event => setDonationForm(current => ({ ...current, amount: event.target.value }))} /></label>
+      <label>نرخ تبدیل همین کمک، تومان برای هر یورو<input required type="text" inputMode="numeric" value={donationForm.rateAtRecord} onChange={event => setDonationForm(current => ({ ...current, rateAtRecord: event.target.value }))} /></label>
       <label>وضعیت<select value={donationForm.status} onChange={event => setDonationForm(current => ({ ...current, status: event.target.value }))}><option value="promised">گفته واریز می‌کند</option><option value="recorded">کمک ثبت شده، منتظر تأیید</option><option value="confirmed">واریز تأیید شده</option></select></label>
       <label>مسیر واریز<select value={donationForm.channel} onChange={event => setDonationForm(current => ({ ...current, channel: event.target.value, recipientId: '', settledToSetad: false }))}><option value="recipient">از طریق گیرنده</option><option value="direct">مستقیم به حساب ستاد دیه</option></select></label>
       {donationForm.channel === 'recipient' ? <label>گیرنده<select required value={donationForm.recipientId} onChange={event => setDonationForm(current => ({ ...current, recipientId: event.target.value }))}><option value="">انتخاب گیرنده</option>{state.recipients.map(row => <option value={row.id} key={row.id}>{row.name}</option>)}</select></label> : null}
       {donationForm.channel === 'recipient' ? <label className={styles.checkboxLabel}><input type="checkbox" checked={donationForm.settledToSetad} onChange={event => setDonationForm(current => ({ ...current, settledToSetad: event.target.checked }))} />این مبلغ به ستاد دیه واریز شده است</label> : null}
       <label>تاریخ<input type="date" value={donationForm.date} onChange={event => setDonationForm(current => ({ ...current, date: event.target.value }))} /></label>
       <label>توضیح<input value={donationForm.note} onChange={event => setDonationForm(current => ({ ...current, note: event.target.value }))} /></label>
-      <div className={styles.equivalent}><span>معادل کمک با نرخ همین ورودی</span><strong>{formatEuro(donationForm.originalCurrency === 'toman' ? editingRate ? (Number(donationForm.amount) || 0) / editingRate : 0 : Number(donationForm.amount) || 0)}</strong><strong>{formatToman(donationForm.originalCurrency === 'toman' ? Number(donationForm.amount) || 0 : (Number(donationForm.amount) || 0) * editingRate)}</strong></div>
+      <div className={styles.equivalent}><span>معادل کمک با نرخ همین ورودی</span><strong>{formatEuro(donationForm.originalCurrency === 'toman' ? editingRate ? editingAmount / editingRate : 0 : editingAmount)}</strong><strong>{formatToman(donationForm.originalCurrency === 'toman' ? editingAmount : editingAmount * editingRate)}</strong></div>
       {donationError ? <p className={styles.error} role="alert">{donationError}</p> : null}
       <div className={styles.formActions}><button type="submit" disabled={!state.prisoners.length || !onlineReady}>{editingDonation ? 'ذخیرهٔ تغییرات' : 'ثبت کمک'}</button>{editingDonation ? <button type="button" className={styles.secondary} onClick={() => { setEditingDonation(''); setDonationForm(emptyDonation); setDonationError('') }}>انصراف</button> : null}</div>
     </>
@@ -229,7 +237,7 @@ export default function PrisonerAidPage({ mode = 'report', initialRecipientId = 
           <input type="hidden" name="auto" value="1" />
           <label>نوع گزارش<select name="type" value={pdfReportType} onChange={event => { setPdfReportType(event.target.value); setPdfTargetId('') }}>
             <option value="overview">گزارش کامل</option><option value="prisoners">همهٔ زندانیان و ماندهٔ نیاز</option>
-            <option value="recipients">همهٔ گیرنده‌ها و واریز به ستاد دیه</option><option value="donations">تاریخچهٔ کمک‌ها بر اساس کمک‌کننده</option>
+            <option value="recipients">همهٔ گیرنده‌ها و واریز به ستاد دیه</option><option value="donors">جمع کمک هر فرد</option><option value="donations">تاریخچهٔ کمک‌ها بر اساس کمک‌کننده</option>
             <option value="prisoner">یک زندانی و کمک‌هایش</option><option value="recipient">یک گیرنده و جزئیاتش</option>
           </select></label>
           {pdfReportType === 'prisoner' ? <label>زندانی<select name="id" required value={pdfTargetId} onChange={event => setPdfTargetId(event.target.value)}><option value="">انتخاب کنید</option>{state.prisoners.map(row => <option key={row.id} value={row.id}>{row.number} · {row.name}</option>)}</select></label> : null}
@@ -308,12 +316,20 @@ export default function PrisonerAidPage({ mode = 'report', initialRecipientId = 
         {!recipientRows.length ? <p className={styles.empty}>گیرنده‌ای ثبت نشده است.</p> : null}
       </section>
 
+      {mode === 'report' ? <section className={styles.panel} aria-labelledby="donors-title">
+        <div className={styles.sectionTitle}><div><span>جمع کمک‌های ثبت‌شده بر اساس نام؛ قول کمک جداگانه آمده است</span><h2 id="donors-title">گزارش کمک‌کنندگان</h2></div><small>{donorRows.length} نام</small></div>
+        <div className={styles.tableWrap}><table><thead><tr><th>کمک‌کننده</th><th>مبلغ کمک ثبت‌شده</th><th>واریز تأییدشده از این مبلغ</th><th>قول کمک، هنوز ثبت نشده</th><th>تعداد کمک</th><th>برای چند زندانی</th></tr></thead><tbody>
+          {donorRows.map(row => <tr key={row.key || 'without-name'}><td><strong>{row.name}</strong></td><td><strong>{formatEuro(row.registeredEuro)}</strong><small>{formatToman(row.registeredToman)}</small></td><td><strong>{formatEuro(row.confirmedEuro)}</strong><small>{formatToman(row.confirmedToman)}</small></td><td>{row.promisedEuro ? <><strong>{formatEuro(row.promisedEuro)}</strong><small>{formatToman(row.promisedToman)}</small></> : '—'}</td><td>{row.donationCount}</td><td>{row.prisonerCount}</td></tr>)}
+        </tbody></table></div>
+        {!donorRows.length ? <p className={styles.empty}>هنوز کمکی ثبت نشده است.</p> : null}
+      </section> : null}
+
       {mode === 'edit' ? <div className={styles.formsGrid}>
         <section className={styles.panel} id="prisoner-form"><div className={styles.sectionTitle}><div><span>اطلاعات پرونده</span><h2>{editingPrisoner ? 'ویرایش زندانی' : 'افزودن زندانی'}</h2></div></div>
           <form className={styles.form} onSubmit={savePrisoner}>
-            <label>شمارهٔ زندانی<input required value={prisonerForm.number} onChange={event => setPrisonerForm(current => ({ ...current, number: event.target.value }))} /></label>
+            <label>شمارهٔ زندانی<input required inputMode="numeric" value={prisonerForm.number} onChange={event => setPrisonerForm(current => ({ ...current, number: event.target.value }))} /></label>
             <label>نام (اگر ثبت شده)<input value={prisonerForm.name} onChange={event => setPrisonerForm(current => ({ ...current, name: event.target.value }))} /></label>
-            <label>فقط مبلغ مورد نیاز، تومان<input required type="number" min="1" value={prisonerForm.neededToman} onChange={event => setPrisonerForm(current => ({ ...current, neededToman: event.target.value }))} /></label>
+            <label>فقط مبلغ مورد نیاز، تومان<input required type="text" inputMode="numeric" value={prisonerForm.neededToman} onChange={event => setPrisonerForm(current => ({ ...current, neededToman: event.target.value }))} /></label>
             <label>توضیح<input value={prisonerForm.note} onChange={event => setPrisonerForm(current => ({ ...current, note: event.target.value }))} /></label>
             {error ? <p className={styles.error} role="alert">{error}</p> : null}
             <div className={styles.formActions}><button type="submit" disabled={!onlineReady}>{editingPrisoner ? 'ذخیرهٔ تغییرات' : 'افزودن زندانی'}</button>{editingPrisoner ? <button type="button" className={styles.secondary} onClick={() => { setEditingPrisoner(''); setPrisonerForm(emptyPrisoner) }}>انصراف</button> : null}</div>

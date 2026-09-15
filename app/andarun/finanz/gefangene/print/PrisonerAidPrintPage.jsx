@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
-import { donationToman, formatEuro, formatToman, normalizeState, recipientLedger, totalsFor } from '../aidData'
+import { donationToman, donorSummary, formatEuro, formatToman, normalizeState, recipientLedger, totalsFor } from '../aidData'
 import { mergeScreenshotSeed } from '../screenshotSeed'
 import styles from './print.module.css'
 
@@ -10,6 +10,7 @@ const titles = {
   overview: 'گزارش کامل کمک به زندانیان',
   prisoners: 'گزارش زندانیان و ماندهٔ نیاز',
   recipients: 'گزارش گیرنده‌ها و واریز به ستاد دیه',
+  donors: 'گزارش جمع کمک هر فرد',
   donations: 'تاریخچهٔ کمک‌ها بر اساس کمک‌کننده',
   prisoner: 'گزارش یک زندانی',
   recipient: 'گزارش یک گیرنده',
@@ -35,6 +36,18 @@ function DonationsTable({ donations, state }) {
         <td>{row.channel === 'direct' ? 'مستقیم به ستاد دیه' : recipient?.name || '—'}</td>
       </tr>
     })}
+  </ReportTable>
+}
+
+function DonorsTable({ donors }) {
+  return <ReportTable headers={['کمک‌کننده', 'کمک ثبت‌شده', 'واریز تأییدشده از این مبلغ', 'قول کمک، هنوز ثبت نشده', 'تعداد کمک', 'برای چند زندانی']}>
+    {donors.map(row => <tr key={row.key || 'without-name'}>
+      <td>{row.name}</td>
+      <td>{formatEuro(row.registeredEuro)}<br />{formatToman(row.registeredToman)}</td>
+      <td>{formatEuro(row.confirmedEuro)}<br />{formatToman(row.confirmedToman)}</td>
+      <td>{row.promisedEuro ? <>{formatEuro(row.promisedEuro)}<br />{formatToman(row.promisedToman)}</> : '—'}</td>
+      <td>{row.donationCount}</td><td>{row.prisonerCount}</td>
+    </tr>)}
   </ReportTable>
 }
 
@@ -76,6 +89,7 @@ export default function PrisonerAidPrintPage({ type, id, autoPrint }) {
   const donations = useMemo(() => state ? [...state.donations].sort((a, b) =>
     (a.donor && !b.donor ? -1 : !a.donor && b.donor ? 1 : collator.compare(a.donor, b.donor)) || b.date.localeCompare(a.date)
   ) : [], [state])
+  const donors = useMemo(() => state ? donorSummary(state.donations) : [], [state])
   const prisoner = type === 'prisoner' ? rows.find(row => row.id === id) : null
   const recipient = type === 'recipient' ? recipients.find(row => row.id === id) : null
   const canPrint = state && (type !== 'prisoner' || prisoner) && (type !== 'recipient' || recipient)
@@ -120,6 +134,7 @@ export default function PrisonerAidPrintPage({ type, id, autoPrint }) {
         </ReportTable></section>
         {(type === 'recipient' ? [recipient] : recipients).map(row => <RecipientDetail key={row.id || 'unassigned'} recipient={row} state={state} />)}
       </> : null}
+      {['overview', 'donors'].includes(type) ? <section className={styles.reportSection}><h2>جمع کمک‌های ثبت‌شده بر اساس فرد</h2><p>قول کمک جداگانه نمایش داده شده و در جمع کمک ثبت‌شده حساب نشده است.</p><DonorsTable donors={donors} /></section> : null}
       {['overview', 'donations'].includes(type) ? <section className={styles.reportSection}><h2>تاریخچهٔ کمک‌ها بر اساس کمک‌کننده</h2><DonationsTable donations={donations} state={state} /></section> : null}
       <footer className={styles.footer}>گزارش بر اساس کمک‌های ثبت‌شده تهیه شده است؛ وضعیت تأیید واریز هر کمک جداگانه نمایش داده می‌شود.</footer>
     </article> : null}

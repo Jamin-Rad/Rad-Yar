@@ -5,7 +5,7 @@ import PrisonerAidPrintPage from './PrisonerAidPrintPage'
 export const metadata = { title: 'گزارش PDF | کمک به زندانیان', robots: { index: false, follow: false } }
 export const dynamic = 'force-dynamic'
 
-const allowedTypes = new Set(['overview', 'prisoners', 'recipients', 'donations', 'prisoner', 'recipient'])
+const allowedTypes = new Set(['overview', 'prisoners', 'recipients', 'donors', 'donations', 'prisoner', 'recipient'])
 
 export default async function Page({ searchParams }) {
   if (!(await hasPrisonerAidSession())) redirect('/andarun/finanz/gefangene/login')

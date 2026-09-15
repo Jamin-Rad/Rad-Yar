@@ -16,8 +16,19 @@ function text(value, max = 250) {
   return typeof value === 'string' ? value.trim().slice(0, max) : ''
 }
 
+export function westernDigits(value) {
+  return String(value ?? '').replace(/[۰-۹]/g, digit => String(digit.charCodeAt(0) - 0x06f0))
+    .replace(/[٠-٩]/g, digit => String(digit.charCodeAt(0) - 0x0660))
+}
+
+export function parseLocalizedNumber(value) {
+  const normalized = westernDigits(value).trim()
+    .replace(/[\s٬،,]/g, '').replace(/٫/g, '.')
+  return /^(?:\d+(?:\.\d*)?|\.\d+)$/.test(normalized) ? Number(normalized) : NaN
+}
+
 function positive(value) {
-  const number = Number(value)
+  const number = parseLocalizedNumber(value)
   return Number.isFinite(number) && number > 0 ? number : 0
 }
 
@@ -28,7 +39,7 @@ export function normalizeState(input) {
     tomanPerEuro: rate,
     seedVersion: Number.isInteger(source.seedVersion) ? source.seedVersion : 0,
     prisoners: Array.isArray(source.prisoners) ? source.prisoners.slice(0, 1000).map(row => ({
-      id: text(row.id, 100), number: text(row.number, 100), name: text(row.name, 160),
+      id: text(row.id, 100), number: westernDigits(text(row.number, 100)), name: text(row.name, 160),
       neededToman: positive(row.neededToman), note: text(row.note, 1000),
     })).filter(row => row.id && row.number) : [],
     recipients: Array.isArray(source.recipients) ? source.recipients.slice(0, 1000).map(row => ({
@@ -97,6 +108,37 @@ export function recipientLedger(recipientId, donations, prisoners) {
   }
   result.cases = [...cases.values()].sort((a, b) => Number(a.number) - Number(b.number))
   return result
+}
+
+export function donorSummary(donations) {
+  const byName = new Map()
+  for (const donation of donations) {
+    const name = donation.donor?.trim() || ''
+    const key = name.normalize('NFKC').replace(/ي/g, 'ی').replace(/ك/g, 'ک').toLocaleLowerCase('fa')
+    const row = byName.get(key) || {
+      key, name: name || 'نام کمک‌کننده ثبت نشده', donationCount: 0,
+      registeredEuro: 0, registeredToman: 0, confirmedEuro: 0, confirmedToman: 0,
+      promisedEuro: 0, promisedToman: 0, prisonerIds: new Set(),
+    }
+    const toman = donationToman(donation)
+    if (donation.status === 'promised') {
+      row.promisedEuro += donation.euroAmount
+      row.promisedToman += toman
+    } else {
+      row.donationCount++
+      row.registeredEuro += donation.euroAmount
+      row.registeredToman += toman
+      row.prisonerIds.add(donation.prisonerId)
+      if (donation.status === 'confirmed') {
+        row.confirmedEuro += donation.euroAmount
+        row.confirmedToman += toman
+      }
+    }
+    byName.set(key, row)
+  }
+  const collator = new Intl.Collator('fa', { sensitivity: 'base' })
+  return [...byName.values()].map(({ prisonerIds, ...row }) => ({ ...row, prisonerCount: prisonerIds.size }))
+    .sort((a, b) => !a.key ? 1 : !b.key ? -1 : collator.compare(a.name, b.name))
 }
 
 export function formatToman(value) {
