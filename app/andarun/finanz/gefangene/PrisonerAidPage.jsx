@@ -29,6 +29,7 @@ export default function PrisonerAidPage({ mode = 'report', initialRecipientId = 
   const [editingContext, setEditingContext] = useState('prisoner')
   const [selectedPrisoner, setSelectedPrisoner] = useState(initialPrisonerId)
   const [selectedRecipient, setSelectedRecipient] = useState(initialRecipientId)
+  const [prisonerSort, setPrisonerSort] = useState('number')
   const [pdfReportType, setPdfReportType] = useState('overview')
   const [pdfTargetId, setPdfTargetId] = useState('')
   const [error, setError] = useState('')
@@ -78,6 +79,11 @@ export default function PrisonerAidPage({ mode = 'report', initialRecipientId = 
   const rows = useMemo(() => state.prisoners.map(prisoner => ({
     ...prisoner, totals: totalsFor(prisoner.id, state.donations),
   })), [state.prisoners, state.donations])
+  const displayedRows = useMemo(() => {
+    if (mode !== 'report' || prisonerSort === 'number') return rows
+    const direction = prisonerSort === 'needed-desc' ? -1 : 1
+    return [...rows].sort((a, b) => direction * (a.neededToman - b.neededToman) || Number(a.number) - Number(b.number))
+  }, [mode, prisonerSort, rows])
   const summary = useMemo(() => rows.reduce((result, row) => {
     result.needed += row.neededToman
     result.confirmed += row.totals.confirmedToman
@@ -222,8 +228,8 @@ export default function PrisonerAidPage({ mode = 'report', initialRecipientId = 
         <div className={styles.headerSide}><span>{saveStatus}</span></div>
       </header>
       <nav className={styles.modeTabs} aria-label="نمای صفحهٔ کمک به زندانیان">
-        <Link href="/andarun/finanz/gefangene" className={mode === 'report' ? styles.activeTab : ''} aria-current={mode === 'report' ? 'page' : undefined}>گزارش</Link>
-        <Link href="/andarun/finanz/gefangene/edit" className={mode === 'edit' ? styles.activeTab : ''} aria-current={mode === 'edit' ? 'page' : undefined}>ویرایش</Link>
+        <Link href="/andarun/finanz/gefangene" className={mode === 'report' ? styles.activeTab : ''} aria-current={mode === 'report' ? 'page' : undefined}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 19V5m0 14h16M8 15v-3m5 3V8m5 7V5" /></svg><span>گزارش</span></Link>
+        <Link href="/andarun/finanz/gefangene/edit" className={mode === 'edit' ? styles.activeTab : ''} aria-current={mode === 'edit' ? 'page' : undefined}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M15.5 5.5 18.5 8.5M4 20l4.2-.9L19 8.3a2.1 2.1 0 0 0-3-3L5.2 16.1 4 20Z" /></svg><span>ویرایش</span></Link>
       </nav>
       {!onlineReady && loaded ? <p className={styles.storageAlert} role="alert">اتصال ذخیرهٔ آنلاین برقرار نیست. ویرایش تا برقراری اتصال غیرفعال است.</p> : null}
 
@@ -254,9 +260,9 @@ export default function PrisonerAidPage({ mode = 'report', initialRecipientId = 
       </section>
 
       <section className={styles.panel} aria-labelledby="prisoners-title">
-        <div className={styles.sectionTitle}><div><span>فهرست اصلی</span><h2 id="prisoners-title">زندانیان</h2></div><small>{rows.length} نفر</small></div>
+        <div className={styles.sectionTitle}><div><span>فهرست اصلی</span><h2 id="prisoners-title">زندانیان</h2></div><div className={styles.prisonerTools}>{mode === 'report' ? <label>ترتیب بر اساس<select value={prisonerSort} onChange={event => setPrisonerSort(event.target.value)}><option value="number">شمارهٔ زندانی</option><option value="needed-desc">مبلغ مورد نیاز: بیشترین اول</option><option value="needed-asc">مبلغ مورد نیاز: کمترین اول</option></select></label> : null}<small>{rows.length} نفر</small></div></div>
         <div className={styles.tableWrap}><table><thead><tr><th>شمارهٔ زندانی</th><th>نام</th><th>مبلغ مورد نیاز</th><th>کمک ثبت‌شده</th><th>واریز تأییدشده</th><th>ماندهٔ نیاز</th><th>وضعیت</th><th /></tr></thead><tbody>
-          {rows.map(row => {
+          {displayedRows.map(row => {
             const counted = registeredToman(row.totals)
             const excess = counted - row.neededToman
             const isOpen = selectedPrisoner === row.id
