@@ -9,22 +9,6 @@ const NAME = 'Hamed Zia'
 const WEEKDAYS_LONG = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag']
 const MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
 const MODALITIES = ['Röntgen', 'CT', 'MRT']
-const CASE_TYPES = [
-  { id: 'case', label: 'Relevante Fälle' },
-  { id: 'question', label: 'Verlaufskontrolle & Fragen' },
-]
-const AREA_OPTIONS = {
-  CT: ['Schädel', 'HWS', 'Thorax', 'Abdomen', 'BBA', 'Obere Extremität', 'Untere Extremität'],
-  Röntgen: [
-    'Thorax', 'Abdomen', 'Becken', 'HWS', 'BWS', 'LWS', 'Schulter', 'Clavicula',
-    'Oberarm', 'Ellenbogen', 'Unterarm', 'Handgelenk', 'Hand', 'Finger',
-    'Hüfte', 'Oberschenkel', 'Knie', 'Unterschenkel', 'OSG', 'Fuß', 'Zehen',
-  ],
-  MRT: [
-    'Kopf', 'Wirbelsäule', 'Herz', 'Prostata', 'Mamma', 'Oberbauch', 'Becken',
-    'Sellink', 'Knie', 'Schulter', 'Hand', 'Ellenbogen', 'OSG', 'Sonstiges',
-  ],
-}
 const DAILY_MODALITIES = [
   { id: 'Röntgen', label: 'Röntgen' },
   { id: 'CT', label: 'CT' },
@@ -207,34 +191,6 @@ function normalizeShift(shift) {
   }
 }
 
-function findingMatchesFilter(finding, filter) {
-  const diagnosisText = `${finding.diagnosis || ''} ${finding.vd || ''}`.toLowerCase()
-  const diagnosisFilter = filter.diagnosis.trim().toLowerCase()
-  return (!filter.modality || finding.modality === filter.modality)
-    && (!diagnosisFilter || diagnosisText.includes(diagnosisFilter))
-}
-
-function filterFindings(items, filter) {
-  return items.filter(item => findingMatchesFilter(item, filter))
-}
-
-const EMPTY_FINDING = {
-  type: 'case',
-  examDate: todayValue(),
-  name: '',
-  birthDate: '',
-  modality: 'Röntgen',
-  examArea: AREA_OPTIONS['Röntgen'][0],
-  diagnosis: '',
-  vd: '',
-  status: 'offen',
-}
-
-const EMPTY_FILTER = {
-  modality: '',
-  diagnosis: '',
-}
-
 const TIMER_EXTRA_INCREMENT_MINUTES = 5
 const TIMER_TARGET_MINUTES = {
   Röntgen: 3,
@@ -273,16 +229,10 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
   const showFindings = view !== 'shifts'
   const [month, setMonth] = useState(monthValue())
   const [shifts, setShifts] = useState([])
-  const [findings, setFindings] = useState([])
   const [findingTimers, setFindingTimers] = useState([])
   const [selectedDate, setSelectedDate] = useState(todayValue())
   const [shiftForm, setShiftForm] = useState(emptyShift(todayValue()))
   const [rangeEndDate, setRangeEndDate] = useState(todayValue())
-  const [findingForm, setFindingForm] = useState(EMPTY_FINDING)
-  const [activeFindingType, setActiveFindingType] = useState('case')
-  const [findingModalType, setFindingModalType] = useState(null)
-  const [caseFilter, setCaseFilter] = useState(EMPTY_FILTER)
-  const [questionFilter, setQuestionFilter] = useState(EMPTY_FILTER)
   const [timerForm, setTimerForm] = useState(EMPTY_TIMER_FORM)
   const [timerElapsed, setTimerElapsed] = useState(0)
   const [timerStartedAt, setTimerStartedAt] = useState(null)
@@ -366,26 +316,12 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
       })),
     [month, shiftsByDate, absencesByDate],
   )
-  const normalizedFindings = useMemo(
-    () => findings.map(finding => ({ type: 'case', diagnosis: '', name: '', ...finding })),
-    [findings],
-  )
-  const relevantCases = useMemo(
-    () => filterFindings(normalizedFindings.filter(finding => finding.type !== 'question'), caseFilter),
-    [normalizedFindings, caseFilter],
-  )
-  const followupQuestions = useMemo(
-    () => filterFindings(normalizedFindings.filter(finding => finding.type === 'question'), questionFilter),
-    [normalizedFindings, questionFilter],
-  )
-
   async function loadAll() {
     setLoading(true)
     try {
       const data = await apiRequest('/')
       const loadedShifts = (data.shifts || []).map(normalizeShift)
       setShifts(loadedShifts)
-      setFindings(data.findings || [])
       setFindingTimers(data.findingTimers || [])
       const existing = loadedShifts.find(item => item.date === selectedDate && !isAbsenceShift(item))
         || loadedShifts.find(item => item.date === selectedDate)
@@ -457,35 +393,6 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
       setShifts((data.shifts || []).map(normalizeShift))
       const remaining = (data.shifts || []).map(normalizeShift)
       setShiftForm(remaining.find(item => item.date === selectedDate && !isAbsenceShift(item)) || emptyShift(selectedDate))
-    } catch (error) {
-      setMessage(error.message)
-    }
-  }
-
-  async function saveFinding(event) {
-    event.preventDefault()
-    const isEditing = Boolean(findingForm.id)
-    try {
-      const finding = {
-        ...findingForm,
-        id: findingForm.id || `finding-${Date.now()}`,
-      }
-      const data = await apiRequest('/', 'POST', { type: 'finding', finding })
-      setFindings(data.findings || [])
-      setFindingForm(EMPTY_FINDING)
-      setActiveFindingType(finding.type)
-      setFindingModalType(null)
-      setMessage(isEditing ? 'Befund aktualisiert.' : 'Befund gespeichert.')
-    } catch (error) {
-      setMessage(error.message)
-    }
-  }
-
-  async function deleteFinding(id) {
-    try {
-      const data = await apiRequest(`/?type=finding&id=${encodeURIComponent(id)}`, 'DELETE')
-      setFindings(data.findings || [])
-      if (findingForm.id === id) closeFindingModal()
     } catch (error) {
       setMessage(error.message)
     }
@@ -701,118 +608,6 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
     window.print()
   }
 
-  function openFindingModal(type) {
-    setFindingModalType(type)
-    setFindingForm({ ...EMPTY_FINDING, type })
-  }
-
-  function editFinding(finding) {
-    const type = finding.type === 'question' ? 'question' : 'case'
-    setActiveFindingType(type)
-    setFindingModalType(type)
-    setFindingForm({
-      ...EMPTY_FINDING,
-      ...finding,
-      type,
-      modality: MODALITIES.includes(finding.modality) ? finding.modality : EMPTY_FINDING.modality,
-      examArea: finding.examArea || AREA_OPTIONS[finding.modality]?.[0] || EMPTY_FINDING.examArea,
-    })
-  }
-
-  function closeFindingModal() {
-    setFindingModalType(null)
-    setFindingForm(EMPTY_FINDING)
-  }
-
-  function updateFindingModality(modality) {
-    const nextArea = AREA_OPTIONS[modality]?.[0] || ''
-    setFindingForm(prev => ({
-      ...prev,
-      modality,
-      examArea: nextArea,
-    }))
-  }
-
-  function renderFilterControls(filter, setFilter) {
-    return (
-      <div className={styles.findingFilters}>
-        <label>Modalität
-          <select value={filter.modality} onChange={event => setFilter(prev => ({ ...prev, modality: event.target.value }))}>
-            <option value="">Alle</option>
-            {MODALITIES.map(modality => <option key={modality}>{modality}</option>)}
-          </select>
-        </label>
-        <label>Diagnose / VD
-          <input value={filter.diagnosis} onChange={event => setFilter(prev => ({ ...prev, diagnosis: event.target.value }))} />
-        </label>
-      </div>
-    )
-  }
-
-  function renderFindingForm() {
-    return (
-      <form className={styles.findingForm} onSubmit={saveFinding}>
-        <label>Tag der Untersuchung
-          <input type="date" value={findingForm.examDate} onChange={event => setFindingForm(prev => ({ ...prev, examDate: event.target.value }))} />
-        </label>
-        <label>Name
-          <input value={findingForm.name} onChange={event => setFindingForm(prev => ({ ...prev, name: event.target.value }))} />
-        </label>
-        <label>Geburtsdatum
-          <input type="date" value={findingForm.birthDate} onChange={event => setFindingForm(prev => ({ ...prev, birthDate: event.target.value }))} />
-        </label>
-        <label>Modalität
-          <select value={findingForm.modality} onChange={event => updateFindingModality(event.target.value)}>
-            {MODALITIES.map(modality => <option key={modality}>{modality}</option>)}
-          </select>
-        </label>
-        <label>Gebiet
-          <select
-            value={findingForm.examArea}
-            onChange={event => setFindingForm(prev => ({ ...prev, examArea: event.target.value }))}
-          >
-            {(AREA_OPTIONS[findingForm.modality] || []).map(area => <option key={area}>{area}</option>)}
-          </select>
-        </label>
-        {findingForm.type === 'case' ? (
-          <label>Diagnose
-            <input value={findingForm.diagnosis} onChange={event => setFindingForm(prev => ({ ...prev, diagnosis: event.target.value }))} />
-          </label>
-        ) : (
-          <label>Verdachtsdiagnose
-            <input value={findingForm.vd} onChange={event => setFindingForm(prev => ({ ...prev, vd: event.target.value }))} />
-          </label>
-        )}
-        <button type="submit">{findingForm.id ? 'Änderungen speichern' : 'Eintrag speichern'}</button>
-      </form>
-    )
-  }
-
-  function renderFindingList(items, emptyText) {
-    return (
-      <div className={styles.findingTable}>
-        <div className={styles.findingHead}>
-          <span>Datum</span><span>Name</span><span>Geb.</span><span>Modalität</span><span>Gebiet</span><span>Diagnose / VD</span><span />
-        </div>
-        {items.map(finding => (
-          <div className={styles.findingRow} key={finding.id}>
-            <span>{finding.examDate}</span>
-            <span>{finding.name || '—'}</span>
-            <span>{finding.birthDate || '—'}</span>
-            <span>{finding.modality}</span>
-            <span>{finding.examArea || '—'}</span>
-            <span>{finding.type === 'question' ? finding.vd || '—' : finding.diagnosis || finding.vd || '—'}</span>
-            <div className={styles.findingRowActions}>
-              <button type="button" onClick={() => editFinding(finding)}>Bearbeiten</button>
-              <button type="button" onClick={() => deleteFinding(finding.id)}>×</button>
-            </div>
-          </div>
-        ))}
-        {!items.length && !loading && <div className={styles.emptyTable}>{emptyText}</div>}
-      </div>
-    )
-  }
-
   return (
     <main className={`${styles.page} ${showFindings && !showShifts ? styles.findingsPage : ''}`}>
       <header className={styles.header}>
@@ -821,7 +616,12 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
           <span className={styles.kicker}>{showFindings && !showShifts ? 'Befunde' : 'Dienstplanung'}</span>
           <h1>{showFindings && !showShifts ? 'Befunde' : 'Dienstzeiten'}</h1>
         </div>
-        {showShifts ? <button className={styles.printBtn} type="button" onClick={printMonth}>PDF drucken</button> : <span />}
+        {showShifts ? <button className={styles.printBtn} type="button" onClick={printMonth}>PDF drucken</button> : (
+          <nav className={styles.findingsTabs} aria-label="Befunde Bereiche">
+            <span className={styles.findingsTabActive} aria-current="page">Befundtimer</span>
+            <Link className={styles.findingsTab} href="/andarun/befunde/kontrolle">Befundkontrolle <span aria-hidden="true">↗</span></Link>
+          </nav>
+        )}
       </header>
 
       {message && <div className={styles.message}>{message}</div>}
@@ -1053,77 +853,6 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
             </div>
           </div>
         </div>
-
-        <div className={styles.controlPanel}>
-          <div className={styles.sectionTitle}>
-            <div>
-              <span className={styles.kicker}>Befundkontrolle</span>
-              <h2>Befundkontrolle</h2>
-            </div>
-          </div>
-
-          <div className={styles.findingTopGrid}>
-            <div className={styles.findingTypeCards}>
-              {CASE_TYPES.map(type => {
-                const count = type.id === 'case'
-                  ? normalizedFindings.filter(finding => finding.type !== 'question').length
-                  : normalizedFindings.filter(finding => finding.type === 'question').length
-                return (
-                  <article className={activeFindingType === type.id ? styles.findingTypeCardActive : styles.findingTypeCard} key={type.id}>
-                    <div>
-                      <span>{count} gespeichert</span>
-                      <h3>{type.label}</h3>
-                    </div>
-                    <div className={styles.findingTypeActions}>
-                      <button type="button" onClick={() => openFindingModal(type.id)}>Eintrag erfassen</button>
-                      <button type="button" onClick={() => setActiveFindingType(type.id)}>Gespeicherte anzeigen</button>
-                    </div>
-                  </article>
-                )
-              })}
-            </div>
-
-          </div>
-
-          <div className={styles.findingBox}>
-            <div className={styles.listHead}>
-              <h3>{CASE_TYPES.find(type => type.id === activeFindingType)?.label}</h3>
-              <span>{activeFindingType === 'case' ? relevantCases.length : followupQuestions.length}</span>
-            </div>
-            {activeFindingType === 'case' ? (
-              <>
-                {renderFilterControls(caseFilter, setCaseFilter)}
-                {renderFindingList(relevantCases, 'Noch keine relevanten Fälle gespeichert.')}
-              </>
-            ) : (
-              <>
-                {renderFilterControls(questionFilter, setQuestionFilter)}
-                {renderFindingList(followupQuestions, 'Noch keine Verlaufskontrollen oder Fragen gespeichert.')}
-              </>
-            )}
-          </div>
-        </div>
-
-        {findingModalType && (
-          <div className={styles.modalBackdrop} role="presentation" onMouseDown={closeFindingModal}>
-            <div
-              className={styles.findingModal}
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="finding-modal-title"
-              onMouseDown={event => event.stopPropagation()}
-            >
-              <div className={styles.modalHead}>
-                <div>
-                  <span className={styles.kicker}>{findingForm.id ? 'Eintrag bearbeiten' : 'Neuer Eintrag'}</span>
-                  <h3 id="finding-modal-title">{CASE_TYPES.find(type => type.id === findingModalType)?.label}</h3>
-                </div>
-                <button type="button" onClick={closeFindingModal} aria-label="Fenster schließen">×</button>
-              </div>
-              {renderFindingForm()}
-            </div>
-          </div>
-        )}
 
         {timerHistoryOpen && (
           <div className={styles.modalBackdrop} role="presentation" onMouseDown={() => setTimerHistoryOpen(false)}>

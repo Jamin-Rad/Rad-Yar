@@ -5,7 +5,7 @@ import WorkPage from '../dienste/WorkPage'
 
 export const metadata = {
   title: 'Andarun Befunde',
-  description: 'Relevante Fälle, Verlaufskontrollen und Fragen speichern',
+  description: 'Befundzeiten erfassen und Tagesarbeitszeit ansehen',
   robots: {
     index: false,
     follow: false,
