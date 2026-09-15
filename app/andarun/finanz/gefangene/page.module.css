@@ -25,12 +25,24 @@
 .tableWrap { width: 100%; overflow-x: auto; }
 .tableWrap table { width: 100%; border-collapse: collapse; min-width: 900px; text-align: right; }
 .tableWrap th { color: #718096; font-size: 12px; background: #f5f8fb; padding: 14px 12px; white-space: nowrap; }
-.tableWrap td { border-bottom: 1px solid #e8edf2; padding: 16px 12px; vertical-align: top; font-size: 13px; }
+.tableWrap td { border-bottom: 1px solid #e8edf2; padding: 16px 12px; vertical-align: top; font-size: 13px; color: #10213a !important; }
 .tableWrap tbody tr:last-child td { border-bottom: 0; }
 .tableWrap td strong, .tableWrap td small { display: block; }
 .tableWrap td strong { font-size: 14px; }
 .tableWrap td small { color: #8190a3; margin-top: 5px; line-height: 1.4; }
 .numberCell { font-weight: 800; color: #174b89; white-space: nowrap; }
+.prisonerLink { border: 0; background: none; color: #174b89; cursor: pointer; padding: 0; font: inherit; font-weight: 800; text-align: right; }
+.prisonerLink:hover, .prisonerLink[aria-expanded="true"] { text-decoration: underline; }
+.prisonerLink:focus-visible { outline: 2px solid #2c69a9; outline-offset: 4px; border-radius: 2px; }
+.detailRow > td { padding: 0 12px 18px !important; background: #eef5fc; color: #10213a !important; }
+.prisonerDetail { border: 1px solid #d5e4f3; border-radius: 14px; background: #fff; padding: 20px; }
+.detailHeading { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 16px; }
+.detailHeading strong, .detailHeading span { display: block; }
+.detailHeading strong { font-size: 17px !important; }
+.detailHeading span { color: #718096; font-size: 12px; margin-top: 5px; }
+.prisonerDetail .tableWrap table { min-width: 680px; }
+.inlineEditor { border-top: 1px solid #e2eaf3; margin-top: 18px; padding-top: 18px; }
+.inlineEditor h3 { margin: 0 0 16px; font-size: 17px; }
 .overRow { background: #fff7ed; }
 .warning, .complete, .pending, .promise { display: inline-block; white-space: nowrap; border-radius: 999px; padding: 7px 10px; font-size: 11px; font-weight: 700; }
 .warning { background: #ffe0c2; color: #8a4105; }

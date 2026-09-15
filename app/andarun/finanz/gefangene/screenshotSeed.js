@@ -1,6 +1,15 @@
 import { DEFAULT_RATE, normalizeState } from './aidData'
 import { PRISONERS, neededToman } from './prisonerData'
 
+const HISTORICAL_DATE = '2026-09-14'
+
+function dateExistingDonations(state) {
+  return normalizeState({ ...state,
+    donations: state.donations.map(row => ({ ...row, date: HISTORICAL_DATE })),
+    seedVersion: 6,
+  })
+}
+
 // Amounts and donors transcribed from the user's 15 Sep 2026 screenshot.
 // Rows with unclear payment evidence remain pending review.
 const prisonerNotes = {
@@ -53,14 +62,14 @@ export const SCREENSHOT_DONATIONS = [
     prisonerId: `screenshot-prisoner-${number}`,
     donor, euroAmount, rateAtRecord: DEFAULT_RATE,
     tomanAmount: 0, originalCurrency: 'eur',
-    status, channel: 'recipient', recipientId: `screenshot-recipient-${recipientFor(number, donor).toLowerCase()}`, date: '',
+    status, channel: 'recipient', recipientId: `screenshot-recipient-${recipientFor(number, donor).toLowerCase()}`, date: HISTORICAL_DATE,
     note: status === 'promised' ? 'در تصویر «واریز نشده» آمده است.' : '',
   })),
   {
     id: 'screenshot-direct-3', prisonerId: 'screenshot-prisoner-3',
     donor: '', euroAmount: 10000000 / DEFAULT_RATE,
     rateAtRecord: DEFAULT_RATE, tomanAmount: 10000000, originalCurrency: 'toman',
-    status: 'recorded', channel: 'direct', recipientId: '', date: '',
+    status: 'recorded', channel: 'direct', recipientId: '', date: HISTORICAL_DATE,
     note: 'در تصویر «مستقیم» و ۱۰٬۰۰۰٬۰۰۰ تومان آمده؛ تأیید واریز ثبت نشده است.',
   },
   ...[
@@ -72,20 +81,21 @@ export const SCREENSHOT_DONATIONS = [
     prisonerId: `screenshot-prisoner-${number}`, donor,
     euroAmount: tomanAmount / DEFAULT_RATE, rateAtRecord: DEFAULT_RATE,
     tomanAmount, originalCurrency: 'toman',
-    status: 'recorded', channel: 'recipient', recipientId: '', date: '', note,
+    status: 'recorded', channel: 'recipient', recipientId: '', date: HISTORICAL_DATE, note,
   })),
 ]
 
 export function mergeScreenshotSeed(input) {
   const state = normalizeState(input)
-  if (state.seedVersion >= 5) return state
+  if (state.seedVersion >= 6) return state
+  if (state.seedVersion === 5) return dateExistingDonations(state)
   if (state.seedVersion === 4) {
     const prisoners = state.prisoners.map(row => {
       const original = SCREENSHOT_PRISONERS.find(item => item.number === row.number && item.neededToman === row.neededToman)
       return original && (!row.name || row.name === `زندانی شماره ${row.number}`)
         ? { ...row, name: original.name } : row
     })
-    return normalizeState({ ...state, prisoners, seedVersion: 5 })
+    return dateExistingDonations({ ...state, prisoners })
   }
   const prisoners = [...state.prisoners]
   const numberToId = new Map(prisoners.map(row => [row.number, row.id]))
@@ -134,5 +144,5 @@ export function mergeScreenshotSeed(input) {
         recipientId: recipientName ? recipientNameToId.get(recipientName) || row.recipientId : '' })
     }
   }
-  return normalizeState({ ...state, prisoners, recipients, donations, seedVersion: 5 })
+  return dateExistingDonations({ ...state, prisoners, recipients, donations })
 }
