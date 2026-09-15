@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
-import { hasAndarunSession } from '@/lib/andarunPasswordAuth'
+import { hasPrisonerAidSession } from '@/lib/prisonerAidAuth'
 import AndarunNav from '@/app/andarun/AndarunNav'
 import PrisonerAidPage from './PrisonerAidPage'
 
@@ -11,6 +11,6 @@ export const metadata = {
 export const dynamic = 'force-dynamic'
 
 export default async function Page() {
-  if (!(await hasAndarunSession())) redirect('/andarun/login')
-  return <><AndarunNav /><PrisonerAidPage /></>
+  if (!(await hasPrisonerAidSession())) redirect('/andarun/finanz/gefangene/login')
+  return <><AndarunNav /><PrisonerAidPage mode="report" /></>
 }

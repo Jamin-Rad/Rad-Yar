@@ -41,6 +41,7 @@ export function normalizeState(input) {
       tomanAmount: positive(row.tomanAmount), originalCurrency: row.originalCurrency === 'toman' ? 'toman' : 'eur',
       status: statuses.has(row.status) ? row.status : 'recorded',
       channel: channels.has(row.channel) ? row.channel : 'recipient',
+      settledToSetad: row.settledToSetad === true,
       recipientId: text(row.recipientId, 100), date: /^\d{4}-\d{2}-\d{2}$/.test(row.date || '') ? row.date : '',
       note: text(row.note, 1000),
     })).filter(row => row.id && row.prisonerId && row.euroAmount) : [],
@@ -50,8 +51,7 @@ export function normalizeState(input) {
 export function totalsFor(prisonerId, donations) {
   return donations.reduce((total, donation) => {
     if (donation.prisonerId !== prisonerId) return total
-    const toman = donation.originalCurrency === 'toman' && donation.tomanAmount > 0
-      ? donation.tomanAmount : donation.euroAmount * donation.rateAtRecord
+    const toman = donationToman(donation)
     if (donation.status === 'confirmed') {
       total.confirmedEuro += donation.euroAmount
       total.confirmedToman += toman
@@ -64,6 +64,39 @@ export function totalsFor(prisonerId, donations) {
     }
     return total
   }, { confirmedEuro: 0, confirmedToman: 0, recordedEuro: 0, recordedToman: 0, promisedEuro: 0, promisedToman: 0 })
+}
+
+export function donationToman(donation) {
+  return donation.originalCurrency === 'toman' && donation.tomanAmount > 0
+    ? donation.tomanAmount : donation.euroAmount * donation.rateAtRecord
+}
+
+export function recipientLedger(recipientId, donations, prisoners) {
+  const cases = new Map()
+  const prisonerById = new Map(prisoners.map(row => [row.id, row]))
+  const result = { euro: 0, confirmedEuro: 0, toman: 0, owedToman: 0, donations: [], cases: [] }
+  for (const donation of donations) {
+    if (donation.channel !== 'recipient' || donation.recipientId !== recipientId) continue
+    result.donations.push(donation)
+    if (donation.status === 'promised') continue
+    const toman = donationToman(donation)
+    const owed = donation.settledToSetad ? 0 : toman
+    result.euro += donation.euroAmount
+    result.confirmedEuro += donation.status === 'confirmed' ? donation.euroAmount : 0
+    result.toman += toman
+    result.owedToman += owed
+    const prisoner = prisonerById.get(donation.prisonerId)
+    const previous = cases.get(donation.prisonerId) || {
+      prisonerId: donation.prisonerId, number: prisoner?.number || '—', name: prisoner?.name || '—',
+      euro: 0, toman: 0, owedToman: 0,
+    }
+    previous.euro += donation.euroAmount
+    previous.toman += toman
+    previous.owedToman += owed
+    cases.set(donation.prisonerId, previous)
+  }
+  result.cases = [...cases.values()].sort((a, b) => Number(a.number) - Number(b.number))
+  return result
 }
 
 export function formatToman(value) {
