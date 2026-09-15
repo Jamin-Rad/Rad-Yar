@@ -59,6 +59,23 @@ const links = [
   { href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5891337/', label: 'Cardiac MR in HCM' },
 ]
 
+function SectionIcon({ id }) {
+  const common = { viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true }
+  const icons = {
+    overview: <><path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2 4.5 4.5 0 0 1 8 2c0 6-8 11-8 11Z"/><path d="M5 12h4l1.5-3 2.5 6 1.5-3H19"/></>,
+    phenotypes: <><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></>,
+    protocol: <><rect x="3" y="4" width="18" height="15" rx="2"/><path d="M7 12h2l1.5-3 2.5 6 1.5-3H17M9 22h6"/></>,
+    atlas: <><rect x="5" y="3" width="14" height="14" rx="2"/><path d="m7 14 3-3 2 2 2.5-3 2.5 4M3 19v1a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-1"/><circle cx="9" cy="7" r="1"/></>,
+    practice: <><path d="M12 3 4 7v5c0 5 3.5 8 8 9 4.5-1 8-4 8-9V7l-8-4Z"/><path d="m8 12 2.5 2.5L16 9"/></>,
+    sources: <><path d="M12 5c-2-2-5-2-9-1v15c4-1 7-1 9 1 2-2 5-2 9-1V4c-4-1-7-1-9 1ZM12 5v15"/><path d="M5 8c2-.3 4-.1 5 1M14 9c1-1 3-1.3 5-1"/></>,
+  }
+  return <svg {...common}>{icons[id]}</svg>
+}
+
+function SectionHeading({ id, title }) {
+  return <div className={styles.sectionHeading}><span className={styles.sectionIcon}><SectionIcon id={id} /></span><h2>{title}</h2></div>
+}
+
 function useCopy() {
   const { lang = 'de' } = useLanguage()
   return { lang, c: value => value?.[lang] || value?.de || value, ui: copy[lang] || copy.de }
@@ -96,12 +113,12 @@ export default function KardiomyopathienPage() {
           <aside className={styles.sidebar}><strong>{ui.toc}</strong>{sections.map(([id, label]) => <a key={id} href={`#${id}`}>{label}</a>)}</aside>
           <div className={styles.content}>
             <section id="overview" className={styles.section}>
-              <div className={styles.sectionHeading}><span>01</span><h2>{ui.overview}</h2></div>
+              <SectionHeading id="overview" title={ui.overview} />
               <div className={styles.quickGrid}><div><small>{ui.definition}</small><p>{c(lesson.definition)}</p></div><div><small>{ui.clinic}</small><p>{c(lesson.clinic)}</p></div></div>
               <div className={styles.callout}><strong>{ui.class}</strong><p>{c(lesson.classNote)}</p></div>
             </section>
             <section id="phenotypes" className={styles.section}>
-              <div className={styles.sectionHeading}><span>02</span><h2>{ui.phenotype}</h2></div>
+              <SectionHeading id="phenotypes" title={ui.phenotype} />
               <div className={styles.tabList} role="tablist" aria-label={ui.phenotype}>{phenotypes.map(item => <button key={item.id} type="button" role="tab" aria-selected={selected === item.id} className={selected === item.id ? styles.selectedTab : ''} onClick={() => setSelected(item.id)}><b>{item.short}</b><span>{c(item.name)}</span></button>)}</div>
               <article className={styles.featureCard} role="tabpanel">
                 <div className={styles.featureImage}><Image src={current.image} alt={c(current.tissue)} width={674} height={764} /><small>{ui.sample}</small></div>
@@ -109,21 +126,21 @@ export default function KardiomyopathienPage() {
               </article>
             </section>
             <section id="protocol" className={styles.section}>
-              <div className={styles.sectionHeading}><span>03</span><h2>{ui.protocol}</h2></div>
+              <SectionHeading id="protocol" title={ui.protocol} />
               <div className={styles.protocolGrid}>{protocol.map(step => <div key={c(step.title)}><h3>{c(step.title)}</h3><p>{c(step.text)}</p></div>)}</div>
               <div className={styles.callout}><strong>LGE</strong><p>{c(lesson.lgeRule)}</p></div>
             </section>
             <section id="atlas" className={styles.section}>
-              <div className={styles.sectionHeading}><span>04</span><h2>{ui.atlas}</h2></div><p className={styles.sectionLead}>{ui.imageHint} · {ui.sample}</p>
+              <SectionHeading id="atlas" title={ui.atlas} /><p className={styles.sectionLead}>{ui.imageHint} · {ui.sample}</p>
               <div className={styles.atlasGrid}>{atlas.map(item => <figure key={item.id} className={styles.atlasCard}><Image src={item.image} alt={c(item.caption)} width={674} height={764} loading="lazy" /><figcaption><strong>{item.short} · {c(item.name)}</strong><button type="button" aria-expanded={Boolean(revealed[item.id])} onClick={() => setRevealed(previous => ({ ...previous, [item.id]: !previous[item.id] }))}>{revealed[item.id] ? ui.hide : ui.reveal}</button>{revealed[item.id] && <p>{c(item.caption)}</p>}</figcaption></figure>)}</div>
             </section>
             <section id="practice" className={styles.section}>
-              <div className={styles.sectionHeading}><span>05</span><h2>{ui.practice}</h2></div>
+              <SectionHeading id="practice" title={ui.practice} />
               <div className={styles.quizGrid}>{questions.map((question, index) => <div key={index} className={styles.quizCard}><span>{String(index + 1).padStart(2, '0')}</span><h3>{c(question.prompt)}</h3><div className={styles.choices}>{phenotypes.map(item => <button key={item.id} type="button" className={answers[index] === item.id ? styles.chosen : ''} onClick={() => setAnswers(previous => ({ ...previous, [index]: item.id }))}>{item.short}</button>)}</div>{answers[index] && <p className={answers[index] === question.answer ? styles.correct : styles.incorrect}>{answers[index] === question.answer ? ui.correct : `${ui.incorrect} · ${phenotypes.find(item => item.id === question.answer)?.short}`}</p>}</div>)}</div>
               {Object.keys(answers).length > 0 && <button type="button" className={styles.reset} onClick={() => setAnswers({})}>{ui.reset}</button>}
             </section>
             <section id="sources" className={styles.section}>
-              <div className={styles.sectionHeading}><span>06</span><h2>{ui.sources}</h2></div>
+              <SectionHeading id="sources" title={ui.sources} />
               <div className={styles.sources}>{links.map(link => <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">{link.label} ↗</a>)}</div>
             </section>
             <div className={styles.bottomRead}><button type="button" className={`${styles.readButton} ${isRead ? styles.readActive : ''}`} onClick={toggleRead}>{isRead ? '✓ ' : '○ '}{isRead ? ui.read : ui.mark}</button></div>
