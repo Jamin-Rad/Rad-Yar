@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import styles from '../page.module.css'
@@ -34,6 +33,5 @@ export default function PrisonerAidLogin({ nextPath }) {
     <label>رمز ورود<input autoFocus type="password" value={password} onChange={event => setPassword(event.target.value)} /></label>
     {error ? <p className={styles.error} role="alert">{error}</p> : null}
     <button type="submit" disabled={!password || loading}>{loading ? 'در حال بررسی…' : 'ورود'}</button>
-    <Link href="/andarun">بازگشت به اندرون</Link>
   </form></main>
 }

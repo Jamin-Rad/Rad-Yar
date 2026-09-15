@@ -211,13 +211,17 @@ export default function PrisonerAidPage({ mode = 'report', initialRecipientId = 
     <div className={styles.shell}>
       <header className={styles.header}>
         <div><p className={styles.eyebrow}>Andarun / Finanzen</p><h1>کمک به زندانیان</h1><p>ثبت نیازها، کمک‌ها و وضعیت واریز هر زندانی</p></div>
-        <div className={styles.headerSide}><Link href="/andarun">بازگشت به اندرون ←</Link><span>{saveStatus}</span></div>
+        <div className={styles.headerSide}><span>{saveStatus}</span></div>
       </header>
       <nav className={styles.modeTabs} aria-label="نمای صفحهٔ کمک به زندانیان">
         <Link href="/andarun/finanz/gefangene" className={mode === 'report' ? styles.activeTab : ''} aria-current={mode === 'report' ? 'page' : undefined}>گزارش</Link>
         <Link href="/andarun/finanz/gefangene/edit" className={mode === 'edit' ? styles.activeTab : ''} aria-current={mode === 'edit' ? 'page' : undefined}>ویرایش</Link>
       </nav>
       {!onlineReady && loaded ? <p className={styles.storageAlert} role="alert">اتصال ذخیرهٔ آنلاین برقرار نیست. ویرایش تا برقراری اتصال غیرفعال است.</p> : null}
+
+      {mode === 'edit' ? <section className={styles.panel} id="donation-form"><div className={styles.sectionTitle}><div><span>دفتر کمک‌ها</span><h2>ثبت کمک</h2></div></div>
+        {editingDonation ? <p className={styles.empty}>فرم ویرایش کمک در جزئیات زندانی یا گیرنده باز است.</p> : <form className={styles.form} onSubmit={saveDonation}>{donationFormFields()}</form>}
+      </section> : null}
 
       {mode === 'report' ? <section className={styles.pdfPanel} aria-labelledby="pdf-title">
         <div><span>خروجی گزارش</span><h2 id="pdf-title">گرفتن PDF</h2><p>نوع گزارش را انتخاب کنید؛ در پنجرهٔ چاپ، «Save as PDF» را بزنید.</p></div>
@@ -326,11 +330,7 @@ export default function PrisonerAidPage({ mode = 'report', initialRecipientId = 
         </section>
       </div> : null}
 
-      {mode === 'edit' ? <section className={styles.panel} id="donation-form"><div className={styles.sectionTitle}><div><span>دفتر کمک‌ها</span><h2>ثبت کمک</h2></div></div>
-        {editingDonation ? <p className={styles.empty}>فرم ویرایش کمک در جزئیات زندانی یا گیرنده باز است.</p> : <form className={styles.form} onSubmit={saveDonation}>{donationFormFields()}</form>}
-      </section> : null}
-
-      <section className={styles.panel} aria-labelledby="donations-title"><div className={styles.sectionTitle}><div><span>مرتب‌شده بر اساس کمک‌کننده</span><h2 id="donations-title">تاریخچهٔ کمک‌ها</h2></div><small>{historyDonations.length} مورد</small></div>
+      {mode === 'edit' ? <section className={styles.panel} aria-labelledby="donations-title"><div className={styles.sectionTitle}><div><span>مرتب‌شده بر اساس کمک‌کننده</span><h2 id="donations-title">تاریخچهٔ کمک‌ها</h2></div><small>{historyDonations.length} مورد</small></div>
         <div className={styles.tableWrap}><table><thead><tr><th>کمک‌کننده</th><th>زندانی</th><th>تاریخ</th><th>مبلغ ثبت‌شده</th><th>وضعیت</th><th>مسیر / گیرنده</th><th>توضیح</th>{mode === 'edit' ? <th /> : null}</tr></thead><tbody>
           {historyDonations.map(row => {
             const prisoner = state.prisoners.find(item => item.id === row.prisonerId)
@@ -338,7 +338,7 @@ export default function PrisonerAidPage({ mode = 'report', initialRecipientId = 
             return <tr key={row.id}><td><strong>{row.donor || '—'}</strong></td><td><strong>{prisoner?.name || `شماره ${prisoner?.number || '—'}`}</strong><small>شماره {prisoner?.number || '—'}</small></td><td>{row.date || '—'}</td><td><strong>{formatEuro(row.euroAmount)}</strong><small>{formatToman(donationToman(row))}</small></td><td><span className={row.status === 'confirmed' ? styles.complete : row.status === 'recorded' ? styles.pending : styles.promise}>{statusLabels[row.status]}</span></td><td>{row.channel === 'direct' ? 'مستقیم به حساب ستاد دیه' : recipient?.name || '—'}</td><td>{row.note || '—'}</td>{mode === 'edit' ? <td><button type="button" className={styles.textButton} disabled={!onlineReady} onClick={() => editDonation(row)}>ویرایش</button></td> : null}</tr>
           })}
         </tbody></table></div>{!historyDonations.length ? <p className={styles.empty}>هنوز کمکی ثبت نشده است.</p> : null}
-      </section>
+      </section> : null}
     </div>
   </main>
 }
