@@ -10,6 +10,15 @@
 .modeTabs a { min-width: 120px; padding: 12px 20px; border: 1px solid #cdd9e6; border-radius: 11px; background: #fff; color: #31506f; text-decoration: none; text-align: center; font-weight: 800; }
 .modeTabs .activeTab { background: #174b89; color: #fff; border-color: #174b89; }
 .storageAlert { border: 1px solid #e8b67c; border-radius: 10px; background: #fff5e8; color: #75430d; padding: 12px 15px; margin: 0 0 20px; font-size: 13px; }
+.pdfPanel { display: flex; justify-content: space-between; align-items: flex-end; gap: 22px; flex-wrap: wrap; background: #fff; border: 1px solid #dfe5ec; border-radius: 17px; padding: 19px 21px; margin-bottom: 20px; box-shadow: 0 5px 18px #173a6a08; }
+.pdfPanel span { color: #6580a7; font-size: 12px; font-weight: 700; }
+.pdfPanel h2 { margin: 3px 0 6px; font-size: 20px; }
+.pdfPanel p { margin: 0; color: #65728a; font-size: 12px; }
+.pdfForm { display: flex; align-items: end; gap: 12px; flex-wrap: wrap; }
+.pdfForm label { display: grid; gap: 6px; color: #53657d; font-size: 12px; font-weight: 700; }
+.pdfForm select { min-width: 220px; max-width: 310px; border: 1px solid #d4dee9; border-radius: 10px; background: #fbfcfe; color: #10213a; padding: 11px; font: inherit; font-size: 13px; }
+.pdfForm button { border: 0; border-radius: 10px; background: #174b89; color: #fff; padding: 12px 18px; font: inherit; font-size: 13px; font-weight: 800; cursor: pointer; }
+.pdfForm button:disabled { opacity: .5; cursor: not-allowed; }
 .rateBand { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; padding: 23px 28px; border-radius: 20px; background: #102b55; color: white; margin-bottom: 20px; }
 .rateBand > div { display: grid; gap: 5px; }
 .rateBand span, .rateBand small { color: #b7c9e2; }
@@ -88,4 +97,4 @@
 .loginPanel button:disabled { opacity: .55; cursor: not-allowed; }
 .loginPanel a { color: #31506f; text-decoration: none; font-size: 13px; }
 @media (max-width: 1050px) { .metrics { grid-template-columns: repeat(2, 1fr); } .formsGrid { grid-template-columns: 1fr; } }
-@media (max-width: 620px) { .shell { width: calc(100% - 24px); padding-top: 25px; } .header { display: block; } .headerSide { justify-items: start; margin-top: 15px; } .metrics { grid-template-columns: 1fr 1fr; gap: 8px; } .metrics > div { padding: 15px; } .panel { padding: 15px; } .form { grid-template-columns: 1fr; } .formActions, .equivalent, .error { grid-column: auto; } }
+@media (max-width: 620px) { .shell { width: calc(100% - 24px); padding-top: 25px; } .header { display: block; } .headerSide { justify-items: start; margin-top: 15px; } .metrics { grid-template-columns: 1fr 1fr; gap: 8px; } .pdfForm, .pdfForm label, .pdfForm select, .pdfForm button { width: 100%; max-width: none; } .panel { padding: 15px; } .form { grid-template-columns: 1fr; } .formActions, .equivalent, .error { grid-column: auto; } }

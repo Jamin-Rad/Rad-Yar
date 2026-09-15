@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Fragment, useEffect, useMemo, useState } from 'react'
-import { EMPTY_STATE, STORAGE_KEY, donationToman, formatEuro, formatToman, normalizeState, recipientLedger, totalsFor } from './aidData'
+import { DEFAULT_RATE, EMPTY_STATE, STORAGE_KEY, donationToman, formatEuro, formatToman, normalizeState, recipientLedger, totalsFor } from './aidData'
 import { mergeScreenshotSeed } from './screenshotSeed'
 import styles from './page.module.css'
 
@@ -10,7 +10,7 @@ const today = () => new Date().toISOString().slice(0, 10)
 const makeId = () => globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`
 const emptyPrisoner = { number: '', name: '', neededToman: '', note: '' }
 const emptyRecipient = { name: '', account: '', note: '' }
-const emptyDonation = { prisonerId: '', donor: '', amount: '', rateAtRecord: '', originalCurrency: 'eur', status: 'recorded', channel: 'recipient', recipientId: '', settledToSetad: false, date: today(), note: '' }
+const emptyDonation = { prisonerId: '', donor: '', amount: '', rateAtRecord: DEFAULT_RATE, originalCurrency: 'eur', status: 'recorded', channel: 'recipient', recipientId: '', settledToSetad: false, date: today(), note: '' }
 const statusLabels = { promised: 'قول کمک', recorded: 'کمک ثبت‌شده', confirmed: 'واریز تأییدشده' }
 const donorCollator = new Intl.Collator('fa', { sensitivity: 'base' })
 const registeredToman = totals => totals.recordedToman + totals.confirmedToman
@@ -30,6 +30,8 @@ export default function PrisonerAidPage({ mode = 'report', initialRecipientId = 
   const [editingContext, setEditingContext] = useState('prisoner')
   const [selectedPrisoner, setSelectedPrisoner] = useState(initialPrisonerId)
   const [selectedRecipient, setSelectedRecipient] = useState(initialRecipientId)
+  const [pdfReportType, setPdfReportType] = useState('overview')
+  const [pdfTargetId, setPdfTargetId] = useState('')
   const [error, setError] = useState('')
   const [donationError, setDonationError] = useState('')
 
@@ -217,6 +219,21 @@ export default function PrisonerAidPage({ mode = 'report', initialRecipientId = 
         <Link href="/andarun/finanz/gefangene/edit" className={mode === 'edit' ? styles.activeTab : ''} aria-current={mode === 'edit' ? 'page' : undefined}>ویرایش</Link>
       </nav>
       {!onlineReady && loaded ? <p className={styles.storageAlert} role="alert">اتصال ذخیرهٔ آنلاین برقرار نیست. ویرایش تا برقراری اتصال غیرفعال است.</p> : null}
+
+      {mode === 'report' ? <section className={styles.pdfPanel} aria-labelledby="pdf-title">
+        <div><span>خروجی گزارش</span><h2 id="pdf-title">گرفتن PDF</h2><p>نوع گزارش را انتخاب کنید؛ در پنجرهٔ چاپ، «Save as PDF» را بزنید.</p></div>
+        <form action="/andarun/finanz/gefangene/print" method="get" target="_blank" className={styles.pdfForm}>
+          <input type="hidden" name="auto" value="1" />
+          <label>نوع گزارش<select name="type" value={pdfReportType} onChange={event => { setPdfReportType(event.target.value); setPdfTargetId('') }}>
+            <option value="overview">گزارش کامل</option><option value="prisoners">همهٔ زندانیان و ماندهٔ نیاز</option>
+            <option value="recipients">همهٔ گیرنده‌ها و واریز به ستاد دیه</option><option value="donations">تاریخچهٔ کمک‌ها بر اساس کمک‌کننده</option>
+            <option value="prisoner">یک زندانی و کمک‌هایش</option><option value="recipient">یک گیرنده و جزئیاتش</option>
+          </select></label>
+          {pdfReportType === 'prisoner' ? <label>زندانی<select name="id" required value={pdfTargetId} onChange={event => setPdfTargetId(event.target.value)}><option value="">انتخاب کنید</option>{state.prisoners.map(row => <option key={row.id} value={row.id}>{row.number} · {row.name}</option>)}</select></label> : null}
+          {pdfReportType === 'recipient' ? <label>گیرنده<select name="id" required value={pdfTargetId} onChange={event => setPdfTargetId(event.target.value)}><option value="">انتخاب کنید</option>{recipientRows.map(row => <option key={row.id} value={row.id}>{row.name}</option>)}</select></label> : null}
+          <button type="submit" disabled={!onlineReady}>باز کردن گزارش PDF</button>
+        </form>
+      </section> : null}
 
       <section className={styles.metrics} aria-label="خلاصه کمک‌ها">
         <div><span>مبلغ مورد نیاز</span><strong>{formatToman(summary.needed)}</strong></div>

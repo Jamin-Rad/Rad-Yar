@@ -1,5 +1,5 @@
 export const STORAGE_KEY = 'andarun_prisoner_aid_v1'
-export const DEFAULT_RATE = 260000
+export const DEFAULT_RATE = 254000
 
 export const EMPTY_STATE = {
   tomanPerEuro: DEFAULT_RATE,

@@ -2,12 +2,27 @@ import { DEFAULT_RATE, normalizeState } from './aidData'
 import { PRISONERS, neededToman } from './prisonerData'
 
 const HISTORICAL_DATE = '2026-09-14'
+const PREVIOUS_DEFAULT_RATE = 260000
+
+function migrateDefaultRate(state) {
+  return normalizeState({
+    ...state,
+    tomanPerEuro: DEFAULT_RATE,
+    donations: state.donations.map(row => row.rateAtRecord === PREVIOUS_DEFAULT_RATE ? {
+      ...row,
+      rateAtRecord: DEFAULT_RATE,
+      euroAmount: row.originalCurrency === 'toman' && row.tomanAmount > 0
+        ? row.tomanAmount / DEFAULT_RATE : row.euroAmount,
+    } : row),
+    seedVersion: 7,
+  })
+}
 
 function dateExistingDonations(state) {
-  return normalizeState({ ...state,
+  return migrateDefaultRate(normalizeState({ ...state,
     donations: state.donations.map(row => ({ ...row, date: HISTORICAL_DATE })),
     seedVersion: 6,
-  })
+  }))
 }
 
 // Amounts and donors transcribed from the user's 15 Sep 2026 screenshot.
@@ -87,7 +102,8 @@ export const SCREENSHOT_DONATIONS = [
 
 export function mergeScreenshotSeed(input) {
   const state = normalizeState(input)
-  if (state.seedVersion >= 6) return state
+  if (state.seedVersion >= 7) return state
+  if (state.seedVersion === 6) return migrateDefaultRate(state)
   if (state.seedVersion === 5) return dateExistingDonations(state)
   if (state.seedVersion === 4) {
     const prisoners = state.prisoners.map(row => {
