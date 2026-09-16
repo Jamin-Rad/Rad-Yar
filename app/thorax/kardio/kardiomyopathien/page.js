@@ -1,11 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import LessonKeyPoints from '@/components/LessonKeyPoints'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
-import InProgressBanner from '@/components/InProgressBanner'
+import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
+import base from '@/app/abdomen/gi/divertikulitis/page.module.css'
 import styles from './page.module.css'
 
 const L = (de, en, fa) => ({ de, en, fa })
@@ -82,6 +84,34 @@ const links = [
   { href: 'https://academic.oup.com/ehjcimaging/article/21/11/1184/5898275', label: 'EACVI/JSE · Takotsubo imaging consensus' },
 ]
 
+const reportSteps = [
+  { title: L('Technik & Qualität', 'Technique & quality', 'تکنیک و کیفیت'), text: L('Sequenzen, Kontrastmittel und Einschränkungen nennen.', 'State sequences, contrast administration and limitations.', 'سکانس‌ها، تزریق ماده حاجب و محدودیت‌ها را ذکر کنید.') },
+  { title: L('Volumina & Funktion', 'Volumes & function', 'حجم‌ها و عملکرد'), text: L('LV/RV EDV, ESV, Schlagvolumen und EF indexiert dokumentieren.', 'Document indexed LV/RV EDV, ESV, stroke volume and EF.', 'EDV، ESV، حجم ضربه‌ای و EF هر دو بطن را به‌صورت ایندکس‌شده ثبت کنید.') },
+  { title: L('Morphologie', 'Morphology', 'مورفولوژی'), text: L('Wanddicke, Dilatation, Trabekulierung, Aneurysmen und Vorhofgröße.', 'Wall thickness, dilatation, trabeculation, aneurysms and atrial size.', 'ضخامت دیواره، اتساع، ترابکولاسیون، آنوریسم و اندازه دهلیزها.') },
+  { title: L('Bewegung & Hämodynamik', 'Motion & haemodynamics', 'حرکت و همودینامیک'), text: L('Regionale Kinetik, LVOT/SAM, Klappen und Flussphänomene.', 'Regional motion, LVOT/SAM, valves and flow phenomena.', 'حرکت موضعی، LVOT/SAM، دریچه‌ها و پدیده‌های جریان.') },
+  { title: L('Gewebe', 'Tissue', 'بافت'), text: L('Ödem, natives T1/T2, ECV und LGE-Muster mit Segmenten und Ausmaß.', 'Oedema, native T1/T2, ECV and LGE pattern with segments and extent.', 'ادم، T1/T2 طبیعی، ECV و الگوی LGE همراه قطعات و وسعت.') },
+  { title: L('Beurteilung', 'Impression', 'جمع‌بندی'), text: L('Phänotyp zuerst, wahrscheinliche Ätiologie und relevante Differenzialdiagnosen danach.', 'State phenotype first, followed by likely aetiology and relevant differentials.', 'ابتدا فنوتیپ، سپس علت محتمل و افتراق‌های مهم را بیان کنید.') },
+]
+
+const reportExample = L(
+  'Nicht-dilatierter LV mit asymmetrischer basaler Septumhypertrophie bis 19 mm, erhaltener LVEF (68 %) und systolischer anteriorer Mitralklappenbewegung. Fleckiges intramyokardiales LGE im hypertrophierten Septum und an den RV-Insertionen, insgesamt ca. 8 % der LV-Masse. Kein Ödem. Befundkonstellation vereinbar mit hypertropher Kardiomyopathie.',
+  'Non-dilated LV with asymmetric basal septal hypertrophy to 19 mm, preserved LVEF (68%) and systolic anterior motion of the mitral valve. Patchy intramyocardial LGE in the hypertrophied septum and at the RV insertion points, approximately 8% of LV mass. No oedema. Findings are consistent with hypertrophic cardiomyopathy.',
+  'بطن چپ بدون اتساع با هیپرتروفی نامتقارن سپتوم قاعده‌ای تا ۱۹ میلی‌متر، LVEF حفظ‌شده (۶۸٪) و حرکت سیستولی قدامی دریچه میترال. LGE لکه‌ای داخل‌میوکاردی در سپتوم هیپرتروفیک و محل اتصال بطن راست، در مجموع حدود ۸٪ توده بطن چپ. بدون ادم. مجموعه یافته‌ها با کاردیومیوپاتی هیپرتروفیک سازگار است.'
+)
+
+const takeHomes = [
+  L('Zuerst den Phänotyp benennen, danach die Ursache einordnen.', 'Name the phenotype first, then assess the cause.', 'ابتدا فنوتیپ را نام‌گذاری و سپس علت را ارزیابی کنید.'),
+  L('Cine beantwortet Form und Funktion; Mapping und LGE beantworten die Gewebefrage.', 'Cine answers shape and function; mapping and LGE answer the tissue question.', 'Cine شکل و عملکرد را نشان می‌دهد؛ mapping و LGE وضعیت بافت را مشخص می‌کنند.'),
+  L('Subendokardiales/transmurales LGE folgt Ischämie; mid-wall/subepikardiales LGE ist meist nichtischämisch.', 'Subendocardial/transmural LGE follows ischaemia; mid-wall/subepicardial LGE is usually non-ischaemic.', 'LGE ساب‌اندوکاردیال/تمام‌جداری از ایسکمی پیروی می‌کند؛ LGE میدوال/ساب‌اپیکاردیال معمولاً غیرایسکمیک است.'),
+  L('Ein einzelnes Zeichen stellt selten die Diagnose: Klinik, EKG, Genetik und Familienanamnese mitdenken.', 'A single sign rarely establishes the diagnosis: integrate clinical data, ECG, genetics and family history.', 'یک نشانه به‌ندرت تشخیص را قطعی می‌کند؛ اطلاعات بالینی، ECG، ژنتیک و سابقه خانوادگی را یکپارچه کنید.'),
+]
+
+const extraCopy = {
+  de: { thorax: 'Thorax', cardiac: 'Kardiale Bildgebung', reporting: 'Strukturierte Befundung', reportExample: 'Beispielbefund · HCM', takehome: 'Take Home', flashcards: 'Flashcards', zoom: 'Bild vergrößern', close: 'Bild schließen', contents: 'Inhaltsverzeichnis' },
+  en: { thorax: 'Thorax', cardiac: 'Cardiac imaging', reporting: 'Structured reporting', reportExample: 'Example report · HCM', takehome: 'Take home', flashcards: 'Flashcards', zoom: 'Enlarge image', close: 'Close image', contents: 'Contents' },
+  fa: { thorax: 'قفسه سینه', cardiac: 'تصویربرداری قلبی', reporting: 'گزارش ساختاریافته', reportExample: 'نمونه گزارش · HCM', takehome: 'نکات کلیدی', flashcards: 'فلش‌کارت‌ها', zoom: 'بزرگ‌نمایی تصویر', close: 'بستن تصویر', contents: 'فهرست مطالب' },
+}
+
 function SectionIcon({ id }) {
   const common = { viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true }
   const icons = {
@@ -90,14 +120,27 @@ function SectionIcon({ id }) {
     special: <><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.5-7 10-7 10Z"/><path d="M8 13h2l1-2 2 4 1-2h2"/></>,
     protocol: <><rect x="3" y="4" width="18" height="15" rx="2"/><path d="M7 12h2l1.5-3 2.5 6 1.5-3H17M9 22h6"/></>,
     atlas: <><rect x="5" y="3" width="14" height="14" rx="2"/><path d="m7 14 3-3 2 2 2.5-3 2.5 4M3 19v1a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-1"/><circle cx="9" cy="7" r="1"/></>,
+    reporting: <><path d="M9 4h6l1 2h3v15H5V6h3l1-2Z"/><path d="M9 12h6M9 16h6M9 8h6"/></>,
     practice: <><path d="M12 3 4 7v5c0 5 3.5 8 8 9 4.5-1 8-4 8-9V7l-8-4Z"/><path d="m8 12 2.5 2.5L16 9"/></>,
+    takehome: <><path d="M9 18h6M10 22h4"/><path d="M8.5 14.5A7 7 0 1 1 15.5 14.5c-1 .7-1.5 1.5-1.5 2.5h-4c0-1-.5-1.8-1.5-2.5Z"/><path d="m9.5 10.5 1.7 1.7 3.4-4"/></>,
     sources: <><path d="M12 5c-2-2-5-2-9-1v15c4-1 7-1 9 1 2-2 5-2 9-1V4c-4-1-7-1-9 1ZM12 5v15"/><path d="M5 8c2-.3 4-.1 5 1M14 9c1-1 3-1.3 5-1"/></>,
   }
   return <svg {...common}>{icons[id]}</svg>
 }
 
-function SectionHeading({ id, title }) {
-  return <div className={styles.sectionHeading}><span className={styles.sectionIcon}><SectionIcon id={id} /></span><h2>{title}</h2></div>
+function ReadButton({ isRead, onClick, authError, ui, withLang }) {
+  return <div className={base.readControl}><button type="button" className={`${base.readButton} ${styles.readButton} ${isRead ? `${base.readButtonActive} ${styles.readActive}` : ''}`} onClick={onClick}><span className={`${base.readCheck} ${styles.readCheck}`} aria-hidden="true">{isRead ? '✓' : ''}</span><span>{isRead ? ui.read : ui.mark}</span></button>{authError && <div className={base.readError} role="alert"><span>{ui.login}</span> <Link href={withLang('/sign-in')}>{ui.signIn}</Link></div>}</div>
+}
+
+function Section({ id, title, children }) {
+  useMobileLearningLayout()
+  const [open, setOpen] = useState(true)
+  return <section id={id} className={`${base.section} ${styles.section}`}><button className={`${base.sectionHeader} ${styles.sectionHeader}`} type="button" onClick={() => setOpen(value => !value)} aria-expanded={open}><span className={styles.sectionHeading}><span className={styles.sectionIcon}><SectionIcon id={id} /></span><h2>{title}</h2></span><span className={styles.sectionToggle}>{open ? '−' : '+'}</span></button>{open && <div className={`${base.sectionBody} ${styles.sectionBody}`}>{children}</div>}</section>
+}
+
+function ZoomImage({ src, alt, width = 674, height = 764, className, children, labels }) {
+  const [open, setOpen] = useState(false)
+  return <><button type="button" className={`${styles.zoomTrigger} ${className || ''}`} onClick={() => setOpen(true)} aria-label={labels.zoom}><Image src={src} alt={alt} width={width} height={height} loading="lazy" />{children}</button>{open && <div className={styles.imageModal} role="dialog" aria-modal="true" onClick={() => setOpen(false)}><div className={styles.imageModalContent} onClick={event => event.stopPropagation()}><button type="button" className={styles.imageModalClose} onClick={() => setOpen(false)} aria-label={labels.close}>×</button><img src={src} alt={alt} /></div></div>}</>
 }
 
 function useCopy() {
@@ -107,74 +150,80 @@ function useCopy() {
 
 export default function KardiomyopathienPage() {
   const { lang, c, ui } = useCopy()
+  const labels = extraCopy[lang] || extraCopy.de
   const [selected, setSelected] = useState('hcm')
   const [revealed, setRevealed] = useState({})
   const [answers, setAnswers] = useState({})
+  const [activeId, setActiveId] = useState('overview')
   const { isRead, toggleRead, authError } = useLessonReadStatus('kardiomyopathien')
   const current = phenotypes.find(item => item.id === selected) || phenotypes[0]
   const withLang = href => lang === 'de' ? href : `${href}${href.includes('?') ? '&' : '?'}lang=${lang}`
-  const sections = [
+  const lessonPath = '/thorax/kardio/kardiomyopathien'
+  const sections = useMemo(() => [
     ['overview', ui.overview], ['phenotypes', ui.phenotype], ['special', ui.special], ['protocol', ui.protocol],
-    ['atlas', ui.atlas], ['practice', ui.practice], ['sources', ui.sources],
-  ]
+    ['atlas', ui.atlas], ['reporting', labels.reporting], ['practice', ui.practice],
+    ['takehome', labels.takehome], ['sources', ui.sources],
+  ], [labels.reporting, labels.takehome, ui])
+
+  useEffect(() => {
+    const observers = sections.map(([id]) => {
+      const element = document.getElementById(id)
+      if (!element) return null
+      const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) setActiveId(id) }, { rootMargin: '-18% 0px -72% 0px', threshold: 0.01 })
+      observer.observe(element)
+      return observer
+    })
+    return () => observers.forEach(observer => observer?.disconnect())
+  }, [sections])
 
   return (
-    <main className={styles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
-      <InProgressBanner lang={lang} />
-      <div className={styles.shell}>
-        <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-          <Link href={withLang('/')}>RadYar</Link><span>›</span><Link href={withLang('/lernen/thorax')}>{ui.back}</Link><span>›</span><span>{ui.chapter}</span>
+    <main className={`${base.page} ${styles.page}`} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
+      <header className={`${base.header} ${styles.header}`}>
+        <nav className={`${base.breadcrumb} ${styles.breadcrumb}`} aria-label="Breadcrumb">
+          <Link href={withLang('/')}>RadYar</Link><span>›</span><Link href={withLang('/lernen/thorax')}>{labels.thorax}</Link><span>›</span><Link href={withLang('/lernen/thorax')}>{labels.cardiac}</Link><span>›</span><strong>{c(lesson.title)}</strong>
         </nav>
-        <header className={styles.hero}>
-          <div><span className={styles.eyebrow}>KARDIO-MRT · CMR</span><h1>{c(lesson.title)}</h1><p>{c(lesson.subtitle)}</p></div>
-          <div className={styles.heroVisual}><Image src="/cardiomyopathy/hcm.webp" alt={c(phenotypes[0].tissue)} width={643} height={764} priority /><span>HCM · LGE</span></div>
-        </header>
-        <div className={styles.readRow}>
-          <button type="button" className={`${styles.readButton} ${isRead ? styles.readActive : ''}`} onClick={toggleRead}>{isRead ? '✓ ' : '○ '}{isRead ? ui.read : ui.mark}</button>
-          {authError && <p role="alert">{ui.login} <Link href={withLang('/sign-in')}>{ui.signIn}</Link></p>}
+        <div className={`${base.hero} ${styles.hero}`}>
+          <div className={`${base.heroText} ${styles.heroText}`}><span className={`${base.sourceBadge} ${styles.sourceBadge}`}>Dr. Zia</span><span className={styles.eyebrow}>KARDIO-MRT · CMR</span><h1>{c(lesson.title)}</h1><p>{c(lesson.subtitle)}</p><div className={`${base.actions} ${styles.actions}`}><Link className={`${base.actionBtn} ${styles.actionBtn}`} href={withLang(`/ueben/quiz?fach=thorax&n=10&themen=kardiomyopathien&from=${encodeURIComponent(withLang(lessonPath))}`)}>🎯 MCQ</Link><Link className={`${base.actionBtn} ${styles.actionBtn}`} href={withLang(`/flashcards/kardiomyopathien?from=${encodeURIComponent(withLang(lessonPath))}`)}>🧠 {labels.flashcards}</Link></div></div>
+          <LessonKeyPoints points={[[c(L('Phänotyp zuerst', 'Phenotype first', 'ابتدا فنوتیپ')), c(L('HCM · DCM · NDLVC · ARVC · RCM', 'HCM · DCM · NDLVC · ARVC · RCM', 'HCM · DCM · NDLVC · ARVC · RCM'))], [c(L('Funktion', 'Function', 'عملکرد')), c(L('Cine: Volumina, EF und regionale Bewegung.', 'Cine: volumes, EF and regional motion.', 'Cine: حجم‌ها، EF و حرکت موضعی.'))], [c(L('Gewebe', 'Tissue', 'بافت')), c(L('T2/Mapping plus LGE-Muster und -Ausmaß.', 'T2/mapping plus LGE pattern and extent.', 'T2/mapping همراه الگو و وسعت LGE.'))]]} />
         </div>
-        <div className={styles.layout}>
-          <aside className={styles.sidebar}><strong>{ui.toc}</strong>{sections.map(([id, label]) => <a key={id} href={`#${id}`}>{label}</a>)}</aside>
-          <div className={styles.content}>
-            <section id="overview" className={styles.section}>
-              <SectionHeading id="overview" title={ui.overview} />
+      </header>
+      <div className={`${base.readBar} ${styles.readBar}`}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} ui={ui} withLang={withLang} /></div>
+      <div className={`${base.layout} ${styles.layout}`}>
+          <aside className={`${base.sidebar} ${styles.sidebar}`}><div className={base.sideTitle}>{labels.contents}</div>{sections.map(([id, label]) => <button key={id} type="button" className={`${base.sideItem} ${styles.sideItem} ${activeId === id ? `${base.sideItemActive} ${styles.sideItemActive}` : ''}`} onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}><span className={styles.sideIcon}><SectionIcon id={id} /></span><strong>{label}</strong></button>)}</aside>
+          <div className={`${base.main} ${styles.content}`}>
+            <Section id="overview" title={ui.overview}>
               <div className={styles.quickGrid}><div><small>{ui.definition}</small><p>{c(lesson.definition)}</p></div><div><small>{ui.clinic}</small><p>{c(lesson.clinic)}</p></div></div>
               <div className={styles.callout}><strong>{ui.class}</strong><p>{c(lesson.classNote)}</p></div>
-            </section>
-            <section id="phenotypes" className={styles.section}>
-              <SectionHeading id="phenotypes" title={ui.phenotype} />
+            </Section>
+            <Section id="phenotypes" title={ui.phenotype}>
               <div className={styles.tabList} role="tablist" aria-label={ui.phenotype}>{phenotypes.map(item => <button key={item.id} type="button" role="tab" aria-selected={selected === item.id} className={selected === item.id ? styles.selectedTab : ''} onClick={() => setSelected(item.id)}><b>{item.short}</b><span>{c(item.name)}</span></button>)}</div>
               <article className={styles.featureCard} role="tabpanel">
-                <div className={styles.featureImage}><Image src={current.image} alt={c(current.tissue)} width={674} height={764} /><small>{ui.sample}</small></div>
+                <div className={styles.featureImage}><ZoomImage src={current.image} alt={c(current.tissue)} className={styles.featureZoom} labels={labels}><small>{ui.sample} · {labels.zoom}</small></ZoomImage></div>
                 <div className={styles.featureText}><div className={styles.featureTitle}><span>{current.short}</span><h3>{c(current.name)}</h3></div><p className={styles.shape}>{c(current.shape)}</p><dl><div><dt>{ui.cine}</dt><dd>{c(current.cine)}</dd></div><div><dt>{ui.lge}</dt><dd>{c(current.tissue)}</dd></div></dl><div className={styles.warning}><strong>{ui.pitfall}</strong><p>{c(current.cave)}</p></div></div>
               </article>
-            </section>
-            <section id="special" className={styles.section}>
-              <SectionHeading id="special" title={ui.special} />
+            </Section>
+            <Section id="special" title={ui.special}>
               <div className={styles.specialGrid}>{specialPatterns.map(item => <article key={item.id} className={styles.specialCard}><div className={styles.specialTitle}><span>{item.short}</span><h3>{c(item.name)}</h3></div><p className={styles.shape}>{c(item.shape)}</p><dl><div><dt>{ui.cine}</dt><dd>{c(item.cine)}</dd></div><div><dt>{ui.lge}</dt><dd>{c(item.tissue)}</dd></div></dl><div className={styles.warning}><strong>{ui.pitfall}</strong><p>{c(item.cave)}</p></div></article>)}</div>
-            </section>
-            <section id="protocol" className={styles.section}>
-              <SectionHeading id="protocol" title={ui.protocol} />
+            </Section>
+            <Section id="protocol" title={ui.protocol}>
               <div className={styles.protocolGrid}>{protocol.map(step => <div key={c(step.title)}><h3>{c(step.title)}</h3><p>{c(step.text)}</p></div>)}</div>
               <div className={styles.callout}><strong>LGE</strong><p>{c(lesson.lgeRule)}</p></div>
-            </section>
-            <section id="atlas" className={styles.section}>
-              <SectionHeading id="atlas" title={ui.atlas} /><p className={styles.sectionLead}>{ui.imageHint} · {ui.sample}</p>
-              <div className={styles.atlasGrid}>{atlas.map(item => <figure key={item.id} className={styles.atlasCard}><Image src={item.image} alt={c(item.caption)} width={674} height={764} loading="lazy" /><figcaption><strong>{item.short} · {c(item.name)}</strong><button type="button" aria-expanded={Boolean(revealed[item.id])} onClick={() => setRevealed(previous => ({ ...previous, [item.id]: !previous[item.id] }))}>{revealed[item.id] ? ui.hide : ui.reveal}</button>{revealed[item.id] && <p>{c(item.caption)}</p>}</figcaption></figure>)}</div>
-            </section>
-            <section id="practice" className={styles.section}>
-              <SectionHeading id="practice" title={ui.practice} />
+            </Section>
+            <Section id="atlas" title={ui.atlas}><p className={styles.sectionLead}>{ui.imageHint} · {ui.sample}</p>
+              <div className={styles.atlasGrid}>{atlas.map(item => <figure key={item.id} className={styles.atlasCard}><ZoomImage src={item.image} alt={c(item.caption)} labels={labels} /><figcaption><strong>{item.short} · {c(item.name)}</strong><button type="button" aria-expanded={Boolean(revealed[item.id])} onClick={() => setRevealed(previous => ({ ...previous, [item.id]: !previous[item.id] }))}>{revealed[item.id] ? ui.hide : ui.reveal}</button>{revealed[item.id] && <p>{c(item.caption)}</p>}</figcaption></figure>)}</div>
+            </Section>
+            <Section id="reporting" title={labels.reporting}><div className={styles.reportGrid}>{reportSteps.map((step, index) => <div key={index}><span>{String(index + 1).padStart(2, '0')}</span><h3>{c(step.title)}</h3><p>{c(step.text)}</p></div>)}</div><div className={styles.reportExample}><strong>{labels.reportExample}</strong><p>{c(reportExample)}</p></div></Section>
+            <Section id="practice" title={ui.practice}>
               <div className={styles.quizGrid}>{questions.map((question, index) => <div key={index} className={styles.quizCard}><span>{String(index + 1).padStart(2, '0')}</span><h3>{c(question.prompt)}</h3><div className={styles.choices}>{quizOptions.map(item => <button key={item.id} type="button" className={answers[index] === item.id ? styles.chosen : ''} onClick={() => setAnswers(previous => ({ ...previous, [index]: item.id }))}>{item.short}</button>)}</div>{answers[index] && <p className={answers[index] === question.answer ? styles.correct : styles.incorrect}>{answers[index] === question.answer ? ui.correct : `${ui.incorrect} · ${quizOptions.find(item => item.id === question.answer)?.short}`}</p>}</div>)}</div>
               {Object.keys(answers).length > 0 && <button type="button" className={styles.reset} onClick={() => setAnswers({})}>{ui.reset}</button>}
-            </section>
-            <section id="sources" className={styles.section}>
-              <SectionHeading id="sources" title={ui.sources} />
+            </Section>
+            <Section id="takehome" title={labels.takehome}><div className={styles.takeHomeGrid}>{takeHomes.map((item, index) => <div key={index}><span>✓</span><p>{c(item)}</p></div>)}</div><div className={styles.actionFooter}><Link href={withLang(`/ueben/quiz?fach=thorax&n=10&themen=kardiomyopathien&from=${encodeURIComponent(withLang(lessonPath))}`)}>🎯 MCQ</Link><Link href={withLang(`/flashcards/kardiomyopathien?from=${encodeURIComponent(withLang(lessonPath))}`)}>🧠 {labels.flashcards}</Link></div></Section>
+            <Section id="sources" title={ui.sources}>
               <div className={styles.sources}>{links.map(link => <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">{link.label} ↗</a>)}</div>
-            </section>
-            <div className={styles.bottomRead}><button type="button" className={`${styles.readButton} ${isRead ? styles.readActive : ''}`} onClick={toggleRead}>{isRead ? '✓ ' : '○ '}{isRead ? ui.read : ui.mark}</button></div>
+            </Section>
+            <div className={`${base.readBar} ${styles.bottomRead}`}><ReadButton isRead={isRead} onClick={toggleRead} authError={authError} ui={ui} withLang={withLang} /></div>
           </div>
         </div>
-      </div>
     </main>
   )
 }

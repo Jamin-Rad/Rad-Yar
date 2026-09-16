@@ -538,7 +538,7 @@ export const CURRICULUM = [
         themen: [
           { id: 'herzgroesse-roentgen', title: { de: 'Herzgrößenbeurteilung im Röntgen', en: 'Cardiac Size Assessment on X-ray', fa: 'ارزیابی اندازه قلب در رادیوگرافی' }, tags: ['Rö'], diff: 1 },
           { id: 'kardiale-dekompensation', title: { de: 'Kardiale Dekompensation', en: 'Cardiac Decompensation', fa: 'دکمپانساسیون قلبی' }, tags: ['Rö','CT'], diff: 1 },
-          { id: 'kardiomyopathien', title: { de: 'Kardiomyopathien: Kardio-MRT', en: 'Cardiomyopathies: cardiac MRI', fa: 'کاردیومیوپاتی‌ها: MRI قلب' }, group: ['Kardiomyopathien'], tags: ['MRT'], diff: 3, link: '/thorax/kardio/kardiomyopathien', ready: true, updatedAt: '2026-09-15' },
+          { id: 'kardiomyopathien', title: { de: 'Kardiomyopathien: Kardio-MRT', en: 'Cardiomyopathies: cardiac MRI', fa: 'کاردیومیوپاتی‌ها: MRI قلب' }, group: ['Kardiomyopathien'], tags: ['MRT'], diff: 3, link: '/thorax/kardio/kardiomyopathien', mcqLink: '/ueben/quiz?fach=thorax&n=10&themen=kardiomyopathien', flashcardLink: '/flashcards/kardiomyopathien', ready: true, updatedAt: '2026-09-16' },
           { id: 'dcm', title: { de: 'Dilatative Kardiomyopathie (DCM)', en: 'Dilated Cardiomyopathy (DCM)', fa: 'کاردیومیوپاتی اتساعی (DCM)' }, group: ['Kardiomyopathien'], tags: ['MRT'], diff: 3 },
           { id: 'hcm', title: { de: 'Hypertrophe Kardiomyopathie (HCM)', en: 'Hypertrophic Cardiomyopathy (HCM)', fa: 'کاردیومیوپاتی هیپرتروفیک (HCM)' }, group: ['Kardiomyopathien'], tags: ['MRT'], diff: 3 },
           { id: 'arvc', title: { de: 'Arrhythmogene Kardiomyopathie (ARVC)', en: 'Arrhythmogenic Cardiomyopathy (ARVC)', fa: 'کاردیومیوپاتی آریتموژنیک (ARVC)' }, group: ['Kardiomyopathien'], tags: ['MRT'], diff: 3 },

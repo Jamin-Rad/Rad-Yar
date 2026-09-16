@@ -33,7 +33,10 @@ const COPY = {
 }
 
 // Add a pathname here only after the lesson has been explicitly approved as complete.
-export const COMPLETED_LESSON_PATHS = new Set(['/thorax/fleischner-kriterien'])
+export const COMPLETED_LESSON_PATHS = new Set([
+  '/thorax/fleischner-kriterien',
+  '/thorax/kardio/kardiomyopathien',
+])
 
 const LESSON_ROOTS = [
   '/abdomen',
