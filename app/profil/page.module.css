@@ -1544,3 +1544,182 @@
   .formFooter { align-items: stretch; flex-direction: column; }
   .formFooter .saveBtn { width: 100%; }
 }
+
+/* ── LEARNING COCKPIT 2026 ─────────────────────────── */
+.todaySnapshot {
+  width: min(100%, 310px);
+  padding: 22px;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 22px;
+  background: rgba(8,15,45,.38);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+  backdrop-filter: blur(14px);
+}
+.notLoggedIn { max-width: 620px; padding: 54px 42px; border: 1px solid var(--border); border-radius: 28px; box-shadow: 0 20px 55px var(--shadow-soft); }
+.notLoggedIcon { display: grid; width: 58px; height: 58px; margin: 0 auto 18px; place-items: center; border-radius: 18px; color: var(--orange); background: rgba(249,115,22,.12); }
+.notLoggedFeatures { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 22px 0 26px; }
+.notLoggedFeatures span { display: inline-flex; align-items: center; gap: 7px; padding: 8px 11px; border: 1px solid var(--border); border-radius: 999px; color: var(--text-soft); background: var(--surface-soft); font-size: 11px; font-weight: 800; }
+.notLoggedFeatures svg { color: var(--orange); }
+.todaySnapshotHead { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.todaySnapshotHead span { color: rgba(255,255,255,.68); font-size: 12px; font-weight: 800; }
+.todaySnapshotHead strong { color: #fdba74; font-size: 22px; }
+.snapshotBar { height: 7px; margin: 13px 0 17px; overflow: hidden; border-radius: 99px; background: rgba(255,255,255,.12); }
+.snapshotBar span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #fb923c, #facc15); }
+.snapshotRows { display: grid; gap: 2px; }
+.snapshotRows > div { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid rgba(255,255,255,.09); }
+.snapshotRows span { display: inline-flex; align-items: center; gap: 9px; color: rgba(255,255,255,.72); font-size: 12px; }
+.snapshotRows strong { color: #fff; font-size: 13px; }
+
+.metricGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.metricCard {
+  display: flex;
+  min-height: 0;
+  align-items: center;
+  gap: 17px;
+  padding: 20px;
+  border-radius: 18px;
+}
+.metricIcon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  place-items: center;
+  border-radius: 14px;
+  color: var(--orange);
+  background: rgba(249,115,22,.11);
+}
+.metricCard > div { min-width: 0; }
+.metricCard > div > strong { display: block; color: var(--text-strong); font-size: 27px; line-height: 1; }
+.metricCard > div > p { margin: 6px 0 0; color: var(--text-strong); font-size: 13px; font-weight: 850; }
+.metricCard > div > small { display: block; margin-top: 3px; color: var(--text-muted); font-size: 11px; }
+
+.todayPlanCard { margin-top: 16px; border-color: rgba(249,115,22,.24); }
+.sectionKicker { display: block; margin-bottom: 5px; color: var(--orange); font-size: 10px; font-weight: 900; letter-spacing: .11em; text-transform: uppercase; }
+.recommendationGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 11px; }
+.recommendationItem {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 12px;
+  min-height: 132px;
+  padding: 17px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  color: inherit;
+  background: var(--surface-soft);
+  text-decoration: none;
+  transition: transform .18s, border-color .18s, box-shadow .18s;
+}
+.recommendationItem:hover { transform: translateY(-2px); border-color: rgba(249,115,22,.42); box-shadow: 0 12px 25px var(--shadow-soft); }
+.recommendationIcon { display: grid; width: 38px; height: 38px; place-items: center; border-radius: 12px; color: var(--orange); background: rgba(249,115,22,.12); }
+.recommendationItem div { min-width: 0; }
+.recommendationItem small { display: block; margin-bottom: 7px; color: var(--text-muted); font-size: 10px; font-weight: 850; }
+.recommendationItem strong { display: block; color: var(--text-strong); font-size: 13px; line-height: 1.35; }
+.recommendationItem p { margin: 5px 0 0; color: var(--text-muted); font-size: 11px; line-height: 1.45; }
+.recommendationItem > b { color: var(--orange); font-size: 18px; }
+
+.focusCard { margin-top: 16px; }
+.focusList { display: grid; gap: 8px; }
+.focusRow {
+  display: grid;
+  grid-template-columns: 34px minmax(170px, 1fr) minmax(150px, .8fr) auto;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 15px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-soft);
+}
+.focusRank { color: var(--orange); font-size: 11px; font-weight: 950; letter-spacing: .08em; }
+.focusIdentity { display: flex; align-items: center; gap: 11px; min-width: 0; }
+.focusIdentity img { object-fit: contain; }
+.focusIdentity strong, .focusIdentity small { display: block; }
+.focusIdentity strong { color: var(--text-strong); font-size: 13px; }
+.focusIdentity small { margin-top: 3px; color: var(--text-muted); font-size: 10px; }
+.focusMeter { display: flex; align-items: center; gap: 10px; }
+.focusMeter > span { height: 7px; flex: 1; overflow: hidden; border-radius: 99px; background: var(--border); }
+.focusMeter i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981); }
+.focusMeter strong { width: 36px; color: var(--text-soft); font-size: 11px; text-align: end; }
+.focusRow > a { padding: 8px 12px; border-radius: 999px; color: var(--orange); background: rgba(249,115,22,.1); font-size: 10px; font-weight: 900; text-decoration: none; white-space: nowrap; }
+.focusEmpty { display: flex; align-items: center; gap: 15px; padding: 18px; border-radius: 15px; color: var(--text-soft); background: var(--surface-soft); }
+.focusEmpty > svg { flex: 0 0 auto; color: #10b981; }
+.focusEmpty div { flex: 1; }
+.focusEmpty strong { color: var(--text-strong); font-size: 13px; }
+.focusEmpty p { margin: 4px 0 0; color: var(--text-muted); font-size: 11px; }
+.focusEmpty a { color: var(--orange); font-size: 11px; font-weight: 900; text-decoration: none; }
+
+.activityHeatmap {
+  display: grid;
+  width: max-content;
+  max-width: 100%;
+  grid-template-rows: repeat(7, 15px);
+  grid-auto-flow: column;
+  grid-auto-columns: 15px;
+  gap: 5px;
+  padding: 4px;
+  overflow-x: auto;
+}
+.heatCell { width: 15px; height: 15px; border: 1px solid rgba(148,163,184,.12); border-radius: 4px; background: var(--surface-soft); }
+.heatLevel1 { background: #ffedd5; border-color: #fed7aa; }
+.heatLevel2 { background: #fdba74; border-color: #fb923c; }
+.heatLevel3 { background: #f97316; border-color: #ea580c; }
+.heatLevel4 { background: #c2410c; border-color: #9a3412; }
+
+.areaSummary span, .chapterStats span, .nextStepLink, .activityDay small, .activityDay b,
+.activityLegend span, .activityHint, .recentItem small, .flashReportGrid span,
+.unpractisedList a, .recommendationLinks a, .lessonList small, .accountDataGrid span {
+  font-size: 11px;
+}
+.chapterStats span { line-height: 1.45; }
+.chapterStats b, .nextStepLink strong { font-size: 12px; }
+.areaSummary span { font-size: 10px; }
+.activityHint { font-size: 10px; }
+
+@media (max-width: 1080px) {
+  .recommendationGrid { grid-template-columns: 1fr; }
+  .recommendationItem { min-height: 0; }
+  .focusRow { grid-template-columns: 30px minmax(170px, 1fr) minmax(130px, .7fr); }
+  .focusRow > a { grid-column: 2 / -1; justify-self: start; }
+}
+
+@media (max-width: 960px) {
+  .sidebar { min-height: 0; border-radius: 18px; }
+  .sidebarIdentity { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 12px; padding: 14px 16px; text-align: start; }
+  .sidebarAvatar, .sidebarAvatarFallback { grid-row: span 4; width: 48px; height: 48px; margin: 0; font-size: 17px; }
+  .sidebarEyebrow { align-self: end; }
+  .sidebarName { margin-top: 1px; }
+  .sidebarEmail, .memberSince { display: none; }
+  .profileNav { grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 8px; }
+  .profileNavLink { justify-content: center; }
+  .accountActions { display: none; }
+}
+
+@media (max-width: 760px) {
+  .progressHero { gap: 24px; }
+  .todaySnapshot { width: 100%; }
+  .metricGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .metricCard { align-items: flex-start; flex-direction: column; }
+  .activitySummaryGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  .profileNavLink { gap: 7px; padding: 10px 7px; font-size: 11px; }
+  .profileNavLink span { width: 18px; }
+  .metricGrid { grid-template-columns: 1fr; }
+  .metricCard { align-items: center; flex-direction: row; }
+  .recommendationItem { padding: 14px; }
+  .focusRow { grid-template-columns: 28px minmax(0, 1fr); }
+  .focusMeter { grid-column: 2; }
+  .focusRow > a { grid-column: 2; }
+  .focusEmpty { align-items: flex-start; flex-wrap: wrap; }
+  .focusEmpty a { width: 100%; padding-inline-start: 40px; }
+  .activitySummaryGrid { grid-template-columns: 1fr 1fr; }
+  .activitySummaryGrid > div { padding: 11px; }
+  .activitySummaryGrid strong { font-size: 17px; }
+}
+
+:global(html[data-theme='dark']) .heatLevel1 { background: #7c2d12; border-color: #9a3412; }
+:global(html[data-theme='dark']) .heatLevel2 { background: #9a3412; border-color: #c2410c; }
+:global(html[data-theme='dark']) .heatLevel3 { background: #c2410c; border-color: #ea580c; }
+:global(html[data-theme='dark']) .heatLevel4 { background: #f97316; border-color: #fb923c; }
