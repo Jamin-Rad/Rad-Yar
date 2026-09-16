@@ -1,0 +1,16 @@
+{
+  "name": "Andarun | Dein persönlicher Raum",
+  "short_name": "Andarun",
+  "description": "Dein persönlicher Raum für Alltag, Gesundheit, Lernen und Finanzen.",
+  "id": "/andarun",
+  "start_url": "/andarun",
+  "scope": "/andarun",
+  "display": "standalone",
+  "background_color": "#050816",
+  "theme_color": "#050816",
+  "icons": [
+    { "src": "/andarun/andarun-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/andarun/andarun-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/andarun/andarun-icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
