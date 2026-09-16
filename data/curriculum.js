@@ -541,6 +541,8 @@ export const CURRICULUM = [
           { id: 'dcm', title: { de: 'Dilatative Kardiomyopathie (DCM)', en: 'Dilated Cardiomyopathy (DCM)', fa: 'کاردیومیوپاتی اتساعی (DCM)' }, group: ['Kardiomyopathien'], tags: ['MRT'], diff: 3 },
           { id: 'hcm', title: { de: 'Hypertrophe Kardiomyopathie (HCM)', en: 'Hypertrophic Cardiomyopathy (HCM)', fa: 'کاردیومیوپاتی هیپرتروفیک (HCM)' }, group: ['Kardiomyopathien'], tags: ['MRT'], diff: 3 },
           { id: 'arvc', title: { de: 'Arrhythmogene Kardiomyopathie (ARVC)', en: 'Arrhythmogenic Cardiomyopathy (ARVC)', fa: 'کاردیومیوپاتی آریتموژنیک (ARVC)' }, group: ['Kardiomyopathien'], tags: ['MRT'], diff: 3 },
+          { id: 'lvnc', title: { de: 'Non-Compaction-Kardiomyopathie (LVNC)', en: 'Left Ventricular Non-Compaction Cardiomyopathy (LVNC)', fa: 'کاردیومیوپاتی عدم فشردگی بطن چپ (LVNC)' }, group: ['Kardiomyopathien'], tags: ['MRT'], diff: 3 },
+          { id: 'takotsubo-kardiomyopathie', title: { de: 'Takotsubo-Kardiomyopathie', en: 'Takotsubo Cardiomyopathy', fa: 'کاردیومیوپاتی تاکوتسوبو' }, group: ['Kardiomyopathien'], tags: ['MRT'], diff: 3 },
           { id: 'myokarditis', title: { de: 'Myokarditis', en: 'Myocarditis', fa: 'میوکاردیت' }, tags: ['MRT'], diff: 3 },
           { id: 'sarkoidose-kardio', title: { de: 'Kardiale Sarkoidose', en: 'Cardiac Sarcoidosis', fa: 'سارکوئیدوز قلبی' }, tags: ['MRT'], diff: 3 },
           { id: 'khk-myokardischaemie', title: { de: 'Koronare Herzerkrankung / Myokardischämie', en: 'Coronary Artery Disease / Myocardial Ischaemia', fa: 'بیماری عروق کرونر / ایسکمی میوکارد' }, tags: ['CT','MRT'], diff: 2 },
