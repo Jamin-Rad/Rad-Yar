@@ -135,7 +135,7 @@ function ReadButton({ isRead, onClick, authError, ui, withLang }) {
 function Section({ id, title, children }) {
   useMobileLearningLayout()
   const [open, setOpen] = useState(true)
-  return <section id={id} className={`${base.section} ${styles.section}`}><button className={`${base.sectionHeader} ${styles.sectionHeader}`} type="button" onClick={() => setOpen(value => !value)} aria-expanded={open}><span className={styles.sectionHeading}><span className={styles.sectionIcon}><SectionIcon id={id} /></span><h2>{title}</h2></span><span className={styles.sectionToggle}>{open ? '−' : '+'}</span></button>{open && <div className={`${base.sectionBody} ${styles.sectionBody}`}>{children}</div>}</section>
+  return <section id={id} className={`${base.section} ${styles.section}`}><button className={`${base.sectionHeader} ${styles.sectionHeader}`} type="button" onClick={() => setOpen(value => !value)} aria-expanded={open}><div className={styles.sectionHeading}><span className={styles.sectionIcon}><SectionIcon id={id} /></span><h2>{title}</h2></div><span className={styles.sectionToggle}>{open ? '−' : '+'}</span></button>{open && <div className={`${base.sectionBody} ${styles.sectionBody}`}>{children}</div>}</section>
 }
 
 function ZoomImage({ src, alt, width = 674, height = 764, className, children, labels }) {
