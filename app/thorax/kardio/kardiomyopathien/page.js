@@ -11,14 +11,14 @@ import styles from './page.module.css'
 const L = (de, en, fa) => ({ de, en, fa })
 
 const copy = {
-  de: { chapter: 'Kardiale Bildgebung / Kardio-MRT', back: 'Zurück zum Thorax', toc: 'Im Überblick', overview: 'Kurzüberblick', phenotype: 'Phänotypen', protocol: 'MRT lesen', atlas: 'Bildatlas', practice: 'Muster erkennen', sources: 'Quellen', definition: 'Definition', clinic: 'Klinik', class: 'ESC-Phänotypen', clue: 'MRT-Leitbefund', cine: 'Cine / Morphologie', lge: 'LGE / Gewebe', pitfall: 'Wichtig', reveal: 'Befund zeigen', hide: 'Befund verbergen', sample: 'Synthetische Lehrabbildung · kein Patientenbild', imageHint: 'Bild antippen zum Vergrößern', mark: 'Als gelesen markieren', read: 'Als gelesen markiert', login: 'Bitte anmelden, um den Lernfortschritt zu speichern.', signIn: 'Anmelden', answer: 'Antwort wählen', correct: 'Richtig', incorrect: 'Noch einmal ansehen', reset: 'Zurücksetzen' },
-  en: { chapter: 'Cardiac imaging / cardiac MRI', back: 'Back to thorax', toc: 'At a glance', overview: 'Quick overview', phenotype: 'Phenotypes', protocol: 'Reading MRI', atlas: 'Image atlas', practice: 'Recognise the pattern', sources: 'Sources', definition: 'Definition', clinic: 'Clinical signs', class: 'ESC phenotypes', clue: 'Key MRI clue', cine: 'Cine / morphology', lge: 'LGE / tissue', pitfall: 'Important', reveal: 'Show finding', hide: 'Hide finding', sample: 'Synthetic teaching image · not a patient scan', imageHint: 'Tap image to enlarge', mark: 'Mark as read', read: 'Marked as read', login: 'Please sign in to save learning progress.', signIn: 'Sign in', answer: 'Choose an answer', correct: 'Correct', incorrect: 'Review the pattern', reset: 'Reset' },
-  fa: { chapter: 'تصویربرداری قلبی / MRI قلب', back: 'بازگشت به قفسه سینه', toc: 'در یک نگاه', overview: 'مرور کوتاه', phenotype: 'فنوتیپ‌ها', protocol: 'خواندن MRI', atlas: 'گالری تصاویر', practice: 'تشخیص الگو', sources: 'منابع', definition: 'تعریف', clinic: 'علائم بالینی', class: 'فنوتیپ‌های ESC', clue: 'نشانهٔ کلیدی MRI', cine: 'Cine / شکل و عملکرد', lge: 'LGE / بافت', pitfall: 'نکتهٔ مهم', reveal: 'نمایش یافته', hide: 'پنهان‌کردن یافته', sample: 'تصویر آموزشیِ ساخته‌شده · تصویر بیمار نیست', imageHint: 'برای بزرگ‌نمایی روی تصویر بزنید', mark: 'علامت‌گذاری به‌عنوان خوانده‌شده', read: 'خوانده‌شده', login: 'برای ذخیرهٔ پیشرفت آموزشی وارد حساب شوید.', signIn: 'ورود', answer: 'یک پاسخ انتخاب کنید', correct: 'درست', incorrect: 'الگو را دوباره بررسی کنید', reset: 'شروع دوباره' },
+  de: { chapter: 'Kardiale Bildgebung / Kardio-MRT', back: 'Zurück zum Thorax', toc: 'Im Überblick', overview: 'Kurzüberblick', phenotype: 'Phänotypen', special: 'LVNC & Takotsubo', protocol: 'MRT lesen', atlas: 'Bildatlas', practice: 'Muster erkennen', sources: 'Quellen', definition: 'Definition', clinic: 'Klinik', class: 'ESC-Phänotypen', clue: 'MRT-Leitbefund', cine: 'Cine / Morphologie', lge: 'LGE / Gewebe', pitfall: 'Wichtig', reveal: 'Befund zeigen', hide: 'Befund verbergen', sample: 'Synthetische Lehrabbildung · kein Patientenbild', imageHint: 'Bild antippen zum Vergrößern', mark: 'Als gelesen markieren', read: 'Als gelesen markiert', login: 'Bitte anmelden, um den Lernfortschritt zu speichern.', signIn: 'Anmelden', answer: 'Antwort wählen', correct: 'Richtig', incorrect: 'Noch einmal ansehen', reset: 'Zurücksetzen' },
+  en: { chapter: 'Cardiac imaging / cardiac MRI', back: 'Back to thorax', toc: 'At a glance', overview: 'Quick overview', phenotype: 'Phenotypes', special: 'LVNC & Takotsubo', protocol: 'Reading MRI', atlas: 'Image atlas', practice: 'Recognise the pattern', sources: 'Sources', definition: 'Definition', clinic: 'Clinical signs', class: 'ESC phenotypes', clue: 'Key MRI clue', cine: 'Cine / morphology', lge: 'LGE / tissue', pitfall: 'Important', reveal: 'Show finding', hide: 'Hide finding', sample: 'Synthetic teaching image · not a patient scan', imageHint: 'Tap image to enlarge', mark: 'Mark as read', read: 'Marked as read', login: 'Please sign in to save learning progress.', signIn: 'Sign in', answer: 'Choose an answer', correct: 'Correct', incorrect: 'Review the pattern', reset: 'Reset' },
+  fa: { chapter: 'تصویربرداری قلبی / MRI قلب', back: 'بازگشت به قفسه سینه', toc: 'در یک نگاه', overview: 'مرور کوتاه', phenotype: 'فنوتیپ‌ها', special: 'LVNC و تاکوتسوبو', protocol: 'خواندن MRI', atlas: 'گالری تصاویر', practice: 'تشخیص الگو', sources: 'منابع', definition: 'تعریف', clinic: 'علائم بالینی', class: 'فنوتیپ‌های ESC', clue: 'نشانهٔ کلیدی MRI', cine: 'Cine / شکل و عملکرد', lge: 'LGE / بافت', pitfall: 'نکتهٔ مهم', reveal: 'نمایش یافته', hide: 'پنهان‌کردن یافته', sample: 'تصویر آموزشیِ ساخته‌شده · تصویر بیمار نیست', imageHint: 'برای بزرگ‌نمایی روی تصویر بزنید', mark: 'علامت‌گذاری به‌عنوان خوانده‌شده', read: 'خوانده‌شده', login: 'برای ذخیرهٔ پیشرفت آموزشی وارد حساب شوید.', signIn: 'ورود', answer: 'یک پاسخ انتخاب کنید', correct: 'درست', incorrect: 'الگو را دوباره بررسی کنید', reset: 'شروع دوباره' },
 }
 
 const lesson = {
   title: L('Kardiomyopathien im Kardio-MRT', 'Cardiomyopathies on cardiac MRI', 'کاردیومیوپاتی‌ها در MRI قلب'),
-  subtitle: L('Phänotyp → Funktion → Gewebe: fünf Formen, sechs MRT-Bilder und ein interaktiver Mustervergleich.', 'Phenotype → function → tissue: five forms, six MRI images and an interactive pattern comparison.', 'فنوتیپ ← عملکرد ← بافت: پنج گروه اصلی، شش تصویر MRI و مقایسهٔ تعاملی الگوها.'),
+  subtitle: L('Phänotyp → Funktion → Gewebe: fünf ESC-Phänotypen plus LVNC und Takotsubo im direkten MRT-Vergleich.', 'Phenotype → function → tissue: five ESC phenotypes plus LVNC and Takotsubo in a direct MRI comparison.', 'فنوتیپ ← عملکرد ← بافت: پنج فنوتیپ ESC به‌همراه LVNC و تاکوتسوبو در مقایسهٔ مستقیم MRI.'),
   definition: L('Erkrankungen des Herzmuskels mit struktureller und/oder funktioneller Abweichung, die nicht allein durch KHK, Hypertonie, Klappenfehler oder angeborene Herzfehler erklärt wird.', 'Heart muscle diseases with structural and/or functional abnormality not explained solely by coronary disease, hypertension, valve disease or congenital heart disease.', 'بیماری عضلهٔ قلب با تغییر ساختار و/یا عملکرد که صرفاً با بیماری کرونر، فشارخون، بیماری دریچه‌ای یا نقص مادرزادی توضیح داده نمی‌شود.'),
   clinic: L('Dyspnoe, Leistungsminderung, Palpitationen, Synkope; gelegentlich asymptomatisch.', 'Dyspnoea, reduced exercise tolerance, palpitations or syncope; sometimes asymptomatic.', 'تنگی نفس، کاهش تحمل فعالیت، تپش قلب یا سنکوپ؛ گاهی بدون علامت.'),
   classNote: L('Die ESC beschreibt HCM, DCM, nicht-dilatierte LV-Kardiomyopathie (NDLVC), arrhythmogene RV-Kardiomyopathie (ARVC) und restriktive Kardiomyopathie (RCM) als morphologisch-funktionelle Phänotypen. Ursache und Phänotyp sind getrennt zu beurteilen.', 'ESC describes HCM, DCM, non-dilated LV cardiomyopathy (NDLVC), arrhythmogenic RV cardiomyopathy (ARVC) and restrictive cardiomyopathy (RCM) as morphological/functional phenotypes. Determine phenotype and cause separately.', 'در طبقه‌بندی ESC پنج فنوتیپ HCM، DCM، کاردیومیوپاتی بطن چپ بدون اتساع (NDLVC)، نوع آریتموژنیک بطن راست (ARVC) و نوع محدودکننده (RCM) مطرح‌اند. فنوتیپ و علت را جداگانه ارزیابی کنید.'),
@@ -33,6 +33,25 @@ const phenotypes = [
   { id: 'rcm', short: 'RCM', name: L('Restriktiv', 'Restrictive', 'محدودکننده'), shape: L('Restriktive Füllung bei normalen/kleinen Ventrikeln; Vorhöfe oft vergrößert.', 'Restrictive filling with normal/small ventricles; atria are often enlarged.', 'پرشدن محدودکننده با بطن‌های طبیعی یا کوچک؛ دهلیزها اغلب بزرگ‌اند.'), cine: L('Biatriale Vergrößerung, nicht-dilatierte Ventrikel; Perikardkonstriktion als Differenzialdiagnose prüfen.', 'Biatrial enlargement with non-dilated ventricles; assess constrictive pericarditis as a differential.', 'بزرگی هر دو دهلیز با بطن‌های بدون اتساع؛ پریکاردیت کنستریکتیو را در افتراق بررسی کنید.'), tissue: L('LGE hängt von der Ursache ab. Bei Amyloidose: diffuse subendokardiale/transmurale Anreicherung, schwieriges Nulling, T1/ECV ↑.', 'LGE depends on cause. In amyloidosis: diffuse subendocardial/transmural enhancement, difficult nulling, elevated T1/ECV.', 'LGE وابسته به علت است. در آمیلوئیدوز: enhancement منتشر ساب‌اندوکاردیال یا تمام‌جداری، دشواری nulling و افزایش T1/ECV.'), cave: L('Die Abbildung zeigt Amyloidose als Ursache einer restriktiven Physiologie, nicht das Muster jeder RCM.', 'The image shows amyloidosis as one cause of restrictive physiology, not a universal RCM pattern.', 'تصویر، آمیلوئیدوز را به‌عنوان یک علت فنوتیپ محدودکننده نشان می‌دهد، نه الگوی همهٔ RCMها.'), image: '/cardiomyopathy/amyloid.webp' },
 ]
 
+const specialPatterns = [
+  {
+    id: 'lvnc', short: 'LVNC', name: L('Non-Compaction / Hypertrabekulierung', 'Non-compaction / hypertrabeculation', 'عدم فشردگی / ترابکولاسیون بیش‌ازحد'),
+    shape: L('Prominente Trabekel, tiefe intertrabekuläre Recessus und eine dünne kompakte Außenschicht, meist apikal und lateral.', 'Prominent trabeculae, deep intertrabecular recesses and a thin compacted outer layer, usually apical and lateral.', 'ترابکول‌های برجسته، فرورفتگی‌های عمیق بین‌ترابکولی و لایهٔ فشردهٔ بیرونی نازک، معمولاً در اپکس و دیوارهٔ لترال.'),
+    cine: L('Ausmaß und Verteilung der Hypertrabekulierung sowie LV-Größe, EF und regionale Wandbewegung beurteilen.', 'Assess the extent and distribution of hypertrabeculation together with LV size, EF and regional wall motion.', 'وسعت و توزیع ترابکولاسیون بیش‌ازحد را همراه با اندازهٔ بطن چپ، EF و حرکت موضعی دیواره ارزیابی کنید.'),
+    tissue: L('LGE und Mapping sind variabel. Fibrose oder Dysfunktion stützen einen pathologischen Phänotyp, fehlendes LGE schließt ihn aber nicht aus.', 'LGE and mapping findings vary. Fibrosis or dysfunction support a pathological phenotype, but absent LGE does not exclude it.', 'یافته‌های LGE و مپینگ متغیرند. فیبروز یا اختلال عملکرد از فنوتیپ پاتولوژیک حمایت می‌کند، اما نبود LGE آن را رد نمی‌کند.'),
+    cave: L('Nicht anhand eines NC/C-Grenzwerts allein diagnostizieren: Hypertrabekulierung kann auch physiologisch sein, etwa bei Athleten oder in der Schwangerschaft.', 'Do not diagnose from an NC/C cut-off alone: hypertrabeculation may also be physiological, including in athletes or pregnancy.', 'تشخیص را فقط بر اساس آستانهٔ NC/C نگذارید؛ ترابکولاسیون زیاد می‌تواند در ورزشکاران یا بارداری نیز فیزیولوژیک باشد.'),
+  },
+  {
+    id: 'takotsubo', short: 'TTS', name: L('Takotsubo-Syndrom', 'Takotsubo syndrome', 'سندرم تاکوتسوبو'),
+    shape: L('Akute, meist reversible regionale LV-Dysfunktion über ein einzelnes Koronarterritorium hinaus; apikal, midventrikulär, basal oder fokal.', 'Acute, usually reversible regional LV dysfunction extending beyond a single coronary territory; apical, mid-ventricular, basal or focal.', 'اختلال حاد و معمولاً برگشت‌پذیر عملکرد موضعی بطن چپ فراتر از یک قلمرو کرونری؛ به‌شکل اپیکال، میدونتریکولار، بازال یا فوکال.'),
+    cine: L('Typische Ballonierung erkennen und RV-Beteiligung, LVOT-Obstruktion, Mitralinsuffizienz sowie apikale Thromben suchen.', 'Identify the ballooning pattern and assess RV involvement, LVOT obstruction, mitral regurgitation and apical thrombus.', 'الگوی بالونینگ را شناسایی و درگیری بطن راست، انسداد LVOT، نارسایی میترال و ترومبوز اپیکال را بررسی کنید.'),
+    tissue: L('Myokardödem in den dysfunktionalen Segmenten bei typischerweise fehlendem irreversiblem LGE; CMR grenzt Infarkt und Myokarditis ab.', 'Myocardial oedema in dysfunctional segments with typically absent irreversible LGE; CMR helps distinguish infarction and myocarditis.', 'ادم میوکارد در قطعات دچار اختلال همراه با فقدان معمول LGE برگشت‌ناپذیر؛ CMR به افتراق انفارکت و میوکاردیت کمک می‌کند.'),
+    cave: L('Akut zunächst wie ein ACS abklären. Takotsubo ist ein Syndrom und kein hereditärer ESC-Kardiomyopathie-Phänotyp; die Erholung im Verlauf dokumentieren.', 'Initially investigate as an acute coronary syndrome. Takotsubo is a syndrome, not a hereditary ESC cardiomyopathy phenotype; document recovery on follow-up.', 'در فاز حاد ابتدا مانند ACS بررسی شود. تاکوتسوبو یک سندرم است، نه فنوتیپ ارثی کاردیومیوپاتی ESC؛ بهبود در پیگیری مستند شود.'),
+  },
+]
+
+const quizOptions = [...phenotypes, ...specialPatterns]
+
 const protocol = [
   { title: L('1 · Cine', '1 · Cine', '۱ · Cine'), text: L('LV/RV-Volumina, EF, Wanddicke, regionale Bewegung, Klappen und Vorhöfe.', 'LV/RV volumes, EF, wall thickness, regional motion, valves and atria.', 'حجم و EF هر دو بطن، ضخامت دیواره، حرکت موضعی، دریچه‌ها و دهلیزها.') },
   { title: L('2 · T2 / Ödem', '2 · T2 / oedema', '۲ · T2 / ادم'), text: L('T2-Mapping oder T2-gewichtete Sequenzen helfen aktive Entzündung von chronischer Narbe zu trennen.', 'T2 mapping or T2-weighted images help separate active inflammation from chronic scar.', 'T2 mapping یا تصاویر T2 برای افتراق التهاب فعال از اسکار قدیمی کمک می‌کنند.') },
@@ -42,7 +61,7 @@ const protocol = [
 
 const atlas = [
   ...phenotypes.map(item => ({ ...item, caption: item.tissue })),
-  { id: 'noncompaction', short: 'LVNC', name: L('Noncompaction-Morphologie', 'Noncompaction morphology', 'نمای noncompaction'), image: '/cardiomyopathy/noncompaction.webp', caption: L('Ausgeprägte Trabekel und tiefe Recessus im Cine. Ein morphologisches Merkmal, keine automatisch eigenständige Kardiomyopathie.', 'Prominent trabeculae and deep recesses on cine. A morphological trait, not automatically a separate cardiomyopathy.', 'ترابکول‌های برجسته و فرورفتگی‌های عمیق در cine؛ یک ویژگی مورفولوژیک است و خودبه‌خود کاردیومیوپاتی مستقل محسوب نمی‌شود.') },
+  { ...specialPatterns[0], image: '/cardiomyopathy/noncompaction.webp', caption: specialPatterns[0].tissue },
 ]
 
 const questions = [
@@ -51,12 +70,16 @@ const questions = [
   { prompt: L('Normal großer LV, aber subepikardiale nichtischämische Narbe. Welcher Phänotyp?', 'Normal-sized LV with non-ischaemic subepicardial scar. Which phenotype?', 'بطن چپ با اندازهٔ طبیعی و اسکار ساب‌اپیکاردیال غیرایسکمیک؛ کدام فنوتیپ؟'), answer: 'ndlvc' },
   { prompt: L('RV-Dilatation und regionale Dyskinesie sind führend. Welcher Phänotyp?', 'RV dilatation and regional dyskinesia dominate. Which phenotype?', 'اتساع بطن راست و دیسکینزی موضعی یافتهٔ غالب‌اند؛ کدام فنوتیپ؟'), answer: 'arvc' },
   { prompt: L('Kleine Ventrikel, große Vorhöfe, restriktive Füllung. Welcher Phänotyp?', 'Small ventricles, enlarged atria and restrictive filling. Which phenotype?', 'بطن‌های کوچک، دهلیزهای بزرگ و پرشدن محدودکننده؛ کدام فنوتیپ؟'), answer: 'rcm' },
+  { prompt: L('Prominente apikale Trabekel und tiefe Recessus, aber die Morphologie allein reicht nicht zur Diagnose. Welches Muster?', 'Prominent apical trabeculae and deep recesses, but morphology alone is insufficient for diagnosis. Which pattern?', 'ترابکول‌های برجستهٔ اپیکال و فرورفتگی‌های عمیق دیده می‌شود، اما مورفولوژی به‌تنهایی برای تشخیص کافی نیست؛ کدام الگو؟'), answer: 'lvnc' },
+  { prompt: L('Akute apikale Ballonierung über ein Koronarterritorium hinaus, Ödem und kein typisches irreversibles LGE. Welche Diagnose?', 'Acute apical ballooning beyond one coronary territory, oedema and no typical irreversible LGE. Which diagnosis?', 'بالونینگ حاد اپیکال فراتر از یک قلمرو کرونری، ادم و نبود LGE برگشت‌ناپذیر تیپیک؛ کدام تشخیص؟'), answer: 'takotsubo' },
 ]
 
 const links = [
   { href: 'https://www.escardio.org/guidelines/clinical-practice-guidelines/all-esc-practice-guidelines/cardiomyopathy/', label: 'ESC · 2023 Cardiomyopathy Guidelines' },
   { href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7649060/', label: 'SCMR · CMR clinical indications' },
   { href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5891337/', label: 'Cardiac MR in HCM' },
+  { href: 'https://www.escardio.org/education/resources/imaging-toolboxes/cardiomyopathies-and-the-athletes-heart/lv-noncompaction/', label: 'EACVI · LV non-compaction' },
+  { href: 'https://academic.oup.com/ehjcimaging/article/21/11/1184/5898275', label: 'EACVI/JSE · Takotsubo imaging consensus' },
 ]
 
 function SectionIcon({ id }) {
@@ -64,6 +87,7 @@ function SectionIcon({ id }) {
   const icons = {
     overview: <><path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2 4.5 4.5 0 0 1 8 2c0 6-8 11-8 11Z"/><path d="M5 12h4l1.5-3 2.5 6 1.5-3H19"/></>,
     phenotypes: <><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></>,
+    special: <><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.5-7 10-7 10Z"/><path d="M8 13h2l1-2 2 4 1-2h2"/></>,
     protocol: <><rect x="3" y="4" width="18" height="15" rx="2"/><path d="M7 12h2l1.5-3 2.5 6 1.5-3H17M9 22h6"/></>,
     atlas: <><rect x="5" y="3" width="14" height="14" rx="2"/><path d="m7 14 3-3 2 2 2.5-3 2.5 4M3 19v1a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-1"/><circle cx="9" cy="7" r="1"/></>,
     practice: <><path d="M12 3 4 7v5c0 5 3.5 8 8 9 4.5-1 8-4 8-9V7l-8-4Z"/><path d="m8 12 2.5 2.5L16 9"/></>,
@@ -90,7 +114,7 @@ export default function KardiomyopathienPage() {
   const current = phenotypes.find(item => item.id === selected) || phenotypes[0]
   const withLang = href => lang === 'de' ? href : `${href}${href.includes('?') ? '&' : '?'}lang=${lang}`
   const sections = [
-    ['overview', ui.overview], ['phenotypes', ui.phenotype], ['protocol', ui.protocol],
+    ['overview', ui.overview], ['phenotypes', ui.phenotype], ['special', ui.special], ['protocol', ui.protocol],
     ['atlas', ui.atlas], ['practice', ui.practice], ['sources', ui.sources],
   ]
 
@@ -125,6 +149,10 @@ export default function KardiomyopathienPage() {
                 <div className={styles.featureText}><div className={styles.featureTitle}><span>{current.short}</span><h3>{c(current.name)}</h3></div><p className={styles.shape}>{c(current.shape)}</p><dl><div><dt>{ui.cine}</dt><dd>{c(current.cine)}</dd></div><div><dt>{ui.lge}</dt><dd>{c(current.tissue)}</dd></div></dl><div className={styles.warning}><strong>{ui.pitfall}</strong><p>{c(current.cave)}</p></div></div>
               </article>
             </section>
+            <section id="special" className={styles.section}>
+              <SectionHeading id="special" title={ui.special} />
+              <div className={styles.specialGrid}>{specialPatterns.map(item => <article key={item.id} className={styles.specialCard}><div className={styles.specialTitle}><span>{item.short}</span><h3>{c(item.name)}</h3></div><p className={styles.shape}>{c(item.shape)}</p><dl><div><dt>{ui.cine}</dt><dd>{c(item.cine)}</dd></div><div><dt>{ui.lge}</dt><dd>{c(item.tissue)}</dd></div></dl><div className={styles.warning}><strong>{ui.pitfall}</strong><p>{c(item.cave)}</p></div></article>)}</div>
+            </section>
             <section id="protocol" className={styles.section}>
               <SectionHeading id="protocol" title={ui.protocol} />
               <div className={styles.protocolGrid}>{protocol.map(step => <div key={c(step.title)}><h3>{c(step.title)}</h3><p>{c(step.text)}</p></div>)}</div>
@@ -136,7 +164,7 @@ export default function KardiomyopathienPage() {
             </section>
             <section id="practice" className={styles.section}>
               <SectionHeading id="practice" title={ui.practice} />
-              <div className={styles.quizGrid}>{questions.map((question, index) => <div key={index} className={styles.quizCard}><span>{String(index + 1).padStart(2, '0')}</span><h3>{c(question.prompt)}</h3><div className={styles.choices}>{phenotypes.map(item => <button key={item.id} type="button" className={answers[index] === item.id ? styles.chosen : ''} onClick={() => setAnswers(previous => ({ ...previous, [index]: item.id }))}>{item.short}</button>)}</div>{answers[index] && <p className={answers[index] === question.answer ? styles.correct : styles.incorrect}>{answers[index] === question.answer ? ui.correct : `${ui.incorrect} · ${phenotypes.find(item => item.id === question.answer)?.short}`}</p>}</div>)}</div>
+              <div className={styles.quizGrid}>{questions.map((question, index) => <div key={index} className={styles.quizCard}><span>{String(index + 1).padStart(2, '0')}</span><h3>{c(question.prompt)}</h3><div className={styles.choices}>{quizOptions.map(item => <button key={item.id} type="button" className={answers[index] === item.id ? styles.chosen : ''} onClick={() => setAnswers(previous => ({ ...previous, [index]: item.id }))}>{item.short}</button>)}</div>{answers[index] && <p className={answers[index] === question.answer ? styles.correct : styles.incorrect}>{answers[index] === question.answer ? ui.correct : `${ui.incorrect} · ${quizOptions.find(item => item.id === question.answer)?.short}`}</p>}</div>)}</div>
               {Object.keys(answers).length > 0 && <button type="button" className={styles.reset} onClick={() => setAnswers({})}>{ui.reset}</button>}
             </section>
             <section id="sources" className={styles.section}>
