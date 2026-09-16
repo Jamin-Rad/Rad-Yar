@@ -52,8 +52,6 @@ const specialPatterns = [
   },
 ]
 
-const quizOptions = [...phenotypes, ...specialPatterns]
-
 const protocol = [
   { title: L('1 · Cine', '1 · Cine', '۱ · Cine'), text: L('LV/RV-Volumina, EF, Wanddicke, regionale Bewegung, Klappen und Vorhöfe.', 'LV/RV volumes, EF, wall thickness, regional motion, valves and atria.', 'حجم و EF هر دو بطن، ضخامت دیواره، حرکت موضعی، دریچه‌ها و دهلیزها.') },
   { title: L('2 · T2 / Ödem', '2 · T2 / oedema', '۲ · T2 / ادم'), text: L('T2-Mapping oder T2-gewichtete Sequenzen helfen aktive Entzündung von chronischer Narbe zu trennen.', 'T2 mapping or T2-weighted images help separate active inflammation from chronic scar.', 'T2 mapping یا تصاویر T2 برای افتراق التهاب فعال از اسکار قدیمی کمک می‌کنند.') },
@@ -64,16 +62,6 @@ const protocol = [
 const atlas = [
   ...phenotypes.map(item => ({ ...item, caption: item.tissue })),
   { ...specialPatterns[0], image: '/cardiomyopathy/noncompaction.webp', caption: specialPatterns[0].tissue },
-]
-
-const questions = [
-  { prompt: L('Großer LV, niedrige EF, septaler mid-wall-LGE-Streifen. Welcher Phänotyp?', 'Large LV, low EF, septal mid-wall LGE stripe. Which phenotype?', 'بطن چپ بزرگ، EF پایین و نوار LGE میدوال در سپتوم؛ کدام فنوتیپ؟'), answer: 'dcm' },
-  { prompt: L('Asymmetrisch dickes Septum und fleckiges LGE an der RV-Insertion. Welcher Phänotyp?', 'Asymmetrically thick septum and patchy RV insertion LGE. Which phenotype?', 'سپتوم ضخیمِ نامتقارن و LGE لکه‌ای در محل اتصال بطن راست؛ کدام فنوتیپ؟'), answer: 'hcm' },
-  { prompt: L('Normal großer LV, aber subepikardiale nichtischämische Narbe. Welcher Phänotyp?', 'Normal-sized LV with non-ischaemic subepicardial scar. Which phenotype?', 'بطن چپ با اندازهٔ طبیعی و اسکار ساب‌اپیکاردیال غیرایسکمیک؛ کدام فنوتیپ؟'), answer: 'ndlvc' },
-  { prompt: L('RV-Dilatation und regionale Dyskinesie sind führend. Welcher Phänotyp?', 'RV dilatation and regional dyskinesia dominate. Which phenotype?', 'اتساع بطن راست و دیسکینزی موضعی یافتهٔ غالب‌اند؛ کدام فنوتیپ؟'), answer: 'arvc' },
-  { prompt: L('Kleine Ventrikel, große Vorhöfe, restriktive Füllung. Welcher Phänotyp?', 'Small ventricles, enlarged atria and restrictive filling. Which phenotype?', 'بطن‌های کوچک، دهلیزهای بزرگ و پرشدن محدودکننده؛ کدام فنوتیپ؟'), answer: 'rcm' },
-  { prompt: L('Prominente apikale Trabekel und tiefe Recessus, aber die Morphologie allein reicht nicht zur Diagnose. Welches Muster?', 'Prominent apical trabeculae and deep recesses, but morphology alone is insufficient for diagnosis. Which pattern?', 'ترابکول‌های برجستهٔ اپیکال و فرورفتگی‌های عمیق دیده می‌شود، اما مورفولوژی به‌تنهایی برای تشخیص کافی نیست؛ کدام الگو؟'), answer: 'lvnc' },
-  { prompt: L('Akute apikale Ballonierung über ein Koronarterritorium hinaus, Ödem und kein typisches irreversibles LGE. Welche Diagnose?', 'Acute apical ballooning beyond one coronary territory, oedema and no typical irreversible LGE. Which diagnosis?', 'بالونینگ حاد اپیکال فراتر از یک قلمرو کرونری، ادم و نبود LGE برگشت‌ناپذیر تیپیک؛ کدام تشخیص؟'), answer: 'takotsubo' },
 ]
 
 const links = [
@@ -121,7 +109,6 @@ function SectionIcon({ id }) {
     protocol: <><rect x="3" y="4" width="18" height="15" rx="2"/><path d="M7 12h2l1.5-3 2.5 6 1.5-3H17M9 22h6"/></>,
     atlas: <><rect x="5" y="3" width="14" height="14" rx="2"/><path d="m7 14 3-3 2 2 2.5-3 2.5 4M3 19v1a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-1"/><circle cx="9" cy="7" r="1"/></>,
     reporting: <><path d="M9 4h6l1 2h3v15H5V6h3l1-2Z"/><path d="M9 12h6M9 16h6M9 8h6"/></>,
-    practice: <><path d="M12 3 4 7v5c0 5 3.5 8 8 9 4.5-1 8-4 8-9V7l-8-4Z"/><path d="m8 12 2.5 2.5L16 9"/></>,
     takehome: <><path d="M9 18h6M10 22h4"/><path d="M8.5 14.5A7 7 0 1 1 15.5 14.5c-1 .7-1.5 1.5-1.5 2.5h-4c0-1-.5-1.8-1.5-2.5Z"/><path d="m9.5 10.5 1.7 1.7 3.4-4"/></>,
     sources: <><path d="M12 5c-2-2-5-2-9-1v15c4-1 7-1 9 1 2-2 5-2 9-1V4c-4-1-7-1-9 1ZM12 5v15"/><path d="M5 8c2-.3 4-.1 5 1M14 9c1-1 3-1.3 5-1"/></>,
   }
@@ -134,7 +121,7 @@ function ReadButton({ isRead, onClick, authError, ui, withLang }) {
 
 function Section({ id, title, children }) {
   useMobileLearningLayout()
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(id === 'overview')
   return <section id={id} className={`${base.section} ${styles.section}`}><button className={`${base.sectionHeader} ${styles.sectionHeader}`} type="button" onClick={() => setOpen(value => !value)} aria-expanded={open}><div className={styles.sectionHeading}><span className={styles.sectionIcon}><SectionIcon id={id} /></span><h2>{title}</h2></div><span className={styles.sectionToggle}>{open ? '−' : '+'}</span></button>{open && <div className={`${base.sectionBody} ${styles.sectionBody}`}>{children}</div>}</section>
 }
 
@@ -153,7 +140,6 @@ export default function KardiomyopathienPage() {
   const labels = extraCopy[lang] || extraCopy.de
   const [selected, setSelected] = useState('hcm')
   const [revealed, setRevealed] = useState({})
-  const [answers, setAnswers] = useState({})
   const [activeId, setActiveId] = useState('overview')
   const { isRead, toggleRead, authError } = useLessonReadStatus('kardiomyopathien')
   const current = phenotypes.find(item => item.id === selected) || phenotypes[0]
@@ -161,7 +147,7 @@ export default function KardiomyopathienPage() {
   const lessonPath = '/thorax/kardio/kardiomyopathien'
   const sections = useMemo(() => [
     ['overview', ui.overview], ['phenotypes', ui.phenotype], ['special', ui.special], ['protocol', ui.protocol],
-    ['atlas', ui.atlas], ['reporting', labels.reporting], ['practice', ui.practice],
+    ['atlas', ui.atlas], ['reporting', labels.reporting],
     ['takehome', labels.takehome], ['sources', ui.sources],
   ], [labels.reporting, labels.takehome, ui])
 
@@ -213,10 +199,6 @@ export default function KardiomyopathienPage() {
               <div className={styles.atlasGrid}>{atlas.map(item => <figure key={item.id} className={styles.atlasCard}><ZoomImage src={item.image} alt={c(item.caption)} labels={labels} /><figcaption><strong>{item.short} · {c(item.name)}</strong><button type="button" aria-expanded={Boolean(revealed[item.id])} onClick={() => setRevealed(previous => ({ ...previous, [item.id]: !previous[item.id] }))}>{revealed[item.id] ? ui.hide : ui.reveal}</button>{revealed[item.id] && <p>{c(item.caption)}</p>}</figcaption></figure>)}</div>
             </Section>
             <Section id="reporting" title={labels.reporting}><div className={styles.reportGrid}>{reportSteps.map((step, index) => <div key={index}><span>{String(index + 1).padStart(2, '0')}</span><h3>{c(step.title)}</h3><p>{c(step.text)}</p></div>)}</div><div className={styles.reportExample}><strong>{labels.reportExample}</strong><p>{c(reportExample)}</p></div></Section>
-            <Section id="practice" title={ui.practice}>
-              <div className={styles.quizGrid}>{questions.map((question, index) => <div key={index} className={styles.quizCard}><span>{String(index + 1).padStart(2, '0')}</span><h3>{c(question.prompt)}</h3><div className={styles.choices}>{quizOptions.map(item => <button key={item.id} type="button" className={answers[index] === item.id ? styles.chosen : ''} onClick={() => setAnswers(previous => ({ ...previous, [index]: item.id }))}>{item.short}</button>)}</div>{answers[index] && <p className={answers[index] === question.answer ? styles.correct : styles.incorrect}>{answers[index] === question.answer ? ui.correct : `${ui.incorrect} · ${quizOptions.find(item => item.id === question.answer)?.short}`}</p>}</div>)}</div>
-              {Object.keys(answers).length > 0 && <button type="button" className={styles.reset} onClick={() => setAnswers({})}>{ui.reset}</button>}
-            </Section>
             <Section id="takehome" title={labels.takehome}><div className={styles.takeHomeGrid}>{takeHomes.map((item, index) => <div key={index}><span>✓</span><p>{c(item)}</p></div>)}</div><div className={styles.actionFooter}><Link href={withLang(`/ueben/quiz?fach=thorax&n=10&themen=kardiomyopathien&from=${encodeURIComponent(withLang(lessonPath))}`)}>🎯 MCQ</Link><Link href={withLang(`/flashcards/kardiomyopathien?from=${encodeURIComponent(withLang(lessonPath))}`)}>🧠 {labels.flashcards}</Link></div></Section>
             <Section id="sources" title={ui.sources}>
               <div className={styles.sources}>{links.map(link => <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">{link.label} ↗</a>)}</div>
