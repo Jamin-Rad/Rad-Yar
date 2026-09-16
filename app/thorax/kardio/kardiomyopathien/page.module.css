@@ -15,6 +15,7 @@
 @media(max-width:460px){.protocolGrid,.atlasGrid{grid-template-columns:1fr}.atlasCard img{height:300px}.hero h1{font-size:36px}.hero p{font-size:15px}}
 
 /* Standard lesson shell */
+.section{scroll-margin-top:140px}
 .header{max-width:1260px;margin:0 auto;padding:24px 28px 0}
 .hero{grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:18px;align-items:stretch;min-height:410px;overflow:visible;border:0;border-radius:0;background:transparent;box-shadow:none;color:inherit}
 .heroText{display:flex;flex-direction:column;justify-content:center;padding:clamp(28px,5vw,58px)}
