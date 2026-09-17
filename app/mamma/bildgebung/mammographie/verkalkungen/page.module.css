@@ -5,4 +5,7 @@
 :global(html[data-theme='dark']) .templatePage::before{filter:none;opacity:1}
 .templateSectionBody{min-width:0}
 .templateSectionBody>p:first-child{margin-top:0}
+.sectionReadButton{font-size:.84rem;transition:background-color .18s ease,border-color .18s ease,color .18s ease,box-shadow .18s ease}
+:global(html[data-theme='dark']) .sectionReadButtonDone{border-color:#edb8f2;background:#5d2f68;color:#fff;box-shadow:0 0 0 1px rgba(237,184,242,.16),0 8px 22px rgba(0,0,0,.24);font-weight:900;text-shadow:0 1px 1px rgba(0,0,0,.42)}
+:global(html[data-theme='dark']) .sectionReadButtonDone svg{color:#fff;stroke-width:2.2}
 @media(max-width:760px){.templatePage::before{background-position:68% center;background-size:cover}.templatePage>header h1{font-size:clamp(34px,11vw,46px);overflow-wrap:anywhere;hyphens:auto}.templateSectionBody{padding:18px 14px}}
