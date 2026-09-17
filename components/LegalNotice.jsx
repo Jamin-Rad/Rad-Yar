@@ -10,6 +10,7 @@ export const PRIVACY_CHOICE_EVENT = 'radyar:privacy-choice'
 
 const AUTOMATIC_NOTICE_EXCLUDED_PREFIXES = [
   '/mamma/rechner',
+  '/design-lab',
 ]
 
 function excludesAutomaticNotice(pathname) {
