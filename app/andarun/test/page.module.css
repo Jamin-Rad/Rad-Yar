@@ -37,7 +37,7 @@
 .breadcrumb strong { color: var(--body); font-weight: 700; }
 .author { color: var(--plum-700); font-family: var(--font-fraunces, Georgia, serif); font-size: 14px; font-weight: 700; white-space: nowrap; }
 
-.hero { min-height: 220px; display: grid; grid-template-columns: minmax(0,1.35fr) minmax(300px,.68fr) minmax(230px,.48fr); gap: 28px; align-items: center; position: relative; }
+.hero { min-height: 240px; display: grid; grid-template-columns: minmax(0,1.35fr) minmax(300px,.68fr) minmax(250px,.52fr); gap: 28px; align-items: center; position: relative; }
 .heroCopy { min-width: 0; }
 .heroCopy h1 { max-width: 790px; margin: 0; color: var(--ink); font-family: var(--font-fraunces, Georgia, serif); font-size: clamp(42px,4.5vw,62px); font-weight: 900; line-height: .98; letter-spacing: -.042em; text-wrap: balance; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
@@ -57,9 +57,7 @@
 .factIcon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; color: var(--plum-800); background: #dfc8e2; }
 .factIcon svg { width: 24px; height: 24px; }
 
-.heroVisual { align-self: stretch; min-height: 210px; display: grid; place-items: center; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,.52); border-radius: 24px; background: linear-gradient(145deg,rgba(255,255,255,.68),rgba(217,242,241,.26)); box-shadow: inset 0 1px 0 rgba(255,255,255,.72), 0 24px 55px rgba(35,18,39,.10); backdrop-filter: blur(18px) saturate(1.2); }
-.heroVisual::before { content: ''; position: absolute; width: 180px; height: 180px; border-radius: 50%; background: rgba(56,174,177,.22); filter: blur(42px); }
-.heroVisual img { position: relative; z-index: 1; width: min(112%,300px); height: auto; object-fit: contain; filter: drop-shadow(0 18px 22px rgba(12,73,80,.18)); }
+.heroVisual { align-self: stretch; min-height: 240px; margin: -20px -24px -12px -76px; position: relative; overflow: hidden; pointer-events: none; background: url('/educational/stroke-hero-kaiser-style.webp') right center / auto 112% no-repeat; filter: saturate(.9) contrast(1.04); opacity: .9; -webkit-mask-image: linear-gradient(90deg,transparent 0,rgba(0,0,0,.72) 24%,#000 52%,#000 88%,transparent 100%),linear-gradient(180deg,transparent 0,#000 9%,#000 91%,transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg,transparent 0,rgba(0,0,0,.72) 24%,#000 52%,#000 88%,transparent 100%); }
 
 .progressBar { display: grid; grid-template-columns: minmax(180px,330px) auto 1fr; align-items: center; gap: 14px; min-height: 42px; margin-top: 14px; padding: 7px 16px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.88); box-shadow: 0 8px 20px rgba(35,18,39,.035); }
 .progressTrack { height: 8px; border-radius: 999px; background: #e9e7ec; overflow: hidden; }
@@ -149,6 +147,7 @@
 .readButton { min-height: 46px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 20px; border: 1px solid var(--plum-800); border-radius: 8px; background: transparent; color: var(--plum-900); font: 850 13px/1 inherit; cursor: pointer; }
 .readButton svg { width: 20px; height: 20px; }
 .readButtonDone { background: var(--plum-900); color: #fff; }
+.mobileLearningPath { display: none; }
 .page :is(a,button):focus-visible { outline: 3px solid var(--teal-500); outline-offset: 3px; }
 
 :global(html[data-theme='dark']) .page {
@@ -167,7 +166,7 @@
 :global(html[data-theme='dark']) .progressBar,
 :global(html[data-theme='dark']) .sidebar,
 :global(html[data-theme='dark']) .section { background: rgba(34,31,39,.94); }
-:global(html[data-theme='dark']) .heroVisual { border-color: rgba(220,201,225,.18); background: linear-gradient(145deg,rgba(58,49,64,.58),rgba(19,58,61,.32)); box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 24px 58px rgba(0,0,0,.28); }
+:global(html[data-theme='dark']) .heroVisual { opacity: .98; filter: saturate(1.04) contrast(1.1); }
 :global(html[data-theme='dark']) .secondaryAction { background: #27222b; color: #f2e7f3; border-color: #615669; }
 :global(html[data-theme='dark']) .sectionHeader:hover { background: rgba(113,53,116,.14); }
 :global(html[data-theme='dark']) .progressBar button { color: #ead8eb; }
@@ -194,7 +193,10 @@
 }
 
 @media (max-width: 760px) {
-  .page { padding: 76px 12px 32px; }
+  .page { padding: 76px 12px 108px; }
+  .page::before { content: ''; position: fixed; inset: 64px 0 0; z-index: 0; pointer-events: none; background: url('/educational/stroke-hero-kaiser-style.webp') 68% center / auto 100% no-repeat; filter: saturate(.76) contrast(1.06); opacity: .13; -webkit-mask-image: linear-gradient(180deg,transparent 0,#000 9%,#000 88%,transparent 100%); mask-image: linear-gradient(180deg,transparent 0,#000 9%,#000 88%,transparent 100%); }
+  :global(html[data-theme='dark']) .page::before { opacity: .28; filter: saturate(1.02) contrast(1.12); }
+  .page > .header, .page > .layout { position: relative; z-index: 1; }
   .hero { grid-template-columns: 1fr; gap: 22px; }
   .heroCopy h1 { font-size: clamp(39px,13vw,58px); }
   .heroFacts { grid-template-columns: 1fr; }
@@ -202,10 +204,35 @@
   .progressTrack { grid-column: 1 / -1; }
   .progressBar button { grid-column: 1 / -1; justify-self: start; }
   .layout { grid-template-columns: 1fr; }
-  .sidebar { position: static; padding: 12px; overflow: hidden; }
-  .sidebar h2 { font-size: 16px; margin-bottom: 8px; }
-  .sidebar nav { display: flex; overflow-x: auto; gap: 6px; padding-bottom: 2px; scroll-snap-type: x proximity; }
-  .sidebar button { flex: 0 0 auto; width: auto; min-width: 112px; scroll-snap-align: start; }
+  .sidebar { display: none; }
+  .mobileLearningPath { display: block; position: fixed; left: 10px; bottom: max(10px,env(safe-area-inset-bottom)); z-index: 220; filter: drop-shadow(0 14px 28px rgba(2,6,23,.2)); }
+  .mobilePathButton { min-height: 54px; max-width: min(330px,calc(100vw - 20px)); padding: 6px 16px 6px 7px; display: grid; grid-template-columns: 40px 31px minmax(0,1fr); align-items: center; gap: 8px; border: 1px solid color-mix(in srgb,var(--line) 84%,transparent); border-radius: 999px; color: var(--ink); background: color-mix(in srgb,var(--paper) 94%,transparent); box-shadow: 0 14px 34px rgba(2,6,23,.2); backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2); cursor: pointer; text-align: start; }
+  .mobileProgressRing { width: 40px; height: 40px; position: relative; display: grid; place-content: center; border-radius: 50%; background: conic-gradient(var(--teal-500) var(--mobile-progress),color-mix(in srgb,var(--line) 75%,transparent) 0); }
+  .mobileProgressRing::before { content: ''; position: absolute; inset: 4px; border-radius: 50%; background: var(--paper); }
+  .mobileProgressRing b, .mobileProgressRing small { position: relative; z-index: 1; display: inline; line-height: 1; }
+  .mobileProgressRing b { font-size: 10px; }
+  .mobileProgressRing small { font-size: 7px; }
+  .mobileCurrentIcon { width: 31px; height: 31px; display: grid; place-items: center; border: 1px solid color-mix(in srgb,var(--plum-700) 38%,var(--line)); border-radius: 50%; color: var(--plum-700); background: color-mix(in srgb,var(--plum-100) 76%,transparent); }
+  .mobileCurrentIcon svg { width: 17px; height: 17px; }
+  .mobilePathLabel { min-width: 0; display: grid; gap: 2px; }
+  .mobilePathLabel strong { font-size: 11px; line-height: 1.1; }
+  .mobilePathLabel small { overflow: hidden; color: var(--muted); font-size: 9px; line-height: 1.1; text-overflow: ellipsis; white-space: nowrap; }
+  .mobilePathPanel { position: fixed; left: 10px; bottom: calc(max(10px,env(safe-area-inset-bottom)) + 64px); width: calc(100vw - 20px); max-height: min(540px,calc(100svh - 100px)); overflow: hidden; display: grid; grid-template-rows: auto minmax(0,1fr); border: 1px solid color-mix(in srgb,var(--line) 90%,transparent); border-radius: 20px; color: var(--body); background: color-mix(in srgb,var(--paper) 97%,transparent); box-shadow: 0 24px 70px rgba(2,6,23,.26); backdrop-filter: blur(22px) saturate(1.2); -webkit-backdrop-filter: blur(22px) saturate(1.2); animation: mobilePathIn .2s ease-out both; }
+  .mobilePathPanel header { min-height: 64px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+  .mobilePathPanel header div { display: grid; gap: 3px; }
+  .mobilePathPanel header small { color: var(--muted); font-size: 9px; font-weight: 800; }
+  .mobilePathPanel header strong { color: var(--ink); font-size: 14px; }
+  .mobilePathPanel header button { width: 32px; height: 32px; border: 0; border-radius: 50%; color: var(--muted); background: var(--canvas); cursor: pointer; font-size: 20px; }
+  .mobilePathPanel nav { min-height: 0; overflow-y: auto; display: grid; align-content: start; gap: 3px; padding: 8px; }
+  .mobilePathPanel nav button { min-height: 52px; padding: 7px 9px; display: grid; grid-template-columns: 34px minmax(0,1fr) 22px; align-items: center; gap: 9px; border: 1px solid transparent; border-radius: 11px; color: var(--body); background: transparent; cursor: pointer; text-align: start; }
+  .mobilePathPanel nav button > span:nth-child(2) { min-width: 0; display: grid; gap: 2px; }
+  .mobilePathPanel nav button strong { color: var(--ink); font-size: 11px; }
+  .mobilePathPanel nav button small { overflow: hidden; color: var(--muted); font-size: 8px; text-overflow: ellipsis; white-space: nowrap; }
+  .mobilePathItemIcon { width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--plum-700); }
+  .mobilePathItemIcon svg { width: 17px; height: 17px; }
+  .mobilePathPanel nav i { color: var(--teal-700); font-size: 13px; font-style: normal; font-weight: 900; text-align: center; }
+  .mobilePathPanel nav .mobilePathCurrent { border-color: color-mix(in srgb,var(--plum-700) 25%,var(--line)); background: color-mix(in srgb,var(--plum-100) 70%,transparent); }
+  .mobilePathPanel nav .mobilePathCurrent .mobilePathItemIcon { border-color: var(--plum-700); color: #fff; background: var(--plum-700); }
   .sectionHeader { grid-template-columns: 38px minmax(0,1fr) 28px; min-height: 68px; gap: 10px; padding: 12px 14px; }
   .sectionIcon { width: 36px; height: 36px; }
   .sectionIcon svg { width: 20px; height: 20px; }
@@ -217,6 +244,8 @@
   .checkButton { grid-column: 1; grid-row: auto; min-height: 42px; }
   .metrics { grid-template-columns: 1fr; }
 }
+
+@keyframes mobilePathIn { from { opacity: 0; transform: translateY(8px) scale(.985); } to { opacity: 1; transform: none; } }
 
 @media (prefers-reduced-motion: reduce) {
   .page *, .page *::before, .page *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }

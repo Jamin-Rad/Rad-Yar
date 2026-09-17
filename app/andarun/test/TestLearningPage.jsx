@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -64,6 +63,7 @@ const COPY = {
     ['CTP', L('Rettbares Gewebe erkennen', 'Identify salvageable tissue', 'شناسایی بافت قابل نجات')],
   ],
   path: L('Lernpfad', 'Learning path', 'مسیر یادگیری'),
+  close: L('Schließen', 'Close', 'بستن'),
   progress: L('gelesen', 'read', 'خوانده‌شده'),
   continue: L('Lektion fortsetzen', 'Continue lesson', 'ادامه درس'),
   complete: L('Abschnitt als gelesen markieren', 'Mark section as read', 'علامت‌گذاری بخش به‌عنوان خوانده‌شده'),
@@ -229,6 +229,37 @@ function ContentSection({ id, lang }) {
   </>
 }
 
+function MobileLearningPath({ lang, openId, readSections, onSelect }) {
+  const pick = value => typeof value === 'string' ? value : value[lang] || value.de
+  const [panelOpen, setPanelOpen] = useState(false)
+  const activeSection = SECTION_COPY.find(section => section.id === openId) || SECTION_COPY[0]
+  const progress = (readSections.size / SECTION_COPY.length) * 360
+
+  const selectFromPanel = id => {
+    onSelect(id)
+    setPanelOpen(false)
+  }
+
+  return <div className={styles.mobileLearningPath}>
+    {panelOpen && <section id="mobile-learning-path-panel" className={styles.mobilePathPanel} role="dialog" aria-label={pick(COPY.path)}>
+      <header>
+        <div><small>{pick(COPY.progress)}</small><strong>{readSections.size} / {SECTION_COPY.length}</strong></div>
+        <button type="button" onClick={() => setPanelOpen(false)} aria-label={pick(COPY.close)}>×</button>
+      </header>
+      <nav>{SECTION_COPY.map(section => <button type="button" key={section.id} className={openId === section.id ? styles.mobilePathCurrent : ''} onClick={() => selectFromPanel(section.id)} aria-current={openId === section.id ? 'location' : undefined}>
+        <span className={styles.mobilePathItemIcon}><Icon name={section.icon} /></span>
+        <span><strong>{pick(section.short)}</strong><small>{pick(section.title)}</small></span>
+        <i aria-hidden="true">{readSections.has(section.id) ? '✓' : ''}</i>
+      </button>)}</nav>
+    </section>}
+    <button type="button" className={styles.mobilePathButton} onClick={() => setPanelOpen(value => !value)} aria-expanded={panelOpen} aria-controls="mobile-learning-path-panel">
+      <span className={styles.mobileProgressRing} style={{ '--mobile-progress': `${progress}deg` }}><b>{readSections.size}</b><small>/{SECTION_COPY.length}</small></span>
+      <span className={styles.mobileCurrentIcon}><Icon name={activeSection.icon} /></span>
+      <span className={styles.mobilePathLabel}><strong>{pick(COPY.path)}</strong><small>{pick(activeSection.short)}</small></span>
+    </button>
+  </div>
+}
+
 export default function TestLearningPage() {
   const { lang } = useLanguage()
   const pick = value => typeof value === 'string' ? value : value[lang] || value.de
@@ -278,9 +309,7 @@ export default function TestLearningPage() {
           </div>
         </div>
         <div className={styles.heroFacts}>{COPY.facts.map(([value, label], index) => <article key={value}><span className={styles.factIcon}><Icon name={['brain', 'vessel', 'chart'][index]} /></span><strong>{value}</strong><p>{pick(label)}</p></article>)}</div>
-        <div className={styles.heroVisual} aria-hidden="true">
-          <Image src="/educational/hero-glass-brain.png" alt="" width={676} height={576} priority />
-        </div>
+        <div className={styles.heroVisual} aria-hidden="true" />
       </div>
       <div className={styles.progressBar}>
         <div className={styles.progressTrack}><i style={{ width: `${(readSections.size / SECTION_COPY.length) * 100}%` }} /></div>
@@ -301,5 +330,6 @@ export default function TestLearningPage() {
         </Section>)}
       </article>
     </div>
+    <MobileLearningPath lang={lang} openId={openId} readSections={readSections} onSelect={selectSection} />
   </main>
 }
