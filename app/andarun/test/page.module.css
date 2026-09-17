@@ -30,7 +30,7 @@
 .ambient span:nth-child(2) { width: 420px; height: 170px; right: -45px; top: 95px; border-color: rgba(113,53,116,.12); }
 .ambient span:nth-child(3) { width: 330px; height: 130px; right: 20px; top: 130px; }
 
-.header, .layout, .footer { width: min(1380px, 100%); margin-inline: auto; }
+.header, .layout { width: min(1380px, 100%); margin-inline: auto; }
 .breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 22px; color: var(--muted); font-size: 12px; }
 .breadcrumb a { color: var(--plum-700); font-weight: 800; text-decoration: none; }
 .breadcrumb strong { color: var(--body); font-weight: 700; }
@@ -74,10 +74,11 @@
 .sidebar nav { display: grid; gap: 4px; }
 .sidebar button { width: 100%; min-height: 42px; display: grid; grid-template-columns: 34px 1fr; align-items: center; gap: 8px; padding: 5px 8px; border: 0; border-radius: 7px; background: transparent; color: var(--body); font-family: inherit; text-align: start; cursor: pointer; }
 .sidebar button:hover { background: var(--plum-100); color: var(--plum-900); }
-.sidebar button span { display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid #d3d2db; border-radius: 50%; color: var(--ink); font: 800 11px/1 inherit; }
+.sidebar button .sideIcon { display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid #d3d2db; border-radius: 50%; color: var(--plum-800); }
+.sideIcon svg { width: 17px; height: 17px; }
 .sidebar button strong { font-size: 12px; line-height: 1.3; }
 .sidebar .activeSideItem { background: linear-gradient(90deg,rgba(87,36,90,.12),rgba(56,174,177,.08)); color: var(--plum-900); }
-.sidebar .activeSideItem span { border-color: var(--plum-800); background: var(--plum-800); color: #fff; }
+.sidebar .activeSideItem .sideIcon { border-color: var(--plum-800); background: var(--plum-800); color: #fff; }
 
 .lesson { min-width: 0; display: grid; gap: 10px; }
 .section { scroll-margin-top: 90px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,.9); box-shadow: 0 12px 30px rgba(35,18,39,.035); overflow: hidden; }
@@ -86,8 +87,7 @@
 .sectionHeader:hover { background: rgba(240,229,241,.32); }
 .sectionIcon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; color: var(--plum-800); background: linear-gradient(145deg,#ead6ec,#d6c0e3); }
 .sectionIcon svg { width: 23px; height: 23px; }
-.sectionHeader > span:nth-child(2) { display: flex; align-items: baseline; gap: 10px; min-width: 0; }
-.sectionHeader small { color: var(--plum-700); font: 850 12px/1 var(--font-manrope,system-ui,sans-serif); }
+.sectionHeader > span:nth-child(2) { display: flex; align-items: baseline; min-width: 0; }
 .sectionHeader strong { font-family: var(--font-fraunces, Georgia, serif); font-size: clamp(20px,2.2vw,29px); line-height: 1.15; }
 .toggle { display: grid; place-items: center; color: var(--plum-900); font-size: 22px; }
 .sectionBody { padding: 0 22px 24px 82px; }
@@ -149,9 +149,6 @@
 .readButton { min-height: 50px; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 8px; border: 1px solid var(--plum-800); border-radius: 8px; background: transparent; color: var(--plum-900); font: 850 13px/1 inherit; cursor: pointer; }
 .readButton svg { width: 20px; height: 20px; }
 .readButtonDone { background: var(--plum-900); color: #fff; }
-.footer { padding-top: 28px; }
-.footer p { margin: 0; color: var(--muted); font-size: 10px; text-align: center; }
-
 .page :is(a,button):focus-visible { outline: 3px solid var(--teal-500); outline-offset: 3px; }
 
 :global(html[data-theme='dark']) .page {
