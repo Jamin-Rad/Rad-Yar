@@ -393,7 +393,6 @@ export default function Page(){
   ]
 
   return <main className={`${template.page} ${styles.templatePage} ${lang==='fa'?styles.rtl:''}`} data-lesson-progress-managed="true" dir={lang==='fa'?'rtl':'ltr'} lang={lang}>
-    <div className={`${template.ambient} ${styles.fullPageAmbient}`} aria-hidden="true"><span/><span/><span/></div>
     <header className={template.header}>
       <div className={template.topline}>
         <nav className={template.breadcrumb} aria-label={tx(COPY.contents)}><Link href={withLang('/')}>RadYar</Link><span>/</span><Link href={withLang('/lernen/mamma')}>{tx(COPY.mamma)}</Link><span>/</span><span>{tx(COPY.mammography)}</span><span>/</span><strong>{tx(COPY.title)}</strong></nav>
