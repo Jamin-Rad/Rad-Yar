@@ -1,20 +1,25 @@
 'use client'
-import {useEffect,useMemo,useState} from 'react'
+import {createContext,useContext,useEffect,useMemo,useState} from 'react'
 import Image from 'next/image'
-import LessonKeyPoints from '@/components/LessonKeyPoints'
 import Link from 'next/link'
 import {useLanguage} from '@/providers/LanguageProvider'
-import {useLessonReadStatus} from '@/hooks/useLessonReadStatus'
-import {useMobileLearningLayout} from '@/hooks/useMobileLearningLayout'
-import base from '@/app/abdomen/gi/divertikulitis/page.module.css'
-import shared from '../grundlagen/page.module.css'
-import basics from '../../mrt/basics/page.module.css'
+import template from '@/app/andarun/test/page.module.css'
 import styles from './page.module.css'
 import caseStyles from './case.module.css'
 import {COPY,DISTRIBUTION,GERMAN_SECTIONS,L,MORPH,pick} from './content'
 import {translateLesson} from './translations'
 const ID='mammographie-mikrokalk',PATH='/mamma/bildgebung/mammographie/verkalkungen'
-const READ={de:['Als gelesen markieren','Als gelesen markiert','Bitte melde dich an, um deinen Lernfortschritt zu speichern.','Anmelden'],en:['Mark as read','Marked as read','Please sign in to save your learning progress.','Sign in'],fa:['علامت‌گذاری به‌عنوان خوانده‌شده','به‌عنوان خوانده‌شده علامت‌گذاری شد','برای ذخیره پیشرفت لطفاً وارد شوید.','ورود']}
+const TEMPLATE_COPY={
+  path:L('Lernpfad','Learning path','مسیر یادگیری'),
+  close:L('Schließen','Close','بستن'),
+  progress:L('gelesen','read','خوانده‌شده'),
+  continue:L('Lektion fortsetzen','Continue lesson','ادامه درس'),
+  complete:L('Abschnitt als gelesen markieren','Mark section as read','علامت‌گذاری بخش به‌عنوان خوانده‌شده'),
+  completed:L('Als gelesen markiert','Marked as read','به‌عنوان خوانده‌شده علامت‌گذاری شد'),
+  open:L('Abschnitt öffnen','Open section','باز کردن بخش'),
+  mcq:L('MCQ starten','Start MCQs','شروع MCQ'),
+}
+const LessonTemplateContext=createContext(null)
 const MORPHOLOGY_IMAGES={
   round:{src:'/mamma/mammographie/verkalkungen/morphology/round.png',width:309,height:895,alt:L('Runde, scharf begrenzte Verkalkungen mit Vergrößerung','Round, well-defined calcifications with magnified view','کلسیفیکاسیون‌های گرد و با حدود مشخص همراه با نمای بزرگ‌نمایی‌شده')},
   amorph:{src:'/mamma/mammographie/verkalkungen/morphology/amorphous.png',width:307,height:1024,alt:L('Amorphe, unscharf begrenzte Verkalkungen mit Vergrößerung','Amorphous, indistinct calcifications with magnified view','کلسیفیکاسیون‌های آمورف و نامشخص همراه با نمای بزرگ‌نمایی‌شده')},
@@ -65,8 +70,7 @@ const CALC_FACTORS=[
   {key:'associated',group:'Begleitbefunde',title:'Masse oder Architekturstörung?',text:'Assoziierte Gewebeveränderungen können den Verdacht verstärken. Auch Asymmetrie sowie Haut- und Mamillenveränderungen mitbeurteilen.'},
   {key:'history',group:'Risikokontext',title:'Alter und Anamnese einbeziehen',text:'Höheres Alter und eine persönliche Brustkrebsanamnese können das Ausgangsrisiko erhöhen. Entscheidend bleibt der Gesamtbefund.'},
 ]
-function Section({id,title,children}){useMobileLearningLayout();const[open,setOpen]=useState(true);useEffect(()=>setOpen(false),[id]);return <section id={id} className={`${base.section} ${basics.section} ${styles.section}`}><button type="button" className={`${base.sectionHeader} ${basics.sectionHeader}`} onClick={()=>setOpen(v=>!v)} aria-expanded={open}><span className={basics.sectionHeading}><h2>{title}</h2></span><span className={basics.sectionToggle}>{open?'−':'+'}</span></button>{open&&<div className={`${base.sectionBody} ${basics.sectionBody} ${styles.sectionBody}`}>{children}</div>}</section>}
-function ReadButton({lang,isRead,toggle,authError}){const t=READ[lang]||READ.de;return <div className={base.readControl}><button type="button" className={`${base.readButton} ${basics.readButton} ${isRead?`${base.readButtonActive} ${basics.readButtonActive}`:''}`} onClick={toggle}><span className={`${base.readCheck} ${basics.readCheck}`}>{isRead?'✓':''}</span><span>{isRead?t[1]:t[0]}</span></button>{authError&&<div className={base.readError}><span>{t[2]}</span><Link href="/sign-in">{t[3]}</Link></div>}</div>}
+function Section({id,title,children}){const context=useContext(LessonTemplateContext);if(!context)return null;const{lang,openId,readSections,selectSection,toggleSectionRead}=context,open=openId===id,isRead=readSections.has(id),tx=value=>typeof value==='string'?value:value[lang]||value.de;return <section id={id} className={`${template.section} ${open?template.sectionOpen:''} ${styles.templateSection}`}><button type="button" className={template.sectionHeader} onClick={()=>selectSection(id)} aria-expanded={open} aria-controls={`${id}-panel`}><span className={template.sectionIcon}><SectionIcon id={id}/></span><span><strong>{title}</strong></span><span className={template.toggle} aria-hidden="true">{open?'−':'+'}</span></button><div id={`${id}-panel`} hidden={!open} className={`${template.sectionBody} ${styles.sectionBody} ${styles.templateSectionBody}`}>{children}<button type="button" className={`${template.readButton} ${isRead?template.readButtonDone:''}`} aria-pressed={isRead} onClick={()=>toggleSectionRead(id)}><SectionIcon id="benigne"/>{tx(isRead?TEMPLATE_COPY.completed:TEMPLATE_COPY.complete)}</button></div></section>}
 function MorphologyImage({type,lang='de'}){const image=MORPHOLOGY_IMAGES[type];return <a className={caseStyles.morphologyIllustration} href={image.src} target="_blank" rel="noreferrer" aria-label={pick(image.alt,lang)}><Image src={image.src} alt={pick(image.alt,lang)} width={image.width} height={image.height}/></a>}
 function DistributionImage({type,lang='de'}){const image=DISTRIBUTION_IMAGES[type];return <a className={caseStyles.distributionIllustration} href={image.src} target="_blank" rel="noreferrer" aria-label={pick(image.alt,lang)}><Image src={image.src} alt={pick(image.alt,lang)} width={image.width} height={image.height}/></a>}
 function KalkAssessment({lang}){
@@ -318,9 +322,106 @@ function LessonContent({lang}){const t=value=>translateLesson(value,lang);return
     </ol>
   </Section>
 </>}
-export default function Page(){const{lang}=useLanguage(),tx=v=>pick(v,lang),lessonSections=GERMAN_SECTIONS,[active,setActive]=useState(lessonSections[0].id),{isRead,toggleRead,authError}=useLessonReadStatus(ID),ids=useMemo(()=>lessonSections.map(x=>x.id),[lessonSections]),withLang=href=>lang==='de'?href:`${href}${href.includes('?')?'&':'?'}lang=${lang}`;useEffect(()=>{const os=ids.map(id=>{const el=document.getElementById(id);if(!el)return null;const o=new IntersectionObserver(([e])=>e.isIntersecting&&setActive(id),{rootMargin:'-18% 0px -72%',threshold:.01});o.observe(el);return o});return()=>os.forEach(o=>o?.disconnect())},[ids]);return <main className={`${base.page} ${basics.page} ${shared.page} ${styles.page} ${lang==='fa'?styles.rtl:''}`} dir={lang==='fa'?'rtl':'ltr'} lang={lang}><header className={base.header}><nav className={`${base.breadcrumb} ${basics.breadcrumb}`} aria-label={tx(COPY.contents)}><Link href={withLang('/')}>RadYar</Link><span>›</span><Link href={withLang('/lernen/mamma')}>{tx(COPY.mamma)}</Link><span>›</span><span>{tx(COPY.imaging)}</span><span>›</span><span>{tx(COPY.mammography)}</span><span>›</span><strong>{tx(COPY.title)}</strong></nav><div className={base.hero}><div className={`${base.heroText} ${basics.heroText} ${shared.heroText} ${styles.heroText}`}><div style={{display:'flex',gap:10,flexWrap:'wrap',alignItems:'center',marginBottom:18}}><span className={`${base.sourceBadge} ${basics.sourceBadge}`} style={{marginBottom:0}}>Dr. Zia</span></div><h1>{tx(COPY.title)}</h1><div className={base.actions}><Link className={`${base.actionBtn} ${basics.actionBtn}`} href={withLang(`/ueben/quiz?fach=mamma&n=10&themen=${ID}&from=${encodeURIComponent(withLang(PATH))}`)}>🎯 MCQ</Link><Link className={`${base.actionBtn} ${basics.actionBtn}`} href={withLang(`/flashcards/${ID}?from=${encodeURIComponent(withLang(PATH))}`)}>🧠 {tx(COPY.flashcards)}</Link></div></div><LessonKeyPoints points={[
-  [tx(L('Morphologie × Verteilung','Morphology × distribution','مورفولوژی × توزیع')),tx(L('Gemeinsam beurteilen.','Assess together.','با هم ارزیابی کنید.'))],
-  [tx(L('Benigne Muster erkennen','Recognise benign patterns','الگوهای خوش‌خیم را بشناسید')),tx(L('Typische Form und Lage beachten.','Look for characteristic shape and location.','شکل و محل تیپیک را بررسی کنید.'))],
-  [tx(L('Gesamtbefund zählt','The overall findings matter','ارزیابی کلی اهمیت دارد')),tx(L('Verlauf, Ausdehnung, Begleitbefunde.','Evolution, extent, associated findings.','روند، وسعت و یافته‌های همراه.'))],
-]} /></div></header><div className={base.readBar}><ReadButton lang={lang} isRead={isRead} toggle={toggleRead} authError={authError}/></div><div className={base.layout}><aside className={`${base.sidebar} ${basics.sidebar}`}><div className={base.sideTitle}>{tx(COPY.contents)}</div>{lessonSections.map(x=><button key={x.id} type="button" className={`${base.sideItem} ${basics.sideItem} ${active===x.id?`${base.sideItemActive} ${basics.sideItemActive}`:''}`} onClick={()=>document.getElementById(x.id)?.scrollIntoView({behavior:'smooth'})}><span className={caseStyles.sidebarIcon}><SectionIcon id={x.id}/></span><strong>{translateLesson(x.label.de,lang)}</strong></button>)}</aside><div className={base.main}>
-<LessonContent lang={lang}/></div></div></main>}
+function MobileLearningPath({lang,openId,readSections,onSelect,sections}){
+  const tx=value=>typeof value==='string'?value:value[lang]||value.de
+  const[panelOpen,setPanelOpen]=useState(false)
+  const activeSection=sections.find(section=>section.id===openId)||sections[0]
+  const progress=(readSections.size/sections.length)*360
+  const label=section=>translateLesson(section.label.de,lang)
+  const selectFromPanel=id=>{onSelect(id);setPanelOpen(false)}
+  return <div className={template.mobileLearningPath}>
+    {panelOpen&&<section id="verkalkungen-mobile-learning-path-panel" className={template.mobilePathPanel} role="dialog" aria-label={tx(TEMPLATE_COPY.path)}>
+      <header><div><small>{tx(TEMPLATE_COPY.progress)}</small><strong>{readSections.size} / {sections.length}</strong></div><button type="button" onClick={()=>setPanelOpen(false)} aria-label={tx(TEMPLATE_COPY.close)}>×</button></header>
+      <nav>{sections.map(section=><button type="button" key={section.id} className={openId===section.id?template.mobilePathCurrent:''} onClick={()=>selectFromPanel(section.id)} aria-current={openId===section.id?'location':undefined}>
+        <span className={template.mobilePathItemIcon}><SectionIcon id={section.id}/></span>
+        <span><strong>{label(section)}</strong><small>{label(section)}</small></span>
+        <i aria-hidden="true">{readSections.has(section.id)?'✓':''}</i>
+      </button>)}</nav>
+    </section>}
+    <button type="button" className={template.mobilePathButton} onClick={()=>setPanelOpen(value=>!value)} aria-expanded={panelOpen} aria-controls="verkalkungen-mobile-learning-path-panel">
+      <span className={template.mobileProgressRing} style={{'--mobile-progress':`${progress}deg`}}><b>{readSections.size}</b><small>/{sections.length}</small></span>
+      <span className={template.mobileCurrentIcon}><SectionIcon id={activeSection.id}/></span>
+      <span className={template.mobilePathLabel}><strong>{tx(TEMPLATE_COPY.path)}</strong><small>{label(activeSection)}</small></span>
+    </button>
+  </div>
+}
+
+export default function Page(){
+  const{lang}=useLanguage()
+  const tx=value=>pick(value,lang)
+  const lessonSections=GERMAN_SECTIONS
+  const[openId,setOpenId]=useState(lessonSections[0].id)
+  const[readSections,setReadSections]=useState(()=>new Set())
+  const activeIndex=useMemo(()=>lessonSections.findIndex(section=>section.id===openId),[lessonSections,openId])
+  const withLang=href=>lang==='de'?href:`${href}${href.includes('?')?'&':'?'}lang=${lang}`
+  const label=section=>translateLesson(section.label.de,lang)
+
+  useEffect(()=>{
+    const hash=window.location.hash.slice(1)
+    if(lessonSections.some(section=>section.id===hash))setOpenId(hash)
+  },[lessonSections])
+
+  const selectSection=id=>{
+    const nextId=openId===id?null:id
+    setOpenId(nextId)
+    const baseUrl=`${window.location.pathname}${window.location.search}`
+    window.history.replaceState(null,'',nextId?`${baseUrl}#${nextId}`:baseUrl)
+    if(nextId)requestAnimationFrame(()=>document.getElementById(nextId)?.scrollIntoView({behavior:'smooth',block:'start'}))
+  }
+
+  const advance=()=>{
+    const nextIndex=activeIndex<0?0:Math.min(activeIndex+1,lessonSections.length-1)
+    selectSection(lessonSections[nextIndex].id)
+  }
+
+  const toggleSectionRead=id=>setReadSections(previous=>{
+    const next=new Set(previous)
+    if(next.has(id))next.delete(id)
+    else next.add(id)
+    return next
+  })
+
+  const context={lang,openId,readSections,selectSection,toggleSectionRead}
+  const facts=[
+    [L('Morphologie','Morphology','مورفولوژی'),L('Form der Kalkpartikel','Shape of calcification particles','شکل ذرات کلسیفیکاسیون'),'morphologie'],
+    [L('Verteilung','Distribution','توزیع'),L('Muster in der Brust','Pattern within the breast','الگوی توزیع در پستان'),'verteilung'],
+    ['BI-RADS',L('Gesamtbefund einordnen','Classify the complete finding','طبقه‌بندی یافته کلی'),'kombination'],
+  ]
+
+  return <main className={`${template.page} ${styles.templatePage} ${lang==='fa'?styles.rtl:''}`} data-lesson-progress-managed="true" dir={lang==='fa'?'rtl':'ltr'} lang={lang}>
+    <div className={template.ambient} aria-hidden="true"><span/><span/><span/></div>
+    <header className={template.header}>
+      <div className={template.topline}>
+        <nav className={template.breadcrumb} aria-label={tx(COPY.contents)}><Link href={withLang('/')}>RadYar</Link><span>/</span><Link href={withLang('/lernen/mamma')}>{tx(COPY.mamma)}</Link><span>/</span><span>{tx(COPY.mammography)}</span><span>/</span><strong>{tx(COPY.title)}</strong></nav>
+        <span className={template.author}>Dr. Zia</span>
+      </div>
+      <div className={template.hero}>
+        <div className={template.heroCopy}>
+          <h1>{tx(COPY.title)}</h1>
+          <div className={template.actions}>
+            <Link className={template.primaryAction} href={withLang(`/ueben/quiz?fach=mamma&n=10&themen=${ID}&from=${encodeURIComponent(withLang(PATH))}`)}>{tx(TEMPLATE_COPY.mcq)}<span aria-hidden="true">→</span></Link>
+            <Link className={template.secondaryAction} href={withLang(`/flashcards/${ID}?from=${encodeURIComponent(withLang(PATH))}`)}><SectionIcon id="algorithmus"/>{tx(COPY.flashcards)}</Link>
+          </div>
+        </div>
+        <div className={template.heroFacts}>{facts.map(([value,description,icon])=><article key={tx(value)}><span className={template.factIcon}><SectionIcon id={icon}/></span><strong>{tx(value)}</strong><p>{tx(description)}</p></article>)}</div>
+        <div className={`${template.heroVisual} ${styles.templateHeroVisual}`} aria-hidden="true"/>
+      </div>
+      <div className={template.progressBar}>
+        <div className={template.progressTrack}><i style={{width:`${(readSections.size/lessonSections.length)*100}%`}}/></div>
+        <span>{readSections.size} / {lessonSections.length} {tx(TEMPLATE_COPY.progress)}</span>
+        <button type="button" onClick={advance} disabled={activeIndex===lessonSections.length-1}>{tx(TEMPLATE_COPY.continue)}<span aria-hidden="true">→</span></button>
+      </div>
+    </header>
+
+    <div className={template.layout}>
+      <aside className={template.sidebar}>
+        <h2>{tx(TEMPLATE_COPY.path)}</h2>
+        <nav>{lessonSections.map(section=><button type="button" key={section.id} className={openId===section.id?template.activeSideItem:''} onClick={()=>selectSection(section.id)} aria-current={openId===section.id?'location':undefined} aria-label={`${tx(TEMPLATE_COPY.open)}: ${label(section)}`}><span className={template.sideIcon}><SectionIcon id={section.id}/></span><strong>{label(section)}</strong></button>)}</nav>
+      </aside>
+      <article className={template.lesson}>
+        <LessonTemplateContext.Provider value={context}><LessonContent lang={lang}/></LessonTemplateContext.Provider>
+      </article>
+    </div>
+    <MobileLearningPath lang={lang} openId={openId} readSections={readSections} onSelect={selectSection} sections={lessonSections}/>
+  </main>
+}

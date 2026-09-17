@@ -192,6 +192,15 @@ export default function LessonEnhancer() {
     if (!enabled) return
     const main = document.querySelector('main')
     if (!main) return
+    if (main.dataset.lessonProgressManaged === 'true') {
+      document.querySelectorAll('[data-lesson-progress-ui]').forEach(element => element.remove())
+      setSections(current => current.length ? [] : current)
+      setActiveId('')
+      setSidebarTarget(null)
+      setNavbarTarget(null)
+      setExplorer(null)
+      return
+    }
     const foundSections = Array.from(main.querySelectorAll('section[id]')).flatMap(section => {
       const heading = findHeading(section)
       return heading ? [{ heading, id: section.id, title: heading.textContent?.trim() || section.id }] : []
