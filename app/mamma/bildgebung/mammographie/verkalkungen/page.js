@@ -72,6 +72,57 @@ const CALC_FACTORS=[
   {key:'associated',group:'Begleitbefunde',title:'Masse oder Architekturstörung?',text:'Assoziierte Gewebeveränderungen können den Verdacht verstärken. Auch Asymmetrie sowie Haut- und Mamillenveränderungen mitbeurteilen.'},
   {key:'history',group:'Risikokontext',title:'Alter und Anamnese einbeziehen',text:'Höheres Alter und eine persönliche Brustkrebsanamnese können das Ausgangsrisiko erhöhen. Entscheidend bleibt der Gesamtbefund.'},
 ]
+const REFERENCES=[
+  {
+    tag:L('Leitlinie & Lexikon','Guideline & lexicon','راهنما و واژه‌نامه'),
+    title:'ACR BI-RADS® v2025 Manual – Mammography',
+    citation:'Destounis SV, Friedewald SM, Grimm LJ, Poplack SP, Sung JS. American College of Radiology; 2025.',
+    scope:L('Aktuelle standardisierte Terminologie, Befundstruktur, Kategorien und Managementempfehlungen.','Current standardized terminology, report structure, assessment categories, and management recommendations.','اصطلاحات استاندارد فعلی، ساختار گزارش، دسته‌بندی‌ها و توصیه‌های مدیریتی.'),
+    href:'https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Reporting-and-Data-Systems/BI-RADS',
+  },
+  {
+    tag:L('Übersicht','Review','مرور'),
+    title:'Microcalcification on mammography: approaches to interpretation and biopsy',
+    citation:'Wilkinson L, Thomas V, Sharma N. Br J Radiol. 2017;90:20160594. PMID 27648482.',
+    scope:L('Pragmatischer Überblick zu Interpretation, Zusatzaufnahmen und Biopsiestrategie.','Practical overview of interpretation, additional views, and biopsy strategy.','مرور کاربردی تفسیر، نماهای تکمیلی و راهبرد بیوپسی.'),
+    href:'https://pubmed.ncbi.nlm.nih.gov/27648482/',
+  },
+  {
+    tag:L('Risikostratifikation','Risk stratification','طبقه‌بندی خطر'),
+    title:'The positive predictive value of BI-RADS microcalcification descriptors and final assessment categories',
+    citation:"Bent CK, Bassett LW, D'Orsi CJ, Sayre JW. AJR. 2010;194:1378–1383. PMID 20410428.",
+    scope:L('Positiver Vorhersagewert von Morphologie, Verteilung und BI-RADS-Endkategorie.','Positive predictive value of morphology, distribution, and final BI-RADS category.','ارزش اخباری مثبت مورفولوژی، توزیع و دسته نهایی BI-RADS.'),
+    href:'https://pubmed.ncbi.nlm.nih.gov/20410428/',
+  },
+  {
+    tag:L('Scoring-Modell','Scoring model','مدل امتیازدهی'),
+    title:'Scoring System to Stratify Malignancy Risks for Mammographic Microcalcifications Based on BI-RADS 5th Edition Descriptors',
+    citation:'Youk JH et al. Korean J Radiol. 2019;20:1646–1652. PMID 31854152.',
+    scope:L('Grundlage des vereinfachten Morphologie-mal-Verteilung-Modells dieser Lektion.','Basis for the simplified morphology-by-distribution model used in this lesson.','مبنای مدل ساده‌شده مورفولوژی در توزیع در این درس.'),
+    href:'https://pubmed.ncbi.nlm.nih.gov/31854152/',
+  },
+  {
+    tag:L('Klassifikation','Classification','طبقه‌بندی'),
+    title:'Breast microcalcifications: the UK RCR 5-point breast imaging system or BI-RADS; which is the better predictor of malignancy?',
+    citation:"Metaxa L, Healy NA, O'Keeffe SA. Br J Radiol. 2019;92:20190177. PMID 31365279.",
+    scope:L('Vergleich der Klassifikationssysteme und Einordnung von Morphologie und Ausdehnung.','Comparison of classification systems and assessment of morphology and extent.','مقایسه سامانه‌های طبقه‌بندی و ارزیابی مورفولوژی و وسعت.'),
+    href:'https://pubmed.ncbi.nlm.nih.gov/31365279/',
+  },
+  {
+    tag:L('Systematischer Review','Systematic review','مرور سیستماتیک'),
+    title:'MR Imaging for Diagnosis of Malignancy in Mammographic Microcalcifications',
+    citation:'Bennani-Baiti B, Baltzer PA. Radiology. 2017;283:692–701. PMID 27788035.',
+    scope:L('Diagnostische Leistung der kontrastverstärkten MRT bei mammographischem Mikrokalk.','Diagnostic performance of contrast-enhanced MRI for mammographic microcalcifications.','عملکرد تشخیصی MRI با کنتراست در میکروکلسیفیکاسیون‌های ماموگرافیک.'),
+    href:'https://pubmed.ncbi.nlm.nih.gov/27788035/',
+  },
+  {
+    tag:L('Metaanalyse','Meta-analysis','متاآنالیز'),
+    title:'Can supplementary contrast-enhanced MRI of the breast avoid needle biopsies in suspicious microcalcifications?',
+    citation:'Fueger BJ et al. Breast. 2021;56:53–60. PMID 33618160.',
+    scope:L('Evidenz und Grenzen eines MRT-gestützten Biopsieverzichts bei ausgewählten suspekten Verkalkungen.','Evidence and limitations of MRI-supported biopsy avoidance in selected suspicious calcifications.','شواهد و محدودیت‌های صرف‌نظر از بیوپسی با کمک MRI در کلسیفیکاسیون‌های مشکوک منتخب.'),
+    href:'https://pubmed.ncbi.nlm.nih.gov/33618160/',
+  },
+]
 function Section({id,title,children}){const context=useContext(LessonTemplateContext);if(!context)return null;const{lang,openId,readSections,selectSection,toggleSectionRead}=context,open=openId===id,isRead=readSections.has(id),tx=value=>typeof value==='string'?value:value[lang]||value.de;return <section id={id} className={`${template.section} ${open?template.sectionOpen:''} ${styles.templateSection}`}><button type="button" className={template.sectionHeader} onClick={()=>selectSection(id)} aria-expanded={open} aria-controls={`${id}-panel`}><span className={template.sectionIcon}><SectionIcon id={id}/></span><span><strong>{title}</strong></span><span className={template.toggle} aria-hidden="true">{open?'−':'+'}</span></button><div id={`${id}-panel`} hidden={!open} className={`${template.sectionBody} ${styles.sectionBody} ${styles.templateSectionBody}`}>{children}<button type="button" className={`${template.readButton} ${isRead?template.readButtonDone:''}`} aria-pressed={isRead} onClick={()=>toggleSectionRead(id)}><SectionIcon id="benigne"/>{tx(isRead?TEMPLATE_COPY.completed:TEMPLATE_COPY.complete)}</button></div></section>}
 function MorphologyImage({type,lang='de'}){const image=MORPHOLOGY_IMAGES[type];return <a className={caseStyles.morphologyIllustration} href={image.src} target="_blank" rel="noreferrer" aria-label={pick(image.alt,lang)}><Image src={image.src} alt={pick(image.alt,lang)} width={image.width} height={image.height}/></a>}
 function DistributionImage({type,lang='de'}){const image=DISTRIBUTION_IMAGES[type];return <a className={caseStyles.distributionIllustration} href={image.src} target="_blank" rel="noreferrer" aria-label={pick(image.alt,lang)}><Image src={image.src} alt={pick(image.alt,lang)} width={image.width} height={image.height}/></a>}
@@ -322,6 +373,27 @@ function LessonContent({lang}){const t=value=>translateLesson(value,lang);return
       <li><span className={caseStyles.takeHomeNumber}>06</span><div><h3>{pick(L("Ultraschall & MRT","Ultrasound & MRI","سونوگرافی و MRI"),lang)}</h3><p>{t("Ultraschall hilft bei Korrelatsuche und Biopsieplanung; MRT ergänzt Gewebe- und Ausdehnungsbeurteilung. Eine negative MRT schließt DCIS nicht vollständig aus.")}</p></div></li>
       <li><span className={caseStyles.takeHomeNumber}>07</span><div><h3>{pick(L("Individuelle Entscheidung","Individual decision","تصمیم‌گیری فردی"),lang)}</h3><p>{t("Bei ausgewählten niedrig suspekten Fällen kann ein MRT-gestützter Biopsieverzicht individuell erwogen werden.")}</p></div></li>
     </ol>
+    <aside className={caseStyles.referenceLibrary} aria-labelledby="verkalkungen-literatur">
+      <header className={caseStyles.referenceHeader}>
+        <span>{pick(L('Evidenzbasis','Evidence base','پایه شواهد'),lang)}</span>
+        <div>
+          <h3 id="verkalkungen-literatur">{pick(L('Literatur & Leitlinien','Literature & guidelines','منابع و راهنماها'),lang)}</h3>
+          <p>{pick(L('Ausgewählte Quellen zu Terminologie, Risikostratifikation, Biopsie und ergänzender MRT.','Selected sources on terminology, risk stratification, biopsy, and supplemental MRI.','منابع منتخب درباره اصطلاحات، طبقه‌بندی خطر، بیوپسی و MRI تکمیلی.'),lang)}</p>
+        </div>
+      </header>
+      <ol className={caseStyles.referenceList}>
+        {REFERENCES.map((reference,index)=><li key={reference.href}>
+          <span className={caseStyles.referenceNumber}>{String(index+1).padStart(2,'0')}</span>
+          <div>
+            <small>{pick(reference.tag,lang)}</small>
+            <a href={reference.href} target="_blank" rel="noreferrer">{reference.title}<span aria-hidden="true">↗</span></a>
+            <p>{reference.citation}</p>
+            <em>{pick(reference.scope,lang)}</em>
+          </div>
+        </li>)}
+      </ol>
+      <p className={caseStyles.referenceNote}>{pick(L('Zuletzt fachlich geprüft: September 2026 · Die Literatur ergänzt die lokale klinische Leitlinie und ersetzt keine individuelle Befundentscheidung.','Last clinically reviewed: September 2026 · These references complement local clinical guidelines and do not replace individualized assessment.','آخرین بازبینی علمی: سپتامبر ۲۰۲۶ · این منابع مکمل راهنمای بالینی محلی هستند و جایگزین تصمیم‌گیری فردی نمی‌شوند.'),lang)}</p>
+    </aside>
   </Section>
 </>}
 function MobileLearningPath({lang,openId,readSections,onSelect,sections}){
