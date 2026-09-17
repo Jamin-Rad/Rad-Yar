@@ -12,9 +12,9 @@ import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './page.module.css'
 
 const T = {
-  de: { back:'← Körperregionen', search:'Thema suchen…', readNow:'Artikel öffnen', noResult:'Kein Treffer für', themen:'Themen', available:'Verfügbar', unread:'Noch nicht gelernt', read:'Gelernt', all:'Alle', mcq:'MCQ', flash:'Flashcards', fall:'Fallbeispiele', building:'Geplant', emptyAvailable:'In diesem Fachgebiet ist noch kein Thema freigeschaltet.', emptyUnread:'Alle verfügbaren Lektionen in diesem Fachgebiet sind bereits gelernt.', emptyRead:'Du hast in diesem Fachgebiet noch nichts als gelesen markiert.', emptyAllFach:'Dieses Fachgebiet ist noch im Aufbau – schau bald wieder vorbei.', showAll:'Alle Themen anzeigen', lessonsTitle:'Hauptthemen', lessonsLead:'Thema wählen und Lektionen öffnen', close:'Schließen', chooseModality:'Verfahren auswählen', subtopics:'Unterthemen' },
-  en: { back:'← Body regions', search:'Search topic…', readNow:'Open article', noResult:'No results for', themen:'Topics', available:'Available', unread:'Not learned yet', read:'Learned', all:'All', mcq:'MCQ', flash:'Flashcards', fall:'Cases', building:'Planned', emptyAvailable:'No topics are unlocked in this specialty yet.', emptyUnread:'All available lessons in this specialty have already been learned.', emptyRead:"You haven't marked anything as read in this specialty yet.", emptyAllFach:'This specialty is still being built – check back soon.', showAll:'Show all topics', lessonsTitle:'Main topics', lessonsLead:'Choose a topic and open its lessons', close:'Close', chooseModality:'Choose a modality', subtopics:'Subtopics' },
-  fa: { back:'ناحیه‌های بدن →', search:'جستجوی موضوع…', readNow:'مطالعه کنید', noResult:'نتیجه‌ای برای', themen:'موضوع', available:'موجود', unread:'هنوز یاد نگرفته‌ام', read:'یاد گرفته‌ام', all:'همه', mcq:'MCQ', flash:'فلش‌کارت', fall:'کیس', building:'برنامه‌ریزی‌شده', emptyAvailable:'هنوز موضوعی در این تخصص فعال نشده.', emptyUnread:'همه درس‌های موجود در این تخصص مطالعه شده‌اند.', emptyRead:'هنوز چیزی را در این تخصص خوانده‌شده علامت نزده‌ای.', emptyAllFach:'این تخصص هنوز در حال آماده‌سازی است – بزودی برمی‌گردیم.', showAll:'نمایش همه موضوعات', lessonsTitle:'موضوعات اصلی', lessonsLead:'موضوع را انتخاب کنید و درس‌ها را ببینید', close:'بستن', chooseModality:'انتخاب روش تصویربرداری', subtopics:'زیرعنوان' },
+  de: { back:'← Körperregionen', search:'Thema suchen…', readNow:'Artikel öffnen', noResult:'Kein Treffer für', themen:'Themen', available:'Verfügbar', unread:'Noch nicht gelernt', read:'Gelernt', all:'Alle', mcq:'MCQ', flash:'Flashcards', fall:'Fallbeispiele', building:'Geplant', emptyAvailable:'In diesem Fachgebiet ist noch kein Thema freigeschaltet.', emptyUnread:'Alle verfügbaren Lektionen in diesem Fachgebiet sind bereits gelernt.', emptyRead:'Du hast in diesem Fachgebiet noch nichts als gelesen markiert.', emptyAllFach:'Dieses Fachgebiet ist noch im Aufbau – schau bald wieder vorbei.', showAll:'Alle Themen anzeigen', lessonsTitle:'Hauptthemen', lessonsLead:'Thema wählen und Lektionen öffnen', close:'Schließen', chooseModality:'Verfahren auswählen', chooseCardiacTopic:'Herzthema auswählen', subtopics:'Unterthemen' },
+  en: { back:'← Body regions', search:'Search topic…', readNow:'Open article', noResult:'No results for', themen:'Topics', available:'Available', unread:'Not learned yet', read:'Learned', all:'All', mcq:'MCQ', flash:'Flashcards', fall:'Cases', building:'Planned', emptyAvailable:'No topics are unlocked in this specialty yet.', emptyUnread:'All available lessons in this specialty have already been learned.', emptyRead:"You haven't marked anything as read in this specialty yet.", emptyAllFach:'This specialty is still being built – check back soon.', showAll:'Show all topics', lessonsTitle:'Main topics', lessonsLead:'Choose a topic and open its lessons', close:'Close', chooseModality:'Choose a modality', chooseCardiacTopic:'Choose a cardiac topic', subtopics:'Subtopics' },
+  fa: { back:'ناحیه‌های بدن →', search:'جستجوی موضوع…', readNow:'مطالعه کنید', noResult:'نتیجه‌ای برای', themen:'موضوع', available:'موجود', unread:'هنوز یاد نگرفته‌ام', read:'یاد گرفته‌ام', all:'همه', mcq:'MCQ', flash:'فلش‌کارت', fall:'کیس', building:'برنامه‌ریزی‌شده', emptyAvailable:'هنوز موضوعی در این تخصص فعال نشده.', emptyUnread:'همه درس‌های موجود در این تخصص مطالعه شده‌اند.', emptyRead:'هنوز چیزی را در این تخصص خوانده‌شده علامت نزده‌ای.', emptyAllFach:'این تخصص هنوز در حال آماده‌سازی است – بزودی برمی‌گردیم.', showAll:'نمایش همه موضوعات', lessonsTitle:'موضوعات اصلی', lessonsLead:'موضوع را انتخاب کنید و درس‌ها را ببینید', close:'بستن', chooseModality:'انتخاب روش تصویربرداری', chooseCardiacTopic:'انتخاب موضوع قلب', subtopics:'زیرعنوان' },
 }
 
 // Gruppiert Themen anhand thema.group (Reihenfolge wie in den Daten):
@@ -110,6 +110,15 @@ function MammaModalityIcon({ id, className }) {
   )
 }
 
+function CardiacTopicIcon({ className }) {
+  return (
+    <svg className={className} viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M24 40C10 30 6 20 12 14c4-4 10-3 12 3 2-6 8-7 12-3 6 6 2 16-12 26Z" />
+      <path d="M9 25h6l2-6 4 11 3-8 2 3h7" />
+    </svg>
+  )
+}
+
 // Sub-thema expandable (for Knie etc.)
 function SubThemen({ sub, fachColor, lang }) {
   const [open, setOpen] = useState(false)
@@ -195,8 +204,7 @@ export default function LernenFachPage() {
     if (fach) {
       setSelectedKapitel(null)
       setSelectedThema(null)
-      const hasAvailableTopics = fach.kapitel.some(kapitel => getKapitelThemen(kapitel).some(isAvailable))
-      setFilter(hasAvailableTopics ? 'available' : 'all')
+      setFilter('available')
     }
     try {
       setReadArticles(JSON.parse(localStorage.getItem('radyar_read_articles') || '{}'))
@@ -308,43 +316,62 @@ export default function LernenFachPage() {
                 const active = selectedKapitel === k.id
                 const isFeatured = fach.id === 'msk' && k.id === 'msk-trauma'
                 const isMammaImaging = fach.id === 'mamma' && k.id === 'mamma-bildgebung'
+                const isThoraxCardiac = fach.id === 'thorax' && k.id === 'thorax-kardio'
+                const isSpotlightChapter = isMammaImaging || isThoraxCardiac
+                const spotlightPrompt = isMammaImaging ? t.chooseModality : t.chooseCardiacTopic
                 const count = themen.reduce((sum, th) => sum + 1 + (th.sub?.length || 0), 0)
-                if (isMammaImaging) return (
-                  <article key={k.id} className={`${styles.mainTopicCard} ${styles.mammaImagingCard}`}
+                if (isSpotlightChapter) return (
+                  <article key={k.id} className={`${styles.mainTopicCard} ${styles.spotlightChapterCard} ${isMammaImaging ? styles.mammaImagingCard : ''}`}
                     style={{ '--topic-color': fach.color }}>
                     <button className={styles.mainTopicCardButton} onClick={() => {
                       setSelectedThema(null)
                       setSelectedKapitel(k.id)
-                    }} aria-label={`${getKapitelTitle(k, lang)} – ${t.chooseModality}`}>
+                    }} aria-label={`${getKapitelTitle(k, lang)} – ${spotlightPrompt}`}>
                       <span className={`${styles.mainTopicIcon} ${styles.imagingMainIcon}`}>
                         <ChapterIcon fachId={fach.id} kapitel={k} className={styles.chapterIconSvg} />
                       </span>
                       <span className={styles.imagingHeading}>
                         <span className={styles.mainTopicTitle}>{withoutLeadingNumber(getKapitelTitle(k, lang))}</span>
-                        <span className={styles.mainTopicCount}>{t.chooseModality}</span>
+                        <span className={styles.mainTopicCount}>{spotlightPrompt}</span>
                       </span>
                       <svg className={styles.imagingHeaderArrow} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                         <path d="m9 18 6-6-6-6" />
                       </svg>
                     </button>
                     <div className={styles.modalityChips}>
-                      {themen.map(thema => (
-                        <button key={thema.id} className={styles.modalityChip} onClick={() => {
-                          setSelectedKapitel(k.id)
-                          setSelectedThema(thema.id)
-                        }} aria-label={`${getThemaTitle(thema, lang)} – ${thema.sub?.length || 0} ${t.subtopics}`}>
+                      {themen.map(thema => {
+                        const chipContent = <>
                           <span className={styles.modalityIcon}>
-                            <MammaModalityIcon id={thema.id} className={styles.modalityIconSvg} />
+                            {isMammaImaging
+                              ? <MammaModalityIcon id={thema.id} className={styles.modalityIconSvg} />
+                              : <CardiacTopicIcon className={styles.modalityIconSvg} />}
                           </span>
                           <span className={styles.modalityText}>
                             <span className={styles.modalityTitle}>{getThemaTitle(thema, lang)}</span>
-                            <span className={styles.modalityCount}>{thema.sub?.length || 0} {t.subtopics}</span>
+                            <span className={styles.modalityCount}>
+                              {isMammaImaging ? `${thema.sub?.length || 0} ${t.subtopics}` : (thema.link ? t.available : t.building)}
+                            </span>
                           </span>
                           <svg className={styles.modalityArrow} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                             <path d="m9 18 6-6-6-6" />
                           </svg>
-                        </button>
-                      ))}
+                        </>
+
+                        if (isThoraxCardiac && thema.link) return (
+                          <Link key={thema.id} href={withPageLang(thema.link)} className={styles.modalityChip}>
+                            {chipContent}
+                          </Link>
+                        )
+
+                        return (
+                          <button key={thema.id} className={styles.modalityChip} onClick={() => {
+                            setSelectedKapitel(k.id)
+                            setSelectedThema(isMammaImaging ? thema.id : null)
+                          }} aria-label={`${getThemaTitle(thema, lang)} – ${isMammaImaging ? `${thema.sub?.length || 0} ${t.subtopics}` : (thema.link ? t.available : t.building)}`}>
+                            {chipContent}
+                          </button>
+                        )
+                      })}
                     </div>
                   </article>
                 )
