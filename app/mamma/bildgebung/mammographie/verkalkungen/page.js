@@ -14,6 +14,8 @@ const TEMPLATE_COPY={
   close:L('Schließen','Close','بستن'),
   progress:L('gelesen','read','خوانده‌شده'),
   continue:L('Lektion fortsetzen','Continue lesson','ادامه درس'),
+  completeLesson:L('Ganze Lektion als gelesen markieren','Mark full lesson as read','علامت‌گذاری کل درس به‌عنوان خوانده‌شده'),
+  lessonCompleted:L('Ganze Lektion gelesen','Full lesson marked as read','کل درس خوانده شد'),
   complete:L('Abschnitt als gelesen markieren','Mark section as read','علامت‌گذاری بخش به‌عنوان خوانده‌شده'),
   completed:L('Als gelesen markiert','Marked as read','به‌عنوان خوانده‌شده علامت‌گذاری شد'),
   open:L('Abschnitt öffnen','Open section','باز کردن بخش'),
@@ -380,6 +382,8 @@ export default function Page(){
     else next.add(id)
     return next
   })
+  const lessonComplete=readSections.size===lessonSections.length
+  const toggleLessonComplete=()=>setReadSections(lessonComplete?new Set():new Set(lessonSections.map(section=>section.id)))
 
   const context={lang,openId,readSections,selectSection,toggleSectionRead}
   const facts=[
@@ -404,12 +408,14 @@ export default function Page(){
           </div>
         </div>
         <div className={template.heroFacts}>{facts.map(([value,description,icon])=><article key={tx(value)}><span className={template.factIcon}><SectionIcon id={icon}/></span><strong>{tx(value)}</strong><p>{tx(description)}</p></article>)}</div>
-        <div className={`${template.heroVisual} ${styles.templateHeroVisual}`} aria-hidden="true"/>
       </div>
       <div className={template.progressBar}>
         <div className={template.progressTrack}><i style={{width:`${(readSections.size/lessonSections.length)*100}%`}}/></div>
         <span>{readSections.size} / {lessonSections.length} {tx(TEMPLATE_COPY.progress)}</span>
-        <button type="button" onClick={advance} disabled={activeIndex===lessonSections.length-1}>{tx(TEMPLATE_COPY.continue)}<span aria-hidden="true">→</span></button>
+        <div className={template.progressActions}>
+          <button type="button" className={`${template.lessonCompleteButton} ${lessonComplete?template.lessonCompleteButtonDone:''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><SectionIcon id="benigne"/>{tx(lessonComplete?TEMPLATE_COPY.lessonCompleted:TEMPLATE_COPY.completeLesson)}</button>
+          <button type="button" className={template.continueButton} onClick={advance} disabled={activeIndex===lessonSections.length-1}>{tx(TEMPLATE_COPY.continue)}<span aria-hidden="true">→</span></button>
+        </div>
       </div>
     </header>
 

@@ -37,6 +37,7 @@ export const COMPLETED_LESSON_PATHS = new Set([
   '/thorax/fleischner-kriterien',
   '/thorax/kardio/kardio-mrt-basics',
   '/thorax/kardio/kardiomyopathien',
+  '/mamma/bildgebung/mammographie/verkalkungen',
 ])
 
 const LESSON_ROOTS = [

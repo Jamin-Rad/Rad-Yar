@@ -66,6 +66,8 @@ const COPY = {
   close: L('Schließen', 'Close', 'بستن'),
   progress: L('gelesen', 'read', 'خوانده‌شده'),
   continue: L('Lektion fortsetzen', 'Continue lesson', 'ادامه درس'),
+  completeLesson: L('Ganze Lektion als gelesen markieren', 'Mark full lesson as read', 'علامت‌گذاری کل درس به‌عنوان خوانده‌شده'),
+  lessonCompleted: L('Ganze Lektion gelesen', 'Full lesson marked as read', 'کل درس خوانده شد'),
   complete: L('Abschnitt als gelesen markieren', 'Mark section as read', 'علامت‌گذاری بخش به‌عنوان خوانده‌شده'),
   completed: L('Als gelesen markiert', 'Marked as read', 'به‌عنوان خوانده‌شده علامت‌گذاری شد'),
   open: L('Abschnitt öffnen', 'Open section', 'باز کردن بخش'),
@@ -293,6 +295,9 @@ export default function TestLearningPage() {
     })
   }
 
+  const lessonComplete = readSections.size === SECTION_COPY.length
+  const toggleLessonComplete = () => setReadSections(lessonComplete ? new Set() : new Set(SECTION_COPY.map(section => section.id)))
+
   return <main className={styles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
     <div className={styles.ambient} aria-hidden="true"><span /><span /><span /></div>
     <header className={styles.header}>
@@ -309,12 +314,14 @@ export default function TestLearningPage() {
           </div>
         </div>
         <div className={styles.heroFacts}>{COPY.facts.map(([value, label], index) => <article key={value}><span className={styles.factIcon}><Icon name={['brain', 'vessel', 'chart'][index]} /></span><strong>{value}</strong><p>{pick(label)}</p></article>)}</div>
-        <div className={styles.heroVisual} aria-hidden="true" />
       </div>
       <div className={styles.progressBar}>
         <div className={styles.progressTrack}><i style={{ width: `${(readSections.size / SECTION_COPY.length) * 100}%` }} /></div>
         <span>{readSections.size} / {SECTION_COPY.length} {pick(COPY.progress)}</span>
-        <button type="button" onClick={advance} disabled={activeIndex === SECTION_COPY.length - 1}>{pick(COPY.continue)}<span aria-hidden="true">→</span></button>
+        <div className={styles.progressActions}>
+          <button type="button" className={`${styles.lessonCompleteButton} ${lessonComplete ? styles.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><Icon name="check" />{pick(lessonComplete ? COPY.lessonCompleted : COPY.completeLesson)}</button>
+          <button type="button" className={styles.continueButton} onClick={advance} disabled={activeIndex === SECTION_COPY.length - 1}>{pick(COPY.continue)}<span aria-hidden="true">→</span></button>
+        </div>
       </div>
     </header>
 
