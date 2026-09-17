@@ -12,6 +12,8 @@ The title and opening sentence must say what the learner will be able to do. A l
 
 The first viewport contains three things only: the topic, the high-value mental model, and the next action. A persistent learning path shows where the learner is and what remains.
 
+Navigation position and learning progress are separate states. Opening or jumping to a later chapter never marks earlier chapters as read; the progress bar advances only after an explicit “mark section as read” action.
+
 ## 3. One open chapter at a time
 
 Long lessons use focused accordion chapters. Opening a chapter closes the previous one. The sidebar, URL hash, and chapter state stay synchronised.

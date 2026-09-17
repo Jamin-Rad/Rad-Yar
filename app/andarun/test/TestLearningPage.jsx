@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -55,11 +56,6 @@ const SECTION_COPY = [
 const COPY = {
   breadcrumb: L('Akuter ischämischer Schlaganfall', 'Acute ischaemic stroke', 'سکته ایسکمیک حاد'),
   title: L('Akuter ischämischer Schlaganfall', 'Acute ischaemic stroke', 'سکته ایسکمیک حاد'),
-  subtitle: L(
-    'Vom ersten Blick bis zur Therapieentscheidung – ein strukturierter CT-Workflow.',
-    'From first look to treatment decision — a structured CT workflow.',
-    'از نخستین نگاه تا تصمیم درمانی — یک روند ساختاریافته CT.'
-  ),
   mcq: L('MCQ starten', 'Start MCQs', 'شروع MCQ'),
   flashcards: L('Flashcards', 'Flashcards', 'فلش‌کارت‌ها'),
   facts: [
@@ -68,10 +64,10 @@ const COPY = {
     ['CTP', L('Rettbares Gewebe erkennen', 'Identify salvageable tissue', 'شناسایی بافت قابل نجات')],
   ],
   path: L('Lernpfad', 'Learning path', 'مسیر یادگیری'),
-  progress: L('Abschnitten', 'sections', 'بخش'),
+  progress: L('gelesen', 'read', 'خوانده‌شده'),
   continue: L('Lektion fortsetzen', 'Continue lesson', 'ادامه درس'),
-  complete: L('Als gelesen markieren', 'Mark as read', 'علامت‌گذاری به‌عنوان خوانده‌شده'),
-  completed: L('Lektion abgeschlossen', 'Lesson completed', 'درس تکمیل شد'),
+  complete: L('Abschnitt als gelesen markieren', 'Mark section as read', 'علامت‌گذاری بخش به‌عنوان خوانده‌شده'),
+  completed: L('Als gelesen markiert', 'Marked as read', 'به‌عنوان خوانده‌شده علامت‌گذاری شد'),
   open: L('Abschnitt öffnen', 'Open section', 'باز کردن بخش'),
   intro: L(
     'In wenigen, strukturierten Schritten von der ersten Bildbeurteilung zur richtigen Therapieentscheidung – schnell, sicher und teamorientiert.',
@@ -150,7 +146,6 @@ const LESSON_CONTENT = {
     lead: L('Trainiere die Reihenfolge, bevor du dich an Detailbefunden festhältst.', 'Train the sequence before becoming absorbed in detail.', 'پیش از درگیرشدن با جزئیات، ترتیب کار را تمرین کنید.'),
   },
   merksaetze: {
-    lead: L('Sieben Kapitel, vier Regeln für den Dienst.', 'Seven chapters, four rules for on-call practice.', 'هفت فصل، چهار قانون برای کشیک.'),
     points: [
       L('NCCT: Blutung und frühe Parenchymzeichen.', 'NCCT: haemorrhage and early parenchymal signs.', 'NCCT: خونریزی و علائم اولیه پارانشیم.'),
       L('CTA: genaue Verschlusshöhe und Gefäßweg.', 'CTA: exact occlusion level and vascular route.', 'CTA: سطح دقیق انسداد و مسیر عروقی.'),
@@ -173,7 +168,7 @@ function Icon({ name, className = '' }) {
   return <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]}</svg>
 }
 
-function Section({ section, lang, open, onToggle, children }) {
+function Section({ section, lang, open, isRead, onToggle, onReadToggle, children }) {
   const pick = value => typeof value === 'string' ? value : value[lang] || value.de
   return <section id={section.id} className={`${styles.section} ${open ? styles.sectionOpen : ''}`}>
     <button type="button" className={styles.sectionHeader} aria-expanded={open} aria-controls={`${section.id}-panel`} onClick={() => onToggle(section.id)}>
@@ -181,7 +176,10 @@ function Section({ section, lang, open, onToggle, children }) {
       <span><strong>{pick(section.title)}</strong></span>
       <span className={styles.toggle} aria-hidden="true">{open ? '−' : '+'}</span>
     </button>
-    <div id={`${section.id}-panel`} hidden={!open} className={styles.sectionBody}>{children}</div>
+    <div id={`${section.id}-panel`} hidden={!open} className={styles.sectionBody}>
+      {children}
+      <button type="button" className={`${styles.readButton} ${isRead ? styles.readButtonDone : ''}`} aria-pressed={isRead} onClick={() => onReadToggle(section.id)}><Icon name="check" />{pick(isRead ? COPY.completed : COPY.complete)}</button>
+    </div>
   </section>
 }
 
@@ -222,7 +220,7 @@ function ContentSection({ id, lang }) {
   const content = LESSON_CONTENT[id]
   if (id === 'fall') return <><p className={styles.lead}>{pick(content.lead)}</p><MiniCheck lang={lang} /></>
   return <>
-    <p className={styles.lead}>{pick(content.lead)}</p>
+    {content.lead && <p className={styles.lead}>{pick(content.lead)}</p>}
     {content.cards && <div className={styles.learningRows}>{content.cards.map(([number, title, text]) => <article key={number}><span>{number}</span><div><h3>{pick(title)}</h3><p>{pick(text)}</p></div></article>)}</div>}
     {content.metrics && <div className={styles.metrics}>{content.metrics.map(([name, text]) => <article key={name}><strong>{name}</strong><span>{pick(text)}</span></article>)}</div>}
     {content.report && <div className={styles.report}><span>{pick(L('So klingt ein klarer Akutbefund', 'A clear acute report', 'نمونه یک گزارش حاد روشن'))}</span><ol>{content.report.map(line => <li key={pick(line)}>{pick(line)}</li>)}</ol></div>}
@@ -235,7 +233,7 @@ export default function TestLearningPage() {
   const { lang } = useLanguage()
   const pick = value => typeof value === 'string' ? value : value[lang] || value.de
   const [openId, setOpenId] = useState('start')
-  const [isRead, setIsRead] = useState(false)
+  const [readSections, setReadSections] = useState(() => new Set())
   const activeIndex = useMemo(() => Math.max(0, SECTION_COPY.findIndex(section => section.id === openId)), [openId])
 
   useEffect(() => {
@@ -255,25 +253,38 @@ export default function TestLearningPage() {
     selectSection(next.id)
   }
 
+  const toggleSectionRead = id => {
+    setReadSections(previous => {
+      const next = new Set(previous)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      return next
+    })
+  }
+
   return <main className={styles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
     <div className={styles.ambient} aria-hidden="true"><span /><span /><span /></div>
     <header className={styles.header}>
-      <nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">RadYar</Link><span>/</span><Link href="/andarun">Andarun</Link><span>/</span><strong>Test</strong></nav>
+      <div className={styles.topline}>
+        <nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">RadYar</Link><span>/</span><Link href="/andarun">Andarun</Link><span>/</span><strong>Test</strong></nav>
+        <span className={styles.author}>Dr. Zia</span>
+      </div>
       <div className={styles.hero}>
         <div className={styles.heroCopy}>
           <h1>{pick(COPY.title)}</h1>
-          <p>{pick(COPY.subtitle)}</p>
           <div className={styles.actions}>
             <Link className={styles.primaryAction} href="/ueben/quiz?fach=gehirn&n=10&themen=ischaemischer-schlaganfall">{pick(COPY.mcq)}<span aria-hidden="true">→</span></Link>
             <Link className={styles.secondaryAction} href="/flashcards/ischaemischer-schlaganfall"><Icon name="case" />{pick(COPY.flashcards)}</Link>
           </div>
         </div>
         <div className={styles.heroFacts}>{COPY.facts.map(([value, label], index) => <article key={value}><span className={styles.factIcon}><Icon name={['brain', 'vessel', 'chart'][index]} /></span><strong>{value}</strong><p>{pick(label)}</p></article>)}</div>
-        <div className={styles.brainLines} aria-hidden="true"><Icon name="brain" /><span /><span /></div>
+        <div className={styles.heroVisual} aria-hidden="true">
+          <Image src="/educational/hero-glass-brain.png" alt="" width={676} height={576} priority />
+        </div>
       </div>
       <div className={styles.progressBar}>
-        <div className={styles.progressTrack}><i style={{ width: `${((activeIndex + 1) / SECTION_COPY.length) * 100}%` }} /></div>
-        <span>{activeIndex + 1} / {SECTION_COPY.length} {pick(COPY.progress)}</span>
+        <div className={styles.progressTrack}><i style={{ width: `${(readSections.size / SECTION_COPY.length) * 100}%` }} /></div>
+        <span>{readSections.size} / {SECTION_COPY.length} {pick(COPY.progress)}</span>
         <button type="button" onClick={advance} disabled={activeIndex === SECTION_COPY.length - 1}>{pick(COPY.continue)}<span aria-hidden="true">→</span></button>
       </div>
     </header>
@@ -285,10 +296,9 @@ export default function TestLearningPage() {
       </aside>
 
       <article className={styles.lesson}>
-        {SECTION_COPY.map(section => <Section key={section.id} section={section} lang={lang} open={openId === section.id} onToggle={selectSection}>
+        {SECTION_COPY.map(section => <Section key={section.id} section={section} lang={lang} open={openId === section.id} isRead={readSections.has(section.id)} onToggle={selectSection} onReadToggle={toggleSectionRead}>
           {section.id === 'start' ? <StartSection lang={lang} /> : <ContentSection id={section.id} lang={lang} />}
         </Section>)}
-        <button type="button" className={`${styles.readButton} ${isRead ? styles.readButtonDone : ''}`} aria-pressed={isRead} onClick={() => setIsRead(value => !value)}><Icon name="check" />{pick(isRead ? COPY.completed : COPY.complete)}</button>
       </article>
     </div>
   </main>
