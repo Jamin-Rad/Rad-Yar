@@ -248,7 +248,9 @@ export default function LessonEnhancer() {
       const candidate = extractExplorer(document.getElementById(item.id))
       return candidate ? [{ id: item.id, title: found[index].title, ...candidate }] : []
     })
-    const bestExplorer = explorerCandidates.reduce((best, candidate) => !best || candidate.score > best.score ? candidate : best, null)
+    const bestExplorer = main.dataset.disableLessonExplorer === 'true'
+      ? null
+      : explorerCandidates.reduce((best, candidate) => !best || candidate.score > best.score ? candidate : best, null)
 
     setSections(current => {
       const before = current.map(item => `${item.id}:${item.title}:${item.iconHtml}`).join('|')

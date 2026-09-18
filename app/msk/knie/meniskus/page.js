@@ -3611,9 +3611,339 @@ html[data-theme='dark'] .table td::before {
     background: rgba(249, 115, 22, 0.16) !important;
   }
 
-  html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .table tr:nth-child(even) td {
+html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .table tr:nth-child(even) td {
     background: rgba(30, 41, 59, 0.5) !important;
   }
+}
+
+/* Final readability pass: stronger light surfaces, grouped tables and calm teaching cards. */
+.page {
+  background:
+    radial-gradient(circle at 8% 0%, rgba(249, 115, 22, 0.13), transparent 28rem),
+    radial-gradient(circle at 92% 8%, rgba(14, 165, 233, 0.10), transparent 30rem),
+    linear-gradient(180deg, #edf3f8 0%, #e7eef6 100%);
+}
+
+.tableWrap {
+  border: 1px solid #cbd5e1;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.07);
+}
+
+.table th {
+  background: #0f2f4a;
+  color: #ffffff;
+  border-inline-end: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 0;
+  font-size: 12px;
+  letter-spacing: 0.045em;
+  line-height: 1.35;
+  white-space: normal;
+}
+
+.table td {
+  color: #24364b;
+  border-inline-end: 1px solid #e2e8f0;
+  border-bottom: 1px solid #dbe4ee;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.table th:last-child,
+.table td:last-child { border-inline-end: 0; }
+.table td:first-child { color: #0f2f4a; font-weight: 900; }
+.table tr:nth-child(even) td { background: #f1f5f9; }
+.table tbody tr:hover td { background: #fff7ed; }
+
+.zoneCard,
+.discoidStatCard,
+.discoidStatCard:nth-child(2),
+.discoidStatCard:nth-child(3) {
+  min-height: 0;
+  color: #172033;
+  background: #ffffff;
+  border: 1px solid #d6e0eb;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+.zoneCard { border-top-width: 6px; }
+.zone1 { border-top-color: #b91c1c; background: #fff7f7; }
+.zone2 { border-top-color: #e11d48; background: #fff7fa; }
+.zone3 { border-top-color: #94a3b8; background: #f8fafc; }
+.zoneCard span,
+.zoneCard small,
+.discoidStatCard p { opacity: 1; color: #536174; }
+.zoneCard p,
+.discoidStatCard span { color: #172033; }
+.zone1 h3 { color: #991b1b; }
+.zone2 h3 { color: #be123c; }
+.zone3 h3 { color: #475569; }
+.discoidStatCard strong { color: #c2410c; }
+
+.tearTypesFigure {
+  margin: 18px 0 22px;
+  padding: 10px;
+  border: 1px solid #d6e0eb;
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
+}
+
+.tearTypesFigure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
+
+.caseCardLink { display: block; }
+.caseViewer {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 340px;
+  overflow: hidden;
+  background: #08111f;
+  touch-action: pan-y;
+  cursor: ns-resize;
+}
+
+.caseViewer img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+}
+
+.caseViewerTop,
+.caseViewerHint {
+  position: absolute;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(2, 6, 23, 0.78);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 850;
+  backdrop-filter: blur(8px);
+}
+
+.caseViewerTop { top: 12px; right: 12px; }
+.caseViewerHint { left: 12px; bottom: 15px; }
+[dir='rtl'] .caseViewerTop { right: auto; left: 12px; }
+[dir='rtl'] .caseViewerHint { left: auto; right: 12px; }
+
+.caseSlider {
+  position: absolute;
+  z-index: 3;
+  left: 14px;
+  right: 14px;
+  bottom: 6px;
+  width: calc(100% - 28px);
+  accent-color: #f97316;
+  cursor: ew-resize;
+}
+
+.caseBody { padding: 20px; }
+.caseFinding {
+  margin: 13px 0 10px;
+  padding: 13px 14px;
+  border-inline-start: 4px solid #f97316;
+  border-radius: 0 12px 12px 0;
+  background: #fff7ed;
+  color: #29384b;
+  line-height: 1.65;
+}
+[dir='rtl'] .caseFinding { border-radius: 12px 0 0 12px; }
+.caseFinding strong { display: block; margin-bottom: 4px; color: #9a3412; }
+.caseExternalLink {
+  display: inline-flex;
+  margin-top: 4px;
+  color: #c2410c;
+  font-size: 13px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.takeHomeSection {
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+}
+.takeHomeSection .sectionHead { text-align: start; }
+.takeHomeSection .sectionHead h2 {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #0f2f4a;
+  box-shadow: none;
+}
+.takeHomeSection .sectionHead h2::before,
+.takeHomeSection .sectionHead h2::after { content: none; }
+.takeHomeBox {
+  border-radius: 22px;
+  padding: 24px;
+  background: #0f2f4a;
+  color: #ffffff;
+  border: 0;
+  box-shadow: 0 18px 38px rgba(15, 47, 74, 0.20);
+}
+.takeHomeBox::before { content: none; }
+.takeHomeIntro { color: #d9e5ef; }
+.takeHomeList { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.takeHomeItem {
+  grid-template-columns: 48px 1fr;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: none;
+}
+.takeHomeItem:last-child { grid-column: 1 / -1; }
+.takeHomeNumber {
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  background: #f97316;
+  color: #ffffff;
+  border: 0;
+}
+.takeHomeItem h3 { color: #ffffff; font-family: inherit; font-size: 16px; }
+.takeHomeItem p { color: #d9e5ef; font-weight: 650; }
+
+.sourcesDetails {
+  margin: 22px 0 10px;
+  overflow: hidden;
+  border: 1px solid #cbd5e1;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+}
+.sourcesDetails summary {
+  cursor: pointer;
+  padding: 16px 18px;
+  color: #0f2f4a;
+  font-weight: 950;
+}
+.sourcesList {
+  margin: 0;
+  padding: 0 22px 20px 42px;
+  color: #536174;
+}
+.sourcesList li { margin: 9px 0; line-height: 1.55; }
+.sourcesList a { color: #c2410c; font-weight: 800; }
+
+html[data-theme='dark'] .zoneCard,
+html[data-theme='dark'] .discoidStatCard,
+html[data-theme='dark'] .discoidStatCard:nth-child(2),
+html[data-theme='dark'] .discoidStatCard:nth-child(3),
+html[data-theme='dark'] .tearTypesFigure,
+html[data-theme='dark'] .sourcesDetails {
+  background: rgba(15, 23, 42, 0.94) !important;
+  border-color: rgba(148, 163, 184, 0.24) !important;
+  color: #e5edf8 !important;
+}
+html[data-theme='dark'] .zoneCard h3,
+html[data-theme='dark'] .zoneCard p,
+html[data-theme='dark'] .discoidStatCard span,
+html[data-theme='dark'] .sourcesDetails summary { color: #f8fafc !important; }
+html[data-theme='dark'] .zoneCard span,
+html[data-theme='dark'] .zoneCard small,
+html[data-theme='dark'] .discoidStatCard p { color: #b8c4d8 !important; }
+html[data-theme='dark'] .caseFinding { background: rgba(249, 115, 22, 0.12); color: #ffedd5; }
+
+/* Persian layout: reserve the full right rail and keep Persian copy comfortably readable. */
+.page[lang='fa'] {
+  font-family: var(--font-persian, 'Vazirmatn', Tahoma, sans-serif);
+  font-size: 16px;
+}
+
+.page[lang='fa'] .sideTitle {
+  font-size: 13px;
+}
+
+.page[lang='fa'] .sideItem {
+  align-items: flex-start;
+  padding: 13px 14px;
+  font-size: 15px;
+}
+
+.page[lang='fa'] .sideIcon {
+  flex: 0 0 28px;
+  margin-top: 1px;
+}
+
+.page[lang='fa'] .sideItem > span:last-child {
+  min-width: 0;
+  flex: 1;
+  overflow-wrap: anywhere;
+  text-align: right;
+}
+
+.page[lang='fa'] .sectionLead,
+.page[lang='fa'] .subSectionLead,
+.page[lang='fa'] .card p,
+.page[lang='fa'] .cardAccent p,
+.page[lang='fa'] .normalCard p,
+.page[lang='fa'] .criteriaCard p,
+.page[lang='fa'] .protocolCard p,
+.page[lang='fa'] .plainList p,
+.page[lang='fa'] .calloutBody,
+.page[lang='fa'] .bulletItem p,
+.page[lang='fa'] .caseFinding,
+.page[lang='fa'] .takeHomeItem p,
+.page[lang='fa'] .table td {
+  font-size: 16px;
+}
+
+@media (min-width: 901px) {
+  .page[lang='fa'] .layout {
+    grid-template-columns: minmax(0, 1fr) 300px;
+    grid-template-areas: 'content navigation';
+    gap: 28px;
+  }
+
+  .page[lang='fa'] .main {
+    grid-area: content;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .page[lang='fa'] .sidebar {
+    grid-area: navigation;
+    order: initial;
+    width: 300px;
+    min-width: 300px;
+  }
+}
+
+@media (max-width: 900px) {
+  .page[lang='fa'][data-meniskus-layout='desktop'] .layout {
+    grid-template-columns: minmax(0, 1fr) 300px !important;
+    grid-template-areas: 'content navigation' !important;
+    gap: 28px !important;
+  }
+
+  .page[lang='fa'][data-meniskus-layout='desktop'] .main {
+    grid-area: content !important;
+  }
+
+  .page[lang='fa'][data-meniskus-layout='desktop'] .sidebar {
+    grid-area: navigation !important;
+    width: 300px !important;
+    min-width: 300px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .caseViewer { height: 270px; }
+  .takeHomeList { grid-template-columns: 1fr; }
+  .takeHomeItem:last-child { grid-column: auto; }
+  .tearTypesFigure { padding: 6px; border-radius: 16px; overflow-x: auto; }
+  .tearTypesFigure img { min-width: 880px; }
 }
 
 `
@@ -3872,6 +4202,54 @@ html[data-theme='dark'] .page .sectionReadButtonDone { border-color: #45d2ce !im
 @media (prefers-reduced-motion: reduce) {
   .page * { scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+/* Persian readability and a guaranteed right-hand navigation rail. */
+.page[lang='fa'] { font-size: 16px; }
+.page[lang='fa'] .sideTitle { font-size: 18px !important; }
+.page[lang='fa'] .sideItem {
+  align-items: flex-start;
+  padding: 10px 11px !important;
+  font-size: 15px !important;
+  line-height: 1.75 !important;
+}
+.page[lang='fa'] .sideItem > span:last-child {
+  min-width: 0;
+  flex: 1;
+  overflow-wrap: anywhere;
+  text-align: right;
+}
+.page[lang='fa'] .sectionLead,
+.page[lang='fa'] .subSectionLead,
+.page[lang='fa'] .card p,
+.page[lang='fa'] .normalCard p,
+.page[lang='fa'] .protocolCard p,
+.page[lang='fa'] .criteriaCard p,
+.page[lang='fa'] .discoidStatCard p,
+.page[lang='fa'] .calloutBody,
+.page[lang='fa'] .caseFinding,
+.page[lang='fa'] .takeHomeItem p,
+.page[lang='fa'] .table td {
+  font-size: 16px !important;
+}
+
+@media (min-width: 901px) {
+  .page[lang='fa'] .layout {
+    grid-template-columns: minmax(0, 1fr) 300px !important;
+    grid-template-areas: 'content navigation';
+    gap: 24px !important;
+  }
+  .page[lang='fa'] .main {
+    grid-area: content;
+    width: 100%;
+    min-width: 0;
+  }
+  .page[lang='fa'] .sidebar {
+    grid-area: navigation;
+    order: initial !important;
+    width: 300px;
+    min-width: 300px;
+  }
+}
 `
 
 const CONTENT = {
@@ -3978,14 +4356,13 @@ const CONTENT = {
         ['III', 'Signal erreicht Gelenkoberfläche', 'Riss vorhanden', '✅ Echter Meniskusriss'],
       ],
       extendedTitle: 'Erweiterte Lotysch-Tabelle anzeigen',
-      tableHeaders: ['Grad', 'Morphologie', 'Oberflächenkontakt', 'Bedeutung'],
+      tableHeaders: ['Grad', 'Morphologie', 'Oberflächenkontakt', 'Klinische Bedeutung'],
       tableRows: [
         ['1', 'punktförmige oder kleine fokale Signalsteigerung', 'kein Kontakt', 'frühe mukoide Degeneration, meist asymptomatisch'],
         ['2a', 'lineare Signalsteigerung', 'kein Kontakt', 'fortgeschrittene Degeneration'],
         ['2b', 'lineare Signalsteigerung', 'Kontakt auf einem einzelnen Bild', 'inkonklusiv für echten Riss'],
         ['2c', 'keilförmige oder globuläre Signalsteigerung', 'kein eindeutiger Kontakt', 'hohes Risiko für okkulten Riss'],
         ['3', 'Pathologische Signalsteigerung', 'Kontakt auf mindestens zwei aufeinanderfolgenden Schichten', 'radiologisch gesicherter Meniskusriss'],
-        ['4', 'komplexe Rissmorphologie mit Deformierung oder Fragmentierung', 'mehrfacher Oberflächenkontakt', 'komplexer Meniskusriss'],
       ],
       key: 'Nur Grad III ist ein echter Riss. Meniskusläsion Grad 3 ist der entscheidende Schwellenwert für die Rissdiagnose: Signalsteigerung innerhalb des Meniskus mit sicherem Oberflächenkontakt auf mindestens zwei Schichten.',
     },
@@ -4016,25 +4393,35 @@ const CONTENT = {
     },
     cases: {
       title: 'Fallbeispiele',
-      lead: '',
+      lead: 'Mit Mausrad oder Slider direkt durch die gezeigte MRT-Sequenz blättern.',
       items: [
         {
-          title: 'Keilförmig/globuläres Signal ohne sicheren Oberflächenkontakt',
-          label: 'Grad 2c',
-          tags: ['Discoider Meniskus'],
-          meta: 'PD-Wichtung · sagittal · mukoide Degeneration · hohes Risiko für okkulten Riss',
-          img: '/meniskus/mri-sagittal.png',
+          title: 'Discoider Außenmeniskus mit mukoider Degeneration',
+          label: 'Discoider Meniskus',
+          tags: ['MRT'],
+          meta: 'PD fat sat · sagittal · 18 Schichten',
+          report: 'Auf den sagittalen Sequenzen persistiert der breite Außenmeniskuskorpus über mehr als drei aufeinanderfolgende Schichten. Koronal misst der Meniskuskorpus über 20 mm. Zusätzlich zeigt sich eine horizontale intrameniskale Signalsteigerung ohne sicheren Oberflächenkontakt, vereinbar mit mukoider Degeneration. Geringer Gelenkerguss.',
+          sequence: 'Sagittal · PD fat sat',
+          caseId: 'case-75168',
+          frameCount: 18,
+          frameExt: 'jpeg',
+          initialFrame: 8,
           url: 'https://radiopaedia.org/cases/75168/studies/86248#t=im&v1i=52196174&v1z=1&v2i=52196277&v2z=1&v3i=52196234&v3z=1&v4i=52196213&v4z=1',
-          credit: 'Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060',
+          credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168',
         },
         {
-          title: 'Lineares Signal mit Oberflächenkontakt auf nur einer Schicht',
-          label: 'Grad 2b',
-          tags: ['Discoider Meniskus'],
-          meta: 'PD-Wichtung · koronal · inkonklusiv · kein sicherer Grad-3-Riss',
-          img: '/meniskus/mri-coronal.png',
+          title: 'Discoider Außenmeniskus als Nebenbefund',
+          label: 'Discoider Meniskus',
+          tags: ['MRT'],
+          meta: 'PD · sagittal · 8 Schichten',
+          report: 'Breiter, scheibenförmiger Außenmeniskus mit persistierender Verbindung von Vorder- und Hinterhorn über mehrere sagittale Schichten. Zusätzlich horizontale T2-Signalsteigerung im Hinterhorn des Innenmeniskus ohne Kontakt zur Gelenkfläche, entsprechend Grad-II-Degeneration; kein sicherer Meniskusriss.',
+          sequence: 'Sagittal · PD',
+          caseId: 'case-14060',
+          frameCount: 8,
+          frameExt: 'jpg',
+          initialFrame: 3,
           url: 'https://radiopaedia.org/cases/14060/studies/13900#t=im&v1i=1118538&v1z=1&v2i=1118592&v2z=1',
-          credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168',
+          credit: 'Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060',
         },
       ],
       key: 'Fallbeispiele sind besonders hilfreich, weil nicht jede intrameniskale Signalsteigerung automatisch ein Meniskusriss ist.',
@@ -4198,14 +4585,13 @@ const CONTENT = {
         ['III', 'Signal reaches the articular surface', 'Tear present', '✅ True meniscal tear'],
       ],
       extendedTitle: 'Show extended Lotysch table',
-      tableHeaders: ['Grade', 'Morphology', 'Surface contact', 'Meaning'],
+      tableHeaders: ['Grade', 'Morphology', 'Surface contact', 'Clinical significance'],
       tableRows: [
         ['1', 'punctate or small focal signal increase', 'no contact', 'early mucoid degeneration, usually asymptomatic'],
         ['2a', 'linear signal increase', 'no contact', 'advanced degeneration'],
         ['2b', 'linear signal increase', 'contact on a single image', 'inconclusive for a true tear'],
         ['2c', 'wedge-shaped or globular signal increase', 'no definite contact', 'high risk of an occult tear'],
         ['3', 'signal increase', 'contact on at least two consecutive slices', 'radiologically proven meniscal tear'],
-        ['4', 'complex tear morphology with deformation or fragmentation', 'multiple surface contacts', 'complex meniscal tear'],
       ],
       key: 'Only grade III is a true tear. Grade 3 meniscal lesion is the decisive threshold for diagnosing a tear: intrameniscal signal increase with reliable surface contact on at least two slices.',
     },
@@ -4236,25 +4622,35 @@ const CONTENT = {
     },
     cases: {
       title: 'Cases',
-      lead: '',
+      lead: 'Use the mouse wheel or slider to scroll through each MRI sequence on the page.',
       items: [
         {
-          title: 'Wedge-shaped/globular signal without definite surface contact',
-          label: 'Grade 2c',
-          tags: ['Discoid meniscus'],
-          meta: 'PD-weighted · sagittal · mucoid degeneration · high risk of occult tear',
-          img: '/meniskus/mri-sagittal.png',
+          title: 'Discoid lateral meniscus with mucoid degeneration',
+          label: 'Discoid meniscus',
+          tags: ['MRI'],
+          meta: 'PD fat sat · sagittal · 18 slices',
+          report: 'The broad lateral meniscal body persists on more than three consecutive sagittal slices. On coronal imaging, the meniscal body measures more than 20 mm. A horizontal intrasubstance high-signal line without definite articular-surface contact is consistent with mucoid degeneration. Small joint effusion.',
+          sequence: 'Sagittal · PD fat sat',
+          caseId: 'case-75168',
+          frameCount: 18,
+          frameExt: 'jpeg',
+          initialFrame: 8,
           url: 'https://radiopaedia.org/cases/75168/studies/86248#t=im&v1i=52196174&v1z=1&v2i=52196277&v2z=1&v3i=52196234&v3z=1&v4i=52196213&v4z=1',
-          credit: 'Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060',
+          credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168',
         },
         {
-          title: 'Linear signal with surface contact on one slice only',
-          label: 'Grade 2b',
-          tags: ['Discoid meniscus'],
-          meta: 'PD-weighted · coronal · inconclusive · not a definite grade-3 tear',
-          img: '/meniskus/mri-coronal.png',
+          title: 'Discoid lateral meniscus as an incidental finding',
+          label: 'Discoid meniscus',
+          tags: ['MRI'],
+          meta: 'PD · sagittal · 8 slices',
+          report: 'Broad disc-like lateral meniscus with continuity of the anterior and posterior horns across multiple sagittal slices. There is also horizontal high T2 intrasubstance signal in the posterior horn of the medial meniscus without articular-surface contact, consistent with grade II degeneration and no definite tear.',
+          sequence: 'Sagittal · PD',
+          caseId: 'case-14060',
+          frameCount: 8,
+          frameExt: 'jpg',
+          initialFrame: 3,
           url: 'https://radiopaedia.org/cases/14060/studies/13900#t=im&v1i=1118538&v1z=1&v2i=1118592&v2z=1',
-          credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168',
+          credit: 'Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060',
         },
       ],
       key: 'Cases are useful because not every intrameniscal signal abnormality represents a definite meniscal tear.',
@@ -4418,14 +4814,13 @@ const CONTENT = {
         ['III', 'سیگنال به سطح مفصلی می‌رسد', 'پارگی وجود دارد', '✅ پارگی واقعی منیسک'],
       ],
       extendedTitle: 'نمایش جدول کامل Lotysch',
-      tableHeaders: ['درجه', 'مورفولوژی', 'تماس با سطح', 'معنا'],
+      tableHeaders: ['درجه', 'مورفولوژی', 'تماس با سطح', 'اهمیت بالینی'],
       tableRows: [
         ['1', 'افزایش سیگنال نقطه‌ای یا کوچک', 'بدون تماس', 'دژنراسیون موکوئید اولیه، معمولاً بی‌علامت'],
         ['2a', 'افزایش سیگنال خطی', 'بدون تماس', 'دژنراسیون پیشرفته'],
         ['2b', 'افزایش سیگنال خطی', 'تماس فقط در یک تصویر', 'برای پارگی قطعی ناکافی'],
         ['2c', 'افزایش سیگنال گوه‌ای یا گلوبولار', 'بدون تماس واضح', 'ریسک بالا برای پارگی مخفی'],
         ['3', 'افزایش سیگنال پاتولوژیک', 'تماس در حداقل دو برش متوالی', 'پارگی منیسک از نظر رادیولوژیک قطعی'],
-        ['4', 'مورفولوژی پیچیده پارگی همراه با دفورمیتی یا قطعه‌قطعه‌شدن', 'تماس سطحی متعدد', 'پارگی کمپلکس منیسک'],
       ],
       key: 'فقط درجه III پارگی واقعی است. ضایعه منیسک درجه 3 آستانه اصلی برای تشخیص پارگی است: افزایش سیگنال داخل منیسک همراه با تماس مطمئن با سطح مفصلی در حداقل دو برش.',
     },
@@ -4456,25 +4851,35 @@ const CONTENT = {
     },
     cases: {
       title: 'نمونه کیس‌ها',
-      lead: '',
+      lead: 'با اسکرول ماوس یا اسلایدر، برش‌های هر سکانس MRI را مستقیماً در صفحه مرور کنید.',
       items: [
         {
-          title: 'سیگنال گوه‌ای/گلوبولار بدون تماس قطعی با سطح مفصلی',
-          label: 'درجه 2c',
-          tags: ['منیسک دیسکوئید'],
-          meta: 'PD · ساژیتال · دژنراسیون موکوئید · ریسک بالای پارگی مخفی',
-          img: '/meniskus/mri-sagittal.png',
+          title: 'منیسک خارجی دیسکوئید همراه با دژنراسیون موکوئید',
+          label: 'منیسک دیسکوئید',
+          tags: ['MRI'],
+          meta: 'PD fat sat · ساژیتال · ۱۸ برش',
+          report: 'تنه پهن منیسک خارجی در بیش از سه برش ساژیتال متوالی دیده می‌شود. در نمای کرونال، عرض تنه منیسک بیش از ۲۰ میلی‌متر است. افزایش سیگنال افقی داخل منیسک بدون تماس قطعی با سطح مفصلی با دژنراسیون موکوئید تطابق دارد. افیوژن خفیف مفصل نیز دیده می‌شود.',
+          sequence: 'ساژیتال · PD fat sat',
+          caseId: 'case-75168',
+          frameCount: 18,
+          frameExt: 'jpeg',
+          initialFrame: 8,
           url: 'https://radiopaedia.org/cases/75168/studies/86248#t=im&v1i=52196174&v1z=1&v2i=52196277&v2z=1&v3i=52196234&v3z=1&v4i=52196213&v4z=1',
-          credit: 'Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060',
+          credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168',
         },
         {
-          title: 'سیگنال خطی با تماس سطحی فقط در یک تصویر',
-          label: 'درجه 2b',
-          tags: ['منیسک دیسکوئید'],
-          meta: 'PD · کرونال · غیرقطعی · پارگی قطعی Grade 3 نیست',
-          img: '/meniskus/mri-coronal.png',
+          title: 'منیسک خارجی دیسکوئید به‌عنوان یافته اتفاقی',
+          label: 'منیسک دیسکوئید',
+          tags: ['MRI'],
+          meta: 'PD · ساژیتال · ۸ برش',
+          report: 'منیسک خارجی پهن و دیسک‌مانند است و اتصال شاخ قدامی و خلفی در چند برش ساژیتال متوالی ادامه دارد. همچنین افزایش سیگنال افقی T2 در شاخ خلفی منیسک داخلی بدون تماس با سطح مفصلی دیده می‌شود که با دژنراسیون درجه II و بدون پارگی قطعی مطابقت دارد.',
+          sequence: 'ساژیتال · PD',
+          caseId: 'case-14060',
+          frameCount: 8,
+          frameExt: 'jpg',
+          initialFrame: 3,
           url: 'https://radiopaedia.org/cases/14060/studies/13900#t=im&v1i=1118538&v1z=1&v2i=1118592&v2z=1',
-          credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168',
+          credit: 'Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060',
         },
       ],
       key: 'نمونه کیس‌ها مهم هستند، چون هر افزایش سیگنال داخل منیسک به معنی پارگی قطعی نیست.',
@@ -4742,12 +5147,68 @@ function ImageFigure({ src, alt, caption, zoomable = false, zoomLabel = 'Bild ve
   )
 }
 
+function CaseStackViewer({ item, labels }) {
+  const [frameIndex, setFrameIndex] = useState(item.initialFrame || 0)
+  const frameNumber = frameIndex + 1
+  const framePath = `/meniskus/cases/${item.caseId}/frame-${String(frameNumber).padStart(2, '0')}.${item.frameExt}`
+
+  const moveFrame = (step) => {
+    setFrameIndex(current => Math.min(item.frameCount - 1, Math.max(0, current + step)))
+  }
+
+  const handleWheel = (event) => {
+    const direction = event.deltaY > 0 ? 1 : -1
+    const atBoundary = direction > 0
+      ? frameIndex >= item.frameCount - 1
+      : frameIndex <= 0
+
+    if (atBoundary) return
+
+    event.preventDefault()
+    moveFrame(direction)
+  }
+
+  return (
+    <div className={styles.caseViewer} onWheel={handleWheel} aria-label={`${item.sequence} · ${labels.scrollHint}`}>
+      <img src={framePath} alt={`${item.title} · ${labels.image} ${frameNumber}`} draggable="false" />
+      <span className={styles.caseViewerTop}>{item.sequence} · {frameNumber}/{item.frameCount}</span>
+      <span className={styles.caseViewerHint}>↕ {labels.scrollHint}</span>
+      <input
+        className={styles.caseSlider}
+        type="range"
+        min="0"
+        max={item.frameCount - 1}
+        value={frameIndex}
+        onChange={(event) => setFrameIndex(Number(event.target.value))}
+        aria-label={labels.sliderLabel}
+      />
+    </div>
+  )
+}
+
+const SOURCES = [
+  { label: 'Crues et al. · Meniscal tears of the knee: accuracy of MR imaging (Radiology, 1987)', href: 'https://pubmed.ncbi.nlm.nih.gov/3602385/' },
+  { label: 'De Smet & Tuite · Two-slice-touch rule (AJR, 2006)', href: 'https://pubmed.ncbi.nlm.nih.gov/16985134/' },
+  { label: 'Nguyen et al. · MR Imaging–based Diagnosis and Classification of Meniscal Tears (RadioGraphics, 2014)', href: 'https://pubs.rsna.org/doi/10.1148/rg.344125202' },
+  { label: 'Samato et al. · MRI criteria for discoid lateral meniscus', href: 'https://pubmed.ncbi.nlm.nih.gov/11973030/' },
+  { label: 'Kim et al. · Discoid lateral meniscus: diagnosis and treatment (review)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7550551/' },
+  { label: 'Radiopaedia case rID 75168 · Discoid lateral meniscus', href: 'https://radiopaedia.org/cases/75168' },
+  { label: 'Radiopaedia case rID 14060 · Lateral discoid meniscus', href: 'https://radiopaedia.org/cases/14060' },
+]
+
+const SOURCE_LABELS = {
+  de: { title: 'Quellen und Bildnachweise', image: 'Bild', scrollHint: 'Scrollen zum Blättern', sliderLabel: 'Schicht auswählen', finding: 'Befund' },
+  en: { title: 'Sources and image credits', image: 'Image', scrollHint: 'Scroll through slices', sliderLabel: 'Select slice', finding: 'Findings' },
+  fa: { title: 'منابع و اعتبار تصاویر', image: 'تصویر', scrollHint: 'برای مرور برش‌ها اسکرول کنید', sliderLabel: 'انتخاب برش', finding: 'یافته‌ها' },
+}
+
 
 export default function MeniskusPage() {
   const { lang } = useLanguage()
   const copy = CONTENT[lang] || CONTENT.de
   const takeHomeCopy = TAKE_HOME_COPY[lang] || TAKE_HOME_COPY.de
   const sectionReadCopy = SECTION_READ_LABELS[lang] || SECTION_READ_LABELS.de
+  const sourceLabels = SOURCE_LABELS[lang] || SOURCE_LABELS.de
   const isRTL = lang === 'fa'
   const pageSections = useMemo(
     () => [...copy.sections, { id: 'takehome', label: takeHomeCopy.sectionLabel, icon: '💡', important: true }],
@@ -4911,7 +5372,7 @@ export default function MeniskusPage() {
           <Sidebar sections={pageSections} toc={copy.toc} activeId={activeId} onClick={selectSection} />
         )}
 
-        <main className={styles.main} ref={mainRef}>
+        <main className={styles.main} ref={mainRef} data-disable-lesson-explorer="true">
           <Section id="anatomie" eyebrow="01" title={copy.anatomy.title} lead={copy.anatomy.lead} {...sectionProps('anatomie')}>
             <Table headers={copy.anatomy.tableHeaders} rows={copy.anatomy.tableRows} />
             <div className={styles.splitGrid}>
@@ -4975,7 +5436,7 @@ export default function MeniskusPage() {
               <p className={styles.subSectionLead}>{copy.tear.lead}</p>
               <Callout type="cave" label={copy.caveLabel}>{copy.tear.cave}</Callout>
               <div className={styles.criteriaGrid}>
-                {copy.tear.criteria.map((item, index) => (
+                {[copy.tear.criteria[0], copy.tear.criteria[2], copy.tear.criteria[1]].map((item, index) => (
                   <div key={item.title} className={styles.criteriaCard}>
                     <span>{String(index + 1).padStart(2, '0')}</span>
                     <h3>{item.title}</h3>
@@ -4988,10 +5449,6 @@ export default function MeniskusPage() {
           </Section>
 
           <Section id="grading" eyebrow="05" title={copy.grading.title} lead={copy.grading.lead} {...sectionProps('grading')}>
-            <div className={styles.gradingFigure}>
-              <ImageFigure src="/meniskus/lotysch-grading.png" alt={copy.grading.title} zoomable zoomLabel={copy.zoomImage} onZoom={() => setPreviewImage({ src: '/meniskus/lotysch-grading.png', alt: copy.grading.title })} />
-            </div>
-            <Table headers={copy.grading.simpleHeaders} rows={copy.grading.simpleRows} className={styles.gradeTable} />
             <details className={styles.extendedDetails}>
               <summary>{copy.grading.extendedTitle}</summary>
               <div className={styles.extendedDetailsContent}>
@@ -5003,6 +5460,9 @@ export default function MeniskusPage() {
 
 
           <Section id="risstypen" eyebrow="07" title={copy.tearTypes.title} lead={copy.tearTypes.lead} {...sectionProps('risstypen')}>
+            <figure className={styles.tearTypesFigure}>
+              <img src="/meniskus/meniscal-tear-types.png" alt="Longitudinal, radial, horizontal, bucket-handle and flap meniscal tears with MRI signs" />
+            </figure>
             <Table headers={copy.tearTypes.tableHeaders} rows={copy.tearTypes.tableRows} className={styles.tearTypeTable} />
             <Callout type="cave" label={copy.tearTypes.caveTitle}>{copy.tearTypes.caveText}</Callout>
           </Section>
@@ -5017,7 +5477,6 @@ export default function MeniskusPage() {
                 </div>
               ))}
             </div>
-            <Table headers={copy.discoid.overviewHeaders} rows={copy.discoid.overviewRows} />
             <div className={styles.card}>
               <h3 className={styles.discoidMriTitle}>{copy.discoid.mriTitle}</h3>
               <Table headers={copy.discoid.mriHeaders} rows={copy.discoid.mriRows} />
@@ -5039,8 +5498,8 @@ export default function MeniskusPage() {
           <Section id="fallbeispiele" eyebrow="07" title={copy.cases.title} lead={copy.cases.lead} {...sectionProps('fallbeispiele')}>
             <div className={styles.caseGrid}>
               {copy.cases.items.map(item => (
-                <a key={item.title} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}>
-                  <img className={styles.caseImage} src={item.img} alt={item.title} />
+                <article key={item.title} className={styles.caseCardLink}>
+                  <CaseStackViewer item={item} labels={sourceLabels} />
                   <div className={styles.caseBody}>
                     <div className={styles.caseLabelRow}>
                       <span className={styles.caseLabel}>{item.label}</span>
@@ -5048,10 +5507,14 @@ export default function MeniskusPage() {
                     </div>
                     <h3>{item.title}</h3>
                     <p>{item.meta}</p>
+                    <div className={styles.caseFinding}>
+                      <strong>{sourceLabels.finding}</strong>
+                      {item.report}
+                    </div>
                     <small>{item.credit}</small>
-                    <strong>{copy.openCase}</strong>
+                    <a href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseExternalLink}>{copy.openCase} ↗</a>
                   </div>
-                </a>
+                </article>
               ))}
             </div>
           </Section>
@@ -5092,6 +5555,16 @@ export default function MeniskusPage() {
             </div>
           </Section>
 
+          <details className={styles.sourcesDetails}>
+            <summary>{sourceLabels.title}</summary>
+            <ol className={styles.sourcesList}>
+              {SOURCES.map(source => (
+                <li key={source.href}>
+                  <a href={source.href} target="_blank" rel="noopener noreferrer">{source.label}</a>
+                </li>
+              ))}
+            </ol>
+          </details>
         </main>
       </div>
 
