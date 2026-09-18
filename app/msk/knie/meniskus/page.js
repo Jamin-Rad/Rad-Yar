@@ -3741,7 +3741,7 @@ const MENISKUS_MODERN_STYLES = `
 .sideIcon svg { width: 17px; height: 17px; }
 .sideItemActive .sideIcon { border-color: var(--meniscus-deep); background: var(--meniscus-deep) !important; color: #fff; }
 .main { gap: 10px !important; }
-.section { padding: 0 !important; scroll-margin-top: 88px; overflow: visible; border: 0 !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important; backdrop-filter: none !important; }
+.section { padding: 0 !important; scroll-margin-top: 88px; overflow: hidden; border: 1px solid var(--meniscus-line) !important; border-radius: 12px !important; background: var(--meniscus-paper) !important; box-shadow: 0 14px 34px rgba(17,36,51,.045) !important; backdrop-filter: blur(16px) !important; }
 .sectionHead { margin: 0 !important; }
 .sectionToggle { min-height: 78px; display: grid !important; grid-template-columns: 44px minmax(0,1fr) 34px; align-items: center; gap: 14px; padding: 13px 4px !important; border: 0 !important; border-bottom: 1px solid var(--meniscus-line) !important; border-radius: 0 !important; background: transparent !important; }
 .sectionToggle:hover { background: transparent !important; }
@@ -3804,7 +3804,7 @@ const MENISKUS_MODERN_STYLES = `
 html[data-theme='dark'] .page { --meniscus-line: rgba(142,181,188,.2); --meniscus-paper: rgba(10,28,39,.94); --meniscus-soft: #0d2734; background: #06131e !important; color: #e6f0f2; }
 html[data-theme='dark'] .page::before { opacity: 1; filter: none; }
 html[data-theme='dark'] .page .heroText { border: 0 !important; background: transparent !important; box-shadow: none !important; }
-html[data-theme='dark'] .page .section { border: 0 !important; background: transparent !important; box-shadow: none !important; }
+html[data-theme='dark'] .page .section { border: 1px solid var(--meniscus-line) !important; background: var(--meniscus-paper) !important; box-shadow: 0 14px 34px rgba(0,0,0,.16) !important; }
 html[data-theme='dark'] .page .sectionToggle,
 html[data-theme='dark'] .page .sectionToggle:hover { border-color: var(--meniscus-line) !important; background: transparent !important; }
 html[data-theme='dark'] .page .sourceBadge { border-color: transparent !important; background: transparent !important; color: #69e0dc !important; }
