@@ -38,6 +38,7 @@ export const COMPLETED_LESSON_PATHS = new Set([
   '/thorax/kardio/kardio-mrt-basics',
   '/thorax/kardio/kardiomyopathien',
   '/mamma/bildgebung/mammographie/verkalkungen',
+  '/mamma/bildgebung/mrt/kaiser-score',
   '/msk/knie/meniskus',
 ])
 

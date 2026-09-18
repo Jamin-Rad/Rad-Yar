@@ -25,6 +25,7 @@ export const SECTIONS = [
   { id: 'interpretation', icon: 'gauge', label: { de: 'Score & BI-RADS', en: 'Score & BI-RADS', fa: 'امتیاز و BI-RADS' } },
   { id: 'faelle', icon: 'cases', label: { de: 'Lernfälle', en: 'Learning cases', fa: 'کیس‌های آموزشی' } },
   { id: 'fallstricke', icon: 'shield', label: { de: 'Fallstricke & Merksätze', en: 'Pitfalls & takeaways', fa: 'دام‌ها و نکات کلیدی' } },
+  { id: 'quellen', icon: 'book', label: { de: 'Quellen', en: 'Sources', fa: 'منابع' } },
 ]
 
 export const FEATURES = [
