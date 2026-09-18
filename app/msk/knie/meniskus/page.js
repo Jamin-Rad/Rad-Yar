@@ -3639,38 +3639,17 @@ const MENISKUS_MODERN_STYLES = `
   content: '';
   position: fixed;
   inset: 64px 0 0;
-  z-index: -2;
+  z-index: 0;
   pointer-events: none;
-  background: url('/msk/knie/meniskus/meniskus-background-v1.png') 78% 14% / min(1050px, 78vw) auto no-repeat;
-  opacity: .075;
-  filter: grayscale(.35) contrast(1.03);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0,0,0,.2) 35%, #000 72%, transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0, rgba(0,0,0,.2) 35%, #000 72%, transparent 100%);
+  background-image: url('/msk/knie/meniskus/meniskus-background-v1.png');
+  background-position: center;
+  background-size: cover;
+  filter: grayscale(1) contrast(.94);
+  opacity: .12;
 }
 .page::after {
-  content: '';
-  position: fixed;
-  inset: 64px 0 0;
-  z-index: -3;
-  background: radial-gradient(circle at 84% 7%, rgba(15,159,168,.13), transparent 31rem), linear-gradient(180deg,#f8fafb,#eef2f3);
+  content: none;
 }
-.galaxy {
-  position: fixed;
-  inset: 64px 0 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-  background-image: radial-gradient(circle,rgba(15,159,168,.22) 0 1px,transparent 1.6px),radial-gradient(circle,rgba(54,84,116,.18) 0 1.1px,transparent 1.8px),radial-gradient(circle at 18% 12%,rgba(15,159,168,.08),transparent 28rem);
-  background-position: 17px 21px,5px 41px,0 0;
-  background-size: 89px 83px,137px 121px,100% 100%;
-  opacity: .72;
-  -webkit-mask-image: linear-gradient(180deg,#000 0,rgba(0,0,0,.7) 42%,transparent 96%);
-  mask-image: linear-gradient(180deg,#000 0,rgba(0,0,0,.7) 42%,transparent 96%);
-}
-.galaxy span { position: absolute; width: 980px; height: 360px; border: 1px solid rgba(15,159,168,.12); border-radius: 50%; transform: rotate(-12deg); }
-.galaxy span:nth-child(1) { top: 230px; left: -260px; }
-.galaxy span:nth-child(2) { top: 520px; right: -300px; transform: rotate(14deg); border-color: rgba(54,84,116,.11); }
-.galaxy span:nth-child(3) { top: 980px; left: 8%; width: 1180px; height: 420px; border-color: rgba(15,159,168,.08); }
 .header {
   position: relative;
   overflow: hidden;
@@ -3679,7 +3658,7 @@ const MENISKUS_MODERN_STYLES = `
   padding: 24px 28px 28px !important;
   border: 1px solid rgba(88, 166, 175, .28);
   border-radius: 18px;
-  background: #071827 url('/msk/knie/meniskus/meniskus-background-v1.png') center / cover no-repeat;
+  background: rgba(7, 24, 39, .28);
   box-shadow: 0 24px 60px rgba(5, 24, 39, .18);
 }
 .header::after {
@@ -3827,9 +3806,7 @@ const MENISKUS_MODERN_STYLES = `
 .imageModalContent { border-color: rgba(53,209,207,.4) !important; }
 
 html[data-theme='dark'] .page { --meniscus-line: rgba(142,181,188,.2); --meniscus-paper: rgba(10,28,39,.94); --meniscus-soft: #0d2734; background: #06131e !important; color: #e6f0f2; }
-html[data-theme='dark'] .page::before { opacity: .22; filter: saturate(.8) contrast(1.08); }
-html[data-theme='dark'] .page::after { background: radial-gradient(circle at 84% 7%,rgba(15,159,168,.12),transparent 30rem),#06131e; }
-html[data-theme='dark'] .page .galaxy { opacity: .82; background-image: radial-gradient(circle,rgba(77,221,216,.32) 0 1px,transparent 1.7px),radial-gradient(circle,rgba(115,144,174,.24) 0 1.1px,transparent 1.8px),radial-gradient(circle at 18% 12%,rgba(15,159,168,.1),transparent 28rem); }
+html[data-theme='dark'] .page::before { opacity: 1; filter: none; }
 html[data-theme='dark'] .page .sourceBadge { border-color: transparent !important; background: transparent !important; color: #69e0dc !important; }
 html[data-theme='dark'] .page .learnActionMcq { border-color: #35c7c7 !important; background: #1bb5b8 !important; color: #031c27 !important; }
 html[data-theme='dark'] .page .learnActionFlash { border-color: rgba(125,211,220,.45) !important; background: rgba(6,27,43,.78) !important; color: #eefbfc !important; }
@@ -3877,8 +3854,7 @@ html[data-theme='dark'] .page .sectionReadButtonDone { border-color: #45d2ce !im
   .sectionContent,[dir='rtl'] .sectionContent { padding: 20px 16px 22px !important; }
 }
 @media (max-width: 620px) {
-  .page::before { background-position: 70% 3%; background-size: auto 72vh; opacity: .1; }
-  .header { background-position: 64% center; }
+  .page::before { background-position: 68% center; background-size: cover; }
   .header::after { background: rgba(4,20,33,.82); }
   .breadcrumb { overflow-x: auto; flex-wrap: nowrap !important; white-space: nowrap; }
   .heroText h1 { font-size: clamp(45px,16vw,64px) !important; }
@@ -4882,7 +4858,6 @@ export default function MeniskusPage() {
     >
       <style>{MENISKUS_STYLES}</style>
       <style>{MENISKUS_MODERN_STYLES}</style>
-      <div className={styles.galaxy} aria-hidden="true"><span /><span /><span /></div>
       <header className={styles.header}>
         <div className={styles.breadcrumb}>
           <Link href={withLang('/')} className={styles.breadLink}>RadYar</Link>
