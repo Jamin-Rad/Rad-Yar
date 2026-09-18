@@ -3656,17 +3656,13 @@ const MENISKUS_MODERN_STYLES = `
   max-width: 1324px !important;
   margin: 0 auto 14px !important;
   padding: 24px 28px 28px !important;
-  border: 1px solid rgba(88, 166, 175, .28);
-  border-radius: 18px;
-  background: rgba(7, 24, 39, .28);
-  box-shadow: 0 24px 60px rgba(5, 24, 39, .18);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 .header::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(90deg, rgba(4,20,33,.98) 0%, rgba(5,24,39,.94) 39%, rgba(5,24,39,.35) 68%, rgba(5,24,39,.1) 100%);
+  content: none;
 }
 .header > * { position: relative; z-index: 1; }
 .breadcrumb { margin: 0 0 24px !important; color: rgba(222,240,243,.62) !important; font-size: 12px !important; }
@@ -3745,19 +3741,19 @@ const MENISKUS_MODERN_STYLES = `
 .sideIcon svg { width: 17px; height: 17px; }
 .sideItemActive .sideIcon { border-color: var(--meniscus-deep); background: var(--meniscus-deep) !important; color: #fff; }
 .main { gap: 10px !important; }
-.section { padding: 0 !important; scroll-margin-top: 88px; overflow: hidden; border: 1px solid var(--meniscus-line) !important; border-radius: 12px !important; background: var(--meniscus-paper) !important; box-shadow: 0 14px 34px rgba(17,36,51,.045) !important; backdrop-filter: blur(16px) !important; }
+.section { padding: 0 !important; scroll-margin-top: 88px; overflow: visible; border: 0 !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important; backdrop-filter: none !important; }
 .sectionHead { margin: 0 !important; }
-.sectionToggle { min-height: 78px; display: grid !important; grid-template-columns: 44px minmax(0,1fr) 34px; align-items: center; gap: 14px; padding: 13px 20px !important; }
-.sectionToggle:hover { background: rgba(15,159,168,.035); }
+.sectionToggle { min-height: 78px; display: grid !important; grid-template-columns: 44px minmax(0,1fr) 34px; align-items: center; gap: 14px; padding: 13px 4px !important; border: 0 !important; border-bottom: 1px solid var(--meniscus-line) !important; border-radius: 0 !important; background: transparent !important; }
+.sectionToggle:hover { background: transparent !important; }
 .sectionIdentity { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 50%; background: linear-gradient(145deg,#d9f4f3,#bde6e7); color: var(--meniscus-deep); }
 .sectionIdentity svg { width: 22px; height: 22px; }
 .sectionTitleText { display: flex !important; min-width: 0; flex-direction: column; gap: 2px; }
 .eyebrow { width: fit-content !important; min-width: 0 !important; height: auto !important; margin: 0 !important; padding: 0 !important; border-radius: 0 !important; background: transparent !important; color: var(--meniscus-deep) !important; font-size: 9px !important; letter-spacing: .14em; }
 .sectionHead h2 { color: #122331 !important; font-size: clamp(21px,2.4vw,30px) !important; line-height: 1.14 !important; letter-spacing: -.025em !important; }
 .sectionToggleIcon { color: var(--meniscus-deep) !important; font-size: 23px !important; }
-.sectionContent { padding: 22px 24px 28px 78px !important; border-top: 1px solid var(--meniscus-line); }
+.sectionContent { padding: 22px 24px 28px 62px !important; border-top: 0; }
 .sectionContentCollapsed { display: none !important; }
-[dir='rtl'] .sectionContent { padding: 22px 78px 28px 24px !important; }
+[dir='rtl'] .sectionContent { padding: 22px 62px 28px 24px !important; }
 .sectionReadButton { width: 100%; min-height: 46px; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 24px; border: 1px solid rgba(15,159,168,.48); border-radius: 8px; background: transparent; color: var(--meniscus-deep); font: 850 13px/1.2 inherit; cursor: pointer; }
 .sectionReadButton svg { width: 20px; height: 20px; }
 .sectionReadButtonDone { border-color: var(--meniscus-deep); background: var(--meniscus-deep); color: #fff; }
@@ -3807,6 +3803,10 @@ const MENISKUS_MODERN_STYLES = `
 
 html[data-theme='dark'] .page { --meniscus-line: rgba(142,181,188,.2); --meniscus-paper: rgba(10,28,39,.94); --meniscus-soft: #0d2734; background: #06131e !important; color: #e6f0f2; }
 html[data-theme='dark'] .page::before { opacity: 1; filter: none; }
+html[data-theme='dark'] .page .heroText { border: 0 !important; background: transparent !important; box-shadow: none !important; }
+html[data-theme='dark'] .page .section { border: 0 !important; background: transparent !important; box-shadow: none !important; }
+html[data-theme='dark'] .page .sectionToggle,
+html[data-theme='dark'] .page .sectionToggle:hover { border-color: var(--meniscus-line) !important; background: transparent !important; }
 html[data-theme='dark'] .page .sourceBadge { border-color: transparent !important; background: transparent !important; color: #69e0dc !important; }
 html[data-theme='dark'] .page .learnActionMcq { border-color: #35c7c7 !important; background: #1bb5b8 !important; color: #031c27 !important; }
 html[data-theme='dark'] .page .learnActionFlash { border-color: rgba(125,211,220,.45) !important; background: rgba(6,27,43,.78) !important; color: #eefbfc !important; }
@@ -3876,7 +3876,7 @@ html[data-theme='dark'] .page .sectionReadButtonDone { border-color: #45d2ce !im
 
 const CONTENT = {
   de: {
-    toc: 'Inhaltsverzeichnis',
+    toc: 'Lernpfad',
     breadcrumbMsk: 'Muskuloskelettales',
     breadcrumbCurrent: 'Knie · Meniskus',
     title: 'Meniskus',
@@ -4096,7 +4096,7 @@ const CONTENT = {
     },
   },
   en: {
-    toc: 'Contents',
+    toc: 'Learning path',
     breadcrumbMsk: 'Musculoskeletal',
     breadcrumbCurrent: 'Knee · Meniscus',
     title: 'Meniscus',
@@ -4316,7 +4316,7 @@ const CONTENT = {
     },
   },
   fa: {
-    toc: 'فهرست مطالب',
+    toc: 'مسیر یادگیری',
     breadcrumbMsk: 'اسکلتی-عضلانی',
     breadcrumbCurrent: 'زانو · منیسک',
     title: 'منیسک',
