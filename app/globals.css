@@ -210,3 +210,12 @@ html[data-theme='dark'] section#takehome > button:first-child h2,
 html[data-theme='dark'] section#takehome .sectionHead h2 {
   color: #fbbf24 !important;
 }
+
+/* Mobile lesson headers stay compact: the three desktop teaching highlights
+   remain available from tablet/desktop widths, but never occupy phone space. */
+@media (max-width: 760px) {
+  [class*="heroStats"],
+  [class*="heroFacts"] {
+    display: none !important;
+  }
+}
