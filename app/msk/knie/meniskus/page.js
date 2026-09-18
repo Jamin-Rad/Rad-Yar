@@ -3654,6 +3654,23 @@ const MENISKUS_MODERN_STYLES = `
   z-index: -3;
   background: radial-gradient(circle at 84% 7%, rgba(15,159,168,.13), transparent 31rem), linear-gradient(180deg,#f8fafb,#eef2f3);
 }
+.galaxy {
+  position: fixed;
+  inset: 64px 0 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background-image: radial-gradient(circle,rgba(15,159,168,.22) 0 1px,transparent 1.6px),radial-gradient(circle,rgba(54,84,116,.18) 0 1.1px,transparent 1.8px),radial-gradient(circle at 18% 12%,rgba(15,159,168,.08),transparent 28rem);
+  background-position: 17px 21px,5px 41px,0 0;
+  background-size: 89px 83px,137px 121px,100% 100%;
+  opacity: .72;
+  -webkit-mask-image: linear-gradient(180deg,#000 0,rgba(0,0,0,.7) 42%,transparent 96%);
+  mask-image: linear-gradient(180deg,#000 0,rgba(0,0,0,.7) 42%,transparent 96%);
+}
+.galaxy span { position: absolute; width: 980px; height: 360px; border: 1px solid rgba(15,159,168,.12); border-radius: 50%; transform: rotate(-12deg); }
+.galaxy span:nth-child(1) { top: 230px; left: -260px; }
+.galaxy span:nth-child(2) { top: 520px; right: -300px; transform: rotate(14deg); border-color: rgba(54,84,116,.11); }
+.galaxy span:nth-child(3) { top: 980px; left: 8%; width: 1180px; height: 420px; border-color: rgba(15,159,168,.08); }
 .header {
   position: relative;
   overflow: hidden;
@@ -3693,7 +3710,7 @@ const MENISKUS_MODERN_STYLES = `
 }
 .heroText h1 { max-width: 730px; color: #fff !important; font-size: clamp(50px,6vw,82px) !important; line-height: .92 !important; letter-spacing: -.045em !important; text-shadow: 0 10px 35px rgba(0,0,0,.28) !important; }
 .heroText p { max-width: 680px !important; margin: 17px 0 23px !important; color: #c8dce3 !important; font-size: clamp(16px,1.7vw,20px) !important; line-height: 1.55 !important; }
-.heroActions { margin-top: 0 !important; gap: 10px !important; }
+.heroActions { margin-top: 24px !important; gap: 10px !important; }
 .learnAction { min-height: 45px !important; padding: 10px 18px !important; border-radius: 8px !important; font-size: 13px !important; box-shadow: none !important; }
 .learnAction span:first-child { width: 22px !important; height: 22px !important; border-radius: 0 !important; background: transparent !important; }
 .learnAction svg { width: 20px; height: 20px; }
@@ -3720,12 +3737,24 @@ const MENISKUS_MODERN_STYLES = `
 .heroStatCard strong { margin: 0 !important; font: 800 17px/1.05 var(--font-fraunces,Georgia,serif) !important; }
 .heroStatCard span { color: #d6e8ec; font-size: 11px !important; line-height: 1.25; }
 .heroStatCard small { display: none !important; }
+.lessonProgress { display: grid; grid-template-columns: minmax(180px,330px) auto 1fr; align-items: center; gap: 14px; min-height: 50px; margin-top: 20px; padding: 8px 9px 8px 15px; border: 1px solid rgba(125,211,220,.24); border-radius: 9px; background: rgba(4,22,36,.78); color: #d9ecef; backdrop-filter: blur(9px); }
+.progressTrack { height: 7px; overflow: hidden; border-radius: 999px; background: rgba(197,222,227,.18); }
+.progressTrack i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg,#149fa8,#55dad6); transition: width .28s ease; }
+.lessonProgress > span { color: #a9c6cc; font-size: 11px; white-space: nowrap; }
+.progressActions { justify-self: end; display: flex; align-items: center; gap: 8px; }
+.progressActions button { min-height: 34px; display: inline-flex; align-items: center; gap: 8px; padding: 7px 10px; border: 0; border-radius: 7px; background: transparent; color: #d9f5f4; font: 800 11px/1.2 inherit; cursor: pointer; }
+.progressActions button svg { width: 17px; height: 17px; }
+.progressActions .lessonCompleteButton { border: 1px solid rgba(92,218,214,.32); background: rgba(15,159,168,.12); }
+.progressActions .lessonCompleteButtonDone { border-color: #49d2cf; background: #0f7881; color: #fff; }
+.progressActions .continueButton:disabled { opacity: .34; cursor: default; }
+.progressAuthError { grid-column: 1 / -1; display: flex; gap: 8px; color: #ffd0ce; font-size: 11px; }
+.progressAuthError a { color: #fff; font-weight: 850; }
 .readBar { max-width: 1324px !important; margin: 0 auto 12px !important; padding: 7px 10px !important; border: 1px solid var(--meniscus-line) !important; border-radius: 10px !important; background: rgba(255,255,255,.86) !important; box-shadow: 0 8px 22px rgba(17,36,51,.04) !important; }
 .readControl { width: 100%; }
 .doneBtn { min-height: 40px !important; border-radius: 7px !important; border-color: rgba(15,159,168,.42) !important; background: rgba(15,159,168,.06) !important; color: var(--meniscus-deep) !important; }
 .doneBtnActive { border-color: var(--meniscus-deep) !important; background: var(--meniscus-deep) !important; color: #fff !important; }
 .readCheck { border-color: currentColor !important; }
-.layout { max-width: 1324px !important; grid-template-columns: 230px minmax(0,1fr) !important; gap: 16px !important; padding: 4px 0 74px !important; }
+.layout { position: relative; z-index: 1; max-width: 1324px !important; grid-template-columns: 230px minmax(0,1fr) !important; gap: 16px !important; padding: 4px 0 74px !important; }
 .sidebar { top: 88px !important; padding: 18px 12px !important; border: 1px solid var(--meniscus-line) !important; border-radius: 12px !important; background: var(--meniscus-paper) !important; box-shadow: 0 14px 34px rgba(17,36,51,.045) !important; backdrop-filter: blur(16px) !important; }
 .sideTitle { margin: 0 7px 10px !important; padding: 2px 0 12px !important; border-bottom: 1px solid var(--meniscus-line) !important; color: #516273 !important; font: 800 18px/1.2 var(--font-fraunces,Georgia,serif) !important; letter-spacing: 0 !important; text-transform: none !important; }
 .sideNav { gap: 3px !important; }
@@ -3748,7 +3777,11 @@ const MENISKUS_MODERN_STYLES = `
 .sectionHead h2 { color: #122331 !important; font-size: clamp(21px,2.4vw,30px) !important; line-height: 1.14 !important; letter-spacing: -.025em !important; }
 .sectionToggleIcon { color: var(--meniscus-deep) !important; font-size: 23px !important; }
 .sectionContent { padding: 22px 24px 28px 78px !important; border-top: 1px solid var(--meniscus-line); }
+.sectionContentCollapsed { display: none !important; }
 [dir='rtl'] .sectionContent { padding: 22px 78px 28px 24px !important; }
+.sectionReadButton { width: 100%; min-height: 46px; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 24px; border: 1px solid rgba(15,159,168,.48); border-radius: 8px; background: transparent; color: var(--meniscus-deep); font: 850 13px/1.2 inherit; cursor: pointer; }
+.sectionReadButton svg { width: 20px; height: 20px; }
+.sectionReadButtonDone { border-color: var(--meniscus-deep); background: var(--meniscus-deep); color: #fff; }
 .sectionLead,.subSectionLead { max-width: 900px; color: #4c5f70 !important; font-size: 15px !important; line-height: 1.75 !important; }
 .subSectionBlock { margin-top: 26px !important; padding-top: 25px !important; border-top: 1px solid var(--meniscus-line) !important; }
 .subSectionTitle { color: #122331 !important; font: 800 23px/1.2 var(--font-fraunces,Georgia,serif) !important; }
@@ -3796,6 +3829,7 @@ const MENISKUS_MODERN_STYLES = `
 html[data-theme='dark'] .page { --meniscus-line: rgba(142,181,188,.2); --meniscus-paper: rgba(10,28,39,.94); --meniscus-soft: #0d2734; background: #06131e !important; color: #e6f0f2; }
 html[data-theme='dark'] .page::before { opacity: .22; filter: saturate(.8) contrast(1.08); }
 html[data-theme='dark'] .page::after { background: radial-gradient(circle at 84% 7%,rgba(15,159,168,.12),transparent 30rem),#06131e; }
+html[data-theme='dark'] .page .galaxy { opacity: .82; background-image: radial-gradient(circle,rgba(77,221,216,.32) 0 1px,transparent 1.7px),radial-gradient(circle,rgba(115,144,174,.24) 0 1.1px,transparent 1.8px),radial-gradient(circle at 18% 12%,rgba(15,159,168,.1),transparent 28rem); }
 html[data-theme='dark'] .page .sourceBadge { border-color: transparent !important; background: transparent !important; color: #69e0dc !important; }
 html[data-theme='dark'] .page .learnActionMcq { border-color: #35c7c7 !important; background: #1bb5b8 !important; color: #031c27 !important; }
 html[data-theme='dark'] .page .learnActionFlash { border-color: rgba(125,211,220,.45) !important; background: rgba(6,27,43,.78) !important; color: #eefbfc !important; }
@@ -3818,6 +3852,8 @@ html[data-theme='dark'] .card p,html[data-theme='dark'] .normalCard p,html[data-
 html[data-theme='dark'] .calloutBody { color: #c1e0df !important; }
 html[data-theme='dark'] .callout.cave .calloutBody { color: #efc1bf !important; }
 html[data-theme='dark'] .doneBtn:not(.doneBtnActive) { color: #dff9f8 !important; }
+html[data-theme='dark'] .page .sectionReadButton { border-color: rgba(93,218,214,.46) !important; color: #e8ffff !important; background: rgba(15,159,168,.07) !important; }
+html[data-theme='dark'] .page .sectionReadButtonDone { border-color: #45d2ce !important; background: #0d6973 !important; color: #fff !important; }
 
 @media (max-width: 1360px) {
   .header,.readBar,.layout { width: calc(100% - 40px) !important; }
@@ -3833,6 +3869,9 @@ html[data-theme='dark'] .doneBtn:not(.doneBtnActive) { color: #dff9f8 !important
   .heroFactIcon svg { width: 20px; height: 20px; }
   .heroStatCard strong { font-size: 13px !important; }
   .heroStatCard span { font-size: 9px !important; }
+  .lessonProgress { grid-template-columns: 1fr auto; }
+  .progressTrack { grid-column: 1 / -1; }
+  .progressActions { grid-column: 1 / -1; width: 100%; justify-content: space-between; flex-wrap: wrap; }
   .readBar,.layout { width: calc(100% - 24px) !important; }
   .layout { grid-template-columns: 1fr !important; }
   .sectionContent,[dir='rtl'] .sectionContent { padding: 20px 16px 22px !important; }
@@ -4646,37 +4685,17 @@ const READ_LABELS = {
   fa: { btn: 'علامت‌گذاری به‌عنوان خوانده‌شده', active: 'به‌عنوان خوانده‌شده علامت‌گذاری شد', error: 'برای ذخیره پیشرفت یادگیری لطفاً وارد شوید.', signIn: 'ورود' },
 }
 
-function ReadButton({ isRead, onClick, authError, className = '' }) {
-  const { lang } = useLanguage()
-  const labels = READ_LABELS[lang] || READ_LABELS.de
-  return (
-    <div className={`${styles.readControl} ${className}`.trim()}>
-      <button type="button" className={`${styles.doneBtn} ${isRead ? styles.doneBtnActive : ''}`} onClick={onClick}>
-        <span className={styles.readCheck} aria-hidden="true">{isRead ? '✓' : ''}</span>
-        <span>{isRead ? labels.active : labels.btn}</span>
-      </button>
-      {authError && (
-        <div className={styles.readError} role="alert">
-          <span>{labels.error}</span>
-          <Link href="/sign-in">{labels.signIn}</Link>
-        </div>
-      )}
-    </div>
-  )
+const SECTION_READ_LABELS = {
+  de: { progress: 'gelesen', complete: 'Abschnitt als gelesen markieren', completed: 'Als gelesen markiert', completeLesson: 'Ganze Lektion als gelesen markieren', lessonCompleted: 'Ganze Lektion gelesen', continue: 'Lektion fortsetzen' },
+  en: { progress: 'read', complete: 'Mark section as read', completed: 'Marked as read', completeLesson: 'Mark full lesson as read', lessonCompleted: 'Full lesson marked as read', continue: 'Continue lesson' },
+  fa: { progress: 'خوانده‌شده', complete: 'علامت‌گذاری بخش به‌عنوان خوانده‌شده', completed: 'به‌عنوان خوانده‌شده علامت‌گذاری شد', completeLesson: 'علامت‌گذاری کل درس به‌عنوان خوانده‌شده', lessonCompleted: 'کل درس خوانده شد', continue: 'ادامه درس' },
 }
 
-function Section({ id, eyebrow, title, lead, children, className = '', defaultOpen = true }) {
-  const [isOpen, setIsOpen] = useState(defaultOpen)
-
-  useEffect(() => {
-    setIsOpen(defaultOpen)
-  }, [defaultOpen, id])
-
-  const toggleSection = () => setIsOpen(value => !value)
+function Section({ id, eyebrow, title, lead, children, className = '', isOpen, isRead, onToggle, onToggleRead, readLabel, readDoneLabel }) {
   const handleKeyDown = (event) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault()
-      toggleSection()
+      onToggle()
     }
   }
 
@@ -4688,7 +4707,7 @@ function Section({ id, eyebrow, title, lead, children, className = '', defaultOp
           role="button"
           tabIndex={0}
           aria-expanded={isOpen}
-          onClick={toggleSection}
+          onClick={onToggle}
           onKeyDown={handleKeyDown}
         >
           <span className={styles.sectionIdentity}><SectionIcon id={id} /></span>
@@ -4702,6 +4721,10 @@ function Section({ id, eyebrow, title, lead, children, className = '', defaultOp
       <div className={`${styles.sectionContent} ${isOpen ? '' : styles.sectionContentCollapsed}`.trim()}>
         {lead && <p className={styles.sectionLead}>{lead}</p>}
         {children}
+        <button type="button" className={`${styles.sectionReadButton} ${isRead ? styles.sectionReadButtonDone : ''}`} aria-pressed={isRead} onClick={onToggleRead}>
+          <SectionIcon id="check" />
+          <span>{isRead ? readDoneLabel : readLabel}</span>
+        </button>
       </div>
     </section>
   )
@@ -4749,6 +4772,7 @@ export default function MeniskusPage() {
   const { lang } = useLanguage()
   const copy = CONTENT[lang] || CONTENT.de
   const takeHomeCopy = TAKE_HOME_COPY[lang] || TAKE_HOME_COPY.de
+  const sectionReadCopy = SECTION_READ_LABELS[lang] || SECTION_READ_LABELS.de
   const isRTL = lang === 'fa'
   const pageSections = useMemo(
     () => [...copy.sections, { id: 'takehome', label: takeHomeCopy.sectionLabel, icon: '💡', important: true }],
@@ -4763,6 +4787,8 @@ export default function MeniskusPage() {
   ], [copy, takeHomeCopy])
   const mainRef = useRef(null)
   const isMobile = useIsMobileViewport()
+  const [openId, setOpenId] = useState(null)
+  const [readSections, setReadSections] = useState(() => new Set())
   const [activeId, setActiveId] = useState(pageSections[0].id)
   const [previewImage, setPreviewImage] = useState(null)
   const meniskusLayout = isMobile ? 'mobile' : 'desktop'
@@ -4771,10 +4797,43 @@ export default function MeniskusPage() {
   const sectionIds = useMemo(() => pageSections.map(section => section.id), [pageSections])
   const withLang = (href) => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
 
-  const scrollTo = (id) => {
-    const el = document.getElementById(id)
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  const selectSection = (id) => {
+    const nextId = openId === id ? null : id
+    setOpenId(nextId)
+    setActiveId(id)
+    if (nextId) window.requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }))
   }
+
+  const toggleSectionRead = (id) => setReadSections(previous => {
+    const next = new Set(previous)
+    if (next.has(id)) next.delete(id)
+    else next.add(id)
+    return next
+  })
+
+  const lessonComplete = readSections.size === pageSections.length
+  const toggleLessonComplete = () => {
+    setReadSections(lessonComplete ? new Set() : new Set(sectionIds))
+    if (isRead !== !lessonComplete) toggleRead()
+  }
+
+  const activeIndex = pageSections.findIndex(section => section.id === openId)
+  const continueLesson = () => {
+    const nextIndex = activeIndex < 0 ? 0 : Math.min(activeIndex + 1, pageSections.length - 1)
+    const nextId = pageSections[nextIndex].id
+    setOpenId(nextId)
+    setActiveId(nextId)
+    window.requestAnimationFrame(() => document.getElementById(nextId)?.scrollIntoView({ behavior: 'smooth', block: 'start' }))
+  }
+
+  const sectionProps = (id) => ({
+    isOpen: openId === id,
+    isRead: readSections.has(id),
+    onToggle: () => selectSection(id),
+    onToggleRead: () => toggleSectionRead(id),
+    readLabel: sectionReadCopy.complete,
+    readDoneLabel: sectionReadCopy.completed,
+  })
 
   useEffect(() => {
     setActiveId(pageSections[0].id)
@@ -4823,6 +4882,7 @@ export default function MeniskusPage() {
     >
       <style>{MENISKUS_STYLES}</style>
       <style>{MENISKUS_MODERN_STYLES}</style>
+      <div className={styles.galaxy} aria-hidden="true"><span /><span /><span /></div>
       <header className={styles.header}>
         <div className={styles.breadcrumb}>
           <Link href={withLang('/')} className={styles.breadLink}>RadYar</Link>
@@ -4836,7 +4896,6 @@ export default function MeniskusPage() {
           <div className={styles.heroText}>
             <span className={styles.sourceBadge}>{copy.sourceLabel}</span>
             <h1>{copy.title}</h1>
-            <p>{copy.subtitle}</p>
             <div className={styles.heroActions}>
               <Link href={withLang(`/ueben/quiz?fach=msk&n=10&themen=meniskus&from=${encodeURIComponent(withLang('/msk/knie/meniskus'))}`)} className={`${styles.learnAction} ${styles.learnActionMcq}`}>
                 <span><SectionIcon id="quiz" /></span>
@@ -4861,19 +4920,25 @@ export default function MeniskusPage() {
 
         </div>
 
-      </header>
+        <div className={styles.lessonProgress}>
+          <div className={styles.progressTrack}><i style={{ width: `${(readSections.size / pageSections.length) * 100}%` }} /></div>
+          <span>{readSections.size} / {pageSections.length} {sectionReadCopy.progress}</span>
+          <div className={styles.progressActions}>
+            <button type="button" className={`${styles.lessonCompleteButton} ${lessonComplete ? styles.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><SectionIcon id="check" />{lessonComplete ? sectionReadCopy.lessonCompleted : sectionReadCopy.completeLesson}</button>
+            <button type="button" className={styles.continueButton} onClick={continueLesson} disabled={activeIndex === pageSections.length - 1}>{sectionReadCopy.continue}<span aria-hidden="true">→</span></button>
+          </div>
+          {authError && <div className={styles.progressAuthError} role="alert"><span>{READ_LABELS[lang]?.error || READ_LABELS.de.error}</span><Link href={withLang('/sign-in')}>{READ_LABELS[lang]?.signIn || READ_LABELS.de.signIn}</Link></div>}
+        </div>
 
-      <div className={styles.readBar}>
-        <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} />
-      </div>
+      </header>
 
       <div className={styles.layout}>
         {!isMobile && (
-          <Sidebar sections={pageSections} toc={copy.toc} activeId={activeId} onClick={scrollTo} />
+          <Sidebar sections={pageSections} toc={copy.toc} activeId={activeId} onClick={selectSection} />
         )}
 
         <main className={styles.main} ref={mainRef}>
-          <Section id="anatomie" eyebrow="01" title={copy.anatomy.title} lead={copy.anatomy.lead} defaultOpen={!isMobile}>
+          <Section id="anatomie" eyebrow="01" title={copy.anatomy.title} lead={copy.anatomy.lead} {...sectionProps('anatomie')}>
             <Table headers={copy.anatomy.tableHeaders} rows={copy.anatomy.tableRows} />
             <div className={styles.splitGrid}>
               <div className={styles.card}>
@@ -4916,7 +4981,7 @@ export default function MeniskusPage() {
             </div>
           </Section>
 
-          <Section id="mrt" eyebrow="04" title={copy.mri.title} lead={copy.mri.lead} defaultOpen={!isMobile}>
+          <Section id="mrt" eyebrow="04" title={copy.mri.title} lead={copy.mri.lead} {...sectionProps('mrt')}>
             <div className={styles.protocolGrid}>
               {copy.mri.protocol.map(item => (
                 <div key={item.name} className={styles.protocolCard}>
@@ -4948,7 +5013,7 @@ export default function MeniskusPage() {
             </div>
           </Section>
 
-          <Section id="grading" eyebrow="05" title={copy.grading.title} lead={copy.grading.lead} defaultOpen={!isMobile}>
+          <Section id="grading" eyebrow="05" title={copy.grading.title} lead={copy.grading.lead} {...sectionProps('grading')}>
             <div className={styles.gradingFigure}>
               <ImageFigure src="/meniskus/lotysch-grading.png" alt={copy.grading.title} zoomable zoomLabel={copy.zoomImage} onZoom={() => setPreviewImage({ src: '/meniskus/lotysch-grading.png', alt: copy.grading.title })} />
             </div>
@@ -4963,12 +5028,12 @@ export default function MeniskusPage() {
           </Section>
 
 
-          <Section id="risstypen" eyebrow="07" title={copy.tearTypes.title} lead={copy.tearTypes.lead} defaultOpen={!isMobile}>
+          <Section id="risstypen" eyebrow="07" title={copy.tearTypes.title} lead={copy.tearTypes.lead} {...sectionProps('risstypen')}>
             <Table headers={copy.tearTypes.tableHeaders} rows={copy.tearTypes.tableRows} className={styles.tearTypeTable} />
             <Callout type="cave" label={copy.tearTypes.caveTitle}>{copy.tearTypes.caveText}</Callout>
           </Section>
 
-          <Section id="discoider" eyebrow="08" title={copy.discoid.title} lead={copy.discoid.lead} defaultOpen={!isMobile}>
+          <Section id="discoider" eyebrow="08" title={copy.discoid.title} lead={copy.discoid.lead} {...sectionProps('discoider')}>
             <div className={styles.discoidStats}>
               {copy.discoid.stats.map(stat => (
                 <div key={stat.label} className={styles.discoidStatCard}>
@@ -4991,13 +5056,13 @@ export default function MeniskusPage() {
             eyebrow="09"
             title={<>{copy.therapy.titlePrefix || copy.therapy.title}: <span className={styles.greenTitle}>{copy.therapy.saveText || 'Save the Meniscus'}</span></>}
             lead={copy.therapy.lead}
-            defaultOpen={!isMobile}
+            {...sectionProps('therapie')}
           >
             <Table headers={copy.therapy.tableHeaders} rows={copy.therapy.tableRows} />
             <Callout label={copy.keyLabel}>{copy.therapy.key}</Callout>
           </Section>
 
-          <Section id="fallbeispiele" eyebrow="07" title={copy.cases.title} lead={copy.cases.lead} defaultOpen={!isMobile}>
+          <Section id="fallbeispiele" eyebrow="07" title={copy.cases.title} lead={copy.cases.lead} {...sectionProps('fallbeispiele')}>
             <div className={styles.caseGrid}>
               {copy.cases.items.map(item => (
                 <a key={item.title} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseCardLink}>
@@ -5017,7 +5082,7 @@ export default function MeniskusPage() {
             </div>
           </Section>
 
-          <Section id="lernvideo" eyebrow="10" title={copy.video.title} lead="" defaultOpen={!isMobile}>
+          <Section id="lernvideo" eyebrow="10" title={copy.video.title} lead="" {...sectionProps('lernvideo')}>
             <div className={styles.videoCard}>
               <div className={styles.videoFrameWrap}>
                 <iframe
@@ -5036,7 +5101,7 @@ export default function MeniskusPage() {
             </div>
           </Section>
 
-          <Section id="takehome" eyebrow="11" title={takeHomeCopy.title} lead="" className={styles.takeHomeSection} defaultOpen={!isMobile}>
+          <Section id="takehome" eyebrow="11" title={takeHomeCopy.title} lead="" className={styles.takeHomeSection} {...sectionProps('takehome')}>
             <div className={styles.takeHomeBox}>
               <p className={styles.takeHomeIntro}>{takeHomeCopy.lead}</p>
               <div className={styles.takeHomeList}>
@@ -5053,9 +5118,6 @@ export default function MeniskusPage() {
             </div>
           </Section>
 
-          <div className={styles.readBarBottom}>
-            <ReadButton isRead={isRead} onClick={toggleRead} authError={authError} />
-          </div>
         </main>
       </div>
 
