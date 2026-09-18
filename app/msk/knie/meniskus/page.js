@@ -3743,7 +3743,7 @@ const MENISKUS_MODERN_STYLES = `
 .main { gap: 10px !important; }
 .section { padding: 0 !important; scroll-margin-top: 88px; overflow: hidden; border: 1px solid var(--meniscus-line) !important; border-radius: 12px !important; background: var(--meniscus-paper) !important; box-shadow: 0 14px 34px rgba(17,36,51,.045) !important; backdrop-filter: blur(16px) !important; }
 .sectionHead { margin: 0 !important; }
-.sectionToggle { min-height: 78px; display: grid !important; grid-template-columns: 44px minmax(0,1fr) 34px; align-items: center; gap: 14px; padding: 13px 4px !important; border: 0 !important; border-bottom: 1px solid var(--meniscus-line) !important; border-radius: 0 !important; background: transparent !important; }
+.sectionToggle { min-height: 78px; display: grid !important; grid-template-columns: 44px minmax(0,1fr); align-items: center; gap: 14px; padding: 13px 4px !important; border: 0 !important; border-bottom: 1px solid var(--meniscus-line) !important; border-radius: 0 !important; background: transparent !important; }
 .sectionToggle:hover { background: transparent !important; }
 .sectionIdentity { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 50%; background: linear-gradient(145deg,#d9f4f3,#bde6e7); color: var(--meniscus-deep); }
 .sectionIdentity svg { width: 22px; height: 22px; }
@@ -3862,7 +3862,7 @@ html[data-theme='dark'] .page .sectionReadButtonDone { border-color: #45d2ce !im
   .heroStats { grid-template-columns: 1fr; }
   .heroStatCard { grid-template-columns: 42px minmax(0,1fr); }
   .heroStatCard strong { font-size: 15px !important; }
-  .sectionToggle { grid-template-columns: 38px minmax(0,1fr) 26px; gap: 10px; min-height: 70px; padding: 12px 13px !important; }
+  .sectionToggle { grid-template-columns: 38px minmax(0,1fr); gap: 10px; min-height: 70px; padding: 12px 13px !important; }
   .sectionIdentity { width: 36px; height: 36px; }
   .sectionIdentity svg { width: 19px; height: 19px; }
   .sectionHead h2 { font-size: 19px !important; }
@@ -4691,7 +4691,6 @@ function Section({ id, eyebrow, title, lead, children, className = '', isOpen, i
             <span className={styles.eyebrow}>{eyebrow}</span>
             <h2>{title}</h2>
           </div>
-          <span className={`${styles.sectionToggleIcon} ${isOpen ? styles.sectionToggleIconOpen : ''}`}>⌄</span>
         </div>
       </div>
       <div className={`${styles.sectionContent} ${isOpen ? '' : styles.sectionContentCollapsed}`.trim()}>
