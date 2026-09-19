@@ -4444,9 +4444,16 @@ html[data-theme='dark'] .sourcesDetails summary {
     font-size: 14px !important;
     line-height: 1.55 !important;
   }
+  .page:not([data-meniskus-layout='desktop']) .gradeTable td:first-child,
+  .page:not([data-meniskus-layout='desktop']) .tearTypeTable td:first-child {
+    display: grid !important;
+    width: auto !important;
+    grid-template-columns: minmax(108px,36%) minmax(0,1fr) !important;
+    gap: 12px !important;
+  }
   .page:not([data-meniskus-layout='desktop']) .table td:last-child { border-bottom: 0 !important; }
   .page:not([data-meniskus-layout='desktop']) .table td::before {
-    content: attr(data-label);
+    content: attr(data-label) !important;
     color: #607481;
     font-size: 11px;
     font-weight: 900;
