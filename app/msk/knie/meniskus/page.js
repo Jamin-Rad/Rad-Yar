@@ -4278,40 +4278,62 @@ html[data-theme='dark'] .heroFactIcon {
 /* Tables use clear row groups, stronger hierarchy and comfortable reading sizes. */
 .tableWrap {
   overflow-x: auto !important;
-  border: 1px solid #b9c9ce !important;
+  border: 1px solid #c7d5d9 !important;
   border-radius: 12px !important;
+  background: #eef5f6 !important;
 }
-.table { min-width: 680px; border-collapse: separate !important; border-spacing: 0 !important; }
+.table { width: 100% !important; min-width: 720px; border-collapse: separate !important; border-spacing: 0 !important; }
 .table th {
   padding: 15px 16px !important;
   border-inline-end: 1px solid rgba(255,255,255,.16) !important;
-  font-size: 13px !important;
+  background: #082a3a !important;
+  color: #e9ffff !important;
+  font-size: 12px !important;
+  font-weight: 900 !important;
+  letter-spacing: .055em !important;
   line-height: 1.35 !important;
   text-align: start !important;
+  text-transform: uppercase;
 }
 .table th:last-child { border-inline-end: 0 !important; }
 .table td {
   padding: 16px !important;
-  border-inline-end: 1px solid #d7e2e5 !important;
-  border-bottom: 2px solid #d7e2e5 !important;
+  border-inline-end: 1px solid #dce6e8 !important;
+  border-bottom: 1px solid #d3e0e3 !important;
+  background: #fff !important;
   font-size: 15px !important;
   line-height: 1.65 !important;
   vertical-align: top !important;
   text-align: start !important;
 }
+.table tbody tr:nth-child(even) td { background: #f5f9fa !important; }
+.table tbody tr:hover td { background: #edf7f7 !important; }
 .table td:last-child { border-inline-end: 0 !important; }
 .table tbody tr:last-child td { border-bottom: 0 !important; }
 .table td:first-child {
-  min-width: 132px;
+  min-width: 122px;
   background: #e4f3f3 !important;
   color: #075d67 !important;
   font-weight: 900 !important;
 }
-html[data-theme='dark'] .table td { border-color: rgba(142,181,188,.28) !important; }
+html[data-theme='dark'] .tableWrap { background: #071b27 !important; }
+html[data-theme='dark'] .table td { border-color: rgba(142,181,188,.24) !important; background: #0b202c !important; }
+html[data-theme='dark'] .table tbody tr:nth-child(even) td { background: #0e2936 !important; }
+html[data-theme='dark'] .table tbody tr:hover td { background: #123440 !important; }
 html[data-theme='dark'] .table td:first-child {
   background: #103541 !important;
   color: #7ce5e1 !important;
 }
+.gradeTable { table-layout: fixed !important; }
+.gradeTable th:nth-child(1) { width: 9%; }
+.gradeTable th:nth-child(2) { width: 30%; }
+.gradeTable th:nth-child(3) { width: 27%; }
+.gradeTable th:nth-child(4) { width: 34%; }
+.tearTypeTable { table-layout: fixed !important; }
+.tearTypeTable th:nth-child(1) { width: 15%; }
+.tearTypeTable th:nth-child(2) { width: 24%; }
+.tearTypeTable th:nth-child(3) { width: 29%; }
+.tearTypeTable th:nth-child(4) { width: 32%; }
 
 /* Lotysch stays open and the restored illustration sits directly above it. */
 .extendedDetails {
@@ -4337,7 +4359,7 @@ html[data-theme='dark'] .table td:first-child {
   border-radius: 18px;
   background: #fff;
 }
-.discoidFigure img { display: block; width: 100%; min-width: 760px; height: auto; border-radius: 11px; }
+.discoidFigure img { display: block; width: 100%; min-width: 980px; height: auto; border-radius: 11px; }
 html[data-theme='dark'] .discoidFigure { border-color: rgba(142,181,188,.24); background: #071827; }
 
 /* Take-home pattern follows the flat numbered scan used in Mammographie/Verkalkungen. */
@@ -4394,8 +4416,61 @@ html[data-theme='dark'] .sourcesDetails summary {
 }
 .sourcesList { margin: 0 0 10px !important; padding-inline-start: 22px !important; }
 
+@media (max-width: 760px) {
+  .tableWrap { overflow: visible !important; border: 0 !important; background: transparent !important; }
+  .table,
+  .gradeTable,
+  .tearTypeTable { display: block !important; width: 100% !important; min-width: 0 !important; table-layout: auto !important; }
+  .table thead { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+  .table tbody { display: grid; gap: 12px; }
+  .table tbody tr {
+    display: block;
+    overflow: hidden;
+    border: 1px solid #c9d8dc;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(17,36,51,.05);
+  }
+  .table td,
+  .table tbody tr:nth-child(even) td,
+  .table tbody tr:hover td {
+    display: grid;
+    grid-template-columns: minmax(108px,36%) minmax(0,1fr);
+    gap: 12px;
+    padding: 12px 14px !important;
+    border: 0 !important;
+    border-bottom: 1px solid #e0e8ea !important;
+    background: #fff !important;
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+  }
+  .table td:last-child { border-bottom: 0 !important; }
+  .table td::before {
+    content: attr(data-label);
+    color: #607481;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: .035em;
+    line-height: 1.45;
+    text-transform: uppercase;
+  }
+  .table td:first-child {
+    min-width: 0;
+    background: #dff1f1 !important;
+    color: #075d67 !important;
+    font-size: 16px !important;
+  }
+  .table td:first-child::before { color: #08717a; }
+  html[data-theme='dark'] .table tbody tr { border-color: rgba(142,181,188,.28); background: #0b202c; }
+  html[data-theme='dark'] .table td,
+  html[data-theme='dark'] .table tbody tr:nth-child(even) td,
+  html[data-theme='dark'] .table tbody tr:hover td { border-bottom-color: rgba(142,181,188,.18) !important; background: #0b202c !important; }
+  html[data-theme='dark'] .table td::before { color: #8eaab2; }
+  html[data-theme='dark'] .table td:first-child { background: #103541 !important; color: #7ce5e1 !important; }
+  html[data-theme='dark'] .table td:first-child::before { color: #67cfcc; }
+}
+
 @media (max-width: 620px) {
-  .table { min-width: 620px; }
   .takeHomeItem,
   .takeHomeItem:last-child { grid-template-columns: 34px minmax(0,1fr) !important; gap: 14px !important; padding: 18px 14px !important; }
   .takeHomeNumber { width: 34px !important; height: 34px !important; }
@@ -4429,7 +4504,6 @@ const CONTENT = {
       { id: 'risstypen', label: 'Risstypen', icon: '🧩' },
       { id: 'discoider', label: 'Discoider Meniskus', icon: '🔵' },
       { id: 'therapie', label: 'Therapieprinzip', icon: '🧵' },
-      { id: 'fallbeispiele', label: 'Fallbeispiele', icon: '🧪' },
       { id: 'lernvideo', label: 'Lernvideo', icon: '▶️' },
     ],
     heroCards: [
@@ -4505,7 +4579,7 @@ const CONTENT = {
         ['II', 'Linienförmiges Signal, kein Oberflächenkontakt', 'Myxoide Degeneration, diffus', 'Kein Riss, Vorläuferläsion'],
         ['III', 'Signal erreicht Gelenkoberfläche', 'Riss vorhanden', '✅ Echter Meniskusriss'],
       ],
-      extendedTitle: 'Erweiterte Lotysch-Tabelle anzeigen',
+      extendedTitle: 'Lotysch-Klassifikation',
       tableHeaders: ['Grad', 'Morphologie', 'Oberflächenkontakt', 'Klinische Bedeutung'],
       tableRows: [
         ['1', 'punktförmige oder kleine fokale Signalsteigerung', 'kein Kontakt', 'frühe mukoide Degeneration, meist asymptomatisch'],
@@ -4656,7 +4730,6 @@ const CONTENT = {
       { id: 'risstypen', label: 'Tear types', icon: '🧩' },
       { id: 'discoider', label: 'Discoid meniscus', icon: '🔵' },
       { id: 'therapie', label: 'Treatment principle', icon: '🧵' },
-      { id: 'fallbeispiele', label: 'Cases', icon: '🧪' },
       { id: 'lernvideo', label: 'Learning video', icon: '▶️' },
     ],
     heroCards: [
@@ -4732,7 +4805,7 @@ const CONTENT = {
         ['II', 'Linear signal, no surface contact', 'Diffuse myxoid degeneration', 'No tear, precursor lesion'],
         ['III', 'Signal reaches the articular surface', 'Tear present', '✅ True meniscal tear'],
       ],
-      extendedTitle: 'Show extended Lotysch table',
+      extendedTitle: 'Lotysch classification',
       tableHeaders: ['Grade', 'Morphology', 'Surface contact', 'Clinical significance'],
       tableRows: [
         ['1', 'punctate or small focal signal increase', 'no contact', 'early mucoid degeneration, usually asymptomatic'],
@@ -4883,7 +4956,6 @@ const CONTENT = {
       { id: 'risstypen', label: 'انواع پارگی', icon: '🧩' },
       { id: 'discoider', label: 'منیسک دیسکوئید', icon: '🔵' },
       { id: 'therapie', label: 'اصل درمان', icon: '🧵' },
-      { id: 'fallbeispiele', label: 'نمونه کیس‌ها', icon: '🧪' },
       { id: 'lernvideo', label: 'ویدیوی آموزشی', icon: '▶️' },
     ],
     heroCards: [
@@ -4959,7 +5031,7 @@ const CONTENT = {
         ['II', 'سیگنال خطی، بدون تماس با سطح', 'دژنراسیون میکسوئید منتشر', 'پارگی نیست، ضایعه پیش‌زمینه‌ای'],
         ['III', 'سیگنال به سطح مفصلی می‌رسد', 'پارگی وجود دارد', '✅ پارگی واقعی منیسک'],
       ],
-      extendedTitle: 'نمایش جدول کامل Lotysch',
+      extendedTitle: 'طبقه‌بندی Lotysch',
       tableHeaders: ['درجه', 'مورفولوژی', 'تماس با سطح', 'اهمیت بالینی'],
       tableRows: [
         ['1', 'افزایش سیگنال نقطه‌ای یا کوچک', 'بدون تماس', 'دژنراسیون موکوئید اولیه، معمولاً بی‌علامت'],
@@ -5135,7 +5207,7 @@ function Table({ headers, rows, className = '' }) {
     <div className={styles.tableWrap}>
       <table className={`${styles.table} ${className}`}>
         <thead>
-          <tr>{headers.map(header => <th key={header}>{header}</th>)}</tr>
+          <tr>{headers.map(header => <th key={header} scope="col">{header}</th>)}</tr>
         </thead>
         <tbody>
           {rows.map((row, rowIndex) => (
@@ -5560,7 +5632,7 @@ export default function MeniskusPage() {
             </div>
           </Section>
 
-          <Section id="mrt" eyebrow="04" title={copy.mri.title} lead={copy.mri.lead} {...sectionProps('mrt')}>
+          <Section id="mrt" eyebrow="02" title={copy.mri.title} lead={copy.mri.lead} {...sectionProps('mrt')}>
             <div className={styles.protocolGrid}>
               {copy.mri.protocol.map(item => (
                 <div key={item.name} className={styles.protocolCard}>
@@ -5592,7 +5664,7 @@ export default function MeniskusPage() {
             </div>
           </Section>
 
-          <Section id="grading" eyebrow="05" title={copy.grading.title} lead={copy.grading.lead} {...sectionProps('grading')}>
+          <Section id="grading" eyebrow="03" title={copy.grading.title} lead={copy.grading.lead} {...sectionProps('grading')}>
             <div className={styles.gradingFigure}>
               <ImageFigure
                 src="/meniskus/lotysch-grading.png"
@@ -5609,10 +5681,32 @@ export default function MeniskusPage() {
               </div>
             </div>
             <Callout label={copy.keyLabel}>{copy.grading.key}</Callout>
+
+            <div className={styles.subSectionBlock}>
+              <h3 className={styles.subSectionTitle}>{copy.cases.title}</h3>
+              <p className={styles.subSectionLead}>{copy.cases.lead}</p>
+              <div className={styles.caseGrid}>
+                {copy.cases.items.map(item => (
+                  <article key={item.title} className={styles.caseCardLink}>
+                    <CaseStackViewer item={item} labels={sourceLabels} />
+                    <div className={styles.caseBody}>
+                      <div className={styles.caseLabelRow}>
+                        <span className={styles.caseLabel}>{item.label}</span>
+                        {item.tags?.map(tag => <span key={tag} className={styles.caseLabel}>{tag}</span>)}
+                      </div>
+                      <h3>{item.title}</h3>
+                      <p>{item.meta}</p>
+                      <small>{item.credit}</small>
+                      <a href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseExternalLink}>{copy.openCase} ↗</a>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
           </Section>
 
 
-          <Section id="risstypen" eyebrow="07" title={copy.tearTypes.title} lead={copy.tearTypes.lead} {...sectionProps('risstypen')}>
+          <Section id="risstypen" eyebrow="04" title={copy.tearTypes.title} lead={copy.tearTypes.lead} {...sectionProps('risstypen')}>
             <figure className={styles.tearTypesFigure}>
               <img src="/meniskus/meniscal-tear-types.png" alt="Longitudinal, radial, horizontal, bucket-handle and flap meniscal tears with MRI signs" />
             </figure>
@@ -5620,7 +5714,7 @@ export default function MeniskusPage() {
             <Callout type="cave" label={copy.tearTypes.caveTitle}>{copy.tearTypes.caveText}</Callout>
           </Section>
 
-          <Section id="discoider" eyebrow="08" title={copy.discoid.title} lead={copy.discoid.lead} {...sectionProps('discoider')}>
+          <Section id="discoider" eyebrow="05" title={copy.discoid.title} lead={copy.discoid.lead} {...sectionProps('discoider')}>
             <div className={styles.discoidStats}>
               {copy.discoid.stats.map(stat => (
                 <div key={stat.label} className={styles.discoidStatCard}>
@@ -5631,7 +5725,7 @@ export default function MeniskusPage() {
               ))}
             </div>
             <figure className={styles.discoidFigure}>
-              <img src="/meniskus/discoid-meniscus-mri.png" alt="Discoid lateral meniscus MRI criteria: coronal width and sagittal bow-tie appearance" />
+              <img src="/meniskus/discoid-meniscus-mri-v2.png" alt="Discoid lateral meniscus MRI criteria with lateral-only coronal width measurement and six sagittal slices" />
             </figure>
             <div className={styles.card}>
               <h3 className={styles.discoidMriTitle}>{copy.discoid.mriTitle}</h3>
@@ -5642,7 +5736,7 @@ export default function MeniskusPage() {
 
           <Section
             id="therapie"
-            eyebrow="09"
+            eyebrow="06"
             title={<>{copy.therapy.titlePrefix || copy.therapy.title}: <span className={styles.greenTitle}>{copy.therapy.saveText || 'Save the Meniscus'}</span></>}
             lead={copy.therapy.lead}
             {...sectionProps('therapie')}
@@ -5651,27 +5745,7 @@ export default function MeniskusPage() {
             <Callout label={copy.keyLabel}>{copy.therapy.key}</Callout>
           </Section>
 
-          <Section id="fallbeispiele" eyebrow="07" title={copy.cases.title} lead={copy.cases.lead} {...sectionProps('fallbeispiele')}>
-            <div className={styles.caseGrid}>
-              {copy.cases.items.map(item => (
-                <article key={item.title} className={styles.caseCardLink}>
-                  <CaseStackViewer item={item} labels={sourceLabels} />
-                  <div className={styles.caseBody}>
-                    <div className={styles.caseLabelRow}>
-                      <span className={styles.caseLabel}>{item.label}</span>
-                      {item.tags?.map(tag => <span key={tag} className={styles.caseLabel}>{tag}</span>)}
-                    </div>
-                    <h3>{item.title}</h3>
-                    <p>{item.meta}</p>
-                    <small>{item.credit}</small>
-                    <a href={item.url} target="_blank" rel="noopener noreferrer" className={styles.caseExternalLink}>{copy.openCase} ↗</a>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </Section>
-
-          <Section id="lernvideo" eyebrow="10" title={copy.video.title} lead="" {...sectionProps('lernvideo')}>
+          <Section id="lernvideo" eyebrow="07" title={copy.video.title} lead="" {...sectionProps('lernvideo')}>
             <div className={styles.videoCard}>
               <div className={styles.videoFrameWrap}>
                 <iframe
@@ -5690,7 +5764,7 @@ export default function MeniskusPage() {
             </div>
           </Section>
 
-          <Section id="takehome" eyebrow="11" title={takeHomeCopy.title} lead="" className={styles.takeHomeSection} {...sectionProps('takehome')}>
+          <Section id="takehome" eyebrow="08" title={takeHomeCopy.title} lead="" className={styles.takeHomeSection} {...sectionProps('takehome')}>
             <div className={styles.takeHomeBox}>
               <p className={styles.takeHomeIntro}>{takeHomeCopy.lead}</p>
               <div className={styles.takeHomeList}>
