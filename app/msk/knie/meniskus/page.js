@@ -4417,24 +4417,24 @@ html[data-theme='dark'] .sourcesDetails summary {
 .sourcesList { margin: 0 0 10px !important; padding-inline-start: 22px !important; }
 
 @media (max-width: 760px) {
-  .tableWrap { overflow: visible !important; border: 0 !important; background: transparent !important; }
-  .table,
-  .gradeTable,
-  .tearTypeTable { display: block !important; width: 100% !important; min-width: 0 !important; table-layout: auto !important; }
-  .table thead { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
-  .table tbody { display: grid; gap: 12px; }
-  .table tbody tr {
-    display: block;
+  .page:not([data-meniskus-layout='desktop']) .tableWrap { overflow: visible !important; border: 0 !important; background: transparent !important; }
+  .page:not([data-meniskus-layout='desktop']) .table,
+  .page:not([data-meniskus-layout='desktop']) .gradeTable,
+  .page:not([data-meniskus-layout='desktop']) .tearTypeTable { display: block !important; width: 100% !important; min-width: 0 !important; table-layout: auto !important; }
+  .page:not([data-meniskus-layout='desktop']) .table thead { position: absolute !important; display: block !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+  .page:not([data-meniskus-layout='desktop']) .table tbody { display: grid !important; gap: 12px; }
+  .page:not([data-meniskus-layout='desktop']) .table tbody tr {
+    display: block !important;
     overflow: hidden;
     border: 1px solid #c9d8dc;
     border-radius: 12px;
     background: #fff;
     box-shadow: 0 6px 18px rgba(17,36,51,.05);
   }
-  .table td,
-  .table tbody tr:nth-child(even) td,
-  .table tbody tr:hover td {
-    display: grid;
+  .page:not([data-meniskus-layout='desktop']) .table td,
+  .page:not([data-meniskus-layout='desktop']) .table tbody tr:nth-child(even) td,
+  .page:not([data-meniskus-layout='desktop']) .table tbody tr:hover td {
+    display: grid !important;
     grid-template-columns: minmax(108px,36%) minmax(0,1fr);
     gap: 12px;
     padding: 12px 14px !important;
@@ -4444,8 +4444,8 @@ html[data-theme='dark'] .sourcesDetails summary {
     font-size: 14px !important;
     line-height: 1.55 !important;
   }
-  .table td:last-child { border-bottom: 0 !important; }
-  .table td::before {
+  .page:not([data-meniskus-layout='desktop']) .table td:last-child { border-bottom: 0 !important; }
+  .page:not([data-meniskus-layout='desktop']) .table td::before {
     content: attr(data-label);
     color: #607481;
     font-size: 11px;
@@ -4454,20 +4454,20 @@ html[data-theme='dark'] .sourcesDetails summary {
     line-height: 1.45;
     text-transform: uppercase;
   }
-  .table td:first-child {
+  .page:not([data-meniskus-layout='desktop']) .table td:first-child {
     min-width: 0;
     background: #dff1f1 !important;
     color: #075d67 !important;
     font-size: 16px !important;
   }
-  .table td:first-child::before { color: #08717a; }
-  html[data-theme='dark'] .table tbody tr { border-color: rgba(142,181,188,.28); background: #0b202c; }
-  html[data-theme='dark'] .table td,
-  html[data-theme='dark'] .table tbody tr:nth-child(even) td,
-  html[data-theme='dark'] .table tbody tr:hover td { border-bottom-color: rgba(142,181,188,.18) !important; background: #0b202c !important; }
-  html[data-theme='dark'] .table td::before { color: #8eaab2; }
-  html[data-theme='dark'] .table td:first-child { background: #103541 !important; color: #7ce5e1 !important; }
-  html[data-theme='dark'] .table td:first-child::before { color: #67cfcc; }
+  .page:not([data-meniskus-layout='desktop']) .table td:first-child::before { color: #08717a; }
+  html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .table tbody tr { border-color: rgba(142,181,188,.28); background: #0b202c; }
+  html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .table td,
+  html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .table tbody tr:nth-child(even) td,
+  html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .table tbody tr:hover td { border-bottom-color: rgba(142,181,188,.18) !important; background: #0b202c !important; }
+  html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .table td::before { color: #8eaab2; }
+  html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .table td:first-child { background: #103541 !important; color: #7ce5e1 !important; }
+  html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .table td:first-child::before { color: #67cfcc; }
 }
 
 @media (max-width: 620px) {
