@@ -4477,6 +4477,188 @@ html[data-theme='dark'] .sourcesDetails summary {
   html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .table td:first-child::before { color: #67cfcc; }
 }
 
+/* Final table system: editorial rows on desktop, compact labelled records on mobile. */
+.page .tableWrap {
+  margin: 20px 0 !important;
+  overflow-x: auto !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.page .table {
+  width: 100% !important;
+  min-width: 680px !important;
+  border-collapse: separate !important;
+  border-spacing: 0 9px !important;
+  table-layout: auto !important;
+}
+.page .table thead th {
+  padding: 0 17px 7px !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #637782 !important;
+  font-size: 10.5px !important;
+  font-weight: 850 !important;
+  letter-spacing: .075em !important;
+  line-height: 1.3 !important;
+  text-transform: uppercase !important;
+}
+.page .table tbody td,
+.page .table tbody tr:nth-child(even) td,
+.page .table tbody tr:hover td {
+  padding: 15px 17px !important;
+  border-block: 1px solid #d9e4e6 !important;
+  border-inline-start: 0 !important;
+  border-inline-end: 0 !important;
+  background: #fff !important;
+  color: #334854 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  line-height: 1.55 !important;
+  vertical-align: middle !important;
+}
+.page .table tbody td:first-child,
+.page .table tbody tr:nth-child(even) td:first-child,
+.page .table tbody tr:hover td:first-child {
+  min-width: 105px !important;
+  border-inline-start: 1px solid #d9e4e6 !important;
+  border-radius: 12px 0 0 12px !important;
+  background: #e6f5f4 !important;
+  color: #076875 !important;
+  font-size: 15px !important;
+  font-weight: 900 !important;
+}
+[dir='rtl'] .page .table tbody td:first-child,
+[dir='rtl'] .page .table tbody tr:nth-child(even) td:first-child,
+[dir='rtl'] .page .table tbody tr:hover td:first-child {
+  border-radius: 0 12px 12px 0 !important;
+}
+.page .table tbody td:last-child,
+.page .table tbody tr:nth-child(even) td:last-child,
+.page .table tbody tr:hover td:last-child {
+  border-inline-end: 1px solid #d9e4e6 !important;
+  border-radius: 0 12px 12px 0 !important;
+}
+[dir='rtl'] .page .table tbody td:last-child,
+[dir='rtl'] .page .table tbody tr:nth-child(even) td:last-child,
+[dir='rtl'] .page .table tbody tr:hover td:last-child {
+  border-radius: 12px 0 0 12px !important;
+}
+.page .table tbody tr:hover td {
+  border-color: #a9cbcf !important;
+  background: #f8fcfc !important;
+}
+.page .gradeTable tbody tr:last-child td {
+  border-color: #efc7a5 !important;
+  background: #fffaf5 !important;
+}
+.page .gradeTable tbody tr:last-child td:first-child {
+  background: #fff0df !important;
+  color: #b94d16 !important;
+}
+.page .gradeTable tbody tr:last-child td:last-child {
+  color: #9a3e12 !important;
+  font-weight: 800 !important;
+}
+html[data-theme='dark'] .page .table thead th { color: #8fa8b2 !important; }
+html[data-theme='dark'] .page .table tbody td,
+html[data-theme='dark'] .page .table tbody tr:nth-child(even) td,
+html[data-theme='dark'] .page .table tbody tr:hover td {
+  border-color: #294652 !important;
+  background: #0b202c !important;
+  color: #d8e5e8 !important;
+}
+html[data-theme='dark'] .page .table tbody td:first-child,
+html[data-theme='dark'] .page .table tbody tr:nth-child(even) td:first-child,
+html[data-theme='dark'] .page .table tbody tr:hover td:first-child {
+  background: #103541 !important;
+  color: #78e3df !important;
+}
+html[data-theme='dark'] .page .gradeTable tbody tr:last-child td { border-color: #704329 !important; background: #251b18 !important; }
+html[data-theme='dark'] .page .gradeTable tbody tr:last-child td:first-child { background: #38231b !important; color: #ffad73 !important; }
+html[data-theme='dark'] .page .gradeTable tbody tr:last-child td:last-child { color: #ffc09a !important; }
+
+@media (max-width: 760px) {
+  .page:not([data-meniskus-layout='desktop']) .tableWrap { margin: 16px 0 !important; overflow: visible !important; }
+  .page:not([data-meniskus-layout='desktop']) .table,
+  .page:not([data-meniskus-layout='desktop']) .gradeTable,
+  .page:not([data-meniskus-layout='desktop']) .tearTypeTable {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    border-spacing: 0 !important;
+  }
+  .page:not([data-meniskus-layout='desktop']) .table thead {
+    position: absolute !important;
+    display: block !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip-path: inset(50%) !important;
+  }
+  .page:not([data-meniskus-layout='desktop']) .table tbody { display: grid !important; gap: 11px !important; }
+  .page:not([data-meniskus-layout='desktop']) .table tbody tr {
+    display: block !important;
+    overflow: hidden !important;
+    border: 1px solid #cddcdf !important;
+    border-radius: 14px !important;
+    background: #fff !important;
+    box-shadow: 0 7px 22px rgba(25,52,62,.07) !important;
+  }
+  .page:not([data-meniskus-layout='desktop']) .table tbody td,
+  .page:not([data-meniskus-layout='desktop']) .table tbody tr:nth-child(even) td,
+  .page:not([data-meniskus-layout='desktop']) .table tbody tr:hover td {
+    display: grid !important;
+    width: auto !important;
+    min-width: 0 !important;
+    grid-template-columns: 1fr !important;
+    gap: 4px !important;
+    padding: 11px 14px !important;
+    border: 0 !important;
+    border-bottom: 1px solid #e3eaec !important;
+    border-radius: 0 !important;
+    background: #fff !important;
+    color: #334854 !important;
+    font-size: 14px !important;
+  }
+  .page:not([data-meniskus-layout='desktop']) .table tbody td::before {
+    content: attr(data-label) !important;
+    color: #72858f !important;
+    font-size: 9.5px !important;
+    font-weight: 900 !important;
+    letter-spacing: .065em !important;
+    line-height: 1.3 !important;
+    text-transform: uppercase !important;
+  }
+  .page:not([data-meniskus-layout='desktop']) .table tbody td:first-child,
+  .page:not([data-meniskus-layout='desktop']) .gradeTable tbody td:first-child,
+  .page:not([data-meniskus-layout='desktop']) .tearTypeTable tbody td:first-child {
+    display: grid !important;
+    grid-template-columns: auto minmax(0,1fr) !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding-block: 12px !important;
+    border-bottom: 1px solid #c7dddd !important;
+    background: #e6f5f4 !important;
+    color: #076875 !important;
+    font-size: 16px !important;
+  }
+  .page:not([data-meniskus-layout='desktop']) .table tbody td:first-child::before { color: #21828b !important; }
+  .page:not([data-meniskus-layout='desktop']) .table tbody td:last-child { border-bottom: 0 !important; }
+  .page:not([data-meniskus-layout='desktop']) .gradeTable tbody tr:last-child { border-color: #e3b98e !important; }
+  .page:not([data-meniskus-layout='desktop']) .gradeTable tbody tr:last-child td { background: #fffaf5 !important; }
+  .page:not([data-meniskus-layout='desktop']) .gradeTable tbody tr:last-child td:first-child { background: #fff0df !important; color: #b94d16 !important; }
+  html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .table tbody tr { border-color: #294652 !important; background: #0b202c !important; box-shadow: none !important; }
+  html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .table tbody td,
+  html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .table tbody tr:nth-child(even) td,
+  html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .table tbody tr:hover td { border-bottom-color: #203d48 !important; background: #0b202c !important; color: #d8e5e8 !important; }
+  html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .table tbody td::before { color: #8fa8b2 !important; }
+  html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .table tbody td:first-child { border-bottom-color: #31515c !important; background: #103541 !important; color: #78e3df !important; }
+  html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .gradeTable tbody tr:last-child td { background: #251b18 !important; }
+  html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .gradeTable tbody tr:last-child td:first-child { background: #38231b !important; color: #ffad73 !important; }
+}
+
 @media (max-width: 620px) {
   .takeHomeItem,
   .takeHomeItem:last-child { grid-template-columns: 34px minmax(0,1fr) !important; gap: 14px !important; padding: 18px 14px !important; }
@@ -4503,6 +4685,7 @@ const CONTENT = {
     actionFlash: 'Flashcards',
     openCase: 'Bild direkt in Radiopaedia öffnen',
     zoomImage: 'Bild vergrößern',
+    aiImageNotice: 'KI-generierte Orientierungsgrafik. Einzelne Details können ungenau sein; nicht als diagnostische Quelle verwenden.',
     closePreview: 'Vorschau schließen',
     sections: [
       { id: 'anatomie', label: 'Anatomie und Vaskularisation', icon: '🦴' },
@@ -4729,6 +4912,7 @@ const CONTENT = {
     actionFlash: 'Flashcards',
     openCase: 'Open image directly in Radiopaedia',
     zoomImage: 'Enlarge image',
+    aiImageNotice: 'AI-generated orientation graphic. Some details may be inaccurate; do not use it as a diagnostic source.',
     closePreview: 'Close preview',
     sections: [
       { id: 'anatomie', label: 'Anatomy and vascular supply', icon: '🦴' },
@@ -4955,6 +5139,7 @@ const CONTENT = {
     actionFlash: 'فلش‌کارت',
     openCase: 'باز کردن مستقیم تصویر در Radiopaedia',
     zoomImage: 'بزرگ‌نمایی تصویر',
+    aiImageNotice: 'این تصویر با هوش مصنوعی و فقط برای جهت‌یابی آموزشی ساخته شده است؛ ممکن است برخی جزئیات نادرست باشند و نباید به‌عنوان منبع تشخیصی استفاده شود.',
     closePreview: 'بستن نمایش بزرگ',
     sections: [
       { id: 'anatomie', label: 'آناتومی و خون‌رسانی', icon: '🦴' },
@@ -5354,7 +5539,7 @@ function Sidebar({ sections, toc, activeId, onClick }) {
   )
 }
 
-function ImageFigure({ src, alt, caption, zoomable = false, zoomLabel = 'Bild vergrößern', onZoom }) {
+function ImageFigure({ src, alt, caption, aiNotice, zoomable = false, zoomLabel = 'Bild vergrößern', onZoom }) {
   return (
     <figure className={styles.figure}>
       {zoomable ? (
@@ -5365,7 +5550,12 @@ function ImageFigure({ src, alt, caption, zoomable = false, zoomLabel = 'Bild ve
       ) : (
         <img src={src} alt={alt} />
       )}
-      {caption && <figcaption>{caption}</figcaption>}
+      {(caption || aiNotice) && (
+        <figcaption>
+          {caption && <span className={styles.figureCaptionText}>{caption}</span>}
+          {aiNotice && <small className={styles.aiImageNotice}>{aiNotice}</small>}
+        </figcaption>
+      )}
     </figure>
   )
 }
@@ -5677,6 +5867,7 @@ export default function MeniskusPage() {
                 src="/meniskus/lotysch-grading.png"
                 alt="Lotysch grading of intrameniscal MRI signal from grade 0 to grade 3"
                 caption={copy.grading.lotyschTitle}
+                aiNotice={copy.aiImageNotice}
                 onZoom={() => setPreviewImage({ src: '/meniskus/lotysch-grading.png', alt: copy.grading.lotyschTitle })}
                 zoomLabel={copy.zoomImage}
               />
@@ -5716,6 +5907,7 @@ export default function MeniskusPage() {
           <Section id="risstypen" eyebrow="04" title={copy.tearTypes.title} lead={copy.tearTypes.lead} {...sectionProps('risstypen')}>
             <figure className={styles.tearTypesFigure}>
               <img src="/meniskus/meniscal-tear-types.png" alt="Longitudinal, radial, horizontal, bucket-handle and flap meniscal tears with MRI signs" />
+              <figcaption className={styles.aiImageNotice}>{copy.aiImageNotice}</figcaption>
             </figure>
             <Table headers={copy.tearTypes.tableHeaders} rows={copy.tearTypes.tableRows} className={styles.tearTypeTable} />
             <Callout type="cave" label={copy.tearTypes.caveTitle}>{copy.tearTypes.caveText}</Callout>
@@ -5733,6 +5925,7 @@ export default function MeniskusPage() {
             </div>
             <figure className={styles.discoidFigure}>
               <img src="/meniskus/discoid-meniscus-mri-v2.png" alt="Discoid lateral meniscus MRI criteria with lateral-only coronal width measurement and six sagittal slices" />
+              <figcaption className={styles.aiImageNotice}>{copy.aiImageNotice}</figcaption>
             </figure>
             <div className={styles.card}>
               <h3 className={styles.discoidMriTitle}>{copy.discoid.mriTitle}</h3>
