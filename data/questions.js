@@ -37,6 +37,78 @@ import { MAMMOGRAPHY_BASICS_QUESTIONS } from './mammaMammographyBasics'
 import { MAMMOGRAPHY_CALCIFICATIONS_QUESTIONS } from './mammaMammographyCalcifications'
 import { CARDIOMYOPATHY_QUESTIONS } from './cardiomyopathy'
 
+const MENISKUS_IMAGE_QUESTIONS = {
+  de: [
+    {
+      id: 'meniskus-de-07', tags: ['meniskus', 'knie'], fach: 'msk',
+      image: { src: '/meniskus/cases/case-75168/frame-09.jpeg', alt: 'Sagittale PD-Fat-Sat-MRT des Knies mit keilförmig-globulärem Signal im Meniskus', caption: 'Sagittale PD-Fat-Sat-Aufnahme. Beurteile Morphologie und Oberflächenkontakt des intrameniskalen Signals.', credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168', sourceUrl: 'https://radiopaedia.org/cases/75168' },
+      question: 'Das gezeigte keilförmig/globuläre intrameniskale Signal erreicht keine Gelenkfläche sicher. Welchem Lotysch-Grad entspricht der Befund?',
+      options: [{ id: 'A', text: 'Grad 1' }, { id: 'B', text: 'Grad 2a' }, { id: 'C', text: 'Grad 2c' }, { id: 'D', text: 'Grad 3' }], correct: 'C',
+      explanation: 'Ein keilförmiges oder globuläres intrameniskales Signal ohne sicheren Kontakt zu einer Gelenkfläche entspricht Grad 2c. Es zeigt eine fortgeschrittene mukoide Degeneration mit erhöhtem Risiko eines okkulten Risses, ist aber ohne reproduzierbaren Oberflächenkontakt noch kein sicherer Grad-3-Riss.',
+    },
+    {
+      id: 'meniskus-de-08', tags: ['meniskus', 'knie'], fach: 'msk',
+      image: { src: '/meniskus/cases/case-14060-coronal-stir/frame-04.jpg', alt: 'Koronale STIR-MRT des Knies mit linearem intrameniskalem Signal', caption: 'Koronale STIR-Aufnahme. Der Oberflächenkontakt ist nur auf dieser einzelnen Schicht nachweisbar.', credit: 'Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060', sourceUrl: 'https://radiopaedia.org/cases/14060' },
+      question: 'Ein lineares Signal berührt die Meniskusoberfläche nur auf der gezeigten Einzelschicht. Wie ist dieser Befund korrekt einzuordnen?',
+      options: [{ id: 'A', text: 'Grad 2b; für einen sicheren Riss inkonklusiv' }, { id: 'B', text: 'Grad 3; sicherer Meniskusriss' }, { id: 'C', text: 'Grad 1; fokale Degeneration' }, { id: 'D', text: 'Normalbefund' }], correct: 'A',
+      explanation: 'Ein lineares intrameniskales Signal mit Oberflächenkontakt auf nur einer Schicht entspricht Grad 2b. Für die sichere Diagnose eines Meniskusrisses muss der Oberflächenkontakt nach der Two-slice-touch-Regel auf mindestens zwei direkt benachbarten Schichten sichtbar sein.',
+    },
+    {
+      id: 'meniskus-de-09', tags: ['meniskus', 'knie'], fach: 'msk',
+      image: { src: '/meniskus/vascular-zones.png', alt: 'Schematische Aufsicht beider Menisken mit den nummerierten Gefäßzonen 1 bis 3', caption: 'Gefäßzonen des Meniskus: Die Nummerierung verläuft von der kapselnahen Peripherie zum freien Innenrand.' },
+      question: 'Welche nummerierte Zone bietet bei einem frischen Riss die besten biologischen Voraussetzungen für eine Meniskusnaht?',
+      options: [{ id: 'A', text: 'Zone 1' }, { id: 'B', text: 'Zone 2' }, { id: 'C', text: 'Zone 3' }, { id: 'D', text: 'Alle drei Zonen gleich' }], correct: 'A',
+      explanation: 'Zone 1 liegt kapselnah in der gut durchbluteten roten Zone und hat deshalb das höchste Heilungspotenzial. Zone 2 ist die rot-weiße Übergangszone; Zone 3 liegt zentral, ist avaskulär und heilt am schlechtesten.',
+    },
+  ],
+  en: [
+    {
+      id: 'meniskus-en-07', tags: ['meniskus', 'knie'], fach: 'msk',
+      image: { src: '/meniskus/cases/case-75168/frame-09.jpeg', alt: 'Sagittal PD fat-saturated knee MRI showing wedge-shaped globular intrameniscal signal', caption: 'Sagittal PD fat-saturated image. Assess the morphology and articular-surface contact of the intrameniscal signal.', credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168', sourceUrl: 'https://radiopaedia.org/cases/75168' },
+      question: 'The wedge-shaped/globular intrameniscal signal shown does not definitely reach an articular surface. Which Lotysch grade applies?',
+      options: [{ id: 'A', text: 'Grade 1' }, { id: 'B', text: 'Grade 2a' }, { id: 'C', text: 'Grade 2c' }, { id: 'D', text: 'Grade 3' }], correct: 'C',
+      explanation: 'A wedge-shaped or globular intrameniscal signal without definite articular-surface contact is grade 2c. It represents advanced mucoid degeneration with an increased risk of an occult tear, but without reproducible surface contact it is not yet a definite grade-3 tear.',
+    },
+    {
+      id: 'meniskus-en-08', tags: ['meniskus', 'knie'], fach: 'msk',
+      image: { src: '/meniskus/cases/case-14060-coronal-stir/frame-04.jpg', alt: 'Coronal STIR knee MRI showing linear intrameniscal signal', caption: 'Coronal STIR image. Surface contact is demonstrable on this single slice only.', credit: 'Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060', sourceUrl: 'https://radiopaedia.org/cases/14060' },
+      question: 'A linear signal contacts the meniscal surface only on the single slice shown. How should this finding be classified?',
+      options: [{ id: 'A', text: 'Grade 2b; inconclusive for a definite tear' }, { id: 'B', text: 'Grade 3; definite meniscal tear' }, { id: 'C', text: 'Grade 1; focal degeneration' }, { id: 'D', text: 'Normal meniscus' }], correct: 'A',
+      explanation: 'A linear intrameniscal signal contacting an articular surface on only one slice is grade 2b. A definite tear requires surface contact on at least two directly adjacent slices according to the two-slice-touch rule.',
+    },
+    {
+      id: 'meniskus-en-09', tags: ['meniskus', 'knie'], fach: 'msk',
+      image: { src: '/meniskus/vascular-zones.png', alt: 'Superior schematic of both menisci with vascular zones numbered 1 through 3', caption: 'Meniscal vascular zones are numbered from the capsular periphery toward the free inner margin.' },
+      question: 'Which numbered zone provides the best biological conditions for repair of a fresh meniscal tear?',
+      options: [{ id: 'A', text: 'Zone 1' }, { id: 'B', text: 'Zone 2' }, { id: 'C', text: 'Zone 3' }, { id: 'D', text: 'All three zones equally' }], correct: 'A',
+      explanation: 'Zone 1 is the peripheral, well-vascularised red zone next to the capsule and therefore has the greatest healing potential. Zone 2 is the red-white transition zone, while central zone 3 is avascular and heals least reliably.',
+    },
+  ],
+  fa: [
+    {
+      id: 'meniskus-fa-07', tags: ['meniskus', 'knie'], fach: 'msk',
+      image: { src: '/meniskus/cases/case-75168/frame-09.jpeg', alt: 'MRI ساژیتال PD با حذف چربی از زانو و سیگنال گوه‌ای یا گلوبولار داخل منیسک', caption: 'تصویر ساژیتال PD با حذف چربی؛ شکل سیگنال داخل منیسک و تماس آن با سطح مفصلی را ارزیابی کنید.', credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168', sourceUrl: 'https://radiopaedia.org/cases/75168' },
+      question: 'سیگنال گوه‌ای/گلوبولار داخل منیسک در تصویر، تماس قطعی با سطح مفصلی ندارد. این یافته با کدام درجهٔ Lotysch مطابقت دارد؟',
+      options: [{ id: 'A', text: 'درجه ۱' }, { id: 'B', text: 'درجه 2a' }, { id: 'C', text: 'درجه 2c' }, { id: 'D', text: 'درجه ۳' }], correct: 'C',
+      explanation: 'سیگنال گوه‌ای یا گلوبولار داخل منیسک که تماس قطعی با سطح مفصلی ندارد، درجه 2c است. این یافته نشان‌دهندهٔ دژنراسیون موکوئید پیشرفته و افزایش احتمال پارگی مخفی است؛ اما بدون تماس تکرارپذیر با سطح، هنوز پارگی قطعی درجه ۳ محسوب نمی‌شود.',
+    },
+    {
+      id: 'meniskus-fa-08', tags: ['meniskus', 'knie'], fach: 'msk',
+      image: { src: '/meniskus/cases/case-14060-coronal-stir/frame-04.jpg', alt: 'MRI کرونال STIR زانو با سیگنال خطی داخل منیسک', caption: 'تصویر کرونال STIR؛ تماس سیگنال با سطح فقط در همین تک‌برش دیده می‌شود.', credit: 'Case courtesy of Roberto Schubert, Radiopaedia.org · rID: 14060', sourceUrl: 'https://radiopaedia.org/cases/14060' },
+      question: 'یک سیگنال خطی فقط در همین تک‌برش با سطح منیسک تماس دارد. تفسیر درست این یافته چیست؟',
+      options: [{ id: 'A', text: 'درجه 2b؛ برای تشخیص پارگی قطعی کافی نیست' }, { id: 'B', text: 'درجه ۳؛ پارگی قطعی منیسک' }, { id: 'C', text: 'درجه ۱؛ دژنراسیون فوکال' }, { id: 'D', text: 'منیسک طبیعی' }], correct: 'A',
+      explanation: 'سیگنال خطی داخل منیسک که تنها در یک برش با سطح مفصلی تماس دارد، درجه 2b است. طبق قانون Two-slice-touch، برای تشخیص قطعی پارگی باید تماس با سطح در حداقل دو برش مجاور دیده شود.',
+    },
+    {
+      id: 'meniskus-fa-09', tags: ['meniskus', 'knie'], fach: 'msk',
+      image: { src: '/meniskus/vascular-zones.png', alt: 'نمای شماتیک فوقانی هر دو منیسک با نواحی عروقی شماره‌گذاری‌شده از ۱ تا ۳', caption: 'نواحی عروقی منیسک از محیط مجاور کپسول به سمت لبهٔ آزاد مرکزی شماره‌گذاری شده‌اند.' },
+      question: 'کدام ناحیهٔ شماره‌گذاری‌شده در یک پارگی تازه، بهترین شرایط بیولوژیک را برای ترمیم با بخیه دارد؟',
+      options: [{ id: 'A', text: 'ناحیه ۱' }, { id: 'B', text: 'ناحیه ۲' }, { id: 'C', text: 'ناحیه ۳' }, { id: 'D', text: 'هر سه ناحیه به یک اندازه' }], correct: 'A',
+      explanation: 'ناحیه ۱ در محیط منیسک و مجاور کپسول قرار دارد و همان ناحیه قرمز با خون‌رسانی مناسب است؛ بنابراین بیشترین پتانسیل ترمیم را دارد. ناحیه ۲ ناحیه گذار قرمز-سفید است و ناحیه ۳ در مرکز منیسک، بدون عروق و کم‌استعدادترین بخش برای ترمیم است.',
+    },
+  ],
+}
+
 const DIVERTICULITIS_QUESTION_CONTENT = [
   {
     id: 'definition',
@@ -592,6 +664,7 @@ export const QUESTION_BANK = {
     ...MAMMOGRAPHY_CALCIFICATIONS_QUESTIONS.de,
     ...CARDIOMYOPATHY_QUESTIONS.de,
     ...FLEISCHNER_QUESTIONS.de,
+    ...MENISKUS_IMAGE_QUESTIONS.de,
     {
       "id": "meniskus-de-01",
       "tags": [
@@ -1957,6 +2030,7 @@ export const QUESTION_BANK = {
     ...KNIE_LIGAMENTE_QUESTIONS.en,
     ...SPINE_TRAUMA_QUESTIONS.en,
     ...HRCT_QUESTIONS.en,
+    ...MENISKUS_IMAGE_QUESTIONS.en,
     {
       "id": "meniskus-en-01",
       "tags": [
@@ -3322,6 +3396,7 @@ export const QUESTION_BANK = {
     ...KNIE_LIGAMENTE_QUESTIONS.fa,
     ...SPINE_TRAUMA_QUESTIONS.fa,
     ...HRCT_QUESTIONS.fa,
+    ...MENISKUS_IMAGE_QUESTIONS.fa,
     {
       "id": "meniskus-fa-01",
       "tags": [

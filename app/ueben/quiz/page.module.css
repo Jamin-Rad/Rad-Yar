@@ -61,6 +61,39 @@
   color: #1a2051; line-height: 1.5; margin-bottom: 22px;
 }
 
+.questionFigure {
+  margin: -4px 0 22px;
+  overflow: hidden;
+  border: 1px solid #e2e6f0;
+  border-radius: 14px;
+  background: #0f172a;
+}
+.questionImage {
+  display: block;
+  width: 100%;
+  height: min(44vw, 390px);
+  min-height: 240px;
+  object-fit: contain;
+  background: #0f172a;
+}
+.questionCaption {
+  display: grid;
+  gap: 4px;
+  padding: 10px 12px;
+  border-top: 1px solid #e2e6f0;
+  background: #fff;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.questionCaption a,
+.questionCaption small {
+  color: #94a3b8;
+  font-size: 10.5px;
+  text-decoration: none;
+}
+.questionCaption a:hover { color: #f97316; }
+
 /* ── OPTIONS ───────────────────────────────────── */
 .options { display: flex; flex-direction: column; gap: 9px; margin-bottom: 20px; }
 
@@ -279,6 +312,8 @@
   .tracker { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
   .trackerTitle { white-space: nowrap; }
   .progressTrack { width: 100px; }
+  .quizCard { padding: 20px 16px 18px; }
+  .questionImage { height: 64vw; min-height: 200px; max-height: 330px; }
 }
 
 /* ── DARK THEME ───────────────────────────────────── */
@@ -330,3 +365,9 @@
 :global(html[data-theme='dark']) .nextBtnFull { background: #f8fafc; color: #0f172a; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
 :global(html[data-theme='dark']) .nextBtnFull:hover { background: #e2e8f0; }
 :global(html[data-theme='dark']) .option::before { background: rgba(249,115,22,0.14); }
+:global(html[data-theme='dark']) .questionFigure,
+:global(html[data-theme='dark']) .questionCaption {
+  border-color: rgba(148,163,184,0.18);
+  background: rgba(15,23,42,0.94);
+}
+:global(html[data-theme='dark']) .questionCaption { color: #9aa9bf; }

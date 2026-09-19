@@ -518,6 +518,22 @@ function QuizContent() {
           <div className={styles.qNum}>{ui.questionOf(current+1, total)}</div>
           <div className={styles.qText}>{q.question}</div>
 
+          {q.image && (
+            <figure className={styles.questionFigure}>
+              <img src={q.image.src} alt={q.image.alt || ''} className={styles.questionImage} />
+              {(q.image.caption || q.image.credit) && (
+                <figcaption className={styles.questionCaption}>
+                  {q.image.caption && <span>{q.image.caption}</span>}
+                  {q.image.credit && (
+                    q.image.sourceUrl
+                      ? <a href={q.image.sourceUrl} target="_blank" rel="noopener noreferrer">{q.image.credit}</a>
+                      : <small>{q.image.credit}</small>
+                  )}
+                </figcaption>
+              )}
+            </figure>
+          )}
+
           <div className={styles.options}>
             {q.options.map(opt => {
               let cls = styles.option
