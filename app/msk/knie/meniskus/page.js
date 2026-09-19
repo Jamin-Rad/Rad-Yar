@@ -4361,6 +4361,20 @@ html[data-theme='dark'] .table td:first-child {
 }
 .discoidFigure img { display: block; width: 100%; min-width: 980px; height: auto; border-radius: 11px; }
 html[data-theme='dark'] .discoidFigure { border-color: rgba(142,181,188,.24); background: #071827; }
+.figureCaptionText { display: block; }
+.aiImageNotice {
+  display: block;
+  margin-top: 7px;
+  padding: 0 10px 3px;
+  color: #778894;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: center;
+}
+.tearTypesFigure > .aiImageNotice,
+.discoidFigure > .aiImageNotice { margin: 8px auto 1px; max-width: 760px; }
+html[data-theme='dark'] .aiImageNotice { color: #8fa6af; }
 
 /* Take-home pattern follows the flat numbered scan used in Mammographie/Verkalkungen. */
 .takeHomeSection { border-color: var(--meniscus-line) !important; background: var(--meniscus-paper) !important; }
