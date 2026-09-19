@@ -15,9 +15,9 @@ const TOPICS = [
   },
   {
     key: 'meniskus',
-    href: '/msk/knie/meniskus/mcq',
+    href: '/ueben/quiz?fach=msk&n=9&themen=meniskus',
     icon: '🦵', iconImage: '/fach/msk.png', color: '#fb923c', available: true,
-    count: { de: '6 Fragen', en: '6 Questions', fa: '۶ سوال' },
+    count: { de: '9 Fragen', en: '9 Questions', fa: '۹ سؤال' },
     name: { de: 'Knie · Meniskus', en: 'Knee · Meniscus', fa: 'زانو · منیسک' },
     desc: { de: 'Anatomie · MRT-Grading · Vaskularisation · Rissdiagnostik', en: 'Anatomy · MRI grading · vascular zones · tear diagnosis', fa: 'آناتومی · درجه‌بندی MRI · خون‌رسانی · تشخیص پارگی' },
   },
