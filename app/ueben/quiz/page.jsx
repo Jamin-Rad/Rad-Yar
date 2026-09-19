@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { useUser } from '@clerk/nextjs'
 import { useLanguage } from '@/providers/LanguageProvider'
-import { shuffleQuestionIds, getQuestionsForIds, getQuestionsByIds } from '@/data/questions'
+import { shuffleQuestionIds, getQuestionsForIds } from '@/data/questions'
 import { isSubscriptionActive, FREE_ITEM_LIMIT } from '@/utils/subscription'
 import { getWrongAnswerExplanation } from '@/utils/answerFeedback'
 import { persistProgressWrite } from '@/utils/progressSync'
@@ -32,7 +32,7 @@ const FACH_NAMES = {
 
 const UI = {
   de: {
-    back: '← Zurück',
+    back: 'Zurück',
     noQ: 'Für die gewählten Themen sind noch keine Fragen verfügbar.',
     noQSub: 'Die Fragendatenbank wird laufend erweitert.',
     backSetup: '← Zur Auswahl',
@@ -55,15 +55,22 @@ const UI = {
     allQ: 'Alle',
     yourAnswer: 'Deine Antwort:',
     rightAnswer: 'Richtig:',
-    excellent: 'Ausgezeichnet! 🏆',
-    veryGood: 'Sehr gut! 🎯',
-    good: 'Gut gemacht 📖',
-    practice: 'Weiter üben 💪',
+    excellent: 'Ausgezeichnet!',
+    veryGood: 'Sehr gut!',
+    good: 'Gut gemacht',
+    practice: 'Weiter üben',
+    overview: 'Fragenübersicht',
+    score: 'Score',
+    correctShort: 'Richtig',
+    wrongShort: 'Falsch',
+    remaining: 'Offen',
+    keyboardHint: 'Tastatur: A–D · Enter',
+    noWrong: 'Stark – keine falschen Antworten in diesem Durchgang.',
     freeLimitNote: `Kostenlose Version: max. ${FREE_ITEM_LIMIT} Fragen pro Durchgang.`,
     upgradeLink: 'Mit Abo unbegrenzt →',
   },
   en: {
-    back: '← Back',
+    back: 'Back',
     noQ: 'No questions available for the selected topics yet.',
     noQSub: 'The question database is continuously growing.',
     backSetup: '← Back to setup',
@@ -86,15 +93,22 @@ const UI = {
     allQ: 'All',
     yourAnswer: 'Your answer:',
     rightAnswer: 'Correct:',
-    excellent: 'Excellent! 🏆',
-    veryGood: 'Very good! 🎯',
-    good: 'Well done 📖',
-    practice: 'Keep practicing 💪',
+    excellent: 'Excellent!',
+    veryGood: 'Very good!',
+    good: 'Well done',
+    practice: 'Keep practicing',
+    overview: 'Question overview',
+    score: 'Score',
+    correctShort: 'Correct',
+    wrongShort: 'Incorrect',
+    remaining: 'Open',
+    keyboardHint: 'Keyboard: A–D · Enter',
+    noWrong: 'Great work – no incorrect answers in this session.',
     freeLimitNote: `Free version: max. ${FREE_ITEM_LIMIT} questions per session.`,
     upgradeLink: 'Unlimited with a subscription →',
   },
   fa: {
-    back: '← بازگشت',
+    back: 'بازگشت',
     noQ: 'برای موضوعات انتخاب شده هنوز سوالی موجود نیست.',
     noQSub: 'بانک سوالات در حال توسعه است.',
     backSetup: '← بازگشت به انتخاب',
@@ -117,10 +131,17 @@ const UI = {
     allQ: 'همه',
     yourAnswer: 'پاسخ شما:',
     rightAnswer: 'درست:',
-    excellent: 'عالی! 🏆',
-    veryGood: 'خیلی خوب! 🎯',
-    good: 'خوب بود 📖',
-    practice: 'ادامه تمرین 💪',
+    excellent: 'عالی!',
+    veryGood: 'خیلی خوب!',
+    good: 'خوب بود',
+    practice: 'ادامه تمرین',
+    overview: 'مرور سؤال‌ها',
+    score: 'امتیاز',
+    correctShort: 'درست',
+    wrongShort: 'نادرست',
+    remaining: 'باقی‌مانده',
+    keyboardHint: 'صفحه‌کلید: A–D · Enter',
+    noWrong: 'عالی است — در این دور پاسخ نادرستی نداشتید.',
     freeLimitNote: `نسخه رایگان: حداکثر ${FREE_ITEM_LIMIT} سؤال در هر دور.`,
     upgradeLink: 'با اشتراک نامحدود ←',
   },
@@ -167,6 +188,12 @@ function hashString(value) {
   return hash >>> 0
 }
 
+function canonicalQuestionId(questionId) {
+  return typeof questionId === 'string'
+    ? questionId.replace(/-(?:de|en|fa)-/, '-de-')
+    : questionId
+}
+
 function seededShuffle(items, seedInput) {
   const result = [...items]
   let seed = hashString(seedInput) || 1
@@ -182,7 +209,7 @@ function shuffleOptionsForSession(question, sessionKey) {
   const originalOptions = question.options || []
   const orderedOriginalIds = seededShuffle(
     originalOptions.map(option => option.id),
-    `${sessionKey}:${question.id}:options`
+    `${sessionKey}:${question.sessionId || question.id}:options`
   )
   const originalById = new Map(originalOptions.map(option => [option.id, option]))
   const idMap = new Map()
@@ -254,12 +281,19 @@ function QuizContent() {
   )
 
   // Translate to current language without re-shuffling
-  const rawQuestions = useMemo(
-    () => questionIds.length
-      ? getQuestionsByIds(orderedIds, lang)
-      : getQuestionsForIds(orderedIds, lang),
-    [orderedIds, lang]
-  )
+  const rawQuestions = useMemo(() => {
+    if (questionIds.length) {
+      const canonicalIds = orderedIds.map(canonicalQuestionId)
+      return getQuestionsForIds(canonicalIds, lang).map((question, index) => ({
+        ...question,
+        sessionId: canonicalIds[index] || canonicalQuestionId(question.id),
+      }))
+    }
+    return getQuestionsForIds(orderedIds, lang).map((question, index) => ({
+      ...question,
+      sessionId: orderedIds[index] || question.id,
+    }))
+  }, [orderedIds, lang, questionIds.length])
   const questions = useMemo(
     () => rawQuestions.map(question => shuffleOptionsForSession(question, sessionKey)),
     [rawQuestions, sessionKey]
@@ -270,7 +304,9 @@ function QuizContent() {
   const [current, setCurrent] = useState(() => Math.max(0, Number(storedSession?.current) || 0))
   const [selected, setSelected] = useState(() => storedSession?.selected || null)
   const [checked,  setChecked]  = useState(() => Boolean(storedSession?.checked))
-  const [answers,  setAnswers]  = useState(() => Array.isArray(storedSession?.answers) ? storedSession.answers : [])
+  const [answers,  setAnswers]  = useState(() => Array.isArray(storedSession?.answers)
+    ? storedSession.answers.map(answer => ({ ...answer, qId: canonicalQuestionId(answer.qId) }))
+    : [])
   const [phase,    setPhase]    = useState(() => storedSession?.phase === 'result' ? 'result' : 'quiz') // 'quiz' | 'result'
   const [filter,   setFilter]   = useState('all')
 
@@ -320,15 +356,15 @@ function QuizContent() {
     if (!selected || !q) return
     setChecked(true)
     setAnswers(prev => [
-      ...prev.filter(a => a.qId !== q.id),
-      { qId: q.id, selected, correct: selected === q.correct },
+      ...prev.filter(a => a.qId !== q.sessionId),
+      { qId: q.sessionId, selected, correct: selected === q.correct },
     ])
   }
 
   const goToQuestion = (index) => {
     const nextQuestion = questions[index]
     if (!nextQuestion) return
-    const existingAnswer = answers.find(answer => answer.qId === nextQuestion.id)
+    const existingAnswer = answers.find(answer => answer.qId === nextQuestion.sessionId)
     setCurrent(index)
     setSelected(existingAnswer?.selected || null)
     setChecked(Boolean(existingAnswer))
@@ -372,7 +408,7 @@ function QuizContent() {
 
   const handleNext = () => {
     if (isLast) {
-      const finalAnswers = [...answers.filter(a => a.qId !== q.id), { qId: q.id, selected, correct: selected === q.correct }]
+      const finalAnswers = [...answers.filter(a => a.qId !== q.sessionId), { qId: q.sessionId, selected, correct: selected === q.correct }]
       saveMcqResult(finalAnswers)
       setAnswers(finalAnswers)
       setPhase('result')
@@ -386,7 +422,7 @@ function QuizContent() {
     if (!timed || phase !== 'quiz' || timeUpRef.current || timeLeft > 0 || total === 0) return
     timeUpRef.current = true
     const finalAnswers = checked && q
-      ? [...answers.filter(a => a.qId !== q.id), { qId: q.id, selected, correct: selected === q.correct }]
+      ? [...answers.filter(a => a.qId !== q.sessionId), { qId: q.sessionId, selected, correct: selected === q.correct }]
       : answers
     saveMcqResult(finalAnswers)
     setAnswers(finalAnswers)
@@ -400,6 +436,35 @@ function QuizContent() {
     setTimeLeft(totalSeconds); timeUpRef.current = false
     if (typeof window !== 'undefined') localStorage.removeItem(sessionKey)
   }
+
+  useEffect(() => {
+    if (phase !== 'quiz' || !q) return undefined
+    const handleKeyDown = event => {
+      if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return
+      const target = event.target
+      if (target instanceof HTMLElement && ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName)) return
+
+      const option = q.options.find(item => item.id === event.key.toUpperCase())
+      if (option && !checked) {
+        event.preventDefault()
+        setSelected(option.id)
+        return
+      }
+
+      if (event.key === 'Enter') {
+        if (!checked && selected) {
+          event.preventDefault()
+          handleCheck()
+        } else if (checked) {
+          event.preventDefault()
+          handleNext()
+        }
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [checked, phase, q, selected])
 
   // ── NO QUESTIONS ──────────────────────────────
   if (total === 0) return (
@@ -417,14 +482,16 @@ function QuizContent() {
   if (phase === 'result') {
     const color = gradeColor(score, total)
     const filtered = filter === 'wrong'
-      ? questions.filter(q => answers.find(a => a.qId === q.id && !a.correct))
+      ? questions.filter(question => answers.find(answer => answer.qId === question.sessionId && !answer.correct))
       : questions
 
     return (
       <div className={styles.page}>
         <div className={styles.topBar}>
-          <Link href={backHref} className={styles.back}>{ui.back}</Link>
-          <span className={styles.topFach}>{fachLabel}</span>
+          <div className={styles.topBarInner}>
+            <Link href={backHref} className={styles.back}><ArrowIcon direction="back" />{ui.back}</Link>
+            <span className={styles.topFach}>{fachLabel}</span>
+          </div>
         </div>
         {!subscriptionActive && (
           <div className={styles.freeLimitBanner}>
@@ -433,12 +500,20 @@ function QuizContent() {
           </div>
         )}
         <div className={styles.resultWrap}>
-          {/* Score card */}
-          <div className={styles.scoreCard} style={{ borderColor: color }}>
-            <div className={styles.scoreNum} style={{ color }}>{score}<span className={styles.scoreTotal}>/{total}</span></div>
-            <div className={styles.gradeLabel} style={{ color }}>{gradeLabel(score, total, ui)}</div>
-            <div className={styles.scoreBar}><div className={styles.scoreBarFill} style={{ width: `${(score/total)*100}%`, background: color }}/></div>
-            <div className={styles.scoreDesc}>{ui.scoreLabel(score, total)}</div>
+          <div className={styles.scoreCard}>
+            <div className={styles.scoreRing} style={{ '--score-color': color, '--score-angle': `${(score / total) * 360}deg` }}>
+              <div className={styles.scoreRingInner}>
+                <div className={styles.scoreNum} style={{ color }}>{score}<span className={styles.scoreTotal}>/{total}</span></div>
+              </div>
+            </div>
+            <div className={styles.scoreCopy}>
+              <div className={styles.gradeLabel} style={{ color }}>{gradeLabel(score, total, ui)}</div>
+              <div className={styles.scoreDesc}>{ui.scoreLabel(score, total)}</div>
+              <div className={styles.resultStats}>
+                <span><i className={styles.statCorrect} />{score} {ui.correctShort}</span>
+                <span><i className={styles.statWrong} />{total - score} {ui.wrongShort}</span>
+              </div>
+            </div>
           </div>
 
           {/* Summary filter */}
@@ -451,18 +526,21 @@ function QuizContent() {
           </div>
 
           <div className={styles.summaryList}>
-            {filtered.map((sq, i) => {
-              const ans = answers.find(a => a.qId === sq.id)
+            {filtered.length === 0 && <div className={styles.noWrong}>{ui.noWrong}</div>}
+            {filtered.map(sq => {
+              const ans = answers.find(a => a.qId === sq.sessionId)
               const ok = ans?.correct
+              const selectedOption = sq.options.find(option => option.id === ans?.selected)
+              const questionNumber = questions.findIndex(item => item.sessionId === sq.sessionId) + 1
               return (
-                <div key={sq.id} className={`${styles.summaryItem} ${ok ? styles.sumOk : styles.sumWrong}`}>
+                <div key={sq.sessionId} className={`${styles.summaryItem} ${ok ? styles.sumOk : styles.sumWrong}`}>
                   <div className={styles.sumHead}>
-                    <span className={`${styles.sumTag} ${ok ? styles.tagOk : styles.tagErr}`}>{ok ? '✓' : '✗'}</span>
-                    <span className={styles.sumQ}>{i+1}. {sq.question}</span>
+                    <span className={`${styles.sumTag} ${ok ? styles.tagOk : styles.tagErr}`}><StatusIcon correct={ok} /></span>
+                    <span className={styles.sumQ}>{questionNumber}. {sq.question}</span>
                   </div>
                   {!ok && (
                     <div className={styles.sumAnswers}>
-                      <span>{ui.yourAnswer} <strong>{ans?.selected}) {sq.options.find(o=>o.id===ans?.selected)?.text}</strong></span>
+                      <span>{ui.yourAnswer} <strong>{selectedOption ? `${ans.selected}) ${selectedOption.text}` : '—'}</strong></span>
                       <span>{ui.rightAnswer} <strong style={{color:'#059669'}}>{sq.correct}) {sq.options.find(o=>o.id===sq.correct)?.text}</strong></span>
                     </div>
                   )}
@@ -473,7 +551,7 @@ function QuizContent() {
           </div>
 
           <div className={styles.resultActions}>
-            <button className={styles.restartBtn} onClick={handleRestart}>{ui.restartBtn}</button>
+            <button className={styles.restartBtn} onClick={handleRestart}>{ui.restartBtn}<ArrowIcon /></button>
             <Link href={backHref} className={styles.backBtn}>{ui.backSetup}</Link>
           </div>
         </div>
@@ -491,18 +569,20 @@ function QuizContent() {
   return (
     <div className={styles.page}>
       <div className={styles.topBar}>
-        <Link href={backHref} className={styles.back}>{ui.back}</Link>
-        <span className={styles.topFach}>{fachLabel}</span>
-        {timed && (
-          <span className={`${styles.timerPill} ${timeLeft <= 30 ? styles.timerPillLow : ''}`}>
-            ⏱ {formatTime(timeLeft)}
-          </span>
-        )}
-        <div className={styles.progressWrap}>
-          <div className={styles.progressTrack}>
-            <div className={styles.progressFill} style={{ width: `${progressPct}%` }}/>
+        <div className={styles.topBarInner}>
+          <Link href={backHref} className={styles.back}><ArrowIcon direction="back" />{ui.back}</Link>
+          <span className={styles.topFach}>{fachLabel}</span>
+          {timed && (
+            <span className={`${styles.timerPill} ${timeLeft <= 30 ? styles.timerPillLow : ''}`}>
+              <ClockIcon />{formatTime(timeLeft)}
+            </span>
+          )}
+          <div className={styles.progressWrap}>
+            <div className={styles.progressTrack} role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow={Math.round(progressPct)}>
+              <div className={styles.progressFill} style={{ width: `${progressPct}%` }}/>
+            </div>
+            <span className={styles.progressLabel}>{Math.round(progressPct)}%</span>
           </div>
-          <span className={styles.progressLabel}>{current+1}/{total}</span>
         </div>
       </div>
       {!subscriptionActive && (
@@ -513,65 +593,72 @@ function QuizContent() {
       )}
 
       <div className={styles.quizLayout}>
-        {/* Main card */}
         <div className={styles.quizCard}>
-          <div className={styles.qNum}>{ui.questionOf(current+1, total)}</div>
-          <div className={styles.qText}>{q.question}</div>
+          <div className={styles.questionHead}>
+            <div className={styles.qNum}>{ui.questionOf(current+1, total)}</div>
+            <div className={styles.qText}>{q.question}</div>
+          </div>
 
-          {q.image && (
-            <figure className={styles.questionFigure}>
-              <img src={q.image.src} alt={q.image.alt || ''} className={styles.questionImage} />
-              {(q.image.caption || q.image.credit) && (
-                <figcaption className={styles.questionCaption}>
-                  {q.image.caption && <span>{q.image.caption}</span>}
-                  {q.image.credit && (
-                    q.image.sourceUrl
-                      ? <a href={q.image.sourceUrl} target="_blank" rel="noopener noreferrer">{q.image.credit}</a>
-                      : <small>{q.image.credit}</small>
-                  )}
-                </figcaption>
-              )}
-            </figure>
-          )}
+          <div className={`${styles.questionBody} ${q.image ? styles.questionBodyWithImage : ''}`}>
+            {q.image && (
+              <figure className={styles.questionFigure}>
+                <img src={q.image.src} alt={q.image.alt || ''} className={styles.questionImage} />
+                {(q.image.caption || q.image.credit) && (
+                  <figcaption className={styles.questionCaption}>
+                    {q.image.caption && <span>{q.image.caption}</span>}
+                    {q.image.credit && (
+                      q.image.sourceUrl
+                        ? <a href={q.image.sourceUrl} target="_blank" rel="noopener noreferrer">{q.image.credit}</a>
+                        : <small>{q.image.credit}</small>
+                    )}
+                  </figcaption>
+                )}
+              </figure>
+            )}
 
-          <div className={styles.options}>
-            {q.options.map(opt => {
-              let cls = styles.option
-              if (selected && selected !== opt.id && !checked) cls = `${styles.option} ${styles.optUnsel}`
-              if (selected === opt.id && !checked) cls = `${styles.option} ${isRtl ? styles.optSelRtl : styles.optSel}`
-              if (checked && opt.id === q.correct) cls = `${styles.option} ${styles.optOk}`
-              if (checked && selected === opt.id && opt.id !== q.correct) cls = `${styles.option} ${styles.optErr}`
-              const showConfirm = selected === opt.id && !checked
-              return (
-                <div key={opt.id} className={styles.optWrap}>
-                  <button className={cls} disabled={checked} onClick={() => setSelected(opt.id)}>
-                    <span className={styles.optLetter}>{opt.id}</span>
-                    <span className={styles.optText}>{opt.text}</span>
-                    {checked && opt.id === q.correct && <span className={styles.optMark}>✓</span>}
-                    {checked && selected === opt.id && opt.id !== q.correct && <span className={styles.optMark}>✗</span>}
-                  </button>
-                  {showConfirm && (
-                    <button className={styles.confirmIcon} onClick={handleCheck} aria-label={ui.confirmBtn}>
-                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3.5 9.5L7 13L14.5 5.5" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
+            <div className={styles.answerColumn}>
+              <div className={styles.options} role="radiogroup" aria-label={q.question}>
+                {q.options.map(opt => {
+                  let cls = styles.option
+                  if (selected && selected !== opt.id && !checked) cls = `${styles.option} ${styles.optUnsel}`
+                  if (selected === opt.id && !checked) cls = `${styles.option} ${isRtl ? styles.optSelRtl : styles.optSel}`
+                  if (checked && opt.id === q.correct) cls = `${styles.option} ${styles.optOk}`
+                  if (checked && selected === opt.id && opt.id !== q.correct) cls = `${styles.option} ${styles.optErr}`
+                  return (
+                    <button
+                      key={opt.id}
+                      type="button"
+                      role="radio"
+                      aria-checked={selected === opt.id}
+                      className={cls}
+                      disabled={checked}
+                      onClick={() => setSelected(opt.id)}
+                    >
+                      <span className={styles.radioMark} aria-hidden="true"><i /></span>
+                      <span className={styles.optLetter}>{opt.id}</span>
+                      <span className={styles.optText}>{opt.text}</span>
+                      {checked && opt.id === q.correct && <span className={`${styles.optMark} ${styles.markOk}`}><StatusIcon correct /></span>}
+                      {checked && selected === opt.id && opt.id !== q.correct && <span className={`${styles.optMark} ${styles.markErr}`}><StatusIcon correct={false} /></span>}
                     </button>
-                  )}
+                  )
+                })}
+              </div>
+
+              {!checked && (
+                <div className={styles.checkRow}>
+                  <button className={`${styles.checkBtn} ${!selected ? styles.checkDisabled : ''}`} disabled={!selected} onClick={handleCheck}>
+                    {ui.checkBtn}
+                  </button>
+                  <span className={styles.keyboardHint}>{ui.keyboardHint}</span>
                 </div>
-              )
-            })}
+              )}
+            </div>
           </div>
 
           {checked && (
-            <button className={styles.nextBtnFull} onClick={handleNext}>
-              {isLast ? ui.resultBtn : ui.nextBtn} →
-            </button>
-          )}
-
-          {checked && (
-            <div className={`${styles.feedback} ${isCorrect ? styles.fbOk : styles.fbErr}`}>
+            <div className={`${styles.feedback} ${isCorrect ? styles.fbOk : styles.fbErr}`} aria-live="polite">
               <div className={styles.fbHead}>
-                <span>{isCorrect ? '✅' : '❌'}</span>
+                <span className={isCorrect ? styles.feedbackOkIcon : styles.feedbackErrIcon}><StatusIcon correct={isCorrect} /></span>
                 <strong>{isCorrect ? ui.correct : ui.incorrect}</strong>
               </div>
               {!isCorrect && (
@@ -590,32 +677,42 @@ function QuizContent() {
               )}
             </div>
           )}
+
+          {checked && (
+            <button className={styles.nextBtnFull} onClick={handleNext}>
+              {isLast ? ui.resultBtn : ui.nextBtn}<ArrowIcon />
+            </button>
+          )}
         </div>
 
-        {/* Score tracker */}
         <div className={styles.tracker}>
-          <div className={styles.trackerTitle}>Score</div>
+          <div className={styles.trackerHead}>
+            <div className={styles.trackerTitle}>{ui.overview}</div>
+            <span className={styles.trackerCount}>{current + 1} / {total}</span>
+          </div>
           <div className={styles.trackerDots}>
             {questions.map((_, i) => {
-              const ans = answers.find(a => a.qId === questions[i].id)
+              const ans = answers.find(a => a.qId === questions[i].sessionId)
               const cls = i === current ? styles.dotCur : ans?.correct ? styles.dotOk : ans ? styles.dotErr : styles.dot
               return (
                 <button
-                  key={questions[i].id}
+                  key={questions[i].sessionId}
                   type="button"
                   className={`${styles.dot} ${cls}`}
                   onClick={() => goToQuestion(i)}
-                  aria-label={`Frage ${i + 1} anzeigen`}
+                  aria-label={ui.questionOf(i + 1, total)}
                 >
                   {i+1}
                 </button>
               )
             })}
           </div>
+          <div className={styles.trackerDivider} />
+          <div className={styles.trackerScoreLabel}>{ui.score}</div>
           <div className={styles.trackerScore}>
-            <span style={{color:'#059669', fontWeight:700}}>{answers.filter(a=>a.correct).length}</span>
-            <span style={{color:'#cbd5e1'}}> / </span>
-            <span style={{color:'#ef4444', fontWeight:700}}>{answers.filter(a=>!a.correct).length}</span>
+            <span title={ui.correctShort}><i className={styles.statCorrect} />{answers.filter(a=>a.correct).length}</span>
+            <span title={ui.wrongShort}><i className={styles.statWrong} />{answers.filter(a=>!a.correct).length}</span>
+            <span title={ui.remaining}><i className={styles.statOpen} />{Math.max(0, total - answers.length)}</span>
           </div>
         </div>
       </div>
@@ -633,6 +730,34 @@ function ClientQuiz() {
   useEffect(() => setMounted(true), [])
 
   return mounted ? <QuizContent /> : QUIZ_LOADING
+}
+
+function ArrowIcon({ direction = 'forward' }) {
+  return (
+    <svg className={direction === 'back' ? styles.backIcon : styles.arrowIcon} width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+      <path d="M3.75 9h10.5M9.75 4.5 14.25 9l-4.5 4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
+
+function ClockIcon() {
+  return (
+    <svg width="17" height="17" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+      <circle cx="9" cy="9" r="6.5" stroke="currentColor" strokeWidth="1.6"/>
+      <path d="M9 5.2v4l2.6 1.55" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
+
+function StatusIcon({ correct }) {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+      <circle cx="9" cy="9" r="8" fill="currentColor"/>
+      {correct
+        ? <path d="m5.2 9.1 2.35 2.35 5.15-5.2" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+        : <path d="m6.2 6.2 5.6 5.6m0-5.6-5.6 5.6" stroke="white" strokeWidth="1.8" strokeLinecap="round"/>}
+    </svg>
+  )
 }
 
 export default function QuizPage() {
