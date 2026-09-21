@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
@@ -3762,13 +3762,17 @@ html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .table tr:nt
 .caseCardLink { display: block; }
 .caseViewer {
   position: relative;
-  display: grid;
-  place-items: center;
+  display: block;
   height: 340px;
   overflow: hidden;
   background: #08111f;
   touch-action: pan-y;
   cursor: ns-resize;
+}
+
+.caseViewer:focus-visible {
+  outline: 3px solid #f97316;
+  outline-offset: 3px;
 }
 
 .caseViewer img {
@@ -3799,6 +3803,32 @@ html[data-theme='dark'] .page:not([data-meniskus-layout='desktop']) .table tr:nt
 .caseViewerHint { left: 12px; bottom: 15px; }
 [dir='rtl'] .caseViewerTop { right: auto; left: 12px; }
 [dir='rtl'] .caseViewerHint { left: auto; right: 12px; }
+
+.caseViewerSwipeHint { display: none; }
+
+.caseViewerStep {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 44px;
+  transform: translateY(-50%);
+  border: 1px solid rgba(255, 255, 255, .35);
+  border-radius: 12px;
+  background: rgba(2, 6, 23, .76);
+  color: white;
+  font-size: 23px;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+.caseViewerStep:hover { background: rgba(249, 115, 22, .92); }
+.caseViewerStep:focus-visible { outline: 3px solid #f97316; outline-offset: 2px; }
+.caseViewerStep:disabled { opacity: .35; cursor: default; }
+.caseViewerPrevious { left: 10px; }
+.caseViewerNext { right: 10px; }
 
 .caseSlider {
   position: absolute;
@@ -4002,6 +4032,8 @@ html[data-theme='dark'] .caseFinding { background: rgba(249, 115, 22, 0.12); col
 
 @media (max-width: 760px) {
   .caseViewer { height: 270px; }
+  .caseViewerWheelHint { display: none; }
+  .caseViewerSwipeHint { display: inline; }
   .takeHomeList { grid-template-columns: 1fr; }
   .takeHomeItem:last-child { grid-column: auto; }
   .tearTypesFigure { padding: 6px; border-radius: 16px; overflow-x: auto; }
@@ -4878,7 +4910,7 @@ const CONTENT = {
     tearTypes: {
       title: 'Risstypen',
       lead: 'Rissgeometrie und Lokalisation bestimmen die OP-Strategie und sind prüfungsrelevant.',
-      caseIntro: 'Fünf echte MRT-Sequenzen: Im Bild mit dem Mausrad oder dem Regler durch die Schichten blättern.',
+      caseIntro: 'Fünf echte MRT-Sequenzen: Mit Mausrad, Pfeiltasten oder Regler durch die Schichten blättern; auf dem Handy seitlich wischen.',
       caseOpen: 'Originalfall auf Radiopaedia ↗',
       caseItems: {
         longitudinal: { title: 'Längsriss', sign: 'Vertikale, zur Meniskusperipherie parallele Risslinie.' },
@@ -5114,7 +5146,7 @@ const CONTENT = {
     tearTypes: {
       title: 'Tear types',
       lead: 'Tear geometry and location determine surgical strategy and are highly relevant for exams.',
-      caseIntro: 'Five real MRI sequences: scroll through the slices in each viewer with the mouse wheel or slider.',
+      caseIntro: 'Five real MRI sequences: use the mouse wheel, arrow keys or slider to browse slices; swipe sideways on mobile.',
       caseOpen: 'Original case on Radiopaedia ↗',
       caseItems: {
         longitudinal: { title: 'Longitudinal tear', sign: 'Vertical tear line parallel to the meniscal periphery.' },
@@ -5350,7 +5382,7 @@ const CONTENT = {
     tearTypes: {
       title: 'انواع پارگی منیسک',
       lead: 'جهت و محل پارگی، استراتژی درمان و تصمیم جراحی را تعیین می‌کند و برای آزمون مهم است.',
-      caseIntro: 'پنج سکانس واقعی MRI: با چرخ ماوس یا اسلایدر، برش‌های هر تصویر را همین‌جا مرور کنید.',
+      caseIntro: 'پنج سکانس واقعی MRI: با چرخ ماوس، کلیدهای جهت یا اسلایدر برش‌ها را مرور کنید؛ در موبایل به چپ و راست بکشید.',
       caseOpen: 'کیس اصلی در Radiopaedia ↗',
       caseItems: {
         longitudinal: { title: 'پارگی طولی', sign: 'خط پارگی عمودی و موازی با حاشیهٔ منیسک.' },
@@ -5672,39 +5704,124 @@ function ImageFigure({ src, alt, caption, aiNotice, zoomable = false, zoomLabel 
 }
 
 function CaseStackViewer({ item, labels }) {
-  const [frameIndex, setFrameIndex] = useState(item.initialFrame || 0)
-  const frameNumber = frameIndex + 1
+  const viewerRef = useRef(null)
+  const touchStartRef = useRef(null)
   const frameCount = item.frames?.length || item.frameCount
+  const [frameIndex, setFrameIndex] = useState(item.initialFrame || 0)
+  const frameIndexRef = useRef(item.initialFrame || 0)
+  const frameNumber = frameIndex + 1
   const framePath = item.frames?.[frameIndex] || `/meniskus/cases/${item.caseId}/frame-${String(frameNumber).padStart(2, '0')}.${item.frameExt}`
 
-  const moveFrame = (step) => {
-    setFrameIndex(current => Math.min(frameCount - 1, Math.max(0, current + step)))
+  const selectFrame = useCallback((index) => {
+    const next = Math.min(frameCount - 1, Math.max(0, index))
+    frameIndexRef.current = next
+    setFrameIndex(next)
+  }, [frameCount])
+
+  const moveFrame = (step) => selectFrame(frameIndexRef.current + step)
+
+  useEffect(() => {
+    const viewer = viewerRef.current
+    if (!viewer) return
+
+    let distance = 0
+    let lastTime = 0
+    let lastDirection = 0
+    const handleWheel = (event) => {
+      if (event.ctrlKey || event.metaKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return
+      if (event.target instanceof Element && event.target.closest('input, button')) return
+
+      const multiplier = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? viewer.clientHeight : 1
+      const delta = event.deltaY * multiplier
+      const direction = Math.sign(delta)
+      if (!direction) return
+
+      const current = frameIndexRef.current
+      if ((direction > 0 && current === frameCount - 1) || (direction < 0 && current === 0)) {
+        distance = 0
+        return
+      }
+
+      event.preventDefault()
+      const now = performance.now()
+      if (now - lastTime > 180 || direction !== lastDirection) distance = 0
+      lastTime = now
+      lastDirection = direction
+
+      // A mouse-wheel notch advances once; small trackpad deltas accumulate smoothly.
+      if (event.deltaMode !== 0 || Math.abs(delta) >= 80) {
+        distance = 0
+        selectFrame(current + direction)
+      } else {
+        distance += Math.abs(delta)
+        if (distance >= 40) {
+          distance -= 40
+          selectFrame(current + direction)
+        }
+      }
+    }
+
+    // React's delegated wheel listener is passive, so it cannot stop page scrolling.
+    viewer.addEventListener('wheel', handleWheel, { passive: false })
+    return () => viewer.removeEventListener('wheel', handleWheel)
+  }, [frameCount, selectFrame])
+
+  useEffect(() => {
+    if (!item.frames) return
+    for (const index of [frameIndex + 1, frameIndex - 1]) {
+      if (item.frames[index]) new Image().src = item.frames[index]
+    }
+  }, [frameIndex, item.frames])
+
+  const handleKeyDown = (event) => {
+    if (event.target !== event.currentTarget) return
+    if (event.key === 'ArrowDown' || event.key === 'ArrowRight') moveFrame(1)
+    else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') moveFrame(-1)
+    else if (event.key === 'Home') selectFrame(0)
+    else if (event.key === 'End') selectFrame(frameCount - 1)
+    else return
+    event.preventDefault()
   }
 
-  const handleWheel = (event) => {
-    const direction = event.deltaY > 0 ? 1 : -1
-    const atBoundary = direction > 0
-      ? frameIndex >= frameCount - 1
-      : frameIndex <= 0
+  const handleTouchStart = (event) => {
+    if (event.target instanceof Element && event.target.closest('input, button')) return
+    const touch = event.touches[0]
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY }
+  }
 
-    if (atBoundary) return
-
-    event.preventDefault()
-    moveFrame(direction)
+  const handleTouchEnd = (event) => {
+    const start = touchStartRef.current
+    touchStartRef.current = null
+    if (!start) return
+    const touch = event.changedTouches[0]
+    const dx = touch.clientX - start.x
+    const dy = touch.clientY - start.y
+    if (Math.abs(dx) >= 35 && Math.abs(dx) > Math.abs(dy) * 1.2) moveFrame(dx < 0 ? 1 : -1)
   }
 
   return (
-    <div className={styles.caseViewer} onWheel={handleWheel} aria-label={`${item.sequence} · ${labels.scrollHint}`}>
+    <div
+      ref={viewerRef}
+      className={styles.caseViewer}
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onTouchCancel={() => { touchStartRef.current = null }}
+      aria-label={`${item.sequence} · ${labels.scrollHint}`}
+    >
       <img src={framePath} alt={`${item.title} · ${labels.image} ${frameNumber}`} draggable="false" loading="lazy" />
       <span className={styles.caseViewerTop}>{item.sequence} · {frameNumber}/{frameCount}</span>
-      <span className={styles.caseViewerHint}>↕ {labels.scrollHint}</span>
+      <span className={styles.caseViewerHint}><span className={styles.caseViewerWheelHint}>↕ {labels.scrollHint}</span><span className={styles.caseViewerSwipeHint}>↔ {labels.swipeHint}</span></span>
+      <button type="button" className={`${styles.caseViewerStep} ${styles.caseViewerPrevious}`} onClick={() => moveFrame(-1)} disabled={frameIndex === 0} aria-label={labels.previousSlice}>‹</button>
+      <button type="button" className={`${styles.caseViewerStep} ${styles.caseViewerNext}`} onClick={() => moveFrame(1)} disabled={frameIndex === frameCount - 1} aria-label={labels.nextSlice}>›</button>
       <input
         className={styles.caseSlider}
         type="range"
         min="0"
         max={frameCount - 1}
         value={frameIndex}
-        onChange={(event) => setFrameIndex(Number(event.target.value))}
+        onChange={(event) => selectFrame(Number(event.target.value))}
         aria-label={labels.sliderLabel}
       />
     </div>
@@ -5722,9 +5839,9 @@ const SOURCES = [
 ]
 
 const SOURCE_LABELS = {
-  de: { title: 'Quellen und Bildnachweise', image: 'Bild', scrollHint: 'Scrollen zum Blättern', sliderLabel: 'Schicht auswählen', finding: 'Befund' },
-  en: { title: 'Sources and image credits', image: 'Image', scrollHint: 'Scroll through slices', sliderLabel: 'Select slice', finding: 'Findings' },
-  fa: { title: 'منابع و اعتبار تصاویر', image: 'تصویر', scrollHint: 'برای مرور برش‌ها اسکرول کنید', sliderLabel: 'انتخاب برش', finding: 'یافته‌ها' },
+  de: { title: 'Quellen und Bildnachweise', image: 'Bild', scrollHint: 'Scrollen zum Blättern', swipeHint: 'Seitlich wischen', sliderLabel: 'Schicht auswählen', previousSlice: 'Vorherige Schicht', nextSlice: 'Nächste Schicht', finding: 'Befund' },
+  en: { title: 'Sources and image credits', image: 'Image', scrollHint: 'Scroll through slices', swipeHint: 'Swipe sideways', sliderLabel: 'Select slice', previousSlice: 'Previous slice', nextSlice: 'Next slice', finding: 'Findings' },
+  fa: { title: 'منابع و اعتبار تصاویر', image: 'تصویر', scrollHint: 'برای مرور برش‌ها اسکرول کنید', swipeHint: 'به چپ و راست بکشید', sliderLabel: 'انتخاب برش', previousSlice: 'برش قبلی', nextSlice: 'برش بعدی', finding: 'یافته‌ها' },
 }
 
 
