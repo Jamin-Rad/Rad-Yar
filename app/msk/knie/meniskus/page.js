@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
+import { TEAR_CASE_FRAMES } from './tearCaseFrames'
 
 const styles = new Proxy({}, {
   get: (_target, prop) => String(prop),
@@ -1763,17 +1764,12 @@ html[data-theme='dark'] .readError {
   border: 1px solid rgba(208, 216, 230, .9);
   background: var(--bg-card, #fff);
   color: inherit;
-  text-decoration: none;
   box-shadow: 0 12px 28px rgba(23, 32, 51, .08);
-  transition: transform .18s ease, box-shadow .18s ease;
 }
 
-.tearCaseCard:hover,
-.tearCaseCard:focus-visible {
-  transform: translateY(-2px);
-  box-shadow: 0 18px 36px rgba(23, 32, 51, .14);
-  border-color: #f97316;
-}
+.tearCaseCard .caseViewer { border-radius: 19px 19px 0 0; }
+.tearCaseBody a { color: #f97316; }
+.tearCaseBody small a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 
 .tearCaseBody {
   padding: 15px 17px 17px;
@@ -4747,11 +4743,11 @@ html[data-theme='dark'] .page .gradeTable tbody tr:last-child td:last-child { co
 `
 
 const TEAR_CASES = [
-  { id: 'longitudinal', url: 'https://radiopaedia.org/cases/7672', study: 'https://radiopaedia.org/cases/7672/studies/8487', credit: 'Frank Gaillard · Radiopaedia rID 7672' },
-  { id: 'radial', url: 'https://radiopaedia.org/cases/32027', study: 'https://radiopaedia.org/cases/32027/studies/32967', credit: "Chris O'Donnell · Radiopaedia rID 32027" },
-  { id: 'horizontal', url: 'https://radiopaedia.org/cases/7992', study: 'https://radiopaedia.org/cases/7992/studies/8835', credit: 'Paresh K Desai · Radiopaedia rID 7992' },
-  { id: 'bucket', url: 'https://radiopaedia.org/cases/29250', study: 'https://radiopaedia.org/cases/29250/studies/29664', credit: 'Muhammad Essam · Radiopaedia rID 29250' },
-  { id: 'flap', url: 'https://radiopaedia.org/cases/17834', study: 'https://radiopaedia.org/cases/17834/studies/17601', credit: 'Roberto Schubert · Radiopaedia rID 17834' },
+  { id: 'longitudinal', caseId: 59153, study: 'https://radiopaedia.org/cases/59153/studies/66472', contributor: 'Henry Knipe', sequence: 'Sagittal · PD fat sat', initialFrame: 16, frames: TEAR_CASE_FRAMES.longitudinal },
+  { id: 'radial', caseId: 160533, study: 'https://radiopaedia.org/cases/160533/studies/131329', contributor: 'Yahya Baba', sequence: 'Axial · PD fat sat', initialFrame: 26, frames: TEAR_CASE_FRAMES.radial },
+  { id: 'horizontal', caseId: 146646, study: 'https://radiopaedia.org/cases/146646/studies/122223', contributor: "Seamus O'Flaherty", sequence: 'Sagittal · PD fat sat', initialFrame: 13, frames: TEAR_CASE_FRAMES.horizontal },
+  { id: 'bucket', caseId: 29250, study: 'https://radiopaedia.org/cases/29250/studies/29664', contributor: 'Muhammad Essam', sequence: 'Sagittal · PD', initialFrame: 15, frames: TEAR_CASE_FRAMES.bucket },
+  { id: 'flap', caseId: 17834, study: 'https://radiopaedia.org/cases/17834/studies/17601', contributor: 'Roberto Schubert', sequence: 'Coronal · STIR', initialFrame: 7, frames: TEAR_CASE_FRAMES.flap },
 ]
 
 const CONTENT = {
@@ -4882,12 +4878,12 @@ const CONTENT = {
     tearTypes: {
       title: 'Risstypen',
       lead: 'Rissgeometrie und Lokalisation bestimmen die OP-Strategie und sind prüfungsrelevant.',
-      caseIntro: 'Zu jedem Risstyp ein passender MRT-Fall: Öffne die Radiopaedia-Studie und scrolle durch die Bildsequenzen.',
-      caseOpen: 'Scrollbare MRT-Sequenz öffnen ↗',
+      caseIntro: 'Fünf echte MRT-Sequenzen: Im Bild mit dem Mausrad oder dem Regler durch die Schichten blättern.',
+      caseOpen: 'Originalfall auf Radiopaedia ↗',
       caseItems: {
         longitudinal: { title: 'Längsriss', sign: 'Vertikale, zur Meniskusperipherie parallele Risslinie.' },
-        radial: { title: 'Radiärriss', sign: 'Defekt vom freien Rand nach außen; im Fall gut axial erkennbar.' },
-        horizontal: { title: 'Horizontalriss', sign: 'Aufspaltung in obere und untere Lamelle mit Meniskuszyste.' },
+        radial: { title: 'Radiärriss', sign: 'Kompletter radiärer Riss der medialen Hinterwurzel, axial dargestellt.' },
+        horizontal: { title: 'Horizontalriss', sign: 'Horizontalriss an Corpus und Hinterhorn des Innenmeniskus; begleitende ACL-Läsion.' },
         bucket: { title: 'Korbhenkelriss', sign: 'Disloziertes Fragment mit Doppel-PCL- und fehlendem Bow-tie-Zeichen.' },
         flap: { title: 'Lappenriss', sign: 'Nach inferior verlagerter Meniskuslappen im medialen Kompartiment.' },
       },
@@ -5118,12 +5114,12 @@ const CONTENT = {
     tearTypes: {
       title: 'Tear types',
       lead: 'Tear geometry and location determine surgical strategy and are highly relevant for exams.',
-      caseIntro: 'A matching MRI case for every tear type: open the Radiopaedia study and scroll through its image sequences.',
-      caseOpen: 'Open scrollable MRI sequence ↗',
+      caseIntro: 'Five real MRI sequences: scroll through the slices in each viewer with the mouse wheel or slider.',
+      caseOpen: 'Original case on Radiopaedia ↗',
       caseItems: {
         longitudinal: { title: 'Longitudinal tear', sign: 'Vertical tear line parallel to the meniscal periphery.' },
-        radial: { title: 'Radial tear', sign: 'Defect from the free edge outward, especially clear on axial MRI.' },
-        horizontal: { title: 'Horizontal tear', sign: 'Separation into upper and lower leaves with a meniscal cyst.' },
+        radial: { title: 'Radial tear', sign: 'Complete radial tear of the medial posterior root, shown axially.' },
+        horizontal: { title: 'Horizontal tear', sign: 'Horizontal tear of the medial body and posterior horn with a concomitant ACL lesion.' },
         bucket: { title: 'Bucket-handle tear', sign: 'Displaced fragment with double-PCL and absent bow-tie signs.' },
         flap: { title: 'Flap tear', sign: 'Inferiorly displaced meniscal flap in the medial compartment.' },
       },
@@ -5354,12 +5350,12 @@ const CONTENT = {
     tearTypes: {
       title: 'انواع پارگی منیسک',
       lead: 'جهت و محل پارگی، استراتژی درمان و تصمیم جراحی را تعیین می‌کند و برای آزمون مهم است.',
-      caseIntro: 'برای هر نوع پارگی، مطالعهٔ MRI مرتبط را در Radiopaedia باز کنید و برش‌های تصویر را مرور کنید.',
-      caseOpen: 'باز کردن سکانس MRI قابل‌اسکرول ↗',
+      caseIntro: 'پنج سکانس واقعی MRI: با چرخ ماوس یا اسلایدر، برش‌های هر تصویر را همین‌جا مرور کنید.',
+      caseOpen: 'کیس اصلی در Radiopaedia ↗',
       caseItems: {
         longitudinal: { title: 'پارگی طولی', sign: 'خط پارگی عمودی و موازی با حاشیهٔ منیسک.' },
-        radial: { title: 'پارگی رادیال', sign: 'نقصی از لبهٔ آزاد به سمت محیط؛ در نمای اکسیال واضح‌تر است.' },
-        horizontal: { title: 'پارگی افقی', sign: 'جدا شدن لایهٔ بالا و پایین همراه با کیست منیسکی.' },
+        radial: { title: 'پارگی رادیال', sign: 'پارگی رادیال کامل ریشهٔ خلفی منیسک داخلی در نمای اکسیال.' },
+        horizontal: { title: 'پارگی افقی', sign: 'پارگی افقی تنه و شاخ خلفی منیسک داخلی، همراه با آسیب ACL.' },
         bucket: { title: 'پارگی Bucket-handle', sign: 'قطعهٔ جابه‌جا شده با علامت PCL دوگانه و نبود Bow-tie.' },
         flap: { title: 'پارگی فلپ', sign: 'فلپ منیسک جابه‌جا شده به سمت پایین در بخش داخلی.' },
       },
@@ -5678,16 +5674,17 @@ function ImageFigure({ src, alt, caption, aiNotice, zoomable = false, zoomLabel 
 function CaseStackViewer({ item, labels }) {
   const [frameIndex, setFrameIndex] = useState(item.initialFrame || 0)
   const frameNumber = frameIndex + 1
-  const framePath = `/meniskus/cases/${item.caseId}/frame-${String(frameNumber).padStart(2, '0')}.${item.frameExt}`
+  const frameCount = item.frames?.length || item.frameCount
+  const framePath = item.frames?.[frameIndex] || `/meniskus/cases/${item.caseId}/frame-${String(frameNumber).padStart(2, '0')}.${item.frameExt}`
 
   const moveFrame = (step) => {
-    setFrameIndex(current => Math.min(item.frameCount - 1, Math.max(0, current + step)))
+    setFrameIndex(current => Math.min(frameCount - 1, Math.max(0, current + step)))
   }
 
   const handleWheel = (event) => {
     const direction = event.deltaY > 0 ? 1 : -1
     const atBoundary = direction > 0
-      ? frameIndex >= item.frameCount - 1
+      ? frameIndex >= frameCount - 1
       : frameIndex <= 0
 
     if (atBoundary) return
@@ -5698,14 +5695,14 @@ function CaseStackViewer({ item, labels }) {
 
   return (
     <div className={styles.caseViewer} onWheel={handleWheel} aria-label={`${item.sequence} · ${labels.scrollHint}`}>
-      <img src={framePath} alt={`${item.title} · ${labels.image} ${frameNumber}`} draggable="false" />
-      <span className={styles.caseViewerTop}>{item.sequence} · {frameNumber}/{item.frameCount}</span>
+      <img src={framePath} alt={`${item.title} · ${labels.image} ${frameNumber}`} draggable="false" loading="lazy" />
+      <span className={styles.caseViewerTop}>{item.sequence} · {frameNumber}/{frameCount}</span>
       <span className={styles.caseViewerHint}>↕ {labels.scrollHint}</span>
       <input
         className={styles.caseSlider}
         type="range"
         min="0"
-        max={item.frameCount - 1}
+        max={frameCount - 1}
         value={frameIndex}
         onChange={(event) => setFrameIndex(Number(event.target.value))}
         aria-label={labels.sliderLabel}
@@ -6030,14 +6027,15 @@ export default function MeniskusPage() {
               {TEAR_CASES.map(item => {
                 const caseCopy = copy.tearTypes.caseItems[item.id]
                 return (
-                  <a key={item.id} href={item.study} target="_blank" rel="noopener noreferrer" className={styles.tearCaseCard}>
+                  <article key={item.id} className={styles.tearCaseCard}>
+                    <CaseStackViewer item={{ ...item, title: caseCopy.title }} labels={sourceLabels} />
                     <div className={styles.tearCaseBody}>
                       <h3>{caseCopy.title}</h3>
                       <p>{caseCopy.sign}</p>
-                      <small>{item.credit}</small>
-                      <strong>{copy.tearTypes.caseOpen}</strong>
+                      <small>Case courtesy of {item.contributor}, <a href="https://radiopaedia.org" target="_blank" rel="noopener noreferrer">Radiopaedia.org</a> · <a href={`https://radiopaedia.org/cases/${item.caseId}`} target="_blank" rel="noopener noreferrer">rID {item.caseId}</a></small>
+                      <a href={item.study} target="_blank" rel="noopener noreferrer"><strong>{copy.tearTypes.caseOpen}</strong></a>
                     </div>
-                  </a>
+                  </article>
                 )
               })}
             </div>
