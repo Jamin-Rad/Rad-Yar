@@ -1,11 +1,11 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import LessonKeyPoints from '@/components/LessonKeyPoints'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { useMobileLearningLayout } from '@/hooks/useMobileLearningLayout'
-import base from '@/app/abdomen/gi/divertikulitis/page.module.css'
+import template from '@/app/andarun/test/page.module.css'
 import styles from './page.module.css'
 
 const L = (de, en, fa) => ({ de, en, fa })
@@ -27,6 +27,17 @@ const copy = {
   no: L('Mid-wall, subepikardial oder nichtterritorial → eher nichtischämisch', 'Mid-wall, subepicardial or non-territorial → favour non-ischaemic disease', 'میدوال، ساب‌اپیکاردیال یا غیرقلمروی ← بیشتر به بیماری غیرایسکمیک فکر کن'),
   caveat: L('Subendokardiales LGE allein beweist keinen Infarkt: eine diffuse, nichtterritoriale Verteilung kann z. B. bei Amyloidose vorkommen.', 'Subendocardial LGE alone does not prove infarction: a diffuse, non-territorial pattern can occur with amyloidosis.', 'LGE ساب‌اندوکاردی به‌تنهایی انفارکت را ثابت نمی‌کند؛ الگوی منتشر و غیرقلمروی می‌تواند در آمیلوئیدوز دیده شود.'),
   sources: L('Quellen', 'Sources', 'منابع'),
+  path: L('Lernpfad', 'Learning path', 'مسیر یادگیری'),
+  progress: L('gelesen', 'read', 'خوانده‌شده'),
+  continue: L('Lektion fortsetzen', 'Continue lesson', 'ادامه درس'),
+  completeLesson: L('Ganze Lektion als gelesen markieren', 'Mark full lesson as read', 'علامت‌گذاری کل درس به‌عنوان خوانده‌شده'),
+  completeSection: L('Abschnitt als gelesen markieren', 'Mark section as read', 'علامت‌گذاری بخش به‌عنوان خوانده‌شده'),
+  completedSection: L('Als gelesen markiert', 'Marked as read', 'به‌عنوان خوانده‌شده علامت‌گذاری شد'),
+  close: L('Schließen', 'Close', 'بستن'),
+  openSection: L('Abschnitt öffnen', 'Open section', 'باز کردن بخش'),
+  factInfarct: L('Subendokard + Koronarterritorium', 'Subendocardium + coronary territory', 'ساب‌اندوکارد + قلمرو کرونری'),
+  factMvo: L('Dunkler Kern im hellen Infarkt', 'Dark core within a bright infarct', 'هستهٔ تیره در انفارکت روشن'),
+  factIschemia: L('Stressdefekt ohne Ruhedefekt', 'Stress defect absent at rest', 'نقص استرس بدون نقص در استراحت'),
 }
 
 const sections = [
@@ -103,6 +114,23 @@ const references = [
   { label: 'SCMR: standardized CMR image interpretation and post-processing', href: 'https://events.scmr.org/wp-content/uploads/2024/08/Post-processing.pdf' },
 ]
 
+const lessonSections = [...sections, { id: 'decision', number: '08', title: copy.rule }, { id: 'sources', number: '09', title: copy.sources }]
+
+function SectionIcon({ id }) {
+  const paths = {
+    principle: 'M4 4h16v16H4z M8 9h8 M8 13h8 M8 17h5',
+    infarct: 'M3 13h4l2-6 4 10 2-5h6',
+    mvo: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18 M12 8v4l3 2',
+    thrombus: 'M12 3c-4 4-7 7-7 11a7 7 0 0 0 14 0c0-4-3-7-7-11z M9 15h6',
+    noninfarct: 'M4 5h16v14H4z M7 13l3-3 3 4 4-5',
+    'stress-perfusion': 'M3 12h4l2-5 4 10 2-5h6 M18 3v4 M16 5h4',
+    'dark-band': 'M4 5h16v14H4z M7 15h10 M7 9h10',
+    decision: 'M12 3l9 17H3z M12 9v5 M12 17v1',
+    sources: 'M5 4h14v16H5z M9 8h6 M9 12h6 M9 16h4',
+  }
+  return <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={paths[id] || paths.principle} /></svg>
+}
+
 export default function MyokardinfarktMrtPage() {
   const { lang } = useLanguage()
   const current = lang === 'fa' || lang === 'en' ? lang : 'de'
@@ -110,28 +138,88 @@ export default function MyokardinfarktMrtPage() {
   const { isRead, toggleRead, authError } = useLessonReadStatus('myokardinfarkt-mrt')
   useMobileLearningLayout()
   const withLang = href => current === 'de' ? href : `${href}${href.includes('?') ? '&' : '?'}lang=${current}`
-  const readButton = <div className={base.readControl}><button type="button" className={`${base.readButton} ${isRead ? base.readButtonActive : ''}`} onClick={toggleRead}><span className={base.readCheck}>{isRead ? '✓' : ''}</span><span>{t(isRead ? copy.readDone : copy.read)}</span></button>{authError && <div className={base.readError}><span>{t(copy.auth)}</span><Link href={withLang('/sign-in')}>{t(copy.signIn)}</Link></div>}</div>
+  const [openId, setOpenId] = useState(lessonSections[0].id)
+  const [readSections, setReadSections] = useState(() => new Set())
+  const [mobilePathOpen, setMobilePathOpen] = useState(false)
 
-  return <main className={`${base.page} ${styles.page}`} dir={current === 'fa' ? 'rtl' : 'ltr'} lang={current}>
-    <header className={base.header}>
-      <nav className={base.breadcrumb} aria-label="Breadcrumb"><Link href={withLang('/')}>RadYar</Link><span>›</span><Link href={withLang('/lernen/thorax')}>{t(copy.thorax)}</Link><span>›</span><Link href={withLang('/lernen/thorax')}>{t(copy.chapter)}</Link><span>›</span><strong>{t(copy.title)}</strong></nav>
-      <div className={base.hero}>
-        <div className={`${base.heroText} ${styles.heroText}`}><span className={base.sourceBadge}>Dr. Zia</span><span className={styles.eyebrow}>LGE · PERFUSION · KARDIO-MRT</span><h1>{t(copy.title)}</h1><p>{t(copy.subtitle)}</p><small>{t(copy.preview)}</small></div>
-        <LessonKeyPoints points={[[t(sections[1].title), t(sections[1].takeaway)], [t(sections[2].title), t(sections[2].takeaway)], [t(sections[5].title), t(sections[5].takeaway)]]} />
+  useEffect(() => {
+    const hash = window.location.hash.slice(1)
+    if (lessonSections.some(section => section.id === hash)) setOpenId(hash)
+    try {
+      const saved = JSON.parse(localStorage.getItem('radyar_myokardinfarkt_mrt_sections') || '[]')
+      if (Array.isArray(saved)) setReadSections(new Set(saved.filter(id => lessonSections.some(section => section.id === id))))
+    } catch {}
+  }, [])
+
+  useEffect(() => {
+    if (!isRead) return
+    const all = new Set(lessonSections.map(section => section.id))
+    setReadSections(all)
+    try { localStorage.setItem('radyar_myokardinfarkt_mrt_sections', JSON.stringify([...all])) } catch {}
+  }, [isRead])
+
+  const selectSection = id => {
+    const nextId = openId === id ? null : id
+    setOpenId(nextId)
+    setMobilePathOpen(false)
+    const baseUrl = `${window.location.pathname}${window.location.search}`
+    window.history.replaceState(null, '', nextId ? `${baseUrl}#${nextId}` : baseUrl)
+    if (nextId) requestAnimationFrame(() => document.getElementById(nextId)?.scrollIntoView({ behavior: 'smooth', block: 'start' }))
+  }
+  const updateSections = next => {
+    setReadSections(next)
+    try { localStorage.setItem('radyar_myokardinfarkt_mrt_sections', JSON.stringify([...next])) } catch {}
+  }
+  const toggleSectionRead = id => {
+    const next = new Set(readSections)
+    if (next.has(id)) next.delete(id)
+    else next.add(id)
+    updateSections(next)
+  }
+  const toggleLessonRead = () => {
+    if (toggleRead()) updateSections(isRead ? new Set() : new Set(lessonSections.map(section => section.id)))
+  }
+  const activeIndex = lessonSections.findIndex(section => section.id === openId)
+  const activeSection = lessonSections[activeIndex] || lessonSections[0]
+  const nextSection = () => selectSection(lessonSections[Math.min(activeIndex + 1, lessonSections.length - 1)].id)
+
+  const sectionPanel = (section, children) => {
+    const open = openId === section.id
+    const done = readSections.has(section.id)
+    return <section id={section.id} key={section.id} className={`${template.section} ${open ? template.sectionOpen : ''}`}>
+      <button type="button" className={template.sectionHeader} onClick={() => selectSection(section.id)} aria-expanded={open} aria-controls={`${section.id}-panel`}>
+        <span className={template.sectionIcon}><SectionIcon id={section.id} /></span><span><strong>{t(section.title)}</strong></span><span className={template.toggle} aria-hidden="true">{open ? '−' : '+'}</span>
+      </button>
+      <div id={`${section.id}-panel`} hidden={!open} className={`${template.sectionBody} ${styles.sectionBody}`}>
+        {children}
+        <button type="button" className={`${template.readButton} ${done ? template.readButtonDone : ''}`} aria-pressed={done} onClick={() => toggleSectionRead(section.id)}><SectionIcon id="infarct" />{t(done ? copy.completedSection : copy.completeSection)}</button>
       </div>
+    </section>
+  }
+
+  return <main className={`${template.page} ${styles.page}`} data-lesson-progress-managed="true" dir={current === 'fa' ? 'rtl' : 'ltr'} lang={current}>
+    <header className={template.header}>
+      <div className={template.topline}><nav className={template.breadcrumb} aria-label="Breadcrumb"><Link href={withLang('/')}>RadYar</Link><span>/</span><Link href={withLang('/lernen/thorax')}>{t(copy.thorax)}</Link><span>/</span><span>{t(copy.chapter)}</span><span>/</span><strong>{t(copy.title)}</strong></nav><span className={template.author}>Dr. Zia</span></div>
+      <div className={template.hero}>
+        <div className={template.heroCopy}><h1>{t(copy.title)}</h1><p className={styles.subtitle}>{t(copy.subtitle)}</p><p className={styles.preview}>{t(copy.preview)}</p></div>
+        <div className={template.heroFacts}>
+          {[[sections[1].title, copy.factInfarct, 'infarct'], [sections[2].title, copy.factMvo, 'mvo'], [sections[5].title, copy.factIschemia, 'stress-perfusion']].map(([title, detail, icon]) => <article key={icon}><span className={template.factIcon}><SectionIcon id={icon} /></span><strong>{t(title)}</strong><p>{t(detail)}</p></article>)}
+        </div>
+      </div>
+      <div className={template.progressBar}><div className={template.progressTrack}><i style={{ width: `${(readSections.size / lessonSections.length) * 100}%` }} /></div><span>{readSections.size} / {lessonSections.length} {t(copy.progress)}</span><div className={template.progressActions}><button type="button" className={`${template.lessonCompleteButton} ${isRead ? template.lessonCompleteButtonDone : ''}`} aria-pressed={isRead} onClick={toggleLessonRead}><SectionIcon id="infarct" />{t(isRead ? copy.readDone : copy.completeLesson)}</button><button type="button" className={template.continueButton} onClick={nextSection} disabled={activeIndex === lessonSections.length - 1}>{t(copy.continue)} <span aria-hidden="true">→</span></button></div></div>
+      {authError && <p className={styles.authError}>{t(copy.auth)} <Link href={withLang('/sign-in')}>{t(copy.signIn)}</Link></p>}
     </header>
-    <div className={base.readBar}>{readButton}</div>
-    <div className={base.layout}>
-      <aside className={base.sidebar}><div className={base.sideTitle}>{t(copy.contents)}</div>{sections.map(section => <a className={base.sideItem} href={`#${section.id}`} key={section.id}><span className={styles.navNumber}>{section.number}</span><strong>{t(section.title)}</strong></a>)}<a className={base.sideItem} href="#decision"><span className={styles.navNumber}>08</span><strong>{t(copy.rule)}</strong></a></aside>
-      <div className={base.main}>
-        {sections.map(section => <section className={`${base.section} ${styles.section}`} id={section.id} key={section.id}>
-          <div className={styles.sectionHead}><span>{section.number}</span><h2>{t(section.title)}</h2></div>
-          <div className={styles.sectionBody}>{section.paragraphs.map((paragraph, index) => <p key={index}>{t(paragraph)}</p>)}{section.flow && <div className={styles.contrastFlow} dir="ltr" aria-label="RV to LV to LV myocardium"><span>RV</span><b>→</b><span>LV</span><b>→</b><span>LV myocardium</span></div>}{section.bullets && <ul>{section.bullets.map((bullet, index) => <li key={index}>{t(bullet)}</li>)}</ul>}{section.takeaway && <div className={styles.takeaway}>{t(section.takeaway)}</div>}</div>
-        </section>)}
-        <section className={`${base.section} ${styles.section} ${styles.decision}`} id="decision"><div className={styles.sectionHead}><span>08</span><h2>{t(copy.rule)}</h2></div><div className={styles.sectionBody}><p className={styles.question}>{t(copy.ruleQuestion)}</p><div className={styles.answers}><div>{t(copy.yes)}</div><div>{t(copy.no)}</div></div><p className={styles.caveat}>{t(copy.caveat)}</p></div></section>
-        <section className={`${base.section} ${styles.section}`} id="sources"><div className={styles.sectionHead}><span>↗</span><h2>{t(copy.sources)}</h2></div><div className={styles.references}>{references.map(source => <a key={source.href} href={source.href} target="_blank" rel="noopener noreferrer">{source.label}<span aria-hidden="true">↗</span></a>)}</div></section>
-        <div className={styles.bottomRead}>{readButton}</div>
-      </div>
+    <div className={template.layout}>
+      <aside className={template.sidebar}><h2>{t(copy.path)}</h2><nav>{lessonSections.map(section => <button type="button" key={section.id} className={openId === section.id ? template.activeSideItem : ''} onClick={() => selectSection(section.id)} aria-current={openId === section.id ? 'location' : undefined} aria-label={`${t(copy.openSection)}: ${t(section.title)}`}><span className={template.sideIcon}><SectionIcon id={section.id} /></span><strong>{t(section.title)}</strong></button>)}</nav></aside>
+      <article className={template.lesson}>
+        {sections.map(section => sectionPanel(section, <><div className={styles.prose}>{section.paragraphs.map((paragraph, index) => <p key={index}>{t(paragraph)}</p>)}</div>{section.flow && <div className={styles.contrastFlow} dir="ltr" aria-label="RV to LV to LV myocardium"><span>RV</span><b>→</b><span>LV</span><b>→</b><span>LV myocardium</span></div>}{section.bullets && <ul className={styles.bullets}>{section.bullets.map((bullet, index) => <li key={index}>{t(bullet)}</li>)}</ul>}{section.takeaway && <div className={styles.takeaway}>{t(section.takeaway)}</div>}</>))}
+        {sectionPanel(lessonSections[7], <><p className={styles.question}>{t(copy.ruleQuestion)}</p><div className={styles.answers}><div>{t(copy.yes)}</div><div>{t(copy.no)}</div></div><p className={styles.caveat}>{t(copy.caveat)}</p></>)}
+        {sectionPanel(lessonSections[8], <div className={styles.references}>{references.map(source => <a key={source.href} href={source.href} target="_blank" rel="noopener noreferrer">{source.label}<span aria-hidden="true">↗</span></a>)}</div>)}
+      </article>
+    </div>
+    <div className={template.mobileLearningPath}>
+      {mobilePathOpen && <section id="mrt-mobile-learning-path" className={template.mobilePathPanel} role="dialog" aria-label={t(copy.path)}><header><div><small>{t(copy.progress)}</small><strong>{readSections.size} / {lessonSections.length}</strong></div><button type="button" onClick={() => setMobilePathOpen(false)} aria-label={t(copy.close)}>×</button></header><nav>{lessonSections.map(section => <button type="button" key={section.id} className={openId === section.id ? template.mobilePathCurrent : ''} onClick={() => selectSection(section.id)} aria-current={openId === section.id ? 'location' : undefined}><span className={template.mobilePathItemIcon}><SectionIcon id={section.id} /></span><span><strong>{t(section.title)}</strong><small>{t(section.title)}</small></span><i aria-hidden="true">{readSections.has(section.id) ? '✓' : ''}</i></button>)}</nav></section>}
+      <button type="button" className={template.mobilePathButton} onClick={() => setMobilePathOpen(value => !value)} aria-expanded={mobilePathOpen} aria-controls="mrt-mobile-learning-path"><span className={template.mobileProgressRing} style={{ '--mobile-progress': `${(readSections.size / lessonSections.length) * 360}deg` }}><b>{readSections.size}</b><small>/{lessonSections.length}</small></span><span className={template.mobileCurrentIcon}><SectionIcon id={activeSection.id} /></span><span className={template.mobilePathLabel}><strong>{t(copy.path)}</strong><small>{t(activeSection.title)}</small></span></button>
     </div>
   </main>
 }
