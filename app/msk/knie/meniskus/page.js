@@ -1722,6 +1722,71 @@ html[data-theme='dark'] .readError {
   margin: 18px 0;
 }
 
+.tearCaseIntro {
+  margin: 24px 0 14px;
+  color: var(--text-soft, #536174);
+  line-height: 1.6;
+}
+
+.tearCaseGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0 0 22px;
+}
+
+.tearCaseCard {
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid rgba(208, 216, 230, .9);
+  background: var(--bg-card, #fff);
+  color: inherit;
+  text-decoration: none;
+  box-shadow: 0 12px 28px rgba(23, 32, 51, .08);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.tearCaseCard:hover,
+.tearCaseCard:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(23, 32, 51, .14);
+  border-color: #f97316;
+}
+
+.tearCaseBody {
+  padding: 15px 17px 17px;
+}
+
+.tearCaseBody h3 {
+  margin: 0 0 6px;
+  font-size: 17px;
+  color: var(--text-strong, #0d1b2a);
+}
+
+.tearCaseBody p {
+  margin: 0 0 10px;
+  line-height: 1.5;
+  color: var(--text-soft, #536174);
+  font-size: 13px;
+}
+
+.tearCaseBody small {
+  display: block;
+  color: var(--text-muted, #758196);
+  line-height: 1.4;
+}
+
+.tearCaseBody strong {
+  display: block;
+  margin-top: 10px;
+  color: #f97316;
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+  .tearCaseGrid { grid-template-columns: 1fr; }
+}
+
 .caseCardLink {
   overflow: hidden;
   border-radius: 22px;
@@ -3597,6 +3662,14 @@ html[data-theme='dark'] .table td::before {
 
 `
 
+const TEAR_CASES = [
+  { id: 'longitudinal', url: 'https://radiopaedia.org/cases/7672', study: 'https://radiopaedia.org/cases/7672/studies/8487', credit: 'Frank Gaillard · Radiopaedia rID 7672' },
+  { id: 'radial', url: 'https://radiopaedia.org/cases/32027', study: 'https://radiopaedia.org/cases/32027/studies/32967', credit: "Chris O'Donnell · Radiopaedia rID 32027" },
+  { id: 'horizontal', url: 'https://radiopaedia.org/cases/7992', study: 'https://radiopaedia.org/cases/7992/studies/8835', credit: 'Paresh K Desai · Radiopaedia rID 7992' },
+  { id: 'bucket', url: 'https://radiopaedia.org/cases/29250', study: 'https://radiopaedia.org/cases/29250/studies/29664', credit: 'Muhammad Essam · Radiopaedia rID 29250' },
+  { id: 'flap', url: 'https://radiopaedia.org/cases/17834', study: 'https://radiopaedia.org/cases/17834/studies/17601', credit: 'Roberto Schubert · Radiopaedia rID 17834' },
+]
+
 const CONTENT = {
   de: {
     toc: 'Inhaltsverzeichnis',
@@ -3726,6 +3799,15 @@ const CONTENT = {
     tearTypes: {
       title: 'Risstypen',
       lead: 'Rissgeometrie und Lokalisation bestimmen die OP-Strategie und sind prüfungsrelevant.',
+      caseIntro: 'Zu jedem Risstyp ein passender MRT-Fall: Öffne die Radiopaedia-Studie und scrolle durch die Bildsequenzen.',
+      caseOpen: 'Scrollbare MRT-Sequenz öffnen ↗',
+      caseItems: {
+        longitudinal: { title: 'Längsriss', sign: 'Vertikale, zur Meniskusperipherie parallele Risslinie.' },
+        radial: { title: 'Radiärriss', sign: 'Defekt vom freien Rand nach außen; im Fall gut axial erkennbar.' },
+        horizontal: { title: 'Horizontalriss', sign: 'Aufspaltung in obere und untere Lamelle mit Meniskuszyste.' },
+        bucket: { title: 'Korbhenkelriss', sign: 'Disloziertes Fragment mit Doppel-PCL- und fehlendem Bow-tie-Zeichen.' },
+        flap: { title: 'Lappenriss', sign: 'Nach inferior verlagerter Meniskuslappen im medialen Kompartiment.' },
+      },
       tableHeaders: ['Risstyp', 'Geometrie', 'MRT-Zeichen', 'Therapie'],
       tableRows: [
         ['Längsriss', 'parallel zur Peripherie', 'Doppellinien-Zeichen sagittal', 'Naht in der roten oder rot-weißen Zone'],
@@ -3946,6 +4028,15 @@ const CONTENT = {
     tearTypes: {
       title: 'Tear types',
       lead: 'Tear geometry and location determine surgical strategy and are highly relevant for exams.',
+      caseIntro: 'A matching MRI case for every tear type: open the Radiopaedia study and scroll through its image sequences.',
+      caseOpen: 'Open scrollable MRI sequence ↗',
+      caseItems: {
+        longitudinal: { title: 'Longitudinal tear', sign: 'Vertical tear line parallel to the meniscal periphery.' },
+        radial: { title: 'Radial tear', sign: 'Defect from the free edge outward, especially clear on axial MRI.' },
+        horizontal: { title: 'Horizontal tear', sign: 'Separation into upper and lower leaves with a meniscal cyst.' },
+        bucket: { title: 'Bucket-handle tear', sign: 'Displaced fragment with double-PCL and absent bow-tie signs.' },
+        flap: { title: 'Flap tear', sign: 'Inferiorly displaced meniscal flap in the medial compartment.' },
+      },
       tableHeaders: ['Tear type', 'Geometry', 'MRI sign', 'Treatment'],
       tableRows: [
         ['Longitudinal tear', 'parallel to the periphery', 'double-line sign on sagittal images', 'repair in the red or red-white zone'],
@@ -4166,6 +4257,15 @@ const CONTENT = {
     tearTypes: {
       title: 'انواع پارگی منیسک',
       lead: 'جهت و محل پارگی، استراتژی درمان و تصمیم جراحی را تعیین می‌کند و برای آزمون مهم است.',
+      caseIntro: 'برای هر نوع پارگی، مطالعهٔ MRI مرتبط را در Radiopaedia باز کنید و برش‌های تصویر را مرور کنید.',
+      caseOpen: 'باز کردن سکانس MRI قابل‌اسکرول ↗',
+      caseItems: {
+        longitudinal: { title: 'پارگی طولی', sign: 'خط پارگی عمودی و موازی با حاشیهٔ منیسک.' },
+        radial: { title: 'پارگی رادیال', sign: 'نقصی از لبهٔ آزاد به سمت محیط؛ در نمای اکسیال واضح‌تر است.' },
+        horizontal: { title: 'پارگی افقی', sign: 'جدا شدن لایهٔ بالا و پایین همراه با کیست منیسکی.' },
+        bucket: { title: 'پارگی Bucket-handle', sign: 'قطعهٔ جابه‌جا شده با علامت PCL دوگانه و نبود Bow-tie.' },
+        flap: { title: 'پارگی فلپ', sign: 'فلپ منیسک جابه‌جا شده به سمت پایین در بخش داخلی.' },
+      },
       tableHeaders: ['نوع پارگی', 'هندسه', 'علامت MRI', 'درمان'],
       tableRows: [
         ['پارگی طولی', 'موازی با محیط منیسک', 'علامت دو خطی در ساژیتال', 'بخیه در ناحیه قرمز یا قرمز-سفید'],
@@ -4481,7 +4581,6 @@ function ImageFigure({ src, alt, caption, zoomable = false, zoomLabel = 'Bild ve
   )
 }
 
-
 export default function MeniskusPage() {
   const { lang } = useLanguage()
   const copy = CONTENT[lang] || CONTENT.de
@@ -4700,6 +4799,22 @@ export default function MeniskusPage() {
 
           <Section id="risstypen" eyebrow="07" title={copy.tearTypes.title} lead={copy.tearTypes.lead} defaultOpen={!isMobile}>
             <Table headers={copy.tearTypes.tableHeaders} rows={copy.tearTypes.tableRows} className={styles.tearTypeTable} />
+            <p className={styles.tearCaseIntro}>{copy.tearTypes.caseIntro}</p>
+            <div className={styles.tearCaseGrid}>
+              {TEAR_CASES.map(item => {
+                const caseCopy = copy.tearTypes.caseItems[item.id]
+                return (
+                  <a key={item.id} href={item.study} target="_blank" rel="noopener noreferrer" className={styles.tearCaseCard}>
+                    <div className={styles.tearCaseBody}>
+                      <h3>{caseCopy.title}</h3>
+                      <p>{caseCopy.sign}</p>
+                      <small>{item.credit}</small>
+                      <strong>{copy.tearTypes.caseOpen}</strong>
+                    </div>
+                  </a>
+                )
+              })}
+            </div>
             <Callout type="cave" label={copy.tearTypes.caveTitle}>{copy.tearTypes.caveText}</Callout>
           </Section>
 
