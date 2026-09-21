@@ -3,12 +3,14 @@ import {createContext,useContext,useEffect,useMemo,useState} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import {useLanguage} from '@/providers/LanguageProvider'
+import {usePersistedSectionProgress} from '@/hooks/usePersistedSectionProgress'
 import template from '@/app/andarun/test/page.module.css'
 import styles from './page.module.css'
 import caseStyles from './case.module.css'
 import {COPY,DISTRIBUTION,GERMAN_SECTIONS,L,MORPH,pick} from './content'
 import {translateLesson} from './translations'
 const ID='mammographie-mikrokalk',PATH='/mamma/bildgebung/mammographie/verkalkungen'
+const SECTION_IDS=GERMAN_SECTIONS.map(section=>section.id)
 const TEMPLATE_COPY={
   path:L('Lernpfad','Learning path','مسیر یادگیری'),
   close:L('Schließen','Close','بستن'),
@@ -425,7 +427,7 @@ export default function Page(){
   const tx=value=>pick(value,lang)
   const lessonSections=GERMAN_SECTIONS
   const[openId,setOpenId]=useState(lessonSections[0].id)
-  const[readSections,setReadSections]=useState(()=>new Set())
+  const[readSections,setReadSections]=usePersistedSectionProgress(ID,SECTION_IDS)
   const activeIndex=useMemo(()=>lessonSections.findIndex(section=>section.id===openId),[lessonSections,openId])
   const withLang=href=>lang==='de'?href:`${href}${href.includes('?')?'&':'?'}lang=${lang}`
   const label=section=>translateLesson(section.label.de,lang)

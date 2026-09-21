@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import { useLanguage } from '@/providers/LanguageProvider'
+import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
 import styles from './page.module.css'
 
 const L = (de, en, fa) => ({ de, en, fa })
@@ -51,6 +52,8 @@ const SECTION_COPY = [
     icon: 'check',
   },
 ]
+
+const SECTION_IDS = SECTION_COPY.map(section => section.id)
 
 const COPY = {
   breadcrumb: L('Akuter ischämischer Schlaganfall', 'Acute ischaemic stroke', 'سکته ایسکمیک حاد'),
@@ -266,7 +269,7 @@ export default function TestLearningPage() {
   const { lang } = useLanguage()
   const pick = value => typeof value === 'string' ? value : value[lang] || value.de
   const [openId, setOpenId] = useState('start')
-  const [readSections, setReadSections] = useState(() => new Set())
+  const [readSections, setReadSections] = usePersistedSectionProgress('andarun-test', SECTION_IDS)
   const activeIndex = useMemo(() => Math.max(0, SECTION_COPY.findIndex(section => section.id === openId)), [openId])
 
   useEffect(() => {

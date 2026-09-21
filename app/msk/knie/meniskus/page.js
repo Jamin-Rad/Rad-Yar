@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
+import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
 
 const styles = new Proxy({}, {
   get: (_target, prop) => String(prop),
@@ -5751,13 +5752,13 @@ export default function MeniskusPage() {
   const mainRef = useRef(null)
   const isMobile = useIsMobileViewport()
   const [openId, setOpenId] = useState(null)
-  const [readSections, setReadSections] = useState(() => new Set())
   const [activeId, setActiveId] = useState(pageSections[0].id)
   const [previewImage, setPreviewImage] = useState(null)
   const meniskusLayout = isMobile ? 'mobile' : 'desktop'
   const { isRead, toggleRead, authError } = useLessonReadStatus('meniskus')
 
   const sectionIds = useMemo(() => pageSections.map(section => section.id), [pageSections])
+  const [readSections, setReadSections] = usePersistedSectionProgress('meniskus', sectionIds, isRead)
   const withLang = (href) => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
 
   const selectSection = (id) => {

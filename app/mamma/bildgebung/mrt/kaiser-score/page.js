@@ -4,12 +4,14 @@ import { createContext, useContext, useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
+import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
 import template from '@/app/andarun/test/page.module.css'
 import styles from './page.module.css'
 import { COPY, FEATURES, PRESETS, SECTIONS, SOURCES, UI, pick } from './content'
 
 const ID = 'mamma-mrt-kaiser-score'
 const PATH = '/mamma/bildgebung/mrt/kaiser-score'
+const SECTION_IDS = SECTIONS.map(section => section.id)
 const TEMPLATE_COPY = {
   path: { de: 'Lernpfad', en: 'Learning path', fa: 'مسیر یادگیری' },
   close: { de: 'Schließen', en: 'Close', fa: 'بستن' },
@@ -189,7 +191,7 @@ export default function KaiserScoreLessonPage() {
   const { lang } = useLanguage()
   const tx = value => pick(value, lang)
   const [openId, setOpenId] = useState(SECTIONS[0].id)
-  const [readSections, setReadSections] = useState(() => new Set())
+  const [readSections, setReadSections] = usePersistedSectionProgress(ID, SECTION_IDS)
   const withLang = href => lang === 'de' ? href : `${href}${href.includes('?') ? '&' : '?'}lang=${lang}`
   const activeIndex = SECTIONS.findIndex(section => section.id === openId)
 
