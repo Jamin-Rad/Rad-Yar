@@ -16,7 +16,7 @@ const TEXT = {
   de: {
     kicker: 'Leitner-System',
     title: 'Flashcards',
-    lead: 'Hier werden alle bereits gelesenen Flashcards automatisch gesammelt und nach dem klassischen Leitner-System wiederholt. Die Daten bleiben lokal in deinem Browser gespeichert.',
+    lead: 'Sobald du eine Flashcard beantwortest, wird sie ins Leitner-System aufgenommen. Dein Fortschritt wird im Browser gespeichert und nach Anmeldung mit deinem Konto synchronisiert.',
     due: 'Heute fällig',
     reviewedToday: 'heute wiederholt',
     dueClickHint: 'Klicken zum Lernen (zufällige Reihenfolge)',
@@ -24,6 +24,8 @@ const TEXT = {
     addLead: 'Wähle ein Fachgebiet, dann ein Kapitel mit verfügbaren Lektionen – im Pop-up siehst du die Themen.',
     progress: 'Leitner-Boxen',
     progressHint: 'Klicke auf eine Box, um die heute fälligen Karten zu lernen.',
+    longBoxHint: 'Langzeit-Boxen sind im Profil ausblendbar. Boxen mit Karten bleiben immer erreichbar.',
+    settingsLink: 'Einstellungen →',
     dueInBox: 'fällig',
     inactiveBox: 'Inaktiv',
     open: 'Öffnen →',
@@ -44,7 +46,7 @@ const TEXT = {
     signInGateTitle: 'Bitte melde dich an, um Flashcards zu lernen',
     signInGateText: 'Ohne Anmeldung kannst du Flashcards direkt über die Lernseiten nutzen (bis zu 5 Karten pro Thema). Melde dich kostenlos an, um dein Leitner-System hier zu verwalten.',
     signIn: 'Anmelden', signUp: 'Registrieren', browseTopics: 'Lerninhalte ansehen',
-    dueLockedTitle: 'Wiederholungsfunktion', dueLockedHint: 'Die „Heute fällig"-Wiederholung ist nur mit Abo verfügbar.',
+    dueLockedTitle: 'Gemischte Wiederholung', dueLockedHint: 'Die gemischte Wiederholung aller Themen benötigt ein Abo. Fällige Karten einzelner Boxen und Themen kannst du weiterhin lernen.',
     topicLimitTitle: 'Themenlimit erreicht',
     topicLimitHint: `Kostenlose Konten können bis zu ${FREE_TOPIC_LIMIT} Themen gleichzeitig lernen. Mit Abo unbegrenzt viele Themen.`,
     trialHint: 'Du nutzt gerade den kostenlosen Testzeitraum für Flashcards (10 Tage ab Registrierung). Danach gelten die Limits für kostenlose Konten.',
@@ -53,7 +55,7 @@ const TEXT = {
   en: {
     kicker: 'Leitner system',
     title: 'Flashcards',
-    lead: 'All flashcards you have already studied are collected here and reviewed using the classic Leitner system. Your progress is stored locally in this browser.',
+    lead: 'Answer a flashcard to add it to the Leitner system. Progress is stored in this browser and synced with your account when signed in.',
     due: 'Due today',
     reviewedToday: 'reviewed today',
     dueClickHint: 'Click to learn (random order)',
@@ -61,6 +63,8 @@ const TEXT = {
     addLead: 'Choose a specialty, then a chapter with available lessons – the pop-up shows the topics.',
     progress: 'Leitner boxes',
     progressHint: 'Click a box to learn the cards due today.',
+    longBoxHint: 'Long-term boxes can be hidden in your profile. Boxes containing cards remain accessible.',
+    settingsLink: 'Settings →',
     dueInBox: 'due',
     inactiveBox: 'Inactive',
     open: 'Open →',
@@ -81,7 +85,7 @@ const TEXT = {
     signInGateTitle: 'Please sign in to study flashcards',
     signInGateText: 'Without an account you can use flashcards directly from the lesson pages (up to 5 cards per topic). Sign in for free to manage your Leitner system here.',
     signIn: 'Sign in', signUp: 'Sign up', browseTopics: 'Browse lessons',
-    dueLockedTitle: 'Review feature', dueLockedHint: 'The "due today" review is only available with a subscription.',
+    dueLockedTitle: 'Mixed review', dueLockedHint: 'A subscription is needed to mix due cards from all topics. You can still review due cards in individual boxes and topics.',
     topicLimitTitle: 'Topic limit reached',
     topicLimitHint: `Free accounts can study up to ${FREE_TOPIC_LIMIT} topics at the same time. With a subscription, unlimited topics.`,
     trialHint: 'You are currently using the free flashcard trial (10 days after registration). After that, the free-account limits apply.',
@@ -90,7 +94,7 @@ const TEXT = {
   fa: {
     kicker: 'سیستم لایتنر',
     title: 'فلش‌کارت‌ها',
-    lead: 'اینجا همه فلش‌کارت‌هایی که خوانده شده‌اند به صورت خودکار جمع می‌شوند و با سیستم قدیمی لایتنر مرور می‌شوند. اطلاعات فقط در همین مرورگر ذخیره می‌شود.',
+    lead: 'با پاسخ‌دادن به هر فلش‌کارت، آن کارت وارد سیستم لایتنر می‌شود. پیشرفت در مرورگر ذخیره و پس از ورود با حساب شما همگام‌سازی می‌شود.',
     due: 'امروز برای مرور',
     reviewedToday: 'امروز مرور شده',
     dueClickHint: 'برای یادگیری کلیک کن (ترتیب تصادفی)',
@@ -98,6 +102,8 @@ const TEXT = {
     addLead: 'یک تخصص را انتخاب کن، سپس یک فصل با درس‌های موجود — در پنجره بازشده موضوعات نشان داده می‌شوند.',
     progress: 'جعبه‌های لایتنر',
     progressHint: 'روی یک جعبه بزن تا کارت‌های امروزِ آن را یاد بگیری.',
+    longBoxHint: 'جعبه‌های بلندمدت را می‌توان در پروفایل پنهان کرد؛ جعبه‌های دارای کارت همیشه در دسترس می‌مانند.',
+    settingsLink: 'تنظیمات ←',
     dueInBox: 'مقرر',
     inactiveBox: 'غیرفعال',
     open: 'باز کردن ←',
@@ -118,7 +124,7 @@ const TEXT = {
     signInGateTitle: 'برای مطالعه فلش‌کارت‌ها وارد شوید',
     signInGateText: 'بدون ورود می‌توانید از طریق صفحات درسی تا ۵ کارت در هر موضوع استفاده کنید. برای مدیریت سیستم لایتنر خود، رایگان وارد شوید.',
     signIn: 'ورود', signUp: 'ثبت‌نام', browseTopics: 'مشاهده درس‌ها',
-    dueLockedTitle: 'قابلیت مرور', dueLockedHint: 'مرور «امروزِ» فقط با اشتراک در دسترس است.',
+    dueLockedTitle: 'مرور ترکیبی', dueLockedHint: 'مرور ترکیبی همهٔ موضوع‌ها به اشتراک نیاز دارد؛ مرور کارت‌های موعددار هر جعبه و موضوع همچنان ممکن است.',
     topicLimitTitle: 'محدودیت موضوعات',
     topicLimitHint: `حساب‌های رایگان می‌توانند حداکثر ${FREE_TOPIC_LIMIT} موضوع را همزمان مطالعه کنند. با اشتراک، بدون محدودیت.`,
     trialHint: 'شما در حال استفاده از دوره آزمایشی رایگان فلش‌کارت هستید (۱۰ روز پس از ثبت‌نام). پس از آن، محدودیت‌های حساب رایگان اعمال می‌شود.',
@@ -233,7 +239,7 @@ export default function FlashcardsPage() {
         .map(k => ({ kapitel: k, themen: k.themen.filter(isAvailable) }))
         .filter(({ themen }) => themen.length > 0)
       return { fach, kapitel }
-    })
+    }).filter(entry => entry.kapitel.length > 0)
   }, [])
 
   const startedTopicIds = useMemo(() => {
@@ -331,11 +337,12 @@ export default function FlashcardsPage() {
             <div>
               <h2 className={styles.sectionTitle}>{t.progress}</h2>
               <p className={styles.sectionSub}>{t.progressHint}</p>
+              {!settings.longBoxesEnabled && <p className={styles.sectionSub}>{t.longBoxHint} <Link href={withLang('/profil')}>{t.settingsLink}</Link></p>}
             </div>
           </div>
           <div className={styles.boxGrid}>
             {boxCounts.map(box => {
-              const locked = box.box > 5 && !settings.longBoxesEnabled
+              const locked = box.box > 5 && !settings.longBoxesEnabled && box.count === 0
               const interval = getBoxInterval(box.box, lang)
               if (locked) {
                 return (
