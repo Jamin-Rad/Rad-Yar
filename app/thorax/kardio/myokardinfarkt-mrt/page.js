@@ -12,16 +12,16 @@ const L = (de, en, fa) => ({ de, en, fa })
 
 const copy = {
   title: L('Myokardinfarkt im Kardio-MRT', 'Myocardial infarction on cardiac MRI', 'انفارکت میوکارد در MRI قلب'),
-  subtitle: L('LGE-Muster erkennen · MVO und Thrombus unterscheiden', 'Recognise LGE patterns · distinguish MVO and thrombus', 'شناخت الگوهای LGE · افتراق MVO و ترومبوس'),
+  subtitle: L('LGE · Stress-Perfusion · MVO und Thrombus', 'LGE · stress perfusion · MVO and thrombus', 'LGE · پرفیوژن استرس · MVO و ترومبوس'),
   chapter: L('Kardiale Bildgebung / Kardio-MRT', 'Cardiac imaging / cardiac MRI', 'تصویربرداری قلبی / MRI قلب'),
   thorax: L('Thorax', 'Thorax', 'قفسه سینه'),
   contents: L('Inhaltsverzeichnis', 'Contents', 'فهرست مطالب'),
-  preview: L('Lektion im Aufbau · LGE-Grundlagen', 'Lesson in progress · LGE basics', 'درس در حال تکمیل · مبانی LGE'),
+  preview: L('Lektion im Aufbau · LGE und Stress-Perfusion', 'Lesson in progress · LGE and stress perfusion', 'درس در حال تکمیل · LGE و پرفیوژن استرس'),
   read: L('Als gelesen markieren', 'Mark as read', 'علامت‌گذاری به‌عنوان خوانده‌شده'),
   readDone: L('Als gelesen markiert', 'Marked as read', 'خوانده‌شده'),
   auth: L('Bitte melde dich an, um deinen Lernfortschritt zu speichern.', 'Please sign in to save your learning progress.', 'برای ذخیرهٔ پیشرفت آموزشی وارد حساب شوید.'),
   signIn: L('Anmelden', 'Sign in', 'ورود'),
-  rule: L('Die Leitfrage', 'The key question', 'پرسش کلیدی'),
+  rule: L('LGE: Die Leitfrage', 'LGE: the key question', 'LGE: پرسش کلیدی'),
   ruleQuestion: L('Erfasst das LGE das Subendokard und folgt es einem Koronarterritorium?', 'Does the LGE involve the subendocardium and follow a coronary territory?', 'آیا LGE ساب‌اندوکارد را درگیر می‌کند و از قلمرو یک شریان کرونری پیروی می‌کند؟'),
   yes: L('Beides ja → eher ischämische Schädigung / Infarkt', 'Both yes → favour ischaemic injury / infarction', 'هر دو بله ← بیشتر به آسیب ایسکمیک / انفارکت فکر کن'),
   no: L('Mid-wall, subepikardial oder nichtterritorial → eher nichtischämisch', 'Mid-wall, subepicardial or non-territorial → favour non-ischaemic disease', 'میدوال، ساب‌اپیکاردیال یا غیرقلمروی ← بیشتر به بیماری غیرایسکمیک فکر کن'),
@@ -72,6 +72,27 @@ const sections = [
       L('Je nach Erkrankung sind auch fokale, multifokale oder diffuse Muster möglich.', 'Focal, multifocal or diffuse patterns are also possible depending on the disease.', 'بسته به بیماری، الگوهای فوکال، چندکانونی یا منتشر نیز ممکن‌اند.'),
     ],
   },
+  {
+    id: 'stress-perfusion', number: '06', title: L('Ischämie in der Stress-Perfusion', 'Ischaemia on stress perfusion', 'ایسکمی در پرفیوژن استرس'),
+    flow: true,
+    paragraphs: [
+      L('Die dynamische First-Pass-Serie Bild für Bild mit dem Slider vor- und zurückgehen: zuerst kontrastiert der rechte Ventrikel (RV), dann der linke Ventrikel (LV) und schließlich das LV-Myokard. Die Dauer eines Defekts lässt sich so besser beurteilen als allein in der abgespielten Schleife.', 'Step through the dynamic first-pass series frame by frame with the slider: contrast reaches the right ventricle (RV), then the left ventricle (LV), then the LV myocardium. This makes defect duration easier to judge than watching the loop alone.', 'سری دینامیک first-pass را با اسلایدر، فازبه‌فاز جلو و عقب ببر: کنتراست ابتدا به بطن راست (RV)، بعد بطن چپ (LV) و سپس میوکارد بطن چپ می‌رسد. این کار سنجش دوام نقص را از تماشای صرفِ فیلم آسان‌تر می‌کند.'),
+      L('Ein echter induzierbarer Perfusionsdefekt beginnt mit der Kontrastankunft im Myokard, ist meist subendokardial und folgt häufig einem Koronarterritorium. Er hält über die maximale myokardiale Anreicherung hinaus mehrere Herzzyklen an (praktisch oft etwa vier oder mehr Bilder; keine starre Grenze).', 'A true inducible perfusion defect begins as contrast reaches the myocardium, is usually subendocardial and often follows a coronary territory. It persists for several heartbeats beyond peak myocardial enhancement (often roughly four or more frames in practice, but this is not a fixed cutoff).', 'نقص پرفیوژن القاپذیرِ واقعی با رسیدن کنتراست به میوکارد ظاهر می‌شود، معمولاً ساب‌اندوکاردیال است و اغلب از قلمرو کرونری پیروی می‌کند. این نقص چند ضربان پس از اوج افزایش سیگنال میوکارد باقی می‌ماند (در عمل اغلب حدود چهار فاز یا بیشتر، اما این عدد آستانهٔ قطعی نیست).'),
+    ],
+    bullets: [
+      L('Nur unter Stress, nicht in Ruhe (falls eine Ruhe-Serie vorliegt) → reversibler Defekt; bei passender Form und Dauer spricht er für Ischämie.', 'Stress only, absent at rest (when rest images are available) → a reversible defect; if its shape and duration fit, it supports ischaemia.', 'فقط در استرس و غایب در استراحت (اگر سری استراحت موجود باشد) ← نقص برگشت‌پذیر؛ اگر شکل و دوام آن هم سازگار باشد، به نفع ایسکمی است.'),
+      L('Unter Stress und in Ruhe → Artefakt oder andere Ursache erwägen; Narbengewebe anhand des LGE beurteilen.', 'Present at stress and rest → consider artifact or another cause; assess scar on LGE.', 'در استرس و استراحت هر دو دیده شود ← آرتیفکت یا علت دیگر را بررسی کن؛ اسکار را با LGE ارزیابی کن.'),
+    ],
+    takeaway: L('Stressdefekt + passende Dynamik + kein Ruhedefekt → induzierbare Ischämie wahrscheinlich.', 'Stress defect + convincing time course + no rest defect → inducible ischaemia is likely.', 'نقص در استرس + سیر زمانی سازگار + نبود نقص در استراحت ← ایسکمی القاپذیر محتمل است.'),
+  },
+  {
+    id: 'dark-band', number: '07', title: L('Dark-Band-Artefakt erkennen', 'Recognising the dark-band artifact', 'شناخت آرتیفکت Dark-band'),
+    paragraphs: [
+      L('Das Dark-Band- oder Dark-Rim-Artefakt ist ein dünner subendokardialer dunkler Streifen. Es tritt häufig schon beim starken Kontrasteintritt in den LV-Blutpool auf, bevor das Myokard anreichert, und verschwindet rasch – oft nach nur ein bis zwei Bildern beziehungsweise wenigen Herzschlägen.', 'The dark-band or dark-rim artifact is a thin subendocardial dark line. It often appears as contrast enters the LV blood pool, before myocardial enhancement, and fades quickly—often after only one or two frames or a few heartbeats.', 'آرتیفکت dark-band یا dark-rim نوار تیرهٔ باریکی در ساب‌اندوکارد است. اغلب هنگام ورود شدید کنتراست به حفرهٔ LV، پیش از افزایش سیگنال میوکارد، ظاهر می‌شود و سریع محو می‌شود؛ گاهی تنها در یک تا دو فاز یا چند ضربان دیده می‌شود.'),
+      L('Es kann auch in Ruhe auftreten und muss keinem Koronarterritorium entsprechen. Umgekehrt beweist sein Fehlen in Ruhe allein keine Ischämie: Herzfrequenz und Kontrastkinetik können das Artefakt zwischen Stress und Ruhe verändern.', 'It can also occur at rest and need not follow a coronary territory. Conversely, its absence at rest alone does not prove ischaemia: heart rate and contrast kinetics can change the artifact between stress and rest.', 'این نوار ممکن است در استراحت هم دیده شود و لزوماً از قلمرو کرونری پیروی نمی‌کند. برعکس، غایب بودنش در استراحت به‌تنهایی ایسکمی را ثابت نمی‌کند؛ ضربان قلب و سینتیک کنتراست می‌توانند ظاهر آرتیفکت را بین استرس و استراحت تغییر دهند.'),
+    ],
+    takeaway: L('Ischämie bleibt mehrere Phasen während der myokardialen Kontrastaufnahme sichtbar; Dark Band ist meist früh und kurzlebig.', 'Ischaemia persists for several frames during myocardial enhancement; a dark band is usually early and transient.', 'ایسکمی طی چند فازِ افزایش سیگنال میوکارد باقی می‌ماند؛ dark band معمولاً زودرس و گذراست.'),
+  },
 ]
 
 const references = [
@@ -79,6 +100,7 @@ const references = [
   { label: 'Cardiac MR assessment of microvascular obstruction', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4651190/' },
   { label: 'CMR imaging for assessment of cardiac thrombus', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3782319/' },
   { label: 'Clinical CMR patterns in cardiomyopathies', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9902331/' },
+  { label: 'SCMR: standardized CMR image interpretation and post-processing', href: 'https://events.scmr.org/wp-content/uploads/2024/08/Post-processing.pdf' },
 ]
 
 export default function MyokardinfarktMrtPage() {
@@ -94,19 +116,19 @@ export default function MyokardinfarktMrtPage() {
     <header className={base.header}>
       <nav className={base.breadcrumb} aria-label="Breadcrumb"><Link href={withLang('/')}>RadYar</Link><span>›</span><Link href={withLang('/lernen/thorax')}>{t(copy.thorax)}</Link><span>›</span><Link href={withLang('/lernen/thorax')}>{t(copy.chapter)}</Link><span>›</span><strong>{t(copy.title)}</strong></nav>
       <div className={base.hero}>
-        <div className={`${base.heroText} ${styles.heroText}`}><span className={base.sourceBadge}>Dr. Zia</span><span className={styles.eyebrow}>LGE · KARDIO-MRT</span><h1>{t(copy.title)}</h1><p>{t(copy.subtitle)}</p><small>{t(copy.preview)}</small></div>
-        <LessonKeyPoints points={[[t(sections[1].title), t(sections[1].takeaway)], [t(sections[2].title), t(sections[2].takeaway)], [t(copy.rule), t(copy.ruleQuestion)]]} />
+        <div className={`${base.heroText} ${styles.heroText}`}><span className={base.sourceBadge}>Dr. Zia</span><span className={styles.eyebrow}>LGE · PERFUSION · KARDIO-MRT</span><h1>{t(copy.title)}</h1><p>{t(copy.subtitle)}</p><small>{t(copy.preview)}</small></div>
+        <LessonKeyPoints points={[[t(sections[1].title), t(sections[1].takeaway)], [t(sections[2].title), t(sections[2].takeaway)], [t(sections[5].title), t(sections[5].takeaway)]]} />
       </div>
     </header>
     <div className={base.readBar}>{readButton}</div>
     <div className={base.layout}>
-      <aside className={base.sidebar}><div className={base.sideTitle}>{t(copy.contents)}</div>{sections.map(section => <a className={base.sideItem} href={`#${section.id}`} key={section.id}><span className={styles.navNumber}>{section.number}</span><strong>{t(section.title)}</strong></a>)}<a className={base.sideItem} href="#decision"><span className={styles.navNumber}>06</span><strong>{t(copy.rule)}</strong></a></aside>
+      <aside className={base.sidebar}><div className={base.sideTitle}>{t(copy.contents)}</div>{sections.map(section => <a className={base.sideItem} href={`#${section.id}`} key={section.id}><span className={styles.navNumber}>{section.number}</span><strong>{t(section.title)}</strong></a>)}<a className={base.sideItem} href="#decision"><span className={styles.navNumber}>08</span><strong>{t(copy.rule)}</strong></a></aside>
       <div className={base.main}>
         {sections.map(section => <section className={`${base.section} ${styles.section}`} id={section.id} key={section.id}>
           <div className={styles.sectionHead}><span>{section.number}</span><h2>{t(section.title)}</h2></div>
-          <div className={styles.sectionBody}>{section.paragraphs.map((paragraph, index) => <p key={index}>{t(paragraph)}</p>)}{section.bullets && <ul>{section.bullets.map((bullet, index) => <li key={index}>{t(bullet)}</li>)}</ul>}{section.takeaway && <div className={styles.takeaway}>{t(section.takeaway)}</div>}</div>
+          <div className={styles.sectionBody}>{section.paragraphs.map((paragraph, index) => <p key={index}>{t(paragraph)}</p>)}{section.flow && <div className={styles.contrastFlow} dir="ltr" aria-label="RV to LV to LV myocardium"><span>RV</span><b>→</b><span>LV</span><b>→</b><span>LV myocardium</span></div>}{section.bullets && <ul>{section.bullets.map((bullet, index) => <li key={index}>{t(bullet)}</li>)}</ul>}{section.takeaway && <div className={styles.takeaway}>{t(section.takeaway)}</div>}</div>
         </section>)}
-        <section className={`${base.section} ${styles.section} ${styles.decision}`} id="decision"><div className={styles.sectionHead}><span>06</span><h2>{t(copy.rule)}</h2></div><div className={styles.sectionBody}><p className={styles.question}>{t(copy.ruleQuestion)}</p><div className={styles.answers}><div>{t(copy.yes)}</div><div>{t(copy.no)}</div></div><p className={styles.caveat}>{t(copy.caveat)}</p></div></section>
+        <section className={`${base.section} ${styles.section} ${styles.decision}`} id="decision"><div className={styles.sectionHead}><span>08</span><h2>{t(copy.rule)}</h2></div><div className={styles.sectionBody}><p className={styles.question}>{t(copy.ruleQuestion)}</p><div className={styles.answers}><div>{t(copy.yes)}</div><div>{t(copy.no)}</div></div><p className={styles.caveat}>{t(copy.caveat)}</p></div></section>
         <section className={`${base.section} ${styles.section}`} id="sources"><div className={styles.sectionHead}><span>↗</span><h2>{t(copy.sources)}</h2></div><div className={styles.references}>{references.map(source => <a key={source.href} href={source.href} target="_blank" rel="noopener noreferrer">{source.label}<span aria-hidden="true">↗</span></a>)}</div></section>
         <div className={styles.bottomRead}>{readButton}</div>
       </div>

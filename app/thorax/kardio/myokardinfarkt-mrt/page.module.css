@@ -16,6 +16,9 @@
 .sectionBody p:last-child { margin-bottom: 0; }
 .sectionBody ul { display: grid; gap: 11px; margin: 2px 0 19px; padding-inline-start: 1.35rem; color: var(--text); line-height: 1.75; }
 .sectionBody li::marker { color: #0284c7; }
+.contrastFlow { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; margin: 2px 0 20px; color: var(--text-strong); }
+.contrastFlow span { padding: 10px 14px; border: 1px solid rgba(56,189,248,.3); border-radius: 10px; background: rgba(56,189,248,.1); font-size: .84rem; font-weight: 900; }
+.contrastFlow b { color: #38bdf8; }
 .takeaway { margin-top: 10px; padding: 16px 19px; border-inline-start: 4px solid #0ea5e9; border-radius: 11px; color: var(--text-strong); background: rgba(56,189,248,.1); font-weight: 800; line-height: 1.7; }
 .decision { border-color: rgba(56,189,248,.34); }
 .question { color: var(--text-strong) !important; font-size: 1.13rem !important; font-weight: 900; }
