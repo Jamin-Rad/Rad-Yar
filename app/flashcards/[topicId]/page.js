@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useMemo, useCallback } from 'react'
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react'
 import Link from 'next/link'
 import { useParams, useSearchParams } from 'next/navigation'
 import { useAuth, useUser } from '@clerk/nextjs'
@@ -30,7 +30,7 @@ const T = {
     know: 'Gewusst ✓',
     dontKnow: 'Nicht gewusst ✗',
     practiceKnow: 'Weiter ✓',
-    practiceDontKnow: 'Nochmal üben ✗',
+    practiceDontKnow: 'Nicht gewusst ✗',
     practiceMode: 'Üben ohne Zählen',
     practiceNote: 'Diese Wiederholung verändert keine Leitner-Box und wird nicht gezählt.',
     done: 'Sitzung beendet!',
@@ -46,9 +46,19 @@ const T = {
     lessonLinkLabel: 'Lektion lernen',
     navigatorTitle: 'Reihenfolge',
     navigatorHint: 'Karten direkt wählen',
+    answeredCount: (n, total) => `${n} von ${total} beantwortet`,
+    answeredCard: 'Bereits beantwortet',
+    modeLearn: 'Neue Karten lernen',
+    modeDue: 'Fällige Karten wiederholen',
+    modePractice: 'Frei üben',
+    modeHint: 'Neue und fällige Karten ändern deinen Lernplan. Freies Üben zählt nicht.',
+    details: 'Erklärung und Diagramm anzeigen',
+    emptyPractice: 'Alle Karten frei üben',
+    emptyDue: 'Heute ist in diesem Thema nichts fällig. Neue Karten kannst du separat lernen.',
+    emptyLearn: 'Keine neuen Karten mehr. Prüfe die fälligen Karten oder übe frei.',
     jumpToCard: (i, title) => `Zu Karte ${i}: ${title}`,
-    dueLockedTitle: 'Wiederholungsfunktion',
-    dueLockedHint: 'Die „Heute fällig"-Wiederholung ist nur mit Abo verfügbar. Aktiviere ein Abonnement, um alle fälligen Karten zu wiederholen.',
+    dueLockedTitle: 'Gemischte Wiederholung',
+    dueLockedHint: 'Die gemischte Wiederholung aller Themen benötigt ein Abo. Fällige Karten einzelner Themen und Boxen kannst du weiterhin wiederholen.',
     topicLockedTitle: 'Themenlimit erreicht',
     topicLockedHint: `Kostenlose Konten können bis zu ${FREE_TOPIC_LIMIT} Themen gleichzeitig lernen. Mit Abo unbegrenzt viele Themen.`,
     freeLimitNote: `Kostenlose Version: max. ${FREE_ITEM_LIMIT} Karten pro Durchgang. Mit Abo unbegrenzt.`,
@@ -66,7 +76,7 @@ const T = {
     know: 'Got it ✓',
     dontKnow: 'Missed it ✗',
     practiceKnow: 'Next ✓',
-    practiceDontKnow: 'Review again ✗',
+    practiceDontKnow: 'Missed it ✗',
     practiceMode: 'Practice without counting',
     practiceNote: 'This review does not change any Leitner box and is not counted.',
     done: 'Session complete!',
@@ -82,9 +92,19 @@ const T = {
     lessonLinkLabel: 'Study lesson',
     navigatorTitle: 'Order',
     navigatorHint: 'Choose any card',
+    answeredCount: (n, total) => `${n} of ${total} answered`,
+    answeredCard: 'Already answered',
+    modeLearn: 'Learn new cards',
+    modeDue: 'Review due cards',
+    modePractice: 'Free practice',
+    modeHint: 'New and due cards update your schedule. Free practice does not count.',
+    details: 'Show explanation and diagram',
+    emptyPractice: 'Practice all cards',
+    emptyDue: 'No cards are due in this topic today. You can learn new cards separately.',
+    emptyLearn: 'No new cards remain. Check due cards or practice freely.',
     jumpToCard: (i, title) => `Go to card ${i}: ${title}`,
-    dueLockedTitle: 'Review feature',
-    dueLockedHint: 'The "due today" review is only available with a subscription. Activate a subscription to review all due cards.',
+    dueLockedTitle: 'Mixed review',
+    dueLockedHint: 'A subscription is needed to mix due cards from all topics. You can still review due cards in individual topics and boxes.',
     topicLockedTitle: 'Topic limit reached',
     topicLockedHint: `Free accounts can study up to ${FREE_TOPIC_LIMIT} topics at the same time. With a subscription, unlimited topics.`,
     freeLimitNote: `Free version: max. ${FREE_ITEM_LIMIT} cards per session. Unlimited with a subscription.`,
@@ -102,7 +122,7 @@ const T = {
     know: 'بلدم ✓',
     dontKnow: 'بلد نبودم ✗',
     practiceKnow: 'بعدی ✓',
-    practiceDontKnow: 'دوباره تمرین ✗',
+    practiceDontKnow: 'بلد نبودم ✗',
     practiceMode: 'تمرین بدون شمارش',
     practiceNote: 'این مرور جعبه لایتنر را تغییر نمی‌دهد و در آمار حساب نمی‌شود.',
     done: 'سشن تمام شد!',
@@ -118,9 +138,19 @@ const T = {
     lessonLinkLabel: 'مطالعه درس',
     navigatorTitle: 'ترتیب کارت‌ها',
     navigatorHint: 'انتخاب مستقیم کارت',
+    answeredCount: (n, total) => `${n} از ${total} پاسخ داده شده`,
+    answeredCard: 'قبلاً پاسخ داده شده',
+    modeLearn: 'یادگیری کارت‌های جدید',
+    modeDue: 'مرور کارت‌های موعددار',
+    modePractice: 'تمرین آزاد',
+    modeHint: 'یادگیری و مرور برنامه را تغییر می‌دهند؛ تمرین آزاد در آمار ثبت نمی‌شود.',
+    details: 'نمایش توضیح و دیاگرام',
+    emptyPractice: 'تمرین آزاد همهٔ کارت‌ها',
+    emptyDue: 'امروز کارتی از این موضوع موعد مرور ندارد. کارت‌های جدید را جداگانه می‌توانی یاد بگیری.',
+    emptyLearn: 'کارت جدیدی باقی نمانده است. کارت‌های موعددار را مرور کن یا تمرین آزاد انجام بده.',
     jumpToCard: (i, title) => `رفتن به کارت ${i}: ${title}`,
-    dueLockedTitle: 'قابلیت مرور',
-    dueLockedHint: 'مرور «امروزِ» فقط با اشتراک در دسترس است. برای مرور همه کارت‌های مقرر، یک اشتراک فعال کن.',
+    dueLockedTitle: 'مرور ترکیبی',
+    dueLockedHint: 'مرور ترکیبی همهٔ موضوع‌ها به اشتراک نیاز دارد. مرور کارت‌های موعددار هر موضوع و جعبه همچنان ممکن است.',
     topicLockedTitle: 'محدودیت موضوعات',
     topicLockedHint: `حساب‌های رایگان می‌توانند حداکثر ${FREE_TOPIC_LIMIT} موضوع را همزمان مطالعه کنند. با اشتراک، بدون محدودیت.`,
     freeLimitNote: `نسخه رایگان: حداکثر ${FREE_ITEM_LIMIT} کارت در هر دور. با اشتراک، بدون محدودیت.`,
@@ -168,18 +198,6 @@ function DiagramView({ text }) {
   )
 }
 
-function sortCards(cards, state) {
-  const due = [], fresh = [], future = []
-  cards.forEach(c => {
-    const r = state[c.id]
-    if (!r) fresh.push(c)
-    else if (r.status === 'mastered') future.push(c)
-    else if (isDue(r)) due.push(c)
-    else future.push(c)
-  })
-  return [...due, ...fresh, ...future]
-}
-
 export default function FlashcardReviewPage() {
   const { lang } = useLanguage()
   const { userId } = useAuth()
@@ -210,6 +228,7 @@ export default function FlashcardReviewPage() {
     [topicId, isDueMode, contrastGroup]
   )
   const practiceMode = searchParams.get('mode') === 'practice'
+  const reviewMode = searchParams.get('mode') === 'due' || isDueMode
   const boxValue = searchParams.get('box')
   const boxFilter = boxValue ? Number(boxValue) : null
   const fromParam = searchParams.get('from')
@@ -226,9 +245,12 @@ export default function FlashcardReviewPage() {
   const [done, setDone] = useState(false)
   const [loading, setLoading] = useState(true)
   const [stats, setStats] = useState({ correct: 0, wrong: 0 })
+  const [answeredIds, setAnsweredIds] = useState(() => new Set())
+  const advanceTimer = useRef(null)
 
   useEffect(() => {
     let cancelled = false
+    if (advanceTimer.current) clearTimeout(advanceTimer.current)
     setLoading(true)
     async function load() {
       const state = userId ? await pullLeitnerStateFromServer(userId) : loadLeitnerState(userId)
@@ -240,16 +262,22 @@ export default function FlashcardReviewPage() {
       } else if (practiceMode && boxFilter) {
         selectedCards = allCards.filter(card => {
           const record = state[card.id]
-          return record && record.status !== 'mastered' && Number(record.box) === boxFilter
+          return record && Number(record.box) === boxFilter
         })
+      } else if (practiceMode) {
+        selectedCards = allCards
       } else if (boxFilter) {
         selectedCards = allCards.filter(card => {
           const record = state[card.id]
           return record && isDue(record) && Number(record.box) === boxFilter
         })
+      } else if (reviewMode) {
+        selectedCards = allCards.filter(card => isDue(state[card.id]))
+      } else {
+        selectedCards = allCards.filter(card => !state[card.id])
       }
 
-      let finalCards = isDueMode || practiceMode ? selectedCards : sortCards(selectedCards, state)
+      let finalCards = selectedCards
       if (!fullAccess) finalCards = finalCards.slice(0, FREE_ITEM_LIMIT)
 
       setLeitnerState(state)
@@ -258,11 +286,15 @@ export default function FlashcardReviewPage() {
       setFlipped(false)
       setDone(false)
       setStats({ correct: 0, wrong: 0 })
+      setAnsweredIds(new Set())
       setLoading(false)
     }
     load()
-    return () => { cancelled = true }
-  }, [allCards, userId, practiceMode, boxFilter, isDueMode, fullAccess])
+    return () => {
+      cancelled = true
+      if (advanceTimer.current) clearTimeout(advanceTimer.current)
+    }
+  }, [allCards, userId, practiceMode, reviewMode, boxFilter, isDueMode, fullAccess])
 
   const startedTopicIds = useMemo(() => {
     const set = new Set()
@@ -279,17 +311,25 @@ export default function FlashcardReviewPage() {
   const record = current ? leitnerState[current.id] : null
   const boxNum = practiceMode && boxFilter ? boxFilter : (record?.box ?? 1)
   const boxLabel = getBoxLabel(boxNum, lang)
-  const progress = cards.length > 0 ? ((index + 1) / cards.length) * 100 : 0
+  const progress = cards.length > 0 ? (answeredIds.size / cards.length) * 100 : 0
+  const modeHref = (mode) => {
+    const query = new URLSearchParams()
+    if (mode) query.set('mode', mode)
+    if (fromParam) query.set('from', fromParam)
+    if (lang !== 'de') query.set('lang', lang)
+    return `/flashcards/${topicId}${query.size ? `?${query}` : ''}`
+  }
 
   const goToCard = useCallback((nextIndex) => {
-    if (!cards.length) return
+    if (!cards.length || exiting) return
     const boundedIndex = Math.max(0, Math.min(cards.length - 1, nextIndex))
+    if (answeredIds.has(cards[boundedIndex].id)) return
     setIndex(boundedIndex)
     setFlipped(false)
     setExiting(false)
     setExitDir(null)
     setDone(false)
-  }, [cards.length])
+  }, [cards, answeredIds, exiting])
 
   const handleFlip = useCallback(() => {
     if (exiting || !current) return
@@ -297,7 +337,7 @@ export default function FlashcardReviewPage() {
   }, [exiting, current])
 
   const handleAnswer = useCallback((knew) => {
-    if (!flipped || exiting || !current) return
+    if (!flipped || exiting || !current || answeredIds.has(current.id)) return
     setExiting(true)
     setExitDir(knew ? 'right' : 'left')
 
@@ -308,18 +348,26 @@ export default function FlashcardReviewPage() {
     }
 
     setStats(s => ({ correct: s.correct + (knew ? 1 : 0), wrong: s.wrong + (knew ? 0 : 1) }))
-    setTimeout(() => {
+    const nextAnswered = new Set(answeredIds)
+    nextAnswered.add(current.id)
+    setAnsweredIds(nextAnswered)
+    advanceTimer.current = setTimeout(() => {
       setFlipped(false)
       setExiting(false)
       setExitDir(null)
-      if (index + 1 >= cards.length) setDone(true)
-      else setIndex(i => i + 1)
+      if (nextAnswered.size === cards.length) {
+        setDone(true)
+      } else {
+        const nextIndex = cards.findIndex((card, cardIndex) => cardIndex > index && !nextAnswered.has(card.id))
+        setIndex(nextIndex >= 0 ? nextIndex : cards.findIndex(card => !nextAnswered.has(card.id)))
+      }
     }, 320)
-  }, [flipped, exiting, current, index, cards.length, userId, practiceMode])
+  }, [flipped, exiting, current, index, cards, answeredIds, userId, practiceMode])
 
   useEffect(() => {
     function onKey(e) {
       if (done) return
+      if (e.target instanceof Element && e.target.closest('button, a, summary, input, textarea, select, [role="button"]')) return
       if (e.code === 'Space' || e.code === 'ArrowUp') {
         e.preventDefault()
         handleFlip()
@@ -405,7 +453,10 @@ export default function FlashcardReviewPage() {
         <div className={styles.doneCard}>
           <span className={styles.doneEmoji}>🗂️</span>
           <h1 className={styles.doneTitle}>{t.emptyTitle}</h1>
-          <p className={styles.doneSub}>{t.emptySub}</p>
+          <p className={styles.doneSub}>{!boxFilter && !practiceMode && !isDueMode ? (reviewMode ? t.emptyDue : t.emptyLearn) : t.emptySub}</p>
+          {!isDueMode && !practiceMode && !boxFilter && reviewMode && <Link href={modeHref(null)} className={styles.backLink}>{t.modeLearn}</Link>}
+          {!isDueMode && !practiceMode && !boxFilter && !reviewMode && <Link href={modeHref('due')} className={styles.backLink}>{t.modeDue}</Link>}
+          {!isDueMode && !practiceMode && !boxFilter && <Link href={modeHref('practice')} className={styles.secondaryLink}>{t.emptyPractice}</Link>}
           <Link href={backHref} className={styles.backLink}>{t.backLink}</Link>
         </div>
       </div>
@@ -429,7 +480,7 @@ export default function FlashcardReviewPage() {
       <header className={styles.topBar}>
         <Link href={backHref} className={styles.backBtn}>{backLabel}</Link>
         <div className={styles.topCenter}>
-          <span className={styles.cardCount}>{t.cardOf(index + 1, cards.length)}</span>
+          <span className={styles.cardCount}>{t.answeredCount(answeredIds.size, cards.length)}</span>
         </div>
         <div className={styles.topRight}>
           {showLessonShortcut && (
@@ -449,7 +500,16 @@ export default function FlashcardReviewPage() {
         </div>
       </header>
 
-      <div className={styles.progressTrack}>
+      {!isDueMode && !boxFilter && (
+        <div className={styles.modeNav} aria-label={t.modeHint}>
+          <Link href={modeHref(null)} className={!practiceMode && !reviewMode ? styles.modeActive : ''}>{t.modeLearn}</Link>
+          <Link href={modeHref('due')} className={reviewMode ? styles.modeActive : ''}>{t.modeDue}</Link>
+          <Link href={modeHref('practice')} className={practiceMode ? styles.modeActive : ''}>{t.modePractice}</Link>
+          <small>{t.modeHint}</small>
+        </div>
+      )}
+
+      <div className={styles.progressTrack} role="progressbar" aria-valuenow={answeredIds.size} aria-valuemin={0} aria-valuemax={cards.length} aria-label={t.answeredCount(answeredIds.size, cards.length)}>
         <div className={styles.progressBar} style={{ width: `${progress}%` }} />
       </div>
 
@@ -467,10 +527,11 @@ export default function FlashcardReviewPage() {
               <button
                 type="button"
                 key={card.id}
-                className={`${styles.cardMapItem} ${cardIndex === index ? styles.cardMapItemActive : ''}`.trim()}
+                className={`${styles.cardMapItem} ${cardIndex === index ? styles.cardMapItemActive : ''} ${answeredIds.has(card.id) ? styles.cardMapItemAnswered : ''}`.trim()}
                 onClick={() => goToCard(cardIndex)}
+                disabled={answeredIds.has(card.id)}
                 aria-current={cardIndex === index ? 'step' : undefined}
-                aria-label={t.jumpToCard(cardIndex + 1, title)}
+                aria-label={answeredIds.has(card.id) ? `${t.jumpToCard(cardIndex + 1, title)} · ${t.answeredCard}` : t.jumpToCard(cardIndex + 1, title)}
               >
                 <span>{String(cardIndex + 1).padStart(2, '0')}</span>
               </button>
@@ -491,7 +552,7 @@ export default function FlashcardReviewPage() {
           onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleFlip() } }}
         >
           <div key={index} className={`${styles.flipper} ${flipped ? styles.flipped : ''}`}>
-            <div className={styles.cardFront}>
+            <div className={styles.cardFront} aria-hidden={flipped}>
               <p className={styles.question}>{localize(current.front, lang)}</p>
               <div className={styles.tapHint}>
                 <span className={styles.tapHintIcon}>↕</span>
@@ -499,26 +560,13 @@ export default function FlashcardReviewPage() {
               </div>
             </div>
 
-            <div className={styles.cardBack}>
+            <div className={styles.cardBack} aria-hidden={!flipped}>
               <div className={styles.backContent}>
                 <div className={styles.answerBlock}>
                   <span className={styles.answerLabel}>{t.answerLabel}</span>
                   <p className={styles.answerShort}>{answer}</p>
                 </div>
 
-                {explanation && (
-                  <div className={styles.explanationBlock}>
-                    <span className={styles.explanationLabel}>{t.explanationLabel}</span>
-                    <p className={styles.answer}>{explanation}</p>
-                  </div>
-                )}
-
-                {diagram && (
-                  <div className={styles.diagramBlock}>
-                    <span>{t.diagramLabel}</span>
-                    <DiagramView text={diagram} />
-                  </div>
-                )}
               </div>
               <div className={styles.tapHint}>
                 <span className={styles.tapHintIcon}>↕</span>
@@ -528,11 +576,25 @@ export default function FlashcardReviewPage() {
           </div>
         </div>
 
+        {flipped && (explanation || diagram) && (
+          <details className={styles.cardDetails}>
+            <summary>{t.details}</summary>
+            {explanation && <div className={styles.explanationBlock}>
+              <span className={styles.explanationLabel}>{t.explanationLabel}</span>
+              <p className={styles.answer}>{explanation}</p>
+            </div>}
+            {diagram && <div className={styles.diagramBlock}>
+              <span>{t.diagramLabel}</span>
+              <DiagramView text={diagram} />
+            </div>}
+          </details>
+        )}
+
         <div className={`${styles.answerRow} ${flipped ? styles.answerVisible : ''}`}>
-          <button className={styles.dontKnowBtn} onClick={() => handleAnswer(false)}>
+          <button className={styles.dontKnowBtn} onClick={() => handleAnswer(false)} disabled={!flipped || exiting}>
             {practiceMode ? t.practiceDontKnow : t.dontKnow}
           </button>
-          <button className={styles.knowBtn} onClick={() => handleAnswer(true)}>
+          <button className={styles.knowBtn} onClick={() => handleAnswer(true)} disabled={!flipped || exiting}>
             {practiceMode ? t.practiceKnow : t.know}
           </button>
         </div>
