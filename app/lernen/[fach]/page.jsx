@@ -308,6 +308,7 @@ export default function LernenFachPage() {
                 const active = selectedKapitel === k.id
                 const isFeatured = fach.id === 'msk' && k.id === 'msk-trauma'
                 const isMammaImaging = fach.id === 'mamma' && k.id === 'mamma-bildgebung'
+                const isThoraxHeart = fach.id === 'thorax' && k.id === 'thorax-kardio'
                 const count = themen.reduce((sum, th) => sum + 1 + (th.sub?.length || 0), 0)
                 if (isMammaImaging) return (
                   <article key={k.id} className={`${styles.mainTopicCard} ${styles.mammaImagingCard}`}
@@ -350,7 +351,7 @@ export default function LernenFachPage() {
                 )
                 return (
                   <button key={k.id}
-                    className={`${styles.mainTopicCard} ${isFeatured ? styles.mainTopicCardFeatured : ''}`}
+                    className={`${styles.mainTopicCard} ${isFeatured ? styles.mainTopicCardFeatured : ''} ${isThoraxHeart ? styles.heartTopicCard : ''}`}
                     style={{ '--topic-color': fach.color }}
                     onClick={() => setSelectedKapitel(k.id)}
                     aria-pressed={active}>

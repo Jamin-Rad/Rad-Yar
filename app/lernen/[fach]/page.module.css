@@ -357,6 +357,36 @@
   text-transform: none;
   line-height: 1.5 !important;
 }
+.heartTopicCard {
+  grid-column: 1 / -1;
+  order: -1;
+  aspect-ratio: auto;
+  min-height: 170px;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  padding: 30px;
+  border-color: color-mix(in srgb, var(--topic-color) 28%, #e2e8f0);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 92% 8%, color-mix(in srgb, var(--topic-color) 13%, transparent), transparent 34%),
+    linear-gradient(145deg, color-mix(in srgb, var(--topic-color) 4%, #fff), #fff 64%);
+  box-shadow: 0 18px 44px rgba(15, 44, 67, .08);
+}
+.heartTopicCard .mainTopicIcon {
+  width: 82px;
+  height: 82px;
+  flex: 0 0 82px;
+  border-radius: 24px;
+}
+.heartTopicCard .chapterIconSvg { width: 48px; height: 48px; }
+.heartTopicCard .mainTopicTitle {
+  max-width: none;
+  flex: 1;
+  font-size: clamp(25px, 2.4vw, 34px);
+  font-weight: 900;
+}
+.heartTopicCard .mainTopicCount { color: #64748b; font-size: 12px; }
 .imagingHeaderArrow {
   width: 28px;
   height: 28px;
@@ -938,6 +968,11 @@ a.topicRow:hover {
   .mainTopicCardButton { gap: 13px; }
   .mammaImagingCard .mainTopicTitle { font-size: 22px; }
   .mammaImagingCard .mainTopicCount { font-size: 10.5px; }
+  .heartTopicCard { min-height: 130px; flex-wrap: wrap; gap: 13px; padding: 18px; border-radius: 22px; }
+  .heartTopicCard .mainTopicIcon { width: 62px; height: 62px; flex-basis: 62px; border-radius: 19px; }
+  .heartTopicCard .chapterIconSvg { width: 37px; height: 37px; }
+  .heartTopicCard .mainTopicTitle { min-width: 0; font-size: 22px; }
+  .heartTopicCard .mainTopicCount { flex-basis: 100%; margin-inline-start: 75px; font-size: 10px; }
   .imagingHeaderArrow { width: 22px; height: 22px; flex-basis: 22px; }
   .modalityChips { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .modalityChip { min-height: 136px; gap: 13px; padding: 14px; border-radius: 17px; }

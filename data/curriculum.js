@@ -533,7 +533,7 @@ export const CURRICULUM = [
       },
       {
         id: 'thorax-kardio',
-        title: { de: '11. Kardiale Bildgebung / Kardio-MRT', en: '11. Cardiac Imaging / Cardiac MRI', fa: '۱۱. تصویربرداری قلبی / MRI قلب' },
+        title: { de: '11. Herz / Kardio-MRT', en: '11. Heart / Cardiac MRI', fa: '۱۱. قلب / MRI قلب' },
         icon: '❤️',
         themen: [
           { id: 'herzgroesse-roentgen', title: { de: 'Herzgrößenbeurteilung im Röntgen', en: 'Cardiac Size Assessment on X-ray', fa: 'ارزیابی اندازه قلب در رادیوگرافی' }, tags: ['Rö'], diff: 1 },
