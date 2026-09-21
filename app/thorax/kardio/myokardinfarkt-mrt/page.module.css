@@ -1,4 +1,37 @@
-.page { overflow-x: clip; }
+.page {
+  --plum-950: #071b2a;
+  --plum-900: #0b3449;
+  --plum-800: #0d5772;
+  --plum-700: #117693;
+  --plum-100: #dceff4;
+  --teal-700: #087e95;
+  --teal-500: #34bfd3;
+  --teal-100: #ddf6f9;
+  --coral-100: #fff0eb;
+  --ink: #092331;
+  --body: #405b69;
+  --muted: #697f8c;
+  --line: #d2e2e9;
+  --canvas: #eff6f8;
+  overflow-x: clip;
+  background: var(--canvas);
+}
+.page::before {
+  background-image: url('/thorax/myokardinfarkt-mrt-background.png');
+  background-position: center top;
+  background-size: cover;
+  filter: grayscale(.4);
+  opacity: .11;
+}
+.heroFacts article { border-color: var(--line); }
+.heroFacts article > span:first-child { background: #c8eaf1; color: #0b5c73; }
+.heroFacts article:nth-child(2) > span:first-child { background: #d6f2ed; color: #176a63; }
+.heroFacts article:nth-child(3) > span:first-child { background: #fde1d8; color: #a34332; }
+.progressBar i { background: linear-gradient(90deg, #0e6b8c, #39bfd0); }
+.sectionIcon { background: linear-gradient(145deg, #d8f2f6, #b5e1ed); color: #0b5770; }
+.sidebar .activeSideItem { background: linear-gradient(90deg, rgba(17,118,147,.16), rgba(52,191,211,.08)); color: #064e66; }
+.sidebar .activeSideItem > span:first-child { border-color: #0d5772; background: #0d5772; color: white; }
+.sectionReadButton[aria-pressed='true'] { background: #0b5770; border-color: #0b5770; color: white; }
 .subtitle { margin: 18px 0 0; color: var(--body); font-size: 17px; line-height: 1.5; }
 .preview { display: inline-block; margin: 14px 0 0; color: var(--muted); font-size: 12px; font-weight: 700; }
 .sectionBody { min-width: 0; }
@@ -20,7 +53,52 @@
 .references a:hover { border-color: var(--teal-700); }
 .authError { padding: 10px 14px; border-radius: 7px; color: var(--body); background: var(--coral-100); font-size: 12px; }
 .authError a { color: var(--plum-800); font-weight: 850; }
+:global(html[data-theme='dark']) .page {
+  --plum-950: #e8f8fc;
+  --plum-900: #103e55;
+  --plum-800: #65c6dc;
+  --plum-700: #91d9e8;
+  --plum-100: #173d4b;
+  --teal-700: #64cada;
+  --teal-500: #42c2d3;
+  --teal-100: #123e48;
+  --coral-100: #3d2928;
+  --ink: #f2fbff;
+  --body: #c0d4df;
+  --muted: #91aebc;
+  --line: #2d5262;
+  --paper: #102a37;
+  --canvas: #071a25;
+  background: var(--canvas);
+}
+:global(html[data-theme='dark']) .page::before {
+  background-image: linear-gradient(180deg, rgba(7,26,37,.08) 0%, rgba(7,26,37,.55) 64%, #071a25 100%), url('/thorax/myokardinfarkt-mrt-background.png');
+  background-position: center, center top;
+  background-size: 100% 100%, cover;
+  filter: none;
+  opacity: .88;
+  mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 95%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 95%);
+}
+:global(html[data-theme='dark']) .heroFacts article,
+:global(html[data-theme='dark']) .progressBar,
+:global(html[data-theme='dark']) .sidebar,
+:global(html[data-theme='dark']) .card { background: rgba(10, 34, 47, .87); border-color: #2d5262; }
+:global(html[data-theme='dark']) .heroFacts article > span:first-child { background: #16495b; color: #9ce5f3; }
+:global(html[data-theme='dark']) .heroFacts article:nth-child(2) > span:first-child { background: #16483f; color: #a1e8d7; }
+:global(html[data-theme='dark']) .heroFacts article:nth-child(3) > span:first-child { background: #51322e; color: #ffb5a1; }
+:global(html[data-theme='dark']) .cardHeader:hover { background: rgba(66,194,211,.08); }
+:global(html[data-theme='dark']) .sectionIcon { background: linear-gradient(145deg, #164f62, #276f80); color: #b4edf4; }
+:global(html[data-theme='dark']) .sidebar .activeSideItem { background: linear-gradient(90deg, rgba(42,135,165,.42), rgba(38,105,121,.22)); color: #f2fbff; }
+:global(html[data-theme='dark']) .sidebar .activeSideItem strong { color: inherit; }
+:global(html[data-theme='dark']) .progressBar .completeButton { background: rgba(23,83,105,.55); border-color: #528fa6; color: #e8f9fd; }
+:global(html[data-theme='dark']) .card .sectionReadButton[aria-pressed='false'] { color: #e8f9fd; border-color: #528fa6; }
+:global(html[data-theme='dark']) .card .sectionReadButton[aria-pressed='true'] { background: #14627c; border-color: #74cede; color: white; }
+:global(html[data-theme='dark']) .mobilePathPanel nav .mobileActive { border-color: #4b91a8; background: rgba(28,101,125,.48); }
+:global(html[data-theme='dark']) .mobilePathPanel nav .mobileActive > span:first-child { border-color: #58bdd0; background: #155a73; color: white; }
 @media (max-width: 760px) {
+  .page::before { background-position: 68% top; background-size: auto 100%; }
+  :global(html[data-theme='dark']) .page::before { background-position: center, 68% top; background-size: 100% 100%, auto 100%; opacity: .43; }
   .page > header h1 { font-size: clamp(34px, 11vw, 46px); overflow-wrap: anywhere; hyphens: auto; }
   .sectionBody { padding: 18px 14px; }
   .answers, .references { grid-template-columns: 1fr; }
