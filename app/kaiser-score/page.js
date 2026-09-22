@@ -7,7 +7,7 @@ import { QRCodeSVG } from 'qrcode.react'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useTheme } from '@/providers/ThemeProvider'
 import { useCalculatorAnalytics } from '@/hooks/useCalculatorAnalytics'
-import { Birads4AdcGate, DiagnosisAtlas } from './AdcAssessment'
+import { Birads4AdcGate } from './AdcAssessment'
 import styles from './page.module.css'
 
 const KAISER_SCORE_URL = 'https://www.rad-yar.com/kaiser-score'
@@ -17,7 +17,7 @@ const COPY = {
     brand: 'KAISER SCORE', hero: ['Beurteilung eines anreichernden Herdes', 'in der Mamma‑MRT nach dem Kaiser‑Score'], heroScore: 'Kaiser‑Score',
     questions: {
       quality: { title: 'Anreichernder Herd im MRT?', text: 'Sind Morphologie und Kontrastmittelkinetik zuverlässig beurteilbar?' },
-      root: { title: 'Spikulierte Ausläufer?', text: 'Zeigt die Läsion mindestens einen spikulierten, wurzelartigen Ausläufer?', help: 'Schon eine einzelne Spikula zählt als positiver Root Sign – auch bei ansonsten umschriebener Läsion.' },
+      root: { title: 'Spikulierte Ausläufer?', text: 'Zeigt die Läsion mindestens einen eindeutig erkennbaren spikulierten Ausläufer?', help: 'Eine einzelne echte Spikula zählt. Artefakte oder nur vermutete Ausläufer dürfen nicht als positiv gewertet werden; bei Unsicherheit fachärztlich prüfen.' },
       curve: { title: 'Kurventyp?', text: 'Wie verhält sich das Signal zwischen frühem bzw. maximalem und spätem Zeitpunkt?', help: 'Die frühe Phase am Peak beurteilen. Persistierend: weiterer Anstieg. Plateau: stabil. Wash-out: Signalabfall.' },
       margin: { title: 'Rand', text: 'Wie ist der Läsionsrand im kontrastmittelverstärkten Bild abgrenzbar?', help: 'Das verdächtigste Randmerkmal verwenden. Diese Abfrage gilt auch für Non-mass Enhancement.' },
       enhancement: { title: 'Internes Enhancement', text: 'Welches interne Kontrastmittelmuster überwiegt?', help: 'Heterogen umfasst auch Rim Enhancement und Clustered-ring Enhancement.' },
@@ -36,18 +36,19 @@ const COPY = {
     },
     pathLabels: { quality: 'Bildqualität', root: 'Root Sign', curve: 'Kurve', margin: 'Rand', enhancement: 'Enhancement', edema: 'Ödem' },
     ladder: 'Wahrscheinlichkeits-Skala', low: 'Niedrige Wahrscheinlichkeit', intermediate: 'Intermediäre Wahrscheinlichkeit', high: 'Hohe Wahrscheinlichkeit',
-    result: 'Ergebnis', corresponds: 'Entspricht', recommendation: 'Empfehlung', biopsy: 'Histologische Abklärung empfohlen', clinical: 'Klinisch-bildgebende Korrelation',
+    result: 'Ergebnis', corresponds: 'Score-Bereich', recommendation: 'Hinweis', biopsy: 'Mit Klinik und Voraufnahmen korrelieren; weiteres Vorgehen ärztlich festlegen.', clinical: 'Mit Klinik und Voraufnahmen korrelieren; weiteres Vorgehen ärztlich festlegen.',
     report: 'Befundtext', finding: 'Befund', assessment: 'Beurteilung', copy: 'Befundtext kopieren', copied: 'Kopiert',
     back: 'Zurück', restart: 'Neu beginnen', continue: 'Weiter',
     qualityStop: 'Keine verlässliche Kaiser-Score-Berechnung möglich', qualityStopText: 'Der Kaiser-Score setzt eine diagnostisch ausreichende Bildqualität sowie zuverlässig beurteilbare Morphologie und Kontrastmittelkinetik voraus.',
-    disclaimer: 'Entscheidungshilfe für anreichernde Läsionen in der kontrastmittelverstärkten Mamma-MRT · kein Ersatz für die ärztliche Gesamtbeurteilung.',
-    source: 'Baltzer et al. · European Radiology · 2018', by: 'Ein Tool von', developed: 'Entwickelt von Dr. Zia',
-    atlasInfo: 'Kaiser 1–4: BI-RADS 2/3 · Kaiser 5–7: BI-RADS 4 · Kaiser 8–11: BI-RADS 5',
+    disclaimer: 'Nur für Fachpersonal. Das Ergebnis hängt von der korrekten Interpretation morphologischer Merkmale ab. Der Score ist keine Diagnose oder automatische BI-RADS-Zuordnung; klinischer und zeitlicher Kontext, Voraufnahmen und weitere Bildgebung bestimmen die abschließende Beurteilung.',
+    source: 'Baltzer et al. · Insights Imaging · 2018', adcSource: 'Clauser et al. · Clin Cancer Res · 2021', by: 'Ein Tool von', developed: 'Entwickelt von Dr. Zia',
+    rangeLabels: { low: 'niedriger Score-Bereich (1–4)', intermediate: 'mittlerer Score-Bereich (5–7)', high: 'hoher Score-Bereich (8–11)' },
+    contextReminder: 'Die endgültige BI-RADS-Kategorie und das Vorgehen ergeben sich aus Morphologie, Klinik, Voruntersuchungen und Verlauf.',
+    addAdc: 'ADC ergänzen',
     findingLead: 'In der Mamma-MRT zeigt die anreichernde Läsion', assessmentLead: 'Nach dem Kaiser-Entscheidungsbaum ergibt sich',
     adcMeasured: 'Der ergänzend bestimmte ADC-Wert beträgt',
-    adcAbove: 'Der ADC-Wert liegt oberhalb des läsionstypbezogenen Orientierungswertes und stützt eine benigne Einordnung. Auf Grundlage der ADC-Zusatzbewertung wird keine Biopsie empfohlen.',
-    adcBelow: 'Der ADC-Wert liegt nicht oberhalb des läsionstypbezogenen Orientierungswertes. Malignität wird dadurch nicht ausgeschlossen; eine Biopsie wird empfohlen.',
-    adcNoBiopsy: 'ADC-gestützt: Keine Biopsie empfohlen', adcBiopsy: 'ADC-gestützt: Biopsie empfohlen',
+    adcAbove: 'ADC ≥ 1,5 × 10⁻³ mm²/s. Ein mögliches Downgrading wurde für zuvor unabhängig als BI-RADS 4 eingestufte Läsionen untersucht; dies ist keine automatische Biopsieentscheidung.',
+    adcBelow: 'ADC < 1,5 × 10⁻³ mm²/s. Ein ADC-gestütztes Downgrading nach der zitierten Studie wird dadurch nicht gestützt.',
     recommend: 'Weiterempfehlen', recommendHint: 'Kaiser Score mit Kolleginnen und Kollegen teilen', shareTitle: 'Kaiser Score weitergeben',
     shareText: 'QR-Code scannen oder den direkten Link versenden.', scanLabel: 'Direkt zum Kaiser-Score-Rechner', whatsapp: 'Über WhatsApp teilen', copyLink: 'Link kopieren', linkCopied: 'Link kopiert',
     theme: 'Hell-/Dunkelmodus wechseln',
@@ -56,7 +57,7 @@ const COPY = {
     brand: 'KAISER SCORE', hero: ['Assessment of an enhancing lesion', 'on breast MRI using the Kaiser Score'], heroScore: 'Kaiser Score',
     questions: {
       quality: { title: 'Enhancing lesion on MRI?', text: 'Can morphology and enhancement kinetics be assessed reliably?' },
-      root: { title: 'Spiculated extensions?', text: 'Does the lesion show at least one spiculated, root-like extension?', help: 'A single spicule is enough for a positive root sign, even if the remainder of the lesion is circumscribed.' },
+      root: { title: 'Spiculated extensions?', text: 'Does the lesion show at least one unequivocal spiculated extension?', help: 'One genuine spicule counts. Do not classify artefacts or merely suspected spicules as positive; seek expert review when uncertain.' },
       curve: { title: 'Curve type?', text: 'How does the signal change between the early or peak and delayed phase?', help: 'Assess the early phase at peak enhancement. Persistent: continued increase. Plateau: stable. Wash-out: signal decrease.' },
       margin: { title: 'Margin', text: 'How is the lesion margin defined on contrast-enhanced images?', help: 'Use the most suspicious margin feature. Margin assessment also applies to non-mass enhancement.' },
       enhancement: { title: 'Internal enhancement', text: 'Which internal enhancement pattern predominates?', help: 'Heterogeneous includes rim enhancement and clustered-ring enhancement.' },
@@ -75,18 +76,19 @@ const COPY = {
     },
     pathLabels: { quality: 'Image quality', root: 'Root sign', curve: 'Curve', margin: 'Margin', enhancement: 'Enhancement', edema: 'Edema' },
     ladder: 'Probability scale', low: 'Low likelihood', intermediate: 'Intermediate likelihood', high: 'High likelihood',
-    result: 'Result', corresponds: 'Corresponds to', recommendation: 'Recommendation', biopsy: 'Histological verification recommended', clinical: 'Clinical and imaging correlation',
+    result: 'Result', corresponds: 'Score range', recommendation: 'Note', biopsy: 'Correlate with clinical findings and prior imaging; determine next steps clinically.', clinical: 'Correlate with clinical findings and prior imaging; determine next steps clinically.',
     report: 'Report text', finding: 'Findings', assessment: 'Assessment', copy: 'Copy report text', copied: 'Copied',
     back: 'Back', restart: 'Start again', continue: 'Next',
     qualityStop: 'A reliable Kaiser Score cannot be calculated', qualityStopText: 'The Kaiser Score requires diagnostic image quality with reliably assessable morphology and enhancement kinetics.',
-    disclaimer: 'Decision aid for enhancing lesions on contrast-enhanced breast MRI · not a substitute for integrated physician assessment.',
-    source: 'Baltzer et al. · European Radiology · 2018', by: 'A tool by', developed: 'Developed by Dr. Zia',
-    atlasInfo: 'Kaiser 1–4: BI-RADS 2/3 · Kaiser 5–7: BI-RADS 4 · Kaiser 8–11: BI-RADS 5',
+    disclaimer: 'For professionals only. The result depends on correct interpretation of morphology. The score is neither a diagnosis nor an automatic BI-RADS assignment; clinical and temporal context, prior imaging and other findings determine the final assessment.',
+    source: 'Baltzer et al. · Insights Imaging · 2018', adcSource: 'Clauser et al. · Clin Cancer Res · 2021', by: 'A tool by', developed: 'Developed by Dr. Zia',
+    rangeLabels: { low: 'lower score range (1–4)', intermediate: 'middle score range (5–7)', high: 'higher score range (8–11)' },
+    contextReminder: 'Final BI-RADS assessment and management require morphology, clinical findings, prior examinations and interval change.',
+    addAdc: 'Add ADC',
     findingLead: 'On breast MRI, the enhancing lesion demonstrates', assessmentLead: 'Following the Kaiser decision tree, the result is',
     adcMeasured: 'The additionally measured ADC value is',
-    adcAbove: 'The ADC value is above the lesion-type-specific guide and supports benignity. Based on the supplementary ADC assessment, biopsy is not recommended.',
-    adcBelow: 'The ADC value is not above the lesion-type-specific guide. Malignancy is not excluded; biopsy is recommended.',
-    adcNoBiopsy: 'ADC-supported: Biopsy not recommended', adcBiopsy: 'ADC-supported: Biopsy recommended',
+    adcAbove: 'ADC ≥ 1.5 × 10⁻³ mm²/s. Possible downgrading was studied in lesions independently assigned BI-RADS 4 beforehand; this is not an automatic biopsy decision.',
+    adcBelow: 'ADC < 1.5 × 10⁻³ mm²/s. ADC-based downgrading under the cited study is not supported.',
     recommend: 'Recommend', recommendHint: 'Share the Kaiser Score with colleagues', shareTitle: 'Share the Kaiser Score',
     shareText: 'Scan the QR code or send the direct link.', scanLabel: 'Open the Kaiser Score calculator', whatsapp: 'Share via WhatsApp', copyLink: 'Copy link', linkCopied: 'Link copied',
     theme: 'Toggle light and dark theme',
@@ -116,9 +118,9 @@ function resolvePath(answers) {
 
 function riskFor(score) {
   if (!score) return null
-  if (score <= 4) return { key: 'low', birads: 'BI-RADS 2/3' }
-  if (score <= 7) return { key: 'intermediate', birads: 'BI-RADS 4' }
-  return { key: 'high', birads: 'BI-RADS 5' }
+  if (score <= 4) return { key: 'low' }
+  if (score <= 7) return { key: 'intermediate' }
+  return { key: 'high' }
 }
 
 function ArrowIcon({ reverse = false }) {
@@ -210,17 +212,16 @@ function Question({ question, selected, setSelected, ui }) {
         <span className={styles.optionCopy}><strong>{ui.options[key][0]}</strong><small>{ui.options[key][1]}</small></span>
       </button>)}
     </div>
+    {content.help ? <p className={styles.questionHelp}>{content.help}</p> : null}
   </section>
 }
 
-function ResultPanel({ score, risk, history, ui, copied, onCopy, adcRefinement, lang, track }) {
+function ResultPanel({ score, risk, history, ui, copied, onCopy, adcRefinement, onAddAdc, lang, track }) {
   const [shareOpen, setShareOpen] = useState(false)
   const [linkCopied, setLinkCopied] = useState(false)
   const scorePosition = `${((score - 1) / 10) * 100}%`
   const report = buildReport(history, score, risk, ui, adcRefinement, lang)
-  const recommendation = adcRefinement
-    ? adcRefinement.aboveThreshold ? ui.adcNoBiopsy : ui.adcBiopsy
-    : score >= 5 ? ui.biopsy : ui.clinical
+  const recommendation = adcRefinement ? (adcRefinement.aboveThreshold ? ui.adcAbove : ui.adcBelow) : ui.contextReminder
   const whatsAppText = encodeURIComponent(`Kaiser Score · RadYar\n${KAISER_SCORE_URL}`)
   const copyLink = async () => {
     try {
@@ -243,10 +244,9 @@ function ResultPanel({ score, risk, history, ui, copied, onCopy, adcRefinement, 
         </div>
         <div className={styles.probabilityLegend} aria-hidden="true"><span>{ui.low}</span><span>{ui.intermediate}</span><span>{ui.high}</span></div>
       </div>
-      <div className={styles.resultClassification}><span>{ui.corresponds}</span><strong>{risk.birads}</strong><p className={styles.recommendation}>{recommendation}</p></div>
+      <div className={styles.resultClassification}><span>{ui.corresponds}</span><strong>{ui.rangeLabels[risk.key]}</strong><p className={styles.recommendation}>{recommendation}</p>{score >= 5 && score <= 7 ? <button type="button" onClick={onAddAdc}>{ui.addAdc}</button> : null}</div>
     </div>
     <div className={styles.reportBox}><header><strong>{ui.report}</strong></header><div className={styles.reportSection}><span>{ui.finding}</span><p>{report.finding}</p></div><div className={styles.reportSection}><span>{ui.assessment}</span><p>{report.assessment}</p></div><button type="button" onClick={onCopy}>{copied ? ui.copied : ui.copy}<span>{copied ? '✓' : '⧉'}</span></button></div>
-    {adcRefinement ? <DiagnosisAtlas lang={lang} compact/> : null}
     <section className={`${styles.shareCard} ${shareOpen ? styles.shareCardOpen : ''}`}>
       <button type="button" className={styles.shareToggle} onClick={() => { if (!shareOpen) track('recommend_open'); setShareOpen(value => !value) }} aria-expanded={shareOpen}>
         <span className={styles.shareIcon}><ShareIcon/></span>
@@ -271,7 +271,7 @@ function buildReport(history, score, risk, ui, adcRefinement, lang = 'de') {
     : ''
   return {
     finding: `${ui.findingLead} ${features}.${adcFinding}`,
-    assessment: `${ui.assessmentLead} Kaiser Score ${score}, entsprechend ${risk.birads}. ${adcRefinement ? adcRefinement.aboveThreshold ? ui.adcAbove : ui.adcBelow : score >= 5 ? ui.biopsy : ui.clinical}`,
+    assessment: `${ui.assessmentLead} Kaiser Score ${score} – ${ui.rangeLabels[risk.key]}. ${adcRefinement ? `${adcRefinement.aboveThreshold ? ui.adcAbove : ui.adcBelow} ` : ''}${ui.contextReminder}`,
   }
 }
 
@@ -289,13 +289,14 @@ export default function KaiserScorePage() {
   const [selected, setSelected] = useState(null)
   const [copied, setCopied] = useState(false)
   const [adcRefinement, setAdcRefinement] = useState(null)
+  const [showAdcGate, setShowAdcGate] = useState(false)
   const analytics = useCalculatorAnalytics('kaiser-score')
   const resolution = useMemo(() => resolvePath(answers), [answers])
   const score = resolution.score || null
   const current = resolution.question || null
   const qualityIssue = Boolean(resolution.qualityIssue)
   const risk = riskFor(score)
-  const needsAdcGate = Boolean(score && risk?.key === 'intermediate' && !adcRefinement)
+  const needsAdcGate = Boolean(score && risk?.key === 'intermediate' && showAdcGate)
 
   useEffect(() => {
     if (!adcRefinement) return
@@ -313,6 +314,7 @@ export default function KaiserScorePage() {
     setHistory(value => [...value, { key: current, value: selected }])
     setSelected(null)
     setAdcRefinement(null)
+    setShowAdcGate(false)
   }
   const goBackKaiser = () => {
     if (!history.length) return
@@ -321,20 +323,15 @@ export default function KaiserScorePage() {
     setHistory(value => value.slice(0, -1))
     setSelected(previous.value)
     setAdcRefinement(null)
+    setShowAdcGate(false)
   }
   const goBack = () => {
+    if (showAdcGate) { setShowAdcGate(false); return }
     if (adcRefinement) { setAdcRefinement(null); setCopied(false); return }
     goBackKaiser()
   }
-  const restart = () => { analytics.restart(); setAnswers({}); setHistory([]); setSelected(null); setCopied(false); setAdcRefinement(null) }
-  const completeAdc = data => setAdcRefinement({
-    ...data,
-    values: {
-      ...data.values,
-      curve: answers.curve || '',
-      morphology: answers.margin === 'irregular' ? 'irregular' : answers.margin === 'circumscribed' ? 'regular' : '',
-    },
-  })
+  const restart = () => { analytics.restart(); setAnswers({}); setHistory([]); setSelected(null); setCopied(false); setAdcRefinement(null); setShowAdcGate(false) }
+  const completeAdc = data => { setAdcRefinement(data); setShowAdcGate(false) }
   const copyReport = async () => {
     const report = buildReport(history, score, risk, ui, adcRefinement, activeLang)
     try { await navigator.clipboard.writeText(`${ui.finding}:\n${report.finding}\n\n${ui.assessment}:\n${report.assessment}`); setCopied(true); window.setTimeout(() => setCopied(false), 1800) } catch { setCopied(false) }
@@ -354,7 +351,7 @@ export default function KaiserScorePage() {
     <div className={styles.shell}>
       <section className={styles.workspace}>
         <div className={styles.intro}><h2>{ui.hero.map((line, index) => <span key={line}>{index === 1 ? <>{line.replace(ui.heroScore, '')}<em>{ui.heroScore}</em></> : line}</span>)}</h2></div>
-        {current ? <Question question={current} selected={selected} setSelected={setSelected} ui={ui}/> : needsAdcGate ? <Birads4AdcGate lang={activeLang} onComplete={completeAdc} onBack={goBackKaiser}/> : score ? <ResultPanel score={score} risk={risk} history={history} ui={ui} copied={copied} onCopy={copyReport} adcRefinement={adcRefinement} lang={activeLang} track={analytics.track}/> : <QualityNotice ui={ui}/>}
+        {current ? <Question question={current} selected={selected} setSelected={setSelected} ui={ui}/> : needsAdcGate ? <Birads4AdcGate lang={activeLang} onComplete={completeAdc} onBack={() => setShowAdcGate(false)}/> : score ? <ResultPanel score={score} risk={risk} history={history} ui={ui} copied={copied} onCopy={copyReport} adcRefinement={adcRefinement} onAddAdc={() => setShowAdcGate(true)} lang={activeLang} track={analytics.track}/> : <QualityNotice ui={ui}/>}
         {!needsAdcGate ? <footer className={`${styles.actions} ${score || qualityIssue ? styles.actionsComplete : ''}`}>
           <button type="button" className={styles.backButton} onClick={goBack} disabled={!history.length}><ArrowIcon reverse/>{ui.back}</button>
           {current ? <button type="button" className={styles.nextButton} onClick={commitAnswer} disabled={!selected}>{ui.continue}<ArrowIcon/></button> : <button type="button" className={styles.nextButton} onClick={restart}>{ui.restart}<ArrowIcon/></button>}
@@ -364,6 +361,6 @@ export default function KaiserScorePage() {
         <div className={styles.anatomyVisual}/>
       </aside>
     </div>
-    <footer className={styles.disclaimer}><span>i</span><p>{ui.disclaimer}</p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5990997/" target="_blank" rel="noreferrer">{ui.source} ↗</a><small><Link href="/">{ui.by} <strong>RadYar</strong></Link> · {ui.developed}</small></footer>
+    <footer className={styles.disclaimer}><span>i</span><p>{ui.disclaimer}</p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5990997/" target="_blank" rel="noreferrer">{ui.source} ↗</a><a href="https://pubmed.ncbi.nlm.nih.gov/33446565/" target="_blank" rel="noreferrer">{ui.adcSource} ↗</a><small><Link href="/">{ui.by} <strong>RadYar</strong></Link> · {ui.developed}</small></footer>
   </main>
 }

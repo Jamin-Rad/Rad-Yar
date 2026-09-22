@@ -103,6 +103,7 @@
 .question { flex: 1; animation: questionIn .35s ease both; }
 .question > header h1 { margin: 0 0 9px; max-width: 690px; font-family: var(--font-fraunces), Georgia, serif; font-size: clamp(28px, 2.3vw, 35px); line-height: 1.1; letter-spacing: -.03em; }
 .question > header p { max-width: 650px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+.questionHelp { margin: 18px 0 0; padding: 11px 14px; border-left: 3px solid var(--teal); border-radius: 0 8px 8px 0; color: var(--muted); background: color-mix(in srgb, var(--teal) 7%, var(--surface)); font-size: 11px; line-height: 1.55; }
 .options { margin-top: 18px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .options[data-count='3'] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .options button { min-width: 0; min-height: 168px; padding: 17px 19px 18px; position: relative; border: 1px solid var(--line-strong); border-radius: 16px; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 11px; color: var(--ink); background: color-mix(in srgb, var(--surface-soft) 74%, transparent); text-align: start; cursor: pointer; overflow: hidden; backdrop-filter: blur(18px) saturate(1.08); -webkit-backdrop-filter: blur(18px) saturate(1.08); box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 35%, transparent); transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease; }
@@ -164,8 +165,10 @@
 .resultPanel[data-risk='high'] .probabilityLegend span:last-child { color: var(--risk-color); font-weight: 950; }
 .resultClassification { padding-top: 30px; display: grid; justify-items: center; gap: 8px; border-top: 1px solid var(--line); text-align: center; }
 .resultClassification > span { color: var(--muted-soft); font-size: 9px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
-.resultClassification strong { color: var(--risk-color); font-family: var(--font-fraunces), Georgia, serif; font-size: clamp(48px, 6vw, 78px); line-height: .95; letter-spacing: -.045em; }
-.resultClassification .recommendation { max-width: 610px; margin: 7px 0 0; color: var(--risk-color); font-size: clamp(12px, 1.1vw, 15px); line-height: 1.4; font-weight: 900; }
+.resultClassification strong { color: var(--risk-color); font-family: var(--font-fraunces), Georgia, serif; font-size: clamp(25px, 3vw, 38px); line-height: 1.14; letter-spacing: -.025em; }
+.resultClassification .recommendation { max-width: 610px; margin: 7px 0 0; color: var(--muted); font-size: clamp(12px, 1.1vw, 15px); line-height: 1.5; font-weight: 650; }
+.resultClassification > button { margin-top: 9px; padding: 11px 17px; border: 1px solid var(--teal); border-radius: 10px; color: var(--teal); background: transparent; font-family: inherit; font-size: 11px; font-weight: 750; cursor: pointer; }
+.resultClassification > button:hover { color: var(--surface); background: var(--teal); }
 .reportBox { margin-top: 16px; padding: 20px; border: 1px solid var(--line); border-radius: 16px; background: color-mix(in srgb, var(--surface-soft) 86%, transparent); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
 .reportBox header { display: flex; justify-content: space-between; gap: 10px; }
 .reportBox header strong { font-family: var(--font-fraunces), Georgia, serif; font-size: 18px; }
@@ -282,7 +285,7 @@
   .scaleNumbers { padding-right: 20px; font-size: 7px; }
   .probabilityLegend { padding-right: 20px; font-size: 7px; }
   .resultClassification { padding-top: 24px; }
-  .resultClassification strong { font-size: 48px; }
+  .resultClassification strong { font-size: 27px; }
   .disclaimer { padding: 15px 18px 94px; justify-content: flex-start; }
   .disclaimer p { width: calc(100% - 32px); line-height: 1.5; }
   .disclaimer small { width: 100%; margin-left: 30px; }
