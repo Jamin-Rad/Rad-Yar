@@ -31,11 +31,11 @@ export default function KaiserScorePrivacyPage() {
         <article className={styles.document} lang="en">
           <section>
             <h2>Data handled by the app</h2>
-            <p>You can enter breast MRI features and an optional ADC value to calculate a Kaiser Score, display its published BI-RADS mapping and create a summary. The app processes these entries on your device. It does not send them to RadYar or store them on a server. The app does not require an account and does not include advertising or analytics services.</p>
+            <p>You can enter breast MRI features and an optional ADC value to calculate a Kaiser Score and display its published BI-RADS mapping. The app processes these entries on your device. It does not send them to RadYar or store them on a server. The app does not require an account and does not include advertising or analytics services.</p>
           </section>
           <section>
-            <h2>Clipboard and external links</h2>
-            <p>If you tap Copy Summary, the summary is placed on your device’s clipboard. You control where it is pasted. Scientific reference links open external websites in your browser, where the destination site’s privacy practices apply. The contact link opens your email app; no message is sent unless you choose to send it.</p>
+            <h2>External links</h2>
+            <p>Scientific reference links open external websites in your browser, where the destination site’s privacy practices apply. The contact link opens your email app; no message is sent unless you choose to send it.</p>
           </section>
           <section>
             <h2>Contact</h2>
@@ -51,11 +51,11 @@ export default function KaiserScorePrivacyPage() {
           </div>
           <section>
             <h3>Datenverarbeitung in der App</h3>
-            <p>Sie können Mamma-MRT-Merkmale und optional einen ADC-Wert eingeben, um den Kaiser Score zu berechnen, die publizierte BI-RADS-Zuordnung anzuzeigen und eine Zusammenfassung zu erstellen. Die App verarbeitet diese Eingaben auf Ihrem Gerät. Sie übermittelt sie nicht an RadYar und speichert sie nicht auf einem Server. Ein Benutzerkonto ist nicht erforderlich. Die App enthält weder Werbung noch Analysedienste.</p>
+            <p>Sie können Mamma-MRT-Merkmale und optional einen ADC-Wert eingeben, um den Kaiser Score zu berechnen und die publizierte BI-RADS-Zuordnung anzuzeigen. Die App verarbeitet diese Eingaben auf Ihrem Gerät. Sie übermittelt sie nicht an RadYar und speichert sie nicht auf einem Server. Ein Benutzerkonto ist nicht erforderlich. Die App enthält weder Werbung noch Analysedienste.</p>
           </section>
           <section>
-            <h3>Zwischenablage und externe Links</h3>
-            <p>Wenn Sie die Zusammenfassung kopieren, wird sie in die Zwischenablage Ihres Geräts geschrieben. Sie entscheiden, wo Sie sie einfügen. Links zu wissenschaftlichen Quellen öffnen externe Websites in Ihrem Browser; dort gelten die Datenschutzhinweise der jeweiligen Website. Der Kontaktlink öffnet Ihre E-Mail-App. Eine Nachricht wird nur gesendet, wenn Sie dies selbst veranlassen.</p>
+            <h3>Externe Links</h3>
+            <p>Links zu wissenschaftlichen Quellen öffnen externe Websites in Ihrem Browser; dort gelten die Datenschutzhinweise der jeweiligen Website. Der Kontaktlink öffnet Ihre E-Mail-App. Eine Nachricht wird nur gesendet, wenn Sie dies selbst veranlassen.</p>
           </section>
           <section>
             <h3>Kontakt</h3>
