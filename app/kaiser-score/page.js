@@ -36,16 +36,20 @@ const COPY = {
     },
     pathLabels: { quality: 'Bildqualität', root: 'Root Sign', curve: 'Kurve', margin: 'Rand', enhancement: 'Enhancement', edema: 'Ödem' },
     ladder: 'Wahrscheinlichkeits-Skala', low: 'Niedrige Wahrscheinlichkeit', intermediate: 'Intermediäre Wahrscheinlichkeit', high: 'Hohe Wahrscheinlichkeit',
-    result: 'Ergebnis', corresponds: 'Score-Bereich', recommendation: 'Hinweis', biopsy: 'Mit Klinik und Voraufnahmen korrelieren; weiteres Vorgehen ärztlich festlegen.', clinical: 'Mit Klinik und Voraufnahmen korrelieren; weiteres Vorgehen ärztlich festlegen.',
+    result: 'Ergebnis', corresponds: 'Entspricht', recommendation: 'Bedeutung', biopsy: 'Mit Klinik und Voraufnahmen korrelieren; weiteres Vorgehen ärztlich festlegen.', clinical: 'Mit Klinik und Voraufnahmen korrelieren; weiteres Vorgehen ärztlich festlegen.',
     report: 'Befundtext', finding: 'Befund', assessment: 'Beurteilung', copy: 'Befundtext kopieren', copied: 'Kopiert',
     back: 'Zurück', restart: 'Neu beginnen', continue: 'Weiter',
     qualityStop: 'Keine verlässliche Kaiser-Score-Berechnung möglich', qualityStopText: 'Der Kaiser-Score setzt eine diagnostisch ausreichende Bildqualität sowie zuverlässig beurteilbare Morphologie und Kontrastmittelkinetik voraus.',
-    disclaimer: 'Nur für Fachpersonal. Das Ergebnis hängt von der korrekten Interpretation morphologischer Merkmale ab. Der Score ist keine Diagnose oder automatische BI-RADS-Zuordnung; klinischer und zeitlicher Kontext, Voraufnahmen und weitere Bildgebung bestimmen die abschließende Beurteilung.',
-    source: 'Baltzer et al. · Insights Imaging · 2018', adcSource: 'Clauser et al. · Clin Cancer Res · 2021', by: 'Ein Tool von', developed: 'Entwickelt von Dr. Zia',
-    rangeLabels: { low: 'niedriger Score-Bereich (1–4)', intermediate: 'mittlerer Score-Bereich (5–7)', high: 'hoher Score-Bereich (8–11)' },
-    contextReminder: 'Die endgültige BI-RADS-Kategorie und das Vorgehen ergeben sich aus Morphologie, Klinik, Voruntersuchungen und Verlauf.',
+    disclaimer: 'Nur für Fachpersonal. Das Ergebnis hängt von der korrekten Interpretation morphologischer Merkmale ab. Der Kaiser Score besitzt eine etablierte BI-RADS-Zuordnung; die Auswahl zwischen BI-RADS 2 und 3 sowie das konkrete Vorgehen berücksichtigen zusätzlich Klinik, Voraufnahmen und zeitlichen Verlauf.',
+    source: 'Baltzer et al. · Insights Imaging · 2018', biradsSource: 'ACR · BI-RADS Kategorien', adcSource: 'Clauser et al. · Clin Cancer Res · 2021', by: 'Ein Tool von', developed: 'Entwickelt von Dr. Zia',
+    biradsMeanings: {
+      low: 'BI-RADS 2 bedeutet benigne; BI-RADS 3 wahrscheinlich benigne (≤ 2 % Malignitätswahrscheinlichkeit) mit kurzfristiger bildgebender Verlaufskontrolle. Die Wahl zwischen 2 und 3 erfolgt im Gesamtkontext.',
+      intermediate: 'BI-RADS 4 bedeutet suspekt (> 2 % bis < 95 % Malignitätswahrscheinlichkeit); eine histologische Abklärung sollte erwogen werden.',
+      high: 'BI-RADS 5 bedeutet hochgradig malignitätsverdächtig (≥ 95 % Malignitätswahrscheinlichkeit); angemessene diagnostische und therapeutische Maßnahmen sind angezeigt.',
+    },
+    contextReminder: 'Die Zuordnung unterstützt die Befundung; das konkrete Vorgehen berücksichtigt Klinik, Voraufnahmen und zeitlichen Verlauf.',
     addAdc: 'ADC ergänzen',
-    findingLead: 'In der Mamma-MRT zeigt die anreichernde Läsion', assessmentLead: 'Nach dem Kaiser-Entscheidungsbaum ergibt sich',
+    findingLead: 'In der Mamma-MRT zeigt die anreichernde Läsion', assessmentLead: 'Nach dem Kaiser-Entscheidungsbaum ergibt sich', assessmentMapping: 'entsprechend',
     adcMeasured: 'Der ergänzend bestimmte ADC-Wert beträgt',
     adcAbove: 'ADC ≥ 1,5 × 10⁻³ mm²/s. Ein mögliches Downgrading wurde für zuvor unabhängig als BI-RADS 4 eingestufte Läsionen untersucht; dies ist keine automatische Biopsieentscheidung.',
     adcBelow: 'ADC < 1,5 × 10⁻³ mm²/s. Ein ADC-gestütztes Downgrading nach der zitierten Studie wird dadurch nicht gestützt.',
@@ -76,16 +80,20 @@ const COPY = {
     },
     pathLabels: { quality: 'Image quality', root: 'Root sign', curve: 'Curve', margin: 'Margin', enhancement: 'Enhancement', edema: 'Edema' },
     ladder: 'Probability scale', low: 'Low likelihood', intermediate: 'Intermediate likelihood', high: 'High likelihood',
-    result: 'Result', corresponds: 'Score range', recommendation: 'Note', biopsy: 'Correlate with clinical findings and prior imaging; determine next steps clinically.', clinical: 'Correlate with clinical findings and prior imaging; determine next steps clinically.',
+    result: 'Result', corresponds: 'Corresponds to', recommendation: 'Meaning', biopsy: 'Correlate with clinical findings and prior imaging; determine next steps clinically.', clinical: 'Correlate with clinical findings and prior imaging; determine next steps clinically.',
     report: 'Report text', finding: 'Findings', assessment: 'Assessment', copy: 'Copy report text', copied: 'Copied',
     back: 'Back', restart: 'Start again', continue: 'Next',
     qualityStop: 'A reliable Kaiser Score cannot be calculated', qualityStopText: 'The Kaiser Score requires diagnostic image quality with reliably assessable morphology and enhancement kinetics.',
-    disclaimer: 'For professionals only. The result depends on correct interpretation of morphology. The score is neither a diagnosis nor an automatic BI-RADS assignment; clinical and temporal context, prior imaging and other findings determine the final assessment.',
-    source: 'Baltzer et al. · Insights Imaging · 2018', adcSource: 'Clauser et al. · Clin Cancer Res · 2021', by: 'A tool by', developed: 'Developed by Dr. Zia',
-    rangeLabels: { low: 'lower score range (1–4)', intermediate: 'middle score range (5–7)', high: 'higher score range (8–11)' },
-    contextReminder: 'Final BI-RADS assessment and management require morphology, clinical findings, prior examinations and interval change.',
+    disclaimer: 'For professionals only. The result depends on correct interpretation of morphology. The Kaiser Score has an established BI-RADS mapping; the choice between BI-RADS 2 and 3 and the specific management plan also consider clinical findings, prior imaging and interval change.',
+    source: 'Baltzer et al. · Insights Imaging · 2018', biradsSource: 'ACR · BI-RADS categories', adcSource: 'Clauser et al. · Clin Cancer Res · 2021', by: 'A tool by', developed: 'Developed by Dr. Zia',
+    biradsMeanings: {
+      low: 'BI-RADS 2 means benign; BI-RADS 3 means probably benign (≤ 2% likelihood of malignancy) with short-interval imaging follow-up. The overall context determines the choice between 2 and 3.',
+      intermediate: 'BI-RADS 4 means suspicious (> 2% to < 95% likelihood of malignancy); tissue diagnosis should be considered.',
+      high: 'BI-RADS 5 means highly suggestive of malignancy (≥ 95% likelihood); appropriate diagnostic and therapeutic action is indicated.',
+    },
+    contextReminder: 'The mapping supports assessment; the specific management plan also considers clinical findings, prior imaging and interval change.',
     addAdc: 'Add ADC',
-    findingLead: 'On breast MRI, the enhancing lesion demonstrates', assessmentLead: 'Following the Kaiser decision tree, the result is',
+    findingLead: 'On breast MRI, the enhancing lesion demonstrates', assessmentLead: 'Following the Kaiser decision tree, the result is', assessmentMapping: 'corresponding to',
     adcMeasured: 'The additionally measured ADC value is',
     adcAbove: 'ADC ≥ 1.5 × 10⁻³ mm²/s. Possible downgrading was studied in lesions independently assigned BI-RADS 4 beforehand; this is not an automatic biopsy decision.',
     adcBelow: 'ADC < 1.5 × 10⁻³ mm²/s. ADC-based downgrading under the cited study is not supported.',
@@ -118,9 +126,9 @@ function resolvePath(answers) {
 
 function riskFor(score) {
   if (!score) return null
-  if (score <= 4) return { key: 'low' }
-  if (score <= 7) return { key: 'intermediate' }
-  return { key: 'high' }
+  if (score <= 4) return { key: 'low', birads: 'BI-RADS 2/3' }
+  if (score <= 7) return { key: 'intermediate', birads: 'BI-RADS 4' }
+  return { key: 'high', birads: 'BI-RADS 5' }
 }
 
 function ArrowIcon({ reverse = false }) {
@@ -221,7 +229,7 @@ function ResultPanel({ score, risk, history, ui, copied, onCopy, adcRefinement, 
   const [linkCopied, setLinkCopied] = useState(false)
   const scorePosition = `${((score - 1) / 10) * 100}%`
   const report = buildReport(history, score, risk, ui, adcRefinement, lang)
-  const recommendation = adcRefinement ? (adcRefinement.aboveThreshold ? ui.adcAbove : ui.adcBelow) : ui.contextReminder
+  const adcNote = adcRefinement ? (adcRefinement.aboveThreshold ? ui.adcAbove : ui.adcBelow) : null
   const whatsAppText = encodeURIComponent(`Kaiser Score · RadYar\n${KAISER_SCORE_URL}`)
   const copyLink = async () => {
     try {
@@ -244,7 +252,7 @@ function ResultPanel({ score, risk, history, ui, copied, onCopy, adcRefinement, 
         </div>
         <div className={styles.probabilityLegend} aria-hidden="true"><span>{ui.low}</span><span>{ui.intermediate}</span><span>{ui.high}</span></div>
       </div>
-      <div className={styles.resultClassification}><span>{ui.corresponds}</span><strong>{ui.rangeLabels[risk.key]}</strong><p className={styles.recommendation}>{recommendation}</p>{score >= 5 && score <= 7 ? <button type="button" onClick={onAddAdc}>{ui.addAdc}</button> : null}</div>
+      <div className={styles.resultClassification}><span>{ui.corresponds}</span><strong>{risk.birads}</strong><p className={styles.recommendation}>{ui.biradsMeanings[risk.key]}</p>{adcNote ? <p className={styles.recommendation}>{adcNote}</p> : null}<p className={styles.recommendation}>{ui.contextReminder}</p>{score >= 5 && score <= 7 ? <button type="button" onClick={onAddAdc}>{ui.addAdc}</button> : null}</div>
     </div>
     <div className={styles.reportBox}><header><strong>{ui.report}</strong></header><div className={styles.reportSection}><span>{ui.finding}</span><p>{report.finding}</p></div><div className={styles.reportSection}><span>{ui.assessment}</span><p>{report.assessment}</p></div><button type="button" onClick={onCopy}>{copied ? ui.copied : ui.copy}<span>{copied ? '✓' : '⧉'}</span></button></div>
     <section className={`${styles.shareCard} ${shareOpen ? styles.shareCardOpen : ''}`}>
@@ -271,7 +279,7 @@ function buildReport(history, score, risk, ui, adcRefinement, lang = 'de') {
     : ''
   return {
     finding: `${ui.findingLead} ${features}.${adcFinding}`,
-    assessment: `${ui.assessmentLead} Kaiser Score ${score} – ${ui.rangeLabels[risk.key]}. ${adcRefinement ? `${adcRefinement.aboveThreshold ? ui.adcAbove : ui.adcBelow} ` : ''}${ui.contextReminder}`,
+    assessment: `${ui.assessmentLead} Kaiser Score ${score} – ${ui.assessmentMapping} ${risk.birads}. ${ui.biradsMeanings[risk.key]} ${adcRefinement ? `${adcRefinement.aboveThreshold ? ui.adcAbove : ui.adcBelow} ` : ''}${ui.contextReminder}`,
   }
 }
 
@@ -361,6 +369,6 @@ export default function KaiserScorePage() {
         <div className={styles.anatomyVisual}/>
       </aside>
     </div>
-    <footer className={styles.disclaimer}><span>i</span><p>{ui.disclaimer}</p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5990997/" target="_blank" rel="noreferrer">{ui.source} ↗</a><a href="https://pubmed.ncbi.nlm.nih.gov/33446565/" target="_blank" rel="noreferrer">{ui.adcSource} ↗</a><small><Link href="/">{ui.by} <strong>RadYar</strong></Link> · {ui.developed}</small></footer>
+    <footer className={styles.disclaimer}><span>i</span><p>{ui.disclaimer}</p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5990997/" target="_blank" rel="noreferrer">{ui.source} ↗</a><a href="https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Reporting-and-Data-Systems/BI-RADS" target="_blank" rel="noreferrer">{ui.biradsSource} ↗</a><a href="https://pubmed.ncbi.nlm.nih.gov/33446565/" target="_blank" rel="noreferrer">{ui.adcSource} ↗</a><small><Link href="/">{ui.by} <strong>RadYar</strong></Link> · {ui.developed}</small></footer>
   </main>
 }
