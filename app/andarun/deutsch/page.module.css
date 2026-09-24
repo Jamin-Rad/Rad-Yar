@@ -2130,7 +2130,7 @@
 }
 
 @media (max-width: 620px) {
-  .shell { padding-bottom: 48px; background-size: auto 520px; }
+  .shell { padding-bottom: max(48px, env(safe-area-inset-bottom, 0px)); background-size: auto 520px; }
   .hero, .status, .dashboard, .homeGrid, .lessonGrid, .writingGrid, .singleSection, .tabs { width: calc(100% - 28px); }
   .hero, .heroSimple { min-height: 420px; padding-top: 22px; }
   .heroNav { top: 18px; }
@@ -2379,7 +2379,7 @@
 }
 
 @media (max-width: 560px) {
-  .shell { padding: 0 0 48px; background-size: auto 520px; }
+  .shell { padding: 0 0 max(48px, env(safe-area-inset-bottom, 0px)); background-size: auto 520px; }
   .shell .hero, .shell .status, .shell .dashboard, .shell .homeGrid, .shell .lessonGrid, .shell .writingGrid, .shell .singleSection, .shell .tabs { width: calc(100% - 28px); }
   .shell .hero, .shell .heroSimple { min-height: 420px; margin-bottom: 24px; padding-top: 22px; }
   .shell .heroNav { top: 18px; }

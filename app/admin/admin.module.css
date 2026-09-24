@@ -6610,7 +6610,7 @@
 }
 
 @media (max-width: 700px) {
-  .content { padding: 22px 14px 40px; }
+  .content { padding: 22px max(14px, env(safe-area-inset-right, 0px)) max(48px, env(safe-area-inset-bottom, 0px)) max(14px, env(safe-area-inset-left, 0px)); }
   .financeHeader { align-items: flex-start; margin-bottom: 20px; padding-bottom: 18px; }
   .financeHeader .title { font-size: 48px; }
   .financeHeroText { display: none; }
@@ -6635,6 +6635,7 @@
 @media (max-width: 430px) {
   .financeHeader { display: grid; grid-template-columns: 1fr; }
   .financeHeader .monthNav { justify-self: start; }
+  .financeHeader .title { font-size: clamp(40px, 13vw, 48px); }
   .financeBalanceSplit { gap: 18px; }
   .financeMetrics { grid-template-columns: 1fr; }
   .financeMetric, .financeMetric:last-child { grid-column: auto; min-height: 112px; }

@@ -496,7 +496,7 @@
 @media (max-width: 560px) {
   .page {
     min-height: 100svh;
-    padding: 12px;
+    padding: 12px max(12px, env(safe-area-inset-right, 0px)) max(28px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
     background-attachment: scroll;
   }
 
@@ -523,7 +523,7 @@
 
   .stats {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     width: 100%;
     gap: 8px;
   }
@@ -531,8 +531,12 @@
   .stats span {
     justify-content: center;
     min-height: 34px;
-    padding: 0 9px;
+    gap: 4px;
+    padding: 0 6px;
+    font-size: 10px;
   }
+
+  .stats strong { font-size: 14px; }
 
   .message {
     margin-bottom: 12px;
