@@ -1961,7 +1961,7 @@
 
 @media (max-width: 640px) {
   .page {
-    padding: 14px;
+    padding: 14px max(14px, env(safe-area-inset-right, 0px)) max(30px, env(safe-area-inset-bottom, 0px)) max(14px, env(safe-area-inset-left, 0px));
   }
 
   .calendarGrid,
@@ -1971,8 +1971,8 @@
 
   .dayCell,
   .emptyDay {
-    min-height: 92px;
-    padding: 7px;
+    min-height: 82px;
+    padding: 6px;
   }
 
   .findingForm,

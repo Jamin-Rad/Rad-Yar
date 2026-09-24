@@ -1377,7 +1377,7 @@
 @media (max-width: 560px) {
   .page {
     min-height: 100svh;
-    padding: 12px;
+    padding: 12px max(12px, env(safe-area-inset-right, 0px)) max(28px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
     background-attachment: scroll;
   }
 
