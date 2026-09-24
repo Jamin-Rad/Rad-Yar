@@ -113,8 +113,36 @@ async function budgetApi(method = 'GET', body) {
     body: body ? JSON.stringify(body) : undefined,
   })
   const data = await res.json().catch(() => ({}))
-  if (!res.ok) throw new Error(data.error || 'Budget konnte nicht gespeichert werden.')
+  if (!res.ok) {
+    const fallbackMessage = method === 'GET'
+      ? 'Finanzdaten konnten nicht geladen werden.'
+      : 'Budget konnte nicht gespeichert werden.'
+    const error = new Error(data.error || fallbackMessage)
+    error.status = res.status
+    throw error
+  }
   return data
+}
+
+function FinanceSyncStatus({ status }) {
+  const config = {
+    loading: { label: 'Verbindung wird hergestellt', detail: 'Finanzdaten werden geladen.' },
+    saving: { label: 'Wird gespeichert', detail: 'Deine Änderungen werden online gesichert.' },
+    synced: { label: 'Online gespeichert', detail: 'Alle Änderungen sind synchronisiert.' },
+    offline: { label: 'Nur lokal gespeichert', detail: 'Online-Speichern ist pausiert. Deine Änderungen bleiben auf diesem Gerät erhalten.' },
+    conflict: { label: 'Online-Version geändert', detail: 'Zum Schutz deiner Daten wurde nichts überschrieben. Lade die Seite neu, um die aktuelle Online-Version zu öffnen.' },
+  }
+  const current = config[status] || config.loading
+
+  return (
+    <div className={`${styles.financeSyncStatus} ${styles[`financeSyncStatus_${status}`] || ''}`} role="status" aria-live="polite" title={current.detail}>
+      <span className={styles.financeSyncDot} aria-hidden="true" />
+      <span>
+        <strong>{current.label}</strong>
+        <small>{current.detail}</small>
+      </span>
+    </div>
+  )
 }
 
 function makeId() {
@@ -129,18 +157,18 @@ const DEFAULT_EXPENSE_CATEGORIES = [
   ['Lebensmittel', ['Aldi', 'Lidl', 'Bonus', 'Edeka/Rewe/Netto', 'DM', 'Türkei']],
   ['Kleidung', ['Supermarkt', 'Takko', 'Ernstings Family', 'Deichman']],
   ['Restaurant', ['Eis/Coffee/Bäckerei', 'Essen', 'Krankenhaus']],
-  ['Auto', ['Tanken', 'Strom', 'Parekn', 'Waschen', 'Reparatur/Service', 'Leasing', 'Bus-Ticket', 'ADAC', 'Bußgeld']],
+  ['Auto', ['Tanken', 'Strom', 'Parken', 'Waschen', 'Reparatur/Service', 'Leasing', 'Bus-Ticket', 'ADAC', 'Bußgeld']],
   ['Zu Hause', ['Miete', 'Darlehen', 'Strom', 'Internet', 'Netflix', 'Fisch', 'Haushaltgerät', 'Papierkram']],
   ['Ausflug', ['Aufenthalt', 'Transport', 'Essen', 'Ticket']],
   ['Jamin', ['Konto', 'Gothaer', 'Kleidung', 'SIM-Karte', 'Frisur', 'Sonst', 'Medikamente', 'Versicherung']],
   ['Fatima', ['Iphone 16', 'Gift', 'Kleidung', 'Medikamente', 'Cosmetics']],
   ['Mobin', ['Schule', 'Taschengeld', 'Bus-Ticket', 'Kleidung', 'SIM-Karte', 'Schulsachen', 'Sonst', 'Spielzeug']],
   ['Mobina', ['Kindergarten', 'Kleidung', 'Spielzeug', 'Schule', 'Sport']],
-  ['Meine Eltern', ['Apotheke, Versicherung', 'Sonst', 'Flugticket']],
+  ['Meine Eltern', ['Apotheke/Versicherung', 'Sonst', 'Flugticket']],
   ['Hossein', ['Gift']],
   ['Fatima Eltern', ['Apotheke', 'Gift']],
   ['Mohsen', ['Gift']],
-  ['Nazri', ['Mosche', 'Iran']],
+  ['Nazri', ['Moschee', 'Iran']],
 ]
 
 const KNOWN_OLD_EXPENSE_CATEGORY_NAMES = new Set([
@@ -155,8 +183,30 @@ function createDefaultCategories() {
   ]
 }
 
+const LEGACY_SUBCATEGORY_RENAMES = {
+  Auto: { Parekn: 'Parken' },
+  Nazri: { Mosche: 'Moschee' },
+  'Meine Eltern': { 'Apotheke, Versicherung': 'Apotheke/Versicherung' },
+}
+
+function normalizeCategoryLabels(categories) {
+  return categories.map(category => {
+    const renames = LEGACY_SUBCATEGORY_RENAMES[category.name]
+    if (!renames) return category
+
+    const seen = new Set()
+    const subs = (category.subs || []).flatMap(sub => {
+      const name = renames[sub.name] || sub.name
+      if (seen.has(name)) return []
+      seen.add(name)
+      return [{ ...sub, name }]
+    })
+    return { ...category, subs }
+  })
+}
+
 function mergeExpenseDefaults(categories) {
-  const existing = Array.isArray(categories) ? categories : []
+  const existing = normalizeCategoryLabels(Array.isArray(categories) ? categories : [])
   if (!existing.length) return createDefaultCategories()
 
   const existingByName = new Map(existing.map(cat => [cat.name, cat]))
@@ -294,8 +344,15 @@ function trafficColor(spent, budget) {
   return '#16a34a'
 }
 
-function categoryBudgetValue(catBudgets, categoryName) {
-  return catBudgets[categoryName] || catBudgets[`${categoryName} / Gesamt`] || 0
+function categoryBudgetValue(catBudgets, categoryName, categories = []) {
+  const directBudget = Number(catBudgets[categoryName] || catBudgets[`${categoryName} / Gesamt`] || 0)
+  if (directBudget > 0) return directBudget
+
+  const category = categories.find(item => item.name === categoryName)
+  return (category?.subs || []).reduce(
+    (sum, sub) => sum + Number(catBudgets[`${categoryName} / ${sub.name}`] || 0),
+    0,
+  )
 }
 
 function IconCalendar() {
@@ -517,8 +574,11 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
   const [recurring, setRecurring]   = useState([])
   const [categories, setCategories] = useState([])
   const [loaded, setLoaded]         = useState(false)
-  const [syncError, setSyncError]   = useState('')
+  const [syncStatus, setSyncStatus] = useState('loading')
   const didHydrate = useRef(false)
+  const remoteWritesEnabled = useRef(false)
+  const remoteVersion = useRef(null)
+  const skipNextRemoteSave = useRef(false)
   const [newCatName, setNewCatName] = useState('')
   const [newCatType, setNewCatType] = useState('expense')
   const [newSubInputs, setNewSubInputs] = useState({})
@@ -612,18 +672,34 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
         setRecurring(nextState.recurring)
         setCatBudgets(nextState.catBudgets)
         setCategories(nextState.categories)
-        setSyncError('')
+        setSyncStatus('synced')
+        remoteWritesEnabled.current = true
+        remoteVersion.current = remote.updatedAt || null
+        skipNextRemoteSave.current = true
         didHydrate.current = true
         setLoaded(true)
 
-        if (!remoteHasData) await budgetApi('PUT', nextState)
+        if (!remoteHasData) {
+          try {
+            setSyncStatus('saving')
+            const saved = await budgetApi('PUT', { ...nextState, expectedUpdatedAt: remoteVersion.current })
+            remoteVersion.current = saved.updatedAt || remoteVersion.current
+            setSyncStatus('synced')
+          } catch (err) {
+            remoteWritesEnabled.current = false
+            setSyncStatus(err.status === 409 ? 'conflict' : 'offline')
+          }
+        }
       } catch (err) {
         if (cancelled) return
         setStore(localStore)
         setRecurring(localRecurring)
         setCatBudgets(localCatBudgets)
         setCategories(localCategories)
-        setSyncError(err.message)
+        setSyncStatus('offline')
+        remoteWritesEnabled.current = false
+        remoteVersion.current = null
+        skipNextRemoteSave.current = true
         didHydrate.current = true
         setLoaded(true)
       }
@@ -644,12 +720,26 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
       localStorage.setItem(CATEGORIES_KEY, JSON.stringify(categories))
     } catch {}
 
+    if (skipNextRemoteSave.current) {
+      skipNextRemoteSave.current = false
+      return
+    }
+
+    if (!remoteWritesEnabled.current) {
+      setSyncStatus(current => current === 'conflict' ? current : 'offline')
+      return
+    }
+
+    setSyncStatus('saving')
+
     const timer = window.setTimeout(async () => {
       try {
-        await budgetApi('PUT', payload)
-        setSyncError('')
+        const saved = await budgetApi('PUT', { ...payload, expectedUpdatedAt: remoteVersion.current })
+        remoteVersion.current = saved.updatedAt || remoteVersion.current
+        setSyncStatus('synced')
       } catch (err) {
-        setSyncError(err.message)
+        remoteWritesEnabled.current = false
+        setSyncStatus(err.status === 409 ? 'conflict' : 'offline')
       }
     }, 500)
 
@@ -686,13 +776,14 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
     }
   }, [iranOpenCategory])
 
-  // One-time migration: set all existing fixkosten to start from 2025-01
+  // Legacy entries without a start month predate the start-month feature.
+  // Preserve every explicitly chosen start date, especially future entries.
   useEffect(() => {
     if (!loaded) return
     setRecurring(prev => {
-      const needsMigration = prev.some(r => !r.startMonth || r.startMonth > '2025-01')
+      const needsMigration = prev.some(r => !r.startMonth)
       if (!needsMigration) return prev
-      return prev.map(r => ({ ...r, startMonth: '2025-01' }))
+      return prev.map(r => r.startMonth ? r : { ...r, startMonth: '2025-01' })
     })
   }, [loaded])
 
@@ -960,8 +1051,10 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
   }, [monthData.entries])
 
   const totalCatBudget = useMemo(() => {
-    return Object.values(catBudgets).reduce((s, value) => s + Number(value || 0), 0)
-  }, [catBudgets])
+    return categories
+      .filter(category => category.type === 'expense')
+      .reduce((sum, category) => sum + categoryBudgetValue(catBudgets, category.name, categories), 0)
+  }, [catBudgets, categories])
 
   function printBericht() {
     const fixEntries    = monthData.entries.filter(e => e.generatedRecurring)
@@ -975,7 +1068,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
     }).join('')
 
     const expenseRows = categoryTotals.map(([cat, total]) => {
-      const budget = categoryBudgetValue(catBudgets, cat)
+      const budget = categoryBudgetValue(catBudgets, cat, categories)
       const pct    = budget > 0 ? ((total / budget) * 100).toFixed(1) : '—'
       const status = !budget ? '' : total >= budget ? '⚠ Überzogen' : total / budget >= 0.75 ? '~ Achtung' : '✓ OK'
       return `<tr><td>${cat}</td><td class="amt red">${formatMoney(total)}</td><td class="amt">${budget ? formatMoney(budget) : '—'}</td><td class="pct">${pct !== '—' ? pct + ' %' : '—'}</td><td>${status}</td></tr>`
@@ -1558,7 +1651,7 @@ ${manualEntries.length ? `
             <span className={styles.financeEyebrow}>Andarun / Finanzen</span>
             <h1 className={styles.title}>Finanzen</h1>
             <p className={styles.financeHeroText}>Dein Geld. Klar geordnet.</p>
-            {syncError && <p className={styles.sub} style={{ margin: '4px 0 0', color: '#dc2626' }}>Online-Speichern fehlgeschlagen: {syncError}</p>}
+            <FinanceSyncStatus status={syncStatus} />
           </div>
           <div className={styles.monthNav} ref={monthPickerRef}>
             <button className={styles.monthNavBtn} onClick={prevMonth} aria-label="Vorheriger Monat">‹</button>
@@ -1621,7 +1714,10 @@ ${manualEntries.length ? `
             </div>
           </div>
           <div className={styles.financeMetric}>
-            <span>Einkommen</span>
+            <div className={styles.financeMetricTop}>
+              <span>Einkommen</span>
+              <button type="button" className={`${styles.financeMetricAdd} ${styles.financeMetricAddIncome}`} onClick={() => openPopup('income')} aria-label="Neues Einkommen hinzufügen" title="Neues Einkommen hinzufügen"><IconPlus /></button>
+            </div>
             <strong className={styles.moneyPositive}>{formatMoney(summary.income)}</strong>
             <small>{incomeTotals.length} {incomeTotals.length === 1 ? 'Quelle' : 'Quellen'}</small>
           </div>
@@ -1712,7 +1808,7 @@ ${manualEntries.length ? `
                   )}
                   <div className={styles.sectionCardBody}>
                     {categoryTotals.length ? categoryTotals.map(([cat, total]) => {
-                      const budget = categoryBudgetValue(catBudgets, cat)
+                      const budget = categoryBudgetValue(catBudgets, cat, categories)
                       const color = trafficColor(total, budget)
                       const pct = budget > 0 ? Math.min((total / budget) * 100, 100) : 0
                       return (
@@ -2156,7 +2252,7 @@ ${manualEntries.length ? `
                   )}
 
                   {/* ── SVG Chart ── */}
-                  <div style={{ padding: '16px 16px 12px', marginBottom: 16, borderRadius: 18, background: 'rgba(255,255,255,0.72)', border: '1.5px solid rgba(255,255,255,0.95)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', boxShadow: '0 4px 24px rgba(0,0,0,0.07), 0 1px 0 rgba(255,255,255,1) inset' }}>
+                  <div className={styles.annualSurface} style={{ padding: '16px 16px 12px', marginBottom: 16 }}>
                     <div style={{ overflowX: 'auto' }}>
                       <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', minWidth: 380, display: 'block' }}>
                         <defs>
@@ -2264,7 +2360,7 @@ ${manualEntries.length ? `
                   </div>
 
                   {/* ── Table ── */}
-                  <div style={{ borderRadius: 18, background: 'rgba(255,255,255,0.72)', border: '1.5px solid rgba(255,255,255,0.9)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', boxShadow: '0 2px 16px rgba(0,0,0,0.05)', overflow: 'hidden' }}>
+                  <div className={styles.annualSurface} style={{ overflow: 'hidden' }}>
                     {annualSummary ? (
                       <table className={styles.annualTable}>
                         <thead>
@@ -2659,7 +2755,7 @@ ${manualEntries.length ? `
                     const allSel = group.cats.every(c => chartCats.has(c))
                     const someSel = group.cats.some(c => chartCats.has(c))
                     return (
-                      <div key={group.key} style={{ marginBottom:16, borderRadius:18, padding:'14px 14px 12px', background:`linear-gradient(135deg, ${group.bg}cc, ${group.bg}55)`, border:`1.5px solid ${group.border}88`, backdropFilter:'blur(8px)', WebkitBackdropFilter:'blur(8px)' }}>
+                      <div className={styles.trendGroupPanel} key={group.key} style={{ '--trend-group-color':group.color, '--trend-group-bg':group.bg, '--trend-group-border':group.border }}>
                         {/* Group header */}
                         <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:12 }}>
                           <div style={{ display:'flex', alignItems:'center', gap:7, padding:'6px 14px', borderRadius:20, background:`linear-gradient(135deg, ${group.color}22, ${group.color}0d)`, border:`1.5px solid ${group.color}40`, boxShadow:`0 2px 8px ${group.color}18`, flexShrink:0 }}>
@@ -2667,21 +2763,22 @@ ${manualEntries.length ? `
                             <span style={{ fontSize:11, fontWeight:800, color:group.color, textTransform:'uppercase', letterSpacing:'0.07em' }}>{group.label}</span>
                           </div>
                           <div style={{ flex:1, height:1, background:`linear-gradient(to right, ${group.border}, transparent)` }} />
-                          <button type="button" onClick={() => toggleGroup(group.cats)}
+                          <button className={styles.trendGroupAction} type="button" onClick={() => toggleGroup(group.cats)}
                             style={{ padding:'5px 13px', borderRadius:20, border:`1.5px solid ${group.color}50`, background: allSel ? `${group.color}18` : 'rgba(255,255,255,0.6)', color:group.color, fontSize:11, fontWeight:700, cursor:'pointer', flexShrink:0, transition:'all .15s', backdropFilter:'blur(4px)' }}>
                             {allSel ? '✓ Alle ab' : '+ Alle'}
                           </button>
                         </div>
                         {/* Cards */}
-                        <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(100px, 1fr))', gap:8 }}>
+                        <div className={styles.trendCategoryGrid}>
                           {group.cats.map(cat => {
                             const sel = chartCats.has(cat)
                             const color = catColorMap[cat]
                             const total = allCatTotals[cat] || 0
                             const emoji = CAT_EMOJI[cat] || '💰'
                             return (
-                              <button key={cat} type="button" onClick={() => toggleCat(cat)}
+                              <button className={`${styles.trendCategoryCard} ${sel ? styles.trendCategoryCardSelected : ''}`} key={cat} type="button" onClick={() => toggleCat(cat)}
                                 style={{
+                                  '--trend-color': color,
                                   display:'flex', flexDirection:'column', alignItems:'center', gap:6,
                                   padding:'16px 10px 12px', borderRadius:16, cursor:'pointer',
                                   border: sel ? `2px solid ${color}90` : '1.5px solid rgba(255,255,255,0.9)',
@@ -2717,12 +2814,12 @@ ${manualEntries.length ? `
 
                   {/* ── Chart ── */}
                   {selectedCats.length === 0 ? (
-                    <div style={{ padding:'48px 24px', textAlign:'center', marginTop:8, borderRadius:18, background:'rgba(255,255,255,0.6)', border:'1.5px solid rgba(226,232,240,0.8)', backdropFilter:'blur(12px)', WebkitBackdropFilter:'blur(12px)' }}>
+                    <div className={styles.trendEmptySurface}>
                       <p style={{ margin:'0 0 8px', fontSize:40 }}>📈</p>
                       <p style={{ margin:0, fontSize:14, color:'var(--text-muted,#94a3b8)', fontWeight:600 }}>Wähle oben eine oder mehrere Kategorien aus.</p>
                     </div>
                   ) : (
-                    <div style={{ padding:'18px 18px 14px', marginTop:8, borderRadius:18, background:'rgba(255,255,255,0.7)', border:'1.5px solid rgba(255,255,255,0.9)', backdropFilter:'blur(16px)', WebkitBackdropFilter:'blur(16px)', boxShadow:'0 4px 24px rgba(0,0,0,0.07), 0 1px 0 rgba(255,255,255,1) inset' }}>
+                    <div className={styles.trendChartSurface}>
                       {/* Selected summary chips */}
                       <div style={{ display:'flex', flexWrap:'wrap', gap:8, marginBottom:16 }}>
                         {selectedCats.map(cat => {
@@ -2792,7 +2889,7 @@ ${manualEntries.length ? `
                               const x=xOf(i), y=yOf(d.totals[cat]||0), v=d.totals[cat]||0
                               return (
                                 <g key={`${cat}-${i}`}>
-                                  <circle cx={x} cy={y} r={6} fill="white" stroke={color} strokeWidth="2.5" />
+                                  <circle cx={x} cy={y} r={6} fill="var(--ledger-card)" stroke={color} strokeWidth="2.5" />
                                   <circle cx={x} cy={y} r={3} fill={color} />
                                   {v > 0 && (
                                     <text x={x} y={y-12} textAnchor="middle" fontSize="9.5" fill={color} fontWeight="800" fontFamily="inherit">
@@ -3068,7 +3165,7 @@ ${manualEntries.length ? `
                 .slice(0, 8)
               const topCats = [...categoryTotals].slice(0, 6)
               const budgetCats = categoryTotals.map(([cat, actual]) => {
-                const budget = categoryBudgetValue(catBudgets, cat)
+                const budget = categoryBudgetValue(catBudgets, cat, categories)
                 const pct = budget > 0 ? Math.min((actual / budget) * 100, 100) : null
                 const status = !budget ? 'none' : actual >= budget ? 'over' : actual / budget >= 0.75 ? 'warn' : 'ok'
                 return { cat, actual, budget, pct, status }
@@ -3161,7 +3258,7 @@ ${manualEntries.length ? `
                         <div className={styles.reportSection}>
                           <p className={styles.reportSectionTitle}>Ausgaben nach Kategorie</p>
                           {categoryTotals.map(([cat, total]) => {
-                            const budget = categoryBudgetValue(catBudgets, cat)
+                            const budget = categoryBudgetValue(catBudgets, cat, categories)
                             const pct = budget > 0 ? Math.min((total / budget) * 100, 100) : 0
                             const col = trafficColor(total, budget)
                             return (

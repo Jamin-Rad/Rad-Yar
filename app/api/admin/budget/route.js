@@ -56,7 +56,32 @@ export async function PUT(request) {
     return NextResponse.json({ error: 'Ungültige Budget-Daten.' }, { status: 400 })
   }
 
-  const { store, recurring, catBudgets, categories } = body
+  const { store, recurring, catBudgets, categories, expectedUpdatedAt } = body
+
+  if (Object.prototype.hasOwnProperty.call(body, 'expectedUpdatedAt')) {
+    const { data: current, error: versionError } = await supabaseAdmin
+      .from('admin_budget_state')
+      .select('updated_at')
+      .eq('id', BUDGET_ID)
+      .maybeSingle()
+
+    if (versionError) {
+      console.error('[admin-budget] version check failed', versionError)
+      return NextResponse.json({ error: versionError.message }, { status: 500 })
+    }
+
+    const currentVersion = current?.updated_at ?? null
+    const clientVersion = expectedUpdatedAt ?? null
+    if (currentVersion !== clientVersion) {
+      return NextResponse.json({
+        error: 'Die Online-Daten wurden inzwischen auf einem anderen Gerät geändert.',
+        code: 'BUDGET_VERSION_CONFLICT',
+        updatedAt: currentVersion,
+      }, { status: 409 })
+    }
+  }
+
+  const updatedAt = new Date().toISOString()
 
   const { error } = await supabaseAdmin
     .from('admin_budget_state')
@@ -66,12 +91,12 @@ export async function PUT(request) {
       recurring: Array.isArray(recurring) ? recurring : [],
       cat_budgets: catBudgets && typeof catBudgets === 'object' ? catBudgets : {},
       categories: Array.isArray(categories) ? categories : [],
-      updated_at: new Date().toISOString(),
+      updated_at: updatedAt,
     }, { onConflict: 'id' })
 
   if (error) {
     console.error('[admin-budget] PUT failed', error)
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
-  return NextResponse.json({ ok: true })
+  return NextResponse.json({ ok: true, updatedAt })
 }
