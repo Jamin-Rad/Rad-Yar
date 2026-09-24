@@ -690,6 +690,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
               const absences = absencesByDate.get(day.date) || []
               const previousShift = shiftsByDate.get(previousDateValue(day.date))
               const isWeekendFree = !shift && (day.weekday === 0 || day.weekday === 6)
+              const isWeekend = day.weekday === 0 || day.weekday === 6
               const isPostNightFree = !shift && day.weekday >= 1 && day.weekday <= 5 && isNightShift(previousShift)
               const hasVacation = absences.some(absence => absence.model === 'U')
               const hasPartTime = absences.some(absence => absence.model === 'TZ')
@@ -702,7 +703,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
               const isToday = day.date === todayValue()
               return (
                 <button
-                  className={`${styles.dayCell} ${active ? styles.dayActive : ''} ${shift ? styles.dayHasShift : ''} ${isDayShift ? styles.dayDayShift : ''} ${isLateShift ? styles.dayLateShift : ''} ${isNight ? styles.dayNightShift : ''} ${isWeekendDayShift ? styles.dayWeekendShift : ''} ${isFree ? styles.dayFree : ''} ${isToday ? styles.dayToday : ''}`}
+                  className={`${styles.dayCell} ${isWeekend ? styles.dayWeekend : ''} ${active ? styles.dayActive : ''} ${shift ? styles.dayHasShift : ''} ${isDayShift ? styles.dayDayShift : ''} ${isLateShift ? styles.dayLateShift : ''} ${isNight ? styles.dayNightShift : ''} ${isWeekendDayShift ? styles.dayWeekendShift : ''} ${isFree ? styles.dayFree : ''} ${isToday ? styles.dayToday : ''}`}
                   type="button"
                   key={day.date}
                   onClick={() => selectDate(day.date)}

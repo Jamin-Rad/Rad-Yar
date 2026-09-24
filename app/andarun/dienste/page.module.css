@@ -2846,6 +2846,447 @@
 
 }
 
+/* Dienste calendar v2: quiet, structured workforce planner */
+.shiftPage {
+  --shift-paper: #faf9f6;
+  --shift-surface: #fffefb;
+  --shift-ink: #102641;
+  --shift-muted: #687385;
+  --shift-rule: #dfe2e1;
+  --shift-blue: #246fd0;
+  --shift-day: #5a91cf;
+  --shift-late: #b86b58;
+  --shift-night: #c48a2c;
+  --shift-weekend-duty: #8b5876;
+  --shift-free: #edf1ec;
+  min-height: 100vh;
+  padding: clamp(24px, 3.6vw, 54px) clamp(18px, 4vw, 64px) max(54px, env(safe-area-inset-bottom, 0px));
+  background: var(--shift-paper);
+  color: var(--shift-ink);
+}
+
+.shiftPage .header {
+  max-width: 1480px;
+  margin-bottom: clamp(24px, 3vw, 42px);
+}
+
+.shiftPage .header h1 {
+  color: var(--shift-ink);
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  font-size: clamp(40px, 4.1vw, 64px);
+  font-weight: 760;
+  letter-spacing: -.05em;
+  line-height: 1;
+}
+
+.shiftPage .back {
+  border-color: #d7dbdc;
+  background: transparent;
+  color: #526173;
+}
+
+.shiftPage .printBtn {
+  min-height: 52px;
+  border: 1px solid #d4d8db;
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: none;
+  color: var(--shift-ink);
+  padding: 0 18px;
+}
+
+.shiftPage .printBtn:hover {
+  border-color: #98a3ae;
+  background: #f2f2ee;
+  transform: none;
+}
+
+.shiftPage .message {
+  max-width: 1480px;
+  border-color: #cddbd2;
+  background: #edf4ef;
+  color: #315c45;
+}
+
+.shiftPage .shell {
+  max-width: 1480px;
+  gap: 0;
+}
+
+.shiftPage .calendarPanel {
+  overflow: hidden;
+  border: 1px solid #d9ddde;
+  border-radius: 10px;
+  background: var(--shift-surface);
+  box-shadow: 0 16px 46px rgba(24, 38, 52, .07);
+  padding: 0;
+}
+
+.shiftPage .monthBar {
+  grid-template-columns: 52px minmax(0, 1fr) 52px;
+  gap: 18px;
+  min-height: 96px;
+  margin: 0;
+  border-bottom: 1px solid var(--shift-rule);
+  padding: 18px 20px;
+}
+
+.shiftPage .monthBar button {
+  min-height: 50px;
+  border: 1px solid #d4d9db;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--shift-ink);
+}
+
+.shiftPage .monthBar button:hover {
+  border-color: #97a5b1;
+  background: #f4f4f0;
+  transform: none;
+}
+
+.shiftPage .monthBar strong {
+  color: var(--shift-ink);
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  font-size: clamp(26px, 2.6vw, 40px);
+  font-weight: 720;
+  letter-spacing: -.045em;
+}
+
+.shiftPage .weekHeader,
+.shiftPage .calendarGrid {
+  gap: 1px;
+  background: var(--shift-rule);
+}
+
+.shiftPage .weekHeader {
+  min-height: 54px;
+  align-items: center;
+  margin: 0;
+  border-bottom: 1px solid var(--shift-rule);
+  color: #33455b;
+  font-size: 12px;
+  letter-spacing: .04em;
+  text-transform: none;
+}
+
+.shiftPage .weekHeader span {
+  display: grid;
+  height: 100%;
+  place-items: center;
+  background: #fbfaf7;
+}
+
+.shiftPage .weekHeader span:nth-child(6),
+.shiftPage .weekHeader span:nth-child(7) {
+  background: #f1f3ef;
+}
+
+.shiftPage .calendarGrid {
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+}
+
+.shiftPage .dayCell,
+.shiftPage .emptyDay {
+  min-height: clamp(112px, 8.6vw, 142px);
+  border: 0;
+  border-radius: 0;
+  background: var(--shift-surface);
+}
+
+.shiftPage .emptyDay {
+  background: #f6f5f1;
+}
+
+.shiftPage .dayCell {
+  gap: 8px;
+  color: var(--shift-ink);
+  padding: 14px 14px 12px;
+  transition: background-color .16s ease, box-shadow .16s ease;
+}
+
+.shiftPage .dayCell:hover {
+  z-index: 2;
+  background: #f7f8f5;
+  box-shadow: inset 0 0 0 2px rgba(36, 111, 208, .28);
+  filter: none;
+}
+
+.shiftPage .dayCell > .dayNumber {
+  color: #20354e;
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.shiftPage .dayCell strong {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  margin-top: 4px;
+  border-radius: 0;
+  color: #29435e;
+  font-size: 13px;
+  font-weight: 720;
+  line-height: 1.2;
+  padding: 0 0 0 14px;
+}
+
+.shiftPage .dayCell strong::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 0;
+  width: 5px;
+  border-radius: 4px;
+  background: #8294a8;
+}
+
+.shiftPage .dayCell small {
+  color: #6c7786;
+  font-size: 10px;
+  font-weight: 650;
+  padding-left: 14px;
+}
+
+.shiftPage .dayCell em {
+  color: #52667d;
+  font-size: 9px;
+  padding-left: 14px;
+}
+
+.shiftPage .dayWeekend {
+  background: #f3f5f1;
+}
+
+.shiftPage .dayHasShift,
+.shiftPage .dayDayShift,
+.shiftPage .dayLateShift,
+.shiftPage .dayNightShift,
+.shiftPage .dayWeekendShift {
+  border: 0;
+  background: var(--shift-surface);
+  box-shadow: none;
+}
+
+.shiftPage .dayDayShift strong { color: #315f91; }
+.shiftPage .dayDayShift strong::before { background: var(--shift-day); }
+.shiftPage .dayLateShift strong { color: #814a3d; }
+.shiftPage .dayLateShift strong::before { background: var(--shift-late); }
+.shiftPage .dayNightShift strong,
+.shiftPage .dayNightShift small,
+.shiftPage .dayNightShift em { color: #77561f; }
+.shiftPage .dayNightShift strong::before { background: var(--shift-night); }
+.shiftPage .dayWeekendShift strong,
+.shiftPage .dayWeekendShift small,
+.shiftPage .dayWeekendShift em { color: #684456; }
+.shiftPage .dayWeekendShift strong::before { background: var(--shift-weekend-duty); }
+
+.shiftPage .dayFree {
+  border: 0;
+  background: var(--shift-free);
+  box-shadow: none;
+}
+
+.shiftPage .dayFree:hover { background: #e7ece6; }
+
+.shiftPage .dayFree > .dayNumber,
+.shiftPage .dayFree strong,
+.shiftPage .dayFree small,
+.shiftPage .dayFree em { color: #59685f; }
+
+.shiftPage .dayFree strong::before { background: #94a296; }
+
+.shiftPage .dayActive {
+  z-index: 3;
+  background: #f1f5fa;
+  box-shadow: inset 0 0 0 2px var(--shift-blue);
+}
+
+.shiftPage .dayToday,
+.shiftPage .dayToday.dayActive {
+  z-index: 4;
+  box-shadow: inset 0 0 0 2px var(--shift-blue);
+}
+
+.shiftPage .dayToday::after {
+  top: 12px;
+  right: 12px;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--shift-blue);
+  font-size: 8px;
+  letter-spacing: .08em;
+  padding: 2px 0;
+}
+
+.shiftPage .dayCell .absenceBadges {
+  display: grid;
+  gap: 4px;
+  margin-top: auto;
+  padding-left: 14px;
+}
+
+.shiftPage .absenceBadges b,
+.shiftPage .dayFree .absenceVacation,
+.shiftPage .dayFree .absencePartTime {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  border-radius: 0;
+  background: transparent;
+  color: #59685f;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+  padding: 0;
+}
+
+.shiftPage .absenceBadges b::before {
+  content: '';
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  left: -14px;
+  width: 5px;
+  border-radius: 4px;
+  background: #94a296;
+}
+
+.shiftPage .absenceSick { color: #87494f; }
+.shiftPage .absenceSick::before { background: #b76c74 !important; }
+.shiftPage .absenceTraining { color: #315f91; }
+.shiftPage .absenceTraining::before { background: var(--shift-day) !important; }
+
+.shiftPage .shiftEditor {
+  border: 1px solid #d9ddde;
+  border-radius: 10px;
+  background: #fffefb;
+  box-shadow: 0 28px 80px rgba(17, 31, 47, .18);
+  color: var(--shift-ink);
+}
+
+.shiftPage .cardHead { border-color: #e0e3e2; }
+.shiftPage .cardHead span,
+.shiftPage .fieldLegend,
+.shiftPage .shiftEditor label { color: #647181; }
+.shiftPage .cardHead h2 { color: var(--shift-ink); }
+
+.shiftPage .shiftModalClose {
+  border-color: #d5dadd;
+  background: transparent;
+  color: var(--shift-ink);
+}
+
+.shiftPage .segment,
+.shiftPage .segmentActive,
+.shiftPage .assignmentBtn,
+.shiftPage .assignmentActive {
+  border-color: #d7dcde;
+  background: #f7f7f3;
+  color: #46586c;
+  box-shadow: none;
+}
+
+.shiftPage .segment:hover { border-color: #9ca8b1; background: #f1f2ee; }
+.shiftPage .segmentActive {
+  border-color: var(--shift-blue);
+  background: #eaf1fb;
+  color: #174f96;
+}
+
+.shiftPage .shiftEditor[data-model='U'] .segmentActive,
+.shiftPage .shiftEditor[data-model='TZ'] .segmentActive {
+  border-color: #7c9482;
+  background: #eaf0eb;
+  box-shadow: none;
+  color: #415f4a;
+}
+
+.shiftPage .dutyPreview {
+  border-color: #dce1e1;
+  border-left-color: var(--shift-blue);
+  background: #f5f6f3;
+}
+
+.shiftPage .dutyPreview strong { color: var(--shift-ink); }
+.shiftPage .dutyPreview span,
+.shiftPage .savedAbsences { color: #6c7786; }
+
+.shiftPage .shiftEditor input {
+  border-color: #d6dcde;
+  background: #fff;
+  color: var(--shift-ink);
+}
+
+.shiftPage .assignmentActive {
+  border-color: #809787;
+  background: #eaf0eb;
+  color: #3e6148;
+}
+
+.shiftPage .savedAbsences button {
+  border-color: #c9d6cd;
+  background: #edf2ee;
+  color: #496554;
+}
+
+.shiftPage .actions button {
+  border-radius: 8px;
+  background: var(--shift-ink);
+  box-shadow: none;
+}
+
+.shiftPage .actions .ghostBtn {
+  border-color: #e0c9ca;
+  background: #faf0f0 !important;
+  color: #934b51 !important;
+}
+
+@media (max-width: 640px) {
+  .shiftPage {
+    padding: 22px max(10px, env(safe-area-inset-right, 0px)) max(36px, env(safe-area-inset-bottom, 0px)) max(10px, env(safe-area-inset-left, 0px));
+  }
+
+  .shiftPage .header { margin-bottom: 20px; }
+  .shiftPage .header h1 { font-size: clamp(34px, 10vw, 42px); }
+  .shiftPage .calendarPanel { border-radius: 8px; }
+
+  .shiftPage .monthBar {
+    grid-template-columns: 42px minmax(0, 1fr) 42px;
+    min-height: 78px;
+    padding: 12px 10px;
+  }
+
+  .shiftPage .monthBar strong { font-size: clamp(20px, 6vw, 25px); }
+  .shiftPage .weekHeader { min-height: 40px; font-size: 9px; }
+
+  .shiftPage .dayCell,
+  .shiftPage .emptyDay {
+    min-height: clamp(74px, 20vw, 92px);
+    padding: 7px 6px;
+  }
+
+  .shiftPage .dayCell { gap: 3px; }
+  .shiftPage .dayCell > .dayNumber { font-size: 12px; }
+  .shiftPage .dayCell strong { min-height: 20px; margin-top: 1px; font-size: 9px; padding-left: 8px; }
+  .shiftPage .dayCell strong::before { width: 3px; }
+  .shiftPage .dayCell em { padding-left: 8px; }
+  .shiftPage .dayCell .absenceBadges { padding-left: 8px; }
+  .shiftPage .absenceBadges b::before { left: -8px; width: 3px; }
+  .shiftPage .absenceBadges b,
+  .shiftPage .dayFree .absenceVacation,
+  .shiftPage .dayFree .absencePartTime { font-size: clamp(7px, 2.2vw, 9px); }
+  .shiftPage .dayToday::after { display: none; }
+  .shiftPage .dayActive { box-shadow: inset 0 0 0 2px var(--shift-blue); }
+  .shiftPage .shiftEditor { border-radius: 10px; }
+}
+
 @media print {
   @page {
     size: A4 portrait;
