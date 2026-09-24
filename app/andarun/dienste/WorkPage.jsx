@@ -665,6 +665,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
         ) : (
           <nav className={styles.findingsTabs} aria-label="Befunde Bereiche">
             <span className={styles.findingsTabActive} aria-current="page">Befundtimer</span>
+            <Link className={styles.findingsTab} href="/andarun/befunde/faelle">Interessante Befunde <span aria-hidden="true">↗</span></Link>
             <Link className={styles.findingsTab} href="/andarun/befunde/kontrolle">Befundkontrolle <span aria-hidden="true">↗</span></Link>
           </nav>
         )}

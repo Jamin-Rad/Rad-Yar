@@ -13,7 +13,7 @@ const spaces = [
   { number: '05', title: 'Gesundheit', description: 'Körper im Blick',     href: '/andarun/gesundheit', theme: 'mint',   icon: 'heart'     },
   { number: '06', title: 'Finanzen',   description: 'Sicher planen',       action: 'finance',            theme: 'cobalt', icon: 'chart'     },
   { number: '07', title: 'Dienste',    description: 'Dienstzeiten planen', href: '/andarun/dienste',    theme: 'mint',   icon: 'briefcase' },
-  { number: '08', title: 'Befunde',    description: 'Fälle & Fragen',      href: '/andarun/befunde',    theme: 'coral',  icon: 'file'      },
+  { number: '08', title: 'Befunde',    description: 'Archiv & Kontrolle',  href: '/andarun/befunde',    theme: 'coral',  icon: 'file'      },
   { number: '09', title: 'Test',       description: 'Lernseiten gestalten', href: '/andarun/test',       theme: 'cobalt', icon: 'test'      },
 ]
 

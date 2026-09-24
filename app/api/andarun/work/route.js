@@ -148,6 +148,13 @@ function sanitizeFinding(value) {
     vd: cleanText(value?.vd, 160),
     organ: cleanText(value?.organ, 100),
     question: cleanText(value?.question, 500),
+    keyFinding: cleanText(value?.keyFinding, 1000),
+    learningPoint: cleanText(value?.learningPoint, 1000),
+    tags: cleanText(value?.tags, 240),
+    dueDate: cleanDate(value?.dueDate),
+    priority: ['normal', 'hoch', 'dringend'].includes(value?.priority) ? value.priority : 'normal',
+    reviewReason: cleanText(value?.reviewReason, 1000),
+    reviewResult: cleanText(value?.reviewResult, 1000),
     status: cleanText(value?.status, 40) || 'offen',
     createdAt: value?.createdAt || new Date().toISOString(),
     updatedAt: new Date().toISOString(),
@@ -220,7 +227,9 @@ export async function POST(request) {
 
     if (body.type === 'finding') {
       const finding = sanitizeFinding(body.finding)
-      if (!finding.examDate && !finding.question) return NextResponse.json({ error: 'Befunddaten fehlen.' }, { status: 400 })
+      if (!finding.examDate && !finding.question && !finding.diagnosis && !finding.reviewReason) {
+        return NextResponse.json({ error: 'Befunddaten fehlen.' }, { status: 400 })
+      }
       const next = {
         ...state,
         findings: [finding, ...state.findings.filter(item => item.id !== finding.id)]

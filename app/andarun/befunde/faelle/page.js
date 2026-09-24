@@ -1,11 +1,11 @@
 import { redirect } from 'next/navigation'
 import { hasAndarunSession } from '@/lib/andarunPasswordAuth'
 import AndarunNav from '../../AndarunNav'
-import BefundKontrollePage from './BefundKontrollePage'
+import InteressanteBefundePage from './InteressanteBefundePage'
 
 export const metadata = {
-  title: 'Befundkontrolle · Andarun',
-  description: 'Offene Befundfragen mit Frist, Priorität und Status nachverfolgen',
+  title: 'Interessante Befunde · Andarun',
+  description: 'Interessante und wichtige radiologische Fälle als Wissensarchiv sammeln',
   robots: { index: false, follow: false },
 }
 
@@ -13,5 +13,5 @@ export const dynamic = 'force-dynamic'
 
 export default async function Page() {
   if (!(await hasAndarunSession())) redirect('/andarun/login')
-  return <><AndarunNav /><BefundKontrollePage /></>
+  return <><AndarunNav /><InteressanteBefundePage /></>
 }
