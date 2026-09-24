@@ -17,7 +17,7 @@ const DAILY_MODALITIES = [
 const SHIFT_TYPES = [
   { id: 'T', label: 'Tagdienst', short: 'T' },
   { id: 'S', label: 'Spätdienst', short: 'S' },
-  { id: 'BD', label: 'Tagdienst Freitag/WE/Ft', short: 'BD' },
+  { id: 'BD', label: 'Tagdienst Freitag/WE/Ft', short: 'Tag' },
   { id: 'N', label: 'Nachtdienst', short: 'Nacht' },
   { id: 'U', label: 'Urlaub', short: 'Urlaub' },
   { id: 'K', label: 'Krank', short: 'Krank' },
@@ -126,6 +126,7 @@ function calendarAbsenceLabel(model) {
 
 function calendarDutyLabel(shift) {
   if (shift?.model === 'N') return 'Nacht'
+  if (shift?.model === 'BD') return 'Tag'
   return shift?.duty || ''
 }
 
@@ -213,7 +214,7 @@ function normalizeShift(shift) {
   return {
     ...emptyShift(shift.date),
     ...shift,
-    assignment: shift.assignment || '',
+    assignment: shift.model === 'T' ? shift.assignment || '' : '',
   }
 }
 
@@ -268,6 +269,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
   const [timerDayModal, setTimerDayModal] = useState(null)
   const [editingTimerId, setEditingTimerId] = useState(null)
   const [timerEdit, setTimerEdit] = useState(null)
+  const [shiftModalOpen, setShiftModalOpen] = useState(false)
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(true)
 
@@ -286,6 +288,15 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
     const id = window.setTimeout(() => setTimerAddedMessage(''), 2200)
     return () => window.clearTimeout(id)
   }, [timerAddedMessage])
+
+  useEffect(() => {
+    if (!shiftModalOpen) return undefined
+    function closeOnEscape(event) {
+      if (event.key === 'Escape') setShiftModalOpen(false)
+    }
+    document.addEventListener('keydown', closeOnEscape)
+    return () => document.removeEventListener('keydown', closeOnEscape)
+  }, [shiftModalOpen])
 
   useEffect(() => {
     if (!timerStartedAt || !navigator?.wakeLock) return undefined
@@ -365,6 +376,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
     setRangeEndDate(date)
     const existing = shiftsByDate.get(date) || absencesByDate.get(date)?.[0]
     setShiftForm(existing ? normalizeShift(existing) : emptyShift(date))
+    setShiftModalOpen(true)
   }
 
   function updateShiftModel(model) {
@@ -380,7 +392,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
       ...resolved,
       actualStart: resolved.plannedStart,
       actualEnd: resolved.plannedEnd,
-      assignment: isAbsenceShift({ model }) ? '' : prev.assignment,
+      assignment: model === 'T' ? existing?.assignment || prev.assignment : '',
     }))
   }
 
@@ -408,17 +420,19 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
       const data = await apiRequest('/', 'POST', payload)
       setShifts((data.shifts || []).map(normalizeShift))
       setMessage(isAbsence ? 'Zeitraum gespeichert.' : 'Dienst gespeichert.')
+      setShiftModalOpen(false)
     } catch (error) {
       setMessage(error.message)
     }
   }
 
-  async function deleteShift(id) {
+  async function deleteShift(id, closeEditor = false) {
     try {
       const data = await apiRequest(`/?type=shift&id=${encodeURIComponent(id)}`, 'DELETE')
       setShifts((data.shifts || []).map(normalizeShift))
       const remaining = (data.shifts || []).map(normalizeShift)
       setShiftForm(remaining.find(item => item.date === selectedDate && !isAbsenceShift(item)) || emptyShift(selectedDate))
+      if (closeEditor) setShiftModalOpen(false)
     } catch (error) {
       setMessage(error.message)
     }
@@ -688,11 +702,12 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
               const isToday = day.date === todayValue()
               return (
                 <button
-                  className={`${styles.dayCell} ${active ? styles.dayActive : ''} ${shift ? styles.dayHasShift : ''} ${isDayShift ? styles.dayDayShift : ''} ${isLateShift ? styles.dayLateShift : ''} ${isNight ? styles.dayNightShift : ''} ${isWeekendDayShift ? styles.dayWeekendShift : ''} ${isFree ? styles.dayFree : ''} ${hasVacation || hasPartTime ? styles.dayLeave : ''} ${isToday ? styles.dayToday : ''}`}
+                  className={`${styles.dayCell} ${active ? styles.dayActive : ''} ${shift ? styles.dayHasShift : ''} ${isDayShift ? styles.dayDayShift : ''} ${isLateShift ? styles.dayLateShift : ''} ${isNight ? styles.dayNightShift : ''} ${isWeekendDayShift ? styles.dayWeekendShift : ''} ${isFree ? styles.dayFree : ''} ${hasPartTime ? styles.dayLeave : ''} ${hasVacation && !hasPartTime ? styles.dayVacation : ''} ${isToday ? styles.dayToday : ''}`}
                   type="button"
                   key={day.date}
                   onClick={() => selectDate(day.date)}
                   aria-current={isToday ? 'date' : undefined}
+                  aria-label={`${day.day}. ${monthLabel(month)} bearbeiten`}
                 >
                   <span className={styles.dayNumber}>{day.day}</span>
                   {shift && <strong>{calendarDutyLabel(shift)}</strong>}
@@ -724,11 +739,24 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
           </div>
         </div>
 
-        <form className={styles.shiftEditor} data-model={shiftForm.model} onSubmit={saveShift}>
-          <div className={styles.cardHead}>
-            <span>{WEEKDAYS_LONG[parseDate(shiftForm.date).getDay()]}</span>
-            <h2>{new Date(`${shiftForm.date}T12:00:00`).toLocaleDateString('de-DE')}</h2>
-          </div>
+        {shiftModalOpen && (
+          <div className={styles.modalBackdrop} role="presentation" onMouseDown={() => setShiftModalOpen(false)}>
+            <form
+              className={`${styles.shiftEditor} ${styles.shiftModal}`}
+              data-model={shiftForm.model}
+              onSubmit={saveShift}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="shift-modal-title"
+              onMouseDown={event => event.stopPropagation()}
+            >
+              <div className={styles.cardHead}>
+                <div>
+                  <span>{WEEKDAYS_LONG[parseDate(shiftForm.date).getDay()]}</span>
+                  <h2 id="shift-modal-title">{new Date(`${shiftForm.date}T12:00:00`).toLocaleDateString('de-DE')}</h2>
+                </div>
+                <button className={styles.shiftModalClose} type="button" onClick={() => setShiftModalOpen(false)} aria-label="Fenster schließen">×</button>
+              </div>
 
           <span className={styles.fieldLegend}>Dienst</span>
           <div className={styles.segmented}>
@@ -745,7 +773,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
           </div>
 
           <div className={styles.dutyPreview}>
-            <strong>{shiftForm.duty || '—'}</strong>
+            <strong>{calendarDutyLabel(shiftForm) || '—'}</strong>
             <span>{timeRange(shiftForm.plannedStart, shiftForm.plannedEnd)}</span>
           </div>
 
@@ -780,18 +808,20 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
                   <input type="time" value={shiftForm.actualEnd} onChange={event => setShiftForm(prev => ({ ...prev, actualEnd: event.target.value }))} />
                 </label>
               </div>
-              <div className={styles.assignmentPicker}>
-                {DAILY_MODALITIES.map(item => (
-                  <button
-                    key={item.id}
-                    type="button"
-                    className={shiftForm.assignment === item.id ? styles.assignmentActive : styles.assignmentBtn}
-                    onClick={() => setShiftForm(prev => ({ ...prev, assignment: prev.assignment === item.id ? '' : item.id }))}
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </div>
+              {shiftForm.model === 'T' && (
+                <div className={styles.assignmentPicker}>
+                  {DAILY_MODALITIES.map(item => (
+                    <button
+                      key={item.id}
+                      type="button"
+                      className={shiftForm.assignment === item.id ? styles.assignmentActive : styles.assignmentBtn}
+                      onClick={() => setShiftForm(prev => ({ ...prev, assignment: prev.assignment === item.id ? '' : item.id }))}
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+              )}
             </>
           )}
           <label className={styles.fullLabel}>Notiz
@@ -810,10 +840,12 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
           <div className={styles.actions}>
             <button type="submit">Speichern</button>
             {shifts.some(item => item.id === shiftForm.id) && (
-              <button type="button" className={styles.ghostBtn} onClick={() => deleteShift(shiftForm.id || shiftForm.date)}>Löschen</button>
+              <button type="button" className={styles.ghostBtn} onClick={() => deleteShift(shiftForm.id || shiftForm.date, true)}>Löschen</button>
             )}
           </div>
-        </form>
+            </form>
+          </div>
+        )}
       </section>}
 
       {showFindings && <section className={styles.findings}>

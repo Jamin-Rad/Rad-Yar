@@ -297,6 +297,18 @@
   color: #dcfce7;
 }
 
+.dayVacation {
+  border-color: rgba(134, 239, 172, .30);
+  background:
+    radial-gradient(circle at 18% 20%, rgba(220, 252, 231, .18), transparent 30%),
+    linear-gradient(135deg, rgba(34, 197, 94, .11), rgba(15, 118, 110, .07)),
+    rgba(6, 78, 59, .10);
+}
+
+.dayVacation > .dayNumber {
+  color: #bbf7d0;
+}
+
 .dayToday {
   border-color: #22d3ee;
   box-shadow:
@@ -348,8 +360,8 @@
 }
 
 .absenceVacation {
-  background: rgba(250, 204, 21, .24);
-  color: #fef08a;
+  background: rgba(74, 222, 128, .14);
+  color: #bbf7d0;
 }
 
 .absenceSick {
@@ -401,6 +413,34 @@
 .cardHead h2 {
   margin: 5px 0 14px;
   font-size: 25px;
+}
+
+.shiftModal {
+  width: min(760px, 100%);
+  max-height: min(90vh, 760px);
+  overflow-y: auto;
+  padding: clamp(18px, 3vw, 28px);
+}
+
+.shiftModal .cardHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.shiftModalClose {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(148, 163, 184, .22);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .10);
+  color: #f8fafc;
+  cursor: pointer;
+  font: inherit;
+  font-size: 24px;
+  line-height: 1;
 }
 
 .segmented {
@@ -2037,7 +2077,7 @@
 }
 
 .shiftPage .shell {
-  grid-template-columns: minmax(0, 1fr) minmax(340px, 400px);
+  grid-template-columns: minmax(0, 1fr);
   gap: 22px;
   align-items: start;
   max-width: 1440px;
@@ -2221,6 +2261,17 @@
 .shiftPage .dayLeave small,
 .shiftPage .dayLeave em { color: #fff; }
 
+.shiftPage .dayVacation {
+  border: 0;
+  background: linear-gradient(145deg, #e7f7ee 0%, #d9f1e4 100%);
+  box-shadow: inset 4px 0 0 #68b88f;
+}
+
+.shiftPage .dayVacation > .dayNumber,
+.shiftPage .dayVacation strong,
+.shiftPage .dayVacation small,
+.shiftPage .dayVacation em { color: #256846; }
+
 .shiftPage .dayActive {
   z-index: 3;
   border: 0;
@@ -2295,8 +2346,8 @@
 }
 
 .shiftPage .shiftEditor {
-  position: sticky;
-  top: 72px;
+  position: relative;
+  top: auto;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 18px;
