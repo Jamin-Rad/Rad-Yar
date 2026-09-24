@@ -1955,6 +1955,537 @@
   display: none;
 }
 
+/* Dienste redesign: editorial calendar + focused editing rail */
+.shiftPage {
+  --shift-paper: #f8fbff;
+  --shift-ink: #10233f;
+  --shift-muted: #66758c;
+  --shift-rule: #d8e1eb;
+  --shift-blue: #2878f0;
+  --shift-green: #118153;
+  min-height: 100vh;
+  padding: clamp(28px, 4.2vw, 64px) clamp(18px, 4vw, 58px) max(56px, env(safe-area-inset-bottom, 0px));
+  background:
+    radial-gradient(circle at 82% 6%, rgba(57, 119, 183, .16), transparent 26%),
+    linear-gradient(145deg, #08182b 0%, #0b2038 54%, #071424 100%);
+}
+
+.shiftPage .header {
+  grid-template-columns: minmax(0, 1fr) auto;
+  max-width: 1440px;
+  margin-bottom: 26px;
+}
+
+.shiftPage .header > span:empty { display: none; }
+
+.shiftPage .header h1 {
+  margin: 0;
+  color: #f8fbff;
+  font-size: clamp(52px, 5.4vw, 82px);
+  font-weight: 650;
+  letter-spacing: -.045em;
+  line-height: .92;
+}
+
+.shiftPage .printBtn {
+  display: inline-flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid rgba(163, 190, 219, .34);
+  border-radius: 10px;
+  background: rgba(20, 46, 77, .78);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06);
+  color: #f6f9fc;
+  padding: 0 18px;
+  transition: border-color .18s ease, background .18s ease, transform .18s ease;
+}
+
+.shiftPage .printBtn:hover {
+  border-color: rgba(134, 186, 240, .62);
+  background: rgba(29, 63, 101, .92);
+  transform: translateY(-1px);
+}
+
+.shiftPage .printBtn:focus-visible,
+.shiftPage .monthBar button:focus-visible,
+.shiftPage .dayCell:focus-visible,
+.shiftPage .segment:focus-visible,
+.shiftPage .segmentActive:focus-visible,
+.shiftPage .assignmentBtn:focus-visible,
+.shiftPage .assignmentActive:focus-visible,
+.shiftPage .actions button:focus-visible {
+  outline: 3px solid rgba(96, 165, 250, .72);
+  outline-offset: 3px;
+}
+
+.shiftPage .printBtn svg {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+}
+
+.printLabelShort { display: none; }
+
+.shiftPage .message {
+  max-width: 1440px;
+  border-color: rgba(111, 220, 167, .32);
+  border-radius: 10px;
+  background: rgba(23, 112, 75, .22);
+  color: #c8f7df;
+}
+
+.shiftPage .shell {
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 400px);
+  gap: 22px;
+  align-items: start;
+  max-width: 1440px;
+  margin-bottom: 0;
+}
+
+.shiftPage .calendarPanel,
+.shiftPage .shiftEditor {
+  border-radius: 16px;
+  box-shadow: 0 28px 80px rgba(1, 8, 18, .28);
+}
+
+.shiftPage .calendarPanel {
+  min-width: 0;
+  border: 1px solid rgba(223, 231, 240, .92);
+  background: var(--shift-paper);
+  color: var(--shift-ink);
+  padding: 22px;
+}
+
+.shiftPage .monthBar {
+  grid-template-columns: 48px minmax(0, 1fr) 48px;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.shiftPage .monthBar button {
+  display: grid;
+  min-height: 48px;
+  place-items: center;
+  border: 1px solid #cfdae7;
+  border-radius: 10px;
+  background: #f4f8fc;
+  color: var(--shift-ink);
+  transition: background .16s ease, border-color .16s ease, transform .16s ease;
+}
+
+.shiftPage .monthBar button:hover {
+  border-color: #9db1c8;
+  background: #eaf1f8;
+  transform: translateY(-1px);
+}
+
+.shiftPage .monthBar button svg { width: 22px; height: 22px; }
+
+.shiftPage .monthBar strong {
+  color: var(--shift-ink);
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(25px, 2.5vw, 38px);
+  font-weight: 650;
+  letter-spacing: -.025em;
+}
+
+.shiftPage .weekHeader,
+.shiftPage .calendarGrid {
+  gap: 1px;
+}
+
+.shiftPage .weekHeader {
+  margin: 0 0 10px;
+  color: #556880;
+  font-size: 12px;
+  letter-spacing: .06em;
+}
+
+.shiftPage .calendarGrid {
+  overflow: hidden;
+  border: 1px solid var(--shift-rule);
+  border-radius: 12px;
+  background: var(--shift-rule);
+}
+
+.shiftPage .dayCell,
+.shiftPage .emptyDay {
+  min-width: 0;
+  min-height: clamp(100px, 8.1vw, 122px);
+  border: 0;
+  border-radius: 0;
+  background: #fbfdff;
+}
+
+.shiftPage .emptyDay {
+  background:
+    linear-gradient(135deg, rgba(222, 231, 241, .26), transparent 52%),
+    #f2f6fa;
+}
+
+.shiftPage .dayCell {
+  align-content: start;
+  gap: 6px;
+  color: var(--shift-ink);
+  padding: 10px;
+  isolation: isolate;
+  transition: box-shadow .16s ease, filter .16s ease;
+}
+
+.shiftPage .dayCell:hover {
+  z-index: 2;
+  box-shadow: inset 0 0 0 2px rgba(40, 120, 240, .34);
+  filter: brightness(.985);
+}
+
+.shiftPage .dayCell > .dayNumber {
+  color: #31445d;
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.shiftPage .dayCell strong {
+  width: fit-content;
+  max-width: 100%;
+  border-radius: 6px;
+  background: transparent;
+  color: #17375f;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.1;
+  padding: 0;
+}
+
+.shiftPage .dayCell small {
+  color: #52677f;
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+
+.shiftPage .dayCell em {
+  color: #486685;
+  font-size: 9px;
+}
+
+.shiftPage .dayHasShift { background: #eef6ff; }
+.shiftPage .dayDayShift { background: #eaf4ff; }
+.shiftPage .dayDayShift strong { color: #1e5fa7; }
+
+.shiftPage .dayLateShift {
+  border: 0;
+  background: #fff0ed;
+  box-shadow: inset 4px 0 0 #e77566;
+}
+
+.shiftPage .dayLateShift strong { color: #a64033; }
+
+.shiftPage .dayNightShift {
+  border: 0;
+  background: #fff3d6;
+  box-shadow: inset 4px 0 0 #e2a33d;
+}
+
+.shiftPage .dayNightShift strong,
+.shiftPage .dayNightShift small,
+.shiftPage .dayNightShift em { color: #76511d; }
+
+.shiftPage .dayWeekendShift {
+  border: 0;
+  background: #f1edff;
+  box-shadow: inset 4px 0 0 #9280dc;
+}
+
+.shiftPage .dayWeekendShift strong,
+.shiftPage .dayWeekendShift small,
+.shiftPage .dayWeekendShift em { color: #504184; }
+
+.shiftPage .dayFree {
+  border: 0;
+  background: #eef9f3;
+  box-shadow: none;
+}
+
+.shiftPage .dayLeave {
+  border: 0;
+  background: linear-gradient(145deg, #24a869 0%, #137f52 58%, #0e6d47 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18);
+  color: #fff;
+}
+
+.shiftPage .dayLeave > .dayNumber,
+.shiftPage .dayLeave strong,
+.shiftPage .dayLeave small,
+.shiftPage .dayLeave em { color: #fff; }
+
+.shiftPage .dayActive {
+  z-index: 3;
+  border: 0;
+  box-shadow:
+    inset 0 0 0 3px var(--shift-blue),
+    inset 0 0 0 5px rgba(255, 255, 255, .72);
+}
+
+.shiftPage .dayToday {
+  border: 0;
+  box-shadow:
+    inset 0 0 0 2px #1f87f5,
+    0 0 0 3px rgba(31, 135, 245, .14);
+}
+
+.shiftPage .dayToday.dayActive {
+  box-shadow:
+    inset 0 0 0 3px var(--shift-blue),
+    inset 0 0 0 5px rgba(255, 255, 255, .72),
+    0 0 0 3px rgba(31, 135, 245, .14);
+}
+
+.shiftPage .dayToday::after {
+  top: 8px;
+  right: 8px;
+  background: #1f78df;
+  color: #fff;
+}
+
+.shiftPage .dayToday > .dayNumber {
+  display: inline;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+}
+
+.shiftPage .dayCell .absenceBadges {
+  display: grid;
+  gap: 3px;
+  margin-top: auto;
+}
+
+.shiftPage .absenceBadges b {
+  width: fit-content;
+  max-width: 100%;
+  border-radius: 4px;
+  font-size: 10px;
+  line-height: 1.15;
+  overflow: hidden;
+  padding: 4px 6px;
+  text-overflow: ellipsis;
+}
+
+.shiftPage .dayLeave .absenceVacation,
+.shiftPage .dayLeave .absencePartTime {
+  background: transparent;
+  color: #fff;
+  font-size: 12px;
+  padding: 0;
+}
+
+.shiftPage .absenceSick {
+  background: #fee2e2;
+  color: #9f2d39;
+}
+
+.shiftPage .absenceTraining {
+  background: #dbeafe;
+  color: #1d5f9f;
+}
+
+.shiftPage .shiftEditor {
+  position: sticky;
+  top: 72px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  border: 1px solid rgba(150, 184, 218, .26);
+  background:
+    linear-gradient(155deg, rgba(21, 49, 80, .96), rgba(9, 29, 52, .98)),
+    #0b2038;
+  padding: 26px;
+}
+
+.shiftPage .shiftEditor .cardHead,
+.shiftPage .shiftEditor .fullLabel,
+.shiftPage .shiftEditor .savedAbsences,
+.shiftPage .shiftEditor .actions {
+  grid-column: auto;
+}
+
+.shiftPage .cardHead {
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(163, 190, 219, .24);
+}
+
+.shiftPage .cardHead span {
+  color: #9bc8f3;
+  font-size: 11px;
+  letter-spacing: .12em;
+}
+
+.shiftPage .cardHead h2 {
+  margin: 7px 0 0;
+  color: #f8fbff;
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: clamp(27px, 2.5vw, 36px);
+  font-weight: 620;
+  letter-spacing: -.025em;
+  line-height: 1.02;
+}
+
+.fieldLegend {
+  margin-bottom: -10px;
+  color: #b8c9dc;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.shiftPage .segmented {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.shiftPage .segment,
+.shiftPage .segmentActive {
+  min-height: 48px;
+  border: 1px solid rgba(167, 193, 221, .34);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, .035);
+  color: #d9e3ef;
+  font-size: 12px;
+  transition: border-color .16s ease, background .16s ease, color .16s ease, transform .16s ease;
+}
+
+.shiftPage .segment:hover {
+  border-color: rgba(151, 197, 242, .62);
+  background: rgba(108, 164, 220, .10);
+  transform: translateY(-1px);
+}
+
+.shiftPage .segmentActive {
+  border-color: #4f96ff;
+  background: linear-gradient(135deg, #2e78ec, #2462d1);
+  box-shadow: 0 8px 22px rgba(23, 89, 191, .24);
+  color: #fff;
+}
+
+.shiftPage .shiftEditor[data-model='U'] .segmentActive,
+.shiftPage .shiftEditor[data-model='TZ'] .segmentActive {
+  border-color: #5fd49b;
+  background: linear-gradient(135deg, #1c9a62, #11744b);
+  box-shadow: 0 8px 22px rgba(11, 113, 71, .28);
+}
+
+.shiftPage .dutyPreview {
+  min-height: 62px;
+  margin: 0;
+  border: 1px solid rgba(151, 184, 217, .22);
+  border-left: 4px solid #438cf0;
+  border-radius: 9px;
+  background: rgba(3, 17, 34, .32);
+  padding: 12px 14px;
+}
+
+.shiftPage .dutyPreview strong {
+  color: #f7fbff;
+  font-size: 20px;
+}
+
+.shiftPage .dutyPreview span {
+  color: #aebfd1;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.shiftPage .formGrid,
+.shiftPage .assignmentPicker {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.shiftPage .assignmentPicker {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.shiftPage .shiftEditor label {
+  gap: 8px;
+  color: #b8c9dc;
+  font-size: 10px;
+  letter-spacing: .08em;
+}
+
+.shiftPage .shiftEditor input {
+  min-width: 0;
+  min-height: 50px;
+  border-color: rgba(163, 190, 219, .30);
+  border-radius: 9px;
+  background: rgba(4, 20, 38, .56);
+  color: #fff;
+  padding: 0 13px;
+}
+
+.shiftPage .shiftEditor input:focus {
+  outline: none;
+  border-color: #4d96ef;
+  box-shadow: 0 0 0 3px rgba(77, 150, 239, .16);
+}
+
+.shiftPage .assignmentBtn,
+.shiftPage .assignmentActive {
+  min-height: 44px;
+  border-color: rgba(163, 190, 219, .28);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .035);
+  color: #cad8e6;
+  font-size: 11px;
+}
+
+.shiftPage .assignmentActive {
+  border-color: rgba(95, 212, 155, .64);
+  background: rgba(37, 168, 105, .16);
+  color: #bdf4d7;
+}
+
+.shiftPage .fullLabel { margin-top: 0; }
+
+.shiftPage .savedAbsences {
+  margin-top: 0;
+  color: #aebfd1;
+}
+
+.shiftPage .savedAbsences button {
+  border-color: rgba(109, 216, 165, .32);
+  background: rgba(31, 145, 92, .16);
+  color: #c6f6dd;
+}
+
+.shiftPage .actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.shiftPage .actions button {
+  min-height: 52px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #2d7ef6, #2865da);
+  box-shadow: 0 12px 26px rgba(25, 91, 194, .26);
+  color: #fff;
+  font-size: 14px;
+}
+
+.shiftPage .actions .ghostBtn {
+  border: 1px solid rgba(244, 149, 149, .26);
+  background: rgba(173, 53, 62, .12) !important;
+  color: #f7c7cb !important;
+}
+
 @media (max-width: 980px) {
   .header,
   .shell,
@@ -1998,6 +2529,18 @@
 
   .modalHead h3 {
     font-size: clamp(28px, 7vw, 42px);
+  }
+
+  .shiftPage .header {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .shiftPage .shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .shiftPage .shiftEditor {
+    position: static;
   }
 }
 
@@ -2115,6 +2658,157 @@
 
   .timerHistoryDay {
     grid-template-rows: 190px auto auto;
+  }
+
+  .shiftPage {
+    padding: 28px max(12px, env(safe-area-inset-right, 0px)) max(40px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
+  }
+
+  .shiftPage .header {
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+
+  .shiftPage .header h1 {
+    font-size: clamp(38px, 11vw, 46px);
+  }
+
+  .shiftPage .printBtn {
+    min-width: 64px;
+    min-height: 48px;
+    padding: 0 12px;
+  }
+
+  .shiftPage .printLabelLong { display: none; }
+  .shiftPage .printLabelShort { display: inline; }
+
+  .shiftPage .shell { gap: 18px; }
+
+  .shiftPage .calendarPanel {
+    border-radius: 14px;
+    padding: 10px;
+  }
+
+  .shiftPage .monthBar {
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .shiftPage .monthBar button {
+    min-height: 44px;
+  }
+
+  .shiftPage .monthBar strong {
+    font-size: clamp(21px, 6.5vw, 28px);
+  }
+
+  .shiftPage .weekHeader {
+    margin-bottom: 7px;
+    font-size: 9px;
+  }
+
+  .shiftPage .calendarGrid,
+  .shiftPage .weekHeader {
+    gap: 1px;
+  }
+
+  .shiftPage .dayCell,
+  .shiftPage .emptyDay {
+    min-height: clamp(68px, 18vw, 82px);
+    padding: 5px;
+  }
+
+  .shiftPage .dayCell {
+    gap: 4px;
+  }
+
+  .shiftPage .dayCell > .dayNumber {
+    font-size: 12px;
+  }
+
+  .shiftPage .dayCell strong {
+    font-size: 9px;
+  }
+
+  .shiftPage .dayCell small {
+    display: none;
+  }
+
+  .shiftPage .dayCell em {
+    font-size: 8px;
+  }
+
+  .shiftPage .dayToday::after {
+    display: none;
+  }
+
+  .shiftPage .dayCell .absenceBadges {
+    width: 100%;
+    gap: 2px;
+  }
+
+  .shiftPage .absenceBadges b,
+  .shiftPage .dayLeave .absenceVacation,
+  .shiftPage .dayLeave .absencePartTime {
+    max-width: 100%;
+    font-size: clamp(7px, 2.2vw, 9px);
+    letter-spacing: -.02em;
+    overflow: visible;
+    padding: 0;
+    text-overflow: clip;
+    white-space: nowrap;
+  }
+
+  .shiftPage .dayLateShift,
+  .shiftPage .dayNightShift,
+  .shiftPage .dayWeekendShift {
+    box-shadow: none;
+  }
+
+  .shiftPage .dayActive {
+    box-shadow:
+      inset 0 0 0 2px var(--shift-blue),
+      inset 0 0 0 4px rgba(255, 255, 255, .72);
+  }
+
+  .shiftPage .shiftEditor {
+    gap: 16px;
+    border-radius: 14px;
+    padding: 20px;
+  }
+
+  .shiftPage .cardHead {
+    padding-bottom: 16px;
+  }
+
+  .shiftPage .cardHead h2 {
+    font-size: clamp(28px, 8.4vw, 36px);
+  }
+
+  .shiftPage .segmented {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .shiftPage .segment,
+  .shiftPage .segmentActive {
+    min-width: 0;
+    min-height: 48px;
+    font-size: clamp(9px, 2.8vw, 12px);
+    padding: 0 4px;
+  }
+
+  .shiftPage .formGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .shiftPage .assignmentPicker {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .shiftPage .actions {
+    grid-template-columns: minmax(0, 1fr);
   }
 
 }

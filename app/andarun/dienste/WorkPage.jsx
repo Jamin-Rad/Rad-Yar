@@ -25,6 +25,25 @@ const SHIFT_TYPES = [
   { id: 'TZ', label: 'Teilzeitarbeit', short: 'Teilzeit' },
 ]
 
+function ChevronIcon({ direction }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d={direction === 'left' ? 'm15 18-6-6 6-6' : 'm9 18 6-6-6-6'} />
+    </svg>
+  )
+}
+
+function PrintIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M6 9V3h9l3 3v3" />
+      <path d="M15 3v4h4" />
+      <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+      <path d="M6 14h12v7H6z" />
+    </svg>
+  )
+}
+
 function todayValue() {
   return dateValue(new Date())
 }
@@ -99,6 +118,10 @@ function absenceLabel(model) {
   if (model === 'F') return 'Fortbildung'
   if (model === 'TZ') return 'Teilzeitarbeit'
   return 'Urlaub'
+}
+
+function calendarAbsenceLabel(model) {
+  return model === 'TZ' ? 'Teilzeit' : absenceLabel(model)
 }
 
 function calendarDutyLabel(shift) {
@@ -612,14 +635,20 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
   }
 
   return (
-    <main className={`${styles.page} ${showFindings && !showShifts ? styles.findingsPage : ''}`}>
+    <main className={`${styles.page} ${showShifts && !showFindings ? styles.shiftPage : ''} ${showFindings && !showShifts ? styles.findingsPage : ''}`}>
       <header className={styles.header}>
         {showHomeLink ? <Link href="/andarun" className={styles.back}>← Andarun</Link> : <span />}
         <div>
-          <span className={styles.kicker}>{showFindings && !showShifts ? 'Befunde' : 'Dienstplanung'}</span>
+          {showFindings && !showShifts ? <span className={styles.kicker}>Befunde</span> : null}
           <h1>{showFindings && !showShifts ? 'Befunde' : 'Dienstzeiten'}</h1>
         </div>
-        {showShifts ? <button className={styles.printBtn} type="button" onClick={printMonth}>PDF drucken</button> : (
+        {showShifts ? (
+          <button className={styles.printBtn} type="button" onClick={printMonth}>
+            <PrintIcon />
+            <span className={styles.printLabelLong}>PDF drucken</span>
+            <span className={styles.printLabelShort}>PDF</span>
+          </button>
+        ) : (
           <nav className={styles.findingsTabs} aria-label="Befunde Bereiche">
             <span className={styles.findingsTabActive} aria-current="page">Befundtimer</span>
             <Link className={styles.findingsTab} href="/andarun/befunde/kontrolle">Befundkontrolle <span aria-hidden="true">↗</span></Link>
@@ -632,9 +661,9 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
       {showShifts && <section className={styles.shell}>
         <div className={styles.calendarPanel}>
           <div className={styles.monthBar}>
-            <button type="button" onClick={() => setMonth(addMonths(month, -1))}>‹</button>
+            <button type="button" onClick={() => setMonth(addMonths(month, -1))} aria-label="Vorheriger Monat"><ChevronIcon direction="left" /></button>
             <strong>{monthLabel(month)}</strong>
-            <button type="button" onClick={() => setMonth(addMonths(month, 1))}>›</button>
+            <button type="button" onClick={() => setMonth(addMonths(month, 1))} aria-label="Nächster Monat"><ChevronIcon direction="right" /></button>
           </div>
 
           <div className={styles.weekHeader}>
@@ -648,15 +677,18 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
               const previousShift = shiftsByDate.get(previousDateValue(day.date))
               const isWeekendFree = !shift && (day.weekday === 0 || day.weekday === 6)
               const isPostNightFree = !shift && day.weekday >= 1 && day.weekday <= 5 && isNightShift(previousShift)
+              const hasVacation = absences.some(absence => absence.model === 'U')
               const hasPartTime = absences.some(absence => absence.model === 'TZ')
               const isNight = isNightShift(shift)
-              const isWeekendDayShift = shift?.model === 'BD' && (day.weekday === 0 || day.weekday === 6)
+              const isDayShift = shift?.model === 'T'
+              const isLateShift = shift?.model === 'S'
+              const isWeekendDayShift = shift?.model === 'BD'
               const isFree = isWeekendFree || isPostNightFree || hasPartTime
               const active = day.date === selectedDate
               const isToday = day.date === todayValue()
               return (
                 <button
-                  className={`${styles.dayCell} ${active ? styles.dayActive : ''} ${shift ? styles.dayHasShift : ''} ${isNight ? styles.dayNightShift : ''} ${isWeekendDayShift ? styles.dayWeekendShift : ''} ${isFree ? styles.dayFree : ''} ${isToday ? styles.dayToday : ''}`}
+                  className={`${styles.dayCell} ${active ? styles.dayActive : ''} ${shift ? styles.dayHasShift : ''} ${isDayShift ? styles.dayDayShift : ''} ${isLateShift ? styles.dayLateShift : ''} ${isNight ? styles.dayNightShift : ''} ${isWeekendDayShift ? styles.dayWeekendShift : ''} ${isFree ? styles.dayFree : ''} ${hasVacation || hasPartTime ? styles.dayLeave : ''} ${isToday ? styles.dayToday : ''}`}
                   type="button"
                   key={day.date}
                   onClick={() => selectDate(day.date)}
@@ -681,7 +713,7 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
                           }
                           key={absence.id}
                         >
-                          {absenceLabel(absence.model)}
+                          {calendarAbsenceLabel(absence.model)}
                         </b>
                       ))}
                     </span>
@@ -692,12 +724,13 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
           </div>
         </div>
 
-        <form className={styles.shiftEditor} onSubmit={saveShift}>
+        <form className={styles.shiftEditor} data-model={shiftForm.model} onSubmit={saveShift}>
           <div className={styles.cardHead}>
             <span>{WEEKDAYS_LONG[parseDate(shiftForm.date).getDay()]}</span>
             <h2>{new Date(`${shiftForm.date}T12:00:00`).toLocaleDateString('de-DE')}</h2>
           </div>
 
+          <span className={styles.fieldLegend}>Dienst</span>
           <div className={styles.segmented}>
             {SHIFT_TYPES.map(type => (
               <button
