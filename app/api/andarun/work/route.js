@@ -43,7 +43,7 @@ function cleanTime(value) {
 }
 
 function isAbsenceModel(model) {
-  return model === 'U' || model === 'K' || model === 'F'
+  return model === 'U' || model === 'K' || model === 'F' || model === 'TZ'
 }
 
 function canonicalShiftId(date, model) {

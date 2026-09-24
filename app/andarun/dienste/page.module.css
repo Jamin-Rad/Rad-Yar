@@ -362,6 +362,11 @@
   color: #bfdbfe;
 }
 
+.absencePartTime {
+  background: rgba(134, 239, 172, .24);
+  color: #dcfce7;
+}
+
 .savedAbsences {
   display: flex;
   align-items: center;
