@@ -37,6 +37,7 @@ const SHIFT_TYPES = [
   { id: 'U', label: 'Urlaub', short: 'Urlaub' },
   { id: 'K', label: 'Krank', short: 'Krank' },
   { id: 'F', label: 'Fortbildung', short: 'Fortbildung' },
+  { id: 'TZ', label: 'Teilzeitarbeit', short: 'Teilzeit' },
 ]
 
 function todayValue() {
@@ -105,12 +106,13 @@ function isNightShift(shift) {
 }
 
 function isAbsenceShift(shift) {
-  return shift?.model === 'U' || shift?.model === 'K' || shift?.model === 'F'
+  return shift?.model === 'U' || shift?.model === 'K' || shift?.model === 'F' || shift?.model === 'TZ'
 }
 
 function absenceLabel(model) {
   if (model === 'K') return 'Krank'
   if (model === 'F') return 'Fortbildung'
+  if (model === 'TZ') return 'Teilzeitarbeit'
   return 'Urlaub'
 }
 
@@ -134,6 +136,7 @@ function resolveDuty(dateValueText, type) {
   if (type === 'U') return { duty: 'Urlaub', plannedStart: '', plannedEnd: '' }
   if (type === 'K') return { duty: 'Krank', plannedStart: '', plannedEnd: '' }
   if (type === 'F') return { duty: 'Fortbildung', plannedStart: '', plannedEnd: '' }
+  if (type === 'TZ') return { duty: 'Teilzeitarbeit', plannedStart: '', plannedEnd: '' }
   return { duty: '', plannedStart: '', plannedEnd: '' }
 }
 
@@ -850,9 +853,10 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
               const previousShift = shiftsByDate.get(previousDateValue(day.date))
               const isWeekendFree = !shift && (day.weekday === 0 || day.weekday === 6)
               const isPostNightFree = !shift && day.weekday >= 1 && day.weekday <= 5 && isNightShift(previousShift)
+              const hasPartTime = absences.some(absence => absence.model === 'TZ')
               const isNight = isNightShift(shift)
               const isWeekendDayShift = shift?.model === 'BD' && (day.weekday === 0 || day.weekday === 6)
-              const isFree = isWeekendFree || isPostNightFree
+              const isFree = isWeekendFree || isPostNightFree || hasPartTime
               const active = day.date === selectedDate
               const isToday = day.date === todayValue()
               return (
@@ -876,7 +880,9 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
                               ? styles.absenceSick
                               : absence.model === 'F'
                                 ? styles.absenceTraining
-                                : styles.absenceVacation
+                                : absence.model === 'TZ'
+                                  ? styles.absencePartTime
+                                  : styles.absenceVacation
                           }
                           key={absence.id}
                         >
