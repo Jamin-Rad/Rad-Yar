@@ -2245,32 +2245,14 @@
 
 .shiftPage .dayFree {
   border: 0;
-  background: #eef9f3;
+  background: #c3d2c7;
   box-shadow: none;
 }
 
-.shiftPage .dayLeave {
-  border: 0;
-  background: linear-gradient(145deg, #24a869 0%, #137f52 58%, #0e6d47 100%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18);
-  color: #fff;
-}
-
-.shiftPage .dayLeave > .dayNumber,
-.shiftPage .dayLeave strong,
-.shiftPage .dayLeave small,
-.shiftPage .dayLeave em { color: #fff; }
-
-.shiftPage .dayVacation {
-  border: 0;
-  background: linear-gradient(145deg, #e7f7ee 0%, #d9f1e4 100%);
-  box-shadow: inset 4px 0 0 #68b88f;
-}
-
-.shiftPage .dayVacation > .dayNumber,
-.shiftPage .dayVacation strong,
-.shiftPage .dayVacation small,
-.shiftPage .dayVacation em { color: #256846; }
+.shiftPage .dayFree > .dayNumber,
+.shiftPage .dayFree strong,
+.shiftPage .dayFree small,
+.shiftPage .dayFree em { color: #294638; }
 
 .shiftPage .dayActive {
   z-index: 3;
@@ -2327,10 +2309,10 @@
   text-overflow: ellipsis;
 }
 
-.shiftPage .dayLeave .absenceVacation,
-.shiftPage .dayLeave .absencePartTime {
+.shiftPage .dayFree .absenceVacation,
+.shiftPage .dayFree .absencePartTime {
   background: transparent;
-  color: #fff;
+  color: #294638;
   font-size: 12px;
   padding: 0;
 }
@@ -2800,8 +2782,8 @@
   }
 
   .shiftPage .absenceBadges b,
-  .shiftPage .dayLeave .absenceVacation,
-  .shiftPage .dayLeave .absencePartTime {
+  .shiftPage .dayFree .absenceVacation,
+  .shiftPage .dayFree .absencePartTime {
     max-width: 100%;
     font-size: clamp(7px, 2.2vw, 9px);
     letter-spacing: -.02em;

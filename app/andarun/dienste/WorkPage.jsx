@@ -697,12 +697,12 @@ export default function WorkPage({ showHomeLink = true, view = 'all' }) {
               const isDayShift = shift?.model === 'T'
               const isLateShift = shift?.model === 'S'
               const isWeekendDayShift = shift?.model === 'BD'
-              const isFree = isWeekendFree || isPostNightFree || hasPartTime
+              const isFree = isWeekendFree || isPostNightFree || hasPartTime || hasVacation
               const active = day.date === selectedDate
               const isToday = day.date === todayValue()
               return (
                 <button
-                  className={`${styles.dayCell} ${active ? styles.dayActive : ''} ${shift ? styles.dayHasShift : ''} ${isDayShift ? styles.dayDayShift : ''} ${isLateShift ? styles.dayLateShift : ''} ${isNight ? styles.dayNightShift : ''} ${isWeekendDayShift ? styles.dayWeekendShift : ''} ${isFree ? styles.dayFree : ''} ${hasPartTime ? styles.dayLeave : ''} ${hasVacation && !hasPartTime ? styles.dayVacation : ''} ${isToday ? styles.dayToday : ''}`}
+                  className={`${styles.dayCell} ${active ? styles.dayActive : ''} ${shift ? styles.dayHasShift : ''} ${isDayShift ? styles.dayDayShift : ''} ${isLateShift ? styles.dayLateShift : ''} ${isNight ? styles.dayNightShift : ''} ${isWeekendDayShift ? styles.dayWeekendShift : ''} ${isFree ? styles.dayFree : ''} ${isToday ? styles.dayToday : ''}`}
                   type="button"
                   key={day.date}
                   onClick={() => selectDate(day.date)}
