@@ -28,6 +28,7 @@ const COLOR_OPTIONS = [
   { value: 'blue', label: 'آبی' },
   { value: 'apricot', label: 'هلویی' },
 ]
+const EVERY_DAY = [0, 1, 2, 3, 4, 5, 6]
 
 function pad(value) {
   return String(value).padStart(2, '0')
@@ -75,7 +76,7 @@ function medicineDraft(medicine) {
     weekdays: [...medicine.weekdays],
   } : {
     id: '', profileId: PROFILE.id, name: '', amount: '۱ عدد', note: '',
-    times: ['08:00'], weekdays: [0, 1, 2, 3, 4, 5, 6], color: 'green',
+    times: ['08:00'], weekdays: EVERY_DAY, color: 'green',
   }
 }
 
@@ -148,11 +149,12 @@ function MedicineModal({ medicine, onClose, onSave, onDelete, saving }) {
     setDraft(current => ({ ...current, [field]: value }))
   }
 
-  function toggleWeekday(day) {
-    const next = draft.weekdays.includes(day)
-      ? draft.weekdays.filter(item => item !== day)
-      : [...draft.weekdays, day]
-    update('weekdays', next)
+  const frequency = draft.weekdays.length === EVERY_DAY.length ? 'daily' : 'weekly'
+
+  function setFrequency(nextFrequency) {
+    update('weekdays', nextFrequency === 'daily'
+      ? EVERY_DAY
+      : [draft.weekdays.length === 1 ? draft.weekdays[0] : new Date().getDay()])
   }
 
   function submit(event) {
@@ -220,17 +222,32 @@ function MedicineModal({ medicine, onClose, onSave, onDelete, saving }) {
           </fieldset>
 
           <fieldset className={styles.fieldset}>
-            <legend>روزهای مصرف</legend>
-            <div className={styles.weekdayPicker}>
-              {WEEKDAY_OPTIONS.map(day => {
-                const selected = draft.weekdays.includes(day.value)
-                return (
-                  <button key={day.value} type="button" className={selected ? styles.weekdaySelected : ''} aria-pressed={selected} title={day.full} onClick={() => toggleWeekday(day.value)}>
-                    {selected ? <Icon name="check" size={17} /> : null}<span>{day.short}</span>
-                  </button>
-                )
-              })}
+            <legend>تکرار مصرف</legend>
+            <div className={styles.frequencyPicker}>
+              <button type="button" className={frequency === 'daily' ? styles.frequencySelected : ''} aria-pressed={frequency === 'daily'} onClick={() => setFrequency('daily')}>
+                <span className={styles.frequencyIcon}>{frequency === 'daily' ? <Icon name="check" size={18} /> : null}</span>
+                <span><strong>هر روز</strong><small>تمام روزهای هفته</small></span>
+              </button>
+              <button type="button" className={frequency === 'weekly' ? styles.frequencySelected : ''} aria-pressed={frequency === 'weekly'} onClick={() => setFrequency('weekly')}>
+                <span className={styles.frequencyIcon}>{frequency === 'weekly' ? <Icon name="check" size={18} /> : null}</span>
+                <span><strong>هفته‌ای یک‌بار</strong><small>در یک روز مشخص</small></span>
+              </button>
             </div>
+            {frequency === 'weekly' ? (
+              <div className={styles.weekdayChoice}>
+                <span>روز مصرف</span>
+                <div className={styles.weekdayPicker}>
+                  {WEEKDAY_OPTIONS.map(day => {
+                    const selected = draft.weekdays.includes(day.value)
+                    return (
+                      <button key={day.value} type="button" className={selected ? styles.weekdaySelected : ''} aria-pressed={selected} title={day.full} onClick={() => update('weekdays', [day.value])}>
+                        <span>{day.short}</span>
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+            ) : null}
           </fieldset>
 
           <fieldset className={styles.fieldset}>

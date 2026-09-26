@@ -8,13 +8,15 @@ export async function GET(_request, { params }) {
     return Response.json({ error: 'Unknown Andarun app' }, { status: 404 })
   }
 
+  const isPersian = appKey === 'gefangene' || appKey === 'medikamente'
+
   return Response.json({
     id: app.startUrl,
     name: app.name,
     short_name: app.shortName,
     description: `${app.name} · privater Bereich`,
-    lang: appKey === 'gefangene' ? 'fa' : 'de',
-    dir: appKey === 'gefangene' ? 'rtl' : 'ltr',
+    lang: isPersian ? 'fa' : 'de',
+    dir: isPersian ? 'rtl' : 'ltr',
     start_url: app.startUrl,
     scope: '/andarun/',
     display: 'standalone',
