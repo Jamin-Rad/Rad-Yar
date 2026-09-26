@@ -545,7 +545,7 @@ export const CURRICULUM = [
           { id: 'takotsubo-kardiomyopathie', title: { de: 'Takotsubo-Kardiomyopathie', en: 'Takotsubo Cardiomyopathy', fa: 'کاردیومیوپاتی تاکوتسوبو' }, group: ['Kardiomyopathien'], tags: ['MRT'], diff: 3 },
           { id: 'myokarditis', title: { de: 'Myokarditis', en: 'Myocarditis', fa: 'میوکاردیت' }, tags: ['MRT'], diff: 3 },
           { id: 'sarkoidose-kardio', title: { de: 'Kardiale Sarkoidose', en: 'Cardiac Sarcoidosis', fa: 'سارکوئیدوز قلبی' }, tags: ['MRT'], diff: 3 },
-          { id: 'khk-myokardischaemie', title: { de: 'Koronare Herzerkrankung / Myokardischämie', en: 'Coronary Artery Disease / Myocardial Ischaemia', fa: 'بیماری عروق کرونر / ایسکمی میوکارد' }, tags: ['CT','MRT'], diff: 2 },
+          { id: 'khk-myokardischaemie', title: { de: 'Koronare Herzerkrankung / Myokardischämie', en: 'Coronary Artery Disease / Myocardial Ischaemia', fa: 'بیماری عروق کرونر / ایسکمی میوکارد' }, tags: ['CT','MRT'], diff: 2, link: '/thorax/kardio/khk-myokardischaemie', ready: true, updatedAt: '2026-09-26' },
           { id: 'herzklappenpathologien', title: { de: 'Herzklappenpathologien', en: 'Valvular Heart Disease', fa: 'بیماری‌های دریچه‌ای قلب' }, tags: ['MRT','CT'], diff: 2 },
           { id: 'myxom', title: { de: 'Myxom', en: 'Myxoma', fa: 'میکسوم' }, group: ['Kardiale Raumforderungen'], tags: ['MRT'], diff: 3 },
           { id: 'kardiale-metastasen', title: { de: 'Kardiale Metastasen', en: 'Cardiac Metastases', fa: 'متاستازهای قلبی' }, group: ['Kardiale Raumforderungen'], tags: ['MRT','CT'], diff: 3 },
