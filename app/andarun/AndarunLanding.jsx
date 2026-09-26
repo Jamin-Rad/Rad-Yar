@@ -14,7 +14,7 @@ const spaces = [
   { number: '06', title: 'Finanzen',   description: 'Sicher planen',       action: 'finance',            theme: 'cobalt', icon: 'chart'     },
   { number: '07', title: 'Dienste',    description: 'Dienstzeiten planen', href: '/andarun/dienste',    theme: 'mint',   icon: 'briefcase' },
   { number: '08', title: 'Befunde',    description: 'Fälle & Fragen',      href: '/andarun/befunde',    theme: 'coral',  icon: 'file'      },
-  { number: '09', title: 'داروی من',   description: 'برنامه مصرف روزانه', href: '/andarun/medikamente', theme: 'mint',   icon: 'pill'      },
+  { number: '09', title: 'Medikamente', description: 'Einnahme im Blick', href: '/andarun/medikamente', theme: 'mint',   icon: 'pill'      },
 ]
 
 const financeSpaces = [

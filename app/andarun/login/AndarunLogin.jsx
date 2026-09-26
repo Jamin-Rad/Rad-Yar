@@ -23,7 +23,7 @@ export default function AndarunLogin({ nextPath = '/andarun' }) {
         body: JSON.stringify({ password }),
       })
       const data = await response.json()
-      if (!response.ok) throw new Error(data.error || 'Access failed.')
+      if (!response.ok) throw new Error(data.error || 'Zugang fehlgeschlagen.')
       router.push(nextPath)
       router.refresh()
     } catch (err) {
@@ -36,17 +36,17 @@ export default function AndarunLogin({ nextPath = '/andarun' }) {
     <main className={styles.page}>
       <form className={styles.panel} onSubmit={handleSubmit}>
         <div className={styles.header}>
-          <span>Private access</span>
+          <span>Privater Zugang</span>
           <h1>Andarun</h1>
         </div>
 
         <label className={styles.passwordField}>
-          Password
+          Passwort
           <input
             type="password"
             value={password}
             onChange={event => setPassword(event.target.value)}
-            placeholder="Enter password"
+            placeholder="Passwort eingeben"
             autoFocus
           />
         </label>
@@ -54,10 +54,10 @@ export default function AndarunLogin({ nextPath = '/andarun' }) {
         {error && <div className={styles.error}>{error}</div>}
 
         <button className={styles.submitBtn} type="submit" disabled={loading || !password}>
-          {loading ? 'Checking...' : 'Open'}
+          {loading ? 'Wird geprüft …' : 'Öffnen'}
         </button>
 
-        <Link className={styles.homeLink} href="/andarun">Back</Link>
+        <Link className={styles.homeLink} href="/andarun">Zurück</Link>
       </form>
     </main>
   )
