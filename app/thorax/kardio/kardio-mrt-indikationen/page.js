@@ -147,7 +147,7 @@ function SectionIcon({ id }) {
 }
 
 function ReadButton({ ui, isRead, toggleRead, authError, withLang }) {
-  return <div className={base.readControl}><button type="button" className={`${base.readButton} ${isRead ? base.readButtonActive : ''}`} onClick={toggleRead}><span className={base.readCheck}>{isRead ? '✓' : ''}</span><span>{isRead ? ui.readDone : ui.read}</span></button>{authError && <div className={base.readError}><span>{ui.auth}</span><Link href={withLang('/sign-in')}>{ui.signIn}</Link></div>}</div>
+  return <div className={base.readControl}><button type="button" className={`${base.readButton} ${styles.readButton} ${isRead ? `${base.readButtonActive} ${styles.readButtonActive}` : ''}`} onClick={toggleRead}><span className={`${base.readCheck} ${styles.readCheck}`}>{isRead ? '✓' : ''}</span><span>{isRead ? ui.readDone : ui.read}</span></button>{authError && <div className={`${base.readError} ${styles.readError}`}><span>{ui.auth}</span><Link href={withLang('/sign-in')}>{ui.signIn}</Link></div>}</div>
 }
 
 function Section({ id, title, openId, setOpenId, children }) {
