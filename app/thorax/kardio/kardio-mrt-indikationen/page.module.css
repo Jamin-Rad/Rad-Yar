@@ -37,6 +37,71 @@
 .questionPanel dl > div { padding-inline-start: 13px; border-inline-start: 2px solid rgba(56,189,248,.4); }
 .questionPanel dt { margin-bottom: 4px; }
 
+.khkDetail { display: grid; gap: 16px; margin-top: 18px; }
+.khkHeader { display: grid; grid-template-columns: minmax(0,1fr) minmax(280px,.8fr); gap: 22px; align-items: end; padding: 22px; border: 1px solid rgba(56,189,248,.25); border-radius: 18px; background: linear-gradient(135deg,rgba(7,89,133,.16),rgba(56,189,248,.06)); }
+.khkHeader span,.khkTitleRow small,.khkPathResult small,.khkKey small,.khkClinicalQuestion small,.khkSummary article small { color: var(--cmr-deep); font-size: .65rem; font-weight: 950; letter-spacing: .1em; text-transform: uppercase; }
+.khkHeader h3 { margin: 5px 0 0; color: var(--text-strong); font: italic 800 clamp(1.35rem,2.4vw,2rem)/1.15 var(--font-display); }
+.khkHeader p { margin: 0; color: var(--text-soft); font-size: .84rem; line-height: 1.7; }
+.khkPathway { display: grid; grid-template-columns: 220px minmax(0,1fr); overflow: hidden; border: 1px solid rgba(56,189,248,.25); border-radius: 18px; background: var(--bg-card); }
+.khkPathTabs { display: grid; align-content: center; gap: 5px; padding: 13px; border-inline-end: 1px solid var(--border); background: var(--surface-soft); }
+.khkPathTabs button { padding: 10px 11px; border: 1px solid transparent; border-radius: 10px; color: var(--text-soft); background: transparent; cursor: pointer; font: 800 .72rem/1.35 inherit; text-align: start; }
+.khkPathTabs button:hover,.khkPathTabs .khkPathActive { color: var(--cmr-deep); border-color: rgba(56,189,248,.28); background: var(--bg-card); }
+.khkPathResult { display: grid; grid-template-columns: minmax(0,1fr) 32px minmax(0,1fr); gap: 12px; align-items: center; padding: 20px; }
+.khkPathResult > div { display: grid; gap: 5px; min-height: 76px; align-content: center; padding: 13px; border: 1px solid var(--border); border-radius: 13px; background: var(--surface-soft); }
+.khkPathResult > div:last-of-type { border-color: rgba(56,189,248,.32); background: rgba(56,189,248,.09); }
+.khkPathResult > span { color: var(--cmr); font-size: 1.35rem; text-align: center; }
+.khkPathResult strong { color: var(--text-strong); font-size: .83rem; line-height: 1.4; }
+.khkPathResult > p { grid-column: 1/-1; margin: 0; color: var(--text-soft); font-size: .78rem; line-height: 1.65; }
+.khkSections { display: grid; gap: 9px; }
+.khkSections details { overflow: hidden; border: 1px solid var(--border); border-radius: 15px; background: var(--bg-card); }
+.khkSections summary { display: flex; align-items: center; gap: 11px; padding: 15px 17px; color: var(--text-strong); background: var(--surface-soft); cursor: pointer; list-style: none; }
+.khkSections summary::-webkit-details-marker { display: none; }
+.khkSections summary::after { margin-inline-start: auto; content: '+'; color: var(--cmr-deep); font-size: 1.2rem; }
+.khkSections details[open] summary::after { content: '−'; }
+.khkSections summary span { display: grid; width: 31px; height: 31px; flex: 0 0 31px; place-items: center; border-radius: 10px; color: #e0f2fe; background: var(--cmr-deep); font-size: .62rem; font-weight: 950; }
+.khkSections summary strong { font-size: .86rem; }
+.khkSectionBody { display: grid; gap: 13px; padding: 18px; }
+.khkSectionBody > p,.khkSectionBody li,.khkSectionBody article p,.khkQuestion p,.khkWarning p { margin: 0; color: var(--text-soft); font-size: .82rem; line-height: 1.7; }
+.khkSectionBody ul { display: grid; gap: 7px; margin: 0; padding-inline-start: 20px; }
+.khkSectionBody h4,.khkSummary h4 { margin: 0; color: var(--text-strong); font-size: .92rem; line-height: 1.4; }
+.khkTitleRow { display: flex; align-items: flex-start; justify-content: space-between; gap: 13px; }
+.khkTitleRow h4 { margin-top: 4px; }
+.khkTitleRow b,.acsCards b { flex: 0 0 auto; padding: 6px 9px; border: 1px solid rgba(56,189,248,.3); border-radius: 999px; color: var(--cmr-deep); background: rgba(56,189,248,.08); font-size: .66rem; }
+.khkKey { display: grid; grid-template-columns: minmax(120px,.4fr) minmax(0,1fr); gap: 13px; align-items: center; padding: 13px 15px; border: 1px solid rgba(56,189,248,.28); border-radius: 12px; background: rgba(56,189,248,.07); }
+.khkKey strong { color: var(--cmr-deep); font-size: .84rem; line-height: 1.45; }
+.khkSplit,.acsCards { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.khkSplit > div,.khkSplit > article,.acsCards article { padding: 15px; border: 1px solid var(--border); border-radius: 13px; background: var(--surface-soft); }
+.khkSplit h4 { margin-bottom: 9px; }
+.perfusionDiagram { display: grid; grid-template-columns: 1fr 22px 1fr; gap: 7px; align-items: center; margin-top: 13px; }
+.perfusionDiagram > div { display: grid; justify-items: center; gap: 4px; text-align: center; }
+.perfusionDiagram i { display: block; width: 46px; height: 46px; border: 9px solid #bae6fd; border-right-color: #fb7185; border-radius: 50%; transform: rotate(22deg); }
+.perfusionDiagram .restRing { border-color: #bae6fd; }
+.perfusionDiagram > span { color: var(--cmr); font-size: 1.1rem; }
+.perfusionDiagram strong { color: var(--text-strong); font-size: .72rem; }
+.perfusionDiagram small { color: var(--text-muted); font-size: .62rem; }
+.acsCards { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.acsCards article > div { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.acsCards h4 { margin-bottom: 9px; }
+.acsCards article > small { display: block; margin-top: 10px; color: var(--cmr-deep); font-size: .65rem; font-weight: 900; line-height: 1.5; }
+.patternRows { overflow: hidden; border: 1px solid var(--border); border-radius: 13px; }
+.patternRows > div { display: grid; grid-template-columns: minmax(145px,.6fr) minmax(0,1.5fr); gap: 12px; padding: 12px 14px; border-bottom: 1px solid var(--border); }
+.patternRows > div:last-child { border-bottom: 0; }
+.patternRows strong { color: var(--cmr-deep); font-size: .78rem; }
+.patternRows p { margin: 0; color: var(--text-soft); font-size: .78rem; line-height: 1.6; }
+.khkQuestion { display: grid; grid-template-columns: 38px minmax(0,1fr); gap: 12px; padding: 15px; border: 1px solid var(--border); border-radius: 13px; background: var(--surface-soft); }
+.khkQuestion > span { display: grid; width: 36px; height: 36px; place-items: center; border-radius: 11px; color: #fff; background: var(--cmr-deep); font-weight: 900; }
+.khkQuestion h4 { margin-bottom: 7px; }
+.khkWarning { padding: 14px 16px; border-inline-start: 4px solid #f43f5e; border-radius: 12px; color: #be123c; background: rgba(244,63,94,.08); }
+.khkWarning strong { display: block; margin-bottom: 5px; }
+.khkClinicalQuestion { display: grid; gap: 5px; padding: 16px; border-radius: 13px; color: #fff; background: linear-gradient(135deg,#075985,#0e7490); }
+.khkClinicalQuestion small { color: #bae6fd; }
+.khkClinicalQuestion strong { font-size: 1rem; line-height: 1.4; }
+.khkSummary { display: grid; gap: 11px; padding: 19px; border: 1px solid rgba(56,189,248,.25); border-radius: 16px; background: linear-gradient(135deg,rgba(56,189,248,.08),rgba(14,116,144,.04)); }
+.khkSummary > div,.khkSummary dl { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; margin: 0 0 5px; }
+.khkSummary article,.khkSummary dl > div { display: grid; gap: 5px; padding: 13px; border: 1px solid var(--border); border-radius: 11px; background: var(--bg-card); }
+.khkSummary article strong,.khkSummary dt { color: var(--text-strong); font-size: .78rem; font-weight: 900; }
+.khkSummary article p,.khkSummary dd { margin: 0; color: var(--cmr-deep); font-size: .73rem; line-height: 1.5; }
+
 .section { scroll-margin-top: 105px; }
 .sectionHeader { padding: 18px 22px; }
 .sectionHeading { display: flex; min-width: 0; align-items: center; gap: 13px; }
@@ -84,6 +149,8 @@
   .questionPanel { grid-template-columns: 62px minmax(0,1fr); }
   .questionPanel dl { grid-column: 2; }
   .principleGrid { grid-template-columns: 1fr; }
+  .khkHeader { grid-template-columns: 1fr; align-items: start; }
+  .acsCards { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 720px) {
@@ -99,6 +166,10 @@
   .sectionIcon { width: 23px; flex-basis: 23px; }
   .sectionIcon svg { width: 19px; height: 19px; }
   .indicationGrid,.triageGrid,.checklist,.takeHomeGrid,.sources { grid-template-columns: 1fr; }
+  .khkPathway { grid-template-columns: 1fr; }
+  .khkPathTabs { grid-template-columns: repeat(2,minmax(0,1fr)); border-inline-end: 0; border-bottom: 1px solid var(--border); }
+  .khkSplit,.khkSummary > div,.khkSummary dl { grid-template-columns: 1fr; }
+  .patternRows > div { grid-template-columns: 1fr; gap: 4px; }
 }
 
 @media (max-width: 430px) {
@@ -106,7 +177,24 @@
   .questionPanel { grid-template-columns: 1fr; }
   .questionPanel dl { grid-column: auto; }
   .questionBadge { width: 54px; height: 54px; }
+  .khkPathTabs { grid-template-columns: 1fr; }
+  .khkPathResult { grid-template-columns: 1fr; }
+  .khkPathResult > span { transform: rotate(90deg); }
+  .khkKey { grid-template-columns: 1fr; gap: 5px; }
+  .khkTitleRow { display: grid; }
+  .khkQuestion { grid-template-columns: 1fr; }
 }
 
 :global(html[data-theme='dark']) .questionTabs button { background: rgba(15,23,42,.72); }
 :global(html[data-theme='dark']) .questionTabs .questionActive { background: linear-gradient(135deg,#075985,#0369a1); }
+:global(html[data-theme='dark']) .khkHeader span,
+:global(html[data-theme='dark']) .khkTitleRow small,
+:global(html[data-theme='dark']) .khkPathResult small,
+:global(html[data-theme='dark']) .khkKey small,
+:global(html[data-theme='dark']) .khkKey strong,
+:global(html[data-theme='dark']) .khkClinicalQuestion small,
+:global(html[data-theme='dark']) .khkSummary article small,
+:global(html[data-theme='dark']) .khkSummary article p,
+:global(html[data-theme='dark']) .khkSummary dd,
+:global(html[data-theme='dark']) .patternRows strong,
+:global(html[data-theme='dark']) .acsCards article > small { color: #7dd3fc; }

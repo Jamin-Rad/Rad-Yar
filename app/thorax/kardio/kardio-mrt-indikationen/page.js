@@ -56,10 +56,10 @@ const QUESTIONS = [
     protocol: L('Cine · T1/T2-Mapping · LGE · ggf. Flussmessung', 'Cine · T1/T2 mapping · LGE · flow imaging when needed', 'Cine · مپینگ T1/T2 · LGE · در صورت نیاز اندازه‌گیری جریان'),
   },
   {
-    id: 'ischaemia', short: 'STRESS', title: L('Ischämie & chronisches Koronarsyndrom', 'Ischaemia & chronic coronary syndrome', 'ایسکمی و سندرم مزمن کرونری'),
+    id: 'ischaemia', short: 'KHK', title: L('KHK / Myokardischämie', 'CAD / myocardial ischaemia', 'بیماری کرونر / ایسکمی میوکارد'),
     indication: L('Funktionelle Beurteilung einer vermuteten KHK oder unklarer Relevanz bekannter Koronarstenosen.', 'Functional assessment of suspected coronary disease or uncertain significance of known coronary stenoses.', 'ارزیابی عملکردی بیماری کرونری مشکوک یا اهمیت نامشخص تنگی‌های شناخته‌شده.'),
     value: L('Stressinduzierte Perfusionsdefekte, Wandbewegung, LV-Funktion und Infarktnarbe in einer Untersuchung.', 'Stress-induced perfusion defects, wall motion, LV function and infarct scar in one examination.', 'نقص پرفیوژن ناشی از استرس، حرکت دیواره، عملکرد LV و اسکار انفارکت در یک بررسی.'),
-    protocol: L('Vasodilatator-Stressperfusion · Cine · Ruheperfusion · LGE', 'Vasodilator stress perfusion · cine · rest perfusion · LGE', 'پرفیوژن استرس با وازودیلاتور · Cine · پرفیوژن استراحت · LGE'),
+    protocol: L('Vasodilatator-Stressperfusion · Cine · LGE · Ruheperfusion optional', 'Vasodilator stress perfusion · cine · LGE · optional rest perfusion', 'پرفیوژن استرس با وازودیلاتور · Cine · LGE · پرفیوژن استراحت اختیاری'),
   },
   {
     id: 'viability', short: 'LGE', title: L('Infarkt & Vitalität', 'Infarction & viability', 'انفارکت و حیات میوکارد'),
@@ -132,6 +132,13 @@ const SOURCES = [
   ['ACR · Contrast Media Manual', 'https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Contrast-Manual'],
 ]
 
+const KHK_PATHWAYS = [
+  { id: 'verdacht', label: 'Verdacht auf KHK', exam: 'Stress-MRT', goal: 'Ischämienachweis', detail: 'Nachweis eines reversiblen Perfusionsdefizits.' },
+  { id: 'gesichert', label: 'Gesicherte KHK', exam: 'Stress-MRT + LGE', goal: 'Relevanz, Vitalität und Narbe', detail: 'Stress-MRT prüft die hämodynamische Relevanz; LGE beurteilt Vitalität und Narbe.' },
+  { id: 'akut', label: 'Akutes Koronarsyndrom', exam: 'Funktion + T2 + LGE', goal: 'Differentialdiagnose und Komplikationen', detail: 'Die Indikation hängt von der klinischen Situation und der Stabilität des Patienten ab.' },
+  { id: 'behandelt', label: 'Behandelte KHK', exam: 'MRT bei erneuten Symptomen', goal: 'Gezielte erneute Abklärung', detail: 'Nach PCI oder Bypass stehen symptomatische Patienten im Vordergrund.' },
+]
+
 function SectionIcon({ id }) {
   const paths = {
     overview: 'M4 5h16v14H4z M8 9h8 M8 13h5', indications: 'M12 3 20 7v5c0 5-4 8-8 9-4-1-8-4-8-9V7z M8 12l3 3 5-6', triage: 'M12 3 3 20h18z M12 9v5 M12 17h.01', safety: 'M12 3 20 7v5c0 5-4 8-8 9-4-1-8-4-8-9V7z M12 8v4 M12 16h.01', referral: 'M5 3h14v18H5z M9 8h6 M9 12h6 M9 16h4', takehome: 'M9 18h6 M10 22h4 M8 14a7 7 0 1 1 8 0c-1 1-2 2-2 4h-4c0-2-1-3-2-4z', sources: 'M12 5c-2-2-5-2-9-1v15c4-1 7-1 9 1 2-2 5-2 9-1V4c-4-1-7-1-9 1z M12 5v15',
@@ -149,6 +156,94 @@ function Section({ id, title, openId, setOpenId, children }) {
     <button type="button" className={`${base.sectionHeader} ${styles.sectionHeader}`} aria-expanded={open} onClick={() => setOpenId(open ? null : id)}><span className={styles.sectionHeading}><span className={styles.sectionIcon}><SectionIcon id={id} /></span><h2>{title}</h2></span><span className={styles.sectionToggle}>{open ? '−' : '+'}</span></button>
     {open ? <div className={`${base.sectionBody} ${styles.sectionBody}`}>{children}</div> : null}
   </section>
+}
+
+function KhkDetail() {
+  const [pathwayId, setPathwayId] = useState(KHK_PATHWAYS[0].id)
+  const pathway = KHK_PATHWAYS.find(item => item.id === pathwayId) || KHK_PATHWAYS[0]
+
+  return <div className={styles.khkDetail}>
+    <header className={styles.khkHeader}>
+      <div><span>VERTIEFUNG KHK</span><h3>Indikationen der Herz-MRT bei KHK</h3></div>
+      <p>Entscheidend ist, ob es sich um eine Erstdiagnose, eine bereits gesicherte KHK oder eine bereits behandelte KHK handelt.</p>
+    </header>
+
+    <div className={styles.khkPathway}>
+      <div className={styles.khkPathTabs} role="tablist" aria-label="Klinische Ausgangssituation">
+        {KHK_PATHWAYS.map(item => <button key={item.id} type="button" role="tab" aria-selected={pathwayId === item.id} className={pathwayId === item.id ? styles.khkPathActive : ''} onClick={() => setPathwayId(item.id)}>{item.label}</button>)}
+      </div>
+      <div className={styles.khkPathResult} role="tabpanel" aria-live="polite">
+        <div><small>Untersuchung</small><strong>{pathway.exam}</strong></div><span aria-hidden="true">→</span><div><small>Ziel</small><strong>{pathway.goal}</strong></div>
+        <p>{pathway.detail}</p>
+      </div>
+    </div>
+
+    <div className={styles.khkSections}>
+      <details open>
+        <summary><span>01</span><strong>Erstdiagnose bei Verdacht auf KHK</strong></summary>
+        <div className={styles.khkSectionBody}>
+          <div className={styles.khkTitleRow}><div><small>Stabile Angina pectoris</small><h4>Ischämie unter Belastung nachweisen</h4></div><b>I2-Indikation</b></div>
+          <p>Bei symptomatischen Patienten kann die Stress-MRT zum Nachweis einer relevanten Myokardischämie eingesetzt werden.</p>
+          <div className={styles.khkKey}><small>Bildgebendes Korrelat</small><strong>Reversibles Perfusionsdefizit</strong></div>
+          <p>Ein Perfusionsdefizit, das unter pharmakologischem Stress auftritt und in Ruhe nicht nachweisbar ist, entspricht einer stressinduzierten Ischämie.</p>
+          <div className={styles.khkSplit}><div><h4>Typische klinische Situation</h4><ul><li>typische Beschwerden</li><li>KHK-Verdacht</li><li>Ergometrie nicht möglich oder nicht aussagekräftig</li><li>andere funktionelle Untersuchungen uneindeutig</li></ul></div><div><h4>Prinzip der Stress-Perfusion</h4><p>Unter Stress wird die myokardiale Perfusion beurteilt. Ein stressinduziertes Perfusionsdefizit zeigt sich typischerweise subendokardial.</p><div className={styles.perfusionDiagram}><div><i /><strong>Stress</strong><small>Defizit sichtbar</small></div><span>→</span><div><i className={styles.restRing} /><strong>Ruhe</strong><small>nicht nachweisbar</small></div></div></div></div>
+          <div className={styles.khkKey}><small>Merksatz</small><strong>Ischämiediagnostik = Nachweis eines reversiblen Perfusionsdefizits</strong></div>
+        </div>
+      </details>
+
+      <details>
+        <summary><span>02</span><strong>Akutes Koronarsyndrom</strong></summary>
+        <div className={styles.khkSectionBody}>
+          <p>Die Indikation zur Herz-MRT ist abhängig von der klinischen Situation.</p>
+          <div className={styles.acsCards}>
+            <article><div><h4>Instabile Angina pectoris</h4><b>I3</b></div><p>Grundsätzlich geht es um den Nachweis einer hämodynamisch relevanten Koronarstenose. Für eine Stress-MRT muss der Patient ausreichend stabil sein.</p></article>
+            <article><div><h4>NSTEMI</h4><b>I2</b></div><p>Die Herz-MRT kann insbesondere zur weiteren Differenzierung der zugrunde liegenden Myokardschädigung eingesetzt werden.</p><small>Funktion · T2 · Late Gadolinium Enhancement</small></article>
+            <article><div><h4>STEMI</h4><b>I3</b></div><p>Im Vordergrund stehen Risikostratifizierung, Infarktausdehnung und Komplikationen – nicht primär die stressinduzierte Ischämie.</p><small>Funktion · T2 · Late Enhancement</small></article>
+          </div>
+          <div className={styles.patternRows}><div><strong>Myokardinfarkt</strong><p>Typischerweise subendokardiales Late Enhancement.</p></div><div><strong>Takotsubo-Kardiomyopathie</strong><p>Ausgeprägte Wandbewegungsstörungen und Myokardödem, jedoch ohne typisches Infarktmuster im Late Enhancement.</p></div><div><strong>Myokarditis</strong><p>Wandbewegungsstörungen bzw. Myokardschädigung mit nicht-ischämischem Late-Enhancement-Muster, beispielsweise subepikardial.</p></div></div>
+        </div>
+      </details>
+
+      <details>
+        <summary><span>03</span><strong>Narben- und Infarktbeurteilung</strong></summary>
+        <div className={styles.khkSectionBody}>
+          <p>Eine wichtige Stärke der Herz-MRT ist die Beurteilung der Myokardnarbe.</p>
+          <div className={styles.khkKey}><small>Entscheidende Frage</small><strong>Wie transmural ist das Late Enhancement?</strong></div>
+          <p>Je größer der Anteil des Myokards mit Late Enhancement ist, desto ausgeprägter ist die Narbenbildung.</p>
+          <div className={styles.khkSplit}><article><h4>Mikrovaskuläre Obstruktion</h4><p>Eine No-Reflow-Situation: ein dunkles Areal innerhalb des infarzierten Myokards, in das auch in der Spätaufnahme kein Kontrastmittel einströmt. Ihr Vorliegen ist mit einer geringeren funktionellen Erholung verbunden.</p></article><article><h4>Intrakardialer Thrombus</h4><p>Ein Thrombus kann als dunkles, dem Endokard anliegendes Areal dargestellt werden. Die MRT kann außerdem weitere Komplikationen wie ein Herzspitzenaneurysma erfassen.</p></article></div>
+        </div>
+      </details>
+
+      <details>
+        <summary><span>04</span><strong>Gesicherte KHK</strong></summary>
+        <div className={styles.khkSectionBody}>
+          <p>Bei bereits bekannter KHK stellen sich vor allem zwei Fragen:</p>
+          <div className={styles.khkQuestion}><span>A</span><div><h4>Ist die Koronarstenose ischämierelevant?</h4><p>Bei unklarer hämodynamischer Relevanz einer bekannten Koronarstenose kann eine Stress-Untersuchung durchgeführt werden. Ziel ist der Nachweis einer stressinduzierten Ischämie. Dies kann beispielsweise bei Patienten mit Mehrgefäßerkrankung relevant sein.</p></div></div>
+          <div className={styles.khkQuestion}><span>B</span><div><div className={styles.khkTitleRow}><h4>Ist das versorgte Myokard noch vital?</h4><b>I1-Indikation</b></div><p>Die Transmuralität des Late Enhancements wird beurteilt. Je transmuraler der Infarkt, desto geringer ist die zu erwartende funktionelle Erholung nach Revaskularisation. Entscheidend ist der Anteil des Myokards mit Late Enhancement im Verhältnis zum nicht vernarbten Myokard.</p></div></div>
+        </div>
+      </details>
+
+      <details>
+        <summary><span>05</span><strong>Bereits behandelte KHK</strong></summary>
+        <div className={styles.khkSectionBody}><p>Auch nach perkutaner Koronarintervention oder Bypass-Operation kann eine Herz-MRT sinnvoll sein. Im Vordergrund stehen insbesondere symptomatische Patienten.</p><div className={styles.khkWarning}><strong>Keine Routinenachsorge</strong><p>Eine routinemäßige Herz-MRT bei asymptomatischen Patienten allein zur Nachsorge sollte nicht durchgeführt werden.</p></div></div>
+      </details>
+
+      <details>
+        <summary><span>06</span><strong>Ruheperfusion – notwendig?</strong></summary>
+        <div className={styles.khkSectionBody}><p>Eine Ruheperfusion ist laut den dargestellten Empfehlungen nicht verpflichtend. Sie kann jedoch hilfreich sein, um insbesondere Artefakte zu erkennen und mit der Stressperfusion zu vergleichen.</p><p>Ein Perfusionsdefizit in Ruhe bedeutet nicht automatisch, dass eine Narbe vorliegt. Auch eine fixierte Narbe kann zu einem Perfusionsdefizit führen, dies ist jedoch nicht zuverlässig.</p><div className={styles.khkKey}><small>Daher gilt</small><strong>Eine Narbe wird nicht zuverlässig über die Ruheperfusion beurteilt.</strong></div></div>
+      </details>
+
+      <details>
+        <summary><span>07</span><strong>Praktischer Einsatz der Herz-MRT</strong></summary>
+        <div className={styles.khkSectionBody}><p>Die Herz-MRT ist mit einem mittleren bis hohen Untersuchungsaufwand verbunden und die Zahl verfügbarer Untersuchungsplätze kann limitiert sein. Deshalb ist eine klinische Stratifizierung wichtig.</p><div className={styles.khkClinicalQuestion}><small>Vor jeder Untersuchung klären</small><strong>Welche konkrete klinische Frage soll die MRT beantworten?</strong></div><ul><li>Das Untersuchungsprotokoll sollte an die Fragestellung angepasst werden.</li><li>Eine übermäßige Untersuchung asymptomatischer Patienten sollte vermieden werden.</li><li>Auch bei gesicherter Diagnose sollte ein zusätzlicher diagnostischer Mehrwert zu erwarten sein.</li></ul></div>
+      </details>
+    </div>
+
+    <div className={styles.khkSummary}>
+      <h4>Merkschema</h4><div>{KHK_PATHWAYS.map(item => <article key={item.id}><small>{item.label}</small><strong>{item.exam}</strong><p>{item.goal}</p></article>)}</div>
+      <h4>Zentrale Begriffe</h4><dl><div><dt>Reversibles Perfusionsdefizit</dt><dd>Ischämie</dd></div><div><dt>Stress-Perfusion</dt><dd>Ischämiediagnostik</dd></div><div><dt>Late Enhancement</dt><dd>Beurteilung von Infarkt und Narbe</dd></div><div><dt>Transmuralität</dt><dd>Abschätzung der Myokardvitalität</dd></div></dl>
+    </div>
+  </div>
 }
 
 export default function CardiacMriIndicationsPage() {
@@ -198,6 +293,7 @@ export default function CardiacMriIndicationsPage() {
           <header><span>QUESTION FIRST</span><h2>{ui.choose}</h2></header>
           <div className={styles.questionTabs} role="tablist" aria-label={ui.choose}>{QUESTIONS.map(item => <button key={item.id} type="button" role="tab" aria-selected={questionId === item.id} className={questionId === item.id ? styles.questionActive : ''} onClick={() => setQuestionId(item.id)}><small>{item.short}</small><strong>{c(item.title)}</strong></button>)}</div>
           <article className={styles.questionPanel} role="tabpanel"><div className={styles.questionBadge}>{selectedQuestion.short}</div><div><small>{ui.indication}</small><h3>{c(selectedQuestion.title)}</h3><p>{c(selectedQuestion.indication)}</p></div><dl><div><dt>{ui.value}</dt><dd>{c(selectedQuestion.value)}</dd></div><div><dt>{ui.sequence}</dt><dd>{c(selectedQuestion.protocol)}</dd></div></dl></article>
+          {questionId === 'ischaemia' && lang === 'de' ? <KhkDetail /> : null}
         </section>
 
         <Section id="overview" title={c(SECTION_LABELS.overview)} openId={openId} setOpenId={setOpenId}>
