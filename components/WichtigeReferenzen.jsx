@@ -356,20 +356,114 @@ function Modal({ title, subtitle, accent, copy, onClose, children, accentClass, 
 
 /* ── Befundrelevante Anatomie ─────────────────── */
 function AnatomieModal({ copy, lang, onClose }) {
-  const constructionCopy = {
-    de: { title: 'Dieser Bereich ist noch im Aufbau', text: 'Die Inhalte der befundrelevanten Anatomie werden derzeit vollständig überarbeitet und anschließend neu veröffentlicht.' },
-    en: { title: 'This section is under construction', text: 'The relevant anatomy content is currently being completely revised and will be republished afterwards.' },
-    fa: { title: 'این بخش هنوز در حال ساخت است', text: 'محتوای آناتومی مرتبط با گزارش در حال بازطراحی کامل است و پس از آماده‌شدن دوباره منتشر می‌شود.' },
-  }[lang] || { title: 'Dieser Bereich ist noch im Aufbau', text: 'Die Inhalte werden derzeit überarbeitet.' }
+  const topics = REF_DATA.anatomie
+  const [topicId, setTopicId] = useState(topics[0].id)
+  const [showDetail, setShowDetail] = useState(false)
+  const [zoomImage, setZoomImage] = useState(null)
+  const topic = topics.find(item => item.id === topicId) || topics[0]
+  const item = topic.items[0]
 
   return (
-    <Modal title={copy.btnAnatomie} copy={copy} onClose={onClose} accentClass={styles.headPurple} showDisclaimer={false}>
-      <div className={styles.constructionState}>
-        <span className={styles.constructionIcon} aria-hidden="true">🚧</span>
-        <h3>{constructionCopy.title}</h3>
-        <p>{constructionCopy.text}</p>
-        <button type="button" onClick={onClose}>{copy.close}</button>
+    <Modal
+      title={copy.btnAnatomie}
+      subtitle={showDetail ? tx(topic.name, lang) : null}
+      accent={topic.color}
+      copy={copy}
+      onClose={onClose}
+      accentClass={styles.headPurple}
+      wide
+      showDisclaimer={false}
+    >
+      <div className={`${styles.split} ${showDetail ? styles.showDetail : ''}`}>
+        <nav className={`${styles.sidebar} ${styles.anatomySidebar}`} aria-label={copy.chooseTopic}>
+          {topics.map(anatomyTopic => (
+            <button
+              key={anatomyTopic.id}
+              type="button"
+              className={`${styles.navBtn} ${styles.klassNavBtn} ${anatomyTopic.id === topicId ? styles.navActivePurple : ''}`}
+              style={{ '--ref-color': anatomyTopic.color }}
+              onClick={() => {
+                setTopicId(anatomyTopic.id)
+                setShowDetail(true)
+              }}
+            >
+              <span className={`${styles.navIconWrap} ${styles.klassNavLogoWrap}`}>
+                <Image src={anatomyTopic.icon} alt="" width={30} height={30} className={styles.klassNavLogo} />
+              </span>
+              <span className={styles.klassNavText}>
+                <span className={styles.navLabel}>{tx(anatomyTopic.name, lang)}</span>
+              </span>
+              <span className={styles.klassNavArrow} aria-hidden="true">›</span>
+            </button>
+          ))}
+        </nav>
+
+        <article className={`${styles.content} ${styles.anatomyContent}`} style={{ '--ref-color': topic.color }}>
+          <button type="button" className={styles.mobileBack} onClick={() => setShowDetail(false)}>← {copy.back}</button>
+          <div className={styles.anatomyTopicHead}>
+            <div>
+              <span className={styles.anatomyTopicLabel}>{tx(topic.name, lang)}</span>
+              <h2>{tx(item.title, lang)}</h2>
+              <p>{tx(item.lead, lang)}</p>
+            </div>
+          </div>
+
+          <div className={styles.anatomyDetailGrid}>
+            <button
+              type="button"
+              className={styles.anatomyFigureButton}
+              onClick={() => setZoomImage(item)}
+              aria-label={`${copy.zoomImage}: ${tx(item.imageAlt, lang)}`}
+            >
+              <Image
+                src={item.image}
+                alt={tx(item.imageAlt, lang)}
+                width={1122}
+                height={1402}
+                className={styles.anatomyFigureImage}
+                sizes="(max-width: 640px) 100vw, 430px"
+                priority
+              />
+              <span className={styles.anatomyZoomIcon} aria-hidden="true">⌕</span>
+            </button>
+
+            <div className={styles.anatomyNotes}>
+              <ol className={styles.anatomyPointList}>
+                {item.points.map(point => (
+                  <li key={point.number} className={styles.anatomyPoint}>
+                    <span className={styles.anatomyPointNumber}>{point.number}</span>
+                    <span>
+                      <strong>{tx(point.title, lang)}</strong>
+                      <small>{tx(point.text, lang)}</small>
+                    </span>
+                  </li>
+                ))}
+              </ol>
+              <aside className={styles.anatomyClinicalNote}>
+                <span className={styles.anatomyClinicalIcon} aria-hidden="true">i</span>
+                <span>
+                  <strong>{tx(item.clinicalTitle, lang)}</strong>
+                  <small>{tx(item.clinicalNote, lang)}</small>
+                </span>
+              </aside>
+            </div>
+          </div>
+        </article>
       </div>
+
+      {zoomImage && (
+        <div className={styles.measurementZoomBackdrop} role="presentation" onClick={() => setZoomImage(null)}>
+          <button type="button" className={styles.measurementZoomClose} onClick={() => setZoomImage(null)} aria-label={copy.close}>×</button>
+          <Image
+            src={zoomImage.image}
+            alt={tx(zoomImage.imageAlt, lang)}
+            width={1122}
+            height={1402}
+            className={`${styles.measurementZoomImage} ${styles.anatomyZoomImage}`}
+            sizes="96vw"
+          />
+        </div>
+      )}
     </Modal>
   )
 }

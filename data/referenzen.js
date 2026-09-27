@@ -128,7 +128,86 @@ export const REF_COPY = {
 }
 
 // ── Befundrelevante Anatomie ─────────────────────────────────
-export const ANATOMIE = []
+export const ANATOMIE = [
+  {
+    id: 'urogenital',
+    color: '#7c3aed',
+    icon: '/fach/becken-m.png',
+    name: { de: 'Urogenital', en: 'Urogenital', fa: 'اوروژنیتال' },
+    items: [
+      {
+        id: 'ureter-engstellen',
+        title: {
+          de: 'Engstellen des Ureters',
+          en: 'Ureteral narrowing sites',
+          fa: 'محل‌های تنگی حالب',
+        },
+        lead: {
+          de: 'Drei physiologische Engstellen sind typische Orte für einen Steinimpakt.',
+          en: 'Three physiological narrowing sites are typical locations for stone impaction.',
+          fa: 'سه تنگی فیزیولوژیک، محل‌های شایع گیر کردن سنگ هستند.',
+        },
+        image: '/referenzen/anatomie/ureter-engstellen.png',
+        imageAlt: {
+          de: 'Schematische Darstellung der drei physiologischen Engstellen des Ureters',
+          en: 'Schematic showing the three physiological narrowing sites of the ureter',
+          fa: 'نمای شماتیک سه محل تنگی فیزیولوژیک حالب',
+        },
+        points: [
+          {
+            number: '1',
+            title: {
+              de: 'Ureterabgang',
+              en: 'Ureteropelvic junction',
+              fa: 'محل اتصال لگنچه به حالب',
+            },
+            text: {
+              de: 'Übergang vom Nierenbecken in den proximalen Ureter (UPJ).',
+              en: 'Transition from the renal pelvis to the proximal ureter (UPJ).',
+              fa: 'گذار لگنچهٔ کلیه به حالب پروگزیمال (UPJ).',
+            },
+          },
+          {
+            number: '2',
+            title: {
+              de: 'Überkreuzung der Iliakalgefäße',
+              en: 'Crossing of the iliac vessels',
+              fa: 'عبور از روی عروق ایلیاک',
+            },
+            text: {
+              de: 'Engstelle am Beckeneingang auf Höhe der Iliakalgefäße.',
+              en: 'Narrowing at the pelvic brim near the iliac vessels.',
+              fa: 'تنگی در ورودی لگن، در سطح عروق ایلیاک.',
+            },
+          },
+          {
+            number: '3',
+            title: {
+              de: 'Uretermündung',
+              en: 'Ureterovesical junction',
+              fa: 'محل اتصال حالب به مثانه',
+            },
+            text: {
+              de: 'Intramuraler Verlauf beim Eintritt in die Harnblase (UVJ).',
+              en: 'Intramural course as the ureter enters the urinary bladder (UVJ).',
+              fa: 'مسیر داخل‌جداری هنگام ورود حالب به مثانه (UVJ).',
+            },
+          },
+        ],
+        clinicalTitle: {
+          de: 'Klinische Relevanz',
+          en: 'Clinical relevance',
+          fa: 'اهمیت بالینی',
+        },
+        clinicalNote: {
+          de: 'Bei Harnstau den Ureter bis zur distalen Engstelle verfolgen.',
+          en: 'In urinary obstruction, trace the ureter to the distal narrowing site.',
+          fa: 'در هیدرونفروز، حالب را تا محل تنگی دیستال دنبال کنید.',
+        },
+      },
+    ],
+  },
+]
 // ── Messwerte ────────────────────────────────────────────────
 // Struktur: region → groups[] → entries[]
 const THORACIC_AORTA_ENTRIES = [
