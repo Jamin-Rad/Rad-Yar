@@ -150,17 +150,35 @@ function ReadButton({ ui, isRead, toggleRead, authError, withLang }) {
   return <div className={base.readControl}><button type="button" className={`${base.readButton} ${styles.readButton} ${isRead ? `${base.readButtonActive} ${styles.readButtonActive}` : ''}`} onClick={toggleRead}><span className={`${base.readCheck} ${styles.readCheck}`}>{isRead ? '✓' : ''}</span><span>{isRead ? ui.readDone : ui.read}</span></button>{authError && <div className={`${base.readError} ${styles.readError}`}><span>{ui.auth}</span><Link href={withLang('/sign-in')}>{ui.signIn}</Link></div>}</div>
 }
 
+function scrollIntoViewAfterLayout(element) {
+  if (!element) return
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => {
+      const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+      element.scrollIntoView({ behavior, block: 'start' })
+    })
+  })
+}
+
 function Section({ id, title, openId, setOpenId, children }) {
   const open = openId === id
-  return <section id={id} className={`${base.section} ${styles.section}`}>
-    <button type="button" className={`${base.sectionHeader} ${styles.sectionHeader}`} aria-expanded={open} onClick={() => setOpenId(open ? null : id)}><span className={styles.sectionHeading}><span className={styles.sectionIcon}><SectionIcon id={id} /></span><h2>{title}</h2></span><span className={styles.sectionToggle}>{open ? '−' : '+'}</span></button>
-    {open ? <div className={`${base.sectionBody} ${styles.sectionBody}`}>{children}</div> : null}
+  const toggleSection = () => {
+    const nextId = open ? null : id
+    setOpenId(nextId)
+    if (nextId) scrollIntoViewAfterLayout(document.getElementById(id))
+  }
+  return <section id={id} className={`${base.section} ${styles.section} ${open ? styles.sectionOpen : ''}`}>
+    <button type="button" className={`${base.sectionHeader} ${styles.sectionHeader}`} aria-expanded={open} aria-controls={`${id}-panel`} onClick={toggleSection}><span className={styles.sectionHeading}><span className={styles.sectionIcon}><SectionIcon id={id} /></span><h2 id={`${id}-heading`}>{title}</h2></span><span className={styles.sectionToggle}>{open ? '−' : '+'}</span></button>
+    {open ? <div id={`${id}-panel`} role="region" aria-labelledby={`${id}-heading`} className={`${base.sectionBody} ${styles.sectionBody}`}>{children}</div> : null}
   </section>
 }
 
 function KhkDetail() {
   const [pathwayId, setPathwayId] = useState(KHK_PATHWAYS[0].id)
   const pathway = KHK_PATHWAYS.find(item => item.id === pathwayId) || KHK_PATHWAYS[0]
+  const handleSectionToggle = event => {
+    if (event.currentTarget.open) scrollIntoViewAfterLayout(event.currentTarget)
+  }
 
   return <div className={styles.khkDetail}>
     <header className={styles.khkHeader}>
@@ -179,7 +197,7 @@ function KhkDetail() {
     </div>
 
     <div className={styles.khkSections}>
-      <details open>
+      <details name="khk-indication-sections" open onToggle={handleSectionToggle}>
         <summary><span>01</span><strong>Erstdiagnose bei Verdacht auf KHK</strong></summary>
         <div className={styles.khkSectionBody}>
           <div className={styles.khkTitleRow}><div><small>Stabile Angina pectoris</small><h4>Ischämie unter Belastung nachweisen</h4></div><b>I2-Indikation</b></div>
@@ -191,7 +209,7 @@ function KhkDetail() {
         </div>
       </details>
 
-      <details>
+      <details name="khk-indication-sections" onToggle={handleSectionToggle}>
         <summary><span>02</span><strong>Akutes Koronarsyndrom</strong></summary>
         <div className={styles.khkSectionBody}>
           <p>Die Indikation zur Herz-MRT ist abhängig von der klinischen Situation.</p>
@@ -204,7 +222,7 @@ function KhkDetail() {
         </div>
       </details>
 
-      <details>
+      <details name="khk-indication-sections" onToggle={handleSectionToggle}>
         <summary><span>03</span><strong>Narben- und Infarktbeurteilung</strong></summary>
         <div className={styles.khkSectionBody}>
           <p>Eine wichtige Stärke der Herz-MRT ist die Beurteilung der Myokardnarbe.</p>
@@ -214,7 +232,7 @@ function KhkDetail() {
         </div>
       </details>
 
-      <details>
+      <details name="khk-indication-sections" onToggle={handleSectionToggle}>
         <summary><span>04</span><strong>Gesicherte KHK</strong></summary>
         <div className={styles.khkSectionBody}>
           <p>Bei bereits bekannter KHK stellen sich vor allem zwei Fragen:</p>
@@ -223,17 +241,17 @@ function KhkDetail() {
         </div>
       </details>
 
-      <details>
+      <details name="khk-indication-sections" onToggle={handleSectionToggle}>
         <summary><span>05</span><strong>Bereits behandelte KHK</strong></summary>
         <div className={styles.khkSectionBody}><p>Auch nach perkutaner Koronarintervention oder Bypass-Operation kann eine Herz-MRT sinnvoll sein. Im Vordergrund stehen insbesondere symptomatische Patienten.</p><div className={styles.khkWarning}><strong>Keine Routinenachsorge</strong><p>Eine routinemäßige Herz-MRT bei asymptomatischen Patienten allein zur Nachsorge sollte nicht durchgeführt werden.</p></div></div>
       </details>
 
-      <details>
+      <details name="khk-indication-sections" onToggle={handleSectionToggle}>
         <summary><span>06</span><strong>Ruheperfusion – notwendig?</strong></summary>
         <div className={styles.khkSectionBody}><p>Eine Ruheperfusion ist laut den dargestellten Empfehlungen nicht verpflichtend. Sie kann jedoch hilfreich sein, um insbesondere Artefakte zu erkennen und mit der Stressperfusion zu vergleichen.</p><p>Ein Perfusionsdefizit in Ruhe bedeutet nicht automatisch, dass eine Narbe vorliegt. Auch eine fixierte Narbe kann zu einem Perfusionsdefizit führen, dies ist jedoch nicht zuverlässig.</p><div className={styles.khkKey}><small>Daher gilt</small><strong>Eine Narbe wird nicht zuverlässig über die Ruheperfusion beurteilt.</strong></div></div>
       </details>
 
-      <details>
+      <details name="khk-indication-sections" onToggle={handleSectionToggle}>
         <summary><span>07</span><strong>Praktischer Einsatz der Herz-MRT</strong></summary>
         <div className={styles.khkSectionBody}><p>Die Herz-MRT ist mit einem mittleren bis hohen Untersuchungsaufwand verbunden und die Zahl verfügbarer Untersuchungsplätze kann limitiert sein. Deshalb ist eine klinische Stratifizierung wichtig.</p><div className={styles.khkClinicalQuestion}><small>Vor jeder Untersuchung klären</small><strong>Welche konkrete klinische Frage soll die MRT beantworten?</strong></div><ul><li>Das Untersuchungsprotokoll sollte an die Fragestellung angepasst werden.</li><li>Eine übermäßige Untersuchung asymptomatischer Patienten sollte vermieden werden.</li><li>Auch bei gesicherter Diagnose sollte ein zusätzlicher diagnostischer Mehrwert zu erwarten sein.</li></ul></div>
       </details>
@@ -271,7 +289,7 @@ export default function CardiacMriIndicationsPage() {
 
   const jumpTo = id => {
     setOpenId(id)
-    window.setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 20)
+    scrollIntoViewAfterLayout(document.getElementById(id))
   }
 
   return <main className={`${base.page} ${styles.page}`} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
