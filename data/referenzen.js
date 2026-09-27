@@ -353,6 +353,144 @@ export const ANATOMIE_NEU = [
       },
     ],
   },
+  {
+    id: 'kardiovaskulaer',
+    color: '#dc2626',
+    icon: '/referenzen/anatomie/koronar-rechtsdominant.png',
+    name: { de: 'Kardiovaskulär', en: 'Cardiovascular', fa: 'قلب و عروق' },
+    groups: [
+      {
+        id: 'koronardominanz',
+        name: { de: 'Koronardominanz', en: 'Coronary dominance', fa: 'غالبیت عروق کرونر' },
+        items: [
+          {
+            id: 'koronar-rechtsdominant',
+            title: { de: 'Rechtsdominanter Versorgungstyp', en: 'Right-dominant circulation', fa: 'الگوی غالب راست' },
+            lead: {
+              de: 'Die RCA erreicht die Crux cordis und gibt die PDA sowie meist posterolaterale Äste ab.',
+              en: 'The RCA reaches the cardiac crux and gives rise to the PDA and usually the posterolateral branches.',
+              fa: 'شریان کرونر راست به کروکس قلب می‌رسد و PDA و معمولاً شاخه‌های پوسترولترال را می‌دهد.',
+            },
+            image: '/referenzen/anatomie/koronar-rechtsdominant.png',
+            imageAlt: {
+              de: 'Posteroinferiore Ansicht einer rechtsdominanten Koronarversorgung',
+              en: 'Posteroinferior view of right-dominant coronary circulation',
+              fa: 'نمای پوسترواینفریور از عروق کرونر غالب راست',
+            },
+            points: [
+              { number: '1', title: { de: 'RCA bis zur Crux', en: 'RCA to the crux', fa: 'RCA تا کروکس' }, text: { de: 'Die dominante RCA verläuft im rechten AV-Sulcus bis zur Crux cordis.', en: 'The dominant RCA follows the right AV groove to the cardiac crux.', fa: 'RCA غالب در شیار AV راست تا کروکس قلب ادامه می‌یابد.' } },
+              { number: '2', title: { de: 'PDA aus der RCA', en: 'PDA from the RCA', fa: 'PDA از RCA' }, text: { de: 'Die Posterior Descending Artery verläuft im posterioren Interventrikularsulcus.', en: 'The posterior descending artery runs in the posterior interventricular sulcus.', fa: 'PDA در شیار بین‌بطنی خلفی حرکت می‌کند.' } },
+              { number: '3', title: { de: 'Posterolaterale Äste', en: 'Posterolateral branches', fa: 'شاخه‌های پوسترولترال' }, text: { de: 'Die RCA versorgt typischerweise auch die posterolaterale Unterwand.', en: 'The RCA typically also supplies the posterolateral inferior wall.', fa: 'RCA معمولاً دیواره تحتانی پوسترولترال را نیز خون‌رسانی می‌کند.' } },
+              { number: '4', title: { de: 'Nichtdominante LCx', en: 'Non-dominant LCx', fa: 'LCx غیرغالب' }, text: { de: 'Die LCx endet meist vor der Crux im linken AV-Sulcus.', en: 'The LCx usually ends before the crux in the left AV groove.', fa: 'LCx معمولاً پیش از کروکس در شیار AV چپ پایان می‌یابد.' } },
+            ],
+            clinicalTitle: { de: 'Befund-Merksatz', en: 'Reporting pearl', fa: 'نکته گزارش' },
+            clinicalNote: {
+              de: 'Dominanz nach dem Ursprung der PDA benennen; Rechtsdominanz liegt bei etwa 70–80 % vor.',
+              en: 'Name dominance by the origin of the PDA; right dominance is present in about 70–80%.',
+              fa: 'غالبیت را بر اساس منشأ PDA نام‌گذاری کنید؛ غالبیت راست در حدود ۷۰–۸۰٪ دیده می‌شود.',
+            },
+          },
+          {
+            id: 'koronar-linksdominant',
+            title: { de: 'Linksdominanter Versorgungstyp', en: 'Left-dominant circulation', fa: 'الگوی غالب چپ' },
+            lead: {
+              de: 'Die LCx zieht bis zur Crux und gibt die PDA sowie posterolaterale Äste ab.',
+              en: 'The LCx reaches the crux and gives rise to the PDA and posterolateral branches.',
+              fa: 'LCx تا کروکس ادامه می‌یابد و PDA و شاخه‌های پوسترولترال را می‌دهد.',
+            },
+            image: '/referenzen/anatomie/koronar-linksdominant.png',
+            imageAlt: {
+              de: 'Posteroinferiore Ansicht einer linksdominanten Koronarversorgung',
+              en: 'Posteroinferior view of left-dominant coronary circulation',
+              fa: 'نمای پوسترواینفریور از عروق کرونر غالب چپ',
+            },
+            points: [
+              { number: '1', title: { de: 'LCx bis zur Crux', en: 'LCx to the crux', fa: 'LCx تا کروکس' }, text: { de: 'Die dominante LCx verläuft weit im linken AV-Sulcus nach posterior.', en: 'The dominant LCx courses far posteriorly in the left AV groove.', fa: 'LCx غالب در شیار AV چپ تا قسمت خلفی ادامه می‌یابد.' } },
+              { number: '2', title: { de: 'PDA aus der LCx', en: 'PDA from the LCx', fa: 'PDA از LCx' }, text: { de: 'An der Crux entspringt die PDA aus der distalen LCx.', en: 'At the crux, the PDA arises from the distal LCx.', fa: 'در کروکس، PDA از LCx دیستال منشأ می‌گیرد.' } },
+              { number: '3', title: { de: 'Großes LCx-Territorium', en: 'Large LCx territory', fa: 'قلمرو وسیع LCx' }, text: { de: 'LCx versorgt lateral, inferolateral und Teile des posterioren Septums.', en: 'The LCx supplies the lateral and inferolateral walls and part of the posterior septum.', fa: 'LCx دیواره‌های لترال، اینفرولترال و بخشی از سپتوم خلفی را خون‌رسانی می‌کند.' } },
+              { number: '4', title: { de: 'Kleine RCA', en: 'Small RCA', fa: 'RCA کوچک' }, text: { de: 'Die nichtdominante RCA endet vor der Crux und versorgt vorwiegend den rechten Ventrikel.', en: 'The non-dominant RCA ends before the crux and mainly supplies the right ventricle.', fa: 'RCA غیرغالب پیش از کروکس پایان می‌یابد و عمدتاً بطن راست را خون‌رسانی می‌کند.' } },
+            ],
+            clinicalTitle: { de: 'Befund-Merksatz', en: 'Reporting pearl', fa: 'نکته گزارش' },
+            clinicalNote: {
+              de: 'Linksdominanz liegt bei etwa 5–10 % vor; ein inferiorer Infarkt kann hier dem LCx-Territorium entsprechen.',
+              en: 'Left dominance is present in about 5–10%; an inferior infarct may therefore belong to the LCx territory.',
+              fa: 'غالبیت چپ در حدود ۵–۱۰٪ دیده می‌شود؛ در این حالت انفارکت اینفریور می‌تواند در قلمرو LCx باشد.',
+            },
+          },
+        ],
+      },
+      {
+        id: 'koronarursprung-varianten',
+        name: { de: 'Koronarursprung & Varianten', en: 'Coronary origins & variants', fa: 'منشأ کرونر و واریانت‌ها' },
+        items: [
+          {
+            id: 'koronarursprung-normal',
+            title: { de: 'Normaler Koronarursprung', en: 'Normal coronary origins', fa: 'منشأ طبیعی عروق کرونر' },
+            lead: { de: 'RCA und LM entspringen aus den zugehörigen Sinus Valsalvae knapp unterhalb der sinotubulären Junktion.', en: 'The RCA and LM arise from their respective sinuses of Valsalva just below the sinotubular junction.', fa: 'RCA و LM از سینوس‌های والسالوای مربوطه، کمی پایین‌تر از اتصال سینوتوبولار منشأ می‌گیرند.' },
+            image: '/referenzen/anatomie/koronarursprung-normal.png',
+            imageAlt: { de: 'Normale Koronarostien an der Aortenwurzel', en: 'Normal coronary ostia at the aortic root', fa: 'استیوم‌های طبیعی کرونر در ریشه آئورت' },
+            points: [
+              { number: '1', title: { de: 'Rechter Koronarsinus', en: 'Right coronary sinus', fa: 'سینوس کرونر راست' }, text: { de: 'Das RCA-Ostium liegt im rechten Sinus Valsalvae.', en: 'The RCA ostium lies in the right sinus of Valsalva.', fa: 'استیوم RCA در سینوس والسالوای راست قرار دارد.' } },
+              { number: '2', title: { de: 'Linker Koronarsinus', en: 'Left coronary sinus', fa: 'سینوس کرونر چپ' }, text: { de: 'Das LM-Ostium liegt im linken Sinus Valsalvae.', en: 'The LM ostium lies in the left sinus of Valsalva.', fa: 'استیوم LM در سینوس والسالوای چپ قرار دارد.' } },
+              { number: '3', title: { de: 'LM-Bifurkation', en: 'LM bifurcation', fa: 'دوشاخه شدن LM' }, text: { de: 'Der linke Hauptstamm teilt sich regelhaft in LAD und LCx.', en: 'The left main normally divides into the LAD and LCx.', fa: 'LM به‌طور طبیعی به LAD و LCx تقسیم می‌شود.' } },
+              { number: '4', title: { de: 'Nichtkoronarer Sinus', en: 'Non-coronary sinus', fa: 'سینوس غیرکرونر' }, text: { de: 'Aus dem nichtkoronaren Sinus entspringt regelhaft keine Koronararterie.', en: 'No coronary artery normally arises from the non-coronary sinus.', fa: 'به‌طور طبیعی هیچ شریان کرونری از سینوس غیرکرونر منشأ نمی‌گیرد.' } },
+            ],
+            clinicalTitle: { de: 'CCTA-Check', en: 'CCTA check', fa: 'چک CCTA' },
+            clinicalNote: { de: 'Ostien, Ursprungshöhe und proximalen Verlauf in multiplanaren Rekonstruktionen beurteilen.', en: 'Assess ostia, take-off height and proximal course on multiplanar reconstructions.', fa: 'استیوم‌ها، ارتفاع منشأ و مسیر پروگزیمال را در بازسازی‌های چندصفحه‌ای بررسی کنید.' },
+          },
+          {
+            id: 'koronar-separate-ostien',
+            title: { de: 'Separate LAD-/LCx-Ostien', en: 'Separate LAD and LCx ostia', fa: 'استیوم‌های جداگانه LAD و LCx' },
+            lead: { de: 'Häufige benigne Variante ohne ausgebildeten linken Hauptstamm.', en: 'A common benign variant without a formed left main trunk.', fa: 'واریانت خوش‌خیم شایع بدون تنه اصلی چپ.' },
+            image: '/referenzen/anatomie/koronarursprung-separate-ostien.png',
+            imageAlt: { de: 'Getrennte Ostien von LAD und LCx im linken Koronarsinus', en: 'Separate LAD and LCx ostia in the left coronary sinus', fa: 'استیوم‌های جداگانه LAD و LCx در سینوس کرونر چپ' },
+            points: [
+              { number: '1', title: { de: 'Zwei linke Ostien', en: 'Two left ostia', fa: 'دو استیوم چپ' }, text: { de: 'LAD und LCx entspringen getrennt aus dem linken Koronarsinus.', en: 'The LAD and LCx arise separately from the left coronary sinus.', fa: 'LAD و LCx به‌صورت جداگانه از سینوس کرونر چپ منشأ می‌گیرند.' } },
+              { number: '2', title: { de: 'Kein linker Hauptstamm', en: 'No left main trunk', fa: 'بدون تنه اصلی چپ' }, text: { de: 'Ein gemeinsamer LM-Abschnitt ist nicht vorhanden.', en: 'There is no shared left-main segment.', fa: 'هیچ بخش مشترکی به‌عنوان LM وجود ندارد.' } },
+              { number: '3', title: { de: 'Normaler Verlauf', en: 'Normal course', fa: 'مسیر طبیعی' }, text: { de: 'Nach dem Ursprung verlaufen LAD und LCx in ihren regelhaften Furchen.', en: 'After take-off, the LAD and LCx follow their usual grooves.', fa: 'پس از منشأ، LAD و LCx در شیارهای طبیعی خود ادامه می‌یابند.' } },
+              { number: '4', title: { de: 'Benigne Variante', en: 'Benign variant', fa: 'واریانت خوش‌خیم' }, text: { de: 'Die Variante ist in der Regel hämodynamisch unauffällig.', en: 'This variant is generally haemodynamically insignificant.', fa: 'این واریانت معمولاً اهمیت همودینامیک ندارد.' } },
+            ],
+            clinicalTitle: { de: 'Befund-Merksatz', en: 'Reporting pearl', fa: 'نکته گزارش' },
+            clinicalNote: { de: 'Als Variante dokumentieren; nicht fälschlich einen kurzen oder fehlenden LM als Okklusion werten.', en: 'Document as a variant; do not mistake the absent LM for occlusion.', fa: 'آن را به‌عنوان واریانت ثبت کنید و فقدان LM را با انسداد اشتباه نگیرید.' },
+          },
+          {
+            id: 'koronar-aaorca-interarteriell',
+            title: { de: 'AAORCA · interarterieller Verlauf', en: 'AAORCA · interarterial course', fa: 'AAORCA · مسیر بین‌شریانی' },
+            lead: { de: 'Anomaler RCA-Ursprung aus dem linken Sinus mit Verlauf zwischen Aorta und Pulmonalarterie.', en: 'Anomalous RCA origin from the left sinus with a course between the aorta and pulmonary artery.', fa: 'منشأ آنومال RCA از سینوس چپ با مسیر بین آئورت و شریان ریوی.' },
+            image: '/referenzen/anatomie/koronaranomalie-aaorca.png',
+            imageAlt: { de: 'Anomaler RCA-Ursprung aus dem linken Sinus mit interarteriellem Verlauf', en: 'Anomalous RCA from the left sinus with an interarterial course', fa: 'منشأ آنومال RCA از سینوس چپ با مسیر بین‌شریانی' },
+            points: [
+              { number: '1', title: { de: 'Ursprung im linken Sinus', en: 'Origin from the left sinus', fa: 'منشأ از سینوس چپ' }, text: { de: 'Die RCA entspringt getrennt oder gemeinsam nahe dem linken Koronarostium.', en: 'The RCA arises separately or jointly near the left coronary ostium.', fa: 'RCA به‌صورت جداگانه یا مشترک در نزدیکی استیوم کرونر چپ منشأ می‌گیرد.' } },
+              { number: '2', title: { de: 'Interarterieller Verlauf', en: 'Interarterial course', fa: 'مسیر بین‌شریانی' }, text: { de: 'Der proximale Abschnitt zieht zwischen Aortenwurzel und Pulmonalarterie.', en: 'The proximal segment passes between the aortic root and pulmonary artery.', fa: 'بخش پروگزیمال بین ریشه آئورت و شریان ریوی عبور می‌کند.' } },
+              { number: '3', title: { de: 'Hochrisikomerkmale', en: 'High-risk features', fa: 'ویژگی‌های پرخطر' }, text: { de: 'Intramuraler Anteil, schlitzförmiges Ostium und spitzer Abgangswinkel gezielt prüfen.', en: 'Specifically assess for an intramural segment, slit-like ostium and acute take-off angle.', fa: 'بخش اینترامورال، استیوم شکاف‌مانند و زاویه حاد منشأ را هدفمند بررسی کنید.' } },
+              { number: '4', title: { de: 'Distaler Normalverlauf', en: 'Normal distal course', fa: 'مسیر دیستال طبیعی' }, text: { de: 'Nach Passage der großen Gefäße erreicht die RCA den rechten AV-Sulcus.', en: 'After passing the great vessels, the RCA reaches the right AV groove.', fa: 'پس از عبور از عروق بزرگ، RCA به شیار AV راست می‌رسد.' } },
+            ],
+            clinicalTitle: { de: 'Klinische Relevanz', en: 'Clinical relevance', fa: 'اهمیت بالینی' },
+            clinicalNote: { de: 'Der interarterielle Verlauf gilt besonders zusammen mit einem intramuralen Segment als Hochrisikoanatomie.', en: 'An interarterial course is considered high-risk anatomy, especially with an intramural segment.', fa: 'مسیر بین‌شریانی، به‌ویژه همراه با بخش اینترامورال، آناتومی پرخطر محسوب می‌شود.' },
+          },
+          {
+            id: 'koronar-lcx-retroaortal',
+            title: { de: 'Anomale LCx · retroaortaler Verlauf', en: 'Anomalous LCx · retroaortic course', fa: 'LCx آنومال · مسیر پست‌آئورتی' },
+            lead: { de: 'Die LCx entspringt aus dem rechten Sinus oder der proximalen RCA und zieht hinter der Aortenwurzel.', en: 'The LCx arises from the right sinus or proximal RCA and courses behind the aortic root.', fa: 'LCx از سینوس راست یا RCA پروگزیمال منشأ می‌گیرد و از پشت ریشه آئورت عبور می‌کند.' },
+            image: '/referenzen/anatomie/koronaranomalie-lcx-retroaortal.png',
+            imageAlt: { de: 'Anomale LCx aus dem rechten Sinus mit retroaortalem Verlauf', en: 'Anomalous LCx from the right sinus with a retroaortic course', fa: 'LCx آنومال از سینوس راست با مسیر پست‌آئورتی' },
+            points: [
+              { number: '1', title: { de: 'Rechtsseitiger Ursprung', en: 'Right-sided origin', fa: 'منشأ سمت راست' }, text: { de: 'Die LCx entspringt separat aus dem rechten Sinus oder aus der proximalen RCA.', en: 'The LCx arises separately from the right sinus or proximal RCA.', fa: 'LCx به‌صورت جداگانه از سینوس راست یا RCA پروگزیمال منشأ می‌گیرد.' } },
+              { number: '2', title: { de: 'Retroaortaler Bogen', en: 'Retroaortic arc', fa: 'قوس پست‌آئورتی' }, text: { de: 'Der proximale Gefäßabschnitt zieht hinter der Aortenwurzel nach links.', en: 'The proximal vessel passes behind the aortic root toward the left.', fa: 'بخش پروگزیمال رگ از پشت ریشه آئورت به سمت چپ می‌رود.' } },
+              { number: '3', title: { de: 'Linker AV-Sulcus', en: 'Left AV groove', fa: 'شیار AV چپ' }, text: { de: 'Distal erreicht die LCx ihren regelhaften Verlauf im linken AV-Sulcus.', en: 'Distally, the LCx reaches its usual course in the left AV groove.', fa: 'در قسمت دیستال، LCx به مسیر طبیعی خود در شیار AV چپ می‌رسد.' } },
+              { number: '4', title: { de: 'Meist benigne', en: 'Usually benign', fa: 'معمولاً خوش‌خیم' }, text: { de: 'Der retroaortale Verlauf ist meist nicht ischämierelevant.', en: 'The retroaortic course is usually not associated with ischaemia.', fa: 'مسیر پست‌آئورتی معمولاً از نظر ایسکمی اهمیتی ندارد.' } },
+            ],
+            clinicalTitle: { de: 'Präoperative Relevanz', en: 'Preoperative relevance', fa: 'اهمیت پیش از عمل' },
+            clinicalNote: { de: 'Vor Aortenklappen- oder Aortenwurzelchirurgie den retroaortalen Verlauf explizit nennen.', en: 'Explicitly report the retroaortic course before aortic valve or root surgery.', fa: 'پیش از جراحی دریچه آئورت یا ریشه آئورت، مسیر پست‌آئورتی را صریحاً ذکر کنید.' },
+          },
+        ],
+      },
+    ],
+    source: {
+      label: 'SCCT CCTA Interpretation & Reporting 2026',
+      url: 'https://www.journalofcardiovascularct.com/article/S1934-5925(26)00480-6/fulltext',
+    },
+  },
 ]
 
 // ── Messwerte ────────────────────────────────────────────────

@@ -427,13 +427,33 @@ function Modal({ title, subtitle, accent, copy, onClose, children, accentClass, 
 }
 
 /* ── Befundrelevante Anatomie ─────────────────── */
+function getAnatomyTopicItems(topic) {
+  if (topic.groups) return topic.groups.flatMap(group => group.items)
+  return topic.items || []
+}
+
 function AnatomieModal({ copy, lang, onClose }) {
   const topics = REF_DATA.anatomie
   const [topicId, setTopicId] = useState(topics[0].id)
+  const [itemId, setItemId] = useState(getAnatomyTopicItems(topics[0])[0].id)
   const [showDetail, setShowDetail] = useState(false)
   const [zoomImage, setZoomImage] = useState(null)
   const topic = topics.find(item => item.id === topicId) || topics[0]
-  const item = topic.items[0]
+  const topicItems = getAnatomyTopicItems(topic)
+  const item = topicItems.find(anatomyItem => anatomyItem.id === itemId) || topicItems[0]
+  const itemGroup = topic.groups?.find(group => group.items.some(groupItem => groupItem.id === item.id))
+
+  const selectTopic = nextTopic => {
+    setTopicId(nextTopic.id)
+    setItemId(getAnatomyTopicItems(nextTopic)[0].id)
+    setShowDetail(true)
+  }
+
+  const selectItem = (nextTopic, nextItem) => {
+    setTopicId(nextTopic.id)
+    setItemId(nextItem.id)
+    setShowDetail(true)
+  }
 
   return (
     <Modal
@@ -448,33 +468,58 @@ function AnatomieModal({ copy, lang, onClose }) {
     >
       <div className={`${styles.split} ${showDetail ? styles.showDetail : ''}`}>
         <nav className={`${styles.sidebar} ${styles.anatomySidebar}`} aria-label={copy.chooseTopic}>
-          {topics.map(anatomyTopic => (
-            <button
-              key={anatomyTopic.id}
-              type="button"
-              className={`${styles.navBtn} ${styles.klassNavBtn} ${anatomyTopic.id === topicId ? styles.navActivePurple : ''}`}
-              style={{ '--ref-color': anatomyTopic.color }}
-              onClick={() => {
-                setTopicId(anatomyTopic.id)
-                setShowDetail(true)
-              }}
-            >
-              <span className={`${styles.navIconWrap} ${styles.klassNavLogoWrap}`}>
-                <Image src={anatomyTopic.icon} alt="" width={30} height={30} className={styles.klassNavLogo} />
-              </span>
-              <span className={styles.klassNavText}>
-                <span className={styles.navLabel}>{tx(anatomyTopic.name, lang)}</span>
-              </span>
-              <span className={styles.klassNavArrow} aria-hidden="true">›</span>
-            </button>
-          ))}
+          {topics.map(anatomyTopic => {
+            const isActiveTopic = anatomyTopic.id === topicId
+            const groups = anatomyTopic.groups || [{ id: `${anatomyTopic.id}-items`, name: null, items: anatomyTopic.items }]
+            return (
+              <div key={anatomyTopic.id} className={styles.anatomyNavSection} style={{ '--ref-color': anatomyTopic.color }}>
+                <button
+                  type="button"
+                  className={`${styles.navBtn} ${styles.klassNavBtn} ${isActiveTopic ? styles.navActivePurple : ''}`}
+                  onClick={() => selectTopic(anatomyTopic)}
+                  aria-expanded={isActiveTopic}
+                >
+                  <span className={`${styles.navIconWrap} ${styles.klassNavLogoWrap}`}>
+                    <Image src={anatomyTopic.icon} alt="" width={30} height={30} className={styles.klassNavLogo} />
+                  </span>
+                  <span className={styles.klassNavText}>
+                    <span className={styles.navLabel}>{tx(anatomyTopic.name, lang)}</span>
+                  </span>
+                  <span className={`${styles.klassNavArrow} ${isActiveTopic ? styles.anatomyNavArrowOpen : ''}`} aria-hidden="true">›</span>
+                </button>
+
+                {isActiveTopic && (
+                  <div className={styles.anatomySubnav}>
+                    {groups.map(group => (
+                      <div key={group.id} className={styles.anatomySubnavGroup}>
+                        {group.name && <span className={styles.anatomySubnavLabel}>{tx(group.name, lang)}</span>}
+                        {group.items.map(groupItem => (
+                          <button
+                            key={groupItem.id}
+                            type="button"
+                            className={`${styles.anatomyItemNavBtn} ${groupItem.id === item.id ? styles.anatomyItemNavBtnActive : ''}`}
+                            onClick={() => selectItem(anatomyTopic, groupItem)}
+                          >
+                            <span className={styles.anatomyItemNavMarker} aria-hidden="true" />
+                            <span>{tx(groupItem.title, lang)}</span>
+                          </button>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )
+          })}
         </nav>
 
         <article className={`${styles.content} ${styles.anatomyContent}`} style={{ '--ref-color': topic.color }}>
           <button type="button" className={styles.mobileBack} onClick={() => setShowDetail(false)}>← {copy.back}</button>
           <div className={styles.anatomyTopicHead}>
             <div>
-              <span className={styles.anatomyTopicLabel}>{tx(topic.name, lang)}</span>
+              <span className={styles.anatomyTopicLabel}>
+                {tx(topic.name, lang)}{itemGroup ? ` · ${tx(itemGroup.name, lang)}` : ''}
+              </span>
               <h2>{tx(item.title, lang)}</h2>
               <p>{tx(item.lead, lang)}</p>
             </div>
@@ -518,6 +563,11 @@ function AnatomieModal({ copy, lang, onClose }) {
                   <small>{tx(item.clinicalNote, lang)}</small>
                 </span>
               </aside>
+              {topic.source && (
+                <a className={styles.anatomySource} href={topic.source.url} target="_blank" rel="noreferrer">
+                  {copy.reference}: {topic.source.label}
+                </a>
+              )}
             </div>
           </div>
         </article>

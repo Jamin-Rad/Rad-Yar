@@ -627,6 +627,67 @@
   font-weight: 650;
 }
 .anatomySidebar { background: #fbfaff; }
+.anatomyNavSection { display: grid; gap: 5px; }
+.anatomyNavSection + .anatomyNavSection { margin-top: 5px; }
+.anatomyNavArrowOpen { transform: rotate(90deg); }
+.anatomySubnav {
+  display: grid;
+  gap: 9px;
+  margin: 0 4px 9px 23px;
+  padding: 5px 0 2px 13px;
+  border-inline-start: 1.5px solid color-mix(in srgb, var(--ref-color) 25%, #e2e8f0);
+}
+.anatomySubnavGroup { display: grid; gap: 4px; }
+.anatomySubnavLabel {
+  display: block;
+  padding: 4px 7px 2px;
+  color: color-mix(in srgb, var(--ref-color) 78%, #334155);
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: .055em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+.anatomyItemNavBtn {
+  display: grid;
+  grid-template-columns: 7px minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
+  width: 100%;
+  padding: 7px 8px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+  font-family: var(--font-main, 'Manrope', system-ui, sans-serif);
+  font-size: 10.5px;
+  font-weight: 680;
+  line-height: 1.35;
+  text-align: start;
+  transition: background .16s, border-color .16s, color .16s;
+}
+.anatomyItemNavBtn:hover {
+  background: color-mix(in srgb, var(--ref-color) 6%, #fff);
+  color: #25304a;
+}
+.anatomyItemNavBtnActive {
+  border-color: color-mix(in srgb, var(--ref-color) 24%, transparent);
+  background: color-mix(in srgb, var(--ref-color) 9%, #fff);
+  color: #171744;
+  font-weight: 780;
+}
+.anatomyItemNavMarker {
+  width: 6px;
+  height: 6px;
+  margin-top: 4px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ref-color) 55%, #cbd5e1);
+}
+.anatomyItemNavBtnActive .anatomyItemNavMarker {
+  background: var(--ref-color);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ref-color) 14%, transparent);
+}
 .anatomyContent { padding: 26px 30px 30px; }
 .anatomyTopicHead {
   margin-bottom: 18px;
@@ -636,7 +697,7 @@
 .anatomyTopicLabel {
   display: block;
   margin-bottom: 5px;
-  color: #6d28d9;
+  color: var(--ref-color, #6d28d9);
   font-size: 11px;
   font-weight: 750;
   letter-spacing: .01em;
@@ -671,7 +732,7 @@
   min-width: 0;
   overflow: hidden;
   padding: 0;
-  border: 1px solid #ddd6fe;
+  border: 1px solid color-mix(in srgb, var(--ref-color, #7c3aed) 24%, #e2e8f0);
   border-radius: 18px;
   background: #fff;
   box-shadow: 0 18px 44px -34px rgba(76,29,149,.45);
@@ -696,7 +757,7 @@
   border: 1px solid #e2e8f0;
   border-radius: 999px;
   background: rgba(255,255,255,.92);
-  color: #4c1d95;
+  color: var(--ref-color, #4c1d95);
   box-shadow: 0 7px 18px rgba(15,23,42,.12);
   font-size: 23px;
   line-height: 1;
@@ -725,8 +786,8 @@
   place-items: center;
   border-radius: 999px;
   color: #fff;
-  background: #7c3aed;
-  box-shadow: 0 7px 16px rgba(124,58,237,.22);
+  background: var(--ref-color, #7c3aed);
+  box-shadow: 0 7px 16px color-mix(in srgb, var(--ref-color, #7c3aed) 24%, transparent);
   font-size: 15px;
   font-weight: 900;
 }
@@ -751,25 +812,35 @@
   gap: 12px;
   margin-top: 22px;
   padding: 16px;
-  border: 1px solid #ddd6fe;
+  border: 1px solid color-mix(in srgb, var(--ref-color, #7c3aed) 24%, #e2e8f0);
   border-radius: 15px;
-  background: #f7f5ff;
+  background: color-mix(in srgb, var(--ref-color, #7c3aed) 6%, #fff);
 }
 .anatomyClinicalIcon {
   display: grid;
   width: 34px;
   height: 34px;
   place-items: center;
-  border: 1.5px solid #8b5cf6;
+  border: 1.5px solid var(--ref-color, #8b5cf6);
   border-radius: 10px;
-  color: #6d28d9;
+  color: var(--ref-color, #6d28d9);
   font-family: Georgia, serif;
   font-size: 18px;
   font-style: italic;
   font-weight: 900;
 }
-.anatomyClinicalNote strong { color: #312e81; font-size: 13px; }
+.anatomyClinicalNote strong { color: color-mix(in srgb, var(--ref-color, #312e81) 72%, #172033); font-size: 13px; }
 .anatomyClinicalNote small { margin-top: 5px; color: #4c4f69; font-size: 12px; line-height: 1.55; }
+.anatomySource {
+  display: inline-flex;
+  margin-top: 12px;
+  color: var(--ref-color, #6d28d9);
+  font-size: 10.5px;
+  font-weight: 750;
+  line-height: 1.45;
+  text-decoration: none;
+}
+.anatomySource:hover { text-decoration: underline; }
 .anatomyZoomImage { max-height: 92vh; object-fit: contain; }
 
 /* ── Klassifikationen-Karten (Kompaktversion) ── */
@@ -1614,6 +1685,22 @@
 }
 :global(html[data-theme='dark']) .anatomyIntro p { color: #cbd5e1; }
 :global(html[data-theme='dark']) .anatomySidebar { background: #100f1c; }
+:global(html[data-theme='dark']) .anatomySubnav {
+  border-inline-start-color: color-mix(in srgb, var(--ref-color) 30%, #30364a);
+}
+:global(html[data-theme='dark']) .anatomySubnavLabel {
+  color: color-mix(in srgb, var(--ref-color) 70%, #e2e8f0);
+}
+:global(html[data-theme='dark']) .anatomyItemNavBtn { color: #9aa9be; }
+:global(html[data-theme='dark']) .anatomyItemNavBtn:hover {
+  background: color-mix(in srgb, var(--ref-color) 10%, #151827);
+  color: #eef2ff;
+}
+:global(html[data-theme='dark']) .anatomyItemNavBtnActive {
+  border-color: color-mix(in srgb, var(--ref-color) 30%, transparent);
+  background: color-mix(in srgb, var(--ref-color) 13%, #151827);
+  color: #f5f3ff;
+}
 :global(html[data-theme='dark']) .anatomyTopicHead { border-bottom-color: rgba(167,139,250,.18); }
 :global(html[data-theme='dark']) .anatomyTopicHead h2,
 :global(html[data-theme='dark']) .anatomyPoint strong { color: #f5f3ff; }
@@ -1630,9 +1717,10 @@
   border-color: rgba(167,139,250,.24);
   background: rgba(124,58,237,.10);
 }
-:global(html[data-theme='dark']) .anatomyClinicalNote strong { color: #ddd6fe; }
+:global(html[data-theme='dark']) .anatomyClinicalNote strong { color: color-mix(in srgb, var(--ref-color, #ddd6fe) 42%, #f8fafc); }
 :global(html[data-theme='dark']) .anatomyClinicalNote small { color: #b8c4d8; }
-:global(html[data-theme='dark']) .anatomyClinicalIcon { color: #c4b5fd; border-color: #8b5cf6; }
+:global(html[data-theme='dark']) .anatomyClinicalIcon { color: color-mix(in srgb, var(--ref-color, #c4b5fd) 58%, #f8fafc); border-color: var(--ref-color, #8b5cf6); }
+:global(html[data-theme='dark']) .anatomySource { color: color-mix(in srgb, var(--ref-color) 64%, #e2e8f0); }
 
 /* ── Klassifikationen ─────────────────────────── */
 :global(html[data-theme='dark']) .klassCard {
