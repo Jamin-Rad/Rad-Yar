@@ -3,7 +3,7 @@
 .hero { align-items: stretch; }
 .heroText { position: relative; overflow: hidden; border: 0; border-radius: 0; background: transparent; box-shadow: none; color: var(--text-strong); }
 .heroText::after { display: none; }
-.heroText h1 { max-width: 820px; color: var(--text-strong); font-size: clamp(2.35rem, 5vw, 4.75rem); font-style: normal; line-height: .98; letter-spacing: -.04em; }
+.heroText h1 { max-width: 820px; color: var(--text-strong); font-size: clamp(2.55rem, 4.1vw, 4rem); font-style: normal; line-height: 1.02; letter-spacing: -.035em; text-wrap: balance; }
 .heroText > p { color: var(--cmr-deep) !important; font-size: 1.12rem !important; }
 .heroText > small { display: block; margin-top: 15px; color: var(--text-muted); font-size: .72rem; }
 .sourceBadge { color: var(--cmr-deep); border-color: rgba(231,51,104,.35); background: rgba(231,51,104,.12); }
@@ -36,11 +36,11 @@
 .questionLab > header span { color: var(--cmr-deep); font-size: .68rem; font-weight: 900; letter-spacing: .12em; }
 .questionLab > header h2 { margin: 5px 0 20px; color: var(--text-strong); font: normal 850 1.6rem var(--font-display); }
 .questionTabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-.questionTabs button { display: flex; min-width: 0; min-height: 78px; flex-direction: column; justify-content: center; padding: 14px 15px; border: 1px solid var(--border); border-radius: 10px; color: var(--text-soft); background: var(--surface-soft); font-family: inherit; text-align: start; cursor: pointer; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
+.questionTabs button { display: flex; min-width: 0; min-height: 92px; flex-direction: column; justify-content: center; padding: 16px 17px; border: 1px solid var(--border); border-radius: 10px; color: var(--text-soft); background: var(--surface-soft); font-family: inherit; text-align: start; cursor: pointer; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
 .questionTabs button:hover { border-color: rgba(231,51,104,.55); transform: translateY(-1px); }
 .questionTabs small,.questionTabs strong { display: block; }
-.questionTabs small { margin-bottom: 5px; color: var(--cmr-deep); font-size: .63rem; font-weight: 950; letter-spacing: .1em; }
-.questionTabs strong { color: var(--text-strong); font-size: clamp(.8rem,.76rem + .12vw,.88rem); line-height: 1.4; overflow-wrap: anywhere; white-space: normal; }
+.questionTabs small { margin-bottom: 7px; color: var(--cmr-deep); font-size: .68rem; font-weight: 950; letter-spacing: .1em; }
+.questionTabs strong { color: var(--text-strong); font-size: clamp(.96rem,.91rem + .12vw,1.04rem); font-weight: 850; line-height: 1.32; overflow-wrap: normal; text-wrap: balance; white-space: normal; }
 .questionTabs .questionActive { color: #fff; border-color: var(--cmr); background: linear-gradient(135deg, #561743, #9f2452); box-shadow: 0 10px 24px rgba(139,32,70,.24); }
 .questionTabs .questionActive small { color: #ffd0dc; }
 .questionTabs .questionActive strong { color: #fff; }
@@ -172,8 +172,8 @@
 @media (max-width: 720px) {
   .heroText h1 { font-size: 2.35rem; }
   .questionLab { padding: 20px 16px; border-radius: 13px; }
-  .questionTabs button { min-height: 72px; padding: 12px; }
-  .questionTabs strong { font-size: .8rem; }
+  .questionTabs button { min-height: 82px; padding: 13px; }
+  .questionTabs strong { font-size: .92rem; }
   .questionPanel { gap: 13px; padding: 17px 14px; }
   .questionPanel dl { grid-column: 1 / -1; }
   .sectionHeader { padding: 16px 15px; }
