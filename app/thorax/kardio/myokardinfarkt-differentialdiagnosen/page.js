@@ -152,41 +152,83 @@ function LayerDiagram({ lang }) {
   </div>
 }
 
+function DownArrow() {
+  return <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 4v14M7 13l5 5 5-5" /></svg>
+}
+
+function TroponinFlowchart({ lang }) {
+  const t = value => pick(value, lang)
+  const cathNote = t(L('Keine Culprit-Läsion → CMR früh', 'No culprit lesion → early CMR', 'بدون ضایعهٔ مسئول ← CMR زودهنگام'))
+  return <section className={styles.troponinFlowchart} aria-labelledby="troponin-flow-title">
+    <header><h3 id="troponin-flow-title">{t(L('Der gesamte Weg auf einen Blick', 'The full pathway at a glance', 'نمای کامل مسیر در یک نگاه'))}</h3></header>
+    <div className={styles.flowStartNode}>
+      <strong>{t(L('Thoraxschmerz + Troponin erhöht', 'Chest pain + elevated troponin', 'درد قفسه سینه + افزایش تروپونین'))}</strong>
+      <span>{t(L('ECG · Klinik · hs-Troponin', 'ECG · clinical picture · hs-troponin', 'ECG · تابلوی بالینی · hs-Troponin'))}</span>
+    </div>
+    <div className={styles.flowDown}><DownArrow /></div>
+    <div className={styles.flowQuestion}>{t(L('ST-Hebung oder hämodynamisch instabil?', 'ST elevation or haemodynamic instability?', 'ST elevation یا ناپایداری همودینامیک؟'))}</div>
+
+    <div className={styles.flowLevel}>
+      <article className={styles.flowExit}><span>{t(L('JA', 'YES', 'بله'))}<DownArrow /></span><div className={styles.flowCath}><strong>{t(L('Sofort Herzkatheter', 'Immediate catheterisation', 'کاتتریزاسیون فوری قلب'))}</strong><small>{cathNote}</small></div></article>
+      <article className={styles.flowContinue}><span>{t(L('NEIN', 'NO', 'خیر'))}<DownArrow /></span><div className={styles.flowQuestion}>{t(L('Sehr hoher Ausgangswert, klare Dynamik oder anhaltende Ischämie?', 'Very high initial value, clear kinetics, or ongoing ischaemia?', 'مقدار اولیه بسیار بالا، تغییر واضح یا ایسکمی پایدار؟'))}</div></article>
+    </div>
+
+    <div className={styles.flowLevel}>
+      <article className={styles.flowExit}><span>{t(L('JA', 'YES', 'بله'))}<DownArrow /></span><div className={styles.flowCath}><strong>{t(L('Invasive Abklärung', 'Invasive assessment', 'بررسی تهاجمی'))}</strong><small>{cathNote}</small></div></article>
+      <article className={styles.flowContinue}><span>{t(L('NEIN', 'NO', 'خیر'))}<DownArrow /></span><div className={styles.flowRepeat}><small>0/1 h</small><strong>{t(L('hs-Troponin nach 1 Stunde wiederholen', 'Repeat hs-troponin after 1 hour', 'تکرار hs-Troponin پس از ۱ ساعت'))}</strong></div><div className={styles.flowDown}><DownArrow /></div><div className={styles.flowQuestion}>{t(L('Signifikante Dynamik?', 'Significant change?', 'تغییر معنی‌دار؟'))}</div></article>
+    </div>
+
+    <div className={styles.flowLevel}>
+      <article className={styles.flowExit}><span>{t(L('JA', 'YES', 'بله'))}<DownArrow /></span><div className={styles.flowCath}><strong>{t(L('Rule-in → invasive Abklärung', 'Rule-in → invasive assessment', 'Rule-in ← بررسی تهاجمی'))}</strong><small>{cathNote}</small></div></article>
+      <article className={styles.flowContinue}><span>{t(L('NEIN', 'NO', 'خیر'))}<DownArrow /></span><div className={styles.flowCmr}><small>{t(L('STABIL + URSACHE UNKLAR', 'STABLE + CAUSE UNCLEAR', 'پایدار + علت نامشخص'))}</small><strong>CMR</strong><p>{t(L('Infarkt, Myokarditis, Takotsubo oder andere Myokardschädigung differenzieren.', 'Differentiate infarction, myocarditis, Takotsubo, or other myocardial injury.', 'افتراق انفارکت، میوکاردیت، تاکوتسوبو یا سایر آسیب‌های میوکارد.'))}</p></div></article>
+    </div>
+  </section>
+}
+
 function TroponinApproach({ lang }) {
   const t = value => pick(value, lang)
-  return <div className={styles.emergencyPath}>
-    <div className={styles.emergencyStart}>
-      <strong>{t(L('Thoraxschmerz + Troponin erhöht', 'Chest pain + elevated troponin', 'درد قفسه سینه + افزایش تروپونین'))}</strong>
-      <span>{t(L('ECG sofort · hs-Troponin seriell · Klinik', 'Immediate ECG · serial hs-troponin · clinical picture', 'ECG فوری · تروپونین سریال · تابلوی بالینی'))}</span>
-    </div>
-    <span className={styles.flowArrow} aria-hidden="true" />
+  const [urgency, setUrgency] = useState(null)
+  const [highRisk, setHighRisk] = useState(null)
+  const [dynamic, setDynamic] = useState(null)
+  const reset = () => { setUrgency(null); setHighRisk(null); setDynamic(null) }
+  const chooseUrgency = value => { setUrgency(value); setHighRisk(null); setDynamic(null) }
+  const chooseHighRisk = value => { setHighRisk(value); setDynamic(null) }
+  const resultType = urgency === true ? 'urgent' : highRisk === true || dynamic === true ? 'invasive' : dynamic === false ? 'cmr' : null
+  const question = urgency === null
+    ? L('ST-Hebung oder hämodynamisch instabil?', 'ST elevation or haemodynamic instability?', 'ST elevation یا ناپایداری همودینامیک؟')
+    : highRisk === null && urgency === false
+      ? L('Sehr hoher Ausgangswert, klare Dynamik oder anhaltende Ischämie?', 'Very high initial value, clear kinetics, or ongoing ischaemia?', 'مقدار اولیه بسیار بالا، تغییر واضح یا ایسکمی پایدار؟')
+      : dynamic === null && highRisk === false
+        ? L('Nach 1 Stunde: signifikante hs-Troponin-Dynamik?', 'After 1 hour: significant hs-troponin change?', 'پس از ۱ ساعت: تغییر معنی‌دار hs-Troponin؟')
+        : null
+  const step = urgency === null ? 1 : highRisk === null && urgency === false ? 2 : 3
+  const choose = value => urgency === null ? chooseUrgency(value) : highRisk === null ? chooseHighRisk(value) : setDynamic(value)
+  const outcomes = {
+    urgent: [L('Sofort Herzkatheter', 'Immediate catheterisation', 'کاتتریزاسیون فوری قلب'), L('CMR darf die Reperfusion nicht verzögern.', 'CMR must not delay reperfusion.', 'CMR نباید رپرفیوژن را به تأخیر بیندازد.')],
+    invasive: [L('Rule-in: invasive Abklärung', 'Rule-in: invasive assessment', 'Rule-in: بررسی تهاجمی'), L('Zeitpunkt nach Gesamtrisiko; ohne Culprit-Läsion CMR möglichst im Indexaufenthalt.', 'Timing according to overall risk; without a culprit lesion, perform CMR during the index admission when possible.', 'زمان‌بندی بر اساس ریسک کلی؛ در نبود ضایعهٔ مسئول، CMR ترجیحاً در همان بستری انجام شود.')],
+    cmr: [L('Stabil – Ursache weiter unklar', 'Stable—the cause remains unclear', 'بیمار پایدار است، علت همچنان نامشخص'), L('Jetzt kann CMR Infarkt, Myokarditis, Takotsubo oder andere Myokardschädigung unterscheiden.', 'CMR can now distinguish infarction, myocarditis, Takotsubo, or other myocardial injury.', 'اکنون CMR می‌تواند انفارکت، میوکاردیت، تاکوتسوبو یا سایر آسیب‌های میوکارد را افتراق دهد.')],
+  }
 
-    <section className={styles.emergencyStep}>
-      <h3>{t(L('ST-Hebung oder hämodynamisch instabil?', 'ST elevation or haemodynamic instability?', 'ST elevation یا ناپایداری همودینامیک؟'))}</h3>
-      <div className={styles.emergencySplit}>
-        <article className={styles.cathOutcome}><small>{t(L('JA', 'YES', 'بله'))}</small><strong>{t(L('Sofort Herzkatheter', 'Immediate catheterisation', 'کاتتریزاسیون فوری قلب'))}</strong><p>{t(L('CMR darf die Reperfusion nicht verzögern.', 'CMR must not delay reperfusion.', 'CMR نباید رپرفیوژن را به تأخیر بیندازد.'))}</p></article>
-        <article className={styles.nextOutcome}><small>{t(L('NEIN', 'NO', 'خیر'))}</small><strong>{t(L('Wie hoch und wie dynamisch ist hs-Troponin?', 'How high and how dynamic is hs-troponin?', 'hs-Troponin چقدر بالا و چقدر داینامیک است؟'))}</strong></article>
-      </div>
+  return <div className={styles.troponinSection}>
+    <section className={styles.troponinInteractive} aria-labelledby="troponin-interactive-title">
+      <header>
+        <div><small>{t(L('SCHRITT', 'STEP', 'مرحله'))} {step}/3</small><h3 id="troponin-interactive-title">{t(L('Was ist der nächste Schritt?', 'What is the next step?', 'قدم بعدی چیست؟'))}</h3></div>
+        {urgency !== null ? <button type="button" className={styles.resetPath} onClick={reset}>{t(L('Neu starten', 'Restart', 'شروع دوباره'))}</button> : null}
+      </header>
+      <div className={styles.stepTrack} aria-hidden="true">{[1, 2, 3].map(number => <i key={number} className={number <= step ? styles.stepTrackActive : ''} />)}</div>
+      {question ? <div className={styles.interactiveQuestion} key={step}>
+        <strong>{t(question)}</strong>
+        {step === 3 ? <span>{t(L('Assayspezifischen 0/1-h-Algorithmus verwenden.', 'Use the assay-specific 0/1-h algorithm.', 'از الگوریتم اختصاصی تست ۰/۱ ساعت استفاده کنید.'))}</span> : null}
+        <div><button type="button" onClick={() => choose(true)}>{t(L('Ja', 'Yes', 'بله'))}</button><button type="button" onClick={() => choose(false)}>{t(L('Nein', 'No', 'خیر'))}</button></div>
+      </div> : null}
+      {resultType ? <div className={`${styles.interactiveResult} ${styles[`interactiveResult_${resultType}`]}`} aria-live="polite">
+        <small>{resultType === 'cmr' ? 'CMR' : t(L('NÄCHSTER SCHRITT', 'NEXT STEP', 'قدم بعدی'))}</small>
+        <strong>{t(outcomes[resultType][0])}</strong>
+        <p>{t(outcomes[resultType][1])}</p>
+      </div> : null}
     </section>
-    <span className={styles.flowArrow} aria-hidden="true" />
 
-    <section className={styles.emergencyStep}>
-      <h3>{t(L('NSTE-ACS-Risiko einordnen', 'Classify NSTE-ACS risk', 'ریسک NSTE-ACS را تعیین کنید'))}</h3>
-      <div className={styles.emergencySplit}>
-        <article className={styles.cathOutcome}><small>{t(L('HOHER VERDACHT', 'HIGH SUSPICION', 'شک بالا'))}</small><strong>{t(L('Sehr hoher Wert, deutliche Dynamik oder anhaltende Ischämie', 'Very high value, clear kinetics or ongoing ischaemia', 'مقدار بسیار بالا، تغییر واضح یا ایسکمی پایدار'))}</strong><p>{t(L('Frühe bzw. stationäre Koronarangiographie je nach Gesamtrisiko.', 'Early or inpatient coronary angiography according to overall risk.', 'آنژیوگرافی زودهنگام یا حین بستری بر اساس ریسک کلی.'))}</p></article>
-        <article className={styles.observeOutcome}><small>{t(L('NICHT EINDEUTIG', 'INDETERMINATE', 'نامشخص'))}</small><strong>{t(L('Nach 1 Stunde erneut messen', 'Repeat after 1 hour', 'تکرار اندازه‌گیری پس از ۱ ساعت'))}</strong><p>{t(L('Assayspezifischen 0/1-h-Algorithmus anwenden; bei Observe-Zone ggf. 3 h + Echo.', 'Use the assay-specific 0/1-h algorithm; in the observe zone consider 3 h + echo.', 'الگوریتم اختصاصی تست ۰/۱ ساعت؛ در Observe Zone در صورت نیاز ۳ ساعت + اکو.'))}</p></article>
-      </div>
-    </section>
-    <span className={styles.flowArrow} aria-hidden="true" />
-
-    <section className={styles.cmrWindow}>
-      <header><small>{t(L('WANN HILFT CMR?', 'WHEN DOES CMR HELP?', 'CMR چه زمانی کمک می‌کند؟'))}</small><h3>{t(L('Stabil – aber die Ursache bleibt unklar', 'Stable—but the cause remains unclear', 'بیمار پایدار است، اما علت هنوز نامشخص است'))}</h3></header>
-      <div>
-        <article><strong>{t(L('Keine relevante Troponindynamik / Observe-Zone', 'No relevant troponin kinetics / observe zone', 'بدون تغییر قابل‌توجه تروپونین / Observe Zone'))}</strong></article>
-        <article><strong>{t(L('Herzkatheter ohne obstruktive Culprit-Läsion → MINOCA', 'Catheterisation without an obstructive culprit lesion → MINOCA', 'کاتتریزاسیون بدون ضایعه انسدادی مسئول ← MINOCA'))}</strong></article>
-      </div>
-      <p>{t(L('CMR klärt vor allem: Infarkt, Myokarditis, Takotsubo oder andere Myokardschädigung.', 'CMR mainly distinguishes infarction, myocarditis, Takotsubo, or another myocardial injury.', 'CMR عمدتاً بین انفارکت، میوکاردیت، تاکوتسوبو و سایر آسیب‌های میوکارد افتراق می‌دهد.'))}</p>
-    </section>
+    <TroponinFlowchart lang={lang} />
 
     <aside className={styles.troponinDifferentials}>
       <h3>{t(L('Differenzialdiagnosen des Troponinanstiegs', 'Differential diagnoses of troponin elevation', 'تشخیص‌های افتراقی افزایش تروپونین'))}</h3>

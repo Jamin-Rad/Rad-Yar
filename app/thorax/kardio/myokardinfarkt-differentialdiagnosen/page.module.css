@@ -41,31 +41,59 @@
 .infarctSplit h3,.mvoBox h3,.compareColumns h3,.inflammationIntro h3,.algorithmSteps h3,.sources h3{margin:11px 0 8px;color:var(--text-strong);font-family:var(--font-display);font-size:1.04rem;line-height:1.35}
 .infarctSplit li,.mvoBox p,.compareColumns p,.inflammationIntro p,.algorithmSteps p,.sources p{margin:0;color:var(--text-soft);line-height:1.72}
 
-.emergencyPath{display:grid;gap:0;padding:24px;border:1px solid rgba(231,51,104,.25);border-radius:16px;background:linear-gradient(145deg,rgba(231,51,104,.045),rgba(50,154,170,.025) 48%,var(--bg-card));box-shadow:0 18px 42px rgba(86,23,67,.06)}
-.emergencyStart{display:grid;justify-items:center;gap:5px;max-width:620px;width:100%;margin:0 auto;padding:18px 22px;border-radius:12px;color:#fff;background:linear-gradient(110deg,var(--mi-deep),#7f205f);box-shadow:0 12px 28px rgba(86,23,67,.18);text-align:center}
-.emergencyStart strong{font-family:var(--font-display);font-size:clamp(1.12rem,2vw,1.45rem);font-weight:900;line-height:1.25}
-.emergencyStart span{color:#ffdce6;font-size:.74rem;font-weight:800;letter-spacing:.025em}
-.flowArrow{position:relative;display:block;width:22px;height:38px;margin:0 auto}
-.flowArrow::before{content:'';position:absolute;top:0;left:10px;width:2px;height:28px;background:linear-gradient(var(--mi-deep),var(--mi))}
-.flowArrow::after{content:'';position:absolute;bottom:2px;left:5px;width:10px;height:10px;border-right:2px solid var(--mi);border-bottom:2px solid var(--mi);transform:rotate(45deg)}
-.emergencyStep{display:grid;gap:14px;padding:18px;border:1px solid var(--border);border-radius:14px;background:var(--bg-card)}
-.emergencyStep>h3{margin:0;color:var(--text-strong);font-family:var(--font-display);font-size:clamp(1.02rem,1.65vw,1.22rem);font-weight:900;line-height:1.35;text-align:center}
-.emergencySplit{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
-.emergencySplit article{display:grid;align-content:start;gap:6px;min-height:118px;padding:16px 17px;border:1px solid var(--border);border-radius:11px;background:var(--surface-soft)}
-.emergencySplit small,.cmrWindow small{color:var(--mi-deep);font-size:.64rem;font-weight:950;letter-spacing:.12em}
-.emergencySplit strong{color:var(--text-strong);font-family:var(--font-display);font-size:.94rem;font-weight:900;line-height:1.38}
-.emergencySplit p{margin:0;color:var(--text-soft);font-size:.76rem;line-height:1.55}
-.emergencySplit .cathOutcome{border-color:rgba(231,51,104,.38);background:rgba(231,51,104,.06)}
-.emergencySplit .cathOutcome small{color:var(--mi)}
-.emergencySplit .nextOutcome,.emergencySplit .observeOutcome{border-color:rgba(50,154,170,.38);background:rgba(50,154,170,.055)}
-.emergencySplit .nextOutcome small,.emergencySplit .observeOutcome small{color:var(--mi-teal)}
-.cmrWindow{display:grid;gap:14px;padding:20px;border:1px solid rgba(50,154,170,.42);border-radius:14px;background:linear-gradient(135deg,rgba(50,154,170,.075),var(--bg-card))}
-.cmrWindow header{display:grid;gap:4px;text-align:center}
-.cmrWindow h3{margin:0;color:var(--text-strong);font-family:var(--font-display);font-size:1.16rem;font-weight:900;line-height:1.35}
-.cmrWindow>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.cmrWindow article{display:grid;place-items:center;min-height:74px;padding:14px;border:1px solid rgba(50,154,170,.25);border-radius:10px;background:var(--bg-card);text-align:center}
-.cmrWindow article strong{color:var(--text-strong);font-size:.8rem;line-height:1.5}
-.cmrWindow>p{margin:0;padding:11px 14px;border-radius:8px;color:#fff;background:linear-gradient(90deg,var(--mi-deep),#173d58);font-size:.8rem;font-weight:850;line-height:1.55;text-align:center}
+.troponinSection{display:grid;gap:24px}
+.troponinInteractive{overflow:hidden;border:1px solid rgba(231,51,104,.28);border-radius:16px;background:var(--bg-card);box-shadow:0 20px 44px rgba(86,23,67,.08)}
+.troponinInteractive>header{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding:22px 24px 17px;background:linear-gradient(135deg,rgba(231,51,104,.075),rgba(50,154,170,.04))}
+.troponinInteractive>header>div{display:grid;gap:4px}
+.troponinInteractive header small{color:var(--mi);font-size:.68rem;font-weight:950;letter-spacing:.13em}
+.troponinInteractive h3{margin:0;color:var(--text-strong);font-family:var(--font-display);font-size:clamp(1.25rem,2vw,1.62rem);font-weight:900;line-height:1.25}
+.resetPath{flex:none;padding:8px 11px;border:1px solid rgba(86,23,67,.18);border-radius:7px;color:var(--mi-deep);background:var(--bg-card);font:850 .72rem/1.2 inherit;cursor:pointer}
+.resetPath:hover{border-color:var(--mi);color:var(--mi)}
+.stepTrack{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:0 24px}
+.stepTrack i{height:4px;border-radius:999px;background:var(--border);transition:background .2s ease}
+.stepTrack .stepTrackActive{background:linear-gradient(90deg,var(--mi-deep),var(--mi))}
+.interactiveQuestion{display:grid;gap:13px;padding:30px 24px 26px;animation:troponinReveal .25s ease both}
+.interactiveQuestion>strong{max-width:720px;color:var(--text-strong);font-family:var(--font-display);font-size:clamp(1.22rem,2.3vw,1.72rem);font-weight:900;line-height:1.35;text-wrap:balance}
+.interactiveQuestion>span{color:var(--text-soft);font-size:.82rem;font-weight:720}
+.interactiveQuestion>div{display:grid;grid-template-columns:repeat(2,minmax(0,180px));gap:10px;margin-top:3px}
+.interactiveQuestion button{min-height:50px;padding:11px 18px;border:1px solid rgba(86,23,67,.2);border-radius:9px;color:var(--text-strong);background:var(--surface-soft);font:900 .94rem/1.2 inherit;cursor:pointer;transition:transform .18s ease,border-color .18s ease,background .18s ease,color .18s ease}
+.interactiveQuestion button:first-child{color:#fff;border-color:var(--mi);background:linear-gradient(135deg,var(--mi-deep),#9f2452)}
+.interactiveQuestion button:last-child{border-color:rgba(50,154,170,.42);color:#176b78;background:rgba(50,154,170,.07)}
+.interactiveQuestion button:hover{transform:translateY(-2px)}
+.interactiveResult{display:grid;gap:8px;padding:28px 24px 30px;color:#fff;animation:troponinReveal .25s ease both}
+.interactiveResult small{font-size:.67rem;font-weight:950;letter-spacing:.13em}
+.interactiveResult strong{font-family:var(--font-display);font-size:clamp(1.35rem,2.4vw,1.82rem);font-weight:900;line-height:1.25}
+.interactiveResult p{max-width:720px;margin:0;color:rgba(255,255,255,.82);font-size:.9rem;line-height:1.65}
+.interactiveResult_urgent,.interactiveResult_invasive{background:linear-gradient(135deg,var(--mi-deep),#8f204f)}
+.interactiveResult_cmr{background:linear-gradient(135deg,var(--mi-navy),#0d5b69)}
+@keyframes troponinReveal{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+
+.troponinFlowchart{display:grid;padding:24px;border:1px solid rgba(231,51,104,.25);border-radius:16px;background:linear-gradient(145deg,rgba(231,51,104,.04),rgba(50,154,170,.025) 48%,var(--bg-card))}
+.troponinFlowchart>header{margin-bottom:20px;text-align:center}
+.troponinFlowchart>header h3{margin:0;color:var(--text-strong);font-family:var(--font-display);font-size:clamp(1.2rem,2vw,1.5rem);font-weight:900;line-height:1.3}
+.flowStartNode{display:grid;justify-items:center;gap:5px;max-width:600px;width:100%;margin:0 auto;padding:18px 22px;border-radius:11px;color:#fff;background:linear-gradient(110deg,var(--mi-deep),#7f205f);box-shadow:0 12px 26px rgba(86,23,67,.18);text-align:center}
+.flowStartNode strong{font-family:var(--font-display);font-size:clamp(1.08rem,1.9vw,1.38rem);font-weight:900;line-height:1.25}
+.flowStartNode span{color:#ffdce6;font-size:.72rem;font-weight:800}
+.flowDown{display:grid;height:40px;place-items:center;color:var(--mi)}
+.flowDown svg{display:block}
+.flowQuestion{display:grid;min-height:72px;place-items:center;padding:16px 20px;border:1px solid rgba(86,23,67,.18);border-radius:11px;color:var(--text-strong);background:var(--bg-card);font-family:var(--font-display);font-size:clamp(.98rem,1.65vw,1.16rem);font-weight:900;line-height:1.4;text-align:center}
+.troponinFlowchart>.flowQuestion{max-width:680px;width:100%;margin:0 auto}
+.flowLevel{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px;padding-top:22px;border-top:1px solid rgba(86,23,67,.14)}
+.flowLevel::before{content:'';position:absolute;top:-1px;left:50%;width:1px;height:23px;background:rgba(86,23,67,.3)}
+.flowLevel article{display:grid;align-content:start;justify-items:center;gap:9px;min-width:0}
+.flowLevel article>span{display:inline-flex;align-items:center;gap:7px;color:var(--mi);font-size:.67rem;font-weight:950;letter-spacing:.12em}
+.flowContinue>span{color:var(--mi-teal)!important}
+.flowLevel article>span svg{width:16px;height:16px}
+.flowCath,.flowRepeat,.flowCmr{display:grid;width:100%;min-height:92px;align-content:center;gap:6px;padding:17px 18px;border-radius:11px;text-align:center}
+.flowCath{border:1px solid rgba(231,51,104,.34);background:rgba(231,51,104,.065)}
+.flowCath strong,.flowRepeat strong{color:var(--text-strong);font-family:var(--font-display);font-size:.94rem;line-height:1.4}
+.flowCath small{color:var(--mi-deep);font-size:.68rem;font-weight:800;line-height:1.45}
+.flowRepeat{border:1px solid rgba(50,154,170,.32);background:rgba(50,154,170,.06)}
+.flowRepeat small,.flowCmr small{color:var(--mi-teal);font-size:.65rem;font-weight:950;letter-spacing:.1em}
+.flowContinue>.flowDown{height:30px}
+.flowContinue>.flowQuestion{width:100%}
+.flowCmr{min-height:126px;color:#fff;background:linear-gradient(135deg,var(--mi-navy),#0d5b69);box-shadow:0 13px 28px rgba(7,29,58,.16)}
+.flowCmr small{color:#91e0e7}.flowCmr strong{font-family:var(--font-display);font-size:1.55rem}.flowCmr p{margin:0;color:rgba(255,255,255,.82);font-size:.76rem;line-height:1.55}
 .troponinDifferentials{display:grid;gap:13px;margin-top:18px;padding:19px 20px;border-inline-start:5px solid var(--mi);background:rgba(231,51,104,.055)}
 .troponinDifferentials h3{margin:0;color:var(--text-strong);font-family:var(--font-display);font-size:1rem;font-weight:900;line-height:1.35}
 .troponinDifferentials>div{display:flex;flex-wrap:wrap;gap:7px}
@@ -152,11 +180,12 @@
   .page::before{background-position:60% 18%}
   .heroCopy h1{font-size:clamp(2rem,9.5vw,2.85rem);overflow-wrap:anywhere;hyphens:auto}
   .sectionHeader{padding:16px 15px}.sectionHeader>span:nth-child(2)>strong{font-size:1.12rem;overflow-wrap:anywhere}.sectionBody{padding:6px 16px 24px}
-  .emergencyPath{padding:17px 13px}.emergencySplit,.cmrWindow>div,.layerDiagram,.patternPanel,.infarctSplit,.compareColumns{grid-template-columns:1fr}.troponinDifferentials{border-inline-start:4px solid var(--mi)}.layerDiagram>span{transform:rotate(90deg)}
+  .troponinInteractive>header{padding:19px 18px 15px}.stepTrack{padding:0 18px}.interactiveQuestion,.interactiveResult{padding-inline:18px}.troponinFlowchart{padding:20px 14px}.flowLevel{grid-template-columns:1fr}.flowContinue{order:-1}.troponinDifferentials{border-inline-start:4px solid var(--mi)}.layerDiagram,.patternPanel,.infarctSplit,.compareColumns{grid-template-columns:1fr}.layerDiagram>span{transform:rotate(90deg)}
   .patternPanel figure{min-height:320px}.patternPanel>div{padding:23px}.mvoBox{grid-template-columns:90px minmax(0,1fr);gap:16px}.mvoMark>span{width:72px;height:72px;border-width:15px}
   .sources>div{grid-template-columns:1fr}.inflammationTable{overflow-x:auto}.inflammationTable>div{min-width:650px}.rule{grid-template-columns:1fr}
 }
 @media(max-width:520px){
+  .troponinInteractive>header{align-items:stretch;flex-direction:column}.resetPath{align-self:start}.interactiveQuestion>div{grid-template-columns:1fr}.flowQuestion{font-size:.95rem}.flowCath,.flowRepeat,.flowCmr{padding:15px}
   .patternTabs,.decisionOptions{grid-template-columns:1fr}
   .patternPanel figure{min-height:280px}.mvoBox{grid-template-columns:1fr}.mvoMark{justify-content:start}.inflammationIntro>div{display:grid;grid-template-columns:1fr auto 1fr;gap:8px}.inflammationIntro>div>span{padding:9px;font-size:.72rem}.inflammationIntro b{display:none}.decisionResult{grid-template-columns:1fr}.algorithmSteps::before{left:22px}.rtl .algorithmSteps::before{right:22px}.takeHome li{grid-template-columns:44px minmax(0,1fr)}
 }
@@ -172,7 +201,8 @@
 :global(html[data-theme='dark']) .compareColumns header small,
 :global(html[data-theme='dark']) .sources header small,
 :global(html[data-theme='dark']) .rule strong,
-:global(html[data-theme='dark']) .emergencySplit small,
-:global(html[data-theme='dark']) .cmrWindow small,
+:global(html[data-theme='dark']) .resetPath,
+:global(html[data-theme='dark']) .flowCath small,
+:global(html[data-theme='dark']) .interactiveQuestion button:last-child,
 :global(html[data-theme='dark']) .troponinDifferentials p strong,
 :global(html[data-theme='dark']) .layerDiagram article>strong{color:#ff9ab4}
