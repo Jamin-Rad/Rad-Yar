@@ -89,13 +89,15 @@ const PATTERNS = [
   },
 ]
 
-const TROPNON_CORONARY = [
-  L('Tachykarde Herzrhythmusstörung', 'Tachyarrhythmia', 'تاکی‌آریتمی'),
+const TROPONIN_DIFFERENTIALS = [
+  L('Akuter Myokardinfarkt / MINOCA', 'Acute myocardial infarction / MINOCA', 'انفارکت حاد میوکارد / MINOCA'),
+  L('Myokarditis', 'Myocarditis', 'میوکاردیت'),
+  L('Takotsubo-Syndrom', 'Takotsubo syndrome', 'سندروم تاکوتسوبو'),
   L('Lungenarterienembolie', 'Pulmonary embolism', 'آمبولی ریه'),
-  L('Herzinsuffizienz', 'Heart failure', 'نارسایی قلبی'),
-  L('Aortenstenose', 'Aortic stenosis', 'تنگی آئورت'),
-  L('Aortendissektion', 'Aortic dissection', 'دیسکسیون آئورت'),
-  L('Koronare Vaskulitis / Herz-OP', 'Coronary vasculitis / cardiac surgery', 'واسکولیت کرونر / جراحی قلب'),
+  L('Tachyarrhythmie', 'Tachyarrhythmia', 'تاکی‌آریتمی'),
+  L('Akute Herzinsuffizienz', 'Acute heart failure', 'نارسایی حاد قلبی'),
+  L('Aortenstenose / -dissektion', 'Aortic stenosis / dissection', 'تنگی / دیسکسیون آئورت'),
+  L('Kardiale Sarkoidose / Herz-OP', 'Cardiac sarcoidosis / cardiac surgery', 'سارکوئیدوز قلبی / جراحی قلب'),
 ]
 
 const REFERENCES = [
@@ -153,68 +155,44 @@ function LayerDiagram({ lang }) {
 
 function TroponinApproach({ lang }) {
   const t = value => pick(value, lang)
-  const cmrResults = [
-    {
-      code: 'LGE',
-      className: styles.approachResultInfarct,
-      title: L('Infarkt-Typ', 'Infarct pattern', 'الگوی انفارکتی'),
-      text: L('Subendokardiales bis transmurales LGE im Koronarterritorium → ischämische Schädigung; bei offenen Koronarien MINOCA weiter abklären.', 'Subendocardial-to-transmural LGE in a coronary territory → ischaemic injury; with unobstructed coronaries continue the MINOCA work-up.', 'LGE ساب‌اندوکاردیال تا ترانس‌مورال در قلمرو کرونری ← آسیب ایسکمیک؛ در صورت باز بودن عروق، بررسی MINOCA ادامه می‌یابد.'),
-    },
-    {
-      code: 'T1/T2',
-      className: styles.approachResultInflammation,
-      title: L('Nicht-Infarkt-Typ', 'Non-infarct pattern', 'الگوی غیرانفارکتی'),
-      text: L('Subepikardiales, midmyokardiales oder fleckiges LGE mit Ödem → an Myokarditis oder Sarkoidose denken.', 'Subepicardial, mid-wall or patchy LGE with oedema → consider myocarditis or sarcoidosis.', 'LGE ساب‌اپیکاردیال، میدوال یا لکه‌ای همراه ادم ← میوکاردیت یا سارکوئیدوز مطرح می‌شود.'),
-    },
-    {
-      code: 'CINE',
-      className: styles.approachResultTakotsubo,
-      title: L('Kein typisches LGE', 'No typical LGE', 'بدون LGE تیپیک'),
-      text: L('Mittelventrikuläre oder apikale Akinesie ohne Infarktnarbe → Takotsubo ist wahrscheinlich.', 'Mid-ventricular or apical akinesia without infarct scar → Takotsubo is likely.', 'آکینزی میانی بطن یا اپیکال بدون اسکار انفارکت ← تاکوتسوبو محتمل است.'),
-    },
-  ]
-
-  return <div className={styles.approachMap}>
-    <header className={styles.approachHeading}>
-      <small>{t(L('Vom Laborwert zur Gewebediagnose', 'From laboratory value to tissue diagnosis', 'از یافته آزمایشگاهی تا تشخیص بافتی'))}</small>
-      <h3>{t(L('Schritt für Schritt beim Troponinanstieg', 'A step-by-step approach to troponin rise', 'اپروچ قدم‌به‌قدم به افزایش تروپونین'))}</h3>
-      <p>{t(L('Troponin zeigt eine Myokardschädigung – nicht automatisch einen Myokardinfarkt. Erst Klinik, EKG, Dynamik und Koronarstatus bestimmen den nächsten Schritt.', 'Troponin indicates myocardial injury—not automatically myocardial infarction. Symptoms, ECG, kinetics and coronary status determine the next step.', 'تروپونین نشان‌دهنده آسیب میوکارد است، نه لزوماً انفارکت. علائم، ECG، روند تغییرات و وضعیت عروق کرونر قدم بعدی را تعیین می‌کنند.'))}</p>
-    </header>
-
-    <div className={`${styles.approachNode} ${styles.approachStart}`}>
-      <span>START</span>
-      <div><strong>{t(L('hs-Troponin erhöht', 'Elevated hs-troponin', 'افزایش hs-Troponin'))}</strong><p>{t(L('Klinik + serielles Troponin + 12-Kanal-EKG sofort zusammenführen', 'Integrate symptoms + serial troponin + 12-lead ECG immediately', 'علائم + تروپونین سریال + ECG دوازده لید بلافاصله کنار هم قرار گیرند'))}</p></div>
+  return <div className={styles.emergencyPath}>
+    <div className={styles.emergencyStart}>
+      <strong>{t(L('Thoraxschmerz + Troponin erhöht', 'Chest pain + elevated troponin', 'درد قفسه سینه + افزایش تروپونین'))}</strong>
+      <span>{t(L('ECG sofort · hs-Troponin seriell · Klinik', 'Immediate ECG · serial hs-troponin · clinical picture', 'ECG فوری · تروپونین سریال · تابلوی بالینی'))}</span>
     </div>
     <span className={styles.flowArrow} aria-hidden="true" />
 
-    <section className={styles.approachStage}>
-      <div className={styles.stageLabel}><span>01</span><strong>{t(L('Ist ein akutes Koronarsyndrom wahrscheinlich?', 'Is acute coronary syndrome likely?', 'آیا سندرم حاد کرونری محتمل است؟'))}</strong></div>
-      <div className={styles.approachBranches}>
-        <article className={styles.urgentBranch}><small>{t(L('ST-Hebung / instabil', 'ST elevation / unstable', 'ST elevation / ناپایدار'))}</small><h4>{t(L('Sofortige Koronarangiographie', 'Immediate coronary angiography', 'آنژیوگرافی فوری کرونر'))}</h4><p>{t(L('STEMI-Pfad. Die CMR darf die Reperfusion nicht verzögern.', 'STEMI pathway. CMR must not delay reperfusion.', 'مسیر STEMI؛ CMR نباید رپرفیوژن را به تأخیر بیندازد.'))}</p></article>
-        <article><small>{t(L('Keine ST-Hebung', 'No ST elevation', 'بدون ST elevation'))}</small><h4>{t(L('NSTE-ACS-Risiko einordnen', 'Assess NSTE-ACS risk', 'ارزیابی ریسک NSTE-ACS'))}</h4><p>{t(L('Dynamik, Beschwerden und Risiko bestimmen, wie früh die Angiographie erfolgt.', 'Kinetics, symptoms and risk determine how early angiography is performed.', 'روند تغییرات، علائم و ریسک، زمان آنژیوگرافی را تعیین می‌کنند.'))}</p></article>
+    <section className={styles.emergencyStep}>
+      <h3>{t(L('ST-Hebung oder hämodynamisch instabil?', 'ST elevation or haemodynamic instability?', 'ST elevation یا ناپایداری همودینامیک؟'))}</h3>
+      <div className={styles.emergencySplit}>
+        <article className={styles.cathOutcome}><small>{t(L('JA', 'YES', 'بله'))}</small><strong>{t(L('Sofort Herzkatheter', 'Immediate catheterisation', 'کاتتریزاسیون فوری قلب'))}</strong><p>{t(L('CMR darf die Reperfusion nicht verzögern.', 'CMR must not delay reperfusion.', 'CMR نباید رپرفیوژن را به تأخیر بیندازد.'))}</p></article>
+        <article className={styles.nextOutcome}><small>{t(L('NEIN', 'NO', 'خیر'))}</small><strong>{t(L('Wie hoch und wie dynamisch ist hs-Troponin?', 'How high and how dynamic is hs-troponin?', 'hs-Troponin چقدر بالا و چقدر داینامیک است؟'))}</strong></article>
       </div>
     </section>
     <span className={styles.flowArrow} aria-hidden="true" />
 
-    <section className={styles.approachStage}>
-      <div className={styles.stageLabel}><span>02</span><strong>{t(L('Was zeigt die Koronarangiographie?', 'What does coronary angiography show?', 'آنژیوگرافی کرونر چه نشان می‌دهد؟'))}</strong></div>
-      <div className={styles.approachBranches}>
-        <article><small>{t(L('Obstruktive Läsion', 'Obstructive lesion', 'ضایعه انسدادی'))}</small><h4>{t(L('Myokardinfarkt gesichert', 'Myocardial infarction established', 'انفارکت میوکارد تأیید می‌شود'))}</h4><p>{t(L('Culprit-Läsion behandeln; CMR nur bei spezieller Frage zu Ausdehnung, Vitalität oder Komplikationen.', 'Treat the culprit lesion; reserve CMR for specific questions about extent, viability or complications.', 'ضایعه مسئول درمان می‌شود؛ CMR برای سؤال‌های خاص درباره وسعت، حیات‌پذیری یا عوارض استفاده می‌شود.'))}</p></article>
-        <article className={styles.minocaBranch}><small>{t(L('Keine obstruktive Läsion', 'No obstructive lesion', 'بدون ضایعه انسدادی'))}</small><h4>{t(L('Arbeitsdiagnose MINOCA', 'Working diagnosis: MINOCA', 'تشخیص کاری MINOCA'))}</h4><p>{t(L('Jetzt soll die CMR Infarkt, Entzündung und Takotsubo voneinander trennen.', 'CMR should now distinguish infarction, inflammation and Takotsubo.', 'اکنون CMR باید انفارکت، التهاب و تاکوتسوبو را از هم جدا کند.'))}</p></article>
+    <section className={styles.emergencyStep}>
+      <h3>{t(L('NSTE-ACS-Risiko einordnen', 'Classify NSTE-ACS risk', 'ریسک NSTE-ACS را تعیین کنید'))}</h3>
+      <div className={styles.emergencySplit}>
+        <article className={styles.cathOutcome}><small>{t(L('HOHER VERDACHT', 'HIGH SUSPICION', 'شک بالا'))}</small><strong>{t(L('Sehr hoher Wert, deutliche Dynamik oder anhaltende Ischämie', 'Very high value, clear kinetics or ongoing ischaemia', 'مقدار بسیار بالا، تغییر واضح یا ایسکمی پایدار'))}</strong><p>{t(L('Frühe bzw. stationäre Koronarangiographie je nach Gesamtrisiko.', 'Early or inpatient coronary angiography according to overall risk.', 'آنژیوگرافی زودهنگام یا حین بستری بر اساس ریسک کلی.'))}</p></article>
+        <article className={styles.observeOutcome}><small>{t(L('NICHT EINDEUTIG', 'INDETERMINATE', 'نامشخص'))}</small><strong>{t(L('Nach 1 Stunde erneut messen', 'Repeat after 1 hour', 'تکرار اندازه‌گیری پس از ۱ ساعت'))}</strong><p>{t(L('Assayspezifischen 0/1-h-Algorithmus anwenden; bei Observe-Zone ggf. 3 h + Echo.', 'Use the assay-specific 0/1-h algorithm; in the observe zone consider 3 h + echo.', 'الگوریتم اختصاصی تست ۰/۱ ساعت؛ در Observe Zone در صورت نیاز ۳ ساعت + اکو.'))}</p></article>
       </div>
     </section>
     <span className={styles.flowArrow} aria-hidden="true" />
 
-    <section className={`${styles.approachStage} ${styles.cmrStage}`}>
-      <div className={styles.stageLabel}><span>03</span><strong>{t(L('CMR: Muster statt Einzelbefund lesen', 'CMR: read the pattern, not an isolated finding', 'CMR: الگو را بخوانید، نه یک یافته منفرد'))}</strong></div>
-      <p className={styles.cmrSequence}>Cine → T2 / T2-Mapping → LGE → T1-Mapping</p>
-      <div className={styles.approachResults}>{cmrResults.map(result => <article key={result.code} className={result.className}><small>{result.code}</small><h4>{t(result.title)}</h4><p>{t(result.text)}</p></article>)}</div>
+    <section className={styles.cmrWindow}>
+      <header><small>{t(L('WANN HILFT CMR?', 'WHEN DOES CMR HELP?', 'CMR چه زمانی کمک می‌کند؟'))}</small><h3>{t(L('Stabil – aber die Ursache bleibt unklar', 'Stable—but the cause remains unclear', 'بیمار پایدار است، اما علت هنوز نامشخص است'))}</h3></header>
+      <div>
+        <article><strong>{t(L('Keine relevante Troponindynamik / Observe-Zone', 'No relevant troponin kinetics / observe zone', 'بدون تغییر قابل‌توجه تروپونین / Observe Zone'))}</strong></article>
+        <article><strong>{t(L('Herzkatheter ohne obstruktive Culprit-Läsion → MINOCA', 'Catheterisation without an obstructive culprit lesion → MINOCA', 'کاتتریزاسیون بدون ضایعه انسدادی مسئول ← MINOCA'))}</strong></article>
+      </div>
+      <p>{t(L('CMR klärt vor allem: Infarkt, Myokarditis, Takotsubo oder andere Myokardschädigung.', 'CMR mainly distinguishes infarction, myocarditis, Takotsubo, or another myocardial injury.', 'CMR عمدتاً بین انفارکت، میوکاردیت، تاکوتسوبو و سایر آسیب‌های میوکارد افتراق می‌دهد.'))}</p>
     </section>
 
-    <aside className={styles.parallelCheck}>
-      <div><small>{t(L('Parallel prüfen', 'Check in parallel', 'بررسی هم‌زمان'))}</small><strong>{t(L('Passt die Klinik überhaupt zu ACS?', 'Does the clinical picture fit ACS?', 'آیا تابلوی بالینی اصلاً با ACS تطابق دارد؟'))}</strong></div>
-      <p>{t(L('Bei unpassender Konstellation gezielt nach anderen Ursachen suchen:', 'If the constellation does not fit, actively look for other causes:', 'اگر مجموعه یافته‌ها تطابق ندارد، علل دیگر به‌طور هدفمند بررسی شوند:'))}</p>
-      <div className={styles.parallelCauses}>{TROPNON_CORONARY.map(item => <span key={t(item)}>{t(item)}</span>)}</div>
+    <aside className={styles.troponinDifferentials}>
+      <h3>{t(L('Differenzialdiagnosen des Troponinanstiegs', 'Differential diagnoses of troponin elevation', 'تشخیص‌های افتراقی افزایش تروپونین'))}</h3>
+      <div>{TROPONIN_DIFFERENTIALS.map(item => <span key={t(item)}>{t(item)}</span>)}</div>
+      <p><strong>{t(L('Merke:', 'Remember:', 'نکته:'))}</strong> {t(L('Je höher der Ausgangswert und je deutlicher die Dynamik, desto wahrscheinlicher ist im passenden ischämischen Kontext ein akuter Myokardinfarkt. Die Höhe allein beweist jedoch keine KHK – auch nichtkoronare Ursachen können starke Anstiege verursachen.', 'The higher the initial value and the clearer the kinetics, the more likely acute myocardial infarction becomes in the appropriate ischaemic context. Magnitude alone, however, does not prove CAD—non-coronary causes can also produce marked elevations.', 'هرچه مقدار اولیه بالاتر و تغییرات سریال واضح‌تر باشد، در زمینه بالینی ایسکمیک احتمال انفارکت حاد بیشتر می‌شود؛ اما شدت افزایش به‌تنهایی KHK را ثابت نمی‌کند و علل غیرکرونری نیز می‌توانند افزایش شدید ایجاد کنند.'))}</p>
     </aside>
   </div>
 }
