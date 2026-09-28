@@ -15,7 +15,6 @@ const pick = (value, lang) => typeof value === 'string' ? value : value?.[lang] 
 
 const COPY = {
   title: L('Differenzialdiagnosen des Myokardinfarkts im Kardio-MRT', 'Differential diagnosis of myocardial infarction on cardiac MRI', 'تشخیص‌های افتراقی انفارکت میوکارد در MRI قلب'),
-  subtitle: L('Troponinanstieg und EKG-Veränderungen: ischämische von nichtischämischen Mustern trennen', 'Troponin elevation and ECG changes: separating ischaemic from non-ischaemic patterns', 'افزایش تروپونین و تغییرات ECG: تفکیک الگوهای ایسکمیک از غیرایسکمیک'),
   thorax: L('Thorax', 'Thorax', 'قفسه سینه'),
   chapter: L('Herz / Kardio-MRT', 'Heart / cardiac MRI', 'قلب / MRI قلب'),
   contents: L('Lektionsinhalt', 'Lesson content', 'محتوای درس'),
@@ -150,6 +149,74 @@ function LayerDiagram({ lang }) {
   </div>
 }
 
+function TroponinApproach({ lang }) {
+  const t = value => pick(value, lang)
+  const cmrResults = [
+    {
+      code: 'LGE',
+      className: styles.approachResultInfarct,
+      title: L('Infarkt-Typ', 'Infarct pattern', 'الگوی انفارکتی'),
+      text: L('Subendokardiales bis transmurales LGE im Koronarterritorium → ischämische Schädigung; bei offenen Koronarien MINOCA weiter abklären.', 'Subendocardial-to-transmural LGE in a coronary territory → ischaemic injury; with unobstructed coronaries continue the MINOCA work-up.', 'LGE ساب‌اندوکاردیال تا ترانس‌مورال در قلمرو کرونری ← آسیب ایسکمیک؛ در صورت باز بودن عروق، بررسی MINOCA ادامه می‌یابد.'),
+    },
+    {
+      code: 'T1/T2',
+      className: styles.approachResultInflammation,
+      title: L('Nicht-Infarkt-Typ', 'Non-infarct pattern', 'الگوی غیرانفارکتی'),
+      text: L('Subepikardiales, midmyokardiales oder fleckiges LGE mit Ödem → an Myokarditis oder Sarkoidose denken.', 'Subepicardial, mid-wall or patchy LGE with oedema → consider myocarditis or sarcoidosis.', 'LGE ساب‌اپیکاردیال، میدوال یا لکه‌ای همراه ادم ← میوکاردیت یا سارکوئیدوز مطرح می‌شود.'),
+    },
+    {
+      code: 'CINE',
+      className: styles.approachResultTakotsubo,
+      title: L('Kein typisches LGE', 'No typical LGE', 'بدون LGE تیپیک'),
+      text: L('Mittelventrikuläre oder apikale Akinesie ohne Infarktnarbe → Takotsubo ist wahrscheinlich.', 'Mid-ventricular or apical akinesia without infarct scar → Takotsubo is likely.', 'آکینزی میانی بطن یا اپیکال بدون اسکار انفارکت ← تاکوتسوبو محتمل است.'),
+    },
+  ]
+
+  return <div className={styles.approachMap}>
+    <header className={styles.approachHeading}>
+      <small>{t(L('Vom Laborwert zur Gewebediagnose', 'From laboratory value to tissue diagnosis', 'از یافته آزمایشگاهی تا تشخیص بافتی'))}</small>
+      <h3>{t(L('Schritt für Schritt beim Troponinanstieg', 'A step-by-step approach to troponin rise', 'اپروچ قدم‌به‌قدم به افزایش تروپونین'))}</h3>
+      <p>{t(L('Troponin zeigt eine Myokardschädigung – nicht automatisch einen Myokardinfarkt. Erst Klinik, EKG, Dynamik und Koronarstatus bestimmen den nächsten Schritt.', 'Troponin indicates myocardial injury—not automatically myocardial infarction. Symptoms, ECG, kinetics and coronary status determine the next step.', 'تروپونین نشان‌دهنده آسیب میوکارد است، نه لزوماً انفارکت. علائم، ECG، روند تغییرات و وضعیت عروق کرونر قدم بعدی را تعیین می‌کنند.'))}</p>
+    </header>
+
+    <div className={`${styles.approachNode} ${styles.approachStart}`}>
+      <span>START</span>
+      <div><strong>{t(L('hs-Troponin erhöht', 'Elevated hs-troponin', 'افزایش hs-Troponin'))}</strong><p>{t(L('Klinik + serielles Troponin + 12-Kanal-EKG sofort zusammenführen', 'Integrate symptoms + serial troponin + 12-lead ECG immediately', 'علائم + تروپونین سریال + ECG دوازده لید بلافاصله کنار هم قرار گیرند'))}</p></div>
+    </div>
+    <span className={styles.flowArrow} aria-hidden="true" />
+
+    <section className={styles.approachStage}>
+      <div className={styles.stageLabel}><span>01</span><strong>{t(L('Ist ein akutes Koronarsyndrom wahrscheinlich?', 'Is acute coronary syndrome likely?', 'آیا سندرم حاد کرونری محتمل است؟'))}</strong></div>
+      <div className={styles.approachBranches}>
+        <article className={styles.urgentBranch}><small>{t(L('ST-Hebung / instabil', 'ST elevation / unstable', 'ST elevation / ناپایدار'))}</small><h4>{t(L('Sofortige Koronarangiographie', 'Immediate coronary angiography', 'آنژیوگرافی فوری کرونر'))}</h4><p>{t(L('STEMI-Pfad. Die CMR darf die Reperfusion nicht verzögern.', 'STEMI pathway. CMR must not delay reperfusion.', 'مسیر STEMI؛ CMR نباید رپرفیوژن را به تأخیر بیندازد.'))}</p></article>
+        <article><small>{t(L('Keine ST-Hebung', 'No ST elevation', 'بدون ST elevation'))}</small><h4>{t(L('NSTE-ACS-Risiko einordnen', 'Assess NSTE-ACS risk', 'ارزیابی ریسک NSTE-ACS'))}</h4><p>{t(L('Dynamik, Beschwerden und Risiko bestimmen, wie früh die Angiographie erfolgt.', 'Kinetics, symptoms and risk determine how early angiography is performed.', 'روند تغییرات، علائم و ریسک، زمان آنژیوگرافی را تعیین می‌کنند.'))}</p></article>
+      </div>
+    </section>
+    <span className={styles.flowArrow} aria-hidden="true" />
+
+    <section className={styles.approachStage}>
+      <div className={styles.stageLabel}><span>02</span><strong>{t(L('Was zeigt die Koronarangiographie?', 'What does coronary angiography show?', 'آنژیوگرافی کرونر چه نشان می‌دهد؟'))}</strong></div>
+      <div className={styles.approachBranches}>
+        <article><small>{t(L('Obstruktive Läsion', 'Obstructive lesion', 'ضایعه انسدادی'))}</small><h4>{t(L('Myokardinfarkt gesichert', 'Myocardial infarction established', 'انفارکت میوکارد تأیید می‌شود'))}</h4><p>{t(L('Culprit-Läsion behandeln; CMR nur bei spezieller Frage zu Ausdehnung, Vitalität oder Komplikationen.', 'Treat the culprit lesion; reserve CMR for specific questions about extent, viability or complications.', 'ضایعه مسئول درمان می‌شود؛ CMR برای سؤال‌های خاص درباره وسعت، حیات‌پذیری یا عوارض استفاده می‌شود.'))}</p></article>
+        <article className={styles.minocaBranch}><small>{t(L('Keine obstruktive Läsion', 'No obstructive lesion', 'بدون ضایعه انسدادی'))}</small><h4>{t(L('Arbeitsdiagnose MINOCA', 'Working diagnosis: MINOCA', 'تشخیص کاری MINOCA'))}</h4><p>{t(L('Jetzt soll die CMR Infarkt, Entzündung und Takotsubo voneinander trennen.', 'CMR should now distinguish infarction, inflammation and Takotsubo.', 'اکنون CMR باید انفارکت، التهاب و تاکوتسوبو را از هم جدا کند.'))}</p></article>
+      </div>
+    </section>
+    <span className={styles.flowArrow} aria-hidden="true" />
+
+    <section className={`${styles.approachStage} ${styles.cmrStage}`}>
+      <div className={styles.stageLabel}><span>03</span><strong>{t(L('CMR: Muster statt Einzelbefund lesen', 'CMR: read the pattern, not an isolated finding', 'CMR: الگو را بخوانید، نه یک یافته منفرد'))}</strong></div>
+      <p className={styles.cmrSequence}>Cine → T2 / T2-Mapping → LGE → T1-Mapping</p>
+      <div className={styles.approachResults}>{cmrResults.map(result => <article key={result.code} className={result.className}><small>{result.code}</small><h4>{t(result.title)}</h4><p>{t(result.text)}</p></article>)}</div>
+    </section>
+
+    <aside className={styles.parallelCheck}>
+      <div><small>{t(L('Parallel prüfen', 'Check in parallel', 'بررسی هم‌زمان'))}</small><strong>{t(L('Passt die Klinik überhaupt zu ACS?', 'Does the clinical picture fit ACS?', 'آیا تابلوی بالینی اصلاً با ACS تطابق دارد؟'))}</strong></div>
+      <p>{t(L('Bei unpassender Konstellation gezielt nach anderen Ursachen suchen:', 'If the constellation does not fit, actively look for other causes:', 'اگر مجموعه یافته‌ها تطابق ندارد، علل دیگر به‌طور هدفمند بررسی شوند:'))}</p>
+      <div className={styles.parallelCauses}>{TROPNON_CORONARY.map(item => <span key={t(item)}>{t(item)}</span>)}</div>
+    </aside>
+  </div>
+}
+
 function DecisionTree({ lang }) {
   const [answer, setAnswer] = useState('infarct')
   const result = {
@@ -172,9 +239,7 @@ function LessonContent({ lang }) {
   const t = value => pick(value, lang)
   return <>
     <Section id="ausgangspunkt" title={t(SECTIONS[0].label)}>
-      <p className={styles.lead}>{t(L('Akuter Thoraxschmerz, EKG-Veränderungen und erhöhtes hs-Troponin eröffnen eine zeitkritische Differenzialdiagnose. Eine ST-Hebung führt direkt in den STEMI-Pfad; auch bei NSTEMI-Verdacht richtet sich das akute Vorgehen nach Klinik, EKG und Troponindynamik. Die Kardio-MRT kommt ins Spiel, wenn die Ursache nach der Akutversorgung unklar bleibt oder die Koronarangiographie keine relevante Stenose zeigt.', 'Acute chest pain, ECG changes and elevated hs-troponin open a time-critical differential diagnosis. ST elevation leads directly to the STEMI pathway; suspected NSTEMI is also managed according to symptoms, ECG and troponin kinetics. Cardiac MRI becomes important when the cause remains unclear after acute care or angiography shows no relevant stenosis.', 'درد حاد قفسه سینه، تغییرات ECG و افزایش hs-Troponin یک تشخیص افتراقی زمان‌حساس ایجاد می‌کند. ST elevation مستقیماً وارد مسیر STEMI می‌شود؛ در شک به NSTEMI نیز اقدام حاد بر اساس علائم، ECG و روند تروپونین است. MRI قلب زمانی مطرح می‌شود که علت پس از اقدامات حاد نامشخص بماند یا آنژیوگرافی تنگی مهمی نشان ندهد.'))}</p>
-      <div className={styles.emergencyFlow}><article><span>01</span><h3>STEMI / NSTE-ACS</h3><p>{t(L('Akutpfad und Koronarangiographie haben Vorrang. Die MRT darf die dringliche Therapie nicht verzögern.', 'The acute pathway and coronary angiography take priority. MRI must not delay urgent treatment.', 'مسیر حاد و آنژیوگرافی کرونر اولویت دارند. MRI نباید درمان فوری را به تأخیر بیندازد.'))}</p></article><i>→</i><article><span>02</span><h3>{t(L('Keine obstruktive Stenose', 'No obstructive stenosis', 'عدم تنگی انسدادی'))}</h3><p>{t(L('Arbeitsdiagnose MINOCA: CMR dient jetzt der Ursachenklärung.', 'Working diagnosis MINOCA: CMR now helps establish the cause.', 'تشخیص کاری MINOCA: اکنون CMR برای روشن‌کردن علت به‌کار می‌رود.'))}</p></article></div>
-      <div className={styles.troponinCloud}><strong>{t(L('Weitere Ursachen eines Troponinanstiegs', 'Other causes of troponin elevation', 'علل دیگر افزایش تروپونین'))}</strong><div>{TROPNON_CORONARY.map(item => <span key={t(item)}>{t(item)}</span>)}</div><p>{t(L('Die Höhe des Troponins kann beim Infarkt mit der Infarktgröße korrelieren, ist aber nicht spezifisch: Auch eine Myokarditis kann sehr hohe Werte verursachen.', 'Troponin may correlate with infarct size, but it is not specific: myocarditis can also produce very high values.', 'میزان تروپونین می‌تواند با اندازه انفارکت همبستگی داشته باشد، اما اختصاصی نیست؛ میوکاردیت نیز می‌تواند مقادیر بسیار بالا ایجاد کند.'))}</p></div>
+      <TroponinApproach lang={lang} />
     </Section>
 
     <Section id="toolbox" title={t(SECTIONS[1].label)}>
@@ -281,7 +346,7 @@ export default function MyocardialInfarctionDifferentialPage() {
   return <main className={`${template.page} ${styles.page} ${lang === 'fa' ? styles.rtl : ''}`} data-lesson-progress-managed="true" dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
     <header className={template.header}>
       <div className={template.topline}><nav className={template.breadcrumb} aria-label={pick(COPY.contents, lang)}><Link href={withLang('/')}>RadYar</Link><span>/</span><Link href={withLang('/lernen/thorax')}>{pick(COPY.thorax, lang)}</Link><span>/</span><span>{pick(COPY.chapter, lang)}</span><span>/</span><strong>{pick(COPY.title, lang)}</strong></nav><span className={template.author}>Dr. Zia</span></div>
-      <div className={template.hero}><div className={`${template.heroCopy} ${styles.heroCopy}`}><h1>{pick(COPY.title, lang)}</h1><p>{pick(COPY.subtitle, lang)}</p><div className={template.actions}><button type="button" className={template.primaryAction} onClick={() => jumpTo('algorithmus')}>{pick(COPY.start, lang)}<span aria-hidden="true">→</span></button></div></div><div className={template.heroFacts}>{facts.map(([value, description, icon]) => <article key={pick(value, lang)}><span className={template.factIcon}><SectionIcon id={icon} /></span><strong>{pick(value, lang)}</strong><p>{pick(description, lang)}</p></article>)}</div></div>
+      <div className={template.hero}><div className={`${template.heroCopy} ${styles.heroCopy}`}><h1>{pick(COPY.title, lang)}</h1><div className={template.actions}><button type="button" className={template.primaryAction} onClick={() => jumpTo('algorithmus')}>{pick(COPY.start, lang)}<span aria-hidden="true">→</span></button></div></div><div className={template.heroFacts}>{facts.map(([value, description, icon]) => <article key={pick(value, lang)}><span className={template.factIcon}><SectionIcon id={icon} /></span><strong>{pick(value, lang)}</strong><p>{pick(description, lang)}</p></article>)}</div></div>
       <div className={template.progressBar}><div className={template.progressTrack}><i style={{ width: `${(readSections.size / SECTIONS.length) * 100}%` }} /></div><span>{readSections.size} / {SECTIONS.length} {pick(COPY.progress, lang)}</span><div className={template.progressActions}><button type="button" className={`${template.lessonCompleteButton} ${lessonComplete ? template.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><SectionIcon id="takehome" />{pick(lessonComplete ? COPY.lessonCompleted : COPY.completeLesson, lang)}</button><button type="button" className={template.continueButton} onClick={advance} disabled={activeIndex === SECTIONS.length - 1}>{pick(COPY.continue, lang)}<span aria-hidden="true">→</span></button></div></div>
     </header>
     <div className={template.layout}><aside className={template.sidebar}><h2>{pick(COPY.path, lang)}</h2><nav>{SECTIONS.map(section => <button type="button" key={section.id} className={openId === section.id ? template.activeSideItem : ''} onClick={() => jumpTo(section.id)} aria-current={openId === section.id ? 'location' : undefined} aria-label={`${pick(COPY.open, lang)}: ${pick(section.label, lang)}`}><span className={template.sideIcon}><SectionIcon id={section.id} /></span><strong>{pick(section.label, lang)}</strong></button>)}</nav></aside><article className={template.lesson}><LessonContext.Provider value={{ lang, openId, readSections, selectSection, toggleSectionRead }}><LessonContent lang={lang} /></LessonContext.Provider></article></div>
