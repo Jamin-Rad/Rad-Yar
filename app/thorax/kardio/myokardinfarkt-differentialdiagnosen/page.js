@@ -14,7 +14,7 @@ const L = (de, en, fa) => ({ de, en, fa })
 const pick = (value, lang) => typeof value === 'string' ? value : value?.[lang] || value?.de || ''
 
 const COPY = {
-  title: L('Differenzialdiagnosen des Myokardinfarkts im Kardio-MRT', 'Differential diagnosis of myocardial infarction on cardiac MRI', 'تشخیص‌های افتراقی انفارکت میوکارد در MRI قلب'),
+  title: L('Rolle der Kardio-MRT bei Troponinanstieg', 'Role of cardiac MRI in patients with elevated troponin', 'نقش MRI قلب در بیمار با افزایش تروپونین'),
   thorax: L('Thorax', 'Thorax', 'قفسه سینه'),
   chapter: L('Herz / Kardio-MRT', 'Heart / cardiac MRI', 'قلب / MRI قلب'),
   contents: L('Lektionsinhalt', 'Lesson content', 'محتوای درس'),
@@ -100,6 +100,8 @@ const TROPNON_CORONARY = [
 
 const REFERENCES = [
   ['ESC 2023 Acute Coronary Syndromes Guideline', 'https://academic.oup.com/eurheartj/article/44/38/3720/7243210'],
+  ['ESC 2024 Chronic Coronary Syndromes Guideline', 'https://academic.oup.com/eurheartj/article/45/36/3415/7743115'],
+  ['SCMR Standardized CMR Protocols · 2020 Update', 'https://scmr.org/news/standardized-cardiovascular-magnetic-resonance-imaging-cmr-protocols-2020-update/'],
   ['2018 Updated Lake Louise Criteria · JACC Expert Panel', 'https://pubmed.ncbi.nlm.nih.gov/30545455/'],
   ['International Expert Consensus on Takotsubo Syndrome', 'https://academic.oup.com/eurheartj/article/39/22/2047/5025411'],
   ['AHA Scientific Statement: Diagnosis and Management of Cardiac Sarcoidosis', 'https://www.ahajournals.org/doi/10.1161/CIR.0000000000001240'],
@@ -243,14 +245,23 @@ function LessonContent({ lang }) {
     </Section>
 
     <Section id="toolbox" title={t(SECTIONS[1].label)}>
-      <p className={styles.lead}>{t(L('Vier Bausteine beantworten vier verschiedene Fragen. Erst ihre Kombination trennt akute Ischämie, Narbe und Entzündung zuverlässig.', 'Four building blocks answer four different questions. Their combination separates acute ischaemia, scar and inflammation.', 'چهار جزء به چهار پرسش متفاوت پاسخ می‌دهند. ترکیب آن‌ها ایسکمی حاد، اسکار و التهاب را از هم جدا می‌کند.'))}</p>
+      <p className={styles.lead}>{t(L('Die CMR kombiniert Funktion, Gewebecharakterisierung und – bei passender klinischer Frage – Perfusion. Nicht jede Sequenz gehört automatisch in jedes Protokoll.', 'CMR combines function, tissue characterisation and—when the clinical question calls for it—perfusion. Not every sequence automatically belongs in every protocol.', 'CMR عملکرد، مشخصه‌یابی بافتی و در صورت وجود سؤال بالینی مناسب، پرفیوژن را ترکیب می‌کند. هر سکانسی به‌طور خودکار در هر پروتکلی قرار نمی‌گیرد.'))}</p>
       <div className={styles.toolboxGrid}>{[
         ['CINE', L('Funktion', 'Function', 'عملکرد'), L('Regionale Hypo-, A- oder Dyskinesie; globale LV-Funktion.', 'Regional hypo-, a- or dyskinesia; global LV function.', 'هیپو، آ یا دیسکینزی موضعی؛ عملکرد کلی LV.')],
         ['T2', L('Ödem', 'Oedema', 'ادم'), L('T2w-Fat-Sat oder T2-Mapping zeigt akuten Wassergehalt.', 'T2-weighted fat-sat or T2 mapping shows acute water content.', 'T2w Fat-Sat یا T2 mapping افزایش آب حاد را نشان می‌دهد.')],
         ['LGE', L('Schaden / Narbe', 'Injury / scar', 'آسیب / اسکار'), L('Verteilung und Transmuralität sind der Schlüssel zur Einordnung.', 'Distribution and transmurality are the key to classification.', 'توزیع و ترانس‌مورالیتی کلید طبقه‌بندی هستند.')],
         ['MAP', L('T1 / T2-Mapping', 'T1 / T2 mapping', 'مپینگ T1 / T2'), L('Quantitative Ergänzung bei diffuser oder subtiler Myokardschädigung.', 'Quantitative support for diffuse or subtle myocardial injury.', 'تکمیل کمی در آسیب منتشر یا ظریف میوکارد.')],
+        ['PERF', L('Perfusion', 'Perfusion', 'پرفیوژن'), L('First-pass in Ruhe oder unter Stress beantwortet eine Perfusions- beziehungsweise Ischämiefrage.', 'First-pass imaging at rest or during stress answers a perfusion or ischaemia question.', 'First-pass در حالت استراحت یا استرس به سؤال پرفیوژن یا ایسکمی پاسخ می‌دهد.')],
       ].map(([code, title, text]) => <article key={code}><span>{code}</span><h3>{t(title)}</h3><p>{t(text)}</p></article>)}</div>
-      <div className={styles.rule}><strong>{t(L('Lesereihenfolge', 'Reading order', 'ترتیب خواندن'))}</strong><p>{t(L('Zuerst LGE-Muster, dann Ödem, anschließend Cine-Funktion und Mapping als Bestätigung.', 'Start with the LGE pattern, then oedema, followed by cine function and mapping for confirmation.', 'ابتدا الگوی LGE، سپس ادم، بعد عملکرد Cine و مپینگ برای تأیید بررسی می‌شود.'))}</p></div>
+      <div className={styles.perfusionGuide}>
+        <header><small>{t(L('Perfusion richtig einordnen', 'Putting perfusion in the right context', 'جایگاه درست پرفیوژن'))}</small><h3>{t(L('Ja – aber Stress-Perfusion ist frage- und situationsabhängig', 'Yes—but stress perfusion depends on the question and clinical setting', 'بله؛ اما Stress-Perfusion به سؤال و شرایط بالینی بستگی دارد'))}</h3></header>
+        <div>
+          <article className={styles.perfusionAcute}><span>01</span><div><strong>{t(L('Akut & instabil / Hochrisiko-ACS', 'Acute and unstable / high-risk ACS', 'حاد و ناپایدار / ACS پرخطر'))}</strong><p>{t(L('Keine routinemäßige Stress-Perfusion vor der dringlichen Angiographie. Nach Stabilisierung stehen Cine, T1/T2 und LGE zur Ursachenklärung im Vordergrund.', 'Do not routinely perform stress perfusion before urgent angiography. After stabilisation, cine, T1/T2 and LGE are central to determining the cause.', 'Stress-Perfusion روتین پیش از آنژیوگرافی فوری انجام نمی‌شود. پس از پایدارشدن، Cine، ‏T1/T2 و LGE محور تعیین علت هستند.'))}</p></div></article>
+          <article className={styles.perfusionObserve}><span>02</span><div><strong>{t(L('Stabil in der „Observe Zone“', 'Stable in the observe zone', 'بیمار پایدار در Observe Zone'))}</strong><p>{t(L('Nach EKG und seriellen hs-Troponinen kann Stress-CMR selektiv eine Alternative zu CCTA oder anderer Stressbildgebung sein – besonders bei bekannter KHK.', 'After ECG and serial hs-troponin testing, stress CMR may selectively be an alternative to CCTA or other stress imaging—especially in established CAD.', 'پس از ECG و hs-Troponin سریال، Stress-CMR می‌تواند به‌صورت انتخابی جایگزین CCTA یا سایر روش‌های استرس باشد؛ به‌ویژه در KHK شناخته‌شده.'))}</p></div></article>
+          <article className={styles.perfusionStable}><span>03</span><div><strong>{t(L('Stabile Ischämiefrage / KHK / INOCA', 'Stable ischaemia question / CAD / INOCA', 'سؤال ایسکمی پایدار / KHK / INOCA'))}</strong><p>{t(L('Typische Indikation für Stress-Perfusion: belastungsinduzierte Ischämie, funktionelle Relevanz einer Stenose oder mikrovaskuläre Dysfunktion beurteilen.', 'A typical indication for stress perfusion: assess inducible ischaemia, the functional relevance of a stenosis, or microvascular dysfunction.', 'اندیکاسیون تیپیک Stress-Perfusion: بررسی ایسکمی القاشونده، اهمیت عملکردی تنگی یا اختلال میکروواسکولار.'))}</p></div></article>
+        </div>
+      </div>
+      <div className={styles.rule}><strong>{t(L('Für diese Lektion', 'For this lesson', 'برای این درس'))}</strong><p>{t(L('Beim akuten Troponinanstieg lautet die Kernfrage zunächst: Infarkt, Myokarditis, Takotsubo oder eine andere Ursache? Deshalb dominieren Cine, Ödem/Mapping und LGE; Stress-Perfusion wird nur bei einer zusätzlichen Ischämiefrage ergänzt.', 'With acute troponin elevation, the initial question is infarction, myocarditis, Takotsubo, or another cause. Cine, oedema/mapping and LGE therefore dominate; add stress perfusion only for an additional ischaemia question.', 'در افزایش حاد تروپونین، سؤال اصلی ابتدا انفارکت، میوکاردیت، تاکوتسوبو یا علت دیگر است؛ بنابراین Cine، ادم/مپینگ و LGE اولویت دارند و Stress-Perfusion فقط در صورت وجود سؤال اضافی ایسکمی اضافه می‌شود.'))}</p></div>
     </Section>
 
     <Section id="lge-muster" title={t(SECTIONS[2].label)}>
@@ -291,6 +302,7 @@ function LessonContent({ lang }) {
         L('MINOCA sieht im Myokard wie ein Infarkt aus, obwohl keine obstruktive Koronarstenose vorliegt.', 'MINOCA may look like infarction in the myocardium despite no obstructive coronary stenosis.', 'MINOCA در میوکارد شبیه انفارکت است، با وجود نبود تنگی انسدادی کرونر.'),
         L('Takotsubo zeigt das charakteristische Bewegungsmuster ohne typisches Infarkt-LGE.', 'Takotsubo shows a characteristic motion pattern without typical infarct LGE.', 'تاکوتسوبو الگوی حرکتی تیپیک بدون LGE انفارکتی دارد.'),
         L('Myokarditis und Sarkoidose zeigen nichtischämische, subepikardiale/midmyokardiale beziehungsweise fleckige LGE-Muster.', 'Myocarditis and sarcoidosis show non-ischaemic subepicardial/mid-wall or patchy LGE patterns.', 'میوکاردیت و سارکوئیدوز الگوهای LGE غیرایسکمیک ساب‌اپیکاردیال/میدوال یا لکه‌ای نشان می‌دهند.'),
+        L('Stress-Perfusion ist bei akutem Hochrisiko-ACS nicht der erste Schritt, bleibt aber bei stabiler Ischämiefrage, KHK oder INOCA eine wichtige CMR-Indikation.', 'Stress perfusion is not the first step in acute high-risk ACS, but remains an important CMR indication for stable ischaemia questions, CAD or INOCA.', 'Stress-Perfusion در ACS حاد پرخطر قدم اول نیست، اما در سؤال ایسکمی پایدار، KHK یا INOCA همچنان یک اندیکاسیون مهم CMR است.'),
       ].map((item, index) => <li key={t(item)}><span>{String(index + 1).padStart(2, '0')}</span><p>{t(item)}</p></li>)}</ol>
       <aside className={styles.sources}><header><small>{t(L('Evidenzbasis', 'Evidence base', 'پایه شواهد'))}</small><h3>{t(L('Leitlinien & Konsensusdokumente', 'Guidelines & consensus documents', 'گایدلاین‌ها و اسناد اجماعی'))}</h3></header><div>{REFERENCES.map(([title, href], index) => <a key={href} href={href} target="_blank" rel="noreferrer"><span>{String(index + 1).padStart(2, '0')}</span><strong>{title}</strong><i aria-hidden="true">↗</i></a>)}</div><p>{t(L('Die Unterrichtsinhalte wurden anhand der bereitgestellten Kursunterlagen strukturiert und fachlich mit den genannten Primärquellen abgeglichen. Die Seite ersetzt keine individuelle klinische Entscheidung.', 'The lesson was structured from the supplied course material and checked against the listed primary sources. It does not replace individual clinical decision-making.', 'محتوای درس بر اساس جزوه‌های ارائه‌شده ساختاربندی و با منابع اولیه ذکرشده تطبیق داده شده است. این صفحه جایگزین تصمیم‌گیری بالینی فردی نیست.'))}</p></aside>
     </Section>
@@ -340,7 +352,7 @@ export default function MyocardialInfarctionDifferentialPage() {
   const facts = [
     [L('LGE-Muster', 'LGE pattern', 'الگوی LGE'), L('Territorium & Wandschicht', 'Territory & wall layer', 'قلمرو و لایه دیواره'), 'lge-muster'],
     [L('Ödem', 'Oedema', 'ادم'), L('Akut oder aktiv?', 'Acute or active?', 'حاد یا فعال؟'), 'toolbox'],
-    [L('Cine', 'Cine', 'Cine'), L('Bewegungsmuster', 'Motion pattern', 'الگوی حرکتی'), 'infarkt'],
+    [L('Perfusion', 'Perfusion', 'پرفیوژن'), L('Nur bei passender Ischämiefrage', 'Only for the right ischaemia question', 'فقط با سؤال مناسب ایسکمی'), 'toolbox'],
   ]
 
   return <main className={`${template.page} ${styles.page} ${lang === 'fa' ? styles.rtl : ''}`} data-lesson-progress-managed="true" dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
