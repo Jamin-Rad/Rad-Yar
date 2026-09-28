@@ -89,14 +89,14 @@ const PATTERNS = [
 ]
 
 const TROPONIN_DIFFERENTIALS = [
-  L('Akuter Myokardinfarkt / MINOCA', 'Acute myocardial infarction / MINOCA', 'انفارکت حاد میوکارد / MINOCA'),
-  L('Myokarditis', 'Myocarditis', 'میوکاردیت'),
-  L('Takotsubo-Syndrom', 'Takotsubo syndrome', 'سندروم تاکوتسوبو'),
-  L('Lungenarterienembolie', 'Pulmonary embolism', 'آمبولی ریه'),
-  L('Tachyarrhythmie', 'Tachyarrhythmia', 'تاکی‌آریتمی'),
-  L('Akute Herzinsuffizienz', 'Acute heart failure', 'نارسایی حاد قلبی'),
-  L('Aortenstenose / -dissektion', 'Aortic stenosis / dissection', 'تنگی / دیسکسیون آئورت'),
-  L('Kardiale Sarkoidose / Herz-OP', 'Cardiac sarcoidosis / cardiac surgery', 'سارکوئیدوز قلبی / جراحی قلب'),
+  { id: 'mi', title: L('Akuter Myokardinfarkt / MINOCA', 'Acute myocardial infarction / MINOCA', 'انفارکت حاد میوکارد / MINOCA'), description: L('Ischämische Myokardschädigung mit Anstieg und/oder Abfall des Troponins. Bei nichtobstruktiven Koronarien bleibt MINOCA zunächst eine Arbeitsdiagnose.', 'Ischämische Myokardschädigung mit Anstieg und/oder Abfall des Troponins. Bei nichtobstruktiven Koronarien bleibt MINOCA zunächst eine Arbeitsdiagnose.', 'Ischämische Myokardschädigung mit Anstieg und/oder Abfall des Troponins. Bei nichtobstruktiven Koronarien bleibt MINOCA zunächst eine Arbeitsdiagnose.') },
+  { id: 'myocarditis', title: L('Myokarditis', 'Myocarditis', 'میوکاردیت'), description: L('Entzündliche Schädigung des Myokards; CMR sucht nach Ödem und einem nichtischämischen LGE-Muster.', 'Entzündliche Schädigung des Myokards; CMR sucht nach Ödem und einem nichtischämischen LGE-Muster.', 'Entzündliche Schädigung des Myokards; CMR sucht nach Ödem und einem nichtischämischen LGE-Muster.') },
+  { id: 'takotsubo', title: L('Takotsubo-Syndrom', 'Takotsubo syndrome', 'سندروم تاکوتسوبو'), description: L('Vorübergehende stressassoziierte LV-Dysfunktion; typisches Bewegungsmuster ohne Infarkt-LGE.', 'Vorübergehende stressassoziierte LV-Dysfunktion; typisches Bewegungsmuster ohne Infarkt-LGE.', 'Vorübergehende stressassoziierte LV-Dysfunktion; typisches Bewegungsmuster ohne Infarkt-LGE.') },
+  { id: 'pe', title: L('Lungenarterienembolie', 'Pulmonary embolism', 'آمبولی ریه'), description: L('Akute Rechtsherzbelastung und Hypoxämie können eine sekundäre Myokardschädigung mit Troponinfreisetzung verursachen.', 'Akute Rechtsherzbelastung und Hypoxämie können eine sekundäre Myokardschädigung mit Troponinfreisetzung verursachen.', 'Akute Rechtsherzbelastung und Hypoxämie können eine sekundäre Myokardschädigung mit Troponinfreisetzung verursachen.') },
+  { id: 'tachy', title: L('Tachyarrhythmie', 'Tachyarrhythmia', 'تاکی‌آریتمی'), description: L('Hohe Herzfrequenz erhöht den Sauerstoffbedarf und kann ein Missverhältnis von Angebot und Bedarf auslösen.', 'Hohe Herzfrequenz erhöht den Sauerstoffbedarf und kann ein Missverhältnis von Angebot und Bedarf auslösen.', 'Hohe Herzfrequenz erhöht den Sauerstoffbedarf und kann ein Missverhältnis von Angebot und Bedarf auslösen.') },
+  { id: 'heart-failure', title: L('Akute Herzinsuffizienz', 'Acute heart failure', 'نارسایی حاد قلبی'), description: L('Wandstress, erhöhte Füllungsdrücke und Minderperfusion können Troponin ohne akuten Typ-1-Infarkt erhöhen.', 'Wandstress, erhöhte Füllungsdrücke und Minderperfusion können Troponin ohne akuten Typ-1-Infarkt erhöhen.', 'Wandstress, erhöhte Füllungsdrücke und Minderperfusion können Troponin ohne akuten Typ-1-Infarkt erhöhen.') },
+  { id: 'aorta', title: L('Aortenstenose / -dissektion', 'Aortic stenosis / dissection', 'تنگی / دیسکسیون آئورت'), description: L('Druckbelastung oder akute Koronarmalperfusion kann eine relevante Myokardschädigung hervorrufen.', 'Druckbelastung oder akute Koronarmalperfusion kann eine relevante Myokardschädigung hervorrufen.', 'Druckbelastung oder akute Koronarmalperfusion kann eine relevante Myokardschädigung hervorrufen.') },
+  { id: 'sarcoid-op', title: L('Kardiale Sarkoidose / Herz-OP', 'Cardiac sarcoidosis / cardiac surgery', 'سارکوئیدوز قلبی / جراحی قلب'), description: L('Granulomatöse Entzündung beziehungsweise perioperative Myokardschädigung kann Troponin freisetzen.', 'Granulomatöse Entzündung beziehungsweise perioperative Myokardschädigung kann Troponin freisetzen.', 'Granulomatöse Entzündung beziehungsweise perioperative Myokardschädigung kann Troponin freisetzen.') },
 ]
 
 const REFERENCES = [
@@ -156,9 +156,12 @@ function DownArrow() {
   return <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 4v14M7 13l5 5 5-5" /></svg>
 }
 
+function SideArrow() {
+  return <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20 12H4M9 7l-5 5 5 5" /></svg>
+}
+
 function TroponinFlowchart({ lang }) {
   const t = value => pick(value, lang)
-  const cathNote = t(L('Keine Culprit-Läsion → CMR früh', 'No culprit lesion → early CMR', 'بدون ضایعهٔ مسئول ← CMR زودهنگام'))
   return <section className={styles.troponinFlowchart} aria-labelledby="troponin-flow-title">
     <header><h3 id="troponin-flow-title">{t(L('Der gesamte Weg auf einen Blick', 'The full pathway at a glance', 'نمای کامل مسیر در یک نگاه'))}</h3></header>
     <div className={styles.flowStartNode}>
@@ -166,75 +169,50 @@ function TroponinFlowchart({ lang }) {
       <span>{t(L('ECG · Klinik · hs-Troponin', 'ECG · clinical picture · hs-troponin', 'ECG · تابلوی بالینی · hs-Troponin'))}</span>
     </div>
     <div className={styles.flowDown}><DownArrow /></div>
-    <div className={styles.flowQuestion}>{t(L('ST-Hebung oder hämodynamisch instabil?', 'ST elevation or haemodynamic instability?', 'ST elevation یا ناپایداری همودینامیک؟'))}</div>
+    <div className={styles.flowDecisionGrid}>
+      <aside className={styles.angioHub}>
+        <small>{t(L('JA / RULE-IN', 'YES / RULE-IN', 'بله / RULE-IN'))}</small>
+        <strong>{t(L('Koronarangiographie', 'Coronary angiography', 'آنژیوگرافی کرونر'))}</strong>
+        <p>{t(L('Bei ST-Hebung oder Instabilität sofort; sonst invasive Abklärung nach Gesamtrisiko.', 'Immediate for ST elevation or instability; otherwise invasive assessment according to overall risk.', 'در ST elevation یا ناپایداری فوری؛ در غیر این صورت بررسی تهاجمی بر اساس ریسک کلی.'))}</p>
+      </aside>
 
-    <div className={styles.flowLevel}>
-      <article className={styles.flowExit}><span>{t(L('JA', 'YES', 'بله'))}<DownArrow /></span><div className={styles.flowCath}><strong>{t(L('Sofort Herzkatheter', 'Immediate catheterisation', 'کاتتریزاسیون فوری قلب'))}</strong><small>{cathNote}</small></div></article>
-      <article className={styles.flowContinue}><span>{t(L('NEIN', 'NO', 'خیر'))}<DownArrow /></span><div className={styles.flowQuestion}>{t(L('Sehr hoher Ausgangswert, klare Dynamik oder anhaltende Ischämie?', 'Very high initial value, clear kinetics, or ongoing ischaemia?', 'مقدار اولیه بسیار بالا، تغییر واضح یا ایسکمی پایدار؟'))}</div></article>
+      <div className={`${styles.flowToAngio} ${styles.flowRow1}`}><span>{t(L('JA', 'YES', 'بله'))}</span><SideArrow /></div>
+      <article className={`${styles.flowQuestion} ${styles.flowRow1}`}><b>01</b><strong>{t(L('ST-Hebung oder hämodynamisch instabil?', 'ST elevation or haemodynamic instability?', 'ST elevation یا ناپایداری همودینامیک؟'))}</strong><em className={styles.mobileYes}>{t(L('JA → Koronarangiographie', 'YES → coronary angiography', 'بله ← آنژیوگرافی کرونر'))}</em></article>
+      <div className={`${styles.flowNo} ${styles.flowNo1}`}><span>{t(L('NEIN', 'NO', 'خیر'))}</span><DownArrow /></div>
+
+      <div className={`${styles.flowToAngio} ${styles.flowRow2}`}><span>{t(L('JA', 'YES', 'بله'))}</span><SideArrow /></div>
+      <article className={`${styles.flowQuestion} ${styles.flowRow2}`}><b>02</b><strong>{t(L('Sehr hoher hs-Troponin-Ausgangswert?', 'Very high initial hs-troponin value?', 'مقدار اولیه hs-Troponin بسیار بالا است؟'))}</strong><em className={styles.mobileYes}>{t(L('JA → Koronarangiographie', 'YES → coronary angiography', 'بله ← آنژیوگرافی کرونر'))}</em></article>
+      <div className={`${styles.flowNo} ${styles.flowNo2}`}><span>{t(L('NEIN', 'NO', 'خیر'))}</span><DownArrow /><div className={styles.flowRepeat}><small>0/1 h</small><strong>{t(L('hs-Troponin nach 1 Stunde wiederholen', 'Repeat hs-troponin after 1 hour', 'تکرار hs-Troponin پس از ۱ ساعت'))}</strong></div><DownArrow /></div>
+
+      <div className={`${styles.flowToAngio} ${styles.flowRow3}`}><span>{t(L('JA', 'YES', 'بله'))}</span><SideArrow /></div>
+      <article className={`${styles.flowQuestion} ${styles.flowRow3}`}><b>03</b><strong>{t(L('Signifikante hs-Troponin-Dynamik?', 'Significant hs-troponin change?', 'تغییر معنی‌دار hs-Troponin؟'))}</strong><em className={styles.mobileYes}>{t(L('JA → Koronarangiographie', 'YES → coronary angiography', 'بله ← آنژیوگرافی کرونر'))}</em></article>
+      <div className={`${styles.flowNo} ${styles.flowNo3}`}><span>{t(L('NEIN', 'NO', 'خیر'))}</span><DownArrow /></div>
     </div>
 
-    <div className={styles.flowLevel}>
-      <article className={styles.flowExit}><span>{t(L('JA', 'YES', 'بله'))}<DownArrow /></span><div className={styles.flowCath}><strong>{t(L('Invasive Abklärung', 'Invasive assessment', 'بررسی تهاجمی'))}</strong><small>{cathNote}</small></div></article>
-      <article className={styles.flowContinue}><span>{t(L('NEIN', 'NO', 'خیر'))}<DownArrow /></span><div className={styles.flowRepeat}><small>0/1 h</small><strong>{t(L('hs-Troponin nach 1 Stunde wiederholen', 'Repeat hs-troponin after 1 hour', 'تکرار hs-Troponin پس از ۱ ساعت'))}</strong></div><div className={styles.flowDown}><DownArrow /></div><div className={styles.flowQuestion}>{t(L('Signifikante Dynamik?', 'Significant change?', 'تغییر معنی‌دار؟'))}</div></article>
+    <div className={styles.flowCmrInputs}>
+      <div><div className={styles.flowDown}><DownArrow /></div><span>{t(L('Nach Angiographie: keine obstruktive KHK / keine Culprit-Läsion', 'After angiography: no obstructive CAD / no culprit lesion', 'پس از آنژیوگرافی: بدون KHK انسدادی / بدون ضایعه مسئول'))}</span><div className={styles.flowDown}><DownArrow /></div></div>
+      <div><div className={styles.flowDown}><DownArrow /></div><span>{t(L('Stabil, aber Ursache weiterhin unklar', 'Stable, but the cause remains unclear', 'پایدار، اما علت همچنان نامشخص'))}</span><div className={styles.flowDown}><DownArrow /></div></div>
     </div>
+    <div className={styles.flowCmr}><small>{t(L('GEWEBEDIAGNOSE', 'TISSUE DIAGNOSIS', 'تشخیص بافتی'))}</small><strong>CMR</strong><p>{t(L('Infarkt, Myokarditis, Takotsubo oder andere Myokardschädigung differenzieren.', 'Differentiate infarction, myocarditis, Takotsubo, or other myocardial injury.', 'افتراق انفارکت، میوکاردیت، تاکوتسوبو یا سایر آسیب‌های میوکارد.'))}</p></div>
+  </section>
+}
 
-    <div className={styles.flowLevel}>
-      <article className={styles.flowExit}><span>{t(L('JA', 'YES', 'بله'))}<DownArrow /></span><div className={styles.flowCath}><strong>{t(L('Rule-in → invasive Abklärung', 'Rule-in → invasive assessment', 'Rule-in ← بررسی تهاجمی'))}</strong><small>{cathNote}</small></div></article>
-      <article className={styles.flowContinue}><span>{t(L('NEIN', 'NO', 'خیر'))}<DownArrow /></span><div className={styles.flowCmr}><small>{t(L('STABIL + URSACHE UNKLAR', 'STABLE + CAUSE UNCLEAR', 'پایدار + علت نامشخص'))}</small><strong>CMR</strong><p>{t(L('Infarkt, Myokarditis, Takotsubo oder andere Myokardschädigung differenzieren.', 'Differentiate infarction, myocarditis, Takotsubo, or other myocardial injury.', 'افتراق انفارکت، میوکاردیت، تاکوتسوبو یا سایر آسیب‌های میوکارد.'))}</p></div></article>
-    </div>
+function TroponinDifferentials({ lang }) {
+  const t = value => pick(value, lang)
+  const [selectedId, setSelectedId] = useState(TROPONIN_DIFFERENTIALS[0].id)
+  const selected = TROPONIN_DIFFERENTIALS.find(item => item.id === selectedId) || TROPONIN_DIFFERENTIALS[0]
+  return <section className={styles.troponinDifferentials} aria-labelledby="troponin-dd-title">
+    <header><h3 id="troponin-dd-title">{t(L('Differenzialdiagnosen des Troponinanstiegs', 'Differential diagnoses of troponin elevation', 'تشخیص‌های افتراقی افزایش تروپونین'))}</h3></header>
+    <div className={styles.differentialTabs} role="tablist" aria-label={t(L('Differenzialdiagnose auswählen', 'Select differential diagnosis', 'انتخاب تشخیص افتراقی'))}>{TROPONIN_DIFFERENTIALS.map((item, index) => <button key={item.id} type="button" role="tab" aria-selected={selectedId === item.id} className={selectedId === item.id ? styles.differentialTabActive : ''} onMouseEnter={() => setSelectedId(item.id)} onFocus={() => setSelectedId(item.id)} onClick={() => setSelectedId(item.id)}><span>{String(index + 1).padStart(2, '0')}</span><strong>{t(item.title)}</strong></button>)}</div>
+    <article className={styles.differentialDetail} role="tabpanel" aria-live="polite"><small>{t(L('Warum steigt Troponin?', 'Why does troponin rise?', 'چرا تروپونین افزایش می‌یابد؟'))}</small><strong>{t(selected.title)}</strong><p>{t(selected.description)}</p></article>
+    <aside className={styles.troponinRemember}><strong>{t(L('Merke', 'Remember', 'نکته'))}</strong><p>{t(L('Je höher der Ausgangswert und je deutlicher die Dynamik, desto wahrscheinlicher ist im passenden ischämischen Kontext ein akuter Myokardinfarkt.', 'The higher the initial value and the clearer the kinetics, the more likely acute myocardial infarction becomes in the appropriate ischaemic context.', 'هرچه مقدار اولیه بالاتر و تغییرات سریال واضح‌تر باشد، در زمینه بالینی ایسکمیک احتمال انفارکت حاد بیشتر می‌شود.'))} <b>{t(L('Die Höhe allein beweist keine KHK. Auch nichtkoronare Ursachen können starke Anstiege verursachen.', 'Magnitude alone does not prove CAD. Non-coronary causes can also cause marked elevations.', 'شدت افزایش به‌تنهایی KHK را ثابت نمی‌کند و علل غیرکرونری نیز می‌توانند افزایش شدید ایجاد کنند.'))}</b></p></aside>
   </section>
 }
 
 function TroponinApproach({ lang }) {
-  const t = value => pick(value, lang)
-  const [urgency, setUrgency] = useState(null)
-  const [highRisk, setHighRisk] = useState(null)
-  const [dynamic, setDynamic] = useState(null)
-  const reset = () => { setUrgency(null); setHighRisk(null); setDynamic(null) }
-  const chooseUrgency = value => { setUrgency(value); setHighRisk(null); setDynamic(null) }
-  const chooseHighRisk = value => { setHighRisk(value); setDynamic(null) }
-  const resultType = urgency === true ? 'urgent' : highRisk === true || dynamic === true ? 'invasive' : dynamic === false ? 'cmr' : null
-  const question = urgency === null
-    ? L('ST-Hebung oder hämodynamisch instabil?', 'ST elevation or haemodynamic instability?', 'ST elevation یا ناپایداری همودینامیک؟')
-    : highRisk === null && urgency === false
-      ? L('Sehr hoher Ausgangswert, klare Dynamik oder anhaltende Ischämie?', 'Very high initial value, clear kinetics, or ongoing ischaemia?', 'مقدار اولیه بسیار بالا، تغییر واضح یا ایسکمی پایدار؟')
-      : dynamic === null && highRisk === false
-        ? L('Nach 1 Stunde: signifikante hs-Troponin-Dynamik?', 'After 1 hour: significant hs-troponin change?', 'پس از ۱ ساعت: تغییر معنی‌دار hs-Troponin؟')
-        : null
-  const step = urgency === null ? 1 : highRisk === null && urgency === false ? 2 : 3
-  const choose = value => urgency === null ? chooseUrgency(value) : highRisk === null ? chooseHighRisk(value) : setDynamic(value)
-  const outcomes = {
-    urgent: [L('Sofort Herzkatheter', 'Immediate catheterisation', 'کاتتریزاسیون فوری قلب'), L('CMR darf die Reperfusion nicht verzögern.', 'CMR must not delay reperfusion.', 'CMR نباید رپرفیوژن را به تأخیر بیندازد.')],
-    invasive: [L('Rule-in: invasive Abklärung', 'Rule-in: invasive assessment', 'Rule-in: بررسی تهاجمی'), L('Zeitpunkt nach Gesamtrisiko; ohne Culprit-Läsion CMR möglichst im Indexaufenthalt.', 'Timing according to overall risk; without a culprit lesion, perform CMR during the index admission when possible.', 'زمان‌بندی بر اساس ریسک کلی؛ در نبود ضایعهٔ مسئول، CMR ترجیحاً در همان بستری انجام شود.')],
-    cmr: [L('Stabil – Ursache weiter unklar', 'Stable—the cause remains unclear', 'بیمار پایدار است، علت همچنان نامشخص'), L('Jetzt kann CMR Infarkt, Myokarditis, Takotsubo oder andere Myokardschädigung unterscheiden.', 'CMR can now distinguish infarction, myocarditis, Takotsubo, or other myocardial injury.', 'اکنون CMR می‌تواند انفارکت، میوکاردیت، تاکوتسوبو یا سایر آسیب‌های میوکارد را افتراق دهد.')],
-  }
-
   return <div className={styles.troponinSection}>
-    <section className={styles.troponinInteractive} aria-labelledby="troponin-interactive-title">
-      <header>
-        <div><small>{t(L('SCHRITT', 'STEP', 'مرحله'))} {step}/3</small><h3 id="troponin-interactive-title">{t(L('Was ist der nächste Schritt?', 'What is the next step?', 'قدم بعدی چیست؟'))}</h3></div>
-        {urgency !== null ? <button type="button" className={styles.resetPath} onClick={reset}>{t(L('Neu starten', 'Restart', 'شروع دوباره'))}</button> : null}
-      </header>
-      <div className={styles.stepTrack} aria-hidden="true">{[1, 2, 3].map(number => <i key={number} className={number <= step ? styles.stepTrackActive : ''} />)}</div>
-      {question ? <div className={styles.interactiveQuestion} key={step}>
-        <strong>{t(question)}</strong>
-        {step === 3 ? <span>{t(L('Assayspezifischen 0/1-h-Algorithmus verwenden.', 'Use the assay-specific 0/1-h algorithm.', 'از الگوریتم اختصاصی تست ۰/۱ ساعت استفاده کنید.'))}</span> : null}
-        <div><button type="button" onClick={() => choose(true)}>{t(L('Ja', 'Yes', 'بله'))}</button><button type="button" onClick={() => choose(false)}>{t(L('Nein', 'No', 'خیر'))}</button></div>
-      </div> : null}
-      {resultType ? <div className={`${styles.interactiveResult} ${styles[`interactiveResult_${resultType}`]}`} aria-live="polite">
-        <small>{resultType === 'cmr' ? 'CMR' : t(L('NÄCHSTER SCHRITT', 'NEXT STEP', 'قدم بعدی'))}</small>
-        <strong>{t(outcomes[resultType][0])}</strong>
-        <p>{t(outcomes[resultType][1])}</p>
-      </div> : null}
-    </section>
-
     <TroponinFlowchart lang={lang} />
-
-    <aside className={styles.troponinDifferentials}>
-      <h3>{t(L('Differenzialdiagnosen des Troponinanstiegs', 'Differential diagnoses of troponin elevation', 'تشخیص‌های افتراقی افزایش تروپونین'))}</h3>
-      <div>{TROPONIN_DIFFERENTIALS.map(item => <span key={t(item)}>{t(item)}</span>)}</div>
-      <p><strong>{t(L('Merke:', 'Remember:', 'نکته:'))}</strong> {t(L('Je höher der Ausgangswert und je deutlicher die Dynamik, desto wahrscheinlicher ist im passenden ischämischen Kontext ein akuter Myokardinfarkt. Die Höhe allein beweist jedoch keine KHK – auch nichtkoronare Ursachen können starke Anstiege verursachen.', 'The higher the initial value and the clearer the kinetics, the more likely acute myocardial infarction becomes in the appropriate ischaemic context. Magnitude alone, however, does not prove CAD—non-coronary causes can also produce marked elevations.', 'هرچه مقدار اولیه بالاتر و تغییرات سریال واضح‌تر باشد، در زمینه بالینی ایسکمیک احتمال انفارکت حاد بیشتر می‌شود؛ اما شدت افزایش به‌تنهایی KHK را ثابت نمی‌کند و علل غیرکرونری نیز می‌توانند افزایش شدید ایجاد کنند.'))}</p>
-    </aside>
+    <TroponinDifferentials lang={lang} />
   </div>
 }
 
