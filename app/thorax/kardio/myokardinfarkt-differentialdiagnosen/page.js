@@ -171,6 +171,18 @@ function SideArrow() {
 
 function TroponinFlowchart({ lang }) {
   const t = value => pick(value, lang)
+  if (lang === 'de') {
+    return <figure className={styles.troponinGraphic} aria-labelledby="troponin-flow-title">
+      <h3 id="troponin-flow-title" className={styles.srOnly}>Entscheidungsweg bei Thoraxschmerz und Troponinanstieg</h3>
+      <Image
+        src="/thorax/kardio/myokardinfarkt-differentialdiagnosen/troponin-pathway-de.svg"
+        alt="Entscheidungsweg bei Thoraxschmerz und Troponinanstieg: dringliche Koronarangiographie bei ST-Hebung, hämodynamischer Instabilität, sehr hohem Ausgangswert oder signifikanter Troponindynamik; CMR bei fehlender obstruktiver KHK oder weiterhin unklarer Ursache."
+        width={1200}
+        height={1500}
+        priority
+      />
+    </figure>
+  }
   return <section className={styles.troponinFlowchart} aria-labelledby="troponin-flow-title">
     <header><h3 id="troponin-flow-title">{t(L('Der gesamte Weg auf einen Blick', 'The full pathway at a glance', 'نمای کامل مسیر در یک نگاه'))}</h3></header>
     <div className={styles.flowStartNode}>
@@ -200,7 +212,7 @@ function TroponinFlowchart({ lang }) {
 
     <div className={styles.flowCmrInputs}>
       <div><div className={styles.flowDown}><DownArrow /></div><span>{t(L('Nach Angiographie: keine obstruktive KHK / keine Culprit-Läsion', 'After angiography: no obstructive CAD / no culprit lesion', 'پس از آنژیوگرافی: بدون KHK انسدادی / بدون ضایعه مسئول'))}</span><div className={styles.flowDown}><DownArrow /></div></div>
-      <div><div className={styles.flowDown}><DownArrow /></div><span>{t(L('Stabil, aber Ursache weiterhin unklar', 'Stable, but the cause remains unclear', 'پایدار، اما علت همچنان نامشخص'))}</span><div className={styles.flowDown}><DownArrow /></div></div>
+      <div><div className={styles.flowDown}><DownArrow /></div><span>{t(L('Stabil und Ursache weiterhin unklar', 'Stable, but the cause remains unclear', 'پایدار، اما علت همچنان نامشخص'))}</span><div className={styles.flowDown}><DownArrow /></div></div>
     </div>
     <div className={styles.flowCmr}><small>{t(L('GEWEBEDIAGNOSE', 'TISSUE DIAGNOSIS', 'تشخیص بافتی'))}</small><strong>CMR</strong><p>{t(L('Infarkt, Myokarditis, Takotsubo oder andere Myokardschädigung differenzieren.', 'Differentiate infarction, myocarditis, Takotsubo, or other myocardial injury.', 'افتراق انفارکت، میوکاردیت، تاکوتسوبو یا سایر آسیب‌های میوکارد.'))}</p></div>
   </section>
