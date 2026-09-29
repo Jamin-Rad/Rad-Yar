@@ -39,8 +39,7 @@ const SECTIONS = [
   { id: 'takotsubo', label: L('Takotsubo-Syndrom', 'Takotsubo syndrome', 'سندروم تاکوتسوبو') },
   { id: 'myokarditis', label: L('Myokarditis', 'Myocarditis', 'میوکاردیت') },
   { id: 'sarkoidose', label: L('Kardiale Sarkoidose', 'Cardiac sarcoidosis', 'سارکوئیدوز قلبی') },
-  { id: 'algorithmus', label: L('Entscheidungsalgorithmus', 'Decision algorithm', 'الگوریتم تصمیم‌گیری') },
-  { id: 'takehome', label: L('Take Home', 'Take home', 'نکات کلیدی') },
+  { id: 'algorithmus', label: L('Take Home Message', 'Take-home message', 'پیام نهایی') },
 ]
 const SECTION_IDS = SECTIONS.map(section => section.id)
 const SECTION_LABELS = Object.fromEntries(SECTIONS.map(section => [section.id, section.label]))
@@ -231,13 +230,13 @@ function DecisionTree({ lang }) {
     nonischemic: L('Nichtinfarkttypisches LGE + Ödem → entzündliche Myokardschädigung; Verteilung auf Myokarditis oder Sarkoidose prüfen.', 'Non-infarct LGE + oedema → inflammatory myocardial injury; use distribution to distinguish myocarditis from sarcoidosis.', 'LGE غیرانفارکتی + ادم ← آسیب التهابی میوکارد؛ توزیع برای افتراق میوکاردیت از سارکوئیدوز بررسی شود.'),
   }[answer]
   return <div className={styles.decisionTool}>
-    <header><small>{pick(L('Erster Blick', 'First look', 'نگاه اول'), lang)}</small><h3>{pick(L('Wie ist das Late Enhancement verteilt?', 'How is late enhancement distributed?', 'توزیع Late Enhancement چگونه است؟'), lang)}</h3></header>
+    <header><small>{pick(L('1 · Muster erkennen', '1 · Recognise the pattern', '۱ · تشخیص الگو'), lang)}</small><h3>{pick(L('Wie ist das Late Enhancement verteilt?', 'How is late enhancement distributed?', 'توزیع Late Enhancement چگونه است؟'), lang)}</h3><p>{pick(L('Die Wandschicht und die Verteilung des LGE geben die Richtung vor.', 'The wall layer and distribution of LGE determine the direction.', 'لایه دیواره و توزیع LGE مسیر را مشخص می‌کند.'), lang)}</p></header>
     <div className={styles.decisionOptions}>{[
       ['infarct', L('Infarkt-Typ', 'Infarct pattern', 'الگوی انفارکتی')],
       ['none', L('Kein LGE', 'No typical LGE', 'بدون LGE تیپیک')],
       ['nonischemic', L('Nicht-Infarkt-Typ', 'Non-infarct pattern', 'الگوی غیرانفارکتی')],
     ].map(([id, label]) => <button key={id} type="button" className={answer === id ? styles.decisionActive : ''} aria-pressed={answer === id} onClick={() => setAnswer(id)}>{pick(label, lang)}</button>)}</div>
-    <div className={styles.decisionResult} aria-live="polite"><span>→</span><p>{pick(result, lang)}</p></div>
+    <div className={styles.decisionResult} aria-live="polite"><span><SectionIcon id="algorithmus" /></span><p>{pick(result, lang)}</p></div>
   </div>
 }
 
@@ -295,20 +294,19 @@ function LessonContent({ lang }) {
     </Section>
 
     <Section id="algorithmus" title={t(SECTION_LABELS.algorithmus)}>
+      <div className={styles.takeHomeIntro}>
+        <span><SectionIcon id="takehome" /></span>
+        <div><h3>{t(L('Nicht der Einzelbefund, sondern das Gesamtmuster entscheidet.', 'The complete pattern—not one finding—decides.', 'الگوی کلی، نه یک یافته منفرد، تعیین‌کننده است.'))}</h3><p>{t(L('LGE lokalisiert die Schädigung. T2 zeigt die Aktivität. Cine ordnet die Funktion ein. Der Koronarstatus verbindet alles mit der klinischen Situation.', 'LGE localises injury, T2 shows activity, cine assesses function, and coronary status provides the clinical context.', 'LGE آسیب را مشخص می‌کند، T2 فعالیت را نشان می‌دهد و Cine عملکرد را ارزیابی می‌کند.'))}</p></div>
+      </div>
       <DecisionTree lang={lang} />
-      <ol className={styles.algorithmSteps}><li><span>01</span><div><h3>{t(L('LGE zuerst', 'Start with LGE', 'ابتدا LGE'))}</h3><p>{t(L('Infarkt-Typ, kein typisches LGE oder Nicht-Infarkt-Typ unterscheiden.', 'Separate infarct pattern, no typical LGE, and non-infarct pattern.', 'الگوی انفارکتی، نبود LGE تیپیک و الگوی غیرانفارکتی را جدا کنید.'))}</p></div></li><li><span>02</span><div><h3>{t(L('Ödem ergänzen', 'Add oedema', 'ادم را اضافه کنید'))}</h3><p>{t(L('Ödem spricht für einen akuten beziehungsweise aktiven Prozess, ist aber allein nicht spezifisch.', 'Oedema supports an acute or active process but is not specific on its own.', 'ادم به نفع فرایند حاد یا فعال است، اما به‌تنهایی اختصاصی نیست.'))}</p></div></li><li><span>03</span><div><h3>{t(L('Cine korrelieren', 'Correlate cine', 'Cine را تطبیق دهید'))}</h3><p>{t(L('Territoriale Akinesie, apikales Ballooning oder unspezifische Dysfunktion einordnen.', 'Classify territorial akinesia, apical ballooning, or non-specific dysfunction.', 'آکینزی قلمرویی، بالونینگ اپیکال یا اختلال عملکرد غیراختصاصی را طبقه‌بندی کنید.'))}</p></div></li><li><span>04</span><div><h3>{t(L('Koronarstatus einbeziehen', 'Include coronary status', 'وضعیت کرونر را لحاظ کنید'))}</h3><p>{t(L('Infarktmuster plus nichtobstruktive Koronarien bleibt eine MINOCA-Arbeitsdiagnose und verlangt Ursachenklärung.', 'An infarct pattern with non-obstructive coronaries remains a working diagnosis of MINOCA and requires aetiologic work-up.', 'الگوی انفارکت با کرونر غیرانسدادی همچنان تشخیص کاری MINOCA است و نیاز به بررسی علت دارد.'))}</p></div></li></ol>
-    </Section>
-
-    <Section id="takehome" title={t(SECTION_LABELS.takehome)}>
-      <ol className={styles.takeHome}>{[
-        L('Eine dringliche ACS-Therapie darf durch die Kardio-MRT nicht verzögert werden.', 'Cardiac MRI must not delay urgent ACS treatment.', 'MRI قلب نباید درمان فوری ACS را به تأخیر بیندازد.'),
-        L('Infarkt-LGE beginnt subendokardial und folgt einem Koronarterritorium; die Ausdehnung kann transmural werden.', 'Infarct LGE starts subendocardially and follows a coronary territory; it may become transmural.', 'LGE انفارکت از ساب‌اندوکارد آغاز می‌شود و قلمرو کرونر را دنبال می‌کند و می‌تواند ترانس‌مورال شود.'),
-        L('Beim akuten Infarkt gezielt auf Komplikationen wie MVO und intrakardialen Thrombus achten.', 'Oedema plus regional dysfunction supports acute infarction; MVO is an adverse marker.', 'ادم همراه اختلال موضعی از انفارکت حاد حمایت می‌کند؛ MVO نشانه نامطلوب است.'),
-        L('MINOCA sieht im Myokard wie ein Infarkt aus, obwohl keine obstruktive Koronarstenose vorliegt.', 'MINOCA may look like infarction in the myocardium despite no obstructive coronary stenosis.', 'MINOCA در میوکارد شبیه انفارکت است، با وجود نبود تنگی انسدادی کرونر.'),
-        L('Takotsubo zeigt ein charakteristisches, meist territoriumsübergreifendes Ballooning und typischerweise kein LGE.', 'Takotsubo shows a characteristic motion pattern without typical infarct LGE.', 'تاکوتسوبو الگوی حرکتی تیپیک بدون LGE انفارکتی دارد.'),
-        L('Myokarditis und Sarkoidose zeigen nichtischämische, subepikardiale/midmyokardiale beziehungsweise fleckige LGE-Muster.', 'Myocarditis and sarcoidosis show non-ischaemic subepicardial/mid-wall or patchy LGE patterns.', 'میوکاردیت و سارکوئیدوز الگوهای LGE غیرایسکمیک ساب‌اپیکاردیال/میدوال یا لکه‌ای نشان می‌دهند.'),
-      ].map((item, index) => <li key={t(item)}><span>{String(index + 1).padStart(2, '0')}</span><p>{t(item)}</p></li>)}</ol>
-      <aside className={styles.sources}><header><small>{t(L('Evidenzbasis', 'Evidence base', 'پایه شواهد'))}</small><h3>{t(L('Leitlinien & Konsensusdokumente', 'Guidelines & consensus documents', 'گایدلاین‌ها و اسناد اجماعی'))}</h3></header><div>{REFERENCES.map(([title, href], index) => <a key={href} href={href} target="_blank" rel="noreferrer"><span>{String(index + 1).padStart(2, '0')}</span><strong>{title}</strong><i aria-hidden="true">↗</i></a>)}</div><p>{t(L('Die Unterrichtsinhalte wurden anhand der bereitgestellten Kursunterlagen strukturiert und fachlich mit den genannten Primärquellen abgeglichen. Die Seite ersetzt keine individuelle klinische Entscheidung.', 'The lesson was structured from the supplied course material and checked against the listed primary sources. It does not replace individual clinical decision-making.', 'محتوای درس بر اساس جزوه‌های ارائه‌شده ساختاربندی و با منابع اولیه ذکرشده تطبیق داده شده است. این صفحه جایگزین تصمیم‌گیری بالینی فردی نیست.'))}</p></aside>
+      <div className={styles.takeHomeSteps}>{[
+        [L('LGE', 'LGE', 'LGE'), L('Muster', 'Pattern', 'الگو'), L('Subendokardial im Territorium = ischämisch; subepikardial/midmyokardial = nichtischämisch.', 'Subendocardial territorial enhancement is ischaemic; subepicardial/mid-wall enhancement is non-ischaemic.', 'درگیری ساب‌اندوکاردیال قلمرویی ایسکمیک و ساب‌اپیکاردیال/میدوال غیرایسکمیک است.')],
+        [L('T2', 'T2', 'T2'), L('Aktivität', 'Activity', 'فعالیت'), L('Ödem spricht für einen akuten oder aktiven Prozess, ist allein aber nicht spezifisch.', 'Oedema supports an acute or active process but is not specific alone.', 'ادم به نفع فرایند حاد یا فعال است اما اختصاصی نیست.')],
+        [L('Cine', 'Cine', 'Cine'), L('Funktion', 'Function', 'عملکرد'), L('Territoriale Akinesie, Ballooning oder globale Dysfunktion gezielt einordnen.', 'Classify territorial akinesia, ballooning, or global dysfunction.', 'آکینزی قلمرویی، بالونینگ یا اختلال کلی را طبقه‌بندی کنید.')],
+        [L('KHK', 'CAD', 'KHK'), L('Kontext', 'Context', 'زمینه'), L('Infarktmuster ohne obstruktive KHK bleibt MINOCA und verlangt Ursachenklärung.', 'An infarct pattern without obstructive CAD remains MINOCA and requires aetiologic work-up.', 'الگوی انفارکت بدون KHK انسدادی همچنان MINOCA است و نیاز به بررسی علت دارد.')],
+      ].map(([label, title, text], index) => <article key={t(label)}><div><span>{String(index + 1).padStart(2, '0')}</span><strong>{t(label)}</strong></div><h3>{t(title)}</h3><p>{t(text)}</p></article>)}</div>
+      <aside className={styles.takeHomeBottomLine}><SectionIcon id="takehome" /><p>{t(L('Bei STEMI oder hämodynamischer Instabilität hat die Akutversorgung Vorrang. CMR hilft anschließend, wenn die Ursache der Myokardschädigung unklar bleibt.', 'In STEMI or haemodynamic instability, acute treatment takes priority. CMR helps when the cause of myocardial injury remains unclear.', 'در STEMI یا ناپایداری همودینامیک، درمان فوری اولویت دارد؛ CMR زمانی کمک می‌کند که علت آسیب میوکارد نامشخص بماند.'))}</p></aside>
+      <details className={styles.sourcesDisclosure}><summary>{t(L('Leitlinien & Konsensusdokumente', 'Guidelines & consensus documents', 'گایدلاین‌ها و اسناد اجماعی'))}</summary><div>{REFERENCES.map(([title, href], index) => <a key={href} href={href} target="_blank" rel="noreferrer"><span>{String(index + 1).padStart(2, '0')}</span><strong>{title}</strong><i aria-hidden="true">↗</i></a>)}</div></details>
     </Section>
   </>
 }
