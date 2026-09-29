@@ -22,8 +22,15 @@
 .page :global([class*='heroFacts']) article:nth-child(2){background:color-mix(in srgb,var(--bg-card) 94%,#329aaa 6%)}
 .page :global([class*='heroFacts']) article:nth-child(3){background:color-mix(in srgb,var(--bg-card) 94%,#e73368 6%)}
 .page :global([class*='progressTrack']) i{background:linear-gradient(90deg,var(--mi-deep),var(--mi),var(--mi-teal))}
-.page :global([class*='activeSideItem']){color:#fff;background:linear-gradient(90deg,var(--mi-deep),rgba(50,154,170,.28))}
-.page :global([class*='activeSideItem']) span{color:#ffdce6}
+.lessonLayout{grid-template-columns:260px minmax(0,1fr);gap:22px}
+.lessonSidebar{padding:22px 16px;border-radius:13px}
+.lessonSidebar h2{margin-inline:10px;font-size:1.32rem}
+.sideNavItem{min-height:50px!important;grid-template-columns:38px minmax(0,1fr)!important;gap:10px!important;padding:7px 10px!important;border-radius:9px!important}
+.sideNavItem strong{font-size:.84rem!important;line-height:1.35!important}
+.sideNavItem>span{width:32px!important;height:32px!important}
+.lessonSidebar .sideNavItemActive{color:#fff!important;background:var(--mi-deep)!important;box-shadow:none!important}
+.lessonSidebar .sideNavItemActive:hover{color:#fff!important;background:#6e1b55!important}
+.lessonSidebar .sideNavItemActive>span{border-color:rgba(255,255,255,.42)!important;color:#fff!important;background:rgba(255,255,255,.12)!important;box-shadow:none!important}
 
 .section{scroll-margin-top:106px;border-radius:15px;transition:border-color .18s ease,box-shadow .18s ease}
 .section:has(.sectionHeader[aria-expanded='true']){border-color:rgba(231,51,104,.32);box-shadow:0 18px 44px rgba(86,23,67,.09)}
@@ -80,13 +87,13 @@
 .flowCmr small{color:#91e0e7;font-size:.65rem;font-weight:950;letter-spacing:.12em}.flowCmr strong{font-family:var(--font-display);font-size:1.65rem}.flowCmr p{margin:0;color:rgba(255,255,255,.82);font-size:.79rem;line-height:1.55}
 
 .troponinDifferentials{overflow:hidden;border:1px solid rgba(86,23,67,.18);border-radius:16px;background:var(--bg-card);box-shadow:0 16px 38px rgba(86,23,67,.06)}
-.troponinDifferentials>header{padding:23px 24px 17px;background:linear-gradient(135deg,rgba(231,51,104,.06),rgba(50,154,170,.025))}
-.troponinDifferentials h3{margin:0;color:var(--text-strong);font-family:var(--font-display);font-size:clamp(1.15rem,2vw,1.45rem);font-weight:900;line-height:1.35}
-.differentialTabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;padding:0 24px 16px}
-.differentialTabs button{display:grid;grid-template-columns:29px minmax(0,1fr);gap:9px;align-items:center;min-width:0;min-height:78px;padding:13px 12px;border:1px solid var(--border);border-radius:10px;color:var(--text-strong);background:var(--surface-soft);font-family:inherit;text-align:start;cursor:pointer;transition:transform .18s ease,border-color .18s ease,background .18s ease}
+.troponinDifferentials>header{padding:27px 28px 21px;background:linear-gradient(135deg,rgba(231,51,104,.06),rgba(50,154,170,.025))}
+.troponinDifferentials h3{margin:0;color:var(--text-strong);font-family:var(--font-display);font-size:clamp(1.4rem,2.25vw,1.75rem);font-weight:900;line-height:1.3;text-wrap:balance}
+.differentialTabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:0 28px 22px}
+.differentialTabs button{display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;align-items:center;min-width:0;min-height:90px;padding:17px 16px;border:1px solid var(--border);border-radius:11px;color:var(--text-strong);background:var(--surface-soft);font-family:inherit;text-align:start;cursor:pointer;transition:transform .18s ease,border-color .18s ease,background .18s ease}
 .differentialTabs button:hover,.differentialTabs button:focus-visible{transform:translateY(-2px);border-color:rgba(231,51,104,.58);outline:none}
-.differentialTabs button span{display:grid;width:28px;height:28px;place-items:center;border-radius:50%;color:var(--mi-deep);background:rgba(231,51,104,.09);font-size:.64rem;font-weight:950}
-.differentialTabs button strong{min-width:0;font-size:.76rem;line-height:1.4;overflow-wrap:anywhere}
+.differentialTabs button span{display:grid;width:34px;height:34px;place-items:center;border-radius:50%;color:var(--mi-deep);background:rgba(231,51,104,.09);font-size:.7rem;font-weight:950}
+.differentialTabs button strong{min-width:0;font-size:.94rem;line-height:1.45;overflow-wrap:normal;word-break:normal}
 .differentialTabs .differentialTabActive{border-color:var(--mi);color:#fff;background:linear-gradient(135deg,var(--mi-deep),#8f204f);box-shadow:0 10px 24px rgba(86,23,67,.18)}
 .differentialTabs .differentialTabActive span{color:#fff;background:rgba(255,255,255,.16)}
 .differentialDetail{display:grid;min-height:145px;align-content:center;gap:7px;padding:24px;color:#fff;background:linear-gradient(135deg,#0d101b,var(--mi-navy))}
@@ -178,13 +185,19 @@
 
 .rtl .algorithmSteps::before{left:auto;right:24px}
 @media(max-width:980px){
-  .flowDecisionGrid{grid-template-columns:minmax(185px,.7fr) 54px minmax(300px,1.3fr)}.angioHub{padding-inline:18px}.differentialTabs,.patternTabs{grid-template-columns:repeat(2,minmax(0,1fr))}.patternPanel{grid-template-columns:1fr 1fr}
+  .lessonLayout{grid-template-columns:230px minmax(0,1fr);gap:16px}.flowDecisionGrid{grid-template-columns:minmax(185px,.7fr) 54px minmax(300px,1.3fr)}.angioHub{padding-inline:18px}.differentialTabs,.patternTabs{grid-template-columns:repeat(2,minmax(0,1fr))}.patternPanel{grid-template-columns:1fr 1fr}
 }
 @media(max-width:760px){
   .page::before{background-position:60% 18%}
   .heroCopy h1{font-size:clamp(2rem,9.5vw,2.85rem);overflow-wrap:anywhere;hyphens:auto}
   .sectionHeader{padding:16px 15px}.sectionHeader>span:nth-child(2)>strong{font-size:1.12rem;overflow-wrap:anywhere}.sectionBody{padding:6px 16px 24px}
-  .troponinFlowchart{padding:20px 14px}.flowDecisionGrid{display:flex;flex-direction:column;gap:9px}.flowToAngio{display:none}.flowQuestion{order:0;grid-template-columns:34px minmax(0,1fr);width:100%}.flowQuestion .mobileYes{display:block;grid-column:2;color:var(--mi);font:950 .61rem/1.3 inherit;letter-spacing:.07em}.flowNo{order:0;width:100%}.angioHub{order:20;width:100%;min-height:auto;padding:22px}.flowCmrInputs{order:21;grid-template-columns:1fr;gap:8px}.flowCmr{order:22}.differentialTabs{padding-inline:18px}.troponinDifferentials>header{padding-inline:18px}.troponinRemember{grid-template-columns:1fr;gap:7px;margin-inline:18px}.lgeBasics,.layerDiagram,.patternPanel,.infarctSplit,.compareColumns{grid-template-columns:1fr}.lgeBasics article+article{border-inline-start:0;border-top:1px solid var(--border)}.layerDiagram>span{transform:rotate(90deg)}
+  .mobileLearningPath{left:12px!important;width:min(420px,calc(100vw - 24px))!important;filter:none!important}
+  .mobilePathButton{width:100%!important;max-width:none!important;min-height:60px!important;grid-template-columns:44px 36px minmax(0,1fr)!important;gap:10px!important;padding:7px 15px 7px 8px!important;border-radius:16px!important;box-shadow:0 14px 34px rgba(2,6,23,.2)!important}
+  .mobilePathPanel{left:12px!important;width:min(420px,calc(100vw - 24px))!important;border-radius:16px!important}
+  .mobileProgressRing{width:44px!important;height:44px!important;background:conic-gradient(var(--mi-teal) var(--mobile-progress),rgba(86,23,67,.18) 0)!important}
+  .mobileProgressRing::before{inset:3px!important}
+  .mobileCurrentIcon{width:36px!important;height:36px!important;border:0!important;border-radius:10px!important;color:#fff!important;background:var(--mi-deep)!important;box-shadow:none!important}
+  .lessonLayout{grid-template-columns:1fr}.troponinFlowchart{padding:20px 14px}.flowDecisionGrid{display:flex;flex-direction:column;gap:9px}.flowToAngio{display:none}.flowQuestion{order:0;grid-template-columns:34px minmax(0,1fr);width:100%}.flowQuestion .mobileYes{display:block;grid-column:2;color:var(--mi);font:950 .61rem/1.3 inherit;letter-spacing:.07em}.flowNo{order:0;width:100%}.angioHub{order:20;width:100%;min-height:auto;padding:22px}.flowCmrInputs{order:21;grid-template-columns:1fr;gap:8px}.flowCmr{order:22}.differentialTabs{grid-template-columns:1fr;padding-inline:18px}.troponinDifferentials>header{padding-inline:18px}.troponinRemember{grid-template-columns:1fr;gap:7px;margin-inline:18px}.lgeBasics,.layerDiagram,.patternPanel,.infarctSplit,.compareColumns{grid-template-columns:1fr}.lgeBasics article+article{border-inline-start:0;border-top:1px solid var(--border)}.layerDiagram>span{transform:rotate(90deg)}
   .patternPanel figure{min-height:320px}.patternPanel>div{padding:23px}.mvoBox{grid-template-columns:90px minmax(0,1fr);gap:16px}.mvoMark>span{width:72px;height:72px;border-width:15px}
   .sources>div{grid-template-columns:1fr}.inflammationTable{overflow-x:auto}.inflammationTable>div{min-width:650px}.rule{grid-template-columns:1fr}
 }
