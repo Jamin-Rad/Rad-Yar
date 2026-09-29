@@ -40,8 +40,6 @@ const SECTIONS = [
   { id: 'myokarditis', label: L('Myokarditis', 'Myocarditis', 'میوکاردیت') },
   { id: 'sarkoidose', label: L('Kardiale Sarkoidose', 'Cardiac sarcoidosis', 'سارکوئیدوز قلبی') },
   { id: 'algorithmus', label: L('Take Home Message', 'Take-home message', 'پیام نهایی') },
-  { id: 'mcq', label: L('MCQ', 'MCQ', 'MCQ') },
-  { id: 'flashcards', label: L('Flashcards', 'Flashcards', 'Flashcards') },
 ]
 const SECTION_IDS = SECTIONS.map(section => section.id)
 const SECTION_LABELS = Object.fromEntries(SECTIONS.map(section => [section.id, section.label]))
@@ -126,56 +124,6 @@ const REFERENCES = [
   ['International Expert Consensus on Takotsubo Syndrome', 'https://academic.oup.com/eurheartj/article/39/22/2047/5025411'],
   ['AHA Scientific Statement: Diagnosis and Management of Cardiac Sarcoidosis', 'https://www.ahajournals.org/doi/10.1161/CIR.0000000000001240'],
   ['AHA Standardized Myocardial Segmentation and Nomenclature', 'https://www.ahajournals.org/doi/10.1161/hc0402.102975'],
-]
-
-const MCQ_QUESTIONS = [
-  {
-    question: 'Thoraxschmerz, Troponinanstieg und ST-Hebung: Was ist der nächste Schritt?',
-    options: ['Kardio-MRT als erste Untersuchung', 'Herzkatheterlabor', 'Stressperfusion', 'Kontrolle nach 24 Stunden'],
-    answer: 1,
-    explanation: 'Bei ST-Hebung darf die Akutversorgung nicht durch eine CMR verzögert werden. Die sofortige invasive Abklärung hat Vorrang.',
-  },
-  {
-    question: 'Welches LGE-Muster spricht am stärksten für eine ischämische Myokardschädigung?',
-    options: ['Subepikardial inferolateral', 'Fleckig basal-septal', 'Subendokardial in einem Koronarterritorium', 'Kein LGE bei apikalem Ballooning'],
-    answer: 2,
-    explanation: 'Infarkt-LGE beginnt subendokardial und kann sich je nach Infarkttiefe bis transmural ausbreiten.',
-  },
-  {
-    question: 'Nichtobstruktive Koronarien, apikales Ballooning und typischerweise kein LGE: Welche Diagnose ist am wahrscheinlichsten?',
-    options: ['Chronischer Infarkt', 'Takotsubo-Syndrom', 'Kardiale Sarkoidose', 'Amyloidose'],
-    answer: 1,
-    explanation: 'Das territoriumsübergreifende Bewegungsmuster in Cine bei typischerweise fehlendem LGE spricht für Takotsubo.',
-  },
-  {
-    question: 'Welche Kombination passt am besten zu einer akuten Myokarditis?',
-    options: ['Subendokardiales LGE ohne Ödem', 'Subepikardiales LGE + T2-Ödem', 'Transmurales LGE im LAD-Territorium', 'Apikale Wandverdünnung ohne Ödem'],
-    answer: 1,
-    explanation: 'Myokarditis zeigt typischerweise ein nichtischämisches subepikardiales oder midmyokardiales LGE und bei Aktivität ein T2-basiertes Ödemzeichen.',
-  },
-  {
-    question: 'Welcher Befund spricht eher für einen chronischen als für einen akuten Infarkt?',
-    options: ['Deutlich erhöhtes T2-Signal', 'Mikrovaskuläre Obstruktion', 'Persistierendes LGE mit Wandverdünnung ohne Ödem', 'Intramyokardiale Einblutung'],
-    answer: 2,
-    explanation: 'Chronische Narben zeigen persistierendes LGE, häufig Wandverdünnung und kein relevantes T2-Ödem.',
-  },
-  {
-    question: 'Wie erscheint eine mikrovaskuläre Obstruktion im LGE?',
-    options: ['Als dunkler Kern im hellen Infarktareal', 'Als diffuse perikardiale Anreicherung', 'Als homogen helles Blutpool-Signal', 'Als isoliertes subepikardiales LGE'],
-    answer: 0,
-    explanation: 'MVO ist eine dunkle Aussparung innerhalb des hell kontrastierenden Infarktareals und prognostisch relevant.',
-  },
-]
-
-const FLASHCARDS = [
-  ['Was zeigt LGE?', 'Eine Vergrößerung des Extrazellulärraums bei Nekrose oder Fibrose. Entscheidend sind Wandschicht und Verteilung.'],
-  ['Wie sieht ischämisches LGE aus?', 'Es beginnt subendokardial, folgt einem Koronarterritorium und kann bis transmural reichen.'],
-  ['Wie sieht Myokarditis typischerweise aus?', 'Subepikardiales oder midmyokardiales LGE, häufig inferolateral, plus T2-Ödem bei aktiver Entzündung.'],
-  ['Was ist für Takotsubo entscheidend?', 'Das Cine-Muster: apikales, midventrikuläres, basales oder fokales Ballooning – typischerweise ohne LGE.'],
-  ['Akuter vs. chronischer Infarkt?', 'Akut: T2-Ödem. Chronisch: kein Ödem, persistierende Narbe und häufig Wandverdünnung.'],
-  ['Was bedeutet MINOCA?', 'Myokardinfarkt ohne obstruktive KHK – zunächst eine Arbeitsdiagnose, deren Ursache durch CMR weiter geklärt wird.'],
-  ['Was ist MVO?', 'Eine dunkle Aussparung im hellen Infarkt-LGE als Zeichen fehlender mikrovaskulärer Reperfusion.'],
-  ['Wann hilft CMR bei Troponinanstieg?', 'Nach Ausschluss einer dringlichen koronaren Ursache, wenn Infarkt, Myokarditis, Takotsubo oder andere Myokardschädigung differenziert werden müssen.'],
 ]
 
 const LessonContext = createContext(null)
@@ -294,49 +242,6 @@ function DecisionTree({ lang }) {
   </div>
 }
 
-function McqTrainer() {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [answers, setAnswers] = useState({})
-  const question = MCQ_QUESTIONS[activeIndex]
-  const selected = answers[activeIndex]
-  const answered = Number.isInteger(selected)
-  const score = Object.entries(answers).reduce((total, [index, value]) => total + (MCQ_QUESTIONS[Number(index)]?.answer === value ? 1 : 0), 0)
-  const move = direction => {
-    setActiveIndex(current => Math.min(MCQ_QUESTIONS.length - 1, Math.max(0, current + direction)))
-  }
-
-  return <div className={styles.mcqTrainer}>
-    <header><div><small>WISSEN PRÜFEN</small><h3>{`Frage ${activeIndex + 1} von ${MCQ_QUESTIONS.length}`}</h3></div><strong>{score} richtig</strong></header>
-    <div className={styles.mcqProgress}><i style={{ width: `${((activeIndex + 1) / MCQ_QUESTIONS.length) * 100}%` }} /></div>
-    <article><h4>{question.question}</h4><div className={styles.mcqOptions}>{question.options.map((option, index) => {
-      const state = answered ? (index === question.answer ? styles.mcqCorrect : index === selected ? styles.mcqWrong : '') : ''
-      return <button type="button" key={option} className={`${selected === index ? styles.mcqSelected : ''} ${state}`} onClick={() => setAnswers(previous => ({ ...previous, [activeIndex]: index }))}><span>{String.fromCharCode(65 + index)}</span>{option}</button>
-    })}</div></article>
-    <div className={styles.mcqFeedback} aria-live="polite">{answered ? <><strong>{selected === question.answer ? 'Richtig.' : 'Nicht ganz.'}</strong><p>{question.explanation}</p></> : <p>Eine Antwort auswählen – die Erklärung erscheint sofort.</p>}</div>
-    <footer><button type="button" onClick={() => move(-1)} disabled={activeIndex === 0} aria-label="Vorherige Frage">←</button><div>{MCQ_QUESTIONS.map((item, index) => <button type="button" key={item.question} className={index === activeIndex ? styles.mcqDotActive : ''} onClick={() => setActiveIndex(index)} aria-label={`Frage ${index + 1}`} />)}</div><button type="button" onClick={() => move(1)} disabled={activeIndex === MCQ_QUESTIONS.length - 1} aria-label="Nächste Frage">→</button></footer>
-  </div>
-}
-
-function FlashcardTrainer() {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [revealed, setRevealed] = useState(false)
-  const card = FLASHCARDS[activeIndex]
-  const move = direction => {
-    setActiveIndex(current => (current + direction + FLASHCARDS.length) % FLASHCARDS.length)
-    setRevealed(false)
-  }
-
-  return <div className={styles.flashcardTrainer}>
-    <header><div><small>SCHNELL WIEDERHOLEN</small><h3>{`Karte ${activeIndex + 1} von ${FLASHCARDS.length}`}</h3></div><span>{revealed ? 'Antwort' : 'Frage'}</span></header>
-    <button type="button" className={`${styles.flashcard} ${revealed ? styles.flashcardRevealed : ''}`} onClick={() => setRevealed(value => !value)} aria-pressed={revealed}>
-      <small>{revealed ? 'ANTWORT' : 'FRAGE'}</small>
-      <strong>{revealed ? card[1] : card[0]}</strong>
-      <span>{revealed ? 'Zum Umdrehen klicken' : 'Antwort anzeigen'}</span>
-    </button>
-    <footer><button type="button" onClick={() => move(-1)} aria-label="Vorherige Karte">←</button><div>{FLASHCARDS.map((item, index) => <i key={item[0]} className={index === activeIndex ? styles.flashcardDotActive : ''} />)}</div><button type="button" onClick={() => move(1)} aria-label="Nächste Karte">→</button></footer>
-  </div>
-}
-
 function LessonContent({ lang }) {
   const t = value => pick(value, lang)
   return <>
@@ -406,13 +311,6 @@ function LessonContent({ lang }) {
       <details className={styles.sourcesDisclosure}><summary>{t(L('Leitlinien & Konsensusdokumente', 'Guidelines & consensus documents', 'گایدلاین‌ها و اسناد اجماعی'))}</summary><div>{REFERENCES.map(([title, href], index) => <a key={href} href={href} target="_blank" rel="noreferrer"><span>{String(index + 1).padStart(2, '0')}</span><strong>{title}</strong><i aria-hidden="true">↗</i></a>)}</div></details>
     </Section>
 
-    <Section id="mcq" title="MCQ">
-      <McqTrainer />
-    </Section>
-
-    <Section id="flashcards" title="Flashcards">
-      <FlashcardTrainer />
-    </Section>
   </>
 }
 
@@ -433,6 +331,7 @@ export default function MyocardialInfarctionDifferentialPage() {
   const [readSections, setReadSections] = usePersistedSectionProgress(ID, SECTION_IDS)
   const activeIndex = useMemo(() => SECTIONS.findIndex(section => section.id === openId), [openId])
   const withLang = href => lang === 'de' ? href : `${href}${href.includes('?') ? '&' : '?'}lang=${lang}`
+  const lessonPath = '/thorax/kardio/myokardinfarkt-differentialdiagnosen'
 
   useEffect(() => {
     const hash = window.location.hash.slice(1)
@@ -465,7 +364,7 @@ export default function MyocardialInfarctionDifferentialPage() {
   return <main className={`${template.page} ${styles.page} ${lang === 'fa' ? styles.rtl : ''}`} data-lesson-progress-managed="true" dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
     <header className={template.header}>
       <div className={template.topline}><nav className={template.breadcrumb} aria-label={pick(COPY.contents, lang)}><Link href={withLang('/')}>RadYar</Link><span>/</span><Link href={withLang('/lernen/thorax')}>{pick(COPY.thorax, lang)}</Link><span>/</span><span>{pick(COPY.chapter, lang)}</span><span>/</span><strong>{pick(COPY.title, lang)}</strong></nav><span className={template.author}>Dr. Zia</span></div>
-      <div className={template.hero}><div className={`${template.heroCopy} ${styles.heroCopy}`}><h1>{pick(COPY.title, lang)}</h1><div className={styles.heroTools}><button type="button" className={styles.heroToolPrimary} onClick={() => jumpTo('mcq')}><SectionIcon id="mcq" /><span><strong>MCQ</strong><small>6 Prüfungsfragen</small></span><i aria-hidden="true">→</i></button><button type="button" className={styles.heroToolSecondary} onClick={() => jumpTo('flashcards')}><SectionIcon id="flashcards" /><span><strong>Flashcards</strong><small>8 Lernkarten</small></span><i aria-hidden="true">→</i></button></div></div><div className={`${template.heroFacts} ${styles.heroFacts}`}>{facts.map(([value, description, icon]) => <article key={pick(value, lang)}><span className={template.factIcon}><SectionIcon id={icon} /></span><strong>{pick(value, lang)}</strong><p>{pick(description, lang)}</p></article>)}</div></div>
+      <div className={template.hero}><div className={`${template.heroCopy} ${styles.heroCopy}`}><h1>{pick(COPY.title, lang)}</h1><div className={styles.heroTools}><Link className={styles.heroToolPrimary} href={withLang(`/ueben/quiz?fach=thorax&n=6&themen=${ID}&from=${encodeURIComponent(withLang(lessonPath))}`)}><SectionIcon id="mcq" /><span><strong>MCQ</strong><small>6 Prüfungsfragen</small></span><i aria-hidden="true">→</i></Link><Link className={styles.heroToolSecondary} href={withLang(`/flashcards/${ID}?from=${encodeURIComponent(withLang(lessonPath))}`)}><SectionIcon id="flashcards" /><span><strong>Flashcards</strong><small>8 Lernkarten</small></span><i aria-hidden="true">→</i></Link></div></div><div className={`${template.heroFacts} ${styles.heroFacts}`}>{facts.map(([value, description, icon]) => <article key={pick(value, lang)}><span className={template.factIcon}><SectionIcon id={icon} /></span><strong>{pick(value, lang)}</strong><p>{pick(description, lang)}</p></article>)}</div></div>
       <div className={template.progressBar}><div className={template.progressTrack}><i style={{ width: `${(readSections.size / SECTIONS.length) * 100}%` }} /></div><span>{readSections.size} / {SECTIONS.length} {pick(COPY.progress, lang)}</span><div className={template.progressActions}><button type="button" className={`${template.lessonCompleteButton} ${lessonComplete ? template.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><SectionIcon id="takehome" />{pick(lessonComplete ? COPY.lessonCompleted : COPY.completeLesson, lang)}</button><button type="button" className={template.continueButton} onClick={advance} disabled={activeIndex === SECTIONS.length - 1}>{pick(COPY.continue, lang)}<span aria-hidden="true">→</span></button></div></div>
     </header>
     <div className={`${template.layout} ${styles.lessonLayout}`}><aside className={`${template.sidebar} ${styles.lessonSidebar}`}><h2>{pick(COPY.path, lang)}</h2><nav>{SECTIONS.map(section => <button type="button" key={section.id} className={`${styles.sideNavItem} ${openId === section.id ? `${template.activeSideItem} ${styles.sideNavItemActive}` : ''}`} onClick={() => jumpTo(section.id)} aria-current={openId === section.id ? 'location' : undefined} aria-label={`${pick(COPY.open, lang)}: ${pick(section.label, lang)}`}><span className={template.sideIcon}><SectionIcon id={section.id} /></span><strong>{pick(section.label, lang)}</strong></button>)}</nav></aside><article className={template.lesson}><LessonContext.Provider value={{ lang, openId, readSections, selectSection, toggleSectionRead }}><LessonContent lang={lang} /></LessonContext.Provider></article></div>

@@ -36,6 +36,7 @@ import { MAMMA_MRT_SPECIAL_CARCINOMA_QUESTIONS } from './mammaMrtSpecialCarcinom
 import { MAMMOGRAPHY_BASICS_QUESTIONS } from './mammaMammographyBasics'
 import { MAMMOGRAPHY_CALCIFICATIONS_QUESTIONS } from './mammaMammographyCalcifications'
 import { CARDIOMYOPATHY_QUESTIONS } from './cardiomyopathy'
+import { MYOCARDIAL_INJURY_QUESTIONS } from './myocardialInjury'
 
 const MENISKUS_IMAGE_QUESTIONS = {
   de: [
@@ -663,6 +664,7 @@ export const QUESTION_BANK = {
     ...MAMMOGRAPHY_BASICS_QUESTIONS.de,
     ...MAMMOGRAPHY_CALCIFICATIONS_QUESTIONS.de,
     ...CARDIOMYOPATHY_QUESTIONS.de,
+    ...MYOCARDIAL_INJURY_QUESTIONS.de,
     ...FLEISCHNER_QUESTIONS.de,
     ...MENISKUS_IMAGE_QUESTIONS.de,
     {
@@ -4726,6 +4728,15 @@ export const QUESTION_BANK = {
 
 export const MCQ_TOPIC_GROUPS = [
   { fachId: 'thorax', kapitelId: 'thorax-tumoren', title: { de: 'Lungentumoren', en: 'Lung tumours', fa: 'تومورهای ریه' }, topics: [{ id: 'fleischner-kriterien', title: { de: 'Fleischner-Kriterien', en: 'Fleischner criteria', fa: 'معیارهای Fleischner' } }] },
+  {
+    fachId: 'thorax',
+    kapitelId: 'thorax-kardio',
+    title: { de: 'Herz / Kardio-MRT', en: 'Heart / Cardiac MRI', fa: 'قلب / MRI قلب' },
+    topics: [
+      { id: 'myokardinfarkt-differentialdiagnosen', title: { de: 'Kardio-MRT bei Troponinanstieg', en: 'Cardiac MRI in troponin elevation', fa: 'MRI قلب در افزایش تروپونین' } },
+      { id: 'kardiomyopathien', title: { de: 'Kardiomyopathien: Kardio-MRT', en: 'Cardiomyopathies: cardiac MRI', fa: 'کاردیومیوپاتی‌ها: MRI قلب' } },
+    ],
+  },
   {
     fachId: 'mamma',
     kapitelId: 'mamma-bildgebung',

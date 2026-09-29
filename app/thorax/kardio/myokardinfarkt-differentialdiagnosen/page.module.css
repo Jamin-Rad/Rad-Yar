@@ -18,13 +18,13 @@
 .heroCopy{max-width:760px}
 .heroCopy h1{max-width:760px;text-wrap:balance}
 .heroTools{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-.heroTools button{display:grid;grid-template-columns:38px minmax(0,1fr) auto;min-width:210px;min-height:62px;align-items:center;gap:11px;padding:9px 13px 9px 10px;border:1px solid transparent;border-radius:11px;font-family:inherit;text-align:start;cursor:pointer;box-shadow:0 13px 28px rgba(59,22,61,.14);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
-.heroTools button:hover,.heroTools button:focus-visible{transform:translateY(-2px);box-shadow:0 17px 34px rgba(59,22,61,.21);outline:none}
-.heroTools button>svg{width:38px;height:38px;padding:8px;border-radius:9px}
-.heroTools button>span{display:grid;gap:4px}
-.heroTools button strong{font-size:.9rem;line-height:1}
-.heroTools button small{font-size:.67rem;font-weight:720;line-height:1.25}
-.heroTools button i{font-style:normal;font-weight:950}
+.heroTools a{display:grid;grid-template-columns:38px minmax(0,1fr) auto;min-width:210px;min-height:62px;align-items:center;gap:11px;padding:9px 13px 9px 10px;border:1px solid transparent;border-radius:11px;font-family:inherit;text-align:start;text-decoration:none;box-shadow:0 13px 28px rgba(59,22,61,.14);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.heroTools a:hover,.heroTools a:focus-visible{transform:translateY(-2px);box-shadow:0 17px 34px rgba(59,22,61,.21);outline:none}
+.heroTools a>svg{width:38px;height:38px;padding:8px;border-radius:9px}
+.heroTools a>span{display:grid;gap:4px}
+.heroTools a strong{font-size:.9rem;line-height:1}
+.heroTools a small{font-size:.67rem;font-weight:720;line-height:1.25}
+.heroTools a i{font-style:normal;font-weight:950}
 .heroToolPrimary{color:#fff;background:linear-gradient(135deg,var(--mi-deep),#8b205d)}
 .heroToolPrimary>svg{background:rgba(255,255,255,.13)}
 .heroToolPrimary small{color:#ffd9e5}
@@ -246,41 +246,6 @@
 .sourcesDisclosure a:hover{border-color:rgba(231,51,104,.45);color:var(--mi-deep)}
 .sourcesDisclosure a span{color:var(--mi);font-size:.62rem;font-weight:950}.sourcesDisclosure a strong{font-size:.73rem;line-height:1.4}.sourcesDisclosure a i{color:var(--mi);font-style:normal}
 
-.mcqTrainer,.flashcardTrainer{overflow:hidden;border:1px solid rgba(86,23,67,.2);border-radius:16px;background:var(--bg-card);box-shadow:0 18px 42px rgba(86,23,67,.08)}
-.mcqTrainer>header,.flashcardTrainer>header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 25px;background:linear-gradient(135deg,rgba(231,51,104,.08),rgba(50,154,170,.055))}
-.mcqTrainer>header small,.flashcardTrainer>header small{color:var(--mi-deep);font-size:.65rem;font-weight:950;letter-spacing:.11em}
-.mcqTrainer>header h3,.flashcardTrainer>header h3{margin:5px 0 0;color:var(--text-strong);font-family:var(--font-display);font-size:1.35rem;line-height:1.2}
-.mcqTrainer>header>strong,.flashcardTrainer>header>span{padding:8px 11px;border:1px solid rgba(50,154,170,.28);border-radius:999px;color:#096674;background:rgba(50,154,170,.1);font-size:.7rem;font-weight:900;white-space:nowrap}
-.mcqProgress{height:4px;background:var(--border)}
-.mcqProgress i{display:block;height:100%;background:linear-gradient(90deg,var(--mi),var(--mi-teal));transition:width .28s ease}
-.mcqTrainer>article{padding:28px 25px 18px}
-.mcqTrainer>article h4{max-width:810px;margin:0 0 22px;color:var(--text-strong);font-family:var(--font-display);font-size:clamp(1.08rem,2vw,1.35rem);line-height:1.45}
-.mcqOptions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.mcqOptions button{display:grid;grid-template-columns:34px minmax(0,1fr);gap:11px;align-items:center;min-height:64px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;color:var(--text-strong);background:var(--surface-soft);font:760 .85rem/1.45 inherit;text-align:start;cursor:pointer;transition:transform .16s ease,border-color .16s ease,background .16s ease}
-.mcqOptions button:hover,.mcqOptions button:focus-visible{transform:translateY(-1px);border-color:rgba(231,51,104,.55);outline:none}
-.mcqOptions button>span{display:grid;width:32px;height:32px;place-items:center;border-radius:8px;color:var(--mi-deep);background:rgba(231,51,104,.09);font-size:.72rem;font-weight:950}
-.mcqOptions .mcqSelected{border-color:var(--mi)}
-.mcqOptions .mcqCorrect{border-color:#24977f;background:rgba(36,151,127,.09)}
-.mcqOptions .mcqCorrect>span{color:#fff;background:#24977f}
-.mcqOptions .mcqWrong{border-color:#d73e62;background:rgba(215,62,98,.08)}
-.mcqOptions .mcqWrong>span{color:#fff;background:#d73e62}
-.mcqFeedback{min-height:104px;margin:0 25px;padding:18px 20px;border-inline-start:5px solid var(--mi-teal);border-radius:8px;background:rgba(50,154,170,.075)}
-.mcqFeedback strong{color:#08707e;font-family:var(--font-display);font-size:1rem}
-.mcqFeedback p{margin:5px 0 0;color:var(--text-soft);font-size:.85rem;line-height:1.65}
-.mcqTrainer>footer,.flashcardTrainer>footer{display:grid;grid-template-columns:42px minmax(0,1fr) 42px;gap:14px;align-items:center;padding:20px 25px}
-.mcqTrainer>footer>button,.flashcardTrainer>footer>button{display:grid;width:42px;height:42px;place-items:center;border:1px solid var(--border);border-radius:10px;color:var(--text-strong);background:var(--surface-soft);font:900 1rem/1 inherit;cursor:pointer}
-.mcqTrainer>footer>button:disabled{opacity:.35;cursor:not-allowed}
-.mcqTrainer>footer>div,.flashcardTrainer>footer>div{display:flex;justify-content:center;gap:7px}
-.mcqTrainer>footer>div button{width:9px;height:9px;padding:0;border:0;border-radius:50%;background:#c9cbd2;cursor:pointer}
-.mcqTrainer>footer>div .mcqDotActive,.flashcardTrainer>footer>div .flashcardDotActive{width:27px;border-radius:999px;background:linear-gradient(90deg,var(--mi),var(--mi-teal))}
-.flashcard{display:grid;width:calc(100% - 50px);min-height:300px;align-content:center;justify-items:center;gap:18px;margin:25px;padding:35px;border:1px solid rgba(50,154,170,.32);border-radius:15px;color:var(--text-strong);background:radial-gradient(circle at 80% 15%,rgba(50,154,170,.13),transparent 16rem),linear-gradient(145deg,rgba(50,154,170,.07),rgba(231,51,104,.055));font-family:inherit;text-align:center;cursor:pointer;transition:transform .22s ease,background .22s ease,border-color .22s ease}
-.flashcard:hover,.flashcard:focus-visible{transform:translateY(-2px);border-color:var(--mi-teal);outline:none}
-.flashcard>small{color:#08707e;font-size:.66rem;font-weight:950;letter-spacing:.14em}
-.flashcard>strong{max-width:720px;font-family:var(--font-display);font-size:clamp(1.45rem,3vw,2.1rem);line-height:1.38;text-wrap:balance}
-.flashcard>span{color:var(--text-soft);font-size:.72rem;font-weight:760}
-.flashcardRevealed{border-color:rgba(231,51,104,.35);background:radial-gradient(circle at 20% 15%,rgba(231,51,104,.13),transparent 16rem),linear-gradient(145deg,rgba(231,51,104,.07),rgba(50,154,170,.045))}
-.flashcardRevealed>small{color:var(--mi-deep)}
-.flashcardTrainer>footer>div i{display:block;width:9px;height:9px;border-radius:50%;background:#c9cbd2;transition:width .18s ease}
 @media(max-width:980px){
   .lessonLayout{grid-template-columns:230px minmax(0,1fr);gap:16px}.flowDecisionGrid{grid-template-columns:minmax(185px,.7fr) 54px minmax(300px,1.3fr)}.angioHub{padding-inline:18px}.differentialTabs,.patternTabs{grid-template-columns:repeat(2,minmax(0,1fr))}.patternPanel{grid-template-columns:1fr 1fr}
 }
@@ -288,9 +253,9 @@
   .page::before{background-position:62% top;opacity:.2}
   .heroCopy h1{font-size:clamp(2rem,9.5vw,2.85rem);overflow-wrap:anywhere;hyphens:auto}
   .heroTools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-  .heroTools button{min-width:0;grid-template-columns:34px minmax(0,1fr);padding:8px}
-  .heroTools button>svg{width:34px;height:34px;padding:7px}
-  .heroTools button>i{display:none}
+  .heroTools a{min-width:0;grid-template-columns:34px minmax(0,1fr);padding:8px}
+  .heroTools a>svg{width:34px;height:34px;padding:7px}
+  .heroTools a>i{display:none}
   .sectionHeader{padding:16px 15px}.sectionHeader>span:nth-child(2)>strong{font-size:1.12rem;overflow-wrap:anywhere}.sectionBody{padding:6px 16px 24px}
   .mobileLearningPath{left:12px!important;width:min(420px,calc(100vw - 24px))!important;filter:none!important}
   .mobilePathButton{width:100%!important;max-width:none!important;min-height:60px!important;grid-template-columns:44px 36px minmax(0,1fr)!important;gap:10px!important;padding:7px 15px 7px 8px!important;border-radius:16px!important;box-shadow:0 14px 34px rgba(2,6,23,.2)!important}
@@ -301,23 +266,18 @@
   .lessonLayout{grid-template-columns:1fr}.troponinFlowchart{padding:20px 14px}.flowDecisionGrid{display:flex;flex-direction:column;gap:9px}.flowToAngio{display:none}.flowQuestion{order:0;grid-template-columns:34px minmax(0,1fr);width:100%}.flowQuestion .mobileYes{display:block;grid-column:2;color:var(--mi);font:950 .61rem/1.3 inherit;letter-spacing:.07em}.flowNo{order:0;width:100%}.angioHub{order:20;width:100%;min-height:auto;padding:22px}.flowCmrInputs{order:21;grid-template-columns:1fr;gap:8px}.flowCmr{order:22}.differentialTabs{grid-template-columns:1fr;padding-inline:18px}.troponinDifferentials>header{padding-inline:18px}.troponinRemember{grid-template-columns:1fr;gap:7px;margin-inline:18px}.lgeBasics,.layerDiagram,.patternPanel,.infarctSplit,.compareColumns{grid-template-columns:1fr}.lgeBasics article+article{border-inline-start:0;border-top:1px solid var(--border)}.layerDiagram>span{transform:rotate(90deg)}
   .patternPanel figure{min-height:320px}.patternPanel>div{padding:23px}.mvoBox{grid-template-columns:90px minmax(0,1fr);gap:16px}.mvoMark>span{width:72px;height:72px;border-width:15px}
   .territorySection,.diseaseFeature{grid-template-columns:1fr}.territorySection>figure img{height:auto}.focusSteps{grid-template-columns:1fr}.complicationGrid{grid-template-columns:1fr}
-  .sourcesDisclosure>div{grid-template-columns:1fr}.inflammationTable{overflow-x:auto}.inflammationTable>div{min-width:650px}.rule{grid-template-columns:1fr}.mcqOptions{grid-template-columns:1fr}
+  .sourcesDisclosure>div{grid-template-columns:1fr}.inflammationTable{overflow-x:auto}.inflammationTable>div{min-width:650px}.rule{grid-template-columns:1fr}
 }
 @media(max-width:520px){
   .troponinGraphic{border-radius:12px}.troponinFlowchart{padding-inline:11px}.flowStartNode{padding-inline:14px}.flowQuestion{padding:14px 13px}.flowRepeat,.flowCmr{padding:15px}.differentialTabs,.patternTabs,.decisionOptions{grid-template-columns:1fr}.differentialDetail{padding:21px 18px}.troponinRemember{margin:16px 14px 18px;padding:17px}
   .patternPanel figure{min-height:280px}.patternInfo section{padding:16px}.complicationSection>header,.territoryCopy,.diseaseFeature>div,.focusCard{padding:20px}.complicationGrid article{padding:17px}.mvoBox{grid-template-columns:1fr}.mvoMark{justify-content:start}.inflammationIntro>div{display:grid;grid-template-columns:1fr auto 1fr;gap:8px}.inflammationIntro>div>span{padding:9px;font-size:.72rem}.inflammationIntro b{display:none}.decisionResult{grid-template-columns:1fr}.takeHomeIntro{grid-template-columns:1fr;padding:20px}.takeHomeSteps{grid-template-columns:1fr}.takeHomeSteps article{grid-template-columns:62px minmax(0,1fr);padding:18px}.takeHomeBottomLine{grid-template-columns:32px minmax(0,1fr);padding:17px}
-  .heroTools{grid-template-columns:1fr}.heroTools button{min-height:58px}.mcqTrainer>header,.flashcardTrainer>header,.mcqTrainer>article,.mcqTrainer>footer,.flashcardTrainer>footer{padding-inline:17px}.mcqFeedback{margin-inline:17px}.flashcard{width:calc(100% - 34px);min-height:260px;margin:17px;padding:25px 19px}.flashcard>strong{font-size:1.35rem}.mcqTrainer>footer,.flashcardTrainer>footer{grid-template-columns:38px minmax(0,1fr) 38px}.mcqTrainer>footer>button,.flashcardTrainer>footer>button{width:38px;height:38px}
+  .heroTools{grid-template-columns:1fr}.heroTools a{min-height:58px}
 }
 :global(html[data-theme='dark']) .page{background:radial-gradient(circle at 7% 3%,rgba(231,51,104,.12),transparent 30rem),radial-gradient(circle at 92% 12%,rgba(50,154,170,.06),transparent 28rem),#0b0910}
 :global(html[data-theme='dark']) .page::before{filter:saturate(.8) contrast(1.05) brightness(.68);opacity:.3}
 :global(html[data-theme='dark']) .heroToolSecondary{color:#eafcff;border-color:rgba(95,211,224,.34)!important;background:rgba(7,29,58,.78)}
 :global(html[data-theme='dark']) .heroToolSecondary small{color:#a9cdd2}
 :global(html[data-theme='dark']) .heroFacts article{background:color-mix(in srgb,var(--bg-card) 82%,transparent)!important}
-:global(html[data-theme='dark']) .mcqTrainer>header small,
-:global(html[data-theme='dark']) .flashcardTrainer>header small,
-:global(html[data-theme='dark']) .flashcardRevealed>small{color:#ff9ab4}
-:global(html[data-theme='dark']) .mcqFeedback strong,
-:global(html[data-theme='dark']) .flashcard>small{color:#91e0e7}
 :global(html[data-theme='dark']) .sectionHeader{background:linear-gradient(135deg,rgba(231,51,104,.1),rgba(50,154,170,.03))}
 :global(html[data-theme='dark']) .differentialTabs button:not(.differentialTabActive) span{color:#ff9ab4;border-color:rgba(231,51,104,.25)}
 :global(html[data-theme='dark']) .page :global([class*='sidebar']) button:hover{color:#ffb1c5}
