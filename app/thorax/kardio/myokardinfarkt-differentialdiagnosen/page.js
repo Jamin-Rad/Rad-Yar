@@ -161,61 +161,30 @@ function LayerDiagram({ lang }) {
   </div>
 }
 
-function DownArrow() {
-  return <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 4v14M7 13l5 5 5-5" /></svg>
-}
-
-function SideArrow() {
-  return <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20 12H4M9 7l-5 5 5 5" /></svg>
+const TROPONIN_GRAPHICS = {
+  de: {
+    src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/troponin-pathway-de.png',
+    title: 'Entscheidungsweg bei Thoraxschmerz und Troponinanstieg',
+    alt: 'Entscheidungsweg bei Thoraxschmerz und Troponinanstieg: Herzkatheterlabor bei ST-Hebung, hämodynamischer Instabilität, sehr hohem Ausgangswert oder signifikanter Troponindynamik; CMR bei fehlender obstruktiver KHK oder weiterhin unklarer Ursache.',
+  },
+  en: {
+    src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/troponin-pathway-en.png',
+    title: 'Decision pathway for chest pain and elevated troponin',
+    alt: 'Decision pathway for chest pain and elevated troponin: cardiac catheterization lab for ST elevation, haemodynamic instability, a very high baseline value, or a significant troponin change; CMR when there is no obstructive CAD or the patient is clinically stable but the cause remains unclear.',
+  },
+  fa: {
+    src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/troponin-pathway-fa.png',
+    title: 'مسیر تصمیم‌گیری در درد قفسه سینه و افزایش تروپونین',
+    alt: 'مسیر تصمیم‌گیری در درد قفسه سینه و افزایش تروپونین: ارجاع به آزمایشگاه کاتتریزاسیون قلب در بالا رفتن قطعه ST، ناپایداری همودینامیک، مقدار اولیه بسیار بالا یا تغییر معنی‌دار تروپونین؛ انجام CMR در نبود بیماری انسدادی عروق کرونر یا باقی ماندن علت نامشخص در بیمار پایدار.',
+  },
 }
 
 function TroponinFlowchart({ lang }) {
-  const t = value => pick(value, lang)
-  if (lang === 'de') {
-    return <figure className={styles.troponinGraphic} aria-labelledby="troponin-flow-title">
-      <h3 id="troponin-flow-title" className={styles.srOnly}>Entscheidungsweg bei Thoraxschmerz und Troponinanstieg</h3>
-      <Image
-        src="/thorax/kardio/myokardinfarkt-differentialdiagnosen/troponin-pathway-de.svg"
-        alt="Entscheidungsweg bei Thoraxschmerz und Troponinanstieg: Herzkatheterlabor bei ST-Hebung, hämodynamischer Instabilität, sehr hohem Ausgangswert oder signifikanter Troponindynamik; CMR bei fehlender obstruktiver KHK oder weiterhin unklarer Ursache."
-        width={1200}
-        height={1300}
-        priority
-      />
-    </figure>
-  }
-  return <section className={styles.troponinFlowchart} aria-labelledby="troponin-flow-title">
-    <header><h3 id="troponin-flow-title">{t(L('Der gesamte Weg auf einen Blick', 'The full pathway at a glance', 'نمای کامل مسیر در یک نگاه'))}</h3></header>
-    <div className={styles.flowStartNode}>
-      <strong>{t(L('Thoraxschmerz + Troponin erhöht', 'Chest pain + elevated troponin', 'درد قفسه سینه + افزایش تروپونین'))}</strong>
-      <span>{t(L('ECG · Klinik · hs-Troponin', 'ECG · clinical picture · hs-troponin', 'ECG · تابلوی بالینی · hs-Troponin'))}</span>
-    </div>
-    <div className={styles.flowDown}><DownArrow /></div>
-    <div className={styles.flowDecisionGrid}>
-      <aside className={styles.angioHub}>
-        <small>{t(L('JA / RULE-IN', 'YES / RULE-IN', 'بله / RULE-IN'))}</small>
-        <strong>{t(L('Koronarangiographie', 'Coronary angiography', 'آنژیوگرافی کرونر'))}</strong>
-        <p>{t(L('Bei ST-Hebung oder Instabilität sofort; sonst invasive Abklärung nach Gesamtrisiko.', 'Immediate for ST elevation or instability; otherwise invasive assessment according to overall risk.', 'در ST elevation یا ناپایداری فوری؛ در غیر این صورت بررسی تهاجمی بر اساس ریسک کلی.'))}</p>
-      </aside>
-
-      <div className={`${styles.flowToAngio} ${styles.flowRow1}`}><span>{t(L('JA', 'YES', 'بله'))}</span><SideArrow /></div>
-      <article className={`${styles.flowQuestion} ${styles.flowRow1}`}><b>01</b><strong>{t(L('ST-Hebung oder hämodynamisch instabil?', 'ST elevation or haemodynamic instability?', 'ST elevation یا ناپایداری همودینامیک؟'))}</strong><em className={styles.mobileYes}>{t(L('JA → Koronarangiographie', 'YES → coronary angiography', 'بله ← آنژیوگرافی کرونر'))}</em></article>
-      <div className={`${styles.flowNo} ${styles.flowNo1}`}><span>{t(L('NEIN', 'NO', 'خیر'))}</span><DownArrow /></div>
-
-      <div className={`${styles.flowToAngio} ${styles.flowRow2}`}><span>{t(L('JA', 'YES', 'بله'))}</span><SideArrow /></div>
-      <article className={`${styles.flowQuestion} ${styles.flowRow2}`}><b>02</b><strong>{t(L('Sehr hoher hs-Troponin-Ausgangswert?', 'Very high initial hs-troponin value?', 'مقدار اولیه hs-Troponin بسیار بالا است؟'))}</strong><em className={styles.mobileYes}>{t(L('JA → Koronarangiographie', 'YES → coronary angiography', 'بله ← آنژیوگرافی کرونر'))}</em></article>
-      <div className={`${styles.flowNo} ${styles.flowNo2}`}><span>{t(L('NEIN', 'NO', 'خیر'))}</span><DownArrow /><div className={styles.flowRepeat}><small>0/1 h</small><strong>{t(L('hs-Troponin nach 1 Stunde wiederholen', 'Repeat hs-troponin after 1 hour', 'تکرار hs-Troponin پس از ۱ ساعت'))}</strong></div><DownArrow /></div>
-
-      <div className={`${styles.flowToAngio} ${styles.flowRow3}`}><span>{t(L('JA', 'YES', 'بله'))}</span><SideArrow /></div>
-      <article className={`${styles.flowQuestion} ${styles.flowRow3}`}><b>03</b><strong>{t(L('Signifikante hs-Troponin-Dynamik?', 'Significant hs-troponin change?', 'تغییر معنی‌دار hs-Troponin؟'))}</strong><em className={styles.mobileYes}>{t(L('JA → Koronarangiographie', 'YES → coronary angiography', 'بله ← آنژیوگرافی کرونر'))}</em></article>
-      <div className={`${styles.flowNo} ${styles.flowNo3}`}><span>{t(L('NEIN', 'NO', 'خیر'))}</span><DownArrow /></div>
-    </div>
-
-    <div className={styles.flowCmrInputs}>
-      <div><div className={styles.flowDown}><DownArrow /></div><span>{t(L('Nach Angiographie: keine obstruktive KHK / keine Culprit-Läsion', 'After angiography: no obstructive CAD / no culprit lesion', 'پس از آنژیوگرافی: بدون KHK انسدادی / بدون ضایعه مسئول'))}</span><div className={styles.flowDown}><DownArrow /></div></div>
-      <div><div className={styles.flowDown}><DownArrow /></div><span>{t(L('Stabil und Ursache weiterhin unklar', 'Stable, but the cause remains unclear', 'پایدار، اما علت همچنان نامشخص'))}</span><div className={styles.flowDown}><DownArrow /></div></div>
-    </div>
-    <div className={styles.flowCmr}><small>{t(L('GEWEBEDIAGNOSE', 'TISSUE DIAGNOSIS', 'تشخیص بافتی'))}</small><strong>CMR</strong><p>{t(L('Infarkt, Myokarditis, Takotsubo oder andere Myokardschädigung differenzieren.', 'Differentiate infarction, myocarditis, Takotsubo, or other myocardial injury.', 'افتراق انفارکت، میوکاردیت، تاکوتسوبو یا سایر آسیب‌های میوکارد.'))}</p></div>
-  </section>
+  const graphic = TROPONIN_GRAPHICS[lang] || TROPONIN_GRAPHICS.de
+  return <figure className={styles.troponinGraphic} aria-labelledby="troponin-flow-title">
+    <h3 id="troponin-flow-title" className={styles.srOnly}>{graphic.title}</h3>
+    <Image src={graphic.src} alt={graphic.alt} width={1205} height={1306} priority />
+  </figure>
 }
 
 function TroponinDifferentials({ lang }) {
