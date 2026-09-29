@@ -183,7 +183,7 @@ function TroponinFlowchart({ lang }) {
   const graphic = TROPONIN_GRAPHICS[lang] || TROPONIN_GRAPHICS.de
   return <figure className={styles.troponinGraphic} aria-labelledby="troponin-flow-title">
     <h3 id="troponin-flow-title" className={styles.srOnly}>{graphic.title}</h3>
-    <Image src={graphic.src} alt={graphic.alt} width={1205} height={1306} priority />
+    <Image src={graphic.src} alt={graphic.alt} width={1205} height={1306} priority unoptimized />
   </figure>
 }
 
