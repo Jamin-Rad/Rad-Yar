@@ -34,9 +34,11 @@ const COPY = {
 const SECTIONS = [
   { id: 'ausgangspunkt', label: L('Vorgehen bei erhöhtem Troponin', 'Approach to elevated troponin', 'رویکرد به افزایش تروپونین') },
   { id: 'lge-muster', label: L('Late Gadolinium Enhancement (LGE)', 'Late gadolinium enhancement (LGE)', 'Late Gadolinium Enhancement (LGE)') },
-  { id: 'infarkt', label: L('Akuter & chronischer Infarkt', 'Acute & chronic infarction', 'انفارکت حاد و مزمن') },
-  { id: 'minoca-takotsubo', label: L('MINOCA & Takotsubo', 'MINOCA & Takotsubo', 'MINOCA و تاکوتسوبو') },
-  { id: 'entzuendung', label: L('Myokarditis & Sarkoidose', 'Myocarditis & sarcoidosis', 'میوکاردیت و سارکوئیدوز') },
+  { id: 'infarkt', label: L('Akuter vs. chronischer Infarkt', 'Acute vs. chronic infarction', 'انفارکت حاد در برابر مزمن') },
+  { id: 'minoca', label: L('MINOCA', 'MINOCA', 'MINOCA') },
+  { id: 'takotsubo', label: L('Takotsubo-Syndrom', 'Takotsubo syndrome', 'سندروم تاکوتسوبو') },
+  { id: 'myokarditis', label: L('Myokarditis', 'Myocarditis', 'میوکاردیت') },
+  { id: 'sarkoidose', label: L('Kardiale Sarkoidose', 'Cardiac sarcoidosis', 'سارکوئیدوز قلبی') },
   { id: 'algorithmus', label: L('Entscheidungsalgorithmus', 'Decision algorithm', 'الگوریتم تصمیم‌گیری') },
   { id: 'takehome', label: L('Take Home', 'Take home', 'نکات کلیدی') },
 ]
@@ -47,8 +49,10 @@ const ICONS = {
   ausgangspunkt: 'M4 12h4l2-5 4 10 2-5h4 M5 4h14v16H5z',
   'lge-muster': 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18 M12 7v10 M7 12h10',
   infarkt: 'M3 12h4l2-6 5 12 3-7h4 M12 3v3 M12 18v3',
-  'minoca-takotsubo': 'M5 5h14v14H5z M8 9h8 M8 13h5 M8 17h3',
-  entzuendung: 'M12 3c4 3 6 6 6 10a6 6 0 0 1-12 0c0-4 2-7 6-10 M9 13h6',
+  minoca: 'M5 5h14v14H5z M8 9h8 M8 13h5 M8 17h3',
+  takotsubo: 'M12 21s-7-4.3-7-10.1C5 7.6 7.2 5 10 5c1.2 0 2 .6 2 1.5C12 5.6 12.8 5 14 5c2.8 0 5 2.6 5 5.9C19 16.7 12 21 12 21z',
+  myokarditis: 'M12 3c4 3 6 6 6 10a6 6 0 0 1-12 0c0-4 2-7 6-10 M9 13h6',
+  sarkoidose: 'M7 7h.01 M12 4h.01 M17 8h.01 M8 13h.01 M15 15h.01 M12 20h.01',
   algorithmus: 'M6 4h12v4H6z M6 16h12v4H6z M12 8v8 M9 13l3 3 3-3',
   takehome: 'M12 3l8 3v6c0 5-8 9-8 9s-8-4-8-9V6z M8 12l3 3 5-6',
 }
@@ -58,33 +62,45 @@ const PATTERNS = [
     id: 'infarct', title: L('Infarkt / MINOCA', 'Infarction / MINOCA', 'انفارکت / MINOCA'),
     image: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/synthetic-infarct-lge.jpg',
     alt: L('Synthetische LGE-Kurzachsenaufnahme mit subendokardial bis transmuralem Infarktmuster und dunkler mikrovaskulärer Obstruktion', 'Synthetic short-axis LGE image with subendocardial-to-transmural infarct pattern and dark microvascular obstruction', 'تصویر ساختگی LGE محور کوتاه با الگوی انفارکت ساب‌اندوکاردیال تا ترانس‌مورال و انسداد میکروواسکولار تیره'),
-    pattern: L('Subendokardial bis transmural und einem Koronarterritorium folgend.', 'Subendocardial to transmural and following a coronary territory.', 'ساب‌اندوکاردیال تا ترانس‌مورال و مطابق قلمرو کرونری.'),
-    clue: L('Infarktausdehnung bestimmen und auf Komplikationen wie MVO oder intrakardialen Thrombus achten.', 'Assess transmurality and look for a dark MVO core within the bright infarct area.', 'به ترانس‌مورالیتی و هستهٔ تیرهٔ MVO در ناحیه روشن انفارکت توجه کنید.'),
-    meaning: L('Ischämische Schädigung; bei nichtobstruktiven Koronarien ist MINOCA nur eine vorläufige Arbeitsdiagnose, bis die Ursache geklärt ist.', 'Ischaemic injury; with non-obstructive coronaries, MINOCA remains a working diagnosis.', 'آسیب ایسکمیک؛ در عروق غیرانسدادی، MINOCA همچنان یک تشخیص کاری است.'),
+    lge: L('Subendokardial beginnend, je nach Infarkttiefe bis transmural; die Verteilung folgt einem Koronarterritorium.', 'Subendocardial to transmural in a coronary territory.', 'ساب‌اندوکاردیال تا ترانس‌مورال در قلمرو کرونری.'),
+    points: [
+      L('Transmuralität und betroffene Segmente dokumentieren.', 'Document transmural extent and involved segments.', 'وسعت ترانس‌مورال و سگمنت‌های درگیر ثبت شود.'),
+      L('T2-Ödem spricht für einen akuten Infarkt; fehlendes Ödem eher für eine chronische Narbe.', 'T2 oedema supports acute infarction.', 'ادم T2 به نفع انفارکت حاد است.'),
+      L('Bei akutem Infarkt gezielt nach MVO, Einblutung und LV-Thrombus suchen.', 'Look for MVO, haemorrhage, and LV thrombus.', 'MVO، خونریزی و ترومبوس LV بررسی شود.'),
+    ],
   },
   {
     id: 'takotsubo', title: L('Takotsubo', 'Takotsubo', 'تاکوتسوبو'),
     image: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/synthetic-takotsubo-cine.jpg',
     alt: L('Synthetische Cine-Langachsenaufnahme mit apikalem Ballooning bei Takotsubo', 'Synthetic long-axis cine image with apical ballooning in Takotsubo syndrome', 'تصویر ساختگی Cine محور بلند با بالونینگ اپیکال در تاکوتسوبو'),
-    pattern: L('Typischerweise kein LGE.', 'Typically no infarct-pattern LGE and no persistent focal scar.', 'معمولاً LGE با الگوی انفارکت و اسکار فوکال پایدار وجود ندارد.'),
-    clue: L('Cine ist entscheidend: vorübergehende Hypo-, A- oder Dyskinesie mit apikalem, midventrikulärem, basalem (inversem) oder fokalem Ballooning – meist über ein einzelnes Koronarterritorium hinaus.', 'The mid-ventricular or apical motion pattern is decisive; oedema may coexist.', 'الگوی حرکتی میانی بطن یا اپیکال تعیین‌کننده است؛ ادم می‌تواند همراه باشد.'),
-    meaning: L('Bewegungsmuster plus Ödem bei typischerweise fehlendem LGE sprechen für Takotsubo; die Funktionsstörung ist reversibel.', 'The absent infarct pattern helps distinguish Takotsubo from acute myocardial infarction.', 'نبود الگوی انفارکت به افتراق تاکوتسوبو از انفارکت حاد کمک می‌کند.'),
+    lge: L('Typischerweise kein LGE in den dysfunktionellen Segmenten; ein persistierendes infarct- oder myokarditistypisches Muster spricht gegen die klassische Konstellation.', 'Typically no LGE in dysfunctional segments.', 'معمولاً در سگمنت‌های مختل LGE وجود ندارد.'),
+    points: [
+      L('Cine zeigt das Ballooning: apikal, midventrikulär, basal (invers) oder fokal.', 'Cine shows apical, mid-ventricular, basal, or focal ballooning.', 'Cine بالونینگ اپیکال، میانی، بازال یا فوکال را نشان می‌دهد.'),
+      L('Die Wandbewegungsstörung reicht meist über ein einzelnes Koronarterritorium hinaus.', 'Wall-motion abnormality usually extends beyond one coronary territory.', 'اختلال حرکت دیواره معمولاً فراتر از یک قلمرو کرونر است.'),
+      L('T2-Ödem kann vorliegen; zusätzlich auf LV-/RV-Beteiligung und intrakavitäre Thromben achten.', 'T2 oedema may occur; assess ventricular involvement and thrombi.', 'ادم T2 ممکن است وجود داشته باشد؛ درگیری بطنی و ترومبوس بررسی شود.'),
+    ],
   },
   {
     id: 'myocarditis', title: L('Myokarditis', 'Myocarditis', 'میوکاردیت'),
     image: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/synthetic-myocarditis-lge.jpg',
     alt: L('Synthetische LGE-Kurzachsenaufnahme mit subepikardialem inferolateralem Myokarditismuster', 'Synthetic short-axis LGE image with a subepicardial inferolateral myocarditis pattern', 'تصویر ساختگی LGE محور کوتاه با الگوی ساب‌اپیکاردیال اینفرولاترال میوکاردیت'),
-    pattern: L('Subepikardial und/oder midmyokardial, häufig inferolateral; kein Koronarterritorium.', 'Subepicardial and/or mid-wall, often inferolateral; no coronary territory.', 'ساب‌اپیکاردیال و/یا میدوال، اغلب اینفرولاترال؛ بدون قلمرو کرونری.'),
-    clue: L('Ödem sowie erhöhte T1-/T2-Werte sprechen für aktive Entzündung. Perikarderguss oder perikardiales LGE sind unterstützende Begleitbefunde.', 'Associated oedema or elevated T1/T2 values supports active inflammation.', 'ادم همراه یا افزایش مقادیر T1/T2 از التهاب فعال حمایت می‌کند.'),
-    meaning: L('Nichtischämische Myokardschädigung; Klinik und Lake-Louise-Kriterien mitbewerten.', 'Non-ischaemic myocardial injury; integrate the clinical picture and Lake Louise criteria.', 'آسیب غیرایسکمیک میوکارد؛ تابلوی بالینی و معیارهای Lake Louise نیز ارزیابی شوند.'),
+    lge: L('Subepikardial und/oder midmyokardial, häufig inferolateral; keine Bindung an ein Koronarterritorium und typischerweise Aussparung des Subendokards.', 'Subepicardial and/or mid-wall, often inferolateral.', 'ساب‌اپیکاردیال و/یا میدوال، اغلب اینفرولاترال.'),
+    points: [
+      L('Lake Louise: mindestens ein T2-basiertes plus ein T1-basiertes Zeichen zusammen bewerten.', 'Combine one T2-based and one T1-based marker.', 'یک معیار T2 و یک معیار T1 با هم ارزیابی شوند.'),
+      L('T2-Ödem sowie erhöhte native T1-/ECV-Werte stützen eine aktive Entzündung.', 'T2 oedema and elevated native T1/ECV support active inflammation.', 'ادم T2 و افزایش T1/ECV به نفع التهاب فعال است.'),
+      L('Auch auf Perikarderguss und perikardiales Enhancement achten.', 'Also assess pericardial effusion and enhancement.', 'افیوژن و enhancement پریکارد نیز بررسی شود.'),
+    ],
   },
   {
     id: 'sarcoidosis', title: L('Sarkoidose', 'Sarcoidosis', 'سارکوئیدوز'),
     image: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/synthetic-sarcoidosis-lge.jpg',
     alt: L('Synthetische LGE-Kurzachsenaufnahme mit multifokal fleckigem nichtischämischem Muster bei kardialer Sarkoidose', 'Synthetic short-axis LGE image with multifocal patchy non-ischaemic pattern in cardiac sarcoidosis', 'تصویر ساختگی LGE محور کوتاه با الگوی چندکانونی لکه‌ای غیرایسکمیک در سارکوئیدوز قلبی'),
-    pattern: L('Fleckig und multifokal, häufig basal-septal und lateral; kein Koronarterritorium.', 'Patchy and multifocal, often basal-septal and lateral; no coronary territory.', 'لکه‌ای و چندکانونی، اغلب بازال‌سپتال و لترال؛ بدون قلمرو کرونری.'),
-    clue: L('Auf mehrere voneinander getrennte Herde und mögliche Aktivitätszeichen wie Ödem achten.', 'Look for multiple separate foci and possible activity markers such as oedema.', 'به کانون‌های متعدد جدا از هم و نشانه‌های احتمالی فعالیت مانند ادم توجه کنید.'),
-    meaning: L('Hinweis auf granulomatöse Entzündung oder Narbe; das Muster ist nicht allein beweisend.', 'Suggests granulomatous inflammation or scar; the pattern is not diagnostic on its own.', 'به نفع التهاب گرانولوماتوز یا اسکار است؛ الگو به‌تنهایی تشخیصی نیست.'),
+    lge: L('Fleckig und multifokal, häufig basal-septal oder lateral sowie midmyokardial/subepikardial; ein einzelnes Koronarterritorium wird nicht eingehalten.', 'Patchy and multifocal, often basal-septal or lateral.', 'لکه‌ای و چندکانونی، اغلب بازال‌سپتال یا لترال.'),
+    points: [
+      L('Mehrere räumlich getrennte Herde und eine mögliche RV-Beteiligung erfassen.', 'Assess separate foci and possible RV involvement.', 'کانون‌های جدا و درگیری احتمالی RV بررسی شود.'),
+      L('LGE zeigt vor allem Narbe; FDG-PET ergänzt bei der Frage nach aktiver Entzündung.', 'LGE depicts scar; FDG-PET complements assessment of activity.', 'LGE بیشتر اسکار را نشان می‌دهد؛ PET برای فعالیت کمک‌کننده است.'),
+      L('Das Muster ist nicht pathognomonisch und muss klinisch eingeordnet werden.', 'The pattern is not diagnostic on its own.', 'این الگو به‌تنهایی تشخیصی نیست.'),
+    ],
   },
 ]
 
@@ -106,6 +122,7 @@ const REFERENCES = [
   ['2018 Updated Lake Louise Criteria · JACC Expert Panel', 'https://pubmed.ncbi.nlm.nih.gov/30545455/'],
   ['International Expert Consensus on Takotsubo Syndrome', 'https://academic.oup.com/eurheartj/article/39/22/2047/5025411'],
   ['AHA Scientific Statement: Diagnosis and Management of Cardiac Sarcoidosis', 'https://www.ahajournals.org/doi/10.1161/CIR.0000000000001240'],
+  ['AHA Standardized Myocardial Segmentation and Nomenclature', 'https://www.ahajournals.org/doi/10.1161/hc0402.102975'],
 ]
 
 const LessonContext = createContext(null)
@@ -139,7 +156,7 @@ function PatternExplorer({ lang }) {
     <div className={styles.patternTabs} role="tablist" aria-label={pick(L('Diagnose auswählen', 'Select diagnosis', 'انتخاب تشخیص'), lang)}>{PATTERNS.map(pattern => <button key={pattern.id} type="button" role="tab" aria-selected={selectedId === pattern.id} className={selectedId === pattern.id ? styles.patternTabActive : ''} onClick={() => setSelectedId(pattern.id)}><strong>{pick(pattern.title, lang)}</strong></button>)}</div>
     <article className={styles.patternPanel} role="tabpanel">
       <figure><Image src={selected.image} alt={pick(selected.alt, lang)} width={1254} height={1254} priority={selected.id === 'infarct'} /><figcaption>{pick(COPY.synthetic, lang)}</figcaption></figure>
-      <div><h4>{pick(selected.title, lang)}</h4><dl><div><dt>{pick(L('Typisches LGE-Muster', 'Typical LGE pattern', 'الگوی تیپیک LGE'), lang)}</dt><dd>{pick(selected.pattern, lang)}</dd></div><div><dt>{pick(L('Worauf achten?', 'What to look for', 'به چه نکته‌ای توجه کنیم؟'), lang)}</dt><dd>{pick(selected.clue, lang)}</dd></div><div><dt>{pick(L('Einordnung', 'Interpretation', 'تفسیر'), lang)}</dt><dd>{pick(selected.meaning, lang)}</dd></div></dl></div>
+      <div><h4>{pick(selected.title, lang)}</h4><div className={styles.patternInfo}><section><h5>{pick(L('LGE-Charakteristik', 'LGE characteristics', 'ویژگی‌های LGE'), lang)}</h5><p>{pick(selected.lge, lang)}</p></section><section><h5>{pick(L('Wichtige Punkte', 'Important points', 'نکات مهم'), lang)}</h5><ul>{selected.points.map(point => <li key={pick(point, lang)}>{pick(point, lang)}</li>)}</ul></section></div></div>
     </article>
   </section>
 }
@@ -238,24 +255,43 @@ function LessonContent({ lang }) {
     </Section>
 
     <Section id="infarkt" title={t(SECTION_LABELS.infarkt)}>
-      <div className={styles.infarctSplit}><article><small>{t(L('Akut', 'Acute', 'حاد'))}</small><h3>{t(L('Drei korrelierende Zeichen', 'Three matching signs', 'سه نشانه هم‌خوان'))}</h3><ul><li>{t(L('Cine: regionale Hypo- oder Akinesie.', 'Cine: regional hypo- or akinesia.', 'Cine: هیپو یا آکینزی موضعی.'))}</li><li>{t(L('T2: deutliches Ödem im betroffenen Areal.', 'T2: marked oedema in the affected area.', 'T2: ادم واضح در ناحیه درگیر.'))}</li><li>{t(L('LGE: subendokardial bis transmural in einem Koronarterritorium.', 'LGE: subendocardial to transmural in a coronary territory.', 'LGE: ساب‌اندوکاردیال تا ترانس‌مورال در قلمرو کرونر.'))}</li></ul></article><article><small>{t(L('Chronisch', 'Chronic', 'مزمن'))}</small><h3>{t(L('Narbe und Remodeling', 'Scar and remodelling', 'اسکار و بازسازی'))}</h3><ul><li>{t(L('Abnahme der Myokarddicke und regionale Wandverdünnung.', 'Reduced myocardial thickness and regional wall thinning.', 'کاهش ضخامت میوکارد و نازک‌شدن موضعی دیواره.'))}</li><li>{t(L('Persistierendes LGE als Narbenzeichen.', 'Persistent LGE as a sign of scar.', 'LGE پایدار به‌عنوان نشانه اسکار.'))}</li><li>{t(L('Apikaler Thrombus oder Aneurysma als mögliche Komplikation.', 'Apical thrombus or aneurysm as possible complications.', 'ترومبوس یا آنوریسم اپیکال به‌عنوان عوارض احتمالی.'))}</li></ul></article></div>
-      <div className={styles.mvoBox}><div className={styles.mvoMark}><span /></div><div><small>{t(L('KOMPLIKATIONEN', 'MVO · NO-REFLOW', 'MVO · NO-REFLOW'))}</small><h3>{t(L('Auf MVO und Thrombus achten', 'Microvascular obstruction', 'انسداد میکروواسکولار'))}</h3><p>{t(L('Eine dunkle Aussparung im hellen Infarkt-LGE spricht für MVO und ist prognostisch ungünstig. Zusätzlich Cine und kontrastverstärkte Bilder gezielt auf einen intrakardialen, besonders apikalen Thrombus prüfen.', 'A dark core within bright infarct LGE indicates failed microvascular reperfusion and is an adverse prognostic marker.', 'ناحیه تیره درون LGE روشن انفارکت نشان‌دهنده عدم رپرفیوژن میکروواسکولار و یک نشانه پیش‌آگهی نامطلوب است.'))}</p></div></div>
-      <div className={styles.rule}><strong>{t(L('Territorium prüfen', 'Check the territory', 'قلمرو را بررسی کنید'))}</strong><p>{t(L('Vorderwand und anteroseptale Beteiligung sprechen beispielsweise für ein LAD-Territorium. Die Segmentzuordnung unterstützt, ersetzt aber nicht die Gesamtkorrelation.', 'Anterior and anteroseptal involvement, for example, points to the LAD territory. Segment assignment supports but does not replace the full correlation.', 'درگیری قدامی و قدامی‌سپتال برای مثال به قلمرو LAD اشاره دارد. تطبیق سگمنت‌ها کمک‌کننده است اما جایگزین جمع‌بندی کامل نیست.'))}</p></div>
+      <div className={styles.infarctSplit}>
+        <article><small>{t(L('Akut', 'Acute', 'حاد'))}</small><h3>{t(L('Ödem + frische Nekrose', 'Oedema + acute necrosis', 'ادم و نکروز حاد'))}</h3><ul><li>{t(L('T2: erhöht durch Myokardödem.', 'T2: elevated due to myocardial oedema.', 'T2 به علت ادم بالا است.'))}</li><li>{t(L('LGE: subendokardial bis transmural im Koronarterritorium.', 'LGE: subendocardial to transmural.', 'LGE ساب‌اندوکاردیال تا ترانس‌مورال است.'))}</li><li>{t(L('Cine: regionale Hypo-, A- oder Dyskinesie.', 'Cine: regional wall-motion abnormality.', 'Cine اختلال حرکت دیواره را نشان می‌دهد.'))}</li></ul></article>
+        <article><small>{t(L('Chronisch', 'Chronic', 'مزمن'))}</small><h3>{t(L('Narbe + Remodeling', 'Scar + remodelling', 'اسکار و بازسازی'))}</h3><ul><li>{t(L('T2: kein Ödem, Signal meist normalisiert.', 'T2: no oedema, usually normalised.', 'T2 بدون ادم و معمولاً نرمال است.'))}</li><li>{t(L('LGE: persistierende Narbe, oft mit Wandverdünnung.', 'LGE: persistent scar, often with wall thinning.', 'LGE اسکار پایدار همراه نازکی دیواره است.'))}</li><li>{t(L('Cine: persistierende A- oder Dyskinesie und LV-Remodeling.', 'Cine: persistent akinesia/dyskinesia and remodelling.', 'Cine آکینزی یا دیسکینزی پایدار را نشان می‌دهد.'))}</li></ul></article>
+      </div>
+
+      <section className={styles.complicationSection} aria-labelledby="mi-complications-title">
+        <header><small>{t(L('Eigener Prüfschritt', 'Dedicated review step', 'مرحله بررسی مستقل'))}</small><h3 id="mi-complications-title">{t(L('Komplikationen des Myokardinfarkts', 'Complications of myocardial infarction', 'عوارض انفارکت میوکارد'))}</h3></header>
+        <figure><Image src="/thorax/kardio/myokardinfarkt-differentialdiagnosen/post-mi-complications-cmr.png" alt={t(L('Synthetische CMR-Lehrabbildung mit mikrovaskulärer Obstruktion, intramyokardialer Einblutung, LV-Thrombus und LV-Aneurysma', 'Synthetic CMR teaching image of post-infarction complications', 'تصویر آموزشی ساختگی عوارض پس از انفارکت'))} width={1536} height={1024} /><figcaption>{t(COPY.synthetic)}</figcaption></figure>
+        <div className={styles.complicationGrid}>{[
+          [L('MVO', 'MVO', 'MVO'), L('Dunkler Kern innerhalb des hellen Infarkt-LGE: Hinweis auf fehlende mikrovaskuläre Reperfusion.', 'Dark core within bright infarct LGE.', 'هسته تیره در LGE روشن انفارکت.')],
+          [L('Intramyokardiale Einblutung', 'Intramyocardial haemorrhage', 'خونریزی داخل میوکارد'), L('Suszeptibilitätsbedingte Signalminderung im Infarktkern, am besten in T2*/Mapping erfassbar.', 'Susceptibility-related dark core on T2* imaging.', 'هسته تیره ناشی از خونریزی در T2*.')],
+          [L('LV-Thrombus', 'LV thrombus', 'ترومبوس LV'), L('Meist apikaler, nicht perfundierter Füllungsdefekt; gezielt in Cine und kontrastverstärkten Bildern prüfen.', 'Usually an apical non-perfused filling defect.', 'معمولاً نقص پرشدگی اپیکال بدون پرفیوژن.')],
+          [L('Aneurysma / Pseudoaneurysma', 'Aneurysm / pseudoaneurysm', 'آنوریسم / پسودوآنوریسم'), L('Breithalsiges, wandständiges Aneurysma von einem schmalhalsigen, rupturgefährdeten Pseudoaneurysma abgrenzen.', 'Distinguish true broad-neck aneurysm from narrow-neck pseudoaneurysm.', 'افتراق آنوریسم واقعی از پسودوآنوریسم ضروری است.')],
+        ].map(([title, text], index) => <article key={t(title)}><span>{String(index + 1).padStart(2, '0')}</span><div><h4>{t(title)}</h4><p>{t(text)}</p></div></article>)}</div>
+      </section>
+
+      <section className={styles.territorySection} aria-labelledby="territory-title">
+        <div className={styles.territoryCopy}><small>AHA · 17 SEGMENTE</small><h3 id="territory-title">{t(L('Koronarterritorium systematisch zuordnen', 'Map the coronary territory systematically', 'تطبیق سیستماتیک قلمرو کرونر'))}</h3><p>{t(L('LAD versorgt typischerweise die anterioren und anteroseptalen, RCA die inferioren und LCX die lateralen Segmente. Diese Zuordnung ist eine Orientierung: Dominanz und individuelle Koronaranatomie können abweichen.', 'Typical coronary territory assignment is a guide; anatomy varies.', 'تطبیق قلمرو کرونر راهنماست و آناتومی می‌تواند متفاوت باشد.'))}</p></div>
+        <figure><Image src="/thorax/kardio/myokardinfarkt-differentialdiagnosen/coronary-territories-aha17.png" alt={t(L('Originale schematische Darstellung der typischen LAD-, RCA- und LCX-Territorien im AHA-17-Segment-Modell', 'Original schematic of typical coronary territories in the AHA 17-segment model', 'شماتیک قلمروهای کرونری در مدل ۱۷ سگمنتی AHA'))} width={1536} height={1024} /><figcaption>{t(L('Vereinfachte Zuordnung · Koronaranatomie variabel', 'Simplified assignment · coronary anatomy varies', 'تطبیق ساده‌شده؛ آناتومی کرونر متغیر است'))}</figcaption></figure>
+      </section>
     </Section>
 
-    <Section id="minoca-takotsubo" title={t(SECTION_LABELS['minoca-takotsubo'])}>
-      <div className={styles.compareColumns}><article><header><small>MINOCA</small><h3>{t(L('Infarktbild ohne obstruktive Koronarstenose', 'Infarct image without obstructive coronary stenosis', 'نمای انفارکت بدون تنگی انسدادی کرونر'))}</h3></header><p>{t(L('„Arbeitsdiagnose“ bedeutet: MINOCA ist noch keine endgültige Diagnose, sondern ein vorläufiger Sammelbegriff nach der Angiographie. Die eigentliche Ursache – zum Beispiel echter Infarkt, Myokarditis oder Takotsubo – muss anschließend geklärt werden. Ein subendokardiales bis transmurales LGE mit passendem Ödem und regionaler Dysfunktion spricht für einen Infarkt.', 'MINOCA is initially a working diagnosis. If CMR shows subendocardial-to-transmural LGE with matching oedema and regional dysfunction, the myocardium looks infarcted despite no relevant stenosis on angiography.', 'MINOCA در ابتدا یک تشخیص کاری است. اگر CMR الگوی LGE ساب‌اندوکاردیال تا ترانس‌مورال همراه با ادم و اختلال موضعی نشان دهد، تصویر میوکارد شبیه انفارکت است، با وجود نبود تنگی مهم در آنژیوگرافی.'))}</p><strong>{t(L('Kernaussage: Erst die Ursachenklärung macht aus der Arbeitsdiagnose eine endgültige Diagnose.', 'Key point: same tissue pattern as MI—different coronary anatomy.', 'نکته اصلی: الگوی بافتی مشابه MI، اما آناتومی کرونر متفاوت.'))}</strong></article><article><header><small>TAKOTSUBO</small><h3>{t(L('Typisches Bewegungsmuster · kein LGE', 'Motion pattern without typical scar', 'الگوی حرکتی بدون اسکار تیپیک'))}</h3></header><p>{t(L('Entscheidend ist Cine: Die vorübergehende Hypo-, A- oder Dyskinesie reicht meist über ein einzelnes Koronarterritorium hinaus. Am häufigsten zeigt sich apikales Ballooning; möglich sind auch midventrikuläre, basale (inverse) oder fokale Formen. Ein Ödem kann vorliegen, LGE fehlt typischerweise.', 'The broken-heart or apical-ballooning syndrome is transient and often triggered by emotional or physical stress. Mid-to-apical hypo- or akinesia is characteristic. Oedema may be present; typical infarct LGE is absent.', 'سندروم قلب شکسته یا Apical Ballooning گذراست و اغلب با استرس عاطفی یا جسمی تحریک می‌شود. هیپو یا آکینزی سگمنت‌های میانی تا اپیکال تیپیک است. ادم ممکن است وجود داشته باشد، اما LGE تیپیک انفارکت دیده نمی‌شود.'))}</p><strong>{t(L('Kernaussage: charakteristisches Cine-Muster + Ödem + typischerweise kein LGE.', 'Key point: cine reveals the diagnosis; LGE prevents confusion with infarction.', 'نکته اصلی: Cine تشخیص را نشان می‌دهد و LGE از اشتباه با انفارکت جلوگیری می‌کند.'))}</strong></article></div>
+    <Section id="minoca" title={t(SECTION_LABELS.minoca)}>
+      <div className={styles.focusCard}><small>MINOCA</small><h3>{t(L('Keine Enddiagnose, sondern der Start der Ursachenklärung', 'A starting point for aetiologic work-up', 'شروع بررسی علت'))}</h3><p>{t(L('Nach Nachweis eines Myokardinfarkts ohne obstruktive KHK klärt die CMR, ob tatsächlich ein Infarkt vorliegt oder ob Myokarditis, Takotsubo beziehungsweise eine andere Myokardschädigung die Klinik erklärt. Die Untersuchung sollte möglichst früh im Indexaufenthalt erfolgen.', 'CMR distinguishes infarction from myocarditis, Takotsubo, and other injury.', 'CMR انفارکت را از میوکاردیت، تاکوتسوبو و علل دیگر افتراق می‌دهد.'))}</p><div className={styles.focusSteps}><span><b>01</b>{t(L('Koronarangiographie: keine obstruktive KHK', 'No obstructive CAD', 'بدون KHK انسدادی'))}</span><span><b>02</b>{t(L('CMR: LGE + T2 + Cine', 'CMR: LGE + T2 + cine', 'CMR: LGE + T2 + Cine'))}</span><span><b>03</b>{t(L('Ätiologie festlegen', 'Define the cause', 'تعیین علت'))}</span></div></div>
     </Section>
 
-    <Section id="entzuendung" title={t(SECTION_LABELS.entzuendung)}>
+    <Section id="takotsubo" title={t(SECTION_LABELS.takotsubo)}>
+      <div className={styles.diseaseFeature}><figure><Image src="/thorax/kardio/myokardinfarkt-differentialdiagnosen/synthetic-takotsubo-cine.jpg" alt={t(PATTERNS[1].alt)} width={1254} height={1254} /><figcaption>{t(COPY.synthetic)}</figcaption></figure><div><small>CINE ZUERST</small><h3>{t(L('Ballooning statt Koronarterritorium', 'Ballooning beyond one coronary territory', 'بالونینگ فراتر از قلمرو کرونر'))}</h3><p>{t(L('Cine zeigt eine vorübergehende regionale LV-Dysfunktion. Das Muster ist am häufigsten apikal, kann aber auch midventrikulär, basal (invers) oder fokal sein und überschreitet meist die Grenzen eines einzelnen Koronarterritoriums.', 'Cine demonstrates transient regional LV dysfunction beyond one coronary territory.', 'Cine اختلال گذرای عملکرد LV را نشان می‌دهد.'))}</p><ul><li>{t(L('T2: Ödem in den dysfunktionellen Segmenten möglich.', 'T2 oedema may be present.', 'ادم T2 ممکن است وجود داشته باشد.'))}</li><li>{t(L('LGE: typischerweise nicht nachweisbar.', 'LGE is typically absent.', 'LGE معمولاً وجود ندارد.'))}</li><li>{t(L('Komplikationen: LV-/RV-Beteiligung, LVOT-Obstruktion, Mitralinsuffizienz und intrakavitäre Thromben prüfen.', 'Assess ventricular involvement, LVOTO, MR, and thrombi.', 'درگیری بطنی، LVOTO، MR و ترومبوس بررسی شود.'))}</li></ul></div></div>
+    </Section>
+
+    <Section id="myokarditis" title={t(SECTION_LABELS.myokarditis)}>
       <div className={styles.inflammationIntro}><h3>{t(L('Myokarditis: aktualisierte Lake-Louise-Kriterien', 'Myocarditis: updated Lake Louise criteria', 'میوکاردیت: معیارهای به‌روزشده Lake Louise'))}</h3><p>{t(L('Für eine CMR-basierte Diagnose sollen ein T2-basiertes Zeichen des Myokardödems und ein T1-basiertes Zeichen der Myokardschädigung vorliegen. Dazu zählen erhöhtes natives T1 oder ECV beziehungsweise ein nichtischämisches LGE-Muster. Zusätzlich auf Perikarderguss oder perikardiales Enhancement achten: Das sind unterstützende Kriterien, aber keine Hauptkriterien.', 'A CMR-based diagnosis is supported by one T2-based marker of myocardial oedema and one T1-based marker of myocardial injury. The latter includes elevated native T1 or ECV, or a non-ischaemic LGE pattern.', 'برای تشخیص مبتنی بر CMR باید یک نشانه مبتنی بر T2 از ادم میوکارد و یک نشانه مبتنی بر T1 از آسیب میوکارد وجود داشته باشد؛ از جمله افزایش native T1 یا ECV و یا الگوی LGE غیرایسکمیک.'))}</p><div><span><b>1</b>{t(L('T2-basiert', 'T2-based', 'مبتنی بر T2'))}</span><i>+</i><span><b>1</b>{t(L('T1-basiert', 'T1-based', 'مبتنی بر T1'))}</span></div></div>
-      <div className={styles.inflammationTable} role="table" aria-label={t(L('Vergleich Myokarditis und Sarkoidose', 'Comparison of myocarditis and sarcoidosis', 'مقایسه میوکاردیت و سارکوئیدوز'))}><div role="row" className={styles.tableHead}><span role="columnheader">CMR</span><strong role="columnheader">{t(L('Myokarditis', 'Myocarditis', 'میوکاردیت'))}</strong><strong role="columnheader">{t(L('Sarkoidose', 'Sarcoidosis', 'سارکوئیدوز'))}</strong></div>{[
-        [L('Cine', 'Cine', 'Cine'), L('Normal oder regionale/globale Dysfunktion', 'Normal or regional/global dysfunction', 'طبیعی یا اختلال موضعی/کلی'), L('Dyskinesie oder LV-Dysfunktion möglich', 'Dyskinesia or LV dysfunction possible', 'دیسکینزی یا اختلال LV ممکن است')],
-        [L('T2', 'T2', 'T2'), L('Ödem bei aktiver Entzündung', 'Oedema in active inflammation', 'ادم در التهاب فعال'), L('Ödem bei aktiver Entzündung', 'Oedema in active inflammation', 'ادم در التهاب فعال')],
-        [L('LGE', 'LGE', 'LGE'), L('Subepikardial oder midmyokardial, häufig inferolateral', 'Subepicardial or mid-wall, often inferolateral', 'ساب‌اپیکاردیال یا میدوال، اغلب اینفرولاترال'), L('Fleckig, multifokal, oft basal-septal und lateral', 'Patchy, multifocal, often basal-septal and lateral', 'لکه‌ای و چندکانونی، اغلب بازال-سپتال و لترال')],
-        [L('Perikard', 'Pericardium', 'پریکارد'), L('Erguss oder perikardiales LGE als unterstützender Befund', 'Effusion or pericardial LGE as a supportive finding', 'افیوژن یا LGE پریکارد به‌عنوان یافته حمایتی'), L('Perikardbeteiligung ist kein typisches Leitmuster', 'Pericardial involvement is not a typical leading pattern', 'درگیری پریکارد الگوی اصلی تیپیک نیست')],
-      ].map(row => <div role="row" key={t(row[0])}><span role="cell">{t(row[0])}</span><p role="cell">{t(row[1])}</p><p role="cell">{t(row[2])}</p></div>)}</div>
-      <div className={styles.rule}><strong>{t(L('Wichtige Grenze', 'Important limitation', 'محدودیت مهم'))}</strong><p>{t(L('Das LGE-Muster lenkt die Verdachtsdiagnose, ist aber nicht pathognomonisch. Klinische Daten und weitere Untersuchungen bleiben notwendig.', 'The LGE pattern guides the differential but is not pathognomonic. Clinical data and additional tests remain necessary.', 'الگوی LGE جهت تشخیص افتراقی را مشخص می‌کند، اما پاتوگنومونیک نیست؛ داده‌های بالینی و بررسی‌های تکمیلی همچنان لازم‌اند.'))}</p></div>
+      <div className={styles.rule}><strong>{t(L('LGE-Muster', 'LGE pattern', 'الگوی LGE'))}</strong><p>{t(L('Subepikardial oder midmyokardial, häufig inferolateral und nicht an ein Koronarterritorium gebunden. Perikarderguss oder perikardiales Enhancement unterstützen die Diagnose.', 'Subepicardial or mid-wall, often inferolateral; pericardial findings are supportive.', 'ساب‌اپیکاردیال یا میدوال، اغلب اینفرولاترال؛ یافته‌های پریکارد حمایتی هستند.'))}</p></div>
+    </Section>
+
+    <Section id="sarkoidose" title={t(SECTION_LABELS.sarkoidose)}>
+      <div className={styles.diseaseFeature}><figure><Image src="/thorax/kardio/myokardinfarkt-differentialdiagnosen/synthetic-sarcoidosis-lge.jpg" alt={t(PATTERNS[3].alt)} width={1254} height={1254} /><figcaption>{t(COPY.synthetic)}</figcaption></figure><div><small>MULTIFOKALES LGE</small><h3>{t(L('Fleckige Narbe, nicht ein Koronarterritorium', 'Patchy scar beyond a coronary territory', 'اسکار لکه‌ای خارج از قلمرو کرونر'))}</h3><p>{t(L('Typisch ist ein fleckiges, multifokales LGE, häufig basal-septal oder lateral sowie midmyokardial beziehungsweise subepikardial. Auch transmurale Herde und eine RV-Beteiligung sind möglich.', 'Patchy, multifocal LGE is typical, often basal-septal or lateral.', 'LGE لکه‌ای و چندکانونی، اغلب بازال‌سپتال یا لترال است.'))}</p><ul><li>{t(L('LGE quantifiziert vor allem die Narbenlast und ist prognostisch relevant.', 'LGE primarily depicts scar burden.', 'LGE بار اسکار را نشان می‌دهد.'))}</li><li>{t(L('FDG-PET ergänzt die Beurteilung der entzündlichen Aktivität.', 'FDG-PET complements assessment of inflammatory activity.', 'FDG-PET برای فعالیت التهاب کمک‌کننده است.'))}</li><li>{t(L('Kein einzelnes LGE-Muster ist beweisend: Klinik, Rhythmusdiagnostik und extrakardiale Befunde mitbewerten.', 'No single LGE pattern is diagnostic.', 'هیچ الگوی منفرد LGE تشخیصی نیست.'))}</li></ul></div></div>
     </Section>
 
     <Section id="algorithmus" title={t(SECTION_LABELS.algorithmus)}>
