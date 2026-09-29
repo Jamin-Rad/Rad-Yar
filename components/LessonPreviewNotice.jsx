@@ -37,6 +37,7 @@ export const COMPLETED_LESSON_PATHS = new Set([
   '/thorax/fleischner-kriterien',
   '/thorax/kardio/kardio-mrt-basics',
   '/thorax/kardio/kardiomyopathien',
+  '/thorax/kardio/myokardinfarkt-differentialdiagnosen',
   '/mamma/bildgebung/mammographie/verkalkungen',
   '/mamma/bildgebung/mrt/kaiser-score',
   '/msk/knie/meniskus',
