@@ -176,9 +176,9 @@ function TroponinFlowchart({ lang }) {
       <h3 id="troponin-flow-title" className={styles.srOnly}>Entscheidungsweg bei Thoraxschmerz und Troponinanstieg</h3>
       <Image
         src="/thorax/kardio/myokardinfarkt-differentialdiagnosen/troponin-pathway-de.svg"
-        alt="Entscheidungsweg bei Thoraxschmerz und Troponinanstieg: dringliche Koronarangiographie bei ST-Hebung, hämodynamischer Instabilität, sehr hohem Ausgangswert oder signifikanter Troponindynamik; CMR bei fehlender obstruktiver KHK oder weiterhin unklarer Ursache."
+        alt="Entscheidungsweg bei Thoraxschmerz und Troponinanstieg: Herzkatheterlabor bei ST-Hebung, hämodynamischer Instabilität, sehr hohem Ausgangswert oder signifikanter Troponindynamik; CMR bei fehlender obstruktiver KHK oder weiterhin unklarer Ursache."
         width={1200}
-        height={1500}
+        height={1300}
         priority
       />
     </figure>
