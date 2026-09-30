@@ -10,16 +10,19 @@ const T = {
     text:    'Kein Konto: Dein Fortschritt wird nur auf diesem Gerät gespeichert und kann verloren gehen.',
     signIn:  'Anmelden',
     signUp:  'Konto erstellen',
+    close:   'Schließen',
   },
   en: {
     text:    'Not signed in: Your progress is only saved on this device and may be lost.',
     signIn:  'Sign in',
     signUp:  'Create account',
+    close:   'Close',
   },
   fa: {
     text:    'وارد نشده‌ای: پیشرفتت فقط روی این دستگاه ذخیره می‌شود و ممکن است از بین برود.',
     signIn:  'ورود',
     signUp:  'ساخت حساب',
+    close:   'بستن',
   },
 }
 
@@ -42,7 +45,7 @@ export default function AuthBanner({ lang = 'de' }) {
         <button
           className={styles.dismiss}
           onClick={() => setDismissed(true)}
-          aria-label="Schließen"
+          aria-label={t.close}
         >×</button>
       </div>
     </SignedOut>
