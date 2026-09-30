@@ -205,6 +205,36 @@
 .compareColumns article{display:grid;gap:14px}.compareColumns article:first-child{border-top:4px solid var(--mi)}.compareColumns article:last-child{border-top:4px solid var(--mi-teal)}
 .compareColumns header h3{margin-top:5px}.compareColumns article>strong{padding-top:14px;border-top:1px solid var(--border);color:var(--mi-deep);font-size:.82rem;line-height:1.55}
 
+.minocaDefinition{display:grid;gap:10px;padding:28px;border:1px solid rgba(50,154,170,.32);border-radius:15px;background:linear-gradient(135deg,rgba(50,154,170,.08),rgba(231,51,104,.035))}
+.minocaDefinition small,.myocarditisLead small,.lakeLouiseHeader small,.minocaColumns article>span{color:var(--mi-deep);font-size:.66rem;font-weight:950;letter-spacing:.11em;text-transform:uppercase}
+.minocaDefinition h3,.myocarditisLead h3,.lakeLouiseHeader h3{margin:0;color:var(--text-strong);font-family:var(--font-display);font-size:clamp(1.25rem,2.2vw,1.65rem);line-height:1.3}
+.minocaDefinition p,.myocarditisLead p,.lakeLouiseHeader p{margin:0;color:var(--text-soft);font-size:.9rem;line-height:1.72}
+.minocaDefinition aside{margin-top:5px;padding:15px 17px;border-inline-start:4px solid var(--mi-teal);border-radius:8px;color:var(--text-strong);background:var(--bg-card);font-size:.84rem;font-weight:720;line-height:1.65}
+.minocaColumns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.minocaColumns article{padding:23px;border:1px solid var(--border);border-radius:13px;background:var(--surface-soft)}
+.minocaColumns article:first-child{border-top:4px solid var(--mi-teal)}
+.minocaColumns article:last-child{border-top:4px solid var(--mi)}
+.minocaColumns h3{margin:7px 0 13px;color:var(--text-strong);font-family:var(--font-display);font-size:1.12rem}
+.minocaColumns p,.minocaColumns li{color:var(--text-soft);font-size:.84rem;line-height:1.65}
+.minocaColumns p{margin:0}.minocaColumns ul{display:grid;gap:8px;margin:0;padding-inline-start:20px}
+
+.myocarditisLead{display:grid;grid-template-columns:minmax(250px,.78fr) minmax(0,1.22fr);overflow:hidden;border:1px solid var(--border);border-radius:15px;background:var(--bg-card)}
+.myocarditisLead figure{position:relative;min-height:340px;margin:0;background:#030408}
+.myocarditisLead figure img{width:100%;height:100%;object-fit:cover}
+.myocarditisLead figcaption{position:absolute;inset-inline-end:12px;bottom:12px;padding:7px 9px;border:1px solid rgba(255,255,255,.18);border-radius:7px;color:rgba(255,255,255,.78);background:rgba(0,0,0,.58);font-size:.64rem;backdrop-filter:blur(6px)}
+.myocarditisLead>div{display:grid;align-content:center;gap:10px;padding:30px}
+.lakeLouiseHeader{display:grid;gap:8px;padding:24px 26px;border:1px solid rgba(231,51,104,.28);border-radius:13px;background:linear-gradient(135deg,rgba(231,51,104,.065),rgba(50,154,170,.045))}
+.lakeLouiseGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.lakeLouiseGrid article{padding:23px;border:1px solid var(--border);border-radius:13px;background:var(--surface-soft)}
+.lakeLouiseGrid article:first-child{border-top:4px solid var(--mi-teal)}.lakeLouiseGrid article:last-child{border-top:4px solid var(--mi)}
+.lakeLouiseGrid header{display:grid;grid-template-columns:48px minmax(0,1fr);gap:13px;align-items:center;margin-bottom:14px}
+.lakeLouiseGrid header>b{display:grid;width:46px;height:46px;place-items:center;border-radius:13px;color:#fff;background:linear-gradient(145deg,var(--mi-deep),var(--mi));font-family:var(--font-display)}
+.lakeLouiseGrid header small{color:var(--mi-deep);font-size:.61rem;font-weight:950;letter-spacing:.09em}
+.lakeLouiseGrid h3{margin:3px 0 0;color:var(--text-strong);font-family:var(--font-display);font-size:1.08rem}
+.lakeLouiseGrid p,.lakeLouiseGrid li{color:var(--text-soft);font-size:.84rem;line-height:1.64}.lakeLouiseGrid p{margin:0 0 13px}.lakeLouiseGrid ul{display:grid;gap:8px;margin:0;padding-inline-start:20px}
+.myocarditisSupport{padding:19px 21px;border:1px solid rgba(50,154,170,.3);border-inline-start:5px solid var(--mi-teal);border-radius:10px;background:rgba(50,154,170,.065)}
+.myocarditisSupport strong{display:block;margin-bottom:6px;color:var(--text-strong);font-size:.9rem}.myocarditisSupport p{margin:0;color:var(--text-soft);font-size:.84rem;line-height:1.65}
+
 .inflammationIntro{display:grid;gap:13px;padding:23px;border:1px solid rgba(50,154,170,.35);border-radius:13px;background:rgba(50,154,170,.055)}
 .inflammationIntro h3{margin:0}.inflammationIntro>div{display:flex;align-items:center;justify-content:center;gap:16px;padding-top:6px}
 .inflammationIntro>div>span{display:flex;align-items:center;gap:9px;padding:11px 15px;border:1px solid rgba(50,154,170,.32);border-radius:9px;color:var(--text-strong);background:var(--bg-card);font-size:.83rem;font-weight:850}
@@ -228,8 +258,10 @@
 .takeHomeIntro>span{display:grid;width:54px;height:54px;place-items:center;border-radius:15px;color:#fff;background:linear-gradient(145deg,var(--mi-deep),var(--mi));box-shadow:0 12px 24px rgba(86,23,67,.18)}
 .takeHomeIntro>span svg{width:25px;height:25px}
 .takeHomeIntro h3{margin:0 0 7px;color:var(--text-strong);font-family:var(--font-display);font-size:clamp(1.18rem,2vw,1.5rem);line-height:1.32}
-.takeHomeIntro p{max-width:790px;margin:0;color:var(--text-soft);font-size:.89rem;line-height:1.67}
-.takeHomeSteps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:hidden;border:1px solid var(--border);border-radius:14px;background:var(--border);gap:1px}
+.takeHomePrinciples{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px}
+.takeHomePrinciples span{display:flex;gap:7px;align-items:baseline;color:var(--text-soft);font-size:.86rem;line-height:1.5}
+.takeHomePrinciples b{color:var(--mi-deep);font-size:.8rem;letter-spacing:.04em}
+.takeHomeSteps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:hidden;border:1px solid var(--border);border-radius:14px;background:var(--border);gap:1px}
 .takeHomeSteps article{display:grid;grid-template-columns:74px minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:17px;padding:22px 23px;background:var(--bg-card)}
 .takeHomeSteps article>div{grid-row:1 / 3;display:grid;align-content:start;justify-items:start;gap:8px;padding-inline-end:15px;border-inline-end:1px solid var(--border)}
 .takeHomeSteps article>div span{color:var(--mi);font-size:.62rem;font-weight:950;letter-spacing:.1em}
@@ -239,9 +271,9 @@
 .takeHomeBottomLine{display:grid;grid-template-columns:42px minmax(0,1fr);gap:15px;align-items:center;padding:19px 22px;border:1px solid rgba(231,51,104,.32);border-inline-start:5px solid var(--mi);border-radius:10px;background:rgba(231,51,104,.065)}
 .takeHomeBottomLine>svg{width:25px;height:25px;color:var(--mi-deep)}
 .takeHomeBottomLine p{margin:0;color:var(--text-strong);font-size:.88rem;font-weight:780;line-height:1.65}
-.sourcesDisclosure{overflow:hidden;border:1px solid var(--border);border-radius:11px;background:var(--surface-soft)}
-.sourcesDisclosure summary{padding:16px 18px;color:var(--text-strong);font-size:.8rem;font-weight:850;cursor:pointer}
-.sourcesDisclosure>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0 16px 16px}
+.sourcesDisclosure{overflow:hidden;margin-top:20px;border:0;border-top:1px solid var(--border);border-radius:0;background:transparent}
+.sourcesDisclosure summary{padding:20px 4px 15px;color:var(--text-strong);font-size:.8rem;font-weight:850;cursor:pointer}
+.sourcesDisclosure>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0 0 8px}
 .sourcesDisclosure a{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:9px;align-items:center;padding:12px;border:1px solid var(--border);border-radius:8px;color:var(--text-strong);background:var(--bg-card);text-decoration:none}
 .sourcesDisclosure a:hover{border-color:rgba(231,51,104,.45);color:var(--mi-deep)}
 .sourcesDisclosure a span{color:var(--mi);font-size:.62rem;font-weight:950}.sourcesDisclosure a strong{font-size:.73rem;line-height:1.4}.sourcesDisclosure a i{color:var(--mi);font-style:normal}
@@ -265,7 +297,8 @@
   .mobileCurrentIcon{width:36px!important;height:36px!important;border:0!important;border-radius:10px!important;color:#fff!important;background:var(--mi-deep)!important;box-shadow:none!important}
   .lessonLayout{grid-template-columns:1fr}.troponinFlowchart{padding:20px 14px}.flowDecisionGrid{display:flex;flex-direction:column;gap:9px}.flowToAngio{display:none}.flowQuestion{order:0;grid-template-columns:34px minmax(0,1fr);width:100%}.flowQuestion .mobileYes{display:block;grid-column:2;color:var(--mi);font:950 .61rem/1.3 inherit;letter-spacing:.07em}.flowNo{order:0;width:100%}.angioHub{order:20;width:100%;min-height:auto;padding:22px}.flowCmrInputs{order:21;grid-template-columns:1fr;gap:8px}.flowCmr{order:22}.differentialTabs{grid-template-columns:1fr;padding-inline:18px}.troponinDifferentials>header{padding-inline:18px}.troponinRemember{grid-template-columns:1fr;gap:7px;margin-inline:18px}.lgeBasics,.layerDiagram,.patternPanel,.infarctSplit,.compareColumns{grid-template-columns:1fr}.lgeBasics article+article{border-inline-start:0;border-top:1px solid var(--border)}.layerDiagram>span{transform:rotate(90deg)}
   .patternPanel figure{min-height:320px}.patternPanel>div{padding:23px}.mvoBox{grid-template-columns:90px minmax(0,1fr);gap:16px}.mvoMark>span{width:72px;height:72px;border-width:15px}
-  .territorySection,.diseaseFeature{grid-template-columns:1fr}.territorySection>figure img{height:auto}.focusSteps{grid-template-columns:1fr}.complicationGrid{grid-template-columns:1fr}
+  .territorySection,.diseaseFeature,.minocaColumns,.myocarditisLead,.lakeLouiseGrid{grid-template-columns:1fr}.territorySection>figure img{height:auto}.focusSteps{grid-template-columns:1fr}.complicationGrid{grid-template-columns:1fr}.takeHomeSteps{grid-template-columns:1fr}
+  .myocarditisLead figure{min-height:300px}
   .sourcesDisclosure>div{grid-template-columns:1fr}.inflammationTable{overflow-x:auto}.inflammationTable>div{min-width:650px}.rule{grid-template-columns:1fr}
 }
 @media(max-width:520px){
