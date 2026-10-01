@@ -243,6 +243,17 @@
   cursor: pointer;
 }
 
+.promoPanel {
+  padding: 15px;
+  border: 1px solid #fed7aa;
+  border-radius: 15px;
+  background: #fff7ed;
+}
+
+.promoPanel > strong { display: block; margin-bottom: 5px; color: #9a3412; font-size: 14px; }
+.promoPanel > p { margin: 0 0 11px; color: #7c2d12; font-size: 12px; line-height: 1.55; }
+.promoPanel .checkboxRow { color: #9a3412; font-size: 12px; font-weight: 650; }
+
 [dir='rtl'] .checkboxRow { text-align: right; }
 
 /* ── ERROR ─────────────────────────────────────────── */

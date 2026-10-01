@@ -1,4 +1,6 @@
 import Navbar from '@/components/Navbar'
+import { LessonInProgressGate } from '@/components/InProgressBanner'
+import LearningAccessGate from '@/components/LearningAccessGate'
 
 export const metadata = {
   title: 'Mamma - RadYar',
@@ -31,7 +33,7 @@ export default function MammaLayout({ children }) {
   return (
     <>
       <Navbar />
-      {children}
+      <LearningAccessGate><LessonInProgressGate>{children}</LessonInProgressGate></LearningAccessGate>
     </>
   )
 }

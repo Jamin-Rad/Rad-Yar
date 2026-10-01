@@ -43,6 +43,7 @@ export default function SignUpPage() {
   const [spec,     setSpec]     = useState('')
   const [level,    setLevel]    = useState('')
   const [agreed,   setAgreed]   = useState(false)
+  const [requestWelcomePromo, setRequestWelcomePromo] = useState(false)
   const [code,     setCode]     = useState('')
   const [error,    setError]    = useState('')
   const [loading,  setLoading]  = useState(false)
@@ -80,6 +81,17 @@ export default function SignUpPage() {
       const result = await signUp.attemptEmailAddressVerification({ code })
       if (result.status === 'complete') {
         await setActive({ session: result.createdSessionId })
+        if (requestWelcomePromo) {
+          const response = await fetch('/api/access-request', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ type: 'pro' }),
+          })
+          if (!response.ok) {
+            router.push('/profil')
+            return
+          }
+        }
         router.push('/')
       }
     } catch (err) { showError(err) }
@@ -204,6 +216,15 @@ export default function SignUpPage() {
                   <option value="">– Please select –</option>
                   {LEVELS.map(l => <option key={l} value={l}>{l}</option>)}
                 </select>
+              </div>
+
+              <div className={styles.promoPanel}>
+                <strong>7 days Pro included</strong>
+                <p>Your Pro trial starts automatically after registration. You can also request six free months of Pro access now.</p>
+                <label className={styles.checkboxRow}>
+                  <input type="checkbox" checked={requestWelcomePromo} onChange={event => setRequestWelcomePromo(event.target.checked)} />
+                  <span>Send my free 6-month Pro request to the administrator.</span>
+                </label>
               </div>
 
               <label className={styles.checkboxRow}>

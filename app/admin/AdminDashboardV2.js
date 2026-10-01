@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import styles from './admin.module.css'
-import { PROMO_LIMIT, PROMO_MONTHS, isSubscriptionActive } from '@/utils/subscription'
+import { PROMO_MONTHS, RENEWAL_MONTHS, isSubscriptionActive } from '@/utils/subscription'
 
 const PERIODS = [7, 30, 90]
 const EMPTY_USAGE = { views: 0, visitors: 0, sessions: 0, starts: 0, completions: 0, repeatUses: 0, completionRate: 0, activeSeconds: 0, sources: [], countries: [] }
@@ -155,7 +155,7 @@ function Overview({ analytics, period, userMetrics, onNavigate }) {
         <button type="button" onClick={() => onNavigate('calculators')}><span>▦</span><div><strong>Rechner</strong><small>Node-RADS, Kaiser und Fleischner</small></div><b>→</b></button>
         <button type="button" onClick={() => onNavigate('lessons')}><span>▤</span><div><strong>Lektionen</strong><small>Lernseiten und Lesedauer</small></div><b>→</b></button>
         <button type="button" onClick={() => onNavigate('users')}><span>♙</span><div><strong>Nutzer</strong><small>Konten und Abonnements</small></div><b>→</b></button>
-        <p><strong>{userMetrics.promo} / {PROMO_LIMIT}</strong> Promo-Aktivierungen</p>
+        <p><strong>{userMetrics.promo}</strong> Willkommens-Promos</p>
       </aside>
     </div>
   </>
@@ -167,11 +167,15 @@ function Users({ users, analytics, loading, search, setSearch, error, actionErro
     {error ? <div className={styles.error}>{error}</div> : null}
     {actionError ? <div className={styles.error}>{actionError}</div> : null}
     {loading ? <div className={styles.loading}><div className={styles.spinner}/></div> : <div className={styles.adminUsersScroll}><table className={styles.table}>
-      <thead><tr><th>Name</th><th>E-Mail</th><th>Status</th><th>Registriert</th><th>Letzter Besuch</th><th>Aktive Zeit</th><th>Besuche</th><th>Abo</th><th>Aktionen</th></tr></thead>
+      <thead><tr><th>Name</th><th>E-Mail</th><th>Status</th><th>Registriert</th><th>Letzter Besuch</th><th>Aktive Zeit</th><th>Besuche</th><th>Abo</th><th>Anfragen</th><th>Aktionen</th></tr></thead>
       <tbody>{users.map(user => {
         const label = `${user.firstName || ''} ${user.lastName || ''}`.trim() || user.emailAddresses?.[0]?.emailAddress || user.id
         const usage = analytics.userStats[user.id]
         const subscribed = isSubscriptionActive({ publicMetadata: { subscription: user.subscription } })
+        const proRequest = user.learningAccess?.proRequest
+        const pendingEarlyRequests = Object.entries(user.learningAccess?.earlyAccessRequests || {})
+          .filter(([, request]) => request?.status === 'pending')
+        const grantedEarlyPaths = user.learningAccess?.earlyAccessPaths || []
         return <tr key={user.id}>
           <td><strong>{user.firstName || '—'} {user.lastName || ''}</strong></td>
           <td>{user.emailAddresses?.[0]?.emailAddress || '—'}</td>
@@ -180,6 +184,27 @@ function Users({ users, analytics, loading, search, setSearch, error, actionErro
           <td>{formatDateTime(usage?.lastVisitAt || user.lastActiveAt)}</td>
           <td>{duration(usage?.activeSeconds)}</td><td>{usage?.visits || 0}</td>
           <td>{subscribed ? <span className={`${styles.statusBadge} ${styles.statusSubscribed}`}>bis {new Date(user.subscription.until).toLocaleDateString('de-DE')}</span> : '—'}</td>
+          <td className={styles.requestCell}>{user.isAdmin ? '—' : <div className={styles.requestStack}>
+            {proRequest?.status === 'pending' ? <div className={styles.requestItem}>
+              <strong>{proRequest.kind === 'renewal' ? `Verlängerung ${RENEWAL_MONTHS} Monate` : `Willkommen ${PROMO_MONTHS} Monate`}</strong>
+              <div>
+                <button className={styles.actionBtn} disabled={actionLoadingId === user.id} onClick={() => onAction(user.id, 'approveProRequest')}>Freigeben</button>
+                <button className={`${styles.actionBtn} ${styles.actionBtnDanger}`} disabled={actionLoadingId === user.id} onClick={() => onAction(user.id, 'rejectProRequest')}>Ablehnen</button>
+              </div>
+            </div> : null}
+            {pendingEarlyRequests.map(([path, request]) => <div className={styles.requestItem} key={path}>
+              <strong>Frühzugriff: {request.title || path}</strong><small>{path}</small>
+              <div>
+                <button className={styles.actionBtn} disabled={actionLoadingId === user.id} onClick={() => onAction(user.id, 'grantEarlyAccess', { pathname: path })}>Freigeben</button>
+                <button className={`${styles.actionBtn} ${styles.actionBtnDanger}`} disabled={actionLoadingId === user.id} onClick={() => onAction(user.id, 'rejectEarlyAccess', { pathname: path })}>Ablehnen</button>
+              </div>
+            </div>)}
+            {!pendingEarlyRequests.length && proRequest?.status !== 'pending' && !grantedEarlyPaths.length ? '—' : null}
+            {grantedEarlyPaths.map(path => <div className={styles.grantedItem} key={path}>
+              <span>✓ Frühzugriff</span><small>{path}</small>
+              <button className={styles.actionBtn} disabled={actionLoadingId === user.id} onClick={() => onAction(user.id, 'revokeEarlyAccess', { pathname: path })}>Entziehen</button>
+            </div>)}
+          </div>}</td>
           <td>{user.isAdmin ? '—' : <div className={styles.actions}>
             <button disabled={actionLoadingId === user.id} onClick={() => onAction(user.id, user.banned ? 'unban' : 'ban')}>{user.banned ? 'Entsperren' : 'Sperren'}</button>
             <button disabled={actionLoadingId === user.id} onClick={() => onAction(user.id, 'setSubscription', { months: 1 })}>+1 Monat</button>
@@ -188,7 +213,7 @@ function Users({ users, analytics, loading, search, setSearch, error, actionErro
             <button disabled={actionLoadingId === user.id} className={styles.deleteBtn} onClick={() => onDelete(user.id, label)}>Löschen</button>
           </div>}</td>
         </tr>
-      })}{!users.length ? <tr><td colSpan={9}>Keine Nutzer gefunden</td></tr> : null}</tbody>
+      })}{!users.length ? <tr><td colSpan={10}>Keine Nutzer gefunden</td></tr> : null}</tbody>
     </table></div>}
   </section>
 }
@@ -249,7 +274,12 @@ export default function AdminDashboardV2() {
       const response = await fetch(`/api/admin/users/${userId}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action, ...extra }) })
       const data = await response.json()
       if (!response.ok) throw new Error(data.error || 'Aktion fehlgeschlagen')
-      setUsers(current => current.map(user => user.id === userId ? { ...user, ...('banned' in data ? { banned: data.banned } : {}), ...('subscription' in data ? { subscription: data.subscription } : {}) } : user))
+      setUsers(current => current.map(user => user.id === userId ? {
+        ...user,
+        ...('banned' in data ? { banned: data.banned } : {}),
+        ...('subscription' in data ? { subscription: data.subscription } : {}),
+        ...('learningAccess' in data ? { learningAccess: data.learningAccess } : {}),
+      } : user))
     } catch (error) { setActionError(error.message) } finally { setActionLoadingId(null) }
   }
 

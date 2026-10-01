@@ -29,6 +29,7 @@ export default function OnboardingPage() {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [specialty, setSpecialty] = useState('')
   const [level, setLevel] = useState('')
+  const [requestWelcomePromo, setRequestWelcomePromo] = useState(false)
 
   useEffect(() => {
     let cancelled = false
@@ -57,6 +58,15 @@ export default function OnboardingPage() {
     setSaving(true)
     try {
       await api('PATCH', { nickname, password, specialty, level })
+      if (requestWelcomePromo) {
+        const response = await fetch('/api/access-request', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ type: 'pro' }),
+        })
+        const data = await response.json().catch(() => ({}))
+        if (!response.ok) throw new Error(data.error || 'Die Pro-Anfrage konnte nicht gesendet werden.')
+      }
       router.replace('/')
     } catch (err) {
       setError(err.message)
@@ -111,8 +121,17 @@ export default function OnboardingPage() {
               </select>
             </div>
 
+            <div className={styles.promoPanel}>
+              <strong>Dein Pro-Start</strong>
+              <p>Nach der Registrierung sind sieben Tage Pro automatisch aktiv. Zusätzlich kannst du jetzt sechs kostenlose Monate Pro anfragen.</p>
+              <label className={styles.checkboxRow}>
+                <input type="checkbox" checked={requestWelcomePromo} onChange={event => setRequestWelcomePromo(event.target.checked)} />
+                <span>Ja, meine kostenlose 6-Monate-Pro-Anfrage an den Administrator senden.</span>
+              </label>
+            </div>
+
             <button className={styles.submitBtn} type="submit" disabled={saving || !nickname || (needsPassword && (password.length < 8 || password !== confirmPassword))}>
-              {saving ? 'Speichern...' : 'Speichern und weiter'}
+              {saving ? 'Speichern...' : requestWelcomePromo ? 'Speichern und Pro anfragen' : 'Speichern und weiter'}
             </button>
           </form>
         )}

@@ -7,7 +7,6 @@ import RobotAssistant from '@/components/RobotAssistant'
 import ActivityTracker from '@/components/ActivityTracker'
 import AdminCopyMode from '@/components/AdminCopyMode'
 import LegalNotice from '@/components/LegalNotice'
-import LessonPreviewNotice from '@/components/LessonPreviewNotice'
 import ImageLightbox from '@/components/ImageLightbox'
 import LessonEnhancer from '@/components/LessonEnhancer'
 
@@ -106,7 +105,6 @@ export default function RootLayout({ children }) {
             <LanguageProvider>
               <ActivityTracker />
               <AdminCopyMode />
-              <LessonPreviewNotice />
               <LessonEnhancer />
               {children}
               <ImageLightbox />

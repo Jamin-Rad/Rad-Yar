@@ -1,0 +1,68 @@
+.page {
+  display: grid;
+  min-height: calc(100vh - 64px);
+  place-items: center;
+  padding: 112px 20px 64px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(249, 115, 22, .13), transparent 30rem),
+    var(--bg, #f8fafc);
+  font-family: var(--font-main, system-ui, sans-serif);
+}
+
+.panel {
+  width: min(560px, 100%);
+  padding: clamp(28px, 5vw, 46px);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 28px;
+  background: var(--bg-card, #fff);
+  box-shadow: 0 24px 70px rgba(15, 23, 42, .14);
+  text-align: center;
+}
+
+.icon {
+  display: grid;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  place-items: center;
+  border-radius: 20px;
+  color: #fff;
+  background: linear-gradient(135deg, #f97316, #fbbf24);
+  box-shadow: 0 12px 28px rgba(249, 115, 22, .26);
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.iconEarly { background: linear-gradient(135deg, #b45309, #f59e0b); }
+.panel h1 { margin: 0; color: var(--text-strong, #0f172a); font: 800 clamp(26px, 5vw, 38px)/1.2 var(--font-display, Georgia, serif); }
+.panel p { max-width: 48ch; margin: 15px auto 26px; color: var(--text-soft, #475569); font-size: 14px; line-height: 1.8; }
+
+.primaryButton {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  box-shadow: 0 12px 26px rgba(249, 115, 22, .24);
+  font: 800 13px/1.2 var(--font-main, system-ui, sans-serif);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.primaryButton:disabled { opacity: .62; cursor: wait; }
+.status, .notice, .error, .statusMuted { margin-top: 16px; padding: 11px 14px; border-radius: 12px; font-size: 12px; font-weight: 750; line-height: 1.6; }
+.status, .notice { color: #047857; background: rgba(16, 185, 129, .11); }
+.error { color: #b91c1c; background: rgba(239, 68, 68, .1); }
+.statusMuted { color: #92400e; background: rgba(245, 158, 11, .12); }
+.backLink { display: block; width: fit-content; margin: 24px auto 0; color: var(--text-muted, #64748b); font-size: 12px; font-weight: 750; text-decoration: none; }
+.backLink:hover { color: #f97316; }
+
+@media (max-width: 560px) {
+  .page { align-items: end; padding: 88px 12px 12px; }
+  .panel { padding: 30px 20px 26px; border-radius: 24px; }
+  .primaryButton { width: 100%; }
+}

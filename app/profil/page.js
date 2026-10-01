@@ -14,7 +14,14 @@ import { CURRICULUM, getFachTitle, getKapitelTitle, getThemaTitle } from '@/data
 import { MCQ_TOPIC_GROUPS } from '@/data/questions'
 import { FLASHCARDS } from '@/data/flashcards'
 import { getActivitySummary, mergeServerActivity } from '@/utils/activityStorage'
-import { getSubscription, isSubscriptionActive } from '@/utils/subscription'
+import {
+  PROMO_MONTHS,
+  RENEWAL_MONTHS,
+  getLearningAccess,
+  getProAccess,
+  getProRequestKind,
+  getSubscription,
+} from '@/utils/subscription'
 import styles from './page.module.css'
 
 const ADMIN_EMAIL = 'dr.benjaminzia@gmail.com'
@@ -87,11 +94,14 @@ const T = {
     clerkData: 'Anmeldedaten', clerkDataHint: 'E-Mail-Adresse, Anmeldeart und letzte Anmeldung.',
     primaryEmail: 'Primäre E-Mail', username: 'Benutzername', loginOrigin: 'Anmeldung über',
     lastSignIn: 'Letzte Anmeldung', noValue: 'Nicht angegeben',
-    subscriptionTitle: 'Abonnement', subscriptionActiveUntil: 'Aktiv bis',
-    subscriptionInactive: 'Kein aktives Abonnement',
-    subscriptionPromoBanner: '🎉 Die ersten 1000 aktivierten Abonnements erhalten 5 Monate kostenfrei!',
-    subscriptionManualHint: 'Die Aktivierung erfolgt derzeit manuell. Kontaktiere uns über das Formular unten, um dein Abonnement freischalten zu lassen.',
-    subscriptionActivateCta: 'Abonnement anfragen', subscriptionPromoBadge: 'Promo',
+    subscriptionTitle: 'Pro-Zugang', subscriptionActiveUntil: 'Aktiv bis', subscriptionTrialUntil: 'Kostenlose Pro-Testphase bis',
+    subscriptionInactive: 'Zurzeit kein Pro-Zugang',
+    subscriptionPromoBanner: `Neue Mitglieder können ${PROMO_MONTHS} Monate Pro kostenlos anfragen.`,
+    subscriptionRenewalBanner: `Nach Ablauf kannst du jeweils ${RENEWAL_MONTHS} Monate kostenlos verlängern.`,
+    subscriptionManualHint: 'Anfragen werden gespeichert, per E-Mail an den Administrator gesendet und anschließend manuell freigeschaltet.',
+    subscriptionActivateCta: `${PROMO_MONTHS} Monate Pro anfragen`, subscriptionRenewCta: `${RENEWAL_MONTHS} Monate verlängern`, subscriptionPromoBadge: 'Kostenlos',
+    subscriptionPending: 'Deine Anfrage wartet auf Freigabe.', subscriptionRequestSent: 'Anfrage gesendet. Der Administrator wurde benachrichtigt.',
+    subscriptionRequestSaved: 'Anfrage gespeichert. Die E-Mail-Benachrichtigung konnte gerade nicht versendet werden.', subscriptionRequestError: 'Die Anfrage konnte nicht gesendet werden.', requestSending: 'Wird gesendet…',
   },
   en: {
     overview: 'Overview', settings: 'Settings', contact: 'Contact', profileLabel: 'Your profile',
@@ -152,11 +162,14 @@ const T = {
     clerkData: 'Sign-in details', clerkDataHint: 'Email address, sign-in method and latest sign-in.',
     primaryEmail: 'Primary email', username: 'Username', loginOrigin: 'Signed in with',
     lastSignIn: 'Last sign-in', noValue: 'Not provided',
-    subscriptionTitle: 'Subscription', subscriptionActiveUntil: 'Active until',
-    subscriptionInactive: 'No active subscription',
-    subscriptionPromoBanner: '🎉 The first 1000 activated subscriptions get 5 months free!',
-    subscriptionManualHint: 'Activation is currently handled manually. Contact us using the form below to get your subscription activated.',
-    subscriptionActivateCta: 'Request subscription', subscriptionPromoBadge: 'Promo',
+    subscriptionTitle: 'Pro access', subscriptionActiveUntil: 'Active until', subscriptionTrialUntil: 'Free Pro trial until',
+    subscriptionInactive: 'No active Pro access',
+    subscriptionPromoBanner: `New members can request ${PROMO_MONTHS} months of Pro for free.`,
+    subscriptionRenewalBanner: `After expiry, you can request a free ${RENEWAL_MONTHS}-month extension.`,
+    subscriptionManualHint: 'Requests are saved, emailed to the administrator and then approved manually.',
+    subscriptionActivateCta: `Request ${PROMO_MONTHS} months Pro`, subscriptionRenewCta: `Extend for ${RENEWAL_MONTHS} months`, subscriptionPromoBadge: 'Free',
+    subscriptionPending: 'Your request is awaiting approval.', subscriptionRequestSent: 'Request sent. The administrator has been notified.',
+    subscriptionRequestSaved: 'Request saved. The email notification could not be sent right now.', subscriptionRequestError: 'The request could not be sent.', requestSending: 'Sending…',
   },
   fa: {
     overview: 'نمای کلی', settings: 'تنظیمات', contact: 'تماس', profileLabel: 'پروفایل شما',
@@ -216,11 +229,14 @@ const T = {
     clerkData: 'اطلاعات ورود', clerkDataHint: 'ایمیل، روش ورود و آخرین ورود.',
     primaryEmail: 'ایمیل اصلی', username: 'نام کاربری', loginOrigin: 'ورود از طریق',
     lastSignIn: 'آخرین ورود', noValue: 'ثبت نشده',
-    subscriptionTitle: 'اشتراک', subscriptionActiveUntil: 'فعال تا',
-    subscriptionInactive: 'اشتراک فعالی وجود ندارد',
-    subscriptionPromoBanner: '🎉 اولین ۱۰۰۰ اشتراک فعال‌شده، ۵ ماه رایگان دریافت می‌کنند!',
-    subscriptionManualHint: 'فعال‌سازی در حال حاضر به‌صورت دستی انجام می‌شود. از طریق فرم زیر با ما در تماس باشید تا اشتراک شما فعال شود.',
-    subscriptionActivateCta: 'درخواست اشتراک', subscriptionPromoBadge: 'پروموشن',
+    subscriptionTitle: 'دسترسی Pro', subscriptionActiveUntil: 'فعال تا', subscriptionTrialUntil: 'دوره آزمایشی رایگان Pro تا',
+    subscriptionInactive: 'در حال حاضر دسترسی Pro ندارید',
+    subscriptionPromoBanner: `اعضای جدید می‌توانند ${PROMO_MONTHS} ماه دسترسی Pro رایگان درخواست کنند.`,
+    subscriptionRenewalBanner: `پس از پایان دسترسی، می‌توانید هر بار ${RENEWAL_MONTHS} ماه تمدید رایگان درخواست کنید.`,
+    subscriptionManualHint: 'درخواست ثبت می‌شود، برای مدیر ایمیل می‌رود و سپس به‌صورت دستی تأیید می‌شود.',
+    subscriptionActivateCta: `درخواست ${PROMO_MONTHS} ماه Pro`, subscriptionRenewCta: `تمدید رایگان ${RENEWAL_MONTHS} ماهه`, subscriptionPromoBadge: 'رایگان',
+    subscriptionPending: 'درخواست شما منتظر تأیید است.', subscriptionRequestSent: 'درخواست ارسال شد و به مدیر اطلاع داده شد.',
+    subscriptionRequestSaved: 'درخواست ثبت شد، اما اعلان ایمیلی فعلاً ارسال نشد.', subscriptionRequestError: 'ارسال درخواست ممکن نبود.', requestSending: 'در حال ارسال…',
   },
 }
 
@@ -394,6 +410,8 @@ export default function ProfilPage() {
   const [resetMsg, setResetMsg] = useState('')
   const [contact, setContact] = useState({ type: '', subject: '', message: '' })
   const [contactState, setContactState] = useState('idle')
+  const [accessRequestState, setAccessRequestState] = useState('idle')
+  const [accessRequestMessage, setAccessRequestMessage] = useState('')
   const [isAdmin, setIsAdmin] = useState(false)
   const [openAreaId, setOpenAreaId] = useState(null)
 
@@ -541,7 +559,12 @@ export default function ProfilPage() {
   )
 
   const subscription = getSubscription(user)
-  const subscriptionActive = isSubscriptionActive(user)
+  const proAccess = getProAccess(user)
+  const learningAccess = getLearningAccess(user)
+  const proRequestKind = getProRequestKind(user)
+  const proRequestStatus = accessRequestState === 'pending'
+    ? 'pending'
+    : learningAccess.proRequest?.status
   const records = Object.values(currentLeitner)
   const dueToday = records.filter(isDue).length
   const thirtyDayCards = records.filter(record =>
@@ -634,12 +657,24 @@ export default function ProfilPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  function scrollToSubscriptionContact() {
-    setContact(prev => ({ ...prev, type: t.problemTypes[3] }))
-    setView('contact')
-    window.setTimeout(() => {
-      document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }, 80)
+  async function requestProAccess() {
+    setAccessRequestState('sending')
+    setAccessRequestMessage('')
+    try {
+      const response = await fetch('/api/access-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'pro' }),
+      })
+      const data = await response.json()
+      if (!response.ok) throw new Error(data.error || t.subscriptionRequestError)
+      setAccessRequestState('pending')
+      setAccessRequestMessage(data.emailSent === false ? t.subscriptionRequestSaved : t.subscriptionRequestSent)
+      await user.reload()
+    } catch (error) {
+      setAccessRequestState('error')
+      setAccessRequestMessage(error.message || t.subscriptionRequestError)
+    }
   }
 
   return (
@@ -911,9 +946,10 @@ export default function ProfilPage() {
                   <div className={styles.sectionHeading}><div><h2>{t.subscriptionTitle}</h2></div></div>
                   <div className={styles.settingsRow}>
                     <div className={styles.settingsText}>
-                      {subscriptionActive ? (
+                      {proAccess.active ? (
                         <strong>
-                          {t.subscriptionActiveUntil} {subscription.until ? new Date(subscription.until).toLocaleDateString(lang === 'fa' ? 'fa-IR' : lang === 'en' ? 'en-GB' : 'de-DE') : '—'}
+                          {proAccess.source === 'trial' ? t.subscriptionTrialUntil : t.subscriptionActiveUntil}{' '}
+                          {proAccess.until ? new Date(proAccess.until).toLocaleDateString(lang === 'fa' ? 'fa-IR' : lang === 'en' ? 'en-GB' : 'de-DE') : '—'}
                           {subscription.promo && <span className={styles.badge} style={{ marginInlineStart: 8 }}>{t.subscriptionPromoBadge}</span>}
                         </strong>
                       ) : (
@@ -921,18 +957,18 @@ export default function ProfilPage() {
                       )}
                       <p>{t.subscriptionManualHint}</p>
                     </div>
-                    {!subscriptionActive && (
-                      <button type="button" className={styles.outlineBtn} onClick={scrollToSubscriptionContact}>{t.subscriptionActivateCta}</button>
+                    {(!proAccess.active || proAccess.source === 'trial') && proRequestStatus !== 'pending' && (
+                      <button type="button" className={styles.outlineBtn} onClick={requestProAccess} disabled={accessRequestState === 'sending'}>
+                        {accessRequestState === 'sending' ? t.requestSending : proRequestKind === 'renewal' ? t.subscriptionRenewCta : t.subscriptionActivateCta}
+                      </button>
                     )}
                   </div>
-                  {!subscriptionActive && (
-                    <>
-                      <div className={styles.settingsDivider} />
-                      <div className={styles.badges}>
-                        <span className={styles.badge}>{t.subscriptionPromoBanner}</span>
-                      </div>
-                    </>
-                  )}
+                  <div className={styles.settingsDivider} />
+                  <div className={styles.subscriptionOffer}>
+                    <strong>{proRequestKind === 'renewal' ? t.subscriptionRenewalBanner : t.subscriptionPromoBanner}</strong>
+                    {proRequestStatus === 'pending' ? <span className={styles.requestPending}>{t.subscriptionPending}</span> : null}
+                    {accessRequestMessage ? <span className={accessRequestState === 'error' ? styles.errorText : styles.successText}>{accessRequestMessage}</span> : null}
+                  </div>
                 </section>
 
                 <section className={styles.card}>
