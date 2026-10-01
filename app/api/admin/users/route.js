@@ -16,6 +16,7 @@ function toClientUser(u) {
     locked: u.locked,
     isAdmin: hasAdminEmail(u.emailAddresses),
     subscription: u.publicMetadata?.subscription ?? null,
+    learningAccess: u.publicMetadata?.learningAccess ?? null,
   }
 }
 
@@ -29,8 +30,12 @@ function mergeSameEmailUsers(users) {
       continue
     }
 
-    const previousScore = Number(hasAdminEmail(previous.emailAddresses)) * 3 + Number(isSubscriptionActive(previous)) * 2 + Number(previous.lastSignInAt || 0) / 1e15
-    const userScore = Number(hasAdminEmail(user.emailAddresses)) * 3 + Number(isSubscriptionActive(user)) * 2 + Number(user.lastSignInAt || 0) / 1e15
+    const previousHasRequest = previous.publicMetadata?.learningAccess?.proRequest?.status === 'pending'
+      || Object.values(previous.publicMetadata?.learningAccess?.earlyAccessRequests || {}).some(request => request?.status === 'pending')
+    const userHasRequest = user.publicMetadata?.learningAccess?.proRequest?.status === 'pending'
+      || Object.values(user.publicMetadata?.learningAccess?.earlyAccessRequests || {}).some(request => request?.status === 'pending')
+    const previousScore = Number(hasAdminEmail(previous.emailAddresses)) * 8 + Number(previousHasRequest) * 4 + Number(isSubscriptionActive(previous)) * 2 + Number(previous.lastSignInAt || 0) / 1e15
+    const userScore = Number(hasAdminEmail(user.emailAddresses)) * 8 + Number(userHasRequest) * 4 + Number(isSubscriptionActive(user)) * 2 + Number(user.lastSignInAt || 0) / 1e15
     if (userScore > previousScore) byEmail.set(key, user)
   }
   return [...byEmail.values()]

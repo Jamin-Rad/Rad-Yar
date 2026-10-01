@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { CURRICULUM, getThemaTitle } from '@/data/curriculum'
 import { MCQ_TOPIC_GROUPS, countQuestions, getAvailableQuestionTopicIds } from '@/data/questions'
 import { useLanguage } from '@/providers/LanguageProvider'
-import { isSubscriptionActive, isTechnikKapitelLocked, FREE_TOPIC_LIMIT, FREE_ITEM_LIMIT, TECHNIK_FACH_ID } from '@/utils/subscription'
+import { hasFullAccess, isTechnikKapitelLocked, FREE_TOPIC_LIMIT, FREE_ITEM_LIMIT, TECHNIK_FACH_ID } from '@/utils/subscription'
 import styles from './page.module.css'
 
 const FACH_DISPLAY = {
@@ -77,7 +77,7 @@ export default function UebenPage() {
   const { lang } = useLanguage()
   const router = useRouter()
   const { user, isLoaded, isSignedIn } = useUser()
-  const subscriptionActive = isSubscriptionActive(user)
+  const subscriptionActive = hasFullAccess(user)
   const t = UE[lang] || UE.de
   const display = FACH_DISPLAY[lang] || FACH_DISPLAY.de
   const availableTopicIds = useMemo(() => getAvailableQuestionTopicIds(), [])

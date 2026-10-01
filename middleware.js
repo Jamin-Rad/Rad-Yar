@@ -3,10 +3,9 @@ import { NextResponse } from 'next/server'
 
 const MOBIN_COOKIE = 'mobin_session'
 
-// Alle Routen sind öffentlich erreichbar.
-// Clerk ist nur aktiv wenn User angemeldet ist → dann werden Features freigeschaltet.
-// Keine Route ist "protected" — Flashcards und MCQs sind ohne Login nutzbar.
-// Ausnahme: /mobin/* erfordert ein gültiges Mobin-Session-Cookie.
+// Der Middleware-Header stellt den aktuellen Pfad für serverseitige
+// Lernzugriffs-Gates bereit. Öffentliche Rechner bleiben davon ausgenommen.
+// /mobin/* erfordert zusätzlich ein gültiges Mobin-Session-Cookie.
 export default clerkMiddleware(async (auth, request) => {
   const { pathname } = request.nextUrl
 
@@ -19,6 +18,10 @@ export default clerkMiddleware(async (auth, request) => {
       return NextResponse.redirect(loginUrl)
     }
   }
+
+  const requestHeaders = new Headers(request.headers)
+  requestHeaders.set('x-radyar-pathname', pathname)
+  return NextResponse.next({ request: { headers: requestHeaders } })
 })
 
 export const config = {

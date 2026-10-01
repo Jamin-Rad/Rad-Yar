@@ -657,6 +657,7 @@ a.topicRow:hover {
   white-space: nowrap;
 }
 .topicRowStatusReady { color: #16a34a; }
+.topicRowStatusProgress { color: #d97706; }
 .topicRowArrow {
   color: var(--topic-color);
   font-size: 17px;

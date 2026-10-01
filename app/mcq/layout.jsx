@@ -2,7 +2,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import LearningAccessGate from '@/components/LearningAccessGate'
 
-export default function FlashcardsLayout({ children }) {
+export default function McqLayout({ children }) {
   return (
     <>
       <Navbar />

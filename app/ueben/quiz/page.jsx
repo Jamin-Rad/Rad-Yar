@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation'
 import { useUser } from '@clerk/nextjs'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { shuffleQuestionIds, getQuestionsForIds, getQuestionsByIds } from '@/data/questions'
-import { isSubscriptionActive, FREE_ITEM_LIMIT } from '@/utils/subscription'
+import { hasFullAccess, FREE_ITEM_LIMIT } from '@/utils/subscription'
 import { getWrongAnswerExplanation } from '@/utils/answerFeedback'
 import { persistProgressWrite } from '@/utils/progressSync'
 import styles from './page.module.css'
@@ -210,7 +210,7 @@ function QuizContent() {
   const { lang } = useLanguage()
   const searchParams = useSearchParams()
   const { user } = useUser()
-  const subscriptionActive = isSubscriptionActive(user)
+  const subscriptionActive = hasFullAccess(user)
   const ui = UI[lang] || UI.de
   const names = FACH_NAMES[lang] || FACH_NAMES.de
 

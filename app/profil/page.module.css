@@ -1484,6 +1484,10 @@
   cursor: pointer;
 }
 .outlineBtn:hover { border-color: var(--orange); color: var(--orange); }
+.outlineBtn:disabled { opacity: .58; cursor: wait; }
+.subscriptionOffer { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.subscriptionOffer > strong { color: var(--text-soft); font-size: 12px; line-height: 1.55; }
+.requestPending { padding: 6px 10px; border-radius: 999px; color: #b45309; background: rgba(245,158,11,.12); font-size: 11px; font-weight: 800; }
 .goalSelect {
   min-width: 120px;
   padding: 9px 12px;

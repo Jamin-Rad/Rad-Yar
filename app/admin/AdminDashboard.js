@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import { useEffect, useMemo, useState } from 'react'
 import styles from './admin.module.css'
-import { PROMO_LIMIT, PROMO_MONTHS, isSubscriptionActive } from '@/utils/subscription'
+import { PROMO_MONTHS, RENEWAL_MONTHS, isSubscriptionActive } from '@/utils/subscription'
 
 function formatDuration(seconds) {
   const total = Math.max(0, Math.round(Number(seconds) || 0))
@@ -222,6 +222,7 @@ export default function AdminDashboard() {
         if ('banned' in data) next.banned = data.banned
         if ('locked' in data) next.locked = data.locked
         if ('subscription' in data) next.subscription = data.subscription
+        if ('learningAccess' in data) next.learningAccess = data.learningAccess
         return next
       }))
       if ('subscription' in data) {
@@ -292,8 +293,8 @@ export default function AdminDashboard() {
             <div className={styles.statLabel}>Aktive Abos</div>
           </div>
           <div className={styles.statCard}>
-            <div className={styles.statNum}>{promoActivatedCount} / {PROMO_LIMIT}</div>
-            <div className={styles.statLabel}>Promo-Aktivierungen</div>
+            <div className={styles.statNum}>{promoActivatedCount}</div>
+            <div className={styles.statLabel}>Willkommens-Promos</div>
           </div>
         </div>
 
@@ -382,6 +383,7 @@ export default function AdminDashboard() {
                   <th>Ø pro Tag</th>
                   <th>Besuche</th>
                   <th>Abo</th>
+                  <th>Anfragen</th>
                   <th>Aktionen</th>
                 </tr>
               </thead>
@@ -389,6 +391,10 @@ export default function AdminDashboard() {
                 {users.map(u => {
                   const label = `${u.firstName || ''} ${u.lastName || ''}`.trim() || u.emailAddresses?.[0]?.emailAddress || u.id
                   const usage = analytics.userStats[u.id]
+                  const proRequest = u.learningAccess?.proRequest
+                  const pendingEarlyRequests = Object.entries(u.learningAccess?.earlyAccessRequests || {})
+                    .filter(([, request]) => request?.status === 'pending')
+                  const grantedEarlyPaths = u.learningAccess?.earlyAccessPaths || []
                   return (
                     <tr key={u.id}>
                       <td>{u.firstName || '—'} {u.lastName || ''}</td>
@@ -418,6 +424,38 @@ export default function AdminDashboard() {
                           </>
                         ) : (
                           <span className={`${styles.statusBadge} ${styles.statusInactive}`}>—</span>
+                        )}
+                      </td>
+                      <td className={styles.requestCell}>
+                        {u.isAdmin ? <span className={styles.muted}>—</span> : (
+                          <div className={styles.requestStack}>
+                            {proRequest?.status === 'pending' ? (
+                              <div className={styles.requestItem}>
+                                <strong>{proRequest.kind === 'renewal' ? `Verlängerung ${RENEWAL_MONTHS} Monate` : `Willkommen ${PROMO_MONTHS} Monate`}</strong>
+                                <div>
+                                  <button className={styles.actionBtn} disabled={actionLoadingId === u.id} onClick={() => handleAction(u.id, 'approveProRequest')}>Freigeben</button>
+                                  <button className={`${styles.actionBtn} ${styles.actionBtnDanger}`} disabled={actionLoadingId === u.id} onClick={() => handleAction(u.id, 'rejectProRequest')}>Ablehnen</button>
+                                </div>
+                              </div>
+                            ) : null}
+                            {pendingEarlyRequests.map(([path, request]) => (
+                              <div className={styles.requestItem} key={path}>
+                                <strong>Frühzugriff: {request.title || path}</strong>
+                                <small>{path}</small>
+                                <div>
+                                  <button className={styles.actionBtn} disabled={actionLoadingId === u.id} onClick={() => handleAction(u.id, 'grantEarlyAccess', { pathname: path })}>Freigeben</button>
+                                  <button className={`${styles.actionBtn} ${styles.actionBtnDanger}`} disabled={actionLoadingId === u.id} onClick={() => handleAction(u.id, 'rejectEarlyAccess', { pathname: path })}>Ablehnen</button>
+                                </div>
+                              </div>
+                            ))}
+                            {!pendingEarlyRequests.length && proRequest?.status !== 'pending' && !grantedEarlyPaths.length ? <span className={styles.muted}>—</span> : null}
+                            {grantedEarlyPaths.map(path => (
+                              <div className={styles.grantedItem} key={path}>
+                                <span>✓ Frühzugriff</span><small>{path}</small>
+                                <button className={styles.actionBtn} disabled={actionLoadingId === u.id} onClick={() => handleAction(u.id, 'revokeEarlyAccess', { pathname: path })}>Entziehen</button>
+                              </div>
+                            ))}
+                          </div>
                         )}
                       </td>
                       <td>
@@ -467,7 +505,7 @@ export default function AdminDashboard() {
                   )
                 })}
                 {users.length === 0 && (
-                  <tr><td colSpan={11} style={{textAlign:'center', color:'#94a3b8'}}>Keine Nutzer gefunden</td></tr>
+                  <tr><td colSpan={12} style={{textAlign:'center', color:'#94a3b8'}}>Keine Nutzer gefunden</td></tr>
                 )}
               </tbody>
             </table>

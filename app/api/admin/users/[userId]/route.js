@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server'
 import { requireAdmin, hasAdminEmail } from '@/lib/adminAuth'
 import { canonicalUserEmail } from '@/lib/emailIdentity'
+import { getLessonStatus, normalizeLessonPath } from '@/data/lessonStatus'
+import { PROMO_MONTHS, RENEWAL_MONTHS } from '@/utils/subscription'
 
 async function getSameEmailUsers(client, user) {
   const email = canonicalUserEmail(user)
@@ -18,7 +20,7 @@ export async function PATCH(request, { params }) {
     }
     const { client } = admin
     const { userId } = await params
-    const { action, months, promo } = await request.json()
+    const { action, months, promo, pathname } = await request.json()
 
     const target = await client.users.getUser(userId)
     if (hasAdminEmail(target.emailAddresses)) {
@@ -45,13 +47,87 @@ export async function PATCH(request, { params }) {
         promo: !!promo || !!existing.promo,
       }
       const sameEmailUsers = await getSameEmailUsers(client, target)
-      const updatedUsers = await Promise.all(sameEmailUsers.map(user =>
-        client.users.updateUser(user.id, {
-          publicMetadata: { ...user.publicMetadata, subscription },
+      const updatedUsers = await Promise.all(sameEmailUsers.map(user => {
+        const learningAccess = user.publicMetadata?.learningAccess
+        const nextLearningAccess = learningAccess?.proRequest?.status === 'pending'
+          ? { ...learningAccess, proRequest: { ...learningAccess.proRequest, status: 'approved', reviewedAt: new Date().toISOString() } }
+          : learningAccess
+        return client.users.updateUser(user.id, {
+          publicMetadata: { ...user.publicMetadata, subscription, ...(nextLearningAccess ? { learningAccess: nextLearningAccess } : {}) },
         })
-      ))
+      }))
       const updated = updatedUsers.find(user => user.id === userId) || updatedUsers[0]
-      return NextResponse.json({ subscription: updated.publicMetadata?.subscription ?? subscription })
+      return NextResponse.json({ subscription: updated.publicMetadata?.subscription ?? subscription, learningAccess: updated.publicMetadata?.learningAccess ?? null })
+    }
+
+    if (action === 'approveProRequest' || action === 'rejectProRequest') {
+      const requestState = target.publicMetadata?.learningAccess?.proRequest
+      if (!requestState) return NextResponse.json({ error: 'Keine Pro-Anfrage vorhanden' }, { status: 400 })
+      const sameEmailUsers = await getSameEmailUsers(client, target)
+      const reviewedAt = new Date().toISOString()
+      const approved = action === 'approveProRequest'
+      const monthsToGrant = requestState.kind === 'renewal' ? RENEWAL_MONTHS : PROMO_MONTHS
+      const until = new Date()
+      until.setMonth(until.getMonth() + monthsToGrant)
+
+      const updatedUsers = await Promise.all(sameEmailUsers.map(user => {
+        const learningAccess = user.publicMetadata?.learningAccess || {}
+        const publicMetadata = {
+          ...user.publicMetadata,
+          learningAccess: {
+            ...learningAccess,
+            proRequest: { ...requestState, status: approved ? 'approved' : 'rejected', reviewedAt },
+          },
+        }
+        if (approved) {
+          const existing = user.publicMetadata?.subscription || {}
+          publicMetadata.subscription = {
+            status: 'active',
+            until: until.toISOString(),
+            activatedAt: existing.activatedAt || reviewedAt,
+            promo: requestState.kind === 'welcome' || !!existing.promo,
+          }
+        }
+        return client.users.updateUser(user.id, { publicMetadata })
+      }))
+      const updated = updatedUsers.find(user => user.id === userId) || updatedUsers[0]
+      return NextResponse.json({
+        subscription: updated.publicMetadata?.subscription ?? null,
+        learningAccess: updated.publicMetadata?.learningAccess ?? null,
+      })
+    }
+
+    if (action === 'grantEarlyAccess' || action === 'rejectEarlyAccess' || action === 'revokeEarlyAccess') {
+      const lessonPath = normalizeLessonPath(typeof pathname === 'string' ? pathname.split('?')[0] : '')
+      if (!lessonPath || getLessonStatus(lessonPath) !== 'in_progress') {
+        return NextResponse.json({ error: 'Ungültige Lektion' }, { status: 400 })
+      }
+      const sameEmailUsers = await getSameEmailUsers(client, target)
+      const reviewedAt = new Date().toISOString()
+      const updatedUsers = await Promise.all(sameEmailUsers.map(user => {
+        const learningAccess = user.publicMetadata?.learningAccess || {}
+        const paths = new Set(Array.isArray(learningAccess.earlyAccessPaths) ? learningAccess.earlyAccessPaths : [])
+        if (action === 'grantEarlyAccess') paths.add(lessonPath)
+        if (action === 'revokeEarlyAccess') paths.delete(lessonPath)
+        const requests = { ...(learningAccess.earlyAccessRequests || {}) }
+        if (action !== 'revokeEarlyAccess') {
+          requests[lessonPath] = {
+            ...(requests[lessonPath] || { requestedAt: reviewedAt, title: lessonPath }),
+            status: action === 'grantEarlyAccess' ? 'approved' : 'rejected',
+            reviewedAt,
+          }
+        } else if (requests[lessonPath]) {
+          requests[lessonPath] = { ...requests[lessonPath], status: 'rejected', reviewedAt }
+        }
+        return client.users.updateUser(user.id, {
+          publicMetadata: {
+            ...user.publicMetadata,
+            learningAccess: { ...learningAccess, earlyAccessPaths: [...paths], earlyAccessRequests: requests },
+          },
+        })
+      }))
+      const updated = updatedUsers.find(user => user.id === userId) || updatedUsers[0]
+      return NextResponse.json({ learningAccess: updated.publicMetadata?.learningAccess ?? null })
     }
 
     if (action === 'clearSubscription') {
@@ -64,7 +140,7 @@ export async function PATCH(request, { params }) {
         })
       }))
       const updated = updatedUsers.find(user => user.id === userId) || updatedUsers[0]
-      return NextResponse.json({ subscription: updated.publicMetadata?.subscription ?? subscription })
+      return NextResponse.json({ subscription: updated.publicMetadata?.subscription ?? subscription, learningAccess: updated.publicMetadata?.learningAccess ?? null })
     }
 
     return NextResponse.json({ error: 'Unbekannte Aktion' }, { status: 400 })

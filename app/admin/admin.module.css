@@ -867,8 +867,18 @@
 /* ── ROW ACTIONS ── */
 .actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
+
+.requestCell { min-width: 250px; white-space: normal !important; }
+.requestStack { display: grid; gap: 8px; }
+.requestItem, .grantedItem { display: grid; gap: 6px; padding: 9px; border: 1px solid #fed7aa; border-radius: 10px; background: #fff7ed; }
+.requestItem strong, .grantedItem span { color: #9a3412; font-size: 11px; line-height: 1.35; }
+.requestItem small, .grantedItem small { max-width: 250px; overflow: hidden; color: #64748b; font-size: 9px; text-overflow: ellipsis; }
+.requestItem > div { display: flex; gap: 6px; }
+.grantedItem { border-color: #bbf7d0; background: #f0fdf4; }
+.grantedItem span { color: #15803d; }
 
 .actionBtn {
   padding: 6px 12px;
