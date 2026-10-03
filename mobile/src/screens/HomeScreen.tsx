@@ -3,9 +3,11 @@ import { StyleSheet, Text, View } from 'react-native'
 import { AppBackground, ModuleRow, SyncBanner } from '../ui/components'
 import { colors, rtlText } from '../ui/theme'
 import { loadTodos } from '../data/todos'
+import { loadProfileSettings } from '../data/medications'
 import type { ScreenName } from '../types'
 
 const modules: Array<{ screen: ScreenName; title: string; subtitle: string; icon: Parameters<typeof ModuleRow>[0]['icon'] }> = [
+  { screen: 'medications', title: 'داروی من', subtitle: 'برنامه امروز و مدیریت داروها', icon: 'pill-multiple' },
   { screen: 'todos', title: 'کارها', subtitle: 'کارهای امروز و برنامه‌ها', icon: 'clipboard-check-outline' },
   { screen: 'routines', title: 'روتین', subtitle: 'عادت‌ها و پیگیری روزانه', icon: 'autorenew' },
   { screen: 'events', title: 'قرارها', subtitle: 'تقویم و رویدادها', icon: 'calendar-outline' },
@@ -23,9 +25,11 @@ export function HomeScreen({ navigate, online, pending, syncError }: {
   syncError?: string
 }) {
   const [openToday, setOpenToday] = useState(0)
+  const [personName, setPersonName] = useState('')
 
   useEffect(() => {
     void loadTodos().then(items => setOpenToday(items.filter(item => !item.done).length))
+    void loadProfileSettings().then(settings => setPersonName(settings.personName))
   }, [pending])
 
   const date = new Intl.DateTimeFormat('fa-IR', { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date())
@@ -33,7 +37,7 @@ export function HomeScreen({ navigate, online, pending, syncError }: {
   return (
     <AppBackground scroll>
       <View style={styles.hero}>
-        <Text style={styles.title}>اندرون</Text>
+        <Text style={styles.title}>سلام {personName || 'دوست من'}</Text>
         <SyncBanner online={online} pending={pending} error={syncError} />
         <Text style={styles.today}>امروز</Text>
         <Text style={styles.date}>{date}</Text>
@@ -53,7 +57,7 @@ export function HomeScreen({ navigate, online, pending, syncError }: {
 
 const styles = StyleSheet.create({
   hero: { alignItems: 'center', paddingTop: 28, paddingBottom: 18 },
-  title: { ...rtlText, color: colors.gold, textAlign: 'center', fontSize: 48, fontWeight: '800', marginBottom: 8 },
+  title: { ...rtlText, color: colors.text, textAlign: 'center', fontSize: 34, fontWeight: '900', marginBottom: 8 },
   today: { ...rtlText, color: colors.gold, fontSize: 23, fontWeight: '700', marginTop: 10 },
   date: { ...rtlText, color: colors.muted, fontSize: 15, marginTop: 5 },
   modules: { paddingTop: 8 },

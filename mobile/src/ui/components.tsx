@@ -1,7 +1,8 @@
 import type { ComponentProps, ReactNode } from 'react'
-import { ImageBackground, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
+import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { LinearGradient } from 'expo-linear-gradient'
 import type { ScreenName } from '../types'
 import { colors, rtlText } from './theme'
 
@@ -13,9 +14,9 @@ export function AppBackground({ children, scroll = false }: { children: ReactNod
     : <View style={styles.fill}>{children}</View>
 
   return (
-    <ImageBackground source={require('../../assets/andarun-bg.png')} style={styles.fill} resizeMode="cover">
+    <LinearGradient colors={['#fffefb', '#f4f8f4', '#fbfcfa']} style={styles.fill}>
       <SafeAreaView style={styles.safe}>{content}</SafeAreaView>
-    </ImageBackground>
+    </LinearGradient>
   )
 }
 
@@ -110,7 +111,7 @@ export function ModuleRow({ title, icon, onPress, subtitle }: {
 const NAV_ITEMS: Array<{ screen: ScreenName; label: string; icon: IconName }> = [
   { screen: 'profile', label: 'من', icon: 'account-outline' },
   { screen: 'reports', label: 'گزارش‌ها', icon: 'chart-donut' },
-  { screen: 'todos', label: 'کارها', icon: 'check-circle-outline' },
+  { screen: 'medications', label: 'داروها', icon: 'pill' },
   { screen: 'home', label: 'خانه', icon: 'home-outline' },
 ]
 
@@ -148,7 +149,7 @@ export function EmptyState({ icon, title, text }: { icon: IconName; title: strin
 
 const styles = StyleSheet.create({
   fill: { flex: 1 },
-  safe: { flex: 1, backgroundColor: 'rgba(3, 9, 18, 0.22)' },
+  safe: { flex: 1 },
   scrollContent: { paddingBottom: 112, flexGrow: 1 },
   header: {
     minHeight: 66,
@@ -181,7 +182,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  primaryButtonText: { color: colors.background, fontSize: 16, fontWeight: '800', writingDirection: 'rtl' },
+  primaryButtonText: { color: colors.white, fontSize: 16, fontWeight: '800', writingDirection: 'rtl' },
   disabled: { opacity: 0.45 },
   pressed: { opacity: 0.72, transform: [{ scale: 0.99 }] },
   moduleRow: {
@@ -210,14 +211,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingBottom: 9,
     paddingTop: 8,
-    backgroundColor: 'rgba(6, 16, 31, 0.98)',
+    backgroundColor: 'rgba(255, 255, 255, 0.98)',
     borderTopWidth: 1,
     borderTopColor: colors.border,
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
   navItem: { minWidth: 66, borderRadius: 16, alignItems: 'center', justifyContent: 'center', gap: 3 },
-  navItemSelected: { backgroundColor: 'rgba(226, 185, 102, 0.10)' },
+  navItemSelected: { backgroundColor: colors.greenTint },
   navLabel: { color: colors.muted, fontSize: 11, writingDirection: 'rtl' },
   navLabelSelected: { color: colors.gold, fontWeight: '700' },
   emptyState: { margin: 22, padding: 28, alignItems: 'center', borderWidth: 1, borderColor: colors.border, borderRadius: 22, backgroundColor: colors.surface },

@@ -9,7 +9,56 @@ export type ScreenName =
   | 'findings'
   | 'finance'
   | 'reports'
+  | 'medications'
   | 'profile'
+
+export type MedicationFrequency = 'daily' | 'weekly'
+export type MedicationTimingType = 'exact' | 'routine'
+export type MedicationRoutine = 'fasting' | 'breakfast' | 'lunch' | 'afternoonSnack' | 'dinner' | 'bedtime'
+
+export type MedicationSchedule = {
+  id: string
+  type: MedicationTimingType
+  time: string
+  routine?: MedicationRoutine
+}
+
+export type Medication = {
+  id: string
+  name: string
+  dose: string
+  drugCatalogId?: string
+  genericNameEn?: string
+  category: string
+  frequency: MedicationFrequency
+  weekdays: number[]
+  doseByWeekday: Record<string, string>
+  schedules: MedicationSchedule[]
+  createdAt: string
+  updatedAt: string
+}
+
+export type MedicationDoseLog = {
+  id: string
+  medicineId: string
+  date: string
+  scheduleId: string
+  scheduledTime: string
+  takenAt: string
+  timingStatus: 'onTime' | 'early' | 'late'
+  dose: string
+}
+
+export type MedicationState = {
+  medicines: Medication[]
+  logs: MedicationDoseLog[]
+}
+
+export type ProfileSettings = {
+  personName: string
+  largeText: boolean
+  highContrast: boolean
+}
 
 export type TodoItem = {
   id: string

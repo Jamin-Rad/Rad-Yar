@@ -1,4 +1,5 @@
 import * as SecureStore from 'expo-secure-store'
+import { Platform } from 'react-native'
 
 const TOKEN_KEY = 'andarun.mobile.token'
 export const API_BASE = (process.env.EXPO_PUBLIC_API_URL || 'https://www.rad-yar.com').replace(/\/$/, '')
@@ -10,6 +11,7 @@ export class ApiError extends Error {
 }
 
 export async function getToken() {
+  if (Platform.OS === 'web') return globalThis.sessionStorage?.getItem(TOKEN_KEY) || null
   return SecureStore.getItemAsync(TOKEN_KEY)
 }
 
@@ -30,12 +32,14 @@ export async function login(password: string) {
       : 'ورود انجام نشد؛ اتصال اینترنت را بررسی کنید.'
     throw new ApiError(message, response.status)
   }
-  await SecureStore.setItemAsync(TOKEN_KEY, payload.token)
+  if (Platform.OS === 'web') globalThis.sessionStorage?.setItem(TOKEN_KEY, payload.token)
+  else await SecureStore.setItemAsync(TOKEN_KEY, payload.token)
   return payload.token as string
 }
 
 export async function logout() {
-  await SecureStore.deleteItemAsync(TOKEN_KEY)
+  if (Platform.OS === 'web') globalThis.sessionStorage?.removeItem(TOKEN_KEY)
+  else await SecureStore.deleteItemAsync(TOKEN_KEY)
 }
 
 export async function requestJson<T>(path: string, init: RequestInit = {}): Promise<T> {

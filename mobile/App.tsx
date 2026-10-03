@@ -12,6 +12,7 @@ import type { ScreenName } from './src/types'
 import { LoginScreen } from './src/screens/LoginScreen'
 import { HomeScreen } from './src/screens/HomeScreen'
 import { TodosScreen } from './src/screens/TodosScreen'
+import { MedicationsScreen } from './src/screens/MedicationsScreen'
 import {
   DeutschScreen,
   FinanceScreen,
@@ -119,6 +120,7 @@ export default function App() {
     case 'findings': content = <FindingsScreen {...common} />; break
     case 'finance': content = <FinanceScreen {...common} />; break
     case 'reports': content = <ReportsScreen {...common} />; break
+    case 'medications': content = <MedicationsScreen onBack={common.onBack} />; break
     case 'profile': content = <ProfileScreen {...common} onLogout={confirmLogout} />; break
     default: content = <HomeScreen navigate={setScreen} online={online} pending={pending} syncError={syncError} />
   }

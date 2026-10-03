@@ -7,7 +7,9 @@ import { colors, rtlText } from '../ui/theme'
 import { useResource } from '../hooks/useResource'
 import { cacheGet, cacheSet, localId, pendingCount } from '../data/database'
 import { flushQueue, queueMutation } from '../data/sync'
-import type { BudgetEntry, BudgetPayload, DeutschState, HealthState, RoutinesPayload, WorkState } from '../types'
+import { DEFAULT_PROFILE_SETTINGS, loadMedicationState, loadProfileSettings, saveProfileSettings } from '../data/medications'
+import { MEDICATION_CATEGORIES } from '../data/medicationCatalog'
+import type { BudgetEntry, BudgetPayload, DeutschState, HealthState, ProfileSettings, RoutinesPayload, WorkState } from '../types'
 
 const EMPTY_ROUTINES: RoutinesPayload = { routines: [], logs: [] }
 const EMPTY_WORK: WorkState = { shifts: [], findings: [], findingTimers: [] }
@@ -289,7 +291,8 @@ function Stat({ label, value, icon }: { label: string; value: number; icon: Comp
 }
 
 export function ReportsScreen(props: CommonProps) {
-  const [counts, setCounts] = useState({ todos: 0, routines: 0, shifts: 0, findings: 0, health: 0 })
+  const [counts, setCounts] = useState({ todos: 0, routines: 0, shifts: 0, findings: 0, health: 0, medications: 0 })
+  const [medicationCategories, setMedicationCategories] = useState<Array<{ key: string; label: string; count: number }>>([])
 
   useEffect(() => {
     void Promise.all([
@@ -297,13 +300,25 @@ export function ReportsScreen(props: CommonProps) {
       cacheGet<RoutinesPayload>('routines', EMPTY_ROUTINES),
       cacheGet<WorkState>('work', EMPTY_WORK),
       cacheGet<HealthState>('health', EMPTY_HEALTH),
-    ]).then(([todos, routines, work, health]) => setCounts({
-      todos: todos.filter(item => !item.done).length,
-      routines: routines.routines.length,
-      shifts: work.shifts.length,
-      findings: work.findings.length,
-      health: health.records.length,
-    }))
+      loadMedicationState(),
+    ]).then(([todos, routines, work, health, medicationState]) => {
+      const categoryCounts = medicationState.medicines.reduce<Record<string, number>>((result, medication) => {
+        const key = medication.category || 'other'
+        result[key] = (result[key] || 0) + 1
+        return result
+      }, {})
+      setCounts({
+        todos: todos.filter(item => !item.done).length,
+        routines: routines.routines.length,
+        shifts: work.shifts.length,
+        findings: work.findings.length,
+        health: health.records.length,
+        medications: medicationState.medicines.length,
+      })
+      setMedicationCategories(Object.entries(categoryCounts)
+        .map(([key, count]) => ({ key, count, label: MEDICATION_CATEGORIES[key]?.fa || MEDICATION_CATEGORIES.other.fa }))
+        .sort((left, right) => right.count - left.count))
+    })
   }, [props.pending])
 
   return (
@@ -314,20 +329,53 @@ export function ReportsScreen(props: CommonProps) {
         <Stat label="شیفت" value={counts.shifts} icon="briefcase-outline" />
         <Stat label="یافته" value={counts.findings} icon="file-chart-outline" />
         <Stat label="ثبت سلامت" value={counts.health} icon="heart-pulse" />
+        <Stat label="دارو" value={counts.medications} icon="pill" />
       </View>
+      {medicationCategories.length ? (
+        <View style={styles.medicationReport}>
+          <View style={styles.medicationReportHeader}>
+            <MaterialCommunityIcons name="chart-donut" size={25} color={colors.greenDeep} />
+            <Text style={styles.medicationReportTitle}>دسته‌بندی داروهای من</Text>
+          </View>
+          {medicationCategories.map(category => (
+            <View key={category.key} style={styles.medicationCategoryRow}>
+              <Text style={styles.medicationCategoryCount}>{category.count.toLocaleString('fa-IR')}</Text>
+              <Text style={styles.medicationCategoryLabel}>{category.label}</Text>
+            </View>
+          ))}
+        </View>
+      ) : null}
       <Text style={styles.reportNote}>این گزارش مستقیماً از داده‌های ذخیره‌شده روی گوشی ساخته می‌شود و در حالت آفلاین هم در دسترس است.</Text>
     </SectionShell>
   )
 }
 
 export function ProfileScreen({ onBack, onLogout, online, pending, onPendingChange }: CommonProps & { onLogout: () => void }) {
+  const [settings, setSettings] = useState<ProfileSettings>(DEFAULT_PROFILE_SETTINGS)
+  const [saved, setSaved] = useState(false)
+
+  useEffect(() => { void loadProfileSettings().then(setSettings) }, [])
+
+  async function save() {
+    setSettings(await saveProfileSettings(settings))
+    setSaved(true)
+    setTimeout(() => setSaved(false), 1800)
+  }
+
   return (
-    <SectionShell title="من" online={online} pending={pending} onBack={onBack} onPendingChange={onPendingChange}>
+    <SectionShell title="تنظیمات" online={online} pending={pending} onBack={onBack} onPendingChange={onPendingChange}>
       <View style={styles.profileCard}>
-        <View style={styles.avatar}><MaterialCommunityIcons name="account" size={42} color={colors.gold} /></View>
-        <Text style={styles.profileTitle}>اندرون شخصی</Text>
-        <Text style={styles.profileText}>توکن ورود در فضای امن دستگاه و داده‌ها در SQLite محلی نگهداری می‌شوند.</Text>
+        <View style={styles.profileTitleRow}><View><MaterialCommunityIcons name="account-edit-outline" size={28} color={colors.greenDeep} /></View><Text style={styles.profileTitle}>نام شخص</Text></View>
+        <Text style={styles.profileText}>این نام در سلام و برنامهٔ روزانه نمایش داده می‌شود.</Text>
+        <Field accessibilityLabel="نام شخص" value={settings.personName} onChangeText={personName => setSettings(current => ({ ...current, personName }))} placeholder="مثلاً بنیامین" style={styles.profileField} />
+        <PrimaryButton label={saved ? 'ذخیره شد' : 'ذخیره نام'} onPress={save} disabled={!settings.personName.trim()} icon={saved ? 'check' : 'content-save-outline'} />
       </View>
+
+      <View style={styles.offlineCard}>
+        <View style={styles.offlineIcon}><MaterialCommunityIcons name="shield-check" size={30} color={colors.greenDeep} /></View>
+        <View style={styles.offlineCopy}><Text style={styles.offlineTitle}>ذخیره‌سازی آفلاین</Text><Text style={styles.offlineText}>داروها، نوبت‌ها و ثبت مصرف در SQLite روی همین گوشی ذخیره می‌شوند و بدون اینترنت هم کار می‌کنند.</Text></View>
+      </View>
+
       <Pressable onPress={onLogout} style={styles.logoutButton}>
         <Text style={styles.logoutText}>خروج و پاک‌کردن داده‌های محلی</Text>
         <MaterialCommunityIcons name="logout" size={22} color={colors.danger} />
@@ -341,7 +389,7 @@ const styles = StyleSheet.create({
   flex: { flex: 1 },
   formRow: { flexDirection: 'row', gap: 9, paddingHorizontal: 16, marginBottom: 18 },
   formStack: { gap: 10, paddingHorizontal: 16, marginBottom: 18 },
-  dataRow: { minHeight: 76, paddingHorizontal: 18, paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: 'rgba(156, 169, 187, 0.14)', backgroundColor: 'rgba(10, 24, 45, 0.72)', flexDirection: 'row', alignItems: 'center', gap: 13 },
+  dataRow: { minHeight: 76, marginHorizontal: 16, marginBottom: 9, paddingHorizontal: 18, paddingVertical: 12, borderWidth: 1, borderColor: colors.border, borderRadius: 19, backgroundColor: colors.surface, flexDirection: 'row', alignItems: 'center', gap: 13 },
   rowCopy: { flex: 1, alignItems: 'flex-end' },
   rowTitle: { ...rtlText, fontSize: 17, fontWeight: '700' },
   rowMeta: { ...rtlText, color: colors.muted, fontSize: 12, marginTop: 5 },
@@ -357,10 +405,23 @@ const styles = StyleSheet.create({
   balanceMeta: { ...rtlText, color: colors.muted, fontSize: 12, marginTop: 7 },
   moneyNegative: { color: colors.danger, fontWeight: '800', fontSize: 15 },
   reportNote: { ...rtlText, color: colors.muted, fontSize: 14, lineHeight: 24, marginHorizontal: 22, textAlign: 'center' },
-  profileCard: { margin: 18, padding: 24, borderRadius: 24, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.surface, alignItems: 'center' },
+  medicationReport: { marginHorizontal: 16, marginBottom: 18, padding: 18, borderRadius: 24, borderWidth: 1, borderColor: '#c8dfd0', backgroundColor: colors.greenTint },
+  medicationReportHeader: { flexDirection: 'row-reverse', alignItems: 'center', gap: 9, marginBottom: 8 },
+  medicationReportTitle: { ...rtlText, color: colors.greenDeep, fontSize: 18, fontWeight: '900' },
+  medicationCategoryRow: { minHeight: 44, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', borderTopWidth: 1, borderTopColor: '#d8e7dd' },
+  medicationCategoryCount: { color: colors.greenDeep, fontSize: 16, fontWeight: '900' },
+  medicationCategoryLabel: { ...rtlText, color: colors.text, fontSize: 15, fontWeight: '700' },
+  profileCard: { margin: 18, padding: 20, borderRadius: 24, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.surface, gap: 12 },
   avatar: { width: 82, height: 82, borderRadius: 41, borderWidth: 1, borderColor: colors.border, alignItems: 'center', justifyContent: 'center' },
-  profileTitle: { ...rtlText, fontSize: 22, fontWeight: '800', marginTop: 14 },
-  profileText: { ...rtlText, color: colors.muted, fontSize: 13, lineHeight: 22, textAlign: 'center', marginTop: 8 },
+  profileTitleRow: { flexDirection: 'row-reverse', alignItems: 'center', gap: 9 },
+  profileTitle: { ...rtlText, fontSize: 22, fontWeight: '900' },
+  profileText: { ...rtlText, color: colors.muted, fontSize: 13, lineHeight: 22 },
+  profileField: { marginTop: 3 },
+  offlineCard: { marginHorizontal: 18, marginBottom: 12, padding: 18, borderRadius: 24, borderWidth: 1, borderColor: '#c8dfd0', backgroundColor: colors.greenTint, flexDirection: 'row', alignItems: 'center', gap: 13 },
+  offlineIcon: { width: 54, height: 54, borderRadius: 18, backgroundColor: colors.white, alignItems: 'center', justifyContent: 'center' },
+  offlineCopy: { flex: 1, alignItems: 'flex-end' },
+  offlineTitle: { ...rtlText, color: colors.greenDeep, fontSize: 18, fontWeight: '900' },
+  offlineText: { ...rtlText, color: colors.muted, fontSize: 12, lineHeight: 20, marginTop: 5 },
   logoutButton: { marginHorizontal: 18, minHeight: 56, paddingHorizontal: 18, borderRadius: 17, borderWidth: 1, borderColor: 'rgba(239,123,123,0.35)', backgroundColor: 'rgba(239,123,123,0.08)', flexDirection: 'row', gap: 9, justifyContent: 'center', alignItems: 'center' },
   logoutText: { color: colors.danger, fontSize: 14, fontWeight: '700', writingDirection: 'rtl' },
 })
