@@ -128,7 +128,7 @@ function buildWeekSummary(data, today, clock) {
   let completed = 0
   let onTime = 0
 
-  const days = Array.from({ length: 7 }, (_, index) => {
+  Array.from({ length: 7 }, (_, index) => {
     const key = shiftDate(start, index)
     const date = dateFromKey(key)
     const scheduledDoses = data.medicines
@@ -137,19 +137,14 @@ function buildWeekSummary(data, today, clock) {
         return medicine.profileId === PROFILE.id && medicine.weekdays.includes(date.getDay()) && (!startsOn || key >= startsOn)
       })
       .flatMap(medicine => medicine.schedules.map(schedule => ({ medicine, schedule })))
-    let dayDue = 0
-    let dayCompleted = 0
-
     scheduledDoses.forEach(({ medicine, schedule }) => {
       const log = getDoseLog(data.doseLogs, key, medicine.id, schedule)
       const due = Boolean(log) || key < today || (key === today && (timeToMinutes(schedule.time) + scheduleToleranceMinutes(schedule)) <= nowMinutes)
       if (!due) return
-      dayDue += 1
       totalDue += 1
       const stats = medicineStats.get(medicine.id) || { medicine, due: 0, completed: 0, onTime: 0 }
       stats.due += 1
       if (log) {
-        dayCompleted += 1
         completed += 1
         stats.completed += 1
         if (timingStatusForLog(schedule, log) === 'onTime') { onTime += 1; stats.onTime += 1 }
@@ -157,16 +152,6 @@ function buildWeekSummary(data, today, clock) {
       medicineStats.set(medicine.id, stats)
     })
 
-    return {
-      key,
-      label: new Intl.DateTimeFormat('fa-IR', { weekday: 'narrow' }).format(date),
-      dayNumber: new Intl.DateTimeFormat('fa-IR', { day: 'numeric' }).format(date),
-      complete: dayDue > 0 && dayCompleted === dayDue,
-      partial: dayCompleted > 0 && dayCompleted < dayDue,
-      missed: dayDue > 0 && dayCompleted === 0,
-      future: key > today || (key === today && dayDue === 0),
-      empty: scheduledDoses.length === 0,
-    }
   })
 
   const irregular = [...medicineStats.values()].find(stats => {
@@ -176,20 +161,22 @@ function buildWeekSummary(data, today, clock) {
     return completionRate < 0.75 || punctualityRate < 0.6
   })
 
-  let message = 'آفرین، این هفته همه‌چی طبق برنامه بوده!'
+  let message = totalDue
+    ? 'آفرین، این هفته خیلی خوب پیش رفتی. همین‌طور ادامه بده!'
+    : 'همه‌چیز خوبه؛ فعلاً چیزی جا نیفتاده.'
   let tone = 'success'
   if (irregular) {
-    message = `حواست باشد «${irregular.medicine.name}» را این هفته نامنظم مصرف کرده‌ای.`
+    message = `این هفته «${irregular.medicine.name}» چند بار از یادت رفته؛ اشکالی نداره، از نوبت بعدی دوباره ادامه بده.`
     tone = 'warning'
   } else if (totalDue > 0 && completed < totalDue) {
-    message = `${toPersianNumber(totalDue - completed)} نوبت ثبت‌نشده داری؛ هنوز می‌توانی ادامهٔ هفته را منظم‌تر پیش ببری.`
+    message = 'یکی‌دو تا از داروهات یادت رفته؛ اشکالی نداره، از دفعهٔ بعد دوباره ادامه بده.'
     tone = 'warning'
   } else if (completed > 0 && onTime < Math.ceil(completed * 0.8)) {
-    message = 'نوبت‌های موعدرسیده ثبت شده‌اند؛ ساعت مصرف کمی منظم‌تر شود بهتر است.'
+    message = 'خوبه که داروهات رو ثبت کردی؛ همین که هر روز تقریباً یه زمان بخوریشون خیلی کمک می‌کنه.'
     tone = 'neutral'
   }
 
-  return { start, end, days, totalDue, completed, percentage: totalDue ? Math.round((completed / totalDue) * 100) : 100, message, tone }
+  return { start, end, message, tone }
 }
 
 function routineIconName(value) {
@@ -244,6 +231,7 @@ function Icon({ name, size = 24 }) {
   if (name === 'search') return <svg {...common}><circle cx="11" cy="11" r="7" /><path d="m20 20-4-4" /></svg>
   if (name === 'chevron') return <svg {...common}><path d="m8 10 4 4 4-4" /></svg>
   if (name === 'settings') return <svg {...common}><path d="M4 7h10M18 7h2M10 17h10M4 17h2" /><circle cx="16" cy="7" r="2" /><circle cx="8" cy="17" r="2" /></svg>
+  if (name === 'heart') return <svg {...common}><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z" /></svg>
   return <svg {...common}><circle cx="12" cy="12" r="9" /><path d="M12 8h.01M11 12h1v4h1" /></svg>
 }
 
@@ -336,6 +324,7 @@ function MedicineModal({ medicine, onClose, onSave, onDelete, saving }) {
   const [searchOpen, setSearchOpen] = useState(false)
   const titleRef = useRef(null)
   const selectedDrug = findMedicationById(draft.drugCatalogId)
+  const supplementGuidance = selectedDrug?.guidance
   const suggestions = useMemo(() => searchMedicationCatalog(draft.name), [draft.name])
 
   useEffect(() => {
@@ -354,6 +343,10 @@ function MedicineModal({ medicine, onClose, onSave, onDelete, saving }) {
   function selectDrug(drug) {
     setDraft(current => ({ ...current, name: drug.fa, dose: drug.doses[0] || current.dose, drugCatalogId: drug.id, genericNameFa: drug.fa, genericNameEn: drug.en, category: drug.category }))
     setSearchOpen(false)
+  }
+  function applyGuidance() {
+    if (!supplementGuidance?.suggestedRoutine || !ROUTINE_BY_VALUE[supplementGuidance.suggestedRoutine]) return
+    update('schedules', [createSchedule('routine', supplementGuidance.suggestedRoutine)])
   }
   function submit(event) {
     event.preventDefault()
@@ -388,8 +381,19 @@ function MedicineModal({ medicine, onClose, onSave, onDelete, saving }) {
             <legend>دوز</legend>
             {selectedDrug ? <div className={styles.doseChoices}>{selectedDrug.doses.map(dose => <button key={dose} type="button" className={draft.dose === dose ? styles.doseChoiceActive : ''} aria-pressed={draft.dose === dose} onClick={() => update('dose', dose)}>{dose}</button>)}</div> : null}
             <input className={styles.doseInput} value={draft.dose} onChange={event => update('dose', event.target.value)} placeholder={selectedDrug ? 'یا دوز دلخواه' : 'مثلاً ۵۰ میلی‌گرم'} maxLength={80} />
-            {selectedDrug ? <p className={styles.categoryNote}>دسته: {MEDICATION_CATEGORIES[selectedDrug.category]?.fa}</p> : null}
+            {selectedDrug ? <p className={styles.categoryNote}>دسته: {MEDICATION_CATEGORIES[selectedDrug.category]?.fa} · مقدارهای رایج محصول؛ طبق نسخه یا برچسب انتخاب کن.</p> : null}
           </fieldset>
+          {supplementGuidance ? (
+            <aside className={styles.supplementGuide} aria-labelledby="supplement-guide-title">
+              <div className={styles.supplementGuideHead}><span><Icon name="heart" size={20} /></span><div><strong id="supplement-guide-title">راهنمای مصرف مکمل</strong><small>{supplementGuidance.text}</small></div></div>
+              {supplementGuidance.caution ? <p>{supplementGuidance.caution}</p> : null}
+              <div className={styles.supplementGuideFooter}>
+                <span>راهنمای عمومی است، نه جایگزین نسخه یا برچسب محصول.</span>
+                {supplementGuidance.sourceUrl ? <a href={supplementGuidance.sourceUrl} target="_blank" rel="noreferrer">منبع معتبر</a> : null}
+              </div>
+              {supplementGuidance.suggestedRoutine ? <button className={styles.applyGuideButton} type="button" onClick={applyGuidance}>تنظیم خودکار: {ROUTINE_BY_VALUE[supplementGuidance.suggestedRoutine]?.shortLabel}</button> : null}
+            </aside>
+          ) : null}
           <fieldset className={styles.fieldset}><legend>زمان مصرف</legend><TimingEditor schedules={draft.schedules} onChange={value => update('schedules', value)} /></fieldset>
           {error ? <p className={styles.formError} role="alert">{error}</p> : null}
           <div className={styles.formActions}>
@@ -556,10 +560,8 @@ export default function MedicationPage() {
             ) : <div className={styles.emptyState}><span><Icon name="pill" size={29} /></span><div><h3>{data.medicines.length ? 'امروز نوبت دارویی نداری' : 'برنامهٔ امروز هنوز خالی است'}</h3><p>{data.medicines.length ? 'داروی امروزت تمام شده است.' : 'از بخش مدیریت داروها در پایین صفحه شروع کن.'}</p></div></div>}
           </section>
           <aside className={styles.aside}><section className={styles.weekCard} aria-labelledby="week-title">
-            <div className={styles.weekHead}><div><h2 id="week-title">این هفته</h2><p>{formatWeekRange(week.start, week.end)}</p></div><strong>{toPersianNumber(week.percentage)}٪</strong></div>
-            <div className={styles.weekProgress} aria-label={`${week.percentage} درصد`}><span style={{ width: `${week.percentage}%` }} /></div>
+            <div className={styles.weekHead}><div><h2 id="week-title">گزارش این هفته</h2><p>{formatWeekRange(week.start, week.end)}</p></div><span className={styles.weekReportIcon}><Icon name="heart" size={22} /></span></div>
             <p className={`${styles.weekMessage} ${week.tone === 'warning' ? styles.weekMessage_warning : week.tone === 'neutral' ? styles.weekMessage_neutral : ''}`}>{week.message}</p>
-            <div className={styles.weekDays}>{week.days.map(day => <div key={day.key}><small>{day.label}</small><span className={`${day.complete ? styles.dayComplete : ''} ${day.partial ? styles.dayPartial : ''} ${day.missed ? styles.dayMissed : ''} ${day.future ? styles.dayFuture : ''} ${day.empty ? styles.dayEmpty : ''}`}>{day.complete ? <Icon name="check" size={15} /> : day.dayNumber}</span></div>)}</div>
           </section></aside>
         </div>
         <section className={styles.mobileAddSection} aria-label="مدیریت داروها"><button type="button" onClick={() => setManagerOpen(true)}><span><Icon name="settings" size={30} /></span><strong>مدیریت داروها</strong><small>افزودن یا ویرایش دارو</small></button></section>

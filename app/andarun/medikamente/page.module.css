@@ -80,21 +80,10 @@
 
 .weekCard { padding: 23px; }
 .weekHead h2 { font-size: 25px; }
-.weekHead > strong { color: var(--green); font-size: 23px; }
-.weekProgress { height: 6px; margin-top: 18px; overflow: hidden; border-radius: 99px; background: #e8eeeb; }
-.weekProgress span { height: 100%; display: block; border-radius: inherit; background: var(--green); }
-.weekMessage { margin: 13px 0 17px; padding: 12px 13px; border-radius: 13px; color: #275548; background: #eef7f2; font-size: 11px; font-weight: 750; line-height: 1.8; }
+.weekReportIcon { width: 43px; height: 43px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 14px; color: var(--green); background: var(--green-soft); }
+.weekMessage { min-height: 108px; display: flex; align-items: center; margin: 18px 0 0; padding: 18px; border-right: 4px solid #75a992; border-radius: 13px 4px 4px 13px; color: #275548; background: #eef7f2; font-size: 14px; font-weight: 750; line-height: 2; }
 .weekMessage_warning { color: #7d4d2f; background: #fff4e8; }
 .weekMessage_neutral { color: #405b69; background: #f0f5f6; }
-.weekDays { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
-.weekDays > div { min-width: 0; display: grid; justify-items: center; gap: 5px; }
-.weekDays small { color: #74838d; font-size: 9px; }
-.weekDays span { width: 30px; height: 30px; display: grid; place-items: center; border: 1px solid #ced8d9; border-radius: 50%; color: #657781; background: #fff; font-size: 9px; font-weight: 800; }
-.weekDays .dayComplete { border-color: var(--green); color: #fff; background: var(--green); }
-.weekDays .dayPartial { border: 4px solid #9fc8b7; color: #315b4e; }
-.weekDays .dayMissed { border-color: #e3b8ad; color: #974f3e; background: #fff2ee; }
-.weekDays .dayFuture { border-style: dashed; opacity: .68; }
-.weekDays .dayEmpty { border-color: #e0e5e6; color: #9aa4aa; background: #fafafa; }
 .aside { display: grid; }
 .mobileAddSection { display: none; }
 
@@ -154,6 +143,16 @@
 .doseChoices { display: flex; flex-wrap: wrap; gap: 7px; }
 .doseChoices button, .frequencyChoices button { min-height: 39px; padding: 0 12px; border: 1px solid #d5dedd; border-radius: 11px; color: #526978; background: #fff; font-size: 11px; font-weight: 700; cursor: pointer; }
 .doseChoices .doseChoiceActive, .frequencyChoices .frequencyChoiceActive { border-color: #79a891; color: var(--green-deep); background: #eaf4ef; box-shadow: inset 0 0 0 1px rgba(63,128,106,.12); }
+.supplementGuide { display: grid; gap: 11px; padding: 15px; border: 1px solid #cfe1d7; border-radius: 15px; color: #244c3f; background: #edf5f0; }
+.supplementGuideHead { display: flex; align-items: flex-start; gap: 10px; }
+.supplementGuideHead > span { width: 36px; height: 36px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 11px; color: var(--green-deep); background: #d9ebe1; }
+.supplementGuideHead > div { display: grid; gap: 5px; }
+.supplementGuideHead strong { font-size: 13px; }
+.supplementGuideHead small, .supplementGuide > p { color: #49685e; font-size: 11px; line-height: 1.9; }
+.supplementGuide > p { margin: 0; padding-top: 9px; border-top: 1px solid #d7e5de; }
+.supplementGuideFooter { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: #6d817a; font-size: 9px; line-height: 1.7; }
+.supplementGuideFooter a { flex: 0 0 auto; color: var(--green-deep); font-weight: 800; }
+.applyGuideButton { min-height: 41px; padding: 0 13px; border: 1px solid #8eb4a2; border-radius: 11px; color: var(--green-deep); background: #fff; font-size: 11px; font-weight: 800; cursor: pointer; }
 .timingEditor { display: grid; gap: 9px; }
 .timingSection { overflow: hidden; border: 1px solid #dce4e2; border-radius: 15px; background: #fff; }
 .timingSectionOpen { border-color: #9bbcab; background: #f8fbf9; }
@@ -224,30 +223,47 @@
   .emptyState { min-height: 225px; padding: 28px 8px; }
   .weekCard { padding: 19px 16px; border-radius: 17px; }
   .weekHead h2 { font-size: 23px; }
-  .weekMessage { margin-bottom: 14px; }
-  .weekDays { gap: 2px; }
-  .weekDays span { width: 29px; height: 29px; }
+  .weekMessage { min-height: 96px; margin-top: 15px; padding: 15px; font-size: 14px; }
   .mobileAddSection { display: grid; justify-items: center; margin: 34px 0 4px; padding-top: 28px; border-top: 1px solid #edf1ef; }
   .mobileAddSection button { width: 132px; aspect-ratio: 1; display: grid; justify-items: center; align-content: center; gap: 6px; border: 1.5px dashed #82ab98; border-radius: 18px; color: var(--green-deep); background: #f0f7f3; cursor: pointer; }
   .mobileAddSection button > span { width: 41px; height: 41px; display: grid; place-items: center; border-radius: 13px; background: #dcece4; }
   .mobileAddSection strong { font-size: 13px; }
   .mobileAddSection small { color: #70887e; font-size: 9px; }
   .modalBackdrop { align-items: end; padding: 0; }
-  .modal { width: 100%; max-height: calc(100svh - 8px); padding: 10px 17px calc(17px + env(safe-area-inset-bottom)); border-radius: 24px 24px 0 0; }
+  .modal { width: 100%; max-height: calc(100dvh - 8px); padding: 10px 17px calc(17px + env(safe-area-inset-bottom)); border-radius: 24px 24px 0 0; }
+  .modal:not(.managerModal) { height: calc(100dvh - 8px); overflow: hidden; display: flex; flex-direction: column; }
   .managerModal { max-height: calc(100svh - 32px); }
   .sheetHandle { width: 42px; height: 5px; display: block; margin: 0 auto 12px; border-radius: 99px; background: #cbd4d3; }
-  .modalHead { margin-bottom: 17px; }
+  .modalHead { flex: 0 0 auto; margin-bottom: 17px; }
   .modalHead h2 { font-size: 25px; }
   .managerAddButton { min-height: 66px; }
   .managerItem { min-height: 88px; grid-template-columns: 42px minmax(0, 1fr) auto; gap: 9px; padding: 10px; }
   .managerCategory { grid-column: 2; justify-self: start; }
   .managerEdit { grid-column: 3; grid-row: 1 / span 2; font-size: 0; }
   .managerEdit svg { width: 19px; height: 19px; }
-  .form { gap: 17px; }
-  .generatedTimeGrid, .routineTimes { grid-template-columns: repeat(2, 1fr); }
+  .modal:not(.managerModal) .form { flex: 1 1 auto; min-height: 0; overflow-x: hidden; overflow-y: auto; gap: 19px; margin: 0 -5px; padding: 0 5px; overscroll-behavior: contain; scrollbar-gutter: stable; }
+  .field > span, .fieldset legend { font-size: 14px; }
+  .drugSearch > input, .doseInput { height: 54px; font-size: 16px; }
+  .drugSearch > svg { top: 16px; }
+  .drugSearch > button { top: 12px; }
+  .drugSuggestions { position: static; max-height: 190px; margin-top: 7px; box-shadow: 0 8px 24px rgba(20,45,66,.1); }
+  .drugSuggestions button { min-height: 62px; }
+  .doseChoices { gap: 8px; }
+  .doseChoices button { min-height: 44px; font-size: 12px; }
+  .supplementGuide { padding: 14px; }
+  .supplementGuideHead strong { font-size: 14px; }
+  .supplementGuideHead small, .supplementGuide > p { font-size: 12px; }
+  .supplementGuideFooter { align-items: flex-start; font-size: 10px; }
+  .applyGuideButton { min-height: 46px; font-size: 12px; }
+  .timingSectionButton { min-height: 66px; }
+  .timingSectionButton strong { font-size: 14px; }
+  .timingSectionButton small { font-size: 10px; }
+  .timeField input { height: 50px; font-size: 16px; }
+  .timeField svg { top: 15px; }
+  .generatedTimeGrid, .routineTimes { grid-template-columns: 1fr; }
   .routineChoices { grid-template-columns: repeat(2, 1fr); }
-  .formActions { padding-top: 10px; }
-  .formActions button { padding: 0 13px; }
+  .formActions { bottom: 0; margin: 0 -5px; padding: 12px 5px max(3px, env(safe-area-inset-bottom)); border-top: 1px solid #e7ecea; box-shadow: 0 -12px 24px rgba(255,255,255,.94); }
+  .formActions button { min-height: 52px; padding: 0 13px; }
   .cancelButton { min-width: 88px; }
   .deleteButton { width: 46px; justify-content: center; padding: 0; font-size: 0; }
 }
