@@ -11,6 +11,12 @@ const CATEGORIES_KEY = 'radyar_categories_v2'
 const IRAN_TRIP_KEY  = '__iran_special_trip_v1'
 const IRAN_ACCOUNT_OPENING_BALANCE_RIAL = '2798510103'
 
+const SETTINGS_SECTIONS = [
+  { id: 'kategorien', number: '01', title: 'Kategorien', description: 'Struktur und Unterkategorien' },
+  { id: 'budget', number: '02', title: 'Budget & Fixkosten', description: 'Limits und laufende Kosten' },
+  { id: 'bericht', number: '03', title: 'Bericht', description: 'Monat und Jahr auswerten' },
+]
+
 const IRAN_EXPENSE_CATEGORIES = [
   { name: 'Transport', icon: 'transport', subs: ['Flugzeug', 'Bahn', 'Taxi'] },
   { name: 'Aufenthalt', icon: 'stay', subs: [] },
@@ -299,6 +305,46 @@ function monthIsOnOrAfter(monthKey, startMonth) {
   return !startMonth || monthKey >= startMonth
 }
 
+function recurringAmountChanges(item) {
+  return (Array.isArray(item?.amountChanges) ? item.amountChanges : [])
+    .filter(change => change?.startMonth && Number(change.amount) > 0)
+    .toSorted((a, b) => a.startMonth.localeCompare(b.startMonth))
+}
+
+function recurringAmountForMonth(item, monthKey) {
+  let amount = Number(item?.amount || 0)
+  recurringAmountChanges(item).forEach(change => {
+    if (change.startMonth <= monthKey) amount = Number(change.amount || 0)
+  })
+  return amount
+}
+
+function nextRecurringAmountChange(item, monthKey) {
+  return recurringAmountChanges(item).find(change => change.startMonth > monthKey) || null
+}
+
+function withRecurringAmountChange(item, amount, startMonth) {
+  const initialStartMonth = item.startMonth || '2025-01'
+  const changes = recurringAmountChanges(item)
+
+  if (startMonth <= initialStartMonth) {
+    return {
+      ...item,
+      amount,
+      startMonth,
+      amountChanges: changes.filter(change => change.startMonth > startMonth),
+    }
+  }
+
+  return {
+    ...item,
+    amountChanges: [
+      ...changes.filter(change => change.startMonth !== startMonth),
+      { amount, startMonth },
+    ].toSorted((a, b) => a.startMonth.localeCompare(b.startMonth)),
+  }
+}
+
 function recurringEntriesForMonth(monthKey, recurring = []) {
   return recurring
     .filter(item => monthIsOnOrAfter(monthKey, item.startMonth))
@@ -311,7 +357,7 @@ function recurringEntriesForMonth(monthKey, recurring = []) {
         generatedRecurring: true,
         type: item.type || 'expense',
         title: item.title,
-        amount: Number(item.amount || 0),
+        amount: recurringAmountForMonth(item, monthKey),
         category,
         subtitle: 'Fixkosten',
         tags: [category, budgetKey].filter(Boolean),
@@ -637,8 +683,12 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
 
   // Fixkosten new entry form
   const [planAmount, setPlanAmount] = useState('')
+  const [planStartMonth, setPlanStartMonth] = useState(() => getMonthKey())
   const [planSelectedItems, setPlanSelectedItems] = useState([])
   const [planExpandedCats, setPlanExpandedCats] = useState(new Set())
+  const [editingRecurringId, setEditingRecurringId] = useState(null)
+  const [recurringEditAmount, setRecurringEditAmount] = useState('')
+  const [recurringEditStartMonth, setRecurringEditStartMonth] = useState(() => getMonthKey())
 
   useEffect(() => {
     let cancelled = false
@@ -1246,7 +1296,10 @@ ${manualEntries.length ? `
     return { ti, te, balance: ti - te, avgI: ti / months.length, avgE: te / months.length, count: months.length }
   }, [annualData])
 
-  const totalFixkosten = visibleRecurring.filter(r => r.type === 'expense').reduce((s, r) => s + Number(r.amount || 0), 0)
+  const currentMonthKey = getMonthKey()
+  const totalFixkosten = visibleRecurring
+    .filter(r => r.type === 'expense' && monthIsOnOrAfter(currentMonthKey, r.startMonth))
+    .reduce((sum, item) => sum + recurringAmountForMonth(item, currentMonthKey), 0)
 
   const catDetailEntries = useMemo(() => {
     if (!catDetail) return []
@@ -1472,7 +1525,7 @@ ${manualEntries.length ? `
 
   function addFixeintrag() {
     const amount = Number(planAmount)
-    if (!amount || !planTitle) return
+    if (!amount || !planTitle || !planStartMonth) return
     setRecurring(prev => [...prev, {
       id: makeId(),
       type: 'expense',
@@ -1480,12 +1533,39 @@ ${manualEntries.length ? `
       amount,
       category: planCatNames[0] || '',
       budgetKey: planBudgetKey,
-      startMonth: getMonthKey(), // immer ab aktuellem Monat, egal welcher Monat angezeigt wird
+      startMonth: planStartMonth,
       dayOfMonth: '1',
     }])
     setPlanAmount('')
   }
-  function removeFixeintrag(id) { setRecurring(prev => prev.filter(r => r.id !== id)) }
+
+  function beginFixeintragEdit(item) {
+    setEditingRecurringId(item.id)
+    setRecurringEditAmount(String(recurringAmountForMonth(item, currentMonthKey) || ''))
+    setRecurringEditStartMonth(currentMonthKey)
+  }
+
+  function cancelFixeintragEdit() {
+    setEditingRecurringId(null)
+    setRecurringEditAmount('')
+    setRecurringEditStartMonth(currentMonthKey)
+  }
+
+  function saveFixeintragEdit() {
+    const amount = Number(recurringEditAmount)
+    if (!editingRecurringId || amount <= 0 || !recurringEditStartMonth) return
+    setRecurring(prev => prev.map(item => (
+      item.id === editingRecurringId
+        ? withRecurringAmountChange(item, amount, recurringEditStartMonth)
+        : item
+    )))
+    cancelFixeintragEdit()
+  }
+
+  function removeFixeintrag(id) {
+    setRecurring(prev => prev.filter(r => r.id !== id))
+    if (editingRecurringId === id) cancelFixeintragEdit()
+  }
 
   function goToMonth(key) { setMonth(key); setView('monat') }
   function navEinstellung(sub) { setView('einstellung'); setSubView(sub) }
@@ -1776,17 +1856,35 @@ ${manualEntries.length ? `
               </Link> : null}
               <div className={styles.sidebarDivider} />
               <SidebarItem icon={<IconSettings />} label="Einstellung" active={view === 'einstellung'} onClick={() => navEinstellung(subView)} />
-              {view === 'einstellung' && (
-                <div className={styles.sidebarSubGroup}>
-                  <button className={subView === 'kategorien' ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('kategorien')}>Kategorien</button>
-                  <button className={subView === 'budget' || subView === 'fixkosten' ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('budget')}>Budget &amp; Fixkosten</button>
-                  <button className={subView === 'bericht' ? styles.sidebarSubActive : styles.sidebarSub} onClick={() => setSubView('bericht')}>Bericht</button>
-                </div>
-              )}
             </nav>
           </aside>}
 
           <div className={styles.financeMain}>
+
+            {view === 'einstellung' ? (
+              <nav className={styles.settingsSectionNav} aria-label="Einstellungsbereiche">
+                {SETTINGS_SECTIONS.map(section => {
+                  const active = section.id === 'budget'
+                    ? subView === 'budget' || subView === 'fixkosten'
+                    : subView === section.id
+                  return (
+                    <button
+                      key={section.id}
+                      type="button"
+                      className={active ? styles.settingsSectionTabActive : styles.settingsSectionTab}
+                      onClick={() => setSubView(section.id)}
+                      aria-current={active ? 'page' : undefined}
+                    >
+                      <span className={styles.settingsSectionNumber}>{section.number}</span>
+                      <span className={styles.settingsSectionCopy}>
+                        <strong>{section.title}</strong>
+                        <small>{section.description}</small>
+                      </span>
+                    </button>
+                  )
+                })}
+              </nav>
+            ) : null}
 
             {/* ── MONATSÜBERSICHT ── */}
             {view === 'monat' && (
@@ -3134,8 +3232,13 @@ ${manualEntries.length ? `
                         <em>€</em>
                       </div>
                     </label>
+                    <label className={styles.planStartMonthField}>
+                      <span>Fixkosten gültig ab</span>
+                      <input type="month" value={planStartMonth} onChange={event => setPlanStartMonth(event.target.value)} />
+                      <small>Gilt nur beim Speichern als Fixkosten</small>
+                    </label>
                     <button className={styles.primaryBudgetBtn} type="button" disabled={!planTitle || !planAmount} onClick={savePlanBudget}>Budget speichern</button>
-                    <button className={styles.primaryBudgetBtn} type="button" disabled={!planTitle || !planAmount} onClick={addFixeintrag}>Fixkosten speichern</button>
+                    <button className={styles.primaryBudgetBtn} type="button" disabled={!planTitle || !planAmount || !planStartMonth} onClick={addFixeintrag}>Fixkosten speichern</button>
                   </div>
                 </div>
 
@@ -3161,19 +3264,54 @@ ${manualEntries.length ? `
                   <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Gespeicherte Fixkosten</h2>
                   {visibleRecurring.length > 0 ? (
                     <div className={styles.fixedCardGrid}>
-                      {visibleRecurring.map(r => (
-                        <div className={styles.fixedCard} key={r.id}>
+                      {visibleRecurring.map(r => {
+                        const nextChange = nextRecurringAmountChange(r, currentMonthKey)
+                        const displayedAmount = recurringAmountForMonth(r, currentMonthKey)
+                        const isEditing = editingRecurringId === r.id
+                        return <div className={`${styles.fixedCard} ${isEditing ? styles.fixedCardEditing : ''}`} key={r.id}>
+                          <div className={styles.fixedCardActions}>
+                            <button className={styles.fixedEditBtn} type="button" onClick={() => beginFixeintragEdit(r)}>Bearbeiten</button>
+                            <button className={styles.fixedDeleteBtn} type="button" onClick={() => removeFixeintrag(r.id)} aria-label={`${r.title} löschen`}>×</button>
+                          </div>
                           <div className={styles.fixedCardHead}>
                             <strong>{r.title}</strong>
-                            <span className={r.type === 'income' ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(r.amount)}</span>
+                            <span className={r.type === 'income' ? styles.moneyPositive : styles.moneyNegative}>{formatMoney(displayedAmount)}</span>
                           </div>
                           <div className={styles.fixedMetaRow}>
                             <span className={r.type === 'income' ? styles.fixedMetaIncome : styles.fixedMetaExpense}>{r.type === 'income' ? 'Einnahme' : 'Ausgabe'}</span>
                             {r.category && <span className={styles.fixedMetaPill}>{r.category}</span>}
+                            <span className={styles.fixedMetaPill}>{(r.startMonth || '2025-01') > currentMonthKey ? 'Ab' : 'Seit'} {formatMonthLabel(r.startMonth || '2025-01')}</span>
                           </div>
-                          <button className={styles.fixedDeleteBtn} type="button" onClick={() => removeFixeintrag(r.id)} aria-label={`${r.title} löschen`}>×</button>
+                          {nextChange ? (
+                            <div className={styles.fixedUpcomingChange}>
+                              <span>Geplant ab {formatMonthLabel(nextChange.startMonth)}</span>
+                              <strong>{formatMoney(nextChange.amount)}</strong>
+                            </div>
+                          ) : null}
+                          {isEditing ? (
+                            <div className={styles.fixedEditPanel}>
+                              <div className={styles.fixedEditGrid}>
+                                <label>
+                                  <span>Neuer Betrag</span>
+                                  <div className={styles.fixedEditMoney}>
+                                    <input type="number" min="0.01" step="0.01" inputMode="decimal" value={recurringEditAmount} onChange={event => setRecurringEditAmount(event.target.value)} autoFocus />
+                                    <em>€</em>
+                                  </div>
+                                </label>
+                                <label>
+                                  <span>Gültig ab</span>
+                                  <input type="month" value={recurringEditStartMonth} onChange={event => setRecurringEditStartMonth(event.target.value)} />
+                                </label>
+                              </div>
+                              <p>Vergangene Monate bleiben unverändert.</p>
+                              <div className={styles.fixedEditActions}>
+                                <button type="button" onClick={cancelFixeintragEdit}>Abbrechen</button>
+                                <button type="button" disabled={!recurringEditAmount || !recurringEditStartMonth} onClick={saveFixeintragEdit}>Änderung speichern</button>
+                              </div>
+                            </div>
+                          ) : null}
                         </div>
-                      ))}
+                      })}
                     </div>
                   ) : (
                     <p className={styles.emptyAnalytics}>Noch keine Fixkosten gespeichert.</p>
