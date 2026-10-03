@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
 import styles from './page.module.css'
@@ -11,9 +11,9 @@ const L = (de, en, fa) => ({ de, en, fa })
 const pick = (value, lang) => typeof value === 'string' ? value : value[lang] || value.de
 
 const SECTION_COPY = [
-  { id: 'start', short: L('Start', 'Start', 'شروع'), title: L('Der 5-Minuten-Workflow', 'The five-minute workflow', 'روند پنج‌دقیقه‌ای'), icon: 'brain' },
-  { id: 'fall', short: L('Radiopaedia-Fall', 'Radiopaedia case', 'کیس Radiopaedia'), title: L('Bildbefund unter Zeitdruck', 'Imaging under time pressure', 'تفسیر تصویر در شرایط حساس زمانی'), icon: 'case' },
-  { id: 'take-home', short: 'Take Home Message', title: 'Take Home Message', icon: 'spark', emphasis: true },
+  { id: 'start', title: L('Der 5-Minuten-Workflow', 'The five-minute workflow', 'روند پنج‌دقیقه‌ای'), icon: 'brain' },
+  { id: 'fall', title: L('Radiopaedia-Fall', 'Radiopaedia case', 'کیس Radiopaedia'), icon: 'case' },
+  { id: 'take-home', title: 'Take Home Message', icon: 'spark', emphasis: true },
 ]
 
 const SECTION_IDS = SECTION_COPY.map(section => section.id)
@@ -69,7 +69,6 @@ const COPY = {
   checkAnswer: L('Antwort prüfen', 'Check answer', 'بررسی پاسخ'),
   correct: L('Richtig. Die CTA klärt jetzt rasch, ob ein proximaler Gefäßverschluss vorliegt.', 'Correct. CTA now rapidly determines whether a proximal vessel occlusion is present.', 'درست است. CTA اکنون به‌سرعت وجود انسداد پروگزیمال عروقی را مشخص می‌کند.'),
   incorrect: L('Noch nicht. Nach Blutungsausschluss muss bei diesem Defizit der Gefäßstatus zügig geklärt werden.', 'Not yet. After excluding haemorrhage, the vascular status must be clarified promptly in this patient.', 'هنوز نه. پس از رد خونریزی، وضعیت عروقی در این بیمار باید سریع مشخص شود.'),
-  finalLabel: L('Das Wesentliche in vier Sätzen', 'The essentials in four lines', 'اصل مطلب در چهار جمله'),
 }
 
 const LESSON_CONTENT = {
@@ -121,16 +120,17 @@ const LESSON_CONTENT = {
 }
 
 const RADIOPAEDIA_CASE = {
-  image: '/stroke/case-dense-mca-rid-45310.png',
-  url: 'https://radiopaedia.org/cases/acute-ischaemic-stroke-dense-mca-sign?lang=us',
-  title: L('Akuter linker MCA-Infarkt mit Dense-MCA-Zeichen', 'Acute left MCA infarct with a dense MCA sign', 'انفارکت حاد MCA چپ با علامت MCA هایپردنس'),
+  frames: Array.from({ length: 20 }, (_, index) => `/dissection/case-58286/${String(index + 1).padStart(2, '0')}.png`),
+  initialFrame: 9,
+  url: 'https://radiopaedia.org/cases/58286',
+  title: L('Dissektion der rechten ACI mit Pseudoaneurysma', 'Right ICA dissection with pseudoaneurysm', 'دیسکسیون ICA راست همراه با شبه‌آنوریسم'),
   text: L(
-    '80-jährige Patientin mit akuter Aphasie und rechtsseitiger Schwäche. Die NCCT zeigt ein hyperdenses linkes MCA-Segment, Verlust des Insular ribbon und beginnende Hypodensität im linken MCA-Territorium.',
-    'An 80-year-old woman with acute aphasia and right-sided weakness. NCCT shows a dense left MCA segment, loss of the insular ribbon and early low attenuation in the left MCA territory.',
-    'خانم ۸۰ ساله با آفازی حاد و ضعف سمت راست؛ NCCT سگمان هایپردنس MCA چپ، محوشدن نوار اینسولا و هیپودنسیتی اولیه در قلمرو MCA چپ را نشان می‌دهد.'
+    'CTA-Sequenz einer rechtsseitigen ACI-Dissektion unterhalb der Schädelbasis mit medial projizierendem Pseudoaneurysma. Scrolle durch die Schichten und verfolge Gefäßkaliber und Kontur.',
+    'CTA sequence of a right ICA dissection below the skull base with a medially projecting pseudoaneurysm. Scroll through the slices and follow the vessel calibre and contour.',
+    'سکانس CTA از دیسکسیون ICA راست در زیر قاعده جمجمه همراه با شبه‌آنوریسم مدیال. در برش‌ها اسکرول کنید و قطر و کانتور رگ را دنبال کنید.'
   ),
-  alt: L('Native CCT mit hyperdensem linken MCA-Zeichen', 'Non-contrast CT with a dense left MCA sign', 'CT بدون کنتراست با علامت MCA هایپردنس چپ'),
-  credit: 'Case courtesy of Gaurav Som Prakash Gupta, Radiopaedia.org · rID-45310 · CC BY-NC-SA 3.0',
+  alt: L('Axiale CTA bei Dissektion der rechten ACI', 'Axial CTA in right ICA dissection', 'CTA آگزیال در دیسکسیون ICA راست'),
+  credit: 'Case courtesy of Heather Pascoe, Radiopaedia.org · rID-58286 · CC BY-NC-SA 3.0',
 }
 
 function Icon({ name, className = '' }) {
@@ -151,7 +151,7 @@ function Section({ section, lang, open, isRead, onToggle, onReadToggle, children
   return <section id={section.id} className={`${styles.section} ${open ? styles.sectionOpen : ''} ${section.emphasis ? styles.takeHomeSection : ''}`}>
     <button type="button" className={styles.sectionHeader} aria-expanded={open} aria-controls={`${section.id}-panel`} onClick={() => onToggle(section.id)}>
       <span className={styles.sectionIcon}><Icon name={section.icon} /></span>
-      <span>{section.emphasis ? <small>{pick(COPY.finalLabel, lang)}</small> : null}<strong>{pick(section.title, lang)}</strong></span>
+      <span><strong>{pick(section.title, lang)}</strong></span>
       <span className={styles.toggle} aria-hidden="true">{open ? '−' : '+'}</span>
     </button>
     <div id={`${section.id}-panel`} hidden={!open} className={styles.sectionBody}>
@@ -187,14 +187,88 @@ function StartSection({ lang }) {
   </>
 }
 
+function CaseSequence({ lang }) {
+  const { frames, initialFrame, url, alt } = RADIOPAEDIA_CASE
+  const [frameIndex, setFrameIndex] = useState(initialFrame)
+  const viewerRef = useRef(null)
+  const touchStartRef = useRef(null)
+  const moveFrame = useCallback(delta => {
+    setFrameIndex(current => Math.min(frames.length - 1, Math.max(0, current + delta)))
+  }, [frames.length])
+
+  useEffect(() => {
+    const viewer = viewerRef.current
+    if (!viewer) return undefined
+    const handleWheel = event => {
+      const direction = event.deltaY > 0 ? 1 : -1
+      const canMove = direction > 0 ? frameIndex < frames.length - 1 : frameIndex > 0
+      if (!canMove) return
+      event.preventDefault()
+      moveFrame(direction)
+    }
+    viewer.addEventListener('wheel', handleWheel, { passive: false })
+    return () => viewer.removeEventListener('wheel', handleWheel)
+  }, [frameIndex, frames.length, moveFrame])
+
+  useEffect(() => {
+    ;[frameIndex - 1, frameIndex + 1].forEach(index => {
+      if (!frames[index]) return
+      const image = new window.Image()
+      image.src = frames[index]
+    })
+  }, [frameIndex, frames])
+
+  const labels = {
+    previous: pick(L('Vorherige Schicht', 'Previous slice', 'برش قبلی'), lang),
+    next: pick(L('Nächste Schicht', 'Next slice', 'برش بعدی'), lang),
+    slider: pick(L('Schicht auswählen', 'Select slice', 'انتخاب برش'), lang),
+    hint: pick(L('Scrollen, wischen oder Slider verwenden', 'Scroll, swipe, or use the slider', 'اسکرول کنید، بکشید یا از اسلایدر استفاده کنید'), lang),
+    open: pick(L('Fall in Radiopaedia öffnen', 'Open case in Radiopaedia', 'باز کردن کیس در Radiopaedia'), lang),
+  }
+
+  const handleKeyDown = event => {
+    if (['ArrowRight', 'ArrowDown'].includes(event.key)) moveFrame(1)
+    else if (['ArrowLeft', 'ArrowUp'].includes(event.key)) moveFrame(-1)
+    else return
+    event.preventDefault()
+  }
+
+  const handleTouchStart = event => {
+    if (event.target.closest('button, input')) return
+    const touch = event.touches[0]
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY }
+  }
+
+  const handleTouchEnd = event => {
+    const start = touchStartRef.current
+    touchStartRef.current = null
+    if (!start) return
+    const touch = event.changedTouches[0]
+    const deltaX = touch.clientX - start.x
+    const deltaY = touch.clientY - start.y
+    if (Math.abs(deltaX) >= 35 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) moveFrame(deltaX < 0 ? 1 : -1)
+  }
+
+  return <div ref={viewerRef} className={styles.caseSequence} tabIndex={0} onKeyDown={handleKeyDown} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} onTouchCancel={() => { touchStartRef.current = null }} aria-label={`${pick(alt, lang)} · ${labels.hint}`}>
+    <a className={styles.caseImage} href={url} target="_blank" rel="noopener noreferrer" aria-label={labels.open}>
+      <Image src={frames[frameIndex]} alt={pick(alt, lang)} width={512} height={512} priority={frameIndex === initialFrame} />
+      <span className={styles.caseCounter}>{String(frameIndex + 1).padStart(2, '0')} / {frames.length}</span>
+      <span className={styles.caseOpen}>{labels.open} ↗</span>
+    </a>
+    <div className={styles.caseControls}>
+      <button type="button" onClick={() => moveFrame(-1)} disabled={frameIndex === 0} aria-label={labels.previous}>‹</button>
+      <input type="range" min="0" max={frames.length - 1} value={frameIndex} onChange={event => setFrameIndex(Number(event.target.value))} aria-label={labels.slider} />
+      <button type="button" onClick={() => moveFrame(1)} disabled={frameIndex === frames.length - 1} aria-label={labels.next}>›</button>
+    </div>
+    <small className={styles.caseHint}>↕ {labels.hint}</small>
+  </div>
+}
+
 function RadiopaediaCase({ lang }) {
   return <article className={styles.caseStudy}>
-    <a className={styles.caseImage} href={RADIOPAEDIA_CASE.url} target="_blank" rel="noopener noreferrer">
-      <Image src={RADIOPAEDIA_CASE.image} alt={pick(RADIOPAEDIA_CASE.alt, lang)} width={612} height={612} />
-      <span>{pick(L('Fall in Radiopaedia öffnen', 'Open case in Radiopaedia', 'باز کردن کیس در Radiopaedia'), lang)} ↗</span>
-    </a>
+    <CaseSequence lang={lang} />
     <div className={styles.caseBody}>
-      <small>RADIOPAEDIA · rID 45310</small>
+      <small>RADIOPAEDIA · rID 58286 · CTA SEQUENCE</small>
       <h3>{pick(RADIOPAEDIA_CASE.title, lang)}</h3>
       <p>{pick(RADIOPAEDIA_CASE.text, lang)}</p>
       <footer>{RADIOPAEDIA_CASE.credit}</footer>
@@ -203,14 +277,14 @@ function RadiopaediaCase({ lang }) {
 }
 
 function ContentSection({ id, lang }) {
-  if (id === 'fall') return <><p className={styles.lead}>{pick(L('Erkenne das frühe CT-Zeichen, bevor du die nächste Untersuchung auswählst.', 'Recognise the early CT sign before selecting the next examination.', 'پیش از انتخاب بررسی بعدی، علامت اولیه CT را شناسایی کنید.'), lang)}</p><RadiopaediaCase lang={lang} /><MiniCheck lang={lang} /></>
+  if (id === 'fall') return <><p className={styles.lead}>{pick(L('Scrolle wie an der Workstation durch eine echte Bildsequenz und achte auf die Gefäßkontur.', 'Scroll through a real image sequence as you would at the workstation and follow the vessel contour.', 'مانند ورک‌استیشن در یک سکانس واقعی اسکرول کنید و کانتور رگ را دنبال کنید.'), lang)}</p><RadiopaediaCase lang={lang} /><MiniCheck lang={lang} /></>
   const content = LESSON_CONTENT[id]
   return <>
     {content.lead ? <p className={styles.lead}>{pick(content.lead, lang)}</p> : null}
     {content.cards ? <div className={styles.learningRows}>{content.cards.map(([number, title, text]) => <article key={number}><span>{number}</span><div><h3>{pick(title, lang)}</h3><p>{pick(text, lang)}</p></div></article>)}</div> : null}
     {content.metrics ? <div className={styles.metrics}>{content.metrics.map(([name, text]) => <article key={name}><strong>{name}</strong><span>{pick(text, lang)}</span></article>)}</div> : null}
     {content.report ? <div className={styles.report}><span>{pick(L('So klingt ein klarer Akutbefund', 'A clear acute report', 'نمونه یک گزارش حاد روشن'), lang)}</span><ol>{content.report.map(line => <li key={pick(line, lang)}>{pick(line, lang)}</li>)}</ol></div> : null}
-    {content.points ? <div className={styles.takeHomePanel}><header><Icon name="spark" /><div><small>{pick(COPY.finalLabel, lang)}</small><h3>Take Home Message</h3></div></header><ol className={styles.takeHome}>{content.points.map((point, index) => <li key={pick(point, lang)}><span>{String(index + 1).padStart(2, '0')}</span><strong>{pick(point, lang)}</strong></li>)}</ol></div> : null}
+    {content.points ? <div className={styles.takeHomePanel}><header><Icon name="spark" /><h3>Take Home Message</h3></header><ul className={styles.takeHome}>{content.points.map(point => <li key={pick(point, lang)}><span aria-hidden="true"><Icon name="check" /></span><strong>{pick(point, lang)}</strong></li>)}</ul></div> : null}
     {content.note ? <aside className={styles.keyPoint}><Icon name="check" /><p>{pick(content.note, lang)}</p></aside> : null}
   </>
 }
@@ -224,9 +298,9 @@ function MobileLearningPath({ lang, openId, readSections, onSelect }) {
   return <div className={styles.mobileLearningPath}>
     {panelOpen ? <section id="mobile-learning-path-panel" className={styles.mobilePathPanel} role="dialog" aria-label={pick(COPY.path, lang)}>
       <header><div><small>{pick(COPY.progress, lang)}</small><strong>{readSections.size} / {SECTION_COPY.length}</strong></div><button type="button" onClick={() => setPanelOpen(false)} aria-label={pick(COPY.close, lang)}>×</button></header>
-      <nav>{SECTION_COPY.map(section => <button type="button" key={section.id} className={`${openId === section.id ? styles.mobilePathCurrent : ''} ${section.emphasis ? styles.mobilePathFinal : ''}`} onClick={() => selectFromPanel(section.id)} aria-current={openId === section.id ? 'location' : undefined}><span className={styles.mobilePathItemIcon}><Icon name={section.icon} /></span><span><strong>{pick(section.short, lang)}</strong><small>{pick(section.title, lang)}</small></span><i aria-hidden="true">{readSections.has(section.id) ? '✓' : ''}</i></button>)}</nav>
+      <nav>{SECTION_COPY.map(section => <button type="button" key={section.id} className={`${openId === section.id ? styles.mobilePathCurrent : ''} ${section.emphasis ? styles.mobilePathFinal : ''}`} onClick={() => selectFromPanel(section.id)} aria-current={openId === section.id ? 'location' : undefined}><span className={styles.mobilePathItemIcon}><Icon name={section.icon} /></span><span><strong>{pick(section.title, lang)}</strong></span><i aria-hidden="true">{readSections.has(section.id) ? '✓' : ''}</i></button>)}</nav>
     </section> : null}
-    <button type="button" className={styles.mobilePathButton} onClick={() => setPanelOpen(value => !value)} aria-expanded={panelOpen} aria-controls="mobile-learning-path-panel"><span className={styles.mobileProgressRing} style={{ '--mobile-progress': `${progress}deg` }}><b>{readSections.size}</b><small>/{SECTION_COPY.length}</small></span><span className={styles.mobileCurrentIcon}><Icon name={activeSection.icon} /></span><span className={styles.mobilePathLabel}><strong>{pick(COPY.path, lang)}</strong><small>{pick(activeSection.short, lang)}</small></span></button>
+    <button type="button" className={styles.mobilePathButton} onClick={() => setPanelOpen(value => !value)} aria-expanded={panelOpen} aria-controls="mobile-learning-path-panel"><span className={styles.mobileProgressRing} style={{ '--mobile-progress': `${progress}deg` }}><b>{readSections.size}</b><small>/{SECTION_COPY.length}</small></span><span className={styles.mobileCurrentIcon}><Icon name={activeSection.icon} /></span><span className={styles.mobilePathLabel}><strong>{pick(COPY.path, lang)}</strong><small>{pick(activeSection.title, lang)}</small></span></button>
   </div>
 }
 
@@ -260,7 +334,7 @@ export default function TestLearningPage() {
     </header>
 
     <div className={styles.layout}>
-      <aside className={styles.sidebar}><h2>{pick(COPY.path, lang)}</h2><nav>{SECTION_COPY.map(section => <button type="button" key={section.id} className={`${openId === section.id ? styles.activeSideItem : ''} ${section.emphasis ? styles.finalSideItem : ''}`} onClick={() => selectSection(section.id)} aria-current={openId === section.id ? 'location' : undefined} aria-label={`${pick(COPY.open, lang)}: ${pick(section.short, lang)}`}><span className={styles.sideIcon}><Icon name={section.icon} /></span><strong>{pick(section.short, lang)}</strong></button>)}</nav></aside>
+      <aside className={styles.sidebar}><h2>{pick(COPY.path, lang)}</h2><nav>{SECTION_COPY.map(section => <button type="button" key={section.id} className={`${openId === section.id ? styles.activeSideItem : ''} ${section.emphasis ? styles.finalSideItem : ''}`} onClick={() => selectSection(section.id)} aria-current={openId === section.id ? 'location' : undefined} aria-label={`${pick(COPY.open, lang)}: ${pick(section.title, lang)}`}><span className={styles.sideIcon}><Icon name={section.icon} /></span><strong>{pick(section.title, lang)}</strong></button>)}</nav></aside>
       <article className={styles.lesson}>{SECTION_COPY.map(section => <Section key={section.id} section={section} lang={lang} open={openId === section.id} isRead={readSections.has(section.id)} onToggle={selectSection} onReadToggle={toggleSectionRead}>{section.id === 'start' ? <StartSection lang={lang} /> : <ContentSection id={section.id} lang={lang} />}</Section>)}</article>
     </div>
     <MobileLearningPath lang={lang} openId={openId} readSections={readSections} onSelect={selectSection} />
