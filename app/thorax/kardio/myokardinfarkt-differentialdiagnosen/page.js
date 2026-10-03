@@ -125,7 +125,61 @@ const REFERENCES = [
   ['International Expert Consensus on Takotsubo Syndrome', 'https://academic.oup.com/eurheartj/article/39/22/2047/5025411'],
   ['AHA Scientific Statement: Diagnosis and Management of Cardiac Sarcoidosis', 'https://www.ahajournals.org/doi/10.1161/CIR.0000000000001240'],
   ['AHA Standardized Myocardial Segmentation and Nomenclature', 'https://www.ahajournals.org/doi/10.1161/hc0402.102975'],
+  ['Radiopaedia case 33052 · Takotsubo cardiomyopathy', 'https://radiopaedia.org/cases/33052'],
+  ['Radiopaedia case 77023 · Acute myocarditis', 'https://radiopaedia.org/cases/77023'],
+  ['Radiopaedia case 74548 · Cardiac sarcoidosis', 'https://radiopaedia.org/cases/74548'],
 ]
+
+const RADIOPAEDIA_CASES = {
+  takotsubo: {
+    title: L('Radiopaedia-Fall: atypisches Takotsubo-Syndrom', 'Radiopaedia case: atypical Takotsubo syndrome', 'کیس Radiopaedia: تاکوتسوبوی آتیپیک'),
+    patient: L('55-jährige Frau', '55-year-old woman', 'خانم ۵۵ ساله'),
+    presentation: L('Im Echo Verdacht auf Ventrikelaneurysma beziehungsweise gedeckte Ruptur.', 'Echocardiography raised concern for a ventricular aneurysm or contained rupture.', 'در اکوکاردیوگرافی شک به آنوریسم بطنی یا پارگی مهارشده مطرح شد.'),
+    findings: [
+      L('Cine: dyskinetische mittlere Vorderwand mit systolischer Auswärtsbewegung.', 'Cine: dyskinetic mid-anterior wall with systolic outward bulging.', 'Cine: دیسکینزی دیواره قدامی میانی همراه با برجسته‌شدن سیستولی به خارج.'),
+      L('STIR: korrespondierendes Ödem; kein Thrombus und kein myokardiales LGE.', 'STIR: matching oedema; no thrombus and no myocardial LGE.', 'STIR: ادم متناظر؛ بدون ترومبوس و بدون LGE میوکارد.'),
+      L('Verlauf: Wandbewegungsstörung und Perikarderguss nach vier Wochen rückläufig.', 'Follow-up: wall-motion abnormality and pericardial effusion resolved after four weeks.', 'پیگیری: اختلال حرکت دیواره و افیوژن پریکارد پس از چهار هفته برطرف شدند.'),
+    ],
+    teaching: L('Transiente Dysfunktion außerhalb eines Koronarterritoriums + Ödem + fehlendes LGE stützen Takotsubo.', 'Transient dysfunction beyond one coronary territory + oedema + absent LGE support Takotsubo.', 'اختلال گذرا فراتر از یک قلمرو کرونری همراه با ادم و نبود LGE از تاکوتسوبو حمایت می‌کند.'),
+    image: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/takotsubo-33052-cine-2ch.jpg',
+    alt: L('Zweikammer-Cine-SSFP aus einem Radiopaedia-Fall mit atypischem Takotsubo-Syndrom', 'Two-chamber cine SSFP from a Radiopaedia case of atypical Takotsubo syndrome', 'Cine SSFP دوحفره‌ای از کیس Radiopaedia تاکوتسوبوی آتیپیک'),
+    imageLabel: '2-chamber Cine SSFP',
+    url: 'https://radiopaedia.org/cases/33052/studies/34073?lang=us',
+    credit: 'Case courtesy of Yune Kwong, Radiopaedia.org · rID-33052 · CC BY-NC-SA 3.0',
+  },
+  myocarditis: {
+    title: L('Radiopaedia-Fall: akute Myoperikarditis', 'Radiopaedia case: acute myopericarditis', 'کیس Radiopaedia: میوپریکاردیت حاد'),
+    patient: L('30-jähriger Mann', '30-year-old man', 'آقای ۳۰ ساله'),
+    presentation: L('Thoraxschmerz nach akuter Gastroenteritis, diffuse ST-Hebungen und deutlich erhöhtes Troponin.', 'Chest pain after acute gastroenteritis, diffuse ST elevation, and markedly elevated troponin.', 'درد قفسه سینه پس از گاستروانتریت حاد، بالا رفتن منتشر ST و افزایش واضح تروپونین.'),
+    findings: [
+      L('T2/STIR: Ödem der lateralen LV-Wand.', 'T2/STIR: oedema of the lateral LV wall.', 'T2/STIR: ادم دیواره لترال بطن چپ.'),
+      L('LGE: fleckig midmyokardial und subepikardial, am stärksten inferolateral.', 'LGE: patchy mid-wall and subepicardial enhancement, most pronounced inferolaterally.', 'LGE: الگوی لکه‌ای میدوال و ساب‌اپیکاردیال، با بیشترین شدت در اینفرولاترال.'),
+      L('Kleiner Erguss und perikardiales Enhancement stützen die Myoperikarditis.', 'A small effusion and pericardial enhancement support myopericarditis.', 'افیوژن کوچک و enhancement پریکارد از میوپریکاردیت حمایت می‌کنند.'),
+    ],
+    teaching: L('Ein T2-basiertes und ein T1-basiertes Zeichen gemeinsam bewerten.', 'Assess a T2-based and a T1-based marker together.', 'یک معیار مبتنی بر T2 و یک معیار مبتنی بر T1 را با هم ارزیابی کنید.'),
+    image: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023-lge-4ch.jpeg',
+    alt: L('Vierkammer-LGE aus einem Radiopaedia-Fall mit akuter Myoperikarditis', 'Four-chamber LGE from a Radiopaedia case of acute myopericarditis', 'LGE چهارحفره‌ای از کیس Radiopaedia میوپریکاردیت حاد'),
+    imageLabel: '4-chamber LGE',
+    url: 'https://radiopaedia.org/cases/77023/studies/88967?lang=us',
+    credit: 'Case courtesy of Tamara Razon Cuenza, Radiopaedia.org · rID-77023 · CC BY-NC-SA 3.0',
+  },
+  sarcoidosis: {
+    title: L('Radiopaedia-Fall: kardiale Sarkoidose', 'Radiopaedia case: cardiac sarcoidosis', 'کیس Radiopaedia: سارکوئیدوز قلبی'),
+    patient: L('50-jährige Frau', '50-year-old woman', 'خانم ۵۰ ساله'),
+    presentation: L('Bekannte Sarkoidose, ventrikuläre Extrasystolen und vorausgegangene Endomyokardbiopsie.', 'Known sarcoidosis, ventricular extrasystoles, and previous endomyocardial biopsy.', 'سارکوئیدوز شناخته‌شده، اکستراسیستول بطنی و سابقه بیوپسی اندومیوکارد.'),
+    findings: [
+      L('LGE: fleckig intramyokardial und subepikardial in inferioren midventrikulären/apikalen Segmenten.', 'LGE: patchy intramyocardial and subepicardial enhancement in inferior mid-ventricular/apical segments.', 'LGE: الگوی لکه‌ای داخل‌میوکاردی و ساب‌اپیکاردیال در سگمنت‌های اینفریور میدونتریکولار و اپیکال.'),
+      L('Aktuell kein Ödem; natives T1, T2 und ECV innerhalb der lokalen Referenzbereiche.', 'No current oedema; native T1, T2, and ECV were within local reference ranges.', 'در حال حاضر ادم وجود نداشت و native T1، T2 و ECV در محدوده مرجع محلی بودند.'),
+      L('Die Biopsie zeigte eine granulomatöse Entzündung und bestätigte die Diagnose.', 'Biopsy showed granulomatous inflammation and established the diagnosis.', 'بیوپسی التهاب گرانولوماتوز را نشان داد و تشخیص را تأیید کرد.'),
+    ],
+    teaching: L('LGE kann als Narbe fortbestehen, obwohl die aktuelle Entzündungsaktivität abgeklungen ist.', 'LGE may persist as scar after current inflammatory activity has resolved.', 'LGE می‌تواند به‌صورت اسکار باقی بماند، حتی وقتی فعالیت التهابی فعلی فروکش کرده است.'),
+    image: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/cardiac-sarcoidosis-74548-lge-2ch.jpg',
+    alt: L('Zweikammer-LGE aus einem Radiopaedia-Fall mit kardialer Sarkoidose', 'Two-chamber LGE from a Radiopaedia case of cardiac sarcoidosis', 'LGE دوحفره‌ای از کیس Radiopaedia سارکوئیدوز قلبی'),
+    imageLabel: '2-chamber inversion-recovery LGE',
+    url: 'https://radiopaedia.org/cases/74548/studies/85535?lang=us',
+    credit: 'Case courtesy of Joachim Feger, Radiopaedia.org · rID-74548 · CC BY-NC-SA 3.0',
+  },
+}
 
 const LessonContext = createContext(null)
 
@@ -161,6 +215,26 @@ function PatternExplorer({ lang }) {
       <div><h4>{pick(selected.title, lang)}</h4><div className={styles.patternInfo}><section><h5>{pick(L('LGE-Charakteristik', 'LGE characteristics', 'ویژگی‌های LGE'), lang)}</h5><p>{pick(selected.lge, lang)}</p></section><section><h5>{pick(L('Wichtige Punkte', 'Important points', 'نکات مهم'), lang)}</h5><ul>{selected.points.map(point => <li key={pick(point, lang)}>{pick(point, lang)}</li>)}</ul></section></div></div>
     </article>
   </section>
+}
+
+function RadiopaediaCase({ caseId, lang }) {
+  const data = RADIOPAEDIA_CASES[caseId]
+  const t = value => pick(value, lang)
+  if (!data) return null
+
+  return <article className={styles.radiopaediaCase} aria-labelledby={`${caseId}-case-title`}>
+    <a className={styles.caseImageLink} href={data.url} target="_blank" rel="noopener noreferrer" aria-label={t(L('Fall in Radiopaedia öffnen', 'Open case in Radiopaedia', 'باز کردن کیس در Radiopaedia'))}>
+      <Image src={data.image} alt={t(data.alt)} width={760} height={640} />
+      <span>{data.imageLabel}</span>
+    </a>
+    <div className={styles.caseContent}>
+      <header><small>RADIOPAEDIA CASE</small><h3 id={`${caseId}-case-title`}>{t(data.title)}</h3><strong>{t(data.patient)}</strong><p>{t(data.presentation)}</p></header>
+      <ul>{data.findings.map(finding => <li key={t(finding)}>{t(finding)}</li>)}</ul>
+      <aside><b>{t(L('Lehrpunkt', 'Teaching point', 'نکته آموزشی'))}</b><p>{t(data.teaching)}</p></aside>
+      <a className={styles.caseSourceLink} href={data.url} target="_blank" rel="noopener noreferrer">{t(L('Originalfall in Radiopaedia öffnen', 'Open the original Radiopaedia case', 'باز کردن کیس اصلی در Radiopaedia'))}<span aria-hidden="true">↗</span></a>
+      <p className={styles.caseCredit}>{data.credit}</p>
+    </div>
+  </article>
 }
 
 function LgeBasics({ lang }) {
@@ -272,6 +346,7 @@ function LessonContent({ lang }) {
 
     <Section id="takotsubo" title={t(SECTION_LABELS.takotsubo)}>
       <div className={styles.diseaseFeature}><figure><Image src="/thorax/kardio/myokardinfarkt-differentialdiagnosen/synthetic-takotsubo-cine.jpg" alt={t(PATTERNS[1].alt)} width={1254} height={1254} /><figcaption>{t(COPY.synthetic)}</figcaption></figure><div><small>{t(L('CINE ZUERST', 'CINE FIRST', 'ابتدا CINE'))}</small><h3>{t(L('Ballooning statt Koronarterritorium', 'Ballooning beyond one coronary territory', 'بالونینگ فراتر از قلمرو کرونر'))}</h3><p>{t(L('Cine zeigt eine vorübergehende regionale LV-Dysfunktion. Das Muster ist am häufigsten apikal, kann aber auch midventrikulär, basal (invers) oder fokal sein und überschreitet meist die Grenzen eines einzelnen Koronarterritoriums.', 'Cine shows transient regional LV dysfunction. The pattern is most often apical, but may also be mid-ventricular, basal (inverted), or focal, and usually extends beyond the boundaries of a single coronary territory.', 'Cine اختلال گذرای موضعی عملکرد بطن چپ را نشان می‌دهد. الگو اغلب اپیکال است، اما می‌تواند میدونتریکولار، بازال (معکوس) یا فوکال نیز باشد و معمولاً از مرزهای یک قلمرو کرونری منفرد فراتر می‌رود.'))}</p><ul><li>{t(L('T2: Ödem in den dysfunktionellen Segmenten möglich.', 'T2: oedema may be present in the dysfunctional segments.', 'T2: ممکن است در سگمنت‌های دچار اختلال حرکتی ادم وجود داشته باشد.'))}</li><li>{t(L('LGE: typischerweise nicht nachweisbar.', 'LGE: typically absent.', 'LGE: معمولاً وجود ندارد.'))}</li><li>{t(L('Komplikationen: LV-/RV-Beteiligung, LVOT-Obstruktion, Mitralinsuffizienz und intrakavitäre Thromben prüfen.', 'Complications: assess LV/RV involvement, LVOT obstruction, mitral regurgitation, and intracavitary thrombi.', 'عوارض: درگیری بطن چپ/راست، انسداد LVOT، نارسایی میترال و ترومبوس‌های داخل‌حفره‌ای بررسی شوند.'))}</li></ul></div></div>
+      <RadiopaediaCase caseId="takotsubo" lang={lang} />
     </Section>
 
     <Section id="myokarditis" title={t(SECTION_LABELS.myokarditis)}>
@@ -285,10 +360,12 @@ function LessonContent({ lang }) {
         <article><header><b>T1</b><div><small>{t(L('MYOKARDSCHÄDIGUNG', 'MYOCARDIAL INJURY', 'آسیب میوکارد'))}</small><h3>{t(L('T1-basiertes Kriterium', 'T1-based criterion', 'معیار مبتنی بر T1'))}</h3></div></header><p>{t(L('Erfasst Zellschädigung und Expansion des Extrazellulärraums.', 'Detects cellular injury and expansion of the extracellular space.', 'آسیب سلولی و افزایش فضای خارج‌سلولی را نشان می‌دهد.'))}</p><ul><li>{t(L('Erhöhtes natives T1 im T1-Mapping', 'Elevated native T1 on T1 mapping', 'افزایش native T1 در T1 mapping'))}</li><li>{t(L('Erhöhtes Extrazellulärvolumen (ECV)', 'Elevated extracellular volume (ECV)', 'افزایش حجم خارج‌سلولی (ECV)'))}</li><li>{t(L('Nichtischämisches LGE: meist subepikardial oder midmyokardial, häufig inferolateral', 'Non-ischaemic LGE: usually subepicardial or mid-wall, often inferolateral', 'LGE غیرایسکمیک: معمولاً ساب‌اپیکاردیال یا میدوال و اغلب اینفرولاترال'))}</li></ul></article>
       </div>
       <aside className={styles.myocarditisSupport}><strong>{t(L('Unterstützende Befunde – keine Hauptkriterien', 'Supportive findings—not main criteria', 'یافته‌های حمایتی؛ نه معیارهای اصلی'))}</strong><p>{t(L('Cine: globale oder regionale LV-Dysfunktion. Perikarderguss, perikardiales Ödem oder perikardiales LGE sprechen für eine begleitende Perikarditis.', 'Cine: global or regional LV dysfunction. Pericardial effusion, pericardial oedema, or pericardial LGE suggests concomitant pericarditis.', 'Cine: اختلال عملکرد منتشر یا موضعی بطن چپ. افیوژن، ادم یا LGE پریکارد به نفع پریکاردیت همراه است.'))}</p></aside>
+      <RadiopaediaCase caseId="myocarditis" lang={lang} />
     </Section>
 
     <Section id="sarkoidose" title={t(SECTION_LABELS.sarkoidose)}>
       <div className={styles.diseaseFeature}><figure><Image src="/thorax/kardio/myokardinfarkt-differentialdiagnosen/synthetic-sarcoidosis-lge.jpg" alt={t(PATTERNS[3].alt)} width={1254} height={1254} /><figcaption>{t(COPY.synthetic)}</figcaption></figure><div><small>{t(L('MULTIFOKALES LGE', 'MULTIFOCAL LGE', 'LGE چندکانونی'))}</small><h3>{t(L('Fleckige Narbe, nicht ein Koronarterritorium', 'Patchy scar beyond a coronary territory', 'اسکار لکه‌ای خارج از قلمرو کرونر'))}</h3><p>{t(L('Typisch ist ein fleckiges, multifokales LGE, häufig basal-septal oder lateral sowie midmyokardial beziehungsweise subepikardial. Auch transmurale Herde und eine RV-Beteiligung sind möglich.', 'Patchy, multifocal LGE is typical, often basal-septal or lateral and mid-wall or subepicardial. Transmural foci and RV involvement may also occur.', 'الگوی تیپیک، LGE لکه‌ای و چندکانونی است که اغلب در بخش بازال‌سپتال یا لترال و به‌صورت میدوال یا ساب‌اپیکاردیال دیده می‌شود. کانون‌های ترانس‌مورال و درگیری بطن راست نیز ممکن‌اند.'))}</p><ul><li>{t(L('LGE quantifiziert vor allem die Narbenlast und ist prognostisch relevant.', 'LGE primarily quantifies scar burden and has prognostic relevance.', 'LGE در درجهٔ اول بار اسکار را نشان می‌دهد و ارزش پیش‌آگهی دارد.'))}</li><li>{t(L('FDG-PET ergänzt die Beurteilung der entzündlichen Aktivität.', 'FDG-PET complements the assessment of inflammatory activity.', 'FDG-PET ارزیابی فعالیت التهابی را تکمیل می‌کند.'))}</li><li>{t(L('Kein einzelnes LGE-Muster ist beweisend: Klinik, Rhythmusdiagnostik und extrakardiale Befunde mitbewerten.', 'No single LGE pattern is diagnostic: integrate the clinical presentation, rhythm assessment, and extracardiac findings.', 'هیچ الگوی منفرد LGE به‌تنهایی تشخیصی نیست؛ تابلوی بالینی، بررسی ریتم و یافته‌های خارج‌قلبی نیز باید در نظر گرفته شوند.'))}</li></ul></div></div>
+      <RadiopaediaCase caseId="sarcoidosis" lang={lang} />
     </Section>
 
     <Section id="infarkt" title={t(SECTION_LABELS.infarkt)}>
