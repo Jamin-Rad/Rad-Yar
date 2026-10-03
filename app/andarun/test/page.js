@@ -7,10 +7,7 @@ import TestLearningPage from './TestLearningPage'
 export const metadata = {
   title: 'Test · Lernseiten | Andarun',
   description: 'Dauerhafte Testseite für die Gestaltung zukünftiger RadYar-Lernseiten.',
-  robots: {
-    index: false,
-    follow: false,
-  },
+  robots: { index: false, follow: false },
 }
 
 export const dynamic = 'force-dynamic'

@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -7,56 +8,21 @@ import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress
 import styles from './page.module.css'
 
 const L = (de, en, fa) => ({ de, en, fa })
+const pick = (value, lang) => typeof value === 'string' ? value : value[lang] || value.de
 
 const SECTION_COPY = [
-  {
-    id: 'start',
-    short: L('Start', 'Start', 'شروع'),
-    title: L('Der 5-Minuten-Workflow', 'The five-minute workflow', 'روند پنج‌دقیقه‌ای'),
-    icon: 'brain',
-  },
-  {
-    id: 'ncct',
-    short: 'NCCT',
-    title: L('NCCT – Blutung und Frühzeichen', 'NCCT — haemorrhage and early signs', 'NCCT — خونریزی و علائم اولیه'),
-    icon: 'scan',
-  },
-  {
-    id: 'cta',
-    short: 'CTA',
-    title: L('CTA – den Verschluss lokalisieren', 'CTA — localise the occlusion', 'CTA — تعیین محل انسداد'),
-    icon: 'vessel',
-  },
-  {
-    id: 'perfusion',
-    short: L('Perfusion', 'Perfusion', 'پرفیوژن'),
-    title: L('Perfusion – Kern und Penumbra', 'Perfusion — core and penumbra', 'پرفیوژن — هسته و پنومبرا'),
-    icon: 'chart',
-  },
-  {
-    id: 'entscheidung',
-    short: L('Entscheidung', 'Decision', 'تصمیم'),
-    title: L('Die Befunde zusammenführen', 'Bring the findings together', 'جمع‌بندی یافته‌ها'),
-    icon: 'decision',
-  },
-  {
-    id: 'fall',
-    short: L('Mini-Fall', 'Mini case', 'مینی‌کیس'),
-    title: L('Entscheidung unter Zeitdruck', 'A time-critical decision', 'تصمیم‌گیری در شرایط حساس زمانی'),
-    icon: 'case',
-  },
-  {
-    id: 'merksaetze',
-    short: L('Merksätze', 'Take-home', 'نکات کلیدی'),
-    title: L('Was im Dienst bleiben muss', 'What to remember on call', 'آنچه باید در کشیک به یاد بماند'),
-    icon: 'check',
-  },
+  { id: 'start', short: L('Start', 'Start', 'شروع'), title: L('Der 5-Minuten-Workflow', 'The five-minute workflow', 'روند پنج‌دقیقه‌ای'), icon: 'brain' },
+  { id: 'ncct', short: 'NCCT', title: L('NCCT – Blutung und Frühzeichen', 'NCCT — haemorrhage and early signs', 'NCCT — خونریزی و علائم اولیه'), icon: 'scan' },
+  { id: 'cta', short: 'CTA', title: L('CTA – den Verschluss lokalisieren', 'CTA — localise the occlusion', 'CTA — تعیین محل انسداد'), icon: 'vessel' },
+  { id: 'perfusion', short: L('Perfusion', 'Perfusion', 'پرفیوژن'), title: L('Perfusion – Kern und Penumbra', 'Perfusion — core and penumbra', 'پرفیوژن — هسته و پنومبرا'), icon: 'chart' },
+  { id: 'entscheidung', short: L('Entscheidung', 'Decision', 'تصمیم'), title: L('Die Befunde zusammenführen', 'Bring the findings together', 'جمع‌بندی یافته‌ها'), icon: 'decision' },
+  { id: 'fall', short: L('Radiopaedia-Fall', 'Radiopaedia case', 'کیس Radiopaedia'), title: L('Bildbefund unter Zeitdruck', 'Imaging under time pressure', 'تفسیر تصویر در شرایط حساس زمانی'), icon: 'case' },
+  { id: 'take-home', short: 'Take Home Message', title: 'Take Home Message', icon: 'spark', emphasis: true },
 ]
 
 const SECTION_IDS = SECTION_COPY.map(section => section.id)
 
 const COPY = {
-  breadcrumb: L('Akuter ischämischer Schlaganfall', 'Acute ischaemic stroke', 'سکته ایسکمیک حاد'),
   title: L('Akuter ischämischer Schlaganfall', 'Acute ischaemic stroke', 'سکته ایسکمیک حاد'),
   mcq: L('MCQ starten', 'Start MCQs', 'شروع MCQ'),
   flashcards: L('Flashcards', 'Flashcards', 'فلش‌کارت‌ها'),
@@ -107,6 +73,7 @@ const COPY = {
   checkAnswer: L('Antwort prüfen', 'Check answer', 'بررسی پاسخ'),
   correct: L('Richtig. Die CTA klärt jetzt rasch, ob ein proximaler Gefäßverschluss vorliegt.', 'Correct. CTA now rapidly determines whether a proximal vessel occlusion is present.', 'درست است. CTA اکنون به‌سرعت وجود انسداد پروگزیمال عروقی را مشخص می‌کند.'),
   incorrect: L('Noch nicht. Nach Blutungsausschluss muss bei diesem Defizit der Gefäßstatus zügig geklärt werden.', 'Not yet. After excluding haemorrhage, the vascular status must be clarified promptly in this patient.', 'هنوز نه. پس از رد خونریزی، وضعیت عروقی در این بیمار باید سریع مشخص شود.'),
+  finalLabel: L('Das Wesentliche in vier Sätzen', 'The essentials in four lines', 'اصل مطلب در چهار جمله'),
 }
 
 const LESSON_CONTENT = {
@@ -147,10 +114,7 @@ const LESSON_CONTENT = {
     ],
     note: L('Kommunikation ist Teil des Befunds: kritischen Verschluss und Zeitpunkt der Übergabe dokumentieren.', 'Communication is part of the report: document the critical occlusion and time of handover.', 'ارتباط بخشی از گزارش است: انسداد بحرانی و زمان اطلاع‌رسانی را ثبت کنید.'),
   },
-  fall: {
-    lead: L('Trainiere die Reihenfolge, bevor du dich an Detailbefunden festhältst.', 'Train the sequence before becoming absorbed in detail.', 'پیش از درگیرشدن با جزئیات، ترتیب کار را تمرین کنید.'),
-  },
-  merksaetze: {
+  'take-home': {
     points: [
       L('NCCT: Blutung und frühe Parenchymzeichen.', 'NCCT: haemorrhage and early parenchymal signs.', 'NCCT: خونریزی و علائم اولیه پارانشیم.'),
       L('CTA: genaue Verschlusshöhe und Gefäßweg.', 'CTA: exact occlusion level and vascular route.', 'CTA: سطح دقیق انسداد و مسیر عروقی.'),
@@ -158,6 +122,19 @@ const LESSON_CONTENT = {
       L('Der Befund endet mit einer klaren Handlungsbotschaft.', 'The report ends with a clear action message.', 'گزارش با یک پیام عملی روشن پایان می‌یابد.'),
     ],
   },
+}
+
+const RADIOPAEDIA_CASE = {
+  image: '/stroke/case-dense-mca-rid-45310.png',
+  url: 'https://radiopaedia.org/cases/acute-ischaemic-stroke-dense-mca-sign?lang=us',
+  title: L('Akuter linker MCA-Infarkt mit Dense-MCA-Zeichen', 'Acute left MCA infarct with a dense MCA sign', 'انفارکت حاد MCA چپ با علامت MCA هایپردنس'),
+  text: L(
+    '80-jährige Patientin mit akuter Aphasie und rechtsseitiger Schwäche. Die NCCT zeigt ein hyperdenses linkes MCA-Segment, Verlust des Insular ribbon und beginnende Hypodensität im linken MCA-Territorium.',
+    'An 80-year-old woman with acute aphasia and right-sided weakness. NCCT shows a dense left MCA segment, loss of the insular ribbon and early low attenuation in the left MCA territory.',
+    'خانم ۸۰ ساله با آفازی حاد و ضعف سمت راست؛ NCCT سگمان هایپردنس MCA چپ، محوشدن نوار اینسولا و هیپودنسیتی اولیه در قلمرو MCA چپ را نشان می‌دهد.'
+  ),
+  alt: L('Native CCT mit hyperdensem linken MCA-Zeichen', 'Non-contrast CT with a dense left MCA sign', 'CT بدون کنتراست با علامت MCA هایپردنس چپ'),
+  credit: 'Case courtesy of Gaurav Som Prakash Gupta, Radiopaedia.org · rID-45310 · CC BY-NC-SA 3.0',
 }
 
 function Icon({ name, className = '' }) {
@@ -169,112 +146,103 @@ function Icon({ name, className = '' }) {
     decision: <><circle cx="8" cy="7" r="2.2"/><circle cx="16" cy="7" r="2.2"/><path d="M3.5 19v-2.2A3.8 3.8 0 0 1 7.3 13h1.4a3.8 3.8 0 0 1 3.8 3.8V19M12.5 19v-2.2A3.8 3.8 0 0 1 16.3 13h.4a3.8 3.8 0 0 1 3.8 3.8V19"/></>,
     case: <><path d="M6 4h12v16H6zM9 4V2h6v2M9 9h6M9 13h6M9 17h4"/></>,
     check: <><path d="m5 12 4 4L19 6"/><circle cx="12" cy="12" r="9"/></>,
+    spark: <><path d="M12 2l1.5 5.1L19 9l-5.5 1.9L12 16l-1.5-5.1L5 9l5.5-1.9z"/><path d="m18.5 15 .8 2.7L22 18.5l-2.7.8-.8 2.7-.8-2.7-2.7-.8 2.7-.8z"/></>,
   }
   return <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]}</svg>
 }
 
 function Section({ section, lang, open, isRead, onToggle, onReadToggle, children }) {
-  const pick = value => typeof value === 'string' ? value : value[lang] || value.de
-  return <section id={section.id} className={`${styles.section} ${open ? styles.sectionOpen : ''}`}>
+  return <section id={section.id} className={`${styles.section} ${open ? styles.sectionOpen : ''} ${section.emphasis ? styles.takeHomeSection : ''}`}>
     <button type="button" className={styles.sectionHeader} aria-expanded={open} aria-controls={`${section.id}-panel`} onClick={() => onToggle(section.id)}>
       <span className={styles.sectionIcon}><Icon name={section.icon} /></span>
-      <span><strong>{pick(section.title)}</strong></span>
+      <span>{section.emphasis ? <small>{pick(COPY.finalLabel, lang)}</small> : null}<strong>{pick(section.title, lang)}</strong></span>
       <span className={styles.toggle} aria-hidden="true">{open ? '−' : '+'}</span>
     </button>
     <div id={`${section.id}-panel`} hidden={!open} className={styles.sectionBody}>
       {children}
-      <button type="button" className={`${styles.readButton} ${isRead ? styles.readButtonDone : ''}`} aria-pressed={isRead} onClick={() => onReadToggle(section.id)}><Icon name="check" />{pick(isRead ? COPY.completed : COPY.complete)}</button>
+      <button type="button" className={`${styles.readButton} ${isRead ? styles.readButtonDone : ''}`} aria-pressed={isRead} onClick={() => onReadToggle(section.id)}><Icon name="check" />{pick(isRead ? COPY.completed : COPY.complete, lang)}</button>
     </div>
   </section>
 }
 
 function MiniCheck({ lang }) {
-  const pick = value => typeof value === 'string' ? value : value[lang] || value.de
   const [selected, setSelected] = useState(1)
   const [checked, setChecked] = useState(false)
   const resultCorrect = selected === 1
+
   return <div className={styles.miniCheck}>
-      <div className={styles.questionBlock}><span><Icon name="vessel" />{pick(COPY.miniCheck)}</span><h3>{pick(COPY.question)}</h3><p>{pick(COPY.caseText)}</p></div>
-      <div className={styles.answers} role="radiogroup" aria-label={pick(COPY.question)}>
-        {COPY.options.map((option, index) => <button key={pick(option)} type="button" role="radio" aria-checked={selected === index} className={selected === index ? styles.answerSelected : ''} onClick={() => { setSelected(index); setChecked(false) }}><i aria-hidden="true" />{pick(option)}</button>)}
-        <button className={styles.checkButton} type="button" onClick={() => setChecked(true)}>{pick(COPY.checkAnswer)}<span aria-hidden="true">→</span></button>
-        {checked && <p className={`${styles.feedback} ${resultCorrect ? styles.feedbackCorrect : styles.feedbackWrong}`} role="status">{pick(resultCorrect ? COPY.correct : COPY.incorrect)}</p>}
-      </div>
+    <div className={styles.questionBlock}><span><Icon name="vessel" />{pick(COPY.miniCheck, lang)}</span><h3>{pick(COPY.question, lang)}</h3><p>{pick(COPY.caseText, lang)}</p></div>
+    <div className={styles.answers} role="radiogroup" aria-label={pick(COPY.question, lang)}>
+      {COPY.options.map((option, index) => <button key={pick(option, lang)} type="button" role="radio" aria-checked={selected === index} className={selected === index ? styles.answerSelected : ''} onClick={() => { setSelected(index); setChecked(false) }}><i aria-hidden="true" />{pick(option, lang)}</button>)}
+      <button className={styles.checkButton} type="button" onClick={() => setChecked(true)}>{pick(COPY.checkAnswer, lang)}<span aria-hidden="true">→</span></button>
+      {checked ? <p className={`${styles.feedback} ${resultCorrect ? styles.feedbackCorrect : styles.feedbackWrong}`} role="status">{pick(resultCorrect ? COPY.correct : COPY.incorrect, lang)}</p> : null}
     </div>
+  </div>
 }
 
 function StartSection({ lang }) {
-  const pick = value => typeof value === 'string' ? value : value[lang] || value.de
   return <>
-    <p className={styles.lead}>{pick(COPY.intro)}</p>
+    <p className={styles.lead}>{pick(COPY.intro, lang)}</p>
     <ol className={styles.workflow}>
-      {COPY.workflow.map(([title, text, icon], index) => <li key={pick(title)}>
-        <span className={styles.stepIcon}><Icon name={icon} /></span>
-        <span className={styles.stepNumber}>{index + 1}</span>
-        <strong>{pick(title)}</strong>
-        <p>{pick(text)}</p>
-      </li>)}
+      {COPY.workflow.map(([title, text, icon], index) => <li key={pick(title, lang)}><span className={styles.stepIcon}><Icon name={icon} /></span><span className={styles.stepNumber}>{index + 1}</span><strong>{pick(title, lang)}</strong><p>{pick(text, lang)}</p></li>)}
     </ol>
-    <aside className={styles.warning}><span aria-hidden="true">!</span><div><strong>{pick(COPY.warningTitle)}</strong><p>{pick(COPY.warningText)}</p></div></aside>
+    <aside className={styles.warning}><span aria-hidden="true">!</span><div><strong>{pick(COPY.warningTitle, lang)}</strong><p>{pick(COPY.warningText, lang)}</p></div></aside>
     <MiniCheck lang={lang} />
   </>
 }
 
+function RadiopaediaCase({ lang }) {
+  return <article className={styles.caseStudy}>
+    <a className={styles.caseImage} href={RADIOPAEDIA_CASE.url} target="_blank" rel="noopener noreferrer">
+      <Image src={RADIOPAEDIA_CASE.image} alt={pick(RADIOPAEDIA_CASE.alt, lang)} width={612} height={612} />
+      <span>{pick(L('Fall in Radiopaedia öffnen', 'Open case in Radiopaedia', 'باز کردن کیس در Radiopaedia'), lang)} ↗</span>
+    </a>
+    <div className={styles.caseBody}>
+      <small>RADIOPAEDIA · rID 45310</small>
+      <h3>{pick(RADIOPAEDIA_CASE.title, lang)}</h3>
+      <p>{pick(RADIOPAEDIA_CASE.text, lang)}</p>
+      <footer>{RADIOPAEDIA_CASE.credit}</footer>
+    </div>
+  </article>
+}
+
 function ContentSection({ id, lang }) {
-  const pick = value => typeof value === 'string' ? value : value[lang] || value.de
+  if (id === 'fall') return <><p className={styles.lead}>{pick(L('Erkenne das frühe CT-Zeichen, bevor du die nächste Untersuchung auswählst.', 'Recognise the early CT sign before selecting the next examination.', 'پیش از انتخاب بررسی بعدی، علامت اولیه CT را شناسایی کنید.'), lang)}</p><RadiopaediaCase lang={lang} /><MiniCheck lang={lang} /></>
   const content = LESSON_CONTENT[id]
-  if (id === 'fall') return <><p className={styles.lead}>{pick(content.lead)}</p><MiniCheck lang={lang} /></>
   return <>
-    {content.lead && <p className={styles.lead}>{pick(content.lead)}</p>}
-    {content.cards && <div className={styles.learningRows}>{content.cards.map(([number, title, text]) => <article key={number}><span>{number}</span><div><h3>{pick(title)}</h3><p>{pick(text)}</p></div></article>)}</div>}
-    {content.metrics && <div className={styles.metrics}>{content.metrics.map(([name, text]) => <article key={name}><strong>{name}</strong><span>{pick(text)}</span></article>)}</div>}
-    {content.report && <div className={styles.report}><span>{pick(L('So klingt ein klarer Akutbefund', 'A clear acute report', 'نمونه یک گزارش حاد روشن'))}</span><ol>{content.report.map(line => <li key={pick(line)}>{pick(line)}</li>)}</ol></div>}
-    {content.points && <ol className={styles.takeHome}>{content.points.map((point, index) => <li key={pick(point)}><span>{String(index + 1).padStart(2, '0')}</span><strong>{pick(point)}</strong></li>)}</ol>}
-    {content.note && <aside className={styles.keyPoint}><Icon name="check" /><p>{pick(content.note)}</p></aside>}
+    {content.lead ? <p className={styles.lead}>{pick(content.lead, lang)}</p> : null}
+    {content.cards ? <div className={styles.learningRows}>{content.cards.map(([number, title, text]) => <article key={number}><span>{number}</span><div><h3>{pick(title, lang)}</h3><p>{pick(text, lang)}</p></div></article>)}</div> : null}
+    {content.metrics ? <div className={styles.metrics}>{content.metrics.map(([name, text]) => <article key={name}><strong>{name}</strong><span>{pick(text, lang)}</span></article>)}</div> : null}
+    {content.report ? <div className={styles.report}><span>{pick(L('So klingt ein klarer Akutbefund', 'A clear acute report', 'نمونه یک گزارش حاد روشن'), lang)}</span><ol>{content.report.map(line => <li key={pick(line, lang)}>{pick(line, lang)}</li>)}</ol></div> : null}
+    {content.points ? <div className={styles.takeHomePanel}><header><Icon name="spark" /><div><small>{pick(COPY.finalLabel, lang)}</small><h3>Take Home Message</h3></div></header><ol className={styles.takeHome}>{content.points.map((point, index) => <li key={pick(point, lang)}><span>{String(index + 1).padStart(2, '0')}</span><strong>{pick(point, lang)}</strong></li>)}</ol></div> : null}
+    {content.note ? <aside className={styles.keyPoint}><Icon name="check" /><p>{pick(content.note, lang)}</p></aside> : null}
   </>
 }
 
 function MobileLearningPath({ lang, openId, readSections, onSelect }) {
-  const pick = value => typeof value === 'string' ? value : value[lang] || value.de
   const [panelOpen, setPanelOpen] = useState(false)
   const activeSection = SECTION_COPY.find(section => section.id === openId) || SECTION_COPY[0]
   const progress = (readSections.size / SECTION_COPY.length) * 360
-
-  const selectFromPanel = id => {
-    onSelect(id)
-    setPanelOpen(false)
-  }
+  const selectFromPanel = id => { onSelect(id); setPanelOpen(false) }
 
   return <div className={styles.mobileLearningPath}>
-    {panelOpen && <section id="mobile-learning-path-panel" className={styles.mobilePathPanel} role="dialog" aria-label={pick(COPY.path)}>
-      <header>
-        <div><small>{pick(COPY.progress)}</small><strong>{readSections.size} / {SECTION_COPY.length}</strong></div>
-        <button type="button" onClick={() => setPanelOpen(false)} aria-label={pick(COPY.close)}>×</button>
-      </header>
-      <nav>{SECTION_COPY.map(section => <button type="button" key={section.id} className={openId === section.id ? styles.mobilePathCurrent : ''} onClick={() => selectFromPanel(section.id)} aria-current={openId === section.id ? 'location' : undefined}>
-        <span className={styles.mobilePathItemIcon}><Icon name={section.icon} /></span>
-        <span><strong>{pick(section.short)}</strong><small>{pick(section.title)}</small></span>
-        <i aria-hidden="true">{readSections.has(section.id) ? '✓' : ''}</i>
-      </button>)}</nav>
-    </section>}
-    <button type="button" className={styles.mobilePathButton} onClick={() => setPanelOpen(value => !value)} aria-expanded={panelOpen} aria-controls="mobile-learning-path-panel">
-      <span className={styles.mobileProgressRing} style={{ '--mobile-progress': `${progress}deg` }}><b>{readSections.size}</b><small>/{SECTION_COPY.length}</small></span>
-      <span className={styles.mobileCurrentIcon}><Icon name={activeSection.icon} /></span>
-      <span className={styles.mobilePathLabel}><strong>{pick(COPY.path)}</strong><small>{pick(activeSection.short)}</small></span>
-    </button>
+    {panelOpen ? <section id="mobile-learning-path-panel" className={styles.mobilePathPanel} role="dialog" aria-label={pick(COPY.path, lang)}>
+      <header><div><small>{pick(COPY.progress, lang)}</small><strong>{readSections.size} / {SECTION_COPY.length}</strong></div><button type="button" onClick={() => setPanelOpen(false)} aria-label={pick(COPY.close, lang)}>×</button></header>
+      <nav>{SECTION_COPY.map(section => <button type="button" key={section.id} className={`${openId === section.id ? styles.mobilePathCurrent : ''} ${section.emphasis ? styles.mobilePathFinal : ''}`} onClick={() => selectFromPanel(section.id)} aria-current={openId === section.id ? 'location' : undefined}><span className={styles.mobilePathItemIcon}><Icon name={section.icon} /></span><span><strong>{pick(section.short, lang)}</strong><small>{pick(section.title, lang)}</small></span><i aria-hidden="true">{readSections.has(section.id) ? '✓' : ''}</i></button>)}</nav>
+    </section> : null}
+    <button type="button" className={styles.mobilePathButton} onClick={() => setPanelOpen(value => !value)} aria-expanded={panelOpen} aria-controls="mobile-learning-path-panel"><span className={styles.mobileProgressRing} style={{ '--mobile-progress': `${progress}deg` }}><b>{readSections.size}</b><small>/{SECTION_COPY.length}</small></span><span className={styles.mobileCurrentIcon}><Icon name={activeSection.icon} /></span><span className={styles.mobilePathLabel}><strong>{pick(COPY.path, lang)}</strong><small>{pick(activeSection.short, lang)}</small></span></button>
   </div>
 }
 
 export default function TestLearningPage() {
   const { lang } = useLanguage()
-  const pick = value => typeof value === 'string' ? value : value[lang] || value.de
   const [openId, setOpenId] = useState('start')
   const [readSections, setReadSections] = usePersistedSectionProgress('andarun-test', SECTION_IDS)
   const activeIndex = useMemo(() => Math.max(0, SECTION_COPY.findIndex(section => section.id === openId)), [openId])
 
   useEffect(() => {
     const hash = window.location.hash.slice(1)
-    if (SECTION_COPY.some(section => section.id === hash)) setOpenId(hash)
+    if (SECTION_IDS.includes(hash)) setOpenId(hash)
   }, [])
 
   const selectSection = id => {
@@ -283,62 +251,22 @@ export default function TestLearningPage() {
     window.history.replaceState(null, '', nextId ? `#${nextId}` : window.location.pathname)
     if (nextId) requestAnimationFrame(() => document.getElementById(nextId)?.scrollIntoView({ behavior: 'smooth', block: 'start' }))
   }
-
-  const advance = () => {
-    const next = SECTION_COPY[Math.min(activeIndex + 1, SECTION_COPY.length - 1)]
-    selectSection(next.id)
-  }
-
-  const toggleSectionRead = id => {
-    setReadSections(previous => {
-      const next = new Set(previous)
-      if (next.has(id)) next.delete(id)
-      else next.add(id)
-      return next
-    })
-  }
-
+  const advance = () => selectSection(SECTION_COPY[Math.min(activeIndex + 1, SECTION_COPY.length - 1)].id)
+  const toggleSectionRead = id => setReadSections(previous => { const next = new Set(previous); if (next.has(id)) next.delete(id); else next.add(id); return next })
   const lessonComplete = readSections.size === SECTION_COPY.length
-  const toggleLessonComplete = () => setReadSections(lessonComplete ? new Set() : new Set(SECTION_COPY.map(section => section.id)))
+  const toggleLessonComplete = () => setReadSections(lessonComplete ? new Set() : new Set(SECTION_IDS))
 
   return <main className={styles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
     <div className={styles.ambient} aria-hidden="true"><span /><span /><span /></div>
     <header className={styles.header}>
-      <div className={styles.topline}>
-        <nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">RadYar</Link><span>/</span><Link href="/andarun">Andarun</Link><span>/</span><strong>Test</strong></nav>
-        <span className={styles.author}>Dr. Zia</span>
-      </div>
-      <div className={styles.hero}>
-        <div className={styles.heroCopy}>
-          <h1>{pick(COPY.title)}</h1>
-          <div className={styles.actions}>
-            <Link className={styles.primaryAction} href="/ueben/quiz?fach=gehirn&n=10&themen=ischaemischer-schlaganfall">{pick(COPY.mcq)}<span aria-hidden="true">→</span></Link>
-            <Link className={styles.secondaryAction} href="/flashcards/ischaemischer-schlaganfall"><Icon name="case" />{pick(COPY.flashcards)}</Link>
-          </div>
-        </div>
-        <div className={styles.heroFacts}>{COPY.facts.map(([value, label], index) => <article key={value}><span className={styles.factIcon}><Icon name={['brain', 'vessel', 'chart'][index]} /></span><strong>{value}</strong><p>{pick(label)}</p></article>)}</div>
-      </div>
-      <div className={styles.progressBar}>
-        <div className={styles.progressTrack}><i style={{ width: `${(readSections.size / SECTION_COPY.length) * 100}%` }} /></div>
-        <span>{readSections.size} / {SECTION_COPY.length} {pick(COPY.progress)}</span>
-        <div className={styles.progressActions}>
-          <button type="button" className={`${styles.lessonCompleteButton} ${lessonComplete ? styles.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><Icon name="check" />{pick(lessonComplete ? COPY.lessonCompleted : COPY.completeLesson)}</button>
-          <button type="button" className={styles.continueButton} onClick={advance} disabled={activeIndex === SECTION_COPY.length - 1}>{pick(COPY.continue)}<span aria-hidden="true">→</span></button>
-        </div>
-      </div>
+      <div className={styles.topline}><nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">RadYar</Link><span>/</span><Link href="/andarun">Andarun</Link><span>/</span><strong>Test</strong></nav><span className={styles.author}>Dr. Zia</span></div>
+      <div className={styles.hero}><div className={styles.heroCopy}><h1>{pick(COPY.title, lang)}</h1><div className={styles.actions}><Link className={styles.primaryAction} href="/ueben/quiz?fach=gehirn&n=10&themen=ischaemischer-schlaganfall">{pick(COPY.mcq, lang)}<span aria-hidden="true">→</span></Link><Link className={styles.secondaryAction} href="/flashcards/ischaemischer-schlaganfall"><Icon name="case" />{pick(COPY.flashcards, lang)}</Link></div></div><div className={styles.heroFacts}>{COPY.facts.map(([value, label], index) => <article key={value}><span className={styles.factIcon}><Icon name={['brain', 'vessel', 'chart'][index]} /></span><strong>{value}</strong><p>{pick(label, lang)}</p></article>)}</div></div>
+      <div className={styles.progressBar}><div className={styles.progressTrack}><i style={{ width: `${(readSections.size / SECTION_COPY.length) * 100}%` }} /></div><span>{readSections.size} / {SECTION_COPY.length} {pick(COPY.progress, lang)}</span><div className={styles.progressActions}><button type="button" className={`${styles.lessonCompleteButton} ${lessonComplete ? styles.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><Icon name="check" />{pick(lessonComplete ? COPY.lessonCompleted : COPY.completeLesson, lang)}</button><button type="button" className={styles.continueButton} onClick={advance} disabled={activeIndex === SECTION_COPY.length - 1}>{pick(COPY.continue, lang)}<span aria-hidden="true">→</span></button></div></div>
     </header>
 
     <div className={styles.layout}>
-      <aside className={styles.sidebar}>
-        <h2>{pick(COPY.path)}</h2>
-        <nav>{SECTION_COPY.map(section => <button type="button" key={section.id} className={openId === section.id ? styles.activeSideItem : ''} onClick={() => selectSection(section.id)} aria-current={openId === section.id ? 'location' : undefined} aria-label={`${pick(COPY.open)}: ${pick(section.short)}`}><span className={styles.sideIcon}><Icon name={section.icon} /></span><strong>{pick(section.short)}</strong></button>)}</nav>
-      </aside>
-
-      <article className={styles.lesson}>
-        {SECTION_COPY.map(section => <Section key={section.id} section={section} lang={lang} open={openId === section.id} isRead={readSections.has(section.id)} onToggle={selectSection} onReadToggle={toggleSectionRead}>
-          {section.id === 'start' ? <StartSection lang={lang} /> : <ContentSection id={section.id} lang={lang} />}
-        </Section>)}
-      </article>
+      <aside className={styles.sidebar}><h2>{pick(COPY.path, lang)}</h2><nav>{SECTION_COPY.map(section => <button type="button" key={section.id} className={`${openId === section.id ? styles.activeSideItem : ''} ${section.emphasis ? styles.finalSideItem : ''}`} onClick={() => selectSection(section.id)} aria-current={openId === section.id ? 'location' : undefined} aria-label={`${pick(COPY.open, lang)}: ${pick(section.short, lang)}`}><span className={styles.sideIcon}><Icon name={section.icon} /></span><strong>{pick(section.short, lang)}</strong></button>)}</nav></aside>
+      <article className={styles.lesson}>{SECTION_COPY.map(section => <Section key={section.id} section={section} lang={lang} open={openId === section.id} isRead={readSections.has(section.id)} onToggle={selectSection} onReadToggle={toggleSectionRead}>{section.id === 'start' ? <StartSection lang={lang} /> : <ContentSection id={section.id} lang={lang} />}</Section>)}</article>
     </div>
     <MobileLearningPath lang={lang} openId={openId} readSections={readSections} onSelect={selectSection} />
   </main>
