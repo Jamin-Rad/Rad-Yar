@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
@@ -141,9 +141,16 @@ const RADIOPAEDIA_CASES = {
       L('Verlauf: Wandbewegungsstörung und Perikarderguss nach vier Wochen rückläufig.', 'Follow-up: wall-motion abnormality and pericardial effusion resolved after four weeks.', 'پیگیری: اختلال حرکت دیواره و افیوژن پریکارد پس از چهار هفته برطرف شدند.'),
     ],
     teaching: L('Transiente Dysfunktion außerhalb eines Koronarterritoriums + Ödem + fehlendes LGE stützen Takotsubo.', 'Transient dysfunction beyond one coronary territory + oedema + absent LGE support Takotsubo.', 'اختلال گذرا فراتر از یک قلمرو کرونری همراه با ادم و نبود LGE از تاکوتسوبو حمایت می‌کند.'),
-    image: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/takotsubo-33052-cine-2ch.jpg',
+    frames: [
+      ['01-2ch-cine.jpg', '2-chamber Cine SSFP'],
+      ['02-short-axis-cine.jpg', 'Short-axis Cine SSFP'],
+      ['03-2ch-stir.jpg', '2-chamber STIR'],
+      ['04-2ch-early-gad.jpg', '2-chamber Early Gadolinium'],
+      ['05-short-axis-early-gad.jpg', 'Short-axis Early Gadolinium'],
+      ['06-2ch-lge.jpg', '2-chamber LGE'],
+      ['07-short-axis-lge.jpg', 'Short-axis LGE'],
+    ].map(([file, label]) => ({ src: `/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/takotsubo-33052/${file}`, label })),
     alt: L('Zweikammer-Cine-SSFP aus einem Radiopaedia-Fall mit atypischem Takotsubo-Syndrom', 'Two-chamber cine SSFP from a Radiopaedia case of atypical Takotsubo syndrome', 'Cine SSFP دوحفره‌ای از کیس Radiopaedia تاکوتسوبوی آتیپیک'),
-    imageLabel: '2-chamber Cine SSFP',
     url: 'https://radiopaedia.org/cases/33052/studies/34073?lang=us',
     credit: 'Case courtesy of Yune Kwong, Radiopaedia.org · rID-33052 · CC BY-NC-SA 3.0',
   },
@@ -157,9 +164,15 @@ const RADIOPAEDIA_CASES = {
       L('Kleiner Erguss und perikardiales Enhancement stützen die Myoperikarditis.', 'A small effusion and pericardial enhancement support myopericarditis.', 'افیوژن کوچک و enhancement پریکارد از میوپریکاردیت حمایت می‌کنند.'),
     ],
     teaching: L('Ein T2-basiertes und ein T1-basiertes Zeichen gemeinsam bewerten.', 'Assess a T2-based and a T1-based marker together.', 'یک معیار مبتنی بر T2 و یک معیار مبتنی بر T1 را با هم ارزیابی کنید.'),
-    image: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023-lge-4ch.jpeg',
+    frames: [
+      ['01-4ch-cine.jpeg', '4-chamber SSFP Cine'],
+      ['02-4ch-stir.jpeg', '4-chamber STIR'],
+      ['03-short-axis-stir.jpeg', 'Short-axis STIR'],
+      ['04-4ch-lge.jpeg', '4-chamber LGE'],
+      ['05-short-axis-lge.jpeg', 'Short-axis LGE'],
+      ['06-3ch-lge.jpeg', '3-chamber LGE'],
+    ].map(([file, label]) => ({ src: `/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/${file}`, label })),
     alt: L('Vierkammer-LGE aus einem Radiopaedia-Fall mit akuter Myoperikarditis', 'Four-chamber LGE from a Radiopaedia case of acute myopericarditis', 'LGE چهارحفره‌ای از کیس Radiopaedia میوپریکاردیت حاد'),
-    imageLabel: '4-chamber LGE',
     url: 'https://radiopaedia.org/cases/77023/studies/88967?lang=us',
     credit: 'Case courtesy of Tamara Razon Cuenza, Radiopaedia.org · rID-77023 · CC BY-NC-SA 3.0',
   },
@@ -173,9 +186,17 @@ const RADIOPAEDIA_CASES = {
       L('Die Biopsie zeigte eine granulomatöse Entzündung und bestätigte die Diagnose.', 'Biopsy showed granulomatous inflammation and established the diagnosis.', 'بیوپسی التهاب گرانولوماتوز را نشان داد و تشخیص را تأیید کرد.'),
     ],
     teaching: L('LGE kann als Narbe fortbestehen, obwohl die aktuelle Entzündungsaktivität abgeklungen ist.', 'LGE may persist as scar after current inflammatory activity has resolved.', 'LGE می‌تواند به‌صورت اسکار باقی بماند، حتی وقتی فعالیت التهابی فعلی فروکش کرده است.'),
-    image: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/cardiac-sarcoidosis-74548-lge-2ch.jpg',
+    frames: [
+      ['01-2ch-cine.jpg', '2-chamber Cine SSFP'],
+      ['02-4ch-cine.jpg', '4-chamber Cine SSFP'],
+      ['03-3ch-cine.jpg', '3-chamber Cine SSFP'],
+      ['04-short-axis-stir.jpg', 'Short-axis STIR'],
+      ['05-t2-map.jpeg', 'Short-axis T2 mapping'],
+      ['06-native-t1-map.jpeg', 'Short-axis native T1 mapping'],
+      ['07-2ch-lge.jpg', '2-chamber IR-LGE'],
+      ['08-short-axis-lge.jpg', 'Short-axis IR-LGE'],
+    ].map(([file, label]) => ({ src: `/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/sarcoidosis-74548/${file}`, label })),
     alt: L('Zweikammer-LGE aus einem Radiopaedia-Fall mit kardialer Sarkoidose', 'Two-chamber LGE from a Radiopaedia case of cardiac sarcoidosis', 'LGE دوحفره‌ای از کیس Radiopaedia سارکوئیدوز قلبی'),
-    imageLabel: '2-chamber inversion-recovery LGE',
     url: 'https://radiopaedia.org/cases/74548/studies/85535?lang=us',
     credit: 'Case courtesy of Joachim Feger, Radiopaedia.org · rID-74548 · CC BY-NC-SA 3.0',
   },
@@ -220,13 +241,49 @@ function PatternExplorer({ lang }) {
 function RadiopaediaCase({ caseId, lang }) {
   const data = RADIOPAEDIA_CASES[caseId]
   const t = value => pick(value, lang)
-  if (!data) return null
+  const [frameIndex, setFrameIndex] = useState(0)
+  const viewerRef = useRef(null)
+  const wheelLock = useRef(false)
+  const pointerStart = useRef(null)
+
+  const selectFrame = next => setFrameIndex(current => Math.max(0, Math.min(data.frames.length - 1, typeof next === 'function' ? next(current) : next)))
+  const moveFrame = direction => selectFrame(current => current + direction)
+  useEffect(() => {
+    const viewer = viewerRef.current
+    if (!viewer) return undefined
+    const handleWheel = event => {
+      if (wheelLock.current || Math.abs(event.deltaY) < 8) return
+      const direction = event.deltaY > 0 ? 1 : -1
+      const canMove = direction > 0 ? frameIndex < data.frames.length - 1 : frameIndex > 0
+      if (!canMove) return
+      event.preventDefault()
+      wheelLock.current = true
+      moveFrame(direction)
+      window.setTimeout(() => { wheelLock.current = false }, 160)
+    }
+    viewer.addEventListener('wheel', handleWheel, { passive: false })
+    return () => viewer.removeEventListener('wheel', handleWheel)
+  }, [frameIndex, data.frames.length])
+  const onKeyDown = event => {
+    if (['ArrowDown', 'ArrowRight'].includes(event.key)) { event.preventDefault(); moveFrame(1) }
+    if (['ArrowUp', 'ArrowLeft'].includes(event.key)) { event.preventDefault(); moveFrame(-1) }
+  }
+  const frame = data.frames[frameIndex]
 
   return <article className={styles.radiopaediaCase} aria-labelledby={`${caseId}-case-title`}>
-    <a className={styles.caseImageLink} href={data.url} target="_blank" rel="noopener noreferrer" aria-label={t(L('Fall in Radiopaedia öffnen', 'Open case in Radiopaedia', 'باز کردن کیس در Radiopaedia'))}>
-      <Image src={data.image} alt={t(data.alt)} width={760} height={640} />
-      <span>{data.imageLabel}</span>
-    </a>
+    <div ref={viewerRef} className={styles.caseViewer} role="group" aria-label={t(L('Scrollbarer Radiopaedia-Fall', 'Scrollable Radiopaedia case', 'کیس قابل اسکرول Radiopaedia'))} tabIndex={0} onKeyDown={onKeyDown} onPointerDown={event => { pointerStart.current = { x: event.clientX, y: event.clientY } }} onPointerUp={event => { if (!pointerStart.current) return; const deltaX = pointerStart.current.x - event.clientX; const deltaY = pointerStart.current.y - event.clientY; pointerStart.current = null; if (Math.abs(deltaX) > 34 && Math.abs(deltaX) > Math.abs(deltaY)) moveFrame(deltaX > 0 ? 1 : -1) }} data-testid={`${caseId}-case-viewer`}>
+      <div className={styles.caseImageStage}>
+        <Image key={frame.src} src={frame.src} alt={`${t(data.alt)} · ${frame.label}`} width={760} height={640} draggable={false} />
+        <span className={styles.caseFrameLabel}>{frame.label}</span>
+        <span className={styles.caseFrameCounter}>{String(frameIndex + 1).padStart(2, '0')} / {String(data.frames.length).padStart(2, '0')}</span>
+      </div>
+      <div className={styles.caseViewerControls}>
+        <button type="button" onClick={() => moveFrame(-1)} disabled={frameIndex === 0} aria-label={t(L('Vorheriges Bild', 'Previous image', 'تصویر قبلی'))}>←</button>
+        <div className={styles.caseFrameDots} aria-label={t(L('Bild auswählen', 'Select image', 'انتخاب تصویر'))}>{data.frames.map((item, index) => <button key={item.src} type="button" className={index === frameIndex ? styles.caseFrameDotActive : ''} onClick={() => selectFrame(index)} aria-label={`${t(L('Bild', 'Image', 'تصویر'))} ${index + 1}: ${item.label}`} aria-current={index === frameIndex ? 'true' : undefined} />)}</div>
+        <button type="button" onClick={() => moveFrame(1)} disabled={frameIndex === data.frames.length - 1} aria-label={t(L('Nächstes Bild', 'Next image', 'تصویر بعدی'))}>→</button>
+      </div>
+      <p className={styles.caseViewerHint}>{t(L('Scrollen · Wischen · Pfeiltasten', 'Scroll · swipe · arrow keys', 'اسکرول · سوایپ · کلیدهای جهت'))}</p>
+    </div>
     <div className={styles.caseContent}>
       <header><small>RADIOPAEDIA CASE</small><h3 id={`${caseId}-case-title`}>{t(data.title)}</h3><strong>{t(data.patient)}</strong><p>{t(data.presentation)}</p></header>
       <ul>{data.findings.map(finding => <li key={t(finding)}>{t(finding)}</li>)}</ul>
