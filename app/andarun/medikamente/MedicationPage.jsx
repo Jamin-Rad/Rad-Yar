@@ -358,6 +358,14 @@ function WeeklyDoseEditor({ draft, selectedDrug, onChange }) {
   }
 
   function toggleWeekday(day) {
+    if (draft.frequency === 'daily') {
+      onChange({
+        frequency: 'weekly',
+        weekdays: [day],
+        doseByWeekday: draft.differentDoseByDay ? { [day]: draft.doseByWeekday?.[day] || draft.dose } : {},
+      })
+      return
+    }
     const selected = draft.weekdays.includes(day)
     if (selected && draft.weekdays.length === 1) return
     const weekdays = selected ? draft.weekdays.filter(value => value !== day) : [...draft.weekdays, day]
@@ -383,12 +391,10 @@ function WeeklyDoseEditor({ draft, selectedDrug, onChange }) {
         <button type="button" className={draft.frequency === 'daily' ? styles.frequencyModeActive : ''} aria-pressed={draft.frequency === 'daily'} onClick={() => setFrequency('daily')}>هر روز</button>
         <button type="button" className={draft.frequency === 'weekly' ? styles.frequencyModeActive : ''} aria-pressed={draft.frequency === 'weekly'} onClick={() => setFrequency('weekly')}>روزهای مشخص هفته</button>
       </div>
-      {draft.frequency === 'weekly' ? (
-        <div className={styles.weekdayChoices}>{WEEKDAY_OPTIONS.map(option => {
-          const selected = draft.weekdays.includes(option.value)
-          return <button key={option.value} type="button" className={selected ? styles.weekdayChoiceActive : ''} aria-pressed={selected} onClick={() => toggleWeekday(option.value)}><span>{option.shortLabel}</span>{option.label}</button>
-        })}</div>
-      ) : null}
+      <div className={styles.weekdayChoices}>{WEEKDAY_OPTIONS.map(option => {
+        const selected = draft.frequency === 'weekly' && draft.weekdays.includes(option.value)
+        return <button key={option.value} type="button" className={selected ? styles.weekdayChoiceActive : ''} aria-pressed={selected} onClick={() => toggleWeekday(option.value)}><span>{option.shortLabel}</span>{option.label}</button>
+      })}</div>
       {selectedDrug?.defaultFrequency === 'weekly' ? <p className={styles.weeklyHint}>این دارو در بانک به‌صورت هفتگی ثبت شده؛ روزی را انتخاب کن که در نسخه‌ات آمده.</p> : null}
       <button className={styles.variableDoseToggle} type="button" role="switch" aria-checked={draft.differentDoseByDay} onClick={toggleDifferentDoses}>
         <span><strong>دوز در بعضی روزها فرق دارد</strong><small>برای هر روز، دوز نسخه را جدا انتخاب کن.</small></span>
