@@ -6,7 +6,7 @@ export default function LernenLayout({ children }) {
   return (
     <>
       <Navbar />
-      <LearningAccessGate checkLessonStatus={false}>{children}</LearningAccessGate>
+      <LearningAccessGate checkLessonStatus={false} showContentBehind>{children}</LearningAccessGate>
       <Footer />
     </>
   )

@@ -9,7 +9,7 @@ import {
 } from '@/utils/subscription'
 import LearningAccessPanel from './LearningAccessPanel'
 
-export default async function LearningAccessGate({ children, checkLessonStatus = true }) {
+export default async function LearningAccessGate({ children, checkLessonStatus = true, showContentBehind = false }) {
   const requestHeaders = await headers()
   const pathname = requestHeaders.get('x-radyar-pathname') || ''
   const lessonStatus = checkLessonStatus ? getLessonStatus(pathname) : 'complete'
@@ -17,7 +17,13 @@ export default async function LearningAccessGate({ children, checkLessonStatus =
   if (lessonStatus === 'public') return children
 
   const user = await currentUser()
-  if (!user) return <LearningAccessPanel kind="sign_in" pathname={pathname} />
+  if (!user) {
+    return (
+      <LearningAccessPanel kind="sign_in" pathname={pathname} showContentBehind={showContentBehind}>
+        {showContentBehind ? children : null}
+      </LearningAccessPanel>
+    )
+  }
 
   const proAccess = getProAccess(user)
   const access = getLearningAccess(user)
@@ -28,7 +34,10 @@ export default async function LearningAccessGate({ children, checkLessonStatus =
         pathname={pathname}
         requestKind={getProRequestKind(user)}
         requestStatus={access.proRequest?.status || null}
-      />
+        showContentBehind={showContentBehind}
+      >
+        {showContentBehind ? children : null}
+      </LearningAccessPanel>
     )
   }
 
@@ -38,7 +47,10 @@ export default async function LearningAccessGate({ children, checkLessonStatus =
         kind="early_access"
         pathname={pathname}
         requestStatus={access.earlyAccessRequests[pathname]?.status || null}
-      />
+        showContentBehind={showContentBehind}
+      >
+        {showContentBehind ? children : null}
+      </LearningAccessPanel>
     )
   }
 

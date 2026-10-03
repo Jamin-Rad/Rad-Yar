@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import styles from './LearningAccessPanel.module.css'
@@ -31,7 +31,6 @@ const COPY = {
     emailFallback: 'Anfrage gespeichert. Die E-Mail-Benachrichtigung konnte gerade nicht versendet werden.',
     error: 'Die Anfrage konnte nicht gesendet werden. Bitte versuche es später erneut.',
     sending: 'Wird gesendet…',
-    back: 'Zur Themenübersicht',
   },
   en: {
     sign_in: {
@@ -58,7 +57,6 @@ const COPY = {
     emailFallback: 'Request saved. The email notification could not be sent right now.',
     error: 'The request could not be sent. Please try again later.',
     sending: 'Sending…',
-    back: 'Back to topics',
   },
   fa: {
     sign_in: {
@@ -85,16 +83,32 @@ const COPY = {
     emailFallback: 'درخواست ثبت شد، اما ارسال اعلان ایمیلی فعلاً ممکن نبود.',
     error: 'ارسال درخواست ممکن نبود. لطفاً بعداً دوباره تلاش کنید.',
     sending: 'در حال ارسال…',
-    back: 'بازگشت به موضوعات',
   },
 }
 
-export default function LearningAccessPanel({ kind, pathname, requestKind = 'welcome', requestStatus }) {
+export default function LearningAccessPanel({
+  children,
+  kind,
+  pathname,
+  requestKind = 'welcome',
+  requestStatus,
+  showContentBehind = false,
+}) {
   const { lang } = useLanguage()
   const t = COPY[lang] || COPY.de
   const isRTL = lang === 'fa'
   const [state, setState] = useState(requestStatus || 'idle')
   const [message, setMessage] = useState('')
+  const [isOpen, setIsOpen] = useState(true)
+
+  useEffect(() => {
+    if (!showContentBehind || !isOpen) return undefined
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') setIsOpen(false)
+    }
+    document.addEventListener('keydown', closeOnEscape)
+    return () => document.removeEventListener('keydown', closeOnEscape)
+  }, [isOpen, showContentBehind])
 
   const config = t[kind]
   const isPending = state === 'pending'
@@ -129,30 +143,52 @@ export default function LearningAccessPanel({ kind, pathname, requestKind = 'wel
     }
   }
 
+  const panel = (
+    <section
+      className={styles.panel}
+      aria-labelledby="learning-access-title"
+      aria-modal={showContentBehind ? 'true' : undefined}
+      onClick={showContentBehind ? (event) => event.stopPropagation() : undefined}
+      role={showContentBehind ? 'dialog' : undefined}
+    >
+      <div className={`${styles.icon} ${kind === 'early_access' ? styles.iconEarly : ''}`} aria-hidden="true">
+        {kind === 'sign_in' ? '↗' : kind === 'pro' ? 'P' : '◷'}
+      </div>
+      <h1 id="learning-access-title">{title}</h1>
+      <p>{text}</p>
+
+      {kind === 'sign_in' ? (
+        <Link className={styles.primaryButton} href={`/sign-in?redirect_url=${encodeURIComponent(pathname || '/lernen')}`}>{config.cta}</Link>
+      ) : isPending ? (
+        <div className={styles.status} role="status">{t.pending}</div>
+      ) : (
+        <button className={styles.primaryButton} type="button" onClick={requestAccess} disabled={state === 'sending'}>
+          {state === 'sending' ? t.sending : cta}
+        </button>
+      )}
+
+      {state === 'approved' ? <div className={styles.status} role="status">{t.approved}</div> : null}
+      {state === 'rejected' ? <div className={styles.statusMuted}>{t.rejected}</div> : null}
+      {message ? <div className={state === 'error' ? styles.error : styles.notice} role="status">{message}</div> : null}
+    </section>
+  )
+
+  if (showContentBehind) {
+    return (
+      <>
+        {children}
+        {isOpen ? (
+          <div className={styles.overlay} dir={isRTL ? 'rtl' : 'ltr'} onClick={() => setIsOpen(false)}>
+            {panel}
+          </div>
+        ) : null}
+      </>
+    )
+  }
+
   return (
     <main className={styles.page} dir={isRTL ? 'rtl' : 'ltr'}>
-      <section className={styles.panel}>
-        <div className={`${styles.icon} ${kind === 'early_access' ? styles.iconEarly : ''}`} aria-hidden="true">
-          {kind === 'sign_in' ? '↗' : kind === 'pro' ? 'P' : '◷'}
-        </div>
-        <h1>{title}</h1>
-        <p>{text}</p>
-
-        {kind === 'sign_in' ? (
-          <Link className={styles.primaryButton} href={`/sign-in?redirect_url=${encodeURIComponent(pathname || '/lernen')}`}>{config.cta}</Link>
-        ) : isPending ? (
-          <div className={styles.status} role="status">{t.pending}</div>
-        ) : (
-          <button className={styles.primaryButton} type="button" onClick={requestAccess} disabled={state === 'sending'}>
-            {state === 'sending' ? t.sending : cta}
-          </button>
-        )}
-
-        {state === 'approved' ? <div className={styles.status} role="status">{t.approved}</div> : null}
-        {state === 'rejected' ? <div className={styles.statusMuted}>{t.rejected}</div> : null}
-        {message ? <div className={state === 'error' ? styles.error : styles.notice} role="status">{message}</div> : null}
-        <Link className={styles.backLink} href="/lernen">{t.back}</Link>
-      </section>
+      {panel}
     </main>
   )
 }
