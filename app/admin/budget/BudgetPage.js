@@ -530,7 +530,7 @@ function CategoryPicker({ categories, type, selectedItems, onToggleItem, expande
 }
 
 // ── Entry form (shared between popup and elsewhere) ────────────────────────────
-function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onToggleItem, expandedCats, onToggleExpand, entryAmount, onAmountChange, entryDate, onDateChange, entryDescription, onDescriptionChange, onSubmit, entryTitle, entryCatNames, paidByFatima, onToggleFatima, entryScope }) {
+function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onToggleItem, expandedCats, onToggleExpand, entryAmount, onAmountChange, entryDate, onDateChange, entryDescription, onDescriptionChange, onSubmit, entryTitle, entryCatNames, paidByFatima, onToggleFatima, entryScope, incomeSourceMode, onIncomeSourceModeChange, otherIncomeName, onOtherIncomeNameChange }) {
   const scopedCategory = entryScope ? categories.find(cat => cat.id === entryScope.catId) : null
   const scopedSelection = selectedItems[0]
 
@@ -598,6 +598,58 @@ function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onTo
             <span className={styles.scopedCategoryLocked} aria-label="Kategorie kann hier nicht geändert werden">Gesperrt</span>
           </div>
         </div>
+      ) : type === 'income' ? (
+        <div className={styles.incomeSourceBlock}>
+          <div className={styles.entryFormLabelRow}>
+            <span>Einkommensart</span>
+            <small>Quelle auswählen</small>
+          </div>
+          <div className={styles.incomeSourceChoices} role="group" aria-label="Einkommensart auswählen">
+            <button
+              type="button"
+              className={incomeSourceMode === 'standard' ? styles.incomeSourceChoiceActive : styles.incomeSourceChoice}
+              aria-pressed={incomeSourceMode === 'standard'}
+              onClick={() => onIncomeSourceModeChange('standard')}
+            >
+              <span className={styles.incomeSourceChoiceIcon} aria-hidden="true">€</span>
+              <span><strong>Einkommen</strong><small>Gehalt oder Kindergeld</small></span>
+            </button>
+            <button
+              type="button"
+              className={incomeSourceMode === 'other' ? styles.incomeSourceChoiceActive : styles.incomeSourceChoice}
+              aria-pressed={incomeSourceMode === 'other'}
+              onClick={() => onIncomeSourceModeChange('other')}
+            >
+              <span className={styles.incomeSourceChoiceIcon} aria-hidden="true">+</span>
+              <span><strong>Andere</strong><small>Eigene Bezeichnung</small></span>
+            </button>
+          </div>
+
+          {incomeSourceMode === 'other' ? (
+            <label className={styles.otherIncomeField}>
+              <span>Was für ein Einkommen?</span>
+              <input
+                type="text"
+                value={otherIncomeName}
+                onChange={e => onOtherIncomeNameChange(e.target.value)}
+                placeholder="z. B. Bonus, Verkauf oder Erstattung"
+                autoComplete="off"
+                required
+              />
+              <small>Diese Bezeichnung erscheint später in der Übersicht und im Bericht.</small>
+            </label>
+          ) : (
+            <CategoryPicker
+              categories={categories}
+              type={type}
+              selectedItems={selectedItems}
+              onToggleItem={onToggleItem}
+              expandedCats={expandedCats}
+              onToggleExpand={onToggleExpand}
+              label="Einkommen wählen"
+            />
+          )}
+        </div>
       ) : (
         <CategoryPicker
           categories={categories}
@@ -651,6 +703,8 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
   const [expandedCats, setExpandedCats]   = useState(new Set())
   const [paidByFatima, setPaidByFatima]   = useState(false)
   const [entryScope, setEntryScope]       = useState(null)
+  const [incomeSourceMode, setIncomeSourceMode] = useState('standard')
+  const [otherIncomeName, setOtherIncomeName] = useState('')
 
   // Category detail popup
   const [catDetail, setCatDetail]               = useState(null) // { type, key, label }
@@ -1245,15 +1299,20 @@ ${manualEntries.length ? `
   const budgetPct       = totalCatBudget > 0 ? Math.min((summary.expenses / totalCatBudget) * 100, 100) : 0
 
   const entryTitle = useMemo(() => {
+    if (entryType === 'income' && incomeSourceMode === 'other') return otherIncomeName.trim()
     const firstSub = selectedItems.find(i => i.subName)
     if (firstSub) {
       const subs = selectedItems.filter(i => i.subName).map(i => i.subName)
       return subs.length > 1 ? subs.join(' / ') : firstSub.subName
     }
     return selectedItems[0]?.catName || ''
-  }, [selectedItems])
+  }, [entryType, incomeSourceMode, otherIncomeName, selectedItems])
 
-  const entryCatNames = useMemo(() => [...new Set(selectedItems.map(i => i.catName))], [selectedItems])
+  const entryCatNames = useMemo(() => (
+    entryType === 'income' && incomeSourceMode === 'other'
+      ? ['Andere']
+      : [...new Set(selectedItems.map(i => i.catName))]
+  ), [entryType, incomeSourceMode, selectedItems])
 
   const planTitle = useMemo(() => {
     const firstSub = planSelectedItems.find(i => i.subName)
@@ -1405,6 +1464,8 @@ ${manualEntries.length ? `
     setEntryType(type)
     setSelectedItems([])
     setEntryScope(null)
+    setIncomeSourceMode('standard')
+    setOtherIncomeName('')
     setExpandedCats(initialExpandedForType(type))
     setEntryAmount('')
     setPaidByFatima(false)
@@ -1419,11 +1480,17 @@ ${manualEntries.length ? `
   function openPopupFromDetail() {
     if (!catDetail) return
     const detail = catDetail
-    const category = categories.find(cat => cat.type === detail.type && cat.name === detail.key)
+    const category = categories.find(cat => (
+      cat.type === detail.type && (cat.name === detail.key || cat.subs.some(sub => sub.name === detail.key))
+    ))
     openPopup(detail.type)
     if (category) {
-      setEntryScope({ catId: category.id, catName: category.name })
-      setSelectedItems([{ catId: category.id, catName: category.name, subId: null, subName: null }])
+      const sub = category.subs.find(item => item.name === detail.key)
+      setEntryScope({ catId: category.id, catName: category.name, subId: sub?.id || null, subName: sub?.name || null })
+      setSelectedItems([{ catId: category.id, catName: category.name, subId: sub?.id || null, subName: sub?.name || null }])
+    } else if (detail.type === 'income') {
+      setIncomeSourceMode('other')
+      setOtherIncomeName(detail.key)
     }
   }
 
@@ -1471,7 +1538,16 @@ ${manualEntries.length ? `
   function handleTypeChange(newType) {
     setEntryType(newType)
     setSelectedItems([])
+    setIncomeSourceMode('standard')
+    setOtherIncomeName('')
     setExpandedCats(initialExpandedForType(newType))
+  }
+
+  function handleIncomeSourceModeChange(mode) {
+    setIncomeSourceMode(mode)
+    setSelectedItems([])
+    setExpandedCats(mode === 'standard' ? initialExpandedForType('income') : new Set())
+    if (mode === 'standard') setOtherIncomeName('')
   }
 
   function addEntry(e) {
@@ -3770,6 +3846,10 @@ ${manualEntries.length ? `
                   paidByFatima={paidByFatima}
                   onToggleFatima={() => setPaidByFatima(v => !v)}
                   entryScope={entryScope}
+                  incomeSourceMode={incomeSourceMode}
+                  onIncomeSourceModeChange={handleIncomeSourceModeChange}
+                  otherIncomeName={otherIncomeName}
+                  onOtherIncomeNameChange={setOtherIncomeName}
                 />
               </div>
 

@@ -7130,3 +7130,137 @@
   .fixedCardActions { left: 12px; right: 12px; justify-content: flex-end; }
   .fixedEditActions { display: grid; grid-template-columns: 1fr 1fr; }
 }
+
+/* ── CUSTOM INCOME SOURCE ────────────────────── */
+.incomeSourceBlock {
+  display: grid;
+  gap: 11px;
+}
+
+.incomeSourceChoices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.incomeSourceChoice,
+.incomeSourceChoiceActive {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+  min-height: 64px;
+  padding: 11px 13px;
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 14px;
+  background: var(--bg-card, #fff);
+  color: var(--text-strong, #0d1b2a);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .15s, box-shadow .15s, transform .15s, background .15s;
+}
+
+.incomeSourceChoice:hover {
+  border-color: rgba(22,163,74,.45);
+  transform: translateY(-1px);
+}
+
+.incomeSourceChoiceActive {
+  border-color: #16a34a;
+  background: linear-gradient(135deg, rgba(240,253,244,.96), rgba(255,255,255,.92));
+  box-shadow: 0 0 0 3px rgba(22,163,74,.1), 0 10px 24px rgba(22,101,52,.08);
+}
+
+.incomeSourceChoiceIcon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  background: rgba(22,163,74,.1);
+  color: #15803d;
+  font-size: 18px;
+  font-weight: 900;
+  flex: 0 0 auto;
+}
+
+.incomeSourceChoice > span:last-child,
+.incomeSourceChoiceActive > span:last-child {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.incomeSourceChoice strong,
+.incomeSourceChoiceActive strong {
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.incomeSourceChoice small,
+.incomeSourceChoiceActive small {
+  color: var(--text-muted, #64748b);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.otherIncomeField {
+  display: grid;
+  gap: 6px;
+  padding: 14px;
+  border: 1px solid rgba(22,163,74,.24);
+  border-radius: 14px;
+  background: rgba(240,253,244,.58);
+}
+
+.otherIncomeField > span {
+  color: #166534;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.otherIncomeField input {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid rgba(22,163,74,.28);
+  border-radius: 11px;
+  background: var(--bg-card, #fff);
+  color: var(--text-strong, #0d1b2a);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.otherIncomeField input:focus {
+  border-color: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22,163,74,.12);
+  outline: none;
+}
+
+.otherIncomeField small {
+  color: var(--text-muted, #64748b);
+  font-size: 10px;
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+:global(html[data-theme='dark']) .incomeSourceChoiceActive {
+  border-color: #22c55e;
+  background: linear-gradient(135deg, rgba(22,163,74,.18), rgba(15,23,42,.78));
+}
+
+:global(html[data-theme='dark']) .otherIncomeField {
+  border-color: rgba(34,197,94,.28);
+  background: rgba(22,163,74,.1);
+}
+
+:global(html[data-theme='dark']) .otherIncomeField > span { color: #86efac; }
+
+@media (max-width: 520px) {
+  .incomeSourceChoices { grid-template-columns: 1fr; }
+  .incomeSourceChoice,
+  .incomeSourceChoiceActive { min-height: 58px; }
+}
