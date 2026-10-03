@@ -674,7 +674,7 @@ export const QUESTION_BANK = {
         "knie"
       ],
       "fach": "msk",
-      "question": "Warum ist der Innenmeniskus (Meniscus medialis) im Vergleich zum Außenmeniskus signifikant häufiger von traumatischen Rissen betroffen?",
+      "question": "Welche anatomische Eigenschaft macht den Innenmeniskus (Meniscus medialis) im Allgemeinen anfälliger für traumatische Risse als den Außenmeniskus?",
       "options": [
         {
           "id": "A",
@@ -694,7 +694,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "B",
-      "explanation": "A ist falsch: Die C-Form des Innenmeniskus und die O-Form des Außenmeniskus sind normale anatomische Varianten, die sich an die Form der jeweiligen Tibiaplateaus anpassen. Sie bedingen keine intrinsische mechanische Instabilität des Gewebes.\n\nB ist richtig: Die feste ligamentäre Fixierung des Innenmeniskus an der Gelenkkapsel und dem Innenband (MCL) schränkt seine Mobilität stark ein. Bei plötzlichen Rotations- oder Scherbewegungen kann er – anders als der mobile Außenmeniskus – nicht flexibel ausweichen und reißt deutlich schneller.\n\nC ist falsch: Beide Menisken weisen eine ähnliche vaskuläre Architektur auf. Sie sind in der Peripherie (rote Zone) gut durchblutet und werden nach zentral hin avaskulär. Der Innenmeniskus ist nicht komplett gefäßfrei.\n\nD ist falsch: Beide Menisken artikulieren proximal mit den Femurkondylen und distal mit dem Tibiaplateau, um ihre Hauptfunktion der Kraftübertragung und Stoßdämpfung im Gelenk zu erfüllen."
+      "explanation": "A ist falsch: Die C-Form des Innenmeniskus und die O-Form des Außenmeniskus sind normale anatomische Formen, die sich an die jeweiligen Tibiaplateaus anpassen. Sie verursachen keine intrinsische Instabilität des Gewebes.\n\nB ist richtig: Die feste Verbindung des Innenmeniskus mit Gelenkkapsel und medialem Kollateralband (MCL) schränkt seine Beweglichkeit ein. Bei Rotations- oder Scherbelastungen kann er daher weniger gut ausweichen als der beweglichere Außenmeniskus und ist im Allgemeinen verletzungsanfälliger.\n\nC ist falsch: Beide Menisken besitzen eine vergleichbare Gefäßversorgung: Die periphere rote Zone ist vaskularisiert, während die Versorgung zum Zentrum hin abnimmt. Der Innenmeniskus ist nicht über seine gesamte Breite avaskulär.\n\nD ist falsch: Beide Menisken liegen zwischen Femurkondylen und Tibiaplateau und tragen zur Lastverteilung und Stoßdämpfung im Kniegelenk bei."
     },
     {
       "id": "meniskus-de-02",
@@ -703,7 +703,7 @@ export const QUESTION_BANK = {
         "knie"
       ],
       "fach": "msk",
-      "question": "Welches Kriterium muss laut der etablierten „Two-slice-touch“-Regel erfüllt sein, um die Diagnose eines Meniskusrisses im MRT mit hoher Spezifität zu sichern?",
+      "question": "Welches Kriterium erhöht nach der „Two-slice-touch“-Regel die diagnostische Sicherheit für einen Meniskusriss im MRT?",
       "options": [
         {
           "id": "A",
@@ -723,7 +723,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "B",
-      "explanation": "A ist falsch: Ein Riss muss nicht die gesamte Höhe des Meniskus durchbauen. Es reicht völlig aus, wenn das pathologische Signal entweder nur die obere (superiore) oder nur die untere (inferiore) Gelenkfläche schneidet.\n\nB ist richtig: Die Regel besagt, dass die intrameniskale Signalsteigerung auf mindestens zwei direkt benachbarten Schnittbildern (Slices) Kontakt zur Oberfläche haben muss. Dies eliminiert das Risiko, ein rein technisches Rauschen oder einen Volumenmitteleffekt auf einer Einzelschicht fälschlicherweise als Riss zu interpretieren.\n\nC ist falsch: Obwohl Risse idealerweise in mehreren Sequenzen und Ebenen (sagittal/koronar) evaluiert werden, bezieht sich die spezifische „Two-slice-touch“-Regel rein auf die Kontinuität über aufeinanderfolgende Schichten derselben Sequenz.\n\nD ist falsch: Die Regel ist unabhängig von einer absoluten Millimeter-Metrik. Sie definiert sich ausschließlich über die Anzahl der betroffenen Schichten, auch wenn die Standard-Schnittdicke im Protokoll meist 3 mm beträgt."
+      "explanation": "A ist falsch: Ein Riss muss nicht sowohl die obere als auch die untere Gelenkfläche erreichen. Entscheidend ist der Kontakt des pathologischen Signals mit mindestens einer Gelenkfläche.\n\nB ist richtig: Nach der „Two-slice-touch“-Regel soll ein signalreiches Areal mit Oberflächenkontakt auf mindestens zwei aufeinanderfolgenden Bildern erkennbar sein. Dadurch steigt insbesondere der positive Vorhersagewert und das Risiko einer Fehlinterpretation durch Rauschen oder Partialvolumeneffekte wird reduziert, aber nicht vollständig ausgeschlossen.\n\nC ist falsch: Die Beurteilung in mehreren Sequenzen und Ebenen ist sinnvoll; die „Two-slice-touch“-Regel bezieht sich jedoch auf die Wiederholung des Oberflächenkontakts auf aufeinanderfolgenden Bildern.\n\nD ist falsch: Die Regel verwendet keine feste Mindestlänge in Millimetern, sondern die Anzahl der Bilder mit Oberflächenkontakt."
     },
     {
       "id": "meniskus-de-03",
@@ -752,7 +752,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "C",
-      "explanation": "A ist falsch: Die weiße Zone bildet das zentral gelegene Drittel des Meniskus. Sie ist komplett avaskulär (gefäßfrei) und wird rein per Diffusion durch die Synovialflüssigkeit ernährt. Eine Naht bleibt hier aufgrund fehlender Heilungspotenz fast immer erfolglos.\n\nB ist falsch: Die rot-weiße Zone ist ein Übergangsbereich (ca. 3–5 mm von der Kapsel entfernt). Hier liegt nur noch eine sehr eingeschränkte, kapillare Blutversorgung vor, weshalb die Heilungstendenz nach einer Naht unsicher ist.\n\nC ist richtig: Die rote Zone (Zone I) umfasst den kapsennahen Außenrand (<3 mm). Sie wird direkt über den perimeniskalen Plexus reichlich mit Blut versorgt. Die biologischen Voraussetzungen für die Einwanderung von Fibroblasten und die Gewebeheilung sind hier optimal, was eine Refixation (Naht) begünstigt.\n\nD ist falsch: Die Meniskuswurzeln (Roots) stellen die ligamentäre Verankerung der Meniskushörner am Tibiaplateau dar. Sie beschreiben keine vaskuläre Zone des funktionellen Meniskuskörpers."
+      "explanation": "A ist falsch: Die weiße Zone liegt zentral, ist avaskulär und wird überwiegend durch Diffusion aus der Synovialflüssigkeit ernährt. Deshalb ist ihr biologisches Heilungspotenzial geringer als in den peripheren Zonen.\n\nB ist falsch: Die rot-weiße Zone ist ein Übergangsbereich mit eingeschränkter Gefäßversorgung. Eine Heilung nach Naht ist möglich, aber weniger zuverlässig als in der roten Zone.\n\nC ist richtig: Die rote Zone (Zone I) liegt kapselnah und wird über den perimeniskalen Gefäßplexus versorgt. Sie bietet daher die besten biologischen Voraussetzungen für eine erfolgreiche Meniskusnaht.\n\nD ist falsch: Die Meniskuswurzeln verankern die Meniskushörner am Tibiaplateau; sie bezeichnen keine der drei vaskulären Zonen des Meniskuskörpers."
     },
     {
       "id": "meniskus-de-04",
@@ -761,7 +761,7 @@ export const QUESTION_BANK = {
         "knie"
       ],
       "fach": "msk",
-      "question": "Welche MRT-Sequenz eignet sich laut Protokoll am besten für den definitiven Nachweis von akuten Meniskusrissen, begleitenden Knochenödemen und Kontinuitätsunterbrechungen der Bänder?",
+      "question": "Welche Gruppe von MRT-Sequenzen ist für flüssigkeitsreiche akute Befunde wie Meniskusrisse, Knochenmarködeme und Bandverletzungen besonders empfindlich?",
       "options": [
         {
           "id": "A",
@@ -769,7 +769,7 @@ export const QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "T2-gewichtete oder PD-fettgesättigte (fs) Sequenzen."
+          "text": "Flüssigkeitssensitive, fettgesättigte T2- oder PD-Sequenzen (T2-fs/PD-fs)."
         },
         {
           "id": "C",
@@ -781,7 +781,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "B",
-      "explanation": "A ist falsch: Die native T1-Wichtung bietet zwar eine exzellente anatomische Übersicht und zeigt chronische Fibrosen gut an, ist jedoch nicht flüssigkeitssensitiv. Akuter Riss-induzierter Flüssigkeitseinstrom oder Knochenmarködeme lassen sich darin kaum differenzieren.\n\nB ist richtig: T2-w oder PD-fs (Protonendichte mit Fettsättigung) Sequenzen sind extrem sensitiv für freies Wasser. Da pathologische Veränderungen wie ein Rissspalt (gefüllt mit Synovialflüssigkeit) oder Ödeme viel Wasser enthalten, leuchten sie hyperintens (hell) vor dem unterdrückten, dunklen Hintergrundgewebe auf.\n\nC ist falsch: Eine Schichtdicke von 6 mm ist für die Kniebinnendiagnostik deutlich zu grob. Kleine Risse würden durch den Volumenmitteleffekt komplett maskiert. Der Standard liegt bei maximal 3 mm Schnittdicke.\n\nD ist falsch: Die Phasenkontrast-Angiographie dient der funktionellen Darstellung von Blutströmen in Gefäßen. Für die Beurteilung der statischen, fibrocartilaginären Gewebestrukturen des Kniegelenks ist sie ungeeignet."
+      "explanation": "A ist falsch: Eine native T1-Wichtung liefert wichtige anatomische Informationen, ist aber weniger empfindlich für Ödeme und andere flüssigkeitsreiche akute Veränderungen.\n\nB ist richtig: Fettgesättigte T2- oder PD-Sequenzen sind flüssigkeitssensitiv. Ödeme und flüssigkeitsreiche Läsionen erscheinen vor dem unterdrückten Fettsignal deutlich hyperintens. Die abschließende Beurteilung erfolgt dennoch immer anhand eines vollständigen, multiplanaren MRT-Protokolls.\n\nC ist falsch: Eine Schichtdicke von 6 mm ist für kleine Binnenstrukturen des Knies zu grob und erhöht Partialvolumeneffekte. Üblicherweise werden dünnere Schichten verwendet.\n\nD ist falsch: Die Phasenkontrast-Angiographie dient der Darstellung von Blutfluss und ist nicht die geeignete Methode zur Beurteilung von Menisken und Bändern."
     },
     {
       "id": "meniskus-de-05",
@@ -790,7 +790,7 @@ export const QUESTION_BANK = {
         "knie"
       ],
       "fach": "msk",
-      "question": "Wie unterscheidet sich die Verteilung von Rissen im Hinterhorn des Außenmeniskus im Vergleich zum Innenmeniskus?",
+      "question": "Welche Aussage beschreibt die typische Verteilung von Meniskusrissen korrekt?",
       "options": [
         {
           "id": "A",
@@ -798,7 +798,7 @@ export const QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "Beim Außenmeniskus liegen etwa 50 % der Risse im Hinterhorn, während beim Innenmeniskus ca. 98 % das Hinterhorn betreffen."
+          "text": "Beim Außenmeniskus liegen etwa 55 % der Risse im Hinterhorn; beim Innenmeniskus befinden sich etwa 98 % der Risse im Hinterhorn und Corpus zusammen."
         },
         {
           "id": "C",
@@ -810,7 +810,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "B",
-      "explanation": "A ist falsch: Das Vorderhorn des Außenmeniskus ist zwar häufiger betroffen als das des Innenmeniskus, macht aber keineswegs die Gesamtheit aller Außenmeniskusrisse aus.\n\nB ist richtig: Das Hinterhorn des Innenmeniskus ist durch seine posteriore Fixierung der mechanische Drehpunkt bei Kniebewegungen und extremen Belastungen ausgesetzt – daher liegen hier nahezu 98 % der Risse. Der Außenmeniskus ist mobiler; bei ihm entfällt nur die Hälfte der Risse auf das Hinterhorn, während der Rest auf das Vorderhorn und den Corpus (Mittelabschnitt) verteilt ist.\n\nC ist falsch: Die geometrische O-Form schützt den Außenmeniskus nicht vor Pathologien. Das Hinterhorn bleibt auch hier mit 50 % der Fälle statistisch die häufigste Lokalisation für Risse.\n\nD ist falsch: Aufgrund der stark unterschiedlichen biomechanischen Fixierungen und Beweglichkeiten weisen Innen- und Außenmeniskus völlig unterschiedliche Verteilungsmuster bei Läsionen auf."
+      "explanation": "A ist falsch: Beim Außenmeniskus treten Risse nicht nahezu ausschließlich im Vorderhorn auf.\n\nB ist richtig: Etwa 55 % der Außenmeniskusrisse betreffen das Hinterhorn. Beim Innenmeniskus liegen etwa 98 % der Risse im Hinterhorn und Corpus zusammen; die Zahl 98 % bezieht sich ausdrücklich nicht auf das Hinterhorn allein.\n\nC ist falsch: Die O-Form schützt den Außenmeniskus nicht vor Rissen; das Hinterhorn ist auch dort eine häufige Lokalisation.\n\nD ist falsch: Die Verteilung ist aufgrund anatomischer und biomechanischer Unterschiede nicht identisch."
     },
     {
       "id": "meniskus-de-06",
@@ -839,7 +839,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "C",
-      "explanation": "A ist falsch: Grad 2a ist definiert als ein rein lineares (strichförmiges) Signal im Meniskusinneren, das keinen Kontakt zur superioren oder inferioren Oberfläche aufweist. Es zeigt keine flächige Ausdehnung.\n\nB ist falsch: Grad 2b beschreibt ebenfalls ein lineares Signal, welches jedoch die Gelenkoberfläche auf genau einem einzigen Bild berührt, was den Befund inkonklusiv für einen echten Riss macht.\n\nC ist richtig: Ein keilförmiges, flächiges oder kugelförmiges (globuläres) Signal im Gewebe ohne eindeutigen Oberflächenkontakt entspricht dem Stadium Grad 2c nach Lotysch. Es repräsentiert eine fortgeschrittene mukoide Degeneration mit einem sehr hohen Risiko für das Vorliegen eines okkulten (versteckten) Risses.\n\nD ist falsch: Grad 3 setzt voraus, dass das Signal die Gelenkoberfläche eindeutig und reproduzierbar durchbricht (auf mindestens zwei aufeinanderfolgenden Schichten). Solange kein Oberflächenkontakt vorliegt, darf kein Grad 3 diagnostiziert werden."
+      "explanation": "A ist falsch: Grad 2a bezeichnet ein lineares intrameniskales Signal ohne Kontakt zur superioren oder inferioren Gelenkfläche.\n\nB ist falsch: Grad 2b bezeichnet ein lineares Signal, das auf nur einem Bild die Gelenkfläche erreicht; der Befund ist damit weniger sicher für einen echten Riss.\n\nC ist richtig: Ein keilförmiges oder globuläres intrameniskales Signal ohne eindeutigen Oberflächenkontakt entspricht Grad 2c nach Lotysch. Es spricht für eine intrameniskale Degeneration, ist für sich allein aber kein sicherer Nachweis eines Risses.\n\nD ist falsch: Grad 3 ist durch die eindeutige Ausdehnung des Signals bis zu mindestens einer Gelenkfläche definiert. Ein Nachweis auf mindestens zwei Bildern erhöht die diagnostische Sicherheit, ist aber von der grundlegenden Graddefinition zu unterscheiden."
     },
     {
       "id": "haemangiom-de-01",
@@ -2041,7 +2041,7 @@ export const QUESTION_BANK = {
         "knie"
       ],
       "fach": "msk",
-      "question": "Why is the medial meniscus significantly more frequently affected by traumatic tears compared to the lateral meniscus?",
+      "question": "Which anatomical feature generally makes the medial meniscus more susceptible to traumatic tears than the lateral meniscus?",
       "options": [
         {
           "id": "A",
@@ -2061,7 +2061,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "B",
-      "explanation": "A is incorrect: The C-shape of the medial meniscus and the O-shape of the lateral meniscus are normal anatomical variations matching their respective tibial plateaus. They do not cause intrinsic mechanical tissue instability.\n\nB is correct: The firm ligamentous anchoring of the medial meniscus to the capsule and the medial collateral ligament (MCL) severely limits its mobility. Under rotational or shearing stress, it cannot glide out of the way like the mobile lateral meniscus, making it highly susceptible to tears.\n\nC is incorrect: Both menisci share a similar vascular layout, featuring a well-perfused periphery (red zone) and an avascular central region. The medial meniscus is not entirely devoid of blood vessels.\n\nD is incorrect: Both menisci articulate with the femoral condyles superiorly and the tibial plateau inferiorly to perform their primary load-bearing and shock-absorbing functions within the joint."
+      "explanation": "A is incorrect: The C-shape of the medial meniscus and the O-shape of the lateral meniscus are normal anatomical forms adapted to their respective tibial plateaus. They do not cause intrinsic tissue instability.\n\nB is correct: The medial meniscus is firmly attached to the joint capsule and medial collateral ligament (MCL), which limits its mobility. During rotational or shearing stress, it is less able to move away than the more mobile lateral meniscus and is therefore generally more susceptible to injury.\n\nC is incorrect: Both menisci have a similar vascular pattern: the peripheral red zone is vascularized, while vascularity decreases toward the center. The medial meniscus is not avascular across its entire width.\n\nD is incorrect: Both menisci lie between the femoral condyles and tibial plateau and contribute to load distribution and shock absorption."
     },
     {
       "id": "meniskus-en-02",
@@ -2070,7 +2070,7 @@ export const QUESTION_BANK = {
         "knie"
       ],
       "fach": "msk",
-      "question": "According to the established \"two-slice-touch\" rule, which criterion must be met to diagnose a meniscus tear on MRI with high specificity?",
+      "question": "According to the \"two-slice-touch\" rule, which criterion increases diagnostic confidence for a meniscal tear on MRI?",
       "options": [
         {
           "id": "A",
@@ -2090,7 +2090,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "B",
-      "explanation": "A is incorrect: A tear does not need to span the entire height of the meniscus. It is completely sufficient if the pathological signal intersects either the superior or the inferior articular surface.\n\nB is correct: This rule dictates that the intrameniscal signal abnormality must communicate with the articular surface on at least two directly adjacent images (slices). This eliminates the risk of misinterpreting technical noise or volume averaging artifacts on a single slice as a true tear.\n\nC is incorrect: While tears should ideally be verified across multiple planes (sagittal/coronal) and sequences, the \"two-slice-touch\" rule specifically demands continuity across successive slices within the same sequence.\n\nD is incorrect: The rule is independent of absolute millimeter measurements. It relies solely on the number of involved slices, regardless of the protocol's standard slice thickness (which is typically 3 mm)."
+      "explanation": "A is incorrect: A tear does not need to reach both the superior and inferior articular surfaces. The relevant finding is communication of the abnormal signal with at least one articular surface.\n\nB is correct: Under the \"two-slice-touch\" rule, an abnormal intrameniscal signal communicating with the articular surface should be visible on at least two consecutive images. This increases the positive predictive value and reduces, but does not eliminate, misinterpretation caused by noise or partial-volume effects.\n\nC is incorrect: Assessment in multiple planes and sequences is useful, but the \"two-slice-touch\" rule specifically concerns repeated surface contact on consecutive images.\n\nD is incorrect: The rule does not use a fixed minimum length in millimeters; it is based on the number of images showing surface contact."
     },
     {
       "id": "meniskus-en-03",
@@ -2119,7 +2119,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "C",
-      "explanation": "A is incorrect: The white zone comprises the central third of the meniscus and is completely avascular, relying purely on diffusion from synovial fluid. Suturing here almost always fails due to the lack of healing potential.\n\nB is incorrect: The red-white zone is a transitional area (approx. 3–5 mm from the capsule). It contains only a sparse, capillary blood supply, making the predictability of tissue healing after suturing highly uncertain.\n\nC is correct: The red zone (Zone I) represents the peripheral outer rim (<3 mm from the capsule) and receives a rich blood supply from the perimeniscal capillary plexus. The biological prerequisites for fibroblast migration and tissue repair are optimal here, favoring anatomical reconstruction.\n\nD is incorrect: The meniscal roots anchor the anterior and posterior horns to the tibial plateau. They represent specific ligamentous attachments rather than a vascular zone of the functional meniscal body."
+      "explanation": "A is incorrect: The white zone lies centrally, is avascular, and is nourished mainly by diffusion from synovial fluid. Its biological healing potential is therefore lower than that of the peripheral zones.\n\nB is incorrect: The red-white zone is a transitional region with limited vascular supply. Healing after repair is possible, but less reliable than in the red zone.\n\nC is correct: The red zone (Zone I) lies close to the capsule and is supplied by the perimeniscal vascular plexus. It therefore offers the best biological conditions for successful meniscal repair.\n\nD is incorrect: The meniscal roots anchor the horns to the tibial plateau; they do not represent one of the three vascular zones of the meniscal body."
     },
     {
       "id": "meniskus-en-04",
@@ -2128,7 +2128,7 @@ export const QUESTION_BANK = {
         "knie"
       ],
       "fach": "msk",
-      "question": "According to standard protocols, which MRI sequence is best suited for the definitive detection of acute meniscus tears, accompanying bone marrow edema, and ligament disruptions?",
+      "question": "Which group of MRI sequences is particularly sensitive to fluid-rich acute findings such as meniscal tears, bone marrow edema, and ligament injuries?",
       "options": [
         {
           "id": "A",
@@ -2136,7 +2136,7 @@ export const QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "T2-weighted or PD fat-saturated (fs) sequences."
+          "text": "Fluid-sensitive fat-saturated T2- or PD-weighted sequences (T2-FS/PD-FS)."
         },
         {
           "id": "C",
@@ -2148,7 +2148,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "B",
-      "explanation": "A is incorrect: Native T1-weighting provides excellent anatomical details and screens well for chronic fibrosis, but it lacks fluid sensitivity. Acute fluid entering a tear cleft or bone marrow edema cannot be reliably differentiated.\n\nB is correct: T2-w or PD-fs (proton density fat-saturated) sequences are highly sensitive to free fluid. Pathological changes like a tear gap (filled with synovial fluid) or marrow edema contain high amounts of water and appear hyperintense (bright) against the suppressed, dark background.\n\nC is incorrect: A 6 mm slice thickness is far too thick for internal knee derangement diagnostics. Small tears would be completely hidden due to volume averaging effects. The standard protocol requires a maximum thickness of 3 mm.\n\nD is incorrect: Phase-contrast angiography is designed to image fluid dynamics within vessels. It is entirely unsuited for evaluating the static, fibrocartilaginous tissue components of the knee joint."
+      "explanation": "A is incorrect: A non-fat-saturated T1-weighted sequence provides important anatomical information but is less sensitive to edema and other fluid-rich acute abnormalities.\n\nB is correct: Fat-saturated T2- or PD-weighted sequences are fluid-sensitive. Edema and fluid-rich lesions appear conspicuously hyperintense against the suppressed fat signal. Final assessment should nevertheless use a complete multiplanar MRI protocol.\n\nC is incorrect: A 6 mm slice thickness is too coarse for small internal structures of the knee and increases partial-volume effects. Thinner slices are routinely used.\n\nD is incorrect: Phase-contrast angiography is designed to assess blood flow and is not appropriate for evaluating the menisci and ligaments."
     },
     {
       "id": "meniskus-en-05",
@@ -2157,7 +2157,7 @@ export const QUESTION_BANK = {
         "knie"
       ],
       "fach": "msk",
-      "question": "How does the distribution of tears in the posterior horn of the lateral meniscus differ compared to the medial meniscus?",
+      "question": "Which statement correctly describes the typical distribution of meniscal tears?",
       "options": [
         {
           "id": "A",
@@ -2165,7 +2165,7 @@ export const QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "In the lateral meniscus, about 50% of tears are located in the posterior horn, whereas in the medial meniscus, approximately 98% affect the posterior horn."
+          "text": "Approximately 55% of lateral meniscal tears involve the posterior horn, whereas about 98% of medial meniscal tears are located in the posterior horn and body combined."
         },
         {
           "id": "C",
@@ -2177,7 +2177,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "B",
-      "explanation": "A is incorrect: Although the anterior horn of the lateral meniscus is torn more often than that of the medial meniscus, it does not account for all or even the majority of lateral meniscal tears.\n\nB is correct: Because the posterior horn of the medial meniscus is rigidly fixed, it acts as a mechanical pivot during knee movement, absorbing immense stress—causing roughly 98% of its tears to occur there. The lateral meniscus is less constrained; only half of its tears affect the posterior horn, with the remainder distributed among the body (corpus) and anterior horn.\n\nC is incorrect: The geometric O-shape does not immunize the lateral meniscus against injury. Statistically, the posterior horn remains the most common site for tears, accounting for 50% of cases.\n\nD is incorrect: Due to completely different biomechanical fixations and mobility profiles, the medial and lateral menisci display entirely distinct lesion distribution patterns."
+      "explanation": "A is incorrect: Lateral meniscal tears do not occur almost exclusively in the anterior horn.\n\nB is correct: Approximately 55% of lateral meniscal tears involve the posterior horn. About 98% of medial meniscal tears are located in the posterior horn and body combined; importantly, the 98% figure does not refer to the posterior horn alone.\n\nC is incorrect: The O-shape does not protect the lateral meniscus from tears; the posterior horn remains a common location.\n\nD is incorrect: The distributions are not identical because the two menisci differ anatomically and biomechanically."
     },
     {
       "id": "meniskus-en-06",
@@ -2206,7 +2206,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "C",
-      "explanation": "A is incorrect: Grade 2a is strictly defined as a purely linear (line-like) intrameniscal signal that shows absolutely no communication with either the superior or inferior articular surface. It lacks any broad or expanding morphology.\n\nB is incorrect: Grade 2b also describes a linear signal, but one that touches the articular surface on exactly a single slice, rendering the imaging finding inconclusive for a definitive tear.\n\nC is correct: A wedge-shaped, wide, or rounded (globular) intrameniscal signal that does not definitively break through the surface is classified as Lotysch Grade 2c. This indicates severe mucoid degeneration carrying an exceptionally high risk of an underlying occult (hidden) tear.\n\nD is incorrect: Grade 3 requires the signal to clearly and reproducibly breach the articular surface on at least two consecutive slices. Without objective surface contact, a Grade 3 diagnosis is not permitted."
+      "explanation": "A is incorrect: Grade 2a describes a linear intrameniscal signal without contact with either the superior or inferior articular surface.\n\nB is incorrect: Grade 2b describes a linear signal that reaches an articular surface on only one image, making the finding less certain for a true tear.\n\nC is correct: A wedge-shaped or globular intrameniscal signal without definite surface contact is classified as Lotysch Grade 2c. It indicates intrameniscal degeneration but is not, by itself, definitive proof of a tear.\n\nD is incorrect: Grade 3 is defined by unequivocal extension of the signal to at least one articular surface. Demonstration on at least two images increases diagnostic confidence but should be distinguished from the basic grade definition."
     },
     {
       "id": "haemangiom-en-01",
@@ -3408,7 +3408,7 @@ export const QUESTION_BANK = {
         "knie"
       ],
       "fach": "msk",
-      "question": "چرا منیسک داخلی (Meniscus medialis) در مقایسه با منیسک خارجی به طور معناداری بیشتر دچار پارگی‌های تروماتیک (ناشی از ضربه) می‌شود؟",
+      "question": "کدام ویژگی آناتومیک، منیسک داخلی (Meniscus medialis) را به‌طور کلی نسبت به منیسک خارجی مستعدتر پارگی‌های تروماتیک می‌کند؟",
       "options": [
         {
           "id": "A",
@@ -3420,7 +3420,7 @@ export const QUESTION_BANK = {
         },
         {
           "id": "C",
-          "text": "در تمام پهنای خود دارای خون‌رسانی کاملاً غیرعروقی (بدون رگ) است."
+          "text": "در سراسر پهنای خود کاملاً بدون عروق است."
         },
         {
           "id": "D",
@@ -3428,7 +3428,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "B",
-      "explanation": "الف غلط است: شکل C در منیسک داخلی و شکل O در منیسک خارجی، واریانت‌های آناتومیک نرمال هستند که با شکل پلاتوی تیبیا مطابقت دارند. این اشکال هندسی به خودی خود باعث ناپایداری مکانیکی بافت نمی‌شوند.\n\nب صحیح است: اتصال محکم منیسک داخلی به کپسول مفصلی و رباط جانبی داخلی (MCL) تحرک آن را به شدت محدود می‌کند. در هنگام حرکات چرخشی یا اعمال نیروهای برشی ناگهانی، این منیسک – برخلاف منیسک خارجی که آزاد و متحرک است – نمی‌تواند جابجا شود و پاره می‌شود.\n\nج غلط است: هر دو منیسک ساختار عروقی مشابهی دارند؛ یعنی در محیط (ناحیه قرمز) دارای رگ‌های خونی هستند و به سمت مرکز بدون رگ (آواسکولار) می‌شوند. منیسک داخلی کاملاً فاقد عروق نیست.\n\nد غلط است: هر دو منیسک از سمت بالا (پروکسیمال) با کندیل‌های فمور و از سمت پایین (دیستال) با پلاتوی تیبیا مفصل می‌شوند تا وظیفه اصلی خود یعنی توزیع بار و جذب ضربه را در مفصل انجام دهند."
+      "explanation": "الف غلط است: شکل C در منیسک داخلی و شکل O در منیسک خارجی، فرم‌های طبیعی آناتومیک و متناسب با پلاتوی تیبیا هستند و به‌تنهایی باعث ناپایداری بافت نمی‌شوند.\n\nب صحیح است: اتصال محکم منیسک داخلی به کپسول مفصلی و رباط جانبی داخلی (MCL)، تحرک آن را محدود می‌کند. بنابراین هنگام نیروهای چرخشی یا برشی، در مقایسه با منیسک خارجیِ متحرک‌تر توان کمتری برای کنار رفتن دارد و به‌طور کلی مستعدتر آسیب است.\n\nج غلط است: هر دو منیسک الگوی عروقی مشابهی دارند؛ ناحیه محیطی قرمز خون‌رسانی دارد و میزان عروق به سمت مرکز کاهش می‌یابد. منیسک داخلی در تمام پهنای خود بدون عروق نیست.\n\nد غلط است: هر دو منیسک بین کندیل‌های فمور و پلاتوی تیبیا قرار دارند و در توزیع بار و جذب ضربه نقش دارند."
     },
     {
       "id": "meniskus-fa-02",
@@ -3437,7 +3437,7 @@ export const QUESTION_BANK = {
         "knie"
       ],
       "fach": "msk",
-      "question": "طبق قانون شناخته‌شده‌ی \"تماس در دو برش (تماس در دو برش (Two-slice-touch))\" (تماس در دو تصویر)، چه معیاری باید وجود داشته باشد تا تشخیص پارگی منیسک در MRI با دقت و ویژگی بالا تایید شود؟",
+      "question": "طبق قانون «Two-slice-touch» (تماس در دو تصویر)، کدام معیار اطمینان تشخیصی پارگی منیسک در MRI را افزایش می‌دهد؟",
       "options": [
         {
           "id": "A",
@@ -3457,7 +3457,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "B",
-      "explanation": "الف غلط است: یک پارگی نیازی ندارد که کل ارتفاع منیسک را طی کند. اگر سیگنال پاتولوژیک فقط به سطح مفصلی بالایی (سوپریور) یا فقط به سطح پایینی (اینفریور) رسیده باشد، برای تشخیص کفایت می‌کند.\n\nب صحیح است: این قانون تصریح می‌کند که سیگنال افزایش‌یافته‌ی داخل منیسک باید حداقل در دو برش مجاور و پشت‌سرهم با سطح مفصل تماس داشته باشد. این معیار خطر اشتباه گرفتن نویزهای تکنیکی دستگاه یا پدیده حجم متوسط (Volume Averaging) در یک تک‌برش را با پارگی واقعی از بین می‌برد.\n\nج غلط است: اگرچه بررسی پارگی در سکانس‌ها و صفحات مختلف (ساجیتال/کورونال) ایده‌آل است، اما قانون خاص \"تماس در دو برش (تماس در دو برش (Two-slice-touch))\" صرفاً بر تداوم ضایعه در برش‌های متوالی یک سکانس واحد تاکید دارد.\n\nد غلط است: این قانون مستقل از اندازه‌گیری‌های مطلق به میلی‌متر است و فقط بر اساس تعداد برش‌های درگیر تعریف می‌شود، حتی اگر ضخامت استاندارد برش‌ها در پروتکل معمولاً ۳ میلی‌متر باشد."
+      "explanation": "الف غلط است: پارگی لازم نیست هم‌زمان به سطح مفصلی فوقانی و تحتانی برسد؛ تماس سیگنال غیرطبیعی با دست‌کم یکی از سطوح مفصلی اهمیت دارد.\n\nب صحیح است: طبق قانون «Two-slice-touch»، سیگنال غیرطبیعی داخل منیسک که با سطح مفصلی ارتباط دارد باید حداقل در دو تصویر متوالی دیده شود. این معیار ارزش اخباری مثبت را افزایش می‌دهد و احتمال تفسیر اشتباه نویز یا اثر حجم نسبی را کاهش می‌دهد، اما آن را کاملاً حذف نمی‌کند.\n\nج غلط است: بررسی چند سکانس و چند صفحه مفید است، اما این قانون مشخصاً به تکرار تماس با سطح در تصاویر متوالی اشاره دارد.\n\nد غلط است: این قانون حداقل طول ثابتی بر حسب میلی‌متر تعیین نمی‌کند و بر تعداد تصاویر دارای تماس سطحی استوار است."
     },
     {
       "id": "meniskus-fa-03",
@@ -3466,7 +3466,7 @@ export const QUESTION_BANK = {
         "knie"
       ],
       "fach": "msk",
-      "question": "پارگی منیسک در کدام ناحیه عروقی (خون‌رسانی)، بهترین شرایط بیولوژیکی را برای یک جراحی ترمیم و دوختن موفقیت‌آمیز (Suture) دارد؟",
+      "question": "پارگی منیسک در کدام ناحیه عروقی، بهترین شرایط بیولوژیک را برای ترمیم موفق منیسک با بخیه دارد؟",
       "options": [
         {
           "id": "A",
@@ -3486,7 +3486,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "C",
-      "explanation": "الف غلط است: ناحیه سفید یک‌سوم مرکزی منیسک را تشکیل می‌دهد، کاملاً آواسکولار (بدون رگ) است و تغذیه آن صرفاً از طریق انتشار (دیفیوژن) مایع سینوویال انجام می‌شود. بخیه زدن در این ناحیه به دلیل عدم پتانسیل ترمیم بافتی تقریباً همیشه شکست می‌خورد.\n\nب غلط است: ناحیه قرمز-سفید یک منطقه بینابینی است (حدود ۳ تا ۵ میلی‌متر از کپسول). در این ناحیه خون‌رسانی مویرگی بسیار محدودی وجود دارد، به همین دلیل پیش‌آگهی و روند ترمیم بافت پس از بخیه زدن نامشخص و نامطمئن است.\n\nج صحیح است: ناحیه قرمز (Zone I) شامل لبه بیرونی و مجاور کپسول مفصلی است (فاصله کمتر از ۳ میلی‌متر). این ناحیه مستقیماً از طریق شبکه مویرگی دور منیسکی خون‌رسانی می‌شود. شرایط بیولوژیک برای مهاجرت فیبروبلاست‌ها و ترمیم بافت در اینجا ایده‌آل است و جوش خوردن بخیه را تسهیل می‌کند.\n\nد غلط است: ریشه‌های منیسک (Roots) محل اتصال لیگامانی شاخ‌های منیسک به پلاتوی تیبیا هستند. این بخش‌ها یک ناحیه عروقی در تنه کارکردی منیسک محسوب نمی‌شوند."
+      "explanation": "الف غلط است: ناحیه سفید در بخش مرکزی منیسک قرار دارد، بدون عروق است و عمدتاً از طریق انتشار مایع سینوویال تغذیه می‌شود؛ بنابراین ظرفیت ترمیم بیولوژیک آن از نواحی محیطی کمتر است.\n\nب غلط است: ناحیه قرمز-سفید یک ناحیه انتقالی با خون‌رسانی محدود است. ترمیم پس از بخیه در آن امکان‌پذیر است، اما نسبت به ناحیه قرمز قابلیت پیش‌بینی کمتری دارد.\n\nج صحیح است: ناحیه قرمز (Zone I) نزدیک کپسول قرار دارد و از شبکه عروقی پیرامون منیسک خون‌رسانی می‌شود؛ بنابراین بهترین شرایط بیولوژیک را برای ترمیم موفق با بخیه دارد.\n\nد غلط است: ریشه‌های منیسک، شاخ‌های منیسک را به پلاتوی تیبیا متصل می‌کنند و یکی از سه ناحیه عروقی تنه منیسک محسوب نمی‌شوند."
     },
     {
       "id": "meniskus-fa-04",
@@ -3495,7 +3495,7 @@ export const QUESTION_BANK = {
         "knie"
       ],
       "fach": "msk",
-      "question": "طبق پروتکل‌های استاندارد، کدام سکانس MRI بهترین گزینه برای تشخیص قطعی پارگی‌های حاد منیسک، ادم (تجمع مایع) مغز استخوان و پارگی رباط‌ها است؟",
+      "question": "کدام گروه از سکانس‌های MRI برای یافته‌های حاد و پرمایع مانند پارگی منیسک، ادم مغز استخوان و آسیب رباط‌ها حساس‌تر است؟",
       "options": [
         {
           "id": "A",
@@ -3503,7 +3503,7 @@ export const QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "سکانس‌های T2-weighted یا فشرده با حذف چربی (PD-fs)."
+          "text": "سکانس‌های T2 یا Proton Density با سرکوب چربی (T2-FS/PD-FS)."
         },
         {
           "id": "C",
@@ -3511,11 +3511,11 @@ export const QUESTION_BANK = {
         },
         {
           "id": "D",
-          "text": "آنژیوگرافی تداخل فاز با وزن T2*."
+          "text": "آنژیوگرافی کنتراست فازی با وزن T2*."
         }
       ],
       "correct": "B",
-      "explanation": "الف غلط است: سکانس T1 معمولی اگرچه آناتومی را به خوبی نشان می‌دهد و برای ارزیابی فیبروز مزمن مفید است، اما به مایعات حساس نیست. مایع حاد وارد شده به خط پارگی یا ادم مغز استخوان در این سکانس به درستی تفکیک نمی‌شوند.\n\nب صحیح است: سکانس‌های T2 یا PD-fs (پروتون دنسیتی با حذف چربی) به شدت به آب آزاد حساس هستند. از آنجا که پاتولوژی‌هایی مانند خط پارگی (پر شده با مایع سینوویال) یا ادم حاوی آب زیادی هستند، در این سکانس‌ها به صورت هایپرینتنس (روشن و سفید) در یک پس‌زمینه تاریک و حذف‌شده به خوبی دیده می‌شوند.\n\nج غلط است: ضخامت برش ۶ میلی‌متر برای تشخیص ضایعات داخلی زانو بسیار ضخیم است. پارگی‌های کوچک به دلیل پدیده حجم متوسط کاملاً محو می‌شوند. استاندارد پروتکل حداکثر ۳ میلی‌متر است.\n\nد غلط است: آنژیوگرافی تداخل فاز برای نشان دادن دینامیک جریان خون در رگ‌ها کاربرد دارد و برای ارزیابی بافت‌های استاتیک و غضروفی-فیبری مفصل زانو کاملاً بی‌استفاده است."
+      "explanation": "الف غلط است: سکانس T1 بدون سرکوب چربی اطلاعات آناتومیک مهمی می‌دهد، اما برای ادم و سایر تغییرات حاد پرمایع حساسیت کمتری دارد.\n\nب صحیح است: سکانس‌های T2 یا PD با سرکوب چربی به مایع حساس‌اند. ادم و ضایعات پرمایع در برابر سیگنال سرکوب‌شده چربی به‌صورت هایپراینتنس دیده می‌شوند. بااین‌حال، ارزیابی نهایی باید بر اساس یک پروتکل کامل و چندصفحه‌ای MRI انجام شود.\n\nج غلط است: ضخامت برش ۶ میلی‌متر برای ساختارهای کوچک داخل زانو زیاد است و اثر حجم نسبی را افزایش می‌دهد؛ معمولاً از برش‌های نازک‌تر استفاده می‌شود.\n\nد غلط است: آنژیوگرافی کنتراست فازی برای ارزیابی جریان خون طراحی شده و روش مناسبی برای بررسی منیسک‌ها و رباط‌ها نیست."
     },
     {
       "id": "meniskus-fa-05",
@@ -3524,7 +3524,7 @@ export const QUESTION_BANK = {
         "knie"
       ],
       "fach": "msk",
-      "question": "نحوه توزیع و پخش شدن پارگی‌ها در شاخ پشتی (Hinterhorn) منیسک خارجی چه تفاوتی با منیسک داخلی دارد؟",
+      "question": "کدام عبارت، الگوی معمول توزیع پارگی‌های منیسک را به‌درستی توصیف می‌کند؟",
       "options": [
         {
           "id": "A",
@@ -3532,7 +3532,7 @@ export const QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "در منیسک خارجی حدود ۵۰٪ پارگی‌ها در شاخ پشتی رخ می‌دهد، در حالی که در منیسک داخلی حدود ۹۸٪ پارگی‌ها مربوط به شاخ پشتی است."
+          "text": "حدود ۵۵٪ پارگی‌های منیسک خارجی در شاخ پشتی رخ می‌دهند؛ در منیسک داخلی نیز حدود ۹۸٪ پارگی‌ها در مجموعِ شاخ پشتی و تنه قرار دارند."
         },
         {
           "id": "C",
@@ -3544,7 +3544,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "B",
-      "explanation": "الف غلط است: اگرچه شاخ جلویی منیسک خارجی بیشتر از منیسک داخلی دچار پارگی می‌شود، اما به هیچ وجه شامل تمام یا حتی اکثریت پارگی‌های منیسک خارجی نیست.\n\nب صحیح است: شاخ پشتی منیسک داخلی به دلیل تثبیت بودن، نقطه اتکای مکانیکی در حرکات زانو است و استرس شدیدی را تحمل می‌کند؛ به همین دلیل نزدیک به ۹۸٪ پارگی‌های آن در این ناحیه است. منیسک خارجی متحرک‌تر است؛ بنابراین تنها نیمی از پارگی‌های آن در شاخ پشتی رخ می‌دهد و بقیه در بدنه (Corpus) و شاخ جلویی پخش می‌شوند.\n\nج غلط است: شکل هندسی O مانند، منیسک خارجی را در برابر آسیب مصون نمی‌کند. از نظر آماری، شاخ پشتی همچنان با ۵۰٪ موارد، شایع‌ترین محل پارگی در منیسک خارجی است.\n\nد غلط است: به دلیل تفاوت‌های ساختاری و بیومکانیکی در میزان تثبیت و تحرک، منیسک داخلی و خارجی الگوهای توزیع ضایعه کاملاً متفاوتی را نشان می‌دهند."
+      "explanation": "الف غلط است: پارگی‌های منیسک خارجی تقریباً به‌طور انحصاری در شاخ جلویی رخ نمی‌دهند.\n\nب صحیح است: حدود ۵۵٪ پارگی‌های منیسک خارجی، شاخ پشتی را درگیر می‌کنند. در منیسک داخلی حدود ۹۸٪ پارگی‌ها در مجموعِ شاخ پشتی و تنه قرار دارند؛ عدد ۹۸٪ فقط مربوط به شاخ پشتی نیست.\n\nج غلط است: شکل O مانند، منیسک خارجی را در برابر پارگی محافظت نمی‌کند و شاخ پشتی همچنان یکی از محل‌های شایع آسیب است.\n\nد غلط است: به دلیل تفاوت‌های آناتومیک و بیومکانیک، الگوی توزیع پارگی در دو منیسک یکسان نیست."
     },
     {
       "id": "meniskus-fa-06",
@@ -3553,7 +3553,7 @@ export const QUESTION_BANK = {
         "knie"
       ],
       "fach": "msk",
-      "question": "یک گزارش رادیولوژی، وجود یک سیگنال گوهه‌ای شکل یا گرد (Globular) را در بافت منیسک توصیف می‌کند که در تصویر موجود، پاره شده و به سطح مفصل نرسیده است. این وضعیت با کدام ساب‌تایپ (زیرگروه) سیستم درجه‌بندی Lotysch مطابقت دارد؟",
+      "question": "در MRI یک سیگنال گوه‌ای‌شکل یا گرد (Globular) داخل منیسک دیده می‌شود که به سطح مفصلی نمی‌رسد. این یافته با کدام زیرگروه درجه‌بندی Lotysch مطابقت دارد؟",
       "options": [
         {
           "id": "A",
@@ -3573,7 +3573,7 @@ export const QUESTION_BANK = {
         }
       ],
       "correct": "C",
-      "explanation": "الف غلط است: درجه 2a دقیقاً به عنوان یک سیگنال خطی (خط‌مانند) در داخل منیسک تعریف می‌شود که هیچ اتصالی با سطح مفصلی بالایی یا پایینی ندارد و فاقد هرگونه گسترش وسیع یا گرد است.\n\nب غلط است: درجه 2b نیز یک سیگنال خطی را توصیف می‌کند، با این تفاوت که سیگنال دقیقاً در یک تک‌برش با سطح مفصل تماس پیدا می‌کند که این یافته را برای پارگی قطعی غیرقابل استناد (Inconclusive) می‌سازد.\n\nج صحیح است: یک سیگنال درون‌منیسکی به شکل گوهه‌ای، وسیع یا گرد (Globular) که به طور قطعی سطح را قطع نکرده است، طبق سیستم لوتیش درجه 2c نامیده می‌شود. این حالت نشان‌دهنده دژنراسیون موکوئید پیشرفته است و ریسک بسیار بالایی برای یک پارگی مخفی (Occult) دارد.\n\nد غلط است: درجه ۳ مستلزم آن است که سیگنال به طور واضح و تکرارپذیر (حداقل در دو برش متوالی) سطح مفصلی را قطع کرده باشد. تا زمانی که تماس با سطح احراز نشود، تشخیص درجه ۳ مجاز نیست."
+      "explanation": "الف غلط است: درجه 2a یک سیگنال خطی داخل منیسک را توصیف می‌کند که با سطح مفصلی فوقانی یا تحتانی تماس ندارد.\n\nب غلط است: درجه 2b به سیگنال خطی گفته می‌شود که فقط در یک تصویر به سطح مفصلی می‌رسد؛ بنابراین برای اثبات پارگی واقعی اطمینان کمتری دارد.\n\nج صحیح است: سیگنال گوه‌ای‌شکل یا گرد داخل منیسک، بدون تماس قطعی با سطح مفصلی، مطابق درجه 2c در سیستم Lotysch است. این یافته نشان‌دهنده دژنراسیون داخل منیسک است، اما به‌تنهایی پارگی قطعی را ثابت نمی‌کند.\n\nد غلط است: درجه ۳ با امتداد واضح سیگنال تا حداقل یکی از سطوح مفصلی تعریف می‌شود. مشاهده آن در حداقل دو تصویر، اطمینان تشخیصی را افزایش می‌دهد اما باید از تعریف پایه درجه ۳ تفکیک شود."
     },
     {
       "id": "haemangiom-fa-01",
