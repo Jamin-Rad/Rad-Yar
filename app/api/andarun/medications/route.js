@@ -1,11 +1,18 @@
 import { NextResponse } from 'next/server'
 import { requireAndarunSession } from '@/lib/andarunPasswordAuth'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
+import {
+  evaluateTimingByLocalTime,
+  isValidScheduleTime,
+  legacyDoseLogKey,
+  normalizeMedicationSchedules,
+  scheduleLogKey,
+} from '@/lib/medicationSchedule'
 
 const STATE_ID = 'andarun:medications:v1'
 const DEFAULT_PROFILE = { id: 'benjamin', name: 'بنیامین', initials: 'ب‌ز' }
 const EMPTY_STATE = {
-  version: 1,
+  version: 2,
   profiles: [DEFAULT_PROFILE],
   activeProfileId: DEFAULT_PROFILE.id,
   medicines: [],
@@ -21,7 +28,7 @@ function cleanText(value, maxLength = 160) {
 }
 
 function cleanTime(value) {
-  return typeof value === 'string' && /^([01]\d|2[0-3]):[0-5]\d$/.test(value) ? value : ''
+  return isValidScheduleTime(value) ? value : ''
 }
 
 function cleanDate(value) {
@@ -32,9 +39,13 @@ function cleanMedicine(value) {
   const weekdays = Array.isArray(value?.weekdays)
     ? [...new Set(value.weekdays.map(Number).filter(day => day >= 0 && day <= 6))].sort()
     : []
-  const times = Array.isArray(value?.times)
-    ? [...new Set(value.times.map(cleanTime).filter(Boolean))].sort()
-    : []
+  const schedules = normalizeMedicationSchedules(value)
+    .map(schedule => ({
+      ...schedule,
+      id: cleanText(schedule.id, 80) || crypto.randomUUID(),
+      time: cleanTime(schedule.time),
+    }))
+    .filter(schedule => schedule.time)
 
   return {
     id: cleanText(value?.id, 80) || crypto.randomUUID(),
@@ -42,7 +53,7 @@ function cleanMedicine(value) {
     name: cleanText(value?.name, 100),
     amount: cleanText(value?.amount, 80) || '۱ عدد',
     note: cleanText(value?.note, 180),
-    times: times.length ? times.slice(0, 8) : ['08:00'],
+    schedules: schedules.length ? schedules.slice(0, 8) : normalizeMedicationSchedules({ times: ['08:00'] }),
     weekdays: weekdays.length ? weekdays : [0, 1, 2, 3, 4, 5, 6],
     color: ['green', 'blue', 'apricot'].includes(value?.color) ? value.color : 'green',
     createdAt: cleanText(value?.createdAt, 40) || new Date().toISOString(),
@@ -67,7 +78,7 @@ function normalizeState(value) {
     : {}
 
   return {
-    version: 1,
+    version: 2,
     profiles: [DEFAULT_PROFILE],
     activeProfileId: DEFAULT_PROFILE.id,
     medicines,
@@ -171,21 +182,32 @@ export async function POST(request) {
       const date = cleanDate(body.date)
       const time = cleanTime(body.time)
       const medicine = state.medicines.find(item => item.id === medicineId)
-      if (!medicine || !date || !time) {
+      const scheduleId = cleanText(body.scheduleId, 80)
+      const schedule = medicine?.schedules.find(item => item.id === scheduleId)
+        || medicine?.schedules.find(item => item.time === time)
+      if (!medicine || !schedule || !date || !time) {
         return NextResponse.json({ error: 'نوبت دارو معتبر نیست.' }, { status: 400 })
       }
-      const key = `${date}:${medicineId}:${time}`
+      const key = scheduleLogKey(date, medicineId, schedule)
+      const oldKey = legacyDoseLogKey(date, medicineId, schedule)
       const doseLogs = { ...state.doseLogs }
       if (body.taken) {
+        const takenLocalTime = cleanTime(body.takenLocalTime) || schedule.time
+        const timing = evaluateTimingByLocalTime(schedule, takenLocalTime)
         doseLogs[key] = {
           medicineId,
           profileId: medicine.profileId,
           date,
-          time,
+          time: schedule.time,
+          scheduleId: schedule.id,
           takenAt: new Date().toISOString(),
+          takenLocalTime,
+          ...timing,
         }
+        if (oldKey !== key) delete doseLogs[oldKey]
       } else {
         delete doseLogs[key]
+        delete doseLogs[oldKey]
       }
       return NextResponse.json(await writeState({ ...state, doseLogs }))
     }
