@@ -12,10 +12,6 @@ const pick = (value, lang) => typeof value === 'string' ? value : value[lang] ||
 
 const SECTION_COPY = [
   { id: 'start', short: L('Start', 'Start', 'شروع'), title: L('Der 5-Minuten-Workflow', 'The five-minute workflow', 'روند پنج‌دقیقه‌ای'), icon: 'brain' },
-  { id: 'ncct', short: 'NCCT', title: L('NCCT – Blutung und Frühzeichen', 'NCCT — haemorrhage and early signs', 'NCCT — خونریزی و علائم اولیه'), icon: 'scan' },
-  { id: 'cta', short: 'CTA', title: L('CTA – den Verschluss lokalisieren', 'CTA — localise the occlusion', 'CTA — تعیین محل انسداد'), icon: 'vessel' },
-  { id: 'perfusion', short: L('Perfusion', 'Perfusion', 'پرفیوژن'), title: L('Perfusion – Kern und Penumbra', 'Perfusion — core and penumbra', 'پرفیوژن — هسته و پنومبرا'), icon: 'chart' },
-  { id: 'entscheidung', short: L('Entscheidung', 'Decision', 'تصمیم'), title: L('Die Befunde zusammenführen', 'Bring the findings together', 'جمع‌بندی یافته‌ها'), icon: 'decision' },
   { id: 'fall', short: L('Radiopaedia-Fall', 'Radiopaedia case', 'کیس Radiopaedia'), title: L('Bildbefund unter Zeitdruck', 'Imaging under time pressure', 'تفسیر تصویر در شرایط حساس زمانی'), icon: 'case' },
   { id: 'take-home', short: 'Take Home Message', title: 'Take Home Message', icon: 'spark', emphasis: true },
 ]
@@ -257,10 +253,9 @@ export default function TestLearningPage() {
   const toggleLessonComplete = () => setReadSections(lessonComplete ? new Set() : new Set(SECTION_IDS))
 
   return <main className={styles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
-    <div className={styles.ambient} aria-hidden="true"><span /><span /><span /></div>
     <header className={styles.header}>
       <div className={styles.topline}><nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">RadYar</Link><span>/</span><Link href="/andarun">Andarun</Link><span>/</span><strong>Test</strong></nav><span className={styles.author}>Dr. Zia</span></div>
-      <div className={styles.hero}><div className={styles.heroCopy}><h1>{pick(COPY.title, lang)}</h1><div className={styles.actions}><Link className={styles.primaryAction} href="/ueben/quiz?fach=gehirn&n=10&themen=ischaemischer-schlaganfall">{pick(COPY.mcq, lang)}<span aria-hidden="true">→</span></Link><Link className={styles.secondaryAction} href="/flashcards/ischaemischer-schlaganfall"><Icon name="case" />{pick(COPY.flashcards, lang)}</Link></div></div><div className={styles.heroFacts}>{COPY.facts.map(([value, label], index) => <article key={value}><span className={styles.factIcon}><Icon name={['brain', 'vessel', 'chart'][index]} /></span><strong>{value}</strong><p>{pick(label, lang)}</p></article>)}</div></div>
+      <div className={styles.hero}><div className={styles.heroCopy}><h1>{pick(COPY.title, lang)}</h1><div className={styles.actions}><Link className={styles.primaryAction} href="/ueben/quiz?fach=gehirn&n=10&themen=ischaemischer-schlaganfall&from=%2Fandarun%2Ftest">{pick(COPY.mcq, lang)}<span aria-hidden="true">→</span></Link><Link className={styles.secondaryAction} href="/flashcards/ischaemischer-schlaganfall"><Icon name="case" />{pick(COPY.flashcards, lang)}</Link></div></div><div className={styles.heroFacts}>{COPY.facts.map(([value, label], index) => <article key={value}><span className={styles.factIcon}><Icon name={['brain', 'vessel', 'chart'][index]} /></span><strong>{value}</strong><p>{pick(label, lang)}</p></article>)}</div></div>
       <div className={styles.progressBar}><div className={styles.progressTrack}><i style={{ width: `${(readSections.size / SECTION_COPY.length) * 100}%` }} /></div><span>{readSections.size} / {SECTION_COPY.length} {pick(COPY.progress, lang)}</span><div className={styles.progressActions}><button type="button" className={`${styles.lessonCompleteButton} ${lessonComplete ? styles.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><Icon name="check" />{pick(lessonComplete ? COPY.lessonCompleted : COPY.completeLesson, lang)}</button><button type="button" className={styles.continueButton} onClick={advance} disabled={activeIndex === SECTION_COPY.length - 1}>{pick(COPY.continue, lang)}<span aria-hidden="true">→</span></button></div></div>
     </header>
 
