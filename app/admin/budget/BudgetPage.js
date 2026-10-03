@@ -3808,8 +3808,9 @@ ${manualEntries.length ? `
 
         {/* ── POPUP MODAL ── */}
         {showPopup && (
-          <div className={styles.popupOverlay} onClick={closePopup} role="dialog" aria-modal="true" aria-label="Neuer Eintrag">
-            <div className={`${styles.popupPanel} ${entryScope ? styles.scopedPopupPanel : ''}`} onClick={e => e.stopPropagation()}>
+          // Keep the backdrop static: native date pickers can report their selection as a backdrop click on mobile.
+          <div className={styles.popupOverlay} role="dialog" aria-modal="true" aria-label="Neuer Eintrag">
+            <div className={`${styles.popupPanel} ${entryScope ? styles.scopedPopupPanel : ''}`}>
               {/* Header */}
               <div className={styles.popupHeader} style={{ borderBottom: `2px solid ${popupAccent}` }}>
                 <div>
