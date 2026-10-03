@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { requireAndarunSession } from '@/lib/andarunPasswordAuth'
+import { MEDICATION_CATEGORIES } from '@/lib/medicationCatalog'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 import {
   evaluateTimingByLocalTime,
@@ -12,7 +13,7 @@ import {
 const STATE_ID = 'andarun:medications:v1'
 const DEFAULT_PROFILE = { id: 'benjamin', name: 'بنیامین', initials: 'ب‌ز' }
 const EMPTY_STATE = {
-  version: 2,
+  version: 3,
   profiles: [DEFAULT_PROFILE],
   activeProfileId: DEFAULT_PROFILE.id,
   medicines: [],
@@ -51,11 +52,13 @@ function cleanMedicine(value) {
     id: cleanText(value?.id, 80) || crypto.randomUUID(),
     profileId: cleanText(value?.profileId, 80) || DEFAULT_PROFILE.id,
     name: cleanText(value?.name, 100),
-    amount: cleanText(value?.amount, 80) || '۱ عدد',
-    note: cleanText(value?.note, 180),
+    dose: cleanText(value?.dose || value?.amount, 80) || 'دوز ثبت نشده',
+    drugCatalogId: cleanText(value?.drugCatalogId, 80),
+    genericNameFa: cleanText(value?.genericNameFa || value?.name, 100),
+    genericNameEn: cleanText(value?.genericNameEn, 100),
+    category: Object.hasOwn(MEDICATION_CATEGORIES, value?.category) ? value.category : 'other',
     schedules: schedules.length ? schedules.slice(0, 8) : normalizeMedicationSchedules({ times: ['08:00'] }),
     weekdays: weekdays.length ? weekdays : [0, 1, 2, 3, 4, 5, 6],
-    color: ['green', 'blue', 'apricot'].includes(value?.color) ? value.color : 'green',
     createdAt: cleanText(value?.createdAt, 40) || new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   }
@@ -78,7 +81,7 @@ function normalizeState(value) {
     : {}
 
   return {
-    version: 2,
+    version: 3,
     profiles: [DEFAULT_PROFILE],
     activeProfileId: DEFAULT_PROFILE.id,
     medicines,
