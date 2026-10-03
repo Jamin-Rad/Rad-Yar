@@ -18,7 +18,16 @@ import styles from './page.module.css'
 const STORAGE_KEY = 'andarun-medications-cache-v1'
 const PROFILE = { id: 'benjamin', name: 'بنیامین', initials: 'ب‌ز' }
 const EVERY_DAY = [0, 1, 2, 3, 4, 5, 6]
-const EMPTY_STATE = { version: 3, profiles: [PROFILE], activeProfileId: PROFILE.id, medicines: [], doseLogs: {} }
+const EMPTY_STATE = { version: 4, profiles: [PROFILE], activeProfileId: PROFILE.id, medicines: [], doseLogs: {} }
+const WEEKDAY_OPTIONS = [
+  { value: 6, label: 'شنبه', shortLabel: 'ش' },
+  { value: 0, label: 'یکشنبه', shortLabel: 'ی' },
+  { value: 1, label: 'دوشنبه', shortLabel: 'د' },
+  { value: 2, label: 'سه‌شنبه', shortLabel: 'س' },
+  { value: 3, label: 'چهارشنبه', shortLabel: 'چ' },
+  { value: 4, label: 'پنج‌شنبه', shortLabel: 'پ' },
+  { value: 5, label: 'جمعه', shortLabel: 'ج' },
+]
 
 function pad(value) { return String(value).padStart(2, '0') }
 function dateKey(date) { return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}` }
@@ -66,6 +75,10 @@ function generateExactSchedules(count, firstTime, current = []) {
 }
 
 function normalizeMedicine(medicine) {
+  const weekdays = Array.isArray(medicine?.weekdays) && medicine.weekdays.length ? medicine.weekdays : EVERY_DAY
+  const doseByWeekday = medicine?.doseByWeekday && typeof medicine.doseByWeekday === 'object'
+    ? Object.fromEntries(Object.entries(medicine.doseByWeekday).filter(([day, dose]) => Number(day) >= 0 && Number(day) <= 6 && typeof dose === 'string' && dose.trim()))
+    : {}
   return {
     ...medicine,
     dose: medicine?.dose || medicine?.amount || 'دوز ثبت نشده',
@@ -74,18 +87,20 @@ function normalizeMedicine(medicine) {
     genericNameFa: medicine?.genericNameFa || medicine?.name || '',
     genericNameEn: medicine?.genericNameEn || '',
     schedules: normalizeMedicationSchedules(medicine),
-    weekdays: Array.isArray(medicine?.weekdays) && medicine.weekdays.length ? medicine.weekdays : EVERY_DAY,
+    frequency: medicine?.frequency === 'weekly' || weekdays.length < 7 ? 'weekly' : 'daily',
+    weekdays,
+    doseByWeekday,
   }
 }
 
 function medicineDraft(medicine) {
   if (medicine) {
     const normalized = normalizeMedicine(medicine)
-    return { ...normalized, schedules: normalized.schedules.map(schedule => ({ ...schedule })), weekdays: [...normalized.weekdays] }
+    return { ...normalized, schedules: normalized.schedules.map(schedule => ({ ...schedule })), weekdays: [...normalized.weekdays], doseByWeekday: { ...normalized.doseByWeekday }, differentDoseByDay: Object.keys(normalized.doseByWeekday).length > 0 }
   }
   return {
     id: '', profileId: PROFILE.id, name: '', dose: '', category: 'other',
-    drugCatalogId: '', genericNameFa: '', genericNameEn: '', schedules: [createSchedule('exact')], weekdays: EVERY_DAY,
+    drugCatalogId: '', genericNameFa: '', genericNameEn: '', schedules: [createSchedule('exact')], frequency: 'daily', weekdays: EVERY_DAY, doseByWeekday: {}, differentDoseByDay: false,
   }
 }
 
@@ -94,7 +109,7 @@ function normalizeState(value) {
   return {
     ...EMPTY_STATE,
     ...value,
-    version: 3,
+    version: 4,
     medicines: Array.isArray(value.medicines) ? value.medicines.map(normalizeMedicine) : [],
     doseLogs: value.doseLogs && typeof value.doseLogs === 'object' ? value.doseLogs : {},
   }
@@ -102,6 +117,10 @@ function normalizeState(value) {
 
 function getDoseLog(doseLogs, date, medicineId, schedule) {
   return doseLogs[scheduleLogKey(date, medicineId, schedule)] || doseLogs[legacyDoseLogKey(date, medicineId, schedule)] || null
+}
+
+function medicineDoseForWeekday(medicine, weekday) {
+  return medicine?.doseByWeekday?.[weekday] || medicine?.dose || 'دوز ثبت نشده'
 }
 
 function timingStatusForLog(schedule, log) {
@@ -198,6 +217,11 @@ function medicineScheduleSummary(medicine) {
     .join('، ')
 }
 
+function medicineDaysSummary(medicine) {
+  if (medicine.weekdays.length === 7) return 'هر روز'
+  return WEEKDAY_OPTIONS.filter(option => medicine.weekdays.includes(option.value)).map(option => option.label).join('، ')
+}
+
 function buildDoseGroups(doses) {
   const groups = new Map()
   doses.forEach(dose => {
@@ -233,6 +257,7 @@ function Icon({ name, size = 24 }) {
   if (name === 'arrow') return <svg {...common}><path d="m15 18-6-6 6-6" /></svg>
   if (name === 'settings') return <svg {...common}><path d="M4 7h10M18 7h2M10 17h10M4 17h2" /><circle cx="16" cy="7" r="2" /><circle cx="8" cy="17" r="2" /></svg>
   if (name === 'heart') return <svg {...common}><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z" /></svg>
+  if (name === 'calendar') return <svg {...common}><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M16 3v4M8 3v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01" /></svg>
   return <svg {...common}><circle cx="12" cy="12" r="9" /><path d="M12 8h.01M11 12h1v4h1" /></svg>
 }
 
@@ -242,10 +267,10 @@ function MedicationTile({ dose, log, onToggle, busy }) {
   const timingLabel = timingStatus === 'onTime' ? 'به‌موقع' : timingStatus === 'early' ? 'زودتر از بازه' : timingStatus === 'late' ? 'دیرتر از بازه' : ''
   return (
     <article className={`${styles.medicationTile} ${taken ? styles.medicationTileTaken : ''}`}>
-      <button className={styles.tileToggle} type="button" disabled={busy} aria-pressed={taken} aria-label={`${dose.medicine.name}، ${dose.medicine.dose}${taken ? `، ثبت شده${timingLabel ? `، ${timingLabel}` : ''}` : '، برای ثبت مصرف لمس کن'}`} onClick={() => onToggle(dose, !taken)}>
+      <button className={styles.tileToggle} type="button" disabled={busy} aria-pressed={taken} aria-label={`${dose.medicine.name}، ${dose.dose}${taken ? `، ثبت شده${timingLabel ? `، ${timingLabel}` : ''}` : '، برای ثبت مصرف لمس کن'}`} onClick={() => onToggle(dose, !taken)}>
         <span className={styles.tileCheck}>{taken ? <Icon name="check" size={20} /> : null}</span>
         <strong>{dose.medicine.name}</strong>
-        <small>{dose.medicine.dose}</small>
+        <small>{dose.dose}</small>
       </button>
     </article>
   )
@@ -311,11 +336,77 @@ function TimingEditor({ schedules, onChange }) {
       </section>
       <section className={`${styles.timingSection} ${routineMode ? styles.timingSectionOpen : ''}`}>
         <button className={styles.timingSectionButton} type="button" aria-expanded={routineMode} onClick={() => !routineMode && onChange([createSchedule('routine', 'breakfast')])}>
-          <span><Icon name="meal" size={21} /><span><strong>وعده یا روتین</strong><small>ناشتا، صبحانه، ناهار، شام یا قبل از خواب</small></span></span><Icon name="chevron" size={20} />
+          <span><Icon name="meal" size={21} /><strong>وعده یا روتین</strong></span><Icon name="chevron" size={20} />
         </button>
         {routineMode ? <RoutineTimingEditor schedules={schedules} onChange={onChange} /> : null}
       </section>
     </div>
+  )
+}
+
+function WeeklyDoseEditor({ draft, selectedDrug, onChange }) {
+  const availableDoses = selectedDrug?.doses || []
+  const selectedDays = WEEKDAY_OPTIONS.filter(option => draft.weekdays.includes(option.value))
+
+  function setFrequency(frequency) {
+    if (frequency === 'daily') {
+      onChange({ frequency, weekdays: EVERY_DAY, doseByWeekday: draft.differentDoseByDay ? Object.fromEntries(EVERY_DAY.map(day => [day, draft.doseByWeekday?.[day] || draft.dose])) : {} })
+      return
+    }
+    const weekdays = draft.frequency === 'weekly' && draft.weekdays.length ? draft.weekdays : [new Date().getDay()]
+    onChange({ frequency, weekdays, doseByWeekday: draft.differentDoseByDay ? Object.fromEntries(weekdays.map(day => [day, draft.doseByWeekday?.[day] || draft.dose])) : {} })
+  }
+
+  function toggleWeekday(day) {
+    const selected = draft.weekdays.includes(day)
+    if (selected && draft.weekdays.length === 1) return
+    const weekdays = selected ? draft.weekdays.filter(value => value !== day) : [...draft.weekdays, day]
+    const doseByWeekday = { ...draft.doseByWeekday }
+    if (selected) delete doseByWeekday[day]
+    else if (draft.differentDoseByDay) doseByWeekday[day] = draft.dose
+    onChange({ weekdays, doseByWeekday })
+  }
+
+  function toggleDifferentDoses() {
+    if (draft.differentDoseByDay) onChange({ differentDoseByDay: false, doseByWeekday: {} })
+    else onChange({ differentDoseByDay: true, doseByWeekday: Object.fromEntries(draft.weekdays.map(day => [day, draft.dose])) })
+  }
+
+  function setDayDose(day, dose) {
+    onChange({ doseByWeekday: { ...draft.doseByWeekday, [day]: dose } })
+  }
+
+  return (
+    <fieldset className={styles.fieldset}>
+      <legend><span className={styles.fieldLabel}><Icon name="calendar" size={18} /> روزهای مصرف</span></legend>
+      <div className={styles.frequencyMode}>
+        <button type="button" className={draft.frequency === 'daily' ? styles.frequencyModeActive : ''} aria-pressed={draft.frequency === 'daily'} onClick={() => setFrequency('daily')}>هر روز</button>
+        <button type="button" className={draft.frequency === 'weekly' ? styles.frequencyModeActive : ''} aria-pressed={draft.frequency === 'weekly'} onClick={() => setFrequency('weekly')}>روزهای مشخص هفته</button>
+      </div>
+      {draft.frequency === 'weekly' ? (
+        <div className={styles.weekdayChoices}>{WEEKDAY_OPTIONS.map(option => {
+          const selected = draft.weekdays.includes(option.value)
+          return <button key={option.value} type="button" className={selected ? styles.weekdayChoiceActive : ''} aria-pressed={selected} onClick={() => toggleWeekday(option.value)}><span>{option.shortLabel}</span>{option.label}</button>
+        })}</div>
+      ) : null}
+      {selectedDrug?.defaultFrequency === 'weekly' ? <p className={styles.weeklyHint}>این دارو در بانک به‌صورت هفتگی ثبت شده؛ روزی را انتخاب کن که در نسخه‌ات آمده.</p> : null}
+      <button className={styles.variableDoseToggle} type="button" role="switch" aria-checked={draft.differentDoseByDay} onClick={toggleDifferentDoses}>
+        <span><strong>دوز در بعضی روزها فرق دارد</strong><small>برای هر روز، دوز نسخه را جدا انتخاب کن.</small></span>
+        <i aria-hidden="true"><b /></i>
+      </button>
+      {draft.differentDoseByDay ? (
+        <div className={styles.dayDoseList}>{selectedDays.map(option => (
+          <label key={option.value} className={styles.dayDoseRow}>
+            <strong>{option.label}</strong>
+            {selectedDrug ? (
+              <select value={draft.doseByWeekday?.[option.value] || draft.dose} onChange={event => setDayDose(option.value, event.target.value)} aria-label={`دوز ${option.label}`}>
+                {availableDoses.map(dose => <option key={dose} value={dose}>{dose}</option>)}
+              </select>
+            ) : <input value={draft.doseByWeekday?.[option.value] || draft.dose} onChange={event => setDayDose(option.value, event.target.value)} aria-label={`دوز ${option.label}`} maxLength={80} />}
+          </label>
+        ))}</div>
+      ) : null}
+    </fieldset>
   )
 }
 
@@ -342,7 +433,23 @@ function MedicineModal({ medicine, onClose, onSave, onDelete, saving }) {
     setSearchOpen(true)
   }
   function selectDrug(drug) {
-    setDraft(current => ({ ...current, name: drug.fa, dose: drug.doses[0] || current.dose, drugCatalogId: drug.id, genericNameFa: drug.fa, genericNameEn: drug.en, category: drug.category }))
+    setDraft(current => {
+      const weekly = drug.defaultFrequency === 'weekly'
+      const weekdays = weekly ? [new Date().getDay()] : EVERY_DAY
+      return {
+        ...current,
+        name: drug.fa,
+        dose: drug.doses[0] || current.dose,
+        drugCatalogId: drug.id,
+        genericNameFa: drug.fa,
+        genericNameEn: drug.en,
+        category: drug.category,
+        frequency: weekly ? 'weekly' : 'daily',
+        weekdays,
+        doseByWeekday: {},
+        differentDoseByDay: false,
+      }
+    })
     setSearchOpen(false)
   }
   function applyGuidance() {
@@ -353,6 +460,9 @@ function MedicineModal({ medicine, onClose, onSave, onDelete, saving }) {
     event.preventDefault()
     if (!draft.name.trim()) return setError('نام دارو را وارد کن.')
     if (!draft.dose.trim()) return setError('دوز دارو را وارد کن.')
+    if (selectedDrug && !selectedDrug.doses.includes(draft.dose)) return setError('دوز را از گزینه‌های همین دارو انتخاب کن.')
+    if (!draft.weekdays.length) return setError('حداقل یک روز مصرف را انتخاب کن.')
+    if (selectedDrug && Object.values(draft.doseByWeekday).some(dose => !selectedDrug.doses.includes(dose))) return setError('دوز روزهای هفته را از گزینه‌های همین دارو انتخاب کن.')
     if (!draft.schedules.length || draft.schedules.some(schedule => !schedule.time)) return setError('حداقل یک زمان معتبر لازم است.')
     setError('')
     onSave(draft)
@@ -381,7 +491,7 @@ function MedicineModal({ medicine, onClose, onSave, onDelete, saving }) {
           <fieldset className={styles.fieldset}>
             <legend><span className={styles.fieldLabel}><Icon name="pill" size={18} /> دوز</span></legend>
             {selectedDrug ? <div className={styles.doseChoices}>{selectedDrug.doses.map(dose => <button key={dose} type="button" className={draft.dose === dose ? styles.doseChoiceActive : ''} aria-pressed={draft.dose === dose} onClick={() => update('dose', dose)}>{dose}</button>)}</div> : null}
-            <input className={styles.doseInput} value={draft.dose} onChange={event => update('dose', event.target.value)} placeholder={selectedDrug ? 'یا دوز دلخواه' : 'مثلاً ۵۰ میلی‌گرم'} maxLength={80} />
+            {!selectedDrug ? <input className={styles.doseInput} value={draft.dose} onChange={event => update('dose', event.target.value)} placeholder="مثلاً ۵۰ میلی‌گرم" maxLength={80} /> : null}
             {selectedDrug ? <p className={styles.categoryNote}>دسته: {MEDICATION_CATEGORIES[selectedDrug.category]?.fa} · مقدارهای رایج محصول؛ طبق نسخه یا برچسب انتخاب کن.</p> : null}
           </fieldset>
           {supplementGuidance ? (
@@ -395,6 +505,7 @@ function MedicineModal({ medicine, onClose, onSave, onDelete, saving }) {
               {supplementGuidance.suggestedRoutine ? <button className={styles.applyGuideButton} type="button" onClick={applyGuidance}>تنظیم خودکار: {ROUTINE_BY_VALUE[supplementGuidance.suggestedRoutine]?.shortLabel}</button> : null}
             </aside>
           ) : null}
+          <WeeklyDoseEditor draft={draft} selectedDrug={selectedDrug} onChange={patch => setDraft(current => ({ ...current, ...patch }))} />
           <fieldset className={styles.fieldset}><legend><span className={styles.fieldLabel}><Icon name="clock" size={18} /> زمان مصرف</span></legend><TimingEditor schedules={draft.schedules} onChange={value => update('schedules', value)} /></fieldset>
           {error ? <p className={styles.formError} role="alert">{error}</p> : null}
           <div className={styles.formActions}>
@@ -430,8 +541,8 @@ function MedicineManager({ medicines, onClose, onAdd, onEdit }) {
               <span className={styles.managerPillIcon}><Icon name="pill" size={21} /></span>
               <span className={styles.managerItemCopy}>
                 <strong>{medicine.name}</strong>
-                <small>{medicine.dose}</small>
-                <em><Icon name="clock" size={14} />{medicineScheduleSummary(medicine)}</em>
+                <small>{Object.keys(medicine.doseByWeekday || {}).length ? 'دوز متفاوت در روزهای هفته' : medicine.dose}</small>
+                <em><Icon name="calendar" size={14} />{medicineDaysSummary(medicine)} · <Icon name="clock" size={14} />{medicineScheduleSummary(medicine)}</em>
               </span>
               <span className={styles.managerCategory}>{MEDICATION_CATEGORIES[medicine.category]?.fa || 'سایر'}</span>
               <span className={styles.managerEdit}><Icon name="edit" size={17} /> ویرایش</span>
@@ -482,7 +593,7 @@ export default function MedicationPage() {
     const weekday = dateFromKey(today).getDay()
     return data.medicines
       .filter(medicine => medicine.profileId === PROFILE.id && medicine.weekdays.includes(weekday))
-      .flatMap(medicine => medicine.schedules.map(schedule => ({ medicine, schedule, key: scheduleLogKey(today, medicine.id, schedule) })))
+      .flatMap(medicine => medicine.schedules.map(schedule => ({ medicine, schedule, dose: medicineDoseForWeekday(medicine, weekday), key: scheduleLogKey(today, medicine.id, schedule) })))
       .sort((a, b) => a.schedule.time.localeCompare(b.schedule.time))
   }, [data.medicines, today])
   const groups = useMemo(() => buildDoseGroups(doses), [doses])
@@ -500,7 +611,7 @@ export default function MedicationPage() {
   async function saveMedicine(draft) {
     setSaving(true)
     const medicine = normalizeMedicine({ ...draft, id: draft.id || crypto.randomUUID(), createdAt: draft.createdAt || new Date().toISOString() })
-    const optimistic = { ...data, version: 3, medicines: [medicine, ...data.medicines.filter(item => item.id !== medicine.id)] }
+    const optimistic = { ...data, version: 4, medicines: [medicine, ...data.medicines.filter(item => item.id !== medicine.id)] }
     try {
       const next = await postAction({ action: 'saveMedicine', medicine }, optimistic)
       setData(next); setModal(null); setToast(draft.id ? 'تغییرات ذخیره شد.' : 'دارو به برنامه اضافه شد.')
@@ -527,13 +638,13 @@ export default function MedicationPage() {
     const takenLocalTime = localTime(takenAt)
     const timing = evaluateTimingByLocalTime(dose.schedule, takenLocalTime)
     if (taken) {
-      doseLogs[key] = { medicineId: dose.medicine.id, profileId: PROFILE.id, date: today, time: dose.schedule.time, scheduleId: dose.schedule.id, takenAt: takenAt.toISOString(), takenLocalTime, ...timing }
+      doseLogs[key] = { medicineId: dose.medicine.id, profileId: PROFILE.id, date: today, time: dose.schedule.time, dose: dose.dose, scheduleId: dose.schedule.id, takenAt: takenAt.toISOString(), takenLocalTime, ...timing }
       if (oldKey !== key) delete doseLogs[oldKey]
     } else { delete doseLogs[key]; delete doseLogs[oldKey] }
     const optimistic = { ...data, doseLogs }
     setData(optimistic); setBusyDose(key)
     try {
-      const next = await postAction({ action: 'toggleDose', medicineId: dose.medicine.id, scheduleId: dose.schedule.id, date: today, time: dose.schedule.time, taken, takenLocalTime }, optimistic)
+      const next = await postAction({ action: 'toggleDose', medicineId: dose.medicine.id, scheduleId: dose.schedule.id, date: today, time: dose.schedule.time, dose: dose.dose, taken, takenLocalTime }, optimistic)
       setData(next)
       if (!taken) setToast('ثبت این نوبت برداشته شد.')
       else if (timing.timingStatus === 'onTime') setToast('آفرین، این نوبت به‌موقع ثبت شد.')

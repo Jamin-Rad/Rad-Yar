@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { requireAndarunSession } from '@/lib/andarunPasswordAuth'
-import { MEDICATION_CATEGORIES } from '@/lib/medicationCatalog'
+import { MEDICATION_CATEGORIES, findMedicationById } from '@/lib/medicationCatalog'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 import {
   evaluateTimingByLocalTime,
@@ -13,7 +13,7 @@ import {
 const STATE_ID = 'andarun:medications:v1'
 const DEFAULT_PROFILE = { id: 'benjamin', name: 'بنیامین', initials: 'ب‌ز' }
 const EMPTY_STATE = {
-  version: 3,
+  version: 4,
   profiles: [DEFAULT_PROFILE],
   activeProfileId: DEFAULT_PROFILE.id,
   medicines: [],
@@ -36,7 +36,7 @@ function cleanDate(value) {
   return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : ''
 }
 
-function cleanMedicine(value) {
+function cleanMedicine(value, { enforceCatalogDoses = false } = {}) {
   const weekdays = Array.isArray(value?.weekdays)
     ? [...new Set(value.weekdays.map(Number).filter(day => day >= 0 && day <= 6))].sort()
     : []
@@ -47,18 +47,35 @@ function cleanMedicine(value) {
       time: cleanTime(schedule.time),
     }))
     .filter(schedule => schedule.time)
+  const catalogDrug = findMedicationById(cleanText(value?.drugCatalogId, 80))
+  const requestedDose = cleanText(value?.dose || value?.amount, 80) || 'دوز ثبت نشده'
+  const dose = enforceCatalogDoses && catalogDrug && !catalogDrug.doses.includes(requestedDose)
+    ? catalogDrug.doses[0]
+    : requestedDose
+  const doseByWeekday = value?.doseByWeekday && typeof value.doseByWeekday === 'object'
+    ? Object.fromEntries(Object.entries(value.doseByWeekday).flatMap(([day, rawDose]) => {
+      const dayNumber = Number(day)
+      const cleanedDose = cleanText(rawDose, 80)
+      if (!Number.isInteger(dayNumber) || dayNumber < 0 || dayNumber > 6 || !cleanedDose) return []
+      if (weekdays.length && !weekdays.includes(dayNumber)) return []
+      if (enforceCatalogDoses && catalogDrug && !catalogDrug.doses.includes(cleanedDose)) return [[day, dose]]
+      return [[day, cleanedDose]]
+    }))
+    : {}
 
   return {
     id: cleanText(value?.id, 80) || crypto.randomUUID(),
     profileId: cleanText(value?.profileId, 80) || DEFAULT_PROFILE.id,
     name: cleanText(value?.name, 100),
-    dose: cleanText(value?.dose || value?.amount, 80) || 'دوز ثبت نشده',
+    dose,
     drugCatalogId: cleanText(value?.drugCatalogId, 80),
     genericNameFa: cleanText(value?.genericNameFa || value?.name, 100),
     genericNameEn: cleanText(value?.genericNameEn, 100),
     category: Object.hasOwn(MEDICATION_CATEGORIES, value?.category) ? value.category : 'other',
     schedules: schedules.length ? schedules.slice(0, 8) : normalizeMedicationSchedules({ times: ['08:00'] }),
+    frequency: value?.frequency === 'weekly' || weekdays.length < 7 ? 'weekly' : 'daily',
     weekdays: weekdays.length ? weekdays : [0, 1, 2, 3, 4, 5, 6],
+    doseByWeekday,
     createdAt: cleanText(value?.createdAt, 40) || new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   }
@@ -81,7 +98,7 @@ function normalizeState(value) {
     : {}
 
   return {
-    version: 3,
+    version: 4,
     profiles: [DEFAULT_PROFILE],
     activeProfileId: DEFAULT_PROFILE.id,
     medicines,
@@ -157,7 +174,13 @@ export async function POST(request) {
     const state = await readState()
 
     if (body.action === 'saveMedicine') {
-      const medicine = cleanMedicine(body.medicine)
+      if (body.medicine?.frequency === 'weekly') {
+        const selectedDays = Array.isArray(body.medicine?.weekdays)
+          ? body.medicine.weekdays.map(Number).filter(day => day >= 0 && day <= 6)
+          : []
+        if (!selectedDays.length) return NextResponse.json({ error: 'حداقل یک روز مصرف را انتخاب کن.' }, { status: 400 })
+      }
+      const medicine = cleanMedicine(body.medicine, { enforceCatalogDoses: true })
       if (!medicine.name) return NextResponse.json({ error: 'نام دارو را وارد کن.' }, { status: 400 })
       const existing = state.medicines.find(item => item.id === medicine.id)
       if (existing) medicine.createdAt = existing.createdAt
@@ -197,11 +220,14 @@ export async function POST(request) {
       if (body.taken) {
         const takenLocalTime = cleanTime(body.takenLocalTime) || schedule.time
         const timing = evaluateTimingByLocalTime(schedule, takenLocalTime)
+        const [year, month, day] = date.split('-').map(Number)
+        const weekday = new Date(year, month - 1, day, 12).getDay()
         doseLogs[key] = {
           medicineId,
           profileId: medicine.profileId,
           date,
           time: schedule.time,
+          dose: medicine.doseByWeekday?.[weekday] || medicine.dose,
           scheduleId: schedule.id,
           takenAt: new Date().toISOString(),
           takenLocalTime,

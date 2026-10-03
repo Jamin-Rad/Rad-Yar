@@ -157,6 +157,28 @@
 .supplementGuideFooter { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: #6d817a; font-size: 9px; line-height: 1.7; }
 .supplementGuideFooter a { flex: 0 0 auto; color: var(--green-deep); font-weight: 800; }
 .applyGuideButton { min-height: 41px; padding: 0 13px; border: 1px solid #8eb4a2; border-radius: 11px; color: var(--green-deep); background: #fff; font-size: 11px; font-weight: 800; cursor: pointer; }
+.frequencyMode { display: grid; grid-template-columns: 1fr 1fr; padding: 4px; border: 1px solid #d8e1df; border-radius: 13px; background: #f4f7f6; }
+.frequencyMode button { min-height: 44px; border: 0; border-radius: 10px; color: #60737f; background: transparent; font-size: 12px; font-weight: 800; cursor: pointer; }
+.frequencyMode .frequencyModeActive { color: var(--green-deep); background: #fff; box-shadow: 0 2px 8px rgba(30,70,58,.08), inset 0 0 0 1px #8eb4a2; }
+.weekdayChoices { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+.weekdayChoices button { min-width: 0; min-height: 54px; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 6px; border: 1px solid #d7e0df; border-radius: 12px; color: #546b78; background: #fff; font-size: 11px; font-weight: 750; cursor: pointer; }
+.weekdayChoices button > span { width: 23px; height: 23px; display: none; place-items: center; border-radius: 8px; color: #668075; background: #edf4f1; font-size: 9px; }
+.weekdayChoices .weekdayChoiceActive { border-color: #6f9f89; color: var(--green-deep); background: #e9f3ee; box-shadow: inset 0 0 0 1px rgba(63,128,106,.12); }
+.weeklyHint { margin: 0; padding: 10px 12px; border-right: 3px solid #78a58f; color: #527065; background: #f2f7f4; font-size: 10px; line-height: 1.8; }
+.variableDoseToggle { width: 100%; min-height: 61px; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 10px 12px; border: 1px solid #dce4e2; border-radius: 13px; color: #2b485c; background: #fff; text-align: right; cursor: pointer; }
+.variableDoseToggle > span { display: grid; gap: 2px; }
+.variableDoseToggle strong { font-size: 12px; }
+.variableDoseToggle small { color: #778892; font-size: 9px; }
+.variableDoseToggle i { position: relative; width: 43px; height: 25px; flex: 0 0 auto; border-radius: 99px; background: #cbd6d2; transition: background .18s ease; }
+.variableDoseToggle i b { position: absolute; top: 3px; right: 3px; width: 19px; height: 19px; border-radius: 50%; background: #fff; box-shadow: 0 2px 5px rgba(24,55,45,.2); transition: transform .18s ease; }
+.variableDoseToggle[aria-checked='true'] { border-color: #a2c1b2; background: #f3f8f5; }
+.variableDoseToggle[aria-checked='true'] i { background: var(--green); }
+.variableDoseToggle[aria-checked='true'] i b { transform: translateX(-18px); }
+.dayDoseList { display: grid; gap: 7px; padding: 10px; border-radius: 13px; background: #edf5f1; }
+.dayDoseRow { display: grid; grid-template-columns: minmax(80px, .7fr) minmax(0, 1.3fr); align-items: center; gap: 10px; }
+.dayDoseRow strong { font-size: 11px; }
+.dayDoseRow select, .dayDoseRow input { width: 100%; min-width: 0; height: 42px; padding: 0 10px; border: 1px solid #cbd8d4; border-radius: 10px; outline: 0; color: var(--ink); background: #fff; font-size: 11px; }
+.dayDoseRow select:focus, .dayDoseRow input:focus { border-color: #73a58f; box-shadow: 0 0 0 3px rgba(63,128,106,.11); }
 .timingEditor { display: grid; gap: 9px; }
 .timingSection { overflow: hidden; border: 1px solid #dce4e2; border-radius: 15px; background: #fff; }
 .timingSectionOpen { border-color: #9bbcab; background: #f8fbf9; }
@@ -196,7 +218,7 @@
 .formActions button:disabled { opacity: .6; cursor: wait; }
 .toast { position: fixed; z-index: 140; left: 50%; bottom: max(24px, env(safe-area-inset-bottom)); min-width: 255px; max-width: calc(100% - 28px); padding: 13px 19px; border-radius: 13px; color: #fff; background: #153f35; box-shadow: 0 14px 40px rgba(15,43,77,.2); font-size: 12px; font-weight: 700; text-align: center; transform: translateX(-50%); }
 
-.addButton:focus-visible, .saveButton:focus-visible, .tileToggle:focus-visible, .mobileAddSection button:focus-visible, .iconButton:focus-visible, .managerAddButton:focus-visible, .managerItem:focus-visible, .timingSectionButton:focus-visible, .timingActions button:focus-visible, .routineChoices button:focus-visible { outline: 3px solid rgba(63,128,106,.23); outline-offset: 2px; }
+.addButton:focus-visible, .saveButton:focus-visible, .tileToggle:focus-visible, .mobileAddSection button:focus-visible, .iconButton:focus-visible, .managerAddButton:focus-visible, .managerItem:focus-visible, .timingSectionButton:focus-visible, .timingActions button:focus-visible, .routineChoices button:focus-visible, .frequencyMode button:focus-visible, .weekdayChoices button:focus-visible, .variableDoseToggle:focus-visible { outline: 3px solid rgba(63,128,106,.23); outline-offset: 2px; }
 
 @media (max-width: 940px) {
   .dashboard { grid-template-columns: 1fr; }
@@ -263,6 +285,13 @@
   .supplementGuideHead small, .supplementGuide > p { font-size: 12px; }
   .supplementGuideFooter { align-items: flex-start; font-size: 10px; }
   .applyGuideButton { min-height: 46px; font-size: 12px; }
+  .frequencyMode button { min-height: 48px; font-size: 13px; }
+  .weekdayChoices { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .weekdayChoices button { min-height: 56px; font-size: 11px; }
+  .variableDoseToggle { min-height: 68px; }
+  .variableDoseToggle strong { font-size: 13px; }
+  .variableDoseToggle small { font-size: 10px; }
+  .dayDoseRow select, .dayDoseRow input { height: 47px; font-size: 13px; }
   .timingSectionButton { min-height: 66px; }
   .timingSectionButton strong { font-size: 14px; }
   .timingSectionButton small { font-size: 10px; }
