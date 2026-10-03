@@ -4,7 +4,7 @@ import BudgetPage from '@/app/admin/budget/BudgetPage'
 
 export const metadata = {
   title: 'Iran Reisekasse',
-  description: 'Private Reisekasse für den Sonderurlaub Iran',
+  description: 'Private Reisekasse für Iran August',
   robots: {
     index: false,
     follow: false,

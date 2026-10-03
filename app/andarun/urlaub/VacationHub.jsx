@@ -102,13 +102,13 @@ export default function VacationHub() {
 
       <Link href="/andarun/iran-app" className={styles.iranTrip}>
         <div className={styles.specialIcon}>★</div>
-        <div><span>Sonderurlaub</span><h2>Sonderurlaub Iran</h2><p>{formatVacationRange(iran.startDate, iran.endDate)} · {vacationDuration(iran.startDate, iran.endDate)} Tage</p></div>
+        <div><span>August 2026</span><h2>{iran.title}</h2><p>{formatVacationRange(iran.startDate, iran.endDate)} · {vacationDuration(iran.startDate, iran.endDate)} Tage</p></div>
         <div className={styles.iranCost}><small>Gesamtkosten</small><strong>{formatVacationEuro(iran.euro)}</strong><b>{formatVacationToman(iran.toman)}</b></div>
         <Icon name="arrow" />
       </Link>
 
       <section className={styles.archive} aria-labelledby="past-vacations">
-        <div className={styles.sectionTitle}><div><h2 id="past-vacations">Bisherige Urlaube</h2><p>Bereits erfasste Ausflüge wurden automatisch nach Monat übernommen.</p></div><b>{trips.length} Reisen</b></div>
+        <div className={styles.sectionTitle}><div><h2 id="past-vacations">Bisherige Urlaube</h2><p>Frühere Reisen und neu angelegte Urlaube auf einen Blick.</p></div><b>{trips.length} Reisen</b></div>
         <div className={styles.tripList}>{trips.map(trip => <Link href={`/andarun/urlaub/${trip.id}`} className={styles.tripRow} key={trip.id}>
           <div><strong>{trip.title}</strong><small>{trip.imported ? 'Aus bisherigen Monatsdaten' : trip.destination || 'Urlaub'}</small></div>
           <span>{formatVacationRange(trip.startDate, trip.endDate)}</span>
@@ -116,7 +116,7 @@ export default function VacationHub() {
           <b>{formatVacationEuro(vacationTotal(trip))}</b>
           <Icon name="arrow" />
         </Link>)}</div>
-        {loaded && !trips.length ? <div className={styles.empty}><strong>Noch keine früheren Urlaube</strong><p>Lege oben einen Urlaub an. Bereits vorhandene Ausflugskosten erscheinen hier automatisch.</p></div> : null}
+        {loaded && !trips.length ? <div className={styles.empty}><strong>Noch keine früheren Urlaube</strong><p>Lege oben einen Urlaub an. Bereits vorhandene Reisekosten erscheinen hier automatisch.</p></div> : null}
       </section>
 
       <section className={styles.comparison}>

@@ -22,7 +22,7 @@ export default async function AndarunFinanzPage({ searchParams }) {
   return (
     <>
       <AndarunNav />
-      <BudgetPage initialView="monat" />
+      <BudgetPage initialView="monat" excludeVacation />
     </>
   )
 }

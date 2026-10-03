@@ -98,7 +98,7 @@ export function iranTripSummary(store) {
   }, 0)
   const toman = expenses.reduce((sum, entry) => sum + Number(entry.amountRial || 0) / 10, 0)
   return {
-    id: 'iran', special: true, title: 'Sonderurlaub Iran', destination: 'Iran',
+    id: 'iran', special: true, title: 'Iran August', destination: 'Iran',
     startDate: '2026-07-31', endDate: '2026-08-23', expenses, euro, toman,
   }
 }

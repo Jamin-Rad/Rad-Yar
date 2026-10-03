@@ -270,15 +270,27 @@ function recurringEntriesForMonth(monthKey, recurring = []) {
     })
 }
 
-function monthWithRecurring(monthKey, store, recurring) {
-  const base = store[monthKey] || emptyMonth()
+function isVacationEntry(entry) {
+  return entry?.category === 'Ausflug' || (entry?.tags || []).includes('Ausflug')
+}
+
+function withoutVacationEntries(monthData, excludeVacation) {
+  if (!excludeVacation) return monthData
   return {
+    ...monthData,
+    entries: (monthData.entries || []).filter(entry => !isVacationEntry(entry)),
+  }
+}
+
+function monthWithRecurring(monthKey, store, recurring, excludeVacation = false) {
+  const base = store[monthKey] || emptyMonth()
+  return withoutVacationEntries({
     ...base,
     entries: [
       ...recurringEntriesForMonth(monthKey, recurring),
       ...(base.entries || []),
     ],
-  }
+  }, excludeVacation)
 }
 
 function sparquote(income, expenses) {
@@ -507,7 +519,7 @@ function EntryForm({ formId, categories, type, onTypeChange, selectedItems, onTo
   )
 }
 
-export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = false, initialView = 'monat' }) {
+export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = false, initialView = 'monat', excludeVacation = false }) {
   const [view, setView]       = useState(() => iranOnly ? 'iranurlaub' : initialView)
   const [subView, setSubView] = useState('kategorien')
   const [month, setMonth]     = useState(getMonthKey())
@@ -708,7 +720,22 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
     return () => document.removeEventListener('keydown', handler)
   }, [showPopup, catDetail])
 
-  const monthData = useMemo(() => monthWithRecurring(month, store, recurring), [month, store, recurring])
+  const visibleCategories = useMemo(
+    () => excludeVacation ? categories.filter(category => category.name !== 'Ausflug') : categories,
+    [categories, excludeVacation]
+  )
+  const visibleCatBudgets = useMemo(
+    () => Object.fromEntries(Object.entries(catBudgets).filter(([name]) => !excludeVacation || name.split(' / ')[0] !== 'Ausflug')),
+    [catBudgets, excludeVacation]
+  )
+  const visibleRecurring = useMemo(
+    () => excludeVacation ? recurring.filter(entry => !isVacationEntry(entry)) : recurring,
+    [recurring, excludeVacation]
+  )
+  const monthData = useMemo(
+    () => monthWithRecurring(month, store, recurring, excludeVacation),
+    [month, store, recurring, excludeVacation]
+  )
   const iranTrip = useMemo(() => normalizeIranTrip(store[IRAN_TRIP_KEY]), [store])
 
   const iranExpenseTotal = useMemo(
@@ -939,7 +966,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
   )
 
   const categoryTotals = useMemo(() => {
-    const catNames = new Set(categories.map(c => c.name))
+    const catNames = new Set(visibleCategories.map(c => c.name))
     const t = {}
     monthData.entries.filter(i => i.type === 'expense').forEach(i => {
       // Nur Tags verwenden, die echte Hauptkategorien sind — sonst Subcategory-Namen als Kategorie
@@ -948,7 +975,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
       keys.forEach(k => { t[k] = (t[k] || 0) + Number(i.amount || 0) })
     })
     return Object.entries(t).sort((a, b) => b[1] - a[1])
-  }, [monthData.entries, categories])
+  }, [monthData.entries, visibleCategories])
 
   const incomeTotals = useMemo(() => {
     const t = {}
@@ -960,8 +987,8 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
   }, [monthData.entries])
 
   const totalCatBudget = useMemo(() => {
-    return Object.values(catBudgets).reduce((s, value) => s + Number(value || 0), 0)
-  }, [catBudgets])
+    return Object.values(visibleCatBudgets).reduce((s, value) => s + Number(value || 0), 0)
+  }, [visibleCatBudgets])
 
   function printBericht() {
     const fixEntries    = monthData.entries.filter(e => e.generatedRecurring)
@@ -1108,13 +1135,13 @@ ${manualEntries.length ? `
       const key  = `${year}-${String(i + 1).padStart(2, '0')}`
       // Zukünftige Monate: Fixkosten nicht einrechnen
       const data = key <= todayKey
-        ? monthWithRecurring(key, store, recurring)
-        : (store[key] || emptyMonth())
+        ? monthWithRecurring(key, store, recurring, excludeVacation)
+        : withoutVacationEntries(store[key] || emptyMonth(), excludeVacation)
       const income   = data.entries.filter(e => e.type === 'income').reduce((s, e)  => s + Number(e.amount || 0), 0)
       const expenses = data.entries.filter(e => e.type === 'expense').reduce((s, e) => s + Number(e.amount || 0), 0)
       return { key, i, income, expenses, balance: income - expenses, hasData: data.entries.length > 0 }
     })
-  }, [store, recurring, year])
+  }, [store, recurring, year, excludeVacation])
 
   const maxAnnual = useMemo(() => Math.max(1, ...annualData.map(m => Math.max(m.income, m.expenses))), [annualData])
 
@@ -1126,7 +1153,7 @@ ${manualEntries.length ? `
     return { ti, te, balance: ti - te, avgI: ti / months.length, avgE: te / months.length, count: months.length }
   }, [annualData])
 
-  const totalFixkosten = recurring.filter(r => r.type === 'expense').reduce((s, r) => s + Number(r.amount || 0), 0)
+  const totalFixkosten = visibleRecurring.filter(r => r.type === 'expense').reduce((s, r) => s + Number(r.amount || 0), 0)
 
   const catDetailEntries = useMemo(() => {
     if (!catDetail) return []
@@ -1137,14 +1164,14 @@ ${manualEntries.length ? `
         (e.title === key || (key === 'Kindergeld' && e.title === 'Familienkasse'))
       )
     }
-    const catNames = new Set(categories.map(c => c.name))
+    const catNames = new Set(visibleCategories.map(c => c.name))
     return monthData.entries.filter(e => {
       if (e.type !== 'expense') return false
       const validTags = Array.isArray(e.tags) ? e.tags.filter(t => catNames.has(t)) : []
       const keys = validTags.length ? validTags : [e.category || 'Ohne Kategorie']
       return keys.includes(key)
     })
-  }, [catDetail, monthData.entries, categories])
+  }, [catDetail, monthData.entries, visibleCategories])
 
   const catDetailGrouped = useMemo(() => {
     const groups = {}
@@ -1647,10 +1674,10 @@ ${manualEntries.length ? `
               <SidebarItem icon={<IconCalendar />} label="Monatsübersicht" active={view === 'monat'} onClick={() => setView('monat')} />
               <SidebarItem icon={<IconChart />} label="Jahresübersicht" active={view === 'jahr'} onClick={() => setView('jahr')} />
               <SidebarItem icon={<IconTrend />} label="Verlauf" active={view === 'verlauf'} onClick={() => setView('verlauf')} />
-              <Link className={styles.sidebarItem} href="/andarun/urlaub">
+              {!excludeVacation ? <Link className={styles.sidebarItem} href="/andarun/urlaub">
                 <span className={styles.sidebarIcon}><IconPlane /></span>
                 <span className={styles.sidebarLabel}>Urlaub</span>
-              </Link>
+              </Link> : null}
               <div className={styles.sidebarDivider} />
               <SidebarItem icon={<IconSettings />} label="Einstellung" active={view === 'einstellung'} onClick={() => navEinstellung(subView)} />
               {view === 'einstellung' && (
@@ -1749,7 +1776,7 @@ ${manualEntries.length ? `
                 <section className={styles.iranTripHero}>
                   <div>
                     <span className={styles.iranTripEyebrow}>Reisekasse</span>
-                    <h2>Sonderurlaub Iran</h2>
+                    <h2>Iran August</h2>
                     <p className={styles.iranTripDates}>31.07.2026 – 23.08.2026 · 24 Tage</p>
                     <p>Ausgaben direkt in Toman erfassen und jederzeit in Euro ansehen.</p>
                   </div>
@@ -2314,8 +2341,8 @@ ${manualEntries.length ? `
                 {/* ── KATEGORIE-VERLAUF (moved to own view) ── */}
                 {false && (() => {
                   const COLORS = ['#f97316','#0ea5e9','#8b5cf6','#16a34a','#dc2626','#d97706','#ec4899','#14b8a6']
-                  const expCats = categories.filter(c => c.type === 'expense').map(c => c.name)
-                  const catAllNames = new Set(categories.map(c => c.name))
+                  const expCats = visibleCategories.filter(c => c.type === 'expense').map(c => c.name)
+                  const catAllNames = new Set(visibleCategories.map(c => c.name))
                   const selectedCats = [...chartCats]
 
                   function getMonthsInRange(from, to) {
@@ -2333,7 +2360,7 @@ ${manualEntries.length ? `
                   const chartMonths = getMonthsInRange(chartFrom, chartTo)
 
                   const chartData = chartMonths.map(key => {
-                    const md = monthWithRecurring(key, store, recurring)
+                    const md = monthWithRecurring(key, store, recurring, excludeVacation)
                     const totals = {}
                     selectedCats.forEach(cat => {
                       totals[cat] = md.entries.filter(e => {
@@ -2533,8 +2560,8 @@ ${manualEntries.length ? `
             {/* ── VERLAUF ── */}
             {view === 'verlauf' && (() => {
               const COLORS = ['#f97316','#0ea5e9','#8b5cf6','#16a34a','#dc2626','#d97706','#ec4899','#14b8a6']
-              const expCats = categories.filter(c => c.type === 'expense').map(c => c.name)
-              const catAllNames = new Set(categories.map(c => c.name))
+              const expCats = visibleCategories.filter(c => c.type === 'expense').map(c => c.name)
+              const catAllNames = new Set(visibleCategories.map(c => c.name))
               const selectedCats = [...chartCats]
 
               // Stable color per category (doesn't shift when others are toggled)
@@ -2581,7 +2608,7 @@ ${manualEntries.length ? `
               const allCatTotals = {}
               expCats.forEach(cat => {
                 allCatTotals[cat] = chartMonths.reduce((sum, key) => {
-                  const md = monthWithRecurring(key, store, recurring)
+                  const md = monthWithRecurring(key, store, recurring, excludeVacation)
                   return sum + md.entries.filter(e => {
                     if (e.type !== 'expense') return false
                     const vt = Array.isArray(e.tags) ? e.tags.filter(t => catAllNames.has(t)) : []
@@ -2593,7 +2620,7 @@ ${manualEntries.length ? `
 
               // Chart data only for selected cats
               const chartData = chartMonths.map(key => {
-                const md = monthWithRecurring(key, store, recurring)
+                const md = monthWithRecurring(key, store, recurring, excludeVacation)
                 const totals = {}
                 selectedCats.forEach(cat => {
                   totals[cat] = md.entries.filter(e => {
@@ -2846,7 +2873,7 @@ ${manualEntries.length ? `
                 {/* ── Fatima-Übersicht ── */}
                 {(() => {
                   const fatimaByMonth = chartMonths.map(key => {
-                    const md = monthWithRecurring(key, store, recurring)
+                    const md = monthWithRecurring(key, store, recurring, excludeVacation)
                     const entries = md.entries.filter(e => e.type === 'expense' && e.paidByFatima)
                     const total = entries.reduce((s, e) => s + Number(e.amount), 0)
                     const cats = [...new Set(entries.flatMap(e => {
@@ -2890,8 +2917,8 @@ ${manualEntries.length ? `
                     <p>Hauptkategorien bündeln deine Ausgaben. Unterkategorien machen Einträge schneller und genauer.</p>
                   </div>
                   <div className={styles.categoryManagerStats}>
-                    <span><strong>{categories.filter(cat => cat.type === 'expense').length}</strong> Ausgaben</span>
-                    <span><strong>{categories.reduce((sum, cat) => sum + cat.subs.length, 0)}</strong> Unterkategorien</span>
+                    <span><strong>{visibleCategories.filter(cat => cat.type === 'expense').length}</strong> Ausgaben</span>
+                    <span><strong>{visibleCategories.reduce((sum, cat) => sum + cat.subs.length, 0)}</strong> Unterkategorien</span>
                   </div>
                 </div>
                 {catError && (
@@ -2901,7 +2928,7 @@ ${manualEntries.length ? `
                   </div>
                 )}
                 <div className={styles.categoryTileGrid}>
-                  {categories.map(cat => {
+                  {visibleCategories.map(cat => {
                     const color    = getCatColor(cat.name)
                     return (
                       <div key={cat.id} className={styles.categoryManagedTile} style={{ '--cat-accent': color.border }}>
@@ -2982,7 +3009,7 @@ ${manualEntries.length ? `
                   </div>
 
                   <CategoryPicker
-                    categories={categories}
+                    categories={visibleCategories}
                     type="expense"
                     selectedItems={planSelectedItems}
                     onToggleItem={togglePlanItem}
@@ -3018,7 +3045,7 @@ ${manualEntries.length ? `
                 <div className={styles.budgetPanel}>
                   <h2 className={styles.sectionTitle} style={{ margin: '0 0 16px' }}>Gespeicherte Budgets</h2>
                   <div className={styles.savedBudgetGrid}>
-                    {Object.entries(catBudgets).filter(([, amount]) => Number(amount || 0) > 0).map(([name, amount]) => {
+                    {Object.entries(visibleCatBudgets).filter(([, amount]) => Number(amount || 0) > 0).map(([name, amount]) => {
                       const baseName = name.split(' / ')[0]
                       const color = getCatColor(baseName)
                       return (
@@ -3029,15 +3056,15 @@ ${manualEntries.length ? `
                         </div>
                       )
                     })}
-                    {!Object.values(catBudgets).some(amount => Number(amount || 0) > 0) && <p className={styles.emptyAnalytics}>Noch kein Budget gespeichert.</p>}
+                    {!Object.values(visibleCatBudgets).some(amount => Number(amount || 0) > 0) && <p className={styles.emptyAnalytics}>Noch kein Budget gespeichert.</p>}
                   </div>
                 </div>
 
                 <div className={styles.fixedCostsPanel}>
                   <h2 className={styles.sectionTitle} style={{ margin: 0 }}>Gespeicherte Fixkosten</h2>
-                  {recurring.length > 0 ? (
+                  {visibleRecurring.length > 0 ? (
                     <div className={styles.fixedCardGrid}>
-                      {recurring.map(r => (
+                      {visibleRecurring.map(r => (
                         <div className={styles.fixedCard} key={r.id}>
                           <div className={styles.fixedCardHead}>
                             <strong>{r.title}</strong>
@@ -3085,7 +3112,7 @@ ${manualEntries.length ? `
                 const d = new Date()
                 d.setMonth(d.getMonth() - (5 - i))
                 const key = getMonthKey(d)
-                const data = monthWithRecurring(key, store, recurring)
+                const data = monthWithRecurring(key, store, recurring, excludeVacation)
                 const inc = data.entries.filter(e => e.type === 'income').reduce((s, e) => s + Number(e.amount), 0)
                 const exp = data.entries.filter(e => e.type === 'expense').reduce((s, e) => s + Number(e.amount), 0)
                 return { key, label: MONTH_SHORT[d.getMonth()], inc, exp, bal: inc - exp }
@@ -3489,7 +3516,7 @@ ${manualEntries.length ? `
               <div className={styles.popupBody}>
                 <EntryForm
                   formId="budget-entry-form"
-                  categories={categories}
+                  categories={visibleCategories}
                   type={entryType}
                   onTypeChange={handleTypeChange}
                   selectedItems={selectedItems}
