@@ -230,6 +230,7 @@ function Icon({ name, size = 24 }) {
   if (name === 'moon') return <svg {...common}><path d="M20 15.2A8.5 8.5 0 0 1 8.8 4a8.5 8.5 0 1 0 11.2 11.2Z" /></svg>
   if (name === 'search') return <svg {...common}><circle cx="11" cy="11" r="7" /><path d="m20 20-4-4" /></svg>
   if (name === 'chevron') return <svg {...common}><path d="m8 10 4 4 4-4" /></svg>
+  if (name === 'arrow') return <svg {...common}><path d="m15 18-6-6 6-6" /></svg>
   if (name === 'settings') return <svg {...common}><path d="M4 7h10M18 7h2M10 17h10M4 17h2" /><circle cx="16" cy="7" r="2" /><circle cx="8" cy="17" r="2" /></svg>
   if (name === 'heart') return <svg {...common}><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z" /></svg>
   return <svg {...common}><circle cx="12" cy="12" r="9" /><path d="M12 8h.01M11 12h1v4h1" /></svg>
@@ -364,7 +365,7 @@ function MedicineModal({ medicine, onClose, onSave, onDelete, saving }) {
         <div className={styles.modalHead}><div><h2 id="medicine-modal-title">{medicine ? 'ویرایش دارو' : 'افزودن دارو'}</h2><p>نام، دوز و زمان مصرف را ثبت کن.</p></div><button className={styles.iconButton} type="button" onClick={onClose} aria-label="بستن"><Icon name="close" /></button></div>
         <form onSubmit={submit} className={styles.form}>
           <label className={styles.field}>
-            <span>نام دارو</span>
+            <span className={styles.fieldLabel}><Icon name="pill" size={18} /> نام دارو</span>
             <div className={styles.drugSearch}>
               <Icon name="search" size={21} />
               <input ref={titleRef} role="combobox" aria-expanded={searchOpen && suggestions.length > 0} aria-controls="drug-suggestions" autoComplete="off" value={draft.name} onFocus={() => setSearchOpen(true)} onChange={event => updateName(event.target.value)} placeholder="نام فارسی یا انگلیسی" maxLength={100} />
@@ -378,7 +379,7 @@ function MedicineModal({ medicine, onClose, onSave, onDelete, saving }) {
             {draft.name && !selectedDrug && searchOpen && !suggestions.length ? <small className={styles.freeEntryHint}>در بانک پیدا نشد؛ همین نام به‌صورت دستی ذخیره می‌شود.</small> : null}
           </label>
           <fieldset className={styles.fieldset}>
-            <legend>دوز</legend>
+            <legend><span className={styles.fieldLabel}><Icon name="pill" size={18} /> دوز</span></legend>
             {selectedDrug ? <div className={styles.doseChoices}>{selectedDrug.doses.map(dose => <button key={dose} type="button" className={draft.dose === dose ? styles.doseChoiceActive : ''} aria-pressed={draft.dose === dose} onClick={() => update('dose', dose)}>{dose}</button>)}</div> : null}
             <input className={styles.doseInput} value={draft.dose} onChange={event => update('dose', event.target.value)} placeholder={selectedDrug ? 'یا دوز دلخواه' : 'مثلاً ۵۰ میلی‌گرم'} maxLength={80} />
             {selectedDrug ? <p className={styles.categoryNote}>دسته: {MEDICATION_CATEGORIES[selectedDrug.category]?.fa} · مقدارهای رایج محصول؛ طبق نسخه یا برچسب انتخاب کن.</p> : null}
@@ -394,7 +395,7 @@ function MedicineModal({ medicine, onClose, onSave, onDelete, saving }) {
               {supplementGuidance.suggestedRoutine ? <button className={styles.applyGuideButton} type="button" onClick={applyGuidance}>تنظیم خودکار: {ROUTINE_BY_VALUE[supplementGuidance.suggestedRoutine]?.shortLabel}</button> : null}
             </aside>
           ) : null}
-          <fieldset className={styles.fieldset}><legend>زمان مصرف</legend><TimingEditor schedules={draft.schedules} onChange={value => update('schedules', value)} /></fieldset>
+          <fieldset className={styles.fieldset}><legend><span className={styles.fieldLabel}><Icon name="clock" size={18} /> زمان مصرف</span></legend><TimingEditor schedules={draft.schedules} onChange={value => update('schedules', value)} /></fieldset>
           {error ? <p className={styles.formError} role="alert">{error}</p> : null}
           <div className={styles.formActions}>
             <button className={styles.saveButton} type="submit" disabled={saving}>{saving ? 'در حال ذخیره…' : 'ذخیره دارو'}</button>
@@ -552,7 +553,7 @@ export default function MedicationPage() {
         <section className={styles.summary} aria-labelledby="greeting-title"><div className={styles.summaryCopy}><h1 id="greeting-title">سلام {PROFILE.name}</h1><p>{formatPersianDate(today, true)}</p></div><button className={styles.addButton} type="button" onClick={() => setManagerOpen(true)}><Icon name="settings" size={22} /> مدیریت داروها</button></section>
         <div className={styles.dashboard}>
           <section className={styles.schedule} aria-labelledby="schedule-title">
-            <div className={styles.scheduleHead}><div><h2 id="schedule-title">برنامه امروز</h2><p>برای ثبت مصرف، روی دارو بزن.</p></div><span>{doses.length ? `${toPersianNumber(takenCount)} از ${toPersianNumber(doses.length)}` : 'بدون نوبت'}</span></div>
+            <div className={styles.scheduleHead}><div><h2 className={styles.scheduleTitle} id="schedule-title"><span><Icon name="pill" size={22} /></span>برنامه امروز</h2><p>برای ثبت مصرف، روی دارو بزن.</p></div><span>{doses.length ? `${toPersianNumber(takenCount)} از ${toPersianNumber(doses.length)}` : 'بدون نوبت'}</span></div>
             {loading ? <div className={styles.loadingList} aria-label="در حال بارگذاری"><span /><span /></div> : groups.length ? (
               <div className={styles.doseGroups}>{groups.map(group => (
                 <section className={styles.doseGroup} key={group.key}><h3><Icon name={group.icon} size={20} />{group.label}</h3><div className={styles.doseGrid}>{group.doses.map(dose => <MedicationTile key={dose.key} dose={dose} log={getDoseLog(data.doseLogs, today, dose.medicine.id, dose.schedule)} busy={busyDose === dose.key} onToggle={toggleDose} />)}</div></section>
@@ -564,7 +565,7 @@ export default function MedicationPage() {
             <p className={`${styles.weekMessage} ${week.tone === 'warning' ? styles.weekMessage_warning : week.tone === 'neutral' ? styles.weekMessage_neutral : ''}`}>{week.message}</p>
           </section></aside>
         </div>
-        <section className={styles.mobileAddSection} aria-label="مدیریت داروها"><button type="button" onClick={() => setManagerOpen(true)}><span><Icon name="settings" size={30} /></span><strong>مدیریت داروها</strong><small>افزودن یا ویرایش دارو</small></button></section>
+        <section className={styles.mobileAddSection} aria-label="مدیریت داروها"><button type="button" onClick={() => setManagerOpen(true)}><span className={styles.mobileAddIcon}><Icon name="settings" size={27} /></span><span className={styles.mobileAddCopy}><strong>مدیریت داروها</strong><small>افزودن یا ویرایش دارو</small></span><Icon name="arrow" size={23} /></button></section>
       </div>
       {managerOpen ? <MedicineManager medicines={data.medicines.filter(medicine => medicine.profileId === PROFILE.id)} onClose={() => setManagerOpen(false)} onAdd={() => setModal({ type: 'new' })} onEdit={medicine => setModal({ type: 'edit', medicine })} /> : null}
       {modal ? <MedicineModal medicine={modal.type === 'edit' ? modal.medicine : null} onClose={() => setModal(null)} onSave={saveMedicine} onDelete={deleteMedicine} saving={saving} /> : null}

@@ -53,6 +53,8 @@
 .schedule { min-height: 490px; padding: 27px 28px 30px; }
 .scheduleHead, .weekHead { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; }
 .scheduleHead h2, .weekHead h2 { margin: 0; font-size: 28px; line-height: 1.25; letter-spacing: -.03em; }
+.scheduleTitle { display: flex; align-items: center; gap: 10px; }
+.scheduleTitle > span { width: 40px; height: 40px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 13px; color: var(--green); background: var(--green-soft); }
 .scheduleHead p, .weekHead p { margin: 5px 0 0; color: var(--muted); font-size: 12px; }
 .scheduleHead > span { min-height: 31px; display: inline-flex; align-items: center; padding: 0 11px; border-radius: 10px; color: var(--green-deep); background: var(--green-soft); font-size: 11px; font-weight: 800; }
 .doseGroups { margin-top: 17px; border-top: 1px solid #edf0ef; }
@@ -124,6 +126,8 @@
 .form { display: grid; gap: 19px; }
 .field, .fieldset { min-width: 0; display: grid; gap: 8px; }
 .field > span, .fieldset legend { color: #213b56; font-size: 13px; font-weight: 800; }
+.fieldLabel { display: inline-flex; align-items: center; gap: 7px; color: #213b56; }
+.fieldLabel svg { color: var(--green); }
 .fieldset { margin: 0; padding: 0; border: 0; }
 .fieldset legend { margin-bottom: 6px; padding: 0; }
 .drugSearch { position: relative; }
@@ -212,6 +216,8 @@
   .dashboard { gap: 13px; margin-top: 13px; }
   .schedule { min-height: 0; padding: 19px 14px 18px; border-radius: 17px; }
   .scheduleHead h2 { font-size: 23px; }
+  .scheduleTitle { gap: 8px; }
+  .scheduleTitle > span { width: 37px; height: 37px; border-radius: 12px; }
   .scheduleHead > span { min-height: 29px; }
   .doseGroup { padding: 16px 0 18px; }
   .doseGroup h3 { margin-bottom: 10px; font-size: 13px; }
@@ -224,11 +230,13 @@
   .weekCard { padding: 19px 16px; border-radius: 17px; }
   .weekHead h2 { font-size: 23px; }
   .weekMessage { min-height: 96px; margin-top: 15px; padding: 15px; font-size: 14px; }
-  .mobileAddSection { display: grid; justify-items: center; margin: 34px 0 4px; padding-top: 28px; border-top: 1px solid #edf1ef; }
-  .mobileAddSection button { width: 132px; aspect-ratio: 1; display: grid; justify-items: center; align-content: center; gap: 6px; border: 1.5px dashed #82ab98; border-radius: 18px; color: var(--green-deep); background: #f0f7f3; cursor: pointer; }
-  .mobileAddSection button > span { width: 41px; height: 41px; display: grid; place-items: center; border-radius: 13px; background: #dcece4; }
-  .mobileAddSection strong { font-size: 13px; }
-  .mobileAddSection small { color: #70887e; font-size: 9px; }
+  .mobileAddSection { display: block; width: 100%; margin: 18px 0 4px; padding-top: 18px; border-top: 1px solid #edf1ef; }
+  .mobileAddSection button { width: 100%; min-height: 82px; display: grid; grid-template-columns: 52px minmax(0, 1fr) 28px; align-items: center; gap: 12px; padding: 13px 15px; border: 1px solid #bad2c6; border-radius: 17px; color: var(--green-deep); background: #f0f7f3; text-align: right; cursor: pointer; box-shadow: 0 8px 22px rgba(39,98,79,.07); }
+  .mobileAddSection button > svg { color: #66877a; }
+  .mobileAddIcon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; color: var(--green-deep); background: #dcece4; }
+  .mobileAddCopy { min-width: 0; display: grid; gap: 4px; }
+  .mobileAddSection strong { font-size: 15px; }
+  .mobileAddSection small { color: #70887e; font-size: 11px; }
   .modalBackdrop { align-items: end; padding: 0; }
   .modal { width: 100%; max-height: calc(100dvh - 8px); padding: 10px 17px calc(17px + env(safe-area-inset-bottom)); border-radius: 24px 24px 0 0; }
   .modal:not(.managerModal) { height: calc(100dvh - 8px); overflow: hidden; display: flex; flex-direction: column; }
