@@ -5,6 +5,11 @@ const NON_LESSON_PATH_PREFIXES = [
   '/mamma/bildgebung/mrt/kaiser-score',
 ]
 
+const COMPLETED_LESSON_PATHS = new Set([
+  '/mamma/bildgebung/mammographie/verkalkungen',
+  '/thorax/kardio/myokardinfarkt-differentialdiagnosen',
+])
+
 function normalizePathname(pathname) {
   if (!pathname || pathname === '/') return pathname || ''
   return pathname.endsWith('/') ? pathname.slice(0, -1) : pathname
@@ -17,7 +22,7 @@ export function isLessonInProgress(pathname) {
 function addTopic(statusByPath, topic) {
   if (topic?.link) {
     const pathname = normalizePathname(topic.link.split('?')[0])
-    const nextStatus = topic.ready && !topic.inProgress ? 'complete' : 'in_progress'
+    const nextStatus = COMPLETED_LESSON_PATHS.has(pathname) ? 'complete' : 'in_progress'
     // If the same page occurs more than once, the cautious status wins.
     if (statusByPath.get(pathname) !== 'in_progress') statusByPath.set(pathname, nextStatus)
   }
@@ -34,10 +39,17 @@ for (const fach of CURRICULUM) {
 export function getContentStatus(topic) {
   const hasPage = !!topic?.link || !!topic?.sub?.some(subtopic => subtopic.link)
   if (!hasPage) return 'planned'
-  if (topic?.link) return topic.ready && !topic.inProgress ? 'complete' : 'in_progress'
+  if (topic?.link) {
+    return COMPLETED_LESSON_PATHS.has(normalizePathname(topic.link.split('?')[0])) ? 'complete' : 'in_progress'
+  }
   if (topic?.sub?.length) {
     const availableSubtopics = topic.sub.filter(subtopic => subtopic.link)
-    if (availableSubtopics.length && availableSubtopics.every(subtopic => subtopic.ready && !subtopic.inProgress)) return 'complete'
+    if (
+      availableSubtopics.length &&
+      availableSubtopics.every(subtopic => (
+        COMPLETED_LESSON_PATHS.has(normalizePathname(subtopic.link.split('?')[0]))
+      ))
+    ) return 'complete'
   }
   return 'in_progress'
 }

@@ -9,7 +9,7 @@ const COPY = {
   de: {
     sign_in: {
       title: 'Melde dich an, um weiterzulernen',
-      text: 'Lektionen und Übungen sind für RadYar-Mitglieder reserviert. Neue Mitglieder erhalten automatisch sieben Tage Pro-Zugang.',
+      text: 'Lektionen und Übungen sind für RadYar-Mitglieder reserviert. Die Mitgliedschaft ist kostenlos.',
       cta: 'Anmelden oder registrieren',
     },
     pro: {
@@ -36,7 +36,7 @@ const COPY = {
   en: {
     sign_in: {
       title: 'Sign in to continue learning',
-      text: 'Lessons and exercises are reserved for RadYar members. New members automatically receive seven days of Pro access.',
+      text: 'Lessons and exercises are reserved for RadYar members. Membership is free.',
       cta: 'Sign in or register',
     },
     pro: {
@@ -63,7 +63,7 @@ const COPY = {
   fa: {
     sign_in: {
       title: 'برای ادامه یادگیری وارد شوید',
-      text: 'درس‌ها و تمرین‌ها مخصوص اعضای رادیار هستند. اعضای جدید به‌صورت خودکار هفت روز دسترسی Pro دریافت می‌کنند.',
+      text: 'درس‌ها و تمرین‌ها مخصوص اعضای رادیار هستند. عضویت رایگان است.',
       cta: 'ورود یا ثبت‌نام',
     },
     pro: {
