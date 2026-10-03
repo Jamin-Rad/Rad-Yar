@@ -12,22 +12,21 @@ const pick = (value, lang) => typeof value === 'string' ? value : value[lang] ||
 
 const SECTION_COPY = [
   { id: 'start', title: L('Der 5-Minuten-Workflow', 'The five-minute workflow', 'روند پنج‌دقیقه‌ای'), icon: 'brain' },
+  { id: 'interactive', title: L('Interaktive Bildanalyse', 'Interactive image review', 'تحلیل تعاملی تصویر'), icon: 'scan' },
   { id: 'fall', title: L('Radiopaedia-Fall', 'Radiopaedia case', 'کیس Radiopaedia'), icon: 'case' },
   { id: 'take-home', title: 'Take Home Message', icon: 'spark', emphasis: true },
 ]
 
 const SECTION_IDS = SECTION_COPY.map(section => section.id)
+const PATH_SECTIONS = SECTION_COPY.filter(section => !section.emphasis)
 
 const COPY = {
   title: L('Akuter ischämischer Schlaganfall', 'Acute ischaemic stroke', 'سکته ایسکمیک حاد'),
   mcq: L('MCQ starten', 'Start MCQs', 'شروع MCQ'),
   flashcards: L('Flashcards', 'Flashcards', 'فلش‌کارت‌ها'),
-  facts: [
-    ['NCCT', L('Blutung ausschließen', 'Exclude haemorrhage', 'رد خونریزی')],
-    ['CTA', L('Gefäßverschluss lokalisieren', 'Localise the occlusion', 'تعیین محل انسداد عروقی')],
-    ['CTP', L('Rettbares Gewebe erkennen', 'Identify salvageable tissue', 'شناسایی بافت قابل نجات')],
-  ],
   path: L('Lernpfad', 'Learning path', 'مسیر یادگیری'),
+  jumpToSummary: L('Take Home Message', 'Take Home Message', 'Take Home Message'),
+  summaryHint: L('Direkt zur Zusammenfassung', 'Jump to the lesson summary', 'رفتن مستقیم به خلاصه درس'),
   close: L('Schließen', 'Close', 'بستن'),
   progress: L('gelesen', 'read', 'خوانده‌شده'),
   continue: L('Lektion fortsetzen', 'Continue lesson', 'ادامه درس'),
@@ -54,61 +53,39 @@ const COPY = {
     'Early ischaemia may still be subtle on NCCT. When the clinical picture fits, continue vascular imaging without unnecessary delay.',
     'ایسکمی اولیه ممکن است در NCCT هنوز ظریف باشد. در صورت تطابق بالینی، تصویربرداری عروقی را بدون تأخیر غیرضروری ادامه دهید.'
   ),
-  miniCheck: L('Mini-Check', 'Mini check', 'آزمون کوتاه'),
-  question: L('Wo liegt der nächste diagnostische Schritt?', 'What is the next diagnostic step?', 'گام تشخیصی بعدی چیست؟'),
-  caseText: L(
-    '72-jähriger Patient mit akut aufgetretener Hemiparese rechts. Die NCCT zeigt keine Blutung und allenfalls diskrete Frühzeichen einer Ischämie.',
-    'A 72-year-old patient presents with acute right hemiparesis. NCCT shows no haemorrhage and, at most, subtle early ischaemic change.',
-    'بیمار ۷۲ ساله با همی‌پارزی حاد سمت راست مراجعه کرده است. NCCT خونریزی نشان نمی‌دهد و فقط علائم ظریف اولیه ایسکمی دیده می‌شود.'
-  ),
-  options: [
-    L('Verlaufskontrolle mit erneuter NCCT in 6 Stunden', 'Repeat NCCT in six hours', 'تکرار NCCT پس از ۶ ساعت'),
-    L('CTA zum Nachweis eines Gefäßverschlusses', 'CTA to detect a vessel occlusion', 'CTA برای تشخیص انسداد عروقی'),
-    L('Direkte CTP ohne Gefäßdarstellung', 'Proceed directly to CTP without vessel imaging', 'انجام مستقیم CTP بدون تصویربرداری عروقی'),
-  ],
-  checkAnswer: L('Antwort prüfen', 'Check answer', 'بررسی پاسخ'),
-  correct: L('Richtig. Die CTA klärt jetzt rasch, ob ein proximaler Gefäßverschluss vorliegt.', 'Correct. CTA now rapidly determines whether a proximal vessel occlusion is present.', 'درست است. CTA اکنون به‌سرعت وجود انسداد پروگزیمال عروقی را مشخص می‌کند.'),
-  incorrect: L('Noch nicht. Nach Blutungsausschluss muss bei diesem Defizit der Gefäßstatus zügig geklärt werden.', 'Not yet. After excluding haemorrhage, the vascular status must be clarified promptly in this patient.', 'هنوز نه. پس از رد خونریزی، وضعیت عروقی در این بیمار باید سریع مشخص شود.'),
 }
 
+const INTERACTIVE_FINDINGS = [
+  {
+    id: 'density',
+    label: L('Dichte', 'Density', 'دانسیته'),
+    title: L('Seitenvergleich zuerst', 'Start with side-to-side comparison', 'ابتدا دو سمت را مقایسه کنید'),
+    text: L('Eine diskrete Hypodensität kann das früheste Parenchymzeichen sein. Vergleiche Kortex und Basalganglien konsequent mit der Gegenseite.', 'Subtle low attenuation may be the earliest parenchymal sign. Compare cortex and basal ganglia systematically with the opposite side.', 'هیپودنسیتی ظریف می‌تواند نخستین علامت پارانشیمی باشد. کورتکس و عقده‌های قاعده‌ای را منظم با سمت مقابل مقایسه کنید.'),
+    marker: { insetInlineStart: '70%', top: '47%' },
+  },
+  {
+    id: 'insula',
+    label: L('Insula', 'Insula', 'اینسولا'),
+    title: L('Insular ribbon verfolgen', 'Trace the insular ribbon', 'نوار اینسولا را دنبال کنید'),
+    text: L('Der Verlust der scharfen Mark-Rinden-Grenze an der Insula ist ein klassisches Frühzeichen im MCA-Territorium.', 'Loss of the sharp grey–white interface at the insula is a classic early sign in the MCA territory.', 'از بین رفتن مرز واضح ماده خاکستری و سفید در اینسولا یک علامت کلاسیک اولیه در قلمرو MCA است.'),
+    marker: { insetInlineStart: '77%', top: '42%' },
+  },
+  {
+    id: 'sulci',
+    label: L('Sulci', 'Sulci', 'سولکوس‌ها'),
+    title: L('Sulcusverstrich aktiv suchen', 'Actively look for sulcal effacement', 'محو شدن سولکوس‌ها را فعالانه بررسی کنید'),
+    text: L('Frühes zytotoxisches Ödem vermindert die Abgrenzbarkeit kortikaler Sulci. Nutze ein enges Hirnfenster und bleibe symmetrisch.', 'Early cytotoxic oedema reduces the visibility of cortical sulci. Use a narrow brain window and keep the comparison symmetric.', 'ادم سیتوتوکسیک اولیه وضوح سولکوس‌های قشری را کم می‌کند. از پنجره باریک مغزی و مقایسه متقارن استفاده کنید.'),
+    marker: { insetInlineStart: '79%', top: '31%' },
+  },
+]
+
+const INTERACTIVE_TABLE = [
+  [L('Dichte', 'Density', 'دانسیته'), L('Kortex und Basalganglien', 'Cortex and basal ganglia', 'کورتکس و عقده‌های قاعده‌ای'), L('Hypodensität oder Verlust der Grau-Weiß-Differenzierung', 'Low attenuation or loss of grey–white differentiation', 'هیپودنسیتی یا از بین رفتن تفکیک خاکستری–سفید')],
+  [L('Insula', 'Insula', 'اینسولا'), L('Insular ribbon', 'Insular ribbon', 'نوار اینسولا'), L('Frühes MCA-Territoriumzeichen', 'Early MCA-territory sign', 'علامت اولیه قلمرو MCA')],
+  [L('Sulci', 'Sulci', 'سولکوس‌ها'), L('Konvexität und Sylvische Fissur', 'Convexity and Sylvian fissure', 'کانوکسیتی و شیار سیلوین'), L('Lokales Ödem und beginnende Raumforderung', 'Local oedema and early mass effect', 'ادم موضعی و اثر فشاری اولیه')],
+]
+
 const LESSON_CONTENT = {
-  ncct: {
-    lead: L('Die native CT beantwortet zuerst die Sicherheitsfrage und zeigt danach das Ausmaß früher Parenchymveränderungen.', 'NCCT answers the safety question first, then shows the extent of early parenchymal change.', 'CT بدون کنتراست ابتدا به پرسش ایمنی پاسخ می‌دهد و سپس وسعت تغییرات اولیه پارانشیم را نشان می‌دهد.'),
-    cards: [
-      ['01', L('Blutung ausschließen', 'Exclude haemorrhage', 'رد خونریزی'), L('Parenchym, Ventrikel und Subarachnoidalräume systematisch prüfen.', 'Systematically review parenchyma, ventricles, and subarachnoid spaces.', 'پارانشیم، بطن‌ها و فضاهای ساب‌آراکنوئید را منظم بررسی کنید.')],
-      ['02', L('Frühzeichen suchen', 'Look for early signs', 'جستجوی علائم اولیه'), L('Insular ribbon, Nucleus lentiformis, Sulcusverstrich und hyperdenses Gefäß.', 'Insular ribbon, lentiform nucleus, sulcal effacement, and a hyperdense vessel.', 'نوار اینسولا، هسته لنتی‌فرم، محوشدن سولکوس و رگ هایپردنس.')],
-      ['03', 'ASPECTS', L('Das betroffene MCA-Parenchym quantifizieren – nicht den Gefäßverschluss.', 'Quantify affected MCA parenchyma — not the vessel occlusion.', 'پارانشیم درگیر MCA را کمی‌سازی کنید — نه خود انسداد عروقی را.')],
-    ],
-    note: L('Merke: Eine unauffällige NCCT schließt eine klinisch relevante frühe Ischämie nicht aus.', 'Remember: a normal NCCT does not exclude clinically relevant early ischaemia.', 'به یاد داشته باشید: NCCT طبیعی، ایسکمی اولیه مهم از نظر بالینی را رد نمی‌کند.'),
-  },
-  cta: {
-    lead: L('Die CTA verbindet die klinische Symptomatik mit der behandelbaren Gefäßläsion.', 'CTA links the clinical deficit to the treatable vascular lesion.', 'CTA علائم بالینی را به ضایعه عروقی قابل درمان مرتبط می‌کند.'),
-    cards: [
-      ['A', L('Verschlusshöhe', 'Occlusion level', 'سطح انسداد'), L('ICA, M1, M2 oder Basilaris präzise benennen.', 'Name ICA, M1, M2, or basilar occlusion precisely.', 'انسداد ICA، M1، M2 یا بازیلار را دقیق بیان کنید.')],
-      ['B', L('Gefäßweg', 'Access route', 'مسیر عروقی'), L('Tandemläsion, Stenose oder Dissektion aktiv suchen.', 'Actively look for tandem lesions, stenosis, or dissection.', 'ضایعه تاندوم، تنگی یا دیسکسیون را فعالانه جستجو کنید.')],
-      ['C', L('Kollateralen', 'Collaterals', 'کولترال‌ها'), L('Die distale Gefäßfüllung im klinischen Kontext einordnen.', 'Interpret distal vessel filling in clinical context.', 'پرشدن عروق دیستال را در زمینه بالینی تفسیر کنید.')],
-    ],
-    note: L('Befundkern: Seite + Segment + Tandemläsion + Kollateralstatus.', 'Report core: side + segment + tandem lesion + collateral status.', 'هسته گزارش: سمت + سگمان + ضایعه تاندوم + وضعیت کولترال‌ها.'),
-  },
-  perfusion: {
-    lead: L('Perfusionskarten sind Entscheidungshilfen. Zuerst Qualität und Bewegungsartefakte prüfen, dann Kern und hypoperfundiertes Gewebe vergleichen.', 'Perfusion maps support decisions. Check quality and motion first, then compare core and hypoperfused tissue.', 'نقشه‌های پرفیوژن ابزار کمک‌تصمیم هستند. ابتدا کیفیت و آرتیفکت حرکت و سپس هسته و بافت کم‌پرفیوژن را مقایسه کنید.'),
-    metrics: [
-      ['CBF', L('im Kern deutlich vermindert', 'markedly reduced in the core', 'در هسته به‌طور واضح کاهش‌یافته')],
-      ['CBV', L('nicht isoliert interpretieren', 'do not interpret in isolation', 'به‌تنهایی تفسیر نشود')],
-      ['Tmax', L('zeigt relevante Perfusionsverzögerung', 'shows relevant perfusion delay', 'تأخیر مهم پرفیوژن را نشان می‌دهد')],
-    ],
-    note: L('Plausibilitätscheck: Passt die Perfusionsstörung zur Klinik, zum Gefäßverschluss und zum Parenchymbefund?', 'Plausibility check: does the perfusion deficit match the clinical picture, vessel occlusion, and parenchymal findings?', 'بررسی منطقی: آیا اختلال پرفیوژن با علائم بالینی، انسداد عروقی و یافته پارانشیم هم‌خوانی دارد؟'),
-  },
-  entscheidung: {
-    lead: L('Ein starker Akutbefund komprimiert die Untersuchung auf vier handlungsrelevante Aussagen.', 'A strong acute report compresses the study into four actionable statements.', 'یک گزارش حاد قوی بررسی را به چهار گزاره عملی فشرده می‌کند.'),
-    report: [
-      L('Keine intrakranielle Blutung.', 'No intracranial haemorrhage.', 'خونریزی داخل جمجمه وجود ندارد.'),
-      L('Frühischämische Veränderungen links im MCA-Territorium, ASPECTS 8.', 'Early ischaemic change in the left MCA territory, ASPECTS 8.', 'تغییرات اولیه ایسکمیک در قلمرو MCA چپ، ASPECTS برابر ۸.'),
-      L('Proximaler M1-Verschluss links, keine Tandemläsion.', 'Proximal left M1 occlusion, no tandem lesion.', 'انسداد پروگزیمال M1 چپ، بدون ضایعه تاندوم.'),
-      L('Perfusionsmismatch mit erhaltener Penumbra; Stroke-Team unmittelbar informiert.', 'Perfusion mismatch with preserved penumbra; stroke team informed immediately.', 'عدم تطابق پرفیوژن با پنومبرای حفظ‌شده؛ تیم سکته بلافاصله مطلع شد.'),
-    ],
-    note: L('Kommunikation ist Teil des Befunds: kritischen Verschluss und Zeitpunkt der Übergabe dokumentieren.', 'Communication is part of the report: document the critical occlusion and time of handover.', 'ارتباط بخشی از گزارش است: انسداد بحرانی و زمان اطلاع‌رسانی را ثبت کنید.'),
-  },
   'take-home': {
     points: [
       L('NCCT: Blutung und frühe Parenchymzeichen.', 'NCCT: haemorrhage and early parenchymal signs.', 'NCCT: خونریزی و علائم اولیه پارانشیم.'),
@@ -161,21 +138,6 @@ function Section({ section, lang, open, isRead, onToggle, onReadToggle, children
   </section>
 }
 
-function MiniCheck({ lang }) {
-  const [selected, setSelected] = useState(1)
-  const [checked, setChecked] = useState(false)
-  const resultCorrect = selected === 1
-
-  return <div className={styles.miniCheck}>
-    <div className={styles.questionBlock}><span><Icon name="vessel" />{pick(COPY.miniCheck, lang)}</span><h3>{pick(COPY.question, lang)}</h3><p>{pick(COPY.caseText, lang)}</p></div>
-    <div className={styles.answers} role="radiogroup" aria-label={pick(COPY.question, lang)}>
-      {COPY.options.map((option, index) => <button key={pick(option, lang)} type="button" role="radio" aria-checked={selected === index} className={selected === index ? styles.answerSelected : ''} onClick={() => { setSelected(index); setChecked(false) }}><i aria-hidden="true" />{pick(option, lang)}</button>)}
-      <button className={styles.checkButton} type="button" onClick={() => setChecked(true)}>{pick(COPY.checkAnswer, lang)}<span aria-hidden="true">→</span></button>
-      {checked ? <p className={`${styles.feedback} ${resultCorrect ? styles.feedbackCorrect : styles.feedbackWrong}`} role="status">{pick(resultCorrect ? COPY.correct : COPY.incorrect, lang)}</p> : null}
-    </div>
-  </div>
-}
-
 function StartSection({ lang }) {
   return <>
     <p className={styles.lead}>{pick(COPY.intro, lang)}</p>
@@ -183,8 +145,46 @@ function StartSection({ lang }) {
       {COPY.workflow.map(([title, text, icon], index) => <li key={pick(title, lang)}><span className={styles.stepIcon}><Icon name={icon} /></span><span className={styles.stepNumber}>{index + 1}</span><strong>{pick(title, lang)}</strong><p>{pick(text, lang)}</p></li>)}
     </ol>
     <aside className={styles.warning}><span aria-hidden="true">!</span><div><strong>{pick(COPY.warningTitle, lang)}</strong><p>{pick(COPY.warningText, lang)}</p></div></aside>
-    <MiniCheck lang={lang} />
   </>
+}
+
+function InteractiveLesson({ lang }) {
+  const [activeId, setActiveId] = useState(INTERACTIVE_FINDINGS[0].id)
+  const activeFinding = INTERACTIVE_FINDINGS.find(finding => finding.id === activeId) || INTERACTIVE_FINDINGS[0]
+
+  return <div className={styles.interactiveModule}>
+    <header className={styles.interactiveIntro}>
+      <span>{pick(L('INTERAKTIVES LERNMUSTER', 'INTERACTIVE LEARNING PATTERN', 'الگوی آموزش تعاملی'), lang)}</span>
+      <h3>{pick(L('Frühzeichen in der NCCT systematisch lesen', 'Read early NCCT signs systematically', 'خواندن نظام‌مند علائم اولیه در NCCT'), lang)}</h3>
+      <p>{pick(L('Wähle einen Fokus. Markierung, Erklärung und Tabellenzeile bilden gemeinsam eine wiederverwendbare Lerneinheit.', 'Choose a focus. The marker, explanation, and table row form one reusable learning unit.', 'یک محور را انتخاب کنید. نشانگر، توضیح و ردیف جدول با هم یک واحد آموزشی قابل‌استفادهٔ مجدد می‌سازند.'), lang)}</p>
+    </header>
+
+    <div className={styles.findingTabs} role="tablist" aria-label={pick(L('Bildfokus wählen', 'Choose image focus', 'انتخاب محور تصویر'), lang)}>
+      {INTERACTIVE_FINDINGS.map(finding => <button type="button" role="tab" id={`finding-tab-${finding.id}`} aria-controls="finding-explanation" key={finding.id} aria-selected={activeId === finding.id} className={activeId === finding.id ? styles.findingTabActive : ''} onClick={() => setActiveId(finding.id)}><span aria-hidden="true" />{pick(finding.label, lang)}</button>)}
+    </div>
+
+    <div className={styles.interactiveStage}>
+      <figure className={styles.teachingImage}>
+        <Image src="/stroke/case-left-mca-ct-rid-78956.png" alt={pick(L('Axiale NCCT mit frühem ischämischem Zeichen im linken MCA-Territorium', 'Axial NCCT with an early ischaemic sign in the left MCA territory', 'NCCT آگزیال با علامت اولیه ایسکمیک در قلمرو MCA چپ'), lang)} width={512} height={512} />
+        <span className={styles.imageMarker} style={activeFinding.marker} aria-hidden="true"><i /></span>
+        <figcaption>{pick(L('Markierung wechselt mit dem gewählten Lernfokus.', 'The marker follows the selected learning focus.', 'نشانگر با محور آموزشی انتخاب‌شده تغییر می‌کند.'), lang)}</figcaption>
+      </figure>
+      <article id="finding-explanation" className={styles.findingExplanation} role="tabpanel" aria-labelledby={`finding-tab-${activeId}`}>
+        <small>{pick(activeFinding.label, lang)}</small>
+        <h4>{pick(activeFinding.title, lang)}</h4>
+        <p>{pick(activeFinding.text, lang)}</p>
+        <aside><Icon name="check" /><span>{pick(L('Immer Seite für Seite vergleichen und den Befund mit der Klinik abgleichen.', 'Always compare side to side and correlate the finding with the clinical picture.', 'همیشه دو سمت را مقایسه و یافته را با تابلوی بالینی تطبیق دهید.'), lang)}</span></aside>
+      </article>
+    </div>
+
+    <div className={styles.teachingTableWrap}>
+      <table className={styles.teachingTable}>
+        <caption>{pick(L('Standardtabelle für frühe NCCT-Zeichen', 'Standard table for early NCCT signs', 'جدول استاندارد علائم اولیه NCCT'), lang)}</caption>
+        <thead><tr><th>{pick(L('Fokus', 'Focus', 'محور'), lang)}</th><th>{pick(L('Prüfort', 'Where to look', 'محل بررسی'), lang)}</th><th>{pick(L('Bedeutung', 'Meaning', 'معنی'), lang)}</th></tr></thead>
+        <tbody>{INTERACTIVE_TABLE.map((row, index) => <tr key={pick(row[0], lang)} className={INTERACTIVE_FINDINGS[index].id === activeId ? styles.activeTableRow : ''}>{row.map(cell => <td key={pick(cell, lang)}>{pick(cell, lang)}</td>)}</tr>)}</tbody>
+      </table>
+    </div>
+  </div>
 }
 
 function CaseSequence({ lang }) {
@@ -277,16 +277,10 @@ function RadiopaediaCase({ lang }) {
 }
 
 function ContentSection({ id, lang }) {
-  if (id === 'fall') return <><p className={styles.lead}>{pick(L('Scrolle wie an der Workstation durch eine echte Bildsequenz und achte auf die Gefäßkontur.', 'Scroll through a real image sequence as you would at the workstation and follow the vessel contour.', 'مانند ورک‌استیشن در یک سکانس واقعی اسکرول کنید و کانتور رگ را دنبال کنید.'), lang)}</p><RadiopaediaCase lang={lang} /><MiniCheck lang={lang} /></>
-  const content = LESSON_CONTENT[id]
-  return <>
-    {content.lead ? <p className={styles.lead}>{pick(content.lead, lang)}</p> : null}
-    {content.cards ? <div className={styles.learningRows}>{content.cards.map(([number, title, text]) => <article key={number}><span>{number}</span><div><h3>{pick(title, lang)}</h3><p>{pick(text, lang)}</p></div></article>)}</div> : null}
-    {content.metrics ? <div className={styles.metrics}>{content.metrics.map(([name, text]) => <article key={name}><strong>{name}</strong><span>{pick(text, lang)}</span></article>)}</div> : null}
-    {content.report ? <div className={styles.report}><span>{pick(L('So klingt ein klarer Akutbefund', 'A clear acute report', 'نمونه یک گزارش حاد روشن'), lang)}</span><ol>{content.report.map(line => <li key={pick(line, lang)}>{pick(line, lang)}</li>)}</ol></div> : null}
-    {content.points ? <div className={styles.takeHomePanel}><header><Icon name="spark" /><h3>Take Home Message</h3></header><ul className={styles.takeHome}>{content.points.map(point => <li key={pick(point, lang)}><span aria-hidden="true"><Icon name="check" /></span><strong>{pick(point, lang)}</strong></li>)}</ul></div> : null}
-    {content.note ? <aside className={styles.keyPoint}><Icon name="check" /><p>{pick(content.note, lang)}</p></aside> : null}
-  </>
+  if (id === 'interactive') return <InteractiveLesson lang={lang} />
+  if (id === 'fall') return <><p className={styles.lead}>{pick(L('Scrolle wie an der Workstation durch eine echte Bildsequenz und achte auf die Gefäßkontur.', 'Scroll through a real image sequence as you would at the workstation and follow the vessel contour.', 'مانند ورک‌استیشن در یک سکانس واقعی اسکرول کنید و کانتور رگ را دنبال کنید.'), lang)}</p><RadiopaediaCase lang={lang} /></>
+  const content = LESSON_CONTENT['take-home']
+  return <div className={styles.takeHomePanel}><header><Icon name="spark" /><h3>Take Home Message</h3></header><ul className={styles.takeHome}>{content.points.map(point => <li key={pick(point, lang)}><span aria-hidden="true"><Icon name="check" /></span><strong>{pick(point, lang)}</strong></li>)}</ul></div>
 }
 
 function MobileLearningPath({ lang, openId, readSections, onSelect }) {
@@ -298,7 +292,7 @@ function MobileLearningPath({ lang, openId, readSections, onSelect }) {
   return <div className={styles.mobileLearningPath}>
     {panelOpen ? <section id="mobile-learning-path-panel" className={styles.mobilePathPanel} role="dialog" aria-label={pick(COPY.path, lang)}>
       <header><div><small>{pick(COPY.progress, lang)}</small><strong>{readSections.size} / {SECTION_COPY.length}</strong></div><button type="button" onClick={() => setPanelOpen(false)} aria-label={pick(COPY.close, lang)}>×</button></header>
-      <nav>{SECTION_COPY.map(section => <button type="button" key={section.id} className={`${openId === section.id ? styles.mobilePathCurrent : ''} ${section.emphasis ? styles.mobilePathFinal : ''}`} onClick={() => selectFromPanel(section.id)} aria-current={openId === section.id ? 'location' : undefined}><span className={styles.mobilePathItemIcon}><Icon name={section.icon} /></span><span><strong>{pick(section.title, lang)}</strong></span><i aria-hidden="true">{readSections.has(section.id) ? '✓' : ''}</i></button>)}</nav>
+      <nav>{PATH_SECTIONS.map(section => <button type="button" key={section.id} className={openId === section.id ? styles.mobilePathCurrent : ''} onClick={() => selectFromPanel(section.id)} aria-current={openId === section.id ? 'location' : undefined}><span className={styles.mobilePathItemIcon}><Icon name={section.icon} /></span><span><strong>{pick(section.title, lang)}</strong></span><i aria-hidden="true">{readSections.has(section.id) ? '✓' : ''}</i></button>)}</nav>
     </section> : null}
     <button type="button" className={styles.mobilePathButton} onClick={() => setPanelOpen(value => !value)} aria-expanded={panelOpen} aria-controls="mobile-learning-path-panel"><span className={styles.mobileProgressRing} style={{ '--mobile-progress': `${progress}deg` }}><b>{readSections.size}</b><small>/{SECTION_COPY.length}</small></span><span className={styles.mobileCurrentIcon}><Icon name={activeSection.icon} /></span><span className={styles.mobilePathLabel}><strong>{pick(COPY.path, lang)}</strong><small>{pick(activeSection.title, lang)}</small></span></button>
   </div>
@@ -329,12 +323,12 @@ export default function TestLearningPage() {
   return <main className={styles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
     <header className={styles.header}>
       <div className={styles.topline}><nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">RadYar</Link><span>/</span><Link href="/andarun">Andarun</Link><span>/</span><strong>Test</strong></nav><span className={styles.author}>Dr. Zia</span></div>
-      <div className={styles.hero}><div className={styles.heroCopy}><h1>{pick(COPY.title, lang)}</h1><div className={styles.actions}><Link className={styles.primaryAction} href="/ueben/quiz?fach=gehirn&n=10&themen=ischaemischer-schlaganfall&from=%2Fandarun%2Ftest">{pick(COPY.mcq, lang)}<span aria-hidden="true">→</span></Link><Link className={styles.secondaryAction} href="/flashcards/ischaemischer-schlaganfall"><Icon name="case" />{pick(COPY.flashcards, lang)}</Link></div></div><div className={styles.heroFacts}>{COPY.facts.map(([value, label], index) => <article key={value}><span className={styles.factIcon}><Icon name={['brain', 'vessel', 'chart'][index]} /></span><strong>{value}</strong><p>{pick(label, lang)}</p></article>)}</div></div>
+      <div className={styles.hero}><div className={styles.heroCopy}><h1>{pick(COPY.title, lang)}</h1><button type="button" className={styles.takeHomeJump} onClick={() => selectSection('take-home')}><span className={styles.takeHomeJumpIcon}><Icon name="spark" /></span><span><strong>{pick(COPY.jumpToSummary, lang)}</strong><small>{pick(COPY.summaryHint, lang)}</small></span><i aria-hidden="true">↓</i></button><div className={styles.actions}><Link className={styles.primaryAction} href="/ueben/quiz?fach=gehirn&n=10&themen=ischaemischer-schlaganfall&from=%2Fandarun%2Ftest">{pick(COPY.mcq, lang)}<span aria-hidden="true">→</span></Link><Link className={styles.secondaryAction} href="/flashcards/ischaemischer-schlaganfall"><Icon name="case" />{pick(COPY.flashcards, lang)}</Link></div></div></div>
       <div className={styles.progressBar}><div className={styles.progressTrack}><i style={{ width: `${(readSections.size / SECTION_COPY.length) * 100}%` }} /></div><span>{readSections.size} / {SECTION_COPY.length} {pick(COPY.progress, lang)}</span><div className={styles.progressActions}><button type="button" className={`${styles.lessonCompleteButton} ${lessonComplete ? styles.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><Icon name="check" />{pick(lessonComplete ? COPY.lessonCompleted : COPY.completeLesson, lang)}</button><button type="button" className={styles.continueButton} onClick={advance} disabled={activeIndex === SECTION_COPY.length - 1}>{pick(COPY.continue, lang)}<span aria-hidden="true">→</span></button></div></div>
     </header>
 
     <div className={styles.layout}>
-      <aside className={styles.sidebar}><h2>{pick(COPY.path, lang)}</h2><nav>{SECTION_COPY.map(section => <button type="button" key={section.id} className={`${openId === section.id ? styles.activeSideItem : ''} ${section.emphasis ? styles.finalSideItem : ''}`} onClick={() => selectSection(section.id)} aria-current={openId === section.id ? 'location' : undefined} aria-label={`${pick(COPY.open, lang)}: ${pick(section.title, lang)}`}><span className={styles.sideIcon}><Icon name={section.icon} /></span><strong>{pick(section.title, lang)}</strong></button>)}</nav></aside>
+      <aside className={styles.sidebar}><h2>{pick(COPY.path, lang)}</h2><nav>{PATH_SECTIONS.map(section => <button type="button" key={section.id} className={openId === section.id ? styles.activeSideItem : ''} onClick={() => selectSection(section.id)} aria-current={openId === section.id ? 'location' : undefined} aria-label={`${pick(COPY.open, lang)}: ${pick(section.title, lang)}`}><span className={styles.sideIcon}><Icon name={section.icon} /></span><strong>{pick(section.title, lang)}</strong></button>)}</nav></aside>
       <article className={styles.lesson}>{SECTION_COPY.map(section => <Section key={section.id} section={section} lang={lang} open={openId === section.id} isRead={readSections.has(section.id)} onToggle={selectSection} onReadToggle={toggleSectionRead}>{section.id === 'start' ? <StartSection lang={lang} /> : <ContentSection id={section.id} lang={lang} />}</Section>)}</article>
     </div>
     <MobileLearningPath lang={lang} openId={openId} readSections={readSections} onSelect={selectSection} />
