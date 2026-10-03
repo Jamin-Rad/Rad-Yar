@@ -203,6 +203,14 @@ function doseGroupLabel(schedule) {
   return `ساعت ${formatTime(schedule.time)}`
 }
 
+function medicineScheduleSummary(medicine) {
+  return normalizeMedicationSchedules(medicine)
+    .map(schedule => schedule.type === 'routine'
+      ? ROUTINE_BY_VALUE[schedule.routine]?.shortLabel || 'روتین'
+      : formatTime(schedule.time))
+    .join('، ')
+}
+
 function buildDoseGroups(doses) {
   const groups = new Map()
   doses.forEach(dose => {
@@ -235,10 +243,11 @@ function Icon({ name, size = 24 }) {
   if (name === 'moon') return <svg {...common}><path d="M20 15.2A8.5 8.5 0 0 1 8.8 4a8.5 8.5 0 1 0 11.2 11.2Z" /></svg>
   if (name === 'search') return <svg {...common}><circle cx="11" cy="11" r="7" /><path d="m20 20-4-4" /></svg>
   if (name === 'chevron') return <svg {...common}><path d="m8 10 4 4 4-4" /></svg>
+  if (name === 'settings') return <svg {...common}><path d="M4 7h10M18 7h2M10 17h10M4 17h2" /><circle cx="16" cy="7" r="2" /><circle cx="8" cy="17" r="2" /></svg>
   return <svg {...common}><circle cx="12" cy="12" r="9" /><path d="M12 8h.01M11 12h1v4h1" /></svg>
 }
 
-function MedicationTile({ dose, log, onToggle, onEdit, busy }) {
+function MedicationTile({ dose, log, onToggle, busy }) {
   const taken = Boolean(log)
   const timingStatus = timingStatusForLog(dose.schedule, log)
   const timingLabel = timingStatus === 'onTime' ? 'به‌موقع' : timingStatus === 'early' ? 'زودتر از بازه' : timingStatus === 'late' ? 'دیرتر از بازه' : ''
@@ -249,7 +258,6 @@ function MedicationTile({ dose, log, onToggle, onEdit, busy }) {
         <strong>{dose.medicine.name}</strong>
         <small>{dose.medicine.dose}</small>
       </button>
-      <button className={styles.tileEdit} type="button" onClick={() => onEdit(dose.medicine)} aria-label={`ویرایش ${dose.medicine.name}`}><Icon name="edit" size={15} /></button>
     </article>
   )
 }
@@ -395,12 +403,50 @@ function MedicineModal({ medicine, onClose, onSave, onDelete, saving }) {
   )
 }
 
+function MedicineManager({ medicines, onClose, onAdd, onEdit }) {
+  const sortedMedicines = useMemo(
+    () => [...medicines].sort((a, b) => a.name.localeCompare(b.name, 'fa')),
+    [medicines],
+  )
+
+  return (
+    <div className={`${styles.modalBackdrop} ${styles.managerBackdrop}`} role="presentation" onMouseDown={event => event.target === event.currentTarget && onClose()}>
+      <section className={`${styles.modal} ${styles.managerModal}`} role="dialog" aria-modal="true" aria-labelledby="medicine-manager-title" dir="rtl">
+        <div className={styles.sheetHandle} aria-hidden="true" />
+        <div className={styles.modalHead}>
+          <div><h2 id="medicine-manager-title">مدیریت داروها</h2><p>داروی تازه اضافه کن یا اطلاعات داروهای فعلی را به‌روز کن.</p></div>
+          <button className={styles.iconButton} type="button" onClick={onClose} aria-label="بستن مدیریت داروها"><Icon name="close" /></button>
+        </div>
+        <button className={styles.managerAddButton} type="button" onClick={onAdd}><Icon name="plus" size={22} /><span><strong>افزودن داروی جدید</strong><small>نام، دوز و زمان مصرف را وارد کن</small></span></button>
+        <div className={styles.managerListHead}><strong>داروهای من</strong><span>{toPersianNumber(sortedMedicines.length)} دارو</span></div>
+        {sortedMedicines.length ? (
+          <div className={styles.managerList}>{sortedMedicines.map(medicine => (
+            <button className={styles.managerItem} type="button" key={medicine.id} onClick={() => onEdit(medicine)} aria-label={`ویرایش و به‌روزرسانی ${medicine.name}`}>
+              <span className={styles.managerPillIcon}><Icon name="pill" size={21} /></span>
+              <span className={styles.managerItemCopy}>
+                <strong>{medicine.name}</strong>
+                <small>{medicine.dose}</small>
+                <em><Icon name="clock" size={14} />{medicineScheduleSummary(medicine)}</em>
+              </span>
+              <span className={styles.managerCategory}>{MEDICATION_CATEGORIES[medicine.category]?.fa || 'سایر'}</span>
+              <span className={styles.managerEdit}><Icon name="edit" size={17} /> ویرایش</span>
+            </button>
+          ))}</div>
+        ) : (
+          <div className={styles.managerEmpty}><span><Icon name="pill" size={27} /></span><strong>هنوز دارویی ثبت نشده</strong><small>از دکمهٔ بالا اولین دارویت را اضافه کن.</small></div>
+        )}
+      </section>
+    </div>
+  )
+}
+
 export default function MedicationPage() {
   const [clock, setClock] = useState(() => new Date())
   const [data, setData] = useState(EMPTY_STATE)
   const [loading, setLoading] = useState(true)
   const [offline, setOffline] = useState(false)
   const [modal, setModal] = useState(null)
+  const [managerOpen, setManagerOpen] = useState(false)
   const [saving, setSaving] = useState(false)
   const [busyDose, setBusyDose] = useState('')
   const [toast, setToast] = useState('')
@@ -499,15 +545,15 @@ export default function MedicationPage() {
       </header>
       <div className={styles.shell}>
         {offline ? <div className={styles.offlineNotice}>حالت آفلاین؛ تغییرات فعلاً روی همین دستگاه نگه‌داری می‌شود.</div> : null}
-        <section className={styles.summary} aria-labelledby="greeting-title"><div className={styles.summaryCopy}><h1 id="greeting-title">سلام {PROFILE.name}</h1><p>{formatPersianDate(today, true)}</p></div><button className={styles.addButton} type="button" onClick={() => setModal({ type: 'new' })}><Icon name="plus" size={22} /> افزودن دارو</button></section>
+        <section className={styles.summary} aria-labelledby="greeting-title"><div className={styles.summaryCopy}><h1 id="greeting-title">سلام {PROFILE.name}</h1><p>{formatPersianDate(today, true)}</p></div><button className={styles.addButton} type="button" onClick={() => setManagerOpen(true)}><Icon name="settings" size={22} /> مدیریت داروها</button></section>
         <div className={styles.dashboard}>
           <section className={styles.schedule} aria-labelledby="schedule-title">
             <div className={styles.scheduleHead}><div><h2 id="schedule-title">برنامه امروز</h2><p>برای ثبت مصرف، روی دارو بزن.</p></div><span>{doses.length ? `${toPersianNumber(takenCount)} از ${toPersianNumber(doses.length)}` : 'بدون نوبت'}</span></div>
             {loading ? <div className={styles.loadingList} aria-label="در حال بارگذاری"><span /><span /></div> : groups.length ? (
               <div className={styles.doseGroups}>{groups.map(group => (
-                <section className={styles.doseGroup} key={group.key}><h3><Icon name={group.icon} size={20} />{group.label}</h3><div className={styles.doseGrid}>{group.doses.map(dose => <MedicationTile key={dose.key} dose={dose} log={getDoseLog(data.doseLogs, today, dose.medicine.id, dose.schedule)} busy={busyDose === dose.key} onToggle={toggleDose} onEdit={medicine => setModal({ type: 'edit', medicine })} />)}</div></section>
+                <section className={styles.doseGroup} key={group.key}><h3><Icon name={group.icon} size={20} />{group.label}</h3><div className={styles.doseGrid}>{group.doses.map(dose => <MedicationTile key={dose.key} dose={dose} log={getDoseLog(data.doseLogs, today, dose.medicine.id, dose.schedule)} busy={busyDose === dose.key} onToggle={toggleDose} />)}</div></section>
               ))}</div>
-            ) : <div className={styles.emptyState}><span><Icon name="pill" size={29} /></span><div><h3>{data.medicines.length ? 'امروز نوبت دارویی نداری' : 'برنامهٔ امروز هنوز خالی است'}</h3><p>{data.medicines.length ? 'داروی امروزت تمام شده است.' : 'از جعبهٔ پایین صفحه اولین دارویت را اضافه کن.'}</p></div></div>}
+            ) : <div className={styles.emptyState}><span><Icon name="pill" size={29} /></span><div><h3>{data.medicines.length ? 'امروز نوبت دارویی نداری' : 'برنامهٔ امروز هنوز خالی است'}</h3><p>{data.medicines.length ? 'داروی امروزت تمام شده است.' : 'از بخش مدیریت داروها در پایین صفحه شروع کن.'}</p></div></div>}
           </section>
           <aside className={styles.aside}><section className={styles.weekCard} aria-labelledby="week-title">
             <div className={styles.weekHead}><div><h2 id="week-title">این هفته</h2><p>{formatWeekRange(week.start, week.end)}</p></div><strong>{toPersianNumber(week.percentage)}٪</strong></div>
@@ -516,8 +562,9 @@ export default function MedicationPage() {
             <div className={styles.weekDays}>{week.days.map(day => <div key={day.key}><small>{day.label}</small><span className={`${day.complete ? styles.dayComplete : ''} ${day.partial ? styles.dayPartial : ''} ${day.missed ? styles.dayMissed : ''} ${day.future ? styles.dayFuture : ''} ${day.empty ? styles.dayEmpty : ''}`}>{day.complete ? <Icon name="check" size={15} /> : day.dayNumber}</span></div>)}</div>
           </section></aside>
         </div>
-        <section className={styles.mobileAddSection} aria-label="افزودن دارو"><button type="button" onClick={() => setModal({ type: 'new' })}><span><Icon name="plus" size={32} /></span><strong>افزودن دارو</strong><small>داروی تازه ثبت کن</small></button></section>
+        <section className={styles.mobileAddSection} aria-label="مدیریت داروها"><button type="button" onClick={() => setManagerOpen(true)}><span><Icon name="settings" size={30} /></span><strong>مدیریت داروها</strong><small>افزودن یا ویرایش دارو</small></button></section>
       </div>
+      {managerOpen ? <MedicineManager medicines={data.medicines.filter(medicine => medicine.profileId === PROFILE.id)} onClose={() => setManagerOpen(false)} onAdd={() => setModal({ type: 'new' })} onEdit={medicine => setModal({ type: 'edit', medicine })} /> : null}
       {modal ? <MedicineModal medicine={modal.type === 'edit' ? modal.medicine : null} onClose={() => setModal(null)} onSave={saveMedicine} onDelete={deleteMedicine} saving={saving} /> : null}
       {toast ? <div className={styles.toast} role="status">{toast}</div> : null}
     </main>
