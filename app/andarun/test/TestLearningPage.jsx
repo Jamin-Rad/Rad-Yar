@@ -14,7 +14,6 @@ const SECTION_COPY = [
   { id: 'start', title: L('Der 5-Minuten-Workflow', 'The five-minute workflow', 'روند پنج‌دقیقه‌ای'), icon: 'brain' },
   { id: 'interactive', title: L('Interaktive Bildanalyse', 'Interactive image review', 'تحلیل تعاملی تصویر'), icon: 'scan' },
   { id: 'table', title: L('Befundtabelle', 'Reporting table', 'جدول گزارش'), icon: 'chart' },
-  { id: 'fall', title: L('Radiopaedia-Fall', 'Radiopaedia case', 'کیس Radiopaedia'), icon: 'case' },
   { id: 'take-home', title: 'Take Home Message', icon: 'spark', emphasis: true },
 ]
 
@@ -128,6 +127,9 @@ const LESSON_SOURCES = [
 ]
 
 const RADIOPAEDIA_CASE = {
+  id: '58286',
+  modality: 'CTA',
+  plane: L('Axial', 'Axial', 'آگزیال'),
   frames: Array.from({ length: 20 }, (_, index) => `/dissection/case-58286/${String(index + 1).padStart(2, '0')}.png`),
   initialFrame: 9,
   url: 'https://radiopaedia.org/cases/58286',
@@ -151,6 +153,11 @@ function Icon({ name, className = '' }) {
     case: <><path d="M6 4h12v16H6zM9 4V2h6v2M9 9h6M9 13h6M9 17h4"/></>,
     check: <><path d="m5 12 4 4L19 6"/><circle cx="12" cy="12" r="9"/></>,
     spark: <><path d="M12 2l1.5 5.1L19 9l-5.5 1.9L12 16l-1.5-5.1L5 9l5.5-1.9z"/><path d="m18.5 15 .8 2.7L22 18.5l-2.7.8-.8 2.7-.8-2.7-2.7-.8 2.7-.8z"/></>,
+    bookmark: <><path d="M6 3.5h12v17l-6-3.8-6 3.8z"/><path d="M9 8h6M9 11.5h4"/></>,
+    external: <><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 13v6H5V6h6"/></>,
+    previous: <><path d="m14.5 6-6 6 6 6"/></>,
+    next: <><path d="m9.5 6 6 6-6 6"/></>,
+    layers: <><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></>,
   }
   return <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]}</svg>
 }
@@ -176,7 +183,13 @@ function StartSection({ lang }) {
       {COPY.workflow.map(([title, text, icon], index) => <li key={pick(title, lang)}><span className={styles.stepIcon}><Icon name={icon} /></span><span className={styles.stepNumber}>{index + 1}</span><strong>{pick(title, lang)}</strong><p>{pick(text, lang)}</p></li>)}
     </ol>
     <aside className={styles.warning}><span aria-hidden="true">!</span><div><strong>{pick(COPY.warningTitle, lang)}</strong><p>{pick(COPY.warningText, lang)}</p></div></aside>
+    <RadiopaediaFile lang={lang} caseData={RADIOPAEDIA_CASE} />
+    <RememberNote lang={lang}>{pick(L('Ein unauffälliges frühes NCCT beendet die Akutdiagnostik nicht. Bei passender Klinik Gefäßbildgebung ohne vermeidbare Verzögerung anschließen.', 'A normal early NCCT does not end the acute work-up. When the clinical picture fits, proceed to vascular imaging without avoidable delay.', 'NCCT اولیه طبیعی پایان بررسی حاد نیست. در صورت تطابق بالینی، تصویربرداری عروقی را بدون تأخیر قابل اجتناب ادامه دهید.'), lang)}</RememberNote>
   </>
+}
+
+function RememberNote({ lang, children }) {
+  return <aside className={styles.rememberNote}><span className={styles.rememberIcon}><Icon name="bookmark" /></span><div><strong>{pick(L('Merke', 'Remember', 'به‌خاطر بسپار'), lang)}</strong><p>{children}</p></div></aside>
 }
 
 function InteractiveLesson({ lang }) {
@@ -231,7 +244,6 @@ function TableLesson({ lang }) {
 
 function TakeHomeSummary({ lang }) {
   const [openItems, setOpenItems] = useState(() => new Set())
-  const [sourcesOpen, setSourcesOpen] = useState(false)
   const toggleItem = index => setOpenItems(previous => {
     const next = new Set(previous)
     if (next.has(index)) next.delete(index)
@@ -239,25 +251,28 @@ function TakeHomeSummary({ lang }) {
     return next
   })
 
-  return <>
-    <div className={styles.takeHomePanel}><ol className={styles.takeHome}>{LESSON_CONTENT['take-home'].points.map((point, index) => {
-      const open = openItems.has(index)
-      return <li key={pick(point.title, lang)} className={open ? styles.takeHomeItemOpen : ''}>
-        <button type="button" aria-expanded={open} aria-controls={`take-home-detail-${index}`} onClick={() => toggleItem(index)}><span className={styles.takeHomePriority}>{String(index + 1).padStart(2, '0')}</span><strong>{pick(point.title, lang)}</strong><i aria-hidden="true">{open ? '−' : '+'}</i></button>
-        <div id={`take-home-detail-${index}`} hidden={!open} className={styles.takeHomeDetail}><p>{pick(point.detail, lang)}</p></div>
-      </li>
-    })}</ol></div>
-    <div className={styles.sources}>
-      <button type="button" className={styles.sourcesToggle} aria-expanded={sourcesOpen} aria-controls="take-home-sources" onClick={() => setSourcesOpen(open => !open)}><span>{pick(L('Quellen', 'Sources', 'منابع'), lang)}</span><i aria-hidden="true">{sourcesOpen ? '−' : '+'}</i></button>
-      <div id="take-home-sources" className={styles.sourcesPanel} hidden={!sourcesOpen}>
-        <ul>{LESSON_SOURCES.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer"><span><strong>{pick(source.title, lang)}</strong><small>{pick(source.meta, lang)}</small></span><i aria-hidden="true">↗</i></a></li>)}</ul>
-      </div>
-    </div>
-  </>
+  return <ol className={styles.takeHome}>{LESSON_CONTENT['take-home'].points.map((point, index) => {
+    const open = openItems.has(index)
+    return <li key={pick(point.title, lang)} className={open ? styles.takeHomeItemOpen : ''}>
+      <button type="button" aria-expanded={open} aria-controls={`take-home-detail-${index}`} onClick={() => toggleItem(index)}><span className={styles.takeHomePriority}>{String(index + 1).padStart(2, '0')}</span><strong>{pick(point.title, lang)}</strong><i aria-hidden="true">{open ? '−' : '+'}</i></button>
+      <div id={`take-home-detail-${index}`} hidden={!open} className={styles.takeHomeDetail}><p>{pick(point.detail, lang)}</p></div>
+    </li>
+  })}</ol>
 }
 
-function CaseSequence({ lang }) {
-  const { frames, initialFrame, url, alt } = RADIOPAEDIA_CASE
+function LessonSources({ lang }) {
+  const [open, setOpen] = useState(false)
+
+  return <aside className={styles.sources}>
+    <button type="button" className={styles.sourcesToggle} aria-expanded={open} aria-controls="lesson-sources" onClick={() => setOpen(value => !value)}><span>{pick(L('Quellen', 'Sources', 'منابع'), lang)}</span><i aria-hidden="true">{open ? '−' : '+'}</i></button>
+    <div id="lesson-sources" className={styles.sourcesPanel} hidden={!open}>
+      <ul>{LESSON_SOURCES.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer"><span><strong>{pick(source.title, lang)}</strong><small>{pick(source.meta, lang)}</small></span><Icon name="external" /></a></li>)}</ul>
+    </div>
+  </aside>
+}
+
+function CaseSequence({ lang, caseData }) {
+  const { frames, initialFrame, alt, modality, plane } = caseData
   const [frameIndex, setFrameIndex] = useState(initialFrame)
   const viewerRef = useRef(null)
   const frameIndexRef = useRef(initialFrame)
@@ -321,7 +336,6 @@ function CaseSequence({ lang }) {
     next: pick(L('Nächste Schicht', 'Next slice', 'برش بعدی'), lang),
     slider: pick(L('Schicht auswählen', 'Select slice', 'انتخاب برش'), lang),
     hint: pick(L('Über dem Bild scrollen · ziehen · Pfeiltasten', 'Scroll over the image · drag · arrow keys', 'روی تصویر اسکرول کنید · بکشید · کلیدهای جهت'), lang),
-    open: pick(L('Fall in Radiopaedia öffnen', 'Open case in Radiopaedia', 'باز کردن کیس در Radiopaedia'), lang),
   }
 
   const handleKeyDown = event => {
@@ -365,26 +379,34 @@ function CaseSequence({ lang }) {
     if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId)
   }
 
-  return <div className={styles.caseSequence}>
+  return <div className={styles.caseViewer}>
     <div ref={viewerRef} className={styles.caseViewport} tabIndex={0} onKeyDown={handleKeyDown} onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerEnd} onPointerCancel={handlePointerEnd} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} onTouchCancel={() => { touchStartRef.current = null }} aria-label={`${pick(alt, lang)} · ${labels.hint}`}>
       <Image src={frames[frameIndex]} alt={pick(alt, lang)} width={512} height={512} priority={frameIndex === initialFrame} draggable={false} />
-      <div className={styles.caseTopBar}><span>CTA · AXIAL</span><strong aria-live="polite">{String(frameIndex + 1).padStart(2, '0')} <i>/ {frames.length}</i></strong></div>
-      <button type="button" className={`${styles.caseNav} ${styles.caseNavPrevious}`} onClick={() => moveFrame(-1)} disabled={frameIndex === 0} aria-label={labels.previous}>‹</button>
-      <button type="button" className={`${styles.caseNav} ${styles.caseNavNext}`} onClick={() => moveFrame(1)} disabled={frameIndex === frames.length - 1} aria-label={labels.next}>›</button>
-      <div className={styles.caseScrubber}><input type="range" min="0" max={frames.length - 1} value={frameIndex} onChange={event => selectFrame(Number(event.target.value))} aria-label={labels.slider} /></div>
+      <div className={styles.caseImageMeta}><span><Icon name="layers" />{modality} · {pick(plane, lang)}</span><strong aria-live="polite">{String(frameIndex + 1).padStart(2, '0')} <i>/ {frames.length}</i></strong></div>
     </div>
-    <footer className={styles.caseViewerFooter}><small>↕ {labels.hint}</small><a href={url} target="_blank" rel="noopener noreferrer">{labels.open} ↗</a></footer>
+    <div className={styles.caseControls}>
+      <button type="button" onClick={() => moveFrame(-1)} disabled={frameIndex === 0} aria-label={labels.previous}><Icon name="previous" /></button>
+      <div className={styles.caseRange}><input type="range" min="0" max={frames.length - 1} value={frameIndex} onChange={event => selectFrame(Number(event.target.value))} aria-label={labels.slider} /><small>{labels.hint}</small></div>
+      <button type="button" onClick={() => moveFrame(1)} disabled={frameIndex === frames.length - 1} aria-label={labels.next}><Icon name="next" /></button>
+    </div>
   </div>
 }
 
-function RadiopaediaCase({ lang }) {
-  return <article className={styles.caseStudy}>
-    <CaseSequence lang={lang} />
-    <div className={styles.caseBody}>
-      <small>RADIOPAEDIA · rID 58286 · CTA SEQUENCE</small>
-      <h3>{pick(RADIOPAEDIA_CASE.title, lang)}</h3>
-      <p>{pick(RADIOPAEDIA_CASE.text, lang)}</p>
-      <footer>{RADIOPAEDIA_CASE.credit}</footer>
+function RadiopaediaFile({ lang, caseData }) {
+  return <article className={styles.radiopaediaFile}>
+    <header className={styles.caseFileHeader}>
+      <span className={styles.caseFileIcon}><Icon name="case" /></span>
+      <div><strong>Radiopaedia File</strong><small>{pick(L('Originalfall zum Durchscrollen', 'Original case with scrollable series', 'کیس واقعی با سکانس قابل اسکرول'), lang)}</small></div>
+      <a href={caseData.url} target="_blank" rel="noopener noreferrer">Radiopaedia.org <Icon name="external" /></a>
+    </header>
+    <div className={styles.caseFileContent}>
+      <CaseSequence lang={lang} caseData={caseData} />
+      <div className={styles.caseBody}>
+        <dl><div><dt>rID</dt><dd>{caseData.id}</dd></div><div><dt>{pick(L('Serie', 'Series', 'سری'), lang)}</dt><dd>{caseData.modality} · {pick(caseData.plane, lang)}</dd></div></dl>
+        <h3>{pick(caseData.title, lang)}</h3>
+        <p>{pick(caseData.text, lang)}</p>
+        <footer>{caseData.credit}</footer>
+      </div>
     </div>
   </article>
 }
@@ -392,7 +414,6 @@ function RadiopaediaCase({ lang }) {
 function ContentSection({ id, lang }) {
   if (id === 'interactive') return <InteractiveLesson lang={lang} />
   if (id === 'table') return <TableLesson lang={lang} />
-  if (id === 'fall') return <><p className={styles.lead}>{pick(L('Scrolle wie an der Workstation durch eine echte Bildsequenz und achte auf die Gefäßkontur.', 'Scroll through a real image sequence as you would at the workstation and follow the vessel contour.', 'مانند ورک‌استیشن در یک سکانس واقعی اسکرول کنید و کانتور رگ را دنبال کنید.'), lang)}</p><RadiopaediaCase lang={lang} /></>
   return <TakeHomeSummary lang={lang} />
 }
 
@@ -442,7 +463,7 @@ export default function TestLearningPage() {
 
     <div className={styles.layout}>
       <aside className={styles.sidebar}><h2>{pick(COPY.path, lang)}</h2><nav>{PATH_SECTIONS.map(section => <button type="button" key={section.id} className={openId === section.id ? styles.activeSideItem : ''} onClick={() => selectSection(section.id)} aria-current={openId === section.id ? 'location' : undefined} aria-label={`${pick(COPY.open, lang)}: ${pick(section.title, lang)}`}><span className={styles.sideIcon}><Icon name={section.icon} /></span><strong>{pick(section.title, lang)}</strong></button>)}</nav></aside>
-      <article className={styles.lesson}>{SECTION_COPY.map(section => <Section key={section.id} section={section} lang={lang} open={openId === section.id} isRead={readSections.has(section.id)} onToggle={selectSection} onReadToggle={toggleSectionRead}>{section.id === 'start' ? <StartSection lang={lang} /> : <ContentSection id={section.id} lang={lang} />}</Section>)}</article>
+      <article className={styles.lesson}>{SECTION_COPY.map(section => <Section key={section.id} section={section} lang={lang} open={openId === section.id} isRead={readSections.has(section.id)} onToggle={selectSection} onReadToggle={toggleSectionRead}>{section.id === 'start' ? <StartSection lang={lang} /> : <ContentSection id={section.id} lang={lang} />}</Section>)}<LessonSources lang={lang} /></article>
     </div>
     <MobileLearningPath lang={lang} openId={openId} readSections={readSections} onSelect={selectSection} />
   </main>
