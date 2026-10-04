@@ -64,7 +64,7 @@ const UI = {
     correctShort: 'Richtig',
     wrongShort: 'Falsch',
     remaining: 'Offen',
-    keyboardHint: 'Tastatur: A–D oder 1–4 · Enter: bestätigen / weiter',
+    keyboardHint: 'Tastatur: 1–4 · Enter: bestätigen / weiter',
     answeredLabel: (c, t) => `${c}/${t} beantwortet`,
     noWrong: 'Stark – keine falschen Antworten in diesem Durchgang.',
     freeLimitNote: `Kostenlose Version: max. ${FREE_ITEM_LIMIT} Fragen pro Durchgang.`,
@@ -103,7 +103,7 @@ const UI = {
     correctShort: 'Correct',
     wrongShort: 'Incorrect',
     remaining: 'Open',
-    keyboardHint: 'Keyboard: A–D or 1–4 · Enter: confirm / continue',
+    keyboardHint: 'Keyboard: 1–4 · Enter: confirm / continue',
     answeredLabel: (c, t) => `${c}/${t} answered`,
     noWrong: 'Great work – no incorrect answers in this session.',
     freeLimitNote: `Free version: max. ${FREE_ITEM_LIMIT} questions per session.`,
@@ -142,7 +142,7 @@ const UI = {
     correctShort: 'درست',
     wrongShort: 'نادرست',
     remaining: 'باقی‌مانده',
-    keyboardHint: 'صفحه‌کلید: A–D یا 1–4 · Enter: تأیید / ادامه',
+    keyboardHint: 'صفحه‌کلید: 1–4 · Enter: تأیید / ادامه',
     answeredLabel: (c, t) => `${c}/${t} پاسخ‌داده‌شده`,
     noWrong: 'عالی است — در این دور پاسخ نادرستی نداشتید.',
     freeLimitNote: `نسخه رایگان: حداکثر ${FREE_ITEM_LIMIT} سؤال در هر دور.`,
@@ -453,12 +453,7 @@ function QuizContent() {
       const target = event.target
       if (target instanceof HTMLElement && ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName)) return
 
-      const normalizedKey = event.key.toUpperCase()
-      const optionIndex = /^[1-4]$/.test(event.key)
-        ? Number(event.key) - 1
-        : /^[A-D]$/.test(normalizedKey)
-          ? normalizedKey.charCodeAt(0) - 65
-          : -1
+      const optionIndex = /^[1-4]$/.test(event.key) ? Number(event.key) - 1 : -1
       const option = optionIndex >= 0 ? q.options[optionIndex] : null
       if (option && !checked) {
         event.preventDefault()
@@ -675,6 +670,14 @@ function QuizContent() {
           </div>
 
           {checked && (
+            <div className={styles.nextAction}>
+              <button className={styles.nextBtnFull} onClick={handleNext}>
+                {answeredCount >= total ? ui.resultBtn : ui.nextBtn}<ArrowIcon />
+              </button>
+            </div>
+          )}
+
+          {checked && (
             <div className={`${styles.feedback} ${isCorrect ? styles.fbOk : styles.fbErr}`} aria-live="polite">
               <div className={styles.fbHead}>
                 <span className={isCorrect ? styles.feedbackOkIcon : styles.feedbackErrIcon}><StatusIcon correct={isCorrect} /></span>
@@ -686,9 +689,6 @@ function QuizContent() {
                   <strong>{q.correct}) {correctOpt?.text}</strong>
                 </div>
               )}
-              <button className={styles.nextBtnFull} onClick={handleNext}>
-                {answeredCount >= total ? ui.resultBtn : ui.nextBtn}<ArrowIcon />
-              </button>
               <div className={styles.fbLabel}>{ui.explanation}</div>
               <div className={styles.fbText}>
                 {isCorrect ? getCorrectAnswerExplanation(q, lang) : q.explanation}

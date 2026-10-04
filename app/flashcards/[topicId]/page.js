@@ -505,7 +505,6 @@ export default function FlashcardReviewPage() {
           <Link href={modeHref(null)} className={!practiceMode && !reviewMode ? styles.modeActive : ''}>{t.modeLearn}</Link>
           <Link href={modeHref('due')} className={reviewMode ? styles.modeActive : ''}>{t.modeDue}</Link>
           <Link href={modeHref('practice')} className={practiceMode ? styles.modeActive : ''}>{t.modePractice}</Link>
-          <small>{t.modeHint}</small>
         </div>
       )}
 
@@ -541,6 +540,14 @@ export default function FlashcardReviewPage() {
       </nav>
 
       <main className={styles.main}>
+        <div className={styles.studyContext}>
+          <span className={styles.studyMode}>
+            {practiceMode ? t.modePractice : reviewMode ? t.modeDue : t.modeLearn}
+          </span>
+          <h1>{localize(topic.title, lang)}</h1>
+          <span className={styles.currentCard}>{t.cardOf(index + 1, cards.length)}</span>
+        </div>
+
         {practiceMode && <div className={styles.practiceBadge}>{boxLabel} · {t.practiceNote}</div>}
 
         <div
@@ -553,9 +560,10 @@ export default function FlashcardReviewPage() {
         >
           <div key={index} className={`${styles.flipper} ${flipped ? styles.flipped : ''}`}>
             <div className={styles.cardFront} aria-hidden={flipped}>
+              <span className={styles.cardSideLabel}>{t.questionLabel}</span>
               <p className={styles.question}>{localize(current.front, lang)}</p>
               <div className={styles.tapHint}>
-                <span className={styles.tapHintIcon}>↕</span>
+                <span className={styles.tapHintIcon}>↻</span>
                 {t.tap}
               </div>
             </div>
@@ -569,7 +577,7 @@ export default function FlashcardReviewPage() {
 
               </div>
               <div className={styles.tapHint}>
-                <span className={styles.tapHintIcon}>↕</span>
+                <span className={styles.tapHintIcon}>↻</span>
                 {t.tapBack}
               </div>
             </div>

@@ -253,12 +253,6 @@
   border-color: rgba(249, 115, 22, .4);
 }
 
-.modeNav small {
-  width: 100%;
-  color: var(--text-muted);
-  text-align: center;
-}
-
 /* ── MAIN CONTENT ──────────────────────────────────── */
 .main {
   flex: 1;
@@ -270,6 +264,39 @@
   flex-direction: column;
   align-items: center;
   gap: 18px;
+}
+
+.studyContext {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 4px 16px;
+  width: 100%;
+}
+
+.studyMode {
+  grid-column: 1 / -1;
+  color: var(--orange);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.studyContext h1 {
+  margin: 0;
+  color: var(--text-strong);
+  font-family: var(--font-main);
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-weight: 850;
+  line-height: 1.25;
+}
+
+.currentCard {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 750;
+  white-space: nowrap;
 }
 
 /* ── CATEGORY BADGE ────────────────────────────────── */
@@ -321,7 +348,7 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 24px;
-  min-height: 360px;
+  min-height: 310px;
   transition: box-shadow 0.2s ease;
 }
 
@@ -347,15 +374,27 @@
 /* ── TEXTE AUF DER KARTE ───────────────────────────── */
 .question {
   margin: 0;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: clamp(21px, 3.2vw, 30px);
-  font-weight: 900;
-  line-height: 1.28;
+  font-family: var(--font-main);
+  font-size: clamp(21px, 2.7vw, 28px);
+  font-weight: 800;
+  letter-spacing: -.015em;
+  line-height: 1.4;
   color: var(--text-strong);
   flex: 1;
   display: flex;
   align-items: center;
+}
+
+.cardSideLabel {
+  align-self: flex-start;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--orange);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .1em;
+  text-transform: uppercase;
 }
 
 .answer {
@@ -398,6 +437,8 @@
   opacity: 0;
   transform: translateY(18px);
   pointer-events: none;
+  max-height: 0;
+  overflow: hidden;
   transition: opacity 0.32s ease, transform 0.32s ease;
   transition-delay: 0.1s;
 }
@@ -406,6 +447,8 @@
   opacity: 1;
   transform: translateY(0);
   pointer-events: all;
+  max-height: 120px;
+  overflow: visible;
 }
 
 .knowBtn,
@@ -628,12 +671,15 @@
   .cardMapItem { width: 32px; min-height: 32px; }
   .main         { padding: 20px 14px 72px; gap: 14px; }
 
+  .studyContext { grid-template-columns: 1fr; align-items: start; gap: 3px; }
+  .currentCard { grid-row: 2; margin-top: 2px; }
+
   .cardFront,
   .cardBack     { padding: 24px; min-height: 300px; border-radius: var(--radius-md); }
   .stage,
   .flipper      { border-radius: var(--radius-md); }
 
-  .question     { font-size: 20px; }
+  .question     { font-size: 20px; line-height: 1.45; }
   .answer       { font-size: 15px; }
 
   .answerRow    { gap: 10px; }

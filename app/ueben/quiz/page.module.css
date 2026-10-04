@@ -383,6 +383,10 @@
   border-radius: 12px;
 }
 
+.nextAction {
+  margin: 0 32px 18px;
+}
+
 .fbOk { border-color: rgba(7, 150, 106, .24); background: #f1faf6; }
 .fbErr { border-color: rgba(220, 74, 74, .22); background: #fff6f6; }
 .fbHead { display: flex; align-items: center; gap: 9px; margin-bottom: 14px; font-size: 16px; }
@@ -412,7 +416,7 @@
 
 .nextBtnFull {
   width: 100%;
-  margin: 2px 0 18px;
+  margin: 0;
   padding: 13px 24px;
   background: var(--quiz-navy);
   color: #fff;
@@ -618,8 +622,9 @@
   .checkRow { align-items: stretch; flex-direction: column; gap: 9px; }
   .checkBtn { width: 100%; min-width: 0; }
   .keyboardHint { text-align: center; }
+  .nextAction { margin: 0 20px 14px; }
   .feedback { margin: 0 20px 18px; padding: 17px; }
-  .nextBtnFull { width: 100%; margin: 2px 0 18px; }
+  .nextBtnFull { width: 100%; }
   .resultWrap { width: calc(100% - 24px); padding: 22px 0 60px; }
   .scoreCard { flex-direction: column; gap: 18px; padding: 26px 20px; text-align: center; }
   .scoreCopy { min-width: 0; }
