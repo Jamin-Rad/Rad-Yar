@@ -278,17 +278,7 @@ function CaseSequence({ lang, caseData }) {
   const [frameIndex, setFrameIndex] = useState(initialFrame)
   const viewerRef = useRef(null)
   const frameIndexRef = useRef(initialFrame)
-  const wheelDeltaRef = useRef(0)
-  const wheelResetRef = useRef(null)
   const pointerStartRef = useRef(null)
-  const touchStartRef = useRef(null)
-  const moveFrame = useCallback(delta => {
-    setFrameIndex(current => {
-      const next = Math.min(frames.length - 1, Math.max(0, current + delta))
-      frameIndexRef.current = next
-      return next
-    })
-  }, [frames.length])
 
   const selectFrame = useCallback(index => {
     const next = Math.min(frames.length - 1, Math.max(0, index))
@@ -296,84 +286,73 @@ function CaseSequence({ lang, caseData }) {
     setFrameIndex(next)
   }, [frames.length])
 
-  useEffect(() => {
-    frameIndexRef.current = frameIndex
-  }, [frameIndex])
+  const moveFrame = useCallback(delta => selectFrame(frameIndexRef.current + delta), [selectFrame])
 
   useEffect(() => {
     const viewer = viewerRef.current
     if (!viewer) return undefined
+    let accumulated = 0
+    let lastEvent = 0
+    let lastStep = -Infinity
     const handleWheel = event => {
-      if (event.target.closest('button, input, a')) return
-      if (event.deltaY === 0) return
+      if (event.ctrlKey || event.deltaY === 0) return
       const direction = event.deltaY > 0 ? 1 : -1
       const currentFrame = frameIndexRef.current
       const canMove = direction > 0 ? currentFrame < frames.length - 1 : currentFrame > 0
-      if (!canMove) return
+      if (!canMove) { accumulated = 0; return }
       event.preventDefault()
-      wheelDeltaRef.current += event.deltaY
-      window.clearTimeout(wheelResetRef.current)
-      wheelResetRef.current = window.setTimeout(() => { wheelDeltaRef.current = 0 }, 160)
-      if (Math.abs(wheelDeltaRef.current) < 70) return
+      const now = performance.now()
+      if (now - lastEvent > 180 || Math.sign(accumulated) !== direction) accumulated = 0
+      lastEvent = now
+      const scale = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? viewer.clientHeight : 1
+      accumulated += event.deltaY * scale
+      if (Math.abs(accumulated) < 40 || now - lastStep < 110) return
       moveFrame(direction)
-      wheelDeltaRef.current = 0
+      accumulated = 0
+      lastStep = now
     }
     viewer.addEventListener('wheel', handleWheel, { passive: false })
     return () => {
       viewer.removeEventListener('wheel', handleWheel)
-      window.clearTimeout(wheelResetRef.current)
     }
   }, [frames.length, moveFrame])
 
   useEffect(() => {
-    ;[frameIndex - 1, frameIndex + 1].forEach(index => {
-      if (!frames[index]) return
+    // These small local frames are also rendered unoptimized, so preloading
+    // warms the exact URLs used while scrolling the sequence.
+    frames.forEach(src => {
       const image = new window.Image()
-      image.src = frames[index]
+      image.src = src
     })
-  }, [frameIndex, frames])
+  }, [frames])
 
   const labels = {
     previous: pick(L('Vorherige Schicht', 'Previous slice', 'برش قبلی'), lang),
     next: pick(L('Nächste Schicht', 'Next slice', 'برش بعدی'), lang),
     slider: pick(L('Schicht auswählen', 'Select slice', 'انتخاب برش'), lang),
-    hint: pick(L('Über dem Bild scrollen · ziehen · Pfeiltasten', 'Scroll over the image · drag · arrow keys', 'روی تصویر اسکرول کنید · بکشید · کلیدهای جهت'), lang),
+    hint: pick(L('Scrollen oder ziehen · Mobil: seitlich wischen', 'Scroll or drag · Mobile: swipe sideways', 'اسکرول یا کشیدن تصویر · موبایل: حرکت افقی'), lang),
   }
 
   const handleKeyDown = event => {
     if (['ArrowRight', 'ArrowDown'].includes(event.key)) moveFrame(1)
     else if (['ArrowLeft', 'ArrowUp'].includes(event.key)) moveFrame(-1)
+    else if (event.key === 'Home') selectFrame(0)
+    else if (event.key === 'End') selectFrame(frames.length - 1)
     else return
     event.preventDefault()
   }
 
-  const handleTouchStart = event => {
-    if (event.target.closest('button, input')) return
-    const touch = event.touches[0]
-    touchStartRef.current = { x: touch.clientX, y: touch.clientY }
-  }
-
-  const handleTouchEnd = event => {
-    const start = touchStartRef.current
-    touchStartRef.current = null
-    if (!start) return
-    const touch = event.changedTouches[0]
-    const deltaX = touch.clientX - start.x
-    const deltaY = touch.clientY - start.y
-    if (Math.abs(deltaX) >= 35 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) moveFrame(deltaX < 0 ? 1 : -1)
-  }
-
   const handlePointerDown = event => {
-    if (event.pointerType === 'touch' || event.target.closest('button, input, a')) return
-    pointerStartRef.current = { y: event.clientY, frame: frameIndexRef.current }
+    if (!event.isPrimary || event.button !== 0) return
+    pointerStartRef.current = { x: event.clientX, y: event.clientY, frame: frameIndexRef.current }
     event.currentTarget.setPointerCapture(event.pointerId)
   }
 
   const handlePointerMove = event => {
     const start = pointerStartRef.current
-    if (!start || event.pointerType === 'touch') return
-    const nextFrame = Math.min(frames.length - 1, Math.max(0, start.frame + Math.round((start.y - event.clientY) / 22)))
-    selectFrame(nextFrame)
+    if (!start) return
+    const movement = event.pointerType === 'touch' ? (start.x - event.clientX) / 30 : (start.y - event.clientY) / 26
+    selectFrame(start.frame + Math.trunc(movement))
   }
 
   const handlePointerEnd = event => {
@@ -382,14 +361,15 @@ function CaseSequence({ lang, caseData }) {
   }
 
   return <div className={styles.caseViewer}>
-    <div ref={viewerRef} className={styles.caseViewport} tabIndex={0} onKeyDown={handleKeyDown} onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerEnd} onPointerCancel={handlePointerEnd} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} onTouchCancel={() => { touchStartRef.current = null }} aria-label={`${pick(alt, lang)} · ${labels.hint}`}>
-      <Image src={frames[frameIndex]} alt={pick(alt, lang)} width={512} height={512} priority={frameIndex === initialFrame} draggable={false} />
+    <div ref={viewerRef} className={styles.caseViewport} data-no-zoom role="group" tabIndex={0} onKeyDown={handleKeyDown} onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerEnd} onPointerCancel={handlePointerEnd} onLostPointerCapture={() => { pointerStartRef.current = null }} aria-label={`${pick(alt, lang)} · ${labels.hint}`}>
+      <Image src={frames[frameIndex]} alt={`${pick(alt, lang)} · ${frameIndex + 1}/${frames.length}`} width={320} height={320} unoptimized draggable={false} />
       <div className={styles.caseImageMeta}><span><Icon name="layers" />{modality} · {pick(plane, lang)}</span><strong aria-live="polite">{String(frameIndex + 1).padStart(2, '0')} <i>/ {frames.length}</i></strong></div>
     </div>
-    <div className={styles.caseControls}>
-      <button type="button" onClick={() => moveFrame(-1)} disabled={frameIndex === 0} aria-label={labels.previous}><Icon name="previous" /><span>{labels.previous}</span></button>
-      <div className={styles.caseRange}><input type="range" min="0" max={frames.length - 1} value={frameIndex} onChange={event => selectFrame(Number(event.target.value))} aria-label={labels.slider} /><small>{labels.hint}</small></div>
-      <button type="button" onClick={() => moveFrame(1)} disabled={frameIndex === frames.length - 1} aria-label={labels.next}><span>{labels.next}</span><Icon name="next" /></button>
+    <div className={styles.caseControls} dir="ltr">
+      <button type="button" onClick={() => moveFrame(-1)} disabled={frameIndex === 0} aria-label={labels.previous} title={labels.previous}><Icon name="previous" /></button>
+      <div className={styles.caseRange}><input type="range" min="0" max={frames.length - 1} step="1" value={frameIndex} onChange={event => selectFrame(Number(event.target.value))} aria-label={labels.slider} aria-valuetext={`${frameIndex + 1} / ${frames.length}`} /></div>
+      <button type="button" onClick={() => moveFrame(1)} disabled={frameIndex === frames.length - 1} aria-label={labels.next} title={labels.next}><Icon name="next" /></button>
+      <small className={styles.caseHint} dir={lang === 'fa' ? 'rtl' : 'ltr'}>{labels.hint}</small>
     </div>
   </div>
 }
@@ -459,8 +439,9 @@ export default function TestLearningPage() {
   return <main className={styles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
     <header className={styles.header}>
       <div className={styles.topline}><nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">RadYar</Link><span>/</span><Link href="/andarun">Andarun</Link><span>/</span><strong>Test</strong></nav><span className={styles.author}>Dr. Zia</span></div>
-      <div className={styles.hero}><div className={styles.heroCopy}><h1>{pick(COPY.title, lang)}</h1><div className={styles.actions}><button type="button" className={styles.takeHomeJump} onClick={() => selectSection('take-home')}><Icon name="spark" />{pick(COPY.jumpToSummary, lang)}<span aria-hidden="true">↓</span></button><Link className={styles.primaryAction} href="/ueben/quiz?fach=gehirn&n=10&themen=ischaemischer-schlaganfall&from=%2Fandarun%2Ftest">{pick(COPY.mcq, lang)}<span aria-hidden="true">→</span></Link><Link className={styles.secondaryAction} href="/flashcards/ischaemischer-schlaganfall"><Icon name="case" />{pick(COPY.flashcards, lang)}</Link></div></div></div>
-      <div className={styles.progressBar}><div className={styles.progressTrack}><i style={{ width: `${(readSections.size / TRACKED_SECTION_IDS.length) * 100}%` }} /></div><span>{readSections.size} / {TRACKED_SECTION_IDS.length} {pick(COPY.progress, lang)}</span><div className={styles.progressActions}><button type="button" className={`${styles.lessonCompleteButton} ${lessonComplete ? styles.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><Icon name="check" />{pick(lessonComplete ? COPY.lessonCompleted : COPY.completeLesson, lang)}</button><button type="button" className={styles.continueButton} onClick={advance} disabled={activeIndex === SECTION_COPY.length - 1}>{pick(COPY.continue, lang)}<span aria-hidden="true">→</span></button></div></div>
+      <div className={styles.hero}><div className={styles.heroCopy}><h1>{pick(COPY.title, lang)}</h1></div></div>
+      <div className={styles.actions}><button type="button" className={styles.takeHomeJump} onClick={() => selectSection('take-home')}><Icon name="spark" />{pick(COPY.jumpToSummary, lang)}<span aria-hidden="true">↓</span></button><Link className={styles.primaryAction} href="/ueben/quiz?fach=gehirn&n=10&themen=ischaemischer-schlaganfall&from=%2Fandarun%2Ftest">{pick(COPY.mcq, lang)}<span aria-hidden="true">→</span></Link><Link className={styles.secondaryAction} href="/flashcards/ischaemischer-schlaganfall"><Icon name="case" />{pick(COPY.flashcards, lang)}</Link></div>
+      <div className={styles.progressBar}><div className={styles.progressTrack} role="progressbar" aria-label={pick(COPY.progress, lang)} aria-valuemin={0} aria-valuemax={TRACKED_SECTION_IDS.length} aria-valuenow={readSections.size}><i style={{ width: `${(readSections.size / TRACKED_SECTION_IDS.length) * 100}%` }} /></div><span>{readSections.size} / {TRACKED_SECTION_IDS.length} {pick(COPY.progress, lang)}</span><div className={styles.progressActions}><button type="button" className={`${styles.lessonCompleteButton} ${lessonComplete ? styles.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><Icon name="check" />{pick(lessonComplete ? COPY.lessonCompleted : COPY.completeLesson, lang)}</button><button type="button" className={styles.continueButton} onClick={advance} disabled={activeIndex === SECTION_COPY.length - 1}>{pick(COPY.continue, lang)}<span aria-hidden="true">→</span></button></div></div>
     </header>
 
     <div className={styles.layout}>
