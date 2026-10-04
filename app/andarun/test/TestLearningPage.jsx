@@ -13,12 +13,14 @@ const pick = (value, lang) => typeof value === 'string' ? value : value[lang] ||
 const SECTION_COPY = [
   { id: 'start', title: L('Der 5-Minuten-Workflow', 'The five-minute workflow', 'روند پنج‌دقیقه‌ای'), icon: 'brain' },
   { id: 'interactive', title: L('Interaktive Bildanalyse', 'Interactive image review', 'تحلیل تعاملی تصویر'), icon: 'scan' },
+  { id: 'table', title: L('Befundtabelle', 'Reporting table', 'جدول گزارش'), icon: 'chart' },
   { id: 'fall', title: L('Radiopaedia-Fall', 'Radiopaedia case', 'کیس Radiopaedia'), icon: 'case' },
   { id: 'take-home', title: 'Take Home Message', icon: 'spark', emphasis: true },
 ]
 
 const SECTION_IDS = SECTION_COPY.map(section => section.id)
 const PATH_SECTIONS = SECTION_COPY.filter(section => !section.emphasis)
+const TRACKED_SECTION_IDS = PATH_SECTIONS.map(section => section.id)
 
 const COPY = {
   title: L('Akuter ischämischer Schlaganfall', 'Acute ischaemic stroke', 'سکته ایسکمیک حاد'),
@@ -26,7 +28,6 @@ const COPY = {
   flashcards: L('Flashcards', 'Flashcards', 'فلش‌کارت‌ها'),
   path: L('Lernpfad', 'Learning path', 'مسیر یادگیری'),
   jumpToSummary: L('Take Home Message', 'Take Home Message', 'Take Home Message'),
-  summaryHint: L('Direkt zur Zusammenfassung', 'Jump to the lesson summary', 'رفتن مستقیم به خلاصه درس'),
   close: L('Schließen', 'Close', 'بستن'),
   progress: L('gelesen', 'read', 'خوانده‌شده'),
   continue: L('Lektion fortsetzen', 'Continue lesson', 'ادامه درس'),
@@ -88,10 +89,22 @@ const INTERACTIVE_TABLE = [
 const LESSON_CONTENT = {
   'take-home': {
     points: [
-      L('NCCT: Blutung und frühe Parenchymzeichen.', 'NCCT: haemorrhage and early parenchymal signs.', 'NCCT: خونریزی و علائم اولیه پارانشیم.'),
-      L('CTA: genaue Verschlusshöhe und Gefäßweg.', 'CTA: exact occlusion level and vascular route.', 'CTA: سطح دقیق انسداد و مسیر عروقی.'),
-      L('CTP: nur technisch valide und im Kontext interpretieren.', 'CTP: interpret only when technically valid and in context.', 'CTP: فقط در صورت اعتبار فنی و در زمینه مناسب تفسیر شود.'),
-      L('Der Befund endet mit einer klaren Handlungsbotschaft.', 'The report ends with a clear action message.', 'گزارش با یک پیام عملی روشن پایان می‌یابد.'),
+      {
+        title: L('Blutung zuerst ausschließen.', 'Exclude haemorrhage first.', 'ابتدا خونریزی را رد کنید.'),
+        detail: L('Die NCCT beantwortet zuerst die Sicherheitsfrage. Suche systematisch in Parenchym, Ventrikeln und Subarachnoidalräumen, bevor du Frühzeichen der Ischämie bewertest.', 'NCCT answers the safety question first. Review the parenchyma, ventricles, and subarachnoid spaces systematically before assessing early ischaemic signs.', 'NCCT ابتدا به پرسش ایمنی پاسخ می‌دهد. پیش از بررسی علائم اولیه ایسکمی، پارانشیم، بطن‌ها و فضاهای ساب‌آراکنوئید را منظم ارزیابی کنید.'),
+      },
+      {
+        title: L('LVO in der CTA exakt lokalisieren.', 'Localise the LVO precisely on CTA.', 'محل LVO را در CTA دقیق مشخص کنید.'),
+        detail: L('Benenne Seite und Segment, prüfe den Gefäßweg auf Tandemläsion oder Dissektion und ordne die distale Füllung im klinischen Kontext ein.', 'Name the side and segment, inspect the access route for tandem lesions or dissection, and interpret distal filling in clinical context.', 'سمت و سگمان را مشخص کنید، مسیر عروقی را از نظر ضایعه تاندوم یا دیسکسیون بررسی کرده و پرشدگی دیستال را در زمینه بالینی تفسیر کنید.'),
+      },
+      {
+        title: L('Frühzeichen immer im Seitenvergleich lesen.', 'Read early signs with side-to-side comparison.', 'علائم اولیه را همیشه با مقایسه دو سمت بخوانید.'),
+        detail: L('Achte besonders auf Dichteunterschiede, Insular ribbon, Basalganglien und Sulcusverstrich. Eine unauffällige NCCT schließt eine frühe Ischämie nicht aus.', 'Focus on attenuation differences, the insular ribbon, basal ganglia, and sulcal effacement. A normal NCCT does not exclude early ischaemia.', 'به تفاوت دانسیته، نوار اینسولا، عقده‌های قاعده‌ای و محوشدن سولکوس‌ها توجه کنید. NCCT طبیعی ایسکمی اولیه را رد نمی‌کند.'),
+      },
+      {
+        title: L('Mit einer klaren Handlungsbotschaft enden.', 'End with a clear action message.', 'با یک پیام عملی روشن پایان دهید.'),
+        detail: L('Der Akutbefund komprimiert Blutung, Parenchym, Verschlusshöhe und gegebenenfalls Perfusion auf wenige entscheidungsrelevante Sätze – inklusive unmittelbarer Kommunikation kritischer Befunde.', 'The acute report compresses haemorrhage, parenchyma, occlusion level, and when relevant perfusion into a few decision-focused sentences, including immediate communication of critical findings.', 'گزارش حاد باید خونریزی، پارانشیم، سطح انسداد و در صورت نیاز پرفیوژن را در چند جمله تصمیم‌ساز خلاصه کند و یافته بحرانی فوراً منتقل شود.'),
+      },
     ],
   },
 }
@@ -133,7 +146,7 @@ function Section({ section, lang, open, isRead, onToggle, onReadToggle, children
     </button>
     <div id={`${section.id}-panel`} hidden={!open} className={styles.sectionBody}>
       {children}
-      <button type="button" className={`${styles.readButton} ${isRead ? styles.readButtonDone : ''}`} aria-pressed={isRead} onClick={() => onReadToggle(section.id)}><Icon name="check" />{pick(isRead ? COPY.completed : COPY.complete, lang)}</button>
+      {!section.emphasis ? <button type="button" className={`${styles.readButton} ${isRead ? styles.readButtonDone : ''}`} aria-pressed={isRead} onClick={() => onReadToggle(section.id)}><Icon name="check" />{pick(isRead ? COPY.completed : COPY.complete, lang)}</button> : null}
     </div>
   </section>
 }
@@ -177,14 +190,43 @@ function InteractiveLesson({ lang }) {
       </article>
     </div>
 
+  </div>
+}
+
+function TableLesson({ lang }) {
+  return <div className={styles.tableModule}>
+    <header className={styles.tableIntro}>
+      <span>{pick(L('STANDARDISIERTES TABELLENMUSTER', 'STANDARDISED TABLE PATTERN', 'الگوی استاندارد جدول'), lang)}</span>
+      <h3>{pick(L('Frühe NCCT-Zeichen kompakt vergleichen', 'Compare early NCCT signs at a glance', 'مقایسه فشرده علائم اولیه NCCT'), lang)}</h3>
+      <p>{pick(L('Tabellen eignen sich für klar abgrenzbare Vergleichskriterien. Eine kurze Einleitung erklärt zuerst, wie die Tabelle gelesen und im Befund angewendet werden soll.', 'Tables work best for clearly separated comparison criteria. A short introduction first explains how to read the table and apply it in reporting.', 'جدول برای معیارهای مقایسه‌ای مشخص مناسب است. ابتدا یک توضیح کوتاه روشن می‌کند جدول چگونه خوانده و در گزارش استفاده شود.'), lang)}</p>
+    </header>
+    <aside className={styles.tableGuidance}><Icon name="check" /><div><strong>{pick(L('So verwenden', 'How to use it', 'روش استفاده'), lang)}</strong><p>{pick(L('Gehe zeilenweise vor: Fokus wählen, anatomischen Prüfort aufsuchen und die Bedeutung erst danach in den klinischen Kontext setzen.', 'Work row by row: choose the focus, inspect the anatomical location, then place its meaning in the clinical context.', 'ردیف‌به‌ردیف پیش بروید: محور را انتخاب کنید، محل آناتومیک را بررسی کنید و سپس مفهوم آن را در زمینه بالینی قرار دهید.'), lang)}</p></div></aside>
     <div className={styles.teachingTableWrap}>
       <table className={styles.teachingTable}>
         <caption>{pick(L('Standardtabelle für frühe NCCT-Zeichen', 'Standard table for early NCCT signs', 'جدول استاندارد علائم اولیه NCCT'), lang)}</caption>
-        <thead><tr><th>{pick(L('Fokus', 'Focus', 'محور'), lang)}</th><th>{pick(L('Prüfort', 'Where to look', 'محل بررسی'), lang)}</th><th>{pick(L('Bedeutung', 'Meaning', 'معنی'), lang)}</th></tr></thead>
-        <tbody>{INTERACTIVE_TABLE.map((row, index) => <tr key={pick(row[0], lang)} className={INTERACTIVE_FINDINGS[index].id === activeId ? styles.activeTableRow : ''}>{row.map(cell => <td key={pick(cell, lang)}>{pick(cell, lang)}</td>)}</tr>)}</tbody>
+        <thead><tr><th>{pick(L('Priorität', 'Priority', 'اولویت'), lang)}</th><th>{pick(L('Fokus', 'Focus', 'محور'), lang)}</th><th>{pick(L('Prüfort', 'Where to look', 'محل بررسی'), lang)}</th><th>{pick(L('Bedeutung', 'Meaning', 'معنی'), lang)}</th></tr></thead>
+        <tbody>{INTERACTIVE_TABLE.map((row, index) => <tr key={pick(row[0], lang)}><td><span className={styles.tablePriority}>{index + 1}</span></td>{row.map(cell => <td key={pick(cell, lang)}>{pick(cell, lang)}</td>)}</tr>)}</tbody>
       </table>
     </div>
   </div>
+}
+
+function TakeHomeSummary({ lang }) {
+  const [openItems, setOpenItems] = useState(() => new Set())
+  const toggleItem = index => setOpenItems(previous => {
+    const next = new Set(previous)
+    if (next.has(index)) next.delete(index)
+    else next.add(index)
+    return next
+  })
+
+  return <div className={styles.takeHomePanel}><ol className={styles.takeHome}>{LESSON_CONTENT['take-home'].points.map((point, index) => {
+    const open = openItems.has(index)
+    return <li key={pick(point.title, lang)} className={open ? styles.takeHomeItemOpen : ''}>
+      <button type="button" aria-expanded={open} aria-controls={`take-home-detail-${index}`} onClick={() => toggleItem(index)}><span className={styles.takeHomePriority}>{String(index + 1).padStart(2, '0')}</span><strong>{pick(point.title, lang)}</strong><i aria-hidden="true">{open ? '−' : '+'}</i></button>
+      <div id={`take-home-detail-${index}`} hidden={!open} className={styles.takeHomeDetail}><p>{pick(point.detail, lang)}</p></div>
+    </li>
+  })}</ol></div>
 }
 
 function CaseSequence({ lang }) {
@@ -278,30 +320,30 @@ function RadiopaediaCase({ lang }) {
 
 function ContentSection({ id, lang }) {
   if (id === 'interactive') return <InteractiveLesson lang={lang} />
+  if (id === 'table') return <TableLesson lang={lang} />
   if (id === 'fall') return <><p className={styles.lead}>{pick(L('Scrolle wie an der Workstation durch eine echte Bildsequenz und achte auf die Gefäßkontur.', 'Scroll through a real image sequence as you would at the workstation and follow the vessel contour.', 'مانند ورک‌استیشن در یک سکانس واقعی اسکرول کنید و کانتور رگ را دنبال کنید.'), lang)}</p><RadiopaediaCase lang={lang} /></>
-  const content = LESSON_CONTENT['take-home']
-  return <div className={styles.takeHomePanel}><header><Icon name="spark" /><h3>Take Home Message</h3></header><ul className={styles.takeHome}>{content.points.map(point => <li key={pick(point, lang)}><span aria-hidden="true"><Icon name="check" /></span><strong>{pick(point, lang)}</strong></li>)}</ul></div>
+  return <TakeHomeSummary lang={lang} />
 }
 
 function MobileLearningPath({ lang, openId, readSections, onSelect }) {
   const [panelOpen, setPanelOpen] = useState(false)
   const activeSection = SECTION_COPY.find(section => section.id === openId) || SECTION_COPY[0]
-  const progress = (readSections.size / SECTION_COPY.length) * 360
+  const progress = (readSections.size / TRACKED_SECTION_IDS.length) * 360
   const selectFromPanel = id => { onSelect(id); setPanelOpen(false) }
 
   return <div className={styles.mobileLearningPath}>
     {panelOpen ? <section id="mobile-learning-path-panel" className={styles.mobilePathPanel} role="dialog" aria-label={pick(COPY.path, lang)}>
-      <header><div><small>{pick(COPY.progress, lang)}</small><strong>{readSections.size} / {SECTION_COPY.length}</strong></div><button type="button" onClick={() => setPanelOpen(false)} aria-label={pick(COPY.close, lang)}>×</button></header>
+      <header><div><small>{pick(COPY.progress, lang)}</small><strong>{readSections.size} / {TRACKED_SECTION_IDS.length}</strong></div><button type="button" onClick={() => setPanelOpen(false)} aria-label={pick(COPY.close, lang)}>×</button></header>
       <nav>{PATH_SECTIONS.map(section => <button type="button" key={section.id} className={openId === section.id ? styles.mobilePathCurrent : ''} onClick={() => selectFromPanel(section.id)} aria-current={openId === section.id ? 'location' : undefined}><span className={styles.mobilePathItemIcon}><Icon name={section.icon} /></span><span><strong>{pick(section.title, lang)}</strong></span><i aria-hidden="true">{readSections.has(section.id) ? '✓' : ''}</i></button>)}</nav>
     </section> : null}
-    <button type="button" className={styles.mobilePathButton} onClick={() => setPanelOpen(value => !value)} aria-expanded={panelOpen} aria-controls="mobile-learning-path-panel"><span className={styles.mobileProgressRing} style={{ '--mobile-progress': `${progress}deg` }}><b>{readSections.size}</b><small>/{SECTION_COPY.length}</small></span><span className={styles.mobileCurrentIcon}><Icon name={activeSection.icon} /></span><span className={styles.mobilePathLabel}><strong>{pick(COPY.path, lang)}</strong><small>{pick(activeSection.title, lang)}</small></span></button>
+    <button type="button" className={styles.mobilePathButton} onClick={() => setPanelOpen(value => !value)} aria-expanded={panelOpen} aria-controls="mobile-learning-path-panel"><span className={styles.mobileProgressRing} style={{ '--mobile-progress': `${progress}deg` }}><b>{readSections.size}</b><small>/{TRACKED_SECTION_IDS.length}</small></span><span className={styles.mobileCurrentIcon}><Icon name={activeSection.icon} /></span><span className={styles.mobilePathLabel}><strong>{pick(COPY.path, lang)}</strong><small>{pick(activeSection.title, lang)}</small></span></button>
   </div>
 }
 
 export default function TestLearningPage() {
   const { lang } = useLanguage()
   const [openId, setOpenId] = useState('start')
-  const [readSections, setReadSections] = usePersistedSectionProgress('andarun-test', SECTION_IDS)
+  const [readSections, setReadSections] = usePersistedSectionProgress('andarun-test', TRACKED_SECTION_IDS)
   const activeIndex = useMemo(() => Math.max(0, SECTION_COPY.findIndex(section => section.id === openId)), [openId])
 
   useEffect(() => {
@@ -317,14 +359,14 @@ export default function TestLearningPage() {
   }
   const advance = () => selectSection(SECTION_COPY[Math.min(activeIndex + 1, SECTION_COPY.length - 1)].id)
   const toggleSectionRead = id => setReadSections(previous => { const next = new Set(previous); if (next.has(id)) next.delete(id); else next.add(id); return next })
-  const lessonComplete = readSections.size === SECTION_COPY.length
-  const toggleLessonComplete = () => setReadSections(lessonComplete ? new Set() : new Set(SECTION_IDS))
+  const lessonComplete = readSections.size === TRACKED_SECTION_IDS.length
+  const toggleLessonComplete = () => setReadSections(lessonComplete ? new Set() : new Set(TRACKED_SECTION_IDS))
 
   return <main className={styles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
     <header className={styles.header}>
       <div className={styles.topline}><nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">RadYar</Link><span>/</span><Link href="/andarun">Andarun</Link><span>/</span><strong>Test</strong></nav><span className={styles.author}>Dr. Zia</span></div>
-      <div className={styles.hero}><div className={styles.heroCopy}><h1>{pick(COPY.title, lang)}</h1><button type="button" className={styles.takeHomeJump} onClick={() => selectSection('take-home')}><span className={styles.takeHomeJumpIcon}><Icon name="spark" /></span><span><strong>{pick(COPY.jumpToSummary, lang)}</strong><small>{pick(COPY.summaryHint, lang)}</small></span><i aria-hidden="true">↓</i></button><div className={styles.actions}><Link className={styles.primaryAction} href="/ueben/quiz?fach=gehirn&n=10&themen=ischaemischer-schlaganfall&from=%2Fandarun%2Ftest">{pick(COPY.mcq, lang)}<span aria-hidden="true">→</span></Link><Link className={styles.secondaryAction} href="/flashcards/ischaemischer-schlaganfall"><Icon name="case" />{pick(COPY.flashcards, lang)}</Link></div></div></div>
-      <div className={styles.progressBar}><div className={styles.progressTrack}><i style={{ width: `${(readSections.size / SECTION_COPY.length) * 100}%` }} /></div><span>{readSections.size} / {SECTION_COPY.length} {pick(COPY.progress, lang)}</span><div className={styles.progressActions}><button type="button" className={`${styles.lessonCompleteButton} ${lessonComplete ? styles.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><Icon name="check" />{pick(lessonComplete ? COPY.lessonCompleted : COPY.completeLesson, lang)}</button><button type="button" className={styles.continueButton} onClick={advance} disabled={activeIndex === SECTION_COPY.length - 1}>{pick(COPY.continue, lang)}<span aria-hidden="true">→</span></button></div></div>
+      <div className={styles.hero}><div className={styles.heroCopy}><h1>{pick(COPY.title, lang)}</h1><div className={styles.actions}><button type="button" className={styles.takeHomeJump} onClick={() => selectSection('take-home')}><Icon name="spark" />{pick(COPY.jumpToSummary, lang)}<span aria-hidden="true">↓</span></button><Link className={styles.primaryAction} href="/ueben/quiz?fach=gehirn&n=10&themen=ischaemischer-schlaganfall&from=%2Fandarun%2Ftest">{pick(COPY.mcq, lang)}<span aria-hidden="true">→</span></Link><Link className={styles.secondaryAction} href="/flashcards/ischaemischer-schlaganfall"><Icon name="case" />{pick(COPY.flashcards, lang)}</Link></div></div></div>
+      <div className={styles.progressBar}><div className={styles.progressTrack}><i style={{ width: `${(readSections.size / TRACKED_SECTION_IDS.length) * 100}%` }} /></div><span>{readSections.size} / {TRACKED_SECTION_IDS.length} {pick(COPY.progress, lang)}</span><div className={styles.progressActions}><button type="button" className={`${styles.lessonCompleteButton} ${lessonComplete ? styles.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><Icon name="check" />{pick(lessonComplete ? COPY.lessonCompleted : COPY.completeLesson, lang)}</button><button type="button" className={styles.continueButton} onClick={advance} disabled={activeIndex === SECTION_COPY.length - 1}>{pick(COPY.continue, lang)}<span aria-hidden="true">→</span></button></div></div>
     </header>
 
     <div className={styles.layout}>

@@ -59,20 +59,14 @@
 .heroCopy { min-width: 0; }
 .heroCopy h1 { max-width: 790px; margin: 0; color: var(--ink); font-family: var(--font-fraunces,Georgia,serif); font-size: clamp(42px,4.5vw,62px); font-weight: 900; line-height: .98; letter-spacing: -.042em; text-wrap: balance; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
-.actions a { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 10px 20px; border-radius: 7px; font-size: 14px; font-weight: 850; text-decoration: none; transition: transform .18s ease,box-shadow .18s ease,background .18s ease; }
-.actions a:hover { transform: translateY(-2px); }
+.actions :is(a,button) { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 10px 20px; border-radius: 7px; font: 850 14px/1.2 inherit; text-decoration: none; cursor: pointer; transition: transform .18s ease,box-shadow .18s ease,background .18s ease; }
+.actions :is(a,button):hover { transform: translateY(-2px); }
 .actions svg { width: 19px; height: 19px; }
 .primaryAction { background: var(--plum-900); color: #fff; box-shadow: 0 12px 25px rgba(59,22,61,.16); }
 .primaryAction:hover { background: var(--plum-800); box-shadow: 0 16px 30px rgba(59,22,61,.22); }
 .secondaryAction { border: 1px solid #a7a1ae; background: rgba(255,255,255,.78); color: var(--plum-900); }
-.takeHomeJump { min-width: 310px; min-height: 62px; display: grid; grid-template-columns: 42px minmax(0,1fr) 24px; align-items: center; gap: 12px; margin-top: 22px; padding: 8px 12px; border: 1px solid rgba(166,57,97,.4); border-radius: 10px; background: linear-gradient(120deg,rgba(255,249,251,.94),rgba(247,226,235,.88)); color: #6d1d3b; box-shadow: 0 12px 28px rgba(102,25,55,.08); font-family: inherit; text-align: start; cursor: pointer; transition: transform .18s ease,box-shadow .18s ease; }
-.takeHomeJump:hover { transform: translateY(-2px); box-shadow: 0 17px 34px rgba(102,25,55,.14); }
-.takeHomeJumpIcon { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; background: linear-gradient(145deg,#741f43,#b54872); color: #fff; }
-.takeHomeJumpIcon svg { width: 21px; height: 21px; }
-.takeHomeJump > span:nth-child(2) { min-width: 0; display: grid; gap: 3px; }
-.takeHomeJump strong { font: 900 17px/1.1 var(--font-fraunces,Georgia,serif); }
-.takeHomeJump small { color: #7c5364; font-size: 10px; font-weight: 700; }
-.takeHomeJump i { font-size: 18px; font-style: normal; }
+.actions .takeHomeJump { border: 1px solid rgba(166,57,97,.42); background: linear-gradient(120deg,rgba(255,249,251,.96),rgba(247,226,235,.9)); color: #6d1d3b; box-shadow: 0 12px 25px rgba(102,25,55,.1); }
+.actions .takeHomeJump:hover { box-shadow: 0 16px 30px rgba(102,25,55,.16); }
 
 .progressBar { min-height: 48px; display: grid; grid-template-columns: minmax(180px,330px) auto 1fr; align-items: center; gap: 14px; margin-top: 14px; padding: 7px 10px 7px 16px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.88); box-shadow: 0 8px 20px rgba(35,18,39,.035); }
 .progressTrack { height: 8px; overflow: hidden; border-radius: 999px; background: #e9e7ec; }
@@ -156,13 +150,22 @@
 .findingExplanation > p { max-width: 590px; margin: 0; color: #c9cfdb; font-size: 13px; line-height: 1.75; }
 .findingExplanation aside { display: grid; grid-template-columns: 26px 1fr; align-items: center; gap: 10px; margin-top: 24px; padding: 13px 14px; border-inline-start: 3px solid #53c3c5; background: rgba(255,255,255,.055); color: #e2e8ef; font-size: 11px; font-weight: 700; line-height: 1.5; }
 .findingExplanation aside svg { width: 23px; height: 23px; color: #72d3d5; }
+.tableModule { overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); box-shadow: 0 18px 44px rgba(28,23,43,.06); }
+.tableIntro { padding: 24px 26px 18px; background: linear-gradient(120deg,rgba(240,229,241,.7),rgba(255,255,255,.78)); }
+.tableIntro > span { color: var(--plum-700); font-size: 9px; font-weight: 900; letter-spacing: .15em; }
+.tableIntro h3 { margin: 7px 0 8px; font: 900 clamp(24px,3vw,35px)/1.08 var(--font-fraunces,Georgia,serif); letter-spacing: -.025em; }
+.tableIntro p { max-width: 850px; margin: 0; color: var(--body); font-size: 12px; line-height: 1.65; }
+.tableGuidance { display: grid; grid-template-columns: 34px 1fr; align-items: center; gap: 12px; margin: 16px 18px 6px; padding: 13px 15px; border-inline-start: 4px solid var(--teal-500); background: color-mix(in srgb,var(--teal-100) 58%,transparent); }
+.tableGuidance > svg { width: 28px; height: 28px; color: var(--teal-700); }
+.tableGuidance strong { color: var(--ink); font-size: 12px; }
+.tableGuidance p { margin: 3px 0 0; color: var(--body); font-size: 11px; line-height: 1.55; }
 .teachingTableWrap { overflow-x: auto; }
 .teachingTable { width: 100%; border-collapse: collapse; text-align: start; }
 .teachingTable caption { padding: 18px 20px 11px; color: var(--ink); font: 900 18px/1.2 var(--font-fraunces,Georgia,serif); text-align: start; }
 .teachingTable th,.teachingTable td { padding: 12px 16px; border-top: 1px solid var(--line); color: var(--body); font-size: 11px; line-height: 1.45; text-align: start; vertical-align: top; }
 .teachingTable th { color: var(--muted); background: color-mix(in srgb,var(--canvas) 68%,transparent); font-size: 9px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
-.teachingTable td:first-child { color: var(--teal-700); font-weight: 900; white-space: nowrap; }
-.teachingTable .activeTableRow td { background: color-mix(in srgb,var(--teal-100) 56%,transparent); }
+.teachingTable td:nth-child(2) { color: var(--teal-700); font-weight: 900; white-space: nowrap; }
+.tablePriority { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: var(--plum-100); color: var(--plum-800); font-weight: 900; }
 
 
 .caseStudy { display: grid; grid-template-columns: minmax(340px,1fr) minmax(0,1fr); overflow: hidden; margin: 0 0 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); box-shadow: 0 16px 36px rgba(23,20,38,.07); }
@@ -184,15 +187,17 @@
 .caseBody p { margin: 0; color: var(--body); font-size: 13px; line-height: 1.7; }
 .caseBody footer { margin-top: 18px; color: var(--muted); font-size: 9px; line-height: 1.5; }
 
-.takeHomePanel { overflow: hidden; border: 1px solid rgba(165,58,98,.4); border-radius: 16px; background: linear-gradient(145deg,rgba(255,255,255,.9),rgba(250,238,244,.86)); box-shadow: 0 20px 50px rgba(98,24,54,.1); }
-.takeHomePanel > header { min-height: 104px; display: flex; align-items: center; gap: 17px; padding: 22px 26px; background: linear-gradient(125deg,#421126,#741f43 58%,#b54872); color: #fff; }
-.takeHomePanel > header > svg { width: 42px; height: 42px; flex: 0 0 auto; padding: 8px; border: 1px solid rgba(255,255,255,.34); border-radius: 50%; background: rgba(255,255,255,.12); }
-.takeHomePanel h3 { margin: 0; color: #fff; font: 950 clamp(28px,3.3vw,42px)/1 var(--font-fraunces,Georgia,serif); letter-spacing: -.03em; }
-.takeHome { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; margin: 0; padding: 18px; list-style: none; }
-.takeHome li { min-height: 98px; display: grid; grid-template-columns: 42px 1fr; align-items: center; gap: 13px; padding: 16px; border: 1px solid rgba(139,43,79,.16); border-radius: 12px; background: rgba(255,255,255,.72); }
-.takeHome span { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: linear-gradient(145deg,#8a2d52,#c2597e); box-shadow: 0 7px 16px rgba(128,37,72,.2); }
-.takeHome span svg { width: 19px; height: 19px; }
-.takeHome strong { color: #361423; font-size: 13px; line-height: 1.55; }
+.takeHomePanel { overflow: hidden; border: 1px solid rgba(165,58,98,.34); border-radius: 14px; background: linear-gradient(145deg,rgba(255,255,255,.9),rgba(250,238,244,.84)); box-shadow: 0 18px 44px rgba(98,24,54,.08); }
+.takeHome { display: grid; gap: 10px; margin: 0; padding: 14px; list-style: none; }
+.takeHome li { overflow: hidden; border: 1px solid rgba(139,43,79,.17); border-radius: 11px; background: rgba(255,255,255,.74); transition: border-color .18s ease,box-shadow .18s ease; }
+.takeHome li:hover,.takeHome .takeHomeItemOpen { border-color: rgba(139,43,79,.36); box-shadow: 0 10px 24px rgba(98,24,54,.07); }
+.takeHome li > button { width: 100%; min-height: 72px; display: grid; grid-template-columns: 46px minmax(0,1fr) 30px; align-items: center; gap: 13px; padding: 10px 16px; border: 0; background: transparent; color: #361423; font-family: inherit; text-align: start; cursor: pointer; }
+.takeHomePriority { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: linear-gradient(145deg,#8a2d52,#c2597e); box-shadow: 0 7px 16px rgba(128,37,72,.18); font: 900 12px/1 var(--font-fraunces,Georgia,serif); }
+.takeHome li strong { font-size: 13px; line-height: 1.45; }
+.takeHome li button > i { color: #8a2d52; font-size: 22px; font-style: normal; text-align: center; }
+.takeHomeDetail { padding-block: 0 17px; padding-inline: 75px 59px; }
+.takeHomeDetail[hidden] { display: none; }
+.takeHomeDetail p { margin: 0; padding-top: 13px; border-top: 1px solid rgba(139,43,79,.14); color: #694353; font-size: 12px; line-height: 1.7; }
 .readButton { min-height: 46px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 20px; border: 1px solid var(--plum-800); border-radius: 8px; background: transparent; color: var(--plum-900); font: 850 13px/1 inherit; cursor: pointer; }
 .readButton svg { width: 20px; height: 20px; }
 .readButtonDone { background: var(--plum-900); color: #fff; }
@@ -207,7 +212,6 @@
 :global(html[data-theme='dark']) .section { background: rgba(34,31,39,.94); }
 :global(html[data-theme='dark']) .secondaryAction { border-color: #615669; background: #27222b; color: #f2e7f3; }
 :global(html[data-theme='dark']) .takeHomeJump { border-color: rgba(207,100,140,.42); background: linear-gradient(120deg,rgba(71,30,49,.9),rgba(47,28,43,.88)); color: #ffdce9; }
-:global(html[data-theme='dark']) .takeHomeJump small { color: #d5aabe; }
 :global(html[data-theme='dark']) .sectionHeader:hover { background: rgba(113,53,116,.14); }
 :global(html[data-theme='dark']) .progressBar button { color: #ead8eb; }
 :global(html[data-theme='dark']) .progressBar .lessonCompleteButton { border-color: #7e6683; background: rgba(113,53,116,.3); color: #f7edf8; }
@@ -222,14 +226,17 @@
 :global(html[data-theme='dark']) .interactiveIntro { background: linear-gradient(120deg,rgba(24,63,65,.72),rgba(57,40,59,.7)); }
 :global(html[data-theme='dark']) .findingTabs { background: #19161e; }
 :global(html[data-theme='dark']) .findingTabs .findingTabActive { background: #29242e; }
+:global(html[data-theme='dark']) .tableModule { background: #201c24; }
+:global(html[data-theme='dark']) .tableIntro { background: linear-gradient(120deg,rgba(57,40,59,.78),rgba(34,31,39,.86)); }
+:global(html[data-theme='dark']) .tableGuidance { background: rgba(24,63,65,.72); }
 :global(html[data-theme='dark']) .teachingTable th { background: #29242e; }
-:global(html[data-theme='dark']) .teachingTable .activeTableRow td { background: rgba(24,63,65,.72); }
 :global(html[data-theme='dark']) .caseStudy { background: #201c24; }
 :global(html[data-theme='dark']) .takeHomeSection { border-color: #88405e; background: linear-gradient(145deg,#2b1621,#211a23); }
 :global(html[data-theme='dark']) .takeHomeSection .sectionHeader { color: #ffdce9; background: linear-gradient(115deg,rgba(183,72,114,.2),transparent); }
 :global(html[data-theme='dark']) .takeHomePanel { background: linear-gradient(145deg,rgba(47,25,38,.96),rgba(31,24,34,.96)); }
 :global(html[data-theme='dark']) .takeHome li { border-color: rgba(213,116,151,.2); background: rgba(255,255,255,.045); }
 :global(html[data-theme='dark']) .takeHome strong { color: #f5e9ee; }
+:global(html[data-theme='dark']) .takeHomeDetail p { border-top-color: rgba(213,116,151,.2); color: #d9bdc9; }
 
 [dir='rtl'] .workflow li:not(:last-child)::after { content: '←'; }
 [dir='rtl'] .sectionBody { padding: 20px 82px 24px 22px; }
@@ -247,7 +254,6 @@
   .page > .header,.page > .layout { position: relative; z-index: 1; }
   .hero { min-height: 300px; }
   .heroCopy h1 { font-size: clamp(39px,13vw,58px); }
-  .takeHomeJump { min-width: 0; width: 100%; max-width: 360px; }
   .progressBar { grid-template-columns: 1fr auto; }
   .progressTrack { grid-column: 1 / -1; }
   .progressActions { grid-column: 1 / -1; width: 100%; justify-content: space-between; flex-wrap: wrap; }
@@ -302,9 +308,10 @@
   .caseStudy { grid-template-columns: 1fr; }
   .caseImage { min-height: 270px; }
   .caseBody { padding: 22px 18px; }
-  .takeHomePanel > header { padding: 16px; }
-  .takeHome { grid-template-columns: 1fr; padding: 12px; }
-  .takeHome li { min-height: 84px; grid-template-columns: 42px 1fr; }
+  .takeHome { padding: 10px; }
+  .takeHome li > button { grid-template-columns: 42px minmax(0,1fr) 25px; padding: 9px 11px; }
+  .takeHomePriority { width: 36px; height: 36px; }
+  .takeHomeDetail { padding-block: 0 14px; padding-inline: 64px 36px; }
 }
 
 @keyframes mobilePathIn { from { opacity: 0; transform: translateY(8px) scale(.985); } to { opacity: 1; transform: none; } }
