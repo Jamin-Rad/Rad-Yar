@@ -15,7 +15,7 @@ export const metadata = {
 export const dynamic = 'force-dynamic'
 
 export default async function AndarunRoutinePage() {
-  if (!(await hasAndarunSession())) redirect('/andarun/login')
+  if (!(await hasAndarunSession())) redirect('/andarun/login?next=/andarun/routine')
 
   return (
     <>

@@ -18,7 +18,9 @@ export async function GET(_request, { params }) {
     lang: isPersian ? 'fa' : 'de',
     dir: isPersian ? 'rtl' : 'ltr',
     start_url: app.startUrl,
-    scope: '/andarun/',
+    // A narrow scope lets Android keep every Andarun tool as its own app.
+    // The main Andarun app still owns the full /andarun tree.
+    scope: appKey === 'andarun' ? '/andarun/' : app.startUrl,
     display: 'standalone',
     orientation: 'portrait-primary',
     background_color: app.backgroundColor,
@@ -32,7 +34,7 @@ export async function GET(_request, { params }) {
   }, {
     headers: {
       'Content-Type': 'application/manifest+json; charset=utf-8',
-      'Cache-Control': 'public, max-age=3600, stale-while-revalidate=86400',
+      'Cache-Control': 'public, max-age=300, stale-while-revalidate=3600',
     },
   })
 }

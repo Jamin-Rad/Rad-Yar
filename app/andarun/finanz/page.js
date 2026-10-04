@@ -15,7 +15,7 @@ export const metadata = {
 export const dynamic = 'force-dynamic'
 
 export default async function AndarunFinanzPage({ searchParams }) {
-  if (!(await hasAndarunSession())) redirect('/andarun/login')
+  if (!(await hasAndarunSession())) redirect('/andarun/login?next=/andarun/finanz')
   const params = await searchParams
   if (params?.bereich === 'urlaub') redirect('/andarun/urlaub')
 

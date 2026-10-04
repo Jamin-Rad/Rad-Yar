@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic'
 export const revalidate = 0
 
 export default async function AndarunEventsPage() {
-  if (!(await hasAndarunSession())) redirect('/andarun/login')
+  if (!(await hasAndarunSession())) redirect('/andarun/login?next=/andarun/termine')
 
   return (
     <>
