@@ -120,27 +120,27 @@ const LESSON_SOURCES = [
     url: 'https://professional.heart.org/en/guidelines-statements/2026-guideline-for-the-early-management-of-patients-with-acute-ischemic-strokestr0000000000000513',
   },
   {
-    title: L('Radiopaedia-Fall: Dissektion der rechten ACI', 'Radiopaedia case: Right ICA dissection', 'کیس Radiopaedia: دیسکسیون ICA راست'),
-    meta: L('Heather Pascoe · rID 58286', 'Heather Pascoe · rID 58286', 'Heather Pascoe · rID 58286'),
-    url: 'https://radiopaedia.org/cases/58286',
+    title: L('Radiopaedia-Fall: Wandhämatom der rechten ACI', 'Radiopaedia case: Right ICA mural haematoma', 'کیس Radiopaedia: هماتوم دیواره‌ای ICA راست'),
+    meta: L('Ian Bickle · rID 28441', 'Ian Bickle · rID 28441', 'Ian Bickle · rID 28441'),
+    url: 'https://radiopaedia.org/cases/28441',
   },
 ]
 
 const RADIOPAEDIA_CASE = {
-  id: '58286',
-  modality: 'CTA',
+  id: '28441',
+  modality: 'MRI',
   plane: L('Axial', 'Axial', 'آگزیال'),
-  frames: Array.from({ length: 20 }, (_, index) => `/dissection/case-58286/${String(index + 1).padStart(2, '0')}.png`),
-  initialFrame: 9,
-  url: 'https://radiopaedia.org/cases/58286',
-  title: L('Dissektion der rechten ACI mit Pseudoaneurysma', 'Right ICA dissection with pseudoaneurysm', 'دیسکسیون ICA راست همراه با شبه‌آنوریسم'),
+  frames: Array.from({ length: 8 }, (_, index) => `/dissection/case-28441/${String(index + 1).padStart(2, '0')}.jpg`),
+  initialFrame: 4,
+  url: 'https://radiopaedia.org/cases/28441',
+  title: L('Crescent sign bei Dissektion der rechten ACI', 'Crescent sign in right ICA dissection', 'علامت هلالی در دیسکسیون ICA راست'),
   text: L(
-    'CTA-Sequenz einer rechtsseitigen ACI-Dissektion unterhalb der Schädelbasis mit medial projizierendem Pseudoaneurysma. Scrolle durch die Schichten und verfolge Gefäßkaliber und Kontur.',
-    'CTA sequence of a right ICA dissection below the skull base with a medially projecting pseudoaneurysm. Scroll through the slices and follow the vessel calibre and contour.',
-    'سکانس CTA از دیسکسیون ICA راست در زیر قاعده جمجمه همراه با شبه‌آنوریسم مدیال. در برش‌ها اسکرول کنید و قطر و کانتور رگ را دنبال کنید.'
+    'T1-Fat-Sat-Sequenz mit sichelförmig hyperintensem Wandhämatom der rechten ACI. Scrolle durch die Schichten und verfolge das Crescent sign sowie die asymmetrische Gefäßkontur.',
+    'T1 fat-saturated sequence showing a crescentic hyperintense mural haematoma of the right ICA. Scroll through the slices and follow the crescent sign and asymmetric vessel contour.',
+    'سکانس T1 با اشباع چربی، هماتوم دیواره‌ای هلالی و پرسیگنال در ICA راست را نشان می‌دهد. در برش‌ها اسکرول کنید و علامت هلالی و کانتور نامتقارن رگ را دنبال کنید.'
   ),
-  alt: L('Axiale CTA bei Dissektion der rechten ACI', 'Axial CTA in right ICA dissection', 'CTA آگزیال در دیسکسیون ICA راست'),
-  credit: 'Case courtesy of Heather Pascoe, Radiopaedia.org · rID-58286 · CC BY-NC-SA 3.0',
+  alt: L('Axiale T1-Fat-Sat-MRT bei Dissektion der rechten ACI', 'Axial T1 fat-saturated MRI in right ICA dissection', 'MRI آگزیال T1 با اشباع چربی در دیسکسیون ICA راست'),
+  credit: 'Case courtesy of Ian Bickle, Radiopaedia.org · rID-28441 · CC BY-NC-SA 3.0',
 }
 
 function Icon({ name, className = '' }) {
@@ -184,12 +184,11 @@ function StartSection({ lang }) {
     </ol>
     <aside className={styles.warning}><span aria-hidden="true">!</span><div><strong>{pick(COPY.warningTitle, lang)}</strong><p>{pick(COPY.warningText, lang)}</p></div></aside>
     <RadiopaediaFile lang={lang} caseData={RADIOPAEDIA_CASE} />
-    <RememberNote lang={lang}>{pick(L('Ein unauffälliges frühes NCCT beendet die Akutdiagnostik nicht. Bei passender Klinik Gefäßbildgebung ohne vermeidbare Verzögerung anschließen.', 'A normal early NCCT does not end the acute work-up. When the clinical picture fits, proceed to vascular imaging without avoidable delay.', 'NCCT اولیه طبیعی پایان بررسی حاد نیست. در صورت تطابق بالینی، تصویربرداری عروقی را بدون تأخیر قابل اجتناب ادامه دهید.'), lang)}</RememberNote>
   </>
 }
 
 function RememberNote({ lang, children }) {
-  return <aside className={styles.rememberNote}><span className={styles.rememberIcon}><Icon name="bookmark" /></span><div><strong>{pick(L('Merke', 'Remember', 'به‌خاطر بسپار'), lang)}</strong><p>{children}</p></div></aside>
+  return <aside className={styles.rememberNote}><span className={styles.rememberIcon}><Icon name="bookmark" /></span><strong>{pick(L('Merke', 'Remember', 'به‌خاطر بسپار'), lang)}</strong><p>{children}</p></aside>
 }
 
 function InteractiveLesson({ lang }) {
@@ -225,21 +224,24 @@ function InteractiveLesson({ lang }) {
 }
 
 function TableLesson({ lang }) {
-  return <div className={styles.tableModule}>
-    <header className={styles.tableIntro}>
-      <span>{pick(L('STANDARDISIERTES TABELLENMUSTER', 'STANDARDISED TABLE PATTERN', 'الگوی استاندارد جدول'), lang)}</span>
-      <h3>{pick(L('Frühe NCCT-Zeichen kompakt vergleichen', 'Compare early NCCT signs at a glance', 'مقایسه فشرده علائم اولیه NCCT'), lang)}</h3>
-      <p>{pick(L('Tabellen eignen sich für klar abgrenzbare Vergleichskriterien. Eine kurze Einleitung erklärt zuerst, wie die Tabelle gelesen und im Befund angewendet werden soll.', 'Tables work best for clearly separated comparison criteria. A short introduction first explains how to read the table and apply it in reporting.', 'جدول برای معیارهای مقایسه‌ای مشخص مناسب است. ابتدا یک توضیح کوتاه روشن می‌کند جدول چگونه خوانده و در گزارش استفاده شود.'), lang)}</p>
-    </header>
-    <aside className={styles.tableGuidance}><Icon name="check" /><div><strong>{pick(L('So verwenden', 'How to use it', 'روش استفاده'), lang)}</strong><p>{pick(L('Gehe zeilenweise vor: Fokus wählen, anatomischen Prüfort aufsuchen und die Bedeutung erst danach in den klinischen Kontext setzen.', 'Work row by row: choose the focus, inspect the anatomical location, then place its meaning in the clinical context.', 'ردیف‌به‌ردیف پیش بروید: محور را انتخاب کنید، محل آناتومیک را بررسی کنید و سپس مفهوم آن را در زمینه بالینی قرار دهید.'), lang)}</p></div></aside>
-    <div className={styles.teachingTableWrap}>
-      <table className={styles.teachingTable}>
-        <caption>{pick(L('Standardtabelle für frühe NCCT-Zeichen', 'Standard table for early NCCT signs', 'جدول استاندارد علائم اولیه NCCT'), lang)}</caption>
-        <thead><tr><th>{pick(L('Priorität', 'Priority', 'اولویت'), lang)}</th><th>{pick(L('Fokus', 'Focus', 'محور'), lang)}</th><th>{pick(L('Prüfort', 'Where to look', 'محل بررسی'), lang)}</th><th>{pick(L('Bedeutung', 'Meaning', 'معنی'), lang)}</th></tr></thead>
-        <tbody>{INTERACTIVE_TABLE.map((row, index) => <tr key={pick(row[0], lang)}><td><span className={styles.tablePriority}>{index + 1}</span></td>{row.map(cell => <td key={pick(cell, lang)}>{pick(cell, lang)}</td>)}</tr>)}</tbody>
-      </table>
+  return <>
+    <div className={styles.tableModule}>
+      <header className={styles.tableIntro}>
+        <span>{pick(L('STANDARDISIERTES TABELLENMUSTER', 'STANDARDISED TABLE PATTERN', 'الگوی استاندارد جدول'), lang)}</span>
+        <h3>{pick(L('Frühe NCCT-Zeichen kompakt vergleichen', 'Compare early NCCT signs at a glance', 'مقایسه فشرده علائم اولیه NCCT'), lang)}</h3>
+        <p>{pick(L('Tabellen eignen sich für klar abgrenzbare Vergleichskriterien. Eine kurze Einleitung erklärt zuerst, wie die Tabelle gelesen und im Befund angewendet werden soll.', 'Tables work best for clearly separated comparison criteria. A short introduction first explains how to read the table and apply it in reporting.', 'جدول برای معیارهای مقایسه‌ای مشخص مناسب است. ابتدا یک توضیح کوتاه روشن می‌کند جدول چگونه خوانده و در گزارش استفاده شود.'), lang)}</p>
+      </header>
+      <aside className={styles.tableGuidance}><Icon name="check" /><div><strong>{pick(L('So verwenden', 'How to use it', 'روش استفاده'), lang)}</strong><p>{pick(L('Gehe zeilenweise vor: Fokus wählen, anatomischen Prüfort aufsuchen und die Bedeutung erst danach in den klinischen Kontext setzen.', 'Work row by row: choose the focus, inspect the anatomical location, then place its meaning in the clinical context.', 'ردیف‌به‌ردیف پیش بروید: محور را انتخاب کنید، محل آناتومیک را بررسی کنید و سپس مفهوم آن را در زمینه بالینی قرار دهید.'), lang)}</p></div></aside>
+      <div className={styles.teachingTableWrap}>
+        <table className={styles.teachingTable}>
+          <caption>{pick(L('Standardtabelle für frühe NCCT-Zeichen', 'Standard table for early NCCT signs', 'جدول استاندارد علائم اولیه NCCT'), lang)}</caption>
+          <thead><tr><th>{pick(L('Priorität', 'Priority', 'اولویت'), lang)}</th><th>{pick(L('Fokus', 'Focus', 'محور'), lang)}</th><th>{pick(L('Prüfort', 'Where to look', 'محل بررسی'), lang)}</th><th>{pick(L('Bedeutung', 'Meaning', 'معنی'), lang)}</th></tr></thead>
+          <tbody>{INTERACTIVE_TABLE.map((row, index) => <tr key={pick(row[0], lang)}><td><span className={styles.tablePriority}>{index + 1}</span></td>{row.map(cell => <td key={pick(cell, lang)}>{pick(cell, lang)}</td>)}</tr>)}</tbody>
+        </table>
+      </div>
     </div>
-  </div>
+    <RememberNote lang={lang}>{pick(L('Im Akutbefund die entscheidenden Punkte in derselben Reihenfolge nennen: Blutung, Frühischämie, Verschlusshöhe und unmittelbare therapeutische Konsequenz.', 'Keep the acute report in a fixed decision-focused order: haemorrhage, early ischaemia, occlusion level, and the immediate therapeutic consequence.', 'در گزارش حاد، نکات تصمیم‌ساز را همیشه با ترتیب ثابت بیان کنید: خونریزی، ایسکمی اولیه، سطح انسداد و پیامد درمانی فوری.'), lang)}</RememberNote>
+  </>
 }
 
 function TakeHomeSummary({ lang }) {
@@ -385,9 +387,9 @@ function CaseSequence({ lang, caseData }) {
       <div className={styles.caseImageMeta}><span><Icon name="layers" />{modality} · {pick(plane, lang)}</span><strong aria-live="polite">{String(frameIndex + 1).padStart(2, '0')} <i>/ {frames.length}</i></strong></div>
     </div>
     <div className={styles.caseControls}>
-      <button type="button" onClick={() => moveFrame(-1)} disabled={frameIndex === 0} aria-label={labels.previous}><Icon name="previous" /></button>
+      <button type="button" onClick={() => moveFrame(-1)} disabled={frameIndex === 0} aria-label={labels.previous}><Icon name="previous" /><span>{labels.previous}</span></button>
       <div className={styles.caseRange}><input type="range" min="0" max={frames.length - 1} value={frameIndex} onChange={event => selectFrame(Number(event.target.value))} aria-label={labels.slider} /><small>{labels.hint}</small></div>
-      <button type="button" onClick={() => moveFrame(1)} disabled={frameIndex === frames.length - 1} aria-label={labels.next}><Icon name="next" /></button>
+      <button type="button" onClick={() => moveFrame(1)} disabled={frameIndex === frames.length - 1} aria-label={labels.next}><span>{labels.next}</span><Icon name="next" /></button>
     </div>
   </div>
 }
@@ -396,7 +398,7 @@ function RadiopaediaFile({ lang, caseData }) {
   return <article className={styles.radiopaediaFile}>
     <header className={styles.caseFileHeader}>
       <span className={styles.caseFileIcon}><Icon name="case" /></span>
-      <div><strong>Radiopaedia File</strong><small>{pick(L('Originalfall zum Durchscrollen', 'Original case with scrollable series', 'کیس واقعی با سکانس قابل اسکرول'), lang)}</small></div>
+      <strong>Radiopaedia File</strong>
       <a href={caseData.url} target="_blank" rel="noopener noreferrer">Radiopaedia.org <Icon name="external" /></a>
     </header>
     <div className={styles.caseFileContent}>
