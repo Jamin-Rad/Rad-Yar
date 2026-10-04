@@ -1,0 +1,50 @@
+.lesson { --text-accent: #713574; --text-tint: #f5eff6; --text-detail: #faf8fb; container-type: inline-size; }
+.example { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+.example > span { color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: .08em; }
+.example a { color: var(--text-accent); font-size: 14px; font-weight: 750; text-decoration: none; }
+.example a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.group { padding-block: 28px 32px; }
+.group + .group { border-top: 1px solid var(--line); }
+.group:last-child { padding-bottom: 4px; }
+.groupHeader { display: flex; align-items: baseline; gap: 14px; }
+.groupHeader > span { color: var(--text-accent); font-size: 13px; font-weight: 850; font-variant-numeric: tabular-nums; }
+.lesson .groupHeader h3 { margin: 0; color: var(--ink); font-family: inherit; font-size: clamp(22px,2vw,27px); font-weight: 800; line-height: 1.35; letter-spacing: -.025em; }
+.intro { max-width: 780px; margin: 12px 0 22px; color: var(--body); font-size: 17px; line-height: 1.8; }
+.explorer { display: grid; grid-template-columns: minmax(210px,.85fr) minmax(0,1.4fr); gap: 24px; align-items: stretch; }
+.tabs { display: flex; flex-direction: column; gap: 6px; }
+.tabs button { min-height: 60px; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 14px 16px; border: 1px solid transparent; border-inline-start: 3px solid transparent; border-radius: 5px; background: transparent; color: var(--body); font-family: inherit; font-size: 16px; font-weight: 750; line-height: 1.5; text-align: start; cursor: pointer; transition: background .15s ease,color .15s ease; }
+.tabs button:hover { background: var(--text-tint); color: var(--ink); }
+.tabs button[aria-selected='true'] { border-inline-start-color: var(--text-accent); background: var(--text-tint); color: var(--text-accent); }
+.tabs i { flex-shrink: 0; opacity: 0; font-size: 20px; font-style: normal; }
+.tabs button[aria-selected='true'] i { opacity: 1; }
+.panels { display: grid; min-width: 0; background: var(--text-detail); border-radius: 6px; }
+.panel { min-height: 220px; padding: 26px 28px; align-self: stretch; }
+.panel[hidden] { display: none; }
+.category { color: var(--text-accent); font-size: 12px; font-weight: 850; letter-spacing: .055em; text-transform: uppercase; }
+.lesson .panel h4 { margin: 12px 0 12px; color: var(--ink); font-family: inherit; font-size: 23px; font-weight: 800; line-height: 1.4; letter-spacing: -.02em; }
+.panel p { margin: 0; color: var(--body); font-size: 18px; line-height: 1.85; }
+.panel h4,.tabs button span { overflow-wrap: anywhere; }
+.note { display: grid; grid-template-columns: 120px minmax(0,1fr); gap: 16px; margin: 22px 0 0; padding-top: 18px; border-top: 1px solid var(--line); color: var(--body); font-size: 16px; line-height: 1.8; }
+.note strong { color: var(--ink); font-weight: 800; }
+.tabs button:focus-visible,.panel:focus-visible,.example a:focus-visible { outline: 2px solid var(--text-accent); outline-offset: 4px; }
+:global(html[data-theme='dark']) .lesson { --text-accent: #e0b5e4; --text-tint: #392b3d; --text-detail: #29242f; }
+@media (max-width:1100px) {
+  .explorer { grid-template-columns: minmax(185px,.9fr) minmax(0,1.2fr); gap: 16px; }
+  .panel { padding: 22px; }
+}
+@container (max-width:620px) {
+  .explorer { grid-template-columns: 1fr; gap: 14px; }
+  .tabs button[aria-selected='true'] i { transform: rotate(90deg); }
+}
+@media (max-width:760px) {
+  .example { gap: 10px; padding-bottom: 18px; }
+  .group { padding-block: 24px; }
+  .explorer { grid-template-columns: 1fr; gap: 14px; }
+  .tabs { gap: 4px; }
+  .tabs button { min-height: 52px; padding: 11px 14px; }
+  .tabs button[aria-selected='true'] i { transform: rotate(90deg); }
+  .panel { min-height: 195px; padding: 22px 20px; }
+  .panel p { font-size: 17px; }
+  .note { grid-template-columns: 1fr; gap: 4px; }
+}
+@media (prefers-reduced-motion:reduce) { .tabs button { transition: none; } }

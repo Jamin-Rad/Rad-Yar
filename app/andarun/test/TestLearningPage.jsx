@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
+import MeniscusTextLesson, { MENISCUS_TITLE } from './MeniscusTextLesson'
 import styles from './page.module.css'
 
 const L = (de, en, fa) => ({ de, en, fa })
@@ -12,6 +13,7 @@ const pick = (value, lang) => typeof value === 'string' ? value : value[lang] ||
 
 const SECTION_COPY = [
   { id: 'start', title: L('Der 5-Minuten-Workflow', 'The five-minute workflow', 'روند پنج‌دقیقه‌ای'), icon: 'brain' },
+  { id: 'meniscus-text', title: MENISCUS_TITLE, icon: 'case' },
   { id: 'interactive', title: L('Interaktive Bildanalyse', 'Interactive image review', 'تحلیل تعاملی تصویر'), icon: 'scan' },
   { id: 'table', title: L('Befundtabelle', 'Reporting table', 'جدول گزارش'), icon: 'chart' },
   { id: 'take-home', title: 'Take Home Message', icon: 'spark', emphasis: true },
@@ -394,6 +396,7 @@ function RadiopaediaFile({ lang, caseData }) {
 }
 
 function ContentSection({ id, lang }) {
+  if (id === 'meniscus-text') return <MeniscusTextLesson lang={lang} />
   if (id === 'interactive') return <InteractiveLesson lang={lang} />
   if (id === 'table') return <TableLesson lang={lang} />
   return <TakeHomeSummary lang={lang} />
