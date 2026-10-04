@@ -8,6 +8,8 @@ const STORAGE_KEY    = 'radyar_private_budget_v1'
 const RECURRING_KEY  = 'radyar_recurring_v1'
 const CAT_BUDGET_KEY = 'radyar_cat_budget_v1'
 const CATEGORIES_KEY = 'radyar_categories_v2'
+const SYNC_META_KEY  = 'radyar_private_budget_sync_v2'
+const SYNC_BASE_KEY  = 'radyar_private_budget_remote_base_v1'
 const IRAN_TRIP_KEY  = '__iran_special_trip_v1'
 const IRAN_ACCOUNT_OPENING_BALANCE_RIAL = '2798510103'
 
@@ -130,13 +132,199 @@ async function budgetApi(method = 'GET', body) {
   return data
 }
 
+function budgetStateFromData(data = {}) {
+  return {
+    store: data.store && typeof data.store === 'object' ? data.store : {},
+    recurring: Array.isArray(data.recurring) ? data.recurring : [],
+    catBudgets: data.catBudgets && typeof data.catBudgets === 'object' ? data.catBudgets : {},
+    categories: Array.isArray(data.categories) ? data.categories : [],
+  }
+}
+
+function budgetStateHasData(state) {
+  return Object.keys(state.store || {}).length > 0 ||
+    (state.recurring || []).length > 0 ||
+    Object.keys(state.catBudgets || {}).length > 0 ||
+    (state.categories || []).length > 0
+}
+
+function sameStoredValue(left, right) {
+  return JSON.stringify(left ?? null) === JSON.stringify(right ?? null)
+}
+
+function mergeVersionedRecord(remote = {}, local = {}, base = null) {
+  const hasBase = Boolean(base && typeof base === 'object')
+  const result = {}
+  const keys = new Set([...Object.keys(remote || {}), ...Object.keys(local || {}), ...Object.keys(base || {})])
+
+  keys.forEach(key => {
+    const remoteHas = Object.prototype.hasOwnProperty.call(remote || {}, key)
+    const localHas = Object.prototype.hasOwnProperty.call(local || {}, key)
+    const baseHas = Object.prototype.hasOwnProperty.call(base || {}, key)
+
+    if (!hasBase || !baseHas) {
+      if (localHas) result[key] = local[key]
+      else if (remoteHas) result[key] = remote[key]
+      return
+    }
+
+    if (!localHas) return
+    if (!sameStoredValue(local[key], base[key])) result[key] = local[key]
+    else if (remoteHas) result[key] = remote[key]
+  })
+
+  return result
+}
+
+function mergeVersionedList(remote = [], local = [], base = null, getKey = item => item?.id) {
+  const hasBase = Array.isArray(base)
+  const toMap = items => new Map((items || []).map((item, index) => [
+    String(getKey(item, index) || `fallback:${index}:${JSON.stringify(item)}`),
+    item,
+  ]))
+  const remoteMap = toMap(remote)
+  const localMap = toMap(local)
+  const baseMap = toMap(base || [])
+  const keys = new Set([...remoteMap.keys(), ...localMap.keys(), ...baseMap.keys()])
+  const result = []
+
+  keys.forEach(key => {
+    const remoteHas = remoteMap.has(key)
+    const localHas = localMap.has(key)
+    const baseHas = baseMap.has(key)
+
+    if (!hasBase || !baseHas) {
+      if (localHas) result.push(localMap.get(key))
+      else if (remoteHas) result.push(remoteMap.get(key))
+      return
+    }
+
+    if (!localHas) return
+    const localItem = localMap.get(key)
+    const baseItem = baseMap.get(key)
+    if (!sameStoredValue(localItem, baseItem)) result.push(localItem)
+    else if (remoteHas) result.push(remoteMap.get(key))
+  })
+
+  return result
+}
+
+const entrySyncKey = item => item?.id || [item?.type, item?.date, item?.title, item?.amount, item?.category].join('|')
+const recurringSyncKey = item => item?.id || [item?.type, item?.title, item?.category, item?.startMonth].join('|')
+const categorySyncKey = item => item?.id || [item?.type, item?.name].join('|')
+
+function mergeMonthState(remote = {}, local = {}, base = null) {
+  const { entries: remoteEntries = [], ...remoteRest } = remote || {}
+  const { entries: localEntries = [], ...localRest } = local || {}
+  const { entries: baseEntries = [], ...baseRest } = base || {}
+  return {
+    ...mergeVersionedRecord(remoteRest, localRest, base ? baseRest : null),
+    entries: mergeVersionedList(remoteEntries, localEntries, base ? baseEntries : null, entrySyncKey),
+  }
+}
+
+function mergeIranTripState(remote = {}, local = {}, base = null) {
+  const listKeys = new Set(['expenses', 'settlements', 'exchanges'])
+  const withoutLists = value => Object.fromEntries(Object.entries(value || {}).filter(([key]) => !listKeys.has(key)))
+  const merged = mergeVersionedRecord(withoutLists(remote), withoutLists(local), base ? withoutLists(base) : null)
+
+  listKeys.forEach(key => {
+    merged[key] = mergeVersionedList(
+      Array.isArray(remote?.[key]) ? remote[key] : [],
+      Array.isArray(local?.[key]) ? local[key] : [],
+      base ? (Array.isArray(base?.[key]) ? base[key] : []) : null,
+      entrySyncKey,
+    )
+  })
+  return merged
+}
+
+function mergeBudgetStore(remote = {}, local = {}, base = null) {
+  const hasBase = Boolean(base && typeof base === 'object')
+  const result = {}
+  const keys = new Set([...Object.keys(remote || {}), ...Object.keys(local || {}), ...Object.keys(base || {})])
+
+  keys.forEach(key => {
+    const remoteHas = Object.prototype.hasOwnProperty.call(remote || {}, key)
+    const localHas = Object.prototype.hasOwnProperty.call(local || {}, key)
+    const baseHas = Object.prototype.hasOwnProperty.call(base || {}, key)
+
+    if (!hasBase || !baseHas) {
+      if (localHas && remoteHas) {
+        result[key] = key === IRAN_TRIP_KEY
+          ? mergeIranTripState(remote[key], local[key])
+          : mergeMonthState(remote[key], local[key])
+      } else if (localHas) result[key] = local[key]
+      else if (remoteHas) result[key] = remote[key]
+      return
+    }
+
+    if (!localHas) return
+    if (sameStoredValue(local[key], base[key])) {
+      if (remoteHas) result[key] = remote[key]
+      return
+    }
+    if (!remoteHas) {
+      result[key] = local[key]
+      return
+    }
+    result[key] = key === IRAN_TRIP_KEY
+      ? mergeIranTripState(remote[key], local[key], base[key])
+      : mergeMonthState(remote[key], local[key], base[key])
+  })
+
+  return result
+}
+
+function mergeBudgetStates(remote, local, base = null) {
+  return {
+    store: mergeBudgetStore(remote.store, local.store, base?.store || null),
+    recurring: mergeVersionedList(remote.recurring, local.recurring, base?.recurring || null, recurringSyncKey),
+    catBudgets: mergeVersionedRecord(remote.catBudgets, local.catBudgets, base?.catBudgets || null),
+    categories: mergeVersionedList(remote.categories, local.categories, base?.categories || null, categorySyncKey),
+  }
+}
+
+function persistBudgetState(state) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state.store))
+    localStorage.setItem(RECURRING_KEY, JSON.stringify(state.recurring))
+    localStorage.setItem(CAT_BUDGET_KEY, JSON.stringify(state.catBudgets))
+    localStorage.setItem(CATEGORIES_KEY, JSON.stringify(state.categories))
+  } catch {}
+}
+
+function persistBudgetSyncMeta({ dirty, remoteUpdatedAt, baseState }) {
+  try {
+    localStorage.setItem(SYNC_META_KEY, JSON.stringify({ dirty: Boolean(dirty), remoteUpdatedAt: remoteUpdatedAt || null }))
+    if (baseState) localStorage.setItem(SYNC_BASE_KEY, JSON.stringify(baseState))
+  } catch {}
+}
+
+async function reconcileBudgetState(localState, baseState) {
+  let lastError = null
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    const latest = await budgetApi()
+    const merged = mergeBudgetStates(budgetStateFromData(latest), localState, baseState)
+    try {
+      const saved = await budgetApi('PUT', { ...merged, expectedUpdatedAt: latest.updatedAt || null })
+      return { state: merged, updatedAt: saved.updatedAt || latest.updatedAt || null }
+    } catch (error) {
+      lastError = error
+      if (error.status !== 409) throw error
+    }
+  }
+  throw lastError || new Error('Finanzdaten konnten nicht zusammengeführt werden.')
+}
+
 function FinanceSyncStatus({ status }) {
   const config = {
     loading: { label: 'Verbindung wird hergestellt', detail: 'Finanzdaten werden geladen.' },
     saving: { label: 'Wird gespeichert', detail: 'Deine Änderungen werden online gesichert.' },
+    merging: { label: 'Änderungen werden zusammengeführt', detail: 'Lokale und aktuelle Online-Daten werden sicher abgeglichen.' },
     synced: { label: 'Online gespeichert', detail: 'Alle Änderungen sind synchronisiert.' },
     offline: { label: 'Nur lokal gespeichert', detail: 'Online-Speichern ist pausiert. Deine Änderungen bleiben auf diesem Gerät erhalten.' },
-    conflict: { label: 'Online-Version geändert', detail: 'Zum Schutz deiner Daten wurde nichts überschrieben. Lade die Seite neu, um die aktuelle Online-Version zu öffnen.' },
+    conflict: { label: 'Abgleich pausiert', detail: 'Deine Eingaben bleiben auf diesem Gerät und werden beim nächsten Öffnen automatisch zusammengeführt.' },
   }
   const current = config[status] || config.loading
 
@@ -688,6 +876,7 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
   const didHydrate = useRef(false)
   const remoteWritesEnabled = useRef(false)
   const remoteVersion = useRef(null)
+  const lastRemoteState = useRef(null)
   const skipNextRemoteSave = useRef(false)
   const [newCatName, setNewCatName] = useState('')
   const [newCatType, setNewCatType] = useState('expense')
@@ -752,37 +941,44 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
       let localRecurring = []
       let localCatBudgets = {}
       let localCategories = createDefaultCategories()
+      let localSyncMeta = null
+      let localBaseState = null
+      let localHasPersistedData = false
 
-      try { const r = localStorage.getItem(STORAGE_KEY);    if (r) localStore = JSON.parse(r)      } catch {}
-      try { const r = localStorage.getItem(RECURRING_KEY);  if (r) localRecurring = JSON.parse(r)  } catch {}
-      try { const r = localStorage.getItem(CAT_BUDGET_KEY); if (r) localCatBudgets = JSON.parse(r) } catch {}
+      try { const r = localStorage.getItem(STORAGE_KEY);    if (r) { localStore = JSON.parse(r); localHasPersistedData = true }      } catch {}
+      try { const r = localStorage.getItem(RECURRING_KEY);  if (r) { localRecurring = JSON.parse(r); localHasPersistedData = true }  } catch {}
+      try { const r = localStorage.getItem(CAT_BUDGET_KEY); if (r) { localCatBudgets = JSON.parse(r); localHasPersistedData = true } } catch {}
       try {
         const r = localStorage.getItem(CATEGORIES_KEY)
         const p = r ? JSON.parse(r) : []
+        if (r) localHasPersistedData = true
         localCategories = mergeExpenseDefaults(p.length > 0 ? p : createDefaultCategories())
       } catch {}
+      try { const r = localStorage.getItem(SYNC_META_KEY); if (r) localSyncMeta = JSON.parse(r) } catch {}
+      try { const r = localStorage.getItem(SYNC_BASE_KEY); if (r) localBaseState = budgetStateFromData(JSON.parse(r)) } catch {}
+
+      const localState = {
+        store: localStore,
+        recurring: localRecurring,
+        catBudgets: localCatBudgets,
+        categories: mergeExpenseDefaults(localCategories),
+      }
 
       try {
         const remote = await budgetApi()
         if (cancelled) return
 
-        const remoteHasData =
-          Object.keys(remote.store || {}).length > 0 ||
-          (remote.recurring || []).length > 0 ||
-          Object.keys(remote.catBudgets || {}).length > 0 ||
-          (remote.categories || []).length > 0
-
-        const nextState = remoteHasData ? {
-          store: remote.store || {},
-          recurring: remote.recurring || [],
-          catBudgets: remote.catBudgets || {},
-          categories: mergeExpenseDefaults((remote.categories || []).length > 0 ? remote.categories : createDefaultCategories()),
-        } : {
-          store: localStore,
-          recurring: localRecurring,
-          catBudgets: localCatBudgets,
-          categories: mergeExpenseDefaults(localCategories),
+        const rawRemoteState = budgetStateFromData(remote)
+        const remoteHasData = budgetStateHasData(rawRemoteState)
+        const remoteState = {
+          ...rawRemoteState,
+          categories: mergeExpenseDefaults(rawRemoteState.categories.length > 0 ? rawRemoteState.categories : createDefaultCategories()),
         }
+        const legacyLocalDifference = !localSyncMeta && localHasPersistedData && !sameStoredValue(localState, remoteState)
+        const shouldRecoverLocal = remoteHasData && (Boolean(localSyncMeta?.dirty) || legacyLocalDifference)
+        let nextState = remoteHasData
+          ? (shouldRecoverLocal ? mergeBudgetStates(remoteState, localState, localBaseState) : remoteState)
+          : localState
 
         setStore(nextState.store)
         setRecurring(nextState.recurring)
@@ -791,20 +987,44 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
         setSyncStatus('synced')
         remoteWritesEnabled.current = true
         remoteVersion.current = remote.updatedAt || null
+        lastRemoteState.current = remoteState
         skipNextRemoteSave.current = true
         didHydrate.current = true
         setLoaded(true)
+        persistBudgetState(nextState)
 
-        if (!remoteHasData) {
+        if (!remoteHasData || shouldRecoverLocal) {
           try {
-            setSyncStatus('saving')
-            const saved = await budgetApi('PUT', { ...nextState, expectedUpdatedAt: remoteVersion.current })
+            setSyncStatus(shouldRecoverLocal ? 'merging' : 'saving')
+            let syncedState = nextState
+            let saved
+            try {
+              saved = await budgetApi('PUT', { ...syncedState, expectedUpdatedAt: remoteVersion.current })
+            } catch (error) {
+              if (error.status !== 409) throw error
+              const reconciled = await reconcileBudgetState(syncedState, localBaseState)
+              syncedState = reconciled.state
+              saved = { updatedAt: reconciled.updatedAt }
+            }
+            if (cancelled) return
+            nextState = syncedState
+            setStore(nextState.store)
+            setRecurring(nextState.recurring)
+            setCatBudgets(nextState.catBudgets)
+            setCategories(nextState.categories)
             remoteVersion.current = saved.updatedAt || remoteVersion.current
+            lastRemoteState.current = nextState
+            persistBudgetState(nextState)
+            persistBudgetSyncMeta({ dirty: false, remoteUpdatedAt: remoteVersion.current, baseState: nextState })
             setSyncStatus('synced')
           } catch (err) {
             remoteWritesEnabled.current = false
+            persistBudgetSyncMeta({ dirty: true, remoteUpdatedAt: remoteVersion.current, baseState: localBaseState })
             setSyncStatus(err.status === 409 ? 'conflict' : 'offline')
           }
+        } else {
+          lastRemoteState.current = nextState
+          persistBudgetSyncMeta({ dirty: false, remoteUpdatedAt: remoteVersion.current, baseState: nextState })
         }
       } catch (err) {
         if (cancelled) return
@@ -815,9 +1035,12 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
         setSyncStatus('offline')
         remoteWritesEnabled.current = false
         remoteVersion.current = null
+        lastRemoteState.current = localBaseState
         skipNextRemoteSave.current = true
         didHydrate.current = true
         setLoaded(true)
+        persistBudgetState(localState)
+        persistBudgetSyncMeta({ dirty: true, remoteUpdatedAt: localSyncMeta?.remoteUpdatedAt, baseState: localBaseState })
       }
     }
 
@@ -829,17 +1052,14 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
     if (!loaded || !didHydrate.current) return
     const payload = { store, recurring, catBudgets, categories }
 
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(store))
-      localStorage.setItem(RECURRING_KEY, JSON.stringify(recurring))
-      localStorage.setItem(CAT_BUDGET_KEY, JSON.stringify(catBudgets))
-      localStorage.setItem(CATEGORIES_KEY, JSON.stringify(categories))
-    } catch {}
-
     if (skipNextRemoteSave.current) {
       skipNextRemoteSave.current = false
+      persistBudgetState(payload)
       return
     }
+
+    persistBudgetState(payload)
+    persistBudgetSyncMeta({ dirty: true, remoteUpdatedAt: remoteVersion.current, baseState: lastRemoteState.current })
 
     if (!remoteWritesEnabled.current) {
       setSyncStatus(current => current === 'conflict' ? current : 'offline')
@@ -848,18 +1068,51 @@ export default function BudgetPage({ homeHref = '', homeLabel = '', iranOnly = f
 
     setSyncStatus('saving')
 
+    let cancelled = false
     const timer = window.setTimeout(async () => {
       try {
         const saved = await budgetApi('PUT', { ...payload, expectedUpdatedAt: remoteVersion.current })
+        if (cancelled) return
         remoteVersion.current = saved.updatedAt || remoteVersion.current
+        lastRemoteState.current = payload
+        persistBudgetSyncMeta({ dirty: false, remoteUpdatedAt: remoteVersion.current, baseState: payload })
         setSyncStatus('synced')
       } catch (err) {
+        if (cancelled) return
+        if (err.status === 409) {
+          setSyncStatus('merging')
+          try {
+            const reconciled = await reconcileBudgetState(payload, lastRemoteState.current)
+            if (cancelled) return
+            remoteVersion.current = reconciled.updatedAt
+            lastRemoteState.current = reconciled.state
+            remoteWritesEnabled.current = true
+            skipNextRemoteSave.current = true
+            setStore(reconciled.state.store)
+            setRecurring(reconciled.state.recurring)
+            setCatBudgets(reconciled.state.catBudgets)
+            setCategories(reconciled.state.categories)
+            persistBudgetState(reconciled.state)
+            persistBudgetSyncMeta({ dirty: false, remoteUpdatedAt: reconciled.updatedAt, baseState: reconciled.state })
+            setSyncStatus('synced')
+            return
+          } catch (mergeError) {
+            remoteWritesEnabled.current = false
+            persistBudgetSyncMeta({ dirty: true, remoteUpdatedAt: remoteVersion.current, baseState: lastRemoteState.current })
+            setSyncStatus(mergeError.status === 409 ? 'conflict' : 'offline')
+            return
+          }
+        }
         remoteWritesEnabled.current = false
-        setSyncStatus(err.status === 409 ? 'conflict' : 'offline')
+        persistBudgetSyncMeta({ dirty: true, remoteUpdatedAt: remoteVersion.current, baseState: lastRemoteState.current })
+        setSyncStatus('offline')
       }
     }, 500)
 
-    return () => window.clearTimeout(timer)
+    return () => {
+      cancelled = true
+      window.clearTimeout(timer)
+    }
   }, [store, recurring, catBudgets, categories, loaded])
 
   // Close month picker on outside click
