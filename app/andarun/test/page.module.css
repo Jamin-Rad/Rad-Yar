@@ -204,17 +204,31 @@
 .caseBody p { margin: 0; color: var(--body); font-size: 13px; line-height: 1.7; }
 .caseBody footer { margin-top: 18px; color: var(--muted); font-size: 9px; line-height: 1.5; }
 
-.takeHomePanel { overflow: hidden; border: 1px solid rgba(165,58,98,.34); border-radius: 14px; background: linear-gradient(145deg,rgba(255,255,255,.9),rgba(250,238,244,.84)); box-shadow: 0 18px 44px rgba(98,24,54,.08); }
-.takeHome { display: grid; gap: 10px; margin: 0; padding: 14px; list-style: none; }
-.takeHome li { overflow: hidden; border: 1px solid rgba(139,43,79,.17); border-radius: 11px; background: rgba(255,255,255,.74); transition: border-color .18s ease,box-shadow .18s ease; }
-.takeHome li:hover,.takeHome .takeHomeItemOpen { border-color: rgba(139,43,79,.36); box-shadow: 0 10px 24px rgba(98,24,54,.07); }
-.takeHome li > button { width: 100%; min-height: 72px; display: grid; grid-template-columns: 46px minmax(0,1fr) 30px; align-items: center; gap: 13px; padding: 10px 16px; border: 0; background: transparent; color: #361423; font-family: inherit; text-align: start; cursor: pointer; }
-.takeHomePriority { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: linear-gradient(145deg,#8a2d52,#c2597e); box-shadow: 0 7px 16px rgba(128,37,72,.18); font: 900 12px/1 var(--font-fraunces,Georgia,serif); }
+.takeHomePanel { overflow: hidden; border: 1px solid rgba(165,58,98,.28); border-radius: 12px; background: rgba(255,255,255,.58); }
+.takeHome { margin: 0; padding: 0 20px; list-style: none; }
+.takeHome li { border-bottom: 1px solid rgba(139,43,79,.18); transition: background .18s ease; }
+.takeHome li:last-child { border-bottom: 0; }
+.takeHome li:hover,.takeHome .takeHomeItemOpen { background: rgba(183,72,114,.045); }
+.takeHome li > button { width: 100%; min-height: 64px; display: grid; grid-template-columns: 30px minmax(0,1fr) 24px; align-items: center; gap: 10px; padding: 9px 4px; border: 0; background: transparent; color: #361423; font-family: inherit; text-align: start; cursor: pointer; }
+.takeHomePriority { color: #9a365d; font: 900 11px/1 var(--font-fraunces,Georgia,serif); letter-spacing: .05em; }
 .takeHome li strong { font-size: 13px; line-height: 1.45; }
 .takeHome li button > i { color: #8a2d52; font-size: 22px; font-style: normal; text-align: center; }
-.takeHomeDetail { padding-block: 0 17px; padding-inline: 75px 59px; }
+.takeHomeDetail { padding-block: 0 17px; padding-inline: 40px 38px; }
 .takeHomeDetail[hidden] { display: none; }
-.takeHomeDetail p { margin: 0; padding-top: 13px; border-top: 1px solid rgba(139,43,79,.14); color: #694353; font-size: 12px; line-height: 1.7; }
+.takeHomeDetail p { margin: 0; color: #694353; font-size: 12px; line-height: 1.7; }
+.sources { margin-top: 14px; border-top: 1px solid rgba(139,43,79,.2); }
+.sourcesToggle { width: 100%; min-height: 50px; display: flex; align-items: center; justify-content: space-between; padding: 8px 4px; border: 0; background: transparent; color: var(--ink); cursor: pointer; font-family: inherit; text-align: start; }
+.sourcesToggle span { font-size: 12px; font-weight: 900; letter-spacing: .035em; }
+.sourcesToggle i { width: 25px; color: var(--plum-700); font-size: 20px; font-style: normal; text-align: center; }
+.sourcesPanel[hidden] { display: none; }
+.sourcesPanel ul { display: grid; gap: 0; margin: 0; padding: 0 0 2px; list-style: none; }
+.sourcesPanel li { border-top: 1px solid var(--line); }
+.sourcesPanel a { display: grid; grid-template-columns: minmax(0,1fr) 24px; align-items: center; gap: 12px; padding: 13px 4px; color: inherit; text-decoration: none; }
+.sourcesPanel a:hover strong { color: var(--plum-700); }
+.sourcesPanel a > span { display: grid; gap: 4px; }
+.sourcesPanel strong { color: var(--ink); font-size: 11px; line-height: 1.4; }
+.sourcesPanel small { color: var(--muted); font-size: 9px; line-height: 1.35; }
+.sourcesPanel a > i { color: var(--teal-700); font-size: 13px; font-style: normal; text-align: center; }
 .readButton { min-height: 46px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 20px; border: 1px solid var(--plum-800); border-radius: 8px; background: transparent; color: var(--plum-900); font: 850 13px/1 inherit; cursor: pointer; }
 .readButton svg { width: 20px; height: 20px; }
 .readButtonDone { background: var(--plum-900); color: #fff; }
@@ -257,9 +271,11 @@
 :global(html[data-theme='dark']) .takeHomeSection { border-color: #88405e; background: linear-gradient(145deg,#2b1621,#211a23); }
 :global(html[data-theme='dark']) .takeHomeSection .sectionHeader { color: #ffdce9; background: linear-gradient(115deg,rgba(183,72,114,.2),transparent); }
 :global(html[data-theme='dark']) .takeHomePanel { background: linear-gradient(145deg,rgba(47,25,38,.96),rgba(31,24,34,.96)); }
-:global(html[data-theme='dark']) .takeHome li { border-color: rgba(213,116,151,.2); background: rgba(255,255,255,.045); }
+:global(html[data-theme='dark']) .takeHome li { border-color: rgba(213,116,151,.2); }
+:global(html[data-theme='dark']) .takeHome li:hover,:global(html[data-theme='dark']) .takeHome .takeHomeItemOpen { background: rgba(255,255,255,.04); }
 :global(html[data-theme='dark']) .takeHome strong { color: #f5e9ee; }
-:global(html[data-theme='dark']) .takeHomeDetail p { border-top-color: rgba(213,116,151,.2); color: #d9bdc9; }
+:global(html[data-theme='dark']) .takeHomeDetail p { color: #d9bdc9; }
+:global(html[data-theme='dark']) .sources { border-top-color: rgba(213,116,151,.24); }
 
 [dir='rtl'] .workflow li:not(:last-child)::after { content: '←'; }
 [dir='rtl'] .sectionBody { padding: 20px 82px 24px 22px; }
@@ -338,10 +354,9 @@
   .caseScrubber { inset-inline: 58px; bottom: 12px; padding: 8px 10px; }
   .caseViewerFooter { align-items: flex-start; flex-direction: column; gap: 7px; }
   .caseBody { padding: 22px 18px; }
-  .takeHome { padding: 10px; }
-  .takeHome li > button { grid-template-columns: 42px minmax(0,1fr) 25px; padding: 9px 11px; }
-  .takeHomePriority { width: 36px; height: 36px; }
-  .takeHomeDetail { padding-block: 0 14px; padding-inline: 64px 36px; }
+  .takeHome { padding-inline: 14px; }
+  .takeHome li > button { grid-template-columns: 28px minmax(0,1fr) 24px; padding: 9px 2px; }
+  .takeHomeDetail { padding-block: 0 14px; padding-inline: 38px 30px; }
 }
 
 @keyframes mobilePathIn { from { opacity: 0; transform: translateY(8px) scale(.985); } to { opacity: 1; transform: none; } }

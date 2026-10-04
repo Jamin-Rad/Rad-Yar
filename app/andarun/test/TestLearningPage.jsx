@@ -109,6 +109,24 @@ const LESSON_CONTENT = {
   },
 }
 
+const LESSON_SOURCES = [
+  {
+    title: L('AWMF-Leitlinie: Akuttherapie des ischämischen Schlaganfalls', 'AWMF guideline: Acute treatment of ischaemic stroke', 'راهنمای AWMF: درمان حاد سکته ایسکمیک'),
+    meta: L('S2e · Reg.-Nr. 030-046 · Version 5.1', 'S2e · Registration no. 030-046 · Version 5.1', 'S2e · شماره ثبت 030-046 · نسخه 5.1'),
+    url: 'https://register.awmf.org/assets/guidelines/030-046l_S2e_Akuttherapie-des-ischaemischen-Schlaganfalls_2022-11-verlaengert.pdf',
+  },
+  {
+    title: L('AHA/ASA Guideline: Early Management of Acute Ischemic Stroke', 'AHA/ASA guideline: Early management of acute ischaemic stroke', 'راهنمای AHA/ASA: مدیریت اولیه سکته ایسکمیک حاد'),
+    meta: L('American Heart Association · 2026', 'American Heart Association · 2026', 'انجمن قلب آمریکا · ۲۰۲۶'),
+    url: 'https://professional.heart.org/en/guidelines-statements/2026-guideline-for-the-early-management-of-patients-with-acute-ischemic-strokestr0000000000000513',
+  },
+  {
+    title: L('Radiopaedia-Fall: Dissektion der rechten ACI', 'Radiopaedia case: Right ICA dissection', 'کیس Radiopaedia: دیسکسیون ICA راست'),
+    meta: L('Heather Pascoe · rID 58286', 'Heather Pascoe · rID 58286', 'Heather Pascoe · rID 58286'),
+    url: 'https://radiopaedia.org/cases/58286',
+  },
+]
+
 const RADIOPAEDIA_CASE = {
   frames: Array.from({ length: 20 }, (_, index) => `/dissection/case-58286/${String(index + 1).padStart(2, '0')}.png`),
   initialFrame: 9,
@@ -213,6 +231,7 @@ function TableLesson({ lang }) {
 
 function TakeHomeSummary({ lang }) {
   const [openItems, setOpenItems] = useState(() => new Set())
+  const [sourcesOpen, setSourcesOpen] = useState(false)
   const toggleItem = index => setOpenItems(previous => {
     const next = new Set(previous)
     if (next.has(index)) next.delete(index)
@@ -220,13 +239,21 @@ function TakeHomeSummary({ lang }) {
     return next
   })
 
-  return <div className={styles.takeHomePanel}><ol className={styles.takeHome}>{LESSON_CONTENT['take-home'].points.map((point, index) => {
-    const open = openItems.has(index)
-    return <li key={pick(point.title, lang)} className={open ? styles.takeHomeItemOpen : ''}>
-      <button type="button" aria-expanded={open} aria-controls={`take-home-detail-${index}`} onClick={() => toggleItem(index)}><span className={styles.takeHomePriority}>{String(index + 1).padStart(2, '0')}</span><strong>{pick(point.title, lang)}</strong><i aria-hidden="true">{open ? '−' : '+'}</i></button>
-      <div id={`take-home-detail-${index}`} hidden={!open} className={styles.takeHomeDetail}><p>{pick(point.detail, lang)}</p></div>
-    </li>
-  })}</ol></div>
+  return <>
+    <div className={styles.takeHomePanel}><ol className={styles.takeHome}>{LESSON_CONTENT['take-home'].points.map((point, index) => {
+      const open = openItems.has(index)
+      return <li key={pick(point.title, lang)} className={open ? styles.takeHomeItemOpen : ''}>
+        <button type="button" aria-expanded={open} aria-controls={`take-home-detail-${index}`} onClick={() => toggleItem(index)}><span className={styles.takeHomePriority}>{String(index + 1).padStart(2, '0')}</span><strong>{pick(point.title, lang)}</strong><i aria-hidden="true">{open ? '−' : '+'}</i></button>
+        <div id={`take-home-detail-${index}`} hidden={!open} className={styles.takeHomeDetail}><p>{pick(point.detail, lang)}</p></div>
+      </li>
+    })}</ol></div>
+    <div className={styles.sources}>
+      <button type="button" className={styles.sourcesToggle} aria-expanded={sourcesOpen} aria-controls="take-home-sources" onClick={() => setSourcesOpen(open => !open)}><span>{pick(L('Quellen', 'Sources', 'منابع'), lang)}</span><i aria-hidden="true">{sourcesOpen ? '−' : '+'}</i></button>
+      <div id="take-home-sources" className={styles.sourcesPanel} hidden={!sourcesOpen}>
+        <ul>{LESSON_SOURCES.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer"><span><strong>{pick(source.title, lang)}</strong><small>{pick(source.meta, lang)}</small></span><i aria-hidden="true">↗</i></a></li>)}</ul>
+      </div>
+    </div>
+  </>
 }
 
 function CaseSequence({ lang }) {
