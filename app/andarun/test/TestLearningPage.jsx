@@ -233,24 +233,53 @@ function CaseSequence({ lang }) {
   const { frames, initialFrame, url, alt } = RADIOPAEDIA_CASE
   const [frameIndex, setFrameIndex] = useState(initialFrame)
   const viewerRef = useRef(null)
+  const frameIndexRef = useRef(initialFrame)
+  const wheelDeltaRef = useRef(0)
+  const wheelResetRef = useRef(null)
+  const pointerStartRef = useRef(null)
   const touchStartRef = useRef(null)
   const moveFrame = useCallback(delta => {
-    setFrameIndex(current => Math.min(frames.length - 1, Math.max(0, current + delta)))
+    setFrameIndex(current => {
+      const next = Math.min(frames.length - 1, Math.max(0, current + delta))
+      frameIndexRef.current = next
+      return next
+    })
   }, [frames.length])
+
+  const selectFrame = useCallback(index => {
+    const next = Math.min(frames.length - 1, Math.max(0, index))
+    frameIndexRef.current = next
+    setFrameIndex(next)
+  }, [frames.length])
+
+  useEffect(() => {
+    frameIndexRef.current = frameIndex
+  }, [frameIndex])
 
   useEffect(() => {
     const viewer = viewerRef.current
     if (!viewer) return undefined
     const handleWheel = event => {
+      if (event.target.closest('button, input, a')) return
+      if (event.deltaY === 0) return
       const direction = event.deltaY > 0 ? 1 : -1
-      const canMove = direction > 0 ? frameIndex < frames.length - 1 : frameIndex > 0
+      const currentFrame = frameIndexRef.current
+      const canMove = direction > 0 ? currentFrame < frames.length - 1 : currentFrame > 0
       if (!canMove) return
       event.preventDefault()
+      wheelDeltaRef.current += event.deltaY
+      window.clearTimeout(wheelResetRef.current)
+      wheelResetRef.current = window.setTimeout(() => { wheelDeltaRef.current = 0 }, 160)
+      if (Math.abs(wheelDeltaRef.current) < 70) return
       moveFrame(direction)
+      wheelDeltaRef.current = 0
     }
     viewer.addEventListener('wheel', handleWheel, { passive: false })
-    return () => viewer.removeEventListener('wheel', handleWheel)
-  }, [frameIndex, frames.length, moveFrame])
+    return () => {
+      viewer.removeEventListener('wheel', handleWheel)
+      window.clearTimeout(wheelResetRef.current)
+    }
+  }, [frames.length, moveFrame])
 
   useEffect(() => {
     ;[frameIndex - 1, frameIndex + 1].forEach(index => {
@@ -264,7 +293,7 @@ function CaseSequence({ lang }) {
     previous: pick(L('Vorherige Schicht', 'Previous slice', 'برش قبلی'), lang),
     next: pick(L('Nächste Schicht', 'Next slice', 'برش بعدی'), lang),
     slider: pick(L('Schicht auswählen', 'Select slice', 'انتخاب برش'), lang),
-    hint: pick(L('Scrollen, wischen oder Slider verwenden', 'Scroll, swipe, or use the slider', 'اسکرول کنید، بکشید یا از اسلایدر استفاده کنید'), lang),
+    hint: pick(L('Über dem Bild scrollen · ziehen · Pfeiltasten', 'Scroll over the image · drag · arrow keys', 'روی تصویر اسکرول کنید · بکشید · کلیدهای جهت'), lang),
     open: pick(L('Fall in Radiopaedia öffnen', 'Open case in Radiopaedia', 'باز کردن کیس در Radiopaedia'), lang),
   }
 
@@ -291,18 +320,33 @@ function CaseSequence({ lang }) {
     if (Math.abs(deltaX) >= 35 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) moveFrame(deltaX < 0 ? 1 : -1)
   }
 
-  return <div ref={viewerRef} className={styles.caseSequence} tabIndex={0} onKeyDown={handleKeyDown} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} onTouchCancel={() => { touchStartRef.current = null }} aria-label={`${pick(alt, lang)} · ${labels.hint}`}>
-    <a className={styles.caseImage} href={url} target="_blank" rel="noopener noreferrer" aria-label={labels.open}>
-      <Image src={frames[frameIndex]} alt={pick(alt, lang)} width={512} height={512} priority={frameIndex === initialFrame} />
-      <span className={styles.caseCounter}>{String(frameIndex + 1).padStart(2, '0')} / {frames.length}</span>
-      <span className={styles.caseOpen}>{labels.open} ↗</span>
-    </a>
-    <div className={styles.caseControls}>
-      <button type="button" onClick={() => moveFrame(-1)} disabled={frameIndex === 0} aria-label={labels.previous}>‹</button>
-      <input type="range" min="0" max={frames.length - 1} value={frameIndex} onChange={event => setFrameIndex(Number(event.target.value))} aria-label={labels.slider} />
-      <button type="button" onClick={() => moveFrame(1)} disabled={frameIndex === frames.length - 1} aria-label={labels.next}>›</button>
+  const handlePointerDown = event => {
+    if (event.pointerType === 'touch' || event.target.closest('button, input, a')) return
+    pointerStartRef.current = { y: event.clientY, frame: frameIndexRef.current }
+    event.currentTarget.setPointerCapture(event.pointerId)
+  }
+
+  const handlePointerMove = event => {
+    const start = pointerStartRef.current
+    if (!start || event.pointerType === 'touch') return
+    const nextFrame = Math.min(frames.length - 1, Math.max(0, start.frame + Math.round((start.y - event.clientY) / 22)))
+    selectFrame(nextFrame)
+  }
+
+  const handlePointerEnd = event => {
+    pointerStartRef.current = null
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId)
+  }
+
+  return <div className={styles.caseSequence}>
+    <div ref={viewerRef} className={styles.caseViewport} tabIndex={0} onKeyDown={handleKeyDown} onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerEnd} onPointerCancel={handlePointerEnd} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} onTouchCancel={() => { touchStartRef.current = null }} aria-label={`${pick(alt, lang)} · ${labels.hint}`}>
+      <Image src={frames[frameIndex]} alt={pick(alt, lang)} width={512} height={512} priority={frameIndex === initialFrame} draggable={false} />
+      <div className={styles.caseTopBar}><span>CTA · AXIAL</span><strong aria-live="polite">{String(frameIndex + 1).padStart(2, '0')} <i>/ {frames.length}</i></strong></div>
+      <button type="button" className={`${styles.caseNav} ${styles.caseNavPrevious}`} onClick={() => moveFrame(-1)} disabled={frameIndex === 0} aria-label={labels.previous}>‹</button>
+      <button type="button" className={`${styles.caseNav} ${styles.caseNavNext}`} onClick={() => moveFrame(1)} disabled={frameIndex === frames.length - 1} aria-label={labels.next}>›</button>
+      <div className={styles.caseScrubber}><input type="range" min="0" max={frames.length - 1} value={frameIndex} onChange={event => selectFrame(Number(event.target.value))} aria-label={labels.slider} /></div>
     </div>
-    <small className={styles.caseHint}>↕ {labels.hint}</small>
+    <footer className={styles.caseViewerFooter}><small>↕ {labels.hint}</small><a href={url} target="_blank" rel="noopener noreferrer">{labels.open} ↗</a></footer>
   </div>
 }
 
