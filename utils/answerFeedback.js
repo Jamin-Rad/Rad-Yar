@@ -16,6 +16,40 @@ function extractOptionParagraph(explanation, optionId, lang) {
   return paragraph ? paragraph.replace(pattern, '').trim() : ''
 }
 
+const PERSIAN_OPTION_LABELS = { A: 'الف', B: 'ب', C: 'ج', D: 'د' }
+
+export function getCorrectAnswerExplanation(item, lang) {
+  if (!item?.explanation) return ''
+
+  const paragraphs = item.explanation.split(/\n\s*\n/).map(part => part.trim()).filter(Boolean)
+  if (paragraphs.length < 2) return item.explanation
+
+  const optionId = item.originalCorrect || item.correct
+  const labels = lang === 'fa'
+    ? [PERSIAN_OPTION_LABELS[optionId], optionId].filter(Boolean)
+    : [optionId]
+  const correctMarker = lang === 'de'
+    ? /\bist\s+richtig\b/i
+    : lang === 'en'
+      ? /\bis\s+correct\b/i
+      : /(?:صحیح|درست)\s*است/
+
+  const paragraph = paragraphs.find(part => {
+    const startsWithOption = labels.some(label => new RegExp(`^${escapeRegExp(label)}\\s+`, 'i').test(part))
+    return startsWithOption && correctMarker.test(part)
+  })
+
+  if (!paragraph) return item.explanation
+
+  const prefix = lang === 'de'
+    ? new RegExp(`^${escapeRegExp(optionId)}\\s+ist\\s+richtig\\s*:\\s*`, 'i')
+    : lang === 'en'
+      ? new RegExp(`^${escapeRegExp(optionId)}\\s+is\\s+correct\\s*:\\s*`, 'i')
+      : new RegExp(`^(?:${labels.map(escapeRegExp).join('|')})\\s+(?:صحیح|درست)\\s*است\\s*[:：-]?\\s*`, 'i')
+
+  return paragraph.replace(prefix, '').trim()
+}
+
 export function getWrongAnswerExplanation(item, selectedId, lang) {
   if (!item || !selectedId || selectedId === item.correct) return ''
   if (item.wrongExplanations?.[selectedId]) return item.wrongExplanations[selectedId]

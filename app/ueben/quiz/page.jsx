@@ -6,7 +6,7 @@ import { useUser } from '@clerk/nextjs'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { shuffleQuestionIds, getQuestionsForIds } from '@/data/questions'
 import { hasFullAccess, FREE_ITEM_LIMIT } from '@/utils/subscription'
-import { getWrongAnswerExplanation } from '@/utils/answerFeedback'
+import { getCorrectAnswerExplanation, getWrongAnswerExplanation } from '@/utils/answerFeedback'
 import { persistProgressWrite } from '@/utils/progressSync'
 import styles from './page.module.css'
 
@@ -64,7 +64,8 @@ const UI = {
     correctShort: 'Richtig',
     wrongShort: 'Falsch',
     remaining: 'Offen',
-    keyboardHint: 'Tastatur: A–D · Enter',
+    keyboardHint: 'Tastatur: A–D oder 1–4 · Enter: bestätigen / weiter',
+    answeredLabel: (c, t) => `${c}/${t} beantwortet`,
     noWrong: 'Stark – keine falschen Antworten in diesem Durchgang.',
     freeLimitNote: `Kostenlose Version: max. ${FREE_ITEM_LIMIT} Fragen pro Durchgang.`,
     upgradeLink: 'Mit Abo unbegrenzt →',
@@ -102,7 +103,8 @@ const UI = {
     correctShort: 'Correct',
     wrongShort: 'Incorrect',
     remaining: 'Open',
-    keyboardHint: 'Keyboard: A–D · Enter',
+    keyboardHint: 'Keyboard: A–D or 1–4 · Enter: confirm / continue',
+    answeredLabel: (c, t) => `${c}/${t} answered`,
     noWrong: 'Great work – no incorrect answers in this session.',
     freeLimitNote: `Free version: max. ${FREE_ITEM_LIMIT} questions per session.`,
     upgradeLink: 'Unlimited with a subscription →',
@@ -140,7 +142,8 @@ const UI = {
     correctShort: 'درست',
     wrongShort: 'نادرست',
     remaining: 'باقی‌مانده',
-    keyboardHint: 'صفحه‌کلید: A–D · Enter',
+    keyboardHint: 'صفحه‌کلید: A–D یا 1–4 · Enter: تأیید / ادامه',
+    answeredLabel: (c, t) => `${c}/${t} پاسخ‌داده‌شده`,
     noWrong: 'عالی است — در این دور پاسخ نادرستی نداشتید.',
     freeLimitNote: `نسخه رایگان: حداکثر ${FREE_ITEM_LIMIT} سؤال در هر دور.`,
     upgradeLink: 'با اشتراک نامحدود ←',
@@ -346,9 +349,10 @@ function QuizContent() {
   }, [timed, phase, total])
 
   const q = questions[current]
-  const isLast = current === total - 1
   const score = answers.filter(a => a.correct).length
-  const progressPct = total > 0 ? ((current + (checked ? 1 : 0)) / total) * 100 : 0
+  const answerMap = useMemo(() => new Map(answers.map(answer => [answer.qId, answer])), [answers])
+  const answeredCount = answerMap.size
+  const progressPct = total > 0 ? (answeredCount / total) * 100 : 0
 
   const fachLabel = fachIds.map(id => names[id] || id).join(', ')
 
@@ -364,7 +368,7 @@ function QuizContent() {
   const goToQuestion = (index) => {
     const nextQuestion = questions[index]
     if (!nextQuestion) return
-    const existingAnswer = answers.find(answer => answer.qId === nextQuestion.sessionId)
+    const existingAnswer = answerMap.get(nextQuestion.sessionId)
     setCurrent(index)
     setSelected(existingAnswer?.selected || null)
     setChecked(Boolean(existingAnswer))
@@ -407,14 +411,19 @@ function QuizContent() {
   }
 
   const handleNext = () => {
-    if (isLast) {
-      const finalAnswers = [...answers.filter(a => a.qId !== q.sessionId), { qId: q.sessionId, selected, correct: selected === q.correct }]
-      saveMcqResult(finalAnswers)
-      setAnswers(finalAnswers)
+    if (answeredCount >= total) {
+      saveMcqResult(answers)
       setPhase('result')
       return
     }
-    goToQuestion(current + 1)
+
+    for (let offset = 1; offset <= total; offset += 1) {
+      const nextIndex = (current + offset) % total
+      if (!answerMap.has(questions[nextIndex].sessionId)) {
+        goToQuestion(nextIndex)
+        return
+      }
+    }
   }
 
   // Zeit abgelaufen → Durchgang sofort beenden
@@ -444,7 +453,13 @@ function QuizContent() {
       const target = event.target
       if (target instanceof HTMLElement && ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName)) return
 
-      const option = q.options.find(item => item.id === event.key.toUpperCase())
+      const normalizedKey = event.key.toUpperCase()
+      const optionIndex = /^[1-4]$/.test(event.key)
+        ? Number(event.key) - 1
+        : /^[A-D]$/.test(normalizedKey)
+          ? normalizedKey.charCodeAt(0) - 65
+          : -1
+      const option = optionIndex >= 0 ? q.options[optionIndex] : null
       if (option && !checked) {
         event.preventDefault()
         setSelected(option.id)
@@ -464,7 +479,7 @@ function QuizContent() {
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [checked, phase, q, selected])
+  }, [answerMap, answeredCount, checked, current, phase, q, selected, total])
 
   // ── NO QUESTIONS ──────────────────────────────
   if (total === 0) return (
@@ -544,7 +559,9 @@ function QuizContent() {
                       <span>{ui.rightAnswer} <strong style={{color:'#059669'}}>{sq.correct}) {sq.options.find(o=>o.id===sq.correct)?.text}</strong></span>
                     </div>
                   )}
-                  <div className={styles.sumExp}>{sq.explanation}</div>
+                  <div className={styles.sumExp}>
+                    {ok ? getCorrectAnswerExplanation(sq, lang) : sq.explanation}
+                  </div>
                 </div>
               )
             })}
@@ -581,7 +598,9 @@ function QuizContent() {
             <div className={styles.progressTrack} role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow={Math.round(progressPct)}>
               <div className={styles.progressFill} style={{ width: `${progressPct}%` }}/>
             </div>
-            <span className={styles.progressLabel}>{Math.round(progressPct)}%</span>
+            <span className={styles.progressLabel} aria-label={ui.answeredLabel(answeredCount, total)}>
+              {Math.round(progressPct)}% · {answeredCount}/{total}
+            </span>
           </div>
         </div>
       </div>
@@ -667,8 +686,13 @@ function QuizContent() {
                   <strong>{q.correct}) {correctOpt?.text}</strong>
                 </div>
               )}
+              <button className={styles.nextBtnFull} onClick={handleNext}>
+                {answeredCount >= total ? ui.resultBtn : ui.nextBtn}<ArrowIcon />
+              </button>
               <div className={styles.fbLabel}>{ui.explanation}</div>
-              <div className={styles.fbText}>{q.explanation}</div>
+              <div className={styles.fbText}>
+                {isCorrect ? getCorrectAnswerExplanation(q, lang) : q.explanation}
+              </div>
               {!isCorrect && wrongExplanation && (
                 <div className={styles.wrongExplanation}>
                   <div className={styles.fbLabel}>{ui.whyWrong}</div>
@@ -678,11 +702,6 @@ function QuizContent() {
             </div>
           )}
 
-          {checked && (
-            <button className={styles.nextBtnFull} onClick={handleNext}>
-              {isLast ? ui.resultBtn : ui.nextBtn}<ArrowIcon />
-            </button>
-          )}
         </div>
 
         <div className={styles.tracker}>
@@ -692,7 +711,7 @@ function QuizContent() {
           </div>
           <div className={styles.trackerDots}>
             {questions.map((_, i) => {
-              const ans = answers.find(a => a.qId === questions[i].sessionId)
+              const ans = answerMap.get(questions[i].sessionId)
               const cls = i === current ? styles.dotCur : ans?.correct ? styles.dotOk : ans ? styles.dotErr : styles.dot
               return (
                 <button

@@ -15,7 +15,7 @@
   padding-top: 64px;
   background: var(--quiz-canvas);
   color: var(--quiz-text);
-  font-family: var(--font-main, system-ui, sans-serif);
+  font-family: var(--font-main, ui-sans-serif, system-ui, sans-serif);
 }
 
 .topBar {
@@ -85,7 +85,7 @@
 }
 
 .progressLabel {
-  min-width: 38px;
+  min-width: 92px;
   color: var(--quiz-navy);
   font-size: 13px;
   font-weight: 800;
@@ -165,7 +165,7 @@
 .qText {
   max-width: 900px;
   color: var(--quiz-navy);
-  font-family: var(--font-main, system-ui, sans-serif);
+  font-family: var(--font-main, ui-sans-serif, system-ui, sans-serif);
   font-size: clamp(23px, 2.25vw, 31px);
   font-weight: 800;
   letter-spacing: -.025em;
@@ -371,7 +371,10 @@
 
 .checkBtn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 10px 22px rgba(244, 91, 22, .27); }
 .checkDisabled { opacity: .42; cursor: not-allowed; box-shadow: none; }
-.keyboardHint { color: var(--quiz-faint); font-size: 12px; }
+.keyboardHint {
+  color: var(--quiz-faint);
+  font: 650 12px/1.5 var(--font-main, ui-sans-serif, system-ui, sans-serif);
+}
 
 .feedback {
   margin: 0 32px 22px;
@@ -408,8 +411,8 @@
 }
 
 .nextBtnFull {
-  width: calc(100% - 64px);
-  margin: 0 32px 30px;
+  width: 100%;
+  margin: 2px 0 18px;
   padding: 13px 24px;
   background: var(--quiz-navy);
   color: #fff;
@@ -616,7 +619,7 @@
   .checkBtn { width: 100%; min-width: 0; }
   .keyboardHint { text-align: center; }
   .feedback { margin: 0 20px 18px; padding: 17px; }
-  .nextBtnFull { width: calc(100% - 40px); margin: 0 20px 22px; }
+  .nextBtnFull { width: 100%; margin: 2px 0 18px; }
   .resultWrap { width: calc(100% - 24px); padding: 22px 0 60px; }
   .scoreCard { flex-direction: column; gap: 18px; padding: 26px 20px; text-align: center; }
   .scoreCopy { min-width: 0; }
@@ -669,7 +672,17 @@
 :global(html[data-theme='dark']) .fbOk { background: rgba(7, 150, 106, .11) !important; }
 :global(html[data-theme='dark']) .optErr,
 :global(html[data-theme='dark']) .fbErr { background: rgba(220, 74, 74, .11) !important; }
+:global(html[data-theme='dark']) .fbOk { border-color: #34d399; }
+:global(html[data-theme='dark']) .fbErr { border-color: #fb7185; }
 :global(html[data-theme='dark']) .fbText { color: #c1ccda; }
+:global(html[data-theme='dark']) .keyboardHint { color: #a8b6ca; }
+:global(html[data-theme='dark']) .wrongExplanation { border-color: rgba(251, 113, 133, .3); }
+:global(html[data-theme='dark']) .nextBtnFull {
+  background: linear-gradient(130deg, #ea580c, #f59e0b);
+  color: #fff;
+  box-shadow: 0 5px 18px rgba(249, 115, 22, .28);
+}
+:global(html[data-theme='dark']) .nextBtnFull:hover { background: linear-gradient(130deg, #f97316, #fbbf24); }
 :global(html[data-theme='dark']) .questionFigure { border-color: rgba(166, 178, 195, .2); }
 :global(html[data-theme='dark']) .questionCaption { background: #0f1b2d; }
 :global(html[data-theme='dark']) .dot { background: #132238; }
