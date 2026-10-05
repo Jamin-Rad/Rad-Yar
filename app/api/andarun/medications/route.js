@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { requireAndarunSession } from '@/lib/andarunPasswordAuth'
+import { requireMamanSession } from '@/lib/mamanAuth'
 import { MEDICATION_CATEGORIES, findMedicationById } from '@/lib/medicationCatalog'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 import {
@@ -12,6 +13,8 @@ import {
 
 const STATE_ID = 'andarun:medications:v1'
 const DEFAULT_PROFILE = { id: 'benjamin', name: 'بنیامین', initials: 'ب‌ز' }
+const MAMAN_STATE_ID = 'maman:medications:v1'
+const MAMAN_PROFILE = { id: 'maman', name: 'Maman', initials: 'M' }
 const EMPTY_STATE = {
   version: 4,
   profiles: [DEFAULT_PROFILE],
@@ -36,7 +39,7 @@ function cleanDate(value) {
   return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : ''
 }
 
-function cleanMedicine(value, { enforceCatalogDoses = false } = {}) {
+function cleanMedicine(value, { enforceCatalogDoses = false, defaultProfile = DEFAULT_PROFILE } = {}) {
   const weekdays = Array.isArray(value?.weekdays)
     ? [...new Set(value.weekdays.map(Number).filter(day => day >= 0 && day <= 6))].sort()
     : []
@@ -65,7 +68,7 @@ function cleanMedicine(value, { enforceCatalogDoses = false } = {}) {
 
   return {
     id: cleanText(value?.id, 80) || crypto.randomUUID(),
-    profileId: cleanText(value?.profileId, 80) || DEFAULT_PROFILE.id,
+    profileId: defaultProfile.id,
     name: cleanText(value?.name, 100),
     dose,
     drugCatalogId: cleanText(value?.drugCatalogId, 80),
@@ -81,10 +84,11 @@ function cleanMedicine(value, { enforceCatalogDoses = false } = {}) {
   }
 }
 
-function normalizeState(value) {
-  const source = value && typeof value === 'object' ? value : EMPTY_STATE
+function normalizeState(value, defaultProfile = DEFAULT_PROFILE) {
+  const fallback = { ...EMPTY_STATE, profiles: [defaultProfile], activeProfileId: defaultProfile.id }
+  const source = value && typeof value === 'object' ? value : fallback
   const medicines = Array.isArray(source.medicines)
-    ? source.medicines.map(cleanMedicine).filter(item => item.name)
+    ? source.medicines.map(item => cleanMedicine(item, { defaultProfile })).filter(item => item.name)
     : []
   const doseLogs = source.doseLogs && typeof source.doseLogs === 'object'
     ? Object.fromEntries(Object.entries(source.doseLogs).filter(([key, entry]) => (
@@ -99,27 +103,27 @@ function normalizeState(value) {
 
   return {
     version: 4,
-    profiles: [DEFAULT_PROFILE],
-    activeProfileId: DEFAULT_PROFILE.id,
+    profiles: [defaultProfile],
+    activeProfileId: defaultProfile.id,
     medicines,
     doseLogs,
   }
 }
 
-async function readState() {
+async function readState(stateId = STATE_ID, defaultProfile = DEFAULT_PROFILE) {
   const { data, error } = await supabaseAdmin
     .from('admin_budget_state')
     .select('store')
-    .eq('id', STATE_ID)
+    .eq('id', stateId)
     .maybeSingle()
 
   if (error) throw error
-  return normalizeState(data?.store || EMPTY_STATE)
+  return normalizeState(data?.store, defaultProfile)
 }
 
-async function writeState(state) {
-  const store = normalizeState(state)
-  const payload = { id: STATE_ID, store, updated_at: new Date().toISOString() }
+async function writeState(state, stateId = STATE_ID, defaultProfile = DEFAULT_PROFILE) {
+  const store = normalizeState(state, defaultProfile)
+  const payload = { id: stateId, store, updated_at: new Date().toISOString() }
   let result = await supabaseAdmin
     .from('admin_budget_state')
     .upsert(payload, { onConflict: 'id' })
@@ -129,30 +133,33 @@ async function writeState(state) {
   if (result.error && /updated_at|schema cache|PGRST204/i.test(`${result.error.message} ${result.error.details}`)) {
     result = await supabaseAdmin
       .from('admin_budget_state')
-      .upsert({ id: STATE_ID, store }, { onConflict: 'id' })
+      .upsert({ id: stateId, store }, { onConflict: 'id' })
       .select('store')
       .single()
   }
 
   if (result.error) throw result.error
-  return normalizeState(result.data?.store || store)
+  return normalizeState(result.data?.store || store, defaultProfile)
 }
 
-async function requireAccess() {
-  const identity = await requireAndarunSession()
+async function requireAccess(request) {
+  const isMaman = request.nextUrl.pathname.startsWith('/api/maman/')
+  const identity = isMaman ? await requireMamanSession() : await requireAndarunSession()
   if (identity.error) {
     return NextResponse.json({ error: identity.error }, { status: identity.status })
   }
   if (!isSupabaseAdminConfigured || !supabaseAdmin) return unavailable()
-  return null
+  return isMaman
+    ? { stateId: MAMAN_STATE_ID, defaultProfile: MAMAN_PROFILE }
+    : { stateId: STATE_ID, defaultProfile: DEFAULT_PROFILE }
 }
 
-export async function GET() {
-  const denied = await requireAccess()
-  if (denied) return denied
+export async function GET(request) {
+  const access = await requireAccess(request)
+  if (access instanceof Response) return access
 
   try {
-    return NextResponse.json(await readState())
+    return NextResponse.json(await readState(access.stateId, access.defaultProfile))
   } catch (error) {
     console.error('[andarun-medications] GET failed', error)
     return NextResponse.json({ error: error.message }, { status: 503 })
@@ -160,8 +167,8 @@ export async function GET() {
 }
 
 export async function POST(request) {
-  const denied = await requireAccess()
-  if (denied) return denied
+  const access = await requireAccess(request)
+  if (access instanceof Response) return access
 
   let body = {}
   try {
@@ -171,7 +178,7 @@ export async function POST(request) {
   }
 
   try {
-    const state = await readState()
+    const state = await readState(access.stateId, access.defaultProfile)
 
     if (body.action === 'saveMedicine') {
       if (body.medicine?.frequency === 'weekly') {
@@ -180,14 +187,14 @@ export async function POST(request) {
           : []
         if (!selectedDays.length) return NextResponse.json({ error: 'حداقل یک روز مصرف را انتخاب کن.' }, { status: 400 })
       }
-      const medicine = cleanMedicine(body.medicine, { enforceCatalogDoses: true })
+      const medicine = cleanMedicine(body.medicine, { enforceCatalogDoses: true, defaultProfile: access.defaultProfile })
       if (!medicine.name) return NextResponse.json({ error: 'نام دارو را وارد کن.' }, { status: 400 })
       const existing = state.medicines.find(item => item.id === medicine.id)
       if (existing) medicine.createdAt = existing.createdAt
       return NextResponse.json(await writeState({
         ...state,
         medicines: [medicine, ...state.medicines.filter(item => item.id !== medicine.id)],
-      }))
+      }, access.stateId, access.defaultProfile))
     }
 
     if (body.action === 'deleteMedicine') {
@@ -200,7 +207,7 @@ export async function POST(request) {
         ...state,
         medicines: state.medicines.filter(item => item.id !== id),
         doseLogs,
-      }))
+      }, access.stateId, access.defaultProfile))
     }
 
     if (body.action === 'toggleDose') {
@@ -238,7 +245,7 @@ export async function POST(request) {
         delete doseLogs[key]
         delete doseLogs[oldKey]
       }
-      return NextResponse.json(await writeState({ ...state, doseLogs }))
+      return NextResponse.json(await writeState({ ...state, doseLogs }, access.stateId, access.defaultProfile))
     }
 
     return NextResponse.json({ error: 'عملیات ناشناخته است.' }, { status: 400 })

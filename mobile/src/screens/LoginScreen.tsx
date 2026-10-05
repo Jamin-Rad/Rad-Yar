@@ -3,20 +3,20 @@ import { KeyboardAvoidingView, Platform, StyleSheet, Text, View } from 'react-na
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { AppBackground, Field, PrimaryButton } from '../ui/components'
 import { colors, rtlText } from '../ui/theme'
-import { login } from '../data/api'
+import { login, MAMAN_USERNAME } from '../data/api'
 
 export function LoginScreen({ onSuccess }: { onSuccess: () => void }) {
-  const [password, setPassword] = useState('')
+  const [username, setUsername] = useState('')
   const [error, setError] = useState('')
   const [submitting, setSubmitting] = useState(false)
 
   async function submit() {
-    if (!password.trim() || submitting) return
+    if (!username.trim() || submitting) return
     setSubmitting(true)
     setError('')
     try {
-      await login(password)
-      setPassword('')
+      await login(username)
+      setUsername('')
       onSuccess()
     } catch (loginError) {
       setError(loginError instanceof Error ? loginError.message : 'ورود ناموفق بود.')
@@ -32,25 +32,24 @@ export function LoginScreen({ onSuccess }: { onSuccess: () => void }) {
           <MaterialCommunityIcons name="star-four-points-outline" size={30} color={colors.gold} />
         </View>
         <Text style={styles.title}>اندرون</Text>
-        <Text style={styles.subtitle}>فضای شخصی شما</Text>
+        <Text style={styles.subtitle}>برنامهٔ شخصی داروهای Maman</Text>
 
         <View style={styles.panel}>
-          <Text style={styles.label}>رمز ورود</Text>
+          <Text style={styles.label}>نام کاربری</Text>
           <Field
-            accessibilityLabel="رمز ورود"
+            accessibilityLabel="نام کاربری"
             autoCapitalize="none"
             autoCorrect={false}
-            onChangeText={setPassword}
+            onChangeText={setUsername}
             onSubmitEditing={submit}
-            placeholder="رمز را وارد کنید"
-            secureTextEntry
-            value={password}
+            placeholder={MAMAN_USERNAME}
+            value={username}
           />
           {error ? <Text style={styles.error}>{error}</Text> : null}
-          <PrimaryButton label={submitting ? 'در حال ورود…' : 'ورود'} onPress={submit} disabled={!password.trim() || submitting} icon="lock-open-outline" />
+          <PrimaryButton label={submitting ? 'در حال ورود…' : 'ورود'} onPress={submit} disabled={!username.trim() || submitting} icon="account-check-outline" />
         </View>
 
-        <Text style={styles.note}>اطلاعات ورود به‌صورت رمزنگاری‌شده روی همین دستگاه نگهداری می‌شود.</Text>
+        <Text style={styles.note}>فقط بار اول Maman را وارد کن؛ ورود روی همین گوشی ذخیره می‌شود.</Text>
       </KeyboardAvoidingView>
     </AppBackground>
   )

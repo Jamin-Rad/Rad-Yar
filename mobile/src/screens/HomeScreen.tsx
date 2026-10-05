@@ -2,20 +2,11 @@ import { useEffect, useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { AppBackground, ModuleRow, SyncBanner } from '../ui/components'
 import { colors, rtlText } from '../ui/theme'
-import { loadTodos } from '../data/todos'
 import { loadProfileSettings } from '../data/medications'
 import type { ScreenName } from '../types'
 
 const modules: Array<{ screen: ScreenName; title: string; subtitle: string; icon: Parameters<typeof ModuleRow>[0]['icon'] }> = [
-  { screen: 'medications', title: 'داروی من', subtitle: 'برنامه امروز و مدیریت داروها', icon: 'pill-multiple' },
-  { screen: 'todos', title: 'کارها', subtitle: 'کارهای امروز و برنامه‌ها', icon: 'clipboard-check-outline' },
-  { screen: 'routines', title: 'روتین', subtitle: 'عادت‌ها و پیگیری روزانه', icon: 'autorenew' },
-  { screen: 'events', title: 'قرارها', subtitle: 'تقویم و رویدادها', icon: 'calendar-outline' },
-  { screen: 'work', title: 'خدمات', subtitle: 'شیفت‌ها و برنامهٔ کاری', icon: 'briefcase-outline' },
-  { screen: 'health', title: 'سلامت', subtitle: 'وزن، ورزش و تغذیه', icon: 'heart-pulse' },
-  { screen: 'deutsch', title: 'آلمانی', subtitle: 'درس‌ها و مرور روزانه', icon: 'book-open-page-variant-outline' },
-  { screen: 'findings', title: 'گزارش‌ها', subtitle: 'یافته‌ها، موارد و پرسش‌ها', icon: 'file-chart-outline' },
-  { screen: 'finance', title: 'امور مالی', subtitle: 'بودجه، هزینه و سفر', icon: 'wallet-outline' },
+  { screen: 'medications', title: 'داروهای Maman', subtitle: 'برنامه امروز، ثبت مصرف و مدیریت داروها', icon: 'pill-multiple' },
 ]
 
 export function HomeScreen({ navigate, online, pending, syncError }: {
@@ -24,11 +15,9 @@ export function HomeScreen({ navigate, online, pending, syncError }: {
   pending: number
   syncError?: string
 }) {
-  const [openToday, setOpenToday] = useState(0)
   const [personName, setPersonName] = useState('')
 
   useEffect(() => {
-    void loadTodos().then(items => setOpenToday(items.filter(item => !item.done).length))
     void loadProfileSettings().then(settings => setPersonName(settings.personName))
   }, [pending])
 
@@ -48,8 +37,8 @@ export function HomeScreen({ navigate, online, pending, syncError }: {
       </View>
 
       <View style={styles.focusCard}>
-        <Text style={styles.focusLabel}>تمرکز امروز</Text>
-        <Text style={styles.focusValue}>{openToday ? `${openToday.toLocaleString('fa-IR')} کار باز دارید` : 'همهٔ کارها انجام شده‌اند'}</Text>
+        <Text style={styles.focusLabel}>حساب شخصی Maman</Text>
+        <Text style={styles.focusValue}>اطلاعات روی گوشی می‌ماند و هنگام اتصال، آنلاین هم ذخیره می‌شود.</Text>
       </View>
     </AppBackground>
   )

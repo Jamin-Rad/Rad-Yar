@@ -15,7 +15,7 @@ import {
 } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
-import { AppBackground, Field, ScreenHeader } from '../ui/components'
+import { AppBackground, Field, ScreenHeader, SyncBanner } from '../ui/components'
 import { colors, rtlText } from '../ui/theme'
 import {
   EVERY_DAY,
@@ -28,6 +28,7 @@ import {
   saveMedicine,
   deleteMedicine,
   toggleDose,
+  syncMedicationState,
   WEEKDAYS,
 } from '../data/medications'
 import {
@@ -37,9 +38,10 @@ import {
 } from '../data/medicationCatalog'
 import type { CatalogMedication } from '../data/medicationCatalog'
 import type { Medication, MedicationRoutine, MedicationSchedule, MedicationState } from '../types'
+import { pendingCount } from '../data/database'
 
 type IconName = ComponentProps<typeof MaterialCommunityIcons>['name']
-type Props = { onBack: () => void }
+type Props = { onBack: () => void; online: boolean; pending: number; onPendingChange: (count: number) => void }
 
 function fa(value: number) {
   return value.toLocaleString('fa-IR')
@@ -98,7 +100,7 @@ function DoseTile({ medicine, schedule, taken, onPress }: {
   )
 }
 
-export function MedicationsScreen({ onBack }: Props) {
+export function MedicationsScreen({ onBack, online, pending, onPendingChange }: Props) {
   const [state, setState] = useState<MedicationState>({ medicines: [], logs: [] })
   const [personName, setPersonName] = useState('')
   const [managerOpen, setManagerOpen] = useState(false)
@@ -112,6 +114,15 @@ export function MedicationsScreen({ onBack }: Props) {
       Animated.timing(entrance, { toValue: 1, duration: 520, useNativeDriver: Platform.OS !== 'web' }).start()
     })
   }, [entrance])
+
+  useEffect(() => {
+    if (!online) return
+    let ignore = false
+    void syncMedicationState().then(next => {
+      if (!ignore) setState(next)
+    })
+    return () => { ignore = true }
+  }, [online])
 
   const today = new Date()
   const dateKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`
@@ -133,10 +144,12 @@ export function MedicationsScreen({ onBack }: Props) {
 
   async function mark(medicine: Medication, schedule: MedicationSchedule) {
     setState(await toggleDose(medicine, schedule, today))
+    onPendingChange(await pendingCount())
   }
 
   async function save(value: Medication) {
     setState(await saveMedicine(value))
+    onPendingChange(await pendingCount())
     setEditing(undefined)
     setManagerOpen(true)
   }
@@ -144,7 +157,7 @@ export function MedicationsScreen({ onBack }: Props) {
   async function remove(value: Medication) {
     Alert.alert('حذف دارو', `«${value.name}» از برنامه پاک شود؟`, [
       { text: 'انصراف', style: 'cancel' },
-      { text: 'حذف', style: 'destructive', onPress: () => void deleteMedicine(value.id).then(next => { setState(next); setEditing(undefined) }) },
+      { text: 'حذف', style: 'destructive', onPress: () => void deleteMedicine(value.id).then(async next => { setState(next); setEditing(undefined); onPendingChange(await pendingCount()) }) },
     ])
   }
 
@@ -157,6 +170,7 @@ export function MedicationsScreen({ onBack }: Props) {
           <MaterialCommunityIcons name="tune-variant" size={22} color={colors.greenDeep} />
         </Pressable>
       )} />
+      <SyncBanner online={online} pending={pending} />
       <Animated.ScrollView
         contentContainerStyle={styles.content}
         style={{ opacity: entrance, transform: [{ translateY }] }}

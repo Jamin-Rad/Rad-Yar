@@ -324,12 +324,7 @@ export function ReportsScreen(props: CommonProps) {
   return (
     <SectionShell title="گزارش کلی" {...props}>
       <View style={styles.statGrid}>
-        <Stat label="کار باز" value={counts.todos} icon="clipboard-check-outline" />
-        <Stat label="روتین" value={counts.routines} icon="autorenew" />
-        <Stat label="شیفت" value={counts.shifts} icon="briefcase-outline" />
-        <Stat label="یافته" value={counts.findings} icon="file-chart-outline" />
-        <Stat label="ثبت سلامت" value={counts.health} icon="heart-pulse" />
-        <Stat label="دارو" value={counts.medications} icon="pill" />
+        <Stat label="داروهای ثبت‌شده" value={counts.medications} icon="pill" />
       </View>
       {medicationCategories.length ? (
         <View style={styles.medicationReport}>
@@ -345,7 +340,7 @@ export function ReportsScreen(props: CommonProps) {
           ))}
         </View>
       ) : null}
-      <Text style={styles.reportNote}>این گزارش مستقیماً از داده‌های ذخیره‌شده روی گوشی ساخته می‌شود و در حالت آفلاین هم در دسترس است.</Text>
+      <Text style={styles.reportNote}>این گزارش از اطلاعات روی گوشی ساخته می‌شود و پس از اتصال، در حساب آنلاین Maman نیز در دسترس است.</Text>
     </SectionShell>
   )
 }
@@ -365,6 +360,11 @@ export function ProfileScreen({ onBack, onLogout, online, pending, onPendingChan
   return (
     <SectionShell title="تنظیمات" online={online} pending={pending} onBack={onBack} onPendingChange={onPendingChange}>
       <View style={styles.profileCard}>
+        <View style={styles.profileTitleRow}><View><MaterialCommunityIcons name="account-circle-outline" size={28} color={colors.greenDeep} /></View><Text style={styles.profileTitle}>نام کاربری: Maman</Text></View>
+        <Text style={styles.profileText}>این حساب بدون رمز است و ورود آن روی همین گوشی نگهداری می‌شود.</Text>
+      </View>
+
+      <View style={styles.profileCard}>
         <View style={styles.profileTitleRow}><View><MaterialCommunityIcons name="account-edit-outline" size={28} color={colors.greenDeep} /></View><Text style={styles.profileTitle}>نام شخص</Text></View>
         <Text style={styles.profileText}>این نام در سلام و برنامهٔ روزانه نمایش داده می‌شود.</Text>
         <Field accessibilityLabel="نام شخص" value={settings.personName} onChangeText={personName => setSettings(current => ({ ...current, personName }))} placeholder="مثلاً بنیامین" style={styles.profileField} />
@@ -373,7 +373,7 @@ export function ProfileScreen({ onBack, onLogout, online, pending, onPendingChan
 
       <View style={styles.offlineCard}>
         <View style={styles.offlineIcon}><MaterialCommunityIcons name="shield-check" size={30} color={colors.greenDeep} /></View>
-        <View style={styles.offlineCopy}><Text style={styles.offlineTitle}>ذخیره‌سازی آفلاین</Text><Text style={styles.offlineText}>داروها، نوبت‌ها و ثبت مصرف در SQLite روی همین گوشی ذخیره می‌شوند و بدون اینترنت هم کار می‌کنند.</Text></View>
+        <View style={styles.offlineCopy}><Text style={styles.offlineTitle}>آفلاین و آنلاین</Text><Text style={styles.offlineText}>داروها ابتدا در SQLite همین گوشی ذخیره می‌شوند و با اتصال اینترنت به حساب Maman روی rad-yar.com هم می‌روند.</Text></View>
       </View>
 
       <Pressable onPress={onLogout} style={styles.logoutButton}>

@@ -102,7 +102,7 @@ export default function App() {
   if (!authenticated) {
     return (
       <SafeAreaProvider>
-        <StatusBar style="light" />
+        <StatusBar style="dark" />
         <LoginScreen onSuccess={completeLogin} />
       </SafeAreaProvider>
     )
@@ -120,14 +120,14 @@ export default function App() {
     case 'findings': content = <FindingsScreen {...common} />; break
     case 'finance': content = <FinanceScreen {...common} />; break
     case 'reports': content = <ReportsScreen {...common} />; break
-    case 'medications': content = <MedicationsScreen onBack={common.onBack} />; break
+    case 'medications': content = <MedicationsScreen {...common} />; break
     case 'profile': content = <ProfileScreen {...common} onLogout={confirmLogout} />; break
     default: content = <HomeScreen navigate={setScreen} online={online} pending={pending} syncError={syncError} />
   }
 
   return (
     <SafeAreaProvider>
-      <StatusBar style="light" />
+      <StatusBar style="dark" />
       <View style={styles.app}>
         {content}
         <BottomNav active={screen} navigate={setScreen} />

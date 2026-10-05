@@ -16,9 +16,9 @@ import {
 import styles from './page.module.css'
 
 const STORAGE_KEY = 'andarun-medications-cache-v1'
-const PROFILE = { id: 'benjamin', name: 'بنیامین', initials: 'ب‌ز' }
+const DEFAULT_PROFILE = { id: 'benjamin', name: 'بنیامین', initials: 'ب‌ز' }
 const EVERY_DAY = [0, 1, 2, 3, 4, 5, 6]
-const EMPTY_STATE = { version: 4, profiles: [PROFILE], activeProfileId: PROFILE.id, medicines: [], doseLogs: {} }
+const EMPTY_STATE = { version: 4, profiles: [DEFAULT_PROFILE], activeProfileId: DEFAULT_PROFILE.id, medicines: [], doseLogs: {} }
 const WEEKDAY_OPTIONS = [
   { value: 6, label: 'شنبه', shortLabel: 'ش' },
   { value: 0, label: 'یکشنبه', shortLabel: 'ی' },
@@ -93,13 +93,13 @@ function normalizeMedicine(medicine) {
   }
 }
 
-function medicineDraft(medicine) {
+function medicineDraft(medicine, profileId = DEFAULT_PROFILE.id) {
   if (medicine) {
     const normalized = normalizeMedicine(medicine)
     return { ...normalized, schedules: normalized.schedules.map(schedule => ({ ...schedule })), weekdays: [...normalized.weekdays], doseByWeekday: { ...normalized.doseByWeekday }, differentDoseByDay: Object.keys(normalized.doseByWeekday).length > 0 }
   }
   return {
-    id: '', profileId: PROFILE.id, name: '', dose: '', category: 'other',
+    id: '', profileId, name: '', dose: '', category: 'other',
     drugCatalogId: '', genericNameFa: '', genericNameEn: '', schedules: [createSchedule('exact')], frequency: 'daily', weekdays: EVERY_DAY, doseByWeekday: {}, differentDoseByDay: false,
   }
 }
@@ -136,7 +136,7 @@ function medicineStartDate(medicine) {
   return Number.isNaN(createdAt.getTime()) ? null : dateKey(createdAt)
 }
 
-function buildWeekSummary(data, today, clock) {
+function buildWeekSummary(data, today, clock, profileId = DEFAULT_PROFILE.id) {
   const todayDate = dateFromKey(today)
   const daysSinceSaturday = (todayDate.getDay() - 6 + 7) % 7
   const start = shiftDate(today, -daysSinceSaturday)
@@ -153,7 +153,7 @@ function buildWeekSummary(data, today, clock) {
     const scheduledDoses = data.medicines
       .filter(medicine => {
         const startsOn = medicineStartDate(medicine)
-        return medicine.profileId === PROFILE.id && medicine.weekdays.includes(date.getDay()) && (!startsOn || key >= startsOn)
+        return medicine.profileId === profileId && medicine.weekdays.includes(date.getDay()) && (!startsOn || key >= startsOn)
       })
       .flatMap(medicine => medicine.schedules.map(schedule => ({ medicine, schedule })))
     scheduledDoses.forEach(({ medicine, schedule }) => {
@@ -416,8 +416,8 @@ function WeeklyDoseEditor({ draft, selectedDrug, onChange }) {
   )
 }
 
-function MedicineModal({ medicine, onClose, onSave, onDelete, saving }) {
-  const [draft, setDraft] = useState(() => medicineDraft(medicine))
+function MedicineModal({ medicine, profileId, onClose, onSave, onDelete, saving }) {
+  const [draft, setDraft] = useState(() => medicineDraft(medicine, profileId))
   const [error, setError] = useState('')
   const [searchOpen, setSearchOpen] = useState(false)
   const titleRef = useRef(null)
@@ -562,7 +562,14 @@ function MedicineManager({ medicines, onClose, onAdd, onEdit }) {
   )
 }
 
-export default function MedicationPage() {
+export default function MedicationPage({
+  apiEndpoint = '/api/andarun/medications',
+  profile = DEFAULT_PROFILE,
+  appHref = '/andarun/medikamente',
+  homeHref = '/andarun',
+  homeLabel = 'اندرون',
+  storageKey = STORAGE_KEY,
+}) {
   const [clock, setClock] = useState(() => new Date())
   const [data, setData] = useState(EMPTY_STATE)
   const [loading, setLoading] = useState(true)
@@ -579,36 +586,36 @@ export default function MedicationPage() {
     let ignore = false
     async function load() {
       try {
-        const response = await fetch('/api/andarun/medications', { cache: 'no-store' })
+        const response = await fetch(apiEndpoint, { cache: 'no-store' })
         if (!response.ok) throw new Error('server unavailable')
         const next = normalizeState(await response.json())
-        if (!ignore) { setData(next); localStorage.setItem(STORAGE_KEY, JSON.stringify(next)) }
+        if (!ignore) { setData(next); setOffline(false); localStorage.setItem(storageKey, JSON.stringify(next)) }
       } catch {
-        const cached = localStorage.getItem(STORAGE_KEY)
+        const cached = localStorage.getItem(storageKey)
         if (!ignore && cached) { try { setData(normalizeState(JSON.parse(cached))) } catch { /* keep empty state */ } }
         if (!ignore) setOffline(true)
       } finally { if (!ignore) setLoading(false) }
     }
     load()
     return () => { ignore = true }
-  }, [])
-  useEffect(() => { if (!loading) localStorage.setItem(STORAGE_KEY, JSON.stringify(data)) }, [data, loading])
+  }, [apiEndpoint, storageKey])
+  useEffect(() => { if (!loading) localStorage.setItem(storageKey, JSON.stringify(data)) }, [data, loading, storageKey])
   useEffect(() => { if (!toast) return undefined; const timer = window.setTimeout(() => setToast(''), 3200); return () => window.clearTimeout(timer) }, [toast])
 
   const doses = useMemo(() => {
     const weekday = dateFromKey(today).getDay()
     return data.medicines
-      .filter(medicine => medicine.profileId === PROFILE.id && medicine.weekdays.includes(weekday))
+      .filter(medicine => medicine.profileId === profile.id && medicine.weekdays.includes(weekday))
       .flatMap(medicine => medicine.schedules.map(schedule => ({ medicine, schedule, dose: medicineDoseForWeekday(medicine, weekday), key: scheduleLogKey(today, medicine.id, schedule) })))
       .sort((a, b) => a.schedule.time.localeCompare(b.schedule.time))
-  }, [data.medicines, today])
+  }, [data.medicines, profile.id, today])
   const groups = useMemo(() => buildDoseGroups(doses), [doses])
   const takenCount = doses.reduce((count, dose) => count + (getDoseLog(data.doseLogs, today, dose.medicine.id, dose.schedule) ? 1 : 0), 0)
-  const week = useMemo(() => buildWeekSummary(data, today, clock), [clock, data, today])
+  const week = useMemo(() => buildWeekSummary(data, today, clock, profile.id), [clock, data, profile.id, today])
 
   async function postAction(payload, fallbackState) {
     if (offline) return fallbackState
-    const response = await fetch('/api/andarun/medications', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+    const response = await fetch(apiEndpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
     const result = await response.json()
     if (!response.ok) throw new Error(result.error || 'ذخیره انجام نشد.')
     return normalizeState(result)
@@ -644,7 +651,7 @@ export default function MedicationPage() {
     const takenLocalTime = localTime(takenAt)
     const timing = evaluateTimingByLocalTime(dose.schedule, takenLocalTime)
     if (taken) {
-      doseLogs[key] = { medicineId: dose.medicine.id, profileId: PROFILE.id, date: today, time: dose.schedule.time, dose: dose.dose, scheduleId: dose.schedule.id, takenAt: takenAt.toISOString(), takenLocalTime, ...timing }
+      doseLogs[key] = { medicineId: dose.medicine.id, profileId: profile.id, date: today, time: dose.schedule.time, dose: dose.dose, scheduleId: dose.schedule.id, takenAt: takenAt.toISOString(), takenLocalTime, ...timing }
       if (oldKey !== key) delete doseLogs[oldKey]
     } else { delete doseLogs[key]; delete doseLogs[oldKey] }
     const optimistic = { ...data, doseLogs }
@@ -662,12 +669,12 @@ export default function MedicationPage() {
   return (
     <main className={styles.page} dir="rtl">
       <header className={styles.topbar}>
-        <Link className={styles.brand} href="/andarun/medikamente" aria-label="داروی من"><span className={styles.brandMark} aria-hidden="true"><span /><span /></span><strong>داروی من</strong></Link>
-        <div className={styles.topbarActions}><Link className={styles.homeLink} href="/andarun"><Icon name="home" size={20} /> اندرون</Link><span className={styles.avatar} aria-label="پروفایل بنیامین">{PROFILE.initials}</span></div>
+        <Link className={styles.brand} href={appHref} aria-label="داروی من"><span className={styles.brandMark} aria-hidden="true"><span /><span /></span><strong>داروی من</strong></Link>
+        <div className={styles.topbarActions}><Link className={styles.homeLink} href={homeHref}><Icon name="home" size={20} /> {homeLabel}</Link><span className={styles.avatar} aria-label={`پروفایل ${profile.name}`}>{profile.initials}</span></div>
       </header>
       <div className={styles.shell}>
         {offline ? <div className={styles.offlineNotice}>حالت آفلاین؛ تغییرات فعلاً روی همین دستگاه نگه‌داری می‌شود.</div> : null}
-        <section className={styles.summary} aria-labelledby="greeting-title"><div className={styles.summaryCopy}><h1 id="greeting-title">سلام {PROFILE.name}</h1><p>{formatPersianDate(today, true)}</p></div><button className={styles.addButton} type="button" onClick={() => setManagerOpen(true)}><Icon name="settings" size={22} /> مدیریت داروها</button></section>
+        <section className={styles.summary} aria-labelledby="greeting-title"><div className={styles.summaryCopy}><h1 id="greeting-title">سلام {profile.name}</h1><p>{formatPersianDate(today, true)}</p></div><button className={styles.addButton} type="button" onClick={() => setManagerOpen(true)}><Icon name="settings" size={22} /> مدیریت داروها</button></section>
         <div className={styles.dashboard}>
           <section className={styles.schedule} aria-labelledby="schedule-title">
             <div className={styles.scheduleHead}><div><h2 className={styles.scheduleTitle} id="schedule-title"><span><Icon name="pill" size={22} /></span>برنامه امروز</h2><p>برای ثبت مصرف، روی دارو بزن.</p></div><span>{doses.length ? `${toPersianNumber(takenCount)} از ${toPersianNumber(doses.length)}` : 'بدون نوبت'}</span></div>
@@ -684,8 +691,8 @@ export default function MedicationPage() {
         </div>
         <section className={styles.mobileAddSection} aria-label="مدیریت داروها"><button type="button" onClick={() => setManagerOpen(true)}><span className={styles.mobileAddIcon}><Icon name="settings" size={27} /></span><span className={styles.mobileAddCopy}><strong>مدیریت داروها</strong><small>افزودن یا ویرایش دارو</small></span><Icon name="arrow" size={23} /></button></section>
       </div>
-      {managerOpen ? <MedicineManager medicines={data.medicines.filter(medicine => medicine.profileId === PROFILE.id)} onClose={() => setManagerOpen(false)} onAdd={() => setModal({ type: 'new' })} onEdit={medicine => setModal({ type: 'edit', medicine })} /> : null}
-      {modal ? <MedicineModal medicine={modal.type === 'edit' ? modal.medicine : null} onClose={() => setModal(null)} onSave={saveMedicine} onDelete={deleteMedicine} saving={saving} /> : null}
+      {managerOpen ? <MedicineManager medicines={data.medicines.filter(medicine => medicine.profileId === profile.id)} onClose={() => setManagerOpen(false)} onAdd={() => setModal({ type: 'new' })} onEdit={medicine => setModal({ type: 'edit', medicine })} /> : null}
+      {modal ? <MedicineModal medicine={modal.type === 'edit' ? modal.medicine : null} profileId={profile.id} onClose={() => setModal(null)} onSave={saveMedicine} onDelete={deleteMedicine} saving={saving} /> : null}
       {toast ? <div className={styles.toast} role="status">{toast}</div> : null}
     </main>
   )
