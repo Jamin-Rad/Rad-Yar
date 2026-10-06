@@ -8,7 +8,7 @@
   padding-top: 64px;
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-main);
+  font-family: var(--font-manrope, 'Manrope'), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   display: flex;
   flex-direction: column;
 }
@@ -58,7 +58,7 @@
   border: 1px solid rgba(249, 115, 22, .26);
   color: var(--text-strong);
   font-size: 14px;
-  font-family: var(--font-display);
+  font-family: inherit;
   font-weight: 950;
   white-space: nowrap;
 }
@@ -259,7 +259,7 @@
   max-width: 680px;
   width: 100%;
   margin: 0 auto;
-  padding: 28px 20px 80px;
+  padding: 22px 20px 72px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -286,7 +286,7 @@
 .studyContext h1 {
   margin: 0;
   color: var(--text-strong);
-  font-family: var(--font-main);
+  font-family: inherit;
   font-size: clamp(20px, 2.5vw, 26px);
   font-weight: 850;
   line-height: 1.25;
@@ -340,7 +340,7 @@
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   border-radius: var(--radius-lg);
-  padding: 36px;
+  padding: 30px 32px;
   background: var(--bg-card);
   border: 1px solid var(--border);
   box-shadow: 0 20px 60px var(--shadow-soft);
@@ -348,7 +348,7 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 24px;
-  min-height: 310px;
+  min-height: 270px;
   transition: box-shadow 0.2s ease;
 }
 
@@ -374,7 +374,7 @@
 /* ── TEXTE AUF DER KARTE ───────────────────────────── */
 .question {
   margin: 0;
-  font-family: var(--font-main);
+  font-family: inherit;
   font-size: clamp(21px, 2.7vw, 28px);
   font-weight: 800;
   letter-spacing: -.015em;
@@ -437,18 +437,20 @@
   opacity: 0;
   transform: translateY(18px);
   pointer-events: none;
+  visibility: hidden;
   max-height: 0;
   overflow: hidden;
-  transition: opacity 0.32s ease, transform 0.32s ease;
-  transition-delay: 0.1s;
+  transition: opacity 0.24s ease, transform 0.24s ease, visibility 0s linear 0.24s;
 }
 
 .answerRow.answerVisible {
   opacity: 1;
   transform: translateY(0);
   pointer-events: all;
+  visibility: visible;
   max-height: 120px;
   overflow: visible;
+  transition-delay: 0.48s;
 }
 
 .knowBtn,
@@ -457,7 +459,7 @@
   border: none;
   border-radius: 999px;
   padding: 16px 20px;
-  font-family: var(--font-main);
+  font-family: inherit;
   font-size: 16px;
   font-weight: 800;
   cursor: pointer;
@@ -527,8 +529,8 @@
 }
 
 .doneTitle {
-  font-family: var(--font-display);
-  font-style: italic;
+  font-family: inherit;
+  font-style: normal;
   font-size: clamp(28px, 4vw, 42px);
   font-weight: 900;
   color: var(--text-strong);
@@ -620,8 +622,8 @@
 .freeLimitNote {
   max-width: 680px;
   width: calc(100% - 40px);
-  margin: 16px auto 0;
-  padding: 10px 18px;
+  margin: 12px auto 0;
+  padding: 8px 16px;
   border-radius: var(--radius-md);
   background: var(--accent-soft);
   border: 1px dashed rgba(249, 115, 22, 0.35);
@@ -660,26 +662,44 @@
 
 /* ── RESPONSIVE ────────────────────────────────────── */
 @media (max-width: 620px) {
-  .topBar       { grid-template-columns: 1fr; padding: 11px 16px; }
-  .backBtn,
-  .topCenter,
-  .topRight     { justify-content: center; }
-  .topRight     { flex-wrap: wrap; }
-  .cardNavigator { align-items: stretch; flex-direction: column; gap: 8px; padding: 8px 12px 10px; }
-  .navigatorHeader { justify-content: center; }
+  .topBar {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 8px;
+    padding: 9px 12px;
+  }
+  .backBtn { justify-content: flex-start; font-size: 12px; }
+  .topCenter { justify-content: center; }
+  .topRight { justify-content: flex-end; }
+  .cardCount { min-height: 30px; padding: 5px 10px; font-size: 12px; }
+  .lessonLink { padding: 5px 8px; font-size: 10.5px; }
+  .modeNav {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 6px;
+    padding: 8px 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .modeNav::-webkit-scrollbar { display: none; }
+  .modeNav a { flex: 0 0 auto; padding: 7px 10px; font-size: 11px; }
+  .cardNavigator { gap: 8px; padding: 7px 12px; }
+  .navigatorHeader span { display: none; }
+  .navigatorHeader strong { font-size: 11px; }
   .cardMap { grid-auto-columns: 32px; justify-content: flex-start; }
   .cardMapItem { width: 32px; min-height: 32px; }
-  .main         { padding: 20px 14px 72px; gap: 14px; }
+  .main { padding: 16px 14px 64px; gap: 12px; }
 
-  .studyContext { grid-template-columns: 1fr; align-items: start; gap: 3px; }
-  .currentCard { grid-row: 2; margin-top: 2px; }
+  .studyContext { align-items: end; gap: 2px 10px; }
+  .studyMode { font-size: 9.5px; }
+  .studyContext h1 { font-size: 20px; }
+  .currentCard { grid-row: auto; margin: 0; font-size: 11px; }
 
   .cardFront,
-  .cardBack     { padding: 24px; min-height: 300px; border-radius: var(--radius-md); }
+  .cardBack { padding: 20px; min-height: 220px; border-radius: var(--radius-md); }
   .stage,
   .flipper      { border-radius: var(--radius-md); }
 
-  .question     { font-size: 20px; line-height: 1.45; }
+  .question { font-size: 19px; line-height: 1.45; }
   .answer       { font-size: 15px; }
 
   .answerRow    { gap: 10px; }
@@ -726,11 +746,11 @@
 .answerShort {
   margin: 0;
   color: var(--orange);
-  font-size: clamp(22px, 3.6vw, 34px);
-  line-height: 1.2;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 950;
+  font-size: clamp(21px, 3.2vw, 29px);
+  line-height: 1.35;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 850;
 }
 
 .explanationBlock {
@@ -853,25 +873,17 @@
   .cardFront,
   .cardBack {
     padding: 20px;
-    min-height: 230px;
+    min-height: 210px;
   }
 
-  .main { padding-bottom: 110px; }
+  .main { padding-bottom: 72px; }
 
-  .answerRow.answerVisible {
-    position: sticky;
-    bottom: 8px;
-    width: 100%;
-    z-index: 9;
-    padding: 10px 4px calc(10px + env(safe-area-inset-bottom));
-    border-radius: 18px;
-    background: var(--bg);
-    box-shadow: 0 -10px 28px var(--shadow-soft);
-  }
+  .cardDetails { padding: 8px; border-radius: 16px; }
+  .cardDetails summary { padding: 2px 4px; font-size: 13px; }
 
-  .answerShort {
-    font-size: 24px;
-  }
+  .answerRow.answerVisible { position: static; padding: 0; background: transparent; box-shadow: none; }
+
+  .answerShort { font-size: 22px; }
 
   .answerBlock,
   .explanationBlock,
@@ -893,4 +905,18 @@
 :global(html[data-theme='dark']) .answerBlock {
   background: linear-gradient(135deg, rgba(249,115,22,0.12), rgba(15,23,42,0.86));
   border-color: rgba(249,115,22,0.24);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage,
+  .flipper,
+  .answerRow,
+  .knowBtn,
+  .dontKnowBtn {
+    transition: none;
+  }
+
+  .answerRow.answerVisible {
+    transition-delay: 0s;
+  }
 }

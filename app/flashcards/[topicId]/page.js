@@ -556,7 +556,22 @@ export default function FlashcardReviewPage() {
           role="button"
           tabIndex={0}
           aria-label={flipped ? t.tapBack : t.tap}
-          onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleFlip() } }}
+          onKeyDown={e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault()
+              handleFlip()
+              return
+            }
+            if (!flipped || exiting) return
+            if (e.key === 'ArrowRight') {
+              e.preventDefault()
+              handleAnswer(true)
+            }
+            if (e.key === 'ArrowLeft') {
+              e.preventDefault()
+              handleAnswer(false)
+            }
+          }}
         >
           <div key={index} className={`${styles.flipper} ${flipped ? styles.flipped : ''}`}>
             <div className={styles.cardFront} aria-hidden={flipped}>
@@ -584,6 +599,15 @@ export default function FlashcardReviewPage() {
           </div>
         </div>
 
+        <div className={`${styles.answerRow} ${flipped ? styles.answerVisible : ''}`} aria-hidden={!flipped}>
+          <button className={styles.dontKnowBtn} onClick={() => handleAnswer(false)} disabled={!flipped || exiting}>
+            {practiceMode ? t.practiceDontKnow : t.dontKnow}
+          </button>
+          <button className={styles.knowBtn} onClick={() => handleAnswer(true)} disabled={!flipped || exiting}>
+            {practiceMode ? t.practiceKnow : t.know}
+          </button>
+        </div>
+
         {flipped && (explanation || diagram) && (
           <details className={styles.cardDetails}>
             <summary>{t.details}</summary>
@@ -597,15 +621,6 @@ export default function FlashcardReviewPage() {
             </div>}
           </details>
         )}
-
-        <div className={`${styles.answerRow} ${flipped ? styles.answerVisible : ''}`}>
-          <button className={styles.dontKnowBtn} onClick={() => handleAnswer(false)} disabled={!flipped || exiting}>
-            {practiceMode ? t.practiceDontKnow : t.dontKnow}
-          </button>
-          <button className={styles.knowBtn} onClick={() => handleAnswer(true)} disabled={!flipped || exiting}>
-            {practiceMode ? t.practiceKnow : t.know}
-          </button>
-        </div>
       </main>
     </div>
   )
