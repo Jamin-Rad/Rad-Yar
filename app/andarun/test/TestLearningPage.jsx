@@ -124,28 +124,35 @@ const LESSON_SOURCES = [
   },
   {
     title: L('Radiopaedia-Fall: Wandhämatom der rechten ACI', 'Radiopaedia case: Right ICA mural haematoma', 'کیس Radiopaedia: هماتوم دیواره‌ای ICA راست'),
-    meta: L('Ian Bickle · rID 28441', 'Ian Bickle · rID 28441', 'Ian Bickle · rID 28441'),
+    meta: 'Ian Bickle · Radiopaedia.org',
     url: 'https://radiopaedia.org/cases/28441',
   },
 ]
 
 const RADIOPAEDIA_CASE = {
-  id: '28441',
-  modality: 'MRI',
-  plane: L('Axial', 'Axial', 'آگزیال'),
   // Twenty consecutive frames around the relevant portion of the original
   // 40-frame T1 fat-sat stack: smoother anatomy without loading the full study.
   frames: Array.from({ length: 20 }, (_, index) => `/andarun/test/case-28441-20/${String(index + 1).padStart(2, '0')}.jpg`),
   initialFrame: 10,
   url: 'https://radiopaedia.org/cases/28441/studies/28689?lang=us',
-  title: L('Crescent sign bei Dissektion der rechten ACI', 'Crescent sign in right ICA dissection', 'علامت هلالی در دیسکسیون ICA راست'),
-  text: L(
-    'T1-Fat-Sat-Sequenz mit sichelförmig hyperintensem Wandhämatom der rechten ACI. Scrolle durch die Schichten und verfolge das Crescent sign sowie die asymmetrische Gefäßkontur.',
-    'T1 fat-saturated sequence showing a crescentic hyperintense mural haematoma of the right ICA. Scroll through the slices and follow the crescent sign and asymmetric vessel contour.',
-    'سکانس T1 با اشباع چربی، هماتوم دیواره‌ای هلالی و پرسیگنال در ICA راست را نشان می‌دهد. در برش‌ها اسکرول کنید و علامت هلالی و کانتور نامتقارن رگ را دنبال کنید.'
+  title: L('Dissektion der rechten A. carotis interna', 'Right internal carotid artery dissection', 'دیسکسیون شریان کاروتید داخلی راست'),
+  findings: [
+    L('Sichelförmig hyperintenses Signal in der Wand der rechten ACI', 'Crescent-shaped hyperintense signal in the wall of the right ICA', 'سیگنال پرشدت هلالی‌شکل در دیواره ICA راست'),
+    L('Asymmetrische Wandverdickung mit eingeengtem, signalarmem Restlumen', 'Asymmetric wall thickening with a narrowed, low-signal residual lumen', 'ضخیم‌شدگی نامتقارن دیواره همراه با تنگی لومن باقی‌مانده با سیگنال پایین'),
+    L('Der auffällige Wandbefund lässt sich über mehrere benachbarte Schichten verfolgen', 'The abnormal mural finding can be followed across several adjacent slices', 'یافته غیرطبیعی دیواره در چند برش مجاور قابل پیگیری است'),
+  ],
+  reviewTip: L(
+    'Scrolle langsam durch die Schichten, verfolge das Gefäß von kaudal nach kranial und vergleiche die Gefäßwand mit der Gegenseite.',
+    'Scroll slowly through the slices, follow the vessel from caudal to cranial, and compare the vessel wall with the opposite side.',
+    'برش‌ها را آهسته مرور کنید، مسیر رگ را از پایین به بالا دنبال کنید و دیواره آن را با سمت مقابل مقایسه کنید.'
+  ),
+  interpretation: L(
+    'Das T1-hyperintense Wandhämatom erzeugt das typische Crescent sign und stützt die Diagnose einer arteriellen Dissektion.',
+    'The T1-hyperintense mural haematoma creates the typical crescent sign and supports the diagnosis of arterial dissection.',
+    'هماتوم دیواره‌ای پرسیگنال در T1 علامت هلالی تیپیک را ایجاد می‌کند و تشخیص دیسکسیون شریانی را تقویت می‌کند.'
   ),
   alt: L('Axiale T1-Fat-Sat-MRT bei Dissektion der rechten ACI', 'Axial T1 fat-saturated MRI in right ICA dissection', 'MRI آگزیال T1 با اشباع چربی در دیسکسیون ICA راست'),
-  credit: 'Case courtesy of Ian Bickle, Radiopaedia.org · rID-28441 · CC BY-NC-SA 3.0',
+  credit: 'Case courtesy of Ian Bickle, Radiopaedia.org · CC BY-NC-SA 3.0',
 }
 
 function Icon({ name, className = '' }) {
@@ -279,7 +286,7 @@ function LessonSources({ lang }) {
 }
 
 function CaseSequence({ lang, caseData }) {
-  const { frames, initialFrame, alt, modality, plane } = caseData
+  const { frames, initialFrame, alt } = caseData
   const [frameIndex, setFrameIndex] = useState(initialFrame)
   const viewerRef = useRef(null)
   const frameIndexRef = useRef(initialFrame)
@@ -380,7 +387,7 @@ function CaseSequence({ lang, caseData }) {
   return <div className={styles.caseViewer}>
     <div ref={viewerRef} className={styles.caseViewport} data-no-zoom role="group" aria-busy={!seriesReady && !loadFailed} tabIndex={0} onKeyDown={handleKeyDown} onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerEnd} onPointerCancel={handlePointerEnd} onLostPointerCapture={() => { pointerStartRef.current = null }} aria-label={`${pick(alt, lang)} · ${labels.hint}`}>
       {frames.map((src, index) => <Image key={`${loadAttempt}-${src}`} src={src} alt={index === frameIndex ? `${pick(alt, lang)} · ${index + 1}/${frames.length}` : ''} aria-hidden={index !== frameIndex} style={{ visibility: index === frameIndex ? 'visible' : 'hidden' }} width={320} height={320} unoptimized loading="eager" draggable={false} onLoad={event => handleFrameLoad(event.currentTarget, index, loadAttempt)} onError={() => { if (loadAttemptRef.current === loadAttempt) setLoadFailed(true) }} />)}
-      <div className={styles.caseImageMeta}><span><Icon name="layers" />{modality} · {pick(plane, lang)}</span><strong aria-live="polite">{String(frameIndex + 1).padStart(2, '0')} <i>/ {frames.length}</i></strong></div>
+      <div className={styles.caseImageMeta}><strong aria-live="polite">{String(frameIndex + 1).padStart(2, '0')} <i>/ {frames.length}</i></strong></div>
     </div>
     <div className={styles.caseControls} dir="ltr">
       <button type="button" onClick={() => moveFrame(-1)} disabled={!seriesReady || frameIndex === 0} aria-label={labels.previous} title={labels.previous}><Icon name="previous" /></button>
@@ -395,18 +402,33 @@ function RadiopaediaFile({ lang, caseData }) {
   return <article className={styles.radiopaediaFile}>
     <header className={styles.caseFileHeader}>
       <span className={styles.caseFileIcon}><Icon name="case" /></span>
-      <strong>Radiopaedia File</strong>
-      <a href={caseData.url} target="_blank" rel="noopener noreferrer">{pick(L('Study im Vollbild', 'View full-screen study', 'مشاهده تمام‌صفحه Study'), lang)} <Icon name="external" /></a>
+      <span className={styles.caseFileHeading}>
+        <strong>{pick(L('Fallbeispiel', 'Case example', 'نمونه کیس'), lang)}</strong>
+        <small>{pick(L('Interaktive Bildanalyse', 'Interactive image review', 'بررسی تعاملی تصاویر'), lang)}</small>
+      </span>
+      <a href={caseData.url} target="_blank" rel="noopener noreferrer">{pick(L('Fall im Vollbild', 'Open case full screen', 'نمایش تمام‌صفحه کیس'), lang)} <Icon name="external" /></a>
     </header>
     <div className={styles.caseFileContent}>
       <CaseSequence lang={lang} caseData={caseData} />
       <div className={styles.caseBody}>
-        <dl><div><dt>rID</dt><dd>{caseData.id}</dd></div><div><dt>{pick(L('Serie', 'Series', 'سری'), lang)}</dt><dd>{caseData.modality} · {pick(caseData.plane, lang)}</dd></div></dl>
         <h3>{pick(caseData.title, lang)}</h3>
-        <p>{pick(caseData.text, lang)}</p>
-        <footer>{caseData.credit}</footer>
+        <section className={styles.caseFindings} aria-labelledby="case-findings-title">
+          <h4 id="case-findings-title">{pick(L('Was sehen wir?', 'What do we see?', 'چه می‌بینیم؟'), lang)}</h4>
+          <ol>{caseData.findings.map((finding, index) => <li key={pick(finding, lang)}><span>{index + 1}</span><p>{pick(finding, lang)}</p></li>)}</ol>
+        </section>
+      </div>
+      <div className={styles.caseLearningNotes}>
+        <section className={styles.caseReviewTip}>
+          <span className={styles.caseReviewIcon}><Icon name="scan" /></span>
+          <div><strong>{pick(L('So gehst du vor', 'How to review it', 'روش بررسی'), lang)}</strong><p>{pick(caseData.reviewTip, lang)}</p></div>
+        </section>
+        <section className={styles.caseInterpretation}>
+          <strong>{pick(L('Entscheidender Befund', 'Key interpretation', 'یافته کلیدی'), lang)}</strong>
+          <p>{pick(caseData.interpretation, lang)}</p>
+        </section>
       </div>
     </div>
+    <footer className={styles.caseCredit}>{caseData.credit}</footer>
   </article>
 }
 

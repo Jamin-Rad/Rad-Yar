@@ -184,21 +184,23 @@
 .tablePriority { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: var(--plum-100); color: var(--plum-800); font-weight: 900; }
 
 
-.radiopaediaFile { overflow: hidden; margin-top: 26px; border: 1px solid #cbd3dc; border-radius: 8px; background: #fff; box-shadow: 0 16px 36px rgba(24,42,64,.06); font-family: "Avenir Next","Segoe UI",Helvetica,Arial,sans-serif; }
-.caseFileHeader { min-height: 72px; display: grid; grid-template-columns: 40px minmax(0,1fr) auto; align-items: center; gap: 13px; padding: 12px 18px; border-bottom: 1px solid #d8dfe7; background: linear-gradient(180deg,#fbfcfd,#f4f6f9); }
-.caseFileIcon { width: 38px; height: 38px; display: grid; place-items: center; color: #15345b; }
-.caseFileIcon svg { width: 27px; height: 27px; }
-.caseFileHeader > strong { color: #10284c; font-size: 21px; font-weight: 800; letter-spacing: -.015em; }
-.caseFileHeader a { display: inline-flex; align-items: center; gap: 8px; color: #0d6f8a; font-size: 13px; font-weight: 750; text-decoration: none; }
-.caseFileHeader a:hover { color: var(--plum-800); }
+.radiopaediaFile { overflow: hidden; margin-top: 30px; border: 1px solid #c7d7dd; border-radius: 18px; background: #fff; box-shadow: 0 24px 58px rgba(18,45,63,.12); font-family: "Avenir Next","Segoe UI",Helvetica,Arial,sans-serif; }
+.caseFileHeader { min-height: 86px; display: grid; grid-template-columns: 48px minmax(0,1fr) auto; align-items: center; gap: 14px; padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,.13); background: linear-gradient(118deg,#173c4b 0%,#245a64 58%,#276d72 100%); }
+.caseFileIcon { width: 46px; height: 46px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.2); border-radius: 14px; color: #ddf6f4; background: rgba(255,255,255,.09); }
+.caseFileIcon svg { width: 25px; height: 25px; }
+.caseFileHeading { min-width: 0; display: grid; gap: 2px; }
+.caseFileHeading strong { color: #fff; font-size: 22px; font-weight: 850; letter-spacing: -.018em; }
+.caseFileHeading small { color: #bfe0df; font-size: 12px; font-weight: 650; letter-spacing: .035em; }
+.caseFileHeader a { min-height: 42px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 13px; border: 1px solid rgba(255,255,255,.25); border-radius: 10px; color: #f4ffff; background: rgba(255,255,255,.08); font-size: 13px; font-weight: 800; text-decoration: none; transition: border-color .18s ease,background .18s ease,transform .18s ease; }
+.caseFileHeader a:hover { border-color: rgba(255,255,255,.46); color: #fff; background: rgba(255,255,255,.15); transform: translateY(-1px); }
 .caseFileHeader a svg { width: 15px; height: 15px; }
-.caseFileContent { display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); }
+.caseFileContent { display: grid; grid-template-columns: minmax(0,.92fr) minmax(0,1.08fr); }
 .caseViewer { min-width: 0; align-self: start; background: #07090e; }
 .caseViewport { aspect-ratio: 1; position: relative; overflow: hidden; background: #000; outline: none; cursor: ns-resize; touch-action: pan-y; user-select: none; }
 .caseViewport:focus-visible { box-shadow: inset 0 0 0 3px var(--teal-500); }
 .caseViewport::after { content: ''; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 52px rgba(0,0,0,.32); }
 .caseViewport img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: contain; pointer-events: none; user-select: none; -webkit-user-drag: none; transition: none; animation: none; }
-.caseImageMeta { position: absolute; top: 12px; inset-inline: 12px; z-index: 2; display: flex; align-items: center; justify-content: space-between; pointer-events: none; }
+.caseImageMeta { position: absolute; top: 12px; inset-inline-end: 12px; z-index: 2; display: flex; justify-content: flex-end; pointer-events: none; }
 .caseImageMeta span,.caseImageMeta strong { display: inline-flex; align-items: center; gap: 7px; padding: 7px 9px; border-radius: 4px; color: #f6f8fb; background: rgba(7,9,14,.78); backdrop-filter: blur(9px); }
 .caseImageMeta span { font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .caseImageMeta span svg { width: 13px; height: 13px; }
@@ -217,14 +219,27 @@
 .caseRange input::-moz-range-thumb { width: 13px; height: 13px; border: 3px solid #f7f9fb; border-radius: 50%; background: #0d8995; box-shadow: 0 0 0 1px #0d8995; }
 .caseHint { grid-column: 1 / -1; color: #526174; font-size: 12px; line-height: 1.5; text-align: center; }
 .caseHint button { min-height: 44px; padding: 8px 12px; border: 1px solid currentColor; border-radius: 6px; background: transparent; color: inherit; font: inherit; cursor: pointer; }
-.caseBody { display: grid; align-content: center; padding: 34px 36px; border-inline-start: 1px solid #d8dfe7; }
-.caseBody dl { display: flex; gap: 26px; margin: 0 0 20px; }
-.caseBody dl div { display: grid; gap: 2px; }
-.caseBody dt { color: #718096; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
-.caseBody dd { margin: 0; color: #0d7580; font-size: 14px; font-weight: 800; }
-.caseBody h3 { margin: 0 0 14px; color: #10284c; font: 800 clamp(24px,2.5vw,34px)/1.18 "Avenir Next","Segoe UI",Helvetica,Arial,sans-serif; letter-spacing: -.025em; }
-.caseBody p { margin: 0; color: #33455f; font-size: 16px; line-height: 1.72; }
-.caseBody footer { margin-top: 24px; padding-top: 14px; border-top: 1px solid #d8dfe7; color: #67768a; font-size: 12px; line-height: 1.55; }
+.caseBody { display: grid; align-content: center; gap: 22px; padding: clamp(28px,3.6vw,44px); border-inline-start: 1px solid #d9e1e6; background: linear-gradient(145deg,#fff 30%,#f7fbfb 100%); }
+.caseBody h3 { max-width: 18ch; margin: 0; color: #102d42; font: 850 clamp(26px,2.7vw,38px)/1.13 "Avenir Next","Segoe UI",Helvetica,Arial,sans-serif; letter-spacing: -.032em; }
+.caseFindings { display: grid; gap: 11px; }
+.caseFindings h4 { margin: 0; color: #567080; font-size: 12px; font-weight: 850; letter-spacing: .085em; text-transform: uppercase; }
+.caseFindings ol { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.caseFindings li { display: grid; grid-template-columns: 28px minmax(0,1fr); align-items: start; gap: 11px; padding: 12px 0; border-bottom: 1px solid #dce7e9; }
+.caseFindings li:first-child { padding-top: 4px; }
+.caseFindings li:last-child { padding-bottom: 2px; border-bottom: 0; }
+.caseFindings li > span { width: 25px; height: 25px; display: grid; place-items: center; margin-top: 1px; border-radius: 50%; color: #176f75; background: #dff2f1; font-size: 12px; font-weight: 900; }
+.caseFindings p { margin: 0; color: #2e4656; font-size: 15px; font-weight: 650; line-height: 1.55; }
+.caseLearningNotes { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 20px; padding: 20px; border-top: 1px solid #d9e1e6; background: #f7fbfb; }
+.caseReviewTip { display: grid; grid-template-columns: 42px minmax(0,1fr); gap: 13px; padding: 16px; border: 1px solid #d4e3e5; border-radius: 13px; background: #f4f9f9; }
+.caseReviewIcon { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 11px; color: #176f75; background: #dcefed; }
+.caseReviewIcon svg { width: 21px; height: 21px; }
+.caseReviewTip div { display: grid; gap: 4px; }
+.caseReviewTip strong { color: #173c4b; font-size: 14px; }
+.caseReviewTip p { margin: 0; color: #516773; font-size: 13px; line-height: 1.58; }
+.caseInterpretation { display: grid; align-content: center; gap: 7px; padding: 14px 18px; border-inline-start: 3px solid #238e91; }
+.caseInterpretation strong { color: #176f75; font-size: 13px; font-weight: 900; }
+.caseInterpretation p { margin: 0; color: #263f50; font-size: 15px; line-height: 1.62; }
+.caseCredit { padding: 10px 18px; border-top: 1px solid #d9e1e6; color: #7a8993; background: #f5f8f9; font-size: 10px; line-height: 1.45; text-align: end; }
 [dir='rtl'] .radiopaediaFile { font-family: "Vazirmatn","Segoe UI",sans-serif; }
 
 .takeHome { margin: 0; padding: 0; list-style: none; }
@@ -293,9 +308,9 @@
 :global(html[data-theme='dark']) .teachingTable tbody tr:hover td { background: #183f41; }
 :global(html[data-theme='dark']) .teachingTable td:first-child { background: #2b232d; }
 :global(html[data-theme='dark']) .radiopaediaFile { border-color: #465160; background: #171d26; }
-:global(html[data-theme='dark']) .caseFileHeader { border-color: #465160; background: linear-gradient(180deg,#28313d,#222a35); }
-:global(html[data-theme='dark']) .caseFileIcon,:global(html[data-theme='dark']) .caseFileHeader > strong { color: #eff6fb; }
-:global(html[data-theme='dark']) .caseFileHeader a { color: #7ed3d5; }
+:global(html[data-theme='dark']) .caseFileHeader { border-color: rgba(255,255,255,.12); background: linear-gradient(118deg,#15333e,#204e56 62%,#245f62); }
+:global(html[data-theme='dark']) .caseFileIcon { color: #effafa; }
+:global(html[data-theme='dark']) .caseFileHeader a { color: #f0ffff; }
 :global(html[data-theme='dark']) .caseControls { border-color: #465160; background: #222a35; }
 :global(html[data-theme='dark']) .caseControls > button { color: #edf4f9; }
 :global(html[data-theme='dark']) .caseControls > button:hover { color: #8be0e2; background: #2c3744; }
@@ -303,10 +318,19 @@
 :global(html[data-theme='dark']) .caseRange input::-webkit-slider-thumb { border-color: #222a35; }
 :global(html[data-theme='dark']) .caseRange input::-moz-range-thumb { border-color: #222a35; }
 :global(html[data-theme='dark']) .caseHint { color: #bac6d4; }
-:global(html[data-theme='dark']) .caseBody { border-color: #465160; }
+:global(html[data-theme='dark']) .caseBody { border-color: #465160; background: linear-gradient(145deg,#171d26,#1b252d); }
 :global(html[data-theme='dark']) .caseBody h3 { color: #f1f6fb; }
-:global(html[data-theme='dark']) .caseBody p { color: #c8d3df; }
-:global(html[data-theme='dark']) .caseBody footer { border-color: #465160; color: #9eabba; }
+:global(html[data-theme='dark']) .caseFindings h4 { color: #91aab6; }
+:global(html[data-theme='dark']) .caseFindings li { border-color: #384752; }
+:global(html[data-theme='dark']) .caseFindings li > span { color: #9ce2df; background: #22464a; }
+:global(html[data-theme='dark']) .caseFindings p,:global(html[data-theme='dark']) .caseInterpretation p { color: #d1dce3; }
+:global(html[data-theme='dark']) .caseLearningNotes { border-color: #3d4a55; background: #151d24; }
+:global(html[data-theme='dark']) .caseReviewTip { border-color: #3d535b; background: #202e35; }
+:global(html[data-theme='dark']) .caseReviewIcon { color: #9ce2df; background: #25474a; }
+:global(html[data-theme='dark']) .caseReviewTip strong { color: #dff4f3; }
+:global(html[data-theme='dark']) .caseReviewTip p { color: #afc0ca; }
+:global(html[data-theme='dark']) .caseInterpretation strong { color: #8bd7d5; }
+:global(html[data-theme='dark']) .caseCredit { border-color: #3b4853; color: #8f9ea8; background: #151b22; }
 :global(html[data-theme='dark']) .takeHomeSection { border-color: #88405e; background: linear-gradient(145deg,#2b1621,#211a23); }
 :global(html[data-theme='dark']) .takeHomeSection .sectionHeader { color: #ffdce9; background: linear-gradient(115deg,rgba(183,72,114,.2),transparent); }
 :global(html[data-theme='dark']) .takeHome li { border-color: rgba(213,116,151,.2); }
@@ -388,12 +412,19 @@
   .rememberNote { grid-template-columns: 48px 1fr; gap: 12px; padding: 17px 16px; }
   .rememberIcon { width: 44px; height: 44px; }
   .rememberNote p { grid-column: 1 / -1; }
-  .caseFileHeader { grid-template-columns: 36px minmax(0,1fr); }
-  .caseFileHeader a { grid-column: 2; width: max-content; margin-top: 3px; }
+  .caseFileHeader { grid-template-columns: 42px minmax(0,1fr); gap: 11px; padding: 14px; }
+  .caseFileIcon { width: 42px; height: 42px; border-radius: 12px; }
+  .caseFileHeading strong { font-size: 20px; }
+  .caseFileHeader a { grid-column: 1 / -1; width: 100%; margin-top: 2px; }
   .caseFileContent { grid-template-columns: 1fr; }
   .caseImageMeta { top: 10px; inset-inline: 10px; }
   .caseControls { padding-inline: 10px; }
-  .caseBody { padding: 22px 18px; border-top: 1px solid var(--line); border-inline-start: 0; }
+  .caseBody { gap: 21px; padding: 26px 20px 28px; border-top: 1px solid var(--line); border-inline-start: 0; }
+  .caseBody h3 { max-width: none; font-size: 27px; }
+  .caseLearningNotes { grid-template-columns: 1fr; gap: 16px; padding: 16px; }
+  .caseReviewTip { grid-template-columns: 36px minmax(0,1fr); padding: 14px; }
+  .caseReviewIcon { width: 34px; height: 34px; }
+  .caseCredit { padding-inline: 14px; text-align: start; }
   .takeHome li > button { grid-template-columns: 28px minmax(0,1fr) 24px; padding: 9px 2px; }
   .takeHomeDetail { padding-block: 0 14px; padding-inline: 38px 30px; }
   .sources { margin-inline: 4px; }
