@@ -133,9 +133,11 @@ const RADIOPAEDIA_CASE = {
   id: '28441',
   modality: 'MRI',
   plane: L('Axial', 'Axial', 'آگزیال'),
-  frames: Array.from({ length: 8 }, (_, index) => `/dissection/case-28441/${String(index + 1).padStart(2, '0')}.jpg`),
-  initialFrame: 4,
-  url: 'https://radiopaedia.org/cases/28441',
+  // Twenty consecutive frames around the relevant portion of the original
+  // 40-frame T1 fat-sat stack: smoother anatomy without loading the full study.
+  frames: Array.from({ length: 20 }, (_, index) => `/andarun/test/case-28441-20/${String(index + 1).padStart(2, '0')}.jpg`),
+  initialFrame: 10,
+  url: 'https://radiopaedia.org/cases/28441/studies/28689?lang=us',
   title: L('Crescent sign bei Dissektion der rechten ACI', 'Crescent sign in right ICA dissection', 'علامت هلالی در دیسکسیون ICA راست'),
   text: L(
     'T1-Fat-Sat-Sequenz mit sichelförmig hyperintensem Wandhämatom der rechten ACI. Scrolle durch die Schichten und verfolge das Crescent sign sowie die asymmetrische Gefäßkontur.',
@@ -394,7 +396,7 @@ function RadiopaediaFile({ lang, caseData }) {
     <header className={styles.caseFileHeader}>
       <span className={styles.caseFileIcon}><Icon name="case" /></span>
       <strong>Radiopaedia File</strong>
-      <a href={caseData.url} target="_blank" rel="noopener noreferrer">Radiopaedia.org <Icon name="external" /></a>
+      <a href={caseData.url} target="_blank" rel="noopener noreferrer">{pick(L('Study im Vollbild', 'View full-screen study', 'مشاهده تمام‌صفحه Study'), lang)} <Icon name="external" /></a>
     </header>
     <div className={styles.caseFileContent}>
       <CaseSequence lang={lang} caseData={caseData} />
