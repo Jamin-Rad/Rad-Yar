@@ -197,7 +197,7 @@
 .caseViewport { aspect-ratio: 1; position: relative; overflow: hidden; background: #000; outline: none; cursor: ns-resize; touch-action: pan-y; user-select: none; }
 .caseViewport:focus-visible { box-shadow: inset 0 0 0 3px var(--teal-500); }
 .caseViewport::after { content: ''; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 52px rgba(0,0,0,.32); }
-.caseViewport img { width: 100%; height: 100%; display: block; object-fit: contain; pointer-events: none; user-select: none; -webkit-user-drag: none; }
+.caseViewport img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: contain; pointer-events: none; user-select: none; -webkit-user-drag: none; transition: none; animation: none; }
 .caseImageMeta { position: absolute; top: 12px; inset-inline: 12px; z-index: 2; display: flex; align-items: center; justify-content: space-between; pointer-events: none; }
 .caseImageMeta span,.caseImageMeta strong { display: inline-flex; align-items: center; gap: 7px; padding: 7px 9px; border-radius: 4px; color: #f6f8fb; background: rgba(7,9,14,.78); backdrop-filter: blur(9px); }
 .caseImageMeta span { font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
@@ -216,6 +216,7 @@
 .caseRange input::-webkit-slider-thumb { width: 17px; height: 17px; margin-top: -6px; appearance: none; border: 3px solid #f7f9fb; border-radius: 50%; background: #0d8995; box-shadow: 0 0 0 1px #0d8995; }
 .caseRange input::-moz-range-thumb { width: 13px; height: 13px; border: 3px solid #f7f9fb; border-radius: 50%; background: #0d8995; box-shadow: 0 0 0 1px #0d8995; }
 .caseHint { grid-column: 1 / -1; color: #526174; font-size: 12px; line-height: 1.5; text-align: center; }
+.caseHint button { min-height: 44px; padding: 8px 12px; border: 1px solid currentColor; border-radius: 6px; background: transparent; color: inherit; font: inherit; cursor: pointer; }
 .caseBody { display: grid; align-content: center; padding: 34px 36px; border-inline-start: 1px solid #d8dfe7; }
 .caseBody dl { display: flex; gap: 26px; margin: 0 0 20px; }
 .caseBody dl div { display: grid; gap: 2px; }

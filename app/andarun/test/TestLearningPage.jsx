@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
 import MeniscusTextLesson, { MENISCUS_TITLE } from './MeniscusTextLesson'
+import { createSliceWheelController } from './sliceWheel.mjs'
 import styles from './page.module.css'
 
 const L = (de, en, fa) => ({ de, en, fa })
@@ -281,6 +282,11 @@ function CaseSequence({ lang, caseData }) {
   const viewerRef = useRef(null)
   const frameIndexRef = useRef(initialFrame)
   const pointerStartRef = useRef(null)
+  const decodedFramesRef = useRef(new Set())
+  const loadAttemptRef = useRef(0)
+  const [loadAttempt, setLoadAttempt] = useState(0)
+  const [seriesReady, setSeriesReady] = useState(false)
+  const [loadFailed, setLoadFailed] = useState(false)
 
   const selectFrame = useCallback(index => {
     const next = Math.min(frames.length - 1, Math.max(0, index))
@@ -293,49 +299,53 @@ function CaseSequence({ lang, caseData }) {
   useEffect(() => {
     const viewer = viewerRef.current
     if (!viewer) return undefined
-    let accumulated = 0
-    let lastEvent = 0
-    let lastStep = -Infinity
+    const wheelStep = createSliceWheelController()
     const handleWheel = event => {
-      if (event.ctrlKey || event.deltaY === 0) return
-      const direction = event.deltaY > 0 ? 1 : -1
-      const currentFrame = frameIndexRef.current
-      const canMove = direction > 0 ? currentFrame < frames.length - 1 : currentFrame > 0
-      if (!canMove) { accumulated = 0; return }
+      if (event.ctrlKey || !event.deltaY || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return
+      // Keep the same gesture inside the viewer even at the first/last slice.
+      // Otherwise trackpad momentum suddenly scrolls the document underneath.
       event.preventDefault()
-      const now = performance.now()
-      if (now - lastEvent > 180 || Math.sign(accumulated) !== direction) accumulated = 0
-      lastEvent = now
-      const scale = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? viewer.clientHeight : 1
-      accumulated += event.deltaY * scale
-      if (Math.abs(accumulated) < 40 || now - lastStep < 110) return
-      moveFrame(direction)
-      accumulated = 0
-      lastStep = now
+      if (!seriesReady) return
+      const step = wheelStep({ deltaY: event.deltaY, deltaX: event.deltaX, deltaMode: event.deltaMode, time: performance.now() })
+      if (step) moveFrame(step)
     }
     viewer.addEventListener('wheel', handleWheel, { passive: false })
     return () => {
       viewer.removeEventListener('wheel', handleWheel)
     }
-  }, [frames.length, moveFrame])
+  }, [seriesReady, moveFrame])
 
-  useEffect(() => {
-    // These small local frames are also rendered unoptimized, so preloading
-    // warms the exact URLs used while scrolling the sequence.
-    frames.forEach(src => {
-      const image = new window.Image()
-      image.src = src
-    })
-  }, [frames])
+  const handleFrameLoad = async (image, index, attempt) => {
+    try {
+      await image.decode()
+      if (loadAttemptRef.current !== attempt) return
+      decodedFramesRef.current.add(index)
+      if (decodedFramesRef.current.size === frames.length) setSeriesReady(true)
+    } catch {
+      if (loadAttemptRef.current === attempt) setLoadFailed(true)
+    }
+  }
+
+  const retrySeries = () => {
+    decodedFramesRef.current.clear()
+    setSeriesReady(false)
+    setLoadFailed(false)
+    loadAttemptRef.current += 1
+    setLoadAttempt(loadAttemptRef.current)
+  }
 
   const labels = {
     previous: pick(L('Vorherige Schicht', 'Previous slice', 'برش قبلی'), lang),
     next: pick(L('Nächste Schicht', 'Next slice', 'برش بعدی'), lang),
     slider: pick(L('Schicht auswählen', 'Select slice', 'انتخاب برش'), lang),
-    hint: pick(L('Scrollen oder ziehen · Mobil: seitlich wischen', 'Scroll or drag · Mobile: swipe sideways', 'اسکرول یا کشیدن تصویر · موبایل: حرکت افقی'), lang),
+    hint: pick(L('Bild: scrollen / ziehen · Seite: außerhalb des Bildes scrollen', 'Image: scroll / drag · Page: scroll outside the image', 'تصویر: اسکرول یا کشیدن · صفحه: بیرون تصویر اسکرول کنید'), lang),
+    loading: pick(L('Bildserie wird vorbereitet …', 'Preparing image series …', 'در حال آماده‌سازی سری تصاویر …'), lang),
+    error: pick(L('Bildserie konnte nicht vollständig geladen werden.', 'The image series could not be fully loaded.', 'سری تصاویر کامل بارگذاری نشد.'), lang),
+    retry: pick(L('Erneut laden', 'Retry loading', 'بارگذاری دوباره'), lang),
   }
 
   const handleKeyDown = event => {
+    if (!seriesReady) return
     if (['ArrowRight', 'ArrowDown'].includes(event.key)) moveFrame(1)
     else if (['ArrowLeft', 'ArrowUp'].includes(event.key)) moveFrame(-1)
     else if (event.key === 'Home') selectFrame(0)
@@ -345,16 +355,19 @@ function CaseSequence({ lang, caseData }) {
   }
 
   const handlePointerDown = event => {
-    if (!event.isPrimary || event.button !== 0) return
-    pointerStartRef.current = { x: event.clientX, y: event.clientY, frame: frameIndexRef.current }
+    if (!seriesReady || !event.isPrimary || event.button !== 0) return
+    pointerStartRef.current = { position: event.pointerType === 'touch' ? event.clientX : event.clientY }
     event.currentTarget.setPointerCapture(event.pointerId)
   }
 
   const handlePointerMove = event => {
     const start = pointerStartRef.current
     if (!start) return
-    const movement = event.pointerType === 'touch' ? (start.x - event.clientX) / 30 : (start.y - event.clientY) / 26
-    selectFrame(start.frame + Math.trunc(movement))
+    const position = event.pointerType === 'touch' ? event.clientX : event.clientY
+    const steps = Math.trunc((start.position - position) / 36)
+    if (!steps) return
+    start.position = position
+    moveFrame(steps)
   }
 
   const handlePointerEnd = event => {
@@ -363,15 +376,15 @@ function CaseSequence({ lang, caseData }) {
   }
 
   return <div className={styles.caseViewer}>
-    <div ref={viewerRef} className={styles.caseViewport} data-no-zoom role="group" tabIndex={0} onKeyDown={handleKeyDown} onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerEnd} onPointerCancel={handlePointerEnd} onLostPointerCapture={() => { pointerStartRef.current = null }} aria-label={`${pick(alt, lang)} · ${labels.hint}`}>
-      <Image src={frames[frameIndex]} alt={`${pick(alt, lang)} · ${frameIndex + 1}/${frames.length}`} width={320} height={320} unoptimized draggable={false} />
+    <div ref={viewerRef} className={styles.caseViewport} data-no-zoom role="group" aria-busy={!seriesReady && !loadFailed} tabIndex={0} onKeyDown={handleKeyDown} onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerEnd} onPointerCancel={handlePointerEnd} onLostPointerCapture={() => { pointerStartRef.current = null }} aria-label={`${pick(alt, lang)} · ${labels.hint}`}>
+      {frames.map((src, index) => <Image key={`${loadAttempt}-${src}`} src={src} alt={index === frameIndex ? `${pick(alt, lang)} · ${index + 1}/${frames.length}` : ''} aria-hidden={index !== frameIndex} style={{ visibility: index === frameIndex ? 'visible' : 'hidden' }} width={320} height={320} unoptimized loading="eager" draggable={false} onLoad={event => handleFrameLoad(event.currentTarget, index, loadAttempt)} onError={() => { if (loadAttemptRef.current === loadAttempt) setLoadFailed(true) }} />)}
       <div className={styles.caseImageMeta}><span><Icon name="layers" />{modality} · {pick(plane, lang)}</span><strong aria-live="polite">{String(frameIndex + 1).padStart(2, '0')} <i>/ {frames.length}</i></strong></div>
     </div>
     <div className={styles.caseControls} dir="ltr">
-      <button type="button" onClick={() => moveFrame(-1)} disabled={frameIndex === 0} aria-label={labels.previous} title={labels.previous}><Icon name="previous" /></button>
-      <div className={styles.caseRange}><input type="range" min="0" max={frames.length - 1} step="1" value={frameIndex} onChange={event => selectFrame(Number(event.target.value))} aria-label={labels.slider} aria-valuetext={`${frameIndex + 1} / ${frames.length}`} /></div>
-      <button type="button" onClick={() => moveFrame(1)} disabled={frameIndex === frames.length - 1} aria-label={labels.next} title={labels.next}><Icon name="next" /></button>
-      <small className={styles.caseHint} dir={lang === 'fa' ? 'rtl' : 'ltr'}>{labels.hint}</small>
+      <button type="button" onClick={() => moveFrame(-1)} disabled={!seriesReady || frameIndex === 0} aria-label={labels.previous} title={labels.previous}><Icon name="previous" /></button>
+      <div className={styles.caseRange}><input type="range" disabled={!seriesReady} min="0" max={frames.length - 1} step="1" value={frameIndex} onChange={event => selectFrame(Number(event.target.value))} aria-label={labels.slider} aria-valuetext={`${frameIndex + 1} / ${frames.length}`} /></div>
+      <button type="button" onClick={() => moveFrame(1)} disabled={!seriesReady || frameIndex === frames.length - 1} aria-label={labels.next} title={labels.next}><Icon name="next" /></button>
+      <small className={styles.caseHint} dir={lang === 'fa' ? 'rtl' : 'ltr'} role="status">{loadFailed ? <>{labels.error} <button type="button" onClick={retrySeries}>{labels.retry}</button></> : seriesReady ? labels.hint : labels.loading}</small>
     </div>
   </div>
 }
