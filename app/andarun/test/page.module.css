@@ -42,11 +42,12 @@
 .breadcrumb a { color: #ecd6ee; font-weight: 800; text-decoration: none; }
 .breadcrumb strong { color: #e3dce8; font-weight: 700; }
 .author { color: #ecd6ee; font-family: var(--font-newsreader,Georgia,serif); font-size: 14px; font-weight: 700; white-space: nowrap; }
-.hero { min-height: 260px; overflow: hidden; position: relative; display: flex; align-items: center; padding-block: 24px 44px; }
+.hero { min-height: 260px; overflow: visible; position: relative; display: flex; align-items: center; padding-block: 24px 44px; }
 .heroCopy { min-width: 0; position: relative; z-index: 1; }
 .heroCopy h1 { max-width: 790px; margin: 0; color: #faf5fb; font-family: var(--font-newsreader,Georgia,serif); font-size: clamp(42px,4.5vw,62px); font-weight: 900; line-height: .98; letter-spacing: -.042em; text-wrap: balance; }
-.heroVisual { position: absolute; inset-block: 0; inset-inline-end: 0; width: min(55vw,760px); pointer-events: none; background: url('/educational/stroke-hero-cutout-v2.png') right center / contain no-repeat; filter: saturate(.48) contrast(1.04) brightness(.68); opacity: .4; mix-blend-mode: screen; transform: scale(1.5); transform-origin: right center; -webkit-mask-image: linear-gradient(90deg,transparent 0,#000 30%); mask-image: linear-gradient(90deg,transparent 0,#000 30%); }
-.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+.heroVisual { position: absolute; inset-block: 0; inset-inline-end: 0; z-index: 0; width: min(55vw,760px); pointer-events: none; filter: saturate(.48) contrast(1.04) brightness(.68); opacity: .4; mix-blend-mode: screen; transform: scale(1.5); transform-origin: right top; -webkit-mask-image: linear-gradient(90deg,transparent 0,#000 30%); mask-image: linear-gradient(90deg,transparent 0,#000 30%); }
+.heroVisual::before { content: ''; position: absolute; inset: 0; background: url('/educational/stroke-hero-cutout-v2.png') right center / contain no-repeat; }
+.actions { position: relative; z-index: 2; display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
 .actions :is(a,button) { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 10px 20px; border-radius: 7px; font: 850 14px/1.2 inherit; text-decoration: none; cursor: pointer; transition: transform .18s ease,box-shadow .18s ease,filter .18s ease; }
 .actions :is(a,button):hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 16px 30px rgba(35,18,39,.2); }
 .actions svg { width: 19px; height: 19px; }
@@ -54,7 +55,7 @@
 .secondaryAction { border: 1px solid #a7a1ae; background: rgba(255,255,255,.78); color: var(--plum-900); }
 .actions .takeHomeJump { border: 1px solid rgba(166,57,97,.42); background: linear-gradient(120deg,rgba(255,249,251,.96),rgba(247,226,235,.9)); color: #6d1d3b; box-shadow: 0 12px 25px rgba(102,25,55,.1); }
 
-.progressBar { min-height: 58px; display: grid; grid-template-columns: minmax(240px,560px) auto minmax(0,1fr); align-items: center; gap: 14px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.96); box-shadow: 0 8px 20px rgba(35,18,39,.035); }
+.progressBar { min-height: 58px; position: relative; z-index: 2; display: grid; grid-template-columns: minmax(240px,560px) auto minmax(0,1fr); align-items: center; gap: 14px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.96); box-shadow: 0 8px 20px rgba(35,18,39,.035); }
 .progressTrack { height: 9px; overflow: hidden; border-radius: 999px; background: #e9e7ec; }
 .progressTrack i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg,var(--plum-800),var(--teal-500)); transition: width .28s ease; }
 .progressBar > span { color: var(--muted); font-size: 13px; white-space: nowrap; }
@@ -303,7 +304,8 @@
 
 [dir='rtl'] .workflow li:not(:last-child)::after { content: '←'; }
 [dir='rtl'] .sectionBody { padding: 20px 82px 24px 22px; }
-[dir='rtl'] .heroVisual { background-position: left center; transform: scale(-1.5,1.5); transform-origin: left center; -webkit-mask-image: linear-gradient(270deg,transparent 0,#000 30%); mask-image: linear-gradient(270deg,transparent 0,#000 30%); }
+[dir='rtl'] .heroVisual { transform: scale(1.5); transform-origin: left top; -webkit-mask-image: linear-gradient(270deg,transparent 0,#000 30%); mask-image: linear-gradient(270deg,transparent 0,#000 30%); }
+[dir='rtl'] .heroVisual::before { transform: scaleX(-1); }
 
 @media (max-width:1100px) {
   .caseFileContent { grid-template-columns: 1fr; }
