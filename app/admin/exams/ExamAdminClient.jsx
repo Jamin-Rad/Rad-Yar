@@ -5,13 +5,37 @@ import Link from 'next/link'
 import styles from './page.module.css'
 
 const emptyQuestion = () => ({ sourceId: '', sourceLabel: '', prompt: '', options: ['', '', '', ''], correctOptionIndex: 0, points: 1 })
+const ACTIVE_DURATION_UNITS = Object.freeze({ minutes: 1, hours: 60, days: 1440 })
 
 function isBlankQuestion(question) {
   return !question?.prompt && question?.options?.every(option => !option)
 }
 
-function statusLabel(status) {
-  return status === 'published' ? 'فعال' : status === 'closed' ? 'بسته' : 'پیش‌نویس'
+function toDateTimeLocal(date) {
+  const offset = date.getTimezoneOffset() * 60 * 1000
+  return new Date(date.getTime() - offset).toISOString().slice(0, 16)
+}
+
+function createDefaultForm() {
+  const scheduledStart = new Date(Date.now() + 60 * 60 * 1000)
+  scheduledStart.setMinutes(0, 0, 0)
+  return {
+    title: '', description: '', durationMinutes: 30, passPercent: 60,
+    activationMode: 'now', opensAt: toDateTimeLocal(scheduledStart),
+    activeDurationValue: 7, activeDurationUnit: 'days',
+    showResult: true, publishNow: true, questions: [emptyQuestion()],
+  }
+}
+
+function examDisplayState(exam) {
+  if (exam.status === 'closed') return { key: 'closed', label: 'بسته' }
+  if (exam.status !== 'published') return { key: 'draft', label: 'پیش‌نویس' }
+  const now = Date.now()
+  const opensAt = Date.parse(exam.opens_at)
+  const closesAt = Date.parse(exam.closes_at)
+  if (Number.isFinite(opensAt) && now < opensAt) return { key: 'scheduled', label: 'زمان‌بندی‌شده' }
+  if (Number.isFinite(closesAt) && now > closesAt) return { key: 'expired', label: 'پایان‌یافته' }
+  return { key: 'published', label: 'فعال' }
 }
 
 function formatDate(value) {
@@ -42,10 +66,7 @@ export default function ExamAdminClient() {
   const [bankSearch, setBankSearch] = useState('')
   const [bankTopic, setBankTopic] = useState('all')
   const [selectedBankIds, setSelectedBankIds] = useState([])
-  const [form, setForm] = useState({
-    title: '', description: '', durationMinutes: 30, passPercent: 60,
-    showResult: true, publishNow: true, questions: [emptyQuestion()],
-  })
+  const [form, setForm] = useState(createDefaultForm)
 
   const loadExams = useCallback(async () => {
     setLoading(true)
@@ -79,21 +100,32 @@ export default function ExamAdminClient() {
 
   const stats = useMemo(() => ({
     total: exams.length,
-    active: exams.filter(exam => exam.status === 'published').length,
+    active: exams.filter(exam => examDisplayState(exam).key === 'published').length,
     attempts: exams.reduce((sum, exam) => sum + Number(exam.attempt_count || 0), 0),
   }), [exams])
 
-  const bankTopics = useMemo(() => {
-    const topics = new Map()
-    for (const question of questionBank) topics.set(question.themaId, question.topic)
-    return [...topics.entries()].sort((a, b) => a[1].localeCompare(b[1], 'fa'))
+  const bankTopicGroups = useMemo(() => {
+    const groups = new Map()
+    for (const question of questionBank) {
+      const groupTitle = question.parentTopic || 'موضوعات اصلی'
+      if (!groups.has(groupTitle)) groups.set(groupTitle, new Map())
+      groups.get(groupTitle).set(question.themaId, question.topic)
+    }
+    return [...groups.entries()]
+      .map(([label, topics]) => ({
+        label,
+        topics: [...topics.entries()]
+          .map(([id, title]) => ({ id, title }))
+          .sort((a, b) => a.title.localeCompare(b.title, 'fa')),
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label, 'fa'))
   }, [questionBank])
 
   const filteredBank = useMemo(() => {
     const query = bankSearch.trim().toLocaleLowerCase('fa')
     const matches = questionBank.filter(question => (
       (bankTopic === 'all' || question.themaId === bankTopic)
-      && (!query || `${question.prompt} ${question.topic}`.toLocaleLowerCase('fa').includes(query))
+      && (!query || `${question.prompt} ${question.topicPath || question.topic}`.toLocaleLowerCase('fa').includes(query))
     ))
     return { total: matches.length, items: matches.slice(0, 60) }
   }, [bankSearch, bankTopic, questionBank])
@@ -146,7 +178,7 @@ export default function ExamAdminClient() {
         .filter(question => selected.has(question.id) && !existingSourceIds.has(question.id))
         .map(question => ({
           sourceId: question.id,
-          sourceLabel: question.topic,
+          sourceLabel: question.topicPath || question.topic,
           prompt: question.prompt,
           options: [...question.options],
           correctOptionIndex: question.correctOptionIndex,
@@ -165,17 +197,18 @@ export default function ExamAdminClient() {
     setSaving(true)
     setError('')
     try {
+      const activeDurationMinutes = form.activeDurationValue * ACTIVE_DURATION_UNITS[form.activeDurationUnit]
+      const opensAt = form.activationMode === 'scheduled'
+        ? new Date(form.opensAt).toISOString()
+        : undefined
       const data = await readJson(await fetch('/api/admin/exams', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, opensAt, activeDurationMinutes }),
       }))
       const link = `${window.location.origin}${data.sharePath}`
       setCreatedLink(link)
-      setForm({
-        title: '', description: '', durationMinutes: 30, passPercent: 60,
-        showResult: true, publishNow: true, questions: [emptyQuestion()],
-      })
+      setForm(createDefaultForm())
       await loadExams()
       setView('list')
     } catch (err) {
@@ -228,6 +261,8 @@ export default function ExamAdminClient() {
   const shareLink = detail?.exam && typeof window !== 'undefined'
     ? `${window.location.origin}/exam/${detail.exam.public_code}`
     : ''
+  const detailDisplayState = detail?.exam ? examDisplayState(detail.exam) : null
+  const detailCanClose = detail?.exam?.status === 'published' && detailDisplayState?.key !== 'expired'
 
   return (
     <main className={styles.page} dir="rtl">
@@ -272,10 +307,11 @@ export default function ExamAdminClient() {
                 <div className={styles.empty}><strong>هنوز امتحانی نساخته‌اید.</strong><span>با دکمه «ساخت امتحان جدید» شروع کنید.</span></div>
               ) : (
                 <div className={styles.examGrid}>
-                  {exams.map(exam => (
-                    <button type="button" className={styles.examCard} key={exam.id} onClick={() => openDetail(exam.id)}>
+                  {exams.map(exam => {
+                    const displayState = examDisplayState(exam)
+                    return <button type="button" className={styles.examCard} key={exam.id} onClick={() => openDetail(exam.id)}>
                       <div className={styles.examCardTop}>
-                        <span className={`${styles.status} ${styles[`status_${exam.status}`]}`}>{statusLabel(exam.status)}</span>
+                        <span className={`${styles.status} ${styles[`status_${displayState.key}`]}`}>{displayState.label}</span>
                         <span className={styles.date}>{formatDate(exam.created_at)}</span>
                       </div>
                       <h3>{exam.title}</h3>
@@ -285,8 +321,9 @@ export default function ExamAdminClient() {
                         <span>حد قبولی {exam.pass_percent.toLocaleString('fa-IR')}٪</span>
                         <strong>{Number(exam.attempt_count || 0).toLocaleString('fa-IR')} نتیجه</strong>
                       </div>
+                      <div className={styles.scheduleMeta}><span>شروع: {formatDate(exam.opens_at)}</span><span>پایان: {formatDate(exam.closes_at)}</span></div>
                     </button>
-                  ))}
+                  })}
                 </div>
               )}
             </section>
@@ -308,9 +345,20 @@ export default function ExamAdminClient() {
                 <label><span>زمان امتحان (دقیقه) *</span><input type="number" required min="1" max="240" value={form.durationMinutes} onChange={event => setField('durationMinutes', Number(event.target.value))} /></label>
                 <label><span>حد قبولی (درصد)</span><input type="number" min="0" max="100" value={form.passPercent} onChange={event => setField('passPercent', Number(event.target.value))} /></label>
               </div>
+              <div className={styles.availabilityBox}>
+                <div className={styles.availabilityHeader}><div><strong>بازه فعال‌بودن لینک</strong><span>این زمان با مدت پاسخ‌گویی هر شرکت‌کننده فرق دارد.</span></div></div>
+                <div className={styles.activationChoices}>
+                  <label className={form.activationMode === 'now' ? styles.activationChoiceSelected : styles.activationChoice}><input type="radio" name="activationMode" checked={form.activationMode === 'now'} onChange={() => setField('activationMode', 'now')} /><span><strong>فعال از همین حالا</strong><small>لینک بلافاصله قابل استفاده باشد</small></span></label>
+                  <label className={form.activationMode === 'scheduled' ? styles.activationChoiceSelected : styles.activationChoice}><input type="radio" name="activationMode" checked={form.activationMode === 'scheduled'} onChange={() => setField('activationMode', 'scheduled')} /><span><strong>فعال‌سازی زمان‌بندی‌شده</strong><small>تاریخ و ساعت شروع را تعیین کنید</small></span></label>
+                </div>
+                <div className={styles.scheduleFields}>
+                  {form.activationMode === 'scheduled' ? <label><span>تاریخ و ساعت شروع *</span><input type="datetime-local" required value={form.opensAt} onChange={event => setField('opensAt', event.target.value)} /></label> : <div className={styles.nowNotice}><strong>شروع</strong><span>بلافاصله پس از ساخت</span></div>}
+                  <label><span>مدت فعال‌بودن *</span><div className={styles.durationInput}><input type="number" required min="1" max={form.activeDurationUnit === 'days' ? 365 : form.activeDurationUnit === 'hours' ? 8760 : 525600} value={form.activeDurationValue} onChange={event => setField('activeDurationValue', Number(event.target.value))} /><select value={form.activeDurationUnit} onChange={event => setField('activeDurationUnit', event.target.value)}><option value="minutes">دقیقه</option><option value="hours">ساعت</option><option value="days">روز</option></select></div></label>
+                </div>
+              </div>
               <div className={styles.checks}>
                 <label><input type="checkbox" checked={form.showResult} onChange={event => setField('showResult', event.target.checked)} /><span>نمره بعد از ارسال به شرکت‌کننده نشان داده شود</span></label>
-                <label><input type="checkbox" checked={form.publishNow} onChange={event => setField('publishNow', event.target.checked)} /><span>بعد از ساخت، امتحان فوراً فعال شود</span></label>
+                <label><input type="checkbox" checked={form.publishNow} onChange={event => setField('publishNow', event.target.checked)} /><span>امتحان پس از ساخت منتشر شود و طبق زمان‌بندی بالا فعال باشد</span></label>
               </div>
             </section>
 
@@ -321,7 +369,7 @@ export default function ExamAdminClient() {
               </div>
               <div className={styles.bankToolbar}>
                 <label><span>جست‌وجوی سؤال</span><input type="search" value={bankSearch} onChange={event => setBankSearch(event.target.value)} placeholder="مثلاً MRI، خونریزی یا منیسک…" /></label>
-                <label><span>موضوع</span><select value={bankTopic} onChange={event => setBankTopic(event.target.value)}><option value="all">همه موضوع‌ها</option>{bankTopics.map(([id, title]) => <option value={id} key={id}>{title}</option>)}</select></label>
+                <label><span>موضوع</span><select value={bankTopic} onChange={event => setBankTopic(event.target.value)}><option value="all">همه موضوع‌ها</option>{bankTopicGroups.map(group => <optgroup label={group.label} key={group.label}>{group.topics.map(topic => <option value={topic.id} key={topic.id}>{topic.title}</option>)}</optgroup>)}</select></label>
               </div>
               {bankLoading ? <div className={styles.bankEmpty}>در حال بارگذاری بانک سؤال…</div> : questionBank.length === 0 ? (
                 <div className={styles.bankEmpty}>سؤالی در بانک پیدا نشد؛ می‌توانید سؤال جدید را به‌صورت دستی بسازید.</div>
@@ -332,7 +380,7 @@ export default function ExamAdminClient() {
                       const checked = selectedBankIds.includes(question.id)
                       return <label className={checked ? styles.bankItemSelected : styles.bankItem} key={question.id}>
                         <input type="checkbox" checked={checked} onChange={() => toggleBankQuestion(question.id)} />
-                        <span><strong>{question.prompt}</strong><small>{question.topic} · {question.options.join(' / ')}</small></span>
+                        <span><strong>{question.prompt}</strong><small>{question.topicPath || question.topic} · {question.options.join(' / ')}</small></span>
                       </label>
                     })}
                   </div>
@@ -382,15 +430,15 @@ export default function ExamAdminClient() {
             <section className={styles.detail}>
               <div className={styles.detailHeader}>
                 <button type="button" className={styles.textButton} onClick={() => setView('list')}>→ بازگشت</button>
-                <div className={styles.detailTitle}><div><span className={`${styles.status} ${styles[`status_${detail.exam.status}`]}`}>{statusLabel(detail.exam.status)}</span><h2>{detail.exam.title}</h2><p>{detail.exam.description}</p></div>
-                  <button type="button" className={detail.exam.status === 'published' ? styles.dangerButton : styles.primaryButton} disabled={saving} onClick={() => changeStatus(detail.exam.status === 'published' ? 'close' : 'reopen')}>
-                    {detail.exam.status === 'published' ? 'بستن امتحان' : 'فعال‌کردن امتحان'}
+                <div className={styles.detailTitle}><div><span className={`${styles.status} ${styles[`status_${detailDisplayState.key}`]}`}>{detailDisplayState.label}</span><h2>{detail.exam.title}</h2><p>{detail.exam.description}</p></div>
+                  <button type="button" className={detailCanClose ? styles.dangerButton : styles.primaryButton} disabled={saving} onClick={() => changeStatus(detailCanClose ? 'close' : 'reopen')}>
+                    {detailCanClose ? 'بستن امتحان' : 'فعال‌کردن دوباره'}
                   </button>
                 </div>
               </div>
 
               <div className={styles.shareCard}>
-                <div><strong>لینک شرکت در امتحان</strong><span>{detail.questions.length.toLocaleString('fa-IR')} سؤال · {detail.exam.duration_minutes.toLocaleString('fa-IR')} دقیقه</span></div>
+                <div><strong>لینک شرکت در امتحان</strong><span>{detail.questions.length.toLocaleString('fa-IR')} سؤال · {detail.exam.duration_minutes.toLocaleString('fa-IR')} دقیقه پاسخ‌گویی</span><span>فعال از {formatDate(detail.exam.opens_at)} تا {formatDate(detail.exam.closes_at)}</span></div>
                 <div className={styles.shareRow} dir="ltr"><input value={shareLink} readOnly /><Link href={`/exam/${detail.exam.public_code}`} target="_blank">بازکردن</Link><button type="button" onClick={() => copyLink(shareLink)}>{copied === shareLink ? 'کپی شد ✓' : 'کپی'}</button></div>
               </div>
 

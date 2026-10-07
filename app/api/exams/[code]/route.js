@@ -8,15 +8,32 @@ function databaseUnavailable() {
   return NextResponse.json({ error: 'سامانه امتحان موقتاً در دسترس نیست.' }, { status: 503 })
 }
 
+const SUBMISSION_GRACE_MS = 30000
+
+function formatAvailabilityDate(value) {
+  return new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value))
+}
+
 async function loadPublishedExam(code, includeAnswers = false) {
   const { data: exam, error: examError } = await supabaseAdmin
     .from('exams')
-    .select('id,title,description,status,duration_minutes,pass_percent,show_result')
+    .select('id,title,description,status,duration_minutes,pass_percent,show_result,opens_at,closes_at')
     .eq('public_code', code)
     .maybeSingle()
 
   if (examError) return { error: examError }
   if (!exam || exam.status !== 'published') return { notFound: true }
+
+  const now = Date.now()
+  const opensAt = Date.parse(exam.opens_at)
+  const closesAt = Date.parse(exam.closes_at)
+  if (Number.isFinite(opensAt) && now < opensAt) {
+    return { unavailable: `این آزمون از ${formatAvailabilityDate(exam.opens_at)} فعال می‌شود.` }
+  }
+  const closingGrace = includeAnswers ? SUBMISSION_GRACE_MS : 0
+  if (Number.isFinite(closesAt) && now > closesAt + closingGrace) {
+    return { unavailable: 'مهلت شرکت در این آزمون به پایان رسیده است.' }
+  }
 
   const fields = includeAnswers
     ? 'id,prompt,options,correct_option_index,points,position'
@@ -42,6 +59,7 @@ export async function GET(_request, { params }) {
     return databaseUnavailable()
   }
   if (result.notFound) return NextResponse.json({ error: 'این آزمون فعال نیست.' }, { status: 404 })
+  if (result.unavailable) return NextResponse.json({ error: result.unavailable }, { status: 409 })
 
   return NextResponse.json({ exam: result.exam, questions: result.questions })
 }
@@ -81,6 +99,7 @@ export async function POST(request, { params }) {
     return databaseUnavailable()
   }
   if (result.notFound) return NextResponse.json({ error: 'این آزمون فعال نیست.' }, { status: 404 })
+  if (result.unavailable) return NextResponse.json({ error: result.unavailable }, { status: 409 })
   if (!result.questions.length) return NextResponse.json({ error: 'این آزمون سؤال ندارد.' }, { status: 409 })
 
   const graded = gradeExam(result.questions, payload.answers)

@@ -54,6 +54,8 @@
 .examCardTop, .examMeta { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .status { display: inline-flex; align-items: center; min-height: 25px; padding: 3px 9px; border-radius: 99px; font-size: 11px; font-weight: 800; }
 .status_published { background: #dcfce7; color: #08734f; }
+.status_scheduled { background: #e0f2fe; color: #03658d; }
+.status_expired { background: #f1f5f9; color: #64748b; }
 .status_closed { background: #ffe4e6; color: #be123c; }
 .status_draft { background: #e9eef5; color: #526077; }
 .date { color: #94a3b8; font-size: 11px; }
@@ -61,6 +63,7 @@
 .examCard p { min-height: 38px; margin: 0 0 18px; color: #738095; font-size: 12px; line-height: 1.7; }
 .examMeta { justify-content: flex-start; flex-wrap: wrap; padding-top: 14px; border-top: 1px solid #eef1f5; color: #64748b; font-size: 11px; }
 .examMeta strong { margin-inline-start: auto; color: #f45b16; }
+.scheduleMeta { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 11px; color: #8793a5; font-size: 10px; }
 
 .builder { overflow: hidden; }
 .builderHeader { padding: 23px 26px; border-bottom: 1px solid #e6ebf2; }
@@ -77,6 +80,27 @@
 .checks { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 20px; }
 .checks label { display: flex; align-items: center; gap: 8px; color: #556276; font-size: 12px; cursor: pointer; }
 .checks input { accent-color: #f45b16; }
+
+.availabilityBox { margin-top: 22px; padding: 18px; border: 1px solid #dce5ef; border-radius: 15px; background: #f8fafc; }
+.availabilityHeader { margin-bottom: 14px; }
+.availabilityHeader > div { display: grid; gap: 4px; }
+.availabilityHeader strong { color: #253147; font-size: 14px; }
+.availabilityHeader span { color: #7c899c; font-size: 10px; }
+.activationChoices { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.activationChoice, .activationChoiceSelected { display: flex; align-items: flex-start; gap: 10px; padding: 12px; border: 1px solid #dce3ec; border-radius: 11px; background: #fff; cursor: pointer; }
+.activationChoiceSelected { border-color: #f97316; background: #fff5ed; box-shadow: 0 0 0 2px rgba(249,115,22,.07); }
+.activationChoice > input, .activationChoiceSelected > input { margin-top: 3px; accent-color: #f45b16; }
+.activationChoice > span, .activationChoiceSelected > span { display: grid; gap: 3px; }
+.activationChoice strong, .activationChoiceSelected strong { color: #2c374c; font-size: 11px; }
+.activationChoice small, .activationChoiceSelected small { color: #8792a4; font-size: 9px; }
+.scheduleFields { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 13px; }
+.scheduleFields > label { display: grid; gap: 6px; color: #546176; font-size: 11px; font-weight: 700; }
+.scheduleFields input, .scheduleFields select { width: 100%; height: 43px; padding: 0 11px; border: 1px solid #d8dfe9; border-radius: 10px; background: #fff; color: #263247; font: 500 12px Vazirmatn, sans-serif; outline: none; }
+.scheduleFields input:focus, .scheduleFields select:focus { border-color: #f97316; box-shadow: 0 0 0 3px rgba(249,115,22,.1); }
+.durationInput { display: grid; grid-template-columns: minmax(0, 1fr) 110px; gap: 7px; }
+.nowNotice { display: grid; align-content: center; gap: 4px; min-height: 66px; padding: 10px 13px; border-radius: 10px; background: #edf9f4; }
+.nowNotice strong { color: #08765c; font-size: 10px; }
+.nowNotice span { color: #476a61; font-size: 11px; }
 
 .bankHeader { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin-bottom: 18px; }
 .bankHeader h3 { margin: 0 0 6px; color: #1e293b; font-size: 16px; }
@@ -159,7 +183,7 @@
   .shareRow { width: 100%; min-width: 0; }
   .stats, .resultSummary { grid-template-columns: 1fr; gap: 8px; }
   .stats article, .resultSummary article { min-height: 66px; }
-  .examGrid, .fieldGrid, .options, .bankToolbar { grid-template-columns: 1fr; }
+  .examGrid, .fieldGrid, .options, .bankToolbar, .scheduleFields { grid-template-columns: 1fr; }
   .wideField { grid-column: auto; }
   .panel, .formSection, .detail { padding: 18px; }
   .builderHeader { padding: 18px; }
@@ -168,6 +192,7 @@
 }
 
 @media (max-width: 520px) {
+  .activationChoices { grid-template-columns: 1fr; }
   .bankHeader, .bankActions { align-items: stretch; flex-direction: column; }
   .bankActions button { width: 100%; }
   .shareRow { flex-wrap: wrap; }
@@ -198,13 +223,18 @@
 :global(html[data-theme='dark']) .resultSummary article,
 :global(html[data-theme='dark']) .examCard { border-color: #25344a; background: rgba(15,27,45,.94); }
 :global(html[data-theme='dark']) .questionCard,
-:global(html[data-theme='dark']) .answerDetails { border-color: #26374f; background: #0b1728; }
+:global(html[data-theme='dark']) .answerDetails,
+:global(html[data-theme='dark']) .availabilityBox { border-color: #26374f; background: #0b1728; }
 :global(html[data-theme='dark']) .fieldGrid input,
 :global(html[data-theme='dark']) .fieldGrid textarea,
 :global(html[data-theme='dark']) .promptField textarea,
 :global(html[data-theme='dark']) .points input,
 :global(html[data-theme='dark']) .bankToolbar input,
 :global(html[data-theme='dark']) .bankToolbar select,
+:global(html[data-theme='dark']) .scheduleFields input,
+:global(html[data-theme='dark']) .scheduleFields select,
+:global(html[data-theme='dark']) .activationChoice,
+:global(html[data-theme='dark']) .activationChoiceSelected,
 :global(html[data-theme='dark']) .bankItem,
 :global(html[data-theme='dark']) .bankItemSelected,
 :global(html[data-theme='dark']) .option,
@@ -214,6 +244,11 @@
 :global(html[data-theme='dark']) .answerCorrect,
 :global(html[data-theme='dark']) .answerWrong { border-color: #2b3b52; background: #101e31; color: #dce5ef; }
 :global(html[data-theme='dark']) .correctOption { border-color: #16886b; background: rgba(5,150,105,.12); }
+:global(html[data-theme='dark']) .activationChoiceSelected { border-color: #f97316; background: rgba(249,115,22,.12); }
+:global(html[data-theme='dark']) .activationChoice strong,
+:global(html[data-theme='dark']) .activationChoiceSelected strong,
+:global(html[data-theme='dark']) .availabilityHeader strong { color: #e3eaf2; }
+:global(html[data-theme='dark']) .nowNotice { background: rgba(5,150,105,.12); }
 :global(html[data-theme='dark']) .bankItemSelected { border-color: #f97316; background: rgba(249,115,22,.12); }
 :global(html[data-theme='dark']) .bankItem strong,
 :global(html[data-theme='dark']) .bankItemSelected strong { color: #e3eaf2; }

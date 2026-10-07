@@ -9,11 +9,14 @@ create table if not exists public.exams (
   description text not null default '',
   status text not null default 'draft' check (status in ('draft', 'published', 'closed')),
   duration_minutes integer not null default 30 check (duration_minutes between 1 and 240),
+  opens_at timestamptz not null default now(),
+  closes_at timestamptz not null default (now() + interval '7 days'),
   pass_percent integer not null default 60 check (pass_percent between 0 and 100),
   show_result boolean not null default true,
   created_by text not null default 'admin',
   created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
+  updated_at timestamptz not null default now(),
+  constraint exams_valid_active_window check (closes_at > opens_at)
 );
 
 create table if not exists public.exam_questions (
@@ -53,6 +56,9 @@ create index if not exists idx_exam_attempts_exam_submitted
 
 create index if not exists idx_exams_status_code
   on public.exams (status, public_code);
+
+create index if not exists idx_exams_status_window
+  on public.exams (status, opens_at, closes_at);
 
 alter table public.exams enable row level security;
 alter table public.exam_questions enable row level security;

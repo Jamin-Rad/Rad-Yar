@@ -9,6 +9,19 @@ function formatTime(seconds) {
   return `${minutes.toLocaleString('fa-IR')}:${String(safe % 60).padStart(2, '0')}`
 }
 
+function availableSeconds(exam) {
+  const personalLimit = Number(exam?.duration_minutes || 0) * 60
+  const closesAt = Date.parse(exam?.closes_at)
+  if (!Number.isFinite(closesAt)) return personalLimit
+  const globalLimit = Math.max(0, Math.floor((closesAt - Date.now()) / 1000))
+  return Math.min(personalLimit, globalLimit)
+}
+
+function formatDate(value) {
+  if (!value) return '—'
+  return new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value))
+}
+
 async function readJson(response) {
   const data = await response.json().catch(() => ({}))
   if (!response.ok) throw new Error(data.error || 'خطایی رخ داد.')
@@ -38,7 +51,7 @@ export default function ExamClient({ code }) {
         if (!active) return
         setExam(data.exam)
         setQuestions(data.questions || [])
-        setTimeLeft(Number(data.exam.duration_minutes) * 60)
+        setTimeLeft(availableSeconds(data.exam))
         setPhase('intro')
       } catch (err) {
         if (!active) return
@@ -95,9 +108,14 @@ export default function ExamClient({ code }) {
       setError('لطفاً ایمیل معتبر خود را وارد کنید.')
       return
     }
+    const allowedSeconds = availableSeconds(exam)
+    if (allowedSeconds <= 0) {
+      setError('مهلت شرکت در این آزمون به پایان رسیده است.')
+      return
+    }
     setError('')
     setStartedAt(new Date().toISOString())
-    setTimeLeft(Number(exam.duration_minutes) * 60)
+    setTimeLeft(allowedSeconds)
     setPhase('quiz')
   }
 
@@ -119,8 +137,9 @@ export default function ExamClient({ code }) {
         </div>
         <div className={styles.examFacts}>
           <div><span>تعداد سؤال</span><strong>{questions.length.toLocaleString('fa-IR')}</strong></div>
-          <div><span>زمان</span><strong>{Number(exam.duration_minutes).toLocaleString('fa-IR')} دقیقه</strong></div>
+          <div><span>زمان پاسخ‌گویی</span><strong>{Number(exam.duration_minutes).toLocaleString('fa-IR')} دقیقه</strong></div>
           <div><span>حد قبولی</span><strong>{Number(exam.pass_percent).toLocaleString('fa-IR')}٪</strong></div>
+          <div><span>فعال تا</span><strong>{formatDate(exam.closes_at)}</strong></div>
         </div>
         <form className={styles.identityForm} onSubmit={startExam}>
           <label><span>نام و نام خانوادگی *</span><input autoFocus required minLength={2} maxLength={120} value={participantName} onChange={event => setParticipantName(event.target.value)} autoComplete="name" placeholder="نام شما" /></label>

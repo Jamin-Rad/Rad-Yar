@@ -22,19 +22,25 @@ function localizedText(value) {
 }
 
 async function getQuestionBank() {
-  const [questionResult, topicResult] = await Promise.all([
+  const [questionResult, topicResult, chapterResult] = await Promise.all([
     supabaseAdmin
       .from('questions')
       .select('id,thema_id,question,options,correct')
       .order('thema_id')
       .limit(1000),
-    supabaseAdmin.from('themen').select('id,title').limit(1000),
+    supabaseAdmin.from('themen').select('id,parent_id,kapitel_id,title').limit(1000),
+    supabaseAdmin.from('kapitel').select('id,title').limit(500),
   ])
 
-  const error = questionResult.error || topicResult.error
+  const error = questionResult.error || topicResult.error || chapterResult.error
   if (error) return { error }
 
-  const topicById = new Map((topicResult.data || []).map(topic => [topic.id, localizedText(topic.title)]))
+  const chapterById = new Map((chapterResult.data || []).map(chapter => [chapter.id, localizedText(chapter.title)]))
+  const topicById = new Map((topicResult.data || []).map(topic => [topic.id, {
+    title: localizedText(topic.title),
+    parentId: topic.parent_id,
+    chapterId: topic.kapitel_id,
+  }]))
   const questions = []
 
   for (const item of questionResult.data || []) {
@@ -44,10 +50,17 @@ async function getQuestionBank() {
     const prompt = localizedText(item.question)
 
     if (!prompt || options.length !== 4 || options.some(option => !option) || correctOptionIndex < 0) continue
+    const topic = topicById.get(item.thema_id)
+    const parentTopic = topic?.parentId
+      ? topicById.get(topic.parentId)?.title || chapterById.get(topic?.chapterId) || ''
+      : chapterById.get(topic?.chapterId) || ''
+    const topicTitle = topic?.title || item.thema_id
     questions.push({
       id: item.id,
       themaId: item.thema_id,
-      topic: topicById.get(item.thema_id) || item.thema_id,
+      topic: topicTitle,
+      parentTopic,
+      topicPath: parentTopic ? `${parentTopic} — ${topicTitle}` : topicTitle,
       prompt,
       options,
       correctOptionIndex,
@@ -142,6 +155,8 @@ export async function POST(request) {
       description: input.description,
       status: input.publishNow ? 'published' : 'draft',
       duration_minutes: input.durationMinutes,
+      opens_at: input.opensAt,
+      closes_at: input.closesAt,
       pass_percent: input.passPercent,
       show_result: input.showResult,
     })
@@ -190,9 +205,27 @@ export async function PATCH(request) {
     return NextResponse.json({ error: 'درخواست معتبر نیست.' }, { status: 400 })
   }
 
+  const updates = { status, updated_at: new Date().toISOString() }
+  if (payload.action === 'reopen') {
+    const { data: currentExam, error: currentError } = await supabaseAdmin
+      .from('exams')
+      .select('opens_at,closes_at')
+      .eq('id', payload.id)
+      .maybeSingle()
+    if (currentError) return NextResponse.json({ error: 'آزمون قابل فعال‌سازی نیست.' }, { status: 503 })
+    if (!currentExam) return NextResponse.json({ error: 'آزمون پیدا نشد.' }, { status: 404 })
+    const storedDuration = Date.parse(currentExam.closes_at) - Date.parse(currentExam.opens_at)
+    const previousDuration = Number.isFinite(storedDuration) && storedDuration >= 60 * 1000
+      ? storedDuration
+      : 7 * 24 * 60 * 60 * 1000
+    const opensAt = new Date()
+    updates.opens_at = opensAt.toISOString()
+    updates.closes_at = new Date(opensAt.getTime() + previousDuration).toISOString()
+  }
+
   const { data, error } = await supabaseAdmin
     .from('exams')
-    .update({ status, updated_at: new Date().toISOString() })
+    .update(updates)
     .eq('id', payload.id)
     .select('*')
     .maybeSingle()
