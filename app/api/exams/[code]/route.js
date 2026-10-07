@@ -24,7 +24,7 @@ const AVAILABILITY_COPY = Object.freeze({
 async function loadPublishedExam(code, includeAnswers = false) {
   const { data: exam, error: examError } = await supabaseAdmin
     .from('exams')
-    .select('id,title,description,language,status,duration_minutes,pass_percent,show_result,opens_at,closes_at')
+    .select('id,title,description,language,status,duration_minutes,show_result,opens_at,closes_at')
     .eq('public_code', code)
     .maybeSingle()
 
@@ -111,7 +111,6 @@ export async function POST(request, { params }) {
   if (!result.questions.length) return NextResponse.json({ error: 'این آزمون سؤال ندارد.' }, { status: 409 })
 
   const graded = gradeExam(result.questions, payload.answers)
-  const passed = graded.percentage >= Number(result.exam.pass_percent)
   const startedAt = typeof payload.startedAt === 'string' && !Number.isNaN(Date.parse(payload.startedAt))
     ? payload.startedAt
     : null
@@ -126,7 +125,6 @@ export async function POST(request, { params }) {
       score: graded.score,
       max_score: graded.maxScore,
       percentage: graded.percentage,
-      passed,
       started_at: startedAt,
     })
     .select('id,submitted_at')
@@ -141,7 +139,7 @@ export async function POST(request, { params }) {
     attemptId: attempt.id,
     submittedAt: attempt.submitted_at,
     result: result.exam.show_result
-      ? { score: graded.score, maxScore: graded.maxScore, percentage: graded.percentage, passed }
+      ? { score: graded.score, maxScore: graded.maxScore, percentage: graded.percentage }
       : null,
   })
 }

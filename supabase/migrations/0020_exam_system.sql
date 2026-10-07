@@ -12,7 +12,7 @@ create table if not exists public.exams (
   duration_minutes integer not null default 30 check (duration_minutes between 1 and 240),
   opens_at timestamptz not null default now(),
   closes_at timestamptz not null default (now() + interval '7 days'),
-  pass_percent integer not null default 60 check (pass_percent between 0 and 100),
+  pass_percent integer not null default 0 check (pass_percent between 0 and 100),
   show_result boolean not null default true,
   created_by text not null default 'admin',
   created_at timestamptz not null default now(),

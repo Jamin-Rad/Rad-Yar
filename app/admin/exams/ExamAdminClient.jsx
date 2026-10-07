@@ -5,8 +5,26 @@ import Link from 'next/link'
 import styles from './page.module.css'
 
 const emptyQuestion = () => ({ sourceId: '', sourceLabel: '', prompt: '', options: ['', '', '', ''], correctOptionIndex: 0, points: 1 })
-const ACTIVE_DURATION_UNITS = Object.freeze({ minutes: 1, hours: 60, days: 1440 })
 const LANGUAGE_LABELS = Object.freeze({ fa: 'فارسی', en: 'English', de: 'Deutsch' })
+const EXAM_DURATION_OPTIONS = Object.freeze([5, 10, 15, 20, 25, 30, 45, 60, 90, 120, 150, 180, 240])
+const ACTIVE_DURATION_OPTIONS = Object.freeze([
+  { value: 60, label: '۱ ساعت' },
+  { value: 120, label: '۲ ساعت' },
+  { value: 240, label: '۴ ساعت' },
+  { value: 480, label: '۸ ساعت' },
+  { value: 720, label: '۱۲ ساعت' },
+  { value: 1440, label: '۱ روز' },
+  { value: 2880, label: '۲ روز' },
+  { value: 4320, label: '۳ روز' },
+  { value: 7200, label: '۵ روز' },
+  { value: 10080, label: '۷ روز' },
+  { value: 20160, label: '۱۴ روز' },
+  { value: 43200, label: '۳۰ روز' },
+  { value: 86400, label: '۶۰ روز' },
+  { value: 129600, label: '۹۰ روز' },
+  { value: 259200, label: '۱۸۰ روز' },
+  { value: 525600, label: '۱ سال' },
+])
 
 function isBlankQuestion(question) {
   return !question?.prompt && question?.options?.every(option => !option)
@@ -21,10 +39,10 @@ function createDefaultForm() {
   const scheduledStart = new Date(Date.now() + 60 * 60 * 1000)
   scheduledStart.setMinutes(0, 0, 0)
   return {
-    title: '', description: '', durationMinutes: 30, passPercent: 60,
+    title: '', description: '', durationMinutes: 30,
     language: 'fa',
     activationMode: 'now', opensAt: toDateTimeLocal(scheduledStart),
-    activeDurationValue: 7, activeDurationUnit: 'days',
+    activeDurationMinutes: 10080,
     showResult: true, publishNow: true, questions: [emptyQuestion()],
   }
 }
@@ -228,14 +246,13 @@ export default function ExamAdminClient() {
     setSaving(true)
     setError('')
     try {
-      const activeDurationMinutes = form.activeDurationValue * ACTIVE_DURATION_UNITS[form.activeDurationUnit]
       const opensAt = form.activationMode === 'scheduled'
         ? new Date(form.opensAt).toISOString()
         : undefined
       const data = await readJson(await fetch('/api/admin/exams', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, opensAt, activeDurationMinutes }),
+        body: JSON.stringify({ ...form, opensAt }),
       }))
       const link = `${window.location.origin}${data.sharePath}`
       setCreatedLink(link)
@@ -350,7 +367,6 @@ export default function ExamAdminClient() {
                       <div className={styles.examMeta}>
                         <span>{LANGUAGE_LABELS[exam.language] || LANGUAGE_LABELS.fa}</span>
                         <span>{exam.duration_minutes.toLocaleString('fa-IR')} دقیقه</span>
-                        <span>حد قبولی {exam.pass_percent.toLocaleString('fa-IR')}٪</span>
                         <strong>{Number(exam.attempt_count || 0).toLocaleString('fa-IR')} نتیجه</strong>
                       </div>
                       <div className={styles.scheduleMeta}><span>شروع: {formatDate(exam.opens_at)}</span><span>پایان: {formatDate(exam.closes_at)}</span></div>
@@ -375,8 +391,7 @@ export default function ExamAdminClient() {
                 <label className={styles.wideField}><span>عنوان امتحان</span><input required minLength={3} maxLength={160} value={form.title} onChange={event => setField('title', event.target.value)} placeholder="مثلاً آزمون مقدماتی رادیولوژی" /></label>
                 <label className={styles.wideField}><span>توضیح کوتاه</span><textarea maxLength={3000} value={form.description} onChange={event => setField('description', event.target.value)} placeholder="توضیحات و نکات لازم برای شرکت‌کنندگان" /></label>
                 <label><span>زبان آزمون *</span><select value={form.language} onChange={event => changeLanguage(event.target.value)}><option value="fa">فارسی</option><option value="en">English</option><option value="de">Deutsch</option></select></label>
-                <label><span>زمان امتحان (دقیقه) *</span><input type="number" required min="1" max="240" value={form.durationMinutes} onChange={event => setField('durationMinutes', Number(event.target.value))} /></label>
-                <label><span>حد قبولی (درصد)</span><input type="number" min="0" max="100" value={form.passPercent} onChange={event => setField('passPercent', Number(event.target.value))} /></label>
+                <label><span>زمان پاسخ‌گویی *</span><select value={form.durationMinutes} onChange={event => setField('durationMinutes', Number(event.target.value))}>{EXAM_DURATION_OPTIONS.map(minutes => <option value={minutes} key={minutes}>{minutes.toLocaleString('fa-IR')} دقیقه</option>)}</select></label>
               </div>
               <div className={styles.availabilityBox}>
                 <div className={styles.availabilityHeader}><div><strong>بازه فعال‌بودن لینک</strong><span>این زمان با مدت پاسخ‌گویی هر شرکت‌کننده فرق دارد.</span></div></div>
@@ -386,7 +401,7 @@ export default function ExamAdminClient() {
                 </div>
                 <div className={styles.scheduleFields}>
                   {form.activationMode === 'scheduled' ? <label><span>تاریخ و ساعت شروع *</span><input type="datetime-local" required value={form.opensAt} onChange={event => setField('opensAt', event.target.value)} /></label> : <div className={styles.nowNotice}><strong>شروع</strong><span>بلافاصله پس از ساخت</span></div>}
-                  <label><span>مدت فعال‌بودن *</span><div className={styles.durationInput}><input type="number" required min="1" max={form.activeDurationUnit === 'days' ? 365 : form.activeDurationUnit === 'hours' ? 8760 : 525600} value={form.activeDurationValue} onChange={event => setField('activeDurationValue', Number(event.target.value))} /><select value={form.activeDurationUnit} onChange={event => setField('activeDurationUnit', event.target.value)}><option value="minutes">دقیقه</option><option value="hours">ساعت</option><option value="days">روز</option></select></div></label>
+                  <label><span>مدت فعال‌بودن *</span><select value={form.activeDurationMinutes} onChange={event => setField('activeDurationMinutes', Number(event.target.value))}>{ACTIVE_DURATION_OPTIONS.map(option => <option value={option.value} key={option.value}>{option.label}</option>)}</select></label>
                 </div>
               </div>
               <div className={styles.checks}>
@@ -488,8 +503,8 @@ export default function ExamAdminClient() {
 
               <div className={styles.resultSummary}>
                 <article><span>شرکت‌کننده</span><strong>{detail.attempts.length.toLocaleString('fa-IR')}</strong></article>
-                <article><span>قبول‌شده</span><strong>{detail.attempts.filter(item => item.passed).length.toLocaleString('fa-IR')}</strong></article>
                 <article><span>میانگین</span><strong>{detail.attempts.length ? `${Math.round(detail.attempts.reduce((sum, item) => sum + Number(item.percentage), 0) / detail.attempts.length).toLocaleString('fa-IR')}٪` : '—'}</strong></article>
+                <article><span>بالاترین نمره</span><strong>{detail.attempts.length ? `${Math.max(...detail.attempts.map(item => Number(item.percentage))).toLocaleString('fa-IR')}٪` : '—'}</strong></article>
               </div>
 
               <section className={styles.panel}>
@@ -503,7 +518,6 @@ export default function ExamAdminClient() {
                           <span className={styles.person}><strong>{attempt.participant_name}</strong><small>{attempt.participant_email || 'بدون ایمیل'}</small></span>
                           <span><small>نمره</small><strong>{attempt.score.toLocaleString('fa-IR')} از {attempt.max_score.toLocaleString('fa-IR')}</strong></span>
                           <span><small>درصد</small><strong>{Number(attempt.percentage).toLocaleString('fa-IR')}٪</strong></span>
-                          <span className={attempt.passed ? styles.passed : styles.failed}>{attempt.passed ? 'قبول' : 'رد'}</span>
                           <span className={styles.submitted}>{formatDate(attempt.submitted_at)}</span>
                           <span aria-hidden="true">{isOpen ? '−' : '+'}</span>
                         </button>

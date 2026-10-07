@@ -24,7 +24,7 @@
 .badge { display: inline-flex; padding: 6px 11px; border-radius: 99px; background: #fff0e7; color: #dc4c0c; font-size: 11px; font-weight: 850; }
 .introTop h1, .resultCard h1 { margin: 18px 0 9px; color: #15203a; font-size: clamp(25px, 4vw, 35px); line-height: 1.35; }
 .introTop p, .resultCard > p { margin: 0 auto; color: #6f7c90; font-size: 14px; line-height: 1.9; }
-.examFacts { display: grid; grid-template-columns: repeat(4, 1fr); border-block: 1px solid #e7ebf1; background: #f9fafc; }
+.examFacts { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid #e7ebf1; background: #f9fafc; }
 .examFacts div { display: grid; gap: 5px; padding: 18px; text-align: center; }
 .examFacts div + div { border-inline-start: 1px solid #e7ebf1; }
 .examFacts span { color: #8390a4; font-size: 11px; }
@@ -91,8 +91,6 @@
 .scoreCircle > div { display: grid; place-items: center; width: 132px; height: 132px; border-radius: 50%; background: #fff; }
 .scoreCircle strong { color: #182238; font-size: 31px; }
 .scoreCircle span { color: #8290a4; font-size: 11px; }
-.passText { color: #08765c !important; font-weight: 800; }
-.failText { color: #c3203c !important; font-weight: 800; }
 .resultNote { width: 100%; margin-top: 22px; padding: 14px; border-radius: 11px; background: #f6f8fb; color: #718096; font-size: 11px; }
 
 @media (max-width: 800px) {
