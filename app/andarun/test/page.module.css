@@ -65,16 +65,12 @@
 .heroCopy { min-width: 0; }
 .heroCopy h1 { max-width: 790px; margin: 0; color: #faf5fb; font-family: var(--font-fraunces,Georgia,serif); font-size: clamp(42px,4.5vw,62px); font-weight: 900; line-height: .98; letter-spacing: -.042em; text-wrap: balance; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
-.actions :is(a,button) { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 10px 20px; border-radius: 7px; font: 850 14px/1.2 inherit; text-decoration: none; cursor: pointer; transition: transform .18s ease,box-shadow .18s ease,background .18s ease; }
-.actions :is(a,button):hover { transform: translateY(-2px); }
+.actions :is(a,button) { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 10px 20px; border-radius: 7px; font: 850 14px/1.2 inherit; text-decoration: none; cursor: pointer; transition: transform .18s ease,box-shadow .18s ease,filter .18s ease; }
+.actions :is(a,button):hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 16px 30px rgba(35,18,39,.2); }
 .actions svg { width: 19px; height: 19px; }
 .primaryAction { background: var(--plum-900); color: #fff; box-shadow: 0 12px 25px rgba(59,22,61,.16); }
-.primaryAction:hover { background: var(--plum-800); box-shadow: 0 16px 30px rgba(59,22,61,.22); }
 .secondaryAction { border: 1px solid #a7a1ae; background: rgba(255,255,255,.78); color: var(--plum-900); }
 .actions .takeHomeJump { border: 1px solid rgba(166,57,97,.42); background: linear-gradient(120deg,rgba(255,249,251,.96),rgba(247,226,235,.9)); color: #6d1d3b; box-shadow: 0 12px 25px rgba(102,25,55,.1); }
-.actions .takeHomeJump:hover { box-shadow: 0 16px 30px rgba(102,25,55,.16); }
-.actions .demoAction { opacity: 1; cursor: default; }
-.actions .demoAction:hover { transform: none; }
 
 .progressBar { min-height: 58px; display: grid; grid-template-columns: minmax(240px,560px) auto minmax(0,1fr); align-items: center; gap: 14px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.96); box-shadow: 0 8px 20px rgba(35,18,39,.035); }
 .progressTrack { height: 9px; overflow: hidden; border-radius: 999px; background: #e9e7ec; }
