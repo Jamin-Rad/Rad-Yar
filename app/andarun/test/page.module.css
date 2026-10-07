@@ -184,9 +184,8 @@
 .caseFileHeader { min-height: 86px; display: grid; grid-template-columns: 48px minmax(0,1fr) auto; align-items: center; gap: 14px; padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,.13); background: linear-gradient(118deg,#173c4b 0%,#245a64 58%,#276d72 100%); }
 .caseFileIcon { width: 46px; height: 46px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.2); border-radius: 14px; color: #ddf6f4; background: rgba(255,255,255,.09); }
 .caseFileIcon svg { width: 25px; height: 25px; }
-.caseFileHeading { min-width: 0; display: grid; gap: 2px; }
+.caseFileHeading { min-width: 0; display: grid; }
 .caseFileHeading strong { color: #fff; font-size: 22px; font-weight: 850; letter-spacing: -.018em; }
-.caseFileHeading small { color: #bfe0df; font-size: 12px; font-weight: 650; letter-spacing: .035em; }
 .caseFileHeader a { min-height: 42px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 13px; border: 1px solid rgba(255,255,255,.25); border-radius: 10px; color: #f4ffff; background: rgba(255,255,255,.08); font-size: 13px; font-weight: 800; text-decoration: none; transition: border-color .18s ease,background .18s ease,transform .18s ease; }
 .caseFileHeader a:hover { border-color: rgba(255,255,255,.46); color: #fff; background: rgba(255,255,255,.15); transform: translateY(-1px); }
 .caseFileHeader a svg { width: 15px; height: 15px; }
@@ -202,20 +201,20 @@
 .caseImageMeta span svg { width: 13px; height: 13px; }
 .caseImageMeta strong { font-size: 13px; letter-spacing: .04em; }
 .caseImageMeta strong i { color: #aab2bf; font-size: 11px; font-style: normal; }
-.caseViewportHint { max-width: calc(100% - 28px); position: absolute; inset-inline-start: 50%; bottom: 13px; z-index: 2; transform: translateX(-50%); padding: 8px 12px; border: 1px solid rgba(255,255,255,.2); border-radius: 999px; color: #f7fbfc; background: rgba(8,18,24,.56); box-shadow: 0 8px 22px rgba(0,0,0,.2); backdrop-filter: blur(14px); font-size: 11px; font-weight: 700; line-height: 1.35; text-align: center; pointer-events: none; }
+.caseViewportHint { max-width: calc(100% - 28px); position: absolute; inset-inline-start: 50%; bottom: 72px; z-index: 4; transform: translateX(-50%); padding: 8px 12px; border: 1px solid rgba(255,255,255,.2); border-radius: 999px; color: #f7fbfc; background: rgba(8,18,24,.7); box-shadow: 0 8px 22px rgba(0,0,0,.2); backdrop-filter: blur(14px); font-size: 11px; font-weight: 700; line-height: 1.35; text-align: center; pointer-events: none; }
 .caseViewportHint button { min-height: 30px; margin-inline-start: 7px; padding: 4px 9px; border: 1px solid currentColor; border-radius: 999px; color: inherit; background: rgba(255,255,255,.1); font: inherit; cursor: pointer; pointer-events: auto; }
 [dir='rtl'] .caseViewportHint { transform: translateX(50%); }
-.caseControls { display: grid; grid-template-columns: 44px minmax(0,1fr) 44px; align-items: center; gap: 12px; padding: 8px 12px; border-top: 1px solid #d8dfe7; background: #f7f9fb; }
-.caseControls > button { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; padding: 0; border: 0; border-radius: 6px; color: #183354; background: transparent; cursor: pointer; }
-.caseControls > button:hover { color: #0d7580; background: #eaf4f5; }
+.caseControls { position: absolute; inset-inline: 14px; bottom: 14px; z-index: 3; display: grid; grid-template-columns: 40px minmax(0,1fr) 40px; align-items: center; gap: 10px; padding: 7px 9px; border: 1px solid rgba(255,255,255,.2); border-radius: 14px; background: rgba(10,18,25,.62); box-shadow: 0 12px 30px rgba(0,0,0,.28); backdrop-filter: blur(16px) saturate(1.15); }
+.caseControls > button { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; padding: 0; border: 0; border-radius: 6px; color: #f2f8fa; background: transparent; cursor: pointer; }
+.caseControls > button:hover { color: #fff; background: rgba(255,255,255,.13); }
 .caseControls > button:disabled { opacity: .32; cursor: default; }
 .caseControls > button svg { width: 18px; height: 18px; }
 .caseRange { min-width: 0; display: grid; gap: 8px; }
-.caseRange input { --range-track: #c9d2dc; width: 100%; height: 32px; margin: 0; appearance: none; background: transparent; cursor: ew-resize; accent-color: #0d8995; }
+.caseRange input { --range-track: rgba(222,237,240,.42); width: 100%; height: 32px; margin: 0; appearance: none; background: transparent; cursor: ew-resize; accent-color: #62c7ca; }
 .caseRange input::-webkit-slider-runnable-track { height: 5px; border-radius: 999px; background: var(--range-track); }
 .caseRange input::-moz-range-track { height: 5px; border-radius: 999px; background: var(--range-track); }
-.caseRange input::-webkit-slider-thumb { width: 17px; height: 17px; margin-top: -6px; appearance: none; border: 3px solid #f7f9fb; border-radius: 50%; background: #0d8995; box-shadow: 0 0 0 1px #0d8995; }
-.caseRange input::-moz-range-thumb { width: 13px; height: 13px; border: 3px solid #f7f9fb; border-radius: 50%; background: #0d8995; box-shadow: 0 0 0 1px #0d8995; }
+.caseRange input::-webkit-slider-thumb { width: 17px; height: 17px; margin-top: -6px; appearance: none; border: 3px solid #eefafa; border-radius: 50%; background: #31a6ac; box-shadow: 0 0 0 1px #31a6ac; }
+.caseRange input::-moz-range-thumb { width: 13px; height: 13px; border: 3px solid #eefafa; border-radius: 50%; background: #31a6ac; box-shadow: 0 0 0 1px #31a6ac; }
 .caseBody { display: grid; align-content: center; gap: 22px; padding: clamp(28px,3.6vw,44px); border-inline-start: 1px solid #d9e1e6; background: linear-gradient(145deg,#fff 30%,#f7fbfb 100%); }
 .caseBody h3 { max-width: 18ch; margin: 0; color: #102d42; font: 850 clamp(26px,2.7vw,38px)/1.13 "Avenir Next","Segoe UI",Helvetica,Arial,sans-serif; letter-spacing: -.032em; }
 .caseFindings { display: grid; gap: 11px; }
@@ -301,12 +300,10 @@
 :global(html[data-theme='dark']) .caseFileHeader { border-color: rgba(255,255,255,.12); background: linear-gradient(118deg,#15333e,#204e56 62%,#245f62); }
 :global(html[data-theme='dark']) .caseFileIcon { color: #effafa; }
 :global(html[data-theme='dark']) .caseFileHeader a { color: #f0ffff; }
-:global(html[data-theme='dark']) .caseControls { border-color: #465160; background: #222a35; }
+:global(html[data-theme='dark']) .caseControls { border-color: rgba(255,255,255,.2); background: rgba(10,18,25,.66); }
 :global(html[data-theme='dark']) .caseControls > button { color: #edf4f9; }
 :global(html[data-theme='dark']) .caseControls > button:hover { color: #8be0e2; background: #2c3744; }
 :global(html[data-theme='dark']) .caseRange input { --range-track: #596574; }
-:global(html[data-theme='dark']) .caseRange input::-webkit-slider-thumb { border-color: #222a35; }
-:global(html[data-theme='dark']) .caseRange input::-moz-range-thumb { border-color: #222a35; }
 :global(html[data-theme='dark']) .caseBody { border-color: #465160; background: linear-gradient(145deg,#171d26,#1b252d); }
 :global(html[data-theme='dark']) .caseBody h3 { color: #f1f6fb; }
 :global(html[data-theme='dark']) .caseFindings h4 { color: #91aab6; }
@@ -405,10 +402,11 @@
   .caseFileHeader a { grid-column: 1 / -1; width: 100%; margin-top: 2px; }
   .caseFileContent { grid-template-columns: 1fr; }
   .caseImageMeta { top: 10px; inset-inline: 10px; }
-  .caseControls { padding-inline: 10px; }
+  .caseControls { inset-inline: 10px; bottom: 10px; grid-template-columns: 38px minmax(0,1fr) 38px; gap: 7px; padding: 6px 8px; }
+  .caseControls > button { width: 38px; height: 38px; }
   .caseBody { gap: 21px; padding: 26px 20px 28px; border-top: 1px solid var(--line); border-inline-start: 0; }
   .caseBody h3 { max-width: none; font-size: 27px; }
-  .caseViewportHint { bottom: 44px; font-size: 10px; }
+  .caseViewportHint { bottom: 68px; font-size: 10px; }
   .caseCredit { padding-inline: 14px; text-align: start; }
   .takeHomeSection .sectionBody { padding-inline: 14px; }
   .takeHome li > button { grid-template-columns: 30px minmax(0,1fr) 24px; gap: 8px; padding: 9px 2px; }

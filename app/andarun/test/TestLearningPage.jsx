@@ -139,7 +139,6 @@ const RADIOPAEDIA_CASE = {
   findings: [
     L('Sichelförmig hyperintenses Signal in der Wand der rechten ACI', 'Crescent-shaped hyperintense signal in the wall of the right ICA', 'سیگنال پرشدت هلالی‌شکل در دیواره ICA راست'),
     L('Asymmetrische Wandverdickung mit eingeengtem, signalarmem Restlumen', 'Asymmetric wall thickening with a narrowed, low-signal residual lumen', 'ضخیم‌شدگی نامتقارن دیواره همراه با تنگی لومن باقی‌مانده با سیگنال پایین'),
-    L('Der auffällige Wandbefund lässt sich über mehrere benachbarte Schichten verfolgen', 'The abnormal mural finding can be followed across several adjacent slices', 'یافته غیرطبیعی دیواره در چند برش مجاور قابل پیگیری است'),
   ],
   interpretation: L(
     'Das T1-hyperintense Wandhämatom erzeugt das typische Crescent sign und stützt die Diagnose einer arteriellen Dissektion.',
@@ -341,7 +340,6 @@ function CaseSequence({ lang, caseData }) {
     previous: pick(L('Vorherige Schicht', 'Previous slice', 'برش قبلی'), lang),
     next: pick(L('Nächste Schicht', 'Next slice', 'برش بعدی'), lang),
     slider: pick(L('Schicht auswählen', 'Select slice', 'انتخاب برش'), lang),
-    hint: pick(L('Im Bild scrollen oder ziehen', 'Scroll or drag on the image', 'روی تصویر اسکرول کنید یا بکشید'), lang),
     loading: pick(L('Bildserie wird vorbereitet …', 'Preparing image series …', 'در حال آماده‌سازی سری تصاویر …'), lang),
     error: pick(L('Bildserie konnte nicht vollständig geladen werden.', 'The image series could not be fully loaded.', 'سری تصاویر کامل بارگذاری نشد.'), lang),
     retry: pick(L('Erneut laden', 'Retry loading', 'بارگذاری دوباره'), lang),
@@ -379,15 +377,15 @@ function CaseSequence({ lang, caseData }) {
   }
 
   return <div className={styles.caseViewer}>
-    <div ref={viewerRef} className={styles.caseViewport} data-no-zoom role="group" aria-busy={!seriesReady && !loadFailed} tabIndex={0} onKeyDown={handleKeyDown} onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerEnd} onPointerCancel={handlePointerEnd} onLostPointerCapture={() => { pointerStartRef.current = null }} aria-label={`${pick(alt, lang)} · ${labels.hint}`}>
+    <div ref={viewerRef} className={styles.caseViewport} data-no-zoom role="group" aria-busy={!seriesReady && !loadFailed} tabIndex={0} onKeyDown={handleKeyDown} onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerEnd} onPointerCancel={handlePointerEnd} onLostPointerCapture={() => { pointerStartRef.current = null }} aria-label={pick(alt, lang)}>
       {frames.map((src, index) => <Image key={`${loadAttempt}-${src}`} src={src} alt={index === frameIndex ? `${pick(alt, lang)} · ${index + 1}/${frames.length}` : ''} aria-hidden={index !== frameIndex} style={{ visibility: index === frameIndex ? 'visible' : 'hidden' }} width={320} height={320} unoptimized loading="eager" draggable={false} onLoad={event => handleFrameLoad(event.currentTarget, index, loadAttempt)} onError={() => { if (loadAttemptRef.current === loadAttempt) setLoadFailed(true) }} />)}
       <div className={styles.caseImageMeta}><strong aria-live="polite">{String(frameIndex + 1).padStart(2, '0')} <i>/ {frames.length}</i></strong></div>
-      <small className={styles.caseViewportHint} dir={lang === 'fa' ? 'rtl' : 'ltr'} role="status">{loadFailed ? <>{labels.error} <button type="button" onClick={retrySeries}>{labels.retry}</button></> : seriesReady ? labels.hint : labels.loading}</small>
-    </div>
-    <div className={styles.caseControls} dir="ltr">
-      <button type="button" onClick={() => moveFrame(-1)} disabled={!seriesReady || frameIndex === 0} aria-label={labels.previous} title={labels.previous}><Icon name="previous" /></button>
-      <div className={styles.caseRange}><input type="range" disabled={!seriesReady} min="0" max={frames.length - 1} step="1" value={frameIndex} onChange={event => selectFrame(Number(event.target.value))} aria-label={labels.slider} aria-valuetext={`${frameIndex + 1} / ${frames.length}`} /></div>
-      <button type="button" onClick={() => moveFrame(1)} disabled={!seriesReady || frameIndex === frames.length - 1} aria-label={labels.next} title={labels.next}><Icon name="next" /></button>
+      {!seriesReady || loadFailed ? <small className={styles.caseViewportHint} dir={lang === 'fa' ? 'rtl' : 'ltr'} role="status">{loadFailed ? <>{labels.error} <button type="button" onClick={retrySeries}>{labels.retry}</button></> : labels.loading}</small> : null}
+      <div className={styles.caseControls} dir="ltr" onPointerDown={event => event.stopPropagation()} onPointerMove={event => event.stopPropagation()}>
+        <button type="button" onClick={() => moveFrame(-1)} disabled={!seriesReady || frameIndex === 0} aria-label={labels.previous} title={labels.previous}><Icon name="previous" /></button>
+        <div className={styles.caseRange}><input type="range" disabled={!seriesReady} min="0" max={frames.length - 1} step="1" value={frameIndex} onChange={event => selectFrame(Number(event.target.value))} aria-label={labels.slider} aria-valuetext={`${frameIndex + 1} / ${frames.length}`} /></div>
+        <button type="button" onClick={() => moveFrame(1)} disabled={!seriesReady || frameIndex === frames.length - 1} aria-label={labels.next} title={labels.next}><Icon name="next" /></button>
+      </div>
     </div>
   </div>
 }
@@ -398,7 +396,6 @@ function RadiopaediaFile({ lang, caseData }) {
       <span className={styles.caseFileIcon}><Icon name="case" /></span>
       <span className={styles.caseFileHeading}>
         <strong>{pick(L('Fallbeispiel', 'Case example', 'نمونه کیس'), lang)}</strong>
-        <small>{pick(L('Interaktive Bildanalyse', 'Interactive image review', 'بررسی تعاملی تصاویر'), lang)}</small>
       </span>
       <a href={caseData.url} target="_blank" rel="noopener noreferrer">{pick(L('Fall im Vollbild', 'Open case full screen', 'نمایش تمام‌صفحه کیس'), lang)} <Icon name="external" /></a>
     </header>
