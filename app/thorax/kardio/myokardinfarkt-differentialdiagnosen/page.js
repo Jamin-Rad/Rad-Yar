@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { useLanguage } from '@/providers/LanguageProvider'
 import StandardLessonShell, { LessonSection, LessonSources, TakeHomeList } from '@/components/lesson-template/StandardLessonShell'
@@ -233,6 +233,7 @@ const RADIOPAEDIA_CASES = {
       ['06-2ch-lge.jpg', '2-chamber LGE'],
       ['07-short-axis-lge.jpg', 'Short-axis LGE'],
     ].map(([file, label]) => ({ src: `/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/takotsubo-33052/${file}`, label })),
+    initialFrame: 0,
     alt: L('Zweikammer-Cine-SSFP aus einem Radiopaedia-Fall mit atypischem Takotsubo-Syndrom', 'Two-chamber cine SSFP from a Radiopaedia case of atypical Takotsubo syndrome', 'Cine SSFP دوحفره‌ای از کیس Radiopaedia تاکوتسوبوی آتیپیک'),
     url: 'https://radiopaedia.org/cases/33052/studies/34073?lang=us',
     credit: 'Case courtesy of Yune Kwong, Radiopaedia.org · rID-33052 · CC BY-NC-SA 3.0',
@@ -255,6 +256,7 @@ const RADIOPAEDIA_CASES = {
       ['05-short-axis-lge.jpeg', 'Short-axis LGE'],
       ['06-3ch-lge.jpeg', '3-chamber LGE'],
     ].map(([file, label]) => ({ src: `/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/${file}`, label })),
+    initialFrame: 3,
     alt: L('Vierkammer-LGE aus einem Radiopaedia-Fall mit akuter Myoperikarditis', 'Four-chamber LGE from a Radiopaedia case of acute myopericarditis', 'LGE چهارحفره‌ای از کیس Radiopaedia میوپریکاردیت حاد'),
     url: 'https://radiopaedia.org/cases/77023/studies/88967?lang=us',
     credit: 'Case courtesy of Tamara Razon Cuenza, Radiopaedia.org · rID-77023 · CC BY-NC-SA 3.0',
@@ -279,6 +281,7 @@ const RADIOPAEDIA_CASES = {
       ['07-2ch-lge.jpg', '2-chamber IR-LGE'],
       ['08-short-axis-lge.jpg', 'Short-axis IR-LGE'],
     ].map(([file, label]) => ({ src: `/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/sarcoidosis-74548/${file}`, label })),
+    initialFrame: 6,
     alt: L('Zweikammer-LGE aus einem Radiopaedia-Fall mit kardialer Sarkoidose', 'Two-chamber LGE from a Radiopaedia case of cardiac sarcoidosis', 'LGE دوحفره‌ای از کیس Radiopaedia سارکوئیدوز قلبی'),
     url: 'https://radiopaedia.org/cases/74548/studies/85535?lang=us',
     credit: 'Case courtesy of Joachim Feger, Radiopaedia.org · rID-74548 · CC BY-NC-SA 3.0',
@@ -306,59 +309,157 @@ function PatternExplorer({ lang }) {
   </section>
 }
 
+function createCaseWheelController() {
+  let distance = 0
+  let direction = 0
+  let lastEvent = -Infinity
+  let lastStep = -Infinity
+
+  return ({ deltaY, deltaMode, time }) => {
+    const nextDirection = Math.sign(deltaY)
+    const reversed = nextDirection !== direction
+    if (reversed || time - lastEvent > 180) distance = 0
+    direction = nextDirection
+    lastEvent = time
+    if (!reversed && time - lastStep < 100) return 0
+    const pixels = deltaY * (deltaMode === 1 ? 20 : deltaMode === 2 ? 100 : 1)
+    distance += Math.min(Math.abs(pixels), 60)
+    if (distance < 60) return 0
+    distance = 0
+    lastStep = time
+    return direction
+  }
+}
+
+function CaseIcon({ name }) {
+  const path = {
+    case: <><path d="M6 4h12v16H6z"/><path d="M9 4V2h6v2M9 9h6M9 13h6M9 17h4"/></>,
+    external: <><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 13v6H5V6h6"/></>,
+    previous: <path d="m15 18-6-6 6-6"/>,
+    next: <path d="m9 18 6-6-6-6"/>,
+  }[name]
+  return <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{path}</svg>
+}
+
 function RadiopaediaCase({ caseId, lang }) {
   const data = RADIOPAEDIA_CASES[caseId]
   const t = value => pick(value, lang)
-  const [frameIndex, setFrameIndex] = useState(0)
+  const initialFrame = data.initialFrame || 0
+  const [frameIndex, setFrameIndex] = useState(initialFrame)
   const viewerRef = useRef(null)
-  const wheelLock = useRef(false)
-  const pointerStart = useRef(null)
+  const frameIndexRef = useRef(initialFrame)
+  const pointerStartRef = useRef(null)
+  const decodedFramesRef = useRef(new Set())
+  const loadAttemptRef = useRef(0)
+  const [loadAttempt, setLoadAttempt] = useState(0)
+  const [seriesReady, setSeriesReady] = useState(false)
+  const [loadFailed, setLoadFailed] = useState(false)
 
-  const selectFrame = next => setFrameIndex(current => Math.max(0, Math.min(data.frames.length - 1, typeof next === 'function' ? next(current) : next)))
-  const moveFrame = direction => selectFrame(current => current + direction)
+  const selectFrame = useCallback(index => {
+    const next = Math.min(data.frames.length - 1, Math.max(0, index))
+    frameIndexRef.current = next
+    setFrameIndex(next)
+  }, [data.frames.length])
+  const moveFrame = useCallback(delta => selectFrame(frameIndexRef.current + delta), [selectFrame])
+
   useEffect(() => {
     const viewer = viewerRef.current
     if (!viewer) return undefined
+    const wheelStep = createCaseWheelController()
     const handleWheel = event => {
-      if (wheelLock.current || Math.abs(event.deltaY) < 8) return
-      const direction = event.deltaY > 0 ? 1 : -1
-      const canMove = direction > 0 ? frameIndex < data.frames.length - 1 : frameIndex > 0
-      if (!canMove) return
+      if (event.ctrlKey || !event.deltaY || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return
       event.preventDefault()
-      wheelLock.current = true
-      moveFrame(direction)
-      window.setTimeout(() => { wheelLock.current = false }, 160)
+      if (!seriesReady) return
+      const step = wheelStep({ deltaY: event.deltaY, deltaMode: event.deltaMode, time: performance.now() })
+      if (step) moveFrame(step)
     }
     viewer.addEventListener('wheel', handleWheel, { passive: false })
     return () => viewer.removeEventListener('wheel', handleWheel)
-  }, [frameIndex, data.frames.length])
-  const onKeyDown = event => {
-    if (['ArrowDown', 'ArrowRight'].includes(event.key)) { event.preventDefault(); moveFrame(1) }
-    if (['ArrowUp', 'ArrowLeft'].includes(event.key)) { event.preventDefault(); moveFrame(-1) }
+  }, [seriesReady, moveFrame])
+
+  const handleFrameLoad = async (image, index, attempt) => {
+    try {
+      await image.decode()
+      if (loadAttemptRef.current !== attempt) return
+      decodedFramesRef.current.add(index)
+      if (decodedFramesRef.current.size === data.frames.length) setSeriesReady(true)
+    } catch {
+      if (loadAttemptRef.current === attempt) setLoadFailed(true)
+    }
   }
-  const frame = data.frames[frameIndex]
+  const retrySeries = () => {
+    decodedFramesRef.current.clear()
+    setSeriesReady(false)
+    setLoadFailed(false)
+    loadAttemptRef.current += 1
+    setLoadAttempt(loadAttemptRef.current)
+  }
+  const labels = {
+    previous: t(L('Vorheriges Bild', 'Previous image', 'تصویر قبلی')),
+    next: t(L('Nächstes Bild', 'Next image', 'تصویر بعدی')),
+    slider: t(L('Bild auswählen', 'Select image', 'انتخاب تصویر')),
+    loading: t(L('Bildserie wird vorbereitet …', 'Preparing image series …', 'در حال آماده‌سازی سری تصاویر …')),
+    error: t(L('Bildserie konnte nicht vollständig geladen werden.', 'The image series could not be fully loaded.', 'سری تصاویر کامل بارگذاری نشد.')),
+    retry: t(L('Erneut laden', 'Retry loading', 'بارگذاری دوباره')),
+  }
+  const handleKeyDown = event => {
+    if (!seriesReady) return
+    if (['ArrowDown', 'ArrowRight'].includes(event.key)) moveFrame(1)
+    else if (['ArrowUp', 'ArrowLeft'].includes(event.key)) moveFrame(-1)
+    else if (event.key === 'Home') selectFrame(0)
+    else if (event.key === 'End') selectFrame(data.frames.length - 1)
+    else return
+    event.preventDefault()
+  }
+  const handlePointerDown = event => {
+    if (!seriesReady || !event.isPrimary || event.button !== 0) return
+    pointerStartRef.current = { position: event.pointerType === 'touch' ? event.clientX : event.clientY }
+    event.currentTarget.setPointerCapture(event.pointerId)
+  }
+  const handlePointerMove = event => {
+    const start = pointerStartRef.current
+    if (!start) return
+    const position = event.pointerType === 'touch' ? event.clientX : event.clientY
+    const steps = Math.trunc((start.position - position) / 36)
+    if (!steps) return
+    start.position = position
+    moveFrame(steps)
+  }
+  const handlePointerEnd = event => {
+    pointerStartRef.current = null
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId)
+  }
 
   return <article className={styles.radiopaediaCase} aria-labelledby={`${caseId}-case-title`}>
-    <div ref={viewerRef} className={styles.caseViewer} role="group" aria-label={t(L('Scrollbarer Radiopaedia-Fall', 'Scrollable Radiopaedia case', 'کیس قابل اسکرول Radiopaedia'))} tabIndex={0} onKeyDown={onKeyDown} onPointerDown={event => { pointerStart.current = { x: event.clientX, y: event.clientY } }} onPointerUp={event => { if (!pointerStart.current) return; const deltaX = pointerStart.current.x - event.clientX; const deltaY = pointerStart.current.y - event.clientY; pointerStart.current = null; if (Math.abs(deltaX) > 34 && Math.abs(deltaX) > Math.abs(deltaY)) moveFrame(deltaX > 0 ? 1 : -1) }} data-testid={`${caseId}-case-viewer`}>
-      <div className={styles.caseImageStage}>
-        <Image key={frame.src} src={frame.src} alt={`${t(data.alt)} · ${frame.label}`} width={760} height={640} draggable={false} />
-        <span className={styles.caseFrameLabel}>{frame.label}</span>
-        <span className={styles.caseFrameCounter}>{String(frameIndex + 1).padStart(2, '0')} / {String(data.frames.length).padStart(2, '0')}</span>
+    <header className={styles.caseFileHeader}>
+      <span className={styles.caseFileIcon}><CaseIcon name="case" /></span>
+      <strong>{t(L('Fallbeispiel', 'Case example', 'نمونه کیس'))}</strong>
+      <a href={data.url} target="_blank" rel="noopener noreferrer">{t(L('Fall im Vollbild', 'Open case full screen', 'نمایش تمام‌صفحه کیس'))}<CaseIcon name="external" /></a>
+    </header>
+    <div className={styles.caseFileContent}>
+      <div className={styles.caseViewer}>
+        <div ref={viewerRef} className={styles.caseViewport} role="group" aria-busy={!seriesReady && !loadFailed} aria-label={t(data.alt)} tabIndex={0} onKeyDown={handleKeyDown} onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerEnd} onPointerCancel={handlePointerEnd} onLostPointerCapture={() => { pointerStartRef.current = null }} data-testid={`${caseId}-case-viewer`}>
+          {data.frames.map((frame, index) => <Image key={`${loadAttempt}-${frame.src}`} src={frame.src} alt={index === frameIndex ? `${t(data.alt)} · ${frame.label}` : ''} aria-hidden={index !== frameIndex} style={{ visibility: index === frameIndex ? 'visible' : 'hidden' }} width={760} height={640} unoptimized loading="eager" draggable={false} onLoad={event => handleFrameLoad(event.currentTarget, index, loadAttempt)} onError={() => { if (loadAttemptRef.current === loadAttempt) setLoadFailed(true) }} />)}
+          <div className={styles.caseImageMeta}><strong aria-live="polite">{String(frameIndex + 1).padStart(2, '0')} <i>/ {data.frames.length}</i></strong></div>
+          {!seriesReady || loadFailed ? <small className={styles.caseViewportHint} dir={lang === 'fa' ? 'rtl' : 'ltr'} role="status">{loadFailed ? <>{labels.error} <button type="button" onClick={retrySeries}>{labels.retry}</button></> : labels.loading}</small> : null}
+          <div className={styles.caseControls} dir="ltr" onPointerDown={event => event.stopPropagation()} onPointerMove={event => event.stopPropagation()}>
+            <button type="button" onClick={() => moveFrame(-1)} disabled={!seriesReady || frameIndex === 0} aria-label={labels.previous} title={labels.previous}><CaseIcon name="previous" /></button>
+            <div className={styles.caseRange}><input type="range" disabled={!seriesReady} min="0" max={data.frames.length - 1} step="1" value={frameIndex} onChange={event => selectFrame(Number(event.target.value))} aria-label={labels.slider} aria-valuetext={`${frameIndex + 1} / ${data.frames.length} · ${data.frames[frameIndex].label}`} /></div>
+            <button type="button" onClick={() => moveFrame(1)} disabled={!seriesReady || frameIndex === data.frames.length - 1} aria-label={labels.next} title={labels.next}><CaseIcon name="next" /></button>
+          </div>
+        </div>
       </div>
-      <div className={styles.caseViewerControls}>
-        <button type="button" onClick={() => moveFrame(-1)} disabled={frameIndex === 0} aria-label={t(L('Vorheriges Bild', 'Previous image', 'تصویر قبلی'))}>←</button>
-        <div className={styles.caseFrameDots} aria-label={t(L('Bild auswählen', 'Select image', 'انتخاب تصویر'))}>{data.frames.map((item, index) => <button key={item.src} type="button" className={index === frameIndex ? styles.caseFrameDotActive : ''} onClick={() => selectFrame(index)} aria-label={`${t(L('Bild', 'Image', 'تصویر'))} ${index + 1}: ${item.label}`} aria-current={index === frameIndex ? 'true' : undefined} />)}</div>
-        <button type="button" onClick={() => moveFrame(1)} disabled={frameIndex === data.frames.length - 1} aria-label={t(L('Nächstes Bild', 'Next image', 'تصویر بعدی'))}>→</button>
+      <div className={styles.caseBody}>
+        <h3 id={`${caseId}-case-title`}>{t(data.title)}</h3>
+        <div className={styles.caseContext}><strong>{t(data.patient)}</strong><p>{t(data.presentation)}</p></div>
+        <section className={styles.caseFindings} aria-labelledby={`${caseId}-findings-title`}>
+          <h4 id={`${caseId}-findings-title`}>{t(L('Was sehen wir?', 'What do we see?', 'چه می‌بینیم؟'))}</h4>
+          <ol>{data.findings.map((finding, index) => <li key={t(finding)}><span>{index + 1}</span><p>{t(finding)}</p></li>)}</ol>
+          <div className={styles.caseInterpretation}><strong>{t(L('Entscheidender Befund', 'Key interpretation', 'یافته کلیدی'))}</strong><p>{t(data.teaching)}</p></div>
+        </section>
       </div>
-      <p className={styles.caseViewerHint}>{t(L('Scrollen · Wischen · Pfeiltasten', 'Scroll · swipe · arrow keys', 'اسکرول · سوایپ · کلیدهای جهت'))}</p>
     </div>
-    <div className={styles.caseContent}>
-      <header><small>RADIOPAEDIA CASE</small><h3 id={`${caseId}-case-title`}>{t(data.title)}</h3><strong>{t(data.patient)}</strong><p>{t(data.presentation)}</p></header>
-      <ul>{data.findings.map(finding => <li key={t(finding)}>{t(finding)}</li>)}</ul>
-      <aside><b>{t(L('Lehrpunkt', 'Teaching point', 'نکته آموزشی'))}</b><p>{t(data.teaching)}</p></aside>
-      <a className={styles.caseSourceLink} href={data.url} target="_blank" rel="noopener noreferrer">{t(L('Originalfall in Radiopaedia öffnen', 'Open the original Radiopaedia case', 'باز کردن کیس اصلی در Radiopaedia'))}<span aria-hidden="true">↗</span></a>
-      <p className={styles.caseCredit}>{data.credit}</p>
-    </div>
+    <footer className={styles.caseCredit}>{data.credit}</footer>
   </article>
 }
 
