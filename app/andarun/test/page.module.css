@@ -32,9 +32,11 @@
   z-index: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg,rgba(16,12,26,.65),rgba(20,16,29,.78)),
-    url('/andarun-galaxy-v2.png') center / cover no-repeat;
-  filter: saturate(.7) brightness(.85) blur(2px);
+    radial-gradient(ellipse 80% 56% at 78% 2%,transparent 0 38%,rgba(108,170,181,.07) 38.2% 38.45%,transparent 38.7% 52%,rgba(167,112,174,.055) 52.2% 52.45%,transparent 52.7%),
+    linear-gradient(118deg,transparent 0 43%,rgba(134,191,197,.045) 43.15%,transparent 43.4%),
+    repeating-linear-gradient(90deg,rgba(205,222,228,.018) 0 1px,transparent 1px 96px),
+    repeating-linear-gradient(0deg,rgba(205,222,228,.014) 0 1px,transparent 1px 96px),
+    linear-gradient(155deg,#100d18 0%,#17121f 48%,#0b1119 100%);
 }
 .page::after {
   content: '';
@@ -46,8 +48,9 @@
   z-index: 0;
   pointer-events: none;
   background: url('/educational/stroke-hero-cutout-v2.png') right center / contain no-repeat;
-  filter: saturate(.78) contrast(.95);
-  opacity: .5;
+  filter: saturate(.48) contrast(1.04) brightness(.68);
+  opacity: .34;
+  mix-blend-mode: screen;
   -webkit-mask-image: linear-gradient(90deg,transparent 0,#000 26%),linear-gradient(180deg,#000 75%,transparent 100%);
   mask-image: linear-gradient(90deg,transparent 0,#000 26%),linear-gradient(180deg,#000 75%,transparent 100%);
   -webkit-mask-composite: source-in;
@@ -72,6 +75,8 @@
 .secondaryAction { border: 1px solid #a7a1ae; background: rgba(255,255,255,.78); color: var(--plum-900); }
 .actions .takeHomeJump { border: 1px solid rgba(166,57,97,.42); background: linear-gradient(120deg,rgba(255,249,251,.96),rgba(247,226,235,.9)); color: #6d1d3b; box-shadow: 0 12px 25px rgba(102,25,55,.1); }
 .actions .takeHomeJump:hover { box-shadow: 0 16px 30px rgba(102,25,55,.16); }
+.actions .demoAction { opacity: 1; cursor: default; }
+.actions .demoAction:hover { transform: none; }
 
 .progressBar { min-height: 58px; display: grid; grid-template-columns: minmax(240px,560px) auto minmax(0,1fr); align-items: center; gap: 14px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.96); box-shadow: 0 8px 20px rgba(35,18,39,.035); }
 .progressTrack { height: 9px; overflow: hidden; border-radius: 999px; background: #e9e7ec; }
@@ -263,8 +268,6 @@
 .page :is(a,button):focus-visible { outline: 3px solid var(--teal-500); outline-offset: 3px; }
 
 :global(html[data-theme='dark']) .page { --ink: #f4eef5; --body: #c8c2cf; --muted: #9892a2; --line: #413947; --paper: #221f27; --canvas: #0b0910; --plum-100: #39283b; --teal-100: #183f41; --coral-100: #3d2425; background: var(--canvas); }
-:global(html[data-theme='dark']) .page::before { background-image: linear-gradient(180deg,rgba(5,4,12,.78),rgba(11,9,16,.88)),url('/andarun-galaxy-v2.png'); filter: saturate(.82) contrast(.98) brightness(.78); }
-:global(html[data-theme='dark']) .page::after { filter: saturate(.85) contrast(1.04) brightness(.72); opacity: .42; mix-blend-mode: screen; }
 :global(html[data-theme='dark']) .progressBar,
 :global(html[data-theme='dark']) .sidebar,
 :global(html[data-theme='dark']) .section { background: rgba(34,31,39,.94); }
