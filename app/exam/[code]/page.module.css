@@ -1,8 +1,11 @@
 .examTopbar { position: fixed; inset: 0 0 auto; z-index: 100; display: flex; align-items: center; justify-content: space-between; min-height: 64px; padding: 9px max(18px, calc((100vw - 1100px) / 2)); border-bottom: 1px solid rgba(203,213,225,.75); background: rgba(255,255,255,.9); box-shadow: 0 8px 28px rgba(15,23,42,.055); backdrop-filter: blur(16px); }
 .homeLink, .themeToggle { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 13px; border-radius: 10px; color: #354158; font: 750 12px Vazirmatn, sans-serif; text-decoration: none; transition: .16s ease; }
-.homeLink { border: 1px solid #dbe2eb; background: #fff; }
-.homeLink span { color: #f45b16; font-size: 18px; }
-.homeLink:hover { border-color: #fdba74; color: #17213a; }
+.homeLink { padding-inline: 3px; }
+.homeLink:hover { transform: translateY(-1px); opacity: .82; }
+.examWordmark { display: flex; align-items: baseline; direction: ltr; line-height: 1; }
+.rad, .yar { font-family: var(--font-fraunces, Georgia, serif); font-size: 22px; font-style: italic; font-weight: 900; letter-spacing: -.5px; }
+.rad { color: #17213a; }
+.yar { background: linear-gradient(130deg,#f97316,#fbbf24); background-clip: text; color: transparent; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .themeToggle { border: 0; background: #17213a; color: #fff; cursor: pointer; }
 .themeToggle span { font-size: 16px; }
 .themeToggle strong { font: inherit; }
@@ -182,7 +185,7 @@
 
 :global(html[data-theme='dark']) .page { background: radial-gradient(circle at 12% 8%, rgba(14,165,233,.09), transparent 28rem), #07111f; color: #dce5ef; }
 :global(html[data-theme='dark']) .examTopbar { border-color: #25344a; background: rgba(7,17,31,.9); box-shadow: 0 8px 28px rgba(0,0,0,.22); }
-:global(html[data-theme='dark']) .homeLink { border-color: #31425a; background: #101e31; color: #dce5ef; }
+:global(html[data-theme='dark']) .rad { color: rgba(240,225,200,.95); }
 :global(html[data-theme='dark']) .themeToggle { background: #f3f6fa; color: #17213a; }
 :global(html[data-theme='dark']) .centerCard,
 :global(html[data-theme='dark']) .introCard,

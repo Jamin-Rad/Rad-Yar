@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useTheme } from '@/providers/ThemeProvider'
+import RadYarIcon from '@/components/RadYarIcon'
 import styles from './page.module.css'
 
 const EXAM_COPY = Object.freeze({
@@ -18,9 +19,9 @@ const EXAM_COPY = Object.freeze({
 })
 
 const HEADER_COPY = Object.freeze({
-  fa: { home: 'صفحه اصلی رادیار', light: 'حالت روشن', dark: 'حالت تاریک' },
-  en: { home: 'RadYar home', light: 'Light mode', dark: 'Dark mode' },
-  de: { home: 'RadYar-Startseite', light: 'Heller Modus', dark: 'Dunkler Modus' },
+  fa: { light: 'حالت روشن', dark: 'حالت تاریک' },
+  en: { light: 'Light mode', dark: 'Dark mode' },
+  de: { light: 'Heller Modus', dark: 'Dunkler Modus' },
 })
 
 function ExamFrame({ children, language = 'fa', dir = 'rtl' }) {
@@ -31,7 +32,10 @@ function ExamFrame({ children, language = 'fa', dir = 'rtl' }) {
   return (
     <>
       <header className={styles.examTopbar} dir={dir}>
-        <Link href="/" className={styles.homeLink}><span aria-hidden="true">⌂</span>{labels.home}</Link>
+        <Link href="/?lang=de" className={styles.homeLink} dir="ltr" aria-label="RadYar Startseite auf Deutsch" title="RadYar Startseite auf Deutsch">
+          <RadYarIcon size={30} />
+          <span className={styles.examWordmark} aria-hidden="true"><span className={styles.rad}>RAD</span><span className={styles.yar}>YAR</span></span>
+        </Link>
         <button type="button" className={styles.themeToggle} onClick={toggleTheme} aria-label={themeLabel} title={themeLabel}>
           <span aria-hidden="true">{theme === 'dark' ? '☀' : '☾'}</span>
           <strong>{themeLabel}</strong>
