@@ -30,9 +30,14 @@
 .successCard > div:first-child, .shareCard > div:first-child { display: grid; gap: 4px; }
 .successCard strong, .shareCard strong { color: #075f4c; }
 .successCard span, .shareCard span { color: #527065; font-size: 12px; }
+.shareTools { display: flex; align-items: center; justify-content: flex-end; gap: 14px; min-width: min(700px, 68%); }
 .shareRow { display: flex; align-items: center; gap: 8px; min-width: min(540px, 55%); }
 .shareRow input { min-width: 0; flex: 1; height: 40px; padding: 0 12px; border: 1px solid #c9ded6; border-radius: 9px; background: #fff; color: #334155; }
 .shareRow button, .shareRow a { min-height: 40px; padding: 0 14px; border: 0; border-radius: 9px; background: #087c64; color: #fff; cursor: pointer; font: 750 12px/40px Vazirmatn, sans-serif; text-decoration: none; white-space: nowrap; }
+.qrBox { display: grid; flex: 0 0 auto; place-items: center; gap: 8px; padding: 10px; border: 1px solid #c9ded6; border-radius: 13px; background: #fff; box-shadow: 0 7px 20px rgba(7,95,76,.08); }
+.qrBox canvas { display: block; width: 136px; height: 136px; }
+.qrBox button { width: 100%; min-height: 34px; padding: 0 10px; border: 0; border-radius: 8px; background: #e8f7f1; color: #08705b; cursor: pointer; font: 750 11px Vazirmatn, sans-serif; }
+.qrBox button:hover { background: #d8f2e8; }
 
 .stats, .resultSummary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 20px; }
 .stats article, .resultSummary article { display: flex; align-items: center; justify-content: space-between; min-height: 88px; padding: 18px 21px; border: 1px solid #e1e6ef; border-radius: 15px; background: rgba(255,255,255,.88); box-shadow: 0 10px 30px rgba(28,39,61,.045); }
@@ -187,6 +192,7 @@
   .shell { width: min(100% - 24px, 720px); padding-top: 26px; }
   .hero, .successCard, .shareCard, .detailTitle { align-items: stretch; flex-direction: column; }
   .hero .primaryButton { width: 100%; }
+  .shareTools { width: 100%; min-width: 0; }
   .shareRow { width: 100%; min-width: 0; }
   .stats, .resultSummary { grid-template-columns: 1fr; gap: 8px; }
   .stats article, .resultSummary article { min-height: 66px; }
@@ -202,8 +208,10 @@
   .activationChoices { grid-template-columns: 1fr; }
   .bankHeader, .bankActions { align-items: stretch; flex-direction: column; }
   .bankActions button { width: 100%; }
+  .shareTools { align-items: stretch; flex-direction: column; }
   .shareRow { flex-wrap: wrap; }
   .shareRow input { flex-basis: 100%; }
+  .qrBox { width: min(100%, 190px); align-self: center; }
   .formActions { flex-direction: column-reverse; padding: 18px; }
   .formError { margin: 16px 18px 0; }
   .formActions button { width: 100%; }

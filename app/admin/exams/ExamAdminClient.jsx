@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
+import { QRCodeCanvas } from 'qrcode.react'
 import styles from './page.module.css'
 
 const emptyQuestion = () => ({ sourceId: '', sourceLabel: '', prompt: '', options: ['', '', '', ''], correctOptionIndex: 0, points: 1 })
@@ -61,6 +62,36 @@ function examDisplayState(exam) {
 function formatDate(value) {
   if (!value) return '—'
   return new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value))
+}
+
+function ExamQrCode({ value }) {
+  const canvasRef = useRef(null)
+
+  function downloadQrCode() {
+    if (!canvasRef.current) return
+    const examCode = value.split('/').filter(Boolean).at(-1) || 'exam'
+    const downloadLink = document.createElement('a')
+    downloadLink.download = `radyar-exam-${examCode}-qr.png`
+    downloadLink.href = canvasRef.current.toDataURL('image/png')
+    downloadLink.click()
+  }
+
+  return (
+    <div className={styles.qrBox}>
+      <QRCodeCanvas
+        ref={canvasRef}
+        value={value}
+        size={136}
+        level="M"
+        marginSize={2}
+        bgColor="#ffffff"
+        fgColor="#14203a"
+        aria-label="QR-Code لینک شرکت در امتحان"
+        role="img"
+      />
+      <button type="button" onClick={downloadQrCode}>دانلود QR-Code</button>
+    </div>
+  )
 }
 
 async function readJson(response) {
@@ -330,10 +361,13 @@ export default function ExamAdminClient() {
 
         {createdLink ? (
           <section className={styles.successCard} aria-live="polite">
-            <div><strong>امتحان ساخته شد.</strong><span>این لینک را برای شرکت‌کنندگان بفرستید.</span></div>
-            <div className={styles.shareRow} dir="ltr">
-              <input value={createdLink} readOnly aria-label="لینک امتحان" />
-              <button type="button" onClick={() => copyLink(createdLink)}>{copied === createdLink ? 'کپی شد ✓' : 'کپی لینک'}</button>
+            <div><strong>امتحان ساخته شد.</strong><span>این لینک یا QR-Code را برای شرکت‌کنندگان بفرستید.</span></div>
+            <div className={styles.shareTools}>
+              <div className={styles.shareRow} dir="ltr">
+                <input value={createdLink} readOnly aria-label="لینک امتحان" />
+                <button type="button" onClick={() => copyLink(createdLink)}>{copied === createdLink ? 'کپی شد ✓' : 'کپی لینک'}</button>
+              </div>
+              <ExamQrCode value={createdLink} />
             </div>
           </section>
         ) : null}
@@ -498,7 +532,10 @@ export default function ExamAdminClient() {
 
               <div className={styles.shareCard}>
                 <div><strong>لینک شرکت در امتحان</strong><span>{detail.questions.length.toLocaleString('fa-IR')} سؤال · {detail.exam.duration_minutes.toLocaleString('fa-IR')} دقیقه پاسخ‌گویی</span><span>فعال از {formatDate(detail.exam.opens_at)} تا {formatDate(detail.exam.closes_at)}</span></div>
-                <div className={styles.shareRow} dir="ltr"><input value={shareLink} readOnly /><Link href={`/exam/${detail.exam.public_code}`} target="_blank">بازکردن</Link><button type="button" onClick={() => copyLink(shareLink)}>{copied === shareLink ? 'کپی شد ✓' : 'کپی'}</button></div>
+                <div className={styles.shareTools}>
+                  <div className={styles.shareRow} dir="ltr"><input value={shareLink} readOnly aria-label="لینک امتحان" /><Link href={`/exam/${detail.exam.public_code}`} target="_blank">بازکردن</Link><button type="button" onClick={() => copyLink(shareLink)}>{copied === shareLink ? 'کپی شد ✓' : 'کپی'}</button></div>
+                  <ExamQrCode value={shareLink} />
+                </div>
               </div>
 
               <div className={styles.resultSummary}>
