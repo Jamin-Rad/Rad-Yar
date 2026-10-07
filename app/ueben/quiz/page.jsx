@@ -47,7 +47,7 @@ const UI = {
     incorrect: 'Leider falsch',
     correctAnswer: 'Richtige Antwort:',
     explanation: 'Erklärung',
-    whyWrong: 'Warum deine Antwort falsch ist',
+    whyWrong: 'Einordnung der gewählten Antwort',
     result: 'Dein Ergebnis',
     scoreLabel: (s, t) => `${s} von ${t} richtig`,
     summary: 'Zusammenfassung',
@@ -86,7 +86,7 @@ const UI = {
     incorrect: 'Incorrect',
     correctAnswer: 'Correct answer:',
     explanation: 'Explanation',
-    whyWrong: 'Why your answer is incorrect',
+    whyWrong: 'Selected option analysis',
     result: 'Your score',
     scoreLabel: (s, t) => `${s} of ${t} correct`,
     summary: 'Summary',
@@ -125,7 +125,7 @@ const UI = {
     incorrect: 'متأسفانه اشتباه',
     correctAnswer: 'پاسخ صحیح:',
     explanation: 'توضیح',
-    whyWrong: 'چرا پاسخ شما نادرست است',
+    whyWrong: 'بررسی گزینهٔ انتخاب‌شده',
     result: 'نتیجه شما',
     scoreLabel: (s, t) => `${s} از ${t} درست`,
     summary: 'خلاصه',
@@ -555,7 +555,7 @@ function QuizContent() {
                     </div>
                   )}
                   <div className={styles.sumExp}>
-                    {ok ? getCorrectAnswerExplanation(sq, lang) : sq.explanation}
+                    {ok ? getCorrectAnswerExplanation(sq, lang) : getWrongAnswerExplanation(sq, ans?.selected, lang) || sq.explanation}
                   </div>
                 </div>
               )
