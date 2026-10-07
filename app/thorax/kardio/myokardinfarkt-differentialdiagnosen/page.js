@@ -723,7 +723,7 @@ export default function MyocardialInfarctionDifferentialPage() {
     sections={localizedSections}
     labels={labels}
     actions={{
-      mcq: { label: pick(L('MCQ starten', 'Start MCQ', 'شروع MCQ'), lang), href: withLang(`/ueben/quiz?fach=thorax&n=6&themen=${ID}&from=${encodeURIComponent(withLang(PATH))}`) },
+      mcq: { label: pick(L('MCQ starten', 'Start MCQ', 'شروع MCQ'), lang), href: withLang(`/ueben/quiz?fach=thorax&n=11&themen=${ID}&from=${encodeURIComponent(withLang(PATH))}`) },
       flashcards: { label: pick(L('Flashcards', 'Flashcards', 'فلش‌کارت‌ها'), lang), href: withLang(`/flashcards/${ID}?from=${encodeURIComponent(withLang(PATH))}`) },
     }}
     renderIcon={id => <SectionIcon id={id} />}
