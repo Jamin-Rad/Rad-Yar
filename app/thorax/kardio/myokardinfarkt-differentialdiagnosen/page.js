@@ -1,11 +1,9 @@
 'use client'
 
-import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
-import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
-import template from '@/app/andarun/test/page.module.css'
+import StandardLessonShell, { LessonSection, LessonSources, TakeHomeList } from '@/components/lesson-template/StandardLessonShell'
 import styles from './page.module.css'
 
 const ID = 'myokardinfarkt-differentialdiagnosen'
@@ -20,6 +18,7 @@ const COPY = {
   contents: L('Lektionsinhalt', 'Lesson content', 'محتوای درس'),
   path: L('Lernpfad', 'Learning path', 'مسیر یادگیری'),
   progress: L('gelesen', 'read', 'خوانده‌شده'),
+  takeHome: L('Take Home Message', 'Take Home Message', 'پیام نهایی'),
   continue: L('Lektion fortsetzen', 'Continue lesson', 'ادامه درس'),
   completeLesson: L('Ganze Lektion als gelesen markieren', 'Mark full lesson as read', 'علامت‌گذاری کل درس به‌عنوان خوانده‌شده'),
   lessonCompleted: L('Ganze Lektion gelesen', 'Full lesson marked as read', 'کل درس خوانده شد'),
@@ -39,9 +38,8 @@ const SECTIONS = [
   { id: 'myokarditis', label: L('Myokarditis', 'Myocarditis', 'میوکاردیت') },
   { id: 'sarkoidose', label: L('Kardiale Sarkoidose', 'Cardiac sarcoidosis', 'سارکوئیدوز قلبی') },
   { id: 'infarkt', label: L('Akuter vs. chronischer Infarkt', 'Acute vs. chronic infarction', 'انفارکت حاد در برابر مزمن') },
-  { id: 'algorithmus', label: L('Take Home Message', 'Take-home message', 'پیام نهایی') },
+  { id: 'algorithmus', label: L('Take Home Message', 'Take Home Message', 'پیام نهایی'), emphasis: true },
 ]
-const SECTION_IDS = SECTIONS.map(section => section.id)
 const SECTION_LABELS = Object.fromEntries(SECTIONS.map(section => [section.id, section.label]))
 
 const ICONS = {
@@ -130,6 +128,43 @@ const REFERENCES = [
   ['Radiopaedia case 74548 · Cardiac sarcoidosis', 'https://radiopaedia.org/cases/74548'],
 ]
 
+const REFERENCE_CITATIONS = [
+  'European Heart Journal · 2023',
+  'European Heart Journal · 2025',
+  'European Heart Journal · 2024',
+  'Society for Cardiovascular Magnetic Resonance · 2020',
+  'JACC Scientific Expert Panel · 2018',
+  'European Heart Journal · International Expert Consensus',
+  'Circulation · AHA Scientific Statement',
+  'Circulation · AHA Scientific Statement',
+  'Radiopaedia.org · rID 33052',
+  'Radiopaedia.org · rID 77023',
+  'Radiopaedia.org · rID 74548',
+]
+
+const TAKE_HOME_ITEMS = [
+  {
+    title: L('Akutversorgung hat Vorrang', 'Acute care comes first', 'درمان حاد اولویت دارد'),
+    detail: L('Bei STEMI oder hämodynamischer Instabilität darf die Kardio-MRT die sofortige Akutversorgung und Koronarangiographie nicht verzögern.', 'In STEMI or haemodynamic instability, cardiac MRI must not delay immediate treatment and coronary angiography.', 'در STEMI یا ناپایداری همودینامیک، MRI قلب نباید درمان فوری و آنژیوگرافی کرونر را به تأخیر بیندازد.'),
+  },
+  {
+    title: L('LGE-Muster lokalisiert die Schädigung', 'The LGE pattern localises injury', 'الگوی LGE محل آسیب را مشخص می‌کند'),
+    detail: L('Subendokardiales oder transmurales LGE in einem Koronarterritorium spricht für Ischämie; subepikardiale oder midmyokardiale Herde für einen nichtischämischen Prozess.', 'Subendocardial or transmural LGE in a coronary territory supports ischaemia; subepicardial or mid-wall foci support a non-ischaemic process.', 'LGE ساب‌اندوکاردیال یا ترانس‌مورال در قلمرو کرونری به نفع ایسکمی است؛ کانون‌های ساب‌اپیکاردیال یا میدوال به نفع فرایند غیرایسکمیک هستند.'),
+  },
+  {
+    title: L('T2 zeigt die Aktivität', 'T2 indicates activity', 'T2 فعالیت را نشان می‌دهد'),
+    detail: L('Myokardödem stützt einen akuten oder aktiven Prozess, ist allein jedoch nicht spezifisch und muss zusammen mit LGE, Mapping und Klinik bewertet werden.', 'Myocardial oedema supports an acute or active process but is not specific by itself and must be interpreted with LGE, mapping, and the clinical context.', 'ادم میوکارد از فرایند حاد یا فعال حمایت می‌کند، اما به‌تنهایی اختصاصی نیست و باید همراه با LGE، مپینگ و زمینه بالینی تفسیر شود.'),
+  },
+  {
+    title: L('Cine ordnet die Funktion ein', 'Cine defines the functional pattern', 'Cine الگوی عملکردی را مشخص می‌کند'),
+    detail: L('Territoriale Hypo- oder Akinesie, Ballooning über Gefäßgrenzen hinaus und globale Dysfunktion führen zu unterschiedlichen Differenzialdiagnosen.', 'Territorial hypokinesia or akinesia, ballooning beyond vascular territories, and global dysfunction point toward different differential diagnoses.', 'هیپوکینزی یا آکینزی قلمرویی، بالونینگ فراتر از مرز عروقی و اختلال عملکرد کلی به تشخیص‌های افتراقی متفاوتی هدایت می‌کنند.'),
+  },
+  {
+    title: L('CMR präzisiert MINOCA', 'CMR refines MINOCA', 'CMR تشخیص MINOCA را دقیق می‌کند'),
+    detail: L('Bei nichtobstruktiven Koronarien trennt die frühe Kardio-MRT einen echten Infarkt von Myokarditis, Takotsubo und anderen nichtischämischen Ursachen.', 'With non-obstructive coronary arteries, early cardiac MRI distinguishes true infarction from myocarditis, Takotsubo syndrome, and other non-ischaemic causes.', 'در عروق کرونر غیرانسدادی، MRI زودهنگام قلب انفارکت واقعی را از میوکاردیت، تاکوتسوبو و سایر علل غیرایسکمیک افتراق می‌دهد.'),
+  },
+]
+
 const RADIOPAEDIA_CASES = {
   takotsubo: {
     title: L('Radiopaedia-Fall: atypisches Takotsubo-Syndrom', 'Radiopaedia case: atypical Takotsubo syndrome', 'کیس Radiopaedia: تاکوتسوبوی آتیپیک'),
@@ -202,27 +237,12 @@ const RADIOPAEDIA_CASES = {
   },
 }
 
-const LessonContext = createContext(null)
-
 function SectionIcon({ id }) {
   return <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={ICONS[id] || ICONS['lge-muster']} /></svg>
 }
 
 function Section({ id, title, children }) {
-  const context = useContext(LessonContext)
-  const open = context.openId === id
-  const isRead = context.readSections.has(id)
-  return <section id={id} className={`${template.section} ${open ? template.sectionOpen : ''} ${styles.section}`}>
-    <button type="button" className={`${template.sectionHeader} ${styles.sectionHeader}`} onClick={() => context.selectSection(id)} aria-expanded={open} aria-controls={`${id}-panel`}>
-      <span className={template.sectionIcon}><SectionIcon id={id} /></span>
-      <span><strong>{title}</strong></span>
-      <span className={template.toggle} aria-hidden="true">{open ? '−' : '+'}</span>
-    </button>
-    <div id={`${id}-panel`} hidden={!open} className={`${template.sectionBody} ${styles.sectionBody}`}>
-      {children}
-      <button type="button" className={`${template.readButton} ${styles.sectionReadButton} ${isRead ? template.readButtonDone : ''}`} aria-pressed={isRead} onClick={() => context.toggleSectionRead(id)}><SectionIcon id="takehome" />{pick(isRead ? COPY.completed : COPY.complete, context.lang)}</button>
-    </div>
-  </section>
+  return <LessonSection id={id} title={title} icon={id} bodyClassName={styles.sectionBody}>{children}</LessonSection>
 }
 
 function PatternExplorer({ lang }) {
@@ -385,6 +405,7 @@ function LessonContent({ lang }) {
       <LgeBasics lang={lang} />
       <LayerDiagram lang={lang} />
       <PatternExplorer lang={lang} />
+      <DecisionTree lang={lang} />
     </Section>
 
     <Section id="minoca" title={t(SECTION_LABELS.minoca)}>
@@ -447,78 +468,67 @@ function LessonContent({ lang }) {
     </Section>
 
     <Section id="algorithmus" title={t(SECTION_LABELS.algorithmus)}>
-      <div className={styles.takeHomeIntro}>
-        <span><SectionIcon id="takehome" /></span>
-        <div><h3>{t(L('Nicht der Einzelbefund, sondern das Gesamtmuster entscheidet.', 'The complete pattern—not one finding—decides.', 'الگوی کلی، نه یک یافته منفرد، تعیین‌کننده است.'))}</h3><div className={styles.takeHomePrinciples}><span><b>LGE</b>{t(L('lokalisiert die Schädigung.', 'localises the injury.', 'محل آسیب را مشخص می‌کند.'))}</span><span><b>T2</b>{t(L('zeigt die Aktivität.', 'indicates activity.', 'فعالیت را نشان می‌دهد.'))}</span><span><b>Cine</b>{t(L('ordnet die Funktion ein.', 'assesses function.', 'عملکرد را ارزیابی می‌کند.'))}</span></div></div>
-      </div>
-      <DecisionTree lang={lang} />
-      <div className={styles.takeHomeSteps}>{[
-        [L('LGE', 'LGE', 'LGE'), L('Muster', 'Pattern', 'الگو'), L('Subendokardial im Territorium = ischämisch; subepikardial/midmyokardial = nichtischämisch.', 'Subendocardial territorial enhancement is ischaemic; subepicardial/mid-wall enhancement is non-ischaemic.', 'درگیری ساب‌اندوکاردیال قلمرویی ایسکمیک و ساب‌اپیکاردیال/میدوال غیرایسکمیک است.')],
-        [L('T2', 'T2', 'T2'), L('Aktivität', 'Activity', 'فعالیت'), L('Ödem spricht für einen akuten oder aktiven Prozess, ist allein aber nicht spezifisch.', 'Oedema supports an acute or active process but is not specific alone.', 'ادم به نفع فرایند حاد یا فعال است اما اختصاصی نیست.')],
-        [L('Cine', 'Cine', 'Cine'), L('Funktion', 'Function', 'عملکرد'), L('Territoriale Akinesie, Ballooning oder globale Dysfunktion gezielt einordnen.', 'Classify territorial akinesia, ballooning, or global dysfunction.', 'آکینزی قلمرویی، بالونینگ یا اختلال کلی را طبقه‌بندی کنید.')],
-      ].map(([label, title, text], index) => <article key={t(label)}><div><span>{String(index + 1).padStart(2, '0')}</span><strong>{t(label)}</strong></div><h3>{t(title)}</h3><p>{t(text)}</p></article>)}</div>
-      <aside className={styles.takeHomeBottomLine}><SectionIcon id="takehome" /><p>{t(L('Bei STEMI oder hämodynamischer Instabilität hat die Akutversorgung Vorrang. CMR hilft anschließend, wenn die Ursache der Myokardschädigung unklar bleibt.', 'In STEMI or haemodynamic instability, acute treatment takes priority. CMR helps when the cause of myocardial injury remains unclear.', 'در STEMI یا ناپایداری همودینامیک، درمان فوری اولویت دارد؛ CMR زمانی کمک می‌کند که علت آسیب میوکارد نامشخص بماند.'))}</p></aside>
+      <TakeHomeList items={TAKE_HOME_ITEMS.map(item => ({ title: t(item.title), detail: t(item.detail) }))} />
     </Section>
-
-    <details className={styles.sourcesDisclosure}><summary>{t(L('Leitlinien & Konsensusdokumente', 'Guidelines & consensus documents', 'گایدلاین‌ها و اسناد اجماعی'))}</summary><div>{REFERENCES.map(([title, href], index) => <a key={href} href={href} target="_blank" rel="noreferrer"><span>{String(index + 1).padStart(2, '0')}</span><strong>{title}</strong><i aria-hidden="true">↗</i></a>)}</div></details>
-
   </>
-}
-
-function MobilePath({ lang, openId, readSections, onSelect }) {
-  const [panelOpen, setPanelOpen] = useState(false)
-  const current = SECTIONS.find(section => section.id === openId) || SECTIONS[0]
-  const progress = (readSections.size / SECTIONS.length) * 360
-  const select = id => { onSelect(id); setPanelOpen(false) }
-  return <div className={`${template.mobileLearningPath} ${styles.mobileLearningPath}`}>
-    {panelOpen ? <section id="mi-dd-mobile-path" className={`${template.mobilePathPanel} ${styles.mobilePathPanel}`} role="dialog" aria-label={pick(COPY.path, lang)}><header><div><small>{pick(COPY.progress, lang)}</small><strong>{readSections.size} / {SECTIONS.length}</strong></div><button type="button" onClick={() => setPanelOpen(false)} aria-label={pick(COPY.close, lang)}>×</button></header><nav>{SECTIONS.map(section => <button type="button" key={section.id} className={openId === section.id ? template.mobilePathCurrent : ''} onClick={() => select(section.id)} aria-current={openId === section.id ? 'location' : undefined}><span className={template.mobilePathItemIcon}><SectionIcon id={section.id} /></span><span><strong>{pick(section.label, lang)}</strong><small>{pick(section.label, lang)}</small></span><i aria-hidden="true">{readSections.has(section.id) ? '✓' : ''}</i></button>)}</nav></section> : null}
-    <button type="button" className={`${template.mobilePathButton} ${styles.mobilePathButton}`} onClick={() => setPanelOpen(value => !value)} aria-expanded={panelOpen} aria-controls="mi-dd-mobile-path"><span className={`${template.mobileProgressRing} ${styles.mobileProgressRing}`} style={{ '--mobile-progress': `${progress}deg` }}><b>{readSections.size}</b><small>/{SECTIONS.length}</small></span><span className={`${template.mobileCurrentIcon} ${styles.mobileCurrentIcon}`}><SectionIcon id={current.id} /></span><span className={template.mobilePathLabel}><strong>{pick(COPY.path, lang)}</strong><small>{pick(current.label, lang)}</small></span></button>
-  </div>
 }
 
 export default function MyocardialInfarctionDifferentialPage() {
   const { lang } = useLanguage()
-  const [openId, setOpenId] = useState(SECTIONS[0].id)
-  const [readSections, setReadSections] = usePersistedSectionProgress(ID, SECTION_IDS)
-  const activeIndex = useMemo(() => SECTIONS.findIndex(section => section.id === openId), [openId])
   const withLang = href => lang === 'de' ? href : `${href}${href.includes('?') ? '&' : '?'}lang=${lang}`
-  const lessonPath = '/thorax/kardio/myokardinfarkt-differentialdiagnosen'
-
-  useEffect(() => {
-    const hash = window.location.hash.slice(1)
-    if (SECTION_IDS.includes(hash)) setOpenId(hash)
-  }, [])
-
-  const selectSection = id => {
-    const nextId = openId === id ? null : id
-    setOpenId(nextId)
-    const baseUrl = `${window.location.pathname}${window.location.search}`
-    window.history.replaceState(null, '', nextId ? `${baseUrl}#${nextId}` : baseUrl)
-    if (nextId) requestAnimationFrame(() => requestAnimationFrame(() => document.getElementById(nextId)?.scrollIntoView({ behavior: 'smooth', block: 'start' })))
+  const localizedSections = SECTIONS.map(section => ({ ...section, label: pick(section.label, lang) }))
+  const sourceItems = REFERENCES.map(([title, href], index) => ({
+    tag: pick(index >= 8 ? L('Fallbeispiel', 'Case example', 'نمونه موردی') : L('Leitlinie', 'Guideline', 'راهنما'), lang),
+    title,
+    citation: REFERENCE_CITATIONS[index],
+    href,
+  }))
+  const labels = {
+    contents: pick(COPY.contents, lang),
+    path: pick(COPY.path, lang),
+    progress: pick(COPY.progress, lang),
+    continue: pick(COPY.continue, lang),
+    completeLesson: pick(COPY.completeLesson, lang),
+    lessonCompleted: pick(COPY.lessonCompleted, lang),
+    complete: pick(COPY.complete, lang),
+    completed: pick(COPY.completed, lang),
+    open: pick(COPY.open, lang),
+    close: pick(COPY.close, lang),
+    takeHome: pick(COPY.takeHome, lang),
   }
-  const jumpTo = id => {
-    setOpenId(id)
-    const baseUrl = `${window.location.pathname}${window.location.search}`
-    window.history.replaceState(null, '', `${baseUrl}#${id}`)
-    requestAnimationFrame(() => requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })))
-  }
-  const toggleSectionRead = id => setReadSections(previous => { const next = new Set(previous); if (next.has(id)) next.delete(id); else next.add(id); return next })
-  const lessonComplete = readSections.size === SECTIONS.length
-  const toggleLessonComplete = () => setReadSections(lessonComplete ? new Set() : new Set(SECTION_IDS))
-  const advance = () => jumpTo(SECTIONS[activeIndex < 0 ? 0 : Math.min(activeIndex + 1, SECTIONS.length - 1)].id)
-  const facts = [
-    [L('Akutversorgung zuerst', 'Acute care comes first', 'ابتدا درمان اورژانسی'), L('ST-Hebung oder Instabilität → sofort Herzkatheterlabor; CMR darf nicht verzögern.', 'ST elevation or instability → immediate cardiac catheterization lab; CMR must not delay treatment.', 'بالا رفتن قطعهٔ ST یا ناپایداری ← ارجاع فوری به Cardiac catheterization lab؛ CMR نباید درمان را به تأخیر بیندازد.'), 'ausgangspunkt'],
-    [L('Subendokardial = ischämisch', 'Subendocardial = ischaemic', 'ساب‌اندوکاردیال = ایسکمیک'), L('Infarkt-LGE folgt einem Koronarterritorium und kann transmural werden.', 'Infarct-pattern LGE follows a coronary territory and may become transmural.', 'LGE انفارکتی از قلمرو کرونری پیروی می‌کند و می‌تواند ترانس‌مورال شود.'), 'lge-muster'],
-    [L('CMR klärt die Ursache', 'CMR identifies the cause', 'CMR علت را مشخص می‌کند'), L('Bei nichtobstruktiver KHK: Infarkt, Myokarditis und Takotsubo differenzieren.', 'With non-obstructive coronary arteries, distinguish infarction, myocarditis, and Takotsubo syndrome.', 'در نبود بیماری انسدادی کرونر، انفارکت، میوکاردیت و تاکوتسوبو را از هم افتراق دهید.'), 'algorithmus'],
-  ]
 
-  return <main className={`${template.page} ${styles.page} ${lang === 'fa' ? styles.rtl : ''}`} data-lesson-progress-managed="true" dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
-    <header className={template.header}>
-      <div className={template.topline}><nav className={template.breadcrumb} aria-label={pick(COPY.contents, lang)}><Link href={withLang('/')}>RadYar</Link><span>/</span><Link href={withLang('/lernen/thorax')}>{pick(COPY.thorax, lang)}</Link><span>/</span><span>{pick(COPY.chapter, lang)}</span><span>/</span><strong>{pick(COPY.title, lang)}</strong></nav><span className={template.author}>Dr. Zia</span></div>
-      <div className={template.hero}><div className={`${template.heroCopy} ${styles.heroCopy}`}><h1>{pick(COPY.title, lang)}</h1><div className={styles.heroTools}><Link className={styles.heroToolPrimary} href={withLang(`/ueben/quiz?fach=thorax&n=6&themen=${ID}&from=${encodeURIComponent(withLang(lessonPath))}`)}><SectionIcon id="mcq" /><span><strong>MCQ</strong><small>{pick(L('6 Prüfungsfragen', '6 exam questions', '۶ سؤال آزمونی'), lang)}</small></span><i aria-hidden="true">{lang === 'fa' ? '←' : '→'}</i></Link><Link className={styles.heroToolSecondary} href={withLang(`/flashcards/${ID}?from=${encodeURIComponent(withLang(lessonPath))}`)}><SectionIcon id="flashcards" /><span><strong>{pick(L('Flashcards', 'Flashcards', 'فلش‌کارت‌ها'), lang)}</strong><small>{pick(L('8 Lernkarten', '8 study cards', '۸ کارت آموزشی'), lang)}</small></span><i aria-hidden="true">{lang === 'fa' ? '←' : '→'}</i></Link></div></div><div className={`${template.heroFacts} ${styles.heroFacts}`}>{facts.map(([value, description, icon]) => <article key={pick(value, lang)}><span className={template.factIcon}><SectionIcon id={icon} /></span><strong>{pick(value, lang)}</strong><p>{pick(description, lang)}</p></article>)}</div></div>
-      <div className={template.progressBar}><div className={template.progressTrack}><i style={{ width: `${(readSections.size / SECTIONS.length) * 100}%` }} /></div><span>{readSections.size} / {SECTIONS.length} {pick(COPY.progress, lang)}</span><div className={template.progressActions}><button type="button" className={`${template.lessonCompleteButton} ${lessonComplete ? template.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><SectionIcon id="takehome" />{pick(lessonComplete ? COPY.lessonCompleted : COPY.completeLesson, lang)}</button><button type="button" className={template.continueButton} onClick={advance} disabled={activeIndex === SECTIONS.length - 1}>{pick(COPY.continue, lang)}<span aria-hidden="true">{lang === 'fa' ? '←' : '→'}</span></button></div></div>
-    </header>
-    <div className={`${template.layout} ${styles.lessonLayout}`}><aside className={`${template.sidebar} ${styles.lessonSidebar}`}><h2>{pick(COPY.path, lang)}</h2><nav>{SECTIONS.map(section => <button type="button" key={section.id} className={`${styles.sideNavItem} ${openId === section.id ? `${template.activeSideItem} ${styles.sideNavItemActive}` : ''}`} onClick={() => jumpTo(section.id)} aria-current={openId === section.id ? 'location' : undefined} aria-label={`${pick(COPY.open, lang)}: ${pick(section.label, lang)}`}><span className={template.sideIcon}><SectionIcon id={section.id} /></span><strong>{pick(section.label, lang)}</strong></button>)}</nav></aside><article className={template.lesson}><LessonContext.Provider value={{ lang, openId, readSections, selectSection, toggleSectionRead }}><LessonContent lang={lang} /></LessonContext.Provider></article></div>
-    <MobilePath lang={lang} openId={openId} readSections={readSections} onSelect={jumpTo} />
-  </main>
+  return <StandardLessonShell
+    lessonId={ID}
+    lang={lang}
+    title={pick(COPY.title, lang)}
+    author="Dr. Zia"
+    breadcrumbs={[
+      { label: 'RadYar', href: withLang('/') },
+      { label: pick(COPY.thorax, lang), href: withLang('/lernen/thorax') },
+      { label: pick(COPY.chapter, lang) },
+      { label: pick(COPY.title, lang) },
+    ]}
+    sections={localizedSections}
+    labels={labels}
+    actions={{
+      mcq: { label: pick(L('MCQ starten', 'Start MCQ', 'شروع MCQ'), lang), href: withLang(`/ueben/quiz?fach=thorax&n=6&themen=${ID}&from=${encodeURIComponent(withLang(PATH))}`) },
+      flashcards: { label: pick(L('Flashcards', 'Flashcards', 'فلش‌کارت‌ها'), lang), href: withLang(`/flashcards/${ID}?from=${encodeURIComponent(withLang(PATH))}`) },
+    }}
+    renderIcon={id => <SectionIcon id={id} />}
+    theme={{
+      backgroundImage: '/andarun-galaxy-v3.png',
+      heroImage: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/hero-background-v2.png',
+      heroImageOpacity: .84,
+      accent: '#e73368',
+      accentStrong: '#561743',
+      accentSoft: '#f4dce7',
+      secondary: '#329aaa',
+      secondaryStrong: '#167886',
+      heroBase: '#11121b',
+    }}
+    className={styles.page}
+    sources={<LessonSources title={pick(L('Quellen', 'Sources', 'منابع'), lang)} items={sourceItems} note={pick(L('Leitlinienstand und Fallverlinkungen der Lektion.', 'Guideline basis and case links used in this lesson.', 'راهنماها و پیوندهای موارد استفاده‌شده در این درس.'), lang)} />}
+  >
+    <LessonContent lang={lang} />
+  </StandardLessonShell>
 }
