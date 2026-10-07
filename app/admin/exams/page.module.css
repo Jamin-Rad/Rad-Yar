@@ -191,6 +191,10 @@
 .attemptFeedback { display: grid; gap: 6px; padding: 13px; border: 1px solid #fed7aa; border-radius: 10px; background: #fff8f1; color: #566276; font-size: 11px; }
 .attemptFeedback strong { color: #c2410c; }
 .attemptFeedback p { margin: 0; line-height: 1.9; }
+.feedbackScores { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+.feedbackScores span { display: grid; gap: 2px; padding: 9px; border: 1px solid #fed7aa; border-radius: 8px; background: rgba(255,255,255,.68); }
+.feedbackScores small { color: #7b8799; font-size: 9px; }
+.feedbackScores b { color: #9a3412; font-size: 11px; }
 .answerCorrect, .answerWrong { display: grid; gap: 5px; padding: 11px 13px; border-inline-start: 3px solid; border-radius: 8px; background: #fff; font-size: 11px; }
 .answerCorrect { border-color: #10b981; }
 .answerWrong { border-color: #ef4444; }
@@ -230,6 +234,7 @@
   .questionCard { padding: 15px; }
   .attemptRow { grid-template-columns: 52px 1fr auto; }
   .attemptRow > span:nth-child(3), .attemptRow > span:nth-child(4), .attemptRow > span:nth-child(5) { display: none; }
+  .feedbackScores { grid-template-columns: 1fr; }
 }
 
 :global(html[data-theme='dark']) .page { background: radial-gradient(circle at 15% 0%, rgba(14,165,233,.08), transparent 28rem), #07111f; color: #d8e1ec; }
@@ -273,6 +278,8 @@
 :global(html[data-theme='dark']) .answerCorrect,
 :global(html[data-theme='dark']) .answerWrong,
 :global(html[data-theme='dark']) .attemptFeedback { border-color: #2b3b52; background: #101e31; color: #dce5ef; }
+:global(html[data-theme='dark']) .feedbackScores span { border-color: #2b3b52; background: #0b1728; }
+:global(html[data-theme='dark']) .feedbackScores b { color: #fdba74; }
 :global(html[data-theme='dark']) .importedQuestion { border-color: #294866; background: #0c1b2d; }
 :global(html[data-theme='dark']) .importedQuestion > strong { color: #e3eaf2; }
 :global(html[data-theme='dark']) .importedQuestion > div > span { border-color: #2b3b52; background: #101e31; color: #dce5ef; }

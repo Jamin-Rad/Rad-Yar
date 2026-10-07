@@ -197,9 +197,27 @@ export async function PATCH(request, { params }) {
   }
 
   const attemptId = typeof payload?.attemptId === 'string' ? payload.attemptId : ''
-  const rating = payload?.rating === null || payload?.rating === undefined || payload?.rating === '' ? null : Number(payload.rating)
-  const feedbackText = typeof payload?.feedbackText === 'string' ? payload.feedbackText.trim().slice(0, 2000) : ''
+  const feedbackMessage = typeof payload?.feedbackText === 'string' ? payload.feedbackText.trim().slice(0, 1600) : ''
+  const hasDetailedRatings = payload?.ratings && typeof payload.ratings === 'object' && !Array.isArray(payload.ratings)
+  const detailedRatings = hasDetailedRatings
+    ? {
+        questions: Number(payload.ratings.questions),
+        design: Number(payload.ratings.design),
+        clip: Number(payload.ratings.clip),
+      }
+    : null
+  const detailedValues = detailedRatings ? Object.values(detailedRatings) : []
+  const legacyRating = payload?.rating === null || payload?.rating === undefined || payload?.rating === '' ? null : Number(payload.rating)
+  const rating = detailedRatings
+    ? Math.round(detailedValues.reduce((sum, value) => sum + value, 0) / detailedValues.length)
+    : legacyRating
+  const feedbackText = detailedRatings
+    ? JSON.stringify({ version: 2, ratings: detailedRatings, message: feedbackMessage })
+    : feedbackMessage
   if (!UUID_PATTERN.test(attemptId)) return NextResponse.json({ error: 'نتیجه آزمون معتبر نیست.' }, { status: 400 })
+  if (detailedRatings && detailedValues.some(value => !Number.isInteger(value) || value < 1 || value > 5)) {
+    return NextResponse.json({ error: 'برای هر سه بخش باید امتیازی بین ۱ تا ۵ وارد شود.' }, { status: 400 })
+  }
   if (rating !== null && (!Number.isInteger(rating) || rating < 1 || rating > 5)) {
     return NextResponse.json({ error: 'امتیاز نظر باید بین ۱ تا ۵ باشد.' }, { status: 400 })
   }

@@ -64,6 +64,29 @@ function formatDate(value) {
   return new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value))
 }
 
+function readAttemptFeedback(attempt) {
+  if (!attempt?.feedback_rating && !attempt?.feedback_text) return null
+  if (attempt.feedback_text) {
+    try {
+      const parsed = JSON.parse(attempt.feedback_text)
+      if (parsed?.version === 2 && parsed.ratings) {
+        return {
+          ratings: [
+            ['کیفیت سؤال‌ها', parsed.ratings.questions],
+            ['طراحی آزمون', parsed.ratings.design],
+            ['کلیپ آموزشی', parsed.ratings.clip],
+          ],
+          message: typeof parsed.message === 'string' ? parsed.message : '',
+        }
+      }
+    } catch {}
+  }
+  return {
+    ratings: attempt.feedback_rating ? [['امتیاز کلی', attempt.feedback_rating]] : [],
+    message: attempt.feedback_text || '',
+  }
+}
+
 function ExamQrCode({ value }) {
   const canvasRef = useRef(null)
 
@@ -582,6 +605,7 @@ export default function ExamAdminClient() {
                   <div className={styles.resultsList}>
                     {detail.attempts.map(attempt => {
                       const isOpen = expandedAttempt === attempt.id
+                      const participantFeedback = readAttemptFeedback(attempt)
                       return <article className={styles.attempt} key={attempt.id}>
                         <button type="button" className={styles.attemptRow} onClick={() => setExpandedAttempt(isOpen ? '' : attempt.id)}>
                           <span className={styles.rank}><small>رتبه</small><strong>{Number(attempt.rank).toLocaleString('fa-IR')}</strong></span>
@@ -592,7 +616,7 @@ export default function ExamAdminClient() {
                           <span aria-hidden="true">{isOpen ? '−' : '+'}</span>
                         </button>
                         {isOpen ? <div className={styles.answerDetails}>
-                          {attempt.feedback_rating || attempt.feedback_text ? <div className={styles.attemptFeedback}><strong>نظر شرکت‌کننده</strong><span>{attempt.feedback_rating ? `امتیاز ${Number(attempt.feedback_rating).toLocaleString('fa-IR')} از ۵` : 'بدون امتیاز گزینه‌ای'}</span>{attempt.feedback_text ? <p>{attempt.feedback_text}</p> : null}</div> : null}
+                          {participantFeedback ? <div className={styles.attemptFeedback}><strong>نظر شرکت‌کننده</strong>{participantFeedback.ratings.length ? <div className={styles.feedbackScores}>{participantFeedback.ratings.map(([label, value]) => <span key={label}><small>{label}</small><b>{Number(value).toLocaleString('fa-IR')} از ۵</b></span>)}</div> : <span>بدون امتیاز گزینه‌ای</span>}{participantFeedback.message ? <p>{participantFeedback.message}</p> : null}</div> : null}
                           {detail.questions.map((question, index) => {
                             const selected = attempt.answers?.[question.id]
                             const correct = Number(selected) === Number(question.correct_option_index)
