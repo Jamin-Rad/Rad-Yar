@@ -36,6 +36,17 @@ function canonicalQuestionId(id) {
   return String(id).replace(/-(?:fa|en)-/, '-de-')
 }
 
+function addRanks(attempts) {
+  let previousPercentage = null
+  let currentRank = 0
+  return attempts.map((attempt, index) => {
+    const percentage = Number(attempt.percentage)
+    if (previousPercentage === null || percentage !== previousPercentage) currentRank = index + 1
+    previousPercentage = percentage
+    return { ...attempt, rank: currentRank }
+  })
+}
+
 function getQuestionBank(language) {
   const topicById = new Map()
   for (const group of MCQ_TOPIC_GROUPS) {
@@ -67,6 +78,7 @@ function getQuestionBank(language) {
       options,
       correctOptionIndex,
       points: 1,
+      explanation: localizedText(item.explanation, language),
     }]
   })
 
@@ -91,7 +103,7 @@ export async function GET(request) {
     const [examResult, questionResult, attemptResult] = await Promise.all([
       supabaseAdmin.from('exams').select('*').eq('id', examId).maybeSingle(),
       supabaseAdmin.from('exam_questions').select('*').eq('exam_id', examId).order('position'),
-      supabaseAdmin.from('exam_attempts').select('*').eq('exam_id', examId).order('submitted_at', { ascending: false }),
+      supabaseAdmin.from('exam_attempts').select('*').eq('exam_id', examId).order('percentage', { ascending: false }).order('submitted_at', { ascending: true }),
     ])
 
     const error = examResult.error || questionResult.error || attemptResult.error
@@ -104,7 +116,7 @@ export async function GET(request) {
     return NextResponse.json({
       exam: examResult.data,
       questions: questionResult.data || [],
-      attempts: attemptResult.data || [],
+      attempts: addRanks(attemptResult.data || []),
     })
   }
 
@@ -153,6 +165,7 @@ export async function POST(request) {
       public_code: publicCode,
       title: input.title,
       description: input.description,
+      organizer_name: input.organizerName,
       language: input.language,
       status: input.publishNow ? 'published' : 'draft',
       duration_minutes: input.durationMinutes,
@@ -175,6 +188,7 @@ export async function POST(request) {
     options: question.options,
     correct_option_index: question.correctOptionIndex,
     points: question.points,
+    explanation: question.explanation,
     position: question.position,
   }))
   const { error: questionsError } = await supabaseAdmin.from('exam_questions').insert(questionRows)

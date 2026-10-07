@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { QRCodeCanvas } from 'qrcode.react'
 import styles from './page.module.css'
 
-const emptyQuestion = () => ({ sourceId: '', sourceLabel: '', prompt: '', options: ['', '', '', ''], correctOptionIndex: 0, points: 1 })
+const emptyQuestion = () => ({ sourceId: '', sourceLabel: '', prompt: '', options: ['', '', '', ''], correctOptionIndex: 0, points: 1, explanation: '' })
 const LANGUAGE_LABELS = Object.freeze({ fa: 'فارسی', en: 'English', de: 'Deutsch' })
 const EXAM_DURATION_OPTIONS = Object.freeze([5, 10, 15, 20, 25, 30, 45, 60, 90, 120, 150, 180, 240])
 const ACTIVE_DURATION_OPTIONS = Object.freeze([
@@ -40,7 +40,7 @@ function createDefaultForm() {
   const scheduledStart = new Date(Date.now() + 60 * 60 * 1000)
   scheduledStart.setMinutes(0, 0, 0)
   return {
-    title: '', description: '', durationMinutes: 30,
+    title: '', description: '', organizerName: 'آقای دکتر ضیا', durationMinutes: 30,
     language: 'fa',
     activationMode: 'now', opensAt: toDateTimeLocal(scheduledStart),
     activeDurationMinutes: 10080,
@@ -158,6 +158,7 @@ export default function ExamAdminClient() {
             prompt: translated.prompt,
             options: [...translated.options],
             correctOptionIndex: translated.correctOptionIndex,
+            explanation: translated.explanation || '',
           } : question
         }),
       }))
@@ -263,6 +264,7 @@ export default function ExamAdminClient() {
           options: [...question.options],
           correctOptionIndex: question.correctOptionIndex,
           points: question.points,
+          explanation: question.explanation || '',
         }))
       const currentQuestions = current.questions.length === 1 && isBlankQuestion(current.questions[0])
         ? []
@@ -424,6 +426,7 @@ export default function ExamAdminClient() {
               <div className={styles.fieldGrid}>
                 <label className={styles.wideField}><span>عنوان امتحان</span><input required minLength={3} maxLength={160} value={form.title} onChange={event => setField('title', event.target.value)} placeholder="مثلاً آزمون مقدماتی رادیولوژی" /></label>
                 <label className={styles.wideField}><span>توضیح کوتاه</span><textarea maxLength={3000} value={form.description} onChange={event => setField('description', event.target.value)} placeholder="توضیحات و نکات لازم برای شرکت‌کنندگان" /></label>
+                <label className={styles.wideField}><span>نام برگزارکننده *</span><input required minLength={2} maxLength={120} value={form.organizerName} onChange={event => setField('organizerName', event.target.value)} placeholder="مثلاً آقای دکتر ضیا" /></label>
                 <label><span>زبان آزمون *</span><select value={form.language} onChange={event => changeLanguage(event.target.value)}><option value="fa">فارسی</option><option value="en">English</option><option value="de">Deutsch</option></select></label>
                 <label><span>زمان پاسخ‌گویی *</span><select value={form.durationMinutes} onChange={event => setField('durationMinutes', Number(event.target.value))}>{EXAM_DURATION_OPTIONS.map(minutes => <option value={minutes} key={minutes}>{minutes.toLocaleString('fa-IR')} دقیقه</option>)}</select></label>
               </div>
@@ -439,7 +442,7 @@ export default function ExamAdminClient() {
                 </div>
               </div>
               <div className={styles.checks}>
-                <label><input type="checkbox" checked={form.showResult} onChange={event => setField('showResult', event.target.checked)} /><span>نمره بعد از ارسال به شرکت‌کننده نشان داده شود</span></label>
+                <label><input type="checkbox" checked={form.showResult} onChange={event => setField('showResult', event.target.checked)} /><span>نمره، رتبه و مرور پاسخ‌ها بعد از ارسال نشان داده شود</span></label>
                 <label><input type="checkbox" checked={form.publishNow} onChange={event => setField('publishNow', event.target.checked)} /><span>امتحان پس از ساخت منتشر شود و طبق زمان‌بندی بالا فعال باشد</span></label>
               </div>
             </section>
@@ -487,6 +490,7 @@ export default function ExamAdminClient() {
                       <div className={styles.importedQuestion} dir={form.language === 'fa' ? 'rtl' : 'ltr'}>
                         <strong>{question.prompt}</strong>
                         <div>{question.options.map((option, optionIndex) => <span className={question.correctOptionIndex === optionIndex ? styles.importedCorrect : ''} key={optionIndex}><b>{String.fromCharCode(65 + optionIndex)}</b>{option}{question.correctOptionIndex === optionIndex ? <i>✓</i> : null}</span>)}</div>
+                        {question.explanation ? <p>{question.explanation}</p> : null}
                         <small>متن و پاسخ این سؤال از بانک رادیار دریافت شده و قابل تغییر نیست.</small>
                       </div>
                     ) : (
@@ -501,6 +505,7 @@ export default function ExamAdminClient() {
                             </label>
                           ))}
                         </div>
+                        <label className={styles.promptField}><span>توضیح پاسخ صحیح</span><textarea maxLength={8000} value={question.explanation} onChange={event => updateQuestion(questionIndex, { explanation: event.target.value })} placeholder="بعد از پایان آزمون به شرکت‌کننده نمایش داده می‌شود…" /></label>
                         <label className={styles.points}><span>امتیاز این سؤال</span><input type="number" min="1" max="100" value={question.points} onChange={event => updateQuestion(questionIndex, { points: Number(event.target.value) })} /></label>
                       </>
                     )}
@@ -545,20 +550,22 @@ export default function ExamAdminClient() {
               </div>
 
               <section className={styles.panel}>
-                <div className={styles.panelHeader}><div><h2>نتیجه شرکت‌کنندگان</h2><p>برای دیدن پاسخ‌ها، ردیف هر نفر را باز کنید.</p></div></div>
+                <div className={styles.panelHeader}><div><h2>رتبه‌بندی شرکت‌کنندگان</h2><p>فهرست بر اساس درصد نمره مرتب شده است؛ برای دیدن پاسخ‌ها و نظر هر نفر، ردیف را باز کنید.</p></div></div>
                 {detail.attempts.length === 0 ? <div className={styles.empty}>هنوز پاسخی ثبت نشده است.</div> : (
                   <div className={styles.resultsList}>
                     {detail.attempts.map(attempt => {
                       const isOpen = expandedAttempt === attempt.id
                       return <article className={styles.attempt} key={attempt.id}>
                         <button type="button" className={styles.attemptRow} onClick={() => setExpandedAttempt(isOpen ? '' : attempt.id)}>
-                          <span className={styles.person}><strong>{attempt.participant_name}</strong><small>{attempt.participant_email || 'بدون ایمیل'}</small></span>
+                          <span className={styles.rank}><small>رتبه</small><strong>{Number(attempt.rank).toLocaleString('fa-IR')}</strong></span>
+                          <span className={styles.person}><strong>{attempt.participant_name}</strong><small>{attempt.participant_contact || 'بدون راه ارتباطی'}</small></span>
                           <span><small>نمره</small><strong>{attempt.score.toLocaleString('fa-IR')} از {attempt.max_score.toLocaleString('fa-IR')}</strong></span>
                           <span><small>درصد</small><strong>{Number(attempt.percentage).toLocaleString('fa-IR')}٪</strong></span>
                           <span className={styles.submitted}>{formatDate(attempt.submitted_at)}</span>
                           <span aria-hidden="true">{isOpen ? '−' : '+'}</span>
                         </button>
                         {isOpen ? <div className={styles.answerDetails}>
+                          {attempt.feedback_rating || attempt.feedback_text ? <div className={styles.attemptFeedback}><strong>نظر شرکت‌کننده</strong><span>{attempt.feedback_rating ? `امتیاز ${Number(attempt.feedback_rating).toLocaleString('fa-IR')} از ۵` : 'بدون امتیاز گزینه‌ای'}</span>{attempt.feedback_text ? <p>{attempt.feedback_text}</p> : null}</div> : null}
                           {detail.questions.map((question, index) => {
                             const selected = attempt.answers?.[question.id]
                             const correct = Number(selected) === Number(question.correct_option_index)
@@ -566,6 +573,7 @@ export default function ExamAdminClient() {
                               <strong>{Number(index + 1).toLocaleString('fa-IR')}. {question.prompt}</strong>
                               <span>پاسخ: {selected === null || selected === undefined ? 'بدون پاسخ' : question.options?.[selected]}</span>
                               {!correct ? <span>پاسخ درست: {question.options?.[question.correct_option_index]}</span> : null}
+                              {question.explanation ? <p>{question.explanation}</p> : null}
                             </div>
                           })}
                         </div> : null}

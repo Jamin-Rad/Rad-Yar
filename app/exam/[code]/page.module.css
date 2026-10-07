@@ -87,11 +87,52 @@
 
 .resultCard { display: flex; flex-direction: column; align-items: center; padding: 40px; text-align: center; }
 .resultCard .badge { margin-top: 17px; }
+.resultShell { display: grid; width: min(900px, 100%); margin: 4vh auto 0; gap: 18px; }
+.resultShell .resultCard { width: 100%; margin: 0; }
+.personalMessage { max-width: 580px; margin-top: 2px !important; color: #46566f !important; font-weight: 700; }
 .scoreCircle { display: grid; place-items: center; width: 164px; height: 164px; margin: 25px 0 15px; border-radius: 50%; background: conic-gradient(#f45b16 var(--score), #e7ebf1 0); }
 .scoreCircle > div { display: grid; place-items: center; width: 132px; height: 132px; border-radius: 50%; background: #fff; }
 .scoreCircle strong { color: #182238; font-size: 31px; }
 .scoreCircle span { color: #8290a4; font-size: 11px; }
 .resultNote { width: 100%; margin-top: 22px; padding: 14px; border-radius: 11px; background: #f6f8fb; color: #718096; font-size: 11px; }
+.rankCard { display: flex; align-items: center; gap: 9px; margin-top: 10px; padding: 11px 16px; border: 1px solid #fed7aa; border-radius: 11px; background: #fff8f1; color: #c2410c; font-size: 13px; }
+.rankCard span { font-size: 18px; }
+.resultActions { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; width: 100%; margin-top: 23px; padding-top: 20px; border-top: 1px solid #e8ecf2; }
+.resultActions button { min-height: 44px; padding: 0 18px; border: 0; border-radius: 10px; background: #17213a; color: #fff; cursor: pointer; font: 750 12px Vazirmatn, sans-serif; }
+.resultActions .feedbackButton { background: #f45b16; }
+.reviewSection, .feedbackSection { padding: 25px; border: 1px solid #e0e6ef; border-radius: 20px; background: rgba(255,255,255,.96); box-shadow: 0 18px 45px rgba(29,41,67,.075); }
+.resultSectionHeader { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px; color: #182238; }
+.resultSectionHeader > span { font-size: 18px; font-weight: 850; }
+.resultSectionHeader > strong, .resultSectionHeader > small { color: #778499; font-size: 11px; }
+.reviewList { display: grid; gap: 13px; }
+.reviewQuestion { padding: 20px; border: 1px solid #e1e7ef; border-radius: 14px; background: #fbfcfe; }
+.reviewQuestionHeader { display: flex; align-items: flex-start; gap: 11px; }
+.reviewQuestionHeader > span { display: grid; width: 30px; height: 30px; flex: 0 0 30px; place-items: center; border-radius: 8px; background: #fff0e7; color: #dc4c0c; font-size: 11px; font-weight: 850; }
+.reviewQuestion h2 { margin: 1px 0 15px; color: #1f2b43; font-size: 15px; line-height: 1.9; }
+.reviewOptions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; }
+.reviewOption { display: flex; align-items: center; gap: 8px; min-height: 43px; padding: 8px 10px; border: 1px solid #e0e6ee; border-radius: 9px; background: #fff; color: #526077; font-size: 11px; }
+.reviewOption b { display: grid; width: 23px; height: 23px; flex: 0 0 23px; place-items: center; border-radius: 6px; background: #edf2f7; font: 800 10px var(--font-manrope), sans-serif; }
+.reviewOption i { margin-inline-start: auto; font-size: 9px; font-style: normal; font-weight: 850; }
+.reviewOptionCorrect { border-color: #86d7ba; background: #effcf7; color: #08765c; }
+.reviewOptionWrong { border-color: #fca5a5; background: #fff1f2; color: #be123c; }
+.answerSummary { display: grid; gap: 5px; margin-top: 12px; color: #66748a; font-size: 10px; }
+.answerSummary b { color: #344056; }
+.explanation { margin-top: 13px; padding: 13px 15px; border-inline-start: 3px solid #0ea5e9; border-radius: 9px; background: #eef8ff; text-align: start; }
+.explanation strong { color: #03658d; font-size: 11px; }
+.explanation p { margin: 5px 0 0; color: #4d6177; font-size: 11px; line-height: 2; white-space: pre-line; }
+.feedbackSection form { display: grid; gap: 14px; }
+.ratingOptions { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.ratingOption, .ratingSelected { display: grid; place-items: center; gap: 5px; min-height: 78px; padding: 9px 5px; border: 1px solid #dfe5ed; border-radius: 11px; background: #fff; color: #6b778b; cursor: pointer; text-align: center; }
+.ratingOption input, .ratingSelected input { position: absolute; opacity: 0; pointer-events: none; }
+.ratingOption span, .ratingSelected span { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 50%; background: #eef2f6; font-size: 12px; font-weight: 850; }
+.ratingOption strong, .ratingSelected strong { font-size: 10px; }
+.ratingSelected { border-color: #f97316; background: #fff4ec; color: #c2410c; box-shadow: 0 0 0 2px rgba(249,115,22,.08); }
+.ratingSelected span { background: #f97316; color: #fff; }
+.feedbackSection textarea { min-height: 110px; padding: 12px 14px; border: 1px solid #d7dee9; border-radius: 11px; background: #fff; color: #1e293b; font: 500 13px/1.9 Vazirmatn, sans-serif; outline: none; resize: vertical; }
+.feedbackSection textarea:focus { border-color: #f97316; box-shadow: 0 0 0 3px rgba(249,115,22,.1); }
+.feedbackSection form > button { min-height: 44px; border: 0; border-radius: 10px; background: #f45b16; color: #fff; cursor: pointer; font: 800 12px Vazirmatn, sans-serif; }
+.feedbackSection form > button:disabled { opacity: .55; cursor: wait; }
+.feedbackSuccess { padding: 16px; border-radius: 11px; background: #eaf9f3; color: #08765c; font-size: 13px; font-weight: 800; text-align: center; }
 
 @media (max-width: 800px) {
   .page { padding: 82px 12px 45px; }
@@ -103,6 +144,7 @@
   .examFacts { grid-template-columns: repeat(2, 1fr); }
   .examFacts div:nth-child(3) { border-inline-start: 0; }
   .examFacts div:nth-child(n+3) { border-top: 1px solid #e7ebf1; }
+  .reviewOptions { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 540px) {
@@ -116,12 +158,22 @@
   .questionActions { flex-direction: column-reverse; }
   .previous, .next, .submit { width: 100%; }
   .progressRow > span { display: none; }
+  .resultShell { margin-top: 1vh; }
+  .reviewSection, .feedbackSection { padding: 17px; }
+  .reviewQuestion { padding: 15px; }
+  .resultSectionHeader { align-items: flex-start; flex-direction: column; }
+  .ratingOptions { grid-template-columns: repeat(2, 1fr); }
+  .ratingOptions > label:last-child { grid-column: 1 / -1; }
+  .resultActions { flex-direction: column; }
+  .resultActions button { width: 100%; }
 }
 
 :global(html[data-theme='dark']) .page { background: radial-gradient(circle at 12% 8%, rgba(14,165,233,.09), transparent 28rem), #07111f; color: #dce5ef; }
 :global(html[data-theme='dark']) .centerCard,
 :global(html[data-theme='dark']) .introCard,
 :global(html[data-theme='dark']) .resultCard,
+:global(html[data-theme='dark']) .reviewSection,
+:global(html[data-theme='dark']) .feedbackSection,
 :global(html[data-theme='dark']) .questionCard,
 :global(html[data-theme='dark']) .navigator,
 :global(html[data-theme='dark']) .timer { border-color: #26364d; background: rgba(15,27,45,.96); }
@@ -141,3 +193,14 @@
 :global(html[data-theme='dark']) .scoreCircle > div { background: #0f1b2d; }
 :global(html[data-theme='dark']) .scoreCircle strong { color: #f3f6fa; }
 :global(html[data-theme='dark']) .resultNote { background: #0b1728; }
+:global(html[data-theme='dark']) .personalMessage { color: #cbd5e1 !important; }
+:global(html[data-theme='dark']) .reviewQuestion { border-color: #26364d; background: #0b1728; }
+:global(html[data-theme='dark']) .reviewQuestion h2,
+:global(html[data-theme='dark']) .resultSectionHeader { color: #f3f6fa; }
+:global(html[data-theme='dark']) .reviewOption,
+:global(html[data-theme='dark']) .ratingOption,
+:global(html[data-theme='dark']) .feedbackSection textarea { border-color: #2c3d54; background: #101e31; color: #dce5ef; }
+:global(html[data-theme='dark']) .reviewOptionCorrect { border-color: #16886b; background: rgba(5,150,105,.12); color: #6ee7b7; }
+:global(html[data-theme='dark']) .reviewOptionWrong { border-color: #9f3547; background: rgba(225,29,72,.12); color: #fda4af; }
+:global(html[data-theme='dark']) .explanation { background: rgba(14,165,233,.1); }
+:global(html[data-theme='dark']) .explanation p { color: #cbd5e1; }

@@ -3,6 +3,9 @@ import { gradeExam } from '@/lib/exams'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 
 const CODE_PATTERN = /^[A-Za-z0-9_-]{8,40}$/
+const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const INSTAGRAM_PATTERN = /^(?=.*[A-Za-z0-9])[A-Za-z0-9._]{1,30}$/
 
 function databaseUnavailable() {
   return NextResponse.json({ error: 'سامانه امتحان موقتاً در دسترس نیست.' }, { status: 503 })
@@ -21,10 +24,20 @@ const AVAILABILITY_COPY = Object.freeze({
   de: { opens: date => `Diese Prüfung ist ab ${date} verfügbar.`, closed: 'Der Teilnahmezeitraum für diese Prüfung ist beendet.' },
 })
 
+function normalizeContact(value) {
+  const raw = typeof value === 'string' ? value.trim().slice(0, 254) : ''
+  if (EMAIL_PATTERN.test(raw)) return { value: raw.toLowerCase(), type: 'email' }
+
+  const withoutUrl = raw.replace(/^https?:\/\/(?:www\.)?instagram\.com\//i, '')
+  const handle = withoutUrl.replace(/^@/, '').split(/[/?#]/)[0]
+  if (INSTAGRAM_PATTERN.test(handle)) return { value: `@${handle.toLowerCase()}`, type: 'instagram' }
+  return null
+}
+
 async function loadPublishedExam(code, includeAnswers = false) {
   const { data: exam, error: examError } = await supabaseAdmin
     .from('exams')
-    .select('id,title,description,language,status,duration_minutes,show_result,opens_at,closes_at')
+    .select('id,title,description,organizer_name,language,status,duration_minutes,show_result,opens_at,closes_at')
     .eq('public_code', code)
     .maybeSingle()
 
@@ -44,7 +57,7 @@ async function loadPublishedExam(code, includeAnswers = false) {
   }
 
   const fields = includeAnswers
-    ? 'id,prompt,options,correct_option_index,points,position'
+    ? 'id,prompt,options,correct_option_index,explanation,points,position'
     : 'id,prompt,options,points,position'
   const { data: questions, error: questionsError } = await supabaseAdmin
     .from('exam_questions')
@@ -88,17 +101,12 @@ export async function POST(request, { params }) {
   const participantName = typeof payload?.participantName === 'string'
     ? payload.participantName.trim().slice(0, 120)
     : ''
-  const participantEmail = typeof payload?.participantEmail === 'string'
-    ? payload.participantEmail.trim().toLowerCase().slice(0, 254)
-    : ''
+  const participantContact = normalizeContact(payload?.participantContact || payload?.participantEmail)
   if (participantName.length < 2) {
     return NextResponse.json({ error: 'نام شرکت‌کننده را وارد کنید.' }, { status: 400 })
   }
-  if (!participantEmail) {
-    return NextResponse.json({ error: 'ایمیل شرکت‌کننده را وارد کنید.' }, { status: 400 })
-  }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(participantEmail)) {
-    return NextResponse.json({ error: 'ایمیل واردشده معتبر نیست.' }, { status: 400 })
+  if (!participantContact) {
+    return NextResponse.json({ error: 'یک ایمیل معتبر یا آیدی اینستاگرام وارد کنید.' }, { status: 400 })
   }
 
   const result = await loadPublishedExam(code, true)
@@ -120,7 +128,8 @@ export async function POST(request, { params }) {
     .insert({
       exam_id: result.exam.id,
       participant_name: participantName,
-      participant_email: participantEmail,
+      participant_contact: participantContact.value,
+      contact_type: participantContact.type,
       answers: graded.answers,
       score: graded.score,
       max_score: graded.maxScore,
@@ -135,11 +144,93 @@ export async function POST(request, { params }) {
     return NextResponse.json({ error: 'ارسال پاسخ‌ها انجام نشد. دوباره تلاش کنید.' }, { status: 503 })
   }
 
+  const [higherResult, totalResult] = await Promise.all([
+    supabaseAdmin
+      .from('exam_attempts')
+      .select('id', { count: 'exact', head: true })
+      .eq('exam_id', result.exam.id)
+      .gt('percentage', graded.percentage),
+    supabaseAdmin
+      .from('exam_attempts')
+      .select('id', { count: 'exact', head: true })
+      .eq('exam_id', result.exam.id),
+  ])
+  if (higherResult.error || totalResult.error) {
+    console.error('محاسبه رتبه آزمون انجام نشد:', higherResult.error || totalResult.error)
+  }
+
+  const review = result.questions.map(question => ({
+    id: question.id,
+    prompt: question.prompt,
+    options: question.options,
+    selectedOptionIndex: graded.answers[question.id],
+    correctOptionIndex: Number(question.correct_option_index),
+    explanation: question.explanation || '',
+  }))
+
   return NextResponse.json({
     attemptId: attempt.id,
     submittedAt: attempt.submitted_at,
     result: result.exam.show_result
-      ? { score: graded.score, maxScore: graded.maxScore, percentage: graded.percentage }
+      ? {
+          score: graded.score,
+          maxScore: graded.maxScore,
+          percentage: graded.percentage,
+          rank: higherResult.error ? null : Number(higherResult.count || 0) + 1,
+          totalParticipants: totalResult.error ? null : Number(totalResult.count || 0),
+          review,
+        }
       : null,
   })
+}
+
+export async function PATCH(request, { params }) {
+  if (!isSupabaseAdminConfigured || !supabaseAdmin) return databaseUnavailable()
+  const { code } = await params
+  if (!CODE_PATTERN.test(code || '')) return NextResponse.json({ error: 'لینک آزمون معتبر نیست.' }, { status: 404 })
+
+  let payload
+  try {
+    payload = await request.json()
+  } catch {
+    return NextResponse.json({ error: 'درخواست معتبر نیست.' }, { status: 400 })
+  }
+
+  const attemptId = typeof payload?.attemptId === 'string' ? payload.attemptId : ''
+  const rating = payload?.rating === null || payload?.rating === undefined || payload?.rating === '' ? null : Number(payload.rating)
+  const feedbackText = typeof payload?.feedbackText === 'string' ? payload.feedbackText.trim().slice(0, 2000) : ''
+  if (!UUID_PATTERN.test(attemptId)) return NextResponse.json({ error: 'نتیجه آزمون معتبر نیست.' }, { status: 400 })
+  if (rating !== null && (!Number.isInteger(rating) || rating < 1 || rating > 5)) {
+    return NextResponse.json({ error: 'امتیاز نظر باید بین ۱ تا ۵ باشد.' }, { status: 400 })
+  }
+  if (rating === null && !feedbackText) {
+    return NextResponse.json({ error: 'امتیاز یا متن نظر را وارد کنید.' }, { status: 400 })
+  }
+
+  const { data: exam, error: examError } = await supabaseAdmin
+    .from('exams')
+    .select('id')
+    .eq('public_code', code)
+    .maybeSingle()
+  if (examError) return databaseUnavailable()
+  if (!exam) return NextResponse.json({ error: 'آزمون پیدا نشد.' }, { status: 404 })
+
+  const { data: updated, error } = await supabaseAdmin
+    .from('exam_attempts')
+    .update({
+      feedback_rating: rating,
+      feedback_text: feedbackText || null,
+      feedback_submitted_at: new Date().toISOString(),
+    })
+    .eq('id', attemptId)
+    .eq('exam_id', exam.id)
+    .select('id')
+    .maybeSingle()
+
+  if (error) {
+    console.error('ثبت نظر آزمون انجام نشد:', error)
+    return NextResponse.json({ error: 'ثبت نظر انجام نشد. دوباره تلاش کنید.' }, { status: 503 })
+  }
+  if (!updated) return NextResponse.json({ error: 'نتیجه آزمون پیدا نشد.' }, { status: 404 })
+  return NextResponse.json({ saved: true })
 }
