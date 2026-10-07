@@ -206,7 +206,10 @@
 .caseImageMeta span svg { width: 13px; height: 13px; }
 .caseImageMeta strong { font-size: 13px; letter-spacing: .04em; }
 .caseImageMeta strong i { color: #aab2bf; font-size: 11px; font-style: normal; }
-.caseControls { display: grid; grid-template-columns: 44px minmax(0,1fr) 44px; align-items: center; gap: 4px 12px; padding: 8px 12px 12px; border-top: 1px solid #d8dfe7; background: #f7f9fb; }
+.caseViewportHint { max-width: calc(100% - 28px); position: absolute; inset-inline-start: 50%; bottom: 13px; z-index: 2; transform: translateX(-50%); padding: 8px 12px; border: 1px solid rgba(255,255,255,.2); border-radius: 999px; color: #f7fbfc; background: rgba(8,18,24,.56); box-shadow: 0 8px 22px rgba(0,0,0,.2); backdrop-filter: blur(14px); font-size: 11px; font-weight: 700; line-height: 1.35; text-align: center; pointer-events: none; }
+.caseViewportHint button { min-height: 30px; margin-inline-start: 7px; padding: 4px 9px; border: 1px solid currentColor; border-radius: 999px; color: inherit; background: rgba(255,255,255,.1); font: inherit; cursor: pointer; pointer-events: auto; }
+[dir='rtl'] .caseViewportHint { transform: translateX(50%); }
+.caseControls { display: grid; grid-template-columns: 44px minmax(0,1fr) 44px; align-items: center; gap: 12px; padding: 8px 12px; border-top: 1px solid #d8dfe7; background: #f7f9fb; }
 .caseControls > button { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; padding: 0; border: 0; border-radius: 6px; color: #183354; background: transparent; cursor: pointer; }
 .caseControls > button:hover { color: #0d7580; background: #eaf4f5; }
 .caseControls > button:disabled { opacity: .32; cursor: default; }
@@ -217,8 +220,6 @@
 .caseRange input::-moz-range-track { height: 5px; border-radius: 999px; background: var(--range-track); }
 .caseRange input::-webkit-slider-thumb { width: 17px; height: 17px; margin-top: -6px; appearance: none; border: 3px solid #f7f9fb; border-radius: 50%; background: #0d8995; box-shadow: 0 0 0 1px #0d8995; }
 .caseRange input::-moz-range-thumb { width: 13px; height: 13px; border: 3px solid #f7f9fb; border-radius: 50%; background: #0d8995; box-shadow: 0 0 0 1px #0d8995; }
-.caseHint { grid-column: 1 / -1; color: #526174; font-size: 12px; line-height: 1.5; text-align: center; }
-.caseHint button { min-height: 44px; padding: 8px 12px; border: 1px solid currentColor; border-radius: 6px; background: transparent; color: inherit; font: inherit; cursor: pointer; }
 .caseBody { display: grid; align-content: center; gap: 22px; padding: clamp(28px,3.6vw,44px); border-inline-start: 1px solid #d9e1e6; background: linear-gradient(145deg,#fff 30%,#f7fbfb 100%); }
 .caseBody h3 { max-width: 18ch; margin: 0; color: #102d42; font: 850 clamp(26px,2.7vw,38px)/1.13 "Avenir Next","Segoe UI",Helvetica,Arial,sans-serif; letter-spacing: -.032em; }
 .caseFindings { display: grid; gap: 11px; }
@@ -229,14 +230,8 @@
 .caseFindings li:last-child { padding-bottom: 2px; border-bottom: 0; }
 .caseFindings li > span { width: 25px; height: 25px; display: grid; place-items: center; margin-top: 1px; border-radius: 50%; color: #176f75; background: #dff2f1; font-size: 12px; font-weight: 900; }
 .caseFindings p { margin: 0; color: #2e4656; font-size: 15px; font-weight: 650; line-height: 1.55; }
-.caseLearningNotes { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 20px; padding: 20px; border-top: 1px solid #d9e1e6; background: #f7fbfb; }
-.caseReviewTip { display: grid; grid-template-columns: 42px minmax(0,1fr); gap: 13px; padding: 16px; border: 1px solid #d4e3e5; border-radius: 13px; background: #f4f9f9; }
-.caseReviewIcon { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 11px; color: #176f75; background: #dcefed; }
-.caseReviewIcon svg { width: 21px; height: 21px; }
-.caseReviewTip div { display: grid; gap: 4px; }
-.caseReviewTip strong { color: #173c4b; font-size: 14px; }
-.caseReviewTip p { margin: 0; color: #516773; font-size: 13px; line-height: 1.58; }
-.caseInterpretation { display: grid; align-content: center; gap: 7px; padding: 14px 18px; border-inline-start: 3px solid #238e91; }
+.caseInterpretation { display: grid; gap: 7px; margin-top: 9px; padding: 16px 17px; border: 1px solid #cce2e3; border-inline-start: 3px solid #238e91; border-radius: 0 11px 11px 0; background: #eff8f7; }
+.caseInterpretation:dir(rtl) { border-radius: 11px 0 0 11px; }
 .caseInterpretation strong { color: #176f75; font-size: 13px; font-weight: 900; }
 .caseInterpretation p { margin: 0; color: #263f50; font-size: 15px; line-height: 1.62; }
 .caseCredit { padding: 10px 18px; border-top: 1px solid #d9e1e6; color: #7a8993; background: #f5f8f9; font-size: 10px; line-height: 1.45; text-align: end; }
@@ -317,18 +312,13 @@
 :global(html[data-theme='dark']) .caseRange input { --range-track: #596574; }
 :global(html[data-theme='dark']) .caseRange input::-webkit-slider-thumb { border-color: #222a35; }
 :global(html[data-theme='dark']) .caseRange input::-moz-range-thumb { border-color: #222a35; }
-:global(html[data-theme='dark']) .caseHint { color: #bac6d4; }
 :global(html[data-theme='dark']) .caseBody { border-color: #465160; background: linear-gradient(145deg,#171d26,#1b252d); }
 :global(html[data-theme='dark']) .caseBody h3 { color: #f1f6fb; }
 :global(html[data-theme='dark']) .caseFindings h4 { color: #91aab6; }
 :global(html[data-theme='dark']) .caseFindings li { border-color: #384752; }
 :global(html[data-theme='dark']) .caseFindings li > span { color: #9ce2df; background: #22464a; }
 :global(html[data-theme='dark']) .caseFindings p,:global(html[data-theme='dark']) .caseInterpretation p { color: #d1dce3; }
-:global(html[data-theme='dark']) .caseLearningNotes { border-color: #3d4a55; background: #151d24; }
-:global(html[data-theme='dark']) .caseReviewTip { border-color: #3d535b; background: #202e35; }
-:global(html[data-theme='dark']) .caseReviewIcon { color: #9ce2df; background: #25474a; }
-:global(html[data-theme='dark']) .caseReviewTip strong { color: #dff4f3; }
-:global(html[data-theme='dark']) .caseReviewTip p { color: #afc0ca; }
+:global(html[data-theme='dark']) .caseInterpretation { border-color: #35585b; background: #1d3033; }
 :global(html[data-theme='dark']) .caseInterpretation strong { color: #8bd7d5; }
 :global(html[data-theme='dark']) .caseCredit { border-color: #3b4853; color: #8f9ea8; background: #151b22; }
 :global(html[data-theme='dark']) .takeHomeSection { border-color: #88405e; background: linear-gradient(145deg,#2b1621,#211a23); }
@@ -421,9 +411,7 @@
   .caseControls { padding-inline: 10px; }
   .caseBody { gap: 21px; padding: 26px 20px 28px; border-top: 1px solid var(--line); border-inline-start: 0; }
   .caseBody h3 { max-width: none; font-size: 27px; }
-  .caseLearningNotes { grid-template-columns: 1fr; gap: 16px; padding: 16px; }
-  .caseReviewTip { grid-template-columns: 36px minmax(0,1fr); padding: 14px; }
-  .caseReviewIcon { width: 34px; height: 34px; }
+  .caseViewportHint { bottom: 44px; font-size: 10px; }
   .caseCredit { padding-inline: 14px; text-align: start; }
   .takeHome li > button { grid-template-columns: 28px minmax(0,1fr) 24px; padding: 9px 2px; }
   .takeHomeDetail { padding-block: 0 14px; padding-inline: 38px 30px; }
