@@ -232,18 +232,17 @@ function InteractiveLesson({ lang }) {
 
 function TableLesson({ lang }) {
   return <>
-    <div className={styles.tableModule}>
+    <div className={styles.tableLesson}>
       <header className={styles.tableIntro}>
-        <span>{pick(L('STANDARDISIERTES TABELLENMUSTER', 'STANDARDISED TABLE PATTERN', 'الگوی استاندارد جدول'), lang)}</span>
         <h3>{pick(L('Frühe NCCT-Zeichen kompakt vergleichen', 'Compare early NCCT signs at a glance', 'مقایسه فشرده علائم اولیه NCCT'), lang)}</h3>
         <p>{pick(L('Tabellen eignen sich für klar abgrenzbare Vergleichskriterien. Eine kurze Einleitung erklärt zuerst, wie die Tabelle gelesen und im Befund angewendet werden soll.', 'Tables work best for clearly separated comparison criteria. A short introduction first explains how to read the table and apply it in reporting.', 'جدول برای معیارهای مقایسه‌ای مشخص مناسب است. ابتدا یک توضیح کوتاه روشن می‌کند جدول چگونه خوانده و در گزارش استفاده شود.'), lang)}</p>
+        <p className={styles.tableUsage}><strong>{pick(L('So lesen:', 'How to read it:', 'روش خواندن:'), lang)}</strong> {pick(L('Fokus wählen, den anatomischen Prüfort aufsuchen und die Bedeutung anschließend in den klinischen Kontext setzen.', 'Choose the focus, inspect the anatomical location, then place its meaning in the clinical context.', 'محور را انتخاب کنید، محل آناتومیک را بررسی کنید و سپس مفهوم آن را در زمینه بالینی قرار دهید.'), lang)}</p>
       </header>
-      <aside className={styles.tableGuidance}><Icon name="check" /><div><strong>{pick(L('So verwenden', 'How to use it', 'روش استفاده'), lang)}</strong><p>{pick(L('Gehe zeilenweise vor: Fokus wählen, anatomischen Prüfort aufsuchen und die Bedeutung erst danach in den klinischen Kontext setzen.', 'Work row by row: choose the focus, inspect the anatomical location, then place its meaning in the clinical context.', 'ردیف‌به‌ردیف پیش بروید: محور را انتخاب کنید، محل آناتومیک را بررسی کنید و سپس مفهوم آن را در زمینه بالینی قرار دهید.'), lang)}</p></div></aside>
       <div className={styles.teachingTableWrap}>
         <table className={styles.teachingTable}>
           <caption>{pick(L('Standardtabelle für frühe NCCT-Zeichen', 'Standard table for early NCCT signs', 'جدول استاندارد علائم اولیه NCCT'), lang)}</caption>
-          <thead><tr><th>{pick(L('Priorität', 'Priority', 'اولویت'), lang)}</th><th>{pick(L('Fokus', 'Focus', 'محور'), lang)}</th><th>{pick(L('Prüfort', 'Where to look', 'محل بررسی'), lang)}</th><th>{pick(L('Bedeutung', 'Meaning', 'معنی'), lang)}</th></tr></thead>
-          <tbody>{INTERACTIVE_TABLE.map((row, index) => <tr key={pick(row[0], lang)}><td><span className={styles.tablePriority}>{index + 1}</span></td>{row.map(cell => <td key={pick(cell, lang)}>{pick(cell, lang)}</td>)}</tr>)}</tbody>
+          <thead><tr><th>{pick(L('Fokus', 'Focus', 'محور'), lang)}</th><th>{pick(L('Prüfort', 'Where to look', 'محل بررسی'), lang)}</th><th>{pick(L('Bedeutung', 'Meaning', 'معنی'), lang)}</th></tr></thead>
+          <tbody>{INTERACTIVE_TABLE.map(row => <tr key={pick(row[0], lang)}>{row.map(cell => <td key={pick(cell, lang)}>{pick(cell, lang)}</td>)}</tr>)}</tbody>
         </table>
       </div>
     </div>
@@ -470,7 +469,7 @@ export default function TestLearningPage() {
       <div className={styles.topline}><nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">RadYar</Link><span>/</span><Link href="/andarun">Andarun</Link><span>/</span><strong>Test</strong></nav><span className={styles.author}>Dr. Zia</span></div>
       <div className={styles.hero}><div className={styles.heroCopy}><h1>{pick(COPY.title, lang)}</h1></div></div>
       <div className={styles.actions}><button type="button" className={styles.takeHomeJump} onClick={() => selectSection('take-home')}><Icon name="spark" />{pick(COPY.jumpToSummary, lang)}<span aria-hidden="true">↓</span></button><Link className={styles.primaryAction} href="/ueben/quiz?fach=gehirn&n=10&themen=ischaemischer-schlaganfall&from=%2Fandarun%2Ftest">{pick(COPY.mcq, lang)}<span aria-hidden="true">→</span></Link><Link className={styles.secondaryAction} href="/flashcards/ischaemischer-schlaganfall"><Icon name="case" />{pick(COPY.flashcards, lang)}</Link></div>
-      <div className={styles.progressBar}><div className={styles.progressTrack} role="progressbar" aria-label={pick(COPY.progress, lang)} aria-valuemin={0} aria-valuemax={TRACKED_SECTION_IDS.length} aria-valuenow={readSections.size}><i style={{ width: `${(readSections.size / TRACKED_SECTION_IDS.length) * 100}%` }} /></div><span>{readSections.size} / {TRACKED_SECTION_IDS.length} {pick(COPY.progress, lang)}</span><div className={styles.progressActions}><button type="button" className={`${styles.lessonCompleteButton} ${lessonComplete ? styles.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><Icon name="check" />{pick(lessonComplete ? COPY.lessonCompleted : COPY.completeLesson, lang)}</button><button type="button" className={styles.continueButton} onClick={advance} disabled={activeIndex === SECTION_COPY.length - 1}>{pick(COPY.continue, lang)}<span aria-hidden="true">→</span></button></div></div>
+      <div className={styles.progressBar}><div className={styles.progressTrack} role="progressbar" aria-label={pick(COPY.progress, lang)} aria-valuemin={0} aria-valuemax={TRACKED_SECTION_IDS.length} aria-valuenow={readSections.size}><i style={{ width: `${(readSections.size / TRACKED_SECTION_IDS.length) * 100}%` }} /></div><span>{readSections.size} / {TRACKED_SECTION_IDS.length} {pick(COPY.progress, lang)}</span><div className={styles.progressActions}><button type="button" className={styles.continueButton} onClick={advance} disabled={activeIndex === SECTION_COPY.length - 1}>{pick(COPY.continue, lang)}<span aria-hidden="true">→</span></button><button type="button" className={`${styles.lessonCompleteButton} ${lessonComplete ? styles.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><Icon name="check" />{pick(lessonComplete ? COPY.lessonCompleted : COPY.completeLesson, lang)}</button></div></div>
     </header>
 
     <div className={styles.layout}>

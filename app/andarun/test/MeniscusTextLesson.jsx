@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import { useRef, useState } from 'react'
 import styles from './teaching-text.module.css'
 
@@ -35,7 +34,7 @@ const GROUPS = [
   },
 ]
 
-function TeachingTextGroup({ group, index, lang }) {
+function TeachingTextGroup({ group, lang }) {
   const [selected, setSelected] = useState(0)
   const tabRefs = useRef([])
   const prefix = `meniscus-${group.id}`
@@ -55,7 +54,7 @@ function TeachingTextGroup({ group, index, lang }) {
 
   return <section className={styles.group} aria-labelledby={`${prefix}-heading`}>
     <header className={styles.groupHeader}>
-      <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+      <span aria-hidden="true" />
       <h3 id={`${prefix}-heading`}>{pick(group.title, lang)}</h3>
     </header>
     <p className={styles.intro}>{pick(group.intro, lang)}</p>
@@ -96,10 +95,6 @@ function TeachingTextGroup({ group, index, lang }) {
 
 export default function MeniscusTextLesson({ lang }) {
   return <div className={styles.lesson}>
-    <div className={styles.example}>
-      <span>{pick(L('TEXTBEISPIEL · MSK / KNIE', 'TEXT EXAMPLE · MSK / KNEE', 'نمونه متن آموزشی · عضلانی‌اسکلتی / زانو'), lang)}</span>
-      <Link href="/msk/knie/meniskus#mrt">{pick(L('Zur Meniskus-Lektion', 'Meniscus lesson', 'درس منیسک'), lang)} <span aria-hidden="true">↗</span></Link>
-    </div>
-    {GROUPS.map((group, index) => <TeachingTextGroup key={group.id} group={group} index={index} lang={lang} />)}
+    {GROUPS.map(group => <TeachingTextGroup key={group.id} group={group} lang={lang} />)}
   </div>
 }
