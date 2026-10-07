@@ -76,7 +76,6 @@ function getQuestionBank(language) {
 export async function GET(request) {
   const denied = await authorize()
   if (denied) return denied
-  if (!isSupabaseAdminConfigured || !supabaseAdmin) return unavailable()
 
   const url = new URL(request.url)
   if (url.searchParams.get('resource') === 'question-bank') {
@@ -85,6 +84,7 @@ export async function GET(request) {
     const result = getQuestionBank(language)
     return NextResponse.json(result)
   }
+  if (!isSupabaseAdminConfigured || !supabaseAdmin) return unavailable()
 
   const examId = url.searchParams.get('id')
   if (examId) {
@@ -97,7 +97,7 @@ export async function GET(request) {
     const error = examResult.error || questionResult.error || attemptResult.error
     if (error) {
       console.error('آزمون قابل بارگذاری نیست:', error)
-      return NextResponse.json({ error: 'بارگذاری آزمون انجام نشد.' }, { status: 503 })
+      return NextResponse.json({ error: databaseSetupError(error, 'بارگذاری آزمون انجام نشد.') }, { status: 503 })
     }
     if (!examResult.data) return NextResponse.json({ error: 'آزمون پیدا نشد.' }, { status: 404 })
 
@@ -115,7 +115,7 @@ export async function GET(request) {
   const error = examResult.error || attemptResult.error
   if (error) {
     console.error('فهرست آزمون‌ها قابل بارگذاری نیست:', error)
-    return NextResponse.json({ error: 'بارگذاری فهرست آزمون‌ها انجام نشد.' }, { status: 503 })
+    return NextResponse.json({ error: databaseSetupError(error, 'بارگذاری فهرست آزمون‌ها انجام نشد.') }, { status: 503 })
   }
 
   const attemptCounts = new Map()
@@ -182,7 +182,7 @@ export async function POST(request) {
   if (questionsError) {
     console.error('ذخیره سؤال‌های آزمون انجام نشد:', questionsError)
     await supabaseAdmin.from('exams').delete().eq('id', exam.id)
-    return NextResponse.json({ error: 'ذخیره سؤال‌ها انجام نشد.' }, { status: 503 })
+    return NextResponse.json({ error: databaseSetupError(questionsError, 'ذخیره سؤال‌ها انجام نشد.') }, { status: 503 })
   }
 
   return NextResponse.json({ exam, sharePath: `/exam/${publicCode}` }, { status: 201 })

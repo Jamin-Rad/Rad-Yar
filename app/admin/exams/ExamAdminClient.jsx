@@ -461,6 +461,7 @@ export default function ExamAdminClient() {
               <button type="button" className={styles.addQuestion} onClick={() => setForm(current => ({ ...current, questions: [...current.questions, emptyQuestion()] }))}>＋ ساخت سؤال جدید</button>
             </section>
 
+            {error ? <div className={styles.formError} role="alert">{error}</div> : null}
             <div className={styles.formActions}>
               <button type="button" className={styles.secondaryButton} onClick={() => setView('list')}>انصراف</button>
               <button type="submit" className={styles.primaryButton} disabled={saving}>{saving ? 'در حال ساخت…' : 'ساخت امتحان و دریافت لینک'}</button>
