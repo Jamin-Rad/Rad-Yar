@@ -18,6 +18,10 @@
 .lesson[dir='rtl'] .panels { grid-column: 1; grid-row: 1; }
 .panel { min-height: 220px; padding: 26px 28px; align-self: stretch; }
 .panel[hidden] { display: none; }
+.panelWithVisual { display: grid; grid-template-columns: minmax(0,1fr) minmax(170px,.52fr); gap: 24px; align-items: center; }
+.panelCopy { min-width: 0; }
+.panelVisual { overflow: hidden; min-width: 0; border: 1px solid color-mix(in srgb,var(--text-accent) 22%,var(--text-border)); border-radius: 11px; background: #11101a; box-shadow: 0 10px 26px rgba(16,10,22,.16); }
+.panelVisual svg,.panelVisual img { width: 100%; height: auto; display: block; }
 .category { color: var(--text-accent); font-size: 12px; font-weight: 850; letter-spacing: .055em; text-transform: uppercase; }
 .panel h4 { margin: 12px 0; color: var(--ink); font: 800 23px/1.4 var(--font-inter,system-ui,sans-serif); letter-spacing: -.02em; }
 .panel p { margin: 0; color: var(--body); font-size: 18px; line-height: 1.85; }
@@ -26,6 +30,6 @@
 .note strong { color: var(--ink); font-weight: 800; }
 .tabs button:focus-visible,.panel:focus-visible { outline: 2px solid var(--text-accent); outline-offset: 3px; }
 :global(html[data-theme='dark']) .lesson { --text-detail: #29242f; --text-shell: #231e29; --text-border: color-mix(in srgb,var(--text-accent) 34%,#3a323f); }
-@container (max-width:620px) { .explorer { grid-template-columns: 1fr; gap: 14px; } .tabs { border-inline-end: 0; border-bottom: 1px solid var(--text-border); } .lesson[dir='rtl'] .tabs,.lesson[dir='rtl'] .panels { grid-column: 1; grid-row: auto; } .tabs button[aria-selected='true'] i,.lesson[dir='rtl'] .tabs button[aria-selected='true'] i { transform: rotate(90deg); } }
-@media (max-width:760px) { .lesson { gap: 14px; } .group { padding: 20px 16px; } .explorer { grid-template-columns: 1fr; gap: 14px; } .tabs { gap: 5px; border-inline-end: 0; border-bottom: 1px solid var(--text-border); } .lesson[dir='rtl'] .tabs,.lesson[dir='rtl'] .panels { grid-column: 1; grid-row: auto; } .tabs button { min-height: 52px; padding: 11px 14px; } .tabs button[aria-selected='true'] i,.lesson[dir='rtl'] .tabs button[aria-selected='true'] i { transform: rotate(90deg); } .panel { min-height: 195px; padding: 22px 20px; } .panel p { font-size: 17px; } .note { grid-template-columns: 1fr; gap: 4px; } }
+@container (max-width:620px) { .explorer { grid-template-columns: 1fr; gap: 14px; } .tabs { border-inline-end: 0; border-bottom: 1px solid var(--text-border); } .lesson[dir='rtl'] .tabs,.lesson[dir='rtl'] .panels { grid-column: 1; grid-row: auto; } .tabs button[aria-selected='true'] i,.lesson[dir='rtl'] .tabs button[aria-selected='true'] i { transform: rotate(90deg); } .panelWithVisual { grid-template-columns: 1fr; } .panelVisual { max-width: 310px; } }
+@media (max-width:760px) { .lesson { gap: 14px; } .group { padding: 20px 16px; } .explorer { grid-template-columns: 1fr; gap: 14px; } .tabs { gap: 5px; border-inline-end: 0; border-bottom: 1px solid var(--text-border); } .lesson[dir='rtl'] .tabs,.lesson[dir='rtl'] .panels { grid-column: 1; grid-row: auto; } .tabs button { min-height: 52px; padding: 11px 14px; } .tabs button[aria-selected='true'] i,.lesson[dir='rtl'] .tabs button[aria-selected='true'] i { transform: rotate(90deg); } .panel { min-height: 195px; padding: 22px 20px; } .panelWithVisual { grid-template-columns: 1fr; } .panelVisual { max-width: 310px; } .panel p { font-size: 17px; } .note { grid-template-columns: 1fr; gap: 4px; } }
 @media (prefers-reduced-motion:reduce) { .tabs button { transition: none; } }

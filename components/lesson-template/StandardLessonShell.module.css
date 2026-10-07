@@ -100,7 +100,7 @@
 .toggleOpen { transform: rotate(180deg); }
 .sectionBody { padding: 24px 24px 26px 82px; border-top: 1px solid var(--line); }
 .sectionBody[hidden] { display: none; }
-.readButton { min-height: 48px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 26px; border: 1px solid var(--lesson-accent-strong); border-radius: 8px; background: transparent; color: var(--lesson-accent-strong); font: 800 14px/1 var(--font-inter,system-ui,sans-serif); cursor: pointer; }
+.readButton { order: 999; min-height: 48px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 26px; border: 1px solid var(--lesson-accent-strong); border-radius: 8px; background: transparent; color: var(--lesson-accent-strong); font: 800 14px/1 var(--font-inter,system-ui,sans-serif); cursor: pointer; }
 .readButton svg { width: 20px; height: 20px; }
 .readButtonDone { background: var(--lesson-accent-strong); color: #fff; }
 

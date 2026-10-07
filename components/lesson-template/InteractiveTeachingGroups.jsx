@@ -5,7 +5,7 @@ import styles from './InteractiveTeachingGroups.module.css'
 
 const identity = value => value
 
-function InteractiveTeachingGroup({ group, resolve, direction }) {
+function InteractiveTeachingGroup({ group, resolve, direction, renderVisual }) {
   const [selected, setSelected] = useState(0)
   const tabRefs = useRef([])
   const prefix = `teaching-${group.id}`
@@ -45,27 +45,33 @@ function InteractiveTeachingGroup({ group, resolve, direction }) {
         ><span>{resolve(item.label)}</span><i aria-hidden="true">→</i></button>)}
       </div>
       <div className={styles.panels} dir={direction}>
-        {group.items.map((item, index) => <div
-          key={item.id}
-          className={styles.panel}
-          id={`${prefix}-${item.id}-panel`}
-          role="tabpanel"
-          aria-labelledby={`${prefix}-${item.id}-tab`}
-          tabIndex={0}
-          hidden={selected !== index}
-        >
-          <span className={styles.category}>{resolve(item.category)}</span>
-          <h4>{resolve(item.label)}</h4>
-          <p>{resolve(item.text)}</p>
-        </div>)}
+        {group.items.map((item, index) => {
+          const visual = renderVisual?.(item, group)
+          return <div
+            key={item.id}
+            className={`${styles.panel} ${visual ? styles.panelWithVisual : ''}`}
+            id={`${prefix}-${item.id}-panel`}
+            role="tabpanel"
+            aria-labelledby={`${prefix}-${item.id}-tab`}
+            tabIndex={0}
+            hidden={selected !== index}
+          >
+            <div className={styles.panelCopy}>
+              <span className={styles.category}>{resolve(item.category)}</span>
+              <h4>{resolve(item.label)}</h4>
+              <p>{resolve(item.text)}</p>
+            </div>
+            {visual ? <div className={styles.panelVisual}>{visual}</div> : null}
+          </div>
+        })}
       </div>
     </div>
     {group.note ? <p className={styles.note}><strong>{resolve(group.noteTitle)}</strong>{resolve(group.note)}</p> : null}
   </section>
 }
 
-export default function InteractiveTeachingGroups({ groups, resolve = identity, direction = 'ltr' }) {
+export default function InteractiveTeachingGroups({ groups, resolve = identity, direction = 'ltr', renderVisual }) {
   return <div className={styles.lesson} dir={direction}>
-    {groups.map(group => <InteractiveTeachingGroup key={group.id} group={group} resolve={resolve} direction={direction} />)}
+    {groups.map(group => <InteractiveTeachingGroup key={group.id} group={group} resolve={resolve} direction={direction} renderVisual={renderVisual} />)}
   </div>
 }

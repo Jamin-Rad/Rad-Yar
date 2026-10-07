@@ -204,6 +204,37 @@ const REFERENCES=[
 function Section({id,title,children}){return <LessonSection id={id} title={title} icon={id} bodyClassName={`${styles.sectionBody} ${styles.templateSectionBody}`}>{children}</LessonSection>}
 function MorphologyImage({type,lang='de'}){const image=MORPHOLOGY_IMAGES[type];return <a className={caseStyles.morphologyIllustration} href={image.src} target="_blank" rel="noreferrer" aria-label={pick(image.alt,lang)}><Image src={image.src} alt={pick(image.alt,lang)} width={image.width} height={image.height}/></a>}
 function DistributionImage({type,lang='de'}){const image=DISTRIBUTION_IMAGES[type];return <a className={caseStyles.distributionIllustration} href={image.src} target="_blank" rel="noreferrer" aria-label={pick(image.alt,lang)}><Image src={image.src} alt={pick(image.alt,lang)} width={image.width} height={image.height}/></a>}
+function BenignCalcificationDiagram({type,label}){
+  const backgroundId=`benign-${type}-background`
+  const glowId=`benign-${type}-glow`
+  return <svg viewBox="0 0 280 210" role="img" aria-label={label}>
+    <title>{label}</title>
+    <defs>
+      <radialGradient id={backgroundId} cx="52%" cy="48%" r="72%"><stop offset="0" stopColor="#413446"/><stop offset=".58" stopColor="#201a29"/><stop offset="1" stopColor="#0d0d16"/></radialGradient>
+      <filter id={glowId} x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <rect width="280" height="210" rx="16" fill={`url(#${backgroundId})`}/>
+    <g fill="none" stroke="#f0dce7" strokeOpacity=".09" strokeWidth="1.5">
+      <path d="M16 56C68 25 117 31 157 56s72 27 108 8"/><path d="M9 145c45-31 88-27 130-4s83 26 132-6"/><path d="M43 191c33-35 69-45 105-32s57 13 92-8"/>
+    </g>
+    {type==='coarse'?<g filter={`url(#${glowId})`} fill="#f7e8ef" stroke="#df9ab3" strokeWidth="2">
+      <path d="M89 111c-13-16-5-35 13-39 4-20 29-27 43-13 17-10 39 3 37 23 19 7 23 31 7 43 5 19-15 36-33 28-13 17-39 11-43-9-21 5-38-17-24-33Z"/>
+      <circle cx="111" cy="92" r="11" fill="#fff7fa"/><circle cx="148" cy="83" r="13"/><circle cx="164" cy="116" r="14" fill="#fff7fa"/><circle cx="126" cy="126" r="16"/>
+    </g>:null}
+    {type==='rod-like'?<g fill="none" stroke="#faedf2" strokeLinecap="round" filter={`url(#${glowId})`}>
+      <path d="M83 49c22 28 29 63 22 104" strokeWidth="12"/><path d="M128 43c19 33 22 71 10 119" strokeWidth="10"/><path d="M173 52c13 30 12 66-2 103" strokeWidth="13"/><path d="M209 71c8 25 5 51-8 76" strokeWidth="9"/>
+    </g>:null}
+    {type==='layering'?<g filter={`url(#${glowId})`}>
+      <g fill="#161421" stroke="#dfb5c5" strokeWidth="2"><circle cx="77" cy="104" r="39"/><circle cx="151" cy="86" r="31"/><circle cx="207" cy="132" r="28"/></g>
+      <g fill="#f8eaf0"><path d="M42 114a39 39 0 0 0 70 0c-24 7-48 7-70 0Z"/><path d="M123 94a31 31 0 0 0 56 0c-19 6-38 6-56 0Z"/><path d="M182 139a28 28 0 0 0 50 0c-17 5-34 5-50 0Z"/></g>
+      <g stroke="#fff" strokeOpacity=".75" strokeWidth="2"><path d="M45 114h64"/><path d="M126 94h50"/><path d="M185 139h44"/></g>
+    </g>:null}
+    {type==='rim'?<g filter={`url(#${glowId})`} fill="#171520">
+      <circle cx="102" cy="103" r="45" stroke="#faedf2" strokeWidth="7"/><circle cx="180" cy="91" r="30" stroke="#e7c8d4" strokeWidth="5"/><circle cx="190" cy="151" r="20" stroke="#f7e5ec" strokeWidth="4"/>
+      <circle cx="89" cy="89" r="5" fill="#624b61"/><circle cx="168" cy="81" r="4" fill="#624b61"/>
+    </g>:null}
+  </svg>
+}
 function KalkAssessment({lang}){
   const t=value=>translateLesson(value,lang)
   const[morph,setMorph]=useState('amorph')
@@ -354,7 +385,7 @@ function LessonContent({lang}){const t=value=>translateLesson(value,lang);return
       <p className={caseStyles.caseCredit}>{t("Case courtesy of Ayla Al Kabbani,")}{" "}<a href="https://radiopaedia.org/cases/72331/studies/82850?lang=us#t=im&v1i=51746512&v1z=1&v2i=51746513&v2z=1&v3i=51746514&v3z=1&v4i=51746515&v4z=1" target="_blank" rel="noreferrer">{t("Radiopaedia.org, rID: 72331 (Vollbild)")}</a>.</p>
     </article>
     <div className={styles.rule}><strong>{t("Wichtiger vaskulärer Hinweis")}</strong><p>{t("Vaskuläre Verkalkungen sind ein relevanter Marker für ein erhöhtes Risiko kardiovaskulärer Erkrankungen. Daher sollte eine klinische kardiovaskuläre Risikoevaluation erfolgen.")}</p></div>
-    <InteractiveTeachingGroups groups={BENIGN_PARENCHYMA_GROUPS} resolve={value=>pick(value,lang)} direction={lang==='fa'?'rtl':'ltr'}/>
+    <InteractiveTeachingGroups groups={BENIGN_PARENCHYMA_GROUPS} resolve={value=>pick(value,lang)} direction={lang==='fa'?'rtl':'ltr'} renderVisual={item=><BenignCalcificationDiagram type={item.id} label={pick(item.label,lang)}/>}/>
     <article className={`${caseStyles.caseStudy} ${caseStyles.exampleRim}`}>
       <header className={caseStyles.caseHeader}><div><small>{t("RADIOPAEDIA-FALL")}</small><h3>{t("Rim calcification")}</h3></div></header>
       <div className={caseStyles.caseGallery}>
