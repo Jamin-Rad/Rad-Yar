@@ -20,9 +20,19 @@ const SECTION_COPY = [
   { id: 'take-home', title: 'Take Home Message', icon: 'spark', emphasis: true },
 ]
 
-const SECTION_IDS = SECTION_COPY.map(section => section.id)
 const PATH_SECTIONS = SECTION_COPY.filter(section => !section.emphasis)
 const TRACKED_SECTION_IDS = PATH_SECTIONS.map(section => section.id)
+
+function replaceLessonHash(id) {
+  const baseUrl = `${window.location.pathname}${window.location.search}`
+  window.history.replaceState(null, '', id ? `${baseUrl}#${id}` : baseUrl)
+}
+
+function scrollToLessonSection(id) {
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }))
+}
 
 const COPY = {
   title: L('Akuter ischämischer Schlaganfall', 'Acute ischaemic stroke', 'سکته ایسکمیک حاد'),
@@ -444,21 +454,36 @@ function MobileLearningPath({ lang, openId, readSections, onSelect }) {
 export default function TestLearningPage() {
   const { lang } = useLanguage()
   const [openId, setOpenId] = useState('start')
+  const [summaryOpen, setSummaryOpen] = useState(false)
   const [readSections, setReadSections] = usePersistedSectionProgress('andarun-test', TRACKED_SECTION_IDS)
-  const activeIndex = useMemo(() => Math.max(0, SECTION_COPY.findIndex(section => section.id === openId)), [openId])
+  const activeIndex = useMemo(() => Math.max(0, PATH_SECTIONS.findIndex(section => section.id === openId)), [openId])
 
   useEffect(() => {
     const hash = window.location.hash.slice(1)
-    if (SECTION_IDS.includes(hash)) setOpenId(hash)
+    if (hash === 'take-home') setSummaryOpen(true)
+    else if (TRACKED_SECTION_IDS.includes(hash)) setOpenId(hash)
   }, [])
 
   const selectSection = id => {
-    const nextId = openId === id ? null : id
-    setOpenId(nextId)
-    window.history.replaceState(null, '', nextId ? `#${nextId}` : window.location.pathname)
-    if (nextId) requestAnimationFrame(() => document.getElementById(nextId)?.scrollIntoView({ behavior: 'smooth', block: 'start' }))
+    if (!TRACKED_SECTION_IDS.includes(id)) return
+    setOpenId(id)
+    replaceLessonHash(id)
+    scrollToLessonSection(id)
   }
-  const advance = () => selectSection(SECTION_COPY[Math.min(activeIndex + 1, SECTION_COPY.length - 1)].id)
+  const openSummary = () => {
+    setSummaryOpen(true)
+    replaceLessonHash('take-home')
+    scrollToLessonSection('take-home')
+  }
+  const toggleSummary = () => {
+    setSummaryOpen(previous => {
+      const next = !previous
+      replaceLessonHash(next ? 'take-home' : openId)
+      if (next) scrollToLessonSection('take-home')
+      return next
+    })
+  }
+  const advance = () => selectSection(PATH_SECTIONS[Math.min(activeIndex + 1, PATH_SECTIONS.length - 1)].id)
   const toggleSectionRead = id => setReadSections(previous => { const next = new Set(previous); if (next.has(id)) next.delete(id); else next.add(id); return next })
   const lessonComplete = readSections.size === TRACKED_SECTION_IDS.length
   const toggleLessonComplete = () => setReadSections(lessonComplete ? new Set() : new Set(TRACKED_SECTION_IDS))
@@ -469,13 +494,13 @@ export default function TestLearningPage() {
     <header className={styles.header}>
       <div className={styles.topline}><nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">RadYar</Link><span>/</span><Link href="/andarun">Andarun</Link><span>/</span><strong>Test</strong></nav><span className={styles.author}>Dr. Zia</span></div>
       <div className={styles.hero}><div className={styles.heroCopy}><h1>{pick(COPY.title, lang)}</h1></div></div>
-      <div className={styles.actions}><button type="button" className={styles.takeHomeJump} onClick={() => selectSection('take-home')}><Icon name="spark" />{pick(COPY.jumpToSummary, lang)}<span aria-hidden="true">↓</span></button><button type="button" className={`${styles.primaryAction} ${styles.demoAction}`} aria-disabled="true" data-template-target="lesson-mcq"><Icon name="quiz" />{pick(COPY.mcq, lang)}<span aria-hidden="true">→</span></button><button type="button" className={`${styles.secondaryAction} ${styles.demoAction}`} aria-disabled="true" data-template-target="lesson-flashcards"><Icon name="flashcards" />{pick(COPY.flashcards, lang)}</button></div>
-      <div className={styles.progressBar}><div className={styles.progressTrack} role="progressbar" aria-label={pick(COPY.progress, lang)} aria-valuemin={0} aria-valuemax={TRACKED_SECTION_IDS.length} aria-valuenow={readSections.size}><i style={{ width: `${(readSections.size / TRACKED_SECTION_IDS.length) * 100}%` }} /></div><span>{readSections.size} / {TRACKED_SECTION_IDS.length} {pick(COPY.progress, lang)}</span><div className={styles.progressActions}><button type="button" className={styles.continueButton} onClick={advance} disabled={activeIndex === SECTION_COPY.length - 1}>{pick(COPY.continue, lang)}<span aria-hidden="true">→</span></button><button type="button" className={`${styles.lessonCompleteButton} ${lessonComplete ? styles.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><Icon name="check" />{pick(lessonComplete ? COPY.lessonCompleted : COPY.completeLesson, lang)}</button></div></div>
+      <div className={styles.actions}><button type="button" className={styles.takeHomeJump} onClick={openSummary}><Icon name="spark" />{pick(COPY.jumpToSummary, lang)}<span aria-hidden="true">↓</span></button><button type="button" className={`${styles.primaryAction} ${styles.demoAction}`} aria-disabled="true" data-template-target="lesson-mcq"><Icon name="quiz" />{pick(COPY.mcq, lang)}<span aria-hidden="true">→</span></button><button type="button" className={`${styles.secondaryAction} ${styles.demoAction}`} aria-disabled="true" data-template-target="lesson-flashcards"><Icon name="flashcards" />{pick(COPY.flashcards, lang)}</button></div>
+      <div className={styles.progressBar}><div className={styles.progressTrack} role="progressbar" aria-label={pick(COPY.progress, lang)} aria-valuemin={0} aria-valuemax={TRACKED_SECTION_IDS.length} aria-valuenow={readSections.size}><i style={{ width: `${(readSections.size / TRACKED_SECTION_IDS.length) * 100}%` }} /></div><span>{readSections.size} / {TRACKED_SECTION_IDS.length} {pick(COPY.progress, lang)}</span><div className={styles.progressActions}><button type="button" className={styles.continueButton} onClick={advance} disabled={activeIndex === PATH_SECTIONS.length - 1}>{pick(COPY.continue, lang)}<span aria-hidden="true">→</span></button><button type="button" className={`${styles.lessonCompleteButton} ${lessonComplete ? styles.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><Icon name="check" />{pick(lessonComplete ? COPY.lessonCompleted : COPY.completeLesson, lang)}</button></div></div>
     </header>
 
     <div className={styles.layout}>
       <aside className={styles.sidebar}><h2>{pick(COPY.path, lang)}</h2><nav>{PATH_SECTIONS.map(section => <button type="button" key={section.id} className={openId === section.id ? styles.activeSideItem : ''} onClick={() => selectSection(section.id)} aria-current={openId === section.id ? 'location' : undefined} aria-label={`${pick(COPY.open, lang)}: ${pick(section.title, lang)}`}><span className={styles.sideIcon}><Icon name={section.icon} /></span><strong>{pick(section.title, lang)}</strong></button>)}</nav></aside>
-      <article className={styles.lesson}>{SECTION_COPY.map(section => <Section key={section.id} section={section} lang={lang} open={openId === section.id} isRead={readSections.has(section.id)} onToggle={selectSection} onReadToggle={toggleSectionRead}>{section.id === 'start' ? <StartSection lang={lang} /> : <ContentSection id={section.id} lang={lang} />}</Section>)}<LessonSources lang={lang} /></article>
+      <article className={styles.lesson}>{SECTION_COPY.map(section => <Section key={section.id} section={section} lang={lang} open={section.emphasis ? summaryOpen : openId === section.id} isRead={readSections.has(section.id)} onToggle={section.emphasis ? toggleSummary : selectSection} onReadToggle={toggleSectionRead}>{section.id === 'start' ? <StartSection lang={lang} /> : <ContentSection id={section.id} lang={lang} />}</Section>)}<LessonSources lang={lang} /></article>
     </div>
     <MobileLearningPath lang={lang} openId={openId} readSections={readSections} onSelect={selectSection} />
   </main>

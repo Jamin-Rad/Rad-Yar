@@ -7,6 +7,17 @@ import styles from './StandardLessonShell.module.css'
 
 const LessonShellContext = createContext(null)
 
+function replaceLessonHash(id) {
+  const baseUrl = `${window.location.pathname}${window.location.search}`
+  window.history.replaceState(null, '', id ? `${baseUrl}#${id}` : baseUrl)
+}
+
+function scrollToLessonSection(id) {
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }))
+}
+
 function Icon({ name }) {
   const paths = {
     summary: 'M12 3l1.8 4.8L19 9.5l-4.1 3.2L16.2 18 12 15l-4.2 3 1.3-5.3L5 9.5l5.2-1.7z',
@@ -63,14 +74,14 @@ export function LessonSection({ id, title, icon, children, bodyClassName = '' })
   const context = useContext(LessonShellContext)
   if (!context) throw new Error('LessonSection must be rendered inside StandardLessonShell')
 
-  const { labels, openId, openSection, readSections, toggleSectionRead, sections, renderIcon } = context
+  const { labels, openId, openSection, summaryOpen, toggleSummary, readSections, toggleSectionRead, sections, renderIcon } = context
   const section = sections.find(item => item.id === id)
   const emphasis = Boolean(section?.emphasis)
-  const open = openId === id
+  const open = emphasis ? summaryOpen : openId === id
   const isRead = readSections.has(id)
 
   return <section id={id} className={`${styles.section} ${open ? styles.sectionOpen : ''} ${emphasis ? styles.takeHomeSection : ''}`}>
-    <button type="button" className={styles.sectionHeader} onClick={() => openSection(id, { toggle: true })} aria-expanded={open} aria-controls={`${id}-panel`}>
+    <button type="button" className={styles.sectionHeader} onClick={() => emphasis ? toggleSummary() : openSection(id)} aria-expanded={open} aria-controls={`${id}-panel`}>
       <span className={styles.sectionIcon}>{renderIcon(icon || section?.icon || id)}</span>
       <span><strong>{title || section?.label}</strong></span>
       <span className={`${styles.toggle} ${open ? styles.toggleOpen : ''}`} aria-hidden="true"><Icon name="chevron" /></span>
@@ -136,20 +147,39 @@ export default function StandardLessonShell({
   const trackedSections = useMemo(() => sections.filter(section => !section.emphasis), [sections])
   const trackedIds = useMemo(() => trackedSections.map(section => section.id), [trackedSections])
   const [openId, setOpenId] = useState(trackedSections[0]?.id || sections[0]?.id || null)
+  const [summaryOpen, setSummaryOpen] = useState(false)
   const [readSections, setReadSections] = usePersistedSectionProgress(lessonId, trackedIds)
   const activeIndex = trackedSections.findIndex(section => section.id === openId)
+  const summarySection = sections.find(section => section.emphasis)
 
   useEffect(() => {
     const hash = window.location.hash.slice(1)
-    if (sections.some(section => section.id === hash)) setOpenId(hash)
-  }, [sections])
+    if (hash === summarySection?.id) setSummaryOpen(true)
+    else if (trackedSections.some(section => section.id === hash)) setOpenId(hash)
+  }, [summarySection?.id, trackedSections])
 
-  const openSection = (id, options = {}) => {
-    const nextId = options.toggle && openId === id ? null : id
-    setOpenId(nextId)
-    const baseUrl = `${window.location.pathname}${window.location.search}`
-    window.history.replaceState(null, '', nextId ? `${baseUrl}#${nextId}` : baseUrl)
-    if (nextId) requestAnimationFrame(() => document.getElementById(nextId)?.scrollIntoView({ behavior: 'smooth', block: 'start' }))
+  const openSection = id => {
+    if (!trackedIds.includes(id)) return
+    setOpenId(id)
+    replaceLessonHash(id)
+    scrollToLessonSection(id)
+  }
+
+  const openSummary = () => {
+    if (!summarySection) return
+    setSummaryOpen(true)
+    replaceLessonHash(summarySection.id)
+    scrollToLessonSection(summarySection.id)
+  }
+
+  const toggleSummary = () => {
+    if (!summarySection) return
+    setSummaryOpen(previous => {
+      const next = !previous
+      replaceLessonHash(next ? summarySection.id : openId)
+      if (next) scrollToLessonSection(summarySection.id)
+      return next
+    })
   }
 
   const advance = () => {
@@ -166,9 +196,8 @@ export default function StandardLessonShell({
 
   const lessonComplete = trackedIds.length > 0 && readSections.size === trackedIds.length
   const toggleLessonComplete = () => setReadSections(lessonComplete ? new Set() : new Set(trackedIds))
-  const summarySection = sections.find(section => section.emphasis)
   const progress = trackedIds.length ? (readSections.size / trackedIds.length) * 100 : 0
-  const context = { labels, openId, openSection, readSections, toggleSectionRead, sections, trackedSections, renderIcon }
+  const context = { labels, openId, openSection, summaryOpen, toggleSummary, readSections, toggleSectionRead, sections, trackedSections, renderIcon }
   const shellStyle = {
     '--lesson-background-image': `url("${theme.backgroundImage}")`,
     '--lesson-accent': theme.accent,
@@ -179,7 +208,7 @@ export default function StandardLessonShell({
     '--lesson-hero-base': theme.heroBase,
   }
 
-  const summaryAction = summarySection ? { label: labels.takeHome, onClick: () => openSection(summarySection.id), trailingIcon: 'down' } : null
+  const summaryAction = summarySection ? { label: labels.takeHome, onClick: openSummary, trailingIcon: 'down' } : null
   const isAtLastTrackedSection = activeIndex === trackedSections.length - 1
 
   return <main className={`${styles.page} ${className}`} style={shellStyle} data-lesson-progress-managed="true" dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
