@@ -32,24 +32,22 @@
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 80% 56% at 78% 2%,transparent 0 38%,rgba(108,170,181,.07) 38.2% 38.45%,transparent 38.7% 52%,rgba(167,112,174,.055) 52.2% 52.45%,transparent 52.7%),
-    linear-gradient(118deg,transparent 0 43%,rgba(134,191,197,.045) 43.15%,transparent 43.4%),
-    repeating-linear-gradient(90deg,rgba(205,222,228,.018) 0 1px,transparent 1px 96px),
-    repeating-linear-gradient(0deg,rgba(205,222,228,.014) 0 1px,transparent 1px 96px),
-    linear-gradient(155deg,#100d18 0%,#17121f 48%,#0b1119 100%);
+    linear-gradient(180deg,rgba(13,10,22,.68),rgba(14,11,21,.84)),
+    url('/andarun-galaxy-v2.png') center / cover no-repeat;
+  filter: saturate(.52) contrast(.92) brightness(.76) blur(1px);
 }
 .page::after {
   content: '';
   position: fixed;
   top: 74px;
   right: max(0px,calc((100vw - 1380px)/2));
-  width: min(48vw,680px);
-  height: 390px;
+  width: min(55vw,760px);
+  height: 440px;
   z-index: 0;
   pointer-events: none;
   background: url('/educational/stroke-hero-cutout-v2.png') right center / contain no-repeat;
   filter: saturate(.48) contrast(1.04) brightness(.68);
-  opacity: .34;
+  opacity: .4;
   mix-blend-mode: screen;
   -webkit-mask-image: linear-gradient(90deg,transparent 0,#000 26%),linear-gradient(180deg,#000 75%,transparent 100%);
   mask-image: linear-gradient(90deg,transparent 0,#000 26%),linear-gradient(180deg,#000 75%,transparent 100%);
@@ -339,7 +337,7 @@
 @media (max-width:760px) {
   .page { padding: 76px 12px 108px; }
   .page::before { background-position: 68% center; background-size: cover; }
-  .page::after { top: 88px; right: -76px; width: 330px; height: 310px; background-position: right center; opacity: .3; -webkit-mask-image: linear-gradient(90deg,transparent 0,#000 34%),linear-gradient(180deg,#000 70%,transparent 100%); mask-image: linear-gradient(90deg,transparent 0,#000 34%),linear-gradient(180deg,#000 70%,transparent 100%); }
+  .page::after { top: 82px; right: -92px; width: 370px; height: 340px; background-position: right center; opacity: .34; -webkit-mask-image: linear-gradient(90deg,transparent 0,#000 38%),linear-gradient(180deg,#000 72%,transparent 100%); mask-image: linear-gradient(90deg,transparent 0,#000 38%),linear-gradient(180deg,#000 72%,transparent 100%); }
   .page > .header,.page > .layout { position: relative; z-index: 1; }
   .hero { min-height: 240px; }
   .heroCopy h1 { font-size: clamp(39px,13vw,58px); }
