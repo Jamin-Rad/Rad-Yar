@@ -493,7 +493,10 @@ export default function TestLearningPage() {
   return <main className={styles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
     <header className={styles.header}>
       <div className={styles.topline}><nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">RadYar</Link><span>/</span><Link href="/andarun">Andarun</Link><span>/</span><strong>Test</strong></nav><span className={styles.author}>Dr. Zia</span></div>
-      <div className={styles.hero}><div className={styles.heroCopy}><h1>{pick(COPY.title, lang)}</h1></div></div>
+      <div className={styles.hero}>
+        <div className={styles.heroCopy}><h1>{pick(COPY.title, lang)}</h1></div>
+        <div className={styles.heroVisual} aria-hidden="true" />
+      </div>
       <div className={styles.actions}><button type="button" className={styles.takeHomeJump} onClick={openSummary}><Icon name="spark" />{pick(COPY.jumpToSummary, lang)}<span aria-hidden="true">↓</span></button><button type="button" className={`${styles.primaryAction} ${styles.demoAction}`} aria-disabled="true" data-template-target="lesson-mcq"><Icon name="quiz" />{pick(COPY.mcq, lang)}<span aria-hidden="true">→</span></button><button type="button" className={`${styles.secondaryAction} ${styles.demoAction}`} aria-disabled="true" data-template-target="lesson-flashcards"><Icon name="flashcards" />{pick(COPY.flashcards, lang)}</button></div>
       <div className={styles.progressBar}><div className={styles.progressTrack} role="progressbar" aria-label={pick(COPY.progress, lang)} aria-valuemin={0} aria-valuemax={TRACKED_SECTION_IDS.length} aria-valuenow={readSections.size}><i style={{ width: `${(readSections.size / TRACKED_SECTION_IDS.length) * 100}%` }} /></div><span>{readSections.size} / {TRACKED_SECTION_IDS.length} {pick(COPY.progress, lang)}</span><div className={styles.progressActions}><button type="button" className={styles.continueButton} onClick={advance} disabled={activeIndex === PATH_SECTIONS.length - 1}>{pick(COPY.continue, lang)}<span aria-hidden="true">→</span></button><button type="button" className={`${styles.lessonCompleteButton} ${lessonComplete ? styles.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><Icon name="check" />{pick(lessonComplete ? COPY.lessonCompleted : COPY.completeLesson, lang)}</button></div></div>
     </header>
