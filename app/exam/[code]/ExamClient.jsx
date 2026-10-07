@@ -3,10 +3,22 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import styles from './page.module.css'
 
-function formatTime(seconds) {
+const EXAM_COPY = Object.freeze({
+  fa: {
+    locale: 'fa-IR', dir: 'rtl', loading: 'در حال آماده‌سازی امتحان…', openFailed: 'امتحان باز نشد', badge: 'امتحان آنلاین', introFallback: 'پیش از شروع، اطلاعات خود را وارد کنید.', questions: 'تعداد سؤال', time: 'زمان', minutes: 'دقیقه', pass: 'حد قبولی', name: 'نام و نام خانوادگی *', namePlaceholder: 'نام شما', email: 'ایمیل *', start: 'شروع امتحان', startArrow: '←', notice: 'با شروع امتحان، زمان‌سنج فعال می‌شود. پاسخ‌ها در پایان به‌صورت خودکار ارسال خواهند شد.', nameError: 'لطفاً نام و نام خانوادگی خود را وارد کنید.', emailError: 'لطفاً ایمیل معتبر خود را وارد کنید.', submitting: 'در حال ثبت پاسخ‌ها', dontClose: 'این صفحه را نبندید.', submitted: 'پاسخ‌ها ثبت شد', thanks: name => `${name}، ممنون!`, passed: 'شما در این امتحان قبول شدید.', failed: 'این بار به حد قبولی نرسیدید.', resultSent: 'نتیجه برای مدیر امتحان ارسال شد.', saved: 'نتیجه شما با موفقیت ذخیره شد و برگزارکننده می‌تواند آن را مشاهده کند.', exam: 'امتحان', remaining: 'زمان باقی‌مانده', answered: (done, total) => `${done} از ${total} پاسخ داده شده`, questionOf: (current, total) => `سؤال ${current} از ${total}`, previous: 'سؤال قبلی', next: 'سؤال بعدی', submit: 'پایان و ارسال پاسخ‌ها', questionList: 'فهرست سؤال‌ها', answeredLegend: 'پاسخ داده‌شده', unansweredLegend: 'بدون پاسخ', finish: 'پایان امتحان', of: 'از',
+  },
+  en: {
+    locale: 'en-US', dir: 'ltr', loading: 'Preparing the exam…', openFailed: 'The exam could not be opened', badge: 'Online exam', introFallback: 'Enter your details before starting.', questions: 'Questions', time: 'Time', minutes: 'minutes', pass: 'Pass mark', name: 'Full name *', namePlaceholder: 'Your name', email: 'Email *', start: 'Start exam', startArrow: '→', notice: 'The timer starts when you begin. Your answers are submitted automatically when time runs out.', nameError: 'Please enter your full name.', emailError: 'Please enter a valid email address.', submitting: 'Submitting answers', dontClose: 'Please do not close this page.', submitted: 'Answers submitted', thanks: name => `Thank you, ${name}!`, passed: 'You passed this exam.', failed: 'You did not reach the pass mark this time.', resultSent: 'Your result was sent to the exam administrator.', saved: 'Your result was saved successfully and is available to the organizer.', exam: 'Exam', remaining: 'Time remaining', answered: (done, total) => `${done} of ${total} answered`, questionOf: (current, total) => `Question ${current} of ${total}`, previous: 'Previous question', next: 'Next question', submit: 'Finish and submit', questionList: 'Question list', answeredLegend: 'Answered', unansweredLegend: 'Unanswered', finish: 'Finish exam', of: 'of',
+  },
+  de: {
+    locale: 'de-DE', dir: 'ltr', loading: 'Prüfung wird vorbereitet…', openFailed: 'Die Prüfung konnte nicht geöffnet werden', badge: 'Online-Prüfung', introFallback: 'Bitte geben Sie vor dem Start Ihre Daten ein.', questions: 'Fragen', time: 'Zeit', minutes: 'Minuten', pass: 'Bestehensgrenze', name: 'Vor- und Nachname *', namePlaceholder: 'Ihr Name', email: 'E-Mail *', start: 'Prüfung starten', startArrow: '→', notice: 'Der Timer startet mit der Prüfung. Nach Ablauf der Zeit werden Ihre Antworten automatisch gesendet.', nameError: 'Bitte geben Sie Ihren vollständigen Namen ein.', emailError: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.', submitting: 'Antworten werden gesendet', dontClose: 'Bitte schließen Sie diese Seite nicht.', submitted: 'Antworten gesendet', thanks: name => `Vielen Dank, ${name}!`, passed: 'Sie haben diese Prüfung bestanden.', failed: 'Sie haben die Bestehensgrenze diesmal nicht erreicht.', resultSent: 'Ihr Ergebnis wurde an die Prüfungsleitung gesendet.', saved: 'Ihr Ergebnis wurde erfolgreich gespeichert und ist für die Prüfungsleitung sichtbar.', exam: 'Prüfung', remaining: 'Verbleibende Zeit', answered: (done, total) => `${done} von ${total} beantwortet`, questionOf: (current, total) => `Frage ${current} von ${total}`, previous: 'Vorherige Frage', next: 'Nächste Frage', submit: 'Beenden und senden', questionList: 'Fragenübersicht', answeredLegend: 'Beantwortet', unansweredLegend: 'Nicht beantwortet', finish: 'Prüfung beenden', of: 'von',
+  },
+})
+
+function formatTime(seconds, locale = 'fa-IR') {
   const safe = Math.max(0, seconds)
   const minutes = Math.floor(safe / 60)
-  return `${minutes.toLocaleString('fa-IR')}:${String(safe % 60).padStart(2, '0')}`
+  return `${minutes.toLocaleString(locale)}:${String(safe % 60).padStart(2, '0')}`
 }
 
 function availableSeconds(exam) {
@@ -42,6 +54,8 @@ export default function ExamClient({ code }) {
   const [startedAt, setStartedAt] = useState('')
   const [result, setResult] = useState(null)
   const submittingRef = useRef(false)
+  const language = exam?.language in EXAM_COPY ? exam.language : 'fa'
+  const copy = EXAM_COPY[language]
 
   useEffect(() => {
     let active = true
@@ -101,16 +115,16 @@ export default function ExamClient({ code }) {
   function startExam(event) {
     event.preventDefault()
     if (participantName.trim().length < 2) {
-      setError('لطفاً نام و نام خانوادگی خود را وارد کنید.')
+      setError(copy.nameError)
       return
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(participantEmail.trim())) {
-      setError('لطفاً ایمیل معتبر خود را وارد کنید.')
+      setError(copy.emailError)
       return
     }
     const allowedSeconds = availableSeconds(exam)
     if (allowedSeconds <= 0) {
-      setError('مهلت شرکت در این آزمون به پایان رسیده است.')
+      setError(language === 'en' ? 'The participation period for this exam has ended.' : language === 'de' ? 'Der Teilnahmezeitraum für diese Prüfung ist beendet.' : 'مهلت شرکت در این آزمون به پایان رسیده است.')
       return
     }
     setError('')
@@ -124,72 +138,72 @@ export default function ExamClient({ code }) {
     setAnswers(currentAnswers => ({ ...currentAnswers, [question.id]: optionIndex }))
   }
 
-  if (phase === 'loading') return <main className={styles.page} dir="rtl"><div className={styles.centerCard}><span className={styles.loader} /><p>در حال آماده‌سازی امتحان…</p></div></main>
-  if (phase === 'error') return <main className={styles.page} dir="rtl"><div className={styles.centerCard}><span className={styles.errorIcon}>!</span><h1>امتحان باز نشد</h1><p>{error}</p></div></main>
+  if (phase === 'loading') return <main className={styles.page} dir="rtl"><div className={styles.centerCard}><span className={styles.loader} /><p>{copy.loading}</p></div></main>
+  if (phase === 'error') return <main className={styles.page} dir={copy.dir}><div className={styles.centerCard}><span className={styles.errorIcon}>!</span><h1>{copy.openFailed}</h1><p>{error}</p></div></main>
 
   if (phase === 'intro') return (
-    <main className={styles.page} dir="rtl">
+    <main className={styles.page} dir={copy.dir} lang={language}>
       <section className={styles.introCard}>
         <div className={styles.introTop}>
-          <span className={styles.badge}>امتحان آنلاین</span>
+          <span className={styles.badge}>{copy.badge}</span>
           <h1>{exam.title}</h1>
-          <p>{exam.description || 'پیش از شروع، اطلاعات خود را وارد کنید.'}</p>
+          <p>{exam.description || copy.introFallback}</p>
         </div>
         <div className={styles.examFacts}>
-          <div><span>تعداد سؤال</span><strong>{questions.length.toLocaleString('fa-IR')}</strong></div>
-          <div><span>زمان پاسخ‌گویی</span><strong>{Number(exam.duration_minutes).toLocaleString('fa-IR')} دقیقه</strong></div>
-          <div><span>حد قبولی</span><strong>{Number(exam.pass_percent).toLocaleString('fa-IR')}٪</strong></div>
-          <div><span>فعال تا</span><strong>{formatDate(exam.closes_at)}</strong></div>
+          <div><span>{copy.questions}</span><strong>{questions.length.toLocaleString(copy.locale)}</strong></div>
+          <div><span>{copy.time}</span><strong>{Number(exam.duration_minutes).toLocaleString(copy.locale)} {copy.minutes}</strong></div>
+          <div><span>{copy.pass}</span><strong>{Number(exam.pass_percent).toLocaleString(copy.locale)}%</strong></div>
+          <div><span>{language === 'en' ? 'Available until' : language === 'de' ? 'Verfügbar bis' : 'فعال تا'}</span><strong>{new Intl.DateTimeFormat(copy.locale, { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(exam.closes_at))}</strong></div>
         </div>
         <form className={styles.identityForm} onSubmit={startExam}>
-          <label><span>نام و نام خانوادگی *</span><input autoFocus required minLength={2} maxLength={120} value={participantName} onChange={event => setParticipantName(event.target.value)} autoComplete="name" placeholder="نام شما" /></label>
-          <label><span>ایمیل *</span><input type="email" required maxLength={254} value={participantEmail} onChange={event => setParticipantEmail(event.target.value)} autoComplete="email" placeholder="name@example.com" dir="ltr" /></label>
+          <label><span>{copy.name}</span><input autoFocus required minLength={2} maxLength={120} value={participantName} onChange={event => setParticipantName(event.target.value)} autoComplete="name" placeholder={copy.namePlaceholder} /></label>
+          <label><span>{copy.email}</span><input type="email" required maxLength={254} value={participantEmail} onChange={event => setParticipantEmail(event.target.value)} autoComplete="email" placeholder="name@example.com" dir="ltr" /></label>
           <label className={styles.honeypot} aria-hidden="true"><span>Website</span><input tabIndex={-1} autoComplete="off" value={website} onChange={event => setWebsite(event.target.value)} /></label>
           {error ? <div className={styles.error} role="alert">{error}</div> : null}
-          <button type="submit">شروع امتحان <span aria-hidden="true">←</span></button>
-          <small className={styles.notice}>با شروع امتحان، زمان‌سنج فعال می‌شود. پاسخ‌ها در پایان به‌صورت خودکار ارسال خواهند شد.</small>
+          <button type="submit">{copy.start} <span aria-hidden="true">{copy.startArrow}</span></button>
+          <small className={styles.notice}>{copy.notice}</small>
         </form>
       </section>
     </main>
   )
 
-  if (phase === 'submitting') return <main className={styles.page} dir="rtl"><div className={styles.centerCard}><span className={styles.loader} /><h1>در حال ثبت پاسخ‌ها</h1><p>این صفحه را نبندید.</p></div></main>
+  if (phase === 'submitting') return <main className={styles.page} dir={copy.dir}><div className={styles.centerCard}><span className={styles.loader} /><h1>{copy.submitting}</h1><p>{copy.dontClose}</p></div></main>
 
   if (phase === 'result') return (
-    <main className={styles.page} dir="rtl">
+    <main className={styles.page} dir={copy.dir} lang={language}>
       <section className={styles.resultCard}>
         <span className={result?.passed ? styles.resultSuccess : styles.resultDone}>{result ? (result.passed ? '✓' : '!') : '✓'}</span>
-        <span className={styles.badge}>پاسخ‌ها ثبت شد</span>
-        <h1>{participantName}، ممنون!</h1>
+        <span className={styles.badge}>{copy.submitted}</span>
+        <h1>{copy.thanks(participantName)}</h1>
         {result ? (
           <>
-            <div className={styles.scoreCircle} style={{ '--score': `${result.percentage * 3.6}deg` }}><div><strong>{Number(result.percentage).toLocaleString('fa-IR')}٪</strong><span>{result.score.toLocaleString('fa-IR')} از {result.maxScore.toLocaleString('fa-IR')}</span></div></div>
-            <p className={result.passed ? styles.passText : styles.failText}>{result.passed ? 'شما در این امتحان قبول شدید.' : 'این بار به حد قبولی نرسیدید.'}</p>
+            <div className={styles.scoreCircle} style={{ '--score': `${result.percentage * 3.6}deg` }}><div><strong>{Number(result.percentage).toLocaleString(copy.locale)}%</strong><span>{result.score.toLocaleString(copy.locale)} {copy.of} {result.maxScore.toLocaleString(copy.locale)}</span></div></div>
+            <p className={result.passed ? styles.passText : styles.failText}>{result.passed ? copy.passed : copy.failed}</p>
           </>
-        ) : <p>نتیجه برای مدیر امتحان ارسال شد.</p>}
-        <div className={styles.resultNote}>نتیجه شما با موفقیت ذخیره شد و برگزارکننده می‌تواند آن را مشاهده کند.</div>
+        ) : <p>{copy.resultSent}</p>}
+        <div className={styles.resultNote}>{copy.saved}</div>
       </section>
     </main>
   )
 
   return (
-    <main className={styles.page} dir="rtl">
+    <main className={styles.page} dir={copy.dir} lang={language}>
       <div className={styles.examShell}>
         <header className={styles.examHeader}>
-          <div><span className={styles.headerLabel}>امتحان</span><h1>{exam.title}</h1></div>
-          <div className={timeLeft < 60 ? styles.timerLow : styles.timer}><span>زمان باقی‌مانده</span><strong dir="ltr">{formatTime(timeLeft)}</strong></div>
+          <div><span className={styles.headerLabel}>{copy.exam}</span><h1>{exam.title}</h1></div>
+          <div className={timeLeft < 60 ? styles.timerLow : styles.timer}><span>{copy.remaining}</span><strong dir="ltr">{formatTime(timeLeft, copy.locale)}</strong></div>
         </header>
 
         <div className={styles.progressRow}>
           <div className={styles.progressTrack}><span style={{ width: `${progress}%` }} /></div>
-          <span>{answeredCount.toLocaleString('fa-IR')} از {questions.length.toLocaleString('fa-IR')} پاسخ داده شده</span>
+          <span>{copy.answered(answeredCount.toLocaleString(copy.locale), questions.length.toLocaleString(copy.locale))}</span>
         </div>
 
         {error ? <div className={styles.error} role="alert">{error}</div> : null}
 
         <div className={styles.examLayout}>
           <section className={styles.questionCard}>
-            <div className={styles.questionNumber}>سؤال {Number(current + 1).toLocaleString('fa-IR')} از {questions.length.toLocaleString('fa-IR')}</div>
+            <div className={styles.questionNumber}>{copy.questionOf(Number(current + 1).toLocaleString(copy.locale), questions.length.toLocaleString(copy.locale))}</div>
             <h2>{question.prompt}</h2>
             <div className={styles.options}>
               {question.options.map((option, index) => (
@@ -201,22 +215,22 @@ export default function ExamClient({ code }) {
               ))}
             </div>
             <div className={styles.questionActions}>
-              <button type="button" className={styles.previous} disabled={current === 0} onClick={() => setCurrent(value => Math.max(0, value - 1))}>سؤال قبلی</button>
+              <button type="button" className={styles.previous} disabled={current === 0} onClick={() => setCurrent(value => Math.max(0, value - 1))}>{copy.previous}</button>
               {current < questions.length - 1
-                ? <button type="button" className={styles.next} onClick={() => setCurrent(value => Math.min(questions.length - 1, value + 1))}>سؤال بعدی</button>
-                : <button type="button" className={styles.submit} onClick={submitExam}>پایان و ارسال پاسخ‌ها</button>}
+                ? <button type="button" className={styles.next} onClick={() => setCurrent(value => Math.min(questions.length - 1, value + 1))}>{copy.next}</button>
+                : <button type="button" className={styles.submit} onClick={submitExam}>{copy.submit}</button>}
             </div>
           </section>
 
           <aside className={styles.navigator}>
-            <div className={styles.navigatorHeader}><strong>فهرست سؤال‌ها</strong><span>{answeredCount.toLocaleString('fa-IR')}/{questions.length.toLocaleString('fa-IR')}</span></div>
+            <div className={styles.navigatorHeader}><strong>{copy.questionList}</strong><span>{answeredCount.toLocaleString(copy.locale)}/{questions.length.toLocaleString(copy.locale)}</span></div>
             <div className={styles.questionDots}>
               {questions.map((item, index) => (
-                <button type="button" className={`${styles.dot} ${index === current ? styles.dotCurrent : ''} ${Number.isInteger(answers[item.id]) ? styles.dotAnswered : ''}`} onClick={() => setCurrent(index)} key={item.id}>{Number(index + 1).toLocaleString('fa-IR')}</button>
+                <button type="button" className={`${styles.dot} ${index === current ? styles.dotCurrent : ''} ${Number.isInteger(answers[item.id]) ? styles.dotAnswered : ''}`} onClick={() => setCurrent(index)} key={item.id}>{Number(index + 1).toLocaleString(copy.locale)}</button>
               ))}
             </div>
-            <div className={styles.legend}><span><i className={styles.legendAnswered} />پاسخ داده‌شده</span><span><i className={styles.legendOpen} />بدون پاسخ</span></div>
-            <button type="button" className={styles.finishButton} onClick={submitExam}>پایان امتحان</button>
+            <div className={styles.legend}><span><i className={styles.legendAnswered} />{copy.answeredLegend}</span><span><i className={styles.legendOpen} />{copy.unansweredLegend}</span></div>
+            <button type="button" className={styles.finishButton} onClick={submitExam}>{copy.finish}</button>
           </aside>
         </div>
       </div>

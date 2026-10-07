@@ -1,11 +1,12 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import styles from './page.module.css'
 
 const emptyQuestion = () => ({ sourceId: '', sourceLabel: '', prompt: '', options: ['', '', '', ''], correctOptionIndex: 0, points: 1 })
 const ACTIVE_DURATION_UNITS = Object.freeze({ minutes: 1, hours: 60, days: 1440 })
+const LANGUAGE_LABELS = Object.freeze({ fa: 'فارسی', en: 'English', de: 'Deutsch' })
 
 function isBlankQuestion(question) {
   return !question?.prompt && question?.options?.every(option => !option)
@@ -21,6 +22,7 @@ function createDefaultForm() {
   scheduledStart.setMinutes(0, 0, 0)
   return {
     title: '', description: '', durationMinutes: 30, passPercent: 60,
+    language: 'fa',
     activationMode: 'now', opensAt: toDateTimeLocal(scheduledStart),
     activeDurationValue: 7, activeDurationUnit: 'days',
     showResult: true, publishNow: true, questions: [emptyQuestion()],
@@ -62,11 +64,13 @@ export default function ExamAdminClient() {
   const [copied, setCopied] = useState('')
   const [questionBank, setQuestionBank] = useState([])
   const [bankLoaded, setBankLoaded] = useState(false)
+  const [bankLanguage, setBankLanguage] = useState('')
   const [bankLoading, setBankLoading] = useState(false)
   const [bankSearch, setBankSearch] = useState('')
   const [bankTopic, setBankTopic] = useState('all')
   const [selectedBankIds, setSelectedBankIds] = useState([])
   const [form, setForm] = useState(createDefaultForm)
+  const bankRequestRef = useRef(0)
 
   const loadExams = useCallback(async () => {
     setLoading(true)
@@ -83,20 +87,39 @@ export default function ExamAdminClient() {
 
   useEffect(() => { loadExams() }, [loadExams])
 
-  const loadQuestionBank = useCallback(async () => {
-    if (bankLoaded || bankLoading) return
+  const loadQuestionBank = useCallback(async (language = 'fa') => {
+    if (bankLoaded && bankLanguage === language) return
+    const requestId = bankRequestRef.current + 1
+    bankRequestRef.current = requestId
     setBankLoading(true)
     setError('')
     try {
-      const data = await readJson(await fetch('/api/admin/exams?resource=question-bank', { cache: 'no-store' }))
-      setQuestionBank(data.questions || [])
+      const data = await readJson(await fetch(`/api/admin/exams?resource=question-bank&language=${encodeURIComponent(language)}`, { cache: 'no-store' }))
+      if (bankRequestRef.current !== requestId) return
+      const questions = data.questions || []
+      const questionById = new Map(questions.map(question => [question.id, question]))
+      setQuestionBank(questions)
+      setForm(current => ({
+        ...current,
+        questions: current.questions.map(question => {
+          const translated = question.sourceId ? questionById.get(question.sourceId) : null
+          return translated ? {
+            ...question,
+            sourceLabel: translated.topicPath || translated.topic,
+            prompt: translated.prompt,
+            options: [...translated.options],
+            correctOptionIndex: translated.correctOptionIndex,
+          } : question
+        }),
+      }))
+      setBankLanguage(language)
       setBankLoaded(true)
     } catch (err) {
-      setError(err.message)
+      if (bankRequestRef.current === requestId) setError(err.message)
     } finally {
-      setBankLoading(false)
+      if (bankRequestRef.current === requestId) setBankLoading(false)
     }
-  }, [bankLoaded, bankLoading])
+  }, [bankLanguage, bankLoaded])
 
   const stats = useMemo(() => ({
     total: exams.length,
@@ -160,7 +183,15 @@ export default function ExamAdminClient() {
     setView('create')
     setCreatedLink('')
     setError('')
-    loadQuestionBank()
+    loadQuestionBank(form.language)
+  }
+
+  function changeLanguage(language) {
+    setField('language', language)
+    setSelectedBankIds([])
+    setBankTopic('all')
+    setBankLoaded(false)
+    loadQuestionBank(language)
   }
 
   function toggleBankQuestion(questionId) {
@@ -317,6 +348,7 @@ export default function ExamAdminClient() {
                       <h3>{exam.title}</h3>
                       <p>{exam.description || 'بدون توضیح'}</p>
                       <div className={styles.examMeta}>
+                        <span>{LANGUAGE_LABELS[exam.language] || LANGUAGE_LABELS.fa}</span>
                         <span>{exam.duration_minutes.toLocaleString('fa-IR')} دقیقه</span>
                         <span>حد قبولی {exam.pass_percent.toLocaleString('fa-IR')}٪</span>
                         <strong>{Number(exam.attempt_count || 0).toLocaleString('fa-IR')} نتیجه</strong>
@@ -342,6 +374,7 @@ export default function ExamAdminClient() {
               <div className={styles.fieldGrid}>
                 <label className={styles.wideField}><span>عنوان امتحان</span><input required minLength={3} maxLength={160} value={form.title} onChange={event => setField('title', event.target.value)} placeholder="مثلاً آزمون مقدماتی رادیولوژی" /></label>
                 <label className={styles.wideField}><span>توضیح کوتاه</span><textarea maxLength={3000} value={form.description} onChange={event => setField('description', event.target.value)} placeholder="توضیحات و نکات لازم برای شرکت‌کنندگان" /></label>
+                <label><span>زبان آزمون *</span><select value={form.language} onChange={event => changeLanguage(event.target.value)}><option value="fa">فارسی</option><option value="en">English</option><option value="de">Deutsch</option></select></label>
                 <label><span>زمان امتحان (دقیقه) *</span><input type="number" required min="1" max="240" value={form.durationMinutes} onChange={event => setField('durationMinutes', Number(event.target.value))} /></label>
                 <label><span>حد قبولی (درصد)</span><input type="number" min="0" max="100" value={form.passPercent} onChange={event => setField('passPercent', Number(event.target.value))} /></label>
               </div>
@@ -393,7 +426,7 @@ export default function ExamAdminClient() {
             </section>
 
             <section className={styles.formSection}>
-              <div className={styles.questionsHeader}><div><h3>سؤال‌ها</h3><p>گزینه درست را با دایره کنار آن مشخص کنید.</p></div><span>{form.questions.length.toLocaleString('fa-IR')} سؤال</span></div>
+              <div className={styles.questionsHeader}><div><h3>سؤال‌ها</h3><p>سؤال‌های بانک رادیار ثابت هستند؛ فقط سؤال‌های جدیدی که خودتان می‌سازید قابل ویرایش‌اند.</p></div><span>{form.questions.length.toLocaleString('fa-IR')} سؤال</span></div>
               <div className={styles.questionList}>
                 {form.questions.map((question, questionIndex) => (
                   <article className={styles.questionCard} key={questionIndex}>
@@ -401,17 +434,27 @@ export default function ExamAdminClient() {
                       <strong>سؤال {Number(questionIndex + 1).toLocaleString('fa-IR')}{question.sourceLabel ? <small>از بانک: {question.sourceLabel}</small> : <small>سؤال جدید</small>}</strong>
                       {form.questions.length > 1 ? <button type="button" onClick={() => removeQuestion(questionIndex)}>حذف سؤال</button> : null}
                     </div>
-                    <label className={styles.promptField}><span>متن سؤال</span><textarea required minLength={3} maxLength={4000} value={question.prompt} onChange={event => updateQuestion(questionIndex, { prompt: event.target.value })} placeholder="متن سؤال را اینجا بنویسید…" /></label>
-                    <div className={styles.options}>
-                      {question.options.map((option, optionIndex) => (
-                        <label className={question.correctOptionIndex === optionIndex ? styles.correctOption : styles.option} key={optionIndex}>
-                          <input type="radio" name={`correct-${questionIndex}`} checked={question.correctOptionIndex === optionIndex} onChange={() => updateQuestion(questionIndex, { correctOptionIndex: optionIndex })} aria-label={`گزینه درست سؤال ${questionIndex + 1}`} />
-                          <span>{String.fromCharCode(65 + optionIndex)}</span>
-                          <input required maxLength={1200} value={option} onChange={event => updateOption(questionIndex, optionIndex, event.target.value)} placeholder={`گزینه ${Number(optionIndex + 1).toLocaleString('fa-IR')}`} />
-                        </label>
-                      ))}
-                    </div>
-                    <label className={styles.points}><span>امتیاز این سؤال</span><input type="number" min="1" max="100" value={question.points} onChange={event => updateQuestion(questionIndex, { points: Number(event.target.value) })} /></label>
+                    {question.sourceId ? (
+                      <div className={styles.importedQuestion} dir={form.language === 'fa' ? 'rtl' : 'ltr'}>
+                        <strong>{question.prompt}</strong>
+                        <div>{question.options.map((option, optionIndex) => <span className={question.correctOptionIndex === optionIndex ? styles.importedCorrect : ''} key={optionIndex}><b>{String.fromCharCode(65 + optionIndex)}</b>{option}{question.correctOptionIndex === optionIndex ? <i>✓</i> : null}</span>)}</div>
+                        <small>متن و پاسخ این سؤال از بانک رادیار دریافت شده و قابل تغییر نیست.</small>
+                      </div>
+                    ) : (
+                      <>
+                        <label className={styles.promptField}><span>متن سؤال</span><textarea required minLength={3} maxLength={4000} value={question.prompt} onChange={event => updateQuestion(questionIndex, { prompt: event.target.value })} placeholder="متن سؤال را اینجا بنویسید…" /></label>
+                        <div className={styles.options}>
+                          {question.options.map((option, optionIndex) => (
+                            <label className={question.correctOptionIndex === optionIndex ? styles.correctOption : styles.option} key={optionIndex}>
+                              <input type="radio" name={`correct-${questionIndex}`} checked={question.correctOptionIndex === optionIndex} onChange={() => updateQuestion(questionIndex, { correctOptionIndex: optionIndex })} aria-label={`گزینه درست سؤال ${questionIndex + 1}`} />
+                              <span>{String.fromCharCode(65 + optionIndex)}</span>
+                              <input required maxLength={1200} value={option} onChange={event => updateOption(questionIndex, optionIndex, event.target.value)} placeholder={`گزینه ${Number(optionIndex + 1).toLocaleString('fa-IR')}`} />
+                            </label>
+                          ))}
+                        </div>
+                        <label className={styles.points}><span>امتیاز این سؤال</span><input type="number" min="1" max="100" value={question.points} onChange={event => updateQuestion(questionIndex, { points: Number(event.target.value) })} /></label>
+                      </>
+                    )}
                   </article>
                 ))}
               </div>

@@ -1,7 +1,7 @@
 import crypto from 'crypto'
 import { NextResponse } from 'next/server'
 import { requireAdmin } from '@/lib/adminAuth'
-import { validateExamInput } from '@/lib/exams'
+import { EXAM_LANGUAGES, validateExamInput } from '@/lib/exams'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 
 export const runtime = 'nodejs'
@@ -15,13 +15,23 @@ async function authorize() {
   return admin.error ? NextResponse.json({ error: admin.error }, { status: admin.status }) : null
 }
 
-function localizedText(value) {
+function localizedText(value, language = 'fa') {
   if (typeof value === 'string') return value
   if (!value || typeof value !== 'object') return ''
-  return value.fa || value.de || value.en || ''
+  return value[language] || value.fa || value.en || value.de || ''
 }
 
-async function getQuestionBank() {
+function databaseSetupError(error, fallback) {
+  if (error?.code === 'PGRST205' || error?.code === '42P01') {
+    return 'بخش دیتابیس آزمون هنوز فعال نشده است. فایل‌های تنظیم آزمون باید در Supabase اجرا شوند.'
+  }
+  if (error?.code === 'PGRST204' || error?.code === '42703') {
+    return 'ساختار دیتابیس آزمون به‌روز نیست. آخرین فایل تنظیم Supabase را اجرا کنید.'
+  }
+  return fallback
+}
+
+async function getQuestionBank(language) {
   const [questionResult, topicResult, chapterResult] = await Promise.all([
     supabaseAdmin
       .from('questions')
@@ -35,9 +45,9 @@ async function getQuestionBank() {
   const error = questionResult.error || topicResult.error || chapterResult.error
   if (error) return { error }
 
-  const chapterById = new Map((chapterResult.data || []).map(chapter => [chapter.id, localizedText(chapter.title)]))
+  const chapterById = new Map((chapterResult.data || []).map(chapter => [chapter.id, localizedText(chapter.title, language)]))
   const topicById = new Map((topicResult.data || []).map(topic => [topic.id, {
-    title: localizedText(topic.title),
+    title: localizedText(topic.title, language),
     parentId: topic.parent_id,
     chapterId: topic.kapitel_id,
   }]))
@@ -45,9 +55,9 @@ async function getQuestionBank() {
 
   for (const item of questionResult.data || []) {
     const rawOptions = Array.isArray(item.options) ? item.options : []
-    const options = rawOptions.map(option => localizedText(option?.text))
+    const options = rawOptions.map(option => localizedText(option?.text, language))
     const correctOptionIndex = rawOptions.findIndex(option => option?.id === item.correct)
-    const prompt = localizedText(item.question)
+    const prompt = localizedText(item.question, language)
 
     if (!prompt || options.length !== 4 || options.some(option => !option) || correctOptionIndex < 0) continue
     const topic = topicById.get(item.thema_id)
@@ -78,7 +88,9 @@ export async function GET(request) {
 
   const url = new URL(request.url)
   if (url.searchParams.get('resource') === 'question-bank') {
-    const result = await getQuestionBank()
+    const requestedLanguage = url.searchParams.get('language')
+    const language = EXAM_LANGUAGES.includes(requestedLanguage) ? requestedLanguage : 'fa'
+    const result = await getQuestionBank(language)
     if (result.error) {
       console.error('بانک سؤال قابل بارگذاری نیست:', result.error)
       return NextResponse.json({ error: 'بارگذاری بانک سؤال انجام نشد.' }, { status: 503 })
@@ -153,6 +165,7 @@ export async function POST(request) {
       public_code: publicCode,
       title: input.title,
       description: input.description,
+      language: input.language,
       status: input.publishNow ? 'published' : 'draft',
       duration_minutes: input.durationMinutes,
       opens_at: input.opensAt,
@@ -165,7 +178,7 @@ export async function POST(request) {
 
   if (examError || !exam) {
     console.error('ایجاد آزمون انجام نشد:', examError)
-    return NextResponse.json({ error: 'ایجاد آزمون انجام نشد.' }, { status: 503 })
+    return NextResponse.json({ error: databaseSetupError(examError, 'ایجاد آزمون انجام نشد. لطفاً دوباره تلاش کنید.') }, { status: 503 })
   }
 
   const questionRows = input.questions.map(question => ({

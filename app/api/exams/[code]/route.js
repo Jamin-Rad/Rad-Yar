@@ -10,14 +10,21 @@ function databaseUnavailable() {
 
 const SUBMISSION_GRACE_MS = 30000
 
-function formatAvailabilityDate(value) {
-  return new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value))
+function formatAvailabilityDate(value, language) {
+  const locale = { fa: 'fa-IR', en: 'en-US', de: 'de-DE' }[language] || 'fa-IR'
+  return new Intl.DateTimeFormat(locale, { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value))
 }
+
+const AVAILABILITY_COPY = Object.freeze({
+  fa: { opens: date => `این آزمون از ${date} فعال می‌شود.`, closed: 'مهلت شرکت در این آزمون به پایان رسیده است.' },
+  en: { opens: date => `This exam will be available from ${date}.`, closed: 'The participation period for this exam has ended.' },
+  de: { opens: date => `Diese Prüfung ist ab ${date} verfügbar.`, closed: 'Der Teilnahmezeitraum für diese Prüfung ist beendet.' },
+})
 
 async function loadPublishedExam(code, includeAnswers = false) {
   const { data: exam, error: examError } = await supabaseAdmin
     .from('exams')
-    .select('id,title,description,status,duration_minutes,pass_percent,show_result,opens_at,closes_at')
+    .select('id,title,description,language,status,duration_minutes,pass_percent,show_result,opens_at,closes_at')
     .eq('public_code', code)
     .maybeSingle()
 
@@ -25,14 +32,15 @@ async function loadPublishedExam(code, includeAnswers = false) {
   if (!exam || exam.status !== 'published') return { notFound: true }
 
   const now = Date.now()
+  const copy = AVAILABILITY_COPY[exam.language] || AVAILABILITY_COPY.fa
   const opensAt = Date.parse(exam.opens_at)
   const closesAt = Date.parse(exam.closes_at)
   if (Number.isFinite(opensAt) && now < opensAt) {
-    return { unavailable: `این آزمون از ${formatAvailabilityDate(exam.opens_at)} فعال می‌شود.` }
+    return { unavailable: copy.opens(formatAvailabilityDate(exam.opens_at, exam.language)) }
   }
   const closingGrace = includeAnswers ? SUBMISSION_GRACE_MS : 0
   if (Number.isFinite(closesAt) && now > closesAt + closingGrace) {
-    return { unavailable: 'مهلت شرکت در این آزمون به پایان رسیده است.' }
+    return { unavailable: copy.closed }
   }
 
   const fields = includeAnswers

@@ -7,6 +7,7 @@ create table if not exists public.exams (
   public_code text not null unique,
   title text not null check (char_length(title) between 3 and 160),
   description text not null default '',
+  language text not null default 'fa' check (language in ('fa', 'en', 'de')),
   status text not null default 'draft' check (status in ('draft', 'published', 'closed')),
   duration_minutes integer not null default 30 check (duration_minutes between 1 and 240),
   opens_at timestamptz not null default now(),

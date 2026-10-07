@@ -73,8 +73,9 @@
 .fieldGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 17px; }
 .fieldGrid label, .promptField, .points { display: grid; gap: 7px; color: #546176; font-size: 12px; font-weight: 700; }
 .wideField { grid-column: 1 / -1; }
-.fieldGrid input, .fieldGrid textarea, .promptField textarea, .points input { width: 100%; border: 1px solid #d8dfe9; border-radius: 11px; background: #fff; color: #1f2937; font: 500 14px/1.7 Vazirmatn, sans-serif; outline: none; }
+.fieldGrid input, .fieldGrid textarea, .fieldGrid select, .promptField textarea, .points input { width: 100%; border: 1px solid #d8dfe9; border-radius: 11px; background: #fff; color: #1f2937; font: 500 14px/1.7 Vazirmatn, sans-serif; outline: none; }
 .fieldGrid input, .points input { height: 45px; padding: 0 13px; }
+.fieldGrid select { height: 45px; padding: 0 13px; }
 .fieldGrid textarea { min-height: 88px; padding: 11px 13px; resize: vertical; }
 .fieldGrid input:focus, .fieldGrid textarea:focus, .promptField textarea:focus, .points input:focus, .option input:last-child:focus, .correctOption input:last-child:focus { border-color: #f97316; box-shadow: 0 0 0 3px rgba(249,115,22,.1); }
 .checks { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 20px; }
@@ -144,6 +145,14 @@
 .option input:last-child, .correctOption input:last-child { min-width: 0; flex: 1; height: 36px; border: 0; background: transparent; color: #1f2937; font: 500 13px Vazirmatn, sans-serif; outline: none; }
 .points { display: grid; grid-template-columns: auto 80px; align-items: center; justify-content: end; margin-top: 13px; }
 .points input { height: 38px; }
+.importedQuestion { display: grid; gap: 13px; padding: 16px; border: 1px solid #cfe3f5; border-radius: 12px; background: #f3f8fd; }
+.importedQuestion > strong { color: #20314a; font-size: 14px; line-height: 1.9; }
+.importedQuestion > div { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.importedQuestion > div > span { display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 8px 10px; border: 1px solid #dbe6f0; border-radius: 9px; background: #fff; color: #4d5c71; font-size: 12px; }
+.importedQuestion b { display: grid; width: 23px; height: 23px; flex: 0 0 23px; place-items: center; border-radius: 6px; background: #edf2f7; font: 800 10px var(--font-manrope), sans-serif; }
+.importedQuestion .importedCorrect { border-color: #75d2b4; background: #effcf7; color: #08765c; }
+.importedQuestion i { margin-inline-start: auto; font-style: normal; font-weight: 900; }
+.importedQuestion small { color: #718197; font-size: 10px; }
 .addQuestion { width: 100%; min-height: 47px; margin-top: 14px; border: 1px dashed #f2a175; background: #fff8f3; color: #d84b0b; }
 .addQuestion:hover { background: #fff1e8; }
 .formActions { display: flex; justify-content: flex-end; gap: 10px; padding: 22px 26px; }
@@ -183,7 +192,7 @@
   .shareRow { width: 100%; min-width: 0; }
   .stats, .resultSummary { grid-template-columns: 1fr; gap: 8px; }
   .stats article, .resultSummary article { min-height: 66px; }
-  .examGrid, .fieldGrid, .options, .bankToolbar, .scheduleFields { grid-template-columns: 1fr; }
+  .examGrid, .fieldGrid, .options, .bankToolbar, .scheduleFields, .importedQuestion > div { grid-template-columns: 1fr; }
   .wideField { grid-column: auto; }
   .panel, .formSection, .detail { padding: 18px; }
   .builderHeader { padding: 18px; }
@@ -227,6 +236,7 @@
 :global(html[data-theme='dark']) .availabilityBox { border-color: #26374f; background: #0b1728; }
 :global(html[data-theme='dark']) .fieldGrid input,
 :global(html[data-theme='dark']) .fieldGrid textarea,
+:global(html[data-theme='dark']) .fieldGrid select,
 :global(html[data-theme='dark']) .promptField textarea,
 :global(html[data-theme='dark']) .points input,
 :global(html[data-theme='dark']) .bankToolbar input,
@@ -243,6 +253,10 @@
 :global(html[data-theme='dark']) .attemptRow,
 :global(html[data-theme='dark']) .answerCorrect,
 :global(html[data-theme='dark']) .answerWrong { border-color: #2b3b52; background: #101e31; color: #dce5ef; }
+:global(html[data-theme='dark']) .importedQuestion { border-color: #294866; background: #0c1b2d; }
+:global(html[data-theme='dark']) .importedQuestion > strong { color: #e3eaf2; }
+:global(html[data-theme='dark']) .importedQuestion > div > span { border-color: #2b3b52; background: #101e31; color: #dce5ef; }
+:global(html[data-theme='dark']) .importedQuestion .importedCorrect { border-color: #16886b; background: rgba(5,150,105,.12); color: #6ee7b7; }
 :global(html[data-theme='dark']) .correctOption { border-color: #16886b; background: rgba(5,150,105,.12); }
 :global(html[data-theme='dark']) .activationChoiceSelected { border-color: #f97316; background: rgba(249,115,22,.12); }
 :global(html[data-theme='dark']) .activationChoice strong,
@@ -256,6 +270,7 @@
 :global(html[data-theme='dark']) .correctOption input:last-child,
 :global(html[data-theme='dark']) .fieldGrid input,
 :global(html[data-theme='dark']) .fieldGrid textarea,
+:global(html[data-theme='dark']) .fieldGrid select,
 :global(html[data-theme='dark']) .promptField textarea,
 :global(html[data-theme='dark']) .points input { color: #e3eaf2; }
 :global(html[data-theme='dark']) .attemptRow:hover { background: #14243a; }
