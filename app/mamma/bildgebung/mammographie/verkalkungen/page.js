@@ -98,6 +98,51 @@ const FOUNDATION_GROUPS=[
     ],
   },
 ]
+const BENIGN_OUTSIDE_GROUPS=[{
+  id:'benign-outside-parenchyma',
+  title:L('Außerhalb des Drüsenparenchyms','Outside the glandular parenchyma','خارج از پارانشیم غده‌ای'),
+  intro:L('Oberflächliche, vaskuläre und postoperative Verkalkungen lassen sich vor allem durch ihre typische Lage und Form einordnen.','Superficial, vascular and postoperative calcifications are classified mainly by their characteristic location and shape.','کلسیفیکاسیون‌های سطحی، عروقی و پس از جراحی عمدتاً بر اساس محل و شکل تیپیک آن‌ها طبقه‌بندی می‌شوند.'),
+  items:[
+    {id:'skin',label:L('Hautverkalkungen','Skin calcifications','کلسیفیکاسیون پوستی'),category:L('Oberflächliche Lage','Superficial location','محل سطحی'),text:L('Typischerweise rund oder oval und oberflächlich gelegen. Eine zentrale Aufhellung und die Lage nahe der Haut unterstützen die Zuordnung.','Typically round or oval and superficially located. Central lucency and proximity to the skin support classification.','معمولاً گرد یا بیضی و سطحی هستند. شفافیت مرکزی و نزدیکی به پوست به تشخیص کمک می‌کند.')},
+    {id:'vascular',label:L('Vaskuläre Verkalkungen','Vascular calcifications','کلسیفیکاسیون عروقی'),category:L('Gefäßverlauf','Vascular course','مسیر عروقی'),text:L('Dichte lineare oder parallele Verkalkungen zeichnen einen Gefäßverlauf nach. Sie sind zugleich ein Marker für ein erhöhtes kardiovaskuläres Risiko.','Dense linear or parallel calcifications follow the course of a vessel. They are also a marker of increased cardiovascular risk.','کلسیفیکاسیون‌های خطی یا موازی متراکم مسیر عروق را دنبال می‌کنند و هم‌زمان نشانگر افزایش خطر قلبی‌عروقی هستند.')},
+    {id:'suture',label:L('Nahtverkalkungen','Suture calcifications','کلسیفیکاسیون بخیه'),category:L('Postoperativer Kontext','Postoperative context','زمینه پس از جراحی'),text:L('Lineare oder kurvilineare Verkalkungen liegen entlang von Nahtmaterial. Operationsanamnese und typische Verteilung sichern die Einordnung.','Linear or curvilinear calcifications lie along suture material. Surgical history and typical distribution support classification.','کلسیفیکاسیون‌های خطی یا منحنی در امتداد بخیه قرار می‌گیرند. سابقه جراحی و توزیع تیپیک طبقه‌بندی را تأیید می‌کند.')},
+  ],
+}]
+const BENIGN_PARENCHYMA_GROUPS=[{
+  id:'benign-within-parenchyma',
+  tone:'secondary',
+  title:L('Im Drüsenparenchym','Within the glandular parenchyma','داخل پارانشیم غده‌ای'),
+  intro:L('Wähle links eines der vier typischen Muster. Rechts erscheinen Morphologie, Entstehung und die wichtigste Abgrenzung.','Choose one of the four typical patterns on the left. Morphology, origin and the key distinction appear on the right.','یکی از چهار الگوی تیپیک را در سمت چپ انتخاب کنید. مورفولوژی، منشأ و مهم‌ترین افتراق در سمت راست نمایش داده می‌شود.'),
+  items:[
+    {id:'coarse',label:L('Grobschollig','Coarse / popcorn-like','درشت / پاپ‌کورنی'),category:L('Coarse · popcornartig','Coarse · popcorn-like','درشت · پاپ‌کورنی'),text:L('Große, grobe Verkalkungen, meist über 2 mm. Typisch bei involutiertem Fibroadenom, Fettnekrose, Narben oder dystrophen Veränderungen.','Large coarse calcifications, usually over 2 mm. Typical of an involuting fibroadenoma, fat necrosis, scars or dystrophic change.','کلسیفیکاسیون‌های بزرگ و درشت، معمولاً بیش از ۲ میلی‌متر؛ تیپیک در فیبروآدنوم اینولوتیو، نکروز چربی، اسکار یا تغییرات دیستروفیک.')},
+    {id:'rod-like',label:L('Large rod-like','Large rod-like','میله‌ای بزرگ'),category:L('Gang- oder Gangwandverkalkung','Ductal or periductal calcification','کلسیفیکاسیون داخل یا اطراف مجرا'),text:L('Grobe, längliche Verkalkungen mit glatten, gut definierten Konturen. Nicht mit den deutlich feineren und irregulären fine linear calcifications verwechseln.','Coarse elongated calcifications with smooth, well-defined contours. Do not confuse them with much finer, irregular fine linear calcifications.','کلسیفیکاسیون‌های درشت و کشیده با حاشیه صاف و مشخص؛ نباید با کلسیفیکاسیون‌های ظریف خطی و نامنظم اشتباه شوند.')},
+    {id:'layering',label:L('Layering','Layering','لایه‌نشینی'),category:L('Teacup · Milchkalzium','Teacup · milk of calcium','فنجانی · شیر کلسیم'),text:L('Sedimentierende Verkalkungen innerhalb von Mikro- oder Makrozysten; in der Seitenaufnahme typischerweise halbmond- oder sichelförmig.','Dependent calcifications within micro- or macrocysts; typically crescent-shaped on the lateral view.','رسوب کلسیفیکاسیون در میکروکیست یا ماکروکیست که در نمای لترال معمولاً هلالی دیده می‌شود.')},
+    {id:'rim',label:L('Rim calcifications','Rim calcifications','کلسیفیکاسیون حاشیه‌ای'),category:L('Dünne Randverkalkung','Thin peripheral calcification','کلسیفیکاسیون حاشیه‌ای نازک'),text:L('Dünne randständige Verkalkungen entlang einer rundlichen Struktur, typisch bei Fettnekrose, Ölzysten oder Zysten.','Thin peripheral calcifications along a rounded structure, typical of fat necrosis, oil cysts or cysts.','کلسیفیکاسیون نازک در حاشیه یک ساختار گرد، تیپیک در نکروز چربی، کیست روغنی یا کیست.')},
+  ],
+}]
+const MODALITY_GROUPS=[
+  {
+    id:'ultrasound-calcifications',
+    title:L('Ultraschall','Ultrasound','سونوگرافی'),
+    intro:L('Korrelatsuche und Biopsieplanung stehen im Vordergrund. Die mammographische Beurteilung des Kalks bleibt maßgeblich.','The main roles are finding a correlate and planning biopsy. Mammographic assessment of the calcifications remains decisive.','هدف اصلی یافتن یافته متناظر و برنامه‌ریزی بیوپسی است. ارزیابی ماموگرافیک کلسیفیکاسیون همچنان تعیین‌کننده است.'),
+    items:[
+      {id:'visibility',label:L('Sichtbarkeit','Visibility','قابلیت مشاهده'),category:L('Sonographisches Erscheinungsbild','Sonographic appearance','نمای سونوگرافیک'),text:L('Makroverkalkungen erscheinen echogen, häufig mit dorsalem Schallschatten. Mikrokalk kann als feine echogene Foci sichtbar sein, besonders innerhalb einer Gewebeveränderung oder eines Ganges.','Macrocalcifications appear echogenic, often with posterior shadowing. Microcalcifications may be visible as fine echogenic foci, especially within a tissue change or duct.','ماکروکلسیفیکاسیون‌ها اکوژن و اغلب همراه سایه خلفی‌اند. میکروکلسیفیکاسیون ممکن است به‌صورت فوکوس‌های ظریف اکوژن، به‌ویژه در ضایعه بافتی یا مجرا دیده شود.')},
+      {id:'benefit',label:L('Zusatznutzen','Added value','کاربرد تکمیلی'),category:L('Korrelat & Biopsie','Correlation & biopsy','تطابق و بیوپسی'),text:L('Assoziierte Gewebeveränderungen gezielt mitbeurteilen. Ein eindeutig zugeordnetes Korrelat kann eine ultraschallgesteuerte Biopsie ermöglichen.','Target associated tissue changes. A confidently matched correlate may allow ultrasound-guided biopsy.','تغییرات بافتی همراه را هدفمند بررسی کنید. یافتن یک یافته متناظر مطمئن می‌تواند بیوپسی تحت هدایت سونوگرافی را ممکن کند.')},
+      {id:'limit',label:L('Grenze','Limitation','محدودیت'),category:L('Kein Ausschlussverfahren','Not an exclusion test','روش ردکننده نیست'),text:L('Fehlende sonographische Sichtbarkeit schließt einen suspekten mammographischen Kalkbefund nicht aus.','Lack of sonographic visibility does not exclude suspicious mammographic calcifications.','دیده‌نشدن در سونوگرافی، کلسیفیکاسیون مشکوک ماموگرافیک را رد نمی‌کند.')},
+    ],
+  },
+  {
+    id:'mri-calcifications',
+    tone:'secondary',
+    title:L('MRT','MRI','MRI'),
+    intro:L('Die kontrastverstärkte MRT beurteilt das umgebende Gewebe und die Ausdehnung, nicht die Kalkpartikel selbst.','Contrast-enhanced MRI assesses the surrounding tissue and extent, not the calcific particles themselves.','MRI با تزریق، بافت اطراف و وسعت را ارزیابی می‌کند، نه خود ذرات کلسیفیکاسیون را.'),
+    items:[
+      {id:'visibility',label:L('Sichtbarkeit','Visibility','قابلیت مشاهده'),category:L('Kontrastmittelaufnahme','Enhancement','افزایش کنتراست'),text:L('Die MRT zeigt die Kontrastmittelaufnahme des Gewebes; die Kalkpartikel selbst werden nicht zuverlässig dargestellt.','MRI shows tissue enhancement; the calcific particles themselves are not reliably depicted.','MRI افزایش کنتراست بافت را نشان می‌دهد؛ خود ذرات کلسیفیکاسیون به‌طور قابل اعتماد نمایش داده نمی‌شوند.')},
+      {id:'benefit',label:L('Zusatznutzen','Added value','کاربرد تکمیلی'),category:L('Ausdehnung & Zusatzherde','Extent & additional lesions','وسعت و ضایعات اضافی'),text:L('Bei entsprechender Fragestellung lassen sich Läsionsausdehnung, zusätzliche Herde und Hinweise auf eine invasive Komponente beurteilen.','When clinically indicated, lesion extent, additional foci and signs of an invasive component can be assessed.','در صورت اندیکاسیون، می‌توان وسعت ضایعه، کانون‌های اضافی و نشانه‌های جزء مهاجم را بررسی کرد.')},
+      {id:'limit',label:L('Grenze','Limitation','محدودیت'),category:L('Negative MRT','Negative MRI','MRI منفی'),text:L('Eine unauffällige MRT schließt ein DCIS nicht sicher aus und beweist keine Benignität.','A negative MRI does not reliably exclude DCIS and does not prove benignity.','MRI منفی، DCIS را با اطمینان رد نمی‌کند و خوش‌خیمی را اثبات نمی‌کند.')},
+    ],
+  },
+]
 const DISTRIBUTION_CONTEXT={
   diffuse:L('meist eher benign','usually less suspicious','اغلب کمتر مشکوک'),
   regional:L('im Kontext bewerten','assess in context','در زمینه ارزیابی شود'),
@@ -196,7 +241,6 @@ function KalkAssessment({lang}){
     </div>
   </div>
 }
-function Lines({children}){return <span style={{whiteSpace:'pre-line'}}>{children}</span>}
 function RememberNote({label,children}){return <aside className={caseStyles.rememberNote}><span className={caseStyles.rememberIcon}><SectionIcon id="merke"/></span><strong>{label}</strong><div>{children}</div></aside>}
 function DescriptorExplorer({items,lang,type}){
   const[selected,setSelected]=useState(items[0].key)
@@ -285,12 +329,7 @@ function LessonContent({lang}){const t=value=>translateLesson(value,lang);return
   </Section>
 
   <Section {...GERMAN_SECTIONS[6]} title={t(GERMAN_SECTIONS[6].label.de)}>
-    <h3 className={`${styles.takeTitle} ${caseStyles.benignSectionTitle}`}>{t("Typisch benigne Verkalkungen außerhalb des Drüsenparenchyms")}</h3>
-    <div className={`${styles.benignList} ${caseStyles.benignGrid}`}>
-      <article><span>{t("HAUT")}</span><div><h3>{t("Hautverkalkungen")}</h3><p>{t("Typischerweise rund oder oval und oberflächlich gelegen.")}</p></div></article>
-      <article><span>{t("GEFÄSS")}</span><div><h3>{t("Vaskuläre Verkalkungen")}</h3><p>{t("Typischerweise dicht und linear entlang eines Gefäßverlaufs.")}</p></div></article>
-      <article><span>{t("SUTURA")}</span><div><h3>{t("Nahtverkalkungen")}</h3><p>{t("Lineare oder kurvilineare Verkalkungen entlang von Nahtmaterial nach Operationen.")}</p></div></article>
-    </div>
+    <InteractiveTeachingGroups groups={BENIGN_OUTSIDE_GROUPS} resolve={value=>pick(value,lang)} direction={lang==='fa'?'rtl':'ltr'}/>
     <article className={caseStyles.caseStudy}>
       <header className={caseStyles.caseHeader}>
         <div><small>{t("RADIOPAEDIA-FALL")}</small><h3>{t("Hautverkalkungen")}</h3></div>
@@ -315,13 +354,7 @@ function LessonContent({lang}){const t=value=>translateLesson(value,lang);return
       <p className={caseStyles.caseCredit}>{t("Case courtesy of Ayla Al Kabbani,")}{" "}<a href="https://radiopaedia.org/cases/72331/studies/82850?lang=us#t=im&v1i=51746512&v1z=1&v2i=51746513&v2z=1&v3i=51746514&v3z=1&v4i=51746515&v4z=1" target="_blank" rel="noreferrer">{t("Radiopaedia.org, rID: 72331 (Vollbild)")}</a>.</p>
     </article>
     <div className={styles.rule}><strong>{t("Wichtiger vaskulärer Hinweis")}</strong><p>{t("Vaskuläre Verkalkungen sind ein relevanter Marker für ein erhöhtes Risiko kardiovaskulärer Erkrankungen. Daher sollte eine klinische kardiovaskuläre Risikoevaluation erfolgen.")}</p></div>
-    <h3 className={`${styles.takeTitle} ${caseStyles.benignSectionTitle}`}>{t("Typisch benigne Verkalkungen im Drüsenparenchym")}</h3>
-    <div className={`${styles.benignList} ${caseStyles.benignGrid}`}>
-      <article><span>{t("COARSE (POPCORNARTIG)")}</span><div><h3>{t("Grobschollig")}</h3><p>{t("Große, grobe Verkalkungen, meist > 2 mm.")}</p><p className={caseStyles.bulletLead}>{t("Typisch bei:")}</p><ul className={caseStyles.bulletList}><li>{t("involutiertem Fibroadenom")}</li><li>{t("Fettnekrose")}</li><li>{t("Narben")}</li><li>{t("dystrophen Veränderungen")}</li></ul></div></article>
-      <article><span>{t("LARGE ROD-LIKE")}</span><div><h3>{t("Large rod-like")}</h3><p><Lines>{t("Grobe, längliche Verkalkungen mit glatten und gut definierten Konturen.\n\nSie entsprechen meist Verkalkungen innerhalb eines Milchganges oder entlang der Gangwand.")}</Lines><i style={{textDecoration:'underline'}}>{t("Nicht verwechseln mit den deutlich feineren und irregulären fine linear calcifications.")}</i></p></div></article>
-      <article><span>{t("LAYERING (TEACUP / MILCHKALZIUM)")}</span><div><h3>{t("Layering")}</h3><p>{t("Sedimentierende Verkalkungen innerhalb von Mikro- oder Makrozysten, in der Seitenaufnahme typischerweise halbmond- oder sichelförmig.")}</p></div></article>
-      <article><span>{t("RIM")}</span><div><h3>{t("Rim calcifications")}</h3><p className={caseStyles.bulletLead}>{t("Dünne randständige Verkalkungen entlang einer rundlichen Struktur, typisch beispielsweise bei:")}</p><ul className={caseStyles.bulletList}><li>{t("Fettnekrose")}</li><li>{t("Ölzysten")}</li><li>{t("Zysten")}</li></ul></div></article>
-    </div>
+    <InteractiveTeachingGroups groups={BENIGN_PARENCHYMA_GROUPS} resolve={value=>pick(value,lang)} direction={lang==='fa'?'rtl':'ltr'}/>
     <article className={`${caseStyles.caseStudy} ${caseStyles.exampleRim}`}>
       <header className={caseStyles.caseHeader}><div><small>{t("RADIOPAEDIA-FALL")}</small><h3>{t("Rim calcification")}</h3></div></header>
       <div className={caseStyles.caseGallery}>
@@ -363,24 +396,7 @@ function LessonContent({lang}){const t=value=>translateLesson(value,lang);return
 
   <Section {...GERMAN_SECTIONS[7]} title={t(GERMAN_SECTIONS[7].label.de)}>
     <p className={styles.lead}>{t("Die Mammographie beurteilt den Kalk. Ultraschall und MRT ergänzen die Beurteilung des umgebenden Gewebes und helfen bei der weiteren Abklärung.")}</p>
-    <div className={caseStyles.modalityComparison}>
-      <article>
-        <header><h3>{t("Ultraschall")}</h3><p>{t("Korrelat & Biopsieplanung")}</p></header>
-        <dl>
-          <div><dt>{t("Sichtbarkeit")}</dt><dd>{t("Makroverkalkungen erscheinen echogen, häufig mit dorsalem Schallschatten – etwa in Fibroadenomen, verkalkten Ölzysten oder bei Fettnekrose.")}<br/>{t("Mikrokalk kann als feine echogene Foci sichtbar sein, besonders innerhalb einer Gewebeveränderung oder eines Ganges.")}</dd></div>
-          <div><dt>{t("Zusatznutzen")}</dt><dd>{t("Assoziierte Gewebeveränderungen gezielt mitbeurteilen. Ein eindeutig zugeordnetes Korrelat kann eine ultraschallgesteuerte Biopsie ermöglichen.")}</dd></div>
-          <div><dt>{t("Grenze")}</dt><dd>{t("Fehlende sonographische Sichtbarkeit schließt einen suspekten Kalkbefund nicht aus.")}</dd></div>
-        </dl>
-      </article>
-      <article id="mrt">
-        <header><h3>{t("MRT")}</h3><p>{t("Enhancement & Ausdehnung")}</p></header>
-        <dl>
-          <div><dt>{t("Sichtbarkeit")}</dt><dd>{t("Die kontrastverstärkte MRT zeigt die Kontrastmittelaufnahme des Gewebes; die Kalkpartikel selbst werden nicht zuverlässig dargestellt.")}</dd></div>
-          <div><dt>{t("Zusatznutzen")}</dt><dd>{t("Bei entsprechender Fragestellung die Läsionsausdehnung, zusätzliche Herde und Hinweise auf eine invasive Komponente beurteilen.")}</dd></div>
-          <div><dt>{t("Grenze")}</dt><dd>{t("Eine unauffällige MRT schließt ein DCIS nicht sicher aus und beweist keine Benignität.")}</dd></div>
-        </dl>
-      </article>
-    </div>
+    <InteractiveTeachingGroups groups={MODALITY_GROUPS} resolve={value=>pick(value,lang)} direction={lang==='fa'?'rtl':'ltr'}/>
     <RememberNote label={t("Merke")}><p>{t("Ein unauffälliger Ultraschall oder eine negative MRT hebt eine mammographisch begründete Biopsieindikation nicht automatisch auf.")}</p></RememberNote>
     <div className={`${caseStyles.mriManagement} ${caseStyles.mriOverview}`}>
       <header><small>{t("Mammographische Kategorie bleibt maßgeblich")}</small><h3>{t("Negative MRT bei mammographischen Kalzifikationen: Was bedeutet das für die Biopsie?")}</h3></header>

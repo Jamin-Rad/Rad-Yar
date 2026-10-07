@@ -221,7 +221,10 @@ export default function StandardLessonShell({
         <nav className={styles.breadcrumb} aria-label={labels.contents}>{breadcrumbs.map((item, index) => <span key={`${item.label}-${index}`}>{index ? <i aria-hidden="true">/</i> : null}{item.href ? <Link href={item.href}>{item.label}</Link> : <strong>{item.label}</strong>}</span>)}</nav>
         <span className={styles.author}>{author}</span>
       </div>
-      <div className={styles.hero}><div className={styles.heroCopy}><h1>{title}</h1></div></div>
+      <div className={styles.hero}>
+        <div className={styles.heroCopy}><h1>{title}</h1></div>
+        <div className={styles.heroVisual} aria-hidden="true" />
+      </div>
       <div className={styles.actions}>
         <Action action={summaryAction} className={styles.takeHomeJump} icon="summary" />
         <Action action={actions.mcq} className={styles.primaryAction} icon="quiz" />
