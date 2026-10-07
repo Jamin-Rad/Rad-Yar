@@ -20,9 +20,6 @@ function scrollToLessonSection(id) {
 
 function Icon({ name }) {
   const paths = {
-    summary: 'M12 3l1.8 4.8L19 9.5l-4.1 3.2L16.2 18 12 15l-4.2 3 1.3-5.3L5 9.5l5.2-1.7z',
-    quiz: 'M5 4h14v16H5z M9 9.2a3 3 0 1 1 4.4 2.65c-.9.5-1.4 1-1.4 2 M12 17h.01',
-    cards: 'M7 5h12v14H7z M5 8H3v12h12v-2 M10 9h6 M10 12h6',
     check: 'M4 12.5l5 5L20 6.5',
     arrow: 'M5 12h14 M14 7l5 5-5 5',
     down: 'M12 5v14 M7 14l5 5 5-5',
@@ -30,7 +27,12 @@ function Icon({ name }) {
     chevron: 'M7 9l5 5 5-5',
     close: 'M6 6l12 12 M18 6L6 18',
   }
-  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d={paths[name]} /></svg>
+  const actionIcons = {
+    summary: <><path d="M12 2l1.5 5.1L19 9l-5.5 1.9L12 16l-1.5-5.1L5 9l5.5-1.9z"/><path d="m18.5 15 .8 2.7 2.7.8-2.7.8-.8 2.7-.8-2.7-2.7-.8 2.7-.8z"/></>,
+    quiz: <><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M7.2 9.1a2 2 0 1 1 2.8 1.8c-.9.4-1.4.9-1.4 1.8"/><circle cx="8.6" cy="16" r=".55" fill="currentColor" stroke="none"/><path d="M13.5 8.5h3.5M13.5 12h3.5M13.5 15.5h2.5"/></>,
+    cards: <><rect x="7" y="5" width="13" height="15" rx="2"/><path d="M7 18H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2"/><path d="M10 9h7M10 13h5"/></>,
+  }
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">{actionIcons[name] || <path d={paths[name]} />}</svg>
 }
 
 function Action({ action, className, icon }) {
@@ -200,6 +202,8 @@ export default function StandardLessonShell({
   const context = { labels, openId, openSection, summaryOpen, toggleSummary, readSections, toggleSectionRead, sections, trackedSections, renderIcon }
   const shellStyle = {
     '--lesson-background-image': `url("${theme.backgroundImage}")`,
+    '--lesson-hero-image': theme.heroImage ? `url("${theme.heroImage}")` : 'none',
+    '--lesson-hero-image-opacity': theme.heroImageOpacity ?? .42,
     '--lesson-accent': theme.accent,
     '--lesson-accent-strong': theme.accentStrong,
     '--lesson-accent-soft': theme.accentSoft,

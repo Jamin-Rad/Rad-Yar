@@ -3,6 +3,7 @@ import {useMemo,useState} from 'react'
 import Image from 'next/image'
 import {useLanguage} from '@/providers/LanguageProvider'
 import StandardLessonShell,{LessonSection,LessonSources,TakeHomeList} from '@/components/lesson-template/StandardLessonShell'
+import InteractiveTeachingGroups from '@/components/lesson-template/InteractiveTeachingGroups'
 import styles from './page.module.css'
 import caseStyles from './case.module.css'
 import {COPY,DISTRIBUTION,GERMAN_SECTIONS,L,MORPH,pick} from './content'
@@ -56,6 +57,7 @@ const SECTION_ICON_PATHS={
   kontext:'M12 4v16 M4 12h16 M7 7l10 10 M17 7L7 17',
   algorithmus:'M6 4h14v17H6z M3 8h5 M3 13h5 M3 18h5 M11 12l2 2 4-5',
   warnung:'M12 3L2 21h20z M12 9v5 M12 17v1',
+  merke:'M6 3.5h12v17l-6-3.8-6 3.8z M9 8h6 M9 11.5h4',
 }
 function SectionIcon({id}){return <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d={SECTION_ICON_PATHS[id]||SECTION_ICON_PATHS.ultraschall}/></svg>}
 const CALC_META={
@@ -71,6 +73,38 @@ const CALC_FACTORS=[
   {key:'associated',group:'Begleitbefunde',title:'Masse oder Architekturstörung?',text:'Assoziierte Gewebeveränderungen können den Verdacht verstärken. Auch Asymmetrie sowie Haut- und Mamillenveränderungen mitbeurteilen.'},
   {key:'history',group:'Risikokontext',title:'Alter und Anamnese einbeziehen',text:'Höheres Alter und eine persönliche Brustkrebsanamnese können das Ausgangsrisiko erhöhen. Entscheidend bleibt der Gesamtbefund.'},
 ]
+const FOUNDATION_GROUPS=[
+  {
+    id:'systematic-assessment',
+    title:L('Systematische Beurteilung','Systematic assessment','ارزیابی سیستماتیک'),
+    intro:L('Vier Fragen strukturieren die Beurteilung. Wähle links einen Fokus; rechts erscheint die passende diagnostische Frage.','Four questions structure the assessment. Choose a focus on the left to see the matching diagnostic question.','چهار پرسش ارزیابی را ساختار می‌دهند. یک محور را در سمت چپ انتخاب کنید تا پرسش تشخیصی مرتبط در سمت راست نمایش داده شود.'),
+    items:[
+      {id:'particle-size',label:L('Partikelgröße','Particle size','اندازه ذرات'),category:L('Einzelpartikel','Individual particle','ذره منفرد'),text:L('Wie groß sind die einzelnen Verkalkungen? Größe hilft bei der Beschreibung, trennt aber allein nicht sicher zwischen benign und maligne.','How large are the individual calcifications? Size helps with description but does not reliably separate benign from malignant findings on its own.','هر کلسیفیکاسیون چه اندازه‌ای دارد؟ اندازه به توصیف کمک می‌کند، اما به‌تنهایی خوش‌خیم را از بدخیم جدا نمی‌کند.')},
+      {id:'morphology',label:L('Morphologie','Morphology','مورفولوژی'),category:L('Form & Kontur','Shape & margin','شکل و حاشیه'),text:L('Wie sehen die einzelnen Kalkpartikel aus? Form, Kontur und Größenheterogenität bestimmen den morphologischen Verdacht.','What do the individual particles look like? Shape, margin and size heterogeneity determine morphological suspicion.','ذرات کلسیفیکاسیون چه شکلی دارند؟ شکل، حاشیه و ناهمگونی اندازه میزان شک مورفولوژیک را تعیین می‌کند.')},
+      {id:'distribution',label:L('Verteilungsmuster','Distribution pattern','الگوی توزیع'),category:L('Räumliche Anordnung','Spatial arrangement','آرایش فضایی'),text:L('Wie sind die Partikel innerhalb der Brust angeordnet? Lineare und segmentale Muster können auf einen duktalen Prozess hinweisen.','How are the particles arranged within the breast? Linear and segmental patterns may indicate a ductal process.','ذرات در پستان چگونه چیده شده‌اند؟ الگوهای خطی و سگمنتال می‌توانند نشان‌دهنده فرایند مجرایی باشند.')},
+      {id:'extent',label:L('Ausdehnung','Extent','وسعت'),category:L('Gesamtareal','Total area','ناحیه کلی'),text:L('Wie groß ist das gesamte betroffene Kalkareal? Die Gesamtausdehnung ist für Risikoeinschätzung, DCIS-Ausdehnung und Therapieplanung relevant.','How large is the total calcification field? Overall extent matters for risk assessment, DCIS extent and treatment planning.','کل ناحیه درگیر کلسیفیکاسیون چه اندازه‌ای دارد؟ وسعت کلی برای ارزیابی خطر، وسعت DCIS و برنامه‌ریزی درمان اهمیت دارد.')},
+    ],
+    noteTitle:L('Grundprinzip','Core principle','اصل پایه'),
+    note:L('Kalk ist ein bildgebender Phänotyp und allein keine Diagnose. Verlauf, klinischer Kontext und Begleitbefunde gehören immer zur Gesamtbeurteilung.','Calcification is an imaging phenotype, not a diagnosis by itself. Evolution, clinical context and associated findings always belong in the overall assessment.','کلسیفیکاسیون یک فنوتیپ تصویربرداری است و به‌تنهایی تشخیص محسوب نمی‌شود. روند، زمینه بالینی و یافته‌های همراه همیشه باید در ارزیابی کلی لحاظ شوند.'),
+  },
+  {
+    id:'technique',
+    tone:'secondary',
+    title:L('Technik','Technique','تکنیک'),
+    intro:L('Mammographie und Tomosynthese beantworten unterschiedliche Teilfragen. Die Detailbeurteilung des Kalks bleibt eine Aufgabe gezielter 2D-Vergrößerungsaufnahmen.','Mammography and tomosynthesis answer different parts of the problem. Detailed calcification analysis remains the role of targeted 2D magnification views.','ماموگرافی و توموسنتز به بخش‌های متفاوت مسئله پاسخ می‌دهند. بررسی دقیق کلسیفیکاسیون همچنان بر عهده نماهای هدفمند بزرگ‌نمایی دوبعدی است.'),
+    items:[
+      {id:'mammography',label:L('Mammographie · MG','Mammography · MG','ماموگرافی · MG'),category:L('Detaildiagnostik','Detail assessment','ارزیابی جزئیات'),text:L('Gezielte 2D-Vergrößerungsaufnahmen zeigen Form, Kontur und Dichte der einzelnen Kalkpartikel und sind für die morphologische Einordnung zentral.','Targeted 2D magnification views show the shape, margin and density of individual particles and are central to morphological assessment.','نماهای هدفمند بزرگ‌نمایی دوبعدی شکل، حاشیه و دانسیته هر ذره را نشان می‌دهند و برای ارزیابی مورفولوژیک ضروری‌اند.')},
+      {id:'tomosynthesis',label:L('Tomosynthese · DBT','Tomosynthesis · DBT','توموسنتز · DBT'),category:L('Lokalisation & Kontext','Localisation & context','محل و زمینه'),text:L('DBT ergänzt die räumliche Lokalisation und den Gewebekontext, ersetzt bei der Kalkabklärung jedoch keine Vergrößerungsaufnahmen.','DBT adds spatial localisation and tissue context but does not replace magnification views when assessing calcifications.','DBT محل فضایی و زمینه بافتی را تکمیل می‌کند، اما در ارزیابی کلسیفیکاسیون جایگزین نماهای بزرگ‌نمایی نمی‌شود.')},
+    ],
+  },
+]
+const DISTRIBUTION_CONTEXT={
+  diffuse:L('meist eher benign','usually less suspicious','اغلب کمتر مشکوک'),
+  regional:L('im Kontext bewerten','assess in context','در زمینه ارزیابی شود'),
+  grouped:L('Morphologie entscheidet','morphology drives risk','مورفولوژی تعیین‌کننده خطر است'),
+  linear:L('duktales Muster möglich','possible ductal pattern','احتمال الگوی مجرایی'),
+  segmental:L('duktales Muster besonders relevant','ductal pattern is especially relevant','الگوی مجرایی اهمیت ویژه دارد'),
+}
 const REFERENCES=[
   {
     tag:L('Leitlinie & Lexikon','Guideline & lexicon','راهنما و واژه‌نامه'),
@@ -163,18 +197,25 @@ function KalkAssessment({lang}){
   </div>
 }
 function Lines({children}){return <span style={{whiteSpace:'pre-line'}}>{children}</span>}
+function RememberNote({label,children}){return <aside className={caseStyles.rememberNote}><span className={caseStyles.rememberIcon}><SectionIcon id="merke"/></span><strong>{label}</strong><div>{children}</div></aside>}
+function DescriptorExplorer({items,lang,type}){
+  const[selected,setSelected]=useState(items[0].key)
+  const active=items.find(item=>item.key===selected)||items[0]
+  const title=type==='morphology'?pick(L('Morphologie auswählen','Choose morphology','انتخاب مورفولوژی'),lang):pick(L('Verteilung auswählen','Choose distribution','انتخاب توزیع'),lang)
+  const context=type==='morphology'?pick(active.risk,lang):pick(DISTRIBUTION_CONTEXT[active.key],lang)
+  return <div className={caseStyles.descriptorExplorer}>
+    <div className={caseStyles.descriptorTabs} role="tablist" aria-label={title}>
+      {items.map(item=><button key={item.key} type="button" role="tab" id={`${type}-${item.key}-tab`} aria-controls={`${type}-descriptor-panel`} aria-selected={selected===item.key} onClick={()=>setSelected(item.key)}><span>{pick(item.title,lang)}</span><i aria-hidden="true">→</i></button>)}
+    </div>
+    <article id={`${type}-descriptor-panel`} className={caseStyles.descriptorPanel} role="tabpanel" aria-labelledby={`${type}-${active.key}-tab`}>
+      <div className={caseStyles.descriptorCopy}><small>{context}</small><h3>{pick(active.title,lang)}</h3><p>{pick(active.text,lang)}</p></div>
+      <div className={caseStyles.descriptorVisual}>{type==='morphology'?<MorphologyImage type={active.key} lang={lang}/>:<DistributionImage type={active.key} lang={lang}/>}</div>
+    </article>
+  </div>
+}
 function LessonContent({lang}){const t=value=>translateLesson(value,lang);return <>
   <Section {...GERMAN_SECTIONS[0]} title={t(GERMAN_SECTIONS[0].label.de)}>
-    <h3 className={`${styles.takeTitle} ${caseStyles.sectionTitleRule}`}>{t("Systematische Beurteilung")}</h3>
-    <div className={`${styles.context} ${caseStyles.systematicGrid}`}>
-      <article><span>01</span><h3>{t("Partikelgröße")}</h3><p>{t("Wie groß sind die einzelnen Verkalkungen?")}</p></article>
-      <article><span>02</span><h3>{t("Morphologie")}</h3><p>{t("Wie sehen die einzelnen Kalkpartikel aus?")}</p></article>
-      <article><span>03</span><h3>{t("Verteilungsmuster")}</h3><p>{t("Wie sind die Kalkpartikel innerhalb der Brust räumlich angeordnet?")}</p></article>
-      <article><span>04</span><h3>{t("Ausdehnung")}</h3><p>{t("Wie groß ist das gesamte betroffene Kalkareal?")}</p></article>
-    </div>
-    <p className={styles.lead}>{t("Auch Verlauf, klinischer Kontext und Begleitbefunde – insbesondere eine assoziierte Masse oder Architekturstörung – sind für die Gesamtbeurteilung relevant.")}</p>
-    <div className={styles.rule}><strong>{t("Grundprinzip")}</strong><p>{t("Kalk ist ein bildgebender Phänotyp und allein keine Diagnose.")}</p></div>
-    <div><h3 className={`${styles.takeTitle} ${caseStyles.sectionTitleRule}`}>{t("Technik")}</h3><div className={caseStyles.techniqueGrid}><article><SectionIcon id="technik"/><h4>{t("Mammographie · MG")}</h4><p>{t("Gezielte 2D-Vergrößerungsaufnahmen zeigen die Kalkdetails.")}</p></article><article><SectionIcon id="ausdehnung"/><h4>{t("Tomosynthese · DBT")}</h4><p>{t("Ergänzt Lokalisation und Gewebekontext, ersetzt bei der Kalkabklärung aber keine Vergrößerungsaufnahmen.")}</p></article></div></div>
+    <InteractiveTeachingGroups groups={FOUNDATION_GROUPS} resolve={value=>pick(value,lang)} direction={lang==='fa'?'rtl':'ltr'}/>
   </Section>
 
   <Section {...GERMAN_SECTIONS[1]} title={t(GERMAN_SECTIONS[1].label.de)}>
@@ -189,19 +230,13 @@ function LessonContent({lang}){const t=value=>translateLesson(value,lang);return
       <p className={caseStyles.caseDescription}><strong>{t("Größe und Morphologie:")}</strong>{" "}{t("Mehrere große, grobe und glatt begrenzte Verkalkungen in der rechten Brust.")}</p>
       <p className={caseStyles.caseCredit}>{t("Bildbeispiel:")}{" "}<a href="https://radiopaedia.org/cases/86372/studies/102403#t=im&v1i=54303996&v1z=1&v2i=54303997&v2z=1&v3i=54303998&v3z=1&v4i=54303999&v4z=1" target="_blank" rel="noreferrer">{t("Radiopaedia.org, Fall 86372 (Vollbild)")}</a>.</p>
     </article>
-    <div className={styles.rule}><strong>{t("Merke")}</strong><p>{t("Größe allein beweist keine Benignität – Morphologie und Verteilung entscheiden über das tatsächliche Risiko.")}</p></div>
+    <RememberNote label={t("Merke")}><p>{t("Größe allein beweist keine Benignität – Morphologie und Verteilung entscheiden über das tatsächliche Risiko.")}</p></RememberNote>
   </Section>
 
   <Section {...GERMAN_SECTIONS[2]} title={t(GERMAN_SECTIONS[2].label.de)}>
     <p className={styles.lead}>{t("Die Morphologie beschreibt die Form der einzelnen Kalkpartikel.")}</p>
     <div className={caseStyles.morphologyArrow}><span>{t("benigne")}</span><b>{t("suspekt")}</b></div>
-    <div className={`${styles.morphRail} ${caseStyles.morphologyScale}`}>
-      <article className={caseStyles.morphBenign}><span>01</span><h3>{t("Rund")}</h3><p>{t("Glatte, runde Verkalkungen.")}</p><MorphologyImage type="round" lang={lang}/></article>
-      <article className={caseStyles.morphIntermediate}><span>02</span><h3>{t("Amorph")}</h3><p>{t("Sehr kleine, unscharfe Partikel ohne erkennbare Form. Die Verteilung ist für das Management besonders wichtig.")}</p><MorphologyImage type="amorph" lang={lang}/></article>
-      <article className={caseStyles.morphIntermediate}><span>03</span><h3>{t("Grob heterogen")}</h3><p>{t("Irregulär geformt, meist 0,5–1 mm: größer als amorphe, aber kleiner als typisch grobe benigne Verkalkungen.")}</p><MorphologyImage type="coarse" lang={lang}/></article>
-      <article className={caseStyles.morphIntermediate}><span>04</span><h3>{t("Fein pleomorph")}</h3><p>{t("Feine Verkalkungen unterschiedlicher Form und Größe.")}</p><MorphologyImage type="pleomorphic" lang={lang}/></article>
-      <article className={caseStyles.morphSuspicious}><span>05</span><h3>{t("Fein linear / verzweigt")}</h3><p>{t("Sehr feine, irreguläre lineare oder verzweigte Verkalkungen.")}</p><MorphologyImage type="linear" lang={lang}/></article>
-    </div>
+    <DescriptorExplorer items={MORPH} lang={lang} type="morphology"/>
     <article className={caseStyles.caseStudy}>
       <header className={caseStyles.caseHeader}><div><small>{t("RADIOPAEDIA-FALL")}</small><h3>{t("Grob heterogene Verkalkungen")}</h3></div></header>
       <div className={caseStyles.caseGallery}>
@@ -211,21 +246,15 @@ function LessonContent({lang}){const t=value=>translateLesson(value,lang);return
       <p className={caseStyles.caseDescription}><strong>{t("Morphologie und Lage:")}</strong>{" "}{t("Gruppierte, irreguläre und unterschiedlich große Verkalkungen, größer und dichter als amorphe Partikel, aber ohne typisch grobschollige Benignitätsmerkmale.")}</p>
       <p className={caseStyles.caseCredit}>{t("Bildbeispiel:")}{" "}<a href="https://radiopaedia.org/cases/67107/studies/76445?lang=us#t=im&v1i=47601418&v1z=1&v2i=47601419&v2z=1" target="_blank" rel="noreferrer">{t("Radiopaedia.org, Fall 67107 (Vollbild)")}</a>.</p>
     </article>
-    <div className={`${styles.rule} ${caseStyles.multiParagraph}`}><strong>{t("Merke")}</strong><p>{t("Fein lineare/verzweigte Verkalkungen sind hochsuspekt und häufig mit DCIS assoziiert.")}</p><p>{t("Eine einzelne Gruppe runder/punktförmiger Verkalkungen ohne Voraufnahmen kann nach vollständiger diagnostischer Abklärung und ohne suspekte Zusatzmerkmale als BI-RADS 3 eingestuft werden; erste Kontrolle nach 6 Monaten. Das gilt nicht pauschal für amorphe Verkalkungen.")}</p></div>
+    <RememberNote label={t("Merke")}><p>{t("Fein lineare/verzweigte Verkalkungen sind hochsuspekt und häufig mit DCIS assoziiert.")}</p><p>{t("Eine einzelne Gruppe runder/punktförmiger Verkalkungen ohne Voraufnahmen kann nach vollständiger diagnostischer Abklärung und ohne suspekte Zusatzmerkmale als BI-RADS 3 eingestuft werden; erste Kontrolle nach 6 Monaten. Das gilt nicht pauschal für amorphe Verkalkungen.")}</p></RememberNote>
     <p className={caseStyles.biradsCaption}>{t("Einordnung:")}{" "}<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5787219/" target="_blank" rel="noreferrer">{t("BI-RADS 3: Current and Future Use")}</a>.</p>
   </Section>
 
   <Section {...GERMAN_SECTIONS[3]} title={t(GERMAN_SECTIONS[3].label.de)}>
     <p className={styles.lead}>{t("Neben der Morphologie muss immer beschrieben werden, wie sich die Verkalkungen innerhalb der Brust verteilen.")}</p>
     <div className={caseStyles.morphologyArrow}><span>{t("benigne")}</span><b>{t("suspekt")}</b></div>
-    <div className={`${styles.morphRail} ${caseStyles.morphologyScale} ${caseStyles.distributionRiskScale}`}>
-      <article><span>01</span><h3>{t("Diffus")}</h3><p>{t("Weit über die Brust verteilt, häufig bilateral.")}</p><DistributionImage type="diffuse" lang={lang}/></article>
-      <article><span>02</span><h3>{t("Regional")}</h3><p>{t("Locker verstreut in einem Areal > 2 cm, ohne erkennbare Orientierung an einem Gangsystem.")}</p><DistributionImage type="regional" lang={lang}/></article>
-      <article><span>03</span><h3>{t("Gruppiert")}</h3><p>{t("Mindestens fünf Partikel innerhalb von 1 cm oder eine größere Zahl innerhalb von 2 cm.")}</p><DistributionImage type="grouped" lang={lang}/></article>
-      <article><span>04</span><h3>{t("Linear")}</h3><p>{t("Verkalkungen liegen entlang einer Linie.")}</p><DistributionImage type="linear" lang={lang}/></article>
-      <article><span>05</span><h3>{t("Segmental")}</h3><p>{t("Dreieckig beziehungsweise keilförmig, mit der Spitze zur Mamille; einem Gangsystem und seinen Verzweigungen folgend.")}</p><DistributionImage type="segmental" lang={lang}/></article>
-    </div>
-    <div className={`${styles.rule} ${caseStyles.multiParagraph}`}><strong>{t("Merke")}</strong><ul className={caseStyles.rememberList}><li><b>{t("Duktales Muster, keine sichere Histologie:")}</b>{" "}{t("Suspekte Mikroverkalkungen in linearer oder segmentaler Verteilung sind häufig mit DCIS assoziiert. Auch ein invasives Karzinom mit intraduktaler Komponente ist möglich.")}</li><li><b>{t("Linear ist nicht automatisch maligne:")}</b>{" "}{t("Grobe, glatte Stäbchen können sekretorisch bedingt sein, etwa bei Duktektasie/Plasmazellmastitis. Feine, irreguläre lineare oder verzweigte Partikel sind dagegen suspekt.")}</li></ul></div>
+    <DescriptorExplorer items={DISTRIBUTION} lang={lang} type="distribution"/>
+    <RememberNote label={t("Merke")}><ul className={caseStyles.rememberList}><li><b>{t("Duktales Muster, keine sichere Histologie:")}</b>{" "}{t("Suspekte Mikroverkalkungen in linearer oder segmentaler Verteilung sind häufig mit DCIS assoziiert. Auch ein invasives Karzinom mit intraduktaler Komponente ist möglich.")}</li><li><b>{t("Linear ist nicht automatisch maligne:")}</b>{" "}{t("Grobe, glatte Stäbchen können sekretorisch bedingt sein, etwa bei Duktektasie/Plasmazellmastitis. Feine, irreguläre lineare oder verzweigte Partikel sind dagegen suspekt.")}</li></ul></RememberNote>
   </Section>
 
   <Section {...GERMAN_SECTIONS[4]} title={t(GERMAN_SECTIONS[4].label.de)}>
@@ -244,7 +273,7 @@ function LessonContent({lang}){const t=value=>translateLesson(value,lang);return
       </div>
       <small className={caseStyles.biradsCaption}>{t("PPV in der untersuchten Biopsiekohorte, nach Gesamtausdehnung der Verkalkungen (mm).")}<br/><br/>{t("Metaxa, Healy & O’Keeffe, Br J Radiol. 2019;92:20190177.")}</small>
     </div>
-    <div className={styles.rule}><strong>{t("Merke")}</strong><p>{t("Die Ausdehnung ist unabhängig von der Morphologie ein eigenständiger Risikofaktor und relevant für die Beurteilung einer möglichen DCIS-Ausdehnung sowie die Therapieplanung.")}</p></div>
+    <RememberNote label={t("Merke")}><p>{t("Die Ausdehnung ist unabhängig von der Morphologie ein eigenständiger Risikofaktor und relevant für die Beurteilung einer möglichen DCIS-Ausdehnung sowie die Therapieplanung.")}</p></RememberNote>
   </Section>
 
   <Section {...GERMAN_SECTIONS[5]} title={t(GERMAN_SECTIONS[5].label.de)}>
@@ -352,7 +381,7 @@ function LessonContent({lang}){const t=value=>translateLesson(value,lang);return
         </dl>
       </article>
     </div>
-    <div className={styles.rule}><strong>{t("Merke")}</strong><p>{t("Ein unauffälliger Ultraschall oder eine negative MRT hebt eine mammographisch begründete Biopsieindikation nicht automatisch auf.")}</p></div>
+    <RememberNote label={t("Merke")}><p>{t("Ein unauffälliger Ultraschall oder eine negative MRT hebt eine mammographisch begründete Biopsieindikation nicht automatisch auf.")}</p></RememberNote>
     <div className={`${caseStyles.mriManagement} ${caseStyles.mriOverview}`}>
       <header><small>{t("Mammographische Kategorie bleibt maßgeblich")}</small><h3>{t("Negative MRT bei mammographischen Kalzifikationen: Was bedeutet das für die Biopsie?")}</h3></header>
       <div className={caseStyles.mriTableScroll}><table><caption>{t("Management bei negativer kontrastverstärkter MRT")}</caption><thead><tr><th scope="col">{t("BI-RADS")}</th><th scope="col">{t("Malignitätsrisiko vor MRT")}</th><th scope="col">{t("Einordnung")}</th></tr></thead><tbody>
@@ -425,7 +454,9 @@ export default function Page(){
     actions={actions}
     renderIcon={id=><SectionIcon id={id}/>}
     theme={{
-      backgroundImage:'/mamma/mammographie/verkalkungen/verkalkungen-background-v3.png',
+      backgroundImage:'/andarun-galaxy-v3.png',
+      heroImage:'/mamma/mammographie/verkalkungen/verkalkungen-background-v2.png',
+      heroImageOpacity:.4,
       accent:'#e45a88',
       accentStrong:'#7a2348',
       accentSoft:'#f4dce6',
