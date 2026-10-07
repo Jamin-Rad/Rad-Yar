@@ -14,14 +14,17 @@
 .hero h1 { margin: 0; color: #111b35; font-size: clamp(28px, 4vw, 44px); line-height: 1.2; letter-spacing: -.035em; }
 .hero p { margin: 10px 0 0; color: #64748b; font-size: 15px; }
 
-.primaryButton, .secondaryButton, .dangerButton, .refreshButton, .textButton, .addQuestion {
+.primaryButton, .secondaryButton, .dangerButton, .deleteButton, .refreshButton, .textButton, .addQuestion {
   border: 0; border-radius: 12px; font: 750 14px/1 Vazirmatn, sans-serif; cursor: pointer; transition: .18s ease;
 }
 .primaryButton { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 46px; padding: 0 20px; background: #f45b16; color: #fff; box-shadow: 0 9px 24px rgba(244,91,22,.22); }
 .primaryButton:hover { transform: translateY(-1px); background: #e84e0c; }
-.primaryButton:disabled, .dangerButton:disabled { opacity: .55; cursor: wait; transform: none; }
+.primaryButton:disabled, .dangerButton:disabled, .deleteButton:disabled { opacity: .55; cursor: wait; transform: none; }
 .secondaryButton { min-height: 46px; padding: 0 22px; border: 1px solid #d7deea; background: #fff; color: #3c4960; }
 .dangerButton { min-height: 44px; padding: 0 18px; border: 1px solid #fecaca; background: #fff1f2; color: #be123c; }
+.deleteButton { min-height: 44px; padding: 0 18px; border: 1px solid #be123c; background: #be123c; color: #fff; }
+.deleteButton:hover { background: #9f1239; }
+.detailActions { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
 .refreshButton, .textButton { padding: 9px 13px; background: transparent; color: #526077; }
 .textButton:hover, .refreshButton:hover { background: #eef2f7; color: #172033; }
 
@@ -222,6 +225,8 @@
   .formActions { flex-direction: column-reverse; padding: 18px; }
   .formError { margin: 16px 18px 0; }
   .formActions button { width: 100%; }
+  .detailActions { width: 100%; }
+  .detailActions button { flex: 1; }
   .questionCard { padding: 15px; }
   .attemptRow { grid-template-columns: 52px 1fr auto; }
   .attemptRow > span:nth-child(3), .attemptRow > span:nth-child(4), .attemptRow > span:nth-child(5) { display: none; }
@@ -291,3 +296,4 @@
 :global(html[data-theme='dark']) .points input { color: #e3eaf2; }
 :global(html[data-theme='dark']) .attemptRow:hover { background: #14243a; }
 :global(html[data-theme='dark']) .secondaryButton { border-color: #31425a; background: #101e31; color: #cbd5e1; }
+:global(html[data-theme='dark']) .dangerButton { border-color: #7f1d1d; background: rgba(127,29,29,.22); color: #fda4af; }

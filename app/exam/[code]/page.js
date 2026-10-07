@@ -1,4 +1,3 @@
-import Navbar from '@/components/Navbar'
 import ExamClient from './ExamClient'
 
 export const metadata = {
@@ -9,10 +8,5 @@ export const metadata = {
 
 export default async function ExamPage({ params }) {
   const { code } = await params
-  return (
-    <>
-      <Navbar />
-      <ExamClient code={code} />
-    </>
-  )
+  return <ExamClient code={code} />
 }

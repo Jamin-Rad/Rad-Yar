@@ -1,6 +1,8 @@
 'use client'
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import Link from 'next/link'
+import { useTheme } from '@/providers/ThemeProvider'
 import styles from './page.module.css'
 
 const EXAM_COPY = Object.freeze({
@@ -14,6 +16,31 @@ const EXAM_COPY = Object.freeze({
     locale: 'de-DE', dir: 'ltr', loading: 'Prüfung wird vorbereitet…', openFailed: 'Die Prüfung konnte nicht geöffnet werden', badge: 'Online-Prüfung', introFallback: 'Bitte geben Sie vor dem Start Ihre Daten ein.', questions: 'Fragen', questionUnit: 'Fragen', time: 'Zeit', minutes: 'Minuten', name: 'Vor- und Nachname *', namePlaceholder: 'Ihr Name', contact: 'E-Mail oder Instagram-ID *', contactPlaceholder: '@username oder name@example.com', start: 'Prüfung starten', startArrow: '→', notice: 'Der Timer startet mit der Prüfung. Nach Ablauf der Zeit werden Ihre Antworten automatisch gesendet.', nameError: 'Bitte geben Sie Ihren vollständigen Namen ein.', contactError: 'Bitte geben Sie eine gültige E-Mail-Adresse oder Instagram-ID ein.', submitting: 'Antworten werden gesendet', dontClose: 'Bitte schließen Sie diese Seite nicht.', submitted: 'Antworten gesendet', thanks: name => `Vielen Dank, ${name}!`, sentTo: organizer => `Ihr Prüfungsergebnis wurde an ${organizer} gesendet.`, resultSent: 'Ihr Ergebnis wurde an die Prüfungsleitung gesendet.', rank: (rank, total) => `Ihr aktueller Rang: ${rank} von ${total}`, review: 'Fragen kontrollieren', hideReview: 'Fragenkontrolle schließen', feedback: 'Prüfung bewerten', hideFeedback: 'Bewertung schließen', correctAnswer: 'Richtige Antwort', yourAnswer: 'Ihre Antwort', unansweredReview: 'Nicht beantwortet', explanation: 'Erklärung', feedbackTitle: 'Ihre Meinung zu dieser Prüfung', feedbackHint: 'Wählen Sie eine Option und ergänzen Sie bei Bedarf einen freien Text.', feedbackPlaceholder: 'Ihr schriftliches Feedback…', sendFeedback: 'Feedback senden', sendingFeedback: 'Wird gesendet…', feedbackSaved: 'Vielen Dank! Ihr Feedback wurde gespeichert.', feedbackError: 'Bitte wählen Sie vor dem Senden eine Option.', ratingLabels: ['Sehr schlecht', 'Schlecht', 'Mittel', 'Gut', 'Sehr gut'], exam: 'Prüfung', remaining: 'Verbleibende Zeit', answered: (done, total) => `${done} von ${total} beantwortet`, questionOf: (current, total) => `Frage ${current} von ${total}`, previous: 'Vorherige Frage', next: 'Nächste Frage', submit: 'Beenden und senden', questionList: 'Fragenübersicht', answeredLegend: 'Beantwortet', unansweredLegend: 'Nicht beantwortet', finish: 'Prüfung beenden', of: 'von',
   },
 })
+
+const HEADER_COPY = Object.freeze({
+  fa: { home: 'صفحه اصلی رادیار', light: 'حالت روشن', dark: 'حالت تاریک' },
+  en: { home: 'RadYar home', light: 'Light mode', dark: 'Dark mode' },
+  de: { home: 'RadYar-Startseite', light: 'Heller Modus', dark: 'Dunkler Modus' },
+})
+
+function ExamFrame({ children, language = 'fa', dir = 'rtl' }) {
+  const { theme, toggleTheme } = useTheme()
+  const labels = HEADER_COPY[language] || HEADER_COPY.fa
+  const themeLabel = theme === 'dark' ? labels.light : labels.dark
+
+  return (
+    <>
+      <header className={styles.examTopbar} dir={dir}>
+        <Link href="/" className={styles.homeLink}><span aria-hidden="true">⌂</span>{labels.home}</Link>
+        <button type="button" className={styles.themeToggle} onClick={toggleTheme} aria-label={themeLabel} title={themeLabel}>
+          <span aria-hidden="true">{theme === 'dark' ? '☀' : '☾'}</span>
+          <strong>{themeLabel}</strong>
+        </button>
+      </header>
+      <main className={styles.page} dir={dir} lang={language}>{children}</main>
+    </>
+  )
+}
 
 function formatTime(seconds, locale = 'fa-IR') {
   const safe = Math.max(0, seconds)
@@ -176,11 +203,11 @@ export default function ExamClient({ code }) {
     }
   }
 
-  if (phase === 'loading') return <main className={styles.page} dir="rtl"><div className={styles.centerCard}><span className={styles.loader} /><p>{copy.loading}</p></div></main>
-  if (phase === 'error') return <main className={styles.page} dir={copy.dir}><div className={styles.centerCard}><span className={styles.errorIcon}>!</span><h1>{copy.openFailed}</h1><p>{error}</p></div></main>
+  if (phase === 'loading') return <ExamFrame language="fa" dir="rtl"><div className={styles.centerCard}><span className={styles.loader} /><p>{copy.loading}</p></div></ExamFrame>
+  if (phase === 'error') return <ExamFrame language={language} dir={copy.dir}><div className={styles.centerCard}><span className={styles.errorIcon}>!</span><h1>{copy.openFailed}</h1><p>{error}</p></div></ExamFrame>
 
   if (phase === 'intro') return (
-    <main className={styles.page} dir={copy.dir} lang={language}>
+    <ExamFrame language={language} dir={copy.dir}>
       <section className={styles.introCard}>
         <div className={styles.introTop}>
           <span className={styles.badge}>{copy.badge}</span>
@@ -201,13 +228,13 @@ export default function ExamClient({ code }) {
           <small className={styles.notice}>{copy.notice}</small>
         </form>
       </section>
-    </main>
+    </ExamFrame>
   )
 
-  if (phase === 'submitting') return <main className={styles.page} dir={copy.dir}><div className={styles.centerCard}><span className={styles.loader} /><h1>{copy.submitting}</h1><p>{copy.dontClose}</p></div></main>
+  if (phase === 'submitting') return <ExamFrame language={language} dir={copy.dir}><div className={styles.centerCard}><span className={styles.loader} /><h1>{copy.submitting}</h1><p>{copy.dontClose}</p></div></ExamFrame>
 
   if (phase === 'result') return (
-    <main className={styles.page} dir={copy.dir} lang={language}>
+    <ExamFrame language={language} dir={copy.dir}>
       <div className={styles.resultShell}>
         <section className={styles.resultCard}>
           <span className={styles.resultSuccess}>✓</span>
@@ -268,11 +295,11 @@ export default function ExamClient({ code }) {
           </section>
         ) : null}
       </div>
-    </main>
+    </ExamFrame>
   )
 
   return (
-    <main className={styles.page} dir={copy.dir} lang={language}>
+    <ExamFrame language={language} dir={copy.dir}>
       <div className={styles.examShell}>
         <header className={styles.examHeader}>
           <div><span className={styles.headerLabel}>{copy.exam}</span><h1>{exam.title}</h1></div>
@@ -319,6 +346,6 @@ export default function ExamClient({ code }) {
           </aside>
         </div>
       </div>
-    </main>
+    </ExamFrame>
   )
 }

@@ -1,3 +1,12 @@
+.examTopbar { position: fixed; inset: 0 0 auto; z-index: 100; display: flex; align-items: center; justify-content: space-between; min-height: 64px; padding: 9px max(18px, calc((100vw - 1100px) / 2)); border-bottom: 1px solid rgba(203,213,225,.75); background: rgba(255,255,255,.9); box-shadow: 0 8px 28px rgba(15,23,42,.055); backdrop-filter: blur(16px); }
+.homeLink, .themeToggle { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 13px; border-radius: 10px; color: #354158; font: 750 12px Vazirmatn, sans-serif; text-decoration: none; transition: .16s ease; }
+.homeLink { border: 1px solid #dbe2eb; background: #fff; }
+.homeLink span { color: #f45b16; font-size: 18px; }
+.homeLink:hover { border-color: #fdba74; color: #17213a; }
+.themeToggle { border: 0; background: #17213a; color: #fff; cursor: pointer; }
+.themeToggle span { font-size: 16px; }
+.themeToggle strong { font: inherit; }
+
 .page {
   min-height: 100vh;
   padding: 96px 18px 60px;
@@ -148,6 +157,9 @@
 }
 
 @media (max-width: 540px) {
+  .examTopbar { min-height: 58px; padding-inline: 12px; }
+  .homeLink, .themeToggle { min-height: 38px; padding-inline: 10px; }
+  .themeToggle strong { display: none; }
   .introTop, .identityForm, .resultCard { padding-inline: 22px; }
   .examFacts { grid-template-columns: 1fr; }
   .examFacts div:nth-child(3) { border-inline-start: 0; }
@@ -169,6 +181,9 @@
 }
 
 :global(html[data-theme='dark']) .page { background: radial-gradient(circle at 12% 8%, rgba(14,165,233,.09), transparent 28rem), #07111f; color: #dce5ef; }
+:global(html[data-theme='dark']) .examTopbar { border-color: #25344a; background: rgba(7,17,31,.9); box-shadow: 0 8px 28px rgba(0,0,0,.22); }
+:global(html[data-theme='dark']) .homeLink { border-color: #31425a; background: #101e31; color: #dce5ef; }
+:global(html[data-theme='dark']) .themeToggle { background: #f3f6fa; color: #17213a; }
 :global(html[data-theme='dark']) .centerCard,
 :global(html[data-theme='dark']) .introCard,
 :global(html[data-theme='dark']) .resultCard,

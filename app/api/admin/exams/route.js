@@ -6,6 +6,7 @@ import { EXAM_LANGUAGES, validateExamInput } from '@/lib/exams'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 
 export const runtime = 'nodejs'
+const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 
 function unavailable() {
   return NextResponse.json({ error: 'پایگاه داده در دسترس نیست.' }, { status: 503 })
@@ -248,4 +249,36 @@ export async function PATCH(request) {
   if (error) return NextResponse.json({ error: 'وضعیت آزمون تغییر نکرد.' }, { status: 503 })
   if (!data) return NextResponse.json({ error: 'آزمون پیدا نشد.' }, { status: 404 })
   return NextResponse.json({ exam: data })
+}
+
+export async function DELETE(request) {
+  const denied = await authorize()
+  if (denied) return denied
+  if (!isSupabaseAdminConfigured || !supabaseAdmin) return unavailable()
+
+  let payload
+  try {
+    payload = await request.json()
+  } catch {
+    return NextResponse.json({ error: 'درخواست معتبر نیست.' }, { status: 400 })
+  }
+
+  const examId = typeof payload?.id === 'string' ? payload.id : ''
+  if (!UUID_PATTERN.test(examId)) {
+    return NextResponse.json({ error: 'شناسه آزمون معتبر نیست.' }, { status: 400 })
+  }
+
+  const { data, error } = await supabaseAdmin
+    .from('exams')
+    .delete()
+    .eq('id', examId)
+    .select('id')
+    .maybeSingle()
+
+  if (error) {
+    console.error('حذف آزمون انجام نشد:', error)
+    return NextResponse.json({ error: databaseSetupError(error, 'حذف آزمون انجام نشد.') }, { status: 503 })
+  }
+  if (!data) return NextResponse.json({ error: 'آزمون پیدا نشد.' }, { status: 404 })
+  return NextResponse.json({ deleted: true, id: data.id })
 }

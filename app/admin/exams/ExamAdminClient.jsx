@@ -333,6 +333,30 @@ export default function ExamAdminClient() {
     }
   }
 
+  async function deleteExam() {
+    if (!detail?.exam) return
+    const confirmed = window.confirm(`آزمون «${detail.exam.title}» و تمام سؤال‌ها، نتیجه‌ها و نظرهای آن برای همیشه حذف شود؟`)
+    if (!confirmed) return
+
+    setSaving(true)
+    setError('')
+    try {
+      await readJson(await fetch('/api/admin/exams', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: detail.exam.id }),
+      }))
+      setDetail(null)
+      setExpandedAttempt('')
+      setView('list')
+      await loadExams()
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setSaving(false)
+    }
+  }
+
   async function copyLink(value) {
     await navigator.clipboard.writeText(value)
     setCopied(value)
@@ -529,9 +553,12 @@ export default function ExamAdminClient() {
               <div className={styles.detailHeader}>
                 <button type="button" className={styles.textButton} onClick={() => setView('list')}>→ بازگشت</button>
                 <div className={styles.detailTitle}><div><span className={`${styles.status} ${styles[`status_${detailDisplayState.key}`]}`}>{detailDisplayState.label}</span><h2>{detail.exam.title}</h2><p>{detail.exam.description}</p></div>
-                  <button type="button" className={detailCanClose ? styles.dangerButton : styles.primaryButton} disabled={saving} onClick={() => changeStatus(detailCanClose ? 'close' : 'reopen')}>
-                    {detailCanClose ? 'بستن امتحان' : 'فعال‌کردن دوباره'}
-                  </button>
+                  <div className={styles.detailActions}>
+                    <button type="button" className={detailCanClose ? styles.dangerButton : styles.primaryButton} disabled={saving} onClick={() => changeStatus(detailCanClose ? 'close' : 'reopen')}>
+                      {detailCanClose ? 'بستن امتحان' : 'فعال‌کردن دوباره'}
+                    </button>
+                    <button type="button" className={styles.deleteButton} disabled={saving} onClick={deleteExam}>حذف امتحان</button>
+                  </div>
                 </div>
               </div>
 
