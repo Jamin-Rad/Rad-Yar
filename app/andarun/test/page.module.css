@@ -32,9 +32,9 @@
   z-index: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg,rgba(13,10,22,.68),rgba(14,11,21,.84)),
-    url('/andarun-galaxy-v2.png') center / cover no-repeat;
-  filter: saturate(.52) contrast(.92) brightness(.76) blur(1px);
+    linear-gradient(180deg,rgba(13,10,22,.48),rgba(14,11,21,.72)),
+    url('/andarun-galaxy-v3.png') center / cover no-repeat;
+  filter: saturate(.64) contrast(.94) brightness(.82) blur(.7px);
 }
 .page::after {
   content: '';
