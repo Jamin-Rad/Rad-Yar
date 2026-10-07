@@ -1,6 +1,7 @@
 import crypto from 'crypto'
 import { NextResponse } from 'next/server'
 import { requireAdmin } from '@/lib/adminAuth'
+import { MCQ_TOPIC_GROUPS, QUESTION_BANK } from '@/data/questions'
 import { EXAM_LANGUAGES, validateExamInput } from '@/lib/exams'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 
@@ -31,52 +32,43 @@ function databaseSetupError(error, fallback) {
   return fallback
 }
 
-async function getQuestionBank(language) {
-  const [questionResult, topicResult, chapterResult] = await Promise.all([
-    supabaseAdmin
-      .from('questions')
-      .select('id,thema_id,question,options,correct')
-      .order('thema_id')
-      .limit(1000),
-    supabaseAdmin.from('themen').select('id,parent_id,kapitel_id,title').limit(1000),
-    supabaseAdmin.from('kapitel').select('id,title').limit(500),
-  ])
+function canonicalQuestionId(id) {
+  return String(id).replace(/-(?:fa|en)-/, '-de-')
+}
 
-  const error = questionResult.error || topicResult.error || chapterResult.error
-  if (error) return { error }
+function getQuestionBank(language) {
+  const topicById = new Map()
+  for (const group of MCQ_TOPIC_GROUPS) {
+    const parentTopic = localizedText(group.title, language)
+    for (const topic of group.topics) {
+      const topicTitle = localizedText(topic.title, language)
+      topicById.set(topic.id, { parentTopic, topicTitle })
+    }
+  }
 
-  const chapterById = new Map((chapterResult.data || []).map(chapter => [chapter.id, localizedText(chapter.title, language)]))
-  const topicById = new Map((topicResult.data || []).map(topic => [topic.id, {
-    title: localizedText(topic.title, language),
-    parentId: topic.parent_id,
-    chapterId: topic.kapitel_id,
-  }]))
-  const questions = []
-
-  for (const item of questionResult.data || []) {
+  const source = QUESTION_BANK[language] || QUESTION_BANK.fa
+  const questions = source.flatMap(item => {
     const rawOptions = Array.isArray(item.options) ? item.options : []
-    const options = rawOptions.map(option => localizedText(option?.text, language))
     const correctOptionIndex = rawOptions.findIndex(option => option?.id === item.correct)
-    const prompt = localizedText(item.question, language)
+    const topicId = item.tags?.find(tag => topicById.has(tag)) || item.tags?.[0] || item.fach || 'other'
+    const topic = topicById.get(topicId)
+    const options = rawOptions.map(option => option?.text || '')
 
-    if (!prompt || options.length !== 4 || options.some(option => !option) || correctOptionIndex < 0) continue
-    const topic = topicById.get(item.thema_id)
-    const parentTopic = topic?.parentId
-      ? topicById.get(topic.parentId)?.title || chapterById.get(topic?.chapterId) || ''
-      : chapterById.get(topic?.chapterId) || ''
-    const topicTitle = topic?.title || item.thema_id
-    questions.push({
-      id: item.id,
-      themaId: item.thema_id,
+    if (!item.question || options.length !== 4 || options.some(option => !option) || correctOptionIndex < 0) return []
+    const topicTitle = topic?.topicTitle || topicId
+    const parentTopic = topic?.parentTopic || item.fach || ''
+    return [{
+      id: canonicalQuestionId(item.id),
+      themaId: topicId,
       topic: topicTitle,
       parentTopic,
       topicPath: parentTopic ? `${parentTopic} — ${topicTitle}` : topicTitle,
-      prompt,
+      prompt: item.question,
       options,
       correctOptionIndex,
       points: 1,
-    })
-  }
+    }]
+  })
 
   return { questions }
 }
@@ -90,11 +82,7 @@ export async function GET(request) {
   if (url.searchParams.get('resource') === 'question-bank') {
     const requestedLanguage = url.searchParams.get('language')
     const language = EXAM_LANGUAGES.includes(requestedLanguage) ? requestedLanguage : 'fa'
-    const result = await getQuestionBank(language)
-    if (result.error) {
-      console.error('بانک سؤال قابل بارگذاری نیست:', result.error)
-      return NextResponse.json({ error: 'بارگذاری بانک سؤال انجام نشد.' }, { status: 503 })
-    }
+    const result = getQuestionBank(language)
     return NextResponse.json(result)
   }
 
