@@ -1,0 +1,227 @@
+.page {
+  min-height: calc(100vh - 116px);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(14, 165, 233, .09), transparent 30rem),
+    radial-gradient(circle at 88% 12%, rgba(249, 115, 22, .08), transparent 28rem),
+    #f5f7fb;
+  color: #172033;
+  font-family: Vazirmatn, var(--font-manrope), sans-serif;
+}
+
+.shell { width: min(1180px, calc(100% - 40px)); margin: 0 auto; padding: 42px 0 90px; }
+.hero { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
+.eyebrow { display: block; margin-bottom: 10px; color: #f97316; font-size: 11px; font-weight: 850; letter-spacing: .18em; }
+.hero h1 { margin: 0; color: #111b35; font-size: clamp(28px, 4vw, 44px); line-height: 1.2; letter-spacing: -.035em; }
+.hero p { margin: 10px 0 0; color: #64748b; font-size: 15px; }
+
+.primaryButton, .secondaryButton, .dangerButton, .refreshButton, .textButton, .addQuestion {
+  border: 0; border-radius: 12px; font: 750 14px/1 Vazirmatn, sans-serif; cursor: pointer; transition: .18s ease;
+}
+.primaryButton { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 46px; padding: 0 20px; background: #f45b16; color: #fff; box-shadow: 0 9px 24px rgba(244,91,22,.22); }
+.primaryButton:hover { transform: translateY(-1px); background: #e84e0c; }
+.primaryButton:disabled, .dangerButton:disabled { opacity: .55; cursor: wait; transform: none; }
+.secondaryButton { min-height: 46px; padding: 0 22px; border: 1px solid #d7deea; background: #fff; color: #3c4960; }
+.dangerButton { min-height: 44px; padding: 0 18px; border: 1px solid #fecaca; background: #fff1f2; color: #be123c; }
+.refreshButton, .textButton { padding: 9px 13px; background: transparent; color: #526077; }
+.textButton:hover, .refreshButton:hover { background: #eef2f7; color: #172033; }
+
+.error { margin-bottom: 18px; padding: 13px 16px; border: 1px solid #fecaca; border-radius: 12px; background: #fff1f2; color: #b42336; font-size: 14px; }
+.successCard, .shareCard { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 22px; padding: 18px 20px; border: 1px solid #b7ead8; border-radius: 16px; background: #effcf7; }
+.successCard > div:first-child, .shareCard > div:first-child { display: grid; gap: 4px; }
+.successCard strong, .shareCard strong { color: #075f4c; }
+.successCard span, .shareCard span { color: #527065; font-size: 12px; }
+.shareRow { display: flex; align-items: center; gap: 8px; min-width: min(540px, 55%); }
+.shareRow input { min-width: 0; flex: 1; height: 40px; padding: 0 12px; border: 1px solid #c9ded6; border-radius: 9px; background: #fff; color: #334155; }
+.shareRow button, .shareRow a { min-height: 40px; padding: 0 14px; border: 0; border-radius: 9px; background: #087c64; color: #fff; cursor: pointer; font: 750 12px/40px Vazirmatn, sans-serif; text-decoration: none; white-space: nowrap; }
+
+.stats, .resultSummary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 20px; }
+.stats article, .resultSummary article { display: flex; align-items: center; justify-content: space-between; min-height: 88px; padding: 18px 21px; border: 1px solid #e1e6ef; border-radius: 15px; background: rgba(255,255,255,.88); box-shadow: 0 10px 30px rgba(28,39,61,.045); }
+.stats span, .resultSummary span { color: #6b778c; font-size: 13px; }
+.stats strong, .resultSummary strong { color: #14203a; font-size: 28px; }
+
+.panel, .builder, .detail { border: 1px solid #e0e6ef; border-radius: 20px; background: rgba(255,255,255,.92); box-shadow: 0 20px 55px rgba(29,41,67,.07); }
+.panel { padding: 24px; }
+.panelHeader, .builderHeader, .questionsHeader, .questionHeader, .detailTitle { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.panelHeader { margin-bottom: 20px; }
+.panelHeader h2, .builderHeader h2, .detailTitle h2 { margin: 0; color: #17213a; font-size: 21px; }
+.panelHeader p, .questionsHeader p, .detailTitle p { margin: 5px 0 0; color: #7a8698; font-size: 12px; }
+.empty { display: grid; place-items: center; gap: 8px; min-height: 200px; color: #8792a3; text-align: center; }
+.empty strong { color: #475569; font-size: 16px; }
+
+.examGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 13px; }
+.examCard { display: block; width: 100%; padding: 19px; border: 1px solid #e2e7ef; border-radius: 15px; background: #fff; color: inherit; cursor: pointer; font: inherit; text-align: right; transition: .18s ease; }
+.examCard:hover { transform: translateY(-2px); border-color: #fdba74; box-shadow: 0 14px 28px rgba(30,41,59,.09); }
+.examCardTop, .examMeta { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.status { display: inline-flex; align-items: center; min-height: 25px; padding: 3px 9px; border-radius: 99px; font-size: 11px; font-weight: 800; }
+.status_published { background: #dcfce7; color: #08734f; }
+.status_closed { background: #ffe4e6; color: #be123c; }
+.status_draft { background: #e9eef5; color: #526077; }
+.date { color: #94a3b8; font-size: 11px; }
+.examCard h3 { margin: 18px 0 7px; color: #17213a; font-size: 17px; }
+.examCard p { min-height: 38px; margin: 0 0 18px; color: #738095; font-size: 12px; line-height: 1.7; }
+.examMeta { justify-content: flex-start; flex-wrap: wrap; padding-top: 14px; border-top: 1px solid #eef1f5; color: #64748b; font-size: 11px; }
+.examMeta strong { margin-inline-start: auto; color: #f45b16; }
+
+.builder { overflow: hidden; }
+.builderHeader { padding: 23px 26px; border-bottom: 1px solid #e6ebf2; }
+.step { display: block; margin-bottom: 5px; color: #f45b16; font-size: 10px; font-weight: 850; }
+.formSection { padding: 26px; border-bottom: 1px solid #e6ebf2; }
+.formSection > h3, .questionsHeader h3 { margin: 0 0 18px; color: #1e293b; font-size: 16px; }
+.fieldGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 17px; }
+.fieldGrid label, .promptField, .points { display: grid; gap: 7px; color: #546176; font-size: 12px; font-weight: 700; }
+.wideField { grid-column: 1 / -1; }
+.fieldGrid input, .fieldGrid textarea, .promptField textarea, .points input { width: 100%; border: 1px solid #d8dfe9; border-radius: 11px; background: #fff; color: #1f2937; font: 500 14px/1.7 Vazirmatn, sans-serif; outline: none; }
+.fieldGrid input, .points input { height: 45px; padding: 0 13px; }
+.fieldGrid textarea { min-height: 88px; padding: 11px 13px; resize: vertical; }
+.fieldGrid input:focus, .fieldGrid textarea:focus, .promptField textarea:focus, .points input:focus, .option input:last-child:focus, .correctOption input:last-child:focus { border-color: #f97316; box-shadow: 0 0 0 3px rgba(249,115,22,.1); }
+.checks { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 20px; }
+.checks label { display: flex; align-items: center; gap: 8px; color: #556276; font-size: 12px; cursor: pointer; }
+.checks input { accent-color: #f45b16; }
+
+.bankHeader { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin-bottom: 18px; }
+.bankHeader h3 { margin: 0 0 6px; color: #1e293b; font-size: 16px; }
+.bankHeader p { margin: 0; color: #7b8799; font-size: 11px; line-height: 1.8; }
+.bankHeader > span { flex: 0 0 auto; padding: 6px 10px; border-radius: 9px; background: #e9f7ff; color: #0877a8; font-size: 11px; font-weight: 800; }
+.bankToolbar { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(190px, .7fr); gap: 12px; margin-bottom: 13px; }
+.bankToolbar label { display: grid; gap: 6px; color: #546176; font-size: 11px; font-weight: 700; }
+.bankToolbar input, .bankToolbar select { width: 100%; height: 43px; padding: 0 12px; border: 1px solid #d8dfe9; border-radius: 10px; background: #fff; color: #263247; font: 500 12px Vazirmatn, sans-serif; outline: none; }
+.bankToolbar input:focus, .bankToolbar select:focus { border-color: #f97316; box-shadow: 0 0 0 3px rgba(249,115,22,.1); }
+.bankList { display: grid; gap: 8px; max-height: 410px; padding: 3px; overflow-y: auto; }
+.bankItem, .bankItemSelected { display: flex; align-items: flex-start; gap: 11px; padding: 13px; border: 1px solid #e0e6ee; border-radius: 12px; background: #fff; cursor: pointer; transition: .15s ease; }
+.bankItem:hover { border-color: #f3b18d; background: #fffbf8; }
+.bankItemSelected { border-color: #f97316; background: #fff4ec; box-shadow: 0 0 0 2px rgba(249,115,22,.07); }
+.bankItem > input, .bankItemSelected > input { width: 17px; height: 17px; margin-top: 2px; flex: 0 0 17px; accent-color: #f45b16; }
+.bankItem > span, .bankItemSelected > span { display: grid; min-width: 0; gap: 5px; }
+.bankItem strong, .bankItemSelected strong { color: #2a3549; font-size: 12px; line-height: 1.8; }
+.bankItem small, .bankItemSelected small { overflow: hidden; color: #8490a2; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.bankActions { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 13px; }
+.bankActions > span { color: #7b8799; font-size: 10px; }
+.bankActions button { min-height: 41px; padding: 0 15px; border: 0; border-radius: 10px; background: #f45b16; color: #fff; cursor: pointer; font: 800 11px Vazirmatn, sans-serif; }
+.bankActions button:disabled { opacity: .45; cursor: not-allowed; }
+.bankEmpty { display: grid; min-height: 90px; place-items: center; border: 1px dashed #d9e0e9; border-radius: 12px; color: #8290a4; font-size: 11px; }
+
+.questionsHeader { align-items: flex-start; margin-bottom: 18px; }
+.questionsHeader h3 { margin-bottom: 0; }
+.questionsHeader > span { padding: 6px 10px; border-radius: 9px; background: #fff2ea; color: #d94c0a; font-size: 11px; font-weight: 800; }
+.questionList { display: grid; gap: 14px; }
+.questionCard { padding: 20px; border: 1px solid #dfe5ee; border-radius: 15px; background: #f9fafc; }
+.questionHeader { margin-bottom: 15px; }
+.questionHeader strong { color: #1e293b; }
+.questionHeader strong { display: flex; align-items: center; gap: 8px; }
+.questionHeader strong small { padding: 3px 7px; border-radius: 7px; background: #eaf4ff; color: #2873a7; font-size: 9px; font-weight: 750; }
+.questionHeader button { border: 0; background: transparent; color: #dc3d51; cursor: pointer; font: 700 11px Vazirmatn, sans-serif; }
+.promptField textarea { min-height: 82px; padding: 11px 13px; resize: vertical; }
+.options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 9px; margin-top: 13px; }
+.option, .correctOption { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid #dfe4ec; border-radius: 11px; background: #fff; }
+.correctOption { border-color: #5bcaa5; background: #effcf7; }
+.option > input:first-child, .correctOption > input:first-child { accent-color: #059669; }
+.option > span, .correctOption > span { display: grid; place-items: center; width: 25px; height: 25px; flex: 0 0 25px; border-radius: 7px; background: #eef2f6; color: #526077; font: 800 11px var(--font-manrope), sans-serif; }
+.correctOption > span { background: #c8f3e3; color: #08765c; }
+.option input:last-child, .correctOption input:last-child { min-width: 0; flex: 1; height: 36px; border: 0; background: transparent; color: #1f2937; font: 500 13px Vazirmatn, sans-serif; outline: none; }
+.points { display: grid; grid-template-columns: auto 80px; align-items: center; justify-content: end; margin-top: 13px; }
+.points input { height: 38px; }
+.addQuestion { width: 100%; min-height: 47px; margin-top: 14px; border: 1px dashed #f2a175; background: #fff8f3; color: #d84b0b; }
+.addQuestion:hover { background: #fff1e8; }
+.formActions { display: flex; justify-content: flex-end; gap: 10px; padding: 22px 26px; }
+
+.detail { padding: 25px; }
+.detailHeader { margin-bottom: 20px; }
+.detailTitle { align-items: flex-start; margin-top: 13px; }
+.detailTitle h2 { margin-top: 10px; font-size: 27px; }
+.shareCard { margin: 0 0 18px; border-color: #cfe0f2; background: #f1f7fd; }
+.shareCard strong { color: #164e75; }
+.shareCard span { color: #61768c; }
+.resultSummary { margin-bottom: 18px; }
+.detail .panel { box-shadow: none; }
+
+.resultsList { display: grid; gap: 8px; }
+.attempt { overflow: hidden; border: 1px solid #e2e7ef; border-radius: 13px; background: #fff; }
+.attemptRow { display: grid; grid-template-columns: minmax(150px, 1.5fr) 1fr .7fr .55fr 1fr auto; align-items: center; gap: 13px; width: 100%; padding: 14px 16px; border: 0; background: #fff; color: #263247; cursor: pointer; font: 600 12px Vazirmatn, sans-serif; text-align: right; }
+.attemptRow:hover { background: #f8fafc; }
+.attemptRow > span { display: grid; gap: 3px; }
+.attemptRow small { color: #8994a5; font-size: 10px; font-weight: 550; }
+.person strong { font-size: 13px; }
+.passed, .failed { display: inline-flex !important; place-items: center; justify-content: center; padding: 5px 8px; border-radius: 99px; font-size: 10px; font-weight: 800; }
+.passed { background: #dcfce7; color: #08734f; }
+.failed { background: #ffe4e6; color: #be123c; }
+.submitted { color: #748196; font-size: 10px; }
+.answerDetails { display: grid; gap: 8px; padding: 14px 16px; border-top: 1px solid #e7ebf1; background: #f8fafc; }
+.answerCorrect, .answerWrong { display: grid; gap: 5px; padding: 11px 13px; border-inline-start: 3px solid; border-radius: 8px; background: #fff; font-size: 11px; }
+.answerCorrect { border-color: #10b981; }
+.answerWrong { border-color: #ef4444; }
+.answerCorrect strong, .answerWrong strong { color: #344056; font-size: 12px; }
+.answerCorrect span, .answerWrong span { color: #6f7c90; }
+
+@media (max-width: 800px) {
+  .shell { width: min(100% - 24px, 720px); padding-top: 26px; }
+  .hero, .successCard, .shareCard, .detailTitle { align-items: stretch; flex-direction: column; }
+  .hero .primaryButton { width: 100%; }
+  .shareRow { width: 100%; min-width: 0; }
+  .stats, .resultSummary { grid-template-columns: 1fr; gap: 8px; }
+  .stats article, .resultSummary article { min-height: 66px; }
+  .examGrid, .fieldGrid, .options, .bankToolbar { grid-template-columns: 1fr; }
+  .wideField { grid-column: auto; }
+  .panel, .formSection, .detail { padding: 18px; }
+  .builderHeader { padding: 18px; }
+  .attemptRow { grid-template-columns: 1.5fr .8fr .6fr auto; }
+  .attemptRow > span:nth-child(3), .attemptRow > span:nth-child(5) { display: none; }
+}
+
+@media (max-width: 520px) {
+  .bankHeader, .bankActions { align-items: stretch; flex-direction: column; }
+  .bankActions button { width: 100%; }
+  .shareRow { flex-wrap: wrap; }
+  .shareRow input { flex-basis: 100%; }
+  .formActions { flex-direction: column-reverse; padding: 18px; }
+  .formActions button { width: 100%; }
+  .questionCard { padding: 15px; }
+  .attemptRow { grid-template-columns: 1fr auto auto; }
+  .attemptRow > span:nth-child(2), .attemptRow > span:nth-child(3), .attemptRow > span:nth-child(5) { display: none; }
+}
+
+:global(html[data-theme='dark']) .page { background: radial-gradient(circle at 15% 0%, rgba(14,165,233,.08), transparent 28rem), #07111f; color: #d8e1ec; }
+:global(html[data-theme='dark']) .hero h1,
+:global(html[data-theme='dark']) .panelHeader h2,
+:global(html[data-theme='dark']) .builderHeader h2,
+:global(html[data-theme='dark']) .detailTitle h2,
+:global(html[data-theme='dark']) .stats strong,
+:global(html[data-theme='dark']) .resultSummary strong,
+:global(html[data-theme='dark']) .examCard h3,
+:global(html[data-theme='dark']) .formSection > h3,
+:global(html[data-theme='dark']) .questionsHeader h3,
+:global(html[data-theme='dark']) .bankHeader h3,
+:global(html[data-theme='dark']) .questionHeader strong { color: #f3f6fa; }
+:global(html[data-theme='dark']) .panel,
+:global(html[data-theme='dark']) .builder,
+:global(html[data-theme='dark']) .detail,
+:global(html[data-theme='dark']) .stats article,
+:global(html[data-theme='dark']) .resultSummary article,
+:global(html[data-theme='dark']) .examCard { border-color: #25344a; background: rgba(15,27,45,.94); }
+:global(html[data-theme='dark']) .questionCard,
+:global(html[data-theme='dark']) .answerDetails { border-color: #26374f; background: #0b1728; }
+:global(html[data-theme='dark']) .fieldGrid input,
+:global(html[data-theme='dark']) .fieldGrid textarea,
+:global(html[data-theme='dark']) .promptField textarea,
+:global(html[data-theme='dark']) .points input,
+:global(html[data-theme='dark']) .bankToolbar input,
+:global(html[data-theme='dark']) .bankToolbar select,
+:global(html[data-theme='dark']) .bankItem,
+:global(html[data-theme='dark']) .bankItemSelected,
+:global(html[data-theme='dark']) .option,
+:global(html[data-theme='dark']) .correctOption,
+:global(html[data-theme='dark']) .attempt,
+:global(html[data-theme='dark']) .attemptRow,
+:global(html[data-theme='dark']) .answerCorrect,
+:global(html[data-theme='dark']) .answerWrong { border-color: #2b3b52; background: #101e31; color: #dce5ef; }
+:global(html[data-theme='dark']) .correctOption { border-color: #16886b; background: rgba(5,150,105,.12); }
+:global(html[data-theme='dark']) .bankItemSelected { border-color: #f97316; background: rgba(249,115,22,.12); }
+:global(html[data-theme='dark']) .bankItem strong,
+:global(html[data-theme='dark']) .bankItemSelected strong { color: #e3eaf2; }
+:global(html[data-theme='dark']) .option input:last-child,
+:global(html[data-theme='dark']) .correctOption input:last-child,
+:global(html[data-theme='dark']) .fieldGrid input,
+:global(html[data-theme='dark']) .fieldGrid textarea,
+:global(html[data-theme='dark']) .promptField textarea,
+:global(html[data-theme='dark']) .points input { color: #e3eaf2; }
+:global(html[data-theme='dark']) .attemptRow:hover { background: #14243a; }
+:global(html[data-theme='dark']) .secondaryButton { border-color: #31425a; background: #101e31; color: #cbd5e1; }

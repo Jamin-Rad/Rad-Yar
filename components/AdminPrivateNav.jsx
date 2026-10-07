@@ -23,6 +23,10 @@ export default function AdminPrivateNav() {
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
           Admin-Bereich
         </Link>
+        <Link href="/admin/exams" className={`${styles.link} ${pathname?.startsWith('/admin/exams') ? styles.active : ''}`}>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="m9 14 2 2 4-4"/></svg>
+          امتحان‌ها
+        </Link>
         <Link href="/andarun" className={`${styles.link} ${pathname?.startsWith('/andarun') ? styles.active : ''}`}>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3 3 9l9 6 9-6-9-6Z"/><path d="m3 15 9 6 9-6"/><path d="m3 12 9 6 9-6"/></svg>
           Andarun
