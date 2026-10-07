@@ -2,10 +2,12 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { QRCodeCanvas } from 'qrcode.react'
+import { getExamMediaPreview } from '@/utils/examMedia'
 import styles from './page.module.css'
 
-const emptyQuestion = () => ({ sourceId: '', sourceLabel: '', prompt: '', options: ['', '', '', ''], correctOptionIndex: 0, points: 1, explanation: '' })
+const emptyQuestion = () => ({ sourceId: '', sourceLabel: '', kind: 'custom', prompt: '', options: ['', '', '', ''], correctOptionIndex: 0, points: 1, explanation: '', media: null })
 const LANGUAGE_LABELS = Object.freeze({ fa: 'فارسی', en: 'English', de: 'Deutsch' })
 const EXAM_DURATION_OPTIONS = Object.freeze([5, 10, 15, 20, 25, 30, 45, 60, 90, 120, 150, 180, 240])
 const ACTIVE_DURATION_OPTIONS = Object.freeze([
@@ -136,9 +138,11 @@ export default function ExamAdminClient() {
   const [copied, setCopied] = useState('')
   const [questionBank, setQuestionBank] = useState([])
   const [bankLoaded, setBankLoaded] = useState(false)
-  const [bankLanguage, setBankLanguage] = useState('')
+  const [bankKey, setBankKey] = useState('')
   const [bankLoading, setBankLoading] = useState(false)
+  const [bankType, setBankType] = useState('mcq')
   const [bankSearch, setBankSearch] = useState('')
+  const [bankFach, setBankFach] = useState('all')
   const [bankTopic, setBankTopic] = useState('all')
   const [selectedBankIds, setSelectedBankIds] = useState([])
   const [form, setForm] = useState(createDefaultForm)
@@ -159,14 +163,15 @@ export default function ExamAdminClient() {
 
   useEffect(() => { loadExams() }, [loadExams])
 
-  const loadQuestionBank = useCallback(async (language = 'fa') => {
-    if (bankLoaded && bankLanguage === language) return
+  const loadQuestionBank = useCallback(async (language = 'fa', type = 'mcq') => {
+    const requestedKey = `${language}:${type}`
+    if (bankLoaded && bankKey === requestedKey) return
     const requestId = bankRequestRef.current + 1
     bankRequestRef.current = requestId
     setBankLoading(true)
     setError('')
     try {
-      const data = await readJson(await fetch(`/api/admin/exams?resource=question-bank&language=${encodeURIComponent(language)}`, { cache: 'no-store' }))
+      const data = await readJson(await fetch(`/api/admin/exams?resource=question-bank&language=${encodeURIComponent(language)}&type=${encodeURIComponent(type)}`, { cache: 'no-store' }))
       if (bankRequestRef.current !== requestId) return
       const questions = data.questions || []
       const questionById = new Map(questions.map(question => [question.id, question]))
@@ -182,17 +187,19 @@ export default function ExamAdminClient() {
             options: [...translated.options],
             correctOptionIndex: translated.correctOptionIndex,
             explanation: translated.explanation || '',
+            kind: translated.kind,
+            media: translated.media || null,
           } : question
         }),
       }))
-      setBankLanguage(language)
+      setBankKey(requestedKey)
       setBankLoaded(true)
     } catch (err) {
       if (bankRequestRef.current === requestId) setError(err.message)
     } finally {
       if (bankRequestRef.current === requestId) setBankLoading(false)
     }
-  }, [bankLanguage, bankLoaded])
+  }, [bankKey, bankLoaded])
 
   const stats = useMemo(() => ({
     total: exams.length,
@@ -203,6 +210,7 @@ export default function ExamAdminClient() {
   const bankTopicGroups = useMemo(() => {
     const groups = new Map()
     for (const question of questionBank) {
+      if (bankFach !== 'all' && question.fachId !== bankFach) continue
       const groupTitle = question.parentTopic || 'موضوعات اصلی'
       if (!groups.has(groupTitle)) groups.set(groupTitle, new Map())
       groups.get(groupTitle).set(question.themaId, question.topic)
@@ -215,16 +223,27 @@ export default function ExamAdminClient() {
           .sort((a, b) => a.title.localeCompare(b.title, 'fa')),
       }))
       .sort((a, b) => a.label.localeCompare(b.label, 'fa'))
+  }, [bankFach, questionBank])
+
+  const bankFachOptions = useMemo(() => {
+    const areas = new Map()
+    for (const question of questionBank) {
+      if (!areas.has(question.fachId)) areas.set(question.fachId, question.fach || question.fachId)
+    }
+    return [...areas.entries()]
+      .map(([id, title]) => ({ id, title }))
+      .sort((a, b) => a.title.localeCompare(b.title, 'fa'))
   }, [questionBank])
 
   const filteredBank = useMemo(() => {
     const query = bankSearch.trim().toLocaleLowerCase('fa')
     const matches = questionBank.filter(question => (
       (bankTopic === 'all' || question.themaId === bankTopic)
+      && (bankFach === 'all' || question.fachId === bankFach)
       && (!query || `${question.prompt} ${question.topicPath || question.topic}`.toLocaleLowerCase('fa').includes(query))
     ))
     return { total: matches.length, items: matches.slice(0, 60) }
-  }, [bankSearch, bankTopic, questionBank])
+  }, [bankFach, bankSearch, bankTopic, questionBank])
 
   function setField(field, value) {
     setForm(current => ({ ...current, [field]: value }))
@@ -256,15 +275,27 @@ export default function ExamAdminClient() {
     setView('create')
     setCreatedLink('')
     setError('')
-    loadQuestionBank(form.language)
+    loadQuestionBank(form.language, bankType)
   }
 
   function changeLanguage(language) {
     setField('language', language)
     setSelectedBankIds([])
+    setBankFach('all')
     setBankTopic('all')
     setBankLoaded(false)
-    loadQuestionBank(language)
+    loadQuestionBank(language, bankType)
+  }
+
+  function changeBankType(type) {
+    if (type === bankType) return
+    setBankType(type)
+    setSelectedBankIds([])
+    setBankFach('all')
+    setBankTopic('all')
+    setBankSearch('')
+    setBankLoaded(false)
+    loadQuestionBank(form.language, type)
   }
 
   function toggleBankQuestion(questionId) {
@@ -288,6 +319,8 @@ export default function ExamAdminClient() {
           correctOptionIndex: question.correctOptionIndex,
           points: question.points,
           explanation: question.explanation || '',
+          kind: question.kind,
+          media: question.media || null,
         }))
       const currentQuestions = current.questions.length === 1 && isBlankQuestion(current.questions[0])
         ? []
@@ -496,32 +529,63 @@ export default function ExamAdminClient() {
 
             <section className={styles.formSection}>
               <div className={styles.bankHeader}>
-                <div><h3>انتخاب از بانک سؤال رادیار</h3><p>سؤال‌های موجود را جست‌وجو و به امتحان اضافه کنید؛ یا پایین‌تر سؤال جدید بسازید.</p></div>
+                <div><h3>انتخاب از بانک سؤال رادیار</h3><p>نوع سؤال، ناحیه بدن و موضوع را انتخاب کنید؛ سپس سؤال‌های موردنظر را به امتحان اضافه کنید.</p></div>
                 <span>{questionBank.length.toLocaleString('fa-IR')} سؤال موجود</span>
               </div>
-              <div className={styles.bankToolbar}>
-                <label><span>جست‌وجوی سؤال</span><input type="search" value={bankSearch} onChange={event => setBankSearch(event.target.value)} placeholder="مثلاً MRI، خونریزی یا منیسک…" /></label>
-                <label><span>موضوع</span><select value={bankTopic} onChange={event => setBankTopic(event.target.value)}><option value="all">همه موضوع‌ها</option>{bankTopicGroups.map(group => <optgroup label={group.label} key={group.label}>{group.topics.map(topic => <option value={topic.id} key={topic.id}>{topic.title}</option>)}</optgroup>)}</select></label>
-              </div>
-              {bankLoading ? <div className={styles.bankEmpty}>در حال بارگذاری بانک سؤال…</div> : questionBank.length === 0 ? (
-                <div className={styles.bankEmpty}>سؤالی در بانک پیدا نشد؛ می‌توانید سؤال جدید را به‌صورت دستی بسازید.</div>
-              ) : (
-                <>
-                  <div className={styles.bankList}>
-                    {filteredBank.items.map(question => {
-                      const checked = selectedBankIds.includes(question.id)
-                      return <label className={checked ? styles.bankItemSelected : styles.bankItem} key={question.id}>
-                        <input type="checkbox" checked={checked} onChange={() => toggleBankQuestion(question.id)} />
-                        <span><strong>{question.prompt}</strong><small>{question.topicPath || question.topic} · {question.options.join(' / ')}</small></span>
-                      </label>
-                    })}
+              <div className={styles.bankWorkspace}>
+                <aside className={styles.bankFilters}>
+                  <div className={styles.bankStep}><span>۱</span><strong>نوع سؤال</strong></div>
+                  <div className={styles.bankTypeSwitch}>
+                    <button type="button" className={bankType === 'mcq' ? styles.bankTypeActive : styles.bankType} onClick={() => changeBankType('mcq')}><b>MCQ</b><small>سؤال چهارگزینه‌ای</small></button>
+                    <button type="button" className={bankType === 'case' ? styles.bankTypeActive : styles.bankType} onClick={() => changeBankType('case')}><b>Prüfungsfall</b><small>کیس تصویربرداری</small></button>
                   </div>
+
+                  <div className={styles.bankStep}><span>۲</span><strong>ناحیه بدن</strong></div>
+                  <div className={styles.bankFachGrid}>
+                    <button type="button" className={bankFach === 'all' ? styles.bankFachActive : styles.bankFach} onClick={() => { setBankFach('all'); setBankTopic('all') }}><span className={styles.allAreasIcon}>＋</span><strong>همه</strong></button>
+                    {bankFachOptions.map(area => <button type="button" className={bankFach === area.id ? styles.bankFachActive : styles.bankFach} onClick={() => { setBankFach(area.id); setBankTopic('all') }} key={area.id}><Image src={`/fach/${area.id}.png`} alt="" width={38} height={38} /><strong>{area.title}</strong></button>)}
+                  </div>
+
+                  <div className={styles.bankStep}><span>۳</span><strong>موضوعات</strong></div>
+                  <div className={styles.bankTopicList}>
+                    <button type="button" className={bankTopic === 'all' ? styles.bankTopicActive : styles.bankTopic} onClick={() => setBankTopic('all')}><span>همه موضوع‌ها</span><small>{questionBank.filter(question => bankFach === 'all' || question.fachId === bankFach).length.toLocaleString('fa-IR')}</small></button>
+                    {bankTopicGroups.map(group => (
+                      <div className={styles.bankTopicGroup} key={group.label}>
+                        <strong>{group.label}</strong>
+                        {group.topics.map(topic => {
+                          const count = questionBank.filter(question => question.themaId === topic.id && (bankFach === 'all' || question.fachId === bankFach)).length
+                          return <button type="button" className={bankTopic === topic.id ? styles.bankTopicActive : styles.bankTopic} onClick={() => setBankTopic(topic.id)} key={topic.id}><span>{topic.title}</span><small>{count.toLocaleString('fa-IR')}</small></button>
+                        })}
+                      </div>
+                    ))}
+                  </div>
+                </aside>
+
+                <div className={styles.bankResults}>
+                  <label className={styles.bankSearch}><span>جست‌وجوی سؤال</span><input type="search" value={bankSearch} onChange={event => setBankSearch(event.target.value)} placeholder="جست‌وجو در متن سؤال، موضوع یا ناحیه…" /></label>
+                  <div className={styles.bankResultMeta}><strong>{selectedBankIds.length.toLocaleString('fa-IR')} سؤال انتخاب شده</strong><span>{filteredBank.total.toLocaleString('fa-IR')} نتیجه{filteredBank.total > 60 ? ' · ۶۰ مورد اول نمایش داده شده' : ''}</span></div>
+                  {bankLoading ? <div className={styles.bankEmpty}>در حال بارگذاری بانک سؤال…</div> : questionBank.length === 0 ? (
+                    <div className={styles.bankEmpty}>سؤالی در این بانک پیدا نشد؛ می‌توانید سؤال جدید را به‌صورت دستی بسازید.</div>
+                  ) : filteredBank.items.length === 0 ? (
+                    <div className={styles.bankEmpty}>برای این ناحیه و موضوع سؤالی پیدا نشد.</div>
+                  ) : (
+                    <div className={styles.bankList}>
+                      {filteredBank.items.map(question => {
+                        const checked = selectedBankIds.includes(question.id)
+                        return <label className={checked ? styles.bankItemSelected : styles.bankItem} key={question.id}>
+                          <input type="checkbox" checked={checked} onChange={() => toggleBankQuestion(question.id)} />
+                          {question.preview ? <Image className={styles.bankPreview} src={question.preview} alt="" width={96} height={72} /> : null}
+                          <span><strong>{question.prompt}</strong><small>{question.fach} · {question.topicPath || question.topic}</small></span>
+                        </label>
+                      })}
+                    </div>
+                  )}
                   <div className={styles.bankActions}>
-                    <span>{filteredBank.total.toLocaleString('fa-IR')} نتیجه{filteredBank.total > 60 ? ' · ۶۰ مورد اول نمایش داده شده' : ''}</span>
-                    <button type="button" onClick={addSelectedBankQuestions} disabled={!selectedBankIds.length}>افزودن {selectedBankIds.length.toLocaleString('fa-IR')} سؤال انتخاب‌شده</button>
+                    <span>{selectedBankIds.length ? `${selectedBankIds.length.toLocaleString('fa-IR')} سؤال آماده افزودن است` : 'سؤال‌های موردنظر را انتخاب کنید'}</span>
+                    <button type="button" onClick={addSelectedBankQuestions} disabled={!selectedBankIds.length}>＋ افزودن {selectedBankIds.length.toLocaleString('fa-IR')} سؤال انتخاب‌شده</button>
                   </div>
-                </>
-              )}
+                </div>
+              </div>
             </section>
 
             <section className={styles.formSection}>
@@ -535,6 +599,7 @@ export default function ExamAdminClient() {
                     </div>
                     {question.sourceId ? (
                       <div className={styles.importedQuestion} dir={form.language === 'fa' ? 'rtl' : 'ltr'}>
+                        {getExamMediaPreview(question.media) ? <Image className={styles.importedMedia} src={getExamMediaPreview(question.media)} alt="" width={220} height={150} /> : null}
                         <strong>{question.prompt}</strong>
                         <div>{question.options.map((option, optionIndex) => <span className={question.correctOptionIndex === optionIndex ? styles.importedCorrect : ''} key={optionIndex}><b>{String.fromCharCode(65 + optionIndex)}</b>{option}{question.correctOptionIndex === optionIndex ? <i>✓</i> : null}</span>)}</div>
                         {question.explanation ? <p>{question.explanation}</p> : null}

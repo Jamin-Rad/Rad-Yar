@@ -1,12 +1,13 @@
 'use client'
 
 import { Suspense, useMemo, useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { getCases } from '@/data/cases'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { getWrongAnswerExplanation } from '@/utils/answerFeedback'
+import { caseToExamMedia } from '@/utils/examMedia'
+import MedicalSequenceViewer from '@/components/MedicalSequenceViewer'
 import quizStyles from '@/app/ueben/quiz/page.module.css'
 import styles from './page.module.css'
 
@@ -95,42 +96,6 @@ function resultColor(score, total) {
   return '#ef4444'
 }
 
-function ExamSequenceViewer({ sequence, plane }) {
-  const [frameIndex, setFrameIndex] = useState(Math.min(sequence.initialFrame || 0, sequence.frames.length - 1))
-  const move = direction => setFrameIndex(index => Math.min(sequence.frames.length - 1, Math.max(0, index + direction)))
-
-  return (
-    <div
-      className={styles.sequenceViewer}
-      tabIndex={0}
-      onWheel={event => {
-        event.preventDefault()
-        move(event.deltaY > 0 ? 1 : -1)
-      }}
-      onKeyDown={event => {
-        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') move(1)
-        if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') move(-1)
-      }}
-    >
-      <Image src={sequence.frames[frameIndex]} alt="" width={442} height={442} priority className={styles.caseImage} />
-      <div className={styles.sequenceControls}>
-        <button type="button" onClick={() => move(-1)} disabled={frameIndex === 0} aria-label="Previous image">‹</button>
-        <input
-          type="range"
-          min="0"
-          max={sequence.frames.length - 1}
-          value={frameIndex}
-          onChange={event => setFrameIndex(Number(event.target.value))}
-          aria-label={`${frameIndex + 1}/${sequence.frames.length}`}
-        />
-        <button type="button" onClick={() => move(1)} disabled={frameIndex === sequence.frames.length - 1} aria-label="Next image">›</button>
-      </div>
-      <span className={styles.sequenceCounter}>{frameIndex + 1}/{sequence.frames.length}</span>
-      <span className={styles.plane}>{plane}</span>
-    </div>
-  )
-}
-
 function CaseExamContent() {
   const { lang } = useLanguage()
   const searchParams = useSearchParams()
@@ -154,6 +119,7 @@ function CaseExamContent() {
 
   const total = cases.length
   const item = cases[current]
+  const itemMedia = useMemo(() => caseToExamMedia(item), [item])
   const isLast = current === total - 1
   const score = answers.filter(answer => answer.correct).length
   const progress = total ? ((current + (checked ? 1 : 0)) / total) * 100 : 0
@@ -258,45 +224,30 @@ function CaseExamContent() {
   const wrongExplanation = getWrongAnswerExplanation(item, selected, lang)
 
   return (
-    <main className={quizStyles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
-      <div className={quizStyles.topBar}>
+    <main className={`${quizStyles.page} ${styles.page}`} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
+      <div className={`${quizStyles.topBar} ${styles.topBar}`}>
         <Link href="/faelle" className={quizStyles.back}>{ui.back}</Link>
-        <span className={quizStyles.topFach}>{regionLabel}</span>
-        <div className={quizStyles.progressWrap}>
+        <div className={`${quizStyles.progressWrap} ${styles.topProgress}`}>
           <div className={quizStyles.progressTrack}>
             <div className={quizStyles.progressFill} style={{ width: `${progress}%` }} />
           </div>
-          <span className={quizStyles.progressLabel}>{current + 1}/{total}</span>
+          <span className={quizStyles.progressLabel}>{ui.caseOf(current + 1, total)}</span>
         </div>
+        <span className={styles.topScore}>{ui.score}: {score}/{total}</span>
       </div>
 
-      <div className={`${quizStyles.quizLayout} ${styles.examLayout}`}>
-        <article className={`${quizStyles.quizCard} ${styles.caseCard}`}>
-          <div className={quizStyles.qNum}>{ui.caseOf(current + 1, total)}</div>
-          <div className={styles.caseGrid}>
-            <div className={`${styles.imagePanel} ${item.images?.length ? styles.imagePanelSeries : ''}`}>
-              {item.sequence?.frames?.length ? (
-                <ExamSequenceViewer key={item.id} sequence={item.sequence} plane={item.plane} />
-              ) : item.images?.length ? (
-                <div className={styles.phaseGrid}>
-                  {item.images.map((image, index) => (
-                    <figure key={image.src} className={styles.phaseFigure}>
-                      <Image src={image.src} alt="" width={442} height={324} priority={index === 0} className={styles.caseImage} />
-                      <figcaption>{image.label}</figcaption>
-                    </figure>
-                  ))}
-                </div>
-              ) : (
-                <Image src={item.image} alt="" width={920} height={690} priority className={styles.caseImage} />
-              )}
-              {!item.sequence?.frames?.length && <span className={styles.plane}>{item.plane}</span>}
-            </div>
-            <div className={styles.caseIntro}>
-              <p>{item.prompt || item.vignette}</p>
-            </div>
+      <div className={styles.examLayout}>
+        <section className={styles.viewerColumn} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
+          <div className={styles.viewerHeading}>
+            <div><span>{ui.caseOf(current + 1, total)}</span><h1>{item.title}</h1></div>
+            <small>{item.modality} · {regionLabel}</small>
           </div>
+          <MedicalSequenceViewer key={item.id} media={itemMedia} language={lang} priority />
+        </section>
 
-          {!item.prompt && <h2 className={`${quizStyles.qText} ${styles.question}`}>{item.question}</h2>}
+        <article className={styles.questionPanel} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
+          <div className={styles.caseIntro}><p>{item.vignette}</p></div>
+          <h2 className={styles.question}>{item.question}</h2>
           <div className={quizStyles.options}>
             {item.options.map(option => {
               let className = quizStyles.option
@@ -333,10 +284,6 @@ function CaseExamContent() {
                   <div className={quizStyles.fbText}>{wrongExplanation}</div>
                 </div>
               )}
-              <div className={styles.sourceRow}>
-                <span>{item.credit}</span>
-                <a href={item.source} target="_blank" rel="noopener noreferrer">{ui.source} ↗</a>
-              </div>
             </div>
           )}
 
@@ -355,29 +302,19 @@ function CaseExamContent() {
               </button>
             )}
           </div>
-        </article>
-
-        <aside className={quizStyles.tracker}>
-          <div className={quizStyles.trackerTitle}>{ui.score}</div>
-          <div className={quizStyles.trackerDots}>
-            {cases.map((caseItem, index) => {
-              const answer = answers.find(entry => entry.caseId === caseItem.id)
-              const stateClass = index === current
-                ? quizStyles.dotCur
-                : answer?.correct
-                  ? quizStyles.dotOk
-                  : answer
-                    ? quizStyles.dotErr
-                    : ''
-              return <span key={caseItem.id} className={`${quizStyles.dot} ${stateClass}`}>{index + 1}</span>
-            })}
-          </div>
-          <div className={quizStyles.trackerScore}>
+          <div className={styles.scoreStrip}>
+            <strong>{ui.score}</strong>
+            <div className={styles.caseDots}>
+              {cases.map((caseItem, index) => {
+                const answer = answers.find(entry => entry.caseId === caseItem.id)
+                return <span key={caseItem.id} className={index === current ? styles.caseDotCurrent : answer?.correct ? styles.caseDotCorrect : answer ? styles.caseDotWrong : styles.caseDot}>{index + 1}</span>
+              })}
+            </div>
             <span className={styles.scoreCorrect}>{answers.filter(answer => answer.correct).length}</span>
             <span className={styles.scoreDivider}> / </span>
             <span className={styles.scoreWrong}>{answers.filter(answer => !answer.correct).length}</span>
           </div>
-        </aside>
+        </article>
       </div>
     </main>
   )

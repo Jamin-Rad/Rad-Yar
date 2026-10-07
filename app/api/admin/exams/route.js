@@ -2,7 +2,10 @@ import crypto from 'crypto'
 import { NextResponse } from 'next/server'
 import { requireAdmin } from '@/lib/adminAuth'
 import { MCQ_TOPIC_GROUPS, QUESTION_BANK } from '@/data/questions'
-import { EXAM_LANGUAGES, validateExamInput } from '@/lib/exams'
+import { CASE_BANK } from '@/data/cases'
+import { CURRICULUM } from '@/data/curriculum'
+import { EXAM_LANGUAGES, packExamQuestionExplanation, unpackExamQuestionExplanation, validateExamInput } from '@/lib/exams'
+import { caseToExamMedia, getExamMediaPreview } from '@/utils/examMedia'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 
 export const runtime = 'nodejs'
@@ -37,6 +40,32 @@ function canonicalQuestionId(id) {
   return String(id).replace(/-(?:fa|en)-/, '-de-')
 }
 
+function getCurriculumLookup(language) {
+  const fachById = new Map()
+  const topicById = new Map()
+  for (const fach of CURRICULUM) {
+    const fachTitle = localizedText(fach.title, language) || fach.id
+    fachById.set(fach.id, fachTitle)
+    for (const chapter of fach.kapitel || []) {
+      const chapterTitle = localizedText(chapter.title, language) || chapter.id
+      for (const topic of chapter.themen || []) {
+        const topicTitle = localizedText(topic.title, language) || topic.id
+        topicById.set(topic.id, { fachId: fach.id, fachTitle, chapterId: chapter.id, chapterTitle, topicTitle })
+        for (const subtopic of topic.sub || []) {
+          topicById.set(subtopic.id, {
+            fachId: fach.id,
+            fachTitle,
+            chapterId: chapter.id,
+            chapterTitle,
+            topicTitle: localizedText(subtopic.title, language) || subtopic.id,
+          })
+        }
+      }
+    }
+  }
+  return { fachById, topicById }
+}
+
 function addRanks(attempts) {
   let previousPercentage = null
   let currentRank = 0
@@ -49,12 +78,13 @@ function addRanks(attempts) {
 }
 
 function getQuestionBank(language) {
+  const { fachById } = getCurriculumLookup(language)
   const topicById = new Map()
   for (const group of MCQ_TOPIC_GROUPS) {
     const parentTopic = localizedText(group.title, language)
     for (const topic of group.topics) {
       const topicTitle = localizedText(topic.title, language)
-      topicById.set(topic.id, { parentTopic, topicTitle })
+      topicById.set(topic.id, { parentTopic, topicTitle, fachId: group.fachId, chapterId: group.kapitelId })
     }
   }
 
@@ -71,6 +101,10 @@ function getQuestionBank(language) {
     const parentTopic = topic?.parentTopic || item.fach || ''
     return [{
       id: canonicalQuestionId(item.id),
+      kind: 'mcq',
+      fachId: topic?.fachId || item.fach || 'other',
+      fach: fachById.get(topic?.fachId || item.fach) || item.fach || '',
+      chapterId: topic?.chapterId || '',
       themaId: topicId,
       topic: topicTitle,
       parentTopic,
@@ -80,6 +114,46 @@ function getQuestionBank(language) {
       correctOptionIndex,
       points: 1,
       explanation: localizedText(item.explanation, language),
+      media: null,
+      preview: '',
+    }]
+  })
+
+  return { questions }
+}
+
+function getCaseBank(language) {
+  const { fachById, topicById } = getCurriculumLookup(language)
+  const source = CASE_BANK[language] || CASE_BANK.de
+  const questions = source.flatMap(item => {
+    const rawOptions = Array.isArray(item.options) ? item.options : []
+    const correctOptionIndex = rawOptions.findIndex(option => option?.id === item.correct)
+    if (rawOptions.length !== 4 || rawOptions.some(option => !option?.text) || correctOptionIndex < 0) return []
+
+    const topic = topicById.get(item.topicId)
+    const topicTitle = topic?.topicTitle || item.topicId
+    const parentTopic = topic?.chapterTitle || item.kapitelId || fachById.get(item.fachId) || item.fachId
+    const media = caseToExamMedia(item)
+    const prompt = item.prompt || [item.vignette, item.question].filter(Boolean).join('\n\n')
+    if (!prompt) return []
+
+    return [{
+      id: `case-${item.id}`,
+      kind: 'case',
+      fachId: item.fachId || topic?.fachId || 'other',
+      fach: fachById.get(item.fachId || topic?.fachId) || item.fachId || '',
+      chapterId: item.kapitelId || topic?.chapterId || '',
+      themaId: item.topicId || 'other',
+      topic: topicTitle,
+      parentTopic,
+      topicPath: parentTopic ? `${parentTopic} — ${topicTitle}` : topicTitle,
+      prompt,
+      options: rawOptions.map(option => option.text),
+      correctOptionIndex,
+      points: 1,
+      explanation: localizedText(item.explanation, language),
+      media,
+      preview: getExamMediaPreview(media),
     }]
   })
 
@@ -94,7 +168,8 @@ export async function GET(request) {
   if (url.searchParams.get('resource') === 'question-bank') {
     const requestedLanguage = url.searchParams.get('language')
     const language = EXAM_LANGUAGES.includes(requestedLanguage) ? requestedLanguage : 'fa'
-    const result = getQuestionBank(language)
+    const type = url.searchParams.get('type') === 'case' ? 'case' : 'mcq'
+    const result = type === 'case' ? getCaseBank(language) : getQuestionBank(language)
     return NextResponse.json(result)
   }
   if (!isSupabaseAdminConfigured || !supabaseAdmin) return unavailable()
@@ -116,7 +191,10 @@ export async function GET(request) {
 
     return NextResponse.json({
       exam: examResult.data,
-      questions: questionResult.data || [],
+      questions: (questionResult.data || []).map(question => {
+        const unpacked = unpackExamQuestionExplanation(question.explanation)
+        return { ...question, explanation: unpacked.explanation, media: unpacked.media }
+      }),
       attempts: addRanks(attemptResult.data || []),
     })
   }
@@ -189,7 +267,7 @@ export async function POST(request) {
     options: question.options,
     correct_option_index: question.correctOptionIndex,
     points: question.points,
-    explanation: question.explanation,
+    explanation: packExamQuestionExplanation(question.explanation, question.media),
     position: question.position,
   }))
   const { error: questionsError } = await supabaseAdmin.from('exam_questions').insert(questionRows)

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { gradeExam } from '@/lib/exams'
+import { gradeExam, unpackExamQuestionExplanation } from '@/lib/exams'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 
 const CODE_PATTERN = /^[A-Za-z0-9_-]{8,40}$/
@@ -58,7 +58,7 @@ async function loadPublishedExam(code, includeAnswers = false) {
 
   const fields = includeAnswers
     ? 'id,prompt,options,correct_option_index,explanation,points,position'
-    : 'id,prompt,options,points,position'
+    : 'id,prompt,options,explanation,points,position'
   const { data: questions, error: questionsError } = await supabaseAdmin
     .from('exam_questions')
     .select(fields)
@@ -66,7 +66,13 @@ async function loadPublishedExam(code, includeAnswers = false) {
     .order('position')
 
   if (questionsError) return { error: questionsError }
-  return { exam, questions: questions || [] }
+  return {
+    exam,
+    questions: (questions || []).map(question => {
+      const unpacked = unpackExamQuestionExplanation(question.explanation)
+      return { ...question, explanation: unpacked.explanation, media: unpacked.media }
+    }),
+  }
 }
 
 export async function GET(_request, { params }) {
@@ -82,7 +88,10 @@ export async function GET(_request, { params }) {
   if (result.notFound) return NextResponse.json({ error: 'این آزمون فعال نیست.' }, { status: 404 })
   if (result.unavailable) return NextResponse.json({ error: result.unavailable }, { status: 409 })
 
-  return NextResponse.json({ exam: result.exam, questions: result.questions })
+  return NextResponse.json({
+    exam: result.exam,
+    questions: result.questions.map(({ explanation: _explanation, ...question }) => question),
+  })
 }
 
 export async function POST(request, { params }) {
@@ -166,6 +175,7 @@ export async function POST(request, { params }) {
     selectedOptionIndex: graded.answers[question.id],
     correctOptionIndex: Number(question.correct_option_index),
     explanation: question.explanation || '',
+    media: question.media || null,
   }))
 
   return NextResponse.json({

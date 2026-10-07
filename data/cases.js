@@ -1,5 +1,31 @@
 import { ICB_PRUEFUNG_CASES } from './icb'
 
+const HAEMANGIOMA_SERIES_LABELS = {
+  de: ['T2 · axial', 'Kontrastmittel · venös · axial'],
+  en: ['T2 · axial', 'Post-contrast · venous · axial'],
+  fa: ['T2 · اکسیال', 'پس از کنتراست · وریدی · اکسیال'],
+}
+
+function haemangiomaMriSeries(lang) {
+  const labels = HAEMANGIOMA_SERIES_LABELS[lang] || HAEMANGIOMA_SERIES_LABELS.de
+  return [
+    {
+      id: 't2-axial',
+      label: labels[0],
+      plane: labels[0],
+      frames: Array.from({ length: 24 }, (_, index) => `/haemangiom/case-209408-sequence/${String(index + 1).padStart(2, '0')}.jpeg`),
+      initialFrame: 14,
+    },
+    {
+      id: 'venous-axial',
+      label: labels[1],
+      plane: labels[1],
+      frames: Array.from({ length: 92 }, (_, index) => `/haemangiom/case-209408-venous-sequence/${String(index + 1).padStart(2, '0')}.jpeg`),
+      initialFrame: 58,
+    },
+  ]
+}
+
 function locCase(item, lang) {
   function t(val) { return (val && typeof val === 'object' && !Array.isArray(val)) ? (val[lang] || val.de) : val }
   return {
@@ -191,10 +217,7 @@ export const CASE_BANK = {
       kapitelId: 'abdomen-leber',
       topicId: 'haemangiom',
       image: '/haemangiom/case-209408-mri.jpg',
-      sequence: {
-        frames: Array.from({ length: 24 }, (_, index) => `/haemangiom/case-209408-sequence/${String(index + 1).padStart(2, '0')}.jpeg`),
-        initialFrame: 14,
-      },
+      series: haemangiomaMriSeries('de'),
       modality: 'MRT',
       plane: 'MRT · T2 · axial',
       title: 'Hepatisches Hämangiom in Segment V',
@@ -416,10 +439,7 @@ export const CASE_BANK = {
     {
       id: 'hepatic-haemangioma-mri-209408', fachId: 'abdomen', kapitelId: 'abdomen-leber', topicId: 'haemangiom',
       image: '/haemangiom/case-209408-mri.jpg',
-      sequence: {
-        frames: Array.from({ length: 24 }, (_, index) => `/haemangiom/case-209408-sequence/${String(index + 1).padStart(2, '0')}.jpeg`),
-        initialFrame: 14,
-      },
+      series: haemangiomaMriSeries('en'),
       modality: 'MRT', plane: 'MRI · T2 · axial',
       title: 'Hepatic haemangioma in segment V',
       vignette: 'A focal lesion in the right hepatic lobe was incidentally detected on ultrasound in a 35-year-old woman. MRI is performed for further characterisation.',
@@ -634,10 +654,7 @@ export const CASE_BANK = {
     {
       id: 'hepatic-haemangioma-mri-209408', fachId: 'abdomen', kapitelId: 'abdomen-leber', topicId: 'haemangiom',
       image: '/haemangiom/case-209408-mri.jpg',
-      sequence: {
-        frames: Array.from({ length: 24 }, (_, index) => `/haemangiom/case-209408-sequence/${String(index + 1).padStart(2, '0')}.jpeg`),
-        initialFrame: 14,
-      },
+      series: haemangiomaMriSeries('fa'),
       modality: 'MRT', plane: 'MRI · T2 · اکسیال',
       title: 'همانژیوم کبدی در سگمان V',
       vignette: 'در سونوگرافی یک خانم ۳۵ ساله، یک ضایعه فوکال در لوب راست کبد به‌صورت اتفاقی کشف شد. برای بررسی بیشتر MRI انجام می‌شود.',

@@ -1,0 +1,68 @@
+.viewer {
+  --viewer-accent: #1596f5;
+  overflow: hidden;
+  border: 1px solid #20324a;
+  border-radius: 16px;
+  background: #071522;
+  color: #f8fafc;
+  box-shadow: 0 22px 56px rgba(2, 12, 27, .16);
+}
+
+.seriesBar { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-bottom: 1px solid rgba(148,163,184,.18); }
+.seriesBar > span { flex: 0 0 auto; color: #b8c5d6; font-size: 12px; font-weight: 700; }
+.seriesBar > div { display: flex; min-width: 0; flex: 1; gap: 8px; overflow-x: auto; scrollbar-width: thin; }
+.seriesButton, .seriesActive { min-height: 38px; padding: 0 18px; border: 1px solid #3c5068; border-radius: 10px; background: #102235; color: #d7e1ed; cursor: pointer; font: 700 12px/1 var(--font-manrope), Vazirmatn, sans-serif; white-space: nowrap; transition: .18s ease; }
+.seriesButton:hover { border-color: #7290ad; background: #142a41; }
+.seriesActive { border-color: var(--viewer-accent); background: #0f6fb8; color: #fff; box-shadow: 0 0 0 2px rgba(21,150,245,.14); }
+
+.viewport { position: relative; min-height: 520px; outline: none; background: #01060b; }
+.viewport:focus-visible { box-shadow: inset 0 0 0 3px var(--viewer-accent); }
+.image { object-fit: contain; }
+.overlayTop { position: absolute; inset: 14px 16px auto; z-index: 2; display: flex; justify-content: space-between; gap: 18px; pointer-events: none; color: #eef5fb; font-size: 11px; text-shadow: 0 1px 4px #000; }
+.overlayTop strong { font-weight: 800; }
+.frameArrow { position: absolute; z-index: 3; top: 50%; display: grid; width: 42px; height: 42px; place-items: center; transform: translateY(-50%); border: 1px solid rgba(255,255,255,.18); border-radius: 50%; background: rgba(10,27,43,.82); color: #fff; cursor: pointer; backdrop-filter: blur(8px); }
+.frameArrow svg { width: 20px; height: 20px; }
+.frameArrow:disabled { opacity: .28; cursor: default; }
+.previousArrow { left: 14px; }
+.nextArrow { right: 14px; }
+.wheelHint { position: absolute; z-index: 2; right: 16px; bottom: 14px; padding: 6px 9px; border-radius: 8px; background: rgba(3,12,21,.78); color: #c7d4e2; font-size: 10px; font-weight: 700; pointer-events: none; }
+
+.filmstrip { display: flex; justify-content: center; gap: 7px; padding: 12px 14px 4px; overflow-x: auto; }
+.thumbnail, .thumbnailActive { position: relative; width: 76px; height: 62px; flex: 0 0 76px; overflow: hidden; border: 1px solid #263c54; border-radius: 8px; background: #020914; cursor: pointer; }
+.thumbnailActive { border: 2px solid var(--viewer-accent); box-shadow: 0 0 0 2px rgba(21,150,245,.16); }
+.thumbnail img, .thumbnailActive img { object-fit: cover; }
+.thumbnail span, .thumbnailActive span { position: absolute; z-index: 1; right: 4px; bottom: 3px; min-width: 19px; padding: 2px 4px; border-radius: 5px; background: rgba(2,8,15,.82); color: #fff; font: 700 9px var(--font-manrope), sans-serif; }
+
+.scrubber { display: grid; grid-template-columns: auto minmax(120px, 1fr) auto auto; gap: 10px; align-items: center; padding: 12px 18px 14px; color: #9fb0c3; font: 700 10px var(--font-manrope), Vazirmatn, sans-serif; }
+.scrubber input { width: 100%; accent-color: var(--viewer-accent); cursor: pointer; }
+.scrubber strong { min-width: 88px; color: #e6edf5; text-align: end; }
+.credit { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 11px 18px 13px; border-top: 1px solid rgba(148,163,184,.15); color: #8496aa; font-size: 9px; line-height: 1.5; }
+.credit a { flex: 0 0 auto; color: #bdcada; font-weight: 700; text-decoration: none; }
+.credit a:hover { color: #fff; }
+
+.compact { border-radius: 13px; box-shadow: none; }
+.compact .seriesBar { padding: 11px 12px; }
+.compact .viewport { min-height: 330px; }
+.compact .scrubber { padding: 10px 12px; }
+.compact .credit { padding-inline: 12px; }
+
+@media (max-width: 900px) {
+  .viewport { min-height: min(68vw, 560px); }
+}
+
+@media (max-width: 600px) {
+  .seriesBar { align-items: stretch; flex-direction: column; padding: 12px; }
+  .seriesBar > div { padding-bottom: 3px; }
+  .seriesButton, .seriesActive { min-height: 36px; padding: 0 14px; font-size: 11px; }
+  .viewport, .compact .viewport { min-height: 72vw; }
+  .filmstrip { justify-content: flex-start; }
+  .thumbnail, .thumbnailActive { width: 64px; height: 52px; flex-basis: 64px; }
+  .scrubber { grid-template-columns: auto minmax(80px, 1fr) auto; }
+  .scrubber strong { grid-column: 1 / -1; min-width: 0; text-align: center; }
+  .credit { align-items: flex-start; flex-direction: column; }
+  .wheelHint { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seriesButton, .seriesActive { transition: none; }
+}

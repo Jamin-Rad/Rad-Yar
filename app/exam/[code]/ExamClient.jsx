@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useTheme } from '@/providers/ThemeProvider'
 import RadYarIcon from '@/components/RadYarIcon'
+import MedicalSequenceViewer from '@/components/MedicalSequenceViewer'
 import { getCorrectAnswerExplanation, getWrongAnswerExplanation } from '@/utils/answerFeedback'
 import styles from './page.module.css'
 
@@ -356,6 +357,7 @@ export default function ExamClient({ code }) {
               </div>
 
               <article className={styles.reviewQuestion} key={reviewItem.id}>
+                {reviewItem.media ? <div className={styles.questionMedia}><MedicalSequenceViewer media={reviewItem.media} language={language} compact /></div> : null}
                 <div className={styles.reviewQuestionHeader}><span>{Number(safeReviewIndex + 1).toLocaleString(copy.locale)}</span><h2>{reviewItem.prompt}</h2></div>
                 <div className={styles.reviewOptions}>
                   {reviewItem.options.map((option, optionIndex) => {
@@ -427,6 +429,7 @@ export default function ExamClient({ code }) {
         <div className={styles.examLayout}>
           <section className={styles.questionCard}>
             <div className={styles.questionNumber}>{copy.questionOf(Number(current + 1).toLocaleString(copy.locale), questions.length.toLocaleString(copy.locale))}</div>
+            {question.media ? <div className={styles.questionMedia}><MedicalSequenceViewer media={question.media} language={language} compact priority /></div> : null}
             <h2>{question.prompt}</h2>
             <div className={styles.options}>
               {question.options.map((option, index) => (
