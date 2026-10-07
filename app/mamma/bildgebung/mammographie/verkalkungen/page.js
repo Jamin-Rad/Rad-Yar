@@ -1,16 +1,13 @@
 'use client'
-import {createContext,useContext,useEffect,useMemo,useState} from 'react'
+import {useMemo,useState} from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import {useLanguage} from '@/providers/LanguageProvider'
-import {usePersistedSectionProgress} from '@/hooks/usePersistedSectionProgress'
-import template from '@/app/andarun/test/page.module.css'
+import StandardLessonShell,{LessonSection,LessonSources,TakeHomeList} from '@/components/lesson-template/StandardLessonShell'
 import styles from './page.module.css'
 import caseStyles from './case.module.css'
 import {COPY,DISTRIBUTION,GERMAN_SECTIONS,L,MORPH,pick} from './content'
 import {translateLesson} from './translations'
 const ID='mammographie-mikrokalk',PATH='/mamma/bildgebung/mammographie/verkalkungen'
-const SECTION_IDS=GERMAN_SECTIONS.map(section=>section.id)
 const TEMPLATE_COPY={
   path:L('Lernpfad','Learning path','مسیر یادگیری'),
   close:L('Schließen','Close','بستن'),
@@ -22,8 +19,8 @@ const TEMPLATE_COPY={
   completed:L('Als gelesen markiert','Marked as read','به‌عنوان خوانده‌شده علامت‌گذاری شد'),
   open:L('Abschnitt öffnen','Open section','باز کردن بخش'),
   mcq:L('MCQ starten','Start MCQs','شروع MCQ'),
+  takeHome:L('Take Home Message','Take Home Message','Take Home Message'),
 }
-const LessonTemplateContext=createContext(null)
 const MORPHOLOGY_IMAGES={
   round:{src:'/mamma/mammographie/verkalkungen/morphology/round.png',width:309,height:895,alt:L('Runde, scharf begrenzte Verkalkungen mit Vergrößerung','Round, well-defined calcifications with magnified view','کلسیفیکاسیون‌های گرد و با حدود مشخص همراه با نمای بزرگ‌نمایی‌شده')},
   amorph:{src:'/mamma/mammographie/verkalkungen/morphology/amorphous.png',width:307,height:1024,alt:L('Amorphe, unscharf begrenzte Verkalkungen mit Vergrößerung','Amorphous, indistinct calcifications with magnified view','کلسیفیکاسیون‌های آمورف و نامشخص همراه با نمای بزرگ‌نمایی‌شده')},
@@ -125,7 +122,7 @@ const REFERENCES=[
     href:'https://pubmed.ncbi.nlm.nih.gov/33618160/',
   },
 ]
-function Section({id,title,children}){const context=useContext(LessonTemplateContext);if(!context)return null;const{lang,openId,readSections,selectSection,toggleSectionRead}=context,open=openId===id,isRead=readSections.has(id),tx=value=>typeof value==='string'?value:value[lang]||value.de;return <section id={id} className={`${template.section} ${open?template.sectionOpen:''} ${styles.templateSection}`}><button type="button" className={template.sectionHeader} onClick={()=>selectSection(id)} aria-expanded={open} aria-controls={`${id}-panel`}><span className={template.sectionIcon}><SectionIcon id={id}/></span><span><strong>{title}</strong></span><span className={template.toggle} aria-hidden="true">{open?'−':'+'}</span></button><div id={`${id}-panel`} hidden={!open} className={`${template.sectionBody} ${styles.sectionBody} ${styles.templateSectionBody}`}>{children}<button type="button" className={`${template.readButton} ${styles.sectionReadButton} ${isRead?template.readButtonDone:''}`} aria-pressed={isRead} onClick={()=>toggleSectionRead(id)}><SectionIcon id="benigne"/>{tx(isRead?TEMPLATE_COPY.completed:TEMPLATE_COPY.complete)}</button></div></section>}
+function Section({id,title,children}){return <LessonSection id={id} title={title} icon={id} bodyClassName={`${styles.sectionBody} ${styles.templateSectionBody}`}>{children}</LessonSection>}
 function MorphologyImage({type,lang='de'}){const image=MORPHOLOGY_IMAGES[type];return <a className={caseStyles.morphologyIllustration} href={image.src} target="_blank" rel="noreferrer" aria-label={pick(image.alt,lang)}><Image src={image.src} alt={pick(image.alt,lang)} width={image.width} height={image.height}/></a>}
 function DistributionImage({type,lang='de'}){const image=DISTRIBUTION_IMAGES[type];return <a className={caseStyles.distributionIllustration} href={image.src} target="_blank" rel="noreferrer" aria-label={pick(image.alt,lang)}><Image src={image.src} alt={pick(image.alt,lang)} width={image.width} height={image.height}/></a>}
 function KalkAssessment({lang}){
@@ -366,141 +363,83 @@ function LessonContent({lang}){const t=value=>translateLesson(value,lang);return
   </Section>
 
   <Section {...GERMAN_SECTIONS[8]} title={t(GERMAN_SECTIONS[8].label.de)}>
-    <ol className={caseStyles.takeHomeScan}>
-      <li><span className={caseStyles.takeHomeNumber}>01</span><div><h3>{pick(L("Systematisch beurteilen","Assess systematically","ارزیابی سیستماتیک"),lang)}</h3><p>{t("Vier Merkmale systematisch beurteilen: Partikelgröße, Morphologie, Verteilung und Gesamtausdehnung. Die Größe allein beweist weder Benignität noch Malignität.")}</p></div></li>
-      <li><span className={caseStyles.takeHomeNumber}>02</span><div><h3>{pick(L("Kalkdetails erkennen","Identify calcification details","تشخیص جزئیات کلسیفیکاسیون"),lang)}</h3><p>{t("2D-Vergrößerungsaufnahmen zeigen die Kalkdetails; DBT ergänzt den räumlichen Kontext. Typisch benigne Formen wie Popcorn-, Rim-, sekretorische und Layering-Verkalkungen sicher erkennen.")}</p></div></li>
-      <li><span className={caseStyles.takeHomeNumber}>03</span><div><h3>{pick(L("Morphologie × Verteilung","Morphology × distribution","مورفولوژی × توزیع"),lang)}</h3><p>{t("Morphologie und Verteilung gemeinsam bewerten: Fein pleomorpher oder fein linearer/verzweigter Kalk in linearer oder segmentaler Anordnung ist besonders suspekt.")}</p></div></li>
-      <li><span className={caseStyles.takeHomeNumber}>04</span><div><h3>{pick(L("Stabilität","Stability","پایداری"),lang)}</h3><p>{t("Auch langfristige Stabilität schließt DCIS bei suspekter Morphologie nicht aus.")}</p></div></li>
-      <li><span className={caseStyles.takeHomeNumber}>05</span><div><h3>{pick(L("Duktaler Prozess","Ductal process","فرایند مجرایی"),lang)}</h3><p>{t("Suspekter Mikrokalk kann DCIS oder ein invasives Karzinom mit intraduktaler Komponente begleiten. Das Bild beweist keine bestimmte Histologie.")}</p></div></li>
-      <li><span className={caseStyles.takeHomeNumber}>06</span><div><h3>{pick(L("Ultraschall & MRT","Ultrasound & MRI","سونوگرافی و MRI"),lang)}</h3><p>{t("Ultraschall hilft bei Korrelatsuche und Biopsieplanung; MRT ergänzt Gewebe- und Ausdehnungsbeurteilung. Eine negative MRT schließt DCIS nicht vollständig aus.")}</p></div></li>
-      <li><span className={caseStyles.takeHomeNumber}>07</span><div><h3>{pick(L("Individuelle Entscheidung","Individual decision","تصمیم‌گیری فردی"),lang)}</h3><p>{t("Bei ausgewählten niedrig suspekten Fällen kann ein MRT-gestützter Biopsieverzicht individuell erwogen werden.")}</p></div></li>
-    </ol>
-    <aside className={caseStyles.referenceLibrary} aria-labelledby="verkalkungen-literatur">
-      <header className={caseStyles.referenceHeader}>
-        <span>{pick(L('Evidenzbasis','Evidence base','پایه شواهد'),lang)}</span>
-        <div>
-          <h3 id="verkalkungen-literatur">{pick(L('Literatur & Leitlinien','Literature & guidelines','منابع و راهنماها'),lang)}</h3>
-          <p>{pick(L('Ausgewählte Quellen zu Terminologie, Risikostratifikation, Biopsie und ergänzender MRT.','Selected sources on terminology, risk stratification, biopsy, and supplemental MRI.','منابع منتخب درباره اصطلاحات، طبقه‌بندی خطر، بیوپسی و MRI تکمیلی.'),lang)}</p>
-        </div>
-      </header>
-      <ol className={caseStyles.referenceList}>
-        {REFERENCES.map((reference,index)=><li key={reference.href}>
-          <span className={caseStyles.referenceNumber}>{String(index+1).padStart(2,'0')}</span>
-          <div>
-            <small>{pick(reference.tag,lang)}</small>
-            <a href={reference.href} target="_blank" rel="noreferrer">{reference.title}<span aria-hidden="true">↗</span></a>
-            <p>{reference.citation}</p>
-            <em>{pick(reference.scope,lang)}</em>
-          </div>
-        </li>)}
-      </ol>
-      <p className={caseStyles.referenceNote}>{pick(L('Zuletzt fachlich geprüft: September 2026 · Die Literatur ergänzt die lokale klinische Leitlinie und ersetzt keine individuelle Befundentscheidung.','Last clinically reviewed: September 2026 · These references complement local clinical guidelines and do not replace individualized assessment.','آخرین بازبینی علمی: سپتامبر ۲۰۲۶ · این منابع مکمل راهنمای بالینی محلی هستند و جایگزین تصمیم‌گیری فردی نمی‌شوند.'),lang)}</p>
-    </aside>
+    <TakeHomeList items={[
+      {title:pick(L("Systematisch beurteilen","Assess systematically","ارزیابی سیستماتیک"),lang),detail:t("Vier Merkmale systematisch beurteilen: Partikelgröße, Morphologie, Verteilung und Gesamtausdehnung. Die Größe allein beweist weder Benignität noch Malignität.")},
+      {title:pick(L("Kalkdetails erkennen","Identify calcification details","تشخیص جزئیات کلسیفیکاسیون"),lang),detail:t("2D-Vergrößerungsaufnahmen zeigen die Kalkdetails; DBT ergänzt den räumlichen Kontext. Typisch benigne Formen wie Popcorn-, Rim-, sekretorische und Layering-Verkalkungen sicher erkennen.")},
+      {title:pick(L("Morphologie × Verteilung","Morphology × distribution","مورفولوژی × توزیع"),lang),detail:t("Morphologie und Verteilung gemeinsam bewerten: Fein pleomorpher oder fein linearer/verzweigter Kalk in linearer oder segmentaler Anordnung ist besonders suspekt.")},
+      {title:pick(L("Stabilität","Stability","پایداری"),lang),detail:t("Auch langfristige Stabilität schließt DCIS bei suspekter Morphologie nicht aus.")},
+      {title:pick(L("Duktaler Prozess","Ductal process","فرایند مجرایی"),lang),detail:t("Suspekter Mikrokalk kann DCIS oder ein invasives Karzinom mit intraduktaler Komponente begleiten. Das Bild beweist keine bestimmte Histologie.")},
+      {title:pick(L("Ultraschall & MRT","Ultrasound & MRI","سونوگرافی و MRI"),lang),detail:t("Ultraschall hilft bei Korrelatsuche und Biopsieplanung; MRT ergänzt Gewebe- und Ausdehnungsbeurteilung. Eine negative MRT schließt DCIS nicht vollständig aus.")},
+      {title:pick(L("Individuelle Entscheidung","Individual decision","تصمیم‌گیری فردی"),lang),detail:t("Bei ausgewählten niedrig suspekten Fällen kann ein MRT-gestützter Biopsieverzicht individuell erwogen werden.")},
+    ]}/>
   </Section>
 </>}
-function MobileLearningPath({lang,openId,readSections,onSelect,sections}){
-  const tx=value=>typeof value==='string'?value:value[lang]||value.de
-  const[panelOpen,setPanelOpen]=useState(false)
-  const activeSection=sections.find(section=>section.id===openId)||sections[0]
-  const progress=(readSections.size/sections.length)*360
-  const label=section=>translateLesson(section.label.de,lang)
-  const selectFromPanel=id=>{onSelect(id);setPanelOpen(false)}
-  return <div className={template.mobileLearningPath}>
-    {panelOpen&&<section id="verkalkungen-mobile-learning-path-panel" className={template.mobilePathPanel} role="dialog" aria-label={tx(TEMPLATE_COPY.path)}>
-      <header><div><small>{tx(TEMPLATE_COPY.progress)}</small><strong>{readSections.size} / {sections.length}</strong></div><button type="button" onClick={()=>setPanelOpen(false)} aria-label={tx(TEMPLATE_COPY.close)}>×</button></header>
-      <nav>{sections.map(section=><button type="button" key={section.id} className={openId===section.id?template.mobilePathCurrent:''} onClick={()=>selectFromPanel(section.id)} aria-current={openId===section.id?'location':undefined}>
-        <span className={template.mobilePathItemIcon}><SectionIcon id={section.id}/></span>
-        <span><strong>{label(section)}</strong><small>{label(section)}</small></span>
-        <i aria-hidden="true">{readSections.has(section.id)?'✓':''}</i>
-      </button>)}</nav>
-    </section>}
-    <button type="button" className={template.mobilePathButton} onClick={()=>setPanelOpen(value=>!value)} aria-expanded={panelOpen} aria-controls="verkalkungen-mobile-learning-path-panel">
-      <span className={template.mobileProgressRing} style={{'--mobile-progress':`${progress}deg`}}><b>{readSections.size}</b><small>/{sections.length}</small></span>
-      <span className={template.mobileCurrentIcon}><SectionIcon id={activeSection.id}/></span>
-      <span className={template.mobilePathLabel}><strong>{tx(TEMPLATE_COPY.path)}</strong><small>{label(activeSection)}</small></span>
-    </button>
-  </div>
-}
 
 export default function Page(){
   const{lang}=useLanguage()
   const tx=value=>pick(value,lang)
-  const lessonSections=GERMAN_SECTIONS
-  const[openId,setOpenId]=useState(lessonSections[0].id)
-  const[readSections,setReadSections]=usePersistedSectionProgress(ID,SECTION_IDS)
-  const activeIndex=useMemo(()=>lessonSections.findIndex(section=>section.id===openId),[lessonSections,openId])
   const withLang=href=>lang==='de'?href:`${href}${href.includes('?')?'&':'?'}lang=${lang}`
-  const label=section=>translateLesson(section.label.de,lang)
-
-  useEffect(()=>{
-    const hash=window.location.hash.slice(1)
-    if(lessonSections.some(section=>section.id===hash))setOpenId(hash)
-  },[lessonSections])
-
-  const selectSection=id=>{
-    const nextId=openId===id?null:id
-    setOpenId(nextId)
-    const baseUrl=`${window.location.pathname}${window.location.search}`
-    window.history.replaceState(null,'',nextId?`${baseUrl}#${nextId}`:baseUrl)
-    if(nextId)requestAnimationFrame(()=>document.getElementById(nextId)?.scrollIntoView({behavior:'smooth',block:'start'}))
-  }
-
-  const advance=()=>{
-    const nextIndex=activeIndex<0?0:Math.min(activeIndex+1,lessonSections.length-1)
-    selectSection(lessonSections[nextIndex].id)
-  }
-
-  const toggleSectionRead=id=>setReadSections(previous=>{
-    const next=new Set(previous)
-    if(next.has(id))next.delete(id)
-    else next.add(id)
-    return next
-  })
-  const lessonComplete=readSections.size===lessonSections.length
-  const toggleLessonComplete=()=>setReadSections(lessonComplete?new Set():new Set(lessonSections.map(section=>section.id)))
-
-  const context={lang,openId,readSections,selectSection,toggleSectionRead}
-  const facts=[
-    [L('Morphologie','Morphology','مورفولوژی'),L('Form der Kalkpartikel','Shape of calcification particles','شکل ذرات کلسیفیکاسیون'),'morphologie'],
-    [L('Verteilung','Distribution','توزیع'),L('Muster in der Brust','Pattern within the breast','الگوی توزیع در پستان'),'verteilung'],
-    ['BI-RADS',L('Gesamtbefund einordnen','Classify the complete finding','طبقه‌بندی یافته کلی'),'kombination'],
+  const lessonSections=useMemo(()=>GERMAN_SECTIONS.map((section,index)=>({
+    ...section,
+    label:translateLesson(section.label.de,lang),
+    icon:section.id,
+    emphasis:index===GERMAN_SECTIONS.length-1,
+  })),[lang])
+  const labels=useMemo(()=>({
+    contents:tx(COPY.contents),
+    path:tx(TEMPLATE_COPY.path),
+    close:tx(TEMPLATE_COPY.close),
+    progress:tx(TEMPLATE_COPY.progress),
+    continue:tx(TEMPLATE_COPY.continue),
+    completeLesson:tx(TEMPLATE_COPY.completeLesson),
+    lessonCompleted:tx(TEMPLATE_COPY.lessonCompleted),
+    complete:tx(TEMPLATE_COPY.complete),
+    completed:tx(TEMPLATE_COPY.completed),
+    open:tx(TEMPLATE_COPY.open),
+    takeHome:tx(TEMPLATE_COPY.takeHome),
+  }),[lang])
+  const breadcrumbs=[
+    {label:'RadYar',href:withLang('/')},
+    {label:tx(COPY.mamma),href:withLang('/lernen/mamma')},
+    {label:tx(COPY.mammography)},
+    {label:tx(COPY.title)},
   ]
+  const actions={
+    mcq:{label:tx(TEMPLATE_COPY.mcq),href:withLang(`/ueben/quiz?fach=mamma&n=10&themen=${ID}&from=${encodeURIComponent(withLang(PATH))}`),trailingIcon:'arrow'},
+    flashcards:{label:tx(COPY.flashcards),href:withLang(`/flashcards/${ID}?from=${encodeURIComponent(withLang(PATH))}`)},
+  }
+  const references=REFERENCES.map(reference=>({
+    ...reference,
+    tag:pick(reference.tag,lang),
+    scope:pick(reference.scope,lang),
+  }))
 
-  return <main className={`${template.page} ${styles.templatePage} ${lang==='fa'?styles.rtl:''}`} data-lesson-progress-managed="true" dir={lang==='fa'?'rtl':'ltr'} lang={lang}>
-    <header className={template.header}>
-      <div className={template.topline}>
-        <nav className={template.breadcrumb} aria-label={tx(COPY.contents)}><Link href={withLang('/')}>RadYar</Link><span>/</span><Link href={withLang('/lernen/mamma')}>{tx(COPY.mamma)}</Link><span>/</span><span>{tx(COPY.mammography)}</span><span>/</span><strong>{tx(COPY.title)}</strong></nav>
-        <span className={template.author}>Dr. Zia</span>
-      </div>
-      <div className={template.hero}>
-        <div className={template.heroCopy}>
-          <h1>{tx(COPY.title)}</h1>
-          <div className={template.actions}>
-            <Link className={template.primaryAction} href={withLang(`/ueben/quiz?fach=mamma&n=10&themen=${ID}&from=${encodeURIComponent(withLang(PATH))}`)}>{tx(TEMPLATE_COPY.mcq)}<span aria-hidden="true">→</span></Link>
-            <Link className={template.secondaryAction} href={withLang(`/flashcards/${ID}?from=${encodeURIComponent(withLang(PATH))}`)}><SectionIcon id="algorithmus"/>{tx(COPY.flashcards)}</Link>
-          </div>
-        </div>
-        <div className={template.heroFacts}>{facts.map(([value,description,icon])=><article key={tx(value)}><span className={template.factIcon}><SectionIcon id={icon}/></span><strong>{tx(value)}</strong><p>{tx(description)}</p></article>)}</div>
-      </div>
-      <div className={template.progressBar}>
-        <div className={template.progressTrack}><i style={{width:`${(readSections.size/lessonSections.length)*100}%`}}/></div>
-        <span>{readSections.size} / {lessonSections.length} {tx(TEMPLATE_COPY.progress)}</span>
-        <div className={template.progressActions}>
-          <button type="button" className={`${template.lessonCompleteButton} ${lessonComplete?template.lessonCompleteButtonDone:''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><SectionIcon id="benigne"/>{tx(lessonComplete?TEMPLATE_COPY.lessonCompleted:TEMPLATE_COPY.completeLesson)}</button>
-          <button type="button" className={template.continueButton} onClick={advance} disabled={activeIndex===lessonSections.length-1}>{tx(TEMPLATE_COPY.continue)}<span aria-hidden="true">→</span></button>
-        </div>
-      </div>
-    </header>
-
-    <div className={template.layout}>
-      <aside className={template.sidebar}>
-        <h2>{tx(TEMPLATE_COPY.path)}</h2>
-        <nav>{lessonSections.map(section=><button type="button" key={section.id} className={openId===section.id?template.activeSideItem:''} onClick={()=>selectSection(section.id)} aria-current={openId===section.id?'location':undefined} aria-label={`${tx(TEMPLATE_COPY.open)}: ${label(section)}`}><span className={template.sideIcon}><SectionIcon id={section.id}/></span><strong>{label(section)}</strong></button>)}</nav>
-      </aside>
-      <article className={template.lesson}>
-        <LessonTemplateContext.Provider value={context}><LessonContent lang={lang}/></LessonTemplateContext.Provider>
-      </article>
-    </div>
-    <MobileLearningPath lang={lang} openId={openId} readSections={readSections} onSelect={selectSection} sections={lessonSections}/>
-  </main>
+  return <StandardLessonShell
+    lessonId={ID}
+    lang={lang}
+    title={tx(COPY.title)}
+    author="Dr. Zia"
+    breadcrumbs={breadcrumbs}
+    sections={lessonSections}
+    labels={labels}
+    actions={actions}
+    renderIcon={id=><SectionIcon id={id}/>}
+    theme={{
+      backgroundImage:'/mamma/mammographie/verkalkungen/verkalkungen-background-v3.png',
+      accent:'#e45a88',
+      accentStrong:'#7a2348',
+      accentSoft:'#f4dce6',
+      secondary:'#73c5cf',
+      secondaryStrong:'#257985',
+      heroBase:'#0c0b13',
+    }}
+    className={lang==='fa'?styles.rtl:''}
+    sources={<LessonSources
+      title={pick(L('Quellen','Sources','منابع'),lang)}
+      items={references}
+      note={pick(L('Zuletzt fachlich geprüft: September 2026 · Die Literatur ergänzt die lokale klinische Leitlinie und ersetzt keine individuelle Befundentscheidung.','Last clinically reviewed: September 2026 · These references complement local clinical guidelines and do not replace individualized assessment.','آخرین بازبینی علمی: سپتامبر ۲۰۲۶ · این منابع مکمل راهنمای بالینی محلی هستند و جایگزین تصمیم‌گیری فردی نمی‌شوند.'),lang)}
+    />}
+  >
+    <LessonContent lang={lang}/>
+  </StandardLessonShell>
 }

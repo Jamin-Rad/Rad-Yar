@@ -1,4 +1,4 @@
-import { Fraunces, Manrope } from 'next/font/google'
+import { Fraunces, Inter, Manrope, Newsreader } from 'next/font/google'
 import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
 import { ThemeProvider } from '@/providers/ThemeProvider'
@@ -21,6 +21,19 @@ const manrope = Manrope({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700', '800'],
   variable: '--font-manrope',
+})
+
+const newsreader = Newsreader({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-newsreader',
+  style: ['normal', 'italic'],
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-inter',
 })
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
@@ -100,7 +113,7 @@ export default function RootLayout({ children }) {
             }}
           />
         </head>
-        <body className={`${fraunces.variable} ${manrope.variable}`}>
+        <body className={`${fraunces.variable} ${manrope.variable} ${newsreader.variable} ${inter.variable}`}>
           <ThemeProvider>
             <LanguageProvider>
               <ActivityTracker />

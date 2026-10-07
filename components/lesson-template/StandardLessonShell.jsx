@@ -1,0 +1,219 @@
+'use client'
+
+import Link from 'next/link'
+import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
+import styles from './StandardLessonShell.module.css'
+
+const LessonShellContext = createContext(null)
+
+function Icon({ name }) {
+  const paths = {
+    summary: 'M12 3l1.8 4.8L19 9.5l-4.1 3.2L16.2 18 12 15l-4.2 3 1.3-5.3L5 9.5l5.2-1.7z',
+    quiz: 'M5 4h14v16H5z M9 9.2a3 3 0 1 1 4.4 2.65c-.9.5-1.4 1-1.4 2 M12 17h.01',
+    cards: 'M7 5h12v14H7z M5 8H3v12h12v-2 M10 9h6 M10 12h6',
+    check: 'M4 12.5l5 5L20 6.5',
+    arrow: 'M5 12h14 M14 7l5 5-5 5',
+    down: 'M12 5v14 M7 14l5 5 5-5',
+    external: 'M14 4h6v6 M20 4l-9 9 M18 14v6H4V6h6',
+    chevron: 'M7 9l5 5 5-5',
+    close: 'M6 6l12 12 M18 6L6 18',
+  }
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d={paths[name]} /></svg>
+}
+
+function Action({ action, className, icon }) {
+  if (!action) return null
+  const content = <><Icon name={icon} /><span>{action.label}</span>{action.trailingIcon ? <Icon name={action.trailingIcon} /> : null}</>
+  if (action.href) return <Link className={className} href={action.href}>{content}</Link>
+  return <button type="button" className={className} onClick={action.onClick} aria-disabled={action.disabled || undefined} disabled={action.nativeDisabled}>{content}</button>
+}
+
+function MobileLearningPath() {
+  const context = useContext(LessonShellContext)
+  const [panelOpen, setPanelOpen] = useState(false)
+  if (!context) return null
+
+  const { labels, openId, readSections, trackedSections, openSection, renderIcon } = context
+  const activeSection = trackedSections.find(section => section.id === openId) || trackedSections[0]
+  const progress = trackedSections.length ? (readSections.size / trackedSections.length) * 360 : 0
+  const selectFromPanel = id => {
+    openSection(id)
+    setPanelOpen(false)
+  }
+
+  return <div className={styles.mobileLearningPath}>
+    {panelOpen ? <section id="standard-mobile-learning-path-panel" className={styles.mobilePathPanel} role="dialog" aria-label={labels.path}>
+      <header><div><small>{labels.progress}</small><strong>{readSections.size} / {trackedSections.length}</strong></div><button type="button" onClick={() => setPanelOpen(false)} aria-label={labels.close}><Icon name="close" /></button></header>
+      <nav>{trackedSections.map(section => <button type="button" key={section.id} className={openId === section.id ? styles.mobilePathCurrent : ''} onClick={() => selectFromPanel(section.id)} aria-current={openId === section.id ? 'location' : undefined}>
+        <span className={styles.mobilePathItemIcon}>{renderIcon(section.icon || section.id)}</span>
+        <span><strong>{section.label}</strong></span>
+        <i aria-hidden="true">{readSections.has(section.id) ? '✓' : ''}</i>
+      </button>)}</nav>
+    </section> : null}
+    <button type="button" className={styles.mobilePathButton} onClick={() => setPanelOpen(value => !value)} aria-expanded={panelOpen} aria-controls="standard-mobile-learning-path-panel">
+      <span className={styles.mobileProgressRing} style={{ '--mobile-progress': `${progress}deg` }}><b>{readSections.size}</b><small>/{trackedSections.length}</small></span>
+      <span className={styles.mobileCurrentIcon}>{renderIcon(activeSection?.icon || activeSection?.id)}</span>
+      <span className={styles.mobilePathLabel}><strong>{labels.path}</strong><small>{activeSection?.label}</small></span>
+    </button>
+  </div>
+}
+
+export function LessonSection({ id, title, icon, children, bodyClassName = '' }) {
+  const context = useContext(LessonShellContext)
+  if (!context) throw new Error('LessonSection must be rendered inside StandardLessonShell')
+
+  const { labels, openId, openSection, readSections, toggleSectionRead, sections, renderIcon } = context
+  const section = sections.find(item => item.id === id)
+  const emphasis = Boolean(section?.emphasis)
+  const open = openId === id
+  const isRead = readSections.has(id)
+
+  return <section id={id} className={`${styles.section} ${open ? styles.sectionOpen : ''} ${emphasis ? styles.takeHomeSection : ''}`}>
+    <button type="button" className={styles.sectionHeader} onClick={() => openSection(id, { toggle: true })} aria-expanded={open} aria-controls={`${id}-panel`}>
+      <span className={styles.sectionIcon}>{renderIcon(icon || section?.icon || id)}</span>
+      <span><strong>{title || section?.label}</strong></span>
+      <span className={`${styles.toggle} ${open ? styles.toggleOpen : ''}`} aria-hidden="true"><Icon name="chevron" /></span>
+    </button>
+    <div id={`${id}-panel`} hidden={!open} className={`${styles.sectionBody} ${bodyClassName}`}>
+      {children}
+      {!emphasis ? <button type="button" className={`${styles.readButton} ${isRead ? styles.readButtonDone : ''}`} aria-pressed={isRead} onClick={() => toggleSectionRead(id)}><Icon name="check" />{isRead ? labels.completed : labels.complete}</button> : null}
+    </div>
+  </section>
+}
+
+export function TakeHomeList({ items }) {
+  const [openItems, setOpenItems] = useState(() => new Set())
+  const toggle = index => setOpenItems(previous => {
+    const next = new Set(previous)
+    if (next.has(index)) next.delete(index)
+    else next.add(index)
+    return next
+  })
+
+  return <ol className={styles.takeHomeList}>{items.map((item, index) => {
+    const open = openItems.has(index)
+    return <li key={`${index}-${item.title}`} className={open ? styles.takeHomeItemOpen : ''}>
+      <button type="button" onClick={() => toggle(index)} aria-expanded={open} aria-controls={`take-home-detail-${index}`}>
+        <span className={styles.takeHomeNumber}>{String(index + 1).padStart(2, '0')}</span>
+        <strong>{item.title}</strong>
+        <span className={`${styles.takeHomeChevron} ${open ? styles.takeHomeChevronOpen : ''}`}><Icon name="chevron" /></span>
+      </button>
+      <div id={`take-home-detail-${index}`} className={styles.takeHomeDetail} hidden={!open}><p>{item.detail}</p></div>
+    </li>
+  })}</ol>
+}
+
+export function LessonSources({ title, items, note }) {
+  const [open, setOpen] = useState(false)
+  return <aside className={styles.sources}>
+    <button type="button" className={styles.sourcesToggle} onClick={() => setOpen(value => !value)} aria-expanded={open} aria-controls="lesson-sources-panel"><span>{title}</span><span className={open ? styles.sourcesChevronOpen : ''}><Icon name="chevron" /></span></button>
+    <div id="lesson-sources-panel" className={styles.sourcesPanel} hidden={!open}>
+      <ol>{items.map((item, index) => <li key={item.href}>
+        <span className={styles.sourceNumber}>{String(index + 1).padStart(2, '0')}</span>
+        <div><small>{item.tag}</small><a href={item.href} target="_blank" rel="noreferrer"><strong>{item.title}</strong><Icon name="external" /></a><p>{item.citation}</p>{item.scope ? <em>{item.scope}</em> : null}</div>
+      </li>)}</ol>
+      {note ? <p className={styles.sourcesNote}>{note}</p> : null}
+    </div>
+  </aside>
+}
+
+export default function StandardLessonShell({
+  lessonId,
+  lang,
+  title,
+  author,
+  breadcrumbs,
+  sections,
+  labels,
+  actions,
+  renderIcon,
+  theme,
+  className = '',
+  children,
+  sources,
+}) {
+  const trackedSections = useMemo(() => sections.filter(section => !section.emphasis), [sections])
+  const trackedIds = useMemo(() => trackedSections.map(section => section.id), [trackedSections])
+  const [openId, setOpenId] = useState(trackedSections[0]?.id || sections[0]?.id || null)
+  const [readSections, setReadSections] = usePersistedSectionProgress(lessonId, trackedIds)
+  const activeIndex = trackedSections.findIndex(section => section.id === openId)
+
+  useEffect(() => {
+    const hash = window.location.hash.slice(1)
+    if (sections.some(section => section.id === hash)) setOpenId(hash)
+  }, [sections])
+
+  const openSection = (id, options = {}) => {
+    const nextId = options.toggle && openId === id ? null : id
+    setOpenId(nextId)
+    const baseUrl = `${window.location.pathname}${window.location.search}`
+    window.history.replaceState(null, '', nextId ? `${baseUrl}#${nextId}` : baseUrl)
+    if (nextId) requestAnimationFrame(() => document.getElementById(nextId)?.scrollIntoView({ behavior: 'smooth', block: 'start' }))
+  }
+
+  const advance = () => {
+    const nextIndex = activeIndex < 0 ? 0 : Math.min(activeIndex + 1, trackedSections.length - 1)
+    openSection(trackedSections[nextIndex].id)
+  }
+
+  const toggleSectionRead = id => setReadSections(previous => {
+    const next = new Set(previous)
+    if (next.has(id)) next.delete(id)
+    else next.add(id)
+    return next
+  })
+
+  const lessonComplete = trackedIds.length > 0 && readSections.size === trackedIds.length
+  const toggleLessonComplete = () => setReadSections(lessonComplete ? new Set() : new Set(trackedIds))
+  const summarySection = sections.find(section => section.emphasis)
+  const progress = trackedIds.length ? (readSections.size / trackedIds.length) * 100 : 0
+  const context = { labels, openId, openSection, readSections, toggleSectionRead, sections, trackedSections, renderIcon }
+  const shellStyle = {
+    '--lesson-background-image': `url("${theme.backgroundImage}")`,
+    '--lesson-accent': theme.accent,
+    '--lesson-accent-strong': theme.accentStrong,
+    '--lesson-accent-soft': theme.accentSoft,
+    '--lesson-secondary': theme.secondary,
+    '--lesson-secondary-strong': theme.secondaryStrong,
+    '--lesson-hero-base': theme.heroBase,
+  }
+
+  const summaryAction = summarySection ? { label: labels.takeHome, onClick: () => openSection(summarySection.id), trailingIcon: 'down' } : null
+  const isAtLastTrackedSection = activeIndex === trackedSections.length - 1
+
+  return <main className={`${styles.page} ${className}`} style={shellStyle} data-lesson-progress-managed="true" dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
+    <header className={styles.header}>
+      <div className={styles.topline}>
+        <nav className={styles.breadcrumb} aria-label={labels.contents}>{breadcrumbs.map((item, index) => <span key={`${item.label}-${index}`}>{index ? <i aria-hidden="true">/</i> : null}{item.href ? <Link href={item.href}>{item.label}</Link> : <strong>{item.label}</strong>}</span>)}</nav>
+        <span className={styles.author}>{author}</span>
+      </div>
+      <div className={styles.hero}><div className={styles.heroCopy}><h1>{title}</h1></div></div>
+      <div className={styles.actions}>
+        <Action action={summaryAction} className={styles.takeHomeJump} icon="summary" />
+        <Action action={actions.mcq} className={styles.primaryAction} icon="quiz" />
+        <Action action={actions.flashcards} className={styles.secondaryAction} icon="cards" />
+      </div>
+      <div className={styles.progressBar}>
+        <div className={styles.progressTrack} role="progressbar" aria-label={labels.progress} aria-valuemin={0} aria-valuemax={trackedIds.length} aria-valuenow={readSections.size}><i style={{ width: `${progress}%` }} /></div>
+        <span>{readSections.size} / {trackedIds.length} {labels.progress}</span>
+        <div className={styles.progressActions}>
+          <button type="button" className={styles.continueButton} onClick={advance} disabled={isAtLastTrackedSection}>{labels.continue}<Icon name="arrow" /></button>
+          <button type="button" className={`${styles.lessonCompleteButton} ${lessonComplete ? styles.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><Icon name="check" />{lessonComplete ? labels.lessonCompleted : labels.completeLesson}</button>
+        </div>
+      </div>
+    </header>
+
+    <div className={styles.layout}>
+      <aside className={styles.sidebar}>
+        <h2>{labels.path}</h2>
+        <nav>{trackedSections.map(section => <button type="button" key={section.id} className={openId === section.id ? styles.activeSideItem : ''} onClick={() => openSection(section.id)} aria-current={openId === section.id ? 'location' : undefined} aria-label={`${labels.open}: ${section.label}`}><span className={styles.sideIcon}>{renderIcon(section.icon || section.id)}</span><strong>{section.label}</strong></button>)}</nav>
+      </aside>
+      <div className={styles.lessonColumn}>
+        <article className={styles.lesson}><LessonShellContext.Provider value={context}>{children}</LessonShellContext.Provider></article>
+        {sources}
+      </div>
+    </div>
+    <LessonShellContext.Provider value={context}><MobileLearningPath /></LessonShellContext.Provider>
+  </main>
+}
