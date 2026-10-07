@@ -104,14 +104,62 @@ const PATTERNS = [
 ]
 
 const TROPONIN_DIFFERENTIALS = [
-  { id: 'mi', title: L('Akuter Myokardinfarkt / MINOCA', 'Acute myocardial infarction / MINOCA', 'انفارکت حاد میوکارد / MINOCA'), description: L('Ischämische Myokardschädigung mit Troponindynamik. MINOCA ist keine Enddiagnose, sondern ein vorläufiger Sammelbegriff, bis die zugrunde liegende Ursache geklärt ist.', 'Ischaemic myocardial injury with a rise and/or fall in troponin. MINOCA is not a final diagnosis but a working diagnosis until the underlying cause is established.', 'آسیب ایسکمیک میوکارد با افزایش و/یا کاهش تروپونین همراه است. MINOCA تشخیص نهایی نیست، بلکه تا زمان مشخص شدن علت زمینه‌ای یک تشخیص اولیه محسوب می‌شود.') },
-  { id: 'myocarditis', title: L('Myokarditis', 'Myocarditis', 'میوکاردیت'), description: L('Entzündliche Myokardschädigung mit Ödem und nichtischämischem LGE-Muster; Perikarderguss oder perikardiales LGE können die Diagnose unterstützen.', 'Inflammatory myocardial injury with oedema and a non-ischaemic LGE pattern; pericardial effusion or pericardial enhancement may support the diagnosis.', 'آسیب التهابی میوکارد با ادم و الگوی LGE غیرایسکمیک؛ افیوژن پریکارد یا enhancement پریکارد می‌تواند تشخیص را تقویت کند.') },
-  { id: 'takotsubo', title: L('Takotsubo-Syndrom', 'Takotsubo syndrome', 'سندروم تاکوتسوبو'), description: L('Vorübergehende regionale LV-Dysfunktion mit apikalem, midventrikulärem, basalem (inversem) oder fokalem Ballooning; typischerweise kein LGE.', 'Transient regional LV dysfunction with apical, mid-ventricular, basal (inverted), or focal ballooning; LGE is typically absent.', 'اختلال گذرای موضعی عملکرد بطن چپ با بالونینگ اپیکال، میدونتریکولار، بازال (معکوس) یا فوکال؛ معمولاً LGE وجود ندارد.') },
-  { id: 'pe', title: L('Lungenarterienembolie', 'Pulmonary embolism', 'آمبولی ریه'), description: L('Akute Rechtsherzbelastung und Hypoxämie können eine sekundäre Myokardschädigung mit Troponinfreisetzung verursachen.', 'Acute right-heart strain and hypoxaemia can cause secondary myocardial injury with troponin release.', 'فشار حاد بر قلب راست و هیپوکسمی می‌توانند باعث آسیب ثانویهٔ میوکارد و آزاد شدن تروپونین شوند.') },
-  { id: 'tachy', title: L('Tachyarrhythmie', 'Tachyarrhythmia', 'تاکی‌آریتمی'), description: L('Hohe Herzfrequenz erhöht den Sauerstoffbedarf und kann ein Missverhältnis von Angebot und Bedarf auslösen.', 'A high heart rate increases oxygen demand and may produce a supply–demand mismatch.', 'ضربان بالای قلب نیاز به اکسیژن را افزایش می‌دهد و می‌تواند باعث عدم تعادل میان عرضه و تقاضای اکسیژن شود.') },
-  { id: 'heart-failure', title: L('Akute Herzinsuffizienz', 'Acute heart failure', 'نارسایی حاد قلبی'), description: L('Wandstress, erhöhte Füllungsdrücke und Minderperfusion können Troponin ohne akuten Typ-1-Infarkt erhöhen.', 'Wall stress, elevated filling pressures, and hypoperfusion can raise troponin without an acute type 1 myocardial infarction.', 'استرس دیواره، افزایش فشارهای پرشدگی و کاهش پرفیوژن می‌توانند بدون انفارکت حاد نوع ۱ باعث افزایش تروپونین شوند.') },
-  { id: 'aorta', title: L('Aortenstenose / -dissektion', 'Aortic stenosis / dissection', 'تنگی / دیسکسیون آئورت'), description: L('Druckbelastung oder akute Koronarmalperfusion kann eine relevante Myokardschädigung hervorrufen.', 'Pressure overload or acute coronary malperfusion may cause clinically relevant myocardial injury.', 'اضافه‌بار فشاری یا اختلال حاد پرفیوژن کرونر می‌تواند آسیب قابل‌توجه میوکارد ایجاد کند.') },
-  { id: 'sarcoid-op', title: L('Kardiale Sarkoidose / Herz-OP', 'Cardiac sarcoidosis / cardiac surgery', 'سارکوئیدوز قلبی / جراحی قلب'), description: L('Granulomatöse Entzündung beziehungsweise perioperative Myokardschädigung kann Troponin freisetzen.', 'Granulomatous inflammation or perioperative myocardial injury may release troponin.', 'التهاب گرانولوماتوز یا آسیب میوکارد در حوالی جراحی می‌تواند موجب آزاد شدن تروپونین شود.') },
+  {
+    id: 'mi',
+    category: L('Ischämisch', 'Ischaemic', 'ایسکمیک'),
+    title: L('Akuter Myokardinfarkt / MINOCA', 'Acute myocardial infarction / MINOCA', 'انفارکت حاد میوکارد / MINOCA'),
+    description: L('Ischämische Myokardschädigung mit Troponindynamik. MINOCA ist keine Enddiagnose, sondern ein vorläufiger Sammelbegriff, bis die zugrunde liegende Ursache geklärt ist.', 'Ischaemic myocardial injury with a rise and/or fall in troponin. MINOCA is not a final diagnosis but a working diagnosis until the underlying cause is established.', 'آسیب ایسکمیک میوکارد با افزایش و/یا کاهش تروپونین همراه است. MINOCA تشخیص نهایی نیست، بلکه تا زمان مشخص شدن علت زمینه‌ای یک تشخیص اولیه محسوب می‌شود.'),
+    cmr: L('Territoriales subendokardiales oder transmurales LGE erkennen und Ödem, mikrovaskuläre Obstruktion sowie Thrombus beurteilen.', 'Identify territorial subendocardial or transmural LGE and assess oedema, microvascular obstruction, and thrombus.', 'LGE ساب‌اندوکاردیال یا ترانس‌مورال قلمرویی را شناسایی و ادم، انسداد میکروواسکولار و ترومبوس را ارزیابی می‌کند.'),
+  },
+  {
+    id: 'myocarditis',
+    category: L('Entzündlich', 'Inflammatory', 'التهابی'),
+    title: L('Myokarditis', 'Myocarditis', 'میوکاردیت'),
+    description: L('Entzündliche Myokardschädigung mit Ödem und nichtischämischem LGE-Muster; Perikarderguss oder perikardiales LGE können die Diagnose unterstützen.', 'Inflammatory myocardial injury with oedema and a non-ischaemic LGE pattern; pericardial effusion or pericardial enhancement may support the diagnosis.', 'آسیب التهابی میوکارد با ادم و الگوی LGE غیرایسکمیک؛ افیوژن پریکارد یا enhancement پریکارد می‌تواند تشخیص را تقویت کند.'),
+    cmr: L('T1-/T2-Mapping und ein subepikardiales oder midmyokardiales LGE-Muster nach den Lake-Louise-Kriterien zusammenführen.', 'Combine T1/T2 mapping with a subepicardial or mid-wall LGE pattern using the Lake Louise criteria.', 'T1/T2 mapping را با الگوی LGE ساب‌اپیکاردیال یا میدوال بر اساس معیارهای Lake Louise ترکیب می‌کند.'),
+  },
+  {
+    id: 'takotsubo',
+    category: L('Stressinduziert', 'Stress-induced', 'ناشی از استرس'),
+    title: L('Takotsubo-Syndrom', 'Takotsubo syndrome', 'سندروم تاکوتسوبو'),
+    description: L('Vorübergehende regionale LV-Dysfunktion mit apikalem, midventrikulärem, basalem oder fokalem Ballooning; typischerweise ohne relevantes LGE.', 'Transient regional LV dysfunction with apical, mid-ventricular, basal, or focal ballooning; typically without relevant LGE.', 'اختلال گذرای موضعی عملکرد بطن چپ با بالونینگ اپیکال، میدونتریکولار، بازال یا فوکال؛ معمولاً بدون LGE قابل‌توجه.'),
+    cmr: L('Das Ballooning im Cine zeigen, begleitendes Ödem erfassen und eine Infarktnarbe oder Myokarditis durch fehlendes typisches LGE abgrenzen.', 'Show ballooning on cine, assess accompanying oedema, and use the absence of typical LGE to distinguish infarction or myocarditis.', 'بالونینگ را در Cine نشان می‌دهد، ادم همراه را بررسی می‌کند و با نبود الگوی تیپیک LGE از انفارکت یا میوکاردیت افتراق می‌دهد.'),
+  },
+  {
+    id: 'pe',
+    category: L('Rechtsherzbelastung', 'Right-heart strain', 'فشار قلب راست'),
+    title: L('Lungenarterienembolie', 'Pulmonary embolism', 'آمبولی ریه'),
+    description: L('Akute Rechtsherzbelastung und Hypoxämie können eine sekundäre Myokardschädigung mit Troponinfreisetzung verursachen.', 'Acute right-heart strain and hypoxaemia can cause secondary myocardial injury with troponin release.', 'فشار حاد بر قلب راست و هیپوکسمی می‌توانند باعث آسیب ثانویهٔ میوکارد و آزاد شدن تروپونین شوند.'),
+    cmr: L('Die CT-Angiografie bleibt im Akutsetting führend. CMR kann im passenden stabilen Setting RV-Funktion und alternative myokardiale Ursachen einordnen.', 'CT angiography remains the acute first-line test. In an appropriate stable setting, CMR can characterise RV function and alternative myocardial causes.', 'CT آنژیوگرافی در فاز حاد روش اصلی است؛ CMR در بیمار پایدار می‌تواند عملکرد RV و علل جایگزین میوکاردی را مشخص کند.'),
+  },
+  {
+    id: 'tachy',
+    category: L('Angebot–Bedarf', 'Supply–demand', 'عرضه–تقاضا'),
+    title: L('Tachyarrhythmie', 'Tachyarrhythmia', 'تاکی‌آریتمی'),
+    description: L('Hohe Herzfrequenz erhöht den Sauerstoffbedarf und kann ein Missverhältnis von Angebot und Bedarf auslösen.', 'A high heart rate increases oxygen demand and may produce a supply–demand mismatch.', 'ضربان بالای قلب نیاز به اکسیژن را افزایش می‌دهد و می‌تواند باعث عدم تعادل میان عرضه و تقاضای اکسیژن شود.'),
+    cmr: L('Ventrikelfunktion und Wandbewegung quantifizieren und mit LGE oder Mapping eine zugrunde liegende Narbe oder Entzündung suchen.', 'Quantify ventricular function and wall motion, then use LGE or mapping to look for underlying scar or inflammation.', 'عملکرد بطن و حرکت دیواره را کمی‌سازی می‌کند و با LGE یا mapping به‌دنبال اسکار یا التهاب زمینه‌ای می‌گردد.'),
+  },
+  {
+    id: 'heart-failure',
+    category: L('Wandstress', 'Wall stress', 'استرس دیواره'),
+    title: L('Akute Herzinsuffizienz', 'Acute heart failure', 'نارسایی حاد قلبی'),
+    description: L('Wandstress, erhöhte Füllungsdrücke und Minderperfusion können Troponin ohne akuten Typ-1-Infarkt erhöhen.', 'Wall stress, elevated filling pressures, and hypoperfusion can raise troponin without an acute type 1 myocardial infarction.', 'استرس دیواره، افزایش فشارهای پرشدگی و کاهش پرفیوژن می‌توانند بدون انفارکت حاد نوع ۱ باعث افزایش تروپونین شوند.'),
+    cmr: L('Volumina und Ejektionsfraktion präzise messen und das LGE-Muster nutzen, um ischämische von nichtischämischen Ursachen zu trennen.', 'Measure volumes and ejection fraction precisely and use the LGE pattern to separate ischaemic from non-ischaemic causes.', 'حجم‌ها و کسر جهشی را دقیق اندازه می‌گیرد و با الگوی LGE علل ایسکمیک را از غیرایسکمیک جدا می‌کند.'),
+  },
+  {
+    id: 'aorta',
+    category: L('Strukturell / vaskulär', 'Structural / vascular', 'ساختاری / عروقی'),
+    title: L('Aortenstenose / -dissektion', 'Aortic stenosis / dissection', 'تنگی / دیسکسیون آئورت'),
+    description: L('Druckbelastung oder akute Koronarmalperfusion kann eine relevante Myokardschädigung hervorrufen.', 'Pressure overload or acute coronary malperfusion may cause clinically relevant myocardial injury.', 'اضافه‌بار فشاری یا اختلال حاد پرفیوژن کرونر می‌تواند آسیب قابل‌توجه میوکارد ایجاد کند.'),
+    cmr: L('Bei akuter Dissektion darf CMR die Notfalldiagnostik nicht verzögern. Im stabilen Verlauf quantifiziert sie Funktion, Fibrose und Fluss.', 'CMR must not delay emergency imaging in acute dissection. In stable follow-up it can quantify function, fibrosis, and flow.', 'در دیسکسیون حاد، CMR نباید تصویربرداری اورژانسی را به تأخیر بیندازد؛ در پیگیری پایدار، عملکرد، فیبروز و جریان را کمی‌سازی می‌کند.'),
+  },
+  {
+    id: 'sarcoid-op',
+    category: L('Entzündlich / iatrogen', 'Inflammatory / iatrogenic', 'التهابی / یاتروژنیک'),
+    title: L('Kardiale Sarkoidose / Herz-OP', 'Cardiac sarcoidosis / cardiac surgery', 'سارکوئیدوز قلبی / جراحی قلب'),
+    description: L('Granulomatöse Entzündung beziehungsweise perioperative Myokardschädigung kann Troponin freisetzen.', 'Granulomatous inflammation or perioperative myocardial injury may release troponin.', 'التهاب گرانولوماتوز یا آسیب میوکارد در حوالی جراحی می‌تواند موجب آزاد شدن تروپونین شود.'),
+    cmr: L('Fleckiges multifokales LGE und Ödem suchen; postoperative Befunde immer mit Eingriff, Zeitpunkt und Koronaranatomie abgleichen.', 'Look for patchy multifocal LGE and oedema; always correlate postoperative findings with the procedure, timing, and coronary anatomy.', 'به‌دنبال LGE لکه‌ای چندکانونی و ادم می‌گردد؛ یافته‌های پس از عمل باید با نوع مداخله، زمان و آناتومی کرونر تطبیق داده شوند.'),
+  },
 ]
 
 const REFERENCES = [
@@ -360,11 +408,74 @@ function TroponinFlowchart({ lang }) {
 function TroponinDifferentials({ lang }) {
   const t = value => pick(value, lang)
   const [selectedId, setSelectedId] = useState(TROPONIN_DIFFERENTIALS[0].id)
+  const tabRefs = useRef([])
   const selected = TROPONIN_DIFFERENTIALS.find(item => item.id === selectedId) || TROPONIN_DIFFERENTIALS[0]
+  const selectedIndex = TROPONIN_DIFFERENTIALS.findIndex(item => item.id === selected.id)
+  const changeSelection = index => {
+    const nextIndex = (index + TROPONIN_DIFFERENTIALS.length) % TROPONIN_DIFFERENTIALS.length
+    setSelectedId(TROPONIN_DIFFERENTIALS[nextIndex].id)
+    tabRefs.current[nextIndex]?.focus()
+  }
+  const handleTabKeyDown = (event, index) => {
+    const nextKeys = ['ArrowDown', 'ArrowRight']
+    const previousKeys = ['ArrowUp', 'ArrowLeft']
+    if (nextKeys.includes(event.key)) {
+      event.preventDefault()
+      changeSelection(index + 1)
+    } else if (previousKeys.includes(event.key)) {
+      event.preventDefault()
+      changeSelection(index - 1)
+    } else if (event.key === 'Home') {
+      event.preventDefault()
+      changeSelection(0)
+    } else if (event.key === 'End') {
+      event.preventDefault()
+      changeSelection(TROPONIN_DIFFERENTIALS.length - 1)
+    }
+  }
   return <section className={styles.troponinDifferentials} aria-labelledby="troponin-dd-title">
-    <header><h3 id="troponin-dd-title">{t(L('Differenzialdiagnosen des Troponinanstiegs', 'Differential diagnoses of troponin elevation', 'تشخیص‌های افتراقی افزایش تروپونین'))}</h3></header>
-    <div className={styles.differentialTabs} role="tablist" aria-label={t(L('Differenzialdiagnose auswählen', 'Select differential diagnosis', 'انتخاب تشخیص افتراقی'))}>{TROPONIN_DIFFERENTIALS.map((item, index) => <button key={item.id} type="button" role="tab" aria-selected={selectedId === item.id} className={selectedId === item.id ? styles.differentialTabActive : ''} onMouseEnter={() => setSelectedId(item.id)} onFocus={() => setSelectedId(item.id)} onClick={() => setSelectedId(item.id)}><span>{String(index + 1).padStart(2, '0')}</span><strong>{t(item.title)}</strong></button>)}</div>
-    <article className={styles.differentialDetail} role="tabpanel" aria-live="polite"><small>{t(L('Warum steigt Troponin?', 'Why does troponin rise?', 'چرا تروپونین افزایش می‌یابد؟'))}</small><strong>{t(selected.title)}</strong><p>{t(selected.description)}</p></article>
+    <header>
+      <small>{t(L('Vom Laborwert zur Ursache', 'From laboratory value to cause', 'از عدد آزمایش تا علت'))}</small>
+      <h3 id="troponin-dd-title">{t(L('Differenzialdiagnosen des Troponinanstiegs', 'Differential diagnoses of troponin elevation', 'تشخیص‌های افتراقی افزایش تروپونین'))}</h3>
+      <p>{t(L('Wähle eine Ursache. Rechts siehst du den Mechanismus und den konkreten Beitrag der Kardio-MRT.', 'Choose a cause. The panel shows the mechanism and the specific contribution of cardiac MRI.', 'یک علت را انتخاب کنید؛ در پنل مقابل مکانیسم و نقش مشخص MRI قلب نمایش داده می‌شود.'))}</p>
+    </header>
+    <div className={`${styles.differentialExplorer} ${lang === 'fa' ? styles.differentialExplorerRtl : ''}`} dir="ltr">
+      <div className={styles.differentialTabs} role="tablist" aria-orientation="vertical" aria-label={t(L('Differenzialdiagnose auswählen', 'Select differential diagnosis', 'انتخاب تشخیص افتراقی'))} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
+        {TROPONIN_DIFFERENTIALS.map((item, index) => {
+          const active = selectedId === item.id
+          return <button
+            key={item.id}
+            ref={node => { tabRefs.current[index] = node }}
+            id={`troponin-tab-${item.id}`}
+            type="button"
+            role="tab"
+            tabIndex={active ? 0 : -1}
+            aria-selected={active}
+            aria-controls="troponin-detail-panel"
+            className={active ? styles.differentialTabActive : ''}
+            onKeyDown={event => handleTabKeyDown(event, index)}
+            onClick={() => setSelectedId(item.id)}
+          >
+            <i aria-hidden="true" />
+            <span><small>{t(item.category)}</small><strong>{t(item.title)}</strong></span>
+          </button>
+        })}
+      </div>
+      <article id="troponin-detail-panel" className={styles.differentialDetail} role="tabpanel" aria-live="polite" aria-labelledby={`troponin-tab-${selected.id}`} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
+        <div className={styles.differentialDetailHeading}>
+          <span>{String(selectedIndex + 1).padStart(2, '0')}</span>
+          <div><small>{t(selected.category)}</small><h4>{t(selected.title)}</h4></div>
+        </div>
+        <section>
+          <small>{t(L('Warum steigt Troponin?', 'Why does troponin rise?', 'چرا تروپونین افزایش می‌یابد؟'))}</small>
+          <p>{t(selected.description)}</p>
+        </section>
+        <section className={styles.differentialCmrRole}>
+          <strong>{t(L('Rolle der Kardio-MRT', 'Role of cardiac MRI', 'نقش MRI قلب'))}</strong>
+          <p>{t(selected.cmr)}</p>
+        </section>
+      </article>
+    </div>
     <aside className={styles.troponinRemember}><strong>{t(L('Merke', 'Remember', 'نکته'))}</strong><p>{t(L('Je höher der Ausgangswert und je deutlicher die Dynamik, desto wahrscheinlicher ist im passenden ischämischen Kontext ein akuter Myokardinfarkt.', 'The higher the initial value and the clearer the kinetics, the more likely acute myocardial infarction becomes in the appropriate ischaemic context.', 'هرچه مقدار اولیه بالاتر و تغییرات سریال واضح‌تر باشد، در زمینه بالینی ایسکمیک احتمال انفارکت حاد بیشتر می‌شود.'))} <b>{t(L('Die Höhe allein beweist keine KHK. Auch nichtkoronare Ursachen können starke Anstiege verursachen.', 'Magnitude alone does not prove CAD. Non-coronary causes can also cause marked elevations.', 'شدت افزایش به‌تنهایی بیماری عروق کرونر را ثابت نمی‌کند و علل غیرکرونری نیز می‌توانند افزایش شدید ایجاد کنند.'))}</b></p></aside>
   </section>
 }
@@ -517,8 +628,8 @@ export default function MyocardialInfarctionDifferentialPage() {
     renderIcon={id => <SectionIcon id={id} />}
     theme={{
       backgroundImage: '/andarun-galaxy-v3.png',
-      heroImage: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/hero-background-v2.png',
-      heroImageOpacity: .84,
+      heroImage: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/troponin-cmr-hero-v3.png',
+      heroImageOpacity: .96,
       accent: '#e73368',
       accentStrong: '#561743',
       accentSoft: '#f4dce7',

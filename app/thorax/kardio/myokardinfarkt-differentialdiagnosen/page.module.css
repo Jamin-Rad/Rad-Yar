@@ -95,19 +95,38 @@
 .flowCmr small{color:#91e0e7;font-size:.65rem;font-weight:950;letter-spacing:.12em}.flowCmr strong{font-family:var(--font-display);font-size:1.65rem}.flowCmr p{margin:0;color:rgba(255,255,255,.82);font-size:.79rem;line-height:1.55}
 
 .troponinDifferentials{overflow:hidden;border:1px solid rgba(86,23,67,.18);border-radius:16px;background:var(--bg-card);box-shadow:0 16px 38px rgba(86,23,67,.06)}
-.troponinDifferentials>header{padding:27px 28px 21px;background:linear-gradient(135deg,rgba(231,51,104,.06),rgba(50,154,170,.025))}
+.troponinDifferentials>header{display:grid;gap:7px;padding:27px 28px 23px;background:linear-gradient(135deg,rgba(231,51,104,.07),rgba(50,154,170,.035))}
+.troponinDifferentials>header>small{color:var(--mi);font-size:.68rem;font-weight:950;letter-spacing:.12em;text-transform:uppercase}
 .troponinDifferentials h3{margin:0;color:var(--text-strong);font-family:var(--font-display);font-size:clamp(1.4rem,2.25vw,1.75rem);font-weight:900;line-height:1.3;text-wrap:balance}
-.differentialTabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:0 28px 22px}
-.differentialTabs button{display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;align-items:center;min-width:0;min-height:90px;padding:17px 16px;border:1px solid var(--border);border-radius:11px;color:var(--text-strong);background:var(--surface-soft);font-family:inherit;text-align:start;cursor:pointer;transition:transform .18s ease,border-color .18s ease,background .18s ease}
-.differentialTabs button:hover,.differentialTabs button:focus-visible{transform:translateY(-2px);border-color:rgba(231,51,104,.58);outline:none}
-.differentialTabs button span{display:grid;width:34px;height:34px;place-items:center;border-radius:50%;color:var(--mi-deep);background:rgba(231,51,104,.09);font-size:.7rem;font-weight:950}
-.differentialTabs button strong{min-width:0;font-size:.94rem;line-height:1.45;overflow-wrap:normal;word-break:normal}
-.differentialTabs .differentialTabActive{border-color:var(--mi);color:#fff;background:linear-gradient(135deg,var(--mi-deep),#8f204f);box-shadow:0 10px 24px rgba(86,23,67,.18)}
-.differentialTabs .differentialTabActive span{color:#fff;background:rgba(255,255,255,.16)}
-.differentialDetail{display:grid;min-height:145px;align-content:center;gap:7px;padding:24px;color:#fff;background:linear-gradient(135deg,#0d101b,var(--mi-navy))}
-.differentialDetail small{color:#91e0e7;font-size:.65rem;font-weight:950;letter-spacing:.11em;text-transform:uppercase}
-.differentialDetail>strong{font-family:var(--font-display);font-size:clamp(1.12rem,2vw,1.45rem);line-height:1.3}
-.differentialDetail p{max-width:760px;margin:0;color:rgba(255,255,255,.82);font-size:.88rem;line-height:1.68}
+.troponinDifferentials>header>p{max-width:780px;margin:0;color:var(--text-soft);font-size:.88rem;line-height:1.65}
+.differentialExplorer{display:grid;grid-template-columns:minmax(220px,.76fr) minmax(0,1.5fr);gap:0;margin:0 28px 24px;overflow:hidden;border:1px solid rgba(50,154,170,.24);border-radius:13px;background:var(--surface-soft)}
+.differentialExplorerRtl{grid-template-columns:minmax(0,1.5fr) minmax(220px,.76fr)}
+.differentialExplorerRtl .differentialTabs{grid-column:2;grid-row:1}
+.differentialExplorerRtl .differentialDetail{grid-column:1;grid-row:1}
+.differentialTabs{display:grid;align-content:start;padding:9px;background:linear-gradient(155deg,rgba(50,154,170,.055),rgba(231,51,104,.035))}
+.differentialTabs button{position:relative;display:grid;grid-template-columns:7px minmax(0,1fr);gap:11px;align-items:center;min-width:0;min-height:68px;padding:11px 12px;border:0;border-radius:9px;color:var(--text-strong);background:transparent;font-family:inherit;text-align:start;cursor:pointer;transition:color .18s ease,background .18s ease,box-shadow .18s ease}
+.differentialTabs button+button{margin-top:2px}
+.differentialTabs button:hover{background:rgba(231,51,104,.065)}
+.differentialTabs button:focus-visible{outline:3px solid color-mix(in srgb,var(--mi) 34%,transparent);outline-offset:-3px}
+.differentialTabs button>i{display:block;width:5px;height:28px;border-radius:5px;background:color-mix(in srgb,var(--text-soft) 24%,transparent);transition:height .18s ease,background .18s ease}
+.differentialTabs button>span{display:grid;gap:2px;min-width:0}
+.differentialTabs button small{color:var(--text-soft);font-size:.6rem;font-weight:850;letter-spacing:.06em;line-height:1.3;text-transform:uppercase}
+.differentialTabs button strong{min-width:0;font-size:.79rem;font-weight:850;line-height:1.35;overflow-wrap:normal;word-break:normal}
+.differentialTabs .differentialTabActive{color:var(--mi-deep);background:var(--bg-card);box-shadow:0 8px 22px rgba(7,29,58,.09)}
+.differentialTabs .differentialTabActive>i{height:40px;background:linear-gradient(180deg,var(--mi),var(--mi-teal))}
+.differentialTabs .differentialTabActive small{color:var(--mi)}
+.differentialDetail{display:grid;min-width:0;align-content:start;gap:17px;padding:28px 30px;color:#fff;background:radial-gradient(circle at 100% 0,rgba(50,154,170,.2),transparent 42%),linear-gradient(145deg,#10131f,var(--mi-navy))}
+.differentialDetailHeading{display:grid;grid-template-columns:44px minmax(0,1fr);gap:13px;align-items:center;padding-bottom:17px;border-bottom:1px solid rgba(255,255,255,.13)}
+.differentialDetailHeading>span{display:grid;width:42px;height:42px;place-items:center;border:1px solid rgba(145,224,231,.4);border-radius:50%;color:#91e0e7;font-size:.68rem;font-weight:950}
+.differentialDetailHeading>div{display:grid;gap:3px}
+.differentialDetailHeading small,.differentialDetail>section>small{color:#91e0e7;font-size:.62rem;font-weight:950;letter-spacing:.1em;text-transform:uppercase}
+.differentialDetail h4{margin:0;font-family:var(--font-display);font-size:clamp(1.16rem,2vw,1.5rem);line-height:1.28;text-wrap:balance}
+.differentialDetail>section{display:grid;gap:6px}
+.differentialDetail p{max-width:780px;margin:0;color:rgba(255,255,255,.82);font-size:.88rem;line-height:1.7}
+.differentialCmrRole{position:relative;padding:17px 18px 17px 21px;border:1px solid rgba(145,224,231,.25);border-radius:10px;background:rgba(50,154,170,.1)}
+.differentialCmrRole::before{position:absolute;inset-block:14px;inset-inline-start:0;width:4px;border-radius:0 4px 4px 0;background:var(--mi-teal);content:''}
+.differentialCmrRole>strong{color:#b8f2f5;font-size:.72rem;font-weight:950;letter-spacing:.08em;text-transform:uppercase}
+.differentialCmrRole p{color:rgba(255,255,255,.9)}
 .troponinRemember{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:center;margin:20px 24px 24px;padding:19px 21px;border:1px solid rgba(217,119,6,.34);border-inline-start:6px solid #d97706;border-radius:9px;background:rgba(245,158,11,.1)}
 .troponinRemember>strong{color:#a34d05;font-family:var(--font-display);font-size:1.12rem;font-weight:950;text-transform:uppercase}
 .troponinRemember p{margin:0;color:var(--text-strong);font-size:.9rem;font-weight:720;line-height:1.65}
@@ -290,7 +309,7 @@
 .sourcesDisclosure a span{color:var(--mi);font-size:.62rem;font-weight:950}.sourcesDisclosure a strong{font-size:.73rem;line-height:1.4}.sourcesDisclosure a i{color:var(--mi);font-style:normal}
 
 @media(max-width:980px){
-  .lessonLayout{grid-template-columns:230px minmax(0,1fr);gap:16px}.flowDecisionGrid{grid-template-columns:minmax(185px,.7fr) 54px minmax(300px,1.3fr)}.angioHub{padding-inline:18px}.differentialTabs,.patternTabs{grid-template-columns:repeat(2,minmax(0,1fr))}.patternPanel{grid-template-columns:1fr 1fr}
+  .lessonLayout{grid-template-columns:230px minmax(0,1fr);gap:16px}.flowDecisionGrid{grid-template-columns:minmax(185px,.7fr) 54px minmax(300px,1.3fr)}.angioHub{padding-inline:18px}.patternTabs{grid-template-columns:repeat(2,minmax(0,1fr))}.patternPanel{grid-template-columns:1fr 1fr}
 }
 @media(max-width:760px){
   .heroCopy h1{font-size:clamp(2rem,9.5vw,2.85rem);overflow-wrap:anywhere;hyphens:auto}
@@ -305,7 +324,7 @@
   .mobileProgressRing{width:44px!important;height:44px!important;background:conic-gradient(var(--mi-teal) var(--mobile-progress),rgba(86,23,67,.18) 0)!important}
   .mobileProgressRing::before{inset:3px!important}
   .mobileCurrentIcon{width:36px!important;height:36px!important;border:0!important;border-radius:10px!important;color:#fff!important;background:var(--mi-deep)!important;box-shadow:none!important}
-  .lessonLayout{grid-template-columns:1fr}.troponinFlowchart{padding:20px 14px}.flowDecisionGrid{display:flex;flex-direction:column;gap:9px}.flowToAngio{display:none}.flowQuestion{order:0;grid-template-columns:34px minmax(0,1fr);width:100%}.flowQuestion .mobileYes{display:block;grid-column:2;color:var(--mi);font:950 .61rem/1.3 inherit;letter-spacing:.07em}.flowNo{order:0;width:100%}.angioHub{order:20;width:100%;min-height:auto;padding:22px}.flowCmrInputs{order:21;grid-template-columns:1fr;gap:8px}.flowCmr{order:22}.differentialTabs{grid-template-columns:1fr;padding-inline:18px}.troponinDifferentials>header{padding-inline:18px}.troponinRemember{grid-template-columns:1fr;gap:7px;margin-inline:18px}.lgeBasics,.layerDiagram,.patternPanel,.infarctSplit,.compareColumns{grid-template-columns:1fr}.lgeBasics article+article{border-inline-start:0;border-top:1px solid var(--border)}.layerDiagram>span{transform:rotate(90deg)}
+  .lessonLayout{grid-template-columns:1fr}.troponinFlowchart{padding:20px 14px}.flowDecisionGrid{display:flex;flex-direction:column;gap:9px}.flowToAngio{display:none}.flowQuestion{order:0;grid-template-columns:34px minmax(0,1fr);width:100%}.flowQuestion .mobileYes{display:block;grid-column:2;color:var(--mi);font:950 .61rem/1.3 inherit;letter-spacing:.07em}.flowNo{order:0;width:100%}.angioHub{order:20;width:100%;min-height:auto;padding:22px}.flowCmrInputs{order:21;grid-template-columns:1fr;gap:8px}.flowCmr{order:22}.differentialExplorer,.differentialExplorerRtl{grid-template-columns:1fr;margin-inline:18px}.differentialExplorerRtl .differentialTabs,.differentialExplorerRtl .differentialDetail{grid-column:1}.differentialExplorerRtl .differentialTabs{grid-row:1}.differentialExplorerRtl .differentialDetail{grid-row:2}.differentialTabs{grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;padding:9px}.differentialTabs button+button{margin-top:0}.differentialDetail{grid-row:2}.troponinDifferentials>header{padding-inline:18px}.troponinRemember{grid-template-columns:1fr;gap:7px;margin-inline:18px}.lgeBasics,.layerDiagram,.patternPanel,.infarctSplit,.compareColumns{grid-template-columns:1fr}.lgeBasics article+article{border-inline-start:0;border-top:1px solid var(--border)}.layerDiagram>span{transform:rotate(90deg)}
   .patternPanel figure{min-height:320px}.patternPanel>div{padding:23px}.mvoBox{grid-template-columns:90px minmax(0,1fr);gap:16px}.mvoMark>span{width:72px;height:72px;border-width:15px}
   .territorySection,.diseaseFeature,.radiopaediaCase,.minocaColumns,.myocarditisLead,.lakeLouiseGrid{grid-template-columns:1fr}.territorySection>figure img{height:auto}.focusSteps{grid-template-columns:1fr}.complicationGrid{grid-template-columns:1fr}.takeHomeSteps{grid-template-columns:1fr}
   .caseViewer{min-height:390px}.caseImageStage{min-height:315px}.caseContent{padding:23px}
@@ -313,7 +332,7 @@
   .sourcesDisclosure>div{grid-template-columns:1fr}.inflammationTable{overflow-x:auto}.inflammationTable>div{min-width:650px}.rule{grid-template-columns:1fr}
 }
 @media(max-width:520px){
-  .troponinGraphic{border-radius:12px}.troponinFlowchart{padding-inline:11px}.flowStartNode{padding-inline:14px}.flowQuestion{padding:14px 13px}.flowRepeat,.flowCmr{padding:15px}.differentialTabs,.patternTabs,.decisionOptions{grid-template-columns:1fr}.differentialDetail{padding:21px 18px}.troponinRemember{margin:16px 14px 18px;padding:17px}
+  .troponinGraphic{border-radius:12px}.troponinFlowchart{padding-inline:11px}.flowStartNode{padding-inline:14px}.flowQuestion{padding:14px 13px}.flowRepeat,.flowCmr{padding:15px}.differentialExplorer{margin-inline:14px}.differentialTabs,.patternTabs,.decisionOptions{grid-template-columns:1fr}.differentialDetail{padding:21px 18px}.troponinRemember{margin:16px 14px 18px;padding:17px}
   .patternPanel figure{min-height:280px}.patternInfo section{padding:16px}.complicationSection>header,.territoryCopy,.diseaseFeature>div,.focusCard{padding:20px}.complicationGrid article{padding:17px}.caseViewer{min-height:345px;padding:14px 12px 10px}.caseImageStage{min-height:275px}.caseContent{padding:20px 18px}.mvoBox{grid-template-columns:1fr}.mvoMark{justify-content:start}.inflammationIntro>div{display:grid;grid-template-columns:1fr auto 1fr;gap:8px}.inflammationIntro>div>span{padding:9px;font-size:.72rem}.inflammationIntro b{display:none}.decisionResult{grid-template-columns:1fr}.takeHomeIntro{grid-template-columns:1fr;padding:20px}.takeHomeSteps{grid-template-columns:1fr}.takeHomeSteps article{grid-template-columns:62px minmax(0,1fr);padding:18px}.takeHomeBottomLine{grid-template-columns:32px minmax(0,1fr);padding:17px}
   .heroTools{grid-template-columns:1fr}.heroTools a{min-height:58px}
 }
@@ -321,7 +340,8 @@
 :global(html[data-theme='dark']) .heroToolSecondary small{color:#a9cdd2}
 :global(html[data-theme='dark']) .heroFacts article{background:color-mix(in srgb,var(--bg-card) 82%,transparent)!important}
 :global(html[data-theme='dark']) .sectionHeader{background:linear-gradient(135deg,rgba(231,51,104,.1),rgba(50,154,170,.03))}
-:global(html[data-theme='dark']) .differentialTabs button:not(.differentialTabActive) span{color:#ff9ab4;border-color:rgba(231,51,104,.25)}
+:global(html[data-theme='dark']) .differentialTabs button:not(.differentialTabActive) small{color:#a9cdd2}
+:global(html[data-theme='dark']) .differentialTabs .differentialTabActive{color:#fff;background:rgba(231,51,104,.16)}
 :global(html[data-theme='dark']) .page :global([class*='sidebar']) button:hover{color:#ffb1c5}
 :global(html[data-theme='dark']) .decisionOptions button:not(.decisionActive){color:#ff9ab4}
 :global(html[data-theme='dark']) .complicationSection>header small,
