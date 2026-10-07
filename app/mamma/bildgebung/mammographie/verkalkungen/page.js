@@ -471,8 +471,8 @@ export default function Page(){
     renderIcon={id=><SectionIcon id={id}/>}
     theme={{
       backgroundImage:'/andarun-galaxy-v3.png',
-      heroImage:'/mamma/mammographie/verkalkungen/verkalkungen-background-v2.png',
-      heroImageOpacity:.4,
+      heroImage:'/mamma/mammographie/verkalkungen/verkalkungen-hero-v4.png',
+      heroImageOpacity:.9,
       accent:'#e45a88',
       accentStrong:'#7a2348',
       accentSoft:'#f4dce6',
