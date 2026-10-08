@@ -42,9 +42,14 @@
 .qrBox button:hover { background: #d8f2e8; }
 
 .stats, .resultSummary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 20px; }
+.resultSummary { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .stats article, .resultSummary article { display: flex; align-items: center; justify-content: space-between; min-height: 88px; padding: 18px 21px; border: 1px solid #e1e6ef; border-radius: 15px; background: rgba(255,255,255,.88); box-shadow: 0 10px 30px rgba(28,39,61,.045); }
 .stats span, .resultSummary span { color: #6b778c; font-size: 13px; }
 .stats strong, .resultSummary strong { color: #14203a; font-size: 28px; }
+.resultSummary article > span { display: grid; gap: 3px; }
+.resultSummary article > span > small { color: #94a3b8; font-size: 9px; font-weight: 550; }
+.satisfactionCard { border-color: #b7ead8 !important; background: #effcf7 !important; }
+.satisfactionCard strong { color: #08765c !important; }
 
 .panel, .builder, .detail { border: 1px solid #e0e6ef; border-radius: 20px; background: rgba(255,255,255,.92); box-shadow: 0 20px 55px rgba(29,41,67,.07); }
 .panel { padding: 24px; }
@@ -221,6 +226,10 @@
 .rank strong { font-size: 17px; }
 .submitted { color: #748196; font-size: 10px; }
 .answerDetails { display: grid; gap: 8px; padding: 14px 16px; border-top: 1px solid #e7ebf1; background: #f8fafc; }
+.attemptActions { display: flex; justify-content: flex-end; }
+.attemptActions button { min-height: 34px; padding: 0 12px; border: 1px solid #fecaca; border-radius: 9px; background: #fff1f2; color: #be123c; cursor: pointer; font: 750 10px Vazirmatn, sans-serif; }
+.attemptActions button:hover { border-color: #fda4af; background: #ffe4e6; }
+.attemptActions button:disabled { opacity: .5; cursor: wait; }
 .attemptFeedback { display: grid; gap: 6px; padding: 13px; border: 1px solid #fed7aa; border-radius: 10px; background: #fff8f1; color: #566276; font-size: 11px; }
 .attemptFeedback strong { color: #c2410c; }
 .attemptFeedback p { margin: 0; line-height: 1.9; }
@@ -358,3 +367,6 @@
 :global(html[data-theme='dark']) .attemptRow:hover { background: #14243a; }
 :global(html[data-theme='dark']) .secondaryButton { border-color: #31425a; background: #101e31; color: #cbd5e1; }
 :global(html[data-theme='dark']) .dangerButton { border-color: #7f1d1d; background: rgba(127,29,29,.22); color: #fda4af; }
+:global(html[data-theme='dark']) .satisfactionCard { border-color: #145c4a !important; background: rgba(8,118,92,.13) !important; }
+:global(html[data-theme='dark']) .satisfactionCard strong { color: #6ee7b7 !important; }
+:global(html[data-theme='dark']) .attemptActions button { border-color: #7f1d1d; background: rgba(127,29,29,.22); color: #fda4af; }

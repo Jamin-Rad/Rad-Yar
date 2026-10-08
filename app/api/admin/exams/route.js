@@ -352,6 +352,29 @@ export async function DELETE(request) {
     return NextResponse.json({ error: 'درخواست معتبر نیست.' }, { status: 400 })
   }
 
+  const attemptId = typeof payload?.attemptId === 'string' ? payload.attemptId : ''
+  const attemptExamId = typeof payload?.examId === 'string' ? payload.examId : ''
+  if (attemptId || attemptExamId) {
+    if (!UUID_PATTERN.test(attemptId) || !UUID_PATTERN.test(attemptExamId)) {
+      return NextResponse.json({ error: 'شناسه شرکت‌کننده یا آزمون معتبر نیست.' }, { status: 400 })
+    }
+
+    const { data: attempt, error: attemptError } = await supabaseAdmin
+      .from('exam_attempts')
+      .delete()
+      .eq('id', attemptId)
+      .eq('exam_id', attemptExamId)
+      .select('id')
+      .maybeSingle()
+
+    if (attemptError) {
+      console.error('حذف نتیجه شرکت‌کننده انجام نشد:', attemptError)
+      return NextResponse.json({ error: databaseSetupError(attemptError, 'حذف شرکت‌کننده انجام نشد.') }, { status: 503 })
+    }
+    if (!attempt) return NextResponse.json({ error: 'نتیجه شرکت‌کننده پیدا نشد.' }, { status: 404 })
+    return NextResponse.json({ deleted: true, attemptId: attempt.id })
+  }
+
   const examId = typeof payload?.id === 'string' ? payload.id : ''
   if (!UUID_PATTERN.test(examId)) {
     return NextResponse.json({ error: 'شناسه آزمون معتبر نیست.' }, { status: 400 })

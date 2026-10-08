@@ -90,6 +90,25 @@ function readAttemptFeedback(attempt) {
   }
 }
 
+function calculateOverallSatisfaction(attempts) {
+  let scoreSum = 0
+  let respondentCount = 0
+
+  for (const attempt of attempts || []) {
+    const feedback = readAttemptFeedback(attempt)
+    const ratings = (feedback?.ratings || [])
+      .map(([, value]) => Number(value))
+      .filter(value => Number.isFinite(value) && value >= 1 && value <= 5)
+    if (!ratings.length) continue
+    scoreSum += ratings.reduce((sum, value) => sum + value, 0) / ratings.length
+    respondentCount += 1
+  }
+
+  return respondentCount
+    ? { percentage: Math.round((scoreSum / respondentCount / 5) * 100), respondentCount }
+    : null
+}
+
 function ExamQrCode({ value }) {
   const canvasRef = useRef(null)
 
@@ -416,6 +435,29 @@ export default function ExamAdminClient() {
     }
   }
 
+  async function deleteAttempt(attempt) {
+    if (!detail?.exam || !attempt?.id) return
+    const confirmed = window.confirm(`نتیجهٔ «${attempt.participant_name}» شامل پاسخ‌ها، نمره و نظر ثبت‌شده برای همیشه حذف شود؟`)
+    if (!confirmed) return
+
+    setSaving(true)
+    setError('')
+    try {
+      await readJson(await fetch('/api/admin/exams', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ examId: detail.exam.id, attemptId: attempt.id }),
+      }))
+      setExpandedAttempt('')
+      setDetail(current => current ? { ...current, attempts: current.attempts.filter(item => item.id !== attempt.id) } : current)
+      await Promise.all([loadExams(), openDetail(detail.exam.id)])
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setSaving(false)
+    }
+  }
+
   async function copyLink(value) {
     await navigator.clipboard.writeText(value)
     setCopied(value)
@@ -427,6 +469,7 @@ export default function ExamAdminClient() {
     : ''
   const detailDisplayState = detail?.exam ? examDisplayState(detail.exam) : null
   const detailCanClose = detail?.exam?.status === 'published' && detailDisplayState?.key !== 'expired'
+  const overallSatisfaction = calculateOverallSatisfaction(detail?.attempts)
 
   return (
     <main className={styles.page} dir="rtl">
@@ -672,6 +715,7 @@ export default function ExamAdminClient() {
                 <article><span>شرکت‌کننده</span><strong>{detail.attempts.length.toLocaleString('fa-IR')}</strong></article>
                 <article><span>میانگین</span><strong>{detail.attempts.length ? `${Math.round(detail.attempts.reduce((sum, item) => sum + Number(item.percentage), 0) / detail.attempts.length).toLocaleString('fa-IR')}٪` : '—'}</strong></article>
                 <article><span>بالاترین نمره</span><strong>{detail.attempts.length ? `${Math.max(...detail.attempts.map(item => Number(item.percentage))).toLocaleString('fa-IR')}٪` : '—'}</strong></article>
+                <article className={styles.satisfactionCard}><span>رضایت کلی<small>{overallSatisfaction ? `از ${overallSatisfaction.respondentCount.toLocaleString('fa-IR')} نظر` : 'هنوز نظری ثبت نشده'}</small></span><strong>{overallSatisfaction ? `${overallSatisfaction.percentage.toLocaleString('fa-IR')}٪` : '—'}</strong></article>
               </div>
 
               <section className={styles.panel}>
@@ -695,6 +739,7 @@ export default function ExamAdminClient() {
                           <span aria-hidden="true">{isOpen ? '−' : '+'}</span>
                         </button>
                         {isOpen ? <div className={styles.answerDetails}>
+                          <div className={styles.attemptActions}><button type="button" disabled={saving} onClick={() => deleteAttempt(attempt)}>حذف این شرکت‌کننده و نتیجه</button></div>
                           {participantFeedback ? <div className={styles.attemptFeedback}><strong>نظر شرکت‌کننده</strong>{participantFeedback.ratings.length ? <div className={styles.feedbackScores}>{participantFeedback.ratings.map(([label, value]) => <span key={label}><small>{label}</small><b>{Number(value).toLocaleString('fa-IR')} از ۵</b></span>)}</div> : <span>بدون امتیاز گزینه‌ای</span>}{participantFeedback.message ? <p>{participantFeedback.message}</p> : null}</div> : null}
                           {detail.questions.map((question, index) => {
                             const selected = attempt.answers?.[question.id]
