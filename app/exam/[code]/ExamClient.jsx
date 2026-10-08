@@ -27,6 +27,12 @@ const HEADER_COPY = Object.freeze({
   de: { light: 'Heller Modus', dark: 'Dunkler Modus' },
 })
 
+const IDENTITY_COPY = Object.freeze({
+  fa: { checking: 'در حال بررسی…', retrieve: 'ادامه یا مشاهده نتیجه', hint: 'هر ایمیل یا آیدی اینستاگرام فقط یک‌بار در این آزمون ثبت می‌شود. با همان شناسه می‌توانید ادامه آزمون یا نتیجه خود را دوباره ببینید.' },
+  en: { checking: 'Checking…', retrieve: 'Continue or view result', hint: 'Each email or Instagram ID can enter this exam once. Use the same ID to resume or view your result again.' },
+  de: { checking: 'Wird geprüft…', retrieve: 'Fortsetzen oder Ergebnis ansehen', hint: 'Jede E-Mail- oder Instagram-ID kann nur einmal teilnehmen. Mit derselben ID kannst du fortsetzen oder dein Ergebnis erneut ansehen.' },
+})
+
 function ExamFrame({ children, language = 'fa', dir = 'rtl' }) {
   const { theme, toggleTheme } = useTheme()
   const labels = HEADER_COPY[language] || HEADER_COPY.fa
@@ -56,14 +62,6 @@ function formatTime(seconds, locale = 'fa-IR') {
   return `${minutes}:${remainder}`
 }
 
-function availableSeconds(exam) {
-  const personalLimit = Number(exam?.duration_minutes || 0) * 60
-  const closesAt = Date.parse(exam?.closes_at)
-  if (!Number.isFinite(closesAt)) return personalLimit
-  const globalLimit = Math.max(0, Math.floor((closesAt - Date.now()) / 1000))
-  return Math.min(personalLimit, globalLimit)
-}
-
 function isValidContact(value) {
   const contact = value.trim()
   if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact)) return true
@@ -81,6 +79,36 @@ async function readJson(response) {
   const data = await response.json().catch(() => ({}))
   if (!response.ok) throw new Error(data.error || 'خطایی رخ داد.')
   return data
+}
+
+function examSessionKey(code) {
+  return `radyar:exam:${code}:session:v1`
+}
+
+function readExamSession(code) {
+  if (typeof window === 'undefined') return null
+  try {
+    const value = JSON.parse(window.localStorage.getItem(examSessionKey(code)) || 'null')
+    return value && typeof value === 'object' ? value : null
+  } catch {
+    return null
+  }
+}
+
+function writeExamSession(code, value) {
+  if (typeof window === 'undefined') return
+  try {
+    window.localStorage.setItem(examSessionKey(code), JSON.stringify(value))
+  } catch {
+    // The server remains the source of truth when browser storage is unavailable.
+  }
+}
+
+function parseParticipantSpecialty(value) {
+  if (typeof value !== 'string' || !value.trim()) return { specialty: '', other: '' }
+  const normalized = value.trim()
+  if (!normalized.startsWith(`${SPECIALTY_OTHER_VALUE}:`)) return { specialty: normalized, other: '' }
+  return { specialty: SPECIALTY_OTHER_VALUE, other: normalized.slice(SPECIALTY_OTHER_VALUE.length + 1).trim() }
 }
 
 function asStandardQuestion(item) {
@@ -191,10 +219,50 @@ export default function ExamClient({ code }) {
   const [feedbackText, setFeedbackText] = useState('')
   const [feedbackState, setFeedbackState] = useState('idle')
   const [feedbackError, setFeedbackError] = useState('')
+  const [availability, setAvailability] = useState('active')
+  const [availabilityMessage, setAvailabilityMessage] = useState('')
+  const [identityLoading, setIdentityLoading] = useState(false)
   const submittingRef = useRef(false)
   const language = exam?.language in EXAM_COPY ? exam.language : 'fa'
   const copy = EXAM_COPY[language]
+  const identityCopy = IDENTITY_COPY[language] || IDENTITY_COPY.fa
   const organizerName = exam?.organizer_name || (language === 'en' ? 'the exam organizer' : language === 'de' ? 'die Prüfungsleitung' : 'برگزارکننده آزمون')
+
+  const applyIdentityResponse = useCallback((data, fallbackIdentity, cachedSession = null) => {
+    const resolvedName = data.participantName || fallbackIdentity.name
+    const resolvedContact = data.participantContact || fallbackIdentity.contact
+    const resolvedSpecialty = data.participantSpecialty || cachedSession?.specialty || fallbackIdentity.specialty || ''
+    const parsedSpecialty = parseParticipantSpecialty(resolvedSpecialty)
+    setParticipantName(resolvedName)
+    setParticipantContact(resolvedContact)
+    setParticipantSpecialty(parsedSpecialty.specialty)
+    setParticipantSpecialtyOther(parsedSpecialty.other)
+    setAttemptId(data.attemptId || '')
+
+    if (data.state === 'quiz') {
+      const cachedAnswers = cachedSession?.attemptId === data.attemptId && cachedSession?.answers && typeof cachedSession.answers === 'object'
+        ? cachedSession.answers
+        : {}
+      const restoredAnswers = { ...(data.answers || {}), ...cachedAnswers }
+      const restoredCurrent = cachedSession?.attemptId === data.attemptId && Number.isInteger(cachedSession?.current)
+        ? Math.max(0, cachedSession.current)
+        : 0
+      setAnswers(restoredAnswers)
+      setCurrent(restoredCurrent)
+      setStartedAt(data.startedAt || '')
+      setTimeLeft(Math.max(0, Number(data.remainingSeconds) || 0))
+      setTimeLimit(Math.max(Number(cachedSession?.timeLimit) || 0, Number(data.remainingSeconds) || 0))
+      setPhase('quiz')
+      writeExamSession(code, { attemptId: data.attemptId, name: resolvedName, contact: resolvedContact, specialty: resolvedSpecialty, answers: restoredAnswers, current: restoredCurrent, timeLimit: Math.max(Number(cachedSession?.timeLimit) || 0, Number(data.remainingSeconds) || 0) })
+      return
+    }
+
+    setAnswers({})
+    setStartedAt('')
+    if (data.state === 'result') setResult(data.result)
+    setPhase(data.state === 'result' ? 'result' : 'feedback')
+    writeExamSession(code, { attemptId: data.attemptId, name: resolvedName, contact: resolvedContact, specialty: resolvedSpecialty, phase: data.state })
+  }, [code])
 
   useEffect(() => {
     let active = true
@@ -204,10 +272,37 @@ export default function ExamClient({ code }) {
         if (!active) return
         setExam(data.exam)
         setQuestions(data.questions || [])
-        const allowedSeconds = availableSeconds(data.exam)
-        setTimeLeft(allowedSeconds)
-        setTimeLimit(allowedSeconds)
-        setPhase('intro')
+        setAvailability(data.availability || 'active')
+        setAvailabilityMessage(data.availabilityMessage || '')
+
+        const cachedSession = readExamSession(code)
+        if (!cachedSession?.name || !isValidContact(cachedSession?.contact || '')) {
+          setPhase('intro')
+          return
+        }
+
+        setParticipantName(cachedSession.name)
+        setParticipantContact(cachedSession.contact)
+        const cachedSpecialty = parseParticipantSpecialty(cachedSession.specialty)
+        setParticipantSpecialty(cachedSpecialty.specialty)
+        setParticipantSpecialtyOther(cachedSpecialty.other)
+        if (!cachedSession.specialty) {
+          setPhase('intro')
+          return
+        }
+        try {
+          const identity = await readJson(await fetch(`/api/exams/${encodeURIComponent(code)}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'identify', participantName: cachedSession.name, participantContact: cachedSession.contact, participantSpecialty: cachedSession.specialty }),
+          }))
+          if (!active) return
+          applyIdentityResponse(identity, { name: cachedSession.name, contact: cachedSession.contact, specialty: cachedSession.specialty }, cachedSession)
+        } catch (identityError) {
+          if (!active) return
+          setError(identityError.message)
+          setPhase('intro')
+        }
       } catch (err) {
         if (!active) return
         setError(err.message)
@@ -216,7 +311,7 @@ export default function ExamClient({ code }) {
     }
     load()
     return () => { active = false }
-  }, [code])
+  }, [applyIdentityResponse, code])
 
   const answeredCount = useMemo(() => Object.values(answers).filter(value => Number.isInteger(value)).length, [answers])
   const timeProgress = timeLimit > 0 ? Math.min(100, Math.max(0, ((timeLimit - timeLeft) / timeLimit) * 100)) : 0
@@ -234,17 +329,16 @@ export default function ExamClient({ code }) {
       const data = await readJson(await fetch(`/api/exams/${encodeURIComponent(code)}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ participantName, participantContact, participantSpecialty: resolvedParticipantSpecialty, website, answers, startedAt }),
+        body: JSON.stringify({ action: 'submit', attemptId, participantName, participantContact, participantSpecialty: resolvedParticipantSpecialty, website, answers, startedAt }),
       }))
-      setAttemptId(data.attemptId)
-      setPhase('feedback')
+      applyIdentityResponse(data, { name: participantName, contact: participantContact, specialty: resolvedParticipantSpecialty })
     } catch (err) {
       setError(err.message)
       setPhase('quiz')
     } finally {
       submittingRef.current = false
     }
-  }, [answers, code, participantContact, participantName, resolvedParticipantSpecialty, startedAt, website])
+  }, [answers, applyIdentityResponse, attemptId, code, participantContact, participantName, resolvedParticipantSpecialty, startedAt, website])
 
   useEffect(() => {
     if (phase !== 'quiz') return undefined
@@ -272,7 +366,36 @@ export default function ExamClient({ code }) {
     return () => window.removeEventListener('keydown', handleEnter)
   }, [current, phase, questions.length])
 
-  function startExam(event) {
+  useEffect(() => {
+    if (phase !== 'quiz' || !attemptId || !participantContact) return undefined
+    const session = {
+      attemptId,
+      name: participantName,
+      contact: participantContact,
+      specialty: resolvedParticipantSpecialty,
+      answers,
+      current,
+      timeLimit,
+    }
+    writeExamSession(code, session)
+
+    const saveProgress = () => {
+      if (!navigator.onLine) return
+      fetch(`/api/exams/${encodeURIComponent(code)}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'progress', attemptId, participantContact, participantSpecialty: resolvedParticipantSpecialty, answers }),
+      }).catch(() => {})
+    }
+    const timer = window.setTimeout(saveProgress, 600)
+    window.addEventListener('online', saveProgress)
+    return () => {
+      window.clearTimeout(timer)
+      window.removeEventListener('online', saveProgress)
+    }
+  }, [answers, attemptId, code, current, participantContact, participantName, phase, resolvedParticipantSpecialty, timeLimit])
+
+  async function startExam(event) {
     event.preventDefault()
     if (participantName.trim().length < 2) {
       setError(copy.nameError)
@@ -290,16 +413,20 @@ export default function ExamClient({ code }) {
       setError('لطفاً نام تخصص یا رشتهٔ خود را وارد کنید.')
       return
     }
-    const allowedSeconds = availableSeconds(exam)
-    if (allowedSeconds <= 0) {
-      setError(language === 'en' ? 'The participation period for this exam has ended.' : language === 'de' ? 'Der Teilnahmezeitraum für diese Prüfung ist beendet.' : 'مهلت شرکت در این آزمون به پایان رسیده است.')
-      return
-    }
     setError('')
-    setStartedAt(new Date().toISOString())
-    setTimeLeft(allowedSeconds)
-    setTimeLimit(allowedSeconds)
-    setPhase('quiz')
+    setIdentityLoading(true)
+    try {
+      const data = await readJson(await fetch(`/api/exams/${encodeURIComponent(code)}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'identify', participantName, participantContact, participantSpecialty: resolvedParticipantSpecialty, website }),
+      }))
+      applyIdentityResponse(data, { name: participantName, contact: participantContact, specialty: resolvedParticipantSpecialty }, readExamSession(code))
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setIdentityLoading(false)
+    }
   }
 
   function selectOption(optionIndex) {
@@ -319,7 +446,7 @@ export default function ExamClient({ code }) {
       const data = await readJson(await fetch(`/api/exams/${encodeURIComponent(code)}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ attemptId, ratings: feedbackRatings, feedbackText }),
+        body: JSON.stringify({ attemptId, participantContact, ratings: feedbackRatings, feedbackText }),
       }))
       setResult(data.result)
       setFeedbackState('saved')
@@ -368,7 +495,9 @@ export default function ExamClient({ code }) {
           ) : null}
           <label className={styles.honeypot} aria-hidden="true"><span>Website</span><input tabIndex={-1} autoComplete="off" value={website} onChange={event => setWebsite(event.target.value)} /></label>
           {error ? <div className={styles.error} role="alert">{error}</div> : null}
-          <button type="submit">{copy.start} <span aria-hidden="true">{copy.startArrow}</span></button>
+          {availabilityMessage ? <div className={styles.availabilityNotice}>{availabilityMessage}</div> : null}
+          <button type="submit" disabled={identityLoading}>{identityLoading ? identityCopy.checking : availability === 'active' ? copy.start : identityCopy.retrieve} <span aria-hidden="true">{copy.startArrow}</span></button>
+          <small className={styles.identityHint}>{identityCopy.hint}</small>
           <small className={styles.notice}>{copy.notice}</small>
         </form>
       </section>

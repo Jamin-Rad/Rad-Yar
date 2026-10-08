@@ -86,6 +86,20 @@ function addRanks(attempts) {
   })
 }
 
+function uniqueSubmittedAttempts(attempts) {
+  const byIdentity = new Map()
+  for (const attempt of attempts || []) {
+    if (Number(attempt.max_score) <= 0) continue
+    const identity = String(attempt.participant_contact || attempt.id).trim().toLowerCase()
+    const previous = byIdentity.get(identity)
+    const shouldReplace = !previous
+      || (!previous.feedback_submitted_at && attempt.feedback_submitted_at)
+      || (Boolean(previous.feedback_submitted_at) === Boolean(attempt.feedback_submitted_at) && Date.parse(attempt.submitted_at) > Date.parse(previous.submitted_at))
+    if (shouldReplace) byIdentity.set(identity, attempt)
+  }
+  return [...byIdentity.values()].sort((left, right) => Number(right.percentage) - Number(left.percentage) || Date.parse(left.submitted_at) - Date.parse(right.submitted_at))
+}
+
 function getQuestionBank(language) {
   const { fachById } = getCurriculumLookup(language)
   const topicById = new Map()
@@ -190,7 +204,7 @@ export async function GET(request) {
     const [examResult, questionResult, attemptResult] = await Promise.all([
       supabaseAdmin.from('exams').select('*').eq('id', examId).maybeSingle(),
       supabaseAdmin.from('exam_questions').select('*').eq('exam_id', examId).order('position'),
-      supabaseAdmin.from('exam_attempts').select('*').eq('exam_id', examId).order('percentage', { ascending: false }).order('submitted_at', { ascending: true }),
+      supabaseAdmin.from('exam_attempts').select('*').eq('exam_id', examId).gt('max_score', 0).order('percentage', { ascending: false }).order('submitted_at', { ascending: true }),
     ])
 
     const error = examResult.error || questionResult.error || attemptResult.error
@@ -206,13 +220,13 @@ export async function GET(request) {
         const unpacked = unpackExamQuestionExplanation(question.explanation)
         return { ...question, explanation: unpacked.explanation, wrongExplanations: unpacked.wrongExplanations, media: unpacked.media }
       }),
-      attempts: addRanks(attemptResult.data || []),
+      attempts: addRanks(uniqueSubmittedAttempts(attemptResult.data || [])),
     })
   }
 
   const [examResult, attemptResult] = await Promise.all([
     supabaseAdmin.from('exams').select('*').order('created_at', { ascending: false }),
-    supabaseAdmin.from('exam_attempts').select('exam_id'),
+    supabaseAdmin.from('exam_attempts').select('id,exam_id,participant_contact,max_score').gt('max_score', 0),
   ])
   const error = examResult.error || attemptResult.error
   if (error) {
@@ -221,7 +235,11 @@ export async function GET(request) {
   }
 
   const attemptCounts = new Map()
+  const countedIdentities = new Set()
   for (const attempt of attemptResult.data || []) {
+    const identity = `${attempt.exam_id}:${String(attempt.participant_contact || attempt.id).trim().toLowerCase()}`
+    if (countedIdentities.has(identity)) continue
+    countedIdentities.add(identity)
     attemptCounts.set(attempt.exam_id, (attemptCounts.get(attempt.exam_id) || 0) + 1)
   }
   const exams = (examResult.data || []).map(exam => ({

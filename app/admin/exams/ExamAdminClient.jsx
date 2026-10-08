@@ -476,8 +476,8 @@ export default function ExamAdminClient() {
       <div className={styles.shell}>
         <header className={styles.hero}>
           <div>
-            <span className={styles.eyebrow}>RADYAR QUIZ</span>
-            <h1>Quiz</h1>
+            <span className={styles.eyebrow}>RADYAR EXAMS</span>
+            <h1>مدیریت امتحان</h1>
           </div>
           <button type="button" className={styles.primaryButton} onClick={openCreate}>
             <span aria-hidden="true">＋</span> ساخت امتحان جدید
