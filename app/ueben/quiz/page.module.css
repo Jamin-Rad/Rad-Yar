@@ -163,6 +163,7 @@
 }
 
 .qText {
+  white-space: pre-line;
   max-width: 900px;
   color: var(--quiz-navy);
   font-family: var(--font-main, ui-sans-serif, system-ui, sans-serif);
