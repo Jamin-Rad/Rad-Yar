@@ -256,12 +256,13 @@
 .feedbackScores span { display: grid; gap: 2px; padding: 9px; border: 1px solid #fed7aa; border-radius: 8px; background: rgba(255,255,255,.68); }
 .feedbackScores small { color: #7b8799; font-size: 9px; }
 .feedbackScores b { color: #9a3412; font-size: 11px; }
-.answerCorrect, .answerWrong { display: grid; gap: 5px; padding: 11px 13px; border-inline-start: 3px solid; border-radius: 8px; background: #fff; font-size: 11px; }
+.answerCorrect, .answerWrong, .answerUnanswered { display: grid; gap: 5px; padding: 11px 13px; border-inline-start: 3px solid; border-radius: 8px; background: #fff; font-size: 11px; }
 .answerCorrect { border-color: #10b981; }
 .answerWrong { border-color: #ef4444; }
-.answerCorrect strong, .answerWrong strong { color: #344056; font-size: 12px; }
-.answerCorrect span, .answerWrong span { color: #6f7c90; }
-.answerCorrect p, .answerWrong p { margin: 4px 0 0; padding-top: 8px; border-top: 1px dashed #dce3ec; color: #526077; line-height: 1.9; }
+.answerUnanswered { border-color: #f59e0b; background: #fffbeb; }
+.answerCorrect strong, .answerWrong strong, .answerUnanswered strong { color: #344056; font-size: 12px; }
+.answerCorrect span, .answerWrong span, .answerUnanswered span { color: #6f7c90; }
+.answerCorrect p, .answerWrong p, .answerUnanswered p { margin: 4px 0 0; padding-top: 8px; border-top: 1px dashed #dce3ec; color: #526077; line-height: 1.9; }
 
 @media (max-width: 800px) {
   .shell { width: min(100% - 24px, 720px); padding-top: 26px; }
@@ -360,6 +361,7 @@
 :global(html[data-theme='dark']) .attemptRow,
 :global(html[data-theme='dark']) .answerCorrect,
 :global(html[data-theme='dark']) .answerWrong,
+:global(html[data-theme='dark']) .answerUnanswered,
 :global(html[data-theme='dark']) .attemptFeedback { border-color: #2b3b52; background: #101e31; color: #dce5ef; }
 :global(html[data-theme='dark']) .feedbackScores span { border-color: #2b3b52; background: #0b1728; }
 :global(html[data-theme='dark']) .feedbackScores b { color: #fdba74; }

@@ -154,10 +154,12 @@
 .standardExplanation { margin-top: 17px; padding: 18px 20px; border: 1px solid; border-radius: 12px; text-align: start; }
 .standardExplanationCorrect { border-color: rgba(7,150,106,.24); background: #f1faf6; }
 .standardExplanationWrong { border-color: rgba(220,74,74,.22); background: #fff6f6; }
+.standardExplanationOpen { border-color: rgba(148,163,184,.34); background: #f8fafc; }
 .explanationVerdict { display: flex; align-items: center; gap: 9px; margin-bottom: 14px; color: #1f2b43; font-size: 15px; }
 .explanationVerdict span { display: grid; width: 24px; height: 24px; place-items: center; border-radius: 50%; background: #fff; font-size: 13px; }
 .standardExplanationCorrect .explanationVerdict span { color: #059669; }
 .standardExplanationWrong .explanationVerdict span { color: #dc4a4a; }
+.standardExplanationOpen .explanationVerdict span { color: #64748b; }
 .correctAnswerRow { display: grid; gap: 4px; margin: 0 0 15px 33px; color: #1f2b43; font-size: 12px; line-height: 1.7; }
 [dir='rtl'] .correctAnswerRow { margin-right: 33px; margin-left: 0; }
 .correctAnswerRow span, .explanationBody > strong, .wrongExplanation > strong { color: #738097; font-size: 10px; font-weight: 850; letter-spacing: .03em; }
@@ -301,6 +303,7 @@
 :global(html[data-theme='dark']) .reviewOptionWrong { border-color: #9f3547; background: rgba(225,29,72,.12); color: #fda4af; }
 :global(html[data-theme='dark']) .standardExplanationCorrect { border-color: #16886b; background: rgba(5,150,105,.1); }
 :global(html[data-theme='dark']) .standardExplanationWrong { border-color: #9f3547; background: rgba(225,29,72,.1); }
+:global(html[data-theme='dark']) .standardExplanationOpen { border-color: #475569; background: rgba(71,85,105,.16); }
 :global(html[data-theme='dark']) .explanationVerdict,
 :global(html[data-theme='dark']) .correctAnswerRow,
 :global(html[data-theme='dark']) .feedbackModalHeader h2,

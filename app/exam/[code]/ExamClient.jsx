@@ -633,8 +633,8 @@ export default function ExamClient({ code }) {
                   })}
                 </div>
 
-                <div className={`${styles.standardExplanation} ${reviewCorrect ? styles.standardExplanationCorrect : styles.standardExplanationWrong}`}>
-                  <div className={styles.explanationVerdict}><span aria-hidden="true">{reviewCorrect ? '✓' : '×'}</span>{!reviewAnswered || reviewCorrect ? <strong>{reviewCorrect ? copy.correct : copy.unansweredReview}</strong> : null}</div>
+                <div className={`${styles.standardExplanation} ${reviewCorrect ? styles.standardExplanationCorrect : reviewAnswered ? styles.standardExplanationWrong : styles.standardExplanationOpen}`}>
+                  <div className={styles.explanationVerdict}><span aria-hidden="true">{reviewCorrect ? '✓' : reviewAnswered ? '×' : '—'}</span>{!reviewAnswered || reviewCorrect ? <strong>{reviewCorrect ? copy.correct : copy.unansweredReview}</strong> : null}</div>
                   {!reviewCorrect ? <div className={styles.correctAnswerRow}><span>{copy.correctAnswer}</span><strong>{String.fromCharCode(65 + reviewItem.correctOptionIndex)}) {reviewItem.options[reviewItem.correctOptionIndex]}</strong></div> : null}
                   {reviewItem.explanation ? <div className={styles.explanationBody}><strong>{copy.explanation}</strong><p>{reviewCorrect ? correctExplanation : reviewItem.explanation}</p></div> : null}
                   {!reviewCorrect && reviewAnswered && wrongExplanation ? <div className={styles.wrongExplanation}><strong>{copy.whyWrong}</strong><p>{wrongExplanation}</p></div> : null}

@@ -766,10 +766,12 @@ export default function ExamAdminClient() {
                           {participantFeedback ? <div className={styles.attemptFeedback}><strong>نظر شرکت‌کننده</strong>{participantFeedback.ratings.length ? <div className={styles.feedbackScores}>{participantFeedback.ratings.map(([label, value]) => <span key={label}><small>{label}</small><b>{Number(value).toLocaleString('fa-IR')} از ۵</b></span>)}</div> : <span>بدون امتیاز گزینه‌ای</span>}{participantFeedback.message ? <p>{participantFeedback.message}</p> : null}</div> : null}
                           {detail.questions.map((question, index) => {
                             const selected = attempt.answers?.[question.id]
-                            const correct = Number(selected) === Number(question.correct_option_index)
-                            return <div className={correct ? styles.answerCorrect : styles.answerWrong} key={question.id}>
+                            const answered = Number.isInteger(selected)
+                            const correct = answered && selected === Number(question.correct_option_index)
+                            const answerClass = !answered ? styles.answerUnanswered : correct ? styles.answerCorrect : styles.answerWrong
+                            return <div className={answerClass} key={question.id}>
                               <strong>{Number(index + 1).toLocaleString('fa-IR')}. {question.prompt}</strong>
-                              <span>پاسخ: {selected === null || selected === undefined ? 'بدون پاسخ' : question.options?.[selected]}</span>
+                              <span>{answered ? `پاسخ: ${question.options?.[selected]}` : 'بدون پاسخ — بدون امتیاز'}</span>
                               {!correct ? <span>پاسخ درست: {question.options?.[question.correct_option_index]}</span> : null}
                               {question.explanation ? <p>{question.explanation}</p> : null}
                             </div>
