@@ -34,6 +34,7 @@ const localDateKey = () => {
 
 const T = {
   de: {
+    examDeduction: 'Punktabzug',
     overview: 'Übersicht', settings: 'Einstellungen', contact: 'Kontakt', profileLabel: 'Dein Profil',
     exams: 'Prüfungsarchiv', examArchiveTitle: 'Deine Prüfungen', examArchiveSub: 'Alle Prüfungen, Ergebnisse und offenen Feedbacks an einem Ort.',
     examTotal: 'Teilnahmen', examAverage: 'Durchschnitt', examBest: 'Bestes Ergebnis', examPoints: 'Gesamtpunkte', examScore: 'Punkte',
@@ -109,6 +110,7 @@ const T = {
     subscriptionRequestSaved: 'Anfrage gespeichert. Die E-Mail-Benachrichtigung konnte gerade nicht versendet werden.', subscriptionRequestError: 'Die Anfrage konnte nicht gesendet werden.', requestSending: 'Wird gesendet…',
   },
   en: {
+    examDeduction: 'Deduction',
     overview: 'Overview', settings: 'Settings', contact: 'Contact', profileLabel: 'Your profile',
     exams: 'Exam archive', examArchiveTitle: 'Your exams', examArchiveSub: 'All exams, results, and pending feedback in one place.',
     examTotal: 'Attempts', examAverage: 'Average', examBest: 'Best result', examPoints: 'Total points', examScore: 'Score',
@@ -181,6 +183,7 @@ const T = {
     subscriptionRequestSaved: 'Request saved. The email notification could not be sent right now.', subscriptionRequestError: 'The request could not be sent.', requestSending: 'Sending…',
   },
   fa: {
+    examDeduction: 'کسر نمره',
     overview: 'نمای کلی', settings: 'تنظیمات', contact: 'تماس', profileLabel: 'پروفایل شما',
     exams: 'آرشیو آزمون‌ها', examArchiveTitle: 'آزمون‌های شما', examArchiveSub: 'همه آزمون‌ها، نتیجه‌ها و نظرسنجی‌های ناتمام در یک‌جا.',
     examTotal: 'تعداد آزمون', examAverage: 'میانگین', examBest: 'بهترین نتیجه', examPoints: 'مجموع امتیاز', examScore: 'نمره',
@@ -1019,6 +1022,7 @@ export default function ProfilPage() {
                                   <span>{formatExamDate(attempt.submittedAt, lang)}</span>
                                   <span>{t.examBy}: {attempt.organizerName}</span>
                                   <span>{attempt.resultAvailable ? `${attempt.score.toLocaleString(lang === 'fa' ? 'fa-IR' : undefined)} / ${attempt.maxScore.toLocaleString(lang === 'fa' ? 'fa-IR' : undefined)} ${t.examScore}` : t.examResultHidden}</span>
+                                  {attempt.resultAvailable && attempt.negativePoints ? <span>{t.examDeduction}: −{attempt.negativePoints.toLocaleString(lang === 'fa' ? 'fa-IR' : undefined)}</span> : null}
                                 </div>
                               </div>
                               <Link className={styles.examArchiveAction} href={`/exam/${attempt.publicCode}`}>{attempt.feedbackCompleted ? t.examOpen : t.examContinueFeedback}<b>→</b></Link>

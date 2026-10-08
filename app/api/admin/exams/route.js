@@ -4,7 +4,7 @@ import { requireAdmin } from '@/lib/adminAuth'
 import { MCQ_TOPIC_GROUPS, QUESTION_BANK } from '@/data/questions'
 import { CASE_BANK } from '@/data/cases'
 import { CURRICULUM } from '@/data/curriculum'
-import { EXAM_LANGUAGES, packExamQuestionExplanation, unpackExamQuestionExplanation, validateExamInput } from '@/lib/exams'
+import { EXAM_LANGUAGES, gradeExam, packExamQuestionExplanation, unpackExamQuestionExplanation, validateExamInput } from '@/lib/exams'
 import { caseToExamMedia, getExamMediaPreview } from '@/utils/examMedia'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 
@@ -246,7 +246,20 @@ export async function GET(request) {
       const unpacked = unpackExamQuestionExplanation(question.explanation)
       return { ...question, explanation: unpacked.explanation, wrongExplanations: unpacked.wrongExplanations, media: unpacked.media }
     })
-    const attempts = addRanks(uniqueSubmittedAttempts(attemptResult.data || []))
+    const regradedAttempts = (attemptResult.data || []).map(attempt => {
+      const graded = gradeExam(questions, attempt.answers)
+      return {
+        ...attempt,
+        score: graded.score,
+        max_score: graded.maxScore,
+        percentage: graded.percentage,
+        correct_score: graded.correctScore,
+        wrong_count: graded.wrongCount,
+        unanswered_count: graded.unansweredCount,
+        negative_points: graded.negativePoints,
+      }
+    })
+    const attempts = addRanks(uniqueSubmittedAttempts(regradedAttempts))
 
     return NextResponse.json({
       exam: examResult.data,

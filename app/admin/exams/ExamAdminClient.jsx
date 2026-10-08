@@ -756,7 +756,7 @@ export default function ExamAdminClient() {
                             <small className={styles.personSpecialty}>{attempt.answers?.[PARTICIPANT_SPECIALTY_KEY] || 'تخصص ثبت نشده'}</small>
                             <small>{attempt.participant_contact || 'بدون راه ارتباطی'}</small>
                           </span>
-                          <span><small>نمره</small><strong>{attempt.score.toLocaleString('fa-IR')} از {attempt.max_score.toLocaleString('fa-IR')}</strong></span>
+                          <span><small>نمره نهایی</small><strong>{attempt.score.toLocaleString('fa-IR')} از {attempt.max_score.toLocaleString('fa-IR')}</strong>{attempt.negative_points ? <em className={styles.negativeDeduction}>{Number(attempt.negative_points).toLocaleString('fa-IR')} امتیاز کسر شده</em> : null}</span>
                           <span><small>درصد</small><strong>{Number(attempt.percentage).toLocaleString('fa-IR')}٪</strong></span>
                           <span className={styles.submitted}>{formatDate(attempt.submitted_at)}</span>
                           <span aria-hidden="true">{isOpen ? '−' : '+'}</span>

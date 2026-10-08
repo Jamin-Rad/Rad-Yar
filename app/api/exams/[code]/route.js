@@ -177,8 +177,8 @@ async function findAttempt(examId, identityKey) {
 async function buildResult(exam, attempt) {
   if (!exam.show_result) return { result: null }
   const [{ data: questions, error: questionsError }, attemptsResult] = await Promise.all([
-    supabaseAdmin.from('exam_questions').select('id,prompt,options,correct_option_index,explanation,position').eq('exam_id', exam.id).order('position'),
-    supabaseAdmin.from('exam_attempts').select('id,participant_contact,percentage,max_score,submitted_at').eq('exam_id', exam.id).gt('max_score', 0),
+    supabaseAdmin.from('exam_questions').select('id,prompt,options,correct_option_index,explanation,points,position').eq('exam_id', exam.id).order('position'),
+    supabaseAdmin.from('exam_attempts').select('id,participant_contact,answers,percentage,max_score,submitted_at').eq('exam_id', exam.id).gt('max_score', 0),
   ])
   if (questionsError) return { error: questionsError }
   if (attemptsResult.error) console.error('محاسبه رتبه آزمون انجام نشد:', attemptsResult.error)
@@ -189,7 +189,11 @@ async function buildResult(exam, attempt) {
     const identity = String(candidate.participant_contact || candidate.id).trim().toLowerCase()
     if (!uniqueAttempts.has(identity)) uniqueAttempts.set(identity, candidate)
   }
-  const rankedAttempts = [...uniqueAttempts.values()]
+  const rankedAttempts = [...uniqueAttempts.values()].map(candidate => ({
+    ...candidate,
+    percentage: gradeExam(questions || [], candidate.answers).percentage,
+  }))
+  const gradedAttempt = gradeExam(questions || [], attempt.answers)
 
   const review = (questions || []).map(question => {
     const unpacked = unpackExamQuestionExplanation(question.explanation)
@@ -209,10 +213,14 @@ async function buildResult(exam, attempt) {
   })
   return {
     result: {
-      score: Number(attempt.score),
-      maxScore: Number(attempt.max_score),
-      percentage: Number(attempt.percentage),
-      rank: attemptsResult.error ? null : rankedAttempts.filter(candidate => Number(candidate.percentage) > Number(attempt.percentage)).length + 1,
+      score: gradedAttempt.score,
+      correctScore: gradedAttempt.correctScore,
+      maxScore: gradedAttempt.maxScore,
+      percentage: gradedAttempt.percentage,
+      wrongCount: gradedAttempt.wrongCount,
+      unansweredCount: gradedAttempt.unansweredCount,
+      negativePoints: gradedAttempt.negativePoints,
+      rank: attemptsResult.error ? null : rankedAttempts.filter(candidate => Number(candidate.percentage) > gradedAttempt.percentage).length + 1,
       totalParticipants: attemptsResult.error ? null : rankedAttempts.length,
       review,
     },

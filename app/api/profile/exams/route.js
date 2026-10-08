@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { PARTICIPANT_USER_KEY } from '@/data/medicalSpecialties'
+import { gradeExam } from '@/lib/exams'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 import { getSignedInUserIdentity } from '@/lib/userIdentity'
 
@@ -21,7 +22,7 @@ export async function GET() {
   if (!identity) return NextResponse.json({ error: 'برای مشاهده آرشیو باید وارد شوید.' }, { status: 401 })
   if (!isSupabaseAdminConfigured || !supabaseAdmin) return unavailable()
 
-  const fields = 'id,exam_id,participant_name,participant_contact,score,max_score,percentage,feedback_submitted_at,started_at,submitted_at'
+  const fields = 'id,exam_id,participant_name,participant_contact,answers,score,max_score,percentage,feedback_submitted_at,started_at,submitted_at'
   const requests = [
     supabaseAdmin
       .from('exam_attempts')
@@ -55,19 +56,32 @@ export async function GET() {
   }
 
   const examIds = [...new Set(attempts.map(attempt => attempt.exam_id))]
-  const { data: exams, error: examError } = await supabaseAdmin
-    .from('exams')
-    .select('id,public_code,title,description,organizer_name,language,status,show_result')
-    .in('id', examIds)
-  if (examError) {
-    console.error('اطلاعات آزمون‌های آرشیو قابل بارگذاری نیست:', examError)
+  const [examResult, questionResult] = await Promise.all([
+    supabaseAdmin
+      .from('exams')
+      .select('id,public_code,title,description,organizer_name,language,status,show_result')
+      .in('id', examIds),
+    supabaseAdmin
+      .from('exam_questions')
+      .select('id,exam_id,correct_option_index,points')
+      .in('exam_id', examIds),
+  ])
+  if (examResult.error || questionResult.error) {
+    console.error('اطلاعات آزمون‌های آرشیو قابل بارگذاری نیست:', examResult.error || questionResult.error)
     return unavailable()
   }
 
-  const examById = new Map((exams || []).map(exam => [exam.id, exam]))
+  const examById = new Map((examResult.data || []).map(exam => [exam.id, exam]))
+  const questionsByExamId = new Map()
+  for (const question of questionResult.data || []) {
+    const questions = questionsByExamId.get(question.exam_id) || []
+    questions.push(question)
+    questionsByExamId.set(question.exam_id, questions)
+  }
   const archive = attempts.flatMap(attempt => {
     const exam = examById.get(attempt.exam_id)
     if (!exam) return []
+    const graded = gradeExam(questionsByExamId.get(attempt.exam_id) || [], attempt.answers)
     return [{
       id: attempt.id,
       title: exam.title,
@@ -76,9 +90,10 @@ export async function GET() {
       language: exam.language,
       publicCode: exam.public_code,
       participantContact: attempt.participant_contact,
-      score: exam.show_result ? Number(attempt.score) : null,
-      maxScore: exam.show_result ? Number(attempt.max_score) : null,
-      percentage: exam.show_result ? Number(attempt.percentage) : null,
+      score: exam.show_result ? graded.score : null,
+      maxScore: exam.show_result ? graded.maxScore : null,
+      percentage: exam.show_result ? graded.percentage : null,
+      negativePoints: exam.show_result ? graded.negativePoints : null,
       submittedAt: attempt.submitted_at,
       feedbackCompleted: Boolean(attempt.feedback_submitted_at),
       resultAvailable: Boolean(exam.show_result),

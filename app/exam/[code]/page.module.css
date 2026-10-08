@@ -53,6 +53,7 @@
 .identityForm button { min-height: 49px; margin-top: 4px; border: 0; border-radius: 11px; background: #f45b16; color: #fff; cursor: pointer; font: 800 14px Vazirmatn, sans-serif; box-shadow: 0 10px 24px rgba(244,91,22,.22); }
 .identityForm button:disabled { opacity: .65; cursor: wait; }
 .identityHint { padding: 11px 13px; border: 1px solid #dbeafe; border-radius: 10px; background: #eff6ff; color: #375a7f; font-size: 10px; line-height: 1.9; text-align: center; }
+.scoringRule { padding: 11px 13px; border: 1px solid #fed7aa; border-radius: 10px; background: #fff7ed; color: #9a3412; font-size: 10px; font-weight: 800; line-height: 1.9; text-align: center; }
 .availabilityNotice { padding: 11px 13px; border: 1px solid #fed7aa; border-radius: 10px; background: #fff7ed; color: #9a3412; font-size: 11px; line-height: 1.8; text-align: center; }
 .notice { color: #8b96a7; font-size: 10px; line-height: 1.8; text-align: center; }
 .honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
@@ -286,7 +287,8 @@
 :global(html[data-theme='dark']) .option,
 :global(html[data-theme='dark']) .previous { border-color: #2c3d54; background: #101e31; color: #dce5ef; }
 :global(html[data-theme='dark']) .identityHint { border-color: #24456a; background: #0d2238; color: #bfdbfe; }
-:global(html[data-theme='dark']) .availabilityNotice { border-color: #7c4a1e; background: #2a1a0d; color: #fdba74; }
+:global(html[data-theme='dark']) .availabilityNotice,
+:global(html[data-theme='dark']) .scoringRule { border-color: #7c4a1e; background: #2a1a0d; color: #fdba74; }
 :global(html[data-theme='dark']) .option:hover { background: #15253a; }
 :global(html[data-theme='dark']) .optionSelected { border-color: #f97316; background: rgba(249,115,22,.12); color: #f2f5f9; }
 :global(html[data-theme='dark']) .scoreCircle > div { background: #0f1b2d; }
@@ -380,7 +382,7 @@
 .resultScoreArea .scoreCircle > div { width: 178px; height: 178px; }
 .resultScoreArea .scoreCircle strong { font-size: 45px; line-height: 1; }
 .resultScoreArea .scoreCircle span { margin-top: 8px; font-size: 11px; }
-.resultStats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; width: 100%; }
+.resultStats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; width: 100%; }
 .resultStats > div { display: grid; gap: 5px; min-height: 86px; align-content: center; padding: 13px; border-radius: 12px; background: #f4f7fb; text-align: center; }
 .resultStats span { color: #7c899c; font-size: 9px; }
 .resultStats strong { color: #182742; font-size: 12px; line-height: 1.7; }
