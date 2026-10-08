@@ -155,7 +155,7 @@ export default function ExamAdminClient() {
   const [detailLoading, setDetailLoading] = useState(false)
   const [expandedAttempt, setExpandedAttempt] = useState('')
   const [saving, setSaving] = useState(false)
-  const [reopenDurationMinutes, setReopenDurationMinutes] = useState(15)
+  const [reopenDurationMinutes, setReopenDurationMinutes] = useState(5)
   const [createdLink, setCreatedLink] = useState('')
   const [copied, setCopied] = useState('')
   const [questionBank, setQuestionBank] = useState([])
@@ -463,9 +463,6 @@ export default function ExamAdminClient() {
 
   async function reopenAttempt(attempt) {
     if (!detail?.exam || !attempt?.id || !attempt.unanswered_count) return
-    const confirmed = window.confirm(`فقط ${Number(attempt.unanswered_count).toLocaleString('fa-IR')} سؤال بی‌پاسخ «${attempt.participant_name}» برای ${Number(reopenDurationMinutes).toLocaleString('fa-IR')} دقیقه باز شود؟ پاسخ‌های قبلی قفل می‌مانند.`)
-    if (!confirmed) return
-
     setSaving(true)
     setError('')
     setActionMessage('')
@@ -797,10 +794,10 @@ export default function ExamAdminClient() {
                                 <span>{reopenActive ? `مهلت تا ${formatDate(attempt.reopen.reopenedUntil)} · پاسخ‌های قبلی قفل هستند` : 'فقط سؤال‌های بی‌پاسخ قابل حل می‌شوند.'}</span>
                               </div>
                               <select aria-label="مدت بازگشایی" value={reopenDurationMinutes} onChange={event => setReopenDurationMinutes(Number(event.target.value))} disabled={saving || !attempt.unanswered_count}>
+                                <option value={2}>۲ دقیقه</option>
+                                <option value={5}>۵ دقیقه</option>
+                                <option value={7}>۷ دقیقه</option>
                                 <option value={10}>۱۰ دقیقه</option>
-                                <option value={15}>۱۵ دقیقه</option>
-                                <option value={30}>۳۰ دقیقه</option>
-                                <option value={60}>۶۰ دقیقه</option>
                               </select>
                               <button type="button" className={styles.reopenButton} disabled={saving || !attempt.unanswered_count} onClick={() => reopenAttempt(attempt)}>{reopenActive ? 'تمدید بازگشایی' : 'بازگشایی سؤال‌های بی‌پاسخ'}</button>
                             </div>

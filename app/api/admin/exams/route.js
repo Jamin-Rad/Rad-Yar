@@ -380,7 +380,7 @@ export async function PATCH(request) {
     const examId = typeof payload?.id === 'string' ? payload.id : ''
     const attemptId = typeof payload?.attemptId === 'string' ? payload.attemptId : ''
     const durationMinutes = Number(payload?.durationMinutes)
-    if (!UUID_PATTERN.test(examId) || !UUID_PATTERN.test(attemptId) || !Number.isInteger(durationMinutes) || durationMinutes < 5 || durationMinutes > 120) {
+    if (!UUID_PATTERN.test(examId) || !UUID_PATTERN.test(attemptId) || ![2, 5, 7, 10].includes(durationMinutes)) {
       return NextResponse.json({ error: 'شناسه شرکت‌کننده یا مدت بازگشایی معتبر نیست.' }, { status: 400 })
     }
 
