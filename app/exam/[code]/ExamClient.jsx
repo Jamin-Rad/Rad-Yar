@@ -1,9 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import Link from 'next/link'
 import { useTheme } from '@/providers/ThemeProvider'
-import RadYarIcon from '@/components/RadYarIcon'
 import MedicalSequenceViewer from '@/components/MedicalSequenceViewer'
 import { getCorrectAnswerExplanation, getWrongAnswerExplanation } from '@/utils/answerFeedback'
 import styles from './page.module.css'
@@ -34,10 +32,9 @@ function ExamFrame({ children, language = 'fa', dir = 'rtl' }) {
   return (
     <>
       <header className={styles.examTopbar} dir={dir}>
-        <Link href="/?lang=de" className={styles.homeLink} dir="ltr" aria-label="RadYar Startseite auf Deutsch" title="RadYar Startseite auf Deutsch">
-          <RadYarIcon size={30} />
+        <div className={styles.homeLink} dir="ltr" aria-label="RadYar">
           <span className={styles.examWordmark} aria-hidden="true"><span className={styles.rad}>RAD</span><span className={styles.yar}>YAR</span></span>
-        </Link>
+        </div>
         <button type="button" className={styles.themeToggle} onClick={toggleTheme} aria-label={themeLabel} title={themeLabel}>
           <span aria-hidden="true">{theme === 'dark' ? '☀' : '☾'}</span>
           <strong>{themeLabel}</strong>
@@ -418,7 +415,6 @@ export default function ExamClient({ code }) {
             <div><h2>{copy.nextStep}</h2><p>{copy.reviewHint}</p></div>
             <div className={styles.resultNextActions}>
               {reviewItems.length ? <button type="button" onClick={() => { setReviewIndex(0); setReviewOpen(value => !value) }}>{reviewOpen ? copy.hideReview : copy.review}<ChevronIcon /></button> : null}
-              <Link href="/?lang=de">{copy.backHome}</Link>
             </div>
             {reviewItems.length ? (
               <div className={styles.resultReviewPreview}>
