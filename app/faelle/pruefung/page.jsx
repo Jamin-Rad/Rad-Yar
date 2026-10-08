@@ -12,9 +12,9 @@ import quizStyles from '@/app/ueben/quiz/page.module.css'
 import styles from './page.module.css'
 
 const REGION_NAMES = {
-  de: { msk: 'Muskuloskelettales', abdomen: 'Abdomen' },
-  en: { msk: 'Musculoskeletal', abdomen: 'Abdomen' },
-  fa: { msk: 'اسکلتی-عضلانی', abdomen: 'شکم' },
+  de: { msk: 'Muskuloskelettales', thorax: 'Thorax', abdomen: 'Abdomen' },
+  en: { msk: 'Musculoskeletal', thorax: 'Thorax', abdomen: 'Abdomen' },
+  fa: { msk: 'اسکلتی-عضلانی', thorax: 'توراکس', abdomen: 'شکم' },
 }
 
 const UI = {
@@ -30,7 +30,7 @@ const UI = {
     incorrect: 'Leider falsch',
     correctAnswer: 'Richtige Antwort:',
     explanation: 'Einordnung',
-    whyWrong: 'Warum deine Antwort falsch ist',
+    whyWrong: 'Einordnung der gewählten Antwort',
     source: 'Originalfall ansehen',
     score: 'Punktestand',
     result: 'Dein Ergebnis',
@@ -53,7 +53,7 @@ const UI = {
     incorrect: 'Unfortunately incorrect',
     correctAnswer: 'Correct answer:',
     explanation: 'Assessment',
-    whyWrong: 'Why your answer is incorrect',
+    whyWrong: 'Selected option analysis',
     source: 'View original case',
     score: 'Score',
     result: 'Your result',
@@ -76,7 +76,7 @@ const UI = {
     incorrect: 'نادرست',
     correctAnswer: 'پاسخ صحیح:',
     explanation: 'ارزیابی',
-    whyWrong: 'چرا این پاسخ نادرست است',
+    whyWrong: 'بررسی گزینهٔ انتخاب‌شده',
     source: 'مشاهده کیس اصلی',
     score: 'امتیاز',
     result: 'نتیجه شما',
@@ -205,7 +205,9 @@ function CaseExamContent() {
                       <span>{ui.rightAnswer} <strong className={styles.correctText}>{caseItem.correct}) {caseItem.options.find(option => option.id === caseItem.correct)?.text}</strong></span>
                     </div>
                   )}
-                  <div className={quizStyles.sumExp}>{caseItem.explanation}</div>
+                  <div className={quizStyles.sumExp}>
+                    {correct ? caseItem.explanation : getWrongAnswerExplanation(caseItem, answer?.selected, lang) || caseItem.explanation}
+                  </div>
                 </article>
               )
             })}

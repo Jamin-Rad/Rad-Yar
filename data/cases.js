@@ -33,10 +33,224 @@ function locCase(item, lang) {
     title: t(item.title),
     vignette: t(item.vignette),
     question: t(item.question),
+    prompt: t(item.prompt),
+    plane: t(item.plane),
+    images: item.images?.map(image => ({ ...image, label: t(image.label) })),
     options: item.options.map(opt => ({ ...opt, text: t(opt.text) })),
     explanation: t(item.explanation),
+    wrongExplanations: item.wrongExplanations && Object.fromEntries(
+      Object.entries(item.wrongExplanations).map(([key, value]) => [key, t(value)])
+    ),
+    credit: t(item.credit),
   }
 }
+
+const TROPONIN_PRUEFUNG_CASES = [
+  {
+    id: 'cardiac-acute-inferior-mi-mvo-176258',
+    fachId: 'thorax',
+    kapitelId: 'thorax-kardio',
+    topicId: 'myokardinfarkt-differentialdiagnosen',
+    image: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/acute-mi-176258/02-short-axis-psir-mid.jpeg',
+    images: [
+      {
+        src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/acute-mi-176258/01-short-axis-psir-basal.jpeg',
+        label: { de: 'Short-axis PSIR · basal', en: 'Short-axis PSIR · basal', fa: 'Short-axis PSIR · بازال' },
+      },
+      {
+        src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/acute-mi-176258/02-short-axis-psir-mid.jpeg',
+        label: { de: 'Short-axis PSIR · midventrikulär', en: 'Short-axis PSIR · mid-ventricular', fa: 'Short-axis PSIR · میدونتریکولار' },
+      },
+      {
+        src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/acute-mi-176258/03-short-axis-stir.jpeg',
+        label: { de: 'Short-axis STIR', en: 'Short-axis STIR', fa: 'Short-axis STIR' },
+      },
+    ],
+    modality: 'MRT',
+    plane: { de: 'CMR · PSIR/LGE und STIR · kurze Achse', en: 'CMR · PSIR/LGE and STIR · short axis', fa: 'CMR · PSIR/LGE و STIR · محور کوتاه' },
+    title: { de: 'Akuter inferiorer Myokardinfarkt mit No-reflow', en: 'Acute inferior myocardial infarction with no-reflow', fa: 'انفارکت حاد اینفریور با no-reflow' },
+    vignette: {
+      de: '60-jähriger Mann mit akutem Thoraxschmerz, ST-Hebungen in II, III und aVF sowie RCA-Verschluss. Acht Tage nach erfolgreicher PCI zeigt die CMR ein 75–100 % transmurales inferiores LGE mit einem dunklen, nicht anreichernden Kern und ausgeprägtem Ödem in der STIR-Sequenz.',
+      en: 'A 60-year-old man presented with acute chest pain, ST elevation in II, III and aVF, and RCA occlusion. Eight days after successful PCI, CMR shows 75–100% transmural inferior LGE with a dark non-enhancing core and marked oedema on STIR.',
+      fa: 'مرد ۶۰ ساله با درد حاد قفسه سینه، ST elevation در لیدهای II، III و aVF و انسداد RCA مراجعه کرده است. هشت روز پس از PCI موفق، در CMR یک LGE ترانس‌مورال ۷۵ تا ۱۰۰ درصدی در دیواره اینفریور با هسته تیره و بدون enhancement و نیز ادم واضح در STIR دیده می‌شود.',
+    },
+    question: {
+      de: 'Welcher Befund erklärt den dunklen Kern innerhalb des hellen Infarktareals am besten?',
+      en: 'Which finding best explains the dark core within the bright infarct zone?',
+      fa: 'هسته تیره داخل ناحیه روشن انفارکت در LGE، بیش از همه نشان‌دهنده کدام یافته است؟',
+    },
+    prompt: {
+      de: '60-jähriger Mann mit akutem Thoraxschmerz, ST-Hebungen in II, III und aVF sowie RCA-Verschluss. Acht Tage nach erfolgreicher PCI zeigt die CMR ein 75–100 % transmurales inferiores LGE mit einem dunklen, nicht anreichernden Kern und ausgeprägtem Ödem in der STIR-Sequenz. Welcher Befund erklärt den dunklen Kern innerhalb des hellen Infarktareals am besten?',
+      en: 'A 60-year-old man presented with acute chest pain, ST elevation in II, III and aVF, and RCA occlusion. Eight days after successful PCI, CMR shows 75–100% transmural inferior LGE with a dark non-enhancing core and marked oedema on STIR. Which finding best explains the dark core within the bright infarct zone?',
+      fa: 'مرد ۶۰ ساله با درد حاد قفسه سینه، ST elevation در لیدهای II، III و aVF و انسداد RCA مراجعه کرده است. هشت روز پس از PCI موفق، در CMR یک LGE ترانس‌مورال ۷۵ تا ۱۰۰ درصدی در دیواره اینفریور با هسته تیره و بدون enhancement و نیز ادم واضح در STIR دیده می‌شود. هسته تیره داخل ناحیه روشن انفارکت در LGE، بیش از همه نشان‌دهنده کدام یافته است؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Mikrovaskuläre Obstruktion (MVO)', en: 'Microvascular obstruction (MVO)', fa: 'Microvascular obstruction (MVO)' } },
+      { id: 'B', text: { de: 'Intramyokardiale Einblutung', en: 'Intramyocardial haemorrhage', fa: 'Intramyocardial hemorrhage' } },
+      { id: 'C', text: { de: 'Viables, lediglich stunned Myokard', en: 'Viable but stunned myocardium', fa: 'میوکارد viable اما stunned' } },
+      { id: 'D', text: { de: 'Linksventrikulärer Thrombus', en: 'Left ventricular thrombus', fa: 'LV thrombus' } },
+    ],
+    correct: 'A',
+    explanation: {
+      de: 'MVO erscheint im frühen oder späten Gadolinium-Enhancement als persistierender dunkler Kern innerhalb des hyperenhancenden Infarktareals. Sie entspricht einer fehlenden mikrovaskulären Reperfusion trotz Wiedereröffnung der epikardialen Koronararterie und ist ein ungünstiger Prognosemarker.',
+      en: 'MVO appears on early or late gadolinium enhancement as a persistent dark core within the hyperenhancing infarct. It reflects failed microvascular reperfusion despite reopening of the epicardial coronary artery and is an adverse prognostic marker.',
+      fa: 'MVO در early یا late gadolinium enhancement به‌صورت یک هسته تیره و پایدار داخل ناحیه روشن انفارکت دیده می‌شود. این یافته نشان می‌دهد با وجود بازشدن شریان اپی‌کاردیال، reperfusion میکروواسکولار برقرار نشده و از نظر پیش‌آگهی نامطلوب است.',
+    },
+    wrongExplanations: {
+      B: {
+        de: 'Eine intramyokardiale Einblutung wird durch Suszeptibilität beziehungsweise Signalabfall in T2*-gewichteten Sequenzen oder im T2*-Mapping nachgewiesen. Sie kann mit MVO koexistieren, der nicht anreichernde Kern im LGE beweist für sich allein jedoch eine MVO und keine Einblutung.',
+        en: 'Intramyocardial haemorrhage is identified by susceptibility-related signal loss on T2*-weighted imaging or T2* mapping. It may coexist with MVO, but a non-enhancing core on LGE directly demonstrates MVO rather than haemorrhage.',
+        fa: 'Intramyocardial hemorrhage با signal loss ناشی از susceptibility در T2*-weighted imaging یا T2* mapping تشخیص داده می‌شود. ممکن است همراه MVO باشد، اما هسته بدون enhancement در LGE مستقیماً MVO را نشان می‌دهد و به‌تنهایی اثبات‌کننده hemorrhage نیست.',
+      },
+      C: {
+        de: 'Stunned, aber viables Myokard zeigt kein 75–100 % transmurales Infarkt-LGE. Bei dieser Ausdehnung ist eine funktionelle Erholung des betroffenen inferioren Myokards sehr unwahrscheinlich.',
+        en: 'Stunned but viable myocardium does not show 75–100% transmural infarct-pattern LGE. With this transmural extent, functional recovery of the affected inferior myocardium is very unlikely.',
+        fa: 'میوکارد stunned ولی viable نباید LGE انفارکتی ۷۵ تا ۱۰۰ درصدی و ترانس‌مورال داشته باشد. با این میزان درگیری دیواره، احتمال بازگشت عملکرد بخش اینفریور بسیار کم است.',
+      },
+      D: {
+        de: 'Ein LV-Thrombus liegt intrakavitätär an der Endokardoberfläche und bleibt in frühen und späten Kontrastsequenzen dunkel. Hier befindet sich der Defekt dagegen innerhalb der kontrastaufnehmenden infarzierten Myokardwand.',
+        en: 'An LV thrombus is intracavitary, adherent to the endocardial surface, and remains dark on early and late contrast images. This defect lies within the enhancing infarcted myocardial wall.',
+        fa: 'LV thrombus داخل حفره و چسبیده به سطح اندوکارد قرار می‌گیرد و در تصاویر early و late پس از کنتراست تیره می‌ماند. در این کیس نقص سیگنال داخل دیواره انفارکته و در میان LGE قرار دارد.',
+      },
+    },
+    source: 'https://radiopaedia.org/cases/176258/studies/141711?lang=us',
+    credit: {
+      de: 'Bilder: Case courtesy of Joachim Feger, Radiopaedia.org, rID-176258, CC BY-NC-SA 3.0',
+      en: 'Images: Case courtesy of Joachim Feger, Radiopaedia.org, rID-176258, CC BY-NC-SA 3.0',
+      fa: 'تصاویر: Case courtesy of Joachim Feger, Radiopaedia.org, rID-176258, CC BY-NC-SA 3.0',
+    },
+  },
+  {
+    id: 'cardiac-takotsubo-33052',
+    fachId: 'thorax',
+    kapitelId: 'thorax-kardio',
+    topicId: 'myokardinfarkt-differentialdiagnosen',
+    image: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/takotsubo-33052/01-2ch-cine.jpg',
+    images: [
+      { src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/takotsubo-33052/01-2ch-cine.jpg', label: { de: '2-Kammer Cine SSFP', en: '2-chamber cine SSFP', fa: 'Cine SSFP دوحفره‌ای' } },
+      { src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/takotsubo-33052/03-2ch-stir.jpg', label: { de: '2-Kammer STIR', en: '2-chamber STIR', fa: 'STIR دوحفره‌ای' } },
+      { src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/takotsubo-33052/06-2ch-lge.jpg', label: { de: '2-Kammer LGE', en: '2-chamber LGE', fa: 'LGE دوحفره‌ای' } },
+    ],
+    modality: 'MRT',
+    plane: { de: 'CMR · Cine, STIR und LGE · 2-Kammer', en: 'CMR · cine, STIR and LGE · 2 chamber', fa: 'CMR · Cine، STIR و LGE · دوحفره‌ای' },
+    title: { de: 'Takotsubo-Syndrom im CMR', en: 'Takotsubo syndrome on CMR', fa: 'سندروم Takotsubo در CMR' },
+    vignette: {
+      de: '55-jährige Frau; in der Echokardiografie bestand der Verdacht auf ein Ventrikelaneurysma oder eine gedeckte Ruptur. Die CMR zeigt ein charakteristisches Ballooning mit regionalem Ödem, aber kein korrespondierendes Infarkt-LGE.',
+      en: 'A 55-year-old woman was suspected on echocardiography to have a ventricular aneurysm or contained rupture. CMR shows characteristic ballooning with regional oedema but no corresponding infarct-pattern LGE.',
+      fa: 'خانم ۵۵ ساله که در اکوکاردیوگرافی برای او احتمال ventricular aneurysm یا contained rupture مطرح شده بود. CMR بالونینگ مشخص همراه با ادم موضعی را نشان می‌دهد، اما LGE انفارکتی متناظر وجود ندارد.',
+    },
+    question: {
+      de: 'Welche Befundkombination stützt die Diagnose Takotsubo am stärksten?',
+      en: 'Which combination of findings most strongly supports Takotsubo syndrome?',
+      fa: 'کدام ترکیب یافته بیشترین حمایت را از تشخیص Takotsubo می‌کند؟',
+    },
+    prompt: {
+      de: '55-jährige Frau; in der Echokardiografie bestand der Verdacht auf ein Ventrikelaneurysma oder eine gedeckte Ruptur. Die CMR zeigt ein charakteristisches Ballooning. Welche zusätzliche Befundkombination stützt die Diagnose Takotsubo am stärksten?',
+      en: 'A 55-year-old woman was suspected on echocardiography to have a ventricular aneurysm or contained rupture. CMR shows characteristic ballooning. Which additional combination of findings most strongly supports Takotsubo syndrome?',
+      fa: 'خانم ۵۵ ساله که در اکوکاردیوگرافی برای او احتمال ventricular aneurysm یا contained rupture مطرح شده بود. CMR بالونینگ مشخص را نشان می‌دهد. کدام ترکیب یافته تکمیلی بیشترین حمایت را از تشخیص Takotsubo می‌کند؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Ödem in den dysfunktionellen Segmenten ohne korrespondierendes LGE', en: 'Oedema in the dysfunctional segments without corresponding LGE', fa: 'ادم در سگمنت‌های دچار اختلال حرکت، بدون LGE متناظر' } },
+      { id: 'B', text: { de: 'Subendokardiales bis transmurales LGE im LAD-Territorium', en: 'Subendocardial-to-transmural LGE in the LAD territory', fa: 'LGE ساب‌اندوکاردیال تا ترانس‌مورال در قلمرو LAD' } },
+      { id: 'C', text: { de: 'Subepikardiales inferolaterales LGE mit Perikarderguss', en: 'Subepicardial inferolateral LGE with pericardial effusion', fa: 'LGE ساب‌اپیکاردیال اینفرولاترال همراه با افیوژن پریکارد' } },
+      { id: 'D', text: { de: 'Ausgedünnte aneurysmatische Wand mit transmuralem LGE', en: 'Thinned aneurysmal wall with transmural LGE', fa: 'دیواره نازک و آنوریسمال همراه با LGE ترانس‌مورال' } },
+    ],
+    correct: 'A',
+    explanation: {
+      de: 'Bei Takotsubo kann in den akut dysfunktionellen Segmenten ein T2/STIR-Ödem vorliegen; ein korrespondierendes persistierendes Infarkt-LGE fehlt typischerweise. Diese Kombination hilft, Takotsubo von akutem Infarkt und Myokarditis abzugrenzen.',
+      en: 'Takotsubo syndrome may produce T2/STIR oedema in the acutely dysfunctional segments, while corresponding persistent infarct-pattern LGE is typically absent. This combination helps distinguish it from acute infarction and myocarditis.',
+      fa: 'در Takotsubo ممکن است در سگمنت‌های دچار اختلال حاد حرکت، ادم در T2/STIR وجود داشته باشد؛ اما LGE پایدار با الگوی انفارکتی معمولاً دیده نمی‌شود. این ترکیب به افتراق از acute MI و myocarditis کمک می‌کند.',
+    },
+    wrongExplanations: {
+      B: {
+        de: 'Subendokardiales oder transmurales LGE in einem LAD-Versorgungsgebiet ist ein ischämisches Narbenmuster und spricht für einen LAD-Infarkt, nicht für klassisches Takotsubo.',
+        en: 'Subendocardial or transmural LGE in an LAD distribution is an ischaemic scar pattern and supports LAD infarction rather than classic Takotsubo syndrome.',
+        fa: 'LGE ساب‌اندوکاردیال یا ترانس‌مورال در قلمرو LAD یک الگوی ایسکمیک است و به نفع infarction در LAD است، نه Takotsubo کلاسیک.',
+      },
+      C: {
+        de: 'Subepikardiales inferolaterales LGE mit begleitender Perikardreaktion ist ein typisches nichtischämisches Muster der Myoperikarditis.',
+        en: 'Subepicardial inferolateral LGE with associated pericardial reaction is a typical non-ischaemic pattern of myopericarditis.',
+        fa: 'LGE ساب‌اپیکاردیال اینفرولاترال همراه با واکنش پریکارد، الگوی غیرایسکمیک تیپیک myopericarditis است.',
+      },
+      D: {
+        de: 'Eine ausgedünnte, aneurysmatische Wand mit transmuralem LGE spricht für einen chronischen Infarkt mit echtem LV-Aneurysma. Bei Takotsubo ist die Wandbewegungsstörung reversibel und es fehlt typischerweise eine transmurale Narbe.',
+        en: 'A thinned aneurysmal wall with transmural LGE indicates chronic infarction with a true LV aneurysm. Takotsubo wall-motion abnormalities are reversible and typically lack a transmural scar.',
+        fa: 'دیواره نازک و آنوریسمال با LGE ترانس‌مورال به نفع infarction مزمن و true LV aneurysm است. اختلال حرکت در Takotsubo برگشت‌پذیر است و معمولاً اسکار ترانس‌مورال ندارد.',
+      },
+    },
+    source: 'https://radiopaedia.org/cases/33052/studies/34073?lang=us',
+    credit: {
+      de: 'Bilder: Case courtesy of Yune Kwong, Radiopaedia.org, rID-33052, CC BY-NC-SA 3.0',
+      en: 'Images: Case courtesy of Yune Kwong, Radiopaedia.org, rID-33052, CC BY-NC-SA 3.0',
+      fa: 'تصاویر: Case courtesy of Yune Kwong, Radiopaedia.org, rID-33052, CC BY-NC-SA 3.0',
+    },
+  },
+  {
+    id: 'cardiac-minoca-workup-myopericarditis-77023',
+    fachId: 'thorax',
+    kapitelId: 'thorax-kardio',
+    topicId: 'myokardinfarkt-differentialdiagnosen',
+    image: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/05-short-axis-lge.jpeg',
+    images: [
+      { src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/03-short-axis-stir.jpeg', label: { de: 'Short-axis STIR', en: 'Short-axis STIR', fa: 'Short-axis STIR' } },
+      { src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/04-4ch-lge.jpeg', label: { de: '4-Kammer LGE', en: '4-chamber LGE', fa: 'LGE چهارحفره‌ای' } },
+      { src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/05-short-axis-lge.jpeg', label: { de: 'Short-axis LGE', en: 'Short-axis LGE', fa: 'Short-axis LGE' } },
+    ],
+    modality: 'MRT',
+    plane: { de: 'CMR · STIR und LGE', en: 'CMR · STIR and LGE', fa: 'CMR · STIR و LGE' },
+    title: { de: 'CMR-Abklärung bei MINOCA-Konstellation', en: 'CMR work-up of a MINOCA presentation', fa: 'بررسی CMR در بیمار با تابلوی MINOCA' },
+    vignette: {
+      de: '30-jähriger Mann mit Thoraxschmerz nach akuter Gastroenteritis, diffuser ST-Hebung und deutlich erhöhtem Troponin. Die Koronarangiografie zeigt keine Stenose von 50 % oder mehr. In der CMR finden sich laterales Ödem, fleckiges midmyokardiales und subepikardiales inferolaterales LGE sowie ein kleiner Perikarderguss.',
+      en: 'A 30-year-old man presents with chest pain after acute gastroenteritis, diffuse ST elevation and markedly elevated troponin. Coronary angiography shows no stenosis of 50% or greater. CMR demonstrates lateral oedema, patchy mid-wall and subepicardial inferolateral LGE, and a small pericardial effusion.',
+      fa: 'مرد ۳۰ ساله پس از acute gastroenteritis با درد قفسه سینه، ST elevation منتشر و افزایش واضح troponin مراجعه کرده است. در coronary angiography هیچ تنگی ۵۰ درصد یا بیشتر دیده نمی‌شود. CMR ادم دیواره لترال، LGE لکه‌ای میدوال و ساب‌اپیکاردیال در ناحیه اینفرولاترال و افیوژن کوچک پریکارد را نشان می‌دهد.',
+    },
+    question: {
+      de: 'Welche Interpretation ist am präzisesten?',
+      en: 'Which interpretation is most precise?',
+      fa: 'دقیق‌ترین تفسیر کدام است؟',
+    },
+    prompt: {
+      de: '30-jähriger Mann mit Thoraxschmerz nach akuter Gastroenteritis, diffuser ST-Hebung und deutlich erhöhtem Troponin. Die Koronarangiografie zeigt keine Stenose von 50 % oder mehr. In der CMR finden sich laterales Ödem, fleckiges midmyokardiales und subepikardiales inferolaterales LGE sowie ein kleiner Perikarderguss. Welche Interpretation ist am präzisesten?',
+      en: 'A 30-year-old man presents with chest pain after acute gastroenteritis, diffuse ST elevation and markedly elevated troponin. Coronary angiography shows no stenosis of 50% or greater. CMR demonstrates lateral oedema, patchy mid-wall and subepicardial inferolateral LGE, and a small pericardial effusion. Which interpretation is most precise?',
+      fa: 'مرد ۳۰ ساله پس از acute gastroenteritis با درد قفسه سینه، ST elevation منتشر و افزایش واضح troponin مراجعه کرده است. در coronary angiography هیچ تنگی ۵۰ درصد یا بیشتر دیده نمی‌شود. CMR ادم دیواره لترال، LGE لکه‌ای میدوال و ساب‌اپیکاردیال در ناحیه اینفرولاترال و افیوژن کوچک پریکارد را نشان می‌دهد. دقیق‌ترین تفسیر کدام است؟',
+    },
+    options: [
+      { id: 'A', text: { de: 'Akute Myoperikarditis; nach Klärung der Ursache ist MINOCA nicht mehr die Abschlussdiagnose', en: 'Acute myopericarditis; once the cause is established, MINOCA is no longer the final diagnosis', fa: 'Acute myopericarditis؛ با مشخص‌شدن علت، دیگر نباید MINOCA را به‌عنوان تشخیص نهایی گزارش کرد' } },
+      { id: 'B', text: { de: 'Ischämischer MINOCA durch Plaqueruptur', en: 'Ischaemic MINOCA caused by plaque rupture', fa: 'MINOCA ایسکمیک ناشی از plaque rupture' } },
+      { id: 'C', text: { de: 'Takotsubo-Syndrom', en: 'Takotsubo syndrome', fa: 'Takotsubo syndrome' } },
+      { id: 'D', text: { de: 'Kleiner abgeschlossener Myokardinfarkt', en: 'Small completed myocardial infarction', fa: 'انفارکت کوچک و کامل‌شده میوکارد' } },
+    ],
+    correct: 'A',
+    explanation: {
+      de: 'Bei Troponindynamik und nichtobstruktiven Koronarien wird MINOCA zunächst verwendet, solange die Ursache unklar ist. Das hier gezeigte subepikardiale/midmyokardiale LGE mit Ödem und Perikardreaktion identifiziert eine akute Myoperikarditis; damit ist die Ursache geklärt und MINOCA nicht die endgültige Diagnose.',
+      en: 'With a troponin rise/fall and non-obstructive coronary arteries, MINOCA is used while the cause remains unexplained. The subepicardial/mid-wall LGE with oedema and pericardial reaction identifies acute myopericarditis, so the cause is established and MINOCA is no longer the final diagnosis.',
+      fa: 'وقتی troponin افزایش پیدا کرده اما عروق کرونر انسداد قابل‌توجه ندارند، تا پیش از مشخص‌شدن علت از اصطلاح MINOCA استفاده می‌شود. در این کیس، LGE ساب‌اپیکاردیال/میدوال همراه با ادم و واکنش پریکارد، acute myopericarditis را مشخص می‌کند؛ بنابراین علت معلوم شده و MINOCA تشخیص نهایی نیست.',
+    },
+    wrongExplanations: {
+      B: {
+        de: 'Ein ischämischer MINOCA durch Plaqueruptur würde in der CMR ein subendokardiales oder transmurales LGE in einem Koronarterritorium erwarten lassen; der Plaquemechanismus müsste zusätzlich mit OCT oder IVUS nachgewiesen werden. Das vorliegende LGE spart das Subendokard aus.',
+        en: 'Ischaemic MINOCA from plaque rupture should produce subendocardial or transmural LGE in a coronary distribution, and the plaque mechanism would require OCT or IVUS confirmation. This LGE spares the subendocardium.',
+        fa: 'در MINOCA ایسکمیک ناشی از plaque rupture انتظار می‌رود LGE به‌صورت ساب‌اندوکاردیال یا ترانس‌مورال و در یک قلمرو کرونری باشد؛ خود plaque rupture نیز باید با OCT یا IVUS اثبات شود. در این کیس subendocardium حفظ شده است.',
+      },
+      C: {
+        de: 'Takotsubo zeigt eine charakteristische reversible Wandbewegungsstörung und meist kein fokales persistierendes LGE. Das subepikardiale inferolaterale LGE mit Perikardreaktion passt stattdessen zu Myoperikarditis.',
+        en: 'Takotsubo syndrome shows a characteristic reversible wall-motion abnormality and usually no focal persistent LGE. Subepicardial inferolateral LGE with pericardial reaction instead supports myopericarditis.',
+        fa: 'در Takotsubo یک الگوی مشخص و برگشت‌پذیر اختلال حرکت دیواره دیده می‌شود و معمولاً LGE فوکال و پایدار وجود ندارد. LGE ساب‌اپیکاردیال اینفرولاترال همراه با واکنش پریکارد به نفع myopericarditis است.',
+      },
+      D: {
+        de: 'Ein Myokardinfarkt beginnt am Subendokard und folgt einer vaskulären Verteilung. Das fleckige midmyokardiale/subepikardiale Muster mit Aussparung des Subendokards ist nicht infarcttypisch.',
+        en: 'Myocardial infarction begins in the subendocardium and follows a vascular distribution. A patchy mid-wall/subepicardial pattern that spares the subendocardium is not an infarct pattern.',
+        fa: 'انفارکت میوکارد از subendocardium شروع می‌شود و توزیع عروقی دارد. الگوی لکه‌ای میدوال/ساب‌اپیکاردیال با حفظ subendocardium، الگوی infarction نیست.',
+      },
+    },
+    source: 'https://radiopaedia.org/cases/77023/studies/88967?lang=us',
+    credit: {
+      de: 'Bilder: Case courtesy of Tamara Razon Cuenza, Radiopaedia.org, rID-77023, CC BY-NC-SA 3.0 · MINOCA-Konzept: Radiopaedia rID-80532',
+      en: 'Images: Case courtesy of Tamara Razon Cuenza, Radiopaedia.org, rID-77023, CC BY-NC-SA 3.0 · MINOCA framework: Radiopaedia rID-80532',
+      fa: 'تصاویر: Case courtesy of Tamara Razon Cuenza, Radiopaedia.org, rID-77023, CC BY-NC-SA 3.0 · چارچوب MINOCA: Radiopaedia rID-80532',
+    },
+  },
+]
 
 export const CASE_BANK = {
   de: [
@@ -296,6 +510,7 @@ export const CASE_BANK = {
       source: 'https://radiopaedia.org/cases/colovesical-fistula-due-to-acute-sigmoid-diverticulitis?lang=us',
       credit: 'Bild: Case courtesy of Craig Hacking, Radiopaedia.org, rID-178676, CC BY-NC-SA 3.0',
     },
+    ...TROPONIN_PRUEFUNG_CASES.map(item => locCase(item, 'de')),
     ...ICB_PRUEFUNG_CASES.map(item => locCase(item, 'de')),
   ],
   en: [
@@ -511,6 +726,7 @@ export const CASE_BANK = {
       source: 'https://radiopaedia.org/cases/colovesical-fistula-due-to-acute-sigmoid-diverticulitis?lang=us',
       credit: 'Image: Case courtesy of Craig Hacking, Radiopaedia.org, rID-178676, CC BY-NC-SA 3.0',
     },
+    ...TROPONIN_PRUEFUNG_CASES.map(item => locCase(item, 'en')),
     ...ICB_PRUEFUNG_CASES.map(item => locCase(item, 'en')),
   ],
   fa: [
@@ -714,6 +930,7 @@ export const CASE_BANK = {
       source: 'https://radiopaedia.org/cases/colovesical-fistula-due-to-acute-sigmoid-diverticulitis?lang=us',
       credit: 'تصویر: Case courtesy of Craig Hacking, Radiopaedia.org, rID-178676, CC BY-NC-SA 3.0',
     },
+    ...TROPONIN_PRUEFUNG_CASES.map(item => locCase(item, 'fa')),
     ...ICB_PRUEFUNG_CASES.map(item => locCase(item, 'fa')),
   ],
 }

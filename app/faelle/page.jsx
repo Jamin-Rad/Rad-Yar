@@ -52,7 +52,7 @@ const UI = {
   },
 }
 
-const COUNT_OPTIONS = [1, 2, 5, 10]
+const COUNT_OPTIONS = [1, 2, 3, 5, 10]
 const regionIcon = id => `/fach/${id}.png`
 
 function CasesSetupPageContent() {
@@ -114,7 +114,8 @@ function CasesSetupPageContent() {
   }, [availableModalities])
 
   useEffect(() => {
-    const requested = new URLSearchParams(window.location.search).get('thema')
+    const searchParams = new URLSearchParams(window.location.search)
+    const requested = searchParams.get('thema')
     if (!requested || !availableTopicIds.has(requested)) return
     const region = CURRICULUM.find(item => item.kapitel.some(chapter =>
       chapter.themen.some(topic => topic.id === requested || topic.sub?.some(sub => sub.id === requested))
@@ -122,6 +123,8 @@ function CasesSetupPageContent() {
     if (!region) return
     setSelectedRegions(new Set([region.id]))
     setSelectedTopics(new Set([requested]))
+    const requestedCount = Number.parseInt(searchParams.get('n') || '', 10)
+    if (COUNT_OPTIONS.includes(requestedCount)) setCount(requestedCount)
     const chapter = region.kapitel.find(item => item.themen.some(topic => topic.id === requested || topic.sub?.some(sub => sub.id === requested)))
     if (chapter) setOpenGroups(new Set([`${region.id}-${chapter.id}`]))
   }, [availableTopicIds])
