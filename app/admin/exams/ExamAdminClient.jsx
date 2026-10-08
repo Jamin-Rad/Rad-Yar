@@ -9,7 +9,7 @@ import styles from './page.module.css'
 
 const emptyQuestion = () => ({ sourceId: '', sourceLabel: '', kind: 'custom', prompt: '', options: ['', '', '', ''], correctOptionIndex: 0, points: 1, explanation: '', media: null })
 const LANGUAGE_LABELS = Object.freeze({ fa: 'فارسی', en: 'English', de: 'Deutsch' })
-const EXAM_DURATION_OPTIONS = Object.freeze([5, 10, 15, 20, 25, 30, 45, 60, 90, 120, 150, 180, 240])
+const EXAM_DURATION_OPTIONS = Object.freeze(Array.from({ length: 120 }, (_, index) => (index + 1) * 2))
 const ACTIVE_DURATION_OPTIONS = Object.freeze([
   { value: 60, label: '۱ ساعت' },
   { value: 120, label: '۲ ساعت' },

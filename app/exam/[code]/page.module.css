@@ -173,12 +173,19 @@
 .ratingFieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
 .ratingLegend { margin-bottom: 10px; color: #253149; font-size: 13px; font-weight: 850; }
 .ratingOptions { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
-.ratingOption, .ratingSelected { display: grid; place-items: center; gap: 5px; min-height: 78px; padding: 9px 5px; border: 1px solid #dfe5ed; border-radius: 11px; background: #fff; color: #6b778b; cursor: pointer; text-align: center; }
+.ratingOption, .ratingSelected { --rating-color: #64748b; display: grid; place-items: center; gap: 7px; min-height: 86px; padding: 10px 5px; border: 1px solid #dfe5ed; border-radius: 13px; background: #fff; color: #6b778b; cursor: pointer; text-align: center; transition: transform .16s ease, border-color .16s ease, background .16s ease, box-shadow .16s ease; }
+.ratingOption[data-rating='1'], .ratingSelected[data-rating='1'] { --rating-color: #dc3f57; }
+.ratingOption[data-rating='2'], .ratingSelected[data-rating='2'] { --rating-color: #ed762f; }
+.ratingOption[data-rating='3'], .ratingSelected[data-rating='3'] { --rating-color: #d89a16; }
+.ratingOption[data-rating='4'], .ratingSelected[data-rating='4'] { --rating-color: #269c89; }
+.ratingOption[data-rating='5'], .ratingSelected[data-rating='5'] { --rating-color: #12815f; }
+.ratingOption:hover { transform: translateY(-2px); border-color: color-mix(in srgb,var(--rating-color) 58%,#dfe5ed); background: color-mix(in srgb,var(--rating-color) 5%,#fff); }
 .ratingOption input, .ratingSelected input { position: absolute; opacity: 0; pointer-events: none; }
-.ratingOption span, .ratingSelected span { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 50%; background: #eef2f6; font-size: 12px; font-weight: 850; }
+.ratingFace { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid color-mix(in srgb,var(--rating-color) 28%,transparent); border-radius: 14px; color: var(--rating-color); background: color-mix(in srgb,var(--rating-color) 10%,#fff); transition: transform .16s ease, color .16s ease, background .16s ease; }
+.ratingFace svg { width: 34px; height: 34px; }
 .ratingOption strong, .ratingSelected strong { font-size: 10px; }
-.ratingSelected { border-color: #f97316; background: #fff4ec; color: #c2410c; box-shadow: 0 0 0 2px rgba(249,115,22,.08); }
-.ratingSelected span { background: #f97316; color: #fff; }
+.ratingSelected { transform: translateY(-2px); border-color: var(--rating-color); background: color-mix(in srgb,var(--rating-color) 8%,#fff); color: var(--rating-color); box-shadow: 0 0 0 3px color-mix(in srgb,var(--rating-color) 13%,transparent); }
+.ratingSelected .ratingFace { transform: scale(1.06); border-color: var(--rating-color); background: var(--rating-color); color: #fff; box-shadow: 0 7px 18px color-mix(in srgb,var(--rating-color) 25%,transparent); }
 .ratingOption:focus-within, .ratingSelected:focus-within, .modalClose:focus-visible, .feedbackSubmit:focus-visible, .reviewDot:focus-visible, .reviewControls button:focus-visible { outline: 3px solid rgba(249,115,22,.18); outline-offset: 2px; }
 .feedbackMessage { display: grid; gap: 5px; padding-top: 18px; border-top: 1px solid #e8ecf2; }
 .feedbackMessage > strong { color: #17213a; font-size: clamp(17px, 2.5vw, 22px); font-weight: 950; }
@@ -293,7 +300,7 @@
 :global(html[data-theme='dark']) .modalClose,
 :global(html[data-theme='dark']) .ratingOption,
 :global(html[data-theme='dark']) .feedbackMessage textarea { border-color: #2c3d54; background: #101e31; color: #dce5ef; }
-:global(html[data-theme='dark']) .ratingSelected { border-color: #f97316; background: rgba(249,115,22,.14); color: #fdba74; }
+:global(html[data-theme='dark']) .ratingSelected { border-color: var(--rating-color); background: color-mix(in srgb,var(--rating-color) 14%,#101e31); color: color-mix(in srgb,var(--rating-color) 72%,#fff); }
 :global(html[data-theme='dark']) .feedbackMessage { border-color: #26364d; }
 
 /* Mandatory feedback gate */
@@ -325,11 +332,7 @@
 .feedbackGate .ratingLegend small { margin-inline-start: 5px; color: #e5484d; font-size: 13px; }
 .feedbackGate .ratingOptions { grid-column: 2; grid-row: 1; }
 .feedbackGate .ratingOption, .feedbackGate .ratingSelected { min-height: 62px; }
-.feedbackGate .ratingOption span, .feedbackGate .ratingSelected span { font: 900 18px/1 var(--font-manrope), sans-serif; }
-.feedbackGate .ratingOption:first-child span { color: #dc3545; }
-.feedbackGate .ratingOption:nth-child(2) span { color: #f97316; }
-.feedbackGate .ratingSelected { border-color: #0fa878; background: #effcf7; color: #08765c; box-shadow: 0 0 0 2px rgba(15,168,120,.09); }
-.feedbackGate .ratingSelected span { background: #0fa878; color: #fff; }
+.feedbackGate .ratingFace { width: 44px; height: 44px; }
 .feedbackMessageGate { display: grid; grid-template-columns: minmax(190px, .8fr) minmax(400px, 1.8fr); gap: 24px; padding: 18px; border: 1px solid #e0e7ef; border-radius: 15px; }
 .feedbackMessageGate > span { display: grid; align-content: center; gap: 6px; }
 .feedbackMessageGate strong { color: #17213a; font-size: 16px; line-height: 1.75; }
@@ -428,7 +431,8 @@
 :global(html[data-theme='dark']) .feedbackMessageGate { border-color: #2b3b51; background: #101e31; }
 :global(html[data-theme='dark']) .feedbackGate .ratingOption,
 :global(html[data-theme='dark']) .feedbackMessageGate textarea { border-color: #35465d; background: #0c1829; color: #dce5ef; }
-:global(html[data-theme='dark']) .feedbackGate .ratingSelected { border-color: #16a77d; background: rgba(5,150,105,.13); color: #6ee7b7; }
+:global(html[data-theme='dark']) .feedbackGate .ratingSelected { border-color: var(--rating-color); background: color-mix(in srgb,var(--rating-color) 14%,#0c1829); color: color-mix(in srgb,var(--rating-color) 72%,#fff); }
+:global(html[data-theme='dark']) .ratingFace { background: color-mix(in srgb,var(--rating-color) 16%,#0c1829); }
 :global(html[data-theme='dark']) .resultConversation > p:not(.feedbackThanks) { color: #c7d3e2; }
 :global(html[data-theme='dark']) .deliveryMessage { background: #12253a; color: #9cc8f3; }
 :global(html[data-theme='dark']) .resultStats > div { background: #0a1728; }

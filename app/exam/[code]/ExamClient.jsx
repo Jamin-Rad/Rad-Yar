@@ -100,8 +100,26 @@ function ChevronIcon({ direction = 'next' }) {
   )
 }
 
+const RATING_EXPRESSIONS = Object.freeze({
+  1: <><path d="M7.3 9.1 9 8.3M15 8.3l1.7.8"/><path d="M8.2 16.2c2.1-2 5.5-2 7.6 0"/></>,
+  2: <><circle cx="8.5" cy="9" r=".75" fill="currentColor" stroke="none"/><circle cx="15.5" cy="9" r=".75" fill="currentColor" stroke="none"/><path d="M8.7 16c1.8-1.7 4.8-1.7 6.6 0"/></>,
+  3: <><circle cx="8.5" cy="9" r=".75" fill="currentColor" stroke="none"/><circle cx="15.5" cy="9" r=".75" fill="currentColor" stroke="none"/><path d="M9 15h6"/></>,
+  4: <><circle cx="8.5" cy="9" r=".75" fill="currentColor" stroke="none"/><circle cx="15.5" cy="9" r=".75" fill="currentColor" stroke="none"/><path d="M8.7 14.2c1.8 2.1 4.8 2.1 6.6 0"/></>,
+  5: <><path d="M7.4 9.5c.7-.9 1.5-.9 2.2 0M14.4 9.5c.7-.9 1.5-.9 2.2 0"/><path d="M8.2 13.7c2.1 3 5.5 3 7.6 0"/><path d="M5.2 12.2h-1M19.8 12.2h-1"/></>,
+})
+
+function RatingFace({ rating }) {
+  return (
+    <span className={styles.ratingFace} data-rating={rating} aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="9" />
+        {RATING_EXPRESSIONS[rating]}
+      </svg>
+    </span>
+  )
+}
+
 function RatingScale({ label, name, value, labels, locale, onChange }) {
-  const faces = ['⌢', '︵', '—', '◡', '●']
   return (
     <div className={styles.ratingFieldset} role="radiogroup" aria-label={`${label} *`}>
       <div className={styles.ratingLegend}>{label}<small>*</small></div>
@@ -110,9 +128,9 @@ function RatingScale({ label, name, value, labels, locale, onChange }) {
           const ratingValue = index + 1
           const selected = value === ratingValue
           return (
-            <label className={selected ? styles.ratingSelected : styles.ratingOption} key={ratingLabel}>
+            <label className={selected ? styles.ratingSelected : styles.ratingOption} data-rating={ratingValue} key={ratingLabel}>
               <input type="radio" name={name} value={ratingValue} checked={selected} onChange={() => onChange(ratingValue)} />
-              <span aria-hidden="true">{faces[index]}</span>
+              <RatingFace rating={ratingValue} />
               <strong>{ratingLabel}</strong>
             </label>
           )
@@ -427,7 +445,7 @@ export default function ExamClient({ code }) {
               </div>
 
               <article className={styles.reviewQuestion} key={reviewItem.id}>
-                {reviewItem.media ? <div className={styles.questionMedia}><MedicalSequenceViewer media={reviewItem.media} language={language} compact /></div> : null}
+                {reviewItem.media ? <div className={styles.questionMedia}><MedicalSequenceViewer media={reviewItem.media} language={language} compact showSource /></div> : null}
                 <div className={styles.reviewQuestionHeader}><span>{Number(safeReviewIndex + 1).toLocaleString(copy.locale)}</span><h2>{reviewItem.prompt}</h2></div>
                 <div className={styles.reviewOptions}>
                   {reviewItem.options.map((option, optionIndex) => {
@@ -477,7 +495,7 @@ export default function ExamClient({ code }) {
         <div className={styles.examLayout}>
           <section className={styles.questionCard}>
             <div className={styles.questionNumber}>{copy.questionOf(Number(current + 1).toLocaleString(copy.locale), questions.length.toLocaleString(copy.locale))}</div>
-            {question.media ? <div className={styles.questionMedia}><MedicalSequenceViewer media={question.media} language={language} compact priority /></div> : null}
+            {question.media ? <div className={styles.questionMedia}><MedicalSequenceViewer media={question.media} language={language} compact priority showSource={false} /></div> : null}
             <h2>{question.prompt}</h2>
             <div className={styles.options}>
               {question.options.map((option, index) => (

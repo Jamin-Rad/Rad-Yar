@@ -90,7 +90,10 @@ export async function GET(_request, { params }) {
 
   return NextResponse.json({
     exam: result.exam,
-    questions: result.questions.map(({ explanation: _explanation, ...question }) => question),
+    questions: result.questions.map(({ explanation: _explanation, ...question }) => ({
+      ...question,
+      media: question.media ? { ...question.media, source: '' } : null,
+    })),
   })
 }
 
