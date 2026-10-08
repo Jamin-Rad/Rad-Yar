@@ -18,7 +18,27 @@
 }
 
 .topProgress { justify-self: center; width: min(100%, 520px); }
-.topScore { justify-self: end; color: #1d3352; font-size: 13px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.topScore { display: flex; align-items: center; justify-self: end; gap: 7px; color: #1d3352; font-size: 13px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.topScoreLabel { margin-inline-end: 2px; }
+.scoreCorrect,
+.scoreWrong {
+  display: inline-flex;
+  min-width: 38px;
+  height: 29px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0 8px;
+  border: 1px solid;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
+}
+.scoreCorrect { border-color: #9bd8c2; background: #e9f8f2; color: #08775a; }
+.scoreWrong { border-color: #efb5b5; background: #fff0f0; color: #b62f2f; }
+.scoreCorrect > span,
+.scoreWrong > span { font-size: 14px; }
 
 .examShell {
   display: grid;
@@ -216,6 +236,8 @@
 
 :global(html[data-theme='dark']) .page { background: #07111f; }
 :global(html[data-theme='dark']) .topScore { color: #c9d5e4; }
+:global(html[data-theme='dark']) .scoreCorrect { border-color: #276f5c; background: #102e29; color: #70d5b5; }
+:global(html[data-theme='dark']) .scoreWrong { border-color: #814047; background: #351c24; color: #f1a0a0; }
 :global(html[data-theme='dark']) .caseIntro,
 :global(html[data-theme='dark']) .questionPanel { border-color: #26374f; background: #0f1b2d; }
 :global(html[data-theme='dark']) .caseIntro { border-inline-start-color: #f45b16; }
@@ -259,7 +281,10 @@
 
 @media (max-width: 640px) {
   .topBar { width: min(100% - 24px, 600px); }
-  .topScore { font-size: 11px; }
+  .topScore { gap: 5px; font-size: 11px; }
+  .topScoreLabel { display: none; }
+  .scoreCorrect,
+  .scoreWrong { min-width: 34px; height: 27px; padding-inline: 7px; }
   .examShell { width: min(100% - 20px, 600px); gap: 14px; padding: 14px 0 48px; }
   .caseIntro { gap: 11px; padding: 16px; border-radius: 14px; }
   .caseIntroMeta { align-items: flex-start; flex-direction: column; gap: 5px; padding-bottom: 10px; }

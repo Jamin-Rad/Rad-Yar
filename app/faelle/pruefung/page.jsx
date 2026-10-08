@@ -136,6 +136,7 @@ function CaseExamContent() {
   const itemMedia = useMemo(() => caseToExamMedia(item), [item])
   const isLast = current === total - 1
   const score = answers.filter(answer => answer.correct).length
+  const wrongScore = answers.length - score
   const progress = total ? ((current + (checked ? 1 : 0)) / total) * 100 : 0
   const regionLabel = regionIds
     .map(id => (REGION_NAMES[lang] || REGION_NAMES.de)[id] || id)
@@ -255,7 +256,11 @@ function CaseExamContent() {
           </div>
           <span className={quizStyles.progressLabel}>{ui.caseOf(current + 1, total)}</span>
         </div>
-        <span className={styles.topScore}>{ui.score}: {score}/{total}</span>
+        <div className={styles.topScore} aria-label={`${ui.score}: ${score} ${ui.correct}, ${wrongScore} ${ui.incorrect}`}>
+          <span className={styles.topScoreLabel}>{ui.score}</span>
+          <span className={styles.scoreCorrect}><span aria-hidden="true">✓</span>{score}</span>
+          <span className={styles.scoreWrong}><span aria-hidden="true">×</span>{wrongScore}</span>
+        </div>
       </div>
 
       <div className={styles.examShell}>

@@ -130,11 +130,10 @@ const TROPONIN_PRUEFUNG_CASES = [
     image: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/takotsubo-33052/01-2ch-cine.jpg',
     images: [
       { src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/takotsubo-33052/01-2ch-cine.jpg', label: { de: '2-Kammer Cine SSFP', en: '2-chamber cine SSFP', fa: 'Cine SSFP دوحفره‌ای' } },
-      { src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/takotsubo-33052/03-2ch-stir.jpg', label: { de: '2-Kammer STIR', en: '2-chamber STIR', fa: 'STIR دوحفره‌ای' } },
       { src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/takotsubo-33052/06-2ch-lge.jpg', label: { de: '2-Kammer LGE', en: '2-chamber LGE', fa: 'LGE دوحفره‌ای' } },
     ],
     modality: 'MRT',
-    plane: { de: 'CMR · Cine, STIR und LGE · 2-Kammer', en: 'CMR · cine, STIR and LGE · 2 chamber', fa: 'CMR · Cine، STIR و LGE · دوحفره‌ای' },
+    plane: { de: 'CMR · Cine und LGE · 2-Kammer', en: 'CMR · cine and LGE · 2 chamber', fa: 'CMR · Cine و LGE · دوحفره‌ای' },
     title: { de: 'Takotsubo-Syndrom im CMR', en: 'Takotsubo syndrome on CMR', fa: 'سندروم Takotsubo در CMR' },
     vignette: {
       de: '55-jährige Frau mit akut aufgetretenen, angina-pectoris-typischen Thoraxschmerzen. In der Echokardiografie zeigt sich eine ausgeprägte apikale Wandbewegungsstörung; differentialdiagnostisch werden ein Ventrikelaneurysma und eine gedeckte Ruptur diskutiert. Zur weiteren Abklärung wird eine CMR durchgeführt.',
@@ -159,20 +158,20 @@ const TROPONIN_PRUEFUNG_CASES = [
     ],
     correct: 'A',
     explanation: {
-      de: 'Die Kombination aus typischem linksventrikulärem Ballooning, T2/STIR-Ödem in den dysfunktionellen Segmenten und fehlendem korrespondierendem Infarkt-LGE ist am besten mit einem Takotsubo-Syndrom vereinbar. Sie grenzt die Erkrankung insbesondere vom akuten Myokardinfarkt und von der Myoperikarditis ab.',
-      en: 'The combination of typical left-ventricular ballooning, T2/STIR oedema in the dysfunctional segments and absence of corresponding infarct-pattern LGE is most consistent with Takotsubo syndrome. It particularly helps distinguish the condition from acute myocardial infarction and myopericarditis.',
-      fa: 'ترکیب بالونینگ تیپیک بطن چپ، ادم T2/STIR در سگمنت‌های دچار اختلال حرکت و نبود LGE متناظر با الگوی انفارکت، بیش از همه با سندروم Takotsubo سازگار است. این ترکیب به‌ویژه آن را از انفارکت حاد میوکارد و میوپریکاردیت افتراق می‌دهد.',
+      de: 'Die Kombination aus typischem linksventrikulärem Ballooning in der Cine-Sequenz und fehlendem korrespondierendem Infarkt-LGE ist am besten mit einem Takotsubo-Syndrom vereinbar. Sie grenzt die Erkrankung insbesondere vom akuten Myokardinfarkt und von der Myoperikarditis ab.',
+      en: 'The combination of typical left-ventricular ballooning on cine imaging and absence of corresponding infarct-pattern LGE is most consistent with Takotsubo syndrome. It particularly helps distinguish the condition from acute myocardial infarction and myopericarditis.',
+      fa: 'ترکیب بالونینگ تیپیک بطن چپ در Cine و نبود LGE متناظر با الگوی انفارکت، بیش از همه با سندروم Takotsubo سازگار است. این ترکیب به‌ویژه آن را از انفارکت حاد میوکارد و میوپریکاردیت افتراق می‌دهد.',
     },
     imageFindings: {
-      de: 'In der Cine-Sequenz besteht ein typisches Ballooning der betroffenen linksventrikulären Segmente. Diese Segmente sind in STIR ödematös signalreich, zeigen aber kein dazu passendes subendokardiales oder transmurales Infarkt-LGE. Gerade die Diskrepanz aus deutlicher Funktionsstörung und Ödem ohne korrespondierende Narbe stützt Takotsubo.',
-      en: 'Cine imaging shows typical ballooning of the affected left-ventricular segments. These segments are oedematous and hyperintense on STIR, but there is no matching subendocardial or transmural infarct-pattern LGE. This mismatch—marked dysfunction and oedema without a corresponding scar—supports Takotsubo syndrome.',
-      fa: 'در Cine بالونینگ تیپیک سگمنت‌های درگیر بطن چپ دیده می‌شود. همین سگمنت‌ها در STIR به علت ادم پرسیگنال‌اند، اما LGE ساب‌اندوکاردیال یا ترانس‌مورال متناظر با انفارکت وجود ندارد. این اختلاف میان اختلال واضح حرکت و ادم، بدون اسکار متناظر، به نفع Takotsubo است.',
+      de: 'Die 2-Kammer-Cine zeigt ein typisches Ballooning der betroffenen linksventrikulären Segmente. In der 2-Kammer-LGE-Sequenz fehlt ein dazu passendes subendokardiales oder transmurales Infarkt-LGE. Die deutliche Funktionsstörung ohne korrespondierende Infarktnarbe stützt die Diagnose Takotsubo.',
+      en: 'The 2-chamber cine image shows typical ballooning of the affected left-ventricular segments. The 2-chamber LGE image shows no matching subendocardial or transmural infarct-pattern enhancement. Marked dysfunction without a corresponding infarct scar supports Takotsubo syndrome.',
+      fa: 'در Cine دوحفره‌ای بالونینگ تیپیک سگمنت‌های درگیر بطن چپ دیده می‌شود. در LGE دوحفره‌ای، LGE ساب‌اندوکاردیال یا ترانس‌مورال متناظر با انفارکت وجود ندارد. اختلال واضح عملکرد بدون اسکار انفارکتی متناظر، به نفع Takotsubo است.',
     },
     wrongExplanations: {
       B: {
-        de: 'Ein akuter LAD-Infarkt würde ein subendokardiales bis transmurales LGE in einem koronaren Versorgungsgebiet erwarten lassen. In den gezeigten Aufnahmen fehlt dieses ischämische LGE-Muster; die Wandbewegungsstörung mit Ödem überschreitet zudem ein einzelnes Koronarterritorium.',
-        en: 'An acute LAD infarction should produce subendocardial-to-transmural LGE in a coronary distribution. This ischaemic LGE pattern is absent here, and the wall-motion abnormality with oedema extends beyond a single coronary territory.',
-        fa: 'در انفارکت حاد LAD انتظار می‌رود LGE ساب‌اندوکاردیال تا ترانس‌مورال در یک قلمرو کرونری دیده شود. این الگوی ایسکمیک LGE در تصاویر وجود ندارد و اختلال حرکت همراه با ادم نیز از محدوده یک قلمرو کرونری فراتر می‌رود.',
+        de: 'Ein akuter LAD-Infarkt würde ein subendokardiales bis transmurales LGE in einem koronaren Versorgungsgebiet erwarten lassen. In den gezeigten Aufnahmen fehlt dieses ischämische LGE-Muster; die Wandbewegungsstörung überschreitet zudem ein einzelnes Koronarterritorium.',
+        en: 'An acute LAD infarction should produce subendocardial-to-transmural LGE in a coronary distribution. This ischaemic LGE pattern is absent here, and the wall-motion abnormality extends beyond a single coronary territory.',
+        fa: 'در انفارکت حاد LAD انتظار می‌رود LGE ساب‌اندوکاردیال تا ترانس‌مورال در یک قلمرو کرونری دیده شود. این الگوی ایسکمیک LGE در تصاویر وجود ندارد و اختلال حرکت نیز از محدوده یک قلمرو کرونری فراتر می‌رود.',
       },
       C: {
         de: 'Bei einer akuten Myoperikarditis wäre typischerweise ein fleckiges subepikardiales oder midmyokardiales LGE, häufig inferolateral und gegebenenfalls mit Perikardreaktion, zu erwarten. Dieses Muster ist hier nicht zu sehen.',
@@ -207,9 +206,9 @@ const TROPONIN_PRUEFUNG_CASES = [
     plane: { de: 'CMR · STIR und LGE', en: 'CMR · STIR and LGE', fa: 'CMR · STIR و LGE' },
     title: { de: 'CMR-Abklärung bei MINOCA-Konstellation', en: 'CMR work-up of a MINOCA presentation', fa: 'بررسی CMR در بیمار با تابلوی MINOCA' },
     vignette: {
-      de: '30-jähriger Mann mit Thoraxschmerz nach akuter Gastroenteritis, diffuser ST-Hebung und deutlich erhöhtem Troponin. Die Koronarangiografie zeigt keine Stenose von 50 % oder mehr. In der CMR finden sich laterales Ödem, fleckiges midmyokardiales und subepikardiales inferolaterales LGE sowie ein kleiner Perikarderguss.',
-      en: 'A 30-year-old man presents with chest pain after acute gastroenteritis, diffuse ST elevation and markedly elevated troponin. Coronary angiography shows no stenosis of 50% or greater. CMR demonstrates lateral oedema, patchy mid-wall and subepicardial inferolateral LGE, and a small pericardial effusion.',
-      fa: 'مرد ۳۰ ساله پس از acute gastroenteritis با درد قفسه سینه، ST elevation منتشر و افزایش واضح troponin مراجعه کرده است. در coronary angiography هیچ تنگی ۵۰ درصد یا بیشتر دیده نمی‌شود. CMR ادم دیواره لترال، LGE لکه‌ای میدوال و ساب‌اپیکاردیال در ناحیه اینفرولاترال و افیوژن کوچک پریکارد را نشان می‌دهد.',
+      de: '30-jähriger Mann mit Thoraxschmerz nach akuter Gastroenteritis, diffuser ST-Hebung und deutlich erhöhtem Troponin. Die Koronarangiografie zeigt keine Stenose von 50 % oder mehr. Zur weiteren Abklärung der Troponinerhöhung bei nichtobstruktiven Koronararterien wird eine CMR durchgeführt.',
+      en: 'A 30-year-old man presents with chest pain after acute gastroenteritis, diffuse ST elevation and markedly elevated troponin. Coronary angiography shows no stenosis of 50% or greater. CMR is performed to further investigate the troponin elevation in the setting of non-obstructive coronary arteries.',
+      fa: 'مرد ۳۰ ساله پس از گاستروانتریت حاد با درد قفسه سینه، ST elevation منتشر و افزایش واضح تروپونین مراجعه کرده است. در آنژیوگرافی کرونر هیچ تنگی ۵۰ درصد یا بیشتر دیده نمی‌شود. برای بررسی بیشتر افزایش تروپونین در زمینه عروق کرونر بدون انسداد قابل‌توجه، CMR انجام می‌شود.',
     },
     question: {
       de: 'Welche Interpretation ist am präzisesten?',
@@ -217,9 +216,9 @@ const TROPONIN_PRUEFUNG_CASES = [
       fa: 'دقیق‌ترین تفسیر کدام است؟',
     },
     prompt: {
-      de: '30-jähriger Mann mit Thoraxschmerz nach akuter Gastroenteritis, diffuser ST-Hebung und deutlich erhöhtem Troponin. Die Koronarangiografie zeigt keine Stenose von 50 % oder mehr. In der CMR finden sich laterales Ödem, fleckiges midmyokardiales und subepikardiales inferolaterales LGE sowie ein kleiner Perikarderguss. Welche Interpretation ist am präzisesten?',
-      en: 'A 30-year-old man presents with chest pain after acute gastroenteritis, diffuse ST elevation and markedly elevated troponin. Coronary angiography shows no stenosis of 50% or greater. CMR demonstrates lateral oedema, patchy mid-wall and subepicardial inferolateral LGE, and a small pericardial effusion. Which interpretation is most precise?',
-      fa: 'مرد ۳۰ ساله پس از acute gastroenteritis با درد قفسه سینه، ST elevation منتشر و افزایش واضح troponin مراجعه کرده است. در coronary angiography هیچ تنگی ۵۰ درصد یا بیشتر دیده نمی‌شود. CMR ادم دیواره لترال، LGE لکه‌ای میدوال و ساب‌اپیکاردیال در ناحیه اینفرولاترال و افیوژن کوچک پریکارد را نشان می‌دهد. دقیق‌ترین تفسیر کدام است؟',
+      de: '30-jähriger Mann mit Thoraxschmerz nach akuter Gastroenteritis, diffuser ST-Hebung und deutlich erhöhtem Troponin. Die Koronarangiografie zeigt keine Stenose von 50 % oder mehr. Zur weiteren Abklärung der Troponinerhöhung bei nichtobstruktiven Koronararterien wird eine CMR durchgeführt. Welche Interpretation ist am präzisesten?',
+      en: 'A 30-year-old man presents with chest pain after acute gastroenteritis, diffuse ST elevation and markedly elevated troponin. Coronary angiography shows no stenosis of 50% or greater. CMR is performed to further investigate the troponin elevation in the setting of non-obstructive coronary arteries. Which interpretation is most precise?',
+      fa: 'مرد ۳۰ ساله پس از گاستروانتریت حاد با درد قفسه سینه، ST elevation منتشر و افزایش واضح تروپونین مراجعه کرده است. در آنژیوگرافی کرونر هیچ تنگی ۵۰ درصد یا بیشتر دیده نمی‌شود. برای بررسی بیشتر افزایش تروپونین در زمینه عروق کرونر بدون انسداد قابل‌توجه، CMR انجام می‌شود. دقیق‌ترین تفسیر کدام است؟',
     },
     options: [
       { id: 'A', text: { de: 'Akute Myoperikarditis; nach Klärung der Ursache ist MINOCA nicht mehr die Abschlussdiagnose', en: 'Acute myopericarditis; once the cause is established, MINOCA is no longer the final diagnosis', fa: 'Acute myopericarditis؛ با مشخص‌شدن علت، دیگر نباید MINOCA را به‌عنوان تشخیص نهایی گزارش کرد' } },

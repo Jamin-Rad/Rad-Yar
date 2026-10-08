@@ -7,9 +7,9 @@ import { normalizeExamMedia } from '@/utils/examMedia'
 import styles from './MedicalSequenceViewer.module.css'
 
 const COPY = {
-  de: { choose: 'Sequenz auswählen', slice: 'Schicht', hint: 'Mausrad oder Pfeiltasten', source: 'Originalfall ansehen', expand: 'Bild vergrößern', close: 'Großansicht schließen' },
-  en: { choose: 'Choose sequence', slice: 'Slice', hint: 'Mouse wheel or arrow keys', source: 'View original case', expand: 'Enlarge image', close: 'Close enlarged view' },
-  fa: { choose: 'انتخاب سکانس', slice: 'برش', hint: 'اسکرول ماوس یا کلیدهای جهت', source: 'مشاهده کیس اصلی', expand: 'بزرگ‌نمایی تصویر', close: 'بستن نمای بزرگ' },
+  de: { choose: 'Sequenz auswählen', slice: 'Schicht', hint: 'Mausrad oder Pfeiltasten', seriesHint: 'Mausrad: Sequenz wechseln', source: 'Originalfall ansehen', expand: 'Bild vergrößern', close: 'Großansicht schließen' },
+  en: { choose: 'Choose sequence', slice: 'Slice', hint: 'Mouse wheel or arrow keys', seriesHint: 'Mouse wheel: change sequence', source: 'View original case', expand: 'Enlarge image', close: 'Close enlarged view' },
+  fa: { choose: 'انتخاب سکانس', slice: 'برش', hint: 'اسکرول ماوس یا کلیدهای جهت', seriesHint: 'اسکرول ماوس: تغییر سکانس', source: 'مشاهده کیس اصلی', expand: 'بزرگ‌نمایی تصویر', close: 'بستن نمای بزرگ' },
 }
 
 function ArrowIcon({ direction }) {
@@ -42,8 +42,17 @@ export default function MedicalSequenceViewer({ media, language = 'de', compact 
     const previousOverflow = document.body.style.overflow
     const handleKeyDown = event => {
       if (event.key === 'Escape') setExpanded(false)
-      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') setFrameIndex(index => Math.min((activeSeries?.frames.length || 1) - 1, index + 1))
-      if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') setFrameIndex(index => Math.max(0, index - 1))
+      const direction = event.key === 'ArrowRight' || event.key === 'ArrowDown'
+        ? 1
+        : event.key === 'ArrowLeft' || event.key === 'ArrowUp'
+          ? -1
+          : 0
+      if (!direction) return
+      if ((activeSeries?.frames.length || 1) > 1) {
+        setFrameIndex(index => Math.min((activeSeries?.frames.length || 1) - 1, Math.max(0, index + direction)))
+      } else {
+        setSeriesIndex(index => Math.min((normalized?.series.length || 1) - 1, Math.max(0, index + direction)))
+      }
     }
     document.body.style.overflow = 'hidden'
     window.addEventListener('keydown', handleKeyDown)
@@ -51,13 +60,21 @@ export default function MedicalSequenceViewer({ media, language = 'de', compact 
       document.body.style.overflow = previousOverflow
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [activeSeries?.frames.length, expanded])
+  }, [activeSeries?.frames.length, expanded, normalized?.series.length])
 
   if (!normalized || !activeSeries) return null
 
   const frameCount = activeSeries.frames.length
   const safeFrameIndex = Math.min(frameIndex, frameCount - 1)
   const move = direction => setFrameIndex(index => Math.min(frameCount - 1, Math.max(0, index + direction)))
+  const navigate = direction => {
+    if (frameCount > 1) {
+      move(direction)
+      return
+    }
+    setSeriesIndex(index => Math.min(normalized.series.length - 1, Math.max(0, index + direction)))
+  }
+  const isScrollable = frameCount > 1 || normalized.series.length > 1
   const thumbnailIndexes = Array.from({ length: Math.min(7, frameCount) }, (_, offset) => {
     const start = Math.min(Math.max(0, safeFrameIndex - 3), Math.max(0, frameCount - 7))
     return start + offset
@@ -93,13 +110,13 @@ export default function MedicalSequenceViewer({ media, language = 'de', compact 
           if (event.target.closest('button, input')) return
           setExpanded(true)
         } : undefined}
-        onWheel={frameCount > 1 ? event => {
+        onWheel={isScrollable ? event => {
           event.preventDefault()
-          move(event.deltaY > 0 ? 1 : -1)
+          if (event.deltaY !== 0) navigate(event.deltaY > 0 ? 1 : -1)
         } : undefined}
         onKeyDown={event => {
-          if (event.key === 'ArrowRight' || event.key === 'ArrowDown') move(1)
-          if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') move(-1)
+          if (event.key === 'ArrowRight' || event.key === 'ArrowDown') navigate(1)
+          if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') navigate(-1)
           if (expandable && (event.key === 'Enter' || event.key === ' ')) {
             event.preventDefault()
             setExpanded(true)
@@ -122,9 +139,9 @@ export default function MedicalSequenceViewer({ media, language = 'de', compact 
           <>
             <button type="button" className={`${styles.frameArrow} ${styles.previousArrow}`} onClick={() => move(-1)} disabled={safeFrameIndex === 0} aria-label="Previous slice"><ArrowIcon direction="previous" /></button>
             <button type="button" className={`${styles.frameArrow} ${styles.nextArrow}`} onClick={() => move(1)} disabled={safeFrameIndex === frameCount - 1} aria-label="Next slice"><ArrowIcon direction="next" /></button>
-            <span className={styles.wheelHint}>{copy.hint}</span>
           </>
         ) : null}
+        {isScrollable ? <span className={styles.wheelHint}>{frameCount > 1 ? copy.hint : copy.seriesHint}</span> : null}
         {expandable ? <span className={styles.expandHint}>{copy.expand}</span> : null}
       </div>
 
@@ -167,7 +184,10 @@ export default function MedicalSequenceViewer({ media, language = 'de', compact 
             </div>
             <button type="button" onClick={() => setExpanded(false)} aria-label={copy.close}>×</button>
           </div>
-          <div className={styles.lightboxStage}>
+          <div className={styles.lightboxStage} onWheel={isScrollable ? event => {
+            event.preventDefault()
+            if (event.deltaY !== 0) navigate(event.deltaY > 0 ? 1 : -1)
+          } : undefined}>
             <Image
               src={activeSeries.frames[safeFrameIndex]}
               alt={normalized.title || activeSeries.label || ''}
@@ -184,7 +204,7 @@ export default function MedicalSequenceViewer({ media, language = 'de', compact 
             ) : null}
           </div>
           <div className={styles.lightboxFooter}>
-            <span>{copy.hint}</span>
+            <span>{frameCount > 1 ? copy.hint : copy.seriesHint}</span>
             <strong>{copy.slice} {safeFrameIndex + 1} / {frameCount}</strong>
           </div>
         </div>,
