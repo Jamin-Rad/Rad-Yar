@@ -40,6 +40,15 @@ function canonicalQuestionId(id) {
   return String(id).replace(/-(?:fa|en)-/, '-de-')
 }
 
+function localizedWrongExplanations(value, language) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return {}
+  return Object.fromEntries(
+    Object.entries(value)
+      .map(([optionId, explanation]) => [optionId, localizedText(explanation, language)])
+      .filter(([, explanation]) => explanation),
+  )
+}
+
 function getCurriculumLookup(language) {
   const fachById = new Map()
   const topicById = new Map()
@@ -114,6 +123,7 @@ function getQuestionBank(language) {
       correctOptionIndex,
       points: 1,
       explanation: localizedText(item.explanation, language),
+      wrongExplanations: localizedWrongExplanations(item.wrongExplanations, language),
       media: null,
       preview: '',
     }]
@@ -152,6 +162,7 @@ function getCaseBank(language) {
       correctOptionIndex,
       points: 1,
       explanation: localizedText(item.explanation, language),
+      wrongExplanations: localizedWrongExplanations(item.wrongExplanations, language),
       media,
       preview: getExamMediaPreview(media),
     }]
@@ -193,7 +204,7 @@ export async function GET(request) {
       exam: examResult.data,
       questions: (questionResult.data || []).map(question => {
         const unpacked = unpackExamQuestionExplanation(question.explanation)
-        return { ...question, explanation: unpacked.explanation, media: unpacked.media }
+        return { ...question, explanation: unpacked.explanation, wrongExplanations: unpacked.wrongExplanations, media: unpacked.media }
       }),
       attempts: addRanks(attemptResult.data || []),
     })
@@ -267,7 +278,7 @@ export async function POST(request) {
     options: question.options,
     correct_option_index: question.correctOptionIndex,
     points: question.points,
-    explanation: packExamQuestionExplanation(question.explanation, question.media),
+    explanation: packExamQuestionExplanation(question.explanation, question.media, question.wrongExplanations),
     position: question.position,
   }))
   const { error: questionsError } = await supabaseAdmin.from('exam_questions').insert(questionRows)

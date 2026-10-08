@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
-import { gradeExam, unpackExamQuestionExplanation } from '@/lib/exams'
+import { QUESTION_BANK } from '@/data/questions'
+import { gradeExam, normalizeWrongExplanations, unpackExamQuestionExplanation } from '@/lib/exams'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 import { normalizeParticipantSpecialty, PARTICIPANT_SPECIALTY_KEY } from '@/data/medicalSpecialties'
 
@@ -7,6 +8,25 @@ const CODE_PATTERN = /^[A-Za-z0-9_-]{8,40}$/
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const INSTAGRAM_PATTERN = /^(?=.*[A-Za-z0-9])[A-Za-z0-9._]{1,30}$/
+
+function normalizeComparableText(value) {
+  return typeof value === 'string' ? value.replace(/\s+/g, ' ').trim() : ''
+}
+
+function findLessonWrongExplanations(question, language) {
+  const prompt = normalizeComparableText(question?.prompt)
+  const options = Array.isArray(question?.options) ? question.options.map(normalizeComparableText) : []
+  if (!prompt || options.length !== 4) return {}
+
+  const source = QUESTION_BANK[language] || QUESTION_BANK.fa || []
+  const match = source.find(item => (
+    normalizeComparableText(item?.question) === prompt
+    && Array.isArray(item?.options)
+    && item.options.length === options.length
+    && item.options.every((option, index) => normalizeComparableText(option?.text) === options[index])
+  ))
+  return normalizeWrongExplanations(match?.wrongExplanations)
+}
 
 function databaseUnavailable() {
   return NextResponse.json({ error: 'سامانه امتحان موقتاً در دسترس نیست.' }, { status: 503 })
@@ -71,7 +91,7 @@ async function loadPublishedExam(code, includeAnswers = false) {
     exam,
     questions: (questions || []).map(question => {
       const unpacked = unpackExamQuestionExplanation(question.explanation)
-      return { ...question, explanation: unpacked.explanation, media: unpacked.media }
+      return { ...question, explanation: unpacked.explanation, wrongExplanations: unpacked.wrongExplanations, media: unpacked.media }
     }),
   }
 }
@@ -91,7 +111,7 @@ export async function GET(_request, { params }) {
 
   return NextResponse.json({
     exam: result.exam,
-    questions: result.questions.map(({ explanation: _explanation, ...question }) => ({
+    questions: result.questions.map(({ explanation: _explanation, wrongExplanations: _wrongExplanations, ...question }) => ({
       ...question,
       media: question.media ? { ...question.media, source: '' } : null,
     })),
@@ -210,7 +230,7 @@ export async function PATCH(request, { params }) {
 
   const { data: exam, error: examError } = await supabaseAdmin
     .from('exams')
-    .select('id,show_result')
+    .select('id,show_result,language')
     .eq('public_code', code)
     .maybeSingle()
   if (examError) return databaseUnavailable()
@@ -263,6 +283,9 @@ export async function PATCH(request, { params }) {
 
   const review = (questions || []).map(question => {
     const unpacked = unpackExamQuestionExplanation(question.explanation)
+    const wrongExplanations = Object.keys(unpacked.wrongExplanations).length
+      ? unpacked.wrongExplanations
+      : findLessonWrongExplanations(question, exam.language)
     return {
       id: question.id,
       prompt: question.prompt,
@@ -270,6 +293,7 @@ export async function PATCH(request, { params }) {
       selectedOptionIndex: updated.answers?.[question.id],
       correctOptionIndex: Number(question.correct_option_index),
       explanation: unpacked.explanation || '',
+      wrongExplanations,
       media: unpacked.media || null,
     }
   })

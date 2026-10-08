@@ -8,7 +8,7 @@ import { getExamMediaPreview } from '@/utils/examMedia'
 import { PARTICIPANT_SPECIALTY_KEY } from '@/data/medicalSpecialties'
 import styles from './page.module.css'
 
-const emptyQuestion = () => ({ sourceId: '', sourceLabel: '', kind: 'custom', prompt: '', options: ['', '', '', ''], correctOptionIndex: 0, points: 1, explanation: '', media: null })
+const emptyQuestion = () => ({ sourceId: '', sourceLabel: '', kind: 'custom', prompt: '', options: ['', '', '', ''], correctOptionIndex: 0, points: 1, explanation: '', wrongExplanations: {}, media: null })
 const LANGUAGE_LABELS = Object.freeze({ fa: 'فارسی', en: 'English', de: 'Deutsch' })
 const EXAM_DURATION_OPTIONS = Object.freeze(Array.from({ length: 48 }, (_, index) => (index + 1) * 5))
 const ACTIVE_DURATION_OPTIONS = Object.freeze([
@@ -188,6 +188,7 @@ export default function ExamAdminClient() {
             options: [...translated.options],
             correctOptionIndex: translated.correctOptionIndex,
             explanation: translated.explanation || '',
+            wrongExplanations: translated.wrongExplanations || {},
             kind: translated.kind,
             media: translated.media || null,
           } : question
@@ -320,6 +321,7 @@ export default function ExamAdminClient() {
           correctOptionIndex: question.correctOptionIndex,
           points: question.points,
           explanation: question.explanation || '',
+          wrongExplanations: question.wrongExplanations || {},
           kind: question.kind,
           media: question.media || null,
         }))

@@ -2,6 +2,9 @@ import { QUESTION_BANK } from '../data/questions.js'
 import { CASE_BANK } from '../data/cases.js'
 
 const LANGUAGES = ['de', 'en', 'fa']
+const EXAM_EXPLANATION_LIMIT = 8000
+const EXAM_QUESTION_PREFIX = '__RADYAR_EXAM_QUESTION_V2__\n'
+const EXAM_QUESTION_SUFFIX = '\n__END_RADYAR_EXAM_QUESTION__\n'
 const errors = []
 
 function auditCollection(label, collection) {
@@ -33,6 +36,22 @@ function auditCollection(label, collection) {
       if (optionTexts.some(text => !text)) errors.push(`${where}: empty option text`)
       if (!optionIds.includes(item.correct)) errors.push(`${where}: correct answer does not exist in options`)
       if (!item?.explanation || !String(item.explanation).trim()) errors.push(`${where}: missing explanation`)
+
+      const wrongExplanations = item?.wrongExplanations && typeof item.wrongExplanations === 'object'
+        ? item.wrongExplanations
+        : {}
+      for (const [optionId, explanation] of Object.entries(wrongExplanations)) {
+        if (!optionIds.includes(optionId)) errors.push(`${where}: wrong explanation references missing option ${optionId}`)
+        if (optionId === item.correct) errors.push(`${where}: correct option ${optionId} has a wrong explanation`)
+        if (!String(explanation || '').trim()) errors.push(`${where}: wrong explanation for ${optionId} is empty`)
+      }
+      const packedFeedbackLength = EXAM_QUESTION_PREFIX.length
+        + JSON.stringify({ media: null, wrongExplanations }).length
+        + EXAM_QUESTION_SUFFIX.length
+        + String(item.explanation || '').trim().length
+      if (packedFeedbackLength > EXAM_EXPLANATION_LIMIT) {
+        errors.push(`${where}: lesson feedback is too long for exact exam transfer (${packedFeedbackLength}/${EXAM_EXPLANATION_LIMIT})`)
+      }
     })
   }
 
@@ -48,4 +67,4 @@ if (errors.length) {
   process.exit(1)
 }
 
-console.log(`MCQ audit passed: ${questionCount} questions and ${caseCount} cases per language; all have four unique options, one valid answer and an explanation.`)
+console.log(`MCQ audit passed: ${questionCount} questions and ${caseCount} cases per language; answers and all option-specific explanations are valid for exact exam transfer.`)

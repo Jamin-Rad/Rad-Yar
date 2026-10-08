@@ -87,6 +87,7 @@ function asStandardQuestion(item) {
   const optionIds = item.options.map((_, index) => String.fromCharCode(65 + index))
   return {
     explanation: item.explanation,
+    wrongExplanations: item.wrongExplanations || {},
     correct: optionIds[item.correctOptionIndex],
     originalCorrect: optionIds[item.correctOptionIndex],
     options: item.options.map((text, index) => ({ id: optionIds[index], text })),
