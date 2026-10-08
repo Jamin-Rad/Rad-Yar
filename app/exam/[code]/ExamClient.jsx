@@ -10,13 +10,13 @@ import styles from './page.module.css'
 
 const EXAM_COPY = Object.freeze({
   fa: {
-    locale: 'fa-IR', dir: 'rtl', loading: 'در حال آماده‌سازی امتحان…', openFailed: 'امتحان باز نشد', badge: 'امتحان آنلاین', introFallback: 'پیش از شروع، اطلاعات خود را وارد کنید.', questions: 'تعداد سؤال', questionUnit: 'سؤال', time: 'زمان', minutes: 'دقیقه', name: 'نام و نام خانوادگی *', namePlaceholder: 'نام شما', contact: 'ایمیل یا آیدی اینستاگرام *', contactPlaceholder: '@username یا name@example.com', start: 'شروع امتحان', startArrow: '←', notice: 'با شروع امتحان، زمان‌سنج فعال می‌شود. پاسخ‌ها در پایان به‌صورت خودکار ارسال خواهند شد.', nameError: 'لطفاً نام و نام خانوادگی خود را وارد کنید.', contactError: 'لطفاً یک ایمیل معتبر یا آیدی اینستاگرام وارد کنید.', submitting: 'در حال ثبت پاسخ‌ها', dontClose: 'این صفحه را نبندید.', submitted: 'پاسخ‌ها ثبت شد', thanks: name => `${name}، ممنون!`, sentTo: organizer => `نتیجه امتحان شما به ${organizer} ارسال شد.`, resultSent: 'نتیجه برای برگزارکننده ارسال شد.', rank: (rank, total) => `رتبه فعلی شما: ${rank} از ${total}`, review: 'مرور و کنترل سؤال‌ها', hideReview: 'بستن مرور سؤال‌ها', correct: 'درست!', incorrect: 'متأسفانه اشتباه', whyWrong: 'چرا پاسخ شما نادرست است', feedback: 'نظر بده', feedbackCtaHint: 'نظر شما آزمون‌های بعدی را بهتر می‌کند', hideFeedback: 'بستن فرم نظر', correctAnswer: 'پاسخ صحیح', yourAnswer: 'پاسخ شما', unansweredReview: 'بدون پاسخ', explanation: 'توضیح پاسخ', feedbackTitle: 'کیفیت این آزمون را ارزیابی کنید', feedbackHint: 'کمتر از یک دقیقه زمان می‌برد و مستقیماً به بهترشدن آزمون‌ها کمک می‌کند.', questionQuality: 'کیفیت سؤال‌ها چطور بود؟', designQuality: 'کیفیت طراحی و تجربه آزمون چطور بود؟', clipQuality: 'کیفیت کلیپ آموزشی مرتبط چطور بود؟', feedbackMessageTitle: 'خوشحال می‌شوم اگر پیامی داشته باشید', feedbackMessageHint: 'اختیاری است؛ پیشنهاد، انتقاد یا نکته‌ای که دوست دارید بدانیم.', feedbackPlaceholder: 'پیام شما…', sendFeedback: 'ثبت نظر من', sendingFeedback: 'در حال ارسال…', feedbackSaved: 'نظر شما ثبت شد. از همراهی‌تان ممنونیم!', feedbackError: 'لطفاً برای هر سه بخش یک امتیاز انتخاب کنید.', ratingLabels: ['خیلی ضعیف', 'ضعیف', 'متوسط', 'خوب', 'عالی'], exam: 'امتحان', remaining: 'زمان باقی‌مانده', answered: (done, total) => `${done} از ${total} پاسخ داده شده`, questionOf: (current, total) => `سؤال ${current} از ${total}`, previous: 'سؤال قبلی', next: 'سؤال بعدی', submit: 'پایان و ارسال پاسخ‌ها', questionList: 'فهرست سؤال‌ها', answeredLegend: 'پاسخ داده‌شده', unansweredLegend: 'بدون پاسخ', finish: 'پایان امتحان', of: 'از',
+    locale: 'fa-IR', dir: 'rtl', loading: 'در حال آماده‌سازی امتحان…', openFailed: 'امتحان باز نشد', badge: 'امتحان آنلاین', introFallback: 'پیش از شروع، اطلاعات خود را وارد کنید.', questions: 'تعداد سؤال', questionUnit: 'سؤال', time: 'زمان', minutes: 'دقیقه', name: 'نام و نام خانوادگی *', namePlaceholder: 'نام شما', contact: 'ایمیل یا آیدی اینستاگرام *', contactPlaceholder: '@username یا name@example.com', start: 'شروع امتحان', startArrow: '←', notice: 'با شروع امتحان، زمان‌سنج فعال می‌شود. پاسخ‌ها در پایان به‌صورت خودکار ارسال خواهند شد.', nameError: 'لطفاً نام و نام خانوادگی خود را وارد کنید.', contactError: 'لطفاً یک ایمیل معتبر یا آیدی اینستاگرام وارد کنید.', submitting: 'در حال ثبت پاسخ‌ها', dontClose: 'این صفحه را نبندید.', submitted: 'آزمون با موفقیت ثبت شد', thanks: name => `${name} جان، ممنون!`, sentTo: organizer => `نتیجه امتحانت برای ${organizer} ارسال شد.`, resultSent: 'نتیجه برای برگزارکننده ارسال شد.', rank: (rank, total) => `رتبه فعلی: ${rank} از ${total} نفر`, review: 'مرور پاسخ‌ها', hideReview: 'بستن مرور پاسخ‌ها', correct: 'درست!', incorrect: 'این یکی نیاز به مرور دارد', whyWrong: 'چرا این گزینه درست نیست؟', feedback: 'نظر بده', feedbackCtaHint: 'نظر شما آزمون‌های بعدی را بهتر می‌کند', hideFeedback: 'بستن فرم نظر', correctAnswer: 'پاسخ صحیح', yourAnswer: 'پاسخ شما', unansweredReview: 'بدون پاسخ', explanation: 'توضیح پاسخ', feedbackTitle: 'یک قدم کوچیک تا دیدن نتیجه', feedbackHint: name => `${name} جان، آزمونت ثبت شد. فقط نظرت رو بگو تا نتیجه و رتبه‌ات رو ببینی.`, feedbackProgress: 'مرحله آخر: نظر شما', feedbackSafe: 'پاسخ‌هایت ثبت شده و از بین نمی‌روند.', questionQuality: 'کیفیت سؤال‌ها چطور بود؟', designQuality: 'تجربه و طراحی آزمون چطور بود؟', clipQuality: 'کیفیت کلیپ آموزشی مرتبط چطور بود؟', feedbackMessageTitle: 'اگر حرفی با ما داری، خوشحال می‌شیم بشنویم', feedbackMessageHint: 'این بخش اختیاری است؛ پیشنهاد، انتقاد یا هر نکته‌ای که دوست داری بگو.', feedbackPlaceholder: 'پیامت را اینجا بنویس…', sendFeedback: 'ثبت نظر و دیدن نتیجه', sendingFeedback: 'در حال ثبت نظر…', feedbackSaved: 'نظر شما ثبت شد. از همراهی‌تان ممنونیم!', feedbackError: 'برای دیدن نتیجه، لطفاً به هر سه بخش امتیاز بده.', feedbackRequired: 'لازم برای دیدن نتیجه', ratingLabels: ['خیلی ضعیف', 'ضعیف', 'متوسط', 'خوب', 'عالی'], exam: 'امتحان', remaining: 'زمان باقی‌مانده', answered: (done, total) => `${done} از ${total} پاسخ داده شده`, questionOf: (current, total) => `سؤال ${current} از ${total}`, previous: 'سؤال قبلی', next: 'سؤال بعدی', submit: 'پایان و ارسال پاسخ‌ها', questionList: 'فهرست سؤال‌ها', answeredLegend: 'پاسخ داده‌شده', unansweredLegend: 'بدون پاسخ', finish: 'پایان امتحان', of: 'از', nextStep: 'قدم بعدی تو', reviewHint: 'با مرور جواب‌ها، هم نقطه‌قوت‌هایت را می‌بینی و هم جاهایی را که می‌توانی بهتر شوی.', backHome: 'بازگشت به رادیار', feedbackThanks: 'ممنون که نظرت را با ما در میان گذاشتی.',
   },
   en: {
-    locale: 'en-US', dir: 'ltr', loading: 'Preparing the exam…', openFailed: 'The exam could not be opened', badge: 'Online exam', introFallback: 'Enter your details before starting.', questions: 'Questions', questionUnit: 'questions', time: 'Time', minutes: 'minutes', name: 'Full name *', namePlaceholder: 'Your name', contact: 'Email or Instagram ID *', contactPlaceholder: '@username or name@example.com', start: 'Start exam', startArrow: '→', notice: 'The timer starts when you begin. Your answers are submitted automatically when time runs out.', nameError: 'Please enter your full name.', contactError: 'Please enter a valid email address or Instagram ID.', submitting: 'Submitting answers', dontClose: 'Please do not close this page.', submitted: 'Answers submitted', thanks: name => `Thank you, ${name}!`, sentTo: organizer => `Your exam result was sent to ${organizer}.`, resultSent: 'Your result was sent to the organizer.', rank: (rank, total) => `Your current rank: ${rank} of ${total}`, review: 'Review questions', hideReview: 'Close question review', correct: 'Correct!', incorrect: 'Unfortunately incorrect', whyWrong: 'Why your answer is incorrect', feedback: 'Leave feedback', feedbackCtaHint: 'Your feedback makes the next exam better', hideFeedback: 'Close feedback form', correctAnswer: 'Correct answer', yourAnswer: 'Your answer', unansweredReview: 'Not answered', explanation: 'Explanation', feedbackTitle: 'Rate the quality of this exam', feedbackHint: 'It takes less than a minute and directly helps us improve.', questionQuality: 'How was the quality of the questions?', designQuality: 'How was the exam design and experience?', clipQuality: 'How was the related educational video?', feedbackMessageTitle: 'I would be happy to hear any message you have', feedbackMessageHint: 'Optional—share a suggestion, criticism, or anything we should know.', feedbackPlaceholder: 'Your message…', sendFeedback: 'Submit my feedback', sendingFeedback: 'Sending…', feedbackSaved: 'Thank you—your feedback was saved!', feedbackError: 'Please rate all three areas before submitting.', ratingLabels: ['Very poor', 'Poor', 'Average', 'Good', 'Excellent'], exam: 'Exam', remaining: 'Time remaining', answered: (done, total) => `${done} of ${total} answered`, questionOf: (current, total) => `Question ${current} of ${total}`, previous: 'Previous question', next: 'Next question', submit: 'Finish and submit', questionList: 'Question list', answeredLegend: 'Answered', unansweredLegend: 'Unanswered', finish: 'Finish exam', of: 'of',
+    locale: 'en-US', dir: 'ltr', loading: 'Preparing the exam…', openFailed: 'The exam could not be opened', badge: 'Online exam', introFallback: 'Enter your details before starting.', questions: 'Questions', questionUnit: 'questions', time: 'Time', minutes: 'minutes', name: 'Full name *', namePlaceholder: 'Your name', contact: 'Email or Instagram ID *', contactPlaceholder: '@username or name@example.com', start: 'Start exam', startArrow: '→', notice: 'The timer starts when you begin. Your answers are submitted automatically when time runs out.', nameError: 'Please enter your full name.', contactError: 'Please enter a valid email address or Instagram ID.', submitting: 'Submitting answers', dontClose: 'Please do not close this page.', submitted: 'Exam submitted successfully', thanks: name => `Thanks, ${name}!`, sentTo: organizer => `Your exam result was sent to ${organizer}.`, resultSent: 'Your result was sent to the organizer.', rank: (rank, total) => `Current rank: ${rank} of ${total}`, review: 'Review answers', hideReview: 'Close answer review', correct: 'Correct!', incorrect: 'This one is worth another look', whyWrong: 'Why is this option not correct?', feedback: 'Leave feedback', feedbackCtaHint: 'Your feedback makes the next exam better', hideFeedback: 'Close feedback form', correctAnswer: 'Correct answer', yourAnswer: 'Your answer', unansweredReview: 'Not answered', explanation: 'Explanation', feedbackTitle: 'One small step before your result', feedbackHint: name => `${name}, your exam is safely submitted. Share your feedback to see your result and current rank.`, feedbackProgress: 'Final step: your feedback', feedbackSafe: 'Your answers are safely saved and will not be lost.', questionQuality: 'How was the quality of the questions?', designQuality: 'How was the exam design and experience?', clipQuality: 'How was the related educational video?', feedbackMessageTitle: 'If you have anything to tell us, we would love to hear it', feedbackMessageHint: 'Optional—share a suggestion, criticism, or anything we should know.', feedbackPlaceholder: 'Write your message…', sendFeedback: 'Submit feedback and see result', sendingFeedback: 'Saving feedback…', feedbackSaved: 'Thank you—your feedback was saved!', feedbackError: 'Please rate all three areas to see your result.', feedbackRequired: 'Required to see your result', ratingLabels: ['Very poor', 'Poor', 'Average', 'Good', 'Excellent'], exam: 'Exam', remaining: 'Time remaining', answered: (done, total) => `${done} of ${total} answered`, questionOf: (current, total) => `Question ${current} of ${total}`, previous: 'Previous question', next: 'Next question', submit: 'Finish and submit', questionList: 'Question list', answeredLegend: 'Answered', unansweredLegend: 'Unanswered', finish: 'Finish exam', of: 'of', nextStep: 'Your next step', reviewHint: 'Review your answers to see what you already know well and where a quick recap will help.', backHome: 'Back to RadYar', feedbackThanks: 'Thanks for sharing your feedback with us.',
   },
   de: {
-    locale: 'de-DE', dir: 'ltr', loading: 'Prüfung wird vorbereitet…', openFailed: 'Die Prüfung konnte nicht geöffnet werden', badge: 'Online-Prüfung', introFallback: 'Bitte geben Sie vor dem Start Ihre Daten ein.', questions: 'Fragen', questionUnit: 'Fragen', time: 'Zeit', minutes: 'Minuten', name: 'Vor- und Nachname *', namePlaceholder: 'Ihr Name', contact: 'E-Mail oder Instagram-ID *', contactPlaceholder: '@username oder name@example.com', start: 'Prüfung starten', startArrow: '→', notice: 'Der Timer startet mit der Prüfung. Nach Ablauf der Zeit werden Ihre Antworten automatisch gesendet.', nameError: 'Bitte geben Sie Ihren vollständigen Namen ein.', contactError: 'Bitte geben Sie eine gültige E-Mail-Adresse oder Instagram-ID ein.', submitting: 'Antworten werden gesendet', dontClose: 'Bitte schließen Sie diese Seite nicht.', submitted: 'Antworten gesendet', thanks: name => `Vielen Dank, ${name}!`, sentTo: organizer => `Ihr Prüfungsergebnis wurde an ${organizer} gesendet.`, resultSent: 'Ihr Ergebnis wurde an die Prüfungsleitung gesendet.', rank: (rank, total) => `Ihr aktueller Rang: ${rank} von ${total}`, review: 'Fragen kontrollieren', hideReview: 'Fragenkontrolle schließen', correct: 'Richtig!', incorrect: 'Leider falsch', whyWrong: 'Warum Ihre Antwort falsch ist', feedback: 'Feedback geben', feedbackCtaHint: 'Ihr Feedback macht die nächsten Prüfungen besser', hideFeedback: 'Bewertung schließen', correctAnswer: 'Richtige Antwort', yourAnswer: 'Ihre Antwort', unansweredReview: 'Nicht beantwortet', explanation: 'Erklärung', feedbackTitle: 'Bewerten Sie die Qualität dieser Prüfung', feedbackHint: 'Es dauert weniger als eine Minute und hilft uns direkt bei der Verbesserung.', questionQuality: 'Wie war die Qualität der Fragen?', designQuality: 'Wie waren Gestaltung und Prüfungserlebnis?', clipQuality: 'Wie war das zugehörige Lernvideo?', feedbackMessageTitle: 'Ich freue mich, wenn Sie mir noch etwas mitteilen möchten', feedbackMessageHint: 'Optional—teilen Sie eine Anregung, Kritik oder einen Hinweis mit uns.', feedbackPlaceholder: 'Ihre Nachricht…', sendFeedback: 'Mein Feedback absenden', sendingFeedback: 'Wird gesendet…', feedbackSaved: 'Vielen Dank! Ihr Feedback wurde gespeichert.', feedbackError: 'Bitte bewerten Sie vor dem Senden alle drei Bereiche.', ratingLabels: ['Sehr schlecht', 'Schlecht', 'Mittel', 'Gut', 'Sehr gut'], exam: 'Prüfung', remaining: 'Verbleibende Zeit', answered: (done, total) => `${done} von ${total} beantwortet`, questionOf: (current, total) => `Frage ${current} von ${total}`, previous: 'Vorherige Frage', next: 'Nächste Frage', submit: 'Beenden und senden', questionList: 'Fragenübersicht', answeredLegend: 'Beantwortet', unansweredLegend: 'Nicht beantwortet', finish: 'Prüfung beenden', of: 'von',
+    locale: 'de-DE', dir: 'ltr', loading: 'Prüfung wird vorbereitet…', openFailed: 'Die Prüfung konnte nicht geöffnet werden', badge: 'Online-Prüfung', introFallback: 'Bitte geben Sie vor dem Start Ihre Daten ein.', questions: 'Fragen', questionUnit: 'Fragen', time: 'Zeit', minutes: 'Minuten', name: 'Vor- und Nachname *', namePlaceholder: 'Ihr Name', contact: 'E-Mail oder Instagram-ID *', contactPlaceholder: '@username oder name@example.com', start: 'Prüfung starten', startArrow: '→', notice: 'Der Timer startet mit der Prüfung. Nach Ablauf der Zeit werden Ihre Antworten automatisch gesendet.', nameError: 'Bitte geben Sie Ihren vollständigen Namen ein.', contactError: 'Bitte geben Sie eine gültige E-Mail-Adresse oder Instagram-ID ein.', submitting: 'Antworten werden gesendet', dontClose: 'Bitte schließen Sie diese Seite nicht.', submitted: 'Prüfung erfolgreich abgegeben', thanks: name => `Danke, ${name}!`, sentTo: organizer => `Dein Prüfungsergebnis wurde an ${organizer} gesendet.`, resultSent: 'Ihr Ergebnis wurde an die Prüfungsleitung gesendet.', rank: (rank, total) => `Aktueller Rang: ${rank} von ${total}`, review: 'Antworten ansehen', hideReview: 'Antwortübersicht schließen', correct: 'Richtig!', incorrect: 'Diese Frage lohnt einen zweiten Blick', whyWrong: 'Warum ist diese Antwort nicht richtig?', feedback: 'Feedback geben', feedbackCtaHint: 'Ihr Feedback macht die nächsten Prüfungen besser', hideFeedback: 'Bewertung schließen', correctAnswer: 'Richtige Antwort', yourAnswer: 'Ihre Antwort', unansweredReview: 'Nicht beantwortet', explanation: 'Erklärung', feedbackTitle: 'Nur noch ein kleiner Schritt zum Ergebnis', feedbackHint: name => `${name}, deine Prüfung ist sicher gespeichert. Teile kurz dein Feedback, um Ergebnis und Rang zu sehen.`, feedbackProgress: 'Letzter Schritt: dein Feedback', feedbackSafe: 'Deine Antworten sind sicher gespeichert und gehen nicht verloren.', questionQuality: 'Wie war die Qualität der Fragen?', designQuality: 'Wie waren Gestaltung und Prüfungserlebnis?', clipQuality: 'Wie war das zugehörige Lernvideo?', feedbackMessageTitle: 'Wenn du uns noch etwas sagen möchtest, freuen wir uns darauf', feedbackMessageHint: 'Optional—teile eine Anregung, Kritik oder einen Hinweis mit uns.', feedbackPlaceholder: 'Deine Nachricht…', sendFeedback: 'Feedback senden und Ergebnis sehen', sendingFeedback: 'Feedback wird gespeichert…', feedbackSaved: 'Vielen Dank! Ihr Feedback wurde gespeichert.', feedbackError: 'Bitte bewerte alle drei Bereiche, um dein Ergebnis zu sehen.', feedbackRequired: 'Erforderlich für das Ergebnis', ratingLabels: ['Sehr schlecht', 'Schlecht', 'Mittel', 'Gut', 'Sehr gut'], exam: 'Prüfung', remaining: 'Verbleibende Zeit', answered: (done, total) => `${done} von ${total} beantwortet`, questionOf: (current, total) => `Frage ${current} von ${total}`, previous: 'Vorherige Frage', next: 'Nächste Frage', submit: 'Beenden und senden', questionList: 'Fragenübersicht', answeredLegend: 'Beantwortet', unansweredLegend: 'Nicht beantwortet', finish: 'Prüfung beenden', of: 'von', nextStep: 'Dein nächster Schritt', reviewHint: 'Sieh dir deine Antworten an und entdecke, was schon sicher sitzt und wo eine kurze Wiederholung hilft.', backHome: 'Zurück zu RadYar', feedbackThanks: 'Danke, dass du dein Feedback mit uns geteilt hast.',
   },
 })
 
@@ -100,18 +100,11 @@ function ChevronIcon({ direction = 'next' }) {
   )
 }
 
-function CloseIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <path d="m5.25 5.25 9.5 9.5m0-9.5-9.5 9.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    </svg>
-  )
-}
-
 function RatingScale({ label, name, value, labels, locale, onChange }) {
+  const faces = ['⌢', '︵', '—', '◡', '●']
   return (
-    <fieldset className={styles.ratingFieldset}>
-      <legend>{label}</legend>
+    <div className={styles.ratingFieldset} role="radiogroup" aria-label={`${label} *`}>
+      <div className={styles.ratingLegend}>{label}<small>*</small></div>
       <div className={styles.ratingOptions}>
         {labels.map((ratingLabel, index) => {
           const ratingValue = index + 1
@@ -119,14 +112,39 @@ function RatingScale({ label, name, value, labels, locale, onChange }) {
           return (
             <label className={selected ? styles.ratingSelected : styles.ratingOption} key={ratingLabel}>
               <input type="radio" name={name} value={ratingValue} checked={selected} onChange={() => onChange(ratingValue)} />
-              <span>{ratingValue.toLocaleString(locale)}</span>
+              <span aria-hidden="true">{faces[index]}</span>
               <strong>{ratingLabel}</strong>
             </label>
           )
         })}
       </div>
-    </fieldset>
+    </div>
   )
+}
+
+function getResultConversation(percentage, name, language) {
+  const firstName = (name || '').trim().split(/\s+/)[0] || ({ fa: 'دوست خوبم', en: 'there', de: 'du' }[language] || 'دوست خوبم')
+  const bands = {
+    fa: [
+      { min: 90, tone: 'excellent', title: `${firstName} جان، فوق‌العاده بود!`, message: 'تقریباً همه‌چیز را دقیق و مطمئن جواب دادی. این نتیجه واقعاً نشان می‌دهد روی مطالب مسلطی.' },
+      { min: 75, tone: 'strong', title: `${firstName} جان، عالی بود! واقعاً خوب از پسش برآمدی.`, message: 'بیشتر سؤال‌ها را با اطمینان جواب دادی؛ با مرور چند نکته، نتیجه‌ات حتی بهتر هم می‌شود.' },
+      { min: 50, tone: 'growing', title: `${firstName} جان، مسیرت خوبه؛ بیا یک قدم جلوتر بریم.`, message: 'پایه‌ها را بلدی و بخش مهمی از راه را آمده‌ای. مرور جواب‌ها دقیقاً نشان می‌دهد کجاها با کمی تمرین جهش می‌کنی.' },
+      { min: 0, tone: 'practice', title: `${firstName} جان، این فقط یک نقطه شروعه.`, message: 'این نتیجه قرار نیست قضاوتت کند؛ آمده تا مسیر مرور را روشن کند. جواب‌ها را با هم ببینیم و از همین‌جا بهتر شویم.' },
+    ],
+    en: [
+      { min: 90, tone: 'excellent', title: `${firstName}, that was outstanding!`, message: 'You answered almost everything with confidence and precision. This result shows real command of the material.' },
+      { min: 75, tone: 'strong', title: `${firstName}, great work—you handled that really well.`, message: 'You were confident on most questions. Review a few key points and your next result can be even stronger.' },
+      { min: 50, tone: 'growing', title: `${firstName}, you are on the right track.`, message: 'The foundations are there. Reviewing your answers will show exactly where a little practice can make a big difference.' },
+      { min: 0, tone: 'practice', title: `${firstName}, this is simply a starting point.`, message: 'This result is not a judgment—it is a map. Let’s review the answers and turn today’s gaps into your next strengths.' },
+    ],
+    de: [
+      { min: 90, tone: 'excellent', title: `${firstName}, das war hervorragend!`, message: 'Du hast fast alles sicher und präzise beantwortet. Dieses Ergebnis zeigt echte Souveränität im Stoff.' },
+      { min: 75, tone: 'strong', title: `${firstName}, richtig stark gemacht!`, message: 'Die meisten Fragen hast du sicher beantwortet. Mit ein paar gezielten Wiederholungen wird dein nächstes Ergebnis noch besser.' },
+      { min: 50, tone: 'growing', title: `${firstName}, du bist auf einem guten Weg.`, message: 'Die Grundlagen sitzen. In der Antwortübersicht siehst du genau, wo ein wenig Übung den größten Unterschied macht.' },
+      { min: 0, tone: 'practice', title: `${firstName}, das ist einfach dein Ausgangspunkt.`, message: 'Dieses Ergebnis bewertet dich nicht – es zeigt dir den Weg. Schauen wir die Antworten an und machen aus Lücken neue Stärken.' },
+    ],
+  }
+  return (bands[language] || bands.fa).find(band => percentage >= band.min)
 }
 
 export default function ExamClient({ code }) {
@@ -145,13 +163,11 @@ export default function ExamClient({ code }) {
   const [attemptId, setAttemptId] = useState('')
   const [reviewOpen, setReviewOpen] = useState(false)
   const [reviewIndex, setReviewIndex] = useState(0)
-  const [feedbackOpen, setFeedbackOpen] = useState(false)
   const [feedbackRatings, setFeedbackRatings] = useState({ questions: null, design: null, clip: null })
   const [feedbackText, setFeedbackText] = useState('')
   const [feedbackState, setFeedbackState] = useState('idle')
   const [feedbackError, setFeedbackError] = useState('')
   const submittingRef = useRef(false)
-  const feedbackCloseRef = useRef(null)
   const language = exam?.language in EXAM_COPY ? exam.language : 'fa'
   const copy = EXAM_COPY[language]
   const organizerName = exam?.organizer_name || (language === 'en' ? 'the exam organizer' : language === 'de' ? 'die Prüfungsleitung' : 'برگزارکننده آزمون')
@@ -192,8 +208,7 @@ export default function ExamClient({ code }) {
         body: JSON.stringify({ participantName, participantContact, website, answers, startedAt }),
       }))
       setAttemptId(data.attemptId)
-      setResult(data.result)
-      setPhase('result')
+      setPhase('feedback')
     } catch (err) {
       setError(err.message)
       setPhase('quiz')
@@ -213,19 +228,8 @@ export default function ExamClient({ code }) {
   }, [phase, startedAt, submitExam, timeLeft])
 
   useEffect(() => {
-    if (!feedbackOpen) return undefined
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    feedbackCloseRef.current?.focus()
-    const closeOnEscape = event => {
-      if (event.key === 'Escape') setFeedbackOpen(false)
-    }
-    window.addEventListener('keydown', closeOnEscape)
-    return () => {
-      document.body.style.overflow = previousOverflow
-      window.removeEventListener('keydown', closeOnEscape)
-    }
-  }, [feedbackOpen])
+    if (phase === 'feedback' || phase === 'result') window.scrollTo(0, 0)
+  }, [phase])
 
   function startExam(event) {
     event.preventDefault()
@@ -262,12 +266,14 @@ export default function ExamClient({ code }) {
     setFeedbackState('saving')
     setFeedbackError('')
     try {
-      await readJson(await fetch(`/api/exams/${encodeURIComponent(code)}`, {
+      const data = await readJson(await fetch(`/api/exams/${encodeURIComponent(code)}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ attemptId, ratings: feedbackRatings, feedbackText }),
       }))
+      setResult(data.result)
       setFeedbackState('saved')
+      setPhase('result')
     } catch (err) {
       setFeedbackError(err.message)
       setFeedbackState('idle')
@@ -304,6 +310,48 @@ export default function ExamClient({ code }) {
 
   if (phase === 'submitting') return <ExamFrame language={language} dir={copy.dir}><div className={styles.centerCard}><span className={styles.loader} /><h1>{copy.submitting}</h1><p>{copy.dontClose}</p></div></ExamFrame>
 
+  if (phase === 'feedback') {
+    const ratingsComplete = Object.values(feedbackRatings).every(value => Number.isInteger(value))
+    return (
+      <ExamFrame language={language} dir={copy.dir}>
+        <section className={styles.feedbackGate} aria-labelledby="feedback-title">
+          <div className={styles.feedbackSteps} aria-label={copy.feedbackProgress}>
+            <span className={styles.feedbackStepDone}><b>✓</b><small>{language === 'fa' ? 'شرکت در آزمون' : language === 'de' ? 'Prüfung' : 'Exam'}</small></span>
+            <i />
+            <span className={styles.feedbackStepDone}><b>✓</b><small>{language === 'fa' ? 'ثبت پاسخ‌ها' : language === 'de' ? 'Abgabe' : 'Submitted'}</small></span>
+            <i />
+            <span className={styles.feedbackStepCurrent}><b>3</b><small>{copy.feedbackProgress}</small></span>
+          </div>
+
+          <header className={styles.feedbackGateHeader}>
+            <span className={styles.feedbackHeart} aria-hidden="true">♥</span>
+            <h1 id="feedback-title">{copy.feedbackTitle}</h1>
+            <p>{copy.feedbackHint(participantName)}</p>
+          </header>
+
+          <form className={styles.feedbackGateForm} onSubmit={submitFeedback}>
+            <div className={styles.feedbackRequiredNote}><span aria-hidden="true">●</span>{copy.feedbackRequired}</div>
+            <RatingScale label={copy.questionQuality} name="question-quality" value={feedbackRatings.questions} labels={copy.ratingLabels} locale={copy.locale} onChange={value => setFeedbackRatings(currentRatings => ({ ...currentRatings, questions: value }))} />
+            <RatingScale label={copy.designQuality} name="design-quality" value={feedbackRatings.design} labels={copy.ratingLabels} locale={copy.locale} onChange={value => setFeedbackRatings(currentRatings => ({ ...currentRatings, design: value }))} />
+            <RatingScale label={copy.clipQuality} name="clip-quality" value={feedbackRatings.clip} labels={copy.ratingLabels} locale={copy.locale} onChange={value => setFeedbackRatings(currentRatings => ({ ...currentRatings, clip: value }))} />
+
+            <label className={styles.feedbackMessageGate}>
+              <span><strong>{copy.feedbackMessageTitle}</strong><small>{copy.feedbackMessageHint}</small></span>
+              <textarea maxLength={1600} value={feedbackText} onChange={event => setFeedbackText(event.target.value)} placeholder={copy.feedbackPlaceholder} />
+            </label>
+
+            {feedbackError ? <div className={styles.error} role="alert">{feedbackError}</div> : null}
+            <button className={styles.feedbackGateSubmit} type="submit" disabled={!ratingsComplete || feedbackState === 'saving'}>
+              {feedbackState === 'saving' ? copy.sendingFeedback : copy.sendFeedback}
+              <ChevronIcon />
+            </button>
+            <p className={styles.feedbackSafe}><span aria-hidden="true">✓</span>{copy.feedbackSafe}</p>
+          </form>
+        </section>
+      </ExamFrame>
+    )
+  }
+
   if (phase === 'result') {
     const reviewItems = result?.review || []
     const safeReviewIndex = Math.min(reviewIndex, Math.max(0, reviewItems.length - 1))
@@ -314,30 +362,52 @@ export default function ExamClient({ code }) {
     const selectedOptionId = reviewAnswered ? String.fromCharCode(65 + reviewItem.selectedOptionIndex) : null
     const correctExplanation = standardQuestion ? getCorrectAnswerExplanation(standardQuestion, language) : ''
     const wrongExplanation = standardQuestion ? getWrongAnswerExplanation(standardQuestion, selectedOptionId, language) : ''
+    const conversation = result
+      ? getResultConversation(Number(result.percentage), participantName, language)
+      : { tone: 'strong', title: copy.thanks(participantName), message: copy.resultSent }
 
     return (
       <ExamFrame language={language} dir={copy.dir}>
         <div className={styles.resultShell}>
-          <section className={styles.resultCard}>
-            <span className={styles.resultSuccess}>✓</span>
-            <span className={styles.badge}>{copy.submitted}</span>
-            <h1>{copy.thanks(participantName)}</h1>
-            <p className={styles.personalMessage}>{copy.sentTo(organizerName)}</p>
-            {result ? (
-              <>
-                <div className={styles.scoreCircle} style={{ '--score': `${result.percentage * 3.6}deg` }}><div><strong>{Number(result.percentage).toLocaleString(copy.locale)}%</strong><span>{result.score.toLocaleString(copy.locale)} {copy.of} {result.maxScore.toLocaleString(copy.locale)}</span></div></div>
-                {result.rank && result.totalParticipants ? <div className={styles.rankCard}><span aria-hidden="true">🏆</span><strong>{copy.rank(Number(result.rank).toLocaleString(copy.locale), Number(result.totalParticipants).toLocaleString(copy.locale))}</strong></div> : null}
-              </>
-            ) : <p>{copy.resultSent}</p>}
-            <div className={styles.resultActions}>
-              {reviewItems.length ? <button type="button" onClick={() => { setReviewIndex(0); setReviewOpen(value => !value) }}>{reviewOpen ? copy.hideReview : copy.review}</button> : null}
-              {attemptId ? (
-                <button type="button" className={styles.feedbackButton} onClick={() => setFeedbackOpen(true)}>
-                  <strong>{copy.feedback}</strong>
-                  <span>{copy.feedbackCtaHint}</span>
-                </button>
-              ) : null}
+          <section className={`${styles.resultCard} ${styles[`resultTone_${conversation.tone}`]}`}>
+            <div className={styles.resultConversation}>
+              <span className={styles.resultConfirmed}><b>✓</b>{copy.submitted}</span>
+              <h1>{conversation.title}</h1>
+              <p>{conversation.message}</p>
+              <div className={styles.deliveryMessage}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m21 3-7.7 18-3.7-7.6L2 9.7 21 3Z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round"/><path d="M9.6 13.4 21 3" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"/></svg>
+                <strong>{copy.sentTo(organizerName)}</strong>
+              </div>
+              <p className={styles.feedbackThanks}><span aria-hidden="true">♥</span>{copy.feedbackThanks}</p>
             </div>
+
+            {result ? (
+              <div className={styles.resultScoreArea}>
+                <div className={styles.scoreCircle} style={{ '--score': `${result.percentage * 3.6}deg` }}><div><strong>{Number(result.percentage).toLocaleString(copy.locale)}%</strong><span>{language === 'fa' ? 'درصد موفقیت' : language === 'de' ? 'Ergebnis' : 'Score'}</span></div></div>
+                <div className={styles.resultStats}>
+                  <div><span>{language === 'fa' ? 'نمره خام' : language === 'de' ? 'Punkte' : 'Raw score'}</span><strong>{result.score.toLocaleString(copy.locale)} {copy.of} {result.maxScore.toLocaleString(copy.locale)}</strong></div>
+                  {result.rank && result.totalParticipants ? <div><span>{language === 'fa' ? 'رتبه تا این لحظه' : language === 'de' ? 'Aktueller Rang' : 'Current rank'}</span><strong>{copy.rank(Number(result.rank).toLocaleString(copy.locale), Number(result.totalParticipants).toLocaleString(copy.locale))}</strong></div> : null}
+                </div>
+            </div>
+            ) : null}
+          </section>
+
+          <section className={styles.resultNextStep}>
+            <div><h2>{copy.nextStep}</h2><p>{copy.reviewHint}</p></div>
+            <div className={styles.resultNextActions}>
+              {reviewItems.length ? <button type="button" onClick={() => { setReviewIndex(0); setReviewOpen(value => !value) }}>{reviewOpen ? copy.hideReview : copy.review}<ChevronIcon /></button> : null}
+              <Link href="/?lang=de">{copy.backHome}</Link>
+            </div>
+            {reviewItems.length ? (
+              <div className={styles.resultReviewPreview}>
+                <span>{copy.questionList}</span>
+                <div>{reviewItems.slice(0, 12).map((item, index) => {
+                  const answered = Number.isInteger(item.selectedOptionIndex)
+                  const correct = answered && item.selectedOptionIndex === item.correctOptionIndex
+                  return <i className={correct ? styles.previewCorrect : answered ? styles.previewWrong : styles.previewOpen} key={item.id}>{Number(index + 1).toLocaleString(copy.locale)}</i>
+                })}</div>
+              </div>
+            ) : null}
           </section>
 
           {reviewOpen && reviewItem ? (
@@ -385,28 +455,6 @@ export default function ExamClient({ code }) {
           ) : null}
         </div>
 
-        {feedbackOpen && attemptId ? (
-          <div className={styles.modalBackdrop} onMouseDown={event => { if (event.target === event.currentTarget) setFeedbackOpen(false) }}>
-            <section className={styles.feedbackModal} role="dialog" aria-modal="true" aria-labelledby="feedback-dialog-title">
-              <div className={styles.feedbackModalHeader}>
-                <div><h2 id="feedback-dialog-title">{copy.feedbackTitle}</h2><p>{copy.feedbackHint}</p></div>
-                <button ref={feedbackCloseRef} type="button" className={styles.modalClose} onClick={() => setFeedbackOpen(false)} aria-label={copy.hideFeedback}><CloseIcon /></button>
-              </div>
-              {feedbackState === 'saved' ? (
-                <div className={styles.feedbackSuccess}><span aria-hidden="true">✓</span><strong>{copy.feedbackSaved}</strong><button type="button" onClick={() => setFeedbackOpen(false)}>{copy.hideFeedback}</button></div>
-              ) : (
-                <form className={styles.feedbackForm} onSubmit={submitFeedback}>
-                  <RatingScale label={copy.questionQuality} name="question-quality" value={feedbackRatings.questions} labels={copy.ratingLabels} locale={copy.locale} onChange={value => setFeedbackRatings(currentRatings => ({ ...currentRatings, questions: value }))} />
-                  <RatingScale label={copy.designQuality} name="design-quality" value={feedbackRatings.design} labels={copy.ratingLabels} locale={copy.locale} onChange={value => setFeedbackRatings(currentRatings => ({ ...currentRatings, design: value }))} />
-                  <RatingScale label={copy.clipQuality} name="clip-quality" value={feedbackRatings.clip} labels={copy.ratingLabels} locale={copy.locale} onChange={value => setFeedbackRatings(currentRatings => ({ ...currentRatings, clip: value }))} />
-                  <label className={styles.feedbackMessage}><strong>{copy.feedbackMessageTitle}</strong><span>{copy.feedbackMessageHint}</span><textarea maxLength={1600} value={feedbackText} onChange={event => setFeedbackText(event.target.value)} placeholder={copy.feedbackPlaceholder} /></label>
-                  {feedbackError ? <div className={styles.error} role="alert">{feedbackError}</div> : null}
-                  <button className={styles.feedbackSubmit} type="submit" disabled={feedbackState === 'saving'}>{feedbackState === 'saving' ? copy.sendingFeedback : copy.sendFeedback}</button>
-                </form>
-              )}
-            </section>
-          </div>
-        ) : null}
       </ExamFrame>
     )
   }

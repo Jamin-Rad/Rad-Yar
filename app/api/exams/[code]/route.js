@@ -153,44 +153,9 @@ export async function POST(request, { params }) {
     return NextResponse.json({ error: 'ارسال پاسخ‌ها انجام نشد. دوباره تلاش کنید.' }, { status: 503 })
   }
 
-  const [higherResult, totalResult] = await Promise.all([
-    supabaseAdmin
-      .from('exam_attempts')
-      .select('id', { count: 'exact', head: true })
-      .eq('exam_id', result.exam.id)
-      .gt('percentage', graded.percentage),
-    supabaseAdmin
-      .from('exam_attempts')
-      .select('id', { count: 'exact', head: true })
-      .eq('exam_id', result.exam.id),
-  ])
-  if (higherResult.error || totalResult.error) {
-    console.error('محاسبه رتبه آزمون انجام نشد:', higherResult.error || totalResult.error)
-  }
-
-  const review = result.questions.map(question => ({
-    id: question.id,
-    prompt: question.prompt,
-    options: question.options,
-    selectedOptionIndex: graded.answers[question.id],
-    correctOptionIndex: Number(question.correct_option_index),
-    explanation: question.explanation || '',
-    media: question.media || null,
-  }))
-
   return NextResponse.json({
     attemptId: attempt.id,
     submittedAt: attempt.submitted_at,
-    result: result.exam.show_result
-      ? {
-          score: graded.score,
-          maxScore: graded.maxScore,
-          percentage: graded.percentage,
-          rank: higherResult.error ? null : Number(higherResult.count || 0) + 1,
-          totalParticipants: totalResult.error ? null : Number(totalResult.count || 0),
-          review,
-        }
-      : null,
   })
 }
 
@@ -237,7 +202,7 @@ export async function PATCH(request, { params }) {
 
   const { data: exam, error: examError } = await supabaseAdmin
     .from('exams')
-    .select('id')
+    .select('id,show_result')
     .eq('public_code', code)
     .maybeSingle()
   if (examError) return databaseUnavailable()
@@ -252,7 +217,7 @@ export async function PATCH(request, { params }) {
     })
     .eq('id', attemptId)
     .eq('exam_id', exam.id)
-    .select('id')
+    .select('id,answers,score,max_score,percentage')
     .maybeSingle()
 
   if (error) {
@@ -260,5 +225,56 @@ export async function PATCH(request, { params }) {
     return NextResponse.json({ error: 'ثبت نظر انجام نشد. دوباره تلاش کنید.' }, { status: 503 })
   }
   if (!updated) return NextResponse.json({ error: 'نتیجه آزمون پیدا نشد.' }, { status: 404 })
-  return NextResponse.json({ saved: true })
+
+  if (!exam.show_result) return NextResponse.json({ saved: true, result: null })
+
+  const [{ data: questions, error: questionsError }, higherResult, totalResult] = await Promise.all([
+    supabaseAdmin
+      .from('exam_questions')
+      .select('id,prompt,options,correct_option_index,explanation,position')
+      .eq('exam_id', exam.id)
+      .order('position'),
+    supabaseAdmin
+      .from('exam_attempts')
+      .select('id', { count: 'exact', head: true })
+      .eq('exam_id', exam.id)
+      .gt('percentage', Number(updated.percentage)),
+    supabaseAdmin
+      .from('exam_attempts')
+      .select('id', { count: 'exact', head: true })
+      .eq('exam_id', exam.id),
+  ])
+
+  if (questionsError) {
+    console.error('بارگذاری مرور پاسخ‌ها انجام نشد:', questionsError)
+    return NextResponse.json({ error: 'نظر ثبت شد اما نمایش نتیجه انجام نشد. صفحه را دوباره باز کنید.' }, { status: 503 })
+  }
+  if (higherResult.error || totalResult.error) {
+    console.error('محاسبه رتبه آزمون انجام نشد:', higherResult.error || totalResult.error)
+  }
+
+  const review = (questions || []).map(question => {
+    const unpacked = unpackExamQuestionExplanation(question.explanation)
+    return {
+      id: question.id,
+      prompt: question.prompt,
+      options: question.options,
+      selectedOptionIndex: updated.answers?.[question.id],
+      correctOptionIndex: Number(question.correct_option_index),
+      explanation: unpacked.explanation || '',
+      media: unpacked.media || null,
+    }
+  })
+
+  return NextResponse.json({
+    saved: true,
+    result: {
+      score: Number(updated.score),
+      maxScore: Number(updated.max_score),
+      percentage: Number(updated.percentage),
+      rank: higherResult.error ? null : Number(higherResult.count || 0) + 1,
+      totalParticipants: totalResult.error ? null : Number(totalResult.count || 0),
+      review,
+    },
+  })
 }
