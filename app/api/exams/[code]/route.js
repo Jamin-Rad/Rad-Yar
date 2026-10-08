@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createHash } from 'node:crypto'
+import { CASE_BANK } from '@/data/cases'
 import { QUESTION_BANK } from '@/data/questions'
 import { gradeExam, normalizeWrongExplanations, unpackExamQuestionExplanation } from '@/lib/exams'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
@@ -15,18 +16,41 @@ function normalizeComparableText(value) {
   return typeof value === 'string' ? value.replace(/\s+/g, ' ').trim() : ''
 }
 
-function findLessonWrongExplanations(question, language) {
+function sourcePromptCandidates(item) {
+  return [
+    item?.prompt,
+    item?.question,
+    [item?.vignette, item?.question].filter(Boolean).join('\n\n'),
+  ].map(normalizeComparableText).filter(Boolean)
+}
+
+function sourceOptionsMatch(item, options) {
+  return Array.isArray(item?.options)
+    && item.options.length === options.length
+    && item.options.every((option, index) => normalizeComparableText(option?.text) === options[index])
+}
+
+function sourceCorrectAnswerMatches(item, correctOptionIndex) {
+  if (!Number.isInteger(correctOptionIndex) || !item?.correct) return true
+  return item.correct === String.fromCharCode(65 + correctOptionIndex)
+}
+
+function findSourceWrongExplanations(question, language) {
   const prompt = normalizeComparableText(question?.prompt)
   const options = Array.isArray(question?.options) ? question.options.map(normalizeComparableText) : []
   if (!prompt || options.length !== 4) return {}
 
-  const source = QUESTION_BANK[language] || QUESTION_BANK.fa || []
-  const match = source.find(item => (
-    normalizeComparableText(item?.question) === prompt
-    && Array.isArray(item?.options)
-    && item.options.length === options.length
-    && item.options.every((option, index) => normalizeComparableText(option?.text) === options[index])
+  const source = [
+    ...(QUESTION_BANK[language] || QUESTION_BANK.fa || []),
+    ...(CASE_BANK[language] || CASE_BANK.de || []),
+  ]
+  const correctOptionIndex = Number(question?.correct_option_index)
+  const matchingOptions = source.filter(item => (
+    sourceOptionsMatch(item, options)
+    && sourceCorrectAnswerMatches(item, correctOptionIndex)
   ))
+  const match = matchingOptions.find(item => sourcePromptCandidates(item).includes(prompt))
+    || (matchingOptions.length === 1 ? matchingOptions[0] : null)
   return normalizeWrongExplanations(match?.wrongExplanations)
 }
 
@@ -155,7 +179,7 @@ async function buildResult(exam, attempt) {
     const unpacked = unpackExamQuestionExplanation(question.explanation)
     const wrongExplanations = Object.keys(unpacked.wrongExplanations).length
       ? unpacked.wrongExplanations
-      : findLessonWrongExplanations(question, exam.language)
+      : findSourceWrongExplanations(question, exam.language)
     return {
       id: question.id,
       prompt: question.prompt,
