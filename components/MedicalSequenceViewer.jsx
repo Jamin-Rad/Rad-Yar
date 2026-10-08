@@ -7,9 +7,9 @@ import { normalizeExamMedia } from '@/utils/examMedia'
 import styles from './MedicalSequenceViewer.module.css'
 
 const COPY = {
-  de: { choose: 'Sequenz auswählen', slice: 'Schicht', hint: 'Mausrad oder Pfeiltasten', seriesHint: 'Mausrad: Sequenz wechseln', source: 'Originalfall ansehen', expand: 'Bild vergrößern', close: 'Großansicht schließen' },
-  en: { choose: 'Choose sequence', slice: 'Slice', hint: 'Mouse wheel or arrow keys', seriesHint: 'Mouse wheel: change sequence', source: 'View original case', expand: 'Enlarge image', close: 'Close enlarged view' },
-  fa: { choose: 'انتخاب سکانس', slice: 'برش', hint: 'اسکرول ماوس یا کلیدهای جهت', seriesHint: 'اسکرول ماوس: تغییر سکانس', source: 'مشاهده کیس اصلی', expand: 'بزرگ‌نمایی تصویر', close: 'بستن نمای بزرگ' },
+  de: { choose: 'Sequenz auswählen', slice: 'Bild', hint: 'Mausrad oder Pfeiltasten', source: 'Originalfall ansehen', expand: 'Bild vergrößern', close: 'Großansicht schließen' },
+  en: { choose: 'Choose sequence', slice: 'Image', hint: 'Mouse wheel or arrow keys', source: 'View original case', expand: 'Enlarge image', close: 'Close enlarged view' },
+  fa: { choose: 'انتخاب سکانس', slice: 'تصویر', hint: 'اسکرول ماوس یا کلیدهای جهت', source: 'مشاهده کیس اصلی', expand: 'بزرگ‌نمایی تصویر', close: 'بستن نمای بزرگ' },
 }
 
 function ArrowIcon({ direction }) {
@@ -21,7 +21,7 @@ function ArrowIcon({ direction }) {
   )
 }
 
-export default function MedicalSequenceViewer({ media, language = 'de', compact = false, priority = false, expandable = false }) {
+export default function MedicalSequenceViewer({ media, language = 'de', compact = false, priority = false, expandable = false, showSource = true }) {
   const normalized = useMemo(() => normalizeExamMedia(media), [media])
   const [seriesIndex, setSeriesIndex] = useState(0)
   const activeSeries = normalized?.series[Math.min(seriesIndex, Math.max(0, normalized.series.length - 1))]
@@ -48,11 +48,7 @@ export default function MedicalSequenceViewer({ media, language = 'de', compact 
           ? -1
           : 0
       if (!direction) return
-      if ((activeSeries?.frames.length || 1) > 1) {
-        setFrameIndex(index => Math.min((activeSeries?.frames.length || 1) - 1, Math.max(0, index + direction)))
-      } else {
-        setSeriesIndex(index => Math.min((normalized?.series.length || 1) - 1, Math.max(0, index + direction)))
-      }
+      setFrameIndex(index => Math.min((activeSeries?.frames.length || 1) - 1, Math.max(0, index + direction)))
     }
     document.body.style.overflow = 'hidden'
     window.addEventListener('keydown', handleKeyDown)
@@ -60,21 +56,13 @@ export default function MedicalSequenceViewer({ media, language = 'de', compact 
       document.body.style.overflow = previousOverflow
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [activeSeries?.frames.length, expanded, normalized?.series.length])
+  }, [activeSeries?.frames.length, expanded])
 
   if (!normalized || !activeSeries) return null
 
   const frameCount = activeSeries.frames.length
   const safeFrameIndex = Math.min(frameIndex, frameCount - 1)
   const move = direction => setFrameIndex(index => Math.min(frameCount - 1, Math.max(0, index + direction)))
-  const navigate = direction => {
-    if (frameCount > 1) {
-      move(direction)
-      return
-    }
-    setSeriesIndex(index => Math.min(normalized.series.length - 1, Math.max(0, index + direction)))
-  }
-  const isScrollable = frameCount > 1 || normalized.series.length > 1
   const thumbnailIndexes = Array.from({ length: Math.min(7, frameCount) }, (_, offset) => {
     const start = Math.min(Math.max(0, safeFrameIndex - 3), Math.max(0, frameCount - 7))
     return start + offset
@@ -110,13 +98,13 @@ export default function MedicalSequenceViewer({ media, language = 'de', compact 
           if (event.target.closest('button, input')) return
           setExpanded(true)
         } : undefined}
-        onWheel={isScrollable ? event => {
+        onWheel={frameCount > 1 ? event => {
           event.preventDefault()
-          if (event.deltaY !== 0) navigate(event.deltaY > 0 ? 1 : -1)
+          if (event.deltaY !== 0) move(event.deltaY > 0 ? 1 : -1)
         } : undefined}
         onKeyDown={event => {
-          if (event.key === 'ArrowRight' || event.key === 'ArrowDown') navigate(1)
-          if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') navigate(-1)
+          if (event.key === 'ArrowRight' || event.key === 'ArrowDown') move(1)
+          if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') move(-1)
           if (expandable && (event.key === 'Enter' || event.key === ' ')) {
             event.preventDefault()
             setExpanded(true)
@@ -139,9 +127,9 @@ export default function MedicalSequenceViewer({ media, language = 'de', compact 
           <>
             <button type="button" className={`${styles.frameArrow} ${styles.previousArrow}`} onClick={() => move(-1)} disabled={safeFrameIndex === 0} aria-label="Previous slice"><ArrowIcon direction="previous" /></button>
             <button type="button" className={`${styles.frameArrow} ${styles.nextArrow}`} onClick={() => move(1)} disabled={safeFrameIndex === frameCount - 1} aria-label="Next slice"><ArrowIcon direction="next" /></button>
+            <span className={styles.wheelHint}>{copy.hint}</span>
           </>
         ) : null}
-        {isScrollable ? <span className={styles.wheelHint}>{frameCount > 1 ? copy.hint : copy.seriesHint}</span> : null}
         {expandable ? <span className={styles.expandHint}>{copy.expand}</span> : null}
       </div>
 
@@ -166,10 +154,10 @@ export default function MedicalSequenceViewer({ media, language = 'de', compact 
         </>
       ) : null}
 
-      {(normalized.credit || normalized.source) ? (
+      {(normalized.credit || (showSource && normalized.source)) ? (
         <footer className={styles.credit}>
           <span>{normalized.credit}</span>
-          {normalized.source ? <a href={normalized.source} target="_blank" rel="noopener noreferrer">{copy.source} ↗</a> : null}
+          {showSource && normalized.source ? <a href={normalized.source} target="_blank" rel="noopener noreferrer">{copy.source} ↗</a> : null}
         </footer>
       ) : null}
 
@@ -184,9 +172,9 @@ export default function MedicalSequenceViewer({ media, language = 'de', compact 
             </div>
             <button type="button" onClick={() => setExpanded(false)} aria-label={copy.close}>×</button>
           </div>
-          <div className={styles.lightboxStage} onWheel={isScrollable ? event => {
+          <div className={styles.lightboxStage} onWheel={frameCount > 1 ? event => {
             event.preventDefault()
-            if (event.deltaY !== 0) navigate(event.deltaY > 0 ? 1 : -1)
+            if (event.deltaY !== 0) move(event.deltaY > 0 ? 1 : -1)
           } : undefined}>
             <Image
               src={activeSeries.frames[safeFrameIndex]}
@@ -204,7 +192,7 @@ export default function MedicalSequenceViewer({ media, language = 'de', compact 
             ) : null}
           </div>
           <div className={styles.lightboxFooter}>
-            <span>{frameCount > 1 ? copy.hint : copy.seriesHint}</span>
+            <span>{copy.hint}</span>
             <strong>{copy.slice} {safeFrameIndex + 1} / {frameCount}</strong>
           </div>
         </div>,

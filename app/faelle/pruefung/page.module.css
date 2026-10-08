@@ -40,6 +40,26 @@
 .scoreCorrect > span,
 .scoreWrong > span { font-size: 14px; }
 
+.timer {
+  display: inline-flex;
+  align-items: center;
+  justify-self: end;
+  gap: 8px;
+  min-height: 31px;
+  padding: 0 11px;
+  border: 1px solid #bcd0e4;
+  border-radius: 8px;
+  background: #f1f7fc;
+  color: #334e68;
+  font-size: 12px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.timer strong { color: #102a43; font-size: 14px; }
+.timerLow { border-color: #efb5b5; background: #fff0f0; color: #b62f2f; animation: timerPulse 1s ease-in-out infinite; }
+.timerLow strong { color: inherit; }
+@keyframes timerPulse { 50% { opacity: .62; } }
+
 .examShell {
   display: grid;
   gap: 22px;
@@ -232,10 +252,29 @@
 .feedbackSection p { margin: 0; color: #4d6077; font-size: 14.5px; font-weight: 500; line-height: 1.75; }
 
 .correctText { color: #059669; font-weight: 800; }
+.percentage { margin: -6px 0 12px; color: #64748b; font-size: 14px; font-weight: 800; }
+.recommendation {
+  display: grid;
+  gap: 10px;
+  padding: 18px 20px;
+  border: 1px solid #d8e2ec;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(26, 45, 70, .05);
+}
+.recommendation h2 { margin: 0; color: #14213a; font-size: 16px; font-weight: 850; }
+.recommendation p { margin: 0; color: #4d6077; font-size: 14px; line-height: 1.6; }
+.recommendationTopics { display: flex; flex-wrap: wrap; gap: 8px; }
+.recommendationTopics span { padding: 7px 10px; border-radius: 999px; background: #fff3ec; color: #c2410c; font-size: 12px; font-weight: 800; }
+.summarySource { display: inline-flex; margin: 10px 0 0 32px; color: #c2410c; font-size: 12px; font-weight: 800; text-decoration: none; }
+.summarySource:hover { text-decoration: underline; }
 .loading { display: grid; min-height: 100vh; place-items: center; color: #94a3b8; font-family: system-ui, sans-serif; }
 
 :global(html[data-theme='dark']) .page { background: #07111f; }
 :global(html[data-theme='dark']) .topScore { color: #c9d5e4; }
+:global(html[data-theme='dark']) .timer { border-color: #35516f; background: #102239; color: #afc4d9; }
+:global(html[data-theme='dark']) .timer strong { color: #e4edf6; }
+:global(html[data-theme='dark']) .timerLow { border-color: #814047; background: #351c24; color: #f1a0a0; }
 :global(html[data-theme='dark']) .scoreCorrect { border-color: #276f5c; background: #102e29; color: #70d5b5; }
 :global(html[data-theme='dark']) .scoreWrong { border-color: #814047; background: #351c24; color: #f1a0a0; }
 :global(html[data-theme='dark']) .caseIntro,
@@ -263,6 +302,10 @@
 :global(html[data-theme='dark']) .answerCorrect strong,
 :global(html[data-theme='dark']) .feedbackSection h2 { color: #e3eaf2; }
 :global(html[data-theme='dark']) .feedbackSection p { color: #afbdd0; }
+:global(html[data-theme='dark']) .recommendation { border-color: #26374f; background: #0f1b2d; }
+:global(html[data-theme='dark']) .recommendation h2 { color: #f4f7fa; }
+:global(html[data-theme='dark']) .recommendation p { color: #afbdd0; }
+:global(html[data-theme='dark']) .recommendationTopics span { background: #302116; color: #f3ad88; }
 
 @media (max-width: 1120px) {
   .examLayout { grid-template-columns: minmax(360px, .85fr) minmax(480px, 1.15fr); }
@@ -282,6 +325,7 @@
 @media (max-width: 640px) {
   .topBar { width: min(100% - 24px, 600px); }
   .topScore { gap: 5px; font-size: 11px; }
+  .timer { gap: 6px; padding-inline: 9px; font-size: 11px; }
   .topScoreLabel { display: none; }
   .scoreCorrect,
   .scoreWrong { min-width: 34px; height: 27px; padding-inline: 7px; }

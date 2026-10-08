@@ -26,6 +26,13 @@ function haemangiomaMriSeries(lang) {
   ]
 }
 
+function numberedFrames(directory, count, extension = 'jpeg') {
+  return Array.from(
+    { length: count },
+    (_, index) => `${directory}/${String(index + 1).padStart(2, '0')}.${extension}`
+  )
+}
+
 function locCase(item, lang) {
   function t(val) { return (val && typeof val === 'object' && !Array.isArray(val)) ? (val[lang] || val.de) : val }
   return {
@@ -37,6 +44,7 @@ function locCase(item, lang) {
     imageFindings: t(item.imageFindings),
     plane: t(item.plane),
     images: item.images?.map(image => ({ ...image, label: t(image.label) })),
+    series: item.series?.map(series => ({ ...series, label: t(series.label), plane: t(series.plane) })),
     options: item.options.map(opt => ({ ...opt, text: t(opt.text) })),
     explanation: t(item.explanation),
     wrongExplanations: item.wrongExplanations && Object.fromEntries(
@@ -128,9 +136,19 @@ const TROPONIN_PRUEFUNG_CASES = [
     kapitelId: 'thorax-kardio',
     topicId: 'myokardinfarkt-differentialdiagnosen',
     image: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/takotsubo-33052/01-2ch-cine.jpg',
-    images: [
-      { src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/takotsubo-33052/01-2ch-cine.jpg', label: { de: '2-Kammer Cine SSFP', en: '2-chamber cine SSFP', fa: 'Cine SSFP دوحفره‌ای' } },
-      { src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/takotsubo-33052/06-2ch-lge.jpg', label: { de: '2-Kammer LGE', en: '2-chamber LGE', fa: 'LGE دوحفره‌ای' } },
+    series: [
+      {
+        id: '2ch-cine',
+        label: { de: '2-Kammer Cine SSFP', en: '2-chamber cine SSFP', fa: 'Cine SSFP دوحفره‌ای' },
+        frames: numberedFrames('/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/takotsubo-33052/2ch-cine-frames', 25, 'jpg'),
+        initialFrame: 0,
+      },
+      {
+        id: '2ch-lge',
+        label: { de: '2-Kammer LGE', en: '2-chamber LGE', fa: 'LGE دوحفره‌ای' },
+        frames: ['/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/takotsubo-33052/06-2ch-lge.jpg'],
+        initialFrame: 0,
+      },
     ],
     modality: 'MRT',
     plane: { de: 'CMR · Cine und LGE · 2-Kammer', en: 'CMR · cine and LGE · 2 chamber', fa: 'CMR · Cine و LGE · دوحفره‌ای' },
@@ -197,11 +215,31 @@ const TROPONIN_PRUEFUNG_CASES = [
     kapitelId: 'thorax-kardio',
     topicId: 'myokardinfarkt-differentialdiagnosen',
     image: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/05-short-axis-lge.jpeg',
-    images: [
-      { src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/05-short-axis-lge.jpeg', label: { de: 'Short-axis LGE', en: 'Short-axis LGE', fa: 'Short-axis LGE' } },
-      { src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/04-4ch-lge.jpeg', label: { de: '4-Kammer LGE', en: '4-chamber LGE', fa: 'LGE چهارحفره‌ای' } },
-      { src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/02-4ch-stir.jpeg', label: { de: '4-Kammer STIR', en: '4-chamber STIR', fa: 'STIR چهارحفره‌ای' } },
-      { src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/01-4ch-cine.jpeg', label: { de: '4-Kammer Cine', en: '4-chamber cine', fa: 'Cine چهارحفره‌ای' } },
+    series: [
+      {
+        id: 'short-axis-lge',
+        label: { de: 'Short-axis LGE', en: 'Short-axis LGE', fa: 'Short-axis LGE' },
+        frames: numberedFrames('/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/short-axis-lge-frames', 12),
+        initialFrame: 0,
+      },
+      {
+        id: '4ch-lge',
+        label: { de: '4-Kammer LGE', en: '4-chamber LGE', fa: 'LGE چهارحفره‌ای' },
+        frames: ['/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/04-4ch-lge.jpeg'],
+        initialFrame: 0,
+      },
+      {
+        id: '4ch-stir',
+        label: { de: '4-Kammer STIR', en: '4-chamber STIR', fa: 'STIR چهارحفره‌ای' },
+        frames: ['/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/02-4ch-stir.jpeg'],
+        initialFrame: 0,
+      },
+      {
+        id: '4ch-cine',
+        label: { de: '4-Kammer Cine', en: '4-chamber cine', fa: 'Cine چهارحفره‌ای' },
+        frames: numberedFrames('/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/4ch-cine-frames', 40),
+        initialFrame: 0,
+      },
     ],
     modality: 'MRT',
     plane: { de: 'CMR · Cine, STIR und LGE', en: 'CMR · cine, STIR and LGE', fa: 'CMR · Cine، STIR و LGE' },
@@ -222,7 +260,7 @@ const TROPONIN_PRUEFUNG_CASES = [
       fa: 'مرد ۳۰ ساله پس از گاستروانتریت حاد با درد قفسه سینه، ST elevation منتشر و افزایش واضح تروپونین مراجعه کرده است. در آنژیوگرافی کرونر هیچ تنگی ۵۰ درصد یا بیشتر دیده نمی‌شود. برای بررسی بیشتر افزایش تروپونین در زمینه عروق کرونر بدون انسداد قابل‌توجه، CMR انجام می‌شود. دقیق‌ترین تفسیر کدام است؟',
     },
     options: [
-      { id: 'A', text: { de: 'Akute Myoperikarditis; nach Klärung der Ursache ist MINOCA nicht mehr die Abschlussdiagnose', en: 'Acute myopericarditis; once the cause is established, MINOCA is no longer the final diagnosis', fa: 'Acute myopericarditis؛ با مشخص‌شدن علت، دیگر نباید MINOCA را به‌عنوان تشخیص نهایی گزارش کرد' } },
+      { id: 'A', text: { de: 'Akute Myoperikarditis', en: 'Acute myopericarditis', fa: 'میوپریکاردیت حاد' } },
       { id: 'B', text: { de: 'Ischämischer MINOCA durch Plaqueruptur', en: 'Ischaemic MINOCA caused by plaque rupture', fa: 'MINOCA ایسکمیک ناشی از plaque rupture' } },
       { id: 'C', text: { de: 'Takotsubo-Syndrom', en: 'Takotsubo syndrome', fa: 'Takotsubo syndrome' } },
       { id: 'D', text: { de: 'Kleiner abgeschlossener Myokardinfarkt', en: 'Small completed myocardial infarction', fa: 'انفارکت کوچک و کامل‌شده میوکارد' } },

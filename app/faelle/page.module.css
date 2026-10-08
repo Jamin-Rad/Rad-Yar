@@ -17,4 +17,26 @@
   font-size: 12px;
   line-height: 1.5;
 }
+.modeOptions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.modeOption {
+  display: grid;
+  gap: 4px;
+  min-height: 76px;
+  padding: 13px 14px;
+  border: 1.5px solid #d8e2ec;
+  border-radius: 12px;
+  background: #fff;
+  color: #465a73;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: start;
+}
+.modeOption strong { color: #14213a; font-size: 14px; }
+.modeOption span { font-size: 12px; line-height: 1.45; }
+.modeOption:hover { border-color: #f3a17b; }
+.modeOptionActive { border-color: #f45b16; background: #fff3ec; box-shadow: 0 0 0 2px rgba(244,91,22,.08); }
+:global(html[data-theme='dark']) .modeOption { border-color: #33465f; background: #132238; color: #a5b3c7; }
+:global(html[data-theme='dark']) .modeOption strong { color: #f4f7fa; }
+:global(html[data-theme='dark']) .modeOptionActive { border-color: #f45b16; background: #302116; }
+@media (max-width: 520px) { .modeOptions { grid-template-columns: 1fr; } }
 :global(html[data-theme='dark']) .modalitySummary { color: #9aa9bf; }

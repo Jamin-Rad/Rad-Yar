@@ -1,10 +1,11 @@
 'use client'
 
-import { Suspense, useMemo, useState } from 'react'
+import { Suspense, useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { useUser } from '@clerk/nextjs'
 import { getCases } from '@/data/cases'
+import { CURRICULUM, getThemaTitle } from '@/data/curriculum'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { getWrongAnswerExplanation } from '@/utils/answerFeedback'
 import { caseToExamMedia } from '@/utils/examMedia'
@@ -13,6 +14,7 @@ import quizStyles from '@/app/ueben/quiz/page.module.css'
 import styles from './page.module.css'
 
 const ADMIN_EMAIL = 'dr.benjaminzia@gmail.com'
+const SECONDS_PER_TIMED_CASE = 150
 
 const REGION_NAMES = {
   de: { msk: 'Muskuloskelettales', thorax: 'Thorax', abdomen: 'Abdomen' },
@@ -27,6 +29,7 @@ const UI = {
     emptySub: 'Bitte wähle mindestens ein Thema mit verfügbaren Fällen.',
     caseOf: (current, total) => `Fall ${current} von ${total}`,
     check: 'Antwort prüfen',
+    submit: 'Antwort abgeben',
     next: 'Nächster Fall',
     resultButton: 'Ergebnis anzeigen',
     correct: 'Richtig',
@@ -44,8 +47,15 @@ const UI = {
     summary: 'Fallübersicht',
     yourAnswer: 'Deine Antwort:',
     rightAnswer: 'Richtig:',
+    noAnswer: 'Keine Antwort',
     restart: 'Prüfung wiederholen',
     newSelection: 'Neue Auswahl',
+    learningMode: 'Lernmodus',
+    timedMode: 'Zeitprüfung',
+    time: 'Zeit',
+    recommendation: 'Empfehlung',
+    practiceTopics: 'Diese Themen solltest du gezielt wiederholen:',
+    excellent: 'Sehr gut! Wähle neue Themen oder erhöhe die Fallzahl für die nächste Prüfung.',
   },
   en: {
     back: '← Back to case selection',
@@ -53,6 +63,7 @@ const UI = {
     emptySub: 'Please choose at least one topic with available cases.',
     caseOf: (current, total) => `Case ${current} of ${total}`,
     check: 'Check answer',
+    submit: 'Submit answer',
     next: 'Next case',
     resultButton: 'Show result',
     correct: 'Correct',
@@ -70,8 +81,15 @@ const UI = {
     summary: 'Case summary',
     yourAnswer: 'Your answer:',
     rightAnswer: 'Correct:',
+    noAnswer: 'No answer',
     restart: 'Repeat exam',
     newSelection: 'New selection',
+    learningMode: 'Learning mode',
+    timedMode: 'Timed exam',
+    time: 'Time',
+    recommendation: 'Recommendation',
+    practiceTopics: 'Focus your next practice on these topics:',
+    excellent: 'Excellent work! Choose new topics or increase the case count next time.',
   },
   fa: {
     back: 'بازگشت به انتخاب کیس ←',
@@ -79,6 +97,7 @@ const UI = {
     emptySub: 'حداقل یک موضوع دارای کیس را انتخاب کن.',
     caseOf: (current, total) => `کیس ${current} از ${total}`,
     check: 'بررسی پاسخ',
+    submit: 'ثبت پاسخ',
     next: 'کیس بعدی',
     resultButton: 'نمایش نتیجه',
     correct: 'درست',
@@ -96,8 +115,15 @@ const UI = {
     summary: 'مرور کیس‌ها',
     yourAnswer: 'پاسخ شما:',
     rightAnswer: 'صحیح:',
+    noAnswer: 'بدون پاسخ',
     restart: 'تکرار آزمون',
     newSelection: 'انتخاب جدید',
+    learningMode: 'حالت یادگیری',
+    timedMode: 'آزمون زمان‌دار',
+    time: 'زمان',
+    recommendation: 'پیشنهاد',
+    practiceTopics: 'این موضوع‌ها را هدفمند مرور کن:',
+    excellent: 'عالی بود! برای آزمون بعدی موضوعات جدید یا تعداد کیس بیشتری انتخاب کن.',
   },
 }
 
@@ -106,6 +132,23 @@ function resultColor(score, total) {
   if (percentage >= 0.8) return '#059669'
   if (percentage >= 0.5) return '#f97316'
   return '#ef4444'
+}
+
+function getTopicName(topicId, lang) {
+  for (const region of CURRICULUM) {
+    for (const chapter of region.kapitel) {
+      for (const topic of chapter.themen) {
+        if (topic.id === topicId) return getThemaTitle(topic, lang)
+        const subtopic = topic.sub?.find(entry => entry.id === topicId)
+        if (subtopic) return getThemaTitle(subtopic, lang)
+      }
+    }
+  }
+  return topicId
+}
+
+function formatTime(seconds) {
+  return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`
 }
 
 function CaseExamContent() {
@@ -119,6 +162,7 @@ function CaseExamContent() {
   const topicIds = topicParam.split(',').filter(Boolean)
   const modalities = modalityParam.split(',').filter(Boolean)
   const requestedCount = Math.max(1, Number.parseInt(searchParams.get('n') || '1', 10) || 1)
+  const isTimed = searchParams.get('modus') === 'timed'
   const isAdmin = user?.primaryEmailAddress?.emailAddress?.toLowerCase() === ADMIN_EMAIL
   const cases = useMemo(
     () => isUserLoaded ? getCases(topicIds, modalities, lang, requestedCount, { shuffle: !isAdmin }) : [],
@@ -130,6 +174,7 @@ function CaseExamContent() {
   const [checked, setChecked] = useState(false)
   const [answers, setAnswers] = useState([])
   const [phase, setPhase] = useState('exam')
+  const [timeLeft, setTimeLeft] = useState(SECONDS_PER_TIMED_CASE)
 
   const total = cases.length
   const item = cases[current]
@@ -137,21 +182,29 @@ function CaseExamContent() {
   const isLast = current === total - 1
   const score = answers.filter(answer => answer.correct).length
   const wrongScore = answers.length - score
-  const progress = total ? ((current + (checked ? 1 : 0)) / total) * 100 : 0
+  const progress = total ? ((current + (checked || isTimed ? 1 : 0)) / total) * 100 : 0
   const regionLabel = regionIds
     .map(id => (REGION_NAMES[lang] || REGION_NAMES.de)[id] || id)
     .join(', ')
 
-  const checkAnswer = () => {
-    if (!selected || !item) return
-    setChecked(true)
+  useEffect(() => {
+    if (!isTimed || phase !== 'exam' || !item) return undefined
+    setTimeLeft(SECONDS_PER_TIMED_CASE)
+    const timer = window.setInterval(() => {
+      setTimeLeft(previous => Math.max(0, previous - 1))
+    }, 1000)
+    return () => window.clearInterval(timer)
+  }, [isTimed, item?.id, phase])
+
+  const saveAnswer = answerId => {
+    if (!item) return
     setAnswers(previous => [
       ...previous.filter(answer => answer.caseId !== item.id),
-      { caseId: item.id, selected, correct: selected === item.correct },
+      { caseId: item.id, selected: answerId, correct: answerId === item.correct },
     ])
   }
 
-  const nextCase = () => {
+  const advance = () => {
     if (isLast) {
       setPhase('result')
       return
@@ -159,7 +212,27 @@ function CaseExamContent() {
     setCurrent(previous => previous + 1)
     setSelected(null)
     setChecked(false)
+    setTimeLeft(SECONDS_PER_TIMED_CASE)
   }
+
+  const checkAnswer = () => {
+    if (!selected || !item) return
+    saveAnswer(selected)
+    if (isTimed) {
+      advance()
+      return
+    }
+    setChecked(true)
+  }
+
+  useEffect(() => {
+    if (isTimed && phase === 'exam' && item && timeLeft === 0) {
+      saveAnswer(null)
+      advance()
+    }
+  }, [isTimed, phase, item, timeLeft])
+
+  const nextCase = advance
 
   const restart = () => {
     setCurrent(0)
@@ -167,6 +240,7 @@ function CaseExamContent() {
     setChecked(false)
     setAnswers([])
     setPhase('exam')
+    setTimeLeft(SECONDS_PER_TIMED_CASE)
   }
 
   if (!isUserLoaded) {
@@ -187,6 +261,13 @@ function CaseExamContent() {
 
   if (phase === 'result') {
     const color = resultColor(score, total)
+    const percentage = Math.round((score / total) * 100)
+    const recommendedTopics = [...new Set(
+      answers
+        .filter(answer => !answer.correct)
+        .map(answer => cases.find(caseItem => caseItem.id === answer.caseId)?.topicId)
+        .filter(Boolean)
+    )].map(topicId => getTopicName(topicId, lang))
     return (
       <main className={quizStyles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
         <div className={quizStyles.topBar}>
@@ -199,16 +280,30 @@ function CaseExamContent() {
               {score}<span className={quizStyles.scoreTotal}>/{total}</span>
             </div>
             <div className={quizStyles.gradeLabel} style={{ color }}>{ui.result}</div>
+            <div className={styles.percentage}>{percentage}%</div>
             <div className={quizStyles.scoreBar}>
               <div className={quizStyles.scoreBarFill} style={{ width: `${(score / total) * 100}%`, background: color }} />
             </div>
             <div className={quizStyles.scoreDesc}>{ui.scoreLabel(score, total)}</div>
           </div>
 
-          <div className={quizStyles.summaryHeader}>
-            <span className={quizStyles.summaryTitle}>{ui.summary}</span>
-          </div>
-          <div className={quizStyles.summaryList}>
+          <section className={styles.recommendation} aria-label={ui.recommendation}>
+            <h2>{ui.recommendation}</h2>
+            {recommendedTopics.length ? (
+              <>
+                <p>{ui.practiceTopics}</p>
+                <div className={styles.recommendationTopics}>
+                  {recommendedTopics.map(topic => <span key={topic}>{topic}</span>)}
+                </div>
+              </>
+            ) : <p>{ui.excellent}</p>}
+          </section>
+
+          {isTimed ? <>
+            <div className={quizStyles.summaryHeader}>
+              <span className={quizStyles.summaryTitle}>{ui.summary}</span>
+            </div>
+            <div className={quizStyles.summaryList}>
             {cases.map((caseItem, index) => {
               const answer = answers.find(entry => entry.caseId === caseItem.id)
               const correct = answer?.correct
@@ -218,19 +313,19 @@ function CaseExamContent() {
                     <span className={`${quizStyles.sumTag} ${correct ? quizStyles.tagOk : quizStyles.tagErr}`}>{correct ? '✓' : '×'}</span>
                     <span className={quizStyles.sumQ}>{index + 1}. {caseItem.question}</span>
                   </div>
-                  {!correct && (
-                    <div className={quizStyles.sumAnswers}>
-                      <span>{ui.yourAnswer} <strong>{answer?.selected}) {caseItem.options.find(option => option.id === answer?.selected)?.text}</strong></span>
-                      <span>{ui.rightAnswer} <strong className={styles.correctText}>{caseItem.correct}) {caseItem.options.find(option => option.id === caseItem.correct)?.text}</strong></span>
-                    </div>
-                  )}
+                  <div className={quizStyles.sumAnswers}>
+                    <span>{ui.yourAnswer} <strong>{answer?.selected ? `${answer.selected}) ${caseItem.options.find(option => option.id === answer.selected)?.text}` : ui.noAnswer}</strong></span>
+                    {!correct && <span>{ui.rightAnswer} <strong className={styles.correctText}>{caseItem.correct}) {caseItem.options.find(option => option.id === caseItem.correct)?.text}</strong></span>}
+                  </div>
                   <div className={quizStyles.sumExp}>
                     {correct ? caseItem.explanation : getWrongAnswerExplanation(caseItem, answer?.selected, lang) || caseItem.explanation}
                   </div>
+                  {caseItem.source ? <a className={styles.summarySource} href={caseItem.source} target="_blank" rel="noopener noreferrer">{ui.source} ↗</a> : null}
                 </article>
               )
             })}
-          </div>
+            </div>
+          </> : null}
           <div className={quizStyles.resultActions}>
             <button className={quizStyles.restartBtn} onClick={restart}>{ui.restart}</button>
             <Link href="/faelle" className={quizStyles.backBtn}>{ui.newSelection}</Link>
@@ -256,11 +351,17 @@ function CaseExamContent() {
           </div>
           <span className={quizStyles.progressLabel}>{ui.caseOf(current + 1, total)}</span>
         </div>
-        <div className={styles.topScore} aria-label={`${ui.score}: ${score} ${ui.correct}, ${wrongScore} ${ui.incorrect}`}>
-          <span className={styles.topScoreLabel}>{ui.score}</span>
-          <span className={styles.scoreCorrect}><span aria-hidden="true">✓</span>{score}</span>
-          <span className={styles.scoreWrong}><span aria-hidden="true">×</span>{wrongScore}</span>
-        </div>
+        {isTimed ? (
+          <div className={`${styles.timer} ${timeLeft <= 30 ? styles.timerLow : ''}`} aria-label={`${ui.time}: ${formatTime(timeLeft)}`}>
+            <span>{ui.time}</span><strong>{formatTime(timeLeft)}</strong>
+          </div>
+        ) : (
+          <div className={styles.topScore} aria-label={`${ui.score}: ${score} ${ui.correct}, ${wrongScore} ${ui.incorrect}`}>
+            <span className={styles.topScoreLabel}>{ui.score}</span>
+            <span className={styles.scoreCorrect}><span aria-hidden="true">✓</span>{score}</span>
+            <span className={styles.scoreWrong}><span aria-hidden="true">×</span>{wrongScore}</span>
+          </div>
+        )}
       </div>
 
       <div className={styles.examShell}>
@@ -334,7 +435,7 @@ function CaseExamContent() {
                   disabled={!selected}
                   onClick={checkAnswer}
                 >
-                  {ui.check}
+                  {isTimed ? ui.submit : ui.check}
                 </button>
               ) : (
                 <button className={styles.nextButton} onClick={nextCase}>
@@ -345,7 +446,7 @@ function CaseExamContent() {
           </article>
 
           <section className={styles.viewerColumn} dir={lang === 'fa' ? 'rtl' : 'ltr'} aria-label={`${item.modality} · ${regionLabel}`}>
-            <MedicalSequenceViewer key={item.id} media={itemMedia} language={lang} priority expandable />
+            <MedicalSequenceViewer key={item.id} media={itemMedia} language={lang} priority expandable showSource={!isTimed} />
           </section>
         </div>
       </div>

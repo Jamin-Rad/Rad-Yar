@@ -20,35 +20,38 @@ const UI = {
   de: {
     home:'RadYar', crumb:'Fallprüfung', title:'Fallprüfung',
     sub:'Wähle Körperregionen, Themen, Modalitäten und die Anzahl der Fälle.',
-    step1:'Körperregion(en) wählen', step2:'Themen wählen', step3:'Modalität wählen', step4:'Anzahl der Fälle',
+    step1:'Körperregion(en) wählen', step2:'Themen wählen', step3:'Modalität wählen', step4:'Anzahl der Fälle', step5:'Prüfungsmodus',
     all:'Alle', none:'Keine', start:'Prüfung starten', cases:'Fälle', topics:'Themen',
     modalities:'Modalitäten', allModalities:'Alle verfügbaren Modalitäten',
     selected:'Ausgewählt', noRegion:'Wähle zuerst eine verfügbare Körperregion.',
     noCases:'Für diese Körperregion sind noch keine Fälle verfügbar.',
     random:'Die Fälle werden in zufälliger Reihenfolge gezeigt.', planned:'Noch keine Fälle',
     wholeChapter:'Ganzes Kapitel wählen', chapterSelected:'Ganzes Kapitel ausgewählt',
+    learning:'Lernmodus', learningHint:'Ohne Zeit · Rückmeldung direkt nach jeder Antwort', timed:'Zeitprüfung', timedHint:'2:30 Minuten pro Fall · Auswertung am Ende',
   },
   en: {
     home:'RadYar', crumb:'Case Exam', title:'Case exam',
     sub:'Choose body regions, topics, modalities and the number of cases.',
-    step1:'Choose body region(s)', step2:'Choose topics', step3:'Choose modality', step4:'Number of cases',
+    step1:'Choose body region(s)', step2:'Choose topics', step3:'Choose modality', step4:'Number of cases', step5:'Exam mode',
     all:'All', none:'None', start:'Start exam', cases:'cases', topics:'topics',
     modalities:'modalities', allModalities:'All available modalities',
     selected:'Selected', noRegion:'Choose an available body region first.',
     noCases:'No cases are available for this body region yet.',
     random:'Cases are shown in random order.', planned:'No cases yet',
     wholeChapter:'Select whole chapter', chapterSelected:'Whole chapter selected',
+    learning:'Learning mode', learningHint:'No time limit · feedback after each answer', timed:'Timed exam', timedHint:'2:30 minutes per case · review at the end',
   },
   fa: {
     home:'RadYar', crumb:'آزمون بالینی', title:'آزمون کیس',
     sub:'ناحیه بدن، موضوع، مودالیتی و تعداد کیس‌ها را انتخاب کن.',
-    step1:'انتخاب ناحیه(ها)', step2:'انتخاب موضوعات', step3:'انتخاب مودالیتی', step4:'تعداد کیس‌ها',
+    step1:'انتخاب ناحیه(ها)', step2:'انتخاب موضوعات', step3:'انتخاب مودالیتی', step4:'تعداد کیس‌ها', step5:'حالت آزمون',
     all:'همه', none:'هیچ', start:'شروع آزمون', cases:'کیس', topics:'موضوع',
     modalities:'مودالیتی', allModalities:'همه مودالیتی‌های موجود',
     selected:'انتخاب شده', noRegion:'ابتدا یک ناحیه دارای کیس را انتخاب کن.',
     noCases:'هنوز برای این ناحیه کیسی موجود نیست.',
     random:'کیس‌ها با ترتیب تصادفی نمایش داده می‌شوند.', planned:'هنوز کیسی نیست',
     wholeChapter:'انتخاب کل فصل', chapterSelected:'کل فصل انتخاب شده',
+    learning:'حالت یادگیری', learningHint:'بدون زمان · بازخورد پس از هر پاسخ', timed:'آزمون زمان‌دار', timedHint:'۲:۳۰ دقیقه برای هر کیس · مرور در پایان',
   },
 }
 
@@ -66,6 +69,7 @@ function CasesSetupPageContent() {
   const [selectedModalities, setSelectedModalities] = useState(new Set())
   const [openGroups, setOpenGroups] = useState(new Set())
   const [count, setCount] = useState(1)
+  const [mode, setMode] = useState('learn')
 
   const regionCaseTopics = useMemo(() => {
     const map = new Map()
@@ -187,6 +191,7 @@ function CasesSetupPageContent() {
       themen: [...selectedTopics].join(','),
       modalitaeten: [...selectedModalities].join(','),
       n: String(Math.min(count, availableCases)),
+      modus: mode,
     })
     router.push(`/faelle/pruefung?${params.toString()}`)
   }
@@ -307,6 +312,18 @@ function CasesSetupPageContent() {
                     onClick={() => setCount(option)}>{option}</button>
                 )
               })}
+            </div>
+          </section>
+
+          <section className={styles.section}>
+            <div className={styles.stepLabel}><span className={styles.stepNum}>5</span>{ui.step5}</div>
+            <div className={caseStyles.modeOptions}>
+              <button type="button" className={`${caseStyles.modeOption} ${mode === 'learn' ? caseStyles.modeOptionActive : ''}`} onClick={() => setMode('learn')} aria-pressed={mode === 'learn'}>
+                <strong>{ui.learning}</strong><span>{ui.learningHint}</span>
+              </button>
+              <button type="button" className={`${caseStyles.modeOption} ${mode === 'timed' ? caseStyles.modeOptionActive : ''}`} onClick={() => setMode('timed')} aria-pressed={mode === 'timed'}>
+                <strong>{ui.timed}</strong><span>{ui.timedHint}</span>
+              </button>
             </div>
           </section>
         </div>
