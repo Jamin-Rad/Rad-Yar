@@ -10,6 +10,22 @@ import styles from './page.module.css'
 
 const emptyQuestion = () => ({ sourceId: '', sourceLabel: '', kind: 'custom', prompt: '', options: ['', '', '', ''], correctOptionIndex: 0, points: 1, explanation: '', wrongExplanations: {}, media: null })
 const LANGUAGE_LABELS = Object.freeze({ fa: 'فارسی', en: 'English', de: 'Deutsch' })
+const GERMANY_DATE_FORMATTER = new Intl.DateTimeFormat('fa-IR-u-ca-gregory', {
+  dateStyle: 'medium',
+  timeStyle: 'short',
+  timeZone: 'Europe/Berlin',
+  hourCycle: 'h23',
+})
+const GERMANY_DATE_PARTS_FORMATTER = new Intl.DateTimeFormat('en-CA', {
+  timeZone: 'Europe/Berlin',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hourCycle: 'h23',
+})
 const EXAM_DURATION_OPTIONS = Object.freeze(Array.from({ length: 48 }, (_, index) => (index + 1) * 5))
 const ACTIVE_DURATION_OPTIONS = Object.freeze([
   { value: 60, label: '۱ ساعت' },
@@ -34,9 +50,31 @@ function isBlankQuestion(question) {
   return !question?.prompt && question?.options?.every(option => !option)
 }
 
+function germanyDateParts(date) {
+  return Object.fromEntries(GERMANY_DATE_PARTS_FORMATTER.formatToParts(date).map(part => [part.type, part.value]))
+}
+
 function toDateTimeLocal(date) {
-  const offset = date.getTimezoneOffset() * 60 * 1000
-  return new Date(date.getTime() - offset).toISOString().slice(0, 16)
+  const parts = germanyDateParts(date)
+  return `${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}`
+}
+
+function germanyDateTimeLocalToIso(value) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/.exec(value)
+  if (!match) throw new Error('تاریخ و ساعت شروع معتبر نیست.')
+  const [, year, month, day, hour, minute] = match.map(Number)
+  const wallTime = Date.UTC(year, month - 1, day, hour, minute)
+  const offsetAt = timestamp => {
+    const date = new Date(timestamp)
+    const parts = germanyDateParts(date)
+    const renderedAsUtc = Date.UTC(Number(parts.year), Number(parts.month) - 1, Number(parts.day), Number(parts.hour), Number(parts.minute), Number(parts.second))
+    return renderedAsUtc - Math.floor(timestamp / 1000) * 1000
+  }
+  let timestamp = wallTime - offsetAt(wallTime)
+  timestamp = wallTime - offsetAt(timestamp)
+  const resolved = new Date(timestamp)
+  if (toDateTimeLocal(resolved) !== value) throw new Error('این ساعت به‌دلیل تغییر ساعت تابستانی آلمان معتبر نیست. ساعت دیگری انتخاب کنید.')
+  return resolved.toISOString()
 }
 
 function createDefaultForm() {
@@ -64,7 +102,7 @@ function examDisplayState(exam) {
 
 function formatDate(value) {
   if (!value) return '—'
-  return new Intl.DateTimeFormat('fa-IR', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value))
+  return GERMANY_DATE_FORMATTER.format(new Date(value))
 }
 
 function readAttemptFeedback(attempt) {
@@ -360,7 +398,7 @@ export default function ExamAdminClient() {
     setError('')
     try {
       const opensAt = form.activationMode === 'scheduled'
-        ? new Date(form.opensAt).toISOString()
+        ? germanyDateTimeLocalToIso(form.opensAt)
         : undefined
       const data = await readJson(await fetch('/api/admin/exams', {
         method: 'POST',
@@ -501,6 +539,7 @@ export default function ExamAdminClient() {
           <div>
             <span className={styles.eyebrow}>RADYAR EXAMS</span>
             <h1>مدیریت امتحان</h1>
+            <small className={styles.timeZoneNote}>همهٔ تاریخ‌ها و ساعت‌ها به وقت آلمان (برلین) نمایش داده می‌شوند.</small>
           </div>
           <button type="button" className={styles.primaryButton} onClick={openCreate}>
             <span aria-hidden="true">＋</span> ساخت امتحان جدید
@@ -598,7 +637,7 @@ export default function ExamAdminClient() {
                   <label className={form.activationMode === 'scheduled' ? styles.activationChoiceSelected : styles.activationChoice}><input type="radio" name="activationMode" checked={form.activationMode === 'scheduled'} onChange={() => setField('activationMode', 'scheduled')} /><span><strong>فعال‌سازی زمان‌بندی‌شده</strong><small>تاریخ و ساعت شروع را تعیین کنید</small></span></label>
                 </div>
                 <div className={styles.scheduleFields}>
-                  {form.activationMode === 'scheduled' ? <label><span>تاریخ و ساعت شروع *</span><input type="datetime-local" required value={form.opensAt} onChange={event => setField('opensAt', event.target.value)} /></label> : <div className={styles.nowNotice}><strong>شروع</strong><span>بلافاصله پس از ساخت</span></div>}
+                  {form.activationMode === 'scheduled' ? <label><span>تاریخ و ساعت شروع به وقت آلمان *</span><input type="datetime-local" required value={form.opensAt} onChange={event => setField('opensAt', event.target.value)} /></label> : <div className={styles.nowNotice}><strong>شروع</strong><span>بلافاصله پس از ساخت</span></div>}
                   <label><span>مدت فعال‌بودن *</span><select value={form.activeDurationMinutes} onChange={event => setField('activeDurationMinutes', Number(event.target.value))}>{ACTIVE_DURATION_OPTIONS.map(option => <option value={option.value} key={option.value}>{option.label}</option>)}</select></label>
                 </div>
               </div>

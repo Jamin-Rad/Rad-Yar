@@ -12,6 +12,7 @@
 .hero { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
 .eyebrow { display: block; margin-bottom: 10px; color: #f97316; font-size: 11px; font-weight: 850; letter-spacing: .18em; }
 .hero h1 { margin: 0; color: #111b35; font-size: clamp(28px, 4vw, 44px); line-height: 1.2; letter-spacing: -.035em; }
+.timeZoneNote { display: block; margin-top: 7px; color: #718096; font-size: 10px; font-weight: 650; }
 
 .primaryButton, .secondaryButton, .dangerButton, .deleteButton, .refreshButton, .textButton, .addQuestion {
   border: 0; border-radius: 12px; font: 750 14px/1 Vazirmatn, sans-serif; cursor: pointer; transition: .18s ease;
@@ -332,6 +333,7 @@
 :global(html[data-theme='dark']) .questionsHeader h3,
 :global(html[data-theme='dark']) .bankHeader h3,
 :global(html[data-theme='dark']) .questionHeader strong { color: #f3f6fa; }
+:global(html[data-theme='dark']) .timeZoneNote { color: #94a3b8; }
 :global(html[data-theme='dark']) .panel,
 :global(html[data-theme='dark']) .builder,
 :global(html[data-theme='dark']) .detail,
