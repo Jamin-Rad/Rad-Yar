@@ -63,10 +63,6 @@ export default function MedicalSequenceViewer({ media, language = 'de', compact 
   const frameCount = activeSeries.frames.length
   const safeFrameIndex = Math.min(frameIndex, frameCount - 1)
   const move = direction => setFrameIndex(index => Math.min(frameCount - 1, Math.max(0, index + direction)))
-  const thumbnailIndexes = Array.from({ length: Math.min(7, frameCount) }, (_, offset) => {
-    const start = Math.min(Math.max(0, safeFrameIndex - 3), Math.max(0, frameCount - 7))
-    return start + offset
-  })
 
   return (
     <section className={`${styles.viewer} ${compact ? styles.compact : ''}`} aria-label={normalized.title || copy.choose}>
@@ -135,16 +131,6 @@ export default function MedicalSequenceViewer({ media, language = 'de', compact 
 
       {frameCount > 1 ? (
         <>
-          {!compact ? (
-            <div className={styles.filmstrip}>
-              {thumbnailIndexes.map(index => (
-                <button type="button" className={index === safeFrameIndex ? styles.thumbnailActive : styles.thumbnail} onClick={() => setFrameIndex(index)} key={index} aria-label={`${copy.slice} ${index + 1}`}>
-                  <Image src={activeSeries.frames[index]} alt="" fill sizes="82px" />
-                  <span>{index + 1}</span>
-                </button>
-              ))}
-            </div>
-          ) : null}
           <div className={styles.scrubber}>
             <span>1</span>
             <input type="range" min="0" max={frameCount - 1} value={safeFrameIndex} onChange={event => setFrameIndex(Number(event.target.value))} aria-label={`${copy.slice} ${safeFrameIndex + 1} / ${frameCount}`} />

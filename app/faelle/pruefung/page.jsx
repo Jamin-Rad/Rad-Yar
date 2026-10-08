@@ -232,6 +232,11 @@ function CaseExamContent() {
     }
   }, [isTimed, phase, item, timeLeft])
 
+  useEffect(() => {
+    if (current === 0 || !window.matchMedia('(max-width: 900px)').matches) return
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [current])
+
   const nextCase = advance
 
   const restart = () => {
@@ -393,6 +398,22 @@ function CaseExamContent() {
               })}
             </div>
 
+            <div className={styles.actionRow}>
+              {!checked ? (
+                <button
+                  className={`${styles.checkButton} ${!selected ? styles.buttonDisabled : ''}`}
+                  disabled={!selected}
+                  onClick={checkAnswer}
+                >
+                  {isTimed ? ui.submit : ui.check}
+                </button>
+              ) : (
+                <button className={styles.nextButton} onClick={nextCase}>
+                  {isLast ? ui.resultButton : ui.next} →
+                </button>
+              )}
+            </div>
+
             {checked && (
               <section className={`${styles.feedback} ${isCorrect ? styles.feedbackCorrect : styles.feedbackWrong}`} aria-live="polite">
                 <header className={styles.feedbackHeader}>
@@ -428,21 +449,6 @@ function CaseExamContent() {
               </section>
             )}
 
-            <div className={styles.actionRow}>
-              {!checked ? (
-                <button
-                  className={`${styles.checkButton} ${!selected ? styles.buttonDisabled : ''}`}
-                  disabled={!selected}
-                  onClick={checkAnswer}
-                >
-                  {isTimed ? ui.submit : ui.check}
-                </button>
-              ) : (
-                <button className={styles.nextButton} onClick={nextCase}>
-                  {isLast ? ui.resultButton : ui.next} →
-                </button>
-              )}
-            </div>
           </article>
 
           <section className={styles.viewerColumn} dir={lang === 'fa' ? 'rtl' : 'ltr'} aria-label={`${item.modality} · ${regionLabel}`}>

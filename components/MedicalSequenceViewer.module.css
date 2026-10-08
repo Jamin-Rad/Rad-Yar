@@ -29,12 +29,6 @@
 .wheelHint { position: absolute; z-index: 2; right: 16px; bottom: 14px; padding: 6px 9px; border-radius: 8px; background: rgba(3,12,21,.78); color: #c7d4e2; font-size: 10px; font-weight: 700; pointer-events: none; }
 .expandHint { position: absolute; z-index: 2; left: 16px; bottom: 14px; padding: 7px 10px; border: 1px solid rgba(255,255,255,.16); border-radius: 8px; background: rgba(3,12,21,.8); color: #eef5fb; font-size: 11px; font-weight: 750; pointer-events: none; backdrop-filter: blur(8px); }
 
-.filmstrip { display: flex; justify-content: center; gap: 7px; padding: 12px 14px 4px; overflow-x: auto; }
-.thumbnail, .thumbnailActive { position: relative; width: 76px; height: 62px; flex: 0 0 76px; overflow: hidden; border: 1px solid #263c54; border-radius: 8px; background: #020914; cursor: pointer; }
-.thumbnailActive { border: 2px solid var(--viewer-accent); box-shadow: 0 0 0 2px rgba(21,150,245,.16); }
-.thumbnail img, .thumbnailActive img { object-fit: cover; }
-.thumbnail span, .thumbnailActive span { position: absolute; z-index: 1; right: 4px; bottom: 3px; min-width: 19px; padding: 2px 4px; border-radius: 5px; background: rgba(2,8,15,.82); color: #fff; font: 700 9px var(--font-manrope), sans-serif; }
-
 .scrubber { display: grid; grid-template-columns: auto minmax(120px, 1fr) auto auto; gap: 10px; align-items: center; padding: 12px 18px 14px; color: #9fb0c3; font: 700 10px var(--font-manrope), Vazirmatn, sans-serif; }
 .scrubber input { width: 100%; accent-color: var(--viewer-accent); cursor: pointer; }
 .scrubber strong { min-width: 88px; color: #e6edf5; text-align: end; }
@@ -107,8 +101,6 @@
   .seriesBar > div { padding-bottom: 3px; }
   .seriesButton, .seriesActive { min-height: 38px; padding: 0 14px; font-size: 12px; }
   .viewport, .compact .viewport { min-height: 72vw; }
-  .filmstrip { justify-content: flex-start; }
-  .thumbnail, .thumbnailActive { width: 64px; height: 52px; flex-basis: 64px; }
   .scrubber { grid-template-columns: auto minmax(80px, 1fr) auto; }
   .scrubber strong { grid-column: 1 / -1; min-width: 0; text-align: center; }
   .credit { align-items: flex-start; flex-direction: column; }
