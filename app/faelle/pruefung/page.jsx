@@ -28,9 +28,11 @@ const UI = {
     resultButton: 'Ergebnis anzeigen',
     correct: 'Richtig',
     incorrect: 'Leider falsch',
+    selectedAnswer: 'Deine Antwort',
     correctAnswer: 'Richtige Antwort:',
-    explanation: 'Einordnung',
-    whyWrong: 'Einordnung der gewählten Antwort',
+    explanation: 'Warum die richtige Antwort passt',
+    whyWrong: 'Warum deine Antwort falsch ist',
+    imageFindings: 'Was wir in den Bildern sehen',
     source: 'Originalfall ansehen',
     score: 'Punktestand',
     anamnesis: 'Anamnese',
@@ -52,9 +54,11 @@ const UI = {
     resultButton: 'Show result',
     correct: 'Correct',
     incorrect: 'Unfortunately incorrect',
+    selectedAnswer: 'Your answer',
     correctAnswer: 'Correct answer:',
-    explanation: 'Assessment',
-    whyWrong: 'Selected option analysis',
+    explanation: 'Why the correct answer fits',
+    whyWrong: 'Why your answer is incorrect',
+    imageFindings: 'What the images show',
     source: 'View original case',
     score: 'Score',
     anamnesis: 'Clinical history',
@@ -76,9 +80,11 @@ const UI = {
     resultButton: 'نمایش نتیجه',
     correct: 'درست',
     incorrect: 'نادرست',
+    selectedAnswer: 'پاسخ شما',
     correctAnswer: 'پاسخ صحیح:',
-    explanation: 'ارزیابی',
-    whyWrong: 'بررسی گزینهٔ انتخاب‌شده',
+    explanation: 'چرا پاسخ صحیح درست است',
+    whyWrong: 'چرا پاسخ شما نادرست است',
+    imageFindings: 'در تصاویر چه می‌بینیم',
     source: 'مشاهده کیس اصلی',
     score: 'امتیاز',
     anamnesis: 'شرح حال',
@@ -225,8 +231,10 @@ function CaseExamContent() {
   }
 
   const isCorrect = checked && selected === item.correct
+  const selectedOption = item.options.find(option => option.id === selected)
   const correctOption = item.options.find(option => option.id === item.correct)
   const wrongExplanation = getWrongAnswerExplanation(item, selected, lang)
+  const imageFindings = item.imageFindings || item.vignette
 
   return (
     <main className={`${quizStyles.page} ${styles.page}`} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
@@ -253,56 +261,69 @@ function CaseExamContent() {
         <div className={styles.examLayout}>
           <article className={styles.questionPanel} dir={lang === 'fa' ? 'rtl' : 'ltr'} aria-labelledby={`${item.id}-question`}>
             <h1 id={`${item.id}-question`} className={styles.question}>{item.question}</h1>
-            <div className={quizStyles.options}>
+            <div className={styles.options}>
               {item.options.map(option => {
-                let className = quizStyles.option
-                if (selected === option.id && !checked) className = `${quizStyles.option} ${quizStyles.optSel}`
-                if (checked && option.id === item.correct) className = `${quizStyles.option} ${quizStyles.optOk}`
-                if (checked && selected === option.id && option.id !== item.correct) className = `${quizStyles.option} ${quizStyles.optErr}`
+                let className = styles.option
+                if (selected === option.id && !checked) className = `${styles.option} ${styles.optionSelected}`
+                if (checked && option.id === item.correct) className = `${styles.option} ${styles.optionCorrect}`
+                if (checked && selected === option.id && option.id !== item.correct) className = `${styles.option} ${styles.optionWrong}`
                 return (
-                  <button key={option.id} className={className} disabled={checked} onClick={() => setSelected(option.id)}>
-                    <span className={quizStyles.optLetter}>{option.id}</span>
-                    <span className={quizStyles.optText}>{option.text}</span>
-                    {checked && option.id === item.correct && <span className={quizStyles.optMark}>✓</span>}
-                    {checked && selected === option.id && option.id !== item.correct && <span className={quizStyles.optMark}>×</span>}
+                  <button key={option.id} className={className} disabled={checked} aria-pressed={selected === option.id} onClick={() => setSelected(option.id)}>
+                    <span className={styles.optionLetter}>{option.id}</span>
+                    <span className={styles.optionText}>{option.text}</span>
+                    {checked && option.id === item.correct && <span className={styles.optionMark} aria-hidden="true">✓</span>}
+                    {checked && selected === option.id && option.id !== item.correct && <span className={styles.optionMark} aria-hidden="true">×</span>}
                   </button>
                 )
               })}
             </div>
 
             {checked && (
-              <div className={`${quizStyles.feedback} ${isCorrect ? quizStyles.fbOk : quizStyles.fbErr}`}>
-                <div className={quizStyles.fbHead}>
+              <section className={`${styles.feedback} ${isCorrect ? styles.feedbackCorrect : styles.feedbackWrong}`} aria-live="polite">
+                <header className={styles.feedbackHeader}>
+                  <span className={styles.feedbackIcon} aria-hidden="true">{isCorrect ? '✓' : '×'}</span>
                   <strong>{isCorrect ? ui.correct : ui.incorrect}</strong>
-                </div>
+                </header>
                 {!isCorrect && (
-                  <div className={styles.correctAnswerRow}>
-                    <span>{ui.correctAnswer}</span>
-                    <strong>{item.correct}) {correctOption?.text}</strong>
+                  <div className={styles.answerComparison}>
+                    <div className={styles.answerWrong}>
+                      <span>{ui.selectedAnswer}</span>
+                      <strong>{selected}) {selectedOption?.text}</strong>
+                    </div>
+                    <div className={styles.answerCorrect}>
+                      <span>{ui.correctAnswer}</span>
+                      <strong>{item.correct}) {correctOption?.text}</strong>
+                    </div>
                   </div>
                 )}
-                <div className={quizStyles.fbLabel}>{ui.explanation}</div>
-                <div className={quizStyles.fbText}>{item.explanation}</div>
                 {!isCorrect && wrongExplanation && (
-                  <div className={styles.wrongExplanation}>
-                    <div className={quizStyles.fbLabel}>{ui.whyWrong}</div>
-                    <div className={quizStyles.fbText}>{wrongExplanation}</div>
+                  <div className={styles.feedbackSection}>
+                    <h2>{ui.whyWrong}</h2>
+                    <p>{wrongExplanation}</p>
                   </div>
                 )}
-              </div>
+                <div className={styles.feedbackSection}>
+                  <h2>{ui.imageFindings}</h2>
+                  <p>{imageFindings}</p>
+                </div>
+                <div className={styles.feedbackSection}>
+                  <h2>{ui.explanation}</h2>
+                  <p>{item.explanation}</p>
+                </div>
+              </section>
             )}
 
-            <div className={quizStyles.actionRow}>
+            <div className={styles.actionRow}>
               {!checked ? (
                 <button
-                  className={`${quizStyles.checkBtn} ${!selected ? quizStyles.checkDisabled : ''}`}
+                  className={`${styles.checkButton} ${!selected ? styles.buttonDisabled : ''}`}
                   disabled={!selected}
                   onClick={checkAnswer}
                 >
                   {ui.check}
                 </button>
               ) : (
-                <button className={quizStyles.nextBtn} onClick={nextCase}>
+                <button className={styles.nextButton} onClick={nextCase}>
                   {isLast ? ui.resultButton : ui.next} →
                 </button>
               )}

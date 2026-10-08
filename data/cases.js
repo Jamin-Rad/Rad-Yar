@@ -34,6 +34,7 @@ function locCase(item, lang) {
     vignette: t(item.vignette),
     question: t(item.question),
     prompt: t(item.prompt),
+    imageFindings: t(item.imageFindings),
     plane: t(item.plane),
     images: item.images?.map(image => ({ ...image, label: t(image.label) })),
     options: item.options.map(opt => ({ ...opt, text: t(opt.text) })),
@@ -95,6 +96,11 @@ const TROPONIN_PRUEFUNG_CASES = [
       de: 'MVO erscheint im frühen oder späten Gadolinium-Enhancement als persistierender dunkler Kern innerhalb des hyperenhancenden Infarktareals. Sie entspricht einer fehlenden mikrovaskulären Reperfusion trotz Wiedereröffnung der epikardialen Koronararterie und ist ein ungünstiger Prognosemarker.',
       en: 'MVO appears on early or late gadolinium enhancement as a persistent dark core within the hyperenhancing infarct. It reflects failed microvascular reperfusion despite reopening of the epicardial coronary artery and is an adverse prognostic marker.',
       fa: 'MVO در early یا late gadolinium enhancement به‌صورت یک هسته تیره و پایدار داخل ناحیه روشن انفارکت دیده می‌شود. این یافته نشان می‌دهد با وجود بازشدن شریان اپی‌کاردیال، reperfusion میکروواسکولار برقرار نشده و از نظر پیش‌آگهی نامطلوب است.',
+    },
+    imageFindings: {
+      de: 'In den PSIR/LGE-Aufnahmen zeigt sich inferior ein nahezu vollständig transmurales, hell anreicherndes Infarktareal. Zentral darin liegt ein klar abgrenzbarer dunkler, nicht anreichernder Kern. In der STIR-Sequenz ist das inferiore Myokard durch das akute Ödem deutlich signalreich. Die intramyokardiale Lage des dunklen Kerns ist das entscheidende Bildmerkmal einer MVO.',
+      en: 'The PSIR/LGE images show an almost fully transmural, brightly enhancing inferior infarct. A sharply defined dark non-enhancing core lies centrally within it. On STIR, the inferior myocardium is markedly hyperintense from acute oedema. The intramyocardial position of the dark core is the decisive imaging feature of MVO.',
+      fa: 'در تصاویر PSIR/LGE یک ناحیه انفارکت روشن و تقریباً کاملاً ترانس‌مورال در دیواره اینفریور دیده می‌شود. در مرکز آن یک هسته تیره، واضح و بدون enhancement قرار دارد. در STIR نیز میوکارد اینفریور به علت ادم حاد سیگنال بالایی دارد. قرارگرفتن هسته تیره داخل خود میوکارد، یافته تصویری تعیین‌کننده برای MVO است.',
     },
     wrongExplanations: {
       B: {
@@ -161,6 +167,11 @@ const TROPONIN_PRUEFUNG_CASES = [
       en: 'Takotsubo syndrome may produce T2/STIR oedema in the acutely dysfunctional segments, while corresponding persistent infarct-pattern LGE is typically absent. This combination helps distinguish it from acute infarction and myocarditis.',
       fa: 'در Takotsubo ممکن است در سگمنت‌های دچار اختلال حاد حرکت، ادم در T2/STIR وجود داشته باشد؛ اما LGE پایدار با الگوی انفارکتی معمولاً دیده نمی‌شود. این ترکیب به افتراق از acute MI و myocarditis کمک می‌کند.',
     },
+    imageFindings: {
+      de: 'In der Cine-Sequenz besteht ein typisches Ballooning der betroffenen linksventrikulären Segmente. Diese Segmente sind in STIR ödematös signalreich, zeigen aber kein dazu passendes subendokardiales oder transmurales Infarkt-LGE. Gerade die Diskrepanz aus deutlicher Funktionsstörung und Ödem ohne korrespondierende Narbe stützt Takotsubo.',
+      en: 'Cine imaging shows typical ballooning of the affected left-ventricular segments. These segments are oedematous and hyperintense on STIR, but there is no matching subendocardial or transmural infarct-pattern LGE. This mismatch—marked dysfunction and oedema without a corresponding scar—supports Takotsubo syndrome.',
+      fa: 'در Cine بالونینگ تیپیک سگمنت‌های درگیر بطن چپ دیده می‌شود. همین سگمنت‌ها در STIR به علت ادم پرسیگنال‌اند، اما LGE ساب‌اندوکاردیال یا ترانس‌مورال متناظر با انفارکت وجود ندارد. این اختلاف میان اختلال واضح حرکت و ادم، بدون اسکار متناظر، به نفع Takotsubo است.',
+    },
     wrongExplanations: {
       B: {
         de: 'Subendokardiales oder transmurales LGE in einem LAD-Versorgungsgebiet ist ein ischämisches Narbenmuster und spricht für einen LAD-Infarkt, nicht für klassisches Takotsubo.',
@@ -225,6 +236,11 @@ const TROPONIN_PRUEFUNG_CASES = [
       de: 'Bei Troponindynamik und nichtobstruktiven Koronarien wird MINOCA zunächst verwendet, solange die Ursache unklar ist. Das hier gezeigte subepikardiale/midmyokardiale LGE mit Ödem und Perikardreaktion identifiziert eine akute Myoperikarditis; damit ist die Ursache geklärt und MINOCA nicht die endgültige Diagnose.',
       en: 'With a troponin rise/fall and non-obstructive coronary arteries, MINOCA is used while the cause remains unexplained. The subepicardial/mid-wall LGE with oedema and pericardial reaction identifies acute myopericarditis, so the cause is established and MINOCA is no longer the final diagnosis.',
       fa: 'وقتی troponin افزایش پیدا کرده اما عروق کرونر انسداد قابل‌توجه ندارند، تا پیش از مشخص‌شدن علت از اصطلاح MINOCA استفاده می‌شود. در این کیس، LGE ساب‌اپیکاردیال/میدوال همراه با ادم و واکنش پریکارد، acute myopericarditis را مشخص می‌کند؛ بنابراین علت معلوم شده و MINOCA تشخیص نهایی نیست.',
+    },
+    imageFindings: {
+      de: 'Die STIR-Sequenz zeigt ein laterales Myokardödem. Im LGE finden sich fleckige midmyokardiale und subepikardiale Herde inferolateral, wobei das Subendokard ausgespart bleibt. Zusätzlich besteht ein kleiner Perikarderguss. Diese nichtischämische Verteilung mit Ödem und Perikardreaktion ist typisch für eine akute Myoperikarditis.',
+      en: 'STIR shows lateral myocardial oedema. LGE demonstrates patchy mid-wall and subepicardial inferolateral enhancement with sparing of the subendocardium, together with a small pericardial effusion. This non-ischaemic distribution with oedema and pericardial reaction is typical of acute myopericarditis.',
+      fa: 'در STIR ادم میوکارد در دیواره لترال دیده می‌شود. در LGE کانون‌های لکه‌ای میدوال و ساب‌اپیکاردیال در ناحیه اینفرولاترال وجود دارد و subendocardium حفظ شده است؛ همچنین افیوژن کوچک پریکارد دیده می‌شود. این توزیع غیرایسکمیک همراه با ادم و واکنش پریکارد، تیپیک acute myopericarditis است.',
     },
     wrongExplanations: {
       B: {
