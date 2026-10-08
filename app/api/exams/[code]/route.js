@@ -10,9 +10,11 @@ import {
   attemptDeadline,
   completeAttemptReopen,
   isAttemptReopenActive,
+  isAttemptReopenAvailable,
   mergeReopenedAnswers,
   readAttemptReopen,
   saveAttemptReopenDraft,
+  startAttemptReopen,
 } from '@/lib/examRecovery'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 import { normalizeParticipantSpecialty, PARTICIPANT_SPECIALTY_KEY, PARTICIPANT_USER_KEY } from '@/data/medicalSpecialties'
@@ -337,6 +339,7 @@ export async function POST(request, { params }) {
   const participantUserId = storedUserId || signedInUserId || ''
   const effectiveSpecialty = normalizeParticipantSpecialty(existingAttempt?.answers?.[PARTICIPANT_SPECIALTY_KEY]) || participantSpecialty
   const reopenActive = isAttemptReopenActive(existingAttempt?.answers)
+  const reopenAvailable = isAttemptReopenAvailable(existingAttempt?.answers)
   const reopenRecoveryActive = isSubmittedAttempt(existingAttempt)
     && payload?.pendingOfflineSubmission === true
     && isAttemptReopenActive(existingAttempt?.answers, Date.now(), REOPEN_SUBMISSION_GRACE_MS)
@@ -353,7 +356,22 @@ export async function POST(request, { params }) {
   }
 
   if (payload?.action === 'identify') {
-    if (isSubmittedAttempt(existingAttempt) && (reopenActive || reopenRecoveryActive)) {
+    if (isSubmittedAttempt(existingAttempt) && (reopenAvailable || reopenRecoveryActive)) {
+      if (reopenAvailable && !reopenActive) {
+        const startedAnswers = startAttemptReopen(existingAttempt.answers)
+        const { data: startedAttempt, error: startError } = await supabaseAdmin
+          .from('exam_attempts')
+          .update({ answers: startedAnswers })
+          .eq('id', existingAttempt.id)
+          .eq('exam_id', loaded.exam.id)
+          .select('id,participant_name,participant_contact,answers,score,max_score,percentage,feedback_submitted_at,started_at,submitted_at')
+          .single()
+        if (startError || !startedAttempt) {
+          console.error('شروع زمان بازگشایی شرکت‌کننده انجام نشد:', startError)
+          return databaseUnavailable()
+        }
+        existingAttempt = startedAttempt
+      }
       return reopenedAttemptResponse(loaded.exam, loaded.questions, existingAttempt, effectiveSpecialty)
     }
     if (isSubmittedAttempt(existingAttempt)) return completedAttemptResponse(loaded.exam, existingAttempt)

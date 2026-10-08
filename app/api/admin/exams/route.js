@@ -261,6 +261,9 @@ export async function GET(request) {
         negative_points: graded.negativePoints,
         reopen: reopen ? {
           reopenedAt: reopen.reopenedAt,
+          availableUntil: reopen.availableUntil,
+          durationMinutes: reopen.durationMinutes,
+          startedAt: reopen.startedAt,
           reopenedUntil: reopen.reopenedUntil,
           completedAt: reopen.completedAt,
           allowedQuestionCount: reopen.allowedQuestionIds.length,
@@ -420,7 +423,8 @@ export async function PATCH(request) {
       attemptId,
       participantName: attemptResult.data.participant_name,
       unansweredQuestionCount: unansweredQuestionIds.length,
-      reopenedUntil: reopen?.reopenedUntil,
+      availableUntil: reopen?.availableUntil,
+      durationMinutes: reopen?.durationMinutes,
     })
   }
 

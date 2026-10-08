@@ -511,7 +511,7 @@ export default function ExamAdminClient() {
         body: JSON.stringify({ id: detail.exam.id, attemptId: attempt.id, action: 'reopen-attempt', durationMinutes: reopenDurationMinutes }),
       }))
       await Promise.all([loadExams(), openDetail(detail.exam.id)])
-      setActionMessage(`آزمون ${data.participantName} برای ${Number(data.unansweredQuestionCount).toLocaleString('fa-IR')} سؤال بی‌پاسخ تا ${formatDate(data.reopenedUntil)} باز شد.`)
+      setActionMessage(`${data.participantName} تا ${formatDate(data.availableUntil)} فرصت شروع دارد؛ بعد از ورود، ${Number(data.durationMinutes).toLocaleString('fa-IR')} دقیقه برای پاسخ به ${Number(data.unansweredQuestionCount).toLocaleString('fa-IR')} سؤال بی‌پاسخ زمان خواهد داشت.`)
     } catch (err) {
       setError(err.message)
     } finally {
@@ -812,6 +812,7 @@ export default function ExamAdminClient() {
                       const isOpen = expandedAttempt === attempt.id
                       const participantFeedback = readAttemptFeedback(attempt)
                       const reopenActive = Boolean(attempt.reopen && !attempt.reopen.completedAt && Date.parse(attempt.reopen.reopenedUntil) > Date.now())
+                      const reopenWaiting = Boolean(attempt.reopen && !attempt.reopen.completedAt && !attempt.reopen.startedAt && Date.parse(attempt.reopen.availableUntil) > Date.now())
                       return <article className={styles.attempt} key={attempt.id}>
                         <button type="button" className={styles.attemptRow} onClick={() => setExpandedAttempt(isOpen ? '' : attempt.id)}>
                           <span className={styles.rank}><small>رتبه</small><strong>{Number(attempt.rank).toLocaleString('fa-IR')}</strong></span>
@@ -829,8 +830,12 @@ export default function ExamAdminClient() {
                           <div className={styles.attemptActions}>
                             <div className={styles.reopenControls}>
                               <div>
-                                <strong>{reopenActive ? 'بازگشایی فعال است' : attempt.unanswered_count ? `${Number(attempt.unanswered_count).toLocaleString('fa-IR')} سؤال بی‌پاسخ` : 'همه سؤال‌ها پاسخ داده شده‌اند'}</strong>
-                                <span>{reopenActive ? `مهلت تا ${formatDate(attempt.reopen.reopenedUntil)} · پاسخ‌های قبلی قفل هستند` : 'فقط سؤال‌های بی‌پاسخ قابل حل می‌شوند.'}</span>
+                                <strong>{reopenActive ? 'در حال تکمیل سؤال‌های بی‌پاسخ' : reopenWaiting ? 'منتظر شروع شرکت‌کننده' : attempt.unanswered_count ? `${Number(attempt.unanswered_count).toLocaleString('fa-IR')} سؤال بی‌پاسخ` : 'همه سؤال‌ها پاسخ داده شده‌اند'}</strong>
+                                <span>{reopenActive
+                                  ? `زمان حل تا ${formatDate(attempt.reopen.reopenedUntil)} · پاسخ‌های قبلی قفل هستند`
+                                  : reopenWaiting
+                                    ? `تا ${formatDate(attempt.reopen.availableUntil)} فرصت شروع دارد · پس از ورود ${Number(attempt.reopen.durationMinutes).toLocaleString('fa-IR')} دقیقه زمان دارد`
+                                    : 'فقط سؤال‌های بی‌پاسخ قابل حل می‌شوند.'}</span>
                               </div>
                               <select aria-label="مدت بازگشایی" value={reopenDurationMinutes} onChange={event => setReopenDurationMinutes(Number(event.target.value))} disabled={saving || !attempt.unanswered_count}>
                                 <option value={2}>۲ دقیقه</option>
@@ -838,7 +843,7 @@ export default function ExamAdminClient() {
                                 <option value={7}>۷ دقیقه</option>
                                 <option value={10}>۱۰ دقیقه</option>
                               </select>
-                              <button type="button" className={styles.reopenButton} disabled={saving || !attempt.unanswered_count} onClick={() => reopenAttempt(attempt)}>{reopenActive ? 'تمدید بازگشایی' : 'بازگشایی سؤال‌های بی‌پاسخ'}</button>
+                              <button type="button" className={styles.reopenButton} disabled={saving || !attempt.unanswered_count} onClick={() => reopenAttempt(attempt)}>{reopenActive || reopenWaiting ? 'تنظیم دوباره بازگشایی' : 'بازگشایی سؤال‌های بی‌پاسخ'}</button>
                             </div>
                             <button type="button" className={styles.deleteAttemptButton} disabled={saving} onClick={() => deleteAttempt(attempt)}>حذف این شرکت‌کننده و نتیجه</button>
                           </div>
