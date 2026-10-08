@@ -276,6 +276,7 @@
 .reviewTabWrong { border-color: #efb5b5; background: #fff0f0; color: #b62f2f; }
 .reviewTabActive { box-shadow: 0 0 0 3px rgba(244,91,22,.18); outline: 2px solid #f45b16; outline-offset: 1px; }
 .reviewCase { display: grid; gap: 20px; }
+.reviewFeedback { width: 100%; margin-top: 0; }
 .loading { display: grid; min-height: 100vh; place-items: center; color: #94a3b8; font-family: system-ui, sans-serif; }
 
 :global(html[data-theme='dark']) .page { background: #07111f; }

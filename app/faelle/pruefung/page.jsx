@@ -342,21 +342,21 @@ function CaseExamContent() {
                       </div>
                     })}
                   </div>
-                  <section className={`${styles.feedback} ${reviewCorrect ? styles.feedbackCorrect : styles.feedbackWrong}`}>
-                    <header className={styles.feedbackHeader}><span className={styles.feedbackIcon} aria-hidden="true">{reviewCorrect ? '✓' : '×'}</span><strong>{reviewCorrect ? ui.correct : ui.incorrect}</strong></header>
-                    {!reviewCorrect ? <div className={styles.answerComparison}>
-                      <div className={styles.answerWrong}><span>{ui.selectedAnswer}</span><strong>{reviewAnswer?.selected ? `${reviewAnswer.selected}) ${reviewSelected?.text}` : ui.noAnswer}</strong></div>
-                      <div className={styles.answerCorrect}><span>{ui.correctAnswer}</span><strong>{reviewCase.correct}) {reviewCorrectOption?.text}</strong></div>
-                    </div> : null}
-                    {!reviewCorrect && reviewWrongExplanation ? <div className={styles.feedbackSection}><h2>{ui.whyWrong}</h2><p>{reviewWrongExplanation}</p></div> : null}
-                    <div className={styles.feedbackSection}><h2>{ui.imageFindings}</h2><p>{reviewCase.imageFindings || reviewCase.vignette}</p></div>
-                    <div className={styles.feedbackSection}><h2>{ui.explanation}</h2><p>{reviewCase.explanation}</p></div>
-                  </section>
                 </section>
                 <section className={styles.viewerColumn} aria-label={`${reviewCase.modality} · ${regionLabel}`}>
                   <MedicalSequenceViewer key={`review-${reviewCase.id}`} media={reviewMedia} language={lang} priority expandable />
                 </section>
               </div>
+              <section className={`${styles.feedback} ${styles.reviewFeedback} ${reviewCorrect ? styles.feedbackCorrect : styles.feedbackWrong}`}>
+                <header className={styles.feedbackHeader}><span className={styles.feedbackIcon} aria-hidden="true">{reviewCorrect ? '✓' : '×'}</span><strong>{reviewCorrect ? ui.correct : ui.incorrect}</strong></header>
+                {!reviewCorrect ? <div className={styles.answerComparison}>
+                  <div className={styles.answerWrong}><span>{ui.selectedAnswer}</span><strong>{reviewAnswer?.selected ? `${reviewAnswer.selected}) ${reviewSelected?.text}` : ui.noAnswer}</strong></div>
+                  <div className={styles.answerCorrect}><span>{ui.correctAnswer}</span><strong>{reviewCase.correct}) {reviewCorrectOption?.text}</strong></div>
+                </div> : null}
+                {!reviewCorrect && reviewWrongExplanation ? <div className={styles.feedbackSection}><h2>{ui.whyWrong}</h2><p>{reviewWrongExplanation}</p></div> : null}
+                <div className={styles.feedbackSection}><h2>{ui.imageFindings}</h2><p>{reviewCase.imageFindings || reviewCase.vignette}</p></div>
+                <div className={styles.feedbackSection}><h2>{ui.explanation}</h2><p>{reviewCase.explanation}</p></div>
+              </section>
             </article>
           </> : null}
           <div className={quizStyles.resultActions}>
