@@ -4,6 +4,16 @@ import { auth } from '@clerk/nextjs/server'
 import { CASE_BANK } from '@/data/cases'
 import { QUESTION_BANK } from '@/data/questions'
 import { gradeExam, normalizeWrongExplanations, unpackExamQuestionExplanation } from '@/lib/exams'
+import {
+  OFFLINE_SUBMISSION_GRACE_MS,
+  REOPEN_SUBMISSION_GRACE_MS,
+  attemptDeadline,
+  completeAttemptReopen,
+  isAttemptReopenActive,
+  mergeReopenedAnswers,
+  readAttemptReopen,
+  saveAttemptReopenDraft,
+} from '@/lib/examRecovery'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 import { normalizeParticipantSpecialty, PARTICIPANT_SPECIALTY_KEY, PARTICIPANT_USER_KEY } from '@/data/medicalSpecialties'
 
@@ -121,11 +131,29 @@ function availabilityMessage(exam, availability) {
 }
 
 function remainingSeconds(exam, startedAt) {
-  const start = Date.parse(startedAt)
-  const personalEnd = Number.isFinite(start) ? start + Number(exam.duration_minutes || 0) * 60 * 1000 : Date.now()
-  const closesAt = Date.parse(exam.closes_at)
-  const effectiveEnd = Number.isFinite(closesAt) ? Math.min(personalEnd, closesAt) : personalEnd
+  const effectiveEnd = attemptDeadline(exam, startedAt)
   return Math.max(0, Math.floor((effectiveEnd - Date.now()) / 1000))
+}
+
+function reopenedAttemptResponse(exam, questions, attempt, specialty) {
+  const reopen = readAttemptReopen(attempt.answers)
+  const remaining = Math.max(0, Math.floor((Date.parse(reopen.reopenedUntil) - Date.now()) / 1000))
+  const allowed = new Set(reopen.allowedQuestionIds)
+  return NextResponse.json({
+    state: 'quiz',
+    attemptId: attempt.id,
+    participantName: attempt.participant_name,
+    participantContact: attempt.participant_contact,
+    participantSpecialty: specialty,
+    answers: clientQuestionAnswers(questions, { ...attempt.answers, ...reopen.draftAnswers }),
+    startedAt: attempt.started_at,
+    remainingSeconds: remaining,
+    resumed: true,
+    reopenOnly: true,
+    reopenedUntil: reopen.reopenedUntil,
+    lockedQuestionIds: questions.filter(question => !allowed.has(question.id)).map(question => question.id),
+    firstEditableIndex: Math.max(0, questions.findIndex(question => allowed.has(question.id))),
+  })
 }
 
 async function loadExam(code, includeAnswers = false) {
@@ -308,6 +336,10 @@ export async function POST(request, { params }) {
   const storedUserId = typeof existingAttempt?.answers?.[PARTICIPANT_USER_KEY] === 'string' ? existingAttempt.answers[PARTICIPANT_USER_KEY] : ''
   const participantUserId = storedUserId || signedInUserId || ''
   const effectiveSpecialty = normalizeParticipantSpecialty(existingAttempt?.answers?.[PARTICIPANT_SPECIALTY_KEY]) || participantSpecialty
+  const reopenActive = isAttemptReopenActive(existingAttempt?.answers)
+  const reopenRecoveryActive = isSubmittedAttempt(existingAttempt)
+    && payload?.pendingOfflineSubmission === true
+    && isAttemptReopenActive(existingAttempt?.answers, Date.now(), REOPEN_SUBMISSION_GRACE_MS)
 
   if (existingAttempt && signedInUserId && !storedUserId) {
     const linkedAnswers = withParticipantMetadata(existingAttempt.answers, effectiveSpecialty, signedInUserId)
@@ -321,9 +353,25 @@ export async function POST(request, { params }) {
   }
 
   if (payload?.action === 'identify') {
+    if (isSubmittedAttempt(existingAttempt) && (reopenActive || reopenRecoveryActive)) {
+      return reopenedAttemptResponse(loaded.exam, loaded.questions, existingAttempt, effectiveSpecialty)
+    }
     if (isSubmittedAttempt(existingAttempt)) return completedAttemptResponse(loaded.exam, existingAttempt)
     if (existingAttempt) {
       const secondsLeft = remainingSeconds(loaded.exam, existingAttempt.started_at)
+      const deadline = attemptDeadline(loaded.exam, existingAttempt.started_at)
+      const offlineRecoveryAvailable = payload?.pendingOfflineSubmission === true
+        && Number.isFinite(deadline)
+        && Date.now() <= deadline + OFFLINE_SUBMISSION_GRACE_MS
+      if (offlineRecoveryAvailable) {
+        return NextResponse.json({
+          state: 'quiz', attemptId: existingAttempt.id,
+          participantName: existingAttempt.participant_name, participantContact: existingAttempt.participant_contact,
+          participantSpecialty: effectiveSpecialty,
+          answers: clientQuestionAnswers(loaded.questions, existingAttempt.answers), startedAt: existingAttempt.started_at,
+          remainingSeconds: 0, resumed: true, offlineRecovery: true,
+        })
+      }
       if (loaded.availability === 'active' && secondsLeft > 0) {
         return NextResponse.json({
           state: 'quiz', attemptId: existingAttempt.id,
@@ -388,12 +436,27 @@ export async function POST(request, { params }) {
     }, { status: 201 })
   }
 
-  if (isSubmittedAttempt(existingAttempt)) return completedAttemptResponse(loaded.exam, existingAttempt)
+  const reopenSubmissionActive = isSubmittedAttempt(existingAttempt)
+    && isAttemptReopenActive(existingAttempt.answers, Date.now(), REOPEN_SUBMISSION_GRACE_MS)
+  if (isSubmittedAttempt(existingAttempt) && !reopenSubmissionActive) return completedAttemptResponse(loaded.exam, existingAttempt)
   if (!existingAttempt && loaded.availability !== 'active' && getAvailability(loaded.exam, SUBMISSION_GRACE_MS) !== 'active') {
     return NextResponse.json({ error: availabilityMessage(loaded.exam, loaded.availability) }, { status: 409 })
   }
 
-  const graded = gradeExam(loaded.questions, payload.answers)
+  if (existingAttempt && !isSubmittedAttempt(existingAttempt)) {
+    const deadline = attemptDeadline(loaded.exam, existingAttempt.started_at)
+    if (Number.isFinite(deadline) && Date.now() > deadline + OFFLINE_SUBMISSION_GRACE_MS) {
+      return NextResponse.json({ error: 'مهلت بازیابی خودکار پاسخ‌ها تمام شده است. از برگزارکننده بخواهید سؤال‌های بی‌پاسخ را برای شما بازگشایی کند.' }, { status: 409 })
+    }
+  }
+
+  const answersForGrading = reopenSubmissionActive
+    ? mergeReopenedAnswers(loaded.questions, existingAttempt.answers, payload.answers)
+    : payload.answers
+  const graded = gradeExam(loaded.questions, answersForGrading)
+  const gradedAnswers = reopenSubmissionActive
+    ? completeAttemptReopen(graded.answers, existingAttempt.answers)
+    : graded.answers
   const startedAt = typeof payload.startedAt === 'string' && !Number.isNaN(Date.parse(payload.startedAt)) ? payload.startedAt : new Date().toISOString()
   let submitted
   let submitError
@@ -401,13 +464,13 @@ export async function POST(request, { params }) {
     const updated = await supabaseAdmin
       .from('exam_attempts')
       .update({
-        answers: withParticipantMetadata(graded.answers, effectiveSpecialty, participantUserId), score: graded.score, max_score: graded.maxScore,
+        answers: withParticipantMetadata(gradedAnswers, effectiveSpecialty, participantUserId), score: graded.score, max_score: graded.maxScore,
         percentage: graded.percentage, submitted_at: new Date().toISOString(),
       })
       .eq('id', existingAttempt.id)
       .eq('exam_id', loaded.exam.id)
       .eq('participant_contact', participantContact.value)
-      .select('id,submitted_at')
+      .select('id,participant_name,participant_contact,answers,score,max_score,percentage,feedback_submitted_at,started_at,submitted_at')
       .single()
     submitted = updated.data
     submitError = updated.error
@@ -434,6 +497,10 @@ export async function POST(request, { params }) {
     }
     console.error('ذخیره نتیجه آزمون انجام نشد:', submitError)
     return NextResponse.json({ error: 'ارسال پاسخ‌ها انجام نشد. دوباره تلاش کنید.' }, { status: 503 })
+  }
+
+  if (reopenSubmissionActive && submitted.feedback_submitted_at) {
+    return completedAttemptResponse(loaded.exam, submitted)
   }
 
   return NextResponse.json({
@@ -476,22 +543,27 @@ export async function PATCH(request, { params }) {
     const normalized = gradeExam(questions || [], payload.answers).answers
     const { data: activeAttempt, error: attemptError } = await supabaseAdmin
       .from('exam_attempts')
-      .select('answers')
+      .select('answers,max_score')
       .eq('id', attemptId)
       .eq('exam_id', exam.id)
       .eq('participant_contact', participantContact.value)
-      .eq('max_score', 0)
       .maybeSingle()
     if (attemptError) return databaseUnavailable()
     if (!activeAttempt) return NextResponse.json({ error: 'آزمون در حال انجام پیدا نشد.' }, { status: 404 })
+    const reopened = Number(activeAttempt.max_score) > 0 && isAttemptReopenActive(activeAttempt.answers)
+    if (Number(activeAttempt.max_score) > 0 && !reopened) {
+      return NextResponse.json({ error: 'مهلت بازگشایی این آزمون تمام شده است.' }, { status: 409 })
+    }
     const storedUserId = typeof activeAttempt.answers?.[PARTICIPANT_USER_KEY] === 'string' ? activeAttempt.answers[PARTICIPANT_USER_KEY] : ''
+    const savedAnswers = reopened
+      ? saveAttemptReopenDraft(activeAttempt.answers, payload.answers)
+      : normalized
     const { data: saved, error: saveError } = await supabaseAdmin
       .from('exam_attempts')
-      .update({ answers: withParticipantMetadata(normalized, participantSpecialty, storedUserId || signedInUserId || '') })
+      .update({ answers: withParticipantMetadata(savedAnswers, participantSpecialty, storedUserId || signedInUserId || '') })
       .eq('id', attemptId)
       .eq('exam_id', exam.id)
       .eq('participant_contact', participantContact.value)
-      .eq('max_score', 0)
       .select('id')
       .maybeSingle()
     if (saveError) return databaseUnavailable()

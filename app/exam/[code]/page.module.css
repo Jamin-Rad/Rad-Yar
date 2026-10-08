@@ -28,6 +28,8 @@
 .centerCard { display: grid; place-items: center; min-height: 320px; padding: 45px; text-align: center; }
 .centerCard h1 { margin: 18px 0 4px; }
 .centerCard p { color: #718096; }
+.offlineIcon { display: grid; place-items: center; width: 58px; height: 58px; border-radius: 50%; background: #fff4e6; color: #d97706; font-size: 29px; font-weight: 900; }
+.retrySubmit { min-height: 43px; margin-top: 12px; padding: 0 18px; border: 0; border-radius: 10px; background: #f45b16; color: #fff; cursor: pointer; font: 800 12px Vazirmatn, sans-serif; }
 .loader { width: 38px; height: 38px; border: 3px solid #dce3ec; border-top-color: #f45b16; border-radius: 50%; animation: spin .8s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .errorIcon, .resultSuccess, .resultDone { display: grid; place-items: center; width: 58px; height: 58px; border-radius: 50%; font-size: 26px; font-weight: 900; }
@@ -71,6 +73,9 @@
 .timeReadout strong { color:#17213a; font:850 17px var(--font-manrope),sans-serif; font-variant-numeric:tabular-nums; }
 .timeProgressLow .progressTrack span { background:linear-gradient(90deg,#f97316,#dc2745); box-shadow:0 0 14px rgba(220,39,69,.25); }
 .timeProgressLow .timeReadout strong { color:#c51f3b; }
+.networkNotice, .reopenNotice { margin-bottom: 14px; padding: 11px 14px; border-radius: 11px; font-size: 11px; font-weight: 750; line-height: 1.8; }
+.networkNotice { border: 1px solid #fdba74; background: #fff7ed; color: #9a3412; }
+.reopenNotice { border: 1px solid #93c5fd; background: #eff6ff; color: #1d4ed8; }
 
 .examLayout { display: grid; min-width: 0; max-width: 100%; grid-template-columns: minmax(0, 1fr) 260px; gap: 18px; align-items: start; }
 .questionCard, .navigator { border: 1px solid #e0e6ef; border-radius: 18px; background: rgba(255,255,255,.96); box-shadow: 0 18px 45px rgba(29,41,67,.075); }
@@ -83,9 +88,12 @@
 .option > span:not(.optionMark), .optionSelected > span:not(.optionMark) { min-width: 0; overflow-wrap: anywhere; }
 .option:hover { transform: translateY(-1px); border-color: #f6aa7e; background: #fffbf8; }
 .optionSelected { border-color: #f97316; background: #fff4ec; box-shadow: 0 0 0 2px rgba(249,115,22,.08); }
+.optionLocked, .optionLocked:hover { transform: none; border-color: #e2e8f0; background: #f8fafc; color: #7b8799; cursor: not-allowed; box-shadow: none; opacity: .78; }
+.optionLocked.optionSelected, .optionLocked.optionSelected:hover { border-color: #b7e1d2; background: #effaf6; color: #356c5e; }
 .optionMark { display: grid; place-items: center; width: 31px; height: 31px; flex: 0 0 31px; border-radius: 8px; background: #eef2f6; color: #526077; font: 850 12px var(--font-manrope), sans-serif; }
 .optionSelected .optionMark { background: #f97316; color: #fff; }
 .option i, .optionSelected i { margin-inline-start: auto; color: #f45b16; font-style: normal; font-weight: 900; }
+.lockedHint { margin: 12px 0 0; color: #64748b; font-size: 10px; font-weight: 750; }
 .questionActions { display: flex; justify-content: space-between; gap: 10px; margin-top: 24px; padding-top: 20px; border-top: 1px solid #edf0f4; }
 .previous, .next, .submit { min-height: 44px; padding: 0 18px; border-radius: 10px; cursor: pointer; font: 750 12px Vazirmatn, sans-serif; }
 .previous { border: 1px solid #dce3ec; background: #fff; color: #5b687c; }
@@ -291,6 +299,12 @@
 :global(html[data-theme='dark']) .scoringRule { border-color: #7c4a1e; background: #2a1a0d; color: #fdba74; }
 :global(html[data-theme='dark']) .option:hover { background: #15253a; }
 :global(html[data-theme='dark']) .optionSelected { border-color: #f97316; background: rgba(249,115,22,.12); color: #f2f5f9; }
+:global(html[data-theme='dark']) .optionLocked,
+:global(html[data-theme='dark']) .optionLocked:hover { border-color: #26364d; background: #0b1728; color: #718096; }
+:global(html[data-theme='dark']) .optionLocked.optionSelected,
+:global(html[data-theme='dark']) .optionLocked.optionSelected:hover { border-color: #145c4a; background: rgba(8,118,92,.12); color: #8bd8c3; }
+:global(html[data-theme='dark']) .networkNotice { border-color: #7c4a1e; background: #2a1a0d; color: #fdba74; }
+:global(html[data-theme='dark']) .reopenNotice { border-color: #24456a; background: #0d2238; color: #93c5fd; }
 :global(html[data-theme='dark']) .scoreCircle > div { background: #0f1b2d; }
 :global(html[data-theme='dark']) .scoreCircle strong { color: #f3f6fa; }
 :global(html[data-theme='dark']) .resultNote { background: #0b1728; }

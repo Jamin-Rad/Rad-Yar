@@ -149,11 +149,13 @@ export default function ExamAdminClient() {
   const [exams, setExams] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const [actionMessage, setActionMessage] = useState('')
   const [view, setView] = useState('list')
   const [detail, setDetail] = useState(null)
   const [detailLoading, setDetailLoading] = useState(false)
   const [expandedAttempt, setExpandedAttempt] = useState('')
   const [saving, setSaving] = useState(false)
+  const [reopenDurationMinutes, setReopenDurationMinutes] = useState(15)
   const [createdLink, setCreatedLink] = useState('')
   const [copied, setCopied] = useState('')
   const [questionBank, setQuestionBank] = useState([])
@@ -382,6 +384,7 @@ export default function ExamAdminClient() {
     setDetailLoading(true)
     setExpandedAttempt('')
     setError('')
+    setActionMessage('')
     try {
       const data = await readJson(await fetch(`/api/admin/exams?id=${encodeURIComponent(examId)}`, { cache: 'no-store' }))
       setDetail(data)
@@ -458,6 +461,29 @@ export default function ExamAdminClient() {
     }
   }
 
+  async function reopenAttempt(attempt) {
+    if (!detail?.exam || !attempt?.id || !attempt.unanswered_count) return
+    const confirmed = window.confirm(`فقط ${Number(attempt.unanswered_count).toLocaleString('fa-IR')} سؤال بی‌پاسخ «${attempt.participant_name}» برای ${Number(reopenDurationMinutes).toLocaleString('fa-IR')} دقیقه باز شود؟ پاسخ‌های قبلی قفل می‌مانند.`)
+    if (!confirmed) return
+
+    setSaving(true)
+    setError('')
+    setActionMessage('')
+    try {
+      const data = await readJson(await fetch('/api/admin/exams', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: detail.exam.id, attemptId: attempt.id, action: 'reopen-attempt', durationMinutes: reopenDurationMinutes }),
+      }))
+      await Promise.all([loadExams(), openDetail(detail.exam.id)])
+      setActionMessage(`آزمون ${data.participantName} برای ${Number(data.unansweredQuestionCount).toLocaleString('fa-IR')} سؤال بی‌پاسخ تا ${formatDate(data.reopenedUntil)} باز شد.`)
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setSaving(false)
+    }
+  }
+
   async function copyLink(value) {
     await navigator.clipboard.writeText(value)
     setCopied(value)
@@ -485,6 +511,7 @@ export default function ExamAdminClient() {
         </header>
 
         {error ? <div className={styles.error} role="alert">{error}</div> : null}
+        {actionMessage ? <div className={styles.actionMessage} role="status">{actionMessage}</div> : null}
 
         {createdLink ? (
           <section className={styles.successCard} aria-live="polite">
@@ -748,6 +775,7 @@ export default function ExamAdminClient() {
                     {detail.attempts.map(attempt => {
                       const isOpen = expandedAttempt === attempt.id
                       const participantFeedback = readAttemptFeedback(attempt)
+                      const reopenActive = Boolean(attempt.reopen && !attempt.reopen.completedAt && Date.parse(attempt.reopen.reopenedUntil) > Date.now())
                       return <article className={styles.attempt} key={attempt.id}>
                         <button type="button" className={styles.attemptRow} onClick={() => setExpandedAttempt(isOpen ? '' : attempt.id)}>
                           <span className={styles.rank}><small>رتبه</small><strong>{Number(attempt.rank).toLocaleString('fa-IR')}</strong></span>
@@ -762,7 +790,22 @@ export default function ExamAdminClient() {
                           <span aria-hidden="true">{isOpen ? '−' : '+'}</span>
                         </button>
                         {isOpen ? <div className={styles.answerDetails}>
-                          <div className={styles.attemptActions}><button type="button" disabled={saving} onClick={() => deleteAttempt(attempt)}>حذف این شرکت‌کننده و نتیجه</button></div>
+                          <div className={styles.attemptActions}>
+                            <div className={styles.reopenControls}>
+                              <div>
+                                <strong>{reopenActive ? 'بازگشایی فعال است' : attempt.unanswered_count ? `${Number(attempt.unanswered_count).toLocaleString('fa-IR')} سؤال بی‌پاسخ` : 'همه سؤال‌ها پاسخ داده شده‌اند'}</strong>
+                                <span>{reopenActive ? `مهلت تا ${formatDate(attempt.reopen.reopenedUntil)} · پاسخ‌های قبلی قفل هستند` : 'فقط سؤال‌های بی‌پاسخ قابل حل می‌شوند.'}</span>
+                              </div>
+                              <select aria-label="مدت بازگشایی" value={reopenDurationMinutes} onChange={event => setReopenDurationMinutes(Number(event.target.value))} disabled={saving || !attempt.unanswered_count}>
+                                <option value={10}>۱۰ دقیقه</option>
+                                <option value={15}>۱۵ دقیقه</option>
+                                <option value={30}>۳۰ دقیقه</option>
+                                <option value={60}>۶۰ دقیقه</option>
+                              </select>
+                              <button type="button" className={styles.reopenButton} disabled={saving || !attempt.unanswered_count} onClick={() => reopenAttempt(attempt)}>{reopenActive ? 'تمدید بازگشایی' : 'بازگشایی سؤال‌های بی‌پاسخ'}</button>
+                            </div>
+                            <button type="button" className={styles.deleteAttemptButton} disabled={saving} onClick={() => deleteAttempt(attempt)}>حذف این شرکت‌کننده و نتیجه</button>
+                          </div>
                           {participantFeedback ? <div className={styles.attemptFeedback}><strong>نظر شرکت‌کننده</strong>{participantFeedback.ratings.length ? <div className={styles.feedbackScores}>{participantFeedback.ratings.map(([label, value]) => <span key={label}><small>{label}</small><b>{Number(value).toLocaleString('fa-IR')} از ۵</b></span>)}</div> : <span>بدون امتیاز گزینه‌ای</span>}{participantFeedback.message ? <p>{participantFeedback.message}</p> : null}</div> : null}
                           {detail.questions.map((question, index) => {
                             const selected = attempt.answers?.[question.id]

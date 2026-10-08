@@ -28,6 +28,7 @@
 .textButton:hover, .refreshButton:hover { background: #eef2f7; color: #172033; }
 
 .error { margin-bottom: 18px; padding: 13px 16px; border: 1px solid #fecaca; border-radius: 12px; background: #fff1f2; color: #b42336; font-size: 14px; }
+.actionMessage { margin-bottom: 18px; padding: 13px 16px; border: 1px solid #a7e1cd; border-radius: 12px; background: #effcf7; color: #08705b; font-size: 13px; font-weight: 750; }
 .successCard, .shareCard { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 22px; padding: 18px 20px; border: 1px solid #b7ead8; border-radius: 16px; background: #effcf7; }
 .successCard > div:first-child, .shareCard > div:first-child { display: grid; gap: 4px; }
 .successCard strong, .shareCard strong { color: #075f4c; }
@@ -246,10 +247,18 @@
 .rank strong { font-size: 17px; }
 .submitted { color: #748196; font-size: 10px; }
 .answerDetails { display: grid; gap: 8px; padding: 14px 16px; border-top: 1px solid #e7ebf1; background: #f8fafc; }
-.attemptActions { display: flex; justify-content: flex-end; }
-.attemptActions button { min-height: 34px; padding: 0 12px; border: 1px solid #fecaca; border-radius: 9px; background: #fff1f2; color: #be123c; cursor: pointer; font: 750 10px Vazirmatn, sans-serif; }
-.attemptActions button:hover { border-color: #fda4af; background: #ffe4e6; }
+.attemptActions { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px; border: 1px solid #d8e5f1; border-radius: 11px; background: #f2f8fd; }
+.attemptActions button, .attemptActions select { min-height: 36px; border-radius: 9px; cursor: pointer; font: 750 10px Vazirmatn, sans-serif; }
+.deleteAttemptButton { padding: 0 12px; border: 1px solid #fecaca; background: #fff1f2; color: #be123c; }
+.deleteAttemptButton:hover { border-color: #fda4af; background: #ffe4e6; }
 .attemptActions button:disabled { opacity: .5; cursor: wait; }
+.reopenControls { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.reopenControls > div { display: grid; min-width: min(260px, 30vw); gap: 2px; }
+.reopenControls strong { color: #164e75; font-size: 11px; }
+.reopenControls span { color: #64748b; font-size: 9px; }
+.reopenControls select { padding: 0 10px; border: 1px solid #bfdbfe; background: #fff; color: #334155; }
+.attemptActions .reopenButton { padding: 0 13px; border: 1px solid #0f8a78; background: #0f8a78; color: #fff; }
+.attemptActions .reopenButton:hover { background: #08705b; }
 .attemptFeedback { display: grid; gap: 6px; padding: 13px; border: 1px solid #fed7aa; border-radius: 10px; background: #fff8f1; color: #566276; font-size: 11px; }
 .attemptFeedback strong { color: #c2410c; }
 .attemptFeedback p { margin: 0; line-height: 1.9; }
@@ -306,6 +315,9 @@
   .attemptRow { grid-template-columns: 52px 1fr auto; }
   .attemptRow > span:nth-child(3), .attemptRow > span:nth-child(4), .attemptRow > span:nth-child(5) { display: none; }
   .feedbackScores { grid-template-columns: 1fr; }
+  .attemptActions, .reopenControls { align-items: stretch; flex-direction: column; }
+  .reopenControls > div { min-width: 0; }
+  .attemptActions button, .attemptActions select { width: 100%; }
 }
 
 :global(html[data-theme='dark']) .page { background: radial-gradient(circle at 15% 0%, rgba(14,165,233,.08), transparent 28rem), #07111f; color: #d8e1ec; }
@@ -392,7 +404,11 @@
 :global(html[data-theme='dark']) .dangerButton { border-color: #7f1d1d; background: rgba(127,29,29,.22); color: #fda4af; }
 :global(html[data-theme='dark']) .satisfactionCard { border-color: #145c4a !important; background: rgba(8,118,92,.13) !important; }
 :global(html[data-theme='dark']) .satisfactionCard strong { color: #6ee7b7 !important; }
-:global(html[data-theme='dark']) .attemptActions button { border-color: #7f1d1d; background: rgba(127,29,29,.22); color: #fda4af; }
+:global(html[data-theme='dark']) .attemptActions { border-color: #294866; background: #0c1b2d; }
+:global(html[data-theme='dark']) .attemptActions .deleteAttemptButton { border-color: #7f1d1d; background: rgba(127,29,29,.22); color: #fda4af; }
+:global(html[data-theme='dark']) .reopenControls strong { color: #7dd3fc; }
+:global(html[data-theme='dark']) .reopenControls span { color: #94a3b8; }
+:global(html[data-theme='dark']) .reopenControls select { border-color: #2b3b52; background: #101e31; color: #e3eaf2; }
 :global(html[data-theme='dark']) .wrongQuestionInsight { border-color: #713f12; background: linear-gradient(135deg, rgba(124,45,18,.16), #0b1728); }
 :global(html[data-theme='dark']) .wrongQuestionHeader h2,
 :global(html[data-theme='dark']) .wrongQuestionCard > p,

@@ -5,6 +5,7 @@ import { MCQ_TOPIC_GROUPS, QUESTION_BANK } from '@/data/questions'
 import { CASE_BANK } from '@/data/cases'
 import { CURRICULUM } from '@/data/curriculum'
 import { EXAM_LANGUAGES, gradeExam, packExamQuestionExplanation, unpackExamQuestionExplanation, validateExamInput } from '@/lib/exams'
+import { getUnansweredQuestionIds, openAttemptForUnanswered, readAttemptReopen } from '@/lib/examRecovery'
 import { caseToExamMedia, getExamMediaPreview } from '@/utils/examMedia'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 
@@ -248,6 +249,7 @@ export async function GET(request) {
     })
     const regradedAttempts = (attemptResult.data || []).map(attempt => {
       const graded = gradeExam(questions, attempt.answers)
+      const reopen = readAttemptReopen(attempt.answers)
       return {
         ...attempt,
         score: graded.score,
@@ -257,6 +259,13 @@ export async function GET(request) {
         wrong_count: graded.wrongCount,
         unanswered_count: graded.unansweredCount,
         negative_points: graded.negativePoints,
+        reopen: reopen ? {
+          reopenedAt: reopen.reopenedAt,
+          reopenedUntil: reopen.reopenedUntil,
+          completedAt: reopen.completedAt,
+          allowedQuestionCount: reopen.allowedQuestionIds.length,
+          historyCount: reopen.history.length,
+        } : null,
       }
     })
     const attempts = addRanks(uniqueSubmittedAttempts(regradedAttempts))
@@ -365,6 +374,54 @@ export async function PATCH(request) {
     payload = await request.json()
   } catch {
     return NextResponse.json({ error: 'درخواست معتبر نیست.' }, { status: 400 })
+  }
+
+  if (payload?.action === 'reopen-attempt') {
+    const examId = typeof payload?.id === 'string' ? payload.id : ''
+    const attemptId = typeof payload?.attemptId === 'string' ? payload.attemptId : ''
+    const durationMinutes = Number(payload?.durationMinutes)
+    if (!UUID_PATTERN.test(examId) || !UUID_PATTERN.test(attemptId) || !Number.isInteger(durationMinutes) || durationMinutes < 5 || durationMinutes > 120) {
+      return NextResponse.json({ error: 'شناسه شرکت‌کننده یا مدت بازگشایی معتبر نیست.' }, { status: 400 })
+    }
+
+    const [attemptResult, questionsResult] = await Promise.all([
+      supabaseAdmin.from('exam_attempts').select('id,participant_name,answers,max_score').eq('id', attemptId).eq('exam_id', examId).maybeSingle(),
+      supabaseAdmin.from('exam_questions').select('id').eq('exam_id', examId).order('position'),
+    ])
+    const lookupError = attemptResult.error || questionsResult.error
+    if (lookupError) {
+      console.error('آماده‌سازی بازگشایی شرکت‌کننده انجام نشد:', lookupError)
+      return NextResponse.json({ error: databaseSetupError(lookupError, 'بازگشایی آزمون انجام نشد.') }, { status: 503 })
+    }
+    if (!attemptResult.data) return NextResponse.json({ error: 'نتیجه شرکت‌کننده پیدا نشد.' }, { status: 404 })
+    if (Number(attemptResult.data.max_score) <= 0) return NextResponse.json({ error: 'این شرکت‌کننده هنوز آزمون را تحویل نداده است.' }, { status: 409 })
+
+    const unansweredQuestionIds = getUnansweredQuestionIds(questionsResult.data || [], attemptResult.data.answers)
+    if (!unansweredQuestionIds.length) {
+      return NextResponse.json({ error: 'این شرکت‌کننده سؤال بی‌پاسخی ندارد و نیازی به بازگشایی نیست.' }, { status: 409 })
+    }
+
+    const reopenedAnswers = openAttemptForUnanswered(attemptResult.data.answers, unansweredQuestionIds, durationMinutes)
+    const { data: updated, error: updateError } = await supabaseAdmin
+      .from('exam_attempts')
+      .update({ answers: reopenedAnswers })
+      .eq('id', attemptId)
+      .eq('exam_id', examId)
+      .select('id,answers')
+      .maybeSingle()
+    if (updateError) {
+      console.error('بازگشایی شرکت‌کننده انجام نشد:', updateError)
+      return NextResponse.json({ error: databaseSetupError(updateError, 'بازگشایی آزمون انجام نشد.') }, { status: 503 })
+    }
+    if (!updated) return NextResponse.json({ error: 'نتیجه شرکت‌کننده پیدا نشد.' }, { status: 404 })
+    const reopen = readAttemptReopen(updated.answers)
+    return NextResponse.json({
+      reopened: true,
+      attemptId,
+      participantName: attemptResult.data.participant_name,
+      unansweredQuestionCount: unansweredQuestionIds.length,
+      reopenedUntil: reopen?.reopenedUntil,
+    })
   }
 
   const statusByAction = { publish: 'published', close: 'closed', reopen: 'published' }

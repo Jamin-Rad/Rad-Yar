@@ -12,14 +12,17 @@ import styles from './page.module.css'
 const EXAM_COPY = Object.freeze({
   fa: {
     scoringRule: 'قانون نمره منفی: به‌ازای هر ۳ پاسخ غلط، ۱ امتیاز از پاسخ‌های صحیح کم می‌شود. سؤال بدون پاسخ جریمه ندارد.',
+    offline: 'اینترنت قطع است؛ پاسخ‌ها روی همین دستگاه ذخیره می‌شوند.', pendingSubmit: 'زمان تمام شد؛ پاسخ‌ها محفوظ‌اند و به‌محض وصل‌شدن اینترنت ارسال می‌شوند.', backOnline: 'اینترنت وصل شد؛ در حال ارسال پاسخ‌های ذخیره‌شده…', retrySubmit: 'تلاش دوباره برای ارسال', reopenNotice: count => `آزمون برای تکمیل ${count} سؤال بی‌پاسخ باز شده است. پاسخ‌های قبلی قفل هستند.`, lockedAnswer: 'پاسخ قبلی قفل است',
     locale: 'fa-IR', dir: 'rtl', loading: 'در حال آماده‌سازی امتحان…', openFailed: 'امتحان باز نشد', badge: 'امتحان آنلاین', introFallback: 'پیش از شروع، اطلاعات خود را وارد کنید.', questions: 'تعداد سؤال', questionUnit: 'سؤال', time: 'زمان', minutes: 'دقیقه', name: 'نام و نام خانوادگی *', namePlaceholder: 'نام شما', contact: 'ایمیل یا آیدی اینستاگرام *', contactPlaceholder: '@username یا name@example.com', start: 'شروع امتحان', startArrow: '←', notice: 'با شروع امتحان، زمان‌سنج فعال می‌شود. پاسخ‌ها در پایان به‌صورت خودکار ارسال خواهند شد.', nameError: 'لطفاً نام و نام خانوادگی خود را وارد کنید.', contactError: 'لطفاً یک ایمیل معتبر یا آیدی اینستاگرام وارد کنید.', submitting: 'در حال ثبت پاسخ‌ها', dontClose: 'این صفحه را نبندید.', submitted: 'آزمون با موفقیت ثبت شد', thanks: name => `${name} جان، ممنون!`, sentTo: organizer => `نتیجه امتحانت برای ${organizer} ارسال شد.`, resultSent: 'نتیجه برای برگزارکننده ارسال شد.', rank: (rank, total) => `رتبه فعلی: ${rank} از ${total} نفر`, review: 'مرور پاسخ‌ها', hideReview: 'بستن مرور پاسخ‌ها', correct: 'درست!', incorrect: 'این یکی نیاز به مرور دارد', whyWrong: 'چرا این گزینه درست نیست؟', feedback: 'نظر بده', feedbackCtaHint: 'نظر شما آزمون‌های بعدی را بهتر می‌کند', hideFeedback: 'بستن فرم نظر', correctAnswer: 'پاسخ صحیح', yourAnswer: 'پاسخ شما', unansweredReview: 'بدون پاسخ', explanation: 'توضیح پاسخ', feedbackTitle: 'یک قدم کوچیک تا دیدن نتیجه', feedbackHint: name => `${name} جان، آزمونت ثبت شد. فقط نظرت رو بگو تا نتیجه و رتبه‌ات رو ببینی.`, feedbackProgress: 'مرحله آخر: نظر شما', feedbackSafe: 'پاسخ‌هایت ثبت شده و از بین نمی‌روند.', questionQuality: 'کیفیت سؤال‌ها چطور بود؟', designQuality: 'تجربه و طراحی آزمون چطور بود؟', clipQuality: 'کیفیت کلیپ آموزشی مرتبط چطور بود؟', feedbackMessageTitle: 'اگر حرفی با ما داری، خوشحال می‌شیم بشنویم', feedbackMessageHint: 'این بخش اختیاری است؛ پیشنهاد، انتقاد یا هر نکته‌ای که دوست داری بگو.', feedbackPlaceholder: 'پیامت را اینجا بنویس…', sendFeedback: 'ثبت نظر و دیدن نتیجه', sendingFeedback: 'در حال ثبت نظر…', feedbackSaved: 'نظر شما ثبت شد. از همراهی‌تان ممنونیم!', feedbackError: 'برای دیدن نتیجه، لطفاً به هر سه بخش امتیاز بده.', feedbackRequired: 'لازم برای دیدن نتیجه', ratingLabels: ['خیلی ضعیف', 'ضعیف', 'متوسط', 'خوب', 'عالی'], exam: 'امتحان', remaining: 'زمان باقی‌مانده', answered: (done, total) => `${done} از ${total} پاسخ داده شده`, questionOf: (current, total) => `سؤال ${current} از ${total}`, previous: 'سؤال قبلی', next: 'سؤال بعدی', submit: 'پایان و ارسال پاسخ‌ها', questionList: 'فهرست سؤال‌ها', answeredLegend: 'پاسخ داده‌شده', unansweredLegend: 'بدون پاسخ', finish: 'پایان امتحان', of: 'از', nextStep: 'قدم بعدی تو', reviewHint: 'با مرور جواب‌ها، هم نقطه‌قوت‌هایت را می‌بینی و هم جاهایی را که می‌توانی بهتر شوی.', backHome: 'بازگشت به رادیار', feedbackThanks: 'ممنون که نظرت را با ما در میان گذاشتی.',
   },
   en: {
     scoringRule: 'Negative marking: every group of 3 wrong answers deducts 1 point. Unanswered questions have no penalty.',
+    offline: 'You are offline. Your answers are saved on this device.', pendingSubmit: 'Time is up. Your answers are safe and will be submitted as soon as you reconnect.', backOnline: 'Connection restored. Sending your saved answers…', retrySubmit: 'Try submitting again', reopenNotice: count => `The exam was reopened for ${count} unanswered question(s). Previous answers are locked.`, lockedAnswer: 'Previous answer locked',
     locale: 'en-US', dir: 'ltr', loading: 'Preparing the exam…', openFailed: 'The exam could not be opened', badge: 'Online exam', introFallback: 'Enter your details before starting.', questions: 'Questions', questionUnit: 'questions', time: 'Time', minutes: 'minutes', name: 'Full name *', namePlaceholder: 'Your name', contact: 'Email or Instagram ID *', contactPlaceholder: '@username or name@example.com', start: 'Start exam', startArrow: '→', notice: 'The timer starts when you begin. Your answers are submitted automatically when time runs out.', nameError: 'Please enter your full name.', contactError: 'Please enter a valid email address or Instagram ID.', submitting: 'Submitting answers', dontClose: 'Please do not close this page.', submitted: 'Exam submitted successfully', thanks: name => `Thanks, ${name}!`, sentTo: organizer => `Your exam result was sent to ${organizer}.`, resultSent: 'Your result was sent to the organizer.', rank: (rank, total) => `Current rank: ${rank} of ${total}`, review: 'Review answers', hideReview: 'Close answer review', correct: 'Correct!', incorrect: 'This one is worth another look', whyWrong: 'Why is this option not correct?', feedback: 'Leave feedback', feedbackCtaHint: 'Your feedback makes the next exam better', hideFeedback: 'Close feedback form', correctAnswer: 'Correct answer', yourAnswer: 'Your answer', unansweredReview: 'Not answered', explanation: 'Explanation', feedbackTitle: 'One small step before your result', feedbackHint: name => `${name}, your exam is safely submitted. Share your feedback to see your result and current rank.`, feedbackProgress: 'Final step: your feedback', feedbackSafe: 'Your answers are safely saved and will not be lost.', questionQuality: 'How was the quality of the questions?', designQuality: 'How was the exam design and experience?', clipQuality: 'How was the related educational video?', feedbackMessageTitle: 'If you have anything to tell us, we would love to hear it', feedbackMessageHint: 'Optional—share a suggestion, criticism, or anything we should know.', feedbackPlaceholder: 'Write your message…', sendFeedback: 'Submit feedback and see result', sendingFeedback: 'Saving feedback…', feedbackSaved: 'Thank you—your feedback was saved!', feedbackError: 'Please rate all three areas to see your result.', feedbackRequired: 'Required to see your result', ratingLabels: ['Very poor', 'Poor', 'Average', 'Good', 'Excellent'], exam: 'Exam', remaining: 'Time remaining', answered: (done, total) => `${done} of ${total} answered`, questionOf: (current, total) => `Question ${current} of ${total}`, previous: 'Previous question', next: 'Next question', submit: 'Finish and submit', questionList: 'Question list', answeredLegend: 'Answered', unansweredLegend: 'Unanswered', finish: 'Finish exam', of: 'of', nextStep: 'Your next step', reviewHint: 'Review your answers to see what you already know well and where a quick recap will help.', backHome: 'Back to RadYar', feedbackThanks: 'Thanks for sharing your feedback with us.',
   },
   de: {
     scoringRule: 'Minuspunkte: Für jeweils 3 falsche Antworten wird 1 Punkt abgezogen. Unbeantwortete Fragen werden nicht bestraft.',
+    offline: 'Du bist offline. Deine Antworten werden auf diesem Gerät gespeichert.', pendingSubmit: 'Die Zeit ist abgelaufen. Deine Antworten sind gespeichert und werden nach der Wiederverbindung gesendet.', backOnline: 'Verbindung wiederhergestellt. Gespeicherte Antworten werden gesendet…', retrySubmit: 'Erneut senden', reopenNotice: count => `Die Prüfung wurde für ${count} unbeantwortete Frage(n) erneut geöffnet. Frühere Antworten sind gesperrt.`, lockedAnswer: 'Frühere Antwort gesperrt',
     locale: 'de-DE', dir: 'ltr', loading: 'Prüfung wird vorbereitet…', openFailed: 'Die Prüfung konnte nicht geöffnet werden', badge: 'Online-Prüfung', introFallback: 'Bitte geben Sie vor dem Start Ihre Daten ein.', questions: 'Fragen', questionUnit: 'Fragen', time: 'Zeit', minutes: 'Minuten', name: 'Vor- und Nachname *', namePlaceholder: 'Ihr Name', contact: 'E-Mail oder Instagram-ID *', contactPlaceholder: '@username oder name@example.com', start: 'Prüfung starten', startArrow: '→', notice: 'Der Timer startet mit der Prüfung. Nach Ablauf der Zeit werden Ihre Antworten automatisch gesendet.', nameError: 'Bitte geben Sie Ihren vollständigen Namen ein.', contactError: 'Bitte geben Sie eine gültige E-Mail-Adresse oder Instagram-ID ein.', submitting: 'Antworten werden gesendet', dontClose: 'Bitte schließen Sie diese Seite nicht.', submitted: 'Prüfung erfolgreich abgegeben', thanks: name => `Danke, ${name}!`, sentTo: organizer => `Dein Prüfungsergebnis wurde an ${organizer} gesendet.`, resultSent: 'Ihr Ergebnis wurde an die Prüfungsleitung gesendet.', rank: (rank, total) => `Aktueller Rang: ${rank} von ${total}`, review: 'Antworten ansehen', hideReview: 'Antwortübersicht schließen', correct: 'Richtig!', incorrect: 'Diese Frage lohnt einen zweiten Blick', whyWrong: 'Warum ist diese Antwort nicht richtig?', feedback: 'Feedback geben', feedbackCtaHint: 'Ihr Feedback macht die nächsten Prüfungen besser', hideFeedback: 'Bewertung schließen', correctAnswer: 'Richtige Antwort', yourAnswer: 'Ihre Antwort', unansweredReview: 'Nicht beantwortet', explanation: 'Erklärung', feedbackTitle: 'Nur noch ein kleiner Schritt zum Ergebnis', feedbackHint: name => `${name}, deine Prüfung ist sicher gespeichert. Teile kurz dein Feedback, um Ergebnis und Rang zu sehen.`, feedbackProgress: 'Letzter Schritt: dein Feedback', feedbackSafe: 'Deine Antworten sind sicher gespeichert und gehen nicht verloren.', questionQuality: 'Wie war die Qualität der Fragen?', designQuality: 'Wie waren Gestaltung und Prüfungserlebnis?', clipQuality: 'Wie war das zugehörige Lernvideo?', feedbackMessageTitle: 'Wenn du uns noch etwas sagen möchtest, freuen wir uns darauf', feedbackMessageHint: 'Optional—teile eine Anregung, Kritik oder einen Hinweis mit uns.', feedbackPlaceholder: 'Deine Nachricht…', sendFeedback: 'Feedback senden und Ergebnis sehen', sendingFeedback: 'Feedback wird gespeichert…', feedbackSaved: 'Vielen Dank! Ihr Feedback wurde gespeichert.', feedbackError: 'Bitte bewerte alle drei Bereiche, um dein Ergebnis zu sehen.', feedbackRequired: 'Erforderlich für das Ergebnis', ratingLabels: ['Sehr schlecht', 'Schlecht', 'Mittel', 'Gut', 'Sehr gut'], exam: 'Prüfung', remaining: 'Verbleibende Zeit', answered: (done, total) => `${done} von ${total} beantwortet`, questionOf: (current, total) => `Frage ${current} von ${total}`, previous: 'Vorherige Frage', next: 'Nächste Frage', submit: 'Beenden und senden', questionList: 'Fragenübersicht', answeredLegend: 'Beantwortet', unansweredLegend: 'Nicht beantwortet', finish: 'Prüfung beenden', of: 'von', nextStep: 'Dein nächster Schritt', reviewHint: 'Sieh dir deine Antworten an und entdecke, was schon sicher sitzt und wo eine kurze Wiederholung hilft.', backHome: 'Zurück zu RadYar', feedbackThanks: 'Danke, dass du dein Feedback mit uns geteilt hast.',
   },
 })
@@ -225,6 +228,10 @@ export default function ExamClient({ code }) {
   const [availability, setAvailability] = useState('active')
   const [availabilityMessage, setAvailabilityMessage] = useState('')
   const [identityLoading, setIdentityLoading] = useState(false)
+  const [isOnline, setIsOnline] = useState(true)
+  const [pendingSubmission, setPendingSubmission] = useState(false)
+  const [lockedQuestionIds, setLockedQuestionIds] = useState([])
+  const [reopenMode, setReopenMode] = useState(false)
   const submittingRef = useRef(false)
   const language = exam?.language in EXAM_COPY ? exam.language : 'fa'
   const copy = EXAM_COPY[language]
@@ -246,22 +253,37 @@ export default function ExamClient({ code }) {
       const cachedAnswers = cachedSession?.attemptId === data.attemptId && cachedSession?.answers && typeof cachedSession.answers === 'object'
         ? cachedSession.answers
         : {}
-      const restoredAnswers = { ...(data.answers || {}), ...cachedAnswers }
-      const restoredCurrent = cachedSession?.attemptId === data.attemptId && Number.isInteger(cachedSession?.current)
-        ? Math.max(0, cachedSession.current)
-        : 0
+      const locked = Array.isArray(data.lockedQuestionIds) ? data.lockedQuestionIds : []
+      const lockedSet = new Set(locked)
+      const restoredAnswers = data.reopenOnly
+        ? Object.fromEntries([
+            ...Object.entries(data.answers || {}),
+            ...Object.entries(cachedAnswers).filter(([questionId]) => !lockedSet.has(questionId)),
+          ])
+        : { ...(data.answers || {}), ...cachedAnswers }
+      const restoredCurrent = data.reopenOnly
+        ? Math.max(0, Number(data.firstEditableIndex) || 0)
+        : cachedSession?.attemptId === data.attemptId && Number.isInteger(cachedSession?.current)
+          ? Math.max(0, cachedSession.current)
+          : 0
       setAnswers(restoredAnswers)
       setCurrent(restoredCurrent)
       setStartedAt(data.startedAt || '')
       setTimeLeft(Math.max(0, Number(data.remainingSeconds) || 0))
-      setTimeLimit(Math.max(Number(cachedSession?.timeLimit) || 0, Number(data.remainingSeconds) || 0))
+      setTimeLimit(data.reopenOnly ? Math.max(0, Number(data.remainingSeconds) || 0) : Math.max(Number(cachedSession?.timeLimit) || 0, Number(data.remainingSeconds) || 0))
+      setLockedQuestionIds(locked)
+      setReopenMode(Boolean(data.reopenOnly))
+      setPendingSubmission(Boolean(data.offlineRecovery))
       setPhase('quiz')
-      writeExamSession(code, { attemptId: data.attemptId, name: resolvedName, contact: resolvedContact, specialty: resolvedSpecialty, answers: restoredAnswers, current: restoredCurrent, timeLimit: Math.max(Number(cachedSession?.timeLimit) || 0, Number(data.remainingSeconds) || 0) })
+      writeExamSession(code, { attemptId: data.attemptId, name: resolvedName, contact: resolvedContact, specialty: resolvedSpecialty, answers: restoredAnswers, current: restoredCurrent, timeLimit: data.reopenOnly ? Number(data.remainingSeconds) || 0 : Math.max(Number(cachedSession?.timeLimit) || 0, Number(data.remainingSeconds) || 0), pendingSubmission: Boolean(data.offlineRecovery), lockedQuestionIds: locked, reopenOnly: Boolean(data.reopenOnly) })
       return
     }
 
     setAnswers({})
     setStartedAt('')
+    setLockedQuestionIds([])
+    setReopenMode(false)
+    setPendingSubmission(false)
     if (data.state === 'result') setResult(data.result)
     setPhase(data.state === 'result' ? 'result' : 'feedback')
     writeExamSession(code, { attemptId: data.attemptId, name: resolvedName, contact: resolvedContact, specialty: resolvedSpecialty, phase: data.state })
@@ -297,7 +319,7 @@ export default function ExamClient({ code }) {
           const identity = await readJson(await fetch(`/api/exams/${encodeURIComponent(code)}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ action: 'identify', participantName: cachedSession.name, participantContact: cachedSession.contact, participantSpecialty: cachedSession.specialty }),
+            body: JSON.stringify({ action: 'identify', participantName: cachedSession.name, participantContact: cachedSession.contact, participantSpecialty: cachedSession.specialty, pendingOfflineSubmission: cachedSession.pendingSubmission === true }),
           }))
           if (!active) return
           applyIdentityResponse(identity, { name: cachedSession.name, contact: cachedSession.contact, specialty: cachedSession.specialty }, cachedSession)
@@ -316,6 +338,17 @@ export default function ExamClient({ code }) {
     return () => { active = false }
   }, [applyIdentityResponse, code])
 
+  useEffect(() => {
+    const updateNetworkState = () => setIsOnline(navigator.onLine)
+    updateNetworkState()
+    window.addEventListener('online', updateNetworkState)
+    window.addEventListener('offline', updateNetworkState)
+    return () => {
+      window.removeEventListener('online', updateNetworkState)
+      window.removeEventListener('offline', updateNetworkState)
+    }
+  }, [])
+
   const answeredCount = useMemo(() => Object.values(answers).filter(value => Number.isInteger(value)).length, [answers])
   const timeProgress = timeLimit > 0 ? Math.min(100, Math.max(0, ((timeLimit - timeLeft) / timeLimit) * 100)) : 0
   const question = questions[current]
@@ -325,7 +358,14 @@ export default function ExamClient({ code }) {
 
   const submitExam = useCallback(async () => {
     if (submittingRef.current) return
+    if (!navigator.onLine) {
+      setPendingSubmission(true)
+      setPhase('pending-submit')
+      writeExamSession(code, { attemptId, name: participantName, contact: participantContact, specialty: resolvedParticipantSpecialty, answers, current, timeLimit, pendingSubmission: true, lockedQuestionIds, reopenOnly: reopenMode })
+      return
+    }
     submittingRef.current = true
+    setPendingSubmission(false)
     setPhase('submitting')
     setError('')
     try {
@@ -337,11 +377,16 @@ export default function ExamClient({ code }) {
       applyIdentityResponse(data, { name: participantName, contact: participantContact, specialty: resolvedParticipantSpecialty })
     } catch (err) {
       setError(err.message)
-      setPhase('quiz')
+      setPendingSubmission(false)
+      setPhase(timeLeft === 0 ? 'pending-submit' : 'quiz')
     } finally {
       submittingRef.current = false
     }
-  }, [answers, applyIdentityResponse, attemptId, code, participantContact, participantName, resolvedParticipantSpecialty, startedAt, website])
+  }, [answers, applyIdentityResponse, attemptId, code, current, lockedQuestionIds, participantContact, participantName, reopenMode, resolvedParticipantSpecialty, startedAt, timeLeft, timeLimit, website])
+
+  useEffect(() => {
+    if (phase === 'pending-submit' && isOnline && pendingSubmission) submitExam()
+  }, [isOnline, pendingSubmission, phase, submitExam])
 
   useEffect(() => {
     if (phase !== 'quiz') return undefined
@@ -379,6 +424,9 @@ export default function ExamClient({ code }) {
       answers,
       current,
       timeLimit,
+      pendingSubmission: false,
+      lockedQuestionIds,
+      reopenOnly: reopenMode,
     }
     writeExamSession(code, session)
 
@@ -396,7 +444,7 @@ export default function ExamClient({ code }) {
       window.clearTimeout(timer)
       window.removeEventListener('online', saveProgress)
     }
-  }, [answers, attemptId, code, current, participantContact, participantName, phase, resolvedParticipantSpecialty, timeLimit])
+  }, [answers, attemptId, code, current, lockedQuestionIds, participantContact, participantName, phase, reopenMode, resolvedParticipantSpecialty, timeLimit])
 
   async function startExam(event) {
     event.preventDefault()
@@ -433,7 +481,7 @@ export default function ExamClient({ code }) {
   }
 
   function selectOption(optionIndex) {
-    if (!question) return
+    if (!question || lockedQuestionIds.includes(question.id)) return
     setAnswers(currentAnswers => ({ ...currentAnswers, [question.id]: optionIndex }))
   }
 
@@ -509,6 +557,7 @@ export default function ExamClient({ code }) {
   )
 
   if (phase === 'submitting') return <ExamFrame language={language} dir={copy.dir}><div className={styles.centerCard}><span className={styles.loader} /><h1>{copy.submitting}</h1><p>{copy.dontClose}</p></div></ExamFrame>
+  if (phase === 'pending-submit') return <ExamFrame language={language} dir={copy.dir}><div className={styles.centerCard}><span className={styles.offlineIcon}>↻</span><h1>{copy.pendingSubmit}</h1><p>{isOnline ? copy.backOnline : copy.offline}</p>{error ? <div className={styles.error} role="alert">{error}</div> : null}{isOnline && !pendingSubmission ? <button type="button" className={styles.retrySubmit} onClick={submitExam}>{copy.retrySubmit}</button> : null}</div></ExamFrame>
 
   if (phase === 'feedback') {
     const ratingsComplete = Object.values(feedbackRatings).every(value => Number.isInteger(value))
@@ -672,6 +721,8 @@ export default function ExamClient({ code }) {
         </div>
 
         {error ? <div className={styles.error} role="alert">{error}</div> : null}
+        {!isOnline ? <div className={styles.networkNotice} role="status">{copy.offline}</div> : null}
+        {reopenMode ? <div className={styles.reopenNotice} role="status">{copy.reopenNotice(questions.length - lockedQuestionIds.length)}</div> : null}
 
         <div className={styles.examLayout}>
           <section className={styles.questionCard}>
@@ -680,13 +731,14 @@ export default function ExamClient({ code }) {
             <h2>{question.prompt}</h2>
             <div className={styles.options}>
               {question.options.map((option, index) => (
-                <button type="button" className={answers[question.id] === index ? styles.optionSelected : styles.option} onClick={() => selectOption(index)} key={index}>
+                <button type="button" disabled={lockedQuestionIds.includes(question.id)} className={`${answers[question.id] === index ? styles.optionSelected : styles.option} ${lockedQuestionIds.includes(question.id) ? styles.optionLocked : ''}`} onClick={() => selectOption(index)} key={index}>
                   <span className={styles.optionMark}>{String.fromCharCode(65 + index)}</span>
                   <span>{option}</span>
                   <i aria-hidden="true">{answers[question.id] === index ? '✓' : ''}</i>
                 </button>
               ))}
             </div>
+            {lockedQuestionIds.includes(question.id) ? <p className={styles.lockedHint}>🔒 {copy.lockedAnswer}</p> : null}
             <div className={styles.questionActions}>
               <button type="button" className={styles.previous} disabled={current === 0} onClick={() => setCurrent(value => Math.max(0, value - 1))}>{copy.previous}</button>
               {current < questions.length - 1
