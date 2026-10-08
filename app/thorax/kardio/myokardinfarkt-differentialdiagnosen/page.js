@@ -309,28 +309,6 @@ function PatternExplorer({ lang }) {
   </section>
 }
 
-function createCaseWheelController() {
-  let distance = 0
-  let direction = 0
-  let lastEvent = -Infinity
-  let lastStep = -Infinity
-
-  return ({ deltaY, deltaMode, time }) => {
-    const nextDirection = Math.sign(deltaY)
-    const reversed = nextDirection !== direction
-    if (reversed || time - lastEvent > 180) distance = 0
-    direction = nextDirection
-    lastEvent = time
-    if (!reversed && time - lastStep < 100) return 0
-    const pixels = deltaY * (deltaMode === 1 ? 20 : deltaMode === 2 ? 100 : 1)
-    distance += Math.min(Math.abs(pixels), 60)
-    if (distance < 60) return 0
-    distance = 0
-    lastStep = time
-    return direction
-  }
-}
-
 function CaseIcon({ name }) {
   const path = {
     case: <><path d="M6 4h12v16H6z"/><path d="M9 4V2h6v2M9 9h6M9 13h6M9 17h4"/></>,
@@ -346,7 +324,6 @@ function RadiopaediaCase({ caseId, lang }) {
   const t = value => pick(value, lang)
   const initialFrame = data.initialFrame || 0
   const [frameIndex, setFrameIndex] = useState(initialFrame)
-  const viewerRef = useRef(null)
   const frameIndexRef = useRef(initialFrame)
   const pointerStartRef = useRef(null)
   const decodedFramesRef = useRef(new Set())
@@ -361,21 +338,6 @@ function RadiopaediaCase({ caseId, lang }) {
     setFrameIndex(next)
   }, [data.frames.length])
   const moveFrame = useCallback(delta => selectFrame(frameIndexRef.current + delta), [selectFrame])
-
-  useEffect(() => {
-    const viewer = viewerRef.current
-    if (!viewer) return undefined
-    const wheelStep = createCaseWheelController()
-    const handleWheel = event => {
-      if (event.ctrlKey || !event.deltaY || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return
-      event.preventDefault()
-      if (!seriesReady) return
-      const step = wheelStep({ deltaY: event.deltaY, deltaMode: event.deltaMode, time: performance.now() })
-      if (step) moveFrame(step)
-    }
-    viewer.addEventListener('wheel', handleWheel, { passive: false })
-    return () => viewer.removeEventListener('wheel', handleWheel)
-  }, [seriesReady, moveFrame])
 
   const handleFrameLoad = async (image, index, attempt) => {
     try {
@@ -401,6 +363,7 @@ function RadiopaediaCase({ caseId, lang }) {
     loading: t(L('Bildserie wird vorbereitet …', 'Preparing image series …', 'در حال آماده‌سازی سری تصاویر …')),
     error: t(L('Bildserie konnte nicht vollständig geladen werden.', 'The image series could not be fully loaded.', 'سری تصاویر کامل بارگذاری نشد.')),
     retry: t(L('Erneut laden', 'Retry loading', 'بارگذاری دوباره')),
+    interaction: t(L('Bilder mit Regler, Pfeilen oder Ziehen wechseln', 'Use the slider, arrows, or drag to browse images', 'برای مرور تصاویر از نوار، فلش‌ها یا کشیدن استفاده کنید')),
   }
   const handleKeyDown = event => {
     if (!seriesReady) return
@@ -438,7 +401,7 @@ function RadiopaediaCase({ caseId, lang }) {
     </header>
     <div className={styles.caseFileContent}>
       <div className={styles.caseViewer}>
-        <div ref={viewerRef} className={styles.caseViewport} role="group" aria-busy={!seriesReady && !loadFailed} aria-label={t(data.alt)} tabIndex={0} onKeyDown={handleKeyDown} onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerEnd} onPointerCancel={handlePointerEnd} onLostPointerCapture={() => { pointerStartRef.current = null }} data-testid={`${caseId}-case-viewer`}>
+        <div className={styles.caseViewport} role="group" aria-busy={!seriesReady && !loadFailed} aria-label={t(data.alt)} aria-describedby={`${caseId}-interaction-hint`} tabIndex={0} onKeyDown={handleKeyDown} onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerEnd} onPointerCancel={handlePointerEnd} onLostPointerCapture={() => { pointerStartRef.current = null }} data-testid={`${caseId}-case-viewer`}>
           {data.frames.map((frame, index) => <Image key={`${loadAttempt}-${frame.src}`} src={frame.src} alt={index === frameIndex ? `${t(data.alt)} · ${frame.label}` : ''} aria-hidden={index !== frameIndex} style={{ visibility: index === frameIndex ? 'visible' : 'hidden' }} width={760} height={640} unoptimized loading="eager" draggable={false} onLoad={event => handleFrameLoad(event.currentTarget, index, loadAttempt)} onError={() => { if (loadAttemptRef.current === loadAttempt) setLoadFailed(true) }} />)}
           <div className={styles.caseImageMeta}><strong aria-live="polite">{String(frameIndex + 1).padStart(2, '0')} <i>/ {data.frames.length}</i></strong></div>
           {!seriesReady || loadFailed ? <small className={styles.caseViewportHint} dir={lang === 'fa' ? 'rtl' : 'ltr'} role="status">{loadFailed ? <>{labels.error} <button type="button" onClick={retrySeries}>{labels.retry}</button></> : labels.loading}</small> : null}
@@ -447,6 +410,7 @@ function RadiopaediaCase({ caseId, lang }) {
             <div className={styles.caseRange}><input type="range" disabled={!seriesReady} min="0" max={data.frames.length - 1} step="1" value={frameIndex} onChange={event => selectFrame(Number(event.target.value))} aria-label={labels.slider} aria-valuetext={`${frameIndex + 1} / ${data.frames.length} · ${data.frames[frameIndex].label}`} /></div>
             <button type="button" onClick={() => moveFrame(1)} disabled={!seriesReady || frameIndex === data.frames.length - 1} aria-label={labels.next} title={labels.next}><CaseIcon name="next" /></button>
           </div>
+          <small id={`${caseId}-interaction-hint`} className={styles.caseInteractionHint}>{labels.interaction}</small>
         </div>
       </div>
       <div className={styles.caseBody}>
