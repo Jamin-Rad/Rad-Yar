@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { gradeExam, unpackExamQuestionExplanation } from '@/lib/exams'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
+import { normalizeParticipantSpecialty, PARTICIPANT_SPECIALTY_KEY } from '@/data/medicalSpecialties'
 
 const CODE_PATTERN = /^[A-Za-z0-9_-]{8,40}$/
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
@@ -114,11 +115,15 @@ export async function POST(request, { params }) {
     ? payload.participantName.trim().slice(0, 120)
     : ''
   const participantContact = normalizeContact(payload?.participantContact || payload?.participantEmail)
+  const participantSpecialty = normalizeParticipantSpecialty(payload?.participantSpecialty)
   if (participantName.length < 2) {
     return NextResponse.json({ error: 'نام شرکت‌کننده را وارد کنید.' }, { status: 400 })
   }
   if (!participantContact) {
     return NextResponse.json({ error: 'یک ایمیل معتبر یا آیدی اینستاگرام وارد کنید.' }, { status: 400 })
+  }
+  if (!participantSpecialty) {
+    return NextResponse.json({ error: 'تخصص یا رشتهٔ شرکت‌کننده را انتخاب کنید.' }, { status: 400 })
   }
 
   const result = await loadPublishedExam(code, true)
@@ -142,7 +147,7 @@ export async function POST(request, { params }) {
       participant_name: participantName,
       participant_contact: participantContact.value,
       contact_type: participantContact.type,
-      answers: graded.answers,
+      answers: { ...graded.answers, [PARTICIPANT_SPECIALTY_KEY]: participantSpecialty },
       score: graded.score,
       max_score: graded.maxScore,
       percentage: graded.percentage,

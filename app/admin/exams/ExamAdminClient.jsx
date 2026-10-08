@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { QRCodeCanvas } from 'qrcode.react'
 import { getExamMediaPreview } from '@/utils/examMedia'
+import { PARTICIPANT_SPECIALTY_KEY } from '@/data/medicalSpecialties'
 import styles from './page.module.css'
 
 const emptyQuestion = () => ({ sourceId: '', sourceLabel: '', kind: 'custom', prompt: '', options: ['', '', '', ''], correctOptionIndex: 0, points: 1, explanation: '', media: null })
@@ -681,7 +682,11 @@ export default function ExamAdminClient() {
                       return <article className={styles.attempt} key={attempt.id}>
                         <button type="button" className={styles.attemptRow} onClick={() => setExpandedAttempt(isOpen ? '' : attempt.id)}>
                           <span className={styles.rank}><small>رتبه</small><strong>{Number(attempt.rank).toLocaleString('fa-IR')}</strong></span>
-                          <span className={styles.person}><strong>{attempt.participant_name}</strong><small>{attempt.participant_contact || 'بدون راه ارتباطی'}</small></span>
+                          <span className={styles.person}>
+                            <strong>{attempt.participant_name}</strong>
+                            <small className={styles.personSpecialty}>{attempt.answers?.[PARTICIPANT_SPECIALTY_KEY] || 'تخصص ثبت نشده'}</small>
+                            <small>{attempt.participant_contact || 'بدون راه ارتباطی'}</small>
+                          </span>
                           <span><small>نمره</small><strong>{attempt.score.toLocaleString('fa-IR')} از {attempt.max_score.toLocaleString('fa-IR')}</strong></span>
                           <span><small>درصد</small><strong>{Number(attempt.percentage).toLocaleString('fa-IR')}٪</strong></span>
                           <span className={styles.submitted}>{formatDate(attempt.submitted_at)}</span>

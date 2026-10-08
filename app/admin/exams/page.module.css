@@ -216,6 +216,7 @@
 .attemptRow > span { display: grid; gap: 3px; }
 .attemptRow small { color: #8994a5; font-size: 10px; font-weight: 550; }
 .person strong { font-size: 13px; }
+.personSpecialty { color: #0f8a78 !important; font-weight: 750; }
 .rank { place-items: center; min-height: 48px; border-radius: 10px; background: #fff2e9; color: #dc4c0c; }
 .rank strong { font-size: 17px; }
 .submitted { color: #748196; font-size: 10px; }

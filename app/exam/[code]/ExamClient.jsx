@@ -6,6 +6,7 @@ import { useTheme } from '@/providers/ThemeProvider'
 import RadYarIcon from '@/components/RadYarIcon'
 import MedicalSequenceViewer from '@/components/MedicalSequenceViewer'
 import { getCorrectAnswerExplanation, getWrongAnswerExplanation } from '@/utils/answerFeedback'
+import { MEDICAL_SPECIALTY_GROUPS_FA, SPECIALTY_OTHER_VALUE } from '@/data/medicalSpecialties'
 import styles from './page.module.css'
 
 const EXAM_COPY = Object.freeze({
@@ -173,6 +174,8 @@ export default function ExamClient({ code }) {
   const [error, setError] = useState('')
   const [participantName, setParticipantName] = useState('')
   const [participantContact, setParticipantContact] = useState('')
+  const [participantSpecialty, setParticipantSpecialty] = useState('')
+  const [participantSpecialtyOther, setParticipantSpecialtyOther] = useState('')
   const [website, setWebsite] = useState('')
   const [answers, setAnswers] = useState({})
   const [current, setCurrent] = useState(0)
@@ -217,6 +220,9 @@ export default function ExamClient({ code }) {
   const answeredCount = useMemo(() => Object.values(answers).filter(value => Number.isInteger(value)).length, [answers])
   const timeProgress = timeLimit > 0 ? Math.min(100, Math.max(0, ((timeLimit - timeLeft) / timeLimit) * 100)) : 0
   const question = questions[current]
+  const resolvedParticipantSpecialty = participantSpecialty === SPECIALTY_OTHER_VALUE
+    ? `${SPECIALTY_OTHER_VALUE}: ${participantSpecialtyOther.trim()}`
+    : participantSpecialty
 
   const submitExam = useCallback(async () => {
     if (submittingRef.current) return
@@ -227,7 +233,7 @@ export default function ExamClient({ code }) {
       const data = await readJson(await fetch(`/api/exams/${encodeURIComponent(code)}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ participantName, participantContact, website, answers, startedAt }),
+        body: JSON.stringify({ participantName, participantContact, participantSpecialty: resolvedParticipantSpecialty, website, answers, startedAt }),
       }))
       setAttemptId(data.attemptId)
       setPhase('feedback')
@@ -237,7 +243,7 @@ export default function ExamClient({ code }) {
     } finally {
       submittingRef.current = false
     }
-  }, [answers, code, participantContact, participantName, startedAt, website])
+  }, [answers, code, participantContact, participantName, resolvedParticipantSpecialty, startedAt, website])
 
   useEffect(() => {
     if (phase !== 'quiz') return undefined
@@ -273,6 +279,14 @@ export default function ExamClient({ code }) {
     }
     if (!isValidContact(participantContact)) {
       setError(copy.contactError)
+      return
+    }
+    if (!participantSpecialty) {
+      setError('لطفاً تخصص یا رشتهٔ خود را انتخاب کنید.')
+      return
+    }
+    if (participantSpecialty === SPECIALTY_OTHER_VALUE && participantSpecialtyOther.trim().length < 2) {
+      setError('لطفاً نام تخصص یا رشتهٔ خود را وارد کنید.')
       return
     }
     const allowedSeconds = availableSeconds(exam)
@@ -334,6 +348,23 @@ export default function ExamClient({ code }) {
         <form className={styles.identityForm} onSubmit={startExam}>
           <label><span>{copy.name}</span><input autoFocus required minLength={2} maxLength={120} value={participantName} onChange={event => setParticipantName(event.target.value)} autoComplete="name" placeholder={copy.namePlaceholder} /></label>
           <label><span>{copy.contact}</span><input type="text" required maxLength={254} value={participantContact} onChange={event => setParticipantContact(event.target.value)} autoComplete="email" placeholder={copy.contactPlaceholder} dir="ltr" /></label>
+          <label>
+            <span>تخصص یا رشتهٔ شما *</span>
+            <select required value={participantSpecialty} onChange={event => { setParticipantSpecialty(event.target.value); setError('') }}>
+              <option value="">انتخاب تخصص یا رشته</option>
+              {MEDICAL_SPECIALTY_GROUPS_FA.map(group => (
+                <optgroup label={group.label} key={group.label}>
+                  {group.options.map(option => <option value={option} key={option}>{option}</option>)}
+                </optgroup>
+              ))}
+            </select>
+          </label>
+          {participantSpecialty === SPECIALTY_OTHER_VALUE ? (
+            <label>
+              <span>نام تخصص یا رشته *</span>
+              <input required minLength={2} maxLength={100} value={participantSpecialtyOther} onChange={event => setParticipantSpecialtyOther(event.target.value)} placeholder="مثلاً مهندسی پزشکی" />
+            </label>
+          ) : null}
           <label className={styles.honeypot} aria-hidden="true"><span>Website</span><input tabIndex={-1} autoComplete="off" value={website} onChange={event => setWebsite(event.target.value)} /></label>
           {error ? <div className={styles.error} role="alert">{error}</div> : null}
           <button type="submit">{copy.start} <span aria-hidden="true">{copy.startArrow}</span></button>

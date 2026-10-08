@@ -44,8 +44,9 @@
 .identityForm { display: grid; gap: 15px; padding: 28px 38px 36px; }
 .identityForm label { display: grid; gap: 7px; color: #526077; font-size: 12px; font-weight: 750; }
 .identityForm label small { color: #94a3b8; font-weight: 500; }
-.identityForm input { height: 47px; padding: 0 14px; border: 1px solid #d7dee9; border-radius: 11px; background: #fff; color: #1e293b; font: 500 14px Vazirmatn, sans-serif; outline: none; }
-.identityForm input:focus { border-color: #f97316; box-shadow: 0 0 0 3px rgba(249,115,22,.1); }
+.identityForm input, .identityForm select { width: 100%; height: 47px; padding: 0 14px; border: 1px solid #d7dee9; border-radius: 11px; background: #fff; color: #1e293b; font: 500 14px Vazirmatn, sans-serif; outline: none; }
+.identityForm select { cursor: pointer; }
+.identityForm input:focus, .identityForm select:focus { border-color: #f97316; box-shadow: 0 0 0 3px rgba(249,115,22,.1); }
 .identityForm button { min-height: 49px; margin-top: 4px; border: 0; border-radius: 11px; background: #f45b16; color: #fff; cursor: pointer; font: 800 14px Vazirmatn, sans-serif; box-shadow: 0 10px 24px rgba(244,91,22,.22); }
 .notice { color: #8b96a7; font-size: 10px; line-height: 1.8; text-align: center; }
 .honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
@@ -271,6 +272,7 @@
 :global(html[data-theme='dark']) .examFacts { border-color: #26364d; background: #0b1728; }
 :global(html[data-theme='dark']) .examFacts div + div { border-color: #26364d; }
 :global(html[data-theme='dark']) .identityForm input,
+:global(html[data-theme='dark']) .identityForm select,
 :global(html[data-theme='dark']) .option,
 :global(html[data-theme='dark']) .previous { border-color: #2c3d54; background: #101e31; color: #dce5ef; }
 :global(html[data-theme='dark']) .option:hover { background: #15253a; }
