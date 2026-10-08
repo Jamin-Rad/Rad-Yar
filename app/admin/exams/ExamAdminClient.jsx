@@ -46,7 +46,7 @@ function createDefaultForm() {
     language: 'fa',
     activationMode: 'now', opensAt: toDateTimeLocal(scheduledStart),
     activeDurationMinutes: 10080,
-    showResult: true, publishNow: true, questions: [emptyQuestion()],
+    questions: [emptyQuestion()],
   }
 }
 
@@ -430,9 +430,8 @@ export default function ExamAdminClient() {
       <div className={styles.shell}>
         <header className={styles.hero}>
           <div>
-            <span className={styles.eyebrow}>RADYAR EXAMS</span>
-            <h1>مرکز مدیریت امتحان</h1>
-            <p>امتحان بسازید، لینک را ارسال کنید و نتیجه‌ها را یک‌جا ببینید.</p>
+            <span className={styles.eyebrow}>RADYAR QUIZ</span>
+            <h1>Quiz</h1>
           </div>
           <button type="button" className={styles.primaryButton} onClick={openCreate}>
             <span aria-hidden="true">＋</span> ساخت امتحان جدید
@@ -468,7 +467,7 @@ export default function ExamAdminClient() {
                 <button type="button" className={styles.refreshButton} onClick={loadExams} disabled={loading}>به‌روزرسانی</button>
               </div>
               {loading ? <div className={styles.empty}>در حال بارگذاری…</div> : exams.length === 0 ? (
-                <div className={styles.empty}><strong>هنوز امتحانی نساخته‌اید.</strong><span>با دکمه «ساخت امتحان جدید» شروع کنید.</span></div>
+                <div className={styles.empty}><strong>هنوز امتحانی نساخته‌اید.</strong></div>
               ) : (
                 <div className={styles.examGrid}>
                   {exams.map(exam => {
@@ -520,10 +519,6 @@ export default function ExamAdminClient() {
                   {form.activationMode === 'scheduled' ? <label><span>تاریخ و ساعت شروع *</span><input type="datetime-local" required value={form.opensAt} onChange={event => setField('opensAt', event.target.value)} /></label> : <div className={styles.nowNotice}><strong>شروع</strong><span>بلافاصله پس از ساخت</span></div>}
                   <label><span>مدت فعال‌بودن *</span><select value={form.activeDurationMinutes} onChange={event => setField('activeDurationMinutes', Number(event.target.value))}>{ACTIVE_DURATION_OPTIONS.map(option => <option value={option.value} key={option.value}>{option.label}</option>)}</select></label>
                 </div>
-              </div>
-              <div className={styles.checks}>
-                <label><input type="checkbox" checked={form.showResult} onChange={event => setField('showResult', event.target.checked)} /><span>نمره، رتبه و مرور پاسخ‌ها بعد از ارسال نشان داده شود</span></label>
-                <label><input type="checkbox" checked={form.publishNow} onChange={event => setField('publishNow', event.target.checked)} /><span>امتحان پس از ساخت منتشر شود و طبق زمان‌بندی بالا فعال باشد</span></label>
               </div>
             </section>
 

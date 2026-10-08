@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation'
 import { ADMIN_COOKIE, safeEqual } from '@/lib/adminAuth'
 import ExamAdminClient from './ExamAdminClient'
 
-export const metadata = { title: 'مدیریت امتحان‌ها | RadYar' }
+export const metadata = { title: 'Quiz | RadYar' }
 
 export default async function ExamsAdminPage() {
   const cookieStore = await cookies()

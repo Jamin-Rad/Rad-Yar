@@ -12,7 +12,6 @@
 .hero { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
 .eyebrow { display: block; margin-bottom: 10px; color: #f97316; font-size: 11px; font-weight: 850; letter-spacing: .18em; }
 .hero h1 { margin: 0; color: #111b35; font-size: clamp(28px, 4vw, 44px); line-height: 1.2; letter-spacing: -.035em; }
-.hero p { margin: 10px 0 0; color: #64748b; font-size: 15px; }
 
 .primaryButton, .secondaryButton, .dangerButton, .deleteButton, .refreshButton, .textButton, .addQuestion {
   border: 0; border-radius: 12px; font: 750 14px/1 Vazirmatn, sans-serif; cursor: pointer; transition: .18s ease;
@@ -86,9 +85,6 @@
 .fieldGrid select { height: 45px; padding: 0 13px; }
 .fieldGrid textarea { min-height: 88px; padding: 11px 13px; resize: vertical; }
 .fieldGrid input:focus, .fieldGrid textarea:focus, .promptField textarea:focus, .points input:focus, .option input:last-child:focus, .correctOption input:last-child:focus { border-color: #f97316; box-shadow: 0 0 0 3px rgba(249,115,22,.1); }
-.checks { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 20px; }
-.checks label { display: flex; align-items: center; gap: 8px; color: #556276; font-size: 12px; cursor: pointer; }
-.checks input { accent-color: #f45b16; }
 
 .availabilityBox { margin-top: 22px; padding: 18px; border: 1px solid #dce5ef; border-radius: 15px; background: #f8fafc; }
 .availabilityHeader { margin-bottom: 14px; }
