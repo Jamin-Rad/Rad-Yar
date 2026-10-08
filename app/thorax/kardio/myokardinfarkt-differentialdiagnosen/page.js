@@ -1,9 +1,10 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import Image from 'next/image'
 import { useLanguage } from '@/providers/LanguageProvider'
 import StandardLessonShell, { LessonSection, LessonSources, TakeHomeList } from '@/components/lesson-template/StandardLessonShell'
+import MedicalSequenceViewer from '@/components/MedicalSequenceViewer'
 import styles from './page.module.css'
 
 const ID = 'myokardinfarkt-differentialdiagnosen'
@@ -213,6 +214,11 @@ const TAKE_HOME_ITEMS = [
   },
 ]
 
+const caseFrames = (directory, count, extension = 'jpeg') => Array.from(
+  { length: count },
+  (_, index) => `${directory}/${String(index + 1).padStart(2, '0')}.${extension}`
+)
+
 const RADIOPAEDIA_CASES = {
   takotsubo: {
     title: L('Radiopaedia-Fall: atypisches Takotsubo-Syndrom', 'Radiopaedia case: atypical Takotsubo syndrome', 'کیس Radiopaedia: تاکوتسوبوی آتیپیک'),
@@ -224,16 +230,20 @@ const RADIOPAEDIA_CASES = {
       L('Verlauf: Wandbewegungsstörung und Perikarderguss nach vier Wochen rückläufig.', 'Follow-up: wall-motion abnormality and pericardial effusion resolved after four weeks.', 'پیگیری: اختلال حرکت دیواره و افیوژن پریکارد پس از چهار هفته برطرف شدند.'),
     ],
     teaching: L('Transiente Dysfunktion außerhalb eines Koronarterritoriums + Ödem + fehlendes LGE stützen Takotsubo.', 'Transient dysfunction beyond one coronary territory + oedema + absent LGE support Takotsubo.', 'اختلال گذرا فراتر از یک قلمرو کرونری همراه با ادم و نبود LGE از تاکوتسوبو حمایت می‌کند.'),
-    frames: [
-      ['01-2ch-cine.jpg', '2-chamber Cine SSFP'],
-      ['02-short-axis-cine.jpg', 'Short-axis Cine SSFP'],
-      ['03-2ch-stir.jpg', '2-chamber STIR'],
-      ['04-2ch-early-gad.jpg', '2-chamber Early Gadolinium'],
-      ['05-short-axis-early-gad.jpg', 'Short-axis Early Gadolinium'],
-      ['06-2ch-lge.jpg', '2-chamber LGE'],
-      ['07-short-axis-lge.jpg', 'Short-axis LGE'],
-    ].map(([file, label]) => ({ src: `/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/takotsubo-33052/${file}`, label })),
-    initialFrame: 0,
+    series: [
+      {
+        id: '2ch-cine',
+        label: L('2-Kammer Cine', '2-chamber cine', 'Cine دوحفره‌ای'),
+        plane: L('CMR · Cine · 2-Kammer', 'CMR · cine · 2 chamber', 'CMR · Cine · دوحفره‌ای'),
+        frames: caseFrames('/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/takotsubo-33052/2ch-cine-frames', 25, 'jpg'),
+      },
+      {
+        id: '2ch-lge',
+        label: L('2-Kammer LGE', '2-chamber LGE', 'LGE دوحفره‌ای'),
+        plane: L('CMR · LGE · 2-Kammer', 'CMR · LGE · 2 chamber', 'CMR · LGE · دوحفره‌ای'),
+        frames: ['/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/takotsubo-33052/06-2ch-lge.jpg'],
+      },
+    ],
     alt: L('Zweikammer-Cine-SSFP aus einem Radiopaedia-Fall mit atypischem Takotsubo-Syndrom', 'Two-chamber cine SSFP from a Radiopaedia case of atypical Takotsubo syndrome', 'Cine SSFP دوحفره‌ای از کیس Radiopaedia تاکوتسوبوی آتیپیک'),
     url: 'https://radiopaedia.org/cases/33052/studies/34073?lang=us',
     credit: 'Case courtesy of Yune Kwong, Radiopaedia.org · rID-33052 · CC BY-NC-SA 3.0',
@@ -248,15 +258,20 @@ const RADIOPAEDIA_CASES = {
       L('Kleiner Erguss und perikardiales Enhancement stützen die Myoperikarditis.', 'A small effusion and pericardial enhancement support myopericarditis.', 'افیوژن کوچک و enhancement پریکارد از میوپریکاردیت حمایت می‌کنند.'),
     ],
     teaching: L('Ein T2-basiertes und ein T1-basiertes Zeichen gemeinsam bewerten.', 'Assess a T2-based and a T1-based marker together.', 'یک معیار مبتنی بر T2 و یک معیار مبتنی بر T1 را با هم ارزیابی کنید.'),
-    frames: [
-      ['01-4ch-cine.jpeg', '4-chamber SSFP Cine'],
-      ['02-4ch-stir.jpeg', '4-chamber STIR'],
-      ['03-short-axis-stir.jpeg', 'Short-axis STIR'],
-      ['04-4ch-lge.jpeg', '4-chamber LGE'],
-      ['05-short-axis-lge.jpeg', 'Short-axis LGE'],
-      ['06-3ch-lge.jpeg', '3-chamber LGE'],
-    ].map(([file, label]) => ({ src: `/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/${file}`, label })),
-    initialFrame: 3,
+    series: [
+      {
+        id: 'short-axis-lge',
+        label: L('Kurzachse LGE', 'Short-axis LGE', 'LGE محور کوتاه'),
+        plane: L('CMR · LGE · Kurzachse', 'CMR · LGE · short axis', 'CMR · LGE · محور کوتاه'),
+        frames: caseFrames('/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/short-axis-lge-frames', 12),
+      },
+      {
+        id: '4ch-stir',
+        label: L('4-Kammer STIR', '4-chamber STIR', 'STIR چهارحفره‌ای'),
+        plane: L('CMR · STIR · 4-Kammer', 'CMR · STIR · 4 chamber', 'CMR · STIR · چهارحفره‌ای'),
+        frames: ['/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/02-4ch-stir.jpeg'],
+      },
+    ],
     alt: L('Vierkammer-LGE aus einem Radiopaedia-Fall mit akuter Myoperikarditis', 'Four-chamber LGE from a Radiopaedia case of acute myopericarditis', 'LGE چهارحفره‌ای از کیس Radiopaedia میوپریکاردیت حاد'),
     url: 'https://radiopaedia.org/cases/77023/studies/88967?lang=us',
     credit: 'Case courtesy of Tamara Razon Cuenza, Radiopaedia.org · rID-77023 · CC BY-NC-SA 3.0',
@@ -271,17 +286,20 @@ const RADIOPAEDIA_CASES = {
       L('Die Biopsie zeigte eine granulomatöse Entzündung und bestätigte die Diagnose.', 'Biopsy showed granulomatous inflammation and established the diagnosis.', 'بیوپسی التهاب گرانولوماتوز را نشان داد و تشخیص را تأیید کرد.'),
     ],
     teaching: L('LGE kann als Narbe fortbestehen, obwohl die aktuelle Entzündungsaktivität abgeklungen ist.', 'LGE may persist as scar after current inflammatory activity has resolved.', 'LGE می‌تواند به‌صورت اسکار باقی بماند، حتی وقتی فعالیت التهابی فعلی فروکش کرده است.'),
-    frames: [
-      ['01-2ch-cine.jpg', '2-chamber Cine SSFP'],
-      ['02-4ch-cine.jpg', '4-chamber Cine SSFP'],
-      ['03-3ch-cine.jpg', '3-chamber Cine SSFP'],
-      ['04-short-axis-stir.jpg', 'Short-axis STIR'],
-      ['05-t2-map.jpeg', 'Short-axis T2 mapping'],
-      ['06-native-t1-map.jpeg', 'Short-axis native T1 mapping'],
-      ['07-2ch-lge.jpg', '2-chamber IR-LGE'],
-      ['08-short-axis-lge.jpg', 'Short-axis IR-LGE'],
-    ].map(([file, label]) => ({ src: `/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/sarcoidosis-74548/${file}`, label })),
-    initialFrame: 6,
+    series: [
+      {
+        id: '2ch-lge',
+        label: L('2-Kammer LGE', '2-chamber LGE', 'LGE دوحفره‌ای'),
+        plane: L('CMR · IR-LGE · 2-Kammer', 'CMR · IR-LGE · 2 chamber', 'CMR · IR-LGE · دوحفره‌ای'),
+        frames: ['/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/sarcoidosis-74548/07-2ch-lge.jpg'],
+      },
+      {
+        id: 'short-axis-lge',
+        label: L('Kurzachse LGE', 'Short-axis LGE', 'LGE محور کوتاه'),
+        plane: L('CMR · IR-LGE · Kurzachse', 'CMR · IR-LGE · short axis', 'CMR · IR-LGE · محور کوتاه'),
+        frames: ['/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/sarcoidosis-74548/08-short-axis-lge.jpg'],
+      },
+    ],
     alt: L('Zweikammer-LGE aus einem Radiopaedia-Fall mit kardialer Sarkoidose', 'Two-chamber LGE from a Radiopaedia case of cardiac sarcoidosis', 'LGE دوحفره‌ای از کیس Radiopaedia سارکوئیدوز قلبی'),
     url: 'https://radiopaedia.org/cases/74548/studies/85535?lang=us',
     credit: 'Case courtesy of Joachim Feger, Radiopaedia.org · rID-74548 · CC BY-NC-SA 3.0',
@@ -312,9 +330,6 @@ function PatternExplorer({ lang }) {
 function CaseIcon({ name }) {
   const path = {
     case: <><path d="M6 4h12v16H6z"/><path d="M9 4V2h6v2M9 9h6M9 13h6M9 17h4"/></>,
-    external: <><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 13v6H5V6h6"/></>,
-    previous: <path d="m15 18-6-6 6-6"/>,
-    next: <path d="m9 18 6-6-6-6"/>,
   }[name]
   return <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{path}</svg>
 }
@@ -322,96 +337,26 @@ function CaseIcon({ name }) {
 function RadiopaediaCase({ caseId, lang }) {
   const data = RADIOPAEDIA_CASES[caseId]
   const t = value => pick(value, lang)
-  const initialFrame = data.initialFrame || 0
-  const [frameIndex, setFrameIndex] = useState(initialFrame)
-  const frameIndexRef = useRef(initialFrame)
-  const pointerStartRef = useRef(null)
-  const decodedFramesRef = useRef(new Set())
-  const loadAttemptRef = useRef(0)
-  const [loadAttempt, setLoadAttempt] = useState(0)
-  const [seriesReady, setSeriesReady] = useState(false)
-  const [loadFailed, setLoadFailed] = useState(false)
-
-  const selectFrame = useCallback(index => {
-    const next = Math.min(data.frames.length - 1, Math.max(0, index))
-    frameIndexRef.current = next
-    setFrameIndex(next)
-  }, [data.frames.length])
-  const moveFrame = useCallback(delta => selectFrame(frameIndexRef.current + delta), [selectFrame])
-
-  const handleFrameLoad = async (image, index, attempt) => {
-    try {
-      await image.decode()
-      if (loadAttemptRef.current !== attempt) return
-      decodedFramesRef.current.add(index)
-      if (decodedFramesRef.current.size === data.frames.length) setSeriesReady(true)
-    } catch {
-      if (loadAttemptRef.current === attempt) setLoadFailed(true)
-    }
-  }
-  const retrySeries = () => {
-    decodedFramesRef.current.clear()
-    setSeriesReady(false)
-    setLoadFailed(false)
-    loadAttemptRef.current += 1
-    setLoadAttempt(loadAttemptRef.current)
-  }
-  const labels = {
-    previous: t(L('Vorheriges Bild', 'Previous image', 'تصویر قبلی')),
-    next: t(L('Nächstes Bild', 'Next image', 'تصویر بعدی')),
-    slider: t(L('Bild auswählen', 'Select image', 'انتخاب تصویر')),
-    loading: t(L('Bildserie wird vorbereitet …', 'Preparing image series …', 'در حال آماده‌سازی سری تصاویر …')),
-    error: t(L('Bildserie konnte nicht vollständig geladen werden.', 'The image series could not be fully loaded.', 'سری تصاویر کامل بارگذاری نشد.')),
-    retry: t(L('Erneut laden', 'Retry loading', 'بارگذاری دوباره')),
-    interaction: t(L('Bilder mit Regler, Pfeilen oder Ziehen wechseln', 'Use the slider, arrows, or drag to browse images', 'برای مرور تصاویر از نوار، فلش‌ها یا کشیدن استفاده کنید')),
-  }
-  const handleKeyDown = event => {
-    if (!seriesReady) return
-    if (['ArrowDown', 'ArrowRight'].includes(event.key)) moveFrame(1)
-    else if (['ArrowUp', 'ArrowLeft'].includes(event.key)) moveFrame(-1)
-    else if (event.key === 'Home') selectFrame(0)
-    else if (event.key === 'End') selectFrame(data.frames.length - 1)
-    else return
-    event.preventDefault()
-  }
-  const handlePointerDown = event => {
-    if (!seriesReady || !event.isPrimary || event.button !== 0) return
-    pointerStartRef.current = { position: event.pointerType === 'touch' ? event.clientX : event.clientY }
-    event.currentTarget.setPointerCapture(event.pointerId)
-  }
-  const handlePointerMove = event => {
-    const start = pointerStartRef.current
-    if (!start) return
-    const position = event.pointerType === 'touch' ? event.clientX : event.clientY
-    const steps = Math.trunc((start.position - position) / 36)
-    if (!steps) return
-    start.position = position
-    moveFrame(steps)
-  }
-  const handlePointerEnd = event => {
-    pointerStartRef.current = null
-    if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId)
+  const media = {
+    title: t(data.title),
+    modality: 'CMR',
+    source: data.url,
+    credit: data.credit,
+    series: data.series.map(series => ({
+      ...series,
+      label: t(series.label),
+      plane: t(series.plane),
+    })),
   }
 
   return <article className={styles.radiopaediaCase} aria-labelledby={`${caseId}-case-title`}>
     <header className={styles.caseFileHeader}>
       <span className={styles.caseFileIcon}><CaseIcon name="case" /></span>
       <strong>{t(L('Fallbeispiel', 'Case example', 'نمونه کیس'))}</strong>
-      <a href={data.url} target="_blank" rel="noopener noreferrer">{t(L('Fall im Vollbild', 'Open case full screen', 'نمایش تمام‌صفحه کیس'))}<CaseIcon name="external" /></a>
     </header>
     <div className={styles.caseFileContent}>
       <div className={styles.caseViewer}>
-        <div className={styles.caseViewport} role="group" aria-busy={!seriesReady && !loadFailed} aria-label={t(data.alt)} aria-describedby={`${caseId}-interaction-hint`} tabIndex={0} onKeyDown={handleKeyDown} onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerEnd} onPointerCancel={handlePointerEnd} onLostPointerCapture={() => { pointerStartRef.current = null }} data-testid={`${caseId}-case-viewer`}>
-          {data.frames.map((frame, index) => <Image key={`${loadAttempt}-${frame.src}`} src={frame.src} alt={index === frameIndex ? `${t(data.alt)} · ${frame.label}` : ''} aria-hidden={index !== frameIndex} style={{ visibility: index === frameIndex ? 'visible' : 'hidden' }} width={760} height={640} unoptimized loading="eager" draggable={false} onLoad={event => handleFrameLoad(event.currentTarget, index, loadAttempt)} onError={() => { if (loadAttemptRef.current === loadAttempt) setLoadFailed(true) }} />)}
-          <div className={styles.caseImageMeta}><strong aria-live="polite">{String(frameIndex + 1).padStart(2, '0')} <i>/ {data.frames.length}</i></strong></div>
-          {!seriesReady || loadFailed ? <small className={styles.caseViewportHint} dir={lang === 'fa' ? 'rtl' : 'ltr'} role="status">{loadFailed ? <>{labels.error} <button type="button" onClick={retrySeries}>{labels.retry}</button></> : labels.loading}</small> : null}
-          <div className={styles.caseControls} dir="ltr" onPointerDown={event => event.stopPropagation()} onPointerMove={event => event.stopPropagation()}>
-            <button type="button" onClick={() => moveFrame(-1)} disabled={!seriesReady || frameIndex === 0} aria-label={labels.previous} title={labels.previous}><CaseIcon name="previous" /></button>
-            <div className={styles.caseRange}><input type="range" disabled={!seriesReady} min="0" max={data.frames.length - 1} step="1" value={frameIndex} onChange={event => selectFrame(Number(event.target.value))} aria-label={labels.slider} aria-valuetext={`${frameIndex + 1} / ${data.frames.length} · ${data.frames[frameIndex].label}`} /></div>
-            <button type="button" onClick={() => moveFrame(1)} disabled={!seriesReady || frameIndex === data.frames.length - 1} aria-label={labels.next} title={labels.next}><CaseIcon name="next" /></button>
-          </div>
-          <small id={`${caseId}-interaction-hint`} className={styles.caseInteractionHint}>{labels.interaction}</small>
-        </div>
+        <MedicalSequenceViewer media={media} language={lang} compact expandable />
       </div>
       <div className={styles.caseBody}>
         <h3 id={`${caseId}-case-title`}>{t(data.title)}</h3>
@@ -423,7 +368,6 @@ function RadiopaediaCase({ caseId, lang }) {
         </section>
       </div>
     </div>
-    <footer className={styles.caseCredit}>{data.credit}</footer>
   </article>
 }
 
