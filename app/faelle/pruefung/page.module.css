@@ -48,9 +48,9 @@
   border-bottom: 1px solid #e8edf3;
 }
 
-.caseIntroMeta strong { color: #14213a; font-size: 14px; font-weight: 850; }
-.caseIntroMeta span { color: #74849a; font-size: 11px; font-weight: 750; }
-.caseIntro p { max-width: 1260px; margin: 0; color: #465a73; font-size: 15px; font-weight: 500; line-height: 1.75; }
+.caseIntroMeta strong { color: #14213a; font-size: 15px; font-weight: 850; }
+.caseIntroMeta span { color: #74849a; font-size: 12px; font-weight: 750; }
+.caseIntro p { max-width: 1260px; margin: 0; color: #465a73; font-size: 16px; font-weight: 500; line-height: 1.78; }
 
 .examLayout {
   display: grid;
@@ -87,7 +87,7 @@
 .question {
   margin: 0 0 24px;
   color: #101d35;
-  font-size: clamp(22px, 1.75vw, 28px);
+  font-size: clamp(24px, 1.9vw, 30px);
   font-weight: 850;
   line-height: 1.4;
   letter-spacing: -.025em;
@@ -139,7 +139,7 @@
 .optionSelected .optionLetter { background: #ffdfcf; color: #c2410c; }
 .optionCorrect .optionLetter { background: #d8f2e7; color: #047857; }
 .optionWrong .optionLetter { background: #fee2e2; color: #b91c1c; }
-.optionText { color: inherit; font-size: 14px; font-weight: 650; line-height: 1.55; }
+.optionText { color: inherit; font-size: 15.5px; font-weight: 650; line-height: 1.58; }
 .optionMark { font-size: 19px; font-weight: 900; text-align: center; }
 .optionCorrect .optionMark { color: #07815e; }
 .optionWrong .optionMark { color: #c93434; }
@@ -182,7 +182,7 @@
 .feedbackHeader { display: flex; align-items: center; gap: 10px; padding: 15px 17px; }
 .feedbackCorrect .feedbackHeader { background: #edf9f4; color: #056c50; }
 .feedbackWrong .feedbackHeader { background: #fff0f0; color: #b52e2e; }
-.feedbackHeader strong { font-size: 16px; font-weight: 850; }
+.feedbackHeader strong { font-size: 17px; font-weight: 850; }
 
 .feedbackIcon {
   display: grid;
@@ -204,12 +204,12 @@
 .answerWrong span,
 .answerCorrect span { font-size: 10px; font-weight: 850; letter-spacing: .06em; text-transform: uppercase; }
 .answerWrong strong,
-.answerCorrect strong { color: #26364e; font-size: 12.5px; font-weight: 750; line-height: 1.55; }
+.answerCorrect strong { color: #26364e; font-size: 13.5px; font-weight: 750; line-height: 1.58; }
 
 .feedbackSection { padding: 16px 17px 17px; border-top: 1px solid #e9eef3; }
-.feedbackSection h2 { margin: 0 0 7px; color: #24364f; font-size: 12px; font-weight: 850; letter-spacing: .015em; line-height: 1.45; }
+.feedbackSection h2 { margin: 0 0 7px; color: #24364f; font-size: 13px; font-weight: 850; letter-spacing: .015em; line-height: 1.45; }
 .feedbackWrong .feedbackSection:first-of-type h2 { color: #b52e2e; }
-.feedbackSection p { margin: 0; color: #4d6077; font-size: 13.5px; font-weight: 500; line-height: 1.72; }
+.feedbackSection p { margin: 0; color: #4d6077; font-size: 14.5px; font-weight: 500; line-height: 1.75; }
 
 .correctText { color: #059669; font-weight: 800; }
 .loading { display: grid; min-height: 100vh; place-items: center; color: #94a3b8; font-family: system-ui, sans-serif; }
@@ -263,16 +263,16 @@
   .examShell { width: min(100% - 20px, 600px); gap: 14px; padding: 14px 0 48px; }
   .caseIntro { gap: 11px; padding: 16px; border-radius: 14px; }
   .caseIntroMeta { align-items: flex-start; flex-direction: column; gap: 5px; padding-bottom: 10px; }
-  .caseIntro p { font-size: 13px; line-height: 1.7; }
+  .caseIntro p { font-size: 14.5px; line-height: 1.72; }
   .viewerColumn,
   .questionPanel { border-radius: 14px; }
   .questionPanel { padding: 19px 15px; }
-  .question { margin-bottom: 18px; font-size: 20px; line-height: 1.45; }
+  .question { margin-bottom: 18px; font-size: 22px; line-height: 1.46; }
   .option { grid-template-columns: 32px minmax(0, 1fr) 20px; min-height: 60px; gap: 10px; padding: 11px 12px; }
   .optionLetter { width: 32px; height: 32px; }
-  .optionText { font-size: 13.5px; }
+  .optionText { font-size: 14.5px; }
   .answerComparison { grid-template-columns: 1fr; padding: 13px; }
   .feedbackHeader,
   .feedbackSection { padding-inline: 14px; }
-  .feedbackSection p { font-size: 13px; }
+  .feedbackSection p { font-size: 14px; }
 }

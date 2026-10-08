@@ -340,7 +340,7 @@ function CaseExamContent() {
           </article>
 
           <section className={styles.viewerColumn} dir={lang === 'fa' ? 'rtl' : 'ltr'} aria-label={`${item.modality} · ${regionLabel}`}>
-            <MedicalSequenceViewer key={item.id} media={itemMedia} language={lang} priority />
+            <MedicalSequenceViewer key={item.id} media={itemMedia} language={lang} priority expandable />
           </section>
         </div>
       </div>

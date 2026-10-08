@@ -55,12 +55,8 @@ const TROPONIN_PRUEFUNG_CASES = [
     image: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/acute-mi-176258/02-short-axis-psir-mid.jpeg',
     images: [
       {
-        src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/acute-mi-176258/01-short-axis-psir-basal.jpeg',
-        label: { de: 'Short-axis PSIR · basal', en: 'Short-axis PSIR · basal', fa: 'Short-axis PSIR · بازال' },
-      },
-      {
         src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/acute-mi-176258/02-short-axis-psir-mid.jpeg',
-        label: { de: 'Short-axis PSIR · midventrikulär', en: 'Short-axis PSIR · mid-ventricular', fa: 'Short-axis PSIR · میدونتریکولار' },
+        label: { de: 'Short-axis LGE (PSIR) · midventrikulär', en: 'Short-axis LGE (PSIR) · mid-ventricular', fa: 'Short-axis LGE (PSIR) · میدونتریکولار' },
       },
       {
         src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/acute-mi-176258/03-short-axis-stir.jpeg',
@@ -68,7 +64,7 @@ const TROPONIN_PRUEFUNG_CASES = [
       },
     ],
     modality: 'MRT',
-    plane: { de: 'CMR · PSIR/LGE und STIR · kurze Achse', en: 'CMR · PSIR/LGE and STIR · short axis', fa: 'CMR · PSIR/LGE و STIR · محور کوتاه' },
+    plane: { de: 'CMR · LGE (PSIR) und STIR · kurze Achse', en: 'CMR · LGE (PSIR) and STIR · short axis', fa: 'CMR · LGE (PSIR) و STIR · محور کوتاه' },
     title: { de: 'Akuter inferiorer Myokardinfarkt mit No-reflow', en: 'Acute inferior myocardial infarction with no-reflow', fa: 'انفارکت حاد اینفریور با no-reflow' },
     vignette: {
       de: '60-jähriger Mann mit akutem Thoraxschmerz, ST-Hebungen in II, III und aVF sowie RCA-Verschluss. Acht Tage nach erfolgreicher PCI zeigt die CMR ein 75–100 % transmurales inferiores LGE mit einem dunklen, nicht anreichernden Kern und ausgeprägtem Ödem in der STIR-Sequenz.',

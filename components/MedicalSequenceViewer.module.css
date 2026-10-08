@@ -9,14 +9,15 @@
 }
 
 .seriesBar { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-bottom: 1px solid rgba(148,163,184,.18); }
-.seriesBar > span { flex: 0 0 auto; color: #b8c5d6; font-size: 12px; font-weight: 700; }
+.seriesBar > span { flex: 0 0 auto; color: #b8c5d6; font-size: 13px; font-weight: 750; }
 .seriesBar > div { display: flex; min-width: 0; flex: 1; gap: 8px; overflow-x: auto; scrollbar-width: thin; }
-.seriesButton, .seriesActive { min-height: 38px; padding: 0 18px; border: 1px solid #3c5068; border-radius: 10px; background: #102235; color: #d7e1ed; cursor: pointer; font: 700 12px/1 var(--font-manrope), Vazirmatn, sans-serif; white-space: nowrap; transition: .18s ease; }
+.seriesButton, .seriesActive { min-height: 40px; padding: 0 18px; border: 1px solid #3c5068; border-radius: 10px; background: #102235; color: #d7e1ed; cursor: pointer; font: 700 13px/1 var(--font-manrope), Vazirmatn, sans-serif; white-space: nowrap; transition: .18s ease; }
 .seriesButton:hover { border-color: #7290ad; background: #142a41; }
 .seriesActive { border-color: var(--viewer-accent); background: #0f6fb8; color: #fff; box-shadow: 0 0 0 2px rgba(21,150,245,.14); }
 
 .viewport { position: relative; min-height: 520px; outline: none; background: #01060b; }
 .viewport:focus-visible { box-shadow: inset 0 0 0 3px var(--viewer-accent); }
+.viewportExpandable { cursor: zoom-in; }
 .image { object-fit: contain; }
 .overlayTop { position: absolute; inset: 14px 16px auto; z-index: 2; display: flex; justify-content: space-between; gap: 18px; pointer-events: none; color: #eef5fb; font-size: 11px; text-shadow: 0 1px 4px #000; }
 .overlayTop strong { font-weight: 800; }
@@ -26,6 +27,7 @@
 .previousArrow { left: 14px; }
 .nextArrow { right: 14px; }
 .wheelHint { position: absolute; z-index: 2; right: 16px; bottom: 14px; padding: 6px 9px; border-radius: 8px; background: rgba(3,12,21,.78); color: #c7d4e2; font-size: 10px; font-weight: 700; pointer-events: none; }
+.expandHint { position: absolute; z-index: 2; left: 16px; bottom: 14px; padding: 7px 10px; border: 1px solid rgba(255,255,255,.16); border-radius: 8px; background: rgba(3,12,21,.8); color: #eef5fb; font-size: 11px; font-weight: 750; pointer-events: none; backdrop-filter: blur(8px); }
 
 .filmstrip { display: flex; justify-content: center; gap: 7px; padding: 12px 14px 4px; overflow-x: auto; }
 .thumbnail, .thumbnailActive { position: relative; width: 76px; height: 62px; flex: 0 0 76px; overflow: hidden; border: 1px solid #263c54; border-radius: 8px; background: #020914; cursor: pointer; }
@@ -40,6 +42,56 @@
 .credit a { flex: 0 0 auto; color: #bdcada; font-weight: 700; text-decoration: none; }
 .credit a:hover { color: #fff; }
 
+.lightbox {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  padding: clamp(14px, 2.5vw, 32px);
+  background: rgba(1, 6, 11, .96);
+  color: #f8fafc;
+  backdrop-filter: blur(12px);
+}
+
+.lightboxToolbar,
+.lightboxFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(1500px, 100%);
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.lightboxToolbar { padding-bottom: 14px; }
+.lightboxToolbar > div { display: grid; gap: 4px; min-width: 0; }
+.lightboxToolbar strong { overflow: hidden; font-size: 16px; font-weight: 800; text-overflow: ellipsis; white-space: nowrap; }
+.lightboxToolbar span { color: #9fb0c3; font-size: 12px; }
+.lightboxToolbar button {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 50%;
+  background: rgba(18, 34, 51, .92);
+  color: #fff;
+  cursor: pointer;
+  font: 400 28px/1 var(--font-manrope), sans-serif;
+}
+
+.lightboxStage { position: relative; width: min(1500px, 100%); min-height: 0; margin: 0 auto; overflow: hidden; border: 1px solid rgba(148,163,184,.18); border-radius: 14px; background: #000; }
+.lightboxImage { object-fit: contain; }
+.lightboxArrow { position: absolute; z-index: 2; top: 50%; display: grid; width: 50px; height: 50px; place-items: center; transform: translateY(-50%); border: 1px solid rgba(255,255,255,.22); border-radius: 50%; background: rgba(10,27,43,.88); color: #fff; cursor: pointer; backdrop-filter: blur(8px); }
+.lightboxArrow svg { width: 24px; height: 24px; }
+.lightboxArrow:disabled { opacity: .25; cursor: default; }
+.lightboxPrevious { left: 18px; }
+.lightboxNext { right: 18px; }
+.lightboxFooter { padding-top: 13px; color: #9fb0c3; font-size: 12px; }
+.lightboxFooter strong { color: #e6edf5; font-variant-numeric: tabular-nums; }
+
 .compact { border-radius: 13px; box-shadow: none; }
 .compact .seriesBar { padding: 11px 12px; }
 .compact .viewport { min-height: 330px; }
@@ -53,7 +105,7 @@
 @media (max-width: 600px) {
   .seriesBar { align-items: stretch; flex-direction: column; padding: 12px; }
   .seriesBar > div { padding-bottom: 3px; }
-  .seriesButton, .seriesActive { min-height: 36px; padding: 0 14px; font-size: 11px; }
+  .seriesButton, .seriesActive { min-height: 38px; padding: 0 14px; font-size: 12px; }
   .viewport, .compact .viewport { min-height: 72vw; }
   .filmstrip { justify-content: flex-start; }
   .thumbnail, .thumbnailActive { width: 64px; height: 52px; flex-basis: 64px; }
@@ -61,6 +113,17 @@
   .scrubber strong { grid-column: 1 / -1; min-width: 0; text-align: center; }
   .credit { align-items: flex-start; flex-direction: column; }
   .wheelHint { display: none; }
+  .expandHint { left: 10px; bottom: 10px; font-size: 10px; }
+  .lightbox { padding: 10px; }
+  .lightboxToolbar { padding: 2px 2px 10px; }
+  .lightboxToolbar strong { font-size: 14px; }
+  .lightboxToolbar button { width: 40px; height: 40px; flex-basis: 40px; }
+  .lightboxStage { border-radius: 10px; }
+  .lightboxArrow { width: 42px; height: 42px; }
+  .lightboxPrevious { left: 9px; }
+  .lightboxNext { right: 9px; }
+  .lightboxFooter span { display: none; }
+  .lightboxFooter { justify-content: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
