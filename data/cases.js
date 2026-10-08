@@ -198,12 +198,13 @@ const TROPONIN_PRUEFUNG_CASES = [
     topicId: 'myokardinfarkt-differentialdiagnosen',
     image: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/05-short-axis-lge.jpeg',
     images: [
-      { src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/03-short-axis-stir.jpeg', label: { de: 'Short-axis STIR', en: 'Short-axis STIR', fa: 'Short-axis STIR' } },
-      { src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/04-4ch-lge.jpeg', label: { de: '4-Kammer LGE', en: '4-chamber LGE', fa: 'LGE چهارحفره‌ای' } },
       { src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/05-short-axis-lge.jpeg', label: { de: 'Short-axis LGE', en: 'Short-axis LGE', fa: 'Short-axis LGE' } },
+      { src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/04-4ch-lge.jpeg', label: { de: '4-Kammer LGE', en: '4-chamber LGE', fa: 'LGE چهارحفره‌ای' } },
+      { src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/02-4ch-stir.jpeg', label: { de: '4-Kammer STIR', en: '4-chamber STIR', fa: 'STIR چهارحفره‌ای' } },
+      { src: '/thorax/kardio/myokardinfarkt-differentialdiagnosen/radiopaedia/myocarditis-77023/01-4ch-cine.jpeg', label: { de: '4-Kammer Cine', en: '4-chamber cine', fa: 'Cine چهارحفره‌ای' } },
     ],
     modality: 'MRT',
-    plane: { de: 'CMR · STIR und LGE', en: 'CMR · STIR and LGE', fa: 'CMR · STIR و LGE' },
+    plane: { de: 'CMR · Cine, STIR und LGE', en: 'CMR · cine, STIR and LGE', fa: 'CMR · Cine، STIR و LGE' },
     title: { de: 'CMR-Abklärung bei MINOCA-Konstellation', en: 'CMR work-up of a MINOCA presentation', fa: 'بررسی CMR در بیمار با تابلوی MINOCA' },
     vignette: {
       de: '30-jähriger Mann mit Thoraxschmerz nach akuter Gastroenteritis, diffuser ST-Hebung und deutlich erhöhtem Troponin. Die Koronarangiografie zeigt keine Stenose von 50 % oder mehr. Zur weiteren Abklärung der Troponinerhöhung bei nichtobstruktiven Koronararterien wird eine CMR durchgeführt.',
