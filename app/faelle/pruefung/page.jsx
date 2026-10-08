@@ -52,7 +52,7 @@ const UI = {
     newSelection: 'Neue Auswahl',
     learningMode: 'Lernmodus',
     timedMode: 'Zeitprüfung',
-    time: 'Zeit',
+    time: 'Restzeit',
     recommendation: 'Empfehlung',
     practiceTopics: 'Diese Themen solltest du gezielt wiederholen:',
     excellent: 'Sehr gut! Wähle neue Themen oder erhöhe die Fallzahl für die nächste Prüfung.',
@@ -86,7 +86,7 @@ const UI = {
     newSelection: 'New selection',
     learningMode: 'Learning mode',
     timedMode: 'Timed exam',
-    time: 'Time',
+    time: 'Time left',
     recommendation: 'Recommendation',
     practiceTopics: 'Focus your next practice on these topics:',
     excellent: 'Excellent work! Choose new topics or increase the case count next time.',
@@ -120,7 +120,7 @@ const UI = {
     newSelection: 'انتخاب جدید',
     learningMode: 'حالت یادگیری',
     timedMode: 'آزمون زمان‌دار',
-    time: 'زمان',
+    time: 'زمان باقی‌مانده',
     recommendation: 'پیشنهاد',
     practiceTopics: 'این موضوع‌ها را هدفمند مرور کن:',
     excellent: 'عالی بود! برای آزمون بعدی موضوعات جدید یا تعداد کیس بیشتری انتخاب کن.',
@@ -175,6 +175,7 @@ function CaseExamContent() {
   const [answers, setAnswers] = useState([])
   const [phase, setPhase] = useState('exam')
   const [timeLeft, setTimeLeft] = useState(SECONDS_PER_TIMED_CASE)
+  const [reviewIndex, setReviewIndex] = useState(0)
 
   const total = cases.length
   const item = cases[current]
@@ -188,13 +189,13 @@ function CaseExamContent() {
     .join(', ')
 
   useEffect(() => {
-    if (!isTimed || phase !== 'exam' || !item) return undefined
-    setTimeLeft(SECONDS_PER_TIMED_CASE)
+    if (!isTimed || phase !== 'exam' || !total) return undefined
+    setTimeLeft(total * SECONDS_PER_TIMED_CASE)
     const timer = window.setInterval(() => {
       setTimeLeft(previous => Math.max(0, previous - 1))
     }, 1000)
     return () => window.clearInterval(timer)
-  }, [isTimed, item?.id, phase])
+  }, [isTimed, phase, total])
 
   const saveAnswer = answerId => {
     if (!item) return
@@ -212,7 +213,6 @@ function CaseExamContent() {
     setCurrent(previous => previous + 1)
     setSelected(null)
     setChecked(false)
-    setTimeLeft(SECONDS_PER_TIMED_CASE)
   }
 
   const checkAnswer = () => {
@@ -228,7 +228,7 @@ function CaseExamContent() {
   useEffect(() => {
     if (isTimed && phase === 'exam' && item && timeLeft === 0) {
       saveAnswer(null)
-      advance()
+      setPhase('result')
     }
   }, [isTimed, phase, item, timeLeft])
 
@@ -245,7 +245,8 @@ function CaseExamContent() {
     setChecked(false)
     setAnswers([])
     setPhase('exam')
-    setTimeLeft(SECONDS_PER_TIMED_CASE)
+    setTimeLeft(total * SECONDS_PER_TIMED_CASE)
+    setReviewIndex(0)
   }
 
   if (!isUserLoaded) {
@@ -273,23 +274,33 @@ function CaseExamContent() {
         .map(answer => cases.find(caseItem => caseItem.id === answer.caseId)?.topicId)
         .filter(Boolean)
     )].map(topicId => getTopicName(topicId, lang))
+    const reviewCase = cases[Math.min(reviewIndex, total - 1)]
+    const reviewAnswer = answers.find(entry => entry.caseId === reviewCase.id)
+    const reviewCorrect = reviewAnswer?.correct
+    const reviewSelected = reviewCase.options.find(option => option.id === reviewAnswer?.selected)
+    const reviewCorrectOption = reviewCase.options.find(option => option.id === reviewCase.correct)
+    const reviewWrongExplanation = getWrongAnswerExplanation(reviewCase, reviewAnswer?.selected, lang)
+    const reviewMedia = caseToExamMedia(reviewCase)
     return (
       <main className={quizStyles.page} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
         <div className={quizStyles.topBar}>
           <Link href="/faelle" className={quizStyles.back}>{ui.back}</Link>
           <span className={quizStyles.topFach}>{regionLabel}</span>
         </div>
-        <div className={quizStyles.resultWrap}>
+        <div className={`${quizStyles.resultWrap} ${isTimed ? styles.resultWide : ''}`}>
           <div className={quizStyles.scoreCard} style={{ borderColor: color }}>
             <div className={quizStyles.scoreNum} style={{ color }}>
-              {score}<span className={quizStyles.scoreTotal}>/{total}</span>
+              {percentage}<span className={quizStyles.scoreTotal}>%</span>
             </div>
             <div className={quizStyles.gradeLabel} style={{ color }}>{ui.result}</div>
-            <div className={styles.percentage}>{percentage}%</div>
             <div className={quizStyles.scoreBar}>
               <div className={quizStyles.scoreBarFill} style={{ width: `${(score / total) * 100}%`, background: color }} />
             </div>
-            <div className={quizStyles.scoreDesc}>{ui.scoreLabel(score, total)}</div>
+            <div className={styles.resultCounts}>
+              <span className={styles.scoreCorrect}><span aria-hidden="true">✓</span>{score}</span>
+              <span className={styles.scoreWrong}><span aria-hidden="true">×</span>{total - score}</span>
+              <span>{ui.scoreLabel(score, total)}</span>
+            </div>
           </div>
 
           <section className={styles.recommendation} aria-label={ui.recommendation}>
@@ -308,28 +319,45 @@ function CaseExamContent() {
             <div className={quizStyles.summaryHeader}>
               <span className={quizStyles.summaryTitle}>{ui.summary}</span>
             </div>
-            <div className={quizStyles.summaryList}>
-            {cases.map((caseItem, index) => {
-              const answer = answers.find(entry => entry.caseId === caseItem.id)
-              const correct = answer?.correct
-              return (
-                <article key={caseItem.id} className={`${quizStyles.summaryItem} ${correct ? quizStyles.sumOk : quizStyles.sumWrong}`}>
-                  <div className={quizStyles.sumHead}>
-                    <span className={`${quizStyles.sumTag} ${correct ? quizStyles.tagOk : quizStyles.tagErr}`}>{correct ? '✓' : '×'}</span>
-                    <span className={quizStyles.sumQ}>{index + 1}. {caseItem.question}</span>
-                  </div>
-                  <div className={quizStyles.sumAnswers}>
-                    <span>{ui.yourAnswer} <strong>{answer?.selected ? `${answer.selected}) ${caseItem.options.find(option => option.id === answer.selected)?.text}` : ui.noAnswer}</strong></span>
-                    {!correct && <span>{ui.rightAnswer} <strong className={styles.correctText}>{caseItem.correct}) {caseItem.options.find(option => option.id === caseItem.correct)?.text}</strong></span>}
-                  </div>
-                  <div className={quizStyles.sumExp}>
-                    {correct ? caseItem.explanation : getWrongAnswerExplanation(caseItem, answer?.selected, lang) || caseItem.explanation}
-                  </div>
-                  {caseItem.source ? <a className={styles.summarySource} href={caseItem.source} target="_blank" rel="noopener noreferrer">{ui.source} ↗</a> : null}
-                </article>
-              )
-            })}
+            <div className={styles.reviewTabs} role="tablist" aria-label={ui.summary}>
+              {cases.map((caseItem, index) => {
+                const answer = answers.find(entry => entry.caseId === caseItem.id)
+                return <button type="button" key={caseItem.id} role="tab" aria-selected={reviewIndex === index} className={`${styles.reviewTab} ${reviewIndex === index ? styles.reviewTabActive : ''} ${answer?.correct ? styles.reviewTabCorrect : styles.reviewTabWrong}`} onClick={() => setReviewIndex(index)}>{index + 1}</button>
+              })}
             </div>
+            <article className={styles.reviewCase}>
+              <section className={styles.caseIntro} aria-label={ui.anamnesis}>
+                <div className={styles.caseIntroMeta}><strong>{ui.anamnesis}</strong><span>{reviewCase.modality} · {regionLabel}</span></div>
+                <p>{reviewCase.vignette}</p>
+              </section>
+              <div className={styles.examLayout}>
+                <section className={styles.questionPanel} aria-labelledby={`${reviewCase.id}-review-question`}>
+                  <h2 id={`${reviewCase.id}-review-question`} className={styles.question}>{reviewCase.question}</h2>
+                  <div className={styles.options}>
+                    {reviewCase.options.map(option => {
+                      const optionClass = option.id === reviewCase.correct ? `${styles.option} ${styles.optionCorrect}` : option.id === reviewAnswer?.selected ? `${styles.option} ${styles.optionWrong}` : styles.option
+                      return <div key={option.id} className={optionClass}>
+                        <span className={styles.optionLetter}>{option.id}</span><span className={styles.optionText}>{option.text}</span>
+                        {option.id === reviewCase.correct ? <span className={styles.optionMark}>✓</span> : option.id === reviewAnswer?.selected ? <span className={styles.optionMark}>×</span> : null}
+                      </div>
+                    })}
+                  </div>
+                  <section className={`${styles.feedback} ${reviewCorrect ? styles.feedbackCorrect : styles.feedbackWrong}`}>
+                    <header className={styles.feedbackHeader}><span className={styles.feedbackIcon} aria-hidden="true">{reviewCorrect ? '✓' : '×'}</span><strong>{reviewCorrect ? ui.correct : ui.incorrect}</strong></header>
+                    {!reviewCorrect ? <div className={styles.answerComparison}>
+                      <div className={styles.answerWrong}><span>{ui.selectedAnswer}</span><strong>{reviewAnswer?.selected ? `${reviewAnswer.selected}) ${reviewSelected?.text}` : ui.noAnswer}</strong></div>
+                      <div className={styles.answerCorrect}><span>{ui.correctAnswer}</span><strong>{reviewCase.correct}) {reviewCorrectOption?.text}</strong></div>
+                    </div> : null}
+                    {!reviewCorrect && reviewWrongExplanation ? <div className={styles.feedbackSection}><h2>{ui.whyWrong}</h2><p>{reviewWrongExplanation}</p></div> : null}
+                    <div className={styles.feedbackSection}><h2>{ui.imageFindings}</h2><p>{reviewCase.imageFindings || reviewCase.vignette}</p></div>
+                    <div className={styles.feedbackSection}><h2>{ui.explanation}</h2><p>{reviewCase.explanation}</p></div>
+                  </section>
+                </section>
+                <section className={styles.viewerColumn} aria-label={`${reviewCase.modality} · ${regionLabel}`}>
+                  <MedicalSequenceViewer key={`review-${reviewCase.id}`} media={reviewMedia} language={lang} priority expandable />
+                </section>
+              </div>
+            </article>
           </> : null}
           <div className={quizStyles.resultActions}>
             <button className={quizStyles.restartBtn} onClick={restart}>{ui.restart}</button>

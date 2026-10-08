@@ -252,7 +252,9 @@
 .feedbackSection p { margin: 0; color: #4d6077; font-size: 14.5px; font-weight: 500; line-height: 1.75; }
 
 .correctText { color: #059669; font-weight: 800; }
-.percentage { margin: -6px 0 12px; color: #64748b; font-size: 14px; font-weight: 800; }
+.resultWide { max-width: 1460px !important; }
+.resultCounts { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; color: #64748b; font-size: 13px; font-weight: 750; }
+.resultCounts > span:last-child { margin-inline-start: 4px; }
 .recommendation {
   display: grid;
   gap: 10px;
@@ -268,6 +270,12 @@
 .recommendationTopics span { padding: 7px 10px; border-radius: 999px; background: #fff3ec; color: #c2410c; font-size: 12px; font-weight: 800; }
 .summarySource { display: inline-flex; margin: 10px 0 0 32px; color: #c2410c; font-size: 12px; font-weight: 800; text-decoration: none; }
 .summarySource:hover { text-decoration: underline; }
+.reviewTabs { display: flex; gap: 8px; overflow-x: auto; padding: 2px; }
+.reviewTab { display: grid; width: 40px; height: 40px; flex: 0 0 40px; place-items: center; border: 1px solid #d8e2ec; border-radius: 10px; background: #fff; color: #52657c; cursor: pointer; font: 850 13px/1 var(--font-main, ui-sans-serif, system-ui, sans-serif); }
+.reviewTabCorrect { border-color: #9bd8c2; background: #e9f8f2; color: #08775a; }
+.reviewTabWrong { border-color: #efb5b5; background: #fff0f0; color: #b62f2f; }
+.reviewTabActive { box-shadow: 0 0 0 3px rgba(244,91,22,.18); outline: 2px solid #f45b16; outline-offset: 1px; }
+.reviewCase { display: grid; gap: 20px; }
 .loading { display: grid; min-height: 100vh; place-items: center; color: #94a3b8; font-family: system-ui, sans-serif; }
 
 :global(html[data-theme='dark']) .page { background: #07111f; }
@@ -306,6 +314,10 @@
 :global(html[data-theme='dark']) .recommendation h2 { color: #f4f7fa; }
 :global(html[data-theme='dark']) .recommendation p { color: #afbdd0; }
 :global(html[data-theme='dark']) .recommendationTopics span { background: #302116; color: #f3ad88; }
+:global(html[data-theme='dark']) .resultCounts { color: #afbdd0; }
+:global(html[data-theme='dark']) .reviewTab { border-color: #33465f; background: #132238; color: #dbe5f0; }
+:global(html[data-theme='dark']) .reviewTabCorrect { border-color: #276f5c; background: #102e29; color: #70d5b5; }
+:global(html[data-theme='dark']) .reviewTabWrong { border-color: #814047; background: #351c24; color: #f1a0a0; }
 
 @media (max-width: 1120px) {
   .examLayout { grid-template-columns: minmax(360px, .85fr) minmax(480px, 1.15fr); }
@@ -320,6 +332,7 @@
   .questionPanel { order: 1; }
   .viewerColumn { order: 2; }
   .answerComparison { grid-template-columns: 1fr 1fr; }
+  .reviewCase { gap: 14px; }
 }
 
 @media (max-width: 640px) {
