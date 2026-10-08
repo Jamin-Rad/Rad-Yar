@@ -1,6 +1,7 @@
 .examTopbar { position: fixed; inset: 0 0 auto; z-index: 100; display: flex; align-items: center; justify-content: space-between; min-height: 64px; padding: 9px max(18px, calc((100vw - 1100px) / 2)); border-bottom: 1px solid rgba(203,213,225,.75); background: rgba(255,255,255,.9); box-shadow: 0 8px 28px rgba(15,23,42,.055); backdrop-filter: blur(16px); }
 .homeLink, .themeToggle { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 13px; border-radius: 10px; color: #354158; font: 750 12px Vazirmatn, sans-serif; text-decoration: none; transition: .16s ease; }
 .homeLink { padding-inline: 3px; }
+.homeLink:hover { transform: translateY(-1px); opacity: .82; }
 .examWordmark { display: flex; align-items: baseline; direction: ltr; line-height: 1; }
 .rad, .yar { font-family: var(--font-fraunces, Georgia, serif); font-size: 22px; font-style: italic; font-weight: 900; letter-spacing: -.5px; }
 .rad { color: #17213a; }

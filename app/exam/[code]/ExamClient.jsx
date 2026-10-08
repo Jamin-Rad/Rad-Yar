@@ -1,7 +1,9 @@
 'use client'
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import Link from 'next/link'
 import { useTheme } from '@/providers/ThemeProvider'
+import RadYarIcon from '@/components/RadYarIcon'
 import MedicalSequenceViewer from '@/components/MedicalSequenceViewer'
 import { getCorrectAnswerExplanation, getWrongAnswerExplanation } from '@/utils/answerFeedback'
 import styles from './page.module.css'
@@ -32,9 +34,10 @@ function ExamFrame({ children, language = 'fa', dir = 'rtl' }) {
   return (
     <>
       <header className={styles.examTopbar} dir={dir}>
-        <div className={styles.homeLink} dir="ltr" aria-label="RadYar">
+        <Link href="/?lang=de" className={styles.homeLink} dir="ltr" aria-label="RadYar Startseite auf Deutsch" title="RadYar Startseite auf Deutsch">
+          <RadYarIcon size={30} />
           <span className={styles.examWordmark} aria-hidden="true"><span className={styles.rad}>RAD</span><span className={styles.yar}>YAR</span></span>
-        </div>
+        </Link>
         <button type="button" className={styles.themeToggle} onClick={toggleTheme} aria-label={themeLabel} title={themeLabel}>
           <span aria-hidden="true">{theme === 'dark' ? '☀' : '☾'}</span>
           <strong>{themeLabel}</strong>
@@ -47,8 +50,9 @@ function ExamFrame({ children, language = 'fa', dir = 'rtl' }) {
 
 function formatTime(seconds, locale = 'fa-IR') {
   const safe = Math.max(0, seconds)
-  const minutes = Math.floor(safe / 60)
-  return `${minutes.toLocaleString(locale)}:${String(safe % 60).padStart(2, '0')}`
+  const minutes = Math.floor(safe / 60).toLocaleString(locale, { useGrouping: false })
+  const remainder = (safe % 60).toLocaleString(locale, { minimumIntegerDigits: 2, useGrouping: false })
+  return `${minutes}:${remainder}`
 }
 
 function availableSeconds(exam) {
@@ -248,6 +252,18 @@ export default function ExamClient({ code }) {
   useEffect(() => {
     if (phase === 'feedback' || phase === 'result') window.scrollTo(0, 0)
   }, [phase])
+
+  useEffect(() => {
+    if (phase !== 'quiz') return undefined
+    const handleEnter = event => {
+      if (event.key !== 'Enter' || event.repeat || event.isComposing || event.altKey || event.ctrlKey || event.metaKey) return
+      if (current >= questions.length - 1) return
+      event.preventDefault()
+      setCurrent(value => Math.min(questions.length - 1, value + 1))
+    }
+    window.addEventListener('keydown', handleEnter)
+    return () => window.removeEventListener('keydown', handleEnter)
+  }, [current, phase, questions.length])
 
   function startExam(event) {
     event.preventDefault()
