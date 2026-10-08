@@ -1,4 +1,5 @@
 export const PARTICIPANT_SPECIALTY_KEY = '__radyar_participant_specialty'
+export const PARTICIPANT_USER_KEY = '__radyar_clerk_user_id'
 export const SPECIALTY_OTHER_VALUE = 'سایر'
 
 export const MEDICAL_SPECIALTY_GROUPS_FA = Object.freeze([

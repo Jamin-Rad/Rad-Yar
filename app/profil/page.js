@@ -25,6 +25,7 @@ import {
 import styles from './page.module.css'
 
 const ADMIN_EMAIL = 'dr.benjaminzia@gmail.com'
+const EMPTY_EXAM_SUMMARY = Object.freeze({ totalExams: 0, scoredExams: 0, averagePercentage: 0, bestPercentage: 0, totalScore: 0, totalMaxScore: 0, weightedPercentage: 0, feedbackPending: 0 })
 
 const localDateKey = () => {
   const date = new Date()
@@ -34,6 +35,10 @@ const localDateKey = () => {
 const T = {
   de: {
     overview: 'Übersicht', settings: 'Einstellungen', contact: 'Kontakt', profileLabel: 'Dein Profil',
+    exams: 'Prüfungsarchiv', examArchiveTitle: 'Deine Prüfungen', examArchiveSub: 'Alle Prüfungen, Ergebnisse und offenen Feedbacks an einem Ort.',
+    examTotal: 'Teilnahmen', examAverage: 'Durchschnitt', examBest: 'Bestes Ergebnis', examPoints: 'Gesamtpunkte', examScore: 'Punkte',
+    examFeedbackDone: 'Feedback abgegeben', examFeedbackPending: 'Feedback noch offen', examOpen: 'Ergebnis öffnen', examContinueFeedback: 'Feedback abschließen',
+    examEmpty: 'Noch keine Prüfung im Archiv', examEmptyHint: 'Prüfungen, die du als angemeldetes Mitglied absolvierst, erscheinen automatisch hier.', examLoading: 'Prüfungsarchiv wird geladen…', examUnavailable: 'Das Prüfungsarchiv konnte nicht geladen werden.', examBy: 'Leitung', examResultHidden: 'Ergebnis wird nicht angezeigt',
     account: 'Konto', signOut: 'Abmelden', memberSince: 'Mitglied seit',
     greetMorning: 'Guten Morgen', greetDay: 'Hallo', greetEvening: 'Guten Abend',
     dashboardEyebrow: 'Dein Lernfortschritt',
@@ -105,6 +110,10 @@ const T = {
   },
   en: {
     overview: 'Overview', settings: 'Settings', contact: 'Contact', profileLabel: 'Your profile',
+    exams: 'Exam archive', examArchiveTitle: 'Your exams', examArchiveSub: 'All exams, results, and pending feedback in one place.',
+    examTotal: 'Attempts', examAverage: 'Average', examBest: 'Best result', examPoints: 'Total points', examScore: 'Score',
+    examFeedbackDone: 'Feedback submitted', examFeedbackPending: 'Feedback pending', examOpen: 'Open result', examContinueFeedback: 'Complete feedback',
+    examEmpty: 'No exams in your archive yet', examEmptyHint: 'Exams you take while signed in will appear here automatically.', examLoading: 'Loading exam archive…', examUnavailable: 'The exam archive could not be loaded.', examBy: 'Organizer', examResultHidden: 'Result is not displayed',
     account: 'Account', signOut: 'Sign out', memberSince: 'Member since',
     greetMorning: 'Good morning', greetDay: 'Hello', greetEvening: 'Good evening',
     dashboardEyebrow: 'Your learning progress',
@@ -173,6 +182,10 @@ const T = {
   },
   fa: {
     overview: 'نمای کلی', settings: 'تنظیمات', contact: 'تماس', profileLabel: 'پروفایل شما',
+    exams: 'آرشیو آزمون‌ها', examArchiveTitle: 'آزمون‌های شما', examArchiveSub: 'همه آزمون‌ها، نتیجه‌ها و نظرسنجی‌های ناتمام در یک‌جا.',
+    examTotal: 'تعداد آزمون', examAverage: 'میانگین', examBest: 'بهترین نتیجه', examPoints: 'مجموع امتیاز', examScore: 'نمره',
+    examFeedbackDone: 'نظرسنجی تکمیل شده', examFeedbackPending: 'نظرسنجی ناتمام', examOpen: 'مشاهده نتیجه', examContinueFeedback: 'تکمیل نظرسنجی',
+    examEmpty: 'هنوز آزمونی در آرشیو ندارید', examEmptyHint: 'آزمون‌هایی که هنگام ورود به حساب انجام دهید، خودکار اینجا نمایش داده می‌شوند.', examLoading: 'در حال بارگذاری آرشیو آزمون‌ها…', examUnavailable: 'آرشیو آزمون‌ها بارگذاری نشد.', examBy: 'برگزارکننده', examResultHidden: 'نمایش نتیجه غیرفعال است',
     account: 'حساب کاربری', signOut: 'خروج', memberSince: 'عضو از',
     greetMorning: 'صبح بخیر', greetDay: 'سلام', greetEvening: 'عصر بخیر',
     dashboardEyebrow: 'پیشرفت یادگیری شما', dashboardTitle: 'امروز، قدم مفید بعدی مهم است.',
@@ -257,6 +270,7 @@ function ProfileIcon({ name, size = 20 }) {
     overview: <><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></>,
     settings: <><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-4V21a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H2.8v-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.6v-.2h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v4H21a1.7 1.7 0 0 0-1.6 1Z"/></>,
     contact: <><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></>,
+    exam: <><path d="M8 3h8M9 3v3h6V3"/><rect x="5" y="5" width="14" height="16" rx="2"/><path d="m8 12 2 2 4-4M8 17h8"/></>,
     signout: <><path d="M10 5H5v14h5M14 8l4 4-4 4M8 12h10"/></>,
     book: <><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H11v16H6.5A2.5 2.5 0 0 0 4 21.5Z"/><path d="M20 5.5A2.5 2.5 0 0 0 17.5 3H13v16h4.5a2.5 2.5 0 0 1 2.5 2.5Z"/></>,
     target: <><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></>,
@@ -318,6 +332,12 @@ function formatCompactDuration(seconds, lang) {
   const hours = Math.floor(minutes / 60)
   const rest = minutes % 60
   return lang === 'fa' ? `${hours} س ${rest} د` : `${hours} h ${rest} min`
+}
+
+function formatExamDate(value, lang) {
+  if (!value) return '—'
+  const locale = lang === 'fa' ? 'fa-IR' : lang === 'en' ? 'en-GB' : 'de-DE'
+  return new Intl.DateTimeFormat(locale, { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value))
 }
 
 function getActivity(daysByDate, lang) {
@@ -414,6 +434,7 @@ export default function ProfilPage() {
   const [accessRequestMessage, setAccessRequestMessage] = useState('')
   const [isAdmin, setIsAdmin] = useState(false)
   const [openAreaId, setOpenAreaId] = useState(null)
+  const [examArchive, setExamArchive] = useState({ loading: true, error: '', summary: EMPTY_EXAM_SUMMARY, attempts: [] })
 
   useEffect(() => {
     const email = user?.primaryEmailAddress?.emailAddress || user?.emailAddresses?.[0]?.emailAddress
@@ -513,6 +534,27 @@ export default function ProfilPage() {
     window.addEventListener('radyar:activity-updated', refreshActivity)
     return () => window.removeEventListener('radyar:activity-updated', refreshActivity)
   }, [user])
+
+  useEffect(() => {
+    if (!isLoaded || !user?.id) return undefined
+    let active = true
+    setExamArchive(current => ({ ...current, loading: true, error: '' }))
+    fetch('/api/profile/exams', { cache: 'no-store' })
+      .then(async response => {
+        const data = await response.json().catch(() => ({}))
+        if (!response.ok) throw new Error(data.error || t.examUnavailable)
+        return data
+      })
+      .then(data => {
+        if (!active) return
+        setExamArchive({ loading: false, error: '', summary: data.summary || EMPTY_EXAM_SUMMARY, attempts: data.attempts || [] })
+      })
+      .catch(error => {
+        if (!active) return
+        setExamArchive({ loading: false, error: error.message || t.examUnavailable, summary: EMPTY_EXAM_SUMMARY, attempts: [] })
+      })
+    return () => { active = false }
+  }, [isLoaded, t.examUnavailable, user?.id])
 
   useEffect(() => {
     if (!user) return
@@ -696,6 +738,9 @@ export default function ProfilPage() {
             <nav className={styles.profileNav} aria-label={t.profileLabel}>
               <button type="button" className={`${styles.profileNavLink} ${view === 'overview' ? styles.profileNavLinkActive : ''}`} onClick={() => selectView('overview')}>
                 <span><ProfileIcon name="overview" size={18} /></span>{t.overview}
+              </button>
+              <button type="button" className={`${styles.profileNavLink} ${view === 'exams' ? styles.profileNavLinkActive : ''}`} onClick={() => selectView('exams')}>
+                <span><ProfileIcon name="exam" size={18} /></span>{t.exams}
               </button>
               <button type="button" className={`${styles.profileNavLink} ${view === 'settings' ? styles.profileNavLinkActive : ''}`} onClick={() => selectView('settings')}>
                 <span><ProfileIcon name="settings" size={18} /></span>{t.settings}
@@ -939,6 +984,54 @@ export default function ProfilPage() {
                   </div>
                 </section>
               </>
+            ) : view === 'exams' ? (
+              <div className={styles.examArchiveView}>
+                <div className={styles.settingsHeader}><span>{t.profileLabel}</span><h1>{t.examArchiveTitle}</h1><p>{t.examArchiveSub}</p></div>
+                {examArchive.loading ? <div className={styles.examArchiveState}><span className={styles.examArchiveLoader} />{t.examLoading}</div> : examArchive.error ? (
+                  <div className={`${styles.examArchiveState} ${styles.examArchiveError}`}>{examArchive.error}</div>
+                ) : (
+                  <>
+                    <section className={styles.examArchiveSummary} aria-label={t.examArchiveTitle}>
+                      <article><span><ProfileIcon name="exam" size={20} /></span><div><strong>{examArchive.summary.totalExams.toLocaleString(lang === 'fa' ? 'fa-IR' : undefined)}</strong><small>{t.examTotal}</small></div></article>
+                      <article><span><ProfileIcon name="trend" size={20} /></span><div><strong>{examArchive.summary.scoredExams ? `${examArchive.summary.averagePercentage.toLocaleString(lang === 'fa' ? 'fa-IR' : undefined)}٪` : '—'}</strong><small>{t.examAverage}</small></div></article>
+                      <article><span><ProfileIcon name="target" size={20} /></span><div><strong>{examArchive.summary.scoredExams ? `${examArchive.summary.bestPercentage.toLocaleString(lang === 'fa' ? 'fa-IR' : undefined)}٪` : '—'}</strong><small>{t.examBest}</small></div></article>
+                      <article><span><ProfileIcon name="cards" size={20} /></span><div><strong>{examArchive.summary.totalMaxScore ? `${examArchive.summary.totalScore.toLocaleString(lang === 'fa' ? 'fa-IR' : undefined)} / ${examArchive.summary.totalMaxScore.toLocaleString(lang === 'fa' ? 'fa-IR' : undefined)}` : '—'}</strong><small>{t.examPoints}</small></div></article>
+                    </section>
+
+                    {examArchive.summary.feedbackPending > 0 ? (
+                      <div className={styles.examFeedbackAlert}><span>!</span><strong>{examArchive.summary.feedbackPending.toLocaleString(lang === 'fa' ? 'fa-IR' : undefined)} {t.examFeedbackPending}</strong><small>{t.examContinueFeedback}</small></div>
+                    ) : null}
+
+                    {examArchive.attempts.length ? (
+                      <section className={styles.examArchiveList}>
+                        {examArchive.attempts.map(attempt => {
+                          const scoreTone = attempt.percentage >= 80 ? 'high' : attempt.percentage >= 55 ? 'mid' : 'low'
+                          return (
+                            <article className={styles.examArchiveCard} key={attempt.id}>
+                              <div className={styles.examArchiveScore} data-tone={scoreTone}>
+                                <strong>{attempt.resultAvailable ? `${Number(attempt.percentage).toLocaleString(lang === 'fa' ? 'fa-IR' : undefined)}٪` : '—'}</strong>
+                                <small>{t.examScore}</small>
+                              </div>
+                              <div className={styles.examArchiveBody}>
+                                <div className={styles.examArchiveTitleRow}><h2>{attempt.title}</h2><span className={attempt.feedbackCompleted ? styles.examFeedbackDone : styles.examFeedbackPending}>{attempt.feedbackCompleted ? `✓ ${t.examFeedbackDone}` : t.examFeedbackPending}</span></div>
+                                {attempt.description ? <p>{attempt.description}</p> : null}
+                                <div className={styles.examArchiveMeta}>
+                                  <span>{formatExamDate(attempt.submittedAt, lang)}</span>
+                                  <span>{t.examBy}: {attempt.organizerName}</span>
+                                  <span>{attempt.resultAvailable ? `${attempt.score.toLocaleString(lang === 'fa' ? 'fa-IR' : undefined)} / ${attempt.maxScore.toLocaleString(lang === 'fa' ? 'fa-IR' : undefined)} ${t.examScore}` : t.examResultHidden}</span>
+                                </div>
+                              </div>
+                              <Link className={styles.examArchiveAction} href={`/exam/${attempt.publicCode}`}>{attempt.feedbackCompleted ? t.examOpen : t.examContinueFeedback}<b>→</b></Link>
+                            </article>
+                          )
+                        })}
+                      </section>
+                    ) : (
+                      <section className={styles.examArchiveEmpty}><span><ProfileIcon name="exam" size={30} /></span><h2>{t.examEmpty}</h2><p>{t.examEmptyHint}</p></section>
+                    )}
+                  </>
+                )}
+              </div>
             ) : view === 'settings' ? (
               <div className={styles.settingsView}>
                 <div className={styles.settingsHeader}><span>{t.profileLabel}</span><h1>{t.settings}</h1></div>

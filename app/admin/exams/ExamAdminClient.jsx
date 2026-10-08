@@ -718,6 +718,29 @@ export default function ExamAdminClient() {
                 <article className={styles.satisfactionCard}><span>رضایت کلی<small>{overallSatisfaction ? `از ${overallSatisfaction.respondentCount.toLocaleString('fa-IR')} نظر` : 'هنوز نظری ثبت نشده'}</small></span><strong>{overallSatisfaction ? `${overallSatisfaction.percentage.toLocaleString('fa-IR')}٪` : '—'}</strong></article>
               </div>
 
+              <section className={styles.wrongQuestionInsight}>
+                <div className={styles.wrongQuestionHeader}>
+                  <div><span>تحلیل سؤال‌ها</span><h2>دو سؤال با بیشترین پاسخ غلط</h2><p>پاسخ‌ندادن هم به‌عنوان پاسخ غلط در این گزارش محاسبه می‌شود.</p></div>
+                  <b>{detail.attempts.length.toLocaleString('fa-IR')} شرکت‌کننده</b>
+                </div>
+                {detail.attempts.length === 0 ? <div className={styles.wrongQuestionEmpty}>بعد از ثبت اولین نتیجه، تحلیل سؤال‌های دشوار اینجا نمایش داده می‌شود.</div> : (
+                  <div className={styles.wrongQuestionGrid}>
+                    {(detail.topWrongQuestions || []).map((item, index) => (
+                      <article className={styles.wrongQuestionCard} key={item.id}>
+                        <div className={styles.wrongQuestionRank}><span>رتبه {Number(index + 1).toLocaleString('fa-IR')}</span><strong>{Number(item.wrongPercentage).toLocaleString('fa-IR')}٪ غلط</strong></div>
+                        <h3>سؤال {Number(item.position + 1).toLocaleString('fa-IR')}</h3>
+                        <p>{item.prompt}</p>
+                        <div className={styles.wrongQuestionMeter}><span style={{ width: `${item.wrongPercentage}%` }} /></div>
+                        <div className={styles.wrongQuestionMeta}>
+                          <strong>{Number(item.wrongCount).toLocaleString('fa-IR')} پاسخ غلط از {Number(item.participantCount).toLocaleString('fa-IR')}</strong>
+                          {item.unansweredCount ? <span>{Number(item.unansweredCount).toLocaleString('fa-IR')} بدون پاسخ</span> : <span>همه پاسخ داده‌اند</span>}
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                )}
+              </section>
+
               <section className={styles.panel}>
                 <div className={styles.panelHeader}><div><h2>رتبه‌بندی شرکت‌کنندگان</h2><p>فهرست بر اساس درصد نمره مرتب شده است؛ برای دیدن پاسخ‌ها و نظر هر نفر، ردیف را باز کنید.</p></div></div>
                 {detail.attempts.length === 0 ? <div className={styles.empty}>هنوز پاسخی ثبت نشده است.</div> : (

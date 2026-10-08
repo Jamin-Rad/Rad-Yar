@@ -100,6 +100,34 @@ function uniqueSubmittedAttempts(attempts) {
   return [...byIdentity.values()].sort((left, right) => Number(right.percentage) - Number(left.percentage) || Date.parse(left.submitted_at) - Date.parse(right.submitted_at))
 }
 
+function getTopWrongQuestions(questions, attempts, limit = 2) {
+  const participantCount = attempts.length
+  if (!participantCount) return []
+
+  return (questions || [])
+    .map(question => {
+      let wrongCount = 0
+      let unansweredCount = 0
+      for (const attempt of attempts) {
+        const selected = attempt.answers?.[question.id]
+        const hasAnswer = Number.isInteger(selected)
+        if (!hasAnswer) unansweredCount += 1
+        if (!hasAnswer || selected !== Number(question.correct_option_index)) wrongCount += 1
+      }
+      return {
+        id: question.id,
+        position: Number(question.position),
+        prompt: question.prompt,
+        wrongCount,
+        unansweredCount,
+        participantCount,
+        wrongPercentage: Math.round((wrongCount / participantCount) * 100),
+      }
+    })
+    .sort((left, right) => right.wrongCount - left.wrongCount || right.unansweredCount - left.unansweredCount || left.position - right.position)
+    .slice(0, limit)
+}
+
 function getQuestionBank(language) {
   const { fachById } = getCurriculumLookup(language)
   const topicById = new Map()
@@ -214,13 +242,17 @@ export async function GET(request) {
     }
     if (!examResult.data) return NextResponse.json({ error: 'آزمون پیدا نشد.' }, { status: 404 })
 
+    const questions = (questionResult.data || []).map(question => {
+      const unpacked = unpackExamQuestionExplanation(question.explanation)
+      return { ...question, explanation: unpacked.explanation, wrongExplanations: unpacked.wrongExplanations, media: unpacked.media }
+    })
+    const attempts = addRanks(uniqueSubmittedAttempts(attemptResult.data || []))
+
     return NextResponse.json({
       exam: examResult.data,
-      questions: (questionResult.data || []).map(question => {
-        const unpacked = unpackExamQuestionExplanation(question.explanation)
-        return { ...question, explanation: unpacked.explanation, wrongExplanations: unpacked.wrongExplanations, media: unpacked.media }
-      }),
-      attempts: addRanks(uniqueSubmittedAttempts(attemptResult.data || [])),
+      questions,
+      attempts,
+      topWrongQuestions: getTopWrongQuestions(questions, attempts),
     })
   }
 

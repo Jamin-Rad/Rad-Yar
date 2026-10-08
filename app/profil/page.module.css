@@ -1439,6 +1439,49 @@
 .lessonList strong { color: var(--text-strong); font-size: 11px; }
 .lessonList small { margin-top: 2px; color: var(--text-muted); font-size: 9px; }
 
+/* ── EXAM ARCHIVE ─────────────────────────────────── */
+.examArchiveView { display: grid; gap: 16px; }
+.settingsHeader > p { max-width: 660px; margin: 7px 0 0; color: var(--text-muted); font-size: 12px; line-height: 1.7; }
+.examArchiveSummary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 11px; }
+.examArchiveSummary article { display: flex; min-width: 0; align-items: center; gap: 13px; padding: 17px; border: 1px solid var(--border); border-radius: 17px; background: var(--bg-card); box-shadow: 0 10px 28px var(--shadow-soft); }
+.examArchiveSummary article > span { display: grid; width: 42px; height: 42px; flex: 0 0 42px; place-items: center; border-radius: 13px; color: var(--orange); background: rgba(249,115,22,.11); }
+.examArchiveSummary strong, .examArchiveSummary small { display: block; }
+.examArchiveSummary strong { overflow: hidden; color: var(--text-strong); font-size: 23px; line-height: 1.1; text-overflow: ellipsis; white-space: nowrap; }
+.examArchiveSummary small { margin-top: 4px; color: var(--text-muted); font-size: 10px; font-weight: 750; }
+.examFeedbackAlert { display: flex; align-items: center; gap: 10px; padding: 13px 15px; border: 1px solid #fed7aa; border-radius: 14px; color: #9a3412; background: rgba(255,247,237,.92); }
+.examFeedbackAlert > span { display: grid; width: 26px; height: 26px; place-items: center; border-radius: 50%; color: #fff; background: #f97316; font-weight: 900; }
+.examFeedbackAlert strong { font-size: 12px; }
+.examFeedbackAlert small { margin-inline-start: auto; color: #c2410c; font-size: 10px; }
+.examArchiveList { display: grid; gap: 10px; }
+.examArchiveCard { display: grid; grid-template-columns: 94px minmax(0, 1fr) auto; align-items: center; gap: 17px; padding: 17px; border: 1px solid var(--border); border-radius: 18px; background: var(--bg-card); box-shadow: 0 10px 28px var(--shadow-soft); }
+.examArchiveScore { display: grid; min-height: 76px; place-content: center; border-radius: 15px; text-align: center; background: var(--surface-soft); }
+.examArchiveScore[data-tone='high'] { color: #047857; background: rgba(16,185,129,.12); }
+.examArchiveScore[data-tone='mid'] { color: #b45309; background: rgba(245,158,11,.13); }
+.examArchiveScore[data-tone='low'] { color: #b91c1c; background: rgba(239,68,68,.1); }
+.examArchiveScore strong, .examArchiveScore small { display: block; }
+.examArchiveScore strong { font-size: 23px; line-height: 1; }
+.examArchiveScore small { margin-top: 6px; font-size: 9px; font-weight: 850; }
+.examArchiveBody { min-width: 0; }
+.examArchiveTitleRow { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; }
+.examArchiveTitleRow h2 { margin: 0; color: var(--text-strong); font-size: 15px; }
+.examFeedbackDone, .examFeedbackPending { padding: 4px 8px; border-radius: 999px; font-size: 8px; font-weight: 850; }
+.examFeedbackDone { color: #047857; background: rgba(16,185,129,.12); }
+.examFeedbackPending { color: #c2410c; background: rgba(249,115,22,.12); }
+.examArchiveBody > p { display: -webkit-box; margin: 7px 0 0; overflow: hidden; color: var(--text-muted); font-size: 10px; line-height: 1.65; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.examArchiveMeta { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; color: var(--text-muted); font-size: 9px; }
+.examArchiveMeta span { display: inline-flex; align-items: center; gap: 5px; }
+.examArchiveMeta span:not(:last-child)::after { width: 3px; height: 3px; margin-inline-start: 8px; border-radius: 50%; background: var(--border); content: ''; }
+.examArchiveAction { display: inline-flex; align-items: center; gap: 9px; padding: 10px 13px; border-radius: 999px; color: var(--orange); background: rgba(249,115,22,.1); font-size: 10px; font-weight: 900; text-decoration: none; white-space: nowrap; }
+.examArchiveAction:hover { background: rgba(249,115,22,.17); }
+.examArchiveAction b { font-size: 15px; }
+.examArchiveState, .examArchiveEmpty { display: grid; min-height: 250px; place-items: center; align-content: center; gap: 10px; padding: 30px; border: 1px solid var(--border); border-radius: 20px; color: var(--text-muted); background: var(--bg-card); text-align: center; }
+.examArchiveLoader { width: 27px; height: 27px; border: 3px solid var(--border); border-top-color: var(--orange); border-radius: 50%; animation: examArchiveSpin .75s linear infinite; }
+.examArchiveError { color: #dc2626; border-color: rgba(239,68,68,.25); }
+.examArchiveEmpty > span { display: grid; width: 58px; height: 58px; place-items: center; border-radius: 18px; color: var(--orange); background: rgba(249,115,22,.11); }
+.examArchiveEmpty h2 { margin: 5px 0 0; color: var(--text-strong); font-size: 18px; }
+.examArchiveEmpty p { max-width: 500px; margin: 0; font-size: 11px; line-height: 1.8; }
+@keyframes examArchiveSpin { to { transform: rotate(360deg); } }
+
 /* ── SETTINGS VIEW ────────────────────────────────── */
 .settingsView { display: grid; gap: 16px; }
 .settingsHeader { padding: 8px 2px 12px; }
@@ -1513,6 +1556,7 @@
   .sideStack { grid-template-columns: 1fr 1fr; }
   .metricGrid { grid-template-columns: repeat(3, 1fr); }
   .activitySummaryGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .examArchiveSummary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 760px) {
@@ -1526,6 +1570,8 @@
   .activitySummaryGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .areaSummary { display: none; }
   .areaDetails { grid-template-columns: 1fr; }
+  .examArchiveCard { grid-template-columns: 78px minmax(0, 1fr); }
+  .examArchiveAction { grid-column: 2; justify-self: start; }
 }
 
 @media (max-width: 560px) {
@@ -1547,6 +1593,12 @@
   .settingsRow { align-items: flex-start; flex-direction: column; }
   .formFooter { align-items: stretch; flex-direction: column; }
   .formFooter .saveBtn { width: 100%; }
+  .examArchiveSummary { grid-template-columns: 1fr; }
+  .examArchiveCard { grid-template-columns: 1fr; }
+  .examArchiveScore { min-height: 64px; }
+  .examArchiveAction { grid-column: 1; justify-self: stretch; justify-content: center; }
+  .examFeedbackAlert { align-items: flex-start; flex-wrap: wrap; }
+  .examFeedbackAlert small { width: 100%; margin-inline-start: 36px; }
 }
 
 /* ── LEARNING COCKPIT 2026 ─────────────────────────── */
@@ -1694,7 +1746,7 @@
   .sidebarEyebrow { align-self: end; }
   .sidebarName { margin-top: 1px; }
   .sidebarEmail, .memberSince { display: none; }
-  .profileNav { grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 8px; }
+  .profileNav { grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 8px; }
   .profileNavLink { justify-content: center; }
   .accountActions { display: none; }
 }
@@ -1708,6 +1760,7 @@
 }
 
 @media (max-width: 560px) {
+  .profileNav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .profileNavLink { gap: 7px; padding: 10px 7px; font-size: 11px; }
   .profileNavLink span { width: 18px; }
   .metricGrid { grid-template-columns: 1fr; }

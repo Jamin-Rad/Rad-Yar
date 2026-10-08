@@ -1,10 +1,11 @@
 import { NextResponse } from 'next/server'
 import { createHash } from 'node:crypto'
+import { auth } from '@clerk/nextjs/server'
 import { CASE_BANK } from '@/data/cases'
 import { QUESTION_BANK } from '@/data/questions'
 import { gradeExam, normalizeWrongExplanations, unpackExamQuestionExplanation } from '@/lib/exams'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
-import { normalizeParticipantSpecialty, PARTICIPANT_SPECIALTY_KEY } from '@/data/medicalSpecialties'
+import { normalizeParticipantSpecialty, PARTICIPANT_SPECIALTY_KEY, PARTICIPANT_USER_KEY } from '@/data/medicalSpecialties'
 
 const CODE_PATTERN = /^[A-Za-z0-9_-]{8,40}$/
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
@@ -88,6 +89,21 @@ function stableAttemptId(examId, identityKey) {
 
 function isSubmittedAttempt(attempt) {
   return Number(attempt?.max_score) > 0
+}
+
+function withParticipantMetadata(answers, specialty, userId = '') {
+  return {
+    ...(answers || {}),
+    [PARTICIPANT_SPECIALTY_KEY]: specialty,
+    ...(userId ? { [PARTICIPANT_USER_KEY]: userId } : {}),
+  }
+}
+
+function clientQuestionAnswers(questions, answers) {
+  return Object.fromEntries((questions || []).flatMap(question => {
+    const selected = Number(answers?.[question.id])
+    return Number.isInteger(selected) && selected >= 0 && selected <= 3 ? [[question.id, selected]] : []
+  }))
 }
 
 function getAvailability(exam, graceMs = 0) {
@@ -259,6 +275,7 @@ export async function POST(request, { params }) {
   }
 
   if (payload?.website) return NextResponse.json({ error: 'درخواست معتبر نیست.' }, { status: 400 })
+  const { userId: signedInUserId } = await auth()
   const participantName = typeof payload?.participantName === 'string' ? payload.participantName.trim().slice(0, 120) : ''
   const participantContact = normalizeContact(payload?.participantContact || payload?.participantEmail)
   const participantSpecialty = normalizeParticipantSpecialty(payload?.participantSpecialty)
@@ -274,12 +291,26 @@ export async function POST(request, { params }) {
   if (loaded.notFound) return NextResponse.json({ error: 'این آزمون فعال نیست.' }, { status: 404 })
   if (!loaded.questions.length) return NextResponse.json({ error: 'این آزمون سؤال ندارد.' }, { status: 409 })
 
-  const { data: existingAttempt, error: lookupError } = await findAttempt(loaded.exam.id, participantContact.value)
+  const { data: foundAttempt, error: lookupError } = await findAttempt(loaded.exam.id, participantContact.value)
   if (lookupError) {
     console.error('بازیابی شرکت‌کننده انجام نشد:', lookupError)
     return databaseUnavailable()
   }
+  let existingAttempt = foundAttempt
+  const storedUserId = typeof existingAttempt?.answers?.[PARTICIPANT_USER_KEY] === 'string' ? existingAttempt.answers[PARTICIPANT_USER_KEY] : ''
+  const participantUserId = storedUserId || signedInUserId || ''
   const effectiveSpecialty = normalizeParticipantSpecialty(existingAttempt?.answers?.[PARTICIPANT_SPECIALTY_KEY]) || participantSpecialty
+
+  if (existingAttempt && signedInUserId && !storedUserId) {
+    const linkedAnswers = withParticipantMetadata(existingAttempt.answers, effectiveSpecialty, signedInUserId)
+    const { error: linkError } = await supabaseAdmin
+      .from('exam_attempts')
+      .update({ answers: linkedAnswers })
+      .eq('id', existingAttempt.id)
+      .eq('exam_id', loaded.exam.id)
+    if (linkError) console.error('اتصال نتیجه آزمون به حساب کاربری انجام نشد:', linkError)
+    else existingAttempt = { ...existingAttempt, answers: linkedAnswers }
+  }
 
   if (payload?.action === 'identify') {
     if (isSubmittedAttempt(existingAttempt)) return completedAttemptResponse(loaded.exam, existingAttempt)
@@ -290,7 +321,7 @@ export async function POST(request, { params }) {
           state: 'quiz', attemptId: existingAttempt.id,
           participantName: existingAttempt.participant_name, participantContact: existingAttempt.participant_contact,
           participantSpecialty: effectiveSpecialty,
-          answers: existingAttempt.answers || {}, startedAt: existingAttempt.started_at,
+          answers: clientQuestionAnswers(loaded.questions, existingAttempt.answers), startedAt: existingAttempt.started_at,
           remainingSeconds: secondsLeft, resumed: true,
         })
       }
@@ -299,7 +330,7 @@ export async function POST(request, { params }) {
       const { data: finalized, error: finalizeError } = await supabaseAdmin
         .from('exam_attempts')
         .update({
-          answers: { ...graded.answers, [PARTICIPANT_SPECIALTY_KEY]: effectiveSpecialty }, score: graded.score, max_score: graded.maxScore,
+          answers: withParticipantMetadata(graded.answers, effectiveSpecialty, participantUserId), score: graded.score, max_score: graded.maxScore,
           percentage: graded.percentage, submitted_at: new Date().toISOString(),
         })
         .eq('id', existingAttempt.id)
@@ -319,7 +350,7 @@ export async function POST(request, { params }) {
         id: stableAttemptId(loaded.exam.id, participantContact.value),
         exam_id: loaded.exam.id, participant_name: participantName,
         participant_contact: participantContact.value, contact_type: participantContact.type,
-        answers: { [PARTICIPANT_SPECIALTY_KEY]: effectiveSpecialty }, started_at: startedAt,
+        answers: withParticipantMetadata({}, effectiveSpecialty, signedInUserId || ''), started_at: startedAt,
       })
       .select('id,participant_name,participant_contact,answers,started_at')
       .single()
@@ -333,7 +364,7 @@ export async function POST(request, { params }) {
             state: 'quiz', attemptId: racedAttempt.id,
             participantName: racedAttempt.participant_name, participantContact: racedAttempt.participant_contact,
             participantSpecialty: normalizeParticipantSpecialty(racedAttempt.answers?.[PARTICIPANT_SPECIALTY_KEY]) || effectiveSpecialty,
-            answers: racedAttempt.answers || {}, startedAt: racedAttempt.started_at,
+            answers: clientQuestionAnswers(loaded.questions, racedAttempt.answers), startedAt: racedAttempt.started_at,
             remainingSeconds: remainingSeconds(loaded.exam, racedAttempt.started_at), resumed: true,
           })
         }
@@ -344,7 +375,7 @@ export async function POST(request, { params }) {
 
     return NextResponse.json({
       state: 'quiz', attemptId: created.id, participantName: created.participant_name,
-      participantContact: created.participant_contact, participantSpecialty: effectiveSpecialty, answers: created.answers || {}, startedAt: created.started_at,
+      participantContact: created.participant_contact, participantSpecialty: effectiveSpecialty, answers: {}, startedAt: created.started_at,
       remainingSeconds: remainingSeconds(loaded.exam, created.started_at), resumed: false,
     }, { status: 201 })
   }
@@ -362,7 +393,7 @@ export async function POST(request, { params }) {
     const updated = await supabaseAdmin
       .from('exam_attempts')
       .update({
-        answers: { ...graded.answers, [PARTICIPANT_SPECIALTY_KEY]: effectiveSpecialty }, score: graded.score, max_score: graded.maxScore,
+        answers: withParticipantMetadata(graded.answers, effectiveSpecialty, participantUserId), score: graded.score, max_score: graded.maxScore,
         percentage: graded.percentage, submitted_at: new Date().toISOString(),
       })
       .eq('id', existingAttempt.id)
@@ -379,7 +410,7 @@ export async function POST(request, { params }) {
         id: stableAttemptId(loaded.exam.id, participantContact.value),
         exam_id: loaded.exam.id, participant_name: participantName,
         participant_contact: participantContact.value, contact_type: participantContact.type,
-        answers: { ...graded.answers, [PARTICIPANT_SPECIALTY_KEY]: effectiveSpecialty }, score: graded.score, max_score: graded.maxScore,
+        answers: withParticipantMetadata(graded.answers, effectiveSpecialty, signedInUserId || ''), score: graded.score, max_score: graded.maxScore,
         percentage: graded.percentage, started_at: startedAt,
       })
       .select('id,submitted_at')
@@ -431,12 +462,24 @@ export async function PATCH(request, { params }) {
     if (!participantContact) return NextResponse.json({ error: 'شناسه شرکت‌کننده معتبر نیست.' }, { status: 400 })
     const participantSpecialty = normalizeParticipantSpecialty(payload?.participantSpecialty)
     if (!participantSpecialty) return NextResponse.json({ error: 'تخصص یا رشتهٔ شرکت‌کننده معتبر نیست.' }, { status: 400 })
+    const { userId: signedInUserId } = await auth()
     const { data: questions, error: questionsError } = await supabaseAdmin.from('exam_questions').select('id,correct_option_index,points').eq('exam_id', exam.id)
     if (questionsError) return databaseUnavailable()
     const normalized = gradeExam(questions || [], payload.answers).answers
+    const { data: activeAttempt, error: attemptError } = await supabaseAdmin
+      .from('exam_attempts')
+      .select('answers')
+      .eq('id', attemptId)
+      .eq('exam_id', exam.id)
+      .eq('participant_contact', participantContact.value)
+      .eq('max_score', 0)
+      .maybeSingle()
+    if (attemptError) return databaseUnavailable()
+    if (!activeAttempt) return NextResponse.json({ error: 'آزمون در حال انجام پیدا نشد.' }, { status: 404 })
+    const storedUserId = typeof activeAttempt.answers?.[PARTICIPANT_USER_KEY] === 'string' ? activeAttempt.answers[PARTICIPANT_USER_KEY] : ''
     const { data: saved, error: saveError } = await supabaseAdmin
       .from('exam_attempts')
-      .update({ answers: { ...normalized, [PARTICIPANT_SPECIALTY_KEY]: participantSpecialty } })
+      .update({ answers: withParticipantMetadata(normalized, participantSpecialty, storedUserId || signedInUserId || '') })
       .eq('id', attemptId)
       .eq('exam_id', exam.id)
       .eq('participant_contact', participantContact.value)
