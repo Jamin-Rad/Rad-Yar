@@ -3,6 +3,7 @@
 import { Suspense, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
+import { useUser } from '@clerk/nextjs'
 import { getCases } from '@/data/cases'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { getWrongAnswerExplanation } from '@/utils/answerFeedback'
@@ -10,6 +11,8 @@ import { caseToExamMedia } from '@/utils/examMedia'
 import MedicalSequenceViewer from '@/components/MedicalSequenceViewer'
 import quizStyles from '@/app/ueben/quiz/page.module.css'
 import styles from './page.module.css'
+
+const ADMIN_EMAIL = 'dr.benjaminzia@gmail.com'
 
 const REGION_NAMES = {
   de: { msk: 'Muskuloskelettales', thorax: 'Thorax', abdomen: 'Abdomen' },
@@ -107,6 +110,7 @@ function resultColor(score, total) {
 
 function CaseExamContent() {
   const { lang } = useLanguage()
+  const { user, isLoaded: isUserLoaded } = useUser()
   const searchParams = useSearchParams()
   const ui = UI[lang] || UI.de
   const topicParam = searchParams.get('themen') || ''
@@ -115,9 +119,10 @@ function CaseExamContent() {
   const topicIds = topicParam.split(',').filter(Boolean)
   const modalities = modalityParam.split(',').filter(Boolean)
   const requestedCount = Math.max(1, Number.parseInt(searchParams.get('n') || '1', 10) || 1)
+  const isAdmin = user?.primaryEmailAddress?.emailAddress?.toLowerCase() === ADMIN_EMAIL
   const cases = useMemo(
-    () => getCases(topicIds, modalities, lang, requestedCount),
-    [topicParam, modalityParam, lang, requestedCount]
+    () => isUserLoaded ? getCases(topicIds, modalities, lang, requestedCount, { shuffle: !isAdmin }) : [],
+    [topicParam, modalityParam, lang, requestedCount, isAdmin, isUserLoaded]
   )
 
   const [current, setCurrent] = useState(0)
@@ -161,6 +166,10 @@ function CaseExamContent() {
     setChecked(false)
     setAnswers([])
     setPhase('exam')
+  }
+
+  if (!isUserLoaded) {
+    return <div className={styles.loading}>Loading…</div>
   }
 
   if (!total) {

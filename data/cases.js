@@ -968,16 +968,18 @@ export function countCases(topicIds, modalities = []) {
   ).length
 }
 
-export function getCases(topicIds, modalities, lang, n) {
+export function getCases(topicIds, modalities, lang, n, { shuffle = true } = {}) {
   const selected = new Set(topicIds)
   const selectedModalities = new Set(modalities)
   const source = CASE_BANK[lang] || CASE_BANK.de
   const cases = source.filter(item =>
     selected.has(item.topicId) && (!selectedModalities.size || selectedModalities.has(item.modality))
   )
-  for (let index = cases.length - 1; index > 0; index -= 1) {
-    const randomIndex = Math.floor(Math.random() * (index + 1))
-    ;[cases[index], cases[randomIndex]] = [cases[randomIndex], cases[index]]
+  if (shuffle) {
+    for (let index = cases.length - 1; index > 0; index -= 1) {
+      const randomIndex = Math.floor(Math.random() * (index + 1))
+      ;[cases[index], cases[randomIndex]] = [cases[randomIndex], cases[index]]
+    }
   }
   return cases.slice(0, n)
 }
