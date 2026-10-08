@@ -9,7 +9,7 @@ import styles from './page.module.css'
 
 const emptyQuestion = () => ({ sourceId: '', sourceLabel: '', kind: 'custom', prompt: '', options: ['', '', '', ''], correctOptionIndex: 0, points: 1, explanation: '', media: null })
 const LANGUAGE_LABELS = Object.freeze({ fa: 'فارسی', en: 'English', de: 'Deutsch' })
-const EXAM_DURATION_OPTIONS = Object.freeze(Array.from({ length: 120 }, (_, index) => (index + 1) * 2))
+const EXAM_DURATION_OPTIONS = Object.freeze(Array.from({ length: 48 }, (_, index) => (index + 1) * 5))
 const ACTIVE_DURATION_OPTIONS = Object.freeze([
   { value: 60, label: '۱ ساعت' },
   { value: 120, label: '۲ ساعت' },
@@ -42,7 +42,7 @@ function createDefaultForm() {
   const scheduledStart = new Date(Date.now() + 60 * 60 * 1000)
   scheduledStart.setMinutes(0, 0, 0)
   return {
-    title: '', description: '', organizerName: 'آقای دکتر ضیا', durationMinutes: 30,
+    title: '', description: '', organizerName: 'آقای دکتر ضیا', durationMinutes: 30, durationMode: 'preset',
     language: 'fa',
     activationMode: 'now', opensAt: toDateTimeLocal(scheduledStart),
     activeDurationMinutes: 10080,
@@ -507,7 +507,19 @@ export default function ExamAdminClient() {
                 <label className={styles.wideField}><span>توضیح کوتاه</span><textarea maxLength={3000} value={form.description} onChange={event => setField('description', event.target.value)} placeholder="توضیحات و نکات لازم برای شرکت‌کنندگان" /></label>
                 <label className={styles.wideField}><span>نام برگزارکننده *</span><input required minLength={2} maxLength={120} value={form.organizerName} onChange={event => setField('organizerName', event.target.value)} placeholder="مثلاً آقای دکتر ضیا" /></label>
                 <label><span>زبان آزمون *</span><select value={form.language} onChange={event => changeLanguage(event.target.value)}><option value="fa">فارسی</option><option value="en">English</option><option value="de">Deutsch</option></select></label>
-                <label><span>زمان پاسخ‌گویی *</span><select value={form.durationMinutes} onChange={event => setField('durationMinutes', Number(event.target.value))}>{EXAM_DURATION_OPTIONS.map(minutes => <option value={minutes} key={minutes}>{minutes.toLocaleString('fa-IR')} دقیقه</option>)}</select></label>
+                <label>
+                  <span>زمان پاسخ‌گویی *</span>
+                  <div className={styles.durationInput}>
+                    <select value={form.durationMode === 'custom' ? 'custom' : form.durationMinutes} onChange={event => {
+                      if (event.target.value === 'custom') setForm(current => ({ ...current, durationMode: 'custom' }))
+                      else setForm(current => ({ ...current, durationMode: 'preset', durationMinutes: Number(event.target.value) }))
+                    }}>
+                      {EXAM_DURATION_OPTIONS.map(minutes => <option value={minutes} key={minutes}>{minutes.toLocaleString('fa-IR')} دقیقه</option>)}
+                      <option value="custom">ورود دستی</option>
+                    </select>
+                    {form.durationMode === 'custom' ? <input type="number" required min="1" max="240" step="1" inputMode="numeric" value={form.durationMinutes} onChange={event => setField('durationMinutes', Number(event.target.value))} aria-label="زمان دستی آزمون به دقیقه" /> : null}
+                  </div>
+                </label>
               </div>
               <div className={styles.availabilityBox}>
                 <div className={styles.availabilityHeader}><div><strong>بازه فعال‌بودن لینک</strong><span>این زمان با مدت پاسخ‌گویی هر شرکت‌کننده فرق دارد.</span></div></div>

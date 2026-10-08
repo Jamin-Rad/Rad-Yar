@@ -176,6 +176,7 @@ export default function ExamClient({ code }) {
   const [answers, setAnswers] = useState({})
   const [current, setCurrent] = useState(0)
   const [timeLeft, setTimeLeft] = useState(0)
+  const [timeLimit, setTimeLimit] = useState(0)
   const [startedAt, setStartedAt] = useState('')
   const [result, setResult] = useState(null)
   const [attemptId, setAttemptId] = useState('')
@@ -198,7 +199,9 @@ export default function ExamClient({ code }) {
         if (!active) return
         setExam(data.exam)
         setQuestions(data.questions || [])
-        setTimeLeft(availableSeconds(data.exam))
+        const allowedSeconds = availableSeconds(data.exam)
+        setTimeLeft(allowedSeconds)
+        setTimeLimit(allowedSeconds)
         setPhase('intro')
       } catch (err) {
         if (!active) return
@@ -211,7 +214,7 @@ export default function ExamClient({ code }) {
   }, [code])
 
   const answeredCount = useMemo(() => Object.values(answers).filter(value => Number.isInteger(value)).length, [answers])
-  const progress = questions.length ? (answeredCount / questions.length) * 100 : 0
+  const timeProgress = timeLimit > 0 ? Math.min(100, Math.max(0, ((timeLimit - timeLeft) / timeLimit) * 100)) : 0
   const question = questions[current]
 
   const submitExam = useCallback(async () => {
@@ -267,6 +270,7 @@ export default function ExamClient({ code }) {
     setError('')
     setStartedAt(new Date().toISOString())
     setTimeLeft(allowedSeconds)
+    setTimeLimit(allowedSeconds)
     setPhase('quiz')
   }
 
@@ -482,12 +486,11 @@ export default function ExamClient({ code }) {
       <div className={styles.examShell}>
         <header className={styles.examHeader}>
           <div><span className={styles.headerLabel}>{copy.exam}</span><h1>{exam.title}</h1></div>
-          <div className={timeLeft < 60 ? styles.timerLow : styles.timer}><span>{copy.remaining}</span><strong dir="ltr">{formatTime(timeLeft, copy.locale)}</strong></div>
         </header>
 
-        <div className={styles.progressRow}>
-          <div className={styles.progressTrack}><span style={{ width: `${progress}%` }} /></div>
-          <span>{copy.answered(answeredCount.toLocaleString(copy.locale), questions.length.toLocaleString(copy.locale))}</span>
+        <div className={`${styles.progressRow} ${timeLeft < 60 ? styles.timeProgressLow : ''}`}>
+          <div className={styles.progressTrack} role="progressbar" aria-label={copy.remaining} aria-valuemin="0" aria-valuemax="100" aria-valuenow={Math.round(timeProgress)}><span style={{ width: `${timeProgress}%` }} /></div>
+          <span className={styles.timeReadout}><small>{copy.remaining}</small><strong dir="ltr">{formatTime(timeLeft, copy.locale)}</strong></span>
         </div>
 
         {error ? <div className={styles.error} role="alert">{error}</div> : null}

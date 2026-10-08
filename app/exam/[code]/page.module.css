@@ -55,14 +55,14 @@
 .examHeader { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 20px; }
 .headerLabel { color: #f45b16; font-size: 10px; font-weight: 850; letter-spacing: .1em; }
 .examHeader h1 { margin: 5px 0 0; color: #14203a; font-size: clamp(21px, 3vw, 30px); }
-.timer, .timerLow { display: grid; min-width: 130px; padding: 10px 16px; border: 1px solid #dce3ed; border-radius: 12px; background: #fff; text-align: center; }
-.timer span, .timerLow span { color: #7b879a; font-size: 9px; }
-.timer strong, .timerLow strong { color: #17213a; font: 850 20px var(--font-manrope), sans-serif; font-variant-numeric: tabular-nums; }
-.timerLow { border-color: #fecaca; background: #fff1f2; }
-.timerLow strong { color: #c51f3b; }
-.progressRow { display: flex; align-items: center; gap: 13px; margin-bottom: 18px; color: #748196; font-size: 10px; }
-.progressTrack { height: 7px; flex: 1; overflow: hidden; border-radius: 99px; background: #dfe5ed; }
-.progressTrack span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #0ea5e9, #f97316); transition: width .25s ease; }
+.progressRow { display: flex; align-items:center; gap:14px; margin-bottom:18px; }
+.progressTrack { height:9px; flex:1; overflow:hidden; border-radius:99px; background:#dfe5ed; box-shadow:inset 0 1px 2px rgba(15,23,42,.08); }
+.progressTrack span { display:block; height:100%; border-radius:inherit; background:linear-gradient(90deg,#0ea5e9,#f97316); box-shadow:0 0 12px rgba(249,115,22,.2); transition:width .9s linear; }
+.timeReadout { display:flex; min-width:142px; align-items:baseline; justify-content:flex-end; gap:7px; color:#748196; white-space:nowrap; }
+.timeReadout small { font-size:9px; font-weight:700; }
+.timeReadout strong { color:#17213a; font:850 17px var(--font-manrope),sans-serif; font-variant-numeric:tabular-nums; }
+.timeProgressLow .progressTrack span { background:linear-gradient(90deg,#f97316,#dc2745); box-shadow:0 0 14px rgba(220,39,69,.25); }
+.timeProgressLow .timeReadout strong { color:#c51f3b; }
 
 .examLayout { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 18px; align-items: start; }
 .questionCard, .navigator { border: 1px solid #e0e6ef; border-radius: 18px; background: rgba(255,255,255,.96); box-shadow: 0 18px 45px rgba(29,41,67,.075); }
@@ -220,11 +220,12 @@
   .examFacts div:nth-child(3) { border-inline-start: 0; }
   .examFacts div + div { border-inline-start: 0; border-top: 1px solid #e7ebf1; }
   .examHeader { align-items: flex-start; }
-  .timer, .timerLow { min-width: 105px; padding-inline: 8px; }
   .questionCard { padding: 20px 16px; }
   .questionActions { flex-direction: column-reverse; }
   .previous, .next, .submit { width: 100%; }
-  .progressRow > span { display: none; }
+  .progressRow { gap: 9px; }
+  .timeReadout { min-width: auto; }
+  .timeReadout small { display: none; }
   .resultShell { margin-top: 1vh; }
   .reviewSection { padding: 17px; }
   .reviewQuestion { padding: 15px; }
@@ -259,14 +260,14 @@
 :global(html[data-theme='dark']) .resultCard,
 :global(html[data-theme='dark']) .reviewSection,
 :global(html[data-theme='dark']) .questionCard,
-:global(html[data-theme='dark']) .navigator,
-:global(html[data-theme='dark']) .timer { border-color: #26364d; background: rgba(15,27,45,.96); }
+:global(html[data-theme='dark']) .navigator { border-color: #26364d; background: rgba(15,27,45,.96); }
 :global(html[data-theme='dark']) .introTop h1,
 :global(html[data-theme='dark']) .resultCard h1,
 :global(html[data-theme='dark']) .examHeader h1,
 :global(html[data-theme='dark']) .questionCard h2,
-:global(html[data-theme='dark']) .navigatorHeader,
-:global(html[data-theme='dark']) .timer strong { color: #f3f6fa; }
+:global(html[data-theme='dark']) .navigatorHeader { color: #f3f6fa; }
+:global(html[data-theme='dark']) .progressTrack { background:#26364d; box-shadow:inset 0 1px 2px rgba(0,0,0,.25); }
+:global(html[data-theme='dark']) .timeReadout strong { color:#f3f6fa; }
 :global(html[data-theme='dark']) .examFacts { border-color: #26364d; background: #0b1728; }
 :global(html[data-theme='dark']) .examFacts div + div { border-color: #26364d; }
 :global(html[data-theme='dark']) .identityForm input,

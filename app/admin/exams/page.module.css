@@ -103,6 +103,7 @@
 .scheduleFields input, .scheduleFields select { width: 100%; height: 43px; padding: 0 11px; border: 1px solid #d8dfe9; border-radius: 10px; background: #fff; color: #263247; font: 500 12px Vazirmatn, sans-serif; outline: none; }
 .scheduleFields input:focus, .scheduleFields select:focus { border-color: #f97316; box-shadow: 0 0 0 3px rgba(249,115,22,.1); }
 .durationInput { display: grid; grid-template-columns: minmax(0, 1fr) 110px; gap: 7px; }
+.durationInput select:only-child { grid-column: 1 / -1; }
 .nowNotice { display: grid; align-content: center; gap: 4px; min-height: 66px; padding: 10px 13px; border-radius: 10px; background: #edf9f4; }
 .nowNotice strong { color: #08765c; font-size: 10px; }
 .nowNotice span { color: #476a61; font-size: 11px; }
