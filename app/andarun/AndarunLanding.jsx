@@ -16,6 +16,7 @@ const spaces = [
   { number: '08', title: 'Befunde',    description: 'Archiv & Kontrolle',  href: '/andarun/befunde',    theme: 'coral',  icon: 'file'      },
   { number: '09', title: 'Test',       description: 'Lernseiten gestalten', href: '/andarun/test',       theme: 'cobalt', icon: 'test'      },
   { number: '10', title: 'Medikamente', description: 'Einnahme im Blick', href: '/andarun/medikamente', theme: 'mint',   icon: 'pill'      },
+  { number: '11', title: 'Känguru',     description: 'Mathe Schritt für Schritt', href: '/andarun/kaenguru', theme: 'lemon', icon: 'kangaroo' },
 ]
 
 const financeSpaces = [
@@ -33,6 +34,7 @@ function SpaceIcon({ name }) {
   if (name === 'type') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M9 12h30M15 36h18M24 12v24"/></svg>
   if (name === 'heart') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 39S9 30 9 18a8 8 0 0 1 14-5 8 8 0 0 1 14 5c0 12-13 21-13 21Z"/><path d="M15 24h6l3-7 4 13 3-6h4"/></svg>
   if (name === 'pill') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 35a9 9 0 0 1 0-13L24 11a9 9 0 0 1 13 13L26 35a9 9 0 0 1-13 0Z"/><path d="m18 17 13 13"/></svg>
+  if (name === 'kangaroo') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M25 39c-7-1-11-6-10-13 1-6 5-10 10-11 5-1 9 2 10 6 2 6-2 12-10 18Z"/><path d="M20 16 16 5c5 1 9 5 11 10M28 15l5-10c3 4 3 9 1 13M16 28C9 27 6 31 5 38c5-4 9-3 14-1M28 39l-3 5M35 34l5 5"/></svg>
   if (name === 'briefcase') return <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="14" width="34" height="25" rx="3"/><path d="M18 14v-3a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v3M7 24h34M21 24v4h6v-4"/></svg>
   if (name === 'file') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 6h14l8 8v28H14Z"/><path d="M28 6v9h8M19 24h12M19 31h12M19 17h5"/></svg>
   if (name === 'test') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M18 6h12M21 6v11L10 36a4 4 0 0 0 3.5 6h21a4 4 0 0 0 3.5-6L27 17V6"/><path d="M15 31h18M19 26h10"/></svg>
@@ -99,7 +101,7 @@ export default function AndarunLanding() {
             <p className={styles.eyebrow}>Deine Welten</p>
             <h2 id="spaces-title">Wähle dein Ziel.</h2>
           </div>
-          <p>10 Module</p>
+          <p>{String(spaces.length).padStart(2, '0')} Module</p>
         </div>
 
         <div className={styles.grid} ref={gridRef}>
