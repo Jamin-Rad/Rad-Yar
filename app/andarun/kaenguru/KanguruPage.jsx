@@ -4,16 +4,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import {
+  KANGURU_GRADE_GROUPS,
   KANGURU_PARTS,
   KANGURU_PLANNED_YEARS,
   KANGURU_QUESTIONS,
   questionsForExam,
-  questionsForGrade,
+  questionsForGradeGroup,
 } from '@/data/kanguruQuestions'
 import styles from './page.module.css'
 
 const STORAGE_KEY = 'andarun_kaenguru_progress_v1'
-const EMPTY_PROGRESS = { version: 1, grade: 5, attempts: {}, updatedAt: null }
+const EMPTY_PROGRESS = { version: 2, gradeGroup: '5-6', attempts: {}, updatedAt: null }
 
 function ArrowIcon({ direction = 'right' }) {
   return (
@@ -59,8 +60,8 @@ function readLocalProgress() {
 function normalizeProgress(value) {
   const state = value && typeof value === 'object' ? value : {}
   return {
-    version: 1,
-    grade: Number(state.grade) === 6 ? 6 : 5,
+    version: 2,
+    gradeGroup: state.gradeGroup === '7-8' ? '7-8' : '5-6',
     attempts: state.attempts && typeof state.attempts === 'object' ? state.attempts : {},
     updatedAt: typeof state.updatedAt === 'string' ? state.updatedAt : null,
   }
@@ -77,7 +78,7 @@ function mergeProgress(localState, remoteState) {
     }
   }
   const localIsNewer = String(local.updatedAt || '') > String(remote.updatedAt || '')
-  return { version: 1, grade: localIsNewer ? local.grade : remote.grade, attempts, updatedAt: localIsNewer ? local.updatedAt : remote.updatedAt }
+  return { version: 2, gradeGroup: localIsNewer ? local.gradeGroup : remote.gradeGroup, attempts, updatedAt: localIsNewer ? local.updatedAt : remote.updatedAt }
 }
 
 function shuffled(items) {
@@ -144,20 +145,20 @@ function ActionStation({ tone, icon, title, text, count, disabled, onClick }) {
   )
 }
 
-function SetupDialog({ type, grade, attempts, onClose, onStart }) {
+function SetupDialog({ type, gradeGroup, attempts, onClose, onStart }) {
   const [count, setCount] = useState(5)
   const [year, setYear] = useState(KANGURU_PLANNED_YEARS[0])
   const [part, setPart] = useState('A')
-  const gradeQuestions = useMemo(() => questionsForGrade(grade), [grade])
+  const gradeQuestions = useMemo(() => questionsForGradeGroup(gradeGroup), [gradeGroup])
   const newQuestions = useMemo(() => gradeQuestions.filter(question => !attempts[question.id]), [attempts, gradeQuestions])
   const reviewQuestions = useMemo(() => gradeQuestions.filter(question => attempts[question.id]?.needsReview), [attempts, gradeQuestions])
   const weaknesses = useMemo(() => buildWeaknesses(gradeQuestions, attempts), [attempts, gradeQuestions])
-  const examQuestions = useMemo(() => questionsForExam({ grade, year, part }), [grade, part, year])
+  const examQuestions = useMemo(() => questionsForExam({ gradeGroup, year, part }), [gradeGroup, part, year])
 
   const config = {
     new: {
       title: 'Neue Aufgaben',
-      text: `Für Klasse ${grade} sind ${newQuestions.length} noch nicht gelöste Aufgaben verfügbar.`,
+      text: `Für die Klassen ${gradeGroup.replace('-', '/')} sind ${newQuestions.length} noch nicht gelöste Aufgaben verfügbar.`,
       questions: shuffled(newQuestions).slice(0, count),
       label: 'Neue Aufgaben',
     },
@@ -217,7 +218,7 @@ function SetupDialog({ type, grade, attempts, onClose, onStart }) {
         ) : (
           <div className={styles.emptyNotice}>
             <strong>Noch keine passenden Aufgaben</strong>
-            <span>Mit dem ersten Aufgabensatz von 2026 beginnt dein Weg hier.</span>
+            <span>Für diese Auswahl werden bald weitere Aufgaben ergänzt.</span>
           </div>
         )}
       </section>
@@ -283,7 +284,7 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
       </header>
       <div className={styles.quizProgress}><span style={{ width: `${((index + (checked ? 1 : 0)) / questions.length) * 100}%` }} /></div>
       <article className={styles.questionCard}>
-        <div className={styles.questionMeta}><span>Klasse {question.grade}</span><span>{question.year} · Teil {question.part}</span><span>{question.topic}</span></div>
+        <div className={styles.questionMeta}><span>Klassen {question.gradeGroup.replace('-', '/')}</span><span>{question.year} · Teil {question.part} · {question.points} Punkte</span><span>{question.topic}</span></div>
         <h1>{question.question}</h1>
         {question.image ? <Image className={styles.questionImage} src={question.image} alt={question.imageAlt || ''} width={900} height={520} /> : null}
         <div className={styles.options}>
@@ -349,15 +350,15 @@ export default function KanguruPage() {
     return () => window.clearTimeout(timer)
   }, [progress, ready])
 
-  const grade = progress.grade
-  const gradeQuestions = useMemo(() => questionsForGrade(grade), [grade])
+  const gradeGroup = progress.gradeGroup
+  const gradeQuestions = useMemo(() => questionsForGradeGroup(gradeGroup), [gradeGroup])
   const attemptedCount = gradeQuestions.filter(question => progress.attempts[question.id]).length
   const openCount = Math.max(0, gradeQuestions.length - attemptedCount)
   const reviewCount = gradeQuestions.filter(question => progress.attempts[question.id]?.needsReview).length
   const progressPercent = percent(attemptedCount, gradeQuestions.length)
   const weaknesses = useMemo(() => buildWeaknesses(gradeQuestions, progress.attempts), [gradeQuestions, progress.attempts])
 
-  const chooseGrade = nextGrade => setProgress(current => ({ ...current, grade: nextGrade, updatedAt: new Date().toISOString() }))
+  const chooseGradeGroup = nextGradeGroup => setProgress(current => ({ ...current, gradeGroup: nextGradeGroup, updatedAt: new Date().toISOString() }))
   const startSession = (mode, label, questions) => {
     setSession({ mode, label, ids: questions.map(question => question.id) })
     setDialog(null)
@@ -402,8 +403,8 @@ export default function KanguruPage() {
           <h1>Dein Känguru-Weg</h1>
           <p>Jede Aufgabe bringt dich ein Stück weiter.</p>
         </div>
-        <div className={styles.gradeSwitch} aria-label="Klasse wählen">
-          {[5, 6].map(value => <button key={value} type="button" aria-pressed={grade === value} onClick={() => chooseGrade(value)}>Klasse {value}</button>)}
+        <div className={styles.gradeSwitch} aria-label="Klassenstufe wählen">
+          {KANGURU_GRADE_GROUPS.map(value => <button key={value} type="button" aria-pressed={gradeGroup === value} onClick={() => chooseGradeGroup(value)}>Klassen {value.replace('-', '/')}</button>)}
         </div>
       </section>
 
@@ -419,7 +420,7 @@ export default function KanguruPage() {
         <div className={styles.progressMain}>
           <div className={styles.progressHeading}><h2>Dein Fortschritt</h2><strong>{progressPercent} %</strong></div>
           <div className={styles.progressTrack}><span style={{ width: `${progressPercent}%` }} /></div>
-          <p>{gradeQuestions.length ? `Klasse ${grade}: ${attemptedCount} von ${gradeQuestions.length} Aufgaben bearbeitet.` : 'Mit dem ersten Aufgabensatz von 2026 beginnt dein Weg hier.'}</p>
+          <p>{gradeQuestions.length ? `Klassen ${gradeGroup.replace('-', '/')}: ${attemptedCount} von ${gradeQuestions.length} Aufgaben bearbeitet.` : `Für die Klassen ${gradeGroup.replace('-', '/')} werden bald Aufgaben ergänzt.`}</p>
         </div>
         <dl className={styles.stats}>
           <div><dt>Gelöst</dt><dd>{attemptedCount}</dd></div>
@@ -431,7 +432,7 @@ export default function KanguruPage() {
         </button>
       </section>
 
-      {dialog ? <SetupDialog type={dialog} grade={grade} attempts={progress.attempts} onClose={() => setDialog(null)} onStart={startSession} /> : null}
+      {dialog ? <SetupDialog type={dialog} gradeGroup={gradeGroup} attempts={progress.attempts} onClose={() => setDialog(null)} onStart={startSession} /> : null}
     </main>
   )
 }

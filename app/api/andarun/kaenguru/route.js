@@ -2,14 +2,14 @@ import { NextResponse } from 'next/server'
 import { requireAndarunSession } from '@/lib/andarunPasswordAuth'
 import { isSupabaseAdminConfigured, supabaseAdmin } from '@/lib/supabase/server'
 
-const EMPTY_STATE = { version: 1, grade: 5, attempts: {}, updatedAt: null }
+const EMPTY_STATE = { version: 2, gradeGroup: '5-6', attempts: {}, updatedAt: null }
 
 function normalizeState(value) {
   const state = value && typeof value === 'object' ? value : {}
   const attempts = state.attempts && typeof state.attempts === 'object' ? state.attempts : {}
   return {
-    version: 1,
-    grade: Number(state.grade) === 6 ? 6 : 5,
+    version: 2,
+    gradeGroup: state.gradeGroup === '7-8' ? '7-8' : '5-6',
     attempts: Object.fromEntries(Object.entries(attempts).slice(-5000)),
     updatedAt: typeof state.updatedAt === 'string' ? state.updatedAt : null,
   }
@@ -105,4 +105,3 @@ export async function PATCH(request) {
     return unavailable()
   }
 }
-
