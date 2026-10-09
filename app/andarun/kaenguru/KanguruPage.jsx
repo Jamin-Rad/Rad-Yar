@@ -289,7 +289,7 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
             <h1 id="question-title">{question.question}</h1>
             {question.image ? (
               <figure className={styles.questionFigure}>
-                <Image className={styles.questionImage} src={question.image} alt={question.imageAlt || ''} width={900} height={520} sizes="(max-width: 760px) 92vw, 48vw" unoptimized />
+                <Image className={styles.questionImage} src={question.image} alt={question.imageAlt || ''} width={900} height={520} sizes="(max-width: 760px) 92vw, 48vw" draggable={false} unoptimized />
               </figure>
             ) : null}
           </section>
@@ -315,7 +315,7 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
                   >
                     <b>{option.id}</b>
                     {option.image ? (
-                      <Image className={styles.optionImage} src={option.image} alt={option.text} width={420} height={180} sizes="(max-width: 760px) 72vw, 34vw" unoptimized />
+                      <Image className={styles.optionImage} src={option.image} alt={option.text} width={420} height={180} sizes="(max-width: 760px) 72vw, 34vw" draggable={false} unoptimized />
                     ) : <span>{option.text}</span>}
                   </button>
                 )
@@ -427,7 +427,7 @@ export default function KanguruPage() {
   return (
     <main className={styles.page} lang="de" dir="ltr">
       <header className={styles.header}>
-        <strong>Känguru</strong>
+        <div className={styles.brandLockup}><Image className={styles.brandIcon} src="/kanguru/kanguru-app-icon.png" alt="" width={42} height={42} priority /><strong>Känguru</strong></div>
         <Link href="/andarun"><ArrowIcon direction="left" /> Zurück zu Andarun</Link>
       </header>
 

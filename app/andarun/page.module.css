@@ -304,6 +304,8 @@
   stroke-linejoin: round;
   transition: transform .35s;
 }
+.kangarooIconAsset { width: 96px; height: 96px; object-fit: cover; border-radius: 22px; box-shadow: 0 12px 24px rgba(25, 52, 92, .16); transition: transform .35s; }
+.cardVisible:hover .kangarooIconAsset { transform: scale(1.05) rotate(-2deg); }
 .cardVisible:hover .icon svg { transform: scale(1.1) rotate(-3deg); }
 
 .cardCopy h3 {
@@ -366,6 +368,7 @@
   .arrow { width: 31px; height: 31px; }
   .icon { margin-top: 10px; }
   .icon svg { width: 52px; }
+  .kangarooIconAsset { width: 72px; height: 72px; border-radius: 17px; }
   .cardCopy h3 { overflow-wrap: anywhere; font-size: clamp(20px, 6vw, 27px); }
   .cardCopy p { margin-top: 5px; font-size: 11px; line-height: 1.45; }
   .footer { padding: 30px max(18px, env(safe-area-inset-left, 0px)) max(30px, env(safe-area-inset-bottom, 0px)); gap: 15px; align-items: flex-start; flex-direction: column; }
