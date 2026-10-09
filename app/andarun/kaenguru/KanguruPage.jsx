@@ -36,6 +36,10 @@ function RepeatIcon() {
   return <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M25 11a10 10 0 0 0-17-2l-2 3"/><path d="M6 6v6h6M7 21a10 10 0 0 0 17 2l2-3"/><path d="M26 26v-6h-6"/></svg>
 }
 
+function LockIcon() {
+  return <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="8" y="14" width="16" height="14" rx="3"/><path d="M11 14V9a5 5 0 0 1 10 0v5"/></svg>
+}
+
 function TargetIcon() {
   return <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="5"/><path d="m16 16 10-10M21 6h5v5"/></svg>
 }
@@ -112,17 +116,6 @@ function buildWeaknesses(questions, attempts) {
 function JourneyMap({ progressPercent }) {
   return (
     <div className={styles.map} aria-label={`Fortschritt: ${progressPercent} Prozent`}>
-      <div className={styles.sun} />
-      <div className={`${styles.cloud} ${styles.cloudOne}`} />
-      <div className={`${styles.cloud} ${styles.cloudTwo}`} />
-      <svg className={styles.landscape} viewBox="0 0 1200 360" preserveAspectRatio="none" aria-hidden="true">
-        <path className={styles.backMountain} d="M0 176 120 88l85 72 120-94 122 111 100-77 105 78 96-92 92 92 98-113 182 142v153H0Z" />
-        <path className={styles.frontMountain} d="M0 226 122 154l99 64 122-57 119 76 123-83 128 83 118-73 102 65 129-98 158 112v117H0Z" />
-        <path className={styles.hill} d="M0 278c130-82 240-31 339-2 120 36 199-47 328-20 145 31 217-40 329-1 69 24 131 33 204-4v109H0Z" />
-        <path className={styles.routeBase} d="M112 286c131-4 135-86 269-42s186 35 281-20c106-62 162 42 276-10 62-28 98-89 154-113" />
-        <path className={styles.routeDash} d="M112 286c131-4 135-86 269-42s186 35 281-20c106-62 162 42 276-10 62-28 98-89 154-113" />
-        <path className={styles.routeDone} pathLength="100" strokeDasharray={`${progressPercent} 100`} d="M112 286c131-4 135-86 269-42s186 35 281-20c106-62 162 42 276-10 62-28 98-89 154-113" />
-      </svg>
       <Image className={styles.mascot} src="/kanguru/kangaroo-explorer.png" alt="Känguru mit Rucksack und Karte" width={1024} height={1536} priority />
       <div className={`${styles.mapMarker} ${styles.markerStart}`}><b>Start</b><span /></div>
       <div className={`${styles.mapMarker} ${styles.markerMiddle}`}><b>Unterwegs</b><span /></div>
@@ -133,14 +126,11 @@ function JourneyMap({ progressPercent }) {
 
 function ActionStation({ tone, icon, title, text, count, disabled, onClick }) {
   return (
-    <button className={`${styles.station} ${styles[tone]}`} type="button" onClick={onClick} aria-disabled={disabled || undefined}>
+    <button className={`${styles.station} ${styles[tone]}`} type="button" onClick={onClick} aria-disabled={disabled || undefined} aria-label={`${title}: ${count}`}>
       <span className={styles.stationIcon}>{icon}</span>
-      <span className={styles.stationCopy}>
-        <strong>{title}</strong>
-        <small>{text}</small>
-      </span>
-      <span className={styles.stationMeta}>{count}</span>
-      <ArrowIcon />
+      <span className={styles.stationButton}><strong>{title}</strong><ArrowIcon /></span>
+      <small>{text}</small>
+      {disabled ? <span className={styles.stationNotice}>Aktuell keine Aufgaben zum Wiederholen.</span> : null}
     </button>
   )
 }
@@ -398,22 +388,25 @@ export default function KanguruPage() {
         <Link href="/andarun"><ArrowIcon direction="left" /> Zurück zu Andarun</Link>
       </header>
 
-      <section className={styles.hero}>
-        <div className={styles.titleBlock}>
-          <h1>Dein Känguru-Weg</h1>
-          <p>Jede Aufgabe bringt dich ein Stück weiter.</p>
+      <section className={styles.journeyStage}>
+        <Image className={styles.journeyBackdrop} src="/kanguru/journey-landscape-v2.png" alt="" fill sizes="100vw" priority />
+        <div className={styles.hero}>
+          <div className={styles.titleBlock}>
+            <h1>Dein Känguru-Weg</h1>
+            <p>Jede Aufgabe bringt dich ein Stück weiter.</p>
+          </div>
+          <div className={styles.gradeSwitch} aria-label="Klassenstufe wählen">
+            {KANGURU_GRADE_GROUPS.map(value => <button key={value} type="button" aria-pressed={gradeGroup === value} onClick={() => chooseGradeGroup(value)}>Klassen {value.replace('-', '/')}</button>)}
+          </div>
         </div>
-        <div className={styles.gradeSwitch} aria-label="Klassenstufe wählen">
-          {KANGURU_GRADE_GROUPS.map(value => <button key={value} type="button" aria-pressed={gradeGroup === value} onClick={() => chooseGradeGroup(value)}>Klassen {value.replace('-', '/')}</button>)}
-        </div>
-      </section>
 
-      <JourneyMap progressPercent={progressPercent} />
+        <JourneyMap progressPercent={progressPercent} />
 
-      <section className={styles.stations} aria-label="Übungsarten">
-        <ActionStation tone="coral" icon={<PencilIcon />} title="Neue Aufgaben" text="Nur Aufgaben, die du noch nicht gelöst hast" count={openCount} onClick={() => setDialog('new')} />
-        <ActionStation tone="blue" icon={<PaperIcon />} title="Jahresprüfung" text="Wähle ein Jahr und einen Aufgabenteil" count={gradeQuestions.length} onClick={() => setDialog('year')} />
-        <ActionStation tone="mint" icon={<RepeatIcon />} title="Fehler wiederholen" text="Teste dich mit deinen gemerkten Fehlern" count={reviewCount} disabled={!reviewCount} onClick={() => setDialog('review')} />
+        <section className={styles.stations} aria-label="Übungsarten">
+          <ActionStation tone="coral" icon={<PencilIcon />} title="Neue Aufgaben" text="Nur Aufgaben, die du noch nicht gelöst hast" count={openCount} onClick={() => setDialog('new')} />
+          <ActionStation tone="blue" icon={<PaperIcon />} title="Jahresprüfung" text="Wähle ein Jahr und einen Aufgabenteil" count={gradeQuestions.length} onClick={() => setDialog('year')} />
+          <ActionStation tone="muted" icon={reviewCount ? <RepeatIcon /> : <LockIcon />} title="Fehler wiederholen" text="Teste dich mit deinen gemerkten Fehlern" count={reviewCount} disabled={!reviewCount} onClick={() => setDialog('review')} />
+        </section>
       </section>
 
       <section className={styles.progressPanel}>
