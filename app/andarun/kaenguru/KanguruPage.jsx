@@ -174,7 +174,7 @@ function SetupDialog({ type, gradeGroup, attempts, onClose, onStart }) {
 
   return (
     <div className={styles.dialogBackdrop} role="presentation" onMouseDown={event => event.target === event.currentTarget && onClose()}>
-      <section className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+      <section className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby="dialog-title" lang="de" dir="ltr">
         <button className={styles.closeButton} type="button" onClick={onClose} aria-label="Schließen"><CloseIcon /></button>
         <h2 id="dialog-title">{config.title}</h2>
         <p>{config.text}</p>
@@ -231,6 +231,7 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
   const correct = checked && selected === question.correct
   const marked = Boolean(attempts[question.id]?.needsReview)
   const score = answers.filter(answer => answer.correct).length
+  const hasVisualOptions = question.options.some(option => option.image)
 
   const checkAnswer = () => {
     if (!selected || checked) return
@@ -251,7 +252,7 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
   }
 
   if (finished) return (
-    <main className={styles.quizPage}>
+    <main className={styles.quizPage} lang="de" dir="ltr">
       <section className={styles.resultCard}>
         <span className={styles.resultRing}>{score}<small>/{questions.length}</small></span>
         <h1>Dein Ergebnis</h1>
@@ -266,7 +267,7 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
   )
 
   return (
-    <main className={styles.quizPage}>
+    <main className={styles.quizPage} lang="de" dir="ltr">
       <header className={styles.quizHeader}>
         <button type="button" onClick={onExit}><ArrowIcon direction="left" /> Übersicht</button>
         <strong>{session.label}</strong>
@@ -274,34 +275,76 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
       </header>
       <div className={styles.quizProgress}><span style={{ width: `${((index + (checked ? 1 : 0)) / questions.length) * 100}%` }} /></div>
       <article className={styles.questionCard}>
-        <div className={styles.questionMeta}><span>Klassen {question.gradeGroup.replace('-', '/')}</span><span>{question.year} · Teil {question.part} · {question.points} Punkte</span><span>{question.topic}</span></div>
-        <h1>{question.question}</h1>
-        {question.image ? <Image className={styles.questionImage} src={question.image} alt={question.imageAlt || ''} width={900} height={520} /> : null}
-        <div className={styles.options}>
-          {question.options.map(option => {
-            const isSelected = selected === option.id
-            const stateClass = checked
-              ? option.id === question.correct ? styles.optionCorrect : isSelected ? styles.optionWrong : ''
-              : isSelected ? styles.optionSelected : ''
-            return <button type="button" disabled={checked} className={stateClass} onClick={() => setSelected(option.id)} key={option.id}><b>{option.id}</b><span>{option.text}</span></button>
-          })}
+        <header className={styles.questionHeading}>
+          <strong>Aufgabe {question.part}{question.number}</strong>
+          <div className={styles.questionMeta}>
+            <span>Klassen {question.gradeGroup.replace('-', '/')}</span>
+            <span>{question.points} Punkte</span>
+            <span>{question.topic}</span>
+          </div>
+        </header>
+
+        <div className={`${styles.questionWorkspace} ${hasVisualOptions ? styles.workspaceVisual : ''} ${!question.image ? styles.workspaceTextOnly : ''}`}>
+          <section className={styles.taskPanel} aria-labelledby="question-title">
+            <h1 id="question-title">{question.question}</h1>
+            {question.image ? (
+              <figure className={styles.questionFigure}>
+                <Image className={styles.questionImage} src={question.image} alt={question.imageAlt || ''} width={900} height={520} sizes="(max-width: 760px) 92vw, 48vw" unoptimized />
+              </figure>
+            ) : null}
+          </section>
+
+          <section className={styles.answersPanel} aria-labelledby="answers-title">
+            <h2 id="answers-title">Antwortmöglichkeiten</h2>
+            <div className={`${styles.options} ${hasVisualOptions ? styles.visualOptions : ''}`} role="radiogroup" aria-label="Antwort auswählen">
+              {question.options.map(option => {
+                const isSelected = selected === option.id
+                const stateClass = checked
+                  ? option.id === question.correct ? styles.optionCorrect : isSelected ? styles.optionWrong : ''
+                  : isSelected ? styles.optionSelected : ''
+                return (
+                  <button
+                    type="button"
+                    role="radio"
+                    aria-checked={isSelected}
+                    aria-label={`Antwort ${option.id}: ${option.text}`}
+                    disabled={checked}
+                    className={stateClass}
+                    onClick={() => setSelected(option.id)}
+                    key={option.id}
+                  >
+                    <b>{option.id}</b>
+                    {option.image ? (
+                      <Image className={styles.optionImage} src={option.image} alt={option.text} width={420} height={180} sizes="(max-width: 760px) 72vw, 34vw" unoptimized />
+                    ) : <span>{option.text}</span>}
+                  </button>
+                )
+              })}
+            </div>
+
+            {!checked ? (
+              <button className={styles.checkButton} type="button" disabled={!selected} onClick={checkAnswer}>Antwort prüfen</button>
+            ) : null}
+          </section>
         </div>
 
-        {!checked ? (
-          <button className={styles.checkButton} type="button" disabled={!selected} onClick={checkAnswer}>Antwort prüfen</button>
-        ) : (
+        {checked ? (
           <section className={`${styles.solution} ${correct ? styles.solutionCorrect : styles.solutionWrong}`}>
-            <header><span>{correct ? <CheckIcon /> : <CloseIcon />}</span><div><strong>{correct ? 'Richtig gelöst' : 'Noch nicht richtig'}</strong><small>Die richtige Antwort ist {question.correct}.</small></div></header>
-            <h2>Lösungsweg</h2>
-            {Array.isArray(question.solutionSteps) ? <ol>{question.solutionSteps.map((step, stepIndex) => <li key={stepIndex}>{step}</li>)}</ol> : <p>{question.solution}</p>}
-            {correct ? (
-              <button className={`${styles.reviewToggle} ${marked ? styles.reviewMarked : ''}`} type="button" onClick={() => onToggleReview(question.id, !marked)}>
-                <RepeatIcon /> {marked ? 'Aus Fehlerliste entfernen' : 'Trotzdem zum Wiederholen merken'}
-              </button>
-            ) : <p className={styles.savedForReview}>Diese Aufgabe wurde zum Wiederholen gespeichert.</p>}
-            <button className={styles.nextButton} type="button" onClick={next}>{index === questions.length - 1 ? 'Ergebnis anzeigen' : 'Nächste Aufgabe'} <ArrowIcon /></button>
+            <div className={styles.solutionStatus}>
+              <header><span>{correct ? <CheckIcon /> : <CloseIcon />}</span><div><strong>{correct ? 'Richtig gelöst' : 'Noch nicht richtig'}</strong><small>{correct ? `Antwort ${question.correct} ist richtig.` : `Deine Antwort: ${selected} · Richtige Antwort: ${question.correct}`}</small></div></header>
+              {correct ? (
+                <button className={`${styles.reviewToggle} ${marked ? styles.reviewMarked : ''}`} type="button" onClick={() => onToggleReview(question.id, !marked)}>
+                  <RepeatIcon /> {marked ? 'Aus Fehlerliste entfernen' : 'Trotzdem zum Wiederholen merken'}
+                </button>
+              ) : <p className={styles.savedForReview}>Diese Aufgabe wurde zum Wiederholen gespeichert.</p>}
+            </div>
+            <div className={styles.solutionSteps}>
+              <h2>So geht&apos;s</h2>
+              {Array.isArray(question.solutionSteps) ? <ol>{question.solutionSteps.map((step, stepIndex) => <li key={stepIndex}>{step}</li>)}</ol> : <p>{question.solution}</p>}
+              <button className={styles.nextButton} type="button" onClick={next}>{index === questions.length - 1 ? 'Ergebnis anzeigen' : 'Nächste Aufgabe'} <ArrowIcon /></button>
+            </div>
           </section>
-        )}
+        ) : null}
       </article>
     </main>
   )
@@ -382,7 +425,7 @@ export default function KanguruPage() {
   if (session) return <QuizView session={session} attempts={progress.attempts} onRecord={recordAttempt} onToggleReview={toggleReview} onExit={() => setSession(null)} />
 
   return (
-    <main className={styles.page} lang="de">
+    <main className={styles.page} lang="de" dir="ltr">
       <header className={styles.header}>
         <strong>Känguru</strong>
         <Link href="/andarun"><ArrowIcon direction="left" /> Zurück zu Andarun</Link>
