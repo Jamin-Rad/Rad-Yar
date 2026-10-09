@@ -1,6 +1,7 @@
 // Offizielle Känguru-Aufgaben bleiben bewusst von den RadYar-MCQs getrennt.
 // Neue Jahrgänge werden erst nach dem Abgleich von Aufgaben, Lösungsschlüssel
 // und eigenen Lösungswegen ergänzt.
+import { KANGURU_QUESTIONS_2025 } from './kanguruQuestions2025'
 
 const choices = values => values.map(([id, text]) => ({ id, text }))
 const visualChoices = slug => ['A', 'B', 'C', 'D', 'E'].map(id => ({
@@ -9,7 +10,7 @@ const visualChoices = slug => ['A', 'B', 'C', 'D', 'E'].map(id => ({
   image: `/kanguru/questions/2026-56/clean/${slug}-${id.toLowerCase()}.png`,
 }))
 
-export const KANGURU_QUESTIONS = [
+const KANGURU_QUESTIONS_2026 = [
   {
     id: '2026-56-a1', gradeGroup: '5-6', year: 2026, part: 'A', number: 1, points: 3,
     topic: 'Räumliches Vorstellungsvermögen',
@@ -331,7 +332,9 @@ export const KANGURU_QUESTIONS = [
   },
 ]
 
-export const KANGURU_PLANNED_YEARS = [2026]
+export const KANGURU_QUESTIONS = [...KANGURU_QUESTIONS_2025, ...KANGURU_QUESTIONS_2026]
+
+export const KANGURU_PLANNED_YEARS = [2025, 2026]
 export const KANGURU_PARTS = ['A', 'B', 'C']
 export const KANGURU_GRADE_GROUPS = ['5-6', '7-8']
 
