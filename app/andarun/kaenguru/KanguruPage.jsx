@@ -137,10 +137,13 @@ function ActionStation({ tone, icon, title, text, count, disabled, onClick }) {
 
 function SetupDialog({ type, gradeGroup, attempts, onClose, onStart }) {
   const [count, setCount] = useState(5)
+  const [difficulty, setDifficulty] = useState('all')
   const [year, setYear] = useState(KANGURU_PLANNED_YEARS[0])
   const [part, setPart] = useState('A')
   const gradeQuestions = useMemo(() => questionsForGradeGroup(gradeGroup), [gradeGroup])
-  const newQuestions = useMemo(() => gradeQuestions.filter(question => !attempts[question.id]), [attempts, gradeQuestions])
+  const newQuestions = useMemo(() => gradeQuestions.filter(question => (
+    !attempts[question.id] && (difficulty === 'all' || question.part === difficulty)
+  )), [attempts, difficulty, gradeQuestions])
   const reviewQuestions = useMemo(() => gradeQuestions.filter(question => attempts[question.id]?.needsReview), [attempts, gradeQuestions])
   const weaknesses = useMemo(() => buildWeaknesses(gradeQuestions, attempts), [attempts, gradeQuestions])
   const examQuestions = useMemo(() => questionsForExam({ gradeGroup, year, part }), [gradeGroup, part, year])
@@ -148,9 +151,9 @@ function SetupDialog({ type, gradeGroup, attempts, onClose, onStart }) {
   const config = {
     new: {
       title: 'Neue Aufgaben',
-      text: `Für die Klassen ${gradeGroup.replace('-', '/')} sind ${newQuestions.length} noch nicht gelöste Aufgaben verfügbar.`,
+      text: `Für die Klassen ${gradeGroup.replace('-', '/')} sind in dieser Auswahl ${newQuestions.length} noch nicht gelöste Aufgaben verfügbar.`,
       questions: shuffled(newQuestions).slice(0, count),
-      label: 'Neue Aufgaben',
+      label: difficulty === 'all' ? 'Neue Aufgaben' : `Neue Aufgaben · Teil ${difficulty}`,
     },
     year: {
       title: 'Jahresprüfung',
@@ -180,12 +183,22 @@ function SetupDialog({ type, gradeGroup, attempts, onClose, onStart }) {
         <p>{config.text}</p>
 
         {type === 'new' ? (
-          <div className={styles.dialogControl}>
-            <span>Anzahl der Aufgaben</span>
-            <div className={styles.choiceRow}>
-              {[5, 10, 15].map(value => <button type="button" className={count === value ? styles.choiceActive : ''} onClick={() => setCount(value)} key={value}>{value}</button>)}
+          <>
+            <div className={styles.dialogControl}>
+              <span>Schwierigkeit</span>
+              <div className={styles.choiceRow}>
+                {[
+                  ['all', 'Alle'], ['A', 'A · Leicht'], ['B', 'B · Mittel'], ['C', 'C · Schwer'],
+                ].map(([value, label]) => <button type="button" className={difficulty === value ? styles.choiceActive : ''} onClick={() => setDifficulty(value)} key={value}>{label}</button>)}
+              </div>
             </div>
-          </div>
+            <div className={styles.dialogControl}>
+              <span>Anzahl der Aufgaben</span>
+              <div className={styles.choiceRow}>
+                {[5, 10, 15].map(value => <button type="button" className={count === value ? styles.choiceActive : ''} onClick={() => setCount(value)} key={value}>{value}</button>)}
+              </div>
+            </div>
+          </>
         ) : null}
 
         {type === 'year' ? (

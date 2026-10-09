@@ -1,6 +1,10 @@
 const choices = values => values.map(([id, text]) => ({ id, text }))
-const figures = label => choices(['A', 'B', 'C', 'D', 'E'].map(id => [id, `${label} ${id}`]))
-const image = slug => `/kanguru/questions/2024-56/clean/${slug}-prompt.png`
+const image = slug => `/kanguru/questions/2024-56/clean-v2/${slug}-prompt.png`
+const visualChoices = slug => ['A', 'B', 'C', 'D', 'E'].map(id => ({
+  id,
+  text: `Abbildung ${id}`,
+  image: `/kanguru/questions/2024-56/clean-v2/${slug}-${id.toLowerCase()}.png`,
+}))
 
 export const KANGURU_QUESTIONS_2024 = [
   {
@@ -21,7 +25,7 @@ export const KANGURU_QUESTIONS_2024 = [
     id: '2024-56-a3', gradeGroup: '5-6', year: 2024, part: 'A', number: 3, points: 3,
     topic: 'Codes und Zuordnen', image: image('a3'), imageAlt: 'Geheimschrift für die Namen Linus, Eva und Luisa',
     question: 'Für jeden Buchstaben gibt es ein besonderes Zeichen. Wie wird der Name Luisa in der Geheimschrift geschrieben?',
-    options: figures('Schreibweise'), correct: 'E',
+    options: visualChoices('a3'), correct: 'E',
     solutionSteps: ['Aus „Linus“ erhält man die Zeichen für L, I, N, U und S.', 'Aus „Eva“ erhält man zusätzlich das Zeichen für A.', 'Die Zeichen für L-U-I-S-A stehen nur in Schreibweise E in der richtigen Reihenfolge.'],
   },
   {
@@ -35,14 +39,14 @@ export const KANGURU_QUESTIONS_2024 = [
     id: '2024-56-a5', gradeGroup: '5-6', year: 2024, part: 'A', number: 5, points: 3,
     topic: 'Perspektive und Spiegelung', image: image('a5'), imageAlt: 'Drei an ein Fenster gelehnte Bretter und fünf Ansichten von außen',
     question: 'Fritz hat drei Bretter an das Fenster gelehnt. Wie sieht die Anordnung von draußen aus?',
-    options: figures('Ansicht'), correct: 'E',
+    options: visualChoices('a5'), correct: 'E',
     solutionSteps: ['Von draußen erscheint die Anordnung horizontal gespiegelt.', 'Dabei bleiben Höhe und Überdeckung der drei Bretter erhalten.', 'Nur Ansicht E zeigt Spiegelung und Überdeckungen gleichzeitig richtig.'],
   },
   {
     id: '2024-56-a6', gradeGroup: '5-6', year: 2024, part: 'A', number: 6, points: 3,
     topic: 'Logische Reihenfolgen', image: image('a6'), imageAlt: 'Vier Pakete A bis D auf einem Handwagen und fünf mögliche Stapel',
     question: 'Veronika lädt die vier Pakete eines nach dem anderen ab. Welcher Stapel kann dabei nicht entstehen?',
-    options: figures('Stapel'), correct: 'D',
+    options: visualChoices('a6'), correct: 'D',
     solutionSteps: ['Paket C liegt auf A und muss deshalb vor A abgeladen werden.', 'Paket D liegt auf B und muss deshalb vor B abgeladen werden.', 'Stapel D würde verlangen, dass B vor D abgeladen wird. Das ist unmöglich.'],
   },
   {
@@ -56,7 +60,7 @@ export const KANGURU_QUESTIONS_2024 = [
     id: '2024-56-a8', gradeGroup: '5-6', year: 2024, part: 'A', number: 8, points: 3,
     topic: 'Linien und Verbindungen', image: image('a8'), imageAlt: 'Zwei Drachenschnüre verschwinden hinter einem Wolkenband',
     question: 'Wie könnten die beiden Drachenschnüre innerhalb des Wolkenbands verlaufen?',
-    options: figures('Verlauf'), correct: 'D',
+    options: visualChoices('a8'), correct: 'D',
     solutionSteps: ['Jede sichtbare Schnur muss am oberen und unteren Rand des Wolkenbands ohne Unterbrechung fortgesetzt werden.', 'Man verfolgt Richtung und Reihenfolge der vier Randpunkte.', 'Nur Verlauf D verbindet die passenden Enden ohne einen zusätzlichen oder fehlenden Strang.'],
   },
   {
@@ -98,7 +102,7 @@ export const KANGURU_QUESTIONS_2024 = [
     id: '2024-56-b6', gradeGroup: '5-6', year: 2024, part: 'B', number: 6, points: 4,
     topic: 'Würfelnetze und Falten', image: image('b6'), imageAlt: 'Ein Würfelnetz mit gefärbten Dreiecken und fünf mögliche Färbungen',
     question: 'Gleichfarbige Dreiecke sollen beim Falten an jeder Würfelkante aneinanderstoßen. Wie muss das noch weiße Quadrat gefärbt werden?',
-    options: figures('Färbung'), correct: 'E',
+    options: visualChoices('b6'), correct: 'E',
     solutionSteps: ['Beim Falten werden die vier Kanten des weißen Quadrats mit vier bereits gefärbten Kanten verbunden.', 'Für jede Kante überträgt man die Farbe des angrenzenden Dreiecks auf das weiße Quadrat.', 'Die vier so bestimmten Dreiecke ergeben genau Färbung E.'],
   },
   {

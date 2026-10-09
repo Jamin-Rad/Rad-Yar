@@ -1,6 +1,10 @@
 const choices = values => values.map(([id, text]) => ({ id, text }))
-const figures = () => choices([['A', 'Abbildung A'], ['B', 'Abbildung B'], ['C', 'Abbildung C'], ['D', 'Abbildung D'], ['E', 'Abbildung E']])
-const image = slug => `/kanguru/questions/2025-56/clean/${slug}-prompt.png`
+const image = slug => `/kanguru/questions/2025-56/clean-v2/${slug}-prompt.png`
+const visualChoices = slug => ['A', 'B', 'C', 'D', 'E'].map(id => ({
+  id,
+  text: `Abbildung ${id}`,
+  image: `/kanguru/questions/2025-56/clean-v2/${slug}-${id.toLowerCase()}.png`,
+}))
 
 export const KANGURU_QUESTIONS_2025 = [
   {
@@ -14,13 +18,13 @@ export const KANGURU_QUESTIONS_2025 = [
     id: '2025-56-a2', gradeGroup: '5-6', year: 2025, part: 'A', number: 2, points: 3,
     topic: 'Spiegelung', image: image('a2'), imageAlt: 'Jahreszahl 2025 und mögliche Ansichten von der Rückseite',
     question: 'Auf dem Stadttor wurde mit großen Ziffern die Jahreszahl 2025 aufgebaut. Was ist von der anderen Seite zu sehen?',
-    options: choices([['A', '2005'], ['B', '2505'], ['C', '5520'], ['D', '2205'], ['E', '5205']]), correct: 'B',
+    options: visualChoices('a2'), correct: 'B',
     solutionSteps: ['Von der Rückseite werden die Ziffern und ihre Reihenfolge gespiegelt.', 'Dabei sehen die einzelnen Ziffern nicht genauso aus wie von vorn.', 'Unter den Antworten entspricht nur B der Rückansicht.'],
   },
   {
     id: '2025-56-a3', gradeGroup: '5-6', year: 2025, part: 'A', number: 3, points: 3,
     topic: 'Muster und Flächen', image: image('a3'), imageAlt: 'Muster aus Linien und fünf mögliche fehlende Teile',
-    question: 'Welches der abgebildeten Teile passt in das Muster?', options: figures(), correct: 'D',
+    question: 'Welches der abgebildeten Teile passt in das Muster?', options: visualChoices('a3'), correct: 'D',
     solutionSteps: ['An der Lücke müssen die Linien an allen vier Seiten ohne Knick weiterlaufen.', 'Vergleicht man die diagonalen und senkrechten Linien, passt nur die Anordnung von Abbildung D.', 'Alle anderen Teile erzeugen mindestens eine unterbrochene Linie.'],
   },
   {
@@ -33,12 +37,12 @@ export const KANGURU_QUESTIONS_2025 = [
   {
     id: '2025-56-a5', gradeGroup: '5-6', year: 2025, part: 'A', number: 5, points: 3,
     topic: 'Drehen und Muster', image: image('a5'), imageAlt: 'Sechseckiges Blatt mit sechs Dreiecken, Start und erster Drehung',
-    question: 'Maja dreht ein sechseckiges Blatt schrittweise immer ein Feld im Uhrzeigersinn. Wie sieht das Blatt nach dem 8. Schritt aus?', options: figures(), correct: 'A',
+    question: 'Maja dreht ein sechseckiges Blatt schrittweise immer ein Feld im Uhrzeigersinn. Wie sieht das Blatt nach dem 8. Schritt aus?', options: visualChoices('a5'), correct: 'A',
     solutionSteps: ['Ein vollständiger Umlauf besteht aus 6 Drehungen.', 'Nach 8 Drehungen ist die Lage daher genauso wie nach 2 Drehungen.', 'Das ergibt die Färbung in Abbildung A.'],
   },
   {
     id: '2025-56-a6', gradeGroup: '5-6', year: 2025, part: 'A', number: 6, points: 3,
-    topic: 'Zahlen ordnen',
+    topic: 'Zahlen ordnen', image: image('a6'), imageAlt: 'Speisekarte mit fünf nach Preis geordneten Burgern und teilweise abgewaschenen Ziffern',
     question: 'Die Burger auf der Speisekarte sind nach ihrem Preis geordnet. Welcher Preis gehört zu einem der Burger?',
     options: choices([['A', '4,60'], ['B', '4,80'], ['C', '5,30'], ['D', '5,80'], ['E', '6,30']]), correct: 'B',
     solutionSteps: ['Die sichtbaren Preise bilden eine aufsteigende Reihenfolge: 3,70; 4,30; 4,80; 5,60; 6,50.', 'Die fehlende Zahl muss zwischen 4,30 und 5,60 liegen.', 'Das ist 4,80, also Antwort B.'],
@@ -67,7 +71,7 @@ export const KANGURU_QUESTIONS_2025 = [
   {
     id: '2025-56-b2', gradeGroup: '5-6', year: 2025, part: 'B', number: 2, points: 4,
     topic: 'Muster und Drehungen', image: image('b2'), imageAlt: 'Fünf Figuren und ein Rasterbild',
-    question: 'Vier der fünf Figuren sind so oder gedreht im Bild rechts zu finden. Welche Figur kann dort nicht gefunden werden?', options: figures(), correct: 'E',
+    question: 'Vier der fünf Figuren sind so oder gedreht im Bild rechts zu finden. Welche Figur kann dort nicht gefunden werden?', options: visualChoices('b2'), correct: 'E',
     solutionSteps: ['Jede Figur wird im Raster in jeder möglichen Drehung gesucht.', 'Die Formen A bis D lassen sich jeweils vollständig im Bild markieren.', 'Die Struktur von E kommt nicht vor, daher ist E die gesuchte Figur.'],
   },
   {
@@ -80,7 +84,8 @@ export const KANGURU_QUESTIONS_2025 = [
   {
     id: '2025-56-b4', gradeGroup: '5-6', year: 2025, part: 'B', number: 4, points: 4,
     topic: 'Flächen und Schnitte', image: image('b4'), imageAlt: 'Figur aus gleich großen Quadraten mit Punkten A bis E und S',
-    question: 'Die Figur soll durch einen geraden Schnitt durch S in zwei Teile mit gleichem Flächeninhalt zerschnitten werden. Durch welchen Punkt verläuft dieser Schnitt noch?', options: figures(), correct: 'D',
+    question: 'Die Figur soll durch einen geraden Schnitt durch S in zwei Teile mit gleichem Flächeninhalt zerschnitten werden. Durch welchen Punkt verläuft dieser Schnitt noch?',
+    options: choices([['A', 'Punkt A'], ['B', 'Punkt B'], ['C', 'Punkt C'], ['D', 'Punkt D'], ['E', 'Punkt E']]), correct: 'D',
     solutionSteps: ['Ein gerader Schnitt durch S teilt die Fläche nur dann gleich, wenn beide Seiten gleich viele Quadrate enthalten.', 'Man zählt die Quadrate auf beiden Seiten der möglichen Geraden.', 'Nur die Gerade durch D halbiert die Figur.'],
   },
   {
@@ -92,9 +97,9 @@ export const KANGURU_QUESTIONS_2025 = [
   },
   {
     id: '2025-56-b6', gradeGroup: '5-6', year: 2025, part: 'B', number: 6, points: 4,
-    topic: 'Ziffernsummen', image: image('b6'), imageAlt: 'Fünf Zettel mit jeweils zwei zweistelligen Zahlen',
+    topic: 'Ziffernsummen',
     question: 'Auf welchem Zettel ist die Summe der Ziffern der linken Zahl gleich der Summe der Ziffern der rechten Zahl?',
-    options: choices([['A', 'Zettel A'], ['B', 'Zettel B'], ['C', 'Zettel C'], ['D', 'Zettel D'], ['E', 'Zettel E']]), correct: 'C',
+    options: visualChoices('b6'), correct: 'C',
     solutionSteps: ['Für jeden Zettel werden die beiden sichtbaren Ziffernsummen verglichen.', 'Bei Zettel C kann die verdeckte Ziffer die beiden Summen genau gleich machen.', 'Die anderen vier Zettel lassen sich auch mit der verdeckten Ziffer nicht ausgleichen.'],
   },
   {
@@ -106,13 +111,13 @@ export const KANGURU_QUESTIONS_2025 = [
   },
   {
     id: '2025-56-b8', gradeGroup: '5-6', year: 2025, part: 'B', number: 8, points: 4,
-    topic: 'Wahrscheinlichkeit', image: image('b8'), imageAlt: 'Fünf Glücksräder mit schwarzen Feldern',
-    question: 'Bei welchem Glücksrad ist die Gewinnchance am größten?', options: figures(), correct: 'A',
+    topic: 'Wahrscheinlichkeit',
+    question: 'Bei welchem Glücksrad ist die Gewinnchance am größten?', options: visualChoices('b8'), correct: 'A',
     solutionSteps: ['Bei jedem Rad sind die Felder gleich groß.', 'Daher zählt man einfach den Anteil der schwarzen Felder an allen Feldern.', 'Rad A hat den größten schwarzen Anteil.'],
   },
   {
     id: '2025-56-c1', gradeGroup: '5-6', year: 2025, part: 'C', number: 1, points: 5,
-    topic: 'Logik und Wahrheit', image: image('c1'), imageAlt: 'Gespräch zwischen Solej und Kolo über Wochentage',
+    topic: 'Logik und Wahrheit',
     question: 'Kolo sagt mittwochs, freitags und sonntags nie die Wahrheit. An welchem Wochentag fand das Gespräch statt?',
     options: choices([['A', 'Dienstag'], ['B', 'Mittwoch'], ['C', 'Freitag'], ['D', 'Samstag'], ['E', 'Sonntag']]), correct: 'C',
     solutionSteps: ['Wenn Kolo die Wahrheit sagt, müssten heute Sonntag und morgen Donnerstag sein - das ist unmöglich.', 'Er lügt also in beiden Antworten.', 'Heute ist deshalb Freitag: Heute ist nicht Sonntag und morgen ist nicht Donnerstag.'],
@@ -133,7 +138,7 @@ export const KANGURU_QUESTIONS_2025 = [
   {
     id: '2025-56-c4', gradeGroup: '5-6', year: 2025, part: 'C', number: 4, points: 5,
     topic: 'Räumliches Vorstellungsvermögen', image: image('c4'), imageAlt: 'Drei Bausteine und fünf mögliche Bauwerke',
-    question: 'Tino stellt die drei abgebildeten Bausteine zu einem Bauwerk zusammen. Wie könnte es aussehen?', options: figures(), correct: 'E',
+    question: 'Tino stellt die drei abgebildeten Bausteine zu einem Bauwerk zusammen. Wie könnte es aussehen?', options: visualChoices('c4'), correct: 'E',
     solutionSteps: ['Die drei Bausteine müssen ohne Überlappung und ohne zusätzliche Würfel zusammenpassen.', 'Man prüft bei jeder Abbildung die sichtbaren Oberflächen und die Zahl der Würfel.', 'Nur Bauwerk E verwendet alle drei Bausteine korrekt.'],
   },
   {
@@ -146,7 +151,7 @@ export const KANGURU_QUESTIONS_2025 = [
   {
     id: '2025-56-c6', gradeGroup: '5-6', year: 2025, part: 'C', number: 6, points: 5,
     topic: 'Gewichte und Vergleichen', image: image('c6'), imageAlt: 'Drei ausgeglichene Waagen mit verschiedenen Blöcken',
-    question: 'Bei welcher Reihenfolge sind die Blöcke von links nach rechts von leicht zu schwer geordnet?', options: figures(), correct: 'A',
+    question: 'Bei welcher Reihenfolge sind die Blöcke von links nach rechts von leicht zu schwer geordnet?', options: visualChoices('c6'), correct: 'A',
     solutionSteps: ['Aus jeder ausgeglichenen Waage liest man ein Verhältnis zwischen den Gewichten ab.', 'Diese Verhältnisse werden zu einer Kette vom leichtesten zum schwersten Block zusammengesetzt.', 'Nur Reihenfolge A erfüllt alle drei Vergleiche.'],
   },
   {
