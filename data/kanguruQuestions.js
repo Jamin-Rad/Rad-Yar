@@ -1,6 +1,7 @@
 // Offizielle Känguru-Aufgaben bleiben bewusst von den RadYar-MCQs getrennt.
 // Neue Jahrgänge werden erst nach dem Abgleich von Aufgaben, Lösungsschlüssel
 // und eigenen Lösungswegen ergänzt.
+import { KANGURU_QUESTIONS_2024 } from './kanguruQuestions2024'
 import { KANGURU_QUESTIONS_2025 } from './kanguruQuestions2025'
 
 const choices = values => values.map(([id, text]) => ({ id, text }))
@@ -332,9 +333,9 @@ const KANGURU_QUESTIONS_2026 = [
   },
 ]
 
-export const KANGURU_QUESTIONS = [...KANGURU_QUESTIONS_2025, ...KANGURU_QUESTIONS_2026]
+export const KANGURU_QUESTIONS = [...KANGURU_QUESTIONS_2024, ...KANGURU_QUESTIONS_2025, ...KANGURU_QUESTIONS_2026]
 
-export const KANGURU_PLANNED_YEARS = [2025, 2026]
+export const KANGURU_PLANNED_YEARS = [2024, 2025, 2026]
 export const KANGURU_PARTS = ['A', 'B', 'C']
 export const KANGURU_GRADE_GROUPS = ['5-6', '7-8']
 
