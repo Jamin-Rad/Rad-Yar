@@ -4774,6 +4774,166 @@ html[data-theme='dark'] .page .gradeTable tbody tr:last-child td:last-child { co
 }
 `
 
+const MENISKUS_TEST_STYLE_OVERRIDES = `
+.page {
+  --plum-950: #241126;
+  --plum-900: #3b163d;
+  --plum-800: #57245a;
+  --plum-700: #713574;
+  --plum-100: #f0e5f1;
+  --teal-700: #0d7580;
+  --teal-500: #38aeb1;
+  --teal-100: #d9f2f1;
+  --coral-600: #d84b42;
+  --coral-100: #fff0ee;
+  --ink: #171426;
+  --body: #4f5169;
+  --muted: #7a7d91;
+  --line: #dddde5;
+  --paper: #fff;
+  --canvas: #f6f5f7;
+  min-height: 100vh;
+  padding: 64px 24px 56px !important;
+  background: #171320 !important;
+  color: var(--ink);
+}
+.page::before {
+  inset: 64px 0 0 !important;
+  background-image: linear-gradient(180deg,rgba(16,12,26,.64),rgba(20,16,29,.8)),url('/andarun-galaxy-v2.png') !important;
+  background-position: center !important;
+  background-size: cover !important;
+  filter: saturate(.72) brightness(.84) blur(2px) !important;
+  opacity: 1 !important;
+}
+.page::after {
+  content: '' !important;
+  position: fixed;
+  top: 70px;
+  inset-inline-end: max(0px,calc((100vw - 1380px)/2));
+  width: min(49vw,690px);
+  height: 390px;
+  z-index: 0;
+  pointer-events: none;
+  display: block !important;
+  background: url('/msk/knie/meniskus/meniskus-background-v1.png') center / cover no-repeat;
+  filter: grayscale(1) saturate(.72) contrast(.96);
+  opacity: .5;
+  -webkit-mask-image: linear-gradient(90deg,transparent 0,#000 24%),linear-gradient(180deg,#000 72%,transparent 100%);
+  mask-image: linear-gradient(90deg,transparent 0,#000 24%),linear-gradient(180deg,#000 72%,transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+.header,.layout { width: min(1380px,100%) !important; max-width: none !important; margin-inline: auto !important; position: relative; z-index: 2; }
+.header { overflow: visible !important; margin-bottom: 0 !important; padding: 0 !important; background: transparent !important; }
+.topline { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 22px; }
+.breadcrumb { margin: 0 !important; color: #c8c2cf !important; font-size: 13px !important; }
+.breadLink { color: #ecd6ee !important; }
+.author { color: #ecd6ee; font-family: var(--font-fraunces,Georgia,serif); font-size: 14px; font-weight: 700; white-space: nowrap; }
+.heroGrid { min-height: 260px !important; display: flex !important; align-items: center !important; padding-block: 24px 40px; }
+.heroText { width: min(800px,74%); padding: 0 !important; }
+.sourceBadge,.heroStats { display: none !important; }
+.heroText h1 { max-width: 790px !important; margin: 0 !important; color: #faf5fb !important; font-size: clamp(42px,4.5vw,62px) !important; line-height: .98 !important; letter-spacing: -.042em !important; text-wrap: balance; }
+.heroText p { max-width: 680px !important; margin: 18px 0 0 !important; color: #d2ccd7 !important; font-size: 17px !important; line-height: 1.7 !important; }
+.heroActions { margin: 0 0 16px !important; gap: 12px !important; }
+.learnAction { min-height: 46px !important; padding: 10px 20px !important; border-radius: 7px !important; font-size: 14px !important; }
+.learnActionMcq { border: 0 !important; background: var(--plum-900) !important; color: #fff !important; box-shadow: 0 12px 25px rgba(59,22,61,.16) !important; }
+.learnActionFlash { border: 1px solid #a7a1ae !important; background: rgba(255,255,255,.82) !important; color: var(--plum-900) !important; }
+.takeHomeJump { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 10px 20px; border: 1px solid rgba(166,57,97,.42); border-radius: 7px; background: linear-gradient(120deg,rgba(255,249,251,.96),rgba(247,226,235,.9)); color: #6d1d3b; font: 850 14px/1.2 inherit; cursor: pointer; box-shadow: 0 12px 25px rgba(102,25,55,.1); }
+.takeHomeJump svg { width: 19px; height: 19px; }
+.lessonProgress { min-height: 48px !important; grid-template-columns: minmax(0,1fr) auto !important; gap: 12px !important; margin: 0 !important; padding: 16px !important; border: 1px solid var(--line) !important; border-radius: 8px !important; background: rgba(255,255,255,.96) !important; color: var(--ink) !important; box-shadow: 0 8px 20px rgba(35,18,39,.035) !important; backdrop-filter: none !important; }
+.progressTrack { grid-column: 1 / -1; height: 10px !important; background: #e9e7ec !important; }
+.progressTrack i { background: linear-gradient(90deg,var(--plum-800),var(--teal-500)) !important; }
+.lessonProgress > span { color: var(--muted) !important; font-size: 13px !important; }
+.progressActions button { color: var(--plum-900) !important; font-size: 13px !important; }
+.progressActions .lessonCompleteButton { border-color: color-mix(in srgb,var(--plum-700) 38%,var(--line)) !important; background: color-mix(in srgb,var(--plum-100) 60%,transparent) !important; }
+.progressActions .lessonCompleteButtonDone { border-color: var(--teal-700) !important; background: var(--teal-700) !important; color: #fff !important; }
+.layout { grid-template-columns: 250px minmax(0,1fr) !important; gap: 18px !important; align-items: start; margin-top: 18px !important; padding: 0 0 28px !important; }
+[dir='rtl'] .layout { grid-template-columns: minmax(0,1fr) 250px !important; }
+.sidebar { top: 90px !important; padding: 20px 14px !important; border: 1px solid var(--line) !important; border-radius: 10px !important; background: rgba(255,255,255,.9) !important; box-shadow: 0 12px 30px rgba(35,18,39,.04) !important; }
+.sideTitle { margin: 0 8px 14px !important; padding: 0 !important; border: 0 !important; color: var(--ink) !important; font-size: 20px !important; }
+.sideNav { gap: 4px !important; }
+.sideItem { min-height: 42px !important; display: grid !important; grid-template-columns: 34px minmax(0,1fr); gap: 8px !important; padding: 5px 8px !important; border: 0 !important; border-radius: 7px !important; color: var(--body) !important; font-size: 14px !important; }
+.sideItem:hover { background: var(--plum-100) !important; color: var(--plum-900) !important; }
+.sideItemActive { background: linear-gradient(90deg,rgba(87,36,90,.12),rgba(56,174,177,.08)) !important; color: var(--plum-900) !important; box-shadow: none !important; }
+[dir='rtl'] .sideItemActive { box-shadow: none !important; }
+.sideIcon { width: 30px !important; height: 30px !important; flex: 0 0 30px !important; border: 1px solid #d3d2db !important; color: var(--plum-800) !important; background: transparent !important; }
+.sideItemActive .sideIcon { border-color: var(--plum-800) !important; background: var(--plum-800) !important; color: #fff !important; }
+.main { gap: 10px !important; }
+.section { border: 1px solid var(--line) !important; border-radius: 10px !important; background: rgba(255,255,255,.92) !important; box-shadow: 0 12px 30px rgba(35,18,39,.035) !important; content-visibility: auto; contain-intrinsic-size: 74px 520px; }
+.section[data-open='true'] { box-shadow: 0 18px 42px rgba(35,18,39,.06) !important; content-visibility: visible; }
+.sectionToggle { width: 100%; min-height: 74px !important; grid-template-columns: 46px minmax(0,1fr) 36px !important; gap: 14px !important; padding: 13px 22px !important; border: 0 !important; color: var(--ink); font-family: inherit; text-align: start; }
+.sectionToggle:hover { background: rgba(240,229,241,.32) !important; }
+.sectionIdentity { width: 42px !important; height: 42px !important; border-radius: 50% !important; color: var(--plum-800) !important; background: linear-gradient(145deg,#ead6ec,#d6c0e3) !important; }
+.sectionTitleText { gap: 1px !important; }
+.eyebrow { color: var(--plum-700) !important; font-size: 9px !important; }
+.sectionHead h2 { color: var(--ink) !important; font-size: clamp(20px,2.2vw,29px) !important; line-height: 1.15 !important; }
+.sectionToggleIcon { width: 36px !important; height: 36px !important; display: grid !important; place-items: center; border: 0 !important; background: transparent !important; color: var(--plum-900) !important; box-shadow: none !important; }
+.sectionContent { padding: 20px 22px 24px 82px !important; border-top: 1px solid var(--line) !important; }
+[dir='rtl'] .sectionContent { padding: 20px 82px 24px 22px !important; }
+.sectionLead,.subSectionLead { color: var(--body) !important; font-size: 16px !important; line-height: 1.72 !important; }
+.sectionReadButton { border-color: var(--plum-800) !important; border-radius: 8px !important; color: var(--plum-900) !important; }
+.sectionReadButtonDone { border-color: var(--plum-900) !important; background: var(--plum-900) !important; color: #fff !important; }
+.tableWrap { border-color: #c6c7d1 !important; border-radius: 10px !important; }
+.table th { border-bottom: 2px solid #a9a4b3 !important; color: #fff !important; background: #514054 !important; }
+.table td { border-color: #d2d3db !important; color: var(--body) !important; }
+.table tr:nth-child(even) td { background: #f4f6f8 !important; }
+.table tbody tr:hover td { background: #edf8f7 !important; }
+.card,.normalCard,.protocolCard,.criteriaCard,.discoidStatCard { border-color: var(--line) !important; background: #fff !important; }
+.callout { border-inline-start: 6px solid var(--teal-500) !important; border-radius: 5px !important; background: color-mix(in srgb,var(--teal-100) 62%,#fff) !important; }
+.callout.cave { border-color: #f2aaa5 !important; border-inline-start-color: var(--coral-600) !important; background: var(--coral-100) !important; }
+.calloutLabel { color: var(--teal-700) !important; }
+.callout.cave .calloutLabel { color: #b92e29 !important; }
+.takeHomeSection { border-color: rgba(165,58,98,.46) !important; background: linear-gradient(145deg,rgba(255,249,251,.96),rgba(247,236,242,.94)) !important; }
+.takeHomeSection .sectionToggle { min-height: 88px !important; color: #6b1d3b; background: linear-gradient(115deg,rgba(149,43,82,.08),rgba(255,255,255,.34)) !important; }
+.takeHomeSection .sectionIdentity { width: 50px !important; height: 50px !important; color: #fff !important; background: linear-gradient(145deg,#6d1d3b,#b74872) !important; box-shadow: 0 9px 22px rgba(126,36,70,.24); }
+.takeHomeBox { background: linear-gradient(145deg,#3b163d,#241126) !important; }
+.sourcesDetails { color: #d9d2dd; }
+.mobileLearningPath { display: none; }
+.page :is(a,button):focus-visible { outline: 3px solid var(--teal-500); outline-offset: 3px; }
+
+html[data-theme='dark'] .page { --ink: #f4eef5; --body: #c8c2cf; --muted: #9892a2; --line: #413947; --paper: #221f27; --canvas: #0b0910; background: var(--canvas) !important; }
+html[data-theme='dark'] .lessonProgress,html[data-theme='dark'] .sidebar,html[data-theme='dark'] .section { background: rgba(34,31,39,.94) !important; }
+html[data-theme='dark'] .learnActionFlash { border-color: #615669 !important; background: #27222b !important; color: #f2e7f3 !important; }
+html[data-theme='dark'] .sideTitle,html[data-theme='dark'] .sideItem,html[data-theme='dark'] .sectionLead,html[data-theme='dark'] .subSectionLead { color: var(--body) !important; }
+html[data-theme='dark'] .sectionHead h2,html[data-theme='dark'] .card h3,html[data-theme='dark'] .normalCard h3,html[data-theme='dark'] .protocolCard h3,html[data-theme='dark'] .criteriaCard h3 { color: var(--ink) !important; }
+html[data-theme='dark'] .card,html[data-theme='dark'] .normalCard,html[data-theme='dark'] .protocolCard,html[data-theme='dark'] .criteriaCard,html[data-theme='dark'] .discoidStatCard { background: #29252e !important; }
+html[data-theme='dark'] .callout { background: #183f41 !important; }
+html[data-theme='dark'] .callout.cave { background: #3d2425 !important; }
+
+@media (max-width:900px) {
+  .page { padding: 76px 12px 108px !important; }
+  .page::after { inset-inline-end: -78px; width: 360px; height: 300px; opacity: .3; }
+  .header,.layout { width: 100% !important; }
+  .topline { margin-inline: 4px; }
+  .heroGrid { min-height: 238px !important; padding: 16px 4px 32px; }
+  .heroText { width: 88%; }
+  .heroText h1 { font-size: clamp(39px,13vw,58px) !important; }
+  .heroText p { font-size: 15px !important; }
+  .heroActions { display: grid !important; grid-template-columns: 1fr 1fr; }
+  .takeHomeJump { grid-column: 1 / -1; }
+  .lessonProgress { grid-template-columns: 1fr auto !important; }
+  .progressActions { grid-column: 1 / -1; width: 100%; justify-content: space-between; flex-wrap: wrap; }
+  .layout,[dir='rtl'] .layout { grid-template-columns: 1fr !important; }
+  .sidebar { display: none !important; }
+  .mobileLearningPath { display: block; position: fixed; inset-inline-start: 10px; bottom: max(10px,env(safe-area-inset-bottom)); z-index: 220; filter: drop-shadow(0 14px 28px rgba(2,6,23,.2)); }
+  .mobilePathButton { min-height: 54px; max-width: min(330px,calc(100vw - 20px)); display: grid; grid-template-columns: 40px 31px minmax(0,1fr); align-items: center; gap: 8px; padding: 6px 16px 6px 7px; border: 1px solid color-mix(in srgb,var(--line) 84%,transparent); border-radius: 999px; color: var(--ink); background: color-mix(in srgb,var(--paper) 94%,transparent); box-shadow: 0 14px 34px rgba(2,6,23,.2); backdrop-filter: blur(18px); font-family: inherit; text-align: start; }
+  [dir='rtl'] .mobilePathButton { padding: 6px 7px 6px 16px; }
+  .mobileProgressRing { width: 40px; height: 40px; position: relative; display: grid; place-content: center; border-radius: 50%; background: conic-gradient(var(--teal-500) var(--mobile-progress),color-mix(in srgb,var(--line) 75%,transparent) 0); }
+  .mobileProgressRing::before { content: ''; position: absolute; inset: 4px; border-radius: 50%; background: var(--paper); }
+  .mobileProgressRing b,.mobileProgressRing small { position: relative; z-index: 1; display: inline; line-height: 1; }
+  .mobileProgressRing b { font-size: 11px; }.mobileProgressRing small { font-size: 8px; }
+  .mobileCurrentIcon,.mobilePathItemIcon { width: 31px; height: 31px; display: grid; place-items: center; border: 1px solid color-mix(in srgb,var(--plum-700) 38%,var(--line)); border-radius: 50%; color: var(--plum-700); }
+  .mobileCurrentIcon svg,.mobilePathItemIcon svg { width: 17px; height: 17px; }
+  .mobilePathLabel { min-width: 0; display: grid; gap: 2px; }.mobilePathLabel strong { font-size: 13px; }.mobilePathLabel small { overflow: hidden; color: var(--muted); font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+  .mobilePathPanel { position: fixed; inset-inline-start: 10px; bottom: calc(max(10px,env(safe-area-inset-bottom)) + 64px); width: calc(100vw - 20px); max-height: min(540px,calc(100svh - 100px)); overflow: hidden; display: grid; grid-template-rows: auto minmax(0,1fr); border: 1px solid var(--line); border-radius: 20px; color: var(--body); background: color-mix(in srgb,var(--paper) 97%,transparent); box-shadow: 0 24px 70px rgba(2,6,23,.26); backdrop-filter: blur(22px); }
+  .mobilePathPanel header { min-height: 64px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }.mobilePathPanel header div { display: grid; gap: 3px; }.mobilePathPanel header small { color: var(--muted); font-size: 10px; }.mobilePathPanel header strong { color: var(--ink); font-size: 15px; }.mobilePathPanel header button { width: 32px; height: 32px; border: 0; border-radius: 50%; color: var(--muted); background: var(--canvas); font-size: 20px; }
+  .mobilePathPanel nav { min-height: 0; overflow-y: auto; display: grid; align-content: start; gap: 3px; padding: 8px; }.mobilePathPanel nav button { min-height: 52px; display: grid; grid-template-columns: 34px minmax(0,1fr) 22px; align-items: center; gap: 9px; padding: 7px 9px; border: 1px solid transparent; border-radius: 11px; color: var(--body); background: transparent; font-family: inherit; text-align: start; }.mobilePathPanel nav button > span:nth-child(2) { min-width: 0; }.mobilePathPanel nav strong { color: var(--ink); font-size: 13px; }.mobilePathPanel nav i { color: var(--teal-700); font-style: normal; text-align: center; }.mobilePathPanel nav .mobilePathCurrent { border-color: color-mix(in srgb,var(--plum-700) 25%,var(--line)); background: color-mix(in srgb,var(--plum-100) 70%,transparent); }.mobilePathPanel nav .mobilePathCurrent .mobilePathItemIcon { border-color: var(--plum-700); color: #fff; background: var(--plum-700); }
+  .sectionToggle { grid-template-columns: 38px minmax(0,1fr) 28px !important; min-height: 68px !important; gap: 10px !important; padding: 12px 14px !important; }
+  .sectionIdentity { width: 36px !important; height: 36px !important; }.sectionIdentity svg { width: 20px; height: 20px; }
+  .sectionContent,[dir='rtl'] .sectionContent { padding: 18px 14px !important; }
+}
+`
+
 const TEAR_CASES = [
   { id: 'longitudinal', caseId: 59153, study: 'https://radiopaedia.org/cases/59153/studies/66472', contributor: 'Henry Knipe', sequence: 'Sagittal · PD fat sat', initialFrame: 16, frames: TEAR_CASE_FRAMES.longitudinal },
   { id: 'radial', caseId: 160533, study: 'https://radiopaedia.org/cases/160533/studies/131329', contributor: 'Yahya Baba', sequence: 'Axial · PD fat sat', initialFrame: 26, frames: TEAR_CASE_FRAMES.radial },
@@ -5624,32 +5784,25 @@ const SECTION_READ_LABELS = {
 }
 
 function Section({ id, eyebrow, title, lead, children, className = '', isOpen, isRead, onToggle, onToggleRead, readLabel, readDoneLabel }) {
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault()
-      onToggle()
-    }
-  }
-
   return (
     <section id={id} className={`${styles.section} ${className}`.trim()} data-open={isOpen ? 'true' : 'false'}>
       <div className={styles.sectionHead}>
-        <div
+        <button
+          type="button"
           className={styles.sectionToggle}
-          role="button"
-          tabIndex={0}
           aria-expanded={isOpen}
+          aria-controls={`${id}-content`}
           onClick={onToggle}
-          onKeyDown={handleKeyDown}
         >
           <span className={styles.sectionIdentity}><SectionIcon id={id} /></span>
           <div className={styles.sectionTitleText}>
             <span className={styles.eyebrow}>{eyebrow}</span>
             <h2>{title}</h2>
           </div>
-        </div>
+          <span className={styles.sectionToggleIcon} aria-hidden="true">{isOpen ? '−' : '+'}</span>
+        </button>
       </div>
-      <div className={`${styles.sectionContent} ${isOpen ? '' : styles.sectionContentCollapsed}`.trim()}>
+      <div id={`${id}-content`} className={`${styles.sectionContent} ${isOpen ? '' : styles.sectionContentCollapsed}`.trim()}>
         {lead && <p className={styles.sectionLead}>{lead}</p>}
         {children}
         <button type="button" className={`${styles.sectionReadButton} ${isRead ? styles.sectionReadButtonDone : ''}`} aria-pressed={isRead} onClick={onToggleRead}>
@@ -5659,6 +5812,36 @@ function Section({ id, eyebrow, title, lead, children, className = '', isOpen, i
       </div>
     </section>
   )
+}
+
+function MobileLearningPath({ sections, toc, activeId, readSections, onSelect }) {
+  const [panelOpen, setPanelOpen] = useState(false)
+  const activeSection = sections.find(section => section.id === activeId) || sections[0]
+  const progress = sections.length ? (readSections.size / sections.length) * 360 : 0
+
+  const selectSection = (id) => {
+    onSelect(id)
+    setPanelOpen(false)
+  }
+
+  return <div className={styles.mobileLearningPath}>
+    {panelOpen ? <section id="meniskus-mobile-learning-path" className={styles.mobilePathPanel} role="dialog" aria-label={toc}>
+      <header>
+        <div><small>{toc}</small><strong>{readSections.size} / {sections.length}</strong></div>
+        <button type="button" onClick={() => setPanelOpen(false)} aria-label="Close">×</button>
+      </header>
+      <nav>{sections.map(section => <button type="button" key={section.id} className={activeId === section.id ? styles.mobilePathCurrent : ''} onClick={() => selectSection(section.id)} aria-current={activeId === section.id ? 'location' : undefined}>
+        <span className={styles.mobilePathItemIcon}><SectionIcon id={section.id} /></span>
+        <span><strong>{section.label}</strong></span>
+        <i aria-hidden="true">{readSections.has(section.id) ? '✓' : ''}</i>
+      </button>)}</nav>
+    </section> : null}
+    <button type="button" className={styles.mobilePathButton} onClick={() => setPanelOpen(value => !value)} aria-expanded={panelOpen} aria-controls="meniskus-mobile-learning-path">
+      <span className={styles.mobileProgressRing} style={{ '--mobile-progress': `${progress}deg` }}><b>{readSections.size}</b><small>/{sections.length}</small></span>
+      <span className={styles.mobileCurrentIcon}><SectionIcon id={activeSection.id} /></span>
+      <span className={styles.mobilePathLabel}><strong>{toc}</strong><small>{activeSection.label}</small></span>
+    </button>
+  </div>
 }
 
 function Sidebar({ sections, toc, activeId, onClick }) {
@@ -5865,7 +6048,7 @@ export default function MeniskusPage() {
   ], [copy, takeHomeCopy])
   const mainRef = useRef(null)
   const isMobile = useIsMobileViewport()
-  const [openId, setOpenId] = useState(null)
+  const [openId, setOpenId] = useState(pageSections[0].id)
   const [activeId, setActiveId] = useState(pageSections[0].id)
   const [previewImage, setPreviewImage] = useState(null)
   const meniskusLayout = isMobile ? 'mobile' : 'desktop'
@@ -5960,41 +6143,36 @@ export default function MeniskusPage() {
     >
       <style>{MENISKUS_STYLES}</style>
       <style>{MENISKUS_MODERN_STYLES}</style>
+      <style>{MENISKUS_TEST_STYLE_OVERRIDES}</style>
       <header className={styles.header}>
-        <div className={styles.breadcrumb}>
-          <Link href={withLang('/')} className={styles.breadLink}>RadYar</Link>
-          <span>›</span>
-          <Link href={withLang('/lernen/msk')} className={styles.breadLink}>{copy.breadcrumbMsk}</Link>
-          <span>›</span>
-          <span>{copy.breadcrumbCurrent}</span>
+        <div className={styles.topline}>
+          <div className={styles.breadcrumb}>
+            <Link href={withLang('/')} className={styles.breadLink}>RadYar</Link>
+            <span>›</span>
+            <Link href={withLang('/lernen/msk')} className={styles.breadLink}>{copy.breadcrumbMsk}</Link>
+            <span>›</span>
+            <span>{copy.breadcrumbCurrent}</span>
+          </div>
+          <span className={styles.author}>{copy.sourceLabel}</span>
         </div>
 
-        <div className={styles.heroGrid} style={{ gridTemplateColumns: isMobile ? '1fr' : 'minmax(0, 1fr) 300px' }}>
+        <div className={styles.heroGrid}>
           <div className={styles.heroText}>
-            <span className={styles.sourceBadge}>{copy.sourceLabel}</span>
             <h1>{copy.title}</h1>
-            <div className={styles.heroActions}>
-              <Link href={withLang(`/ueben/quiz?fach=msk&n=10&themen=meniskus&from=${encodeURIComponent(withLang('/msk/knie/meniskus'))}`)} className={`${styles.learnAction} ${styles.learnActionMcq}`}>
-                <span><SectionIcon id="quiz" /></span>
-                <span>{copy.actionMcq}</span>
-              </Link>
-              <Link href={withLang(`/flashcards/meniskus?from=${encodeURIComponent(withLang('/msk/knie/meniskus'))}`)} className={`${styles.learnAction} ${styles.learnActionFlash}`}>
-                <span><SectionIcon id="flashcards" /></span>
-                <span>{copy.actionFlash}</span>
-              </Link>
-            </div>
+            <p>{copy.subtitle}</p>
           </div>
-          <div className={styles.heroStats}>
-            {copy.heroCards.map((card, index) => (
-              <div className={styles.heroStatCard} key={card.label}>
-                <span className={styles.heroFactIcon}><SectionIcon id={index === 0 ? 'grading' : index === 1 ? 'mrt' : 'therapie'} /></span>
-                <strong>{card.value}</strong>
-                <span>{card.label}</span>
-                <small>{card.text}</small>
-              </div>
-            ))}
-          </div>
+        </div>
 
+        <div className={styles.heroActions}>
+          <button type="button" className={styles.takeHomeJump} onClick={() => selectSection('takehome')}><SectionIcon id="takehome" />{takeHomeCopy.title}<span aria-hidden="true">↓</span></button>
+          <Link href={withLang(`/ueben/quiz?fach=msk&n=10&themen=meniskus&from=${encodeURIComponent(withLang('/msk/knie/meniskus'))}`)} className={`${styles.learnAction} ${styles.learnActionMcq}`}>
+            <span><SectionIcon id="quiz" /></span>
+            <span>{copy.actionMcq}</span>
+          </Link>
+          <Link href={withLang(`/flashcards/meniskus?from=${encodeURIComponent(withLang('/msk/knie/meniskus'))}`)} className={`${styles.learnAction} ${styles.learnActionFlash}`}>
+            <span><SectionIcon id="flashcards" /></span>
+            <span>{copy.actionFlash}</span>
+          </Link>
         </div>
 
         <div className={styles.lessonProgress}>
@@ -6248,6 +6426,8 @@ export default function MeniskusPage() {
           </div>
         </div>
       )}
+
+      {isMobile && <MobileLearningPath sections={pageSections} toc={copy.toc} activeId={activeId} readSections={readSections} onSelect={selectSection} />}
 
     </div>
   )
