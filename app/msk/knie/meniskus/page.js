@@ -1160,7 +1160,7 @@ export default function MeniskusPage() {
           </Section>
 
           <Section id="grading" eyebrow="03" title={copy.grading.extendedTitle} lead="" {...sectionProps('grading')}>
-            <p className={styles.subSectionLead}>{copy.grading.lead} {lang === 'de' ? 'Grad 0 entspricht einem homogen hypointensen, normalen Meniskus.' : lang === 'fa' ? 'درجهٔ ۰ مربوط به منیسک طبیعی با سیگنال هیپواینتنس هموژن است.' : 'Grade 0 describes a normal, homogeneously hypointense meniscus.'}</p>
+            <p className={styles.subSectionLead}>{copy.grading.lead}</p>
             <LotyschClassification copy={copy.grading} lang={lang} />
 
             <div className={`${styles.subSectionBlock} ${contentStyles.gradingCases}`}>

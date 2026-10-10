@@ -39,6 +39,11 @@
 .extendedDetails { margin-top: 22px; }.extendedDetailsContent { min-width: 0; }
 .gradeHierarchy { display: grid; gap: 16px; }
 .gradingCases { border-top: 4px solid var(--teal-500); margin-top: 32px; padding-top: 26px; }
+.lotyschLayout { display: grid; gap: 18px; }
+.gradeDefinition { display: flex; align-items: center; gap: 22px; padding: 18px; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(135deg,var(--paper),color-mix(in srgb,var(--teal-500) 6%,var(--paper))); break-inside: avoid; }
+.gradeSquare { display: grid; place-items: center; width: 88px; aspect-ratio: 1; flex-shrink: 0; margin: 0; padding: 8px; border: 1px solid color-mix(in srgb,var(--teal-500) 32%,var(--line)); border-radius: 12px; color: var(--ink); background: color-mix(in srgb,var(--teal-500) 12%,var(--paper)); font: 750 18px/1.4 var(--font-inter,system-ui,sans-serif); text-align: center; }
+.gradeDefinition p { margin: 0; color: var(--body); font-size: 16px; line-height: 1.8; }
+@media (max-width:760px) { .gradeDefinition { gap: 14px; padding: 14px; align-items: flex-start; } .gradeSquare { width: 68px; font-size: 15px; } .gradeDefinition p { font-size: 14px; } }
 .subtypeTableWrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; margin-top: 16px; }
 .subtypeTable { width: 100%; min-width: 470px; border-collapse: collapse; font-size: 13px; line-height: 1.65; }
 .subtypeTable th,.subtypeTable td { padding: 12px; border-bottom: 1px solid var(--line); text-align: start; vertical-align: top; color: var(--body); }
