@@ -1106,7 +1106,7 @@ export default function MeniskusPage() {
         <article className={styles.main} ref={mainRef} data-disable-lesson-explorer="true">
           <Section id="anatomie" eyebrow="01" title={copy.anatomy.title} lead={copy.anatomy.lead} {...sectionProps('anatomie')}>
             <Table headers={copy.anatomy.tableHeaders} rows={copy.anatomy.tableRows} />
-            <div className={styles.splitGrid}>
+            <div className={`${styles.splitGrid} ${contentStyles.rootsGrid}`}>
               <div className={styles.card}>
                 <h3>{copy.anatomy.rootsTitle}</h3>
                 {copy.anatomy.rootsItems ? (
