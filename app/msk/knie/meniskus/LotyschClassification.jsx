@@ -14,11 +14,11 @@ export default function LotyschClassification({ copy, lang }) {
   const items = ['I','II','III'].map(grade => ({ id: grade, label: `${label.grade} ${grade}`, category: grade === 'I' ? label.early : grade === 'II' ? label.advanced : label.tear,
     details: grade === 'II' ? null : copy.tableHeaders.slice(1).map((heading,index) => ({ id: String(index), label: heading, text: copy.tableRows[grade === 'I' ? 0 : 4][index+1] })),
   }))
-  const normal = lang === 'de' ? 'Normaler Meniskus mit homogen hypointensem Signal und regelrechter dreieckiger Form, ohne pathologische Signalsteigerung.' : lang === 'fa' ? 'منیسک طبیعی با سیگنال هیپواینتنس هموژن و شکل مثلثی طبیعی، بدون افزایش سیگنال پاتولوژیک.' : 'Normal meniscus with homogeneous hypointense signal and normal triangular shape, without abnormal signal increase.'
+  const normal = lang === 'de' ? ['Normaler Meniskus', 'Homogen hypointenses Signal und regelrechte dreieckige Form, ohne pathologische Signalsteigerung.'] : lang === 'fa' ? ['منیسک طبیعی', 'سیگنال هیپواینتنس هموژن و شکل مثلثی طبیعی، بدون افزایش سیگنال پاتولوژیک.'] : ['Normal meniscus', 'Homogeneous hypointense signal and normal triangular shape, without abnormal signal increase.']
   const extended = lang === 'de' ? ['Erweiterung nach Jerosch', 'Vollständige Destruktion oder komplexe Risskonfiguration'] : lang === 'fa' ? ['حالت توسعه‌یافته بر اساس Jerosch', 'تخریب کامل یا الگوی پارگی پیچیده'] : ['Jerosch extension', 'Complete destruction or complex tear configuration']
   const title = lang === 'de' ? 'Grade I bis III' : lang === 'fa' ? 'درجات I تا III' : 'Grades I to III'
   return <div className={styles.lotyschLayout} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
-    <div className={styles.gradeDefinition} data-grade-definition="0"><h3 className={styles.gradeSquare}>{label.grade} 0</h3><p>{normal}</p></div>
+    <div className={styles.gradeDefinition} data-grade-definition="0"><h3 className={styles.gradeSquare}>{label.grade} 0</h3><p><span className={styles.extensionLabel}>{normal[0]}</span>{normal[1]}</p></div>
     <InteractiveTeachingGroups groups={[{ id: 'lotysch', title, items, categoryInTabs: true }]} direction={lang === 'fa' ? 'rtl' : 'ltr'} renderExtra={item => item.id === 'II' ? <>
     <table className={styles.gradeSubtypeTable} aria-label={label.subtypes}>
       <tbody>{copy.tableRows.slice(1,4).map(row => <tr key={row[0]}>

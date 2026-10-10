@@ -11,6 +11,7 @@ import LessonCaseFile from '@/components/LessonCaseFile'
 import MeniscusTextLesson from '@/app/andarun/test/MeniscusTextLesson'
 import TearTypeExplorer from './TearTypeExplorer'
 import LotyschClassification from './LotyschClassification'
+import { DiscoidComparison, DiscoidMriSchematics } from './DiscoidSchematics'
 import template from '@/components/LessonTemplate.module.css'
 import contentStyles from './content.module.css'
 
@@ -260,7 +261,7 @@ const CONTENT = {
       mriRows: [
         ['Koronal', 'absolute Meniskusbreite', '≥ 15 mm'],
         ['Koronal', 'Meniskusbreite / maximale Tibiabreite', '> 20 %'],
-        ['Sagittal', 'kontinuierliche Corpus-Darstellung', 'auf ≥ 3 aufeinanderfolgenden Standardschichten'],
+        ['Sagittal · historisch', 'kontinuierliche Corpus-Darstellung', '≥ 3 aufeinanderfolgende 5-mm-Schichten'],
       ],
       sagittalTitle: 'Sagittales Zeichen',
       sagittalText: 'Das sagittale Kriterium entspricht dem Gegenteil des Absent-Bow-Tie-Signs: Ein normaler Meniskus zeigt den Corpus nur auf 1–2 Schichten, der discoide Meniskus auf mindestens 3 Schichten.',
@@ -271,7 +272,7 @@ const CONTENT = {
         ['discoider Meniskus mit Riss', 'Meniskusrefixation plus ggf. partielle Resektion'],
         ['irreparabel / schwere Destruktion', 'Teil- oder Totalmeniskektomie nur als letzte Option'],
       ],
-      key: 'Sagittales Zeichen: Bei einem discoiden Meniskus bleibt der Meniskuskorpus auf mindestens 3 aufeinanderfolgenden sagittalen Schichten sichtbar.',
+      key: 'Aktuelles Hauptkriterium: Corpusbreite ≥ 15 mm auf einer mittleren koronalen Schicht. Das klassische Drei-Schichten-Zeichen ist bei dünneren MRT-Schichten kein eigenständiges Diagnosekriterium.',
     },
     therapy: {
       title: 'Therapieprinzip: Save the Meniscus',
@@ -493,7 +494,7 @@ const CONTENT = {
       mriRows: [
         ['Coronal', 'absolute meniscal width', '≥ 15 mm'],
         ['Coronal', 'meniscal width / maximal tibial width', '> 20%'],
-        ['Sagittal', 'continuous body visualization', 'on ≥ 3 consecutive standard slices'],
+        ['Sagittal · historical', 'continuous body visualization', '≥ 3 consecutive 5-mm slices'],
       ],
       sagittalTitle: 'Sagittal sign',
       sagittalText: 'The sagittal criterion is the opposite of the absent bow-tie sign: a normal meniscus shows the body on only 1–2 slices, whereas a discoid meniscus remains visible on at least 3 slices.',
@@ -504,7 +505,7 @@ const CONTENT = {
         ['discoid meniscus with tear', 'meniscal repair plus partial resection if needed'],
         ['irreparable / severe destruction', 'partial or total meniscectomy only as last option'],
       ],
-      key: 'Sagittal sign: in a discoid meniscus, the meniscal body remains visible on at least 3 consecutive sagittal slices.',
+      key: 'Current main criterion: body width ≥ 15 mm on a mid-coronal slice. The classic three-slice sign is not a standalone diagnostic criterion on thin-slice MRI.',
     },
     therapy: {
       title: 'Treatment concept: Save the meniscus',
@@ -726,7 +727,7 @@ const CONTENT = {
       mriRows: [
         ['کرونال', 'عرض مطلق منیسک', '≥ ۱۵ میلی‌متر'],
         ['کرونال', 'عرض منیسک / حداکثر عرض تیبیا', '> ۲۰٪'],
-        ['ساژیتال', 'دیده شدن مداوم تنه منیسک', 'در ≥ ۳ برش استاندارد متوالی'],
+        ['ساژیتال · تاریخی', 'دیده شدن مداوم تنه منیسک', '≥ ۳ برش متوالی با ضخامت ۵ میلی‌متر'],
       ],
       sagittalTitle: 'علامت ساژیتال',
       sagittalText: 'معیار ساژیتال برعکس absent bow-tie sign است: منیسک طبیعی تنه را فقط در ۱ تا ۲ برش نشان می‌دهد، اما منیسک دیسکوئید در حداقل ۳ برش متوالی دیده می‌شود.',
@@ -737,7 +738,7 @@ const CONTENT = {
         ['منیسک دیسکوئید همراه با پارگی', 'ترمیم منیسک همراه با رزکسیون نسبی در صورت نیاز'],
         ['غیرقابل ترمیم / تخریب شدید', 'منیسککتومی نسبی یا کامل فقط به عنوان آخرین گزینه'],
       ],
-      key: 'علامت ساژیتال: در منیسک دیسکوئید، تنه منیسک در حداقل ۳ برش ساژیتال متوالی قابل مشاهده باقی می‌ماند.',
+      key: 'معیار اصلی فعلی: عرض تنه ≥ ۱۵ میلی‌متر در برش میانی کرونال. علامت کلاسیک سه برش در MRI با برش‌های نازک، معیار تشخیصی مستقل نیست.',
     },
     therapy: {
       title: 'اصول درمان: Save the Meniscus',
@@ -973,6 +974,7 @@ const SOURCES = [
   { label: 'De Smet & Tuite · Two-slice-touch rule (AJR, 2006)', href: 'https://pubmed.ncbi.nlm.nih.gov/16985134/' },
   { label: 'Nguyen et al. · MR Imaging–based Diagnosis and Classification of Meniscal Tears (RadioGraphics, 2014)', href: 'https://pubs.rsna.org/doi/10.1148/rg.344125202' },
   { label: 'Samato et al. · MRI criteria for discoid lateral meniscus', href: 'https://pubmed.ncbi.nlm.nih.gov/11973030/' },
+  { label: 'SSR consensus · Standardized MRI nomenclature for knee meniscal lesions (2026)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC13424353/' },
   { label: 'Kim et al. · Discoid lateral meniscus: diagnosis and treatment (review)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7550551/' },
   { label: 'Radiopaedia case rID 75168 · Discoid lateral meniscus', href: 'https://radiopaedia.org/cases/75168' },
   { label: 'Radiopaedia case rID 14060 · Lateral discoid meniscus', href: 'https://radiopaedia.org/cases/14060' },
@@ -1210,13 +1212,11 @@ export default function MeniskusPage() {
                 </div>
               ))}
             </div>
-            <figure className={styles.discoidFigure}>
-              <img src="/meniskus/discoid-meniscus-mri-v2.png" alt="Discoid lateral meniscus MRI criteria with lateral-only coronal width measurement and six sagittal slices" />
-              <figcaption className={styles.aiImageNotice}>{copy.aiImageNotice}</figcaption>
-            </figure>
-            <div className={styles.card}>
+            <DiscoidComparison lang={lang} />
+            <div className={`${styles.subSectionBlock} ${contentStyles.discoidMriBlock}`}>
               <h3 className={styles.discoidMriTitle}>{copy.discoid.mriTitle}</h3>
               <Table headers={copy.discoid.mriHeaders} rows={copy.discoid.mriRows} />
+              <DiscoidMriSchematics />
             </div>
             <Callout label={copy.keyLabel}>{copy.discoid.key}</Callout>
           </Section>
