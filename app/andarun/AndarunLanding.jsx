@@ -15,8 +15,9 @@ const spaces = [
   { number: '06', title: 'Finanzen',   description: 'Sicher planen',       action: 'finance',            theme: 'cobalt', icon: 'chart'     },
   { number: '07', title: 'Dienste',    description: 'Dienstzeiten planen', href: '/andarun/dienste',    theme: 'mint',   icon: 'briefcase' },
   { number: '08', title: 'Befunde',    description: 'Fälle & Fragen',      href: '/andarun/befunde',    theme: 'coral',  icon: 'file'      },
-  { number: '09', title: 'Medikamente', description: 'Einnahme im Blick', href: '/andarun/medikamente', theme: 'mint',   icon: 'pill'      },
-  { number: '10', title: 'Känguru',     description: 'Mathe Schritt für Schritt', href: '/andarun/kaenguru', theme: 'lemon', icon: 'kangaroo' },
+  { number: '09', title: 'Test',       description: 'Lernseiten gestalten', href: '/andarun/test',       theme: 'cobalt', icon: 'test'      },
+  { number: '10', title: 'Medikamente', description: 'Einnahme im Blick', href: '/andarun/medikamente', theme: 'mint',   icon: 'pill'      },
+  { number: '11', title: 'Känguru',     description: 'Mathe Schritt für Schritt', href: '/andarun/kaenguru', theme: 'lemon', icon: 'kangaroo' },
 ]
 
 const financeSpaces = [
@@ -37,6 +38,7 @@ function SpaceIcon({ name }) {
   if (name === 'kangaroo') return <Image className={styles.kangarooIconAsset} src="/kanguru/kanguru-app-icon.png" alt="" width={96} height={96} />
   if (name === 'briefcase') return <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="14" width="34" height="25" rx="3"/><path d="M18 14v-3a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v3M7 24h34M21 24v4h6v-4"/></svg>
   if (name === 'file') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 6h14l8 8v28H14Z"/><path d="M28 6v9h8M19 24h12M19 31h12M19 17h5"/></svg>
+  if (name === 'test') return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M18 6h12M21 6v11L10 36a4 4 0 0 0 3.5 6h21a4 4 0 0 0 3.5-6L27 17V6"/><path d="M15 31h18M19 26h10"/></svg>
   return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 40V27h8v13M20 40V18h8v22M32 40V8h8v32M5 40h38"/></svg>
 }
 
