@@ -22,14 +22,15 @@
 .vascularLayout > * { direction: ltr; }
 :global([dir='rtl']) .vascularLayout > * { direction: rtl; }
 .vascularLayout .zoneGrid { grid-template-columns: 1fr; margin: 0; }
-.zoneCard { border: 0; border-radius: 22px; padding: 18px; color: #fff; box-shadow: 0 14px 30px rgba(23,32,51,.12); }
-.zone1 { background: linear-gradient(135deg,#dc2626,#991b1b); }
-.zone2 { background: linear-gradient(135deg,#f97316,#c2410c); }
-.zone3 { background: linear-gradient(135deg,#64748b,#334155); }
-.zoneCard h3 { margin: 0 0 12px; color: #fff; font-size: 17px; }
-.zoneCard span,.zoneCard small { display: block; color: #fff; font-size: 13px; line-height: 1.6; opacity: .88; }
-.zoneCard span { margin-bottom: 14px; }
-.zoneCard p { margin: 0 0 6px; color: #fff; font-weight: 900; }
+.zoneCard { border: 1px solid rgba(255,255,255,.36); border-radius: 22px; padding: 22px; color: #fff; background: radial-gradient(ellipse at 0 0,rgba(255,255,255,.24),transparent 65%),linear-gradient(135deg,rgba(var(--zone-light),.9),rgba(var(--zone-deep),.96)); backdrop-filter: blur(16px) saturate(125%); -webkit-backdrop-filter: blur(16px) saturate(125%); box-shadow: inset 0 1px 0 rgba(255,255,255,.3),inset 0 -1px 0 rgba(255,255,255,.08),0 10px 24px rgba(23,32,51,.13); }
+.zone1 { --zone-light: 200,39,45; --zone-deep: 132,25,34; }
+.zone2 { --zone-light: 212,91,21; --zone-deep: 159,56,16; }
+.zone3 { --zone-light: 92,111,137; --zone-deep: 47,62,83; }
+.zoneCard h3 { margin: 0 0 10px; color: #fff; font-size: 20px; line-height: 1.35; }
+.zoneCard span,.zoneCard small { display: block; color: rgba(255,255,255,.94); font-size: 13px; line-height: 1.65; }
+.zoneCard span { margin-bottom: 17px; }
+.zoneCard p { display: table; max-width: 100%; margin: 0 0 16px; padding: 7px 11px; border: 1px solid rgba(255,255,255,.22); border-radius: 9px; background: rgba(255,255,255,.1); color: #fff; font-size: 15px; line-height: 1.5; font-weight: 800; }
+.zoneCard small { padding-top: 12px; border-top: 1px solid rgba(255,255,255,.24); }
 .normalCard { margin-top: 18px; border-inline-start: 3px solid var(--teal-500); }
 .criteriaCard > span { display: inline-block; margin-bottom: 10px; color: var(--teal-700); font-size: 12px; font-weight: 900; }
 .gradingFigure { margin-bottom: 25px; }
@@ -60,5 +61,5 @@
 :global(html[data-theme='dark']) .greenTitle { color: #88d7aa; }
 @media (max-width:1100px) { .splitGrid { grid-template-columns: 1fr; } .zoneGrid,.protocolGrid,.criteriaGrid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media (max-width:760px) { .vascularLayout,.splitGrid,.zoneGrid,.protocolGrid,.criteriaGrid,.discoidStats { grid-template-columns: 1fr; } .card,.normalCard,.protocolCard,.criteriaCard,.zoneCard,.discoidStatCard { padding: 16px; } }
-@media print { .vascularLayout { display: block; } .zoneCard { box-shadow: none; background: var(--paper); border: 1px solid var(--line); border-inline-start: 3px solid #64748b; } .zone1 { border-inline-start-color: #b91c1c; } .zone2 { border-inline-start-color: #c2410c; } .zoneCard h3,.zoneCard p,.zoneCard span,.zoneCard small { color: var(--ink); opacity: 1; } }
+@media print { .vascularLayout { display: block; } .zoneCard { box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--paper); border: 1px solid var(--line); border-inline-start: 3px solid #64748b; } .zone1 { border-inline-start-color: #b91c1c; } .zone2 { border-inline-start-color: #c2410c; } .zoneCard h3,.zoneCard p,.zoneCard span,.zoneCard small { color: var(--ink); opacity: 1; } .zoneCard p { background: none; border-color: var(--line); } .zoneCard small { border-color: var(--line); } }
 @media print { .imageModal,.progressAuthError,.figureZoomButton span,.videoButton,.sourcesDetails { display: none; } .splitGrid,.zoneGrid,.protocolGrid,.criteriaGrid { display: block; } .figure,.card,.zoneCard,.criteriaCard,.protocolCard { margin-block: 4mm; } }
