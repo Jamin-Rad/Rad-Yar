@@ -128,7 +128,7 @@ function CaseSequence({ lang, caseData }) {
   }
 
   return <div className={styles.caseViewer}>
-    <div ref={viewerRef} className={styles.caseViewport} data-no-zoom data-lesson-print-case-viewport role="group" aria-busy={!seriesReady && !loadFailed} tabIndex={0} onKeyDown={handleKeyDown} onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerEnd} onPointerCancel={handlePointerEnd} onLostPointerCapture={() => { pointerStartRef.current = null }} aria-label={pick(alt, lang)}>
+    <div ref={viewerRef} className={styles.caseViewport} style={caseData.aspectRatio ? { aspectRatio: caseData.aspectRatio } : undefined} data-no-zoom data-lesson-print-case-viewport role="group" aria-busy={!seriesReady && !loadFailed} tabIndex={0} onKeyDown={handleKeyDown} onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerEnd} onPointerCancel={handlePointerEnd} onLostPointerCapture={() => { pointerStartRef.current = null }} aria-label={pick(alt, lang)}>
       {frames.map((src, index) => <Image key={`${loadAttempt}-${src}`} src={src} alt={index === frameIndex ? `${pick(alt, lang)} · ${index + 1}/${frames.length}` : ''} aria-hidden={index !== frameIndex} style={{ visibility: index === frameIndex ? 'visible' : 'hidden' }} width={320} height={320} unoptimized loading="eager" draggable={false} onLoad={event => handleFrameLoad(event.currentTarget, index, loadAttempt)} onError={() => { if (loadAttemptRef.current === loadAttempt) setLoadFailed(true) }} />)}
       <div className={styles.caseImageMeta}><strong dir="ltr" aria-live="polite">{String(frameIndex + 1).padStart(2, '0')} <i>/ {frames.length}</i></strong></div>
       {!seriesReady || loadFailed ? <small className={styles.caseViewportHint} dir={lang === 'fa' ? 'rtl' : 'ltr'} role="status">{loadFailed ? <>{labels.error} <button type="button" onClick={retrySeries}>{labels.retry}</button></> : labels.loading}</small> : null}
@@ -143,7 +143,7 @@ function CaseSequence({ lang, caseData }) {
 
 export default function RadiopaediaFile({ lang, caseData }) {
   const findingsId = useId()
-  return <article className={styles.radiopaediaFile} data-lesson-print-case>
+  return <article className={`${styles.radiopaediaFile} ${caseData.variant === 'compact' ? styles.compactCase : ''}`} data-lesson-print-case>
     <header className={styles.caseFileHeader} data-lesson-print-case-header>
       <span className={styles.caseFileIcon}><Icon name="case" /></span>
       <span className={styles.caseFileHeading}>

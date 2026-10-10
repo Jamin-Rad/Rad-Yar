@@ -1168,7 +1168,8 @@ export default function MeniskusPage() {
               <div className={styles.caseGrid}>
                 {copy.cases.items.map(item => (
                   <LessonCaseFile key={item.caseId} lang={lang} caseData={{
-                    heading: `Grade ${item.caseId === 'case-75168' ? '2c' : '2b'}`,
+                    heading: `Grad ${item.caseId === 'case-75168' ? '2c' : '2b'}`,
+                    variant: 'compact', aspectRatio: item.caseId === 'case-75168' ? '460 / 436' : '3 / 4',
                     title: item.title, alt: item.title, initialFrame: item.initialFrame,
                     frames: Array.from({ length: item.frameCount }, (_, index) => `/meniskus/cases/${item.caseId}/frame-${String(index + 1).padStart(2, '0')}.${item.frameExt}`),
                     url: item.url, credit: item.credit,
