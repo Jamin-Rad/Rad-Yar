@@ -45,6 +45,11 @@
 .subtypeTable thead th { color: var(--ink); background: color-mix(in srgb,var(--teal-500) 12%,var(--paper)); font-weight: 800; }
 .subtypeTable tbody th { color: var(--ink); font-weight: 850; }
 .subtypeTable tr:last-child > * { border-bottom: 0; }
+.gradeComparison { table-layout: fixed; min-width: 570px; font-size: 14px; line-height: 1.7; }
+.gradeComparison thead th { font-size: 17px; padding-block: 16px; }
+.gradeComparison th:first-child { width: 24%; font-size: 12px; }
+.gradeComparison td + td,.gradeComparison thead th + th { border-inline-start: 1px solid var(--line); }
+.subtypeTableWrap:has(.gradeComparison) { margin-top: 0; }
 @media print { .subtypeTable { min-width: 0; font-size: 9pt; } .subtypeTableWrap { overflow: visible; } }
 .gradeCard { padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); }
 .gradeCard h4 { margin: 0 0 14px; color: var(--ink); font-size: 20px; }

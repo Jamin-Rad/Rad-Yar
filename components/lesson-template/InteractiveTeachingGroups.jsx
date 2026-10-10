@@ -29,7 +29,7 @@ function InteractiveTeachingGroup({ group, resolve, direction, renderVisual, ren
       <h3 id={`${prefix}-heading`}>{resolve(group.title)}</h3>
     </header>
     {group.intro ? <p className={styles.intro}>{resolve(group.intro)}</p> : null}
-    <div className={styles.explorer} dir="ltr">
+    <div className={`${styles.explorer} ${group.categoryInTabs ? styles.labelledTabs : ''}`} dir="ltr">
       <div className={styles.tabs} role="tablist" aria-orientation="vertical" aria-label={resolve(group.title)} dir={direction}>
         {group.items.map((item, index) => <button
           key={item.id}
@@ -42,7 +42,7 @@ function InteractiveTeachingGroup({ group, resolve, direction, renderVisual, ren
           tabIndex={selected === index ? 0 : -1}
           onClick={() => setSelected(index)}
           onKeyDown={event => handleKeyDown(event, index)}
-        ><span>{resolve(item.label)}</span><i aria-hidden="true">→</i></button>)}
+        ><span>{resolve(item.label)}{group.categoryInTabs ? <small className={styles.tabSubtitle}>{resolve(item.category)}</small> : null}</span><i aria-hidden="true">→</i></button>)}
       </div>
       <div className={styles.panels} data-lesson-print-teaching-panels dir={direction}>
         {group.items.map((item, index) => {
@@ -58,8 +58,10 @@ function InteractiveTeachingGroup({ group, resolve, direction, renderVisual, ren
             hidden={selected !== index}
           >
             <div className={styles.panelCopy}>
-              <span className={styles.category}>{resolve(item.category)}</span>
-              <h4>{resolve(item.label)}</h4>
+              <div className={group.categoryInTabs ? styles.printHeading : undefined}>
+                <span className={styles.category}>{resolve(item.category)}</span>
+                <h4>{resolve(item.label)}</h4>
+              </div>
               {item.text ? <p>{resolve(item.text)}</p> : null}
               {item.details ? <dl className={styles.detailList}>{item.details.map(detail => <div key={detail.id}><dt>{resolve(detail.label)}</dt><dd>{resolve(detail.text)}</dd></div>)}</dl> : null}
               {renderExtra?.(item, group)}
