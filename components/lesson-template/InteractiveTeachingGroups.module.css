@@ -29,6 +29,7 @@
 .panel[hidden] { display: none; }
 .panelWithVisual { display: grid; grid-template-columns: minmax(0,1fr) minmax(170px,.52fr); gap: 24px; align-items: center; }
 .panelCopy { min-width: 0; }
+.inlineVisual { margin-block: 20px; }
 .panelVisual { overflow: hidden; min-width: 0; border: 1px solid color-mix(in srgb,var(--text-accent) 22%,var(--text-border)); border-radius: 11px; background: #11101a; box-shadow: 0 10px 26px rgba(16,10,22,.16); }
 .panelVisual svg,.panelVisual img { width: 100%; height: auto; display: block; }
 .category { color: var(--text-accent); font-size: 12px; font-weight: 850; letter-spacing: .055em; text-transform: uppercase; }
@@ -44,6 +45,7 @@
 .tabs button:focus-visible,.panel:focus-visible { outline: 2px solid var(--text-accent); outline-offset: 3px; }
 :global(html[data-theme='dark']) .lesson { --text-detail: #29242f; --text-shell: #231e29; --text-border: color-mix(in srgb,var(--text-accent) 34%,#3a323f); }
 :global(html[data-theme='dark']) .labelledTabs { --text-accent: #d5b1dd; }
+:global(html[data-theme='dark']) .inlineDiagramExplorer { --text-accent: #d5b1dd; }
 @container (max-width:620px) { .explorer.labelledTabs,.lesson[dir='rtl'] .explorer.labelledTabs { grid-template-columns: 1fr; } }
 @media (max-width:760px) { .explorer.labelledTabs,.lesson[dir='rtl'] .explorer.labelledTabs { grid-template-columns: 1fr; } .labelledTabs .panel { padding: 20px 14px; } }
 @media print { .printHeading { display: block; } }

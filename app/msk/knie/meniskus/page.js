@@ -1181,23 +1181,21 @@ export default function MeniskusPage() {
 
 
           <Section id="risstypen" eyebrow="04" title={copy.tearTypes.title} lead={copy.tearTypes.lead} {...sectionProps('risstypen')}>
-            <figure className={styles.tearTypesFigure}>
-              <img src="/meniskus/meniscal-tear-types.png" alt="Longitudinal, radial, horizontal, bucket-handle and flap meniscal tears with MRI signs" />
-              <figcaption className={styles.aiImageNotice}>{copy.aiImageNotice}</figcaption>
-            </figure>
             <TearTypeExplorer lang={lang} />
-            <p className={styles.tearCaseIntro}>{copy.tearTypes.caseIntro}</p>
+            <div className={`${styles.subSectionBlock} ${contentStyles.gradingCases}`}>
+            <h3 className={styles.subSectionTitle}>{copy.cases.title}</h3>
             <div className={styles.tearCaseGrid}>
               {TEAR_CASES.map(item => {
                 const caseCopy = copy.tearTypes.caseItems[item.id]
                 return (
                   <LessonCaseFile key={item.id} lang={lang} caseData={{
-                    title: caseCopy.title, alt: caseCopy.title, initialFrame: item.initialFrame, frames: item.frames,
-                    findings: [item.sequence, caseCopy.sign], interpretation: caseCopy.sign,
+                    heading: caseCopy.title, variant: 'compact', autoAspectRatio: true,
+                    title: caseCopy.sign, alt: caseCopy.title, initialFrame: item.initialFrame, frames: item.frames,
                     url: item.study, credit: `Case courtesy of ${item.contributor}, Radiopaedia.org · rID ${item.caseId}`,
                   }} />
                 )
               })}
+            </div>
             </div>
             <Callout type="cave" label={copy.tearTypes.caveTitle}>{copy.tearTypes.caveText}</Callout>
           </Section>

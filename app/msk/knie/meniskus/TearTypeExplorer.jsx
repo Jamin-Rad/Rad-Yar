@@ -1,4 +1,5 @@
 import InteractiveTeachingGroups from '@/components/lesson-template/InteractiveTeachingGroups'
+import TearSchematic from './TearSchematic'
 
 const L = (de, en, fa) => ({ de, en, fa })
 const labels = [L('Definition & Verlauf', 'Definition & orientation', 'تعریف و مسیر پارگی'), L('MRT-Merkmale', 'MRI findings', 'یافته‌های MRI'), L('Klinische Bedeutung', 'Clinical significance', 'اهمیت بالینی'), L('Im Befund angeben', 'What to report', 'در گزارش ذکر شود')]
@@ -35,8 +36,8 @@ const items = [
     L('Größe, Ansatz und Dislokationsrichtung. Neben dem Defekt auch die Lage des Fragments dokumentieren.', 'Size, attachment and displacement direction. Document the fragment location as well as the donor defect.', 'اندازه، محل اتصال و جهت جابه‌جایی؛ علاوه بر نقص مبدأ، محل قطعه را هم ذکر کنید.'),
   ]),
 ]
-const groups = [{ id: 'tear-types', title: L('Risstyp auswählen', 'Select a tear type', 'نوع پارگی را انتخاب کنید'), intro: L('Verlauf, MRT-Merkmale und klinische Bedeutung getrennt betrachten. Die Therapie hängt nicht allein vom Risstyp ab.', 'Explore orientation, MRI findings and clinical relevance separately. Treatment is not determined by tear type alone.', 'مسیر، یافته‌های MRI و اهمیت بالینی را جداگانه ببینید. نوع پارگی به‌تنهایی تعیین‌کنندهٔ درمان نیست.'), items }]
+const groups = [{ id: 'tear-types', title: L('Merkmale und Definition', 'Features and definition', 'مشخصات و تعریف'), visualPlacement: 'inline', items }]
 
 export default function TearTypeExplorer({ lang }) {
-  return <InteractiveTeachingGroups groups={groups} resolve={value => value[lang] || value.de} direction={lang === 'fa' ? 'rtl' : 'ltr'} />
+  return <InteractiveTeachingGroups groups={groups} resolve={value => value[lang] || value.de} direction={lang === 'fa' ? 'rtl' : 'ltr'} renderVisual={item => <TearSchematic item={item} lang={lang} />} />
 }

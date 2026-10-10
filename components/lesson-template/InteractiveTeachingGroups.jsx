@@ -29,7 +29,7 @@ function InteractiveTeachingGroup({ group, resolve, direction, renderVisual, ren
       <h3 id={`${prefix}-heading`}>{resolve(group.title)}</h3>
     </header>
     {group.intro ? <p className={styles.intro}>{resolve(group.intro)}</p> : null}
-    <div className={`${styles.explorer} ${group.categoryInTabs ? styles.labelledTabs : ''}`} dir="ltr">
+    <div className={`${styles.explorer} ${group.categoryInTabs ? styles.labelledTabs : ''} ${group.visualPlacement === 'inline' ? styles.inlineDiagramExplorer : ''}`} dir="ltr">
       <div className={styles.tabs} role="tablist" aria-orientation="vertical" aria-label={resolve(group.title)} dir={direction}>
         {group.items.map((item, index) => <button
           key={item.id}
@@ -49,7 +49,7 @@ function InteractiveTeachingGroup({ group, resolve, direction, renderVisual, ren
           const visual = renderVisual?.(item, group)
           return <div
             key={item.id}
-            className={`${styles.panel} ${visual ? styles.panelWithVisual : ''}`}
+            className={`${styles.panel} ${visual && group.visualPlacement !== 'inline' ? styles.panelWithVisual : ''}`}
             data-lesson-print-teaching-panel
             id={`${prefix}-${item.id}-panel`}
             role="tabpanel"
@@ -63,10 +63,11 @@ function InteractiveTeachingGroup({ group, resolve, direction, renderVisual, ren
                 <h4>{resolve(item.label)}</h4>
               </div>
               {item.text ? <p>{resolve(item.text)}</p> : null}
+              {visual && group.visualPlacement === 'inline' ? <div className={styles.inlineVisual}>{visual}</div> : null}
               {item.details ? <dl className={styles.detailList}>{item.details.map(detail => <div key={detail.id}><dt>{resolve(detail.label)}</dt><dd>{resolve(detail.text)}</dd></div>)}</dl> : null}
               {renderExtra?.(item, group)}
             </div>
-            {visual ? <div className={styles.panelVisual}>{visual}</div> : null}
+            {visual && group.visualPlacement !== 'inline' ? <div className={styles.panelVisual}>{visual}</div> : null}
           </div>
         })}
       </div>
