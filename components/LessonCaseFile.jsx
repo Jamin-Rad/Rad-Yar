@@ -147,7 +147,7 @@ export default function RadiopaediaFile({ lang, caseData }) {
     <header className={styles.caseFileHeader} data-lesson-print-case-header>
       <span className={styles.caseFileIcon}><Icon name="case" /></span>
       <span className={styles.caseFileHeading}>
-        <strong>{pick(L('Fallbeispiel', 'Case example', 'نمونه کیس'), lang)}</strong>
+        <strong>{caseData.heading || pick(L('Fallbeispiel', 'Case example', 'نمونه کیس'), lang)}</strong>
       </span>
       <a href={caseData.url} target="_blank" rel="noopener noreferrer">{pick(L('Fall im Vollbild', 'Open case full screen', 'نمایش تمام‌صفحه کیس'), lang)} <Icon name="external" /></a>
     </header>

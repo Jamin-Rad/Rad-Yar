@@ -1,6 +1,6 @@
 'use client'
 
-import { useId, useState } from 'react'
+import InteractiveTeachingGroups from '@/components/lesson-template/InteractiveTeachingGroups'
 import styles from './content.module.css'
 
 const LABELS = {
@@ -9,29 +9,18 @@ const LABELS = {
   fa: { grade: 'درجه', early: 'دژنراسیون موکوئید اولیه', tear: 'پارگی واقعی', advanced: 'دژنراسیون پیشرفته', subtypes: 'درجهٔ II به سه زیرگروه تقسیم می‌شود', noTear: 'پارگی قطعی اثبات نشده است' },
 }
 
-function GradeDetails({ row, headers }) {
-  return <dl className={styles.gradeDetails}>{headers.slice(1).map((label, index) => <div key={label}><dt>{label}</dt><dd>{row[index + 1]}</dd></div>)}</dl>
-}
-
 export default function LotyschClassification({ copy, lang }) {
   const label = LABELS[lang] || LABELS.de
-  const [activeGrade, setActiveGrade] = useState('II')
-  const [activeSubtype, setActiveSubtype] = useState('2a')
-  const prefix = useId()
-  return <div className={styles.gradeHierarchy}>
-    {['I','II','III'].map(grade => <section key={grade} className={`${styles.gradeCard} ${grade === 'II' ? styles.gradeTwo : ''}`} data-active={activeGrade === grade}>
-      <h4 className={styles.gradeHeading}><button type="button" className={styles.gradeSelect} onClick={() => setActiveGrade(current => current === grade ? null : grade)} aria-expanded={activeGrade === grade} aria-controls={`${prefix}-${grade}`}>
-        <span className={styles.gradeBadge}>{label.grade} {grade}</span><strong>{grade === 'I' ? label.early : grade === 'II' ? label.advanced : label.tear}</strong><span className={styles.gradeChevron} aria-hidden="true">{activeGrade === grade ? '−' : '+'}</span>
-      </button></h4>
-      <div id={`${prefix}-${grade}`} className={styles.gradeBody} hidden={activeGrade !== grade}>
-      {grade !== 'II' ? <GradeDetails row={copy.tableRows[grade === 'I' ? 0 : 4]} headers={copy.tableHeaders} /> : <>
-      <p className={styles.gradeSubgroupLabel}>{label.subtypes}</p>
-      <div className={styles.gradeSubgroups}>{copy.tableRows.slice(1,4).map(row => <section key={row[0]} className={styles.gradeSubtype}>
-        <h5><button type="button" className={styles.subtypeSelect} onClick={() => setActiveSubtype(current => current === row[0] ? null : row[0])} aria-expanded={activeSubtype === row[0]} aria-controls={`${prefix}-${row[0]}`}><span dir="ltr">{row[0]}</span><span aria-hidden="true">{activeSubtype === row[0] ? '−' : '+'}</span></button></h5>
-        <div id={`${prefix}-${row[0]}`} className={styles.subtypeBody} hidden={activeSubtype !== row[0]}><GradeDetails row={row[0] === '2a' ? [row[0], row[1], row[2], label.noTear] : row} headers={copy.tableHeaders} /></div>
-      </section>)}</div>
-      </>}
-      </div>
-    </section>)}
-  </div>
+  const items = ['I','II','III'].map(grade => ({ id: grade, label: `${label.grade} ${grade}`, category: grade === 'I' ? label.early : grade === 'II' ? label.advanced : label.tear,
+    details: grade === 'II' ? null : copy.tableHeaders.slice(1).map((heading,index) => ({ id: String(index), label: heading, text: copy.tableRows[grade === 'I' ? 0 : 4][index+1] })),
+  }))
+  const title = lang === 'de' ? 'Grade I bis III' : lang === 'fa' ? 'درجات I تا III' : 'Grades I to III'
+  const intro = lang === 'de' ? 'Wähle einen Grad, um Morphologie, Oberflächenkontakt und klinische Bedeutung zu vergleichen.' : lang === 'fa' ? 'یک درجه را انتخاب کنید تا مورفولوژی، تماس سطحی و اهمیت بالینی آن را ببینید.' : 'Select a grade to compare morphology, surface contact and clinical significance.'
+  return <InteractiveTeachingGroups groups={[{ id: 'lotysch', title, intro, items }]} direction={lang === 'fa' ? 'rtl' : 'ltr'} renderExtra={item => item.id === 'II' ? <>
+    <p className={styles.gradeSubgroupLabel}>{label.subtypes}</p>
+    <div className={styles.subtypeTableWrap}><table className={styles.subtypeTable}>
+      <thead><tr>{copy.tableHeaders.map(heading => <th key={heading} scope="col">{heading}</th>)}</tr></thead>
+      <tbody>{copy.tableRows.slice(1,4).map(row => <tr key={row[0]}><th scope="row" dir="ltr">{row[0]}</th>{row.slice(1).map((cell,index) => <td key={index}>{cell}</td>)}</tr>)}</tbody>
+    </table></div>
+  </> : null} />
 }

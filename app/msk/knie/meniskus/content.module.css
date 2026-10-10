@@ -38,6 +38,14 @@
 .gradingFigure { margin-bottom: 25px; }
 .extendedDetails { margin-top: 22px; }.extendedDetailsContent { min-width: 0; }
 .gradeHierarchy { display: grid; gap: 16px; }
+.gradingCases { border-top: 4px solid var(--teal-500); margin-top: 32px; padding-top: 26px; }
+.subtypeTableWrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; margin-top: 16px; }
+.subtypeTable { width: 100%; min-width: 470px; border-collapse: collapse; font-size: 13px; line-height: 1.65; }
+.subtypeTable th,.subtypeTable td { padding: 12px; border-bottom: 1px solid var(--line); text-align: start; vertical-align: top; color: var(--body); }
+.subtypeTable thead th { color: var(--ink); background: color-mix(in srgb,var(--teal-500) 12%,var(--paper)); font-weight: 800; }
+.subtypeTable tbody th { color: var(--ink); font-weight: 850; }
+.subtypeTable tr:last-child > * { border-bottom: 0; }
+@media print { .subtypeTable { min-width: 0; font-size: 9pt; } .subtypeTableWrap { overflow: visible; } }
 .gradeCard { padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); }
 .gradeCard h4 { margin: 0 0 14px; color: var(--ink); font-size: 20px; }
 .gradeTwo { border-color: color-mix(in srgb,var(--teal-500) 45%,var(--line)); background: color-mix(in srgb,var(--teal-500) 7%,var(--paper)); }

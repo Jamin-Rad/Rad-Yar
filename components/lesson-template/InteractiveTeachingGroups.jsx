@@ -5,7 +5,7 @@ import styles from './InteractiveTeachingGroups.module.css'
 
 const identity = value => value
 
-function InteractiveTeachingGroup({ group, resolve, direction, renderVisual }) {
+function InteractiveTeachingGroup({ group, resolve, direction, renderVisual, renderExtra }) {
   const [selected, setSelected] = useState(0)
   const tabRefs = useRef([])
   const prefix = `teaching-${group.id}`
@@ -62,6 +62,7 @@ function InteractiveTeachingGroup({ group, resolve, direction, renderVisual }) {
               <h4>{resolve(item.label)}</h4>
               {item.text ? <p>{resolve(item.text)}</p> : null}
               {item.details ? <dl className={styles.detailList}>{item.details.map(detail => <div key={detail.id}><dt>{resolve(detail.label)}</dt><dd>{resolve(detail.text)}</dd></div>)}</dl> : null}
+              {renderExtra?.(item, group)}
             </div>
             {visual ? <div className={styles.panelVisual}>{visual}</div> : null}
           </div>
@@ -72,8 +73,8 @@ function InteractiveTeachingGroup({ group, resolve, direction, renderVisual }) {
   </section>
 }
 
-export default function InteractiveTeachingGroups({ groups, resolve = identity, direction = 'ltr', renderVisual }) {
+export default function InteractiveTeachingGroups({ groups, resolve = identity, direction = 'ltr', renderVisual, renderExtra }) {
   return <div className={styles.lesson} data-lesson-print-teaching-groups dir={direction}>
-    {groups.map(group => <InteractiveTeachingGroup key={group.id} group={group} resolve={resolve} direction={direction} renderVisual={renderVisual} />)}
+    {groups.map(group => <InteractiveTeachingGroup key={group.id} group={group} resolve={resolve} direction={direction} renderVisual={renderVisual} renderExtra={renderExtra} />)}
   </div>
 }

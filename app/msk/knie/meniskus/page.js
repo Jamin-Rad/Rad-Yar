@@ -83,7 +83,7 @@ const CONTENT = {
     sections: [
       { id: 'anatomie', label: 'Anatomie und Vaskularisation', icon: '🦴' },
       { id: 'mrt', label: 'MRT-Diagnostik und Risskriterien', icon: '🩻' },
-      { id: 'grading', label: 'MRT-Signalgrading', icon: '📊' },
+      { id: 'grading', label: 'Lotysch-Klassifikation', icon: '📊' },
       { id: 'risstypen', label: 'Risstypen', icon: '🧩' },
       { id: 'discoider', label: 'Discoider Meniskus', icon: '🔵' },
       { id: 'therapie', label: 'Therapieprinzip', icon: '🧵' },
@@ -150,7 +150,7 @@ const CONTENT = {
       normalText: 'Der gesunde Meniskus stellt sich homogen hypointens dar. In der sagittalen Ansicht besitzt er eine typische dreieckige Struktur.',
     },
     grading: {
-      title: 'MRT-Signalgrading: Grad 0 bis III',
+      title: 'Lotysch-Klassifikation',
       lead: 'Die Klassifikation nach Lotysch hilft, degenerative intrameniskale Signalveränderungen von einem echten Meniskusriss zu unterscheiden.',
       lotyschTitle: 'Einfaches Modell: Grad 0 bis III',
       simpleHeaders: ['Grad', 'MRT-Signal', 'Histologie', 'Klinisch'],
@@ -316,7 +316,7 @@ const CONTENT = {
     sections: [
       { id: 'anatomie', label: 'Anatomy and vascular supply', icon: '🦴' },
       { id: 'mrt', label: 'MRI diagnosis and tear criteria', icon: '🩻' },
-      { id: 'grading', label: 'MRI signal grading', icon: '📊' },
+      { id: 'grading', label: 'Lotysch classification', icon: '📊' },
       { id: 'risstypen', label: 'Tear types', icon: '🧩' },
       { id: 'discoider', label: 'Discoid meniscus', icon: '🔵' },
       { id: 'therapie', label: 'Treatment principle', icon: '🧵' },
@@ -383,7 +383,7 @@ const CONTENT = {
       normalText: 'A healthy meniscus is homogeneously hypointense. On sagittal images it has a typical triangular configuration.',
     },
     grading: {
-      title: 'MRI signal grading: grade 0 to III',
+      title: 'Lotysch classification',
       lead: 'The Lotysch classification helps distinguish degenerative intrameniscal signal changes from a true meniscal tear.',
       lotyschTitle: 'Simple model: grades 0 to III',
       simpleHeaders: ['Grade', 'MRI signal', 'Histology', 'Clinical meaning'],
@@ -549,7 +549,7 @@ const CONTENT = {
     sections: [
       { id: 'anatomie', label: 'آناتومی و خون‌رسانی', icon: '🦴' },
       { id: 'mrt', label: 'تشخیص MRI و معیارهای پارگی', icon: '🩻' },
-      { id: 'grading', label: 'درجه‌بندی سیگنال MRI', icon: '📊' },
+      { id: 'grading', label: 'طبقه‌بندی Lotysch', icon: '📊' },
       { id: 'risstypen', label: 'انواع پارگی', icon: '🧩' },
       { id: 'discoider', label: 'منیسک دیسکوئید', icon: '🔵' },
       { id: 'therapie', label: 'اصل درمان', icon: '🧵' },
@@ -616,7 +616,7 @@ const CONTENT = {
       normalText: 'منیسک سالم به صورت هموژن هیپواینتنس دیده می‌شود. در نمای ساژیتال شکل مثلثی تیپیک دارد.',
     },
     grading: {
-      title: 'درجه‌بندی سیگنال MRI: درجه ۰ تا III',
+      title: 'طبقه‌بندی Lotysch',
       lead: 'طبقه‌بندی Lotysch کمک می‌کند تغییرات سیگنال دژنراتیو داخل منیسک از پارگی واقعی منیسک جدا شود.',
       lotyschTitle: 'مدل ساده: درجه ۰ تا III',
       simpleHeaders: ['درجه', 'سیگنال MRI', 'هیستولوژی', 'معنای بالینی'],
@@ -1158,30 +1158,17 @@ export default function MeniskusPage() {
             <MeniscusTextLesson lang={lang} />
           </Section>
 
-          <Section id="grading" eyebrow="03" title={copy.grading.title} lead={copy.grading.lead} {...sectionProps('grading')}>
-            <div className={styles.gradingFigure}>
-              <ImageFigure
-                src="/meniskus/lotysch-grading.png"
-                alt="Lotysch grading of intrameniscal MRI signal from grade 0 to grade 3"
-                caption={copy.grading.lotyschTitle}
-                aiNotice={copy.aiImageNotice}
-                onZoom={() => setPreviewImage({ src: '/meniskus/lotysch-grading.png', alt: copy.grading.lotyschTitle })}
-                zoomLabel={copy.zoomImage}
-              />
-            </div>
-            <div className={styles.extendedDetails}>
-              <div className={styles.extendedTableTitle}>{copy.grading.extendedTitle}</div>
-              <div className={styles.extendedDetailsContent}>
-                <LotyschClassification copy={copy.grading} lang={lang} />
-              </div>
-            </div>
+          <Section id="grading" eyebrow="03" title={copy.grading.extendedTitle} lead="" {...sectionProps('grading')}>
+            <h3 className={styles.subSectionTitle}>{lang === 'fa' ? 'تعریف' : 'Definition'}</h3>
+            <p className={styles.subSectionLead}>{copy.grading.lead} {lang === 'de' ? 'Grad 0 entspricht einem homogen hypointensen, normalen Meniskus.' : lang === 'fa' ? 'درجهٔ ۰ مربوط به منیسک طبیعی با سیگنال هیپواینتنس هموژن است.' : 'Grade 0 describes a normal, homogeneously hypointense meniscus.'}</p>
+            <LotyschClassification copy={copy.grading} lang={lang} />
 
-            <div className={styles.subSectionBlock}>
+            <div className={`${styles.subSectionBlock} ${contentStyles.gradingCases}`}>
               <h3 className={styles.subSectionTitle}>{copy.cases.title}</h3>
-              <p className={styles.subSectionLead}>{copy.cases.lead}</p>
               <div className={styles.caseGrid}>
                 {copy.cases.items.map(item => (
                   <LessonCaseFile key={item.caseId} lang={lang} caseData={{
+                    heading: `Grade ${item.caseId === 'case-75168' ? '2c' : '2b'}`,
                     title: item.title, alt: item.title, initialFrame: item.initialFrame,
                     frames: Array.from({ length: item.frameCount }, (_, index) => `/meniskus/cases/${item.caseId}/frame-${String(index + 1).padStart(2, '0')}.${item.frameExt}`),
                     findings: [item.sequence, item.title], interpretation: `${item.label} · ${item.meta}`,
