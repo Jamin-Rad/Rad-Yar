@@ -37,7 +37,7 @@ export default function Footer() {
   const { lang, texts } = useLanguage()
   const privacyLabel = lang === 'fa' ? 'تنظیمات حریم خصوصی' : lang === 'en' ? 'Privacy settings' : 'Datenschutzeinstellungen'
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} data-print-exclude>
       <div className={styles.brandLeft}>
         <RadYarMark size={28} />
         <Link href="/ueber-radyar" className={styles.brandLink}>{texts.footerLegalLink}</Link>

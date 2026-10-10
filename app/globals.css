@@ -219,3 +219,129 @@ html[data-theme='dark'] section#takehome .sectionHead h2 {
     display: none !important;
   }
 }
+
+/* Print/PDF is a purpose-built handout, independent of the interactive theme. */
+@page {
+  size: A4 portrait;
+  margin: 14mm 14mm 16mm;
+}
+
+@media print {
+  html,
+  html[data-theme='dark'] {
+    color-scheme: light !important;
+    background: #fff !important;
+  }
+
+  html,
+  body {
+    width: auto !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+    background: #fff !important;
+    color: #111827 !important;
+    font-size: 10pt !important;
+    line-height: 1.48 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    -webkit-user-select: text;
+    user-select: text;
+  }
+
+  [data-print-exclude],
+  [data-lesson-progress-ui],
+  [data-lesson-concept-explorer],
+  main > aside,
+  main nav,
+  main [role='tablist'],
+  main [class*='hero'],
+  main [class*='author'],
+  main [class*='heroStats'],
+  main [class*='heroFacts'],
+  main [class*='actions'],
+  main [class*='toolbar'],
+  main iframe,
+  main video,
+  main audio {
+    display: none !important;
+  }
+
+  main,
+  main > div,
+  main article {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding-inline: 0 !important;
+    transform: none !important;
+    background: #fff !important;
+  }
+
+  main * {
+    min-height: 0 !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  main :is(h1, h2, h3, h4, p, li, td, th, strong, b, small, span) {
+    color: #111827 !important;
+  }
+
+  main h1 { font-size: 20pt !important; line-height: 1.2 !important; }
+  main h2 { font-size: 14pt !important; line-height: 1.25 !important; }
+  main h3 { font-size: 11.5pt !important; line-height: 1.3 !important; }
+  main :is(h1, h2, h3, h4) { break-after: avoid-page; page-break-after: avoid; }
+  main p { orphans: 3; widows: 3; }
+
+  main section {
+    overflow: visible !important;
+    break-before: auto;
+    border-color: #d7dde5 !important;
+    background: transparent !important;
+  }
+
+  main section + section { margin-top: 7mm !important; }
+  main section > button:first-child { cursor: default !important; background: #f4f6f8 !important; border-color: #d7dde5 !important; }
+  main section > button:first-child svg:last-child { display: none !important; }
+  main section > button:first-child [class*='toggle'] { display: none !important; }
+
+  main section[id] > [id$='-panel'],
+  main section[id] > [id$='-content'],
+  main section[id] > [hidden] {
+    display: block !important;
+    max-height: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: visible !important;
+  }
+
+  main section[id] button[aria-pressed],
+  main section[id] [class*='readButton'] { display: none !important; }
+
+  main :is(img, svg) { max-width: 100% !important; height: auto !important; }
+  main figure,
+  main img,
+  main [class*='card'],
+  main [class*='callout'] { break-inside: avoid-page; page-break-inside: avoid; }
+
+  main table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 8.5pt !important;
+  }
+
+  main thead { display: table-header-group; }
+  main tfoot { display: table-footer-group; }
+  main tr { break-inside: avoid-page; page-break-inside: avoid; }
+  main th,
+  main td { padding: 2.2mm !important; border: .5pt solid #cbd5e1 !important; background: transparent !important; }
+  main th { background: #eef2f6 !important; font-weight: 750 !important; }
+
+  main a { color: #111827 !important; text-decoration: none !important; }
+  main [style*='position: sticky'],
+  main [style*='position: fixed'] { position: static !important; }
+}

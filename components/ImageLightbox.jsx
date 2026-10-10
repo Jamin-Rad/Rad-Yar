@@ -155,7 +155,7 @@ export default function ImageLightbox() {
   if (!image) return null
 
   return (
-    <div className={styles.overlay} role="dialog" aria-modal="true" aria-label={image.alt || 'Bild'} onClick={close}>
+    <div className={styles.overlay} role="dialog" aria-modal="true" aria-label={image.alt || 'Bild'} onClick={close} data-print-exclude>
       <button type="button" className={styles.close} onClick={close} aria-label="Schließen">×</button>
 
       <div className={styles.controls} onClick={event => event.stopPropagation()}>

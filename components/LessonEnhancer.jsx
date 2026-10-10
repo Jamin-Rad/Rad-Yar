@@ -384,7 +384,7 @@ export default function LessonEnhancer() {
     <small className={styles.desktopProgressCaption}>{validReadCount} / {sections.length} {copy.read}</small>
   </div>
 
-  return <div className={styles.root} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
+  return <div className={styles.root} dir={lang === 'fa' ? 'rtl' : 'ltr'} data-print-exclude>
     {navbarTarget ? createPortal(navProgress, navbarTarget) : null}
     {!mobile && sidebarTarget ? createPortal(desktopProgress, sidebarTarget) : null}
     {explorer ? createPortal(<ConceptExplorer key={explorer.id} items={explorer.items} copy={copy} sectionTitle={explorer.title} />, explorer.target) : null}

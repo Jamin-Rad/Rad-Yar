@@ -93,7 +93,7 @@ export default function LegalNotice() {
   if (!open) return null
 
   return (
-    <div className={styles.overlay} role="presentation">
+    <div className={styles.overlay} role="presentation" data-print-exclude>
       <section className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby="legal-notice-title" dir="ltr" lang="en">
         <div className={styles.icon} aria-hidden="true">RY</div>
         <p className={styles.eyebrow}>{copy.eyebrow}</p>

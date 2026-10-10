@@ -46,7 +46,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={styles.nav} data-radyar-navbar>
+      <nav className={styles.nav} data-radyar-navbar data-print-exclude>
         {isHome ? <div /> : (
           <Link href="/" className={styles.brand} dir="ltr">
             <HexLogo size={28} />
