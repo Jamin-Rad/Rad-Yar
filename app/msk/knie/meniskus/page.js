@@ -1216,7 +1216,7 @@ export default function MeniskusPage() {
             <div className={`${styles.subSectionBlock} ${contentStyles.discoidMriBlock}`}>
               <h3 className={styles.discoidMriTitle}>{copy.discoid.mriTitle}</h3>
               <Table headers={copy.discoid.mriHeaders} rows={copy.discoid.mriRows} />
-              <DiscoidMriSchematics />
+              <DiscoidMriSchematics lang={lang} />
             </div>
             <Callout label={copy.keyLabel}>{copy.discoid.key}</Callout>
           </Section>
