@@ -18,10 +18,18 @@
 .subSectionTitle,.extendedTableTitle { margin: 0 0 10px; color: var(--ink); font: 850 clamp(23px,2.5vw,31px)/1.2 var(--font-newsreader,Georgia,serif); }
 .subSectionLead,.tearCaseIntro { margin: 0 0 18px; color: var(--body); font-size: 15px; line-height: 1.72; }
 .zoneGrid,.protocolGrid,.criteriaGrid,.discoidStats { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; margin: 18px 0; }
-.zoneCard { border-top: 4px solid #aeb7c4; }
-.zone1 { border-top-color: #b91c1c; }.zone2 { border-top-color: #e11d48; }
-.zoneCard span,.zoneCard small { display: block; color: var(--body); font-size: 13px; line-height: 1.6; }
-.zoneCard p { margin: 10px 0; color: var(--ink); font-weight: 750; }
+.vascularLayout { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 18px; align-items: center; direction: ltr; margin: 18px 0; }
+.vascularLayout > * { direction: ltr; }
+:global([dir='rtl']) .vascularLayout > * { direction: rtl; }
+.vascularLayout .zoneGrid { grid-template-columns: 1fr; margin: 0; }
+.zoneCard { border: 0; border-radius: 22px; padding: 18px; color: #fff; box-shadow: 0 14px 30px rgba(23,32,51,.12); }
+.zone1 { background: linear-gradient(135deg,#dc2626,#991b1b); }
+.zone2 { background: linear-gradient(135deg,#f97316,#c2410c); }
+.zone3 { background: linear-gradient(135deg,#64748b,#334155); }
+.zoneCard h3 { margin: 0 0 12px; color: #fff; font-size: 17px; }
+.zoneCard span,.zoneCard small { display: block; color: #fff; font-size: 13px; line-height: 1.6; opacity: .88; }
+.zoneCard span { margin-bottom: 14px; }
+.zoneCard p { margin: 0 0 6px; color: #fff; font-weight: 900; }
 .normalCard { margin-top: 18px; border-inline-start: 3px solid var(--teal-500); }
 .criteriaCard > span { display: inline-block; margin-bottom: 10px; color: var(--teal-700); font-size: 12px; font-weight: 900; }
 .gradingFigure { margin-bottom: 25px; }
@@ -51,5 +59,6 @@
 :global(html[data-theme='dark']) .criteriaCard > span,:global(html[data-theme='dark']) .discoidStatCard strong,:global(html[data-theme='dark']) .discoidMriTitle { color: #8bd7d5; }
 :global(html[data-theme='dark']) .greenTitle { color: #88d7aa; }
 @media (max-width:1100px) { .splitGrid { grid-template-columns: 1fr; } .zoneGrid,.protocolGrid,.criteriaGrid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
-@media (max-width:760px) { .splitGrid,.zoneGrid,.protocolGrid,.criteriaGrid,.discoidStats { grid-template-columns: 1fr; } .card,.normalCard,.protocolCard,.criteriaCard,.zoneCard,.discoidStatCard { padding: 16px; } }
+@media (max-width:760px) { .vascularLayout,.splitGrid,.zoneGrid,.protocolGrid,.criteriaGrid,.discoidStats { grid-template-columns: 1fr; } .card,.normalCard,.protocolCard,.criteriaCard,.zoneCard,.discoidStatCard { padding: 16px; } }
+@media print { .vascularLayout { display: block; } .zoneCard { box-shadow: none; background: var(--paper); border: 1px solid var(--line); border-inline-start: 3px solid #64748b; } .zone1 { border-inline-start-color: #b91c1c; } .zone2 { border-inline-start-color: #c2410c; } .zoneCard h3,.zoneCard p,.zoneCard span,.zoneCard small { color: var(--ink); opacity: 1; } }
 @media print { .imageModal,.progressAuthError,.figureZoomButton span,.videoButton,.sourcesDetails { display: none; } .splitGrid,.zoneGrid,.protocolGrid,.criteriaGrid { display: block; } .figure,.card,.zoneCard,.criteriaCard,.protocolCard { margin-block: 4mm; } }

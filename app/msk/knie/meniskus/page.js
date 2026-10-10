@@ -1129,6 +1129,7 @@ export default function MeniskusPage() {
             <div className={styles.subSectionBlock}>
               <h3 className={styles.subSectionTitle}>{copy.vascular.title}</h3>
               <p className={styles.subSectionLead}>{copy.vascular.lead}</p>
+              <div className={contentStyles.vascularLayout}>
               <div className={styles.zoneGrid}>
                 {copy.vascular.zones.map((zone, index) => (
                   <div key={zone.name} className={`${styles.zoneCard} ${styles[`zone${index + 1}`]}`}>
@@ -1139,9 +1140,7 @@ export default function MeniskusPage() {
                   </div>
                 ))}
               </div>
-              <div className={styles.splitGrid}>
                 <ImageFigure src="/meniskus/vascular-zones.png" alt={copy.vascular.title} />
-                <Table headers={copy.vascular.tableHeaders} rows={copy.vascular.tableRows} />
               </div>
               <Callout label={copy.keyLabel}>{copy.vascular.key}</Callout>
             </div>
