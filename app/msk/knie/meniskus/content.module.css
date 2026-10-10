@@ -47,6 +47,21 @@
 .discoidDiagram h3 { margin: 0 0 16px; color: var(--ink); font: 650 17px/1.5 var(--font-inter,system-ui,sans-serif); }
 .discoidDiagram svg { display: block; width: 100%; height: auto; border-radius: 14px; background: #f5f9fa; }
 .discoidMriBlock { border-top: 3px solid var(--teal-500); }
+.discoidCriteriaWrap { margin-top: 18px; overflow: hidden; border: 1px solid color-mix(in srgb,var(--teal-500) 25%,var(--line)); border-radius: 18px; background: linear-gradient(125deg,color-mix(in srgb,var(--paper) 88%,transparent),color-mix(in srgb,var(--teal-500) 5%,var(--paper))); backdrop-filter: blur(16px); box-shadow: inset 0 1px 0 rgba(255,255,255,.4),0 8px 24px rgba(18,45,63,.06); }
+.discoidCriteriaTable { width: 100%; table-layout: fixed; border-collapse: collapse; color: var(--body); font: 400 15px/1.65 var(--font-inter,system-ui,sans-serif); }
+.discoidCriteriaTable th,.discoidCriteriaTable td { padding: 20px 24px; text-align: start; vertical-align: middle; overflow-wrap: anywhere; }
+.discoidCriteriaTable tbody td,.discoidCriteriaTable tbody td:first-child { font-weight: 400; }
+.discoidCriteriaTable thead th { padding-block: 12px; color: var(--muted); background: color-mix(in srgb,var(--paper) 78%,transparent); font-size: 11px; font-weight: 650; letter-spacing: .04em; border-bottom: 1px solid var(--line); }
+.discoidCriteriaTable thead th:first-child { width: 20%; text-align: center; }
+.discoidCriteriaTable thead th:nth-child(2) { width: 44%; }
+.discoidCriteriaTable tbody th { color: var(--teal-700); background: color-mix(in srgb,var(--teal-500) 9%,transparent); border-inline-end: 1px solid var(--line); text-align: center; font-size: 16px; font-weight: 650; }
+.discoidCriteriaTable tbody td:last-child { color: var(--ink); font-size: 19px; font-weight: 650; font-variant-numeric: tabular-nums; }
+.discoidCriteriaTable tbody tr + tr td { border-top: 1px solid var(--line); }
+.discoidCriteriaTable tbody + tbody tr > * { border-top: 2px solid color-mix(in srgb,var(--teal-500) 22%,var(--line)); }
+.discoidCriteriaTable tbody + tbody td:last-child { font-size: 15px; font-weight: 500; }
+:global(html[data-theme='dark']) .discoidCriteriaTable tbody th { color: #8bd7d5; }
+@media (max-width:760px) { .discoidCriteriaWrap { border-radius: 13px; } .discoidCriteriaTable { font-size: 12px; line-height: 1.6; } .discoidCriteriaTable th,.discoidCriteriaTable td { padding: 14px 10px; } .discoidCriteriaTable thead th { font-size: 10px; letter-spacing: 0; } .discoidCriteriaTable thead th:first-child { width: 22%; } .discoidCriteriaTable thead th:nth-child(2) { width: 40%; } .discoidCriteriaTable tbody th { font-size: 12px; } .discoidCriteriaTable tbody td:last-child { font-size: 16px; } .discoidCriteriaTable tbody + tbody td:last-child { font-size: 12px; } }
+@media print { .discoidCriteriaWrap { background: transparent; box-shadow: none; backdrop-filter: none; break-inside: avoid; } .discoidCriteriaTable { font-size: 10pt; } .discoidCriteriaTable th,.discoidCriteriaTable td { padding: 3mm; } .discoidCriteriaTable tbody th,.discoidCriteriaTable thead th { background: transparent; color: var(--ink); } .discoidCriteriaTable tbody td:last-child,.discoidCriteriaTable tbody + tbody td:last-child { font-size: 10pt; } }
 .discoidRaster { margin: 22px 0 0; padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); break-inside: avoid; }
 .discoidRaster h3 { margin: 0 0 16px; color: var(--ink); font: 650 17px/1.5 var(--font-inter,system-ui,sans-serif); }
 .discoidRaster a { display: block; overflow: hidden; border-radius: 12px; cursor: zoom-in; }
@@ -123,6 +138,8 @@
 .tearTypesFigure,.discoidFigure { margin: 20px 0 24px; }
 .tearCaseIntro { margin-top: 24px; }
 .discoidStatCard strong { display: block; margin-bottom: 8px; color: var(--teal-700); font: 850 30px/1 var(--font-newsreader,Georgia,serif); }
+.discoidStatCard.discoidAnatomyStat strong { color: var(--ink); font: 650 21px/1.45 var(--font-inter,system-ui,sans-serif); overflow-wrap: anywhere; }
+:global(html[data-theme='dark']) .discoidStatCard.discoidAnatomyStat strong { color: var(--ink); }
 .discoidStatCard span { display: block; color: var(--ink); font-weight: 750; line-height: 1.4; }
 .discoidStatCard p { margin: 8px 0 0; color: var(--body); font-size: 13px; line-height: 1.55; }
 .discoidMriTitle { color: var(--teal-700); }.greenTitle { color: #17845f; }

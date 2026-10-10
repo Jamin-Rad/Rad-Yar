@@ -240,11 +240,11 @@ const CONTENT = {
     },
     discoid: {
       title: 'Discoider Meniskus',
-      lead: 'Der discoide Meniskus ist eine angeborene anatomische Variante mit übermäßig breitem, scheibenförmigem Meniskuskörper. Er betrifft fast ausschließlich den Außenmeniskus und reißt häufiger als ein normal geformter Meniskus.',
+      lead: 'Der discoide Meniskus ist eine angeborene anatomische Variante mit übermäßig breitem, scheibenförmigem Meniskuskörper.\n\nEr betrifft fast ausschließlich den Außenmeniskus und reißt häufiger als ein normal geformter Meniskus.',
       stats: [
         { value: '3–5 %', label: 'Inzidenz', text: 'häufig Zufallsbefund im Knie-MRT' },
         { value: '~50 %', label: 'bilateral', text: 'nicht selten beidseitig vorhanden' },
-        { value: 'Außen', label: 'Meniskus', text: 'fast ausschließlich der Außenmeniskus betroffen' },
+        { value: 'Außenmeniskus', label: 'Betroffener Meniskus', qualitative: true },
       ],
       overviewHeaders: ['Parameter', 'Wert'],
       overviewRows: [
@@ -261,7 +261,7 @@ const CONTENT = {
       mriRows: [
         ['Koronal', 'absolute Meniskusbreite', '≥ 15 mm'],
         ['Koronal', 'Meniskusbreite / maximale Tibiabreite', '> 20 %'],
-        ['Sagittal · historisch', 'kontinuierliche Corpus-Darstellung', '≥ 3 aufeinanderfolgende 5-mm-Schichten'],
+        ['Sagittal', 'kontinuierliche Corpus-Darstellung', '≥ 3 aufeinanderfolgende 5-mm-Schichten'],
       ],
       sagittalTitle: 'Sagittales Zeichen',
       sagittalText: 'Das sagittale Kriterium entspricht dem Gegenteil des Absent-Bow-Tie-Signs: Ein normaler Meniskus zeigt den Corpus nur auf 1–2 Schichten, der discoide Meniskus auf mindestens 3 Schichten.',
@@ -273,6 +273,7 @@ const CONTENT = {
         ['irreparabel / schwere Destruktion', 'Teil- oder Totalmeniskektomie nur als letzte Option'],
       ],
       key: 'Aktuelles Hauptkriterium: Corpusbreite ≥ 15 mm auf einer mittleren koronalen Schicht. Das klassische Drei-Schichten-Zeichen ist bei dünneren MRT-Schichten kein eigenständiges Diagnosekriterium.',
+      cave: 'Das klassische Drei-Schichten-Zeichen ist bei dünneren MRT-Schichten kein eigenständiges Diagnosekriterium.',
     },
     therapy: {
       title: 'Therapieprinzip: Save the Meniscus',
@@ -473,11 +474,11 @@ const CONTENT = {
     },
     discoid: {
       title: 'Discoid meniscus',
-      lead: 'A discoid meniscus is a congenital anatomic variant with an abnormally wide, disc-shaped meniscal body. It almost exclusively affects the lateral meniscus and is more prone to tears than a normally shaped meniscus.',
+      lead: 'A discoid meniscus is a congenital anatomic variant with an abnormally wide, disc-shaped meniscal body.\n\nIt almost exclusively affects the lateral meniscus and is more prone to tears than a normally shaped meniscus.',
       stats: [
         { value: '3–5%', label: 'incidence', text: 'often incidental on knee MRI' },
         { value: '~50%', label: 'bilateral', text: 'not uncommonly present on both sides' },
-        { value: 'Lateral', label: 'meniscus', text: 'almost exclusively the lateral meniscus is affected' },
+        { value: 'Lateral meniscus', label: 'Affected meniscus', qualitative: true },
       ],
       overviewHeaders: ['Parameter', 'Value'],
       overviewRows: [
@@ -494,7 +495,7 @@ const CONTENT = {
       mriRows: [
         ['Coronal', 'absolute meniscal width', '≥ 15 mm'],
         ['Coronal', 'meniscal width / maximal tibial width', '> 20%'],
-        ['Sagittal · historical', 'continuous body visualization', '≥ 3 consecutive 5-mm slices'],
+        ['Sagittal', 'continuous body visualization', '≥ 3 consecutive 5-mm slices'],
       ],
       sagittalTitle: 'Sagittal sign',
       sagittalText: 'The sagittal criterion is the opposite of the absent bow-tie sign: a normal meniscus shows the body on only 1–2 slices, whereas a discoid meniscus remains visible on at least 3 slices.',
@@ -506,6 +507,7 @@ const CONTENT = {
         ['irreparable / severe destruction', 'partial or total meniscectomy only as last option'],
       ],
       key: 'Current main criterion: body width ≥ 15 mm on a mid-coronal slice. The classic three-slice sign is not a standalone diagnostic criterion on thin-slice MRI.',
+      cave: 'The classic three-slice sign is not a standalone diagnostic criterion on thin-slice MRI.',
     },
     therapy: {
       title: 'Treatment concept: Save the meniscus',
@@ -706,11 +708,11 @@ const CONTENT = {
     },
     discoid: {
       title: 'منیسک دیسکوئید',
-      lead: 'منیسک دیسکوئید یک واریانت مادرزادی است که در آن تنه منیسک پهن‌تر و شبیه دیسک است. این حالت تقریباً همیشه منیسک خارجی را درگیر می‌کند و نسبت به منیسک طبیعی بیشتر مستعد پارگی است.',
+      lead: 'منیسک دیسکوئید یک واریانت مادرزادی است که در آن تنه منیسک پهن‌تر و شبیه دیسک است.\n\nاین حالت تقریباً همیشه منیسک خارجی را درگیر می‌کند و نسبت به منیسک طبیعی بیشتر مستعد پارگی است.',
       stats: [
         { value: '۳–۵٪', label: 'شیوع', text: 'اغلب یافته اتفاقی در MRI زانو' },
         { value: '~۵۰٪', label: 'دوطرفه', text: 'می‌تواند در هر دو زانو دیده شود' },
-        { value: 'خارجی', label: 'منیسک', text: 'تقریباً همیشه منیسک خارجی درگیر می‌شود' },
+        { value: 'منیسک خارجی', label: 'منیسک درگیر', qualitative: true },
       ],
       overviewHeaders: ['پارامتر', 'مقدار'],
       overviewRows: [
@@ -727,7 +729,7 @@ const CONTENT = {
       mriRows: [
         ['کرونال', 'عرض مطلق منیسک', '≥ ۱۵ میلی‌متر'],
         ['کرونال', 'عرض منیسک / حداکثر عرض تیبیا', '> ۲۰٪'],
-        ['ساژیتال · تاریخی', 'دیده شدن مداوم تنه منیسک', '≥ ۳ برش متوالی با ضخامت ۵ میلی‌متر'],
+        ['ساژیتال', 'دیده شدن مداوم تنه منیسک', '≥ ۳ برش متوالی با ضخامت ۵ میلی‌متر'],
       ],
       sagittalTitle: 'علامت ساژیتال',
       sagittalText: 'معیار ساژیتال برعکس absent bow-tie sign است: منیسک طبیعی تنه را فقط در ۱ تا ۲ برش نشان می‌دهد، اما منیسک دیسکوئید در حداقل ۳ برش متوالی دیده می‌شود.',
@@ -739,6 +741,7 @@ const CONTENT = {
         ['غیرقابل ترمیم / تخریب شدید', 'منیسککتومی نسبی یا کامل فقط به عنوان آخرین گزینه'],
       ],
       key: 'معیار اصلی فعلی: عرض تنه ≥ ۱۵ میلی‌متر در برش میانی کرونال. علامت کلاسیک سه برش در MRI با برش‌های نازک، معیار تشخیصی مستقل نیست.',
+      cave: 'علامت کلاسیک سه برش در MRI با برش‌های نازک، معیار تشخیصی مستقل نیست.',
     },
     therapy: {
       title: 'اصول درمان: Save the Meniscus',
@@ -881,7 +884,7 @@ function Section({ id, eyebrow, title, lead, children, className = '', isOpen, i
           <span className={template.toggle} aria-hidden="true">{isOpen ? '−' : '+'}</span>
         </button>
       <div id={`${id}-content`} className={template.sectionBody} hidden={!isOpen}>
-        {lead && <p className={styles.sectionLead}>{lead}</p>}
+        {lead && lead.split('\n\n').map(paragraph => <p key={paragraph} className={styles.sectionLead}>{paragraph}</p>)}
         {children}
         {id !== 'takehome' && <button type="button" className={`${styles.sectionReadButton} ${isRead ? styles.sectionReadButtonDone : ''}`} aria-pressed={isRead} onClick={onToggleRead}>
           <SectionIcon id="check" />
@@ -1205,20 +1208,41 @@ export default function MeniskusPage() {
           <Section id="discoider" eyebrow="05" title={copy.discoid.title} lead={copy.discoid.lead} {...sectionProps('discoider')}>
             <div className={styles.discoidStats}>
               {copy.discoid.stats.map(stat => (
-                <div key={stat.label} className={styles.discoidStatCard}>
+                <div key={stat.label} className={`${styles.discoidStatCard} ${stat.qualitative ? contentStyles.discoidAnatomyStat : ''}`}>
                   <strong>{stat.value}</strong>
                   <span>{stat.label}</span>
-                  <p>{stat.text}</p>
                 </div>
               ))}
             </div>
             <DiscoidComparison lang={lang} />
             <div className={`${styles.subSectionBlock} ${contentStyles.discoidMriBlock}`}>
               <h3 className={styles.discoidMriTitle}>{copy.discoid.mriTitle}</h3>
-              <Table headers={copy.discoid.mriHeaders} rows={copy.discoid.mriRows} />
+              <div className={contentStyles.discoidCriteriaWrap}>
+                <table className={contentStyles.discoidCriteriaTable} data-discoid-criteria aria-label={copy.discoid.mriTitle}>
+                  <thead><tr>{copy.discoid.mriHeaders.map(header => <th key={header} scope="col">{header}</th>)}</tr></thead>
+                  <tbody>
+                    <tr>
+                      <th rowSpan={2} scope="rowgroup">{copy.discoid.mriRows[0][0]}</th>
+                      <td>{copy.discoid.mriRows[0][1]}</td>
+                      <td>{copy.discoid.mriRows[0][2]}</td>
+                    </tr>
+                    <tr>
+                      <td>{copy.discoid.mriRows[1][1]}</td>
+                      <td>{copy.discoid.mriRows[1][2]}</td>
+                    </tr>
+                  </tbody>
+                  <tbody>
+                    <tr>
+                      <th scope="row">{copy.discoid.mriRows[2][0]}</th>
+                      <td>{copy.discoid.mriRows[2][1]}</td>
+                      <td>{copy.discoid.mriRows[2][2]}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
               <DiscoidMriSchematics lang={lang} />
             </div>
-            <Callout label={copy.keyLabel}>{copy.discoid.key}</Callout>
+            <Callout type="cave" label={copy.caveLabel}>{copy.discoid.cave}</Callout>
           </Section>
 
           <Section

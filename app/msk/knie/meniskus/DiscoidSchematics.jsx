@@ -9,9 +9,8 @@ const LABELS = {
 export function DiscoidComparison({ lang }) {
   const copy = LABELS[lang] || LABELS.de
   return <figure className={styles.discoidRaster} data-discoid-comparison>
-    <h3>{copy.anatomy}</h3>
-    <a href="/meniskus/discoid-anatomy-atlas-v3.png" data-no-zoom target="_blank" rel="noopener noreferrer" aria-label={copy.open}>
-      <img src="/meniskus/discoid-anatomy-atlas-v3.png" width="1774" height="887" loading="lazy" alt={copy.anatomyAlt} />
+    <a href="/meniskus/discoid-anatomy-atlas-v4.png" data-no-zoom target="_blank" rel="noopener noreferrer" aria-label={copy.open}>
+      <img src="/meniskus/discoid-anatomy-atlas-v4.png" width="1774" height="887" loading="lazy" lang="en" alt={copy.anatomyAlt} />
     </a>
     <figcaption>{copy.anatomyNote}</figcaption>
   </figure>
