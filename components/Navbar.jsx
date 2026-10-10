@@ -1,11 +1,11 @@
 'use client'
 import Link from 'next/link'
 import { useState } from 'react'
-import { usePathname } from 'next/navigation'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useTheme } from '@/providers/ThemeProvider'
 import SearchBar from './SearchBar'
 import ClerkNavActions from './ClerkNavActions'
+import AdminHeaderLinks from './AdminHeaderLinks'
 import styles from './Navbar.module.css'
 
 function HexLogo({ size = 32 }) {
@@ -38,28 +38,9 @@ function HexLogo({ size = 32 }) {
   )
 }
 
-function getGreeting(lang) {
-  const h = new Date().getHours()
-  if (lang === 'fa') {
-    if (h >= 5 && h < 12) return 'صبح بخیر'
-    if (h >= 12 && h < 18) return 'روز بخیر'
-    return 'شب بخیر'
-  }
-  if (lang === 'en') {
-    if (h >= 5 && h < 12) return 'Good morning'
-    if (h >= 12 && h < 18) return 'Good afternoon'
-    return 'Good evening'
-  }
-  if (h >= 5 && h < 12) return 'Guten Morgen'
-  if (h >= 12 && h < 18) return 'Guten Tag'
-  return 'Guten Abend'
-}
-
 export default function Navbar() {
   const { lang, texts, setLang } = useLanguage()
   const { theme, toggleTheme } = useTheme()
-  const pathname = usePathname()
-  const isHome = pathname === '/'
   const [search, setSearch] = useState(false)
   const [authReady, setAuthReady] = useState(false)
   const signInLabel = lang === 'fa' ? 'ورود' : lang === 'en' ? 'Sign in' : 'Anmelden'
@@ -72,7 +53,7 @@ export default function Navbar() {
   return (
     <>
       <nav className={styles.nav}>
-        {isHome ? <div /> : (
+        <div className={styles.brandGroup} dir="ltr">
           <Link href="/" className={styles.brand} dir="ltr">
             <HexLogo size={28} />
             <span className={styles.wordmark} dir="ltr">
@@ -80,7 +61,8 @@ export default function Navbar() {
               <span className={styles.yar}>YAR</span>
             </span>
           </Link>
-        )}
+          <AdminHeaderLinks />
+        </div>
 
         <div className={styles.right} data-lang={lang}>
           <div className={styles.authSlot}>
