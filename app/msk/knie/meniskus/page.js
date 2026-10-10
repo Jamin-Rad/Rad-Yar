@@ -9,6 +9,7 @@ import { TEAR_CASE_FRAMES } from './tearCaseFrames'
 import LessonCaseFile from '@/components/LessonCaseFile'
 import MeniscusTextLesson from '@/app/andarun/test/MeniscusTextLesson'
 import TearTypeExplorer from './TearTypeExplorer'
+import LotyschClassification from './LotyschClassification'
 import template from '@/components/LessonTemplate.module.css'
 import contentStyles from './content.module.css'
 
@@ -162,7 +163,7 @@ const CONTENT = {
       tableHeaders: ['Grad', 'Morphologie', 'Oberflächenkontakt', 'Klinische Bedeutung'],
       tableRows: [
         ['1', 'punktförmige oder kleine fokale Signalsteigerung', 'kein Kontakt', 'frühe mukoide Degeneration, meist asymptomatisch'],
-        ['2a', 'lineare Signalsteigerung', 'kein Kontakt', 'fortgeschrittene Degeneration'],
+        ['2a', 'lineare Signalsteigerung', 'kein Kontakt', 'kein sicherer Rissnachweis'],
         ['2b', 'lineare Signalsteigerung', 'Kontakt auf einem einzelnen Bild', 'inkonklusiv für echten Riss'],
         ['2c', 'keilförmige oder globuläre Signalsteigerung', 'kein eindeutiger Kontakt', 'hohes Risiko für okkulten Riss'],
         ['3', 'Pathologische Signalsteigerung', 'Kontakt auf mindestens zwei aufeinanderfolgenden Schichten', 'radiologisch gesicherter Meniskusriss'],
@@ -395,7 +396,7 @@ const CONTENT = {
       tableHeaders: ['Grade', 'Morphology', 'Surface contact', 'Clinical significance'],
       tableRows: [
         ['1', 'punctate or small focal signal increase', 'no contact', 'early mucoid degeneration, usually asymptomatic'],
-        ['2a', 'linear signal increase', 'no contact', 'advanced degeneration'],
+        ['2a', 'linear signal increase', 'no contact', 'no definite tear demonstrated'],
         ['2b', 'linear signal increase', 'contact on a single image', 'inconclusive for a true tear'],
         ['2c', 'wedge-shaped or globular signal increase', 'no definite contact', 'high risk of an occult tear'],
         ['3', 'signal increase', 'contact on at least two consecutive slices', 'radiologically proven meniscal tear'],
@@ -628,7 +629,7 @@ const CONTENT = {
       tableHeaders: ['درجه', 'مورفولوژی', 'تماس با سطح', 'اهمیت بالینی'],
       tableRows: [
         ['1', 'افزایش سیگنال نقطه‌ای یا کوچک', 'بدون تماس', 'دژنراسیون موکوئید اولیه، معمولاً بی‌علامت'],
-        ['2a', 'افزایش سیگنال خطی', 'بدون تماس', 'دژنراسیون پیشرفته'],
+        ['2a', 'افزایش سیگنال خطی', 'بدون تماس', 'پارگی قطعی اثبات نشده است'],
         ['2b', 'افزایش سیگنال خطی', 'تماس فقط در یک تصویر', 'برای پارگی قطعی ناکافی'],
         ['2c', 'افزایش سیگنال گوه‌ای یا گلوبولار', 'بدون تماس واضح', 'ریسک بالا برای پارگی مخفی'],
         ['3', 'افزایش سیگنال پاتولوژیک', 'تماس در حداقل دو برش متوالی', 'پارگی منیسک از نظر رادیولوژیک قطعی'],
@@ -963,6 +964,7 @@ function ImageFigure({ src, alt, caption, aiNotice, zoomable = false, zoomLabel 
 }
 
 const SOURCES = [
+  { label: 'Dillon et al. · Clinical significance of stage 2 meniscal abnormalities (1990)', href: 'https://pubmed.ncbi.nlm.nih.gov/2392029/' },
   { label: 'Simonetta et al. · Meniscus tears treatment: patterns and practical guide (2023)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10122773/' },
   { label: 'Magnetic resonance imaging of the knee (2020)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7571514/' },
   { label: 'Crues et al. · Meniscal tears of the knee: accuracy of MR imaging (Radiology, 1987)', href: 'https://pubmed.ncbi.nlm.nih.gov/3602385/' },
@@ -1165,7 +1167,7 @@ export default function MeniskusPage() {
             <div className={styles.extendedDetails}>
               <div className={styles.extendedTableTitle}>{copy.grading.extendedTitle}</div>
               <div className={styles.extendedDetailsContent}>
-                <Table headers={copy.grading.tableHeaders} rows={copy.grading.tableRows} className={styles.gradeTable} />
+                <LotyschClassification copy={copy.grading} lang={lang} />
               </div>
             </div>
             <Callout label={copy.keyLabel}>{copy.grading.key}</Callout>
