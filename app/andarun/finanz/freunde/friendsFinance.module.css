@@ -1,0 +1,136 @@
+.page {
+  --ink: #101d38;
+  --muted: #718096;
+  --line: #dde4ec;
+  --soft: #f5f8fb;
+  --green: #087454;
+  --green-soft: #e9f6f0;
+  --red: #c3483e;
+  --red-soft: #fff0ef;
+  --sand: #9a6a28;
+  min-height: calc(100vh - 74px);
+  padding: 30px clamp(18px, 3vw, 48px) 64px;
+  background: #f7f9fc;
+  color: var(--ink);
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+.topbar { max-width: 1480px; margin: 0 auto 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.titleBlock { display: flex; align-items: center; gap: 15px; }
+.titleIcon { width: 52px; height: 52px; border-radius: 17px; display: grid; place-items: center; color: var(--green); background: var(--green-soft); }
+.titleBlock h1 { margin: 0 0 6px; font-size: clamp(25px, 2.2vw, 36px); line-height: 1.2; letter-spacing: -.03em; }
+.titleBlock p { margin: 0; color: var(--muted); font-size: 14px; }
+.backLink { display: inline-flex; align-items: center; gap: 6px; color: var(--ink); text-decoration: none; font-size: 14px; font-weight: 700; }
+
+.shell { max-width: 1480px; margin: 0 auto; display: grid; grid-template-columns: 290px minmax(0, 1fr); gap: 22px; align-items: start; }
+.accountRail, .accountHero, .ledgerSection { background: #fff; border: 1px solid var(--line); border-radius: 20px; }
+.accountRail { position: sticky; top: 92px; min-height: 640px; padding: 20px 14px; }
+.railHead { display: flex; align-items: baseline; justify-content: space-between; padding: 2px 8px 16px; border-bottom: 1px solid var(--line); }
+.railHead span { font-weight: 800; font-size: 16px; }
+.railHead small { color: var(--muted); font-size: 12px; }
+.accountList { display: grid; gap: 7px; margin-top: 12px; }
+.accountButton { width: 100%; border: 0; background: transparent; border-radius: 14px; padding: 11px; display: grid; grid-template-columns: 43px 1fr; gap: 11px; align-items: center; text-align: right; color: var(--ink); cursor: pointer; font-family: inherit; transition: background .18s ease, color .18s ease; }
+.accountButton:hover { background: var(--soft); }
+.accountActive { background: var(--green-soft); color: #075d45; box-shadow: inset -3px 0 0 var(--green); }
+.avatar { width: 43px; height: 43px; border-radius: 50%; display: grid; place-items: center; background: #edf1f5; font-size: 16px; font-weight: 800; }
+.accountActive .avatar { background: #d6eee4; }
+.accountButton strong, .accountButton small { display: block; }
+.accountButton strong { font-size: 13px; line-height: 1.5; }
+.accountButton small { margin-top: 2px; font-size: 11px; color: var(--muted); }
+.railNote { margin: 28px 7px 0; padding: 15px; display: flex; gap: 10px; align-items: flex-start; background: var(--soft); border-radius: 14px; color: var(--muted); }
+.railNote svg { flex: 0 0 auto; color: var(--sand); }
+.railNote p { margin: 0; font-size: 11px; line-height: 1.9; }
+.workspace { min-width: 0; }
+.accountHero { padding: clamp(20px, 3vw, 34px); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.accountIdentity { display: flex; align-items: center; gap: 16px; }
+.heroAvatar { width: 68px; height: 68px; border-radius: 50%; display: grid; place-items: center; background: var(--green-soft); color: var(--green); font-size: 25px; font-weight: 800; }
+.accountIdentity h2 { margin: 0 0 7px; font-size: clamp(22px, 2vw, 30px); }
+.accountIdentity p { margin: 0; color: var(--muted); font-size: 13px; }
+.heroActions { display: flex; gap: 10px; }
+.primaryButton, .settleButton, .mobileAdd, .emptyState button { height: 46px; padding: 0 18px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid var(--green); font-family: inherit; font-weight: 800; cursor: pointer; }
+.primaryButton, .emptyState button { color: #fff; background: var(--green); }
+.settleButton { color: var(--sand); border-color: #b79563; background: #fff; }
+.settleButton:disabled { opacity: .38; cursor: not-allowed; }
+.balanceGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 14px 0; }
+.balanceCard { display: flex; align-items: center; gap: 15px; min-height: 126px; padding: 22px; border-radius: 18px; border: 1px solid var(--line); background: #fff; }
+.balanceIcon { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; color: var(--sand); background: #f8f4ec; }
+.balanceCard small, .balanceCard strong, .balanceCard span { display: block; }
+.balanceCard div > small { color: var(--muted); font-size: 12px; }
+.balanceCard strong { margin: 7px 0 4px; font-size: clamp(22px, 2.3vw, 32px); font-variant-numeric: tabular-nums; }
+.balanceCard div > span { color: var(--muted); font-size: 12px; }
+.creditCard strong, .creditCard div > span { color: var(--green); }
+.debtCard strong, .debtCard div > span { color: var(--red); }
+.ledgerSection { overflow: hidden; }
+.sectionHeading { padding: 20px 22px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+.sectionHeading h3 { margin: 0 0 5px; font-size: 18px; }
+.sectionHeading p { margin: 0; color: var(--muted); font-size: 12px; }
+.mobileAdd { height: 38px; padding: 0 13px; border-color: var(--line); background: #fff; color: var(--ink); font-size: 12px; }
+.tableWrap { overflow-x: auto; }
+.tableWrap table { width: 100%; border-collapse: collapse; min-width: 780px; }
+.tableWrap th { background: #f8fafc; color: var(--muted); font-size: 11px; font-weight: 700; text-align: right; padding: 12px 15px; white-space: nowrap; }
+.tableWrap td { border-top: 1px solid #e9eef4; padding: 14px 15px; font-size: 12px; vertical-align: middle; }
+.tableWrap td strong, .tableWrap td small { display: block; }
+.tableWrap td small { margin-top: 4px; color: var(--muted); font-size: 10px; }
+.payerTag { display: inline-flex; border-radius: 8px; padding: 7px 9px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+.paidMe { color: var(--green); background: var(--green-soft); }
+.paidThem { color: var(--red); background: var(--red-soft); }
+.positive { color: var(--green); }
+.negative { color: var(--red); }
+.deleteButton { width: 34px; height: 34px; border: 0; border-radius: 9px; display: grid; place-items: center; color: #8c98a8; background: transparent; cursor: pointer; }
+.deleteButton:hover { color: var(--red); background: var(--red-soft); }
+.emptyState { min-height: 285px; display: grid; place-items: center; align-content: center; text-align: center; padding: 30px; }
+.emptyState > span { width: 58px; height: 58px; border-radius: 18px; display: grid; place-items: center; color: var(--green); background: var(--green-soft); }
+.emptyState h4 { margin: 16px 0 7px; font-size: 17px; }
+.emptyState p { margin: 0 0 18px; color: var(--muted); font-size: 12px; }
+.emptyState button { height: 40px; font-size: 12px; }
+.drawerBackdrop { position: fixed; z-index: 100; inset: 0; background: rgb(16 29 56 / .32); backdrop-filter: blur(3px); }
+.drawer { position: absolute; inset: 0 0 0 auto; width: min(460px, 100%); height: 100%; overflow-y: auto; background: #fff; box-shadow: -18px 0 44px rgb(16 29 56 / .15); animation: drawerIn .24s ease both; }
+.drawerHead { position: sticky; top: 0; z-index: 2; background: #fff; padding: 22px 24px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+.drawerHead h2 { margin: 0 0 5px; font-size: 23px; }
+.drawerHead p { margin: 0; color: var(--muted); font-size: 12px; }
+.drawerHead button { width: 38px; height: 38px; border: 1px solid var(--line); border-radius: 10px; display: grid; place-items: center; color: var(--ink); background: #fff; cursor: pointer; }
+.drawer form { padding: 22px 24px 34px; display: grid; gap: 19px; }
+.fieldset { padding: 0; margin: 0; border: 0; }
+.fieldset legend, .field > span { margin-bottom: 9px; display: block; color: var(--ink); font-size: 12px; font-weight: 800; }
+.field > span b { margin-right: 5px; color: var(--red); font-size: 10px; }
+.segmented { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.segmented button { min-height: 46px; padding: 8px; border: 1px solid var(--line); border-radius: 11px; color: var(--ink); background: #fff; font-family: inherit; font-size: 12px; font-weight: 700; cursor: pointer; }
+.segmented .segmentActive { border-color: var(--green); color: var(--green); background: var(--green-soft); }
+.segmented .segmentActiveDebt { border-color: var(--red); color: var(--red); background: var(--red-soft); }
+.field input, .field textarea { width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 11px; color: var(--ink); background: #fff; padding: 12px 13px; font: 13px/1.7 inherit; outline: none; transition: border-color .16s ease, box-shadow .16s ease; }
+.field input:focus, .field textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgb(8 116 84 / .1); }
+.field textarea { resize: vertical; }
+.field > small { display: block; margin-top: 7px; color: var(--muted); font-size: 10px; line-height: 1.7; }
+.dateField { position: relative; }
+.dateField svg { position: absolute; top: 13px; right: 13px; pointer-events: none; color: var(--muted); }
+.dateField input { padding-right: 42px; direction: ltr; text-align: right; }
+.formError { margin: -4px 0 0; padding: 10px 12px; border-radius: 9px; color: var(--red); background: var(--red-soft); font-size: 11px; }
+.submitButton { height: 50px; border: 0; border-radius: 12px; color: #fff; background: var(--green); font-family: inherit; font-size: 14px; font-weight: 800; cursor: pointer; }
+
+@keyframes drawerIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) { .drawer { animation: none; } }
+
+@media (max-width: 900px) {
+  .page { padding-top: 22px; }
+  .shell { grid-template-columns: 1fr; }
+  .accountRail { position: static; min-height: auto; padding: 14px; }
+  .accountList { display: flex; overflow-x: auto; padding-bottom: 4px; scroll-snap-type: x mandatory; }
+  .accountButton { min-width: 220px; scroll-snap-align: start; }
+  .railNote { display: none; }
+}
+
+@media (max-width: 620px) {
+  .page { padding-inline: 12px; }
+  .topbar { align-items: flex-start; }
+  .titleIcon, .titleBlock p { display: none; }
+  .titleBlock h1 { font-size: 23px; }
+  .backLink { margin-top: 5px; }
+  .accountHero { align-items: flex-start; padding: 18px; }
+  .heroAvatar { width: 48px; height: 48px; font-size: 18px; }
+  .accountIdentity h2 { font-size: 18px; }
+  .heroActions { flex-direction: column; }
+  .primaryButton, .settleButton { width: 42px; height: 42px; padding: 0; font-size: 0; }
+  .balanceGrid { grid-template-columns: 1fr; }
+  .balanceCard { min-height: 100px; }
+  .drawer form, .drawerHead { padding-inline: 18px; }
+}
