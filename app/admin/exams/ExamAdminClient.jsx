@@ -10,6 +10,8 @@ import styles from './page.module.css'
 
 const emptyQuestion = () => ({ sourceId: '', sourceLabel: '', kind: 'custom', prompt: '', options: ['', '', '', ''], correctOptionIndex: 0, points: 1, explanation: '', wrongExplanations: {}, media: null })
 const LANGUAGE_LABELS = Object.freeze({ fa: 'فارسی', en: 'English', de: 'Deutsch' })
+const LEHR_MODE_TOGGLE_EVENT = 'radyar:lehr-mode-toggle'
+const LEHR_MODE_STATE_EVENT = 'radyar:lehr-mode-state'
 const GERMANY_DATE_FORMATTER = new Intl.DateTimeFormat('fa-IR-u-ca-gregory', {
   dateStyle: 'medium',
   timeStyle: 'short',
@@ -217,6 +219,7 @@ function ExamTeachingPreview({ detail, onBack }) {
   const attempts = detail.attempts || []
   const [questionIndex, setQuestionIndex] = useState(0)
   const [selectedAnswers, setSelectedAnswers] = useState({})
+  const [lehrActive, setLehrActive] = useState(false)
   const currentQuestion = questions[questionIndex]
   const currentSelection = currentQuestion ? selectedAnswers[currentQuestion.id] : undefined
   const revealed = Number.isInteger(currentSelection)
@@ -228,6 +231,18 @@ function ExamTeachingPreview({ detail, onBack }) {
   const correctOptionIndex = Number(currentQuestion?.correct_option_index)
   const correctPercentage = responseStats?.optionStats?.[correctOptionIndex]?.percentage || 0
   const direction = detail.exam.language === 'fa' ? 'rtl' : 'ltr'
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow
+    const handleLehrState = event => setLehrActive(!!event.detail?.active)
+    document.body.style.overflow = 'hidden'
+    setLehrActive(document.documentElement.classList.contains('lehr-mode-active'))
+    window.addEventListener(LEHR_MODE_STATE_EVENT, handleLehrState)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener(LEHR_MODE_STATE_EVENT, handleLehrState)
+    }
+  }, [])
 
   function selectOption(optionIndex) {
     if (!currentQuestion || revealed) return
@@ -257,26 +272,27 @@ function ExamTeachingPreview({ detail, onBack }) {
   }
 
   return (
-    <section className={styles.preview} dir="rtl">
+    <section className={`${styles.preview} ${lehrActive ? styles.previewLehrOpen : ''}`} dir="rtl">
       <div className={styles.previewTopbar}>
-        <button type="button" className={styles.previewBack} onClick={onBack} data-lehr-ui>→ بازگشت به نتیجه‌ها</button>
-        <div className={styles.previewBadge}><span aria-hidden="true">●</span> پیش‌نمایش آموزشی</div>
-      </div>
-
-      <div className={styles.previewIntro}>
-        <div>
-          <span className={styles.previewEyebrow}>LEHR-MODE · VIDEO READY</span>
-          <h2>{detail.exam.title}</h2>
-          <p>پاسخ صحیح را انتخاب کنید تا هم‌زمان جواب درست و درصد انتخاب هر گزینه در آزمون نمایش داده شود.</p>
+        <button type="button" className={styles.previewBack} onClick={onBack} data-lehr-ui>
+          <span aria-hidden="true">×</span> خروج از پیش‌نمایش
+        </button>
+        <div className={styles.previewTitle}>
+          <strong>{detail.exam.title}</strong>
+          <span>سؤال {Number(questionIndex + 1).toLocaleString('fa-IR')} از {questions.length.toLocaleString('fa-IR')}</span>
         </div>
-        <div className={styles.previewHint}>
-          <span aria-hidden="true">✎</span>
-          <div><strong>برای تدریس آماده است</strong><small>Lehr-Mode را از هدر روشن کنید؛ قلم آیپد و کنترل‌های آزمون هم‌زمان کار می‌کنند.</small></div>
-        </div>
+        <button
+          type="button"
+          className={lehrActive ? styles.previewLehrActive : styles.previewLehr}
+          onClick={() => window.dispatchEvent(new Event(LEHR_MODE_TOGGLE_EVENT))}
+          aria-pressed={lehrActive}
+          data-lehr-ui
+        >
+          <span aria-hidden="true">✎</span> {lehrActive ? 'Lehr-Mode فعال' : 'Lehr-Mode'}
+        </button>
       </div>
 
       <div className={styles.previewProgress}>
-        <div><strong>سؤال {Number(questionIndex + 1).toLocaleString('fa-IR')}</strong><span>از {questions.length.toLocaleString('fa-IR')}</span></div>
         <div className={styles.previewTrack} aria-hidden="true"><span style={{ width: `${((questionIndex + 1) / questions.length) * 100}%` }} /></div>
       </div>
 
