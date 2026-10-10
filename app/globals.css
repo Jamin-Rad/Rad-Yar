@@ -77,6 +77,13 @@ html, body {
   user-select: text;
 }
 
+html.lehr-mode-active[data-lehr-tool='arrow'] body,
+html.lehr-mode-active[data-lehr-tool='arrow'] body * { cursor: none !important; }
+html.lehr-mode-active:not([data-lehr-tool='arrow']) body,
+html.lehr-mode-active:not([data-lehr-tool='arrow']) body * { cursor: crosshair !important; }
+html.lehr-mode-active [data-lehr-ui],
+html.lehr-mode-active [data-lehr-ui] * { cursor: auto !important; }
+
 body {
   background: var(--bg);
   color: var(--text);
