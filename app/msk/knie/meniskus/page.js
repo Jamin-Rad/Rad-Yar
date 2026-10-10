@@ -965,6 +965,7 @@ function ImageFigure({ src, alt, caption, aiNotice, zoomable = false, zoomLabel 
 }
 
 const SOURCES = [
+  { label: 'MRI study of medial meniscus degeneration · Jerosch grades 0–4 (2022)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9054988/' },
   { label: 'Dillon et al. · Clinical significance of stage 2 meniscal abnormalities (1990)', href: 'https://pubmed.ncbi.nlm.nih.gov/2392029/' },
   { label: 'Simonetta et al. · Meniscus tears treatment: patterns and practical guide (2023)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10122773/' },
   { label: 'Magnetic resonance imaging of the knee (2020)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7571514/' },
@@ -1159,7 +1160,6 @@ export default function MeniskusPage() {
           </Section>
 
           <Section id="grading" eyebrow="03" title={copy.grading.extendedTitle} lead="" {...sectionProps('grading')}>
-            <h3 className={styles.subSectionTitle}>{lang === 'fa' ? 'تعریف' : 'Definition'}</h3>
             <p className={styles.subSectionLead}>{copy.grading.lead} {lang === 'de' ? 'Grad 0 entspricht einem homogen hypointensen, normalen Meniskus.' : lang === 'fa' ? 'درجهٔ ۰ مربوط به منیسک طبیعی با سیگنال هیپواینتنس هموژن است.' : 'Grade 0 describes a normal, homogeneously hypointense meniscus.'}</p>
             <LotyschClassification copy={copy.grading} lang={lang} />
 

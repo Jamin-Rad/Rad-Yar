@@ -28,7 +28,7 @@ function InteractiveTeachingGroup({ group, resolve, direction, renderVisual, ren
       <span aria-hidden="true" />
       <h3 id={`${prefix}-heading`}>{resolve(group.title)}</h3>
     </header>
-    <p className={styles.intro}>{resolve(group.intro)}</p>
+    {group.intro ? <p className={styles.intro}>{resolve(group.intro)}</p> : null}
     <div className={styles.explorer} dir="ltr">
       <div className={styles.tabs} role="tablist" aria-orientation="vertical" aria-label={resolve(group.title)} dir={direction}>
         {group.items.map((item, index) => <button
