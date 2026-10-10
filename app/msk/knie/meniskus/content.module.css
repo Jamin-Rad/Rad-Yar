@@ -51,6 +51,25 @@
 .gradeDetails { display: grid; gap: 13px; margin: 0; }
 .gradeDetails dt { margin-bottom: 4px; color: var(--muted); font-size: 11px; font-weight: 800; }
 .gradeDetails dd { margin: 0; color: var(--body); font-size: 14px; line-height: 1.7; }
+.gradeCard { padding: 0; overflow: hidden; background: linear-gradient(135deg,var(--paper),color-mix(in srgb,var(--teal-500) 3%,var(--paper))); box-shadow: 0 5px 18px rgba(23,32,51,.04); }
+.gradeCard[data-active='true'] { border-color: color-mix(in srgb,var(--teal-500) 55%,var(--line)); }
+.gradeCard .gradeHeading { margin: 0; }
+.gradeSelect { display: flex; align-items: center; gap: 14px; width: 100%; padding: 20px; border: 0; color: var(--ink); background: transparent; text-align: start; font: inherit; cursor: pointer; }
+.gradeBadge { flex-shrink: 0; padding: 9px 12px; border: 1px solid var(--line); border-radius: 10px; color: var(--ink); background: var(--paper); font-size: 16px; }
+.gradeSelect strong { font-size: 18px; line-height: 1.5; }
+.gradeChevron { margin-inline-start: auto; color: var(--teal-700); font-size: 24px; }
+.gradeBody { padding: 0 20px 20px; }
+.gradeBody[hidden],.subtypeBody[hidden] { display: none; }
+.gradeBody > .gradeDetails { padding-top: 18px; border-top: 1px solid var(--line); }
+.gradeSubtype { padding: 0; align-self: start; overflow: hidden; }
+.gradeSubtype h5 { margin: 0; }
+.subtypeSelect { display: flex; justify-content: space-between; gap: 12px; width: 100%; padding: 15px; border: 0; color: var(--ink); background: transparent; font: inherit; cursor: pointer; }
+.subtypeSelect[aria-expanded='true'] { background: color-mix(in srgb,var(--teal-500) 12%,var(--paper)); }
+.subtypeBody { padding: 16px; }
+.gradeSelect:hover,.subtypeSelect:hover { background: color-mix(in srgb,var(--teal-500) 8%,var(--paper)); }
+.gradeSelect:focus-visible,.subtypeSelect:focus-visible { outline: 2px solid var(--teal-500); outline-offset: -3px; }
+@media (max-width:760px) { .gradeSelect { gap: 10px; padding: 16px; } .gradeSelect strong { font-size: 16px; } .gradeBody { padding: 0 16px 16px; } }
+@media print { .gradeBody[hidden],.subtypeBody[hidden] { display: block; } .gradeChevron,.subtypeSelect > span:last-child { display: none; } .gradeCard { box-shadow: none; } }
 @media (max-width:900px) { .gradeSubgroups { grid-template-columns: 1fr; } }
 @media print { .gradeCard,.gradeSubtype { break-inside: avoid; background: transparent; } .gradeTwo { break-inside: auto; } .gradeSubgroups { grid-template-columns: 1fr; } }
 .caseGrid,.tearCaseGrid { display: grid; grid-template-columns: minmax(0,1fr); gap: 22px; }

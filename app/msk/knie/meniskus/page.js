@@ -1175,7 +1175,6 @@ export default function MeniskusPage() {
                 <LotyschClassification copy={copy.grading} lang={lang} />
               </div>
             </div>
-            <Callout label={copy.keyLabel}>{copy.grading.key}</Callout>
 
             <div className={styles.subSectionBlock}>
               <h3 className={styles.subSectionTitle}>{copy.cases.title}</h3>
