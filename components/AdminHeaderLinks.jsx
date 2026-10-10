@@ -121,6 +121,8 @@ function LoadedAdminLinks() {
       ) : null}
       <Link
         href="/andarun"
+        target="_blank"
+        rel="noopener noreferrer"
         className={styles.portalAndarun}
         aria-current={pathname?.startsWith('/andarun') ? 'page' : undefined}
         title="Andarun"

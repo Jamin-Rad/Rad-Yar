@@ -183,6 +183,175 @@ async function readJson(response) {
   return data
 }
 
+function questionResponseStats(question, attempts) {
+  const options = Array.isArray(question?.options) ? question.options : []
+  const counts = options.map(() => 0)
+  let answeredCount = 0
+
+  for (const attempt of attempts || []) {
+    const selected = attempt.answers?.[question.id]
+    if (!Number.isInteger(selected) || selected < 0 || selected >= options.length) continue
+    counts[selected] += 1
+    answeredCount += 1
+  }
+
+  const participantCount = attempts?.length || 0
+  const optionStats = counts.map(count => {
+    const exactPercentage = participantCount ? (count / participantCount) * 100 : 0
+    return {
+      count,
+      percentage: Number.isInteger(exactPercentage) ? exactPercentage : Number(exactPercentage.toFixed(1)),
+    }
+  })
+
+  return {
+    participantCount,
+    answeredCount,
+    unansweredCount: Math.max(0, participantCount - answeredCount),
+    optionStats,
+  }
+}
+
+function ExamTeachingPreview({ detail, onBack }) {
+  const questions = detail.questions || []
+  const attempts = detail.attempts || []
+  const [questionIndex, setQuestionIndex] = useState(0)
+  const [selectedAnswers, setSelectedAnswers] = useState({})
+  const currentQuestion = questions[questionIndex]
+  const currentSelection = currentQuestion ? selectedAnswers[currentQuestion.id] : undefined
+  const revealed = Number.isInteger(currentSelection)
+  const responseStats = useMemo(
+    () => currentQuestion ? questionResponseStats(currentQuestion, attempts) : null,
+    [attempts, currentQuestion],
+  )
+  const mediaPreview = currentQuestion ? getExamMediaPreview(currentQuestion.media) : null
+  const correctOptionIndex = Number(currentQuestion?.correct_option_index)
+  const correctPercentage = responseStats?.optionStats?.[correctOptionIndex]?.percentage || 0
+  const direction = detail.exam.language === 'fa' ? 'rtl' : 'ltr'
+
+  function selectOption(optionIndex) {
+    if (!currentQuestion || revealed) return
+    setSelectedAnswers(current => ({ ...current, [currentQuestion.id]: optionIndex }))
+  }
+
+  function resetCurrentQuestion() {
+    if (!currentQuestion) return
+    setSelectedAnswers(current => {
+      const next = { ...current }
+      delete next[currentQuestion.id]
+      return next
+    })
+  }
+
+  function moveQuestion(offset) {
+    setQuestionIndex(current => Math.min(Math.max(current + offset, 0), questions.length - 1))
+  }
+
+  if (!currentQuestion) {
+    return (
+      <section className={styles.preview}>
+        <button type="button" className={styles.textButton} onClick={onBack} data-lehr-ui>→ بازگشت به مدیریت آزمون</button>
+        <div className={styles.previewEmpty}>این آزمون سؤالی برای نمایش ندارد.</div>
+      </section>
+    )
+  }
+
+  return (
+    <section className={styles.preview} dir="rtl">
+      <div className={styles.previewTopbar}>
+        <button type="button" className={styles.previewBack} onClick={onBack} data-lehr-ui>→ بازگشت به نتیجه‌ها</button>
+        <div className={styles.previewBadge}><span aria-hidden="true">●</span> پیش‌نمایش آموزشی</div>
+      </div>
+
+      <div className={styles.previewIntro}>
+        <div>
+          <span className={styles.previewEyebrow}>LEHR-MODE · VIDEO READY</span>
+          <h2>{detail.exam.title}</h2>
+          <p>پاسخ صحیح را انتخاب کنید تا هم‌زمان جواب درست و درصد انتخاب هر گزینه در آزمون نمایش داده شود.</p>
+        </div>
+        <div className={styles.previewHint}>
+          <span aria-hidden="true">✎</span>
+          <div><strong>برای تدریس آماده است</strong><small>Lehr-Mode را از هدر روشن کنید؛ قلم آیپد و کنترل‌های آزمون هم‌زمان کار می‌کنند.</small></div>
+        </div>
+      </div>
+
+      <div className={styles.previewProgress}>
+        <div><strong>سؤال {Number(questionIndex + 1).toLocaleString('fa-IR')}</strong><span>از {questions.length.toLocaleString('fa-IR')}</span></div>
+        <div className={styles.previewTrack} aria-hidden="true"><span style={{ width: `${((questionIndex + 1) / questions.length) * 100}%` }} /></div>
+      </div>
+
+      <article className={styles.previewQuestion} dir={direction}>
+        <div className={styles.previewQuestionHead}>
+          <span>{Number(currentQuestion.points || 1).toLocaleString('fa-IR')} امتیاز</span>
+          <b>{responseStats.participantCount.toLocaleString('fa-IR')} شرکت‌کننده</b>
+        </div>
+        <h3>{currentQuestion.prompt}</h3>
+        {mediaPreview ? <Image className={styles.previewMedia} src={mediaPreview} alt="تصویر سؤال" width={960} height={640} /> : null}
+
+        <div className={styles.previewOptions}>
+          {(currentQuestion.options || []).map((option, optionIndex) => {
+            const isCorrect = optionIndex === correctOptionIndex
+            const isSelected = optionIndex === currentSelection
+            const optionClass = !revealed
+              ? styles.previewOption
+              : isCorrect
+                ? styles.previewOptionCorrect
+                : isSelected
+                  ? styles.previewOptionWrong
+                  : styles.previewOptionMuted
+            const stat = responseStats.optionStats[optionIndex]
+
+            return (
+              <button
+                type="button"
+                className={optionClass}
+                onClick={() => selectOption(optionIndex)}
+                disabled={revealed}
+                aria-pressed={isSelected}
+                data-lehr-ui
+                key={optionIndex}
+              >
+                <span className={styles.previewOptionRow}>
+                  <b className={styles.previewLetter}>{String.fromCharCode(65 + optionIndex)}</b>
+                  <span className={styles.previewOptionText}>{option}</span>
+                  {revealed && isCorrect ? <strong className={styles.previewResultTag}>پاسخ درست ✓</strong> : null}
+                  {revealed && isSelected && !isCorrect ? <strong className={styles.previewWrongTag}>انتخاب شما</strong> : null}
+                </span>
+                {revealed ? (
+                  <span className={styles.previewStat}>
+                    <span className={styles.previewStatHeader}>
+                      <small>{stat.count.toLocaleString('fa-IR')} نفر این گزینه را انتخاب کرده‌اند</small>
+                      <strong>{stat.percentage.toLocaleString('fa-IR')}٪</strong>
+                    </span>
+                    <span className={styles.previewMeter} aria-hidden="true"><span style={{ width: `${stat.percentage}%` }} /></span>
+                  </span>
+                ) : null}
+              </button>
+            )
+          })}
+        </div>
+
+        {revealed ? (
+          <div className={styles.previewReveal} aria-live="polite">
+            <div className={styles.previewRevealSummary}>
+              <span><strong>{correctPercentage.toLocaleString('fa-IR')}٪</strong> پاسخ صحیح</span>
+              <small>درصدها از کل {responseStats.participantCount.toLocaleString('fa-IR')} شرکت‌کننده محاسبه شده‌اند{responseStats.unansweredCount ? `؛ ${responseStats.unansweredCount.toLocaleString('fa-IR')} نفر به این سؤال پاسخ نداده‌اند` : ''}.</small>
+            </div>
+            {currentQuestion.explanation ? <div className={styles.previewExplanation}><strong>توضیح پاسخ</strong><p>{currentQuestion.explanation}</p></div> : null}
+            {!responseStats.participantCount ? <div className={styles.previewNoStats}>هنوز پاسخی برای این آزمون ثبت نشده است؛ درصدها پس از شرکت کاربران نمایش واقعی خواهند داشت.</div> : null}
+          </div>
+        ) : null}
+      </article>
+
+      <div className={styles.previewFooter}>
+        <button type="button" className={styles.previewNav} onClick={() => moveQuestion(-1)} disabled={questionIndex === 0} data-lehr-ui>سؤال قبلی</button>
+        <button type="button" className={styles.previewReset} onClick={resetCurrentQuestion} disabled={!revealed} data-lehr-ui>↻ نمایش دوباره سؤال</button>
+        <button type="button" className={styles.previewNavPrimary} onClick={() => moveQuestion(1)} disabled={questionIndex === questions.length - 1} data-lehr-ui>سؤال بعدی</button>
+      </div>
+    </section>
+  )
+}
+
 export default function ExamAdminClient() {
   const [exams, setExams] = useState([])
   const [loading, setLoading] = useState(true)
@@ -572,7 +741,7 @@ export default function ExamAdminClient() {
 
             <section className={styles.panel}>
               <div className={styles.panelHeader}>
-                <div><h2>امتحان‌های من</h2><p>برای دیدن نمره‌ها روی هر امتحان بزنید.</p></div>
+                <div><h2>امتحان‌های من</h2><p>برای دیدن نتیجه‌ها و پیش‌نمایش آموزشی روی هر امتحان بزنید.</p></div>
                 <button type="button" className={styles.refreshButton} onClick={loadExams} disabled={loading}>به‌روزرسانی</button>
               </div>
               {loading ? <div className={styles.empty}>در حال بارگذاری…</div> : exams.length === 0 ? (
@@ -758,6 +927,7 @@ export default function ExamAdminClient() {
                 <button type="button" className={styles.textButton} onClick={() => setView('list')}>→ بازگشت</button>
                 <div className={styles.detailTitle}><div><span className={`${styles.status} ${styles[`status_${detailDisplayState.key}`]}`}>{detailDisplayState.label}</span><h2>{detail.exam.title}</h2><p>{detail.exam.description}</p></div>
                   <div className={styles.detailActions}>
+                    <button type="button" className={styles.previewButton} onClick={() => setView('preview')} data-lehr-ui>مشاهده آموزشی آزمون</button>
                     <button type="button" className={detailCanClose ? styles.dangerButton : styles.primaryButton} disabled={saving} onClick={() => changeStatus(detailCanClose ? 'close' : 'reopen')}>
                       {detailCanClose ? 'بستن امتحان' : 'فعال‌کردن دوباره'}
                     </button>
@@ -869,6 +1039,8 @@ export default function ExamAdminClient() {
             </section>
           )
         ) : null}
+
+        {view === 'preview' && detail ? <ExamTeachingPreview detail={detail} onBack={() => setView('detail')} /> : null}
       </div>
     </main>
   )
