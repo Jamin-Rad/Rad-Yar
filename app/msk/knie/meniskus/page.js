@@ -244,7 +244,7 @@ const CONTENT = {
       stats: [
         { value: '3–5 %', label: 'Inzidenz', text: 'häufig Zufallsbefund im Knie-MRT' },
         { value: '~50 %', label: 'bilateral', text: 'nicht selten beidseitig vorhanden' },
-        { value: 'Außenmeniskus', label: 'Betroffener Meniskus', qualitative: true },
+        { value: 'fast ausschließlich', label: 'Außenmeniskus', qualitative: true },
       ],
       overviewHeaders: ['Parameter', 'Wert'],
       overviewRows: [
@@ -478,7 +478,7 @@ const CONTENT = {
       stats: [
         { value: '3–5%', label: 'incidence', text: 'often incidental on knee MRI' },
         { value: '~50%', label: 'bilateral', text: 'not uncommonly present on both sides' },
-        { value: 'Lateral meniscus', label: 'Affected meniscus', qualitative: true },
+        { value: 'almost exclusively', label: 'Lateral meniscus', qualitative: true },
       ],
       overviewHeaders: ['Parameter', 'Value'],
       overviewRows: [
@@ -712,7 +712,7 @@ const CONTENT = {
       stats: [
         { value: '۳–۵٪', label: 'شیوع', text: 'اغلب یافته اتفاقی در MRI زانو' },
         { value: '~۵۰٪', label: 'دوطرفه', text: 'می‌تواند در هر دو زانو دیده شود' },
-        { value: 'منیسک خارجی', label: 'منیسک درگیر', qualitative: true },
+        { value: 'تقریباً همیشه', label: 'منیسک خارجی', qualitative: true },
       ],
       overviewHeaders: ['پارامتر', 'مقدار'],
       overviewRows: [
@@ -1252,7 +1252,17 @@ export default function MeniskusPage() {
             lead={copy.therapy.lead}
             {...sectionProps('therapie')}
           >
-            <Table headers={copy.therapy.tableHeaders} rows={copy.therapy.tableRows} />
+            <div className={contentStyles.discoidCriteriaWrap}>
+              <table className={`${contentStyles.discoidCriteriaTable} ${contentStyles.therapyTable}`} data-therapy-table aria-label={copy.therapy.title}>
+                <thead><tr>{copy.therapy.tableHeaders.map(header => <th key={header} scope="col">{header}</th>)}</tr></thead>
+                <tbody>{copy.therapy.tableRows.map(([situation, principle]) => (
+                  <tr key={situation}>
+                    <th scope="row">{situation}</th>
+                    <td>{principle}</td>
+                  </tr>
+                ))}</tbody>
+              </table>
+            </div>
             <Callout label={copy.keyLabel}>{copy.therapy.key}</Callout>
           </Section>
 
