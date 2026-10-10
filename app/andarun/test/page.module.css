@@ -110,15 +110,15 @@
 .stepNumber { margin-top: 8px; color: var(--plum-900); font-size: 13px; font-weight: 900; }
 .workflow strong { margin-top: 3px; font-family: var(--font-newsreader,Georgia,serif); font-size: 16px; line-height: 1.3; }
 .workflow p { margin: 6px 0 0; color: var(--body); font-size: 13px; line-height: 1.55; }
-.warning { display: grid; grid-template-columns: 42px 1fr; align-items: center; gap: 13px; padding: 12px 16px; border: 1px solid #f2aaa5; border-radius: 8px; background: var(--coral-100); }
-.warning > span { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: var(--coral-600); color: #fff; font-size: 20px; font-weight: 900; }
-.warning strong { color: #b92e29; font-size: 15px; }
-.warning p { margin: 4px 0 0; color: #6c4b4c; font-size: 14px; line-height: 1.6; }
-.rememberNote { display: grid; grid-template-columns: 58px 116px minmax(0,1fr); align-items: center; gap: 18px; margin-top: 18px; padding: 20px 24px; border-inline-start: 6px solid #db653f; border-radius: 5px; background: linear-gradient(90deg,#fff0e5,#fff7ef); }
-.rememberIcon { width: 50px; height: 50px; display: grid; place-items: center; color: #ad4325; border-inline-end: 1px solid rgba(173,67,37,.28); }
-.rememberIcon svg { width: 31px; height: 31px; }
-.rememberNote strong { color: #ad4325; font-size: 16px; font-weight: 950; letter-spacing: .05em; text-transform: uppercase; }
-.rememberNote p { margin: 0; color: #633b30; font-size: 16px; line-height: 1.65; }
+.rememberNote,.warning { position: relative; overflow: hidden; display: block; margin: 20px 0 0; padding: 18px 20px; border: 2px solid rgba(15,159,168,.32); border-radius: 10px; background: rgba(15,159,168,.085); }
+.rememberNote::before,.warning::before { content: ''; position: absolute; inset-block: 0; inset-inline-start: 0; width: 6px; background: linear-gradient(180deg,#f97316,#fb923c); }
+.warning { border-color: rgba(229,107,103,.38); background: rgba(229,107,103,.09); }
+.calloutLabel { position: relative; display: inline-flex; align-items: center; gap: 7px; margin-bottom: 8px; color: #0b5361; font-size: 12px; font-weight: 950; letter-spacing: .08em; text-transform: uppercase; }
+.calloutLabel svg { width: 19px; height: 19px; }
+.warning .calloutLabel { color: #a74342; }
+.calloutBody { position: relative; color: #31515b; font-weight: 800; line-height: 1.75; }
+.warning .calloutBody { color: #704746; }
+.calloutBody p { margin: 4px 0 0; }
 .interactiveModule { overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); box-shadow: 0 18px 44px rgba(28,23,43,.07); }
 .interactiveIntro { padding: 24px 26px 20px; background: linear-gradient(120deg,rgba(217,242,241,.72),rgba(240,229,241,.55)); }
 .interactiveIntro > span { color: var(--teal-700); font-size: 11px; font-weight: 900; letter-spacing: .13em; }
@@ -258,12 +258,12 @@
 :global(html[data-theme='dark']) .sidebar .activeSideItem { color: #fff; background: linear-gradient(90deg,rgba(159,91,164,.38),rgba(56,174,177,.2)); }
 :global(html[data-theme='dark']) .readButton[aria-pressed='false'] { color: #fff; }
 :global(html[data-theme='dark']) .readButtonDone { border-color: #d09ad3; background: #814887; color: #fff; }
-:global(html[data-theme='dark']) .warning { border-color: #8e4b4b; background: #3d2427; }
-:global(html[data-theme='dark']) .warning strong { color: #ff9189; }
-:global(html[data-theme='dark']) .warning p { color: #e4c5c5; }
-:global(html[data-theme='dark']) .rememberNote { border-color: #f49b6b; background: linear-gradient(90deg,#3d2421,#312226); }
-:global(html[data-theme='dark']) .rememberIcon,:global(html[data-theme='dark']) .rememberNote strong { color: #f49b6b; border-color: rgba(244,155,107,.3); }
-:global(html[data-theme='dark']) .rememberNote p { color: #f3d2be; }
+:global(html[data-theme='dark']) .rememberNote { border-color: rgba(61,208,206,.3); background: rgba(15,159,168,.11); }
+:global(html[data-theme='dark']) .calloutLabel { color: #66dfdc; }
+:global(html[data-theme='dark']) .calloutBody { color: #c1e0df; }
+:global(html[data-theme='dark']) .warning { border-color: rgba(229,107,103,.38); background: rgba(229,107,103,.1); }
+:global(html[data-theme='dark']) .warning .calloutLabel { color: #f09b96; }
+:global(html[data-theme='dark']) .warning .calloutBody { color: #efc1bf; }
 :global(html[data-theme='dark']) .interactiveModule { background: #201c24; }
 :global(html[data-theme='dark']) .interactiveIntro { background: linear-gradient(120deg,rgba(24,63,65,.72),rgba(57,40,59,.7)); }
 :global(html[data-theme='dark']) .findingTabs { background: #19161e; }
@@ -375,9 +375,6 @@
   .findingExplanation { padding: 25px 20px 28px; }
   .teachingTableWrap { margin: 12px 0 4px; }
   .teachingTable { min-width: 620px; }
-  .rememberNote { grid-template-columns: 48px 1fr; gap: 12px; padding: 17px 16px; }
-  .rememberIcon { width: 44px; height: 44px; }
-  .rememberNote p { grid-column: 1 / -1; }
   .caseFileHeader { grid-template-columns: 42px minmax(0,1fr); gap: 11px; padding: 14px; }
   .caseFileIcon { width: 42px; height: 42px; border-radius: 12px; }
   .caseFileHeading strong { font-size: 20px; }

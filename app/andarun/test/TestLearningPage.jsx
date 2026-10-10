@@ -200,13 +200,13 @@ function StartSection({ lang }) {
     <ol className={styles.workflow}>
       {COPY.workflow.map(([title, text, icon], index) => <li key={pick(title, lang)}><span className={styles.stepIcon}><Icon name={icon} /></span><span className={styles.stepNumber}>{index + 1}</span><strong>{pick(title, lang)}</strong><p>{pick(text, lang)}</p></li>)}
     </ol>
-    <aside className={styles.warning}><span aria-hidden="true">!</span><div><strong>{pick(COPY.warningTitle, lang)}</strong><p>{pick(COPY.warningText, lang)}</p></div></aside>
+    <aside className={styles.warning}><span className={styles.calloutLabel}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3L2 21h20z M12 9v5 M12 17v1" /></svg>{pick(L('Cave', 'Caution', 'احتیاط'), lang)}</span><div className={styles.calloutBody}><strong>{pick(COPY.warningTitle, lang)}</strong><p>{pick(COPY.warningText, lang)}</p></div></aside>
     <RadiopaediaFile lang={lang} caseData={RADIOPAEDIA_CASE} />
   </>
 }
 
 function RememberNote({ lang, children }) {
-  return <aside className={styles.rememberNote}><span className={styles.rememberIcon}><Icon name="bookmark" /></span><strong>{pick(L('Merke', 'Remember', 'به‌خاطر بسپار'), lang)}</strong><p>{children}</p></aside>
+  return <aside className={styles.rememberNote}><span className={styles.calloutLabel}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0-4 10c1 1 1 2 1 4h6c0-2 0-3 1-4a6 6 0 0 0-4-10z M9 21h6" /></svg>{pick(L('Merke', 'Remember', 'به‌خاطر بسپار'), lang)}</span><div className={styles.calloutBody}>{children}</div></aside>
 }
 
 function InteractiveLesson({ lang }) {

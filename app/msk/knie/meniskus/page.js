@@ -4833,15 +4833,14 @@ const MENISKUS_TEST_STYLE_OVERRIDES = `
 .heroText { width: min(800px,74%); padding: 0 !important; }
 .sourceBadge,.heroStats { display: none !important; }
 .heroText h1 { max-width: 790px !important; margin: 0 !important; color: #faf5fb !important; font-size: clamp(42px,4.5vw,62px) !important; line-height: .98 !important; letter-spacing: -.042em !important; text-wrap: balance; }
-.heroText p { max-width: 680px !important; margin: 18px 0 0 !important; color: #d2ccd7 !important; font-size: 17px !important; line-height: 1.7 !important; }
 .heroActions { margin: 0 0 16px !important; gap: 12px !important; }
 .learnAction { min-height: 46px !important; padding: 10px 20px !important; border-radius: 7px !important; font-size: 14px !important; }
 .learnActionMcq { border: 0 !important; background: var(--plum-900) !important; color: #fff !important; box-shadow: 0 12px 25px rgba(59,22,61,.16) !important; }
 .learnActionFlash { border: 1px solid #a7a1ae !important; background: rgba(255,255,255,.82) !important; color: var(--plum-900) !important; }
 .takeHomeJump { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 10px 20px; border: 1px solid rgba(166,57,97,.42); border-radius: 7px; background: linear-gradient(120deg,rgba(255,249,251,.96),rgba(247,226,235,.9)); color: #6d1d3b; font: 850 14px/1.2 inherit; cursor: pointer; box-shadow: 0 12px 25px rgba(102,25,55,.1); }
 .takeHomeJump svg { width: 19px; height: 19px; }
-.lessonProgress { min-height: 48px !important; grid-template-columns: minmax(0,1fr) auto !important; gap: 12px !important; margin: 0 !important; padding: 16px !important; border: 1px solid var(--line) !important; border-radius: 8px !important; background: rgba(255,255,255,.96) !important; color: var(--ink) !important; box-shadow: 0 8px 20px rgba(35,18,39,.035) !important; backdrop-filter: none !important; }
-.progressTrack { grid-column: 1 / -1; height: 10px !important; background: #e9e7ec !important; }
+.lessonProgress { min-height: 48px !important; grid-template-columns: minmax(120px,330px) auto minmax(0,1fr) !important; gap: 12px !important; margin: 0 !important; padding: 16px !important; border: 1px solid var(--line) !important; border-radius: 8px !important; background: rgba(255,255,255,.96) !important; color: var(--ink) !important; box-shadow: 0 8px 20px rgba(35,18,39,.035) !important; backdrop-filter: none !important; }
+.progressTrack { grid-column: auto; height: 10px !important; background: #e9e7ec !important; }
 .progressTrack i { background: linear-gradient(90deg,var(--plum-800),var(--teal-500)) !important; }
 .lessonProgress > span { color: var(--muted) !important; font-size: 13px !important; }
 .progressActions button { color: var(--plum-900) !important; font-size: 13px !important; }
@@ -4879,10 +4878,6 @@ const MENISKUS_TEST_STYLE_OVERRIDES = `
 .table tr:nth-child(even) td { background: #f4f6f8 !important; }
 .table tbody tr:hover td { background: #edf8f7 !important; }
 .card,.normalCard,.protocolCard,.criteriaCard,.discoidStatCard { border-color: var(--line) !important; background: #fff !important; }
-.callout { border-inline-start: 6px solid var(--teal-500) !important; border-radius: 5px !important; background: color-mix(in srgb,var(--teal-100) 62%,#fff) !important; }
-.callout.cave { border-color: #f2aaa5 !important; border-inline-start-color: var(--coral-600) !important; background: var(--coral-100) !important; }
-.calloutLabel { color: var(--teal-700) !important; }
-.callout.cave .calloutLabel { color: #b92e29 !important; }
 .takeHomeSection { border-color: rgba(165,58,98,.46) !important; background: linear-gradient(145deg,rgba(255,249,251,.96),rgba(247,236,242,.94)) !important; }
 .takeHomeSection .sectionToggle { min-height: 88px !important; color: #6b1d3b; background: linear-gradient(115deg,rgba(149,43,82,.08),rgba(255,255,255,.34)) !important; }
 .takeHomeSection .sectionIdentity { width: 50px !important; height: 50px !important; color: #fff !important; background: linear-gradient(145deg,#6d1d3b,#b74872) !important; box-shadow: 0 9px 22px rgba(126,36,70,.24); }
@@ -4893,12 +4888,13 @@ const MENISKUS_TEST_STYLE_OVERRIDES = `
 
 html[data-theme='dark'] .page { --ink: #f4eef5; --body: #c8c2cf; --muted: #9892a2; --line: #413947; --paper: #221f27; --canvas: #0b0910; background: var(--canvas) !important; }
 html[data-theme='dark'] .lessonProgress,html[data-theme='dark'] .sidebar,html[data-theme='dark'] .section { background: rgba(34,31,39,.94) !important; }
+html[data-theme='dark'] .progressActions button { color: #ead8eb !important; }
+html[data-theme='dark'] .progressActions .lessonCompleteButton { border-color: #7e6683 !important; background: rgba(113,53,116,.3) !important; color: #f7edf8 !important; }
+html[data-theme='dark'] .progressActions .lessonCompleteButtonDone { border-color: #63cbd0 !important; background: #176f78 !important; color: #fff !important; }
 html[data-theme='dark'] .learnActionFlash { border-color: #615669 !important; background: #27222b !important; color: #f2e7f3 !important; }
 html[data-theme='dark'] .sideTitle,html[data-theme='dark'] .sideItem,html[data-theme='dark'] .sectionLead,html[data-theme='dark'] .subSectionLead { color: var(--body) !important; }
 html[data-theme='dark'] .sectionHead h2,html[data-theme='dark'] .card h3,html[data-theme='dark'] .normalCard h3,html[data-theme='dark'] .protocolCard h3,html[data-theme='dark'] .criteriaCard h3 { color: var(--ink) !important; }
 html[data-theme='dark'] .card,html[data-theme='dark'] .normalCard,html[data-theme='dark'] .protocolCard,html[data-theme='dark'] .criteriaCard,html[data-theme='dark'] .discoidStatCard { background: #29252e !important; }
-html[data-theme='dark'] .callout { background: #183f41 !important; }
-html[data-theme='dark'] .callout.cave { background: #3d2425 !important; }
 
 @media (max-width:900px) {
   .page { padding: 76px 12px 108px !important; }
@@ -4908,10 +4904,10 @@ html[data-theme='dark'] .callout.cave { background: #3d2425 !important; }
   .heroGrid { min-height: 238px !important; padding: 16px 4px 32px; }
   .heroText { width: 88%; }
   .heroText h1 { font-size: clamp(39px,13vw,58px) !important; }
-  .heroText p { font-size: 15px !important; }
   .heroActions { display: grid !important; grid-template-columns: 1fr 1fr; }
   .takeHomeJump { grid-column: 1 / -1; }
   .lessonProgress { grid-template-columns: 1fr auto !important; }
+  .progressTrack { grid-column: auto; }
   .progressActions { grid-column: 1 / -1; width: 100%; justify-content: space-between; flex-wrap: wrap; }
   .layout,[dir='rtl'] .layout { grid-template-columns: 1fr !important; }
   .sidebar { display: none !important; }
@@ -5032,7 +5028,6 @@ const CONTENT = {
       ],
       normalTitle: 'Normalbefund',
       normalText: 'Der gesunde Meniskus stellt sich homogen hypointens dar. In der sagittalen Ansicht besitzt er eine typische dreieckige Struktur.',
-      key: 'Ein reiner Signalanstieg im Meniskus ist noch kein Riss. Entscheidend ist der reproduzierbare Kontakt zur superioren oder inferioren Gelenkfläche.',
     },
     grading: {
       title: 'MRT-Signalgrading: Grad 0 bis III',
@@ -5054,7 +5049,7 @@ const CONTENT = {
         ['2c', 'keilförmige oder globuläre Signalsteigerung', 'kein eindeutiger Kontakt', 'hohes Risiko für okkulten Riss'],
         ['3', 'Pathologische Signalsteigerung', 'Kontakt auf mindestens zwei aufeinanderfolgenden Schichten', 'radiologisch gesicherter Meniskusriss'],
       ],
-      key: 'Nur Grad III ist ein echter Riss. Meniskusläsion Grad 3 ist der entscheidende Schwellenwert für die Rissdiagnose: Signalsteigerung innerhalb des Meniskus mit sicherem Oberflächenkontakt auf mindestens zwei Schichten.',
+      key: 'Nur Grad III ist ein echter Riss.',
     },
     tear: {
       title: 'MRT-Kriterien für einen Meniskusriss',
@@ -5065,7 +5060,6 @@ const CONTENT = {
         { title: 'Deformität', text: 'Die normale dreieckige Meniskuskonfiguration ist verloren oder deutlich verändert.' },
         { title: 'Two-slice-touch-Regel', text: 'Die Läsion ist auf mindestens zwei aufeinanderfolgenden Schichten mit Oberflächenkontakt erkennbar.' },
       ],
-      key: 'Die Two-slice-touch-Regel erhöht die Spezifität, weil ein Einzelbild-Artefakt nicht fälschlich als Riss gewertet wird.',
     },
     tearTypes: {
       title: 'Risstypen',
@@ -5290,7 +5284,7 @@ const CONTENT = {
         ['2c', 'wedge-shaped or globular signal increase', 'no definite contact', 'high risk of an occult tear'],
         ['3', 'signal increase', 'contact on at least two consecutive slices', 'radiologically proven meniscal tear'],
       ],
-      key: 'Only grade III is a true tear. Grade 3 meniscal lesion is the decisive threshold for diagnosing a tear: intrameniscal signal increase with reliable surface contact on at least two slices.',
+      key: 'Only grade III is a true tear.',
     },
     tear: {
       title: 'MRI criteria for a meniscal tear',
@@ -5301,7 +5295,6 @@ const CONTENT = {
         { title: 'Deformity', text: 'The normal triangular configuration is lost or clearly altered.' },
         { title: 'Two-slice-touch rule', text: 'The lesion is visible with surface contact on at least two consecutive slices.' },
       ],
-      key: 'The two-slice-touch rule increases specificity because a single-slice artifact is not overcalled as a tear.',
     },
     tearTypes: {
       title: 'Tear types',
@@ -5526,7 +5519,7 @@ const CONTENT = {
         ['2c', 'افزایش سیگنال گوه‌ای یا گلوبولار', 'بدون تماس واضح', 'ریسک بالا برای پارگی مخفی'],
         ['3', 'افزایش سیگنال پاتولوژیک', 'تماس در حداقل دو برش متوالی', 'پارگی منیسک از نظر رادیولوژیک قطعی'],
       ],
-      key: 'فقط درجه III پارگی واقعی است. ضایعه منیسک درجه 3 آستانه اصلی برای تشخیص پارگی است: افزایش سیگنال داخل منیسک همراه با تماس مطمئن با سطح مفصلی در حداقل دو برش.',
+      key: 'فقط درجه III پارگی واقعی است.',
     },
     tear: {
       title: 'معیارهای MRI برای پارگی منیسک',
@@ -5537,7 +5530,6 @@ const CONTENT = {
         { title: 'دفورمیتی', text: 'شکل مثلثی طبیعی منیسک از بین رفته یا واضحاً تغییر کرده است.' },
         { title: 'قانون Two-slice-touch', text: 'ضایعه باید حداقل در دو برش متوالی با تماس سطحی دیده شود.' },
       ],
-      key: 'قانون Two-slice-touch اختصاصیت را بالا می‌برد، چون یک آرتیفکت تک‌برشی به اشتباه پارگی حساب نمی‌شود.',
     },
     tearTypes: {
       title: 'انواع پارگی منیسک',
@@ -6159,7 +6151,6 @@ export default function MeniskusPage() {
         <div className={styles.heroGrid}>
           <div className={styles.heroText}>
             <h1>{copy.title}</h1>
-            <p>{copy.subtitle}</p>
           </div>
         </div>
 
@@ -6176,7 +6167,7 @@ export default function MeniskusPage() {
         </div>
 
         <div className={styles.lessonProgress}>
-          <div className={styles.progressTrack}><i style={{ width: `${(readSections.size / pageSections.length) * 100}%` }} /></div>
+          <div className={styles.progressTrack} role="progressbar" aria-label={sectionReadCopy.progress} aria-valuemin={0} aria-valuemax={pageSections.length} aria-valuenow={readSections.size}><i style={{ width: `${(readSections.size / pageSections.length) * 100}%` }} /></div>
           <span>{readSections.size} / {pageSections.length} {sectionReadCopy.progress}</span>
           <div className={styles.progressActions}>
             <button type="button" className={`${styles.lessonCompleteButton} ${lessonComplete ? styles.lessonCompleteButtonDone : ''}`} aria-pressed={lessonComplete} onClick={toggleLessonComplete}><SectionIcon id="check" />{lessonComplete ? sectionReadCopy.lessonCompleted : sectionReadCopy.completeLesson}</button>
