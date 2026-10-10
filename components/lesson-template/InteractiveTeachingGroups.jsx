@@ -59,7 +59,8 @@ function InteractiveTeachingGroup({ group, resolve, direction, renderVisual }) {
             <div className={styles.panelCopy}>
               <span className={styles.category}>{resolve(item.category)}</span>
               <h4>{resolve(item.label)}</h4>
-              <p>{resolve(item.text)}</p>
+              {item.text ? <p>{resolve(item.text)}</p> : null}
+              {item.details ? <dl className={styles.detailList}>{item.details.map(detail => <div key={detail.id}><dt>{resolve(detail.label)}</dt><dd>{resolve(detail.text)}</dd></div>)}</dl> : null}
             </div>
             {visual ? <div className={styles.panelVisual}>{visual}</div> : null}
           </div>

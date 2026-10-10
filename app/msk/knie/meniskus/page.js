@@ -8,6 +8,7 @@ import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress
 import { TEAR_CASE_FRAMES } from './tearCaseFrames'
 import LessonCaseFile from '@/components/LessonCaseFile'
 import MeniscusTextLesson from '@/app/andarun/test/MeniscusTextLesson'
+import TearTypeExplorer from './TearTypeExplorer'
 import template from '@/components/LessonTemplate.module.css'
 import contentStyles from './content.module.css'
 
@@ -199,7 +200,7 @@ const CONTENT = {
         ['Lappenriss', 'instabiler Lappen mit peripherer Anheftung', 'signalreicher, verlagerbarer Lappen', 'sparsame Resektion des Lappens'],
       ],
       caveTitle: 'CAVE – Korbhenkelriss',
-      caveText: 'Doppeltes PCL-Zeichen: Ein dislozierter Meniskusanteil liegt im Interkondylarraum parallel zum PCL. Das Bow-tie-Zeichen fehlt. Sofortdiagnose → dringliche Arthroskopie.',
+      caveText: 'Doppel-PCL- und fehlendes Bow-tie-Zeichen können auf einen Korbhenkelriss hinweisen. Das dislozierte Fragment direkt nachweisen. Bei mechanisch blockiertem Knie ist eine dringliche orthopädische Beurteilung erforderlich.',
     },
     cases: {
       title: 'Fallbeispiele',
@@ -432,7 +433,7 @@ const CONTENT = {
         ['Flap tear', 'unstable flap with peripheral attachment', 'variable high-signal displaced flap', 'limited flap resection'],
       ],
       caveTitle: 'CAVE – bucket-handle tear',
-      caveText: 'Double PCL sign: a displaced meniscal fragment lies in the intercondylar notch parallel to the PCL. The bow-tie sign is absent. Immediate diagnosis → urgent arthroscopy.',
+      caveText: 'A double-PCL or absent bow-tie sign may suggest a bucket-handle tear. Identify the displaced fragment directly. A mechanically locked knee requires urgent orthopaedic assessment.',
     },
     cases: {
       title: 'Cases',
@@ -665,7 +666,7 @@ const CONTENT = {
         ['پارگی فلپ', 'فلپ ناپایدار با اتصال محیطی', 'فلپ جابه‌جا شونده با سیگنال بالا', 'رزکسیون محدود فلپ'],
       ],
       caveTitle: 'هشدار – پارگی Bucket-handle',
-      caveText: 'علامت PCL دوگانه: قطعه جابه‌جا شده منیسک در ناچ بین کندیلی و موازی PCL قرار می‌گیرد. علامت Bow-tie دیده نمی‌شود. تشخیص سریع → آرتروسکوپی فوری.',
+      caveText: 'علامت Double-PCL یا فقدان Bow-tie می‌تواند پارگی دسته‌سطلی را مطرح کند. قطعهٔ جابه‌جا‌شده را مستقیماً شناسایی کنید. زانوی قفل‌شدهٔ مکانیکی نیازمند ارزیابی فوری ارتوپدی است.',
     },
     cases: {
       title: 'نمونه کیس‌ها',
@@ -962,6 +963,8 @@ function ImageFigure({ src, alt, caption, aiNotice, zoomable = false, zoomLabel 
 }
 
 const SOURCES = [
+  { label: 'Simonetta et al. · Meniscus tears treatment: patterns and practical guide (2023)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10122773/' },
+  { label: 'Magnetic resonance imaging of the knee (2020)', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7571514/' },
   { label: 'Crues et al. · Meniscal tears of the knee: accuracy of MR imaging (Radiology, 1987)', href: 'https://pubmed.ncbi.nlm.nih.gov/3602385/' },
   { label: 'De Smet & Tuite · Two-slice-touch rule (AJR, 2006)', href: 'https://pubmed.ncbi.nlm.nih.gov/16985134/' },
   { label: 'Nguyen et al. · MR Imaging–based Diagnosis and Classification of Meniscal Tears (RadioGraphics, 2014)', href: 'https://pubs.rsna.org/doi/10.1148/rg.344125202' },
@@ -1189,7 +1192,7 @@ export default function MeniskusPage() {
               <img src="/meniskus/meniscal-tear-types.png" alt="Longitudinal, radial, horizontal, bucket-handle and flap meniscal tears with MRI signs" />
               <figcaption className={styles.aiImageNotice}>{copy.aiImageNotice}</figcaption>
             </figure>
-            <Table headers={copy.tearTypes.tableHeaders} rows={copy.tearTypes.tableRows} className={styles.tearTypeTable} />
+            <TearTypeExplorer lang={lang} />
             <p className={styles.tearCaseIntro}>{copy.tearTypes.caseIntro}</p>
             <div className={styles.tearCaseGrid}>
               {TEAR_CASES.map(item => {
