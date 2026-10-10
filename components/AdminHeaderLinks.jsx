@@ -4,6 +4,12 @@ import Link from 'next/link'
 import { ClerkLoaded, useUser } from '@clerk/nextjs'
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
+import {
+  isLessonPdfPath,
+  LESSON_PDF_EXPORT_EVENT,
+  LESSON_PDF_STATE_EVENT,
+  LESSON_PDF_STATE_REQUEST_EVENT,
+} from '@/lib/lessonPdf'
 import styles from './Navbar.module.css'
 
 const ICONS = {
@@ -19,6 +25,12 @@ const ICONS = {
     <svg viewBox="0 0 20 20" aria-hidden="true">
       <path d="M6.25 3.25h7.5A2.25 2.25 0 0 1 16 5.5v9A2.25 2.25 0 0 1 13.75 16.75h-7.5A2.25 2.25 0 0 1 4 14.5v-9a2.25 2.25 0 0 1 2.25-2.25Z" />
       <path d="m7 7.2 1.25 1.25L10.7 6M7 12h6" />
+    </svg>
+  ),
+  pdf: (
+    <svg viewBox="0 0 20 20" aria-hidden="true">
+      <path d="M5 2.75h6.8l3.2 3.3v11.2H5z" />
+      <path d="M11.5 3v3.5h3.25M7.4 13.8v-4h1.4a1.2 1.2 0 0 1 0 2.4H7.4m4.05 1.6v-4h1.1c1.2 0 2 .75 2 2s-.8 2-2 2h-1.1Z" />
     </svg>
   ),
   teach: (
@@ -40,6 +52,8 @@ function LoadedAdminLinks() {
   const pathname = usePathname()
   const isAdmin = isSignedIn && user?.primaryEmailAddress?.emailAddress === 'dr.benjaminzia@gmail.com'
   const [lehrActive, setLehrActive] = useState(false)
+  const [pdfState, setPdfState] = useState({ available: false, preparing: false })
+  const pdfPath = isLessonPdfPath(pathname)
 
   useEffect(() => {
     setLehrActive(document.documentElement.classList.contains('lehr-mode-active'))
@@ -47,6 +61,16 @@ function LoadedAdminLinks() {
     window.addEventListener('radyar:lehr-mode-state', handleState)
     return () => window.removeEventListener('radyar:lehr-mode-state', handleState)
   }, [])
+
+  useEffect(() => {
+    const handleState = event => setPdfState({
+      available: !!event.detail?.available,
+      preparing: !!event.detail?.preparing,
+    })
+    window.addEventListener(LESSON_PDF_STATE_EVENT, handleState)
+    window.dispatchEvent(new Event(LESSON_PDF_STATE_REQUEST_EVENT))
+    return () => window.removeEventListener(LESSON_PDF_STATE_EVENT, handleState)
+  }, [pathname])
 
   if (!isAdmin) return null
 
@@ -70,6 +94,19 @@ function LoadedAdminLinks() {
         <span className={styles.portalIcon}>{ICONS.quiz}</span>
         <span className={styles.portalLabel}>Quiz</span>
       </Link>
+      {pdfPath ? (
+        <button
+          type="button"
+          className={styles.portalAdmin}
+          onClick={() => window.dispatchEvent(new Event(LESSON_PDF_EXPORT_EVENT))}
+          disabled={!pdfState.available || pdfState.preparing}
+          aria-busy={pdfState.preparing}
+          title={pdfState.preparing ? 'PDF wird vorbereitet …' : 'Lernskript als PDF'}
+        >
+          <span className={styles.portalIcon}>{ICONS.pdf}</span>
+          <span className={styles.portalLabel}>{pdfState.preparing ? 'PDF …' : 'PDF'}</span>
+        </button>
+      ) : null}
       {!pathname?.startsWith('/andarun') ? (
         <button
           type="button"

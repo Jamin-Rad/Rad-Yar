@@ -225,6 +225,13 @@
 }
 .portalLabel { transform: translateY(.25px); }
 
+.portalAdmin:disabled {
+  opacity: .42;
+  cursor: wait;
+  transform: none;
+}
+.portalAdmin[aria-busy='true'] .portalIcon { animation: adminPdfPulse 1s ease-in-out infinite; }
+
 .portalAdmin[aria-pressed='true'] {
   background: linear-gradient(145deg, #fb923c, #ea580c);
   color: #fff;
@@ -327,4 +334,9 @@
 @media (prefers-reduced-motion: reduce) {
   .portalAndarun,
   .portalAdmin { transition: none; }
+  .portalAdmin[aria-busy='true'] .portalIcon { animation: none; }
+}
+
+@keyframes adminPdfPulse {
+  50% { opacity: .42; transform: scale(.9); }
 }

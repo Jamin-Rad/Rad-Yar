@@ -227,21 +227,21 @@ html[data-theme='dark'] section#takehome .sectionHead h2 {
   }
 }
 
-/* Print/PDF is a purpose-built handout, independent of the interactive theme. */
-@page {
+/* Admin lesson export: a purpose-built A4 handout, never a screenshot of the UI. */
+@page radyarLesson {
   size: A4 portrait;
-  margin: 14mm 14mm 16mm;
+  margin: 15mm 16mm 20mm;
 }
 
 @media print {
-  html,
-  html[data-theme='dark'] {
+  html[data-lesson-print],
+  html[data-lesson-print][data-theme='dark'] {
     color-scheme: light !important;
     background: #fff !important;
   }
 
-  html,
-  body {
+  html[data-lesson-print],
+  html[data-lesson-print] body {
     width: auto !important;
     min-width: 0 !important;
     overflow: visible !important;
@@ -255,27 +255,29 @@ html[data-theme='dark'] section#takehome .sectionHead h2 {
     user-select: text;
   }
 
-  [data-print-exclude],
-  [data-lesson-progress-ui],
-  [data-lesson-concept-explorer],
-  main > aside,
-  main nav,
-  main [role='tablist'],
-  main [class*='hero'],
-  main [class*='author'],
-  main [class*='heroStats'],
-  main [class*='heroFacts'],
-  main [class*='actions'],
-  main [class*='toolbar'],
-  main iframe,
-  main video,
-  main audio {
+  html[data-lesson-print] body { page: radyarLesson; }
+
+  html[data-lesson-print] [data-print-exclude],
+  html[data-lesson-print] [data-lesson-progress-ui],
+  html[data-lesson-print] [data-lesson-concept-explorer],
+  html[data-lesson-print] main > aside,
+  html[data-lesson-print] main nav,
+  html[data-lesson-print] main [role='tablist'],
+  html[data-lesson-print] main [class*='hero'],
+  html[data-lesson-print] main [class*='author'],
+  html[data-lesson-print] main [class*='heroStats'],
+  html[data-lesson-print] main [class*='heroFacts'],
+  html[data-lesson-print] main [class*='actions'],
+  html[data-lesson-print] main [class*='toolbar'],
+  html[data-lesson-print] main iframe,
+  html[data-lesson-print] main video,
+  html[data-lesson-print] main audio {
     display: none !important;
   }
 
-  main,
-  main > div,
-  main article {
+  html[data-lesson-print] main,
+  html[data-lesson-print] main > div,
+  html[data-lesson-print] main article {
     width: 100% !important;
     max-width: none !important;
     min-width: 0 !important;
@@ -285,7 +287,7 @@ html[data-theme='dark'] section#takehome .sectionHead h2 {
     background: #fff !important;
   }
 
-  main * {
+  html[data-lesson-print] main * {
     min-height: 0 !important;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -294,31 +296,41 @@ html[data-theme='dark'] section#takehome .sectionHead h2 {
     transition: none !important;
   }
 
-  main :is(h1, h2, h3, h4, p, li, td, th, strong, b, small, span) {
+  html[data-lesson-print] main :is(h1, h2, h3, h4, p, li, td, th, dt, dd, strong, b, small, span) {
     color: #111827 !important;
   }
 
-  main h1 { font-size: 20pt !important; line-height: 1.2 !important; }
-  main h2 { font-size: 14pt !important; line-height: 1.25 !important; }
-  main h3 { font-size: 11.5pt !important; line-height: 1.3 !important; }
-  main :is(h1, h2, h3, h4) { break-after: avoid-page; page-break-after: avoid; }
-  main p { orphans: 3; widows: 3; }
+  html[data-lesson-print] main h1 { font-size: 20pt !important; line-height: 1.2 !important; }
+  html[data-lesson-print] main h2 { color: #126c84 !important; font-size: 14pt !important; line-height: 1.25 !important; }
+  html[data-lesson-print] main h3 { font-size: 11.5pt !important; line-height: 1.3 !important; }
+  html[data-lesson-print] main :is(h1, h2, h3, h4) { break-after: avoid-page; page-break-after: avoid; }
+  html[data-lesson-print] main p { orphans: 3; widows: 3; }
 
-  main section {
+  html[data-lesson-print] main section {
     overflow: visible !important;
+    break-inside: auto !important;
     break-before: auto;
     border-color: #d7dde5 !important;
     background: transparent !important;
   }
 
-  main section + section { margin-top: 7mm !important; }
-  main section > button:first-child { cursor: default !important; background: #f4f6f8 !important; border-color: #d7dde5 !important; }
-  main section > button:first-child svg:last-child { display: none !important; }
-  main section > button:first-child [class*='toggle'] { display: none !important; }
+  html[data-lesson-print] main section + section { margin-top: 5mm !important; }
+  html[data-lesson-print] main section > button:first-child {
+    cursor: default !important;
+    padding: 2.5mm 3mm !important;
+    border: 0 !important;
+    border-inline-start: 3pt solid #38a3bf !important;
+    border-radius: 1.5mm !important;
+    background: #eff8fa !important;
+    break-after: avoid-page;
+    page-break-after: avoid;
+  }
+  html[data-lesson-print] main section > button:first-child svg:last-child { display: none !important; }
+  html[data-lesson-print] main section > button:first-child [class*='toggle'] { display: none !important; }
 
-  main section[id] > [id$='-panel'],
-  main section[id] > [id$='-content'],
-  main section[id] > [hidden] {
+  html[data-lesson-print] main section[id] > [id$='-panel'],
+  html[data-lesson-print] main section[id] > [id$='-content'],
+  html[data-lesson-print] main section[id] > [hidden] {
     display: block !important;
     max-height: none !important;
     opacity: 1 !important;
@@ -326,29 +338,231 @@ html[data-theme='dark'] section#takehome .sectionHead h2 {
     overflow: visible !important;
   }
 
-  main section[id] button[aria-pressed],
-  main section[id] [class*='readButton'] { display: none !important; }
+  html[data-lesson-print] main section[id] button[aria-pressed],
+  html[data-lesson-print] main section[id] [class*='readButton'] { display: none !important; }
 
-  main :is(img, svg) { max-width: 100% !important; height: auto !important; }
-  main figure,
-  main img,
-  main [class*='card'],
-  main [class*='callout'] { break-inside: avoid-page; page-break-inside: avoid; }
+  html[data-lesson-print] main :is(
+    [class*='splitGrid'],
+    [class*='imageGrid'],
+    [class*='figureGrid'],
+    [class*='gallery'],
+    [class*='vascularLayout']
+  ) {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: start !important;
+    gap: 4mm !important;
+  }
 
-  main table {
+  html[data-lesson-print] main [class*='zoneGrid'] {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 3mm !important;
+  }
+
+  html[data-lesson-print] main :is([class*='protocolGrid'], [class*='criteriaGrid'], [class*='discoidStats']) {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 3mm !important;
+  }
+
+  html[data-lesson-print] main [class*='gradeHierarchy'] {
+    gap: 3mm !important;
+  }
+
+  html[data-lesson-print] main [class*='gradeSubgroups'] {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 2mm !important;
+    padding-inline-start: 3mm !important;
+  }
+
+  html[data-lesson-print] main :is([class*='gradeCard'], [class*='gradeSubtype']) {
+    padding: 3mm !important;
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  html[data-lesson-print] main [class*='gradeDetails'] {
+    gap: 1.5mm !important;
+  }
+
+  html[data-lesson-print] main img {
+    display: block !important;
+    width: auto !important;
+    max-width: 88mm !important;
+    max-height: 66mm !important;
+    margin-inline: auto !important;
+    object-fit: contain !important;
+  }
+  html[data-lesson-print] main svg { max-width: 100% !important; height: auto !important; }
+  html[data-lesson-print] main figure {
+    width: fit-content !important;
+    max-width: 94mm !important;
+    margin: 4mm auto !important;
+    padding: 2.5mm !important;
+    border: .5pt solid #cbd5e1 !important;
+    border-radius: 2mm !important;
+    background: #fff !important;
+  }
+  html[data-lesson-print] main :is([class*='tearTypesFigure'], [class*='discoidFigure']) {
+    width: 100% !important;
+    max-width: 150mm !important;
+  }
+  html[data-lesson-print] main :is([class*='tearTypesFigure'], [class*='discoidFigure']) img {
+    max-width: 145mm !important;
+    max-height: 76mm !important;
+  }
+  html[data-lesson-print] main figcaption {
+    margin-top: 2mm !important;
+    color: #64748b !important;
+    font-size: 7.5pt !important;
+    line-height: 1.35 !important;
+  }
+  html[data-lesson-print] main figure,
+  html[data-lesson-print] main img,
+  html[data-lesson-print] main [class*='callout'] { break-inside: avoid-page; page-break-inside: avoid; }
+
+  html[data-lesson-print] main [class*='card'] {
+    padding: 3mm !important;
+    border: .5pt solid #d7dde5 !important;
+    border-inline-start: 2pt solid #94a3b8 !important;
+    border-radius: 2mm !important;
+    break-inside: auto !important;
+  }
+
+  html[data-lesson-print] main :is([class*='rememberNote'], [class*='warning'], [class*='calloutLabel'], [class*='calloutBody']),
+  html[data-lesson-print] main :is([class*='rememberNote'], [class*='warning']) :is(p, span, strong, b) {
+    color: #334155 !important;
+  }
+
+  html[data-lesson-print] main table {
     width: 100% !important;
     border-collapse: collapse !important;
     font-size: 8.5pt !important;
   }
 
-  main thead { display: table-header-group; }
-  main tfoot { display: table-footer-group; }
-  main tr { break-inside: avoid-page; page-break-inside: avoid; }
-  main th,
-  main td { padding: 2.2mm !important; border: .5pt solid #cbd5e1 !important; background: transparent !important; }
-  main th { background: #eef2f6 !important; font-weight: 750 !important; }
+  html[data-lesson-print] main thead { display: table-header-group; }
+  html[data-lesson-print] main tfoot { display: table-footer-group; }
+  html[data-lesson-print] main tr { break-inside: avoid-page; page-break-inside: avoid; }
+  html[data-lesson-print] main th,
+  html[data-lesson-print] main td { padding: 2.2mm !important; border: .5pt solid #cbd5e1 !important; background: transparent !important; }
+  html[data-lesson-print] main th { background: #eef2f6 !important; font-weight: 750 !important; }
 
-  main a { color: #111827 !important; text-decoration: none !important; }
-  main [style*='position: sticky'],
-  main [style*='position: fixed'] { position: static !important; }
+  html[data-lesson-print] main a { color: #111827 !important; text-decoration: none !important; }
+  html[data-lesson-print] main [style*='position: sticky'],
+  html[data-lesson-print] main [style*='position: fixed'] { position: static !important; }
+
+  html[data-lesson-print] main [class*='videoFrameWrap'] { display: none !important; }
+
+  html[data-lesson-print] [data-lesson-print-case] {
+    margin: 3mm 0 !important;
+    border: .5pt solid #cbd5e1 !important;
+    border-radius: 2mm !important;
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+    background: #fff !important;
+  }
+
+  html[data-lesson-print] [data-lesson-print-case-header] {
+    min-height: 0 !important;
+    padding: 2mm 3mm !important;
+    background: #eef7f8 !important;
+  }
+
+  html[data-lesson-print] [data-lesson-print-case-header] a,
+  html[data-lesson-print] [data-lesson-print-case-viewport] [class*='caseControls'],
+  html[data-lesson-print] [data-lesson-print-case-viewport] [class*='caseViewportHint'] {
+    display: none !important;
+  }
+
+  html[data-lesson-print] [data-lesson-print-case-content] {
+    display: grid !important;
+    grid-template-columns: 52mm minmax(0, 1fr) !important;
+    align-items: stretch !important;
+  }
+
+  html[data-lesson-print] [data-lesson-print-case-viewport] {
+    width: 52mm !important;
+    height: 52mm !important;
+    aspect-ratio: auto !important;
+  }
+
+  html[data-lesson-print] [data-lesson-print-case-viewport] img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 52mm !important;
+    height: 52mm !important;
+    max-width: 52mm !important;
+    max-height: 52mm !important;
+    object-fit: contain !important;
+  }
+
+  html[data-lesson-print] [data-lesson-print-case-body] {
+    gap: 2mm !important;
+    padding: 3mm !important;
+    border-color: #d7dde5 !important;
+    background: #fff !important;
+  }
+
+  html[data-lesson-print] [data-lesson-print-case-body] h3 {
+    max-width: none !important;
+    font-size: 11pt !important;
+  }
+
+  html[data-lesson-print] [data-lesson-print-case-body] :is(p, li) {
+    font-size: 8pt !important;
+    line-height: 1.35 !important;
+  }
+
+  html[data-lesson-print] [data-lesson-print-case-credit] {
+    padding: 1.5mm 3mm !important;
+    color: #64748b !important;
+    background: #f8fafc !important;
+  }
+
+  html[data-lesson-print] [data-lesson-print-teaching-group] {
+    padding: 3mm !important;
+    border: .5pt solid #d7dde5 !important;
+    background: #fff !important;
+  }
+
+  html[data-lesson-print] [data-lesson-print-teaching-panels] {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 3mm !important;
+  }
+
+  html[data-lesson-print] [data-lesson-print-teaching-panel],
+  html[data-lesson-print] [data-lesson-print-teaching-panel][hidden] {
+    display: block !important;
+    min-height: 0 !important;
+    padding: 3mm !important;
+    border: .5pt solid #d7dde5 !important;
+    border-radius: 2mm !important;
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  html[data-lesson-print] [data-lesson-print-teaching-panel] h4 {
+    margin: 1.5mm 0 2mm !important;
+    font-size: 11pt !important;
+  }
+
+  html[data-lesson-print] [data-lesson-print-teaching-panel] dl {
+    display: grid !important;
+    gap: 2mm !important;
+    margin: 2mm 0 0 !important;
+  }
+
+  html[data-lesson-print] [data-lesson-print-teaching-panel] dl > div {
+    padding-top: 1.5mm !important;
+  }
+
+  html[data-lesson-print] [data-lesson-print-teaching-panel] :is(dt, dd) {
+    margin-bottom: 1mm !important;
+    color: #111827 !important;
+    font-size: 7.5pt !important;
+    line-height: 1.35 !important;
+  }
 }

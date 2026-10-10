@@ -23,7 +23,7 @@ function InteractiveTeachingGroup({ group, resolve, direction, renderVisual }) {
     tabRefs.current[next]?.focus()
   }
 
-  return <section className={`${styles.group} ${group.tone === 'secondary' ? styles.secondary : ''}`} aria-labelledby={`${prefix}-heading`}>
+  return <section className={`${styles.group} ${group.tone === 'secondary' ? styles.secondary : ''}`} data-lesson-print-teaching-group aria-labelledby={`${prefix}-heading`}>
     <header className={styles.groupHeader}>
       <span aria-hidden="true" />
       <h3 id={`${prefix}-heading`}>{resolve(group.title)}</h3>
@@ -44,12 +44,13 @@ function InteractiveTeachingGroup({ group, resolve, direction, renderVisual }) {
           onKeyDown={event => handleKeyDown(event, index)}
         ><span>{resolve(item.label)}</span><i aria-hidden="true">→</i></button>)}
       </div>
-      <div className={styles.panels} dir={direction}>
+      <div className={styles.panels} data-lesson-print-teaching-panels dir={direction}>
         {group.items.map((item, index) => {
           const visual = renderVisual?.(item, group)
           return <div
             key={item.id}
             className={`${styles.panel} ${visual ? styles.panelWithVisual : ''}`}
+            data-lesson-print-teaching-panel
             id={`${prefix}-${item.id}-panel`}
             role="tabpanel"
             aria-labelledby={`${prefix}-${item.id}-tab`}
@@ -72,7 +73,7 @@ function InteractiveTeachingGroup({ group, resolve, direction, renderVisual }) {
 }
 
 export default function InteractiveTeachingGroups({ groups, resolve = identity, direction = 'ltr', renderVisual }) {
-  return <div className={styles.lesson} dir={direction}>
+  return <div className={styles.lesson} data-lesson-print-teaching-groups dir={direction}>
     {groups.map(group => <InteractiveTeachingGroup key={group.id} group={group} resolve={resolve} direction={direction} renderVisual={renderVisual} />)}
   </div>
 }
