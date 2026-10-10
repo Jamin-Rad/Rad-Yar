@@ -40,9 +40,22 @@
 .gradeHierarchy { display: grid; gap: 16px; }
 .gradingCases { border-top: 4px solid var(--teal-500); margin-top: 32px; padding-top: 26px; }
 .lotyschLayout { display: grid; gap: 18px; }
-.gradeDefinition { display: flex; align-items: center; gap: 22px; padding: 18px; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(135deg,var(--paper),color-mix(in srgb,var(--teal-500) 6%,var(--paper))); break-inside: avoid; }
-.gradeSquare { display: grid; place-items: center; width: 88px; aspect-ratio: 1; flex-shrink: 0; margin: 0; padding: 8px; border: 1px solid color-mix(in srgb,var(--teal-500) 32%,var(--line)); border-radius: 12px; color: var(--ink); background: color-mix(in srgb,var(--teal-500) 12%,var(--paper)); font: 750 18px/1.4 var(--font-inter,system-ui,sans-serif); text-align: center; }
+.gradeDefinition { display: flex; align-items: center; gap: 22px; padding: 18px; border: 1px solid color-mix(in srgb,var(--teal-500) 25%,var(--line)); border-radius: 18px; background: radial-gradient(ellipse at 0 0,rgba(255,255,255,.12),transparent 65%),linear-gradient(120deg,color-mix(in srgb,var(--paper) 78%,transparent),color-mix(in srgb,var(--teal-500) 7%,var(--paper))); backdrop-filter: blur(20px) saturate(125%); -webkit-backdrop-filter: blur(20px) saturate(125%); box-shadow: inset 0 1px 0 rgba(255,255,255,.22),0 8px 24px rgba(18,45,63,.06); break-inside: avoid; }
+.gradeSquare { display: grid; place-items: center; width: 88px; aspect-ratio: 1; flex-shrink: 0; margin: 0; padding: 8px; border: 1px solid color-mix(in srgb,var(--teal-500) 38%,var(--line)); border-radius: 16px; color: var(--ink); background: radial-gradient(ellipse at 0 0,rgba(255,255,255,.22),transparent 75%),linear-gradient(145deg,color-mix(in srgb,var(--teal-500) 18%,transparent),color-mix(in srgb,var(--teal-500) 5%,transparent)); box-shadow: inset 0 1px 0 rgba(255,255,255,.3),0 6px 16px rgba(18,45,63,.09); font: 750 18px/1.4 var(--font-inter,system-ui,sans-serif); text-align: center; }
 .gradeDefinition p { margin: 0; color: var(--body); font-size: 16px; line-height: 1.8; }
+.extensionLabel { display: block; margin-bottom: 5px; color: var(--ink); font-weight: 650; }
+.gradeSubtypeTable { width: 100%; table-layout: fixed; border-collapse: separate; border-spacing: 0 12px; margin-block: -12px; color: var(--body); }
+.gradeSubtypeTable th { width: 64px; padding: 18px 10px; vertical-align: top; border: 1px solid var(--line); border-inline-end: 0; border-start-start-radius: 12px; border-end-start-radius: 12px; background: color-mix(in srgb,var(--teal-500) 9%,var(--paper)); }
+.gradeSubtypeTable th span { display: inline-block; color: var(--ink); font-size: 21px; font-weight: 750; line-height: 1.5; }
+.gradeSubtypeTable td { padding: 18px; border: 1px solid var(--line); border-start-end-radius: 12px; border-end-end-radius: 12px; background: color-mix(in srgb,var(--paper) 92%,transparent); }
+.gradeSubtypeTable dl { display: grid; gap: 12px; margin: 0; }
+.gradeSubtypeTable dl > div { display: grid; grid-template-columns: minmax(0,145px) minmax(0,1fr); gap: 16px; }
+.gradeSubtypeTable dl > div + div { padding-top: 12px; border-top: 1px solid var(--line); }
+.gradeSubtypeTable dt { color: var(--muted); font-size: 12px; line-height: 1.65; font-weight: 650; overflow-wrap: anywhere; }
+.gradeSubtypeTable dd { margin: 0; color: var(--body); font-size: 15px; line-height: 1.7; overflow-wrap: anywhere; }
+@media (max-width:1000px) { .gradeSubtypeTable dl > div { grid-template-columns: 1fr; gap: 4px; } }
+@media (max-width:760px) { .gradeSubtypeTable th { width: 48px; padding: 14px 6px; } .gradeSubtypeTable td { padding: 14px; } .gradeSubtypeTable th span { font-size: 18px; } .gradeSubtypeTable dd { font-size: 14px; } }
+@media print { .gradeDefinition,.gradeSquare { background: transparent; box-shadow: none; backdrop-filter: none; } .gradeSubtypeTable tr { break-inside: avoid; } .gradeSubtypeTable dl > div { grid-template-columns: 1fr; gap: 2px; } .gradeSubtypeTable dt { font-size: 9pt; } .gradeSubtypeTable dd { font-size: 10pt; } }
 @media (max-width:760px) { .gradeDefinition { gap: 14px; padding: 14px; align-items: flex-start; } .gradeSquare { width: 68px; font-size: 15px; } .gradeDefinition p { font-size: 14px; } }
 .subtypeTableWrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; margin-top: 16px; }
 .subtypeTable { width: 100%; min-width: 470px; border-collapse: collapse; font-size: 13px; line-height: 1.65; }
