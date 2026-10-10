@@ -1,0 +1,54 @@
+.heroVisual::before { background-image: url('/msk/knie/meniskus/meniskus-background-v1.png'); background-size: contain; }
+.heroVisual { -webkit-mask-image: linear-gradient(90deg,transparent,#000 35%),linear-gradient(180deg,transparent,#000 18%,#000 65%,transparent); mask-image: linear-gradient(90deg,transparent,#000 35%),linear-gradient(180deg,transparent,#000 18%,#000 65%,transparent); -webkit-mask-composite: source-in; mask-composite: intersect; }
+:global([dir='rtl']) .heroVisual { -webkit-mask-image: linear-gradient(270deg,transparent,#000 35%),linear-gradient(180deg,transparent,#000 18%,#000 65%,transparent); mask-image: linear-gradient(270deg,transparent,#000 35%),linear-gradient(180deg,transparent,#000 18%,#000 65%,transparent); }
+.heading { margin: 0; font: inherit; }
+.splitGrid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; align-items: start; margin-top: 22px; }
+.card,.normalCard,.protocolCard,.criteriaCard,.zoneCard,.discoidStatCard { min-width: 0; padding: 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+.card h3,.normalCard h3,.protocolCard h3,.criteriaCard h3,.zoneCard h3 { margin: 0 0 10px; color: var(--ink); font: 850 22px/1.2 var(--font-newsreader,Georgia,serif); }
+.card p,.normalCard p,.protocolCard p,.criteriaCard p { margin: 0; color: var(--body); font-size: 15px; line-height: 1.72; }
+.plainList { display: grid; gap: 15px; }
+.plainList strong { display: block; margin-bottom: 4px; color: var(--ink); }
+.figure,.tearTypesFigure,.discoidFigure { min-width: 0; margin: 0; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+.figure img,.tearTypesFigure img,.discoidFigure img { display: block; width: 100%; height: auto; border-radius: 6px; }
+.figure figcaption,.aiImageNotice { display: block; margin-top: 9px; color: var(--muted); font-size: 11px; line-height: 1.55; text-align: center; }
+.figureZoomButton { position: relative; display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
+.figureZoomButton span { position: absolute; inset-inline-end: 10px; bottom: 10px; padding: 7px 10px; border-radius: 7px; color: #fff; background: rgba(16,25,37,.85); font-size: 11px; }
+.subSectionBlock { margin-top: 28px; padding-top: 23px; border-top: 1px solid var(--line); }
+.subSectionTitle,.extendedTableTitle { margin: 0 0 10px; color: var(--ink); font: 850 clamp(23px,2.5vw,31px)/1.2 var(--font-newsreader,Georgia,serif); }
+.subSectionLead,.tearCaseIntro { margin: 0 0 18px; color: var(--body); font-size: 15px; line-height: 1.72; }
+.zoneGrid,.protocolGrid,.criteriaGrid,.discoidStats { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; margin: 18px 0; }
+.zoneCard { border-top: 4px solid #aeb7c4; }
+.zone1 { border-top-color: #b91c1c; }.zone2 { border-top-color: #e11d48; }
+.zoneCard span,.zoneCard small { display: block; color: var(--body); font-size: 13px; line-height: 1.6; }
+.zoneCard p { margin: 10px 0; color: var(--ink); font-weight: 750; }
+.normalCard { margin-top: 18px; border-inline-start: 3px solid var(--teal-500); }
+.criteriaCard > span { display: inline-block; margin-bottom: 10px; color: var(--teal-700); font-size: 12px; font-weight: 900; }
+.gradingFigure { margin-bottom: 25px; }
+.extendedDetails { margin-top: 22px; }.extendedDetailsContent { min-width: 0; }
+.caseGrid,.tearCaseGrid { display: grid; grid-template-columns: minmax(0,1fr); gap: 22px; }
+.tearTypesFigure,.discoidFigure { margin: 20px 0 24px; }
+.tearCaseIntro { margin-top: 24px; }
+.discoidStatCard strong { display: block; margin-bottom: 8px; color: var(--teal-700); font: 850 30px/1 var(--font-newsreader,Georgia,serif); }
+.discoidStatCard span { display: block; color: var(--ink); font-weight: 750; line-height: 1.4; }
+.discoidStatCard p { margin: 8px 0 0; color: var(--body); font-size: 13px; line-height: 1.55; }
+.discoidMriTitle { color: var(--teal-700); }.greenTitle { color: #17845f; }
+.videoCard { overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+.videoFrameWrap { aspect-ratio: 16 / 9; background: #07090e; }
+.videoFrameWrap iframe { display: block; width: 100%; height: 100%; border: 0; }
+.videoCard h3,.videoCard p { margin: 18px 20px; color: var(--body); line-height: 1.7; }
+.videoButton { display: inline-flex; margin: 0 20px 20px; padding: 10px 14px; border-radius: 7px; color: #fff; background: var(--plum-900); text-decoration: none; }
+.summaryLead { margin: 0 0 14px; color: var(--body); line-height: 1.7; }
+.sourcesDetails { margin: 2px 8px 0; border-top: 1px solid #51465c; color: #e3dbe7; }
+.sourcesDetails summary { padding: 12px 0; font-size: 11px; cursor: pointer; }
+.sourcesList { margin: 0; padding: 0 0 16px 20px; font-size: 13px; line-height: 1.7; }
+.sourcesList li { margin-top: 8px; }.sourcesList a { color: inherit; }
+.progressAuthError { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; font-size: 12px; color: var(--body); }.progressAuthError a { color: var(--teal-700); }
+.imageModal { position: fixed; inset: 0; z-index: 2000; display: grid; place-items: center; padding: 20px; background: rgba(7,9,14,.85); }
+.imageModalContent { position: relative; width: min(1040px,100%); padding: 15px; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); }
+.imageModalContent img { display: block; width: 100%; max-height: 85vh; object-fit: contain; }
+.imageModalClose { position: absolute; top: 10px; inset-inline-end: 10px; z-index: 1; width: 38px; height: 38px; border: 0; border-radius: 50%; color: #fff; background: var(--plum-800); font-size: 25px; cursor: pointer; }
+:global(html[data-theme='dark']) .criteriaCard > span,:global(html[data-theme='dark']) .discoidStatCard strong,:global(html[data-theme='dark']) .discoidMriTitle { color: #8bd7d5; }
+:global(html[data-theme='dark']) .greenTitle { color: #88d7aa; }
+@media (max-width:1100px) { .splitGrid { grid-template-columns: 1fr; } .zoneGrid,.protocolGrid,.criteriaGrid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (max-width:760px) { .splitGrid,.zoneGrid,.protocolGrid,.criteriaGrid,.discoidStats { grid-template-columns: 1fr; } .card,.normalCard,.protocolCard,.criteriaCard,.zoneCard,.discoidStatCard { padding: 16px; } }
+@media print { .imageModal,.progressAuthError,.figureZoomButton span,.videoButton,.sourcesDetails { display: none; } .splitGrid,.zoneGrid,.protocolGrid,.criteriaGrid { display: block; } .figure,.card,.zoneCard,.criteriaCard,.protocolCard { margin-block: 4mm; } }

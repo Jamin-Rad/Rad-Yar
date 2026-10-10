@@ -2,12 +2,12 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
 import MeniscusTextLesson, { MENISCUS_TITLE } from './MeniscusTextLesson'
-import { createSliceWheelController } from './sliceWheel.mjs'
-import styles from './page.module.css'
+import RadiopaediaFile from '@/components/LessonCaseFile'
+import styles from '@/components/LessonTemplate.module.css'
 
 const L = (de, en, fa) => ({ de, en, fa })
 const pick = (value, lang) => typeof value === 'string' ? value : value[lang] || value.de
@@ -288,145 +288,6 @@ function LessonSources({ lang }) {
       <ul>{LESSON_SOURCES.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer"><span><strong>{pick(source.title, lang)}</strong><small>{pick(source.meta, lang)}</small></span><Icon name="external" /></a></li>)}</ul>
     </div>
   </aside>
-}
-
-function CaseSequence({ lang, caseData }) {
-  const { frames, initialFrame, alt } = caseData
-  const [frameIndex, setFrameIndex] = useState(initialFrame)
-  const viewerRef = useRef(null)
-  const frameIndexRef = useRef(initialFrame)
-  const pointerStartRef = useRef(null)
-  const decodedFramesRef = useRef(new Set())
-  const loadAttemptRef = useRef(0)
-  const [loadAttempt, setLoadAttempt] = useState(0)
-  const [seriesReady, setSeriesReady] = useState(false)
-  const [loadFailed, setLoadFailed] = useState(false)
-
-  const selectFrame = useCallback(index => {
-    const next = Math.min(frames.length - 1, Math.max(0, index))
-    frameIndexRef.current = next
-    setFrameIndex(next)
-  }, [frames.length])
-
-  const moveFrame = useCallback(delta => selectFrame(frameIndexRef.current + delta), [selectFrame])
-
-  useEffect(() => {
-    const viewer = viewerRef.current
-    if (!viewer) return undefined
-    const wheelStep = createSliceWheelController()
-    const handleWheel = event => {
-      if (event.ctrlKey || !event.deltaY || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return
-      // Keep the same gesture inside the viewer even at the first/last slice.
-      // Otherwise trackpad momentum suddenly scrolls the document underneath.
-      event.preventDefault()
-      if (!seriesReady) return
-      const step = wheelStep({ deltaY: event.deltaY, deltaX: event.deltaX, deltaMode: event.deltaMode, time: performance.now() })
-      if (step) moveFrame(step)
-    }
-    viewer.addEventListener('wheel', handleWheel, { passive: false })
-    return () => {
-      viewer.removeEventListener('wheel', handleWheel)
-    }
-  }, [seriesReady, moveFrame])
-
-  const handleFrameLoad = async (image, index, attempt) => {
-    try {
-      await image.decode()
-      if (loadAttemptRef.current !== attempt) return
-      decodedFramesRef.current.add(index)
-      if (decodedFramesRef.current.size === frames.length) setSeriesReady(true)
-    } catch {
-      if (loadAttemptRef.current === attempt) setLoadFailed(true)
-    }
-  }
-
-  const retrySeries = () => {
-    decodedFramesRef.current.clear()
-    setSeriesReady(false)
-    setLoadFailed(false)
-    loadAttemptRef.current += 1
-    setLoadAttempt(loadAttemptRef.current)
-  }
-
-  const labels = {
-    previous: pick(L('Vorherige Schicht', 'Previous slice', 'برش قبلی'), lang),
-    next: pick(L('Nächste Schicht', 'Next slice', 'برش بعدی'), lang),
-    slider: pick(L('Schicht auswählen', 'Select slice', 'انتخاب برش'), lang),
-    loading: pick(L('Bildserie wird vorbereitet …', 'Preparing image series …', 'در حال آماده‌سازی سری تصاویر …'), lang),
-    error: pick(L('Bildserie konnte nicht vollständig geladen werden.', 'The image series could not be fully loaded.', 'سری تصاویر کامل بارگذاری نشد.'), lang),
-    retry: pick(L('Erneut laden', 'Retry loading', 'بارگذاری دوباره'), lang),
-  }
-
-  const handleKeyDown = event => {
-    if (!seriesReady) return
-    if (['ArrowRight', 'ArrowDown'].includes(event.key)) moveFrame(1)
-    else if (['ArrowLeft', 'ArrowUp'].includes(event.key)) moveFrame(-1)
-    else if (event.key === 'Home') selectFrame(0)
-    else if (event.key === 'End') selectFrame(frames.length - 1)
-    else return
-    event.preventDefault()
-  }
-
-  const handlePointerDown = event => {
-    if (!seriesReady || !event.isPrimary || event.button !== 0) return
-    pointerStartRef.current = { position: event.pointerType === 'touch' ? event.clientX : event.clientY }
-    event.currentTarget.setPointerCapture(event.pointerId)
-  }
-
-  const handlePointerMove = event => {
-    const start = pointerStartRef.current
-    if (!start) return
-    const position = event.pointerType === 'touch' ? event.clientX : event.clientY
-    const steps = Math.trunc((start.position - position) / 36)
-    if (!steps) return
-    start.position = position
-    moveFrame(steps)
-  }
-
-  const handlePointerEnd = event => {
-    pointerStartRef.current = null
-    if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId)
-  }
-
-  return <div className={styles.caseViewer}>
-    <div ref={viewerRef} className={styles.caseViewport} data-no-zoom role="group" aria-busy={!seriesReady && !loadFailed} tabIndex={0} onKeyDown={handleKeyDown} onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerEnd} onPointerCancel={handlePointerEnd} onLostPointerCapture={() => { pointerStartRef.current = null }} aria-label={pick(alt, lang)}>
-      {frames.map((src, index) => <Image key={`${loadAttempt}-${src}`} src={src} alt={index === frameIndex ? `${pick(alt, lang)} · ${index + 1}/${frames.length}` : ''} aria-hidden={index !== frameIndex} style={{ visibility: index === frameIndex ? 'visible' : 'hidden' }} width={320} height={320} unoptimized loading="eager" draggable={false} onLoad={event => handleFrameLoad(event.currentTarget, index, loadAttempt)} onError={() => { if (loadAttemptRef.current === loadAttempt) setLoadFailed(true) }} />)}
-      <div className={styles.caseImageMeta}><strong aria-live="polite">{String(frameIndex + 1).padStart(2, '0')} <i>/ {frames.length}</i></strong></div>
-      {!seriesReady || loadFailed ? <small className={styles.caseViewportHint} dir={lang === 'fa' ? 'rtl' : 'ltr'} role="status">{loadFailed ? <>{labels.error} <button type="button" onClick={retrySeries}>{labels.retry}</button></> : labels.loading}</small> : null}
-      <div className={styles.caseControls} dir="ltr" onPointerDown={event => event.stopPropagation()} onPointerMove={event => event.stopPropagation()}>
-        <button type="button" onClick={() => moveFrame(-1)} disabled={!seriesReady || frameIndex === 0} aria-label={labels.previous} title={labels.previous}><Icon name="previous" /></button>
-        <div className={styles.caseRange}><input type="range" disabled={!seriesReady} min="0" max={frames.length - 1} step="1" value={frameIndex} onChange={event => selectFrame(Number(event.target.value))} aria-label={labels.slider} aria-valuetext={`${frameIndex + 1} / ${frames.length}`} /></div>
-        <button type="button" onClick={() => moveFrame(1)} disabled={!seriesReady || frameIndex === frames.length - 1} aria-label={labels.next} title={labels.next}><Icon name="next" /></button>
-      </div>
-    </div>
-  </div>
-}
-
-function RadiopaediaFile({ lang, caseData }) {
-  return <article className={styles.radiopaediaFile}>
-    <header className={styles.caseFileHeader}>
-      <span className={styles.caseFileIcon}><Icon name="case" /></span>
-      <span className={styles.caseFileHeading}>
-        <strong>{pick(L('Fallbeispiel', 'Case example', 'نمونه کیس'), lang)}</strong>
-      </span>
-      <a href={caseData.url} target="_blank" rel="noopener noreferrer">{pick(L('Fall im Vollbild', 'Open case full screen', 'نمایش تمام‌صفحه کیس'), lang)} <Icon name="external" /></a>
-    </header>
-    <div className={styles.caseFileContent}>
-      <CaseSequence lang={lang} caseData={caseData} />
-      <div className={styles.caseBody}>
-        <h3>{pick(caseData.title, lang)}</h3>
-        <section className={styles.caseFindings} aria-labelledby="case-findings-title">
-          <h4 id="case-findings-title">{pick(L('Was sehen wir?', 'What do we see?', 'چه می‌بینیم؟'), lang)}</h4>
-          <ol>{caseData.findings.map((finding, index) => <li key={pick(finding, lang)}><span>{index + 1}</span><p>{pick(finding, lang)}</p></li>)}</ol>
-          <div className={styles.caseInterpretation}>
-            <strong>{pick(L('Entscheidender Befund', 'Key interpretation', 'یافته کلیدی'), lang)}</strong>
-            <p>{pick(caseData.interpretation, lang)}</p>
-          </div>
-        </section>
-      </div>
-    </div>
-    <footer className={styles.caseCredit}>{caseData.credit}</footer>
-  </article>
 }
 
 function ContentSection({ id, lang }) {
