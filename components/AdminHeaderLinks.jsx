@@ -62,10 +62,10 @@ function LoadedAdminLinks() {
         <span className={styles.portalLabel}>Radyar-Kontrolle</span>
       </Link>
       <Link
-        href="/ueben/quiz"
+        href="/admin/exams"
         className={styles.portalAdmin}
-        aria-current={pathname?.startsWith('/ueben/quiz') ? 'page' : undefined}
-        title="Quiz"
+        aria-current={pathname?.startsWith('/admin/exams') ? 'page' : undefined}
+        title="Prüfungen verwalten"
       >
         <span className={styles.portalIcon}>{ICONS.quiz}</span>
         <span className={styles.portalLabel}>Quiz</span>
