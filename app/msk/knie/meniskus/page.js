@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { flushSync } from 'react-dom'
 import Link from 'next/link'
 import { useLanguage } from '@/providers/LanguageProvider'
 import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
@@ -866,7 +867,7 @@ const SECTION_READ_LABELS = {
 
 function Section({ id, eyebrow, title, lead, children, className = '', isOpen, isRead, onToggle, onToggleRead, readLabel, readDoneLabel }) {
   return (
-    <section id={id} className={`${template.section} ${isOpen ? template.sectionOpen : ''} ${className}`.trim()}>
+    <section id={id} className={`${template.section} ${contentStyles.lessonSection} ${isOpen ? template.sectionOpen : ''} ${className}`.trim()}>
         <button
           type="button"
           className={template.sectionHeader}
@@ -1008,9 +1009,13 @@ export default function MeniskusPage() {
   const withLang = (href) => lang === 'de' ? href : (href.includes('?') ? `${href}&lang=${lang}` : `${href}?lang=${lang}`)
 
   const selectSection = (id) => {
-    if (id === 'takehome') setSummaryOpen(true)
-    else { setOpenId(id); window.history.replaceState(null, '', `#${id}`) }
-    window.requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }))
+    // Measure only after the previous panel has collapsed and the new one has opened.
+    flushSync(() => {
+      if (id === 'takehome') setSummaryOpen(true)
+      else setOpenId(id)
+    })
+    window.history.replaceState(null, '', `#${id}`)
+    document.getElementById(id)?.scrollIntoView({ behavior: 'instant', block: 'start' })
   }
 
   const toggleSectionRead = (id) => setReadSections(previous => {

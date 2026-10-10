@@ -3,6 +3,7 @@
 .heroVisual { -webkit-mask-image: linear-gradient(90deg,transparent,#000 35%),linear-gradient(180deg,transparent,#000 18%,#000 65%,transparent); mask-image: linear-gradient(90deg,transparent,#000 35%),linear-gradient(180deg,transparent,#000 18%,#000 65%,transparent); -webkit-mask-composite: source-in; mask-composite: intersect; }
 :global([dir='rtl']) .heroVisual { -webkit-mask-image: linear-gradient(270deg,transparent,#000 35%),linear-gradient(180deg,transparent,#000 18%,#000 65%,transparent); mask-image: linear-gradient(270deg,transparent,#000 35%),linear-gradient(180deg,transparent,#000 18%,#000 65%,transparent); }
 .heading { margin: 0; font: inherit; }
+.lessonSection { content-visibility: visible; contain-intrinsic-size: none; overflow-anchor: none; }
 .splitGrid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; align-items: start; margin-top: 22px; }
 .rootsGrid { align-items: stretch; }
 .card,.normalCard,.protocolCard,.criteriaCard,.zoneCard,.discoidStatCard { min-width: 0; padding: 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
