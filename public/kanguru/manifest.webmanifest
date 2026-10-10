@@ -1,0 +1,21 @@
+{
+  "id": "/andarun/kaenguru",
+  "name": "Känguru",
+  "short_name": "Känguru",
+  "description": "Känguru-Aufgaben für die Klassen 5/6 und 7/8.",
+  "lang": "de",
+  "start_url": "/andarun/kaenguru",
+  "scope": "/andarun/kaenguru",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#eef8ff",
+  "theme_color": "#eef8ff",
+  "icons": [
+    {
+      "src": "/kanguru/kanguru-app-icon.png",
+      "sizes": "1254x1254",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

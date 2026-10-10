@@ -105,3 +105,17 @@ export async function PATCH(request) {
     return unavailable()
   }
 }
+
+export async function DELETE() {
+  const identity = await requireAndarunSession()
+  if (identity.error) return NextResponse.json({ error: identity.error }, { status: identity.status })
+  if (!isSupabaseAdminConfigured || !supabaseAdmin) return unavailable()
+
+  try {
+    const state = await writeState(identity.ownerId, EMPTY_STATE)
+    return NextResponse.json({ state })
+  } catch (error) {
+    console.error('[andarun-kaenguru] DELETE failed', error)
+    return unavailable()
+  }
+}

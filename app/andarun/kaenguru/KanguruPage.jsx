@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   KANGURU_GRADE_GROUPS,
   KANGURU_PARTS,
@@ -14,7 +14,146 @@ import {
 import styles from './page.module.css'
 
 const STORAGE_KEY = 'andarun_kaenguru_progress_v1'
+const RESET_KEY = 'andarun_kaenguru_progress_reset_2026-10-10'
 const EMPTY_PROGRESS = { version: 2, gradeGroup: '5-6', attempts: {}, updatedAt: null }
+const DRAW_COLORS = ['#ef4444', '#f97316', '#2563eb', '#111827']
+const LEHR_LABELS = {
+  mode: 'Lehr-Mode', hint: 'Aufgabe besprechen, markieren und skizzieren',
+  cursor: 'Bedienen', pen: 'Stift', marker: 'Marker', eraser: 'Radierer',
+  undo: 'Rückgängig', clear: 'Alles löschen', board: 'Whiteboard',
+  closeBoard: 'Whiteboard schließen', addPage: 'Seite hinzufügen', page: 'Seite',
+  resetHint: 'Notizen werden bei der nächsten Aufgabe automatisch gelöscht.',
+}
+
+function DrawIcon({ name }) {
+  const paths = {
+    cursor: <path d="m5 3 8 8-4 .8-2 3.2L5 3Z" />,
+    pen: <path d="m4 14 2.7-.6 7-7-2.1-2.1-7 7L4 14Zm6.6-8.7 2.1 2.1" />,
+    marker: <path d="m5 11 6.8-6.8 2 2L7 13H5v-2Zm1.5 2H14" />,
+    eraser: <path d="m5.2 12.8-2-2 6.5-6.5a1.4 1.4 0 0 1 2 0l2 2a1.4 1.4 0 0 1 0 2l-4.5 4.5h-4Zm4-5.5 3.5 3.5" />,
+    undo: <path d="M6.5 5 3 8.5 6.5 12M3.5 8.5H10a4 4 0 0 1 4 4" />,
+    trash: <path d="M5.5 6v8h7V6M4 6h10M7 6V4h4v2" />,
+    board: <><rect x="2.5" y="3" width="13" height="10" rx="1.5"/><path d="M6 16h6M9 13v3"/></>,
+  }
+  return <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]}</svg>
+}
+
+function AnnotationSurface({ children, title, blank = false, resetKey, enabled = true }) {
+  const canvasRef = useRef(null)
+  const stageRef = useRef(null)
+  const strokesRef = useRef([])
+  const drawingRef = useRef(null)
+  const [tool, setTool] = useState(blank ? 'pen' : 'cursor')
+  const [color, setColor] = useState(DRAW_COLORS[0])
+  const [revision, setRevision] = useState(0)
+
+  const redraw = () => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const context = canvas.getContext('2d')
+    context.clearRect(0, 0, canvas.width, canvas.height)
+    const ratio = window.devicePixelRatio || 1
+    context.save()
+    context.scale(ratio, ratio)
+    strokesRef.current.forEach(stroke => {
+      if (stroke.points.length < 2) return
+      context.beginPath()
+      context.globalCompositeOperation = stroke.tool === 'eraser' ? 'destination-out' : 'source-over'
+      context.globalAlpha = stroke.tool === 'marker' ? .28 : 1
+      context.strokeStyle = stroke.color
+      context.lineWidth = stroke.tool === 'eraser' ? 24 : stroke.tool === 'marker' ? 18 : 3
+      context.lineCap = 'round'
+      context.lineJoin = 'round'
+      context.moveTo(stroke.points[0].x, stroke.points[0].y)
+      stroke.points.slice(1).forEach(point => context.lineTo(point.x, point.y))
+      context.stroke()
+    })
+    context.restore()
+  }
+
+  useEffect(() => {
+    const stage = stageRef.current
+    const canvas = canvasRef.current
+    if (!stage || !canvas) return undefined
+    const resize = () => {
+      const box = stage.getBoundingClientRect()
+      const ratio = window.devicePixelRatio || 1
+      canvas.width = Math.max(1, Math.round(box.width * ratio))
+      canvas.height = Math.max(1, Math.round(box.height * ratio))
+      canvas.style.width = `${box.width}px`
+      canvas.style.height = `${box.height}px`
+      redraw()
+    }
+    resize()
+    const observer = new ResizeObserver(resize)
+    observer.observe(stage)
+    return () => observer.disconnect()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [revision])
+
+  useEffect(() => {
+    strokesRef.current = []
+    drawingRef.current = null
+    setRevision(value => value + 1)
+  }, [resetKey])
+
+  const pointFromEvent = event => {
+    const box = canvasRef.current.getBoundingClientRect()
+    return { x: event.clientX - box.left, y: event.clientY - box.top }
+  }
+  const startDrawing = event => {
+    if (tool === 'cursor') return
+    event.preventDefault()
+    event.currentTarget.setPointerCapture(event.pointerId)
+    const stroke = { tool, color, points: [pointFromEvent(event)] }
+    strokesRef.current.push(stroke)
+    drawingRef.current = stroke
+  }
+  const moveDrawing = event => {
+    if (!drawingRef.current) return
+    event.preventDefault()
+    drawingRef.current.points.push(pointFromEvent(event))
+    redraw()
+  }
+  const stopDrawing = event => {
+    if (!drawingRef.current) return
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId)
+    drawingRef.current = null
+    setRevision(value => value + 1)
+  }
+  const undo = () => {
+    strokesRef.current.pop()
+    setRevision(value => value + 1)
+  }
+  const clear = () => {
+    strokesRef.current = []
+    setRevision(value => value + 1)
+  }
+
+  if (!enabled) return children
+
+  return (
+    <section className={`${styles.annotationSurface} ${blank ? styles.whiteboardSurface : ''}`}>
+      <div className={styles.annotationToolbar} aria-label={title}>
+        <strong>{title}</strong>
+        <div className={styles.annotationTools}>
+          {['cursor', 'pen', 'marker', 'eraser'].map(name => blank && name === 'cursor' ? null : (
+            <button key={name} type="button" className={tool === name ? styles.annotationToolActive : ''} onClick={() => setTool(name)} title={LEHR_LABELS[name]} aria-label={LEHR_LABELS[name]}><DrawIcon name={name} /><span>{LEHR_LABELS[name]}</span></button>
+          ))}
+          <div className={styles.colorChoices} aria-label="Farbe">
+            {DRAW_COLORS.map(value => <button key={value} type="button" className={color === value ? styles.colorActive : ''} style={{ '--draw-color': value }} onClick={() => setColor(value)} aria-label={value} />)}
+          </div>
+          <button type="button" onClick={undo} title={LEHR_LABELS.undo} aria-label={LEHR_LABELS.undo}><DrawIcon name="undo" /></button>
+          <button type="button" onClick={clear} title={LEHR_LABELS.clear} aria-label={LEHR_LABELS.clear}><DrawIcon name="trash" /></button>
+        </div>
+      </div>
+      <div ref={stageRef} className={`${styles.annotationStage} ${blank ? styles.whiteboardCanvas : ''}`}>
+        {children}
+        <canvas ref={canvasRef} className={`${styles.drawingCanvas} ${tool === 'cursor' ? styles.canvasPassive : ''}`} onPointerDown={startDrawing} onPointerMove={moveDrawing} onPointerUp={stopDrawing} onPointerCancel={stopDrawing} />
+      </div>
+    </section>
+  )
+}
 
 function ArrowIcon({ direction = 'right' }) {
   return (
@@ -215,9 +354,14 @@ function SetupDialog({ type, gradeGroup, attempts, onClose, onStart }) {
         ) : null}
 
         {config.questions.length ? (
-          <button className={styles.dialogPrimary} type="button" onClick={() => onStart(type, config.label, config.questions)}>
-            {config.questions.length} Aufgaben starten <ArrowIcon />
-          </button>
+          <div className={styles.dialogActions}>
+            <button className={styles.dialogPrimary} type="button" onClick={() => onStart(type, config.label, config.questions, false)}>
+              {config.questions.length} Aufgaben starten <ArrowIcon />
+            </button>
+            <button className={styles.dialogLehr} type="button" onClick={() => onStart(type, config.label, config.questions, true)}>
+              <DrawIcon name="pen" /> Lehr-Mode
+            </button>
+          </div>
         ) : (
           <div className={styles.emptyNotice}>
             <strong>Noch keine passenden Aufgaben</strong>
@@ -237,7 +381,16 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
   const [checked, setChecked] = useState(false)
   const [answers, setAnswers] = useState([])
   const [finished, setFinished] = useState(false)
+  const [whiteboardOpen, setWhiteboardOpen] = useState(false)
+  const [whiteboardPages, setWhiteboardPages] = useState([1])
+  const [activeWhiteboardPage, setActiveWhiteboardPage] = useState(1)
   const question = questions[index]
+  const teaching = Boolean(session.teaching)
+
+  useEffect(() => {
+    setWhiteboardPages([1])
+    setActiveWhiteboardPage(1)
+  }, [index])
 
   if (!question) return null
 
@@ -251,7 +404,7 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
     const isCorrect = selected === question.correct
     setChecked(true)
     setAnswers(previous => [...previous, { id: question.id, selected, correct: isCorrect }])
-    onRecord(question, selected, isCorrect, session.mode)
+    if (!teaching) onRecord(question, selected, isCorrect, session.mode)
   }
 
   const next = () => {
@@ -264,12 +417,20 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
     setChecked(false)
   }
 
+  const addWhiteboardPage = () => {
+    const nextPage = Math.max(...whiteboardPages) + 1
+    setWhiteboardPages(pages => [...pages, nextPage])
+    setActiveWhiteboardPage(nextPage)
+  }
+
   if (finished) return (
     <main className={styles.quizPage} lang="de" dir="ltr">
       <section className={styles.resultCard}>
         <span className={styles.resultRing}>{score}<small>/{questions.length}</small></span>
-        <h1>Dein Ergebnis</h1>
-        <p>{score === questions.length
+        <h1>{teaching ? 'Lehr-Mode beendet' : 'Dein Ergebnis'}</h1>
+        <p>{teaching
+          ? 'Alle Notizen und Whiteboards dieses Durchgangs wurden verworfen.'
+          : score === questions.length
           ? 'Stark – alle Aufgaben sind richtig.'
           : questions.length - score === 1
             ? 'Eine Aufgabe kannst du später noch einmal wiederholen.'
@@ -287,7 +448,14 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
         <span>{index + 1} / {questions.length}</span>
       </header>
       <div className={styles.quizProgress}><span style={{ width: `${((index + (checked ? 1 : 0)) / questions.length) * 100}%` }} /></div>
-      <article className={styles.questionCard}>
+      {teaching ? (
+        <div className={styles.lehrBanner}>
+          <div><strong>{LEHR_LABELS.mode}</strong><span>{LEHR_LABELS.hint}</span></div>
+          <button type="button" className={whiteboardOpen ? styles.whiteboardToggleActive : ''} onClick={() => setWhiteboardOpen(value => !value)}><DrawIcon name="board" />{whiteboardOpen ? LEHR_LABELS.closeBoard : LEHR_LABELS.board}</button>
+        </div>
+      ) : null}
+      <AnnotationSurface enabled={teaching} title={LEHR_LABELS.mode} resetKey={question.id}>
+        <article className={styles.questionCard}>
         <header className={styles.questionHeading}>
           <strong>Aufgabe {question.part}{question.number}</strong>
           <div className={styles.questionMeta}>
@@ -345,11 +513,11 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
           <section className={`${styles.solution} ${correct ? styles.solutionCorrect : styles.solutionWrong}`}>
             <div className={styles.solutionStatus}>
               <header><span>{correct ? <CheckIcon /> : <CloseIcon />}</span><div><strong>{correct ? 'Richtig gelöst' : 'Noch nicht richtig'}</strong><small>{correct ? `Antwort ${question.correct} ist richtig.` : `Deine Antwort: ${selected} · Richtige Antwort: ${question.correct}`}</small></div></header>
-              {correct ? (
+              {correct && !teaching ? (
                 <button className={`${styles.reviewToggle} ${marked ? styles.reviewMarked : ''}`} type="button" onClick={() => onToggleReview(question.id, !marked)}>
                   <RepeatIcon /> {marked ? 'Aus Fehlerliste entfernen' : 'Trotzdem zum Wiederholen merken'}
                 </button>
-              ) : <p className={styles.savedForReview}>Diese Aufgabe wurde zum Wiederholen gespeichert.</p>}
+              ) : !correct && !teaching ? <p className={styles.savedForReview}>Diese Aufgabe wurde zum Wiederholen gespeichert.</p> : null}
             </div>
             <div className={styles.solutionSteps}>
               <h2>So geht&apos;s</h2>
@@ -358,7 +526,22 @@ function QuizView({ session, attempts, onRecord, onToggleReview, onExit }) {
             </div>
           </section>
         ) : null}
-      </article>
+        </article>
+      </AnnotationSurface>
+      {teaching && whiteboardOpen ? (
+        <section className={styles.whiteboardWrap}>
+          <div className={styles.whiteboardTabs}>
+            {whiteboardPages.map(page => <button key={page} type="button" className={activeWhiteboardPage === page ? styles.whiteboardTabActive : ''} onClick={() => setActiveWhiteboardPage(page)}>{LEHR_LABELS.page} {page}</button>)}
+            <button type="button" className={styles.addWhiteboardPage} onClick={addWhiteboardPage}>＋ {LEHR_LABELS.addPage}</button>
+          </div>
+          {whiteboardPages.map(page => (
+            <div key={`${question.id}-${page}`} className={activeWhiteboardPage === page ? styles.whiteboardPageActive : styles.whiteboardPageHidden}>
+              <AnnotationSurface title={`${LEHR_LABELS.board} · ${LEHR_LABELS.page} ${page}`} blank resetKey={`${question.id}-${page}`} />
+            </div>
+          ))}
+          <p className={styles.whiteboardHint}>{LEHR_LABELS.resetHint}</p>
+        </section>
+      ) : null}
     </main>
   )
 }
@@ -371,6 +554,22 @@ export default function KanguruPage() {
 
   useEffect(() => {
     let active = true
+    const needsReset = !localStorage.getItem(RESET_KEY)
+    if (needsReset) {
+      localStorage.removeItem(STORAGE_KEY)
+      setProgress(EMPTY_PROGRESS)
+      fetch('/api/andarun/kaenguru', { method: 'DELETE' })
+        .then(response => response.ok ? response.json() : Promise.reject())
+        .then(payload => {
+          if (!active) return
+          localStorage.setItem(RESET_KEY, '1')
+          setProgress(normalizeProgress(payload.state))
+        })
+        .catch(() => {})
+        .finally(() => active && setReady(true))
+      return () => { active = false }
+    }
+
     const local = readLocalProgress()
     setProgress(local)
     fetch('/api/andarun/kaenguru')
@@ -405,8 +604,8 @@ export default function KanguruPage() {
   const weaknesses = useMemo(() => buildWeaknesses(gradeQuestions, progress.attempts), [gradeQuestions, progress.attempts])
 
   const chooseGradeGroup = nextGradeGroup => setProgress(current => ({ ...current, gradeGroup: nextGradeGroup, updatedAt: new Date().toISOString() }))
-  const startSession = (mode, label, questions) => {
-    setSession({ mode, label, ids: questions.map(question => question.id) })
+  const startSession = (mode, label, questions, teaching = false) => {
+    setSession({ mode, label, teaching, ids: questions.map(question => question.id) })
     setDialog(null)
   }
   const recordAttempt = (question, selected, correct, mode) => {
