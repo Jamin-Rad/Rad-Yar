@@ -209,7 +209,7 @@ const CONTENT = {
       lead: 'Mit Mausrad oder Slider direkt durch die gezeigte MRT-Sequenz blättern.',
       items: [
         {
-          title: 'Keilförmig/globuläres Signal ohne sicheren Oberflächenkontakt',
+          title: 'Globuläres Signal im Hinterhorn des lateralen Meniskus ohne sicheren Oberflächenkontakt bei discoidem Meniskus.',
           label: 'Grad 2c',
           tags: ['Discoider Meniskus'],
           meta: 'PD-Wichtung · sagittal · mukoide Degeneration · hohes Risiko für okkulten Riss',
@@ -222,7 +222,7 @@ const CONTENT = {
           credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168',
         },
         {
-          title: 'Lineares Signal mit Oberflächenkontakt auf nur einer Schicht',
+          title: 'Lineares Signal im Hinterhorn des medialen Meniskus mit Oberflächenkontakt auf nur einer Schicht bei discoidem Meniskus.',
           label: 'Grad 2b',
           tags: ['Discoider Meniskus'],
           meta: 'STIR · koronal · inkonklusiv · kein sicherer Grad-3-Riss',
@@ -442,7 +442,7 @@ const CONTENT = {
       lead: 'Use the mouse wheel or slider to scroll through each MRI sequence on the page.',
       items: [
         {
-          title: 'Wedge-shaped/globular signal without definite surface contact',
+          title: 'Globular signal in the posterior horn of the lateral meniscus without definite surface contact in a discoid meniscus.',
           label: 'Grade 2c',
           tags: ['Discoid meniscus'],
           meta: 'PD-weighted · sagittal · mucoid degeneration · high risk of occult tear',
@@ -455,7 +455,7 @@ const CONTENT = {
           credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168',
         },
         {
-          title: 'Linear signal with surface contact on one slice only',
+          title: 'Linear signal in the posterior horn of the medial meniscus with surface contact on only one slice in a discoid meniscus.',
           label: 'Grade 2b',
           tags: ['Discoid meniscus'],
           meta: 'STIR · coronal · inconclusive · not a definite grade-3 tear',
@@ -675,7 +675,7 @@ const CONTENT = {
       lead: 'با اسکرول ماوس یا اسلایدر، برش‌های هر سکانس MRI را مستقیماً در صفحه مرور کنید.',
       items: [
         {
-          title: 'سیگنال گوه‌ای/گلوبولار بدون تماس قطعی با سطح مفصلی',
+          title: 'سیگنال گلوبولار در شاخ خلفی منیسک خارجی، بدون تماس قطعی با سطح مفصلی، در منیسک دیسکوئید.',
           label: 'درجه 2c',
           tags: ['منیسک دیسکوئید'],
           meta: 'PD · ساژیتال · دژنراسیون موکوئید · ریسک بالای پارگی مخفی',
@@ -688,7 +688,7 @@ const CONTENT = {
           credit: 'Case courtesy of Ammar Haouimi, Radiopaedia.org · rID: 75168',
         },
         {
-          title: 'سیگنال خطی با تماس سطحی فقط در یک تصویر',
+          title: 'سیگنال خطی در شاخ خلفی منیسک داخلی، با تماس سطحی فقط در یک برش، در منیسک دیسکوئید.',
           label: 'درجه 2b',
           tags: ['منیسک دیسکوئید'],
           meta: 'STIR · کرونال · غیرقطعی · پارگی قطعی Grade 3 نیست',
@@ -1171,7 +1171,6 @@ export default function MeniskusPage() {
                     heading: `Grade ${item.caseId === 'case-75168' ? '2c' : '2b'}`,
                     title: item.title, alt: item.title, initialFrame: item.initialFrame,
                     frames: Array.from({ length: item.frameCount }, (_, index) => `/meniskus/cases/${item.caseId}/frame-${String(index + 1).padStart(2, '0')}.${item.frameExt}`),
-                    findings: [item.sequence, item.title], interpretation: `${item.label} · ${item.meta}`,
                     url: item.url, credit: item.credit,
                   }} />
                 ))}

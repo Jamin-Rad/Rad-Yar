@@ -155,14 +155,14 @@ export default function RadiopaediaFile({ lang, caseData }) {
       <CaseSequence lang={lang} caseData={caseData} />
       <div className={styles.caseBody} data-lesson-print-case-body>
         <h3>{pick(caseData.title, lang)}</h3>
-        <section className={styles.caseFindings} aria-labelledby={findingsId}>
+        {caseData.findings?.length ? <section className={styles.caseFindings} aria-labelledby={findingsId}>
           <h4 id={findingsId}>{pick(L('Was sehen wir?', 'What do we see?', 'چه می‌بینیم؟'), lang)}</h4>
           <ol>{caseData.findings.map((finding, index) => <li key={pick(finding, lang)}><span>{index + 1}</span><p>{pick(finding, lang)}</p></li>)}</ol>
           <div className={styles.caseInterpretation}>
             <strong>{pick(L('Entscheidender Befund', 'Key interpretation', 'یافته کلیدی'), lang)}</strong>
             <p>{pick(caseData.interpretation, lang)}</p>
           </div>
-        </section>
+        </section> : null}
       </div>
     </div>
     <footer className={styles.caseCredit} data-lesson-print-case-credit>{caseData.credit}</footer>
