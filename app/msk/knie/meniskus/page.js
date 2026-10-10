@@ -7,6 +7,7 @@ import { useLessonReadStatus } from '@/hooks/useLessonReadStatus'
 import { usePersistedSectionProgress } from '@/hooks/usePersistedSectionProgress'
 import { TEAR_CASE_FRAMES } from './tearCaseFrames'
 import LessonCaseFile from '@/components/LessonCaseFile'
+import MeniscusTextLesson from '@/app/andarun/test/MeniscusTextLesson'
 import template from '@/components/LessonTemplate.module.css'
 import contentStyles from './content.module.css'
 
@@ -141,7 +142,6 @@ const CONTENT = {
       protocol: [
         { name: 'T1-Wichtung', text: 'Anatomische Übersicht und Beurteilung chronischer Fibrose.' },
         { name: 'T2-w / PD-fs', text: 'Nachweis von Rissen, Knochenödemen und Kontinuitätsunterbrechungen der Bänder.' },
-        { name: 'Schnittdicke', text: 'Standardmäßig 3 mm, damit kleine Risse nicht durch Volumenmitteleffekt übersehen werden.' },
       ],
       normalTitle: 'Normalbefund',
       normalText: 'Der gesunde Meniskus stellt sich homogen hypointens dar. In der sagittalen Ansicht besitzt er eine typische dreieckige Struktur.',
@@ -375,7 +375,6 @@ const CONTENT = {
       protocol: [
         { name: 'T1-weighting', text: 'Anatomical overview and assessment of chronic fibrosis.' },
         { name: 'T2-w / PD-fs', text: 'Detection of tears, bone marrow edema and ligament discontinuity.' },
-        { name: 'Slice thickness', text: 'Usually 3 mm so that small tears are not hidden by volume averaging.' },
       ],
       normalTitle: 'Normal appearance',
       normalText: 'A healthy meniscus is homogeneously hypointense. On sagittal images it has a typical triangular configuration.',
@@ -609,7 +608,6 @@ const CONTENT = {
       protocol: [
         { name: 'T1', text: 'نمای کلی آناتومیک و ارزیابی فیبروز مزمن.' },
         { name: 'T2-w / PD-fs', text: 'تشخیص پارگی، ادم استخوان و قطع‌شدگی رباط‌ها.' },
-        { name: 'ضخامت برش', text: 'به طور استاندارد ۳ میلی‌متر، تا پارگی‌های کوچک به علت Volume Averaging پنهان نشوند.' },
       ],
       normalTitle: 'نمای طبیعی',
       normalText: 'منیسک سالم به صورت هموژن هیپواینتنس دیده می‌شود. در نمای ساژیتال شکل مثلثی تیپیک دارد.',
@@ -1146,36 +1144,8 @@ export default function MeniskusPage() {
             </div>
           </Section>
 
-          <Section id="mrt" eyebrow="02" title={copy.mri.title} lead={copy.mri.lead} {...sectionProps('mrt')}>
-            <div className={styles.protocolGrid}>
-              {copy.mri.protocol.map(item => (
-                <div key={item.name} className={styles.protocolCard}>
-                  <h3>{item.name}</h3>
-                  <p>{item.text}</p>
-                </div>
-              ))}
-            </div>
-            <div className={styles.normalCard}>
-              <h3>{copy.mri.normalTitle}</h3>
-              <p>{copy.mri.normalText}</p>
-            </div>
-            <Callout label={copy.keyLabel}>{copy.mri.key}</Callout>
-
-            <div className={styles.subSectionBlock}>
-              <h3 className={styles.subSectionTitle}>{copy.tear.title}</h3>
-              <p className={styles.subSectionLead}>{copy.tear.lead}</p>
-              <Callout type="cave" label={copy.caveLabel}>{copy.tear.cave}</Callout>
-              <div className={styles.criteriaGrid}>
-                {[copy.tear.criteria[0], copy.tear.criteria[2], copy.tear.criteria[1]].map((item, index) => (
-                  <div key={item.title} className={styles.criteriaCard}>
-                    <span>{String(index + 1).padStart(2, '0')}</span>
-                    <h3>{item.title}</h3>
-                    <p>{item.text}</p>
-                  </div>
-                ))}
-              </div>
-              <Callout label={copy.keyLabel}>{copy.tear.key}</Callout>
-            </div>
+          <Section id="mrt" eyebrow="02" title={copy.mri.title} lead="" {...sectionProps('mrt')}>
+            <MeniscusTextLesson lang={lang} />
           </Section>
 
           <Section id="grading" eyebrow="03" title={copy.grading.title} lead={copy.grading.lead} {...sectionProps('grading')}>
