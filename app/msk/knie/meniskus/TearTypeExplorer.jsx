@@ -3,7 +3,7 @@ import TearSchematic from './TearSchematic'
 
 const L = (de, en, fa) => ({ de, en, fa })
 const labels = [L('Definition & Verlauf', 'Definition & orientation', 'تعریف و مسیر پارگی'), L('MRT-Merkmale', 'MRI findings', 'یافته‌های MRI'), L('Klinische Bedeutung', 'Clinical significance', 'اهمیت بالینی'), L('Im Befund angeben', 'What to report', 'در گزارش ذکر شود')]
-const makeItem = (id, label, category, texts) => ({ id, label, category, details: texts.map((text, index) => text ? ({ id: String(index), label: labels[index], text }) : null).filter(Boolean) })
+const makeItem = (id, label, category, texts, detailLabels = labels) => ({ id, label, category, details: texts.map((text, index) => text ? ({ id: String(index), label: detailLabels[index], text }) : null).filter(Boolean) })
 const items = [
   makeItem('horizontal', L('Horizontalriss', 'Horizontal tear', 'پارگی افقی'), L('Parallel zum Tibiaplateau', 'Parallel to the tibial plateau', 'موازی پلاتوی تیبیا'), [
     L('Lineare Signalsteigerung parallel zur Tibiaebene, die die Oberfläche erreicht.', 'Linear increased signal parallel to the tibial plane, reaching the surface.', 'افزایش سیگنال خطی موازی صفحهٔ تیبیا که به سطح منیسک می‌رسد.'),
@@ -12,17 +12,17 @@ const items = [
     null,
   ]),
   makeItem('longitudinal', L('Longitudinalriss', 'Longitudinal tear', 'پارگی طولی'), L('Vertikal · parallel zur Peripherie', 'Vertical · parallel to the periphery', 'عمودی · موازی محیط منیسک'), [
-    L('Vertikaler Riss parallel zur Meniskusperipherie mit Oberflächenkontakt.', 'A vertical tear parallel to the meniscal periphery, reaching the surface.', 'پارگی عمودی موازی محیط منیسک با تماس سطحی.'),
+    L('Vertikaler Riss parallel zur Meniskusperipherie.', 'A vertical tear parallel to the meniscal periphery.', 'پارگی عمودی موازی محیط منیسک.'),
+    L(<><p>Longitudinal verlaufender Riss im Hinterhorn des Außenmeniskus.</p><p>An der Ansatzstelle des Ligamentum Wrisberg (Ligamentum meniscofemorale posterius).</p><p>Oft mit einer VKB-Ruptur kombiniert.</p></>, <><p>A longitudinal tear in the posterior horn of the lateral meniscus.</p><p>At the attachment of the ligament of Wrisberg (posterior meniscofemoral ligament).</p><p>Often associated with an ACL rupture.</p></>, <><p>پارگی طولی در شاخ خلفی منیسک خارجی.</p><p>در محل اتصال لیگامان ریسبرگ (لیگامان منیسکوفمورال خلفی).</p><p>اغلب همراه با پارگی رباط صلیبی قدامی (ACL).</p></>),
     null,
-    L(<><p>Periphere, reparable Risse können genäht werden.</p><p>Gefäßzone, Stabilität und Gewebequalität sind entscheidend.</p><p>Bei zentraler Fragmentverlagerung: Korbhenkelriss.</p></>, <><p>Peripheral, repairable tears may be sutured.</p><p>Vascular zone, stability and tissue quality matter.</p><p>Central fragment displacement: bucket-handle tear.</p></>, <><p>پارگی محیطیِ قابل‌ترمیم ممکن است برای بخیه مناسب باشد.</p><p>ناحیهٔ خون‌رسانی، پایداری و کیفیت بافت مهم‌اند.</p><p>جابه‌جایی قطعه به مرکز: پارگی دسته‌سطلی.</p></>),
     null,
-  ]),
+  ], [labels[0], L('Wrisberg-Rip', 'Wrisberg rip', 'پارگی ریسبرگ (Wrisberg-Rip)')]),
   makeItem('radial', L('Radiärriss', 'Radial tear', 'پارگی شعاعی'), L('Vom freien Rand nach außen', 'From the free edge outward', 'از لبهٔ آزاد به سمت محیط'), [
     L('Riss vom freien Innenrand zur Peripherie, quer zu den zirkumferenziellen Fasern.', 'A tear from the free inner edge towards the periphery, crossing the circumferential fibres.', 'پارگی از لبهٔ آزاد داخلی به سمت محیط، در عرض الیاف حلقوی.'),
+    L('Spaltförmiger, flüssigkeitssignalreicher Defekt im Meniskus.', 'A cleft-like, fluid-signal defect in the meniscus.', 'نقص شکاف‌مانند با سیگنال مایع در منیسک.'),
     null,
-    L(<><p>Tiefe oder komplette Risse können die Ringspannung beeinträchtigen.</p><p>Wurzelnahe Risse besonders beachten.</p></>, <><p>Deep or complete tears can impair hoop-stress transmission.</p><p>Pay particular attention to root-adjacent tears.</p></>, <><p>پارگی عمیق یا کامل می‌تواند انتقال تنش حلقوی را مختل کند.</p><p>به پارگی‌های نزدیک ریشه توجه ویژه کنید.</p></>),
     null,
-  ]),
+  ], [labels[0], L('Cleft sign', 'Cleft sign', 'علامت شکاف (Cleft sign)')]),
   makeItem('radial-complete', L('Vollständiger Radiärriss', 'Complete radial tear', 'پارگی شعاعی کامل'), L('Durch die gesamte Meniskusbreite', 'Across the full meniscal width', 'در تمام عرض منیسک'), [
     L('Radiärer Riss durch die gesamte Meniskusbreite, vom freien Rand bis zur Peripherie.', 'A radial tear across the full meniscal width, from the free edge to the periphery.', 'پارگی شعاعی در تمام عرض منیسک، از لبهٔ آزاد تا محیط.'),
     null,
